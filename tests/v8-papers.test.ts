@@ -2,7 +2,7 @@
 // destinations.ts; the owner's v8 package, 05 and 06; A16, A17).
 import { describe, expect, it } from 'vitest';
 import { processUntil } from './engine-api';
-import { applyForPermit, applyForVisa, entryRight, passportFor, permitRefusal, recordWorkDay, visaCheck, workRight, applications } from '../src/engine/papers';
+import { applyForPermit, applyForVisa, entryRight, passportFor, permitCheck, permitRefusal, recordWorkDay, visaCheck, workRight, applications } from '../src/engine/papers';
 import { personalBalance } from '../src/engine/personal';
 import { filmPlace, setFilmedAt } from '../src/engine/destinations';
 import { schedule } from '../src/engine/state';
@@ -16,7 +16,7 @@ describe('A16: a passport lets you travel; it doesn\'t let you work', () => {
     expect(workRight(s, 'GB')).toMatchObject({ can: true, assumed: true }); // where you live: the game's assumption, said as one
     expect(workRight(s, 'NO')).toMatchObject({ can: true, why: 'Your passport from France gives you the right to live and work in Norway.' }); // the shared market
     const us = workRight(s, 'US');
-    expect(us).toMatchObject({ can: false, route: 'O-1 (extraordinary ability in the arts, or extraordinary achievement in motion pictures or television)', missing: ["the permit's fee", 'how long the decision takes'] });
+    expect(us).toMatchObject({ can: false, route: 'O-1 (extraordinary ability in the arts, or extraordinary achievement in motion pictures or television)', missing: [] });
   });
 
   it('acting isn\'t directing or producing: the work records are a performer\'s', () => {
@@ -24,7 +24,9 @@ describe('A16: a passport lets you travel; it doesn\'t let you work', () => {
     // Japanese and French: free in Norway for all of it, by the shared market; in Australia, a performer's route only.
     expect(['act', 'direct', 'produce'].map((a) => workRight(s, 'NO', a as never).can)).toEqual([true, true, true]);
     expect(workRight(s, 'AU', 'act').can).toBe(false);
-    expect(workRight(s, 'AU', 'direct')).toMatchObject({ can: false, missing: ['what directing there needs'] });
+    // The records name a performer's route only; the game takes it for directing too, and says it is its assumption.
+    expect(workRight(s, 'AU', 'direct')).toMatchObject({ can: false, route: 'Temporary Activity visa (subclass 408), Entertainment Activities stream' });
+    expect((workRight(s, 'AU', 'direct') as { why: string }).why).toMatch(/its assumption\.$/);
   });
 
   it('a short engagement is worked without a permit up to its days, and not one more', () => {
@@ -38,12 +40,43 @@ describe('A16: a passport lets you travel; it doesn\'t let you work', () => {
     expect(workRight(s, 'GB')).toMatchObject({ can: false, route: 'Temporary Work – Creative Worker visa' });
   });
 
-  it('a work permit is never taken without the fee and time the records lack, and nothing is charged', () => {
+  it('a work permit with a researched fee and time: paid from the bank, decided on its day, worked under, and expired', () => {
+    // The United States' O-1: the fee from the USCIS fee schedule, $1,655, decided in between 90 and 180 days (the middle, 135).
     const s = startLife('papers-permit');
     const before = personalBalance(s);
-    expect(() => applyForPermit(s, 'US')).toThrow("The records don't give the permit's fee or how long the decision takes, so the game can't take an application.");
-    expect(permitRefusal(s, 'US')).toMatch(/can't take an application/);
-    expect(personalBalance(s)).toBe(before);
+    const c = permitCheck(s, 'US');
+    expect(c).toMatchObject({ ok: true, feeText: '1,655 USD', terms: { days: 135, estimate: null, stayDays: 1095 } });
+    expect((c as { terms: { sources: { kind: string }[] } }).terms.sources[0].kind).toBe('official');
+    const a = applyForPermit(s, 'US');
+    expect(personalBalance(s)).toBe(before - 1655);
+    expect(permitRefusal(s, 'US')).toBe('Your application is being decided.');
+    expect(workRight(s, 'US').can).toBe(false); // applied for isn't issued
+    processUntil(s, a.decideAt + 1, 'tick', 1_000_000);
+    expect(applications(s).find((x) => x.id === a.id)?.stage).toBe('issued');
+    expect(workRight(s, 'US')).toMatchObject({ can: true });
+    expect(workRight(s, 'US', 'direct').can).toBe(false); // a permit to act isn't one to direct
+    processUntil(s, a.decideAt + 1096 * 86_400_000, 'tick', 5_000_000);
+    expect(applications(s).find((x) => x.id === a.id)?.stage).toBe('expired');
+    expect(workRight(s, 'US').can).toBe(false);
+  }, 120_000);
+
+  it('a permit no research covers is taken on the game\'s estimate, from the continent\'s researched routes, and says so', () => {
+    const s = startLife('papers-estimate');
+    // South Korea's E-6-1: no researched fee yet. Asia has none researched either, so all researched routes are its basis.
+    const c = permitCheck(s, 'KR');
+    expect(c.ok).toBe(true);
+    const t = (c as { terms: { estimate: { where: string } | null; fee: { currency: string }; basis: string } }).terms;
+    expect(t.estimate?.where).toBe('all researched routes');
+    expect(t.fee.currency).toBe('USD');
+    expect(t.basis).toMatch(/^The game's estimate/);
+    // In Europe the estimate is the middle of Europe's researched routes.
+    s.character.nationalities = ['JP'];
+    const it = permitCheck(s, 'IT');
+    expect((it as { terms: { estimate: { where: string; from: string[] } } }).terms.estimate).toMatchObject({ where: 'researched routes in Europe', from: ['GB', 'IE', 'FR', 'DE'] });
+    const before = personalBalance(s);
+    const a = applyForPermit(s, 'IT');
+    expect(a.estimate).toBe(true);
+    expect(personalBalance(s)).toBeLessThan(before);
   });
 
   it('a visa with a recorded fee and time: checked, paid from the bank, decided on its day, used, and expired', () => {
@@ -76,10 +109,11 @@ describe('A16: a passport lets you travel; it doesn\'t let you work', () => {
     expect(entryRight(s, 'US').kind).toBe('needs');
   }, 120_000);
 
-  it('a visa the records give no fee or time for is never taken, and says what is missing', () => {
+  it('a visa no record gives a fee or time for is taken on the game\'s estimate, and says so', () => {
     const s = startLife('papers-novisa');
-    const c = visaCheck(s, 'IN'); // India asks a Japanese or French visitor for an e-Visa: its fee and time aren't recorded
-    expect(c).toMatchObject({ ok: false, missing: ['the fee', 'how long the decision takes'] });
+    const c = visaCheck(s, 'IN'); // India asks a Japanese or French visitor for an e-Visa: no researched fee or time yet
+    expect(c.ok).toBe(true);
+    expect((c as { terms: { estimate: unknown; basis: string } }).terms.basis).toMatch(/^The game's estimate/);
   });
 
   it('on a day filmed where you may not work, the day starts without you, even when you are there', () => {
@@ -133,9 +167,15 @@ describe('a passport from SLATE-REBUILD\'s records, where 1221 has no office', (
     const issued = passports(s).find((p) => p.doc.id === pending.doc.id)!;
     expect(issued.inForce).toBe(true);
     expect(Math.round((issued.doc.expiresAt! - issued.doc.issuedAt!) / 86_400_000 / 365.25)).toBe(5);
-    // A route whose time isn't recorded is never taken: Kenya's.
+    // A route whose time isn't recorded is taken on the game's estimate, from Africa's recorded offices, and says so: Kenya's
+    // (until November 14, 2026, later that day, it was never taken).
     const ke = startLife('papers-ke', 'ke-nairobi', { nationalities: ['KE'], birthplaceId: 'ke-nairobi' } as never);
-    expect(passportOffers(ke)[0].missing).toEqual(['how long it takes']);
-    expect(() => applyForRecordedPassport(ke, 0)).toThrow("The records don't give how long it takes for this route, so the game can't take an application.");
+    const o = passportOffers(ke)[0];
+    expect(o).toMatchObject({ missing: [], estimated: ['how long it takes', 'how long it lasts'] });
+    expect(o.basis).toMatch(/the game estimates them from the recorded passport offices in Africa, the middle of each\.$/);
+    const keBefore = personalBalance(ke);
+    applyForRecordedPassport(ke, 0);
+    expect(personalBalance(ke)).toBeLessThan(keBefore);
+    expect(passports(ke).some((p) => p.doc.status === 'pending')).toBe(true);
   });
 });

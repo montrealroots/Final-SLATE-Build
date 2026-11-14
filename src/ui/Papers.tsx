@@ -1,8 +1,8 @@
 // Your papers (engine/papers.ts; the owner's command of November 14, 2026, 4 and 5): your passports, what visiting a
 // country asks of you, what working there asks for each kind of work, and what you have applied for. Each line says
 // where its answer comes from; nothing the game hasn't confirmed is called ready.
-import { useState } from 'react';
-import { ACTIVITY_WORDS, applications, applyForRecordedPassport, applyForVisa, entryRight, passportOffers, passports, permits, visaCheck, workRight, type Activity } from '../engine/papers';
+import { useState, type ReactNode } from 'react';
+import { ACTIVITY_WORDS, applications, applyForPermit, applyForRecordedPassport, applyForVisa, entryRight, passportOffers, passports, permitCheck, permits, visaCheck, workRight, type Activity, type ApplicationCheck } from '../engine/papers';
 import { bankSim } from '../engine/bankworld';
 import { passportOffice, passportRefusal, passportRuleFor } from '../engine/bankworld/systems/documents';
 import { formatMoney } from '../engine/bankworld/core/money';
@@ -17,6 +17,20 @@ import { run } from './bankworld/app/game-context';
 const COUNTRIES = NATIONALITIES.map((c) => ({ value: c.code, label: c.name })).sort((a, b) => a.label.localeCompare(b.label));
 const ACTIVITIES = (Object.keys(ACTIVITY_WORDS) as Activity[]).map((a) => ({ value: a, label: ACTIVITY_WORDS[a].replace(/^./, (x) => x.toUpperCase()) }));
 const STAGE: Record<string, string> = { applied: 'Being decided', issued: 'Issued', expired: 'Expired' };
+
+/** How long a permission lasts, in the words a person uses: "10 years", "6 months", "90 days". */
+const lasts = (d: number) => (d >= 360 ? `${Math.round(d / 365.25)} year${Math.round(d / 365.25) === 1 ? '' : 's'}` : d >= 60 && d % 30 < 3 ? `${Math.round(d / 30)} months` : `${d} days`);
+
+/** An application's terms in a sentence: its fee, its decision time and how long it lasts, and where the figures come from. */
+function TermsLine({ c }: { c: Extract<ApplicationCheck, { ok: true }> }) {
+  const t = c.terms;
+  return (
+    <p className="small">
+      {t.route}: {c.feeText}, decided in {t.daysText}{t.stayDays ? `, good for ${lasts(t.stayDays)}` : ''}. You need: {c.needs.join('; ')}.{' '}
+      {t.estimate ? <span className="dim">{t.basis}</span> : <>{t.basis} {t.sources.map((x, i) => <a key={i} href={x.url} target="_blank" rel="noreferrer" className="dim">{x.kind === 'official' ? 'Official source' : 'Source'}{t.sources.length > 1 ? ` ${i + 1}` : ''}</a>).reduce<ReactNode[]>((a, x, i) => (i ? [...a, ', ', x] : [x]), [])}</>}
+    </p>
+  );
+}
 
 export function PapersCard() {
   const g = useGame();
@@ -55,12 +69,11 @@ export function PapersCard() {
           <ul className="list small" aria-label="Ways To Get Your Passport">
             {passportOffers(g).map((o, i) => (
               <li key={`${o.route.id}-${i}`} className="list-item list-static">
-                <span className="grow">{o.route.speed === 'urgent' ? 'Urgent' : 'Standard'}, {o.route.where === 'home' ? 'at home' : 'from abroad'}: {o.fee ? formatMoney(o.fee.minor, o.fee.currency) : 'fee not recorded'}, {o.route.within ? `ready in ${o.route.within.n} ${o.route.within.unit}${o.route.within.n === 1 ? '' : 's'}` : 'time not recorded'}{o.pages ? `, ${o.pages} pages` : ''}{o.validYears ? `, valid ${o.validYears} years` : ''}</span>
-                {o.missing.length ? <span className="dim">Not taken: {o.missing.join(' and ')} not recorded</span>
-                  : <button className="btn btn-sm" aria-label={`Apply: ${o.route.id}`} onClick={() => setErr(store.act((s) => applyForRecordedPassport(s, i)))}>Apply</button>}
+                <span className="grow">{o.route.speed === 'urgent' ? 'Urgent' : 'Standard'}, {o.route.where === 'home' ? 'at home' : 'from abroad'}: {o.fee ? formatMoney(o.fee.minor, o.fee.currency) : ''}{o.estimated.includes('the fee') ? ' (estimate)' : ''}, {o.route.within ? `ready in ${o.route.within.n} ${o.route.within.unit}${o.route.within.n === 1 ? '' : 's'}` : ''}{o.estimated.includes('how long it takes') ? ' (estimate)' : ''}{o.pages ? `, ${o.pages} pages` : ''}{o.validYears ? `, valid ${o.validYears} years` : ''}</span>
+                {o.basis && <span className="dim">{o.basis}</span>}
+                <button className="btn btn-sm" aria-label={`Apply: ${o.route.id}`} onClick={() => setErr(store.act((s) => applyForRecordedPassport(s, i)))}>Apply</button>
               </li>
             ))}
-            {!passportOffers(g).length && <li className="list-item list-static">No record of your country&apos;s passport office for where you live.</li>}
           </ul>
         )}
       </section>
@@ -72,7 +85,7 @@ export function PapersCard() {
         <p role="status" aria-label="Entering" className="small">{enter.why}</p>
         {enter.kind === 'needs' && (visa.ok ? (
           <>
-            <p className="small">{visa.rule.name}: {visa.feeText}, decided in {visa.rule.days} days. You need: {visa.needs.join('; ')}. {visa.rule.basis}</p>
+            <TermsLine c={visa} />
             <button className="btn btn-sm" onClick={() => setErr(store.act((s) => void applyForVisa(s, country)))}>Apply And Pay The Fee</button>
           </>
         ) : <p className="dim small">{visa.why}</p>)}
@@ -80,10 +93,16 @@ export function PapersCard() {
         <ul className="list small" aria-label="Working">
           {ACTIVITIES.map(({ value, label }) => {
             const work = workRight(g, country, value);
+            const permit = work.can ? null : permitCheck(g, country, value);
             return (
-              <li key={value} className="list-item list-static">
-                <span className="grow"><strong>{label}:</strong> {work.can ? (work.assumed ? 'Allowed by the game\'s assumption. ' : 'Allowed. ') : 'Not allowed yet. '}{work.why}
-                  {!work.can && work.missing.length > 0 && <span className="dim"> Not recorded: {work.missing.join(', ')}. The game doesn&apos;t make these up, so it can&apos;t take an application.</span>}</span>
+              <li key={value} className="list-item list-static col">
+                <span className="grow"><strong>{label}:</strong> {work.can ? (work.assumed ? 'Allowed by the game\'s assumption. ' : 'Allowed. ') : 'Not allowed yet. '}{work.why}</span>
+                {permit && (permit.ok ? (
+                  <>
+                    <TermsLine c={permit} />
+                    <button className="btn btn-sm" aria-label={`Apply For A Permit: ${label}`} onClick={() => setErr(store.act((s) => void applyForPermit(s, country, value)))}>Apply And Pay The Fee</button>
+                  </>
+                ) : <span className="dim">{permit.why}</span>)}
               </li>
             );
           })}
@@ -97,7 +116,7 @@ export function PapersCard() {
           <ul className="list small" aria-label="Your Applications">
             {applications(g).map((a) => (
               <li key={a.id} className="list-item list-static">
-                <span className="grow">{a.route}, {countryName(a.country)}: {formatMoney(a.fee.minor, a.fee.currency)} paid</span>
+                <span className="grow">{a.route}{a.kind === 'permit' && a.activity ? ` (${ACTIVITY_WORDS[a.activity]})` : ''}, {countryName(a.country)}: {formatMoney(a.fee.minor, a.fee.currency)} paid{a.estimate ? ', on the game\'s estimate' : ''}</span>
                 <span>{STAGE[a.stage]}{a.stage === 'applied' ? `, by ${day(a.decideAt)}` : a.stage === 'issued' && a.expiresAt ? `, until ${day(a.expiresAt)}` : ''}</span>
               </li>
             ))}
@@ -110,7 +129,7 @@ export function PapersCard() {
           </ul>
         </section>
       )}
-      <p className="dim small">From SLATE-REBUILD&apos;s records of who may visit and work where, and 1221&apos;s passport offices and visitor visas. A fee or a time the records don&apos;t give isn&apos;t made up: the game says so instead.</p>
+      <p className="dim small">From SLATE-REBUILD&apos;s records of who may visit and work where, 1221&apos;s passport offices and visitor visas, and fees and times researched on November 14, 2026. Where no research gives a fee or a time yet, the game estimates it from the researched ones on the same continent and says so.</p>
     </>
   );
 }

@@ -237,6 +237,14 @@ export interface Posting {
 /** An amount in the save's cents, in a currency's minor units; nothing where there's no rate. */
 export type ToCurrency = (amount: Money, currency: string) => Money | undefined;
 
+/**
+ * Whether a transaction is wages, as a bank counts them for a loan, an income test or a fee waiver. 1221's own pay is
+ * 'salary'. SLATE's is posted by engine/bank.ts as 'slate:<kind>#<key>': its outside work ('paid-work') and a first-look
+ * deal's overhead ('overhead') are earned pay too (from November 14, 2026: until then no SLATE player was ever paid wages
+ * in the bank's eyes, so no bank would lend to one, which the feature proofs found: docs/v10/proof/bank-loan.json).
+ */
+export const isWages = (category: string): boolean => category === 'salary' || /^slate:(paid-work|overhead)#/.test(category);
+
 export interface LedgerTransaction {
   id: string;
   saveId: string;

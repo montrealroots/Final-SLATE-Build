@@ -29,6 +29,16 @@ interface Row {
 }
 
 const ROWS: readonly Row[] = [
+  // Added November 14, 2026 (the owner's command of that day: make banking possible everywhere). Nauru and Niue were
+  // researched that day. The other five have no bank of their own, so a life there banks where its residents do, with
+  // the administering country's banks: said as the game's model, not research (docs/v9/COVERAGE.md).
+  { iso: 'NR', banks: ["Commonwealth Bank (Nauru)"], format: 'plain', confidence: 'M', source: "https://pina.com.fj/2025/08/12/bendigo-bank-cease-operations-in-nauru-commonwealth-bank-of-australia-opens-today/ (CommBank replaced Bendigo Bank's agency in August 2025)" }, // Nauru
+  { iso: 'NU', banks: ["Kiwibank (Niue Development Bank agency)"], format: 'plain', confidence: 'M', source: "https://gov.nu/media-releases/more-kiwibank-options-coming-to-niue (the Kiwibank agency, run through the Niue Development Bank)" }, // Niue
+  { iso: 'IO', banks: ["Barclays","HSBC UK"], format: 'iban', ibanCountry: 'GB', ibanLength: 22, confidence: 'L', source: "No bank operates in the British Indian Ocean Territory: the game banks a life there with the United Kingdom's banks" }, // British Indian Ocean Territory
+  { iso: 'TF', banks: ["BNP Paribas","Société Générale"], format: 'iban', ibanCountry: 'FR', ibanLength: 27, confidence: 'L', source: "No bank operates in the French Southern Territories: the game banks a life there with France's banks" }, // French Southern Territories
+  { iso: 'GS', banks: ["Barclays","HSBC UK"], format: 'iban', ibanCountry: 'GB', ibanLength: 22, confidence: 'L', source: "No bank operates in South Georgia and the South Sandwich Islands: the game banks a life there with the United Kingdom's banks" }, // South Georgia
+  { iso: 'PN', banks: ["ANZ New Zealand","Kiwibank"], format: 'plain', confidence: 'L', source: "No bank operates on Pitcairn: the game banks a life there with New Zealand's banks, whose dollar it uses" }, // Pitcairn
+  { iso: 'TK', banks: ["ANZ New Zealand","Kiwibank"], format: 'plain', confidence: 'L', source: "No bank operates in Tokelau: the game banks a life there with New Zealand's banks, whose dollar it uses" }, // Tokelau
   { iso: 'AF', banks: ["Azizi Bank","Afghanistan International Bank","New Kabul Bank"], format: 'plain', confidence: 'M', source: "https://dab.gov.af/Afghan-Deposit-Insurance-Corporation" }, // Afghanistan
   { iso: 'AX', banks: ["Ålandsbanken","Andelsbanken för Åland","Nordea"], format: 'iban', ibanCountry: 'FI', ibanLength: 18, confidence: 'M', source: "https://en.wikipedia.org/wiki/%C3%85landsbanken" }, // Åland Islands
   { iso: 'AL', banks: ["Banka Kombëtare Tregtare (BKT)","Raiffeisen Bank Albania","Credins Bank","Intesa Sanpaolo Bank Albania"], format: 'iban', ibanCountry: 'AL', ibanLength: 28, confidence: 'H', source: "https://asd.gov.al/en/" }, // Albania

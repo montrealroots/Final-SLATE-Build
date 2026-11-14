@@ -37,7 +37,7 @@ test('Home to Your Papers: a visa applied for and paid, decided on its day, in u
   await expect(rail.getByRole('button', { name: 'Home', exact: true, includeHidden: true })).not.toHaveAttribute('aria-current', /.+/);
   await page.getByLabel('Country', { exact: true }).selectOption('US');
   await expect(page.getByRole('status', { name: 'Entering' })).toContainText('you need a visa');
-  await expect(page.locator('main')).toContainText('B-1/B-2 Visitor Visa: 185 USD, decided in 157 days.');
+  await expect(page.locator('main')).toContainText('B-1/B-2 Visitor Visa: 185 USD, decided in 157 days, good for 10 years.');
   // All four kinds of work are listed at once; none is allowed by a visitor visa, before or after.
   const working = page.getByRole('list', { name: 'Working' });
   await expect(working.getByRole('listitem')).toHaveText([/^Acting: Not allowed yet\./, /^Directing: Not allowed yet\./, /^Producing: Not allowed yet\./, /^Writing: Not allowed yet\./]);

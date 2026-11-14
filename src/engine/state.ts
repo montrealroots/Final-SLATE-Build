@@ -321,6 +321,11 @@ export function registerHandler(kind: string, fn: Handler): void {
   handlers.set(kind, fn);
 }
 
+/** The handler a kind of event has now, for a proof that switches one off and puts it back (tests/proof/probe.ts). */
+export function handlerOf(kind: string): Handler | undefined {
+  return handlers.get(kind);
+}
+
 export type Mode = 'tick' | 'advance' | 'sleep';
 
 export interface ProcessResult {

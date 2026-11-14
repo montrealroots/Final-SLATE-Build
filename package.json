@@ -17,6 +17,7 @@
     "test": "vitest run",
     "e2e": "playwright test",
     "balance": "vitest run --config vitest.balance.config.ts",
+    "proof": "vitest run --config vitest.proof.config.ts",
     "check": "npm run world:check && npm run typecheck && npm run test && npm run build && npm run budget",
     "catalog": "node scripts/trim-genre-registry.mjs",
     "screen-catalog:import": "NODE_USE_ENV_PROXY=1 node --no-warnings tools/screen-catalog/import.mjs",

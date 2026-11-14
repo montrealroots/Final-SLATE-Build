@@ -10,8 +10,9 @@
  * the US's $250 Visa Integrity Fee (enacted, its collection at these posts
  * unconfirmed) and a refusal at interview aren't kept.
  *
- * Nothing has taken an application since the scope reset of 2026-10-09: `days` is read by nothing, and `years` and
- * `validDays` only by a visa a save from before then still had pending. Until 2026-10-20 (brief 17) the bases Going
+ * From the scope reset of 2026-10-09 nothing took an application, so `days` was read by nothing, and `years` and
+ * `validDays` only by a visa a save from before then still had pending. From November 14, 2026 SLATE's Your Papers takes
+ * an application on these records again (engine/papers.ts `visaFor`), and reads all three. Until 2026-10-20 (brief 17) the bases Going
  * Abroad shows said how long the game took to decide one, "In the game it takes 30 days to decide", and that the game
  * used Mexico's waits for Brazil's; they say the published figures, and what wasn't found, alone.
  */

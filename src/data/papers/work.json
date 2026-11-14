@@ -8209,6 +8209,146 @@
     "right": "permit",
     "route": "Temporary employment permit"
    }
+  },
+  "AF": {
+   "passports": {},
+   "others": {
+    "right": "permit",
+    "route": "Work permit"
+   },
+   "modeled": "SLATE-REBUILD's research of who may work here was blocked; from November 14, 2026 the game assumes that anyone who isn't a citizen needs a permit"
+  },
+  "BF": {
+   "passports": {},
+   "others": {
+    "right": "permit",
+    "route": "Work permit"
+   },
+   "modeled": "SLATE-REBUILD's research of who may work here was blocked; from November 14, 2026 the game assumes that anyone who isn't a citizen needs a permit"
+  },
+  "KM": {
+   "passports": {},
+   "others": {
+    "right": "permit",
+    "route": "Work permit"
+   },
+   "modeled": "SLATE-REBUILD's research of who may work here was blocked; from November 14, 2026 the game assumes that anyone who isn't a citizen needs a permit"
+  },
+  "HT": {
+   "passports": {},
+   "others": {
+    "right": "permit",
+    "route": "Work permit"
+   },
+   "modeled": "SLATE-REBUILD's research of who may work here was blocked; from November 14, 2026 the game assumes that anyone who isn't a citizen needs a permit"
+  },
+  "MM": {
+   "passports": {},
+   "others": {
+    "right": "permit",
+    "route": "Work permit"
+   },
+   "modeled": "SLATE-REBUILD's research of who may work here was blocked; from November 14, 2026 the game assumes that anyone who isn't a citizen needs a permit"
+  },
+  "NR": {
+   "passports": {},
+   "others": {
+    "right": "permit",
+    "route": "Work permit"
+   },
+   "modeled": "SLATE-REBUILD's research of who may work here was blocked; from November 14, 2026 the game assumes that anyone who isn't a citizen needs a permit"
+  },
+  "KP": {
+   "passports": {},
+   "others": {
+    "right": "permit",
+    "route": "Work permit"
+   },
+   "modeled": "SLATE-REBUILD's research of who may work here was blocked; from November 14, 2026 the game assumes that anyone who isn't a citizen needs a permit"
+  },
+  "SD": {
+   "passports": {},
+   "others": {
+    "right": "permit",
+    "route": "Work permit"
+   },
+   "modeled": "SLATE-REBUILD's research of who may work here was blocked; from November 14, 2026 the game assumes that anyone who isn't a citizen needs a permit"
+  },
+  "SY": {
+   "passports": {},
+   "others": {
+    "right": "permit",
+    "route": "Work permit"
+   },
+   "modeled": "SLATE-REBUILD's research of who may work here was blocked; from November 14, 2026 the game assumes that anyone who isn't a citizen needs a permit"
+  },
+  "VA": {
+   "passports": {},
+   "others": {
+    "right": "permit",
+    "route": "Work permit"
+   },
+   "modeled": "SLATE-REBUILD's research of who may work here was blocked; from November 14, 2026 the game assumes that anyone who isn't a citizen needs a permit"
+  },
+  "GW": {
+   "groups": [
+    "ecowas"
+   ],
+   "passports": {},
+   "others": {
+    "right": "permit",
+    "route": "Work permit"
+   },
+   "modeled": "SLATE-REBUILD's research of who may work here was blocked; from November 14, 2026 the game assumes that anyone who isn't a citizen needs a permit, except ECOWAS citizens, who may live and work there under the community's free movement"
+  },
+  "QA": {
+   "passports": {
+    "AE": {
+     "right": "permit",
+     "route": "Qatar/GCC national work permit"
+    },
+    "BH": {
+     "right": "permit",
+     "route": "Qatar/GCC national work permit"
+    },
+    "KW": {
+     "right": "permit",
+     "route": "Qatar/GCC national work permit"
+    },
+    "OM": {
+     "right": "permit",
+     "route": "Qatar/GCC national work permit"
+    },
+    "SA": {
+     "right": "permit",
+     "route": "Qatar/GCC national work permit"
+    }
+   },
+   "others": {
+    "right": "permit",
+    "route": "Work permit"
+   },
+   "modeled": "SLATE-REBUILD's research of who may work here was blocked; from November 14, 2026 the game assumes that anyone who isn't a citizen needs a permit, and that Gulf Cooperation Council citizens apply as the United Arab Emirates' record says they do there"
+  },
+  "NU": {
+   "passports": {
+    "NZ": {
+     "right": "free"
+    }
+   },
+   "others": {
+    "right": "permit",
+    "route": "Work permit"
+   },
+   "modeled": "SLATE-REBUILD's research of who may work here was blocked; from November 14, 2026 the game assumes that anyone who isn't a citizen needs a permit, except New Zealand citizens, as Niue's own people are"
+  },
+  "EH": {
+   "passports": {},
+   "others": {
+    "right": "permit",
+    "route": "Visa du contrat de travail d’étranger (Ministère de l’Emploi)"
+   },
+   "modeled": "SLATE-REBUILD's research of who may work here was blocked; from November 14, 2026 the game assumes that anyone who isn't a citizen needs a permit, by the rule of Morocco, which administers most of the territory"
   }
  }
 }

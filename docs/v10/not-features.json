@@ -1,0 +1,10 @@
+{
+ "action:bankworld/core/simulation.execute": "The bank world's dispatcher: every bank command a screen runs goes through it, and each command is its own row.",
+ "action:bankworld/index.advanceBankWorld": "Brings the bank to the game's clock before a bank command runs; time passing is proven through the scheduled rows and the bank commands.",
+ "action:bankworld/index.bankSim": "Reads the bank world for the command that follows; not a decision.",
+ "action:personal.takeHomeAvailable": "Reads how much may come home, inside the Take Home action, which is its own row.",
+ "action:song-actions.syncMusicTasks": "Follows a song change with the work it now needs; the song changes are their own rows.",
+ "action:song-actions.syncSongTasks": "Follows a song change with the work it now needs; the song changes are their own rows.",
+ "action:state.adoptPlace": "Makes a chosen place known to the world; the place field that chose it is the row.",
+ "action:time.formatDateKey": "Formats a date inside a change; not a decision."
+}

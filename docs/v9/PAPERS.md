@@ -59,18 +59,32 @@ The lifecycle:
 7. **Its use:** entry is allowed, and work is still not.
 8. **Its expiry,** after which it is needed again.
 
-Offered only where the records give both the fee and the time. That is 1221's nine visitor visa records: the United
-States, Canada and Australia for Mexican and Brazilian passports, Mexico for Brazilian, and Brazil for American,
-Canadian and Australian. Nowhere else is an application taken. The screen says which facts are missing:
-- for a visa, its fee and its decision time;
-- for every work permit, its fee and its decision time.
+Until later on November 14, 2026 an application was offered only where the records gave both the fee and the time:
+1221's nine visitor visa records. The owner then asked for everything to be made possible, choosing "research, then
+estimate" (`src/engine/papers-terms.ts`, `src/data/papers/terms.json`):
+- **Visitor visas** can be applied for at every destination that asks for one. 1221's pair for your passport comes first;
+  then the destination's researched visa (the Schengen visa for its 29 countries, the United Kingdom, Canada,
+  Australia); otherwise the game's estimate.
+- **Work permits** can be applied for everywhere, for each kind of work. Researched: the United States (O-1), the United
+  Kingdom, Canada, Australia, New Zealand, Ireland, France and Germany, each with its source. The records name a
+  performer's route only; directing, producing and writing take the same route at the same terms, an assumption said as
+  one. A permit issued lets you do that kind of work there until it expires.
+- **Passports**: whatever SLATE-REBUILD's record lacks, the fee, the time or the validity, is estimated.
+- **The estimate** is the middle of the researched figures on the same continent (all of them, where none is on it), in
+  dollars at the day's rate. The screen says it is the game's estimate and what it was made from. Every estimate is
+  listed in `docs/v10/papers-estimates.json`, the research queue; `tests/v10-papers-terms.test.ts` lets their number fall
+  and never rise.
+- **Work rules** for the 14 countries whose research was blocked are the game's model (`work.json` `modeled`), said as one.
 
 Before November 14, 2026, a work permit took 30 days where its time wasn't recorded and lasted a year, both the game's
-own figures. Those are gone. A permit a save holds is kept until its date, and one still waiting is decided on the terms
-it was applied for under.
+own figures, said as nothing. A permit a save holds from then is kept until its date, and one still waiting is decided on
+the terms it was applied for under.
 
 ## Not Yet Done
 
+- **Research for the estimated routes.** Japan, South Korea, India and Mexico were searched on November 14, 2026, but no
+  official fee could be confirmed (Japan's varies by nationality; Korea's and Mexico's were on agency sites only), so
+  they stay estimates.
 - **Counting days of stay against a visit's limit.**
 - **A residence application.**
 - **Travel refusing entry without the permission.** SLATE's journeys don't yet ask; the shoot refuses the work.

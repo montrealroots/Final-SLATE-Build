@@ -29,7 +29,7 @@
 
 import type { Simulation } from '../core/simulation';
 import { CommandError } from '../core/simulation';
-import type { Account } from '../core/ledger';
+import { isWages, type Account } from '../core/ledger';
 import { formatMoney, saveCurrency, type Money } from '../core/money';
 import type { Person } from '../domain/model';
 import { CITIES, COUNTRIES } from '../content/geography';
@@ -260,7 +260,7 @@ export function directDeposits(sim: Simulation, account: Account, since: Instant
   for (let i = list.length - 1; i >= 0; i -= 1) {
     const t = list[i]!;
     if (t.at < since) break;
-    if (counts === 'electronic' ? !ELECTRONIC.has(t.category) : t.category !== 'salary') continue;
+    if (counts === 'electronic' ? !(ELECTRONIC.has(t.category) || isWages(t.category)) : !isWages(t.category)) continue;
     for (const p of t.postings) if (p.accountId === account.id && p.amount > 0) total += p.amount;
   }
   return total;
@@ -408,7 +408,7 @@ function yearlyPay(sim: Simulation, owner: string): Money {
   for (let i = list.length - 1; i >= 0; i -= 1) {
     const t = list[i]!;
     if (t.at < since) break;
-    if (t.category !== 'salary') continue;
+    if (!isWages(t.category)) continue;
     for (const p of t.postings) if (p.amount > 0 && mine.has(p.accountId)) total += p.amount;
   }
   return total;

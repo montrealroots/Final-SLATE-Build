@@ -6,6 +6,29 @@ Read this first. It lists what is finished, what the Gap Completion Package stil
 
 At every stopping point, open a pull request into `main` and merge it (see `CLAUDE.md`, certified by the user on November 6, 2026). Never merge red checks.
 
+## The Owner's Command Of November 14, 2026 (Later): Every Feature Proven, Everything Possible
+
+Two asks: a coverage matrix of every feature with Monte Carlo proof that each reads, bites and has downstream effects
+(fix what doesn't), and every "not possible yet" in banking and papers made possible. The owner chose "research, then
+estimate" for figures no source gives. Start at `docs/v10/README.md`.
+
+**Done.**
+- The register of every feature from the code (`tests/proof/register.ts`): 157 actions, 54 bank commands, 66 event kinds,
+  306 fields that hold a decision, an identity or a record.
+- Played careers (`tests/proof/career.ts`) and the paired Monte Carlo proof (`tests/proof/probe.ts`); the matrix
+  (`tests/v10-features.test.ts`, `docs/v10/FEATURES.md`, ratcheted).
+- Proofs for the career's loop, production, release, awards, the bank and 30 scheduled systems (`tests/proof/probes/`).
+- Fixed from the proofs: SLATE pay counts as wages, so banks lend (`isWages`).
+- Papers: every visa, permit and passport can be applied for (`src/engine/papers-terms.ts`); 8 permits and 32 visa
+  destinations researched with sources; the rest estimated and listed (`docs/v10/papers-estimates.json`). Banks for
+  Nauru and Niue researched; the five places with no bank bank with their administering country's; the 14 blocked work
+  rules modeled. `docs/v9/COVERAGE.md` has no "missing" left.
+
+**Next, in order.**
+1. Probes for the remaining actions (about 130), bank commands and fields; careers that reach the unreached event kinds.
+2. Fix each feature a proof fails: cash first, then festival selections and outside work.
+3. Research the estimated permits and visas, biggest film markets first.
+
 ## The Owner's Banking, Papers And Homepage Migration (From November 14, 2026)
 
 The command, word for word, is in the conversation of November 14, 2026; its nine sections are summarised in

@@ -1,0 +1,725 @@
+{
+ "about": "Fees and decision times for the work permit routes in work.json, and for visitor visas by destination,, researched on November 14, 2026 (the owner's command of that day: research, then estimate). Each entry names its source and whether it is the government's own page (official) or another publication (secondary). days is calendar days, or [shortest, longest] where the source gives a range; stayDays is how long the permission lasts at most, where the source says.",
+ "permits": {
+  "US": {
+   "route": "O-1 (extraordinary ability in the arts, or extraordinary achievement in motion pictures or television)",
+   "fee": 1655,
+   "currency": "USD",
+   "feeBasis": "Form I-129 for an O petition filed on paper, $1,055, and the Asylum Program Fee a regular petitioner pays, $600.",
+   "days": [
+    90,
+    180
+   ],
+   "daysBasis": "Standard processing of an O-1 petition, three to six months in 2026.",
+   "stayDays": 1095,
+   "stayBasis": "An O-1 is granted for up to three years.",
+   "sources": [
+    {
+     "kind": "official",
+     "url": "https://www.uscis.gov/g-1055",
+     "what": "USCIS Form G-1055 Fee Schedule, edition 10/26/26, Appendix A: I-129 O petition and Asylum Program Fee"
+    },
+    {
+     "kind": "secondary",
+     "url": "https://beyondborderglobal.com/resources/i-129-approval-time-2025-processing-timeline-guide",
+     "what": "Standard I-129 processing, 3 to 6 months for O-1 petitions (July 2026)"
+    }
+   ]
+  },
+  "GB": {
+   "route": "Temporary Work – Creative Worker visa",
+   "fee": 340,
+   "currency": "GBP",
+   "feeBasis": "The application fee for each person applying, the same inside or outside the UK.",
+   "days": 21,
+   "daysBasis": "A decision usually within 3 weeks when applying from outside the UK.",
+   "stayDays": 365,
+   "stayBasis": "Up to 12 months, or the certificate of sponsorship's time plus up to 28 days, whichever is shorter.",
+   "sources": [
+    {
+     "kind": "official",
+     "url": "https://www.gov.uk/creative-worker-visa",
+     "what": "GOV.UK, Creative Worker visa (Temporary Work): how much it costs, how long it takes"
+    }
+   ]
+  },
+  "CA": {
+   "route": "Work permit",
+   "fee": 155,
+   "currency": "CAD",
+   "feeBasis": "Work permit (including extensions), per person.",
+   "days": [
+    60,
+    150
+   ],
+   "daysBasis": "Two to five months from outside Canada, depending on where the application is made.",
+   "sources": [
+    {
+     "kind": "official",
+     "url": "https://ircc.canada.ca/english/information/fees/fees.asp",
+     "what": "IRCC fee list: Work permit (including extensions) – per person, $155.00"
+    },
+    {
+     "kind": "secondary",
+     "url": "https://www.visamind.com/en/canada/visas/work-permit",
+     "what": "Processing time, 2 to 5 months"
+    }
+   ]
+  },
+  "AU": {
+   "route": "Temporary Activity visa (subclass 408), Entertainment Activities stream",
+   "fee": 535,
+   "currency": "AUD",
+   "feeBasis": "The base application charge for the main applicant from July 1, 2026.",
+   "days": [
+    23,
+    47
+   ],
+   "daysBasis": "Half of applications decided in 23 days and nine in ten in 47, from the department's published times (September 2026).",
+   "sources": [
+    {
+     "kind": "secondary",
+     "url": "https://www.thisisaustralia.com/visa-listing/application-charges/",
+     "what": "Visa application charges: subclass 408 Entertainment Activities stream, AUD535"
+    },
+    {
+     "kind": "secondary",
+     "url": "https://www.widen.com.au/processing-times/408/",
+     "what": "Processing times for the 408 Entertainment Activities stream, from Home Affairs (September 2026)"
+    }
+   ]
+  },
+  "NZ": {
+   "route": "Entertainers Work Visa",
+   "fee": 1355,
+   "currency": "NZD",
+   "feeBasis": "The cost from NZD 1,355, by where the applicant applies from.",
+   "days": 14,
+   "daysBasis": "80% of applications decided within 2 weeks.",
+   "sources": [
+    {
+     "kind": "official",
+     "url": "https://www.immigration.govt.nz/new-zealand-visas/already-have-a-visa/managing-your-visa-and-passport/details-page-for-passport-sticker/visa/performing-artists-entertainers-and-entertainment-personnel-work-visa",
+     "what": "Immigration New Zealand, Entertainers Work Visa: cost and processing time"
+    }
+   ]
+  },
+  "IE": {
+   "route": "Atypical Working Scheme permission (beyond 90 days, an Employment Permit)",
+   "fee": 250,
+   "currency": "EUR",
+   "feeBasis": "The non-refundable processing fee, paid when the application is submitted.",
+   "days": 28,
+   "daysBasis": "A minimum of 20 working days: four calendar weeks.",
+   "stayDays": 90,
+   "stayBasis": "The scheme covers work of up to 90 days.",
+   "sources": [
+    {
+     "kind": "official",
+     "url": "https://www.irishimmigration.ie/coming-to-work-in-ireland/what-are-my-work-visa-options/visa-options-for-working-in-ireland-for-less-than-90-days/employment-visa-aws-less-than-90-days/",
+     "what": "Irish Immigration Service, Atypical Working Scheme: fee and processing times"
+    }
+   ]
+  },
+  "FR": {
+   "route": "Carte de séjour « talent – profession artistique et culturelle »",
+   "fee": 99,
+   "currency": "EUR",
+   "feeBasis": "The long-stay visa (type D) marked « passeport talent – profession artistique et culturelle », issued by the consulate.",
+   "days": [
+    30,
+    60
+   ],
+   "daysBasis": "One to two months.",
+   "sources": [
+    {
+     "kind": "secondary",
+     "url": "https://demarchesetrangers.fr/blog/artiste-etranger-carte-talent-procedure",
+     "what": "Artiste étranger, carte talent: procédure (updated June 2026)"
+    }
+   ]
+  },
+  "DE": {
+   "route": "Aufenthaltserlaubnis zur Beschäftigung (Kultur und Unterhaltung, § 25 BeschV)",
+   "fee": 75,
+   "currency": "EUR",
+   "feeBasis": "The fee for a national visa (category D) for employment, § 45 (2) of the Residence Ordinance.",
+   "days": 28,
+   "daysBasis": "About four weeks as a German mission states it, longer where the Federal Employment Agency must approve.",
+   "sources": [
+    {
+     "kind": "official",
+     "url": "https://hongkong.diplo.de/resource/blob/2632548/d2a4a90ad72f745c135a64f96f4920dc/employment-data.pdf",
+     "what": "German Consulate General Hong Kong, national visa for employment: the €75 fee"
+    },
+    {
+     "kind": "secondary",
+     "url": "https://www.visaguard.berlin/en/glossar2/arbeitsvisum",
+     "what": "Work visa: €75 for a national visa for employment (§ 45 (2) AufenthV); processing times"
+    }
+   ]
+  }
+ },
+ "visas": {
+  "AT": {
+   "name": "Schengen visa (short stay, type C)",
+   "fee": 90,
+   "currency": "EUR",
+   "feeBasis": "The visa fee for an adult.",
+   "days": 15,
+   "daysBasis": "The normal processing time is 15 days; it may be extended to up to 45.",
+   "stayDays": 90,
+   "stayBasis": "Up to 90 days in any 180-day period, across the Schengen area.",
+   "sources": [
+    {
+     "kind": "official",
+     "url": "https://home-affairs.ec.europa.eu/policies/schengen/visa-policy/applying-schengen-visa_en",
+     "what": "European Commission, Applying for a Schengen visa: fee, processing time and length of stay"
+    }
+   ]
+  },
+  "BE": {
+   "name": "Schengen visa (short stay, type C)",
+   "fee": 90,
+   "currency": "EUR",
+   "feeBasis": "The visa fee for an adult.",
+   "days": 15,
+   "daysBasis": "The normal processing time is 15 days; it may be extended to up to 45.",
+   "stayDays": 90,
+   "stayBasis": "Up to 90 days in any 180-day period, across the Schengen area.",
+   "sources": [
+    {
+     "kind": "official",
+     "url": "https://home-affairs.ec.europa.eu/policies/schengen/visa-policy/applying-schengen-visa_en",
+     "what": "European Commission, Applying for a Schengen visa: fee, processing time and length of stay"
+    }
+   ]
+  },
+  "BG": {
+   "name": "Schengen visa (short stay, type C)",
+   "fee": 90,
+   "currency": "EUR",
+   "feeBasis": "The visa fee for an adult.",
+   "days": 15,
+   "daysBasis": "The normal processing time is 15 days; it may be extended to up to 45.",
+   "stayDays": 90,
+   "stayBasis": "Up to 90 days in any 180-day period, across the Schengen area.",
+   "sources": [
+    {
+     "kind": "official",
+     "url": "https://home-affairs.ec.europa.eu/policies/schengen/visa-policy/applying-schengen-visa_en",
+     "what": "European Commission, Applying for a Schengen visa: fee, processing time and length of stay"
+    }
+   ]
+  },
+  "CH": {
+   "name": "Schengen visa (short stay, type C)",
+   "fee": 90,
+   "currency": "EUR",
+   "feeBasis": "The visa fee for an adult.",
+   "days": 15,
+   "daysBasis": "The normal processing time is 15 days; it may be extended to up to 45.",
+   "stayDays": 90,
+   "stayBasis": "Up to 90 days in any 180-day period, across the Schengen area.",
+   "sources": [
+    {
+     "kind": "official",
+     "url": "https://home-affairs.ec.europa.eu/policies/schengen/visa-policy/applying-schengen-visa_en",
+     "what": "European Commission, Applying for a Schengen visa: fee, processing time and length of stay"
+    }
+   ]
+  },
+  "CZ": {
+   "name": "Schengen visa (short stay, type C)",
+   "fee": 90,
+   "currency": "EUR",
+   "feeBasis": "The visa fee for an adult.",
+   "days": 15,
+   "daysBasis": "The normal processing time is 15 days; it may be extended to up to 45.",
+   "stayDays": 90,
+   "stayBasis": "Up to 90 days in any 180-day period, across the Schengen area.",
+   "sources": [
+    {
+     "kind": "official",
+     "url": "https://home-affairs.ec.europa.eu/policies/schengen/visa-policy/applying-schengen-visa_en",
+     "what": "European Commission, Applying for a Schengen visa: fee, processing time and length of stay"
+    }
+   ]
+  },
+  "DE": {
+   "name": "Schengen visa (short stay, type C)",
+   "fee": 90,
+   "currency": "EUR",
+   "feeBasis": "The visa fee for an adult.",
+   "days": 15,
+   "daysBasis": "The normal processing time is 15 days; it may be extended to up to 45.",
+   "stayDays": 90,
+   "stayBasis": "Up to 90 days in any 180-day period, across the Schengen area.",
+   "sources": [
+    {
+     "kind": "official",
+     "url": "https://home-affairs.ec.europa.eu/policies/schengen/visa-policy/applying-schengen-visa_en",
+     "what": "European Commission, Applying for a Schengen visa: fee, processing time and length of stay"
+    }
+   ]
+  },
+  "DK": {
+   "name": "Schengen visa (short stay, type C)",
+   "fee": 90,
+   "currency": "EUR",
+   "feeBasis": "The visa fee for an adult.",
+   "days": 15,
+   "daysBasis": "The normal processing time is 15 days; it may be extended to up to 45.",
+   "stayDays": 90,
+   "stayBasis": "Up to 90 days in any 180-day period, across the Schengen area.",
+   "sources": [
+    {
+     "kind": "official",
+     "url": "https://home-affairs.ec.europa.eu/policies/schengen/visa-policy/applying-schengen-visa_en",
+     "what": "European Commission, Applying for a Schengen visa: fee, processing time and length of stay"
+    }
+   ]
+  },
+  "EE": {
+   "name": "Schengen visa (short stay, type C)",
+   "fee": 90,
+   "currency": "EUR",
+   "feeBasis": "The visa fee for an adult.",
+   "days": 15,
+   "daysBasis": "The normal processing time is 15 days; it may be extended to up to 45.",
+   "stayDays": 90,
+   "stayBasis": "Up to 90 days in any 180-day period, across the Schengen area.",
+   "sources": [
+    {
+     "kind": "official",
+     "url": "https://home-affairs.ec.europa.eu/policies/schengen/visa-policy/applying-schengen-visa_en",
+     "what": "European Commission, Applying for a Schengen visa: fee, processing time and length of stay"
+    }
+   ]
+  },
+  "ES": {
+   "name": "Schengen visa (short stay, type C)",
+   "fee": 90,
+   "currency": "EUR",
+   "feeBasis": "The visa fee for an adult.",
+   "days": 15,
+   "daysBasis": "The normal processing time is 15 days; it may be extended to up to 45.",
+   "stayDays": 90,
+   "stayBasis": "Up to 90 days in any 180-day period, across the Schengen area.",
+   "sources": [
+    {
+     "kind": "official",
+     "url": "https://home-affairs.ec.europa.eu/policies/schengen/visa-policy/applying-schengen-visa_en",
+     "what": "European Commission, Applying for a Schengen visa: fee, processing time and length of stay"
+    }
+   ]
+  },
+  "FI": {
+   "name": "Schengen visa (short stay, type C)",
+   "fee": 90,
+   "currency": "EUR",
+   "feeBasis": "The visa fee for an adult.",
+   "days": 15,
+   "daysBasis": "The normal processing time is 15 days; it may be extended to up to 45.",
+   "stayDays": 90,
+   "stayBasis": "Up to 90 days in any 180-day period, across the Schengen area.",
+   "sources": [
+    {
+     "kind": "official",
+     "url": "https://home-affairs.ec.europa.eu/policies/schengen/visa-policy/applying-schengen-visa_en",
+     "what": "European Commission, Applying for a Schengen visa: fee, processing time and length of stay"
+    }
+   ]
+  },
+  "FR": {
+   "name": "Schengen visa (short stay, type C)",
+   "fee": 90,
+   "currency": "EUR",
+   "feeBasis": "The visa fee for an adult.",
+   "days": 15,
+   "daysBasis": "The normal processing time is 15 days; it may be extended to up to 45.",
+   "stayDays": 90,
+   "stayBasis": "Up to 90 days in any 180-day period, across the Schengen area.",
+   "sources": [
+    {
+     "kind": "official",
+     "url": "https://home-affairs.ec.europa.eu/policies/schengen/visa-policy/applying-schengen-visa_en",
+     "what": "European Commission, Applying for a Schengen visa: fee, processing time and length of stay"
+    }
+   ]
+  },
+  "GR": {
+   "name": "Schengen visa (short stay, type C)",
+   "fee": 90,
+   "currency": "EUR",
+   "feeBasis": "The visa fee for an adult.",
+   "days": 15,
+   "daysBasis": "The normal processing time is 15 days; it may be extended to up to 45.",
+   "stayDays": 90,
+   "stayBasis": "Up to 90 days in any 180-day period, across the Schengen area.",
+   "sources": [
+    {
+     "kind": "official",
+     "url": "https://home-affairs.ec.europa.eu/policies/schengen/visa-policy/applying-schengen-visa_en",
+     "what": "European Commission, Applying for a Schengen visa: fee, processing time and length of stay"
+    }
+   ]
+  },
+  "HR": {
+   "name": "Schengen visa (short stay, type C)",
+   "fee": 90,
+   "currency": "EUR",
+   "feeBasis": "The visa fee for an adult.",
+   "days": 15,
+   "daysBasis": "The normal processing time is 15 days; it may be extended to up to 45.",
+   "stayDays": 90,
+   "stayBasis": "Up to 90 days in any 180-day period, across the Schengen area.",
+   "sources": [
+    {
+     "kind": "official",
+     "url": "https://home-affairs.ec.europa.eu/policies/schengen/visa-policy/applying-schengen-visa_en",
+     "what": "European Commission, Applying for a Schengen visa: fee, processing time and length of stay"
+    }
+   ]
+  },
+  "HU": {
+   "name": "Schengen visa (short stay, type C)",
+   "fee": 90,
+   "currency": "EUR",
+   "feeBasis": "The visa fee for an adult.",
+   "days": 15,
+   "daysBasis": "The normal processing time is 15 days; it may be extended to up to 45.",
+   "stayDays": 90,
+   "stayBasis": "Up to 90 days in any 180-day period, across the Schengen area.",
+   "sources": [
+    {
+     "kind": "official",
+     "url": "https://home-affairs.ec.europa.eu/policies/schengen/visa-policy/applying-schengen-visa_en",
+     "what": "European Commission, Applying for a Schengen visa: fee, processing time and length of stay"
+    }
+   ]
+  },
+  "IS": {
+   "name": "Schengen visa (short stay, type C)",
+   "fee": 90,
+   "currency": "EUR",
+   "feeBasis": "The visa fee for an adult.",
+   "days": 15,
+   "daysBasis": "The normal processing time is 15 days; it may be extended to up to 45.",
+   "stayDays": 90,
+   "stayBasis": "Up to 90 days in any 180-day period, across the Schengen area.",
+   "sources": [
+    {
+     "kind": "official",
+     "url": "https://home-affairs.ec.europa.eu/policies/schengen/visa-policy/applying-schengen-visa_en",
+     "what": "European Commission, Applying for a Schengen visa: fee, processing time and length of stay"
+    }
+   ]
+  },
+  "IT": {
+   "name": "Schengen visa (short stay, type C)",
+   "fee": 90,
+   "currency": "EUR",
+   "feeBasis": "The visa fee for an adult.",
+   "days": 15,
+   "daysBasis": "The normal processing time is 15 days; it may be extended to up to 45.",
+   "stayDays": 90,
+   "stayBasis": "Up to 90 days in any 180-day period, across the Schengen area.",
+   "sources": [
+    {
+     "kind": "official",
+     "url": "https://home-affairs.ec.europa.eu/policies/schengen/visa-policy/applying-schengen-visa_en",
+     "what": "European Commission, Applying for a Schengen visa: fee, processing time and length of stay"
+    }
+   ]
+  },
+  "LI": {
+   "name": "Schengen visa (short stay, type C)",
+   "fee": 90,
+   "currency": "EUR",
+   "feeBasis": "The visa fee for an adult.",
+   "days": 15,
+   "daysBasis": "The normal processing time is 15 days; it may be extended to up to 45.",
+   "stayDays": 90,
+   "stayBasis": "Up to 90 days in any 180-day period, across the Schengen area.",
+   "sources": [
+    {
+     "kind": "official",
+     "url": "https://home-affairs.ec.europa.eu/policies/schengen/visa-policy/applying-schengen-visa_en",
+     "what": "European Commission, Applying for a Schengen visa: fee, processing time and length of stay"
+    }
+   ]
+  },
+  "LT": {
+   "name": "Schengen visa (short stay, type C)",
+   "fee": 90,
+   "currency": "EUR",
+   "feeBasis": "The visa fee for an adult.",
+   "days": 15,
+   "daysBasis": "The normal processing time is 15 days; it may be extended to up to 45.",
+   "stayDays": 90,
+   "stayBasis": "Up to 90 days in any 180-day period, across the Schengen area.",
+   "sources": [
+    {
+     "kind": "official",
+     "url": "https://home-affairs.ec.europa.eu/policies/schengen/visa-policy/applying-schengen-visa_en",
+     "what": "European Commission, Applying for a Schengen visa: fee, processing time and length of stay"
+    }
+   ]
+  },
+  "LU": {
+   "name": "Schengen visa (short stay, type C)",
+   "fee": 90,
+   "currency": "EUR",
+   "feeBasis": "The visa fee for an adult.",
+   "days": 15,
+   "daysBasis": "The normal processing time is 15 days; it may be extended to up to 45.",
+   "stayDays": 90,
+   "stayBasis": "Up to 90 days in any 180-day period, across the Schengen area.",
+   "sources": [
+    {
+     "kind": "official",
+     "url": "https://home-affairs.ec.europa.eu/policies/schengen/visa-policy/applying-schengen-visa_en",
+     "what": "European Commission, Applying for a Schengen visa: fee, processing time and length of stay"
+    }
+   ]
+  },
+  "LV": {
+   "name": "Schengen visa (short stay, type C)",
+   "fee": 90,
+   "currency": "EUR",
+   "feeBasis": "The visa fee for an adult.",
+   "days": 15,
+   "daysBasis": "The normal processing time is 15 days; it may be extended to up to 45.",
+   "stayDays": 90,
+   "stayBasis": "Up to 90 days in any 180-day period, across the Schengen area.",
+   "sources": [
+    {
+     "kind": "official",
+     "url": "https://home-affairs.ec.europa.eu/policies/schengen/visa-policy/applying-schengen-visa_en",
+     "what": "European Commission, Applying for a Schengen visa: fee, processing time and length of stay"
+    }
+   ]
+  },
+  "MT": {
+   "name": "Schengen visa (short stay, type C)",
+   "fee": 90,
+   "currency": "EUR",
+   "feeBasis": "The visa fee for an adult.",
+   "days": 15,
+   "daysBasis": "The normal processing time is 15 days; it may be extended to up to 45.",
+   "stayDays": 90,
+   "stayBasis": "Up to 90 days in any 180-day period, across the Schengen area.",
+   "sources": [
+    {
+     "kind": "official",
+     "url": "https://home-affairs.ec.europa.eu/policies/schengen/visa-policy/applying-schengen-visa_en",
+     "what": "European Commission, Applying for a Schengen visa: fee, processing time and length of stay"
+    }
+   ]
+  },
+  "NL": {
+   "name": "Schengen visa (short stay, type C)",
+   "fee": 90,
+   "currency": "EUR",
+   "feeBasis": "The visa fee for an adult.",
+   "days": 15,
+   "daysBasis": "The normal processing time is 15 days; it may be extended to up to 45.",
+   "stayDays": 90,
+   "stayBasis": "Up to 90 days in any 180-day period, across the Schengen area.",
+   "sources": [
+    {
+     "kind": "official",
+     "url": "https://home-affairs.ec.europa.eu/policies/schengen/visa-policy/applying-schengen-visa_en",
+     "what": "European Commission, Applying for a Schengen visa: fee, processing time and length of stay"
+    }
+   ]
+  },
+  "NO": {
+   "name": "Schengen visa (short stay, type C)",
+   "fee": 90,
+   "currency": "EUR",
+   "feeBasis": "The visa fee for an adult.",
+   "days": 15,
+   "daysBasis": "The normal processing time is 15 days; it may be extended to up to 45.",
+   "stayDays": 90,
+   "stayBasis": "Up to 90 days in any 180-day period, across the Schengen area.",
+   "sources": [
+    {
+     "kind": "official",
+     "url": "https://home-affairs.ec.europa.eu/policies/schengen/visa-policy/applying-schengen-visa_en",
+     "what": "European Commission, Applying for a Schengen visa: fee, processing time and length of stay"
+    }
+   ]
+  },
+  "PL": {
+   "name": "Schengen visa (short stay, type C)",
+   "fee": 90,
+   "currency": "EUR",
+   "feeBasis": "The visa fee for an adult.",
+   "days": 15,
+   "daysBasis": "The normal processing time is 15 days; it may be extended to up to 45.",
+   "stayDays": 90,
+   "stayBasis": "Up to 90 days in any 180-day period, across the Schengen area.",
+   "sources": [
+    {
+     "kind": "official",
+     "url": "https://home-affairs.ec.europa.eu/policies/schengen/visa-policy/applying-schengen-visa_en",
+     "what": "European Commission, Applying for a Schengen visa: fee, processing time and length of stay"
+    }
+   ]
+  },
+  "PT": {
+   "name": "Schengen visa (short stay, type C)",
+   "fee": 90,
+   "currency": "EUR",
+   "feeBasis": "The visa fee for an adult.",
+   "days": 15,
+   "daysBasis": "The normal processing time is 15 days; it may be extended to up to 45.",
+   "stayDays": 90,
+   "stayBasis": "Up to 90 days in any 180-day period, across the Schengen area.",
+   "sources": [
+    {
+     "kind": "official",
+     "url": "https://home-affairs.ec.europa.eu/policies/schengen/visa-policy/applying-schengen-visa_en",
+     "what": "European Commission, Applying for a Schengen visa: fee, processing time and length of stay"
+    }
+   ]
+  },
+  "RO": {
+   "name": "Schengen visa (short stay, type C)",
+   "fee": 90,
+   "currency": "EUR",
+   "feeBasis": "The visa fee for an adult.",
+   "days": 15,
+   "daysBasis": "The normal processing time is 15 days; it may be extended to up to 45.",
+   "stayDays": 90,
+   "stayBasis": "Up to 90 days in any 180-day period, across the Schengen area.",
+   "sources": [
+    {
+     "kind": "official",
+     "url": "https://home-affairs.ec.europa.eu/policies/schengen/visa-policy/applying-schengen-visa_en",
+     "what": "European Commission, Applying for a Schengen visa: fee, processing time and length of stay"
+    }
+   ]
+  },
+  "SE": {
+   "name": "Schengen visa (short stay, type C)",
+   "fee": 90,
+   "currency": "EUR",
+   "feeBasis": "The visa fee for an adult.",
+   "days": 15,
+   "daysBasis": "The normal processing time is 15 days; it may be extended to up to 45.",
+   "stayDays": 90,
+   "stayBasis": "Up to 90 days in any 180-day period, across the Schengen area.",
+   "sources": [
+    {
+     "kind": "official",
+     "url": "https://home-affairs.ec.europa.eu/policies/schengen/visa-policy/applying-schengen-visa_en",
+     "what": "European Commission, Applying for a Schengen visa: fee, processing time and length of stay"
+    }
+   ]
+  },
+  "SI": {
+   "name": "Schengen visa (short stay, type C)",
+   "fee": 90,
+   "currency": "EUR",
+   "feeBasis": "The visa fee for an adult.",
+   "days": 15,
+   "daysBasis": "The normal processing time is 15 days; it may be extended to up to 45.",
+   "stayDays": 90,
+   "stayBasis": "Up to 90 days in any 180-day period, across the Schengen area.",
+   "sources": [
+    {
+     "kind": "official",
+     "url": "https://home-affairs.ec.europa.eu/policies/schengen/visa-policy/applying-schengen-visa_en",
+     "what": "European Commission, Applying for a Schengen visa: fee, processing time and length of stay"
+    }
+   ]
+  },
+  "SK": {
+   "name": "Schengen visa (short stay, type C)",
+   "fee": 90,
+   "currency": "EUR",
+   "feeBasis": "The visa fee for an adult.",
+   "days": 15,
+   "daysBasis": "The normal processing time is 15 days; it may be extended to up to 45.",
+   "stayDays": 90,
+   "stayBasis": "Up to 90 days in any 180-day period, across the Schengen area.",
+   "sources": [
+    {
+     "kind": "official",
+     "url": "https://home-affairs.ec.europa.eu/policies/schengen/visa-policy/applying-schengen-visa_en",
+     "what": "European Commission, Applying for a Schengen visa: fee, processing time and length of stay"
+    }
+   ]
+  },
+  "GB": {
+   "name": "Standard Visitor visa",
+   "fee": 135,
+   "currency": "GBP",
+   "feeBasis": "A Standard Visitor visa for up to 6 months.",
+   "days": 21,
+   "daysBasis": "A decision usually within 3 weeks.",
+   "stayDays": 180,
+   "stayBasis": "Usually up to 6 months.",
+   "sources": [
+    {
+     "kind": "official",
+     "url": "https://www.gov.uk/standard-visitor",
+     "what": "GOV.UK, Visit the UK as a Standard Visitor: cost and length of stay"
+    },
+    {
+     "kind": "official",
+     "url": "https://www.gov.uk/standard-visitor/apply-standard-visitor-visa",
+     "what": "GOV.UK, apply for a Standard Visitor visa: a decision within 3 weeks"
+    }
+   ]
+  },
+  "CA": {
+   "name": "Visitor visa (temporary resident visa)",
+   "fee": 185,
+   "currency": "CAD",
+   "feeBasis": "The processing fee, $100, and the biometrics fee, $85, for one person.",
+   "days": [
+    18,
+    109
+   ],
+   "daysBasis": "From 18 to 109 days from outside Canada, by the country applied from (IRCC's posted times, October 7, 2026).",
+   "sources": [
+    {
+     "kind": "official",
+     "url": "https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/apply-visitor-visa.html",
+     "what": "IRCC, Apply for a visitor visa: the processing and biometrics fees"
+    },
+    {
+     "kind": "secondary",
+     "url": "https://www.gofarglobal.com/news/canada-visitor-visa-processing-time-2026",
+     "what": "Canada visitor visa processing time 2026, from IRCC's processing-times tool (October 7, 2026)"
+    }
+   ]
+  },
+  "AU": {
+   "name": "Visitor visa (subclass 600), Tourist stream",
+   "fee": 190,
+   "currency": "AUD",
+   "feeBasis": "The base application charge applying from outside Australia (sources give AUD 190 to 200).",
+   "days": 33,
+   "daysBasis": "Nine in ten applications decided within 33 days (July 2026).",
+   "stayDays": 90,
+   "stayBasis": "Usually up to three months a visit.",
+   "sources": [
+    {
+     "kind": "secondary",
+     "url": "https://www.widen.com.au/processing-times/600/",
+     "what": "Processing times for the subclass 600 visa, from Home Affairs data (July 2026)"
+    },
+    {
+     "kind": "secondary",
+     "url": "https://thinkhigher.com.au/visitor-visa-subclass-600/",
+     "what": "Visitor visa subclass 600: costs (2025-26)"
+    }
+   ]
+  }
+ }
+}

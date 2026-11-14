@@ -1,0 +1,461 @@
+{
+ "id": "cash-withdrawal",
+ "features": [
+  "bank:cash.withdraw"
+ ],
+ "decision": "Take $400 out of a cash machine",
+ "reads": [
+  "src/engine/bankworld/systems/banking.ts#registerBanking"
+ ],
+ "seeds": 30,
+ "base": {
+  "delivered": 2,
+  "released": 2,
+  "reception": 59.25,
+  "overall": 58.95,
+  "gross": 70786.667,
+  "revenue": 136380.833,
+  "distributed": 1.8,
+  "money": 25076889.9,
+  "moneyChange": 76889.9,
+  "jobsTaken": 1,
+  "jobsOffered": 1,
+  "jobPay": 4510.533,
+  "offeredDayRate": 445.967,
+  "ownIn": 80400,
+  "backerIn": 0,
+  "backerDeals": 0,
+  "leftInProjects": 0,
+  "jobsDone": 0.9,
+  "logLines": 119.733,
+  "hired": 16,
+  "castRates": 3193.667,
+  "releaseDelay": 95.917,
+  "licenceDeals": 0,
+  "licenceFee": 0,
+  "offersDeclined": 0.4,
+  "countersSeen": 0,
+  "countersDeclined": 0.1,
+  "spent": 220780.833,
+  "shootDays": 7.133,
+  "lostDays": 1.133,
+  "daysToDeliver": 32.6,
+  "quality.script": 48.5,
+  "quality.direction": 64.517,
+  "quality.craft": 59.8,
+  "quality.editing": 59.7,
+  "quality.music": 58.95,
+  "standing.writing": 50,
+  "standing.directing": 54.833,
+  "standing.acting": 50,
+  "standing.producing": 53.133,
+  "interestIn": 0,
+  "interestOut": 0,
+  "bankFees": 0,
+  "owed": 0,
+  "accounts": 1,
+  "rewards": 0,
+  "fired": 0
+ },
+ "variant": {
+  "delivered": 2,
+  "released": 2,
+  "reception": 59.25,
+  "overall": 58.95,
+  "gross": 70786.667,
+  "revenue": 136380.833,
+  "distributed": 1.8,
+  "money": 25076489.9,
+  "moneyChange": 76489.9,
+  "jobsTaken": 1,
+  "jobsOffered": 1,
+  "jobPay": 4510.533,
+  "offeredDayRate": 445.967,
+  "ownIn": 80400,
+  "backerIn": 0,
+  "backerDeals": 0,
+  "leftInProjects": 0,
+  "jobsDone": 0.9,
+  "logLines": 119.733,
+  "hired": 16,
+  "castRates": 3193.667,
+  "releaseDelay": 95.917,
+  "licenceDeals": 0,
+  "licenceFee": 0,
+  "offersDeclined": 0.4,
+  "countersSeen": 0,
+  "countersDeclined": 0.1,
+  "spent": 220780.833,
+  "shootDays": 7.133,
+  "lostDays": 1.133,
+  "daysToDeliver": 32.6,
+  "quality.script": 48.5,
+  "quality.direction": 64.517,
+  "quality.craft": 59.8,
+  "quality.editing": 59.7,
+  "quality.music": 58.95,
+  "standing.writing": 50,
+  "standing.directing": 54.833,
+  "standing.acting": 50,
+  "standing.producing": 53.133,
+  "interestIn": 0,
+  "interestOut": 0,
+  "bankFees": 0,
+  "owed": 0,
+  "accounts": 2,
+  "rewards": 0,
+  "fired": 0
+ },
+ "diff": {
+  "delivered": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 30
+  },
+  "released": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 30
+  },
+  "reception": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 30
+  },
+  "overall": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 30
+  },
+  "gross": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 30
+  },
+  "revenue": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 30
+  },
+  "distributed": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 30
+  },
+  "money": {
+   "mean": -400,
+   "lo": -400,
+   "hi": -400,
+   "changed": 30,
+   "n": 30
+  },
+  "moneyChange": {
+   "mean": -400,
+   "lo": -400,
+   "hi": -400,
+   "changed": 30,
+   "n": 30
+  },
+  "jobsTaken": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 30
+  },
+  "jobsOffered": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 30
+  },
+  "jobPay": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 30
+  },
+  "offeredDayRate": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 30
+  },
+  "ownIn": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 30
+  },
+  "backerIn": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 30
+  },
+  "backerDeals": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 30
+  },
+  "leftInProjects": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 30
+  },
+  "jobsDone": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 30
+  },
+  "logLines": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 30
+  },
+  "hired": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 30
+  },
+  "castRates": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 30
+  },
+  "releaseDelay": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 30
+  },
+  "licenceDeals": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 30
+  },
+  "licenceFee": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 30
+  },
+  "offersDeclined": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 30
+  },
+  "countersSeen": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 30
+  },
+  "countersDeclined": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 30
+  },
+  "spent": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 30
+  },
+  "shootDays": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 30
+  },
+  "lostDays": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 30
+  },
+  "daysToDeliver": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 30
+  },
+  "quality.script": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 30
+  },
+  "quality.direction": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 30
+  },
+  "quality.craft": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 30
+  },
+  "quality.editing": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 30
+  },
+  "quality.music": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 30
+  },
+  "standing.writing": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 30
+  },
+  "standing.directing": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 30
+  },
+  "standing.acting": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 30
+  },
+  "standing.producing": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 30
+  },
+  "interestIn": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 30
+  },
+  "interestOut": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 30
+  },
+  "bankFees": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 30
+  },
+  "owed": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 30
+  },
+  "accounts": {
+   "mean": 1,
+   "lo": 1,
+   "hi": 1,
+   "changed": 30,
+   "n": 30
+  },
+  "rewards": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 30
+  },
+  "fired": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 30
+  }
+ },
+ "bites": [
+  {
+   "metric": "money",
+   "ok": true
+  }
+ ],
+ "downstream": [
+  {
+   "metric": "bankFees",
+   "ok": false
+  },
+  {
+   "metric": "interestIn",
+   "ok": false
+  }
+ ],
+ "verdict": "no downstream effect",
+ "hashes": {
+  "src/engine/bankworld/systems/banking.ts": "a566beef10a33cd8",
+  "tests/proof/career.ts": "feee2c5d8a7e1266"
+ }
+}

@@ -73,7 +73,7 @@ import type { Simulation } from '../core/simulation';
 import { photoIdOf } from './documents';
 import { drawFromBank } from './spending';
 import { CommandError } from '../core/simulation';
-import type { Account } from '../core/ledger';
+import { isWages, type Account } from '../core/ledger';
 import { formatMoney, saveCurrency, type Money } from '../core/money';
 import { exchange } from '../content/currency';
 import type { Person } from '../domain/model';
@@ -415,7 +415,7 @@ export function wagesLastMonth(sim: Simulation, person: Person): Money {
   for (let i = list.length - 1; i >= 0; i -= 1) {
     const t = list[i]!;
     if (t.at < since) break;
-    if (t.category !== 'salary') continue;
+    if (!isWages(t.category)) continue;
     for (const p of t.postings) if (mine.has(p.accountId) && p.amount > 0) total += p.amount;
   }
   return total;
@@ -723,7 +723,7 @@ function transactionsBetween(sim: Simulation, account: Account, from: Instant, t
     if (t.at >= to || t.category === 'interest' || t.category === 'bank_fee') continue;
     if (!t.postings.some((p) => p.accountId === account.id)) continue;
     count += 1;
-    if (t.category === 'salary') wages = true;
+    if (isWages(t.category)) wages = true;
   }
   return { count, wages };
 }
