@@ -31,8 +31,15 @@ test('J03: a story with one person is adapted with that one and nobody invented,
   await expect(page.getByRole('article', { name: DUPIN })).toBeVisible();
   await expect(page.getByRole('article')).toHaveCount(1);
 
+  // Whether it can go ahead names what holds it: first the script, then, approved, the lead nobody plays yet (V6-023).
+  const goAhead = page.locator('section.card', { has: page.getByRole('heading', { name: 'Can It Go Ahead?' }) });
+  await section(page, 'Overview');
+  await expect(goAhead).toContainText('Not yet: script.');
   // Approved as it is, made with the player as Dupin, delivered.
   await saveAndApprove(page);
+  await section(page, 'Overview');
+  await expect(goAhead).toContainText(`Not yet: cast. One part is not cast: ${DUPIN} (a lead).`);
+  await expect(goAhead.getByRole('list', { name: 'Ways Round It' })).toContainText('Play the part yourself');
   await produceToDelivery(page, { yourself: [DUPIN] });
   await expect.poll(async () => !!(await readSavedState(page)).projects[0].delivered, { timeout: 30_000 }).toBe(true);
   const credits = await creditsTable(page);

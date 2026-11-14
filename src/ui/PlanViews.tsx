@@ -1,4 +1,5 @@
 import { addStage, openParts, partMethods, partName, partScenes, removeStage, samePart, stageRefusal, stagesOf } from '../engine/parts';
+import { scheduleDrift } from '../engine/production/schedule';
 import { gradeOf } from '../engine/grades';
 import { Fragment, useState } from 'react';
 import { theBacker } from '../engine/backer-words';
@@ -646,6 +647,7 @@ export function ScheduleTab({ p }: { p: Project }) {
         {err && <p role="alert" style={{ color: 'var(--negative)' }}>{err}</p>}
         {p.delivered && <p className="dim">This project has been delivered; its schedule is final.</p>}
         {!p.delivered && approvedScenes(p).some((s) => sceneTechnique(p, s) === 'live') && <p className="dim">About {plural(estimatedShootDays(p, g), 'shoot day')}, each about {money(dayFees(p).location + dayFees(p).equipment)} for the location and equipment, reserved when the schedule is built.</p>}
+        {(() => { const n = p.delivered ? 0 : scheduleDrift(p).length; return n ? <p className="callout callout-warning">Your changes affect {plural(n, 'scene')}. Review the revised schedule before confirming: Preview The Schedule shows it, and Rebuild Schedule confirms it.</p> : null; })()}
         <SchedulePreview p={p} start={start} />
         <button className="btn btn-primary" disabled={!!p.delivered} onClick={() => setErr(store.act((s) => void generatePlan(s, p, start)))}>{p.schedule.startDate ? 'Rebuild Schedule' : 'Build Schedule'}</button>
         {p.schedule.startDate && <p className="dim">Rebuilding keeps finished work and moves only what hasn't happened yet.</p>}
@@ -905,6 +907,7 @@ export function BudgetTab({ p }: { p: Project }) {
     <>
       <section className="card">
         <h2>Summary</h2>
+        <p>You have {money(t.available)} available after existing commitments: what is agreed but unpaid, and what is held for open offers, are already taken off.</p>
         <dl className="kv">
           <dt>Received From Backers</dt><dd>{money(p.funding.fund)}</dd>
           {p.funding.extra.map((e) => <Fragment key={e.label}><dt>{e.label}</dt><dd>{money(e.amount)}</dd></Fragment>)}
@@ -1040,7 +1043,7 @@ function FinancingPanel({ p }: { p: Project }) {
                 {d.transfer && <p className="dim">Moved from {d.transfer.sources.map((x) => `${g.projects.find((y) => y.id === x.projectId)?.title ?? 'a project'} (${money(x.amount)})`).join(', ')}.</p>}
                 {(d.status === 'offered' || d.status === 'accepted' || d.status === 'breached') && <ul className="dim">{dealTerms(d).map((t) => <li key={t}>{t}</li>)}</ul>}
                 {(d.status === 'accepted' || d.status === 'breached') && d.terms.recoup > 0 && <p className="dim">Repaid so far: {money(d.repaid)} of {money(d.terms.recoup)}.</p>}
-                {d.status === 'offered' && d.expiresAt !== undefined && <p className="muted">Open until {formatDateKey(dateKey(d.expiresAt, zone))}. After that it lapses, and they aren't asked again for this project.</p>}
+                {d.status === 'offered' && d.expiresAt !== undefined && <p className="muted">The offer expires on {formatDateKey(dateKey(d.expiresAt, zone), true)}. After that it lapses, and they aren't asked again for this project.</p>}
                 {d.counter && (
                   <p className="muted">{(() => {
                     const what = { share: 'a smaller share of income', recoup: 'less to repay first', signing: 'more on signing', approval: 'no casting approval' }[d.counter.term];

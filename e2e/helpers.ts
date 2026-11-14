@@ -366,7 +366,10 @@ export async function contributorApprovals(page: Page): Promise<void> {
   for (const b of await card.getByRole('button', { name: /^Show .+ The Cut$/ }).all()) await b.click();
   if (await card.getByText(/Didn't approve the cut/).count()) {
     const unlock = page.getByRole('button', { name: 'Unlock Picture' });
-    if (await unlock.isVisible()) await unlock.click();
+    if (await unlock.isVisible()) {
+      await unlock.click();
+      await page.getByRole('dialog', { name: 'Unlock The Picture?' }).getByRole('button', { name: 'Unlock It' }).click();
+    }
     for (let i = 0; i < 10; i++) {
       const cut = card.getByRole('button', { name: /^Cut .+ From The Edit$/ }).first();
       if (!(await cut.count())) break;
@@ -508,7 +511,7 @@ export async function adaptWork(page: Page, o: { query: string; work: RegExp; ti
   if (o.approach) await page.getByRole('radio', { name: new RegExp(`^${o.approach}`) }).check();
   if (o.budget) await page.getByRole('radio', { name: new RegExp(`^${o.budget}:`) }).check();
   await o.onStep?.('shape');
-  await page.getByRole('button', { name: 'Preview The Brief' }).click();
+  await page.getByRole('button', { name: 'Review Your Adaptation' }).click();
   await page.getByRole('list', { name: 'Brief Fields' }).waitFor();
   for (const [from, to] of Object.entries(o.names ?? {})) await page.getByLabel(`Name For ${from}`).fill(to);
   await o.onStep?.('preview');

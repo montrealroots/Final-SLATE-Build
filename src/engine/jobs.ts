@@ -8,7 +8,7 @@
 // days are done the pay comes into the player's own account, less the agent's commission when an agent found it, and
 // the credit is kept. The same days can't hold a shoot day of the player's own project, or another job. Withdrawing
 // costs the pay and makes later offers rarer; so does missing days. Rates, odds and lengths are game calibration.
-import { craftRate, roleCraft, roleWeight } from './reputation';
+import { hasLeverage, standingIn, standingRate, standingWeight } from './reputation';
 import { personalBalance, postPersonal } from './personal';
 import { agentById, recordFor, representedBy } from './representation';
 import { stream } from './rng';
@@ -100,8 +100,8 @@ export function evidenceFor(s: GameState, role: JobRole): string {
 export function jobDayRate(s: GameState, role: JobRole, viaAgent: boolean): number {
   const r = recordFor(s);
   const base = Math.min(JOB_RATE_CAP, JOB_ROLES[role].base + JOB_ROLES[role].perDelivered * r.delivered + JOB_WIN_BONUS * Math.min(r.wins, 3));
-  // The role's own craft moves it, within bounds (reputation.ts): a strong director is paid more to direct, not to act.
-  return Math.round(base * craftRate(roleCraft(s, role)) * (viaAgent ? 1 + AGENT_JOB_UPLIFT : 1));
+  // The role's own standing moves it, within bounds (reputation.ts): a strong director is paid more to direct, not to act.
+  return Math.round(base * standingRate(standingIn(s, role)) * (viaAgent ? 1 + AGENT_JOB_UPLIFT : 1));
 }
 
 /** The first n weekdays of a production's shoot: fewer if it wraps first. */
@@ -146,8 +146,9 @@ export function askBetterRate(state: GameState, id: string): void {
 registerHandler('job-counter', (state, ev) => {
   const j = jobById(state, String(ev.payload.jobId));
   if (!j || j.status !== 'offered' || !j.counter || j.counter.outcome) return { suppressInterrupt: true };
-  // It pays more for an agent's client, or a record its craft shows. Game calibration.
-  const agreed = !!j.viaAgent || craftRate(roleCraft(state, j.role)) >= 1.05;
+  // It pays more for an agent's client, or for a grade of Established or more in the role (from November 14, 2026; until
+  // then a craft average of 65 was enough). Game calibration.
+  const agreed = !!j.viaAgent || hasLeverage(standingIn(state, j.role));
   j.counter.outcome = agreed ? 'agreed' : 'held';
   if (agreed) j.dayRate = j.counter.rate;
   const text = agreed ? `${j.company} agreed to ${money(j.dayRate)} a day on ${j.production}.` : `${j.company} kept its rate of ${money(j.dayRate)} a day on ${j.production}. The offer is still open.`;
@@ -167,7 +168,7 @@ registerHandler('job-offer', (state, ev) => {
   // Which role: weighted by the craft the record shows in each (reputation.ts). Until November 13, 2026 each was as
   // likely as the next, whatever the work said.
   const roles = rolesOffered(state);
-  const weights = roles.map((r) => roleWeight(roleCraft(state, r)));
+  const weights = roles.map((r) => standingWeight(standingIn(state, r)));
   let pick = rng() * weights.reduce((a, b) => a + b, 0);
   const role = roles.find((_, i) => (pick -= weights[i]) < 0) ?? roles[roles.length - 1];
   const def = JOB_ROLES[role];

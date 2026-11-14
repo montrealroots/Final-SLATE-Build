@@ -73,9 +73,26 @@ order of work is at its end. The owner said: "Don't stop until 100% perfect comp
   - Engine tests added for J04 (a part recast from episode 2 leaves every other credit whole, `parts.test.ts`) and J19
     (ten years of the world: the event queue bounded, the save growing evenly, `long-run.test.ts`); J16's and J17's rows
     now cite the engine tests that already ran them (`rulebooks.test.ts`).
-  - *Next:* the partly covered journeys, each row saying what doesn't run (J21's correction on screen waits for a real
-    correction in a recorded dataset; none is invented for a test). Then grades feeding offers; cameras and composers into the shop and hiring once prices and terms are sourced; the TMDB
-    inventory import from ID exports (`docs/v7/package/reference/tmdb_inventory.py`).
+  - *After #90 (November 14, 2026, on the branch, for the next PR):*
+    - Unlocking the picture asks first, and its rework reaches everything built after the lock except the score's
+      composition, which is conformed (V6-035).
+    - Can It Go Ahead? on Overview names the bottleneck and the ways round it (`feasibility.ts`, V6-023).
+    - A period story's sets and props take more work, as its costumes do (V6-033).
+    - `docs/v6/DATASETS.md`, the access-and-terms ledger, kept in step with the files by a test (V6-045).
+    - The package's ten voice examples, each said where it belongs from state (V6-044).
+    - The player at Venice 2026, with the recorded results apart from the game's (V6-006), and an earlier release
+      losing a section (J16, now Covered).
+    - Three years of the player's own releases in the long-run test (V6-042).
+    - Grades feed offers: outside work leans, pays and agrees by standing and grade.
+    - The matrix is 10 Covered, 12 Partly Covered.
+  - *Pictures on the owner's phone:* the 384 packs (3.5 GB) are only in the cloud build container, which is reclaimed.
+    The owner chose to serve them from their own computer. That waits on them connecting it to a session (Claude desktop
+    app, Settings, Claude Code, Remote Control). Then copy `packs/pictures/` there and run the server with a passphrase
+    file (`docs/DEPLOYMENT.md`, "Who Gets The Owner's Data").
+  - *Next:* the 12 partly covered journeys, each row saying what doesn't run (J21's correction on screen waits for a
+    real correction in a recorded dataset; none is invented for a test). Cameras and composers into the shop and hiring
+    once prices and terms are sourced; the TMDB inventory import from ID exports
+    (`docs/v7/package/reference/tmdb_inventory.py`).
   - *Research questions:* `docs/v7/RETURN-TO-RESEARCH.md`.
 
 - **The v6 package, "SLATE: Connected Realism" (the owner, November 13, 2026, after #88).** It is in `docs/v6/package`
@@ -245,9 +262,12 @@ order of work is at its end. The owner said: "Don't stop until 100% perfect comp
 ## State
 
 - **Branch:** `claude/clever-archimedes-x0r26v`, pushed to https://github.com/montrealroots/Final-SLATE-Build. After each merge the branch restarts from `main`.
-- **Latest merge:** montrealroots/Final-SLATE-Build#89 (v7 steps 1 to 8, and the v6 22 journeys mapped and extended),
+- **Latest merge:** montrealroots/Final-SLATE-Build#90 (television first looks judged on series; a forecast finish
+  that rig faults, render farms and animatic revisions move: J05, J06), squash-merged as `7516edd` on November 14, 2026,
+  02:08 UTC, with `checks` and all six journeys runs green on its final commit `bd59d31`; `main` merged back with `-s ours`.
+- **Earlier merge:** montrealroots/Final-SLATE-Build#89 (v7 steps 1 to 8, and the v6 22 journeys mapped and extended),
   squash-merged as `3d52d29` on November 14, 2026, 00:05 UTC, with `checks` and all six journeys runs green on its
-  final commit `9c8cdbb`; `main` merged back with `-s ours`, the tree unchanged. Nothing is open on this branch.
+  final commit `9c8cdbb`; `main` merged back with `-s ours`, the tree unchanged.
 - **Earlier merge:** montrealroots/Final-SLATE-Build#88 (first-look shorts, article casts, and the v6 first stretch),
   squash-merged as `3290e2d` on November 13, 2026, 22:00 UTC, with `checks` and all six journeys runs green on its
   final commit `c063b69`; `main` merged back with `-s ours`, the tree unchanged.

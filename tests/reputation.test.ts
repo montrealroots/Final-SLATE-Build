@@ -1,7 +1,7 @@
 // Reputation by role (engine/reputation.ts; the v4 package, 04; ledger V4-031.01): read from the record, never stored,
 // and followed by offers of outside work. Each comparison changes one input and reads what the offers do with it.
 import { describe, expect, it } from 'vitest';
-import { CRAFT_RATE_BOUNDS, craftRate, reputation, roleCraft, roleWeight } from '../src/engine/reputation';
+import { STANDING_RATE_BOUNDS, hasLeverage, reputation, roleCraft, standingFrom, standingRate, standingWeight } from '../src/engine/reputation';
 import { JOB_ROLES, jobDayRate } from '../src/engine/jobs';
 import { processUntil, schedule } from '../src/engine/state';
 import type { GameState, Project } from '../src/engine/types';
@@ -44,9 +44,14 @@ describe('reputation by role', () => {
     expect(jobDayRate(s, 'acting', false)).toBe(acting);
     p.quality!.direction = 20;
     expect(jobDayRate(s, 'directing', false)).toBeLessThan(solid);
-    expect(craftRate({ craft: 0, works: [] })).toBe(CRAFT_RATE_BOUNDS[0]);
-    expect(craftRate({ craft: 100, works: [] })).toBe(CRAFT_RATE_BOUNDS[1]);
-    expect(craftRate({ craft: null, works: [] })).toBe(1);
+    // Read from the role's standing (from November 14, 2026): bounded, and nothing with no completed work.
+    expect(standingRate(standingFrom('directing', Array(10).fill(0)))).toBe(STANDING_RATE_BOUNDS[0]);
+    expect(standingRate(standingFrom('directing', Array(10).fill(100)))).toBe(STANDING_RATE_BOUNDS[1]);
+    expect(standingRate(standingFrom('directing', []))).toBe(1);
+    // One brilliant work moves the rate less than several: the standing leans to the midpoint until there are more.
+    expect(standingRate(standingFrom('directing', [100]))).toBeLessThan(standingRate(standingFrom('directing', [100, 100, 100, 100])));
+    // Leverage, which agrees a request for more, needs a grade above Emerging: two completed works at least.
+    expect([hasLeverage(standingFrom('directing', [100])), hasLeverage(standingFrom('directing', [100, 100]))]).toEqual([false, true]);
     expect(JOB_ROLES.directing.base).toBeGreaterThan(0);
   });
 
@@ -60,7 +65,7 @@ describe('reputation by role', () => {
       }
       return (s.jobs ?? []).filter((j) => j.role === 'directing').length / Math.max(1, (s.jobs ?? []).length);
     };
-    expect(roleWeight({ craft: 90, works: [] })).toBeGreaterThan(roleWeight({ craft: 40, works: [] }));
+    expect(standingWeight(standingFrom('directing', [90]))).toBeGreaterThan(standingWeight(standingFrom('directing', [40])));
     expect(count(95)).toBeGreaterThan(count(30));
   });
 });

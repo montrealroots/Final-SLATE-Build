@@ -67,7 +67,9 @@ export function buildTasks(p: Project): Task[] {
     // A story set somewhere else added a scouting trip there until the review of November 7, 2026: where a story is set
     // isn't where it is shot, so the setting place is a creative and research reference. From November 9, 2026 a setting
     // in another country than the base is researched before design and costumes start, as a period is.
-    tasks.push(t('prep:design', 'all', 'Production Design And Props', 'Art', 'production-designer', Math.max(1, count('prop') + count('clue-prop') + Math.ceil(locs / 2)), 'items', research));
+    // Sets dressed and props found for another time take as much more work as its costumes do (PERIOD_WORK; from November
+    // 14, 2026, the owner's v6 package, V6-033: until then only costumes and research followed the story's year).
+    tasks.push(t('prep:design', 'all', 'Production Design And Props', 'Art', 'production-designer', Math.max(1, (count('prop') + count('clue-prop') + Math.ceil(locs / 2)) * periodFactor), 'items', research));
     // A costume with a declared source is its own work (looks.ts): sourced or made, in as many copies as its states and
     // its rough scenes need, then fitted. The rest share the one costume task, as before.
     const onSet = (c: (typeof chars)[number]) => c.roleSize !== 'background' && liveScenes.some((s) => s.participants.includes(c.id));

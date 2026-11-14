@@ -7,6 +7,7 @@ import { ensureWorkEvent, schedulePickups } from './production';
 import { formatDateKey } from './time';
 import { assemblyComplete, cutScenes, editScenes } from './finish';
 import type { GameState, Project, Task } from './types';
+import { dependents } from './production/tasks';
 
 /** Editor days a cut pass takes: a day for every 12 minutes of approved scenes, at least two. */
 export const cutPassDays = (p: Project): number => Math.max(2, Math.round(approvedScenes(p).reduce((a, s) => a + s.estMinutes, 0) / 12));
@@ -106,24 +107,32 @@ export function lockPicture(state: GameState, p: Project): void {
   p.history.push({ at: state.now, text: 'Picture locked.' });
 }
 
+/**
+ * The finishing work an unlock starts over: everything that waits for the picture lock and has begun, and everything
+ * built on that, however far down (the owner's v6 package, V6-035; from November 14, 2026). Until then only the work
+ * waiting for the lock itself restarted, so a final mix finished on the old cut stood after the cut changed.
+ */
+export function unlockImpact(p: Project): Task[] {
+  const after = new Set<string>();
+  for (const t of p.tasks) if (t.dependsOn.some((d) => d.startsWith('milestone:lock'))) for (const id of dependents(p.tasks, t.id)) after.add(id);
+  // The score's composition isn't written again for a changed cut: its changed cues are conformed (cues.ts), so the
+  // themes the player approved, the score, its sessions and stems stand. The spotting session is held again, as before.
+  return p.tasks.filter((t) => after.has(t.id) && t.done > 0 && !COMPOSITION.has(t.kind));
+}
+const COMPOSITION = new Set(['post:themes', 'post:themes-revision', 'post:music', 'post:orchestration', 'post:score-session', 'post:conform', 'post:stems']);
+
 export function unlockPicture(state: GameState, p: Project): string[] {
   if (!p.edit.pictureLocked) throw new Error('The picture isn\'t locked.');
   if (p.delivered) throw new Error('A delivered project can\'t be unlocked.');
   const out = Object.keys(p.episodeDeliveries ?? {});
   if (out.length) throw new Error(`Episode ${out[0]} is delivered, so the picture can't be unlocked.`);
+  const reset = unlockImpact(p).map((t) => t.label);
+  for (const t of unlockImpact(p)) Object.assign(t, { done: 0, workedDays: 0, status: 'waiting', doneAt: undefined });
   p.edit.pictureLocked = false;
   delete p.edit.lockedEpisodes;
   // A contributor's approval was of the locked cut; a changed cut needs showing again (documentary.ts). A refusal stays:
   // unlocking is how their scenes get cut.
   for (const c of p.contributors) if (c.cutApproval && c.cutApproval.status !== 'refused') delete c.cutApproval;
-  const reset: string[] = [];
-  for (const t of p.tasks) {
-    if (t.dependsOn.some((d) => d.startsWith('milestone:lock')) && t.done > 0) {
-      t.done = 0;
-      t.status = 'waiting';
-      reset.push(t.label);
-    }
-  }
   addLog(state, `You unlocked picture on ${p.title}.${reset.length ? ` ${reset.length} finishing ${reset.length === 1 ? 'task restarts' : 'tasks restart'}.` : ''}`, 'project', { projectId: p.id });
   return reset;
 }

@@ -1,4 +1,5 @@
-import { Suspense, lazy, useState } from 'react';
+import { Fragment, Suspense, lazy, useState } from 'react';
+import { feasibility } from '../engine/feasibility';
 import { theBacker } from '../engine/backer-words';
 import { LANGUAGES, languageName } from '../data/identity';
 import { getPlace, placeLabel } from '../data/places';
@@ -320,6 +321,27 @@ function nextStep(p: Project): { text: string; tab: Tab } {
   return { text: 'Follow your release, festivals and awards.', tab: 'festivals' };
 }
 
+/**
+ * Can it go ahead, and what holds it (feasibility.ts; the owner's v6 package, 03 §6; from November 14, 2026): the first
+ * check that fails is named with the ways round it, then every check, passed or not.
+ */
+function FeasibilityCard({ p }: { p: Project }) {
+  const g = useGame();
+  const f = feasibility(g, p);
+  return (
+    <section className="card" aria-labelledby="feasibility-h">
+      <h2 id="feasibility-h">Can It Go Ahead?</h2>
+      {f.bottleneck ? <>
+        <p><strong>Not yet: {f.bottleneck.label.toLowerCase()}.</strong> {f.bottleneck.detail}</p>
+        <ul aria-label="Ways Round It">{f.bottleneck.options.map((o) => <li key={o}>{o}</li>)}</ul>
+      </> : <p><strong>Yes.</strong> Script, cast, crew, designs and money all stand{p.schedule.startDate ? ', and the work finishes before any backer\'s date' : ''}.</p>}
+      <dl className="kv" aria-label="What Was Checked">
+        {f.checks.map((c) => <Fragment key={c.label}><dt>{c.label}</dt><dd>{c.ok ? '' : 'Not yet. '}{c.detail}</dd></Fragment>)}
+      </dl>
+    </section>
+  );
+}
+
 function Overview({ p }: { p: Project }) {
   const g = useGame();
   const t = ledgerTotals(p);
@@ -335,6 +357,7 @@ function Overview({ p }: { p: Project }) {
           <ul>{shelveImpact(g, p).map((x) => <li key={x}>{x}</li>)}</ul>
         </Modal>
       )}
+      {!p.delivered && !p.shelved && <FeasibilityCard p={p} />}
       {p.shelved ? (
         <section className="card">
           <h2>Shelved</h2>

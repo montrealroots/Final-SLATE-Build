@@ -405,8 +405,45 @@ test('Venice: selection for the Competition is not a win; its prizes are decided
   const s = await readSavedState(page);
   expect(s.projects[0].obligations.flatMap((o: State) => o.postings).filter((x: State) => x.kind === 'settle' && x.key === 'fee:venice-2026:competition')).toHaveLength(1);
   expect(s.editions.find((e: State) => e.id === 'venice-2026').entries.filter((x: State) => x.via === 'selection').every((x: State) => x.fee === 0)).toBe(true);
+  // The recorded results stand beside the player's competition, apart, and untouched by it (V6-006; from November 14,
+  // 2026). The real ceremony was on September 12, after the game's own, so before then nothing recorded is shown; after
+  // it, the real Golden Lion is recorded as Woman Unknown whatever the game decided, and the game's own are labelled simulated.
+  const recorded = page.getByRole('region', { name: 'Recorded Results' });
+  await expect(recorded).toContainText('have been announced yet.');
+  await advanceUntil(page, '2026-09-13');
+  await openEvent(page, 'Glass Orchard', 'Venice International Film Festival 2026');
+  await expect(recorded.getByRole('list', { name: 'Recorded Results' })).toContainText('Golden Lion For Best Film: Woman Unknown.');
+  await expect(categories(page)).toContainText(/Simulated results from .+, 2026: the game decides them among the work it follows\./);
+  expect(JSON.stringify(s)).not.toContain('Woman Unknown'); // nothing recorded is written into the save
   await page.screenshot({ path: `test-results/awards-venice-${test.info().project.name}.png`, fullPage: true });
   await categories(page).screenshot({ path: `test-results/awards-venice-sections-${test.info().project.name}.png` });
+});
+
+test('J16: an earlier release loses a section that takes only unreleased work, said on the section, and only for that film', async ({ page }) => {
+  // The v6 package's J16 (from November 14, 2026): "eligibility loss from early release". Labelled fixtures: two films
+  // delivered in January, one of them released at home in March, before Venice's Giornate Degli Autori.
+  await seededLife(page, 'gb-london', '2026-05-01', 8302);
+  await newProject(page, { title: 'Still Unreleased', format: 'Feature Film', runtime: '95' });
+  await nav(page, 'Projects');
+  await newProject(page, { title: 'Out At Home', format: 'Feature Film', runtime: '95' });
+  await editSave(page, (s) => {
+    deliver(s, 'Still Unreleased', { format: 'feature', runtime: 95, at: '2026-01-10T12:00:00Z', base: 'ar-buenos-aires' });
+    deliver(s, 'Out At Home', { format: 'feature', runtime: 95, at: '2026-01-10T12:00:00Z', base: 'ar-buenos-aires', releases: [{ id: 'r1', route: 'theatrical', date: '2026-03-01', territories: ['AR'], distributor: 'Cine Sur (Fixture)', note: '', status: 'released' }] });
+  });
+  await openEvent(page, 'Still Unreleased', 'Venice International Film Festival 2026');
+  const reason = /It has already been released, and this section only takes work not yet released in cinemas, on television, online or on home video\./;
+  await filterTo(page, 'Still Unreleased');
+  await expect(row(page, 'Giornate Degli Autori')).not.toContainText(reason);
+  await filterTo(page, 'Out At Home');
+  await expect(row(page, 'Giornate Degli Autori')).toContainText(reason);
+  // Prepared anyway, it can't be submitted, and says why.
+  await row(page, 'Giornate Degli Autori').getByRole('button', { name: 'Prepare Submission' }).click();
+  const dialog = page.getByRole('dialog', { name: 'Prepare Submission' });
+  await dialog.getByLabel('Project').selectOption({ label: 'Out At Home' });
+  await expect(dialog).toContainText(reason);
+  await expect(dialog.getByRole('button', { name: 'Submit Entry' })).toBeDisabled();
+  await dialog.getByLabel('Project').selectOption({ label: 'Still Unreleased' });
+  await expect(dialog).not.toContainText(reason);
 });
 
 test('the Annies held one TV category until 2026 and four from 2027: each edition shows its own', async ({ page }) => {
