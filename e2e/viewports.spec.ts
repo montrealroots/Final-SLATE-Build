@@ -138,7 +138,9 @@ test('keyboard: skip link, focus order, Escape closes dialogs and returns focus'
 test('no tutorial, no excluded systems, no raw IDs or source text on screen', async ({ page }) => {
   await seedGame(page);
   const text = (await page.locator('body').innerText()).toLowerCase();
-  for (const banned of ['tutorial', 'tax', 'rent', 'bank', 'visa', 'https://', 'np_', 'pr1', 'undefined', 'nan']) expect(text, banned).not.toContain(banned);
+  // 'bank' and 'visa' were banned while banking and papers were outside the game; the owner's command of November 14,
+  // 2026 put Your Bank and Your Papers on Home, so they are no longer excluded systems.
+  for (const banned of ['tutorial', 'tax', 'rent', 'https://', 'np_', 'pr1', 'undefined', 'nan']) expect(text, banned).not.toContain(banned);
   // Polar night is reported truthfully in Tromsø in mid-December.
   await expect(page.getByText("the sun won't rise today")).toBeVisible();
 });
