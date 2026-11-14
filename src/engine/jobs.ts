@@ -17,6 +17,7 @@ import { addDaysToKey, dateKey, DAY, formatDateKey, localToInstant, parseYmd, we
 import { money } from './budget';
 import { getPlace } from '../data/places';
 import { KILL_FEE_DAYS, PRODUCTION_KIND_LABELS, daysUntil, industryStanding, shootingDays, slateHere, type Production } from './productions';
+import { workRight, type Activity } from './papers';
 import type { GameState } from './types';
 
 export type JobRole = 'acting' | 'writing' | 'directing';
@@ -216,8 +217,14 @@ export function acceptRefusal(state: GameState, id: string): string | null {
   if (!j || j.status !== 'offered') return 'That offer is no longer open.';
   if (j.counter && !j.counter.outcome) return `${j.company} is answering the rate you asked for.`;
   if (state.now > j.answerBy) return 'That offer has lapsed.';
+  const right = jobRight(state, j);
+  if (!right.can) return right.why;
   return jobClash(state, j);
 }
+
+/** Whether your papers let you do this job where it is (papers.ts): until November 14, 2026 outside work never asked. */
+const JOB_ACTIVITY: Record<JobRole, Activity> = { acting: 'act', writing: 'write', directing: 'direct' };
+const jobRight = (state: GameState, j: OutsideJob) => workRight(state, getPlace(j.placeId).country, JOB_ACTIVITY[j.role]);
 
 /** Take the job: its days go on the calendar, and each morning the player is expected there. */
 export function acceptJob(state: GameState, id: string): void {
@@ -267,15 +274,18 @@ registerHandler('job-day', (state, ev) => {
   const date = ev.payload.date as string;
   if (!j || j.status !== 'accepted' || j.attended.includes(date) || j.missed.includes(date)) return { suppressInterrupt: true };
   const there = !state.sleep.asleep && !state.travel && state.locationId === j.placeId;
-  (there ? j.attended : j.missed).push(date);
-  let text = there ? `A day's ${JOB_ROLES[j.role].label.toLowerCase()} on ${j.production}.` : `You missed a day on ${j.production}${state.sleep.asleep ? ': you slept through the call' : ': you weren\'t there'}. It isn't paid.`;
+  // A work visa that ran out since the job was taken: the day can't be worked, and isn't paid.
+  const right = jobRight(state, j);
+  const worked = there && right.can;
+  (worked ? j.attended : j.missed).push(date);
+  let text = worked ? `A day's ${JOB_ROLES[j.role].label.toLowerCase()} on ${j.production}.` : `You missed a day on ${j.production}${!there ? (state.sleep.asleep ? ': you slept through the call' : ': you weren\'t there') : ': you have no right to work there now'}. It isn't paid.`;
   if (j.attended.length + j.missed.length === j.days.length) {
     j.status = 'done';
     const before = personalBalance(state);
     pay(state, j);
     text += ` That was the last day: ${money(personalBalance(state) - before)} comes to your account${j.viaAgent ? ', after your agent\'s commission' : ''}.`;
   }
-  addLog(state, text, there ? 'personal' : 'warning', { route: { view: 'profile' } });
+  addLog(state, text, worked ? 'personal' : 'warning', { route: { view: 'profile' } });
   return { message: text, suppressInterrupt: there };
 });
 

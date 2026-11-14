@@ -18,8 +18,8 @@
   "gross": 73963.333,
   "revenue": 132429.917,
   "distributed": 1.783,
-  "money": 25075585.861,
-  "moneyChange": 75585.861,
+  "money": 24776877.966,
+  "moneyChange": -223122.034,
   "jobsTaken": 1,
   "jobsOffered": 1,
   "jobPay": 5543.2,
@@ -64,8 +64,8 @@
   "gross": 78480,
   "revenue": 131508,
   "distributed": 1.733,
-  "money": 25074681.428,
-  "moneyChange": 74681.428,
+  "money": 24775973.532,
+  "moneyChange": -224026.468,
   "jobsTaken": 0.983,
   "jobsOffered": 0.983,
   "jobPay": 5597.183,
@@ -153,14 +153,14 @@
    "n": 60
   },
   "money": {
-   "mean": -904.433,
+   "mean": -904.434,
    "lo": -14565.156,
    "hi": 12756.289,
    "changed": 31,
    "n": 60
   },
   "moneyChange": {
-   "mean": -904.433,
+   "mean": -904.434,
    "lo": -14565.156,
    "hi": 12756.289,
    "changed": 31,
@@ -434,7 +434,7 @@
  ],
  "verdict": "no downstream effect",
  "hashes": {
-  "src/engine/jobs.ts": "e410110b6cf888e3",
+  "src/engine/jobs.ts": "812153fda40c6228",
   "src/engine/reputation.ts": "c90f8535167021a1",
   "tests/proof/career.ts": "2d4877367212a0ea"
  }

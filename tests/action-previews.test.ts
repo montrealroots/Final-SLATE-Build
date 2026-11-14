@@ -94,6 +94,9 @@ const ACTIONS: Record<string, { preview: string; outcome: string }> = {
 };
 // Names the parser matches in the interface that aren't player actions spending anything.
 const NOT_ACTIONS = new Set(['commit', 'newGame', 'scheduleChangeEffects']); // a portrait picker's own commit(); starting a life; a preview tried on a copy of the game
+// What a save does as it loads: it grants an older story abroad the visa it arrived on, fee settled, and schedules its end.
+// Every save action loads a save, and none of them is the player spending (from November 14, 2026).
+const ON_LOAD = new Set(['grantArrivalPapers']);
 
 function spendingActions(): string[] {
   const files: string[] = [];
@@ -129,7 +132,7 @@ function spendingActions(): string[] {
   const spends = new Set(['reserve', 'commit', 'settle', 'payPlanned', 'schedule', '@task']);
   for (let changed = true; changed;) {
     changed = false;
-    for (const [n, set] of calls) if (!spends.has(n) && [...set].some((x) => spends.has(x))) { spends.add(n); changed = true; }
+    for (const [n, set] of calls) if (!spends.has(n) && [...set].some((x) => spends.has(x) && !(ON_LOAD.has(x) && n === 'migrate'))) { spends.add(n); changed = true; }
   }
   const ui = readdirSync('src/ui').filter((f) => /\.tsx?$/.test(f)).map((f) => readFileSync(`src/ui/${f}`, 'utf8')).join('\n');
   return [...calls.keys()].filter((n) => spends.has(n) && exported.has(n) && !NOT_ACTIONS.has(n) && new RegExp(`\\b${n}\\(`).test(ui)).sort();

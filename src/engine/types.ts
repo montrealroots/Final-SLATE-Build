@@ -1406,6 +1406,8 @@ export interface GameState {
   permits?: import('./papers').WorkPermit[];
   /** Visas applied for and issued (papers.ts, from November 14, 2026). */
   paperApplications?: import('./papers').PaperApplication[];
+  /** Whether the work visa a life abroad arrives on was settled (papers.ts `grantArrivalPapers`), so it's never granted twice. */
+  papersArrival?: boolean;
   /** Days worked in each country by its code, for a short engagement's allowance (papers.ts `recordWorkDay`). */
   papersWorked?: Record<string, string[]>;
   /** First-look deals offered, running and past (first-look.ts). Absent until the first offer, and in saves from before November 13, 2026. */

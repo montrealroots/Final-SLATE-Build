@@ -9,7 +9,8 @@ import { personalBalance, personalPostings, postPersonal } from '../src/engine/p
 import { newGame } from '../src/engine/state';
 import { draft } from './fixtures';
 
-const life = (startPlaceId: string, tag: string) => newGame(draft({ startPlaceId }), 0, `save-${tag}`);
+// Each life a citizen where it lives, so no work visa's fee is in its money (tests/v10-living-abroad.test.ts has those).
+const life = (startPlaceId: string, tag: string) => newGame(draft({ startPlaceId, nationalities: [startPlaceId.slice(0, 2).toUpperCase()] }), 0, `save-${tag}`);
 
 describe('the bank keeps a life\'s money in its own country\'s currency', () => {
   it('a life in Paris banks in euros: the $25,000,000 arrives as euros at the day\'s rate, and the statement keeps the dollars', () => {

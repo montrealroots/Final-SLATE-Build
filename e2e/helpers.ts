@@ -263,6 +263,9 @@ export async function quickDraft(page: Page, startPlaceId: string, startDate: st
     localStorage.setItem('slate.v1.creationDraft', JSON.stringify({
       step: 7, name: 'Nia Halvorsen-Mbeki', pronouns: 'she', actingTitle: 'Actress', birthDate: bd, birthplaceId: 'ke-nairobi',
       heritages: [{ id: 'Kikuyu', label: 'Kikuyu', custom: false }, { id: 'Norwegian', label: 'Norwegian', custom: false }], heritageCustomText: '', mainLanguage: 'en',
+      // A citizen of where she starts too (from November 14, 2026, when living abroad took a work visa): a journey that
+      // isn't about papers pays for none. Journeys about papers make their own character.
+      nationalities: [...new Set(['KE', 'NO', pl.slice(0, 2).toUpperCase()])],
       languages: [{ code: 'sw', proficiency: 'Fluent' }, { code: 'no', proficiency: 'Conversational' }], startPlaceId: pl, startDate: sd, startTime: '08:00', updatedAt: 1,
       ...(portrait ? { portrait } : {}),
     }));

@@ -26,7 +26,7 @@ import { bankSim } from './bankworld';
 import { documentsOf, inForce, theCountry, type PersonDocument } from './bankworld/systems/documents';
 import { VISAS, type VisaRule } from './bankworld/content/visas';
 import { exchange } from './bankworld/content/currency';
-import { postToBank } from './bank';
+import { bankReach, postToBank } from './bank';
 import { continentOf, permitTerms, visaTerms, type Terms } from './papers-terms';
 import { CONTINENT_NAMES } from './bankworld/content/geography';
 import type { GameState } from './types';
@@ -55,8 +55,15 @@ const capital = (s: string) => s.charAt(0).toUpperCase() + s.slice(1);
 
 const citizenships = (state: GameState) => (state.character.nationalities ?? []).map(nationality);
 const isCitizen = (state: GameState, country: string) => citizenships(state).includes(nationality(country));
-/** Where your story is lived: the game's own assumption that you may live and work there (said as one, never "ready"). */
+/**
+ * Where your story is lived. Until November 14, 2026 the game assumed you might live and work there, whatever your
+ * passport; from then (the owner: "make living abroad need real papers") it asks what anywhere else asks: citizenship,
+ * free movement, or a work visa, which there covers all four kinds of work and your stay (`grantArrivalPapers`).
+ */
 const livesIn = (state: GameState) => getPlace(state.character.livesIn ?? state.locationId).country;
+
+/** A work visa or permit of yours in force in `country` for `activity`: one where you live covers every kind of work. */
+const permitIn = (state: GameState, country: string, activity?: Activity) => applications(state).find((a) => a.kind === 'permit' && a.country === country && (activity === undefined || a.all || (a.activity ?? 'act') === activity) && a.stage === 'issued' && (a.expiresAt ?? Infinity) > state.now);
 
 // ---------------- passports ----------------
 
@@ -76,6 +83,8 @@ export function passportFor(state: GameState, until = state.now): PersonDocument
 export type EntryRight =
   | { kind: 'home'; why: string }
   | { kind: 'lives'; why: string }
+  /** Where you live, with no right to stay: a work visa that ran out, or none. */
+  | { kind: 'unpermitted'; why: string }
   | { kind: 'free'; days?: number; within?: number; why: string }
   | { kind: 'held'; why: string; until?: number }
   | { kind: 'needs'; entry: Exclude<Entry, 'free'>; days?: number; why: string }
@@ -95,9 +104,16 @@ function visitRule(passport: string, destination: string): Visit | 'home' | unde
 /** What entering `country` asks of you, by the best of your passports, or the visa you hold for it. */
 export function entryRight(state: GameState, country: string): EntryRight {
   if (isCitizen(state, country)) return { kind: 'home', why: `You are a citizen of ${the(country)}.` };
-  // Where your story is lived, you may stay: the game's assumption, said as one, as it is for work (from November 14, 2026:
-  // until then the country you live in asked you for a visa to visit it).
-  if (livesIn(state) === country) return { kind: 'lives', why: `You live in ${the(country)}: the game takes where your story is lived as where you may stay. That is its assumption, not a checked permission.` };
+  // Where your story is lived, you stay by free movement or a work visa; without either you live there without the right
+  // to (from November 14, 2026: until then the game assumed it, and before that asked a visitor's visa of you).
+  if (livesIn(state) === country) {
+    const visa = permitIn(state, country);
+    if (visa) return { kind: 'lives', why: `You live in ${the(country)} on your ${visa.route}${visa.expiresAt ? `, good until ${dateKey(visa.expiresAt, 'UTC')}` : ''}.` };
+    const free = freeMovement(state, country);
+    if (free) return { kind: 'lives', why: `You live in ${the(country)}: your passport from ${the(free)} gives you the right to live and work there.` };
+    const lapsed = applications(state).filter((a) => a.kind === 'permit' && a.country === country && a.stage === 'expired').at(-1);
+    return { kind: 'unpermitted', why: `You live in ${the(country)} without the right to${lapsed ? `: your ${lapsed.route} ran out${lapsed.expiresAt ? ` on ${dateKey(lapsed.expiresAt, 'UTC')}` : ''}` : ''}. You can't work there until a work visa is issued; apply under Working.` };
+  }
   const held = applications(state).find((a) => a.country === country && a.kind === 'visa' && a.stage === 'issued' && (a.expiresAt ?? Infinity) > state.now);
   if (held) return { kind: 'held', why: `Your ${held.route} lets you in${held.expiresAt ? ` until ${dateKey(held.expiresAt, 'UTC')}` : ''}.`, until: held.expiresAt };
   const rules = citizenships(state).map((n) => ({ n, r: visitRule(n, country) })).filter((x): x is { n: string; r: Visit | 'home' } => x.r !== undefined);
@@ -111,7 +127,7 @@ export function entryRight(state: GameState, country: string): EntryRight {
 // ---------------- working ----------------
 
 export type WorkRight =
-  | { can: true; why: string; assumed?: true }
+  | { can: true; why: string }
   | { can: false; why: string; route: string | null; days: number | null; missing: string[] };
 
 function workRule(passport: string, country: string): WorkRule | 'home' | undefined {
@@ -121,14 +137,18 @@ function workRule(passport: string, country: string): WorkRule | 'home' | undefi
   return rules.passports[passport] ?? (rules.groups ?? []).map((g) => WORK.groups[g]?.passports[passport]).find(Boolean) ?? rules.others;
 }
 
+/** The citizenship of yours that gives you the right to live and work in `country` (free movement), if one does. */
+function freeMovement(state: GameState, country: string): string | undefined {
+  return citizenships(state).find((n) => { const r = workRule(n, country); return r === 'home' || (r !== undefined && r.right === 'free'); });
+}
+
 /** Days you worked in `country` (a shoot day you were called to and there for), by day. */
 const workedDays = (state: GameState, country: string): string[] => state.papersWorked?.[country] ?? [];
 
 /** Whether you may do `activity` in `country` now, and why: citizenship, free movement, a short engagement, or what's missing. */
 export function workRight(state: GameState, country: string, activity: Activity = 'act'): WorkRight {
   if (isCitizen(state, country)) return { can: true, why: `You are a citizen of ${the(country)}.` };
-  if (livesIn(state) === country) return { can: true, assumed: true, why: `You live in ${the(country)}: the game takes where your story is lived as where you may live and work. That is its assumption, not a checked permission.` };
-  const permit = applications(state).find((a) => a.kind === 'permit' && a.country === country && (a.activity ?? 'act') === activity && a.stage === 'issued' && (a.expiresAt ?? Infinity) > state.now);
+  const permit = permitIn(state, country, activity);
   if (permit) return { can: true, why: `Your ${permit.route} lets you work in ${the(country)}${permit.expiresAt ? ` until ${dateKey(permit.expiresAt, 'UTC')}` : ''}.` };
   const legacy = (state.permits ?? []).find((p) => p.country === country && p.status === 'granted' && (p.expiresAt ?? 0) > state.now);
   if (legacy && activity === 'act') return { can: true, why: `Your ${legacy.route}, granted before November 14, 2026, lets you work in ${the(country)} until it expires.` };
@@ -164,6 +184,10 @@ export interface PaperApplication {
   kind: 'visa' | 'permit';
   /** A permit's kind of work (acting when absent). */
   activity?: Activity;
+  /** A work visa where you live: it covers all four kinds of work, and your stay. */
+  all?: true;
+  /** Held when the story began: you arrived on it. */
+  arrival?: true;
   /** Applied for on the game's estimate of the fee and the time, not a researched figure. */
   estimate?: true;
   country: string;
@@ -220,14 +244,29 @@ export function visaCheck(state: GameState, country: string): ApplicationCheck {
 /** Whether you may apply for a permit to do `activity` in `country`, what it needs and costs; or exactly why not. */
 export function permitCheck(state: GameState, country: string, activity: Activity = 'act'): ApplicationCheck {
   const w = workRight(state, country, activity);
-  if (w.can) return { ok: false, why: `You may already work there: ${w.why}` };
-  if (!w.route && !WORK.countries[country]) return { ok: false, why: w.why };
-  if (applications(state).some((a) => a.kind === 'permit' && a.country === country && (a.activity ?? 'act') === activity && a.stage === 'applied')) return { ok: false, why: 'Your application is being decided.' };
-  const t = permitTerms(country, w.route ?? 'Work permit');
+  const home = livesIn(state) === country;
+  const held = permitIn(state, country, activity);
+  const route = w.can ? held?.route ?? null : w.route;
+  const t = permitTerms(country, route ?? 'Work permit');
+  // A work visa where you live can be renewed once its end is nearer than its decision and a month (game calibration).
+  const renewable = !!held && home && held.expiresAt !== undefined && held.expiresAt - state.now <= (t.days + RENEW_MARGIN_DAYS) * DAY;
+  if (w.can && !renewable) return { ok: false, why: `You may already work there: ${w.why}` };
+  if (!route && !WORK.countries[country]) return { ok: false, why: w.why };
+  if (applications(state).some((a) => a.kind === 'permit' && a.country === country && (home || (a.activity ?? 'act') === activity) && a.stage === 'applied')) return { ok: false, why: 'Your application is being decided.' };
   const need = passportNeed(state, t);
   if ('why' in need) return { ok: false, why: need.why };
   return { ok: true, terms: t, needs: [`Your ${need.passport.name ?? 'passport'}, in force until ${dateKey(need.passport.expiresAt ?? state.now, 'UTC')}`], feeText: feeText(t) };
 }
+
+/** The work visa you live on, if you live on one, and whether it can be renewed now. */
+export function homeVisa(state: GameState): { visa: PaperApplication; renewable: boolean } | undefined {
+  const country = livesIn(state);
+  const visa = permitIn(state, country);
+  return visa && { visa, renewable: workRight(state, country).can && permitCheck(state, country).ok };
+}
+
+/** How long before a work visa where you live runs out, beyond its decision time, it can be renewed: game calibration. */
+export const RENEW_MARGIN_DAYS = 30;
 
 /** Pays an application's fee from your bank at the day's reference rate and schedules its decision. */
 function apply(state: GameState, kind: 'visa' | 'permit', country: string, c: Extract<ApplicationCheck, { ok: true }>, activity?: Activity): PaperApplication {
@@ -240,7 +279,7 @@ function apply(state: GameState, kind: 'visa' | 'permit', country: string, c: Ex
   postToBank(state, 'papers', -usd / 100, `${t.route}: The Fee`, `papers:${id}`);
   const a: PaperApplication = {
     id, kind, country, route: t.route, stage: 'applied', passportId: passport.id,
-    ...(activity && activity !== 'act' ? { activity } : {}), ...(t.estimate ? { estimate: true as const } : {}),
+    ...(kind === 'permit' && country === livesIn(state) ? { all: true as const } : activity && activity !== 'act' ? { activity } : {}), ...(t.estimate ? { estimate: true as const } : {}),
     fee: { minor, currency: t.fee.currency, paidUsdMinor: usd }, appliedAt: state.now, decideAt: state.now + t.days * DAY,
   };
   (state.paperApplications ??= []).push(a);
@@ -264,6 +303,44 @@ export function applyForPermit(state: GameState, country: string, activity: Acti
   return apply(state, 'permit', country, c, activity);
 }
 
+/**
+ * A life that begins where you aren't a citizen and have no free movement begins on the work visa that country asks of
+ * you (the owner chose it, November 14, 2026, over arriving without one): issued before the story starts, for its
+ * researched or estimated term from the first day, and covering all four kinds of work and your stay. A new story pays
+ * its fee from the inheritance on the first day; a story from before then was already under way, so it is granted with
+ * its fee taken as settled. Nothing is granted twice.
+ */
+export function grantArrivalPapers(state: GameState, paid = true): PaperApplication | undefined {
+  const country = livesIn(state);
+  if (state.papersArrival || isCitizen(state, country) || freeMovement(state, country)) return undefined;
+  state.papersArrival = true;
+  if (permitIn(state, country)) return undefined;
+  const w = workRight(state, country, 'act');
+  const route = w.can ? null : w.route;
+  if (!route && !WORK.countries[country]) return undefined; // no record of who may work there: nothing to hold
+  const t = permitTerms(country, route ?? 'Work permit');
+  const minor = Math.round(t.fee.amount * 100);
+  const usd = t.fee.currency === 'USD' ? minor : exchange(minor, t.fee.currency, 'USD');
+  // A fixed id, not the next in the save's count, which seeds the draws of everything made after it: arriving on a visa
+  // changes no casting, crew or take in the story (tests/production-golden.test.ts holds them).
+  const id = 'pa-arrival';
+  // A life that begins with less than the fee paid it before the story began, from money that isn't in the bank.
+  if (paid && (usd === undefined || !state.bank || bankReach(state) < usd / 100)) paid = false;
+  if (paid) postToBank(state, 'papers', -usd! / 100, `${t.route}: The Fee, Before You Arrived`, `papers:${id}`);
+  const a: PaperApplication = {
+    id, kind: 'permit', all: true, arrival: true, country, route: t.route, stage: 'issued', passportId: passportFor(state)?.id ?? '',
+    ...(t.estimate ? { estimate: true as const } : {}),
+    fee: { minor, currency: t.fee.currency, paidUsdMinor: paid ? usd ?? 0 : 0 },
+    appliedAt: state.now - t.days * DAY, decideAt: state.now, issuedAt: state.now,
+    ...(t.stayDays ? { expiresAt: state.now + t.stayDays * DAY } : {}),
+  };
+  (state.paperApplications ??= []).push(a);
+  if (a.expiresAt) schedule(state, a.expiresAt, 'papers-expiry', { id }, { attention: 'notify', priority: 55, id: `papers-expiry:${id}` });
+  const until = a.expiresAt ? ` It's good until ${dateKey(a.expiresAt, 'UTC')}, and you can renew it from ${dateKey(a.expiresAt - (t.days + RENEW_MARGIN_DAYS) * DAY, 'UTC')}.` : '';
+  addLog(state, `You live in ${the(country)} on your ${t.route}, issued before you arrived${paid ? `; its fee, ${t.fee.amount.toLocaleString('en-US')} ${t.fee.currency}, came from your inheritance` : ''}${t.estimate ? ' (the fee and its term are the game\'s estimate)' : ''}.${until}`, 'personal', { route: { view: 'papers' }, id: 'l-arrival' });
+  return a;
+}
+
 registerHandler('papers-decision', (state, ev) => {
   const a = applications(state).find((x) => x.id === ev.payload.id);
   if (!a || a.stage !== 'applied') return { suppressInterrupt: true };
@@ -273,7 +350,7 @@ registerHandler('papers-decision', (state, ev) => {
   a.issuedAt = state.now;
   if (t.stayDays) a.expiresAt = state.now + t.stayDays * DAY;
   if (a.expiresAt) schedule(state, a.expiresAt, 'papers-expiry', { id: a.id }, { attention: 'notify', priority: 55, id: `papers-expiry:${a.id}` });
-  const message = `Your ${a.route} for ${the(a.country)} was issued.${a.expiresAt ? ` It's good until ${dateKey(a.expiresAt, 'UTC')}.` : ''}`;
+  const message = `Your ${a.route} for ${the(a.country)} was issued.${a.expiresAt ? ` It's good until ${dateKey(a.expiresAt, 'UTC')}.` : ''}${a.all && a.expiresAt ? ` You can renew it from ${dateKey(a.expiresAt - (t.days + RENEW_MARGIN_DAYS) * DAY, 'UTC')}.` : ''}`;
   addLog(state, message, 'personal', { route: { view: 'papers' } });
   return { message };
 });
@@ -282,7 +359,10 @@ registerHandler('papers-expiry', (state, ev) => {
   const a = applications(state).find((x) => x.id === ev.payload.id);
   if (!a || a.stage !== 'issued') return { suppressInterrupt: true };
   a.stage = 'expired';
-  const message = `Your ${a.route} for ${the(a.country)} has expired. Apply again before your next visit.`;
+  const home = a.all && a.country === livesIn(state) && !permitIn(state, a.country);
+  const message = home
+    ? `Your ${a.route} for ${the(a.country)} has run out. You live there without the right to now, and can't work there until a new one is issued. Apply under Your Papers.`
+    : `Your ${a.route} for ${the(a.country)} has expired. Apply again before your next visit.`;
   addLog(state, message, 'personal', { route: { view: 'papers' } });
   return { message };
 });

@@ -24,9 +24,11 @@ test('Home to Your Papers: a visa applied for and paid, decided on its day, in u
   await page.getByRole('button', { name: 'Continue Creation' }).click();
   await page.getByRole('button', { name: 'Start My Story' }).click();
   await expect(page.getByRole('heading', { name: /^Good (Morning|Afternoon|Evening), /, level: 1 })).toBeVisible();
-  // Home: the passport in force, and work where you live is the game's assumption, said as one.
+  // Home: the passport in force, and work where you live allowed by the work visa she arrived on (from November 14, 2026;
+  // until then the game assumed it).
   await expect(papersPanel(page)).toContainText('In force to');
-  await expect(papersPanel(page)).toContainText('Allowed by the game\'s assumption');
+  await expect(papersPanel(page)).toContainText('Work in MexicoAllowed');
+  await expect(papersPanel(page)).not.toContainText('assumption');
   // The bank in Mexico City keeps pesos (from November 14, 2026; until then dollars).
   const pesos = async () => Number((await page.locator('.panel, section', { has: page.getByRole('heading', { name: 'Your Bank', exact: true }) }).first().innerText()).match(/Available\s*MX\$([\d,]+)/)![1].replace(/,/g, ''));
   const before = await pesos();

@@ -2,7 +2,7 @@
 // country asks of you, what working there asks for each kind of work, and what you have applied for. Each line says
 // where its answer comes from; nothing the game hasn't confirmed is called ready.
 import { useState, type ReactNode } from 'react';
-import { ACTIVITY_WORDS, applications, applyForPermit, applyForRecordedPassport, applyForVisa, entryRight, passportOffers, passports, permitCheck, permits, visaCheck, workRight, type Activity, type ApplicationCheck } from '../engine/papers';
+import { ACTIVITY_WORDS, applications, applyForPermit, homeVisa, applyForRecordedPassport, applyForVisa, entryRight, passportOffers, passports, permitCheck, permits, visaCheck, workRight, type Activity, type ApplicationCheck } from '../engine/papers';
 import { bankSim } from '../engine/bankworld';
 import { passportOffice, passportRefusal, passportRuleFor } from '../engine/bankworld/systems/documents';
 import { formatMoney } from '../engine/bankworld/core/money';
@@ -43,6 +43,8 @@ export function PapersCard() {
   const rule = person ? passportRuleFor(person) : undefined;
   const passportNo = person ? passportRefusal(person) : 'This story has no papers yet.';
   const enter = entryRight(g, country);
+  const liveHere = getPlace(g.character.livesIn ?? g.locationId).country === country;
+  const homeCheck = liveHere ? permitCheck(g, country) : ({ ok: false, why: '' } as ApplicationCheck);
   const visa = visaCheck(g, country);
   return (
     <>
@@ -90,13 +92,22 @@ export function PapersCard() {
           </>
         ) : <p className="dim small">{visa.why}</p>)}
         <h3>Working</h3>
+        {/* Where you live, one work visa covers all four kinds of work and your stay: one place to apply, or to renew it as its end nears. */}
+        {liveHere && homeCheck.ok && (
+          <div className="col">
+            <p className="small" style={{ margin: 0 }}><strong>{homeVisa(g) ? 'Renew Your Work Visa' : 'Your Work Visa'}:</strong> it covers acting, directing, producing and writing, and your stay.</p>
+            <TermsLine c={homeCheck} />
+            <button className="btn btn-sm" onClick={() => setErr(store.act((s) => void applyForPermit(s, country)))}>{homeVisa(g) ? 'Renew And Pay The Fee' : 'Apply And Pay The Fee'}</button>
+          </div>
+        )}
+        {liveHere && !homeCheck.ok && !workRight(g, country).can && <p className="dim small">{homeCheck.why}</p>}
         <ul className="list small" aria-label="Working">
           {ACTIVITIES.map(({ value, label }) => {
             const work = workRight(g, country, value);
-            const permit = work.can ? null : permitCheck(g, country, value);
+            const permit = liveHere || work.can ? null : permitCheck(g, country, value);
             return (
               <li key={value} className="list-item list-static col">
-                <span className="grow"><strong>{label}:</strong> {work.can ? (work.assumed ? 'Allowed by the game\'s assumption. ' : 'Allowed. ') : 'Not allowed yet. '}{work.why}</span>
+                <span className="grow"><strong>{label}:</strong> {work.can ? 'Allowed. ' : 'Not allowed yet. '}{work.why}</span>
                 {permit && (permit.ok ? (
                   <>
                     <TermsLine c={permit} />

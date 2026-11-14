@@ -41,7 +41,14 @@ What the records don't hold, said so the game never fills it:
 4. **Permission to work** (`workRight`).
    - **Allowed:** citizenship, free movement, or a short engagement's days, counted as you work them
      (`recordWorkDay`, called by the shoot).
-   - **The game's assumption:** where your story is lived, which is never called ready.
+   - **A work visa:** one issued for the country, by its kind of work; where you live, one covers all four kinds and
+     your stay. Until November 14, 2026 where your story was lived was the game's assumption. From then (the owner:
+     "make living abroad need real papers") a life that starts where it has neither citizenship nor free movement
+     arrives on the work visa that country asks for (`grantArrivalPapers`): its fee is paid from the inheritance on the
+     first day (or taken as settled before the story, where the inheritance can't cover it or the save is older), and it
+     lasts its researched or estimated term. It can be renewed from its decision time plus a month before its end
+     (`RENEW_MARGIN_DAYS`, game calibration). Run out, you live there without the right to: no shoot day, outside job
+     or job day there until a new one is issued (`tests/v10-living-abroad.test.ts`).
    - **Not allowed:** otherwise. The route's name and what the records lack are said.
 5. **Permission for the work itself.** The records describe what a performer needs, so they cover acting only.
    Directing and producing abroad need a general right to work there. The shoot checks each thing the day needs you

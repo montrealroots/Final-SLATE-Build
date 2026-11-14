@@ -21,7 +21,8 @@ export function draft(over: Partial<CreationDraft> = {}): CreationDraft {
     actingTitle: 'Actress',
     birthplaceId: 'ng-lagos',
     heritages: [{ id: 'Yoruba', label: 'Yoruba', custom: false }, { id: 'Swedish', label: 'Swedish', custom: false }],
-    nationalities: ['NG', 'SE'],
+    // British too, so a London life pays for no work visa (from November 14, 2026); tests about papers say their own.
+    nationalities: ['NG', 'SE', 'GB'],
     mainLanguage: 'en',
     languages: [{ code: 'yo', proficiency: 'Conversational' }, { code: 'sv', proficiency: 'Basic' }],
     startPlaceId: 'gb-london',

@@ -266,8 +266,9 @@ export function onNewGame(fn: (s: GameState, d: CreationDraft) => void): void {
 
 // ---------------- Log ----------------
 
-export function addLog(state: GameState, text: string, kind: LogEntry['kind'], extra: Pick<LogEntry, 'projectId' | 'route'> = {}): LogEntry {
-  const entry: LogEntry = { id: newId(state, 'l'), at: state.now, text, kind, ...extra };
+/** `extra.id` names an entry made once in a story, so it takes no number from the count that seeds what comes after it. */
+export function addLog(state: GameState, text: string, kind: LogEntry['kind'], extra: Pick<LogEntry, 'projectId' | 'route'> & { id?: string } = {}): LogEntry {
+  const entry: LogEntry = { ...extra, id: extra.id ?? newId(state, 'l'), at: state.now, text, kind };
   state.log.unshift(entry);
   if (state.log.length > 400) state.log.length = 400;
   return entry;

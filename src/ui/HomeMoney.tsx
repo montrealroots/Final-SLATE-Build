@@ -10,7 +10,7 @@ import { formatMoney } from '../engine/bankworld/core/money';
 import { formatDate } from '../engine/bankworld/core/time';
 import { documentsOf, inForce } from '../engine/bankworld/systems/documents';
 import { bankOf } from '../engine/bankworld/systems/banking';
-import { applications, permits, workRight } from '../engine/papers';
+import { applications, homeVisa, permits, workRight } from '../engine/papers';
 import { countryName } from '../world/gazetteer/gazetteer';
 import { getPlace } from '../data/places';
 
@@ -47,6 +47,7 @@ export function YourPapersPanel() {
   const pending = permits(g).filter((p) => p.status === 'pending').length + docs.filter((d) => d.status === 'pending').length + applications(g).filter((a) => a.stage === 'applied').length;
   const here = getPlace(g.locationId).country;
   const work = workRight(g, here);
+  const home = homeVisa(g);
   return (
     <Panel title="Your Papers" actions={open}>
       <ul className="list small" style={{ margin: 0 }}>
@@ -57,8 +58,10 @@ export function YourPapersPanel() {
           </li>
         ))}
         {!passports.length && <li className="list-item list-static">No passport on record.</li>}
-        <li className="list-item list-static"><span className="grow">Work in {countryName(here)}</span><span>{work.can ? ('assumed' in work && work.assumed ? 'Allowed by the game\'s assumption' : 'Allowed') : 'Not allowed yet'}</span></li>
+        <li className="list-item list-static"><span className="grow">Work in {countryName(here)}</span><span>{work.can ? 'Allowed' : 'Not allowed yet'}</span></li>
+        {home && <li className="list-item list-static"><span className="grow">{home.visa.route}</span><span>{home.visa.expiresAt ? `To ${formatDate(home.visa.expiresAt, zone)}` : 'In force'}</span></li>}
       </ul>
+      {home?.renewable && <p className="xs" style={{ margin: 'var(--s2) 0 0' }}>Your {home.visa.route} runs out soon. Renew it under Your Papers.</p>}
       {pending > 0 && <p className="xs dim" style={{ margin: 'var(--s2) 0 0' }}>{pending === 1 ? 'One application is being decided.' : `${pending} applications are being decided.`}</p>}
     </Panel>
   );
