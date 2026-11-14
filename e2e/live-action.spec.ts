@@ -15,7 +15,9 @@ test('live-action short: create, write, cast yourself, staff, shoot, cut, delive
   await expect(page.getByText(/^Monday, March 2, 2026 · /)).toBeVisible();
   await expect(page.getByText(/^8:0\d AM in Toronto, /)).toBeVisible();
   await expect(page.getByText("You haven't started a project yet.")).toBeVisible();
-  await expect(page.getByText("You're up to date.")).toBeVisible();
+  // Nigerian and Mexican, living in Toronto: she arrives on Canada's work permit, its fee paid from the inheritance, and
+  // that is the one update (from November 14, 2026, when living abroad took real papers; until then, none).
+  await expect(page.getByText(/^You live in Canada on your Work permit, issued before you arrived; its fee, .+, came from your inheritance\./)).toBeVisible();
   await expect(page.getByText('You have nothing scheduled today.')).toBeVisible();
   await page.screenshot({ path: `test-results/${info.project.name}-home.png`, fullPage: true });
   // Labelled fixture: the world seed is fixed so production runs the same way on every run. Unfixed, a run in CI on
