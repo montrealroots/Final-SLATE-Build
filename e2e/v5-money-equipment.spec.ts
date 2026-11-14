@@ -76,14 +76,17 @@ test('a company of your own: formed from your account, money moved both ways, pu
   const start = Number((await mine.locator('strong').first().innerText()).replace(/[^\d]/g, ''));
   const co = card(page, 'Your Company');
   await co.getByLabel('Company Name').fill('Tidewater Pictures');
-  await co.getByLabel('Put In When It Is Formed').fill('1000');
-  await co.getByRole('button', { name: 'Form The Company' }).click();
+  await co.getByLabel('Put In When It Is Registered').fill('1000');
+  // Applied for (v8 package, from November 14, 2026): pending, nothing moved, until the registry decides.
+  await co.getByRole('button', { name: 'Apply To Register' }).click();
+  await expect(co).toContainText('Tidewater Pictures is waiting for the registry');
+  for (let i = 0; i < 10 && !(await co.getByText('Tidewater Pictures: $1,000 in its account.').count()); i++) { await advance(page, 'next-day'); await nav(page, 'Profile'); }
   await expect(co).toContainText('Tidewater Pictures: $1,000 in its account.');
   await expect(mine).toContainText(`$${(start - 1000 - 300).toLocaleString('en-US')} in your own account.`);
   await co.getByLabel('Move Between You And The Company').fill('200');
   await co.getByRole('button', { name: 'Draw It Out' }).click();
   await expect(co).toContainText('Tidewater Pictures: $800 in its account.');
-  await expect(co.getByRole('list', { name: 'Its Account, By What It Is' })).toContainText('Drawn By You');
+  await expect(co.getByRole('list', { name: 'Its Account, By What It Is' })).toContainText('Capital Returned To You'); // your own money back, not earnings
   // A project: the company's money goes in, and the company produces it.
   await nav(page, 'Projects');
   await newProject(page, { title: 'Harbour Lights', format: 'Short Film', runtime: '6', budget: 'Low Budget' });

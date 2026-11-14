@@ -8,7 +8,7 @@ import type { Project } from '../engine/types';
 import { formatMoney } from '../engine/cash/money';
 import { formatDateKey } from '../engine/time';
 import { NumberField, TextField } from './components';
-import { COMPANY_LABELS, FORMATION_FEE, companyBalance, companyInRefusal, companyIntoProject, companyStatement, formCompany, formRefusal, moveCompanyMoney, takeToCompany } from '../engine/company';
+import { APPLICATION_DAYS, COMPANY_LABELS, FORMATION_FEE, applyForCompany, capitalOutstanding, companyBalance, companyInRefusal, companyIntoProject, companyStatement, formRefusal, moveCompanyMoney, setBanner, takeToCompany } from '../engine/company';
 import { store, useGame } from './store';
 
 export function YourMoneyCard() {
@@ -81,38 +81,62 @@ export function CompanyCard() {
   const [name, setName] = useState('');
   const [capital, setCapital] = useState(0);
   const [amount, setAmount] = useState(0);
+  const [banner, setBannerText] = useState(g.banner?.name ?? '');
   const [err, setErr] = useState<string | null>(null);
   const c = g.company;
   if (!g.money) return null;
-  if (!c) {
+  const bannerPart = (
+    <>
+      <h3>Your Banner</h3>
+      <p className="muted small">A name your work is credited under, &quot;A … Production&quot;. It is you by another name: no company, no account of its own, no protection and no rights moved. Your work can be made, financed and released without one, or without a company.</p>
+      <div className="inline-form">
+        <TextField label="Banner Name" value={banner} maxLength={60} onChange={setBannerText} />
+        <button className="btn" onClick={() => setErr(store.act((s) => setBanner(s, banner)))}>{banner.trim() ? 'Use This Banner' : 'Use No Banner'}</button>
+      </div>
+      {g.banner && <p className="small">Your work is credited as A {g.banner.name} Production unless a company produces it.</p>}
+    </>
+  );
+  if (!c || c.status === 'refused' || c.status === 'pending') {
     const no = formRefusal(g, name, capital);
     return (
       <section className="card" aria-labelledby="company-h">
         <h2 id="company-h">Your Company</h2>
-        <p className="muted">A production company of your own, with its own account. It can put money into your projects, which it then produces and is credited for, and take their income back. Forming it costs {money(FORMATION_FEE)} from your own account; what you put in moves from your account to the company's.</p>
-        <div className="inline-form">
-          <TextField label="Company Name" value={name} maxLength={60} onChange={setName} />
-          <NumberField label="Put In When It Is Formed" value={capital} min={0} max={Math.max(0, personalBalance(g))} onChange={setCapital} />
-          <button className="btn" disabled={!!no} onClick={() => setErr(store.act((s) => void formCompany(s, name, capital)))}>Form The Company</button>
-        </div>
-        {no && name.trim().length >= 2 && <p className="dim small">{no}</p>}
+        {bannerPart}
+        <h3>A Company</h3>
+        {c?.status === 'pending' ? (
+          <p role="status">{c.name} is waiting for the registry in {c.jurisdiction}. Nothing moves into it until it is registered; then the {money(c.intendedCapital ?? 0)} you said moves from your account, if you still have it.</p>
+        ) : (
+          <>
+            {c?.status === 'refused' && <p className="callout callout-warning">The registry refused {c.name}: {c.reason}</p>}
+            <p className="muted">A production company of your own, registered where you live, with its own account. Applying costs {money(FORMATION_FEE)} (the game&apos;s figure: no country&apos;s fee is researched yet), and the registry answers in {APPLICATION_DAYS} business days. It can then put money into your projects, which it produces and is credited for.</p>
+            <div className="inline-form">
+              <TextField label="Company Name" value={name} maxLength={60} onChange={setName} />
+              <NumberField label="Put In When It Is Registered" value={capital} min={0} max={Math.max(0, personalBalance(g))} onChange={setCapital} />
+              <button className="btn" disabled={!!no} onClick={() => setErr(store.act((s) => void applyForCompany(s, name, capital)))}>Apply To Register</button>
+            </div>
+            {no && name.trim().length >= 2 && <p className="dim small">{no}</p>}
+          </>
+        )}
         {err && <p role="alert" style={{ color: 'var(--negative)' }}>{err}</p>}
       </section>
     );
   }
+  const capitalIn = capitalOutstanding(g);
   return (
     <section className="card" aria-labelledby="company-h">
       <h2 id="company-h">Your Company</h2>
-      <p><strong>{c.name}</strong>: {money(companyBalance(g))} in its account.</p>
+      <p><strong>{c.name}</strong>: {money(companyBalance(g))} in its account.{c.jurisdiction ? ` Registered in ${c.jurisdiction}.` : ''}</p>
       <ul className="list" aria-label="Its Account, By What It Is">
         {companyStatement(g).map((x) => <li key={x.kind} className="list-item"><span className="grow">{COMPANY_LABELS[x.kind]}</span><span>{money(x.total)}</span></li>)}
       </ul>
+      <p className="small">Your capital still in it: {money(capitalIn)}. A draw returns that first; anything more is the company&apos;s earnings paid out, and is said so.</p>
       <div className="inline-form">
         <NumberField label="Move Between You And The Company" value={amount} min={0} max={100_000_000} onChange={setAmount} />
         <button className="btn" disabled={!(amount > 0) || amount > personalBalance(g)} onClick={() => { const e = store.act((s) => moveCompanyMoney(s, 'in', amount)); setErr(e); if (!e) setAmount(0); }}>Put It In</button>
         <button className="btn" disabled={!(amount > 0) || amount > companyBalance(g)} onClick={() => { const e = store.act((s) => moveCompanyMoney(s, 'out', amount)); setErr(e); if (!e) setAmount(0); }}>Draw It Out</button>
       </div>
       <p className="dim small">You have {money(personalBalance(g))} in your own account and the company {money(companyBalance(g))}: Put It In moves only what you hold, Draw It Out only what the company holds. Money moves only when you move it. The game models no tax, payroll or company law; amounts are game calibration.</p>
+      {bannerPart}
       {err && <p role="alert" style={{ color: 'var(--negative)' }}>{err}</p>}
     </section>
   );

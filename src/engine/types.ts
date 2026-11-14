@@ -1393,6 +1393,8 @@ export interface GameState {
   journal?: import('./cash/journal').Journal;
   /** The player's own production company (company.ts). Absent until they form one, and in saves from before November 13, 2026. */
   company?: import('./company').Company;
+  /** The name your work is credited under, which is you (company.ts Banner, from November 14, 2026). */
+  banner?: import('./company').Banner;
   /** First-look deals offered, running and past (first-look.ts). Absent until the first offer, and in saves from before November 13, 2026. */
   firstLooks?: import('./first-look').FirstLook[];
   /** Equipment you own or your family lends (equipment.ts). Absent in saves from before November 12, 2026: none. */
