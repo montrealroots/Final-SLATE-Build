@@ -66,6 +66,7 @@ export const PROBES: Probe[] = [
     // Measured by the day the film is delivered: the career's daysToDeliver counts from the shoot, after the shelf (until
     // November 14, 2026 this probe looked there and saw 3.5 days).
     seeds: 60, reads: ['src/engine/shelve.ts#shelveProject', 'src/engine/shelve.ts#resumeProject'], variant: { decide: shelveTwoMonths },
-    measure: (_s, projects) => ({ deliveredDay: projects.length ? projects.reduce((a, p) => a + (p.delivered ? p.delivered.at / 86_400_000 : 0), 0) / projects.length : 0 }),
+    // The first film, the one shelved: an average over both years counted a film not delivered as day zero.
+    measure: (_s, projects) => ({ deliveredDay: projects[0]?.delivered ? Math.round(projects[0].delivered.at / 86_400_000) : 0 }),
     bites: ['deliveredDay'], downstream: ['revenue', 'money', 'released', 'gross'] },
 ];

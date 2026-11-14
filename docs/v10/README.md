@@ -92,6 +92,16 @@ Run the proofs with `npm run proof` (`PROBES=id,id` for some, `SEEDS=n` to chang
   longer that distributors offer $94k more for. A performer from the film catalog considered for the lead gives a cast
   9.4 points more capable. The shoot call only acts when you miss it (asleep, away, at a plan): switched off in a
   career that never misses one, nothing changes, so it is proven by sleeping through a call.
+- **The edit reached nothing but the editing awards.** The overall left the editing assessment out, so the editor, the
+  cut passes, the coverage and a gap where an essential scene was cut never reached how a film was received. Fixed: it
+  takes a tenth of the overall, from direction and craft (fixed-seed outcomes moved a point at most). Cutting an essential
+  scene now costs 0.7 overall, 0.6 reception and $4,400 of revenue.
+- **Ten probes re-aimed at what their choices change, and proven:** unlocking a picture once finishing has started
+  (3 days, $2,000 redone); the financing target in the backers' share; a better rate asked with an agent; a commissioned
+  song dropped (its writing saved); a switch to the London bank paying most on savings (about £3,050 a year on a
+  million); the first-look overhead paid; a writer's revision at 80 seeds (its days paid); festival openings and
+  announcements by the screenings and buyers' offers they bring. A second current account stays open: no London bank in
+  the data pays interest on one or charges for it.
 - **Open, a decision for the owner:** what a writer's revision should look at (Structure, Dialogue, Pace and the rest) is
   a choice the game reads nowhere. It is left open in the matrix, not carried.
 - **By design, not fixed:** notes you write yourself change no assessment (`finish.ts`: quality can't be manufactured by
