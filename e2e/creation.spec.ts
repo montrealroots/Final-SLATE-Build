@@ -38,14 +38,14 @@ test('each Review edit goes to the step it names, and Save And Return To Review 
   await draftAtReview(page);
   await expect(heading(page)).toHaveText(NAME);
   // The cards follow the steps' order, and the start reads as Starting Point says it (November 8, 2026). Money, asked on
-  // Starting Point, has its own card from November 12, 2026.
+  // Starting Point, has its own card from November 12, 2026 (the inheritance from November 14).
   await expect(page.locator('section.card h2.eyebrow')).toHaveText(['Identity', 'Background & Languages', 'Starting Point', 'Money']);
   await expect(card(page, 'Starting Point')).toContainText('Monday, April 6, 2026, at 9:30 AM GMT+1');
   const cases: [string, string][] = [
     ['Edit Identity', 'Identity'],
     ['Edit Background & Languages', 'Background'],
     ['Edit Starting Point', 'Where You Live'],
-    ['Edit Money And Family', 'Where You Live'],
+    ['Edit Your Inheritance', 'Where You Live'],
   ];
   const before = await page.locator('.creation').innerText();
   for (const [edit, screen] of cases) {
