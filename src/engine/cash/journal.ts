@@ -19,8 +19,10 @@ export type AccountOwner = 'player' | 'company' | 'outside';
 export type AccountState = 'draft' | 'pending' | 'open' | 'restricted' | 'closing' | 'closed';
 export interface Account {
   id: string; owner: AccountOwner; type: AccountType; currency: string; label: string; state: AccountState; openedAt: number;
-  /** A bank product this account is held under (banking step), when there is one. */
+  /** A bank product this account is held under (banking.ts), when there is one. */
   product?: string;
+  /** A bank account's own record (banking.ts): when it was applied for, the day its monthly charges are anchored on, why it was refused or closed, and fees it couldn't collect. */
+  bank?: { appliedAt: number; anchor?: string; reason?: string; owedMinor?: number; nextPeriod?: number };
 }
 export interface JournalLine { account: string; minor: number; kind?: string; label?: string }
 export type TxStatus = 'pending' | 'settled' | 'failed' | 'reversed';

@@ -7,15 +7,14 @@
 // The rest of the engine still counts the game's dollars in whole units (budget.ts money()). toMinor and fromMinor are
 // the adapter between the two, and both refuse what would not survive the trip.
 
-export interface CurrencyInfo { code: string; exponent: 0 | 2 | 3; name: string }
-/** The currencies the game knows, with ISO 4217's minor-unit exponents. Zero-decimal and three-decimal ones on purpose. */
-export const CURRENCIES: Record<string, CurrencyInfo> = Object.fromEntries(([
-  ['USD', 2, 'US Dollar'], ['CAD', 2, 'Canadian Dollar'], ['GBP', 2, 'Pound Sterling'], ['EUR', 2, 'Euro'], ['AUD', 2, 'Australian Dollar'],
-  ['NZD', 2, 'New Zealand Dollar'], ['CHF', 2, 'Swiss Franc'], ['MXN', 2, 'Mexican Peso'], ['BRL', 2, 'Brazilian Real'], ['INR', 2, 'Indian Rupee'],
-  ['ZAR', 2, 'South African Rand'], ['NGN', 2, 'Nigerian Naira'], ['SEK', 2, 'Swedish Krona'], ['NOK', 2, 'Norwegian Krone'], ['DKK', 2, 'Danish Krone'],
-  ['JPY', 0, 'Japanese Yen'], ['KRW', 0, 'South Korean Won'], ['ISK', 0, 'Icelandic Krona'],
-  ['KWD', 3, 'Kuwaiti Dinar'], ['BHD', 3, 'Bahraini Dinar'], ['JOD', 3, 'Jordanian Dinar'],
-] as const).map(([code, exponent, name]) => [code, { code, exponent, name }]));
+import iso from '../../data/currencies.json';
+
+export interface CurrencyInfo { code: string; exponent: number; name: string }
+/**
+ * Every ISO 4217 currency with its minor-unit exponent (src/data/currencies.json, imported from the old line's table by
+ * tools/v8/import_banks.py): zero for yen and won, two for most, three for dinars, four for the few that have them.
+ */
+export const CURRENCIES: Record<string, CurrencyInfo> = Object.fromEntries(Object.entries(iso.currencies as Record<string, { name: string; exponent: number }>).map(([code, c]) => [code, { code, exponent: c.exponent, name: c.name }]));
 
 export const MAX_MINOR = Number.MAX_SAFE_INTEGER;
 export interface Money { currency: string; minor: number }

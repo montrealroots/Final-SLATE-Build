@@ -167,7 +167,7 @@ describe('the field inventory', () => {
       {
         "has ideas": 53,
         "no picker yet": 25,
-        "no picker, by design": 252,
+        "no picker, by design": 256,
         "the picker itself": 10,
       }
     `);

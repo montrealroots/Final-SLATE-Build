@@ -30,7 +30,7 @@ async function fillIdentity(page: Page, name: string, pronouns: string): Promise
   await fillName(page, name);
   await page.getByLabel('Pronouns').selectOption({ label: pronouns });
   if (pronouns === 'They/Them') await page.getByRole('group', { name: 'Billed As' }).getByRole('button', { name: 'Actor', exact: true }).click();
-  await fillBirthDate(page, '1994-05-20');
+  await fillBirthDate(page, '2006-05-20');
   await pickPlace(page, 'Place Of Birth', 'Lagos');
 }
 
@@ -58,7 +58,7 @@ test('each Review edit goes to the step it names, and Save And Return To Review 
   expect(await page.locator('.creation').innerText()).toBe(before);
   // Identity holds the date of birth in its three fields, and nothing from Starting Point.
   await page.getByRole('button', { name: 'Edit Identity' }).click();
-  await expect(page.getByLabel('Year Of Birth')).toHaveValue('1992');
+  await expect(page.getByLabel('Year Of Birth')).toHaveValue('2006');
   await expect(page.getByLabel('Month', { exact: true })).toHaveValue('09');
   await expect(page.getByLabel('Day', { exact: true })).toHaveValue('14');
   await expect(page.getByRole('group', { name: 'Billed As' }).getByRole('button', { name: 'Actor', exact: true })).toHaveAttribute('aria-pressed', 'true');
@@ -89,7 +89,7 @@ test('Start My Story with something missing goes to that step, and back to Revie
   await page.getByRole('button', { name: 'Start My Story' }).click();
   await expect(heading(page)).toHaveText('Identity');
   await expect(page.getByText('Choose a birthplace.')).toBeVisible();
-  await expect(page.getByLabel('Year Of Birth')).toHaveValue('1992'); // nothing else was lost
+  await expect(page.getByLabel('Year Of Birth')).toHaveValue('2006'); // nothing else was lost
   await page.getByRole('searchbox', { name: 'Place Of Birth' }).fill('mexico city');
   await page.getByRole('group', { name: 'Place Of Birth Results' }).getByRole('button', { name: /Mexico City/ }).first().click();
   await page.getByRole('button', { name: 'Save And Return To Review' }).click();
@@ -129,11 +129,11 @@ test('a step with something missing says what; He/Him and She/Her settle the bil
   await expect(billedAs.locator('output')).toHaveText('Actor');
   await page.getByLabel('Pronouns').selectOption({ label: 'They/Them' });
   await expect(tiles.getByRole('button', { name: 'Actress', exact: true })).toHaveAttribute('aria-pressed', 'false');
-  // At least 19 on the starting date (January 5, 2026 by default): the screen says the latest birth date that allows.
+  // Exactly 19 on the starting date (from November 14, 2026; January 5, 2026 by default): the screen says the dates.
+  await fillBirthDate(page, '2006-06-01');
+  await expect(page.getByText('You start at 19. On your starting date, January 5, 2026, that means a birth date from January 6, 2006 to January 5, 2007.', { exact: false })).toBeVisible();
   await fillBirthDate(page, '1990-01-01');
-  await expect(page.getByText('You must be at least 19 on your starting date, January 5, 2026: born on or before January 5, 2007.', { exact: false })).toBeVisible();
-  await fillBirthDate(page, '2007-06-01');
-  await expect(page.getByText('Your character must be at least 19 on the starting date.')).toBeVisible();
+  await expect(page.getByText('You start at 19, in a year from 2026 to 2050: choose a birth date from January 2, 2006 to December 31, 2031.')).toBeVisible();
 });
 
 test('typing straight after Next is kept, even when the field is chosen within a frame of the new step appearing', async ({ page }) => {
@@ -171,7 +171,7 @@ test('keyboard only: Next moves focus to the new heading, Tab reaches its field,
   await page.keyboard.type('Kofi');
   await page.getByRole('textbox', { name: 'Last Name', exact: true }).fill('Mensah');
   await page.getByLabel('Pronouns').selectOption({ label: 'He/Him' });
-  await fillBirthDate(page, '1990-11-03');
+  await fillBirthDate(page, '2006-11-03');
   await pickPlace(page, 'Place Of Birth', 'Lagos');
   await page.getByRole('button', { name: 'Next: Background & Languages' }).focus();
   await page.keyboard.press('Enter');
@@ -189,7 +189,7 @@ test('keyboard only: Next moves focus to the new heading, Tab reaches its field,
   await expect(page.getByRole('textbox', { name: 'Last Name', exact: true })).toHaveValue('Mensah');
   await expect(page.getByLabel('Pronouns')).toHaveValue('he');
   await expect(page.locator('.field', { has: page.locator('#billed-as') }).locator('output')).toHaveText('Actor'); // settled by He/Him
-  await expect(page.getByLabel('Year Of Birth')).toHaveValue('1990');
+  await expect(page.getByLabel('Year Of Birth')).toHaveValue('2006');
 });
 
 test('a reload in the middle of creation reopens the same step with everything entered', async ({ page }) => {

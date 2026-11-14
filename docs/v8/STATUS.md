@@ -17,7 +17,7 @@ Nothing here is a human play-through. The package asks for pacing checks and a p
 | 1 Baseline | Implemented and tested | `main` at `84775c7` equals the package's snapshot (no diff). The package's Python reference tests pass 12 of 12, run from a copy of its own layout. | |
 | 2 Canonical money | Partly | `src/engine/cash/money.ts`: currencies with ISO exponents 0, 2 and 3; `parseAmount`; exact rational FX; `monthlyDue`. `src/engine/cash/journal.ts`: balanced lines per currency, idempotency keys, validation before any write, holds, pending, settled and failed states, linked reversals, and exchange with its quote, fee and rounding kept. Your account and the company's are now views of the journal (save version 10; `cash/migrate.ts` reconciles to the cent or refuses). | Projects keep their own obligation ledgers (`budget.ts`) in whole dollars. They meet the journal through the outside `projects` account and aren't migrated into it. The game's money is US dollars only, so there is no FX screen yet. |
 | 3 Inheritance at 19 | Implemented and tested | You start at exactly 19. Identity refuses a birth date that 19 can't reach in 2026–2050. Starting Point refuses a date that changes the age, and says which dates keep it 19. One `opening:inheritance` transaction comes from the estate, with its source kept: $25,000,000 by default, editable on Starting Point, checked as typed, capped at $1,000,000,000. The family menus are gone, and a saved draft loses its family choices. Old saves keep their family contracts, which still run. | |
-| 4 Banks and documents | Not started | | |
+| 4 Banks and documents | Partly | Banks: `tools/v8/import_banks.py` imports 251 products in 230 markets into `src/data/banks.json` (246 legacy-unreverified, 3 reported with sources, 2 primary-observed business products), and 155 ISO currencies into `src/data/currencies.json`. A missing fee is unknown, never zero. `src/engine/banking.ts` covers the lifecycle: apply (pending), the bank's decision three business days on (refused if you moved away), monthly or periodic fees anchored on the opening day with waivers read from the account's own lines, transfers held at once and settled the next business day, statements, and closing only when nothing is stranded. `src/ui/Banking.tsx` shows it on Profile. | Documents: passports, visits and work permits are step 8. Not simulated, and said where it shows: bank holidays, interest, overdrafts, card and cash-machine fees, and an application's documents. There is no exchange between currencies: the game has no researched rates, so a transfer between currencies is refused with that reason. |
 | 5 Custom budgets and liquidity | Not started | | |
 | 6 Company versus banner | Not started | A company could already be formed (v5). Formation is still instant. | Banner, jurisdiction, pending and rejected states. |
 | 7 Deal types | Not started | | |
@@ -35,10 +35,11 @@ Nothing here is a human play-through. The package asks for pacing checks and a p
 | A05 | Implemented and tested | `tests/v8-money.test.ts` A05 cases; `e2e/money.spec.ts` (refused as typed on Starting Point). |
 | A07 | Partly | Journal holds: `tests/v8-money.test.ts`. Not yet connected to project obligations or a forecast (step 5). |
 | A08 | Partly | Journal exchange: `tests/v8-money.test.ts`. No screen, and no second currency in play. |
-| A09 | Partly | `monthlyDue` clamps to the month's end, leap February included. No bank charges use it yet (step 4). |
+| A09 | Implemented and tested | `tests/v8-banking.test.ts`: a fee anchored on January 31 falls on February 29, 2028 and March 31, each once, through a duplicated event and a reload; `e2e/v8-banking.spec.ts` (desktop, phone, iPhone 15 Pro Max). |
 | A13 | Partly | `tests/v8-inheritance.test.ts`: the same world with $25,000,000 and with nothing has the same standing and reputation. Deal eligibility is step 7. |
 | A21 | Partly | Money: `tests/v8-money.test.ts` (a version 9 save keeps every posting to the cent, and a migration that can't reconcile opens nothing and leaves the stored copy and its pre-upgrade backup). A family loan still runs: `tests/v8-inheritance.test.ts`. Deals and awards are later steps. |
-| A03, A04, A06, A10–A12, A14–A20, A22 | Not started | |
+| A10 | Implemented and tested | `tests/v8-banking.test.ts`: "Account fee not recorded" for a record without one; personal products only where you live; business products only with a company. |
+| A03, A04, A06, A11, A12, A14–A20, A22 | Not started | |
 
 ## What Changed With The Age Rule
 

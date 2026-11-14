@@ -12,6 +12,8 @@ import { describe, expect, it } from 'vitest';
 
 const LOG = 'The result is written to Recent Updates on Home and the project log.';
 const ACTIONS: Record<string, { preview: string; outcome: string }> = {
+  applyForAccount: { preview: "Open An Account on Profile names the product, its fee as recorded (an unrecorded one says so), its transfer fee and how sure the record is, before Apply; a product you can't hold says why under the button.", outcome: `${LOG} Your Accounts shows it as Applied For, then Open with the day its charges fall, or Closed with the bank's reason.` },
+  transferBetween: { preview: 'Move Money on Profile says the transfer fee under the amount (or that it isn\'t recorded), and that the money is held at once and settles the next business day.', outcome: `${LOG} The sender's Held and the receiver's On Its Way In show it until it settles; both statements list it after.` },
   applyWorldRefresh: { preview: "Settings, Your Story's World: See What Would Change lists each series and what taking the newer records would change, before anything does.", outcome: 'A status line says it was done and where the copy of the game from before is kept.' },
   approachAgent: { preview: "Find An Agent on the Profile page says what each agent needs to see, how they would answer on today's record, their commission and where they stand aside, and that an approach is answered in about three days.", outcome: `${LOG} The Representation card shows the approach and the day the answer is due, then the answer with its reason.` },
   declineMandate: { preview: "The Representation card shows the agent's offer with every term, and Decline beside Sign.", outcome: `${LOG} The card goes back to Find An Agent.` },

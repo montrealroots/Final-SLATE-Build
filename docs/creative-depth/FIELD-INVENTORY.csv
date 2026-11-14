@@ -6,6 +6,10 @@ AdaptWork.tsx,{medium === 'hybrid' ? 'Animation Technique For Animated Scenes' :
 AdaptWork.tsx,"""Episodes""",1,decision,NumberField,proposal.ts (the season it proposes); projects.ts,"None: a quantity, entered as a number within its range",n/a,tests/proposal.test.ts::fits the work to the format
 AdaptWork.tsx,{episodic ? 'Target Minutes Per Episode' : 'Target Runtime In Minutes'},1,decision,NumberField,proposal.ts (cast and scene count); estimate.ts,"None: a quantity, entered as a number within its range",n/a,tests/proposal.test.ts::fits the work to the format
 AdaptWork.tsx,{`Name For ${c.name}`},1,identity,TextField,"blueprints.ts named, applyBlueprint","None: a name or a record, typed. Name suggestions: milestone C",Unchanged,tests/proposal.test.ts::makes one project
+Banking.tsx,"""Account To Apply For""",1,decision,SelectField,"banking.ts applyForAccount, applyRefusal, bank-decision",None: already a short list to choose from,n/a,tests/v8-banking.test.ts::is pending until the bank decides ; e2e/v8-banking.spec.ts::an account applied for
+Banking.tsx,"""From""",1,decision,SelectField,"banking.ts transferBetween, transferRefusal, transferFee",None: already a short list to choose from,n/a,tests/v8-banking.test.ts::moves money on its way ; e2e/v8-banking.spec.ts::an account applied for
+Banking.tsx,"""To""",1,decision,SelectField,"banking.ts transferBetween, transferFee",None: already a short list to choose from,n/a,tests/v8-banking.test.ts::moves money on its way
+Banking.tsx,{`Amount (${A.currency})`},1,decision,TextField,banking.ts transferBetween; cash/money.ts parseAmount,None: entered as text,Unchanged,tests/v8-banking.test.ts::moves money on its way ; e2e/v8-banking.spec.ts::an account applied for
 Catalog.tsx,"""Title Or Person""",1,view,TextField,,"None: a control of the screen, not of the game",n/a,
 Catalog.tsx,"""Search Titles""",1,view,TextField,,"None: a control of the screen, not of the game",n/a,
 Catalog.tsx,"""Show""",1,view,SelectField,,"None: a control of the screen, not of the game",n/a,

@@ -27,7 +27,7 @@ describe('A05: amounts typed by the player', () => {
   });
   it('keeps each currency\'s own minor unit: none for yen, three places for dinars', () => {
     expect(ok('1,500', 'JPY')).toBe(1_500);
-    expect(no('1,500.5', 'JPY')).toBe('Japanese Yen has no smaller unit: enter a whole amount.');
+    expect(no('1,500.5', 'JPY')).toBe('Yen has no smaller unit: enter a whole amount.');
     expect(ok('1.250', 'KWD')).toBe(1_250);
     expect(no('1.2505', 'KWD')).toBe('Kuwaiti Dinar has 3 decimal places at most.');
     expect(formatMoney({ currency: 'KWD', minor: 1_250 })).toBe('KWD 1.250');

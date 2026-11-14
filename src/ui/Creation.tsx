@@ -224,7 +224,7 @@ function IdentityStep({ d, set, err, head }: { d: CreationDraft; set: Set; err: 
         {/* Month, day, year: the order the game writes every date in ("May 20, 1990"), from November 8, 2026. */}
         <SelectField label="Month" value={m} options={[{ value: '', label: 'Choose A Month' }, ...MONTHS.map((name, i) => ({ value: String(i + 1).padStart(2, '0'), label: name }))]} onChange={(v) => setBirth(y, v, day)} />
         <TextField label="Day" type="number" inputMode="numeric" value={day ? String(Number(day)) : ''} onChange={(v) => setBirth(y, m, v ? v.slice(0, 2).padStart(2, '0') : '')} />
-        <TextField label="Year Of Birth" type="number" inputMode="numeric" value={y} min={earliest?.slice(0, 4)} max={latest?.slice(0, 4)} onChange={(v) => setBirth(v.slice(0, 4), m, day)} />
+        <TextField label="Year Of Birth" type="number" inputMode="numeric" value={y} min={earliestBirthDate(`${FIRST_START_YEAR}-01-01`)!.slice(0, 4)} max={latestBirthDate(`${LAST_START_YEAR}-12-31`)!.slice(0, 4)} onChange={(v) => setBirth(v.slice(0, 4), m, day)} />
       </div>
       {err('birthDate') ? <p className="error" role="alert" style={{ color: 'var(--negative)' }}>{err('birthDate')}</p> : <p className="xs dim">{latest && earliest ? `You start at ${MIN_START_AGE}. On your starting date, ${longDate(d.startDate)}, that means a birth date from ${longDate(earliest)} to ${longDate(latest)}. You can change the starting date on Starting Point.` : `You start at ${MIN_START_AGE}.`}</p>}
       {age !== null && age >= 0 && (
