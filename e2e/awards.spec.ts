@@ -405,6 +405,16 @@ test('Venice: selection for the Competition is not a win; its prizes are decided
   const s = await readSavedState(page);
   expect(s.projects[0].obligations.flatMap((o: State) => o.postings).filter((x: State) => x.kind === 'settle' && x.key === 'fee:venice-2026:competition')).toHaveLength(1);
   expect(s.editions.find((e: State) => e.id === 'venice-2026').entries.filter((x: State) => x.via === 'selection').every((x: State) => x.fee === 0)).toBe(true);
+  // The recorded results stand beside the player's competition, apart, and untouched by it (V6-006; from November 14,
+  // 2026). The real ceremony was on September 12, after the game's own, so before then nothing recorded is shown; after
+  // it, the real Golden Lion is recorded as Woman Unknown whatever the game decided, and the game's own are labelled simulated.
+  const recorded = page.getByRole('region', { name: 'Recorded Results' });
+  await expect(recorded).toContainText('have been announced yet.');
+  await advanceUntil(page, '2026-09-13');
+  await openEvent(page, 'Glass Orchard', 'Venice International Film Festival 2026');
+  await expect(recorded.getByRole('list', { name: 'Recorded Results' })).toContainText('Golden Lion For Best Film: Woman Unknown.');
+  await expect(categories(page)).toContainText(/Simulated results from .+, 2026: the game decides them among the work it follows\./);
+  expect(JSON.stringify(s)).not.toContain('Woman Unknown'); // nothing recorded is written into the save
   await page.screenshot({ path: `test-results/awards-venice-${test.info().project.name}.png`, fullPage: true });
   await categories(page).screenshot({ path: `test-results/awards-venice-sections-${test.info().project.name}.png` });
 });
