@@ -91,3 +91,14 @@ details.fine[open] > summary { margin-bottom: 0; }
 .bank-toasts { position: sticky; top: var(--s2); z-index: 5; display: grid; gap: var(--s2); margin-bottom: var(--s3); }
 .bank-toasts .callout { margin: 0; }
 .bank-page { min-width: 0; }
+/* On a touch screen, 1221's inspector links (an account's name, its number, the bank) are tapped, not clicked: each is
+   at least 44 pixels tall and kept 4 pixels from the next, as the rest of SLATE's controls are. A link inside a sentence
+   is as tall as its line. Found by the UI audit's walk on the iPhones (WebKit), November 14, 2026. */
+@media (pointer: coarse) {
+  .bank-page button.link { min-height: 44px; display: inline-flex; align-items: center; margin-block: 4px; }
+}
+/* An account's name and its number under it, and links in a wrapped line of the bank's glance, are kept 4 pixels apart
+   for every pointer (the UI audit's walk, November 14, 2026: they touched at every size). */
+.bank-page h2:has(> button.link) { margin-bottom: var(--s1); }
+.bank-page p:has(> button.link) { line-height: 1.9; }
+.bank-page p > button.link { line-height: 1.3; }
