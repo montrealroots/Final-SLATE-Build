@@ -12,6 +12,7 @@
 import design from '../data/reputation-design.json';
 import { ledgerTotals } from './budget';
 import { reliability, type JobRole } from './jobs';
+import { institution, type Recipient } from './awards';
 import type { GameState, Project } from './types';
 
 export interface CraftRecord { craft: number | null; works: { title: string; score: number }[] }
@@ -97,10 +98,15 @@ export const contribution = (score: number): number => {
   return Math.min(hi, Math.max(lo, (score - REPUTATION_MODEL.score_midpoint) / REPUTATION_MODEL.score_scale));
 };
 
-/** A standing from a role's completed works' scores, and the grade it supports. Pure. */
-export function standingFrom(role: StandingRole, scores: number[]): Standing {
+/**
+ * A standing from a role's completed works' scores, and the grade it supports. Pure. `honours` are the role's honours
+ * (honourScores): events in the standing like a work's score, never works themselves, so no grade's count of completed
+ * works is met by prizes alone.
+ */
+export function standingFrom(role: StandingRole, scores: number[], honours: number[] = []): Standing {
   const m = REPUTATION_MODEL;
-  const standing = Math.round(m.score_midpoint + (m.score_scale * scores.reduce((a, x) => a + contribution(x), 0)) / (m.prior_weight + scores.length));
+  const events = [...scores, ...honours];
+  const standing = Math.round(m.score_midpoint + (m.score_scale * events.reduce((a, x) => a + contribution(x), 0)) / (m.prior_weight + events.length));
   const ok = ([at, name]: [number, string]) => standing >= at && scores.length >= (m.requires_minimum_completed_works[name] ?? 0);
   const grade = [...m.grades].reverse().find(ok)?.[1] ?? m.grades[0][1];
   const higher = m.grades.find(([at, name]) => at > (m.grades.find((g) => g[1] === grade)![0]) && !ok([at, name]));
@@ -109,10 +115,46 @@ export function standingFrom(role: StandingRole, scores: number[]): Standing {
   return { role, works: scores.length, standing, grade, next };
 }
 
-/** The player's standing in each role, from the delivered work they did in it. Producing reads how the work was received. */
+/**
+ * Honours as recognition (the design's own dimension; from November 14, 2026). Until then a selection, a nomination or a
+ * win changed nothing but the honours list: the feature proofs found festival results reached no offer, rate or grade
+ * (docs/v10/proof/off-edition-deadline.json). Each honour of the player's own work is one event in the role its category
+ * honours, worth a work scored as below. Game calibration.
+ */
+export const HONOUR_SCORE: Record<string, number> = { selected: 70, mention: 70, nominated: 80, won: 95 };
+const RECIPIENT_ROLE: Partial<Record<Recipient, StandingRole>> = {
+  director: 'directing', writer: 'writing',
+  lead: 'acting', supporting: 'acting', voice: 'acting', ensemble: 'acting', guest: 'acting', performer: 'acting', host: 'acting', narrator: 'acting',
+  project: 'producing', producer: 'producing', national: 'producing',
+};
+
+/** The scores of the player's honours in a role: each entry of a work of theirs that was selected, nominated, mentioned or won. */
+export function honourScores(s: GameState, role: StandingRole): number[] {
+  const out: number[] = [];
+  for (const ed of s.editions ?? []) {
+    let inst: ReturnType<typeof institution>;
+    try { inst = institution(ed.institutionId); } catch { continue; }
+    for (const e of ed.entries) {
+      const score = HONOUR_SCORE[e.status];
+      const p = score ? s.projects.find((x) => x.id === e.projectId) : undefined;
+      if (!p) continue;
+      const cat = inst.categories.find((c) => c.id === e.categoryId);
+      const r = cat && RECIPIENT_ROLE[cat.recipient];
+      if (!r || r !== role) continue;
+      // Directing and writing honour the player only where they directed or wrote it; acting, where they performed.
+      if (r === 'directing' && !p.episodes.some((x) => x.director === 'player')) continue;
+      if (r === 'writing' && !p.episodes.some((x) => x.writer === 'player')) continue;
+      if (r === 'acting' && !e.recipients.some((id) => p.credits.find((c) => c.id === id)?.person === 'player')) continue;
+      out.push(score);
+    }
+  }
+  return out;
+}
+
+/** The player's standing in each role, from the delivered work they did in it and its honours. Producing reads how the work was received. */
 export function standings(s: GameState): Standing[] {
   return [
-    ...(['writing', 'directing', 'acting'] as const).map((r) => standingFrom(r, roleCraft(s, r).works.map((w) => w.score))),
-    standingFrom('producing', delivered(s).map((p) => p.quality!.reception)),
+    ...(['writing', 'directing', 'acting'] as const).map((r) => standingFrom(r, roleCraft(s, r).works.map((w) => w.score), honourScores(s, r))),
+    standingFrom('producing', delivered(s).map((p) => p.quality!.reception), honourScores(s, 'producing')),
   ];
 }

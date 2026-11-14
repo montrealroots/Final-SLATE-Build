@@ -23,10 +23,17 @@ Run the proofs with `npm run proof` (`PROBES=id,id` for some, `SEEDS=n` to chang
 - **No SLATE player could ever borrow.** The bank counts wages from transactions marked `salary`, and SLATE posts its
   pay as `slate:paid-work`. So no bank would lend, and every income test failed. Fixed: `isWages` in
   `bankworld/core/ledger.ts` counts outside work's pay and a first-look deal's overhead (`tests/v10-wages.test.ts`).
+- **Festival and awards honours reached nothing.** A selection, a nomination or a win changed no offer, rate or grade.
+  Fixed: each honour of the player's own work is an event in the standing of the role its category honours, worth a work
+  scored 70 (selected or mentioned), 80 (nominated) or 95 (won), game calibration (`reputation.ts` `HONOUR_SCORE`); it is
+  never a completed work, so no grade's count is met by prizes alone (`tests/v10-honours.test.ts`).
+- **Night shoots cost what days did,** though the Time Of Day control was said to set the day's fees. Fixed: everyone on
+  set is paid a quarter more on a night day, priced in the estimate and said on the call sheet (`rates.ts`
+  `NIGHT_PREMIUM`, game calibration).
+- **Costs don't depend on where you shoot.** Basing a production in Los Angeles rather than London changed its weather,
+  not its prices. Open.
 - **Cash has no use.** Cash taken out of a machine is spent only on food in 1221's spending, which SLATE left out. Not
   fixed yet: the matrix shows it as "no downstream effect".
-- **Festival selections don't reach outside work.** Entering awards moves selections and money, but not the work you're
-  offered. To look at.
 - **The harness's own faults**, found and fixed before any result was kept: the backer kind was misnamed; a run-once flag
   was shared across seeds; the test helper's fixture money was taken out of played careers.
 
