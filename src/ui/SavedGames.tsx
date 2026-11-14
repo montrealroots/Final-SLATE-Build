@@ -240,7 +240,7 @@ export function SettingsPanel() {
         store.emit();
       }} />
       {(smallScreen() || layoutMode() === 'phone') && (
-        <Check label="Phone Layout" hint="Off, this screen shows the desktop's layout, shrunk to fit; pinch to zoom in. On, the page rearranges for the phone: a menu for the sections, one column, larger text." checked={layoutMode() === 'phone'} onChange={(v) => { setLayoutMode(v ? 'phone' : 'desktop'); store.emit(); }} />
+        <Check label="Phone Layout" hint="On, the page is laid out for the phone: a menu for the sections, one column, larger text. Off, this screen shows the desktop's layout shrunk to fit, which you can pinch to zoom." checked={layoutMode() === 'phone'} onChange={(v) => { setLayoutMode(v ? 'phone' : 'desktop'); store.emit(); }} />
       )}
       {s.state && (
         <Check label="Wake Me For Obligations" hint="Reminders and call times wake you during Sleep." checked={s.state.settings.wakeForObligations}

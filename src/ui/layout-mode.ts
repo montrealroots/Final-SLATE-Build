@@ -1,6 +1,8 @@
-// Phones show the desktop's layout, shrunk to fit the screen (the owner, November 13, 2026: "make the phone screen the
-// same as the desktop so if you have to shrink it for it to fit screen do so"). Until then a phone got its own layout:
-// the rail as a drawer, the bar in two rows, every grid in one column, so a Budget page ran 53,000 pixels tall.
+// Phones show their own readable, responsive layout (the owner's v8 package, decision 9, from November 14, 2026: "The
+// phone UI is readable and responsive", superseding the scaled desktop): the rail as a drawer, one column, larger
+// controls. From November 13 to 14, 2026 a phone showed the desktop's layout shrunk to fit (the owner then: "make the
+// phone screen the same as the desktop so if you have to shrink it for it to fit screen do so"); that stays a choice in
+// Settings, per device, and is no longer the default.
 //
 // How: on a screen where the rail would fold into a drawer (under 901 CSS pixels wide, or under 501 tall), the page is
 // laid out DESKTOP_WIDTH wide, as a desktop is, and the browser scales it down to the screen. Pinch zoom still works.
@@ -21,7 +23,7 @@ const DESKTOP_HEIGHT = 520;
 export type LayoutMode = 'desktop' | 'phone';
 
 export function layoutMode(): LayoutMode {
-  try { return localStorage.getItem(KEY) === 'phone' ? 'phone' : 'desktop'; } catch { return 'desktop'; }
+  try { return localStorage.getItem(KEY) === 'desktop' ? 'desktop' : 'phone'; } catch { return 'phone'; }
 }
 
 /** The screen's width and height in CSS pixels as it is held now (iOS reports its portrait size whichever way it is held). */
@@ -51,7 +53,7 @@ export function applyLayout(mode: LayoutMode = layoutMode()): void {
 }
 
 export function setLayoutMode(mode: LayoutMode): void {
-  try { if (mode === 'phone') localStorage.setItem(KEY, 'phone'); else localStorage.removeItem(KEY); } catch { /* a device that keeps nothing shows the desktop's */ }
+  try { if (mode === 'desktop') localStorage.setItem(KEY, 'desktop'); else localStorage.removeItem(KEY); } catch { /* a device that keeps nothing shows the phone's own */ }
   applyLayout(mode);
 }
 
