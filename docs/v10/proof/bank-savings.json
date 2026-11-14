@@ -28,6 +28,9 @@
   "backerDeals": 0,
   "leftInProjects": 0,
   "jobsDone": 1.133,
+  "jobsWithdrawn": 0,
+  "jobsDeclined": 0,
+  "ratesAgreed": 0,
   "logLines": 120.2,
   "hired": 16,
   "castRates": 3219.333,
@@ -37,7 +40,7 @@
   "offersDeclined": 0.267,
   "countersSeen": 0,
   "countersDeclined": 0.1,
-  "spent": 198171.333,
+  "spent": 67856,
   "shootDays": 7.5,
   "lostDays": 1.5,
   "daysToDeliver": 33.15,
@@ -77,6 +80,9 @@
   "backerDeals": 0,
   "leftInProjects": 0,
   "jobsDone": 1.133,
+  "jobsWithdrawn": 0,
+  "jobsDeclined": 0,
+  "ratesAgreed": 0,
   "logLines": 120.2,
   "hired": 16,
   "castRates": 3219.333,
@@ -86,7 +92,7 @@
   "offersDeclined": 0.267,
   "countersSeen": 0,
   "countersDeclined": 0.1,
-  "spent": 198171.333,
+  "spent": 67856,
   "shootDays": 7.5,
   "lostDays": 1.5,
   "daysToDeliver": 33.15,
@@ -228,6 +234,27 @@
    "n": 30
   },
   "jobsDone": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 30
+  },
+  "jobsWithdrawn": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 30
+  },
+  "jobsDeclined": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 30
+  },
+  "ratesAgreed": {
    "mean": 0,
    "lo": 0,
    "hi": 0,
@@ -456,7 +483,7 @@
  ],
  "verdict": "proven",
  "hashes": {
-  "src/engine/bankworld/systems/banking.ts": "a566beef10a33cd8",
-  "tests/proof/career.ts": "feee2c5d8a7e1266"
+  "src/engine/bankworld/systems/banking.ts": "7862b6922c3ce34a",
+  "tests/proof/career.ts": "6e652367d4da531d"
  }
 }

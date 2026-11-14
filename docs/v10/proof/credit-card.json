@@ -28,6 +28,9 @@
   "backerDeals": 0,
   "leftInProjects": 0,
   "jobsDone": 0.8,
+  "jobsWithdrawn": 0,
+  "jobsDeclined": 0,
+  "ratesAgreed": 0,
   "logLines": 117.733,
   "hired": 16,
   "castRates": 3210.333,
@@ -37,7 +40,7 @@
   "offersDeclined": 0.5,
   "countersSeen": 0,
   "countersDeclined": 0,
-  "spent": 216580.667,
+  "spent": 67993.667,
   "shootDays": 7.267,
   "lostDays": 1.267,
   "daysToDeliver": 33.067,
@@ -77,6 +80,9 @@
   "backerDeals": 0,
   "leftInProjects": 0,
   "jobsDone": 0.967,
+  "jobsWithdrawn": 0,
+  "jobsDeclined": 0,
+  "ratesAgreed": 0,
   "logLines": 124.067,
   "hired": 16,
   "castRates": 3210.333,
@@ -86,7 +92,7 @@
   "offersDeclined": 0.5,
   "countersSeen": 0,
   "countersDeclined": 0,
-  "spent": 193915.167,
+  "spent": 67815.667,
   "shootDays": 7.267,
   "lostDays": 1.267,
   "daysToDeliver": 33.067,
@@ -104,7 +110,7 @@
   "bankFees": 0,
   "owed": 0,
   "accounts": 2,
-  "rewards": 0,
+  "rewards": 1,
   "fired": 0
  },
  "diff": {
@@ -234,6 +240,27 @@
    "changed": 19,
    "n": 30
   },
+  "jobsWithdrawn": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 30
+  },
+  "jobsDeclined": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 30
+  },
+  "ratesAgreed": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 30
+  },
   "logLines": {
    "mean": 6.333,
    "lo": 3.911,
@@ -298,10 +325,10 @@
    "n": 30
   },
   "spent": {
-   "mean": -22665.5,
-   "lo": -44516.225,
-   "hi": -814.775,
-   "changed": 29,
+   "mean": -178,
+   "lo": -904.243,
+   "hi": 548.243,
+   "changed": 27,
    "n": 30
   },
   "shootDays": {
@@ -424,10 +451,10 @@
    "n": 30
   },
   "rewards": {
-   "mean": 0,
-   "lo": 0,
-   "hi": 0,
-   "changed": 0,
+   "mean": 1,
+   "lo": 1,
+   "hi": 1,
+   "changed": 30,
    "n": 30
   },
   "fired": {
@@ -464,7 +491,7 @@
  ],
  "verdict": "proven",
  "hashes": {
-  "src/engine/bankworld/systems/banking.ts": "a566beef10a33cd8",
-  "tests/proof/career.ts": "feee2c5d8a7e1266"
+  "src/engine/bankworld/systems/banking.ts": "7862b6922c3ce34a",
+  "tests/proof/career.ts": "6e652367d4da531d"
  }
 }

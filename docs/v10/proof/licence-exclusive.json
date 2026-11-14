@@ -27,15 +27,19 @@
   "backerDeals": 0,
   "leftInProjects": 0,
   "jobsDone": 0.95,
+  "jobsWithdrawn": 0,
+  "jobsDeclined": 0,
+  "ratesAgreed": 0,
   "logLines": 126.52,
   "hired": 16,
   "castRates": 3209.1,
+  "releaseDelay": 89.997,
   "licenceDeals": 0.85,
   "licenceFee": 15150,
   "offersDeclined": 1.39,
   "countersSeen": 0,
   "countersDeclined": 0.05,
-  "spent": 212656.75,
+  "spent": 71323,
   "shootDays": 7.4,
   "lostDays": 1.4,
   "daysToDeliver": 33.15,
@@ -47,7 +51,8 @@
   "standing.writing": 50,
   "standing.directing": 54.78,
   "standing.acting": 50,
-  "standing.producing": 53.11
+  "standing.producing": 53.11,
+  "fired": 0
  },
  "variant": {
   "delivered": 2,
@@ -68,15 +73,19 @@
   "backerDeals": 0,
   "leftInProjects": 0,
   "jobsDone": 0.96,
+  "jobsWithdrawn": 0,
+  "jobsDeclined": 0,
+  "ratesAgreed": 0,
   "logLines": 126.25,
   "hired": 16,
   "castRates": 3209.1,
+  "releaseDelay": 79.427,
   "licenceDeals": 1.06,
   "licenceFee": 24100,
   "offersDeclined": 2.22,
   "countersSeen": 0,
   "countersDeclined": 0.05,
-  "spent": 202261.95,
+  "spent": 71594.6,
   "shootDays": 7.4,
   "lostDays": 1.4,
   "daysToDeliver": 33.15,
@@ -88,7 +97,8 @@
   "standing.writing": 50,
   "standing.directing": 54.81,
   "standing.acting": 50,
-  "standing.producing": 53.09
+  "standing.producing": 53.09,
+  "fired": 0
  },
  "diff": {
   "delivered": {
@@ -217,6 +227,27 @@
    "changed": 19,
    "n": 100
   },
+  "jobsWithdrawn": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 100
+  },
+  "jobsDeclined": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 100
+  },
+  "ratesAgreed": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 100
+  },
   "logLines": {
    "mean": -0.27,
    "lo": -1.236,
@@ -236,6 +267,13 @@
    "lo": 0,
    "hi": 0,
    "changed": 0,
+   "n": 100
+  },
+  "releaseDelay": {
+   "mean": -10.57,
+   "lo": -15.453,
+   "hi": -5.687,
+   "changed": 39,
    "n": 100
   },
   "licenceDeals": {
@@ -274,10 +312,10 @@
    "n": 100
   },
   "spent": {
-   "mean": -10394.8,
-   "lo": -19403.366,
-   "hi": -1386.234,
-   "changed": 69,
+   "mean": 271.6,
+   "lo": -87.723,
+   "hi": 630.923,
+   "changed": 33,
    "n": 100
   },
   "shootDays": {
@@ -363,6 +401,13 @@
    "hi": 0.157,
    "changed": 25,
    "n": 100
+  },
+  "fired": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 100
   }
  },
  "bites": [
@@ -380,6 +425,6 @@
  "verdict": "proven",
  "hashes": {
   "src/engine/release-plan.ts": "95604b64365eba40",
-  "tests/proof/career.ts": "b0c11efa781bafe6"
+  "tests/proof/career.ts": "6e652367d4da531d"
  }
 }

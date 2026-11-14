@@ -27,15 +27,19 @@
   "backerDeals": 0,
   "leftInProjects": 0,
   "jobsDone": 1.233,
+  "jobsWithdrawn": 0,
+  "jobsDeclined": 0,
+  "ratesAgreed": 0,
   "logLines": 125.4,
   "hired": 16,
   "castRates": 3254,
+  "releaseDelay": 103.083,
   "licenceDeals": 0,
   "licenceFee": 0,
   "offersDeclined": 0.6,
   "countersSeen": 0,
   "countersDeclined": 0.033,
-  "spent": 257910.5,
+  "spent": 70057.667,
   "shootDays": 7.633,
   "lostDays": 1.633,
   "daysToDeliver": 33.667,
@@ -47,7 +51,8 @@
   "standing.writing": 50,
   "standing.directing": 55.033,
   "standing.acting": 50,
-  "standing.producing": 53.833
+  "standing.producing": 53.833,
+  "fired": 0
  },
  "variant": {
   "delivered": 2,
@@ -68,15 +73,19 @@
   "backerDeals": 0,
   "leftInProjects": 0,
   "jobsDone": 1.167,
+  "jobsWithdrawn": 0,
+  "jobsDeclined": 0,
+  "ratesAgreed": 0,
   "logLines": 106.667,
   "hired": 16,
   "castRates": 3252.667,
+  "releaseDelay": 20.833,
   "licenceDeals": 0,
   "licenceFee": 0,
   "offersDeclined": 2.433,
   "countersSeen": 0,
   "countersDeclined": 0,
-  "spent": 87716.667,
+  "spent": 62685.667,
   "shootDays": 7.633,
   "lostDays": 1.633,
   "daysToDeliver": 33.667,
@@ -88,7 +97,8 @@
   "standing.writing": 50,
   "standing.directing": 54.9,
   "standing.acting": 50,
-  "standing.producing": 53.833
+  "standing.producing": 53.833,
+  "fired": 0
  },
  "diff": {
   "delivered": {
@@ -217,6 +227,27 @@
    "changed": 16,
    "n": 30
   },
+  "jobsWithdrawn": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 30
+  },
+  "jobsDeclined": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 30
+  },
+  "ratesAgreed": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 30
+  },
   "logLines": {
    "mean": -18.733,
    "lo": -21.699,
@@ -236,6 +267,13 @@
    "lo": -4.06,
    "hi": 1.393,
    "changed": 1,
+   "n": 30
+  },
+  "releaseDelay": {
+   "mean": -82.25,
+   "lo": -90.245,
+   "hi": -74.255,
+   "changed": 30,
    "n": 30
   },
   "licenceDeals": {
@@ -274,9 +312,9 @@
    "n": 30
   },
   "spent": {
-   "mean": -170193.833,
-   "lo": -203196.782,
-   "hi": -137190.885,
+   "mean": -7372,
+   "lo": -8286.202,
+   "hi": -6457.798,
    "changed": 30,
    "n": 30
   },
@@ -363,6 +401,13 @@
    "hi": 0.74,
    "changed": 22,
    "n": 30
+  },
+  "fired": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 30
   }
  },
  "bites": [
@@ -388,6 +433,6 @@
  "verdict": "proven",
  "hashes": {
   "src/engine/finish.ts": "076583292e9a60ad",
-  "tests/proof/career.ts": "b0c11efa781bafe6"
+  "tests/proof/career.ts": "6e652367d4da531d"
  }
 }

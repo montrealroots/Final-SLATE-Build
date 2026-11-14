@@ -27,6 +27,9 @@
   "backerDeals": 0,
   "leftInProjects": 0,
   "jobsDone": 1.033,
+  "jobsWithdrawn": 0,
+  "jobsDeclined": 0,
+  "ratesAgreed": 0,
   "logLines": 119.067,
   "hired": 16,
   "castRates": 3230.667,
@@ -36,7 +39,7 @@
   "offersDeclined": 0.433,
   "countersSeen": 0,
   "countersDeclined": 0.067,
-  "spent": 230193.833,
+  "spent": 67398.667,
   "shootDays": 6.933,
   "lostDays": 0.933,
   "daysToDeliver": 32.433,
@@ -70,6 +73,9 @@
   "backerDeals": 0,
   "leftInProjects": 155008.333,
   "jobsDone": 1.033,
+  "jobsWithdrawn": 0,
+  "jobsDeclined": 0,
+  "ratesAgreed": 0,
   "logLines": 114.533,
   "hired": 16,
   "castRates": 3230.667,
@@ -221,6 +227,27 @@
    "changed": 16,
    "n": 30
   },
+  "jobsWithdrawn": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 30
+  },
+  "jobsDeclined": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 30
+  },
+  "ratesAgreed": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 30
+  },
   "logLines": {
    "mean": -4.533,
    "lo": -7.995,
@@ -285,10 +312,10 @@
    "n": 30
   },
   "spent": {
-   "mean": -162264.5,
-   "lo": -198487.262,
-   "hi": -126041.738,
-   "changed": 30,
+   "mean": 530.667,
+   "lo": -581.498,
+   "hi": 1642.831,
+   "changed": 28,
    "n": 30
   },
   "shootDays": {
@@ -398,6 +425,6 @@
  "verdict": "proven",
  "hashes": {
   "src/engine/personal.ts": "4e322ab75868ea71",
-  "tests/proof/career.ts": "feee2c5d8a7e1266"
+  "tests/proof/career.ts": "6e652367d4da531d"
  }
 }
