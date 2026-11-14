@@ -419,6 +419,33 @@ test('Venice: selection for the Competition is not a win; its prizes are decided
   await categories(page).screenshot({ path: `test-results/awards-venice-sections-${test.info().project.name}.png` });
 });
 
+test('J16: an earlier release loses a section that takes only unreleased work, said on the section, and only for that film', async ({ page }) => {
+  // The v6 package's J16 (from November 14, 2026): "eligibility loss from early release". Labelled fixtures: two films
+  // delivered in January, one of them released at home in March, before Venice's Giornate Degli Autori.
+  await seededLife(page, 'gb-london', '2026-05-01', 8302);
+  await newProject(page, { title: 'Still Unreleased', format: 'Feature Film', runtime: '95' });
+  await nav(page, 'Projects');
+  await newProject(page, { title: 'Out At Home', format: 'Feature Film', runtime: '95' });
+  await editSave(page, (s) => {
+    deliver(s, 'Still Unreleased', { format: 'feature', runtime: 95, at: '2026-01-10T12:00:00Z', base: 'ar-buenos-aires' });
+    deliver(s, 'Out At Home', { format: 'feature', runtime: 95, at: '2026-01-10T12:00:00Z', base: 'ar-buenos-aires', releases: [{ id: 'r1', route: 'theatrical', date: '2026-03-01', territories: ['AR'], distributor: 'Cine Sur (Fixture)', note: '', status: 'released' }] });
+  });
+  await openEvent(page, 'Still Unreleased', 'Venice International Film Festival 2026');
+  const reason = /It has already been released, and this section only takes work not yet released in cinemas, on television, online or on home video\./;
+  await filterTo(page, 'Still Unreleased');
+  await expect(row(page, 'Giornate Degli Autori')).not.toContainText(reason);
+  await filterTo(page, 'Out At Home');
+  await expect(row(page, 'Giornate Degli Autori')).toContainText(reason);
+  // Prepared anyway, it can't be submitted, and says why.
+  await row(page, 'Giornate Degli Autori').getByRole('button', { name: 'Prepare Submission' }).click();
+  const dialog = page.getByRole('dialog', { name: 'Prepare Submission' });
+  await dialog.getByLabel('Project').selectOption({ label: 'Out At Home' });
+  await expect(dialog).toContainText(reason);
+  await expect(dialog.getByRole('button', { name: 'Submit Entry' })).toBeDisabled();
+  await dialog.getByLabel('Project').selectOption({ label: 'Still Unreleased' });
+  await expect(dialog).not.toContainText(reason);
+});
+
 test('the Annies held one TV category until 2026 and four from 2027: each edition shows its own', async ({ page }) => {
   await quickLife(page, 'us-los-angeles', '2026-01-05');
   await nav(page, 'Calendar');
