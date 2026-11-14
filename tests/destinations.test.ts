@@ -135,12 +135,11 @@ describe('a film with a location filmed far away, made', () => {
 describe('a roof over an exterior', () => {
   // The same film three times, one seed, the Quay filmed in Tromsø from early January: in the open at a port, on a
   // soundstage, and at a port whose chosen site is the stage set built to match. Only the roof differs.
-  const made = (roof: 'none' | 'soundstage' | 'stage-set') => {
-    // Labelled fixture: the seed. From November 12, 2026 a travel day moves the Quay days one working day on; seed
-    // 'destinations-roof' then fell on a dry, light day in the open, so this one was chosen for a day the weather stops.
-    // Re-chosen November 14, 2026, when the fixtures' worlds changed with the player's age: 'destinations-roof-3' then
-    // stopped none of its days, and of six others only this one stopped any.
-    const { s, p } = film('destinations-roof-6');
+  const made = (roof: 'none' | 'soundstage' | 'stage-set', seed: string) => {
+    // Labelled fixture: the seed. It was chosen by hand three times as other changes moved the shoot's dates (a travel
+    // day on November 12, 2026; the player's age, and the prep that waits for a place's permits, on November 14). From
+    // then the test finds the first seed whose open-air days the weather stops, and holds the roofs to that same seed.
+    const { s, p } = film(seed);
     setFilmedAt(p, 'Quay', { placeId: 'no-tromso', kind: roof === 'soundstage' ? 'soundstage' : 'port' });
     if (roof === 'stage-set') p.locationChoices!.Quay.main = 'stage';
     p.tasks = buildTasks(p);
@@ -154,11 +153,11 @@ describe('a roof over an exterior', () => {
     return { delivered: !!p.delivered, stopped, warned };
   };
   it('in the open the weather or the dark stops days there; under a soundstage roof or on a stage set none is stopped and no warning is sent', () => {
-    const open = made('none');
-    expect(open.delivered).toBe(true);
-    expect(open.stopped).toBeGreaterThan(0);
-    expect(made('soundstage')).toEqual({ delivered: true, stopped: 0, warned: 0 });
-    expect(made('stage-set')).toEqual({ delivered: true, stopped: 0, warned: 0 });
-  }, 120_000);
+    const seed = Array.from({ length: 12 }, (_, i) => `destinations-roof-${i + 1}`).find((x) => made('none', x).stopped > 0);
+    expect(seed, 'in twelve worlds the weather never stopped an open-air day').toBeDefined();
+    expect(made('none', seed!).delivered).toBe(true);
+    expect(made('soundstage', seed!)).toEqual({ delivered: true, stopped: 0, warned: 0 });
+    expect(made('stage-set', seed!)).toEqual({ delivered: true, stopped: 0, warned: 0 });
+  }, 600_000);
 });
 

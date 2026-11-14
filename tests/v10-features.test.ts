@@ -14,6 +14,7 @@ import { hashOf, type Result } from './proof/probe';
 type Status = 'proven' | 'does not bite' | 'no downstream effect' | 'stale' | 'not a feature' | 'not yet proven';
 interface Row { id: string; kind: Feature['kind']; name: string; module: string; status: Status; proof: string; why: string }
 
+const EXPLAINED = JSON.parse(readFileSync('docs/v10/explained.json', 'utf8')) as Record<string, string>;
 const NOT_FEATURES = JSON.parse(readFileSync('docs/v10/not-features.json', 'utf8')) as Record<string, string>;
 const RESULTS: Result[] = existsSync('docs/v10/proof') ? readdirSync('docs/v10/proof').filter((f) => f.endsWith('.json')).map((f) => JSON.parse(readFileSync(`docs/v10/proof/${f}`, 'utf8'))) : [];
 
@@ -32,7 +33,8 @@ function matrix(): Row[] {
     const best = fresh.find((x) => x.verdict === 'proven') ?? fresh[0];
     if (!best) return { id: f.id, kind: f.kind, name: f.name, module: f.module, status: 'stale', proof: r.map((x) => x.id).join(', '), why: 'measured before the code it reads last changed' };
     const moved = [...best.bites, ...best.downstream].filter((m) => m.ok).map((m) => `${m.metric} ${best.diff[m.metric].mean > 0 ? '+' : ''}${best.diff[m.metric].mean}`);
-    return { id: f.id, kind: f.kind, name: f.name, module: f.module, status: best.verdict, proof: `${best.id} (${best.seeds} seeds)`, why: moved.join('; ') };
+    const why = best.verdict === 'proven' ? moved.join('; ') : [moved.length ? `moved: ${moved.join('; ')}` : 'nothing moved', EXPLAINED[best.id]].filter(Boolean).join('. ');
+    return { id: f.id, kind: f.kind, name: f.name, module: f.module, status: best.verdict, proof: `${best.id} (${best.seeds} seeds)`, why };
   });
 }
 
