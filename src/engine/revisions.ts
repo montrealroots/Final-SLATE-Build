@@ -6,9 +6,10 @@
 // re-recorded part's performance each count a little higher, once. The bonus sizes are game calibration.
 import { spend } from './budget';
 import { editScenes } from './finish';
-import { personById } from './people';
+import { covers, personById } from './people';
 import { assertEditable, sceneLabel } from './projects';
 import { dependents, t } from './production/tasks';
+import { RENDER_HOURS_PER_FRAME, RENDER_NODE_DAY_COST } from './production/rates';
 import type { GameState, Project, Task } from './types';
 
 export const EFFECTS_REVISION_GAIN = 5;
@@ -49,12 +50,23 @@ export function rerecordLines(state: GameState, p: Project, characterId: string)
  * animation, and the lighting, rendering and compositing on it. What is lost is the days already worked on them, which
  * the preview gives before anything is reset. Work not built on the animatic (designs, models, voices) stays.
  */
-export function animaticRevisionImpact(p: Project): { reset: Task[]; days: number } {
+export function animaticRevisionImpact(p: Project): { reset: Task[]; days: number; cost: number } {
   const a = p.tasks.find((x) => x.id === 'anim:animatic:all');
-  if (!a || a.done <= 0) return { reset: [], days: 0 };
+  if (!a || a.done <= 0) return { reset: [], days: 0, cost: 0 };
   const hit = dependents(p.tasks, a.id);
   const reset = [a, ...p.tasks.filter((x) => x !== a && hit.has(x.id) && x.done > 0)];
-  return { reset, days: Math.round(reset.reduce((n, x) => n + x.workedDays, 0) * 10) / 10 };
+  return { reset, days: Math.round(reset.reduce((n, x) => n + x.workedDays, 0) * 10) / 10, cost: Math.round(reset.reduce((n, x) => n + redoCost(p, x), 0)) };
+}
+
+/**
+ * What doing a task's finished work again costs, about: its person-days at the average day rate of the people hired for
+ * its role, or its frames at the render farm's node-day price (from November 14, 2026). Work the player does is unpaid.
+ */
+function redoCost(p: Project, x: Task): number {
+  if (x.roleId === 'render') return Math.ceil((x.done * RENDER_HOURS_PER_FRAME[p.axes.animationQuality]) / 24) * RENDER_NODE_DAY_COST;
+  if (!x.unitLabel.endsWith('days')) return 0;
+  const rates = p.hires.filter((h) => h.status === 'accepted' && covers(h.roleId, x.roleId)).map((h) => h.dayRate);
+  return rates.length ? x.done * (rates.reduce((m, r) => m + r, 0) / rates.length) : 0;
 }
 
 export function reviseAnimatic(p: Project): Task[] {

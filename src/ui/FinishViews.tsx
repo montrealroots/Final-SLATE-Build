@@ -34,6 +34,8 @@ import { FollowButton } from './Places';
 import { ReadRules, RecordedResults } from './RecordedResults';
 import { editScenes } from '../engine/finish';
 import { animaticRevisionImpact, reviseAnimatic, reviseEffects, rerecordLines } from '../engine/revisions';
+import { forecastFinish } from '../engine/production/forecast';
+import { deals } from '../engine/finance';
 import { countryName } from '../world/gazetteer/gazetteer';
 import { EXCLUSIVE_DAYS, dubbingCost, offerConflicts, setReleaseVersion, versionLanguages, versionRefusal } from '../engine/finish';
 import { DUBBED_REACH } from '../engine/script-effects';
@@ -119,6 +121,7 @@ export function ProductionTab({ p }: { p: Project }) {
       <section className="card">
         <h2>Progress</h2>
         <p>{done} of {plural(p.tasks.length, 'task')} finished.</p>
+        <ForecastLines p={p} today={notStarted ? p.schedule.startDate! : today} />
         <div className="meter" role="img" aria-label={`${Math.round((done / p.tasks.length) * 100)} percent of tasks finished`}><span style={{ width: `${(done / p.tasks.length) * 100}%` }} /></div>
         {blocked.length > 0 && (
           <div className="callout callout-warning spaced">
@@ -173,9 +176,27 @@ export function ProductionTab({ p }: { p: Project }) {
   );
 }
 
+/**
+ * When the work left finishes at today's pace, what sets it, and any backer's delivery date it runs past (forecast.ts;
+ * the owner's v6 package, J06; from November 14, 2026). A rig fault, the render farm's size or the people hired move it.
+ */
+function ForecastLines({ p, today }: { p: Project; today: string }) {
+  const fc = forecastFinish(p, today);
+  if (!fc) return null;
+  const zone = getPlace(p.axes.basePlaceId).zone;
+  const late = deals(p).filter((d) => (d.status === 'accepted' || d.status === 'breached') && d.terms.deliverBy && dateKey(d.terms.deliverBy, zone) < fc.finish);
+  return (
+    <>
+      <p>At today&apos;s pace, the work left finishes around {formatDateKey(fc.finish, true)}, {plural(fc.workingDays, 'working day')} away. It waits first on {fc.chain.slice(0, 3).join(', then ')}.</p>
+      {late.map((d) => <p key={d.id} className="callout callout-warning">That is after {formatDateKey(dateKey(d.terms.deliverBy!, zone), true)}, when {d.backer} expects delivery.</p>)}
+    </>
+  );
+}
+
 /** Revising the animatic (revisions.ts; the owner's v6 package, J05): what starts over, and the days lost, before anything is reset. */
 function AnimaticCard({ p }: { p: Project }) {
-  const [preview, setPreview] = useState<{ names: string[]; days: number } | null>(null);
+  const g = useGame();
+  const [preview, setPreview] = useState<{ names: string[]; days: number; cost: number; from?: string; to?: string } | null>(null);
   const [err, setErr] = useState<string | null>(null);
   const a = p.tasks.find((t) => t.id === 'anim:animatic:all')!;
   return (
@@ -183,7 +204,14 @@ function AnimaticCard({ p }: { p: Project }) {
       <h2 id="animatic-h">Animatic</h2>
       <p className="dim">{a.status === 'done' ? 'The animatic is cut.' : a.done > 0 ? 'The animatic is being cut.' : 'The animatic hasn\'t been started.'} Revised before animation, the animatic is cut again, with any layouts and backgrounds begun on it. Revised after, the animation and everything built on it start over too. You see what starts over before anything does.</p>
       {a.done > 0 && !p.edit.pictureLocked && (
-        <button className="btn" onClick={() => { const i = animaticRevisionImpact(p); setPreview({ names: i.reset.map((x) => x.label), days: i.days }); }}>Revise The Animatic</button>
+        <button className="btn" onClick={() => {
+          const i = animaticRevisionImpact(p);
+          // The finish it moves, read on a copy with the revision applied (forecast.ts); nothing is reset until confirmed.
+          const today = dateKey(g.now, getPlace(p.axes.basePlaceId).zone);
+          const copy = structuredClone(p);
+          reviseAnimatic(copy);
+          setPreview({ names: i.reset.map((x) => x.label), days: i.days, cost: i.cost, from: forecastFinish(p, today)?.finish, to: forecastFinish(copy, today)?.finish });
+        }}>Revise The Animatic</button>
       )}
       {err && <p role="alert" style={{ color: 'var(--negative)' }}>{err}</p>}
       {preview && (
@@ -195,6 +223,8 @@ function AnimaticCard({ p }: { p: Project }) {
         }>
           <p>This work starts over, and the {plural(preview.days, 'day')} already worked on it are lost:</p>
           <ul aria-label="Work That Starts Over">{preview.names.map((n) => <li key={n}>{n}</li>)}</ul>
+          {preview.cost > 0 && <p>Doing it again costs about {money(preview.cost)} at your team&apos;s rates.</p>}
+          {preview.from && preview.to && <p>{preview.to === preview.from ? `The work left still finishes around ${formatDateKey(preview.from, true)}.` : `The work left then finishes around ${formatDateKey(preview.to, true)}, not ${formatDateKey(preview.from, true)}.`}</p>}
         </Modal>
       )}
     </section>
