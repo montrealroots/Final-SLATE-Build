@@ -52,6 +52,7 @@
   "standing.directing": 54.125,
   "standing.acting": 50,
   "standing.producing": 52.425,
+  "performance": 62.344,
   "fired": 0
  },
  "variant": {
@@ -98,6 +99,7 @@
   "standing.directing": 54.025,
   "standing.acting": 50,
   "standing.producing": 53.125,
+  "performance": 67.569,
   "fired": 0
  },
  "diff": {
@@ -402,6 +404,13 @@
    "changed": 31,
    "n": 40
   },
+  "performance": {
+   "mean": 5.225,
+   "lo": 4.8,
+   "hi": 5.65,
+   "changed": 40,
+   "n": 40
+  },
   "fired": {
    "mean": 0,
    "lo": 0,
@@ -412,8 +421,8 @@
  },
  "bites": [
   {
-   "metric": "quality.direction",
-   "ok": false
+   "metric": "performance",
+   "ok": true
   },
   {
    "metric": "overall",
@@ -434,7 +443,7 @@
    "ok": false
   }
  ],
- "verdict": "does not bite",
+ "verdict": "proven",
  "hashes": {
   "src/engine/production/shoot.ts": "891fa9e2b13b6e49",
   "tests/proof/career.ts": "2d4877367212a0ea"

@@ -87,6 +87,11 @@ Run the proofs with `npm run proof` (`PROBES=id,id` for some, `SEEDS=n` to chang
   no acting category takes a short, so it is now measured on a feature (written as supporting, the lead loses its three
   lead entries; no acting nomination came in either career, so nothing later moved yet). Swapping a rained-on exterior
   with an interior day never happened: the plan orders places by name and the default short's exterior came last.
+- **Rehearsal and scene length were proven once measured where they act:** rehearsal lifts the performances (+5.2) and
+  the film (+1.4 overall), not the direction's score the probe looked at; scenes twice as long make a film 22 minutes
+  longer that distributors offer $94k more for. A performer from the film catalog considered for the lead gives a cast
+  9.4 points more capable. The shoot call only acts when you miss it (asleep, away, at a plan): switched off in a
+  career that never misses one, nothing changes, so it is proven by sleeping through a call.
 - **Open, a decision for the owner:** what a writer's revision should look at (Structure, Dialogue, Pace and the rest) is
   a choice the game reads nowhere. It is left open in the matrix, not carried.
 - **By design, not fixed:** notes you write yourself change no assessment (`finish.ts`: quality can't be manufactured by

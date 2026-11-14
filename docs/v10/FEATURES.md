@@ -8,11 +8,11 @@ journey that shows it there.
 
 | Kind | proven | carried | does not bite | no downstream effect | stale | not a feature | not yet proven | All |
 |---|---|---|---|---|---|---|---|---|
-| action | 90 | 0 | 3 | 6 | 0 | 8 | 52 | 159 |
+| action | 92 | 0 | 3 | 6 | 0 | 8 | 50 | 159 |
 | bank | 10 | 0 | 0 | 5 | 0 | 0 | 39 | 54 |
-| scheduled | 27 | 0 | 6 | 5 | 3 | 3 | 22 | 66 |
-| field | 28 | 14 | 3 | 2 | 0 | 0 | 259 | 306 |
-| all | 155 | 14 | 12 | 18 | 3 | 11 | 372 | 585 |
+| scheduled | 29 | 0 | 7 | 5 | 0 | 3 | 22 | 66 |
+| field | 30 | 14 | 2 | 1 | 0 | 0 | 259 | 306 |
+| all | 161 | 14 | 12 | 17 | 0 | 11 | 370 | 585 |
 
 ## Rows
 
@@ -75,8 +75,8 @@ journey that shows it there.
 | declineFirstLook | action | src/engine/first-look.ts | proven | first-look-decline (30 seeds) | firstLookDeclined +1.3; firstLookActive -1.367; money -513714.867 |
 | drawDevelopment | action | src/engine/first-look.ts | not yet proven |  |  |
 | endFirstLook | action | src/engine/first-look.ts | proven | first-look-end (30 seeds) | firstLookEnded +1.433; money -391398.5 |
-| considerFor | action | src/engine/guests.ts | not yet proven |  |  |
-| considerPerson | action | src/engine/guests.ts | not yet proven |  |  |
+| considerFor | action | src/engine/guests.ts | proven | consider-real (40 seeds) | realCast +1.725; castCapability +9.356; performance +7.85; castRates +570.25 |
+| considerPerson | action | src/engine/guests.ts | proven | consider-real (40 seeds) | realCast +1.725; castCapability +9.356; performance +7.85; castRates +570.25 |
 | stopConsidering | action | src/engine/guests.ts | not yet proven |  |  |
 | treatAsAdult | action | src/engine/guests.ts | not yet proven |  |  |
 | acceptCounter | action | src/engine/hiring.ts | proven | counter-offers (30 seeds) | countersDeclined +89.333; spent +10760; quality.craft -59.65; overall -58.433; daysToDeliver -33.517 |
@@ -290,12 +290,12 @@ journey that shows it there.
 | screening | scheduled | src/engine/awards.ts | proven | attend-screening (30 seeds) | accepted +6.867; attended +5.367; offers +7.1 |
 | screening-reminder | scheduled | src/engine/awards.ts | not a feature |  | A notice: it tells the player a screening they were invited to is near. Attending is the screening itself and the RSVP, proven separately. |
 | season-decision | scheduled | src/engine/continuation.ts | not yet proven |  |  |
-| shoot-call | scheduled | src/engine/production/shoot.ts | stale | off-shoot-call | measured before the code it reads last changed |
-| shoot-wrap | scheduled | src/engine/production/shoot.ts | stale | off-shoot-wrap | measured before the code it reads last changed |
+| shoot-call | scheduled | src/engine/production/shoot.ts | does not bite | off-shoot-call (40 seeds) | nothing moved. Career not reached: the call checks the player is there and allowed to work; in a career at home they always are. Proven through work-permit, abroad. |
+| shoot-wrap | scheduled | src/engine/production/shoot.ts | proven | off-shoot-wrap (40 seeds) | delivered -2; revenue -137164.625; money -160388.041 |
 | studio-release | scheduled | src/engine/finish.ts | not yet proven |  |  |
 | wake | scheduled | src/engine/state.ts | not yet proven |  |  |
 | weather-check | scheduled | src/engine/production/shoot.ts | proven | weather-keep (60 seeds) | lostDays -1.3; overall +0.208; daysToDeliver -1.883; spent -3092.167 |
-| work-day | scheduled | src/engine/production/workday.ts | stale | off-work-day | measured before the code it reads last changed |
+| work-day | scheduled | src/engine/production/workday.ts | proven | off-work-day (40 seeds) | delivered -1.975; revenue -133664.375; money -156294.921 |
 | writing-day | scheduled | src/engine/writing-jobs.ts | not yet proven |  |  |
 | "Working Title" | field | everywhere a project is named | carried | tests/proposal.test.ts::makes one project | A name or a record, carried to everywhere a project is named: it decides nothing by its nature. |
 | "Format" | field | proposal.ts proposeFromSource; projects.ts, production/tasks.ts | not yet proven |  |  |
@@ -381,7 +381,7 @@ journey that shows it there.
 | {`Director For Episode ${e.number}`} | field | finish.ts assessEpisode; production/schedule.ts blocks | not yet proven |  |  |
 | "Director" | field | production/shoot.ts onSetHires; finish.ts computeCredits, assessQuality | not yet proven |  |  |
 | "Production Start" | field | production/schedule.ts generatePlan | not yet proven |  |  |
-| "Rehearsal Days" | field | production/shoot.ts; hiring.ts (booked days) | does not bite | rehearsal-days (40 seeds) | moved: overall +1.388; reception +2.125. Game gap, fixed November 14, 2026: rehearsal reached only the player's own performance; this result predates the fix. |
+| "Rehearsal Days" | field | production/shoot.ts; hiring.ts (booked days) | proven | rehearsal-days (40 seeds) | performance +5.225; overall +1.388; reception +2.125 |
 | "Stop-Motion Stages" | field | production/workday.ts | not yet proven |  |  |
 | "Render Nodes" | field | production/workday.ts | not yet proven |  |  |
 | "Six-Day Weeks" | field | production/schedule.ts isWorkingDay | proven | six-day-weeks (60 seeds) | daysToDeliver -3.608; spent +3842.333 |
@@ -463,7 +463,7 @@ journey that shows it there.
 | "Interior Or Exterior" | field | production/shoot.ts (weather) | proven | scene-exterior (40 seeds) | lostDays +1.4; shootDays +1.2; money -25465.841 |
 | "Place" | field | production/schedule.ts groupShootDays | not yet proven |  |  |
 | "Time Of Day" | field | production/rates.ts dayFees | proven | scene-night (40 seeds) | spent +1438.55; overall +0.588 |
-| "Estimated Minutes" | field | production/schedule.ts sceneLoad; finish.ts runtime | no downstream effect | scene-minutes (40 seeds) | moved: spent +11593.1; daysToDeliver +7.55. Measure: longer scenes cost more and take longer (seen); money and revenue move inside the seeds' spread. |
+| "Estimated Minutes" | field | production/schedule.ts sceneLoad; finish.ts runtime | proven | scene-minutes (40 seeds) | runtime +22; spent +11593.1; daysToDeliver +7.55; offered +94350; guarantees +42350 |
 | "Kind" | field | projects.ts deriveRequirements (interview, archival) | not yet proven |  |  |
 | "Basis" | field | projects.ts scriptIssues (sourced needs a fact) | not yet proven |  |  |
 | "Technique For This Scene" | field | projects.ts sceneTechnique; production/tasks.ts | not yet proven |  |  |

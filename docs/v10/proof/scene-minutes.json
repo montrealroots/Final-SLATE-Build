@@ -52,6 +52,9 @@
   "standing.directing": 54.725,
   "standing.acting": 50,
   "standing.producing": 53.225,
+  "runtime": 20,
+  "guarantees": 45025,
+  "offered": 91375,
   "fired": 0
  },
  "variant": {
@@ -98,6 +101,9 @@
   "standing.directing": 54.725,
   "standing.acting": 50,
   "standing.producing": 53.4,
+  "runtime": 42,
+  "guarantees": 87375,
+  "offered": 185725,
   "fired": 0
  },
  "diff": {
@@ -402,6 +408,27 @@
    "changed": 30,
    "n": 40
   },
+  "runtime": {
+   "mean": 22,
+   "lo": 22,
+   "hi": 22,
+   "changed": 40,
+   "n": 40
+  },
+  "guarantees": {
+   "mean": 42350,
+   "lo": 32212.007,
+   "hi": 52487.993,
+   "changed": 40,
+   "n": 40
+  },
+  "offered": {
+   "mean": 94350,
+   "lo": 60483.111,
+   "hi": 128216.889,
+   "changed": 40,
+   "n": 40
+  },
   "fired": {
    "mean": 0,
    "lo": 0,
@@ -411,6 +438,10 @@
   }
  },
  "bites": [
+  {
+   "metric": "runtime",
+   "ok": true
+  },
   {
    "metric": "spent",
    "ok": true
@@ -422,6 +453,14 @@
  ],
  "downstream": [
   {
+   "metric": "offered",
+   "ok": true
+  },
+  {
+   "metric": "guarantees",
+   "ok": true
+  },
+  {
    "metric": "money",
    "ok": false
   },
@@ -430,7 +469,7 @@
    "ok": false
   }
  ],
- "verdict": "no downstream effect",
+ "verdict": "proven",
  "hashes": {
   "src/engine/production/schedule.ts": "65a8a82a6ef81225",
   "tests/proof/career.ts": "2d4877367212a0ea"
