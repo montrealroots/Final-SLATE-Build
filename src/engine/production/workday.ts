@@ -15,11 +15,11 @@ import { decideCompetition } from '../unscripted';
 import { addLog, registerHandler, schedule } from '../state';
 import { addDaysToKey, formatDateKey, localToInstant, parseYmd } from '../time';
 import { forecastFinish } from './forecast';
-import { HOLIDAY_PREMIUM, MATERIAL_COST, RENDER_HOURS_PER_FRAME, RENDER_NODE_DAY_COST, VOICE_SESSION_STUDIO } from './rates';
+import { MATERIAL_COST, dayPremium, RENDER_HOURS_PER_FRAME, RENDER_NODE_DAY_COST, VOICE_SESSION_STUDIO } from './rates';
 import { SHOOT_CREW, markCaptured } from './shoot';
 import { designGate } from '../designs';
 import { t } from './tasks';
-import { isWorkingDay, nextWorkingDay } from './schedule';
+import { isSixthDay, isWorkingDay, nextWorkingDay } from './schedule';
 import { ensureLicence, isSchoolDay, licenceReady, minorFor, setAsideOf, supervisionFor, type Minor } from '../minors';
 
 /**
@@ -286,7 +286,7 @@ export function runWorkDay(state: GameState, p: Project, date: string): void {
       for (const pid of assigned) {
         const h = p.hires.find((x) => x.personId === pid && x.status === 'accepted' && covers(x.roleId, task.roleId));
         if (!h || !h.obligationId) continue;
-        const pay = h.dayRate * (holiday ? HOLIDAY_PREMIUM : 1);
+        const pay = h.dayRate * dayPremium(holiday, isSixthDay(p, date));
         const o = p.obligations.find((x) => x.id === h.obligationId)!;
         if (o.settled + pay > o.amount && ledgerTotals(p).available < o.settled + pay - Math.max(o.amount, o.settled)) {
           wagesOk = false;

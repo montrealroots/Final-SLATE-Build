@@ -51,15 +51,16 @@ export function OwnAccountCard({ p }: { p: Project }) {
     <section className="card" aria-labelledby="ownacc-h">
       <h2 id="ownacc-h">Your Own Account</h2>
       <p className="muted">{money(have)} in your own account.{bankHeldNote(g)}</p>
-      {!p.delivered ? (
+      {have > 0 && (
         <>
           <div className="inline-form">
             <NumberField label="Put In From Your Own Money" value={amount} min={0} max={Math.max(0, have)} onChange={setAmount} />
             <button className="btn" disabled={!!no} onClick={() => { const e = store.act((s) => void putInOwnMoney(s, live(), amount)); setErr(e); if (!e) setAmount(0); }}>Put It In</button>
           </div>
-          <p className="dim small">{no && amount > 0 ? no : 'Nobody is repaid from it and nobody takes a share; what the project doesn\'t spend stays yours.'}</p>
+          <p className="dim small">{no && amount > 0 ? no : p.delivered ? 'For what it still has to pay, such as a licence renewed or a release dubbed. What it doesn\'t spend stays yours.' : 'Nobody is repaid from it and nobody takes a share; what the project doesn\'t spend stays yours.'}</p>
         </>
-      ) : (
+      )}
+      {p.delivered && (
         <>
           <p className="small">It can send home {money(home.earnings)} of income it kept and {money(home.capital)} of your own money it didn't spend.</p>
           <div className="row gap-2 wrap">

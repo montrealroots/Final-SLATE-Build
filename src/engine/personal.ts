@@ -160,13 +160,17 @@ registerHandler('family-repayment', (state, ev) => {
   return { suppressInterrupt: pay >= due };
 });
 
-/** Why your own money can't go into this project now, or null. */
+/**
+ * Why your own money can't go into this project now, or null. A delivered project takes it too, up to what you have (from
+ * November 14, 2026: until then it refused, so a film whose money had gone home could never pay to renew a song's
+ * licence or dub a release, both paid from its own account); what it doesn't spend comes home again as your own money.
+ */
 export function putInRefusal(state: GameState, p: Project, amount: number): string | null {
-  if (p.delivered) return 'This project is delivered.';
-  if (!scriptApprovedFor(p)) return 'Approve a script first.';
+  if (!p.delivered && !scriptApprovedFor(p)) return 'Approve a script first.';
   if (!(amount > 0) || !Number.isFinite(amount)) return 'Say how much to put in.';
   const have = personalBalance(state);
   if (amount > have) return `You have ${money(have)} in your own account.`;
+  if (p.delivered) return null;
   const { stillToRaise } = financeSummary(p);
   if (amount > stillToRaise) return stillToRaise > 0 ? `This project has ${money(stillToRaise)} still to raise.` : 'This project has nothing left to raise.';
   return null;

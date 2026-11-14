@@ -22,6 +22,19 @@ export const RENDER_NODE_DAY_COST = 35;
 export const BASE_MINUTES_PER_SHOOT_DAY = 4;
 export const HOLIDAY_PREMIUM = 1.5;
 /**
+ * The sixth day of a six-day week, on a production above the low-budget line: time and a half. From November 14, 2026:
+ * until then a sixth day cost what any day did, so six-day weeks only brought delivery forward and nothing later showed
+ * it (docs/v10/proof/six-day-weeks.json). After (read through search summaries, not the documents): Pact's recommended low-budget feature terms (June 2026) pay a sixth
+ * consecutive shooting day at the normal rate up to a £5m budget and at 1.5 times above it; the Pact/Bectu scripted TV
+ * agreement (from 2023) and the Major Motion Pictures agreement pay 1.5 times. US crew agreements pay a sixth day at time
+ * and a half too, but their low-budget tiers vary, so the British line stands for all. The line in dollars is £5m at about
+ * 1.26 dollars to the pound (game calibration). It doesn't stack with the holiday premium.
+ */
+export const SIXTH_DAY_PREMIUM = 1.5;
+export const SIXTH_DAY_BUDGET_FLOOR = 6_300_000;
+/** A day's pay against the usual, for a holiday and a sixth day. */
+export const dayPremium = (holiday: boolean, sixth: boolean): number => Math.max(holiday ? HOLIDAY_PREMIUM : 1, sixth ? SIXTH_DAY_PREMIUM : 1);
+/**
  * A night shoot day's pay for everyone on set: a quarter more (game calibration, from November 14, 2026). Until then a
  * night day cost what a day did, though the Time Of Day control was said to set its fees; the feature proofs found it
  * didn't (docs/v10/proof/scene-night.json). It stacks with the holiday premium.

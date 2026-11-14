@@ -10,6 +10,7 @@ import { dayFees } from '../src/engine/production/rates';
 import { addDaysToKey, approvedScenes, buildTasks, costBreakdown, deserialize, serialize } from './engine-api';
 import type { GameState, Project } from '../src/engine/types';
 import { approve, buildProject, castAll, runDays, staffAll, startLife, startProduction, summary } from './helpers';
+import { prepWorkingDays } from '../src/engine/production/schedule';
 
 function film(seed = 'destinations'): { s: GameState; p: Project } {
   const s = startLife(seed);
@@ -129,6 +130,27 @@ describe('a film with a location filmed far away, made', () => {
     expect(s.log.some((e) => e.text.includes(`You weren't in ${getPlace('no-tromso').name} for the call`))).toBe(true);
     expect(p.tasks.find((t) => t.kind === 'prep:permit')).toMatchObject({ status: 'done' });
     expect(() => setFilmedAt(p, 'Quay', null)).toThrow(/has been delivered|has been shot already/);
+  }, 60_000);
+});
+
+describe('the prep before a shoot in several places abroad', () => {
+  it('is as long as one location manager doing each place\'s permits in turn, and the shoot starts after it', () => {
+    const { s, p } = film('destinations-prep');
+    for (const label of ['Office', 'Quay']) setFilmedAt(p, label, { placeId: 'fr-paris', kind: 'street' });
+    p.tasks = buildTasks(p);
+    castAll(s, p);
+    staffAll(s, p);
+    runDays(s, p, 3); // the crew's answers
+    const permits = p.tasks.filter((t) => t.kind === 'prep:permit');
+    expect(permits.length).toBe(2);
+    const each = permits.map((t) => t.units);
+    // One location manager: the places' permits one after the other, never side by side (workday.ts).
+    expect(prepWorkingDays(p)).toBeGreaterThanOrEqual(each[0] + each[1]);
+    startProduction(s, p, 1);
+    runDays(s, p, 300);
+    // No day was lost waiting for prep (until November 14, 2026 the shoot started once the longest permit was done).
+    expect(p.schedule.days.filter((d) => /isn't finished/.test(d.result ?? '')).map((d) => d.result)).toEqual([]);
+    expect(summary(p)).toMatchObject({ delivered: true });
   }, 60_000);
 });
 

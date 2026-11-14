@@ -9,12 +9,12 @@ import type { GameState, Project } from '../../../src/engine/types';
 
 const TRACK = 'Harbour Lights';
 /** A licensed recording in the first scene's background, before the shoot: the holders still to be asked. */
-const useTrack = (s: GameState, p: Project) => {
+export const useTrack = (s: GameState, p: Project) => {
   if (!p.music) return;
   const song = createSong(s, p, { title: TRACK, source: 'licensed', holder: 'A Record Label', writers: [{ name: 'A Songwriter', music: true, lyrics: true }] });
   attachSong(p, song.id, approvedScenes(p)[0].id, 'background');
 };
-const track = (p: Project) => (p.songs ?? []).find((x) => x.title === TRACK);
+export const track = (p: Project) => (p.songs ?? []).find((x) => x.title === TRACK);
 /** Each day: ask the holders once, for digital sale in Britain for 3 years (the career's release), then answer a quote. */
 const licensing = (answer: 'agree' | 'decline') => (s: GameState) => {
   for (const p of s.projects.filter((x) => !x.delivered && x.music)) {

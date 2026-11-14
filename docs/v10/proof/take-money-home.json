@@ -424,7 +424,7 @@
  ],
  "verdict": "proven",
  "hashes": {
-  "src/engine/personal.ts": "4976d73d531cd705",
+  "src/engine/personal.ts": "e3d38c66bea1a8fe",
   "tests/proof/career.ts": "2d4877367212a0ea"
  }
 }

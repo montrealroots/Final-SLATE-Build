@@ -1,0 +1,468 @@
+{
+ "id": "renew-licence",
+ "features": [
+  "action:music.renewLicence",
+  "scheduled:licence-expiry"
+ ],
+ "decision": "Renew the song's one-year licence once it runs out, before releasing the film a year after it was made",
+ "reads": [
+  "src/engine/music.ts#renewLicence",
+  "src/engine/music.ts#releaseLicenceRefusal",
+  "src/engine/music.ts#handler:licence-expiry"
+ ],
+ "seeds": 40,
+ "base": {
+  "delivered": 1.475,
+  "released": 0,
+  "reception": 54.738,
+  "overall": 55.625,
+  "gross": 0,
+  "revenue": 0,
+  "distributed": 0,
+  "money": 24647467.961,
+  "moneyChange": -352532.039,
+  "jobsTaken": 0.6,
+  "jobsOffered": 0.6,
+  "jobPay": 2654.85,
+  "offeredDayRate": 314.7,
+  "ownIn": 80500,
+  "backerIn": 0,
+  "backerDeals": 0,
+  "leftInProjects": 2901.5,
+  "jobsDone": 0.575,
+  "jobsWithdrawn": 0,
+  "jobsDeclined": 0,
+  "ratesAgreed": 0,
+  "logLines": 101.825,
+  "hired": 16,
+  "castRates": 3193.25,
+  "releaseDelay": 0,
+  "licenceDeals": 0,
+  "licenceFee": 0,
+  "offersDeclined": 0,
+  "countersSeen": 0,
+  "countersDeclined": 0.025,
+  "spent": 65933.5,
+  "shootDays": 7.775,
+  "lostDays": 1.775,
+  "daysToDeliver": 33.1,
+  "quality.script": 45.863,
+  "quality.direction": 59.838,
+  "quality.craft": 57.063,
+  "quality.editing": 59,
+  "quality.music": 57.25,
+  "standing.writing": 50,
+  "standing.directing": 53.275,
+  "standing.acting": 50,
+  "standing.producing": 51.95,
+  "renewals": 0,
+  "licenceYears": 1.475,
+  "dubbed": 0,
+  "fired": 0
+ },
+ "variant": {
+  "delivered": 1.475,
+  "released": 0.65,
+  "reception": 54.738,
+  "overall": 55.625,
+  "gross": 0,
+  "revenue": 0,
+  "distributed": 0,
+  "money": 24647175.461,
+  "moneyChange": -352824.539,
+  "jobsTaken": 0.6,
+  "jobsOffered": 0.6,
+  "jobPay": 2654.85,
+  "offeredDayRate": 314.7,
+  "ownIn": 80792.5,
+  "backerIn": 0,
+  "backerDeals": 0,
+  "leftInProjects": 2901.5,
+  "jobsDone": 0.575,
+  "jobsWithdrawn": 0,
+  "jobsDeclined": 0,
+  "ratesAgreed": 0,
+  "logLines": 103.775,
+  "hired": 16,
+  "castRates": 3193.25,
+  "releaseDelay": 241.958,
+  "licenceDeals": 0,
+  "licenceFee": 0,
+  "offersDeclined": 0,
+  "countersSeen": 0,
+  "countersDeclined": 0.025,
+  "spent": 66226,
+  "shootDays": 7.775,
+  "lostDays": 1.775,
+  "daysToDeliver": 33.1,
+  "quality.script": 45.863,
+  "quality.direction": 59.838,
+  "quality.craft": 57.063,
+  "quality.editing": 59,
+  "quality.music": 57.25,
+  "standing.writing": 50,
+  "standing.directing": 53.275,
+  "standing.acting": 50,
+  "standing.producing": 51.95,
+  "renewals": 0.65,
+  "licenceYears": 1.475,
+  "dubbed": 0,
+  "fired": 0
+ },
+ "diff": {
+  "delivered": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 40
+  },
+  "released": {
+   "mean": 0.65,
+   "lo": 0.494,
+   "hi": 0.806,
+   "changed": 26,
+   "n": 40
+  },
+  "reception": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 40
+  },
+  "overall": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 40
+  },
+  "gross": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 40
+  },
+  "revenue": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 40
+  },
+  "distributed": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 40
+  },
+  "money": {
+   "mean": -292.5,
+   "lo": -362.785,
+   "hi": -222.215,
+   "changed": 26,
+   "n": 40
+  },
+  "moneyChange": {
+   "mean": -292.5,
+   "lo": -362.785,
+   "hi": -222.215,
+   "changed": 26,
+   "n": 40
+  },
+  "jobsTaken": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 40
+  },
+  "jobsOffered": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 40
+  },
+  "jobPay": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 40
+  },
+  "offeredDayRate": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 40
+  },
+  "ownIn": {
+   "mean": 292.5,
+   "lo": 222.215,
+   "hi": 362.785,
+   "changed": 26,
+   "n": 40
+  },
+  "backerIn": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 40
+  },
+  "backerDeals": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 40
+  },
+  "leftInProjects": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 40
+  },
+  "jobsDone": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 40
+  },
+  "jobsWithdrawn": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 40
+  },
+  "jobsDeclined": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 40
+  },
+  "ratesAgreed": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 40
+  },
+  "logLines": {
+   "mean": 1.95,
+   "lo": 1.481,
+   "hi": 2.419,
+   "changed": 26,
+   "n": 40
+  },
+  "hired": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 40
+  },
+  "castRates": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 40
+  },
+  "releaseDelay": {
+   "mean": 241.958,
+   "lo": 183.803,
+   "hi": 300.114,
+   "changed": 26,
+   "n": 40
+  },
+  "licenceDeals": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 40
+  },
+  "licenceFee": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 40
+  },
+  "offersDeclined": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 40
+  },
+  "countersSeen": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 40
+  },
+  "countersDeclined": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 40
+  },
+  "spent": {
+   "mean": 292.5,
+   "lo": 222.215,
+   "hi": 362.785,
+   "changed": 26,
+   "n": 40
+  },
+  "shootDays": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 40
+  },
+  "lostDays": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 40
+  },
+  "daysToDeliver": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 40
+  },
+  "quality.script": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 40
+  },
+  "quality.direction": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 40
+  },
+  "quality.craft": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 40
+  },
+  "quality.editing": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 40
+  },
+  "quality.music": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 40
+  },
+  "standing.writing": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 40
+  },
+  "standing.directing": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 40
+  },
+  "standing.acting": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 40
+  },
+  "standing.producing": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 40
+  },
+  "renewals": {
+   "mean": 0.65,
+   "lo": 0.494,
+   "hi": 0.806,
+   "changed": 26,
+   "n": 40
+  },
+  "licenceYears": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 40
+  },
+  "dubbed": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 40
+  },
+  "fired": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 40
+  }
+ },
+ "bites": [
+  {
+   "metric": "renewals",
+   "ok": true
+  }
+ ],
+ "downstream": [
+  {
+   "metric": "released",
+   "ok": true
+  },
+  {
+   "metric": "revenue",
+   "ok": false
+  },
+  {
+   "metric": "spent",
+   "ok": true
+  }
+ ],
+ "verdict": "proven",
+ "hashes": {
+  "src/engine/music.ts": "e7eebaeebdd0335b",
+  "tests/proof/career.ts": "2d4877367212a0ea"
+ }
+}

@@ -61,6 +61,34 @@ Run the proofs with `npm run proof` (`PROBES=id,id` for some, `SEEDS=n` to chang
   out again when the shot plan changes (`estimate.ts followPlan`, `tests/v10-estimate-follows.test.ts`).
 - **The target runtime did nothing once scenes were written.** Fixed: scenes a quarter off it are a readiness note, which
   costs the script (`projects.ts RUNTIME_SLACK`, game calibration).
+- **A shoot in several places abroad started before their permits were done.** One location manager does each place's
+  permits in turn, but the plan took prep to last only as long as its longest task: filmed in Paris, the short lost its
+  first week, ran out of money and was never delivered. Fixed: the plan works prep out as the crew does it, each person
+  on one task a day (`production/schedule.ts prepWorkingDays`, `tests/destinations.test.ts`).
+- **A delivered film could never pay to renew a song's licence.** Renewing is paid from the film's account, and a
+  delivered film refused your money, so once its money went home a licence that ran out stayed out. Fixed: a delivered
+  film takes your money for what it still has to pay, and what it doesn't spend comes home again (`personal.ts
+  putInRefusal`, `tests/personal.test.ts`).
+- **The tone and the intended experience were filed as words nothing reads,** though the music brief has read them
+  since November 13 (quiet for a small ensemble, taut for percussion, silent for no score). The audit table said so
+  wrongly; it's corrected and both are proven (`tone`, `intended-experience`).
+- **Attending a screening brought offers nobody answered.** The proof career decided each release weeks after delivery,
+  before any festival; the festival probes now take the best later offer, as a player does, and attending is proven by
+  the offers it brings.
+- **A sixth day cost what any day did,** so six-day weeks only brought delivery forward. Fixed after the British crew
+  terms (read through search summaries, so the register calls it a modeled assumption): above Pact's £5m low-budget line
+  a Saturday worked is paid 1.5 times, below it the usual rate; the call sheet says so (`production/rates.ts
+  SIXTH_DAY_PREMIUM`, `tests/decision-effects.test.ts`). Proven on an $8m budget: 3.6 days sooner, $3,842 more.
+- **Auditions** are proven: reading four performers a part and casting the best read gives a cast 9 points more
+  capable, performances 7.5 points better and the film 2.5 better overall, for a dearer cast. **Callbacks** narrow the
+  read and pick a slightly better cast (+0.6, its interval just clear of zero); the performance difference that follows
+  is too small to show in 40 seeds.
+- **Two probes measured the wrong thing, and were corrected:** a part's size sets its acting categories, not its cost, and
+  no acting category takes a short, so it is now measured on a feature (written as supporting, the lead loses its three
+  lead entries; no acting nomination came in either career, so nothing later moved yet). Swapping a rained-on exterior
+  with an interior day never happened: the plan orders places by name and the default short's exterior came last.
+- **Open, a decision for the owner:** what a writer's revision should look at (Structure, Dialogue, Pace and the rest) is
+  a choice the game reads nowhere. It is left open in the matrix, not carried.
 - **By design, not fixed:** notes you write yourself change no assessment (`finish.ts`: quality can't be manufactured by
   writing notes); they're for your own process.
 - **The harness's own faults**, found and fixed before any result was kept: the backer kind was misnamed; a run-once flag
@@ -76,5 +104,6 @@ Run the proofs with `npm run proof` (`PROBES=id,id` for some, `SEEDS=n` to chang
 - A feature is proven only where a played career reaches it. The census shows which event kinds the careers reach; the
   ones they don't (agents, series releases, first-look terms, travel, papers decisions) need careers that do, and stay
   "not yet proven" until then.
-- Identity fields (a character's name) are carried into credits, logs and records, not into outcomes. They will be proven
-  carried, not biting, and the matrix will say which.
+- Identity fields (a character's name, a title) are carried into credits, logs and records, not into outcomes. One the
+  game reads only where it is shown, with a test or journey that shows it there, is "carried"; one an engine function
+  reads is a decision and needs a played proof like any other.
