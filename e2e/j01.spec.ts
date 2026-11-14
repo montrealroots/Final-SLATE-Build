@@ -95,12 +95,12 @@ test('J01: an inheritance, a book, a live-action short on a kit bought for it, r
   await own.getByRole('button', { name: 'Put It In' }).click();
   await expect(page.getByRole('region', { name: 'Backers' })).toContainText('Your Own Money');
 
-  // The player's birthday (born May 20, 1990 in quickDraft; the story started February 2, 2026): lived to, a month at a
-  // time, said on the day, and the next one scheduled.
+  // The player's birthday (born May 20, 2006 in quickDraft, 19 on February 2, 2026 when the story starts; born 1990, and
+  // turning 36, until November 14, 2026): lived to, a month at a time, said on the day, and the next one scheduled.
   const nextAge = async () => (await readSavedState(page)).events.find((e: { kind: string }) => e.kind === 'birthday')?.payload.age;
-  for (let i = 0; i < 12 && (await nextAge()) === 36; i++) await advance(page, 'month');
-  await expect.poll(nextAge).toBe(37);
-  expect((await readSavedState(page)).log.some((l: { text: string }) => l.text === "Today is your birthday. You're 36.")).toBe(true);
+  for (let i = 0; i < 12 && (await nextAge()) === 20; i++) await advance(page, 'month');
+  await expect.poll(nextAge).toBe(21);
+  expect((await readSavedState(page)).log.some((l: { text: string }) => l.text === "Today is your birthday. You're 20.")).toBe(true);
 
   // Everything kept after a reload.
   await page.reload();
