@@ -1,12 +1,14 @@
 {
  "id": "sleep-through-call",
  "features": [
-  "action:state.startSleep"
+  "action:state.startSleep",
+  "scheduled:shoot-call"
  ],
  "decision": "Go to sleep the night before the first shoot day without an alarm, until ten",
  "reads": [
   "src/engine/state.ts#startSleep",
-  "src/engine/production/shoot.ts#runShootDay"
+  "src/engine/production/shoot.ts#runShootDay",
+  "src/engine/production/shoot.ts#handler:shoot-call"
  ],
  "seeds": 40,
  "base": {

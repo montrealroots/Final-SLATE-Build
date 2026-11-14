@@ -10,9 +10,9 @@ journey that shows it there.
 |---|---|---|---|---|---|---|---|---|
 | action | 92 | 0 | 3 | 6 | 0 | 8 | 50 | 159 |
 | bank | 10 | 0 | 0 | 5 | 0 | 0 | 39 | 54 |
-| scheduled | 29 | 0 | 7 | 5 | 0 | 3 | 22 | 66 |
+| scheduled | 30 | 0 | 6 | 5 | 0 | 3 | 22 | 66 |
 | field | 30 | 14 | 2 | 1 | 0 | 0 | 259 | 306 |
-| all | 161 | 14 | 12 | 17 | 0 | 11 | 370 | 585 |
+| all | 162 | 14 | 11 | 17 | 0 | 11 | 370 | 585 |
 
 ## Rows
 
@@ -290,7 +290,7 @@ journey that shows it there.
 | screening | scheduled | src/engine/awards.ts | proven | attend-screening (30 seeds) | accepted +6.867; attended +5.367; offers +7.1 |
 | screening-reminder | scheduled | src/engine/awards.ts | not a feature |  | A notice: it tells the player a screening they were invited to is near. Attending is the screening itself and the RSVP, proven separately. |
 | season-decision | scheduled | src/engine/continuation.ts | not yet proven |  |  |
-| shoot-call | scheduled | src/engine/production/shoot.ts | does not bite | off-shoot-call (40 seeds) | nothing moved. Career not reached: the call checks the player is there and allowed to work; in a career at home they always are. Proven through work-permit, abroad. |
+| shoot-call | scheduled | src/engine/production/shoot.ts | proven | sleep-through-call (40 seeds) | lateDays +1; quality.direction -0.75; overall -0.237 |
 | shoot-wrap | scheduled | src/engine/production/shoot.ts | proven | off-shoot-wrap (40 seeds) | delivered -2; revenue -137164.625; money -160388.041 |
 | studio-release | scheduled | src/engine/finish.ts | not yet proven |  |  |
 | wake | scheduled | src/engine/state.ts | not yet proven |  |  |
