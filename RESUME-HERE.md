@@ -15,9 +15,12 @@ each step and acceptance case stands. Done so far:
   account and the company's are now views of the journal.
 - **Step 3, the start.** You start at 19 with a $25,000,000 inheritance, which can be edited before the story starts.
   The family menus are gone.
+- **Step 4, banks.** `banking.ts`, `Banking.tsx`, and `src/data/banks.json` from `tools/v8/import_banks.py`. Documents
+  move to step 8.
+- **Step 5, budgets (partly).** `project-budget.ts`: the planned budget, ten figures kept apart, and two readiness
+  answers. `cash/forecast.ts` holds the dated forecast. Budget lines with suppliers and payment dates are still to do.
 
-Next is **step 4, banks and documents**: the package's `repository-reference` banks and papers files, read as migration
-evidence only. After that, steps 5 to 11 in order.
+Next is **step 6, company versus banner**. After that, steps 7 to 11 in order. `docs/v8/STATUS.md` has every row.
 
 The age rule changed every fixture world, because the world seed hashes the birth date. The STATUS file lists each test
 that had to be re-pinned, and why. Any later failure that depends on a seed should be checked against that list first.
