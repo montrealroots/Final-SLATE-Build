@@ -28,6 +28,7 @@ import { BACKERS, approachBacker, backerOptions, deals, trackRecord } from './fi
 import { money } from './budget';
 import { addLog, registerHandler, schedule } from './state';
 import { DAY } from './time';
+import { papersReads } from './papers';
 
 /** The kinds of backer an agent can be asked to submit to. Grants and your own money are never theirs. */
 export type PlacedKind = 'investor' | 'co-producer' | 'commissioner';
@@ -354,3 +355,5 @@ registerHandler('agent-notice-end', (state, ev) => {
   return { message: end(state, 'notice') };
 });
 
+// Papers names your agent as a work visa's sponsor (papers.ts `papersReads`).
+papersReads.agentName = (id) => agentById(id).name;

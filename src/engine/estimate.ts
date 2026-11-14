@@ -183,6 +183,20 @@ export function scriptEstimate(state: GameState, p: Project): number {
   return Math.max(size, Math.ceil((projectedCost(state, p).total * (1 + CONTINGENCY)) / 1000) * 1000);
 }
 
+/**
+ * The estimate follows the shooting plan as it follows the script: worked out again when the plan changes, the target
+ * with it unless the player set their own (from November 14, 2026). Until then it was worked out on approval only, so a
+ * shot plan asking full coverage raised what the old plan cost, and the production stalled for want of its crew (the
+ * feature proofs found it: docs/v10/proof/full-coverage.json).
+ */
+export function followPlan(state: GameState, p: Project): void {
+  const f = p.finance;
+  if (!f || p.approvedDraft === null || p.delivered) return;
+  const follows = f.target === f.estimate;
+  f.estimate = scriptEstimate(state, p);
+  if (follows) f.target = f.estimate;
+}
+
 // On approval the estimate follows the script; the financing target follows it too, unless the player set their own.
 // What it was made of is kept, so spending can be compared with it later (cost-cuts.ts estimateAgainstSpending).
 onDraftApproved((state, p) => {

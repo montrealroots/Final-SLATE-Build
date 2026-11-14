@@ -6,7 +6,7 @@ import { applyForPermit, applyForVisa, entryRight, passportFor, permitCheck, per
 import { personalBalance, personalPostings } from '../src/engine/personal';
 import { filmPlace, setFilmedAt } from '../src/engine/destinations';
 import { schedule } from '../src/engine/state';
-import { approve, buildProject, startLife } from './helpers';
+import { approve, buildProject, sponsorIn, startLife } from './helpers';
 
 import type { GameState } from '../src/engine/types';
 /** What SLATE has posted to the bank, in dollars at each day's rate: a balance held in pounds moves with the rate, and this doesn't. */
@@ -50,6 +50,7 @@ describe('A16: a passport lets you travel; it doesn\'t let you work', () => {
   it('a work permit with a researched fee and time: paid from the bank, decided on its day, worked under, and expired', () => {
     // The United States' O-1: the fee from the USCIS fee schedule, $1,655, decided in between 90 and 180 days (the middle, 135).
     const s = startLife('papers-permit');
+    sponsorIn(s, 'us-los-angeles'); // a work visa needs a sponsor there
     const before = posted(s);
     const c = permitCheck(s, 'US');
     expect(c).toMatchObject({ ok: true, feeText: '1,655 USD', terms: { days: 135, estimate: null, stayDays: 1095 } });
@@ -69,6 +70,7 @@ describe('A16: a passport lets you travel; it doesn\'t let you work', () => {
 
   it('a permit no research covers is taken on the game\'s estimate, from the continent\'s researched routes, and says so', () => {
     const s = startLife('papers-estimate');
+    sponsorIn(s, 'kr-seoul');
     // South Korea's E-6-1: no researched fee yet. Asia has none researched either, so all researched routes are its basis.
     const c = permitCheck(s, 'KR');
     expect(c.ok).toBe(true);
@@ -78,6 +80,7 @@ describe('A16: a passport lets you travel; it doesn\'t let you work', () => {
     expect(t.basis).toMatch(/^The game's estimate/);
     // In Europe the estimate is the middle of Europe's researched routes.
     s.character.nationalities = ['JP'];
+    sponsorIn(s, 'it-rome', 'sponsor-it');
     const it = permitCheck(s, 'IT');
     expect((it as { terms: { estimate: { where: string; from: string[] } } }).terms.estimate).toMatchObject({ where: 'researched routes in Europe', from: ['GB', 'IE', 'FR', 'DE'] });
     const before = personalBalance(s);

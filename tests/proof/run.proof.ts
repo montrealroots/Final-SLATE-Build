@@ -12,8 +12,20 @@ import { PROBES as SCRIPT } from './probes/script';
 import { PROBES as PROJECT } from './probes/project';
 import { PROBES as CAREER_WIDE } from './probes/career-wide';
 import { PROBES as WEATHER } from './probes/weather';
+import { PROBES as EQUIPMENT } from './probes/equipment';
+import { PROBES as WRITING } from './probes/writing';
+import { PROBES as HIRING } from './probes/hiring';
+import { PROBES as DAYS } from './probes/day';
+import { PROBES as MUSIC } from './probes/music';
+import { PROBES as VERSIONS } from './probes/versions';
+import { PROBES as SCORE } from './probes/score';
+import { PROBES as EDIT } from './probes/edit';
+import { PROBES as NOTES } from './probes/notes';
+import { PROBES as SLATE } from './probes/slate';
+import { PROBES as BANK_MORE } from './probes/bank-more';
+import { PROBES as AGENTS_PROBES } from './probes/agent';
 
-const ALL = [...CORE, ...PRODUCTION, ...RELEASE, ...AWARDS, ...BANK, ...PAPERS, ...SCRIPT, ...PROJECT, ...CAREER_WIDE, ...WEATHER];
+const ALL = [...CORE, ...PRODUCTION, ...RELEASE, ...AWARDS, ...BANK, ...PAPERS, ...SCRIPT, ...PROJECT, ...CAREER_WIDE, ...WEATHER, ...EQUIPMENT, ...WRITING, ...HIRING, ...DAYS, ...MUSIC, ...VERSIONS, ...SCORE, ...EDIT, ...NOTES, ...SLATE, ...BANK_MORE, ...AGENTS_PROBES];
 const pick = process.env.PROBES?.split(',');
 const seeds = process.env.SEEDS ? Number(process.env.SEEDS) : undefined;
 

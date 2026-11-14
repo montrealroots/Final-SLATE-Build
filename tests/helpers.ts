@@ -11,6 +11,7 @@ import { storyAge } from '../src/engine/story-age';
 import { approveDesign } from '../src/engine/designs-actions';
 import { fundingScenario } from '../src/engine/projects';
 import type { CreationDraft, Format, GameState, Medium, PerformanceMethod, Project, Technique } from '../src/engine/types';
+import { getPlace } from '../src/data/places';
 import { designStatus, designsToReview } from '../src/engine/designs';
 import { cutFromEdit, editScenes } from '../src/engine/finish';
 import { lockBlockers, lockPicture, startCutPass, unlockPicture } from '../src/engine/edit-actions';
@@ -255,4 +256,12 @@ export function summary(p: Project) {
     delivered: !!p.delivered, spent: t.settled, fund: t.fund, shootDays: p.schedule.days.length, lostDays: p.schedule.days.filter((d) => d.status === 'lost').length,
     openTasks: p.tasks.filter((x) => x.status !== 'done').map((x) => `${x.label}: ${x.blockedReason ?? x.status}`).slice(0, 5),
   };
+}
+
+/**
+ * A labelled fixture: an outside job offered in `placeId`, open for years, so a work visa there has a sponsor (from
+ * November 14, 2026 a work visa needs one, papers.ts `sponsorsFor`). It has no days scheduled and is never worked.
+ */
+export function sponsorIn(s: GameState, placeId: string, id = 'sponsor-fixture'): void {
+  (s.jobs ??= []).push({ id, role: 'acting', production: 'A Fixture Feature', company: 'Fixture Pictures', productionId: 'fixture', part: 'A part', dayRate: 400, days: ['2099-01-04'], placeId, zone: getPlace(placeId).zone, status: 'offered', offeredAt: s.now, answerBy: s.now + 3650 * 86_400_000, attended: [], missed: [] } as never);
 }

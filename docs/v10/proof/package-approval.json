@@ -1,0 +1,480 @@
+{
+ "id": "package-approval",
+ "features": [
+  "action:equipment.setPackageApproval"
+ ],
+ "decision": "Approve the rental house's package for the days a kit without a camera can't serve, or leave those days postponed",
+ "reads": [
+  "src/engine/equipment.ts#setPackageApproval",
+  "src/engine/production/shoot.ts#runShootDay"
+ ],
+ "seeds": 40,
+ "base": {
+  "delivered": 0,
+  "released": 0,
+  "reception": 0,
+  "overall": 0,
+  "gross": 0,
+  "revenue": 0,
+  "distributed": 0,
+  "money": 24620829.89,
+  "moneyChange": -379170.11,
+  "jobsTaken": 0,
+  "jobsOffered": 0,
+  "jobPay": 0,
+  "offeredDayRate": 0,
+  "ownIn": 80450,
+  "backerIn": 0,
+  "backerDeals": 0,
+  "leftInProjects": 9141.5,
+  "jobsDone": 0,
+  "jobsWithdrawn": 0,
+  "jobsDeclined": 0,
+  "ratesAgreed": 0,
+  "logLines": 400,
+  "hired": 16,
+  "castRates": 3216.25,
+  "releaseDelay": 0,
+  "licenceDeals": 0,
+  "licenceFee": 0,
+  "offersDeclined": 0,
+  "countersSeen": 0,
+  "countersDeclined": 0.05,
+  "spent": 18801.25,
+  "shootDays": 735,
+  "lostDays": 729,
+  "daysToDeliver": 0,
+  "quality.script": 0,
+  "quality.direction": 0,
+  "quality.craft": 0,
+  "quality.editing": 0,
+  "quality.music": 0,
+  "standing.writing": 50,
+  "standing.directing": 50,
+  "standing.acting": 50,
+  "standing.producing": 50,
+  "gearOwned": 0,
+  "kitItems": 10,
+  "kitPostponed": 729,
+  "worn": 0,
+  "fired": 0
+ },
+ "variant": {
+  "delivered": 2,
+  "released": 2,
+  "reception": 58.263,
+  "overall": 58.9,
+  "gross": 47145,
+  "revenue": 149124.625,
+  "distributed": 1.6,
+  "money": 24792153.408,
+  "moneyChange": -207846.592,
+  "jobsTaken": 0.825,
+  "jobsOffered": 0.825,
+  "jobPay": 3788.9,
+  "offeredDayRate": 399.875,
+  "ownIn": 80450,
+  "backerIn": 0,
+  "backerDeals": 0,
+  "leftInProjects": 0,
+  "jobsDone": 0.775,
+  "jobsWithdrawn": 0,
+  "jobsDeclined": 0,
+  "ratesAgreed": 0,
+  "logLines": 124.575,
+  "hired": 16,
+  "castRates": 3216.25,
+  "releaseDelay": 98.467,
+  "licenceDeals": 0,
+  "licenceFee": 0,
+  "offersDeclined": 0.45,
+  "countersSeen": 0,
+  "countersDeclined": 0.05,
+  "spent": 68694.5,
+  "shootDays": 7.6,
+  "lostDays": 1.6,
+  "daysToDeliver": 33.563,
+  "quality.script": 48.5,
+  "quality.direction": 64.225,
+  "quality.craft": 59.625,
+  "quality.editing": 60.725,
+  "quality.music": 58.963,
+  "standing.writing": 50,
+  "standing.directing": 54.75,
+  "standing.acting": 50,
+  "standing.producing": 52.75,
+  "gearOwned": 0,
+  "kitItems": 10,
+  "kitPostponed": 0,
+  "worn": 0,
+  "fired": 0
+ },
+ "diff": {
+  "delivered": {
+   "mean": 2,
+   "lo": 2,
+   "hi": 2,
+   "changed": 40,
+   "n": 40
+  },
+  "released": {
+   "mean": 2,
+   "lo": 2,
+   "hi": 2,
+   "changed": 40,
+   "n": 40
+  },
+  "reception": {
+   "mean": 58.263,
+   "lo": 56.055,
+   "hi": 60.47,
+   "changed": 40,
+   "n": 40
+  },
+  "overall": {
+   "mean": 58.9,
+   "lo": 58.322,
+   "hi": 59.478,
+   "changed": 40,
+   "n": 40
+  },
+  "gross": {
+   "mean": 47145,
+   "lo": 17623.67,
+   "hi": 76666.33,
+   "changed": 12,
+   "n": 40
+  },
+  "revenue": {
+   "mean": 149124.625,
+   "lo": 112859.93,
+   "hi": 185389.32,
+   "changed": 38,
+   "n": 40
+  },
+  "distributed": {
+   "mean": 1.6,
+   "lo": 1.409,
+   "hi": 1.791,
+   "changed": 38,
+   "n": 40
+  },
+  "money": {
+   "mean": 171323.518,
+   "lo": 135257.548,
+   "hi": 207389.488,
+   "changed": 40,
+   "n": 40
+  },
+  "moneyChange": {
+   "mean": 171323.518,
+   "lo": 135257.548,
+   "hi": 207389.488,
+   "changed": 40,
+   "n": 40
+  },
+  "jobsTaken": {
+   "mean": 0.825,
+   "lo": 0.583,
+   "hi": 1.067,
+   "changed": 25,
+   "n": 40
+  },
+  "jobsOffered": {
+   "mean": 0.825,
+   "lo": 0.583,
+   "hi": 1.067,
+   "changed": 25,
+   "n": 40
+  },
+  "jobPay": {
+   "mean": 3788.9,
+   "lo": 2393.711,
+   "hi": 5184.089,
+   "changed": 25,
+   "n": 40
+  },
+  "offeredDayRate": {
+   "mean": 399.875,
+   "lo": 289.86,
+   "hi": 509.89,
+   "changed": 25,
+   "n": 40
+  },
+  "ownIn": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 40
+  },
+  "backerIn": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 40
+  },
+  "backerDeals": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 40
+  },
+  "leftInProjects": {
+   "mean": -9141.5,
+   "lo": -9643.015,
+   "hi": -8639.985,
+   "changed": 40,
+   "n": 40
+  },
+  "jobsDone": {
+   "mean": 0.775,
+   "lo": 0.549,
+   "hi": 1.001,
+   "changed": 25,
+   "n": 40
+  },
+  "jobsWithdrawn": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 40
+  },
+  "jobsDeclined": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 40
+  },
+  "ratesAgreed": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 40
+  },
+  "logLines": {
+   "mean": -275.425,
+   "lo": -279.473,
+   "hi": -271.377,
+   "changed": 40,
+   "n": 40
+  },
+  "hired": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 40
+  },
+  "castRates": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 40
+  },
+  "releaseDelay": {
+   "mean": 98.467,
+   "lo": 89.963,
+   "hi": 106.971,
+   "changed": 40,
+   "n": 40
+  },
+  "licenceDeals": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 40
+  },
+  "licenceFee": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 40
+  },
+  "offersDeclined": {
+   "mean": 0.45,
+   "lo": 0.231,
+   "hi": 0.669,
+   "changed": 14,
+   "n": 40
+  },
+  "countersSeen": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 40
+  },
+  "countersDeclined": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 40
+  },
+  "spent": {
+   "mean": 49893.25,
+   "lo": 47881.74,
+   "hi": 51904.76,
+   "changed": 40,
+   "n": 40
+  },
+  "shootDays": {
+   "mean": -727.4,
+   "lo": -728.066,
+   "hi": -726.734,
+   "changed": 40,
+   "n": 40
+  },
+  "lostDays": {
+   "mean": -727.4,
+   "lo": -728.066,
+   "hi": -726.734,
+   "changed": 40,
+   "n": 40
+  },
+  "daysToDeliver": {
+   "mean": 33.563,
+   "lo": 32.351,
+   "hi": 34.774,
+   "changed": 40,
+   "n": 40
+  },
+  "quality.script": {
+   "mean": 48.5,
+   "lo": 48.5,
+   "hi": 48.5,
+   "changed": 40,
+   "n": 40
+  },
+  "quality.direction": {
+   "mean": 64.225,
+   "lo": 63.051,
+   "hi": 65.399,
+   "changed": 40,
+   "n": 40
+  },
+  "quality.craft": {
+   "mean": 59.625,
+   "lo": 58.668,
+   "hi": 60.582,
+   "changed": 40,
+   "n": 40
+  },
+  "quality.editing": {
+   "mean": 60.725,
+   "lo": 58.852,
+   "hi": 62.598,
+   "changed": 40,
+   "n": 40
+  },
+  "quality.music": {
+   "mean": 58.963,
+   "lo": 56.417,
+   "hi": 61.508,
+   "changed": 40,
+   "n": 40
+  },
+  "standing.writing": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 40
+  },
+  "standing.directing": {
+   "mean": 4.75,
+   "lo": 4.344,
+   "hi": 5.156,
+   "changed": 40,
+   "n": 40
+  },
+  "standing.acting": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 40
+  },
+  "standing.producing": {
+   "mean": 2.75,
+   "lo": 2.004,
+   "hi": 3.496,
+   "changed": 35,
+   "n": 40
+  },
+  "gearOwned": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 40
+  },
+  "kitItems": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 40
+  },
+  "kitPostponed": {
+   "mean": -729,
+   "lo": -729,
+   "hi": -729,
+   "changed": 40,
+   "n": 40
+  },
+  "worn": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 40
+  },
+  "fired": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 40
+  }
+ },
+ "bites": [
+  {
+   "metric": "kitPostponed",
+   "ok": true
+  }
+ ],
+ "downstream": [
+  {
+   "metric": "lostDays",
+   "ok": true
+  },
+  {
+   "metric": "daysToDeliver",
+   "ok": true
+  },
+  {
+   "metric": "delivered",
+   "ok": true
+  },
+  {
+   "metric": "spent",
+   "ok": true
+  }
+ ],
+ "verdict": "proven",
+ "hashes": {
+  "src/engine/equipment.ts": "add6a635dd113a86",
+  "src/engine/production/shoot.ts": "c192fe85cf2645f9",
+  "tests/proof/career.ts": "2d4877367212a0ea"
+ }
+}

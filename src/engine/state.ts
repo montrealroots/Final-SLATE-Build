@@ -633,10 +633,21 @@ export function travelHours(a: Place, b: Place): number {
   return Math.round(km / 800 + 3);
 }
 
+/** Why a trip to a place is refused by something outside travel (papers.ts: entering a country), or null. */
+const travelChecks: ((s: GameState, to: Place) => string | null)[] = [];
+export function onTravelCheck(fn: (s: GameState, to: Place) => string | null): void { travelChecks.push(fn); }
+export function travelRefusal(state: GameState, placeId: string): string | null {
+  if (state.sleep.asleep) return "You're asleep.";
+  if (state.travel) return "You're already traveling.";
+  if (placeId === state.locationId) return "You're already here.";
+  const to = getPlace(placeId);
+  for (const f of travelChecks) { const why = f(state, to); if (why) return why; }
+  return null;
+}
+
 export function travelTo(state: GameState, placeId: string): number {
-  if (state.sleep.asleep) throw new Error("You're asleep.");
-  if (state.travel) throw new Error("You're already traveling.");
-  if (placeId === state.locationId) throw new Error("You're already here.");
+  const no = travelRefusal(state, placeId);
+  if (no) throw new Error(no);
   const from = getPlace(state.locationId);
   const to = getPlace(placeId);
   adoptPlace(state, to); // a world place travelled to is kept in the save

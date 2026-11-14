@@ -18,17 +18,24 @@
 import visitsData from '../data/papers/visits.json';
 import workData from '../data/papers/work.json';
 import citizenshipData from '../data/papers/citizenship.json';
-import { addLog, newId, registerHandler, schedule } from './state';
+import refusalData from '../data/papers/refusals.json';
+import sponsorData from '../data/papers/sponsors.json';
+import { addLog, adoptPlace, newId, onTravelCheck, registerHandler, schedule, travelTo } from './state';
 import { DAY, dateKey } from './time';
 import { countryName } from '../world/gazetteer/gazetteer';
 import { getPlace } from '../data/places';
-import { bankSim } from './bankworld';
+import { advanceBankWorld, bankSim, cityForPlace } from './bankworld';
+import { armHomeAccounts, heldFromAbroad } from './bankworld/systems/abroad';
+import { checkingsOf } from './bankworld/systems/lending';
+import { banksFor } from './bankworld/systems/banking';
 import { documentsOf, inForce, theCountry, type PersonDocument } from './bankworld/systems/documents';
 import { VISAS, type VisaRule } from './bankworld/content/visas';
 import { exchange } from './bankworld/content/currency';
 import { bankReach, postToBank } from './bank';
 import { continentOf, permitTerms, visaTerms, type Terms } from './papers-terms';
 import { CONTINENT_NAMES } from './bankworld/content/geography';
+import { filmPlace } from './destinations';
+import { stream } from './rng';
 import type { GameState } from './types';
 
 // ---------------- the records ----------------
@@ -114,7 +121,8 @@ export function entryRight(state: GameState, country: string): EntryRight {
     const lapsed = applications(state).filter((a) => a.kind === 'permit' && a.country === country && a.stage === 'expired').at(-1);
     return { kind: 'unpermitted', why: `You live in ${the(country)} without the right to${lapsed ? `: your ${lapsed.route} ran out${lapsed.expiresAt ? ` on ${dateKey(lapsed.expiresAt, 'UTC')}` : ''}` : ''}. You can't work there until a work visa is issued; apply under Working.` };
   }
-  const held = applications(state).find((a) => a.country === country && a.kind === 'visa' && a.stage === 'issued' && (a.expiresAt ?? Infinity) > state.now);
+  // A visitor visa or a work visa in force lets you in (a work visa, from November 14, 2026).
+  const held = applications(state).find((a) => a.country === country && a.stage === 'issued' && (a.expiresAt ?? Infinity) > state.now);
   if (held) return { kind: 'held', why: `Your ${held.route} lets you in${held.expiresAt ? ` until ${dateKey(held.expiresAt, 'UTC')}` : ''}.`, until: held.expiresAt };
   const rules = citizenships(state).map((n) => ({ n, r: visitRule(n, country) })).filter((x): x is { n: string; r: Visit | 'home' } => x.r !== undefined);
   if (!rules.length) return { kind: 'unknown', why: `The game has no record of who may visit ${the(country)}.` };
@@ -192,7 +200,11 @@ export interface PaperApplication {
   estimate?: true;
   country: string;
   route: string;
-  stage: 'applied' | 'issued' | 'expired';
+  stage: 'applied' | 'issued' | 'expired' | 'refused';
+  /** Who sponsored a work visa, as the decision read it. */
+  sponsor?: string;
+  /** The chance it was refused, as the decision drew it (0 to 1), and why that chance. */
+  refusal?: { chance: number; basis: string };
   passportId: string;
   fee: { minor: number; currency: string; paidUsdMinor: number };
   appliedAt: number;
@@ -219,7 +231,7 @@ function visaPair(state: GameState, country: string): Terms | undefined {
 export const visaFor = (state: GameState, country: string): Terms => visaPair(state, country) ?? visaTerms(country);
 
 export type ApplicationCheck =
-  | { ok: true; terms: Terms; needs: string[]; feeText: string }
+  | { ok: true; terms: Terms; needs: string[]; feeText: string; refusal: { chance: number; basis: string } }
   | { ok: false; why: string; missing?: string[] };
 
 const feeText = (t: Terms) => `${t.fee.amount.toLocaleString('en-US')} ${t.fee.currency}`;
@@ -238,7 +250,81 @@ export function visaCheck(state: GameState, country: string): ApplicationCheck {
   const t = visaFor(state, country);
   const need = passportNeed(state, t);
   if ('why' in need) return { ok: false, why: need.why };
-  return { ok: true, terms: t, needs: [`Your ${need.passport.name ?? 'passport'}, in force until ${dateKey(need.passport.expiresAt ?? state.now, 'UTC')}`], feeText: feeText(t) };
+  return { ok: true, terms: t, needs: [`Your ${need.passport.name ?? 'passport'}, in force until ${dateKey(need.passport.expiresAt ?? state.now, 'UTC')}`], feeText: feeText(t), refusal: refusalChance(state, 'visa', country) };
+}
+
+// ---------------- what papers read of the rest of the game ----------------
+
+/**
+ * Your record's best standing and an agent's name, given to papers by reputation.ts and representation.ts as they load.
+ * Papers can't import them: they import finance, projects and jobs, which import papers, and in the browser that loop
+ * started production.ts before projects.ts (found November 14, 2026, when the game stopped loading).
+ */
+export const papersReads = { bestStanding: (_s: GameState): number => 50, agentName: (id: string): string => id };
+
+// ---------------- sponsors ----------------
+
+interface SponsorRule { kinds: ('agent' | 'employer')[]; basis: string; source?: { kind: string; url: string; what: string } }
+const SPONSOR_RULES = (sponsorData as { countries: Record<string, SponsorRule> }).countries;
+/** Who may sponsor a work visa for `country`: researched for eight countries, else an employer, the game's assumption. */
+export const sponsorRule = (country: string): SponsorRule & { estimated: boolean } =>
+  SPONSOR_RULES[country] ? { ...SPONSOR_RULES[country], estimated: false } : { kinds: ['employer'], basis: 'Most work visas are sponsored by the employer the work is for; the game takes it that this one is (its assumption).', estimated: true };
+
+/**
+ * Who could sponsor your work visa for `country` now, of what you have (from November 14, 2026; until then a work visa
+ * needed none): your agent, where an agent may petition; an outside job offered or taken there; a project of yours being
+ * made there, through the production's local company (the game's assumption, said as one).
+ */
+export function sponsorsFor(state: GameState, country: string): string[] {
+  const rule = sponsorRule(country);
+  const out: string[] = [];
+  const agentId = state.representation?.current?.agentId;
+  if (rule.kinds.includes('agent') && agentId) out.push(`your agent, ${papersReads.agentName(agentId)}`);
+  if (rule.kinds.includes('employer')) {
+    for (const j of state.jobs ?? []) if ((j.status === 'offered' || j.status === 'accepted') && getPlace(j.placeId).country === country) out.push(`${j.company}, for ${j.production}`);
+    for (const p of state.projects) {
+      if (p.delivered || p.shelved) continue;
+      const places = [getPlace(p.axes.basePlaceId), ...Object.keys(p.locationChoices ?? {}).map((l) => filmPlace(p, l))];
+      if (places.some((x) => x.country === country)) out.push(`${p.title}'s production company there`);
+    }
+  }
+  return [...new Set(out)];
+}
+
+// ---------------- refusals ----------------
+
+interface RateTable { byPassport: Record<string, number>; overall?: number; what: string; sources: { kind: string; url: string; what: string }[] }
+const REFUSALS = refusalData as unknown as { schengen: string[]; visitor: Record<string, RateTable>; work: { approval: number; what: string } };
+/** An electronic authorization's or e-visa's chance of refusal: game calibration, as none is published. */
+export const ELECTRONIC_REFUSAL = 0.02;
+/** Where the record behind a work visa's chance starts: an established standing, as the typical O-1 petition's (game calibration). */
+const WORK_ANCHOR_STANDING = 55;
+
+/**
+ * The chance an application is refused, and why (from November 14, 2026; until then every one was granted, and the
+ * game said it modeled no grounds for refusal). A visitor visa: the published refusal rate for your passport there, the
+ * destination's overall rate, or the game's estimate from your passport's rates elsewhere. A work visa: anchored to the
+ * O-1's published approval, 90%, for an established record; each 10 points of standing above it halves the chance and
+ * each 10 below doubles it, between 2% and 50% (game calibration).
+ */
+export function refusalChance(state: GameState, kind: 'visa' | 'permit', country: string): { chance: number; basis: string } {
+  if (kind === 'permit') {
+    const best = papersReads.bestStanding(state);
+    const chance = Math.min(0.5, Math.max(0.02, (1 - REFUSALS.work.approval) * 2 ** ((WORK_ANCHOR_STANDING - best) / 10)));
+    return { chance, basis: `${REFUSALS.work.what}; your record's best standing, ${best}, moves that from an established record's 10% (game calibration).` };
+  }
+  // The published tables are for visas a consulate decides; an electronic authorization (an ESTA, an ETA) or an e-visa is
+  // granted online to nearly everyone eligible for one, and no rate is published: 2%, the game's estimate.
+  const e = entryRight(state, country);
+  if (e.kind === 'needs' && (e.entry === 'eta' || e.entry === 'evisa')) return { chance: ELECTRONIC_REFUSAL, basis: 'The game\'s estimate: an electronic authorization or e-visa is refused rarely, and no rate for one is published.' };
+  const table = REFUSALS.visitor[country] ?? (REFUSALS.schengen.includes(country) ? REFUSALS.visitor.SCHENGEN : undefined);
+  const mine = citizenships(state);
+  const recorded = table ? mine.map((n) => table.byPassport[n]).filter((x): x is number => x !== undefined) : [];
+  if (recorded.length) return { chance: Math.min(...recorded) / 100, basis: `${table!.what}: your passport's rate, as published.` };
+  if (table?.overall !== undefined) return { chance: table.overall / 100, basis: `${table.what}: the overall rate, as no rate for your passport is recorded.` };
+  const elsewhere = mine.flatMap((n) => Object.values(REFUSALS.visitor).map((t) => t.byPassport[n])).filter((x): x is number => x !== undefined);
+  const est = elsewhere.length ? elsewhere.reduce((a, x) => a + x, 0) / elsewhere.length : REFUSALS.visitor.SCHENGEN.overall!;
+  return { chance: est / 100, basis: elsewhere.length ? 'The game\'s estimate: your passport\'s published refusal rates elsewhere, averaged, as none is recorded here.' : 'The game\'s estimate: the Schengen area\'s overall refusal rate, as none is recorded for here or for your passport.' };
 }
 
 /** Whether you may apply for a permit to do `activity` in `country`, what it needs and costs; or exactly why not. */
@@ -255,7 +341,10 @@ export function permitCheck(state: GameState, country: string, activity: Activit
   if (applications(state).some((a) => a.kind === 'permit' && a.country === country && (home || (a.activity ?? 'act') === activity) && a.stage === 'applied')) return { ok: false, why: 'Your application is being decided.' };
   const need = passportNeed(state, t);
   if ('why' in need) return { ok: false, why: need.why };
-  return { ok: true, terms: t, needs: [`Your ${need.passport.name ?? 'passport'}, in force until ${dateKey(need.passport.expiresAt ?? state.now, 'UTC')}`], feeText: feeText(t) };
+  const sponsor = sponsorsFor(state, country)[0];
+  const rule = sponsorRule(country);
+  if (!sponsor) return { ok: false, why: `It needs a sponsor, and you have none there: ${rule.basis} An outside job there, a project of yours made there${rule.kinds.includes('agent') ? ', or an agent' : ''} would be one.` };
+  return { ok: true, terms: t, needs: [`Your ${need.passport.name ?? 'passport'}, in force until ${dateKey(need.passport.expiresAt ?? state.now, 'UTC')}`, `A sponsor: ${sponsor}`], feeText: feeText(t), refusal: refusalChance(state, 'permit', country) };
 }
 
 /** The work visa you live on, if you live on one, and whether it can be renewed now. */
@@ -281,6 +370,7 @@ function apply(state: GameState, kind: 'visa' | 'permit', country: string, c: Ex
     id, kind, country, route: t.route, stage: 'applied', passportId: passport.id,
     ...(kind === 'permit' && country === livesIn(state) ? { all: true as const } : activity && activity !== 'act' ? { activity } : {}), ...(t.estimate ? { estimate: true as const } : {}),
     fee: { minor, currency: t.fee.currency, paidUsdMinor: usd }, appliedAt: state.now, decideAt: state.now + t.days * DAY,
+    ...(kind === 'permit' ? { sponsor: sponsorsFor(state, country)[0] } : {}),
   };
   (state.paperApplications ??= []).push(a);
   schedule(state, a.decideAt, 'papers-decision', { id }, { attention: 'notify', priority: 55, id: `papers-decision:${id}` });
@@ -328,7 +418,7 @@ export function grantArrivalPapers(state: GameState, paid = true): PaperApplicat
   if (paid && (usd === undefined || !state.bank || bankReach(state) < usd / 100)) paid = false;
   if (paid) postToBank(state, 'papers', -usd! / 100, `${t.route}: The Fee, Before You Arrived`, `papers:${id}`);
   const a: PaperApplication = {
-    id, kind: 'permit', all: true, arrival: true, country, route: t.route, stage: 'issued', passportId: passportFor(state)?.id ?? '',
+    id, kind: 'permit', all: true, arrival: true, country, route: t.route, stage: 'issued', passportId: passportFor(state)?.id ?? '', sponsor: 'sponsored before your story began',
     ...(t.estimate ? { estimate: true as const } : {}),
     fee: { minor, currency: t.fee.currency, paidUsdMinor: paid ? usd ?? 0 : 0 },
     appliedAt: state.now - t.days * DAY, decideAt: state.now, issuedAt: state.now,
@@ -341,11 +431,93 @@ export function grantArrivalPapers(state: GameState, paid = true): PaperApplicat
   return a;
 }
 
+// ---------------- moving ----------------
+
+/** How many of your accounts your bank holds for you from abroad: at a bank in a country you don't live in. */
+export function heldFromAbroadCount(state: GameState): number {
+  if (!state.bank) return 0;
+  const sim = bankSim(state.bank);
+  return sim.ledger.accountsOf(sim.universe.playerId).filter((a) => !a.nominal && !a.closedAt && heldFromAbroad(sim, a)).length;
+}
+
+/**
+ * Why you can't make `placeId` your home now, or null (from November 14, 2026; until then where a story was lived was
+ * set at its start and never changed). Within your country you may move freely; to another you need the right to live
+ * there: citizenship, free movement, or a work visa in force there.
+ */
+export function moveRefusal(state: GameState, placeId: string): string | null {
+  const to = getPlace(placeId);
+  if (to.id === state.character.livesIn) return 'You already live there.';
+  if (state.travel) return "You're travelling: you can move once you arrive.";
+  if (state.sleep.asleep) return "You're asleep.";
+  if (to.country !== livesIn(state) && !isCitizen(state, to.country) && !freeMovement(state, to.country) && !permitIn(state, to.country)) {
+    return `To live in ${the(to.country)} you need the right to: citizenship, free movement, or a work visa there. Apply for one under Your Papers; it needs a sponsor there.`;
+  }
+  if (state.locationId !== to.id) return entryRefusal(state, to.country);
+  return null;
+}
+
+/**
+ * Make `placeId` your home: you set off there if you aren't there, your bank takes it as where you live (1221's rules
+ * for accounts held from abroad then apply, its notices included), and a work visa there covers your stay and all four
+ * kinds of work. Your money stays in the currency it is kept in.
+ */
+export function moveTo(state: GameState, placeId: string): void {
+  const no = moveRefusal(state, placeId);
+  if (no) throw new Error(no);
+  const to = getPlace(placeId);
+  adoptPlace(state, to);
+  const from = getPlace(state.character.livesIn);
+  state.character.livesIn = to.id;
+  const visa = permitIn(state, to.country);
+  if (visa && !isCitizen(state, to.country)) visa.all = true;
+  let opened: string | null | undefined;
+  if (state.bank) {
+    advanceBankWorld(state.bank, state.now);
+    const sim = bankSim(state.bank);
+    const city = cityForPlace(to.country, to.lat, to.lon);
+    if (city) {
+      sim.player.currentLocationId = city;
+      // An account where you now live, as a person moving opens one: the first bank there that opens it without a deposit.
+      const local = checkingsOf(sim, sim.player).some((a) => !heldFromAbroad(sim, a));
+      if (!local) opened = banksFor(city).map((b) => ({ b, r: sim.execute<{ accountId?: string; decidedAt?: number }>({ kind: 'bank.open_current', payload: { bankId: b.id } }) })).find((x) => x.r.ok)?.b.name ?? null;
+      armHomeAccounts(sim);
+    }
+  }
+  if (state.locationId !== to.id) travelTo(state, to.id);
+  const bankWords = opened ? ` You opened a current account at ${opened}.` : opened === null ? ` No bank in ${to.name} opened an account for you without a deposit: open one under Your Bank, or a bank at home may close yours.` : '';
+  addLog(state, `You moved from ${from.name} to ${to.name}${visa && !isCitizen(state, to.country) ? `, on your ${visa.route}` : ''}.${bankWords}${state.travel ? ' You set off now.' : ''}`, 'personal', { route: { view: 'papers' } });
+}
+
+/**
+ * Why entering the country a trip goes to is refused, or null (from November 14, 2026; until then travel asked nothing
+ * of your papers). A trip within the country you're in asks nothing. Entering asks what Your Papers says: free entry, a
+ * visa on arrival, a visa or work visa you hold, or a place the records don't cover, let you in; a visa you need and
+ * don't hold, or living there without the right to, doesn't.
+ */
+export function entryRefusal(state: GameState, country: string): string | null {
+  if (getPlace(state.locationId).country === country) return null;
+  const e = entryRight(state, country);
+  if (e.kind === 'needs' && e.entry !== 'arrival') return `${e.why} Apply under Your Papers before you travel.`;
+  if (e.kind === 'unpermitted') return `${e.why}`;
+  return null;
+}
+onTravelCheck((state, to) => entryRefusal(state, to.country));
+
 registerHandler('papers-decision', (state, ev) => {
   const a = applications(state).find((x) => x.id === ev.payload.id);
   if (!a || a.stage !== 'applied') return { suppressInterrupt: true };
   const t = a.kind === 'visa' ? visaFor(state, a.country) : permitTerms(a.country, a.route);
-  // Granted: the game models no grounds for refusal, and says so rather than inventing a chance of one.
+  // Refused by its chance, drawn once for this application (from November 14, 2026; until then always granted). The fee
+  // isn't returned; you may apply again.
+  a.refusal = refusalChance(state, a.kind, a.country);
+  if (stream(state.seed, 'papers-decision', a.id)() < a.refusal.chance) {
+    a.stage = 'refused';
+    const home = a.all && a.country === livesIn(state) && !permitIn(state, a.country);
+    const message = `Your ${a.route} for ${the(a.country)} was refused. The fee isn't returned; you may apply again.${home ? ' Until a work visa is issued you can\'t work there, and once the one you hold runs out you live there without the right to.' : ''}`;
+    addLog(state, message, 'warning', { route: { view: 'papers' } });
+    return { message };
+  }
   a.stage = 'issued';
   a.issuedAt = state.now;
   if (t.stayDays) a.expiresAt = state.now + t.stayDays * DAY;
