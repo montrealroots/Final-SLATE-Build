@@ -66,7 +66,8 @@ the screen says so.
   - **Work rules** (14 countries whose research was blocked): anyone who isn't a citizen needs a permit, with the free
     movement of ECOWAS (Guinea-Bissau), New Zealand citizens in Niue, Gulf citizens in Qatar as in the Emirates, and
     Morocco's rule in Western Sahara.
-  - Where your story is lived is taken as where you may live and work, said as an assumption wherever it is shown.
+  - Where your story is lived was taken as where you may live and work until November 14, 2026. From then it takes
+    citizenship, free movement or a work visa, as anywhere else does (`docs/v9/PAPERS.md`).
   - Past 2026-10-30, the last exchange rate is held and marked stale (`docs/v9/FX.md`).
 - **The research queue.** Every modeled figure is listed by `tests/v10-papers-terms.test.ts`; their number may fall and
   may not rise. Research replaces them biggest film markets first.

@@ -77,9 +77,9 @@ export const PROBES: Probe[] = [
   {
     id: 'cash-withdrawal',
     features: ['bank:cash.withdraw'],
-    decision: 'Take $400 out of a cash machine',
+    decision: 'Take 250 in the bank\'s own money out of a cash machine',
     reads: ['src/engine/bankworld/systems/banking.ts#registerBanking'],
-    variant: { daily: first((s) => void bank(s, 'cash.withdraw', { amount: 40_000, from: 'atm' })) },
+    variant: { daily: first((s) => void bank(s, 'cash.withdraw', { amount: 25_000, from: 'atm' })) },
     measure: bankMeasures,
     bites: ['money'],
     downstream: ['bankFees', 'interestIn'],

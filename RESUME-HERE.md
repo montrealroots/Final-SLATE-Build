@@ -31,6 +31,12 @@ estimate" for figures no source gives. Start at `docs/v10/README.md`.
   read about $24.7m in dollars a year on. Tests: `tests/v10-bank-currency.test.ts`; tests that compared dollar balances
   across months now compare what the bank holds, or the statement. Proof results measured before this banked in
   dollars: rerun the bank probes before relying on them.
+- Living abroad takes real papers (the owner: "make living abroad need real papers"; they chose arriving on the visa
+  over arriving without one). Where you live isn't assumed any more: citizenship, free movement, or a work visa, which
+  there covers all four kinds of work and the stay. A new life abroad arrives on it, its fee paid on the first day; it
+  can be renewed as its end nears; run out, no shoot, outside job or job day there. Older saves get the visa they
+  arrived on, fee settled. The test characters (`tests/helpers.ts`, `tests/fixtures.ts`, `e2e/helpers.ts`) are citizens
+  where they live, so tests not about papers pay for none. Tests: `tests/v10-living-abroad.test.ts`.
 
 **Next, in order.**
 1. Probes for the remaining actions (about 130), bank commands and fields; careers that reach the unreached event kinds.
