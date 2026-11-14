@@ -1,0 +1,31 @@
+{
+ "country": "SS",
+ "others": {
+  "right": "permit",
+  "route": "Work permit (Ministry of Labour)"
+ },
+ "note": "South Sudan: no foreign employer may employ a foreigner unless the skills aren't available locally, the Ministry has issued a valid work permit and the Labour Commissioner has approved the contract (Labour Act 2017, s. 46(3)); the Ministry of Labour's circular RSS/MoL/J/19/4 of 3 December 2025 reads it as every foreign employee needing a valid work permit issued by the Ministry, and told employers to verify their workforce. The permit is issued by the Ministry's Department of Alien Employment. No days without it. Read 2026-11-03 on the Ministry of Labour's site (the Act, the circular, its work-permit page); until then from Eye Radio's report of the circular.",
+ "sources": [
+  {
+   "url": "https://mol.gov.ss/sites/default/files/2025-12/Strict%20Enforcement%20of%20Labour%20Laws%20and%20Work%20Permit%20Compliance.jpeg",
+   "title": "Ministry of Labour (South Sudan), Circular Ref. RSS/MoL/J/19/4, December 2025: Strict Enforcement of Labour Laws and Work Permit Compliance (image, read by OCR; posted at mol.gov.ss/circulars-and-other-documents/strict-enforcement-labour-laws-and-work-permit-compliance-all-foreign)",
+   "read": "2026-11-03",
+   "said": "In accordance with Article 46(3) of the Labour Act 2017 of the Republic of South Sudan, it is MANDATORY that every foreign employee in your workforce must possess a valid work permit issued by the Ministry of Labour. The employment of any foreign national without a valid work permit constitutes a serious violation of the law ...",
+   "kind": "primary"
+  },
+  {
+   "url": "https://mol.gov.ss/sites/default/files/2020-12/Labour-Act-2017.pdf",
+   "title": "Labour Act 2017 (Republic of South Sudan), s. 46, on the Ministry of Labour's site",
+   "read": "2026-11-03",
+   "said": "46. Foreign Employers and Employees ... (3) Any foreign employer shall not employ any Foreigner unless: (a) Qualifications, skills and experiences required are not locally available; (b) such employee has been issued a valid work permit by the Ministry; and (c) The office of the Labour Commissioner has duly approved an employment contract of such employee.",
+   "kind": "primary"
+  },
+  {
+   "url": "https://mol.gov.ss/page/work-permit-applications",
+   "title": "Ministry of Labour (South Sudan), Requisite Procedures For Processing Work Permits",
+   "read": "2026-11-03",
+   "said": "A work permit is a legal document that allows a foreigner to legally streamline his or her employment/work status in the Republic of South Sudan. It is issued by the National Ministry of Labor (Department of Alien Employment). ... An application form is issued for the alien to fill (cost of application) form is $ 100.",
+   "kind": "primary"
+  }
+ ]
+}

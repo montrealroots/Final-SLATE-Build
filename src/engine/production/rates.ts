@@ -21,6 +21,12 @@ export const RENDER_NODE_DAY_COST = 35;
 /** Live-action screen minutes captured per shoot day before complexity adjustments. */
 export const BASE_MINUTES_PER_SHOOT_DAY = 4;
 export const HOLIDAY_PREMIUM = 1.5;
+/**
+ * A night shoot day's pay for everyone on set: a quarter more (game calibration, from November 14, 2026). Until then a
+ * night day cost what a day did, though the Time Of Day control was said to set its fees; the feature proofs found it
+ * didn't (docs/v10/proof/scene-night.json). It stacks with the holiday premium.
+ */
+export const NIGHT_PREMIUM = 1.25;
 /** A background performer for a day (game calibration). */
 export const CROWD_DAY_RATE = 180;
 

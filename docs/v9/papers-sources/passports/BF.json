@@ -1,0 +1,56 @@
+{
+ "country": "BF",
+ "office": "the Office National d'Identification (ONI)",
+ "currency": "XOF",
+ "routes": [
+  {
+   "id": "home",
+   "where": "home",
+   "speed": "standard",
+   "within": null,
+   "label": "in Burkina Faso"
+  }
+ ],
+ "passports": [
+  {
+   "for": "any",
+   "validYears": 5,
+   "pay": {
+    "home": "50000"
+   },
+   "pages": 34
+  }
+ ],
+ "note": "The passport issued since 29 January 2025 is the Confederation of Sahel States' (AES), valid five years and of 34 pages, as the Government's Information Service announced on 25 January 2025 (read 2026-11-03); until 2026-11-03 its validity was left unknown. Its price isn't on the Government's site: the 50,000 F CFA kept is the price of the ePassport launched on 3 September 2024, unchanged from the old passport, as the minister of security said at its launch (Burkina24), and whether the AES passport kept it is a lead. The 200-franc fiscal stamp of the National Police's 2017 conditions isn't added, its current status not read. The processing time and fees abroad are leads. The National Police's undated page (read 2026-11-03) gives the old ordinary passport as 50,000 F and a 200-franc fiscal stamp, issued in 72 working hours when the file is complete; the AES's communiqué of 23 January 2025 (its scan on the Government's site, read 2026-11-03) puts the AES passport in circulation from 29 January 2025, the old ones valid to expiry. Neither prices the AES passport.",
+ "sources": [
+  {
+   "kind": "secondary",
+   "quotes": "https://www.sig.gov.bf/",
+   "url": "https://burkina24.com/?p=379283",
+   "title": "Burkina24, État-civil : Le Burkina Faso se dote d'un nouveau passeport de dernière génération (3 September 2024)",
+   "read": "2026-11-03",
+   "said": "Le Burkina Faso a procédé au lancement de son nouveau passeport ce mardi 3 septembre 2024 à Ouagadougou. ... selon le ministre en charge de la sécurité, Mahamadou Sana. ... Il a aussi rassuré que le prix du nouveau passeport reste à 50 000 FCFA comme l’ancien, mais certaines commodités autour du nouveau passeport peuvent être taxées."
+  },
+  {
+   "kind": "primary",
+   "url": "https://gouvernement.gov.bf/a-e-s/aes-le-passeport-bientot-mis-en-circulation-au-burkina-faso/",
+   "title": "Service d'Information du Gouvernement du Burkina Faso, AES: le passeport bientôt mis en circulation au Burkina Faso (25 January 2025)",
+   "read": "2026-11-03",
+   "said": "Le 29 janvier 2025 est la date de mise en circulation du passeport de l'Alliance des États du Sahel (AES) au Burkina Faso. ... Le passeport AES a une durée de 5 ans et comprend 34 pages. Le directeur général de l'ONI a rassuré les Burkinabè détenteurs de l'ancien passeport de sa légalité jusqu'à sa date d'expiration."
+  },
+  {
+   "kind": "primary",
+   "url": "https://www.police.gov.bf/index.php/infos-utiles/passeport",
+   "title": "Police Nationale du Burkina Faso, Infos utiles: Passeport (undated)",
+   "read": "2026-11-03",
+   "said": "Le passeport ordinaire est délivré par la Direction Générale de la Police Nationale à travers la Division de la Migration sise à gounghin. ... Un timbre de 200FCFA ... Un timbre fiscal de 200 f plus la somme de 50000f ... NB : La durée d'établissement est de soixante-douze heures (72h) ouvrables si le dossier est régulier. Mais en cas d'insuffisance de stocks le délai peut varier en fonction de l'urgence."
+  },
+  {
+   "kind": "primary",
+   "url": "https://gouvernement.gov.bf/wp-content/uploads/2025/10/AES_-Nouveaux-passports-mis-en-circulation.pdf",
+   "title": "Confédération des États du Sahel, Communiqué, Bamako, 23 janvier 2025 (scan on the Government Information Service's site)",
+   "read": "2026-11-03",
+   "said": "le Président de la Confédération des États du Sahel (AES) informe l'opinion confédérale et internationale de la mise en circulation des passeports de l'AES, à compter du 29 janvier 2025. Toutefois, les anciens passeports demeurent valables jusqu'à leur date d'expiration."
+  }
+ ]
+}

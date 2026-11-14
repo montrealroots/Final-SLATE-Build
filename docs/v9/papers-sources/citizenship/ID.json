@@ -1,0 +1,36 @@
+{
+ "country": "ID",
+ "years": 5,
+ "renounce": true,
+ "lapses": true,
+ "note": "GLOBALCIT's Citizenship Law Dataset v3.0 (EUI, 2025), coding the law in force on 1 January 2024 (A06a IND 8, 9, 14; A06b IND 8, 9, 14; L05 IND 23(a)): ordinary naturalisation after 5 years' residence; the applicant must give up other citizenships; a citizen loses the citizenship on voluntarily taking another. Reforms after that date are checked in the file's later sources, where a later source is given. Citizenship at birth is read from the same dataset's 2024 coding of modes A01a (descent, born in country: Wedlock restriction), A01b (descent, born abroad: Wedlock restriction), A02a (birth in country: No provision) and A02b (birth in country to a parent born there: No provision), as its codebook (RSC/GLOBALCIT 2025/01, sections 3.2.1a to 3.2.2b) defines them: not by birth in the territory alone (provisions for foundlings and children otherwise stateless, modes A03a and A03b, aren't held by the form); by descent from either parent, a child born abroad on the limit the dataset states. The coding also records a wedlock restriction (a child born out of wedlock may not take it from a citizen father), which the form doesn't hold. Changes to the law at birth after 1 January 2024 weren't checked for this file. On 2026-11-03 the primary was read: Peraturan Pemerintah Nomor 2 Tahun 2007 tentang Tata Cara Memperoleh, Kehilangan, Pembatalan, dan Memperoleh Kembali Kewarganegaraan Republik Indonesia (implementing regulation of UU 12/2006), hosted by the Directorate General of Immigration's Batam office, Pasal 3(2)(c), (i); PP 2/2007, Pasal 31(1)(a). It confirmed the years of residence, renunciation and loss on taking another citizenship. It was silent on birth in the territory, descent and the limit abroad, which still rest on the sources above, re-read that day and found the same.",
+ "sources": [
+  {
+   "url": "https://cadmus.eui.eu/bitstreams/3b166501-e695-48d7-9e27-d7bef061573a/download",
+   "title": "GLOBALCIT Citizenship Law Dataset v3.0 (Vink, van der Baaren, Bauböck, Dzankic, Honohan, Manby; EUI Research Data, 2025), country-year-mode files, Indonesia, 2024",
+   "read": "2026-11-03",
+   "kind": "secondary",
+   "quotes": "https://globalcit.eu/national-citizenship-laws/",
+   "said": "Person has been continuously resident in Indonesia for 5 years or intermittently for 10 years. ... Renunciation of citizenship of another country required. ... Person voluntarily acquires a foreign citizenship. ... Wedlock restriction ... Person is born in wedlock to a citizen or out of wedlock to a mother who is a citizen. ... Wedlock restriction ... Person is born in wedlock to a citizen or out of wedlock to a mother who is a citizen. If the person also acquired another citizenship, s/he needs to choose between the different citizenships upon reaching the age of 18 or upon marriage. ... No provision ... No provision"
+  },
+  {
+   "url": "https://batam.imigrasi.go.id/assets/resources/files/PP_No_2_Tahun_2007_tentang_Tata_Cara_Memperoleh,_Kehilangan,_Pembatalan,_dan_Memperoleh_Kembali_Kewarganegaraan_Republik_Indonesia.pdf",
+   "title": "Peraturan Pemerintah Nomor 2 Tahun 2007 tentang Tata Cara Memperoleh, Kehilangan, Pembatalan, dan Memperoleh Kembali Kewarganegaraan Republik Indonesia (implementing regulation of UU 12/2006), hosted by the Directorate General of Immigration's Batam office, Pasal 3(2)(c), (i)",
+   "read": "2026-11-03",
+   "kind": "primary",
+   "said": "c. surat keterangan keimigrasian yang dikeluarkan oleh kantor imigrasi ... yang menyatakan bahwa pemohon telah bertempat tinggal di wilayah negara Republik Indonesia paling singkat 5 (lima) tahun berturut-turut atau paling singkat 10 (sepuluh) tahun tidak berturut-turut; ... i. surat keterangan dari perwakilan negara pemohon bahwa dengan memperoleh Kewarganegaraan Republik Indonesia tidak menjadi berkewarganegaraan ganda;"
+  },
+  {
+   "url": "https://batam.imigrasi.go.id/assets/resources/files/PP_No_2_Tahun_2007_tentang_Tata_Cara_Memperoleh,_Kehilangan,_Pembatalan,_dan_Memperoleh_Kembali_Kewarganegaraan_Republik_Indonesia.pdf",
+   "title": "PP 2/2007, Pasal 31(1)(a)",
+   "read": "2026-11-03",
+   "kind": "primary",
+   "said": "(1) Warga Negara Indonesia dengan sendirinya kehilangan kewarganegaraannya karena: a. memperoleh kewarganegaraan lain atas kemauannya sendiri;"
+  }
+ ],
+ "atBirth": {
+  "soil": "none",
+  "descent": "either parent",
+  "descentAbroad": "Person is born in wedlock to a citizen or out of wedlock to a mother who is a citizen. If the person also acquired another citizenship, s/he needs to choose between the different citizenships upon reaching the age of 18 or upon marriage."
+ }
+}

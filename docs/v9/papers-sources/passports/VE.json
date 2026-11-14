@@ -1,0 +1,75 @@
+{
+ "country": "VE",
+ "office": "the Servicio Administrativo de Identificación, Migración y Extranjería (SAIME), at its offices",
+ "currency": "USD",
+ "routes": [
+  {
+   "id": "home",
+   "where": "home",
+   "speed": "standard",
+   "within": {
+    "n": 15,
+    "unit": "working day"
+   },
+   "label": "ordinary passport, delivered in 8 to 15 working days"
+  },
+  {
+   "id": "habilitado",
+   "where": "home",
+   "speed": "urgent",
+   "within": {
+    "n": 48,
+    "unit": "hour"
+   },
+   "label": "'habilitado' (express) passport, delivered in 48 hours"
+  }
+ ],
+ "passports": [
+  {
+   "for": "infant",
+   "under": 3,
+   "validYears": null,
+   "pay": {
+    "home": "108",
+    "habilitado": "290"
+   }
+  },
+  {
+   "for": "minor",
+   "from": 3,
+   "under": 18,
+   "validYears": null,
+   "pay": {
+    "home": "162",
+    "habilitado": "310"
+   }
+  },
+  {
+   "for": "adult",
+   "from": 18,
+   "validYears": null,
+   "pay": {
+    "home": "216",
+    "habilitado": "350"
+   }
+  }
+ ],
+ "note": "The SAIME's own price list (its Pasaporte page, read 2026-11-03), as El Diario also gave it (5 September 2026): the ordinary passport in 8 to 15 working days at 108 (3 months to 2 years 11 months), 162 (3 to 17) and 216 (18 and over); the 'habilitado' passport in 48 hours at the Simón Bolívar office in Caracas, at 290, 310 and 350. The SAIME writes the amounts as 'Ref.' anchored to the Banco Central de Venezuela's rate of the day; that the reference unit is the US dollar is El Diario's reading. Validity and the fees at consulates are leads.",
+ "sources": [
+  {
+   "kind": "secondary",
+   "url": "https://eldiario.com/2026/09/05/pasaporte-ordinario-vs-habilitado/",
+   "quotes": "https://www.saime.gob.ve/",
+   "title": "El Diario, Saime: ¿qué diferencia hay entre un pasaporte ordinario y uno habilitado y cuál es su precio? (5 September 2026)",
+   "read": "2026-11-03",
+   "said": "Los pasaportes ordinarios son los que entrega el Saime en un plazo de 8 a 15 días hábiles en sus oficinas y tienen un valor que varía entre los 108 y 216 dólares, dependiendo del rango de edad. -Niños y niñas (0-2 años): 108 dólares ... -Niños, niñas y adolescentes (3 a 17 años): 162 dólares -Adultos (mayores de 18 años): 216 dólares Pasaporte habilitado Los pasaportes habilitados se refieren a los documentos tramitados de forma express con entrega en 48 horas. Estos documentos tienen un precio que varía entre los 290 y 350 dólares. -Niños y niñas (0-2 años): 290 dólares -Niños, niñas y adolescentes (3-17 años): 310 dólares -Adultos (mayores de 18 años): 350 dólares Los costos de los pasaportes están anclados a la tasa del Banco Central de Venezuela (BCV) del día."
+  },
+  {
+   "kind": "primary",
+   "url": "https://www.saime.gob.ve/pasaporte/",
+   "title": "SAIME, Pasaporte",
+   "read": "2026-11-03",
+   "said": "La solicitud del pasaporte habilitado se realiza a través de la página web www.saime.gob.ve , el cual se tramita en la oficina Simón Bolívar, ubicada en Caracas. Tiempo de entrega de 48 horas. El costo depende de la edad del solicitante PASAPORTE ORDINARIO PASAPORTE HABILITADO 3 Meses a 2 años y 11 meses de edad. Ref. 108. Desde los 3 a 17 años de edad con 11 meses. Ref. 162. A partir de los 18 años de edad. Ref. 216. Tiempo de entrega de 8 a 15 días hábiles. 3 Meses a 2 años y 11 meses de edad. Ref. 290. Desde los 3 a 17 años de edad con 11 meses. Ref. 310. A partir de los 18 años de edad. Ref. 350. Los costos están anclados a la tasa BCV del día"
+  }
+ ]
+}

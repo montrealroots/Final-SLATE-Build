@@ -1,0 +1,109 @@
+{
+ "country": "ST",
+ "rules": [
+  {
+   "entry": "free",
+   "days": 90,
+   "passports": [
+    "AO",
+    "GA",
+    "GH",
+    "GW",
+    "MZ",
+    "RW",
+    "TG",
+    "ZA"
+   ]
+  },
+  {
+   "entry": "free",
+   "days": 15,
+   "passports": [
+    "AD",
+    "AE",
+    "AT",
+    "BE",
+    "BG",
+    "BR",
+    "CA",
+    "CH",
+    "CY",
+    "CZ",
+    "DE",
+    "DK",
+    "EE",
+    "ES",
+    "FI",
+    "FR",
+    "GB",
+    "GQ",
+    "GR",
+    "HR",
+    "HU",
+    "IE",
+    "IS",
+    "IT",
+    "JP",
+    "KR",
+    "KW",
+    "LI",
+    "LT",
+    "LU",
+    "LV",
+    "MA",
+    "MC",
+    "MT",
+    "NL",
+    "NO",
+    "PL",
+    "PT",
+    "QA",
+    "RO",
+    "RU",
+    "SE",
+    "SI",
+    "SK",
+    "SM",
+    "TL",
+    "TR",
+    "US",
+    "VA"
+   ]
+  },
+  {
+   "entry": "arrival",
+   "days": 15,
+   "passports": [
+    "CN"
+   ]
+  },
+  {
+   "entry": "free",
+   "days": 60,
+   "passports": [
+    "CV"
+   ]
+  }
+ ],
+ "others": {
+  "entry": "evisa"
+ },
+ "note": "São Tomé and Príncipe: Togolese enter without a visa for 90 days and nationals of the countries listed for 15; Chinese get a 15-day visa on arrival; everyone else applies for an e-Visa (processed within 7 working days). Holders of a Schengen or US visa or residence, who may enter for 15 days without one, aren't modelled. Read from Wikipedia's copy. Checked on 2026-11-03 against the Migration and Borders Service's own notice (4 December 2025), which confirmed the 15-day list and Togo's 90 days, and by bilateral agreement gives Angola, Mozambique, Guinea-Bissau, Gabon and Rwanda 90 days (not 15), Cape Verde 60 (up to 120 a year, not modelled) and Ghana and South Africa 90, so those were changed or added. China's visa on arrival stands on Wikipedia's copy.",
+ "sources": [
+  {
+   "url": "https://en.wikipedia.org/wiki/Visa_policy_of_São_Tomé_and_Príncipe",
+   "title": "Wikipedia, Visa policy of São Tomé and Príncipe",
+   "read": "2026-11-03",
+   "kind": "secondary",
+   "quotes": "https://www.smf.st/",
+   "said": "Visitors to São Tomé and Príncipe must obtain an e-Visa unless they are citizens from one of the visa-exempt countries or citizens who may obtain a visa on arrival. ... 90 days Togo 15 days All European Union member states Andorra Angola Brazil Canada Cape Verde Equatorial Guinea Gabon Guinea-Bissau Iceland Japan Kuwait Liechtenstein Monaco Morocco Mozambique Norway Qatar Russia Rwanda San Marino South Korea Switzerland Timor-Leste Turkey United Arab Emirates United Kingdom United States Vatican City ... Holders of ordinary passports issued by China may obtain a visa on arrival for 15 days. ... Citizens of countries ans territories that require a visa may obtain online through an e-VisaST system."
+  },
+  {
+   "url": "http://www.smf.st/noticiaSingle.php?loock=noticiasSingle&idnews=20",
+   "title": "Serviço de Migração e Fronteiras (São Tomé e Príncipe): Isenção de Visto para São Tomé e Príncipe (2025-12-04)",
+   "read": "2026-11-03",
+   "kind": "primary",
+   "said": "1. Isenção por Quinze (15) Dias Cidadãos dos seguintes países e territórios podem entrar e permanecer em São Tomé e Príncipe por um período máximo de 15 dias sem visto, com possibilidade de prorrogação até 90 dias ...: Países da CPLP ... Países da União Europeia (UE) Reino Unido EUA (Estados Unidos da América) Canadá Andorra Confederação Helvética (Suíça) Coreia do Sul Emirados Árabes Unidos (EAU) Federação Russa Islândia Japão Kuwait Liechtenstein Marrocos Mônaco Noruega Qatar São Martinho Turquia Vaticano Condição Adicional: Cidadãos estrangeiros de quaisquer outros países ... um visto \"Schengen\" válido ou um visto válido dos Estados Unidos da América. 2. Países Isentos de Visto Mediante Acordo de Cooperação ... Angola (até 90 dias) Cabo Verde (60 até 120 dias por ano) Moçambique (até 90 dias) Guiné Bissau (até 90 dias) Gana (até 90 dias) África do Sul (até 90 dias para passaportes ordinários ...) Gabão (até 90 dias) Ruanda (até 90 dias) Togo (até 90 dias, com reciprocidade para todos os passaportes; acordo assinado em junho de 2024, verifique o estado de implementação)"
+  }
+ ]
+}

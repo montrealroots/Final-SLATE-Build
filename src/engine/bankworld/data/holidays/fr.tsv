@@ -1,0 +1,730 @@
+# 57	Département Moselle
+# 67	Département Bas-Rhin
+# 68	Département Haut-Rhin
+# BL	Département et région d'outre-mer Saint Barthélemy
+# GF	Département et région d'outre-mer Guyane
+# GP	Département et région d'outre-mer Guadeloupe
+# MF	Département et région d'outre-mer Saint Martin
+# MQ	Département et région d'outre-mer Martinique
+# RE	Département et région d'outre-mer La Réunion
+# YT	Département et région d'outre-mer Mayotte
+2026-01-01	Nouvel An	New Year's Day	public	
+2026-02-16	Lundi de Carnaval	Shrove Monday	observance	BL
+2026-02-18	Mercredi des Cendres	Ash Wednesday	observance	BL
+2026-03-15	Mi-Carême	Laetare Sunday	observance	BL
+2026-04-03	Vendredi saint	Good Friday	public	57
+2026-04-03	Vendredi saint	Good Friday	public	67
+2026-04-03	Vendredi saint	Good Friday	public	68
+2026-04-03	Vendredi saint	Good Friday	bank	BL
+2026-04-03	Vendredi saint	Good Friday	public	GP
+2026-04-03	Vendredi saint	Good Friday	public	MQ
+2026-04-05	Pâques	Easter Sunday	observance	BL
+2026-04-06	Lundi de Pâques	Easter Monday	public	
+2026-04-27	Abolition de l’esclavage	Abolition of Slavery	public	YT
+2026-05-01	Fête du travail	Labour Day	public	
+2026-05-08	Fête de la Victoire 1945	Victory Day	public	
+2026-05-14	Ascension	Ascension Day	public	
+2026-05-22	Abolition de l’esclavage	Abolition of Slavery	public	MQ
+2026-05-24	Pentecôte	Pentecost	observance	
+2026-05-25	Lundi de Pentecôte	Whit Monday	public	
+2026-05-27	Abolition de l’esclavage	Abolition of Slavery	public	GP
+2026-05-27	Abolition de l’esclavage	Abolition of Slavery	public	MF
+2026-05-31	Fête des Mères	Mother's Day	observance	
+2026-06-10	Abolition de l’esclavage	Abolition of Slavery	public	GF
+2026-07-14	Fête Nationale de la France	Bastille Day	public	
+2026-07-21	Jour de Victor Schoelcher	Victor Schoelcher Day	optional	GP
+2026-07-21	Jour de Victor Schoelcher	Victor Schoelcher Day	optional	MQ
+2026-08-15	Assomption	Assumption	public	
+2026-08-24	Fête de Saint Barthélemy	Saint Barth	observance	BL
+2026-10-09	Abolition de l’esclavage	Abolition of Slavery	public	BL
+2026-11-01	Toussaint	All Saints' Day	public	
+2026-11-11	Armistice 1918	Armistice Day	public	
+2026-12-20	Abolition de l’esclavage	Abolition of Slavery	public	RE
+2026-12-25	Noël	Christmas Day	public	
+2026-12-26	Lendemain de Noël	Boxing Day	public	57
+2026-12-26	Lendemain de Noël	Boxing Day	public	67
+2026-12-26	Lendemain de Noël	Boxing Day	public	68
+2027-01-01	Nouvel An	New Year's Day	public	
+2027-02-08	Lundi de Carnaval	Shrove Monday	observance	BL
+2027-02-10	Mercredi des Cendres	Ash Wednesday	observance	BL
+2027-03-07	Mi-Carême	Laetare Sunday	observance	BL
+2027-03-26	Vendredi saint	Good Friday	public	57
+2027-03-26	Vendredi saint	Good Friday	public	67
+2027-03-26	Vendredi saint	Good Friday	public	68
+2027-03-26	Vendredi saint	Good Friday	bank	BL
+2027-03-26	Vendredi saint	Good Friday	public	GP
+2027-03-26	Vendredi saint	Good Friday	public	MQ
+2027-03-28	Pâques	Easter Sunday	observance	BL
+2027-03-29	Lundi de Pâques	Easter Monday	public	
+2027-04-27	Abolition de l’esclavage	Abolition of Slavery	public	YT
+2027-05-01	Fête du travail	Labour Day	public	
+2027-05-06	Ascension	Ascension Day	public	
+2027-05-08	Fête de la Victoire 1945	Victory Day	public	
+2027-05-16	Pentecôte	Pentecost	observance	
+2027-05-17	Lundi de Pentecôte	Whit Monday	public	
+2027-05-22	Abolition de l’esclavage	Abolition of Slavery	public	MQ
+2027-05-27	Abolition de l’esclavage	Abolition of Slavery	public	GP
+2027-05-27	Abolition de l’esclavage	Abolition of Slavery	public	MF
+2027-05-30	Fête des Mères	Mother's Day	observance	
+2027-06-10	Abolition de l’esclavage	Abolition of Slavery	public	GF
+2027-07-14	Fête Nationale de la France	Bastille Day	public	
+2027-07-21	Jour de Victor Schoelcher	Victor Schoelcher Day	optional	GP
+2027-07-21	Jour de Victor Schoelcher	Victor Schoelcher Day	optional	MQ
+2027-08-15	Assomption	Assumption	public	
+2027-08-24	Fête de Saint Barthélemy	Saint Barth	observance	BL
+2027-10-09	Abolition de l’esclavage	Abolition of Slavery	public	BL
+2027-11-01	Toussaint	All Saints' Day	public	
+2027-11-11	Armistice 1918	Armistice Day	public	
+2027-12-20	Abolition de l’esclavage	Abolition of Slavery	public	RE
+2027-12-25	Noël	Christmas Day	public	
+2027-12-26	Lendemain de Noël	Boxing Day	public	57
+2027-12-26	Lendemain de Noël	Boxing Day	public	67
+2027-12-26	Lendemain de Noël	Boxing Day	public	68
+2028-01-01	Nouvel An	New Year's Day	public	
+2028-02-28	Lundi de Carnaval	Shrove Monday	observance	BL
+2028-03-01	Mercredi des Cendres	Ash Wednesday	observance	BL
+2028-03-26	Mi-Carême	Laetare Sunday	observance	BL
+2028-04-14	Vendredi saint	Good Friday	public	57
+2028-04-14	Vendredi saint	Good Friday	public	67
+2028-04-14	Vendredi saint	Good Friday	public	68
+2028-04-14	Vendredi saint	Good Friday	bank	BL
+2028-04-14	Vendredi saint	Good Friday	public	GP
+2028-04-14	Vendredi saint	Good Friday	public	MQ
+2028-04-16	Pâques	Easter Sunday	observance	BL
+2028-04-17	Lundi de Pâques	Easter Monday	public	
+2028-04-27	Abolition de l’esclavage	Abolition of Slavery	public	YT
+2028-05-01	Fête du travail	Labour Day	public	
+2028-05-08	Fête de la Victoire 1945	Victory Day	public	
+2028-05-22	Abolition de l’esclavage	Abolition of Slavery	public	MQ
+2028-05-25	Ascension	Ascension Day	public	
+2028-05-27	Abolition de l’esclavage	Abolition of Slavery	public	GP
+2028-05-27	Abolition de l’esclavage	Abolition of Slavery	public	MF
+2028-05-28	Fête des Mères	Mother's Day	observance	
+2028-06-04	Pentecôte	Pentecost	observance	
+2028-06-05	Lundi de Pentecôte	Whit Monday	public	
+2028-06-10	Abolition de l’esclavage	Abolition of Slavery	public	GF
+2028-07-14	Fête Nationale de la France	Bastille Day	public	
+2028-07-21	Jour de Victor Schoelcher	Victor Schoelcher Day	optional	GP
+2028-07-21	Jour de Victor Schoelcher	Victor Schoelcher Day	optional	MQ
+2028-08-15	Assomption	Assumption	public	
+2028-08-24	Fête de Saint Barthélemy	Saint Barth	observance	BL
+2028-10-09	Abolition de l’esclavage	Abolition of Slavery	public	BL
+2028-11-01	Toussaint	All Saints' Day	public	
+2028-11-11	Armistice 1918	Armistice Day	public	
+2028-12-20	Abolition de l’esclavage	Abolition of Slavery	public	RE
+2028-12-25	Noël	Christmas Day	public	
+2028-12-26	Lendemain de Noël	Boxing Day	public	57
+2028-12-26	Lendemain de Noël	Boxing Day	public	67
+2028-12-26	Lendemain de Noël	Boxing Day	public	68
+2029-01-01	Nouvel An	New Year's Day	public	
+2029-02-12	Lundi de Carnaval	Shrove Monday	observance	BL
+2029-02-14	Mercredi des Cendres	Ash Wednesday	observance	BL
+2029-03-11	Mi-Carême	Laetare Sunday	observance	BL
+2029-03-30	Vendredi saint	Good Friday	public	57
+2029-03-30	Vendredi saint	Good Friday	public	67
+2029-03-30	Vendredi saint	Good Friday	public	68
+2029-03-30	Vendredi saint	Good Friday	bank	BL
+2029-03-30	Vendredi saint	Good Friday	public	GP
+2029-03-30	Vendredi saint	Good Friday	public	MQ
+2029-04-01	Pâques	Easter Sunday	observance	BL
+2029-04-02	Lundi de Pâques	Easter Monday	public	
+2029-04-27	Abolition de l’esclavage	Abolition of Slavery	public	YT
+2029-05-01	Fête du travail	Labour Day	public	
+2029-05-08	Fête de la Victoire 1945	Victory Day	public	
+2029-05-10	Ascension	Ascension Day	public	
+2029-05-20	Pentecôte	Pentecost	observance	
+2029-05-21	Lundi de Pentecôte	Whit Monday	public	
+2029-05-22	Abolition de l’esclavage	Abolition of Slavery	public	MQ
+2029-05-27	Fête des Mères	Mother's Day	observance	
+2029-05-27	Abolition de l’esclavage	Abolition of Slavery	public	GP
+2029-05-27	Abolition de l’esclavage	Abolition of Slavery	public	MF
+2029-06-10	Abolition de l’esclavage	Abolition of Slavery	public	GF
+2029-07-14	Fête Nationale de la France	Bastille Day	public	
+2029-07-21	Jour de Victor Schoelcher	Victor Schoelcher Day	optional	GP
+2029-07-21	Jour de Victor Schoelcher	Victor Schoelcher Day	optional	MQ
+2029-08-15	Assomption	Assumption	public	
+2029-08-24	Fête de Saint Barthélemy	Saint Barth	observance	BL
+2029-10-09	Abolition de l’esclavage	Abolition of Slavery	public	BL
+2029-11-01	Toussaint	All Saints' Day	public	
+2029-11-11	Armistice 1918	Armistice Day	public	
+2029-12-20	Abolition de l’esclavage	Abolition of Slavery	public	RE
+2029-12-25	Noël	Christmas Day	public	
+2029-12-26	Lendemain de Noël	Boxing Day	public	57
+2029-12-26	Lendemain de Noël	Boxing Day	public	67
+2029-12-26	Lendemain de Noël	Boxing Day	public	68
+2030-01-01	Nouvel An	New Year's Day	public	
+2030-03-04	Lundi de Carnaval	Shrove Monday	observance	BL
+2030-03-06	Mercredi des Cendres	Ash Wednesday	observance	BL
+2030-03-31	Mi-Carême	Laetare Sunday	observance	BL
+2030-04-19	Vendredi saint	Good Friday	public	57
+2030-04-19	Vendredi saint	Good Friday	public	67
+2030-04-19	Vendredi saint	Good Friday	public	68
+2030-04-19	Vendredi saint	Good Friday	bank	BL
+2030-04-19	Vendredi saint	Good Friday	public	GP
+2030-04-19	Vendredi saint	Good Friday	public	MQ
+2030-04-21	Pâques	Easter Sunday	observance	BL
+2030-04-22	Lundi de Pâques	Easter Monday	public	
+2030-04-27	Abolition de l’esclavage	Abolition of Slavery	public	YT
+2030-05-01	Fête du travail	Labour Day	public	
+2030-05-08	Fête de la Victoire 1945	Victory Day	public	
+2030-05-22	Abolition de l’esclavage	Abolition of Slavery	public	MQ
+2030-05-26	Fête des Mères	Mother's Day	observance	
+2030-05-27	Abolition de l’esclavage	Abolition of Slavery	public	GP
+2030-05-27	Abolition de l’esclavage	Abolition of Slavery	public	MF
+2030-05-30	Ascension	Ascension Day	public	
+2030-06-09	Pentecôte	Pentecost	observance	
+2030-06-10	Lundi de Pentecôte	Whit Monday	public	
+2030-06-10	Abolition de l’esclavage	Abolition of Slavery	public	GF
+2030-07-14	Fête Nationale de la France	Bastille Day	public	
+2030-07-21	Jour de Victor Schoelcher	Victor Schoelcher Day	optional	GP
+2030-07-21	Jour de Victor Schoelcher	Victor Schoelcher Day	optional	MQ
+2030-08-15	Assomption	Assumption	public	
+2030-08-24	Fête de Saint Barthélemy	Saint Barth	observance	BL
+2030-10-09	Abolition de l’esclavage	Abolition of Slavery	public	BL
+2030-11-01	Toussaint	All Saints' Day	public	
+2030-11-11	Armistice 1918	Armistice Day	public	
+2030-12-20	Abolition de l’esclavage	Abolition of Slavery	public	RE
+2030-12-25	Noël	Christmas Day	public	
+2030-12-26	Lendemain de Noël	Boxing Day	public	57
+2030-12-26	Lendemain de Noël	Boxing Day	public	67
+2030-12-26	Lendemain de Noël	Boxing Day	public	68
+2031-01-01	Nouvel An	New Year's Day	public	
+2031-02-24	Lundi de Carnaval	Shrove Monday	observance	BL
+2031-02-26	Mercredi des Cendres	Ash Wednesday	observance	BL
+2031-03-23	Mi-Carême	Laetare Sunday	observance	BL
+2031-04-11	Vendredi saint	Good Friday	public	57
+2031-04-11	Vendredi saint	Good Friday	public	67
+2031-04-11	Vendredi saint	Good Friday	public	68
+2031-04-11	Vendredi saint	Good Friday	bank	BL
+2031-04-11	Vendredi saint	Good Friday	public	GP
+2031-04-11	Vendredi saint	Good Friday	public	MQ
+2031-04-13	Pâques	Easter Sunday	observance	BL
+2031-04-14	Lundi de Pâques	Easter Monday	public	
+2031-04-27	Abolition de l’esclavage	Abolition of Slavery	public	YT
+2031-05-01	Fête du travail	Labour Day	public	
+2031-05-08	Fête de la Victoire 1945	Victory Day	public	
+2031-05-22	Ascension	Ascension Day	public	
+2031-05-22	Abolition de l’esclavage	Abolition of Slavery	public	MQ
+2031-05-25	Fête des Mères	Mother's Day	observance	
+2031-05-27	Abolition de l’esclavage	Abolition of Slavery	public	GP
+2031-05-27	Abolition de l’esclavage	Abolition of Slavery	public	MF
+2031-06-01	Pentecôte	Pentecost	observance	
+2031-06-02	Lundi de Pentecôte	Whit Monday	public	
+2031-06-10	Abolition de l’esclavage	Abolition of Slavery	public	GF
+2031-07-14	Fête Nationale de la France	Bastille Day	public	
+2031-07-21	Jour de Victor Schoelcher	Victor Schoelcher Day	optional	GP
+2031-07-21	Jour de Victor Schoelcher	Victor Schoelcher Day	optional	MQ
+2031-08-15	Assomption	Assumption	public	
+2031-08-24	Fête de Saint Barthélemy	Saint Barth	observance	BL
+2031-10-09	Abolition de l’esclavage	Abolition of Slavery	public	BL
+2031-11-01	Toussaint	All Saints' Day	public	
+2031-11-11	Armistice 1918	Armistice Day	public	
+2031-12-20	Abolition de l’esclavage	Abolition of Slavery	public	RE
+2031-12-25	Noël	Christmas Day	public	
+2031-12-26	Lendemain de Noël	Boxing Day	public	57
+2031-12-26	Lendemain de Noël	Boxing Day	public	67
+2031-12-26	Lendemain de Noël	Boxing Day	public	68
+2032-01-01	Nouvel An	New Year's Day	public	
+2032-02-09	Lundi de Carnaval	Shrove Monday	observance	BL
+2032-02-11	Mercredi des Cendres	Ash Wednesday	observance	BL
+2032-03-07	Mi-Carême	Laetare Sunday	observance	BL
+2032-03-26	Vendredi saint	Good Friday	public	57
+2032-03-26	Vendredi saint	Good Friday	public	67
+2032-03-26	Vendredi saint	Good Friday	public	68
+2032-03-26	Vendredi saint	Good Friday	bank	BL
+2032-03-26	Vendredi saint	Good Friday	public	GP
+2032-03-26	Vendredi saint	Good Friday	public	MQ
+2032-03-28	Pâques	Easter Sunday	observance	BL
+2032-03-29	Lundi de Pâques	Easter Monday	public	
+2032-04-27	Abolition de l’esclavage	Abolition of Slavery	public	YT
+2032-05-01	Fête du travail	Labour Day	public	
+2032-05-06	Ascension	Ascension Day	public	
+2032-05-08	Fête de la Victoire 1945	Victory Day	public	
+2032-05-16	Pentecôte	Pentecost	observance	
+2032-05-17	Lundi de Pentecôte	Whit Monday	public	
+2032-05-22	Abolition de l’esclavage	Abolition of Slavery	public	MQ
+2032-05-27	Abolition de l’esclavage	Abolition of Slavery	public	GP
+2032-05-27	Abolition de l’esclavage	Abolition of Slavery	public	MF
+2032-05-30	Fête des Mères	Mother's Day	observance	
+2032-06-10	Abolition de l’esclavage	Abolition of Slavery	public	GF
+2032-07-14	Fête Nationale de la France	Bastille Day	public	
+2032-07-21	Jour de Victor Schoelcher	Victor Schoelcher Day	optional	GP
+2032-07-21	Jour de Victor Schoelcher	Victor Schoelcher Day	optional	MQ
+2032-08-15	Assomption	Assumption	public	
+2032-08-24	Fête de Saint Barthélemy	Saint Barth	observance	BL
+2032-10-09	Abolition de l’esclavage	Abolition of Slavery	public	BL
+2032-11-01	Toussaint	All Saints' Day	public	
+2032-11-11	Armistice 1918	Armistice Day	public	
+2032-12-20	Abolition de l’esclavage	Abolition of Slavery	public	RE
+2032-12-25	Noël	Christmas Day	public	
+2032-12-26	Lendemain de Noël	Boxing Day	public	57
+2032-12-26	Lendemain de Noël	Boxing Day	public	67
+2032-12-26	Lendemain de Noël	Boxing Day	public	68
+2033-01-01	Nouvel An	New Year's Day	public	
+2033-02-28	Lundi de Carnaval	Shrove Monday	observance	BL
+2033-03-02	Mercredi des Cendres	Ash Wednesday	observance	BL
+2033-03-27	Mi-Carême	Laetare Sunday	observance	BL
+2033-04-15	Vendredi saint	Good Friday	public	57
+2033-04-15	Vendredi saint	Good Friday	public	67
+2033-04-15	Vendredi saint	Good Friday	public	68
+2033-04-15	Vendredi saint	Good Friday	bank	BL
+2033-04-15	Vendredi saint	Good Friday	public	GP
+2033-04-15	Vendredi saint	Good Friday	public	MQ
+2033-04-17	Pâques	Easter Sunday	observance	BL
+2033-04-18	Lundi de Pâques	Easter Monday	public	
+2033-04-27	Abolition de l’esclavage	Abolition of Slavery	public	YT
+2033-05-01	Fête du travail	Labour Day	public	
+2033-05-08	Fête de la Victoire 1945	Victory Day	public	
+2033-05-22	Abolition de l’esclavage	Abolition of Slavery	public	MQ
+2033-05-26	Ascension	Ascension Day	public	
+2033-05-27	Abolition de l’esclavage	Abolition of Slavery	public	GP
+2033-05-27	Abolition de l’esclavage	Abolition of Slavery	public	MF
+2033-05-29	Fête des Mères	Mother's Day	observance	
+2033-06-05	Pentecôte	Pentecost	observance	
+2033-06-06	Lundi de Pentecôte	Whit Monday	public	
+2033-06-10	Abolition de l’esclavage	Abolition of Slavery	public	GF
+2033-07-14	Fête Nationale de la France	Bastille Day	public	
+2033-07-21	Jour de Victor Schoelcher	Victor Schoelcher Day	optional	GP
+2033-07-21	Jour de Victor Schoelcher	Victor Schoelcher Day	optional	MQ
+2033-08-15	Assomption	Assumption	public	
+2033-08-24	Fête de Saint Barthélemy	Saint Barth	observance	BL
+2033-10-09	Abolition de l’esclavage	Abolition of Slavery	public	BL
+2033-11-01	Toussaint	All Saints' Day	public	
+2033-11-11	Armistice 1918	Armistice Day	public	
+2033-12-20	Abolition de l’esclavage	Abolition of Slavery	public	RE
+2033-12-25	Noël	Christmas Day	public	
+2033-12-26	Lendemain de Noël	Boxing Day	public	57
+2033-12-26	Lendemain de Noël	Boxing Day	public	67
+2033-12-26	Lendemain de Noël	Boxing Day	public	68
+2034-01-01	Nouvel An	New Year's Day	public	
+2034-02-20	Lundi de Carnaval	Shrove Monday	observance	BL
+2034-02-22	Mercredi des Cendres	Ash Wednesday	observance	BL
+2034-03-19	Mi-Carême	Laetare Sunday	observance	BL
+2034-04-07	Vendredi saint	Good Friday	public	57
+2034-04-07	Vendredi saint	Good Friday	public	67
+2034-04-07	Vendredi saint	Good Friday	public	68
+2034-04-07	Vendredi saint	Good Friday	bank	BL
+2034-04-07	Vendredi saint	Good Friday	public	GP
+2034-04-07	Vendredi saint	Good Friday	public	MQ
+2034-04-09	Pâques	Easter Sunday	observance	BL
+2034-04-10	Lundi de Pâques	Easter Monday	public	
+2034-04-27	Abolition de l’esclavage	Abolition of Slavery	public	YT
+2034-05-01	Fête du travail	Labour Day	public	
+2034-05-08	Fête de la Victoire 1945	Victory Day	public	
+2034-05-18	Ascension	Ascension Day	public	
+2034-05-22	Abolition de l’esclavage	Abolition of Slavery	public	MQ
+2034-05-27	Abolition de l’esclavage	Abolition of Slavery	public	GP
+2034-05-27	Abolition de l’esclavage	Abolition of Slavery	public	MF
+2034-05-28	Fête des Mères	Mother's Day	observance	
+2034-05-28	Pentecôte	Pentecost	observance	
+2034-05-29	Lundi de Pentecôte	Whit Monday	public	
+2034-06-10	Abolition de l’esclavage	Abolition of Slavery	public	GF
+2034-07-14	Fête Nationale de la France	Bastille Day	public	
+2034-07-21	Jour de Victor Schoelcher	Victor Schoelcher Day	optional	GP
+2034-07-21	Jour de Victor Schoelcher	Victor Schoelcher Day	optional	MQ
+2034-08-15	Assomption	Assumption	public	
+2034-08-24	Fête de Saint Barthélemy	Saint Barth	observance	BL
+2034-10-09	Abolition de l’esclavage	Abolition of Slavery	public	BL
+2034-11-01	Toussaint	All Saints' Day	public	
+2034-11-11	Armistice 1918	Armistice Day	public	
+2034-12-20	Abolition de l’esclavage	Abolition of Slavery	public	RE
+2034-12-25	Noël	Christmas Day	public	
+2034-12-26	Lendemain de Noël	Boxing Day	public	57
+2034-12-26	Lendemain de Noël	Boxing Day	public	67
+2034-12-26	Lendemain de Noël	Boxing Day	public	68
+2035-01-01	Nouvel An	New Year's Day	public	
+2035-02-05	Lundi de Carnaval	Shrove Monday	observance	BL
+2035-02-07	Mercredi des Cendres	Ash Wednesday	observance	BL
+2035-03-04	Mi-Carême	Laetare Sunday	observance	BL
+2035-03-23	Vendredi saint	Good Friday	public	57
+2035-03-23	Vendredi saint	Good Friday	public	67
+2035-03-23	Vendredi saint	Good Friday	public	68
+2035-03-23	Vendredi saint	Good Friday	bank	BL
+2035-03-23	Vendredi saint	Good Friday	public	GP
+2035-03-23	Vendredi saint	Good Friday	public	MQ
+2035-03-25	Pâques	Easter Sunday	observance	BL
+2035-03-26	Lundi de Pâques	Easter Monday	public	
+2035-04-27	Abolition de l’esclavage	Abolition of Slavery	public	YT
+2035-05-01	Fête du travail	Labour Day	public	
+2035-05-03	Ascension	Ascension Day	public	
+2035-05-08	Fête de la Victoire 1945	Victory Day	public	
+2035-05-13	Pentecôte	Pentecost	observance	
+2035-05-14	Lundi de Pentecôte	Whit Monday	public	
+2035-05-22	Abolition de l’esclavage	Abolition of Slavery	public	MQ
+2035-05-27	Fête des Mères	Mother's Day	observance	
+2035-05-27	Abolition de l’esclavage	Abolition of Slavery	public	GP
+2035-05-27	Abolition de l’esclavage	Abolition of Slavery	public	MF
+2035-06-10	Abolition de l’esclavage	Abolition of Slavery	public	GF
+2035-07-14	Fête Nationale de la France	Bastille Day	public	
+2035-07-21	Jour de Victor Schoelcher	Victor Schoelcher Day	optional	GP
+2035-07-21	Jour de Victor Schoelcher	Victor Schoelcher Day	optional	MQ
+2035-08-15	Assomption	Assumption	public	
+2035-08-24	Fête de Saint Barthélemy	Saint Barth	observance	BL
+2035-10-09	Abolition de l’esclavage	Abolition of Slavery	public	BL
+2035-11-01	Toussaint	All Saints' Day	public	
+2035-11-11	Armistice 1918	Armistice Day	public	
+2035-12-20	Abolition de l’esclavage	Abolition of Slavery	public	RE
+2035-12-25	Noël	Christmas Day	public	
+2035-12-26	Lendemain de Noël	Boxing Day	public	57
+2035-12-26	Lendemain de Noël	Boxing Day	public	67
+2035-12-26	Lendemain de Noël	Boxing Day	public	68
+2036-01-01	Nouvel An	New Year's Day	public	
+2036-02-25	Lundi de Carnaval	Shrove Monday	observance	BL
+2036-02-27	Mercredi des Cendres	Ash Wednesday	observance	BL
+2036-03-23	Mi-Carême	Laetare Sunday	observance	BL
+2036-04-11	Vendredi saint	Good Friday	public	57
+2036-04-11	Vendredi saint	Good Friday	public	67
+2036-04-11	Vendredi saint	Good Friday	public	68
+2036-04-11	Vendredi saint	Good Friday	bank	BL
+2036-04-11	Vendredi saint	Good Friday	public	GP
+2036-04-11	Vendredi saint	Good Friday	public	MQ
+2036-04-13	Pâques	Easter Sunday	observance	BL
+2036-04-14	Lundi de Pâques	Easter Monday	public	
+2036-04-27	Abolition de l’esclavage	Abolition of Slavery	public	YT
+2036-05-01	Fête du travail	Labour Day	public	
+2036-05-08	Fête de la Victoire 1945	Victory Day	public	
+2036-05-22	Ascension	Ascension Day	public	
+2036-05-22	Abolition de l’esclavage	Abolition of Slavery	public	MQ
+2036-05-25	Fête des Mères	Mother's Day	observance	
+2036-05-27	Abolition de l’esclavage	Abolition of Slavery	public	GP
+2036-05-27	Abolition de l’esclavage	Abolition of Slavery	public	MF
+2036-06-01	Pentecôte	Pentecost	observance	
+2036-06-02	Lundi de Pentecôte	Whit Monday	public	
+2036-06-10	Abolition de l’esclavage	Abolition of Slavery	public	GF
+2036-07-14	Fête Nationale de la France	Bastille Day	public	
+2036-07-21	Jour de Victor Schoelcher	Victor Schoelcher Day	optional	GP
+2036-07-21	Jour de Victor Schoelcher	Victor Schoelcher Day	optional	MQ
+2036-08-15	Assomption	Assumption	public	
+2036-08-24	Fête de Saint Barthélemy	Saint Barth	observance	BL
+2036-10-09	Abolition de l’esclavage	Abolition of Slavery	public	BL
+2036-11-01	Toussaint	All Saints' Day	public	
+2036-11-11	Armistice 1918	Armistice Day	public	
+2036-12-20	Abolition de l’esclavage	Abolition of Slavery	public	RE
+2036-12-25	Noël	Christmas Day	public	
+2036-12-26	Lendemain de Noël	Boxing Day	public	57
+2036-12-26	Lendemain de Noël	Boxing Day	public	67
+2036-12-26	Lendemain de Noël	Boxing Day	public	68
+2037-01-01	Nouvel An	New Year's Day	public	
+2037-02-16	Lundi de Carnaval	Shrove Monday	observance	BL
+2037-02-18	Mercredi des Cendres	Ash Wednesday	observance	BL
+2037-03-15	Mi-Carême	Laetare Sunday	observance	BL
+2037-04-03	Vendredi saint	Good Friday	public	57
+2037-04-03	Vendredi saint	Good Friday	public	67
+2037-04-03	Vendredi saint	Good Friday	public	68
+2037-04-03	Vendredi saint	Good Friday	bank	BL
+2037-04-03	Vendredi saint	Good Friday	public	GP
+2037-04-03	Vendredi saint	Good Friday	public	MQ
+2037-04-05	Pâques	Easter Sunday	observance	BL
+2037-04-06	Lundi de Pâques	Easter Monday	public	
+2037-04-27	Abolition de l’esclavage	Abolition of Slavery	public	YT
+2037-05-01	Fête du travail	Labour Day	public	
+2037-05-08	Fête de la Victoire 1945	Victory Day	public	
+2037-05-14	Ascension	Ascension Day	public	
+2037-05-22	Abolition de l’esclavage	Abolition of Slavery	public	MQ
+2037-05-24	Pentecôte	Pentecost	observance	
+2037-05-25	Lundi de Pentecôte	Whit Monday	public	
+2037-05-27	Abolition de l’esclavage	Abolition of Slavery	public	GP
+2037-05-27	Abolition de l’esclavage	Abolition of Slavery	public	MF
+2037-05-31	Fête des Mères	Mother's Day	observance	
+2037-06-10	Abolition de l’esclavage	Abolition of Slavery	public	GF
+2037-07-14	Fête Nationale de la France	Bastille Day	public	
+2037-07-21	Jour de Victor Schoelcher	Victor Schoelcher Day	optional	GP
+2037-07-21	Jour de Victor Schoelcher	Victor Schoelcher Day	optional	MQ
+2037-08-15	Assomption	Assumption	public	
+2037-08-24	Fête de Saint Barthélemy	Saint Barth	observance	BL
+2037-10-09	Abolition de l’esclavage	Abolition of Slavery	public	BL
+2037-11-01	Toussaint	All Saints' Day	public	
+2037-11-11	Armistice 1918	Armistice Day	public	
+2037-12-20	Abolition de l’esclavage	Abolition of Slavery	public	RE
+2037-12-25	Noël	Christmas Day	public	
+2037-12-26	Lendemain de Noël	Boxing Day	public	57
+2037-12-26	Lendemain de Noël	Boxing Day	public	67
+2037-12-26	Lendemain de Noël	Boxing Day	public	68
+2038-01-01	Nouvel An	New Year's Day	public	
+2038-03-08	Lundi de Carnaval	Shrove Monday	observance	BL
+2038-03-10	Mercredi des Cendres	Ash Wednesday	observance	BL
+2038-04-04	Mi-Carême	Laetare Sunday	observance	BL
+2038-04-23	Vendredi saint	Good Friday	public	57
+2038-04-23	Vendredi saint	Good Friday	public	67
+2038-04-23	Vendredi saint	Good Friday	public	68
+2038-04-23	Vendredi saint	Good Friday	bank	BL
+2038-04-23	Vendredi saint	Good Friday	public	GP
+2038-04-23	Vendredi saint	Good Friday	public	MQ
+2038-04-25	Pâques	Easter Sunday	observance	BL
+2038-04-26	Lundi de Pâques	Easter Monday	public	
+2038-04-27	Abolition de l’esclavage	Abolition of Slavery	public	YT
+2038-05-01	Fête du travail	Labour Day	public	
+2038-05-08	Fête de la Victoire 1945	Victory Day	public	
+2038-05-22	Abolition de l’esclavage	Abolition of Slavery	public	MQ
+2038-05-27	Abolition de l’esclavage	Abolition of Slavery	public	GP
+2038-05-27	Abolition de l’esclavage	Abolition of Slavery	public	MF
+2038-05-30	Fête des Mères	Mother's Day	observance	
+2038-06-03	Ascension	Ascension Day	public	
+2038-06-10	Abolition de l’esclavage	Abolition of Slavery	public	GF
+2038-06-13	Pentecôte	Pentecost	observance	
+2038-06-14	Lundi de Pentecôte	Whit Monday	public	
+2038-07-14	Fête Nationale de la France	Bastille Day	public	
+2038-07-21	Jour de Victor Schoelcher	Victor Schoelcher Day	optional	GP
+2038-07-21	Jour de Victor Schoelcher	Victor Schoelcher Day	optional	MQ
+2038-08-15	Assomption	Assumption	public	
+2038-08-24	Fête de Saint Barthélemy	Saint Barth	observance	BL
+2038-10-09	Abolition de l’esclavage	Abolition of Slavery	public	BL
+2038-11-01	Toussaint	All Saints' Day	public	
+2038-11-11	Armistice 1918	Armistice Day	public	
+2038-12-20	Abolition de l’esclavage	Abolition of Slavery	public	RE
+2038-12-25	Noël	Christmas Day	public	
+2038-12-26	Lendemain de Noël	Boxing Day	public	57
+2038-12-26	Lendemain de Noël	Boxing Day	public	67
+2038-12-26	Lendemain de Noël	Boxing Day	public	68
+2039-01-01	Nouvel An	New Year's Day	public	
+2039-02-21	Lundi de Carnaval	Shrove Monday	observance	BL
+2039-02-23	Mercredi des Cendres	Ash Wednesday	observance	BL
+2039-03-20	Mi-Carême	Laetare Sunday	observance	BL
+2039-04-08	Vendredi saint	Good Friday	public	57
+2039-04-08	Vendredi saint	Good Friday	public	67
+2039-04-08	Vendredi saint	Good Friday	public	68
+2039-04-08	Vendredi saint	Good Friday	bank	BL
+2039-04-08	Vendredi saint	Good Friday	public	GP
+2039-04-08	Vendredi saint	Good Friday	public	MQ
+2039-04-10	Pâques	Easter Sunday	observance	BL
+2039-04-11	Lundi de Pâques	Easter Monday	public	
+2039-04-27	Abolition de l’esclavage	Abolition of Slavery	public	YT
+2039-05-01	Fête du travail	Labour Day	public	
+2039-05-08	Fête de la Victoire 1945	Victory Day	public	
+2039-05-19	Ascension	Ascension Day	public	
+2039-05-22	Abolition de l’esclavage	Abolition of Slavery	public	MQ
+2039-05-27	Abolition de l’esclavage	Abolition of Slavery	public	GP
+2039-05-27	Abolition de l’esclavage	Abolition of Slavery	public	MF
+2039-05-29	Fête des Mères	Mother's Day	observance	
+2039-05-29	Pentecôte	Pentecost	observance	
+2039-05-30	Lundi de Pentecôte	Whit Monday	public	
+2039-06-10	Abolition de l’esclavage	Abolition of Slavery	public	GF
+2039-07-14	Fête Nationale de la France	Bastille Day	public	
+2039-07-21	Jour de Victor Schoelcher	Victor Schoelcher Day	optional	GP
+2039-07-21	Jour de Victor Schoelcher	Victor Schoelcher Day	optional	MQ
+2039-08-15	Assomption	Assumption	public	
+2039-08-24	Fête de Saint Barthélemy	Saint Barth	observance	BL
+2039-10-09	Abolition de l’esclavage	Abolition of Slavery	public	BL
+2039-11-01	Toussaint	All Saints' Day	public	
+2039-11-11	Armistice 1918	Armistice Day	public	
+2039-12-20	Abolition de l’esclavage	Abolition of Slavery	public	RE
+2039-12-25	Noël	Christmas Day	public	
+2039-12-26	Lendemain de Noël	Boxing Day	public	57
+2039-12-26	Lendemain de Noël	Boxing Day	public	67
+2039-12-26	Lendemain de Noël	Boxing Day	public	68
+2040-01-01	Nouvel An	New Year's Day	public	
+2040-02-13	Lundi de Carnaval	Shrove Monday	observance	BL
+2040-02-15	Mercredi des Cendres	Ash Wednesday	observance	BL
+2040-03-11	Mi-Carême	Laetare Sunday	observance	BL
+2040-03-30	Vendredi saint	Good Friday	public	57
+2040-03-30	Vendredi saint	Good Friday	public	67
+2040-03-30	Vendredi saint	Good Friday	public	68
+2040-03-30	Vendredi saint	Good Friday	bank	BL
+2040-03-30	Vendredi saint	Good Friday	public	GP
+2040-03-30	Vendredi saint	Good Friday	public	MQ
+2040-04-01	Pâques	Easter Sunday	observance	BL
+2040-04-02	Lundi de Pâques	Easter Monday	public	
+2040-04-27	Abolition de l’esclavage	Abolition of Slavery	public	YT
+2040-05-01	Fête du travail	Labour Day	public	
+2040-05-08	Fête de la Victoire 1945	Victory Day	public	
+2040-05-10	Ascension	Ascension Day	public	
+2040-05-20	Pentecôte	Pentecost	observance	
+2040-05-21	Lundi de Pentecôte	Whit Monday	public	
+2040-05-22	Abolition de l’esclavage	Abolition of Slavery	public	MQ
+2040-05-27	Fête des Mères	Mother's Day	observance	
+2040-05-27	Abolition de l’esclavage	Abolition of Slavery	public	GP
+2040-05-27	Abolition de l’esclavage	Abolition of Slavery	public	MF
+2040-06-10	Abolition de l’esclavage	Abolition of Slavery	public	GF
+2040-07-14	Fête Nationale de la France	Bastille Day	public	
+2040-07-21	Jour de Victor Schoelcher	Victor Schoelcher Day	optional	GP
+2040-07-21	Jour de Victor Schoelcher	Victor Schoelcher Day	optional	MQ
+2040-08-15	Assomption	Assumption	public	
+2040-08-24	Fête de Saint Barthélemy	Saint Barth	observance	BL
+2040-10-09	Abolition de l’esclavage	Abolition of Slavery	public	BL
+2040-11-01	Toussaint	All Saints' Day	public	
+2040-11-11	Armistice 1918	Armistice Day	public	
+2040-12-20	Abolition de l’esclavage	Abolition of Slavery	public	RE
+2040-12-25	Noël	Christmas Day	public	
+2040-12-26	Lendemain de Noël	Boxing Day	public	57
+2040-12-26	Lendemain de Noël	Boxing Day	public	67
+2040-12-26	Lendemain de Noël	Boxing Day	public	68
+2041-01-01	Nouvel An	New Year's Day	public	
+2041-03-04	Lundi de Carnaval	Shrove Monday	observance	BL
+2041-03-06	Mercredi des Cendres	Ash Wednesday	observance	BL
+2041-03-31	Mi-Carême	Laetare Sunday	observance	BL
+2041-04-19	Vendredi saint	Good Friday	public	57
+2041-04-19	Vendredi saint	Good Friday	public	67
+2041-04-19	Vendredi saint	Good Friday	public	68
+2041-04-19	Vendredi saint	Good Friday	bank	BL
+2041-04-19	Vendredi saint	Good Friday	public	GP
+2041-04-19	Vendredi saint	Good Friday	public	MQ
+2041-04-21	Pâques	Easter Sunday	observance	BL
+2041-04-22	Lundi de Pâques	Easter Monday	public	
+2041-04-27	Abolition de l’esclavage	Abolition of Slavery	public	YT
+2041-05-01	Fête du travail	Labour Day	public	
+2041-05-08	Fête de la Victoire 1945	Victory Day	public	
+2041-05-22	Abolition de l’esclavage	Abolition of Slavery	public	MQ
+2041-05-26	Fête des Mères	Mother's Day	observance	
+2041-05-27	Abolition de l’esclavage	Abolition of Slavery	public	GP
+2041-05-27	Abolition de l’esclavage	Abolition of Slavery	public	MF
+2041-05-30	Ascension	Ascension Day	public	
+2041-06-09	Pentecôte	Pentecost	observance	
+2041-06-10	Lundi de Pentecôte	Whit Monday	public	
+2041-06-10	Abolition de l’esclavage	Abolition of Slavery	public	GF
+2041-07-14	Fête Nationale de la France	Bastille Day	public	
+2041-07-21	Jour de Victor Schoelcher	Victor Schoelcher Day	optional	GP
+2041-07-21	Jour de Victor Schoelcher	Victor Schoelcher Day	optional	MQ
+2041-08-15	Assomption	Assumption	public	
+2041-08-24	Fête de Saint Barthélemy	Saint Barth	observance	BL
+2041-10-09	Abolition de l’esclavage	Abolition of Slavery	public	BL
+2041-11-01	Toussaint	All Saints' Day	public	
+2041-11-11	Armistice 1918	Armistice Day	public	
+2041-12-20	Abolition de l’esclavage	Abolition of Slavery	public	RE
+2041-12-25	Noël	Christmas Day	public	
+2041-12-26	Lendemain de Noël	Boxing Day	public	57
+2041-12-26	Lendemain de Noël	Boxing Day	public	67
+2041-12-26	Lendemain de Noël	Boxing Day	public	68
+2042-01-01	Nouvel An	New Year's Day	public	
+2042-02-17	Lundi de Carnaval	Shrove Monday	observance	BL
+2042-02-19	Mercredi des Cendres	Ash Wednesday	observance	BL
+2042-03-16	Mi-Carême	Laetare Sunday	observance	BL
+2042-04-04	Vendredi saint	Good Friday	public	57
+2042-04-04	Vendredi saint	Good Friday	public	67
+2042-04-04	Vendredi saint	Good Friday	public	68
+2042-04-04	Vendredi saint	Good Friday	bank	BL
+2042-04-04	Vendredi saint	Good Friday	public	GP
+2042-04-04	Vendredi saint	Good Friday	public	MQ
+2042-04-06	Pâques	Easter Sunday	observance	BL
+2042-04-07	Lundi de Pâques	Easter Monday	public	
+2042-04-27	Abolition de l’esclavage	Abolition of Slavery	public	YT
+2042-05-01	Fête du travail	Labour Day	public	
+2042-05-08	Fête de la Victoire 1945	Victory Day	public	
+2042-05-15	Ascension	Ascension Day	public	
+2042-05-22	Abolition de l’esclavage	Abolition of Slavery	public	MQ
+2042-05-25	Fête des Mères	Mother's Day	observance	
+2042-05-25	Pentecôte	Pentecost	observance	
+2042-05-26	Lundi de Pentecôte	Whit Monday	public	
+2042-05-27	Abolition de l’esclavage	Abolition of Slavery	public	GP
+2042-05-27	Abolition de l’esclavage	Abolition of Slavery	public	MF
+2042-06-10	Abolition de l’esclavage	Abolition of Slavery	public	GF
+2042-07-14	Fête Nationale de la France	Bastille Day	public	
+2042-07-21	Jour de Victor Schoelcher	Victor Schoelcher Day	optional	GP
+2042-07-21	Jour de Victor Schoelcher	Victor Schoelcher Day	optional	MQ
+2042-08-15	Assomption	Assumption	public	
+2042-08-24	Fête de Saint Barthélemy	Saint Barth	observance	BL
+2042-10-09	Abolition de l’esclavage	Abolition of Slavery	public	BL
+2042-11-01	Toussaint	All Saints' Day	public	
+2042-11-11	Armistice 1918	Armistice Day	public	
+2042-12-20	Abolition de l’esclavage	Abolition of Slavery	public	RE
+2042-12-25	Noël	Christmas Day	public	
+2042-12-26	Lendemain de Noël	Boxing Day	public	57
+2042-12-26	Lendemain de Noël	Boxing Day	public	67
+2042-12-26	Lendemain de Noël	Boxing Day	public	68
+2043-01-01	Nouvel An	New Year's Day	public	
+2043-02-09	Lundi de Carnaval	Shrove Monday	observance	BL
+2043-02-11	Mercredi des Cendres	Ash Wednesday	observance	BL
+2043-03-08	Mi-Carême	Laetare Sunday	observance	BL
+2043-03-27	Vendredi saint	Good Friday	public	57
+2043-03-27	Vendredi saint	Good Friday	public	67
+2043-03-27	Vendredi saint	Good Friday	public	68
+2043-03-27	Vendredi saint	Good Friday	bank	BL
+2043-03-27	Vendredi saint	Good Friday	public	GP
+2043-03-27	Vendredi saint	Good Friday	public	MQ
+2043-03-29	Pâques	Easter Sunday	observance	BL
+2043-03-30	Lundi de Pâques	Easter Monday	public	
+2043-04-27	Abolition de l’esclavage	Abolition of Slavery	public	YT
+2043-05-01	Fête du travail	Labour Day	public	
+2043-05-07	Ascension	Ascension Day	public	
+2043-05-08	Fête de la Victoire 1945	Victory Day	public	
+2043-05-17	Pentecôte	Pentecost	observance	
+2043-05-18	Lundi de Pentecôte	Whit Monday	public	
+2043-05-22	Abolition de l’esclavage	Abolition of Slavery	public	MQ
+2043-05-27	Abolition de l’esclavage	Abolition of Slavery	public	GP
+2043-05-27	Abolition de l’esclavage	Abolition of Slavery	public	MF
+2043-05-31	Fête des Mères	Mother's Day	observance	
+2043-06-10	Abolition de l’esclavage	Abolition of Slavery	public	GF
+2043-07-14	Fête Nationale de la France	Bastille Day	public	
+2043-07-21	Jour de Victor Schoelcher	Victor Schoelcher Day	optional	GP
+2043-07-21	Jour de Victor Schoelcher	Victor Schoelcher Day	optional	MQ
+2043-08-15	Assomption	Assumption	public	
+2043-08-24	Fête de Saint Barthélemy	Saint Barth	observance	BL
+2043-10-09	Abolition de l’esclavage	Abolition of Slavery	public	BL
+2043-11-01	Toussaint	All Saints' Day	public	
+2043-11-11	Armistice 1918	Armistice Day	public	
+2043-12-20	Abolition de l’esclavage	Abolition of Slavery	public	RE
+2043-12-25	Noël	Christmas Day	public	
+2043-12-26	Lendemain de Noël	Boxing Day	public	57
+2043-12-26	Lendemain de Noël	Boxing Day	public	67
+2043-12-26	Lendemain de Noël	Boxing Day	public	68
+2044-01-01	Nouvel An	New Year's Day	public	
+2044-02-29	Lundi de Carnaval	Shrove Monday	observance	BL
+2044-03-02	Mercredi des Cendres	Ash Wednesday	observance	BL
+2044-03-27	Mi-Carême	Laetare Sunday	observance	BL
+2044-04-15	Vendredi saint	Good Friday	public	57
+2044-04-15	Vendredi saint	Good Friday	public	67
+2044-04-15	Vendredi saint	Good Friday	public	68
+2044-04-15	Vendredi saint	Good Friday	bank	BL
+2044-04-15	Vendredi saint	Good Friday	public	GP
+2044-04-15	Vendredi saint	Good Friday	public	MQ
+2044-04-17	Pâques	Easter Sunday	observance	BL
+2044-04-18	Lundi de Pâques	Easter Monday	public	
+2044-04-27	Abolition de l’esclavage	Abolition of Slavery	public	YT
+2044-05-01	Fête du travail	Labour Day	public	
+2044-05-08	Fête de la Victoire 1945	Victory Day	public	
+2044-05-22	Abolition de l’esclavage	Abolition of Slavery	public	MQ
+2044-05-26	Ascension	Ascension Day	public	
+2044-05-27	Abolition de l’esclavage	Abolition of Slavery	public	GP
+2044-05-27	Abolition de l’esclavage	Abolition of Slavery	public	MF
+2044-05-29	Fête des Mères	Mother's Day	observance	
+2044-06-05	Pentecôte	Pentecost	observance	
+2044-06-06	Lundi de Pentecôte	Whit Monday	public	
+2044-06-10	Abolition de l’esclavage	Abolition of Slavery	public	GF
+2044-07-14	Fête Nationale de la France	Bastille Day	public	
+2044-07-21	Jour de Victor Schoelcher	Victor Schoelcher Day	optional	GP
+2044-07-21	Jour de Victor Schoelcher	Victor Schoelcher Day	optional	MQ
+2044-08-15	Assomption	Assumption	public	
+2044-08-24	Fête de Saint Barthélemy	Saint Barth	observance	BL
+2044-10-09	Abolition de l’esclavage	Abolition of Slavery	public	BL
+2044-11-01	Toussaint	All Saints' Day	public	
+2044-11-11	Armistice 1918	Armistice Day	public	
+2044-12-20	Abolition de l’esclavage	Abolition of Slavery	public	RE
+2044-12-25	Noël	Christmas Day	public	
+2044-12-26	Lendemain de Noël	Boxing Day	public	57
+2044-12-26	Lendemain de Noël	Boxing Day	public	67
+2044-12-26	Lendemain de Noël	Boxing Day	public	68
+2045-01-01	Nouvel An	New Year's Day	public	
+2045-02-20	Lundi de Carnaval	Shrove Monday	observance	BL
+2045-02-22	Mercredi des Cendres	Ash Wednesday	observance	BL
+2045-03-19	Mi-Carême	Laetare Sunday	observance	BL
+2045-04-07	Vendredi saint	Good Friday	public	57
+2045-04-07	Vendredi saint	Good Friday	public	67
+2045-04-07	Vendredi saint	Good Friday	public	68
+2045-04-07	Vendredi saint	Good Friday	bank	BL
+2045-04-07	Vendredi saint	Good Friday	public	GP
+2045-04-07	Vendredi saint	Good Friday	public	MQ
+2045-04-09	Pâques	Easter Sunday	observance	BL
+2045-04-10	Lundi de Pâques	Easter Monday	public	
+2045-04-27	Abolition de l’esclavage	Abolition of Slavery	public	YT
+2045-05-01	Fête du travail	Labour Day	public	
+2045-05-08	Fête de la Victoire 1945	Victory Day	public	
+2045-05-18	Ascension	Ascension Day	public	
+2045-05-22	Abolition de l’esclavage	Abolition of Slavery	public	MQ
+2045-05-27	Abolition de l’esclavage	Abolition of Slavery	public	GP
+2045-05-27	Abolition de l’esclavage	Abolition of Slavery	public	MF
+2045-05-28	Fête des Mères	Mother's Day	observance	
+2045-05-28	Pentecôte	Pentecost	observance	
+2045-05-29	Lundi de Pentecôte	Whit Monday	public	
+2045-06-10	Abolition de l’esclavage	Abolition of Slavery	public	GF
+2045-07-14	Fête Nationale de la France	Bastille Day	public	
+2045-07-21	Jour de Victor Schoelcher	Victor Schoelcher Day	optional	GP
+2045-07-21	Jour de Victor Schoelcher	Victor Schoelcher Day	optional	MQ
+2045-08-15	Assomption	Assumption	public	
+2045-08-24	Fête de Saint Barthélemy	Saint Barth	observance	BL
+2045-10-09	Abolition de l’esclavage	Abolition of Slavery	public	BL
+2045-11-01	Toussaint	All Saints' Day	public	
+2045-11-11	Armistice 1918	Armistice Day	public	
+2045-12-20	Abolition de l’esclavage	Abolition of Slavery	public	RE
+2045-12-25	Noël	Christmas Day	public	
+2045-12-26	Lendemain de Noël	Boxing Day	public	57
+2045-12-26	Lendemain de Noël	Boxing Day	public	67
+2045-12-26	Lendemain de Noël	Boxing Day	public	68

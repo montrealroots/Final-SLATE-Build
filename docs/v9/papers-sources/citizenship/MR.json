@@ -1,0 +1,35 @@
+{
+ "country": "MR",
+ "years": 10,
+ "renounce": false,
+ "lapses": false,
+ "note": "GLOBALCIT's Citizenship Law Dataset v3.0 (EUI, 2025), coding the law in force on 1 January 2024 (A06a MAUR 18, 19; A06b MAUR 18, 19; L05 No provision): ordinary naturalisation after 10 years' residence; no renunciation of other citizenships required; a citizen keeps it on taking another. Reforms after that date are checked in the file's later sources, where a later source is given. Citizenship at birth is read from the same dataset's 2024 coding of modes A01a (descent, born in country: Generally applicable provision), A01b (descent, born abroad: Gender restriction: no or restricted access if the mother is a citizen (wedlock condition/supplementary provision may apply)), A02a (birth in country: No provision) and A02b (birth in country to a parent born there: No provision), as its codebook (RSC/GLOBALCIT 2025/01, sections 3.2.1a to 3.2.2b) defines them: not by birth in the territory alone (provisions for foundlings and children otherwise stateless, modes A03a and A03b, aren't held by the form); by descent from either parent, a child born abroad on the limit the dataset states. Changes to the law at birth after 1 January 2024 weren't checked for this file. On 2026-11-03 the primaries were read: Codes usuels de Mauritanie 2026, Tome 01 : Droit civil, 4.2.1 Code de la nationalité mauritanienne (Loi n°1961-112 consolidated to Loi n°2021-016), Ministère chargé du Secrétariat Général du Gouvernement, pp. 171-173; Journal Officiel de la République Islamique de Mauritanie n° 1492, 30 août 2021, Loi n° 2021-016 du 6 août 2021 (p. 628); Journal Officiel n° 1212, 30 mars 2010, Loi n°2010-023 du 11 février 2010 (pp. 450-451; scanned, read by OCR, fra). Every figure the file holds now rests on them, and the dataset is no longer cited. The Code changed a figure the dataset gave: it transmits through the father everywhere (art. 8(1°)) and through the mother only where the father is stateless or of unknown nationality, or, in Mauritania, where he is foreign (art. 8(2°)-(3°)), so descent is from the father, not either parent; a child born in Mauritania to a Mauritanian mother and a foreign father, Mauritanian under art. 8(3°), isn't held by the form.",
+ "sources": [
+  {
+   "url": "https://msgg.gov.mr/codes/mauritanie-recueil-01-droit-civil-3.pdf",
+   "title": "Codes usuels de Mauritanie 2026, Tome 01 : Droit civil, 4.2.1 Code de la nationalité mauritanienne (Loi n°1961-112 consolidated to Loi n°2021-016), Ministère chargé du Secrétariat Général du Gouvernement, pp. 171-173",
+   "read": "2026-11-03",
+   "kind": "primary",
+   "said": "Art.8.- Est mauritanien : • 1° l'enfant né d'un père mauritanien ; • 2° l'enfant né d'une mère mauritanienne et d'un père sans nationalité, ou de nationalité inconnue ; • 3° l'enfant né en Mauritanie d'une mère mauritanienne et d'un père de nationalité étrangère, sauf la faculté de répudier cette qualité dans l'année qui précède sa majorité. ... Art.10.- Est mauritanien l'enfant nouveau-né trouvé en Mauritanie et dont les parents sont inconnus. ... Art.13.- (Loi n°2010-23) Peut opter pour la Nationalité Mauritanienne dans l'année précédant sa majorité, l'enfant né à l'étranger, d'une mère mauritanienne et d'un père de nationalité étrangère. ... Art.18.- (Loi n°1971-057, Loi n°1973-186, Loi n°2010-23) Nul ne peut être naturalisé s'il n'a, depuis dix ans au moins, sa résidence habituelle en Mauritanie au moment de la présentation de la demande. Toutefois, ce délai peut être réduit à cinq ans pour ceux qui sont nés en Mauritanie ou mariés conformément à la Chariaa à un mauritanien ou à une mauritanienne ou qui ont rendu à la Mauritanie des services exceptionnels. Art.19.- (Loi n°2010-23) Nul ne peut être naturalisé : • 1° s'il n'est reconnu sain de corps et d'esprit ; • 2° s'il ne parle couramment l'une des langues nationales ... • 3° s'il n'est de bonne vie et mœurs"
+  },
+  {
+   "url": "https://msgg.gov.mr/JO/2021/mauritanie-jo-2021-1492.pdf",
+   "title": "Journal Officiel de la République Islamique de Mauritanie n° 1492, 30 août 2021, Loi n° 2021-016 du 6 août 2021 (p. 628)",
+   "read": "2026-11-03",
+   "kind": "primary",
+   "said": "Article 30 (nouveau) : Perd la nationalité mauritanienne suite à l'acquisition d'une nationalité étrangère, le Mauritanien majeur qui est : Autorisé par décret à renoncer à sa nationalité mauritanienne; Qui nuit aux intérêts ou à la renommée de la Mauritanie, et qui, de ce fait, a été condamné par une décision judiciaire définitive des tribunaux mauritaniens. Article 31 (nouveau) : Le Mauritanien, ayant acquis une autre nationalité, garde sa nationalité mauritanienne."
+  },
+  {
+   "url": "https://msgg.gov.mr/JO/2010/mauritanie-jo-2010-1212.pdf",
+   "title": "Journal Officiel n° 1212, 30 mars 2010, Loi n°2010-023 du 11 février 2010 (pp. 450-451; scanned, read by OCR, fra)",
+   "read": "2026-11-03",
+   "kind": "primary",
+   "said": "Article 18 (nouveau): Nul ne peut être naturalisé s'il n'a, depuis dix ans au moins, sa résidence habituelle en Mauritanie au moment de la présentation de la demande."
+  }
+ ],
+ "atBirth": {
+  "soil": "none",
+  "descent": "father",
+  "descentAbroad": "Person is born abroad to a Mauritanian father; to a Mauritanian mother only where the father has no nationality or an unknown one (art. 8); a child born abroad to a Mauritanian mother and a foreign father may opt for it in the year before majority (art. 13)."
+ }
+}

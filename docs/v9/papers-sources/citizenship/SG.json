@@ -1,0 +1,21 @@
+{
+ "country": "SG",
+ "years": 10,
+ "renounce": true,
+ "lapses": true,
+ "note": "GLOBALCIT's Citizenship Law Dataset v3.0 (EUI, 2025), coding the law in force on 1 January 2024 (A06a Const 123(1), 126, Sections 16-17, Third Schedule; A06b Const 123(1), 126, Sections 16-17, Third Schedule; L05 Const 134(1)(a)): ordinary naturalisation after 10 years' residence; the applicant must give up other citizenships; a citizen loses the citizenship on voluntarily taking another. Reforms after that date are checked in the file's later sources, where a later source is given. Citizenship at birth is read from the same dataset's 2024 coding of modes A01a (descent, born in country: Generally applicable provision), A01b (descent, born abroad: Generational transmission restriction: conditional on birthplace/place of residence /mode under which parent acquired citizenship), A02a (birth in country: No provision) and A02b (birth in country to a parent born there: No provision), as its codebook (RSC/GLOBALCIT 2025/01, sections 3.2.1a to 3.2.2b) defines them: not by birth in the territory alone (provisions for foundlings and children otherwise stateless, modes A03a and A03b, aren't held by the form); by descent from either parent, a child born abroad on the limit the dataset states. Changes to the law at birth after 1 January 2024 weren't checked for this file. On 2026-11-03 the primary was read: Constitution of the Republic of Singapore, Part 10 (Citizenship), Singapore Statutes Online (Attorney-General's Chambers), current version 15 Sep 2026, arts. 121, 122, 123, 126, 134. Every figure the file holds now rests on it, and the dataset is no longer cited. The ten years are art. 123's registration (10 of the 12 years); loss on taking another citizenship is by the Government's order (art. 134(1)(a)), which the file holds as a loss.",
+ "sources": [
+  {
+   "url": "https://sso.agc.gov.sg/Act/CONS1963?ProvIds=P110-",
+   "title": "Constitution of the Republic of Singapore, Part 10 (Citizenship), Singapore Statutes Online (Attorney-General's Chambers), current version 15 Sep 2026, arts. 121, 122, 123, 126, 134",
+   "read": "2026-11-03",
+   "kind": "primary",
+   "said": "121. —(1) Subject to this Article, every person born in Singapore after 16 September 1963 shall be a citizen of Singapore by birth. (2) A person shall not be a citizen of Singapore by virtue of clause (1) if at the time of his birth — ... ( c ) neither of his parents was a citizen of Singapore. ... 122. —(1) ... ( b ) where the person is born on or after the date of commencement of section 7 of the Constitution of the Republic of Singapore (Amendment) Act 2004, either his father or mother is a citizen of Singapore, by birth, registration or descent. ... 123. —(1) ... ( c ) has during the 12 years immediately preceding the date of his application resided in Singapore for periods amounting in the aggregate to not less than 10 years ... 126. —(1) No person shall be registered as a citizen of Singapore under Article 123 until he has taken the Oath of Renunciation, Allegiance and Loyalty in the form set out in the Second Schedule. ... 134. —(1) The Government may, by order, deprive a citizen of Singapore of his citizenship if the Government is satisfied that — ( a ) he has, while of or over the age of 18 years, at any time after 6 April 1960 acquired by registration, naturalisation or other voluntary and formal act (other than marriage) the citizenship of any country outside Singapore"
+  }
+ ],
+ "atBirth": {
+  "soil": "none",
+  "descent": "either parent",
+  "descentAbroad": "Person is born abroad to a father or mother who is a citizen by birth, registration or descent, and the birth is registered within a year; not if a parent is a citizen by registration and the child takes the citizenship of its country of birth; and a parent who is a citizen by descent must have lived in Singapore five years before the birth, or two of the five years immediately before it."
+ }
+}

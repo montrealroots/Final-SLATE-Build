@@ -1,0 +1,1164 @@
+# BRU	Bruxelles
+# DE	Deutschsprachige Gemeinschaft
+# VLG	Vlaamse Gemeenschap
+# WAL	Communauté française
+2026-01-01	Nouvel An	New Year's Day	public	
+2026-01-01	Neujahr	New Year's Day	public	DE
+2026-01-01	Nieuwjaar	New Year's Day	public	VLG
+2026-01-06	l’Épiphanie	Epiphany	observance	
+2026-01-06	Erscheinung des Herrn	Epiphany	observance	DE
+2026-01-06	Driekoningen	Epiphany	observance	VLG
+2026-02-14	Saint-Valentin	Valentine's Day	observance	
+2026-02-14	Valentinstag	Valentine's Day	observance	DE
+2026-02-14	Valentijnsdag	Valentine's Day	observance	VLG
+2026-04-05	Pâques	Easter Sunday	observance	
+2026-04-05	Ostersonntag	Easter Sunday	observance	DE
+2026-04-05	Pasen	Easter Sunday	observance	VLG
+2026-04-06	Lundi de Pâques	Lundi de Pâques	public	
+2026-04-06	Ostermontag	Ostermontag	public	DE
+2026-04-06	Paasmaandag	Paasmaandag	public	VLG
+2026-05-01	Fête du travail	Labour Day	public	
+2026-05-01	Tag der Arbeit	Labour Day	public	DE
+2026-05-01	Dag van de Arbeid	Labour Day	public	VLG
+2026-05-08	Fête de l'Iris	Fête de l'Iris	observance	BRU
+2026-05-10	Fête des Mères	Mother's Day	observance	
+2026-05-10	Muttertag	Mother's Day	observance	DE
+2026-05-10	Moederdag	Mother's Day	observance	VLG
+2026-05-14	Ascension	Ascension	public	
+2026-05-14	Christi Himmelfahrt	Christi Himmelfahrt	public	DE
+2026-05-14	Hemelvaartsdag	Hemelvaartsdag	public	VLG
+2026-05-24	Pentecôte	Pentecost	observance	
+2026-05-24	Pfingstsonntag	Pentecost	observance	DE
+2026-05-24	Pinksteren	Pentecost	observance	VLG
+2026-05-25	Lundi de Pentecôte	Lundi de Pentecôte	public	
+2026-05-25	Pfingstmontag	Pfingstmontag	public	DE
+2026-05-25	Pinkstermaandag	Pinkstermaandag	public	VLG
+2026-07-11	Feestdag van de Vlaamse Gemeenschap	Feestdag van de Vlaamse Gemeenschap	observance	VLG
+2026-07-21	Fête nationale	National Holiday	public	
+2026-07-21	Nationalfeiertag	National Holiday	public	DE
+2026-07-21	Nationale feestdag	National Holiday	public	VLG
+2026-08-15	Assomption	Assomption	public	
+2026-08-15	Mariä Himmelfahrt	Mariä Himmelfahrt	public	DE
+2026-08-15	Tenhemelopneming	Tenhemelopneming	public	VLG
+2026-09-27	La fête de la communauté française	La fête de la communauté française	observance	WAL
+2026-11-01	Toussaint	All Saints' Day	public	
+2026-11-01	Allerheiligen	All Saints' Day	public	DE
+2026-11-01	Allerheiligen	All Saints' Day	public	VLG
+2026-11-02	Fête des morts	All Souls' Day	observance	
+2026-11-02	Allerseelen	All Souls' Day	observance	DE
+2026-11-02	Allerzielen	All Souls' Day	observance	VLG
+2026-11-11	Armistice	Armistice	public	
+2026-11-11	Waffenstillstand	Waffenstillstand	public	DE
+2026-11-11	Wapenstilstand	Wapenstilstand	public	VLG
+2026-11-15	Fête du Roi	Fête du Roi	observance	
+2026-11-15	Tag der Deutschsprachigen Gemeinschaft	Tag der Deutschsprachigen Gemeinschaft	observance	DE
+2026-11-15	Koningsdag	Koningsdag	observance	VLG
+2026-12-06	Saint-Nicolas	Saint Nicholas	observance	
+2026-12-06	Sankt Nikolaus	Saint Nicholas	observance	DE
+2026-12-06	Sinterklaas	Saint Nicholas	observance	VLG
+2026-12-25	Noël	Christmas Day	public	
+2026-12-25	Weihnachten	Christmas Day	public	DE
+2026-12-25	Kerstmis	Christmas Day	public	VLG
+2026-12-26	Tweede kerstdag	Boxing Day	observance	VLG
+2027-01-01	Nouvel An	New Year's Day	public	
+2027-01-01	Neujahr	New Year's Day	public	DE
+2027-01-01	Nieuwjaar	New Year's Day	public	VLG
+2027-01-06	l’Épiphanie	Epiphany	observance	
+2027-01-06	Erscheinung des Herrn	Epiphany	observance	DE
+2027-01-06	Driekoningen	Epiphany	observance	VLG
+2027-02-14	Saint-Valentin	Valentine's Day	observance	
+2027-02-14	Valentinstag	Valentine's Day	observance	DE
+2027-02-14	Valentijnsdag	Valentine's Day	observance	VLG
+2027-03-28	Pâques	Easter Sunday	observance	
+2027-03-28	Ostersonntag	Easter Sunday	observance	DE
+2027-03-28	Pasen	Easter Sunday	observance	VLG
+2027-03-29	Lundi de Pâques	Lundi de Pâques	public	
+2027-03-29	Ostermontag	Ostermontag	public	DE
+2027-03-29	Paasmaandag	Paasmaandag	public	VLG
+2027-05-01	Fête du travail	Labour Day	public	
+2027-05-01	Tag der Arbeit	Labour Day	public	DE
+2027-05-01	Dag van de Arbeid	Labour Day	public	VLG
+2027-05-06	Ascension	Ascension	public	
+2027-05-06	Christi Himmelfahrt	Christi Himmelfahrt	public	DE
+2027-05-06	Hemelvaartsdag	Hemelvaartsdag	public	VLG
+2027-05-08	Fête de l'Iris	Fête de l'Iris	observance	BRU
+2027-05-09	Fête des Mères	Mother's Day	observance	
+2027-05-09	Muttertag	Mother's Day	observance	DE
+2027-05-09	Moederdag	Mother's Day	observance	VLG
+2027-05-16	Pentecôte	Pentecost	observance	
+2027-05-16	Pfingstsonntag	Pentecost	observance	DE
+2027-05-16	Pinksteren	Pentecost	observance	VLG
+2027-05-17	Lundi de Pentecôte	Lundi de Pentecôte	public	
+2027-05-17	Pfingstmontag	Pfingstmontag	public	DE
+2027-05-17	Pinkstermaandag	Pinkstermaandag	public	VLG
+2027-07-11	Feestdag van de Vlaamse Gemeenschap	Feestdag van de Vlaamse Gemeenschap	observance	VLG
+2027-07-21	Fête nationale	National Holiday	public	
+2027-07-21	Nationalfeiertag	National Holiday	public	DE
+2027-07-21	Nationale feestdag	National Holiday	public	VLG
+2027-08-15	Assomption	Assomption	public	
+2027-08-15	Mariä Himmelfahrt	Mariä Himmelfahrt	public	DE
+2027-08-15	Tenhemelopneming	Tenhemelopneming	public	VLG
+2027-09-27	La fête de la communauté française	La fête de la communauté française	observance	WAL
+2027-11-01	Toussaint	All Saints' Day	public	
+2027-11-01	Allerheiligen	All Saints' Day	public	DE
+2027-11-01	Allerheiligen	All Saints' Day	public	VLG
+2027-11-02	Fête des morts	All Souls' Day	observance	
+2027-11-02	Allerseelen	All Souls' Day	observance	DE
+2027-11-02	Allerzielen	All Souls' Day	observance	VLG
+2027-11-11	Armistice	Armistice	public	
+2027-11-11	Waffenstillstand	Waffenstillstand	public	DE
+2027-11-11	Wapenstilstand	Wapenstilstand	public	VLG
+2027-11-15	Fête du Roi	Fête du Roi	observance	
+2027-11-15	Tag der Deutschsprachigen Gemeinschaft	Tag der Deutschsprachigen Gemeinschaft	observance	DE
+2027-11-15	Koningsdag	Koningsdag	observance	VLG
+2027-12-06	Saint-Nicolas	Saint Nicholas	observance	
+2027-12-06	Sankt Nikolaus	Saint Nicholas	observance	DE
+2027-12-06	Sinterklaas	Saint Nicholas	observance	VLG
+2027-12-25	Noël	Christmas Day	public	
+2027-12-25	Weihnachten	Christmas Day	public	DE
+2027-12-25	Kerstmis	Christmas Day	public	VLG
+2027-12-26	Tweede kerstdag	Boxing Day	observance	VLG
+2028-01-01	Nouvel An	New Year's Day	public	
+2028-01-01	Neujahr	New Year's Day	public	DE
+2028-01-01	Nieuwjaar	New Year's Day	public	VLG
+2028-01-06	l’Épiphanie	Epiphany	observance	
+2028-01-06	Erscheinung des Herrn	Epiphany	observance	DE
+2028-01-06	Driekoningen	Epiphany	observance	VLG
+2028-02-14	Saint-Valentin	Valentine's Day	observance	
+2028-02-14	Valentinstag	Valentine's Day	observance	DE
+2028-02-14	Valentijnsdag	Valentine's Day	observance	VLG
+2028-04-16	Pâques	Easter Sunday	observance	
+2028-04-16	Ostersonntag	Easter Sunday	observance	DE
+2028-04-16	Pasen	Easter Sunday	observance	VLG
+2028-04-17	Lundi de Pâques	Lundi de Pâques	public	
+2028-04-17	Ostermontag	Ostermontag	public	DE
+2028-04-17	Paasmaandag	Paasmaandag	public	VLG
+2028-05-01	Fête du travail	Labour Day	public	
+2028-05-01	Tag der Arbeit	Labour Day	public	DE
+2028-05-01	Dag van de Arbeid	Labour Day	public	VLG
+2028-05-08	Fête de l'Iris	Fête de l'Iris	observance	BRU
+2028-05-14	Fête des Mères	Mother's Day	observance	
+2028-05-14	Muttertag	Mother's Day	observance	DE
+2028-05-14	Moederdag	Mother's Day	observance	VLG
+2028-05-25	Ascension	Ascension	public	
+2028-05-25	Christi Himmelfahrt	Christi Himmelfahrt	public	DE
+2028-05-25	Hemelvaartsdag	Hemelvaartsdag	public	VLG
+2028-06-04	Pentecôte	Pentecost	observance	
+2028-06-04	Pfingstsonntag	Pentecost	observance	DE
+2028-06-04	Pinksteren	Pentecost	observance	VLG
+2028-06-05	Lundi de Pentecôte	Lundi de Pentecôte	public	
+2028-06-05	Pfingstmontag	Pfingstmontag	public	DE
+2028-06-05	Pinkstermaandag	Pinkstermaandag	public	VLG
+2028-07-11	Feestdag van de Vlaamse Gemeenschap	Feestdag van de Vlaamse Gemeenschap	observance	VLG
+2028-07-21	Fête nationale	National Holiday	public	
+2028-07-21	Nationalfeiertag	National Holiday	public	DE
+2028-07-21	Nationale feestdag	National Holiday	public	VLG
+2028-08-15	Assomption	Assomption	public	
+2028-08-15	Mariä Himmelfahrt	Mariä Himmelfahrt	public	DE
+2028-08-15	Tenhemelopneming	Tenhemelopneming	public	VLG
+2028-09-27	La fête de la communauté française	La fête de la communauté française	observance	WAL
+2028-11-01	Toussaint	All Saints' Day	public	
+2028-11-01	Allerheiligen	All Saints' Day	public	DE
+2028-11-01	Allerheiligen	All Saints' Day	public	VLG
+2028-11-02	Fête des morts	All Souls' Day	observance	
+2028-11-02	Allerseelen	All Souls' Day	observance	DE
+2028-11-02	Allerzielen	All Souls' Day	observance	VLG
+2028-11-11	Armistice	Armistice	public	
+2028-11-11	Waffenstillstand	Waffenstillstand	public	DE
+2028-11-11	Wapenstilstand	Wapenstilstand	public	VLG
+2028-11-15	Fête du Roi	Fête du Roi	observance	
+2028-11-15	Tag der Deutschsprachigen Gemeinschaft	Tag der Deutschsprachigen Gemeinschaft	observance	DE
+2028-11-15	Koningsdag	Koningsdag	observance	VLG
+2028-12-06	Saint-Nicolas	Saint Nicholas	observance	
+2028-12-06	Sankt Nikolaus	Saint Nicholas	observance	DE
+2028-12-06	Sinterklaas	Saint Nicholas	observance	VLG
+2028-12-25	Noël	Christmas Day	public	
+2028-12-25	Weihnachten	Christmas Day	public	DE
+2028-12-25	Kerstmis	Christmas Day	public	VLG
+2028-12-26	Tweede kerstdag	Boxing Day	observance	VLG
+2029-01-01	Nouvel An	New Year's Day	public	
+2029-01-01	Neujahr	New Year's Day	public	DE
+2029-01-01	Nieuwjaar	New Year's Day	public	VLG
+2029-01-06	l’Épiphanie	Epiphany	observance	
+2029-01-06	Erscheinung des Herrn	Epiphany	observance	DE
+2029-01-06	Driekoningen	Epiphany	observance	VLG
+2029-02-14	Saint-Valentin	Valentine's Day	observance	
+2029-02-14	Valentinstag	Valentine's Day	observance	DE
+2029-02-14	Valentijnsdag	Valentine's Day	observance	VLG
+2029-04-01	Pâques	Easter Sunday	observance	
+2029-04-01	Ostersonntag	Easter Sunday	observance	DE
+2029-04-01	Pasen	Easter Sunday	observance	VLG
+2029-04-02	Lundi de Pâques	Lundi de Pâques	public	
+2029-04-02	Ostermontag	Ostermontag	public	DE
+2029-04-02	Paasmaandag	Paasmaandag	public	VLG
+2029-05-01	Fête du travail	Labour Day	public	
+2029-05-01	Tag der Arbeit	Labour Day	public	DE
+2029-05-01	Dag van de Arbeid	Labour Day	public	VLG
+2029-05-08	Fête de l'Iris	Fête de l'Iris	observance	BRU
+2029-05-10	Ascension	Ascension	public	
+2029-05-10	Christi Himmelfahrt	Christi Himmelfahrt	public	DE
+2029-05-10	Hemelvaartsdag	Hemelvaartsdag	public	VLG
+2029-05-13	Fête des Mères	Mother's Day	observance	
+2029-05-13	Muttertag	Mother's Day	observance	DE
+2029-05-13	Moederdag	Mother's Day	observance	VLG
+2029-05-20	Pentecôte	Pentecost	observance	
+2029-05-20	Pfingstsonntag	Pentecost	observance	DE
+2029-05-20	Pinksteren	Pentecost	observance	VLG
+2029-05-21	Lundi de Pentecôte	Lundi de Pentecôte	public	
+2029-05-21	Pfingstmontag	Pfingstmontag	public	DE
+2029-05-21	Pinkstermaandag	Pinkstermaandag	public	VLG
+2029-07-11	Feestdag van de Vlaamse Gemeenschap	Feestdag van de Vlaamse Gemeenschap	observance	VLG
+2029-07-21	Fête nationale	National Holiday	public	
+2029-07-21	Nationalfeiertag	National Holiday	public	DE
+2029-07-21	Nationale feestdag	National Holiday	public	VLG
+2029-08-15	Assomption	Assomption	public	
+2029-08-15	Mariä Himmelfahrt	Mariä Himmelfahrt	public	DE
+2029-08-15	Tenhemelopneming	Tenhemelopneming	public	VLG
+2029-09-27	La fête de la communauté française	La fête de la communauté française	observance	WAL
+2029-11-01	Toussaint	All Saints' Day	public	
+2029-11-01	Allerheiligen	All Saints' Day	public	DE
+2029-11-01	Allerheiligen	All Saints' Day	public	VLG
+2029-11-02	Fête des morts	All Souls' Day	observance	
+2029-11-02	Allerseelen	All Souls' Day	observance	DE
+2029-11-02	Allerzielen	All Souls' Day	observance	VLG
+2029-11-11	Armistice	Armistice	public	
+2029-11-11	Waffenstillstand	Waffenstillstand	public	DE
+2029-11-11	Wapenstilstand	Wapenstilstand	public	VLG
+2029-11-15	Fête du Roi	Fête du Roi	observance	
+2029-11-15	Tag der Deutschsprachigen Gemeinschaft	Tag der Deutschsprachigen Gemeinschaft	observance	DE
+2029-11-15	Koningsdag	Koningsdag	observance	VLG
+2029-12-06	Saint-Nicolas	Saint Nicholas	observance	
+2029-12-06	Sankt Nikolaus	Saint Nicholas	observance	DE
+2029-12-06	Sinterklaas	Saint Nicholas	observance	VLG
+2029-12-25	Noël	Christmas Day	public	
+2029-12-25	Weihnachten	Christmas Day	public	DE
+2029-12-25	Kerstmis	Christmas Day	public	VLG
+2029-12-26	Tweede kerstdag	Boxing Day	observance	VLG
+2030-01-01	Nouvel An	New Year's Day	public	
+2030-01-01	Neujahr	New Year's Day	public	DE
+2030-01-01	Nieuwjaar	New Year's Day	public	VLG
+2030-01-06	l’Épiphanie	Epiphany	observance	
+2030-01-06	Erscheinung des Herrn	Epiphany	observance	DE
+2030-01-06	Driekoningen	Epiphany	observance	VLG
+2030-02-14	Saint-Valentin	Valentine's Day	observance	
+2030-02-14	Valentinstag	Valentine's Day	observance	DE
+2030-02-14	Valentijnsdag	Valentine's Day	observance	VLG
+2030-04-21	Pâques	Easter Sunday	observance	
+2030-04-21	Ostersonntag	Easter Sunday	observance	DE
+2030-04-21	Pasen	Easter Sunday	observance	VLG
+2030-04-22	Lundi de Pâques	Lundi de Pâques	public	
+2030-04-22	Ostermontag	Ostermontag	public	DE
+2030-04-22	Paasmaandag	Paasmaandag	public	VLG
+2030-05-01	Fête du travail	Labour Day	public	
+2030-05-01	Tag der Arbeit	Labour Day	public	DE
+2030-05-01	Dag van de Arbeid	Labour Day	public	VLG
+2030-05-08	Fête de l'Iris	Fête de l'Iris	observance	BRU
+2030-05-12	Fête des Mères	Mother's Day	observance	
+2030-05-12	Muttertag	Mother's Day	observance	DE
+2030-05-12	Moederdag	Mother's Day	observance	VLG
+2030-05-30	Ascension	Ascension	public	
+2030-05-30	Christi Himmelfahrt	Christi Himmelfahrt	public	DE
+2030-05-30	Hemelvaartsdag	Hemelvaartsdag	public	VLG
+2030-06-09	Pentecôte	Pentecost	observance	
+2030-06-09	Pfingstsonntag	Pentecost	observance	DE
+2030-06-09	Pinksteren	Pentecost	observance	VLG
+2030-06-10	Lundi de Pentecôte	Lundi de Pentecôte	public	
+2030-06-10	Pfingstmontag	Pfingstmontag	public	DE
+2030-06-10	Pinkstermaandag	Pinkstermaandag	public	VLG
+2030-07-11	Feestdag van de Vlaamse Gemeenschap	Feestdag van de Vlaamse Gemeenschap	observance	VLG
+2030-07-21	Fête nationale	National Holiday	public	
+2030-07-21	Nationalfeiertag	National Holiday	public	DE
+2030-07-21	Nationale feestdag	National Holiday	public	VLG
+2030-08-15	Assomption	Assomption	public	
+2030-08-15	Mariä Himmelfahrt	Mariä Himmelfahrt	public	DE
+2030-08-15	Tenhemelopneming	Tenhemelopneming	public	VLG
+2030-09-27	La fête de la communauté française	La fête de la communauté française	observance	WAL
+2030-11-01	Toussaint	All Saints' Day	public	
+2030-11-01	Allerheiligen	All Saints' Day	public	DE
+2030-11-01	Allerheiligen	All Saints' Day	public	VLG
+2030-11-02	Fête des morts	All Souls' Day	observance	
+2030-11-02	Allerseelen	All Souls' Day	observance	DE
+2030-11-02	Allerzielen	All Souls' Day	observance	VLG
+2030-11-11	Armistice	Armistice	public	
+2030-11-11	Waffenstillstand	Waffenstillstand	public	DE
+2030-11-11	Wapenstilstand	Wapenstilstand	public	VLG
+2030-11-15	Fête du Roi	Fête du Roi	observance	
+2030-11-15	Tag der Deutschsprachigen Gemeinschaft	Tag der Deutschsprachigen Gemeinschaft	observance	DE
+2030-11-15	Koningsdag	Koningsdag	observance	VLG
+2030-12-06	Saint-Nicolas	Saint Nicholas	observance	
+2030-12-06	Sankt Nikolaus	Saint Nicholas	observance	DE
+2030-12-06	Sinterklaas	Saint Nicholas	observance	VLG
+2030-12-25	Noël	Christmas Day	public	
+2030-12-25	Weihnachten	Christmas Day	public	DE
+2030-12-25	Kerstmis	Christmas Day	public	VLG
+2030-12-26	Tweede kerstdag	Boxing Day	observance	VLG
+2031-01-01	Nouvel An	New Year's Day	public	
+2031-01-01	Neujahr	New Year's Day	public	DE
+2031-01-01	Nieuwjaar	New Year's Day	public	VLG
+2031-01-06	l’Épiphanie	Epiphany	observance	
+2031-01-06	Erscheinung des Herrn	Epiphany	observance	DE
+2031-01-06	Driekoningen	Epiphany	observance	VLG
+2031-02-14	Saint-Valentin	Valentine's Day	observance	
+2031-02-14	Valentinstag	Valentine's Day	observance	DE
+2031-02-14	Valentijnsdag	Valentine's Day	observance	VLG
+2031-04-13	Pâques	Easter Sunday	observance	
+2031-04-13	Ostersonntag	Easter Sunday	observance	DE
+2031-04-13	Pasen	Easter Sunday	observance	VLG
+2031-04-14	Lundi de Pâques	Lundi de Pâques	public	
+2031-04-14	Ostermontag	Ostermontag	public	DE
+2031-04-14	Paasmaandag	Paasmaandag	public	VLG
+2031-05-01	Fête du travail	Labour Day	public	
+2031-05-01	Tag der Arbeit	Labour Day	public	DE
+2031-05-01	Dag van de Arbeid	Labour Day	public	VLG
+2031-05-08	Fête de l'Iris	Fête de l'Iris	observance	BRU
+2031-05-11	Fête des Mères	Mother's Day	observance	
+2031-05-11	Muttertag	Mother's Day	observance	DE
+2031-05-11	Moederdag	Mother's Day	observance	VLG
+2031-05-22	Ascension	Ascension	public	
+2031-05-22	Christi Himmelfahrt	Christi Himmelfahrt	public	DE
+2031-05-22	Hemelvaartsdag	Hemelvaartsdag	public	VLG
+2031-06-01	Pentecôte	Pentecost	observance	
+2031-06-01	Pfingstsonntag	Pentecost	observance	DE
+2031-06-01	Pinksteren	Pentecost	observance	VLG
+2031-06-02	Lundi de Pentecôte	Lundi de Pentecôte	public	
+2031-06-02	Pfingstmontag	Pfingstmontag	public	DE
+2031-06-02	Pinkstermaandag	Pinkstermaandag	public	VLG
+2031-07-11	Feestdag van de Vlaamse Gemeenschap	Feestdag van de Vlaamse Gemeenschap	observance	VLG
+2031-07-21	Fête nationale	National Holiday	public	
+2031-07-21	Nationalfeiertag	National Holiday	public	DE
+2031-07-21	Nationale feestdag	National Holiday	public	VLG
+2031-08-15	Assomption	Assomption	public	
+2031-08-15	Mariä Himmelfahrt	Mariä Himmelfahrt	public	DE
+2031-08-15	Tenhemelopneming	Tenhemelopneming	public	VLG
+2031-09-27	La fête de la communauté française	La fête de la communauté française	observance	WAL
+2031-11-01	Toussaint	All Saints' Day	public	
+2031-11-01	Allerheiligen	All Saints' Day	public	DE
+2031-11-01	Allerheiligen	All Saints' Day	public	VLG
+2031-11-02	Fête des morts	All Souls' Day	observance	
+2031-11-02	Allerseelen	All Souls' Day	observance	DE
+2031-11-02	Allerzielen	All Souls' Day	observance	VLG
+2031-11-11	Armistice	Armistice	public	
+2031-11-11	Waffenstillstand	Waffenstillstand	public	DE
+2031-11-11	Wapenstilstand	Wapenstilstand	public	VLG
+2031-11-15	Fête du Roi	Fête du Roi	observance	
+2031-11-15	Tag der Deutschsprachigen Gemeinschaft	Tag der Deutschsprachigen Gemeinschaft	observance	DE
+2031-11-15	Koningsdag	Koningsdag	observance	VLG
+2031-12-06	Saint-Nicolas	Saint Nicholas	observance	
+2031-12-06	Sankt Nikolaus	Saint Nicholas	observance	DE
+2031-12-06	Sinterklaas	Saint Nicholas	observance	VLG
+2031-12-25	Noël	Christmas Day	public	
+2031-12-25	Weihnachten	Christmas Day	public	DE
+2031-12-25	Kerstmis	Christmas Day	public	VLG
+2031-12-26	Tweede kerstdag	Boxing Day	observance	VLG
+2032-01-01	Nouvel An	New Year's Day	public	
+2032-01-01	Neujahr	New Year's Day	public	DE
+2032-01-01	Nieuwjaar	New Year's Day	public	VLG
+2032-01-06	l’Épiphanie	Epiphany	observance	
+2032-01-06	Erscheinung des Herrn	Epiphany	observance	DE
+2032-01-06	Driekoningen	Epiphany	observance	VLG
+2032-02-14	Saint-Valentin	Valentine's Day	observance	
+2032-02-14	Valentinstag	Valentine's Day	observance	DE
+2032-02-14	Valentijnsdag	Valentine's Day	observance	VLG
+2032-03-28	Pâques	Easter Sunday	observance	
+2032-03-28	Ostersonntag	Easter Sunday	observance	DE
+2032-03-28	Pasen	Easter Sunday	observance	VLG
+2032-03-29	Lundi de Pâques	Lundi de Pâques	public	
+2032-03-29	Ostermontag	Ostermontag	public	DE
+2032-03-29	Paasmaandag	Paasmaandag	public	VLG
+2032-05-01	Fête du travail	Labour Day	public	
+2032-05-01	Tag der Arbeit	Labour Day	public	DE
+2032-05-01	Dag van de Arbeid	Labour Day	public	VLG
+2032-05-06	Ascension	Ascension	public	
+2032-05-06	Christi Himmelfahrt	Christi Himmelfahrt	public	DE
+2032-05-06	Hemelvaartsdag	Hemelvaartsdag	public	VLG
+2032-05-08	Fête de l'Iris	Fête de l'Iris	observance	BRU
+2032-05-09	Fête des Mères	Mother's Day	observance	
+2032-05-09	Muttertag	Mother's Day	observance	DE
+2032-05-09	Moederdag	Mother's Day	observance	VLG
+2032-05-16	Pentecôte	Pentecost	observance	
+2032-05-16	Pfingstsonntag	Pentecost	observance	DE
+2032-05-16	Pinksteren	Pentecost	observance	VLG
+2032-05-17	Lundi de Pentecôte	Lundi de Pentecôte	public	
+2032-05-17	Pfingstmontag	Pfingstmontag	public	DE
+2032-05-17	Pinkstermaandag	Pinkstermaandag	public	VLG
+2032-07-11	Feestdag van de Vlaamse Gemeenschap	Feestdag van de Vlaamse Gemeenschap	observance	VLG
+2032-07-21	Fête nationale	National Holiday	public	
+2032-07-21	Nationalfeiertag	National Holiday	public	DE
+2032-07-21	Nationale feestdag	National Holiday	public	VLG
+2032-08-15	Assomption	Assomption	public	
+2032-08-15	Mariä Himmelfahrt	Mariä Himmelfahrt	public	DE
+2032-08-15	Tenhemelopneming	Tenhemelopneming	public	VLG
+2032-09-27	La fête de la communauté française	La fête de la communauté française	observance	WAL
+2032-11-01	Toussaint	All Saints' Day	public	
+2032-11-01	Allerheiligen	All Saints' Day	public	DE
+2032-11-01	Allerheiligen	All Saints' Day	public	VLG
+2032-11-02	Fête des morts	All Souls' Day	observance	
+2032-11-02	Allerseelen	All Souls' Day	observance	DE
+2032-11-02	Allerzielen	All Souls' Day	observance	VLG
+2032-11-11	Armistice	Armistice	public	
+2032-11-11	Waffenstillstand	Waffenstillstand	public	DE
+2032-11-11	Wapenstilstand	Wapenstilstand	public	VLG
+2032-11-15	Fête du Roi	Fête du Roi	observance	
+2032-11-15	Tag der Deutschsprachigen Gemeinschaft	Tag der Deutschsprachigen Gemeinschaft	observance	DE
+2032-11-15	Koningsdag	Koningsdag	observance	VLG
+2032-12-06	Saint-Nicolas	Saint Nicholas	observance	
+2032-12-06	Sankt Nikolaus	Saint Nicholas	observance	DE
+2032-12-06	Sinterklaas	Saint Nicholas	observance	VLG
+2032-12-25	Noël	Christmas Day	public	
+2032-12-25	Weihnachten	Christmas Day	public	DE
+2032-12-25	Kerstmis	Christmas Day	public	VLG
+2032-12-26	Tweede kerstdag	Boxing Day	observance	VLG
+2033-01-01	Nouvel An	New Year's Day	public	
+2033-01-01	Neujahr	New Year's Day	public	DE
+2033-01-01	Nieuwjaar	New Year's Day	public	VLG
+2033-01-06	l’Épiphanie	Epiphany	observance	
+2033-01-06	Erscheinung des Herrn	Epiphany	observance	DE
+2033-01-06	Driekoningen	Epiphany	observance	VLG
+2033-02-14	Saint-Valentin	Valentine's Day	observance	
+2033-02-14	Valentinstag	Valentine's Day	observance	DE
+2033-02-14	Valentijnsdag	Valentine's Day	observance	VLG
+2033-04-17	Pâques	Easter Sunday	observance	
+2033-04-17	Ostersonntag	Easter Sunday	observance	DE
+2033-04-17	Pasen	Easter Sunday	observance	VLG
+2033-04-18	Lundi de Pâques	Lundi de Pâques	public	
+2033-04-18	Ostermontag	Ostermontag	public	DE
+2033-04-18	Paasmaandag	Paasmaandag	public	VLG
+2033-05-01	Fête du travail	Labour Day	public	
+2033-05-01	Tag der Arbeit	Labour Day	public	DE
+2033-05-01	Dag van de Arbeid	Labour Day	public	VLG
+2033-05-08	Fête des Mères	Mother's Day	observance	
+2033-05-08	Fête de l'Iris	Fête de l'Iris	observance	BRU
+2033-05-08	Muttertag	Mother's Day	observance	DE
+2033-05-08	Moederdag	Mother's Day	observance	VLG
+2033-05-26	Ascension	Ascension	public	
+2033-05-26	Christi Himmelfahrt	Christi Himmelfahrt	public	DE
+2033-05-26	Hemelvaartsdag	Hemelvaartsdag	public	VLG
+2033-06-05	Pentecôte	Pentecost	observance	
+2033-06-05	Pfingstsonntag	Pentecost	observance	DE
+2033-06-05	Pinksteren	Pentecost	observance	VLG
+2033-06-06	Lundi de Pentecôte	Lundi de Pentecôte	public	
+2033-06-06	Pfingstmontag	Pfingstmontag	public	DE
+2033-06-06	Pinkstermaandag	Pinkstermaandag	public	VLG
+2033-07-11	Feestdag van de Vlaamse Gemeenschap	Feestdag van de Vlaamse Gemeenschap	observance	VLG
+2033-07-21	Fête nationale	National Holiday	public	
+2033-07-21	Nationalfeiertag	National Holiday	public	DE
+2033-07-21	Nationale feestdag	National Holiday	public	VLG
+2033-08-15	Assomption	Assomption	public	
+2033-08-15	Mariä Himmelfahrt	Mariä Himmelfahrt	public	DE
+2033-08-15	Tenhemelopneming	Tenhemelopneming	public	VLG
+2033-09-27	La fête de la communauté française	La fête de la communauté française	observance	WAL
+2033-11-01	Toussaint	All Saints' Day	public	
+2033-11-01	Allerheiligen	All Saints' Day	public	DE
+2033-11-01	Allerheiligen	All Saints' Day	public	VLG
+2033-11-02	Fête des morts	All Souls' Day	observance	
+2033-11-02	Allerseelen	All Souls' Day	observance	DE
+2033-11-02	Allerzielen	All Souls' Day	observance	VLG
+2033-11-11	Armistice	Armistice	public	
+2033-11-11	Waffenstillstand	Waffenstillstand	public	DE
+2033-11-11	Wapenstilstand	Wapenstilstand	public	VLG
+2033-11-15	Fête du Roi	Fête du Roi	observance	
+2033-11-15	Tag der Deutschsprachigen Gemeinschaft	Tag der Deutschsprachigen Gemeinschaft	observance	DE
+2033-11-15	Koningsdag	Koningsdag	observance	VLG
+2033-12-06	Saint-Nicolas	Saint Nicholas	observance	
+2033-12-06	Sankt Nikolaus	Saint Nicholas	observance	DE
+2033-12-06	Sinterklaas	Saint Nicholas	observance	VLG
+2033-12-25	Noël	Christmas Day	public	
+2033-12-25	Weihnachten	Christmas Day	public	DE
+2033-12-25	Kerstmis	Christmas Day	public	VLG
+2033-12-26	Tweede kerstdag	Boxing Day	observance	VLG
+2034-01-01	Nouvel An	New Year's Day	public	
+2034-01-01	Neujahr	New Year's Day	public	DE
+2034-01-01	Nieuwjaar	New Year's Day	public	VLG
+2034-01-06	l’Épiphanie	Epiphany	observance	
+2034-01-06	Erscheinung des Herrn	Epiphany	observance	DE
+2034-01-06	Driekoningen	Epiphany	observance	VLG
+2034-02-14	Saint-Valentin	Valentine's Day	observance	
+2034-02-14	Valentinstag	Valentine's Day	observance	DE
+2034-02-14	Valentijnsdag	Valentine's Day	observance	VLG
+2034-04-09	Pâques	Easter Sunday	observance	
+2034-04-09	Ostersonntag	Easter Sunday	observance	DE
+2034-04-09	Pasen	Easter Sunday	observance	VLG
+2034-04-10	Lundi de Pâques	Lundi de Pâques	public	
+2034-04-10	Ostermontag	Ostermontag	public	DE
+2034-04-10	Paasmaandag	Paasmaandag	public	VLG
+2034-05-01	Fête du travail	Labour Day	public	
+2034-05-01	Tag der Arbeit	Labour Day	public	DE
+2034-05-01	Dag van de Arbeid	Labour Day	public	VLG
+2034-05-08	Fête de l'Iris	Fête de l'Iris	observance	BRU
+2034-05-14	Fête des Mères	Mother's Day	observance	
+2034-05-14	Muttertag	Mother's Day	observance	DE
+2034-05-14	Moederdag	Mother's Day	observance	VLG
+2034-05-18	Ascension	Ascension	public	
+2034-05-18	Christi Himmelfahrt	Christi Himmelfahrt	public	DE
+2034-05-18	Hemelvaartsdag	Hemelvaartsdag	public	VLG
+2034-05-28	Pentecôte	Pentecost	observance	
+2034-05-28	Pfingstsonntag	Pentecost	observance	DE
+2034-05-28	Pinksteren	Pentecost	observance	VLG
+2034-05-29	Lundi de Pentecôte	Lundi de Pentecôte	public	
+2034-05-29	Pfingstmontag	Pfingstmontag	public	DE
+2034-05-29	Pinkstermaandag	Pinkstermaandag	public	VLG
+2034-07-11	Feestdag van de Vlaamse Gemeenschap	Feestdag van de Vlaamse Gemeenschap	observance	VLG
+2034-07-21	Fête nationale	National Holiday	public	
+2034-07-21	Nationalfeiertag	National Holiday	public	DE
+2034-07-21	Nationale feestdag	National Holiday	public	VLG
+2034-08-15	Assomption	Assomption	public	
+2034-08-15	Mariä Himmelfahrt	Mariä Himmelfahrt	public	DE
+2034-08-15	Tenhemelopneming	Tenhemelopneming	public	VLG
+2034-09-27	La fête de la communauté française	La fête de la communauté française	observance	WAL
+2034-11-01	Toussaint	All Saints' Day	public	
+2034-11-01	Allerheiligen	All Saints' Day	public	DE
+2034-11-01	Allerheiligen	All Saints' Day	public	VLG
+2034-11-02	Fête des morts	All Souls' Day	observance	
+2034-11-02	Allerseelen	All Souls' Day	observance	DE
+2034-11-02	Allerzielen	All Souls' Day	observance	VLG
+2034-11-11	Armistice	Armistice	public	
+2034-11-11	Waffenstillstand	Waffenstillstand	public	DE
+2034-11-11	Wapenstilstand	Wapenstilstand	public	VLG
+2034-11-15	Fête du Roi	Fête du Roi	observance	
+2034-11-15	Tag der Deutschsprachigen Gemeinschaft	Tag der Deutschsprachigen Gemeinschaft	observance	DE
+2034-11-15	Koningsdag	Koningsdag	observance	VLG
+2034-12-06	Saint-Nicolas	Saint Nicholas	observance	
+2034-12-06	Sankt Nikolaus	Saint Nicholas	observance	DE
+2034-12-06	Sinterklaas	Saint Nicholas	observance	VLG
+2034-12-25	Noël	Christmas Day	public	
+2034-12-25	Weihnachten	Christmas Day	public	DE
+2034-12-25	Kerstmis	Christmas Day	public	VLG
+2034-12-26	Tweede kerstdag	Boxing Day	observance	VLG
+2035-01-01	Nouvel An	New Year's Day	public	
+2035-01-01	Neujahr	New Year's Day	public	DE
+2035-01-01	Nieuwjaar	New Year's Day	public	VLG
+2035-01-06	l’Épiphanie	Epiphany	observance	
+2035-01-06	Erscheinung des Herrn	Epiphany	observance	DE
+2035-01-06	Driekoningen	Epiphany	observance	VLG
+2035-02-14	Saint-Valentin	Valentine's Day	observance	
+2035-02-14	Valentinstag	Valentine's Day	observance	DE
+2035-02-14	Valentijnsdag	Valentine's Day	observance	VLG
+2035-03-25	Pâques	Easter Sunday	observance	
+2035-03-25	Ostersonntag	Easter Sunday	observance	DE
+2035-03-25	Pasen	Easter Sunday	observance	VLG
+2035-03-26	Lundi de Pâques	Lundi de Pâques	public	
+2035-03-26	Ostermontag	Ostermontag	public	DE
+2035-03-26	Paasmaandag	Paasmaandag	public	VLG
+2035-05-01	Fête du travail	Labour Day	public	
+2035-05-01	Tag der Arbeit	Labour Day	public	DE
+2035-05-01	Dag van de Arbeid	Labour Day	public	VLG
+2035-05-03	Ascension	Ascension	public	
+2035-05-03	Christi Himmelfahrt	Christi Himmelfahrt	public	DE
+2035-05-03	Hemelvaartsdag	Hemelvaartsdag	public	VLG
+2035-05-08	Fête de l'Iris	Fête de l'Iris	observance	BRU
+2035-05-13	Fête des Mères	Mother's Day	observance	
+2035-05-13	Pentecôte	Pentecost	observance	
+2035-05-13	Muttertag	Mother's Day	observance	DE
+2035-05-13	Pfingstsonntag	Pentecost	observance	DE
+2035-05-13	Moederdag	Mother's Day	observance	VLG
+2035-05-13	Pinksteren	Pentecost	observance	VLG
+2035-05-14	Lundi de Pentecôte	Lundi de Pentecôte	public	
+2035-05-14	Pfingstmontag	Pfingstmontag	public	DE
+2035-05-14	Pinkstermaandag	Pinkstermaandag	public	VLG
+2035-07-11	Feestdag van de Vlaamse Gemeenschap	Feestdag van de Vlaamse Gemeenschap	observance	VLG
+2035-07-21	Fête nationale	National Holiday	public	
+2035-07-21	Nationalfeiertag	National Holiday	public	DE
+2035-07-21	Nationale feestdag	National Holiday	public	VLG
+2035-08-15	Assomption	Assomption	public	
+2035-08-15	Mariä Himmelfahrt	Mariä Himmelfahrt	public	DE
+2035-08-15	Tenhemelopneming	Tenhemelopneming	public	VLG
+2035-09-27	La fête de la communauté française	La fête de la communauté française	observance	WAL
+2035-11-01	Toussaint	All Saints' Day	public	
+2035-11-01	Allerheiligen	All Saints' Day	public	DE
+2035-11-01	Allerheiligen	All Saints' Day	public	VLG
+2035-11-02	Fête des morts	All Souls' Day	observance	
+2035-11-02	Allerseelen	All Souls' Day	observance	DE
+2035-11-02	Allerzielen	All Souls' Day	observance	VLG
+2035-11-11	Armistice	Armistice	public	
+2035-11-11	Waffenstillstand	Waffenstillstand	public	DE
+2035-11-11	Wapenstilstand	Wapenstilstand	public	VLG
+2035-11-15	Fête du Roi	Fête du Roi	observance	
+2035-11-15	Tag der Deutschsprachigen Gemeinschaft	Tag der Deutschsprachigen Gemeinschaft	observance	DE
+2035-11-15	Koningsdag	Koningsdag	observance	VLG
+2035-12-06	Saint-Nicolas	Saint Nicholas	observance	
+2035-12-06	Sankt Nikolaus	Saint Nicholas	observance	DE
+2035-12-06	Sinterklaas	Saint Nicholas	observance	VLG
+2035-12-25	Noël	Christmas Day	public	
+2035-12-25	Weihnachten	Christmas Day	public	DE
+2035-12-25	Kerstmis	Christmas Day	public	VLG
+2035-12-26	Tweede kerstdag	Boxing Day	observance	VLG
+2036-01-01	Nouvel An	New Year's Day	public	
+2036-01-01	Neujahr	New Year's Day	public	DE
+2036-01-01	Nieuwjaar	New Year's Day	public	VLG
+2036-01-06	l’Épiphanie	Epiphany	observance	
+2036-01-06	Erscheinung des Herrn	Epiphany	observance	DE
+2036-01-06	Driekoningen	Epiphany	observance	VLG
+2036-02-14	Saint-Valentin	Valentine's Day	observance	
+2036-02-14	Valentinstag	Valentine's Day	observance	DE
+2036-02-14	Valentijnsdag	Valentine's Day	observance	VLG
+2036-04-13	Pâques	Easter Sunday	observance	
+2036-04-13	Ostersonntag	Easter Sunday	observance	DE
+2036-04-13	Pasen	Easter Sunday	observance	VLG
+2036-04-14	Lundi de Pâques	Lundi de Pâques	public	
+2036-04-14	Ostermontag	Ostermontag	public	DE
+2036-04-14	Paasmaandag	Paasmaandag	public	VLG
+2036-05-01	Fête du travail	Labour Day	public	
+2036-05-01	Tag der Arbeit	Labour Day	public	DE
+2036-05-01	Dag van de Arbeid	Labour Day	public	VLG
+2036-05-08	Fête de l'Iris	Fête de l'Iris	observance	BRU
+2036-05-11	Fête des Mères	Mother's Day	observance	
+2036-05-11	Muttertag	Mother's Day	observance	DE
+2036-05-11	Moederdag	Mother's Day	observance	VLG
+2036-05-22	Ascension	Ascension	public	
+2036-05-22	Christi Himmelfahrt	Christi Himmelfahrt	public	DE
+2036-05-22	Hemelvaartsdag	Hemelvaartsdag	public	VLG
+2036-06-01	Pentecôte	Pentecost	observance	
+2036-06-01	Pfingstsonntag	Pentecost	observance	DE
+2036-06-01	Pinksteren	Pentecost	observance	VLG
+2036-06-02	Lundi de Pentecôte	Lundi de Pentecôte	public	
+2036-06-02	Pfingstmontag	Pfingstmontag	public	DE
+2036-06-02	Pinkstermaandag	Pinkstermaandag	public	VLG
+2036-07-11	Feestdag van de Vlaamse Gemeenschap	Feestdag van de Vlaamse Gemeenschap	observance	VLG
+2036-07-21	Fête nationale	National Holiday	public	
+2036-07-21	Nationalfeiertag	National Holiday	public	DE
+2036-07-21	Nationale feestdag	National Holiday	public	VLG
+2036-08-15	Assomption	Assomption	public	
+2036-08-15	Mariä Himmelfahrt	Mariä Himmelfahrt	public	DE
+2036-08-15	Tenhemelopneming	Tenhemelopneming	public	VLG
+2036-09-27	La fête de la communauté française	La fête de la communauté française	observance	WAL
+2036-11-01	Toussaint	All Saints' Day	public	
+2036-11-01	Allerheiligen	All Saints' Day	public	DE
+2036-11-01	Allerheiligen	All Saints' Day	public	VLG
+2036-11-02	Fête des morts	All Souls' Day	observance	
+2036-11-02	Allerseelen	All Souls' Day	observance	DE
+2036-11-02	Allerzielen	All Souls' Day	observance	VLG
+2036-11-11	Armistice	Armistice	public	
+2036-11-11	Waffenstillstand	Waffenstillstand	public	DE
+2036-11-11	Wapenstilstand	Wapenstilstand	public	VLG
+2036-11-15	Fête du Roi	Fête du Roi	observance	
+2036-11-15	Tag der Deutschsprachigen Gemeinschaft	Tag der Deutschsprachigen Gemeinschaft	observance	DE
+2036-11-15	Koningsdag	Koningsdag	observance	VLG
+2036-12-06	Saint-Nicolas	Saint Nicholas	observance	
+2036-12-06	Sankt Nikolaus	Saint Nicholas	observance	DE
+2036-12-06	Sinterklaas	Saint Nicholas	observance	VLG
+2036-12-25	Noël	Christmas Day	public	
+2036-12-25	Weihnachten	Christmas Day	public	DE
+2036-12-25	Kerstmis	Christmas Day	public	VLG
+2036-12-26	Tweede kerstdag	Boxing Day	observance	VLG
+2037-01-01	Nouvel An	New Year's Day	public	
+2037-01-01	Neujahr	New Year's Day	public	DE
+2037-01-01	Nieuwjaar	New Year's Day	public	VLG
+2037-01-06	l’Épiphanie	Epiphany	observance	
+2037-01-06	Erscheinung des Herrn	Epiphany	observance	DE
+2037-01-06	Driekoningen	Epiphany	observance	VLG
+2037-02-14	Saint-Valentin	Valentine's Day	observance	
+2037-02-14	Valentinstag	Valentine's Day	observance	DE
+2037-02-14	Valentijnsdag	Valentine's Day	observance	VLG
+2037-04-05	Pâques	Easter Sunday	observance	
+2037-04-05	Ostersonntag	Easter Sunday	observance	DE
+2037-04-05	Pasen	Easter Sunday	observance	VLG
+2037-04-06	Lundi de Pâques	Lundi de Pâques	public	
+2037-04-06	Ostermontag	Ostermontag	public	DE
+2037-04-06	Paasmaandag	Paasmaandag	public	VLG
+2037-05-01	Fête du travail	Labour Day	public	
+2037-05-01	Tag der Arbeit	Labour Day	public	DE
+2037-05-01	Dag van de Arbeid	Labour Day	public	VLG
+2037-05-08	Fête de l'Iris	Fête de l'Iris	observance	BRU
+2037-05-10	Fête des Mères	Mother's Day	observance	
+2037-05-10	Muttertag	Mother's Day	observance	DE
+2037-05-10	Moederdag	Mother's Day	observance	VLG
+2037-05-14	Ascension	Ascension	public	
+2037-05-14	Christi Himmelfahrt	Christi Himmelfahrt	public	DE
+2037-05-14	Hemelvaartsdag	Hemelvaartsdag	public	VLG
+2037-05-24	Pentecôte	Pentecost	observance	
+2037-05-24	Pfingstsonntag	Pentecost	observance	DE
+2037-05-24	Pinksteren	Pentecost	observance	VLG
+2037-05-25	Lundi de Pentecôte	Lundi de Pentecôte	public	
+2037-05-25	Pfingstmontag	Pfingstmontag	public	DE
+2037-05-25	Pinkstermaandag	Pinkstermaandag	public	VLG
+2037-07-11	Feestdag van de Vlaamse Gemeenschap	Feestdag van de Vlaamse Gemeenschap	observance	VLG
+2037-07-21	Fête nationale	National Holiday	public	
+2037-07-21	Nationalfeiertag	National Holiday	public	DE
+2037-07-21	Nationale feestdag	National Holiday	public	VLG
+2037-08-15	Assomption	Assomption	public	
+2037-08-15	Mariä Himmelfahrt	Mariä Himmelfahrt	public	DE
+2037-08-15	Tenhemelopneming	Tenhemelopneming	public	VLG
+2037-09-27	La fête de la communauté française	La fête de la communauté française	observance	WAL
+2037-11-01	Toussaint	All Saints' Day	public	
+2037-11-01	Allerheiligen	All Saints' Day	public	DE
+2037-11-01	Allerheiligen	All Saints' Day	public	VLG
+2037-11-02	Fête des morts	All Souls' Day	observance	
+2037-11-02	Allerseelen	All Souls' Day	observance	DE
+2037-11-02	Allerzielen	All Souls' Day	observance	VLG
+2037-11-11	Armistice	Armistice	public	
+2037-11-11	Waffenstillstand	Waffenstillstand	public	DE
+2037-11-11	Wapenstilstand	Wapenstilstand	public	VLG
+2037-11-15	Fête du Roi	Fête du Roi	observance	
+2037-11-15	Tag der Deutschsprachigen Gemeinschaft	Tag der Deutschsprachigen Gemeinschaft	observance	DE
+2037-11-15	Koningsdag	Koningsdag	observance	VLG
+2037-12-06	Saint-Nicolas	Saint Nicholas	observance	
+2037-12-06	Sankt Nikolaus	Saint Nicholas	observance	DE
+2037-12-06	Sinterklaas	Saint Nicholas	observance	VLG
+2037-12-25	Noël	Christmas Day	public	
+2037-12-25	Weihnachten	Christmas Day	public	DE
+2037-12-25	Kerstmis	Christmas Day	public	VLG
+2037-12-26	Tweede kerstdag	Boxing Day	observance	VLG
+2038-01-01	Nouvel An	New Year's Day	public	
+2038-01-01	Neujahr	New Year's Day	public	DE
+2038-01-01	Nieuwjaar	New Year's Day	public	VLG
+2038-01-06	l’Épiphanie	Epiphany	observance	
+2038-01-06	Erscheinung des Herrn	Epiphany	observance	DE
+2038-01-06	Driekoningen	Epiphany	observance	VLG
+2038-02-14	Saint-Valentin	Valentine's Day	observance	
+2038-02-14	Valentinstag	Valentine's Day	observance	DE
+2038-02-14	Valentijnsdag	Valentine's Day	observance	VLG
+2038-04-25	Pâques	Easter Sunday	observance	
+2038-04-25	Ostersonntag	Easter Sunday	observance	DE
+2038-04-25	Pasen	Easter Sunday	observance	VLG
+2038-04-26	Lundi de Pâques	Lundi de Pâques	public	
+2038-04-26	Ostermontag	Ostermontag	public	DE
+2038-04-26	Paasmaandag	Paasmaandag	public	VLG
+2038-05-01	Fête du travail	Labour Day	public	
+2038-05-01	Tag der Arbeit	Labour Day	public	DE
+2038-05-01	Dag van de Arbeid	Labour Day	public	VLG
+2038-05-08	Fête de l'Iris	Fête de l'Iris	observance	BRU
+2038-05-09	Fête des Mères	Mother's Day	observance	
+2038-05-09	Muttertag	Mother's Day	observance	DE
+2038-05-09	Moederdag	Mother's Day	observance	VLG
+2038-06-03	Ascension	Ascension	public	
+2038-06-03	Christi Himmelfahrt	Christi Himmelfahrt	public	DE
+2038-06-03	Hemelvaartsdag	Hemelvaartsdag	public	VLG
+2038-06-13	Pentecôte	Pentecost	observance	
+2038-06-13	Pfingstsonntag	Pentecost	observance	DE
+2038-06-13	Pinksteren	Pentecost	observance	VLG
+2038-06-14	Lundi de Pentecôte	Lundi de Pentecôte	public	
+2038-06-14	Pfingstmontag	Pfingstmontag	public	DE
+2038-06-14	Pinkstermaandag	Pinkstermaandag	public	VLG
+2038-07-11	Feestdag van de Vlaamse Gemeenschap	Feestdag van de Vlaamse Gemeenschap	observance	VLG
+2038-07-21	Fête nationale	National Holiday	public	
+2038-07-21	Nationalfeiertag	National Holiday	public	DE
+2038-07-21	Nationale feestdag	National Holiday	public	VLG
+2038-08-15	Assomption	Assomption	public	
+2038-08-15	Mariä Himmelfahrt	Mariä Himmelfahrt	public	DE
+2038-08-15	Tenhemelopneming	Tenhemelopneming	public	VLG
+2038-09-27	La fête de la communauté française	La fête de la communauté française	observance	WAL
+2038-11-01	Toussaint	All Saints' Day	public	
+2038-11-01	Allerheiligen	All Saints' Day	public	DE
+2038-11-01	Allerheiligen	All Saints' Day	public	VLG
+2038-11-02	Fête des morts	All Souls' Day	observance	
+2038-11-02	Allerseelen	All Souls' Day	observance	DE
+2038-11-02	Allerzielen	All Souls' Day	observance	VLG
+2038-11-11	Armistice	Armistice	public	
+2038-11-11	Waffenstillstand	Waffenstillstand	public	DE
+2038-11-11	Wapenstilstand	Wapenstilstand	public	VLG
+2038-11-15	Fête du Roi	Fête du Roi	observance	
+2038-11-15	Tag der Deutschsprachigen Gemeinschaft	Tag der Deutschsprachigen Gemeinschaft	observance	DE
+2038-11-15	Koningsdag	Koningsdag	observance	VLG
+2038-12-06	Saint-Nicolas	Saint Nicholas	observance	
+2038-12-06	Sankt Nikolaus	Saint Nicholas	observance	DE
+2038-12-06	Sinterklaas	Saint Nicholas	observance	VLG
+2038-12-25	Noël	Christmas Day	public	
+2038-12-25	Weihnachten	Christmas Day	public	DE
+2038-12-25	Kerstmis	Christmas Day	public	VLG
+2038-12-26	Tweede kerstdag	Boxing Day	observance	VLG
+2039-01-01	Nouvel An	New Year's Day	public	
+2039-01-01	Neujahr	New Year's Day	public	DE
+2039-01-01	Nieuwjaar	New Year's Day	public	VLG
+2039-01-06	l’Épiphanie	Epiphany	observance	
+2039-01-06	Erscheinung des Herrn	Epiphany	observance	DE
+2039-01-06	Driekoningen	Epiphany	observance	VLG
+2039-02-14	Saint-Valentin	Valentine's Day	observance	
+2039-02-14	Valentinstag	Valentine's Day	observance	DE
+2039-02-14	Valentijnsdag	Valentine's Day	observance	VLG
+2039-04-10	Pâques	Easter Sunday	observance	
+2039-04-10	Ostersonntag	Easter Sunday	observance	DE
+2039-04-10	Pasen	Easter Sunday	observance	VLG
+2039-04-11	Lundi de Pâques	Lundi de Pâques	public	
+2039-04-11	Ostermontag	Ostermontag	public	DE
+2039-04-11	Paasmaandag	Paasmaandag	public	VLG
+2039-05-01	Fête du travail	Labour Day	public	
+2039-05-01	Tag der Arbeit	Labour Day	public	DE
+2039-05-01	Dag van de Arbeid	Labour Day	public	VLG
+2039-05-08	Fête des Mères	Mother's Day	observance	
+2039-05-08	Fête de l'Iris	Fête de l'Iris	observance	BRU
+2039-05-08	Muttertag	Mother's Day	observance	DE
+2039-05-08	Moederdag	Mother's Day	observance	VLG
+2039-05-19	Ascension	Ascension	public	
+2039-05-19	Christi Himmelfahrt	Christi Himmelfahrt	public	DE
+2039-05-19	Hemelvaartsdag	Hemelvaartsdag	public	VLG
+2039-05-29	Pentecôte	Pentecost	observance	
+2039-05-29	Pfingstsonntag	Pentecost	observance	DE
+2039-05-29	Pinksteren	Pentecost	observance	VLG
+2039-05-30	Lundi de Pentecôte	Lundi de Pentecôte	public	
+2039-05-30	Pfingstmontag	Pfingstmontag	public	DE
+2039-05-30	Pinkstermaandag	Pinkstermaandag	public	VLG
+2039-07-11	Feestdag van de Vlaamse Gemeenschap	Feestdag van de Vlaamse Gemeenschap	observance	VLG
+2039-07-21	Fête nationale	National Holiday	public	
+2039-07-21	Nationalfeiertag	National Holiday	public	DE
+2039-07-21	Nationale feestdag	National Holiday	public	VLG
+2039-08-15	Assomption	Assomption	public	
+2039-08-15	Mariä Himmelfahrt	Mariä Himmelfahrt	public	DE
+2039-08-15	Tenhemelopneming	Tenhemelopneming	public	VLG
+2039-09-27	La fête de la communauté française	La fête de la communauté française	observance	WAL
+2039-11-01	Toussaint	All Saints' Day	public	
+2039-11-01	Allerheiligen	All Saints' Day	public	DE
+2039-11-01	Allerheiligen	All Saints' Day	public	VLG
+2039-11-02	Fête des morts	All Souls' Day	observance	
+2039-11-02	Allerseelen	All Souls' Day	observance	DE
+2039-11-02	Allerzielen	All Souls' Day	observance	VLG
+2039-11-11	Armistice	Armistice	public	
+2039-11-11	Waffenstillstand	Waffenstillstand	public	DE
+2039-11-11	Wapenstilstand	Wapenstilstand	public	VLG
+2039-11-15	Fête du Roi	Fête du Roi	observance	
+2039-11-15	Tag der Deutschsprachigen Gemeinschaft	Tag der Deutschsprachigen Gemeinschaft	observance	DE
+2039-11-15	Koningsdag	Koningsdag	observance	VLG
+2039-12-06	Saint-Nicolas	Saint Nicholas	observance	
+2039-12-06	Sankt Nikolaus	Saint Nicholas	observance	DE
+2039-12-06	Sinterklaas	Saint Nicholas	observance	VLG
+2039-12-25	Noël	Christmas Day	public	
+2039-12-25	Weihnachten	Christmas Day	public	DE
+2039-12-25	Kerstmis	Christmas Day	public	VLG
+2039-12-26	Tweede kerstdag	Boxing Day	observance	VLG
+2040-01-01	Nouvel An	New Year's Day	public	
+2040-01-01	Neujahr	New Year's Day	public	DE
+2040-01-01	Nieuwjaar	New Year's Day	public	VLG
+2040-01-06	l’Épiphanie	Epiphany	observance	
+2040-01-06	Erscheinung des Herrn	Epiphany	observance	DE
+2040-01-06	Driekoningen	Epiphany	observance	VLG
+2040-02-14	Saint-Valentin	Valentine's Day	observance	
+2040-02-14	Valentinstag	Valentine's Day	observance	DE
+2040-02-14	Valentijnsdag	Valentine's Day	observance	VLG
+2040-04-01	Pâques	Easter Sunday	observance	
+2040-04-01	Ostersonntag	Easter Sunday	observance	DE
+2040-04-01	Pasen	Easter Sunday	observance	VLG
+2040-04-02	Lundi de Pâques	Lundi de Pâques	public	
+2040-04-02	Ostermontag	Ostermontag	public	DE
+2040-04-02	Paasmaandag	Paasmaandag	public	VLG
+2040-05-01	Fête du travail	Labour Day	public	
+2040-05-01	Tag der Arbeit	Labour Day	public	DE
+2040-05-01	Dag van de Arbeid	Labour Day	public	VLG
+2040-05-08	Fête de l'Iris	Fête de l'Iris	observance	BRU
+2040-05-10	Ascension	Ascension	public	
+2040-05-10	Christi Himmelfahrt	Christi Himmelfahrt	public	DE
+2040-05-10	Hemelvaartsdag	Hemelvaartsdag	public	VLG
+2040-05-13	Fête des Mères	Mother's Day	observance	
+2040-05-13	Muttertag	Mother's Day	observance	DE
+2040-05-13	Moederdag	Mother's Day	observance	VLG
+2040-05-20	Pentecôte	Pentecost	observance	
+2040-05-20	Pfingstsonntag	Pentecost	observance	DE
+2040-05-20	Pinksteren	Pentecost	observance	VLG
+2040-05-21	Lundi de Pentecôte	Lundi de Pentecôte	public	
+2040-05-21	Pfingstmontag	Pfingstmontag	public	DE
+2040-05-21	Pinkstermaandag	Pinkstermaandag	public	VLG
+2040-07-11	Feestdag van de Vlaamse Gemeenschap	Feestdag van de Vlaamse Gemeenschap	observance	VLG
+2040-07-21	Fête nationale	National Holiday	public	
+2040-07-21	Nationalfeiertag	National Holiday	public	DE
+2040-07-21	Nationale feestdag	National Holiday	public	VLG
+2040-08-15	Assomption	Assomption	public	
+2040-08-15	Mariä Himmelfahrt	Mariä Himmelfahrt	public	DE
+2040-08-15	Tenhemelopneming	Tenhemelopneming	public	VLG
+2040-09-27	La fête de la communauté française	La fête de la communauté française	observance	WAL
+2040-11-01	Toussaint	All Saints' Day	public	
+2040-11-01	Allerheiligen	All Saints' Day	public	DE
+2040-11-01	Allerheiligen	All Saints' Day	public	VLG
+2040-11-02	Fête des morts	All Souls' Day	observance	
+2040-11-02	Allerseelen	All Souls' Day	observance	DE
+2040-11-02	Allerzielen	All Souls' Day	observance	VLG
+2040-11-11	Armistice	Armistice	public	
+2040-11-11	Waffenstillstand	Waffenstillstand	public	DE
+2040-11-11	Wapenstilstand	Wapenstilstand	public	VLG
+2040-11-15	Fête du Roi	Fête du Roi	observance	
+2040-11-15	Tag der Deutschsprachigen Gemeinschaft	Tag der Deutschsprachigen Gemeinschaft	observance	DE
+2040-11-15	Koningsdag	Koningsdag	observance	VLG
+2040-12-06	Saint-Nicolas	Saint Nicholas	observance	
+2040-12-06	Sankt Nikolaus	Saint Nicholas	observance	DE
+2040-12-06	Sinterklaas	Saint Nicholas	observance	VLG
+2040-12-25	Noël	Christmas Day	public	
+2040-12-25	Weihnachten	Christmas Day	public	DE
+2040-12-25	Kerstmis	Christmas Day	public	VLG
+2040-12-26	Tweede kerstdag	Boxing Day	observance	VLG
+2041-01-01	Nouvel An	New Year's Day	public	
+2041-01-01	Neujahr	New Year's Day	public	DE
+2041-01-01	Nieuwjaar	New Year's Day	public	VLG
+2041-01-06	l’Épiphanie	Epiphany	observance	
+2041-01-06	Erscheinung des Herrn	Epiphany	observance	DE
+2041-01-06	Driekoningen	Epiphany	observance	VLG
+2041-02-14	Saint-Valentin	Valentine's Day	observance	
+2041-02-14	Valentinstag	Valentine's Day	observance	DE
+2041-02-14	Valentijnsdag	Valentine's Day	observance	VLG
+2041-04-21	Pâques	Easter Sunday	observance	
+2041-04-21	Ostersonntag	Easter Sunday	observance	DE
+2041-04-21	Pasen	Easter Sunday	observance	VLG
+2041-04-22	Lundi de Pâques	Lundi de Pâques	public	
+2041-04-22	Ostermontag	Ostermontag	public	DE
+2041-04-22	Paasmaandag	Paasmaandag	public	VLG
+2041-05-01	Fête du travail	Labour Day	public	
+2041-05-01	Tag der Arbeit	Labour Day	public	DE
+2041-05-01	Dag van de Arbeid	Labour Day	public	VLG
+2041-05-08	Fête de l'Iris	Fête de l'Iris	observance	BRU
+2041-05-12	Fête des Mères	Mother's Day	observance	
+2041-05-12	Muttertag	Mother's Day	observance	DE
+2041-05-12	Moederdag	Mother's Day	observance	VLG
+2041-05-30	Ascension	Ascension	public	
+2041-05-30	Christi Himmelfahrt	Christi Himmelfahrt	public	DE
+2041-05-30	Hemelvaartsdag	Hemelvaartsdag	public	VLG
+2041-06-09	Pentecôte	Pentecost	observance	
+2041-06-09	Pfingstsonntag	Pentecost	observance	DE
+2041-06-09	Pinksteren	Pentecost	observance	VLG
+2041-06-10	Lundi de Pentecôte	Lundi de Pentecôte	public	
+2041-06-10	Pfingstmontag	Pfingstmontag	public	DE
+2041-06-10	Pinkstermaandag	Pinkstermaandag	public	VLG
+2041-07-11	Feestdag van de Vlaamse Gemeenschap	Feestdag van de Vlaamse Gemeenschap	observance	VLG
+2041-07-21	Fête nationale	National Holiday	public	
+2041-07-21	Nationalfeiertag	National Holiday	public	DE
+2041-07-21	Nationale feestdag	National Holiday	public	VLG
+2041-08-15	Assomption	Assomption	public	
+2041-08-15	Mariä Himmelfahrt	Mariä Himmelfahrt	public	DE
+2041-08-15	Tenhemelopneming	Tenhemelopneming	public	VLG
+2041-09-27	La fête de la communauté française	La fête de la communauté française	observance	WAL
+2041-11-01	Toussaint	All Saints' Day	public	
+2041-11-01	Allerheiligen	All Saints' Day	public	DE
+2041-11-01	Allerheiligen	All Saints' Day	public	VLG
+2041-11-02	Fête des morts	All Souls' Day	observance	
+2041-11-02	Allerseelen	All Souls' Day	observance	DE
+2041-11-02	Allerzielen	All Souls' Day	observance	VLG
+2041-11-11	Armistice	Armistice	public	
+2041-11-11	Waffenstillstand	Waffenstillstand	public	DE
+2041-11-11	Wapenstilstand	Wapenstilstand	public	VLG
+2041-11-15	Fête du Roi	Fête du Roi	observance	
+2041-11-15	Tag der Deutschsprachigen Gemeinschaft	Tag der Deutschsprachigen Gemeinschaft	observance	DE
+2041-11-15	Koningsdag	Koningsdag	observance	VLG
+2041-12-06	Saint-Nicolas	Saint Nicholas	observance	
+2041-12-06	Sankt Nikolaus	Saint Nicholas	observance	DE
+2041-12-06	Sinterklaas	Saint Nicholas	observance	VLG
+2041-12-25	Noël	Christmas Day	public	
+2041-12-25	Weihnachten	Christmas Day	public	DE
+2041-12-25	Kerstmis	Christmas Day	public	VLG
+2041-12-26	Tweede kerstdag	Boxing Day	observance	VLG
+2042-01-01	Nouvel An	New Year's Day	public	
+2042-01-01	Neujahr	New Year's Day	public	DE
+2042-01-01	Nieuwjaar	New Year's Day	public	VLG
+2042-01-06	l’Épiphanie	Epiphany	observance	
+2042-01-06	Erscheinung des Herrn	Epiphany	observance	DE
+2042-01-06	Driekoningen	Epiphany	observance	VLG
+2042-02-14	Saint-Valentin	Valentine's Day	observance	
+2042-02-14	Valentinstag	Valentine's Day	observance	DE
+2042-02-14	Valentijnsdag	Valentine's Day	observance	VLG
+2042-04-06	Pâques	Easter Sunday	observance	
+2042-04-06	Ostersonntag	Easter Sunday	observance	DE
+2042-04-06	Pasen	Easter Sunday	observance	VLG
+2042-04-07	Lundi de Pâques	Lundi de Pâques	public	
+2042-04-07	Ostermontag	Ostermontag	public	DE
+2042-04-07	Paasmaandag	Paasmaandag	public	VLG
+2042-05-01	Fête du travail	Labour Day	public	
+2042-05-01	Tag der Arbeit	Labour Day	public	DE
+2042-05-01	Dag van de Arbeid	Labour Day	public	VLG
+2042-05-08	Fête de l'Iris	Fête de l'Iris	observance	BRU
+2042-05-11	Fête des Mères	Mother's Day	observance	
+2042-05-11	Muttertag	Mother's Day	observance	DE
+2042-05-11	Moederdag	Mother's Day	observance	VLG
+2042-05-15	Ascension	Ascension	public	
+2042-05-15	Christi Himmelfahrt	Christi Himmelfahrt	public	DE
+2042-05-15	Hemelvaartsdag	Hemelvaartsdag	public	VLG
+2042-05-25	Pentecôte	Pentecost	observance	
+2042-05-25	Pfingstsonntag	Pentecost	observance	DE
+2042-05-25	Pinksteren	Pentecost	observance	VLG
+2042-05-26	Lundi de Pentecôte	Lundi de Pentecôte	public	
+2042-05-26	Pfingstmontag	Pfingstmontag	public	DE
+2042-05-26	Pinkstermaandag	Pinkstermaandag	public	VLG
+2042-07-11	Feestdag van de Vlaamse Gemeenschap	Feestdag van de Vlaamse Gemeenschap	observance	VLG
+2042-07-21	Fête nationale	National Holiday	public	
+2042-07-21	Nationalfeiertag	National Holiday	public	DE
+2042-07-21	Nationale feestdag	National Holiday	public	VLG
+2042-08-15	Assomption	Assomption	public	
+2042-08-15	Mariä Himmelfahrt	Mariä Himmelfahrt	public	DE
+2042-08-15	Tenhemelopneming	Tenhemelopneming	public	VLG
+2042-09-27	La fête de la communauté française	La fête de la communauté française	observance	WAL
+2042-11-01	Toussaint	All Saints' Day	public	
+2042-11-01	Allerheiligen	All Saints' Day	public	DE
+2042-11-01	Allerheiligen	All Saints' Day	public	VLG
+2042-11-02	Fête des morts	All Souls' Day	observance	
+2042-11-02	Allerseelen	All Souls' Day	observance	DE
+2042-11-02	Allerzielen	All Souls' Day	observance	VLG
+2042-11-11	Armistice	Armistice	public	
+2042-11-11	Waffenstillstand	Waffenstillstand	public	DE
+2042-11-11	Wapenstilstand	Wapenstilstand	public	VLG
+2042-11-15	Fête du Roi	Fête du Roi	observance	
+2042-11-15	Tag der Deutschsprachigen Gemeinschaft	Tag der Deutschsprachigen Gemeinschaft	observance	DE
+2042-11-15	Koningsdag	Koningsdag	observance	VLG
+2042-12-06	Saint-Nicolas	Saint Nicholas	observance	
+2042-12-06	Sankt Nikolaus	Saint Nicholas	observance	DE
+2042-12-06	Sinterklaas	Saint Nicholas	observance	VLG
+2042-12-25	Noël	Christmas Day	public	
+2042-12-25	Weihnachten	Christmas Day	public	DE
+2042-12-25	Kerstmis	Christmas Day	public	VLG
+2042-12-26	Tweede kerstdag	Boxing Day	observance	VLG
+2043-01-01	Nouvel An	New Year's Day	public	
+2043-01-01	Neujahr	New Year's Day	public	DE
+2043-01-01	Nieuwjaar	New Year's Day	public	VLG
+2043-01-06	l’Épiphanie	Epiphany	observance	
+2043-01-06	Erscheinung des Herrn	Epiphany	observance	DE
+2043-01-06	Driekoningen	Epiphany	observance	VLG
+2043-02-14	Saint-Valentin	Valentine's Day	observance	
+2043-02-14	Valentinstag	Valentine's Day	observance	DE
+2043-02-14	Valentijnsdag	Valentine's Day	observance	VLG
+2043-03-29	Pâques	Easter Sunday	observance	
+2043-03-29	Ostersonntag	Easter Sunday	observance	DE
+2043-03-29	Pasen	Easter Sunday	observance	VLG
+2043-03-30	Lundi de Pâques	Lundi de Pâques	public	
+2043-03-30	Ostermontag	Ostermontag	public	DE
+2043-03-30	Paasmaandag	Paasmaandag	public	VLG
+2043-05-01	Fête du travail	Labour Day	public	
+2043-05-01	Tag der Arbeit	Labour Day	public	DE
+2043-05-01	Dag van de Arbeid	Labour Day	public	VLG
+2043-05-07	Ascension	Ascension	public	
+2043-05-07	Christi Himmelfahrt	Christi Himmelfahrt	public	DE
+2043-05-07	Hemelvaartsdag	Hemelvaartsdag	public	VLG
+2043-05-08	Fête de l'Iris	Fête de l'Iris	observance	BRU
+2043-05-10	Fête des Mères	Mother's Day	observance	
+2043-05-10	Muttertag	Mother's Day	observance	DE
+2043-05-10	Moederdag	Mother's Day	observance	VLG
+2043-05-17	Pentecôte	Pentecost	observance	
+2043-05-17	Pfingstsonntag	Pentecost	observance	DE
+2043-05-17	Pinksteren	Pentecost	observance	VLG
+2043-05-18	Lundi de Pentecôte	Lundi de Pentecôte	public	
+2043-05-18	Pfingstmontag	Pfingstmontag	public	DE
+2043-05-18	Pinkstermaandag	Pinkstermaandag	public	VLG
+2043-07-11	Feestdag van de Vlaamse Gemeenschap	Feestdag van de Vlaamse Gemeenschap	observance	VLG
+2043-07-21	Fête nationale	National Holiday	public	
+2043-07-21	Nationalfeiertag	National Holiday	public	DE
+2043-07-21	Nationale feestdag	National Holiday	public	VLG
+2043-08-15	Assomption	Assomption	public	
+2043-08-15	Mariä Himmelfahrt	Mariä Himmelfahrt	public	DE
+2043-08-15	Tenhemelopneming	Tenhemelopneming	public	VLG
+2043-09-27	La fête de la communauté française	La fête de la communauté française	observance	WAL
+2043-11-01	Toussaint	All Saints' Day	public	
+2043-11-01	Allerheiligen	All Saints' Day	public	DE
+2043-11-01	Allerheiligen	All Saints' Day	public	VLG
+2043-11-02	Fête des morts	All Souls' Day	observance	
+2043-11-02	Allerseelen	All Souls' Day	observance	DE
+2043-11-02	Allerzielen	All Souls' Day	observance	VLG
+2043-11-11	Armistice	Armistice	public	
+2043-11-11	Waffenstillstand	Waffenstillstand	public	DE
+2043-11-11	Wapenstilstand	Wapenstilstand	public	VLG
+2043-11-15	Fête du Roi	Fête du Roi	observance	
+2043-11-15	Tag der Deutschsprachigen Gemeinschaft	Tag der Deutschsprachigen Gemeinschaft	observance	DE
+2043-11-15	Koningsdag	Koningsdag	observance	VLG
+2043-12-06	Saint-Nicolas	Saint Nicholas	observance	
+2043-12-06	Sankt Nikolaus	Saint Nicholas	observance	DE
+2043-12-06	Sinterklaas	Saint Nicholas	observance	VLG
+2043-12-25	Noël	Christmas Day	public	
+2043-12-25	Weihnachten	Christmas Day	public	DE
+2043-12-25	Kerstmis	Christmas Day	public	VLG
+2043-12-26	Tweede kerstdag	Boxing Day	observance	VLG
+2044-01-01	Nouvel An	New Year's Day	public	
+2044-01-01	Neujahr	New Year's Day	public	DE
+2044-01-01	Nieuwjaar	New Year's Day	public	VLG
+2044-01-06	l’Épiphanie	Epiphany	observance	
+2044-01-06	Erscheinung des Herrn	Epiphany	observance	DE
+2044-01-06	Driekoningen	Epiphany	observance	VLG
+2044-02-14	Saint-Valentin	Valentine's Day	observance	
+2044-02-14	Valentinstag	Valentine's Day	observance	DE
+2044-02-14	Valentijnsdag	Valentine's Day	observance	VLG
+2044-04-17	Pâques	Easter Sunday	observance	
+2044-04-17	Ostersonntag	Easter Sunday	observance	DE
+2044-04-17	Pasen	Easter Sunday	observance	VLG
+2044-04-18	Lundi de Pâques	Lundi de Pâques	public	
+2044-04-18	Ostermontag	Ostermontag	public	DE
+2044-04-18	Paasmaandag	Paasmaandag	public	VLG
+2044-05-01	Fête du travail	Labour Day	public	
+2044-05-01	Tag der Arbeit	Labour Day	public	DE
+2044-05-01	Dag van de Arbeid	Labour Day	public	VLG
+2044-05-08	Fête des Mères	Mother's Day	observance	
+2044-05-08	Fête de l'Iris	Fête de l'Iris	observance	BRU
+2044-05-08	Muttertag	Mother's Day	observance	DE
+2044-05-08	Moederdag	Mother's Day	observance	VLG
+2044-05-26	Ascension	Ascension	public	
+2044-05-26	Christi Himmelfahrt	Christi Himmelfahrt	public	DE
+2044-05-26	Hemelvaartsdag	Hemelvaartsdag	public	VLG
+2044-06-05	Pentecôte	Pentecost	observance	
+2044-06-05	Pfingstsonntag	Pentecost	observance	DE
+2044-06-05	Pinksteren	Pentecost	observance	VLG
+2044-06-06	Lundi de Pentecôte	Lundi de Pentecôte	public	
+2044-06-06	Pfingstmontag	Pfingstmontag	public	DE
+2044-06-06	Pinkstermaandag	Pinkstermaandag	public	VLG
+2044-07-11	Feestdag van de Vlaamse Gemeenschap	Feestdag van de Vlaamse Gemeenschap	observance	VLG
+2044-07-21	Fête nationale	National Holiday	public	
+2044-07-21	Nationalfeiertag	National Holiday	public	DE
+2044-07-21	Nationale feestdag	National Holiday	public	VLG
+2044-08-15	Assomption	Assomption	public	
+2044-08-15	Mariä Himmelfahrt	Mariä Himmelfahrt	public	DE
+2044-08-15	Tenhemelopneming	Tenhemelopneming	public	VLG
+2044-09-27	La fête de la communauté française	La fête de la communauté française	observance	WAL
+2044-11-01	Toussaint	All Saints' Day	public	
+2044-11-01	Allerheiligen	All Saints' Day	public	DE
+2044-11-01	Allerheiligen	All Saints' Day	public	VLG
+2044-11-02	Fête des morts	All Souls' Day	observance	
+2044-11-02	Allerseelen	All Souls' Day	observance	DE
+2044-11-02	Allerzielen	All Souls' Day	observance	VLG
+2044-11-11	Armistice	Armistice	public	
+2044-11-11	Waffenstillstand	Waffenstillstand	public	DE
+2044-11-11	Wapenstilstand	Wapenstilstand	public	VLG
+2044-11-15	Fête du Roi	Fête du Roi	observance	
+2044-11-15	Tag der Deutschsprachigen Gemeinschaft	Tag der Deutschsprachigen Gemeinschaft	observance	DE
+2044-11-15	Koningsdag	Koningsdag	observance	VLG
+2044-12-06	Saint-Nicolas	Saint Nicholas	observance	
+2044-12-06	Sankt Nikolaus	Saint Nicholas	observance	DE
+2044-12-06	Sinterklaas	Saint Nicholas	observance	VLG
+2044-12-25	Noël	Christmas Day	public	
+2044-12-25	Weihnachten	Christmas Day	public	DE
+2044-12-25	Kerstmis	Christmas Day	public	VLG
+2044-12-26	Tweede kerstdag	Boxing Day	observance	VLG
+2045-01-01	Nouvel An	New Year's Day	public	
+2045-01-01	Neujahr	New Year's Day	public	DE
+2045-01-01	Nieuwjaar	New Year's Day	public	VLG
+2045-01-06	l’Épiphanie	Epiphany	observance	
+2045-01-06	Erscheinung des Herrn	Epiphany	observance	DE
+2045-01-06	Driekoningen	Epiphany	observance	VLG
+2045-02-14	Saint-Valentin	Valentine's Day	observance	
+2045-02-14	Valentinstag	Valentine's Day	observance	DE
+2045-02-14	Valentijnsdag	Valentine's Day	observance	VLG
+2045-04-09	Pâques	Easter Sunday	observance	
+2045-04-09	Ostersonntag	Easter Sunday	observance	DE
+2045-04-09	Pasen	Easter Sunday	observance	VLG
+2045-04-10	Lundi de Pâques	Lundi de Pâques	public	
+2045-04-10	Ostermontag	Ostermontag	public	DE
+2045-04-10	Paasmaandag	Paasmaandag	public	VLG
+2045-05-01	Fête du travail	Labour Day	public	
+2045-05-01	Tag der Arbeit	Labour Day	public	DE
+2045-05-01	Dag van de Arbeid	Labour Day	public	VLG
+2045-05-08	Fête de l'Iris	Fête de l'Iris	observance	BRU
+2045-05-14	Fête des Mères	Mother's Day	observance	
+2045-05-14	Muttertag	Mother's Day	observance	DE
+2045-05-14	Moederdag	Mother's Day	observance	VLG
+2045-05-18	Ascension	Ascension	public	
+2045-05-18	Christi Himmelfahrt	Christi Himmelfahrt	public	DE
+2045-05-18	Hemelvaartsdag	Hemelvaartsdag	public	VLG
+2045-05-28	Pentecôte	Pentecost	observance	
+2045-05-28	Pfingstsonntag	Pentecost	observance	DE
+2045-05-28	Pinksteren	Pentecost	observance	VLG
+2045-05-29	Lundi de Pentecôte	Lundi de Pentecôte	public	
+2045-05-29	Pfingstmontag	Pfingstmontag	public	DE
+2045-05-29	Pinkstermaandag	Pinkstermaandag	public	VLG
+2045-07-11	Feestdag van de Vlaamse Gemeenschap	Feestdag van de Vlaamse Gemeenschap	observance	VLG
+2045-07-21	Fête nationale	National Holiday	public	
+2045-07-21	Nationalfeiertag	National Holiday	public	DE
+2045-07-21	Nationale feestdag	National Holiday	public	VLG
+2045-08-15	Assomption	Assomption	public	
+2045-08-15	Mariä Himmelfahrt	Mariä Himmelfahrt	public	DE
+2045-08-15	Tenhemelopneming	Tenhemelopneming	public	VLG
+2045-09-27	La fête de la communauté française	La fête de la communauté française	observance	WAL
+2045-11-01	Toussaint	All Saints' Day	public	
+2045-11-01	Allerheiligen	All Saints' Day	public	DE
+2045-11-01	Allerheiligen	All Saints' Day	public	VLG
+2045-11-02	Fête des morts	All Souls' Day	observance	
+2045-11-02	Allerseelen	All Souls' Day	observance	DE
+2045-11-02	Allerzielen	All Souls' Day	observance	VLG
+2045-11-11	Armistice	Armistice	public	
+2045-11-11	Waffenstillstand	Waffenstillstand	public	DE
+2045-11-11	Wapenstilstand	Wapenstilstand	public	VLG
+2045-11-15	Fête du Roi	Fête du Roi	observance	
+2045-11-15	Tag der Deutschsprachigen Gemeinschaft	Tag der Deutschsprachigen Gemeinschaft	observance	DE
+2045-11-15	Koningsdag	Koningsdag	observance	VLG
+2045-12-06	Saint-Nicolas	Saint Nicholas	observance	
+2045-12-06	Sankt Nikolaus	Saint Nicholas	observance	DE
+2045-12-06	Sinterklaas	Saint Nicholas	observance	VLG
+2045-12-25	Noël	Christmas Day	public	
+2045-12-25	Weihnachten	Christmas Day	public	DE
+2045-12-25	Kerstmis	Christmas Day	public	VLG
+2045-12-26	Tweede kerstdag	Boxing Day	observance	VLG

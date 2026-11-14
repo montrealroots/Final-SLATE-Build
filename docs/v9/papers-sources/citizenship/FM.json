@@ -1,0 +1,27 @@
+{
+ "country": "FM",
+ "years": "none",
+ "renounce": null,
+ "lapses": true,
+ "note": "GLOBALCIT's Citizenship Law Dataset v3.0 (EUI, 2025), coding the law in force on 1 January 2024 (A06a No provision; A06b No provision; L05 FSM 206(1)(a)): no ordinary naturalisation by residence; a citizen loses the citizenship on voluntarily taking another. Reforms after that date are checked in the file's later sources, where a later source is given. Citizenship at birth is read from the same dataset's 2024 coding of modes A01a (descent, born in country: Generally applicable provision), A01b (descent, born abroad: Generally applicable provision), A02a (birth in country: No provision) and A02b (birth in country to a parent born there: No provision), as its codebook (RSC/GLOBALCIT 2025/01, sections 3.2.1a to 3.2.2b) defines them: not by birth in the territory alone (provisions for foundlings and children otherwise stateless, modes A03a and A03b, aren't held by the form); by descent from either parent, with no further limit on a child born abroad. Changes to the law at birth after 1 January 2024 weren't checked for this file. On 2026-11-03 the primary was read: Legal Information System of the FSM (with the FSM Supreme Court), Constitution of the Federated States of Micronesia, Article III; Legal Information System of the FSM, FSM Code Title 7, Chapter 2 (Citizenship and Naturalization Act), §§ 204, 206. Every figure the file holds now rests on it, and the dataset is no longer cited. Naturalisation is by the President on Congress's recommendation by bill (§ 204), with five years as a floor, not a residence right.",
+ "sources": [
+  {
+   "url": "http://www.fsmlaw.org/fsm/constitution/article3.htm",
+   "title": "Legal Information System of the FSM (with the FSM Supreme Court), Constitution of the Federated States of Micronesia, Article III",
+   "read": "2026-11-03",
+   "kind": "primary",
+   "said": "Section 2 . A person born of parents one or both of whom are citizens of the Federated States of Micronesia is a citizen and national of the Federated States by birth. Section 3 . A citizen of the Federated States of Micronesia who is recognized as a citizen of another nation shall, within 3 years of his 18th birthday, or within 3 years of the effective date of this Constitution, whichever is later, register his intent to remain a citizen of the Federated States and renounce his citizenship of another nation. If he fails to comply with this Section, he becomes a national of the Federated States of Micronesia."
+  },
+  {
+   "url": "http://www.fsmlaw.org/fsm/code/title07/T07_Ch02.htm",
+   "title": "Legal Information System of the FSM, FSM Code Title 7, Chapter 2 (Citizenship and Naturalization Act), §§ 204, 206",
+   "read": "2026-11-03",
+   "kind": "primary",
+   "said": "§ 204. Naturalization. The President, on Congress' recommendation by bill, may naturalize a person as a citizen of the Federated States of Micronesia in a manner or form prescribed by law or regulation if the person: (1) shall have lawfully resided within the Federated States of Micronesia ... for at least five years immediately preceding the date of filing his petition for naturalization; ... (3) upon naturalization, shall have renounced previous citizenship and allegiance to any and all foreign powers and rulers ... § 206. Loss of citizenship. (1) No citizen of the Federated States of Micronesia may be deprived of his citizenship unless subsequent to attaining such citizenship: (a) he shall voluntarily obtain naturalization in a foreign state upon his own application;"
+  }
+ ],
+ "atBirth": {
+  "soil": "none",
+  "descent": "either parent"
+ }
+}

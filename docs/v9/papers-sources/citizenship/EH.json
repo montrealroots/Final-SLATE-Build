@@ -1,0 +1,14 @@
+{
+ "country": "EH",
+ "nationalityOf": "MA",
+ "note": "Western Sahara keeps Morocco's rules at every place there, by the owner's ruling of 28 October 2026 (made for its holidays, which its prices and passports already follow): its people are modelled as holding Morocco's nationality, under Morocco's rules on naturalisation and on keeping it. The Polisario's documents aren't modelled. On 2026-11-03 Morocco's own law was read: Code de la nationalité marocaine, version consolidée en date du 16 mai 2024 (Dahir n° 1-58-250 du 6 septembre 1958 as amended to Loi n° 08-23, BO n° 7300), Ministry of Justice legal portal Adala. It confirmed the rules Western Sahara follows (five years' residence, no renunciation, kept on taking another), and the dataset is no longer cited.",
+ "sources": [
+  {
+   "url": "https://adala.justice.gov.ma/api/uploads/2024/10/17/Code%20la%20nationalité%20marocaine-1729173321512.pdf",
+   "title": "Code de la nationalité marocaine, version consolidée en date du 16 mai 2024 (Dahir n° 1-58-250 du 6 septembre 1958 as amended to Loi n° 08-23, BO n° 7300), Ministry of Justice legal portal Adala",
+   "read": "2026-11-03",
+   "kind": "primary",
+   "said": "Article 6: Est Marocain, l'enfant né d'un père marocain ou d'une mère marocaine. Article 7: Est Marocain, l'enfant né au Maroc de parents inconnus. ... Article 11: Sous réserve des exceptions prévues à l'article 12, l'étranger qui formule la demande d'acquisition de la nationalité marocaine par la naturalisation doit justifier qu'il remplit les conditions fixées ci-après : 1° - justifier d'une résidence habituelle et régulière au Maroc pendant les cinq années précédant le dépôt de sa demande; ... 5° - justifier d'une connaissance suffisante de la langue arabe et amazighe ou de l'une des deux langues ... Article 19: Perd la nationalité marocaine : 1° - le Marocain majeur qui a acquis volontairement à l'étranger une nationalité étrangère et est autorisé par décret à renoncer à la nationalité marocaine"
+  }
+ ]
+}

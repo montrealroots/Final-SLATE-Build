@@ -1,0 +1,14 @@
+{
+ "country": "IL",
+ "group": "il",
+ "note": "Israel's own list (the il list).",
+ "sources": [
+  {
+   "url": "https://israel-entry.piba.gov.il/",
+   "title": "Population and Immigration Authority of Israel, ETA-IL portal",
+   "read": "2026-11-03",
+   "kind": "primary",
+   "said": "As of January 1st, 2025, travelers to Israel must have a valid visa or ETA-IL approval before starting their journey."
+  }
+ ]
+}

@@ -1,0 +1,34 @@
+{
+ "country": "GE",
+ "others": {
+  "right": "permit",
+  "route": "Labour permit (State Agency for Employment Promotion)",
+  "days": 120,
+  "within": 365
+ },
+ "note": "Georgia: from 1 March 2026 a foreigner without permanent residence needs the right to labour activity, the labour permit the State Employment Promotion Agency issues (Government Resolution No. 70 of 20 February 2026, in force 1 March 2026, read on matsne.gov.ge). The Law on Labour Migration's amendment of 15 April 2026 (No. 1509-Vმს-XIმპ, in force on publication) exempts, among other cases, a foreigner carrying out short-term professional activity as a Government resolution defines it, and says such a foreigner isn't a labour immigrant. That resolution wasn't found, so the four months in all a calendar year within the legal stay, registered free in the labour migration system by the local employer or service organiser before it starts (taken as 120 days within 365), rest on a consolidated guide. The file first dated the exemption to 1 March 2026; the Law gave it from 15 April 2026, whose day of publication wasn't read, so no first day is held for the days.",
+ "sources": [
+  {
+   "url": "https://expathub.ge/labour-permit-in-georgia-a-consolidated-guide/",
+   "title": "ExpatHub Georgia, Labour Permit in Georgia: A Consolidated Guide",
+   "read": "2026-11-03",
+   "said": "Foreign individuals need a labour permit to work or run a business in Georgia legally. ... You carry out short-term professional activity in Georgia (see below). ... Short-term professional activity lasts no more than 4 months in total within a calendar year. It also cannot exceed your period of legal stay in Georgia. Before you start, your local employer or service organizer must register you in the labour migration electronic system. The registration is free.",
+   "kind": "secondary",
+   "quotes": "https://labourmigration.moh.gov.ge/"
+  },
+  {
+   "url": "https://matsne.gov.ge/ka/document/view/6791218",
+   "title": "Legislative Herald of Georgia (matsne.gov.ge), Government of Georgia Resolution No. 70 of 20/02/2026, შრომით იმიგრანტსა და თვითდასაქმებულ უცხოელზე შრომითი საქმიანობის უფლების გაცემის წესი (first form, 20/02/2026; in force 01/03/2026; the consolidated form is behind a login)",
+   "read": "2026-11-03",
+   "said": "მუხლი 2 დადგენილება ამოქმედდეს 2026 წლის 1 მარტიდან. ... 1. „შრომით იმიგრანტსა და თვითდასაქმებულ უცხოელზე შრომითი საქმიანობის უფლების გაცემის წესი“ (შემდგომ – წესი) განსაზღვრავს საქართველოში მუდმივი ბინადრობის ნებართვის არმქონე უცხოელზე, რომლის მიზანია ადგილობრივ დამსაქმებელთან შრომითი მოწყობა და ანაზღაურებადი შრომითი საქმიანობის განხორციელება ... 1. შრომითი საქმიანობის უფლება, რომელიც გაიცემა ... დასაქმების ხელშეწყობის სახელმწიფო სააგენტოს (შემდგომ – სააგენტო) მიერ",
+   "kind": "primary"
+  },
+  {
+   "url": "https://matsne.gov.ge/ka/document/view/6839931",
+   "title": "Legislative Herald of Georgia, Law of Georgia No. 1509-Vმს-XIმპ of 15 April 2026 amending the Law on Labour Migration",
+   "read": "2026-11-03",
+   "said": "1. პირველი მუხლის: ა) მე-4 პუნქტს დაემატოს შემდეგი შინაარსის „ზ“–„ნ“ ქვეპუნქტები: ... თ) საქართველოში ახორციელებს საქართველოს მთავრობის დადგენილებით განსაზღვრულ მოკლევადიან პროფესიულ საქმიანობას და საქართველოს კანონმდებლობით სხვა რამ არ არის გათვალისწინებული; ... მუხლი 2. ეს კანონი ამოქმედდეს გამოქვეყნებისთანავე.",
+   "kind": "primary"
+  }
+ ]
+}

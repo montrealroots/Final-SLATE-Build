@@ -1,0 +1,36 @@
+{
+ "country": "CG",
+ "years": 10,
+ "renounce": false,
+ "lapses": false,
+ "note": "GLOBALCIT's Citizenship Law Dataset v3.0 (EUI, 2025), coding the law in force on 1 January 2024 (A06a COG 27-33; A06b COG 27-34; L05 No provision): ordinary naturalisation after 10 years' residence; no renunciation of other citizenships required; a citizen keeps it on taking another. Reforms after that date are checked in the file's later sources, where a later source is given. Citizenship at birth is read from the same dataset's 2024 coding of modes A01a (descent, born in country: Generally applicable provision), A01b (descent, born abroad: Generally applicable provision), A02a (birth in country: No provision) and A02b (birth in country to a parent born there: Generally applicable provision), as its codebook (RSC/GLOBALCIT 2025/01, sections 3.2.1a to 3.2.2b) defines them: by birth in the territory only on the condition the dataset states; by descent from either parent, with no further limit on a child born abroad. Changes to the law at birth after 1 January 2024 weren't checked for this file. On 2026-11-03 the primaries were read: Loi n° 35-61 du 20 juin 1961 portant code de la nationalité congolaise (Secrétariat général du Gouvernement, sgg.cg, Droit congolais; 21-page scan read by OCR, tesseract fra); Loi n° 32-2011 du 3 octobre 2011 modifiant certaines dispositions de la loi n° 35-61 du 20 juin 1961 portant code de la nationalité congolaise (sgg.cg; JO 2011-40; scan read by OCR). They confirmed the years of residence, renunciation and loss on taking another citizenship. It was silent on descent, which still rests on the sources above, re-read that day and found the same. Renunciation, which the 1961 Code asked (art. 32, 7°), was repealed by Loi 32-2011 with effect from 20 January 2002; since then a citizen loses it on taking another only on request and authorisation (art. 47 as replaced). The 1961 Code makes a child born in Congo to foreign parents Congolese at majority on residence since 16, not on the condition the dataset states, which may come from a later law not read, so birth in the territory still rests on the dataset; the Code's articles on descent didn't OCR legibly.",
+ "sources": [
+  {
+   "url": "https://cadmus.eui.eu/bitstreams/3b166501-e695-48d7-9e27-d7bef061573a/download",
+   "title": "GLOBALCIT Citizenship Law Dataset v3.0 (Vink, van der Baaren, Bauböck, Dzankic, Honohan, Manby; EUI Research Data, 2025), country-year-mode files, Congo Republic of the, 2024",
+   "read": "2026-11-03",
+   "kind": "secondary",
+   "quotes": "https://globalcit.eu/national-citizenship-laws/",
+   "said": "Person has resided in the country for 10 years. ... n.a. ... n.a. ... Generally applicable provision ... Person born in the country to a citizen. ... Generally applicable provision ... Person born abroad from a citizen mother or a citizen father. ... No provision ... Generally applicable provision ... Person is born in the country and either one of the parents or both parents were also born in the country."
+  },
+  {
+   "url": "https://sgg.cg/textes-officiels/lois/1961/congo-loi-1961-35.pdf",
+   "title": "Loi n° 35-61 du 20 juin 1961 portant code de la nationalité congolaise (Secrétariat général du Gouvernement, sgg.cg, Droit congolais; 21-page scan read by OCR, tesseract fra)",
+   "read": "2026-11-03",
+   "kind": "primary",
+   "said": "ARTICLE 29.- Sous réserve des exceptions prévues aux articles 30 et 31 la naturalisation ne peut être accordée qu'à l'étranger justifiant d'une résidence habituelle au Congo pendant les dix années qui précèdent le dépôt de sa demande. ... ARTICLE 32 ... Nul ne peut être naturalisé ... 7°/- s'il n'a renoncé expressément à sa nationalité d'origine. ... Section II, Acquisition de la nationalité congolaise en raison de la naissance et de la résidence au Congo: Tout individu né au Congo de parents étrangers acquiert la nationalité congolaise à sa majorité si, à cette date, il a, au Congo, sa résidence et s'il a eu depuis l'âge de 16 ans sa résidence habituelle au Congo"
+  },
+  {
+   "url": "https://sgg.cg/textes-officiels/lois/2011/congo-loi-2011-32.pdf",
+   "title": "Loi n° 32-2011 du 3 octobre 2011 modifiant certaines dispositions de la loi n° 35-61 du 20 juin 1961 portant code de la nationalité congolaise (sgg.cg; JO 2011-40; scan read by OCR)",
+   "read": "2026-11-03",
+   "kind": "primary",
+   "said": "Article premier : La loi n° 35-61 du 20 juin 1961 portant code de la nationalité congolaise est modifiée ainsi qu'il suit : - le 7e alinéa de l'article 32 est abrogé ; - article 47 nouveau : Perd la nationalité congolaise, le congolais qui, ayant acquis une nationalité étrangère, est autorisé, sur sa demande, à perdre la nationalité congolaise. Article 2 : La présente loi, qui prend effet à compter du 20 janvier 2002 ..."
+  }
+ ],
+ "atBirth": {
+  "soil": "conditional",
+  "soilIf": "Person is born in the country and either one of the parents or both parents were also born in the country.",
+  "descent": "either parent"
+ }
+}

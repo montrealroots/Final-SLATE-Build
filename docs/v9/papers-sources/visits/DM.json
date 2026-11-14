@@ -1,0 +1,177 @@
+{
+ "country": "DM",
+ "rules": [
+  {
+   "entry": "free",
+   "passports": [
+    "AG",
+    "BB",
+    "BZ",
+    "GD",
+    "KN",
+    "LC",
+    "VC"
+   ]
+  },
+  {
+   "entry": "free",
+   "months": 6,
+   "passports": [
+    "AR",
+    "AT",
+    "AU",
+    "BD",
+    "BE",
+    "BG",
+    "BN",
+    "BS",
+    "BW",
+    "CA",
+    "CH",
+    "CM",
+    "CR",
+    "CY",
+    "CZ",
+    "DE",
+    "DK",
+    "EE",
+    "ES",
+    "FI",
+    "FR",
+    "GB",
+    "GH",
+    "GM",
+    "GR",
+    "GY",
+    "HK",
+    "HR",
+    "HU",
+    "IE",
+    "IL",
+    "IN",
+    "IS",
+    "IT",
+    "JM",
+    "JP",
+    "KE",
+    "KI",
+    "KR",
+    "LI",
+    "LK",
+    "LS",
+    "LT",
+    "LU",
+    "LV",
+    "MO",
+    "MT",
+    "MU",
+    "MV",
+    "MW",
+    "MX",
+    "MY",
+    "MZ",
+    "NA",
+    "NG",
+    "NL",
+    "NO",
+    "NR",
+    "NZ",
+    "PG",
+    "PK",
+    "PL",
+    "PT",
+    "RO",
+    "RW",
+    "SB",
+    "SC",
+    "SE",
+    "SG",
+    "SI",
+    "SK",
+    "SL",
+    "SR",
+    "SZ",
+    "TO",
+    "TT",
+    "TV",
+    "TW",
+    "TZ",
+    "UG",
+    "US",
+    "VE",
+    "VU",
+    "WS",
+    "ZA",
+    "ZM"
+   ]
+  },
+  {
+   "entry": "free",
+   "months": 3,
+   "passports": [
+    "BR"
+   ]
+  },
+  {
+   "entry": "free",
+   "days": 90,
+   "passports": [
+    "BJ",
+    "TJ",
+    "UY"
+   ]
+  },
+  {
+   "entry": "free",
+   "days": 90,
+   "within": 180,
+   "passports": [
+    "RU",
+    "UA"
+   ]
+  },
+  {
+   "entry": "free",
+   "days": 30,
+   "passports": [
+    "CN"
+   ]
+  },
+  {
+   "entry": "free",
+   "days": 28,
+   "passports": [
+    "CU"
+   ]
+  },
+  {
+   "entry": "visa",
+   "passports": [
+    "DO",
+    "HT"
+   ]
+  }
+ ],
+ "others": {
+  "entry": "free",
+  "days": 21
+ },
+ "note": "Dominica: CARICOM nationals of the listed states move freely; nationals of the countries listed enter without a visa for 6 months, 3 months, 90 days (Russia and Ukraine in 180), 30 or 28; every other passport enters without a visa for 21 days, except those of the Dominican Republic and Haiti, which need a visa. Read from Wikipedia's copy. Read on 2026-11-03 against the Government web portal's own page 'Do I Need a Visa to Enter into Dominica?': it is undated, still names the Netherlands Antilles (dissolved in 2010), and knows none of the later agreements Wikipedia's copy records (Russia's and Ukraine's 90 days in 180, Benin's, Tajikistan's, Uruguay's, China's), so it is recorded here and not held; it gives 6 months to the Commonwealth's and CARICOM's members and a list of European and other states, 3 months to a second list, and 21 days to any bona fide tourist with a return ticket.",
+ "sources": [
+  {
+   "url": "https://en.wikipedia.org/wiki/Visa_policy_of_Dominica",
+   "title": "Wikipedia, Visa policy of Dominica",
+   "read": "2026-11-03",
+   "kind": "secondary",
+   "quotes": "https://www.dominica.gov.dm/",
+   "said": "Holders of passports of the following countries and territories may enter Dominica without a visa for the following period: Freedom of movement Antigua and Barbuda Barbados Belize Grenada Saint Kitts and Nevis Saint Lucia Saint Vincent and the Grenadines 6 months All European Union member states Argentina Australia Bahamas Bangladesh Botswana Brunei Cameroon Canada Costa Rica Eswatini Gambia Ghana Guyana Hong Kong Iceland India Israel Jamaica Japan Kenya Kiribati Lesotho Liechtenstein Macau Malawi Malaysia Maldives Mauritius Mexico Mozambique Namibia Nauru New Zealand Nigeria Norway Pakistan Papua New Guinea Rwanda Samoa Seychelles Sierra Leone Singapore Solomon Islands South Africa South Korea Sri Lanka Suriname Switzerland Taiwan Tanzania Tonga Trinidad and Tobago Tuvalu Uganda United Kingdom United States Vanuatu Venezuela Zambia 3 months Brazil 90 days Benin Tajikistan Uruguay 90 days within any 180 days Russia Ukraine 30 days China 28 days Cuba 21 days Holders of passports of any other country except for citizens of the Dominican Republic and Haiti ."
+  },
+  {
+   "url": "https://www.dominica.gov.dm/services/passports-and-travel-documents-non-nationals/do-i-need-a-visa-to-enter-into-dominica",
+   "title": "Government of Dominica Web Portal: Do I Need a Visa to Enter into Dominica?",
+   "read": "2026-11-03",
+   "kind": "primary",
+   "said": "The following persons do not need a visa to enter into the Commonwealth of Dominica: Persons from the following countries wishing to enter into the Commonwealth of Dominica for a period not exceeding six months : Countries in the Commonwealth of Nations ( Member States of the Commonwealth ) CARICOM member states Austria Bulgaria Cyprus Czech Republic Estonia Finland Hungary Latvia Lithuania Poland Romania Slovakia Slovenia United States of America Persons from the following countries wishing to enter into the Commonwealth of Dominica for a period not exceeding three months : Argentina Belgium Costa Rica Denmark France Germany Greece Ireland Israel Italy Japan Luxembourg Malta Mexico Netherlands (including Netherland Antilles) Norway People's Republic of China Portugal South Korea Spain Suriname Sweden United Kingdom Venezuela Any in-transit passenger or bona fide tourist who is in possession of a return ticket and satisfies the Immigration Officer that he/she does not intend to remain in the State for a period exceeding twenty-one days. Passengers on tourist vessels."
+  }
+ ]
+}

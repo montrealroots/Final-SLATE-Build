@@ -295,7 +295,12 @@ export function generatePlan(state: GameState, p: Project, startDate: string): P
   // Shoot days start after the prep period: one week per five prep units, at least five working days.
   const prepUnits = p.tasks.filter((x) => x.kind.startsWith('prep:') && x.status !== 'done').reduce((a, x) => a + (x.units - x.done), 0);
   let shootStart = startDate;
-  const prepDays = Math.max(5, Math.ceil(prepUnits / 3));
+  // A task counted in days (a place's permits and arrangements, a cast's rehearsals) takes its days however much else runs
+  // beside it, so prep lasts at least the longest of them (from November 14, 2026: until then the shoot could start
+  // before a place's permits were done, and its days there were lost; the feature proofs found it,
+  // docs/v10/proof/work-permit.json).
+  const longest = p.tasks.filter((x) => x.kind.startsWith('prep:') && x.status !== 'done' && x.unitLabel === 'days').reduce((a, x) => Math.max(a, Math.ceil(x.units - x.done)), 0);
+  const prepDays = Math.max(5, Math.ceil(prepUnits / 3), longest);
   for (let i = 0; i < prepDays; i++) shootStart = nextWorkingDay(p, addDaysToKey(shootStart, 1));
   const kept = p.schedule.days.filter((d) => d.status !== 'scheduled');
   const capturedIds = new Set(p.captures.filter((c) => c.captured >= 0.999 && c.version === p.approvedDraft).map((c) => c.sceneId));

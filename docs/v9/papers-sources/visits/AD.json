@@ -1,0 +1,14 @@
+{
+ "country": "AD",
+ "group": "eu1806",
+ "note": "Andorra keeps no visa requirements of its own and is reached only through France or Spain, so a traveller needing a Schengen visa needs a multiple-entry one: a visitor meets the EU's common list (the eu1806 list).",
+ "sources": [
+  {
+   "url": "https://www.govern.ad/en/ministries-and-secretaries-of-state/ministry-of-foreign-affairs/travel-to-andorra",
+   "title": "Govern d'Andorra, Ministry of Foreign Affairs, Travel to Andorra",
+   "read": "2026-11-03",
+   "kind": "primary",
+   "said": "The Principality of Andorra does not require any type of visa. The Principality of Andorra is not a member of the Schengen Area. Access to the Principality is made through France or Spain. Thus, any national from a third-country travelling to Andorra must get information from the French or Spanish Embassies or Consulates (depending on the country of entrance) about the need of a Schengen visa ... When the Schengen visa is required, third-country nationals shall apply for a double-entry or a multiple entry Schengen visa depending on how many times you will enter the Schengen area from Andorra."
+  }
+ ]
+}

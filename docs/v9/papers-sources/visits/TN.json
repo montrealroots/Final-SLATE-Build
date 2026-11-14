@@ -1,0 +1,155 @@
+{
+ "country": "TN",
+ "rules": [
+  {
+   "entry": "free",
+   "months": 4,
+   "passports": [
+    "CA",
+    "DE",
+    "US"
+   ]
+  },
+  {
+   "entry": "free",
+   "days": 90,
+   "passports": [
+    "AD",
+    "AE",
+    "AG",
+    "AO",
+    "AR",
+    "AT",
+    "AU",
+    "BA",
+    "BB",
+    "BE",
+    "BF",
+    "BH",
+    "BN",
+    "BR",
+    "CH",
+    "CI",
+    "CN",
+    "CR",
+    "CV",
+    "CZ",
+    "DK",
+    "DM",
+    "DZ",
+    "EE",
+    "ES",
+    "FI",
+    "FJ",
+    "FR",
+    "GA",
+    "GB",
+    "GM",
+    "GN",
+    "GQ",
+    "GW",
+    "HK",
+    "HN",
+    "HR",
+    "HU",
+    "ID",
+    "IE",
+    "IS",
+    "IT",
+    "JO",
+    "JP",
+    "KI",
+    "KM",
+    "KN",
+    "KR",
+    "KW",
+    "LC",
+    "LI",
+    "LT",
+    "LU",
+    "LV",
+    "LY",
+    "MA",
+    "MC",
+    "MD",
+    "ME",
+    "MK",
+    "ML",
+    "MR",
+    "MT",
+    "MU",
+    "MV",
+    "MX",
+    "MY",
+    "NA",
+    "NE",
+    "NL",
+    "NO",
+    "NZ",
+    "OM",
+    "PL",
+    "PT",
+    "QA",
+    "RO",
+    "RS",
+    "RU",
+    "SA",
+    "SB",
+    "SC",
+    "SE",
+    "SG",
+    "SI",
+    "SK",
+    "SM",
+    "SN",
+    "TR",
+    "VA",
+    "ZA"
+   ]
+  },
+  {
+   "entry": "free",
+   "months": 2,
+   "passports": [
+    "BG"
+   ]
+  },
+  {
+   "entry": "free",
+   "days": 15,
+   "within": 180,
+   "passports": [
+    "IQ",
+    "IR"
+   ]
+  },
+  {
+   "entry": "free",
+   "months": 1,
+   "passports": [
+    "GR"
+   ]
+  }
+ ],
+ "others": {
+  "entry": "visa"
+ },
+ "note": "Tunisia: nationals of the countries listed enter without a visa for 4 months (Canada, Germany), 90 days, 2 months (Bulgaria) or 15 days in 180 (Iran and Iraq, tourists); everyone else needs a visa from a mission (Cyprus isn't on the list). Organised tours with a hotel voucher for some nationalities aren't modelled; Tunisia's e-Visa tender failed in August 2025. Read from Wikipedia's copy. Checked on 2026-11-03 against the Ministry of Foreign Affairs' own page (updated 25 October 2023): it confirmed Canada's and Germany's 4 months, Bulgaria's 2 and the 90 days for most held, but gives Americans 4 months and Greeks 1, names Serbia exempt, and exempts Belarusians and Kazakhs only on organised tours (not modelled), so the United States, Greece and Serbia were changed or added and Belarus and Kazakhstan moved to a visa. The United Kingdom, Dominica, Indonesia and the Solomon Islands, and Iraq's and Iran's 15 days, aren't on the page and stand on Wikipedia's copy.",
+ "sources": [
+  {
+   "url": "https://en.wikipedia.org/wiki/Visa_policy_of_Tunisia",
+   "title": "Wikipedia, Visa policy of Tunisia",
+   "read": "2026-11-03",
+   "kind": "secondary",
+   "quotes": "https://www.diplomatie.gov.tn/",
+   "said": "Visitors to Tunisia must obtain a visa from one of the Tunisian diplomatic missions unless they are citizens from one of the visa-exempt countries. ... 4 months Canada Germany 90 days European Union member states (except Bulgaria, Cyprus and Germany) Algeria Andorra Angola Antigua and Barbuda Argentina Australia Bahrain Barbados Belarus Bosnia and Herzegovina Brazil Brunei Burkina Faso Cape Verde Chile China Comoros Costa Rica Dominica Equatorial Guinea Fiji Gabon Gambia Guinea Guinea Bissau Hong Kong Honduras Iceland Indonesia Ivory Coast Japan Jordan Kazakhstan Kiribati Kuwait Libya Liechtenstein Malaysia Maldives Mali Mauritania Mauritius Mexico Moldova Monaco Montenegro Morocco Namibia New Zealand Niger North Macedonia Norway Oman Qatar Russia Saint Kitts and Nevis Saint Lucia San Marino Saudi Arabia Senegal Seychelles Singapore Solomon Islands South Africa South Korea Switzerland Turkey United Arab Emirates United Kingdom United States Vatican City 2 months Bulgaria 15 days within any 180 days Iran Iraq"
+  },
+  {
+   "url": "https://back.diplomatie.gov.tn/index.php/api/get-page/33",
+   "title": "Ministère des Affaires étrangères (Tunisie), diplomatie.gov.tn: page 'Tunisie' (its content service, which the site's app renders; created 2023-10-05, updated 2023-10-25), section 'Système de visa d'entrée en Tunisie'",
+   "read": "2026-11-03",
+   "kind": "primary",
+   "said": "Nationalités exemptées de visa Pour un séjour inférieur à 4 mois : Canada, Allemagne, Etats-Unis Pour un séjour inférieur à 2 mois : Bulgarie Pour un séjour inférieur à 1 mois : Grèce Pour un séjour inférieur à 90 jours : autres pays de l'Union européenne (excepté Chypre), Algérie, Andorre, Angola, Antigua et Barbuda, Argentine, Australie, Bahrain, Barbade, Bosnie, Brésil, Brunei, Burkina Faso, Cap Vert, Chine, Comores, Costa Rica, Côte d'Ivoire, Guinée équatoriale, Fiji, Gabon, Gambie, Guinée, Guinée Bissau, Hong Kong, Honduras, Islande, Japon, Jordanie, Kiribati, Corée du Sud, Koweit, Libye, Liechtenstein, Macedoine, Malaisie, Maldives, Mali, Mauritanie, Maurice, Mexique, Moldavie, Monaco, Montenegro, Maroc, Namibie, Nouvelle-Zélande, Niger, Norvège, Oman, Qatar, Russie, Saint Kitts et Nevis, Sainte-Lucie, San Marin, Arabie saoudite, Sénégal, Serbie, Seychelles, Singapour, Afrique-du-Sud, Suisse, Turquie, Emirats arabes unis, Vatican ... Les détenteur d'un passeport des nationalités suivante peuvent également séjourner en Tunisie sans visa dans le cadre de voyages organisés : Azerbaidjan, Bielorussie, Géorgie, Indie, Kazakhsta, Kyrgyzstan, Macao ,Tadjikistan, Turkmenistan, Ukraine, Ouzbekistan. Nationalités sujettes à l'obtention d'un visa Les nationaux de tous les autres pays peuvent obtenir leur visa dans les ambassades et consulats de Tunsie."
+  }
+ ]
+}

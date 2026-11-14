@@ -1,0 +1,29 @@
+{
+ "country": "DM",
+ "years": 7,
+ "renounce": false,
+ "lapses": false,
+ "note": "GLOBALCIT's Citizenship Law Dataset v3.0 (EUI, 2025), coding the law in force on 1 January 2024 (A06a DOM 8, 9; A06b DOM 8, 9; L05 No provision): ordinary naturalisation after 8 years' residence (the 12 months before the application and the 7 years before them; the dataset's own count is 7); no renunciation of other citizenships required; a citizen keeps it on taking another. Reforms after that date are checked in the file's later sources, where a later source is given. Citizenship at birth is read from the same dataset's 2024 coding of modes A01a (descent, born in country: No provision), A01b (descent, born abroad: Generational transmission restriction: conditional on birthplace/place of residence /mode under which parent acquired citizenship), A02a (birth in country: Generally applicable provision) and A02b (birth in country to a parent born there: No provision), as its codebook (RSC/GLOBALCIT 2025/01, sections 3.2.1a to 3.2.2b) defines them: by birth in the territory unconditionally; by descent from either parent, a child born abroad on the limit the dataset states (the dataset codes no separate descent rule for a child born in the country, birth there giving it; the parent's sex is read from mode A01b). Changes to the law at birth after 1 January 2024 weren't checked for this file. On 2026-11-03 the primary was read: Government of Dominica, Laws of Dominica, Commonwealth of Dominica Citizenship Act, Chapter 1:10 (scanned revised edition; read by OCR, pages 8-9), ss. 6(2), 8. It confirmed renunciation. It was silent on loss on taking another citizenship, birth in the territory, the limit abroad and descent, which still rest on the sources above, re-read that day and found the same. The Act changed the years: s. 8(1)(b) asks the twelve months before the application and s. 8(1)(c) seven years immediately preceding the application, so the twelve months fall inside the seven and the period is seven years, not the dataset's eight (read on the page image of page 8, L.R.O. 1/1995).",
+ "sources": [
+  {
+   "url": "https://cadmus.eui.eu/bitstreams/3b166501-e695-48d7-9e27-d7bef061573a/download",
+   "title": "GLOBALCIT Citizenship Law Dataset v3.0 (Vink, van der Baaren, Bauböck, Dzankic, Honohan, Manby; EUI Research Data, 2025), country-year-mode files, Dominica, 2024",
+   "read": "2026-11-03",
+   "kind": "secondary",
+   "quotes": "https://globalcit.eu/national-citizenship-laws/",
+   "said": "Person has been resident in Dominica for 12 months immediately prior to the application, and was either resident in Dominica, in the service of the government, or had partly such residence and partly such service for 7 years predating the 12-month period. ... n.a. ... n.a. ... No provision ... Generational transmission restriction: conditional on birthplace/place of residence /mode under which parent acquired citizenship ... Person is born abroad to a citizen who was either born in Dominica or who was a recognised UK and Colonies citizen prior to Independence. ... Generally applicable provision ... Person is born in Dominica. Unless born to a foreign diplomat and neither parent is a citizen, or one of the parents is an enemy alien and the child is born in a place then under occupation by the enemy. ... No provision"
+  },
+  {
+   "url": "https://dominica.gov.dm/laws/chapters/chap1-10.pdf",
+   "title": "Government of Dominica, Laws of Dominica, Commonwealth of Dominica Citizenship Act, Chapter 1:10 (scanned revised edition; read by OCR, pages 8-9), ss. 6(2), 8",
+   "read": "2026-11-03",
+   "kind": "primary",
+   "said": "(2) Nothing in this Act shall be construed so as to debar, prevent or preclude any person possessing the necessary qualifications and fulfilling the requirements of this and any other Act from being or becoming a citizen of Dominica because he or she is a national of another country. ... 8. (1) The Minister may grant a certificate of naturalisation to any alien of full age and capacity who makes application therefor in the prescribed manner and satisfies the Minister — ... (b) that he has resided in Dominica throughout the period of twelve months immediately preceding the date of his application; (c) that he has resided in Dominica, or has been in the service of the Government, or has had partly such residence and partly such service throughout a period of seven years immediately preceding the date of his application; ... (2) The Minister may, in such cases as he thinks fit — ... (c) waive the residence requirement in special circumstances."
+  }
+ ],
+ "atBirth": {
+  "soil": "unconditional",
+  "descent": "either parent",
+  "descentAbroad": "Person is born abroad to a citizen who was either born in Dominica or who was a recognised UK and Colonies citizen prior to Independence."
+ }
+}

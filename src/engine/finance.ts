@@ -173,7 +173,9 @@ export function moneyKept(p: Project): MoneyKept {
     cost += used(o);
     held += used(o) - o.settled;
   }
-  const yours = accepted(p).filter((d) => d.terms.unspent === 'yours').reduce((s, d) => s + d.received, 0);
+  // What a company put in isn't yours (from November 14, 2026, when the company left play): it stays with the project as
+  // production funding until whose it is is decided, and can't be taken home as your own money.
+  const yours = accepted(p).filter((d) => d.terms.unspent === 'yours' && d.kind !== 'company').reduce((s, d) => s + d.received, 0);
   const raised = p.funding.fund + p.funding.extra.reduce((s, e) => s + e.amount, 0);
   const charge = (pool: number) => { const t = Math.max(0, Math.min(pool, cost)); cost -= t; return pool - t; };
   const restricted = charge(raised - yours);

@@ -1,0 +1,28 @@
+{
+ "country": "LU",
+ "years": 5,
+ "renounce": false,
+ "lapses": false,
+ "note": "GLOBALCIT's Citizenship Law Dataset v3.0 (EUI, 2025), coding the law in force on 1 January 2024 (A06a LUX 14; A06b LUX 14; L05 No provision): ordinary naturalisation after 5 years' residence; no renunciation of other citizenships required; a citizen keeps it on taking another. Reforms after that date are checked in the file's later sources, where a later source is given. Citizenship at birth is read from the same dataset's 2024 coding of modes A01a (descent, born in country: Generally applicable provision), A01b (descent, born abroad: Generally applicable provision), A02a (birth in country: No provision) and A02b (birth in country to a parent born there: Generally applicable provision), as its codebook (RSC/GLOBALCIT 2025/01, sections 3.2.1a to 3.2.2b) defines them: by birth in the territory only on the condition the dataset states; by descent from either parent, with no further limit on a child born abroad. Changes to the law at birth after 1 January 2024 weren't checked for this file. On 2026-11-03 the primary was read: Loi du 8 mars 2017 sur la nationalité luxembourgeoise (Journal officiel, Mémorial A n° 289), art. 14(1); Loi du 8 mars 2017, arts. 1er(1), 4, 6, 55. Every figure the file holds now rests on it, and the dataset is no longer cited. Art. 6 also makes a person born in Luxembourg a citizen at majority after five years' residence, on a parent's twelve months before the birth; that isn't at birth and isn't held. The text read is the law as published in 2017.",
+ "sources": [
+  {
+   "url": "https://data.legilux.public.lu/filestore/eli/etat/leg/loi/2017/03/08/a289/jo/fr/html/eli-etat-leg-loi-2017-03-08-a289-jo-fr-html.html",
+   "title": "Loi du 8 mars 2017 sur la nationalité luxembourgeoise (Journal officiel, Mémorial A n° 289), art. 14(1)",
+   "read": "2026-11-03",
+   "kind": "primary",
+   "said": "La naturalisation est ouverte au majeur, à condition : 1° d’avoir une résidence habituelle au Grand-Duché de Luxembourg et de s’y trouver en séjour régulier depuis au moins cinq années, dont la dernière année de résidence précédant immédiatement la déclaration de naturalisation doit être ininterrompue ;"
+  },
+  {
+   "url": "https://data.legilux.public.lu/filestore/eli/etat/leg/loi/2017/03/08/a289/jo/fr/html/eli-etat-leg-loi-2017-03-08-a289-jo-fr-html.html",
+   "title": "Loi du 8 mars 2017, arts. 1er(1), 4, 6, 55",
+   "read": "2026-11-03",
+   "kind": "primary",
+   "said": "Art. 1er. (1)Est Luxembourgeois le mineur né d’un parent qui possède la nationalité luxembourgeoise au moment de sa naissance ou de l’établissement de sa filiation. ... Art. 4. Est Luxembourgeois le mineur né au Grand-Duché de Luxembourg, dont un des parents ou adoptants non-luxembourgeois y est également né. ... Art. 6. Celui qui est né au Grand-Duché de Luxembourg obtient, au moment de sa majorité, la nationalité luxembourgeoise, à condition : 1° qu’il ait eu une résidence habituelle et un séjour régulier au Grand-Duché de Luxembourg pendant au moins cinq années consécutives et précédant immédiatement la majorité ; et 2° qu’un de ses parents ou adoptants non-luxembourgeois ait eu une résidence habituelle et un séjour régulier au Grand-Duché de Luxembourg pendant au moins douze mois consécutifs et précédant immédiatement la naissance. ... Art. 55. La nationalité luxembourgeoise se perd par renonciation ou par déchéance."
+  }
+ ],
+ "atBirth": {
+  "soil": "conditional",
+  "soilIf": "Person is born in Luxembourg to a non-Luxembourgish parent who was also born there.",
+  "descent": "either parent"
+ }
+}

@@ -1,0 +1,45 @@
+{
+ "country": "KI",
+ "others": {
+  "right": "permit",
+  "route": "Work permit (Ministry of Foreign Affairs and Immigration)"
+ },
+ "note": "Kiribati, read on the Government of Kiribati's trade and investment portal (procedure 'Obtain a work permit', its steps last modified in May 2021) and the Ministry of Foreign Affairs and Immigration's work visa form (2026-11-03): a non-citizen works on a work permit from the Ministry of Foreign Affairs and Immigration, applied for with an employment contract, medical and police clearances, a request letter and, for a private business, a localisation plan and an advertisement; the form costs AUD 40 (single) or 80 (multiple), the permit fee is AUD 150 paid to the Ministry of Finance, a security bond of AUD 1,000 is refunded at the permit's end, and processing takes 10 to 30 working days. The work visas under the Immigration Act 2019 include 'Specific purpose or event', whose categories name media, film and video production crew and ask for evidence of the event. No days without a permit and no passport exempt are named, so none are kept; the permit's validity isn't stated.",
+ "sources": [
+  {
+   "kind": "primary",
+   "url": "https://kiribati.tradeportal.org/procedure/120/step/333?l=en",
+   "title": "Kiribati Trade and Investment Portal (Government of Kiribati): Obtain a work permit, step 3 'Submit work permit application' (last modified 17/05/2021)",
+   "read": "2026-11-03",
+   "said": "Entity in charge Ministry of Foreign Affairs and Immigration ... Requirements 1. Work Permit Application Form (original) 2. Passport (Biodata page) ... 4. Employment Contract ... 5. Latest Medical Clearance ... 6. Recent police report from current place of residence ... 10. Work permit application letter (Request letter) ... Private Business 1. Localization Plan ... 2. Advertisement ... 3. Operational Licence ... Processing time takes 10-30 working days"
+  },
+  {
+   "kind": "primary",
+   "url": "https://kiribati.tradeportal.org/procedure/120/step/331?l=en",
+   "title": "Kiribati Trade and Investment Portal: Obtain a work permit, step 1 'Obtain application form for a work permit' (last modified 24/05/2021)",
+   "read": "2026-11-03",
+   "said": "Work Permit Application Form Cost: AUD 40 ... 40.00 (Single) 80.00 (Multiple)"
+  },
+  {
+   "kind": "primary",
+   "url": "https://kiribati.tradeportal.org/procedure/120/step/332?l=en",
+   "title": "Kiribati Trade and Investment Portal: Obtain a work permit, step 2 'Pay work permit fee' (last modified 20/05/2021)",
+   "read": "2026-11-03",
+   "said": "Ministry of Finance and Economic Development (MFED) ... Cost: AUD 150 ... Work Permit Fee"
+  },
+  {
+   "kind": "primary",
+   "url": "https://kiribati.tradeportal.org/procedure/120/step/335?l=en",
+   "title": "Kiribati Trade and Investment Portal: Obtain a work permit, step 4 'Pay Work Permit Security Bond Fee' (last modified 24/05/2021)",
+   "read": "2026-11-03",
+   "said": "Cost: AUD 1,000 ... Work Permit Security Bond Fee ... Fee will be reimbursed after finishing the end of the work permit"
+  },
+  {
+   "kind": "primary",
+   "url": "https://www.mfa.gov.ki/wp-content/uploads/2020/11/Work-Visa-FINAL.pdf",
+   "title": "Kiribati Immigration, Work Visa Application Form (Ministry of Foreign Affairs and Immigration)",
+   "read": "2026-11-03",
+   "said": "You should use this form if you are applying for the following work visa types: • Essential Skills • Religious worker • Specific purpose or event • Domestic worker of consulate staff ... All applicants must provide: ... A job offer, including a job description, details of pay, and conditions of the proposed employment ... Applicants for Specific Purpose or Event work visas must also provide • Description of the specific purpose or event for which I am coming to Kiribati • Evidence of the specific purpose or event"
+  }
+ ]
+}

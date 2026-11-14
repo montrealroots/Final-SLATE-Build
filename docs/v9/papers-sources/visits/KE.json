@@ -1,0 +1,113 @@
+{
+ "country": "KE",
+ "rules": [
+  {
+   "entry": "free",
+   "days": 180,
+   "passports": [
+    "BI",
+    "CD",
+    "RW",
+    "SS",
+    "TZ",
+    "UG"
+   ]
+  },
+  {
+   "entry": "free",
+   "days": 90,
+   "passports": [
+    "BB",
+    "BN",
+    "BS",
+    "BW",
+    "BZ",
+    "CG",
+    "CY",
+    "DM",
+    "ER",
+    "ET",
+    "FJ",
+    "GD",
+    "GH",
+    "GM",
+    "GY",
+    "JM",
+    "KI",
+    "KM",
+    "KN",
+    "LC",
+    "LS",
+    "MU",
+    "MV",
+    "MW",
+    "MY",
+    "MZ",
+    "NA",
+    "NR",
+    "PG",
+    "SB",
+    "SG",
+    "SL",
+    "SM",
+    "SZ",
+    "TO",
+    "TT",
+    "TV",
+    "VC",
+    "VU",
+    "WS",
+    "ZA",
+    "ZM",
+    "ZW"
+   ]
+  },
+  {
+   "entry": "free",
+   "days": 60,
+   "passports": [
+    "AO",
+    "BF",
+    "BJ",
+    "CF",
+    "CI",
+    "CM",
+    "CV",
+    "DJ",
+    "DZ",
+    "EG",
+    "GA",
+    "GN",
+    "GQ",
+    "GW",
+    "LR",
+    "MA",
+    "MG",
+    "ML",
+    "MR",
+    "NE",
+    "NG",
+    "SC",
+    "SD",
+    "SN",
+    "ST",
+    "TD",
+    "TG",
+    "TN"
+   ]
+  }
+ ],
+ "others": {
+  "entry": "eta"
+ },
+ "note": "Kenya abolished visas on 1 January 2024: every visitor needs an Electronic Travel Authorisation (USD 32.50, at least 3 days ahead; single entry), except, by the Kenya Citizenship and Immigration (Amendment) Rules, 2025, nationals of the countries listed, who enter without one for 180 days (the East African Community), 90 or 60 days. Read on 2026-11-03 from the Directorate of Immigration Services' own eTA page, which corrected Wikipedia's copy, read before, on the Solomon Islands (90 days, missing) and Seychelles (60 days, not 90).",
+ "sources": [
+  {
+   "url": "https://etakenya.go.ke/how-to-apply",
+   "title": "Directorate of Immigration Services (Kenya), eTA: How to Apply",
+   "read": "2026-11-03",
+   "kind": "primary",
+   "said": "All visitors including infants and children who intend to travel to the Republic of Kenya must have an approved Electronic Travel Authorisation (eTA) before the start of their journey. Persons who are exempt from obtaining the Electronic Travel Authorisation (eTA) as per the KENYA CITIZENSHIP AND IMMIGRATION(AMMENDEMENT) RULES, 2025 Holders of Kenya Permanent Residence, valid Work Permits and Passes. All persons whose passports are endorsed with valid Kenya reentry passes or any other written authority in lieu of a re-entry pass. Citizens of the East African Partner States: These countries include Burundi, Democratic Republic of Congo, Rwanda, South Sudan, Tanzania and Uganda for a period not exceeding 180 days. Nationals of the following Countries for a period not exceeding ninety (90) days－ Barbados Belize Botswana Brunei Cyprus Dominica Eritrea Eswatini Ethiopia Fiji Island Gambia Ghana Grenada Guyana Jamaica Kiribati Lesotho Malaysia Maldives Malawi Mauritius Mozambique Namibia Nauru Papua New Guinea Union of Comoros Samoa San Marino Sierra Leone Singapore Solomon Islands South Africa St. Kitts and Navis St. Lucia St. Vincent and the Grenadines The Bahamas The Gambia Tonga Trinidad and Tobago The Republic of Congo Tuvalu Vanuatu Zambia Zimbabwe Nationals of the following African countries for a period not exceeding sixty (60) days－ Algeria Angola Benin Burkina Faso Cape Verde Cameroon Central African Republic Chad Cote d'Ivoire Djibouti Egypt Equatorial Guinea Gabon Guinea Guinea Bissau Liberia Madagascar Mali Mauritania Morocco Niger Nigeria Sao Tome and Principe Senegal Seychelles Sudan Togo Tunisia"
+  }
+ ]
+}

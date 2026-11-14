@@ -1,0 +1,17 @@
+{
+ "country": "UZ",
+ "others": {
+  "right": "permit",
+  "route": "Подтверждение на право осуществления трудовой деятельности"
+ },
+ "note": "Uzbekistan: a foreigner works under a labour contract only where the employer holds the confirmation of the right to work, issued by the Ministry of Poverty Reduction and Employment (Law on Employment of the Population, ЎРҚ-642 of 20 October 2020, art. 107, as amended to ЎРҚ-1095 of 11 November 2025; read 2026-11-03 on lex.uz, the National Database of Legislation). Art. 110 lists those it doesn't apply to (residence-certificate holders, accredited missions' staff and others); its only cultural entry is scientists and cultural figures working in organisations set up under interstate treaties, not performers, so no days. Until 2026-11-03 this was read from advice.uz's summary, which also named IT Park specialists among the exempt (not in art. 110).",
+ "sources": [
+  {
+   "url": "https://lex.uz/ru/docs/5055690",
+   "title": "Ўзбекистон Республикасининг Қонуни, 20.10.2020 йилдаги ЎРҚ-642-сон, Аҳоли бандлиги тўғрисида (Law on Employment of the Population), ch. 17, arts. 107, 110, 111, as amended to ЎРҚ-1095 of 11 November 2025, on lex.uz (the National Database of Legislation)",
+   "read": "2026-11-03",
+   "said": "107-модда ... Меҳнат фаолиятини амалга ошириш учун Ўзбекистон Республикасига кириб келаётган чет эллик фуқаро иш берувчи томонидан Ўзбекистон Республикаси ҳудудида меҳнат фаолияти ҳуқуқига доир тасдиқнома мавжуд бўлган тақдирдагина Ўзбекистон Республикаси ҳудудида ёлланиб ишлаши мумкин. Ўзбекистон Республикаси ҳудудида меҳнат фаолияти ҳуқуқига доир тасдиқнома Ўзбекистон Республикаси Камбағалликни қисқартириш ва бандлик вазирлиги томонидан берилади. ... 110-модда ... Ўзбекистон Республикасида хорижий ишчи кучини жалб этиш ва ундан фойдаланиш тартиби қуйидаги чет эллик фуқароларга нисбатан татбиқ этилмайди: ... Ўзбекистон Республикаси ҳудудида Ўзбекистон Республикасининг давлатлараро шартномаларига мувофиқ ташкил этилган ташкилотларда меҳнат фаолиятини амалга ошираётган илм-фан ва маданият арбобларига; ... Ўзбекистон Республикасида яшаш гувоҳномасини олган шахсларга;",
+   "kind": "primary"
+  }
+ ]
+}

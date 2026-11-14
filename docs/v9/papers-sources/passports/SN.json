@@ -1,0 +1,49 @@
+{
+ "country": "SN",
+ "office": "the passport service in Senegal, the stamp bought on the DGID's SEN TIMBRE application",
+ "currency": "XOF",
+ "routes": [
+  {
+   "id": "home",
+   "where": "home",
+   "speed": "standard",
+   "within": null,
+   "label": "in Senegal, the stamp bought online"
+  },
+  {
+   "id": "duplicate",
+   "where": "home",
+   "speed": "standard",
+   "within": null,
+   "replacement": true,
+   "label": "a duplicate, replacing a lost passport"
+  }
+ ],
+ "passports": [
+  {
+   "for": "any",
+   "validYears": null,
+   "pay": {
+    "home": "20000",
+    "duplicate": "40000"
+   }
+  }
+ ],
+ "note": "The passport's stamp duty under article 527 of the General Tax Code (Law 2023-18), read in the DGID's 2025 edition of the Code on 2026-11-03: 20,000 francs CFA for an ordinary passport's issue or renewal, and 40,000 for a duplicate, written as a replacement route (brought in 2026-11-03). From 20 July 2026 only stamps generated on SenTimbre, the DGID's application, are recognised (its communiqué of 17 July 2026); Osiris had reported the change and resellers asking 22,000, which aren't modelled. Validity, processing times and fees abroad are leads.",
+ "sources": [
+  {
+   "kind": "primary",
+   "url": "https://www.dgid.sn/storage/docs/CGI-2025.pdf",
+   "title": "Direction générale des Impôts et des Domaines (Sénégal), Code général des impôts, édition 2025, article 527",
+   "read": "2026-11-03",
+   "said": "Article 527. (Loi 2023-18 du 15 décembre 2023) La délivrance du passeport et son renouvellement donnent lieu au paiement d’un droit de timbre fixé comme suit : • passeport ordinaire : 20.000 FCFA ; • passeport spécial Pèlerins : 2.000 FCFA. L’établissement du duplicata d’un passeport donne lieu au paiement d’un droit de timbre fixé comme suit : • passeport ordinaire : 40.000 FCFA ; • passeport spécial Pèlerins : 4.000 FCFA."
+  },
+  {
+   "kind": "primary",
+   "url": "https://www.dgid.sn/articles/lancement-de-sentimbre",
+   "title": "DGID, Lancement de « SenTimbre »",
+   "read": "2026-11-03",
+   "said": "À compter du 20 juillet 2026 , seuls les timbres générés à partir de SenTimbre seront reconnus sur l'ensemble du territoire national."
+  }
+ ]
+}

@@ -1,0 +1,21 @@
+{
+ "country": "MA",
+ "years": 5,
+ "renounce": false,
+ "lapses": false,
+ "note": "GLOBALCIT's Citizenship Law Dataset v3.0 (EUI, 2025), coding the law in force on 1 January 2024 (A06a MOR 11(1); A06b MOR 11(1); L05 No provision): ordinary naturalisation after 5 years' residence; no renunciation of other citizenships required; a citizen keeps it on taking another. Reforms after that date are checked in the file's later sources, where a later source is given. Citizenship at birth is read from the same dataset's 2024 coding of modes A01a (descent, born in country: Generally applicable provision), A01b (descent, born abroad: Generally applicable provision), A02a (birth in country: No provision) and A02b (birth in country to a parent born there: Group restriction: only if parent is member of a particular group, race or religion), as its codebook (RSC/GLOBALCIT 2025/01, sections 3.2.1a to 3.2.2b) defines them: by birth in the territory only on the condition the dataset states; by descent from either parent, with no further limit on a child born abroad. The coding also records a restriction to members of a particular group, which the form holds only in the condition's words, which the form doesn't hold. Changes to the law at birth after 1 January 2024 weren't checked for this file. On 2026-11-03 the primary was read: Code de la nationalité marocaine (Dahir n° 1-58-250 du 6 septembre 1958), version consolidée en date du 16 mai 2024, Ministère de la Justice, portail juridique Adala. Every figure the file holds now rests on it, and the dataset is no longer cited.",
+ "sources": [
+  {
+   "url": "https://adala.justice.gov.ma/api/uploads/2025/11/28/Dahir%20n%C2%B0%201-58-250%20portant%20code%20de%20la%20nationalit%C3%A9%20marocaine-1764341585221.pdf",
+   "title": "Code de la nationalité marocaine (Dahir n° 1-58-250 du 6 septembre 1958), version consolidée en date du 16 mai 2024, Ministère de la Justice, portail juridique Adala",
+   "read": "2026-11-03",
+   "kind": "primary",
+   "said": "Article 6: Est Marocain, l'enfant né d'un père marocain ou d'une mère marocaine. ... Article 7: Est Marocain, l'enfant né au Maroc de parents inconnus. ... Article 9: ... acquiert la nationalité marocaine si, dans les deux ans précédant sa majorité, il déclare vouloir acquérir cette nationalité, tout enfant né au Maroc de parents étrangers qui y sont eux-mêmes nés postérieurement à la mise en vigueur du présent dahir, à condition d'avoir une résidence habituelle et régulière au Maroc. ... toute personne née au Maroc de parents étrangers et ayant une résidence habituelle et régulière au Maroc, dont le père lui-même est né au Maroc, lorsque ce dernier se rattache à un pays dont la fraction majoritaire de la population est constituée par une communauté ayant pour langue l'arabe ou pour religion l'Islam ... Article 11: ... 1° - justifier d'une résidence habituelle et régulière au Maroc pendant les cinq années précédant le dépôt de sa demande ... Article 19: Perd la nationalité marocaine : 1° - le Marocain majeur qui a acquis volontairement à l'étranger une nationalité étrangère et est autorisé par décret à renoncer à la nationalité marocaine;"
+  }
+ ],
+ "atBirth": {
+  "soil": "conditional",
+  "soilIf": "Person is a minor who is born in Morocco and whose father was also born in the country. Other conditions: person resides in Morocco and the father comes from a country of Arab and Muslim majority and also belongs to this group. [NB: this article actually has two provisions: i) Person is born in Morocco to two parents also born there; ii) Person is born in Morocco to a father also born there coming from an Arab or Muslim majority country and belonging to this group].",
+  "descent": "either parent"
+ }
+}

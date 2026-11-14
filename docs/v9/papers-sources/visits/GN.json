@@ -1,0 +1,59 @@
+{
+ "country": "GN",
+ "rules": [
+  {
+   "entry": "free",
+   "passports": [
+    "BF",
+    "BJ",
+    "CI",
+    "CV",
+    "DZ",
+    "EG",
+    "GH",
+    "GM",
+    "GW",
+    "LR",
+    "MA",
+    "ML",
+    "NA",
+    "NE",
+    "NG",
+    "RW",
+    "SL",
+    "SN",
+    "TG",
+    "TN"
+   ]
+  },
+  {
+   "entry": "free",
+   "days": 30,
+   "passports": [
+    "SG"
+   ]
+  }
+ ],
+ "others": {
+  "entry": "evisa",
+  "days": 90
+ },
+ "note": "Guinea: nationals of the ECOWAS states and the others listed enter without a visa (Singapore's for 30 days); everyone else applies for an e-Visa (up to 90 days, USD 100; the UAE's visa on arrival, in Timatic only, is taken as the border police have it, an e-Visa). Read from Wikipedia's copy. Checked on 2026-11-03 against the investment promotion agency (APIP), which confirmed the ECOWAS states' stay under 90 days without a visa and the e-Visa; the other exemptions stand on Wikipedia's copy.",
+ "sources": [
+  {
+   "url": "https://en.wikipedia.org/wiki/Visa_policy_of_Guinea",
+   "title": "Wikipedia, Visa policy of Guinea",
+   "read": "2026-11-03",
+   "kind": "secondary",
+   "quotes": "https://www.paf.gov.gn/",
+   "said": "Visitors to Guinea must obtain an eVisa unless they come from one of the countries or territories that are visa exempt. ... can visit Guinea without a visa: All ECOWAS member states Algeria Burkina Faso Egypt Mali Morocco Namibia Niger Rwanda Singapore (30 days) Tunisia ... Nationals of all countries and territories that require a visa can obtain an electronic visa. The e-Visa is available for stays up to 90 days."
+  },
+  {
+   "url": "https://apip.gov.gn/vivre-en-guinee/",
+   "title": "Agence de Promotion des Investissements Privés (Guinée): Vivre en Guinée, Visa et Immigration",
+   "read": "2026-11-03",
+   "kind": "primary",
+   "said": "Un passeport ou équivalent muni d'un visa d'entrée, sauf en cas d'exemption (conventions entre la Guinée et certains États). La République de Guinée propose une plateforme en ligne de demande de visa électronique, communément appelée e-visa : www.paf.gov.gn Les ressortissants des pays membres de la Communauté des États de l'Afrique de l'Ouest (CEDEAO) peuvent séjourner en Guinée pendant une durée inférieure à 90 jours sans visa préalable."
+  }
+ ]
+}

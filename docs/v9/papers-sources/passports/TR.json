@@ -1,0 +1,62 @@
+{
+ "country": "TR",
+ "office": "the General Directorate of Population and Citizenship Affairs (Nüfus ve Vatandaşlık İşleri Genel Müdürlüğü)",
+ "currency": "TRY",
+ "routes": [
+  {
+   "id": "home",
+   "where": "home",
+   "speed": "standard",
+   "within": null,
+   "label": "in Türkiye"
+  }
+ ],
+ "passports": [
+  {
+   "for": "any",
+   "validYears": 1,
+   "pay": {
+    "home": "5454.00"
+   }
+  },
+  {
+   "for": "any",
+   "validYears": 2,
+   "pay": {
+    "home": "8049.50"
+   }
+  },
+  {
+   "for": "any",
+   "validYears": 3,
+   "pay": {
+    "home": "10867.00"
+   }
+  },
+  {
+   "for": "any",
+   "validYears": 10,
+   "pay": {
+    "home": "14761.40"
+   }
+  }
+ ],
+ "note": "The total is the passport duty (harç) by the validity chosen plus the booklet price (defter bedeli, 1,351 TL) for 2026. The duties are read in the Resmî Gazete itself (Harçlar Kanunu Genel Tebliği No. 98, 31 December 2025, read 2026-11-03; it timed out on 2026-10-28): 4,103.00 TL for one year, 6,698.50 for two, 9,516.00 for three and 13,410.40 for more than three, raised 18.95% from 1 January 2026, as Milliyet reported them on 7 January 2026. The booklet price is Milliyet's alone: it isn't in that communiqué or in No. 99 of the same issue, and wasn't found in a primary. Any validity over three years pays the same duty, so the ten-year passport stands for them; the six-month passport (2,806.50 TL in duty) isn't modelled. A child under seven registered on a parent's passport pays no duty, a case the form doesn't hold. Processing times and consular fees abroad are leads.",
+ "sources": [
+  {
+   "kind": "secondary",
+   "quotes": "https://www.resmigazete.gov.tr/eskiler/2025/12/20251231M5-28.pdf",
+   "url": "https://www.milliyet.com.tr/galeri/2026-pasaport-harc-ucretleri-6-aylik-1-2-3-ve-10-yillik-pasaport-harc-ucreti-ne-kadar-oldu-iste-yeni-zamli-pasaport-ucretleri-7516268",
+   "title": "Milliyet, 2026 Pasaport harç ücretleri! 6 aylık 1-2-3 ve 10 yıllık Pasaport harç ücreti ne kadar oldu? (7 January 2026)",
+   "read": "2026-11-03",
+   "said": "Resmi Gazete'de yayımlanan tebliğe göre pasaport defter bedeli ise 1.351 TL'ye yükseldi. ... 1 Yılllık Pasaport harç ücreti 4.103,00 TL defter bedeli 1.351,00 TL eklendiğinde tutar 5.454,00 TL 2 Yıllık Pasaport harç ücreti 6.698,50 TL defter bedeli 1.351,00 TL eklendiğinde tutar 8.049,50 TL 3 Yıllık Pasaport harç ücreti 9.516,00 TL, defter bedeli 1.351,00 TL eklendiğinde tutar 10.867,00 TL 3+ Yıllık Pasaport harç ücreti 13.410,40 TL, defter bedeli 1.351,00 TL eklendiğinde tutar 14.761,40 TL olarak alınabiliyor."
+  },
+  {
+   "kind": "primary",
+   "url": "https://www.resmigazete.gov.tr/eskiler/2025/12/20251231M5-28.pdf",
+   "title": "Resmî Gazete, 31 Aralık 2025, Sayı 33124 (5. Mükerrer), Harçlar Kanunu Genel Tebliği (Seri No: 98): Madde 3 (text layer) and the annexed (6) Sayılı Tarife (a scanned page, read from its image)",
+   "read": "2026-11-03",
+   "said": "Madde 3: 31/12/2025 tarihli ve 33124 sayılı Resmî Gazete’de yayımlanan 30/12/2025 tarihli ve 10783 sayılı Cumhurbaşkanı Kararının eki Kararın 3 üncü maddesi ile 1/1/2026 tarihinden itibaren yürürlüğe girmek üzere, 492 sayılı Kanuna bağlı tarifelerde yer alan ve uygulanmakta olan maktu harç tutarları ... % 18,95 oranında artırılmıştır. (6) SAYILI TARİFE Pasaport, ikamet tezkeresi, çalışma izni, çalışma izni muafiyeti, vize ve Dışişleri Bakanlığı tasdik harçları ... I- Pasaport Harçları: 1. Umuma mahsus münferit ve müşterek pasaportlar: (Konsolosluklarca verilen pasaportlar dahil) 6 aya kadar olanlar 2.806,50 1 yıl için olanlar 4.103,00 2 yıl için olanlar 6.698,50 3 yıl için olanlar 9.516,00 3 yıldan fazla süreli olanlar 13.410,40 Umuma mahsus münferit ve müşterek pasaportlarda pasaportta kayıtlı her kişi için ayrı ayrı harç alınır. Refakatte kayıtlı 7 yaşından küçük çocuklardan harç alınmaz."
+  }
+ ]
+}

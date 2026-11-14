@@ -1,0 +1,25 @@
+{
+ "country": "VE",
+ "others": {
+  "right": "permit",
+  "route": "Visado Transeúnte Laboral (TR-L), authorised by the Interior Ministry"
+ },
+ "note": "Venezuela: the joint resolution on visas (Interior and Justice No. 364, Foreign Affairs No. 165, Labour No. 0530, Gaceta Oficial No. 5.427 Extraordinario of 5 January 2000) gives the Transeúnte Laboral visa (TR-L), one year, multiple entries; artists in paid activities are excepted from the Labour Ministry's permit, their representatives in Venezuela needing only the Interior Ministry's authorisation, which sets the visa's conditions and stay (Justia's copy of the Gaceta's text). The migration service, SAIME, still lists the TR-L and asks, for its renewal, a work authorisation from the Ministry of Labour, naming no exception for artists (its own Extranjería page). Whether the resolution's artists' exception still holds after the 2004 Ley de Extranjería y Migración and its later rules wasn't confirmed.",
+ "sources": [
+  {
+   "url": "https://venezuela.justia.com/federales/resoluciones/resolucion-n-364/gdoc",
+   "title": "Justia Venezuela, Resolución Nº 364, Resolución que norma el procedimiento para la expedición de visado (Gaceta Oficial Nº 5.427 Extraordinario, 5 January 2000)",
+   "read": "2026-11-03",
+   "said": "Artículo 36º- Visado Transeúnte Laboral (TR-L) ... Será de la competencia del Ministerio del Interior y Justicia, previa conformidad ... del Ministerio del Trabajo, la autorización del Visado de Transeúnte Laboral. Los ... los Ministerios antes citados. Parágrafo Unico: Se exceptúan los artistas, ... corresponsales de prensa extranjera y deportistas en actividades lucrativas, ... cuyos representantes en Venezuela deberán obtener solamente autorización del ... Ministerio del Interior y Justicia, el cual establecerá las condiciones del visado y ... el término de permanencia.",
+   "kind": "secondary",
+   "quotes": "http://www.tsj.gob.ve/"
+  },
+  {
+   "url": "https://www.saime.gob.ve/extranjeria-2-2/",
+   "title": "Servicio Administrativo de Identificación, Migración y Extranjería (SAIME), Extranjería (requirements list)",
+   "read": "2026-11-03",
+   "said": "REQUISITOS PARA LA RENOVACIÓN DE TRANSEÚNTE LABORAL (TR-L) Ingresar a la página web del Saime, crear usuario y contraseña. Foto del pasaporte con no menos de 6 meses de vigencia. Sellos de entrada y salida. Últimas visas. Autorización laboral expedida por el Ministerio del Poder Popular para el Proceso Social de Trabajo.",
+   "kind": "primary"
+  }
+ ]
+}

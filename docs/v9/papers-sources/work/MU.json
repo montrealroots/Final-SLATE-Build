@@ -1,0 +1,25 @@
+{
+ "country": "MU",
+ "others": {
+  "right": "permit",
+  "route": "Work permit and residence permit (Ministry of Labour)"
+ },
+ "note": "Mauritius: a tourist visa allows no work; the work and residence permits are applied for together, only by a company incorporated in Mauritius, after the Ministry of Labour's agreement in principle. No days without them. Read from the Union des Français de l'Étranger's country file. The Ministry of Labour's Employment Division (read 2026-11-03) grants work permits, and no non-citizen may work for reward or profit without a valid permit (the Non-citizens (Employment Restriction) Act 1973, s. 3(1), as it quotes it); the joint application with the residence permit wasn't read on a primary, so the entry stays secondary.",
+ "sources": [
+  {
+   "url": "https://ufe.org/dossier-pays/maurice/travailler-a-maurice/",
+   "title": "Union des Français de l’Étranger, Travailler à Maurice",
+   "read": "2026-11-03",
+   "said": "touristique ne sera pas autorisé à travailler à Maurice ! Il convient de s’assurer que l’approbation des permis de travail et de séjour a été obtenue avant d’entreprendre le voyage à l’île Maurice.",
+   "kind": "secondary",
+   "quotes": "https://labour.govmu.org/"
+  },
+  {
+   "url": "https://empment-labour.govmu.org/Pages/Work%20Permit/AboutWP.aspx",
+   "title": "Ministry of Labour and Industrial Relations (Employment Division), Mauritius: About Work Permit",
+   "read": "2026-11-03",
+   "said": "The Employment Division has the mandate to grant work permits to non-citizens to allow them to work in Mauritius. According to section 3(1) of the Non-citizens (Employment Restriction) Act 1973 as subsequently amended, a non-citizen shall not engage in any occupation in Mauritius for reward or profit or be in employment in Mauritius unless he has a valid permit. The Work Permit Unit is responsible for the issuance of permits to foreign workers ... > Work Permit (Granted to non-citizens for employment in Mauritius) > Certificate of Exemption ... > Employment Permit (Expatriate married to Mauritian)",
+   "kind": "primary"
+  }
+ ]
+}

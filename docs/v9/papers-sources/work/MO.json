@@ -1,0 +1,45 @@
+{
+ "country": "MO",
+ "rules": [
+  {
+   "passports": [
+    "CN",
+    "HK"
+   ],
+   "right": "permit",
+   "route": "Autorização de permanência na qualidade de trabalhador não residente",
+   "days": 45,
+   "within": 180
+  }
+ ],
+ "others": {
+  "right": "permit",
+  "route": "Autorização de permanência na qualidade de trabalhador não residente",
+  "days": 45,
+  "within": 180
+ },
+ "note": "Macao keeps its own immigration control: every non-resident (one without the right of abode in Macao, Lei n.º 21/2009 art. 1(2)) works only on an authorisation to stay as a worker (Lei n.º 21/2009 art. 4(1); RA n.º 8/2010 art. 7). The texts name every non-resident; a Mainland or Hong Kong resident, who has no right of abode in Macao, is read as one of them. A non-resident invited by a person or body domiciled in Macao for religious, sporting, academic, cultural-exchange or artistic activities, even paid, works without it for at most 45 days, consecutive or not, in each six months counted from lawful entry (Lei n.º 21/2009 art. 1(3); RA n.º 17/2004 art. 4(1)(2), (2), (3); six months taken as 180 days). Read in the Official Gazette's own pages as Common Crawl archived them (the Gazette's host refuses this client); the file was first read from the Second Instance Court's ruling in Processo n.º 14/2020 (10 June 2020), which quotes both texts in the same words.",
+ "sources": [
+  {
+   "url": "https://bo.dsaj.gov.mo/bo/i/2009/43/lei21_cn.asp",
+   "title": "Boletim Oficial da RAEM (Imprensa Oficial / DSAJ host), Lei n.º 21/2009 Lei da contratação de trabalhadores não residentes, Chinese text, as captured by Common Crawl CC-MAIN-2026-43 on 2026-10-17 (the host refuses this client: 'Denied by custom_acl'); the address is the one the Labour Affairs Bureau links from www.dsal.gov.mo/pt/standard/dsallawc.html",
+   "read": "2026-11-03",
+   "said": "第一條 ... 三、本法律的規定不適用於由非本地居民透過提供服務合同或以第五條以外實體僱員的身份在澳門特別行政區提供的工作，尤其是指應本地實體的邀請，偶然前來澳門特別行政區參與宗教、體育、學術、文化或藝術活動，即使有報酬亦然。 ... 第四條 逗留許可 一、外地僱員均獲發僱員身份的逗留許可",
+   "kind": "primary"
+  },
+  {
+   "url": "https://bo.dsaj.gov.mo/bo/i/2004/24/regadm17_cn.asp",
+   "title": "Boletim Oficial da RAEM, Regulamento Administrativo n.º 17/2004 (禁止非法工作規章), Chinese text, Common Crawl CC-MAIN-2025-51 capture of 2025-12-12 (original text as published; articles marked 已更改 were amended, art. 4 isn't marked)",
+   "read": "2026-11-03",
+   "said": "第四條 例外情況 一、除法律另有規定外，非居民在下列情況下工作，不適用本行政法規第二條（一）項的規定： ... （二）住所設於澳門特別行政區的自然人或法人邀請非居民從事宗教、體育、學術、文化交流及藝術活動。 二、在第一款規定的例外情況下，非居民為提供工作或服務而逗留的最長期限為每六個月內連續或間斷四十五日。 三、上款所指的六個月期間由非居民合法進入澳門特別行政區之日起計。",
+   "kind": "primary"
+  },
+  {
+   "url": "https://bo.dsaj.gov.mo/bo/i/2010/16/regadm08.asp?printer=1",
+   "title": "Boletim Oficial da RAEM, Regulamento Administrativo n.º 8/2010 Regulamentação da Lei da contratação de trabalhadores não residentes, Portuguese text, Common Crawl CC-MAIN-2026-39 capture of 2026-09-12",
+   "read": "2026-11-03",
+   "said": "Artigo 7.º Necessidade de autorização de permanência O não residente só pode exercer a sua actividade laboral na RAEM após concedida a autorização de permanência na qualidade de trabalhador e apenas enquanto essa autorização se mantiver válida.",
+   "kind": "primary"
+  }
+ ]
+}

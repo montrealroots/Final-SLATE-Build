@@ -1,0 +1,60 @@
+{
+ "country": "LY",
+ "rules": [
+  {
+   "entry": "free",
+   "months": 3,
+   "passports": [
+    "DZ",
+    "MR",
+    "TN"
+   ]
+  },
+  {
+   "entry": "free",
+   "days": 30,
+   "passports": [
+    "MY"
+   ]
+  },
+  {
+   "entry": "visa",
+   "passports": [
+    "EH",
+    "IL",
+    "SS",
+    "TW",
+    "XK"
+   ]
+  }
+ ],
+ "others": {
+  "entry": "evisa",
+  "days": 30
+ },
+ "note": "Libya: nationals of Algeria, Mauritania and Tunisia enter without a visa for 3 months, Malaysians for 30 days (through Misurata and Mitiga only, a security letter possibly asked: not modelled); everyone else applies for a tourist e-Visa (since 21 March 2024; 30 days, USD 63) through a tour operator or local sponsor, except nationals of Bangladesh, Iran, Pakistan, Sudan, Syria and Yemen, restricted to a visa, and Israelis, refused (taken as a visa). Egypt's and Turkey's age- and sex-bound exemptions and Belarus's doubtful one aren't modelled. Read from Wikipedia's copy. Checked on 2026-11-03 against the e-Visa service's own country list and eligibility check: it confirmed the four exempt and no row for Israel, but offers the e-Visa to Bangladeshis, Iranians, Pakistanis, Sudanese, Syrians and Yemenis, so those six were moved to the e-Visa, and marks South Sudan, Taiwan, Kosovo and Western Sahara unavailable, so those four were moved to a visa (refused). The stays and the fee aren't given by the service and stand on Wikipedia's copy.",
+ "sources": [
+  {
+   "url": "https://en.wikipedia.org/wiki/Visa_policy_of_Libya",
+   "title": "Wikipedia, Visa policy of Libya",
+   "read": "2026-11-03",
+   "kind": "secondary",
+   "quotes": "https://www.evisa.gov.ly/",
+   "said": "Visitors to Libya must obtain a visa from one of the Libyan diplomatic missions or an e-Visa unless they are citizens from one of the visa-exempt countries. ... may enter Libya without a visa for the following period: 3 months Algeria Mauritania Tunisia 30 days Malaysia ... Libya launched an e-Visa system on 21 March 2024. Tourist e-Visa is valid for 90 days and good for single entry, it allows applicant from most countries to stay no more than 30 days by paying a 63 USD fee. ... Citizens of the following countries are restricted to get the visa to enter Libya: Bangladesh Iran Pakistan Sudan Syria Yemen ... Entry and transit is banned to citizens of Israel"
+  },
+  {
+   "url": "https://back.evisa.gov.ly/api/v1/countries",
+   "title": "Libya e-Visa (evisa.gov.ly): the country list its application form reads (257 rows; TLS chain completed with the issuing CA's intermediate, verification on)",
+   "read": "2026-11-03",
+   "kind": "primary",
+   "said": "[{\"id\": 61, \"key\": \"afghanistan\", \"name\": {\"en\": \"Afghanistan\" ...}, \"is_available\": true, \"code\": \"AF\", \"path\": null, \"exemption_type\": \"NONE\", ... \"can_apply_online\": 1 ...} ...] rows with \"exemption_type\": \"FULL\": Algeria (DZ), Malaysia (MY), Mauritania (MR), Tunisia (TN); \"PARTIAL\": Turkey (TR); \"is_available\": false: South Sudan (SS), Taiwan (TW), Republic of Kosovo (XK), Western Sahara, Sahrawi Arab Democratic Republic and Saguia el-Hamra (EH), Yugoslavia, and the alias rows Burma, Eastern Desert, Hadhramaut, Herzegovina, Scotland, Swaziland, Zanzibar; no row for Israel"
+  },
+  {
+   "url": "https://back.evisa.gov.ly/api/v1/check-eligibility",
+   "title": "Libya e-Visa: eligibility check (POST visa_type 2 'Electronic Visa', ordinary passport, adult 18-54)",
+   "read": "2026-11-03",
+   "kind": "primary",
+   "said": "BD, EG, GB, IR, PK, SD, SY, TR, US, YE: {\"is_banned\":false,\"is_exempted\":false}; DZ: {\"is_banned\":false,\"is_exempted\":true}"
+  }
+ ]
+}

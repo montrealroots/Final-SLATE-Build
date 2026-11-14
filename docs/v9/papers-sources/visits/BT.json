@@ -1,0 +1,41 @@
+{
+ "country": "BT",
+ "rules": [
+  {
+   "entry": "free",
+   "passports": [
+    "IN"
+   ]
+  },
+  {
+   "entry": "arrival",
+   "days": 14,
+   "passports": [
+    "BD",
+    "MV"
+   ]
+  }
+ ],
+ "others": {
+  "entry": "evisa",
+  "days": 90
+ },
+ "note": "Bhutan: Indians move freely under the 1949 treaty (within the border towns; beyond them a permit given on arrival, not modelled); Bangladeshis and Maldivians enter without a visa for 14 days; everyone else gets an e-Visa (USD 40, 90 days) and pays the Sustainable Development Fee of USD 100 a night (to 31 August 2027, not modelled). Read from Wikipedia's copy. Checked on 2026-11-03 against the Department of Immigration's own portal (its FAQ as Common Crawl captured it on 4 September 2026): every tourist needs a visa (US$40, a stay of up to 90 days) but Indians, who need a permit (held as free), and Bangladeshis and Maldivians, who get a visa on arrival at the port of entry, which corrected Wikipedia's copy, read before, on the form (a visa on arrival, not no visa); the FAQ gives no length for it, so the 14 days stand on Wikipedia's copy.",
+ "sources": [
+  {
+   "url": "https://en.wikipedia.org/wiki/Visa_policy_of_Bhutan",
+   "title": "Wikipedia, Visa policy of Bhutan",
+   "read": "2026-11-03",
+   "kind": "secondary",
+   "quotes": "https://www.immigration.gov.bt/",
+   "said": "Visitors to Bhutan must obtain an e-Visa unless they are citizens of one of the visa-exempt countries. ... Citizens of India do not need a visa to enter Bhutan, because the 1949 treaty between Bhutan and India allows for free movement of people between the two nations on a reciprocal basis. ... Citizens of the following countries may enter Bhutan without a visa for up to 14 days: Bangladesh Maldives ... Citizens of other countries may independently obtain an e-Visa whose duration of stay is 90 days. Visa fee is USD 40 per person (nonrefundable)."
+  },
+  {
+   "url": "https://immi.gov.bt/faq/",
+   "title": "Department of Immigration, Bhutan: Bhutan Immigration Services Portal, FAQ (read from Common Crawl CC-MAIN-2026-39, capture of 2026-09-04 20:45:06, crawl-data/CC-MAIN-2026-39/segments/1788492699512.14/warc/CC-MAIN-20260904192038-20260904222038-00792.warc.gz offset 222902493)",
+   "read": "2026-11-03",
+   "kind": "primary",
+   "said": "Do tourist need a visa to enter Bhutan? All tourist need a visa to enter Bhutan, except for visitors from India, who require a permit. Nationals of Bangladesh and the Maldives, as well as nationals of Switzerland and Thailand who hold diplomatic or government-official passports, are eligible for a visa on arrival at the port of entry. Nationals of India will need a permit to enter Bhutan and are required to hold an Indian passport or an Indian voter I[D card] ... How long can a foreigner stay in the country as a tourist? Foreigners can stay in the country as a tourist for a maximum of 90 days. ... How much is the visa fee? The visa fee is US$40 per person"
+  }
+ ]
+}

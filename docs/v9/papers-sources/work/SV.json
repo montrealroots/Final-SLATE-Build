@@ -1,0 +1,24 @@
+{
+ "country": "SV",
+ "others": {
+  "right": "permit",
+  "route": "Permiso Especial de Ingreso para artistas extranjeros"
+ },
+ "note": "El Salvador: anyone in El Salvador who has hired a foreign artist, alone or in a group, to perform (music, theatre, singing, dance, announcing, circus, hosting cultural or commercial shows, radio or television) must obtain the Directorate General of Migration and Foreigners' special entry permit, online on form 51 with the Directorate General of Public Spectacles' resolution; Central Americans pay $60, others $100 (the Directorate's service page, published 15 August 2024). Its instructions for form F-51 add that the request is made 15 days before the artist's entry, that the permit covers at most thirty consecutive days of performances, or as many performances at intervals, within a year from the first, and that the artist also carries the visa their nationality needs; the thirty days' cap isn't modelled. No days of performing without it are named. The file was first read from El Diario de Hoy, quoting the Directorate; form F-51 had moved off transparencia.gob.sv, and the service page links it.",
+ "sources": [
+  {
+   "url": "https://www.migracion.gob.sv/servicios/permiso-especial-de-ingreso-para-artistas-extranjeros-pei-artistas/",
+   "title": "Dirección General de Migración y Extranjería, Solicitud y pago en línea de Permiso Especial de Ingreso para artistas extranjeros (published 15-08-2024)",
+   "read": "2026-11-03",
+   "said": "Este trámite migratorio dirigido a toda persona natural o jurídica en la República de El Salvador que ha contratado a un artista extranjero, de forma individual o colectiva ingrese al país, con el fin de realizar presentaciones en las diferentes ramas del arte, la ejecución de música, teatro, canto, baile, locución, circense, animación de espectáculos culturales, comerciales o cualquier otra actividad similar, radio o televisión. ... Llena y descarga el formulario N°51 ... Envía la resolución y constancia emitida por la Dirección General de Espectáculos Públicos. ... Realiza el Pago por la tasa migratoria de Permiso Especial de Ingreso para Artistas centroamericanos ($60.00) y no centroamericanos ($100.00).",
+   "kind": "primary"
+  },
+  {
+   "url": "https://drive.google.com/uc?export=download&id=1j802xxizmZmjBO15ZKQ59-hx-QZEWjUp",
+   "title": "DGME, Formulario de trámite de Permiso Especial de Ingreso para artistas centroamericanos y no centroamericanos, Instructivo F-51 (the file the Directorate's service page links as 'Aquí'), page 1",
+   "read": "2026-11-03",
+   "said": "La solicitud debe ser presentada con quince (15) días de anticipación al ingreso del artista. ... El plazo para el cual los artistas extranjeros serán autorizados para sus presentaciones en el país, no podrá exceder de treinta días consecutivos o la realización de igual número de presentaciones por intervalos, dentro del plazo de un año contado desde el primer día de su actuación. ... Para el ingreso a territorio salvadoreño, los artistas extranjeros deberán portar la visa con base a la categoría de clasificación de país.",
+   "kind": "primary"
+  }
+ ]
+}

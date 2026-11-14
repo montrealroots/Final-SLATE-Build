@@ -1,0 +1,600 @@
+2026-01-01	nyårsdagen	New Year's Day	public	
+2026-01-05	trettondagsafton	Twelfth Night	optional	
+2026-01-06	trettondedag jul	Epiphany	public	
+2026-01-13	tjugondag Knut	Saint Knut's Day	observance	
+2026-03-01	Vasaloppet	Vasaloppet	observance	
+2026-04-02	skärtorsdagen	Maundy Thursday	observance	
+2026-04-03	långfredagen	Good Friday	public	
+2026-04-04	påskafton	Easter Saturday	observance	
+2026-04-05	påskdagen	Easter Sunday	public	
+2026-04-06	annandag påsk	Easter Monday	public	
+2026-04-30	valborgsmässoafton	Walpurgis Night	optional	
+2026-05-01	första maj	Labour Day	public	
+2026-05-14	Kristi himmelsfärdsdag	Ascension Day	public	
+2026-05-23	pingstafton	Whitsun Eve	observance	
+2026-05-24	pingstdagen	Pentecost	public	
+2026-05-25	annandag pingst	Whit Monday	observance	
+2026-05-31	Mors dag	Mother's Day	observance	
+2026-06-06	nationaldagen	National Day	public	
+2026-06-19	midsommarafton	Midsummer Eve	bank	
+2026-06-20	midsommardagen	Midsummer Day	public	
+2026-10-30	allhelgonaafton	Halloween	optional	
+2026-10-31	alla helgons dag	All Saints' Day	public	
+2026-11-06	Gustav-Adolf-dagen	Gustavus Adolphus Day	observance	
+2026-11-11	Mårtensgås	Saint Martin's Day	observance	
+2026-12-10	Nobeldagen	Nobel Day	observance	
+2026-12-13	Luciadagen	Saint Lucy's Day	observance	
+2026-12-24	julafton	Christmas Eve	bank	
+2026-12-25	juldagen	Christmas Day	public	
+2026-12-26	annandag jul	Boxing Day	public	
+2026-12-31	nyårsafton	New Year's Eve	bank	
+2027-01-01	nyårsdagen	New Year's Day	public	
+2027-01-05	trettondagsafton	Twelfth Night	optional	
+2027-01-06	trettondedag jul	Epiphany	public	
+2027-01-13	tjugondag Knut	Saint Knut's Day	observance	
+2027-03-07	Vasaloppet	Vasaloppet	observance	
+2027-03-25	skärtorsdagen	Maundy Thursday	observance	
+2027-03-26	långfredagen	Good Friday	public	
+2027-03-27	påskafton	Easter Saturday	observance	
+2027-03-28	påskdagen	Easter Sunday	public	
+2027-03-29	annandag påsk	Easter Monday	public	
+2027-04-30	valborgsmässoafton	Walpurgis Night	optional	
+2027-05-01	första maj	Labour Day	public	
+2027-05-06	Kristi himmelsfärdsdag	Ascension Day	public	
+2027-05-15	pingstafton	Whitsun Eve	observance	
+2027-05-16	pingstdagen	Pentecost	public	
+2027-05-17	annandag pingst	Whit Monday	observance	
+2027-05-30	Mors dag	Mother's Day	observance	
+2027-06-06	nationaldagen	National Day	public	
+2027-06-25	midsommarafton	Midsummer Eve	bank	
+2027-06-26	midsommardagen	Midsummer Day	public	
+2027-11-05	allhelgonaafton	Halloween	optional	
+2027-11-06	alla helgons dag	All Saints' Day	public	
+2027-11-06	Gustav-Adolf-dagen	Gustavus Adolphus Day	observance	
+2027-11-11	Mårtensgås	Saint Martin's Day	observance	
+2027-12-10	Nobeldagen	Nobel Day	observance	
+2027-12-13	Luciadagen	Saint Lucy's Day	observance	
+2027-12-24	julafton	Christmas Eve	bank	
+2027-12-25	juldagen	Christmas Day	public	
+2027-12-26	annandag jul	Boxing Day	public	
+2027-12-31	nyårsafton	New Year's Eve	bank	
+2028-01-01	nyårsdagen	New Year's Day	public	
+2028-01-05	trettondagsafton	Twelfth Night	optional	
+2028-01-06	trettondedag jul	Epiphany	public	
+2028-01-13	tjugondag Knut	Saint Knut's Day	observance	
+2028-03-05	Vasaloppet	Vasaloppet	observance	
+2028-04-13	skärtorsdagen	Maundy Thursday	observance	
+2028-04-14	långfredagen	Good Friday	public	
+2028-04-15	påskafton	Easter Saturday	observance	
+2028-04-16	påskdagen	Easter Sunday	public	
+2028-04-17	annandag påsk	Easter Monday	public	
+2028-04-30	valborgsmässoafton	Walpurgis Night	optional	
+2028-05-01	första maj	Labour Day	public	
+2028-05-25	Kristi himmelsfärdsdag	Ascension Day	public	
+2028-05-28	Mors dag	Mother's Day	observance	
+2028-06-03	pingstafton	Whitsun Eve	observance	
+2028-06-04	pingstdagen	Pentecost	public	
+2028-06-05	annandag pingst	Whit Monday	observance	
+2028-06-06	nationaldagen	National Day	public	
+2028-06-23	midsommarafton	Midsummer Eve	bank	
+2028-06-24	midsommardagen	Midsummer Day	public	
+2028-11-03	allhelgonaafton	Halloween	optional	
+2028-11-04	alla helgons dag	All Saints' Day	public	
+2028-11-06	Gustav-Adolf-dagen	Gustavus Adolphus Day	observance	
+2028-11-11	Mårtensgås	Saint Martin's Day	observance	
+2028-12-10	Nobeldagen	Nobel Day	observance	
+2028-12-13	Luciadagen	Saint Lucy's Day	observance	
+2028-12-24	julafton	Christmas Eve	bank	
+2028-12-25	juldagen	Christmas Day	public	
+2028-12-26	annandag jul	Boxing Day	public	
+2028-12-31	nyårsafton	New Year's Eve	bank	
+2029-01-01	nyårsdagen	New Year's Day	public	
+2029-01-05	trettondagsafton	Twelfth Night	optional	
+2029-01-06	trettondedag jul	Epiphany	public	
+2029-01-13	tjugondag Knut	Saint Knut's Day	observance	
+2029-03-04	Vasaloppet	Vasaloppet	observance	
+2029-03-29	skärtorsdagen	Maundy Thursday	observance	
+2029-03-30	långfredagen	Good Friday	public	
+2029-03-31	påskafton	Easter Saturday	observance	
+2029-04-01	påskdagen	Easter Sunday	public	
+2029-04-02	annandag påsk	Easter Monday	public	
+2029-04-30	valborgsmässoafton	Walpurgis Night	optional	
+2029-05-01	första maj	Labour Day	public	
+2029-05-10	Kristi himmelsfärdsdag	Ascension Day	public	
+2029-05-19	pingstafton	Whitsun Eve	observance	
+2029-05-20	pingstdagen	Pentecost	public	
+2029-05-21	annandag pingst	Whit Monday	observance	
+2029-05-27	Mors dag	Mother's Day	observance	
+2029-06-06	nationaldagen	National Day	public	
+2029-06-22	midsommarafton	Midsummer Eve	bank	
+2029-06-23	midsommardagen	Midsummer Day	public	
+2029-11-02	allhelgonaafton	Halloween	optional	
+2029-11-03	alla helgons dag	All Saints' Day	public	
+2029-11-06	Gustav-Adolf-dagen	Gustavus Adolphus Day	observance	
+2029-11-11	Mårtensgås	Saint Martin's Day	observance	
+2029-12-10	Nobeldagen	Nobel Day	observance	
+2029-12-13	Luciadagen	Saint Lucy's Day	observance	
+2029-12-24	julafton	Christmas Eve	bank	
+2029-12-25	juldagen	Christmas Day	public	
+2029-12-26	annandag jul	Boxing Day	public	
+2029-12-31	nyårsafton	New Year's Eve	bank	
+2030-01-01	nyårsdagen	New Year's Day	public	
+2030-01-05	trettondagsafton	Twelfth Night	optional	
+2030-01-06	trettondedag jul	Epiphany	public	
+2030-01-13	tjugondag Knut	Saint Knut's Day	observance	
+2030-03-03	Vasaloppet	Vasaloppet	observance	
+2030-04-18	skärtorsdagen	Maundy Thursday	observance	
+2030-04-19	långfredagen	Good Friday	public	
+2030-04-20	påskafton	Easter Saturday	observance	
+2030-04-21	påskdagen	Easter Sunday	public	
+2030-04-22	annandag påsk	Easter Monday	public	
+2030-04-30	valborgsmässoafton	Walpurgis Night	optional	
+2030-05-01	första maj	Labour Day	public	
+2030-05-26	Mors dag	Mother's Day	observance	
+2030-05-30	Kristi himmelsfärdsdag	Ascension Day	public	
+2030-06-06	nationaldagen	National Day	public	
+2030-06-08	pingstafton	Whitsun Eve	observance	
+2030-06-09	pingstdagen	Pentecost	public	
+2030-06-10	annandag pingst	Whit Monday	observance	
+2030-06-21	midsommarafton	Midsummer Eve	bank	
+2030-06-22	midsommardagen	Midsummer Day	public	
+2030-11-01	allhelgonaafton	Halloween	optional	
+2030-11-02	alla helgons dag	All Saints' Day	public	
+2030-11-06	Gustav-Adolf-dagen	Gustavus Adolphus Day	observance	
+2030-11-11	Mårtensgås	Saint Martin's Day	observance	
+2030-12-10	Nobeldagen	Nobel Day	observance	
+2030-12-13	Luciadagen	Saint Lucy's Day	observance	
+2030-12-24	julafton	Christmas Eve	bank	
+2030-12-25	juldagen	Christmas Day	public	
+2030-12-26	annandag jul	Boxing Day	public	
+2030-12-31	nyårsafton	New Year's Eve	bank	
+2031-01-01	nyårsdagen	New Year's Day	public	
+2031-01-05	trettondagsafton	Twelfth Night	optional	
+2031-01-06	trettondedag jul	Epiphany	public	
+2031-01-13	tjugondag Knut	Saint Knut's Day	observance	
+2031-03-02	Vasaloppet	Vasaloppet	observance	
+2031-04-10	skärtorsdagen	Maundy Thursday	observance	
+2031-04-11	långfredagen	Good Friday	public	
+2031-04-12	påskafton	Easter Saturday	observance	
+2031-04-13	påskdagen	Easter Sunday	public	
+2031-04-14	annandag påsk	Easter Monday	public	
+2031-04-30	valborgsmässoafton	Walpurgis Night	optional	
+2031-05-01	första maj	Labour Day	public	
+2031-05-22	Kristi himmelsfärdsdag	Ascension Day	public	
+2031-05-25	Mors dag	Mother's Day	observance	
+2031-05-31	pingstafton	Whitsun Eve	observance	
+2031-06-01	pingstdagen	Pentecost	public	
+2031-06-02	annandag pingst	Whit Monday	observance	
+2031-06-06	nationaldagen	National Day	public	
+2031-06-20	midsommarafton	Midsummer Eve	bank	
+2031-06-21	midsommardagen	Midsummer Day	public	
+2031-10-31	allhelgonaafton	Halloween	optional	
+2031-11-01	alla helgons dag	All Saints' Day	public	
+2031-11-06	Gustav-Adolf-dagen	Gustavus Adolphus Day	observance	
+2031-11-11	Mårtensgås	Saint Martin's Day	observance	
+2031-12-10	Nobeldagen	Nobel Day	observance	
+2031-12-13	Luciadagen	Saint Lucy's Day	observance	
+2031-12-24	julafton	Christmas Eve	bank	
+2031-12-25	juldagen	Christmas Day	public	
+2031-12-26	annandag jul	Boxing Day	public	
+2031-12-31	nyårsafton	New Year's Eve	bank	
+2032-01-01	nyårsdagen	New Year's Day	public	
+2032-01-05	trettondagsafton	Twelfth Night	optional	
+2032-01-06	trettondedag jul	Epiphany	public	
+2032-01-13	tjugondag Knut	Saint Knut's Day	observance	
+2032-03-07	Vasaloppet	Vasaloppet	observance	
+2032-03-25	skärtorsdagen	Maundy Thursday	observance	
+2032-03-26	långfredagen	Good Friday	public	
+2032-03-27	påskafton	Easter Saturday	observance	
+2032-03-28	påskdagen	Easter Sunday	public	
+2032-03-29	annandag påsk	Easter Monday	public	
+2032-04-30	valborgsmässoafton	Walpurgis Night	optional	
+2032-05-01	första maj	Labour Day	public	
+2032-05-06	Kristi himmelsfärdsdag	Ascension Day	public	
+2032-05-15	pingstafton	Whitsun Eve	observance	
+2032-05-16	pingstdagen	Pentecost	public	
+2032-05-17	annandag pingst	Whit Monday	observance	
+2032-05-30	Mors dag	Mother's Day	observance	
+2032-06-06	nationaldagen	National Day	public	
+2032-06-25	midsommarafton	Midsummer Eve	bank	
+2032-06-26	midsommardagen	Midsummer Day	public	
+2032-11-05	allhelgonaafton	Halloween	optional	
+2032-11-06	alla helgons dag	All Saints' Day	public	
+2032-11-06	Gustav-Adolf-dagen	Gustavus Adolphus Day	observance	
+2032-11-11	Mårtensgås	Saint Martin's Day	observance	
+2032-12-10	Nobeldagen	Nobel Day	observance	
+2032-12-13	Luciadagen	Saint Lucy's Day	observance	
+2032-12-24	julafton	Christmas Eve	bank	
+2032-12-25	juldagen	Christmas Day	public	
+2032-12-26	annandag jul	Boxing Day	public	
+2032-12-31	nyårsafton	New Year's Eve	bank	
+2033-01-01	nyårsdagen	New Year's Day	public	
+2033-01-05	trettondagsafton	Twelfth Night	optional	
+2033-01-06	trettondedag jul	Epiphany	public	
+2033-01-13	tjugondag Knut	Saint Knut's Day	observance	
+2033-03-06	Vasaloppet	Vasaloppet	observance	
+2033-04-14	skärtorsdagen	Maundy Thursday	observance	
+2033-04-15	långfredagen	Good Friday	public	
+2033-04-16	påskafton	Easter Saturday	observance	
+2033-04-17	påskdagen	Easter Sunday	public	
+2033-04-18	annandag påsk	Easter Monday	public	
+2033-04-30	valborgsmässoafton	Walpurgis Night	optional	
+2033-05-01	första maj	Labour Day	public	
+2033-05-26	Kristi himmelsfärdsdag	Ascension Day	public	
+2033-05-29	Mors dag	Mother's Day	observance	
+2033-06-04	pingstafton	Whitsun Eve	observance	
+2033-06-05	pingstdagen	Pentecost	public	
+2033-06-06	annandag pingst	Whit Monday	observance	
+2033-06-06	nationaldagen	National Day	public	
+2033-06-24	midsommarafton	Midsummer Eve	bank	
+2033-06-25	midsommardagen	Midsummer Day	public	
+2033-11-04	allhelgonaafton	Halloween	optional	
+2033-11-05	alla helgons dag	All Saints' Day	public	
+2033-11-06	Gustav-Adolf-dagen	Gustavus Adolphus Day	observance	
+2033-11-11	Mårtensgås	Saint Martin's Day	observance	
+2033-12-10	Nobeldagen	Nobel Day	observance	
+2033-12-13	Luciadagen	Saint Lucy's Day	observance	
+2033-12-24	julafton	Christmas Eve	bank	
+2033-12-25	juldagen	Christmas Day	public	
+2033-12-26	annandag jul	Boxing Day	public	
+2033-12-31	nyårsafton	New Year's Eve	bank	
+2034-01-01	nyårsdagen	New Year's Day	public	
+2034-01-05	trettondagsafton	Twelfth Night	optional	
+2034-01-06	trettondedag jul	Epiphany	public	
+2034-01-13	tjugondag Knut	Saint Knut's Day	observance	
+2034-03-05	Vasaloppet	Vasaloppet	observance	
+2034-04-06	skärtorsdagen	Maundy Thursday	observance	
+2034-04-07	långfredagen	Good Friday	public	
+2034-04-08	påskafton	Easter Saturday	observance	
+2034-04-09	påskdagen	Easter Sunday	public	
+2034-04-10	annandag påsk	Easter Monday	public	
+2034-04-30	valborgsmässoafton	Walpurgis Night	optional	
+2034-05-01	första maj	Labour Day	public	
+2034-05-18	Kristi himmelsfärdsdag	Ascension Day	public	
+2034-05-27	pingstafton	Whitsun Eve	observance	
+2034-05-28	Mors dag	Mother's Day	observance	
+2034-05-28	pingstdagen	Pentecost	public	
+2034-05-29	annandag pingst	Whit Monday	observance	
+2034-06-06	nationaldagen	National Day	public	
+2034-06-23	midsommarafton	Midsummer Eve	bank	
+2034-06-24	midsommardagen	Midsummer Day	public	
+2034-11-03	allhelgonaafton	Halloween	optional	
+2034-11-04	alla helgons dag	All Saints' Day	public	
+2034-11-06	Gustav-Adolf-dagen	Gustavus Adolphus Day	observance	
+2034-11-11	Mårtensgås	Saint Martin's Day	observance	
+2034-12-10	Nobeldagen	Nobel Day	observance	
+2034-12-13	Luciadagen	Saint Lucy's Day	observance	
+2034-12-24	julafton	Christmas Eve	bank	
+2034-12-25	juldagen	Christmas Day	public	
+2034-12-26	annandag jul	Boxing Day	public	
+2034-12-31	nyårsafton	New Year's Eve	bank	
+2035-01-01	nyårsdagen	New Year's Day	public	
+2035-01-05	trettondagsafton	Twelfth Night	optional	
+2035-01-06	trettondedag jul	Epiphany	public	
+2035-01-13	tjugondag Knut	Saint Knut's Day	observance	
+2035-03-04	Vasaloppet	Vasaloppet	observance	
+2035-03-22	skärtorsdagen	Maundy Thursday	observance	
+2035-03-23	långfredagen	Good Friday	public	
+2035-03-24	påskafton	Easter Saturday	observance	
+2035-03-25	påskdagen	Easter Sunday	public	
+2035-03-26	annandag påsk	Easter Monday	public	
+2035-04-30	valborgsmässoafton	Walpurgis Night	optional	
+2035-05-01	första maj	Labour Day	public	
+2035-05-03	Kristi himmelsfärdsdag	Ascension Day	public	
+2035-05-12	pingstafton	Whitsun Eve	observance	
+2035-05-13	pingstdagen	Pentecost	public	
+2035-05-14	annandag pingst	Whit Monday	observance	
+2035-05-27	Mors dag	Mother's Day	observance	
+2035-06-06	nationaldagen	National Day	public	
+2035-06-22	midsommarafton	Midsummer Eve	bank	
+2035-06-23	midsommardagen	Midsummer Day	public	
+2035-11-02	allhelgonaafton	Halloween	optional	
+2035-11-03	alla helgons dag	All Saints' Day	public	
+2035-11-06	Gustav-Adolf-dagen	Gustavus Adolphus Day	observance	
+2035-11-11	Mårtensgås	Saint Martin's Day	observance	
+2035-12-10	Nobeldagen	Nobel Day	observance	
+2035-12-13	Luciadagen	Saint Lucy's Day	observance	
+2035-12-24	julafton	Christmas Eve	bank	
+2035-12-25	juldagen	Christmas Day	public	
+2035-12-26	annandag jul	Boxing Day	public	
+2035-12-31	nyårsafton	New Year's Eve	bank	
+2036-01-01	nyårsdagen	New Year's Day	public	
+2036-01-05	trettondagsafton	Twelfth Night	optional	
+2036-01-06	trettondedag jul	Epiphany	public	
+2036-01-13	tjugondag Knut	Saint Knut's Day	observance	
+2036-03-02	Vasaloppet	Vasaloppet	observance	
+2036-04-10	skärtorsdagen	Maundy Thursday	observance	
+2036-04-11	långfredagen	Good Friday	public	
+2036-04-12	påskafton	Easter Saturday	observance	
+2036-04-13	påskdagen	Easter Sunday	public	
+2036-04-14	annandag påsk	Easter Monday	public	
+2036-04-30	valborgsmässoafton	Walpurgis Night	optional	
+2036-05-01	första maj	Labour Day	public	
+2036-05-22	Kristi himmelsfärdsdag	Ascension Day	public	
+2036-05-25	Mors dag	Mother's Day	observance	
+2036-05-31	pingstafton	Whitsun Eve	observance	
+2036-06-01	pingstdagen	Pentecost	public	
+2036-06-02	annandag pingst	Whit Monday	observance	
+2036-06-06	nationaldagen	National Day	public	
+2036-06-20	midsommarafton	Midsummer Eve	bank	
+2036-06-21	midsommardagen	Midsummer Day	public	
+2036-10-31	allhelgonaafton	Halloween	optional	
+2036-11-01	alla helgons dag	All Saints' Day	public	
+2036-11-06	Gustav-Adolf-dagen	Gustavus Adolphus Day	observance	
+2036-11-11	Mårtensgås	Saint Martin's Day	observance	
+2036-12-10	Nobeldagen	Nobel Day	observance	
+2036-12-13	Luciadagen	Saint Lucy's Day	observance	
+2036-12-24	julafton	Christmas Eve	bank	
+2036-12-25	juldagen	Christmas Day	public	
+2036-12-26	annandag jul	Boxing Day	public	
+2036-12-31	nyårsafton	New Year's Eve	bank	
+2037-01-01	nyårsdagen	New Year's Day	public	
+2037-01-05	trettondagsafton	Twelfth Night	optional	
+2037-01-06	trettondedag jul	Epiphany	public	
+2037-01-13	tjugondag Knut	Saint Knut's Day	observance	
+2037-03-01	Vasaloppet	Vasaloppet	observance	
+2037-04-02	skärtorsdagen	Maundy Thursday	observance	
+2037-04-03	långfredagen	Good Friday	public	
+2037-04-04	påskafton	Easter Saturday	observance	
+2037-04-05	påskdagen	Easter Sunday	public	
+2037-04-06	annandag påsk	Easter Monday	public	
+2037-04-30	valborgsmässoafton	Walpurgis Night	optional	
+2037-05-01	första maj	Labour Day	public	
+2037-05-14	Kristi himmelsfärdsdag	Ascension Day	public	
+2037-05-23	pingstafton	Whitsun Eve	observance	
+2037-05-24	pingstdagen	Pentecost	public	
+2037-05-25	annandag pingst	Whit Monday	observance	
+2037-05-31	Mors dag	Mother's Day	observance	
+2037-06-06	nationaldagen	National Day	public	
+2037-06-19	midsommarafton	Midsummer Eve	bank	
+2037-06-20	midsommardagen	Midsummer Day	public	
+2037-10-30	allhelgonaafton	Halloween	optional	
+2037-10-31	alla helgons dag	All Saints' Day	public	
+2037-11-06	Gustav-Adolf-dagen	Gustavus Adolphus Day	observance	
+2037-11-11	Mårtensgås	Saint Martin's Day	observance	
+2037-12-10	Nobeldagen	Nobel Day	observance	
+2037-12-13	Luciadagen	Saint Lucy's Day	observance	
+2037-12-24	julafton	Christmas Eve	bank	
+2037-12-25	juldagen	Christmas Day	public	
+2037-12-26	annandag jul	Boxing Day	public	
+2037-12-31	nyårsafton	New Year's Eve	bank	
+2038-01-01	nyårsdagen	New Year's Day	public	
+2038-01-05	trettondagsafton	Twelfth Night	optional	
+2038-01-06	trettondedag jul	Epiphany	public	
+2038-01-13	tjugondag Knut	Saint Knut's Day	observance	
+2038-03-07	Vasaloppet	Vasaloppet	observance	
+2038-04-22	skärtorsdagen	Maundy Thursday	observance	
+2038-04-23	långfredagen	Good Friday	public	
+2038-04-24	påskafton	Easter Saturday	observance	
+2038-04-25	påskdagen	Easter Sunday	public	
+2038-04-26	annandag påsk	Easter Monday	public	
+2038-04-30	valborgsmässoafton	Walpurgis Night	optional	
+2038-05-01	första maj	Labour Day	public	
+2038-05-30	Mors dag	Mother's Day	observance	
+2038-06-03	Kristi himmelsfärdsdag	Ascension Day	public	
+2038-06-06	nationaldagen	National Day	public	
+2038-06-12	pingstafton	Whitsun Eve	observance	
+2038-06-13	pingstdagen	Pentecost	public	
+2038-06-14	annandag pingst	Whit Monday	observance	
+2038-06-25	midsommarafton	Midsummer Eve	bank	
+2038-06-26	midsommardagen	Midsummer Day	public	
+2038-11-05	allhelgonaafton	Halloween	optional	
+2038-11-06	alla helgons dag	All Saints' Day	public	
+2038-11-06	Gustav-Adolf-dagen	Gustavus Adolphus Day	observance	
+2038-11-11	Mårtensgås	Saint Martin's Day	observance	
+2038-12-10	Nobeldagen	Nobel Day	observance	
+2038-12-13	Luciadagen	Saint Lucy's Day	observance	
+2038-12-24	julafton	Christmas Eve	bank	
+2038-12-25	juldagen	Christmas Day	public	
+2038-12-26	annandag jul	Boxing Day	public	
+2038-12-31	nyårsafton	New Year's Eve	bank	
+2039-01-01	nyårsdagen	New Year's Day	public	
+2039-01-05	trettondagsafton	Twelfth Night	optional	
+2039-01-06	trettondedag jul	Epiphany	public	
+2039-01-13	tjugondag Knut	Saint Knut's Day	observance	
+2039-03-06	Vasaloppet	Vasaloppet	observance	
+2039-04-07	skärtorsdagen	Maundy Thursday	observance	
+2039-04-08	långfredagen	Good Friday	public	
+2039-04-09	påskafton	Easter Saturday	observance	
+2039-04-10	påskdagen	Easter Sunday	public	
+2039-04-11	annandag påsk	Easter Monday	public	
+2039-04-30	valborgsmässoafton	Walpurgis Night	optional	
+2039-05-01	första maj	Labour Day	public	
+2039-05-19	Kristi himmelsfärdsdag	Ascension Day	public	
+2039-05-28	pingstafton	Whitsun Eve	observance	
+2039-05-29	Mors dag	Mother's Day	observance	
+2039-05-29	pingstdagen	Pentecost	public	
+2039-05-30	annandag pingst	Whit Monday	observance	
+2039-06-06	nationaldagen	National Day	public	
+2039-06-24	midsommarafton	Midsummer Eve	bank	
+2039-06-25	midsommardagen	Midsummer Day	public	
+2039-11-04	allhelgonaafton	Halloween	optional	
+2039-11-05	alla helgons dag	All Saints' Day	public	
+2039-11-06	Gustav-Adolf-dagen	Gustavus Adolphus Day	observance	
+2039-11-11	Mårtensgås	Saint Martin's Day	observance	
+2039-12-10	Nobeldagen	Nobel Day	observance	
+2039-12-13	Luciadagen	Saint Lucy's Day	observance	
+2039-12-24	julafton	Christmas Eve	bank	
+2039-12-25	juldagen	Christmas Day	public	
+2039-12-26	annandag jul	Boxing Day	public	
+2039-12-31	nyårsafton	New Year's Eve	bank	
+2040-01-01	nyårsdagen	New Year's Day	public	
+2040-01-05	trettondagsafton	Twelfth Night	optional	
+2040-01-06	trettondedag jul	Epiphany	public	
+2040-01-13	tjugondag Knut	Saint Knut's Day	observance	
+2040-03-04	Vasaloppet	Vasaloppet	observance	
+2040-03-29	skärtorsdagen	Maundy Thursday	observance	
+2040-03-30	långfredagen	Good Friday	public	
+2040-03-31	påskafton	Easter Saturday	observance	
+2040-04-01	påskdagen	Easter Sunday	public	
+2040-04-02	annandag påsk	Easter Monday	public	
+2040-04-30	valborgsmässoafton	Walpurgis Night	optional	
+2040-05-01	första maj	Labour Day	public	
+2040-05-10	Kristi himmelsfärdsdag	Ascension Day	public	
+2040-05-19	pingstafton	Whitsun Eve	observance	
+2040-05-20	pingstdagen	Pentecost	public	
+2040-05-21	annandag pingst	Whit Monday	observance	
+2040-05-27	Mors dag	Mother's Day	observance	
+2040-06-06	nationaldagen	National Day	public	
+2040-06-22	midsommarafton	Midsummer Eve	bank	
+2040-06-23	midsommardagen	Midsummer Day	public	
+2040-11-02	allhelgonaafton	Halloween	optional	
+2040-11-03	alla helgons dag	All Saints' Day	public	
+2040-11-06	Gustav-Adolf-dagen	Gustavus Adolphus Day	observance	
+2040-11-11	Mårtensgås	Saint Martin's Day	observance	
+2040-12-10	Nobeldagen	Nobel Day	observance	
+2040-12-13	Luciadagen	Saint Lucy's Day	observance	
+2040-12-24	julafton	Christmas Eve	bank	
+2040-12-25	juldagen	Christmas Day	public	
+2040-12-26	annandag jul	Boxing Day	public	
+2040-12-31	nyårsafton	New Year's Eve	bank	
+2041-01-01	nyårsdagen	New Year's Day	public	
+2041-01-05	trettondagsafton	Twelfth Night	optional	
+2041-01-06	trettondedag jul	Epiphany	public	
+2041-01-13	tjugondag Knut	Saint Knut's Day	observance	
+2041-03-03	Vasaloppet	Vasaloppet	observance	
+2041-04-18	skärtorsdagen	Maundy Thursday	observance	
+2041-04-19	långfredagen	Good Friday	public	
+2041-04-20	påskafton	Easter Saturday	observance	
+2041-04-21	påskdagen	Easter Sunday	public	
+2041-04-22	annandag påsk	Easter Monday	public	
+2041-04-30	valborgsmässoafton	Walpurgis Night	optional	
+2041-05-01	första maj	Labour Day	public	
+2041-05-26	Mors dag	Mother's Day	observance	
+2041-05-30	Kristi himmelsfärdsdag	Ascension Day	public	
+2041-06-06	nationaldagen	National Day	public	
+2041-06-08	pingstafton	Whitsun Eve	observance	
+2041-06-09	pingstdagen	Pentecost	public	
+2041-06-10	annandag pingst	Whit Monday	observance	
+2041-06-21	midsommarafton	Midsummer Eve	bank	
+2041-06-22	midsommardagen	Midsummer Day	public	
+2041-11-01	allhelgonaafton	Halloween	optional	
+2041-11-02	alla helgons dag	All Saints' Day	public	
+2041-11-06	Gustav-Adolf-dagen	Gustavus Adolphus Day	observance	
+2041-11-11	Mårtensgås	Saint Martin's Day	observance	
+2041-12-10	Nobeldagen	Nobel Day	observance	
+2041-12-13	Luciadagen	Saint Lucy's Day	observance	
+2041-12-24	julafton	Christmas Eve	bank	
+2041-12-25	juldagen	Christmas Day	public	
+2041-12-26	annandag jul	Boxing Day	public	
+2041-12-31	nyårsafton	New Year's Eve	bank	
+2042-01-01	nyårsdagen	New Year's Day	public	
+2042-01-05	trettondagsafton	Twelfth Night	optional	
+2042-01-06	trettondedag jul	Epiphany	public	
+2042-01-13	tjugondag Knut	Saint Knut's Day	observance	
+2042-03-02	Vasaloppet	Vasaloppet	observance	
+2042-04-03	skärtorsdagen	Maundy Thursday	observance	
+2042-04-04	långfredagen	Good Friday	public	
+2042-04-05	påskafton	Easter Saturday	observance	
+2042-04-06	påskdagen	Easter Sunday	public	
+2042-04-07	annandag påsk	Easter Monday	public	
+2042-04-30	valborgsmässoafton	Walpurgis Night	optional	
+2042-05-01	första maj	Labour Day	public	
+2042-05-15	Kristi himmelsfärdsdag	Ascension Day	public	
+2042-05-24	pingstafton	Whitsun Eve	observance	
+2042-05-25	Mors dag	Mother's Day	observance	
+2042-05-25	pingstdagen	Pentecost	public	
+2042-05-26	annandag pingst	Whit Monday	observance	
+2042-06-06	nationaldagen	National Day	public	
+2042-06-20	midsommarafton	Midsummer Eve	bank	
+2042-06-21	midsommardagen	Midsummer Day	public	
+2042-10-31	allhelgonaafton	Halloween	optional	
+2042-11-01	alla helgons dag	All Saints' Day	public	
+2042-11-06	Gustav-Adolf-dagen	Gustavus Adolphus Day	observance	
+2042-11-11	Mårtensgås	Saint Martin's Day	observance	
+2042-12-10	Nobeldagen	Nobel Day	observance	
+2042-12-13	Luciadagen	Saint Lucy's Day	observance	
+2042-12-24	julafton	Christmas Eve	bank	
+2042-12-25	juldagen	Christmas Day	public	
+2042-12-26	annandag jul	Boxing Day	public	
+2042-12-31	nyårsafton	New Year's Eve	bank	
+2043-01-01	nyårsdagen	New Year's Day	public	
+2043-01-05	trettondagsafton	Twelfth Night	optional	
+2043-01-06	trettondedag jul	Epiphany	public	
+2043-01-13	tjugondag Knut	Saint Knut's Day	observance	
+2043-03-01	Vasaloppet	Vasaloppet	observance	
+2043-03-26	skärtorsdagen	Maundy Thursday	observance	
+2043-03-27	långfredagen	Good Friday	public	
+2043-03-28	påskafton	Easter Saturday	observance	
+2043-03-29	påskdagen	Easter Sunday	public	
+2043-03-30	annandag påsk	Easter Monday	public	
+2043-04-30	valborgsmässoafton	Walpurgis Night	optional	
+2043-05-01	första maj	Labour Day	public	
+2043-05-07	Kristi himmelsfärdsdag	Ascension Day	public	
+2043-05-16	pingstafton	Whitsun Eve	observance	
+2043-05-17	pingstdagen	Pentecost	public	
+2043-05-18	annandag pingst	Whit Monday	observance	
+2043-05-31	Mors dag	Mother's Day	observance	
+2043-06-06	nationaldagen	National Day	public	
+2043-06-19	midsommarafton	Midsummer Eve	bank	
+2043-06-20	midsommardagen	Midsummer Day	public	
+2043-10-30	allhelgonaafton	Halloween	optional	
+2043-10-31	alla helgons dag	All Saints' Day	public	
+2043-11-06	Gustav-Adolf-dagen	Gustavus Adolphus Day	observance	
+2043-11-11	Mårtensgås	Saint Martin's Day	observance	
+2043-12-10	Nobeldagen	Nobel Day	observance	
+2043-12-13	Luciadagen	Saint Lucy's Day	observance	
+2043-12-24	julafton	Christmas Eve	bank	
+2043-12-25	juldagen	Christmas Day	public	
+2043-12-26	annandag jul	Boxing Day	public	
+2043-12-31	nyårsafton	New Year's Eve	bank	
+2044-01-01	nyårsdagen	New Year's Day	public	
+2044-01-05	trettondagsafton	Twelfth Night	optional	
+2044-01-06	trettondedag jul	Epiphany	public	
+2044-01-13	tjugondag Knut	Saint Knut's Day	observance	
+2044-03-06	Vasaloppet	Vasaloppet	observance	
+2044-04-14	skärtorsdagen	Maundy Thursday	observance	
+2044-04-15	långfredagen	Good Friday	public	
+2044-04-16	påskafton	Easter Saturday	observance	
+2044-04-17	påskdagen	Easter Sunday	public	
+2044-04-18	annandag påsk	Easter Monday	public	
+2044-04-30	valborgsmässoafton	Walpurgis Night	optional	
+2044-05-01	första maj	Labour Day	public	
+2044-05-26	Kristi himmelsfärdsdag	Ascension Day	public	
+2044-05-29	Mors dag	Mother's Day	observance	
+2044-06-04	pingstafton	Whitsun Eve	observance	
+2044-06-05	pingstdagen	Pentecost	public	
+2044-06-06	annandag pingst	Whit Monday	observance	
+2044-06-06	nationaldagen	National Day	public	
+2044-06-24	midsommarafton	Midsummer Eve	bank	
+2044-06-25	midsommardagen	Midsummer Day	public	
+2044-11-04	allhelgonaafton	Halloween	optional	
+2044-11-05	alla helgons dag	All Saints' Day	public	
+2044-11-06	Gustav-Adolf-dagen	Gustavus Adolphus Day	observance	
+2044-11-11	Mårtensgås	Saint Martin's Day	observance	
+2044-12-10	Nobeldagen	Nobel Day	observance	
+2044-12-13	Luciadagen	Saint Lucy's Day	observance	
+2044-12-24	julafton	Christmas Eve	bank	
+2044-12-25	juldagen	Christmas Day	public	
+2044-12-26	annandag jul	Boxing Day	public	
+2044-12-31	nyårsafton	New Year's Eve	bank	
+2045-01-01	nyårsdagen	New Year's Day	public	
+2045-01-05	trettondagsafton	Twelfth Night	optional	
+2045-01-06	trettondedag jul	Epiphany	public	
+2045-01-13	tjugondag Knut	Saint Knut's Day	observance	
+2045-03-05	Vasaloppet	Vasaloppet	observance	
+2045-04-06	skärtorsdagen	Maundy Thursday	observance	
+2045-04-07	långfredagen	Good Friday	public	
+2045-04-08	påskafton	Easter Saturday	observance	
+2045-04-09	påskdagen	Easter Sunday	public	
+2045-04-10	annandag påsk	Easter Monday	public	
+2045-04-30	valborgsmässoafton	Walpurgis Night	optional	
+2045-05-01	första maj	Labour Day	public	
+2045-05-18	Kristi himmelsfärdsdag	Ascension Day	public	
+2045-05-27	pingstafton	Whitsun Eve	observance	
+2045-05-28	Mors dag	Mother's Day	observance	
+2045-05-28	pingstdagen	Pentecost	public	
+2045-05-29	annandag pingst	Whit Monday	observance	
+2045-06-06	nationaldagen	National Day	public	
+2045-06-23	midsommarafton	Midsummer Eve	bank	
+2045-06-24	midsommardagen	Midsummer Day	public	
+2045-11-03	allhelgonaafton	Halloween	optional	
+2045-11-04	alla helgons dag	All Saints' Day	public	
+2045-11-06	Gustav-Adolf-dagen	Gustavus Adolphus Day	observance	
+2045-11-11	Mårtensgås	Saint Martin's Day	observance	
+2045-12-10	Nobeldagen	Nobel Day	observance	
+2045-12-13	Luciadagen	Saint Lucy's Day	observance	
+2045-12-24	julafton	Christmas Eve	bank	
+2045-12-25	juldagen	Christmas Day	public	
+2045-12-26	annandag jul	Boxing Day	public	
+2045-12-31	nyårsafton	New Year's Eve	bank	

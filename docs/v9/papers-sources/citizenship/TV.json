@@ -1,0 +1,27 @@
+{
+ "country": "TV",
+ "years": 7,
+ "renounce": false,
+ "lapses": false,
+ "note": "GLOBALCIT's Citizenship Law Dataset v3.0 (EUI, 2025), coding the law in force on 1 January 2024 (A06a TUV 6; A06b TUV 6; L05 No provision): ordinary naturalisation after 7 years' residence; no renunciation of other citizenships required; a citizen keeps it on taking another. Reforms after that date are checked in the file's later sources, where a later source is given. Citizenship at birth is read from the same dataset's 2024 coding of modes A01a (descent, born in country: No provision), A01b (descent, born abroad: Generally applicable provision), A02a (birth in country: Generally applicable provision) and A02b (birth in country to a parent born there: No provision), as its codebook (RSC/GLOBALCIT 2025/01, sections 3.2.1a to 3.2.2b) defines them: by birth in the territory unconditionally; by descent from either parent, with no further limit on a child born abroad (the dataset codes no separate descent rule for a child born in the country, birth there giving it; the parent's sex is read from mode A01b). Changes to the law at birth after 1 January 2024 weren't checked for this file. On 2026-11-03 the primary was read: Citizenship Act [Cap. 24.05], 2022 Revised Edition, Tuvalu Legislation (Office of the Attorney General), ss 6, 9, 10; Constitution of Tuvalu, 2023 Revised Edition, Tuvalu Legislation (Office of the Attorney General), s 46. Every figure the file holds now rests on it, and the dataset is no longer cited. S. 6(4)(c) also asks personal assets of at least $250,000, which the form doesn't hold.",
+ "sources": [
+  {
+   "url": "https://www.tuvalu-legislation.tv/cms/images/LEGISLATION/PRINCIPAL/1979/1979-0005/1979-0005_2.pdf",
+   "title": "Citizenship Act [Cap. 24.05], 2022 Revised Edition, Tuvalu Legislation (Office of the Attorney General), ss 6, 9, 10",
+   "read": "2026-11-03",
+   "kind": "primary",
+   "said": "6 Citizenship by naturalisation (1) Any person of full age and capacity may apply to be naturalised as a citizen of Tuvalu. ... (4) The matters as to which the Citizenship Committee shall satisfy itself before causing a certificate of naturalisation to be granted to any person are — (a) that he is and for the 7 years immediately preceding the application has been ordinarily resident in Tuvalu; (b) that he intends to make Tuvalu his permanent home; (c) that he has personal assets to the value of at least $250,000; ... 9 Regaining Tuvalu citizenship (1) Every Tuvalu citizen may be a citizen of another country, and except for a person who is a Tuvalu citizen by operation of law, a Tuvalu citizen may be deprived of his Tuvalu citizenship."
+  },
+  {
+   "url": "https://www.tuvalu-legislation.tv/cms/images/LEGISLATION/PRINCIPAL/1986/1986-0001/1986-0001_3.pdf",
+   "title": "Constitution of Tuvalu, 2023 Revised Edition, Tuvalu Legislation (Office of the Attorney General), s 46",
+   "read": "2026-11-03",
+   "kind": "primary",
+   "said": "46 Citizenship by Birth (1) Subject to subsections (3) and (4), a person born in Tuvalu on or after the date on which this Constitution took effect is a citizen of Tuvalu by birth. (2) A person born outside Tuvalu on or after the date on which this Constitution took effect is a citizen of Tuvalu by birth if on the date of his birth either of his parents is, or would but for his death have been, a citizen of Tuvalu. (3) ... a person does not become a citizen of Tuvalu by virtue of subsection (1) if at the time of his birth – (a) neither of his parents was a citizen of Tuvalu; and (b) his father had the privileges and immunities of an envoy to Tuvalu ..."
+  }
+ ],
+ "atBirth": {
+  "soil": "unconditional",
+  "descent": "either parent"
+ }
+}

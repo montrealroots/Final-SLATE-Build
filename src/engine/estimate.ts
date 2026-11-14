@@ -22,7 +22,7 @@ import { ledgerTotals, money } from './budget';
 import { castRoleFor, estimateDays, requiredCrewPlan, roleCandidates } from './hiring';
 import { roleLabel } from './people';
 import { buildTasks, dayFees, groupShootDays, materialCost, VOICE_SESSION_STUDIO, RENDER_NODE_DAY_COST, type ShootDayGroup } from './production';
-import { CROWD_DAY_RATE, RENDER_HOURS_PER_FRAME } from './production/rates';
+import { CROWD_DAY_RATE, NIGHT_PREMIUM, RENDER_HOURS_PER_FRAME } from './production/rates';
 import { rigDayCost } from './craft';
 import { awayCosts } from './destinations';
 import { makeupDayCost, physicalCrowd } from './looks';
@@ -142,6 +142,9 @@ export function costBreakdown(state: GameState, p: Project): CostBreakdown {
   // Identifiable risks, each priced as one occurrence: the contingency is judged against them.
   const risks: CostBreakdown['risks'] = [];
   const crewDay = crewPlan.reduce((a, x) => a + x.rate, 0) + p.hires.filter((h) => h.status === 'accepted').reduce((a, h) => a + h.dayRate, 0);
+  // Night days pay everyone on set a quarter more (rates.ts NIGHT_PREMIUM), priced here before a schedule reserves them.
+  const nights = groups.filter((g) => g.night).length;
+  if (nights && !planned) lines.push({ area: 'shoot', label: 'Night Premium', amount: Math.round(nights * crewDay * (NIGHT_PREMIUM - 1)), driver: `${nights} night ${nights === 1 ? 'day' : 'days'}: everyone on set is paid a quarter more` });
   const exteriors = groups.filter((g) => !g.interior).length;
   if (exteriors) risks.push({ item: `${exteriors} exterior shoot ${exteriors === 1 ? 'day' : 'days'} can be lost to rain or short daylight; a lost day is paid again.`, cost: dayFees(p).location + dayFees(p).equipment + crewDay });
   if (tasks.some((x) => x.kind === 'sm:animation')) risks.push({ item: 'A puppet can be damaged on the stage; a fabricator repairs it, unless a duplicate is ready.', cost: crewPlan.find((x) => x.nr.roleId === 'puppet-fabricator')?.rate ?? 0 });

@@ -15,7 +15,7 @@ describe('A04: a planned budget is the amount typed, and no money', () => {
   it('keeps 20,000 and 2,000,000 exactly through a reload, and moves no money either way', () => {
     const s = startLife('budget-plan');
     const p = buildProject(s, { title: 'Ledger', format: 'short', medium: 'live-action', runtime: 8 }, [{ name: 'Mara' }], [{ place: 'Pier', chars: ['Mara'] }]);
-    const before = { ledger: ledgerTotals(p), received: financeSummary(p).received, mine: personalBalance(s), txs: s.journal!.txs.length };
+    const before = { ledger: ledgerTotals(p), received: financeSummary(p).received, mine: personalBalance(s), txs: s.bank!.transactions.length };
     expect(plannedText(p)).toBe('Not set');
     setPlannedBudget(s, p, cents('20000'), 'A short with friends');
     expect([plannedText(p), p.finance!.target]).toEqual(['$20,000 planned', 20_000]);
@@ -24,8 +24,8 @@ describe('A04: a planned budget is the amount typed, and no money', () => {
     let q = back.projects[0];
     expect(q.finance!.planned).toEqual({ currency: 'USD', minor: 200_000_000 });
     expect(q.finance!.revisions!.map((r) => [r.from, r.to, r.reason])).toEqual([[null, 2_000_000, 'A short with friends'], [2_000_000, 200_000_000, 'A bigger cast']]);
-    // Nothing moved: the project's ledger, what backers paid, your account, the journal.
-    expect({ ledger: ledgerTotals(q), received: financeSummary(q).received, mine: personalBalance(back), txs: back.journal!.txs.length }).toEqual(before);
+    // Nothing moved: the project's ledger, what backers paid, your account, the bank's ledger.
+    expect({ ledger: ledgerTotals(q), received: financeSummary(q).received, mine: personalBalance(back), txs: back.bank!.transactions.length }).toEqual(before);
     // Lowered, then cleared to unknown; zero is an unfunded draft, not unknown.
     setPlannedBudget(back, q, 0, 'Shelved for now');
     expect(plannedText(q)).toBe('$0: an unfunded draft');

@@ -1,0 +1,1286 @@
+# AD	Республика Адыгея
+# AL	Республика Алтай
+# BA	Республика Башкортостан
+# BEL	Белгородская область
+# BRY	Брянская область
+# BU	Республика Бурятия
+# CE	Чеченская Республика
+# CR	Республика Крым
+# CU	Чувашская Республика
+# DA	Республика Дагестан
+# IN	Республика Ингушетия
+# IRK	Иркутская область
+# KB	Кабардино-Балкарская Республика
+# KC	Карачаево-Черкесская Республика
+# KDA	Краснодарский край
+# KL	Республика Калмыкия
+# KO	Республика Коми
+# KR	Республика Карелия
+# MR	Республика Мордовия
+# NO	Республика Северная Осетия - Алания
+# OMS	Омская область
+# PNZ	Пензенская область
+# SA	Республика Саха (Якутия)
+# SAR	Саратовская область
+# SEV	город Севастополь
+# STA	Ставропольский край
+# TA	Республика Татарстан
+# TY	Республика Тыва
+# ZAB	Забайкальский край
+2026-01-01	Новый год	New Year's Day	public	
+2026-01-02	Новогодние каникулы	New Year Holiday	public	
+2026-01-07	Рождество Христово	Christmas Day	public	
+2026-01-08	Новогодние каникулы	New Year Holiday	public	
+2026-02-18	Праздник Белого месяца «Сагаалган»	White Month Festival (Sagaalgan)	public	BU
+2026-02-18	Цаган Сар	Tsagan Sar	public	KL
+2026-02-18	Шагаа	Shagaa	public	TY
+2026-02-18	Праздник Белого месяца "Сагаалган"	White Month Festival (Sagaalgan)	public	ZAB
+2026-02-23	День защитника Отечества	Defender of the Fatherland Day	public	
+2026-03-08	Международный женский день	International Women's Day	public	
+2026-03-09	Международный женский день	International Women's Day	public	
+2026-03-18	День воссоединения Крыма с Россией	Day of the Reunification of Crimea with Russia	public	CR
+2026-03-18	День возвращения города Севастополя в Россию	Day of Sevastopol's Return to Russia	public	SEV
+2026-03-20	Ураза-байрам	Uraza-Bayram	public	AD
+2026-03-20	Ураза-байрам	Uraza-Bayram	public	BA
+2026-03-20	Ураза-байрам	Uraza-Bayram	public	CE
+2026-03-20	Ораза-байрам	Uraza-Bayram	public	CR
+2026-03-20	Ураза-байрам	Uraza-Bayram	public	DA
+2026-03-20	Ид аль-Фитр (Мархаш)	Eid al-Fitr (Markhash)	public	IN
+2026-03-20	Ураза-байрам	Uraza-Bayram	public	KB
+2026-03-20	Ураза-байрам	Uraza-Bayram	public	KC
+2026-03-20	Ураза-байрам	Uraza-Bayram	public	TA
+2026-03-23	День Конституции Чеченской Республики	Constitution Day of the Chechen Republic	public	CE
+2026-03-28	День возрождения балкарского народа	Day of the Revival of the Balkar People	public	KB
+2026-04-13	Светлое Христово Воскресение (Пасха)	Orthodox Easter	public	CR
+2026-04-13	Светлое Христово Воскресение (Пасха)	Orthodox Easter	public	DA
+2026-04-16	День мира в Чеченской Республике	Peace Day in the Chechen Republic	public	CE
+2026-04-21	День поминовения усопших (Радоница)	Day of Remembrance of the Departed (Radonitsa)	public	AD
+2026-04-21	Радоница - день особого поминовения усопших	Radonitsa - Day of Special Remembrance of the Departed	public	BRY
+2026-04-21	День особого поминовения усопших - Радоница	Day of Special Remembrance of the Departed (Radonitsa)	public	DA
+2026-04-21	Единый День памяти	Unity Day of Remembrance	public	IRK
+2026-04-21	Радоница - день особого поминовения усопших	Day of Special Remembrance of the Departed (Radonitsa)	public	KB
+2026-04-21	День памяти усопших - Радоница	Day of Remembrance of the Departed (Radonitsa)	public	KC
+2026-04-21	День поминовения усопших (Радоница)	Radonitsa - Day of Remembrance of the Departed	public	KDA
+2026-04-21	Радоница - день особого поминовения усопших	Radonitsa - Day of Special Remembrance of the Departed	public	OMS
+2026-04-21	Единый день поминовения усопших	Unified Day of Remembrance of the Departed	public	PNZ
+2026-04-21	Радоница - день особого поминовения усопших	Radonitsa - Day of Special Remembrance of the Departed	public	SAR
+2026-04-21	День поминовения усопших (Радоница)	Radonitsa - Day of Remembrance of the Departed	public	STA
+2026-04-27	День Республики Саха (Якутия)	Republic of Sakha (Yakutia) Day	public	SA
+2026-05-01	День весны и труда	Spring and Labour Day	public	
+2026-05-03	День возрождения карачаевского народа	Day of the Revival of the Karachay People	public	KC
+2026-05-08	День Конституции Республики Тыва	Constitution Day of the Republic of Tuva	public	TY
+2026-05-09	День Победы	Victory Day	public	
+2026-05-21	День памяти адыгов (черкесов) - жертв Русско-Кавказской войны	Day of Remembrance of the Adyghe (Circassian) Victims of the Russian-Caucasian War	public	KB
+2026-05-27	Курбан-байрам	Kurban-Bayram	public	AD
+2026-05-27	Курбан-байрам	Kurban-Bayram	public	BA
+2026-05-27	Курбан-байрам	Kurban-Bayram	public	CE
+2026-05-27	Курбан-байрам	Kurban-Bayram	public	CR
+2026-05-27	Курбан-байрам	Kurban-Bayram	public	DA
+2026-05-27	Ид аль-Адха (Г1урба)	Eid al-Adha (Ghurba)	public	IN
+2026-05-27	Курбан-байрам	Kurban-Bayram	public	KB
+2026-05-27	Курбан-байрам	Kurban-Bayram	public	KC
+2026-05-27	Курбан-байрам	Kurban-Bayram	public	TA
+2026-05-31	День рождения Будды Шакьямуни	Birthday of Buddha Shakyamuni	public	KL
+2026-06-01	День Святой Троицы	Trinity Sunday	public	CR
+2026-06-08	День Республики Карелии	Republic of Karelia Day	public	KR
+2026-06-12	День России	Russia Day	public	
+2026-06-14	День основания города Севастополя	Sevastopol City Foundation Day	public	SEV
+2026-06-21	День национального праздника Ысыах	Ysyakh National Holiday	public	SA
+2026-06-24	День Чувашской Республики	Day of the Chuvash Republic	public	CU
+2026-07-03	День образования Республики Алтай	Day of the Formation of the Altai Republic	public	AL
+2026-07-05	День Республики Калмыкия	Republic of Kalmykia Day	public	KL
+2026-07-12	День Прохоровского поля - Третьего ратного поля России	Prokhorovka Field Day - Russia's Third Military Field	public	BEL
+2026-07-24	Наадым	Naadym	public	TY
+2026-07-26	День Конституции Республики Дагестан	Constitution Day of the Republic of Dagestan	public	DA
+2026-08-05	День 25-летия канонизации святого праведного воина Феодора Ушакова	25th Anniversary of the Canonization of Righteous Warrior Fyodor Ushakov	public	MR
+2026-08-15	День Республики Тыва	Republic of Tuva Day	public	TY
+2026-08-22	День Республики Коми	Republic of Komi Day	public	KO
+2026-08-30	День Республики Татарстан	Republic of Tatarstan Day	public	TA
+2026-09-01	День государственности Кабардино-Балкарской Республики	Statehood Day of the Kabardino-Balkar Republic	public	KB
+2026-09-15	День единства народов Дагестана	Day of Unity of the Peoples of Dagestan	public	DA
+2026-09-20	День адыгов (черкесов)	Adyghe (Circassian) Day	public	KB
+2026-10-05	День образования Республики Адыгея	Republic of Adygea Formation Day	public	AD
+2026-10-11	День Республики Башкортостан	Republic of Bashkortostan Day	public	BA
+2026-11-04	День народного единства	Unity Day	public	
+2026-11-06	День Конституции Республики Татарстан	Constitution Day of the Republic of Tatarstan	public	TA
+2026-11-23	Первый понедельник праздника Уастырджи (Джеоргуыба)	First Monday of the Uastyrdzhi (Djeorguiba) Festival	public	NO
+2026-12-28	День памяти жертв депортации калмыцкого народа	Day of Remembrance of the Victims of the Deportation of the Kalmyk People	public	KL
+2027-01-01	Новый год	New Year's Day	public	
+2027-01-02	Новогодние каникулы	New Year Holiday	public	
+2027-01-07	Рождество Христово	Christmas Day	public	
+2027-01-08	Новогодние каникулы	New Year Holiday	public	
+2027-02-23	День защитника Отечества	Defender of the Fatherland Day	public	
+2027-03-08	Международный женский день	International Women's Day	public	
+2027-03-09	Ураза-байрам	Uraza-Bayram	public	AD
+2027-03-09	Ураза-байрам	Uraza-Bayram	public	BA
+2027-03-09	Ураза-байрам	Uraza-Bayram	public	CE
+2027-03-09	Ораза-байрам	Uraza-Bayram	public	CR
+2027-03-09	Ураза-байрам	Uraza-Bayram	public	DA
+2027-03-09	Ид аль-Фитр (Мархаш)	Eid al-Fitr (Markhash)	public	IN
+2027-03-09	Ураза-байрам	Uraza-Bayram	public	KB
+2027-03-09	Ураза-байрам	Uraza-Bayram	public	KC
+2027-03-09	Ураза-байрам	Uraza-Bayram	public	TA
+2027-03-18	День воссоединения Крыма с Россией	Day of the Reunification of Crimea with Russia	public	CR
+2027-03-18	День возвращения города Севастополя в Россию	Day of Sevastopol's Return to Russia	public	SEV
+2027-03-23	День Конституции Чеченской Республики	Constitution Day of the Chechen Republic	public	CE
+2027-03-28	День возрождения балкарского народа	Day of the Revival of the Balkar People	public	KB
+2027-04-16	День мира в Чеченской Республике	Peace Day in the Chechen Republic	public	CE
+2027-04-27	День Республики Саха (Якутия)	Republic of Sakha (Yakutia) Day	public	SA
+2027-05-01	День весны и труда	Spring and Labour Day	public	
+2027-05-03	Светлое Христово Воскресение (Пасха)	Orthodox Easter	public	CR
+2027-05-03	Светлое Христово Воскресение (Пасха)	Orthodox Easter	public	DA
+2027-05-03	День возрождения карачаевского народа	Day of the Revival of the Karachay People	public	KC
+2027-05-09	День Победы	Victory Day	public	
+2027-05-11	День поминовения усопших (Радоница)	Day of Remembrance of the Departed (Radonitsa)	public	AD
+2027-05-11	День особого поминовения усопших - Радоница	Day of Special Remembrance of the Departed (Radonitsa)	public	DA
+2027-05-11	Радоница - день особого поминовения усопших	Day of Special Remembrance of the Departed (Radonitsa)	public	KB
+2027-05-11	День памяти усопших - Радоница	Day of Remembrance of the Departed (Radonitsa)	public	KC
+2027-05-16	Курбан-байрам	Kurban-Bayram	public	AD
+2027-05-16	Курбан-байрам	Kurban-Bayram	public	BA
+2027-05-16	Курбан-байрам	Kurban-Bayram	public	CE
+2027-05-16	Курбан-байрам	Kurban-Bayram	public	CR
+2027-05-16	Курбан-байрам	Kurban-Bayram	public	DA
+2027-05-16	Ид аль-Адха (Г1урба)	Eid al-Adha (Ghurba)	public	IN
+2027-05-16	Курбан-байрам	Kurban-Bayram	public	KB
+2027-05-16	Курбан-байрам	Kurban-Bayram	public	KC
+2027-05-16	Курбан-байрам	Kurban-Bayram	public	TA
+2027-05-21	День памяти адыгов (черкесов) - жертв Русско-Кавказской войны	Day of Remembrance of the Adyghe (Circassian) Victims of the Russian-Caucasian War	public	KB
+2027-06-08	День Республики Карелии	Republic of Karelia Day	public	KR
+2027-06-12	День России	Russia Day	public	
+2027-06-14	День основания города Севастополя	Sevastopol City Foundation Day	public	SEV
+2027-06-21	День Святой Троицы	Trinity Sunday	public	CR
+2027-06-21	День национального праздника Ысыах	Ysyakh National Holiday	public	SA
+2027-06-24	День Чувашской Республики	Day of the Chuvash Republic	public	CU
+2027-07-03	День образования Республики Алтай	Day of the Formation of the Altai Republic	public	AL
+2027-07-05	День Республики Калмыкия	Republic of Kalmykia Day	public	KL
+2027-07-12	День Прохоровского поля - Третьего ратного поля России	Prokhorovka Field Day - Russia's Third Military Field	public	BEL
+2027-07-26	День Конституции Республики Дагестан	Constitution Day of the Republic of Dagestan	public	DA
+2027-08-15	День Республики Тыва	Republic of Tuva Day	public	TY
+2027-08-22	День Республики Коми	Republic of Komi Day	public	KO
+2027-08-30	День Республики Татарстан	Republic of Tatarstan Day	public	TA
+2027-09-01	День государственности Кабардино-Балкарской Республики	Statehood Day of the Kabardino-Balkar Republic	public	KB
+2027-09-15	День единства народов Дагестана	Day of Unity of the Peoples of Dagestan	public	DA
+2027-09-20	День адыгов (черкесов)	Adyghe (Circassian) Day	public	KB
+2027-10-05	День образования Республики Адыгея	Republic of Adygea Formation Day	public	AD
+2027-10-11	День Республики Башкортостан	Republic of Bashkortostan Day	public	BA
+2027-11-04	День народного единства	Unity Day	public	
+2027-11-06	День Конституции Республики Татарстан	Constitution Day of the Republic of Tatarstan	public	TA
+2027-12-28	День памяти жертв депортации калмыцкого народа	Day of Remembrance of the Victims of the Deportation of the Kalmyk People	public	KL
+2028-01-01	Новый год	New Year's Day	public	
+2028-01-02	Новогодние каникулы	New Year Holiday	public	
+2028-01-07	Рождество Христово	Christmas Day	public	
+2028-01-08	Новогодние каникулы	New Year Holiday	public	
+2028-02-23	День защитника Отечества	Defender of the Fatherland Day	public	
+2028-02-26	Ураза-байрам	Uraza-Bayram	public	AD
+2028-02-26	Ураза-байрам	Uraza-Bayram	public	BA
+2028-02-26	Ураза-байрам	Uraza-Bayram	public	CE
+2028-02-26	Ораза-байрам	Uraza-Bayram	public	CR
+2028-02-26	Ураза-байрам	Uraza-Bayram	public	DA
+2028-02-26	Ид аль-Фитр (Мархаш)	Eid al-Fitr (Markhash)	public	IN
+2028-02-26	Ураза-байрам	Uraza-Bayram	public	KB
+2028-02-26	Ураза-байрам	Uraza-Bayram	public	KC
+2028-02-26	Ураза-байрам	Uraza-Bayram	public	TA
+2028-03-08	Международный женский день	International Women's Day	public	
+2028-03-18	День воссоединения Крыма с Россией	Day of the Reunification of Crimea with Russia	public	CR
+2028-03-18	День возвращения города Севастополя в Россию	Day of Sevastopol's Return to Russia	public	SEV
+2028-03-23	День Конституции Чеченской Республики	Constitution Day of the Chechen Republic	public	CE
+2028-03-28	День возрождения балкарского народа	Day of the Revival of the Balkar People	public	KB
+2028-04-16	День мира в Чеченской Республике	Peace Day in the Chechen Republic	public	CE
+2028-04-17	Светлое Христово Воскресение (Пасха)	Orthodox Easter	public	CR
+2028-04-17	Светлое Христово Воскресение (Пасха)	Orthodox Easter	public	DA
+2028-04-25	День поминовения усопших (Радоница)	Day of Remembrance of the Departed (Radonitsa)	public	AD
+2028-04-25	День особого поминовения усопших - Радоница	Day of Special Remembrance of the Departed (Radonitsa)	public	DA
+2028-04-25	Радоница - день особого поминовения усопших	Day of Special Remembrance of the Departed (Radonitsa)	public	KB
+2028-04-25	День памяти усопших - Радоница	Day of Remembrance of the Departed (Radonitsa)	public	KC
+2028-04-27	День Республики Саха (Якутия)	Republic of Sakha (Yakutia) Day	public	SA
+2028-05-01	День весны и труда	Spring and Labour Day	public	
+2028-05-03	День возрождения карачаевского народа	Day of the Revival of the Karachay People	public	KC
+2028-05-05	Курбан-байрам	Kurban-Bayram	public	AD
+2028-05-05	Курбан-байрам	Kurban-Bayram	public	BA
+2028-05-05	Курбан-байрам	Kurban-Bayram	public	CE
+2028-05-05	Курбан-байрам	Kurban-Bayram	public	CR
+2028-05-05	Курбан-байрам	Kurban-Bayram	public	DA
+2028-05-05	Ид аль-Адха (Г1урба)	Eid al-Adha (Ghurba)	public	IN
+2028-05-05	Курбан-байрам	Kurban-Bayram	public	KB
+2028-05-05	Курбан-байрам	Kurban-Bayram	public	KC
+2028-05-05	Курбан-байрам	Kurban-Bayram	public	TA
+2028-05-09	День Победы	Victory Day	public	
+2028-05-21	День памяти адыгов (черкесов) - жертв Русско-Кавказской войны	Day of Remembrance of the Adyghe (Circassian) Victims of the Russian-Caucasian War	public	KB
+2028-06-05	День Святой Троицы	Trinity Sunday	public	CR
+2028-06-08	День Республики Карелии	Republic of Karelia Day	public	KR
+2028-06-12	День России	Russia Day	public	
+2028-06-14	День основания города Севастополя	Sevastopol City Foundation Day	public	SEV
+2028-06-21	День национального праздника Ысыах	Ysyakh National Holiday	public	SA
+2028-06-24	День Чувашской Республики	Day of the Chuvash Republic	public	CU
+2028-07-03	День образования Республики Алтай	Day of the Formation of the Altai Republic	public	AL
+2028-07-05	День Республики Калмыкия	Republic of Kalmykia Day	public	KL
+2028-07-12	День Прохоровского поля - Третьего ратного поля России	Prokhorovka Field Day - Russia's Third Military Field	public	BEL
+2028-07-26	День Конституции Республики Дагестан	Constitution Day of the Republic of Dagestan	public	DA
+2028-08-15	День Республики Тыва	Republic of Tuva Day	public	TY
+2028-08-22	День Республики Коми	Republic of Komi Day	public	KO
+2028-08-30	День Республики Татарстан	Republic of Tatarstan Day	public	TA
+2028-09-01	День государственности Кабардино-Балкарской Республики	Statehood Day of the Kabardino-Balkar Republic	public	KB
+2028-09-15	День единства народов Дагестана	Day of Unity of the Peoples of Dagestan	public	DA
+2028-09-20	День адыгов (черкесов)	Adyghe (Circassian) Day	public	KB
+2028-10-05	День образования Республики Адыгея	Republic of Adygea Formation Day	public	AD
+2028-10-11	День Республики Башкортостан	Republic of Bashkortostan Day	public	BA
+2028-11-04	День народного единства	Unity Day	public	
+2028-11-06	День Конституции Республики Татарстан	Constitution Day of the Republic of Tatarstan	public	TA
+2028-12-28	День памяти жертв депортации калмыцкого народа	Day of Remembrance of the Victims of the Deportation of the Kalmyk People	public	KL
+2029-01-01	Новый год	New Year's Day	public	
+2029-01-02	Новогодние каникулы	New Year Holiday	public	
+2029-01-07	Рождество Христово	Christmas Day	public	
+2029-01-08	Новогодние каникулы	New Year Holiday	public	
+2029-02-14	Ураза-байрам	Uraza-Bayram	public	AD
+2029-02-14	Ураза-байрам	Uraza-Bayram	public	BA
+2029-02-14	Ураза-байрам	Uraza-Bayram	public	CE
+2029-02-14	Ораза-байрам	Uraza-Bayram	public	CR
+2029-02-14	Ураза-байрам	Uraza-Bayram	public	DA
+2029-02-14	Ид аль-Фитр (Мархаш)	Eid al-Fitr (Markhash)	public	IN
+2029-02-14	Ураза-байрам	Uraza-Bayram	public	KB
+2029-02-14	Ураза-байрам	Uraza-Bayram	public	KC
+2029-02-14	Ураза-байрам	Uraza-Bayram	public	TA
+2029-02-23	День защитника Отечества	Defender of the Fatherland Day	public	
+2029-03-08	Международный женский день	International Women's Day	public	
+2029-03-18	День воссоединения Крыма с Россией	Day of the Reunification of Crimea with Russia	public	CR
+2029-03-18	День возвращения города Севастополя в Россию	Day of Sevastopol's Return to Russia	public	SEV
+2029-03-23	День Конституции Чеченской Республики	Constitution Day of the Chechen Republic	public	CE
+2029-03-28	День возрождения балкарского народа	Day of the Revival of the Balkar People	public	KB
+2029-04-09	Светлое Христово Воскресение (Пасха)	Orthodox Easter	public	CR
+2029-04-09	Светлое Христово Воскресение (Пасха)	Orthodox Easter	public	DA
+2029-04-16	День мира в Чеченской Республике	Peace Day in the Chechen Republic	public	CE
+2029-04-17	День поминовения усопших (Радоница)	Day of Remembrance of the Departed (Radonitsa)	public	AD
+2029-04-17	День особого поминовения усопших - Радоница	Day of Special Remembrance of the Departed (Radonitsa)	public	DA
+2029-04-17	Радоница - день особого поминовения усопших	Day of Special Remembrance of the Departed (Radonitsa)	public	KB
+2029-04-17	День памяти усопших - Радоница	Day of Remembrance of the Departed (Radonitsa)	public	KC
+2029-04-24	Курбан-байрам	Kurban-Bayram	public	AD
+2029-04-24	Курбан-байрам	Kurban-Bayram	public	BA
+2029-04-24	Курбан-байрам	Kurban-Bayram	public	CE
+2029-04-24	Курбан-байрам	Kurban-Bayram	public	CR
+2029-04-24	Курбан-байрам	Kurban-Bayram	public	DA
+2029-04-24	Ид аль-Адха (Г1урба)	Eid al-Adha (Ghurba)	public	IN
+2029-04-24	Курбан-байрам	Kurban-Bayram	public	KB
+2029-04-24	Курбан-байрам	Kurban-Bayram	public	KC
+2029-04-24	Курбан-байрам	Kurban-Bayram	public	TA
+2029-04-27	День Республики Саха (Якутия)	Republic of Sakha (Yakutia) Day	public	SA
+2029-05-01	День весны и труда	Spring and Labour Day	public	
+2029-05-03	День возрождения карачаевского народа	Day of the Revival of the Karachay People	public	KC
+2029-05-09	День Победы	Victory Day	public	
+2029-05-21	День памяти адыгов (черкесов) - жертв Русско-Кавказской войны	Day of Remembrance of the Adyghe (Circassian) Victims of the Russian-Caucasian War	public	KB
+2029-05-28	День Святой Троицы	Trinity Sunday	public	CR
+2029-06-08	День Республики Карелии	Republic of Karelia Day	public	KR
+2029-06-12	День России	Russia Day	public	
+2029-06-14	День основания города Севастополя	Sevastopol City Foundation Day	public	SEV
+2029-06-21	День национального праздника Ысыах	Ysyakh National Holiday	public	SA
+2029-06-24	День Чувашской Республики	Day of the Chuvash Republic	public	CU
+2029-07-03	День образования Республики Алтай	Day of the Formation of the Altai Republic	public	AL
+2029-07-05	День Республики Калмыкия	Republic of Kalmykia Day	public	KL
+2029-07-12	День Прохоровского поля - Третьего ратного поля России	Prokhorovka Field Day - Russia's Third Military Field	public	BEL
+2029-07-26	День Конституции Республики Дагестан	Constitution Day of the Republic of Dagestan	public	DA
+2029-08-15	День Республики Тыва	Republic of Tuva Day	public	TY
+2029-08-22	День Республики Коми	Republic of Komi Day	public	KO
+2029-08-30	День Республики Татарстан	Republic of Tatarstan Day	public	TA
+2029-09-01	День государственности Кабардино-Балкарской Республики	Statehood Day of the Kabardino-Balkar Republic	public	KB
+2029-09-15	День единства народов Дагестана	Day of Unity of the Peoples of Dagestan	public	DA
+2029-09-20	День адыгов (черкесов)	Adyghe (Circassian) Day	public	KB
+2029-10-05	День образования Республики Адыгея	Republic of Adygea Formation Day	public	AD
+2029-10-11	День Республики Башкортостан	Republic of Bashkortostan Day	public	BA
+2029-11-04	День народного единства	Unity Day	public	
+2029-11-06	День Конституции Республики Татарстан	Constitution Day of the Republic of Tatarstan	public	TA
+2029-12-28	День памяти жертв депортации калмыцкого народа	Day of Remembrance of the Victims of the Deportation of the Kalmyk People	public	KL
+2030-01-01	Новый год	New Year's Day	public	
+2030-01-02	Новогодние каникулы	New Year Holiday	public	
+2030-01-07	Рождество Христово	Christmas Day	public	
+2030-01-08	Новогодние каникулы	New Year Holiday	public	
+2030-02-04	Ураза-байрам	Uraza-Bayram	public	AD
+2030-02-04	Ураза-байрам	Uraza-Bayram	public	BA
+2030-02-04	Ураза-байрам	Uraza-Bayram	public	CE
+2030-02-04	Ораза-байрам	Uraza-Bayram	public	CR
+2030-02-04	Ураза-байрам	Uraza-Bayram	public	DA
+2030-02-04	Ид аль-Фитр (Мархаш)	Eid al-Fitr (Markhash)	public	IN
+2030-02-04	Ураза-байрам	Uraza-Bayram	public	KB
+2030-02-04	Ураза-байрам	Uraza-Bayram	public	KC
+2030-02-04	Ураза-байрам	Uraza-Bayram	public	TA
+2030-02-23	День защитника Отечества	Defender of the Fatherland Day	public	
+2030-03-08	Международный женский день	International Women's Day	public	
+2030-03-18	День воссоединения Крыма с Россией	Day of the Reunification of Crimea with Russia	public	CR
+2030-03-18	День возвращения города Севастополя в Россию	Day of Sevastopol's Return to Russia	public	SEV
+2030-03-23	День Конституции Чеченской Республики	Constitution Day of the Chechen Republic	public	CE
+2030-03-28	День возрождения балкарского народа	Day of the Revival of the Balkar People	public	KB
+2030-04-13	Курбан-байрам	Kurban-Bayram	public	AD
+2030-04-13	Курбан-байрам	Kurban-Bayram	public	BA
+2030-04-13	Курбан-байрам	Kurban-Bayram	public	CE
+2030-04-13	Курбан-байрам	Kurban-Bayram	public	CR
+2030-04-13	Курбан-байрам	Kurban-Bayram	public	DA
+2030-04-13	Ид аль-Адха (Г1урба)	Eid al-Adha (Ghurba)	public	IN
+2030-04-13	Курбан-байрам	Kurban-Bayram	public	KB
+2030-04-13	Курбан-байрам	Kurban-Bayram	public	KC
+2030-04-13	Курбан-байрам	Kurban-Bayram	public	TA
+2030-04-16	День мира в Чеченской Республике	Peace Day in the Chechen Republic	public	CE
+2030-04-27	День Республики Саха (Якутия)	Republic of Sakha (Yakutia) Day	public	SA
+2030-04-29	Светлое Христово Воскресение (Пасха)	Orthodox Easter	public	CR
+2030-04-29	Светлое Христово Воскресение (Пасха)	Orthodox Easter	public	DA
+2030-05-01	День весны и труда	Spring and Labour Day	public	
+2030-05-03	День возрождения карачаевского народа	Day of the Revival of the Karachay People	public	KC
+2030-05-07	День поминовения усопших (Радоница)	Day of Remembrance of the Departed (Radonitsa)	public	AD
+2030-05-07	День особого поминовения усопших - Радоница	Day of Special Remembrance of the Departed (Radonitsa)	public	DA
+2030-05-07	Радоница - день особого поминовения усопших	Day of Special Remembrance of the Departed (Radonitsa)	public	KB
+2030-05-07	День памяти усопших - Радоница	Day of Remembrance of the Departed (Radonitsa)	public	KC
+2030-05-09	День Победы	Victory Day	public	
+2030-05-21	День памяти адыгов (черкесов) - жертв Русско-Кавказской войны	Day of Remembrance of the Adyghe (Circassian) Victims of the Russian-Caucasian War	public	KB
+2030-06-08	День Республики Карелии	Republic of Karelia Day	public	KR
+2030-06-12	День России	Russia Day	public	
+2030-06-14	День основания города Севастополя	Sevastopol City Foundation Day	public	SEV
+2030-06-17	День Святой Троицы	Trinity Sunday	public	CR
+2030-06-21	День национального праздника Ысыах	Ysyakh National Holiday	public	SA
+2030-06-24	День Чувашской Республики	Day of the Chuvash Republic	public	CU
+2030-07-03	День образования Республики Алтай	Day of the Formation of the Altai Republic	public	AL
+2030-07-05	День Республики Калмыкия	Republic of Kalmykia Day	public	KL
+2030-07-12	День Прохоровского поля - Третьего ратного поля России	Prokhorovka Field Day - Russia's Third Military Field	public	BEL
+2030-07-26	День Конституции Республики Дагестан	Constitution Day of the Republic of Dagestan	public	DA
+2030-08-15	День Республики Тыва	Republic of Tuva Day	public	TY
+2030-08-22	День Республики Коми	Republic of Komi Day	public	KO
+2030-08-30	День Республики Татарстан	Republic of Tatarstan Day	public	TA
+2030-09-01	День государственности Кабардино-Балкарской Республики	Statehood Day of the Kabardino-Balkar Republic	public	KB
+2030-09-15	День единства народов Дагестана	Day of Unity of the Peoples of Dagestan	public	DA
+2030-09-20	День адыгов (черкесов)	Adyghe (Circassian) Day	public	KB
+2030-10-05	День образования Республики Адыгея	Republic of Adygea Formation Day	public	AD
+2030-10-11	День Республики Башкортостан	Republic of Bashkortostan Day	public	BA
+2030-11-04	День народного единства	Unity Day	public	
+2030-11-06	День Конституции Республики Татарстан	Constitution Day of the Republic of Tatarstan	public	TA
+2030-12-28	День памяти жертв депортации калмыцкого народа	Day of Remembrance of the Victims of the Deportation of the Kalmyk People	public	KL
+2031-01-01	Новый год	New Year's Day	public	
+2031-01-02	Новогодние каникулы	New Year Holiday	public	
+2031-01-07	Рождество Христово	Christmas Day	public	
+2031-01-08	Новогодние каникулы	New Year Holiday	public	
+2031-01-24	Ураза-байрам	Uraza-Bayram	public	AD
+2031-01-24	Ураза-байрам	Uraza-Bayram	public	BA
+2031-01-24	Ураза-байрам	Uraza-Bayram	public	CE
+2031-01-24	Ораза-байрам	Uraza-Bayram	public	CR
+2031-01-24	Ураза-байрам	Uraza-Bayram	public	DA
+2031-01-24	Ид аль-Фитр (Мархаш)	Eid al-Fitr (Markhash)	public	IN
+2031-01-24	Ураза-байрам	Uraza-Bayram	public	KB
+2031-01-24	Ураза-байрам	Uraza-Bayram	public	KC
+2031-01-24	Ураза-байрам	Uraza-Bayram	public	TA
+2031-02-23	День защитника Отечества	Defender of the Fatherland Day	public	
+2031-03-08	Международный женский день	International Women's Day	public	
+2031-03-18	День воссоединения Крыма с Россией	Day of the Reunification of Crimea with Russia	public	CR
+2031-03-18	День возвращения города Севастополя в Россию	Day of Sevastopol's Return to Russia	public	SEV
+2031-03-23	День Конституции Чеченской Республики	Constitution Day of the Chechen Republic	public	CE
+2031-03-28	День возрождения балкарского народа	Day of the Revival of the Balkar People	public	KB
+2031-04-02	Курбан-байрам	Kurban-Bayram	public	AD
+2031-04-02	Курбан-байрам	Kurban-Bayram	public	BA
+2031-04-02	Курбан-байрам	Kurban-Bayram	public	CE
+2031-04-02	Курбан-байрам	Kurban-Bayram	public	CR
+2031-04-02	Курбан-байрам	Kurban-Bayram	public	DA
+2031-04-02	Ид аль-Адха (Г1урба)	Eid al-Adha (Ghurba)	public	IN
+2031-04-02	Курбан-байрам	Kurban-Bayram	public	KB
+2031-04-02	Курбан-байрам	Kurban-Bayram	public	KC
+2031-04-02	Курбан-байрам	Kurban-Bayram	public	TA
+2031-04-14	Светлое Христово Воскресение (Пасха)	Orthodox Easter	public	CR
+2031-04-14	Светлое Христово Воскресение (Пасха)	Orthodox Easter	public	DA
+2031-04-16	День мира в Чеченской Республике	Peace Day in the Chechen Republic	public	CE
+2031-04-22	День поминовения усопших (Радоница)	Day of Remembrance of the Departed (Radonitsa)	public	AD
+2031-04-22	День особого поминовения усопших - Радоница	Day of Special Remembrance of the Departed (Radonitsa)	public	DA
+2031-04-22	Радоница - день особого поминовения усопших	Day of Special Remembrance of the Departed (Radonitsa)	public	KB
+2031-04-22	День памяти усопших - Радоница	Day of Remembrance of the Departed (Radonitsa)	public	KC
+2031-04-27	День Республики Саха (Якутия)	Republic of Sakha (Yakutia) Day	public	SA
+2031-05-01	День весны и труда	Spring and Labour Day	public	
+2031-05-03	День возрождения карачаевского народа	Day of the Revival of the Karachay People	public	KC
+2031-05-09	День Победы	Victory Day	public	
+2031-05-21	День памяти адыгов (черкесов) - жертв Русско-Кавказской войны	Day of Remembrance of the Adyghe (Circassian) Victims of the Russian-Caucasian War	public	KB
+2031-06-02	День Святой Троицы	Trinity Sunday	public	CR
+2031-06-08	День Республики Карелии	Republic of Karelia Day	public	KR
+2031-06-12	День России	Russia Day	public	
+2031-06-14	День основания города Севастополя	Sevastopol City Foundation Day	public	SEV
+2031-06-21	День национального праздника Ысыах	Ysyakh National Holiday	public	SA
+2031-06-24	День Чувашской Республики	Day of the Chuvash Republic	public	CU
+2031-07-03	День образования Республики Алтай	Day of the Formation of the Altai Republic	public	AL
+2031-07-05	День Республики Калмыкия	Republic of Kalmykia Day	public	KL
+2031-07-12	День Прохоровского поля - Третьего ратного поля России	Prokhorovka Field Day - Russia's Third Military Field	public	BEL
+2031-07-26	День Конституции Республики Дагестан	Constitution Day of the Republic of Dagestan	public	DA
+2031-08-15	День Республики Тыва	Republic of Tuva Day	public	TY
+2031-08-22	День Республики Коми	Republic of Komi Day	public	KO
+2031-08-30	День Республики Татарстан	Republic of Tatarstan Day	public	TA
+2031-09-01	День государственности Кабардино-Балкарской Республики	Statehood Day of the Kabardino-Balkar Republic	public	KB
+2031-09-15	День единства народов Дагестана	Day of Unity of the Peoples of Dagestan	public	DA
+2031-09-20	День адыгов (черкесов)	Adyghe (Circassian) Day	public	KB
+2031-10-05	День образования Республики Адыгея	Republic of Adygea Formation Day	public	AD
+2031-10-11	День Республики Башкортостан	Republic of Bashkortostan Day	public	BA
+2031-11-04	День народного единства	Unity Day	public	
+2031-11-06	День Конституции Республики Татарстан	Constitution Day of the Republic of Tatarstan	public	TA
+2031-12-28	День памяти жертв депортации калмыцкого народа	Day of Remembrance of the Victims of the Deportation of the Kalmyk People	public	KL
+2032-01-01	Новый год	New Year's Day	public	
+2032-01-02	Новогодние каникулы	New Year Holiday	public	
+2032-01-07	Рождество Христово	Christmas Day	public	
+2032-01-08	Новогодние каникулы	New Year Holiday	public	
+2032-01-14	Ураза-байрам	Uraza-Bayram	public	AD
+2032-01-14	Ураза-байрам	Uraza-Bayram	public	BA
+2032-01-14	Ураза-байрам	Uraza-Bayram	public	CE
+2032-01-14	Ораза-байрам	Uraza-Bayram	public	CR
+2032-01-14	Ураза-байрам	Uraza-Bayram	public	DA
+2032-01-14	Ид аль-Фитр (Мархаш)	Eid al-Fitr (Markhash)	public	IN
+2032-01-14	Ураза-байрам	Uraza-Bayram	public	KB
+2032-01-14	Ураза-байрам	Uraza-Bayram	public	KC
+2032-01-14	Ураза-байрам	Uraza-Bayram	public	TA
+2032-02-23	День защитника Отечества	Defender of the Fatherland Day	public	
+2032-03-08	Международный женский день	International Women's Day	public	
+2032-03-18	День воссоединения Крыма с Россией	Day of the Reunification of Crimea with Russia	public	CR
+2032-03-18	День возвращения города Севастополя в Россию	Day of Sevastopol's Return to Russia	public	SEV
+2032-03-22	Курбан-байрам	Kurban-Bayram	public	AD
+2032-03-22	Курбан-байрам	Kurban-Bayram	public	BA
+2032-03-22	Курбан-байрам	Kurban-Bayram	public	CE
+2032-03-22	Курбан-байрам	Kurban-Bayram	public	CR
+2032-03-22	Курбан-байрам	Kurban-Bayram	public	DA
+2032-03-22	Ид аль-Адха (Г1урба)	Eid al-Adha (Ghurba)	public	IN
+2032-03-22	Курбан-байрам	Kurban-Bayram	public	KB
+2032-03-22	Курбан-байрам	Kurban-Bayram	public	KC
+2032-03-22	Курбан-байрам	Kurban-Bayram	public	TA
+2032-03-23	День Конституции Чеченской Республики	Constitution Day of the Chechen Republic	public	CE
+2032-03-28	День возрождения балкарского народа	Day of the Revival of the Balkar People	public	KB
+2032-04-16	День мира в Чеченской Республике	Peace Day in the Chechen Republic	public	CE
+2032-04-27	День Республики Саха (Якутия)	Republic of Sakha (Yakutia) Day	public	SA
+2032-05-01	День весны и труда	Spring and Labour Day	public	
+2032-05-03	Светлое Христово Воскресение (Пасха)	Orthodox Easter	public	CR
+2032-05-03	Светлое Христово Воскресение (Пасха)	Orthodox Easter	public	DA
+2032-05-03	День возрождения карачаевского народа	Day of the Revival of the Karachay People	public	KC
+2032-05-09	День Победы	Victory Day	public	
+2032-05-11	День поминовения усопших (Радоница)	Day of Remembrance of the Departed (Radonitsa)	public	AD
+2032-05-11	День особого поминовения усопших - Радоница	Day of Special Remembrance of the Departed (Radonitsa)	public	DA
+2032-05-11	Радоница - день особого поминовения усопших	Day of Special Remembrance of the Departed (Radonitsa)	public	KB
+2032-05-11	День памяти усопших - Радоница	Day of Remembrance of the Departed (Radonitsa)	public	KC
+2032-05-21	День памяти адыгов (черкесов) - жертв Русско-Кавказской войны	Day of Remembrance of the Adyghe (Circassian) Victims of the Russian-Caucasian War	public	KB
+2032-06-08	День Республики Карелии	Republic of Karelia Day	public	KR
+2032-06-12	День России	Russia Day	public	
+2032-06-14	День основания города Севастополя	Sevastopol City Foundation Day	public	SEV
+2032-06-21	День Святой Троицы	Trinity Sunday	public	CR
+2032-06-21	День национального праздника Ысыах	Ysyakh National Holiday	public	SA
+2032-06-24	День Чувашской Республики	Day of the Chuvash Republic	public	CU
+2032-07-03	День образования Республики Алтай	Day of the Formation of the Altai Republic	public	AL
+2032-07-05	День Республики Калмыкия	Republic of Kalmykia Day	public	KL
+2032-07-12	День Прохоровского поля - Третьего ратного поля России	Prokhorovka Field Day - Russia's Third Military Field	public	BEL
+2032-07-26	День Конституции Республики Дагестан	Constitution Day of the Republic of Dagestan	public	DA
+2032-08-15	День Республики Тыва	Republic of Tuva Day	public	TY
+2032-08-22	День Республики Коми	Republic of Komi Day	public	KO
+2032-08-30	День Республики Татарстан	Republic of Tatarstan Day	public	TA
+2032-09-01	День государственности Кабардино-Балкарской Республики	Statehood Day of the Kabardino-Balkar Republic	public	KB
+2032-09-15	День единства народов Дагестана	Day of Unity of the Peoples of Dagestan	public	DA
+2032-09-20	День адыгов (черкесов)	Adyghe (Circassian) Day	public	KB
+2032-10-05	День образования Республики Адыгея	Republic of Adygea Formation Day	public	AD
+2032-10-11	День Республики Башкортостан	Republic of Bashkortostan Day	public	BA
+2032-11-04	День народного единства	Unity Day	public	
+2032-11-06	День Конституции Республики Татарстан	Constitution Day of the Republic of Tatarstan	public	TA
+2032-12-28	День памяти жертв депортации калмыцкого народа	Day of Remembrance of the Victims of the Deportation of the Kalmyk People	public	KL
+2033-01-01	Новый год	New Year's Day	public	
+2033-01-02	Новогодние каникулы	New Year Holiday	public	
+2033-01-02	Ураза-байрам	Uraza-Bayram	public	AD
+2033-01-02	Ураза-байрам	Uraza-Bayram	public	BA
+2033-01-02	Ураза-байрам	Uraza-Bayram	public	CE
+2033-01-02	Ораза-байрам	Uraza-Bayram	public	CR
+2033-01-02	Ураза-байрам	Uraza-Bayram	public	DA
+2033-01-02	Ид аль-Фитр (Мархаш)	Eid al-Fitr (Markhash)	public	IN
+2033-01-02	Ураза-байрам	Uraza-Bayram	public	KB
+2033-01-02	Ураза-байрам	Uraza-Bayram	public	KC
+2033-01-02	Ураза-байрам	Uraza-Bayram	public	TA
+2033-01-07	Рождество Христово	Christmas Day	public	
+2033-01-08	Новогодние каникулы	New Year Holiday	public	
+2033-02-23	День защитника Отечества	Defender of the Fatherland Day	public	
+2033-03-08	Международный женский день	International Women's Day	public	
+2033-03-11	Курбан-байрам	Kurban-Bayram	public	AD
+2033-03-11	Курбан-байрам	Kurban-Bayram	public	BA
+2033-03-11	Курбан-байрам	Kurban-Bayram	public	CE
+2033-03-11	Курбан-байрам	Kurban-Bayram	public	CR
+2033-03-11	Курбан-байрам	Kurban-Bayram	public	DA
+2033-03-11	Ид аль-Адха (Г1урба)	Eid al-Adha (Ghurba)	public	IN
+2033-03-11	Курбан-байрам	Kurban-Bayram	public	KB
+2033-03-11	Курбан-байрам	Kurban-Bayram	public	KC
+2033-03-11	Курбан-байрам	Kurban-Bayram	public	TA
+2033-03-18	День воссоединения Крыма с Россией	Day of the Reunification of Crimea with Russia	public	CR
+2033-03-18	День возвращения города Севастополя в Россию	Day of Sevastopol's Return to Russia	public	SEV
+2033-03-23	День Конституции Чеченской Республики	Constitution Day of the Chechen Republic	public	CE
+2033-03-28	День возрождения балкарского народа	Day of the Revival of the Balkar People	public	KB
+2033-04-16	День мира в Чеченской Республике	Peace Day in the Chechen Republic	public	CE
+2033-04-25	Светлое Христово Воскресение (Пасха)	Orthodox Easter	public	CR
+2033-04-25	Светлое Христово Воскресение (Пасха)	Orthodox Easter	public	DA
+2033-04-27	День Республики Саха (Якутия)	Republic of Sakha (Yakutia) Day	public	SA
+2033-05-01	День весны и труда	Spring and Labour Day	public	
+2033-05-03	День поминовения усопших (Радоница)	Day of Remembrance of the Departed (Radonitsa)	public	AD
+2033-05-03	День особого поминовения усопших - Радоница	Day of Special Remembrance of the Departed (Radonitsa)	public	DA
+2033-05-03	Радоница - день особого поминовения усопших	Day of Special Remembrance of the Departed (Radonitsa)	public	KB
+2033-05-03	День возрождения карачаевского народа	Day of the Revival of the Karachay People	public	KC
+2033-05-03	День памяти усопших - Радоница	Day of Remembrance of the Departed (Radonitsa)	public	KC
+2033-05-09	День Победы	Victory Day	public	
+2033-05-21	День памяти адыгов (черкесов) - жертв Русско-Кавказской войны	Day of Remembrance of the Adyghe (Circassian) Victims of the Russian-Caucasian War	public	KB
+2033-06-08	День Республики Карелии	Republic of Karelia Day	public	KR
+2033-06-12	День России	Russia Day	public	
+2033-06-13	День Святой Троицы	Trinity Sunday	public	CR
+2033-06-14	День основания города Севастополя	Sevastopol City Foundation Day	public	SEV
+2033-06-21	День национального праздника Ысыах	Ysyakh National Holiday	public	SA
+2033-06-24	День Чувашской Республики	Day of the Chuvash Republic	public	CU
+2033-07-03	День образования Республики Алтай	Day of the Formation of the Altai Republic	public	AL
+2033-07-05	День Республики Калмыкия	Republic of Kalmykia Day	public	KL
+2033-07-12	День Прохоровского поля - Третьего ратного поля России	Prokhorovka Field Day - Russia's Third Military Field	public	BEL
+2033-07-26	День Конституции Республики Дагестан	Constitution Day of the Republic of Dagestan	public	DA
+2033-08-15	День Республики Тыва	Republic of Tuva Day	public	TY
+2033-08-22	День Республики Коми	Republic of Komi Day	public	KO
+2033-08-30	День Республики Татарстан	Republic of Tatarstan Day	public	TA
+2033-09-01	День государственности Кабардино-Балкарской Республики	Statehood Day of the Kabardino-Balkar Republic	public	KB
+2033-09-15	День единства народов Дагестана	Day of Unity of the Peoples of Dagestan	public	DA
+2033-09-20	День адыгов (черкесов)	Adyghe (Circassian) Day	public	KB
+2033-10-05	День образования Республики Адыгея	Republic of Adygea Formation Day	public	AD
+2033-10-11	День Республики Башкортостан	Republic of Bashkortostan Day	public	BA
+2033-11-04	День народного единства	Unity Day	public	
+2033-11-06	День Конституции Республики Татарстан	Constitution Day of the Republic of Tatarstan	public	TA
+2033-12-23	Ураза-байрам	Uraza-Bayram	public	AD
+2033-12-23	Ураза-байрам	Uraza-Bayram	public	BA
+2033-12-23	Ураза-байрам	Uraza-Bayram	public	CE
+2033-12-23	Ораза-байрам	Uraza-Bayram	public	CR
+2033-12-23	Ураза-байрам	Uraza-Bayram	public	DA
+2033-12-23	Ид аль-Фитр (Мархаш)	Eid al-Fitr (Markhash)	public	IN
+2033-12-23	Ураза-байрам	Uraza-Bayram	public	KB
+2033-12-23	Ураза-байрам	Uraza-Bayram	public	KC
+2033-12-23	Ураза-байрам	Uraza-Bayram	public	TA
+2033-12-28	День памяти жертв депортации калмыцкого народа	Day of Remembrance of the Victims of the Deportation of the Kalmyk People	public	KL
+2034-01-01	Новый год	New Year's Day	public	
+2034-01-02	Новогодние каникулы	New Year Holiday	public	
+2034-01-07	Рождество Христово	Christmas Day	public	
+2034-01-08	Новогодние каникулы	New Year Holiday	public	
+2034-02-23	День защитника Отечества	Defender of the Fatherland Day	public	
+2034-03-01	Курбан-байрам	Kurban-Bayram	public	AD
+2034-03-01	Курбан-байрам	Kurban-Bayram	public	BA
+2034-03-01	Курбан-байрам	Kurban-Bayram	public	CE
+2034-03-01	Курбан-байрам	Kurban-Bayram	public	CR
+2034-03-01	Курбан-байрам	Kurban-Bayram	public	DA
+2034-03-01	Ид аль-Адха (Г1урба)	Eid al-Adha (Ghurba)	public	IN
+2034-03-01	Курбан-байрам	Kurban-Bayram	public	KB
+2034-03-01	Курбан-байрам	Kurban-Bayram	public	KC
+2034-03-01	Курбан-байрам	Kurban-Bayram	public	TA
+2034-03-08	Международный женский день	International Women's Day	public	
+2034-03-18	День воссоединения Крыма с Россией	Day of the Reunification of Crimea with Russia	public	CR
+2034-03-18	День возвращения города Севастополя в Россию	Day of Sevastopol's Return to Russia	public	SEV
+2034-03-23	День Конституции Чеченской Республики	Constitution Day of the Chechen Republic	public	CE
+2034-03-28	День возрождения балкарского народа	Day of the Revival of the Balkar People	public	KB
+2034-04-10	Светлое Христово Воскресение (Пасха)	Orthodox Easter	public	CR
+2034-04-10	Светлое Христово Воскресение (Пасха)	Orthodox Easter	public	DA
+2034-04-16	День мира в Чеченской Республике	Peace Day in the Chechen Republic	public	CE
+2034-04-18	День поминовения усопших (Радоница)	Day of Remembrance of the Departed (Radonitsa)	public	AD
+2034-04-18	День особого поминовения усопших - Радоница	Day of Special Remembrance of the Departed (Radonitsa)	public	DA
+2034-04-18	Радоница - день особого поминовения усопших	Day of Special Remembrance of the Departed (Radonitsa)	public	KB
+2034-04-18	День памяти усопших - Радоница	Day of Remembrance of the Departed (Radonitsa)	public	KC
+2034-04-27	День Республики Саха (Якутия)	Republic of Sakha (Yakutia) Day	public	SA
+2034-05-01	День весны и труда	Spring and Labour Day	public	
+2034-05-03	День возрождения карачаевского народа	Day of the Revival of the Karachay People	public	KC
+2034-05-09	День Победы	Victory Day	public	
+2034-05-21	День памяти адыгов (черкесов) - жертв Русско-Кавказской войны	Day of Remembrance of the Adyghe (Circassian) Victims of the Russian-Caucasian War	public	KB
+2034-05-29	День Святой Троицы	Trinity Sunday	public	CR
+2034-06-08	День Республики Карелии	Republic of Karelia Day	public	KR
+2034-06-12	День России	Russia Day	public	
+2034-06-14	День основания города Севастополя	Sevastopol City Foundation Day	public	SEV
+2034-06-21	День национального праздника Ысыах	Ysyakh National Holiday	public	SA
+2034-06-24	День Чувашской Республики	Day of the Chuvash Republic	public	CU
+2034-07-03	День образования Республики Алтай	Day of the Formation of the Altai Republic	public	AL
+2034-07-05	День Республики Калмыкия	Republic of Kalmykia Day	public	KL
+2034-07-12	День Прохоровского поля - Третьего ратного поля России	Prokhorovka Field Day - Russia's Third Military Field	public	BEL
+2034-07-26	День Конституции Республики Дагестан	Constitution Day of the Republic of Dagestan	public	DA
+2034-08-15	День Республики Тыва	Republic of Tuva Day	public	TY
+2034-08-22	День Республики Коми	Republic of Komi Day	public	KO
+2034-08-30	День Республики Татарстан	Republic of Tatarstan Day	public	TA
+2034-09-01	День государственности Кабардино-Балкарской Республики	Statehood Day of the Kabardino-Balkar Republic	public	KB
+2034-09-15	День единства народов Дагестана	Day of Unity of the Peoples of Dagestan	public	DA
+2034-09-20	День адыгов (черкесов)	Adyghe (Circassian) Day	public	KB
+2034-10-05	День образования Республики Адыгея	Republic of Adygea Formation Day	public	AD
+2034-10-11	День Республики Башкортостан	Republic of Bashkortostan Day	public	BA
+2034-11-04	День народного единства	Unity Day	public	
+2034-11-06	День Конституции Республики Татарстан	Constitution Day of the Republic of Tatarstan	public	TA
+2034-12-12	Ураза-байрам	Uraza-Bayram	public	AD
+2034-12-12	Ураза-байрам	Uraza-Bayram	public	BA
+2034-12-12	Ураза-байрам	Uraza-Bayram	public	CE
+2034-12-12	Ораза-байрам	Uraza-Bayram	public	CR
+2034-12-12	Ураза-байрам	Uraza-Bayram	public	DA
+2034-12-12	Ид аль-Фитр (Мархаш)	Eid al-Fitr (Markhash)	public	IN
+2034-12-12	Ураза-байрам	Uraza-Bayram	public	KB
+2034-12-12	Ураза-байрам	Uraza-Bayram	public	KC
+2034-12-12	Ураза-байрам	Uraza-Bayram	public	TA
+2034-12-28	День памяти жертв депортации калмыцкого народа	Day of Remembrance of the Victims of the Deportation of the Kalmyk People	public	KL
+2035-01-01	Новый год	New Year's Day	public	
+2035-01-02	Новогодние каникулы	New Year Holiday	public	
+2035-01-07	Рождество Христово	Christmas Day	public	
+2035-01-08	Новогодние каникулы	New Year Holiday	public	
+2035-02-18	Курбан-байрам	Kurban-Bayram	public	AD
+2035-02-18	Курбан-байрам	Kurban-Bayram	public	BA
+2035-02-18	Курбан-байрам	Kurban-Bayram	public	CE
+2035-02-18	Курбан-байрам	Kurban-Bayram	public	CR
+2035-02-18	Курбан-байрам	Kurban-Bayram	public	DA
+2035-02-18	Ид аль-Адха (Г1урба)	Eid al-Adha (Ghurba)	public	IN
+2035-02-18	Курбан-байрам	Kurban-Bayram	public	KB
+2035-02-18	Курбан-байрам	Kurban-Bayram	public	KC
+2035-02-18	Курбан-байрам	Kurban-Bayram	public	TA
+2035-02-23	День защитника Отечества	Defender of the Fatherland Day	public	
+2035-03-08	Международный женский день	International Women's Day	public	
+2035-03-18	День воссоединения Крыма с Россией	Day of the Reunification of Crimea with Russia	public	CR
+2035-03-18	День возвращения города Севастополя в Россию	Day of Sevastopol's Return to Russia	public	SEV
+2035-03-23	День Конституции Чеченской Республики	Constitution Day of the Chechen Republic	public	CE
+2035-03-28	День возрождения балкарского народа	Day of the Revival of the Balkar People	public	KB
+2035-04-16	День мира в Чеченской Республике	Peace Day in the Chechen Republic	public	CE
+2035-04-27	День Республики Саха (Якутия)	Republic of Sakha (Yakutia) Day	public	SA
+2035-04-30	Светлое Христово Воскресение (Пасха)	Orthodox Easter	public	CR
+2035-04-30	Светлое Христово Воскресение (Пасха)	Orthodox Easter	public	DA
+2035-05-01	День весны и труда	Spring and Labour Day	public	
+2035-05-03	День возрождения карачаевского народа	Day of the Revival of the Karachay People	public	KC
+2035-05-08	День поминовения усопших (Радоница)	Day of Remembrance of the Departed (Radonitsa)	public	AD
+2035-05-08	День особого поминовения усопших - Радоница	Day of Special Remembrance of the Departed (Radonitsa)	public	DA
+2035-05-08	Радоница - день особого поминовения усопших	Day of Special Remembrance of the Departed (Radonitsa)	public	KB
+2035-05-08	День памяти усопших - Радоница	Day of Remembrance of the Departed (Radonitsa)	public	KC
+2035-05-09	День Победы	Victory Day	public	
+2035-05-21	День памяти адыгов (черкесов) - жертв Русско-Кавказской войны	Day of Remembrance of the Adyghe (Circassian) Victims of the Russian-Caucasian War	public	KB
+2035-06-08	День Республики Карелии	Republic of Karelia Day	public	KR
+2035-06-12	День России	Russia Day	public	
+2035-06-14	День основания города Севастополя	Sevastopol City Foundation Day	public	SEV
+2035-06-18	День Святой Троицы	Trinity Sunday	public	CR
+2035-06-21	День национального праздника Ысыах	Ysyakh National Holiday	public	SA
+2035-06-24	День Чувашской Республики	Day of the Chuvash Republic	public	CU
+2035-07-03	День образования Республики Алтай	Day of the Formation of the Altai Republic	public	AL
+2035-07-05	День Республики Калмыкия	Republic of Kalmykia Day	public	KL
+2035-07-12	День Прохоровского поля - Третьего ратного поля России	Prokhorovka Field Day - Russia's Third Military Field	public	BEL
+2035-07-26	День Конституции Республики Дагестан	Constitution Day of the Republic of Dagestan	public	DA
+2035-08-15	День Республики Тыва	Republic of Tuva Day	public	TY
+2035-08-22	День Республики Коми	Republic of Komi Day	public	KO
+2035-08-30	День Республики Татарстан	Republic of Tatarstan Day	public	TA
+2035-09-01	День государственности Кабардино-Балкарской Республики	Statehood Day of the Kabardino-Balkar Republic	public	KB
+2035-09-15	День единства народов Дагестана	Day of Unity of the Peoples of Dagestan	public	DA
+2035-09-20	День адыгов (черкесов)	Adyghe (Circassian) Day	public	KB
+2035-10-05	День образования Республики Адыгея	Republic of Adygea Formation Day	public	AD
+2035-10-11	День Республики Башкортостан	Republic of Bashkortostan Day	public	BA
+2035-11-04	День народного единства	Unity Day	public	
+2035-11-06	День Конституции Республики Татарстан	Constitution Day of the Republic of Tatarstan	public	TA
+2035-12-01	Ураза-байрам	Uraza-Bayram	public	AD
+2035-12-01	Ураза-байрам	Uraza-Bayram	public	BA
+2035-12-01	Ураза-байрам	Uraza-Bayram	public	CE
+2035-12-01	Ораза-байрам	Uraza-Bayram	public	CR
+2035-12-01	Ураза-байрам	Uraza-Bayram	public	DA
+2035-12-01	Ид аль-Фитр (Мархаш)	Eid al-Fitr (Markhash)	public	IN
+2035-12-01	Ураза-байрам	Uraza-Bayram	public	KB
+2035-12-01	Ураза-байрам	Uraza-Bayram	public	KC
+2035-12-01	Ураза-байрам	Uraza-Bayram	public	TA
+2035-12-28	День памяти жертв депортации калмыцкого народа	Day of Remembrance of the Victims of the Deportation of the Kalmyk People	public	KL
+2036-01-01	Новый год	New Year's Day	public	
+2036-01-02	Новогодние каникулы	New Year Holiday	public	
+2036-01-07	Рождество Христово	Christmas Day	public	
+2036-01-08	Новогодние каникулы	New Year Holiday	public	
+2036-02-07	Курбан-байрам	Kurban-Bayram	public	AD
+2036-02-07	Курбан-байрам	Kurban-Bayram	public	BA
+2036-02-07	Курбан-байрам	Kurban-Bayram	public	CE
+2036-02-07	Курбан-байрам	Kurban-Bayram	public	CR
+2036-02-07	Курбан-байрам	Kurban-Bayram	public	DA
+2036-02-07	Ид аль-Адха (Г1урба)	Eid al-Adha (Ghurba)	public	IN
+2036-02-07	Курбан-байрам	Kurban-Bayram	public	KB
+2036-02-07	Курбан-байрам	Kurban-Bayram	public	KC
+2036-02-07	Курбан-байрам	Kurban-Bayram	public	TA
+2036-02-23	День защитника Отечества	Defender of the Fatherland Day	public	
+2036-03-08	Международный женский день	International Women's Day	public	
+2036-03-18	День воссоединения Крыма с Россией	Day of the Reunification of Crimea with Russia	public	CR
+2036-03-18	День возвращения города Севастополя в Россию	Day of Sevastopol's Return to Russia	public	SEV
+2036-03-23	День Конституции Чеченской Республики	Constitution Day of the Chechen Republic	public	CE
+2036-03-28	День возрождения балкарского народа	Day of the Revival of the Balkar People	public	KB
+2036-04-16	День мира в Чеченской Республике	Peace Day in the Chechen Republic	public	CE
+2036-04-21	Светлое Христово Воскресение (Пасха)	Orthodox Easter	public	CR
+2036-04-21	Светлое Христово Воскресение (Пасха)	Orthodox Easter	public	DA
+2036-04-27	День Республики Саха (Якутия)	Republic of Sakha (Yakutia) Day	public	SA
+2036-04-29	День поминовения усопших (Радоница)	Day of Remembrance of the Departed (Radonitsa)	public	AD
+2036-04-29	День особого поминовения усопших - Радоница	Day of Special Remembrance of the Departed (Radonitsa)	public	DA
+2036-04-29	Радоница - день особого поминовения усопших	Day of Special Remembrance of the Departed (Radonitsa)	public	KB
+2036-04-29	День памяти усопших - Радоница	Day of Remembrance of the Departed (Radonitsa)	public	KC
+2036-05-01	День весны и труда	Spring and Labour Day	public	
+2036-05-03	День возрождения карачаевского народа	Day of the Revival of the Karachay People	public	KC
+2036-05-09	День Победы	Victory Day	public	
+2036-05-21	День памяти адыгов (черкесов) - жертв Русско-Кавказской войны	Day of Remembrance of the Adyghe (Circassian) Victims of the Russian-Caucasian War	public	KB
+2036-06-08	День Республики Карелии	Republic of Karelia Day	public	KR
+2036-06-09	День Святой Троицы	Trinity Sunday	public	CR
+2036-06-12	День России	Russia Day	public	
+2036-06-14	День основания города Севастополя	Sevastopol City Foundation Day	public	SEV
+2036-06-21	День национального праздника Ысыах	Ysyakh National Holiday	public	SA
+2036-06-24	День Чувашской Республики	Day of the Chuvash Republic	public	CU
+2036-07-03	День образования Республики Алтай	Day of the Formation of the Altai Republic	public	AL
+2036-07-05	День Республики Калмыкия	Republic of Kalmykia Day	public	KL
+2036-07-12	День Прохоровского поля - Третьего ратного поля России	Prokhorovka Field Day - Russia's Third Military Field	public	BEL
+2036-07-26	День Конституции Республики Дагестан	Constitution Day of the Republic of Dagestan	public	DA
+2036-08-15	День Республики Тыва	Republic of Tuva Day	public	TY
+2036-08-22	День Республики Коми	Republic of Komi Day	public	KO
+2036-08-30	День Республики Татарстан	Republic of Tatarstan Day	public	TA
+2036-09-01	День государственности Кабардино-Балкарской Республики	Statehood Day of the Kabardino-Balkar Republic	public	KB
+2036-09-15	День единства народов Дагестана	Day of Unity of the Peoples of Dagestan	public	DA
+2036-09-20	День адыгов (черкесов)	Adyghe (Circassian) Day	public	KB
+2036-10-05	День образования Республики Адыгея	Republic of Adygea Formation Day	public	AD
+2036-10-11	День Республики Башкортостан	Republic of Bashkortostan Day	public	BA
+2036-11-04	День народного единства	Unity Day	public	
+2036-11-06	День Конституции Республики Татарстан	Constitution Day of the Republic of Tatarstan	public	TA
+2036-11-19	Ураза-байрам	Uraza-Bayram	public	AD
+2036-11-19	Ураза-байрам	Uraza-Bayram	public	BA
+2036-11-19	Ураза-байрам	Uraza-Bayram	public	CE
+2036-11-19	Ораза-байрам	Uraza-Bayram	public	CR
+2036-11-19	Ураза-байрам	Uraza-Bayram	public	DA
+2036-11-19	Ид аль-Фитр (Мархаш)	Eid al-Fitr (Markhash)	public	IN
+2036-11-19	Ураза-байрам	Uraza-Bayram	public	KB
+2036-11-19	Ураза-байрам	Uraza-Bayram	public	KC
+2036-11-19	Ураза-байрам	Uraza-Bayram	public	TA
+2036-12-28	День памяти жертв депортации калмыцкого народа	Day of Remembrance of the Victims of the Deportation of the Kalmyk People	public	KL
+2037-01-01	Новый год	New Year's Day	public	
+2037-01-02	Новогодние каникулы	New Year Holiday	public	
+2037-01-07	Рождество Христово	Christmas Day	public	
+2037-01-08	Новогодние каникулы	New Year Holiday	public	
+2037-01-26	Курбан-байрам	Kurban-Bayram	public	AD
+2037-01-26	Курбан-байрам	Kurban-Bayram	public	BA
+2037-01-26	Курбан-байрам	Kurban-Bayram	public	CE
+2037-01-26	Курбан-байрам	Kurban-Bayram	public	CR
+2037-01-26	Курбан-байрам	Kurban-Bayram	public	DA
+2037-01-26	Ид аль-Адха (Г1урба)	Eid al-Adha (Ghurba)	public	IN
+2037-01-26	Курбан-байрам	Kurban-Bayram	public	KB
+2037-01-26	Курбан-байрам	Kurban-Bayram	public	KC
+2037-01-26	Курбан-байрам	Kurban-Bayram	public	TA
+2037-02-23	День защитника Отечества	Defender of the Fatherland Day	public	
+2037-03-08	Международный женский день	International Women's Day	public	
+2037-03-09	Международный женский день	International Women's Day	public	
+2037-03-18	День воссоединения Крыма с Россией	Day of the Reunification of Crimea with Russia	public	CR
+2037-03-18	День возвращения города Севастополя в Россию	Day of Sevastopol's Return to Russia	public	SEV
+2037-03-23	День Конституции Чеченской Республики	Constitution Day of the Chechen Republic	public	CE
+2037-03-28	День возрождения балкарского народа	Day of the Revival of the Balkar People	public	KB
+2037-04-06	Светлое Христово Воскресение (Пасха)	Orthodox Easter	public	CR
+2037-04-06	Светлое Христово Воскресение (Пасха)	Orthodox Easter	public	DA
+2037-04-14	День поминовения усопших (Радоница)	Day of Remembrance of the Departed (Radonitsa)	public	AD
+2037-04-14	День особого поминовения усопших - Радоница	Day of Special Remembrance of the Departed (Radonitsa)	public	DA
+2037-04-14	Радоница - день особого поминовения усопших	Day of Special Remembrance of the Departed (Radonitsa)	public	KB
+2037-04-14	День памяти усопших - Радоница	Day of Remembrance of the Departed (Radonitsa)	public	KC
+2037-04-16	День мира в Чеченской Республике	Peace Day in the Chechen Republic	public	CE
+2037-04-27	День Республики Саха (Якутия)	Republic of Sakha (Yakutia) Day	public	SA
+2037-05-01	День весны и труда	Spring and Labour Day	public	
+2037-05-03	День возрождения карачаевского народа	Day of the Revival of the Karachay People	public	KC
+2037-05-09	День Победы	Victory Day	public	
+2037-05-21	День памяти адыгов (черкесов) - жертв Русско-Кавказской войны	Day of Remembrance of the Adyghe (Circassian) Victims of the Russian-Caucasian War	public	KB
+2037-05-25	День Святой Троицы	Trinity Sunday	public	CR
+2037-06-08	День Республики Карелии	Republic of Karelia Day	public	KR
+2037-06-12	День России	Russia Day	public	
+2037-06-14	День основания города Севастополя	Sevastopol City Foundation Day	public	SEV
+2037-06-21	День национального праздника Ысыах	Ysyakh National Holiday	public	SA
+2037-06-24	День Чувашской Республики	Day of the Chuvash Republic	public	CU
+2037-07-03	День образования Республики Алтай	Day of the Formation of the Altai Republic	public	AL
+2037-07-05	День Республики Калмыкия	Republic of Kalmykia Day	public	KL
+2037-07-12	День Прохоровского поля - Третьего ратного поля России	Prokhorovka Field Day - Russia's Third Military Field	public	BEL
+2037-07-26	День Конституции Республики Дагестан	Constitution Day of the Republic of Dagestan	public	DA
+2037-08-15	День Республики Тыва	Republic of Tuva Day	public	TY
+2037-08-22	День Республики Коми	Republic of Komi Day	public	KO
+2037-08-30	День Республики Татарстан	Republic of Tatarstan Day	public	TA
+2037-09-01	День государственности Кабардино-Балкарской Республики	Statehood Day of the Kabardino-Balkar Republic	public	KB
+2037-09-15	День единства народов Дагестана	Day of Unity of the Peoples of Dagestan	public	DA
+2037-09-20	День адыгов (черкесов)	Adyghe (Circassian) Day	public	KB
+2037-10-05	День образования Республики Адыгея	Republic of Adygea Formation Day	public	AD
+2037-10-11	День Республики Башкортостан	Republic of Bashkortostan Day	public	BA
+2037-11-04	День народного единства	Unity Day	public	
+2037-11-06	День Конституции Республики Татарстан	Constitution Day of the Republic of Tatarstan	public	TA
+2037-11-08	Ураза-байрам	Uraza-Bayram	public	AD
+2037-11-08	Ураза-байрам	Uraza-Bayram	public	BA
+2037-11-08	Ураза-байрам	Uraza-Bayram	public	CE
+2037-11-08	Ораза-байрам	Uraza-Bayram	public	CR
+2037-11-08	Ураза-байрам	Uraza-Bayram	public	DA
+2037-11-08	Ид аль-Фитр (Мархаш)	Eid al-Fitr (Markhash)	public	IN
+2037-11-08	Ураза-байрам	Uraza-Bayram	public	KB
+2037-11-08	Ураза-байрам	Uraza-Bayram	public	KC
+2037-11-08	Ураза-байрам	Uraza-Bayram	public	TA
+2037-12-28	День памяти жертв депортации калмыцкого народа	Day of Remembrance of the Victims of the Deportation of the Kalmyk People	public	KL
+2038-01-01	Новый год	New Year's Day	public	
+2038-01-02	Новогодние каникулы	New Year Holiday	public	
+2038-01-07	Рождество Христово	Christmas Day	public	
+2038-01-08	Новогодние каникулы	New Year Holiday	public	
+2038-01-16	Курбан-байрам	Kurban-Bayram	public	AD
+2038-01-16	Курбан-байрам	Kurban-Bayram	public	BA
+2038-01-16	Курбан-байрам	Kurban-Bayram	public	CE
+2038-01-16	Курбан-байрам	Kurban-Bayram	public	CR
+2038-01-16	Курбан-байрам	Kurban-Bayram	public	DA
+2038-01-16	Ид аль-Адха (Г1урба)	Eid al-Adha (Ghurba)	public	IN
+2038-01-16	Курбан-байрам	Kurban-Bayram	public	KB
+2038-01-16	Курбан-байрам	Kurban-Bayram	public	KC
+2038-01-16	Курбан-байрам	Kurban-Bayram	public	TA
+2038-02-23	День защитника Отечества	Defender of the Fatherland Day	public	
+2038-03-08	Международный женский день	International Women's Day	public	
+2038-03-18	День воссоединения Крыма с Россией	Day of the Reunification of Crimea with Russia	public	CR
+2038-03-18	День возвращения города Севастополя в Россию	Day of Sevastopol's Return to Russia	public	SEV
+2038-03-23	День Конституции Чеченской Республики	Constitution Day of the Chechen Republic	public	CE
+2038-03-28	День возрождения балкарского народа	Day of the Revival of the Balkar People	public	KB
+2038-04-16	День мира в Чеченской Республике	Peace Day in the Chechen Republic	public	CE
+2038-04-26	Светлое Христово Воскресение (Пасха)	Orthodox Easter	public	CR
+2038-04-26	Светлое Христово Воскресение (Пасха)	Orthodox Easter	public	DA
+2038-04-27	День Республики Саха (Якутия)	Republic of Sakha (Yakutia) Day	public	SA
+2038-05-01	День весны и труда	Spring and Labour Day	public	
+2038-05-03	День возрождения карачаевского народа	Day of the Revival of the Karachay People	public	KC
+2038-05-04	День поминовения усопших (Радоница)	Day of Remembrance of the Departed (Radonitsa)	public	AD
+2038-05-04	День особого поминовения усопших - Радоница	Day of Special Remembrance of the Departed (Radonitsa)	public	DA
+2038-05-04	Радоница - день особого поминовения усопших	Day of Special Remembrance of the Departed (Radonitsa)	public	KB
+2038-05-04	День памяти усопших - Радоница	Day of Remembrance of the Departed (Radonitsa)	public	KC
+2038-05-09	День Победы	Victory Day	public	
+2038-05-21	День памяти адыгов (черкесов) - жертв Русско-Кавказской войны	Day of Remembrance of the Adyghe (Circassian) Victims of the Russian-Caucasian War	public	KB
+2038-06-08	День Республики Карелии	Republic of Karelia Day	public	KR
+2038-06-12	День России	Russia Day	public	
+2038-06-14	День Святой Троицы	Trinity Sunday	public	CR
+2038-06-14	День основания города Севастополя	Sevastopol City Foundation Day	public	SEV
+2038-06-21	День национального праздника Ысыах	Ysyakh National Holiday	public	SA
+2038-06-24	День Чувашской Республики	Day of the Chuvash Republic	public	CU
+2038-07-03	День образования Республики Алтай	Day of the Formation of the Altai Republic	public	AL
+2038-07-05	День Республики Калмыкия	Republic of Kalmykia Day	public	KL
+2038-07-12	День Прохоровского поля - Третьего ратного поля России	Prokhorovka Field Day - Russia's Third Military Field	public	BEL
+2038-07-26	День Конституции Республики Дагестан	Constitution Day of the Republic of Dagestan	public	DA
+2038-08-15	День Республики Тыва	Republic of Tuva Day	public	TY
+2038-08-22	День Республики Коми	Republic of Komi Day	public	KO
+2038-08-30	День Республики Татарстан	Republic of Tatarstan Day	public	TA
+2038-09-01	День государственности Кабардино-Балкарской Республики	Statehood Day of the Kabardino-Balkar Republic	public	KB
+2038-09-15	День единства народов Дагестана	Day of Unity of the Peoples of Dagestan	public	DA
+2038-09-20	День адыгов (черкесов)	Adyghe (Circassian) Day	public	KB
+2038-10-05	День образования Республики Адыгея	Republic of Adygea Formation Day	public	AD
+2038-10-11	День Республики Башкортостан	Republic of Bashkortostan Day	public	BA
+2038-10-29	Ураза-байрам	Uraza-Bayram	public	AD
+2038-10-29	Ураза-байрам	Uraza-Bayram	public	BA
+2038-10-29	Ураза-байрам	Uraza-Bayram	public	CE
+2038-10-29	Ораза-байрам	Uraza-Bayram	public	CR
+2038-10-29	Ураза-байрам	Uraza-Bayram	public	DA
+2038-10-29	Ид аль-Фитр (Мархаш)	Eid al-Fitr (Markhash)	public	IN
+2038-10-29	Ураза-байрам	Uraza-Bayram	public	KB
+2038-10-29	Ураза-байрам	Uraza-Bayram	public	KC
+2038-10-29	Ураза-байрам	Uraza-Bayram	public	TA
+2038-11-04	День народного единства	Unity Day	public	
+2038-11-06	День Конституции Республики Татарстан	Constitution Day of the Republic of Tatarstan	public	TA
+2038-12-28	День памяти жертв депортации калмыцкого народа	Day of Remembrance of the Victims of the Deportation of the Kalmyk People	public	KL
+2039-01-01	Новый год	New Year's Day	public	
+2039-01-02	Новогодние каникулы	New Year Holiday	public	
+2039-01-05	Курбан-байрам	Kurban-Bayram	public	AD
+2039-01-05	Курбан-байрам	Kurban-Bayram	public	BA
+2039-01-05	Курбан-байрам	Kurban-Bayram	public	CE
+2039-01-05	Курбан-байрам	Kurban-Bayram	public	CR
+2039-01-05	Курбан-байрам	Kurban-Bayram	public	DA
+2039-01-05	Ид аль-Адха (Г1урба)	Eid al-Adha (Ghurba)	public	IN
+2039-01-05	Курбан-байрам	Kurban-Bayram	public	KB
+2039-01-05	Курбан-байрам	Kurban-Bayram	public	KC
+2039-01-05	Курбан-байрам	Kurban-Bayram	public	TA
+2039-01-07	Рождество Христово	Christmas Day	public	
+2039-01-08	Новогодние каникулы	New Year Holiday	public	
+2039-02-23	День защитника Отечества	Defender of the Fatherland Day	public	
+2039-03-08	Международный женский день	International Women's Day	public	
+2039-03-18	День воссоединения Крыма с Россией	Day of the Reunification of Crimea with Russia	public	CR
+2039-03-18	День возвращения города Севастополя в Россию	Day of Sevastopol's Return to Russia	public	SEV
+2039-03-23	День Конституции Чеченской Республики	Constitution Day of the Chechen Republic	public	CE
+2039-03-28	День возрождения балкарского народа	Day of the Revival of the Balkar People	public	KB
+2039-04-16	День мира в Чеченской Республике	Peace Day in the Chechen Republic	public	CE
+2039-04-18	Светлое Христово Воскресение (Пасха)	Orthodox Easter	public	CR
+2039-04-18	Светлое Христово Воскресение (Пасха)	Orthodox Easter	public	DA
+2039-04-26	День поминовения усопших (Радоница)	Day of Remembrance of the Departed (Radonitsa)	public	AD
+2039-04-26	День особого поминовения усопших - Радоница	Day of Special Remembrance of the Departed (Radonitsa)	public	DA
+2039-04-26	Радоница - день особого поминовения усопших	Day of Special Remembrance of the Departed (Radonitsa)	public	KB
+2039-04-26	День памяти усопших - Радоница	Day of Remembrance of the Departed (Radonitsa)	public	KC
+2039-04-27	День Республики Саха (Якутия)	Republic of Sakha (Yakutia) Day	public	SA
+2039-05-01	День весны и труда	Spring and Labour Day	public	
+2039-05-03	День возрождения карачаевского народа	Day of the Revival of the Karachay People	public	KC
+2039-05-09	День Победы	Victory Day	public	
+2039-05-21	День памяти адыгов (черкесов) - жертв Русско-Кавказской войны	Day of Remembrance of the Adyghe (Circassian) Victims of the Russian-Caucasian War	public	KB
+2039-06-06	День Святой Троицы	Trinity Sunday	public	CR
+2039-06-08	День Республики Карелии	Republic of Karelia Day	public	KR
+2039-06-12	День России	Russia Day	public	
+2039-06-14	День основания города Севастополя	Sevastopol City Foundation Day	public	SEV
+2039-06-21	День национального праздника Ысыах	Ysyakh National Holiday	public	SA
+2039-06-24	День Чувашской Республики	Day of the Chuvash Republic	public	CU
+2039-07-03	День образования Республики Алтай	Day of the Formation of the Altai Republic	public	AL
+2039-07-05	День Республики Калмыкия	Republic of Kalmykia Day	public	KL
+2039-07-12	День Прохоровского поля - Третьего ратного поля России	Prokhorovka Field Day - Russia's Third Military Field	public	BEL
+2039-07-26	День Конституции Республики Дагестан	Constitution Day of the Republic of Dagestan	public	DA
+2039-08-15	День Республики Тыва	Republic of Tuva Day	public	TY
+2039-08-22	День Республики Коми	Republic of Komi Day	public	KO
+2039-08-30	День Республики Татарстан	Republic of Tatarstan Day	public	TA
+2039-09-01	День государственности Кабардино-Балкарской Республики	Statehood Day of the Kabardino-Balkar Republic	public	KB
+2039-09-15	День единства народов Дагестана	Day of Unity of the Peoples of Dagestan	public	DA
+2039-09-20	День адыгов (черкесов)	Adyghe (Circassian) Day	public	KB
+2039-10-05	День образования Республики Адыгея	Republic of Adygea Formation Day	public	AD
+2039-10-11	День Республики Башкортостан	Republic of Bashkortostan Day	public	BA
+2039-10-19	Ураза-байрам	Uraza-Bayram	public	AD
+2039-10-19	Ураза-байрам	Uraza-Bayram	public	BA
+2039-10-19	Ураза-байрам	Uraza-Bayram	public	CE
+2039-10-19	Ораза-байрам	Uraza-Bayram	public	CR
+2039-10-19	Ураза-байрам	Uraza-Bayram	public	DA
+2039-10-19	Ид аль-Фитр (Мархаш)	Eid al-Fitr (Markhash)	public	IN
+2039-10-19	Ураза-байрам	Uraza-Bayram	public	KB
+2039-10-19	Ураза-байрам	Uraza-Bayram	public	KC
+2039-10-19	Ураза-байрам	Uraza-Bayram	public	TA
+2039-11-04	День народного единства	Unity Day	public	
+2039-11-06	День Конституции Республики Татарстан	Constitution Day of the Republic of Tatarstan	public	TA
+2039-12-26	Курбан-байрам	Kurban-Bayram	public	AD
+2039-12-26	Курбан-байрам	Kurban-Bayram	public	BA
+2039-12-26	Курбан-байрам	Kurban-Bayram	public	CE
+2039-12-26	Курбан-байрам	Kurban-Bayram	public	CR
+2039-12-26	Курбан-байрам	Kurban-Bayram	public	DA
+2039-12-26	Ид аль-Адха (Г1урба)	Eid al-Adha (Ghurba)	public	IN
+2039-12-26	Курбан-байрам	Kurban-Bayram	public	KB
+2039-12-26	Курбан-байрам	Kurban-Bayram	public	KC
+2039-12-26	Курбан-байрам	Kurban-Bayram	public	TA
+2039-12-28	День памяти жертв депортации калмыцкого народа	Day of Remembrance of the Victims of the Deportation of the Kalmyk People	public	KL
+2040-01-01	Новый год	New Year's Day	public	
+2040-01-02	Новогодние каникулы	New Year Holiday	public	
+2040-01-07	Рождество Христово	Christmas Day	public	
+2040-01-08	Новогодние каникулы	New Year Holiday	public	
+2040-02-23	День защитника Отечества	Defender of the Fatherland Day	public	
+2040-03-08	Международный женский день	International Women's Day	public	
+2040-03-18	День воссоединения Крыма с Россией	Day of the Reunification of Crimea with Russia	public	CR
+2040-03-18	День возвращения города Севастополя в Россию	Day of Sevastopol's Return to Russia	public	SEV
+2040-03-23	День Конституции Чеченской Республики	Constitution Day of the Chechen Republic	public	CE
+2040-03-28	День возрождения балкарского народа	Day of the Revival of the Balkar People	public	KB
+2040-04-16	День мира в Чеченской Республике	Peace Day in the Chechen Republic	public	CE
+2040-04-27	День Республики Саха (Якутия)	Republic of Sakha (Yakutia) Day	public	SA
+2040-05-01	День весны и труда	Spring and Labour Day	public	
+2040-05-03	День возрождения карачаевского народа	Day of the Revival of the Karachay People	public	KC
+2040-05-07	Светлое Христово Воскресение (Пасха)	Orthodox Easter	public	CR
+2040-05-07	Светлое Христово Воскресение (Пасха)	Orthodox Easter	public	DA
+2040-05-09	День Победы	Victory Day	public	
+2040-05-15	День поминовения усопших (Радоница)	Day of Remembrance of the Departed (Radonitsa)	public	AD
+2040-05-15	День особого поминовения усопших - Радоница	Day of Special Remembrance of the Departed (Radonitsa)	public	DA
+2040-05-15	Радоница - день особого поминовения усопших	Day of Special Remembrance of the Departed (Radonitsa)	public	KB
+2040-05-15	День памяти усопших - Радоница	Day of Remembrance of the Departed (Radonitsa)	public	KC
+2040-05-21	День памяти адыгов (черкесов) - жертв Русско-Кавказской войны	Day of Remembrance of the Adyghe (Circassian) Victims of the Russian-Caucasian War	public	KB
+2040-06-08	День Республики Карелии	Republic of Karelia Day	public	KR
+2040-06-12	День России	Russia Day	public	
+2040-06-14	День основания города Севастополя	Sevastopol City Foundation Day	public	SEV
+2040-06-21	День национального праздника Ысыах	Ysyakh National Holiday	public	SA
+2040-06-24	День Чувашской Республики	Day of the Chuvash Republic	public	CU
+2040-06-25	День Святой Троицы	Trinity Sunday	public	CR
+2040-07-03	День образования Республики Алтай	Day of the Formation of the Altai Republic	public	AL
+2040-07-05	День Республики Калмыкия	Republic of Kalmykia Day	public	KL
+2040-07-12	День Прохоровского поля - Третьего ратного поля России	Prokhorovka Field Day - Russia's Third Military Field	public	BEL
+2040-07-26	День Конституции Республики Дагестан	Constitution Day of the Republic of Dagestan	public	DA
+2040-08-15	День Республики Тыва	Republic of Tuva Day	public	TY
+2040-08-22	День Республики Коми	Republic of Komi Day	public	KO
+2040-08-30	День Республики Татарстан	Republic of Tatarstan Day	public	TA
+2040-09-01	День государственности Кабардино-Балкарской Республики	Statehood Day of the Kabardino-Balkar Republic	public	KB
+2040-09-15	День единства народов Дагестана	Day of Unity of the Peoples of Dagestan	public	DA
+2040-09-20	День адыгов (черкесов)	Adyghe (Circassian) Day	public	KB
+2040-10-05	День образования Республики Адыгея	Republic of Adygea Formation Day	public	AD
+2040-10-07	Ураза-байрам	Uraza-Bayram	public	AD
+2040-10-07	Ураза-байрам	Uraza-Bayram	public	BA
+2040-10-07	Ураза-байрам	Uraza-Bayram	public	CE
+2040-10-07	Ораза-байрам	Uraza-Bayram	public	CR
+2040-10-07	Ураза-байрам	Uraza-Bayram	public	DA
+2040-10-07	Ид аль-Фитр (Мархаш)	Eid al-Fitr (Markhash)	public	IN
+2040-10-07	Ураза-байрам	Uraza-Bayram	public	KB
+2040-10-07	Ураза-байрам	Uraza-Bayram	public	KC
+2040-10-07	Ураза-байрам	Uraza-Bayram	public	TA
+2040-10-11	День Республики Башкортостан	Republic of Bashkortostan Day	public	BA
+2040-11-04	День народного единства	Unity Day	public	
+2040-11-06	День Конституции Республики Татарстан	Constitution Day of the Republic of Tatarstan	public	TA
+2040-12-14	Курбан-байрам	Kurban-Bayram	public	AD
+2040-12-14	Курбан-байрам	Kurban-Bayram	public	BA
+2040-12-14	Курбан-байрам	Kurban-Bayram	public	CE
+2040-12-14	Курбан-байрам	Kurban-Bayram	public	CR
+2040-12-14	Курбан-байрам	Kurban-Bayram	public	DA
+2040-12-14	Ид аль-Адха (Г1урба)	Eid al-Adha (Ghurba)	public	IN
+2040-12-14	Курбан-байрам	Kurban-Bayram	public	KB
+2040-12-14	Курбан-байрам	Kurban-Bayram	public	KC
+2040-12-14	Курбан-байрам	Kurban-Bayram	public	TA
+2040-12-28	День памяти жертв депортации калмыцкого народа	Day of Remembrance of the Victims of the Deportation of the Kalmyk People	public	KL
+2041-01-01	Новый год	New Year's Day	public	
+2041-01-02	Новогодние каникулы	New Year Holiday	public	
+2041-01-07	Рождество Христово	Christmas Day	public	
+2041-01-08	Новогодние каникулы	New Year Holiday	public	
+2041-02-23	День защитника Отечества	Defender of the Fatherland Day	public	
+2041-03-08	Международный женский день	International Women's Day	public	
+2041-03-18	День воссоединения Крыма с Россией	Day of the Reunification of Crimea with Russia	public	CR
+2041-03-18	День возвращения города Севастополя в Россию	Day of Sevastopol's Return to Russia	public	SEV
+2041-03-23	День Конституции Чеченской Республики	Constitution Day of the Chechen Republic	public	CE
+2041-03-28	День возрождения балкарского народа	Day of the Revival of the Balkar People	public	KB
+2041-04-16	День мира в Чеченской Республике	Peace Day in the Chechen Republic	public	CE
+2041-04-22	Светлое Христово Воскресение (Пасха)	Orthodox Easter	public	CR
+2041-04-22	Светлое Христово Воскресение (Пасха)	Orthodox Easter	public	DA
+2041-04-27	День Республики Саха (Якутия)	Republic of Sakha (Yakutia) Day	public	SA
+2041-04-30	День поминовения усопших (Радоница)	Day of Remembrance of the Departed (Radonitsa)	public	AD
+2041-04-30	День особого поминовения усопших - Радоница	Day of Special Remembrance of the Departed (Radonitsa)	public	DA
+2041-04-30	Радоница - день особого поминовения усопших	Day of Special Remembrance of the Departed (Radonitsa)	public	KB
+2041-04-30	День памяти усопших - Радоница	Day of Remembrance of the Departed (Radonitsa)	public	KC
+2041-05-01	День весны и труда	Spring and Labour Day	public	
+2041-05-03	День возрождения карачаевского народа	Day of the Revival of the Karachay People	public	KC
+2041-05-09	День Победы	Victory Day	public	
+2041-05-21	День памяти адыгов (черкесов) - жертв Русско-Кавказской войны	Day of Remembrance of the Adyghe (Circassian) Victims of the Russian-Caucasian War	public	KB
+2041-06-08	День Республики Карелии	Republic of Karelia Day	public	KR
+2041-06-10	День Святой Троицы	Trinity Sunday	public	CR
+2041-06-12	День России	Russia Day	public	
+2041-06-14	День основания города Севастополя	Sevastopol City Foundation Day	public	SEV
+2041-06-21	День национального праздника Ысыах	Ysyakh National Holiday	public	SA
+2041-06-24	День Чувашской Республики	Day of the Chuvash Republic	public	CU
+2041-07-03	День образования Республики Алтай	Day of the Formation of the Altai Republic	public	AL
+2041-07-05	День Республики Калмыкия	Republic of Kalmykia Day	public	KL
+2041-07-12	День Прохоровского поля - Третьего ратного поля России	Prokhorovka Field Day - Russia's Third Military Field	public	BEL
+2041-07-26	День Конституции Республики Дагестан	Constitution Day of the Republic of Dagestan	public	DA
+2041-08-15	День Республики Тыва	Republic of Tuva Day	public	TY
+2041-08-22	День Республики Коми	Republic of Komi Day	public	KO
+2041-08-30	День Республики Татарстан	Republic of Tatarstan Day	public	TA
+2041-09-01	День государственности Кабардино-Балкарской Республики	Statehood Day of the Kabardino-Balkar Republic	public	KB
+2041-09-15	День единства народов Дагестана	Day of Unity of the Peoples of Dagestan	public	DA
+2041-09-20	День адыгов (черкесов)	Adyghe (Circassian) Day	public	KB
+2041-09-26	Ураза-байрам	Uraza-Bayram	public	AD
+2041-09-26	Ураза-байрам	Uraza-Bayram	public	BA
+2041-09-26	Ураза-байрам	Uraza-Bayram	public	CE
+2041-09-26	Ораза-байрам	Uraza-Bayram	public	CR
+2041-09-26	Ураза-байрам	Uraza-Bayram	public	DA
+2041-09-26	Ид аль-Фитр (Мархаш)	Eid al-Fitr (Markhash)	public	IN
+2041-09-26	Ураза-байрам	Uraza-Bayram	public	KB
+2041-09-26	Ураза-байрам	Uraza-Bayram	public	KC
+2041-09-26	Ураза-байрам	Uraza-Bayram	public	TA
+2041-10-05	День образования Республики Адыгея	Republic of Adygea Formation Day	public	AD
+2041-10-11	День Республики Башкортостан	Republic of Bashkortostan Day	public	BA
+2041-11-04	День народного единства	Unity Day	public	
+2041-11-06	День Конституции Республики Татарстан	Constitution Day of the Republic of Tatarstan	public	TA
+2041-12-04	Курбан-байрам	Kurban-Bayram	public	AD
+2041-12-04	Курбан-байрам	Kurban-Bayram	public	BA
+2041-12-04	Курбан-байрам	Kurban-Bayram	public	CE
+2041-12-04	Курбан-байрам	Kurban-Bayram	public	CR
+2041-12-04	Курбан-байрам	Kurban-Bayram	public	DA
+2041-12-04	Ид аль-Адха (Г1урба)	Eid al-Adha (Ghurba)	public	IN
+2041-12-04	Курбан-байрам	Kurban-Bayram	public	KB
+2041-12-04	Курбан-байрам	Kurban-Bayram	public	KC
+2041-12-04	Курбан-байрам	Kurban-Bayram	public	TA
+2041-12-28	День памяти жертв депортации калмыцкого народа	Day of Remembrance of the Victims of the Deportation of the Kalmyk People	public	KL
+2042-01-01	Новый год	New Year's Day	public	
+2042-01-02	Новогодние каникулы	New Year Holiday	public	
+2042-01-07	Рождество Христово	Christmas Day	public	
+2042-01-08	Новогодние каникулы	New Year Holiday	public	
+2042-02-23	День защитника Отечества	Defender of the Fatherland Day	public	
+2042-03-08	Международный женский день	International Women's Day	public	
+2042-03-18	День воссоединения Крыма с Россией	Day of the Reunification of Crimea with Russia	public	CR
+2042-03-18	День возвращения города Севастополя в Россию	Day of Sevastopol's Return to Russia	public	SEV
+2042-03-23	День Конституции Чеченской Республики	Constitution Day of the Chechen Republic	public	CE
+2042-03-28	День возрождения балкарского народа	Day of the Revival of the Balkar People	public	KB
+2042-04-14	Светлое Христово Воскресение (Пасха)	Orthodox Easter	public	CR
+2042-04-14	Светлое Христово Воскресение (Пасха)	Orthodox Easter	public	DA
+2042-04-16	День мира в Чеченской Республике	Peace Day in the Chechen Republic	public	CE
+2042-04-22	День поминовения усопших (Радоница)	Day of Remembrance of the Departed (Radonitsa)	public	AD
+2042-04-22	День особого поминовения усопших - Радоница	Day of Special Remembrance of the Departed (Radonitsa)	public	DA
+2042-04-22	Радоница - день особого поминовения усопших	Day of Special Remembrance of the Departed (Radonitsa)	public	KB
+2042-04-22	День памяти усопших - Радоница	Day of Remembrance of the Departed (Radonitsa)	public	KC
+2042-04-27	День Республики Саха (Якутия)	Republic of Sakha (Yakutia) Day	public	SA
+2042-05-01	День весны и труда	Spring and Labour Day	public	
+2042-05-03	День возрождения карачаевского народа	Day of the Revival of the Karachay People	public	KC
+2042-05-09	День Победы	Victory Day	public	
+2042-05-21	День памяти адыгов (черкесов) - жертв Русско-Кавказской войны	Day of Remembrance of the Adyghe (Circassian) Victims of the Russian-Caucasian War	public	KB
+2042-06-02	День Святой Троицы	Trinity Sunday	public	CR
+2042-06-08	День Республики Карелии	Republic of Karelia Day	public	KR
+2042-06-12	День России	Russia Day	public	
+2042-06-14	День основания города Севастополя	Sevastopol City Foundation Day	public	SEV
+2042-06-21	День национального праздника Ысыах	Ysyakh National Holiday	public	SA
+2042-06-24	День Чувашской Республики	Day of the Chuvash Republic	public	CU
+2042-07-03	День образования Республики Алтай	Day of the Formation of the Altai Republic	public	AL
+2042-07-05	День Республики Калмыкия	Republic of Kalmykia Day	public	KL
+2042-07-12	День Прохоровского поля - Третьего ратного поля России	Prokhorovka Field Day - Russia's Third Military Field	public	BEL
+2042-07-26	День Конституции Республики Дагестан	Constitution Day of the Republic of Dagestan	public	DA
+2042-08-15	День Республики Тыва	Republic of Tuva Day	public	TY
+2042-08-22	День Республики Коми	Republic of Komi Day	public	KO
+2042-08-30	День Республики Татарстан	Republic of Tatarstan Day	public	TA
+2042-09-01	День государственности Кабардино-Балкарской Республики	Statehood Day of the Kabardino-Balkar Republic	public	KB
+2042-09-15	Ураза-байрам	Uraza-Bayram	public	AD
+2042-09-15	Ураза-байрам	Uraza-Bayram	public	BA
+2042-09-15	Ураза-байрам	Uraza-Bayram	public	CE
+2042-09-15	Ораза-байрам	Uraza-Bayram	public	CR
+2042-09-15	День единства народов Дагестана	Day of Unity of the Peoples of Dagestan	public	DA
+2042-09-15	Ураза-байрам	Uraza-Bayram	public	DA
+2042-09-15	Ид аль-Фитр (Мархаш)	Eid al-Fitr (Markhash)	public	IN
+2042-09-15	Ураза-байрам	Uraza-Bayram	public	KB
+2042-09-15	Ураза-байрам	Uraza-Bayram	public	KC
+2042-09-15	Ураза-байрам	Uraza-Bayram	public	TA
+2042-09-20	День адыгов (черкесов)	Adyghe (Circassian) Day	public	KB
+2042-10-05	День образования Республики Адыгея	Republic of Adygea Formation Day	public	AD
+2042-10-11	День Республики Башкортостан	Republic of Bashkortostan Day	public	BA
+2042-11-04	День народного единства	Unity Day	public	
+2042-11-06	День Конституции Республики Татарстан	Constitution Day of the Republic of Tatarstan	public	TA
+2042-11-23	Курбан-байрам	Kurban-Bayram	public	AD
+2042-11-23	Курбан-байрам	Kurban-Bayram	public	BA
+2042-11-23	Курбан-байрам	Kurban-Bayram	public	CE
+2042-11-23	Курбан-байрам	Kurban-Bayram	public	CR
+2042-11-23	Курбан-байрам	Kurban-Bayram	public	DA
+2042-11-23	Ид аль-Адха (Г1урба)	Eid al-Adha (Ghurba)	public	IN
+2042-11-23	Курбан-байрам	Kurban-Bayram	public	KB
+2042-11-23	Курбан-байрам	Kurban-Bayram	public	KC
+2042-11-23	Курбан-байрам	Kurban-Bayram	public	TA
+2042-12-28	День памяти жертв депортации калмыцкого народа	Day of Remembrance of the Victims of the Deportation of the Kalmyk People	public	KL
+2043-01-01	Новый год	New Year's Day	public	
+2043-01-02	Новогодние каникулы	New Year Holiday	public	
+2043-01-07	Рождество Христово	Christmas Day	public	
+2043-01-08	Новогодние каникулы	New Year Holiday	public	
+2043-02-23	День защитника Отечества	Defender of the Fatherland Day	public	
+2043-03-08	Международный женский день	International Women's Day	public	
+2043-03-09	Международный женский день	International Women's Day	public	
+2043-03-18	День воссоединения Крыма с Россией	Day of the Reunification of Crimea with Russia	public	CR
+2043-03-18	День возвращения города Севастополя в Россию	Day of Sevastopol's Return to Russia	public	SEV
+2043-03-23	День Конституции Чеченской Республики	Constitution Day of the Chechen Republic	public	CE
+2043-03-28	День возрождения балкарского народа	Day of the Revival of the Balkar People	public	KB
+2043-04-16	День мира в Чеченской Республике	Peace Day in the Chechen Republic	public	CE
+2043-04-27	День Республики Саха (Якутия)	Republic of Sakha (Yakutia) Day	public	SA
+2043-05-01	День весны и труда	Spring and Labour Day	public	
+2043-05-03	День возрождения карачаевского народа	Day of the Revival of the Karachay People	public	KC
+2043-05-04	Светлое Христово Воскресение (Пасха)	Orthodox Easter	public	CR
+2043-05-04	Светлое Христово Воскресение (Пасха)	Orthodox Easter	public	DA
+2043-05-09	День Победы	Victory Day	public	
+2043-05-12	День поминовения усопших (Радоница)	Day of Remembrance of the Departed (Radonitsa)	public	AD
+2043-05-12	День особого поминовения усопших - Радоница	Day of Special Remembrance of the Departed (Radonitsa)	public	DA
+2043-05-12	Радоница - день особого поминовения усопших	Day of Special Remembrance of the Departed (Radonitsa)	public	KB
+2043-05-12	День памяти усопших - Радоница	Day of Remembrance of the Departed (Radonitsa)	public	KC
+2043-05-21	День памяти адыгов (черкесов) - жертв Русско-Кавказской войны	Day of Remembrance of the Adyghe (Circassian) Victims of the Russian-Caucasian War	public	KB
+2043-06-08	День Республики Карелии	Republic of Karelia Day	public	KR
+2043-06-12	День России	Russia Day	public	
+2043-06-14	День основания города Севастополя	Sevastopol City Foundation Day	public	SEV
+2043-06-21	День национального праздника Ысыах	Ysyakh National Holiday	public	SA
+2043-06-22	День Святой Троицы	Trinity Sunday	public	CR
+2043-06-24	День Чувашской Республики	Day of the Chuvash Republic	public	CU
+2043-07-03	День образования Республики Алтай	Day of the Formation of the Altai Republic	public	AL
+2043-07-05	День Республики Калмыкия	Republic of Kalmykia Day	public	KL
+2043-07-12	День Прохоровского поля - Третьего ратного поля России	Prokhorovka Field Day - Russia's Third Military Field	public	BEL
+2043-07-26	День Конституции Республики Дагестан	Constitution Day of the Republic of Dagestan	public	DA
+2043-08-15	День Республики Тыва	Republic of Tuva Day	public	TY
+2043-08-22	День Республики Коми	Republic of Komi Day	public	KO
+2043-08-30	День Республики Татарстан	Republic of Tatarstan Day	public	TA
+2043-09-01	День государственности Кабардино-Балкарской Республики	Statehood Day of the Kabardino-Balkar Republic	public	KB
+2043-09-04	Ураза-байрам	Uraza-Bayram	public	AD
+2043-09-04	Ураза-байрам	Uraza-Bayram	public	BA
+2043-09-04	Ураза-байрам	Uraza-Bayram	public	CE
+2043-09-04	Ораза-байрам	Uraza-Bayram	public	CR
+2043-09-04	Ураза-байрам	Uraza-Bayram	public	DA
+2043-09-04	Ид аль-Фитр (Мархаш)	Eid al-Fitr (Markhash)	public	IN
+2043-09-04	Ураза-байрам	Uraza-Bayram	public	KB
+2043-09-04	Ураза-байрам	Uraza-Bayram	public	KC
+2043-09-04	Ураза-байрам	Uraza-Bayram	public	TA
+2043-09-15	День единства народов Дагестана	Day of Unity of the Peoples of Dagestan	public	DA
+2043-09-20	День адыгов (черкесов)	Adyghe (Circassian) Day	public	KB
+2043-10-05	День образования Республики Адыгея	Republic of Adygea Formation Day	public	AD
+2043-10-11	День Республики Башкортостан	Republic of Bashkortostan Day	public	BA
+2043-11-04	День народного единства	Unity Day	public	
+2043-11-06	День Конституции Республики Татарстан	Constitution Day of the Republic of Tatarstan	public	TA
+2043-11-12	Курбан-байрам	Kurban-Bayram	public	AD
+2043-11-12	Курбан-байрам	Kurban-Bayram	public	BA
+2043-11-12	Курбан-байрам	Kurban-Bayram	public	CE
+2043-11-12	Курбан-байрам	Kurban-Bayram	public	CR
+2043-11-12	Курбан-байрам	Kurban-Bayram	public	DA
+2043-11-12	Ид аль-Адха (Г1урба)	Eid al-Adha (Ghurba)	public	IN
+2043-11-12	Курбан-байрам	Kurban-Bayram	public	KB
+2043-11-12	Курбан-байрам	Kurban-Bayram	public	KC
+2043-11-12	Курбан-байрам	Kurban-Bayram	public	TA
+2043-12-28	День памяти жертв депортации калмыцкого народа	Day of Remembrance of the Victims of the Deportation of the Kalmyk People	public	KL
+2044-01-01	Новый год	New Year's Day	public	
+2044-01-02	Новогодние каникулы	New Year Holiday	public	
+2044-01-07	Рождество Христово	Christmas Day	public	
+2044-01-08	Новогодние каникулы	New Year Holiday	public	
+2044-02-23	День защитника Отечества	Defender of the Fatherland Day	public	
+2044-03-08	Международный женский день	International Women's Day	public	
+2044-03-18	День воссоединения Крыма с Россией	Day of the Reunification of Crimea with Russia	public	CR
+2044-03-18	День возвращения города Севастополя в Россию	Day of Sevastopol's Return to Russia	public	SEV
+2044-03-23	День Конституции Чеченской Республики	Constitution Day of the Chechen Republic	public	CE
+2044-03-28	День возрождения балкарского народа	Day of the Revival of the Balkar People	public	KB
+2044-04-16	День мира в Чеченской Республике	Peace Day in the Chechen Republic	public	CE
+2044-04-25	Светлое Христово Воскресение (Пасха)	Orthodox Easter	public	CR
+2044-04-25	Светлое Христово Воскресение (Пасха)	Orthodox Easter	public	DA
+2044-04-27	День Республики Саха (Якутия)	Republic of Sakha (Yakutia) Day	public	SA
+2044-05-01	День весны и труда	Spring and Labour Day	public	
+2044-05-03	День поминовения усопших (Радоница)	Day of Remembrance of the Departed (Radonitsa)	public	AD
+2044-05-03	День особого поминовения усопших - Радоница	Day of Special Remembrance of the Departed (Radonitsa)	public	DA
+2044-05-03	Радоница - день особого поминовения усопших	Day of Special Remembrance of the Departed (Radonitsa)	public	KB
+2044-05-03	День возрождения карачаевского народа	Day of the Revival of the Karachay People	public	KC
+2044-05-03	День памяти усопших - Радоница	Day of Remembrance of the Departed (Radonitsa)	public	KC
+2044-05-09	День Победы	Victory Day	public	
+2044-05-21	День памяти адыгов (черкесов) - жертв Русско-Кавказской войны	Day of Remembrance of the Adyghe (Circassian) Victims of the Russian-Caucasian War	public	KB
+2044-06-08	День Республики Карелии	Republic of Karelia Day	public	KR
+2044-06-12	День России	Russia Day	public	
+2044-06-13	День Святой Троицы	Trinity Sunday	public	CR
+2044-06-14	День основания города Севастополя	Sevastopol City Foundation Day	public	SEV
+2044-06-21	День национального праздника Ысыах	Ysyakh National Holiday	public	SA
+2044-06-24	День Чувашской Республики	Day of the Chuvash Republic	public	CU
+2044-07-03	День образования Республики Алтай	Day of the Formation of the Altai Republic	public	AL
+2044-07-05	День Республики Калмыкия	Republic of Kalmykia Day	public	KL
+2044-07-12	День Прохоровского поля - Третьего ратного поля России	Prokhorovka Field Day - Russia's Third Military Field	public	BEL
+2044-07-26	День Конституции Республики Дагестан	Constitution Day of the Republic of Dagestan	public	DA
+2044-08-15	День Республики Тыва	Republic of Tuva Day	public	TY
+2044-08-22	День Республики Коми	Republic of Komi Day	public	KO
+2044-08-24	Ураза-байрам	Uraza-Bayram	public	AD
+2044-08-24	Ураза-байрам	Uraza-Bayram	public	BA
+2044-08-24	Ураза-байрам	Uraza-Bayram	public	CE
+2044-08-24	Ораза-байрам	Uraza-Bayram	public	CR
+2044-08-24	Ураза-байрам	Uraza-Bayram	public	DA
+2044-08-24	Ид аль-Фитр (Мархаш)	Eid al-Fitr (Markhash)	public	IN
+2044-08-24	Ураза-байрам	Uraza-Bayram	public	KB
+2044-08-24	Ураза-байрам	Uraza-Bayram	public	KC
+2044-08-24	Ураза-байрам	Uraza-Bayram	public	TA
+2044-08-30	День Республики Татарстан	Republic of Tatarstan Day	public	TA
+2044-09-01	День государственности Кабардино-Балкарской Республики	Statehood Day of the Kabardino-Balkar Republic	public	KB
+2044-09-15	День единства народов Дагестана	Day of Unity of the Peoples of Dagestan	public	DA
+2044-09-20	День адыгов (черкесов)	Adyghe (Circassian) Day	public	KB
+2044-10-05	День образования Республики Адыгея	Republic of Adygea Formation Day	public	AD
+2044-10-11	День Республики Башкортостан	Republic of Bashkortostan Day	public	BA
+2044-10-31	Курбан-байрам	Kurban-Bayram	public	AD
+2044-10-31	Курбан-байрам	Kurban-Bayram	public	BA
+2044-10-31	Курбан-байрам	Kurban-Bayram	public	CE
+2044-10-31	Курбан-байрам	Kurban-Bayram	public	CR
+2044-10-31	Курбан-байрам	Kurban-Bayram	public	DA
+2044-10-31	Ид аль-Адха (Г1урба)	Eid al-Adha (Ghurba)	public	IN
+2044-10-31	Курбан-байрам	Kurban-Bayram	public	KB
+2044-10-31	Курбан-байрам	Kurban-Bayram	public	KC
+2044-10-31	Курбан-байрам	Kurban-Bayram	public	TA
+2044-11-04	День народного единства	Unity Day	public	
+2044-11-06	День Конституции Республики Татарстан	Constitution Day of the Republic of Tatarstan	public	TA
+2044-12-28	День памяти жертв депортации калмыцкого народа	Day of Remembrance of the Victims of the Deportation of the Kalmyk People	public	KL
+2045-01-01	Новый год	New Year's Day	public	
+2045-01-02	Новогодние каникулы	New Year Holiday	public	
+2045-01-07	Рождество Христово	Christmas Day	public	
+2045-01-08	Новогодние каникулы	New Year Holiday	public	
+2045-02-23	День защитника Отечества	Defender of the Fatherland Day	public	
+2045-03-08	Международный женский день	International Women's Day	public	
+2045-03-18	День воссоединения Крыма с Россией	Day of the Reunification of Crimea with Russia	public	CR
+2045-03-18	День возвращения города Севастополя в Россию	Day of Sevastopol's Return to Russia	public	SEV
+2045-03-23	День Конституции Чеченской Республики	Constitution Day of the Chechen Republic	public	CE
+2045-03-28	День возрождения балкарского народа	Day of the Revival of the Balkar People	public	KB
+2045-04-10	Светлое Христово Воскресение (Пасха)	Orthodox Easter	public	CR
+2045-04-10	Светлое Христово Воскресение (Пасха)	Orthodox Easter	public	DA
+2045-04-16	День мира в Чеченской Республике	Peace Day in the Chechen Republic	public	CE
+2045-04-18	День поминовения усопших (Радоница)	Day of Remembrance of the Departed (Radonitsa)	public	AD
+2045-04-18	День особого поминовения усопших - Радоница	Day of Special Remembrance of the Departed (Radonitsa)	public	DA
+2045-04-18	Радоница - день особого поминовения усопших	Day of Special Remembrance of the Departed (Radonitsa)	public	KB
+2045-04-18	День памяти усопших - Радоница	Day of Remembrance of the Departed (Radonitsa)	public	KC
+2045-04-27	День Республики Саха (Якутия)	Republic of Sakha (Yakutia) Day	public	SA
+2045-05-01	День весны и труда	Spring and Labour Day	public	
+2045-05-03	День возрождения карачаевского народа	Day of the Revival of the Karachay People	public	KC
+2045-05-09	День Победы	Victory Day	public	
+2045-05-21	День памяти адыгов (черкесов) - жертв Русско-Кавказской войны	Day of Remembrance of the Adyghe (Circassian) Victims of the Russian-Caucasian War	public	KB
+2045-05-29	День Святой Троицы	Trinity Sunday	public	CR
+2045-06-08	День Республики Карелии	Republic of Karelia Day	public	KR
+2045-06-12	День России	Russia Day	public	
+2045-06-14	День основания города Севастополя	Sevastopol City Foundation Day	public	SEV
+2045-06-21	День национального праздника Ысыах	Ysyakh National Holiday	public	SA
+2045-06-24	День Чувашской Республики	Day of the Chuvash Republic	public	CU
+2045-07-03	День образования Республики Алтай	Day of the Formation of the Altai Republic	public	AL
+2045-07-05	День Республики Калмыкия	Republic of Kalmykia Day	public	KL
+2045-07-12	День Прохоровского поля - Третьего ратного поля России	Prokhorovka Field Day - Russia's Third Military Field	public	BEL
+2045-07-26	День Конституции Республики Дагестан	Constitution Day of the Republic of Dagestan	public	DA
+2045-08-14	Ураза-байрам	Uraza-Bayram	public	AD
+2045-08-14	Ураза-байрам	Uraza-Bayram	public	BA
+2045-08-14	Ураза-байрам	Uraza-Bayram	public	CE
+2045-08-14	Ораза-байрам	Uraza-Bayram	public	CR
+2045-08-14	Ураза-байрам	Uraza-Bayram	public	DA
+2045-08-14	Ид аль-Фитр (Мархаш)	Eid al-Fitr (Markhash)	public	IN
+2045-08-14	Ураза-байрам	Uraza-Bayram	public	KB
+2045-08-14	Ураза-байрам	Uraza-Bayram	public	KC
+2045-08-14	Ураза-байрам	Uraza-Bayram	public	TA
+2045-08-15	День Республики Тыва	Republic of Tuva Day	public	TY
+2045-08-22	День Республики Коми	Republic of Komi Day	public	KO
+2045-08-30	День Республики Татарстан	Republic of Tatarstan Day	public	TA
+2045-09-01	День государственности Кабардино-Балкарской Республики	Statehood Day of the Kabardino-Balkar Republic	public	KB
+2045-09-15	День единства народов Дагестана	Day of Unity of the Peoples of Dagestan	public	DA
+2045-09-20	День адыгов (черкесов)	Adyghe (Circassian) Day	public	KB
+2045-10-05	День образования Республики Адыгея	Republic of Adygea Formation Day	public	AD
+2045-10-11	День Республики Башкортостан	Republic of Bashkortostan Day	public	BA
+2045-10-21	Курбан-байрам	Kurban-Bayram	public	AD
+2045-10-21	Курбан-байрам	Kurban-Bayram	public	BA
+2045-10-21	Курбан-байрам	Kurban-Bayram	public	CE
+2045-10-21	Курбан-байрам	Kurban-Bayram	public	CR
+2045-10-21	Курбан-байрам	Kurban-Bayram	public	DA
+2045-10-21	Ид аль-Адха (Г1урба)	Eid al-Adha (Ghurba)	public	IN
+2045-10-21	Курбан-байрам	Kurban-Bayram	public	KB
+2045-10-21	Курбан-байрам	Kurban-Bayram	public	KC
+2045-10-21	Курбан-байрам	Kurban-Bayram	public	TA
+2045-11-04	День народного единства	Unity Day	public	
+2045-11-06	День Конституции Республики Татарстан	Constitution Day of the Republic of Tatarstan	public	TA
+2045-12-28	День памяти жертв депортации калмыцкого народа	Day of Remembrance of the Victims of the Deportation of the Kalmyk People	public	KL

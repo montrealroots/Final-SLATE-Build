@@ -1,0 +1,27 @@
+{
+ "country": "DZ",
+ "years": 7,
+ "renounce": false,
+ "lapses": false,
+ "note": "GLOBALCIT's Citizenship Law Dataset v3.0 (EUI, 2025), coding the law in force on 1 January 2024 (A06a ALG 10(1); A06b ALG 10(1); L05 No provision): ordinary naturalisation after 7 years' residence; no renunciation of other citizenships required; a citizen keeps it on taking another. Reforms after that date are checked in the file's later sources, where a later source is given. Citizenship at birth is read from the same dataset's 2024 coding of modes A01a (descent, born in country: Generally applicable provision), A01b (descent, born abroad: Generally applicable provision), A02a (birth in country: No provision) and A02b (birth in country to a parent born there: No provision), as its codebook (RSC/GLOBALCIT 2025/01, sections 3.2.1a to 3.2.2b) defines them: not by birth in the territory alone (provisions for foundlings and children otherwise stateless, modes A03a and A03b, aren't held by the form); by descent from either parent, with no further limit on a child born abroad. Changes to the law at birth after 1 January 2024 weren't checked for this file. On 2026-11-03 the primary was read: Journal officiel de la République algérienne n° 105 du 18 décembre 1970, Ordonnance n° 70-86 du 15 décembre 1970 portant code de la nationalité algérienne, art. 10 (scanned page 1203, read from the page image); Journal officiel n° 15 du 27 février 2005, Ordonnance n° 05-01 du 27 février 2005 modifiant et complétant l'ordonnance n° 70-86 portant code de la nationalité algérienne, arts 6, 7, 18. Every figure the file holds now rests on it, and the dataset is no longer cited. Art. 10 was read on the page image of page 1203 of the 1970 Journal officiel and Ordonnance 05-01 left it unchanged; the 1970 art. 3, which made acquisition depend on repudiating the nationality of origin, was repealed by art. 9 of Ordonnance 05-01.",
+ "sources": [
+  {
+   "url": "https://www.joradp.dz/FTP/jo-francais/1970/F1970105.pdf",
+   "title": "Journal officiel de la République algérienne n° 105 du 18 décembre 1970, Ordonnance n° 70-86 du 15 décembre 1970 portant code de la nationalité algérienne, art. 10 (scanned page 1203, read from the page image)",
+   "read": "2026-11-03",
+   "kind": "primary",
+   "said": "Naturalisation Art. 10. — L'étranger qui en formule la demande, peut acquérir la nationalité algérienne, à condition : 1° d'avoir sa résidence en Algérie depuis 7 ans au moins au jour de la demande ; 2° d'avoir sa résidence en Algérie au moment de la signature du décret accordant la naturalisation ; 3° d'être majeur ; 4° d'être de bonne moralité et de n'avoir fait l'objet d'aucune condamnation infamante ; 5° de justifier de moyens d'existence suffisants ; 6° d'être sain de corps et d'esprit ; 7° de justifier de son assimilation à la communauté algérienne."
+  },
+  {
+   "url": "https://www.joradp.dz/FTP/jo-francais/2005/F2005015.pdf",
+   "title": "Journal officiel n° 15 du 27 février 2005, Ordonnance n° 05-01 du 27 février 2005 modifiant et complétant l'ordonnance n° 70-86 portant code de la nationalité algérienne, arts 6, 7, 18",
+   "read": "2026-11-03",
+   "kind": "primary",
+   "said": "\"Art. 6. — Est considéré comme Algérien l'enfant né de père algérien ou de mère algérienne. » « Art. 7. — Est de nationalité algérienne par la naissance en Algérie : 1°) L'enfant né en Algérie de parents inconnus. ... « Art. 18. — Perd la nationalité algérienne : 1 — L'Algérien qui a acquis volontairement à l'étranger une nationalité étrangère et qui est autorisé par décret à renoncer à la nationalité algérienne, ... Art. 9. — Les articles 3, 9, 16, 19, 28 et 30 de l'ordonnance n° 70-86 du 15 décembre 1970, susvisée, sont abrogés."
+  }
+ ],
+ "atBirth": {
+  "soil": "none",
+  "descent": "either parent"
+ }
+}

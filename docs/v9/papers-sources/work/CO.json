@@ -1,0 +1,17 @@
+{
+ "country": "CO",
+ "others": {
+  "right": "permit",
+  "route": "Permiso para Otras Actividades (POA)"
+ },
+ "note": "Colombia: a foreigner of a nationality that needs no visa for a short stay, coming to perform in artistic shows or events (tours, shows, mass events), needs no visa where the visits engine says so, but must hold Migración Colombia's Permit for Other Activities (POA), a kind of Temporary Stay Permit lasting as long as the events, requested for each foreigner by a company registered in Colombia; several may be granted in a year, up to 180 calendar days in all (Migración Colombia's POA page, read 2026-11-03). The 180 days are the permit's own length, not days of work without it, so the engine holds none, and the permit's length isn't modelled. No days of paid work without a permit are named. Until 2026-11-03 this was read from Proimágenes Colombia's Film Commission instructions (version 5 of 9 February 2026), which put the threshold at stays under 90 days.",
+ "sources": [
+  {
+   "url": "https://www.migracioncolombia.gov.co/tramites-y-servicios/tramites-generales/poa",
+   "title": "Migración Colombia, Permiso para desarrollar otras actividades (POA)",
+   "read": "2026-11-03",
+   "said": "Dirigido a: Extranjeros(as) cuya nacionalidad no requiere visa y que pretenden ingresar a Colombia por períodos de estancia corta sin vocación de domicilio ni ánimo de lucro. El POA es un tipo de Permiso Temporal de Permanencia - PIP que permite a extranjeros(as) desarrollar actividades específicas como asistencia técnica especializada o participación en conciertos, eventos y actividades artísticas. ... Permite el ingreso a Colombia a extranjeros(as) para participar en presentaciones o eventos artísticos, como giras, espectáculos o eventos masivos. La vigencia del permiso corresponde a la duración de la participación en los eventos. Se pueden otorgar múltiples permisos al año, siempre que el total no supere los 180 días calendario. ... La solicitud debe ser individual por cada extranjero(a) que requiera el permiso. La empresa debe estar registrada en Colombia",
+   "kind": "primary"
+  }
+ ]
+}

@@ -1,0 +1,1573 @@
+# AB	Alberta
+# BC	British Columbia
+# MB	Manitoba
+# NB	New Brunswick
+# NL	Newfoundland and Labrador
+# NS	Nova Scotia
+# NT	Northwest Territories
+# NU	Nunavut
+# ON	Ontario
+# PE	Prince Edward Island
+# QC	Quebec
+# SK	Saskatchewan
+# YT	Yukon
+2026-01-01	New Year's Day	New Year's Day	public	
+2026-02-02	Groundhog Day	Groundhog Day	observance	
+2026-02-14	Valentine's Day	Valentine's Day	observance	
+2026-02-16	Family Day	Family Day	public	AB
+2026-02-16	Family Day	Family Day	public	BC
+2026-02-16	Louis Riel Day	Louis Riel Day	public	MB
+2026-02-16	Family Day	Family Day	public	NB
+2026-02-16	Heritage Day	Heritage Day	public	NS
+2026-02-16	Family Day	Family Day	public	ON
+2026-02-16	Islander Day	Islander Day	public	PE
+2026-02-16	Family Day	Family Day	public	SK
+2026-03-17	St. Patrick’s Day	St. Patrick’s Day	observance	
+2026-03-17	Saint Patrick's Day	Saint Patrick's Day	optional	NL
+2026-04-03	Good Friday	Good Friday	public	
+2026-04-06	Easter Monday	Easter Monday	optional	AB
+2026-04-06	Easter Monday	Easter Monday	public	NT
+2026-04-06	Easter Monday	Easter Monday	public	ON
+2026-04-06	Easter Monday	Easter Monday	optional	PE
+2026-04-06	Easter Monday	Easter Monday	optional	QC
+2026-04-06	Easter Monday	Easter Monday	public	YT
+2026-04-23	Saint George's Day	Saint George's Day	optional	NL
+2026-05-10	Mother's Day	Mother's Day	observance	
+2026-05-18	Victoria Day	Victoria Day	public	AB
+2026-05-18	Victoria Day	Victoria Day	public	BC
+2026-05-18	Victoria Day	Victoria Day	public	MB
+2026-05-18	Victoria Day	Victoria Day	public	NT
+2026-05-18	Victoria Day	Victoria Day	public	NU
+2026-05-18	Victoria Day	Victoria Day	public	ON
+2026-05-18	National Patriots' Day	National Patriots' Day	public	QC
+2026-05-18	Victoria Day	Victoria Day	public	SK
+2026-05-18	Victoria Day	Victoria Day	public	YT
+2026-06-21	Father's Day	Father's Day	observance	
+2026-06-21	National Indigenous Peoples Day	National Indigenous Peoples Day	public	NT
+2026-06-21	National Indigenous Peoples Day	National Indigenous Peoples Day	public	YT
+2026-06-24	Discovery Day	Discovery Day	optional	NL
+2026-06-24	National Holiday	National Holiday	public	QC
+2026-07-01	Canada Day	Canada Day	public	
+2026-07-01	Memorial Day	Memorial Day	public	NL
+2026-07-09	Nunavut Day	Nunavut Day	bank	NU
+2026-07-12	Orangemen's Day	Orangemen's Day	optional	NL
+2026-08-03	Heritage Day	Heritage Day	optional	AB
+2026-08-03	British Columbia Day	British Columbia Day	public	BC
+2026-08-03	Terry Fox Day	Terry Fox Day	optional	MB
+2026-08-03	New Brunswick Day	New Brunswick Day	public	NB
+2026-08-03	Natal Day	Natal Day	optional	NS
+2026-08-03	Civic Holiday	Civic Holiday	public	NT
+2026-08-03	Civic Holiday	Civic Holiday	public	NU
+2026-08-03	Civic Holiday	Civic Holiday	optional	ON
+2026-08-03	Saskatchewan Day	Saskatchewan Day	public	SK
+2026-08-17	Discovery Day	Discovery Day	public	YT
+2026-08-21	Gold Cup Parade Day	Gold Cup Parade Day	public	PE
+2026-09-07	Labour Day	Labour Day	public	
+2026-09-30	National Day for Truth and Reconciliation	National Day for Truth and Reconciliation	observance	
+2026-10-12	Thanksgiving	Thanksgiving	public	AB
+2026-10-12	Thanksgiving	Thanksgiving	public	BC
+2026-10-12	Thanksgiving	Thanksgiving	public	MB
+2026-10-12	Thanksgiving	Thanksgiving	public	NT
+2026-10-12	Thanksgiving	Thanksgiving	public	NU
+2026-10-12	Thanksgiving	Thanksgiving	public	ON
+2026-10-12	Thanksgiving	Thanksgiving	public	QC
+2026-10-12	Thanksgiving	Thanksgiving	public	SK
+2026-10-12	Thanksgiving	Thanksgiving	public	YT
+2026-10-31	Halloween	Halloween	observance	
+2026-11-11	Remembrance Day	Remembrance Day	public	AB
+2026-11-11	Remembrance Day	Remembrance Day	public	BC
+2026-11-11	Remembrance Day	Remembrance Day	optional	MB
+2026-11-11	Remembrance Day	Remembrance Day	public	NB
+2026-11-11	Armistice Day	Armistice Day	public	NL
+2026-11-11	Remembrance Day	Remembrance Day	public	NS
+2026-11-11	Remembrance Day	Remembrance Day	public	NT
+2026-11-11	Remembrance Day	Remembrance Day	public	NU
+2026-11-11	Remembrance Day	Remembrance Day	optional	ON
+2026-11-11	Remembrance Day	Remembrance Day	public	PE
+2026-11-11	Remembrance Day	Remembrance Day	public	SK
+2026-11-11	Remembrance Day	Remembrance Day	public	YT
+2026-12-25	Christmas Day	Christmas Day	public	
+2026-12-26	Boxing Day	Boxing Day	public	NT
+2026-12-26	Boxing Day	Boxing Day	public	ON
+2027-01-01	New Year's Day	New Year's Day	public	
+2027-02-02	Groundhog Day	Groundhog Day	observance	
+2027-02-14	Valentine's Day	Valentine's Day	observance	
+2027-02-15	Family Day	Family Day	public	AB
+2027-02-15	Family Day	Family Day	public	BC
+2027-02-15	Louis Riel Day	Louis Riel Day	public	MB
+2027-02-15	Family Day	Family Day	public	NB
+2027-02-15	Heritage Day	Heritage Day	public	NS
+2027-02-15	Family Day	Family Day	public	ON
+2027-02-15	Islander Day	Islander Day	public	PE
+2027-02-15	Family Day	Family Day	public	SK
+2027-03-17	St. Patrick’s Day	St. Patrick’s Day	observance	
+2027-03-17	Saint Patrick's Day	Saint Patrick's Day	optional	NL
+2027-03-26	Good Friday	Good Friday	public	
+2027-03-29	Easter Monday	Easter Monday	optional	AB
+2027-03-29	Easter Monday	Easter Monday	public	NT
+2027-03-29	Easter Monday	Easter Monday	public	ON
+2027-03-29	Easter Monday	Easter Monday	optional	PE
+2027-03-29	Easter Monday	Easter Monday	optional	QC
+2027-03-29	Easter Monday	Easter Monday	public	YT
+2027-04-23	Saint George's Day	Saint George's Day	optional	NL
+2027-05-09	Mother's Day	Mother's Day	observance	
+2027-05-24	Victoria Day	Victoria Day	public	AB
+2027-05-24	Victoria Day	Victoria Day	public	BC
+2027-05-24	Victoria Day	Victoria Day	public	MB
+2027-05-24	Victoria Day	Victoria Day	public	NT
+2027-05-24	Victoria Day	Victoria Day	public	NU
+2027-05-24	Victoria Day	Victoria Day	public	ON
+2027-05-24	National Patriots' Day	National Patriots' Day	public	QC
+2027-05-24	Victoria Day	Victoria Day	public	SK
+2027-05-24	Victoria Day	Victoria Day	public	YT
+2027-06-20	Father's Day	Father's Day	observance	
+2027-06-21	National Indigenous Peoples Day	National Indigenous Peoples Day	public	NT
+2027-06-21	National Indigenous Peoples Day	National Indigenous Peoples Day	public	YT
+2027-06-24	Discovery Day	Discovery Day	optional	NL
+2027-06-24	National Holiday	National Holiday	public	QC
+2027-07-01	Canada Day	Canada Day	public	
+2027-07-01	Memorial Day	Memorial Day	public	NL
+2027-07-09	Nunavut Day	Nunavut Day	bank	NU
+2027-07-12	Orangemen's Day	Orangemen's Day	optional	NL
+2027-08-02	Heritage Day	Heritage Day	optional	AB
+2027-08-02	British Columbia Day	British Columbia Day	public	BC
+2027-08-02	Terry Fox Day	Terry Fox Day	optional	MB
+2027-08-02	New Brunswick Day	New Brunswick Day	public	NB
+2027-08-02	Natal Day	Natal Day	optional	NS
+2027-08-02	Civic Holiday	Civic Holiday	public	NT
+2027-08-02	Civic Holiday	Civic Holiday	public	NU
+2027-08-02	Civic Holiday	Civic Holiday	optional	ON
+2027-08-02	Saskatchewan Day	Saskatchewan Day	public	SK
+2027-08-16	Discovery Day	Discovery Day	public	YT
+2027-08-20	Gold Cup Parade Day	Gold Cup Parade Day	public	PE
+2027-09-06	Labour Day	Labour Day	public	
+2027-09-30	National Day for Truth and Reconciliation	National Day for Truth and Reconciliation	observance	
+2027-10-11	Thanksgiving	Thanksgiving	public	AB
+2027-10-11	Thanksgiving	Thanksgiving	public	BC
+2027-10-11	Thanksgiving	Thanksgiving	public	MB
+2027-10-11	Thanksgiving	Thanksgiving	public	NT
+2027-10-11	Thanksgiving	Thanksgiving	public	NU
+2027-10-11	Thanksgiving	Thanksgiving	public	ON
+2027-10-11	Thanksgiving	Thanksgiving	public	QC
+2027-10-11	Thanksgiving	Thanksgiving	public	SK
+2027-10-11	Thanksgiving	Thanksgiving	public	YT
+2027-10-31	Halloween	Halloween	observance	
+2027-11-11	Remembrance Day	Remembrance Day	public	AB
+2027-11-11	Remembrance Day	Remembrance Day	public	BC
+2027-11-11	Remembrance Day	Remembrance Day	optional	MB
+2027-11-11	Remembrance Day	Remembrance Day	public	NB
+2027-11-11	Armistice Day	Armistice Day	public	NL
+2027-11-11	Remembrance Day	Remembrance Day	public	NS
+2027-11-11	Remembrance Day	Remembrance Day	public	NT
+2027-11-11	Remembrance Day	Remembrance Day	public	NU
+2027-11-11	Remembrance Day	Remembrance Day	optional	ON
+2027-11-11	Remembrance Day	Remembrance Day	public	PE
+2027-11-11	Remembrance Day	Remembrance Day	public	SK
+2027-11-11	Remembrance Day	Remembrance Day	public	YT
+2027-12-25	Christmas Day	Christmas Day	public	
+2027-12-26	Boxing Day	Boxing Day	public	NT
+2027-12-26	Boxing Day	Boxing Day	public	ON
+2028-01-01	New Year's Day	New Year's Day	public	
+2028-02-02	Groundhog Day	Groundhog Day	observance	
+2028-02-14	Valentine's Day	Valentine's Day	observance	
+2028-02-21	Family Day	Family Day	public	AB
+2028-02-21	Family Day	Family Day	public	BC
+2028-02-21	Louis Riel Day	Louis Riel Day	public	MB
+2028-02-21	Family Day	Family Day	public	NB
+2028-02-21	Heritage Day	Heritage Day	public	NS
+2028-02-21	Family Day	Family Day	public	ON
+2028-02-21	Islander Day	Islander Day	public	PE
+2028-02-21	Family Day	Family Day	public	SK
+2028-03-17	St. Patrick’s Day	St. Patrick’s Day	observance	
+2028-03-17	Saint Patrick's Day	Saint Patrick's Day	optional	NL
+2028-04-14	Good Friday	Good Friday	public	
+2028-04-17	Easter Monday	Easter Monday	optional	AB
+2028-04-17	Easter Monday	Easter Monday	public	NT
+2028-04-17	Easter Monday	Easter Monday	public	ON
+2028-04-17	Easter Monday	Easter Monday	optional	PE
+2028-04-17	Easter Monday	Easter Monday	optional	QC
+2028-04-17	Easter Monday	Easter Monday	public	YT
+2028-04-23	Saint George's Day	Saint George's Day	optional	NL
+2028-05-14	Mother's Day	Mother's Day	observance	
+2028-05-22	Victoria Day	Victoria Day	public	AB
+2028-05-22	Victoria Day	Victoria Day	public	BC
+2028-05-22	Victoria Day	Victoria Day	public	MB
+2028-05-22	Victoria Day	Victoria Day	public	NT
+2028-05-22	Victoria Day	Victoria Day	public	NU
+2028-05-22	Victoria Day	Victoria Day	public	ON
+2028-05-22	National Patriots' Day	National Patriots' Day	public	QC
+2028-05-22	Victoria Day	Victoria Day	public	SK
+2028-05-22	Victoria Day	Victoria Day	public	YT
+2028-06-18	Father's Day	Father's Day	observance	
+2028-06-21	National Indigenous Peoples Day	National Indigenous Peoples Day	public	NT
+2028-06-21	National Indigenous Peoples Day	National Indigenous Peoples Day	public	YT
+2028-06-24	Discovery Day	Discovery Day	optional	NL
+2028-06-24	National Holiday	National Holiday	public	QC
+2028-07-01	Canada Day	Canada Day	public	
+2028-07-01	Memorial Day	Memorial Day	public	NL
+2028-07-09	Nunavut Day	Nunavut Day	bank	NU
+2028-07-12	Orangemen's Day	Orangemen's Day	optional	NL
+2028-08-07	Heritage Day	Heritage Day	optional	AB
+2028-08-07	British Columbia Day	British Columbia Day	public	BC
+2028-08-07	Terry Fox Day	Terry Fox Day	optional	MB
+2028-08-07	New Brunswick Day	New Brunswick Day	public	NB
+2028-08-07	Natal Day	Natal Day	optional	NS
+2028-08-07	Civic Holiday	Civic Holiday	public	NT
+2028-08-07	Civic Holiday	Civic Holiday	public	NU
+2028-08-07	Civic Holiday	Civic Holiday	optional	ON
+2028-08-07	Saskatchewan Day	Saskatchewan Day	public	SK
+2028-08-18	Gold Cup Parade Day	Gold Cup Parade Day	public	PE
+2028-08-21	Discovery Day	Discovery Day	public	YT
+2028-09-04	Labour Day	Labour Day	public	
+2028-09-30	National Day for Truth and Reconciliation	National Day for Truth and Reconciliation	observance	
+2028-10-09	Thanksgiving	Thanksgiving	public	AB
+2028-10-09	Thanksgiving	Thanksgiving	public	BC
+2028-10-09	Thanksgiving	Thanksgiving	public	MB
+2028-10-09	Thanksgiving	Thanksgiving	public	NT
+2028-10-09	Thanksgiving	Thanksgiving	public	NU
+2028-10-09	Thanksgiving	Thanksgiving	public	ON
+2028-10-09	Thanksgiving	Thanksgiving	public	QC
+2028-10-09	Thanksgiving	Thanksgiving	public	SK
+2028-10-09	Thanksgiving	Thanksgiving	public	YT
+2028-10-31	Halloween	Halloween	observance	
+2028-11-11	Remembrance Day	Remembrance Day	public	AB
+2028-11-11	Remembrance Day	Remembrance Day	public	BC
+2028-11-11	Remembrance Day	Remembrance Day	optional	MB
+2028-11-11	Remembrance Day	Remembrance Day	public	NB
+2028-11-11	Armistice Day	Armistice Day	public	NL
+2028-11-11	Remembrance Day	Remembrance Day	public	NS
+2028-11-11	Remembrance Day	Remembrance Day	public	NT
+2028-11-11	Remembrance Day	Remembrance Day	public	NU
+2028-11-11	Remembrance Day	Remembrance Day	optional	ON
+2028-11-11	Remembrance Day	Remembrance Day	public	PE
+2028-11-11	Remembrance Day	Remembrance Day	public	SK
+2028-11-11	Remembrance Day	Remembrance Day	public	YT
+2028-12-25	Christmas Day	Christmas Day	public	
+2028-12-26	Boxing Day	Boxing Day	public	NT
+2028-12-26	Boxing Day	Boxing Day	public	ON
+2029-01-01	New Year's Day	New Year's Day	public	
+2029-02-02	Groundhog Day	Groundhog Day	observance	
+2029-02-14	Valentine's Day	Valentine's Day	observance	
+2029-02-19	Family Day	Family Day	public	AB
+2029-02-19	Family Day	Family Day	public	BC
+2029-02-19	Louis Riel Day	Louis Riel Day	public	MB
+2029-02-19	Family Day	Family Day	public	NB
+2029-02-19	Heritage Day	Heritage Day	public	NS
+2029-02-19	Family Day	Family Day	public	ON
+2029-02-19	Islander Day	Islander Day	public	PE
+2029-02-19	Family Day	Family Day	public	SK
+2029-03-17	St. Patrick’s Day	St. Patrick’s Day	observance	
+2029-03-17	Saint Patrick's Day	Saint Patrick's Day	optional	NL
+2029-03-30	Good Friday	Good Friday	public	
+2029-04-02	Easter Monday	Easter Monday	optional	AB
+2029-04-02	Easter Monday	Easter Monday	public	NT
+2029-04-02	Easter Monday	Easter Monday	public	ON
+2029-04-02	Easter Monday	Easter Monday	optional	PE
+2029-04-02	Easter Monday	Easter Monday	optional	QC
+2029-04-02	Easter Monday	Easter Monday	public	YT
+2029-04-23	Saint George's Day	Saint George's Day	optional	NL
+2029-05-13	Mother's Day	Mother's Day	observance	
+2029-05-21	Victoria Day	Victoria Day	public	AB
+2029-05-21	Victoria Day	Victoria Day	public	BC
+2029-05-21	Victoria Day	Victoria Day	public	MB
+2029-05-21	Victoria Day	Victoria Day	public	NT
+2029-05-21	Victoria Day	Victoria Day	public	NU
+2029-05-21	Victoria Day	Victoria Day	public	ON
+2029-05-21	National Patriots' Day	National Patriots' Day	public	QC
+2029-05-21	Victoria Day	Victoria Day	public	SK
+2029-05-21	Victoria Day	Victoria Day	public	YT
+2029-06-17	Father's Day	Father's Day	observance	
+2029-06-21	National Indigenous Peoples Day	National Indigenous Peoples Day	public	NT
+2029-06-21	National Indigenous Peoples Day	National Indigenous Peoples Day	public	YT
+2029-06-24	Discovery Day	Discovery Day	optional	NL
+2029-06-24	National Holiday	National Holiday	public	QC
+2029-07-01	Canada Day	Canada Day	public	
+2029-07-01	Memorial Day	Memorial Day	public	NL
+2029-07-09	Nunavut Day	Nunavut Day	bank	NU
+2029-07-12	Orangemen's Day	Orangemen's Day	optional	NL
+2029-08-06	Heritage Day	Heritage Day	optional	AB
+2029-08-06	British Columbia Day	British Columbia Day	public	BC
+2029-08-06	Terry Fox Day	Terry Fox Day	optional	MB
+2029-08-06	New Brunswick Day	New Brunswick Day	public	NB
+2029-08-06	Natal Day	Natal Day	optional	NS
+2029-08-06	Civic Holiday	Civic Holiday	public	NT
+2029-08-06	Civic Holiday	Civic Holiday	public	NU
+2029-08-06	Civic Holiday	Civic Holiday	optional	ON
+2029-08-06	Saskatchewan Day	Saskatchewan Day	public	SK
+2029-08-17	Gold Cup Parade Day	Gold Cup Parade Day	public	PE
+2029-08-20	Discovery Day	Discovery Day	public	YT
+2029-09-03	Labour Day	Labour Day	public	
+2029-09-30	National Day for Truth and Reconciliation	National Day for Truth and Reconciliation	observance	
+2029-10-08	Thanksgiving	Thanksgiving	public	AB
+2029-10-08	Thanksgiving	Thanksgiving	public	BC
+2029-10-08	Thanksgiving	Thanksgiving	public	MB
+2029-10-08	Thanksgiving	Thanksgiving	public	NT
+2029-10-08	Thanksgiving	Thanksgiving	public	NU
+2029-10-08	Thanksgiving	Thanksgiving	public	ON
+2029-10-08	Thanksgiving	Thanksgiving	public	QC
+2029-10-08	Thanksgiving	Thanksgiving	public	SK
+2029-10-08	Thanksgiving	Thanksgiving	public	YT
+2029-10-31	Halloween	Halloween	observance	
+2029-11-11	Remembrance Day	Remembrance Day	public	AB
+2029-11-11	Remembrance Day	Remembrance Day	public	BC
+2029-11-11	Remembrance Day	Remembrance Day	optional	MB
+2029-11-11	Remembrance Day	Remembrance Day	public	NB
+2029-11-11	Armistice Day	Armistice Day	public	NL
+2029-11-11	Remembrance Day	Remembrance Day	public	NS
+2029-11-11	Remembrance Day	Remembrance Day	public	NT
+2029-11-11	Remembrance Day	Remembrance Day	public	NU
+2029-11-11	Remembrance Day	Remembrance Day	optional	ON
+2029-11-11	Remembrance Day	Remembrance Day	public	PE
+2029-11-11	Remembrance Day	Remembrance Day	public	SK
+2029-11-11	Remembrance Day	Remembrance Day	public	YT
+2029-12-25	Christmas Day	Christmas Day	public	
+2029-12-26	Boxing Day	Boxing Day	public	NT
+2029-12-26	Boxing Day	Boxing Day	public	ON
+2030-01-01	New Year's Day	New Year's Day	public	
+2030-02-02	Groundhog Day	Groundhog Day	observance	
+2030-02-14	Valentine's Day	Valentine's Day	observance	
+2030-02-18	Family Day	Family Day	public	AB
+2030-02-18	Family Day	Family Day	public	BC
+2030-02-18	Louis Riel Day	Louis Riel Day	public	MB
+2030-02-18	Family Day	Family Day	public	NB
+2030-02-18	Heritage Day	Heritage Day	public	NS
+2030-02-18	Family Day	Family Day	public	ON
+2030-02-18	Islander Day	Islander Day	public	PE
+2030-02-18	Family Day	Family Day	public	SK
+2030-03-17	St. Patrick’s Day	St. Patrick’s Day	observance	
+2030-03-17	Saint Patrick's Day	Saint Patrick's Day	optional	NL
+2030-04-19	Good Friday	Good Friday	public	
+2030-04-22	Easter Monday	Easter Monday	optional	AB
+2030-04-22	Easter Monday	Easter Monday	public	NT
+2030-04-22	Easter Monday	Easter Monday	public	ON
+2030-04-22	Easter Monday	Easter Monday	optional	PE
+2030-04-22	Easter Monday	Easter Monday	optional	QC
+2030-04-22	Easter Monday	Easter Monday	public	YT
+2030-04-23	Saint George's Day	Saint George's Day	optional	NL
+2030-05-12	Mother's Day	Mother's Day	observance	
+2030-05-20	Victoria Day	Victoria Day	public	AB
+2030-05-20	Victoria Day	Victoria Day	public	BC
+2030-05-20	Victoria Day	Victoria Day	public	MB
+2030-05-20	Victoria Day	Victoria Day	public	NT
+2030-05-20	Victoria Day	Victoria Day	public	NU
+2030-05-20	Victoria Day	Victoria Day	public	ON
+2030-05-20	National Patriots' Day	National Patriots' Day	public	QC
+2030-05-20	Victoria Day	Victoria Day	public	SK
+2030-05-20	Victoria Day	Victoria Day	public	YT
+2030-06-16	Father's Day	Father's Day	observance	
+2030-06-21	National Indigenous Peoples Day	National Indigenous Peoples Day	public	NT
+2030-06-21	National Indigenous Peoples Day	National Indigenous Peoples Day	public	YT
+2030-06-24	Discovery Day	Discovery Day	optional	NL
+2030-06-24	National Holiday	National Holiday	public	QC
+2030-07-01	Canada Day	Canada Day	public	
+2030-07-01	Memorial Day	Memorial Day	public	NL
+2030-07-09	Nunavut Day	Nunavut Day	bank	NU
+2030-07-12	Orangemen's Day	Orangemen's Day	optional	NL
+2030-08-05	Heritage Day	Heritage Day	optional	AB
+2030-08-05	British Columbia Day	British Columbia Day	public	BC
+2030-08-05	Terry Fox Day	Terry Fox Day	optional	MB
+2030-08-05	New Brunswick Day	New Brunswick Day	public	NB
+2030-08-05	Natal Day	Natal Day	optional	NS
+2030-08-05	Civic Holiday	Civic Holiday	public	NT
+2030-08-05	Civic Holiday	Civic Holiday	public	NU
+2030-08-05	Civic Holiday	Civic Holiday	optional	ON
+2030-08-05	Saskatchewan Day	Saskatchewan Day	public	SK
+2030-08-16	Gold Cup Parade Day	Gold Cup Parade Day	public	PE
+2030-08-19	Discovery Day	Discovery Day	public	YT
+2030-09-02	Labour Day	Labour Day	public	
+2030-09-30	National Day for Truth and Reconciliation	National Day for Truth and Reconciliation	observance	
+2030-10-14	Thanksgiving	Thanksgiving	public	AB
+2030-10-14	Thanksgiving	Thanksgiving	public	BC
+2030-10-14	Thanksgiving	Thanksgiving	public	MB
+2030-10-14	Thanksgiving	Thanksgiving	public	NT
+2030-10-14	Thanksgiving	Thanksgiving	public	NU
+2030-10-14	Thanksgiving	Thanksgiving	public	ON
+2030-10-14	Thanksgiving	Thanksgiving	public	QC
+2030-10-14	Thanksgiving	Thanksgiving	public	SK
+2030-10-14	Thanksgiving	Thanksgiving	public	YT
+2030-10-31	Halloween	Halloween	observance	
+2030-11-11	Remembrance Day	Remembrance Day	public	AB
+2030-11-11	Remembrance Day	Remembrance Day	public	BC
+2030-11-11	Remembrance Day	Remembrance Day	optional	MB
+2030-11-11	Remembrance Day	Remembrance Day	public	NB
+2030-11-11	Armistice Day	Armistice Day	public	NL
+2030-11-11	Remembrance Day	Remembrance Day	public	NS
+2030-11-11	Remembrance Day	Remembrance Day	public	NT
+2030-11-11	Remembrance Day	Remembrance Day	public	NU
+2030-11-11	Remembrance Day	Remembrance Day	optional	ON
+2030-11-11	Remembrance Day	Remembrance Day	public	PE
+2030-11-11	Remembrance Day	Remembrance Day	public	SK
+2030-11-11	Remembrance Day	Remembrance Day	public	YT
+2030-12-25	Christmas Day	Christmas Day	public	
+2030-12-26	Boxing Day	Boxing Day	public	NT
+2030-12-26	Boxing Day	Boxing Day	public	ON
+2031-01-01	New Year's Day	New Year's Day	public	
+2031-02-02	Groundhog Day	Groundhog Day	observance	
+2031-02-14	Valentine's Day	Valentine's Day	observance	
+2031-02-17	Family Day	Family Day	public	AB
+2031-02-17	Family Day	Family Day	public	BC
+2031-02-17	Louis Riel Day	Louis Riel Day	public	MB
+2031-02-17	Family Day	Family Day	public	NB
+2031-02-17	Heritage Day	Heritage Day	public	NS
+2031-02-17	Family Day	Family Day	public	ON
+2031-02-17	Islander Day	Islander Day	public	PE
+2031-02-17	Family Day	Family Day	public	SK
+2031-03-17	St. Patrick’s Day	St. Patrick’s Day	observance	
+2031-03-17	Saint Patrick's Day	Saint Patrick's Day	optional	NL
+2031-04-11	Good Friday	Good Friday	public	
+2031-04-14	Easter Monday	Easter Monday	optional	AB
+2031-04-14	Easter Monday	Easter Monday	public	NT
+2031-04-14	Easter Monday	Easter Monday	public	ON
+2031-04-14	Easter Monday	Easter Monday	optional	PE
+2031-04-14	Easter Monday	Easter Monday	optional	QC
+2031-04-14	Easter Monday	Easter Monday	public	YT
+2031-04-23	Saint George's Day	Saint George's Day	optional	NL
+2031-05-11	Mother's Day	Mother's Day	observance	
+2031-05-19	Victoria Day	Victoria Day	public	AB
+2031-05-19	Victoria Day	Victoria Day	public	BC
+2031-05-19	Victoria Day	Victoria Day	public	MB
+2031-05-19	Victoria Day	Victoria Day	public	NT
+2031-05-19	Victoria Day	Victoria Day	public	NU
+2031-05-19	Victoria Day	Victoria Day	public	ON
+2031-05-19	National Patriots' Day	National Patriots' Day	public	QC
+2031-05-19	Victoria Day	Victoria Day	public	SK
+2031-05-19	Victoria Day	Victoria Day	public	YT
+2031-06-15	Father's Day	Father's Day	observance	
+2031-06-21	National Indigenous Peoples Day	National Indigenous Peoples Day	public	NT
+2031-06-21	National Indigenous Peoples Day	National Indigenous Peoples Day	public	YT
+2031-06-24	Discovery Day	Discovery Day	optional	NL
+2031-06-24	National Holiday	National Holiday	public	QC
+2031-07-01	Canada Day	Canada Day	public	
+2031-07-01	Memorial Day	Memorial Day	public	NL
+2031-07-09	Nunavut Day	Nunavut Day	bank	NU
+2031-07-12	Orangemen's Day	Orangemen's Day	optional	NL
+2031-08-04	Heritage Day	Heritage Day	optional	AB
+2031-08-04	British Columbia Day	British Columbia Day	public	BC
+2031-08-04	Terry Fox Day	Terry Fox Day	optional	MB
+2031-08-04	New Brunswick Day	New Brunswick Day	public	NB
+2031-08-04	Natal Day	Natal Day	optional	NS
+2031-08-04	Civic Holiday	Civic Holiday	public	NT
+2031-08-04	Civic Holiday	Civic Holiday	public	NU
+2031-08-04	Civic Holiday	Civic Holiday	optional	ON
+2031-08-04	Saskatchewan Day	Saskatchewan Day	public	SK
+2031-08-15	Gold Cup Parade Day	Gold Cup Parade Day	public	PE
+2031-08-18	Discovery Day	Discovery Day	public	YT
+2031-09-01	Labour Day	Labour Day	public	
+2031-09-30	National Day for Truth and Reconciliation	National Day for Truth and Reconciliation	observance	
+2031-10-13	Thanksgiving	Thanksgiving	public	AB
+2031-10-13	Thanksgiving	Thanksgiving	public	BC
+2031-10-13	Thanksgiving	Thanksgiving	public	MB
+2031-10-13	Thanksgiving	Thanksgiving	public	NT
+2031-10-13	Thanksgiving	Thanksgiving	public	NU
+2031-10-13	Thanksgiving	Thanksgiving	public	ON
+2031-10-13	Thanksgiving	Thanksgiving	public	QC
+2031-10-13	Thanksgiving	Thanksgiving	public	SK
+2031-10-13	Thanksgiving	Thanksgiving	public	YT
+2031-10-31	Halloween	Halloween	observance	
+2031-11-11	Remembrance Day	Remembrance Day	public	AB
+2031-11-11	Remembrance Day	Remembrance Day	public	BC
+2031-11-11	Remembrance Day	Remembrance Day	optional	MB
+2031-11-11	Remembrance Day	Remembrance Day	public	NB
+2031-11-11	Armistice Day	Armistice Day	public	NL
+2031-11-11	Remembrance Day	Remembrance Day	public	NS
+2031-11-11	Remembrance Day	Remembrance Day	public	NT
+2031-11-11	Remembrance Day	Remembrance Day	public	NU
+2031-11-11	Remembrance Day	Remembrance Day	optional	ON
+2031-11-11	Remembrance Day	Remembrance Day	public	PE
+2031-11-11	Remembrance Day	Remembrance Day	public	SK
+2031-11-11	Remembrance Day	Remembrance Day	public	YT
+2031-12-25	Christmas Day	Christmas Day	public	
+2031-12-26	Boxing Day	Boxing Day	public	NT
+2031-12-26	Boxing Day	Boxing Day	public	ON
+2032-01-01	New Year's Day	New Year's Day	public	
+2032-02-02	Groundhog Day	Groundhog Day	observance	
+2032-02-14	Valentine's Day	Valentine's Day	observance	
+2032-02-16	Family Day	Family Day	public	AB
+2032-02-16	Family Day	Family Day	public	BC
+2032-02-16	Louis Riel Day	Louis Riel Day	public	MB
+2032-02-16	Family Day	Family Day	public	NB
+2032-02-16	Heritage Day	Heritage Day	public	NS
+2032-02-16	Family Day	Family Day	public	ON
+2032-02-16	Islander Day	Islander Day	public	PE
+2032-02-16	Family Day	Family Day	public	SK
+2032-03-17	St. Patrick’s Day	St. Patrick’s Day	observance	
+2032-03-17	Saint Patrick's Day	Saint Patrick's Day	optional	NL
+2032-03-26	Good Friday	Good Friday	public	
+2032-03-29	Easter Monday	Easter Monday	optional	AB
+2032-03-29	Easter Monday	Easter Monday	public	NT
+2032-03-29	Easter Monday	Easter Monday	public	ON
+2032-03-29	Easter Monday	Easter Monday	optional	PE
+2032-03-29	Easter Monday	Easter Monday	optional	QC
+2032-03-29	Easter Monday	Easter Monday	public	YT
+2032-04-23	Saint George's Day	Saint George's Day	optional	NL
+2032-05-09	Mother's Day	Mother's Day	observance	
+2032-05-24	Victoria Day	Victoria Day	public	AB
+2032-05-24	Victoria Day	Victoria Day	public	BC
+2032-05-24	Victoria Day	Victoria Day	public	MB
+2032-05-24	Victoria Day	Victoria Day	public	NT
+2032-05-24	Victoria Day	Victoria Day	public	NU
+2032-05-24	Victoria Day	Victoria Day	public	ON
+2032-05-24	National Patriots' Day	National Patriots' Day	public	QC
+2032-05-24	Victoria Day	Victoria Day	public	SK
+2032-05-24	Victoria Day	Victoria Day	public	YT
+2032-06-20	Father's Day	Father's Day	observance	
+2032-06-21	National Indigenous Peoples Day	National Indigenous Peoples Day	public	NT
+2032-06-21	National Indigenous Peoples Day	National Indigenous Peoples Day	public	YT
+2032-06-24	Discovery Day	Discovery Day	optional	NL
+2032-06-24	National Holiday	National Holiday	public	QC
+2032-07-01	Canada Day	Canada Day	public	
+2032-07-01	Memorial Day	Memorial Day	public	NL
+2032-07-09	Nunavut Day	Nunavut Day	bank	NU
+2032-07-12	Orangemen's Day	Orangemen's Day	optional	NL
+2032-08-02	Heritage Day	Heritage Day	optional	AB
+2032-08-02	British Columbia Day	British Columbia Day	public	BC
+2032-08-02	Terry Fox Day	Terry Fox Day	optional	MB
+2032-08-02	New Brunswick Day	New Brunswick Day	public	NB
+2032-08-02	Natal Day	Natal Day	optional	NS
+2032-08-02	Civic Holiday	Civic Holiday	public	NT
+2032-08-02	Civic Holiday	Civic Holiday	public	NU
+2032-08-02	Civic Holiday	Civic Holiday	optional	ON
+2032-08-02	Saskatchewan Day	Saskatchewan Day	public	SK
+2032-08-16	Discovery Day	Discovery Day	public	YT
+2032-08-20	Gold Cup Parade Day	Gold Cup Parade Day	public	PE
+2032-09-06	Labour Day	Labour Day	public	
+2032-09-30	National Day for Truth and Reconciliation	National Day for Truth and Reconciliation	observance	
+2032-10-11	Thanksgiving	Thanksgiving	public	AB
+2032-10-11	Thanksgiving	Thanksgiving	public	BC
+2032-10-11	Thanksgiving	Thanksgiving	public	MB
+2032-10-11	Thanksgiving	Thanksgiving	public	NT
+2032-10-11	Thanksgiving	Thanksgiving	public	NU
+2032-10-11	Thanksgiving	Thanksgiving	public	ON
+2032-10-11	Thanksgiving	Thanksgiving	public	QC
+2032-10-11	Thanksgiving	Thanksgiving	public	SK
+2032-10-11	Thanksgiving	Thanksgiving	public	YT
+2032-10-31	Halloween	Halloween	observance	
+2032-11-11	Remembrance Day	Remembrance Day	public	AB
+2032-11-11	Remembrance Day	Remembrance Day	public	BC
+2032-11-11	Remembrance Day	Remembrance Day	optional	MB
+2032-11-11	Remembrance Day	Remembrance Day	public	NB
+2032-11-11	Armistice Day	Armistice Day	public	NL
+2032-11-11	Remembrance Day	Remembrance Day	public	NS
+2032-11-11	Remembrance Day	Remembrance Day	public	NT
+2032-11-11	Remembrance Day	Remembrance Day	public	NU
+2032-11-11	Remembrance Day	Remembrance Day	optional	ON
+2032-11-11	Remembrance Day	Remembrance Day	public	PE
+2032-11-11	Remembrance Day	Remembrance Day	public	SK
+2032-11-11	Remembrance Day	Remembrance Day	public	YT
+2032-12-25	Christmas Day	Christmas Day	public	
+2032-12-26	Boxing Day	Boxing Day	public	NT
+2032-12-26	Boxing Day	Boxing Day	public	ON
+2033-01-01	New Year's Day	New Year's Day	public	
+2033-02-02	Groundhog Day	Groundhog Day	observance	
+2033-02-14	Valentine's Day	Valentine's Day	observance	
+2033-02-21	Family Day	Family Day	public	AB
+2033-02-21	Family Day	Family Day	public	BC
+2033-02-21	Louis Riel Day	Louis Riel Day	public	MB
+2033-02-21	Family Day	Family Day	public	NB
+2033-02-21	Heritage Day	Heritage Day	public	NS
+2033-02-21	Family Day	Family Day	public	ON
+2033-02-21	Islander Day	Islander Day	public	PE
+2033-02-21	Family Day	Family Day	public	SK
+2033-03-17	St. Patrick’s Day	St. Patrick’s Day	observance	
+2033-03-17	Saint Patrick's Day	Saint Patrick's Day	optional	NL
+2033-04-15	Good Friday	Good Friday	public	
+2033-04-18	Easter Monday	Easter Monday	optional	AB
+2033-04-18	Easter Monday	Easter Monday	public	NT
+2033-04-18	Easter Monday	Easter Monday	public	ON
+2033-04-18	Easter Monday	Easter Monday	optional	PE
+2033-04-18	Easter Monday	Easter Monday	optional	QC
+2033-04-18	Easter Monday	Easter Monday	public	YT
+2033-04-23	Saint George's Day	Saint George's Day	optional	NL
+2033-05-08	Mother's Day	Mother's Day	observance	
+2033-05-23	Victoria Day	Victoria Day	public	AB
+2033-05-23	Victoria Day	Victoria Day	public	BC
+2033-05-23	Victoria Day	Victoria Day	public	MB
+2033-05-23	Victoria Day	Victoria Day	public	NT
+2033-05-23	Victoria Day	Victoria Day	public	NU
+2033-05-23	Victoria Day	Victoria Day	public	ON
+2033-05-23	National Patriots' Day	National Patriots' Day	public	QC
+2033-05-23	Victoria Day	Victoria Day	public	SK
+2033-05-23	Victoria Day	Victoria Day	public	YT
+2033-06-19	Father's Day	Father's Day	observance	
+2033-06-21	National Indigenous Peoples Day	National Indigenous Peoples Day	public	NT
+2033-06-21	National Indigenous Peoples Day	National Indigenous Peoples Day	public	YT
+2033-06-24	Discovery Day	Discovery Day	optional	NL
+2033-06-24	National Holiday	National Holiday	public	QC
+2033-07-01	Canada Day	Canada Day	public	
+2033-07-01	Memorial Day	Memorial Day	public	NL
+2033-07-09	Nunavut Day	Nunavut Day	bank	NU
+2033-07-12	Orangemen's Day	Orangemen's Day	optional	NL
+2033-08-01	Heritage Day	Heritage Day	optional	AB
+2033-08-01	British Columbia Day	British Columbia Day	public	BC
+2033-08-01	Terry Fox Day	Terry Fox Day	optional	MB
+2033-08-01	New Brunswick Day	New Brunswick Day	public	NB
+2033-08-01	Natal Day	Natal Day	optional	NS
+2033-08-01	Civic Holiday	Civic Holiday	public	NT
+2033-08-01	Civic Holiday	Civic Holiday	public	NU
+2033-08-01	Civic Holiday	Civic Holiday	optional	ON
+2033-08-01	Saskatchewan Day	Saskatchewan Day	public	SK
+2033-08-15	Discovery Day	Discovery Day	public	YT
+2033-08-19	Gold Cup Parade Day	Gold Cup Parade Day	public	PE
+2033-09-05	Labour Day	Labour Day	public	
+2033-09-30	National Day for Truth and Reconciliation	National Day for Truth and Reconciliation	observance	
+2033-10-10	Thanksgiving	Thanksgiving	public	AB
+2033-10-10	Thanksgiving	Thanksgiving	public	BC
+2033-10-10	Thanksgiving	Thanksgiving	public	MB
+2033-10-10	Thanksgiving	Thanksgiving	public	NT
+2033-10-10	Thanksgiving	Thanksgiving	public	NU
+2033-10-10	Thanksgiving	Thanksgiving	public	ON
+2033-10-10	Thanksgiving	Thanksgiving	public	QC
+2033-10-10	Thanksgiving	Thanksgiving	public	SK
+2033-10-10	Thanksgiving	Thanksgiving	public	YT
+2033-10-31	Halloween	Halloween	observance	
+2033-11-11	Remembrance Day	Remembrance Day	public	AB
+2033-11-11	Remembrance Day	Remembrance Day	public	BC
+2033-11-11	Remembrance Day	Remembrance Day	optional	MB
+2033-11-11	Remembrance Day	Remembrance Day	public	NB
+2033-11-11	Armistice Day	Armistice Day	public	NL
+2033-11-11	Remembrance Day	Remembrance Day	public	NS
+2033-11-11	Remembrance Day	Remembrance Day	public	NT
+2033-11-11	Remembrance Day	Remembrance Day	public	NU
+2033-11-11	Remembrance Day	Remembrance Day	optional	ON
+2033-11-11	Remembrance Day	Remembrance Day	public	PE
+2033-11-11	Remembrance Day	Remembrance Day	public	SK
+2033-11-11	Remembrance Day	Remembrance Day	public	YT
+2033-12-25	Christmas Day	Christmas Day	public	
+2033-12-26	Boxing Day	Boxing Day	public	NT
+2033-12-26	Boxing Day	Boxing Day	public	ON
+2034-01-01	New Year's Day	New Year's Day	public	
+2034-02-02	Groundhog Day	Groundhog Day	observance	
+2034-02-14	Valentine's Day	Valentine's Day	observance	
+2034-02-20	Family Day	Family Day	public	AB
+2034-02-20	Family Day	Family Day	public	BC
+2034-02-20	Louis Riel Day	Louis Riel Day	public	MB
+2034-02-20	Family Day	Family Day	public	NB
+2034-02-20	Heritage Day	Heritage Day	public	NS
+2034-02-20	Family Day	Family Day	public	ON
+2034-02-20	Islander Day	Islander Day	public	PE
+2034-02-20	Family Day	Family Day	public	SK
+2034-03-17	St. Patrick’s Day	St. Patrick’s Day	observance	
+2034-03-17	Saint Patrick's Day	Saint Patrick's Day	optional	NL
+2034-04-07	Good Friday	Good Friday	public	
+2034-04-10	Easter Monday	Easter Monday	optional	AB
+2034-04-10	Easter Monday	Easter Monday	public	NT
+2034-04-10	Easter Monday	Easter Monday	public	ON
+2034-04-10	Easter Monday	Easter Monday	optional	PE
+2034-04-10	Easter Monday	Easter Monday	optional	QC
+2034-04-10	Easter Monday	Easter Monday	public	YT
+2034-04-23	Saint George's Day	Saint George's Day	optional	NL
+2034-05-14	Mother's Day	Mother's Day	observance	
+2034-05-22	Victoria Day	Victoria Day	public	AB
+2034-05-22	Victoria Day	Victoria Day	public	BC
+2034-05-22	Victoria Day	Victoria Day	public	MB
+2034-05-22	Victoria Day	Victoria Day	public	NT
+2034-05-22	Victoria Day	Victoria Day	public	NU
+2034-05-22	Victoria Day	Victoria Day	public	ON
+2034-05-22	National Patriots' Day	National Patriots' Day	public	QC
+2034-05-22	Victoria Day	Victoria Day	public	SK
+2034-05-22	Victoria Day	Victoria Day	public	YT
+2034-06-18	Father's Day	Father's Day	observance	
+2034-06-21	National Indigenous Peoples Day	National Indigenous Peoples Day	public	NT
+2034-06-21	National Indigenous Peoples Day	National Indigenous Peoples Day	public	YT
+2034-06-24	Discovery Day	Discovery Day	optional	NL
+2034-06-24	National Holiday	National Holiday	public	QC
+2034-07-01	Canada Day	Canada Day	public	
+2034-07-01	Memorial Day	Memorial Day	public	NL
+2034-07-09	Nunavut Day	Nunavut Day	bank	NU
+2034-07-12	Orangemen's Day	Orangemen's Day	optional	NL
+2034-08-07	Heritage Day	Heritage Day	optional	AB
+2034-08-07	British Columbia Day	British Columbia Day	public	BC
+2034-08-07	Terry Fox Day	Terry Fox Day	optional	MB
+2034-08-07	New Brunswick Day	New Brunswick Day	public	NB
+2034-08-07	Natal Day	Natal Day	optional	NS
+2034-08-07	Civic Holiday	Civic Holiday	public	NT
+2034-08-07	Civic Holiday	Civic Holiday	public	NU
+2034-08-07	Civic Holiday	Civic Holiday	optional	ON
+2034-08-07	Saskatchewan Day	Saskatchewan Day	public	SK
+2034-08-18	Gold Cup Parade Day	Gold Cup Parade Day	public	PE
+2034-08-21	Discovery Day	Discovery Day	public	YT
+2034-09-04	Labour Day	Labour Day	public	
+2034-09-30	National Day for Truth and Reconciliation	National Day for Truth and Reconciliation	observance	
+2034-10-09	Thanksgiving	Thanksgiving	public	AB
+2034-10-09	Thanksgiving	Thanksgiving	public	BC
+2034-10-09	Thanksgiving	Thanksgiving	public	MB
+2034-10-09	Thanksgiving	Thanksgiving	public	NT
+2034-10-09	Thanksgiving	Thanksgiving	public	NU
+2034-10-09	Thanksgiving	Thanksgiving	public	ON
+2034-10-09	Thanksgiving	Thanksgiving	public	QC
+2034-10-09	Thanksgiving	Thanksgiving	public	SK
+2034-10-09	Thanksgiving	Thanksgiving	public	YT
+2034-10-31	Halloween	Halloween	observance	
+2034-11-11	Remembrance Day	Remembrance Day	public	AB
+2034-11-11	Remembrance Day	Remembrance Day	public	BC
+2034-11-11	Remembrance Day	Remembrance Day	optional	MB
+2034-11-11	Remembrance Day	Remembrance Day	public	NB
+2034-11-11	Armistice Day	Armistice Day	public	NL
+2034-11-11	Remembrance Day	Remembrance Day	public	NS
+2034-11-11	Remembrance Day	Remembrance Day	public	NT
+2034-11-11	Remembrance Day	Remembrance Day	public	NU
+2034-11-11	Remembrance Day	Remembrance Day	optional	ON
+2034-11-11	Remembrance Day	Remembrance Day	public	PE
+2034-11-11	Remembrance Day	Remembrance Day	public	SK
+2034-11-11	Remembrance Day	Remembrance Day	public	YT
+2034-12-25	Christmas Day	Christmas Day	public	
+2034-12-26	Boxing Day	Boxing Day	public	NT
+2034-12-26	Boxing Day	Boxing Day	public	ON
+2035-01-01	New Year's Day	New Year's Day	public	
+2035-02-02	Groundhog Day	Groundhog Day	observance	
+2035-02-14	Valentine's Day	Valentine's Day	observance	
+2035-02-19	Family Day	Family Day	public	AB
+2035-02-19	Family Day	Family Day	public	BC
+2035-02-19	Louis Riel Day	Louis Riel Day	public	MB
+2035-02-19	Family Day	Family Day	public	NB
+2035-02-19	Heritage Day	Heritage Day	public	NS
+2035-02-19	Family Day	Family Day	public	ON
+2035-02-19	Islander Day	Islander Day	public	PE
+2035-02-19	Family Day	Family Day	public	SK
+2035-03-17	St. Patrick’s Day	St. Patrick’s Day	observance	
+2035-03-17	Saint Patrick's Day	Saint Patrick's Day	optional	NL
+2035-03-23	Good Friday	Good Friday	public	
+2035-03-26	Easter Monday	Easter Monday	optional	AB
+2035-03-26	Easter Monday	Easter Monday	public	NT
+2035-03-26	Easter Monday	Easter Monday	public	ON
+2035-03-26	Easter Monday	Easter Monday	optional	PE
+2035-03-26	Easter Monday	Easter Monday	optional	QC
+2035-03-26	Easter Monday	Easter Monday	public	YT
+2035-04-23	Saint George's Day	Saint George's Day	optional	NL
+2035-05-13	Mother's Day	Mother's Day	observance	
+2035-05-21	Victoria Day	Victoria Day	public	AB
+2035-05-21	Victoria Day	Victoria Day	public	BC
+2035-05-21	Victoria Day	Victoria Day	public	MB
+2035-05-21	Victoria Day	Victoria Day	public	NT
+2035-05-21	Victoria Day	Victoria Day	public	NU
+2035-05-21	Victoria Day	Victoria Day	public	ON
+2035-05-21	National Patriots' Day	National Patriots' Day	public	QC
+2035-05-21	Victoria Day	Victoria Day	public	SK
+2035-05-21	Victoria Day	Victoria Day	public	YT
+2035-06-17	Father's Day	Father's Day	observance	
+2035-06-21	National Indigenous Peoples Day	National Indigenous Peoples Day	public	NT
+2035-06-21	National Indigenous Peoples Day	National Indigenous Peoples Day	public	YT
+2035-06-24	Discovery Day	Discovery Day	optional	NL
+2035-06-24	National Holiday	National Holiday	public	QC
+2035-07-01	Canada Day	Canada Day	public	
+2035-07-01	Memorial Day	Memorial Day	public	NL
+2035-07-09	Nunavut Day	Nunavut Day	bank	NU
+2035-07-12	Orangemen's Day	Orangemen's Day	optional	NL
+2035-08-06	Heritage Day	Heritage Day	optional	AB
+2035-08-06	British Columbia Day	British Columbia Day	public	BC
+2035-08-06	Terry Fox Day	Terry Fox Day	optional	MB
+2035-08-06	New Brunswick Day	New Brunswick Day	public	NB
+2035-08-06	Natal Day	Natal Day	optional	NS
+2035-08-06	Civic Holiday	Civic Holiday	public	NT
+2035-08-06	Civic Holiday	Civic Holiday	public	NU
+2035-08-06	Civic Holiday	Civic Holiday	optional	ON
+2035-08-06	Saskatchewan Day	Saskatchewan Day	public	SK
+2035-08-17	Gold Cup Parade Day	Gold Cup Parade Day	public	PE
+2035-08-20	Discovery Day	Discovery Day	public	YT
+2035-09-03	Labour Day	Labour Day	public	
+2035-09-30	National Day for Truth and Reconciliation	National Day for Truth and Reconciliation	observance	
+2035-10-08	Thanksgiving	Thanksgiving	public	AB
+2035-10-08	Thanksgiving	Thanksgiving	public	BC
+2035-10-08	Thanksgiving	Thanksgiving	public	MB
+2035-10-08	Thanksgiving	Thanksgiving	public	NT
+2035-10-08	Thanksgiving	Thanksgiving	public	NU
+2035-10-08	Thanksgiving	Thanksgiving	public	ON
+2035-10-08	Thanksgiving	Thanksgiving	public	QC
+2035-10-08	Thanksgiving	Thanksgiving	public	SK
+2035-10-08	Thanksgiving	Thanksgiving	public	YT
+2035-10-31	Halloween	Halloween	observance	
+2035-11-11	Remembrance Day	Remembrance Day	public	AB
+2035-11-11	Remembrance Day	Remembrance Day	public	BC
+2035-11-11	Remembrance Day	Remembrance Day	optional	MB
+2035-11-11	Remembrance Day	Remembrance Day	public	NB
+2035-11-11	Armistice Day	Armistice Day	public	NL
+2035-11-11	Remembrance Day	Remembrance Day	public	NS
+2035-11-11	Remembrance Day	Remembrance Day	public	NT
+2035-11-11	Remembrance Day	Remembrance Day	public	NU
+2035-11-11	Remembrance Day	Remembrance Day	optional	ON
+2035-11-11	Remembrance Day	Remembrance Day	public	PE
+2035-11-11	Remembrance Day	Remembrance Day	public	SK
+2035-11-11	Remembrance Day	Remembrance Day	public	YT
+2035-12-25	Christmas Day	Christmas Day	public	
+2035-12-26	Boxing Day	Boxing Day	public	NT
+2035-12-26	Boxing Day	Boxing Day	public	ON
+2036-01-01	New Year's Day	New Year's Day	public	
+2036-02-02	Groundhog Day	Groundhog Day	observance	
+2036-02-14	Valentine's Day	Valentine's Day	observance	
+2036-02-18	Family Day	Family Day	public	AB
+2036-02-18	Family Day	Family Day	public	BC
+2036-02-18	Louis Riel Day	Louis Riel Day	public	MB
+2036-02-18	Family Day	Family Day	public	NB
+2036-02-18	Heritage Day	Heritage Day	public	NS
+2036-02-18	Family Day	Family Day	public	ON
+2036-02-18	Islander Day	Islander Day	public	PE
+2036-02-18	Family Day	Family Day	public	SK
+2036-03-17	St. Patrick’s Day	St. Patrick’s Day	observance	
+2036-03-17	Saint Patrick's Day	Saint Patrick's Day	optional	NL
+2036-04-11	Good Friday	Good Friday	public	
+2036-04-14	Easter Monday	Easter Monday	optional	AB
+2036-04-14	Easter Monday	Easter Monday	public	NT
+2036-04-14	Easter Monday	Easter Monday	public	ON
+2036-04-14	Easter Monday	Easter Monday	optional	PE
+2036-04-14	Easter Monday	Easter Monday	optional	QC
+2036-04-14	Easter Monday	Easter Monday	public	YT
+2036-04-23	Saint George's Day	Saint George's Day	optional	NL
+2036-05-11	Mother's Day	Mother's Day	observance	
+2036-05-19	Victoria Day	Victoria Day	public	AB
+2036-05-19	Victoria Day	Victoria Day	public	BC
+2036-05-19	Victoria Day	Victoria Day	public	MB
+2036-05-19	Victoria Day	Victoria Day	public	NT
+2036-05-19	Victoria Day	Victoria Day	public	NU
+2036-05-19	Victoria Day	Victoria Day	public	ON
+2036-05-19	National Patriots' Day	National Patriots' Day	public	QC
+2036-05-19	Victoria Day	Victoria Day	public	SK
+2036-05-19	Victoria Day	Victoria Day	public	YT
+2036-06-15	Father's Day	Father's Day	observance	
+2036-06-21	National Indigenous Peoples Day	National Indigenous Peoples Day	public	NT
+2036-06-21	National Indigenous Peoples Day	National Indigenous Peoples Day	public	YT
+2036-06-24	Discovery Day	Discovery Day	optional	NL
+2036-06-24	National Holiday	National Holiday	public	QC
+2036-07-01	Canada Day	Canada Day	public	
+2036-07-01	Memorial Day	Memorial Day	public	NL
+2036-07-09	Nunavut Day	Nunavut Day	bank	NU
+2036-07-12	Orangemen's Day	Orangemen's Day	optional	NL
+2036-08-04	Heritage Day	Heritage Day	optional	AB
+2036-08-04	British Columbia Day	British Columbia Day	public	BC
+2036-08-04	Terry Fox Day	Terry Fox Day	optional	MB
+2036-08-04	New Brunswick Day	New Brunswick Day	public	NB
+2036-08-04	Natal Day	Natal Day	optional	NS
+2036-08-04	Civic Holiday	Civic Holiday	public	NT
+2036-08-04	Civic Holiday	Civic Holiday	public	NU
+2036-08-04	Civic Holiday	Civic Holiday	optional	ON
+2036-08-04	Saskatchewan Day	Saskatchewan Day	public	SK
+2036-08-15	Gold Cup Parade Day	Gold Cup Parade Day	public	PE
+2036-08-18	Discovery Day	Discovery Day	public	YT
+2036-09-01	Labour Day	Labour Day	public	
+2036-09-30	National Day for Truth and Reconciliation	National Day for Truth and Reconciliation	observance	
+2036-10-13	Thanksgiving	Thanksgiving	public	AB
+2036-10-13	Thanksgiving	Thanksgiving	public	BC
+2036-10-13	Thanksgiving	Thanksgiving	public	MB
+2036-10-13	Thanksgiving	Thanksgiving	public	NT
+2036-10-13	Thanksgiving	Thanksgiving	public	NU
+2036-10-13	Thanksgiving	Thanksgiving	public	ON
+2036-10-13	Thanksgiving	Thanksgiving	public	QC
+2036-10-13	Thanksgiving	Thanksgiving	public	SK
+2036-10-13	Thanksgiving	Thanksgiving	public	YT
+2036-10-31	Halloween	Halloween	observance	
+2036-11-11	Remembrance Day	Remembrance Day	public	AB
+2036-11-11	Remembrance Day	Remembrance Day	public	BC
+2036-11-11	Remembrance Day	Remembrance Day	optional	MB
+2036-11-11	Remembrance Day	Remembrance Day	public	NB
+2036-11-11	Armistice Day	Armistice Day	public	NL
+2036-11-11	Remembrance Day	Remembrance Day	public	NS
+2036-11-11	Remembrance Day	Remembrance Day	public	NT
+2036-11-11	Remembrance Day	Remembrance Day	public	NU
+2036-11-11	Remembrance Day	Remembrance Day	optional	ON
+2036-11-11	Remembrance Day	Remembrance Day	public	PE
+2036-11-11	Remembrance Day	Remembrance Day	public	SK
+2036-11-11	Remembrance Day	Remembrance Day	public	YT
+2036-12-25	Christmas Day	Christmas Day	public	
+2036-12-26	Boxing Day	Boxing Day	public	NT
+2036-12-26	Boxing Day	Boxing Day	public	ON
+2037-01-01	New Year's Day	New Year's Day	public	
+2037-02-02	Groundhog Day	Groundhog Day	observance	
+2037-02-14	Valentine's Day	Valentine's Day	observance	
+2037-02-16	Family Day	Family Day	public	AB
+2037-02-16	Family Day	Family Day	public	BC
+2037-02-16	Louis Riel Day	Louis Riel Day	public	MB
+2037-02-16	Family Day	Family Day	public	NB
+2037-02-16	Heritage Day	Heritage Day	public	NS
+2037-02-16	Family Day	Family Day	public	ON
+2037-02-16	Islander Day	Islander Day	public	PE
+2037-02-16	Family Day	Family Day	public	SK
+2037-03-17	St. Patrick’s Day	St. Patrick’s Day	observance	
+2037-03-17	Saint Patrick's Day	Saint Patrick's Day	optional	NL
+2037-04-03	Good Friday	Good Friday	public	
+2037-04-06	Easter Monday	Easter Monday	optional	AB
+2037-04-06	Easter Monday	Easter Monday	public	NT
+2037-04-06	Easter Monday	Easter Monday	public	ON
+2037-04-06	Easter Monday	Easter Monday	optional	PE
+2037-04-06	Easter Monday	Easter Monday	optional	QC
+2037-04-06	Easter Monday	Easter Monday	public	YT
+2037-04-23	Saint George's Day	Saint George's Day	optional	NL
+2037-05-10	Mother's Day	Mother's Day	observance	
+2037-05-18	Victoria Day	Victoria Day	public	AB
+2037-05-18	Victoria Day	Victoria Day	public	BC
+2037-05-18	Victoria Day	Victoria Day	public	MB
+2037-05-18	Victoria Day	Victoria Day	public	NT
+2037-05-18	Victoria Day	Victoria Day	public	NU
+2037-05-18	Victoria Day	Victoria Day	public	ON
+2037-05-18	National Patriots' Day	National Patriots' Day	public	QC
+2037-05-18	Victoria Day	Victoria Day	public	SK
+2037-05-18	Victoria Day	Victoria Day	public	YT
+2037-06-21	Father's Day	Father's Day	observance	
+2037-06-21	National Indigenous Peoples Day	National Indigenous Peoples Day	public	NT
+2037-06-21	National Indigenous Peoples Day	National Indigenous Peoples Day	public	YT
+2037-06-24	Discovery Day	Discovery Day	optional	NL
+2037-06-24	National Holiday	National Holiday	public	QC
+2037-07-01	Canada Day	Canada Day	public	
+2037-07-01	Memorial Day	Memorial Day	public	NL
+2037-07-09	Nunavut Day	Nunavut Day	bank	NU
+2037-07-12	Orangemen's Day	Orangemen's Day	optional	NL
+2037-08-03	Heritage Day	Heritage Day	optional	AB
+2037-08-03	British Columbia Day	British Columbia Day	public	BC
+2037-08-03	Terry Fox Day	Terry Fox Day	optional	MB
+2037-08-03	New Brunswick Day	New Brunswick Day	public	NB
+2037-08-03	Natal Day	Natal Day	optional	NS
+2037-08-03	Civic Holiday	Civic Holiday	public	NT
+2037-08-03	Civic Holiday	Civic Holiday	public	NU
+2037-08-03	Civic Holiday	Civic Holiday	optional	ON
+2037-08-03	Saskatchewan Day	Saskatchewan Day	public	SK
+2037-08-17	Discovery Day	Discovery Day	public	YT
+2037-08-21	Gold Cup Parade Day	Gold Cup Parade Day	public	PE
+2037-09-07	Labour Day	Labour Day	public	
+2037-09-30	National Day for Truth and Reconciliation	National Day for Truth and Reconciliation	observance	
+2037-10-12	Thanksgiving	Thanksgiving	public	AB
+2037-10-12	Thanksgiving	Thanksgiving	public	BC
+2037-10-12	Thanksgiving	Thanksgiving	public	MB
+2037-10-12	Thanksgiving	Thanksgiving	public	NT
+2037-10-12	Thanksgiving	Thanksgiving	public	NU
+2037-10-12	Thanksgiving	Thanksgiving	public	ON
+2037-10-12	Thanksgiving	Thanksgiving	public	QC
+2037-10-12	Thanksgiving	Thanksgiving	public	SK
+2037-10-12	Thanksgiving	Thanksgiving	public	YT
+2037-10-31	Halloween	Halloween	observance	
+2037-11-11	Remembrance Day	Remembrance Day	public	AB
+2037-11-11	Remembrance Day	Remembrance Day	public	BC
+2037-11-11	Remembrance Day	Remembrance Day	optional	MB
+2037-11-11	Remembrance Day	Remembrance Day	public	NB
+2037-11-11	Armistice Day	Armistice Day	public	NL
+2037-11-11	Remembrance Day	Remembrance Day	public	NS
+2037-11-11	Remembrance Day	Remembrance Day	public	NT
+2037-11-11	Remembrance Day	Remembrance Day	public	NU
+2037-11-11	Remembrance Day	Remembrance Day	optional	ON
+2037-11-11	Remembrance Day	Remembrance Day	public	PE
+2037-11-11	Remembrance Day	Remembrance Day	public	SK
+2037-11-11	Remembrance Day	Remembrance Day	public	YT
+2037-12-25	Christmas Day	Christmas Day	public	
+2037-12-26	Boxing Day	Boxing Day	public	NT
+2037-12-26	Boxing Day	Boxing Day	public	ON
+2038-01-01	New Year's Day	New Year's Day	public	
+2038-02-02	Groundhog Day	Groundhog Day	observance	
+2038-02-14	Valentine's Day	Valentine's Day	observance	
+2038-02-15	Family Day	Family Day	public	AB
+2038-02-15	Family Day	Family Day	public	BC
+2038-02-15	Louis Riel Day	Louis Riel Day	public	MB
+2038-02-15	Family Day	Family Day	public	NB
+2038-02-15	Heritage Day	Heritage Day	public	NS
+2038-02-15	Family Day	Family Day	public	ON
+2038-02-15	Islander Day	Islander Day	public	PE
+2038-02-15	Family Day	Family Day	public	SK
+2038-03-17	St. Patrick’s Day	St. Patrick’s Day	observance	
+2038-03-17	Saint Patrick's Day	Saint Patrick's Day	optional	NL
+2038-04-23	Good Friday	Good Friday	public	
+2038-04-23	Saint George's Day	Saint George's Day	optional	NL
+2038-04-26	Easter Monday	Easter Monday	optional	AB
+2038-04-26	Easter Monday	Easter Monday	public	NT
+2038-04-26	Easter Monday	Easter Monday	public	ON
+2038-04-26	Easter Monday	Easter Monday	optional	PE
+2038-04-26	Easter Monday	Easter Monday	optional	QC
+2038-04-26	Easter Monday	Easter Monday	public	YT
+2038-05-09	Mother's Day	Mother's Day	observance	
+2038-05-24	Victoria Day	Victoria Day	public	AB
+2038-05-24	Victoria Day	Victoria Day	public	BC
+2038-05-24	Victoria Day	Victoria Day	public	MB
+2038-05-24	Victoria Day	Victoria Day	public	NT
+2038-05-24	Victoria Day	Victoria Day	public	NU
+2038-05-24	Victoria Day	Victoria Day	public	ON
+2038-05-24	National Patriots' Day	National Patriots' Day	public	QC
+2038-05-24	Victoria Day	Victoria Day	public	SK
+2038-05-24	Victoria Day	Victoria Day	public	YT
+2038-06-20	Father's Day	Father's Day	observance	
+2038-06-21	National Indigenous Peoples Day	National Indigenous Peoples Day	public	NT
+2038-06-21	National Indigenous Peoples Day	National Indigenous Peoples Day	public	YT
+2038-06-24	Discovery Day	Discovery Day	optional	NL
+2038-06-24	National Holiday	National Holiday	public	QC
+2038-07-01	Canada Day	Canada Day	public	
+2038-07-01	Memorial Day	Memorial Day	public	NL
+2038-07-09	Nunavut Day	Nunavut Day	bank	NU
+2038-07-12	Orangemen's Day	Orangemen's Day	optional	NL
+2038-08-02	Heritage Day	Heritage Day	optional	AB
+2038-08-02	British Columbia Day	British Columbia Day	public	BC
+2038-08-02	Terry Fox Day	Terry Fox Day	optional	MB
+2038-08-02	New Brunswick Day	New Brunswick Day	public	NB
+2038-08-02	Natal Day	Natal Day	optional	NS
+2038-08-02	Civic Holiday	Civic Holiday	public	NT
+2038-08-02	Civic Holiday	Civic Holiday	public	NU
+2038-08-02	Civic Holiday	Civic Holiday	optional	ON
+2038-08-02	Saskatchewan Day	Saskatchewan Day	public	SK
+2038-08-16	Discovery Day	Discovery Day	public	YT
+2038-08-20	Gold Cup Parade Day	Gold Cup Parade Day	public	PE
+2038-09-06	Labour Day	Labour Day	public	
+2038-09-30	National Day for Truth and Reconciliation	National Day for Truth and Reconciliation	observance	
+2038-10-11	Thanksgiving	Thanksgiving	public	AB
+2038-10-11	Thanksgiving	Thanksgiving	public	BC
+2038-10-11	Thanksgiving	Thanksgiving	public	MB
+2038-10-11	Thanksgiving	Thanksgiving	public	NT
+2038-10-11	Thanksgiving	Thanksgiving	public	NU
+2038-10-11	Thanksgiving	Thanksgiving	public	ON
+2038-10-11	Thanksgiving	Thanksgiving	public	QC
+2038-10-11	Thanksgiving	Thanksgiving	public	SK
+2038-10-11	Thanksgiving	Thanksgiving	public	YT
+2038-10-31	Halloween	Halloween	observance	
+2038-11-11	Remembrance Day	Remembrance Day	public	AB
+2038-11-11	Remembrance Day	Remembrance Day	public	BC
+2038-11-11	Remembrance Day	Remembrance Day	optional	MB
+2038-11-11	Remembrance Day	Remembrance Day	public	NB
+2038-11-11	Armistice Day	Armistice Day	public	NL
+2038-11-11	Remembrance Day	Remembrance Day	public	NS
+2038-11-11	Remembrance Day	Remembrance Day	public	NT
+2038-11-11	Remembrance Day	Remembrance Day	public	NU
+2038-11-11	Remembrance Day	Remembrance Day	optional	ON
+2038-11-11	Remembrance Day	Remembrance Day	public	PE
+2038-11-11	Remembrance Day	Remembrance Day	public	SK
+2038-11-11	Remembrance Day	Remembrance Day	public	YT
+2038-12-25	Christmas Day	Christmas Day	public	
+2038-12-26	Boxing Day	Boxing Day	public	NT
+2038-12-26	Boxing Day	Boxing Day	public	ON
+2039-01-01	New Year's Day	New Year's Day	public	
+2039-02-02	Groundhog Day	Groundhog Day	observance	
+2039-02-14	Valentine's Day	Valentine's Day	observance	
+2039-02-21	Family Day	Family Day	public	AB
+2039-02-21	Family Day	Family Day	public	BC
+2039-02-21	Louis Riel Day	Louis Riel Day	public	MB
+2039-02-21	Family Day	Family Day	public	NB
+2039-02-21	Heritage Day	Heritage Day	public	NS
+2039-02-21	Family Day	Family Day	public	ON
+2039-02-21	Islander Day	Islander Day	public	PE
+2039-02-21	Family Day	Family Day	public	SK
+2039-03-17	St. Patrick’s Day	St. Patrick’s Day	observance	
+2039-03-17	Saint Patrick's Day	Saint Patrick's Day	optional	NL
+2039-04-08	Good Friday	Good Friday	public	
+2039-04-11	Easter Monday	Easter Monday	optional	AB
+2039-04-11	Easter Monday	Easter Monday	public	NT
+2039-04-11	Easter Monday	Easter Monday	public	ON
+2039-04-11	Easter Monday	Easter Monday	optional	PE
+2039-04-11	Easter Monday	Easter Monday	optional	QC
+2039-04-11	Easter Monday	Easter Monday	public	YT
+2039-04-23	Saint George's Day	Saint George's Day	optional	NL
+2039-05-08	Mother's Day	Mother's Day	observance	
+2039-05-23	Victoria Day	Victoria Day	public	AB
+2039-05-23	Victoria Day	Victoria Day	public	BC
+2039-05-23	Victoria Day	Victoria Day	public	MB
+2039-05-23	Victoria Day	Victoria Day	public	NT
+2039-05-23	Victoria Day	Victoria Day	public	NU
+2039-05-23	Victoria Day	Victoria Day	public	ON
+2039-05-23	National Patriots' Day	National Patriots' Day	public	QC
+2039-05-23	Victoria Day	Victoria Day	public	SK
+2039-05-23	Victoria Day	Victoria Day	public	YT
+2039-06-19	Father's Day	Father's Day	observance	
+2039-06-21	National Indigenous Peoples Day	National Indigenous Peoples Day	public	NT
+2039-06-21	National Indigenous Peoples Day	National Indigenous Peoples Day	public	YT
+2039-06-24	Discovery Day	Discovery Day	optional	NL
+2039-06-24	National Holiday	National Holiday	public	QC
+2039-07-01	Canada Day	Canada Day	public	
+2039-07-01	Memorial Day	Memorial Day	public	NL
+2039-07-09	Nunavut Day	Nunavut Day	bank	NU
+2039-07-12	Orangemen's Day	Orangemen's Day	optional	NL
+2039-08-01	Heritage Day	Heritage Day	optional	AB
+2039-08-01	British Columbia Day	British Columbia Day	public	BC
+2039-08-01	Terry Fox Day	Terry Fox Day	optional	MB
+2039-08-01	New Brunswick Day	New Brunswick Day	public	NB
+2039-08-01	Natal Day	Natal Day	optional	NS
+2039-08-01	Civic Holiday	Civic Holiday	public	NT
+2039-08-01	Civic Holiday	Civic Holiday	public	NU
+2039-08-01	Civic Holiday	Civic Holiday	optional	ON
+2039-08-01	Saskatchewan Day	Saskatchewan Day	public	SK
+2039-08-15	Discovery Day	Discovery Day	public	YT
+2039-08-19	Gold Cup Parade Day	Gold Cup Parade Day	public	PE
+2039-09-05	Labour Day	Labour Day	public	
+2039-09-30	National Day for Truth and Reconciliation	National Day for Truth and Reconciliation	observance	
+2039-10-10	Thanksgiving	Thanksgiving	public	AB
+2039-10-10	Thanksgiving	Thanksgiving	public	BC
+2039-10-10	Thanksgiving	Thanksgiving	public	MB
+2039-10-10	Thanksgiving	Thanksgiving	public	NT
+2039-10-10	Thanksgiving	Thanksgiving	public	NU
+2039-10-10	Thanksgiving	Thanksgiving	public	ON
+2039-10-10	Thanksgiving	Thanksgiving	public	QC
+2039-10-10	Thanksgiving	Thanksgiving	public	SK
+2039-10-10	Thanksgiving	Thanksgiving	public	YT
+2039-10-31	Halloween	Halloween	observance	
+2039-11-11	Remembrance Day	Remembrance Day	public	AB
+2039-11-11	Remembrance Day	Remembrance Day	public	BC
+2039-11-11	Remembrance Day	Remembrance Day	optional	MB
+2039-11-11	Remembrance Day	Remembrance Day	public	NB
+2039-11-11	Armistice Day	Armistice Day	public	NL
+2039-11-11	Remembrance Day	Remembrance Day	public	NS
+2039-11-11	Remembrance Day	Remembrance Day	public	NT
+2039-11-11	Remembrance Day	Remembrance Day	public	NU
+2039-11-11	Remembrance Day	Remembrance Day	optional	ON
+2039-11-11	Remembrance Day	Remembrance Day	public	PE
+2039-11-11	Remembrance Day	Remembrance Day	public	SK
+2039-11-11	Remembrance Day	Remembrance Day	public	YT
+2039-12-25	Christmas Day	Christmas Day	public	
+2039-12-26	Boxing Day	Boxing Day	public	NT
+2039-12-26	Boxing Day	Boxing Day	public	ON
+2040-01-01	New Year's Day	New Year's Day	public	
+2040-02-02	Groundhog Day	Groundhog Day	observance	
+2040-02-14	Valentine's Day	Valentine's Day	observance	
+2040-02-20	Family Day	Family Day	public	AB
+2040-02-20	Family Day	Family Day	public	BC
+2040-02-20	Louis Riel Day	Louis Riel Day	public	MB
+2040-02-20	Family Day	Family Day	public	NB
+2040-02-20	Heritage Day	Heritage Day	public	NS
+2040-02-20	Family Day	Family Day	public	ON
+2040-02-20	Islander Day	Islander Day	public	PE
+2040-02-20	Family Day	Family Day	public	SK
+2040-03-17	St. Patrick’s Day	St. Patrick’s Day	observance	
+2040-03-17	Saint Patrick's Day	Saint Patrick's Day	optional	NL
+2040-03-30	Good Friday	Good Friday	public	
+2040-04-02	Easter Monday	Easter Monday	optional	AB
+2040-04-02	Easter Monday	Easter Monday	public	NT
+2040-04-02	Easter Monday	Easter Monday	public	ON
+2040-04-02	Easter Monday	Easter Monday	optional	PE
+2040-04-02	Easter Monday	Easter Monday	optional	QC
+2040-04-02	Easter Monday	Easter Monday	public	YT
+2040-04-23	Saint George's Day	Saint George's Day	optional	NL
+2040-05-13	Mother's Day	Mother's Day	observance	
+2040-05-21	Victoria Day	Victoria Day	public	AB
+2040-05-21	Victoria Day	Victoria Day	public	BC
+2040-05-21	Victoria Day	Victoria Day	public	MB
+2040-05-21	Victoria Day	Victoria Day	public	NT
+2040-05-21	Victoria Day	Victoria Day	public	NU
+2040-05-21	Victoria Day	Victoria Day	public	ON
+2040-05-21	National Patriots' Day	National Patriots' Day	public	QC
+2040-05-21	Victoria Day	Victoria Day	public	SK
+2040-05-21	Victoria Day	Victoria Day	public	YT
+2040-06-17	Father's Day	Father's Day	observance	
+2040-06-21	National Indigenous Peoples Day	National Indigenous Peoples Day	public	NT
+2040-06-21	National Indigenous Peoples Day	National Indigenous Peoples Day	public	YT
+2040-06-24	Discovery Day	Discovery Day	optional	NL
+2040-06-24	National Holiday	National Holiday	public	QC
+2040-07-01	Canada Day	Canada Day	public	
+2040-07-01	Memorial Day	Memorial Day	public	NL
+2040-07-09	Nunavut Day	Nunavut Day	bank	NU
+2040-07-12	Orangemen's Day	Orangemen's Day	optional	NL
+2040-08-06	Heritage Day	Heritage Day	optional	AB
+2040-08-06	British Columbia Day	British Columbia Day	public	BC
+2040-08-06	Terry Fox Day	Terry Fox Day	optional	MB
+2040-08-06	New Brunswick Day	New Brunswick Day	public	NB
+2040-08-06	Natal Day	Natal Day	optional	NS
+2040-08-06	Civic Holiday	Civic Holiday	public	NT
+2040-08-06	Civic Holiday	Civic Holiday	public	NU
+2040-08-06	Civic Holiday	Civic Holiday	optional	ON
+2040-08-06	Saskatchewan Day	Saskatchewan Day	public	SK
+2040-08-17	Gold Cup Parade Day	Gold Cup Parade Day	public	PE
+2040-08-20	Discovery Day	Discovery Day	public	YT
+2040-09-03	Labour Day	Labour Day	public	
+2040-09-30	National Day for Truth and Reconciliation	National Day for Truth and Reconciliation	observance	
+2040-10-08	Thanksgiving	Thanksgiving	public	AB
+2040-10-08	Thanksgiving	Thanksgiving	public	BC
+2040-10-08	Thanksgiving	Thanksgiving	public	MB
+2040-10-08	Thanksgiving	Thanksgiving	public	NT
+2040-10-08	Thanksgiving	Thanksgiving	public	NU
+2040-10-08	Thanksgiving	Thanksgiving	public	ON
+2040-10-08	Thanksgiving	Thanksgiving	public	QC
+2040-10-08	Thanksgiving	Thanksgiving	public	SK
+2040-10-08	Thanksgiving	Thanksgiving	public	YT
+2040-10-31	Halloween	Halloween	observance	
+2040-11-11	Remembrance Day	Remembrance Day	public	AB
+2040-11-11	Remembrance Day	Remembrance Day	public	BC
+2040-11-11	Remembrance Day	Remembrance Day	optional	MB
+2040-11-11	Remembrance Day	Remembrance Day	public	NB
+2040-11-11	Armistice Day	Armistice Day	public	NL
+2040-11-11	Remembrance Day	Remembrance Day	public	NS
+2040-11-11	Remembrance Day	Remembrance Day	public	NT
+2040-11-11	Remembrance Day	Remembrance Day	public	NU
+2040-11-11	Remembrance Day	Remembrance Day	optional	ON
+2040-11-11	Remembrance Day	Remembrance Day	public	PE
+2040-11-11	Remembrance Day	Remembrance Day	public	SK
+2040-11-11	Remembrance Day	Remembrance Day	public	YT
+2040-12-25	Christmas Day	Christmas Day	public	
+2040-12-26	Boxing Day	Boxing Day	public	NT
+2040-12-26	Boxing Day	Boxing Day	public	ON
+2041-01-01	New Year's Day	New Year's Day	public	
+2041-02-02	Groundhog Day	Groundhog Day	observance	
+2041-02-14	Valentine's Day	Valentine's Day	observance	
+2041-02-18	Family Day	Family Day	public	AB
+2041-02-18	Family Day	Family Day	public	BC
+2041-02-18	Louis Riel Day	Louis Riel Day	public	MB
+2041-02-18	Family Day	Family Day	public	NB
+2041-02-18	Heritage Day	Heritage Day	public	NS
+2041-02-18	Family Day	Family Day	public	ON
+2041-02-18	Islander Day	Islander Day	public	PE
+2041-02-18	Family Day	Family Day	public	SK
+2041-03-17	St. Patrick’s Day	St. Patrick’s Day	observance	
+2041-03-17	Saint Patrick's Day	Saint Patrick's Day	optional	NL
+2041-04-19	Good Friday	Good Friday	public	
+2041-04-22	Easter Monday	Easter Monday	optional	AB
+2041-04-22	Easter Monday	Easter Monday	public	NT
+2041-04-22	Easter Monday	Easter Monday	public	ON
+2041-04-22	Easter Monday	Easter Monday	optional	PE
+2041-04-22	Easter Monday	Easter Monday	optional	QC
+2041-04-22	Easter Monday	Easter Monday	public	YT
+2041-04-23	Saint George's Day	Saint George's Day	optional	NL
+2041-05-12	Mother's Day	Mother's Day	observance	
+2041-05-20	Victoria Day	Victoria Day	public	AB
+2041-05-20	Victoria Day	Victoria Day	public	BC
+2041-05-20	Victoria Day	Victoria Day	public	MB
+2041-05-20	Victoria Day	Victoria Day	public	NT
+2041-05-20	Victoria Day	Victoria Day	public	NU
+2041-05-20	Victoria Day	Victoria Day	public	ON
+2041-05-20	National Patriots' Day	National Patriots' Day	public	QC
+2041-05-20	Victoria Day	Victoria Day	public	SK
+2041-05-20	Victoria Day	Victoria Day	public	YT
+2041-06-16	Father's Day	Father's Day	observance	
+2041-06-21	National Indigenous Peoples Day	National Indigenous Peoples Day	public	NT
+2041-06-21	National Indigenous Peoples Day	National Indigenous Peoples Day	public	YT
+2041-06-24	Discovery Day	Discovery Day	optional	NL
+2041-06-24	National Holiday	National Holiday	public	QC
+2041-07-01	Canada Day	Canada Day	public	
+2041-07-01	Memorial Day	Memorial Day	public	NL
+2041-07-09	Nunavut Day	Nunavut Day	bank	NU
+2041-07-12	Orangemen's Day	Orangemen's Day	optional	NL
+2041-08-05	Heritage Day	Heritage Day	optional	AB
+2041-08-05	British Columbia Day	British Columbia Day	public	BC
+2041-08-05	Terry Fox Day	Terry Fox Day	optional	MB
+2041-08-05	New Brunswick Day	New Brunswick Day	public	NB
+2041-08-05	Natal Day	Natal Day	optional	NS
+2041-08-05	Civic Holiday	Civic Holiday	public	NT
+2041-08-05	Civic Holiday	Civic Holiday	public	NU
+2041-08-05	Civic Holiday	Civic Holiday	optional	ON
+2041-08-05	Saskatchewan Day	Saskatchewan Day	public	SK
+2041-08-16	Gold Cup Parade Day	Gold Cup Parade Day	public	PE
+2041-08-19	Discovery Day	Discovery Day	public	YT
+2041-09-02	Labour Day	Labour Day	public	
+2041-09-30	National Day for Truth and Reconciliation	National Day for Truth and Reconciliation	observance	
+2041-10-14	Thanksgiving	Thanksgiving	public	AB
+2041-10-14	Thanksgiving	Thanksgiving	public	BC
+2041-10-14	Thanksgiving	Thanksgiving	public	MB
+2041-10-14	Thanksgiving	Thanksgiving	public	NT
+2041-10-14	Thanksgiving	Thanksgiving	public	NU
+2041-10-14	Thanksgiving	Thanksgiving	public	ON
+2041-10-14	Thanksgiving	Thanksgiving	public	QC
+2041-10-14	Thanksgiving	Thanksgiving	public	SK
+2041-10-14	Thanksgiving	Thanksgiving	public	YT
+2041-10-31	Halloween	Halloween	observance	
+2041-11-11	Remembrance Day	Remembrance Day	public	AB
+2041-11-11	Remembrance Day	Remembrance Day	public	BC
+2041-11-11	Remembrance Day	Remembrance Day	optional	MB
+2041-11-11	Remembrance Day	Remembrance Day	public	NB
+2041-11-11	Armistice Day	Armistice Day	public	NL
+2041-11-11	Remembrance Day	Remembrance Day	public	NS
+2041-11-11	Remembrance Day	Remembrance Day	public	NT
+2041-11-11	Remembrance Day	Remembrance Day	public	NU
+2041-11-11	Remembrance Day	Remembrance Day	optional	ON
+2041-11-11	Remembrance Day	Remembrance Day	public	PE
+2041-11-11	Remembrance Day	Remembrance Day	public	SK
+2041-11-11	Remembrance Day	Remembrance Day	public	YT
+2041-12-25	Christmas Day	Christmas Day	public	
+2041-12-26	Boxing Day	Boxing Day	public	NT
+2041-12-26	Boxing Day	Boxing Day	public	ON
+2042-01-01	New Year's Day	New Year's Day	public	
+2042-02-02	Groundhog Day	Groundhog Day	observance	
+2042-02-14	Valentine's Day	Valentine's Day	observance	
+2042-02-17	Family Day	Family Day	public	AB
+2042-02-17	Family Day	Family Day	public	BC
+2042-02-17	Louis Riel Day	Louis Riel Day	public	MB
+2042-02-17	Family Day	Family Day	public	NB
+2042-02-17	Heritage Day	Heritage Day	public	NS
+2042-02-17	Family Day	Family Day	public	ON
+2042-02-17	Islander Day	Islander Day	public	PE
+2042-02-17	Family Day	Family Day	public	SK
+2042-03-17	St. Patrick’s Day	St. Patrick’s Day	observance	
+2042-03-17	Saint Patrick's Day	Saint Patrick's Day	optional	NL
+2042-04-04	Good Friday	Good Friday	public	
+2042-04-07	Easter Monday	Easter Monday	optional	AB
+2042-04-07	Easter Monday	Easter Monday	public	NT
+2042-04-07	Easter Monday	Easter Monday	public	ON
+2042-04-07	Easter Monday	Easter Monday	optional	PE
+2042-04-07	Easter Monday	Easter Monday	optional	QC
+2042-04-07	Easter Monday	Easter Monday	public	YT
+2042-04-23	Saint George's Day	Saint George's Day	optional	NL
+2042-05-11	Mother's Day	Mother's Day	observance	
+2042-05-19	Victoria Day	Victoria Day	public	AB
+2042-05-19	Victoria Day	Victoria Day	public	BC
+2042-05-19	Victoria Day	Victoria Day	public	MB
+2042-05-19	Victoria Day	Victoria Day	public	NT
+2042-05-19	Victoria Day	Victoria Day	public	NU
+2042-05-19	Victoria Day	Victoria Day	public	ON
+2042-05-19	National Patriots' Day	National Patriots' Day	public	QC
+2042-05-19	Victoria Day	Victoria Day	public	SK
+2042-05-19	Victoria Day	Victoria Day	public	YT
+2042-06-15	Father's Day	Father's Day	observance	
+2042-06-21	National Indigenous Peoples Day	National Indigenous Peoples Day	public	NT
+2042-06-21	National Indigenous Peoples Day	National Indigenous Peoples Day	public	YT
+2042-06-24	Discovery Day	Discovery Day	optional	NL
+2042-06-24	National Holiday	National Holiday	public	QC
+2042-07-01	Canada Day	Canada Day	public	
+2042-07-01	Memorial Day	Memorial Day	public	NL
+2042-07-09	Nunavut Day	Nunavut Day	bank	NU
+2042-07-12	Orangemen's Day	Orangemen's Day	optional	NL
+2042-08-04	Heritage Day	Heritage Day	optional	AB
+2042-08-04	British Columbia Day	British Columbia Day	public	BC
+2042-08-04	Terry Fox Day	Terry Fox Day	optional	MB
+2042-08-04	New Brunswick Day	New Brunswick Day	public	NB
+2042-08-04	Natal Day	Natal Day	optional	NS
+2042-08-04	Civic Holiday	Civic Holiday	public	NT
+2042-08-04	Civic Holiday	Civic Holiday	public	NU
+2042-08-04	Civic Holiday	Civic Holiday	optional	ON
+2042-08-04	Saskatchewan Day	Saskatchewan Day	public	SK
+2042-08-15	Gold Cup Parade Day	Gold Cup Parade Day	public	PE
+2042-08-18	Discovery Day	Discovery Day	public	YT
+2042-09-01	Labour Day	Labour Day	public	
+2042-09-30	National Day for Truth and Reconciliation	National Day for Truth and Reconciliation	observance	
+2042-10-13	Thanksgiving	Thanksgiving	public	AB
+2042-10-13	Thanksgiving	Thanksgiving	public	BC
+2042-10-13	Thanksgiving	Thanksgiving	public	MB
+2042-10-13	Thanksgiving	Thanksgiving	public	NT
+2042-10-13	Thanksgiving	Thanksgiving	public	NU
+2042-10-13	Thanksgiving	Thanksgiving	public	ON
+2042-10-13	Thanksgiving	Thanksgiving	public	QC
+2042-10-13	Thanksgiving	Thanksgiving	public	SK
+2042-10-13	Thanksgiving	Thanksgiving	public	YT
+2042-10-31	Halloween	Halloween	observance	
+2042-11-11	Remembrance Day	Remembrance Day	public	AB
+2042-11-11	Remembrance Day	Remembrance Day	public	BC
+2042-11-11	Remembrance Day	Remembrance Day	optional	MB
+2042-11-11	Remembrance Day	Remembrance Day	public	NB
+2042-11-11	Armistice Day	Armistice Day	public	NL
+2042-11-11	Remembrance Day	Remembrance Day	public	NS
+2042-11-11	Remembrance Day	Remembrance Day	public	NT
+2042-11-11	Remembrance Day	Remembrance Day	public	NU
+2042-11-11	Remembrance Day	Remembrance Day	optional	ON
+2042-11-11	Remembrance Day	Remembrance Day	public	PE
+2042-11-11	Remembrance Day	Remembrance Day	public	SK
+2042-11-11	Remembrance Day	Remembrance Day	public	YT
+2042-12-25	Christmas Day	Christmas Day	public	
+2042-12-26	Boxing Day	Boxing Day	public	NT
+2042-12-26	Boxing Day	Boxing Day	public	ON
+2043-01-01	New Year's Day	New Year's Day	public	
+2043-02-02	Groundhog Day	Groundhog Day	observance	
+2043-02-14	Valentine's Day	Valentine's Day	observance	
+2043-02-16	Family Day	Family Day	public	AB
+2043-02-16	Family Day	Family Day	public	BC
+2043-02-16	Louis Riel Day	Louis Riel Day	public	MB
+2043-02-16	Family Day	Family Day	public	NB
+2043-02-16	Heritage Day	Heritage Day	public	NS
+2043-02-16	Family Day	Family Day	public	ON
+2043-02-16	Islander Day	Islander Day	public	PE
+2043-02-16	Family Day	Family Day	public	SK
+2043-03-17	St. Patrick’s Day	St. Patrick’s Day	observance	
+2043-03-17	Saint Patrick's Day	Saint Patrick's Day	optional	NL
+2043-03-27	Good Friday	Good Friday	public	
+2043-03-30	Easter Monday	Easter Monday	optional	AB
+2043-03-30	Easter Monday	Easter Monday	public	NT
+2043-03-30	Easter Monday	Easter Monday	public	ON
+2043-03-30	Easter Monday	Easter Monday	optional	PE
+2043-03-30	Easter Monday	Easter Monday	optional	QC
+2043-03-30	Easter Monday	Easter Monday	public	YT
+2043-04-23	Saint George's Day	Saint George's Day	optional	NL
+2043-05-10	Mother's Day	Mother's Day	observance	
+2043-05-18	Victoria Day	Victoria Day	public	AB
+2043-05-18	Victoria Day	Victoria Day	public	BC
+2043-05-18	Victoria Day	Victoria Day	public	MB
+2043-05-18	Victoria Day	Victoria Day	public	NT
+2043-05-18	Victoria Day	Victoria Day	public	NU
+2043-05-18	Victoria Day	Victoria Day	public	ON
+2043-05-18	National Patriots' Day	National Patriots' Day	public	QC
+2043-05-18	Victoria Day	Victoria Day	public	SK
+2043-05-18	Victoria Day	Victoria Day	public	YT
+2043-06-21	Father's Day	Father's Day	observance	
+2043-06-21	National Indigenous Peoples Day	National Indigenous Peoples Day	public	NT
+2043-06-21	National Indigenous Peoples Day	National Indigenous Peoples Day	public	YT
+2043-06-24	Discovery Day	Discovery Day	optional	NL
+2043-06-24	National Holiday	National Holiday	public	QC
+2043-07-01	Canada Day	Canada Day	public	
+2043-07-01	Memorial Day	Memorial Day	public	NL
+2043-07-09	Nunavut Day	Nunavut Day	bank	NU
+2043-07-12	Orangemen's Day	Orangemen's Day	optional	NL
+2043-08-03	Heritage Day	Heritage Day	optional	AB
+2043-08-03	British Columbia Day	British Columbia Day	public	BC
+2043-08-03	Terry Fox Day	Terry Fox Day	optional	MB
+2043-08-03	New Brunswick Day	New Brunswick Day	public	NB
+2043-08-03	Natal Day	Natal Day	optional	NS
+2043-08-03	Civic Holiday	Civic Holiday	public	NT
+2043-08-03	Civic Holiday	Civic Holiday	public	NU
+2043-08-03	Civic Holiday	Civic Holiday	optional	ON
+2043-08-03	Saskatchewan Day	Saskatchewan Day	public	SK
+2043-08-17	Discovery Day	Discovery Day	public	YT
+2043-08-21	Gold Cup Parade Day	Gold Cup Parade Day	public	PE
+2043-09-07	Labour Day	Labour Day	public	
+2043-09-30	National Day for Truth and Reconciliation	National Day for Truth and Reconciliation	observance	
+2043-10-12	Thanksgiving	Thanksgiving	public	AB
+2043-10-12	Thanksgiving	Thanksgiving	public	BC
+2043-10-12	Thanksgiving	Thanksgiving	public	MB
+2043-10-12	Thanksgiving	Thanksgiving	public	NT
+2043-10-12	Thanksgiving	Thanksgiving	public	NU
+2043-10-12	Thanksgiving	Thanksgiving	public	ON
+2043-10-12	Thanksgiving	Thanksgiving	public	QC
+2043-10-12	Thanksgiving	Thanksgiving	public	SK
+2043-10-12	Thanksgiving	Thanksgiving	public	YT
+2043-10-31	Halloween	Halloween	observance	
+2043-11-11	Remembrance Day	Remembrance Day	public	AB
+2043-11-11	Remembrance Day	Remembrance Day	public	BC
+2043-11-11	Remembrance Day	Remembrance Day	optional	MB
+2043-11-11	Remembrance Day	Remembrance Day	public	NB
+2043-11-11	Armistice Day	Armistice Day	public	NL
+2043-11-11	Remembrance Day	Remembrance Day	public	NS
+2043-11-11	Remembrance Day	Remembrance Day	public	NT
+2043-11-11	Remembrance Day	Remembrance Day	public	NU
+2043-11-11	Remembrance Day	Remembrance Day	optional	ON
+2043-11-11	Remembrance Day	Remembrance Day	public	PE
+2043-11-11	Remembrance Day	Remembrance Day	public	SK
+2043-11-11	Remembrance Day	Remembrance Day	public	YT
+2043-12-25	Christmas Day	Christmas Day	public	
+2043-12-26	Boxing Day	Boxing Day	public	NT
+2043-12-26	Boxing Day	Boxing Day	public	ON
+2044-01-01	New Year's Day	New Year's Day	public	
+2044-02-02	Groundhog Day	Groundhog Day	observance	
+2044-02-14	Valentine's Day	Valentine's Day	observance	
+2044-02-15	Family Day	Family Day	public	AB
+2044-02-15	Family Day	Family Day	public	BC
+2044-02-15	Louis Riel Day	Louis Riel Day	public	MB
+2044-02-15	Family Day	Family Day	public	NB
+2044-02-15	Heritage Day	Heritage Day	public	NS
+2044-02-15	Family Day	Family Day	public	ON
+2044-02-15	Islander Day	Islander Day	public	PE
+2044-02-15	Family Day	Family Day	public	SK
+2044-03-17	St. Patrick’s Day	St. Patrick’s Day	observance	
+2044-03-17	Saint Patrick's Day	Saint Patrick's Day	optional	NL
+2044-04-15	Good Friday	Good Friday	public	
+2044-04-18	Easter Monday	Easter Monday	optional	AB
+2044-04-18	Easter Monday	Easter Monday	public	NT
+2044-04-18	Easter Monday	Easter Monday	public	ON
+2044-04-18	Easter Monday	Easter Monday	optional	PE
+2044-04-18	Easter Monday	Easter Monday	optional	QC
+2044-04-18	Easter Monday	Easter Monday	public	YT
+2044-04-23	Saint George's Day	Saint George's Day	optional	NL
+2044-05-08	Mother's Day	Mother's Day	observance	
+2044-05-23	Victoria Day	Victoria Day	public	AB
+2044-05-23	Victoria Day	Victoria Day	public	BC
+2044-05-23	Victoria Day	Victoria Day	public	MB
+2044-05-23	Victoria Day	Victoria Day	public	NT
+2044-05-23	Victoria Day	Victoria Day	public	NU
+2044-05-23	Victoria Day	Victoria Day	public	ON
+2044-05-23	National Patriots' Day	National Patriots' Day	public	QC
+2044-05-23	Victoria Day	Victoria Day	public	SK
+2044-05-23	Victoria Day	Victoria Day	public	YT
+2044-06-19	Father's Day	Father's Day	observance	
+2044-06-21	National Indigenous Peoples Day	National Indigenous Peoples Day	public	NT
+2044-06-21	National Indigenous Peoples Day	National Indigenous Peoples Day	public	YT
+2044-06-24	Discovery Day	Discovery Day	optional	NL
+2044-06-24	National Holiday	National Holiday	public	QC
+2044-07-01	Canada Day	Canada Day	public	
+2044-07-01	Memorial Day	Memorial Day	public	NL
+2044-07-09	Nunavut Day	Nunavut Day	bank	NU
+2044-07-12	Orangemen's Day	Orangemen's Day	optional	NL
+2044-08-01	Heritage Day	Heritage Day	optional	AB
+2044-08-01	British Columbia Day	British Columbia Day	public	BC
+2044-08-01	Terry Fox Day	Terry Fox Day	optional	MB
+2044-08-01	New Brunswick Day	New Brunswick Day	public	NB
+2044-08-01	Natal Day	Natal Day	optional	NS
+2044-08-01	Civic Holiday	Civic Holiday	public	NT
+2044-08-01	Civic Holiday	Civic Holiday	public	NU
+2044-08-01	Civic Holiday	Civic Holiday	optional	ON
+2044-08-01	Saskatchewan Day	Saskatchewan Day	public	SK
+2044-08-15	Discovery Day	Discovery Day	public	YT
+2044-08-19	Gold Cup Parade Day	Gold Cup Parade Day	public	PE
+2044-09-05	Labour Day	Labour Day	public	
+2044-09-30	National Day for Truth and Reconciliation	National Day for Truth and Reconciliation	observance	
+2044-10-10	Thanksgiving	Thanksgiving	public	AB
+2044-10-10	Thanksgiving	Thanksgiving	public	BC
+2044-10-10	Thanksgiving	Thanksgiving	public	MB
+2044-10-10	Thanksgiving	Thanksgiving	public	NT
+2044-10-10	Thanksgiving	Thanksgiving	public	NU
+2044-10-10	Thanksgiving	Thanksgiving	public	ON
+2044-10-10	Thanksgiving	Thanksgiving	public	QC
+2044-10-10	Thanksgiving	Thanksgiving	public	SK
+2044-10-10	Thanksgiving	Thanksgiving	public	YT
+2044-10-31	Halloween	Halloween	observance	
+2044-11-11	Remembrance Day	Remembrance Day	public	AB
+2044-11-11	Remembrance Day	Remembrance Day	public	BC
+2044-11-11	Remembrance Day	Remembrance Day	optional	MB
+2044-11-11	Remembrance Day	Remembrance Day	public	NB
+2044-11-11	Armistice Day	Armistice Day	public	NL
+2044-11-11	Remembrance Day	Remembrance Day	public	NS
+2044-11-11	Remembrance Day	Remembrance Day	public	NT
+2044-11-11	Remembrance Day	Remembrance Day	public	NU
+2044-11-11	Remembrance Day	Remembrance Day	optional	ON
+2044-11-11	Remembrance Day	Remembrance Day	public	PE
+2044-11-11	Remembrance Day	Remembrance Day	public	SK
+2044-11-11	Remembrance Day	Remembrance Day	public	YT
+2044-12-25	Christmas Day	Christmas Day	public	
+2044-12-26	Boxing Day	Boxing Day	public	NT
+2044-12-26	Boxing Day	Boxing Day	public	ON
+2045-01-01	New Year's Day	New Year's Day	public	
+2045-02-02	Groundhog Day	Groundhog Day	observance	
+2045-02-14	Valentine's Day	Valentine's Day	observance	
+2045-02-20	Family Day	Family Day	public	AB
+2045-02-20	Family Day	Family Day	public	BC
+2045-02-20	Louis Riel Day	Louis Riel Day	public	MB
+2045-02-20	Family Day	Family Day	public	NB
+2045-02-20	Heritage Day	Heritage Day	public	NS
+2045-02-20	Family Day	Family Day	public	ON
+2045-02-20	Islander Day	Islander Day	public	PE
+2045-02-20	Family Day	Family Day	public	SK
+2045-03-17	St. Patrick’s Day	St. Patrick’s Day	observance	
+2045-03-17	Saint Patrick's Day	Saint Patrick's Day	optional	NL
+2045-04-07	Good Friday	Good Friday	public	
+2045-04-10	Easter Monday	Easter Monday	optional	AB
+2045-04-10	Easter Monday	Easter Monday	public	NT
+2045-04-10	Easter Monday	Easter Monday	public	ON
+2045-04-10	Easter Monday	Easter Monday	optional	PE
+2045-04-10	Easter Monday	Easter Monday	optional	QC
+2045-04-10	Easter Monday	Easter Monday	public	YT
+2045-04-23	Saint George's Day	Saint George's Day	optional	NL
+2045-05-14	Mother's Day	Mother's Day	observance	
+2045-05-22	Victoria Day	Victoria Day	public	AB
+2045-05-22	Victoria Day	Victoria Day	public	BC
+2045-05-22	Victoria Day	Victoria Day	public	MB
+2045-05-22	Victoria Day	Victoria Day	public	NT
+2045-05-22	Victoria Day	Victoria Day	public	NU
+2045-05-22	Victoria Day	Victoria Day	public	ON
+2045-05-22	National Patriots' Day	National Patriots' Day	public	QC
+2045-05-22	Victoria Day	Victoria Day	public	SK
+2045-05-22	Victoria Day	Victoria Day	public	YT
+2045-06-18	Father's Day	Father's Day	observance	
+2045-06-21	National Indigenous Peoples Day	National Indigenous Peoples Day	public	NT
+2045-06-21	National Indigenous Peoples Day	National Indigenous Peoples Day	public	YT
+2045-06-24	Discovery Day	Discovery Day	optional	NL
+2045-06-24	National Holiday	National Holiday	public	QC
+2045-07-01	Canada Day	Canada Day	public	
+2045-07-01	Memorial Day	Memorial Day	public	NL
+2045-07-09	Nunavut Day	Nunavut Day	bank	NU
+2045-07-12	Orangemen's Day	Orangemen's Day	optional	NL
+2045-08-07	Heritage Day	Heritage Day	optional	AB
+2045-08-07	British Columbia Day	British Columbia Day	public	BC
+2045-08-07	Terry Fox Day	Terry Fox Day	optional	MB
+2045-08-07	New Brunswick Day	New Brunswick Day	public	NB
+2045-08-07	Natal Day	Natal Day	optional	NS
+2045-08-07	Civic Holiday	Civic Holiday	public	NT
+2045-08-07	Civic Holiday	Civic Holiday	public	NU
+2045-08-07	Civic Holiday	Civic Holiday	optional	ON
+2045-08-07	Saskatchewan Day	Saskatchewan Day	public	SK
+2045-08-18	Gold Cup Parade Day	Gold Cup Parade Day	public	PE
+2045-08-21	Discovery Day	Discovery Day	public	YT
+2045-09-04	Labour Day	Labour Day	public	
+2045-09-30	National Day for Truth and Reconciliation	National Day for Truth and Reconciliation	observance	
+2045-10-09	Thanksgiving	Thanksgiving	public	AB
+2045-10-09	Thanksgiving	Thanksgiving	public	BC
+2045-10-09	Thanksgiving	Thanksgiving	public	MB
+2045-10-09	Thanksgiving	Thanksgiving	public	NT
+2045-10-09	Thanksgiving	Thanksgiving	public	NU
+2045-10-09	Thanksgiving	Thanksgiving	public	ON
+2045-10-09	Thanksgiving	Thanksgiving	public	QC
+2045-10-09	Thanksgiving	Thanksgiving	public	SK
+2045-10-09	Thanksgiving	Thanksgiving	public	YT
+2045-10-31	Halloween	Halloween	observance	
+2045-11-11	Remembrance Day	Remembrance Day	public	AB
+2045-11-11	Remembrance Day	Remembrance Day	public	BC
+2045-11-11	Remembrance Day	Remembrance Day	optional	MB
+2045-11-11	Remembrance Day	Remembrance Day	public	NB
+2045-11-11	Armistice Day	Armistice Day	public	NL
+2045-11-11	Remembrance Day	Remembrance Day	public	NS
+2045-11-11	Remembrance Day	Remembrance Day	public	NT
+2045-11-11	Remembrance Day	Remembrance Day	public	NU
+2045-11-11	Remembrance Day	Remembrance Day	optional	ON
+2045-11-11	Remembrance Day	Remembrance Day	public	PE
+2045-11-11	Remembrance Day	Remembrance Day	public	SK
+2045-11-11	Remembrance Day	Remembrance Day	public	YT
+2045-12-25	Christmas Day	Christmas Day	public	
+2045-12-26	Boxing Day	Boxing Day	public	NT
+2045-12-26	Boxing Day	Boxing Day	public	ON

@@ -1,0 +1,161 @@
+{
+ "country": "AM",
+ "rules": [
+  {
+   "entry": "free",
+   "days": 180,
+   "within": 365,
+   "passports": [
+    "AD",
+    "AE",
+    "AL",
+    "AR",
+    "AT",
+    "AU",
+    "BE",
+    "BG",
+    "BH",
+    "BR",
+    "BY",
+    "CH",
+    "CY",
+    "CZ",
+    "DE",
+    "DK",
+    "EC",
+    "EE",
+    "ES",
+    "FI",
+    "FR",
+    "GB",
+    "GE",
+    "GR",
+    "HK",
+    "HR",
+    "HU",
+    "IE",
+    "IS",
+    "IT",
+    "JP",
+    "KG",
+    "KR",
+    "KW",
+    "LI",
+    "LT",
+    "LU",
+    "LV",
+    "MC",
+    "MD",
+    "ME",
+    "MO",
+    "MT",
+    "NL",
+    "NO",
+    "NZ",
+    "OM",
+    "PA",
+    "PL",
+    "PT",
+    "QA",
+    "RO",
+    "RS",
+    "RU",
+    "SA",
+    "SE",
+    "SG",
+    "SI",
+    "SK",
+    "SM",
+    "UA",
+    "US",
+    "UZ",
+    "VA"
+   ]
+  },
+  {
+   "entry": "free",
+   "days": 90,
+   "within": 180,
+   "passports": [
+    "CN",
+    "IR",
+    "TJ"
+   ]
+  },
+  {
+   "entry": "arrival",
+   "days": 120,
+   "passports": [
+    "AG",
+    "BA",
+    "BB",
+    "BS",
+    "CA",
+    "CL",
+    "DM",
+    "DO",
+    "ID",
+    "IL",
+    "JO",
+    "KP",
+    "LB",
+    "MK",
+    "MX",
+    "PE",
+    "TH",
+    "TR",
+    "VC",
+    "ZA"
+   ]
+  },
+  {
+   "entry": "free",
+   "days": 90,
+   "passports": [
+    "KZ"
+   ]
+  },
+  {
+   "entry": "free",
+   "days": 90,
+   "within": 365,
+   "passports": [
+    "UY"
+   ]
+  }
+ ],
+ "others": {
+  "entry": "visa"
+ },
+ "note": "Armenia: nationals of the countries listed enter without a visa for 180 days in a year (China and Iran 90 in 180, Tajikistan 90 in 180, Uruguay 90 in a year, Kazakhstan 90 from crossing the border); those of the second list get a visa at the border or an e-Visa for up to 120 days; the conditional list (much of ASEAN, India, Egypt and others) only with certain third-country visas or residences (not modelled), and everyone else needs a visa at a mission, by invitation for some. Read on 2026-11-03 from the Ministry of Foreign Affairs' own pages (its visa page, its unilateral and agreement lists, its invitation list, and its visa search tool asked for each country), which corrected Wikipedia's copy, read before, on Kazakhstan, Tajikistan and Uruguay (90 days, not 180). A temporary exemption from 1 July 2026 to 1 July 2027 for nationals of 111 countries holding certain residence permits isn't modelled.",
+ "sources": [
+  {
+   "url": "https://www.mfa.am/en/visa/",
+   "title": "Ministry of Foreign Affairs of Armenia, Visa (with its visa search tool, POST https://www.mfa.am/en/check-visa-needing, queried for each of 199 countries with docutype=1, ordinary passport)",
+   "read": "2026-11-03",
+   "kind": "primary",
+   "said": "Citizens of foreign countries for whom a visa-free regime is set can stay on the territory of the Republic of Armenia for no more than 180 days during one year if no other term is defined by the international agreements of the Republic of Armenia. ... Armenian visas are issued for a maximum of 120 days with the possibility to extend for another 60 days ... [search tool, Kazakhstan] Citizens of Kazakhstan can stay in the territory of the Republic of Armenia without a visa for up to 90 days from the date of crossing the border. [Tajikistan] Citizens of Tajikistan can stay in the territory of the Republic of Armenia for 90 days within a 180-day period. [Uruguay] Citizens of the selected country can stay in the territory of the Republic of Armenia for a maximum term of 90 days in a year."
+  },
+  {
+   "url": "https://www.mfa.am/en/visafreelist",
+   "title": "MFA Armenia, countries whose citizens are unilaterally exempt from the visa requirement (02.02.2024)",
+   "read": "2026-11-03",
+   "kind": "primary",
+   "said": "List of countries whose citizens with all types of passports are unilaterally exempt from the requirement to obtain a visa to enter the Republic of Armenia. They can stay in the territory of the Republic of Armenia up to 180 days per year. 1. Andorra 2. Australia ... 32. Qatar 33. Republic of Korea ... 43. United Arab Emirates 44. United Kingdom of Great Britain and Northern Ireland 45. United States of America"
+  },
+  {
+   "url": "https://www.mfa.am/en/whoneedvisa",
+   "title": "MFA Armenia, countries with which Armenia has a visa-free regime by agreement (updated 02.02.2024)",
+   "read": "2026-11-03",
+   "kind": "primary",
+   "said": "1. Albania All types of passports 2. Argentina All types of passports ... 9. China All types of passports ... 24. Iran (Islamic Republic of) All types of passports ... 63. Uruguay All types of passports 64. Uzbekistan All types of passports ... 66. Qatar All types of passports 67. Ecuador All types of passports"
+  },
+  {
+   "url": "https://www.mfa.am/en/invitation_only",
+   "title": "MFA Armenia, countries whose citizens apply for a visitor visa only at a mission and with invitation (02.02.2024)",
+   "read": "2026-11-03",
+   "kind": "primary",
+   "said": "Afghanistan Angola Bangladesh Benin Botswana ... Yemen Zambia Zimbabwe"
+  }
+ ]
+}

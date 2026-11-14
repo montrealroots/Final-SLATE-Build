@@ -1,0 +1,29 @@
+{
+ "country": "BH",
+ "years": 25,
+ "renounce": false,
+ "lapses": true,
+ "note": "GLOBALCIT's Citizenship Law Dataset v3.0 (EUI, 2025), coding the law in force on 1 January 2024 (A06a BAH 6(1)(a); A06b BAH 6(1)(a); L05 BAH 9(1)(a), 7(1); BAH 8(c), 7(2)): ordinary naturalisation after 25 years' residence; no renunciation of other citizenships required; a citizen loses the citizenship on voluntarily taking another (with exceptions). Reforms after that date are checked in the file's later sources, where a later source is given. Citizenship at birth is read from the same dataset's 2024 coding of modes A01a (descent, born in country: Gender restriction: no or restricted access if the mother is a citizen (wedlock condition/supplementary provision may apply)), A01b (descent, born abroad: Gender restriction: no or restricted access if the mother is a citizen (wedlock condition/supplementary provision may apply)), A02a (birth in country: No provision) and A02b (birth in country to a parent born there: No provision), as its codebook (RSC/GLOBALCIT 2025/01, sections 3.2.1a to 3.2.2b) defines them: not by birth in the territory alone (provisions for foundlings and children otherwise stateless, modes A03a and A03b, aren't held by the form); by descent from the father only, a child born abroad on the limit the dataset states. Changes to the law at birth after 1 January 2024 weren't checked for this file. On 2026-11-03 the primary was read: Legislation & Legal Opinion Commission (Bahrain), Bahraini Nationality Law of 16 September 1963 (Issue 8/1963), English version published on the website May 2024 (the Arabic Gazette text is the official one), arts 4-6, 9; Legislation & Legal Opinion Commission (Bahrain), Law No. (21) of 2014 amending certain provisions of the Bahraini Nationality Law of 1963 (English version). Every figure the file holds now rests on it, and the dataset is no longer cited. The law changed two figures the dataset gave: art. 5(a) makes Bahraini a child born in Bahrain to a father born and usually resident there who holds no other nationality, so birth in the territory is conditional, not none; and art. 4(b)-(c) set the limit abroad, which the file had read as a rule for birth in Bahrain. The English texts are the Commission's own, published with its notice that the Arabic Gazette text is official. Since Law 21/2014, art. 9(1)(a), a citizen may lose it on taking another nationality without the Minister's prior permission, after six months to regularise.",
+ "sources": [
+  {
+   "url": "https://www.lloc.gov.bh/FullEn/K0863.docx",
+   "title": "Legislation & Legal Opinion Commission (Bahrain), Bahraini Nationality Law of 16 September 1963 (Issue 8/1963), English version published on the website May 2024 (the Arabic Gazette text is the official one), arts 4-6, 9",
+   "read": "2026-11-03",
+   "kind": "primary",
+   "said": "4 - A person shall be considered Bahraini: (a) If born in Bahrain after the effective date of this Law, and their father was Bahraini at the time of that birth. (b) If born outside Bahrain after the effective date of this Law, and their father was Bahraini at the time of that birth, provided that the father or paternal grandfather of the person was born in Bahrain. (c) If born in Bahrain or elsewhere after the effective date of this Law, and their mother was Bahraini at the time of their birth, with the condition that the father is either unknown, his paternity is not legally proven, or the father has no nationality. ... 5 - A person shall be considered Bahraini: (a) If born in Bahrain after the effective date of this Law, and their father was born in Bahrain, and Bahrain was his usual place of residence at the time of that person's birth, provided that the person does not hold any other nationality. ... 6 - (1) The ruler, by his decree, may grant Bahraini nationality to any fully competent foreigner upon request, provided the following qualifications are met: (a) Having legally established ordinary residence in Bahrain for a minimum period of twenty-five consecutive years, or fifteen consecutive years if of Arab origin ... (b) Having good moral character. (c) Having a sufficient knowledge of the Arabic language. (d) Owning a fixed property registered in their name with the Bahrain Land Registry."
+  },
+  {
+   "url": "https://www.lloc.gov.bh/FullEn/K2114.docx",
+   "title": "Legislation & Legal Opinion Commission (Bahrain), Law No. (21) of 2014 amending certain provisions of the Bahraini Nationality Law of 1963 (English version)",
+   "read": "2026-11-03",
+   "kind": "primary",
+   "said": "Article (9), Paragraph (1): 1. A Bahraini citizen may lose his nationality in any of the following cases: a) If he has voluntarily acquired another foreign nationality without obtaining prior permission from the Minister of Interior. A Bahraini citizen who acquires a foreign nationality without complying with the provisions of the aforementioned paragraph shall regularize his situation within a maximum period of six months as of the date of the acquisition of the new nationality, either by renouncing the acquired foreign nationality or by submitting a request to the Minister of Interior to keep this nationality."
+  }
+ ],
+ "atBirth": {
+  "soil": "conditional",
+  "soilIf": "Person is born in Bahrain to a father who was born in Bahrain and usually resided there at the birth, and holds no other nationality.",
+  "descent": "father",
+  "descentAbroad": "Person is born outside Bahrain to a Bahraini father, provided the father or paternal grandfather was born in Bahrain; or, wherever born, to a Bahraini mother where the father is unknown, his paternity isn't legally proven, or he has no nationality."
+ }
+}

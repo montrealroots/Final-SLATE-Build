@@ -1,0 +1,29 @@
+{
+ "country": "SN",
+ "years": 10,
+ "renounce": false,
+ "lapses": true,
+ "note": "GLOBALCIT's Citizenship Law Dataset v3.0 (EUI, 2025), coding the law in force on 1 January 2024 (A06a SEN 11-17; A06b SEN 11-17; L05 N1961 18): ordinary naturalisation after 5 years' residence; no renunciation of other citizenships required; a citizen loses the citizenship on voluntarily taking another. Reforms after that date are checked in the file's later sources, where a later source is given. Citizenship at birth is read from the same dataset's 2024 coding of modes A01a (descent, born in country: Generally applicable provision), A01b (descent, born abroad: Generally applicable provision), A02a (birth in country: No provision) and A02b (birth in country to a parent born there: Generally applicable provision), as its codebook (RSC/GLOBALCIT 2025/01, sections 3.2.1a to 3.2.2b) defines them: by birth in the territory only on the condition the dataset states; by descent from either parent, with no further limit on a child born abroad. Changes to the law at birth after 1 January 2024 weren't checked for this file. On 2026-11-03 the primary was read: Nationalité, Services aux usagers, Ministère de la Justice du Sénégal. It confirmed birth in the territory and descent. It was silent on renunciation and loss on taking another citizenship, which still rest on the sources above, re-read that day and found the same. The ministry changed a figure the dataset gave: naturalisation by decree asks ten years' residence, not five, and the dataset's own fragment for the years speaks of São Tomé and Príncipe ('STP'), a sign its row was mixed with another country's. The Code de la nationalité wasn't read; the ministry's page stands over the dataset.",
+ "sources": [
+  {
+   "url": "https://cadmus.eui.eu/bitstreams/3b166501-e695-48d7-9e27-d7bef061573a/download",
+   "title": "GLOBALCIT Citizenship Law Dataset v3.0 (Vink, van der Baaren, Bauböck, Dzankic, Honohan, Manby; EUI Research Data, 2025), country-year-mode files, Senegal, 2024",
+   "read": "2026-11-03",
+   "kind": "secondary",
+   "quotes": "https://globalcit.eu/national-citizenship-laws/",
+   "said": "Person has been habitually resident in STP for at least 5 years ... n.a. ... Senegalese nationality is lost by voluntary acquisition of a foreign nationality. However, during a period of 15 years, the loss of the Senegalese nationality is subject to the authorization of the Government ... Generally applicable provision ... Person is born in Senegal to a citizen. ... Generally applicable provision ... Person is born abroad to a citizen. ... No provision ... Generally applicable provision ... Person is born in Senegal to a parent also born there."
+  },
+  {
+   "url": "https://justice.sec.gouv.sn/services-aux-usagers/nationalite/",
+   "title": "Nationalité, Services aux usagers, Ministère de la Justice du Sénégal",
+   "read": "2026-11-03",
+   "kind": "primary",
+   "said": "Est sénégalais : la personne née au Sénégal d'un père ou d'une mère né au Sénégal la personne dont le père ou la mère est sénégalais la personne mineure non mariée dont le père ou la mère a acquis la nationalité sénégalaise par naturalisation ACQUISITION DE LA NATIONALITE PAR DECISION DE L'AUTORITE PUBLIQUE (NATURALISATION) Qui peut acquérir la nationalité sénégalaise par décret ? L'étranger âgé de 16 ans au moins ayant résidé au Sénégal pendant une durée de 10 ans"
+  }
+ ],
+ "atBirth": {
+  "soil": "conditional",
+  "soilIf": "Person is born in Senegal to a parent also born there.",
+  "descent": "either parent"
+ }
+}

@@ -1,0 +1,110 @@
+{
+ "country": "MZ",
+ "rules": [
+  {
+   "entry": "free",
+   "months": 3,
+   "passports": [
+    "BW",
+    "KE",
+    "RW",
+    "TZ"
+   ]
+  },
+  {
+   "entry": "free",
+   "days": 30,
+   "passports": [
+    "AO",
+    "CV",
+    "LS",
+    "MU",
+    "MW",
+    "NA",
+    "SC",
+    "ST",
+    "SZ",
+    "UG",
+    "ZA",
+    "ZM",
+    "ZW"
+   ]
+  },
+  {
+   "entry": "eta",
+   "days": 30,
+   "passports": [
+    "AE",
+    "BE",
+    "CA",
+    "CH",
+    "CI",
+    "CN",
+    "DE",
+    "DK",
+    "ES",
+    "FI",
+    "FR",
+    "GB",
+    "GH",
+    "ID",
+    "IE",
+    "IL",
+    "IT",
+    "JP",
+    "KR",
+    "NL",
+    "NO",
+    "PT",
+    "RU",
+    "SA",
+    "SE",
+    "SG",
+    "SN",
+    "UA",
+    "US"
+   ]
+  },
+  {
+   "entry": "visa",
+   "passports": [
+    "BD",
+    "ET",
+    "NG",
+    "NP",
+    "PK",
+    "SO"
+   ]
+  },
+  {
+   "entry": "evisa",
+   "passports": [
+    "ER",
+    "IN",
+    "LK"
+   ]
+  }
+ ],
+ "others": {
+  "entry": "arrival",
+  "days": 30
+ },
+ "note": "Mozambique: nationals of the SADC states and others listed enter without a visa for 3 months or 30 days; nationals of the countries listed after get an Electronic Travel Authorisation (since 1 May 2023; 30 days, USD 48); everyone else gets a visa on arrival for 30 days (USD 50), except nationals of Bangladesh, Eritrea, India, Pakistan, Somalia and Sri Lanka, who apply for an e-Visa beforehand. Read from Wikipedia's copy. Checked on 2026-11-03 against the official eVisa and eTA portal (evisa.gov.mz): it confirms the exempt countries and their lengths passport by passport and the 29 eTA countries (30 days), and names Pakistan, Bangladesh, Ethiopia, Nigeria, Nepal and Somalia as unable to use the portal and needing a visa from an embassy, which corrected Wikipedia's copy, read before (it had Eritrea, India and Sri Lanka there, which the portal lets apply for the eVisa, and not Ethiopia, Nigeria or Nepal). The portal opens the eVisa to every nationality but doesn't speak of the visa on arrival, which stands on Wikipedia's copy.",
+ "sources": [
+  {
+   "url": "https://en.wikipedia.org/wiki/Visa_policy_of_Mozambique",
+   "title": "Wikipedia, Visa policy of Mozambique",
+   "read": "2026-11-03",
+   "kind": "secondary",
+   "quotes": "https://www.evisa.gov.mz/",
+   "said": "Citizens of the following countries do not need a visa to enter Mozambique for a stay up to the duration listed below: 3 months Botswana Kenya Rwanda Tanzania 30 days Angola Cape Verde Eswatini Lesotho Malawi Mauritius Namibia São Tomé and Principe Seychelles South Africa Zambia Zimbabwe Uganda ... Since 1 May 2023, the following nationals can obtain an ETA to enter Mozambique for 30 days by paying a tax fee of 48 USD . In addition, an extension of 30 days is possible: 30 days Belgium Canada China Côte d'Ivoire Denmark Finland France Germany Ghana Indonesia Ireland Israel Italy Japan Netherlands Norway Portugal Russia Saudi Arabia Senegal Singapore South Korea Spain Sweden Switzerland Ukraine United Arab Emirates United Kingdom United States ... Citizens of all other countries that are not visa exempt can obtain a visa on arrival in Mozambique, valid for a maximum stay of 30 days at all border posts ... visa on arrival is not available to citizens of the following countries: Bangladesh Eritrea India Pakistan Somalia Sri Lanka ... Citizens of all countries that are not visa-exempt can also apply for an e-Visa prior to entering Mozambique."
+  },
+  {
+   "url": "https://evisa.gov.mz/",
+   "title": "Mozambique eVisa & eTA, Official Portal: Eligibility for eTA or eVisa",
+   "read": "2026-11-03",
+   "kind": "primary",
+   "said": "Eligibility for eTA or eVisa For Visa Exempt countries, applicants meeting the specified criteria mentioned in this table - including purpose of travel, duration of stay, and applicable passport types for each country - must fall under Visa Exempt. Only if the applicant does not meet any of the below-mentioned criteria, the applicant will be eligible for a full eVisa application and corresponding eVisa fees shall apply. Angola All types of passport 30 Days | Tourist & Business Argentina Diplomatic and Service 90 Days | Tourist & Business Botswana All types of passport 90 Days | Tourist & Business Brazil Diplomatic and Service passport only 90 Days | Tourist & Business Cabo Verde All types of passport 30 Days | Tourist & Business Cuba Diplomatic, Official and Service passport only 90 Days | Tourist & Business Egypt Diplomatic, Service & Special 90 Days | Tourist & Business Guinea Bissau Diplomatic and Service 90 Days | Tourist & Business Indonesia Diplomatic and Service 30 Days | Tourist & Business Kenya All types of passport 90 Days | Tourist & Business Lesotho All types of passport 30 Days | Tourist & Business Malawi All types of passport 30 Days | Tourist & Business Mauritius All types of passport 30 Days | Tourist & Business Namibia All types of passport 30 Days | Tourist & Business Portugal Diplomatic and Service passport only 90 Days | Tourist & Business Rwanda All types of passport 90 Days | Tourist & Business Sao Tome & Principe (Diplomatic & Service) Diplomatic and Service 90 Days | Tourist & Business Sao Tome & Principe (Ordinary) Ordinary passport 30 Days | Tourist & Business Seychelles All types of passport 30 Days | Tourist & Business South Africa (Diplomatic & Service) Diplomatic and Service 90 Days | Tourist & Business South Africa (Ordinary) Ordinary passport 30 Days | Tourist & Business South Korea Diplomatic and Service 90 Days | Tourist & Business Swaziland / Eswatini All types of passport 30 Days | Tourist & Business Tanzania All types of passport 90 Days | Tourist & Business Thailand Diplomatic and Service 30 Days | Tourist & Business Turkey Diplomatic, Service & Special 90 Days | Tourist & Business Uganda All types of passport 30 Days | Tourist & Business Vietnam Diplomatic and Service 90 Days | Tourist & Business Venezuela Diplomatic and Service 30 Days | Tourist & Business Zambia All types of passport 30 Days | Tourist & Business Zimbabwe All types of passport 30 Days | Tourist & Business Travelers from following countries are not allowed to apply for Visa via eVisa portal, but can request Visa in the nearest embassy Pakistan Bangladesh Ethiopia Nigeria Nepal Somalia The ETA allows a stay for up to 30 days fo All Types of passport. Belgium All types of passport 30 Days | Tourist/Business Canada All types of passport 30 Days | Tourist/Business China All types of passport 30 Days | Tourist/Business Côte d'Ivoire All types of passport 30 Days | Tourist/Business Denmark All types of passport 30 Days | Tourist/Business Finland All types of passport 30 Days | Tourist/Business France All types of passport 30 Days | Tourist/Business Germany All types of passport 30 Days | Tourist/Business Ghana All types of passport 30 Days | Tourist/Business Indonesia All types of passport 30 Days | Tourist/Business Ireland All types of passport 30 Days | Tourist/Business Israel All types of passport 30 Days | Tourist/Business Italy All types of passport 30 Days | Tourist/Business Japan All types of passport 30 Days | Tourist/Business Netherlands All types of passport 30 Days | Tourist/Business Norway All types of passport 30 Days | Tourist/Business Portugal All types of passport 30 Days | Tourist/Business Russia All types of passport 30 Days | Tourist/Business Saudi Arabia All types of passport 30 Days | Tourist/Business Senegal All types of passport 30 Days | Tourist/Business Singapore All types of passport 30 Days | Tourist/Business Spain All types of passport 30 Days | Tourist/Business South Korea All types of passport 30 Days | Tourist/Business Sweden All types of passport 30 Days | Tourist/Business Switzerland All types of passport 30 Days | Tourist/Business Ukraine All types of passport 30 Days | Tourist/Business United Arab Emirates All types of passport 30 Days | Tourist/Business United Kingdom All types of passport 30 Days | Tourist/Business United States All types of passport 30 Days | Tourist/Business"
+  }
+ ]
+}

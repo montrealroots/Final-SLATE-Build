@@ -1,0 +1,17 @@
+{
+ "country": "KW",
+ "others": {
+  "right": "permit",
+  "route": "سمة دخول للعمل في القطاع الاهلي"
+ },
+ "note": "Kuwait: the Ministry of Interior's procedure for the entry visa for work in the private sector asks for the visa form, the work permit the Public Authority for Manpower issues, the sponsor's authorised signature and the worker's passport valid at least two years (read on the Ministry's own page 2026-11-03, live and as Common Crawl captured it on 14 September 2026). It is the general route for anyone hired in Kuwait; no route for performers as such was found. The GCC citizens' position isn't modelled apart, nor are the visa's fees, which the Ministry's page loads by script.",
+ "sources": [
+  {
+   "kind": "primary",
+   "url": "https://www.moi.gov.kw/main/eservices/residence/procedures/33",
+   "title": "Ministry of Interior, State of Kuwait, General Department of Residence Affairs, Procedures: entry visa for work in the private sector",
+   "read": "2026-11-03",
+   "said": "سمة دخول للعمل في القطاع الاهلي 1. نموذج طلب سمة الدخول . 2. تصريح العمل الصادر من الهيئة العامة للقوى العاملة من واقع الحاسب الآلي . 3. صورة اعتماد توقيع ساري المفعول . 4. صورة جواز سفر المكفول ساري المفعول على ان لا تقل صلاحيته عن سنتين ."
+  }
+ ]
+}

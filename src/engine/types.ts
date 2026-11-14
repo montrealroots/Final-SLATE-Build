@@ -3,7 +3,7 @@
 
 import type { Place } from '../data/places';
 
-export const SAVE_VERSION = 10;
+export const SAVE_VERSION = 11;
 
 export type PronounSet = 'he' | 'she' | 'they';
 export type ActingTitle = 'Actor' | 'Actress';
@@ -1351,6 +1351,13 @@ export interface Opportunity {
 }
 
 export interface GameState {
+  /**
+   * The bank, which is 1221's (engine/bankworld; from November 14, 2026): a 1221 universe holding the player's accounts,
+   * cards, loans, papers and every posting to them. Its ledger is the one journal of the player's own money.
+   */
+  bank?: import('./bankworld').SaveUniverse;
+  /** How a save from version 10 was brought to the bank (cash/migrate11.ts): what moved, what didn't and why, and the company's inventory. */
+  reconciliation?: import('./cash/migrate11').Reconciliation;
   version: number;
   saveId: string;
   saveName: string;
@@ -1397,6 +1404,10 @@ export interface GameState {
   banner?: import('./company').Banner;
   /** Work permits applied for and granted (papers.ts, from November 14, 2026). */
   permits?: import('./papers').WorkPermit[];
+  /** Visas applied for and issued (papers.ts, from November 14, 2026). */
+  paperApplications?: import('./papers').PaperApplication[];
+  /** Days worked in each country by its code, for a short engagement's allowance (papers.ts `recordWorkDay`). */
+  papersWorked?: Record<string, string[]>;
   /** First-look deals offered, running and past (first-look.ts). Absent until the first offer, and in saves from before November 13, 2026. */
   firstLooks?: import('./first-look').FirstLook[];
   /** Equipment you own or your family lends (equipment.ts). Absent in saves from before November 12, 2026: none. */

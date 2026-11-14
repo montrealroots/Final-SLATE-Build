@@ -7,10 +7,10 @@ import { placeHolidaysOn } from '../holidays';
 import { covers, isAvailable, personById, roleLabel } from '../people';
 import { approvedCharacters, approvedScenes, isNonfiction, projectModules, sceneLabel } from '../projects';
 import { castIn, stageIn } from '../parts';
-import { workRight } from '../papers';
+import { recordWorkDay, workRight, type Activity } from '../papers';
 import { addLog, cancelEvents, newId, registerHandler } from '../state';
 import { addDaysToKey, dateKey, formatDateKey } from '../time';
-import { BASE_MINUTES_PER_SHOOT_DAY, CROWD_DAY_RATE, HOLIDAY_PREMIUM, dayFees, housePackageFee } from './rates';
+import { BASE_MINUTES_PER_SHOOT_DAY, CROWD_DAY_RATE, HOLIDAY_PREMIUM, NIGHT_PREMIUM, dayFees, housePackageFee } from './rates';
 import { dayKitProblems, kitDayRate, wearKit } from '../equipment';
 import { chairsOf, ensureWorkEvent, isWorkingDay, lastDay, minorsInScenes, relabelTravel, nextWorkingDay, performedSong, sceneComplexity, sceneLoad, scheduleShootDay, travelFrom } from './schedule';
 import { childShare, ensureLicence, isSchoolDay, licenceReady, setAsideOf, supervisionFor, type Minor } from '../minors';
@@ -61,8 +61,10 @@ registerHandler('shoot-call', (state, ev) => {
   // Where the day is filmed (destinations.ts): the base, unless its place in the script is filmed somewhere else.
   const here = dayPlace(p, d);
   const away = state.locationId !== here.id || !!state.travel;
-  // Being there isn't being allowed to work there (papers.ts; A16): without the right, the day starts without you.
-  const right = workRight(state, here.country);
+  // Being there isn't being allowed to work there (papers.ts; A16), and leave to act isn't leave to direct (from
+  // November 14, 2026): each thing the day needs you for is checked; without its right, the day starts without you.
+  const needs: Activity[] = [...(d.playerActing ? ['act' as const] : []), ...(!directorHired ? ['direct' as const] : [])];
+  const right = needs.map((a) => workRight(state, here.country, a)).find((r) => !r.can) ?? { can: true as const, why: '' };
   if (!away && !state.sleep.asleep && !right.can) {
     d.late = true;
     const text = `You can't work in ${here.name}: ${right.why} The day on ${p.title} started late without you.`;
@@ -77,6 +79,7 @@ registerHandler('shoot-call', (state, ev) => {
     addLog(state, text, 'warning', { projectId: p.id, route: { view: 'project', projectId: p.id, tab: 'schedule' } });
     return { message: text };
   }
+  recordWorkDay(state, here.country);
   const text = `Call time on ${p.title}: ${d.locationLabel}, ${d.sceneIds.length} ${d.sceneIds.length === 1 ? 'scene' : 'scenes'} today.`;
   addLog(state, text, 'project', { projectId: p.id, route: { view: 'project', projectId: p.id, tab: 'schedule' } });
   return { message: text };
@@ -237,7 +240,7 @@ export function runShootDay(state: GameState, p: Project, d: ShootDay): string {
     .filter((h, i, all) => h.kind !== 'cast' || all.findIndex((x) => x.kind === 'cast' && x.personId === h.personId) === i);
   const overrun = onSetHires.reduce((a, h) => {
     const o = p.obligations.find((x) => x.id === h.obligationId)!;
-    const pay = h.dayRate * (holidayToday ? HOLIDAY_PREMIUM : 1);
+    const pay = Math.round(h.dayRate * (holidayToday ? HOLIDAY_PREMIUM : 1) * (d.night ? NIGHT_PREMIUM : 1));
     return a + Math.max(0, o.settled + pay - Math.max(o.amount, o.settled));
   }, 0) + Math.max(0, locationFee + gearFee + scenes.reduce((a, s) => a + physicalCrowd(s), 0) * CROWD_DAY_RATE + makeupDayCost(scenes, approvedCharacters(p)) + rigDayCost(p, scenes, onKit && kitStabilizer(p)) + housing + move - plannedRemaining(p, 'plan:shoot'));
   if (overrun > ledgerTotals(p).available) {
@@ -428,7 +431,7 @@ export function runShootDay(state: GameState, p: Project, d: ShootDay): string {
   }
   // Costs: everyone on the shoot crew and the cast in today's scenes is paid once for the day.
   for (const h of onSetHires) {
-    const pay = h.dayRate * (holidayToday ? HOLIDAY_PREMIUM : 1);
+    const pay = Math.round(h.dayRate * (holidayToday ? HOLIDAY_PREMIUM : 1) * (d.night ? NIGHT_PREMIUM : 1));
     const paidBefore = p.obligations.find((o) => o.id === h.obligationId)?.settled ?? 0;
     if (settle(state, p, h.obligationId!, pay, `${h.id}:${d.date}`)) {
       h.daysWorked += 1;
@@ -547,7 +550,10 @@ export function captureQuality(state: GameState, p: Project, s: Scene, compromis
     return (h ? personById(state, h.personId).capability : 50) - coachPenalty;
   });
   const avg = (xs: number[]) => (xs.length ? xs.reduce((a, b) => a + b, 0) / xs.length : 50);
-  const rehearsal = p.tasks.find((x) => x.kind === 'prep:rehearsal')?.status === 'done' ? 6 : 0;
+  // Rehearsal shows on the day by how much there was: two points a day, up to ten (from November 14, 2026; until then any
+  // rehearsal at all added six, so one day and eight were alike, which the feature proofs found). Three days, the
+  // default, is the six it always was. Game calibration.
+  const rehearsal = p.tasks.find((x) => x.kind === 'prep:rehearsal')?.status === 'done' ? Math.min(10, 2 * p.schedule.rehearsalDays) : 0;
   let q = 0.5 * avg(crewCap) + 0.5 * avg(castCap) + rehearsal;
   if (compromised) q -= 15;
   if (late) q -= 5;

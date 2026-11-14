@@ -1,0 +1,1482 @@
+# AN	Andalucía
+# AR	Aragón
+# AS	Asturias
+# CB	Cantabria
+# CE	Ciudad de Ceuta
+# CL	Castilla y León
+# CM	Castile-La Mancha
+# CN	Islas Canarias
+# CT	Cataluña
+# EX	Extremadura
+# GA	Galicia
+# IB	Illes Balears
+# MC	Murcia Region
+# MD	Comunidad de Madrid
+# ML	Ciudad de Melilla
+# NC	Comunidad Foral de Navarra
+# PV	País Vasco
+# RI	La Rioja
+# VC	Comunitat Valenciana
+2026-01-01	Año Nuevo	New Year's Day	public	
+2026-01-06	Día de los Reyes Magos	Epiphany	public	
+2026-02-28	Día de Andalucía	Día de Andalucía	public	AN
+2026-03-01	Día de les Illes Balears	Día de les Illes Balears	public	IB
+2026-03-02	Día de les Illes Balears (día sustituto)	Día de les Illes Balears (substitute day)	public	IB
+2026-03-19	San José	Saint Joseph	observance	
+2026-03-20	Fiesta del Eid Fitr	End of Ramadan (Eid al-Fitr)	public	ML
+2026-04-02	Jueves Santo	Maundy Thursday	public	AN
+2026-04-02	Jueves Santo	Maundy Thursday	public	AR
+2026-04-02	Jueves Santo	Maundy Thursday	public	AS
+2026-04-02	Jueves Santo	Maundy Thursday	public	CB
+2026-04-02	Jueves Santo	Maundy Thursday	public	CE
+2026-04-02	Jueves Santo	Maundy Thursday	public	CL
+2026-04-02	Jueves Santo	Maundy Thursday	public	CM
+2026-04-02	Jueves Santo	Maundy Thursday	public	CN
+2026-04-02	Jueves Santo	Maundy Thursday	observance	CT
+2026-04-02	Jueves Santo	Maundy Thursday	public	EX
+2026-04-02	Jueves Santo	Maundy Thursday	public	GA
+2026-04-02	Jueves Santo	Maundy Thursday	public	IB
+2026-04-02	Jueves Santo	Maundy Thursday	public	MC
+2026-04-02	Jueves Santo	Maundy Thursday	public	MD
+2026-04-02	Jueves Santo	Maundy Thursday	public	ML
+2026-04-02	Jueves Santo	Maundy Thursday	public	NC
+2026-04-02	Jueves Santo	Maundy Thursday	public	PV
+2026-04-02	Jueves Santo	Maundy Thursday	public	RI
+2026-04-03	Viernes Santo	Good Friday	public	
+2026-04-05	Pascua	Easter Sunday	observance	
+2026-04-06	Lunes de Pascua	Easter Monday	public	CT
+2026-04-06	Lunes de Pascua	Easter Monday	public	IB
+2026-04-06	Lunes de Pascua	Easter Monday	public	NC
+2026-04-06	Lunes de Pascua	Easter Monday	public	PV
+2026-04-06	Lunes de Pascua	Easter Monday	public	RI
+2026-04-06	Lunes de Pascua	Easter Monday	public	VC
+2026-04-23	Día de Aragón	Día de Aragón	public	AR
+2026-04-23	Fiesta de Castilla y León	Fiesta de Castilla y León	public	CL
+2026-05-01	Día del Trabajador	Labour Day	public	
+2026-05-02	Día de la Comunidad de Madrid	Día de la Comunidad de Madrid	public	MD
+2026-05-03	Día de la Madre	Mother's Day	observance	
+2026-05-16	San Isidro Labrador	San Isidro Labrador	observance	MD
+2026-05-17	Día de las Letras Gallegas	Día de las Letras Gallegas	public	GA
+2026-05-24	Pentecostés	Pentecost	observance	
+2026-05-26	Fiesta del Sacrificio-Eidul Adha	Arafat Day	public	CE
+2026-05-27	Fiesta del Sacrificio-Aid Al Adha	Feast of the Sacrifice (Eid al-Adha)	public	ML
+2026-05-30	Día de Canarias	Canary Islands Day	public	CN
+2026-05-31	Día de Castilla-La Mancha	Día de Castilla-La Mancha	public	CM
+2026-06-04	Corpus Christi	Corpus Christi	public	CM
+2026-06-09	Día de La Rioja	Día de La Rioja	public	RI
+2026-06-24	San Juan	San Juan	public	CT
+2026-06-24	San Juan	San Juan	public	VC
+2026-06-28	Día de las Instituciones de Cantabria	Día de las Instituciones de Cantabria	public	CB
+2026-07-25	Día Nacional de Galicia	Día Nacional de Galicia	public	GA
+2026-07-25	Santiago Apóstol	Santiago Apóstol	public	PV
+2026-08-05	Nuestra Señora de África	Nuestra Señora de África	public	CE
+2026-08-15	Asunción	Assumption	public	
+2026-09-02	Día de Ceuta	Día de Ceuta	public	CE
+2026-09-08	Día de Asturias	Día de Asturias	public	AS
+2026-09-08	Día de Extremadura	Día de Extremadura	public	EX
+2026-09-11	Dia de Cataluña	Dia de Cataluña	public	CT
+2026-09-15	La Bien Aparecida	La Bien Aparecida	public	CB
+2026-10-12	Fiesta Nacional de España	Fiesta Nacional de España	public	
+2026-11-01	Todos los Santos	All Saints' Day	public	
+2026-11-02	Todos los Santos (día sustituto)	All Saints' Day (substitute day)	public	AN
+2026-11-02	Todos los Santos (día sustituto)	All Saints' Day (substitute day)	public	AR
+2026-11-02	Todos los Santos (día sustituto)	All Saints' Day (substitute day)	public	AS
+2026-11-02	Todos los Santos (día sustituto)	All Saints' Day (substitute day)	public	CL
+2026-11-02	Todos los Santos (día sustituto)	All Saints' Day (substitute day)	public	CM
+2026-11-02	Todos los Santos (día sustituto)	All Saints' Day (substitute day)	public	CN
+2026-11-02	Todos los Santos (día sustituto)	All Saints' Day (substitute day)	public	EX
+2026-11-02	Todos los Santos (día sustituto)	All Saints' Day (substitute day)	public	MD
+2026-11-02	Todos los Santos (día sustituto)	All Saints' Day (substitute day)	public	NC
+2026-11-09	Nuestra Señora de la Almudena	Nuestra Señora de la Almudena	observance	MD
+2026-12-06	Día de la Constitución Española	Día de la Constitución Española	public	
+2026-12-07	Día de la Constitución Española (día sustituto)	Día de la Constitución Española (substitute day)	public	AN
+2026-12-07	Día de la Constitución Española (día sustituto)	Día de la Constitución Española (substitute day)	public	AR
+2026-12-07	Día de la Constitución Española (día sustituto)	Día de la Constitución Española (substitute day)	public	AS
+2026-12-07	Día de la Constitución Española (día sustituto)	Día de la Constitución Española (substitute day)	public	CB
+2026-12-07	Día de la Constitución Española (día sustituto)	Día de la Constitución Española (substitute day)	public	CL
+2026-12-07	Día de la Constitución Española (día sustituto)	Día de la Constitución Española (substitute day)	public	EX
+2026-12-07	Día de la Constitución Española (día sustituto)	Día de la Constitución Española (substitute day)	public	MC
+2026-12-07	Día de la Constitución Española (día sustituto)	Día de la Constitución Española (substitute day)	public	MD
+2026-12-07	Día de la Constitución Española (día sustituto)	Día de la Constitución Española (substitute day)	public	ML
+2026-12-07	Día de la Constitución Española (día sustituto)	Día de la Constitución Española (substitute day)	public	RI
+2026-12-08	La inmaculada concepción	Immaculate Conception	public	
+2026-12-25	Navidad	Christmas Day	public	
+2026-12-26	San Esteban	San Esteban	public	CT
+2026-12-26	Sant Esteve	Sant Esteve	observance	IB
+2027-01-01	Año Nuevo	New Year's Day	public	
+2027-01-06	Día de los Reyes Magos	Epiphany	public	
+2027-02-28	Día de Andalucía	Día de Andalucía	public	AN
+2027-03-01	Día de Andalucía (día sustituto)	Día de Andalucía (substitute day)	public	AN
+2027-03-01	Día de les Illes Balears	Día de les Illes Balears	public	IB
+2027-03-09	Fiesta del Eid Fitr	End of Ramadan (Eid al-Fitr)	public	ML
+2027-03-19	San José	Saint Joseph	observance	
+2027-03-25	Jueves Santo	Maundy Thursday	public	AN
+2027-03-25	Jueves Santo	Maundy Thursday	public	AR
+2027-03-25	Jueves Santo	Maundy Thursday	public	AS
+2027-03-25	Jueves Santo	Maundy Thursday	public	CB
+2027-03-25	Jueves Santo	Maundy Thursday	public	CE
+2027-03-25	Jueves Santo	Maundy Thursday	public	CL
+2027-03-25	Jueves Santo	Maundy Thursday	public	CM
+2027-03-25	Jueves Santo	Maundy Thursday	public	CN
+2027-03-25	Jueves Santo	Maundy Thursday	observance	CT
+2027-03-25	Jueves Santo	Maundy Thursday	public	EX
+2027-03-25	Jueves Santo	Maundy Thursday	public	GA
+2027-03-25	Jueves Santo	Maundy Thursday	public	IB
+2027-03-25	Jueves Santo	Maundy Thursday	public	MC
+2027-03-25	Jueves Santo	Maundy Thursday	public	MD
+2027-03-25	Jueves Santo	Maundy Thursday	public	ML
+2027-03-25	Jueves Santo	Maundy Thursday	public	NC
+2027-03-25	Jueves Santo	Maundy Thursday	public	PV
+2027-03-25	Jueves Santo	Maundy Thursday	public	RI
+2027-03-26	Viernes Santo	Good Friday	public	
+2027-03-28	Pascua	Easter Sunday	observance	
+2027-03-29	Lunes de Pascua	Easter Monday	public	CT
+2027-03-29	Lunes de Pascua	Easter Monday	public	IB
+2027-03-29	Lunes de Pascua	Easter Monday	public	NC
+2027-03-29	Lunes de Pascua	Easter Monday	public	PV
+2027-03-29	Lunes de Pascua	Easter Monday	public	RI
+2027-03-29	Lunes de Pascua	Easter Monday	public	VC
+2027-04-23	Día de Aragón	Día de Aragón	public	AR
+2027-04-23	Fiesta de Castilla y León	Fiesta de Castilla y León	public	CL
+2027-05-01	Día del Trabajador	Labour Day	public	
+2027-05-02	Día de la Madre	Mother's Day	observance	
+2027-05-03	Día del Trabajador (día sustituto)	Labour Day (substitute day)	public	CT
+2027-05-03	Día de la Comunidad de Madrid	Día de la Comunidad de Madrid	public	MD
+2027-05-03	Día de la Comunidad de Madrid (día sustituto)	Día de la Comunidad de Madrid (substitute day)	public	MD
+2027-05-15	Fiesta del Sacrificio-Eidul Adha	Arafat Day	public	CE
+2027-05-16	Pentecostés	Pentecost	observance	
+2027-05-16	San Isidro Labrador	San Isidro Labrador	observance	MD
+2027-05-16	Fiesta del Sacrificio-Aid Al Adha	Feast of the Sacrifice (Eid al-Adha)	public	ML
+2027-05-17	Día de las Letras Gallegas	Día de las Letras Gallegas	public	GA
+2027-05-27	Corpus Christi	Corpus Christi	public	CM
+2027-05-30	Día de Canarias	Canary Islands Day	public	CN
+2027-05-31	Día de Castilla-La Mancha	Día de Castilla-La Mancha	public	CM
+2027-05-31	Día de Canarias (día sustituto)	Canary Islands Day (substitute day)	public	CN
+2027-06-09	Día de La Rioja	Día de La Rioja	public	RI
+2027-06-24	San Juan	San Juan	public	CT
+2027-06-24	San Juan	San Juan	public	VC
+2027-06-28	Día de las Instituciones de Cantabria	Día de las Instituciones de Cantabria	public	CB
+2027-07-25	Día Nacional de Galicia	Día Nacional de Galicia	public	GA
+2027-07-25	Santiago Apóstol	Santiago Apóstol	public	PV
+2027-08-05	Nuestra Señora de África	Nuestra Señora de África	public	CE
+2027-08-15	Asunción	Assumption	public	
+2027-08-16	Asunción (día sustituto)	Assumption (substitute day)	public	AN
+2027-08-16	Asunción (día sustituto)	Assumption (substitute day)	public	AR
+2027-08-16	Asunción (día sustituto)	Assumption (substitute day)	public	AS
+2027-08-16	Asunción (día sustituto)	Assumption (substitute day)	public	CL
+2027-08-16	Asunción (día sustituto)	Assumption (substitute day)	public	CN
+2027-09-02	Día de Ceuta	Día de Ceuta	public	CE
+2027-09-08	Día de Asturias	Día de Asturias	public	AS
+2027-09-08	Día de Extremadura	Día de Extremadura	public	EX
+2027-09-11	Dia de Cataluña	Dia de Cataluña	public	CT
+2027-09-15	La Bien Aparecida	La Bien Aparecida	public	CB
+2027-10-12	Fiesta Nacional de España	Fiesta Nacional de España	public	
+2027-11-01	Todos los Santos	All Saints' Day	public	
+2027-11-09	Nuestra Señora de la Almudena	Nuestra Señora de la Almudena	observance	MD
+2027-12-06	Día de la Constitución Española	Día de la Constitución Española	public	
+2027-12-08	La inmaculada concepción	Immaculate Conception	public	
+2027-12-25	Navidad	Christmas Day	public	
+2027-12-26	San Esteban	San Esteban	public	CT
+2027-12-26	Sant Esteve	Sant Esteve	observance	IB
+2028-01-01	Año Nuevo	New Year's Day	public	
+2028-01-06	Día de los Reyes Magos	Epiphany	public	
+2028-02-26	Fiesta del Eid Fitr	End of Ramadan (Eid al-Fitr)	public	ML
+2028-02-28	Día de Andalucía	Día de Andalucía	public	AN
+2028-03-01	Día de les Illes Balears	Día de les Illes Balears	public	IB
+2028-03-19	San José	Saint Joseph	observance	
+2028-04-13	Jueves Santo	Maundy Thursday	public	AN
+2028-04-13	Jueves Santo	Maundy Thursday	public	AR
+2028-04-13	Jueves Santo	Maundy Thursday	public	AS
+2028-04-13	Jueves Santo	Maundy Thursday	public	CB
+2028-04-13	Jueves Santo	Maundy Thursday	public	CE
+2028-04-13	Jueves Santo	Maundy Thursday	public	CL
+2028-04-13	Jueves Santo	Maundy Thursday	public	CM
+2028-04-13	Jueves Santo	Maundy Thursday	public	CN
+2028-04-13	Jueves Santo	Maundy Thursday	observance	CT
+2028-04-13	Jueves Santo	Maundy Thursday	public	EX
+2028-04-13	Jueves Santo	Maundy Thursday	public	GA
+2028-04-13	Jueves Santo	Maundy Thursday	public	IB
+2028-04-13	Jueves Santo	Maundy Thursday	public	MC
+2028-04-13	Jueves Santo	Maundy Thursday	public	MD
+2028-04-13	Jueves Santo	Maundy Thursday	public	ML
+2028-04-13	Jueves Santo	Maundy Thursday	public	NC
+2028-04-13	Jueves Santo	Maundy Thursday	public	PV
+2028-04-13	Jueves Santo	Maundy Thursday	public	RI
+2028-04-14	Viernes Santo	Good Friday	public	
+2028-04-16	Pascua	Easter Sunday	observance	
+2028-04-17	Lunes de Pascua	Easter Monday	public	CT
+2028-04-17	Lunes de Pascua	Easter Monday	public	IB
+2028-04-17	Lunes de Pascua	Easter Monday	public	NC
+2028-04-17	Lunes de Pascua	Easter Monday	public	PV
+2028-04-17	Lunes de Pascua	Easter Monday	public	RI
+2028-04-17	Lunes de Pascua	Easter Monday	public	VC
+2028-04-23	Día de Aragón	Día de Aragón	public	AR
+2028-04-23	Fiesta de Castilla y León	Fiesta de Castilla y León	public	CL
+2028-04-24	Día de Aragón (día sustituto)	Día de Aragón (substitute day)	public	AR
+2028-04-24	Fiesta de Castilla y León	Fiesta de Castilla y León	public	CL
+2028-05-01	Día del Trabajador	Labour Day	public	
+2028-05-02	Día de la Comunidad de Madrid	Día de la Comunidad de Madrid	public	MD
+2028-05-04	Fiesta del Sacrificio-Eidul Adha	Arafat Day	public	CE
+2028-05-05	Fiesta del Sacrificio-Aid Al Adha	Feast of the Sacrifice (Eid al-Adha)	public	ML
+2028-05-07	Día de la Madre	Mother's Day	observance	
+2028-05-16	San Isidro Labrador	San Isidro Labrador	observance	MD
+2028-05-17	Día de las Letras Gallegas	Día de las Letras Gallegas	public	GA
+2028-05-30	Día de Canarias	Canary Islands Day	public	CN
+2028-05-31	Día de Castilla-La Mancha	Día de Castilla-La Mancha	public	CM
+2028-06-04	Pentecostés	Pentecost	observance	
+2028-06-09	Día de La Rioja	Día de La Rioja	public	RI
+2028-06-15	Corpus Christi	Corpus Christi	public	CM
+2028-06-24	San Juan	San Juan	public	CT
+2028-06-24	San Juan	San Juan	public	VC
+2028-06-28	Día de las Instituciones de Cantabria	Día de las Instituciones de Cantabria	public	CB
+2028-07-25	Día Nacional de Galicia	Día Nacional de Galicia	public	GA
+2028-07-25	Santiago Apóstol	Santiago Apóstol	public	PV
+2028-08-05	Nuestra Señora de África	Nuestra Señora de África	public	CE
+2028-08-15	Asunción	Assumption	public	
+2028-09-02	Día de Ceuta	Día de Ceuta	public	CE
+2028-09-08	Día de Asturias	Día de Asturias	public	AS
+2028-09-08	Día de Extremadura	Día de Extremadura	public	EX
+2028-09-11	Dia de Cataluña	Dia de Cataluña	public	CT
+2028-09-15	La Bien Aparecida	La Bien Aparecida	public	CB
+2028-10-12	Fiesta Nacional de España	Fiesta Nacional de España	public	
+2028-11-01	Todos los Santos	All Saints' Day	public	
+2028-11-09	Nuestra Señora de la Almudena	Nuestra Señora de la Almudena	observance	MD
+2028-12-06	Día de la Constitución Española	Día de la Constitución Española	public	
+2028-12-08	La inmaculada concepción	Immaculate Conception	public	
+2028-12-25	Navidad	Christmas Day	public	
+2028-12-26	San Esteban	San Esteban	public	CT
+2028-12-26	Sant Esteve	Sant Esteve	observance	IB
+2029-01-01	Año Nuevo	New Year's Day	public	
+2029-01-06	Día de los Reyes Magos	Epiphany	public	
+2029-02-14	Fiesta del Eid Fitr	End of Ramadan (Eid al-Fitr)	public	ML
+2029-02-28	Día de Andalucía	Día de Andalucía	public	AN
+2029-03-01	Día de les Illes Balears	Día de les Illes Balears	public	IB
+2029-03-19	San José	Saint Joseph	observance	
+2029-03-29	Jueves Santo	Maundy Thursday	public	AN
+2029-03-29	Jueves Santo	Maundy Thursday	public	AR
+2029-03-29	Jueves Santo	Maundy Thursday	public	AS
+2029-03-29	Jueves Santo	Maundy Thursday	public	CB
+2029-03-29	Jueves Santo	Maundy Thursday	public	CE
+2029-03-29	Jueves Santo	Maundy Thursday	public	CL
+2029-03-29	Jueves Santo	Maundy Thursday	public	CM
+2029-03-29	Jueves Santo	Maundy Thursday	public	CN
+2029-03-29	Jueves Santo	Maundy Thursday	observance	CT
+2029-03-29	Jueves Santo	Maundy Thursday	public	EX
+2029-03-29	Jueves Santo	Maundy Thursday	public	GA
+2029-03-29	Jueves Santo	Maundy Thursday	public	IB
+2029-03-29	Jueves Santo	Maundy Thursday	public	MC
+2029-03-29	Jueves Santo	Maundy Thursday	public	MD
+2029-03-29	Jueves Santo	Maundy Thursday	public	ML
+2029-03-29	Jueves Santo	Maundy Thursday	public	NC
+2029-03-29	Jueves Santo	Maundy Thursday	public	PV
+2029-03-29	Jueves Santo	Maundy Thursday	public	RI
+2029-03-30	Viernes Santo	Good Friday	public	
+2029-04-01	Pascua	Easter Sunday	observance	
+2029-04-02	Lunes de Pascua	Easter Monday	public	CT
+2029-04-02	Lunes de Pascua	Easter Monday	public	IB
+2029-04-02	Lunes de Pascua	Easter Monday	public	NC
+2029-04-02	Lunes de Pascua	Easter Monday	public	PV
+2029-04-02	Lunes de Pascua	Easter Monday	public	RI
+2029-04-02	Lunes de Pascua	Easter Monday	public	VC
+2029-04-23	Día de Aragón	Día de Aragón	public	AR
+2029-04-23	Fiesta del Sacrificio-Eidul Adha	Arafat Day	public	CE
+2029-04-23	Fiesta de Castilla y León	Fiesta de Castilla y León	public	CL
+2029-04-24	Fiesta del Sacrificio-Aid Al Adha	Feast of the Sacrifice (Eid al-Adha)	public	ML
+2029-05-01	Día del Trabajador	Labour Day	public	
+2029-05-02	Día de la Comunidad de Madrid	Día de la Comunidad de Madrid	public	MD
+2029-05-06	Día de la Madre	Mother's Day	observance	
+2029-05-16	San Isidro Labrador	San Isidro Labrador	observance	MD
+2029-05-17	Día de las Letras Gallegas	Día de las Letras Gallegas	public	GA
+2029-05-20	Pentecostés	Pentecost	observance	
+2029-05-30	Día de Canarias	Canary Islands Day	public	CN
+2029-05-31	Corpus Christi	Corpus Christi	public	CM
+2029-05-31	Día de Castilla-La Mancha	Día de Castilla-La Mancha	public	CM
+2029-06-09	Día de La Rioja	Día de La Rioja	public	RI
+2029-06-24	San Juan	San Juan	public	CT
+2029-06-24	San Juan	San Juan	public	VC
+2029-06-28	Día de las Instituciones de Cantabria	Día de las Instituciones de Cantabria	public	CB
+2029-07-25	Día Nacional de Galicia	Día Nacional de Galicia	public	GA
+2029-07-25	Santiago Apóstol	Santiago Apóstol	public	PV
+2029-08-05	Nuestra Señora de África	Nuestra Señora de África	public	CE
+2029-08-06	Nuestra Señora de África	Nuestra Señora de África	public	CE
+2029-08-15	Asunción	Assumption	public	
+2029-09-02	Día de Ceuta	Día de Ceuta	public	CE
+2029-09-03	Día de Ceuta	Día de Ceuta	public	CE
+2029-09-08	Día de Asturias	Día de Asturias	public	AS
+2029-09-08	Día de Extremadura	Día de Extremadura	public	EX
+2029-09-11	Dia de Cataluña	Dia de Cataluña	public	CT
+2029-09-15	La Bien Aparecida	La Bien Aparecida	public	CB
+2029-10-12	Fiesta Nacional de España	Fiesta Nacional de España	public	
+2029-11-01	Todos los Santos	All Saints' Day	public	
+2029-11-09	Nuestra Señora de la Almudena	Nuestra Señora de la Almudena	observance	MD
+2029-12-06	Día de la Constitución Española	Día de la Constitución Española	public	
+2029-12-08	La inmaculada concepción	Immaculate Conception	public	
+2029-12-25	Navidad	Christmas Day	public	
+2029-12-26	San Esteban	San Esteban	public	CT
+2029-12-26	Sant Esteve	Sant Esteve	observance	IB
+2030-01-01	Año Nuevo	New Year's Day	public	
+2030-01-06	Día de los Reyes Magos	Epiphany	public	
+2030-01-07	Día de los Reyes Magos (día sustituto)	Epiphany (substitute day)	observance	
+2030-02-04	Fiesta del Eid Fitr	End of Ramadan (Eid al-Fitr)	public	ML
+2030-02-28	Día de Andalucía	Día de Andalucía	public	AN
+2030-03-01	Día de les Illes Balears	Día de les Illes Balears	public	IB
+2030-03-19	San José	Saint Joseph	observance	
+2030-04-12	Fiesta del Sacrificio-Eidul Adha	Arafat Day	public	CE
+2030-04-13	Fiesta del Sacrificio-Aid Al Adha	Feast of the Sacrifice (Eid al-Adha)	public	ML
+2030-04-18	Jueves Santo	Maundy Thursday	public	AN
+2030-04-18	Jueves Santo	Maundy Thursday	public	AR
+2030-04-18	Jueves Santo	Maundy Thursday	public	AS
+2030-04-18	Jueves Santo	Maundy Thursday	public	CB
+2030-04-18	Jueves Santo	Maundy Thursday	public	CE
+2030-04-18	Jueves Santo	Maundy Thursday	public	CL
+2030-04-18	Jueves Santo	Maundy Thursday	public	CM
+2030-04-18	Jueves Santo	Maundy Thursday	public	CN
+2030-04-18	Jueves Santo	Maundy Thursday	observance	CT
+2030-04-18	Jueves Santo	Maundy Thursday	public	EX
+2030-04-18	Jueves Santo	Maundy Thursday	public	GA
+2030-04-18	Jueves Santo	Maundy Thursday	public	IB
+2030-04-18	Jueves Santo	Maundy Thursday	public	MC
+2030-04-18	Jueves Santo	Maundy Thursday	public	MD
+2030-04-18	Jueves Santo	Maundy Thursday	public	ML
+2030-04-18	Jueves Santo	Maundy Thursday	public	NC
+2030-04-18	Jueves Santo	Maundy Thursday	public	PV
+2030-04-18	Jueves Santo	Maundy Thursday	public	RI
+2030-04-19	Viernes Santo	Good Friday	public	
+2030-04-21	Pascua	Easter Sunday	observance	
+2030-04-22	Lunes de Pascua	Easter Monday	public	CT
+2030-04-22	Lunes de Pascua	Easter Monday	public	IB
+2030-04-22	Lunes de Pascua	Easter Monday	public	NC
+2030-04-22	Lunes de Pascua	Easter Monday	public	PV
+2030-04-22	Lunes de Pascua	Easter Monday	public	RI
+2030-04-22	Lunes de Pascua	Easter Monday	public	VC
+2030-04-23	Día de Aragón	Día de Aragón	public	AR
+2030-04-23	Fiesta de Castilla y León	Fiesta de Castilla y León	public	CL
+2030-05-01	Día del Trabajador	Labour Day	public	
+2030-05-02	Día de la Comunidad de Madrid	Día de la Comunidad de Madrid	public	MD
+2030-05-05	Día de la Madre	Mother's Day	observance	
+2030-05-16	San Isidro Labrador	San Isidro Labrador	observance	MD
+2030-05-17	Día de las Letras Gallegas	Día de las Letras Gallegas	public	GA
+2030-05-30	Día de Canarias	Canary Islands Day	public	CN
+2030-05-31	Día de Castilla-La Mancha	Día de Castilla-La Mancha	public	CM
+2030-06-09	Pentecostés	Pentecost	observance	
+2030-06-09	Día de La Rioja	Día de La Rioja	public	RI
+2030-06-20	Corpus Christi	Corpus Christi	public	CM
+2030-06-24	San Juan	San Juan	public	CT
+2030-06-24	San Juan	San Juan	public	VC
+2030-06-28	Día de las Instituciones de Cantabria	Día de las Instituciones de Cantabria	public	CB
+2030-07-25	Día Nacional de Galicia	Día Nacional de Galicia	public	GA
+2030-07-25	Santiago Apóstol	Santiago Apóstol	public	PV
+2030-08-05	Nuestra Señora de África	Nuestra Señora de África	public	CE
+2030-08-15	Asunción	Assumption	public	
+2030-09-02	Día de Ceuta	Día de Ceuta	public	CE
+2030-09-08	Día de Asturias	Día de Asturias	public	AS
+2030-09-08	Día de Extremadura	Día de Extremadura	public	EX
+2030-09-09	Día de Asturias	Día de Asturias	public	AS
+2030-09-09	Día de Extremadura	Día de Extremadura	public	EX
+2030-09-11	Dia de Cataluña	Dia de Cataluña	public	CT
+2030-09-15	La Bien Aparecida	La Bien Aparecida	public	CB
+2030-09-16	La Bien Aparecida	La Bien Aparecida	public	CB
+2030-10-12	Fiesta Nacional de España	Fiesta Nacional de España	public	
+2030-11-01	Todos los Santos	All Saints' Day	public	
+2030-11-09	Nuestra Señora de la Almudena	Nuestra Señora de la Almudena	observance	MD
+2030-12-06	Día de la Constitución Española	Día de la Constitución Española	public	
+2030-12-08	La inmaculada concepción	Immaculate Conception	public	
+2030-12-09	La inmaculada concepción (día sustituto)	Immaculate Conception (substitute day)	observance	
+2030-12-25	Navidad	Christmas Day	public	
+2030-12-26	San Esteban	San Esteban	public	CT
+2030-12-26	Sant Esteve	Sant Esteve	observance	IB
+2031-01-01	Año Nuevo	New Year's Day	public	
+2031-01-06	Día de los Reyes Magos	Epiphany	public	
+2031-01-24	Fiesta del Eid Fitr	End of Ramadan (Eid al-Fitr)	public	ML
+2031-02-28	Día de Andalucía	Día de Andalucía	public	AN
+2031-03-01	Día de les Illes Balears	Día de les Illes Balears	public	IB
+2031-03-19	San José	Saint Joseph	observance	
+2031-04-01	Fiesta del Sacrificio-Eidul Adha	Arafat Day	public	CE
+2031-04-02	Fiesta del Sacrificio-Aid Al Adha	Feast of the Sacrifice (Eid al-Adha)	public	ML
+2031-04-10	Jueves Santo	Maundy Thursday	public	AN
+2031-04-10	Jueves Santo	Maundy Thursday	public	AR
+2031-04-10	Jueves Santo	Maundy Thursday	public	AS
+2031-04-10	Jueves Santo	Maundy Thursday	public	CB
+2031-04-10	Jueves Santo	Maundy Thursday	public	CE
+2031-04-10	Jueves Santo	Maundy Thursday	public	CL
+2031-04-10	Jueves Santo	Maundy Thursday	public	CM
+2031-04-10	Jueves Santo	Maundy Thursday	public	CN
+2031-04-10	Jueves Santo	Maundy Thursday	observance	CT
+2031-04-10	Jueves Santo	Maundy Thursday	public	EX
+2031-04-10	Jueves Santo	Maundy Thursday	public	GA
+2031-04-10	Jueves Santo	Maundy Thursday	public	IB
+2031-04-10	Jueves Santo	Maundy Thursday	public	MC
+2031-04-10	Jueves Santo	Maundy Thursday	public	MD
+2031-04-10	Jueves Santo	Maundy Thursday	public	ML
+2031-04-10	Jueves Santo	Maundy Thursday	public	NC
+2031-04-10	Jueves Santo	Maundy Thursday	public	PV
+2031-04-10	Jueves Santo	Maundy Thursday	public	RI
+2031-04-11	Viernes Santo	Good Friday	public	
+2031-04-13	Pascua	Easter Sunday	observance	
+2031-04-14	Lunes de Pascua	Easter Monday	public	CT
+2031-04-14	Lunes de Pascua	Easter Monday	public	IB
+2031-04-14	Lunes de Pascua	Easter Monday	public	NC
+2031-04-14	Lunes de Pascua	Easter Monday	public	PV
+2031-04-14	Lunes de Pascua	Easter Monday	public	RI
+2031-04-14	Lunes de Pascua	Easter Monday	public	VC
+2031-04-23	Día de Aragón	Día de Aragón	public	AR
+2031-04-23	Fiesta de Castilla y León	Fiesta de Castilla y León	public	CL
+2031-05-01	Día del Trabajador	Labour Day	public	
+2031-05-02	Día de la Comunidad de Madrid	Día de la Comunidad de Madrid	public	MD
+2031-05-04	Día de la Madre	Mother's Day	observance	
+2031-05-16	San Isidro Labrador	San Isidro Labrador	observance	MD
+2031-05-17	Día de las Letras Gallegas	Día de las Letras Gallegas	public	GA
+2031-05-30	Día de Canarias	Canary Islands Day	public	CN
+2031-05-31	Día de Castilla-La Mancha	Día de Castilla-La Mancha	public	CM
+2031-06-01	Pentecostés	Pentecost	observance	
+2031-06-09	Día de La Rioja	Día de La Rioja	public	RI
+2031-06-12	Corpus Christi	Corpus Christi	public	CM
+2031-06-24	San Juan	San Juan	public	CT
+2031-06-24	San Juan	San Juan	public	VC
+2031-06-28	Día de las Instituciones de Cantabria	Día de las Instituciones de Cantabria	public	CB
+2031-07-25	Día Nacional de Galicia	Día Nacional de Galicia	public	GA
+2031-07-25	Santiago Apóstol	Santiago Apóstol	public	PV
+2031-08-05	Nuestra Señora de África	Nuestra Señora de África	public	CE
+2031-08-15	Asunción	Assumption	public	
+2031-09-02	Día de Ceuta	Día de Ceuta	public	CE
+2031-09-08	Día de Asturias	Día de Asturias	public	AS
+2031-09-08	Día de Extremadura	Día de Extremadura	public	EX
+2031-09-11	Dia de Cataluña	Dia de Cataluña	public	CT
+2031-09-15	La Bien Aparecida	La Bien Aparecida	public	CB
+2031-10-12	Fiesta Nacional de España	Fiesta Nacional de España	public	
+2031-10-13	Fiesta Nacional de España (día sustituto)	Fiesta Nacional de España (substitute day)	observance	
+2031-11-01	Todos los Santos	All Saints' Day	public	
+2031-11-10	Nuestra Señora de la Almudena	Nuestra Señora de la Almudena	observance	MD
+2031-12-06	Día de la Constitución Española	Día de la Constitución Española	public	
+2031-12-08	La inmaculada concepción	Immaculate Conception	public	
+2031-12-25	Navidad	Christmas Day	public	
+2031-12-26	San Esteban	San Esteban	public	CT
+2031-12-26	Sant Esteve	Sant Esteve	observance	IB
+2032-01-01	Año Nuevo	New Year's Day	public	
+2032-01-06	Día de los Reyes Magos	Epiphany	public	
+2032-01-14	Fiesta del Eid Fitr	End of Ramadan (Eid al-Fitr)	public	ML
+2032-02-28	Día de Andalucía	Día de Andalucía	public	AN
+2032-03-01	Día de les Illes Balears	Día de les Illes Balears	public	IB
+2032-03-19	San José	Saint Joseph	observance	
+2032-03-21	Fiesta del Sacrificio-Eidul Adha	Arafat Day	public	CE
+2032-03-22	Fiesta del Sacrificio-Aid Al Adha	Feast of the Sacrifice (Eid al-Adha)	public	ML
+2032-03-25	Jueves Santo	Maundy Thursday	public	AN
+2032-03-25	Jueves Santo	Maundy Thursday	public	AR
+2032-03-25	Jueves Santo	Maundy Thursday	public	AS
+2032-03-25	Jueves Santo	Maundy Thursday	public	CB
+2032-03-25	Jueves Santo	Maundy Thursday	public	CE
+2032-03-25	Jueves Santo	Maundy Thursday	public	CL
+2032-03-25	Jueves Santo	Maundy Thursday	public	CM
+2032-03-25	Jueves Santo	Maundy Thursday	public	CN
+2032-03-25	Jueves Santo	Maundy Thursday	observance	CT
+2032-03-25	Jueves Santo	Maundy Thursday	public	EX
+2032-03-25	Jueves Santo	Maundy Thursday	public	GA
+2032-03-25	Jueves Santo	Maundy Thursday	public	IB
+2032-03-25	Jueves Santo	Maundy Thursday	public	MC
+2032-03-25	Jueves Santo	Maundy Thursday	public	MD
+2032-03-25	Jueves Santo	Maundy Thursday	public	ML
+2032-03-25	Jueves Santo	Maundy Thursday	public	NC
+2032-03-25	Jueves Santo	Maundy Thursday	public	PV
+2032-03-25	Jueves Santo	Maundy Thursday	public	RI
+2032-03-26	Viernes Santo	Good Friday	public	
+2032-03-28	Pascua	Easter Sunday	observance	
+2032-03-29	Lunes de Pascua	Easter Monday	public	CT
+2032-03-29	Lunes de Pascua	Easter Monday	public	IB
+2032-03-29	Lunes de Pascua	Easter Monday	public	NC
+2032-03-29	Lunes de Pascua	Easter Monday	public	PV
+2032-03-29	Lunes de Pascua	Easter Monday	public	RI
+2032-03-29	Lunes de Pascua	Easter Monday	public	VC
+2032-04-23	Día de Aragón	Día de Aragón	public	AR
+2032-04-23	Fiesta de Castilla y León	Fiesta de Castilla y León	public	CL
+2032-05-01	Día del Trabajador	Labour Day	public	
+2032-05-02	Día de la Madre	Mother's Day	observance	
+2032-05-03	Día del Trabajador (día sustituto)	Labour Day (substitute day)	public	CT
+2032-05-03	Día de la Comunidad de Madrid	Día de la Comunidad de Madrid	public	MD
+2032-05-03	Día de la Comunidad de Madrid (día sustituto)	Día de la Comunidad de Madrid (substitute day)	public	MD
+2032-05-16	Pentecostés	Pentecost	observance	
+2032-05-16	San Isidro Labrador	San Isidro Labrador	observance	MD
+2032-05-17	Día de las Letras Gallegas	Día de las Letras Gallegas	public	GA
+2032-05-27	Corpus Christi	Corpus Christi	public	CM
+2032-05-30	Día de Canarias	Canary Islands Day	public	CN
+2032-05-31	Día de Castilla-La Mancha	Día de Castilla-La Mancha	public	CM
+2032-05-31	Día de Canarias (día sustituto)	Canary Islands Day (substitute day)	public	CN
+2032-06-09	Día de La Rioja	Día de La Rioja	public	RI
+2032-06-24	San Juan	San Juan	public	CT
+2032-06-24	San Juan	San Juan	public	VC
+2032-06-28	Día de las Instituciones de Cantabria	Día de las Instituciones de Cantabria	public	CB
+2032-07-25	Día Nacional de Galicia	Día Nacional de Galicia	public	GA
+2032-07-25	Santiago Apóstol	Santiago Apóstol	public	PV
+2032-08-05	Nuestra Señora de África	Nuestra Señora de África	public	CE
+2032-08-15	Asunción	Assumption	public	
+2032-08-16	Asunción (día sustituto)	Assumption (substitute day)	public	AN
+2032-08-16	Asunción (día sustituto)	Assumption (substitute day)	public	AR
+2032-08-16	Asunción (día sustituto)	Assumption (substitute day)	public	AS
+2032-08-16	Asunción (día sustituto)	Assumption (substitute day)	public	CL
+2032-08-16	Asunción (día sustituto)	Assumption (substitute day)	public	CN
+2032-09-02	Día de Ceuta	Día de Ceuta	public	CE
+2032-09-08	Día de Asturias	Día de Asturias	public	AS
+2032-09-08	Día de Extremadura	Día de Extremadura	public	EX
+2032-09-11	Dia de Cataluña	Dia de Cataluña	public	CT
+2032-09-15	La Bien Aparecida	La Bien Aparecida	public	CB
+2032-10-12	Fiesta Nacional de España	Fiesta Nacional de España	public	
+2032-11-01	Todos los Santos	All Saints' Day	public	
+2032-11-09	Nuestra Señora de la Almudena	Nuestra Señora de la Almudena	observance	MD
+2032-12-06	Día de la Constitución Española	Día de la Constitución Española	public	
+2032-12-08	La inmaculada concepción	Immaculate Conception	public	
+2032-12-25	Navidad	Christmas Day	public	
+2032-12-26	San Esteban	San Esteban	public	CT
+2032-12-26	Sant Esteve	Sant Esteve	observance	IB
+2033-01-01	Año Nuevo	New Year's Day	public	
+2033-01-02	Fiesta del Eid Fitr	End of Ramadan (Eid al-Fitr)	public	ML
+2033-01-06	Día de los Reyes Magos	Epiphany	public	
+2033-02-28	Día de Andalucía	Día de Andalucía	public	AN
+2033-03-01	Día de les Illes Balears	Día de les Illes Balears	public	IB
+2033-03-10	Fiesta del Sacrificio-Eidul Adha	Arafat Day	public	CE
+2033-03-11	Fiesta del Sacrificio-Aid Al Adha	Feast of the Sacrifice (Eid al-Adha)	public	ML
+2033-03-19	San José	Saint Joseph	observance	
+2033-04-14	Jueves Santo	Maundy Thursday	public	AN
+2033-04-14	Jueves Santo	Maundy Thursday	public	AR
+2033-04-14	Jueves Santo	Maundy Thursday	public	AS
+2033-04-14	Jueves Santo	Maundy Thursday	public	CB
+2033-04-14	Jueves Santo	Maundy Thursday	public	CE
+2033-04-14	Jueves Santo	Maundy Thursday	public	CL
+2033-04-14	Jueves Santo	Maundy Thursday	public	CM
+2033-04-14	Jueves Santo	Maundy Thursday	public	CN
+2033-04-14	Jueves Santo	Maundy Thursday	observance	CT
+2033-04-14	Jueves Santo	Maundy Thursday	public	EX
+2033-04-14	Jueves Santo	Maundy Thursday	public	GA
+2033-04-14	Jueves Santo	Maundy Thursday	public	IB
+2033-04-14	Jueves Santo	Maundy Thursday	public	MC
+2033-04-14	Jueves Santo	Maundy Thursday	public	MD
+2033-04-14	Jueves Santo	Maundy Thursday	public	ML
+2033-04-14	Jueves Santo	Maundy Thursday	public	NC
+2033-04-14	Jueves Santo	Maundy Thursday	public	PV
+2033-04-14	Jueves Santo	Maundy Thursday	public	RI
+2033-04-15	Viernes Santo	Good Friday	public	
+2033-04-17	Pascua	Easter Sunday	observance	
+2033-04-18	Lunes de Pascua	Easter Monday	public	CT
+2033-04-18	Lunes de Pascua	Easter Monday	public	IB
+2033-04-18	Lunes de Pascua	Easter Monday	public	NC
+2033-04-18	Lunes de Pascua	Easter Monday	public	PV
+2033-04-18	Lunes de Pascua	Easter Monday	public	RI
+2033-04-18	Lunes de Pascua	Easter Monday	public	VC
+2033-04-23	Día de Aragón	Día de Aragón	public	AR
+2033-04-23	Fiesta de Castilla y León	Fiesta de Castilla y León	public	CL
+2033-05-01	Día de la Madre	Mother's Day	observance	
+2033-05-01	Día del Trabajador	Labour Day	public	
+2033-05-02	Día del Trabajador (día sustituto)	Labour Day (substitute day)	public	AN
+2033-05-02	Día del Trabajador (día sustituto)	Labour Day (substitute day)	public	AR
+2033-05-02	Día del Trabajador (día sustituto)	Labour Day (substitute day)	public	AS
+2033-05-02	Día del Trabajador (día sustituto)	Labour Day (substitute day)	public	CL
+2033-05-02	Día del Trabajador (día sustituto)	Labour Day (substitute day)	public	CT
+2033-05-02	Día del Trabajador (día sustituto)	Labour Day (substitute day)	public	EX
+2033-05-02	Día del Trabajador (día sustituto)	Labour Day (substitute day)	public	MC
+2033-05-02	Día de la Comunidad de Madrid	Día de la Comunidad de Madrid	public	MD
+2033-05-16	San Isidro Labrador	San Isidro Labrador	observance	MD
+2033-05-17	Día de las Letras Gallegas	Día de las Letras Gallegas	public	GA
+2033-05-30	Día de Canarias	Canary Islands Day	public	CN
+2033-05-31	Día de Castilla-La Mancha	Día de Castilla-La Mancha	public	CM
+2033-06-05	Pentecostés	Pentecost	observance	
+2033-06-09	Día de La Rioja	Día de La Rioja	public	RI
+2033-06-16	Corpus Christi	Corpus Christi	public	CM
+2033-06-24	San Juan	San Juan	public	CT
+2033-06-24	San Juan	San Juan	public	VC
+2033-06-28	Día de las Instituciones de Cantabria	Día de las Instituciones de Cantabria	public	CB
+2033-07-25	Día Nacional de Galicia	Día Nacional de Galicia	public	GA
+2033-07-25	Santiago Apóstol	Santiago Apóstol	public	PV
+2033-08-05	Nuestra Señora de África	Nuestra Señora de África	public	CE
+2033-08-15	Asunción	Assumption	public	
+2033-09-02	Día de Ceuta	Día de Ceuta	public	CE
+2033-09-08	Día de Asturias	Día de Asturias	public	AS
+2033-09-08	Día de Extremadura	Día de Extremadura	public	EX
+2033-09-11	Dia de Cataluña	Dia de Cataluña	public	CT
+2033-09-15	La Bien Aparecida	La Bien Aparecida	public	CB
+2033-10-12	Fiesta Nacional de España	Fiesta Nacional de España	public	
+2033-11-01	Todos los Santos	All Saints' Day	public	
+2033-11-09	Nuestra Señora de la Almudena	Nuestra Señora de la Almudena	observance	MD
+2033-12-06	Día de la Constitución Española	Día de la Constitución Española	public	
+2033-12-08	La inmaculada concepción	Immaculate Conception	public	
+2033-12-23	Fiesta del Eid Fitr	End of Ramadan (Eid al-Fitr)	public	ML
+2033-12-25	Navidad	Christmas Day	public	
+2033-12-26	Navidad (día sustituto)	Christmas Day (substitute day)	public	
+2033-12-26	San Esteban	San Esteban	public	CT
+2033-12-26	Sant Esteve	Sant Esteve	observance	IB
+2034-01-01	Año Nuevo	New Year's Day	public	
+2034-01-02	Año Nuevo (día sustituto)	New Year's Day (substitute day)	observance	
+2034-01-06	Día de los Reyes Magos	Epiphany	public	
+2034-02-28	Día de Andalucía	Día de Andalucía	public	AN
+2034-02-28	Fiesta del Sacrificio-Eidul Adha	Arafat Day	public	CE
+2034-03-01	Día de les Illes Balears	Día de les Illes Balears	public	IB
+2034-03-01	Fiesta del Sacrificio-Aid Al Adha	Feast of the Sacrifice (Eid al-Adha)	public	ML
+2034-03-19	San José	Saint Joseph	observance	
+2034-04-06	Jueves Santo	Maundy Thursday	public	AN
+2034-04-06	Jueves Santo	Maundy Thursday	public	AR
+2034-04-06	Jueves Santo	Maundy Thursday	public	AS
+2034-04-06	Jueves Santo	Maundy Thursday	public	CB
+2034-04-06	Jueves Santo	Maundy Thursday	public	CE
+2034-04-06	Jueves Santo	Maundy Thursday	public	CL
+2034-04-06	Jueves Santo	Maundy Thursday	public	CM
+2034-04-06	Jueves Santo	Maundy Thursday	public	CN
+2034-04-06	Jueves Santo	Maundy Thursday	observance	CT
+2034-04-06	Jueves Santo	Maundy Thursday	public	EX
+2034-04-06	Jueves Santo	Maundy Thursday	public	GA
+2034-04-06	Jueves Santo	Maundy Thursday	public	IB
+2034-04-06	Jueves Santo	Maundy Thursday	public	MC
+2034-04-06	Jueves Santo	Maundy Thursday	public	MD
+2034-04-06	Jueves Santo	Maundy Thursday	public	ML
+2034-04-06	Jueves Santo	Maundy Thursday	public	NC
+2034-04-06	Jueves Santo	Maundy Thursday	public	PV
+2034-04-06	Jueves Santo	Maundy Thursday	public	RI
+2034-04-07	Viernes Santo	Good Friday	public	
+2034-04-09	Pascua	Easter Sunday	observance	
+2034-04-10	Lunes de Pascua	Easter Monday	public	CT
+2034-04-10	Lunes de Pascua	Easter Monday	public	IB
+2034-04-10	Lunes de Pascua	Easter Monday	public	NC
+2034-04-10	Lunes de Pascua	Easter Monday	public	PV
+2034-04-10	Lunes de Pascua	Easter Monday	public	RI
+2034-04-10	Lunes de Pascua	Easter Monday	public	VC
+2034-04-23	Día de Aragón	Día de Aragón	public	AR
+2034-04-23	Fiesta de Castilla y León	Fiesta de Castilla y León	public	CL
+2034-04-24	Día de Aragón (día sustituto)	Día de Aragón (substitute day)	public	AR
+2034-04-24	Fiesta de Castilla y León	Fiesta de Castilla y León	public	CL
+2034-05-01	Día del Trabajador	Labour Day	public	
+2034-05-02	Día de la Comunidad de Madrid	Día de la Comunidad de Madrid	public	MD
+2034-05-07	Día de la Madre	Mother's Day	observance	
+2034-05-16	San Isidro Labrador	San Isidro Labrador	observance	MD
+2034-05-17	Día de las Letras Gallegas	Día de las Letras Gallegas	public	GA
+2034-05-28	Pentecostés	Pentecost	observance	
+2034-05-30	Día de Canarias	Canary Islands Day	public	CN
+2034-05-31	Día de Castilla-La Mancha	Día de Castilla-La Mancha	public	CM
+2034-06-08	Corpus Christi	Corpus Christi	public	CM
+2034-06-09	Día de La Rioja	Día de La Rioja	public	RI
+2034-06-24	San Juan	San Juan	public	CT
+2034-06-24	San Juan	San Juan	public	VC
+2034-06-28	Día de las Instituciones de Cantabria	Día de las Instituciones de Cantabria	public	CB
+2034-07-25	Día Nacional de Galicia	Día Nacional de Galicia	public	GA
+2034-07-25	Santiago Apóstol	Santiago Apóstol	public	PV
+2034-08-05	Nuestra Señora de África	Nuestra Señora de África	public	CE
+2034-08-15	Asunción	Assumption	public	
+2034-09-02	Día de Ceuta	Día de Ceuta	public	CE
+2034-09-08	Día de Asturias	Día de Asturias	public	AS
+2034-09-08	Día de Extremadura	Día de Extremadura	public	EX
+2034-09-11	Dia de Cataluña	Dia de Cataluña	public	CT
+2034-09-15	La Bien Aparecida	La Bien Aparecida	public	CB
+2034-10-12	Fiesta Nacional de España	Fiesta Nacional de España	public	
+2034-11-01	Todos los Santos	All Saints' Day	public	
+2034-11-09	Nuestra Señora de la Almudena	Nuestra Señora de la Almudena	observance	MD
+2034-12-06	Día de la Constitución Española	Día de la Constitución Española	public	
+2034-12-08	La inmaculada concepción	Immaculate Conception	public	
+2034-12-12	Fiesta del Eid Fitr	End of Ramadan (Eid al-Fitr)	public	ML
+2034-12-25	Navidad	Christmas Day	public	
+2034-12-26	San Esteban	San Esteban	public	CT
+2034-12-26	Sant Esteve	Sant Esteve	observance	IB
+2035-01-01	Año Nuevo	New Year's Day	public	
+2035-01-06	Día de los Reyes Magos	Epiphany	public	
+2035-02-17	Fiesta del Sacrificio-Eidul Adha	Arafat Day	public	CE
+2035-02-18	Fiesta del Sacrificio-Aid Al Adha	Feast of the Sacrifice (Eid al-Adha)	public	ML
+2035-02-28	Día de Andalucía	Día de Andalucía	public	AN
+2035-03-01	Día de les Illes Balears	Día de les Illes Balears	public	IB
+2035-03-19	San José	Saint Joseph	observance	
+2035-03-22	Jueves Santo	Maundy Thursday	public	AN
+2035-03-22	Jueves Santo	Maundy Thursday	public	AR
+2035-03-22	Jueves Santo	Maundy Thursday	public	AS
+2035-03-22	Jueves Santo	Maundy Thursday	public	CB
+2035-03-22	Jueves Santo	Maundy Thursday	public	CE
+2035-03-22	Jueves Santo	Maundy Thursday	public	CL
+2035-03-22	Jueves Santo	Maundy Thursday	public	CM
+2035-03-22	Jueves Santo	Maundy Thursday	public	CN
+2035-03-22	Jueves Santo	Maundy Thursday	observance	CT
+2035-03-22	Jueves Santo	Maundy Thursday	public	EX
+2035-03-22	Jueves Santo	Maundy Thursday	public	GA
+2035-03-22	Jueves Santo	Maundy Thursday	public	IB
+2035-03-22	Jueves Santo	Maundy Thursday	public	MC
+2035-03-22	Jueves Santo	Maundy Thursday	public	MD
+2035-03-22	Jueves Santo	Maundy Thursday	public	ML
+2035-03-22	Jueves Santo	Maundy Thursday	public	NC
+2035-03-22	Jueves Santo	Maundy Thursday	public	PV
+2035-03-22	Jueves Santo	Maundy Thursday	public	RI
+2035-03-23	Viernes Santo	Good Friday	public	
+2035-03-25	Pascua	Easter Sunday	observance	
+2035-03-26	Lunes de Pascua	Easter Monday	public	CT
+2035-03-26	Lunes de Pascua	Easter Monday	public	IB
+2035-03-26	Lunes de Pascua	Easter Monday	public	NC
+2035-03-26	Lunes de Pascua	Easter Monday	public	PV
+2035-03-26	Lunes de Pascua	Easter Monday	public	RI
+2035-03-26	Lunes de Pascua	Easter Monday	public	VC
+2035-04-23	Día de Aragón	Día de Aragón	public	AR
+2035-04-23	Fiesta de Castilla y León	Fiesta de Castilla y León	public	CL
+2035-05-01	Día del Trabajador	Labour Day	public	
+2035-05-02	Día de la Comunidad de Madrid	Día de la Comunidad de Madrid	public	MD
+2035-05-06	Día de la Madre	Mother's Day	observance	
+2035-05-13	Pentecostés	Pentecost	observance	
+2035-05-16	San Isidro Labrador	San Isidro Labrador	observance	MD
+2035-05-17	Día de las Letras Gallegas	Día de las Letras Gallegas	public	GA
+2035-05-24	Corpus Christi	Corpus Christi	public	CM
+2035-05-30	Día de Canarias	Canary Islands Day	public	CN
+2035-05-31	Día de Castilla-La Mancha	Día de Castilla-La Mancha	public	CM
+2035-06-09	Día de La Rioja	Día de La Rioja	public	RI
+2035-06-24	San Juan	San Juan	public	CT
+2035-06-24	San Juan	San Juan	public	VC
+2035-06-28	Día de las Instituciones de Cantabria	Día de las Instituciones de Cantabria	public	CB
+2035-07-25	Día Nacional de Galicia	Día Nacional de Galicia	public	GA
+2035-07-25	Santiago Apóstol	Santiago Apóstol	public	PV
+2035-08-05	Nuestra Señora de África	Nuestra Señora de África	public	CE
+2035-08-06	Nuestra Señora de África	Nuestra Señora de África	public	CE
+2035-08-15	Asunción	Assumption	public	
+2035-09-02	Día de Ceuta	Día de Ceuta	public	CE
+2035-09-03	Día de Ceuta	Día de Ceuta	public	CE
+2035-09-08	Día de Asturias	Día de Asturias	public	AS
+2035-09-08	Día de Extremadura	Día de Extremadura	public	EX
+2035-09-11	Dia de Cataluña	Dia de Cataluña	public	CT
+2035-09-15	La Bien Aparecida	La Bien Aparecida	public	CB
+2035-10-12	Fiesta Nacional de España	Fiesta Nacional de España	public	
+2035-11-01	Todos los Santos	All Saints' Day	public	
+2035-11-09	Nuestra Señora de la Almudena	Nuestra Señora de la Almudena	observance	MD
+2035-12-01	Fiesta del Eid Fitr	End of Ramadan (Eid al-Fitr)	public	ML
+2035-12-06	Día de la Constitución Española	Día de la Constitución Española	public	
+2035-12-08	La inmaculada concepción	Immaculate Conception	public	
+2035-12-25	Navidad	Christmas Day	public	
+2035-12-26	San Esteban	San Esteban	public	CT
+2035-12-26	Sant Esteve	Sant Esteve	observance	IB
+2036-01-01	Año Nuevo	New Year's Day	public	
+2036-01-06	Día de los Reyes Magos	Epiphany	public	
+2036-01-07	Día de los Reyes Magos (día sustituto)	Epiphany (substitute day)	observance	
+2036-02-06	Fiesta del Sacrificio-Eidul Adha	Arafat Day	public	CE
+2036-02-07	Fiesta del Sacrificio-Aid Al Adha	Feast of the Sacrifice (Eid al-Adha)	public	ML
+2036-02-28	Día de Andalucía	Día de Andalucía	public	AN
+2036-03-01	Día de les Illes Balears	Día de les Illes Balears	public	IB
+2036-03-19	San José	Saint Joseph	observance	
+2036-04-10	Jueves Santo	Maundy Thursday	public	AN
+2036-04-10	Jueves Santo	Maundy Thursday	public	AR
+2036-04-10	Jueves Santo	Maundy Thursday	public	AS
+2036-04-10	Jueves Santo	Maundy Thursday	public	CB
+2036-04-10	Jueves Santo	Maundy Thursday	public	CE
+2036-04-10	Jueves Santo	Maundy Thursday	public	CL
+2036-04-10	Jueves Santo	Maundy Thursday	public	CM
+2036-04-10	Jueves Santo	Maundy Thursday	public	CN
+2036-04-10	Jueves Santo	Maundy Thursday	observance	CT
+2036-04-10	Jueves Santo	Maundy Thursday	public	EX
+2036-04-10	Jueves Santo	Maundy Thursday	public	GA
+2036-04-10	Jueves Santo	Maundy Thursday	public	IB
+2036-04-10	Jueves Santo	Maundy Thursday	public	MC
+2036-04-10	Jueves Santo	Maundy Thursday	public	MD
+2036-04-10	Jueves Santo	Maundy Thursday	public	ML
+2036-04-10	Jueves Santo	Maundy Thursday	public	NC
+2036-04-10	Jueves Santo	Maundy Thursday	public	PV
+2036-04-10	Jueves Santo	Maundy Thursday	public	RI
+2036-04-11	Viernes Santo	Good Friday	public	
+2036-04-13	Pascua	Easter Sunday	observance	
+2036-04-14	Lunes de Pascua	Easter Monday	public	CT
+2036-04-14	Lunes de Pascua	Easter Monday	public	IB
+2036-04-14	Lunes de Pascua	Easter Monday	public	NC
+2036-04-14	Lunes de Pascua	Easter Monday	public	PV
+2036-04-14	Lunes de Pascua	Easter Monday	public	RI
+2036-04-14	Lunes de Pascua	Easter Monday	public	VC
+2036-04-23	Día de Aragón	Día de Aragón	public	AR
+2036-04-23	Fiesta de Castilla y León	Fiesta de Castilla y León	public	CL
+2036-05-01	Día del Trabajador	Labour Day	public	
+2036-05-02	Día de la Comunidad de Madrid	Día de la Comunidad de Madrid	public	MD
+2036-05-04	Día de la Madre	Mother's Day	observance	
+2036-05-16	San Isidro Labrador	San Isidro Labrador	observance	MD
+2036-05-17	Día de las Letras Gallegas	Día de las Letras Gallegas	public	GA
+2036-05-30	Día de Canarias	Canary Islands Day	public	CN
+2036-05-31	Día de Castilla-La Mancha	Día de Castilla-La Mancha	public	CM
+2036-06-01	Pentecostés	Pentecost	observance	
+2036-06-09	Día de La Rioja	Día de La Rioja	public	RI
+2036-06-12	Corpus Christi	Corpus Christi	public	CM
+2036-06-24	San Juan	San Juan	public	CT
+2036-06-24	San Juan	San Juan	public	VC
+2036-06-28	Día de las Instituciones de Cantabria	Día de las Instituciones de Cantabria	public	CB
+2036-07-25	Día Nacional de Galicia	Día Nacional de Galicia	public	GA
+2036-07-25	Santiago Apóstol	Santiago Apóstol	public	PV
+2036-08-05	Nuestra Señora de África	Nuestra Señora de África	public	CE
+2036-08-15	Asunción	Assumption	public	
+2036-09-02	Día de Ceuta	Día de Ceuta	public	CE
+2036-09-08	Día de Asturias	Día de Asturias	public	AS
+2036-09-08	Día de Extremadura	Día de Extremadura	public	EX
+2036-09-11	Dia de Cataluña	Dia de Cataluña	public	CT
+2036-09-15	La Bien Aparecida	La Bien Aparecida	public	CB
+2036-10-12	Fiesta Nacional de España	Fiesta Nacional de España	public	
+2036-10-13	Fiesta Nacional de España (día sustituto)	Fiesta Nacional de España (substitute day)	observance	
+2036-11-01	Todos los Santos	All Saints' Day	public	
+2036-11-10	Nuestra Señora de la Almudena	Nuestra Señora de la Almudena	observance	MD
+2036-11-19	Fiesta del Eid Fitr	End of Ramadan (Eid al-Fitr)	public	ML
+2036-12-06	Día de la Constitución Española	Día de la Constitución Española	public	
+2036-12-08	La inmaculada concepción	Immaculate Conception	public	
+2036-12-25	Navidad	Christmas Day	public	
+2036-12-26	San Esteban	San Esteban	public	CT
+2036-12-26	Sant Esteve	Sant Esteve	observance	IB
+2037-01-01	Año Nuevo	New Year's Day	public	
+2037-01-06	Día de los Reyes Magos	Epiphany	public	
+2037-01-25	Fiesta del Sacrificio-Eidul Adha	Arafat Day	public	CE
+2037-01-26	Fiesta del Sacrificio-Aid Al Adha	Feast of the Sacrifice (Eid al-Adha)	public	ML
+2037-02-28	Día de Andalucía	Día de Andalucía	public	AN
+2037-03-01	Día de les Illes Balears	Día de les Illes Balears	public	IB
+2037-03-02	Día de les Illes Balears (día sustituto)	Día de les Illes Balears (substitute day)	public	IB
+2037-03-19	San José	Saint Joseph	observance	
+2037-04-02	Jueves Santo	Maundy Thursday	public	AN
+2037-04-02	Jueves Santo	Maundy Thursday	public	AR
+2037-04-02	Jueves Santo	Maundy Thursday	public	AS
+2037-04-02	Jueves Santo	Maundy Thursday	public	CB
+2037-04-02	Jueves Santo	Maundy Thursday	public	CE
+2037-04-02	Jueves Santo	Maundy Thursday	public	CL
+2037-04-02	Jueves Santo	Maundy Thursday	public	CM
+2037-04-02	Jueves Santo	Maundy Thursday	public	CN
+2037-04-02	Jueves Santo	Maundy Thursday	observance	CT
+2037-04-02	Jueves Santo	Maundy Thursday	public	EX
+2037-04-02	Jueves Santo	Maundy Thursday	public	GA
+2037-04-02	Jueves Santo	Maundy Thursday	public	IB
+2037-04-02	Jueves Santo	Maundy Thursday	public	MC
+2037-04-02	Jueves Santo	Maundy Thursday	public	MD
+2037-04-02	Jueves Santo	Maundy Thursday	public	ML
+2037-04-02	Jueves Santo	Maundy Thursday	public	NC
+2037-04-02	Jueves Santo	Maundy Thursday	public	PV
+2037-04-02	Jueves Santo	Maundy Thursday	public	RI
+2037-04-03	Viernes Santo	Good Friday	public	
+2037-04-05	Pascua	Easter Sunday	observance	
+2037-04-06	Lunes de Pascua	Easter Monday	public	CT
+2037-04-06	Lunes de Pascua	Easter Monday	public	IB
+2037-04-06	Lunes de Pascua	Easter Monday	public	NC
+2037-04-06	Lunes de Pascua	Easter Monday	public	PV
+2037-04-06	Lunes de Pascua	Easter Monday	public	RI
+2037-04-06	Lunes de Pascua	Easter Monday	public	VC
+2037-04-23	Día de Aragón	Día de Aragón	public	AR
+2037-04-23	Fiesta de Castilla y León	Fiesta de Castilla y León	public	CL
+2037-05-01	Día del Trabajador	Labour Day	public	
+2037-05-02	Día de la Comunidad de Madrid	Día de la Comunidad de Madrid	public	MD
+2037-05-03	Día de la Madre	Mother's Day	observance	
+2037-05-16	San Isidro Labrador	San Isidro Labrador	observance	MD
+2037-05-17	Día de las Letras Gallegas	Día de las Letras Gallegas	public	GA
+2037-05-24	Pentecostés	Pentecost	observance	
+2037-05-30	Día de Canarias	Canary Islands Day	public	CN
+2037-05-31	Día de Castilla-La Mancha	Día de Castilla-La Mancha	public	CM
+2037-06-04	Corpus Christi	Corpus Christi	public	CM
+2037-06-09	Día de La Rioja	Día de La Rioja	public	RI
+2037-06-24	San Juan	San Juan	public	CT
+2037-06-24	San Juan	San Juan	public	VC
+2037-06-28	Día de las Instituciones de Cantabria	Día de las Instituciones de Cantabria	public	CB
+2037-07-25	Día Nacional de Galicia	Día Nacional de Galicia	public	GA
+2037-07-25	Santiago Apóstol	Santiago Apóstol	public	PV
+2037-08-05	Nuestra Señora de África	Nuestra Señora de África	public	CE
+2037-08-15	Asunción	Assumption	public	
+2037-09-02	Día de Ceuta	Día de Ceuta	public	CE
+2037-09-08	Día de Asturias	Día de Asturias	public	AS
+2037-09-08	Día de Extremadura	Día de Extremadura	public	EX
+2037-09-11	Dia de Cataluña	Dia de Cataluña	public	CT
+2037-09-15	La Bien Aparecida	La Bien Aparecida	public	CB
+2037-10-12	Fiesta Nacional de España	Fiesta Nacional de España	public	
+2037-11-01	Todos los Santos	All Saints' Day	public	
+2037-11-02	Todos los Santos (día sustituto)	All Saints' Day (substitute day)	public	AN
+2037-11-02	Todos los Santos (día sustituto)	All Saints' Day (substitute day)	public	AR
+2037-11-02	Todos los Santos (día sustituto)	All Saints' Day (substitute day)	public	AS
+2037-11-02	Todos los Santos (día sustituto)	All Saints' Day (substitute day)	public	CL
+2037-11-02	Todos los Santos (día sustituto)	All Saints' Day (substitute day)	public	CM
+2037-11-02	Todos los Santos (día sustituto)	All Saints' Day (substitute day)	public	CN
+2037-11-02	Todos los Santos (día sustituto)	All Saints' Day (substitute day)	public	EX
+2037-11-02	Todos los Santos (día sustituto)	All Saints' Day (substitute day)	public	MD
+2037-11-02	Todos los Santos (día sustituto)	All Saints' Day (substitute day)	public	NC
+2037-11-08	Fiesta del Eid Fitr	End of Ramadan (Eid al-Fitr)	public	ML
+2037-11-09	Nuestra Señora de la Almudena	Nuestra Señora de la Almudena	observance	MD
+2037-12-06	Día de la Constitución Española	Día de la Constitución Española	public	
+2037-12-07	Día de la Constitución Española (día sustituto)	Día de la Constitución Española (substitute day)	public	AN
+2037-12-07	Día de la Constitución Española (día sustituto)	Día de la Constitución Española (substitute day)	public	AR
+2037-12-07	Día de la Constitución Española (día sustituto)	Día de la Constitución Española (substitute day)	public	AS
+2037-12-07	Día de la Constitución Española (día sustituto)	Día de la Constitución Española (substitute day)	public	CB
+2037-12-07	Día de la Constitución Española (día sustituto)	Día de la Constitución Española (substitute day)	public	CL
+2037-12-07	Día de la Constitución Española (día sustituto)	Día de la Constitución Española (substitute day)	public	EX
+2037-12-07	Día de la Constitución Española (día sustituto)	Día de la Constitución Española (substitute day)	public	MC
+2037-12-07	Día de la Constitución Española (día sustituto)	Día de la Constitución Española (substitute day)	public	MD
+2037-12-07	Día de la Constitución Española (día sustituto)	Día de la Constitución Española (substitute day)	public	ML
+2037-12-07	Día de la Constitución Española (día sustituto)	Día de la Constitución Española (substitute day)	public	RI
+2037-12-08	La inmaculada concepción	Immaculate Conception	public	
+2037-12-25	Navidad	Christmas Day	public	
+2037-12-26	San Esteban	San Esteban	public	CT
+2037-12-26	Sant Esteve	Sant Esteve	observance	IB
+2038-01-01	Año Nuevo	New Year's Day	public	
+2038-01-06	Día de los Reyes Magos	Epiphany	public	
+2038-01-15	Fiesta del Sacrificio-Eidul Adha	Arafat Day	public	CE
+2038-01-16	Fiesta del Sacrificio-Aid Al Adha	Feast of the Sacrifice (Eid al-Adha)	public	ML
+2038-02-28	Día de Andalucía	Día de Andalucía	public	AN
+2038-03-01	Día de Andalucía (día sustituto)	Día de Andalucía (substitute day)	public	AN
+2038-03-01	Día de les Illes Balears	Día de les Illes Balears	public	IB
+2038-03-19	San José	Saint Joseph	observance	
+2038-04-22	Jueves Santo	Maundy Thursday	public	AN
+2038-04-22	Jueves Santo	Maundy Thursday	public	AR
+2038-04-22	Jueves Santo	Maundy Thursday	public	AS
+2038-04-22	Jueves Santo	Maundy Thursday	public	CB
+2038-04-22	Jueves Santo	Maundy Thursday	public	CE
+2038-04-22	Jueves Santo	Maundy Thursday	public	CL
+2038-04-22	Jueves Santo	Maundy Thursday	public	CM
+2038-04-22	Jueves Santo	Maundy Thursday	public	CN
+2038-04-22	Jueves Santo	Maundy Thursday	observance	CT
+2038-04-22	Jueves Santo	Maundy Thursday	public	EX
+2038-04-22	Jueves Santo	Maundy Thursday	public	GA
+2038-04-22	Jueves Santo	Maundy Thursday	public	IB
+2038-04-22	Jueves Santo	Maundy Thursday	public	MC
+2038-04-22	Jueves Santo	Maundy Thursday	public	MD
+2038-04-22	Jueves Santo	Maundy Thursday	public	ML
+2038-04-22	Jueves Santo	Maundy Thursday	public	NC
+2038-04-22	Jueves Santo	Maundy Thursday	public	PV
+2038-04-22	Jueves Santo	Maundy Thursday	public	RI
+2038-04-23	Viernes Santo	Good Friday	public	
+2038-04-23	Día de Aragón	Día de Aragón	public	AR
+2038-04-23	Fiesta de Castilla y León	Fiesta de Castilla y León	public	CL
+2038-04-25	Pascua	Easter Sunday	observance	
+2038-04-26	Lunes de Pascua	Easter Monday	public	CT
+2038-04-26	Lunes de Pascua	Easter Monday	public	IB
+2038-04-26	Lunes de Pascua	Easter Monday	public	NC
+2038-04-26	Lunes de Pascua	Easter Monday	public	PV
+2038-04-26	Lunes de Pascua	Easter Monday	public	RI
+2038-04-26	Lunes de Pascua	Easter Monday	public	VC
+2038-05-01	Día del Trabajador	Labour Day	public	
+2038-05-02	Día de la Madre	Mother's Day	observance	
+2038-05-03	Día del Trabajador (día sustituto)	Labour Day (substitute day)	public	CT
+2038-05-03	Día de la Comunidad de Madrid	Día de la Comunidad de Madrid	public	MD
+2038-05-03	Día de la Comunidad de Madrid (día sustituto)	Día de la Comunidad de Madrid (substitute day)	public	MD
+2038-05-16	San Isidro Labrador	San Isidro Labrador	observance	MD
+2038-05-17	Día de las Letras Gallegas	Día de las Letras Gallegas	public	GA
+2038-05-30	Día de Canarias	Canary Islands Day	public	CN
+2038-05-31	Día de Castilla-La Mancha	Día de Castilla-La Mancha	public	CM
+2038-05-31	Día de Canarias (día sustituto)	Canary Islands Day (substitute day)	public	CN
+2038-06-09	Día de La Rioja	Día de La Rioja	public	RI
+2038-06-13	Pentecostés	Pentecost	observance	
+2038-06-24	Corpus Christi	Corpus Christi	public	CM
+2038-06-24	San Juan	San Juan	public	CT
+2038-06-24	San Juan	San Juan	public	VC
+2038-06-28	Día de las Instituciones de Cantabria	Día de las Instituciones de Cantabria	public	CB
+2038-07-25	Día Nacional de Galicia	Día Nacional de Galicia	public	GA
+2038-07-25	Santiago Apóstol	Santiago Apóstol	public	PV
+2038-08-05	Nuestra Señora de África	Nuestra Señora de África	public	CE
+2038-08-15	Asunción	Assumption	public	
+2038-08-16	Asunción (día sustituto)	Assumption (substitute day)	public	AN
+2038-08-16	Asunción (día sustituto)	Assumption (substitute day)	public	AR
+2038-08-16	Asunción (día sustituto)	Assumption (substitute day)	public	AS
+2038-08-16	Asunción (día sustituto)	Assumption (substitute day)	public	CL
+2038-08-16	Asunción (día sustituto)	Assumption (substitute day)	public	CN
+2038-09-02	Día de Ceuta	Día de Ceuta	public	CE
+2038-09-08	Día de Asturias	Día de Asturias	public	AS
+2038-09-08	Día de Extremadura	Día de Extremadura	public	EX
+2038-09-11	Dia de Cataluña	Dia de Cataluña	public	CT
+2038-09-15	La Bien Aparecida	La Bien Aparecida	public	CB
+2038-10-12	Fiesta Nacional de España	Fiesta Nacional de España	public	
+2038-10-29	Fiesta del Eid Fitr	End of Ramadan (Eid al-Fitr)	public	ML
+2038-11-01	Todos los Santos	All Saints' Day	public	
+2038-11-09	Nuestra Señora de la Almudena	Nuestra Señora de la Almudena	observance	MD
+2038-12-06	Día de la Constitución Española	Día de la Constitución Española	public	
+2038-12-08	La inmaculada concepción	Immaculate Conception	public	
+2038-12-25	Navidad	Christmas Day	public	
+2038-12-26	San Esteban	San Esteban	public	CT
+2038-12-26	Sant Esteve	Sant Esteve	observance	IB
+2039-01-01	Año Nuevo	New Year's Day	public	
+2039-01-04	Fiesta del Sacrificio-Eidul Adha	Arafat Day	public	CE
+2039-01-05	Fiesta del Sacrificio-Aid Al Adha	Feast of the Sacrifice (Eid al-Adha)	public	ML
+2039-01-06	Día de los Reyes Magos	Epiphany	public	
+2039-02-28	Día de Andalucía	Día de Andalucía	public	AN
+2039-03-01	Día de les Illes Balears	Día de les Illes Balears	public	IB
+2039-03-19	San José	Saint Joseph	observance	
+2039-04-07	Jueves Santo	Maundy Thursday	public	AN
+2039-04-07	Jueves Santo	Maundy Thursday	public	AR
+2039-04-07	Jueves Santo	Maundy Thursday	public	AS
+2039-04-07	Jueves Santo	Maundy Thursday	public	CB
+2039-04-07	Jueves Santo	Maundy Thursday	public	CE
+2039-04-07	Jueves Santo	Maundy Thursday	public	CL
+2039-04-07	Jueves Santo	Maundy Thursday	public	CM
+2039-04-07	Jueves Santo	Maundy Thursday	public	CN
+2039-04-07	Jueves Santo	Maundy Thursday	observance	CT
+2039-04-07	Jueves Santo	Maundy Thursday	public	EX
+2039-04-07	Jueves Santo	Maundy Thursday	public	GA
+2039-04-07	Jueves Santo	Maundy Thursday	public	IB
+2039-04-07	Jueves Santo	Maundy Thursday	public	MC
+2039-04-07	Jueves Santo	Maundy Thursday	public	MD
+2039-04-07	Jueves Santo	Maundy Thursday	public	ML
+2039-04-07	Jueves Santo	Maundy Thursday	public	NC
+2039-04-07	Jueves Santo	Maundy Thursday	public	PV
+2039-04-07	Jueves Santo	Maundy Thursday	public	RI
+2039-04-08	Viernes Santo	Good Friday	public	
+2039-04-10	Pascua	Easter Sunday	observance	
+2039-04-11	Lunes de Pascua	Easter Monday	public	CT
+2039-04-11	Lunes de Pascua	Easter Monday	public	IB
+2039-04-11	Lunes de Pascua	Easter Monday	public	NC
+2039-04-11	Lunes de Pascua	Easter Monday	public	PV
+2039-04-11	Lunes de Pascua	Easter Monday	public	RI
+2039-04-11	Lunes de Pascua	Easter Monday	public	VC
+2039-04-23	Día de Aragón	Día de Aragón	public	AR
+2039-04-23	Fiesta de Castilla y León	Fiesta de Castilla y León	public	CL
+2039-05-01	Día de la Madre	Mother's Day	observance	
+2039-05-01	Día del Trabajador	Labour Day	public	
+2039-05-02	Día del Trabajador (día sustituto)	Labour Day (substitute day)	public	AN
+2039-05-02	Día del Trabajador (día sustituto)	Labour Day (substitute day)	public	AR
+2039-05-02	Día del Trabajador (día sustituto)	Labour Day (substitute day)	public	AS
+2039-05-02	Día del Trabajador (día sustituto)	Labour Day (substitute day)	public	CL
+2039-05-02	Día del Trabajador (día sustituto)	Labour Day (substitute day)	public	CT
+2039-05-02	Día del Trabajador (día sustituto)	Labour Day (substitute day)	public	EX
+2039-05-02	Día del Trabajador (día sustituto)	Labour Day (substitute day)	public	MC
+2039-05-02	Día de la Comunidad de Madrid	Día de la Comunidad de Madrid	public	MD
+2039-05-16	San Isidro Labrador	San Isidro Labrador	observance	MD
+2039-05-17	Día de las Letras Gallegas	Día de las Letras Gallegas	public	GA
+2039-05-29	Pentecostés	Pentecost	observance	
+2039-05-30	Día de Canarias	Canary Islands Day	public	CN
+2039-05-31	Día de Castilla-La Mancha	Día de Castilla-La Mancha	public	CM
+2039-06-09	Corpus Christi	Corpus Christi	public	CM
+2039-06-09	Día de La Rioja	Día de La Rioja	public	RI
+2039-06-24	San Juan	San Juan	public	CT
+2039-06-24	San Juan	San Juan	public	VC
+2039-06-28	Día de las Instituciones de Cantabria	Día de las Instituciones de Cantabria	public	CB
+2039-07-25	Día Nacional de Galicia	Día Nacional de Galicia	public	GA
+2039-07-25	Santiago Apóstol	Santiago Apóstol	public	PV
+2039-08-05	Nuestra Señora de África	Nuestra Señora de África	public	CE
+2039-08-15	Asunción	Assumption	public	
+2039-09-02	Día de Ceuta	Día de Ceuta	public	CE
+2039-09-08	Día de Asturias	Día de Asturias	public	AS
+2039-09-08	Día de Extremadura	Día de Extremadura	public	EX
+2039-09-11	Dia de Cataluña	Dia de Cataluña	public	CT
+2039-09-15	La Bien Aparecida	La Bien Aparecida	public	CB
+2039-10-12	Fiesta Nacional de España	Fiesta Nacional de España	public	
+2039-10-19	Fiesta del Eid Fitr	End of Ramadan (Eid al-Fitr)	public	ML
+2039-11-01	Todos los Santos	All Saints' Day	public	
+2039-11-09	Nuestra Señora de la Almudena	Nuestra Señora de la Almudena	observance	MD
+2039-12-06	Día de la Constitución Española	Día de la Constitución Española	public	
+2039-12-08	La inmaculada concepción	Immaculate Conception	public	
+2039-12-25	Navidad	Christmas Day	public	
+2039-12-25	Fiesta del Sacrificio-Eidul Adha	Arafat Day	public	CE
+2039-12-26	Navidad (día sustituto)	Christmas Day (substitute day)	public	
+2039-12-26	San Esteban	San Esteban	public	CT
+2039-12-26	Sant Esteve	Sant Esteve	observance	IB
+2039-12-26	Fiesta del Sacrificio-Aid Al Adha	Feast of the Sacrifice (Eid al-Adha)	public	ML
+2040-01-01	Año Nuevo	New Year's Day	public	
+2040-01-02	Año Nuevo (día sustituto)	New Year's Day (substitute day)	observance	
+2040-01-06	Día de los Reyes Magos	Epiphany	public	
+2040-02-28	Día de Andalucía	Día de Andalucía	public	AN
+2040-03-01	Día de les Illes Balears	Día de les Illes Balears	public	IB
+2040-03-19	San José	Saint Joseph	observance	
+2040-03-29	Jueves Santo	Maundy Thursday	public	AN
+2040-03-29	Jueves Santo	Maundy Thursday	public	AR
+2040-03-29	Jueves Santo	Maundy Thursday	public	AS
+2040-03-29	Jueves Santo	Maundy Thursday	public	CB
+2040-03-29	Jueves Santo	Maundy Thursday	public	CE
+2040-03-29	Jueves Santo	Maundy Thursday	public	CL
+2040-03-29	Jueves Santo	Maundy Thursday	public	CM
+2040-03-29	Jueves Santo	Maundy Thursday	public	CN
+2040-03-29	Jueves Santo	Maundy Thursday	observance	CT
+2040-03-29	Jueves Santo	Maundy Thursday	public	EX
+2040-03-29	Jueves Santo	Maundy Thursday	public	GA
+2040-03-29	Jueves Santo	Maundy Thursday	public	IB
+2040-03-29	Jueves Santo	Maundy Thursday	public	MC
+2040-03-29	Jueves Santo	Maundy Thursday	public	MD
+2040-03-29	Jueves Santo	Maundy Thursday	public	ML
+2040-03-29	Jueves Santo	Maundy Thursday	public	NC
+2040-03-29	Jueves Santo	Maundy Thursday	public	PV
+2040-03-29	Jueves Santo	Maundy Thursday	public	RI
+2040-03-30	Viernes Santo	Good Friday	public	
+2040-04-01	Pascua	Easter Sunday	observance	
+2040-04-02	Lunes de Pascua	Easter Monday	public	CT
+2040-04-02	Lunes de Pascua	Easter Monday	public	IB
+2040-04-02	Lunes de Pascua	Easter Monday	public	NC
+2040-04-02	Lunes de Pascua	Easter Monday	public	PV
+2040-04-02	Lunes de Pascua	Easter Monday	public	RI
+2040-04-02	Lunes de Pascua	Easter Monday	public	VC
+2040-04-23	Día de Aragón	Día de Aragón	public	AR
+2040-04-23	Fiesta de Castilla y León	Fiesta de Castilla y León	public	CL
+2040-05-01	Día del Trabajador	Labour Day	public	
+2040-05-02	Día de la Comunidad de Madrid	Día de la Comunidad de Madrid	public	MD
+2040-05-06	Día de la Madre	Mother's Day	observance	
+2040-05-16	San Isidro Labrador	San Isidro Labrador	observance	MD
+2040-05-17	Día de las Letras Gallegas	Día de las Letras Gallegas	public	GA
+2040-05-20	Pentecostés	Pentecost	observance	
+2040-05-30	Día de Canarias	Canary Islands Day	public	CN
+2040-05-31	Corpus Christi	Corpus Christi	public	CM
+2040-05-31	Día de Castilla-La Mancha	Día de Castilla-La Mancha	public	CM
+2040-06-09	Día de La Rioja	Día de La Rioja	public	RI
+2040-06-24	San Juan	San Juan	public	CT
+2040-06-24	San Juan	San Juan	public	VC
+2040-06-28	Día de las Instituciones de Cantabria	Día de las Instituciones de Cantabria	public	CB
+2040-07-25	Día Nacional de Galicia	Día Nacional de Galicia	public	GA
+2040-07-25	Santiago Apóstol	Santiago Apóstol	public	PV
+2040-08-05	Nuestra Señora de África	Nuestra Señora de África	public	CE
+2040-08-06	Nuestra Señora de África	Nuestra Señora de África	public	CE
+2040-08-15	Asunción	Assumption	public	
+2040-09-02	Día de Ceuta	Día de Ceuta	public	CE
+2040-09-03	Día de Ceuta	Día de Ceuta	public	CE
+2040-09-08	Día de Asturias	Día de Asturias	public	AS
+2040-09-08	Día de Extremadura	Día de Extremadura	public	EX
+2040-09-11	Dia de Cataluña	Dia de Cataluña	public	CT
+2040-09-15	La Bien Aparecida	La Bien Aparecida	public	CB
+2040-10-07	Fiesta del Eid Fitr	End of Ramadan (Eid al-Fitr)	public	ML
+2040-10-12	Fiesta Nacional de España	Fiesta Nacional de España	public	
+2040-11-01	Todos los Santos	All Saints' Day	public	
+2040-11-09	Nuestra Señora de la Almudena	Nuestra Señora de la Almudena	observance	MD
+2040-12-06	Día de la Constitución Española	Día de la Constitución Española	public	
+2040-12-08	La inmaculada concepción	Immaculate Conception	public	
+2040-12-13	Fiesta del Sacrificio-Eidul Adha	Arafat Day	public	CE
+2040-12-14	Fiesta del Sacrificio-Aid Al Adha	Feast of the Sacrifice (Eid al-Adha)	public	ML
+2040-12-25	Navidad	Christmas Day	public	
+2040-12-26	San Esteban	San Esteban	public	CT
+2040-12-26	Sant Esteve	Sant Esteve	observance	IB
+2041-01-01	Año Nuevo	New Year's Day	public	
+2041-01-06	Día de los Reyes Magos	Epiphany	public	
+2041-01-07	Día de los Reyes Magos (día sustituto)	Epiphany (substitute day)	observance	
+2041-02-28	Día de Andalucía	Día de Andalucía	public	AN
+2041-03-01	Día de les Illes Balears	Día de les Illes Balears	public	IB
+2041-03-19	San José	Saint Joseph	observance	
+2041-04-18	Jueves Santo	Maundy Thursday	public	AN
+2041-04-18	Jueves Santo	Maundy Thursday	public	AR
+2041-04-18	Jueves Santo	Maundy Thursday	public	AS
+2041-04-18	Jueves Santo	Maundy Thursday	public	CB
+2041-04-18	Jueves Santo	Maundy Thursday	public	CE
+2041-04-18	Jueves Santo	Maundy Thursday	public	CL
+2041-04-18	Jueves Santo	Maundy Thursday	public	CM
+2041-04-18	Jueves Santo	Maundy Thursday	public	CN
+2041-04-18	Jueves Santo	Maundy Thursday	observance	CT
+2041-04-18	Jueves Santo	Maundy Thursday	public	EX
+2041-04-18	Jueves Santo	Maundy Thursday	public	GA
+2041-04-18	Jueves Santo	Maundy Thursday	public	IB
+2041-04-18	Jueves Santo	Maundy Thursday	public	MC
+2041-04-18	Jueves Santo	Maundy Thursday	public	MD
+2041-04-18	Jueves Santo	Maundy Thursday	public	ML
+2041-04-18	Jueves Santo	Maundy Thursday	public	NC
+2041-04-18	Jueves Santo	Maundy Thursday	public	PV
+2041-04-18	Jueves Santo	Maundy Thursday	public	RI
+2041-04-19	Viernes Santo	Good Friday	public	
+2041-04-21	Pascua	Easter Sunday	observance	
+2041-04-22	Lunes de Pascua	Easter Monday	public	CT
+2041-04-22	Lunes de Pascua	Easter Monday	public	IB
+2041-04-22	Lunes de Pascua	Easter Monday	public	NC
+2041-04-22	Lunes de Pascua	Easter Monday	public	PV
+2041-04-22	Lunes de Pascua	Easter Monday	public	RI
+2041-04-22	Lunes de Pascua	Easter Monday	public	VC
+2041-04-23	Día de Aragón	Día de Aragón	public	AR
+2041-04-23	Fiesta de Castilla y León	Fiesta de Castilla y León	public	CL
+2041-05-01	Día del Trabajador	Labour Day	public	
+2041-05-02	Día de la Comunidad de Madrid	Día de la Comunidad de Madrid	public	MD
+2041-05-05	Día de la Madre	Mother's Day	observance	
+2041-05-16	San Isidro Labrador	San Isidro Labrador	observance	MD
+2041-05-17	Día de las Letras Gallegas	Día de las Letras Gallegas	public	GA
+2041-05-30	Día de Canarias	Canary Islands Day	public	CN
+2041-05-31	Día de Castilla-La Mancha	Día de Castilla-La Mancha	public	CM
+2041-06-09	Pentecostés	Pentecost	observance	
+2041-06-09	Día de La Rioja	Día de La Rioja	public	RI
+2041-06-20	Corpus Christi	Corpus Christi	public	CM
+2041-06-24	San Juan	San Juan	public	CT
+2041-06-24	San Juan	San Juan	public	VC
+2041-06-28	Día de las Instituciones de Cantabria	Día de las Instituciones de Cantabria	public	CB
+2041-07-25	Día Nacional de Galicia	Día Nacional de Galicia	public	GA
+2041-07-25	Santiago Apóstol	Santiago Apóstol	public	PV
+2041-08-05	Nuestra Señora de África	Nuestra Señora de África	public	CE
+2041-08-15	Asunción	Assumption	public	
+2041-09-02	Día de Ceuta	Día de Ceuta	public	CE
+2041-09-08	Día de Asturias	Día de Asturias	public	AS
+2041-09-08	Día de Extremadura	Día de Extremadura	public	EX
+2041-09-09	Día de Asturias	Día de Asturias	public	AS
+2041-09-09	Día de Extremadura	Día de Extremadura	public	EX
+2041-09-11	Dia de Cataluña	Dia de Cataluña	public	CT
+2041-09-15	La Bien Aparecida	La Bien Aparecida	public	CB
+2041-09-16	La Bien Aparecida	La Bien Aparecida	public	CB
+2041-09-26	Fiesta del Eid Fitr	End of Ramadan (Eid al-Fitr)	public	ML
+2041-10-12	Fiesta Nacional de España	Fiesta Nacional de España	public	
+2041-11-01	Todos los Santos	All Saints' Day	public	
+2041-11-09	Nuestra Señora de la Almudena	Nuestra Señora de la Almudena	observance	MD
+2041-12-03	Fiesta del Sacrificio-Eidul Adha	Arafat Day	public	CE
+2041-12-04	Fiesta del Sacrificio-Aid Al Adha	Feast of the Sacrifice (Eid al-Adha)	public	ML
+2041-12-06	Día de la Constitución Española	Día de la Constitución Española	public	
+2041-12-08	La inmaculada concepción	Immaculate Conception	public	
+2041-12-09	La inmaculada concepción (día sustituto)	Immaculate Conception (substitute day)	observance	
+2041-12-25	Navidad	Christmas Day	public	
+2041-12-26	San Esteban	San Esteban	public	CT
+2041-12-26	Sant Esteve	Sant Esteve	observance	IB
+2042-01-01	Año Nuevo	New Year's Day	public	
+2042-01-06	Día de los Reyes Magos	Epiphany	public	
+2042-02-28	Día de Andalucía	Día de Andalucía	public	AN
+2042-03-01	Día de les Illes Balears	Día de les Illes Balears	public	IB
+2042-03-19	San José	Saint Joseph	observance	
+2042-04-03	Jueves Santo	Maundy Thursday	public	AN
+2042-04-03	Jueves Santo	Maundy Thursday	public	AR
+2042-04-03	Jueves Santo	Maundy Thursday	public	AS
+2042-04-03	Jueves Santo	Maundy Thursday	public	CB
+2042-04-03	Jueves Santo	Maundy Thursday	public	CE
+2042-04-03	Jueves Santo	Maundy Thursday	public	CL
+2042-04-03	Jueves Santo	Maundy Thursday	public	CM
+2042-04-03	Jueves Santo	Maundy Thursday	public	CN
+2042-04-03	Jueves Santo	Maundy Thursday	observance	CT
+2042-04-03	Jueves Santo	Maundy Thursday	public	EX
+2042-04-03	Jueves Santo	Maundy Thursday	public	GA
+2042-04-03	Jueves Santo	Maundy Thursday	public	IB
+2042-04-03	Jueves Santo	Maundy Thursday	public	MC
+2042-04-03	Jueves Santo	Maundy Thursday	public	MD
+2042-04-03	Jueves Santo	Maundy Thursday	public	ML
+2042-04-03	Jueves Santo	Maundy Thursday	public	NC
+2042-04-03	Jueves Santo	Maundy Thursday	public	PV
+2042-04-03	Jueves Santo	Maundy Thursday	public	RI
+2042-04-04	Viernes Santo	Good Friday	public	
+2042-04-06	Pascua	Easter Sunday	observance	
+2042-04-07	Lunes de Pascua	Easter Monday	public	CT
+2042-04-07	Lunes de Pascua	Easter Monday	public	IB
+2042-04-07	Lunes de Pascua	Easter Monday	public	NC
+2042-04-07	Lunes de Pascua	Easter Monday	public	PV
+2042-04-07	Lunes de Pascua	Easter Monday	public	RI
+2042-04-07	Lunes de Pascua	Easter Monday	public	VC
+2042-04-23	Día de Aragón	Día de Aragón	public	AR
+2042-04-23	Fiesta de Castilla y León	Fiesta de Castilla y León	public	CL
+2042-05-01	Día del Trabajador	Labour Day	public	
+2042-05-02	Día de la Comunidad de Madrid	Día de la Comunidad de Madrid	public	MD
+2042-05-04	Día de la Madre	Mother's Day	observance	
+2042-05-16	San Isidro Labrador	San Isidro Labrador	observance	MD
+2042-05-17	Día de las Letras Gallegas	Día de las Letras Gallegas	public	GA
+2042-05-25	Pentecostés	Pentecost	observance	
+2042-05-30	Día de Canarias	Canary Islands Day	public	CN
+2042-05-31	Día de Castilla-La Mancha	Día de Castilla-La Mancha	public	CM
+2042-06-05	Corpus Christi	Corpus Christi	public	CM
+2042-06-09	Día de La Rioja	Día de La Rioja	public	RI
+2042-06-24	San Juan	San Juan	public	CT
+2042-06-24	San Juan	San Juan	public	VC
+2042-06-28	Día de las Instituciones de Cantabria	Día de las Instituciones de Cantabria	public	CB
+2042-07-25	Día Nacional de Galicia	Día Nacional de Galicia	public	GA
+2042-07-25	Santiago Apóstol	Santiago Apóstol	public	PV
+2042-08-05	Nuestra Señora de África	Nuestra Señora de África	public	CE
+2042-08-15	Asunción	Assumption	public	
+2042-09-02	Día de Ceuta	Día de Ceuta	public	CE
+2042-09-08	Día de Asturias	Día de Asturias	public	AS
+2042-09-08	Día de Extremadura	Día de Extremadura	public	EX
+2042-09-11	Dia de Cataluña	Dia de Cataluña	public	CT
+2042-09-15	La Bien Aparecida	La Bien Aparecida	public	CB
+2042-09-15	Fiesta del Eid Fitr	End of Ramadan (Eid al-Fitr)	public	ML
+2042-10-12	Fiesta Nacional de España	Fiesta Nacional de España	public	
+2042-10-13	Fiesta Nacional de España (día sustituto)	Fiesta Nacional de España (substitute day)	observance	
+2042-11-01	Todos los Santos	All Saints' Day	public	
+2042-11-10	Nuestra Señora de la Almudena	Nuestra Señora de la Almudena	observance	MD
+2042-11-22	Fiesta del Sacrificio-Eidul Adha	Arafat Day	public	CE
+2042-11-23	Fiesta del Sacrificio-Aid Al Adha	Feast of the Sacrifice (Eid al-Adha)	public	ML
+2042-12-06	Día de la Constitución Española	Día de la Constitución Española	public	
+2042-12-08	La inmaculada concepción	Immaculate Conception	public	
+2042-12-25	Navidad	Christmas Day	public	
+2042-12-26	San Esteban	San Esteban	public	CT
+2042-12-26	Sant Esteve	Sant Esteve	observance	IB
+2043-01-01	Año Nuevo	New Year's Day	public	
+2043-01-06	Día de los Reyes Magos	Epiphany	public	
+2043-02-28	Día de Andalucía	Día de Andalucía	public	AN
+2043-03-01	Día de les Illes Balears	Día de les Illes Balears	public	IB
+2043-03-02	Día de les Illes Balears (día sustituto)	Día de les Illes Balears (substitute day)	public	IB
+2043-03-19	San José	Saint Joseph	observance	
+2043-03-26	Jueves Santo	Maundy Thursday	public	AN
+2043-03-26	Jueves Santo	Maundy Thursday	public	AR
+2043-03-26	Jueves Santo	Maundy Thursday	public	AS
+2043-03-26	Jueves Santo	Maundy Thursday	public	CB
+2043-03-26	Jueves Santo	Maundy Thursday	public	CE
+2043-03-26	Jueves Santo	Maundy Thursday	public	CL
+2043-03-26	Jueves Santo	Maundy Thursday	public	CM
+2043-03-26	Jueves Santo	Maundy Thursday	public	CN
+2043-03-26	Jueves Santo	Maundy Thursday	observance	CT
+2043-03-26	Jueves Santo	Maundy Thursday	public	EX
+2043-03-26	Jueves Santo	Maundy Thursday	public	GA
+2043-03-26	Jueves Santo	Maundy Thursday	public	IB
+2043-03-26	Jueves Santo	Maundy Thursday	public	MC
+2043-03-26	Jueves Santo	Maundy Thursday	public	MD
+2043-03-26	Jueves Santo	Maundy Thursday	public	ML
+2043-03-26	Jueves Santo	Maundy Thursday	public	NC
+2043-03-26	Jueves Santo	Maundy Thursday	public	PV
+2043-03-26	Jueves Santo	Maundy Thursday	public	RI
+2043-03-27	Viernes Santo	Good Friday	public	
+2043-03-29	Pascua	Easter Sunday	observance	
+2043-03-30	Lunes de Pascua	Easter Monday	public	CT
+2043-03-30	Lunes de Pascua	Easter Monday	public	IB
+2043-03-30	Lunes de Pascua	Easter Monday	public	NC
+2043-03-30	Lunes de Pascua	Easter Monday	public	PV
+2043-03-30	Lunes de Pascua	Easter Monday	public	RI
+2043-03-30	Lunes de Pascua	Easter Monday	public	VC
+2043-04-23	Día de Aragón	Día de Aragón	public	AR
+2043-04-23	Fiesta de Castilla y León	Fiesta de Castilla y León	public	CL
+2043-05-01	Día del Trabajador	Labour Day	public	
+2043-05-02	Día de la Comunidad de Madrid	Día de la Comunidad de Madrid	public	MD
+2043-05-03	Día de la Madre	Mother's Day	observance	
+2043-05-16	San Isidro Labrador	San Isidro Labrador	observance	MD
+2043-05-17	Pentecostés	Pentecost	observance	
+2043-05-17	Día de las Letras Gallegas	Día de las Letras Gallegas	public	GA
+2043-05-28	Corpus Christi	Corpus Christi	public	CM
+2043-05-30	Día de Canarias	Canary Islands Day	public	CN
+2043-05-31	Día de Castilla-La Mancha	Día de Castilla-La Mancha	public	CM
+2043-06-09	Día de La Rioja	Día de La Rioja	public	RI
+2043-06-24	San Juan	San Juan	public	CT
+2043-06-24	San Juan	San Juan	public	VC
+2043-06-28	Día de las Instituciones de Cantabria	Día de las Instituciones de Cantabria	public	CB
+2043-07-25	Día Nacional de Galicia	Día Nacional de Galicia	public	GA
+2043-07-25	Santiago Apóstol	Santiago Apóstol	public	PV
+2043-08-05	Nuestra Señora de África	Nuestra Señora de África	public	CE
+2043-08-15	Asunción	Assumption	public	
+2043-09-02	Día de Ceuta	Día de Ceuta	public	CE
+2043-09-04	Fiesta del Eid Fitr	End of Ramadan (Eid al-Fitr)	public	ML
+2043-09-08	Día de Asturias	Día de Asturias	public	AS
+2043-09-08	Día de Extremadura	Día de Extremadura	public	EX
+2043-09-11	Dia de Cataluña	Dia de Cataluña	public	CT
+2043-09-15	La Bien Aparecida	La Bien Aparecida	public	CB
+2043-10-12	Fiesta Nacional de España	Fiesta Nacional de España	public	
+2043-11-01	Todos los Santos	All Saints' Day	public	
+2043-11-02	Todos los Santos (día sustituto)	All Saints' Day (substitute day)	public	AN
+2043-11-02	Todos los Santos (día sustituto)	All Saints' Day (substitute day)	public	AR
+2043-11-02	Todos los Santos (día sustituto)	All Saints' Day (substitute day)	public	AS
+2043-11-02	Todos los Santos (día sustituto)	All Saints' Day (substitute day)	public	CL
+2043-11-02	Todos los Santos (día sustituto)	All Saints' Day (substitute day)	public	CM
+2043-11-02	Todos los Santos (día sustituto)	All Saints' Day (substitute day)	public	CN
+2043-11-02	Todos los Santos (día sustituto)	All Saints' Day (substitute day)	public	EX
+2043-11-02	Todos los Santos (día sustituto)	All Saints' Day (substitute day)	public	MD
+2043-11-02	Todos los Santos (día sustituto)	All Saints' Day (substitute day)	public	NC
+2043-11-09	Nuestra Señora de la Almudena	Nuestra Señora de la Almudena	observance	MD
+2043-11-11	Fiesta del Sacrificio-Eidul Adha	Arafat Day	public	CE
+2043-11-12	Fiesta del Sacrificio-Aid Al Adha	Feast of the Sacrifice (Eid al-Adha)	public	ML
+2043-12-06	Día de la Constitución Española	Día de la Constitución Española	public	
+2043-12-07	Día de la Constitución Española (día sustituto)	Día de la Constitución Española (substitute day)	public	AN
+2043-12-07	Día de la Constitución Española (día sustituto)	Día de la Constitución Española (substitute day)	public	AR
+2043-12-07	Día de la Constitución Española (día sustituto)	Día de la Constitución Española (substitute day)	public	AS
+2043-12-07	Día de la Constitución Española (día sustituto)	Día de la Constitución Española (substitute day)	public	CB
+2043-12-07	Día de la Constitución Española (día sustituto)	Día de la Constitución Española (substitute day)	public	CL
+2043-12-07	Día de la Constitución Española (día sustituto)	Día de la Constitución Española (substitute day)	public	EX
+2043-12-07	Día de la Constitución Española (día sustituto)	Día de la Constitución Española (substitute day)	public	MC
+2043-12-07	Día de la Constitución Española (día sustituto)	Día de la Constitución Española (substitute day)	public	MD
+2043-12-07	Día de la Constitución Española (día sustituto)	Día de la Constitución Española (substitute day)	public	ML
+2043-12-07	Día de la Constitución Española (día sustituto)	Día de la Constitución Española (substitute day)	public	RI
+2043-12-08	La inmaculada concepción	Immaculate Conception	public	
+2043-12-25	Navidad	Christmas Day	public	
+2043-12-26	San Esteban	San Esteban	public	CT
+2043-12-26	Sant Esteve	Sant Esteve	observance	IB
+2044-01-01	Año Nuevo	New Year's Day	public	
+2044-01-06	Día de los Reyes Magos	Epiphany	public	
+2044-02-28	Día de Andalucía	Día de Andalucía	public	AN
+2044-02-29	Día de Andalucía (día sustituto)	Día de Andalucía (substitute day)	public	AN
+2044-03-01	Día de les Illes Balears	Día de les Illes Balears	public	IB
+2044-03-19	San José	Saint Joseph	observance	
+2044-04-14	Jueves Santo	Maundy Thursday	public	AN
+2044-04-14	Jueves Santo	Maundy Thursday	public	AR
+2044-04-14	Jueves Santo	Maundy Thursday	public	AS
+2044-04-14	Jueves Santo	Maundy Thursday	public	CB
+2044-04-14	Jueves Santo	Maundy Thursday	public	CE
+2044-04-14	Jueves Santo	Maundy Thursday	public	CL
+2044-04-14	Jueves Santo	Maundy Thursday	public	CM
+2044-04-14	Jueves Santo	Maundy Thursday	public	CN
+2044-04-14	Jueves Santo	Maundy Thursday	observance	CT
+2044-04-14	Jueves Santo	Maundy Thursday	public	EX
+2044-04-14	Jueves Santo	Maundy Thursday	public	GA
+2044-04-14	Jueves Santo	Maundy Thursday	public	IB
+2044-04-14	Jueves Santo	Maundy Thursday	public	MC
+2044-04-14	Jueves Santo	Maundy Thursday	public	MD
+2044-04-14	Jueves Santo	Maundy Thursday	public	ML
+2044-04-14	Jueves Santo	Maundy Thursday	public	NC
+2044-04-14	Jueves Santo	Maundy Thursday	public	PV
+2044-04-14	Jueves Santo	Maundy Thursday	public	RI
+2044-04-15	Viernes Santo	Good Friday	public	
+2044-04-17	Pascua	Easter Sunday	observance	
+2044-04-18	Lunes de Pascua	Easter Monday	public	CT
+2044-04-18	Lunes de Pascua	Easter Monday	public	IB
+2044-04-18	Lunes de Pascua	Easter Monday	public	NC
+2044-04-18	Lunes de Pascua	Easter Monday	public	PV
+2044-04-18	Lunes de Pascua	Easter Monday	public	RI
+2044-04-18	Lunes de Pascua	Easter Monday	public	VC
+2044-04-23	Día de Aragón	Día de Aragón	public	AR
+2044-04-23	Fiesta de Castilla y León	Fiesta de Castilla y León	public	CL
+2044-05-01	Día de la Madre	Mother's Day	observance	
+2044-05-01	Día del Trabajador	Labour Day	public	
+2044-05-02	Día del Trabajador (día sustituto)	Labour Day (substitute day)	public	AN
+2044-05-02	Día del Trabajador (día sustituto)	Labour Day (substitute day)	public	AR
+2044-05-02	Día del Trabajador (día sustituto)	Labour Day (substitute day)	public	AS
+2044-05-02	Día del Trabajador (día sustituto)	Labour Day (substitute day)	public	CL
+2044-05-02	Día del Trabajador (día sustituto)	Labour Day (substitute day)	public	CT
+2044-05-02	Día del Trabajador (día sustituto)	Labour Day (substitute day)	public	EX
+2044-05-02	Día del Trabajador (día sustituto)	Labour Day (substitute day)	public	MC
+2044-05-02	Día de la Comunidad de Madrid	Día de la Comunidad de Madrid	public	MD
+2044-05-16	San Isidro Labrador	San Isidro Labrador	observance	MD
+2044-05-17	Día de las Letras Gallegas	Día de las Letras Gallegas	public	GA
+2044-05-30	Día de Canarias	Canary Islands Day	public	CN
+2044-05-31	Día de Castilla-La Mancha	Día de Castilla-La Mancha	public	CM
+2044-06-05	Pentecostés	Pentecost	observance	
+2044-06-09	Día de La Rioja	Día de La Rioja	public	RI
+2044-06-16	Corpus Christi	Corpus Christi	public	CM
+2044-06-24	San Juan	San Juan	public	CT
+2044-06-24	San Juan	San Juan	public	VC
+2044-06-28	Día de las Instituciones de Cantabria	Día de las Instituciones de Cantabria	public	CB
+2044-07-25	Día Nacional de Galicia	Día Nacional de Galicia	public	GA
+2044-07-25	Santiago Apóstol	Santiago Apóstol	public	PV
+2044-08-05	Nuestra Señora de África	Nuestra Señora de África	public	CE
+2044-08-15	Asunción	Assumption	public	
+2044-08-24	Fiesta del Eid Fitr	End of Ramadan (Eid al-Fitr)	public	ML
+2044-09-02	Día de Ceuta	Día de Ceuta	public	CE
+2044-09-08	Día de Asturias	Día de Asturias	public	AS
+2044-09-08	Día de Extremadura	Día de Extremadura	public	EX
+2044-09-11	Dia de Cataluña	Dia de Cataluña	public	CT
+2044-09-15	La Bien Aparecida	La Bien Aparecida	public	CB
+2044-10-12	Fiesta Nacional de España	Fiesta Nacional de España	public	
+2044-10-30	Fiesta del Sacrificio-Eidul Adha	Arafat Day	public	CE
+2044-10-31	Fiesta del Sacrificio-Aid Al Adha	Feast of the Sacrifice (Eid al-Adha)	public	ML
+2044-11-01	Todos los Santos	All Saints' Day	public	
+2044-11-09	Nuestra Señora de la Almudena	Nuestra Señora de la Almudena	observance	MD
+2044-12-06	Día de la Constitución Española	Día de la Constitución Española	public	
+2044-12-08	La inmaculada concepción	Immaculate Conception	public	
+2044-12-25	Navidad	Christmas Day	public	
+2044-12-26	Navidad (día sustituto)	Christmas Day (substitute day)	public	
+2044-12-26	San Esteban	San Esteban	public	CT
+2044-12-26	Sant Esteve	Sant Esteve	observance	IB
+2045-01-01	Año Nuevo	New Year's Day	public	
+2045-01-02	Año Nuevo (día sustituto)	New Year's Day (substitute day)	observance	
+2045-01-06	Día de los Reyes Magos	Epiphany	public	
+2045-02-28	Día de Andalucía	Día de Andalucía	public	AN
+2045-03-01	Día de les Illes Balears	Día de les Illes Balears	public	IB
+2045-03-19	San José	Saint Joseph	observance	
+2045-04-06	Jueves Santo	Maundy Thursday	public	AN
+2045-04-06	Jueves Santo	Maundy Thursday	public	AR
+2045-04-06	Jueves Santo	Maundy Thursday	public	AS
+2045-04-06	Jueves Santo	Maundy Thursday	public	CB
+2045-04-06	Jueves Santo	Maundy Thursday	public	CE
+2045-04-06	Jueves Santo	Maundy Thursday	public	CL
+2045-04-06	Jueves Santo	Maundy Thursday	public	CM
+2045-04-06	Jueves Santo	Maundy Thursday	public	CN
+2045-04-06	Jueves Santo	Maundy Thursday	observance	CT
+2045-04-06	Jueves Santo	Maundy Thursday	public	EX
+2045-04-06	Jueves Santo	Maundy Thursday	public	GA
+2045-04-06	Jueves Santo	Maundy Thursday	public	IB
+2045-04-06	Jueves Santo	Maundy Thursday	public	MC
+2045-04-06	Jueves Santo	Maundy Thursday	public	MD
+2045-04-06	Jueves Santo	Maundy Thursday	public	ML
+2045-04-06	Jueves Santo	Maundy Thursday	public	NC
+2045-04-06	Jueves Santo	Maundy Thursday	public	PV
+2045-04-06	Jueves Santo	Maundy Thursday	public	RI
+2045-04-07	Viernes Santo	Good Friday	public	
+2045-04-09	Pascua	Easter Sunday	observance	
+2045-04-10	Lunes de Pascua	Easter Monday	public	CT
+2045-04-10	Lunes de Pascua	Easter Monday	public	IB
+2045-04-10	Lunes de Pascua	Easter Monday	public	NC
+2045-04-10	Lunes de Pascua	Easter Monday	public	PV
+2045-04-10	Lunes de Pascua	Easter Monday	public	RI
+2045-04-10	Lunes de Pascua	Easter Monday	public	VC
+2045-04-23	Día de Aragón	Día de Aragón	public	AR
+2045-04-23	Fiesta de Castilla y León	Fiesta de Castilla y León	public	CL
+2045-04-24	Día de Aragón (día sustituto)	Día de Aragón (substitute day)	public	AR
+2045-04-24	Fiesta de Castilla y León	Fiesta de Castilla y León	public	CL
+2045-05-01	Día del Trabajador	Labour Day	public	
+2045-05-02	Día de la Comunidad de Madrid	Día de la Comunidad de Madrid	public	MD
+2045-05-07	Día de la Madre	Mother's Day	observance	
+2045-05-16	San Isidro Labrador	San Isidro Labrador	observance	MD
+2045-05-17	Día de las Letras Gallegas	Día de las Letras Gallegas	public	GA
+2045-05-28	Pentecostés	Pentecost	observance	
+2045-05-30	Día de Canarias	Canary Islands Day	public	CN
+2045-05-31	Día de Castilla-La Mancha	Día de Castilla-La Mancha	public	CM
+2045-06-08	Corpus Christi	Corpus Christi	public	CM
+2045-06-09	Día de La Rioja	Día de La Rioja	public	RI
+2045-06-24	San Juan	San Juan	public	CT
+2045-06-24	San Juan	San Juan	public	VC
+2045-06-28	Día de las Instituciones de Cantabria	Día de las Instituciones de Cantabria	public	CB
+2045-07-25	Día Nacional de Galicia	Día Nacional de Galicia	public	GA
+2045-07-25	Santiago Apóstol	Santiago Apóstol	public	PV
+2045-08-05	Nuestra Señora de África	Nuestra Señora de África	public	CE
+2045-08-14	Fiesta del Eid Fitr	End of Ramadan (Eid al-Fitr)	public	ML
+2045-08-15	Asunción	Assumption	public	
+2045-09-02	Día de Ceuta	Día de Ceuta	public	CE
+2045-09-08	Día de Asturias	Día de Asturias	public	AS
+2045-09-08	Día de Extremadura	Día de Extremadura	public	EX
+2045-09-11	Dia de Cataluña	Dia de Cataluña	public	CT
+2045-09-15	La Bien Aparecida	La Bien Aparecida	public	CB
+2045-10-12	Fiesta Nacional de España	Fiesta Nacional de España	public	
+2045-10-20	Fiesta del Sacrificio-Eidul Adha	Arafat Day	public	CE
+2045-10-21	Fiesta del Sacrificio-Aid Al Adha	Feast of the Sacrifice (Eid al-Adha)	public	ML
+2045-11-01	Todos los Santos	All Saints' Day	public	
+2045-11-09	Nuestra Señora de la Almudena	Nuestra Señora de la Almudena	observance	MD
+2045-12-06	Día de la Constitución Española	Día de la Constitución Española	public	
+2045-12-08	La inmaculada concepción	Immaculate Conception	public	
+2045-12-25	Navidad	Christmas Day	public	
+2045-12-26	San Esteban	San Esteban	public	CT
+2045-12-26	Sant Esteve	Sant Esteve	observance	IB

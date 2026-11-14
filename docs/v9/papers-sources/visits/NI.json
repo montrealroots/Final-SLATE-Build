@@ -1,0 +1,126 @@
+{
+ "country": "NI",
+ "rules": [
+  {
+   "entry": "free",
+   "days": 90,
+   "passports": [
+    "AL",
+    "AO",
+    "AR",
+    "AT",
+    "AU",
+    "BE",
+    "BG",
+    "BH",
+    "BN",
+    "BO",
+    "BR",
+    "BZ",
+    "CA",
+    "CH",
+    "CL",
+    "CR",
+    "CY",
+    "CZ",
+    "DE",
+    "DK",
+    "DM",
+    "DO",
+    "DZ",
+    "EC",
+    "ES",
+    "FI",
+    "FR",
+    "GB",
+    "GR",
+    "GT",
+    "HN",
+    "HU",
+    "IE",
+    "IL",
+    "IT",
+    "JP",
+    "KR",
+    "KW",
+    "LU",
+    "LV",
+    "MD",
+    "MT",
+    "MY",
+    "NL",
+    "NO",
+    "PA",
+    "PH",
+    "PL",
+    "PS",
+    "PT",
+    "PY",
+    "QA",
+    "RO",
+    "SA",
+    "SB",
+    "SE",
+    "SG",
+    "SV",
+    "TR",
+    "US",
+    "UY",
+    "VA",
+    "ZA"
+   ]
+  },
+  {
+   "entry": "free",
+   "days": 90,
+   "within": 180,
+   "passports": [
+    "RU"
+   ]
+  },
+  {
+   "entry": "free",
+   "days": 90,
+   "within": 365,
+   "passports": [
+    "BY"
+   ]
+  },
+  {
+   "entry": "free",
+   "days": 30,
+   "passports": [
+    "HK"
+   ]
+  },
+  {
+   "entry": "free",
+   "days": 30,
+   "within": 180,
+   "passports": [
+    "KZ"
+   ]
+  }
+ ],
+ "others": {
+  "entry": "evisa"
+ },
+ "note": "Nicaragua: nationals of the countries listed enter without a visa for 90 days (Russia in 180, Belarus a year) or 30 (Hong Kong; Kazakhstan in 180), with proof of funds; the exemptions of Croatia, Estonia, Lithuania, Slovakia, Slovenia and others were cancelled on 16 February 2026. Everyone else may get an e-Visa (portal since March 2026). Read from Wikipedia's copy. Read on 2026-11-03 against the CA-4 classification of visas (El Salvador, Guatemala, Honduras and Nicaragua, 23 January 2019), the primary the Dirección General de Migración y Extranjería publishes: it gives no lengths and is older than the changes Wikipedia's copy records since, so it is recorded here and not held; where it differs (its categories for some passports), the current figures are kept.",
+ "sources": [
+  {
+   "url": "https://en.wikipedia.org/wiki/Visa_policy_of_Nicaragua",
+   "title": "Wikipedia, Visa policy of Nicaragua",
+   "read": "2026-11-03",
+   "kind": "secondary",
+   "quotes": "https://www.migob.gob.ni/",
+   "said": "Citizens of the following countries and territories may enter Nicaragua without a visa for stays up to the duration listed below. ... 90 days All European Union member states Abkhazia Albania Algeria Angola Argentina Australia Bahrain Belize Bolivia Brazil Brunei Canada Chile Costa Rica Dominica Dominican Republic Ecuador El Salvador Guatemala Honduras Israel Japan Kuwait Malaysia Moldova Norway Palestine Panama Paraguay Philippines Qatar Saudi Arabia Singapore Solomon Islands South Africa South Korea South Ossetia Switzerland Turkey United Kingdom United States Uruguay Vatican City 90 days within any 180 days Russia 90 days within a calendar year Belarus 30 days Hong Kong 30 days within any 180 days Kazakhstan ... 16 February 2026: Andorra, Antigua and Barbuda, Bahamas, Barbados, Croatia, Cuba, Estonia, Fiji, Iceland, Liechtenstein, Lithuania, Macau, Madagascar, Marshall Islands, Mexico, Monaco, New Zealand, Saint Kitts and Nevis, Saint Lucia, Saint Vincent and the Grenadines, San Marino, São Tomé and Príncipe, Slovakia, Slovenia, Taiwan, Trinidad and Tobago, Tuvalu, Ukraine, United Arab Emirates, Vanuatu ... Citizens of other countries are eligible to obtain an e-Visa."
+  },
+  {
+   "url": "https://drive.google.com/file/d/16Zh5tqtgI80zfwqGU-hhzuqkbwdSPdh8/view?usp=sharing",
+   "title": "Dirección General de Migración y Extranjería, El Salvador: Clasificación para Fines de Exención y Obligatoriedad de Visas de El Salvador, Guatemala, Honduras y Nicaragua (23 de enero 2019), the file linked as 'Descargue aquí el listado de países que requieren visa' from https://www.migracion.gob.sv/servicios/listado-visa/ (published there 10-11-2020)",
+   "read": "2026-11-03",
+   "kind": "primary",
+   "said": "Clasificación para Fines de Exención y Obligatoriedad de Visas de El Salvador, Guatemala, Honduras y Nicaragua 23 de enero 2019 ... (C) CONSULTADA ... 3 Alemania (A) EXENTO DE VISA ... 7 Arabia Saudita (A) EXENTO DE VISA ... Honduras: dará trato de Categoría “B” a todos los pasaportes. ... 18 Belarus ... (B) CONSULAR O SIN CONSULTA ... Nicaragua y Honduras: dará trato de Categoría “A” a los portadores de pasaportes Ordinarios. ... 142 Reino Unido de Gran Bretaña e Irlanda del Norte ... (A) EXENTO DE VISA ... Honduras: Dará trato de categoría “B” de visa consular o sin consulta a todos los pasaportes. ... El Salvador y Honduras: darán trato de categoría “A” a los portadores de pasaportes ordinarios."
+  }
+ ]
+}

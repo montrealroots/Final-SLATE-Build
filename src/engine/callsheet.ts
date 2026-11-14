@@ -10,7 +10,7 @@ import { roofed } from './locations';
 import { placeHolidaysOn } from './holidays';
 import { personById, roleLabel } from './people';
 import { SHOOT_CREW } from './production/shoot';
-import { HOLIDAY_PREMIUM } from './production/rates';
+import { HOLIDAY_PREMIUM, NIGHT_PREMIUM } from './production/rates';
 import { approvedCharacters, approvedScenes, sceneLabel } from './projects';
 import { dateKey, formatClock, formatTime } from './time';
 import { daylight, forecast } from './weather';
@@ -70,6 +70,7 @@ export function callSheet(state: GameState, p: Project, dayId: string): CallShee
   }
   const holiday = placeHolidaysOn(place, d.date)[0];
   if (holiday) notes.push(`${holiday.name}: a public holiday, so everyone on set is paid ${HOLIDAY_PREMIUM} times their day rate.`);
+  if (d.night) notes.push(`A night shoot: everyone on set is paid ${NIGHT_PREMIUM} times their day rate.`);
   if (!d.interior && roofed(p, d.locationLabel)) notes.push('Filmed under a roof: the weather and the daylight do not matter today.');
   else if (!d.interior) {
     const light = daylight(place.lat, place.lon, d.date);

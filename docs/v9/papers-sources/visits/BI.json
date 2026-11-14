@@ -1,0 +1,53 @@
+{
+ "country": "BI",
+ "rules": [
+  {
+   "entry": "free",
+   "months": 3,
+   "passports": [
+    "CD",
+    "KE",
+    "RW",
+    "SS",
+    "TZ",
+    "UG"
+   ]
+  },
+  {
+   "entry": "free",
+   "days": 14,
+   "passports": [
+    "HK"
+   ]
+  }
+ ],
+ "others": {
+  "entry": "arrival",
+  "days": 30
+ },
+ "note": "Burundi: nationals of the East African Community's other states enter without a visa for 3 months, Hong Kong's for 14 days; everyone else gets a visa on arrival for 30 days (or an online visa, USD 90 a month). Read from Wikipedia's copy. Checked on 2026-11-03 against the Commissariat Général des Migrations' own site: its airport entry visa, applied for online and shown at the point of entry, has one category, a month; the East African Community's and Hong Kong's exemptions aren't named there and stand on Wikipedia's copy.",
+ "sources": [
+  {
+   "url": "https://en.wikipedia.org/wiki/Visa_policy_of_Burundi",
+   "title": "Wikipedia, Visa policy of Burundi",
+   "read": "2026-11-03",
+   "kind": "secondary",
+   "quotes": "https://www.migration.gov.bi/",
+   "said": "Visitors to Burundi may obtain either a visa on arrival or an Online Visa unless they are citizens from one of the visa-exempt countries. ... 3 months Democratic Republic of Congo Kenya Rwanda South Sudan Tanzania Uganda 14 days Hong Kong ... Citizens of other countries and territories may obtain a visa on arrival either at Bujumbura International Airport ( Melchior Ndadaye ) or at all land borders for a maximum stay of 30 days."
+  },
+  {
+   "url": "https://migration.gov.bi/Apply/step1/8",
+   "title": "Commissariat Général des Migrations (Burundi), Demande de Visa d'entrée (aéroport)",
+   "read": "2026-11-03",
+   "kind": "primary",
+   "said": "Demande de Visa d'entrée (aéroport) Informations personnelles ... Type de Visa d'entrée (aéroport) --> Catégorie * - 1 MOIS"
+  },
+  {
+   "url": "https://migration.gov.bi/Services",
+   "title": "Commissariat Général des Migrations (Burundi), Infos sur le visa",
+   "read": "2026-11-03",
+   "kind": "primary",
+   "said": "Effectuez le paiement en ligne des frais de visa. ... À votre arrivée au CGM, vous présenterez votre certificat de demande de visa au point d'entrée."
+  }
+ ]
+}

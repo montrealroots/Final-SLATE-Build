@@ -1,0 +1,27 @@
+{
+ "country": "PW",
+ "years": "none",
+ "renounce": null,
+ "lapses": false,
+ "note": "GLOBALCIT's Citizenship Law Dataset v3.0 (EUI, 2025), coding the law in force on 1 January 2024 (A06a No provision; A06b No provision; L05 No provision): no ordinary naturalisation by residence; a citizen keeps it on taking another. Reforms after that date are checked in the file's later sources, where a later source is given. Citizenship at birth is read from the same dataset's 2024 coding of modes A01a (descent, born in country: Generally applicable provision), A01b (descent, born abroad: Generally applicable provision), A02a (birth in country: No provision) and A02b (birth in country to a parent born there: No provision), as its codebook (RSC/GLOBALCIT 2025/01, sections 3.2.1a to 3.2.2b) defines them: not by birth in the territory alone (provisions for foundlings and children otherwise stateless, modes A03a and A03b, aren't held by the form); by descent from either parent, with no further limit on a child born abroad. Changes to the law at birth after 1 January 2024 weren't checked for this file. On 2026-11-03 the primaries were read: Constitution of the Republic of Palau (Palau National Code Annotated, Supp. 18), Judiciary of the Republic of Palau (palaucourts.gov.pw), Article III and the Seventeenth Amendment; Citizenship Act, 13 PNCA § 101 et seq. (Title 13 Citizenship and Immigration, Division 1), Ministry of Human Resources, Culture, Tourism and Development. Every figure the file holds now rests on them, and the dataset is no longer cited. The Seventeenth Amendment (2008) governs over the pre-2008 wording the annotated code still prints beside it; its route for persons of recognised Palauan ancestry isn't held by the form.",
+ "sources": [
+  {
+   "url": "https://palaucourts.gov.pw/upload/P1408/2639033632374.pdf",
+   "title": "Constitution of the Republic of Palau (Palau National Code Annotated, Supp. 18), Judiciary of the Republic of Palau (palaucourts.gov.pw), Article III and the Seventeenth Amendment",
+   "read": "2026-11-03",
+   "kind": "primary",
+   "said": "SEVENTEENTH AMENDMENT Article III, Section 4 of the Constitution is hereby amended to read as follows: A person born of parents, one or both of whom are citizens of Palau or are of recognized Palauan ancestry, is a citizen of Palau. Citizenship of other foreign nations shall not affect a person's Palauan citizenship. Article III, Section 2 and 3 are hereby repealed. Source Proposed amendment enacted November 19, 2008."
+  },
+  {
+   "url": "https://ministryofhrctd.pw/wp-content/uploads/2021/11/13-PNCA-1.pdf",
+   "title": "Citizenship Act, 13 PNCA § 101 et seq. (Title 13 Citizenship and Immigration, Division 1), Ministry of Human Resources, Culture, Tourism and Development",
+   "read": "2026-11-03",
+   "kind": "primary",
+   "said": "§ 102. Definitions. ... (h) \"Naturalization\" means the conferring of citizenship upon a person after birth"
+  }
+ ],
+ "atBirth": {
+  "soil": "none",
+  "descent": "either parent"
+ }
+}

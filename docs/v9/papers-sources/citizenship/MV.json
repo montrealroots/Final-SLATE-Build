@@ -1,0 +1,27 @@
+{
+ "country": "MV",
+ "years": 12,
+ "renounce": true,
+ "lapses": false,
+ "note": "The Statelessness Network Asia Pacific's summary of the Maldives' Citizenship Act: a Muslim who has lived in the Maldives continuously for at least twelve years may apply for citizenship, among other requirements (the Constitution admits no non-Muslim, which the game doesn't model); dual citizenship is permitted, with no conditions on a Maldivian taking another. Whether a foreigner naturalising must give up a prior citizenship isn't stated in what could be read, so it is null. Citizenship at birth is read from the same summary: the Citizenship Act gives citizenship automatically to a child born to a Maldivian citizen wherever the child is born (jus sanguinis); the summary states no citizenship by birth in the Maldives, so none is held. The summary also records differences between mothers and fathers in transmission depending on religion and marital status, which the form doesn't hold. On 2026-11-03 the primaries were read: ދިވެހިރާއްޖޭގެ ސިޓިޒެންޝިޕް ޤާނޫނު (Maldivian Citizenship Act, Law No. 4/69, consolidated with its seventh amendment, in force 5 April 1998), MV Laws, Attorney General's Office; text read from the page's server-rendered Inertia data (data-page); ދިވެހިރާއްޖޭގެ ޖުމްހޫރިއްޔާގެ ޤާނޫނުއަސާސީ (Constitution of the Republic of Maldives 2008, consolidated), art. 9 ދިވެހިރައްޔިތް, MV Laws. Every figure the file holds now rests on them, and the summary is no longer cited. The Act changed a figure the summary left open: an applicant must declare that he will give up his original citizenship and bring his own government's letter that it doesn't object (s. 2), so renunciation is true, not unknown. Naturalisation is open only to Muslims (Constitution art. 9, Act s. 2), which the game doesn't model. The texts are in Dhivehi; the reading is the second pass's translation, checked word by word against the saved text.",
+ "sources": [
+  {
+   "url": "https://mvlaw.gov.mv/dv/legislations/70/consolidations/1147",
+   "title": "ދިވެހިރާއްޖޭގެ ސިޓިޒެންޝިޕް ޤާނޫނު (Maldivian Citizenship Act, Law No. 4/69, consolidated with its seventh amendment, in force 5 April 1998), MV Laws, Attorney General's Office; text read from the page's server-rendered Inertia data (data-page)",
+   "read": "2026-11-03",
+   "kind": "primary",
+   "said": "2. ދިވެހިރައްޔިތަކަށް ވާންއެދޭ ބޭރުމީހާ ތިރީގައި މިވާ ޝަރްޠުތައް ފުރިހަމަވެފައިވާ ނަމަ ... މުސްލިމަކު ކަމުގައިވުން. އުމުރުން 21 އަހަރުވެ، ބުއްދި ސަލާމަތުން ހުރި މީހަކު ކަމުގައިވުން. މެދުކެނޑުމެއްނެތި ރާއްޖޭގައި 12 އަހަރު ވަންދެން އުޅެމުން އައިސްފައިވާ މީހަކު ކަމުގައިވުން. މި މުއްދަތުގެ ތެރޭގައި ރާއްޖޭން ބޭރަށް ފުރައިގެން ދިޔަ ނަމަވެސް، މިއިން އެއްވެސް ފަހަރަކު 6 މަސް ދުވަހަށް ވުރެ ދިގު މުއްދަތެއް ރާއްޖޭން ބޭރުގައި ނުވުމާއެކު، ރާއްޖޭގައި ހުރި ދުވަސްތަކުގެ ޖުމްލަ 10 އަހަރަށްވުރެ ގިނަނަމަ، މި ޝަރްޠު ފުރިހަމަވީ ކަމަށް ބެލޭނެއެވެ. ... އެމީހެއްގެ އަސްލު ސިޓިޒެންޝިޕް ދޫކޮށްލާނެ ކަމަށް އިޤްރާރުވުމާއެކު، އެ ސިޓިޒެންޝިޕުން ތަނާޒުލްވުމާމެދު އިޢްތިރާޟެއް ނެތްކަމުގެ ރަސްމީ ލިޔުމެއް، އެމީހެއްގެ ޤައުމުގެ ސަރުކާރުން ހޯދައި ހުށަހެޅުން."
+  },
+  {
+   "url": "https://mvlaw.gov.mv/dv/legislations/6/consolidations/1304",
+   "title": "ދިވެހިރާއްޖޭގެ ޖުމްހޫރިއްޔާގެ ޤާނޫނުއަސާސީ (Constitution of the Republic of Maldives 2008, consolidated), art. 9 ދިވެހިރައްޔިތް, MV Laws",
+   "read": "2026-11-03",
+   "kind": "primary",
+   "said": "ތިރީގައި މިވާ މީހުންނަކީ ދިވެހިރައްޔިތުންނެވެ. | މި ޤާނޫނުއަސާސީއަށް ޢަމަލުކުރާން ފަށާއިރު ދިވެހިރައްޔިތެއް ކަމުގައިވާ ކޮންމެ މީހެއް. | ދިވެހިރައްޔިތަކަށް އުފަން ކޮންމެ ދަރިއެއް. | ޤާނޫނުގައިވާ ގޮތުގެމަތީން ދިވެހިރައްޔިތަކަށް ވެއްޖެ ކޮންމެ ބިދޭސީއެއް. | ދިވެހިރައްޔިތެއްގެ ކިބައިން ދިވެހިރައްޔިތުކަން ނިގުޅައެއް ނުގަނެވޭނެއެވެ. | ދިވެހިރައްޔިތުކަން ދޫކޮށްލަން އެދޭ ކޮންމެ މީހަކަށް ޤާނޫނުގައިވާ ގޮތުގެމަތީން ދިވެހިރައްޔިތުކަން ދޫކޮށްލެވިދާނެއެވެ. | ... މުސްލިމަކަށް މެނުވީ ދިވެހިރައްޔިތަކަށް ނުވެވޭނެއެވެ."
+  }
+ ],
+ "atBirth": {
+  "soil": "none",
+  "descent": "either parent"
+ }
+}

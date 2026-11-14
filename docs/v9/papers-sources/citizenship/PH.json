@@ -1,0 +1,42 @@
+{
+ "country": "PH",
+ "years": 10,
+ "renounce": false,
+ "lapses": false,
+ "note": "GLOBALCIT's Citizenship Law Dataset v3.0 (EUI, 2025), coding the law in force on 1 January 2024 (A06a Const 4(1)(4), Commonwealth Act no. 473 2, 4, 5, 17; A06b Const 4(1)(4), Commonwealth Act no. 473 2, 4, 5, 17; L05 Commonwealth Act no. 63 1(1) (as amended by Republic Act no. 9225, 2)): ordinary naturalisation after 10 years' residence; no renunciation of other citizenships required; a citizen keeps it on taking another (loss applies only to naturalised citizens, not modelled). Reforms after that date are checked in the file's later sources, where a later source is given. Citizenship at birth is read from the same dataset's 2024 coding of modes A01a (descent, born in country: Generally applicable provision), A01b (descent, born abroad: Generally applicable provision), A02a (birth in country: No provision) and A02b (birth in country to a parent born there: No provision), as its codebook (RSC/GLOBALCIT 2025/01, sections 3.2.1a to 3.2.2b) defines them: not by birth in the territory alone (provisions for foundlings and children otherwise stateless, modes A03a and A03b, aren't held by the form); by descent from either parent, with no further limit on a child born abroad. Changes to the law at birth after 1 January 2024 weren't checked for this file. On 2026-11-03 the primary was read: 1987 Constitution of the Republic of the Philippines, Supreme Court E-Library, Art. IV ss 1-3; Commonwealth Act No. 473, Revised Naturalization Law (1939), Supreme Court E-Library, ss 2, 12; Republic Act No. 9225, Citizenship Retention and Re-acquisition Act of 2003, Supreme Court E-Library, ss 2-3. It confirmed the years of residence, renunciation, loss on taking another citizenship, birth in the territory and descent. CA 473's oath renounces all allegiance to any foreign state, like the United States' oath; whether that asks the applicant to give up another citizenship is a reading, not a statement, so renunciation rests on the dataset.",
+ "sources": [
+  {
+   "url": "https://cadmus.eui.eu/bitstreams/3b166501-e695-48d7-9e27-d7bef061573a/download",
+   "title": "GLOBALCIT Citizenship Law Dataset v3.0 (Vink, van der Baaren, Bauböck, Dzankic, Honohan, Manby; EUI Research Data, 2025), country-year-mode files, Philippines, 2024",
+   "read": "2026-11-03",
+   "kind": "secondary",
+   "quotes": "https://globalcit.eu/national-citizenship-laws/",
+   "said": "Person has been resident in the Philippines for a continuous period of 10 years. ... n.a. ... Person is not a natural-born citizen and acquires citizenship of another country by naturalisation. ... Generally applicable provision ... Person is born in the Philippines to a citizen. ... Generally applicable provision ... Person is born abroad to a citizen. ... No provision ... No provision"
+  },
+  {
+   "url": "https://elibrary.judiciary.gov.ph/thebookshelf/showdocs/3/353",
+   "title": "1987 Constitution of the Republic of the Philippines, Supreme Court E-Library, Art. IV ss 1-3",
+   "read": "2026-11-03",
+   "kind": "primary",
+   "said": "ARTICLE IV Citizenship SECTION 1. The following are citizens of the Philippines: (1) Those who are citizens of the Philippines at the time of the adoption of this Constitution; (2) Those whose fathers or mothers are citizens of the Philippines; (3) Those born before January 17, 1973, of Filipino mothers, who elect Philippine citizenship upon reaching the age of majority; and (4) Those who are naturalized in accordance with law. ... SECTION 3. Philippine citizenship may be lost or reacquired in the manner provided by law."
+  },
+  {
+   "url": "https://elibrary.judiciary.gov.ph/thebookshelf/showdocs/29/34227",
+   "title": "Commonwealth Act No. 473, Revised Naturalization Law (1939), Supreme Court E-Library, ss 2, 12",
+   "read": "2026-11-03",
+   "kind": "primary",
+   "said": "Sec. 2. Qualifications. - ... Second he must have resided in the Philippines for a continuous period of not less than ten years; ... Before the naturalization certificate is issued, the petitioner shall, in open court, take the following oath: \"I, ___, solemnly swear that I renounce absolutely and forever all allegiance and fidelity to any foreign prince, potentate, state or sovereignty, and particularly to the ___ of which at this time I am a subject or citizen; ...\""
+  },
+  {
+   "url": "https://elibrary.judiciary.gov.ph/thebookshelf/showdocs/2/285",
+   "title": "Republic Act No. 9225, Citizenship Retention and Re-acquisition Act of 2003, Supreme Court E-Library, ss 2-3",
+   "read": "2026-11-03",
+   "kind": "primary",
+   "said": "SEC. 2. Declaration of Policy. — It is hereby declared the policy of the State that all Philippine citizens who become citizens of another country shall be deemed not to have lost their Philippine citizenship under the conditions of this Act. SEC. 3. Retention of Philippine Citizenship. — Any provision of law to the contrary notwithstanding, natural-born citizens of the Philippines who have lost their Philippine citizenship by reason of their naturalization as citizens of a foreign country are hereby deemed to have re-acquired Philippine citizenship upon taking the following oath of allegiance to the Republic"
+  }
+ ],
+ "atBirth": {
+  "soil": "none",
+  "descent": "either parent"
+ }
+}

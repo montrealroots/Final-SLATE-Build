@@ -1,0 +1,28 @@
+{
+ "country": "SK",
+ "years": 8,
+ "renounce": false,
+ "lapses": false,
+ "note": "GLOBALCIT's Citizenship Law Dataset v3.0 (EUI, 2025), coding the law in force on 1 January 2024 (A06a SLK 7(1); A06b SLK 7(1); L05 SLK 9(1)(b)): ordinary naturalisation after 8 years' residence; no renunciation of other citizenships required; a citizen keeps it on taking another. Reforms after that date are checked in the file's later sources, where a later source is given. Citizenship at birth is read from the same dataset's 2024 coding of modes A01a (descent, born in country: Generally applicable provision), A01b (descent, born abroad: Generally applicable provision), A02a (birth in country: No provision) and A02b (birth in country to a parent born there: No provision), as its codebook (RSC/GLOBALCIT 2025/01, sections 3.2.1a to 3.2.2b) defines them: not by birth in the territory alone (provisions for foundlings and children otherwise stateless, modes A03a and A03b, aren't held by the form); by descent from either parent, with no further limit on a child born abroad. Changes to the law at birth after 1 January 2024 weren't checked for this file. On 2026-11-03 the primary was read: Zákon Národnej rady Slovenskej republiky č. 40/1993 Z. z. o štátnom občianstve Slovenskej republiky, version in force from 15.07.2026, Slov-Lex (Ministry of Justice of the Slovak Republic), §§ 5, 7, 9. It confirmed the years of residence, renunciation, birth in the territory and descent. The law's text holds a lapse the file doesn't: § 9(16) takes Slovak citizenship from one who voluntarily acquires a foreign citizenship, except (§ 9(17)-(18)) by marriage, birth or adoption, as a minor, or in a state where the person had at least five years' permitted residence. A yes or no can't hold that rule, so the file keeps the dataset's false (in practice the exception covers naturalising after five years' residence) and stays secondary until the form can. The owner ruled on 2026-11-03 to keep the simple form (\"Keep the simple form for Slovakia\"): lapses stays false, and the five-year exception is recorded here as not modelled.",
+ "sources": [
+  {
+   "url": "https://cadmus.eui.eu/bitstreams/3b166501-e695-48d7-9e27-d7bef061573a/download",
+   "title": "GLOBALCIT Citizenship Law Dataset v3.0 (Vink, van der Baaren, Bauböck, Dzankic, Honohan, Manby; EUI Research Data, 2025), country-year-mode files, Slovakia, 2024",
+   "read": "2026-11-03",
+   "kind": "secondary",
+   "quotes": "https://globalcit.eu/national-citizenship-laws/",
+   "said": "Person has been resident in Slovakia for 8 consecutive years immediately prior to the application or 10 years with a permanent residence permit. ... n.a. ... Note: Person who acquires citizenship of another country otherwise than by birth or marriage loses Slovak citizenship except if that person has legally resided in that other country for at least five years at the time of acquiring the foreign citizenship. Due to this broad exception ground, citizenship is in principle not lost upon acquisition of a foreign citizenship in practice. ... Generally applicable provision ... Person is born in Slovakia to a citizen. ... Generally applicable provision ... Person is born abroad to a citizen. ... No provision ... No provision"
+  },
+  {
+   "url": "https://www.slov-lex.sk/ezbierky/pravne-predpisy/SK/ZZ/1993/40/",
+   "title": "Zákon Národnej rady Slovenskej republiky č. 40/1993 Z. z. o štátnom občianstve Slovenskej republiky, version in force from 15.07.2026, Slov-Lex (Ministry of Justice of the Slovak Republic), §§ 5, 7, 9",
+   "read": "2026-11-03",
+   "kind": "primary",
+   "said": "§ 5 Narodenie (1) Štátne občianstvo Slovenskej republiky narodením nadobúda dieťa, a) ktorého aspoň jeden z rodičov je štátnym občanom Slovenskej republiky, alebo b) narodené na území Slovenskej republiky, ktorého rodičia sú bez štátnej príslušnosti ... § 7 (1) Štátne občianstvo Slovenskej republiky možno udeliť žiadateľovi, ktorý nie je štátnym občanom Slovenskej republiky a a) má nepretržitý trvalý pobyt na území Slovenskej republiky aspoň osem rokov bezprostredne predchádzajúcich podaniu žiadosti o udelenie štátneho občianstva Slovenskej republiky, ... § 9 (1) Štátne občianstvo Slovenskej republiky možno stratiť ... b) nadobudnutím cudzieho štátneho občianstva na základe výslovného prejavu vôle. ... (16) Štátny občan Slovenskej republiky stráca štátne občianstvo Slovenskej republiky dňom, ktorým na základe výslovného prejavu vôle, ktorým je žiadosť, vyhlásenie alebo iný úkon smerujúci k nadobudnutiu cudzieho štátneho občianstva, dobrovoľne nadobudne cudzie štátne občianstvo. ... (18) K strate štátneho občianstva Slovenskej republiky podľa odseku 16 nedôjde ani vtedy, ak štátny občan Slovenskej republiky nadobudol cudzie štátne občianstvo štátu, v ktorom mal v čase nadobudnutia cudzieho štátneho občianstva povolený pobyt, registrovaný pobyt alebo inak evidovaný pobyt najmenej päť rokov"
+  }
+ ],
+ "atBirth": {
+  "soil": "none",
+  "descent": "either parent"
+ }
+}

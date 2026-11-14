@@ -1,0 +1,35 @@
+{
+ "country": "IS",
+ "years": 7,
+ "renounce": false,
+ "lapses": false,
+ "note": "GLOBALCIT's Citizenship Law Dataset v3.0 (EUI, 2025), coding the law in force on 1 January 2024 (A06a ICE 7, 9(5); A06b ICE 7, 9(5); L05 No provision): ordinary naturalisation after 7 years' residence; no renunciation of other citizenships required; a citizen keeps it on taking another. Reforms after that date are checked in the file's later sources, where a later source is given. Citizenship at birth is read from the same dataset's 2024 coding of modes A01a (descent, born in country: Generally applicable provision), A01b (descent, born abroad: Generally applicable provision), A02a (birth in country: No provision) and A02b (birth in country to a parent born there: No provision), as its codebook (RSC/GLOBALCIT 2025/01, sections 3.2.1a to 3.2.2b) defines them: not by birth in the territory alone (provisions for foundlings and children otherwise stateless, modes A03a and A03b, aren't held by the form); by descent from either parent, with no further limit on a child born abroad. Changes to the law at birth after 1 January 2024 weren't checked for this file. On 2026-11-03 the primary was read: Ísland.is (Government of Iceland; Directorate of Immigration), \"Application for Icelandic citizenship: when can I apply\"; Ísland.is, \"Citizenship for children of Icelandic citizens\". It confirmed the years of residence, renunciation, loss on taking another citizenship, birth in the territory and descent. The portal doesn't state a birthplace rule, so birth in the territory rests on the dataset.",
+ "sources": [
+  {
+   "url": "https://cadmus.eui.eu/bitstreams/3b166501-e695-48d7-9e27-d7bef061573a/download",
+   "title": "GLOBALCIT Citizenship Law Dataset v3.0 (Vink, van der Baaren, Bauböck, Dzankic, Honohan, Manby; EUI Research Data, 2025), country-year-mode files, Iceland, 2024",
+   "read": "2026-11-03",
+   "kind": "secondary",
+   "quotes": "https://globalcit.eu/national-citizenship-laws/",
+   "said": "Person has been resident in Iceland for 7 years and meets the conditions for obtaining a permanent residence permit. ... n.a. ... n.a. ... Generally applicable provision ... Person is born in Iceland to a citizen. ... Generally applicable provision ... Person is born abroad to a citizen. ... No provision ... No provision"
+  },
+  {
+   "url": "https://island.is/en/electronic-application-for-icelandic-citizenship/when-can-I-apply",
+   "title": "Ísland.is (Government of Iceland; Directorate of Immigration), \"Application for Icelandic citizenship: when can I apply\"",
+   "read": "2026-11-03",
+   "kind": "primary",
+   "said": "You can apply for Icelandic citizenship when you have had legal domicile and continuous residence in Iceland for seven years. If you submit an application before you meet the residency length requirement, your application may be rejected for that reason."
+  },
+  {
+   "url": "https://island.is/en/citizenship-for-children-of-icelandic-citizens",
+   "title": "Ísland.is, \"Citizenship for children of Icelandic citizens\"",
+   "read": "2026-11-03",
+   "kind": "primary",
+   "said": "The basic rule is that children born to Icelandic parents automatically acquire Icelandic citizenship at birth. ... Iceland permitted dual citizenship on 1 July 2003, but before that time, Icelandic citizens lost their Icelandic citizenship when they applied for foreign citizenship. ... A child born after 1 July 2018 automatically acquires Icelandic citizenship at birth if one of its parents is an Icelandic citizen."
+  }
+ ],
+ "atBirth": {
+  "soil": "none",
+  "descent": "either parent"
+ }
+}

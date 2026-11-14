@@ -1,0 +1,17 @@
+{
+ "country": "MN",
+ "others": {
+  "right": "permit",
+  "route": "Work permit (Labour Migration Law)"
+ },
+ "note": "Mongolia: a foreign citizen may not be employed without the proper permit (Law on Labor Force Migration of 24 December 2021, in force from 1 July 2022, arts. 27.1, 37.1); the state administrative body in charge of employment issues the work permit on the information the employer gives, for up to a year depending on the labour contract (arts. 24.1–24.4). The Law names no performers' exemption (teachers, coaches and specialists of cultural and sports organisations, art. 21.3.7, are a workplace category still on the permit), so no days. Read 2026-11-03 in the English text of the Unified Legal Information System (legalinfo.mn), which marks it an unofficial translation of 19 December 2022 beside the Mongolian original; until then from PwC Mongolia's tax alert 03/2022, since the host refused this client.",
+ "sources": [
+  {
+   "url": "https://legalinfo.mn/en/edtl/16532226261421",
+   "title": "Law of Mongolia on Labor Force Migration (24 December 2021, revised version), unofficial translation of 19 December 2022 on legalinfo.mn, the Unified Legal Information System",
+   "read": "2026-11-03",
+   "said": "24.2.The state administrative body in charge of employment shall issue a work permit to a foreign employee based on the information specified in 24.1 of this Law. ... 24.4.The term of an employment permit shall be up to one year depending on the term of the labor contract. ... 27.1.It is prohibited to employ a foreign citizen without the proper permit. ... 37.1. This Law shall enter into force on July 1, 2022.",
+   "kind": "primary"
+  }
+ ]
+}

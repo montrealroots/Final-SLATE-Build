@@ -1126,14 +1126,20 @@ td, th { overflow-wrap: break-word; }
 /* From November 13, 2026 each column is its own stack (World.tsx), so a long card in one leaves no gap in the other. */
 .home-col { display: flex; flex-direction: column; gap: var(--s4); min-width: 0; }
 .home-col > .card { margin: 0; }
+/* Your Bank and Your Papers (from November 14, 2026), one item of the column. */
+.home-money { display: flex; flex-direction: column; gap: var(--s4); min-width: 0; }
+.home-money > .card { margin: 0; }
 @media (max-width: 620px) {
-  /* One column, in Home's own order: Projects, Up Next, In The Industry, Proposals, Recent Updates. */
+  /* One column, in Home's own order: Projects, Up Next, Your Bank and Your Papers, In The Industry, Proposals, Recent
+     Updates. */
   .home-grid { grid-template-columns: minmax(0, 1fr); }
   .home-col { display: contents; }
   .home-col:first-child > :first-child { order: 1; }
   .home-col:last-child > :first-child { order: 2; }
   .home-col:first-child > :not(:first-child) { order: 3; }
   .home-col:last-child > :not(:first-child) { order: 4; }
+  /* On a phone, straight after Up Next and above In The Industry, which arrives late and would push them down. */
+  .home-col:last-child > .home-money { order: 2; }
 }
 /* On a phone on its side a heading of Home's keeps its help beside it, its line under it wrapping instead: at 12rem, the
    head's own, What Needs You's help took a row of its own in a column at 667, and the first thing waiting started at the

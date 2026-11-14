@@ -1,0 +1,36 @@
+{
+ "country": "MT",
+ "years": 5,
+ "renounce": false,
+ "lapses": false,
+ "note": "GLOBALCIT's Citizenship Law Dataset v3.0 (EUI, 2025), coding the law in force on 1 January 2024 (A06a MAL 10(1); A06b MAL 10(1); L05 No provision): ordinary naturalisation after 5 years' residence (the 5 of the past 7 years the provision asks; the dataset's own count is 7); no renunciation of other citizenships required; a citizen keeps it on taking another. Reforms after that date are checked in the file's later sources, where a later source is given. Citizenship at birth is read from the same dataset's 2024 coding of modes A01a (descent, born in country: Wedlock restriction), A01b (descent, born abroad: Wedlock restriction), A02a (birth in country: No provision) and A02b (birth in country to a parent born there: Generally applicable provision), as its codebook (RSC/GLOBALCIT 2025/01, sections 3.2.1a to 3.2.2b) defines them: by birth in the territory only on the condition the dataset states; by descent from either parent, a child born abroad on the limit the dataset states. The coding also records a wedlock restriction (a child born out of wedlock may not take it from a citizen father), which the form doesn't hold. Changes to the law at birth after 1 January 2024 weren't checked for this file. On 2026-11-03 the primary was read: Maltese Citizenship Act, Cap. 188 (legislation.mt, point in time 24/07/2025), art. 10(1); Maltese Citizenship Act, Cap. 188, art. 5(1)-(3); Maltese Citizenship Act, Cap. 188, art. 17(1)(a). Every figure the file holds now rests on it, and the dataset is no longer cited. The Act changed the limit abroad the dataset gave: for a person born after 1 January 2005 either parent counts, in or out of wedlock (art. 17(1)(a)); the wedlock rule binds earlier births only. The five years are the twelve months before applying plus four of the six years before them (art. 10(1)).",
+ "sources": [
+  {
+   "url": "https://legislation.mt/eli/cap/188/eng/pdf",
+   "title": "Maltese Citizenship Act, Cap. 188 (legislation.mt, point in time 24/07/2025), art. 10(1)",
+   "read": "2026-11-03",
+   "kind": "primary",
+   "said": "10. (1) An alien or a stateless person, being a person of full age and capacity, on making application therefor to the Minister in the prescribed manner, may be granted a certificate of naturalisation as a citizen of Malta if he satisfies the Minister - (a) that he has resided in Malta throughout the period of twelve months immediately preceding the date of application; and (b) that, during the six years immediately preceding the said period of twelve months, he has resided in Malta for periods amounting in the aggregate to not less than four years; and (c) that he has an adequate knowledge of the Maltese or the English language; and (d) that he is of good character; and (e) that he would be a suitable citizen of Malta"
+  },
+  {
+   "url": "https://legislation.mt/eli/cap/188/eng/pdf",
+   "title": "Maltese Citizenship Act, Cap. 188, art. 5(1)-(3)",
+   "read": "2026-11-03",
+   "kind": "primary",
+   "said": "Provided further that in the case of a person born on or after the 1st August, 1989 such person shall not become a citizen of Malta by virtue of this subarticle unless at the time of his birth, his father or his mother was or is: (a) a citizen of Malta; or (b) a person referred to in article 44(4)(a) or (b) of the Constitution; ... Provided further that if the person mentioned in the second proviso, has not become a citizen of Malta but proves that he is a descendant in the direct line of an ascendant born in Malta of a parent likewise born in Malta, that person shall be entitled, upon making an application as may be prescribed and upon taking the oath of allegiance, to be registered as a citizen of Malta. ... (2) A person born outside Malta on or after the appointed day shall be deemed to have become or shall become a citizen of Malta at the date of his birth: ... (b) in the case of a person born on or after the 1st August, 1989, if at the date of such person’s birth, his father or mother is a citizen of Malta otherwise than by virtue of this subarticle, subarticle (3) of this article or subarticle (2) or (3) of article 3."
+  },
+  {
+   "url": "https://legislation.mt/eli/cap/188/eng/pdf",
+   "title": "Maltese Citizenship Act, Cap. 188, art. 17(1)(a)",
+   "read": "2026-11-03",
+   "kind": "primary",
+   "said": "(a) any reference to the father of a person shall, in relation to a person born out of wedlock and not legitimated be construed as a reference to the mother of that person: Provided that any reference to the father of a person born after the 1st January 2005 shall be construed as a reference to the parent of that person"
+  }
+ ],
+ "atBirth": {
+  "soil": "conditional",
+  "soilIf": "Person is born in Malta on or after 1 August 1989 to a father or mother who is a citizen of Malta (or a person art. 44(4)(a) or (b) of the Constitution names); one born there without such a parent who descends in the direct line from an ascendant born in Malta of a parent likewise born there may register, on taking the oath of allegiance.",
+  "descent": "either parent",
+  "descentAbroad": "Person is born abroad to a father or mother who is a citizen of Malta otherwise than by descent; for a birth out of wedlock before 1 January 2005, to a citizen mother."
+ }
+}

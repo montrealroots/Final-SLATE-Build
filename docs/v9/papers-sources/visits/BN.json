@@ -1,0 +1,161 @@
+{
+ "country": "BN",
+ "rules": [
+  {
+   "entry": "free",
+   "days": 90,
+   "passports": [
+    "AT",
+    "BE",
+    "BG",
+    "CA",
+    "CH",
+    "CY",
+    "CZ",
+    "DE",
+    "DK",
+    "EE",
+    "ES",
+    "FI",
+    "FR",
+    "GB",
+    "GR",
+    "HR",
+    "HU",
+    "IE",
+    "IS",
+    "IT",
+    "LI",
+    "LT",
+    "LU",
+    "LV",
+    "MT",
+    "NL",
+    "NO",
+    "PL",
+    "PT",
+    "RO",
+    "SE",
+    "SI",
+    "SK",
+    "US"
+   ]
+  },
+  {
+   "entry": "free",
+   "days": 30,
+   "passports": [
+    "AE",
+    "JP",
+    "KR",
+    "LA",
+    "MY",
+    "NZ",
+    "OM",
+    "SG",
+    "TR",
+    "UA"
+   ]
+  },
+  {
+   "entry": "free",
+   "days": 14,
+   "passports": [
+    "CN",
+    "CR",
+    "HK",
+    "ID",
+    "KH",
+    "MM",
+    "MO",
+    "MV",
+    "PE",
+    "PH",
+    "RU",
+    "TH",
+    "TW",
+    "VN",
+    "XK"
+   ]
+  },
+  {
+   "entry": "arrival",
+   "days": 30,
+   "passports": [
+    "AU",
+    "KW"
+   ]
+  },
+  {
+   "entry": "arrival",
+   "days": 14,
+   "passports": [
+    "BH",
+    "QA",
+    "SA"
+   ]
+  }
+ ],
+ "others": {
+  "entry": "visa"
+ },
+ "note": "Brunei: ordinary passports of the countries listed enter without a visa for 90 days (the EU, the UK's citizens, North America, the EFTA states), 30 or 14 days (Passports (Visa) (Exemption) Order 1985 as amended); Australia and Kuwait take a visa on arrival for 30 days, and Bahrain, Qatar and Saudi Arabia one for 14. Everyone else needs a visa. Read on 2026-11-03 from the Ministry of Foreign Affairs' own country list (each country linked to its category) and each category's page, which give every country and length held; Wikipedia's copy had given Bahrain, Qatar and Saudi Arabia 30 days, which the Ministry's categories C2, C3 and C4 (14 days each) corrected.",
+ "sources": [
+  {
+   "url": "https://www.mfa.gov.bn/Pages/Visa-Information.aspx",
+   "title": "Ministry of Foreign Affairs, Brunei Darussalam: Visa Information, the countries by category (each linked to its category page)",
+   "read": "2026-11-03",
+   "kind": "primary",
+   "said": "CATEGORY A Foreign nationals of countries in this category will require a visa to enter Brunei Darussalam, which can be applied through the nearest Brunei Darussalam's Missions Abroad. ... CATEGORY C Holders of all types passport from countries under this category could apply for Visa on Arrival upon entry into Brunei Darussalam. CATEGORY D Foreign nationals of countries under this category do not require any visas to enter Brunei Darussalam."
+  },
+  {
+   "url": "https://www.mfa.gov.bn/Pages/D1---D90.aspx",
+   "title": "Ministry of Foreign Affairs, Brunei Darussalam: Category D1",
+   "read": "2026-11-03",
+   "kind": "primary",
+   "said": "Foreign nationals of countries under this category do not require any visas to enter Brunei Darussalam and are allowed to stay in the country for up to 90 days."
+  },
+  {
+   "url": "https://www.mfa.gov.bn/Pages/D2---D30.aspx",
+   "title": "Ministry of Foreign Affairs, Brunei Darussalam: Category D2",
+   "read": "2026-11-03",
+   "kind": "primary",
+   "said": "Foreign nationals of countries under this category do not require any visas to enter Brunei Darussalam and are allowed to stay in the country for up to 30 days."
+  },
+  {
+   "url": "https://www.mfa.gov.bn/Pages/D3---D14.aspx",
+   "title": "Ministry of Foreign Affairs, Brunei Darussalam: Category D3",
+   "read": "2026-11-03",
+   "kind": "primary",
+   "said": "Foreign nationals of countries under this category do not require any visas to enter Brunei Darussalam and are allowed to stay in the country for up to 14 days."
+  },
+  {
+   "url": "https://www.mfa.gov.bn/Pages/C1---CS30.aspx",
+   "title": "Ministry of Foreign Affairs, Brunei Darussalam: Category C1 (Australia, Kuwait)",
+   "read": "2026-11-03",
+   "kind": "primary",
+   "said": "Category C1 Visa on Arrival Holders of all types of passports under this category may apply visa (visa on arrival) upon entry into Brunei Darussalam. Type of Visa: Single or Multiple Entry Visa Visa duration: 30 days Fees: BND20.00 / BND30.00"
+  },
+  {
+   "url": "https://www.mfa.gov.bn/Pages/C2---CM30.aspx",
+   "title": "Ministry of Foreign Affairs, Brunei Darussalam: Category C2 (Saudi Arabia)",
+   "read": "2026-11-03",
+   "kind": "primary",
+   "said": "Category C2 Visa on Arrival Holders of all types of passports under this category may apply visa (visa on arrival) upon entry into Brunei Darussalam. Type of Visa: Single Entry Visa Visa duration: 14 days Fees: BND20.00"
+  },
+  {
+   "url": "https://www.mfa.gov.bn/Pages/C3---CE14.aspx",
+   "title": "Ministry of Foreign Affairs, Brunei Darussalam: Category C3 (Qatar)",
+   "read": "2026-11-03",
+   "kind": "primary",
+   "said": "Category C3 Visa on Arrival Holders of all types of passports under this category may apply visa (visa on arrival) upon entry into Brunei Darussalam. Type of Visa: Single or Multiple Entry Visa Visa duration: 14 days Fees: BND20.00"
+  },
+  {
+   "url": "https://www.mfa.gov.bn/Pages/c4.aspx",
+   "title": "Ministry of Foreign Affairs, Brunei Darussalam: Category C4 (Bahrain)",
+   "read": "2026-11-03",
+   "kind": "primary",
+   "said": "Category C4 Visa on Arrival Holders of all types of passports under this category may apply visa (visa on arrival) upon entry into Brunei Darussalam. Type of Visa: Single or Multiple Entry Visa Visa duration: 14 days Fees: BND20.00 / BND30.00"
+  }
+ ]
+}

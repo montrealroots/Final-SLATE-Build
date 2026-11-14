@@ -1,0 +1,24 @@
+{
+ "country": "SZ",
+ "others": {
+  "right": "permit",
+  "route": "Temporary Residence Permit (Employees, Part I)"
+ },
+ "note": "Eswatini, from the Ministry of Home Affairs' Permits page as Common Crawl captured it in August 2026 (the live site didn't answer on 2026-11-03): a foreign employee needs the temporary residence permit's Part I, applied for with the employer's covering letter, proof the post was advertised, police clearance, qualifications and a medical certificate; the application fee has been E300 since 1 March 2021 (the Ministry's notice of revised fees). Nothing is said of performers as such, nor of days of work without the permit; the Special Pass (Form 10), whose use the page doesn't state, isn't modelled.",
+ "sources": [
+  {
+   "kind": "primary",
+   "url": "https://gov.sz/index.php/services-sp-22242747/permits",
+   "title": "Government of Eswatini, Ministry of Home Affairs, Permits (Common Crawl's capture of 13 August 2026, CC-MAIN-2026-34; the live site didn't answer)",
+   "read": "2026-11-03",
+   "said": "Temporal Residence Permit Requirements BUSINESS PERSON- PART III Complete Application Form (Form 3) ... EMPLOYEES PART I 1. Complete Application Form (Form 3) 2. Two Passport Size Photos 3. Covering Letter of Application From Employer 4. Proof of Advert of post (Full Page) 5. Original Police Clearance from Country Of Origin (Internationally Recognised) 6. Qualification Certificates (Copies) 7. Medical Certificate 8. Certificate of Incorporation Form J. & Form C SPECIAL PASS 1. Complete Application Form (Form10) ..."
+  },
+  {
+   "kind": "primary",
+   "url": "https://www.gov.sz/images/CORONA/moha-user-fees-effective-date.pdf",
+   "title": "Government of the Kingdom of Eswatini, Ministry of Home Affairs, 1st March 2021 – Effective Date for Revised Civil Registration and Immigration Services (28 December 2020, N.R. Nxumalo, Principal Secretary; Common Crawl's capture of 9 August 2026, CC-MAIN-2026-34)",
+   "read": "2026-11-03",
+   "said": "2. IMMIGRATION DEPARTMENT TEMPORARY RESIDENCE PERMITS ACTIVITY OLD FEES NEW FEES Application fee E300.00"
+  }
+ ]
+}

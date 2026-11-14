@@ -1,0 +1,177 @@
+{
+ "country": "TR",
+ "rules": [
+  {
+   "entry": "free",
+   "days": 90,
+   "within": 180,
+   "passports": [
+    "AD",
+    "AE",
+    "AL",
+    "AR",
+    "AT",
+    "AU",
+    "AZ",
+    "BA",
+    "BE",
+    "BG",
+    "BH",
+    "BO",
+    "BR",
+    "BZ",
+    "CA",
+    "CH",
+    "CL",
+    "CN",
+    "CO",
+    "CZ",
+    "DE",
+    "DK",
+    "EC",
+    "EE",
+    "ES",
+    "FI",
+    "FR",
+    "GB",
+    "GE",
+    "GR",
+    "GT",
+    "HK",
+    "HN",
+    "HR",
+    "HU",
+    "IE",
+    "IL",
+    "IR",
+    "IS",
+    "IT",
+    "JO",
+    "JP",
+    "KG",
+    "KR",
+    "KW",
+    "KZ",
+    "LB",
+    "LI",
+    "LT",
+    "LU",
+    "LV",
+    "MA",
+    "MC",
+    "MD",
+    "ME",
+    "MK",
+    "MT",
+    "MY",
+    "NI",
+    "NL",
+    "NO",
+    "NZ",
+    "OM",
+    "PA",
+    "PE",
+    "PL",
+    "PT",
+    "PY",
+    "QA",
+    "RO",
+    "RS",
+    "SA",
+    "SC",
+    "SE",
+    "SG",
+    "SI",
+    "SK",
+    "SM",
+    "SV",
+    "TN",
+    "TT",
+    "UA",
+    "US",
+    "UY",
+    "UZ",
+    "VA",
+    "VE",
+    "XK"
+   ]
+  },
+  {
+   "entry": "free",
+   "days": 60,
+   "passports": [
+    "RU"
+   ]
+  },
+  {
+   "entry": "free",
+   "days": 30,
+   "passports": [
+    "BN",
+    "CR",
+    "ID",
+    "MN",
+    "MO",
+    "TH"
+   ]
+  },
+  {
+   "entry": "free",
+   "days": 30,
+   "passports": [
+    "BY"
+   ]
+  },
+  {
+   "entry": "evisa",
+   "days": 90,
+   "within": 180,
+   "passports": [
+    "AG",
+    "BB",
+    "BS",
+    "DO",
+    "GD",
+    "JM",
+    "LC",
+    "MV",
+    "VC"
+   ]
+  },
+  {
+   "entry": "evisa",
+   "days": 30,
+   "passports": [
+    "FJ",
+    "MU",
+    "MX",
+    "SR",
+    "TL",
+    "TW",
+    "VN",
+    "ZA"
+   ]
+  },
+  {
+   "entry": "evisa",
+   "passports": [
+    "AM",
+    "CY",
+    "NA"
+   ]
+  }
+ ],
+ "others": {
+  "entry": "visa"
+ },
+ "note": "Türkiye: nationals of the countries listed enter without a visa for business and tourism, 90 days in any 180 for most, 60 a stay for Russia, 30 a stay for Brunei, Costa Rica, Indonesia, Macao, Mongolia, Thailand and Belarus (within 90 in 180, or a year for Belarus: not modelled); Northern Cyprus's citizens without limit (no country on the map). Nationals of the countries listed for the e-Visa apply online: a three-month multiple-entry e-Visa (held as 90 days in 180) for Antigua and Barbuda, the Bahamas, Barbados, the Dominican Republic, Grenada, Jamaica, Saint Lucia, the Maldives and Saint Vincent; one month or 30 days for Mauritius, Fiji, Taiwan, South Africa, Mexico, Suriname, Timor-Leste and Vietnam; no length stated for Armenia, Cyprus and Namibia. Those on the conditional e-Visa list (Afghanistan, Algeria, Bangladesh, Egypt, India, Iraq, Pakistan, the Philippines and others) need a Schengen, Irish, UK or US visa or residence and other conditions, and everyone else a visa from a mission: both taken as a visa. Read on 2026-11-03 from the Ministry of Foreign Affairs' own page, country by country; it corrected Wikipedia's copy, read before, on Haiti (a visa from a mission, no e-Visa) and on the e-Visa's length for the one-month and 30-day countries.",
+ "sources": [
+  {
+   "url": "https://www.mfa.gov.tr/visa-information-for-foreigners.en.mfa",
+   "title": "Republic of Türkiye Ministry of Foreign Affairs, Visa Information For Foreigners",
+   "read": "2026-11-03",
+   "kind": "primary",
+   "said": "Russian Federation: Ordinary passport holders are exempted from visa for their touristic and business travels up to 60 days. ... Belarus: Ordinary and official passport holders are exempted from visa for their travels up to 30 days. Total period of stay should be no longer than 90 days within 1 year. ... Haiti : Ordinary and official passport holders are required to have visa to enter Türkiye. ... Jamaica : Ordinary passport holders are required to have visa to enter Türkiye. They can obtain three month multiple entry e-Visas via the website www.evisa.gov.tr . ... Fiji : Ordinary passport holders are required to have visa to enter Türkiye. These passport holders may obtain their one-month single-entry e-Visas via the website www.evisa.gov.tr . ... Taiwan : Ordinary and official passport holders are required to have visa to enter Türkiye. Ordinary passport holders may get their single entry e-Visas valid for one month via the website www.evisa.gov.tr , provided that they meet certain conditions. ... Vietnam : Holders of ordinary passports can obtain single-entry electronic visas valid for stays of up to 30 days from the website www.evisa.gov.tr . ... Namibia : Official passport holders are exempted from visa for their travels up to 90 days. Ordinary passport holders are required to have visa to enter Türkiye. Ordinary passport holders can obtain e-Visa as of May 5, 2025 via the website www.evisa.gov.tr . ... Greek Cypriot Administration: Ordinary and official passport holders are required to have visa to enter Türkiye. Both official and ordinary passport holders may obtain their visas via the website www.evisa.gov.tr or from missions of the Republic of Türkiye."
+  }
+ ]
+}

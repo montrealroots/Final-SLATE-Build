@@ -1,0 +1,35 @@
+{
+ "country": "SB",
+ "years": 10,
+ "renounce": false,
+ "lapses": false,
+ "note": "GLOBALCIT's Citizenship Law Dataset v3.0 (EUI, 2025), coding the law in force on 1 January 2024 (A06a SLB 14(2); A06b SLB 14(2); L05 No provision): ordinary naturalisation after 10 years' residence; no renunciation of other citizenships required; a citizen keeps it on taking another. Reforms after that date are checked in the file's later sources, where a later source is given. Citizenship at birth is read from the same dataset's 2024 coding of modes A01a (descent, born in country: Generally applicable provision), A01b (descent, born abroad: Generally applicable provision), A02a (birth in country: No provision) and A02b (birth in country to a parent born there: No provision), as its codebook (RSC/GLOBALCIT 2025/01, sections 3.2.1a to 3.2.2b) defines them: not by birth in the territory alone (provisions for foundlings and children otherwise stateless, modes A03a and A03b, aren't held by the form); by descent from either parent, with no further limit on a child born abroad. Changes to the law at birth after 1 January 2024 weren't checked for this file. On 2026-11-03 the primary was read: National Parliament of Solomon Islands, Hansard, Eleventh Parliament, 26 June to 4 August 2023: second reading, committee stage and third reading of the Citizenship (Amendment) Bill 2023; Solomon Islands Government, Ministry of Home Affairs, \"Obtain Solomon Islands Citizenship\". It confirmed the years of residence and loss on taking another citizenship. It was silent on renunciation, birth in the territory and descent, which still rest on the sources above, re-read that day and found the same. The ten years rest on Parliament's record of the Citizenship (Amendment) Bill 2023, read a third time; the Ministry's page still shows the 2018 Act's five.",
+ "sources": [
+  {
+   "url": "https://cadmus.eui.eu/bitstreams/3b166501-e695-48d7-9e27-d7bef061573a/download",
+   "title": "GLOBALCIT Citizenship Law Dataset v3.0 (Vink, van der Baaren, Bauböck, Dzankic, Honohan, Manby; EUI Research Data, 2025), country-year-mode files, Solomon Islands, 2024",
+   "read": "2026-11-03",
+   "kind": "secondary",
+   "quotes": "https://globalcit.eu/national-citizenship-laws/",
+   "said": "Person is ordinarily resident in Solomon Islands for ten years, intention to reside or maintain close and continuing relationship with Solomon Islands. ... n.a. ... n.a. ... Generally applicable provision ... Person born in Solomon Islands after independence day (7 July 1978) if at the date of birth either parent is, or would but for his or her death have been, a citizen. ... Generally applicable provision ... Every person born on or after Independence Day (7 July 1978) whether within or outside Solomon Islands, shall become a citizen of Solomon Islands if the date of birth either parent is, or would but for his/her death have been, a citizen. ... No provision ... No provision"
+  },
+  {
+   "url": "https://parliament.gov.sb/files/2024-05/Hansard_Transcripts_for_26_June_to_4_August_2023.pdf",
+   "title": "National Parliament of Solomon Islands, Hansard, Eleventh Parliament, 26 June to 4 August 2023: second reading, committee stage and third reading of the Citizenship (Amendment) Bill 2023",
+   "read": "2026-11-03",
+   "kind": "primary",
+   "said": "The Bill amends Section 16 of the Citizenship Act of 2018 and replaces it with a new subsection that provides that the person have to be ordinary in Solomon Islands for a total period of 10 years immediately before the day that person applies for citizenship. It furthers makes it very clear that the 10 years residence requirement does not apply to a person who was born in Solomon Islands or a child of a parent or parents who are birth citizens. ... THE CITIZENSHIP (AMENDMENT) BILL 2023 Third Reading Hon CHRIS LAORE: ... I move that the Citizenship (Amendment) Bill 2023 be now read a third time and do pass. Question put and agreed to"
+  },
+  {
+   "url": "https://solomons.gov.sb/ministry-of-home-affairs/essential-services/obtain-solomon-islands-citizenship/",
+   "title": "Solomon Islands Government, Ministry of Home Affairs, \"Obtain Solomon Islands Citizenship\"",
+   "read": "2026-11-03",
+   "kind": "primary",
+   "said": "The Citizenship Act enables the acquisition of citizenship through adoption and dual citizenship including by way of renunciation. ... The applicant must have resided in the country for a total of five (5) years before applying for Citizenship."
+  }
+ ],
+ "atBirth": {
+  "soil": "none",
+  "descent": "either parent"
+ }
+}

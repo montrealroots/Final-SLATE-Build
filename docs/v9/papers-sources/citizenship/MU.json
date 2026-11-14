@@ -1,0 +1,43 @@
+{
+ "country": "MU",
+ "years": 6,
+ "renounce": true,
+ "lapses": false,
+ "note": "GLOBALCIT's Citizenship Law Dataset v3.0 (EUI, 2025), coding the law in force on 1 January 2024 (A06a MAU 9; A06b MAU 9; L05 N1968, 12.1): ordinary naturalisation after 5 years' residence; the applicant must give up other citizenships; a citizen keeps it on taking another (loss applies only to naturalised citizens, not modelled). Reforms after that date are checked in the file's later sources, where a later source is given. Citizenship at birth is read from the same dataset's 2024 coding of modes A01a (descent, born in country: Generally applicable provision), A01b (descent, born abroad: Generational transmission restriction: conditional on birthplace/place of residence /mode under which parent acquired citizenship), A02a (birth in country: No provision) and A02b (birth in country to a parent born there: No provision), as its codebook (RSC/GLOBALCIT 2025/01, sections 3.2.1a to 3.2.2b) defines them: not by birth in the territory alone (provisions for foundlings and children otherwise stateless, modes A03a and A03b, aren't held by the form); by descent from either parent, a child born abroad on the limit the dataset states. Changes to the law at birth after 1 January 2024 weren't checked for this file. On 2026-11-03 the primary was read: Mauritius Citizenship Act, as amended to Act 14 of 2022 (Ministry of Defence, Home Affairs and External Communications, dha.govmu.org), s. 9(1); Mauritius Citizenship Act, ss. 2(d) and 12(2); Ministry (Home Affairs), \"Citizenship\" services page. It confirmed renunciation and loss on taking another citizenship. It was silent on birth in the territory, descent and the limit abroad, which still rest on the sources above, re-read that day and found the same. The Act changed the years: twelve months immediately before the application plus five years in aggregate in the seven years before those twelve months (s. 9(1)(c)-(d)), six in all, not the dataset's five.",
+ "sources": [
+  {
+   "url": "https://cadmus.eui.eu/bitstreams/3b166501-e695-48d7-9e27-d7bef061573a/download",
+   "title": "GLOBALCIT Citizenship Law Dataset v3.0 (Vink, van der Baaren, Bauböck, Dzankic, Honohan, Manby; EUI Research Data, 2025), country-year-mode files, Mauritius, 2024",
+   "read": "2026-11-03",
+   "kind": "secondary",
+   "quotes": "https://globalcit.eu/national-citizenship-laws/",
+   "said": "Person has been resident for at least 5 years during the previous 7 years, including 12 months preceding the application. ... Renunciation of citizenship of another country required. ... Person is a citizen by naturalisation and voluntarily acquires citizenship of another country. ... Generally applicable provision ... Person is born in Mauritius to a citizen. ... Generational transmission restriction: conditional on birthplace/place of residence /mode under which parent acquired citizenship ... Person is born abroad to a citizen who was born in Mauritius. ... No provision ... No provision"
+  },
+  {
+   "url": "https://dha.govmu.org/Documents/Legislations/Mauritius%20Citizenship%20Act%20as%20amended%202022.pdf",
+   "title": "Mauritius Citizenship Act, as amended to Act 14 of 2022 (Ministry of Defence, Home Affairs and External Communications, dha.govmu.org), s. 9(1)",
+   "read": "2026-11-03",
+   "kind": "primary",
+   "said": "(c) he has resided in Mauritius for a continuous period of 12 months immediately preceding the date of his application; (d) during the 7 years immediately preceding the period of 12 months referred to in paragraph (c), he has resided in Mauritius for aggregate periods amounting to not less than 5 years;"
+  },
+  {
+   "url": "https://dha.govmu.org/Documents/Legislations/Mauritius%20Citizenship%20Act%20as%20amended%202022.pdf",
+   "title": "Mauritius Citizenship Act, ss. 2(d) and 12(2)",
+   "read": "2026-11-03",
+   "kind": "primary",
+   "said": "(d) where a person is required to renounce the nationality or citizenship of a country but under the law of that country he is not permitted so to do, he shall make on oath, before the Master and Registrar, a declaration in the form set out in the Second Schedule ... (2) Where, at the time of his registration or naturalisation as a citizen of Mauritius under this Act, a person was not permitted to renounce his nationality or citizenship of another country under the law of that country but that law was subsequently altered to permit him so to do, the Minister may, by notice in writing ..., require that person to renounce his nationality or citizenship of that other country ... and where that person fails to do so within the period specified, the Minister may, by Order, deprive that person of his citizenship of Mauritius."
+  },
+  {
+   "url": "https://dha.govmu.org/Pages/Services/Citizenship.aspx",
+   "title": "Ministry (Home Affairs), \"Citizenship\" services page",
+   "read": "2026-11-03",
+   "kind": "primary",
+   "said": "Under section 9 of the Mauritius Citizenship Act, a non-commonwealth citizen may be naturalized as a citizen of Mauritius if he has resided in Mauritius for: (i) a continuous period of 12 months immediately preceding the date of his application; and (ii) during the seven years immediately preceding the period of 12 months referred to at paragraph (i), for aggregate periods amounting to not less than 5 years."
+  }
+ ],
+ "atBirth": {
+  "soil": "none",
+  "descent": "either parent",
+  "descentAbroad": "Person is born abroad to a citizen who was born in Mauritius."
+ }
+}

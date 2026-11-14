@@ -1,0 +1,36 @@
+{
+ "country": "AG",
+ "years": 6,
+ "renounce": false,
+ "lapses": false,
+ "note": "GLOBALCIT's Citizenship Law Dataset v3.0 (EUI, 2025), coding the law in force on 1 January 2024 (A06a ANT 6, 8, Schedule 2-3, MNA 3, Const 114(c); A06b ANT 6, 8, Schedule 2-3, MNA 3, Const 114(c); L05 No provision): ordinary naturalisation after 6 years' residence; no renunciation of other citizenships required; a citizen keeps it on taking another. Reforms after that date are checked in the file's later sources, where a later source is given. Citizenship at birth is read from the same dataset's 2024 coding of modes A01a (descent, born in country: No provision), A01b (descent, born abroad: Generational transmission restriction: conditional on birthplace/place of residence /mode under which parent acquired citizenship), A02a (birth in country: Generally applicable provision) and A02b (birth in country to a parent born there: No provision), as its codebook (RSC/GLOBALCIT 2025/01, sections 3.2.1a to 3.2.2b) defines them: by birth in the territory unconditionally; by descent from either parent, a child born abroad on the limit the dataset states (the dataset codes no separate descent rule for a child born in the country, birth there giving it; the parent's sex is read from mode A01b). Changes to the law at birth after 1 January 2024 weren't checked for this file. On 2026-11-03 the primary was read: laws.gov.ag (Government of Antigua and Barbuda), Laws of Antigua and Barbuda, Antigua and Barbuda Citizenship, Cap. 22, s. 6, s. 7 and Second Schedule; laws.gov.ag, Antigua and Barbuda Citizenship (Amendment) Act, 2021, No. 5 of 2021 (Official Gazette Vol. XLI No. 31, 13 May 2021). It confirmed the years of residence, renunciation and loss on taking another citizenship. It was silent on birth in the territory, the limit abroad and descent, which still rest on the sources above, re-read that day and found the same.",
+ "sources": [
+  {
+   "url": "https://cadmus.eui.eu/bitstreams/3b166501-e695-48d7-9e27-d7bef061573a/download",
+   "title": "GLOBALCIT Citizenship Law Dataset v3.0 (Vink, van der Baaren, Bauböck, Dzankic, Honohan, Manby; EUI Research Data, 2025), country-year-mode files, Antigua and Barbuda, 2024",
+   "read": "2026-11-03",
+   "kind": "secondary",
+   "quotes": "https://globalcit.eu/national-citizenship-laws/",
+   "said": "Person has been resident in Antigua and Barbuda for 12 months immediately prior to the application (exemption for British protected persons), as well as during 5 out of 7 years predating the 12-month period. Periods of six months or more during which the person was not legally resident in Antigua and Barbuda shall not be taken into account. Person must have intent to reside in Antigua and Barbuda. Minister is explicitly allowed to waive certain requirements. ... n.a. ... n.a. ... No provision ... Generational transmission restriction: conditional on birthplace/place of residence /mode under which parent acquired citizenship ... Person is born abroad to a citizen who was born in Antigua and Barbuda, or to a citizen who is in the service of the government, or to a deceased parent who held Antigua and Barbuda citizenship. ... Generally applicable provision ... Person is born in Antigua and Barbuda unless the child is born to a foreign diplomat and neither parent is a citizen, or one of the parents is an enemy alien and the child is born in a place then under occupation by the enemy. ... No provision"
+  },
+  {
+   "url": "https://laws.gov.ag/wp-content/uploads/2018/08/cap-22.pdf",
+   "title": "laws.gov.ag (Government of Antigua and Barbuda), Laws of Antigua and Barbuda, Antigua and Barbuda Citizenship, Cap. 22, s. 6, s. 7 and Second Schedule",
+   "read": "2026-11-03",
+   "kind": "primary",
+   "said": "6. The Minister may at his discretion, if application therefor is made to him in the prescribed manner by any alien or British protected person of full age and capacity who satisfies him that he is qualified under the Second Schedule for naturalisation, grant to him a certificate of naturalisation, and the person to whom that certificate is granted shall, on taking the oath or affirmation of allegiance in the form specified in the Third Schedule, be a citizen of Antigua and Barbuda by naturalisation ... Loss of Citizenship ... 7. (1) Any citizen of Antigua and Barbuda who has attained the age of eighteen years and who- (a) is also a citizen or national of any other country ... SECOND SCHEDULE Qualifications for Naturalisation 1. ... (a) that he has resided in Antigua and Barbuda throughout the period of twelve months immediately preceding the date of the application; and (b) that during the seven years immediately preceding the said period of twelve months he has resided in Antigua and Barbuda for periods amounting in the aggregate to not less than five years;"
+  },
+  {
+   "url": "https://laws.gov.ag/wp-content/uploads/2022/01/No.-5-of-2021-Antigua-and-Barbuda-Citizenship-Amendment-Act-2021.pdf",
+   "title": "laws.gov.ag, Antigua and Barbuda Citizenship (Amendment) Act, 2021, No. 5 of 2021 (Official Gazette Vol. XLI No. 31, 13 May 2021)",
+   "read": "2026-11-03",
+   "kind": "primary",
+   "said": "The Antigua and Barbuda Citizenship Act, Cap. 22 is amended in section 2 subsection (8) thereof by repealing paragraph (a) and replacing this with the following: “(a) of any period or periods amounting in total to six months or more, during which a person was not lawfully resident in Antigua and Barbuda;”"
+  }
+ ],
+ "atBirth": {
+  "soil": "unconditional",
+  "descent": "either parent",
+  "descentAbroad": "Person is born abroad to a citizen who was born in Antigua and Barbuda, or to a citizen who is in the service of the government, or to a deceased parent who held Antigua and Barbuda citizenship."
+ }
+}

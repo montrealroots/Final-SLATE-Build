@@ -1,0 +1,38 @@
+{
+ "country": "BL",
+ "group": "fromdom",
+ "rules": [
+  {
+   "entry": "visa",
+   "passports": [
+    "VE"
+   ]
+  },
+  {
+   "entry": "free",
+   "days": 15,
+   "passports": [
+    "DM",
+    "LC"
+   ]
+  }
+ ],
+ "note": "Saint Barthélemy keeps the overseas departments' list, except that Venezuelans need a visa; Dominicans and Saint Lucians stay 15 days a stay (no more than 120 in 12 months, not modelled). Légifrance answers this client with a bot challenge, so the orders are read from Wikipedia's copy.",
+ "sources": [
+  {
+   "url": "https://en.wikipedia.org/wiki/Visa_policies_of_Overseas_France",
+   "title": "Wikipedia, Visa policies of Overseas France",
+   "read": "2026-11-03",
+   "kind": "secondary",
+   "quotes": "https://www.legifrance.gouv.fr/loda/id/LEGITEXT000025748539",
+   "said": "Venezuela Yes Yes No Yes Yes Yes Yes Yes ... For French Guiana, Guadeloupe, Martinique, Saint Barthélemy, and Saint Martin, visa-free up to 15 days per stay, as long as the stays do not total more than 120 days in a 12-month period."
+  },
+  {
+   "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F10610",
+   "title": "Service Public (DILA, Premier ministre): Un étranger a-t-il besoin d'un visa pour un voyage en outre-mer ? (vérifié le 20 novembre 2024)",
+   "read": "2026-11-03",
+   "kind": "primary",
+   "said": "Pour certaines nationalités , il peut y avoir une dispense de visa en fonction de votre type de passeport et votre destination. ... Si vous êtes européen, vous pouvez entrer et séjourner jusqu'à 3 mois en France (y compris outre-mer) sans formalité particulière. ... Guadeloupe, Guyane, Martinique, à La Réunion et Saint-Pierre-et-Miquelon [legifrance JORFTEXT000024403998]; Arrêté du 4 février 2015 ... Mayotte [JORFTEXT000030235682]; Arrêté du 18 avril 2012 ... Saint-Martin et Saint-Barthélemy [LEGITEXT000025748539]; Arrêté du 29 décembre 2011 ... Polynésie [JORFTEXT000025092900]; Arrêté du 22 juillet 2011 ... Nouvelle-Calédonie [JORFTEXT000024389411]; Arrêté du 26 juillet 2011 ... Wallis et Futuna [JORFTEXT000024404049]"
+  }
+ ]
+}

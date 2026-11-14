@@ -1,0 +1,633 @@
+# AUK	Auckland Province
+# BOP	Bay of Plenty
+# CAN	Canterbury
+# CIT	Chatham Islands
+# GIS	Gisborne
+# HKB	Hawke's Bay
+# MBH	Marlborough
+# MWT	Manawatu-Wanganui
+# NSN	Nelson
+# NTL	Northland
+# OTA	Otago Province
+# STL	Southland
+# TAS	Tasman
+# TKI	Taranaki
+# WGN	Wellington Province
+# WKO	Waikato
+# WTC	Westland
+2026-01-01	New Year's Day	New Year's Day	public	
+2026-01-02	Day after New Year's Day	Day after New Year's Day	public	
+2026-01-19	Provincial anniversary day	Provincial anniversary day	public	MWT
+2026-01-19	Provincial anniversary day	Provincial anniversary day	public	WGN
+2026-01-26	Provincial anniversary day	Provincial anniversary day	public	AUK
+2026-01-26	Provincial anniversary day	Provincial anniversary day	public	BOP
+2026-01-26	Provincial anniversary day	Provincial anniversary day	public	GIS
+2026-01-26	Provincial anniversary day	Provincial anniversary day	public	NTL
+2026-01-26	Provincial anniversary day	Provincial anniversary day	public	WKO
+2026-02-02	Provincial anniversary day	Provincial anniversary day	public	NSN
+2026-02-02	Provincial anniversary day	Provincial anniversary day	public	TAS
+2026-02-06	Waitangi Day	Waitangi Day	public	
+2026-03-09	Provincial anniversary day	Provincial anniversary day	public	TKI
+2026-03-23	Provincial anniversary day	Provincial anniversary day	public	OTA
+2026-04-03	Good Friday	Good Friday	public	
+2026-04-05	Easter Sunday	Easter Sunday	observance	
+2026-04-06	Easter Monday	Easter Monday	public	
+2026-04-07	Provincial anniversary day	Provincial anniversary day	public	STL
+2026-04-25	ANZAC Day	ANZAC Day	public	
+2026-04-27	ANZAC Day (substitute day)	ANZAC Day (substitute day)	public	
+2026-06-01	King's Birthday	King's Birthday	public	
+2026-07-10	Matariki	Matariki	public	
+2026-10-23	Provincial anniversary day	Provincial anniversary day	public	HKB
+2026-10-26	Labour Day	Labour Day	public	
+2026-11-02	Provincial anniversary day	Provincial anniversary day	public	MBH
+2026-11-13	Christchurch Show Day	Christchurch Show Day	public	CAN
+2026-11-30	Provincial anniversary day	Provincial anniversary day	public	CIT
+2026-11-30	Provincial anniversary day	Provincial anniversary day	public	WTC
+2026-12-25	Christmas Day	Christmas Day	public	
+2026-12-26	Boxing Day	Boxing Day	public	
+2026-12-28	Boxing Day (substitute day)	Boxing Day (substitute day)	public	
+2027-01-01	New Year's Day	New Year's Day	public	
+2027-01-02	Day after New Year's Day	Day after New Year's Day	public	
+2027-01-04	Day after New Year's Day (substitute day)	Day after New Year's Day (substitute day)	public	
+2027-01-25	Provincial anniversary day	Provincial anniversary day	public	MWT
+2027-01-25	Provincial anniversary day	Provincial anniversary day	public	WGN
+2027-02-01	Provincial anniversary day	Provincial anniversary day	public	AUK
+2027-02-01	Provincial anniversary day	Provincial anniversary day	public	BOP
+2027-02-01	Provincial anniversary day	Provincial anniversary day	public	GIS
+2027-02-01	Provincial anniversary day	Provincial anniversary day	public	NSN
+2027-02-01	Provincial anniversary day	Provincial anniversary day	public	NTL
+2027-02-01	Provincial anniversary day	Provincial anniversary day	public	TAS
+2027-02-01	Provincial anniversary day	Provincial anniversary day	public	WKO
+2027-02-06	Waitangi Day	Waitangi Day	public	
+2027-02-08	Waitangi Day (substitute day)	Waitangi Day (substitute day)	public	
+2027-03-08	Provincial anniversary day	Provincial anniversary day	public	TKI
+2027-03-22	Provincial anniversary day	Provincial anniversary day	public	OTA
+2027-03-26	Good Friday	Good Friday	public	
+2027-03-28	Easter Sunday	Easter Sunday	observance	
+2027-03-29	Easter Monday	Easter Monday	public	
+2027-03-30	Provincial anniversary day	Provincial anniversary day	public	STL
+2027-04-25	ANZAC Day	ANZAC Day	public	
+2027-04-26	ANZAC Day (substitute day)	ANZAC Day (substitute day)	public	
+2027-06-07	King's Birthday	King's Birthday	public	
+2027-06-25	Matariki	Matariki	public	
+2027-10-22	Provincial anniversary day	Provincial anniversary day	public	HKB
+2027-10-25	Labour Day	Labour Day	public	
+2027-11-01	Provincial anniversary day	Provincial anniversary day	public	MBH
+2027-11-12	Christchurch Show Day	Christchurch Show Day	public	CAN
+2027-11-29	Provincial anniversary day	Provincial anniversary day	public	CIT
+2027-11-29	Provincial anniversary day	Provincial anniversary day	public	WTC
+2027-12-25	Christmas Day	Christmas Day	public	
+2027-12-26	Boxing Day	Boxing Day	public	
+2027-12-27	Christmas Day (substitute day)	Christmas Day (substitute day)	public	
+2027-12-28	Boxing Day (substitute day)	Boxing Day (substitute day)	public	
+2028-01-01	New Year's Day	New Year's Day	public	
+2028-01-02	Day after New Year's Day	Day after New Year's Day	public	
+2028-01-03	New Year's Day (substitute day)	New Year's Day (substitute day)	public	
+2028-01-04	Day after New Year's Day (substitute day)	Day after New Year's Day (substitute day)	public	
+2028-01-24	Provincial anniversary day	Provincial anniversary day	public	MWT
+2028-01-24	Provincial anniversary day	Provincial anniversary day	public	WGN
+2028-01-31	Provincial anniversary day	Provincial anniversary day	public	AUK
+2028-01-31	Provincial anniversary day	Provincial anniversary day	public	BOP
+2028-01-31	Provincial anniversary day	Provincial anniversary day	public	GIS
+2028-01-31	Provincial anniversary day	Provincial anniversary day	public	NSN
+2028-01-31	Provincial anniversary day	Provincial anniversary day	public	NTL
+2028-01-31	Provincial anniversary day	Provincial anniversary day	public	TAS
+2028-01-31	Provincial anniversary day	Provincial anniversary day	public	WKO
+2028-02-06	Waitangi Day	Waitangi Day	public	
+2028-02-07	Waitangi Day (substitute day)	Waitangi Day (substitute day)	public	
+2028-03-13	Provincial anniversary day	Provincial anniversary day	public	TKI
+2028-03-20	Provincial anniversary day	Provincial anniversary day	public	OTA
+2028-04-14	Good Friday	Good Friday	public	
+2028-04-16	Easter Sunday	Easter Sunday	observance	
+2028-04-17	Easter Monday	Easter Monday	public	
+2028-04-18	Provincial anniversary day	Provincial anniversary day	public	STL
+2028-04-25	ANZAC Day	ANZAC Day	public	
+2028-06-05	King's Birthday	King's Birthday	public	
+2028-07-14	Matariki	Matariki	public	
+2028-10-20	Provincial anniversary day	Provincial anniversary day	public	HKB
+2028-10-23	Labour Day	Labour Day	public	
+2028-10-30	Provincial anniversary day	Provincial anniversary day	public	MBH
+2028-11-17	Christchurch Show Day	Christchurch Show Day	public	CAN
+2028-11-27	Provincial anniversary day	Provincial anniversary day	public	CIT
+2028-12-04	Provincial anniversary day	Provincial anniversary day	public	WTC
+2028-12-25	Christmas Day	Christmas Day	public	
+2028-12-26	Boxing Day	Boxing Day	public	
+2029-01-01	New Year's Day	New Year's Day	public	
+2029-01-02	Day after New Year's Day	Day after New Year's Day	public	
+2029-01-22	Provincial anniversary day	Provincial anniversary day	public	MWT
+2029-01-22	Provincial anniversary day	Provincial anniversary day	public	WGN
+2029-01-29	Provincial anniversary day	Provincial anniversary day	public	AUK
+2029-01-29	Provincial anniversary day	Provincial anniversary day	public	BOP
+2029-01-29	Provincial anniversary day	Provincial anniversary day	public	GIS
+2029-01-29	Provincial anniversary day	Provincial anniversary day	public	NSN
+2029-01-29	Provincial anniversary day	Provincial anniversary day	public	NTL
+2029-01-29	Provincial anniversary day	Provincial anniversary day	public	TAS
+2029-01-29	Provincial anniversary day	Provincial anniversary day	public	WKO
+2029-02-06	Waitangi Day	Waitangi Day	public	
+2029-03-12	Provincial anniversary day	Provincial anniversary day	public	TKI
+2029-03-26	Provincial anniversary day	Provincial anniversary day	public	OTA
+2029-03-30	Good Friday	Good Friday	public	
+2029-04-01	Easter Sunday	Easter Sunday	observance	
+2029-04-02	Easter Monday	Easter Monday	public	
+2029-04-03	Provincial anniversary day	Provincial anniversary day	public	STL
+2029-04-25	ANZAC Day	ANZAC Day	public	
+2029-06-04	King's Birthday	King's Birthday	public	
+2029-07-06	Matariki	Matariki	public	
+2029-10-19	Provincial anniversary day	Provincial anniversary day	public	HKB
+2029-10-22	Labour Day	Labour Day	public	
+2029-10-29	Provincial anniversary day	Provincial anniversary day	public	MBH
+2029-11-16	Christchurch Show Day	Christchurch Show Day	public	CAN
+2029-12-03	Provincial anniversary day	Provincial anniversary day	public	CIT
+2029-12-03	Provincial anniversary day	Provincial anniversary day	public	WTC
+2029-12-25	Christmas Day	Christmas Day	public	
+2029-12-26	Boxing Day	Boxing Day	public	
+2030-01-01	New Year's Day	New Year's Day	public	
+2030-01-02	Day after New Year's Day	Day after New Year's Day	public	
+2030-01-21	Provincial anniversary day	Provincial anniversary day	public	MWT
+2030-01-21	Provincial anniversary day	Provincial anniversary day	public	WGN
+2030-01-28	Provincial anniversary day	Provincial anniversary day	public	AUK
+2030-01-28	Provincial anniversary day	Provincial anniversary day	public	BOP
+2030-01-28	Provincial anniversary day	Provincial anniversary day	public	GIS
+2030-01-28	Provincial anniversary day	Provincial anniversary day	public	NTL
+2030-01-28	Provincial anniversary day	Provincial anniversary day	public	WKO
+2030-02-04	Provincial anniversary day	Provincial anniversary day	public	NSN
+2030-02-04	Provincial anniversary day	Provincial anniversary day	public	TAS
+2030-02-06	Waitangi Day	Waitangi Day	public	
+2030-03-11	Provincial anniversary day	Provincial anniversary day	public	TKI
+2030-03-25	Provincial anniversary day	Provincial anniversary day	public	OTA
+2030-04-19	Good Friday	Good Friday	public	
+2030-04-21	Easter Sunday	Easter Sunday	observance	
+2030-04-22	Easter Monday	Easter Monday	public	
+2030-04-23	Provincial anniversary day	Provincial anniversary day	public	STL
+2030-04-25	ANZAC Day	ANZAC Day	public	
+2030-06-03	King's Birthday	King's Birthday	public	
+2030-06-21	Matariki	Matariki	public	
+2030-10-25	Provincial anniversary day	Provincial anniversary day	public	HKB
+2030-10-28	Labour Day	Labour Day	public	
+2030-11-04	Provincial anniversary day	Provincial anniversary day	public	MBH
+2030-11-15	Christchurch Show Day	Christchurch Show Day	public	CAN
+2030-12-02	Provincial anniversary day	Provincial anniversary day	public	CIT
+2030-12-02	Provincial anniversary day	Provincial anniversary day	public	WTC
+2030-12-25	Christmas Day	Christmas Day	public	
+2030-12-26	Boxing Day	Boxing Day	public	
+2031-01-01	New Year's Day	New Year's Day	public	
+2031-01-02	Day after New Year's Day	Day after New Year's Day	public	
+2031-01-20	Provincial anniversary day	Provincial anniversary day	public	MWT
+2031-01-20	Provincial anniversary day	Provincial anniversary day	public	WGN
+2031-01-27	Provincial anniversary day	Provincial anniversary day	public	AUK
+2031-01-27	Provincial anniversary day	Provincial anniversary day	public	BOP
+2031-01-27	Provincial anniversary day	Provincial anniversary day	public	GIS
+2031-01-27	Provincial anniversary day	Provincial anniversary day	public	NTL
+2031-01-27	Provincial anniversary day	Provincial anniversary day	public	WKO
+2031-02-03	Provincial anniversary day	Provincial anniversary day	public	NSN
+2031-02-03	Provincial anniversary day	Provincial anniversary day	public	TAS
+2031-02-06	Waitangi Day	Waitangi Day	public	
+2031-03-10	Provincial anniversary day	Provincial anniversary day	public	TKI
+2031-03-24	Provincial anniversary day	Provincial anniversary day	public	OTA
+2031-04-11	Good Friday	Good Friday	public	
+2031-04-13	Easter Sunday	Easter Sunday	observance	
+2031-04-14	Easter Monday	Easter Monday	public	
+2031-04-15	Provincial anniversary day	Provincial anniversary day	public	STL
+2031-04-25	ANZAC Day	ANZAC Day	public	
+2031-06-02	King's Birthday	King's Birthday	public	
+2031-07-11	Matariki	Matariki	public	
+2031-10-24	Provincial anniversary day	Provincial anniversary day	public	HKB
+2031-10-27	Labour Day	Labour Day	public	
+2031-11-03	Provincial anniversary day	Provincial anniversary day	public	MBH
+2031-11-14	Christchurch Show Day	Christchurch Show Day	public	CAN
+2031-12-01	Provincial anniversary day	Provincial anniversary day	public	CIT
+2031-12-01	Provincial anniversary day	Provincial anniversary day	public	WTC
+2031-12-25	Christmas Day	Christmas Day	public	
+2031-12-26	Boxing Day	Boxing Day	public	
+2032-01-01	New Year's Day	New Year's Day	public	
+2032-01-02	Day after New Year's Day	Day after New Year's Day	public	
+2032-01-19	Provincial anniversary day	Provincial anniversary day	public	MWT
+2032-01-19	Provincial anniversary day	Provincial anniversary day	public	WGN
+2032-01-26	Provincial anniversary day	Provincial anniversary day	public	AUK
+2032-01-26	Provincial anniversary day	Provincial anniversary day	public	BOP
+2032-01-26	Provincial anniversary day	Provincial anniversary day	public	GIS
+2032-01-26	Provincial anniversary day	Provincial anniversary day	public	NTL
+2032-01-26	Provincial anniversary day	Provincial anniversary day	public	WKO
+2032-02-02	Provincial anniversary day	Provincial anniversary day	public	NSN
+2032-02-02	Provincial anniversary day	Provincial anniversary day	public	TAS
+2032-02-06	Waitangi Day	Waitangi Day	public	
+2032-03-08	Provincial anniversary day	Provincial anniversary day	public	TKI
+2032-03-22	Provincial anniversary day	Provincial anniversary day	public	OTA
+2032-03-26	Good Friday	Good Friday	public	
+2032-03-28	Easter Sunday	Easter Sunday	observance	
+2032-03-29	Easter Monday	Easter Monday	public	
+2032-03-30	Provincial anniversary day	Provincial anniversary day	public	STL
+2032-04-25	ANZAC Day	ANZAC Day	public	
+2032-04-26	ANZAC Day (substitute day)	ANZAC Day (substitute day)	public	
+2032-06-07	King's Birthday	King's Birthday	public	
+2032-07-02	Matariki	Matariki	public	
+2032-10-22	Provincial anniversary day	Provincial anniversary day	public	HKB
+2032-10-25	Labour Day	Labour Day	public	
+2032-11-01	Provincial anniversary day	Provincial anniversary day	public	MBH
+2032-11-12	Christchurch Show Day	Christchurch Show Day	public	CAN
+2032-11-29	Provincial anniversary day	Provincial anniversary day	public	CIT
+2032-11-29	Provincial anniversary day	Provincial anniversary day	public	WTC
+2032-12-25	Christmas Day	Christmas Day	public	
+2032-12-26	Boxing Day	Boxing Day	public	
+2032-12-27	Christmas Day (substitute day)	Christmas Day (substitute day)	public	
+2032-12-28	Boxing Day (substitute day)	Boxing Day (substitute day)	public	
+2033-01-01	New Year's Day	New Year's Day	public	
+2033-01-02	Day after New Year's Day	Day after New Year's Day	public	
+2033-01-03	New Year's Day (substitute day)	New Year's Day (substitute day)	public	
+2033-01-04	Day after New Year's Day (substitute day)	Day after New Year's Day (substitute day)	public	
+2033-01-24	Provincial anniversary day	Provincial anniversary day	public	MWT
+2033-01-24	Provincial anniversary day	Provincial anniversary day	public	WGN
+2033-01-31	Provincial anniversary day	Provincial anniversary day	public	AUK
+2033-01-31	Provincial anniversary day	Provincial anniversary day	public	BOP
+2033-01-31	Provincial anniversary day	Provincial anniversary day	public	GIS
+2033-01-31	Provincial anniversary day	Provincial anniversary day	public	NSN
+2033-01-31	Provincial anniversary day	Provincial anniversary day	public	NTL
+2033-01-31	Provincial anniversary day	Provincial anniversary day	public	TAS
+2033-01-31	Provincial anniversary day	Provincial anniversary day	public	WKO
+2033-02-06	Waitangi Day	Waitangi Day	public	
+2033-02-07	Waitangi Day (substitute day)	Waitangi Day (substitute day)	public	
+2033-03-14	Provincial anniversary day	Provincial anniversary day	public	TKI
+2033-03-21	Provincial anniversary day	Provincial anniversary day	public	OTA
+2033-04-15	Good Friday	Good Friday	public	
+2033-04-17	Easter Sunday	Easter Sunday	observance	
+2033-04-18	Easter Monday	Easter Monday	public	
+2033-04-19	Provincial anniversary day	Provincial anniversary day	public	STL
+2033-04-25	ANZAC Day	ANZAC Day	public	
+2033-06-06	King's Birthday	King's Birthday	public	
+2033-06-24	Matariki	Matariki	public	
+2033-10-21	Provincial anniversary day	Provincial anniversary day	public	HKB
+2033-10-24	Labour Day	Labour Day	public	
+2033-10-31	Provincial anniversary day	Provincial anniversary day	public	MBH
+2033-11-11	Christchurch Show Day	Christchurch Show Day	public	CAN
+2033-11-28	Provincial anniversary day	Provincial anniversary day	public	CIT
+2033-11-28	Provincial anniversary day	Provincial anniversary day	public	WTC
+2033-12-25	Christmas Day	Christmas Day	public	
+2033-12-26	Boxing Day	Boxing Day	public	
+2033-12-27	Christmas Day (substitute day)	Christmas Day (substitute day)	public	
+2034-01-01	New Year's Day	New Year's Day	public	
+2034-01-02	Day after New Year's Day	Day after New Year's Day	public	
+2034-01-03	New Year's Day (substitute day)	New Year's Day (substitute day)	public	
+2034-01-23	Provincial anniversary day	Provincial anniversary day	public	MWT
+2034-01-23	Provincial anniversary day	Provincial anniversary day	public	WGN
+2034-01-30	Provincial anniversary day	Provincial anniversary day	public	AUK
+2034-01-30	Provincial anniversary day	Provincial anniversary day	public	BOP
+2034-01-30	Provincial anniversary day	Provincial anniversary day	public	GIS
+2034-01-30	Provincial anniversary day	Provincial anniversary day	public	NSN
+2034-01-30	Provincial anniversary day	Provincial anniversary day	public	NTL
+2034-01-30	Provincial anniversary day	Provincial anniversary day	public	TAS
+2034-01-30	Provincial anniversary day	Provincial anniversary day	public	WKO
+2034-02-06	Waitangi Day	Waitangi Day	public	
+2034-03-13	Provincial anniversary day	Provincial anniversary day	public	TKI
+2034-03-20	Provincial anniversary day	Provincial anniversary day	public	OTA
+2034-04-07	Good Friday	Good Friday	public	
+2034-04-09	Easter Sunday	Easter Sunday	observance	
+2034-04-10	Easter Monday	Easter Monday	public	
+2034-04-11	Provincial anniversary day	Provincial anniversary day	public	STL
+2034-04-25	ANZAC Day	ANZAC Day	public	
+2034-06-05	King's Birthday	King's Birthday	public	
+2034-07-07	Matariki	Matariki	public	
+2034-10-20	Provincial anniversary day	Provincial anniversary day	public	HKB
+2034-10-23	Labour Day	Labour Day	public	
+2034-10-30	Provincial anniversary day	Provincial anniversary day	public	MBH
+2034-11-17	Christchurch Show Day	Christchurch Show Day	public	CAN
+2034-11-27	Provincial anniversary day	Provincial anniversary day	public	CIT
+2034-12-04	Provincial anniversary day	Provincial anniversary day	public	WTC
+2034-12-25	Christmas Day	Christmas Day	public	
+2034-12-26	Boxing Day	Boxing Day	public	
+2035-01-01	New Year's Day	New Year's Day	public	
+2035-01-02	Day after New Year's Day	Day after New Year's Day	public	
+2035-01-22	Provincial anniversary day	Provincial anniversary day	public	MWT
+2035-01-22	Provincial anniversary day	Provincial anniversary day	public	WGN
+2035-01-29	Provincial anniversary day	Provincial anniversary day	public	AUK
+2035-01-29	Provincial anniversary day	Provincial anniversary day	public	BOP
+2035-01-29	Provincial anniversary day	Provincial anniversary day	public	GIS
+2035-01-29	Provincial anniversary day	Provincial anniversary day	public	NSN
+2035-01-29	Provincial anniversary day	Provincial anniversary day	public	NTL
+2035-01-29	Provincial anniversary day	Provincial anniversary day	public	TAS
+2035-01-29	Provincial anniversary day	Provincial anniversary day	public	WKO
+2035-02-06	Waitangi Day	Waitangi Day	public	
+2035-03-12	Provincial anniversary day	Provincial anniversary day	public	TKI
+2035-03-23	Good Friday	Good Friday	public	
+2035-03-25	Easter Sunday	Easter Sunday	observance	
+2035-03-26	Easter Monday	Easter Monday	public	
+2035-03-27	Provincial anniversary day	Provincial anniversary day	public	STL
+2035-04-02	Provincial anniversary day	Provincial anniversary day	public	OTA
+2035-04-25	ANZAC Day	ANZAC Day	public	
+2035-06-04	King's Birthday	King's Birthday	public	
+2035-06-29	Matariki	Matariki	public	
+2035-10-19	Provincial anniversary day	Provincial anniversary day	public	HKB
+2035-10-22	Labour Day	Labour Day	public	
+2035-10-29	Provincial anniversary day	Provincial anniversary day	public	MBH
+2035-11-16	Christchurch Show Day	Christchurch Show Day	public	CAN
+2035-12-03	Provincial anniversary day	Provincial anniversary day	public	CIT
+2035-12-03	Provincial anniversary day	Provincial anniversary day	public	WTC
+2035-12-25	Christmas Day	Christmas Day	public	
+2035-12-26	Boxing Day	Boxing Day	public	
+2036-01-01	New Year's Day	New Year's Day	public	
+2036-01-02	Day after New Year's Day	Day after New Year's Day	public	
+2036-01-21	Provincial anniversary day	Provincial anniversary day	public	MWT
+2036-01-21	Provincial anniversary day	Provincial anniversary day	public	WGN
+2036-01-28	Provincial anniversary day	Provincial anniversary day	public	AUK
+2036-01-28	Provincial anniversary day	Provincial anniversary day	public	BOP
+2036-01-28	Provincial anniversary day	Provincial anniversary day	public	GIS
+2036-01-28	Provincial anniversary day	Provincial anniversary day	public	NTL
+2036-01-28	Provincial anniversary day	Provincial anniversary day	public	WKO
+2036-02-04	Provincial anniversary day	Provincial anniversary day	public	NSN
+2036-02-04	Provincial anniversary day	Provincial anniversary day	public	TAS
+2036-02-06	Waitangi Day	Waitangi Day	public	
+2036-03-10	Provincial anniversary day	Provincial anniversary day	public	TKI
+2036-03-24	Provincial anniversary day	Provincial anniversary day	public	OTA
+2036-04-11	Good Friday	Good Friday	public	
+2036-04-13	Easter Sunday	Easter Sunday	observance	
+2036-04-14	Easter Monday	Easter Monday	public	
+2036-04-15	Provincial anniversary day	Provincial anniversary day	public	STL
+2036-04-25	ANZAC Day	ANZAC Day	public	
+2036-06-02	King's Birthday	King's Birthday	public	
+2036-07-18	Matariki	Matariki	public	
+2036-10-24	Provincial anniversary day	Provincial anniversary day	public	HKB
+2036-10-27	Labour Day	Labour Day	public	
+2036-11-03	Provincial anniversary day	Provincial anniversary day	public	MBH
+2036-11-14	Christchurch Show Day	Christchurch Show Day	public	CAN
+2036-12-01	Provincial anniversary day	Provincial anniversary day	public	CIT
+2036-12-01	Provincial anniversary day	Provincial anniversary day	public	WTC
+2036-12-25	Christmas Day	Christmas Day	public	
+2036-12-26	Boxing Day	Boxing Day	public	
+2037-01-01	New Year's Day	New Year's Day	public	
+2037-01-02	Day after New Year's Day	Day after New Year's Day	public	
+2037-01-19	Provincial anniversary day	Provincial anniversary day	public	MWT
+2037-01-19	Provincial anniversary day	Provincial anniversary day	public	WGN
+2037-01-26	Provincial anniversary day	Provincial anniversary day	public	AUK
+2037-01-26	Provincial anniversary day	Provincial anniversary day	public	BOP
+2037-01-26	Provincial anniversary day	Provincial anniversary day	public	GIS
+2037-01-26	Provincial anniversary day	Provincial anniversary day	public	NTL
+2037-01-26	Provincial anniversary day	Provincial anniversary day	public	WKO
+2037-02-02	Provincial anniversary day	Provincial anniversary day	public	NSN
+2037-02-02	Provincial anniversary day	Provincial anniversary day	public	TAS
+2037-02-06	Waitangi Day	Waitangi Day	public	
+2037-03-09	Provincial anniversary day	Provincial anniversary day	public	TKI
+2037-03-23	Provincial anniversary day	Provincial anniversary day	public	OTA
+2037-04-03	Good Friday	Good Friday	public	
+2037-04-05	Easter Sunday	Easter Sunday	observance	
+2037-04-06	Easter Monday	Easter Monday	public	
+2037-04-07	Provincial anniversary day	Provincial anniversary day	public	STL
+2037-04-25	ANZAC Day	ANZAC Day	public	
+2037-04-27	ANZAC Day (substitute day)	ANZAC Day (substitute day)	public	
+2037-06-01	King's Birthday	King's Birthday	public	
+2037-07-10	Matariki	Matariki	public	
+2037-10-23	Provincial anniversary day	Provincial anniversary day	public	HKB
+2037-10-26	Labour Day	Labour Day	public	
+2037-11-02	Provincial anniversary day	Provincial anniversary day	public	MBH
+2037-11-13	Christchurch Show Day	Christchurch Show Day	public	CAN
+2037-11-30	Provincial anniversary day	Provincial anniversary day	public	CIT
+2037-11-30	Provincial anniversary day	Provincial anniversary day	public	WTC
+2037-12-25	Christmas Day	Christmas Day	public	
+2037-12-26	Boxing Day	Boxing Day	public	
+2037-12-28	Boxing Day (substitute day)	Boxing Day (substitute day)	public	
+2038-01-01	New Year's Day	New Year's Day	public	
+2038-01-02	Day after New Year's Day	Day after New Year's Day	public	
+2038-01-04	Day after New Year's Day (substitute day)	Day after New Year's Day (substitute day)	public	
+2038-01-25	Provincial anniversary day	Provincial anniversary day	public	MWT
+2038-01-25	Provincial anniversary day	Provincial anniversary day	public	WGN
+2038-02-01	Provincial anniversary day	Provincial anniversary day	public	AUK
+2038-02-01	Provincial anniversary day	Provincial anniversary day	public	BOP
+2038-02-01	Provincial anniversary day	Provincial anniversary day	public	GIS
+2038-02-01	Provincial anniversary day	Provincial anniversary day	public	NSN
+2038-02-01	Provincial anniversary day	Provincial anniversary day	public	NTL
+2038-02-01	Provincial anniversary day	Provincial anniversary day	public	TAS
+2038-02-01	Provincial anniversary day	Provincial anniversary day	public	WKO
+2038-02-06	Waitangi Day	Waitangi Day	public	
+2038-02-08	Waitangi Day (substitute day)	Waitangi Day (substitute day)	public	
+2038-03-08	Provincial anniversary day	Provincial anniversary day	public	TKI
+2038-03-22	Provincial anniversary day	Provincial anniversary day	public	OTA
+2038-04-23	Good Friday	Good Friday	public	
+2038-04-25	ANZAC Day	ANZAC Day	public	
+2038-04-25	Easter Sunday	Easter Sunday	observance	
+2038-04-26	ANZAC Day (substitute day)	ANZAC Day (substitute day)	public	
+2038-04-26	Easter Monday	Easter Monday	public	
+2038-04-27	Provincial anniversary day	Provincial anniversary day	public	STL
+2038-06-07	King's Birthday	King's Birthday	public	
+2038-06-25	Matariki	Matariki	public	
+2038-10-22	Provincial anniversary day	Provincial anniversary day	public	HKB
+2038-10-25	Labour Day	Labour Day	public	
+2038-11-01	Provincial anniversary day	Provincial anniversary day	public	MBH
+2038-11-12	Christchurch Show Day	Christchurch Show Day	public	CAN
+2038-11-29	Provincial anniversary day	Provincial anniversary day	public	CIT
+2038-11-29	Provincial anniversary day	Provincial anniversary day	public	WTC
+2038-12-25	Christmas Day	Christmas Day	public	
+2038-12-26	Boxing Day	Boxing Day	public	
+2038-12-27	Christmas Day (substitute day)	Christmas Day (substitute day)	public	
+2038-12-28	Boxing Day (substitute day)	Boxing Day (substitute day)	public	
+2039-01-01	New Year's Day	New Year's Day	public	
+2039-01-02	Day after New Year's Day	Day after New Year's Day	public	
+2039-01-03	New Year's Day (substitute day)	New Year's Day (substitute day)	public	
+2039-01-04	Day after New Year's Day (substitute day)	Day after New Year's Day (substitute day)	public	
+2039-01-24	Provincial anniversary day	Provincial anniversary day	public	MWT
+2039-01-24	Provincial anniversary day	Provincial anniversary day	public	WGN
+2039-01-31	Provincial anniversary day	Provincial anniversary day	public	AUK
+2039-01-31	Provincial anniversary day	Provincial anniversary day	public	BOP
+2039-01-31	Provincial anniversary day	Provincial anniversary day	public	GIS
+2039-01-31	Provincial anniversary day	Provincial anniversary day	public	NSN
+2039-01-31	Provincial anniversary day	Provincial anniversary day	public	NTL
+2039-01-31	Provincial anniversary day	Provincial anniversary day	public	TAS
+2039-01-31	Provincial anniversary day	Provincial anniversary day	public	WKO
+2039-02-06	Waitangi Day	Waitangi Day	public	
+2039-02-07	Waitangi Day (substitute day)	Waitangi Day (substitute day)	public	
+2039-03-14	Provincial anniversary day	Provincial anniversary day	public	TKI
+2039-03-21	Provincial anniversary day	Provincial anniversary day	public	OTA
+2039-04-08	Good Friday	Good Friday	public	
+2039-04-10	Easter Sunday	Easter Sunday	observance	
+2039-04-11	Easter Monday	Easter Monday	public	
+2039-04-12	Provincial anniversary day	Provincial anniversary day	public	STL
+2039-04-25	ANZAC Day	ANZAC Day	public	
+2039-06-06	King's Birthday	King's Birthday	public	
+2039-07-15	Matariki	Matariki	public	
+2039-10-21	Provincial anniversary day	Provincial anniversary day	public	HKB
+2039-10-24	Labour Day	Labour Day	public	
+2039-10-31	Provincial anniversary day	Provincial anniversary day	public	MBH
+2039-11-11	Christchurch Show Day	Christchurch Show Day	public	CAN
+2039-11-28	Provincial anniversary day	Provincial anniversary day	public	CIT
+2039-11-28	Provincial anniversary day	Provincial anniversary day	public	WTC
+2039-12-25	Christmas Day	Christmas Day	public	
+2039-12-26	Boxing Day	Boxing Day	public	
+2039-12-27	Christmas Day (substitute day)	Christmas Day (substitute day)	public	
+2040-01-01	New Year's Day	New Year's Day	public	
+2040-01-02	Day after New Year's Day	Day after New Year's Day	public	
+2040-01-03	New Year's Day (substitute day)	New Year's Day (substitute day)	public	
+2040-01-23	Provincial anniversary day	Provincial anniversary day	public	MWT
+2040-01-23	Provincial anniversary day	Provincial anniversary day	public	WGN
+2040-01-30	Provincial anniversary day	Provincial anniversary day	public	AUK
+2040-01-30	Provincial anniversary day	Provincial anniversary day	public	BOP
+2040-01-30	Provincial anniversary day	Provincial anniversary day	public	GIS
+2040-01-30	Provincial anniversary day	Provincial anniversary day	public	NSN
+2040-01-30	Provincial anniversary day	Provincial anniversary day	public	NTL
+2040-01-30	Provincial anniversary day	Provincial anniversary day	public	TAS
+2040-01-30	Provincial anniversary day	Provincial anniversary day	public	WKO
+2040-02-06	Waitangi Day	Waitangi Day	public	
+2040-03-12	Provincial anniversary day	Provincial anniversary day	public	TKI
+2040-03-26	Provincial anniversary day	Provincial anniversary day	public	OTA
+2040-03-30	Good Friday	Good Friday	public	
+2040-04-01	Easter Sunday	Easter Sunday	observance	
+2040-04-02	Easter Monday	Easter Monday	public	
+2040-04-03	Provincial anniversary day	Provincial anniversary day	public	STL
+2040-04-25	ANZAC Day	ANZAC Day	public	
+2040-06-04	King's Birthday	King's Birthday	public	
+2040-07-06	Matariki	Matariki	public	
+2040-10-19	Provincial anniversary day	Provincial anniversary day	public	HKB
+2040-10-22	Labour Day	Labour Day	public	
+2040-10-29	Provincial anniversary day	Provincial anniversary day	public	MBH
+2040-11-16	Christchurch Show Day	Christchurch Show Day	public	CAN
+2040-12-03	Provincial anniversary day	Provincial anniversary day	public	CIT
+2040-12-03	Provincial anniversary day	Provincial anniversary day	public	WTC
+2040-12-25	Christmas Day	Christmas Day	public	
+2040-12-26	Boxing Day	Boxing Day	public	
+2041-01-01	New Year's Day	New Year's Day	public	
+2041-01-02	Day after New Year's Day	Day after New Year's Day	public	
+2041-01-21	Provincial anniversary day	Provincial anniversary day	public	MWT
+2041-01-21	Provincial anniversary day	Provincial anniversary day	public	WGN
+2041-01-28	Provincial anniversary day	Provincial anniversary day	public	AUK
+2041-01-28	Provincial anniversary day	Provincial anniversary day	public	BOP
+2041-01-28	Provincial anniversary day	Provincial anniversary day	public	GIS
+2041-01-28	Provincial anniversary day	Provincial anniversary day	public	NTL
+2041-01-28	Provincial anniversary day	Provincial anniversary day	public	WKO
+2041-02-04	Provincial anniversary day	Provincial anniversary day	public	NSN
+2041-02-04	Provincial anniversary day	Provincial anniversary day	public	TAS
+2041-02-06	Waitangi Day	Waitangi Day	public	
+2041-03-11	Provincial anniversary day	Provincial anniversary day	public	TKI
+2041-03-25	Provincial anniversary day	Provincial anniversary day	public	OTA
+2041-04-19	Good Friday	Good Friday	public	
+2041-04-21	Easter Sunday	Easter Sunday	observance	
+2041-04-22	Easter Monday	Easter Monday	public	
+2041-04-23	Provincial anniversary day	Provincial anniversary day	public	STL
+2041-04-25	ANZAC Day	ANZAC Day	public	
+2041-06-03	King's Birthday	King's Birthday	public	
+2041-07-19	Matariki	Matariki	public	
+2041-10-25	Provincial anniversary day	Provincial anniversary day	public	HKB
+2041-10-28	Labour Day	Labour Day	public	
+2041-11-04	Provincial anniversary day	Provincial anniversary day	public	MBH
+2041-11-15	Christchurch Show Day	Christchurch Show Day	public	CAN
+2041-12-02	Provincial anniversary day	Provincial anniversary day	public	CIT
+2041-12-02	Provincial anniversary day	Provincial anniversary day	public	WTC
+2041-12-25	Christmas Day	Christmas Day	public	
+2041-12-26	Boxing Day	Boxing Day	public	
+2042-01-01	New Year's Day	New Year's Day	public	
+2042-01-02	Day after New Year's Day	Day after New Year's Day	public	
+2042-01-20	Provincial anniversary day	Provincial anniversary day	public	MWT
+2042-01-20	Provincial anniversary day	Provincial anniversary day	public	WGN
+2042-01-27	Provincial anniversary day	Provincial anniversary day	public	AUK
+2042-01-27	Provincial anniversary day	Provincial anniversary day	public	BOP
+2042-01-27	Provincial anniversary day	Provincial anniversary day	public	GIS
+2042-01-27	Provincial anniversary day	Provincial anniversary day	public	NTL
+2042-01-27	Provincial anniversary day	Provincial anniversary day	public	WKO
+2042-02-03	Provincial anniversary day	Provincial anniversary day	public	NSN
+2042-02-03	Provincial anniversary day	Provincial anniversary day	public	TAS
+2042-02-06	Waitangi Day	Waitangi Day	public	
+2042-03-10	Provincial anniversary day	Provincial anniversary day	public	TKI
+2042-03-24	Provincial anniversary day	Provincial anniversary day	public	OTA
+2042-04-04	Good Friday	Good Friday	public	
+2042-04-06	Easter Sunday	Easter Sunday	observance	
+2042-04-07	Easter Monday	Easter Monday	public	
+2042-04-08	Provincial anniversary day	Provincial anniversary day	public	STL
+2042-04-25	ANZAC Day	ANZAC Day	public	
+2042-06-02	King's Birthday	King's Birthday	public	
+2042-07-11	Matariki	Matariki	public	
+2042-10-24	Provincial anniversary day	Provincial anniversary day	public	HKB
+2042-10-27	Labour Day	Labour Day	public	
+2042-11-03	Provincial anniversary day	Provincial anniversary day	public	MBH
+2042-11-14	Christchurch Show Day	Christchurch Show Day	public	CAN
+2042-12-01	Provincial anniversary day	Provincial anniversary day	public	CIT
+2042-12-01	Provincial anniversary day	Provincial anniversary day	public	WTC
+2042-12-25	Christmas Day	Christmas Day	public	
+2042-12-26	Boxing Day	Boxing Day	public	
+2043-01-01	New Year's Day	New Year's Day	public	
+2043-01-02	Day after New Year's Day	Day after New Year's Day	public	
+2043-01-19	Provincial anniversary day	Provincial anniversary day	public	MWT
+2043-01-19	Provincial anniversary day	Provincial anniversary day	public	WGN
+2043-01-26	Provincial anniversary day	Provincial anniversary day	public	AUK
+2043-01-26	Provincial anniversary day	Provincial anniversary day	public	BOP
+2043-01-26	Provincial anniversary day	Provincial anniversary day	public	GIS
+2043-01-26	Provincial anniversary day	Provincial anniversary day	public	NTL
+2043-01-26	Provincial anniversary day	Provincial anniversary day	public	WKO
+2043-02-02	Provincial anniversary day	Provincial anniversary day	public	NSN
+2043-02-02	Provincial anniversary day	Provincial anniversary day	public	TAS
+2043-02-06	Waitangi Day	Waitangi Day	public	
+2043-03-09	Provincial anniversary day	Provincial anniversary day	public	TKI
+2043-03-23	Provincial anniversary day	Provincial anniversary day	public	OTA
+2043-03-27	Good Friday	Good Friday	public	
+2043-03-29	Easter Sunday	Easter Sunday	observance	
+2043-03-30	Easter Monday	Easter Monday	public	
+2043-03-31	Provincial anniversary day	Provincial anniversary day	public	STL
+2043-04-25	ANZAC Day	ANZAC Day	public	
+2043-04-27	ANZAC Day (substitute day)	ANZAC Day (substitute day)	public	
+2043-06-01	King's Birthday	King's Birthday	public	
+2043-07-03	Matariki	Matariki	public	
+2043-10-23	Provincial anniversary day	Provincial anniversary day	public	HKB
+2043-10-26	Labour Day	Labour Day	public	
+2043-11-02	Provincial anniversary day	Provincial anniversary day	public	MBH
+2043-11-13	Christchurch Show Day	Christchurch Show Day	public	CAN
+2043-11-30	Provincial anniversary day	Provincial anniversary day	public	CIT
+2043-11-30	Provincial anniversary day	Provincial anniversary day	public	WTC
+2043-12-25	Christmas Day	Christmas Day	public	
+2043-12-26	Boxing Day	Boxing Day	public	
+2043-12-28	Boxing Day (substitute day)	Boxing Day (substitute day)	public	
+2044-01-01	New Year's Day	New Year's Day	public	
+2044-01-02	Day after New Year's Day	Day after New Year's Day	public	
+2044-01-04	Day after New Year's Day (substitute day)	Day after New Year's Day (substitute day)	public	
+2044-01-25	Provincial anniversary day	Provincial anniversary day	public	MWT
+2044-01-25	Provincial anniversary day	Provincial anniversary day	public	WGN
+2044-02-01	Provincial anniversary day	Provincial anniversary day	public	AUK
+2044-02-01	Provincial anniversary day	Provincial anniversary day	public	BOP
+2044-02-01	Provincial anniversary day	Provincial anniversary day	public	GIS
+2044-02-01	Provincial anniversary day	Provincial anniversary day	public	NSN
+2044-02-01	Provincial anniversary day	Provincial anniversary day	public	NTL
+2044-02-01	Provincial anniversary day	Provincial anniversary day	public	TAS
+2044-02-01	Provincial anniversary day	Provincial anniversary day	public	WKO
+2044-02-06	Waitangi Day	Waitangi Day	public	
+2044-02-08	Waitangi Day (substitute day)	Waitangi Day (substitute day)	public	
+2044-03-14	Provincial anniversary day	Provincial anniversary day	public	TKI
+2044-03-21	Provincial anniversary day	Provincial anniversary day	public	OTA
+2044-04-15	Good Friday	Good Friday	public	
+2044-04-17	Easter Sunday	Easter Sunday	observance	
+2044-04-18	Easter Monday	Easter Monday	public	
+2044-04-19	Provincial anniversary day	Provincial anniversary day	public	STL
+2044-04-25	ANZAC Day	ANZAC Day	public	
+2044-06-06	King's Birthday	King's Birthday	public	
+2044-06-24	Matariki	Matariki	public	
+2044-10-21	Provincial anniversary day	Provincial anniversary day	public	HKB
+2044-10-24	Labour Day	Labour Day	public	
+2044-10-31	Provincial anniversary day	Provincial anniversary day	public	MBH
+2044-11-11	Christchurch Show Day	Christchurch Show Day	public	CAN
+2044-11-28	Provincial anniversary day	Provincial anniversary day	public	CIT
+2044-11-28	Provincial anniversary day	Provincial anniversary day	public	WTC
+2044-12-25	Christmas Day	Christmas Day	public	
+2044-12-26	Boxing Day	Boxing Day	public	
+2044-12-27	Christmas Day (substitute day)	Christmas Day (substitute day)	public	
+2045-01-01	New Year's Day	New Year's Day	public	
+2045-01-02	Day after New Year's Day	Day after New Year's Day	public	
+2045-01-03	New Year's Day (substitute day)	New Year's Day (substitute day)	public	
+2045-01-23	Provincial anniversary day	Provincial anniversary day	public	MWT
+2045-01-23	Provincial anniversary day	Provincial anniversary day	public	WGN
+2045-01-30	Provincial anniversary day	Provincial anniversary day	public	AUK
+2045-01-30	Provincial anniversary day	Provincial anniversary day	public	BOP
+2045-01-30	Provincial anniversary day	Provincial anniversary day	public	GIS
+2045-01-30	Provincial anniversary day	Provincial anniversary day	public	NSN
+2045-01-30	Provincial anniversary day	Provincial anniversary day	public	NTL
+2045-01-30	Provincial anniversary day	Provincial anniversary day	public	TAS
+2045-01-30	Provincial anniversary day	Provincial anniversary day	public	WKO
+2045-02-06	Waitangi Day	Waitangi Day	public	
+2045-03-13	Provincial anniversary day	Provincial anniversary day	public	TKI
+2045-03-20	Provincial anniversary day	Provincial anniversary day	public	OTA
+2045-04-07	Good Friday	Good Friday	public	
+2045-04-09	Easter Sunday	Easter Sunday	observance	
+2045-04-10	Easter Monday	Easter Monday	public	
+2045-04-11	Provincial anniversary day	Provincial anniversary day	public	STL
+2045-04-25	ANZAC Day	ANZAC Day	public	
+2045-06-05	King's Birthday	King's Birthday	public	
+2045-07-07	Matariki	Matariki	public	
+2045-10-20	Provincial anniversary day	Provincial anniversary day	public	HKB
+2045-10-23	Labour Day	Labour Day	public	
+2045-10-30	Provincial anniversary day	Provincial anniversary day	public	MBH
+2045-11-17	Christchurch Show Day	Christchurch Show Day	public	CAN
+2045-11-27	Provincial anniversary day	Provincial anniversary day	public	CIT
+2045-12-04	Provincial anniversary day	Provincial anniversary day	public	WTC
+2045-12-25	Christmas Day	Christmas Day	public	
+2045-12-26	Boxing Day	Boxing Day	public	

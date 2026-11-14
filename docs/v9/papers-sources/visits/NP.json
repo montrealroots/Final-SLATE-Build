@@ -1,0 +1,78 @@
+{
+ "country": "NP",
+ "rules": [
+  {
+   "entry": "free",
+   "passports": [
+    "IN"
+   ]
+  },
+  {
+   "entry": "arrival",
+   "days": 30,
+   "passports": [
+    "BD",
+    "BT",
+    "LK",
+    "MV",
+    "PK"
+   ]
+  },
+  {
+   "entry": "arrival",
+   "days": 90,
+   "passports": [
+    "CN",
+    "HK",
+    "MO"
+   ]
+  },
+  {
+   "entry": "visa",
+   "passports": [
+    "AF",
+    "CM",
+    "ET",
+    "GH",
+    "IQ",
+    "IR",
+    "LR",
+    "NG",
+    "PS",
+    "SO",
+    "SY",
+    "SZ",
+    "ZW"
+   ]
+  }
+ ],
+ "others": {
+  "entry": "arrival",
+  "days": 90
+ },
+ "note": "Nepal: Indians move freely (the 1950 treaty); SAARC nationals but Afghans get a free 30-day visa on arrival, Chinese, Hong Kong and Macao tourists a free one; everyone else a visa on arrival (or online beforehand) for 15, 30 or 90 days at USD 30, 50 or 125 (the longest taken; the fee isn't modelled). Nationals of Afghanistan, Cameroon, Eswatini, Ethiopia, Ghana, Iran, Iraq, Liberia, Nigeria, Palestine, Somalia, Syria and Zimbabwe need a visa from a Nepalese mission. Read from Wikipedia's copy. Checked on 2026-11-03 against the Department of Immigration's own visa pages: they give the visa on arrival for 15, 30 or 90 days (USD 30, 50, 125) and the free visa for SAARC citizens but Afghans (up to 30 days on the first visit in a visa year) and for Chinese nationals; they don't name Hong Kong or Macao, Indians, or the nationalities refused a visa on arrival, which stand on Wikipedia's copy.",
+ "sources": [
+  {
+   "url": "https://en.wikipedia.org/wiki/Visa_policy_of_Nepal",
+   "title": "Wikipedia, Visa policy of Nepal",
+   "read": "2026-11-03",
+   "kind": "secondary",
+   "quotes": "https://www.immigration.gov.np/",
+   "said": "Indian citizens do not require a visa to enter Nepal. ... Foreign citizens may obtain a visa on arrival which is good for multiple entries and allows visitor to stay for no more than 15, 30 or 90 days. ... Costs (in US dollars ) as of May 2026 are: 15 day maximum: $30 30 day maximum: $50 90 day maximum: $125. ... Citizens of South Asian Association for Regional Cooperation (SAARC) member states (except Afghanistan ) may obtain a free visa on arrival for 30 days: Bangladesh Bhutan Maldives Pakistan Sri Lanka Citizens of the following countries and territories may obtain a free visa on arrival if they are travelling as tourists: China Hong Kong Macao ... Citizens of the following countries and territories must apply for a visa at the Nepalese diplomatic missions : Afghanistan Cameroon Eswatini Ethiopia Ghana Iran Iraq Liberia Nigeria Palestine Somalia Syria Zimbabwe"
+  },
+  {
+   "url": "https://immigration.gov.np/visa-information",
+   "title": "Department of Immigration, Nepal: Visa Information",
+   "read": "2026-11-03",
+   "kind": "primary",
+   "said": "Tourist Visa Tribhuvan International Airport (TIA) facilitates tourists with Visa on Arrival . ... On-Arrival Visa Fees 15 Days $30 USD 30 Days $50 USD 90 Days $125 USD ... Gratis Visa (Free of Cost) Children below 10 years SAARC citizens (except Afghanistan) - up to 30 days on first visit in a given visa year Afghan citizens - upon recommendation of Department of Immigration NRN card holders (issued by MoFA or Nepalese Diplomatic Missions abroad) Chinese Nationals Officials from China, Brazil, Russia, and Thailand (reciprocal visa waiver)"
+  },
+  {
+   "url": "https://immigration.gov.np/visa-exemption",
+   "title": "Department of Immigration, Nepal: Visa Exemption",
+   "read": "2026-11-03",
+   "kind": "primary",
+   "said": "Based on reciprocal agreements between Nepal and other countries, the following visa exemption facilities are provided to eligible passport holders. 1. Countries Whose Diplomatic and Official or Service Passport Holders Are Exempted from Visa Requirements ..."
+  }
+ ]
+}

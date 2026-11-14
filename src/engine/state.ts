@@ -321,6 +321,11 @@ export function registerHandler(kind: string, fn: Handler): void {
   handlers.set(kind, fn);
 }
 
+/** The handler a kind of event has now, for a proof that switches one off and puts it back (tests/proof/probe.ts). */
+export function handlerOf(kind: string): Handler | undefined {
+  return handlers.get(kind);
+}
+
 export type Mode = 'tick' | 'advance' | 'sleep';
 
 export interface ProcessResult {
@@ -349,6 +354,7 @@ export class ProcessingError extends Error {
 export function processUntil(state: GameState, target: number, mode: Mode, maxEvents = 500): ProcessResult {
   if (!(state.events.length && state.events[0].at <= target)) {
     state.now = Math.max(state.now, target);
+    moveClock(state, state.now);
     return { reached: state.now, done: true, processed: 0 };
   }
   const snapshot = copyPlain(state);
@@ -370,6 +376,7 @@ function runEvents(state: GameState, target: number, mode: Mode, maxEvents: numb
     if (state.processedEventIds.includes(ev.id)) continue;
     onEvent(ev.kind);
     state.now = Math.max(state.now, ev.at);
+    moveClock(state, state.now);
     const fn = handlers.get(ev.kind);
     const res = fn ? fn(state, ev) ?? {} : {};
     state.processedEventIds.push(ev.id);
@@ -383,7 +390,20 @@ function runEvents(state: GameState, target: number, mode: Mode, maxEvents: numb
     }
   }
   state.now = Math.max(state.now, target);
+  moveClock(state, state.now);
   return { reached: state.now, done: true, processed };
+}
+
+/**
+ * What else keeps the game's clock (from November 14, 2026: the bank, engine/bank.ts): told each instant the clock
+ * reaches, before an event at it runs, so what it does by then is done when the event reads it.
+ */
+const clockHooks: ((state: GameState, to: number) => void)[] = [];
+export function onClockMove(fn: (state: GameState, to: number) => void): void {
+  clockHooks.push(fn);
+}
+function moveClock(state: GameState, to: number): void {
+  for (const fn of clockHooks) fn(state, to);
 }
 
 /** The next event the player would want to jump to (anything that is not silent). */

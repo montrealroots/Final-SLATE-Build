@@ -1,0 +1,41 @@
+{
+ "country": "TN",
+ "rules": [
+  {
+   "passports": [
+    "MA"
+   ],
+   "right": "permit",
+   "route": "Attestation de non soumission au visa de contrat de travail"
+  }
+ ],
+ "others": {
+  "right": "permit",
+  "route": "Contrat de travail visé (titre de séjour « salarié »)"
+ },
+ "note": "Tunisia: a foreign employee works on a contract visaed by the Ministry of Employment and Vocational Training (the visa de contrat de travail), whose categories include foreigners recruited where no Tunisian counterpart exists in the speciality and, apart, foreign agents working in sport and the arts (the Ministry's pages, as Common Crawl archived them in July and October 2026), with a residence permit marked « salarié » (the Union des Français de l'Étranger's country file; the Ministry's pages don't speak of it). Moroccan nationals take instead the Ministry's attestation that they aren't subject to the contract visa (its Emploi des étrangers page), held from 2026-11-03. No days without it.",
+ "sources": [
+  {
+   "url": "https://ufe.org/dossier-pays/tunisie/travailler-en-tunisie/",
+   "title": "Union des Français de l’Étranger, Travailler en Tunisie",
+   "read": "2026-11-03",
+   "said": "sur présentation d’un contrat de travail visé par les autorités compétentes, un titre de séjour valable un an renouvelable et portant la mention « salarié ».",
+   "kind": "secondary",
+   "quotes": "https://www.emploi.gov.tn/"
+  },
+  {
+   "url": "https://www.emploi.gov.tn/fr/128/emploi-des-etrangers",
+   "title": "Ministère de l'Emploi et de la Formation Professionnelle (MEFP), Emploi des étrangers (Common Crawl CC-MAIN-2026-30 capture of 2026-07-13; the host resets this client)",
+   "read": "2026-11-03",
+   "said": "Le Ministère de la Formation Professionnelle et de l'Emploi fournit deux types de documents: le visa de contrat de travail et l'attestation de non soumission au visa de contrat de travail ... Les ressortissants marocains ... Visa de contrat de travail: Les catégories visées et les pièces à fournir: Les étrangers à recruter pour inexistence d'homologue tunisien dans la spécialité demandée",
+   "kind": "primary"
+  },
+  {
+   "url": "https://www.emploi.gov.tn/fr/129/contrat-de-travail",
+   "title": "MEFP, Contrat de travail (Common Crawl CC-MAIN-2026-43 capture of 2026-10-17)",
+   "read": "2026-11-03",
+   "said": "Contrat de travail Les catégories visées Les étrangers à recruter pour inexistence d'homologue tunisien dans la spécialité demandée ... Les agents de nationalité étrangère exerçant dans le champ Sportif et Artistique ... Les agents de nationalité étrangère exerçant dans les Hôtels y compris les Animateurs et les représentants des Agences de Voyages.",
+   "kind": "primary"
+  }
+ ]
+}

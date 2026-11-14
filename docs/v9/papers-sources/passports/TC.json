@@ -1,0 +1,49 @@
+{
+ "country": "TC",
+ "office": "the Turks and Caicos Islands Passport Office, in person at the One Stop Shops in Grand Turk and Providenciales or the Border Control Enforcement Department",
+ "currency": "USD",
+ "routes": [
+  {
+   "id": "home",
+   "where": "home",
+   "speed": "standard",
+   "within": null,
+   "label": "in person in the Islands"
+  }
+ ],
+ "passports": [
+  {
+   "for": "adult",
+   "from": 16,
+   "validYears": 10,
+   "pay": {
+    "home": "150.00"
+   }
+  },
+  {
+   "for": "child",
+   "under": 16,
+   "validYears": 5,
+   "pay": {
+    "home": "75.00"
+   }
+  }
+ ],
+ "note": "The British Overseas Territories Citizen passport issued in the Turks and Caicos Islands, from the Government's passport page (fees in US dollars, expedited service not available) and the application guide it links (an adult is 16 or over, the adult passport normally valid 10 years and the child's 5), both read 2026-11-03. The page says it takes 'at least 4 weeks' and, in its introduction, that passports 'can now be returned within 10 days': a least time and a claim, neither a published longest time, so the time is kept unknown. The guide is the 2015 PDF the page still links.",
+ "sources": [
+  {
+   "kind": "primary",
+   "url": "https://gov.tc/passports",
+   "title": "Turks and Caicos Islands Government, Passports",
+   "read": "2026-11-03",
+   "said": "Step 3 - Pay the Required Fee Adult passport - US $150.00 Child passport - US $75.00 Expedited Service – Not Available ... How Long It Takes It takes at least 4 weeks to get your passport. Don’t book travel until you’ve got it. ... Having now entered the final phase of this project, passports can now be returned within 10 days."
+  },
+  {
+   "kind": "primary",
+   "url": "https://gov.tc/passports/images/forms/BOT_Passport_Application_Guide.pdf",
+   "title": "Turks and Caicos Islands Government, British Overseas Territory Passport Application Guide (linked from gov.tc/passports; PDF of 25 June 2015)",
+   "read": "2026-11-03",
+   "said": "Adult application An adult is 16 or over. If you are going to turn 16 within two weeks, put a cross in the Adult box. Adult passports are normally valid for 10 years. Child application A child is under 16. Child passports are normally valid for five years. ... The passport fee is set in United States dollars and is payable at the time of applying. ... You have to apply in person at the One Stop Shop in Grand Turk and Providenciales or at the Border Control Enforcement Department on the island of North, Middle and South Caicos."
+  }
+ ]
+}

@@ -1,0 +1,27 @@
+{
+ "country": "LK",
+ "years": "none",
+ "renounce": null,
+ "lapses": true,
+ "note": "GLOBALCIT's Citizenship Law Dataset v3.0 (EUI, 2025), coding the law in force on 1 January 2024 (A06a No provision; A06b No provision; L05 SRI 19(3), 20(5), 21(1)): no ordinary naturalisation by residence; a citizen loses the citizenship on voluntarily taking another (with exceptions). Reforms after that date are checked in the file's later sources, where a later source is given. Citizenship at birth is read from the same dataset's 2024 coding of modes A01a (descent, born in country: Generally applicable provision), A01b (descent, born abroad: Generally applicable provision), A02a (birth in country: No provision) and A02b (birth in country to a parent born there: No provision), as its codebook (RSC/GLOBALCIT 2025/01, sections 3.2.1a to 3.2.2b) defines them: not by birth in the territory alone (provisions for foundlings and children otherwise stateless, modes A03a and A03b, aren't held by the form); by descent from either parent, with no further limit on a child born abroad. Changes to the law at birth after 1 January 2024 weren't checked for this file. On 2026-11-03 the primary was read: Department of Immigration and Emigration, Sri Lanka, history page (Citizenship Act No. 18 of 1948); Department of Immigration and Emigration, \"Dual Citizenship: Instructions for applicants\". Every figure the file holds now rests on it, and the dataset is no longer cited. Loss under s. 19 may be avoided by a dual-citizenship grant (s. 19(3)).",
+ "sources": [
+  {
+   "url": "https://www.immigration.gov.lk/pages_e.php?id=2",
+   "title": "Department of Immigration and Emigration, Sri Lanka, history page (Citizenship Act No. 18 of 1948)",
+   "read": "2026-11-03",
+   "kind": "primary",
+   "said": "By this law established a status known as ‘the status of a citizen of Ceylon’ which status a person owns in one of two ways only viz. by right of descent as provided by the act or by virtue of registration as provided by the act or by any other act authorizing the grant of such status by registration. ... Earlier the right of citizenship by descent was limited only to the paternal descent. With the enactment of the Amendment Act no 16 of 2003 it was extended even to the maternal descent with effect from the appointed date (1948-11-15) of the citizenship act."
+  },
+  {
+   "url": "https://www.immigration.gov.lk/pages_e.php?id=4",
+   "title": "Department of Immigration and Emigration, \"Dual Citizenship: Instructions for applicants\"",
+   "read": "2026-11-03",
+   "kind": "primary",
+   "said": "1. Dual Citizenship is applicable to; A person whose citizenship of Sri Lanka has ceased under section 19, 20 or 21 of the Citizenship Act, No 18 of 1948 or a person whose Citizenship of Sri Lanka is likely to cease. Resumption – Section 19(2) of the said Act makes provisions in respect of a person whose citizenship of Sri Lanka has ceased due to obtaining of citizenship in another country ... Retention – Section 19(3) of the said Act makes provisions in respect of person who is having a desire to obtain Citizenship in another country, while intends to retain"
+  }
+ ],
+ "atBirth": {
+  "soil": "none",
+  "descent": "either parent"
+ }
+}

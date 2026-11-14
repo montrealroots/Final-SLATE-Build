@@ -1,0 +1,55 @@
+{
+ "country": "PK",
+ "rules": [
+  {
+   "entry": "free",
+   "days": 90,
+   "passports": [
+    "AE",
+    "BH",
+    "KW",
+    "MV",
+    "OM",
+    "QA",
+    "SA"
+   ]
+  },
+  {
+   "entry": "free",
+   "days": 30,
+   "passports": [
+    "NP"
+   ]
+  },
+  {
+   "entry": "visa",
+   "passports": [
+    "AM",
+    "IL",
+    "IN",
+    "TW"
+   ]
+  }
+ ],
+ "others": {
+  "entry": "evisa"
+ },
+ "note": "Pakistan: nationals of the Gulf states and the Maldives enter without a visa for 90 days, Nepalese for 30; everyone else applies online for a visa (since 1 January 2026 the free Visa Prior to Arrival is suspended: 7 to 10 business days and a fee, not modelled), except nationals of Armenia, India, Israel and Taiwan, who can't apply online (taken as a visa; Indians' cleared by the Ministry of Interior). Read from Wikipedia's copy (NADRA's visa portal needs an account). Read on 2026-11-03 against the Directorate General of Immigration and Passports' own list of visa abolition and exemption agreements (as on 21 February 2024): it confirms the Maldives' 3 months and Nepal's month for every passport and that Armenia, Israel and Taiwan are on no list, but exempts the Gulf states' diplomatic and official passports only; it predates the Gulf states' exemption of 14 August 2024 that Wikipedia's copy records, so the Gulf's 90 days are kept.",
+ "sources": [
+  {
+   "url": "https://en.wikipedia.org/wiki/Visa_policy_of_Pakistan",
+   "title": "Wikipedia, Visa policy of Pakistan",
+   "read": "2026-11-03",
+   "kind": "secondary",
+   "quotes": "https://visa.nadra.gov.pk/",
+   "said": "Citizens from the following countries who hold ordinary passports do not require a visa for Pakistan for up to 90 days (unless otherwise noted). Bahrain Kuwait Maldives Nepal (30 days) Oman Qatar Saudi Arabia United Arab Emirates ... Starting January 1, 2026, Pakistan has suspended the Visa Prior to Arrival, which was previously granted free of charge and usually issued within 48 hours. ... Citizens of all countries except the following are eligible to apply for an online visa: Armenia India Israel Taiwan"
+  },
+  {
+   "url": "https://dgip.gov.pk/visa/categories.php",
+   "title": "Directorate General of Immigration & Passports, Pakistan: Visa Categories (incl. 'Entry into Pakistan without Visa', list as on 21-02-2024)",
+   "read": "2026-11-03",
+   "kind": "primary",
+   "said": "Entry into Pakistan without Visa Pakistan has visa abolition / exemption Agreements with following 49 countries. ... List of Countries with whom Pakistan has Visa Abolition/Exemption Agreements (As on 21-02-2024) ... Bahrain Three Months Diplomatic & Official Passport Holders ... Kuwait Three Months Diplomatic, Special & Official Passport Holders ... Maldives Three Months All Nationals of the Country ... Nepal One Month All Nationals of the Country ... United Arab Emirates *** Three Month [3] Diplomatic & Official Passport Holders ... Summary ... Ordinary Passport Holders(All nationals) : 02 Countries ... Armenia, Israel and Taiwan will not be part of any list."
+  }
+ ]
+}

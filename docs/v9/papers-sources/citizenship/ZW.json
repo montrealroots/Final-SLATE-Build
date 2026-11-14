@@ -1,0 +1,28 @@
+{
+ "country": "ZW",
+ "years": 10,
+ "renounce": true,
+ "lapses": false,
+ "note": "GLOBALCIT's Citizenship Law Dataset v3.0 (EUI, 2025), coding the law in force on 1 January 2024 (A06a Const 38(2), ZIM 4; A06b Const 38(2), ZIM 4; L05 No provision): ordinary naturalisation after 10 years' residence; the applicant must give up other citizenships; a citizen keeps it on taking another (loss applies only to naturalised citizens, not modelled). Reforms after that date are checked in the file's later sources, where a later source is given. Citizenship at birth is read from the same dataset's 2024 coding of modes A01a (descent, born in country: Generally applicable provision), A01b (descent, born abroad: Generally applicable provision), A02a (birth in country: No provision) and A02b (birth in country to a parent born there: No provision), as its codebook (RSC/GLOBALCIT 2025/01, sections 3.2.1a to 3.2.2b) defines them: not by birth in the territory alone (provisions for foundlings and children otherwise stateless, modes A03a and A03b, aren't held by the form); by descent from either parent, with no further limit on a child born abroad. Changes to the law at birth after 1 January 2024 weren't checked for this file. On 2026-11-03 the primary was read: Constitution of Zimbabwe Amendment (No. 20) Act, 2013 (the Constitution of Zimbabwe), copy served by the Ministry of Youth (youth.gov.zw), Chapter 3 Citizenship, ss. 35-43. It confirmed the years of residence, birth in the territory and descent. It was silent on renunciation and loss on taking another citizenship, which still rest on the sources above, re-read that day and found the same. The ten years are the Constitution's for registration (s. 38(2)); the Citizenship of Zimbabwe Act, which holds renunciation and loss, wasn't reached.",
+ "sources": [
+  {
+   "url": "https://cadmus.eui.eu/bitstreams/3b166501-e695-48d7-9e27-d7bef061573a/download",
+   "title": "GLOBALCIT Citizenship Law Dataset v3.0 (Vink, van der Baaren, Bauböck, Dzankic, Honohan, Manby; EUI Research Data, 2025), country-year-mode files, Zimbabwe, 2024",
+   "read": "2026-11-03",
+   "kind": "secondary",
+   "quotes": "https://globalcit.eu/national-citizenship-laws/",
+   "said": "Person has been continuously and lawfully resident in Zimbabwe for at least 10 years. ... Renunciation of citizenship of another country required. ... Person has acquired citizenship of another state. Note: In February 2020, the Cabinet approved the revised Zimbabwean Citizenship Bill, which allows Zimbabweans by descent to hold dual citizenship. ... Generally applicable provision ... Person is born in Zimbabwe to a citizen. ... Generally applicable provision ... Person is born abroad to a parent who was a citizen ordinarily resident in Zimbabwe or working outside Zimbabwe for the state (in which case the person becomes a citizen by birth), or to a citizen (person becomes a citizen by descent). Other conditions: the birth is registered in Zimbabwe. ... No provision ... No provision"
+  },
+  {
+   "url": "https://youth.gov.zw/storage/01JP9R9JD7HC6DAH8M2589A97Y.pdf",
+   "title": "Constitution of Zimbabwe Amendment (No. 20) Act, 2013 (the Constitution of Zimbabwe), copy served by the Ministry of Youth (youth.gov.zw), Chapter 3 Citizenship, ss. 35-43",
+   "read": "2026-11-03",
+   "kind": "primary",
+   "said": "36 Citizenship by birth (1) Persons are Zimbabwean citizens by birth if they were born in Zimbabwe and, when they were born— (a) either their mother or their father was a Zimbabwean citizen; or (b) any of their grandparents was a Zimbabwean citizen by birth or descent. (2) Persons born outside Zimbabwe are Zimbabwean citizens by birth if, when they were born, either of their parents was a Zimbabwean citizen and— (a) ordinarily resident in Zimbabwe; or (b) working outside Zimbabwe for the State or an international organisation. ... 37 Citizenship by descent Subject to section 36(2), persons born outside Zimbabwe are Zimbabwean citizens by descent if, when they were born— (a) either of their parents or any of their grandparents was a Zimbabwean citizen by birth or descent; or (b) either of their parents was a Zimbabwean citizen by registration; and the birth is registered in Zimbabwe ... 38 ... (2) Any person who has been continuously and lawfully resident in Zimbabwe for at least ten years, whether before or after the effective date, and who satisfies the conditions prescribed by an Act of Parliament, is entitled, on application, to be registered as a Zimbabwean citizen. ... 42 ... An Act of Parliament may make provision ... (e) the prohibition of dual citizenship in respect of citizens by descent or registration"
+  }
+ ],
+ "atBirth": {
+  "soil": "none",
+  "descent": "either parent"
+ }
+}

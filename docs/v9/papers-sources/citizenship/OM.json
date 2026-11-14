@@ -1,0 +1,21 @@
+{
+ "country": "OM",
+ "years": 15,
+ "renounce": true,
+ "lapses": true,
+ "note": "GLOBALCIT's Citizenship Law Dataset v3.0 (EUI, 2025), coding the law in force on 1 January 2024 (A06a OMA 15; A06b OMA 15; L05 OMA 5, OMA 19): ordinary naturalisation after 20 years' residence; the applicant must give up other citizenships; a citizen loses the citizenship on voluntarily taking another. Reforms after that date are checked in the file's later sources, where a later source is given. Citizenship at birth is read from the same dataset's 2024 coding of modes A01a (descent, born in country: Gender restriction: no or restricted access if the mother is a citizen (wedlock condition/supplementary provision may apply)), A01b (descent, born abroad: Gender restriction: no or restricted access if the mother is a citizen (wedlock condition/supplementary provision may apply)), A02a (birth in country: No provision) and A02b (birth in country to a parent born there: No provision), as its codebook (RSC/GLOBALCIT 2025/01, sections 3.2.1a to 3.2.2b) defines them: not by birth in the territory alone (provisions for foundlings and children otherwise stateless, modes A03a and A03b, aren't held by the form); by descent from the father only, a child born abroad on the limit the dataset states. Changes to the law at birth after 1 January 2024 weren't checked for this file. On 2026-11-03 the primary was read: مرسوم سلطاني رقم ٢٠٢٥/١٧ بإصدار قانون الجنسية العمانية, الجريدة الرسمية العدد (١٥٨٣), 2 February 2025, Ministry of Justice and Legal Affairs (mjla.gov.om), found by its own decree search (module.php?m=search&Category=decrees); scanned text read by OCR (ara). Every figure the file holds now rests on it, and the dataset is no longer cited. The dataset quoted the Nationality Law of 2014, which Royal Decree 17/2025 repealed (in force the day after its publication on 2 February 2025): ordinary naturalisation now asks fifteen years' lawful continuous residence (art. 17(1)), not twenty, and the limit on descent is restated from the 2025 law. Dual nationality needs a Royal Decree (art. 5); art. 17 asks a written declaration renouncing the other nationality.",
+ "sources": [
+  {
+   "url": "https://mjla.gov.om/images/decrees/file/Book500293.pdf",
+   "title": "مرسوم سلطاني رقم ٢٠٢٥/١٧ بإصدار قانون الجنسية العمانية, الجريدة الرسمية العدد (١٥٨٣), 2 February 2025, Ministry of Justice and Legal Affairs (mjla.gov.om), found by its own decree search (module.php?m=search&Category=decrees); scanned text read by OCR (ara)",
+   "read": "2026-11-03",
+   "kind": "primary",
+   "said": "يلغى قانون الجنسية العمانية المشار إليه ... ويعمل به من اليوم التالي لتاريخ نشره. ... المادة (٥) لا يجوز الجمع بين الجنسية العمانية وأي جنسية أخرى إلا بمرسوم سلطاني، بناء على توصية الوزير. ... المادة (١٢) يكون عمانيا بصفة أصلية وفقا لأحكام هذا القانون: ١ – من يولد في سلطنة عمان أو خارجها لأب عماني بصفة أصلية. ... المادة (١٥) ... ٢ – من يولد في سلطنة عمان أو خارجها من أم عمانية، ولم يثبت نسبه شرعا لأب. ... المادة (١٧) يجوز للأجنبي التقدم بطلب الحصول على الجنسية العمانية إذا توفرت فيه الشروط الآتية: ١ – أن يسبق طلبه إقامته في سلطنة عمان إقامة مشروعة متواصلة مدة لا تقل عن (١٥) خمسة عشر عاما، ولا يحول دون اعتبار إقامته متواصلة غيابه خلال العام الواحد مدة لا تزيد على (٩٠) تسعين يوما. ... أن يقر كتابة برغبته في التنازل عن جنسية الدولة التي يحمل جنسيتها، وبأنه لا يحمل جنسية دولة أخرى عدا الدولة التي سيتنازل عن جنسيتها. ... المادة (٢٣) يفقد العماني جنسيته العمانية بحكم القانون، إذا اكتسب جنسية دولة أخرى بالمخالفة لأحكام هذا القانون."
+  }
+ ],
+ "atBirth": {
+  "soil": "none",
+  "descent": "father",
+  "descentAbroad": "Person is born in or outside Oman to an Omani father by origin (art. 12); to an Omani mother only where descent from a father is not legally established (art. 15) or the Omani father has become stateless (art. 12)."
+ }
+}

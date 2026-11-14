@@ -1,0 +1,19 @@
+{
+ "country": "RS",
+ "others": {
+  "right": "permit",
+  "route": "Jedinstvena dozvola",
+  "days": 90,
+  "within": 180
+ },
+ "note": "Serbia: a foreigner works on the single permit for residence and work, but one carrying out temporary educational, sporting, artistic, cultural or similar activities works without it for a stay of up to 90 days in 180 from first entry (Law on the Employment of Foreigners, Službeni glasnik RS 128/2014, 113/2017, 50/2018, 31/2019, 62/2023, art. 3, read 2026-11-03 in the consolidated text of the Official Gazette's legal information system; until then from a publisher's). Art. 3(1)(12) also lets a foreigner granted temporary residence on that ground, as a member of the author's or acting crew of an audiovisual work produced in Serbia, work without the single permit; the engine holds no route on a residence's ground, so it isn't modelled. The EU citizens' free access to the labour market (arts. 5–8, read in the publisher's text) applies only from accession and isn't held.",
+ "sources": [
+  {
+   "url": "https://pravno-informacioni-sistem.rs/eli/rep/sgrs/skupstina/zakon/2014/128/4/reg",
+   "title": "Правно-информациони систем Републике Србије, Закон о запошљавању странаца, \"Службени гласник РС\", бр. 128/2014, 113/2017, 50/2018, 31/2019, 62/2023 (consolidated), art. 3 (ELI, rendered in a browser)",
+   "read": "2026-11-03",
+   "said": "Члан 3. Право на рад у Републици, без издате јединствене дозволе, остварује странац коме је, у складу са законом, одобрен привремени боравак по основу: ... 12) ангажовања као члана ауторске или глумачке екипе који на територији Републике производи аудиовизуелно дело, у складу са законом; ... Странац чији боравак у Републици не траје дуже од 90 дана у периоду од 180 дана рачунајући од дана првог уласка, односно дуже од прописаног периода боравка у складу међународним уговором, остварује право на рад у Републици у наведеном периоду без издате јединствене дозволе, и то странац који: ... 4) обавља привремене образовне, спортске, уметничке, културне и друге сличне активности или у Републици борави на научном, уметничком, културном или спортском догађају у организацији овлашћених организација, државних органа или органа аутономне покрајине и јединица локалне самоуправе, као и пратеће организацијско и техничко особље;",
+   "kind": "primary"
+  }
+ ]
+}

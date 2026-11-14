@@ -1,0 +1,66 @@
+{
+ "country": "SL",
+ "rules": [
+  {
+   "entry": "free",
+   "passports": [
+    "BF",
+    "BJ",
+    "CI",
+    "CV",
+    "GH",
+    "GM",
+    "GN",
+    "GW",
+    "LR",
+    "ML",
+    "NE",
+    "NG",
+    "SN",
+    "TG"
+   ]
+  },
+  {
+   "entry": "arrival",
+   "months": 1,
+   "passports": [
+    "BB",
+    "BW",
+    "FJ",
+    "JM",
+    "KE",
+    "KN",
+    "LK",
+    "LS",
+    "MU",
+    "MW",
+    "MY",
+    "SG",
+    "SZ",
+    "TT"
+   ]
+  }
+ ],
+ "others": {
+  "entry": "evisa",
+  "days": 30
+ },
+ "note": "Sierra Leone: nationals of the ECOWAS states, Burkina Faso, Mali and Niger enter without a visa; nationals of the countries listed get a month's visa on arrival (free for Barbados, Botswana, Malaysia, Singapore and the others first listed; USD 80, or 25 for African Union nationals, for the rest: the fee isn't modelled); everyone else applies for an e-Visa. Read from Wikipedia's copy. Checked on 2026-11-03 against the Immigration eVisa service's own answers for all 269 nationalities: it offers no visa to the 14 ECOWAS states and the 14 held as getting a free visa on arrival, and the same eVisa (a stay of 30 days) to everyone else, its FAQ saying the approved eVisa is issued on arrival; so the 108 nationalities Wikipedia's copy listed for a paid visa on arrival were moved to the e-Visa, its stay 30 days.",
+ "sources": [
+  {
+   "url": "https://en.wikipedia.org/wiki/Visa_policy_of_Sierra_Leone",
+   "title": "Wikipedia, Visa policy of Sierra Leone",
+   "read": "2026-11-03",
+   "kind": "secondary",
+   "quotes": "https://www.evisa.sl/",
+   "said": "Citizens of the following countries may enter Sierra Leone without a visa or are eligible for a free visa on arrival: All ECOWAS member states Burkina Faso Mali Niger ... Citizens of the following countries may obtain a free visa on arrival: Barbados Botswana Eswatini Fiji Jamaica Kenya Lesotho Malawi Malaysia Mauritius Saint Kitts and Nevis Singapore Sri Lanka Trinidad and Tobago Citizens of the following countries may obtain a visa on arrival (valid for 1 month) at Freetown International Airport , Jendema (bordering Liberia) and Gbalamuya (bordering Guinea) for a fee 80 USD (unless otherwise noted): African Union member states (except ECOWAS, Burkina Faso, Djibouti, Equatorial Guinea, Ethiopia, Mali and Niger) All European Union member states Antigua and Barbuda Australia Bahrain Bangladesh Belize Bolivia Brazil Brunei Cambodia Canada China Dominica Fiji Grenada Guyana Hong Kong India Indonesia Iran Israel Japan Kiribati Kuwait Lebanon Liechtenstein Macao Nauru New Zealand Norway Oman Pakistan Papua New Guinea Qatar Russia Samoa Saint Lucia Saint Vincent and the Grenadines Saudi Arabia Solomon Islands South Korea Switzerland Thailand Timor-Leste Tonga Turkey Tuvalu United Arab Emirates United Kingdom United States Vanuatu Vietnam ... Citizens of other countries must obtain an e-Visa."
+  },
+  {
+   "url": "https://evisa.sl/Visa.WebApi/visa/GBR",
+   "title": "Sierra Leone Immigration eVisa (evisa.sl): the visa service the 'Visa Information' page queries, GET /Visa.WebApi/visa/{nationality}, run for all 269 entries of /Visa.WebApi/countries/en",
+   "read": "2026-11-03",
+   "kind": "primary",
+   "said": "GET /Visa.WebApi/visa/GBR: [{\"ID\":\"1026090313581957053\",\"Name\":\"NonAfricanUnionMultipleEntry\",\"Type\":\"NonAfricanUnion\",\"Class\":\"MultipleEntry\",\"Cost\":160.0,\"Description\":\"Visa for Non African Union nationals.\\r\\nValidity of the Visa: 365 days\\r\\nStay duration: 30 days\\r\\nNb of entries: Multiple\"},{\"ID\":\"1026090313582772055\",\"Name\":\"NonAfricanUnionSingleEntry\",\"Type\":\"NonAfricanUnion\",\"Class\":\"SingleEntry\",\"Cost\":80.0,\"Description\":\"Visa for Non African Union nationals.\\r\\nValidity of the Visa: 90 days\\r\\nStay duration: 30 days\\r\\nNb of entries: One (1)\"}] (the same two for 198 nationalities); the African Union pair (AfricanUnionSigleEntry, AfricanUnionMultipleEntry) for 36; [] for BEN, BFA, BHS, BMU, BRB, BWA, CIV, CPV, FJI, GHA, GIN, GMB, GNB, JAM, KEN, KNA, LBR, LKA, LSO, MLI, MUS, MWI, MYS, NER, NGA, SEN, SGP, SWZ, TGO, TTO"
+  }
+ ]
+}

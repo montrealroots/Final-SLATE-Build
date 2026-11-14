@@ -1,0 +1,33 @@
+{
+ "country": "DJ",
+ "rules": [
+  {
+   "entry": "free",
+   "passports": [
+    "SG"
+   ]
+  }
+ ],
+ "others": {
+  "entry": "evisa",
+  "days": 90
+ },
+ "note": "Djibouti: Singaporeans enter without a visa; everyone else applies for an e-Visa (since 18 February 2018; a short stay of 15 to 90 days, USD 23), which the government recommends; a visa on arrival, which Timatic still lists for all, isn't modelled. Hong Kong's 14-day exemption (from Hong Kong's Immigration Department) isn't confirmed by Djibouti. Read from Wikipedia's copy. Checked on 2026-11-03 against Law no. 40/AN/19/8ème L on the entry and stay of foreigners (Journal Officiel): a short-stay visa is valid for no more than three months (art. 13) and may be pre-authorised through the e-Visa (art. 16); Singapore's exemption isn't on any Djiboutian page read and stands on Wikipedia's copy.",
+ "sources": [
+  {
+   "url": "https://en.wikipedia.org/wiki/Visa_policy_of_Djibouti",
+   "title": "Wikipedia, Visa policy of Djibouti",
+   "read": "2026-11-03",
+   "kind": "secondary",
+   "quotes": "https://www.evisa.gouv.dj/",
+   "said": "All visitors to Djibouti must obtain either a visa on arrival to Djibouti, an electronic visa online or a visa from one of the Djiboutian diplomatic missions prior to arrival in Djibouti ... Djibouti's government recommends that travellers apply for an eVisa. ... Visitors can apply for a transit visa valid for 3 days or a single entry visit visa valid for 15-90 days."
+  },
+  {
+   "url": "https://www.journalofficiel.dj/texte-juridique/loi-n40-an-19-8eme-l-relative-aux-conditions-dentree-et-de-sejour-des-etrangers-en-republique-de-djibouti/",
+   "title": "Journal Officiel de la République de Djibouti, Loi n° 40/AN/19/8ème L relative aux conditions d'entrée et de séjour des étrangers",
+   "read": "2026-11-03",
+   "kind": "primary",
+   "said": "Article 13 : Visas de court séjour Ces visas sont délivrés aux étrangers désireux de pénétrer sur le territoire djiboutien pour des motifs privés, d’affaires ou touristiques. La validité de ces visas ne doit pas excéder trois (3) mois. ... Article 16 : Les demandeurs de visas en provenance des pays où la République de Djibouti ne possède pas de représentations diplomatiques ou consulaires, peuvent obtenir une pré autorisation de visa d’entrée de transit, de court séjour ou de long séjour par le biais du système électronique E-Visa."
+  }
+ ]
+}

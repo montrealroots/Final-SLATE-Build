@@ -1,0 +1,14 @@
+{
+ "country": "GL",
+ "group": "eu1806",
+ "note": "Greenland is outside the EU and Schengen, but the nationalities that need a visa are those of the Schengen list, the visa a Danish one endorsed for Greenland (a Schengen visa doesn't admit): the eu1806 list's rules, the visa a separate one.",
+ "sources": [
+  {
+   "url": "https://www.nyidanmark.dk/en-GB/You-want-to-apply/Short-stay-visa/Visa-to-the-Faroe-Island-or-Greenland",
+   "title": "The Danish Immigration Service, Entry to the Faroe Islands or Greenland (last updated 04-09-2026)",
+   "read": "2026-11-03",
+   "kind": "primary",
+   "said": "A visa to enter Denmark or another Schengen country is not valid for entry into the Faroe Islands or Greenland. ... If you are a citizen of a visa-exempt country and can enter Denmark without a visa, you can also enter the Faroe Islands and Greenland without a visa."
+  }
+ ]
+}

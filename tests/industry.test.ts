@@ -136,7 +136,9 @@ describe('the living world\'s engine', () => {
     expect(outcomes.size).toBeGreaterThan(1);
     const back = deserialize(serialize(a));
     expect(back.industry).toEqual(a.industry);
-  });
+    // Twelve lives of seven years each: from November 14, 2026 the bank keeps each one's clock too (engine/bank.ts),
+    // about 50 ms a year measured that day, which takes the case past the default 5 seconds.
+  }, 30_000);
 
   it('waits, changing nothing, when the catalog is gone', () => {
     setIndustryWorld(WORLD);

@@ -1,0 +1,61 @@
+{
+ "country": "NG",
+ "office": "the Nigeria Immigration Service",
+ "currency": "NGN",
+ "routes": [
+  {
+   "id": "home",
+   "where": "home",
+   "speed": "standard",
+   "within": null,
+   "label": "applied for within Nigeria"
+  },
+  {
+   "id": "abroad",
+   "where": "abroad",
+   "speed": "standard",
+   "within": null,
+   "label": "at a mission abroad, in US dollars"
+  }
+ ],
+ "passports": [
+  {
+   "for": "any",
+   "pages": 32,
+   "validYears": 5,
+   "pay": {
+    "home": "100000",
+    "abroad": "150"
+   }
+  },
+  {
+   "for": "any",
+   "pages": 64,
+   "validYears": 10,
+   "pay": {
+    "home": "200000",
+    "abroad": "230"
+   }
+  }
+ ],
+ "note": "Fees from 1 September 2025 for applications made within Nigeria, as the Nigeria Immigration Service announced them on 28 August 2025 (read on the Service's own site on 2026-11-03; it had refused this client with a 403 on 2026-10-28, when Voice of Nigeria's report of the announcement was read instead, and agrees with it): NGN 100,000 for 32 pages valid five years and NGN 200,000 for 64 pages valid ten; abroad, unchanged, USD 150 and USD 230, the abroad route's currency. The Service's Passports page also names a 64-page passport valid five years, whose fee the announcement doesn't state, so it isn't modelled. Whether minors' passports differ, and processing times, are leads.",
+ "sources": [
+  {
+   "kind": "primary",
+   "url": "https://immigration.gov.ng/nigeria-immigration-service-announces-upward-review-of-nigerian-standard-passport-fees/",
+   "title": "Nigeria Immigration Service, Nigeria Immigration Service Announces Upward Review Of Nigerian Standard Passport Fees (28 August 2025)",
+   "read": "2026-11-03",
+   "said": "In a bid to uphold the quality and integrity of the Nigerian Passport, the Nigeria Immigration Service hereby announces an upward review of Nigerian Stardard Passport fees, set to take effect on 1st September, 2025. 2. The review which only affect Passport Application fees made in Nigeria, now set a new fee thresholds for 32-page with 5-year validity at N100,000 and 64-page with 10-year validity at N200,000. 3. Meanwhile, Nigerian Passport Application fees made by Nigerians in diaspora remain unchanged at $150 for 32-page with 5-year validity and $230 for 64-page with 10-year validity."
+  },
+  {
+   "kind": "primary",
+   "url": "https://immigration.gov.ng/passports/",
+   "title": "Nigeria Immigration Service, Passports",
+   "read": "2026-11-03",
+   "said": "There are three kinds of fingerprint enhanced e-Passports that the Nigerian Immigration Service gives out. Normal passports (green) for Nigerians and comes in 32-page/5-year, 64-page/5-year, and 64-page/10-year, Official Passports (blue) for the Government officials and Diplomatic passports."
+  }
+ ],
+ "abroad": {
+  "currency": "USD"
+ }
+}

@@ -1,0 +1,34 @@
+{
+ "country": "AT",
+ "years": 10,
+ "renounce": true,
+ "lapses": true,
+ "note": "GLOBALCIT's Citizenship Law Dataset v3.0 (EUI, 2025), coding the law in force on 1 January 2024 (A06a AUT 10(1), 10(a), 11, 11(a)(6), 20(3), 20(4); A06b AUT 10(1), 10(a), 11, 11(a)(6), 20(3), 20(4); L05 AUT 27, 28): ordinary naturalisation after 10 years' residence; the applicant must give up other citizenships; a citizen loses the citizenship on voluntarily taking another. Reforms after that date are checked in the file's later sources, where a later source is given. Citizenship at birth is read from the same dataset's 2024 coding of modes A01a (descent, born in country: Generally applicable provision), A01b (descent, born abroad: Generally applicable provision), A02a (birth in country: No provision) and A02b (birth in country to a parent born there: No provision), as its codebook (RSC/GLOBALCIT 2025/01, sections 3.2.1a to 3.2.2b) defines them: not by birth in the territory alone (provisions for foundlings and children otherwise stateless, modes A03a and A03b, aren't held by the form); by descent from either parent, with no further limit on a child born abroad. Changes to the law at birth after 1 January 2024 weren't checked for this file. On 2026-11-03 the primary was read: RIS (Bundeskanzleramt), Staatsbürgerschaftsgesetz 1985 § 10, in force from 12.06.2026 (BGBl. I Nr. 39/2026); RIS, Staatsbürgerschaftsgesetz 1985 § 27 (Erwerb einer fremden Staatsangehörigkeit), in force from 15.08.2018; RIS, Staatsbürgerschaftsgesetz 1985 § 7 (Abstammung), in force from 01.08.2013. Every figure the file holds now rests on it, and the dataset is no longer cited. § 10 as in force from 12 June 2026 (BGBl. I Nr. 39/2026) keeps the ten years; § 27(1) spares a citizen whose retention was approved beforehand.",
+ "sources": [
+  {
+   "url": "https://ogd.ris.bka.gv.at/Dokumente/Bundesnormen/NOR40278073/NOR40278073.html",
+   "title": "RIS (Bundeskanzleramt), Staatsbürgerschaftsgesetz 1985 § 10, in force from 12.06.2026 (BGBl. I Nr. 39/2026)",
+   "read": "2026-11-03",
+   "kind": "primary",
+   "said": "§ 10. (1) Die Staatsbürgerschaft darf einem Fremden, soweit in diesem Bundesgesetz nicht anderes bestimmt ist, nur verliehen werden, wenn 1. er sich seit mindestens zehn Jahren rechtmäßig und ununterbrochen im Bundesgebiet aufgehalten hat und davon zumindest fünf Jahre niedergelassen war; ... (3) Einem Fremden, der eine fremde Staatsangehörigkeit besitzt, darf die Staatsbürgerschaft nicht verliehen werden, wenn er 1. die für das Ausscheiden aus seinem bisherigen Staatsverband erforderlichen Handlungen unterläßt, obwohl ihm diese möglich und zumutbar sind"
+  },
+  {
+   "url": "https://ogd.ris.bka.gv.at/Dokumente/Bundesnormen/NOR40205578/NOR40205578.html",
+   "title": "RIS, Staatsbürgerschaftsgesetz 1985 § 27 (Erwerb einer fremden Staatsangehörigkeit), in force from 15.08.2018",
+   "read": "2026-11-03",
+   "kind": "primary",
+   "said": "§ 27. (1) Die Staatsbürgerschaft verliert, wer auf Grund seines Antrages, seiner Erklärung oder seiner ausdrücklichen Zustimmung eine fremde Staatsangehörigkeit erwirbt, sofern ihm nicht vorher die Beibehaltung der Staatsbürgerschaft bewilligt worden ist."
+  },
+  {
+   "url": "https://ogd.ris.bka.gv.at/Dokumente/Bundesnormen/NOR40154227/NOR40154227.html",
+   "title": "RIS, Staatsbürgerschaftsgesetz 1985 § 7 (Abstammung), in force from 01.08.2013",
+   "read": "2026-11-03",
+   "kind": "primary",
+   "said": "§ 7. (1) Kinder erwerben die Staatsbürgerschaft mit dem Zeitpunkt der Geburt, wenn in diesem Zeitpunkt 1. die Mutter gemäß § 143 des Allgemeinen Bürgerlichen Gesetzbuches – ABGB, JGS 946/1811, Staatsbürgerin ist, 2. der Vater gemäß § 144 Abs. 1 Z 1 ABGB Staatsbürger ist, ..."
+  }
+ ],
+ "atBirth": {
+  "soil": "none",
+  "descent": "either parent"
+ }
+}

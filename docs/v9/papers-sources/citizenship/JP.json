@@ -1,0 +1,27 @@
+{
+ "country": "JP",
+ "years": 5,
+ "renounce": true,
+ "lapses": true,
+ "note": "GLOBALCIT's Citizenship Law Dataset v3.0 (EUI, 2025), coding the law in force on 1 January 2024 (A06a JAP 4-10; A06b JAP 4-10; L05 JAP 11): ordinary naturalisation after 5 years' residence; the applicant must give up other citizenships; a citizen loses the citizenship on voluntarily taking another. Reforms after that date are checked in the file's later sources, where a later source is given. Citizenship at birth is read from the same dataset's 2024 coding of modes A01a (descent, born in country: Generally applicable provision), A01b (descent, born abroad: Generally applicable provision), A02a (birth in country: No provision) and A02b (birth in country to a parent born there: No provision), as its codebook (RSC/GLOBALCIT 2025/01, sections 3.2.1a to 3.2.2b) defines them: not by birth in the territory alone (provisions for foundlings and children otherwise stateless, modes A03a and A03b, aren't held by the form); by descent from either parent, with no further limit on a child born abroad. Changes to the law at birth after 1 January 2024 weren't checked for this file. On 2026-11-03 the primary was read: 国籍法（昭和二十五年法律第百四十七号）, e-Gov 法令検索 (Digital Agency) law data, art. 5(1); 国籍法, arts. 2 and 11(1). Every figure the file holds now rests on it, and the dataset is no longer cited.",
+ "sources": [
+  {
+   "url": "https://laws.e-gov.go.jp/api/1/lawdata/325AC0000000147",
+   "title": "国籍法（昭和二十五年法律第百四十七号）, e-Gov 法令検索 (Digital Agency) law data, art. 5(1)",
+   "read": "2026-11-03",
+   "kind": "primary",
+   "said": "法務大臣は、次の条件を備える外国人でなければ、その帰化を許可することができない。 一 引き続き五年以上日本に住所を有すること。 ... 五 国籍を有せず、又は日本の国籍の取得によつてその国籍を失うべきこと。"
+  },
+  {
+   "url": "https://laws.e-gov.go.jp/api/1/lawdata/325AC0000000147",
+   "title": "国籍法, arts. 2 and 11(1)",
+   "read": "2026-11-03",
+   "kind": "primary",
+   "said": "子は、次の場合には、日本国民とする。 一 出生の時に父又は母が日本国民であるとき。 ... 三 日本で生まれた場合において、父母がともに知れないとき、又は国籍を有しないとき。 ... 日本国民は、自己の志望によつて外国の国籍を取得したときは、日本の国籍を失う。"
+  }
+ ],
+ "atBirth": {
+  "soil": "none",
+  "descent": "either parent"
+ }
+}

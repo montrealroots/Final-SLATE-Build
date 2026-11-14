@@ -1,0 +1,33 @@
+{
+ "country": "CM",
+ "others": {
+  "right": "permit",
+  "route": "Visa du contrat de travail by the Minister of Employment and Vocational Training (MINEFOP) (Code du travail, loi du 14 août 1992, art. 27)"
+ },
+ "note": "Cameroon: no one may work without a work permit, sought on the employer's letter, and granted only where no Cameroonian can fill the post (the Union des Français de l'Étranger's country file); every foreign worker's contract must be visaed by the minister in charge of employment before it starts (Code du travail, loi du 14 août 1992, art. 27(2), as Cameroon Tribune quotes it), and the visa of employment contracts is the Ministry of Employment and Vocational Training's Directorate of Labour Regulation's (Decree No. 2012/644 of 28 December 2012, art. 28, on the Ministry's own site). The Code's own text wasn't read. No days without it. Route corrected 2026-11-01 from the permit research (papers.permits.CM): it was “Permis de travail (MINTSS)”.",
+ "sources": [
+  {
+   "url": "https://ufe.org/dossier-pays/cameroun/travailler-au-cameroun/",
+   "title": "Union des Français de l’Étranger, Travailler au Cameroun",
+   "read": "2026-11-03",
+   "said": "sans permis de travail, pour lequel vous devrez avoir une lettre de l’employeur.",
+   "kind": "secondary",
+   "quotes": "https://www.mintss.gov.cm/"
+  },
+  {
+   "url": "https://cameroon-tribune.cm/article.html/77985/fr.html/details_2",
+   "title": "Cameroon Tribune, Travailleurs étrangers en situation irrégulière : on relance les contrôles (24 June 2026); rests on the Code du travail (loi n° 92/007 du 14 août 1992), art. 27, the Loi de finances 2025 and the note of 8 June 2026 by Mounouna Foutsou, acting Minister of Employment and Vocational Training (no official text online found; MINEFOP's home page given)",
+   "read": "2026-11-03",
+   "said": "conformément aux dispositions de l’article 27 alinéa 2 de la loi du 14 août 1992 portant Code du travail, tout contrat de travail concernant un travailleur de nationalité étrangère doit, avant tout commencement d’exécution, être visé par le ministre en chargé des questions d’emploi. Aussi, précise-t-il, la demande de visa incombe à l’employeur. Si le visa est refusé, le contrat de travail est nul de plein droit … L’annonce a été faite dans une note signée le 8 juin dernier par Mounouna Foutsou, ministre par intérim. … la loi de finances 2025 prévoit des frais de visa apposés sur les contrats des travailleurs de nationalité étrangère, l’équivalent de deux mois de salaire et de traitement brut pour les travailleurs non africains et l’équivalent d’un mois de salaire et de traitement brut pour les travailleurs africains, avec un abattement de 50 %.",
+   "kind": "secondary",
+   "quotes": "https://www.minefop.gov.cm/"
+  },
+  {
+   "url": "https://minefop.gov.cm/fr/organisation/minefop/direction-de-la-regulation-de-la-main-duvre/",
+   "title": "Ministère de l'Emploi et de la Formation Professionnelle (MINEFOP), Direction de la Régulation de la Main-d'œuvre (Décret n° 2012/644 du 28 décembre 2012, article 28)",
+   "read": "2026-11-03",
+   "said": "Direction de la Régulation de la Main-d'œuvre Décret n° 2012/644 du 28 décembre 2012 - Article 28 Attributions ... Des statistiques sur la main-d'œuvre nationale et expatriée Du visa des contrats de travail ... Des relations avec la Commission Nationale de Camerounisation des Emplois De la vérification de la régularité du séjour des travailleurs étrangers au Cameroun ... Du déclenchement de la procédure de sanction contre les employeurs utilisant les travailleurs expatriés",
+   "kind": "primary"
+  }
+ ]
+}

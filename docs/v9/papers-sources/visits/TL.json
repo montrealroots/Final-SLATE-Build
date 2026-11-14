@@ -1,0 +1,83 @@
+{
+ "country": "TL",
+ "rules": [
+  {
+   "entry": "free",
+   "days": 90,
+   "within": 180,
+   "passports": [
+    "AT",
+    "BE",
+    "BG",
+    "CH",
+    "CY",
+    "CZ",
+    "DE",
+    "DK",
+    "EE",
+    "ES",
+    "FI",
+    "FR",
+    "GR",
+    "HR",
+    "HU",
+    "IS",
+    "IT",
+    "LI",
+    "LT",
+    "LU",
+    "LV",
+    "MT",
+    "NL",
+    "NO",
+    "PL",
+    "PT",
+    "RO",
+    "SE",
+    "SI",
+    "SK"
+   ]
+  },
+  {
+   "entry": "free",
+   "days": 30,
+   "passports": [
+    "CV",
+    "ID",
+    "LA",
+    "MY",
+    "SG",
+    "TH"
+   ]
+  }
+ ],
+ "others": {
+  "entry": "arrival",
+  "days": 30
+ },
+ "note": "Timor-Leste: 90 days in any 180 without a visa for the Schengen states (the EU's members but Ireland, with Iceland, Liechtenstein, Norway and Switzerland); 30 days for Cape Verde, Indonesia, Laos (from 15 August 2025), Malaysia (16 August 2025), Singapore and Thailand. Everyone else may take a tourist visa on arrival at any official border post, air, land or sea, where the Migration Service is present, for 30 days (or apply at a mission beforehand). Vietnam's agreement, signed 9 June 2026, isn't in force. Read from Wikipedia's copy. Checked on 2026-11-03 against the Migration Service's own pages: they give the Schengen exemption (90 days in any 180), the 30 days for Indonesia, Malaysia, Singapore and Thailand, and the visa on arrival (30 days, at all official border posts, which corrected the file's 'Dili's airport or sea port'). Its ASEAN list says it 'will be updated accordingly' and predates the exemptions for Laos and Cape Verde that Wikipedia's copy records, so those are kept from Wikipedia; its Schengen list predates Bulgaria's full entry, which its words 'Schengen Area citizens' cover.",
+ "sources": [
+  {
+   "url": "https://en.wikipedia.org/wiki/Visa_policy_of_East_Timor",
+   "title": "Wikipedia, Visa policy of East Timor",
+   "read": "2026-11-03",
+   "kind": "secondary",
+   "quotes": "https://migracao.gov.tl/",
+   "said": "Citizens of the following countries and territories may enter Timor-Leste without a visa for the following period: 90 days within any 180 days European Union member states (except Ireland) Iceland Liechtenstein Norway Switzerland 30 days Cape Verde Indonesia Laos Malaysia Singapore Thailand ... Citizens of all other countries which are not visa-exempt may apply for a visa on arrival at the Presidente Nicolau Lobato International Airport or at the Dili Sea Port. If other conditions are met a single entry visa valid for up to 30 days is granted for fee of USD30."
+  },
+  {
+   "url": "https://migracao.gov.tl/wp/visa-exemptions/",
+   "title": "Migration Service of Timor-Leste, Visa exemptions",
+   "read": "2026-11-03",
+   "kind": "primary",
+   "said": "The new visa regime provides for visa-free travel for Schengen Area citizens when travelling to the territory of Timor-Leste for a period of stay of 90 days in any 180-day period. ... This includes the following States: Austria Belgium Croatia Cyprus Czech Republic Denmark Estonia Finland France Germany Greece Hungary Italy Latvia Lithuania Luxembourg Malta Netherlands Poland Portugal Romania Slovakia Slovenia Spain Sweden and the non-EU Schengen states: Iceland Liechtenstein Norway Switzerland Note: Citizens of the United Kingdom and Ireland are NOT included in this arrangement. ... Citizens of the following ASEAN member States, holding passport of that State valid for 6 months past the entry date are visa exempt for stays of up to 30 days for tourism purposes: Indonesia Malaysia Singapore Thailand Further agreements are being sought with remaining ASEAN member States, and this list will be updated accordingly."
+  },
+  {
+   "url": "https://migracao.gov.tl/wp/tourist-visa/",
+   "title": "Migration Service of Timor-Leste, Tourist visa",
+   "read": "2026-11-03",
+   "kind": "primary",
+   "said": "The visa may be applied for and obtained on arrival where the criteria for the visa are satisfied. This may be done at all official border posts, air, land, or sea, which are open for foreign nationals and which have a presence of the Migration Service. ... Stay period 30 days"
+  }
+ ]
+}

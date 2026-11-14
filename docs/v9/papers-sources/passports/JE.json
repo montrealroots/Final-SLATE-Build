@@ -1,0 +1,59 @@
+{
+ "country": "JE",
+ "office": "Jersey Customs and Immigration Service, which issues Jersey's British passports",
+ "currency": "GBP",
+ "routes": [
+  {
+   "id": "standard",
+   "where": "home",
+   "speed": "standard",
+   "within": null,
+   "label": "standard service"
+  },
+  {
+   "id": "express",
+   "where": "home",
+   "speed": "urgent",
+   "within": null,
+   "label": "express service"
+  }
+ ],
+ "passports": [
+  {
+   "for": "adult",
+   "from": 16,
+   "validYears": null,
+   "pay": {
+    "standard": "115.50",
+    "express": "192.00"
+   }
+  },
+  {
+   "for": "child",
+   "under": 16,
+   "validYears": null,
+   "pay": {
+    "standard": "80.00",
+    "express": "156.50"
+   }
+  }
+ ],
+ "note": "Fees from 1 September 2026 under the Immigration (Fees) (Jersey) Amendment Order 2026, made by the Home Affairs Minister on 20 August, as Bailiwick Express reported them and as gov.je's own fee page gives them (read 2026-11-03; it answered this client with a firewall block page on 2026-10-28): £115.50 standard and £192 express for an adult, £80 and £156.50 for a child. The fee page names adult and child passports without the age between them, so 16 is the report's. The page gives about 30 working days for a standard application and about 10 for express, approximate times, not the longest, so none is written. It says the express service ends on 9 November 2026 and an online service starts on 16 November 2026 (most applications within 3 weeks); the report gives the online fees, £102 for an adult and £66.50 under 16, while a paper application stays at the standard fees modelled here; neither change is modelled yet. Temporary emergency passports (£125, or £245 out of hours) are not modelled. Validity is a lead.",
+ "sources": [
+  {
+   "kind": "secondary",
+   "url": "https://www.bailiwickexpress.com/news/online-passport-applicants-to-get-discount-as-immigration-fees-rise/",
+   "quotes": "https://www.gov.je/Travel/Passports/GetAPassport/pages/passportfeesandprocessingtimes.aspx",
+   "title": "Bailiwick Express, Online passport applicants to get discount as immigration fees rise (20 August 2026)",
+   "read": "2026-10-28",
+   "said": "The changes are contained in the Immigration (Fees) (Jersey) Amendment Order 2026, which was made by Home Affairs Minister Helen Miles on 20 August. ... From 16 November, online applications will instead cost £66.50 for under-16s and £102 for adults – reductions of £7.50 and £5 respectively. Paper applications will cost £80 for children and £115.50 for adults ... passport fees will rise from 1 September, with standard applications increasing to £80 for under-16s and £115.50 for adults. Express fees will rise from £145 to £156.50 for children and from £178 to £192 for adults."
+  },
+  {
+   "kind": "primary",
+   "url": "https://www.gov.je/Travel/Passports/GetAPassport/pages/passportfeesandprocessingtimes.aspx",
+   "title": "gov.je, Pay for your passport, passport fees, processing times and delivery",
+   "read": "2026-11-03",
+   "said": "Application type Standard service cost Express service cost Adult passports £115.50 £192 Child passports £80 £156.50 ... Due to an increase in demand we are currently processing express service applications in approximately 10 working days (2 weeks). ... It takes approximately 30 working days (6 weeks) to process passport applications."
+  }
+ ]
+}

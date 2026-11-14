@@ -267,7 +267,7 @@ function AdvanceDialog({ onClose }: { onClose: () => void }) {
           <>
             <p className="small" style={{ marginBottom: 'var(--s1)' }}>Along the way:</p>
             <ul className="list small" aria-label="Along The Way">
-              {passing.slice(0, 6).map((c) => <li key={c.id ?? `${c.at}-${c.label}`}>{describe(c.at)}: {c.label}</li>)}
+              {passing.slice(0, 6).map((c, i) => <li key={c.id ?? `${c.at}-${c.label}-${i}`}>{describe(c.at)}: {c.label}</li>)}
             </ul>
             {passing.length > 6 && <p className="dim small">And {passing.length - 6} more.</p>}
           </>

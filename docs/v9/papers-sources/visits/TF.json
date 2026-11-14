@@ -1,0 +1,31 @@
+{
+ "country": "TF",
+ "rules": [
+  {
+   "entry": "visa",
+   "passports": [
+    "FR"
+   ]
+  }
+ ],
+ "others": {
+  "entry": "visa"
+ },
+ "note": "The French Southern and Antarctic Lands have no permanent population; every visit, French citizens' included, needs the territory's own authorisation (taken as a visa). Read first from Wikipedia's copy, and on 2026-11-03 from the prefect's own pages on taaf.fr: every foreign national needs a visa beforehand (loi n° 71-569 of 15 July 1971), and every landing the district chief's or the prefect's authorisation, French citizens not excepted; so Wikipedia's copy was no longer cited.",
+ "sources": [
+  {
+   "url": "https://taaf.fr/acceder-aux-territoires/demandes-dactivites-et-dacces/acces-et-mouillage-dans-les-australes/",
+   "title": "Préfet, administrateur supérieur des TAAF (taaf.fr): Accès et mouillage dans les Australes",
+   "read": "2026-11-03",
+   "kind": "primary",
+   "said": "Le mouillage des navires de plaisance dans la mer territoriale de Crozet, Kerguelen et Saint-Paul et Amsterdam et l'accès aux îles sont très limités et strictement encadrés. ... ACCÈS AUX ILES Tout ressortissant étranger doit au préalable avoir obtenu un visa conformément à la loi n° 71-569 modifiée du 15 juillet 1971. Tout déplacement à terre est soumis à l'autorisation du chef de district et certains sites nécessitent au préalable une autorisation écrite du préfet, administrateur supérieur."
+  },
+  {
+   "url": "https://taaf.fr/acceder-aux-territoires/demandes-dactivites-et-dacces/acces-et-mouillage-dans-les-eparses/",
+   "title": "Préfet, administrateur supérieur des TAAF (taaf.fr): Accès et mouillage dans les Eparses",
+   "read": "2026-11-03",
+   "kind": "primary",
+   "said": "ACCÈS AUX ILES : Tout ressortissant étranger doit au préalable avoir obtenu un visa conformément à la loi n° 71-569 modifiée du 15 juillet 1971 . Tout déplacement à terre est interdit, sauf autorisation préalable du préfet, administrateur supérieur."
+  }
+ ]
+}

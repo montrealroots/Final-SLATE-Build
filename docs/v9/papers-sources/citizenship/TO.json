@@ -1,0 +1,27 @@
+{
+ "country": "TO",
+ "years": 5,
+ "renounce": false,
+ "lapses": false,
+ "note": "GLOBALCIT's Citizenship Law Dataset v3.0 (EUI, 2025), coding the law in force on 1 January 2024 (A06a Const 29, TON 8; A06b Const 29, TON 8; L05 No provision): ordinary naturalisation after 5 years' residence; no renunciation of other citizenships required; a citizen keeps it on taking another. Reforms after that date are checked in the file's later sources, where a later source is given. Citizenship at birth is read from the same dataset's 2024 coding of modes A01a (descent, born in country: Generally applicable provision), A01b (descent, born abroad: Generally applicable provision), A02a (birth in country: No provision) and A02b (birth in country to a parent born there: No provision), as its codebook (RSC/GLOBALCIT 2025/01, sections 3.2.1a to 3.2.2b) defines them: not by birth in the territory alone (provisions for foundlings and children otherwise stateless, modes A03a and A03b, aren't held by the form); by descent from either parent, with no further limit on a child born abroad. Changes to the law at birth after 1 January 2024 weren't checked for this file. On 2026-11-03 the primary was read: Nationality Act [Cap. 10.02], 2020 Revised Edition, Tonga Legislation (Office of the Attorney General), ss 2, 3-7, 8; Nationality (Amendment) Act 2025 (Act 29 of 2025, assent 28 August 2025), s 2. Every figure the file holds now rests on it, and the dataset is no longer cited. Act 3 of 2007 repealed ss. 3-7, the loss on taking another nationality.",
+ "sources": [
+  {
+   "url": "https://ago.gov.to/cms/images/LEGISLATION/PRINCIPAL/1915/1915-0006/NationalityAct_3.pdf",
+   "title": "Nationality Act [Cap. 10.02], 2020 Revised Edition, Tonga Legislation (Office of the Attorney General), ss 2, 3-7, 8",
+   "read": "2026-11-03",
+   "kind": "primary",
+   "said": "2 Persons deemed Tongan subjects The following persons shall be deemed to be Tongan subjects — (a) any person born in Tonga to a Tongan parent; (b) any person born abroad of a Tongan father; (c) any person born abroad of a Tongan mother; ... (e) any person naturalized under this Act. 3 Repealed by Act 3 of 2007 4 Repealed by Act 3 of 2007 5 Repealed by Act 3 of 2007 6 Repealed by Act 3 of 2007 7 Repealed by Act 3 of 2007 8 Naturalization of non-Tongans (1) The King may grant a certificate of naturalization to any foreigner who makes application for the purpose and satisfies His Majesty — (a) that he has resided in Tonga for a period of not less than 5 years; (b) that he is of good character and has an adequate knowledge of the Tongan language; (c) that he intends if his application be granted to reside in the Kingdom. ... (3) A certificate of naturalization shall not take effect until the applicant has taken the oath of allegiance."
+  },
+  {
+   "url": "https://ago.gov.to/cms/images/LEGISLATION/AMENDING/2025/2025-0056/NationalityAmendmentAct2025.pdf",
+   "title": "Nationality (Amendment) Act 2025 (Act 29 of 2025, assent 28 August 2025), s 2",
+   "read": "2026-11-03",
+   "kind": "primary",
+   "said": "The Principal Act is amended by deleting all references to \"Minister for Foreign Affairs\" wherever it appears and replacing it with the words \"Minister of His Majesty's Diplomatic Services\"."
+  }
+ ],
+ "atBirth": {
+  "soil": "none",
+  "descent": "either parent"
+ }
+}

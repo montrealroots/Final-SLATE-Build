@@ -1,0 +1,33 @@
+{
+ "country": "PW",
+ "others": {
+  "right": "permit",
+  "route": "Nonresident work permit (Division of Labor)"
+ },
+ "note": "Palau: a nonresident's work permit gives a foreigner legal status to stay and work there (a newspaper's report of the Labor division); the Ministry of Human Resources, Culture, Tourism and Development's announcement PA21-02 (7 July 2021) speaks of the same nonresident workers permit, granted only where a qualified employer is willing to employ the applicant. RPPL 11-26 (signed 2 November 2022) exempts citizens of the United States, Micronesia and the Marshall Islands from visa requirements and the worker's identification card fees; the report names no exemption from the permit itself, so they're asked for it too. RPPL 11-26's own text wasn't read.",
+ "sources": [
+  {
+   "url": "https://islandtimes.org/labor-office-says-it-is-resolving-numerous-expired-work-permits/",
+   "title": "Island Times, Labor office says it is resolving numerous expired work permits (15 March 2019)",
+   "read": "2026-11-03",
+   "said": "The Labor division also reminds the public of the permit requirements and that a nonresident’s work permit provides legal status to a foreigner to stay and work in Palau.",
+   "kind": "secondary",
+   "quotes": "https://www.palaugov.pw/"
+  },
+  {
+   "url": "https://islandtimes.org/citizens-of-united-states-fsm-and-rmi-are-now-exempted-from-visa-requirements-and-workers-identification-card-fees/",
+   "title": "Island Times, Citizens of United States, FSM and RMI are now exempted from visa requirements and worker’s identification card fees (8 November 2022)",
+   "read": "2026-11-03",
+   "said": "President Surangel Whipps Jr. on Nov. 2, signed into law RPPL 11-26 which the immigration law that provides reciprocity on citizens of FSM , RMI and US.",
+   "kind": "secondary",
+   "quotes": "https://www.palaugov.pw/"
+  },
+  {
+   "url": "https://www.palaugov.pw/wp-content/uploads/2021/07/Nonresident-Worker-Program_Public-Announcement-7.07.2021.pdf",
+   "title": "Ministry of Human Resources, Culture, Tourism and Development, Public Announcement PA21-02, Nonresident Worker Program (7 July 2021), linked from https://www.palaugov.pw/mhrctd-public-announcement/",
+   "read": "2026-11-03",
+   "said": "The MHRCTD will be accepting applications from nonresident workers for temporary employment or transfer of employment. Transfers may be authorized pursuant to RPPL 10-56, the CROSS Act. No application will be granted unless there is a qualified employer willing to employ the applicant. All nonresident workers affected by the COVID-19 pandemic, especially those whose permits have expired, are urged to register with the MHRCTD and take advantage of the program in order to obtain lawful employment in the Republic of Palau. ... (2) whose nonresident workers permit has expired and the employer is unwilling to renew",
+   "kind": "primary"
+  }
+ ]
+}

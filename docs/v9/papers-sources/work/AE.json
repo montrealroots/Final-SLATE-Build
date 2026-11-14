@@ -1,0 +1,37 @@
+{
+ "country": "AE",
+ "rules": [
+  {
+   "passports": [
+    "BH",
+    "KW",
+    "OM",
+    "QA",
+    "SA"
+   ],
+   "right": "permit",
+   "route": "UAE/GCC national work permit"
+  }
+ ],
+ "others": {
+  "right": "permit",
+  "route": "Mission work permit"
+ },
+ "note": "United Arab Emirates: no one may work in the UAE without a valid work permit from the Ministry of Human Resources and Emiratisation (Federal Decree-Law No. 33 of 2021, art. 6), which has thirteen types. Establishments hiring a UAE or GCC national take the UAE/GCC national work permit, valid two years, and a GCC national starts work on it with no residence visa (Cabinet Resolution No. 292 of 2015); anyone brought from outside the UAE for a specific temporary job or time-bound project comes on the mission work permit, read as a performer's engagement (the UAE Government's portal, u.ae). Each emirate's performance permits for events (Dubai's, Abu Dhabi's) aren't modelled. No days of work without a permit are named. The file was first read from Gulf News, which counted twelve permits and called the GCC route the work permit for GCC citizens, the route's name until 2026-11-03.",
+ "sources": [
+  {
+   "url": "https://u.ae/en/information-and-services/jobs/Sector-of-employment/employment-in-the-private-sector/work-permits",
+   "title": "The Official Portal of the UAE Government (u.ae), Work permits",
+   "read": "2026-11-03",
+   "said": "According to Article 6 of the Federal Decree Law No. 33 of 2021 on the Regulation of Employment Relationships and its amendments, known as the ‘UAE Labour Law’, it is illegal for a person to work in the UAE without a valid work permit issued by the Ministry of Human Resources and Emiratisation (MoHRE). ... MoHRE has 13 types of work permits. ... Mission work permit - It allows establishments to bring in a worker from outside the UAE to complete a specific temporary job or time-bound project. ... UAE/GCC national work permit - It allows establishments to employ a UAE or a GCC national. The permit is valid for two years.",
+   "kind": "primary"
+  },
+  {
+   "url": "https://u.ae/en/information-and-services/jobs/Sector-of-employment/employment-in-the-private-sector/gcc-nationals-working-in-the-private-sector",
+   "title": "The Official Portal of the UAE Government (u.ae), GCC Nationals working in the private sector (updated 15 Oct 2026)",
+   "read": "2026-11-03",
+   "said": "as per Cabinet Resolution No. 292 of 2015 (Arabic only) establishments hiring GCC nationals must obtain work permits for them through Ministry of Human Resources and Emiratisation. Once the permit is issued, GCC nationals may commence work immediately in the UAE, without the need to obtain a residence visa, unlike citizens of other nationalities.",
+   "kind": "primary"
+  }
+ ]
+}

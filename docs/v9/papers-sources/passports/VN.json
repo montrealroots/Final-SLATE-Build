@@ -1,0 +1,42 @@
+{
+ "country": "VN",
+ "office": "the Immigration Department (Ministry of Public Security)",
+ "currency": "VND",
+ "routes": [
+  {
+   "id": "home",
+   "where": "home",
+   "speed": "standard",
+   "within": null,
+   "label": "in Viet Nam"
+  },
+  {
+   "id": "lost",
+   "where": "home",
+   "speed": "standard",
+   "within": null,
+   "replacement": true,
+   "label": "a damaged or lost passport replaced"
+  }
+ ],
+ "passports": [
+  {
+   "for": "any",
+   "validYears": null,
+   "pay": {
+    "home": "200000",
+    "lost": "400000"
+   }
+  }
+ ],
+ "note": "The fee for a new passport, with or without a chip, 200,000 dong, and 400,000 for one replacing a passport damaged or lost (written as a replacement route), under Circular No. 28/2026/TT-BTC of 27 March 2026, in force from 1 April 2026 (art. 7), read on 2026-11-03 in the Official Gazette (Công báo No. 210 of 13 April 2026). Until 2026-11-03 the new passport's fee stood on the Ministry of Finance's journal, the circular unread, and the replacement wasn't written. The circular repeals Circulars 25/2021 and 62/2023 and gives no reduction; Circular 64/2025's 50% reduction, a lead until then, isn't named in it. Validity, the processing time and fees at missions abroad are leads.",
+ "sources": [
+  {
+   "kind": "primary",
+   "url": "https://congbaocdn.chinhphu.vn/180507251028987904/2026/4/14/469231-1776138381_v1_1776138807_signed.pdf",
+   "title": "Công báo (Official Gazette) No. 210 of 13 April 2026, pp. 13-19: Thông tư số 28/2026/TT-BTC ngày 27 tháng 3 năm 2026 của Bộ trưởng Bộ Tài chính (signed PDF, linked from https://congbao.chinhphu.vn/van-ban/thong-tu-so-28-2026-tt-btc-469231/63948.htm)",
+   "read": "2026-11-03",
+   "said": "BIỂU MỨC THU PHÍ, LỆ PHÍ TRONG LĨNH VỰC XUẤT CẢNH, NHẬP CẢNH, QUÁ CẢNH, CƯ TRÚ TẠI VIỆT NAM (Kèm theo Thông tư số 28/2026/TT-BTC ngày 27 tháng 3 năm 2026 của Bộ trưởng Bộ Tài chính) I. Lệ phí cấp hộ chiếu, giấy thông hành, giấy phép xuất cảnh, tem “AB” ... 1 Lệ phí cấp hộ chiếu (bao gồm hộ chiếu gắn chíp điện tử và hộ chiếu không gắn chíp điện tử) a Cấp mới 200.000 b Cấp lại do bị hỏng hoặc bị mất 400.000 ... Điều 7. Hiệu lực thi hành 1. Thông tư này có hiệu lực thi hành từ ngày 01 tháng 4 năm 2026. 2. Thông tư số 25/2021/TT-BTC ... hết hiệu lực thi hành kể từ ngày Thông tư này có hiệu lực thi hành. 3. Bãi bỏ Thông tư số 62/2023/TT-BTC"
+  }
+ ]
+}

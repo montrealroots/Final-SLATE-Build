@@ -1,0 +1,27 @@
+{
+ "country": "SR",
+ "years": 5,
+ "renounce": false,
+ "lapses": true,
+ "note": "GLOBALCIT's Citizenship Law Dataset v3.0 (EUI, 2025), coding the law in force on 1 January 2024 (A06a SUR 8; A06b SUR 8; L05 SUR 11(2), 11(4)): ordinary naturalisation after 5 years' residence; no renunciation of other citizenships required; a citizen loses the citizenship on voluntarily taking another. Reforms after that date are checked in the file's later sources, where a later source is given. Citizenship at birth is read from the same dataset's 2024 coding of modes A01a (descent, born in country: Generally applicable provision), A01b (descent, born abroad: Generally applicable provision), A02a (birth in country: No provision) and A02b (birth in country to a parent born there: No provision), as its codebook (RSC/GLOBALCIT 2025/01, sections 3.2.1a to 3.2.2b) defines them: not by birth in the territory alone (provisions for foundlings and children otherwise stateless, modes A03a and A03b, aren't held by the form); by descent from either parent, with no further limit on a child born abroad. Changes to the law at birth after 1 January 2024 weren't checked for this file. On 2026-11-03 the primary was read: Wet van 24 november 1975, tot regeling van het Surinamerschap en het Ingezetenschap, text as amended to S.B. 2002 no. 22, De Nationale Assemblee (dna.sr), arts. 8, 11; Staatsblad 2014 No. 121, Wet van 12 september 2014, houdende nadere wijziging van de Wet van 24 november 1975 (De Nationale Assemblee), art. I B (art. 3), G (art. 8), K (art. 11a). Every figure the file holds now rests on it, and the dataset is no longer cited. S.B. 2014 no. 121 was read on its page images; it left art. 8(4)'s five years and art. 11's loss on naturalisation abroad as they were, and birth in Suriname gives the nationality only to a child with no other (new art. 3(c)).",
+ "sources": [
+  {
+   "url": "https://www.dna.sr/media/xrtlapvw/wet_op_nationaliteit_en_ingezetenschap.pdf",
+   "title": "Wet van 24 november 1975, tot regeling van het Surinamerschap en het Ingezetenschap, text as amended to S.B. 2002 no. 22, De Nationale Assemblee (dna.sr), arts. 8, 11",
+   "read": "2026-11-03",
+   "kind": "primary",
+   "said": "Artikel 8 ... 4. Om een verzoek voor naturalisatie te kunnen indienen moet de verzoeker: a. meerderjarig zijn in de zin van deze wet; b. zijn Surinaamse nationaliteit hebben verloren of gedurende de laatste vijf jaren zijn woonplaats dan wel zijn hoofdverblijf in Suriname hebben gehad ... 5. Indien de verzoeker tot een ander land behoort kan van hem de overlegging worden gevorderd van een bewijs, dat de wetgeving van dat land geen beletsel tegen zijn naturalisatie in Suriname oplevert. ... Artikel 11 De Surinaamse nationaliteit wordt verloren: ... 2. Door naturalisatie in een ander land ..."
+  },
+  {
+   "url": "https://www.dna.sr/media/lmfc1bzj/sb_2014__no_121_wijz-_surinamerschap_en_ingezetenschap.pdf",
+   "title": "Staatsblad 2014 No. 121, Wet van 12 september 2014, houdende nadere wijziging van de Wet van 24 november 1975 (De Nationale Assemblee), art. I B (art. 3), G (art. 8), K (art. 11a)",
+   "read": "2026-11-03",
+   "kind": "primary",
+   "said": "B. Artikel 3. Dit artikel wordt in zijn geheel als volgt herschreven: Surinamer door geboorte is: a. het kind, waarvan tijdens de geboorte de vader of de moeder de Surinaamse nationaliteit bezit; b. het kind van een Surinamer, die voor de geboorte van het kind is overleden; c. het in Suriname geboren kind, tenzij blijkt, dat het de nationaliteit van een andere Staat bezit; ... K. Artikel 11a. Na artikel 11 wordt een nieuw artikel 11a toegevoegd luidende als volgt: \"Geen verlies van de Surinaamse nationaliteit zal plaatsvinden, wanneer dit staatsloosheid tot gevolg zal hebben\"."
+  }
+ ],
+ "atBirth": {
+  "soil": "none",
+  "descent": "either parent"
+ }
+}

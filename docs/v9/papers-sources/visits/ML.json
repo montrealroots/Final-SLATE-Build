@@ -1,0 +1,102 @@
+{
+ "country": "ML",
+ "rules": [
+  {
+   "entry": "free",
+   "passports": [
+    "AD",
+    "BF",
+    "BJ",
+    "CI",
+    "CM",
+    "CV",
+    "GH",
+    "GM",
+    "GN",
+    "GW",
+    "LR",
+    "MC",
+    "NE",
+    "NG",
+    "SL",
+    "SN",
+    "TG"
+   ]
+  },
+  {
+   "entry": "free",
+   "months": 3,
+   "passports": [
+    "DZ",
+    "MA",
+    "MR",
+    "TD",
+    "TN"
+   ]
+  },
+  {
+   "entry": "free",
+   "days": 90,
+   "passports": [
+    "AE"
+   ]
+  },
+  {
+   "entry": "free",
+   "days": 30,
+   "passports": [
+    "ID",
+    "MO"
+   ]
+  },
+  {
+   "entry": "free",
+   "days": 14,
+   "passports": [
+    "HK"
+   ]
+  },
+  {
+   "entry": "arrival",
+   "months": 3,
+   "passports": [
+    "RW"
+   ]
+  },
+  {
+   "entry": "visa",
+   "passports": [
+    "SY",
+    "US"
+   ]
+  }
+ ],
+ "others": {
+  "entry": "visa"
+ },
+ "note": "Mali: nationals of the ECOWAS states, Burkina Faso and Niger enter without a visa, those of Algeria, Chad, Mauritania, Morocco and Tunisia for 3 months, the UAE's for 90 days, Indonesia's and Macao's for 30, Hong Kong's for 14; Rwandans get a 3-month visa on arrival; Syrians and US nationals are refused (taken as a visa); everyone else needs a visa from a mission. Read from Wikipedia's copy. Checked on 2026-11-03 against the Embassy in the United States, which confirmed the ECOWAS states' and North Africa's exemption and the suspension of US nationals' entry (2 January 2026), and names Cameroon, Andorra and Monaco as needing no visa, which were added (without a stated stay); the other stays stand on Wikipedia's copy.",
+ "sources": [
+  {
+   "url": "https://en.wikipedia.org/wiki/Visa_policy_of_Mali",
+   "title": "Wikipedia, Visa policy of Mali",
+   "read": "2026-11-03",
+   "kind": "secondary",
+   "quotes": "https://www.diplomatie.gouv.ml/",
+   "said": "Visitors to Mali must obtain a visa from one of the Malian diplomatic missions unless they come from one of the visa exempt countries. ... Citizens of the following countries and territories can visit Mali without a visa: All ECOWAS member states Algeria (3 months) Burkina Faso Chad (3 months) Hong Kong (14 days) Indonesia (30 days) Macau (30 days) Mauritania (3 months) Morocco (3 months) Niger Tunisia (3 months) United Arab Emirates (90 days) ... Nationals of Rwanda may apply for a visa on arrival for a maximum stay of 3 months. ... Entry and transit is refused to Syria and United States nationals"
+  },
+  {
+   "url": "https://maliembassy.us/index.php/consular-services/visas",
+   "title": "Embassy of the Republic of Mali in the United States: Visas",
+   "read": "2026-11-03",
+   "kind": "primary",
+   "said": "No visa is required for ECOWAS countries' citizens, citizens from Algeria,Cameroon,Andorra,Monaco,Chad, Gambia,Morocco, Mauritania,and Tunisia (a valid identity card or passport are acceptable) ... The visa fee for a U.S. citizen is $185.00, regardless of the length of stay."
+  },
+  {
+   "url": "https://maliembassy.us/mali-foreign-ministry-communique-suspension-of-entry-for-u-s-nationals-jan-2-2026/",
+   "title": "Embassy of Mali in the US: 'Mali Foreign Ministry Communiqué: Suspension of Entry for U.S. Nationals (Jan 2, 2026)'",
+   "read": "2026-11-03",
+   "kind": "primary",
+   "said": "Mali Foreign Ministry Communiqué: Suspension of Entry for U.S. Nationals (Jan 2, 2026)"
+  }
+ ]
+}

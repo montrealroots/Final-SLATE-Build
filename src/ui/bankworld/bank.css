@@ -1,0 +1,104 @@
+/* 1221's rules for the bank's screens that SLATE's stylesheet doesn't have (1221 at d6eba5d, src/styles/app.css; ported
+   November 14, 2026). Copied as they were; the variables are SLATE's, which share 1221's names. */
+.card-tight { padding: var(--s4); }
+.panel-body { display: contents; }
+.card-flush { padding: 0; overflow: hidden; }
+.gap-4 { gap: var(--s4); }
+.meter-positive > span { background: var(--positive); }
+.meter-negative > span { background: var(--negative); }
+.meter-warning > span { background: var(--warning); }
+.field-act { display: flex; flex-wrap: wrap; gap: var(--s2); align-items: flex-end; }
+.field-act > .field { flex: 1 1 12rem; min-width: 0; margin-bottom: 0; }
+.field-act > .btn, .field-row > .btn { padding: var(--s2) var(--s4); font-size: var(--size-sm); }
+button.link.is-open { color: var(--accent-strong); text-decoration-style: solid; }
+.look {
+  margin: var(--s3) 0 var(--s2);
+  padding: var(--s3) 0 var(--s3) var(--s4);
+  border-left: 2px solid var(--accent-line);
+  animation: look-in .16s ease-out;
+}
+@media (prefers-reduced-motion: reduce) {
+  .look { animation: none; }
+}
+@keyframes look-in { from { opacity: 0; transform: translateY(-2px); } to { opacity: 1; transform: none; } }
+.look .look { border-left-color: var(--line); }
+.look .look .look .look { padding-left: var(--s3); }
+@media (max-width: 620px) {
+  .look { padding-left: var(--s3); }
+  .look .look .look { padding-left: var(--s2); }
+  .look-way { gap: var(--s1); }
+}
+.look-head { display: flex; align-items: flex-start; justify-content: space-between; gap: var(--s3); }
+.look-trail { font-size: var(--size-xs); color: var(--text-dim); margin-bottom: 2px; }
+.look-name { font-size: var(--size-md); font-weight: 650; margin: 2px 0 0; overflow-wrap: break-word; }
+.look-close { flex: none; font-size: var(--size-xs); color: var(--text-dim); }
+.look-inner { min-width: 0; }
+.look-summary { font-size: var(--size-sm); margin: var(--s3) 0 0; max-width: 62ch; }
+.look-provenance { font-size: var(--size-xs); color: var(--text-dim); margin: var(--s3) 0 0; max-width: 62ch; }
+.look-ways { display: flex; flex-direction: column; gap: var(--s2); margin-top: var(--s3); }
+.look-way { display: flex; flex-wrap: wrap; align-items: baseline; gap: var(--s2); }
+.look-way-detail { font-size: var(--size-xs); color: var(--text-dim); min-width: 0; }
+.look-strip {
+  display: flex; gap: var(--s2); margin-top: var(--s3);
+  overflow-x: auto; padding-bottom: var(--s2);
+  scrollbar-width: thin;
+}
+.look-cell { flex: 0 0 auto; min-width: 0; }
+.look-cell > button.link {
+  display: flex; flex-direction: column; align-items: center; gap: 1px;
+  min-width: 58px; padding: var(--s2) var(--s1);
+  text-align: center; text-decoration: none; border-radius: var(--radius-sm);
+}
+.look-cell > button.link:hover { background: var(--surface-hover); color: inherit; }
+.look-cell > button.link.is-open { background: var(--surface-hover); }
+.look-cell.is-here > button.link {
+  background: var(--accent-dim); box-shadow: inset 0 0 0 1px var(--accent-line);
+}
+.look-cell.is-here .look-cell-name { color: var(--accent-strong); }
+.look-cell-name {
+  font-size: var(--size-xs); color: var(--text-dim); white-space: nowrap;
+  text-decoration: underline; text-decoration-style: dotted; text-underline-offset: 3px;
+}
+.look-cell > button.link:hover .look-cell-name { color: var(--accent-strong); }
+.look-cell-icon { font-size: var(--size-md); line-height: 1.3; }
+.look-cell-line {
+  font-size: var(--size-xs); line-height: 1.5; white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+.look-cell-line:last-child { color: var(--text-muted); }
+.look-facets { margin-top: var(--s3); }
+.look-facet-body { margin-top: var(--s3); }
+.look-gone { border-left-color: var(--line); display: flex; align-items: baseline; justify-content: space-between; gap: var(--s3); }
+.page-head .glance { margin: var(--s2) 0 0; font-size: var(--size-sm); color: var(--text); }
+.page-head .glance-alert { color: var(--warning); }
+.tooltip-term {
+  border-bottom: 1px dotted var(--text-dim); cursor: help;
+}
+details.fine > summary { cursor: pointer; width: fit-content; }
+details.fine > summary:hover { color: var(--text); }
+details.fine[open] > summary { margin-bottom: 0; }
+.statement-lines { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+.statement-lines > .row-between { min-width: 520px; }
+.section-head { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: var(--s1) var(--s3); }
+.section-head > .how-it-works { margin-inline: calc(-1 * var(--ghost-pad)); }
+.look-after-now { margin-top: var(--s4); padding-top: var(--s3); border-top: 1px solid var(--line); }
+.look-after-now .eyebrow { margin-bottom: var(--s2); }
+.page-index { display: flex; flex-wrap: wrap; align-items: center; gap: var(--s2) var(--s3); margin-top: var(--s3); }
+@media (max-height: 500px) {
+  .page-index { flex-wrap: nowrap; }
+}
+/* SLATE's own, for the page around 1221's workspace. */
+.bank-toasts { position: sticky; top: var(--s2); z-index: 5; display: grid; gap: var(--s2); margin-bottom: var(--s3); }
+.bank-toasts .callout { margin: 0; }
+.bank-page { min-width: 0; }
+/* On a touch screen, 1221's inspector links (an account's name, its number, the bank) are tapped, not clicked: each is
+   at least 44 pixels tall and kept 4 pixels from the next, as the rest of SLATE's controls are. A link inside a sentence
+   is as tall as its line. Found by the UI audit's walk on the iPhones (WebKit), November 14, 2026. */
+@media (pointer: coarse) {
+  .bank-page button.link { min-height: 44px; display: inline-flex; align-items: center; margin-block: 4px; }
+}
+/* An account's name and its number under it, and links in a wrapped line of the bank's glance, are kept 4 pixels apart
+   for every pointer (the UI audit's walk, November 14, 2026: they touched at every size). */
+.bank-page h2:has(> button.link) { margin-bottom: var(--s1); }
+.bank-page p:has(> button.link) { line-height: 1.9; }
+.bank-page p > button.link { line-height: 1.3; }

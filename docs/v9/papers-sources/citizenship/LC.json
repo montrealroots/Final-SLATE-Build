@@ -1,0 +1,29 @@
+{
+ "country": "LC",
+ "years": 8,
+ "renounce": true,
+ "lapses": false,
+ "note": "GLOBALCIT's Citizenship Law Dataset v3.0 (EUI, 2025), coding the law in force on 1 January 2024 (A06a STL 8; A06b STL 8; L05 No provision): ordinary naturalisation after 8 years' residence (the 12 months before the application and the 7 years before them; the dataset's own count is 7); the applicant must give up other citizenships; a citizen keeps it on taking another. Reforms after that date are checked in the file's later sources, where a later source is given. Citizenship at birth is read from the same dataset's 2024 coding of modes A01a (descent, born in country: No provision), A01b (descent, born abroad: Generational transmission restriction: conditional on birthplace/place of residence /mode under which parent acquired citizenship), A02a (birth in country: Generally applicable provision) and A02b (birth in country to a parent born there: No provision), as its codebook (RSC/GLOBALCIT 2025/01, sections 3.2.1a to 3.2.2b) defines them: by birth in the territory unconditionally; by descent from either parent, a child born abroad on the limit the dataset states (the dataset codes no separate descent rule for a child born in the country, birth there giving it; the parent's sex is read from mode A01b). Changes to the law at birth after 1 January 2024 weren't checked for this file. On 2026-11-03 the primary was read: Constitution of Saint Lucia, Cap. 1.01, Revised Edition showing the law as at 31 December 2006 (Government of Saint Lucia, govt.lc), Chapter VII Citizenship, ss. 99-104. It confirmed birth in the territory, descent and the limit abroad. It was silent on the years of residence, renunciation and loss on taking another citizenship, which still rest on the sources above, re-read that day and found the same. The Constitution leaves naturalisation, renunciation and loss to Parliament (s. 103); the Citizenship of Saint Lucia Act wasn't reached.",
+ "sources": [
+  {
+   "url": "https://cadmus.eui.eu/bitstreams/3b166501-e695-48d7-9e27-d7bef061573a/download",
+   "title": "GLOBALCIT Citizenship Law Dataset v3.0 (Vink, van der Baaren, Bauböck, Dzankic, Honohan, Manby; EUI Research Data, 2025), country-year-mode files, Saint Lucia, 2024",
+   "read": "2026-11-03",
+   "kind": "secondary",
+   "quotes": "https://globalcit.eu/national-citizenship-laws/",
+   "said": "Person has been resident in St Lucia for 12 months immediately prior to the application, and was either resident in St Lucia, or in government service, or had partly such residence and partly such service for 7 years predating the 12-month period. Intent to reside in St Lucia required. ... Renunciation of citizenship of another country required. ... n.a. ... No provision ... Generational transmission restriction: conditional on birthplace/place of residence /mode under which parent acquired citizenship ... Person is born to a citizen who did not receive citizenship via descent and birth outside the territory. ... Generally applicable provision ... Person is born in St Lucia. Unless born to a father who is a foreign diplomat and neither parent is a citizen, or the father is an enemy alien and the child is born in a place then under occupation by the enemy. ... No provision"
+  },
+  {
+   "url": "https://www.govt.lc/media.govt.lc/www/resources/legislation/ConstitutionOfSaintLucia.pdf",
+   "title": "Constitution of Saint Lucia, Cap. 1.01, Revised Edition showing the law as at 31 December 2006 (Government of Saint Lucia, govt.lc), Chapter VII Citizenship, ss. 99-104",
+   "read": "2026-11-03",
+   "kind": "primary",
+   "said": "100. ... Every person born in Saint Lucia after the commencement of this, Constitution shall become a citizen at the date of his or her birth: Provided that a person shall not become a citizen by virtue of this section if at the time of his or her birth— (a) neither of his or her parents is a citizen of Saint Lucia and his or her father possesses such immunity from suit and legal process as is accorded to the envoy of a foreign sovereign power accredited to Saint Lucia; or (b) his or her father is a citizen of a country with which Saint Lucia is at war and the birth occurs in a place then under occupation by that country. 101. ... A person born outside Saint Lucia after the commencement of this Constitution shall become a citizen at the date of his or her birth if, at that date, his or her father or mother is a citizen otherwise than by virtue of this section or section 99(3). 102. (2) ... (b) any person who, being a Commonwealth citizen, is and for 7 years previous to his or her application has been ordinarily resident in Saint Lucia; ... 103. There shall be such provision as may be made by Parliament for— (a) the acquisition of citizenship by persons who are not eligible ... (c) the renunciation by any person of his or her citizenship."
+  }
+ ],
+ "atBirth": {
+  "soil": "unconditional",
+  "descent": "either parent",
+  "descentAbroad": "Person is born to a citizen who did not receive citizenship via descent and birth outside the territory."
+ }
+}

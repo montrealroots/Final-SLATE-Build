@@ -1,0 +1,50 @@
+{
+ "country": "MR",
+ "office": "the National Agency for the Population Register and Secured Documents (ANRPTS), under the Ministry of the Interior",
+ "currency": "MRU",
+ "routes": [
+  {
+   "id": "home",
+   "where": "home",
+   "speed": "standard",
+   "within": null,
+   "label": "from the ANRPTS"
+  },
+  {
+   "id": "lost",
+   "where": "home",
+   "speed": "standard",
+   "within": null,
+   "replacement": true,
+   "label": "replacement for loss or damage, the first time (a declaration of loss from the authorities)"
+  }
+ ],
+ "passports": [
+  {
+   "for": "ordinary passport",
+   "validYears": null,
+   "pay": {
+    "home": "3000",
+    "lost": "4000"
+   }
+  },
+  {
+   "for": "64-page passport",
+   "pages": 64,
+   "validYears": null,
+   "pay": {
+    "home": "10000",
+    "lost": "12000"
+   }
+  }
+ ],
+ "note": "The ANRPTS's procedure for a passport: 3,000 ouguiya for the ordinary passport, first or renewed, and 10,000 for one of 64 pages; a minor's application is made by the legal guardian. A replacement for loss or damage costs more each time (4,000 the first time, then 5,500, 7,500 and 10,000), with a declaration of loss from the authorities: the first time is written as a replacement route; the page's section on the passport of 64 pages gives its replacement for loss or damage as 12,000 the first time (then 15,000, 17,500 and 20,000), and that band's replacement is that first time; validity and processing time aren't given. Until 2026-11-03 this note gave the third replacement as 7,000 and read the second column as a 'VIP' passport's, leaving the 64-page band's replacement unpaid; read again that day, from the text the page loads, the third is 7,500, and the page's own table for the passport of 64 pages gives that column (12,000 the first time) as its fees.",
+ "sources": [
+  {
+   "url": "https://anrpts.gov.mr/service-de-lagance/secure-securities",
+   "title": "الوكالة الوطنية لسجل السكان والوثائق المؤمنة، إجراءات الحصول على جواز سفر (rendered, the passport section opened, 2026-10-30; read again 2026-11-03 from the text the page loads, its passport section and its section on the passport of 64 pages, when the section opened answered an error page)",
+   "read": "2026-11-03",
+   "said": "اولا: لطلب الحصول على جواز لأول مرة يجب • تقديم الرقم الوطني للمعني • دفع رسوم طلب الجواز العادي 3000 أوقية و 10.000 أوقية لجواز من فئة 64 صفحة • تقديم الطلب من النائب الشرعي إذا كان الطلب لقاصر ... ثانيا : لطلب استبدال الجواز بسبب الضياع أو التلف أو الامتلاء يجب : • في حالة الضياع تقديم إفادة ضياع صادرة عن السلطات المختصة؛ و في حالة التلف تقديم البطاقة التالفة • تقديم الرقم الوطني للمعني • دفع رسوم استبدال الجواز في حالتي الضياع و التلف، وذلك وفق الجدول التالي: ... ثالثا: لطلب تجديد الجواز بعد انقضاء فترة صلاحيته يجب: • ألا يبقي على صلاحية الجواز أكثر من 06 أشهر • تقديم الرقم الوطني للمعني • دفع رسوم طلب الجواز العادي 3000 أوقية و 10.000 أوقية لجواز من فئة 64 صفحة ... (4000 أوقية جديدة عند الضياع الأول أي 40.000 ألف أوقية قديمة، ثم 5.500 أوقية جديدة أي 55.000 ألف أوقية قديمة عند المرة الثانية، ثم 7.500 أوقية جديدة أي 75.000 ألف أوقية قديمة عند المرة الثالثة، ثم 10.000 أوقية جديدة أي 100.000 ألف أوقية قديمة عند المرة الرابعة). ... إجراءات جواز السفر ذي الأربع و الستين صفحة، (64 صفحة) مطابقة لإجراءات جواز السفر العادي، من حيث عناصر الملف و التقسيمات وفقا لما تم بيانه في إجراءات جواز السفر العادي، و الفرق الوحيد هو من حيث اختلاف الرسوم و الجدول التالي يبينها: نوع الطلب رسوم جواز السفر العادي(32 صفحة) رسوم جواز سفر 64 صفحة طلب أول طلب جواز للمرة الأولى 3.000 أوقية جديدة 10.000 أوقية جديدة التبديل على إثر ضياع أو تلف المرة الأولى 4.000 أوقية جديدة 12.000 أوقية جديدة"
+  }
+ ]
+}

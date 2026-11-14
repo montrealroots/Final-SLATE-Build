@@ -1,0 +1,163 @@
+{
+ "country": "TT",
+ "rules": [
+  {
+   "entry": "free",
+   "days": 90,
+   "passports": [
+    "AE",
+    "AG",
+    "AR",
+    "BB",
+    "BD",
+    "BN",
+    "BR",
+    "BS",
+    "BW",
+    "BZ",
+    "CA",
+    "CL",
+    "CO",
+    "CR",
+    "CU",
+    "DM",
+    "DO",
+    "EC",
+    "FJ",
+    "GB",
+    "GD",
+    "GH",
+    "GM",
+    "GT",
+    "GY",
+    "HK",
+    "HN",
+    "IE",
+    "IL",
+    "IN",
+    "JM",
+    "JP",
+    "KE",
+    "KI",
+    "KN",
+    "KR",
+    "LC",
+    "LS",
+    "MU",
+    "MV",
+    "MW",
+    "MX",
+    "MY",
+    "NA",
+    "NI",
+    "NR",
+    "PA",
+    "PE",
+    "PK",
+    "PY",
+    "RU",
+    "SB",
+    "SC",
+    "SG",
+    "SL",
+    "SR",
+    "SV",
+    "SZ",
+    "TO",
+    "TR",
+    "TV",
+    "US",
+    "UY",
+    "VC",
+    "VU",
+    "WS",
+    "ZA",
+    "ZM",
+    "ZW"
+   ]
+  },
+  {
+   "entry": "free",
+   "days": 90,
+   "within": 180,
+   "passports": [
+    "AT",
+    "BE",
+    "BG",
+    "CH",
+    "CY",
+    "CZ",
+    "DE",
+    "DK",
+    "EE",
+    "ES",
+    "FI",
+    "FR",
+    "GR",
+    "HR",
+    "HU",
+    "IS",
+    "IT",
+    "LI",
+    "LT",
+    "LU",
+    "LV",
+    "MT",
+    "NL",
+    "NO",
+    "PL",
+    "PT",
+    "RO",
+    "SE",
+    "SI",
+    "SK"
+   ]
+  },
+  {
+   "entry": "free",
+   "days": 30,
+   "passports": [
+    "AL",
+    "BA",
+    "ME",
+    "RS"
+   ]
+  },
+  {
+   "entry": "arrival",
+   "passports": [
+    "AU",
+    "NZ",
+    "PH"
+   ]
+  }
+ ],
+ "others": {
+  "entry": "evisa"
+ },
+ "note": "Trinidad and Tobago: nationals of the countries listed enter without a visa for 90 days (90 in 180 for the Schengen states and the EU but Ireland) or 30; Australians, New Zealanders and Filipinos get a waiver of the visa on arrival (TT$400). Everyone else who needs a visa may apply for an e-Visa online. The waiver on arrival with immigration's prior approval, and Timatic's longer list of nationalities eligible on arrival, aren't modelled. Read from Wikipedia's copy. Read on 2026-11-03 against the Ministry of Homeland Security's own list of the countries whose citizens don't need an entry visa (19 September 2024): it names 42, mostly of the Commonwealth, gives no lengths, and doesn't present itself as the whole list (it leaves out the United States, the Schengen states and Latin America, which Wikipedia's copy has as visa-free), so it is silent on the rest; every figure stands on Wikipedia's copy.",
+ "sources": [
+  {
+   "url": "https://en.wikipedia.org/wiki/Visa_policy_of_Trinidad_and_Tobago",
+   "title": "Wikipedia, Visa policy of Trinidad and Tobago",
+   "read": "2026-11-03",
+   "kind": "secondary",
+   "quotes": "https://nationalsecurity.gov.tt/immigration-division/",
+   "said": "Holders of passports of the following countries and territories may enter Trinidad and Tobago without a visa for the following period: 90 days Antigua and Barbuda Argentina Bahamas Bangladesh Barbados Belize Botswana Brazil Brunei Canada Chile Colombia Costa Rica Cuba Dominica Dominican Republic Ecuador El Salvador Eswatini Fiji Gambia Ghana Grenada Guatemala Guyana Honduras Hong Kong India Ireland Israel Jamaica Japan Kenya Kiribati Lesotho Malawi Malaysia Maldives Mauritius Mexico Namibia Nauru Nicaragua Pakistan Panama Paraguay Peru Russia Saint Kitts and Nevis Saint Lucia Saint Vincent and the Grenadines Samoa Seychelles Sierra Leone Singapore Solomon Islands South Africa South Korea Suriname Tonga Turkey Tuvalu United Arab Emirates United Kingdom United States Uruguay Vanuatu Zambia Zimbabwe 90 days within any 180 days All European Union member states (except Ireland) Iceland Liechtenstein Norway Switzerland 30 days Albania Bosnia and Herzegovina Montenegro Serbia ... Citizens of Australia , New Zealand and Philippines may obtain \"Waiver of the Visa\" on arrival at a cost of TT$ 400. ... Citizens of other countries that require a visa may obtain an eVisa online."
+  },
+  {
+   "url": "https://homelandsecurity.gov.tt/wp-content/uploads/2024/09/List-of-Countries-Whose-Citizens-Do-Not-Require-Entry-Visas-for-TT.pdf",
+   "title": "Ministry of Homeland Security, Trinidad and Tobago (Immigration Division): List of Countries Whose Citizens Do Not Require Entry Visas for T&T (one page, created 19 September 2024)",
+   "read": "2026-11-03",
+   "kind": "primary",
+   "said": "Citizens of the countries listed below do not require visas for entry into Trinidad and Tobago Antigua and Barbuda Hong Kong Saint Lucia Bahamas Jamaica Saint Vincent and the Grenadines Bangladesh Kenya Samoa Barbados Kiribati Seychelles Belize Lesotho Sierra Leone Botswana Malawi Singapore Brunei Malaysia Solomon Islands Canada Maldives Suriname Dominica Mauritius Tonga Eswatini Montserrat Tuvalu Gambia Namibia United Kingdom Ghana Nauru Vanuatu Grenada Pakistan Zambia Guyana Saint Kitts and Nevis Zimbabwe"
+  },
+  {
+   "url": "https://homelandsecurity.gov.tt/divisions/immigrationdivision/evisa-online/",
+   "title": "Ministry of Homeland Security, Trinidad and Tobago: Visa Online Services",
+   "read": "2026-11-03",
+   "kind": "primary",
+   "said": "VIEW LIST OF COUNTRIES THAT DO NOT NEED A VISA FOR TRINIDAD AND TOBAGO ... eVISA APPLICATION FEE ... Multiple Entry Visa 800TTD ... Bona fide operating crew of aircraft or seagoing vessels, do not require a visa, regardless of nationality."
+  }
+ ]
+}

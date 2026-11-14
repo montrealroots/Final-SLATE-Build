@@ -1,0 +1,33 @@
+{
+ "country": "GS",
+ "rules": [
+  {
+   "entry": "eta",
+   "days": 40,
+   "passports": [
+    "GB"
+   ]
+  }
+ ],
+ "others": {
+  "entry": "eta",
+  "days": 40
+ },
+ "note": "South Georgia and the South Sandwich Islands: since 1 August 2025 every visitor, whatever the nationality, British citizens included, needs an Entry Permit under the Entry Control Ordinance 2022, applied for in advance online as an Electronic Travel Authorisation (a visitor permit valid 40 days, £250); those its linked order deems to have permission, as cruise passengers, aren't modelled. Read on 2026-11-03 from the Government's own pages, which corrected Wikipedia's copy, read before, on the form (an online authorisation, not a visa) and the 40 days.",
+ "sources": [
+  {
+   "url": "https://gov.gs/entry-control-order-permit-application/",
+   "title": "Government of South Georgia & the South Sandwich Islands: Entry Control Order – Permit Application",
+   "read": "2026-11-03",
+   "kind": "primary",
+   "said": "Electronic Travel Authorisation – Permit Application Process From 1 August 2025 all persons (unless otherwise exempted) entering South Georgia and the South Sandwich Islands for work or visitor purposes will require an Entry Permit. ... Applications for a Permit will need to be made through a dedicated web-based application portal ... https://eta.entry.gov.gs ... A visitor permit is valid for 40 days from the date of commencement ... Visitor Permits – £250 for a 40-day permit."
+  },
+  {
+   "url": "https://gov.gs/how-to-visit/",
+   "title": "Government of South Georgia & the South Sandwich Islands: How to Visit",
+   "read": "2026-11-03",
+   "kind": "primary",
+   "said": "South Georgia & the South Sandwich Islands are only accessible by sea. There is no visitor accommodation ashore, therefore most people visit by cruise ship or yacht. All visitors are subject to the Entry Control Ordinance 2022."
+  }
+ ]
+}

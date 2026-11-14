@@ -1,0 +1,132 @@
+{
+ "country": "PY",
+ "rules": [
+  {
+   "entry": "free",
+   "days": 90,
+   "passports": [
+    "AD",
+    "AE",
+    "AR",
+    "AT",
+    "AU",
+    "BE",
+    "BG",
+    "BO",
+    "BR",
+    "BS",
+    "CA",
+    "CH",
+    "CL",
+    "CO",
+    "CR",
+    "CY",
+    "CZ",
+    "DE",
+    "DK",
+    "EC",
+    "EE",
+    "ES",
+    "FI",
+    "FR",
+    "GB",
+    "GE",
+    "GR",
+    "GT",
+    "HN",
+    "HR",
+    "HU",
+    "IE",
+    "IL",
+    "IS",
+    "IT",
+    "JP",
+    "KN",
+    "LI",
+    "LT",
+    "LU",
+    "LV",
+    "MC",
+    "MT",
+    "MX",
+    "NI",
+    "NL",
+    "NO",
+    "NZ",
+    "PA",
+    "PE",
+    "PL",
+    "PT",
+    "RO",
+    "RU",
+    "SE",
+    "SI",
+    "SK",
+    "SV",
+    "TR",
+    "TT",
+    "TW",
+    "UA",
+    "US",
+    "UY",
+    "ZA"
+   ]
+  },
+  {
+   "entry": "free",
+   "days": 60,
+   "passports": [
+    "DO"
+   ]
+  },
+  {
+   "entry": "free",
+   "days": 30,
+   "passports": [
+    "KR",
+    "MN",
+    "MY",
+    "PH",
+    "SG"
+   ]
+  },
+  {
+   "entry": "arrival",
+   "days": 30,
+   "passports": [
+    "ID",
+    "OM",
+    "QA",
+    "VN"
+   ]
+  },
+  {
+   "entry": "arrival",
+   "days": 15,
+   "passports": [
+    "TH"
+   ]
+  }
+ ],
+ "others": {
+  "entry": "visa"
+ },
+ "note": "Paraguay: nationals of the countries listed enter without a visa for 90, 60 or 30 days; Indonesia, Oman, Qatar and Vietnam take a visa on arrival for 30 days, Thailand for 15; everyone else applies (online, completed at a Paraguayan mission) for a visa. Read from Wikipedia's copy. Checked on 2026-11-03 against the Dirección Nacional de Migraciones' own table of visa-waiver agreements (its page as Common Crawl captured it on 10 September 2026): it gives every visa-free passport and length but the Mercosur states' (no length), and corrected Wikipedia's copy, read before, on Mongolia (30 days, Ley 7206 of 17 November 2023, not 90). It shows Indonesia, Oman, Qatar, Vietnam and Thailand as needing a visa; their visa on arrival is on the Ministry of Foreign Affairs' page, which refused this client, and stands on Wikipedia's copy.",
+ "sources": [
+  {
+   "url": "https://en.wikipedia.org/wiki/Visa_policy_of_Paraguay",
+   "title": "Wikipedia, Visa policy of Paraguay",
+   "read": "2026-11-03",
+   "kind": "secondary",
+   "quotes": "https://www.migraciones.gov.py/",
+   "said": "Citizens of the following countries and territories may enter Paraguay without a visa for the following period: 90 days All European Union member states Andorra Argentina Australia Bahamas Bolivia Brazil Canada Chile Colombia Costa Rica Ecuador El Salvador Georgia Guatemala Honduras Iceland Israel Japan Liechtenstein Mexico Monaco Mongolia New Zealand Nicaragua Norway Panama Peru Russia Saint Kitts and Nevis South Africa Switzerland Taiwan Turkey Trinidad and Tobago Ukraine United Arab Emirates United Kingdom United States United States Uruguay 60 days Dominican Republic 30 days Malaysia Philippines Singapore South Korea ... Citizens of the following countries may obtain a visa on arrival for the following period: 30 days Indonesia Oman Qatar Vietnam 15 days Thailand"
+  },
+  {
+   "url": "https://migraciones.gov.py/informacion-sobre-visas/",
+   "title": "Dirección Nacional de Migraciones, Paraguay: Información sobre Visas, Acuerdos de supresión de visas (read from Common Crawl CC-MAIN-2026-39, capture of 2026-09-10 09:52:25, crawl-data/CC-MAIN-2026-39/segments/1788492699925.45/warc/CC-MAIN-20260910092715-20260910122715-00422.warc.gz offset 331074998 length 36674)",
+   "read": "2026-11-03",
+   "kind": "primary",
+   "said": "ACUERDOS DE SUPRESION DE VISAS AMERICA PAIS ACUERDO DE SUPRESION DE VISA VISA PARA INGRESO AL PAIS EN CALIDAD DE TURISTA VISA PARA PRORROGA DE PERMANENCIA, RESIDENCIA O REALIZACION DE ACTIVIDADES LUCRATIVAS ... ARGENTINA MERCOSUR NO REQUIERE VISA NO REQUIERE VISA ... CANADA LEY N° 7314 13/08/2024 Válido hasta: 13/08/2027 NO REQUIERE VISA: para permanencia de hasta 90 días. REQUIERE VISA ... VENEZUELA REQUIERE VISA ... COREA DEL SUR DECRETO Nº 7341 30/03/2006 NO REQUIERE VISA: para permanencia de hasta 30 días ... MALASIA DECRETO Nº 5.220 29/12/2025 NO REQUIERE VISA: para permanencia de hasta 30 días ... MONGOLIA LEY N° 7206 17/11/2023 NO REQUIERE VISA: para permanencia de hasta 30 días ... REPUBLICA DOMINICANA LEY Nº 6244 26/12/2018 NO REQUIERE VISA: para permanencia de hasta 60 días"
+  }
+ ]
+}

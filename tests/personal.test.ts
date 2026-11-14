@@ -134,7 +134,7 @@ describe('your account', () => {
 
   it('a story from before your own money existed opens with an empty account and no new money', () => {
     const s = life({}, 'old');
-    delete s.money; delete s.journal; // labelled fixture: a save made before November 12, 2026
+    delete s.money; delete s.journal; delete s.bank; // labelled fixture: a save made before November 12, 2026
     const back = deserialize(serialize(s));
     expect(back.money).toBeUndefined();
     expect(personalBalance(back)).toBe(0);

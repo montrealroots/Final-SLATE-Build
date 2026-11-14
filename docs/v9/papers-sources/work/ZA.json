@@ -1,0 +1,25 @@
+{
+ "country": "ZA",
+ "others": {
+  "right": "permit",
+  "route": "Visitor's visa with section 11(2) work authorisation"
+ },
+ "note": "South Africa: a person in the entertainment industry travelling through the Republic to perform, or an actor in a film or advertisement produced there, for a foreign employer, may do that work on a visitor's visa with the authorisation under section 11(2) of the Immigration Act, applied for at a mission before travelling (Immigration Regulations reg. 11). No days of performing without the authorisation are named. The Department of Home Affairs' visa page, read 2026-11-03, bears out the route (a visitor's visa with the authorisation to work requested at a mission, for work of no longer than six months, endorsed for a stay and work of 30 to 90 days, neither modelled) but doesn't cite section 11(2), which stands on acts.co.za's reproduction of reg. 11, so the entry stays secondary.",
+ "sources": [
+  {
+   "url": "https://www.acts.co.za/immigration-act-2002/r413_11__visitors_visa",
+   "title": "Acts Online, Immigration Regulations (R413 of 2014), regulation 11: Visitor's visa",
+   "read": "2026-11-03",
+   "said": "work conducted for a foreign employer pursuant to a contract which partially requires conducting of certain activities in the Republic and relates to— ... in respect of films and advertisements produced in South Africa, including, but not limited to, an actor, cameraman, hairstylist, make-up artist or lighting and sound engineer; ... a person involved in the entertainment industry, travelling through the Republic to perform;",
+   "kind": "secondary",
+   "quotes": "https://www.dha.gov.za/"
+  },
+  {
+   "url": "https://www.dha.gov.za/index.php/immigration-services/types-of-visas",
+   "title": "Department of Home Affairs (South Africa), Immigration services: Types of visas, 'Visas for people in the entertainment industry'",
+   "read": "2026-11-03",
+   "said": "South African visitors’ visas may be granted for: ... to work in the production of a movie or show (i.e. in the entertainment industry) ... Visas for people in the entertainment industry If you are from a country that is not exempt from South African visa requirements and do not intend to work for longer than six months, then: You must submit an application for a visa with the relevant documentation as listed on the application form, pay the prescribed fee, and you must also request authorisation to work on the visitor’s visa at your nearest South African embassy or mission. If approved, your visa will be endorsed to allow you to stay and work for a period of between 30 and 90 days.",
+   "kind": "primary"
+  }
+ ]
+}

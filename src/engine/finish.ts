@@ -314,7 +314,9 @@ export function assessQuality(state: GameState, p: Project, episode?: number): R
     const theirs = scenes.filter((s) => s.participants.includes(a.characterId) && stageIn(p, a.characterId, s) === a.stage);
     if (episode !== undefined && !theirs.length) continue; // not in this episode: nothing of theirs to assess
     const sc = theirs.map((s) => { const c = p.captures.find((x) => x.sceneId === s.id); return (c ? editPerformance(p, c) : undefined) ?? c?.quality ?? 60; });
-    const base = a.performer === 'player' ? 58 + playerExperience(state, p, 'performer') + Math.min(14, p.schedule.rehearsalDays * 2) : personById(state, a.performer).capability;
+    // Rehearsal reaches every performer, not only the player (from November 14, 2026): a hired one plays three points
+    // worse with none and up to five better with eight days, against the default three. Game calibration.
+    const base = a.performer === 'player' ? 58 + playerExperience(state, p, 'performer') + Math.min(14, p.schedule.rehearsalDays * 2) : personById(state, a.performer).capability + Math.min(8, p.schedule.rehearsalDays) - 3;
     // A shared background never scores a performance: ability isn't inferred from ethnicity. It added 6 until the review
     // of November 7, 2026; casting still shows who shares one, as information.
     // How they play with the others in each of their scenes (auditions.ts pairChemistry, -8 to +8), at half weight; a

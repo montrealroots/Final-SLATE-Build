@@ -21,7 +21,16 @@ export interface DestinationGroup {
 export const HOME: Destination = { view: 'home', label: 'Home', detail: 'Your day, what is coming up and your projects' };
 
 export const DESTINATIONS: readonly DestinationGroup[] = [
-  { label: 'You', items: [{ view: 'profile', label: 'Player Profile', detail: 'Your professions, credits and history' }] },
+  {
+    label: 'You',
+    items: [
+      { view: 'profile', label: 'Player Profile', detail: 'Your professions, credits and history' },
+      // Home's Your Bank and Your Papers are the way in (the owner, November 14, 2026). Until later that day they were
+      // Home's alone, and the rail lit Home on their pages; the owner asked for that to stop, so the rail has them too.
+      { view: 'bank', label: 'Your Bank', detail: 'Your accounts, cards, loans and payments' },
+      { view: 'papers', label: 'Your Papers', detail: 'Your passports, visas and permissions to work' },
+    ],
+  },
   {
     label: 'Your Day',
     items: [

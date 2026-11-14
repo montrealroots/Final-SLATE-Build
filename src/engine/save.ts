@@ -14,6 +14,7 @@ import { knownAs, migrateV5toV6, migrateV6toV7 } from './identity';
 import { migrateV7toV8 } from './songs';
 import { migrateV8toV9 } from './episode-releases';
 import { migrateV9toV10 } from './cash/migrate';
+import { migrateV10toV11, openBankFromJournal } from './cash/migrate11';
 // The storage primitives that need no migration (key-value stores, the save index, recovery copies, locks, drafts) are in
 // save-store.ts since November 11, 2026, so the start screen can list saves without loading the engine. Re-exported here.
 import { DRAFT, INDEX, PREFIX, bakKey, finishList, indexedSaves, isQuotaError, mainKey, openableKeys, tmpKey, type KeyValueStore, type SaveSummary } from './save-store';
@@ -76,6 +77,8 @@ export const MIGRATIONS: Record<number, Migration> = {
   8: migrateV8toV9,
   // v9 -> v10: the personal and company accounts move into one journal in cents, reconciled or refused (cash/migrate.ts).
   9: migrateV9toV10,
+  // v10 -> v11: your money moves from the v8 journal to your bank, reconciled; the company is inventoried (cash/migrate11.ts).
+  10: migrateV10toV11,
 };
 
 export function migrate(raw: unknown): GameState {
@@ -105,6 +108,7 @@ export function migrate(raw: unknown): GameState {
   const s = obj as unknown as GameState;
   for (const place of Object.values(s.places ?? {})) registerPlace(place);
   adoptPublishedRules(s);
+  openBankFromJournal(s);
   return s;
 }
 

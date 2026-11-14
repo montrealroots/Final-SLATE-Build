@@ -1,0 +1,160 @@
+{
+ "country": "IE",
+ "office": "the Minister for Foreign Affairs (the Passport Service)",
+ "currency": "EUR",
+ "routes": [
+  {
+   "id": "online",
+   "where": "home",
+   "speed": "standard",
+   "within": null,
+   "label": "online"
+  },
+  {
+   "id": "postal",
+   "where": "home",
+   "speed": "standard",
+   "within": null,
+   "label": "through the postal providers"
+  },
+  {
+   "id": "counter",
+   "where": "home",
+   "speed": "standard",
+   "within": null,
+   "label": "at a Passport Office counter"
+  },
+  {
+   "id": "mission",
+   "where": "abroad",
+   "speed": "standard",
+   "within": null,
+   "label": "at a mission abroad"
+  },
+  {
+   "id": "counter-5-days",
+   "where": "home",
+   "speed": "urgent",
+   "within": {
+    "n": 5,
+    "unit": "working day"
+   },
+   "label": "at a Passport Office, processed within 5 working days (EUR 75 more)"
+  },
+  {
+   "id": "counter-same-day",
+   "where": "home",
+   "speed": "urgent",
+   "within": {
+    "n": 0,
+    "unit": "working day"
+   },
+   "label": "at a Passport Office, processed the same working day (EUR 150 more)"
+  },
+  {
+   "id": "online-5-days",
+   "where": "home",
+   "speed": "urgent",
+   "within": {
+    "n": 5,
+    "unit": "working day"
+   },
+   "label": "online, processed within 5 working days (EUR 40 more)"
+  }
+ ],
+ "passports": [
+  {
+   "for": "adult",
+   "from": 18,
+   "pages": 34,
+   "validYears": 10,
+   "pay": {
+    "online": "75",
+    "postal": "80",
+    "counter": "95",
+    "mission": "95",
+    "counter-5-days": "170",
+    "counter-same-day": "245",
+    "online-5-days": "115"
+   }
+  },
+  {
+   "for": "adult",
+   "from": 18,
+   "pages": 66,
+   "validYears": null,
+   "pay": {
+    "online": "105",
+    "postal": "110",
+    "counter": "125",
+    "mission": "125",
+    "counter-5-days": "200",
+    "counter-same-day": "275",
+    "online-5-days": "145"
+   }
+  },
+  {
+   "for": "minor",
+   "under": 18,
+   "pages": 34,
+   "validYears": 5,
+   "pay": {
+    "online": "20",
+    "postal": "30",
+    "counter": "45",
+    "mission": "45",
+    "counter-5-days": "120",
+    "counter-same-day": "195",
+    "online-5-days": "60"
+   }
+  },
+  {
+   "for": "minor",
+   "under": 18,
+   "pages": 66,
+   "validYears": null,
+   "pay": {
+    "online": "50",
+    "postal": "55",
+    "counter": "55",
+    "mission": "55",
+    "counter-5-days": "130",
+    "counter-same-day": "205",
+    "online-5-days": "90"
+   }
+  }
+ ],
+ "note": "Fees from the Diplomatic and Consular Fees (Amendment) Regulations 2019; later amendments not yet checked. The same schedule prices processing within 5 working days at a Passport Office (EUR 75 more) or the same working day (EUR 150 more), on the counter fees, and within 5 working days online (EUR 40 more), each written as an urgent route; the passport card is EUR 35 (reference 9), taken as applied for online, its validity not in the schedule (a lead); the online fee for a passport and a card together (EUR 100 for an adult's 34 pages against 75 and 35 apart; 130, 45 and 75) is a bundle the form doesn't hold. Validity is prescribed by the Minister under the Passports Act 2008, s. 9, in regulations not yet found. ireland.ie answered this client with 403 on 2026-10-30, and the Oireachtas site with a CAPTCHA (not circumvented). On 2026-11-03 the schedule's PDF answered with 403 and it was read from the Statute Book's HTML edition of the same instrument; that day the Department's Passport fees page on ireland.ie rendered in a browser and gave the same fees (EUR 75 and 20 online, 80 and 30 by post, 95 and 45 at a counter, the card 35 and the bundles 100 and 45), named the adult's a 10-year passport and the child's a 5-year one (a lead for the validity the data leaves open), and named the counter's dearer services a same-day turnaround (EUR 150 more) and a four-day turnaround (EUR 75 more), where the schedule says within 5 working days, which stands. On 2026-11-03 the Department of Foreign Affairs' fees page (ireland.ie) was read for the passports' terms: a standard adult passport is a \"Standard 10-year passport\" and a standard child's a \"Standard 5-year passport for those under 18 years\"; until then the file held no term. The page gives no term for the 66-page passports, which hold none.",
+ "sources": [
+  {
+   "url": "https://www.irishstatutebook.ie/eli/2019/si/259/made/en/print",
+   "title": "Irish Statute Book, S.I. No. 259 of 2019, Diplomatic and Consular Fees (Amendment) Regulations 2019, Schedule (Passports and Travel Documents), the Statute Book's HTML edition (its PDF answered this client with 403 on 2026-11-03)",
+   "read": "2026-11-03",
+   "said": "1 For the issue of a passport of 34 pages to a person over 18 years of age, via the standard public counter service in a Passport Office or through a diplomatic mission or consular post. €95 2 For the issue of a passport of 66 pages to a person over 18 years of age, via the standard public counter service in a Passport Office or through a diplomatic mission or consular post. €125 3 For the issue of a passport of 34 pages to a person under 18 years of age, via the standard public counter service in a Passport Office or through a diplomatic mission or consular post. €45 4 For the issue of a passport of 66 pages to a person under 18 years of age, via the standard public counter service in a Passport Office or through a diplomatic mission or consular post. €55 5 For the issue of a passport of 34 pages to a person aged 18 years or over, through arrangements for processing of passport applications with providers of postal services. €80 6 For the issue of a passport of 66 pages to a person aged 18 years or over, through arrangements for processing of passport applications with providers of postal services. €110 7 For the issue of a passport of 34 pages to a person under 18 years of age, through arrangements for processing of passport applications with providers of postal services. €30 8 For the issue of a passport of 66 pages to a person under 18 years of age, through arrangements for processing of passport applications with providers of postal services. €55 9 For the issue of a passport card. €35 10 For the issue of an emergency travel document by the relevant duty officer, diplomatic mission or consular post. €30 11 For the delivery of an out-of-hours service by the relevant duty officer, diplomatic mission or consular post, payable in addition to the fee for an emergency travel document specified at Reference Number 10. €80 12 For the issue of a European Union Emergency Travel Document, valid for a single journey. Nil 13 For the issue of a passport of 34 pages to a person over 18 years of age, who applies through the Passport Service on-line enrolment option. €75 14 For the issue of a passport of 66 pages to a person over 18 years of age, who applies through the Passport Service on-line enrolment option. €105 15 For the issue of a passport of 34 pages to a person under 18 years of age, who applies through the Passport Service on-line enrolment option. €20 16 For the issue of a passport of 66 pages to a person under 18 years of age, who applies through the Passport Service on-line enrolment option. €50 17 For the issue of both a passport of 34 pages and a passport card to a person aged 18 years or over who applies through the Passport Service online enrolment option. €100 18 For the issue of both a passport of 66 pages and a passport card to a person aged 18 years or over who applies through the Passport Service online enrolment option. €130 19 For the issue of both a passport of 34 pages and a passport card to a person under 18 years of age who applies through the Passport Service online enrolment option. €45 20 For the issue of both a passport of 66 pages and a passport card to a person under 18 years of age who applies through the Passport Service online enrolment option. €75 21 For the processing of a passport or a passport card by the relevant Passport Office during normal hours of opening, within 5 working days of the application being received in addition to the appropriate fee specified at Reference Numbers 1, 2, 3 or 4. €75 22 For the processing of a passport or a passport card by the relevant Passport Office during normal hours of opening, on the same working day on which the application was received, in addition to the appropriate fee specified at Reference Numbers 1, 2, 3 or 4. €150 23 For processing of a passport or a passport card within 5 working days of receipt of an application through the Passport Service on-line enrolment option in addition to the appropriate fee specified at Reference Numbers 13, 14, 15, 16, 17, 18, 19 or 20. €40"
+  },
+  {
+   "url": "https://www.irishstatutebook.ie/eli/2008/act/4/enacted/en/print.html",
+   "title": "Irish Statute Book, Passports Act 2008 (No. 4 of 2008), section 9",
+   "read": "2026-11-03",
+   "said": "may prescribe periods of validity for passports, and different periods may be prescribed for different types of passports, for different categories of applicants and for the issue of passports in different circumstances. (2) If no period of validity is prescribed for a passport under subsection (1) , the passport shall be valid for such period as the Minister considers appropriate in the circumstances at the time the passport is issued"
+  },
+  {
+   "url": "https://www.ireland.ie/en/dfa/passports/passport-fees/",
+   "title": "Department of Foreign Affairs and Trade (ireland.ie), Passport fees",
+   "read": "2026-11-03",
+   "said": "Passport Online service Adult Fee Standard 10-year passport €75 Passport Card €35 Standard passport plus Passport Card bundle €100 Child Fee Standard 5-year passport for those under 18 years €20 Standard 5-year passport plus Passport Card bundle for those under 18 years €45 There is an additional €5 postal fee for each child application to cover the cost of returning documents to the applicant. There is an additional €15 postal fee if you reside outside Ireland. Please note that a single payment of €15 applies to applications for children resident outside Ireland. ... Post Passport Service Adult Fee Standard 10-year passport €80 Child Fee Standard 5-year passport for those under 18 years €30 The fee for a single application is €9.50 and the fee for up to four applications made at the same time is €16. ... Public counter applications made in Dublin and Cork In addition to the fee for the passport, an additional appointment fee will apply as follows: Service Type Passport Fee Same-Day TurnaroundAppointment Fee Four-Day Turnaround Appointment Fee Adult renewal €95 €150 €75 Child renewal €45 €150 €75"
+  }
+ ],
+ "card": {
+  "name": "Passport Card",
+  "bands": [
+   {
+    "for": "any",
+    "validYears": null,
+    "pay": {
+     "online": "35"
+    }
+   }
+  ]
+ }
+}

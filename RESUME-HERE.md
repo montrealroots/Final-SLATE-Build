@@ -6,6 +6,94 @@ Read this first. It lists what is finished, what the Gap Completion Package stil
 
 At every stopping point, open a pull request into `main` and merge it (see `CLAUDE.md`, certified by the user on November 6, 2026). Never merge red checks.
 
+## The Owner's Command Of November 14, 2026 (Later): Every Feature Proven, Everything Possible
+
+Two asks: a coverage matrix of every feature with Monte Carlo proof that each reads, bites and has downstream effects
+(fix what doesn't), and every "not possible yet" in banking and papers made possible. The owner chose "research, then
+estimate" for figures no source gives. Start at `docs/v10/README.md`.
+
+**Done.**
+- The register of every feature from the code (`tests/proof/register.ts`): 157 actions, 54 bank commands, 66 event kinds,
+  306 fields that hold a decision, an identity or a record.
+- Played careers (`tests/proof/career.ts`) and the paired Monte Carlo proof (`tests/proof/probe.ts`); the matrix
+  (`tests/v10-features.test.ts`, `docs/v10/FEATURES.md`, ratcheted).
+- Proofs for the career's loop, production, release, awards, the bank and 30 scheduled systems (`tests/proof/probes/`).
+- Fixed from the proofs: SLATE pay counts as wages, so banks lend (`isWages`).
+- Papers: every visa, permit and passport can be applied for (`src/engine/papers-terms.ts`); 8 permits and 32 visa
+  destinations researched with sources; the rest estimated and listed (`docs/v10/papers-estimates.json`). Banks for
+  Nauru and Niue researched; the five places with no bank bank with their administering country's; the 14 blocked work
+  rules modeled. `docs/v9/COVERAGE.md` has no "missing" left.
+
+**Next, in order.**
+1. Probes for the remaining actions (about 130), bank commands and fields; careers that reach the unreached event kinds.
+2. Fix each feature a proof fails: cash first, then festival selections and outside work.
+3. Research the estimated permits and visas, biggest film markets first.
+
+## The Owner's Banking, Papers And Homepage Migration (From November 14, 2026)
+
+The command, word for word, is in the conversation of November 14, 2026; its nine sections are summarised in
+`docs/v9/PARITY.md`, which also pins the sources: 1221 `d6eba5d`, SLATE-REBUILD `88256bf`, and this repository's main at
+`19b566c`. It supersedes earlier instructions about the company and the primary bank.
+
+**Done (first checkpoint).**
+- **1. Sources pinned, parity matrix.** `docs/v9/PARITY.md`.
+- **2. 1221's banking, ported whole.**
+  - The engine is in `src/engine/bankworld/`; `engine/bank.ts` is where SLATE meets it.
+  - The bank's ledger is the one journal of your money: `personal.ts` posts and reads only through it.
+  - The bank keeps SLATE's clock (`state.ts` `onClockMove`), and its notices go into the log.
+  - The screens are in `src/ui/bankworld/`; `BankPage.tsx` is the Your Bank view.
+  - 1221's tests are in `tests/bankworld/`: 317 pass and 61 are skipped, each with its reason. Ten files weren't
+    brought over, also with reasons. Everything is listed in `PARITY.md`.
+- **5. Home (part).**
+  - Your Bank and Your Papers are always on Home (`src/ui/HomeMoney.tsx`).
+  - Your Bank reads available, pending and owed apart, and each currency apart.
+  - Back To Home is on both pages, and both are in the UI inventory and the coverage walk.
+- **6. The company is out of play.**
+  - `company.ts` keeps the banner and an old save's record.
+  - The save goes from version 10 to 11 (`cash/migrate11.ts`). It brings your v8 journal money to the bank once,
+    reconciled to the cent, and inventories the company without adding its money to yours.
+  - A first-look deal signed with a company goes on paying it (`payee`).
+  - Company money in a project isn't yours (`finance.ts` `moneyKept`).
+  - Tests: `tests/v9-company-removed.test.ts`, `tests/v8-money.test.ts` A21.
+- **The v8 bank is retired:** `banking.ts`, `Banking.tsx`, `src/data/banks.json` and their tests are gone.
+- **8. Journeys (two of three):**
+  - `e2e/v9-bank.spec.ts`: Home → Your Bank → savings → move → second bank applied for and decided → statement → Home.
+  - `e2e/v9-project-money.spec.ts`: Home → project → custom budget → own money in → purchase → reconciled statement →
+    Home.
+  - Both pass on desktop and phone (Chromium) and the iPhone 15 Pro Max (WebKit emulation). Neither was run on a
+    physical device.
+
+**Done (second checkpoint).**
+- **3. Dated exchange** (`docs/v9/FX.md`).
+  - SLATE-REBUILD's 152 series and 622 observations, recounted.
+  - A rate is read on the bank's day, with no lookahead.
+  - A missing rate refuses.
+  - Past 2026-10-30 the last rate is held and called stale.
+  - A payment abroad keeps its quote's rates and settles what was quoted.
+  - Tests: `tests/v9-fx.test.ts`.
+- **4. Papers** (`docs/v9/PAPERS.md`).
+  - The records: passports 236, visits 246, work 232.
+  - Five permissions kept apart: passport, entry, stay, work, and the work itself.
+  - The visa application restored where a fee and time are recorded.
+  - The invented 30 days and one-year permit gone.
+  - The shoot checks acting and directing separately.
+  - Passports from SLATE-REBUILD's records where 1221 has no office: 101 more citizenships.
+  - Tests: `tests/v8-papers.test.ts`.
+- **7. Coverage by jurisdiction** (`docs/v9/COVERAGE.md`, `docs/v9/coverage.json`): 252 countries, 7 capabilities,
+  held by `tests/v9-coverage.test.ts`.
+- **8. All three journeys:** `e2e/v9-bank.spec.ts`, `e2e/v9-papers.spec.ts` and `e2e/v9-project-money.spec.ts`, each on
+  desktop and phone (Chromium) and the iPhone 15 Pro Max (WebKit emulation).
+
+**Next, in order.**
+1. Count days of stay against a visit's limit; make travel ask for entry.
+2. Show the international payment's quote on screen in a journey: it needs an account at a bank abroad, which SLATE's
+   start doesn't give.
+5. **Open defects.**
+   - Two ported 1221 cases fail and their cause isn't found yet. Both are in `tests/bankworld/remaining-09-banking.test.ts`,
+     marked UNRESOLVED: "Cancel It" isn't drawn for a second Berlin account in its first days.
+   - The ported bank UI's controls aren't yet in `docs/input-audit/CONTROLS.csv` or the disabled-reasons record: those
+     audits read top-level `src/ui/*.tsx` only.
+
 ## The Owner's v8 Overhaul (From November 14, 2026)
 
 The package is `docs/v8/package`. Its order is `07-IMPLEMENTATION-AND-ACCEPTANCE.md`, and `docs/v8/STATUS.md` says where
@@ -29,7 +117,9 @@ each step and acceptance case stands. Done so far:
 - **Step 10, the phone layout.** Phones open in the responsive layout by default.
 - **Step 11 (partly).** `tests/v8-economy.test.ts`.
 
-All of this is on PR #92 (montrealroots/Final-SLATE-Build#92). Merge only after its CI is green on the final head.
+**Merged.** PR #92 (montrealroots/Final-SLATE-Build#92) was squash-merged into `main` on November 14, 2026 as
+`19b566c`, from `9285a73`, with all seven CI jobs green on that commit. `main` was merged back into the branch with
+`-s ours`, since the trees were identical. New work starts a new pull request from this branch.
 
 What is still open is listed row by row in `docs/v8/STATUS.md`. In order of importance:
 1. A14, overall deals.

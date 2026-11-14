@@ -1,0 +1,51 @@
+{
+ "country": "TD",
+ "rules": [
+  {
+   "entry": "free",
+   "days": 90,
+   "passports": [
+    "BB",
+    "BF",
+    "BJ",
+    "BM",
+    "CF",
+    "CG",
+    "CK",
+    "DM",
+    "FM",
+    "GA",
+    "GQ",
+    "ML",
+    "NE",
+    "NG",
+    "RW",
+    "SG",
+    "SR",
+    "TG",
+    "VC"
+   ]
+  }
+ ],
+ "others": {
+  "entry": "evisa"
+ },
+ "note": "Chad: nationals of the countries and territories listed by Chad's Directorate of Emigration and Immigration or by Timatic enter without a visa for 90 days (the two lists differ, and several exemptions were cancelled and resumed in 2024 to 2026: taken as the article lists them); everyone else needs an e-Visa or a visa beforehand (taken as an e-Visa). Read from Wikipedia's copy. Checked on 2026-11-03 against the e-Visa platform of the Direction de l'immigration et l'émigration (its notice of 11 May 2026 and its list of the countries exempted from a visa): the list names 19 countries and territories, all held here, and not the United Arab Emirates, Côte d'Ivoire, Cameroon, Mauritania or Senegal, which Wikipedia's copy, read before, had among them, so they were moved to the e-Visa, which since 11 May 2026 is the only way to apply (Décret n°2299/PR/PM/MSPI/2025). The platform gives no length; the 90 days stand on Wikipedia's copy.",
+ "sources": [
+  {
+   "url": "https://en.wikipedia.org/wiki/Visa_policy_of_Chad",
+   "title": "Wikipedia, Visa policy of Chad",
+   "read": "2026-11-03",
+   "kind": "secondary",
+   "quotes": "https://evisa.gouv.td/",
+   "said": "Visitors to Chad must obtain either an electronic visa online or a regular visa in advance, unless if they are a national of one of the visa-exempt countries. ... nationals of the following countries and territories may enter Chad without a visa for the period listed below: 90 days Barbados Benin Bermuda Burkina Faso Cameroon Central African Republic Congo Republic Cook Islands Côte d'Ivoire Dominica Equatorial Guinea Gabon Mali Micronesia Mauritania Niger Nigeria Rwanda Saint Vincent and the Grenadines Senegal Singapore Suriname Togo United Arab Emirates ... 1 — Not listed by Timatic as being visa-exempt. 2 — Not listed by the Directorate of Emigration and Immigration of Chad as being visa-exempt."
+  },
+  {
+   "url": "https://evisa.td/articles/8/nouvelles-tarifications-des-visas-en-republique-du-tchad",
+   "title": "e-Visa Tchad (Direction de l'immigration et l'émigration), Nouvelles tarifications des visas (11 May 2026) and the platform's exemption list",
+   "read": "2026-11-03",
+   "kind": "primary",
+   "said": "Si vous êtes un ressortissant d'un des pays figurant dans la liste ci-contre, vous êtes exempté de visa pour entrer en République du Tchad. Les pays exemptés de visa : Barbade Bénin Bermudes Burkina Faso Congo Dominique Gabon Guinée-Équatoriale Îles Cook Mali Micronésie Niger Nigéria République centrafricaine Rwanda Saint-Vincent-et-les-Grenadines Singapour Surinam Togo ... 11 May 2026 La Direction de l'immigration et l'émigration et la Sous-Direction de E-Visa informent tous les étrangers souhaitant se rendre en République du Tchad que, conformément au Décret n°2299/PR/PM/MSPI/2025 fixant les conditions d'entrée et de séjour des étrangers et à l'Arrêté conjoint n°033/PR/PM/MFBEPCI/MSPI/2026 relatif aux catégories de visas et à leur tarification, toutes les demandes de visa se font désormais exclusivement en ligne via plateforme officielle evisa.td. La plateforme est pleinement opérationnelle et couvre toutes les catégories de visas selon la nouvelle grille tarifaire, à l'exception des visas diplomatiques et de courtoisie, qui restent de la compétence exclusive du Ministère des Affaires Étrangères. À partir du 11 mai 2026: toute nouvelle demande de visa doit obligatoirement être soumise via la plateforme en ligne evisa.td. Passé le 21 mai 2026 : tout visa délivré en dehors de cette plateforme sera considéré comme invalide et ne permettra pas l'entrée sur le territoire national. Les visas régulièrement délivrés avant cette date restent valables jusqu'à leur expiration. Par ailleurs, il est rappelé que les autorisations manuelles d'entrée sur le territoire sont définitivement supprimées."
+  }
+ ]
+}

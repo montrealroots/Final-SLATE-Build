@@ -1,0 +1,20 @@
+{
+ "country": "DJ",
+ "years": 10,
+ "renounce": false,
+ "lapses": false,
+ "note": "GLOBALCIT's Citizenship Law Dataset v3.0 (EUI, 2025), coding the law in force on 1 January 2024 (A06a DJI 15-21; A06b DJI 15-21; L05 No provision): ordinary naturalisation after 10 years' residence; no renunciation of other citizenships required; a citizen keeps it on taking another. Reforms after that date are checked in the file's later sources, where a later source is given. Citizenship at birth is read from the same dataset's 2024 coding of modes A01a (descent, born in country: Generally applicable provision), A01b (descent, born abroad: Generally applicable provision), A02a (birth in country: No provision) and A02b (birth in country to a parent born there: No provision), as its codebook (RSC/GLOBALCIT 2025/01, sections 3.2.1a to 3.2.2b) defines them: not by birth in the territory alone (provisions for foundlings and children otherwise stateless, modes A03a and A03b, aren't held by the form); by descent from either parent, with no further limit on a child born abroad. Changes to the law at birth after 1 January 2024 weren't checked for this file. On 2026-11-03 the primary was read: Loi n° 79/AN/04/5ème L portant Code de la Nationalité Djiboutienne (Journal Officiel de la République de Djibouti, eJO, publication 24/10/2004, édition n° 20 du 31/10/2004). Every figure the file holds now rests on it, and the dataset is no longer cited.",
+ "sources": [
+  {
+   "url": "https://www.journalofficiel.dj/texte-juridique/loi-n79-an-04-5eme-l-portant-code-de-la-nationalite-djiboutienne/",
+   "title": "Loi n° 79/AN/04/5ème L portant Code de la Nationalité Djiboutienne (Journal Officiel de la République de Djibouti, eJO, publication 24/10/2004, édition n° 20 du 31/10/2004)",
+   "read": "2026-11-03",
+   "kind": "primary",
+   "said": "Article 4 : Est djiboutien, l'enfant légitime ou naturel dont le père et la mère sont djiboutiens. Article 5 : Est également Djiboutien l'enfant né, en République de Djibouti ou à l'étranger dont le père ou la mère est djiboutien. Article 6 : Est aussi djiboutien, l'enfant né en République de Djibouti dont les parents sont inconnus. ... Article 11 : L'acquisition d'une nationalité étrangère ne fait pas perdre la qualité de djiboutien, à moins que l'individu renonce par sa propre volonté à sa nationalité djiboutienne. ... Article 15 : Sous réserve des exceptions prévues aux articles 12 et 16, la naturalisation ne peut être accordée qu'à l'étranger justifiant d'une résidence habituelle en République de Djibouti pendant au moins 10 ans qui précèdent le dépôt de sa demande."
+  }
+ ],
+ "atBirth": {
+  "soil": "none",
+  "descent": "either parent"
+ }
+}

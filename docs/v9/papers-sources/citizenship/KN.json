@@ -1,0 +1,35 @@
+{
+ "country": "KN",
+ "years": 15,
+ "renounce": false,
+ "lapses": false,
+ "note": "GLOBALCIT's Citizenship Law Dataset v3.0 (EUI, 2025), coding the law in force on 1 January 2024 (A06a Const 94(a), STK 6, Schedule 2-3; A06b Const 94(a), STK 6, Schedule 2-3; L05 No provision): ordinary naturalisation after 15 years' residence (the 12 months before the application and the 14 years before them; the dataset's own count is 14); no renunciation of other citizenships required; a citizen keeps it on taking another. Reforms after that date are checked in the file's later sources, where a later source is given. Citizenship at birth is read from the same dataset's 2024 coding of modes A01a (descent, born in country: No provision), A01b (descent, born abroad: Generally applicable provision), A02a (birth in country: Generally applicable provision) and A02b (birth in country to a parent born there: No provision), as its codebook (RSC/GLOBALCIT 2025/01, sections 3.2.1a to 3.2.2b) defines them: by birth in the territory unconditionally; by descent from either parent, with no further limit on a child born abroad (the dataset codes no separate descent rule for a child born in the country, birth there giving it; the parent's sex is read from mode A01b). Changes to the law at birth after 1 January 2024 weren't checked for this file. On 2026-11-03 the primary was read: Saint Christopher and Nevis Citizenship Act, Cap. 1.05, Revised Edition showing the law as at 31 December 2020 (Law Commission), Second Schedule para. 1; Saint Christopher and Nevis Citizenship Act, Cap. 1.05, s. 7(1). It confirmed the years of residence, renunciation and loss on taking another citizenship. It was silent on birth in the territory and descent, which still rest on the sources above, re-read that day and found the same.",
+ "sources": [
+  {
+   "url": "https://cadmus.eui.eu/bitstreams/3b166501-e695-48d7-9e27-d7bef061573a/download",
+   "title": "GLOBALCIT Citizenship Law Dataset v3.0 (Vink, van der Baaren, Bauböck, Dzankic, Honohan, Manby; EUI Research Data, 2025), country-year-mode files, Saint Kitts and Nevis, 2024",
+   "read": "2026-11-03",
+   "kind": "secondary",
+   "quotes": "https://globalcit.eu/national-citizenship-laws/",
+   "said": "Person has been resident in St Kitts for 12 months immediately prior to the application (unless person is a British protected person), as well as for 14 years predating the 12-month period. intent to reside in St Kitts required. ... n.a. ... n.a. ... No provision ... Generally applicable provision ... Person is the child of a citizen (registration required). ... Generally applicable provision ... Person is born in St Kitts. Unless born to a foreign diplomat and neither parent is a citizen, or one of the parents is an enemy alien and child is born in a place then under occupation by the enemy. ... No provision"
+  },
+  {
+   "url": "https://lawcommission.gov.kn/wp-content/documents/Revised-Acts-of-St-Kitts-and-Nevis/Revised-Acts-of-St-Kitts-and-Nevis-2020/Ch-01_05-Saint-Christopher-and-Nevis-Citizenship-Act.pdf",
+   "title": "Saint Christopher and Nevis Citizenship Act, Cap. 1.05, Revised Edition showing the law as at 31 December 2020 (Law Commission), Second Schedule para. 1",
+   "read": "2026-11-03",
+   "kind": "primary",
+   "said": "1. Subject to paragraph 2, the qualifications for naturalisation of an alien who applies therefor are— (a) that he or she has resided in Saint Christopher and Nevis throughout the period of twelve months immediately preceding the date of the application; (b) that during the fourteen years immediately preceding the said period of twelve months he or she has resided in Saint Christopher and Nevis; (c) that he or she is in the opinion of the Minister of good character; and (d) that he or she intends in the event of a certificate being granted to him or her to reside in Saint Christopher and Nevis."
+  },
+  {
+   "url": "https://lawcommission.gov.kn/wp-content/documents/Revised-Acts-of-St-Kitts-and-Nevis/Revised-Acts-of-St-Kitts-and-Nevis-2020/Ch-01_05-Saint-Christopher-and-Nevis-Citizenship-Act.pdf",
+   "title": "Saint Christopher and Nevis Citizenship Act, Cap. 1.05, s. 7(1)",
+   "read": "2026-11-03",
+   "kind": "primary",
+   "said": "7. (1) Any citizen of Saint Christopher and Nevis who has attained eighteen years and who— (a) is also a citizen or national of any other country; or (b) intends to become a citizen or national of any other country, shall be entitled to renounce his or her citizenship of Saint Christopher and Nevis by a declaration made in such manner as may be prescribed"
+  }
+ ],
+ "atBirth": {
+  "soil": "unconditional",
+  "descent": "either parent"
+ }
+}

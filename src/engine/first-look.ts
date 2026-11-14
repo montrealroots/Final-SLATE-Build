@@ -59,6 +59,8 @@ export const scopeOf = (t: FirstLookTerms): 'film' | 'television' => t.scope ?? 
 const formatsOf = (scope: 'film' | 'television') => (scope === 'television' ? TV_FORMATS : FILM_FORMATS);
 export interface FirstLook {
   id: string;
+  /** Who its overhead is paid to: the company, for a deal signed while the player had one (save version 11); else you. */
+  payee?: 'company';
   company: string;
   name: string;
   status: 'offered' | 'active' | 'declined' | 'lapsed' | 'ended' | 'ended-early';
@@ -326,7 +328,9 @@ export function endFirstLook(state: GameState, id: string): void {
 function payOverhead(state: GameState, fl: FirstLook, month: number): void {
   const label = `Overhead From ${fl.name}, Month ${month}`;
   const key = `first-look:${fl.id}:${month}`;
-  if (state.company) postCompany(state, 'overhead', fl.terms.overhead, label, key);
+  // Paid to the company only under a deal signed while the company held it (cash/migrate11.ts `payee`): the company left
+  // play on November 14, 2026, and a deal made since pays you. No signed deal's payee is rewritten.
+  if (fl.payee === 'company' && state.company) postCompany(state, 'overhead', fl.terms.overhead, label, key);
   else postPersonal(state, 'overhead', fl.terms.overhead, label, key);
   if (month < fl.terms.months) schedule(state, state.now + MONTH, 'first-look-overhead', { id: fl.id, month: month + 1 }, { attention: 'silent', priority: 60, id: `fl-oh:${fl.id}:${month + 1}` });
 }

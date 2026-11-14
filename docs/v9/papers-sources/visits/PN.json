@@ -1,0 +1,18 @@
+{
+ "country": "PN",
+ "rules": [],
+ "others": {
+  "entry": "arrival",
+  "days": 14
+ },
+ "note": "The Pitcairn Islands: every visitor staying 14 days or less, arriving and leaving on the same vessel, may get a short-term visitor visa from the immigration officer on arrival, with no application beforehand; longer, working or business visits need a long-term visa applied for before travelling (not modelled). Read on 2026-11-03 from the Government's own immigration page, which corrected Wikipedia's copy, read before, on the form (a visa given on arrival, not no visa).",
+ "sources": [
+  {
+   "url": "https://www.government.pn/immigration",
+   "title": "Government of the Pitcairn Islands: Immigration",
+   "read": "2026-11-03",
+   "kind": "primary",
+   "said": "Visiting Pitcairn for 14 days or less? If you wish to visit Pitcairn for a period of 14 days or less, and will be travelling to and departing from Pitcairn on the same vessel, you may be eligible for a short-term visitor visa, which you can apply for on arrival at Pitcairn. ... Applications for short-term visitor visas are made to an immigration officer on arrival at Pitcairn through completion of the combined immigration and biosecurity declaration form (given out on arrival). You do not need to apply in advance of travel. ... Visiting Pitcairn for more than 14 days? If you wish to visit Pitcairn for a period of more than 14 days, you will need to obtain a long-term visitor visa before travelling."
+  }
+ ]
+}

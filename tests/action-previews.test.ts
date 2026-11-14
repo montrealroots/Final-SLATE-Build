@@ -12,10 +12,9 @@ import { describe, expect, it } from 'vitest';
 
 const LOG = 'The result is written to Recent Updates on Home and the project log.';
 const ACTIONS: Record<string, { preview: string; outcome: string }> = {
-  applyForPermit: { preview: "Your Papers on Profile says, for the country chosen, why you can't work there yet, the route to apply by, and how long it takes to decide (or that the game takes 30 days where the record has none), before Apply For The Permit.", outcome: `${LOG} Your Permits lists it as Being Decided with its date, then Granted until its expiry.` },
-  applyForCompany: { preview: "Your Company on Profile says what applying costs, that the registry answers in five business days, and that nothing moves into the company until then, before Apply To Register; a refusal says why under the button.", outcome: `${LOG} The card says it is waiting for the registry, then shows the registered company and its account, or the registry's reason for refusing it.` },
-  applyForAccount: { preview: "Open An Account on Profile names the product, its fee as recorded (an unrecorded one says so), its transfer fee and how sure the record is, before Apply; a product you can't hold says why under the button.", outcome: `${LOG} Your Accounts shows it as Applied For, then Open with the day its charges fall, or Closed with the bank's reason.` },
-  transferBetween: { preview: 'Move Money on Profile says the transfer fee under the amount (or that it isn\'t recorded), and that the money is held at once and settles the next business day.', outcome: `${LOG} The sender's Held and the receiver's On Its Way In show it until it settles; both statements list it after.` },
+  applyForVisa: { preview: 'Visiting And Working on Your Papers names the visa, its fee, its days to decide and how long it lasts, the passport it needs, and its source, or that the figures are the game\'s estimate, before Apply And Pay The Fee.', outcome: 'What You Applied For lists it, being decided by its date; the fee is a line in your bank\'s statement; the log says when it is issued.' },
+  applyForPermit: { preview: 'Working on Your Papers lists each kind of work with its permit\'s fee, its days to decide and how long it lasts, the passport it needs, and its source or that the figures are the game\'s estimate, before Apply And Pay The Fee.', outcome: 'What You Applied For lists it, being decided by its date; the fee is a line in your bank\'s statement; once issued, Working says that kind of work is allowed until it expires.' },
+  applyForRecordedPassport: { preview: 'Your Passports on Your Papers lists each route with its fee, its time and its years, marking each the game estimates, before Apply.', outcome: 'Your Passports lists it as applied for, ready by its date; the fee is a line in your bank\'s statement; the log says when it is ready.' },
   applyWorldRefresh: { preview: "Settings, Your Story's World: See What Would Change lists each series and what taking the newer records would change, before anything does.", outcome: 'A status line says it was done and where the copy of the game from before is kept.' },
   approachAgent: { preview: "Find An Agent on the Profile page says what each agent needs to see, how they would answer on today's record, their commission and where they stand aside, and that an approach is answered in about three days.", outcome: `${LOG} The Representation card shows the approach and the day the answer is due, then the answer with its reason.` },
   declineMandate: { preview: "The Representation card shows the agent's offer with every term, and Decline beside Sign.", outcome: `${LOG} The card goes back to Find An Agent.` },
@@ -45,7 +44,6 @@ const ACTIONS: Record<string, { preview: string; outcome: string }> = {
   releaseYourself: { preview: 'Each route you run yourself lists every cost first, each one paid when booked or on release.', outcome: 'The release is booked on the plan\'s date and listed under Release History with its route; what is paid now leaves the budget at once, the rest on release, and its reports come under Earnings.' },
   acceptFirstLook: { preview: "Profile, First-Look Deal lists every term before you accept: the months it runs, the monthly overhead and where it is paid, what it covers, the studio's days to answer, the development fund and how it ends.", outcome: "The deal runs from today: the first month's overhead arrives in your company's account or your own, and the card shows the end date, the development money left and what you have submitted." },
   askMoreOverhead: { preview: 'The button names the monthly overhead it asks for, half as much again as offered.', outcome: "The card says when the studio answers; a week later the log and the card say whether it agreed, and the offer's overhead is the answer." },
-  takeToCompany: { preview: "Your company's card on a delivered project's Budget page names on each button how much income, and how much unspent money, can go to the company.", outcome: "The money leaves the project as a Moved To line and arrives in the company's account; Profile, Your Company lists it under Back From Projects, and the project's take-home falls by as much." },
   takeHome: { preview: 'The Your Own Account card on a delivered project says how much income and how much of your own unspent money it can send home, on each button.', outcome: 'The money leaves the project as a Taken Home line and arrives in your account; Profile, Your Money lists it as taken home, and a family investment\'s share as theirs.' },
   acceptCounter: { preview: 'The hire row shows the rate they asked for and until when.', outcome: LOG },
   acceptDeal: { preview: 'Accept These Terms? lists the amount and every term.', outcome: LOG },
@@ -99,7 +97,9 @@ const NOT_ACTIONS = new Set(['commit', 'newGame', 'scheduleChangeEffects']); // 
 
 function spendingActions(): string[] {
   const files: string[] = [];
-  const walk = (d: string) => { for (const f of readdirSync(d)) { const p = `${d}/${f}`; if (statSync(p).isDirectory()) walk(p); else if (p.endsWith('.ts')) files.push(p); } };
+  // The bank (src/engine/bankworld, 1221's engine from November 14, 2026) is left out: its own names (schedule, post) mean
+  // other things than SLATE's, and every bank action is a command its screens run, which say their costs as 1221's did.
+  const walk = (d: string) => { for (const f of readdirSync(d)) { const p = `${d}/${f}`; if (p === 'src/engine/bankworld') continue; if (statSync(p).isDirectory()) walk(p); else if (p.endsWith('.ts')) files.push(p); } };
   walk('src/engine');
   const calls = new Map<string, Set<string>>();
   const exported = new Set<string>();
@@ -131,7 +131,7 @@ function spendingActions(): string[] {
     changed = false;
     for (const [n, set] of calls) if (!spends.has(n) && [...set].some((x) => spends.has(x))) { spends.add(n); changed = true; }
   }
-  const ui = readdirSync('src/ui').map((f) => readFileSync(`src/ui/${f}`, 'utf8')).join('\n');
+  const ui = readdirSync('src/ui').filter((f) => /\.tsx?$/.test(f)).map((f) => readFileSync(`src/ui/${f}`, 'utf8')).join('\n');
   return [...calls.keys()].filter((n) => spends.has(n) && exported.has(n) && !NOT_ACTIONS.has(n) && new RegExp(`\\b${n}\\(`).test(ui)).sort();
 }
 

@@ -1,0 +1,21 @@
+{
+ "country": "MZ",
+ "years": 10,
+ "renounce": false,
+ "lapses": false,
+ "note": "GLOBALCIT's Citizenship Law Dataset v3.0 (EUI, 2025), coding the law in force on 1 January 2024 (A06a Const 27; A06b Const 27; L05 No provision): ordinary naturalisation after 10 years' residence; no renunciation of other citizenships required; a citizen keeps it on taking another. Reforms after that date are checked in the file's later sources, where a later source is given. Citizenship at birth is read from the same dataset's 2024 coding of modes A01a (descent, born in country: No provision), A01b (descent, born abroad: Generational transmission restriction: conditional on birthplace/place of residence /mode under which parent acquired citizenship), A02a (birth in country: Generally applicable provision) and A02b (birth in country to a parent born there: Generally applicable provision), as its codebook (RSC/GLOBALCIT 2025/01, sections 3.2.1a to 3.2.2b) defines them: by birth in the territory unconditionally; by descent from either parent, a child born abroad on the limit the dataset states (the dataset codes no separate descent rule for a child born in the country, birth there giving it; the parent's sex is read from mode A01b). Changes to the law at birth after 1 January 2024 weren't checked for this file. On 2026-11-03 the primary was read: Legislação Básica (Secretariado Geral da Assembleia da República, Moçambique): Constituição da República, Título II Nacionalidade, arts. 23-33, pp. 20-24. Every figure the file holds now rests on it, and the dataset is no longer cited.",
+ "sources": [
+  {
+   "url": "https://www.parlamento.mz/wp-content/uploads/2022/08/Legislacao_Basica.pdf",
+   "title": "Legislação Básica (Secretariado Geral da Assembleia da República, Moçambique): Constituição da República, Título II Nacionalidade, arts. 23-33, pp. 20-24",
+   "read": "2026-11-03",
+   "kind": "primary",
+   "said": "Artigo 23 ... 3. São moçambicanos os filhos de pai ou mãe de nacionalidade moçambicana ainda que nascidos em território estrangeiro, desde que expressamente, sendo maiores de dezoito anos de idade, ou pelos seus representantes legais, se forem menores daquela idade, declararem que pretendem ser moçambicanos. Artigo 24 (Princípio da territorialidade) 1. São moçambicanos os cidadãos nascidos em Moçambique após a proclamação da independência. 2. Exceptuam-se os filhos de pai e mãe estrangeiros quando qualquer deles se encontre em Moçambique ao serviço do Estado a que pertence. ... Artigo 27 (Por naturalização) 1. Pode ser concedida a nacionalidade moçambicana por naturalização aos estrangeiros que, à data da apresentação do pedido, reúnam cumulativamente as seguintes condições: a) residam habitual e regularmente há pelo menos dez anos em Moçambique; b) sejam maiores de dezoito anos; c) conheçam o português ou uma língua moçambicana; d) possuam capacidade para reger a sua pessoa e assegurar a sua subsistência; e) tenham idoneidade cívica; f) preencham os requisitos e ofereçam as garantias fixadas por lei. ... Artigo 31 (Perda) Perde a nacionalidade moçambicana: a) o que sendo nacional de outro Estado, declare por meios competentes não querer ser moçambicano;"
+  }
+ ],
+ "atBirth": {
+  "soil": "unconditional",
+  "descent": "either parent",
+  "descentAbroad": "Person is child of a citizen working for the Mozambican state.; Person is the child of a citizen and declares through legal representatives or on own behalf, during the year after s/he turns 18, that s/he wishes to be Mozambican."
+ }
+}
