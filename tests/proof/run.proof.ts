@@ -10,8 +10,9 @@ import { PROBES as BANK } from './probes/bank';
 import { PROBES as PAPERS } from './probes/papers';
 import { PROBES as SCRIPT } from './probes/script';
 import { PROBES as PROJECT } from './probes/project';
+import { PROBES as CAREER_WIDE } from './probes/career-wide';
 
-const ALL = [...CORE, ...PRODUCTION, ...RELEASE, ...AWARDS, ...BANK, ...PAPERS, ...SCRIPT, ...PROJECT];
+const ALL = [...CORE, ...PRODUCTION, ...RELEASE, ...AWARDS, ...BANK, ...PAPERS, ...SCRIPT, ...PROJECT, ...CAREER_WIDE];
 const pick = process.env.PROBES?.split(',');
 const seeds = process.env.SEEDS ? Number(process.env.SEEDS) : undefined;
 
