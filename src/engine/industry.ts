@@ -12,7 +12,7 @@
 import { stream } from './rng';
 import { registerHandler, schedule } from './state';
 import { DAY, addDaysToKey } from './time';
-import { snapshotStudios, type StudioProfile } from './studios';
+import { snapshotStudios, withSeriesRecord, type StudioProfile } from './studios';
 import type { GameState } from './types';
 
 export interface SeasonFact { n: number; eps: number; dated: number; d0: string; d1: string | null; gap: number; drop: 0 | 1; offs?: number[] }
@@ -307,12 +307,14 @@ export function ensureIndustry(state: GameState): boolean {
   if (state.industry) {
     let changed = false;
     // A save whose world began before studios kept releasing takes their pace now, once.
-    if (!state.industry.studios && WORLD.studios) { state.industry.studios = snapshotStudios(WORLD.studios); changed = true; }
+    if (!state.industry.studios && WORLD.studios) { state.industry.studios = withSeriesRecord(snapshotStudios(WORLD.studios), WORLD.series); changed = true; }
+    // A save whose studios were kept before their television record was (November 14, 2026) takes it now, once.
+    else if (state.industry.studios?.length && !state.industry.studios.some((x) => x.tv) && WORLD.series.length) { state.industry.studios = withSeriesRecord(state.industry.studios, WORLD.series); changed = true; }
     // A save whose world began before a series' inputs were frozen takes them now, from the seasons it began with.
     for (const [ref, sim] of Object.entries(state.industry.series)) if (takeProfile(state, ref, sim)) changed = true;
     return changed;
   }
-  state.industry = { horizon: WORLD.horizon, builtAt: WORLD.builtAt, from: WORLD.from ?? WORLD.horizon, series: {}, ...(WORLD.studios ? { studios: snapshotStudios(WORLD.studios) } : {}) };
+  state.industry = { horizon: WORLD.horizon, builtAt: WORLD.builtAt, from: WORLD.from ?? WORLD.horizon, series: {}, ...(WORLD.studios ? { studios: withSeriesRecord(snapshotStudios(WORLD.studios), WORLD.series) } : {}) };
   for (const p of WORLD.series) {
     const sim: SimSeries = { seasons: [], outcomes: [], closed: false, rec: p.seasons.at(-1)?.n ?? 0, p: freezeSeries(p, WORLD.horizon) };
     state.industry.series[p.r] = sim;

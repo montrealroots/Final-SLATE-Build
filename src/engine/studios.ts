@@ -24,6 +24,12 @@ export interface StudioProfile {
   ann: Record<string, number>;
   /** The studio's latest dated film. */
   last?: string;
+  /**
+   * Its television record: how many of the series the world follows credit it, and their genres (TMDB's TV genre names).
+   * Kept once, when the save's world starts or first loads a catalog with series (from November 14, 2026), so a later
+   * catalog doesn't change who would offer a television deal. A studio no series credits has n 0.
+   */
+  tv?: { n: number; g: [string, number][] };
 }
 
 /** A film the save's world released: invented, labelled simulated wherever it appears. */
@@ -63,8 +69,24 @@ function weighted<T>(r: () => number, items: [T, number][]): T {
 
 /** The pace kept in the save, once: from the world file when the save's world starts (industry.ts ensureIndustry). */
 export function snapshotStudios(profiles: StudioProfile[] | undefined): StudioProfile[] {
-  return (profiles ?? []).map((p) => ({ c: p.c, ...(p.name ? { name: p.name } : {}), n: p.n, g: p.g.map(([g, w]) => [g, w] as [string, number]), m: [...p.m], ann: { ...p.ann }, ...(p.last ? { last: p.last } : {}) }));
+  return (profiles ?? []).map((p) => ({ c: p.c, ...(p.name ? { name: p.name } : {}), n: p.n, g: p.g.map(([g, w]) => [g, w] as [string, number]), m: [...p.m], ann: { ...p.ann }, ...(p.last ? { last: p.last } : {}), ...(p.tv ? { tv: { n: p.tv.n, g: p.tv.g.map(([g, w]) => [g, w] as [string, number]) } } : {}) }));
 }
+
+/** Each studio's television record from the series the world follows (their `ci` and genres), most credited first. */
+export function withSeriesRecord(profiles: StudioProfile[], series: { ci: string[]; genres: string[] }[]): StudioProfile[] {
+  return profiles.map((p) => {
+    const mine = series.filter((x) => x.ci.includes(p.c));
+    const genres = new Map<string, number>();
+    for (const x of mine) for (const g of x.genres) genres.set(g, (genres.get(g) ?? 0) + 1);
+    return { ...p, tv: { n: mine.length, g: [...genres].sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0])).slice(0, 8) } };
+  });
+}
+
+/**
+ * The studio as a maker of series, for a television first-look deal: its series in place of its films. Null where no
+ * series the world follows credits it, or the save kept no television record. Its `n` is a count of series, not a pace.
+ */
+export const asTelevision = (p: StudioProfile): StudioProfile | null => (p.tv?.n ? { ...p, n: p.tv.n, g: p.tv.g } : null);
 
 const cache = new Map<string, StudioFilm[]>();
 

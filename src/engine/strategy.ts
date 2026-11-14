@@ -100,10 +100,12 @@ export function fitWeight(p: StudioProfile, families: string[], medium: Medium):
 
 /** SLATE's genre families (genres.ts GenreRecord.parent, lowercased with hyphens) as TMDB's genre names. */
 export const FAMILY_AS_RECORDED: Record<string, string[]> = {
-  action: ['Action'], adventure: ['Adventure'], animation: ['Animation'], comedy: ['Comedy'], crime: ['Crime'], documentary: ['Documentary'],
-  drama: ['Drama', 'History'], family: ['Family'], fantasy: ['Fantasy'], horror: ['Horror'], musical: ['Music'], romance: ['Romance'],
-  'science-fiction': ['Science Fiction'], suspense: ['Mystery'], thriller: ['Thriller'], war: ['War'], western: ['Western'],
+  action: ['Action', 'Action & Adventure'], adventure: ['Adventure', 'Action & Adventure'], animation: ['Animation'], comedy: ['Comedy'], crime: ['Crime'], documentary: ['Documentary'],
+  drama: ['Drama', 'History'], family: ['Family', 'Kids'], fantasy: ['Fantasy', 'Sci-Fi & Fantasy'], horror: ['Horror'], musical: ['Music'], romance: ['Romance'],
+  'science-fiction': ['Science Fiction', 'Sci-Fi & Fantasy'], suspense: ['Mystery'], thriller: ['Thriller'], war: ['War', 'War & Politics'], western: ['Western'],
 };
+// TMDB's TV genre names (Action & Adventure, Kids, Sci-Fi & Fantasy, War & Politics) are in the lists above from November
+// 14, 2026, for a company's television record (studios.ts asTelevision). No film record carries them, so no film read changed.
 export const familyKey = (parent: string): string => parent.trim().toLowerCase().replace(/[^a-z]+/g, '-');
 
 export interface PitchInput {
@@ -123,7 +125,10 @@ export interface PitchInput {
   deliveredForThem: number;
   brokenWithThem: number;
   year: number;
-  room: { capacity: number; taken: number; room: number };
+  /** Room on its slate for the year. Absent for a series: no yearly slate of series is modelled, so none is weighed. */
+  room?: { capacity: number; taken: number; room: number };
+  /** Read as a maker of series, on its television record (a television first-look deal): its words say series. */
+  television?: boolean;
   /** Another followed studio whose record fits the medium better, for a pass that names a route. */
   betterFit?: string;
   /** The project is a film this studio's running first-look deal covers: a short is one, so its format doesn't rule it out. */
@@ -154,11 +159,16 @@ export function pitchRead(s: StudioStrategy, x: PitchInput): PitchRead {
   const pros: string[] = [];
   const cons: string[] = [];
   const pass = (why: string, next: string): PitchRead => ({ verdict: 'pass', score: 0, for: pros, against: [why, ...cons], next });
+  const one = x.television ? 'series' : 'film';
+  const many = x.television ? 'series' : 'films';
+  const credits = x.television ? 'the genre credits on its series' : 'its genre credits';
 
   // 1. The kind of work. Its record here is feature films, but a first-look deal covers every film, a short included
   // (first-look.ts covers), and was offered for delivered work that can be one: under the deal, the rest is weighed
   // (the owner, November 13, 2026; until then the deal's own studio would pass on a covered short for being one).
-  if (!FILM_FORMATS.has(x.format) && x.firstLook) pros.push(`Your first-look deal with it covers this ${x.formatLabel.toLowerCase()}.`);
+  // Read on its series (a television deal), a series is what its record is of, and no film format check applies.
+  if (x.television) { if (x.firstLook) pros.push(`Your first-look deal with it covers this ${x.formatLabel.toLowerCase()}.`); }
+  else if (!FILM_FORMATS.has(x.format) && x.firstLook) pros.push(`Your first-look deal with it covers this ${x.formatLabel.toLowerCase()}.`);
   else if (!FILM_FORMATS.has(x.format)) {
     return pass(`${s.name}'s record here is feature films. A ${x.formatLabel.toLowerCase()} isn't something it takes on.`,
       'A commissioner, a festival run or releasing it yourself is the route for this one.');
@@ -173,11 +183,11 @@ export function pitchRead(s: StudioStrategy, x: PitchInput): PitchRead {
       x.betterFit ? `${x.betterFit}'s record is the nearer fit for it.` : 'A studio whose record is live action is the fit for this one.');
   }
   // 3. Room on the slate for the year it would come out.
-  if (x.room.room <= 0) {
+  if (x.room && x.room.room <= 0) {
     return pass(`Its slate for ${x.year} is full: it carries about ${x.room.capacity} ${x.room.capacity === 1 ? 'film' : 'films'} a year, and ${x.room.taken} ${x.room.taken === 1 ? 'is' : 'are'} dated or in work.`,
       `Its slate for ${x.year + 1} may have room: ask again with a draft approved then.`);
   }
-  pros.push(`Its slate for ${x.year} has room for ${x.room.room} more.`);
+  if (x.room) pros.push(`Its slate for ${x.year} has room for ${x.room.room} more.`);
 
   // 4. What it makes: the project's families against its record.
   const names = [...new Set(x.families.flatMap((f) => FAMILY_AS_RECORDED[f] ?? []))];
@@ -187,12 +197,12 @@ export function pitchRead(s: StudioStrategy, x: PitchInput): PitchRead {
     share = Math.max(share, 0.15);
     pros.push('Its record is too thin to say what it won\'t make, so the genre counts neither for nor against.');
   } else if (matched.length) {
-    pros.push(`It makes this kind of film: ${matched.slice(0, 3).map((f) => `${f.genre} is ${pct(f.share)} of its genre credits`).join(', ')}.`);
+    pros.push(`It makes this kind of ${one}: ${matched.slice(0, 3).map((f) => `${f.genre} is ${pct(f.share)} of ${credits}`).join(', ')}.`);
   } else if (x.families.includes('documentary')) {
     share = 0.1; // few documentaries credited isn't the same as no interest
     pros.push('Few documentaries are credited to it, which isn\'t the same as no interest.');
   } else {
-    cons.push(`Nothing like it is in its record: its films are mostly ${s.families.slice(0, 3).map((f) => f.genre).join(', ') || 'unrecorded'}.`);
+    cons.push(`Nothing like it is in its record: its ${many} are mostly ${s.families.slice(0, 3).map((f) => f.genre).join(', ') || 'unrecorded'}.`);
   }
   const fit = 40 * Math.min(1, share / 0.3);
   // 5. The medium, where it didn't rule the pitch out.
@@ -205,14 +215,14 @@ export function pitchRead(s: StudioStrategy, x: PitchInput): PitchRead {
   let record = x.works === 0 ? 0 : x.works === 1 ? 8 : 12;
   if (x.reception !== null) record += Math.max(-8, Math.min(8, Math.round((x.reception - 55) / 4)));
   record += Math.min(10, x.wins * 5);
-  if (x.works === 0) cons.push('You haven\'t delivered a film yet.');
+  if (x.works === 0) cons.push(`You haven't delivered a ${one} yet.`);
   else if (x.reception !== null && x.reception >= 65) pros.push('Your delivered work was well received.');
   else if (x.reception !== null && x.reception < 50) cons.push('Your delivered work was coolly received.');
   if (x.wins) pros.push(`Your work has won ${x.wins === 1 ? 'an award' : `${x.wins} awards`}.`);
   // 8. Your history with this studio.
   const history = Math.min(10, x.deliveredForThem * 8) - x.brokenWithThem * 15;
-  if (x.deliveredForThem) pros.push(`You delivered ${x.deliveredForThem === 1 ? 'a film' : `${x.deliveredForThem} films`} it backed.`);
-  if (x.brokenWithThem) cons.push('A film it backed wasn\'t delivered in time.');
+  if (x.deliveredForThem) pros.push(`You delivered ${x.deliveredForThem === 1 ? `a ${one}` : `${x.deliveredForThem} ${many}`} it backed.`);
+  if (x.brokenWithThem) cons.push(`A ${one} it backed wasn't delivered in time.`);
 
   const score = Math.max(0, Math.min(100, Math.round(fit + medium + script + record + history)));
   if (score >= WANT) {
@@ -221,10 +231,10 @@ export function pitchRead(s: StudioStrategy, x: PitchInput): PitchRead {
       : { verdict: 'offer', score, for: pros, against: cons, next: '' };
   }
   if (score >= NOTES) {
-    const next = fit < 20 ? 'It would read a film nearer to what it makes.' : x.script < 70 ? 'It would read a new approved draft with the open notes dealt with.' : x.works === 0 ? 'It would read this again once you have delivered a film.' : 'It would read a new approved draft.';
+    const next = fit < 20 ? `It would read a ${one} nearer to what it makes.` : x.script < 70 ? 'It would read a new approved draft with the open notes dealt with.' : x.works === 0 ? 'It would read this again once you have delivered a film.' : 'It would read a new approved draft.';
     return { verdict: 'notes', score, for: pros, against: cons, next };
   }
-  return { verdict: 'pass', score, for: pros, against: cons.length ? cons : ['It didn\'t see this as one of its films.'], next: 'Another studio, or another backer, is the route for this one.' };
+  return { verdict: 'pass', score, for: pros, against: cons.length ? cons : [`It didn't see this as one of its ${many}.`], next: 'Another studio, or another backer, is the route for this one.' };
 }
 
 /** Where a studio releases a film it backs, home first: modeled from its reach. */

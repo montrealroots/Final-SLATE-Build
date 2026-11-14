@@ -29,7 +29,8 @@ import { postPersonal } from './personal';
 import { FILM_FORMATS, TV_FORMATS } from './blueprints';
 import { ANIMATION_HOUSE, fitWeight, strategyOf, type StudioStrategy } from './strategy';
 import { addLog, cancelEvents, newId, registerHandler, schedule } from './state';
-import { DAY } from './time';
+import { DAY, formatDateKey } from './time';
+import { asTelevision, type StudioProfile } from './studios';
 import type { FinanceDeal, GameState, Project } from './types';
 
 export interface FirstLookTerms {
@@ -86,8 +87,9 @@ const MONTH = 30 * DAY;
 
 /** The terms a studio's recorded scale gives. Game calibration, by scale, not any studio's real terms. */
 export function firstLookTerms(s: StudioStrategy, scope: 'film' | 'television' = 'film'): FirstLookTerms {
-  const big = s.pace >= 8;
-  const mid = s.pace >= 3;
+  // A film studio's scale is its films a year; a television deal's, the series the world follows that credit it.
+  const big = scope === 'television' ? s.pace >= 30 : s.pace >= 8;
+  const mid = scope === 'television' ? s.pace >= 10 : s.pace >= 3;
   return {
     months: big ? 24 : 12, considerDays: big ? 90 : mid ? 60 : 30,
     overhead: big ? 6_000 : mid ? 3_500 : 1_500, fund: big ? 100_000 : mid ? 50_000 : 25_000,
@@ -139,7 +141,8 @@ export function firstLookHold(state: GameState, p: Project, company: string): st
   if (s.stage === 'taken') return `${s.fl.name} took it under your first-look deal.`;
   return '';
 }
-const dateOf = (t: number) => new Date(t).toISOString().slice(0, 10);
+// Written out, as the rest of the game writes dates (until November 14, 2026 these were ISO keys).
+const dateOf = (t: number) => formatDateKey(new Date(t).toISOString().slice(0, 10));
 
 /**
  * Why a commissioner can't be approached for this series now, because of a television first look, or ''. The deal's
@@ -180,7 +183,11 @@ export function firstLookCandidate(state: GameState, scope: 'film' | 'television
   if (!works.length) return null;
   // A studio declined or let lapse in the last year doesn't ask again yet.
   const recent = new Set(firstLooks(state).filter((x) => (x.status === 'declined' || x.status === 'lapsed') && state.now - x.answerBy < 365 * DAY).map((x) => x.company));
-  const best = (state.industry?.studios ?? []).filter((x) => x.name && !recent.has(x.c)).map((profile) => {
+  // A television deal comes only from a company the series the world follows credit, read on those series; until
+  // November 14, 2026 it was read on the company's films, so a film-only studio could offer one, and a company with a few
+  // films a year (HBO) counted as too thin to read and won on the alphabet.
+  const pool = (state.industry?.studios ?? []).filter((x) => x.name && !recent.has(x.c)).map((x) => (scope === 'television' ? asTelevision(x) : x)).filter((x): x is StudioProfile => !!x);
+  const best = pool.map((profile) => {
     const fit = works.reduce((a, p) => a + fitWeight(profile, projectFamilies(p), p.axes.medium), 0) / works.length;
     return { profile, fit };
   }).filter((x) => x.fit >= FIRST_LOOK_FIT).sort((a, b) => b.fit - a.fit || a.profile.c.localeCompare(b.profile.c))[0];
