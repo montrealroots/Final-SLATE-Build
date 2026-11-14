@@ -17,7 +17,7 @@ export const withAgent = (agentId: string) => (s: GameState) => {
   if (r?.approaches.some((a) => a.status === 'asked')) return;
   try { approachAgent(s, agentId); } catch { /* not yet: a script to show first */ }
 };
-const answerFirstLooks = (how: 'accept' | 'decline' | 'ask' | 'accept-then-end') => (s: GameState) => {
+export const answerFirstLooks = (how: 'accept' | 'decline' | 'ask' | 'accept-then-end') => (s: GameState) => {
   for (const fl of firstLooks(s)) {
     if (fl.status === 'active' && how === 'accept-then-end' && s.now - (fl.startsAt ?? s.now) > 90 * DAY) endFirstLook(s, fl.id);
     if (fl.status !== 'offered') continue;
@@ -66,7 +66,8 @@ export const PROBES: Probe[] = [
     // Measured by the day the film is delivered: the career's daysToDeliver counts from the shoot, after the shelf (until
     // November 14, 2026 this probe looked there and saw 3.5 days).
     seeds: 60, reads: ['src/engine/shelve.ts#shelveProject', 'src/engine/shelve.ts#resumeProject'], variant: { decide: shelveTwoMonths },
-    // The first film, the one shelved: an average over both years counted a film not delivered as day zero.
-    measure: (_s, projects) => ({ deliveredDay: projects[0]?.delivered ? Math.round(projects[0].delivered.at / 86_400_000) : 0 }),
+    // The first film, the one shelved; one not delivered counts as the career's last day (an average over both years
+    // counted it as day zero, which swamped the two months).
+    measure: (s, projects) => ({ deliveredDay: Math.round((projects[0]?.delivered?.at ?? s.now) / 86_400_000) }),
     bites: ['deliveredDay'], downstream: ['revenue', 'money', 'released', 'gross'] },
 ];

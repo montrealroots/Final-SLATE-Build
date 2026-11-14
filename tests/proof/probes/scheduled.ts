@@ -8,6 +8,9 @@ import { bankMeasures } from './bank';
 import { firstLooks } from '../../../src/engine/first-look';
 import { industryStanding } from '../../../src/engine/productions';
 import { scheduled } from '../register';
+import { STUDIOS, answerFirstLooks } from './career-wide';
+import { answer as answerOpportunities } from './opportunities';
+import { personalPostings } from '../../../src/engine/personal';
 
 /** Where each kind's handler is, so a proof reads (and is hashed against) the system it switches off. */
 const HANDLER = Object.fromEntries(scheduled().map((f) => [f.name, f.module]));
@@ -31,6 +34,8 @@ const measure = (s: GameState, projects: Project[]) => {
     industryStanding: industryStanding(s),
     productionsChanged: (s.productions ?? []).filter((p) => p.cancelled || (p.delayedDays ?? 0) > 0).length,
     jobsCancelled: (s.jobs ?? []).filter((j) => j.status === 'cancelled').length,
+    overheadPaid: personalPostings(s).filter((x) => x.kind === 'overhead').reduce((a, x) => a + x.amount, 0),
+    commissioned: (s.opportunities ?? []).filter((o) => (o as { status?: string }).status === 'accepted').length,
     productionResults: Object.values(s.productions ?? {}).filter((p) => (p as { result?: unknown }).result).length,
   };
 };
@@ -67,9 +72,13 @@ export const PROBES: Probe[] = [
   off('job-lapse', 'unanswered outside work lapsing', ['openOffers'], ['jobsOffered'], { takeJobs: false }),
   // One in twenty productions is cancelled before it shoots and one in ten put back (productions.ts): rare, so 100 careers of three years.
   { ...off('production-confirm', 'industry productions being confirmed, cancelled or put back', ['productionsChanged'], ['jobsDone', 'jobPay', 'jobsCancelled'], { years: 3 }), seeds: 100 },
-  { ...off('production-release', 'industry productions coming out', ['productionResults', 'industryStanding'], ['jobsOffered', 'jobPay'], { years: 3 }), seeds: 60 },
-  off('first-look-check', 'companies considering a first-look deal', ['firstLookOffers'], ['money']),
-  off('opportunity', 'opportunities after well-received work', ['opportunities'], ['money', 'delivered']),
+  // A production coming out is a result on your record (productions.ts); standing and offers follow from it.
+  { ...off('production-release', 'industry productions coming out', ['productionResults'], ['industryStanding', 'jobsOffered', 'jobPay'], { years: 3 }), seeds: 60 },
+  // With studios in the world and the player accepting what they offer (until November 14, 2026 this career had no
+  // studios, so nobody could offer and switching the check off changed nothing).
+  off('first-look-check', 'companies considering a first-look deal', ['firstLookOffers'], ['overheadPaid', 'money'], { years: 3, studios: STUDIOS, daily: answerFirstLooks('accept') }),
+  // With the player taking what is offered: an opportunity nobody answers changes nothing (until November 14, 2026).
+  off('opportunity', 'opportunities after well-received work', ['opportunities'], ['commissioned', 'money'], { daily: answerOpportunities('accept') }),
   off('opportunity-expire', 'unanswered opportunities expiring', ['openOpportunities'], ['opportunities']),
   off('finance-decision', 'backers deciding', ['backerIn', 'ownIn'], ['money']),
 ];

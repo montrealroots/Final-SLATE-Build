@@ -4,7 +4,7 @@ import type { Probe } from '../probe';
 import { acceptOpportunity, declineOpportunity } from '../../../src/engine/opportunities';
 import type { GameState } from '../../../src/engine/types';
 
-const answer = (how: 'accept' | 'decline') => (s: GameState) => {
+export const answer = (how: 'accept' | 'decline') => (s: GameState) => {
   for (const o of (s.opportunities ?? []).filter((x) => x.status === 'open' && x.expiresAt > s.now)) {
     if (how === 'accept') acceptOpportunity(s, o.id, `Commissioned ${o.id}`); else declineOpportunity(s, o.id);
   }
