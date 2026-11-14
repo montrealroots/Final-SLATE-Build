@@ -2,7 +2,7 @@
 // approved, offers that take days to be answered, each marked Guide Me on the ledger, the department staffed within the
 // ceiling, and Back To Manual leaving what was sent as it is. The rules are the engine's (tests/guide-me.test.ts).
 import { expect, test } from './test';
-import { addScene, advance, nav, newProject, quickLife, readSavedState, saveAndApprove, section } from './helpers';
+import { addScene, advance, nav, newProject, pinSeed, quickLife, readSavedState, saveAndApprove, section } from './helpers';
 
 test('a department staffed by Guide Me within a ceiling, by offers that take days, and another taken back to manual', async ({ page }) => {
   await quickLife(page, 'gb-london', '2026-02-02');
@@ -101,6 +101,10 @@ test('casting and music by Guide Me: the cast plan read and approved, offers out
 // ceiling, the writers hired, their passes worked day by day, reviewed against the standard and accepted, on screen.
 test('writing by Guide Me: a co-writer\'s rewrite and a script editor\'s polish, commissioned, worked, reviewed and accepted', async ({ page }) => {
   await quickLife(page, 'gb-london', '2026-02-02');
+  // Pinned (November 14, 2026): on an unpinned world CI drew one with no experienced script editor free in the window,
+  // so the plan had one writer (production, desktop), and another where the polish never came (dev, desktop). Both
+  // are the world's to decide, and the engine says so; this journey is about the two passes, so it plays a world with both.
+  await pinSeed(page, Number(process.env.GUIDE_SEED ?? 3));
   await nav(page, 'Projects');
   await newProject(page, { title: 'Harbour Lights', format: 'Short Film', runtime: '12', budget: 'Low Budget' });
   await section(page, 'Characters');
