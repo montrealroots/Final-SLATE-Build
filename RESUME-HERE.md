@@ -29,7 +29,9 @@ each step and acceptance case stands. Done so far:
 - **Step 10, the phone layout.** Phones open in the responsive layout by default.
 - **Step 11 (partly).** `tests/v8-economy.test.ts`.
 
-All of this is on PR #92 (montrealroots/Final-SLATE-Build#92). Merge only after its CI is green on the final head.
+**Merged.** PR #92 (montrealroots/Final-SLATE-Build#92) was squash-merged into `main` on November 14, 2026 as
+`19b566c`, from `9285a73`, with all seven CI jobs green on that commit. `main` was merged back into the branch with
+`-s ours`, since the trees were identical. New work starts a new pull request from this branch.
 
 What is still open is listed row by row in `docs/v8/STATUS.md`. In order of importance:
 1. A14, overall deals.
