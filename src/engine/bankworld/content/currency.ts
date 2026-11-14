@@ -126,8 +126,8 @@ export function exchange(cents: number, from: string, to: string, day: string = 
  * króna (from 2026-10-16: until then every conversion from cents into yen landed on ¥1.50 steps, and an account kept at
  * home at a Japanese bank held half-yen no bank has, its lines on screen, each rounded, not adding to its balance).
  */
-export function exchangeHeld(cents: number, from: string, to: string): number | undefined {
-  const out = exchange(cents, from, to);
+export function exchangeHeld(cents: number, from: string, to: string, day: string = rateDay): number | undefined {
+  const out = exchange(cents, from, to, day);
   return out !== undefined && currencyInfo(to).decimals === 0 ? Math.round(out / 100) * 100 : out;
 }
 

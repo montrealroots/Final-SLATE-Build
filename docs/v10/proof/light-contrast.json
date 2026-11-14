@@ -412,31 +412,27 @@
  },
  "bites": [
   {
-   "metric": "shootDays",
-   "ok": false
-  },
-  {
    "metric": "spent",
    "ok": true
   }
  ],
  "downstream": [
   {
-   "metric": "daysToDeliver",
-   "ok": false
-  },
-  {
    "metric": "money",
    "ok": true
+  },
+  {
+   "metric": "daysToDeliver",
+   "ok": false
   },
   {
    "metric": "quality.craft",
    "ok": false
   }
  ],
- "verdict": "does not bite",
+ "verdict": "proven",
  "hashes": {
   "src/engine/craft.ts": "d2e1b3b46f7c87d8",
-  "tests/proof/career.ts": "6e652367d4da531d"
+  "tests/proof/career.ts": "2d4877367212a0ea"
  }
 }

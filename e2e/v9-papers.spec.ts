@@ -27,7 +27,9 @@ test('Home to Your Papers: a visa applied for and paid, decided on its day, in u
   // Home: the passport in force, and work where you live is the game's assumption, said as one.
   await expect(papersPanel(page)).toContainText('In force to');
   await expect(papersPanel(page)).toContainText('Allowed by the game\'s assumption');
-  const before = Number((await page.locator('.panel, section', { has: page.getByRole('heading', { name: 'Your Bank', exact: true }) }).first().innerText()).match(/Available\s*\$([\d,]+)/)![1].replace(/,/g, ''));
+  // The bank in Mexico City keeps pesos (from November 14, 2026; until then dollars).
+  const pesos = async () => Number((await page.locator('.panel, section', { has: page.getByRole('heading', { name: 'Your Bank', exact: true }) }).first().innerText()).match(/Available\s*MX\$([\d,]+)/)![1].replace(/,/g, ''));
+  const before = await pesos();
 
   await page.getByRole('button', { name: 'Open Your Papers' }).click();
   await expect(page.getByRole('heading', { name: 'Your Papers', level: 1 })).toBeVisible();
@@ -45,8 +47,10 @@ test('Home to Your Papers: a visa applied for and paid, decided on its day, in u
   await expect(page.getByRole('list', { name: 'Your Applications' })).toContainText('Being decided');
   // Paid from the bank, once.
   await nav(page, 'Home');
-  const after = Number((await page.locator('.panel, section', { has: page.getByRole('heading', { name: 'Your Bank', exact: true }) }).first().innerText()).match(/Available\s*\$([\d,]+)/)![1].replace(/,/g, ''));
-  expect(before - after).toBe(185);
+  // $185 in pesos at the day's rate: between 15 and 25 to the dollar, rounded to the peso on Home.
+  const after = await pesos();
+  expect(before - after).toBeGreaterThan(185 * 15);
+  expect(before - after).toBeLessThan(185 * 25);
   await expect(papersPanel(page)).toContainText('One application is being decided.');
   // Five months on, the decision on its recorded day.
   for (let i = 0; i < 6; i++) await advance(page, 'month');

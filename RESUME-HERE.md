@@ -23,6 +23,14 @@ estimate" for figures no source gives. Start at `docs/v10/README.md`.
   destinations researched with sources; the rest estimated and listed (`docs/v10/papers-estimates.json`). Banks for
   Nauru and Niue researched; the five places with no bank bank with their administering country's; the 14 blocked work
   rules modeled. `docs/v9/COVERAGE.md` has no "missing" left.
+- The bank keeps a new life's money in the currency of the country it starts in (the owner: "make it show euros. And
+  for any other country with a different currency"): a life in Paris banks in euros, in London in pounds. SLATE still
+  reasons in dollars; `src/engine/bank.ts` converts at the day's rate where they meet (`toBank`, `fromBank`), and each
+  statement line keeps the dollars it was posted as (`slate:usd:<key>`). A save that banked in dollars keeps them, and a
+  v9 save brought to the bank does too. So a life outside the US carries real currency risk: $25,000,000 held in pounds
+  read about $24.7m in dollars a year on. Tests: `tests/v10-bank-currency.test.ts`; tests that compared dollar balances
+  across months now compare what the bank holds, or the statement. Proof results measured before this banked in
+  dollars: rerun the bank probes before relying on them.
 
 **Next, in order.**
 1. Probes for the remaining actions (about 130), bank commands and fields; careers that reach the unreached event kinds.

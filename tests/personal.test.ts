@@ -53,7 +53,7 @@ describe('your account', () => {
     putInOwnMoney(s, p, Math.min(personalBalance(s), financeSummary(p).stillToRaise));
     const left = personalBalance(s);
     processUntil(s, s.now + 30 * DAY, 'tick', 100000);
-    expect(loanStanding(s)!.repaid).toBe(100 + Math.min(100, left));
+    expect(loanStanding(s)!.repaid).toBe(100 + Math.min(100, Math.floor(left)));
     if (left < 100) expect(s.log.some((l) => /^You couldn't repay your family all that was due this month: \$[\d,]+ is still owed/.test(l.text))).toBe(true);
   });
 

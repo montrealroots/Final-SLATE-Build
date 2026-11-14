@@ -150,7 +150,8 @@ registerHandler('family-repayment', (state, ev) => {
   if (!f || !st || st.owed <= 0) return { suppressInterrupt: true };
   const month = ev.payload.month as number;
   const due = Math.min(st.owed, f.monthly! * month - st.repaid);
-  const pay = Math.max(0, Math.min(due, personalBalance(state)));
+  // Whole dollars, as everything SLATE posts is: a balance held in another currency reads with cents.
+  const pay = Math.max(0, Math.min(due, Math.floor(personalBalance(state))));
   if (pay > 0) postPersonal(state, 'repayment', -pay, `Repaid To Your Family: Month ${month}`, `repayment:${month}`);
   if (pay < due) addLog(state, `You couldn't repay your family all that was due this month: ${money(due - pay)} is still owed, and is due with next month's.`, 'money');
   if (loanStanding(state)!.owed > 0) schedule(state, state.now + 30 * DAY, 'family-repayment', { month: month + 1 }, { attention: 'silent', priority: 60 });

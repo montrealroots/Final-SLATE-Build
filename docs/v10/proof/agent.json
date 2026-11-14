@@ -494,6 +494,6 @@
  "verdict": "proven",
  "hashes": {
   "src/engine/representation.ts": "e360a04b83f11d30",
-  "tests/proof/career.ts": "6e652367d4da531d"
+  "tests/proof/career.ts": "2d4877367212a0ea"
  }
 }

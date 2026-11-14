@@ -433,6 +433,6 @@
  "verdict": "proven",
  "hashes": {
   "src/engine/jobs.ts": "e410110b6cf888e3",
-  "tests/proof/career.ts": "6e652367d4da531d"
+  "tests/proof/career.ts": "2d4877367212a0ea"
  }
 }

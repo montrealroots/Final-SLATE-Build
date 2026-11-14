@@ -412,27 +412,23 @@
  },
  "bites": [
   {
-   "metric": "spent",
-   "ok": false
-  },
-  {
    "metric": "lostDays",
    "ok": true
   }
  ],
  "downstream": [
   {
-   "metric": "money",
-   "ok": false
-  },
-  {
    "metric": "daysToDeliver",
    "ok": true
+  },
+  {
+   "metric": "money",
+   "ok": false
   }
  ],
- "verdict": "does not bite",
+ "verdict": "proven",
  "hashes": {
   "src/engine/production/schedule.ts": "c340c06a7f31e853",
-  "tests/proof/career.ts": "6e652367d4da531d"
+  "tests/proof/career.ts": "2d4877367212a0ea"
  }
 }

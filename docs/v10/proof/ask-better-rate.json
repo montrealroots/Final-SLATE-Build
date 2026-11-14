@@ -435,7 +435,7 @@
  "verdict": "no downstream effect",
  "hashes": {
   "src/engine/jobs.ts": "e410110b6cf888e3",
-  "src/engine/reputation.ts": "a18f490d3a668dde",
-  "tests/proof/career.ts": "6e652367d4da531d"
+  "src/engine/reputation.ts": "c90f8535167021a1",
+  "tests/proof/career.ts": "2d4877367212a0ea"
  }
 }

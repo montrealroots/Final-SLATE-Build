@@ -3,10 +3,14 @@
 import { describe, expect, it } from 'vitest';
 import { processUntil } from './engine-api';
 import { applyForPermit, applyForVisa, entryRight, passportFor, permitCheck, permitRefusal, recordWorkDay, visaCheck, workRight, applications } from '../src/engine/papers';
-import { personalBalance } from '../src/engine/personal';
+import { personalBalance, personalPostings } from '../src/engine/personal';
 import { filmPlace, setFilmedAt } from '../src/engine/destinations';
 import { schedule } from '../src/engine/state';
 import { approve, buildProject, startLife } from './helpers';
+
+import type { GameState } from '../src/engine/types';
+/** What SLATE has posted to the bank, in dollars at each day's rate: a balance held in pounds moves with the rate, and this doesn't. */
+const posted = (x: GameState) => Math.round(personalPostings(x).reduce((a, p) => a + p.amount, 0) * 100) / 100;
 
 // The fixture player is Japanese and French and lives in London.
 describe('A16: a passport lets you travel; it doesn\'t let you work', () => {
@@ -43,12 +47,12 @@ describe('A16: a passport lets you travel; it doesn\'t let you work', () => {
   it('a work permit with a researched fee and time: paid from the bank, decided on its day, worked under, and expired', () => {
     // The United States' O-1: the fee from the USCIS fee schedule, $1,655, decided in between 90 and 180 days (the middle, 135).
     const s = startLife('papers-permit');
-    const before = personalBalance(s);
+    const before = posted(s);
     const c = permitCheck(s, 'US');
     expect(c).toMatchObject({ ok: true, feeText: '1,655 USD', terms: { days: 135, estimate: null, stayDays: 1095 } });
     expect((c as { terms: { sources: { kind: string }[] } }).terms.sources[0].kind).toBe('official');
     const a = applyForPermit(s, 'US');
-    expect(personalBalance(s)).toBe(before - 1655);
+    expect(posted(s)).toBe(before - 1655);
     expect(permitRefusal(s, 'US')).toBe('Your application is being decided.');
     expect(workRight(s, 'US').can).toBe(false); // applied for isn't issued
     processUntil(s, a.decideAt + 1, 'tick', 1_000_000);

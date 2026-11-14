@@ -439,6 +439,6 @@
  "verdict": "does not bite",
  "hashes": {
   "src/engine/shelve.ts": "a91db16244b4aec4",
-  "tests/proof/career.ts": "6e652367d4da531d"
+  "tests/proof/career.ts": "2d4877367212a0ea"
  }
 }

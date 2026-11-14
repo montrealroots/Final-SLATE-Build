@@ -3,7 +3,7 @@
 import { describe, expect, it } from 'vitest';
 import { GEAR, GEAR_SOURCE, RENT_LEAST, RENT_SHARE, SERVICE_BELOW, gearById, rentDayRate } from '../src/engine/gear-catalog';
 import { addToKit, buyGear, buyRefusal, dayKitProblems, kitAddRefusal, kitClash, kitProblems, lentValue, removeFromKit, resaleValue, sellGear, sellRefusal, serviceCost, serviceGear, serviceRefusal, setPackageApproval } from '../src/engine/equipment';
-import { personalBalance, personalStatement } from '../src/engine/personal';
+import { personalBalance, personalPostings, personalStatement } from '../src/engine/personal';
 import { dayFees, housePackageFee } from '../src/engine/production/rates';
 import { rigDayCost } from '../src/engine/craft';
 import { approvedScenes, deserialize, serialize } from './engine-api';
@@ -11,6 +11,9 @@ import { validateDraft } from '../src/engine/state';
 import type { CreationDraft, GameState, Project } from '../src/engine/types';
 import { approve, buildProject, castAll, runDays, staffAll, startLife, startProduction, summary } from './helpers';
 import { draft } from './fixtures';
+
+/** What SLATE has posted to the bank, in dollars at each day's rate: a balance held in pounds moves with the rate, and this doesn't. */
+const posted = (x: GameState) => Math.round(personalPostings(x).reduce((a, p) => a + p.amount, 0) * 100) / 100;
 
 const rich = (tag: string, over: Partial<CreationDraft> = {}) => startLife(tag, 'gb-london', { savings: 25_000, family: { circumstances: 'wealthy', support: 'gift', amount: 100_000 }, ...over });
 /** A short: an office interior with dialogue, and a day exterior. */
@@ -228,11 +231,11 @@ describe('wear, servicing and selling', () => {
     addToKit(s, p, { itemId: it.id });
     const d = { id: 'd-w', date: '2026-03-02', episode: 1, sceneIds: [], locationLabel: 'Office', interior: true, night: false, status: 'scheduled' as const, playerActing: false, conflicts: [] };
     expect(dayKitProblems(s, p, d, s.now).map((x) => x.need)).toContain('worn');
-    const before = personalBalance(s);
+    const before = posted(s);
     const cost = serviceCost(it);
     expect(cost).toBe(Math.round(169 * 0.25 * 51 / 100));
     serviceGear(s, it.id);
-    expect(personalBalance(s)).toBe(before - cost);
+    expect(posted(s)).toBe(before - cost);
     expect(dayKitProblems(s, p, d, s.now).map((x) => x.need)).toContain('away');
     expect(serviceRefusal(s, it.id)).toBe('It\'s already away being serviced.');
     expect(sellRefusal(s, it.id)).toBe('It\'s in the kit for Kit Fixture. Take it out first.');
@@ -242,7 +245,8 @@ describe('wear, servicing and selling', () => {
     expect(value).toBe(Math.round(169 * 0.5 * 0.8));
     expect(sellGear(s, it.id)).toBe(value);
     expect(personalStatement(s)).toContainEqual({ kind: 'equipment-sale', total: value });
-    expect(personalStatement(s).reduce((a, x) => a + x.total, 0)).toBe(personalBalance(s)); // the statement is the whole account
+    // The statement is the whole account: to the cent in dollars, which a balance held in pounds reads to within one, by rounding.
+    expect(Math.abs(personalStatement(s).reduce((a, x) => a + x.total, 0) - personalBalance(s))).toBeLessThanOrEqual(0.011);
     expect(sellRefusal(s, it.id)).toBe('You don\'t have that.');
   });
 });

@@ -100,9 +100,9 @@
   "quality.editing": 60.856,
   "quality.music": 58.967,
   "standing.writing": 50,
-  "standing.directing": 56.767,
+  "standing.directing": 56.9,
   "standing.acting": 50,
-  "standing.producing": 53.9,
+  "standing.producing": 60.133,
   "entries": 41.5,
   "withdrawn": 0,
   "selected": 4.8,
@@ -391,10 +391,10 @@
    "n": 30
   },
   "standing.directing": {
-   "mean": -0.067,
-   "lo": -0.284,
-   "hi": 0.151,
-   "changed": 10,
+   "mean": 0.067,
+   "lo": -0.286,
+   "hi": 0.419,
+   "changed": 11,
    "n": 30
   },
   "standing.acting": {
@@ -405,10 +405,10 @@
    "n": 30
   },
   "standing.producing": {
-   "mean": -0.5,
-   "lo": -1.474,
-   "hi": 0.474,
-   "changed": 24,
+   "mean": 5.733,
+   "lo": 4.696,
+   "hi": 6.771,
+   "changed": 29,
    "n": 30
   },
   "entries": {
@@ -479,6 +479,6 @@
  "hashes": {
   "src/engine/awards-actions.ts": "cef3e1812969115e",
   "src/engine/awards.ts": "28e4ea9a8ba8ebbc",
-  "tests/proof/career.ts": "6e652367d4da531d"
+  "tests/proof/career.ts": "2d4877367212a0ea"
  }
 }

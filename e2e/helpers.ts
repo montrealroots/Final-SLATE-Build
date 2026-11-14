@@ -215,8 +215,11 @@ export function personalPostingsOf(saved: any): { kind: string; amount: number; 
   for (const t of u.transactions as { category: string; memo: string; id: string; reversedBy?: string; reverses?: string; postings: { accountId: string; amount: number }[] }[]) {
     if (t.reversedBy || t.reverses || !(t.category.startsWith('slate:') || t.category === 'opening')) continue;
     const [kind, key] = t.category === 'opening' ? ['inheritance', 'opening:inheritance'] : t.category.slice(6).split('#');
-    const amount = t.postings.filter((p) => mine.has(p.accountId)).reduce((s, p) => s + p.amount, 0) / 100;
-    if (amount !== 0) out.push({ kind, amount, key: key ?? t.id, label: t.memo });
+    const held = t.postings.filter((p) => mine.has(p.accountId)).reduce((s, p) => s + p.amount, 0);
+    // A bank kept in another currency records the dollars SLATE posted beside it (engine/bank.ts, from November 14, 2026).
+    const usd = (u.counters as Record<string, number> | undefined)?.[`slate:usd:${key ?? t.id}`];
+    const amount = (usd ?? held) / 100;
+    if (held !== 0) out.push({ kind, amount, key: key ?? t.id, label: t.memo });
   }
   return out;
 }

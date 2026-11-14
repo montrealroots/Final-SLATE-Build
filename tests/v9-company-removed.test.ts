@@ -14,6 +14,7 @@ import { newGame } from '../src/engine/state';
 import type { CreationDraft, GameState } from '../src/engine/types';
 import { draft } from './fixtures';
 import { approve, buildProject } from './helpers';
+import { bankHeld } from '../src/engine/bank';
 
 const life = (over: Partial<CreationDraft>, tag: string) => newGame({ ...draft(), ...over }, 0, `save-${tag}`);
 /** Labelled fixture: a company a save made before November 14, 2026 holds, with money in its own v8 journal account. */
@@ -53,10 +54,10 @@ describe('a company from an older save', () => {
     const s = life({}, 'co-pending');
     oldCompany(s, 0, 'pending');
     schedule(s, s.now + 5 * DAY, 'company-decision', {}, { attention: 'notify', priority: 55, id: 'company-decision:fixture' });
-    const before = personalBalance(s);
+    const before = bankHeld(s);
     processUntil(s, s.now + 6 * DAY, 'tick', 100_000);
     expect(s.company).toMatchObject({ status: 'refused', reason: 'Companies left the game before the registry answered, so the application was withdrawn.' });
-    expect(personalBalance(s)).toBe(before);
+    expect(bankHeld(s)).toBe(before); // in the bank's own money: in dollars it moves with the rate
     expect(companyBalance(s)).toBe(0);
   });
 

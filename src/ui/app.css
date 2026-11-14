@@ -516,6 +516,9 @@ input[type="range"] {
 @media (max-width: 620px) {
   .list-item > .grow { flex-basis: 100%; }
 }
+/* A row laid out as a column (Your Papers' kinds of work): that floor is its width, never its height. Until
+   2026-11-14 it was its height, and every kind of work stood above a 14rem gap. */
+.list-item.col > .grow { flex: none; }
 .list-item:hover { background: var(--surface-2); }
 .list-item[aria-selected="true"] { background: var(--accent-dim); }
 .list-static { cursor: default; }

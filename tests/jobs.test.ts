@@ -1,13 +1,16 @@
 // Paid work on others' productions (engine/jobs.ts; the v4 package, 01; ledger V4-010.01, .02, .04).
 import { describe, expect, it } from 'vitest';
 import { AGENT_JOB_UPLIFT, JOB_ROLES, acceptJob, acceptRefusal, declineJob, jobClash, jobCredits, jobDayRate, reliability, rolesOffered, withdrawJob, type OutsideJob } from '../src/engine/jobs';
-import { personalBalance, personalStatement } from '../src/engine/personal';
+import { personalPostings, personalStatement } from '../src/engine/personal';
 import { deserialize, serialize } from '../src/engine/save';
 import { processUntil, schedule } from '../src/engine/state';
 import { DAY } from '../src/engine/time';
 import type { GameState } from '../src/engine/types';
 import { approve, buildProject, startLife } from './helpers';
 import { planShootDays } from '../src/engine/production/schedule';
+
+/** What SLATE has posted to the bank, in dollars at each day's rate: a balance held in pounds moves with the rate, and this doesn't. */
+const posted = (x: GameState) => Math.round(personalPostings(x).reduce((a, p) => a + p.amount, 0) * 100) / 100;
 
 /** Labelled fixture: the triggers a delivery or an agent would schedule, fired until one brings an offer (the odds are the seed's). */
 function offered(s: GameState, via?: string): OutsideJob {
@@ -53,17 +56,17 @@ describe('a job taken', () => {
     const j = offered(s);
     acceptJob(s, j.id);
     expect(s.plans.filter((p) => j.planIds!.includes(p.id)).map((p) => p.status)).toEqual(j.days.map(() => 'upcoming'));
-    const before = personalBalance(s);
+    const before = posted(s);
     workAll(s, j);
     expect(j).toMatchObject({ status: 'done', missed: [] });
     expect(j.attended).toEqual(j.days);
-    expect(personalBalance(s) - before).toBe(j.dayRate * j.days.length);
+    expect(posted(s) - before).toBe(j.dayRate * j.days.length);
     expect(personalStatement(s)).toContainEqual({ kind: 'paid-work', total: j.dayRate * j.days.length });
     expect(jobCredits(s).map((x) => x.id)).toEqual([j.id]);
     // Paid once: a repeated morning changes nothing.
     schedule(s, s.now + 1000, 'job-day', { jobId: j.id, date: j.days[0], planId: j.planIds![0] }, { attention: 'silent', priority: 30 });
     processUntil(s, s.now + 2000, 'tick', 1000);
-    expect(personalBalance(s) - before).toBe(j.dayRate * j.days.length);
+    expect(posted(s) - before).toBe(j.dayRate * j.days.length);
   });
 
   it('a morning asleep or out of town is missed and unpaid, and makes later offers rarer', () => {

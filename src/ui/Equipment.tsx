@@ -8,6 +8,7 @@ import { GEAR, GEAR_KIND_LABELS, GEAR_SOURCE, RENT_SHARE, SERVICE_BELOW, gearByI
 import { addToKit, buyGear, buyRefusal, kitAddRefusal, kitDayRate, kitProblems, ownedGear, removeFromKit, resaleValue, sellGear, sellRefusal, serviceCost, serviceGear, serviceRefusal, setPackageApproval } from '../engine/equipment';
 import { housePackageFee } from '../engine/production/rates';
 import { personalBalance } from '../engine/personal';
+import { bankHeldNote } from '../engine/bank';
 import type { Project } from '../engine/types';
 import { Check, Modal, SelectField } from './components';
 import { store, useGame } from './store';
@@ -58,7 +59,7 @@ function Shop({ onClose }: { onClose: () => void }) {
   const [err, setErr] = useState<string | null>(null);
   return (
     <Modal title="The Shop" kind="shop" onClose={onClose} footer={<button className="btn" onClick={onClose}>Close</button>}>
-      <p className="small">{money(personalBalance(g))} in your own account. Prices are a US retailer's listings on {listed()}; the game charges whole dollars.</p>
+      <p className="small">{money(personalBalance(g))} in your own account.{bankHeldNote(g)} Prices are a US retailer's listings on {listed()}; the game charges whole dollars.</p>
       <SelectField label="Show" value={kind} options={(Object.keys(GEAR_KIND_LABELS) as GearKind[]).map((k) => ({ value: k, label: GEAR_KIND_LABELS[k] }))} onChange={(v) => { setKind(v); setErr(null); }} />
       <ul className="list" aria-label={GEAR_KIND_LABELS[kind]}>
         {GEAR.filter((x) => x.kind === kind).map((x) => {

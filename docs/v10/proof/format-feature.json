@@ -412,31 +412,19 @@
  },
  "bites": [
   {
-   "metric": "spent",
-   "ok": false
-  },
-  {
-   "metric": "shootDays",
-   "ok": false
+   "metric": "revenue",
+   "ok": true
   }
  ],
  "downstream": [
   {
-   "metric": "revenue",
-   "ok": true
-  },
-  {
    "metric": "money",
    "ok": true
-  },
-  {
-   "metric": "daysToDeliver",
-   "ok": false
   }
  ],
- "verdict": "does not bite",
+ "verdict": "proven",
  "hashes": {
   "src/engine/production/tasks.ts": "ebc0367de7aa3be2",
-  "tests/proof/career.ts": "6e652367d4da531d"
+  "tests/proof/career.ts": "2d4877367212a0ea"
  }
 }

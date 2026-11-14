@@ -16,12 +16,12 @@
   "gross": 139020,
   "revenue": 187863,
   "distributed": 2.533,
-  "money": 25100685.933,
-  "moneyChange": 100685.933,
+  "money": 25100738.733,
+  "moneyChange": 100738.733,
   "jobsTaken": 1.533,
   "jobsOffered": 1.533,
-  "jobPay": 10316.2,
-  "offeredDayRate": 698.356,
+  "jobPay": 10369,
+  "offeredDayRate": 703.156,
   "ownIn": 120666.667,
   "backerIn": 0,
   "backerDeals": 0,
@@ -49,9 +49,9 @@
   "quality.editing": 61.744,
   "quality.music": 57.478,
   "standing.writing": 50,
-  "standing.directing": 56.567,
+  "standing.directing": 57.333,
   "standing.acting": 50,
-  "standing.producing": 54.033,
+  "standing.producing": 60.567,
   "entries": 41.5,
   "withdrawn": 0,
   "selected": 5.533,
@@ -101,7 +101,7 @@
   "standing.writing": 50,
   "standing.directing": 56.633,
   "standing.acting": 50,
-  "standing.producing": 54.433,
+  "standing.producing": 54.6,
   "entries": 0.733,
   "withdrawn": 32.8,
   "selected": 0.1,
@@ -159,16 +159,16 @@
    "n": 30
   },
   "money": {
-   "mean": 31685.167,
-   "lo": -15768.711,
-   "hi": 79139.044,
+   "mean": 31632.367,
+   "lo": -15822.382,
+   "hi": 79087.116,
    "changed": 30,
    "n": 30
   },
   "moneyChange": {
-   "mean": 31685.167,
-   "lo": -15768.711,
-   "hi": 79139.044,
+   "mean": 31632.367,
+   "lo": -15822.382,
+   "hi": 79087.116,
    "changed": 30,
    "n": 30
   },
@@ -187,16 +187,16 @@
    "n": 30
   },
   "jobPay": {
-   "mean": -1407,
-   "lo": -4943.703,
-   "hi": 2129.703,
+   "mean": -1459.8,
+   "lo": -5011.848,
+   "hi": 2092.248,
    "changed": 29,
    "n": 30
   },
   "offeredDayRate": {
-   "mean": -8.789,
-   "lo": -150.077,
-   "hi": 132.499,
+   "mean": -13.589,
+   "lo": -158.432,
+   "hi": 131.254,
    "changed": 29,
    "n": 30
   },
@@ -390,10 +390,10 @@
    "n": 30
   },
   "standing.directing": {
-   "mean": 0.067,
-   "lo": -0.07,
-   "hi": 0.203,
-   "changed": 4,
+   "mean": -0.7,
+   "lo": -1.408,
+   "hi": 0.008,
+   "changed": 9,
    "n": 30
   },
   "standing.acting": {
@@ -404,10 +404,10 @@
    "n": 30
   },
   "standing.producing": {
-   "mean": 0.4,
-   "lo": -0.564,
-   "hi": 1.364,
-   "changed": 26,
+   "mean": -5.967,
+   "lo": -7.099,
+   "hi": -4.834,
+   "changed": 30,
    "n": 30
   },
   "entries": {
@@ -469,6 +469,6 @@
  "verdict": "proven",
  "hashes": {
   "src/engine/awards-actions.ts": "cef3e1812969115e",
-  "tests/proof/career.ts": "6e652367d4da531d"
+  "tests/proof/career.ts": "2d4877367212a0ea"
  }
 }
