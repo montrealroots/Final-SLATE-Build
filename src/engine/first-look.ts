@@ -25,6 +25,7 @@
 //   ends it. Submissions it has in hand are still answered; development money stays owed.
 import { closeSettled, money, reserve, settle } from './budget';
 import { deals, projectFamilies, trackRecord } from './finance';
+import dealModel from '../data/deal-model.json';
 import { postPersonal } from './personal';
 import { postCompany } from './company';
 import { FILM_FORMATS, TV_FORMATS } from './blueprints';
@@ -50,6 +51,9 @@ export interface FirstLookTerms {
    * November 13, 2026). Absent on deals made before then, which were all for films.
    */
   scope?: 'film' | 'television';
+  /** The track record the terms were set for, and the yearly overhead they came from (from November 14, 2026). */
+  tier?: DealTier;
+  annualOverhead?: number;
 }
 export const scopeOf = (t: FirstLookTerms): 'film' | 'television' => t.scope ?? 'film';
 const formatsOf = (scope: 'film' | 'television') => (scope === 'television' ? TV_FORMATS : FILM_FORMATS);
@@ -86,16 +90,40 @@ export const FIRST_LOOK_RECEPTION = 60;
 export const FIRST_LOOK_FIT = 0.1;
 const MONTH = 30 * DAY;
 
-/** The terms a studio's recorded scale gives. Game calibration, by scale, not any studio's real terms. */
-export function firstLookTerms(s: StudioStrategy, scope: 'film' | 'television' = 'film'): FirstLookTerms {
+export type DealTier = 'emerging' | 'proven' | 'established' | 'elite';
+/**
+ * Your track record as studios read it for a deal: delivered work, how it was received and what it won. Money is no part
+ * of it: an inheritance buys things and not a studio's trust (the owner's v8 package, 02 and 04; A13).
+ */
+export function dealTier(state: GameState): DealTier {
+  const r = trackRecord(state);
+  const rec = r.reception ?? 0;
+  if (r.works >= 8 && r.wins >= 3) return 'elite';
+  if (r.works >= 4 && (rec >= 70 || r.wins >= 2)) return 'established';
+  if (r.works >= 2 && (rec >= FIRST_LOOK_RECEPTION || r.wins >= 1)) return 'proven';
+  return 'emerging';
+}
+const TIER_WORDS: Record<DealTier, string> = { emerging: 'a record that is just starting', proven: 'a record of work that has been received well', established: 'an established record', elite: 'one of the strongest records there is' };
+/** Each tier's term (the package's termYears 1, 2, 3 and 5). */
+export const TIER_MONTHS: Record<DealTier, number> = { emerging: 12, proven: 24, established: 36, elite: 60 };
+
+/**
+ * The terms a studio offers: the yearly overhead from the package's calibration for your tier (src/data/deal-model.json;
+ * "original game calibration, not published company rates"), placed in its range by the studio's scale, and paid a
+ * twelfth a month: a yearly amount is never multiplied twice. Until November 14, 2026 it was one of three monthly sizes
+ * ($1,500, $3,500, $6,000) by scale alone.
+ */
+export function firstLookTerms(s: StudioStrategy, scope: 'film' | 'television' = 'film', tier: DealTier = 'emerging'): FirstLookTerms {
   // A film studio's scale is its films a year; a television deal's, the series the world follows that credit it.
   const big = scope === 'television' ? s.pace >= 30 : s.pace >= 8;
   const mid = scope === 'television' ? s.pace >= 10 : s.pace >= 3;
+  const [lo, hi] = (dealModel.firstLookAnnualOverhead as Record<DealTier, [number, number]>)[tier];
+  const annual = Math.round((lo + (hi - lo) * (big ? 1 : mid ? 0.5 : 0)) / 1200) * 1200;
   return {
-    months: big ? 24 : 12, considerDays: big ? 90 : mid ? 60 : 30,
-    overhead: big ? 6_000 : mid ? 3_500 : 1_500, fund: big ? 100_000 : mid ? 50_000 : 25_000,
+    months: TIER_MONTHS[tier], considerDays: big ? 90 : mid ? 60 : 30,
+    overhead: annual / 12, fund: big ? 100_000 : mid ? 50_000 : 25_000,
     animatedOnly: scope === 'film' && s.animation >= ANIMATION_HOUSE && s.families[0]?.genre === 'Animation',
-    ...(scope === 'television' ? { scope } : {}),
+    ...(scope === 'television' ? { scope } : {}), tier, annualOverhead: annual,
   };
 }
 
@@ -211,7 +239,8 @@ export function firstLookCandidate(state: GameState, scope: 'film' | 'television
 export function offerFirstLook(state: GameState, renews?: FirstLook, scope: 'film' | 'television' = 'film'): FirstLook | null {
   const c = renews ? (() => { const p = state.industry?.studios?.find((x) => x.c === renews.company); return p ? { company: p.c, strategy: strategyOf(p), why: renews.submissions.some((x) => isTaken(state, x)) ? `${renews.name} took a project you submitted, and wants to keep going.` : 'Your record still counts with it, and it wants to keep going.' } : null; })() : firstLookCandidate(state, scope);
   if (!c) return null;
-  const terms = renews ? { ...renews.terms } : firstLookTerms(c.strategy, scope);
+  // A renewal keeps the terms it renews; a new offer is set for your record now.
+  const terms = renews ? { ...renews.terms } : firstLookTerms(c.strategy, scope, dealTier(state));
   const fl: FirstLook = {
     id: newId(state, 'fl'), company: c.company, name: c.strategy.name, status: 'offered', offeredAt: state.now, answerBy: state.now + FIRST_LOOK_OPEN_DAYS * DAY,
     terms, why: c.why, submissions: [], drawn: [], ...(renews ? { renews: renews.id } : {}),
@@ -235,7 +264,7 @@ export function firstLookWords(fl: FirstLook): string[] {
   const tv = scopeOf(t) === 'television';
   return [
     `It runs ${t.months} months from the day you accept.`,
-    `${fl.name} pays ${money(t.overhead)} a month toward your overhead, into your company's account if you have one, or your own.`,
+    `${fl.name} pays ${money(t.overhead)} a month toward your overhead, into your company's account if you have one, or your own.${t.annualOverhead ? ` That is ${money(t.annualOverhead)} a year, set for ${TIER_WORDS[t.tier ?? 'emerging']}; it pays for an office and development, not you, and is the game's own calibration, not any studio's published rate.` : ''}`,
     tv ? `It covers the series you make while it runs, not films. You submit each one to ${fl.name} before you take it to any commissioner.`
       : `It covers ${t.animatedOnly ? 'the animated films' : 'the films'} you make while it runs, not series. You submit each one to ${fl.name} before you pitch it to any other studio.`,
     `${fl.name} has ${t.considerDays} days to answer each one. If it passes, you may take the project elsewhere.`,
@@ -379,7 +408,7 @@ registerHandler('first-look-counter', (state, ev) => {
   const r = trackRecord(state);
   const agreed = r.wins > 0 || (r.reception ?? 0) >= FIRST_LOOK_RECEPTION + 10;
   fl.counter.outcome = agreed ? 'agreed' : 'held';
-  if (agreed) fl.terms = { ...fl.terms, overhead: Math.round(fl.terms.overhead * 1.5) };
+  if (agreed) { const overhead = Math.round(fl.terms.overhead * 1.5); fl.terms = { ...fl.terms, overhead, annualOverhead: overhead * 12 }; }
   const text = agreed ? `${fl.name} agreed to ${money(fl.terms.overhead)} a month.` : `${fl.name} kept its offer of ${money(fl.terms.overhead)} a month. It is still open.`;
   addLog(state, text, 'money', { route: { view: 'profile' } });
   return { message: text };

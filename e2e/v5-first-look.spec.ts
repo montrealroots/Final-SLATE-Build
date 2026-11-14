@@ -73,11 +73,11 @@ test('a first-look deal: offered after delivered work, read in full, bargained, 
   await expect(offer).toContainText(`${NIGHT} offers you a first-look deal.`);
   const terms = offer.getByRole('list', { name: 'Its Terms' });
   await expect(terms).toContainText('It runs 12 months from the day you accept.');
-  await expect(terms).toContainText(`${NIGHT} pays $3,500 a month toward your overhead, into your company's account if you have one, or your own.`);
+  await expect(terms).toContainText(new RegExp(`${NIGHT.replace(/[()]/g, "\\$&")} pays \\$[\\d,]+ a month toward your overhead, into your company's account if you have one, or your own\\. That is \\$[\\d,]+ a year, set for a record that is just starting`));
   await expect(terms).toContainText(`${NIGHT} has 60 days to answer each one.`);
   await expect(offer).toContainText('Nothing binds you until you accept.');
   const before = personalPostingsOf(await readSavedState(page)).length;
-  await offer.getByRole('button', { name: 'Ask For $5,250 A Month' }).click();
+  await offer.getByRole('button', { name: /^Ask For \$[\d,]+ A Month$/ }).click(); // half again the offer, whatever the record set it at
   await expect(offer).toContainText('You asked for more overhead. It answers by');
   await expect(offer.getByRole('button', { name: 'Accept The First-Look Deal' })).toBeDisabled();
   await advance(page, 'week');
