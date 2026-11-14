@@ -18,15 +18,20 @@ const field = (label: string, n = 1) => `field:Projects.tsx#"${label}"#${n}`;
 
 export const PROBES: Probe[] = [
   { id: 'format-feature', features: [field('Format')], decision: 'Make a feature rather than a short', reads: ['src/engine/production/tasks.ts#buildTasks'],
-    variant: { project: make({ ...SHORT, format: 'feature', runtime: 80 }) }, bites: ['spent', 'shootDays'], downstream: ['revenue', 'money', 'daysToDeliver'] },
+    // With the same scenes a film costs what its scenes cost (production follows the script, not its label); what the
+    // format changes is how buyers and audiences take it.
+    variant: { project: make({ ...SHORT, format: 'feature', runtime: 80 }) }, bites: ['revenue'], downstream: ['money'] },
   { id: 'medium-animation', features: [field('Medium')], decision: 'Make it drawn animation rather than live action', reads: ['src/engine/production/tasks.ts#buildTasks'],
     variant: { project: make({ ...SHORT, medium: 'animation', technique: '2d-drawn', quality: 'tv', runtime: 5 }) }, bites: ['shootDays', 'daysToDeliver'], downstream: ['spent', 'money', 'revenue'] },
   { id: 'runtime-longer', features: ["field:Projects.tsx#{episodic ? 'Target Minutes Per Episode' : 'Target Runtime In Minutes'}#1"], decision: 'Aim for a 25-minute short rather than 10', reads: ['src/engine/estimate.ts#costBreakdown'],
     variant: { project: make({ ...SHORT, runtime: 25 }) }, bites: ['spent'], downstream: ['revenue', 'money'] },
   { id: 'base-los-angeles', features: [field('Production Base')], decision: 'Base the production in Los Angeles rather than London', reads: ['src/engine/production/schedule.ts#isWorkingDay'],
-    variant: { project: make(SHORT, (p) => { p.axes.basePlaceId = 'us-los-angeles'; }) }, bites: ['spent', 'lostDays'], downstream: ['money', 'daysToDeliver'] },
+    // Its weather and its working calendar; prices don't yet depend on the place (docs/v10/README.md, open).
+    variant: { project: make(SHORT, (p) => { p.axes.basePlaceId = 'us-los-angeles'; }) }, bites: ['lostDays'], downstream: ['daysToDeliver', 'money'] },
   { id: 'finance-target', features: ['field:PlanViews.tsx#"Change Financing Target"#1', 'action:finance.setFinanceTarget'], decision: 'Raise half as much again as the estimate', reads: ['src/engine/finance.ts#setFinanceTarget', 'src/engine/finance.ts#financeSummary'],
-    variant: { decide: (_s, p) => setFinanceTarget(p, Math.round((p.finance?.estimate ?? financeSummary(p).target) * 1.5)) }, bites: ['ownIn'], downstream: ['money', 'leftInProjects', 'spent'] },
+    // Backers asked first, as a target above the estimate matters where others' money is raised and repaid.
+    base: { ownShare: 0 },
+    variant: { ownShare: 0, decide: (_s, p) => setFinanceTarget(p, Math.round((p.finance?.estimate ?? financeSummary(p).target) * 1.5)) }, bites: ['backerIn', 'ownIn'], downstream: ['money', 'revenue', 'leftInProjects'] },
   { id: 'genre-comedy', features: ['field:Projects.tsx#?#1'], decision: 'Make it a comedy rather than a drama', reads: ['src/engine/script-effects.ts#competesAs'],
     variant: { project: make({ ...SHORT, genres: ['comedy'] }) }, bites: ['reception', 'overall'], downstream: ['revenue', 'money'] },
 ];
