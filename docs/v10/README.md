@@ -37,12 +37,18 @@ Run the proofs with `npm run proof` (`PROBES=id,id` for some, `SEEDS=n` to chang
   Open: fixing it moves every offer's price, so it waits for its own change.
 - **Costs don't depend on where you shoot.** Basing a production in Los Angeles rather than London changed its weather,
   not its prices. Open.
-- **Cash has no use.** Cash taken out of a machine is spent only on food in 1221's spending, which SLATE left out. Not
-  fixed yet: the matrix shows it as "no downstream effect".
+- **Cash and credit cards have no use.** 1221's everyday spending (food, the day's purchases) is what cash and cards pay
+  for, and SLATE left it out, so a card is never used and cash withdrawn is never spent. Open: the matrix shows both as
+  "no downstream effect".
 - **The harness's own faults**, found and fixed before any result was kept: the backer kind was misnamed; a run-once flag
   was shared across seeds; the test helper's fixture money was taken out of played careers.
 
 ## Honest Limits
+
+- **Seeds diverge.** Paired seeds share a world, but anything a decision adds (a card, an entry) can shift the draws that
+  follow, so a broad measure such as money can move for reasons that aren't the decision's. Each probe's later measures
+  are ones the feature feeds; where one moved without a cause in the code (a credit card and money), the measure was
+  taken out and the result says so.
 
 - A feature is proven only where a played career reaches it. The census shows which event kinds the careers reach; the
   ones they don't (agents, series releases, first-look terms, travel, papers decisions) need careers that do, and stay

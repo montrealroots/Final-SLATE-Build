@@ -70,7 +70,9 @@ export const PROBES: Probe[] = [
     variant: { daily: first((s) => { bank(s, 'card.apply'); bank(s, 'bank.set_payments', { everyday: 'credit' }); }) },
     measure: bankMeasures,
     bites: ['accounts'],
-    downstream: ['money', 'bankFees', 'interestOut', 'owed'],
+    // Only what a card itself feeds: SLATE left out 1221's everyday spending, so money moving here is the seeds diverging
+    // once a card exists, not the card (docs/v10/README.md).
+    downstream: ['bankFees', 'interestOut', 'owed'],
   },
   {
     id: 'cash-withdrawal',
