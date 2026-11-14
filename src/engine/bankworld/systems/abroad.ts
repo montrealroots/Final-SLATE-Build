@@ -548,6 +548,14 @@ function homeCloses(sim: Simulation, item: ScheduledItem): void {
     return;
   }
   const into = checkingsOf(sim, person).find((a) => !heldFromAbroad(sim, a));
+  // With money in it and no account where they live to send it to, it isn't closed: until November 14, 2026 it closed
+  // anyway and the money went nowhere (SLATE's feature proofs found a life that moved to Paris lose its savings). Tried
+  // again each day, said once, as an overdrawn one is.
+  if (!into && heldOf(current) > 0) {
+    if (mineNow && !item.payload.retrying) sim.notify({ category: 'bank', title: `${bank.name} Can’t Close Your Account Yet`, body: `It holds ${heldText(sim, current, heldOf(current))}, and you have no account where you live for it to be sent to. It closes once you open one.`, importance: 70, route: '/workspace/bank' });
+    sim.schedule({ at: addDays(sim.now, 1, sim.homeZone), kind: HOME_CLOSES_KIND, label: item.label, category: 'home', priority: 36, payload: { ...item.payload, retrying: true } });
+    return;
+  }
   for (const account of mine) {
     if (!into) break;
     if (person.primaryAccountId === account.id) person.primaryAccountId = into.id;

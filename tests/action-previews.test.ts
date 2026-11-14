@@ -89,7 +89,8 @@ const ACTIONS: Record<string, { preview: string; outcome: string }> = {
   startSleep: { preview: 'You choose when to wake.', outcome: 'The clock shows Asleep until the alarm.' },
   submitEntry: { preview: 'Prepare Submission shows the entry fee and the rules it is checked against.', outcome: LOG },
   swapWithInteriorDay: { preview: 'That it swaps dates with the next interior day, and that agreed costs stay.', outcome: LOG },
-  travelTo: { preview: 'The trip says how many hours it takes.', outcome: 'You arrive after the hours pass; Home shows where you are.' },
+  travelTo: { preview: 'The trip says how many hours it takes, or why entering the country is refused.', outcome: 'You arrive after the hours pass; Home shows where you are.' },
+  moveTo: { preview: 'Make This Your Home says why you may not live there, or that your bank takes it as where you live and you set off now.', outcome: 'Profile says where you live; Your Papers and your bank read it; the log says you moved.' },
   withdrawRelease: { preview: 'The withdrawal dialog says whether footage will be redacted.', outcome: LOG },
 };
 // Names the parser matches in the interface that aren't player actions spending anything.

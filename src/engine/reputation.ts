@@ -11,6 +11,7 @@
 // an offer of outside work leans to the role the record is strongest in, and its day rate follows that role's craft.
 import design from '../data/reputation-design.json';
 import { ledgerTotals } from './budget';
+import { papersReads } from './papers';
 import { reliability, type JobRole } from './jobs';
 import { institution, type Recipient } from './awards';
 import type { GameState, Project } from './types';
@@ -158,3 +159,6 @@ export function standings(s: GameState): Standing[] {
     standingFrom('producing', delivered(s).map((p) => p.quality!.reception), honourScores(s, 'producing')),
   ];
 }
+
+// Papers reads the record's best standing for a work visa's chance of refusal (papers.ts `papersReads`).
+papersReads.bestStanding = (s) => Math.max(...standings(s).map((x) => x.standing));

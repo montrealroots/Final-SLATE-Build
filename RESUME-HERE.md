@@ -31,6 +31,11 @@ estimate" for figures no source gives. Start at `docs/v10/README.md`.
   read about $24.7m in dollars a year on. Tests: `tests/v10-bank-currency.test.ts`; tests that compared dollar balances
   across months now compare what the bank holds, or the statement. Proof results measured before this banked in
   dollars: rerun the bank probes before relying on them.
+- The "Not done" list, done: visas refused at published rates, work visas sponsored, moving countries, travel asking
+  papers (see `docs/v10/README.md`). Proof batches written for equipment, writing jobs, hiring, your day (plans, sleep,
+  travel), songs and licences, the score, versions, the edit, revision notes, a second project and the bank's term
+  deposits, standing orders, payments, accounts and switching (`tests/proof/probes/`). Fixed from them: the estimate
+  follows the shot plan; plans over a call bite; the target runtime bites; moving can't lose money.
 - Living abroad takes real papers (the owner: "make living abroad need real papers"; they chose arriving on the visa
   over arriving without one). Where you live isn't assumed any more: citizenship, free movement, or a work visa, which
   there covers all four kinds of work and the stay. A new life abroad arrives on it, its fee paid on the first day; it

@@ -1,0 +1,33 @@
+{
+ "about": "How often a visa is refused, researched November 14, 2026. A visitor visa's chance of refusal is the published refusal rate for the passport applying, where one is recorded; else the destination's overall rate; else the game's estimate, said as one. A work visa's is anchored to the published approval rate of the United States' O-1 and moved by the record the applicant brings (papers.ts `refusalChance`). The official State Department table refused automated download (HTTP 403), so its figures are taken as quoted by the sources named, each kept with its source.",
+ "schengen": ["AT", "BE", "BG", "CH", "CZ", "DE", "DK", "EE", "ES", "FI", "FR", "GR", "HR", "HU", "IS", "IT", "LI", "LT", "LU", "LV", "MT", "NL", "NO", "PL", "PT", "RO", "SE", "SI", "SK"],
+ "visitor": {
+  "US": {
+   "what": "Adjusted refusal rate, B visas only, by nationality, fiscal year 2024",
+   "byPassport": {
+    "IN": 16.32, "CN": 25.37, "MX": 13.87, "BR": 15.48, "NG": 46.51, "PK": 45.65, "PH": 28.33, "CO": 24.70, "BD": 46.09,
+    "GH": 55.59, "KE": 63.32, "EG": 39.77, "VN": 22.12, "KR": 14.97, "GB": 18.03, "JP": 5.76, "LA": 82.84, "SN": 74.65,
+    "SA": 7.89, "AE": 1.46
+   },
+   "sources": [
+    { "kind": "official", "url": "https://travel.state.gov/content/dam/visas/Statistics/Non-Immigrant-Statistics/RefusalRates/FY24.pdf", "what": "U.S. Department of State, Adjusted Refusal Rate - B-Visas Only by Nationality, FY 2024 (Laos, Senegal, Kenya, Saudi Arabia, the United Arab Emirates as excerpted by a web search of it; the file itself refused download)" },
+    { "kind": "secondary", "url": "https://ukvisa.blog/2023/09/28/us-visa-acceptance-rate", "what": "UK Visa Blog, US visa refusal rates by country, FY2024, quoting the State Department table (the sixteen largest applicant countries)" }
+   ]
+  },
+  "SCHENGEN": {
+   "what": "Short-stay (C) visa refusal rate by applicant nationality, all Schengen consulates, 2024",
+   "overall": 14.8,
+   "byPassport": { "CN": 4.6, "TR": 14.5, "IN": 15.0, "MA": 20.1, "RU": 7.5, "DZ": 35.0, "SA": 5.9, "GB": 6.9, "TH": 6.2, "EG": 25.7, "NG": 45.9 },
+   "sources": [
+    { "kind": "official", "url": "https://home-affairs.ec.europa.eu/news/visa-applications-reach-117-million-eu-and-schengen-associated-countries-2025-05-20_en", "what": "European Commission, DG Migration and Home Affairs, 20 May 2025: 11.7 million short-stay applications in 2024 (1.7 million refused, 14.8%, as reported from the Commission's figures)" },
+    { "kind": "secondary", "url": "https://www.hellosafe.com/schengen-visa/rejection", "what": "HelloSafe, Schengen visa rejection rates 2024 by nationality, quoting the Commission's 2024 visa statistics by nationality (the ten largest applicant nationalities)" },
+    { "kind": "secondary", "url": "https://allafrica.com/stories/202505270077.html", "what": "AllAfrica, Nigerian applicants refused at 45.9% in 2024, quoting the Commission's figures" }
+   ]
+  }
+ },
+ "work": {
+  "approval": 0.9,
+  "what": "USCIS O-1 petitions approved at 90% or more in each fiscal year 2018 to 2023",
+  "sources": [ { "kind": "secondary", "url": "https://aila.org/aila-files/EFEFDAB0-045A-4BD5-834C-2395C273195A/24080601.pdf", "what": "American Immigration Lawyers Association, quoting USCIS: O-1A approvals stable at 90% or above, FY 2018 to FY 2023" } ]
+ }
+}

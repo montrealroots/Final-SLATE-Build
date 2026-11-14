@@ -654,6 +654,9 @@ export interface Issue {
 }
 
 /** Inspectable structural facts about the script. Blocking issues prevent approval. */
+/** How far scenes may run from the target runtime before it's a note: a quarter, either way. Game calibration. */
+export const RUNTIME_SLACK = 0.25;
+
 export function scriptIssues(p: Project): Issue[] {
   const out: Issue[] = [];
   const mods = projectModules(p);
@@ -704,6 +707,15 @@ export function scriptIssues(p: Project): Issue[] {
   }
   if (p.scenes.length && (p.axes.format === 'short' || p.axes.format === 'documentary-short') && total > 40) {
     out.push({ severity: 'note', area: 'pacing', text: `Your scenes add up to ${Math.round(total)} minutes, which is longer than a short.` });
+  }
+  // The running time aimed for (from November 14, 2026; until then read only to place a series in award classes, and
+  // the feature proofs found it changed nothing once scenes were written): scenes a quarter over or under it are a note,
+  // as a writer is held to the length commissioned. A note open at delivery costs the script (finish.ts). Game calibration.
+  const target = p.axes.targetRuntimeMin;
+  const eps = Math.max(1, new Set(p.scenes.map((s) => s.episode)).size);
+  const perEpisode = isEpisodic(p.axes.format) ? total / eps : total;
+  if (p.scenes.length && target > 0 && Math.abs(perEpisode - target) > target * RUNTIME_SLACK) {
+    out.push({ severity: 'note', area: 'pacing', text: `Your scenes run about ${Math.round(perEpisode)} minutes${isEpisodic(p.axes.format) ? ' an episode' : ''}, against the ${target} you aim for.` });
   }
   // Setups, clues and reveals: planted before paid, unless declared deliberately discontinuous.
   for (const sp of p.setups) {

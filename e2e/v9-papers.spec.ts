@@ -4,7 +4,7 @@
 // 1221's B-1/B-2 record, $185 and 157 days. Desktop and phone in Chromium, and the iPhone 15 Pro Max in WebKit:
 // emulation, not a physical device.
 import { expect, test, type Page } from './test';
-import { advance, nav, openStart } from './helpers';
+import { advance, nav, openStart, pinSeed } from './helpers';
 
 const papersPanel = (page: Page) => page.locator('.panel, section', { has: page.getByRole('heading', { name: 'Your Papers', exact: true }) }).first();
 
@@ -24,6 +24,9 @@ test('Home to Your Papers: a visa applied for and paid, decided on its day, in u
   await page.getByRole('button', { name: 'Continue Creation' }).click();
   await page.getByRole('button', { name: 'Start My Story' }).click();
   await expect(page.getByRole('heading', { name: /^Good (Morning|Afternoon|Evening), /, level: 1 })).toBeVisible();
+  // Labelled fixture: the world seed is pinned, as visas can be refused (from November 14, 2026, at the published rate:
+  // 15.48% for a Brazilian applying to the United States), and this journey follows one that is granted.
+  await pinSeed(page, 20261114);
   // Home: the passport in force, and work where you live allowed by the work visa she arrived on (from November 14, 2026;
   // until then the game assumed it).
   await expect(papersPanel(page)).toContainText('In force to');

@@ -23,8 +23,9 @@ export const PROBES: Probe[] = [
     variant: { project: make({ ...SHORT, format: 'feature', runtime: 80 }) }, bites: ['revenue'], downstream: ['money'] },
   { id: 'medium-animation', features: [field('Medium')], decision: 'Make it drawn animation rather than live action', reads: ['src/engine/production/tasks.ts#buildTasks'],
     variant: { project: make({ ...SHORT, medium: 'animation', technique: '2d-drawn', quality: 'tv', runtime: 5 }) }, bites: ['shootDays', 'daysToDeliver'], downstream: ['spent', 'money', 'revenue'] },
-  { id: 'runtime-longer', features: ["field:Projects.tsx#{episodic ? 'Target Minutes Per Episode' : 'Target Runtime In Minutes'}#1"], decision: 'Aim for a 25-minute short rather than 10', reads: ['src/engine/estimate.ts#costBreakdown'],
-    variant: { project: make({ ...SHORT, runtime: 25 }) }, bites: ['spent'], downstream: ['revenue', 'money'] },
+  { id: 'runtime-longer', features: ["field:Projects.tsx#{episodic ? 'Target Minutes Per Episode' : 'Target Runtime In Minutes'}#1"], decision: 'Aim for a 25-minute short rather than 10 (its scenes still run 10)', reads: ['src/engine/projects.ts#scriptIssues', 'src/engine/finish.ts#assessQuality'],
+    // From November 14, 2026 scenes a quarter off the aim are a readiness note, which costs the script (projects.ts RUNTIME_SLACK).
+    variant: { project: make({ ...SHORT, runtime: 25 }) }, bites: ['quality.script'], downstream: ['overall', 'reception', 'revenue'] },
   { id: 'base-los-angeles', features: [field('Production Base')], decision: 'Base the production in Los Angeles rather than London', reads: ['src/engine/production/schedule.ts#isWorkingDay'],
     // Its weather and its working calendar; prices don't yet depend on the place (docs/v10/README.md, open).
     variant: { project: make(SHORT, (p) => { p.axes.basePlaceId = 'us-los-angeles'; }) }, bites: ['lostDays'], downstream: ['daysToDeliver', 'money'] },

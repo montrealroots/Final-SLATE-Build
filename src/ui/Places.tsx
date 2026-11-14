@@ -1,9 +1,10 @@
 // Calendar, place and profile screens: loaded on first use (App.tsx), so they stay out of the startup files.
+import { moveRefusal, moveTo } from '../engine/papers';
 import { Fragment, useEffect, useMemo, useState } from 'react';
 import { languageName, PRONOUNS } from '../data/identity';
 import { getPlace, placeLabel, searchPlaces, type Place } from '../data/places';
 import { countryName } from '../world/gazetteer/gazetteer';
-import { FORECAST_HORIZON_DAYS, addDaysToKey, citizenshipOf, homeCountries, knownAs, addPlan, cancelPlan, reminderWords, characterAge, currentPlace, currentZone, dateKey, daylight, daysInMonth, forecast, formatClock, formatDateKey, placeHolidayCoverage, placeHolidays, institution, localParts, localToInstant, monthName, nextBirthdayInstant, observance, observanceDates, observedBirthday, parseYmd, upcomingCommitments, weatherOn, weekdayOfKey, ymd, temperatureAt, travelTo, travelHours } from '../engine';
+import { FORECAST_HORIZON_DAYS, addDaysToKey, citizenshipOf, homeCountries, knownAs, addPlan, cancelPlan, reminderWords, characterAge, currentPlace, currentZone, dateKey, daylight, daysInMonth, forecast, formatClock, formatDateKey, placeHolidayCoverage, placeHolidays, institution, localParts, localToInstant, monthName, nextBirthdayInstant, observance, observanceDates, observedBirthday, parseYmd, upcomingCommitments, weatherOn, weekdayOfKey, ymd, temperatureAt, travelTo, travelHours, travelRefusal } from '../engine';
 import { personById } from '../engine/people';
 import { honors } from '../engine/awards-actions';
 import type { GameState, Route } from '../engine/types';
@@ -283,11 +284,17 @@ export function PlaceView() {
           {!here && (
             <>
               <button className="btn btn-primary" disabled={!!g.travel} onClick={() => { let at = 0; const err = store.act((s) => { at = travelTo(s, place.id); }); setTravelError(err); if (!err) void store.advance({ at }); }}>Travel Here</button>
-              <p className="dim">{g.travel ? "You're travelling already; you can set off again once you arrive." : `The trip takes about ${travelHours(currentPlace(g), place)} hours. Time passes on the way.`}</p>
+              <p className="dim">{g.travel ? "You're travelling already; you can set off again once you arrive." : travelRefusal(g, place.id) ?? `The trip takes about ${travelHours(currentPlace(g), place)} hours. Time passes on the way.`}</p>
               {travelError && <p role="alert" style={{ color: 'var(--negative)' }}>{travelError}</p>}
             </>
           )}
           {here && <p className="chip chip-accent">You're Here</p>}
+          {g.character.livesIn === place.id ? <p className="dim">You live here.</p> : (
+            <>
+              <button className="btn" disabled={!!moveRefusal(g, place.id)} onClick={() => setTravelError(store.act((s) => moveTo(s, place.id)))}>Make This Your Home</button>
+              <p className="dim">{moveRefusal(g, place.id) ?? 'Your home moves here: your bank takes it as where you live, and you set off now if you aren\'t here.'}</p>
+            </>
+          )}
         </section>
         <section className="card" aria-labelledby="pl-hol">
           <h2 id="pl-hol">Upcoming Public Holidays</h2>

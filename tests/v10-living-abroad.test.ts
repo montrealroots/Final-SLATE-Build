@@ -5,11 +5,16 @@
 import { describe, expect, it } from 'vitest';
 import { DAY, processUntil } from './engine-api';
 import { acceptRefusal } from '../src/engine/jobs';
-import { applications, applyForPermit, entryRight, homeVisa, permitCheck, workRight } from '../src/engine/papers';
+import { applications, applyForPermit, applyForVisa, entryRight, homeVisa, moveRefusal, moveTo, permitCheck, refusalChance, sponsorsFor, visaCheck, workRight } from '../src/engine/papers';
+import { bankSim } from '../src/engine/bankworld';
+import { armHomeAccounts } from '../src/engine/bankworld/systems/abroad';
+import { AGENTS } from '../src/engine/representation';
+import { travelRefusal } from '../src/engine/state';
 import { personalPostings } from '../src/engine/personal';
 import { deserialize, serialize } from '../src/engine/save';
 import { newGame } from '../src/engine/state';
 import { draft } from './fixtures';
+import { sponsorIn, startLife } from './helpers';
 import type { GameState } from '../src/engine/types';
 
 const O1 = 'O-1 (extraordinary ability in the arts, or extraordinary achievement in motion pictures or television)';
@@ -65,6 +70,7 @@ describe('the visa runs out, and is renewed', () => {
 
   it('can be renewed once its end is nearer than its decision and a month, and the new one covers all four kinds of work', () => {
     const s = french('us-los-angeles', 'abroad-renew');
+    sponsorIn(s, 'us-los-angeles'); // renewing needs a sponsor there
     const visa = applications(s)[0];
     expect(homeVisa(s)).toMatchObject({ renewable: false });
     expect(permitCheck(s, 'US')).toMatchObject({ ok: false });
@@ -96,4 +102,123 @@ describe('a story from before', () => {
     expect(personalPostings(back)).toHaveLength(postings); // no fee charged on loading
     expect(applications(deserialize(serialize(back)))).toHaveLength(1);
   });
+});
+
+// The three left undone (the owner, November 14, 2026: "100% perfectly complete everything in 'Not done'"): visas are
+// refused at their published rates, work visas need a sponsor, and a life can move to another country. Travel asks your
+// papers too, so a refused visa keeps you out.
+describe('a visa can be refused', () => {
+  const kenyan = (tag: string) => newGame(draft({ startPlaceId: 'ke-nairobi', birthplaceId: 'ke-nairobi', nationalities: ['KE'] }), 0, `save-${tag}`);
+
+  it('a visitor visa is refused at the published rate for the passport applying, drawn once per application', () => {
+    const s = kenyan('refuse-rate');
+    const c = visaCheck(s, 'US');
+    expect(c).toMatchObject({ ok: true, refusal: { chance: 0.6332 } });
+    expect((c as { refusal: { basis: string } }).refusal.basis).toMatch(/^Adjusted refusal rate, B visas only, by nationality, fiscal year 2024: your passport's rate/);
+    // Monte Carlo over 120 lives: the share refused is the published 63.32%, within the draw's spread.
+    let refused = 0;
+    for (let i = 0; i < 120; i++) {
+      const x = kenyan(`refuse-mc-${i}`);
+      const a = applyForVisa(x, 'US');
+      processUntil(x, a.decideAt + DAY, 'tick', 2_000_000);
+      if (a.stage === 'refused') refused++;
+      else expect(a.stage).toBe('issued');
+    }
+    expect(refused / 120).toBeGreaterThan(0.5);
+    expect(refused / 120).toBeLessThan(0.76);
+  }, 300_000);
+
+  it('refused, the fee isn\'t returned, entry still needs a visa, and travel there is refused; issued, travel is allowed', () => {
+    let refused: GameState | undefined;
+    let issued: GameState | undefined;
+    for (let i = 0; i < 12 && !(refused && issued); i++) {
+      const x = kenyan(`refuse-outcome-${i}`);
+      const a = applyForVisa(x, 'US');
+      processUntil(x, a.decideAt + DAY, 'tick', 2_000_000);
+      if (a.stage === 'refused') refused ??= x; else issued ??= x;
+    }
+    const paid = applications(refused!)[0].fee.paidUsdMinor / 100;
+    expect(personalPostings(refused!).filter((p) => (p.kind as string) === 'papers').map((p) => p.amount)).toEqual([-paid]); // paid, and not returned
+    expect(entryRight(refused!, 'US')).toMatchObject({ kind: 'needs' });
+    expect(travelRefusal(refused!, 'us-los-angeles')).toMatch(/you need a visa\. Apply under Your Papers before you travel\.$/);
+    expect(travelRefusal(issued!, 'us-los-angeles')).toBeNull();
+  }, 120_000);
+
+  it('a work visa\'s chance moves with the record: anchored at the O-1\'s 10% for an established standing', () => {
+    const s = french('us-los-angeles', 'refuse-work');
+    expect(refusalChance(s, 'permit', 'US').chance).toBeCloseTo(0.1 * 2 ** 0.5, 6); // standing 50, no works yet
+    expect(refusalChance(s, 'permit', 'US').basis).toMatch(/^USCIS O-1 petitions approved at 90% or more/);
+  });
+});
+
+describe('a work visa needs a sponsor', () => {
+  it('with no job, project or agent there, no work visa can be applied for; an outside job there is a sponsor, and is named', () => {
+    const s = startLife('sponsor-none', 'gb-london', { nationalities: ['JP', 'FR'] });
+    expect(sponsorsFor(s, 'US')).toEqual([]);
+    expect((permitCheck(s, 'US') as { why: string }).why).toMatch(/^It needs a sponsor, and you have none there: An O-1 is petitioned for by a U\.S\. employer or a U\.S\. agent/);
+    sponsorIn(s, 'us-los-angeles');
+    expect(permitCheck(s, 'US')).toMatchObject({ ok: true });
+    expect((permitCheck(s, 'US') as { needs: string[] }).needs).toContain('A sponsor: Fixture Pictures, for A Fixture Feature');
+    expect(applyForPermit(s, 'US').sponsor).toBe('Fixture Pictures, for A Fixture Feature');
+  });
+
+  it('an agent sponsors an O-1, where an agent may petition, and not a UK Creative Worker visa, which needs a licensed employer', () => {
+    const s = startLife('sponsor-agent', 'fr-paris', { nationalities: ['JP'] });
+    s.representation = { current: { agentId: AGENTS[0].id, signedAt: s.now, until: s.now + 365 * DAY } } as never;
+    expect(sponsorsFor(s, 'US')[0]).toMatch(/^your agent, /);
+    expect(sponsorsFor(s, 'GB')).toEqual([]);
+  });
+});
+
+describe('moving to another country', () => {
+  it('a French citizen on an O-1 in Los Angeles moves to Paris: home, bank and papers follow; to Tokyo she has no right to live', () => {
+    const s = french('us-los-angeles', 'move-paris');
+    expect(moveRefusal(s, 'jp-tokyo')).toBe('To live in Japan you need the right to: citizenship, free movement, or a work visa there. Apply for one under Your Papers; it needs a sponsor there.');
+    expect(() => moveTo(s, 'jp-tokyo')).toThrow();
+    const bankHomeBefore = bankSim(s.bank!).player.currentLocationId;
+    moveTo(s, 'fr-paris');
+    expect(s.character.livesIn).toBe('fr-paris');
+    expect(s.travel?.to).toBe('fr-paris');
+    expect(bankSim(s.bank!).player.currentLocationId).not.toBe(bankHomeBefore);
+    expect(entryRight(s, 'FR')).toMatchObject({ kind: 'home' });
+    // The O-1 is still in force for the United States, which she now visits on it.
+    expect(entryRight(s, 'US')).toMatchObject({ kind: 'held' });
+    expect(s.log[0].text).toBe('You moved from Los Angeles to Paris. You opened a current account at BNP Paribas. You set off now.');
+  });
+
+  it('moving keeps every cent: the bank at home closes her account and sends it to the one she opened, less its costs', () => {
+    const s = french('gb-london', 'move-money');
+    const all = (x: GameState) => { const sim = bankSim(x.bank!); return sim.ledger.accountsOf(sim.universe.playerId).filter((a) => !a.nominal && (a.kind === 'checking' || a.kind === 'savings')).reduce((t, a) => t + a.balance, 0); };
+    const before = all(s);
+    moveTo(s, 'fr-paris');
+    processUntil(s, s.now + 400 * DAY, 'tick', 5_000_000);
+    expect(all(s)).toBeGreaterThan(before * 0.97); // payment abroad and fees, never the whole of it
+  }, 300_000);
+
+  it('a bank at home never closes an account with money in it and nowhere to send it: it waits, and says so once', () => {
+    const s = french('gb-london', 'move-nowhere');
+    const sim = bankSim(s.bank!);
+    sim.player.currentLocationId = 'fr-idf-paris'; // labelled fixture: living in Paris with no account there
+    armHomeAccounts(sim);
+    const held = sim.ledger.accountsOf(sim.universe.playerId).find((a) => a.kind === 'checking')!;
+    const balance = held.balance;
+    processUntil(s, s.now + 400 * DAY, 'tick', 5_000_000);
+    expect(held.closedAt).toBeUndefined();
+    expect(held.balance).toBeGreaterThan(balance * 0.97);
+    expect(sim.universe.notifications.filter((n) => /Can’t Close Your Account Yet/.test(n.title))).toHaveLength(1);
+  }, 300_000);
+
+  it('with a work visa issued for Japan, she may move there, and it then covers her stay and all four kinds of work', () => {
+    const s = french('fr-paris', 'move-tokyo');
+    sponsorIn(s, 'jp-tokyo');
+    let a = applyForPermit(s, 'JP');
+    processUntil(s, a.decideAt + DAY, 'tick', 5_000_000);
+    for (let i = 0; a.stage === 'refused' && i < 6; i++) { a = applyForPermit(s, 'JP'); processUntil(s, a.decideAt + DAY, 'tick', 5_000_000); }
+    expect(a.stage).toBe('issued');
+    expect(moveRefusal(s, 'jp-tokyo')).toBeNull();
+    moveTo(s, 'jp-tokyo');
+    expect(a.all).toBe(true);
+    expect(four(s, 'JP')).toEqual([true, true, true, true]);
+    expect(entryRight(s, 'JP')).toMatchObject({ kind: 'lives' });
+  }, 120_000);
 });

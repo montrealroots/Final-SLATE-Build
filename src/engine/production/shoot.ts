@@ -71,6 +71,16 @@ registerHandler('shoot-call', (state, ev) => {
     addLog(state, text, 'warning', { projectId: p.id, route: { view: 'profile' } });
     return { message: text };
   }
+  // A plan of yours over the call (state.ts addPlan): you're at it, and the day starts without you. Until November 14,
+  // 2026 such a plan only added a line to the call sheet (`conflicts`), and the feature proofs found it moved nothing.
+  const callAt = state.now;
+  const busy = state.plans.find((x) => (x.status === 'upcoming' || x.status === 'done') && x.start <= callAt + 3_600_000 && x.start + x.durationMin * 60_000 > callAt);
+  if (busy && !away && !state.sleep.asleep) {
+    d.late = true;
+    const text = `You were at "${busy.title}" at the call on ${p.title}. The day started late without you.`;
+    addLog(state, text, 'warning', { projectId: p.id, route: { view: 'calendar' } });
+    return { message: text };
+  }
   if (state.sleep.asleep || away) {
     d.late = true;
     const text = away

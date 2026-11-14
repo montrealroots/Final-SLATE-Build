@@ -16,8 +16,8 @@
   "gross": 89646.667,
   "revenue": 134946.5,
   "distributed": 1.767,
-  "money": 25077093.593,
-  "moneyChange": 77093.593,
+  "money": 24778385.276,
+  "moneyChange": -221614.724,
   "jobsTaken": 0.967,
   "jobsOffered": 0.967,
   "jobPay": 3946.467,
@@ -62,8 +62,8 @@
   "gross": 89646.667,
   "revenue": 134946.5,
   "distributed": 1.767,
-  "money": 25077093.593,
-  "moneyChange": 77093.593,
+  "money": 24778385.276,
+  "moneyChange": -221614.724,
   "jobsTaken": 0.967,
   "jobsOffered": 0.967,
   "jobPay": 3946.467,
@@ -432,7 +432,7 @@
  ],
  "verdict": "does not bite",
  "hashes": {
-  "src/engine/production/shoot.ts": "13afd29aa280e427",
+  "src/engine/production/shoot.ts": "c192fe85cf2645f9",
   "tests/proof/career.ts": "2d4877367212a0ea"
  }
 }

@@ -2,9 +2,10 @@
 // Schedule and Edit pages, not at startup (the startup JavaScript budget).
 import { coverageFor, requiredSetups, shotPlan, takeFigures, type Coverage, type Emphasis, type TakePolicy } from './takes';
 import type { Rig } from './craft';
-import type { Project } from './types';
+import { followPlan } from './estimate';
+import type { GameState, Project } from './types';
 
-export function setShotPlan(p: Project, sceneId: string, patch: Partial<{ coverage: Coverage; takes: TakePolicy; emphasis: Emphasis; rig: Rig }>): void {
+export function setShotPlan(p: Project, sceneId: string, patch: Partial<{ coverage: Coverage; takes: TakePolicy; emphasis: Emphasis; rig: Rig }>, state?: GameState): void {
   if (!p.takesModel) throw new Error('This project captures each scene as one result.');
   if (p.captures.some((c) => c.sceneId === sceneId && c.captured >= 1)) throw new Error('That scene is shot already.');
   // The rig the scene is shot on (craft.ts) is kept with the plan.
@@ -13,6 +14,8 @@ export function setShotPlan(p: Project, sceneId: string, patch: Partial<{ covera
   // A new emphasis brings the coverage it needs, unless the coverage is chosen in the same change.
   const s = p.scenes.find((x) => x.id === sceneId);
   if (patch.emphasis && !patch.coverage && s && p.directing === 2) plan.coverage = coverageFor(requiredSetups(p, s).map((x) => x.setup));
+  // What it costs follows: the budget estimate, and the target unless you set your own (estimate.ts followPlan).
+  if (state) followPlan(state, p);
 }
 
 /** Use another take of a scene in the edit, until picture is locked. */

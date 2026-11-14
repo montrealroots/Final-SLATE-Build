@@ -23,6 +23,7 @@ const REASONS: Record<string, string> = {
   'FinishViews.tsx | lb.length > 0': '"Before you lock:" lists what is missing.',
   'FinishViews.tsx | !!needs': 'The offer shows what accepting it needs.',
   'Places.tsx | !!g.travel': 'The trip line says you are travelling already.',
+  'Places.tsx | !!moveRefusal(g, place.id)': 'The line under Make This Your Home says why you may not live there.',
   'PlanViews.tsx | !!d.counter && !d.counter.outcome': 'The counter line says when their answer is due and that the offer can\'t be accepted until then.',
   'PlanViews.tsx | !o.ready': 'The backer row shows what approaching them needs.',
   'StudioPitch.tsx | !!o.needs': "The studio's row shows what pitching to it needs.",

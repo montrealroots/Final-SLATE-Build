@@ -184,5 +184,8 @@ onClockMove((state, to) => {
   const seen = u.counters['slate:noticed'] ?? 0;
   const fresh = u.notifications.slice(seen);
   u.counters['slate:noticed'] = u.notifications.length;
-  for (const n of fresh) addLog(state, `${n.title}: ${n.body}`, 'money', { route: { view: 'bank' } });
+  // Each with its own notice's id, not the next in the save's count, which seeds the draws of everything made after it:
+  // what the bank says changes no casting or take (from November 14, 2026, when the feature proofs found a term deposit's
+  // notices moving every later film).
+  for (const n of fresh) addLog(state, `${n.title}: ${n.body}`, 'money', { route: { view: 'bank' }, id: `bank-${n.id}` });
 });

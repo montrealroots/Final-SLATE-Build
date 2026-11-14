@@ -3,6 +3,7 @@
 import type { Probe } from '../probe';
 import { advanceBankWorld, bankSim } from '../../../src/engine/bankworld';
 import { bankSummary } from '../../../src/engine/bankworld/summary';
+import { netWorth } from '../../../src/engine/bankworld/systems/finance';
 import type { GameState } from '../../../src/engine/types';
 
 /** Runs a bank command as the screen does; a refusal throws, so a probe never measures a command that didn't run. */
@@ -32,6 +33,8 @@ export function bankMeasures(s: GameState): Record<string, number> {
   return {
     interestIn: interestIn / 100, interestOut: interestOut / 100, bankFees: fees / 100,
     owed: sum.reduce((a, c) => a + c.owed, 0) / 100, accounts: sum.reduce((a, c) => a + c.accounts, 0),
+    // What you're worth at the bank, in its own money: a term deposit's interest counts here before it's spendable.
+    worth: netWorth(sim, sim.universe.playerId).total / 100,
     rewards: sim.ledger.accountsOf(sim.universe.playerId).filter((a) => a.kind === 'credit_card').length,
   };
 }

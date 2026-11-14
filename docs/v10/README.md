@@ -44,6 +44,25 @@ Run the proofs with `npm run proof` (`PROBES=id,id` for some, `SEEDS=n` to chang
   the money of the country it starts in, and SLATE's dollars meet it at the day's rate (`bank.ts`,
   `tests/v10-bank-currency.test.ts`). A family repayment read cents it couldn't post (SLATE posts whole dollars), so it
   takes whole dollars.
+- **Visas were never refused, needed no sponsor, and a life could never move** (the owner's "Not done" list). Fixed:
+  a visitor visa is refused at the published rate for the passport applying (the State Department's B-visa table for the
+  United States, the Commission's figures for Schengen, both quoted by named secondary sources as the table itself refused
+  download; elsewhere the game's estimate, said as one); a work visa's chance is anchored to the O-1's published 90%
+  approval and moved by the record. A work visa needs a sponsor: an agent where one may petition (the O-1), an outside job
+  there, or a project of yours made there (`src/data/papers/sponsors.json`, eight countries researched). A life can move
+  to another country with the right to live there; travel now asks your papers. Tests: `tests/v10-living-abroad.test.ts`.
+- **Moving abroad could lose all your money.** 1221's bank closed a home account held from abroad and sent its balance to
+  an account where you live; with none, the account closed with the money in it. Fixed: moving opens an account where
+  you now live, and a bank never closes an account holding money with nowhere to send it.
+- **A plan over a shoot call changed nothing** but a line on the call sheet. Fixed: you're at your plan, and the day
+  starts without you (`production/shoot.ts`).
+- **The budget estimate didn't follow the shot plan.** Full coverage raised what the old plan cost, the crew couldn't be
+  hired and the production lost every day for months. Fixed: the estimate, and the target that follows it, are worked
+  out again when the shot plan changes (`estimate.ts followPlan`, `tests/v10-estimate-follows.test.ts`).
+- **The target runtime did nothing once scenes were written.** Fixed: scenes a quarter off it are a readiness note, which
+  costs the script (`projects.ts RUNTIME_SLACK`, game calibration).
+- **By design, not fixed:** notes you write yourself change no assessment (`finish.ts`: quality can't be manufactured by
+  writing notes); they're for your own process.
 - **The harness's own faults**, found and fixed before any result was kept: the backer kind was misnamed; a run-once flag
   was shared across seeds; the test helper's fixture money was taken out of played careers.
 
