@@ -550,7 +550,10 @@ export function captureQuality(state: GameState, p: Project, s: Scene, compromis
     return (h ? personById(state, h.personId).capability : 50) - coachPenalty;
   });
   const avg = (xs: number[]) => (xs.length ? xs.reduce((a, b) => a + b, 0) / xs.length : 50);
-  const rehearsal = p.tasks.find((x) => x.kind === 'prep:rehearsal')?.status === 'done' ? 6 : 0;
+  // Rehearsal shows on the day by how much there was: two points a day, up to ten (from November 14, 2026; until then any
+  // rehearsal at all added six, so one day and eight were alike, which the feature proofs found). Three days, the
+  // default, is the six it always was. Game calibration.
+  const rehearsal = p.tasks.find((x) => x.kind === 'prep:rehearsal')?.status === 'done' ? Math.min(10, 2 * p.schedule.rehearsalDays) : 0;
   let q = 0.5 * avg(crewCap) + 0.5 * avg(castCap) + rehearsal;
   if (compromised) q -= 15;
   if (late) q -= 5;

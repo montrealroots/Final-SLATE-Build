@@ -30,6 +30,11 @@ Run the proofs with `npm run proof` (`PROBES=id,id` for some, `SEEDS=n` to chang
 - **Night shoots cost what days did,** though the Time Of Day control was said to set the day's fees. Fixed: everyone on
   set is paid a quarter more on a night day, priced in the estimate and said on the call sheet (`rates.ts`
   `NIGHT_PREMIUM`, game calibration).
+- **Rehearsal only helped the player.** Any rehearsal added the same six points on the day, and only the player's own
+  performance improved with more days. Fixed: two points a day on set, up to ten, and every hired performer three points
+  worse with none and up to five better with eight days (`shoot.ts`, `finish.ts`; the default three days unchanged).
+- **A part's size changes nothing but awards placement.** A lead and a supporting part ask the same and cost the same.
+  Open: fixing it moves every offer's price, so it waits for its own change.
 - **Costs don't depend on where you shoot.** Basing a production in Los Angeles rather than London changed its weather,
   not its prices. Open.
 - **Cash has no use.** Cash taken out of a machine is spent only on food in 1221's spending, which SLATE left out. Not
