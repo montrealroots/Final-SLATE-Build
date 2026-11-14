@@ -217,6 +217,18 @@ describe('a running deal', () => {
   });
 });
 
+describe('studios too thin to read, tied on fit (November 14, 2026)', () => {
+  // Labelled fixtures: two studios under two films a year, so the same fit for anything; the one alphabetically first
+  // has none of the work's genre, the other has some.
+  const AARDVARK: StudioProfile = { c: 'company:fixture-aardvark', name: 'Aardvark Films (Fixture)', n: 1.8, g: [['Comedy', 3]], m: EVEN, ann: {} };
+  const ZEPHYR: StudioProfile = { c: 'company:fixture-zephyr', name: 'Zephyr Pictures (Fixture)', n: 1.8, g: [['Horror', 2], ['Comedy', 1]], m: EVEN, ann: {} };
+  it('goes to the one whose few credits are nearer the work, not the first name', () => {
+    const s = world('fl-thin', [AARDVARK, ZEPHYR]);
+    record(s, 70); // a horror film
+    expect(firstLookCandidate(s)!.company).toBe(ZEPHYR.c);
+  });
+});
+
 describe('a television first-look deal (the v6 package, J13; the v7 package, DEAL02: TV scope)', () => {
   /** A save whose delivered work is a well-received horror series (labelled fixture: a delivered film marked a series). */
   // Labelled fixture: the horror studio's television record, as the series the world follows would give it (studios.ts

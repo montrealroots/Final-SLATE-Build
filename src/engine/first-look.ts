@@ -27,7 +27,7 @@ import { closeSettled, money, reserve, settle } from './budget';
 import { deals, projectFamilies, trackRecord } from './finance';
 import { postPersonal } from './personal';
 import { FILM_FORMATS, TV_FORMATS } from './blueprints';
-import { ANIMATION_HOUSE, fitWeight, strategyOf, type StudioStrategy } from './strategy';
+import { ANIMATION_HOUSE, FAMILY_AS_RECORDED, fitWeight, strategyOf, type StudioStrategy } from './strategy';
 import { addLog, cancelEvents, newId, registerHandler, schedule } from './state';
 import { DAY, formatDateKey } from './time';
 import { asTelevision, type StudioProfile } from './studios';
@@ -187,10 +187,17 @@ export function firstLookCandidate(state: GameState, scope: 'film' | 'television
   // November 14, 2026 it was read on the company's films, so a film-only studio could offer one, and a company with a few
   // films a year (HBO) counted as too thin to read and won on the alphabet.
   const pool = (state.industry?.studios ?? []).filter((x) => x.name && !recent.has(x.c)).map((x) => (scope === 'television' ? asTelevision(x) : x)).filter((x): x is StudioProfile => !!x);
+  // Studios too thin to read score alike (strategy.ts THIN_FIT): among equals, the one whose few credits are nearer the
+  // work, then the larger record, comes first, and the name only after both (until November 14, 2026 the name came
+  // straight after the fit, so a thin studio's genres never counted).
+  const near = (profile: StudioProfile) => works.reduce((a, p) => {
+    const names = projectFamilies(p).flatMap((f) => FAMILY_AS_RECORDED[f] ?? []);
+    return a + strategyOf(profile).families.filter((f) => names.includes(f.genre)).reduce((n, f) => n + f.share, 0);
+  }, 0) / works.length;
   const best = pool.map((profile) => {
     const fit = works.reduce((a, p) => a + fitWeight(profile, projectFamilies(p), p.axes.medium), 0) / works.length;
-    return { profile, fit };
-  }).filter((x) => x.fit >= FIRST_LOOK_FIT).sort((a, b) => b.fit - a.fit || a.profile.c.localeCompare(b.profile.c))[0];
+    return { profile, fit, near: near(profile) };
+  }).filter((x) => x.fit >= FIRST_LOOK_FIT).sort((a, b) => b.fit - a.fit || b.near - a.near || b.profile.n - a.profile.n || a.profile.c.localeCompare(b.profile.c))[0];
   if (!best) return null;
   const strategy = strategyOf(best.profile);
   const led = strategy.families[0]?.genre;
