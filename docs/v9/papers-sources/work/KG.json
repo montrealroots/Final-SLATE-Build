@@ -1,0 +1,26 @@
+{
+ "country": "KG",
+ "group": "eaeu",
+ "others": {
+  "right": "permit",
+  "route": "Единое разрешение на пребывание и трудовую деятельность"
+ },
+ "note": "Kyrgyzstan: the EAEU's citizens work without a permit (the eaeu list); anyone else takes the single permit for stay and work under the temporary regulation that Cabinet of Ministers Resolution No. 312 of 30 April 2026 approved (published 12 May 2026; its title read in the Ministry of Justice's legal database, whose rendering of its text didn't load). A news agency's report of the resolution adds that its issue moved to the Ministry of Foreign Affairs to the end of 2026. No performers' exemption was found, so no days. The file first dated the regulation to May 2026, from the report.",
+ "sources": [
+  {
+   "url": "https://www.24.kg/obschestvo/373450_kyirgyizstan_menyaet_pravila_dlya_inostrantsev_itrudovyih_migrantov/",
+   "title": "24.kg, Кыргызстан меняет правила для иностранцев и трудовых мигрантов (12 May 2026)",
+   "read": "2026-11-03",
+   "said": "Согласно постановлению, иностранные граждане и лица без гражданства смогут оформлять единое разрешение сразу на пребывание и работу в Кыргызстане.",
+   "kind": "secondary",
+   "quotes": "https://cbd.minjust.gov.kg/"
+  },
+  {
+   "url": "https://cbd.minjust.gov.kg/230045488/edition/0/ru",
+   "title": "Ministry of Justice, Centralised Legal Database: Временное Положение ... (к постановлению Кабинета Министров КР от 30 апреля 2026 года № 312), edition 23.07.2026 (title as the rendered page shows it; listed by the database's GetDocuments for April-May 2026 and in GetDocument?DocumentCode=7-54785's references)",
+   "read": "2026-11-03",
+   "said": "Временное Положение о порядке оформления виз Кыргызской Республики, Единого разрешения для пребывания и осуществления трудовой деятельности на территории Кыргызской Республики иностранными гражданами и лицами без гражданства и резидент-карты Кыргызской Республики (к постановлению Кабинета Министров КР от 30 апреля 2026 года № 312)",
+   "kind": "primary"
+  }
+ ]
+}

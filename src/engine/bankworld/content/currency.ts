@@ -25,7 +25,7 @@ export interface CurrencyInfo {
   unitsPerUsd?: number;
 }
 
-export const RATES_NOTE = 'Exchange rates are estimated, not live market rates.';
+export const RATES_NOTE = 'Exchange rates are reference rates from dated records, not a bank\'s price or a live market.';
 
 const SYMBOLS: Record<string, [symbol: string, after?: boolean, decimals?: number]> = {
   USD: ['$'], EUR: ['€'], GBP: ['£'], JPY: ['¥', false, 0], CNY: ['¥'], INR: ['₹'], KRW: ['₩', false, 0],
@@ -50,24 +50,59 @@ const SYMBOLS: Record<string, [symbol: string, after?: boolean, decimals?: numbe
   XPF: ['₣', true, 0], FJD: ['FJ$'], PGK: ['K'], WST: ['WS$'], TOP: ['T$'], VUV: ['VT', true, 0],
 };
 
-/** Units per US dollar. Calibrated estimates, see RATES_NOTE. */
-const RATES: Record<string, number> = {
-  USD: 1, EUR: 0.92, GBP: 0.79, JPY: 150, CNY: 7.2, INR: 84, KRW: 1350, RUB: 90, TRY: 33, ILS: 3.7,
-  PHP: 57, VND: 25_000, THB: 36, BRL: 5.5, ZAR: 18, NGN: 1550, EGP: 48, AED: 3.67, SAR: 3.75, QAR: 3.64,
-  KWD: 0.31, BHD: 0.38, OMR: 0.38, JOD: 0.71, PLN: 4.0, CZK: 23, HUF: 365, SEK: 10.6, NOK: 10.8,
-  DKK: 6.9, ISK: 138, CHF: 0.88, RON: 4.6, BGN: 1.8, UAH: 41, KZT: 470, GEL: 2.7,
-  SGD: 1.35, HKD: 7.8, TWD: 32, MYR: 4.6, IDR: 15_800, PKR: 278, BDT: 118, LKR: 300, NPR: 134,
-  CAD: 1.37, AUD: 1.53, NZD: 1.66, MXN: 18, ARS: 950, CLP: 930, COP: 4100, PEN: 3.75, UYU: 40,
-  DOP: 59, JMD: 156, CRC: 520, GTQ: 7.7,
-  KES: 129, TZS: 2650, UGX: 3700, ETB: 57, GHS: 15, XOF: 605, XAF: 605, MAD: 10, TND: 3.1, DZD: 134,
-  MUR: 46, FJD: 2.25,
+// SLATE (from November 14, 2026; the owner's command, 3 "Restore exchange"): the rates are SLATE-REBUILD's dated records
+// (data/rates/rates.json, from SLATE-REBUILD at 88256bf, its sources in data/rates/sources), each currency's units per
+// US dollar from the day its source gives it, each holding until the next. Until then they were 1221's one fixed table,
+// which no longer converts anything. A rate is used only from its effective date, so nothing is known before it is in
+// force. The records are quarterly; they are reference rates, never a price a bank gives. See docs/v9/FX.md.
+import RATE_DATA from '../data/rates/rates.json';
+
+interface Step { from: string; perUSD: string }
+const SERIES = (RATE_DATA as { currencies: Record<string, { fact: string; rates: Step[] }> }).currencies;
+
+/** The last day the records hold a rate for. Past it, the last rate is held, not extended, and said to be stale. */
+export const LAST_OBSERVATION = Object.values(SERIES).flatMap((s) => s.rates.map((r) => r.from)).sort().at(-1)!;
+/** How many days a quarterly rate is current for before it reads as stale: one quarter and a week's grace. */
+export const STALE_AFTER_DAYS = 99;
+
+let rateDay = '2026-01-01';
+/** The game's date the rates are read on (YYYY-MM-DD), set by the bank as its days pass (index.ts). */
+export function setRateDay(day: string): void { rateDay = day; }
+export const currentRateDay = (): string => rateDay;
+
+export interface ReferenceRate {
+  currency: string;
+  /** Units per US dollar, as the record writes it. */
+  perUSD: string;
+  /** The day it took effect; the record gives no other observation or publication day (docs/v9/FX.md). */
+  effective: string;
+  source: string;
+  /** Older than a quarter on the day read: the newest record there is, held. */
+  stale: boolean;
+}
+
+const dayNumber = (d: string) => Date.UTC(Number(d.slice(0, 4)), Number(d.slice(5, 7)) - 1, Number(d.slice(8, 10))) / 86_400_000;
+
+/** A currency's reference rate on a day: the last in force by then, or nothing before its first or for one not recorded. */
+export function referenceRate(code: string, day: string = rateDay): ReferenceRate | undefined {
+  const c = code.toUpperCase();
+  if (c === 'USD') return { currency: 'USD', perUSD: '1', effective: day, source: 'the unit', stale: false };
+  const s = SERIES[c];
+  const step = s?.rates.filter((r) => r.from <= day).at(-1);
+  if (!s || !step) return undefined;
+  return { currency: c, perUSD: step.perUSD, effective: step.from, source: s.fact, stale: dayNumber(day) - dayNumber(step.from) > STALE_AFTER_DAYS };
+}
+
+const unitsOn = (code: string, day: string): number | undefined => {
+  const r = referenceRate(code, day);
+  return r ? Number(r.perUSD) : undefined;
 };
 
 export function currencyInfo(code: string): CurrencyInfo {
   const upper = code.toUpperCase();
   const [symbol, after, decimals] = SYMBOLS[upper] ?? [upper, true, 2];
   const info: CurrencyInfo = { code: upper, symbol, symbolAfter: after ?? false, decimals: decimals ?? 2 };
-  const rate = RATES[upper];
+  const rate = unitsOn(upper, rateDay);
   if (rate !== undefined) info.unitsPerUsd = rate;
   return info;
 }
@@ -78,9 +113,10 @@ export function currencyInfo(code: string): CurrencyInfo {
  * Minor units in, minor units out, rounded once. Nothing when either side has
  * no rate: a conversion nobody can stand behind is not made at all.
  */
-export function exchange(cents: number, from: string, to: string): number | undefined {
-  const a = RATES[from.toUpperCase()];
-  const b = RATES[to.toUpperCase()];
+export function exchange(cents: number, from: string, to: string, day: string = rateDay): number | undefined {
+  if (from.toUpperCase() === to.toUpperCase()) return cents;
+  const a = unitsOn(from, day);
+  const b = unitsOn(to, day);
   if (a === undefined || b === undefined) return undefined;
   return Math.round((cents / a) * b);
 }
@@ -96,8 +132,8 @@ export function exchangeHeld(cents: number, from: string, to: string): number | 
 }
 
 /** Whether SLATE can convert into this currency at all. */
-export function hasRate(code: string): boolean {
-  return RATES[code.toUpperCase()] !== undefined;
+export function hasRate(code: string, day: string = rateDay): boolean {
+  return referenceRate(code, day) !== undefined;
 }
 
 /**

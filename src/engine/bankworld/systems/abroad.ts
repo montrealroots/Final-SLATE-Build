@@ -30,7 +30,7 @@ import { formatMoney, saveCurrency, type Money } from '../core/money';
 import type { Person } from '../domain/model';
 import type { ScheduledItem } from '../core/scheduler';
 import { addDays, dateKey, formatDate, formatWeekdayDate, instantFromZoned, zonedParts, type Instant } from '../core/time';
-import { exchange, exchangeHeld } from '../content/currency';
+import { exchange, exchangeHeld, referenceRate, type ReferenceRate } from '../content/currency';
 import { bankById, type Bank } from '../content/banks';
 import { afterBusinessDaysIn, daysOfAccount } from '../content/bankdays';
 import { ASSUMED_DAYS, ASSUMED_WORDS, abroadTermsOf, chargeOf, homeTerms, marginOf, noticeFor, NON_RESIDENT_TAX, US_REPORTS, type AbroadTerms, type Charge } from '../content/homeaccounts';
@@ -304,6 +304,11 @@ export interface AbroadQuote {
   arrives: Instant;
   days: number;
   daysAssumed: boolean;
+  /**
+   * SLATE: the reference rates the quote was made at, each with its effective day and whether it was stale (from November
+   * 14, 2026; content/currency.ts `referenceRate`). Kept with the payment, so its arrival settles what was quoted.
+   */
+  rates: { sent: ReferenceRate; received: ReferenceRate };
 }
 
 /** What the holder's accounts at a bank have sent abroad since a moment, in its money. */
@@ -343,6 +348,13 @@ export function abroadQuote(sim: Simulation, person: Person, from: Account, to: 
   if (!(sent > 0)) return { refused: 'Enter how much to send.' };
   const save = saveCurrency(sim.universe);
   const sentIn = moneyOf(sim, from);
+  // SLATE: no rate in force for either money, no payment: until November 14, 2026 a missing rate was taken as one to one.
+  const receivedFor = to ? moneyOf(sim, to) : toBank.currency;
+  const sentRate = referenceRate(sentIn);
+  const receivedRate = referenceRate(receivedFor);
+  for (const [cur, r] of [[sentIn, sentRate], [receivedFor, receivedRate], [save, referenceRate(save)]] as const) {
+    if (!r) return { refused: `No exchange rate for ${cur} is recorded by this date, so the game can't quote this payment.` };
+  }
   const has = heldOf(from);
   let fee = chargeOf(out.out, sent, sentIn, swap);
   if (sent + fee > has) {
@@ -372,6 +384,7 @@ export function abroadQuote(sim: Simulation, person: Person, from: Account, to: 
   return {
     from: fromBank, to: toBank, sent, sentIn, worth, fee, feeSave, margin: rate, marginAssumed: assumed, marginSave,
     incoming, incomingSave, received, receivedIn, receivedSave, arrives, days, daysAssumed: out.days === undefined,
+    rates: { sent: sentRate!, received: receivedRate! },
   };
 }
 
@@ -388,6 +401,15 @@ function limitRefusal(sim: Simulation, person: Person, bank: Bank, terms: Abroad
 
 const percent = (rate: number) => `${Number((rate * 100).toFixed(2))}%`;
 
+/** SLATE: the reference rates a quote reads, by their dates: not a bank's price, and said to be old where they are. */
+export function rateWords(q: AbroadQuote): string {
+  const shown = [q.rates.sent, q.rates.received].filter((r) => r.currency !== 'USD');
+  if (!shown.length) return '';
+  const said = shown.map((r) => `${r.perUSD} ${r.currency} to the dollar from ${r.effective}`).join(' and ');
+  const old = shown.some((r) => r.stale) ? ' These are the newest recorded, and more than a quarter old.' : '';
+  return `The estimated rate is the reference rate in force: ${said}.${old}`;
+}
+
 /** A quote in a sentence, for Move Money and the guide. */
 export function quoteWords(sim: Simulation, q: AbroadQuote): string {
   const fee = q.fee > 0 ? `for a ${formatMoney(q.fee, q.sentIn)} fee` : 'for no fee';
@@ -396,7 +418,7 @@ export function quoteWords(sim: Simulation, q: AbroadQuote): string {
     : `At its rate, ${percent(q.margin)} under the estimated exchange rate`;
   const incoming = q.incoming > 0 ? ` after its ${formatMoney(q.incoming, q.receivedIn)} fee for a payment from abroad` : '';
   const days = q.daysAssumed ? ` (${ASSUMED_WORDS.days})` : '';
-  return `${q.from.name} sends ${formatMoney(q.sent, q.sentIn)} ${fee}. ${margin}, ${q.to.name} receives ${formatMoney(q.received, q.receivedIn)}${incoming}, on ${formatWeekdayDate(q.arrives, sim.zone)}${days}.`;
+  return `${q.from.name} sends ${formatMoney(q.sent, q.sentIn)} ${fee}. ${margin}, ${q.to.name} receives ${formatMoney(q.received, q.receivedIn)}${incoming}, on ${formatWeekdayDate(q.arrives, sim.zone)}${days}. ${rateWords(q)}`;
 }
 
 /**
@@ -428,6 +450,8 @@ export function sendAbroad(sim: Simulation, person: Person, from: Account, to: A
     payload: {
       personId: person.id, fromId: from.id, ...(to ? { toId: to.id } : {}), toBankId: q.to.id, amount: q.worth,
       abroad: true, margin: q.marginSave, incoming: q.incomingSave, received: q.received, receivedIn: q.receivedIn,
+      // SLATE: the quote's rates, kept with it: its arrival posts what was quoted, whatever the rate is by then.
+      rates: { sent: { ...q.rates.sent }, received: { ...q.rates.received } },
     },
   });
   return q.arrives;

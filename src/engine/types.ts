@@ -1404,6 +1404,10 @@ export interface GameState {
   banner?: import('./company').Banner;
   /** Work permits applied for and granted (papers.ts, from November 14, 2026). */
   permits?: import('./papers').WorkPermit[];
+  /** Visas applied for and issued (papers.ts, from November 14, 2026). */
+  paperApplications?: import('./papers').PaperApplication[];
+  /** Days worked in each country by its code, for a short engagement's allowance (papers.ts `recordWorkDay`). */
+  papersWorked?: Record<string, string[]>;
   /** First-look deals offered, running and past (first-look.ts). Absent until the first offer, and in saves from before November 13, 2026. */
   firstLooks?: import('./first-look').FirstLook[];
   /** Equipment you own or your family lends (equipment.ts). Absent in saves from before November 12, 2026: none. */

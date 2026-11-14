@@ -8,11 +8,11 @@
 // balances as their sums). SLATE's `GameState.bank` holds the universe; nothing else keeps a balance of the player's.
 import { Simulation } from './core/simulation';
 import { DEFAULT_LEDGER_CURRENCY, type Money } from './core/money';
-import { instantFromZoned, MS_DAY, startOfNextDay, type Instant } from './core/time';
+import { dateKey, instantFromZoned, MS_DAY, startOfNextDay, type Instant } from './core/time';
 import { idAlreadyIssued } from './core/ids';
 import { SAVE_SCHEMA_VERSION, type Person, type SaveMeta, type SaveUniverse } from './domain/model';
 import { CITIES, COUNTRIES, countryOfPlace, distanceKm } from './content/geography';
-import { exchange } from './content/currency';
+import { exchange, setRateDay } from './content/currency';
 import { CARDS } from './content/cards';
 import { bankById } from './content/banks';
 import { isHolidaysLoaded, loadCountryHolidays } from './content/holidays';
@@ -82,9 +82,16 @@ export function defaultConfig(): BankWorldConfig {
 }
 
 /** Every 1221 system that is the bank's or the papers': registered on every simulation, new or loaded. */
+/** The exchange rates are read on the bank's own day (content/currency.ts `setRateDay`). */
+export const readRatesOn = (sim: Simulation): void => setRateDay(dateKey(sim.now, sim.homeZone));
+
 export function registerBankSystems(sim: Simulation): void {
-  // The day turning over, which 1221's life ran (`systems/life.ts` `dailyRollover`): here it only tells the bank.
+  // Every command reads the rates on its own day: set before any runs (a guard that refuses nothing).
+  sim.guardCommands(() => { readRatesOn(sim); return undefined; });
+  // The day turning over, which 1221's life ran (`systems/life.ts` `dailyRollover`): here it tells the bank, and the
+  // rates move to the new day before anything of it runs.
   sim.onSchedule('life.day_rollover', () => {
+    readRatesOn(sim);
     sim.emit('world.day_rollover', { date: sim.now });
     sim.schedule({ at: startOfNextDay(sim.now, sim.homeZone), kind: 'life.day_rollover', label: 'New Day', category: 'system', priority: 5 });
   });
@@ -159,6 +166,7 @@ export function createBankWorld(config: Partial<BankWorldConfig> = {}, seed = 's
 
   const sim = new Simulation(universe);
   registerBankSystems(sim);
+  readRatesOn(sim);
   const cur = meta.currency!;
   const conv = (eur: Money) => Math.round((exchange(eur, DEFAULT_LEDGER_CURRENCY, cur) ?? eur) / 100) * 100;
   const w = c.wealth && !c.opening ? WEALTH_PROFILE[c.wealth] : { checking: 0, savings: 0, cardLimit: 0, cardBalance: 0, creditScore: 700 };
@@ -206,6 +214,7 @@ export const createSave = (slot: 1 | 2 | 3, seed: string, config: Partial<BankWo
 export function loadSave(universe: SaveUniverse): Simulation {
   const sim = new Simulation(universe);
   registerBankSystems(sim);
+  readRatesOn(sim);
   armAll(sim);
   return sim;
 }
@@ -215,6 +224,7 @@ const open = new WeakMap<SaveUniverse, Simulation>();
 export function bankSim(universe: SaveUniverse): Simulation {
   let sim = open.get(universe);
   if (!sim) { sim = loadSave(universe); open.set(universe, sim); }
+  readRatesOn(sim);
   return sim;
 }
 

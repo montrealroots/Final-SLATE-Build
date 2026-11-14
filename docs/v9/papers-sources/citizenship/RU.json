@@ -1,0 +1,20 @@
+{
+ "country": "RU",
+ "years": 5,
+ "renounce": false,
+ "lapses": false,
+ "note": "GLOBALCIT's Citizenship Law Dataset v3.0 (EUI, 2025), coding the law in force on 1 January 2024 (A06a RUS 15.1(1), 21; A06b No provision; L05 No provision): ordinary naturalisation after 5 years' residence; no renunciation of other citizenships required; a citizen keeps it on taking another. Reforms after that date are checked in the file's later sources, where a later source is given. Citizenship at birth is read from the same dataset's 2024 coding of modes A01a (descent, born in country: Generally applicable provision), A01b (descent, born abroad: Generally applicable provision), A02a (birth in country: No provision) and A02b (birth in country to a parent born there: No provision), as its codebook (RSC/GLOBALCIT 2025/01, sections 3.2.1a to 3.2.2b) defines them: not by birth in the territory alone (provisions for foundlings and children otherwise stateless, modes A03a and A03b, aren't held by the form); by descent from either parent, with no further limit on a child born abroad. Changes to the law at birth after 1 January 2024 weren't checked for this file. On 2026-11-03 the primary was read: Федеральный закон от 28.04.2023 № 138-ФЗ \"О гражданстве Российской Федерации\", Официальный интернет-портал правовой информации (publication.pravo.gov.ru), eoNumber 0001202304280013, 98 pp., as published; arts. 10, 13, 15. Every figure the file holds now rests on it, and the dataset is no longer cited. Read from the law as first published (28 April 2023) on its page images; amendments since weren't read.",
+ "sources": [
+  {
+   "url": "http://publication.pravo.gov.ru/file/pdf?eoNumber=0001202304280013",
+   "title": "Федеральный закон от 28.04.2023 № 138-ФЗ \"О гражданстве Российской Федерации\", Официальный интернет-портал правовой информации (publication.pravo.gov.ru), eoNumber 0001202304280013, 98 pp., as published; arts. 10, 13, 15",
+   "read": "2026-11-03",
+   "kind": "primary",
+   "said": "Статья 10. ... 2. Приобретение гражданином Российской Федерации гражданства (подданства) иностранного государства не влечет за собой прекращение гражданства Российской Федерации. ... Статья 13. ... 1. Ребенок приобретает гражданство Российской Федерации по рождению, если на день рождения ребенка: 1) оба его родителя или единственный родитель имеют гражданство Российской Федерации; 2) один из его родителей имеет гражданство Российской Федерации, а другой родитель является лицом без гражданства; 3) один из его родителей имеет гражданство Российской Федерации, а другой родитель является иностранным гражданином (при условии, что ребенок родился в Российской Федерации); 4) один из его родителей имеет гражданство Российской Федерации, а другой родитель является иностранным гражданином (при условии, что ребенок родился за пределами Российской Федерации и не приобрел гражданство (подданство) иностранного государства по рождению); ... Статья 15. ... 1) постоянно проживает в Российской Федерации со дня принятия решения о выдаче вида на жительство в Российской Федерации и до дня подачи заявления о приеме в гражданство Российской Федерации в течение пяти лет;"
+  }
+ ],
+ "atBirth": {
+  "soil": "none",
+  "descent": "either parent"
+ }
+}

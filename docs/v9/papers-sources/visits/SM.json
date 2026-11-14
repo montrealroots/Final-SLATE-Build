@@ -1,0 +1,14 @@
+{
+ "country": "SM",
+ "group": "eu1806",
+ "note": "San Marino keeps an open border with Italy and no immigration control, reached only through Italy: a visitor meets the EU's common list (the eu1806 list). Read on 2026-11-03 from the Secretariat of State for Foreign Affairs' own page: a visitor from outside the Schengen area needs what entering and crossing it asks, so Wikipedia's copy, read before, was no longer cited. A stay longer than 30 days needs a permit (not modelled).",
+ "sources": [
+  {
+   "url": "https://www.esteri.sm/pub2/EsteriSM/Servizi-per-utenza/Informazioni-per-chi-visita-SMR.html",
+   "title": "Segreteria di Stato per gli Affari Esteri (San Marino), Informazioni per chi visita San Marino",
+   "read": "2026-11-03",
+   "kind": "primary",
+   "said": "Per raggiungere la Repubblica di San Marino è necessario attraversare l’area Schengen. Pertanto, i visitatori provenienti da Stati al di fuori dell’area Schengen dovranno essere in possesso delle autorizzazioni necessarie per l’ingresso e transito nello spazio Schengen prima della loro partenza. ... La permanenza in territorio dello straniero per periodi di tempo superiori a 30 giorni è subordinata alla titolarità di permesso di soggiorno o di residenza."
+  }
+ ]
+}

@@ -1,0 +1,192 @@
+{
+ "country": "SB",
+ "rules": [
+  {
+   "days": 90,
+   "entry": "free",
+   "within": 180,
+   "passports": [
+    "CH",
+    "IL",
+    "IS",
+    "LI",
+    "NO"
+   ]
+  },
+  {
+   "days": 30,
+   "entry": "evisa",
+   "passports": [
+    "AD",
+    "AG",
+    "AR",
+    "AU",
+    "BB",
+    "BN",
+    "BR",
+    "BS",
+    "BZ",
+    "CA",
+    "DM",
+    "DO",
+    "FM",
+    "GB",
+    "GD",
+    "KI",
+    "KN",
+    "KR",
+    "KW",
+    "LC",
+    "MC",
+    "MH",
+    "MV",
+    "MY",
+    "NR",
+    "NZ",
+    "PW",
+    "SG",
+    "SM",
+    "TH",
+    "TO",
+    "TT",
+    "TV",
+    "US",
+    "VC",
+    "WS"
+   ]
+  },
+  {
+   "days": 90,
+   "entry": "evisa",
+   "passports": [
+    "AE",
+    "AT",
+    "BE",
+    "BG",
+    "CN",
+    "CY",
+    "CZ",
+    "DE",
+    "DK",
+    "EE",
+    "ES",
+    "FI",
+    "FR",
+    "GR",
+    "HK",
+    "HR",
+    "HU",
+    "ID",
+    "IE",
+    "IN",
+    "IT",
+    "JP",
+    "LT",
+    "LU",
+    "LV",
+    "MT",
+    "NL",
+    "PL",
+    "PT",
+    "RO",
+    "SE",
+    "SI",
+    "SK"
+   ]
+  },
+  {
+   "entry": "evisa",
+   "months": 3,
+   "passports": [
+    "FJ",
+    "PG",
+    "VU"
+   ]
+  }
+ ],
+ "others": {
+  "entry": "evisa",
+  "months": 3
+ },
+ "note": "The Solomon Islands: every visitor applies before travelling through the Immigration Division's e-visa portal and shows the grant letter on arrival. Free of a visa fee by mutual agreement (the online lodgement fee aside): the EU's members, the United Arab Emirates, China (from 27 January 2025), Hong Kong (from 26 August 2026), Japan, India and Indonesia for up to 90 days, single entry; Fiji, Papua New Guinea and Vanuatu the Melanesian Spearhead Group visa (3 months, multiple entries); and the nationals of the countries listed the free 30-day tourist permit. Iceland, Liechtenstein, Norway, Switzerland and Israel enter without a visa for 90 days in 180 by Wikipedia's copy. Everyone else applies for a tourist visa (USD 50 and the USD 50 lodgement fee, up to 3 months). Taiwan's permit on arrival was cancelled in April 2025. Read on 2026-11-03 from the Division's own pages, which corrected Wikipedia's copy, read before: the free entries are applied for online (held as e-Visas, not as entry without one), China's and Hong Kong's are 90 days, not 30, India's and Indonesia's 90-day exemptions were missing, and the tourist visa is 3 months. The Division doesn't name the free 30-day permit's nationalities, which stand on Wikipedia's copy.",
+ "sources": [
+  {
+   "url": "https://en.wikipedia.org/wiki/Visa_policy_of_the_Solomon_Islands",
+   "title": "Wikipedia, Visa policy of the Solomon Islands",
+   "read": "2026-11-03",
+   "kind": "secondary",
+   "quotes": "https://www.commerce.gov.sb/divisions/immigration/",
+   "said": "may enter Solomon Islands without a visa for the following period in accordance with bilateral agreements: 90 days United Arab Emirates 90 days within any 180 days European Union member states (except Ireland) Iceland Liechtenstein Norway Switzerland 90 days within any 6 months Israel 30 days China Hong Kong ... Citizens of the following countries and territories may obtain a free visitor permit on arrival for 30 days. The maximum period of stay in the Solomon Islands must not exceed 90 days within any 12-month period. Andorra Antigua and Barbuda Argentina Australia Bahamas Barbados Belize Brazil Brunei Canada Dominica Dominican Republic Fiji Grenada Ireland Japan Kiribati Kuwait Malaysia Maldives Marshall Islands Micronesia Monaco Nauru New Zealand Palau Papua New Guinea Saint Kitts and Nevis Saint Lucia Saint Vincent and the Grenadines Samoa San Marino Singapore South Korea Thailand Tonga Trinidad and Tobago Tuvalu United Kingdom United States Vanuatu ... Citizens of other countries and territories may obtain an e-Visa."
+  },
+  {
+   "url": "https://immigration.gov.sb/free-entry-tourist-permit-30-days/",
+   "title": "Solomon Islands Immigration Division, 30 days - Tourist permit",
+   "read": "2026-11-03",
+   "kind": "primary",
+   "said": "You are required to apply well in advance from abroad through the e-visa portal before enter Solomon Islands. A grant letter will be issued when your application is approved. You must present your visa grant letter to Immigration officers at the port of entry. Visa validity 30 days (single entry only) from the date of arrival into Solomon Islands ... This tourist permit is free. However, an online lodgement fee of $50 USD will be charged."
+  },
+  {
+   "url": "https://immigration.gov.sb/mutual-visa-eu/",
+   "title": "Solomon Islands Immigration Division, European Union - Mutual Visa Exemption",
+   "read": "2026-11-03",
+   "kind": "primary",
+   "said": "This visa is a reciprocal visa arrangement between Solomon Islands and the European Union countries. ... Visa fee : Free Validity : Stay up to 90 days Single entry Work prohibited Apply Online Who Should Apply European Union countries with – Official/Diplomatic/Ordinary Passports. ... You must apply outside of Solomon Islands."
+  },
+  {
+   "url": "https://immigration.gov.sb/mutual-visa-peoples-republic-of-china/",
+   "title": "Solomon Islands Immigration Division, People's Republic of China",
+   "read": "2026-11-03",
+   "kind": "primary",
+   "said": "As of January 27, 2025, citizens of the People’s Republic of China and the Solomon Islands holding ordinary passports can travel to each other’s countries without a visa, according to a mutual exemption agreement. ... Visa fee : Free Validity : Stay up to 90 days Single entry Work prohibited Apply Online"
+  },
+  {
+   "url": "https://immigration.gov.sb/mutual-visa-hong-kong/",
+   "title": "Solomon Islands Immigration Division, Hong Kong - Mutual Visa Exemption",
+   "read": "2026-11-03",
+   "kind": "primary",
+   "said": "Solomon Islands and the Hong Kong Special Administrative Region (HKSAR) of the People’s Republic of China will officially implement a reciprocal visa-free travel arrangement, effective 26 August 2026. Visa Details Visa fee : Free Validity : Stay up to 90 days Single entry"
+  },
+  {
+   "url": "https://immigration.gov.sb/mutual-visa-uae/",
+   "title": "Solomon Islands Immigration Division, United Arab Emirates - Mutual Visa Exemption",
+   "read": "2026-11-03",
+   "kind": "primary",
+   "said": "This visa is issued at the discretion of the Solomon Islands Government MOU with the United Arab Emirates. Visa Details Visa fee : Free Validity : Stay up to 90 days Single entry Work prohibited Apply Online"
+  },
+  {
+   "url": "https://immigration.gov.sb/mutual-visa-japan/",
+   "title": "Solomon Islands Immigration Division, Japan Mutual Visa",
+   "read": "2026-11-03",
+   "kind": "primary",
+   "said": "A reciprocal visa arrangement with Japan for all passport classifications (ordinary, official, diplomatic). Visa Details Visa fee : Free Validity : Stap up to 90 days Single entry Work prohibited Apply Online"
+  },
+  {
+   "url": "https://immigration.gov.sb/mutual-visa-india/",
+   "title": "Solomon Islands Immigration Division, India - Mutual Visa Exemption",
+   "read": "2026-11-03",
+   "kind": "primary",
+   "said": "This visa is issued at the discretion of the Solomon Islands Government MOU with the Indian diplomatic, official and ordinary passport holders. Visa Details Visa fee : Free Validity : Stay up to 90 days Single entry"
+  },
+  {
+   "url": "https://immigration.gov.sb/mutual-visa-indonesia/",
+   "title": "Solomon Islands Immigration Division, Indonesia - Mutual Visa Exemption",
+   "read": "2026-11-03",
+   "kind": "primary",
+   "said": "This visa is issued at the discretion of the Solomon Islands Government MOU with Indonesia. Visa Details Visa fee : Free Validity : Stay up to 90 days Single entry"
+  },
+  {
+   "url": "https://immigration.gov.sb/visitor-visa-melanesian-spearhead-group-msg/",
+   "title": "Solomon Islands Immigration Division, Melanesian Spearhead Group (MSG) Visa",
+   "read": "2026-11-03",
+   "kind": "primary",
+   "said": "Visa fee Free Online lodgement fee USD 50 ... Validity - Stay up to 3 months - valid for a period of 1 year. Multiple entries ... This visa is for citizens of Fiji, Papua New Guinea, and Vanuatu"
+  },
+  {
+   "url": "https://immigration.gov.sb/visitor-visa-tourist/",
+   "title": "Solomon Islands Immigration Division, Tourist Visa",
+   "read": "2026-11-03",
+   "kind": "primary",
+   "said": "Visa fee USD 50 Online lodgement fee USD 50 Total USD 100 ... Validity - Stay up to 3 months - valid for a period of 1 year. Multiple entries"
+  }
+ ]
+}

@@ -1,0 +1,97 @@
+{
+ "country": "HN",
+ "office": "the Instituto Nacional de Migración (INM), by an appointment bought at an authorised bank",
+ "currency": "USD",
+ "routes": [
+  {
+   "id": "home",
+   "where": "home",
+   "speed": "standard",
+   "within": null,
+   "label": "at an INM office on the appointment's date"
+  },
+  {
+   "id": "airport-urgent",
+   "where": "home",
+   "speed": "urgent",
+   "within": null,
+   "label": "an urgent passport at the INM's airport counters, after an officer validates the emergency"
+  }
+ ],
+ "passports": [
+  {
+   "for": "adult",
+   "from": 21,
+   "validYears": 5,
+   "pay": {
+    "home": "35",
+    "airport-urgent": "55"
+   }
+  },
+  {
+   "for": "adult",
+   "from": 21,
+   "validYears": 10,
+   "pay": {
+    "home": "50",
+    "airport-urgent": "70"
+   }
+  },
+  {
+   "for": "under 21",
+   "under": 21,
+   "validYears": 5,
+   "pay": {
+    "home": "35",
+    "airport-urgent": "55"
+   }
+  }
+ ],
+ "note": "The fees for those 21 and over as Tu Nota gave them for 2026 (15 October 2026): a passport valid five years for 35 dollars or ten years for 50, chosen when paying for the appointment at the bank. The INM's own pages, read 2026-11-03, give the rest: a passport for those under 21 is valid five years at 35 dollars, 55 in an emergency (20 August 2026); and the urgent passports issued at its counters in the Palmerola, Ramón Villeda Morales and Toncontín airports, for emergencies such as an expired or lost passport and once an officer validates the case, cost 55 dollars for five years and 70 for ten (22 July and 23 October 2026), written as the urgent route. Until 2026-11-03 the under-21 fee and validity were left unknown, and the emergency's 20 dollars more, reported only in 2019 (La Prensa), wasn't modelled. The INM states no ordinary fee for those 21 and over; its urgent prices are Tu Nota's plus that 20. Processing times aren't published.",
+ "sources": [
+  {
+   "kind": "secondary",
+   "url": "https://www.tunota.com/honduras-hoy/cuales-requisitos-precios-para-sacar-pasaporte-honduras-2026-2026-2026-10-15",
+   "quotes": "https://inm.gob.hn/",
+   "title": "Tu Nota, ¿Cuáles son los requisitos y precios para sacar el pasaporte en Honduras 2026? (15 October 2026)",
+   "read": "2026-11-03",
+   "said": "Los ciudadanos mayores de 21 años deben seguir estos pasos para solicitar su pasaporte: El primer paso consiste en comprar la cita para el trámite en una sucursal bancaria autorizada. Al realizar el pago, el solicitante debe elegir entre el pasaporte con vigencia de cinco o diez años ... Pasaporte de cinco años: 35 dólares (L946) . Pasaporte de diez años: 50 dólares (L1,346)."
+  },
+  {
+   "kind": "secondary",
+   "url": "https://www.laprensa.hn/sanpedro/1316064-410/elevada-demanda-pasaportes-obliga-emitir-citas-noviembre-honduras",
+   "quotes": "https://inm.gob.hn/",
+   "title": "La Prensa (Honduras), Elevada demanda de pasaportes obliga a emitir citas para noviembre (4 September 2019)",
+   "read": "2026-11-03",
+   "said": "El costo del pasaporte por cinco años es de $35 y por 10 años de $50. Por cita de emergencia son $20 adicionales."
+  },
+  {
+   "kind": "primary",
+   "url": "https://inm.gob.hn/pasaportes",
+   "title": "Instituto Nacional de Migración, Pasaportes",
+   "read": "2026-11-03",
+   "said": "El solicitante deberá realizar el pago correspondiente en uno de los bancos de su preferencia autorizado de acuerdo al período de vigencia y tipo de pasaporte solicitado, de acuerdo con las tarifas oficiales vigentes."
+  },
+  {
+   "kind": "primary",
+   "url": "https://inm.gob.hn/noticias/conoce-los-requisitos-especiales-para-pasaporte-para-menor-de-21-anos-2026-08-20",
+   "title": "Instituto Nacional de Migración (INM) Honduras, Conoce los requisitos especiales para pasaporte para menor de 21 años (20 August 2026)",
+   "read": "2026-11-03",
+   "said": "Es importante mencionar que la vigencia del documento para los ciudadanos menores de 21 años es por espacio de cinco años y el costo es de 35.00 dólares o su equivalente en lempiras y si es por emergencia el costo incrementa a 55 dólares o su equivalente en lempiras. ... El proceso general inicia con la compra de la cita en una sucursal bancaria autorizada."
+  },
+  {
+   "kind": "primary",
+   "url": "https://inm.gob.hn/noticias/honduras-fusiona-tecnologia-e-innovacion-para-emitir-pasaportes-de-urgencia-en-aeropuertos",
+   "title": "INM Honduras, Honduras fusiona tecnología e innovación para emitir pasaportes de urgencia en aeropuertos (23 October 2026)",
+   "read": "2026-11-03",
+   "said": "Tras la validación el caso por parte de un oficial migratorio, el usuario efectúa el pago correspondiente en las agencias bancarias autorizadas. Las tarifas oficiales vigentes se mantienen en 55 dólares para el pasaporte con vigencia de 5 años y en 70 dólares para el de 10 años."
+  },
+  {
+   "kind": "primary",
+   "url": "https://inm.gob.hn/noticias/migracion-reporta-emision-de-mas-de-950-pasaportes-en-centros-aeropuertos-honduras-2026-07-22",
+   "title": "INM Honduras, Migración reporta emisión de más de 950 pasaportes en centros aeropuertos (22 July 2026)",
+   "read": "2026-11-03",
+   "said": "El pasaporte con vigencia de 5 años tiene un costo de 55 dólares o su equivalente en lempiras, mientras que el documento válido por 10 años tiene un precio de 70 dólares o su equivalente en moneda nacional"
+  }
+ ]
+}

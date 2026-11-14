@@ -1,0 +1,25 @@
+{
+ "country": "MA",
+ "others": {
+  "right": "permit",
+  "route": "Visa du contrat de travail d’étranger (Ministère de l’Emploi)"
+ },
+ "note": "Morocco: an employer recruiting a foreign employee needs the authorisation of the authority in charge of labour, given as a visa on the employment contract, which takes effect on the visa's date, the contract following the official model (Code du travail, Loi n° 65-99, arts. 516-517, as the Secrétariat Général du Gouvernement publishes it); contracts engaging foreign artists through artistic agencies are visaed first too (art. 492). The visa is generally for a year at first, and artists (and footballers) need no ANAPEC certificate that the post can't be filled locally (the Spanish consulate in Rabat's guide; the Code doesn't speak of the certificate). No days without it.",
+ "sources": [
+  {
+   "url": "https://exteriores.gob.es/Consulados/rabat/es/ViajarA/Paginas/Trabajar.aspx",
+   "title": "Consulado General de España en Rabat, Trabajar en Marruecos",
+   "read": "2026-11-03",
+   "said": "Después, y tras la redacción del contrato de trabajo, según el modelo tipo, éste debe ser visado por el Servicio de Empleo de las personas migrantes (SEM) ante la Dirección del Empleo del Ministerio. ... No tienen obligación de conseguir el certificado emitido por la Anapec: ... los artistas, futbolistas",
+   "kind": "secondary",
+   "quotes": "https://www.emploi.gov.ma/"
+  },
+  {
+   "url": "https://www.sgg.gov.ma/Portals/0/lois/Code_travail_fr.pdf",
+   "title": "Secrétariat Général du Gouvernement, Bulletin officiel n° 5210 du 6 mai 2004, Loi n° 65-99 relative au Code du travail (French edition; the PDF's font is offset-encoded, decoded here by a fixed shift of 29 code points)",
+   "read": "2026-11-03",
+   "said": "Article 516 Tout employeur désireux de recruter un salarié étranger doit obtenir une autorisation de l'autorité gouvernementale chargée du travail. Cette autorisation est accordée sous forme de visa apposé sur le contrat de travail. La date du visa est la date à laquelle le contrat de travail prend effet. ... Article 517 Le contrat de travail réservé aux étrangers doit être conforme au modèle fixé par l'autorité gouvernementale chargée du travail. ... Article 492 Les agences artistiques, peuvent procéder, après autorisation accordée par l'autorité gouvernementale chargée du travail, au placement, contre rémunération, des artistes dans les théâtres, concerts, spectacles de variétés, cinémas, cirques et autres entreprises de divertissement. Ces agences sont tenues de soumettre au visa préalable de l'autorité gouvernementale chargée du travail tous les contrats conclus par leur entremise et portant sur l'engagement d'artistes de nationalité étrangère par des entreprises de spectacle exerçant au Maroc",
+   "kind": "primary"
+  }
+ ]
+}

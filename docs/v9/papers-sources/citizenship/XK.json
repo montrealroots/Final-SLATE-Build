@@ -1,0 +1,21 @@
+{
+ "country": "XK",
+ "years": 5,
+ "renounce": false,
+ "lapses": false,
+ "note": "GLOBALCIT's Citizenship Law Dataset v3.0 (EUI, 2025), coding the law in force on 1 January 2024 (A06a KOS 10(1); A06b KOS 10(1); L05 No provision): ordinary naturalisation after 5 years' residence; no renunciation of other citizenships required; a citizen keeps it on taking another. Reforms after that date are checked in the file's later sources, where a later source is given. Citizenship at birth is read from the same dataset's 2024 coding of modes A01a (descent, born in country: Generally applicable provision), A01b (descent, born abroad: Dual citizenship restriction), A02a (birth in country: Parental residence restriction) and A02b (birth in country to a parent born there: No provision), as its codebook (RSC/GLOBALCIT 2025/01, sections 3.2.1a to 3.2.2b) defines them: by birth in the territory only on the condition the dataset states; by descent from either parent, a child born abroad on the limit the dataset states. The coding also records a dual-citizenship restriction on descent, which the form doesn't hold. Changes to the law at birth after 1 January 2024 weren't checked for this file. On 2026-11-03 the primary was read: Ligji Nr. 10/L-023 për Shtetësinë e Republikës së Kosovës, Gazeta Zyrtare e Republikës së Kosovës Nr. 7, 6 maj 2026 (repeals Law No. 04/L-215), PDF from the gazette's download, arts. 4, 6, 7, 10. Every figure the file holds now rests on it, and the dataset is no longer cited. Law No. 10/L-023 (Gazette No. 7, 6 May 2026, in force fifteen days after publication) replaced Law 04/L-215 and changed a figure: a child born in Kosovo to foreign parents with permanent residence takes it only where it would otherwise be stateless (art. 7(3)), so birth in the territory is none in the ordinary case.",
+ "sources": [
+  {
+   "url": "https://gzk.rks-gov.net/ActDetail.aspx?ActID=119612",
+   "title": "Ligji Nr. 10/L-023 për Shtetësinë e Republikës së Kosovës, Gazeta Zyrtare e Republikës së Kosovës Nr. 7, 6 maj 2026 (repeals Law No. 04/L-215), PDF from the gazette's download, arts. 4, 6, 7, 10",
+   "read": "2026-11-03",
+   "kind": "primary",
+   "said": "Neni 4 Shtetësia e shumëfishtë 1. Shtetasi i Republikës së Kosovës mund të jetë edhe shtetas i një ose më shumë shteteve të tjera. 2. Fitimi dhe mbajtja e shtetësisë tjetër nuk rezulton në humbjen e shtetësisë së Republikës së Kosovës. ... Neni 6 ... 1. Fëmija lind shtetas i Republikës së Kosovës, nëse në momentin e lindjes të paktën njëri prind është shtetas i Republikës së Kosovës. ... 3. Në rastin kur fëmija ... është i lindur jashtë territorit të Republikës së Kosovës dhe njëri prej prindërve ka shtetësi të ndryshme nga ajo e Kosovës, të dy prindërit duhet të pajtohen me shkrim që fëmija të fitojë shtetësinë e Republikës së Kosovës. ... Neni 7 ... 3. Fëmija i lindur brenda territorit të Republikës së Kosovës, prindërit e të cilit kanë shtetësi tjetër por të cilët kanë lejeqëndrimi të përhershëm në Republikën e Kosovës, fiton shtetësinë e Republikës së Kosovës me pëlqimin e të dy prindërve, në rastet kur rrezikon të mbetet pa shtetësi. ... Neni 10 ... 1.2. ka qëndruar pa ndërprerë të paktën për pesë (5) vjet në Republikën e Kosovës pas marrjes së lejeqëndrimit të përhershëm;"
+  }
+ ],
+ "atBirth": {
+  "soil": "none",
+  "descent": "either parent",
+  "descentAbroad": "Person is born abroad to one citizen and one parent of another citizenship: both parents agree in writing (and the child too, from 14 to 18), or the child would otherwise be stateless."
+ }
+}

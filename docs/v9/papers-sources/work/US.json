@@ -1,0 +1,13 @@
+{
+ "country": "US",
+ "group": "us",
+ "note": "The United States keeps its own rules for foreign workers (the us list), which its territories keep too. Read again on 2026-11-03: the source on ecfr.gov said the same at a new address, cited since (the eCFR reader page answers this client with a request-access page; the text was read from eCFR's own API for 30 October 2026 (Title 8 last amended 14 October 2026)): https://www.ecfr.gov/api/versioner/v1/full/2026-10-30/title-8.xml?section=214.2.",
+ "sources": [
+  {
+   "url": "https://www.ecfr.gov/api/versioner/v1/full/2026-10-30/title-8.xml?section=214.2",
+   "title": "eCFR, 8 CFR 214.2(o) Aliens of extraordinary ability or achievement",
+   "read": "2026-11-03",
+   "said": "The petitioner must file a petition with the Service for a determination of the alien's eligibility for O-1 or O-2 classification before the alien may apply for a visa or seek admission to the United States."
+  }
+ ]
+}

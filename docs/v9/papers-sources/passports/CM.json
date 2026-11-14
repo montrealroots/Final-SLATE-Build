@@ -1,0 +1,33 @@
+{
+ "country": "CM",
+ "office": "the Délégation Générale à la Sûreté Nationale (DGSN)",
+ "currency": "XAF",
+ "routes": [
+  {
+   "id": "home",
+   "where": "home",
+   "speed": "standard",
+   "within": null,
+   "label": "in Cameroon"
+  }
+ ],
+ "passports": [
+  {
+   "for": "any",
+   "validYears": null,
+   "pay": {
+    "home": "110000"
+   }
+  }
+ ],
+ "note": "The stamp duty on an ordinary passport, for issue, renewal or extension, 110,000 F CFA under article 548 para. 1 of the General Tax Code, read in the Direction Générale des Impôts' 2026 edition of the Code on 2026-11-03 (unchanged by the 2026 finance law, as Digital Business Africa had reported with the Ministry of Finance's denial of a rise, read 2026-10-28). Validity, the processing time and fees abroad are leads.",
+ "sources": [
+  {
+   "kind": "primary",
+   "url": "https://www.impots.cm/sites/default/files/documents/CODE%20GENERAL%20DES%20IMPOTS%202026%20SITE%20DGI%20VERSION%20FRANCAISE.pdf",
+   "title": "Direction Générale des Impôts du Cameroun, Code Général des Impôts 2026 (site DGI, version française), article 548",
+   "read": "2026-11-03",
+   "said": "Article 548.- Le droit de timbre sur les passeports et autres documents en tenant lieu est fixé ainsi qu'il suit: 1) Passeports nationaux Le droit de timbre sur les passeports nationaux est fixé ainsi qu'il suit : délivrance, renouvellement et prorogation de passeports ordinaires : 110 000 F CFA ;"
+  }
+ ]
+}

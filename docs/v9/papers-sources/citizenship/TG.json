@@ -1,0 +1,28 @@
+{
+ "country": "TG",
+ "years": 5,
+ "renounce": true,
+ "lapses": true,
+ "note": "GLOBALCIT's Citizenship Law Dataset v3.0 (EUI, 2025), coding the law in force on 1 January 2024 (A06a TOG 10-14; A06b TOG 10-14; L05 TOG 23): ordinary naturalisation after 5 years' residence; the applicant must give up other citizenships; a citizen loses the citizenship on voluntarily taking another. Reforms after that date are checked in the file's later sources, where a later source is given. Citizenship at birth is read from the same dataset's 2024 coding of modes A01a (descent, born in country: Generally applicable provision), A01b (descent, born abroad: Generally applicable provision), A02a (birth in country: No provision) and A02b (birth in country to a parent born there: Generally applicable provision), as its codebook (RSC/GLOBALCIT 2025/01, sections 3.2.1a to 3.2.2b) defines them: by birth in the territory only on the condition the dataset states; by descent from either parent, with no further limit on a child born abroad. Changes to the law at birth after 1 January 2024 weren't checked for this file. On 2026-11-03 the primaries were read: Ordonnance n° 78-34 du 7 septembre 1978 portant Code de la Nationalité Togolaise, Journal Officiel 23e année n° 21 bis (numéro spécial) du 11 septembre 1978, Journal officiel de la République togolaise (new.jo.gouv.tg; scanned, read by OCR, fra); Loi n° 2007-017 du 6 juillet 2007 portant code de l'enfant, Journal officiel de la République togolaise, 6 juillet 2007 (scanned, OCR, fra), arts. 17-19. Every figure the file holds now rests on them, and the dataset is no longer cited. A Togolese adult who voluntarily takes another nationality loses Togo's, but the loss is subject to the government's authorisation by decree (art. 23(1°)), which the form doesn't hold. The Code de l'enfant of 2007 (art. 17) widened descent to either parent from the 1978 Code's father (art. 3).",
+ "sources": [
+  {
+   "url": "https://new.jo.gouv.tg/api/journal-officiel/publications/14597/pdf/download",
+   "title": "Ordonnance n° 78-34 du 7 septembre 1978 portant Code de la Nationalité Togolaise, Journal Officiel 23e année n° 21 bis (numéro spécial) du 11 septembre 1978, Journal officiel de la République togolaise (new.jo.gouv.tg; scanned, read by OCR, fra)",
+   "read": "2026-11-03",
+   "kind": "primary",
+   "said": "Article premier — Est Togolais l'enfant né au Togo d'un père et d'une mère nés au Togo, qui a sa résidence habituelle sur le territoire de la République Togolaise et jouit de la possession d'état de Togolais. ... Art. 3 — Est Togolais : 1 — l'enfant né d'un père togolais ; 2 — l'enfant né d'une mère togolaise et d'un père n'ayant pas de nationalité ou dont la nationalité est inconnue. ... Art. 11 — Nul ne peut être naturalisé togolais : — s'il n'a atteint l'âge de vingt-et-un ans révolus ; — s'il ne peut justifier d'une résidence habituelle au Togo pendant les cinq années qui ont précédé le dépôt de sa demande ; ... — s'il n'a expressément renoncé à sa nationalité d'origine ; ... Art. 23 — Perd la nationalité togolaise : 1° — le togolais majeur qui acquiert volontairement une nationalité étrangère ; Toutefois la perte est subordonnée à l'autorisation accordée par le décret du gouvernement togolais"
+  },
+  {
+   "url": "https://new.jo.gouv.tg/api/journal-officiel/publications/13369/pdf/download",
+   "title": "Loi n° 2007-017 du 6 juillet 2007 portant code de l'enfant, Journal officiel de la République togolaise, 6 juillet 2007 (scanned, OCR, fra), arts. 17-19",
+   "read": "2026-11-03",
+   "kind": "primary",
+   "said": "CHAPITRE II - LE DROIT A UNE NATIONALITÉ Art. 17 - L'enfant né de parents togolais est togolais. L'enfant de mère ou de père togolais est togolais. Art. 18 - Tout enfant né au Togo de parents étrangers a le droit d'acquérir la nationalité togolaise par déclaration à la majorité, sous réserve de justifier de la possession d'état de togolais depuis l'âge de seize (16) ans."
+  }
+ ],
+ "atBirth": {
+  "soil": "conditional",
+  "soilIf": "Person is born in Togo to parents who were both born there and has habitual residence in Togo and apparent status (possession d'etat) as Togoloese.",
+  "descent": "either parent"
+ }
+}

@@ -52,7 +52,8 @@ function go(route: string): void {
   else store.go({ view: 'home' });
 }
 
-function run<R>(kind: string, payload: Record<string, unknown> = {}, options: { silent?: boolean } = {}): CommandResult<R> {
+/** A bank-world command run from any screen (Your Papers runs 1221's passport application). */
+export function run<R>(kind: string, payload: Record<string, unknown> = {}, options: { silent?: boolean } = {}): CommandResult<R> {
   let result: CommandResult<R> = { ok: false, error: 'No game is open.' };
   const refused = store.act((s) => {
     if (!s.bank) throw new Error('This story has no bank yet.');

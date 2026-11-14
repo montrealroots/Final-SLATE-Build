@@ -1,0 +1,17 @@
+{
+ "country": "TR",
+ "others": {
+  "right": "permit",
+  "route": "Çalışma izni"
+ },
+ "note": "Türkiye: a foreigner works on a work permit from the Ministry of Labour and Social Security; one working in scientific, cultural or artistic activities is exempt from it for up to a month (International Labour Force Law Implementing Regulation art. 48(1)(a)), but works only on obtaining the exemption, applied for through the Ministry's system in Türkiye or at a Turkish mission abroad (art. 49), so it isn't modelled as days without a permission. Read 2026-11-03 in the Regulation on mevzuat.gov.tr (MevzuatNo 39337, linked from the Ministry of Labour's page); until then from a law firm's summary of art. 48.",
+ "sources": [
+  {
+   "url": "https://www.mevzuat.gov.tr/MevzuatMetin/yonetmelik/7.5.39337.pdf",
+   "title": "Uluslararası İşgücü Kanunu Uygulama Yönetmeliği (mevzuat.gov.tr, MevzuatNo 39337, linked from the Ministry of Labour's uigm/genel-bilgi/mevzuat page), arts. 48-49",
+   "read": "2026-11-03",
+   "said": "Çalışma izninden muaf tutulacak yabancılar MADDE 48 – (1) Özel kanunlarda yer alan hükümler ile yabancı ile işverenin diğer kanunlardan doğan yükümlülüklerinin saklı kalması kaydıyla; a) Bilimsel, kültürel ve sanatsal faaliyetler kapsamında çalışacak yabancılar bir aya kadar, ... Çalışma izni muafiyeti başvurusu MADDE 49 – (1) Çalışma izni muafiyeti kapsamında olan yabancılar, çalışma izni muafiyeti almak kaydıyla çalışabilirler. (2) Çalışma izni muafiyeti başvuruları yabancı tarafından yurt içinde sistem üzerinden Bakanlığa, yurt dışında yabancının vatandaşı olduğu veya yasal olarak bulunduğu ülkedeki Türk dış temsilciliğine yapılır.",
+   "kind": "primary"
+  }
+ ]
+}

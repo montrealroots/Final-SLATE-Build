@@ -1,0 +1,28 @@
+{
+ "country": "CI",
+ "years": 5,
+ "renounce": false,
+ "lapses": true,
+ "note": "GLOBALCIT's Citizenship Law Dataset v3.0 (EUI, 2025), coding the law in force on 1 January 2024 (A06a CIV 24-33, 39-41; A06b CIV 24-33, 39-41; L05 CIV 48): ordinary naturalisation after 5 years' residence; no renunciation of other citizenships required; a citizen loses the citizenship on voluntarily taking another. Reforms after that date are checked in the file's later sources, where a later source is given. Citizenship at birth is read from the same dataset's 2024 coding of modes A01a (descent, born in country: Wedlock restriction), A01b (descent, born abroad: Generally applicable provision), A02a (birth in country: No provision) and A02b (birth in country to a parent born there: No provision), as its codebook (RSC/GLOBALCIT 2025/01, sections 3.2.1a to 3.2.2b) defines them: not by birth in the territory alone (provisions for foundlings and children otherwise stateless, modes A03a and A03b, aren't held by the form); by descent from either parent, with no further limit on a child born abroad. The coding also records a wedlock restriction (a child born out of wedlock may not take it from a citizen father), which the form doesn't hold. Changes to the law at birth after 1 January 2024 weren't checked for this file. On 2026-11-03 the primary was read: République de Côte d'Ivoire, Ministère de la Justice: Pièces à produire pour la délivrance d'un certificat de nationalité ivoirienne selon les différents cas d'attribution ou d'acquisition de la nationalité ivoirienne (6-page PDF on the ministry's documents.ci service). It confirmed the years of residence, birth in the territory and descent. It was silent on renunciation and loss on taking another citizenship, which still rest on the sources above, re-read that day and found the same. The Ministry of Justice's document summarises the Code; it isn't the Code's text.",
+ "sources": [
+  {
+   "url": "https://cadmus.eui.eu/bitstreams/3b166501-e695-48d7-9e27-d7bef061573a/download",
+   "title": "GLOBALCIT Citizenship Law Dataset v3.0 (Vink, van der Baaren, Bauböck, Dzankic, Honohan, Manby; EUI Research Data, 2025), country-year-mode files, Cote dIvoire, 2024",
+   "read": "2026-11-03",
+   "kind": "secondary",
+   "quotes": "https://globalcit.eu/national-citizenship-laws/",
+   "said": "Person has been habitually and legally resident in Cote d'Ivoire for 5 years. ... n.a. ... Person acquires citizenship of another country.  Loss is subordinated to authorisation of government during 15 period following inscription on lists for military service (these lists were never established). ... Wedlock restriction ... Person is born in Cote d'Ivoire in wedlock or descent to a citizen is established (unless descent is established to one or both parents who are foreigners). ... Generally applicable provision ... Person born abroad to a citizen in wedlock, or out of wedlock and descent is established to a parent who is a citizen. ... No provision ... No provision"
+  },
+  {
+   "url": "https://www.documents.ci/bundles/includes/pdf/piece.pdf",
+   "title": "République de Côte d'Ivoire, Ministère de la Justice: Pièces à produire pour la délivrance d'un certificat de nationalité ivoirienne selon les différents cas d'attribution ou d'acquisition de la nationalité ivoirienne (6-page PDF on the ministry's documents.ci service)",
+   "read": "2026-11-03",
+   "kind": "primary",
+   "said": "1. EST IVOIRIEN D'ORIGINE (Art. 6 et 7 du Code de la nationalité) • l'enfant légitime ou légitimé, né en Côte d'Ivoire, sauf si ses deux parents sont étrangers ; • l'enfant né hors mariage, en Côte d'Ivoire, sauf si sa filiation est légalement établie à l'égard de ses deux parents étrangers, ou d'un seul parent, également étranger. • l'enfant légitime ou légitimé, né à l'étranger d'un parent ivoirien; • l'enfant né hors mariage, à l'étranger, dont la filiation est légalement établie à l'égard d'un parent ivoirien. ... [naturalisation] 1. Celle qui concerne tous les étrangers et prévue par la loi de 61, telle que modifiée par la loi de 72. Délai de résidence de 5 ans et coût 55.000 F.CFA"
+  }
+ ],
+ "atBirth": {
+  "soil": "none",
+  "descent": "either parent"
+ }
+}

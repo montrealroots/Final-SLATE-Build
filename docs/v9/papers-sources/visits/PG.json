@@ -1,0 +1,96 @@
+{
+ "country": "PG",
+ "rules": [
+  {
+   "entry": "arrival",
+   "days": 60,
+   "passports": [
+    "AS",
+    "CA",
+    "CK",
+    "FJ",
+    "FM",
+    "GB",
+    "GU",
+    "IL",
+    "KI",
+    "MH",
+    "MP",
+    "NC",
+    "NR",
+    "NU",
+    "PF",
+    "PW",
+    "SB",
+    "SG",
+    "TK",
+    "TO",
+    "TV",
+    "VU",
+    "WF",
+    "WS"
+   ]
+  },
+  {
+   "entry": "evisa",
+   "days": 30,
+   "passports": [
+    "AG",
+    "AU",
+    "BB",
+    "BS",
+    "BW",
+    "BZ",
+    "DM",
+    "GD",
+    "GY",
+    "IN",
+    "JM",
+    "KE",
+    "KN",
+    "LC",
+    "LS",
+    "MU",
+    "NA",
+    "RU",
+    "RW",
+    "SC",
+    "TT",
+    "VC",
+    "VN",
+    "ZA",
+    "ZM"
+   ]
+  },
+  {
+   "entry": "evisa",
+   "days": 60,
+   "passports": [
+    "ID",
+    "JP"
+   ]
+  }
+ ],
+ "others": {
+  "entry": "evisa",
+  "days": 60
+ },
+ "note": "Papua New Guinea: nationals of the countries and territories listed (Canada, Israel, Japan, Singapore, the UAE, the UK and the Pacific states) get a 60-day visa on arrival; everyone else applies online, for an Easy Visitor Permit (USD 50, 60 days for the EU, the Americas' and Asia's listed; 30 days for Australia, India, Russia, South Africa and the others listed) or a tourist visa (60 days). Chinese group tours on arrival and APEC card holders aren't modelled. Read from Wikipedia's copy. Checked on 2026-11-03 against the Immigration and Citizenship Services Authority's own page on who can get a visa on arrival (updated 30 October 2026), which offers it 'only to citizens of the countries and territories on this page': it names every passport held for it but the United Arab Emirates', and gives it to Indonesia and Japan for diplomatic and official passports only, so those three were moved to the 60-day online visa, correcting Wikipedia's copy, read before. The 60 days and the Easy Visitor Permit's groups stand on Wikipedia's copy.",
+ "sources": [
+  {
+   "url": "https://en.wikipedia.org/wiki/Visa_policy_of_Papua_New_Guinea",
+   "title": "Wikipedia, Visa policy of Papua New Guinea",
+   "read": "2026-11-03",
+   "kind": "secondary",
+   "quotes": "https://ica.gov.pg/",
+   "said": "Citizens of the following countries and regions may obtain a visa on arrival valid for 60 days (unless otherwise noted) at Port Moresby International Airport . American Samoa Canada Cook Islands Fiji French Polynesia Guam Indonesia Israel Japan Kiribati Marshall Islands Micronesia Nauru New Caledonia Niue Northern Mariana Islands Palau Samoa Singapore Solomon Islands Tokelau Tonga Tuvalu United Arab Emirates United Kingdom Vanuatu Wallis and Futuna ... 30 days Antigua and Barbuda Australia Bahamas Barbados Belize Botswana Dominica Grenada Guyana India Jamaica Kenya Lesotho Mauritius Namibia Russia Rwanda Saint Kitts and Nevis Saint Lucia Saint Vincent and the Grenadines Seychelles South Africa Trinidad and Tobago Vietnam Zambia ... Citizens of countries not included in the Easy Visitor Permit and regions may apply for a Tourist Visa according to their purposes of visit. ... These visas can be obtained by paying 50 USD online lodgement fee, it is valid for 6 months, single entry and allows visitors stay up to 60 days."
+  },
+  {
+   "url": "https://icsa.gov.pg/travel/visa-on-arrival",
+   "title": "Papua New Guinea Immigration and Citizenship Services Authority (ICSA): Visa on arrival in Papua New Guinea: who can get one",
+   "read": "2026-11-03",
+   "kind": "primary",
+   "said": "A visa on arrival is a visa that an immigration officer issues when you arrive in Papua New Guinea (PNG). You do not apply for it before you travel. The Papua New Guinea Immigration and Citizenship Services Authority (ICSA) offers it only to citizens of the countries and territories on this page. ... \"Any passport\",\"countries\":[{\"name\":\"American Samoa\"},{\"name\":\"Canada\"}, ... {\"name\":\"Wallis And Futuna Islands\"}]},{\"heading\":\"Some passports only\",\"countries\":[{\"name\":\"China\",\"limit\":\"Only for diplomatic, official and service passports, or for tourists with ordinary passports who travel in an organised tour group with a tour operator registered in Papua New Guinea.\"},{\"name\":\"Indonesia\",\"limit\":\"Only for diplomatic and official passports.\"},{\"name\":\"Japan\",\"limit\":\"Only for diplomatic and official passports.\"}]}],\"as_at\":\"Updated 30 October 2026\""
+  }
+ ]
+}

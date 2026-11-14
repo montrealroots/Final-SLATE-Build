@@ -1,0 +1,40 @@
+{
+ "country": "SL",
+ "office": "the Sierra Leone Immigration Department, applied for online and paid through its approved channels",
+ "currency": "USD",
+ "routes": [
+  {
+   "id": "home",
+   "where": "home",
+   "speed": "standard",
+   "within": null,
+   "label": "through the Immigration Department"
+  }
+ ],
+ "passports": [
+  {
+   "for": "any",
+   "validYears": null,
+   "pay": {
+    "home": "100"
+   }
+  }
+ ],
+ "note": "The Immigration Department's Fees & Charges page (read 2026-11-03) sets passport issue or renewal at 100 US dollars, shown as 2,280 Leones at 22.8 Leones to the dollar and liable to move with the rate; the fee is kept in the dollars it is set in. The Chief Immigration Officer's 'around two weeks', reported on the department's own news page, is a statement of how long it takes now, not a published longest time, so the time is kept unknown; the validity isn't stated on the pages read (the Passport Act, 2015, on Parliament's site, wasn't reachable).",
+ "sources": [
+  {
+   "kind": "primary",
+   "url": "https://slid.gov.sl/fees",
+   "title": "Sierra Leone Immigration Department, Fees & Charges",
+   "read": "2026-11-03",
+   "said": "Fee Schedule Prices may change depending on the USD exchange rate to Leone. 1 USD = 22.8 Leones Service Category USD Leones Equivalent Passport Issuance / Renewal 100 USD 2,280 Leones All payments must be made through approved channels."
+  },
+  {
+   "kind": "primary",
+   "url": "https://slid.gov.sl/articles/immigration-department-pursues-paramilitary-reform-as-passport-processing-improves",
+   "title": "Sierra Leone Immigration Department, Immigration Department pursues paramilitary reform as passport processing improves",
+   "read": "2026-11-03",
+   "said": "At the same time, the department says it has made progress in public service delivery, especially in passport processing. The Chief Immigration Officer said passport processing times had been reduced to around two weeks"
+  }
+ ]
+}

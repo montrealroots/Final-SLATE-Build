@@ -1,0 +1,20 @@
+{
+ "country": "AO",
+ "years": 10,
+ "renounce": false,
+ "lapses": false,
+ "note": "GLOBALCIT's Citizenship Law Dataset v3.0 (EUI, 2025), coding the law in force on 1 January 2024 (A06a ANG 14; A06b ANG 14; L05 No provision): ordinary naturalisation after 10 years' residence; no renunciation of other citizenships required; a citizen keeps it on taking another. Reforms after that date are checked in the file's later sources, where a later source is given. Citizenship at birth is read from the same dataset's 2024 coding of modes A01a (descent, born in country: Generally applicable provision), A01b (descent, born abroad: Generally applicable provision), A02a (birth in country: No provision) and A02b (birth in country to a parent born there: No provision), as its codebook (RSC/GLOBALCIT 2025/01, sections 3.2.1a to 3.2.2b) defines them: not by birth in the territory alone (provisions for foundlings and children otherwise stateless, modes A03a and A03b, aren't held by the form); by descent from either parent, with no further limit on a child born abroad. Changes to the law at birth after 1 January 2024 weren't checked for this file. On 2026-11-03 the primary was read: Lei n.º 2/16, de 15 de Abril, Lei da Nacionalidade (Assembleia Nacional; Diário da República text as published in the legislation library of the Comissão Nacional Eleitoral, cne.ao). Every figure the file holds now rests on it, and the dataset is no longer cited.",
+ "sources": [
+  {
+   "url": "https://cne.ao/storage/legislations/CNE-Legislação-2627286e0d3e97.pdf",
+   "title": "Lei n.º 2/16, de 15 de Abril, Lei da Nacionalidade (Assembleia Nacional; Diário da República text as published in the legislation library of the Comissão Nacional Eleitoral, cne.ao)",
+   "read": "2026-11-03",
+   "kind": "primary",
+   "said": "ARTIGO 9.º (Nacionalidade originária) 1. É cidadão angolano de origem o filho de pai ou de mãe de nacionalidade angolana, nascido em Angola ou no estrangeiro. 2. Presume-se cidadão angolano de origem, o recém-nascido achado em território angolano. ... ARTIGO 14.º (Aquisição da nacionalidade por naturalização) 1. Pode adquirir a nacionalidade angolana, por naturalização, o cidadão estrangeiro que satisfaça cumulativamente os seguintes requisitos: a) Ser maior perante a lei angolana; b) Residir legalmente no território angolano há pelo menos dez anos; ... ARTIGO 15.º Adquire ainda a nacionalidade angolana mediante solicitação: a) O indivíduo nascido em território angolano quando não possua outra nacionalidade ... ARTIGO 17.º (Perda da nacionalidade) 1. Perdem a nacionalidade: a) Os que voluntariamente adquirem uma nacionalidade estrangeira e manifestem a pretensão de não querer ser angolanos"
+  }
+ ],
+ "atBirth": {
+  "soil": "none",
+  "descent": "either parent"
+ }
+}

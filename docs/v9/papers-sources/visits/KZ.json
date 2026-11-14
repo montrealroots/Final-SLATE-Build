@@ -1,0 +1,184 @@
+{
+ "country": "KZ",
+ "rules": [
+  {
+   "entry": "free",
+   "days": 90,
+   "passports": [
+    "AD",
+    "AL",
+    "AM",
+    "BY",
+    "GE",
+    "KG",
+    "KN",
+    "MD",
+    "MN",
+    "RU",
+    "SM",
+    "TJ",
+    "TR",
+    "UA",
+    "UZ"
+   ]
+  },
+  {
+   "entry": "free",
+   "days": 30,
+   "passports": [
+    "AE",
+    "AR",
+    "BR",
+    "CN",
+    "EC",
+    "KR",
+    "MA",
+    "MV",
+    "NI",
+    "RS",
+    "SC",
+    "VN"
+   ]
+  },
+  {
+   "entry": "free",
+   "days": 30,
+   "passports": [
+    "AT",
+    "AU",
+    "BE",
+    "BG",
+    "BH",
+    "CA",
+    "CH",
+    "CL",
+    "CO",
+    "CY",
+    "CZ",
+    "DE",
+    "DK",
+    "EE",
+    "ES",
+    "FI",
+    "FR",
+    "GB",
+    "GR",
+    "HR",
+    "HU",
+    "ID",
+    "IE",
+    "IL",
+    "IS",
+    "IT",
+    "JP",
+    "KW",
+    "LI",
+    "LT",
+    "LU",
+    "LV",
+    "MC",
+    "MT",
+    "MX",
+    "MY",
+    "NL",
+    "NO",
+    "NZ",
+    "OM",
+    "PH",
+    "PL",
+    "PT",
+    "QA",
+    "RO",
+    "SA",
+    "SE",
+    "SG",
+    "SI",
+    "SK",
+    "TH",
+    "US",
+    "VA"
+   ]
+  },
+  {
+   "entry": "free",
+   "days": 14,
+   "passports": [
+    "HK",
+    "IN",
+    "IR",
+    "MO"
+   ]
+  },
+  {
+   "entry": "visa",
+   "passports": [
+    "AF",
+    "CD",
+    "CV",
+    "GQ",
+    "IQ",
+    "JO",
+    "LY",
+    "PK",
+    "PS",
+    "SB",
+    "SD",
+    "SO",
+    "SS",
+    "SY",
+    "TL",
+    "TW",
+    "YE"
+   ]
+  },
+  {
+   "entry": "free",
+   "days": 90,
+   "within": 180,
+   "passports": [
+    "AZ"
+   ]
+  },
+  {
+   "entry": "free",
+   "days": 28,
+   "passports": [
+    "BB"
+   ]
+  },
+  {
+   "entry": "free",
+   "days": 60,
+   "passports": [
+    "DO"
+   ]
+  },
+  {
+   "entry": "arrival",
+   "passports": [
+    "MU"
+   ]
+  }
+ ],
+ "others": {
+  "entry": "evisa"
+ },
+ "note": "Kazakhstan: nationals of the countries listed enter without a visa for 90, 30 or 14 days (several within a longer period: not modelled); the investment-country programme gives the EU, North America, Australasia, the Gulf and others 30 days (90 in 180). Everyone else may get an e-Visa (arriving at Astana or Almaty), except the 17 nationalities who must apply at an embassy. Read from Wikipedia's copy. Checked on 2026-11-03 against the Ministry of Foreign Affairs' own table of the visa regime by country and passport (updated 21 August 2026), column N (ordinary passports): it confirmed the rest and corrected Wikipedia's copy on Azerbaijan (90 days within 180), San Marino, Tajikistan and Uzbekistan (90 days, not 30), Barbados (28 days without a visa) and the Dominican Republic (60), both held before as e-Visa countries, and Mauritius (a visa on arrival). The table doesn't name Qatar, Libya, Palestine or Taiwan, and doesn't describe the e-Visa: those stand on Wikipedia's copy.",
+ "sources": [
+  {
+   "url": "https://en.wikipedia.org/wiki/Visa_policy_of_Kazakhstan",
+   "title": "Wikipedia, Visa policy of Kazakhstan",
+   "read": "2026-11-03",
+   "kind": "secondary",
+   "quotes": "https://www.gov.kz/",
+   "said": "Holders of ordinary passports of the following countries and territories may enter Kazakhstan without a visa for the following period: 90 days Albania Andorra Armenia Belarus Georgia Kyrgyzstan Moldova Mongolia Russia Saint Kitts and Nevis Turkey Ukraine 30 days Argentina Azerbaijan Brazil China Ecuador Maldives Morocco Nicaragua Serbia Seychelles South Korea Tajikistan United Arab Emirates Uzbekistan Vietnam 14 days Hong Kong India Iran Macau ... Citizens of the following countries may enter Kazakhstan without a visa for 30 days as part of a visa-free policy ... All European Union member states Australia Bahrain Canada Chile Colombia Iceland Indonesia Israel Japan Kuwait Liechtenstein Malaysia Mexico Monaco New Zealand Norway Oman Philippines Qatar San Marino Saudi Arabia Singapore South Korea Switzerland Thailand United Kingdom United States Vatican City ... Citizens of the following countries and territories must apply for a visa at a Kazakhstan embassy or consulate: Afghanistan Cape Verde DR Congo Equatorial Guinea Iraq Jordan Libya Pakistan Palestine Solomon Islands Somalia South Sudan Sudan Syria Taiwan Timor-Leste Yemen"
+  },
+  {
+   "url": "https://www.gov.kz/memleket/entities/mfa/press/article/details/6764?lang=en",
+   "title": "Ministry of Foreign Affairs of Kazakhstan, Visa regime of the Republic of Kazakhstan for foreign citizens (published 11 November 2022, updated 21 August 2026; table by passport type D, S, N)",
+   "read": "2026-11-03",
+   "kind": "primary",
+   "said": "N – ordinary passport ... 1. Australia visa-free up to 30 days visa-free up to 30 days visa-free up to 30 days 2. Austria visa-free up to 90 days from 1st of May, 2026 visa-free up to 30 days visa-free up to 30 days 3. Azerbaijan visa-free up to 90 days visa-free up to 90 days visa-free up to 90 days within 180 days 4. Albania ... visa-free up to 90 days 5. Algeria visa visa visa ... Barbados ... visa-free up to 28 days ... Dominican Republic ... visa-free up to 60 days ... San Marino ... visa-free up to 90 days ... Tajikistan ... visa-free up to 90 days ... Uzbekistan ... visa-free up to 90 days"
+  }
+ ]
+}

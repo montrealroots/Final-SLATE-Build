@@ -1,0 +1,21 @@
+{
+ "country": "TH",
+ "years": 5,
+ "renounce": false,
+ "lapses": true,
+ "note": "GLOBALCIT's Citizenship Law Dataset v3.0 (EUI, 2025), coding the law in force on 1 January 2024 (A06a Nationality Act B.E.2508 (1965) 10(4), 11; A06b Nationality Act B.E.2508 (1965) 10, 12, 5; L05 THA 17(2), 19(2), 19(6)): ordinary naturalisation after 5 years' residence; no renunciation of other citizenships required; a citizen loses the citizenship on voluntarily taking another. Reforms after that date are checked in the file's later sources, where a later source is given. Citizenship at birth is read from the same dataset's 2024 coding of modes A01a (descent, born in country: Generally applicable provision), A01b (descent, born abroad: Generally applicable provision), A02a (birth in country: Parental residence restriction) and A02b (birth in country to a parent born there: No provision), as its codebook (RSC/GLOBALCIT 2025/01, sections 3.2.1a to 3.2.2b) defines them: by birth in the territory only on the condition the dataset states; by descent from either parent, with no further limit on a child born abroad. Changes to the law at birth after 1 January 2024 weren't checked for this file. On 2026-11-03 the primary was read: พระราชบัญญัติสัญชาติ พ.ศ. ๒๕๐๘ (Nationality Act B.E. 2508, as amended to No. 5 B.E. 2555), the Office of the Council of State's consolidated text, served by the Ministry of Foreign Affairs of Thailand (image.mfa.go.th); the text layer carries the Council of State's watermark, removed before quoting. Every figure the file holds now rests on it, and the dataset is no longer cited. The PDF's text layer interleaves the Council of State's watermark, which was removed before quoting.",
+ "sources": [
+  {
+   "url": "https://image.mfa.go.th/mfa/0/zE6021nSnu/%E0%B8%81%E0%B8%8F%E0%B8%AB%E0%B8%A1%E0%B8%B2%E0%B8%A2%E0%B8%97%E0%B8%B5%E0%B9%88%E0%B9%80%E0%B8%81%E0%B8%B5%E0%B9%88%E0%B8%A2%E0%B8%A7%E0%B8%82%E0%B9%89%E0%B8%AD%E0%B8%87/%E0%B8%9E.%E0%B8%A3.%E0%B8%9A._%E0%B8%AA%E0%B8%B1%E0%B8%8D%E0%B8%8A%E0%B8%B2%E0%B8%95%E0%B8%B4_%E0%B8%9E.%E0%B8%A8._2508.pdf",
+   "title": "พระราชบัญญัติสัญชาติ พ.ศ. ๒๕๐๘ (Nationality Act B.E. 2508, as amended to No. 5 B.E. 2555), the Office of the Council of State's consolidated text, served by the Ministry of Foreign Affairs of Thailand (image.mfa.go.th); the text layer carries the Council of State's watermark, removed before quoting",
+   "read": "2026-11-03",
+   "kind": "primary",
+   "said": "มาตรา ๗ บุคคลดังต่อไปนี้ย่อมได้สัญชาติไทยโดยการเกิด (๑) ผู้เกิดโดยบิดาหรือมารดาเป็นผู้มีสัญชาติไทย ไม่ว่าจะเกิดในหรือนอกราชอาณาจักรไทย (๒) ผู้เกิดในราชอาณาจักรไทย ยกเว้นบุคคลตามมาตรา ๗ ทวิ วรรคหนึ่ง ... มาตรา ๗ ทวิ ผู้เกิดในราชอาณาจักรไทย โดยบิดาและมารดาเป็นคนต่างด้าว ย่อมไม่ได้รับสัญชาติไทย ถ้าในขณะที่เกิดบิดาตามกฎหมายหรือบิดาซึ่งมิได้มีการสมรสกับมารดาหรือมารดาของผู้นั้นเป็น (๑) ผู้ที่ได้รับการผ่อนผันให้พักอาศัยอยู่ในราชอาณาจักรไทยเป็นกรณีพิเศษเฉพาะราย (๒) ผู้ที่ได้รับอนุญาตให้เข้าอยู่ในราชอาณาจักรไทยเพียงชั่วคราว หรือ (๓) ผู้ที่ ... มาตรา ๑๐ คนต่างด้าวซึ่งมีคุณสมบัติครบถ้วนดังต่อไปนี้ อาจขอแปลงสัญชาติเป็นไทยได้ (๑) บรรลุนิติภาวะแล้วตามกฎหมายไทยและกฎหมายที่บุคคลนั้นมีสัญชาติ (๒) มีความประพฤติดี (๓) มีอาชีพเป็นหลักฐาน (๔) มีภูมิลำเนาในราชอาณาจักรไทยต่อเนื่องมาจนถึงวันที่ยื่นคำขอแปลงสัญชาติเป็นไทยเป็นเวลาไม่น้อยกว่าห้าปี (๕) มีความรู้ภาษาไทยตามที่กำหนดในกฎกระทรวง ... มาตรา ๒๒ ผู้ซึ่งมีสัญชาติไทยและได้แปลงสัญชาติเป็นคนต่างด้าว หรือสละสัญชาติไทย หรือถูกถอนสัญชาติไทย ย่อมเสียสัญชาติไทย"
+  }
+ ],
+ "atBirth": {
+  "soil": "conditional",
+  "soilIf": "A person is born in Thailand to both foreign parents holding a permanent resident permit in Thailand and not enjoying diplomatic immunity nor representing another country. Note: A person born in Thailand to foreign parents with temporary immigration status or illegal immigrants falls is subject to additional regulations set by the Cabinet, for which the Minister of Interior will approve Thai nationality for each particular person. That additional regulation usually depends on Thailand's policy at a particular time (e.g. the policy to solve statelessness and to assimilate the children born to former forced migrants, refugees and migrant workers).",
+  "descent": "either parent"
+ }
+}

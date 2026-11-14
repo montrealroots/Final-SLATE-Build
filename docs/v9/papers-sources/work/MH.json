@@ -1,0 +1,50 @@
+{
+ "country": "MH",
+ "rules": [
+  {
+   "passports": [
+    "US",
+    "PW",
+    "FM"
+   ],
+   "right": "free"
+  }
+ ],
+ "others": {
+  "right": "permit",
+  "route": "Work permit (Labor Division) and work visa"
+ },
+ "note": "Marshall Islands: anyone who isn't a citizen may not undertake employment unless he holds a work permit under the Labor (Non-Resident Workers) Act 2006 or is exempt; citizens of the United States, Palau and the Federated States of Micronesia are exempt, though exempt persons must meet the Labor Division's registration requirements (16 MIRC ch. 1, s. 110, as amended by P.L. 2009-24). The employer issued a work permit is entitled to a work visa for the worker, and the same three citizenships need no visa to enter, though they show medical and police clearances before an entry permit (Immigration Act 2006, 43 MIRC ch. 1, ss. 113, 136, 198). So the three are free and every other passport needs the work permit and visa. Read in PacLII's consolidated copies through archive.org (snapshots of 17 December 2024 and 3 March 2016), since PacLII and RMI Immigration don't answer this client. No performers' route and no days without a permit are named. Read again on 2026-11-03: web.archive.org couldn't be read (web.archive.org reset every connection each time it was tried, and PacLII itself answered 403 behind a Cloudflare check), so its reading of 2026-10-31 stands. Error found and fixed 2026-11-03: the work rule was cited to the Labor (Non-Resident Workers) Act 2006 in PacLII's copies, held as primary; they are a legal information institute's copy of the law, so secondary since the ruling of 2026-11-03, and the Nitijela's own texts, read that day, showed the 2006 Act was repealed by the Labor (Non-Resident Workers) Act 2018 (s. 159). Its s. 108 says the same: anyone who isn't a citizen needs a work permit or an exemption; citizens of the United States are exempt, and citizens of Palau and the Federated States of Micronesia too, provided their countries extend reciprocal treatment to Marshallese citizens (read as given: no withdrawal was found); exempt persons register with the Labor Division. The Immigration Act 2006 as amended to P.L. 2025-42 still exempts the three from visas (s. 113) and entitles the employer granted a permit to a work visa (s. 136). So no rule changed; the PacLII copies were kept as secondary, naming the Nitijela's texts.",
+ "sources": [
+  {
+   "url": "https://web.archive.org/web/20241217041420/https://www.paclii.org/mh/legis/consol_act/lwa2006292.pdf",
+   "title": "Labor (Non-Resident Workers) Act 2006 (16 MIRC ch. 1), s. 110 (PacLII's consolidated copy, archive.org snapshot of 17 December 2024)",
+   "read": "2026-10-31",
+   "said": "Any person who is not a citizen of the Republic is prohibited from undertaking employment in the Republic unless that person is: ... the holder of a work permit granted under this Chapter ; or ... The following persons are exempt from the requirement to hold a work permit: ... a citizen of the United States; ... a citizen of Palau or the Federated States of Micronesia; ... exempted persons are required to comply with registration requirements of the Labor Division",
+   "kind": "secondary",
+   "quotes": "https://rmiparliament.org/cms/images/LEGISLATION/PRINCIPAL/2018/2018-0068/2018-0068_2.pdf"
+  },
+  {
+   "url": "https://web.archive.org/web/20160303102427/http://www.paclii.org/mh/legis/consol_act/ia2006138.pdf",
+   "title": "Immigration Act 2006 (43 MIRC ch. 1), ss. 113, 136 (PacLII's consolidated copy, archive.org snapshot of 3 March 2016)",
+   "read": "2026-10-31",
+   "said": "Every employer that is issued with a work permit under the Labor (Non-Resident Workers) Act 2006 in respect of a non-resident worker, shall, subject to the person’s application being denied under section 114, be entitled to be issued with a work visa in respect of that employee.",
+   "kind": "secondary",
+   "quotes": "https://rmiparliament.org/cms/images/LEGISLATION/PRINCIPAL/2006/2006-0062/2006-0062_3.pdf"
+  },
+  {
+   "url": "https://rmiparliament.org/cms/images/LEGISLATION/PRINCIPAL/2018/2018-0068/2018-0068_2.pdf",
+   "title": "Labor (Non-Resident Workers) Act 2018 (16 MIRC ch. 1), ss. 108 and 159, as the Nitijela publishes it",
+   "read": "2026-11-03",
+   "said": "§108. Requirement to a hold work permit (1) Any person who is not a citizen of the Republic is prohibited from undertaking employment in the Republic unless that person is: (a) the holder of a work permit granted under this Chapter; or (b) exempt under this Chapter from the requirement to hold a work permit. (2) The following persons are exempt from the requirement to hold a work permit: ... (c) a citizen of the United States; (d) a citizen of the Republic Palau or the Federated States of Micronesia; provided that the Republic of Palau and the Federated States of Micronesia extend reciprocal treatment to citizens of the Republic of the Marshall Islands. ... (2A) Notwithstanding the exceptions granted to persons in subsection (2), above, exempted persons are required to comply with registration requirements of the Labor Division in accordance with section 120 of this Chapter. ... §159. Transition and Repeal. The Labor (Non-Resident) Act 2006 (16 MIRC Chapter 1) is hereby repealed.",
+   "kind": "primary"
+  },
+  {
+   "url": "https://rmiparliament.org/cms/images/LEGISLATION/PRINCIPAL/2006/2006-0062/2006-0062_3.pdf",
+   "title": "Immigration Act 2006 (43 MIRC ch. 1, as amended to P.L. 2025-42), ss. 113, 136 and 140, as the Nitijela publishes it",
+   "read": "2026-11-03",
+   "said": "§113. Exemption from requirement to hold a visa. (1) The following persons shall be exempt from the requirement to hold a visa to enter the Republic, to such extent or subject to such conditions as specified by this Chapter or by regulations: ... (c) a citizen of the United States; (d) a citizen of Palau or the Federated States of Micronesia; ... §136. Work visas. (1) Every employer that is issued with a work permit under the Labor (Non-Resident Workers) Act 2006 in respect of a non-resident worker, shall, subject to the person’s application being denied under section 114, be entitled to be issued with a work visa in respect of that employee. ... (e) for a work visa, a period of up to 5 years; ... [Amended to increase to work visa period from 2 to 5 years by P.L. 2025-42]",
+   "kind": "primary"
+  }
+ ]
+}

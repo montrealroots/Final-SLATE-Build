@@ -1,0 +1,35 @@
+{
+ "country": "KE",
+ "years": 7,
+ "renounce": false,
+ "lapses": false,
+ "note": "GLOBALCIT's Citizenship Law Dataset v3.0 (EUI, 2025), coding the law in force on 1 January 2024 (A06a Const 15(2), KEN 13; A06b Const 15(2), KEN 13; L05 No provision): ordinary naturalisation after 7 years' residence; no renunciation of other citizenships required; a citizen keeps it on taking another. Reforms after that date are checked in the file's later sources, where a later source is given. Citizenship at birth is read from the same dataset's 2024 coding of modes A01a (descent, born in country: Generally applicable provision), A01b (descent, born abroad: Generally applicable provision), A02a (birth in country: No provision) and A02b (birth in country to a parent born there: No provision), as its codebook (RSC/GLOBALCIT 2025/01, sections 3.2.1a to 3.2.2b) defines them: not by birth in the territory alone (provisions for foundlings and children otherwise stateless, modes A03a and A03b, aren't held by the form); by descent from either parent, with no further limit on a child born abroad. Changes to the law at birth after 1 January 2024 weren't checked for this file. On 2026-11-03 the primary was read: Kenya Citizenship and Immigration Act, Cap. 170 (No. 12 of 2011), Laws of Kenya, revised to 31 December 2022, s. 13(1); Kenya Citizenship and Immigration Act, ss. 7, 8(1), 20(1). It confirmed the years of residence, renunciation, loss on taking another citizenship, birth in the territory and descent. The Act defines citizenship by birth by Article 14 of the Constitution, which wasn't read, so birth in the territory rests on the dataset.",
+ "sources": [
+  {
+   "url": "https://cadmus.eui.eu/bitstreams/3b166501-e695-48d7-9e27-d7bef061573a/download",
+   "title": "GLOBALCIT Citizenship Law Dataset v3.0 (Vink, van der Baaren, Bauböck, Dzankic, Honohan, Manby; EUI Research Data, 2025), country-year-mode files, Kenya, 2024",
+   "read": "2026-11-03",
+   "kind": "secondary",
+   "quotes": "https://globalcit.eu/national-citizenship-laws/",
+   "said": "Person has been lawfully resident in Kenya for at least 7 years, including 12 months immediately prior to application. ... n.a. ... n.a. ... Generally applicable provision ... Person is born in Kenya to a citizen. ... Generally applicable provision ... Person is born abroad to a citizen. ... No provision ... No provision"
+  },
+  {
+   "url": "https://new.kenyalaw.org/akn/ke/act/2011/12/eng@2022-12-31",
+   "title": "Kenya Citizenship and Immigration Act, Cap. 170 (No. 12 of 2011), Laws of Kenya, revised to 31 December 2022, s. 13(1)",
+   "read": "2026-11-03",
+   "kind": "primary",
+   "said": "13. Lawful residence (1) A person who has attained the age of majority and capacity who has been lawfully resident in Kenya for a continuous period of at least seven years may on application be registered as a citizen if that person— (a) has been ordinarily resident in Kenya for a period of seven years, immediately preceding the date of application;"
+  },
+  {
+   "url": "https://new.kenyalaw.org/akn/ke/act/2011/12/eng@2022-12-31",
+   "title": "Kenya Citizenship and Immigration Act, ss. 7, 8(1), 20(1)",
+   "read": "2026-11-03",
+   "kind": "primary",
+   "said": "7. Limitation as to descent A person born outside Kenya shall be a citizen by birth if on the date of birth that person’s mother or father was or is a citizen. 8. Dual citizenship (1) A citizen of Kenyan by birth who acquires the citizenship of another country shall be entitled to retain the citizenship of Kenya subject to the provisions of this Act and the limitations, relating to dual citizenship, prescribed in the Constitution. ... 20. Voluntary renunciation of citizenship of another country (1) A foreign national who applies for registration as a citizen of Kenya shall indicate in the application whether he or she intends to renounce the citizenship of the other country."
+  }
+ ],
+ "atBirth": {
+  "soil": "none",
+  "descent": "either parent"
+ }
+}

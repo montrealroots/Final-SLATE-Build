@@ -1,0 +1,18 @@
+{
+ "country": "BG",
+ "group": "eea",
+ "others": {
+  "right": "permit",
+  "route": "Единно разрешение за пребиваване и работа"
+ },
+ "note": "Bulgaria: EEA and Swiss nationals live and work freely (the eea list; the Labour Migration and Labour Mobility Act governs their free movement, art. 1(1)(2)). A third-country national performer employed in Bulgaria needs the single permit for residence and work, granted by the Ministry of the Interior on the Employment Agency's opinion (art. 15(1)); a performing artist of proven competence is spared only the labour-market test, on the Ministry of Culture's confirmed interest (art. 15(2)(3)), not the permit. The cases of work on a single registration with the Employment Agency (art. 9: posted workers for up to three months in twelve, and the rest) name no performer, so no days are modelled. Read 2026-11-03 in the Act as last amended (ДВ бр. 52 of 27 June 2025), in the copy the Ministry of Labour and Social Policy publishes; until then it was read from a 2024 academic analysis citing the Act, since lex.bg refused this client.",
+ "sources": [
+  {
+   "url": "https://www.mlsp.government.bg/uploads/78/sdrmi/za-trudovata-migratsiya-i-trudovata-mobilnost.pdf",
+   "title": "Закон за трудовата миграция и трудовата мобилност (обн. ДВ бр. 33/2016, last amended ДВ бр. 52 от 27.06.2025), the copy the Ministry of Labour and Social Policy publishes (a Ciela print of 13.02.2026, linked from mlsp.government.bg/zakoni), arts. 1, 9, 15",
+   "read": "2026-11-03",
+   "said": "Чл. 1. (1) Този закон урежда: ... 2. осъществяването на правото на свободно движение в Република България на работници - граждани на друга държава - членка на Европейския съюз, на държава - страна по Споразумението за Европейското икономическо пространство, или на Конфедерация Швейцария; ... Чл. 9. ... (3) (Доп. - ДВ, бр. 24 от 2018 г., в сила от 23.05.2018 г.) Работник - гражданин на трета държава, командирован или изпратен в Република България от чуждестранния му работодател за срок до три месеца в рамките на 12 месеца, може да изпълнява определени задачи без разрешение за работа въз основа на еднократна регистрация в Агенцията по заетостта. ... Чл. 15. (Изм. - ДВ, бр. 21 от 2021 г., в сила от 01.06.2021 г.) (1) Достъп до пазара на труда с Единно разрешение за пребиваване и работа се разрешава от Министерството на вътрешните работи след получено положително писмено становище от изпълнителния директор на Агенцията по заетостта. (2) В случаите по ал. 1 условието по чл. 7, ал. 1, т. 1 не се прилага за работа на: ... 3. артисти-изпълнители по смисъла на чл. 74 от Закона за авторското право и сродните му права с доказана професионална компетентност - след потвърден от Министерството на културата интерес от наемането им;",
+   "kind": "primary"
+  }
+ ]
+}

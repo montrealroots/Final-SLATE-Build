@@ -1,0 +1,78 @@
+{
+ "country": "UG",
+ "rules": [
+  {
+   "entry": "free",
+   "months": 6,
+   "passports": [
+    "SS"
+   ]
+  },
+  {
+   "entry": "free",
+   "months": 3,
+   "passports": [
+    "AE",
+    "AG",
+    "BB",
+    "BI",
+    "BS",
+    "BW",
+    "BZ",
+    "CD",
+    "CY",
+    "ER",
+    "FJ",
+    "GD",
+    "GH",
+    "GM",
+    "HK",
+    "IE",
+    "JM",
+    "KE",
+    "KM",
+    "LS",
+    "MG",
+    "MT",
+    "MU",
+    "MW",
+    "MY",
+    "MZ",
+    "RW",
+    "SB",
+    "SC",
+    "SG",
+    "SL",
+    "SZ",
+    "TO",
+    "TT",
+    "TZ",
+    "VC",
+    "VU",
+    "ZM",
+    "ZW"
+   ]
+  }
+ ],
+ "others": {
+  "entry": "evisa"
+ },
+ "note": "Uganda: nationals of the countries and territories listed enter without a visa for 3 months (South Sudan 6); everyone else needs an e-Visa (since 1 July 2016) or the East African Tourist Visa (not modelled apart). Somalis without a biometric passport are refused (not modelled). Read from Wikipedia's copy. Checked on 2026-11-03 against the Directorate of Citizenship and Immigration Control's own list of the visa-exempt countries and regions: it names Mozambique, which Wikipedia's copy, read before, had left out, and doesn't name Angola, which was moved to the e-Visa; it gives no lengths, which stand on Wikipedia's copy.",
+ "sources": [
+  {
+   "url": "https://en.wikipedia.org/wiki/Visa_policy_of_Uganda",
+   "title": "Wikipedia, Visa policy of Uganda",
+   "read": "2026-11-03",
+   "kind": "secondary",
+   "quotes": "https://visas.immigration.go.ug/",
+   "said": "Visitors to Uganda must obtain an e-Visa, unless they come from one of the visa exempt countries. ... Citizens of the following countries and territories can visit Uganda without a visa for up to 3 months (unless otherwise noted): Angola Antigua and Barbuda Bahamas Barbados Belize Botswana Burundi Comoros Cyprus DR Congo Eritrea Eswatini Fiji Gambia Ghana Grenada Hong Kong Ireland Jamaica Kenya Lesotho Madagascar Malawi Malaysia Malta Mauritius Rwanda Saint Vincent and the Grenadines Seychelles Sierra Leone Singapore Solomon Islands South Sudan (6 months) Tanzania Trinidad and Tobago Tonga United Arab Emirates Vanuatu Zambia Zimbabwe"
+  },
+  {
+   "url": "https://www.immigration.go.ug/services/visa-exempt-countries",
+   "title": "Directorate of Citizenship and Immigration Control (Uganda), Visa Exempt Countries or Regions",
+   "read": "2026-11-03",
+   "kind": "primary",
+   "said": "Visa Exempt Countries or Regions NATIONALS FROM THE COUNTRIES/REGIONS LISTED BELOW WITH WHOM UGANDA HAS VISA ABOLITION AGREEMENTS DO NOT REQUIRE VISA TO TRAVEL TO UGANDA. Antigua and Barbuda Bahamas Barbados Belize Botswana Burundi Comoros Cyprus Democratic Republic of Congo Eritrea Fiji Gambia Ghana Grenada Ireland Jamaica Kenya Lesotho Madagascar Malawi Malaysia Malta Mauritius Mozambique Rwanda Seychelles Sierra Leone Singapore Solomon Island South Sudan St. Vincent &the Grenadines Swaziland Tonga Trinidad & Tobago United Republic of Tanzania United Arab Emirates Vanuatu Zambia Zimbabwe Hong Kong SAR Nationals from visa exempt countries who hold Conventional Travel Documents (CTDs) issued to them by any country are equally visa exempt."
+  }
+ ]
+}

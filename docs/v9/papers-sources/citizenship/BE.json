@@ -1,0 +1,43 @@
+{
+ "country": "BE",
+ "years": 5,
+ "renounce": false,
+ "lapses": false,
+ "note": "GLOBALCIT's Citizenship Law Dataset v3.0 (EUI, 2025), coding the law in force on 1 January 2024 (A06a BEL 12bis(1)(2), BEL 12bis(1)(4); A06b BEL 12bis(1)(2), BEL 12bis(1)(4); L05 No provision): ordinary naturalisation after 5 years' residence; no renunciation of other citizenships required; a citizen keeps it on taking another. Reforms after that date are checked in the file's later sources, where a later source is given. Citizenship at birth is read from the same dataset's 2024 coding of modes A01a (descent, born in country: Generally applicable provision), A01b (descent, born abroad: Generally applicable provision), A02a (birth in country: Parental residence restriction) and A02b (birth in country to a parent born there: Parental residence restriction), as its codebook (RSC/GLOBALCIT 2025/01, sections 3.2.1a to 3.2.2b) defines them: by birth in the territory only on the condition the dataset states; by descent from either parent, with no further limit on a child born abroad. Changes to the law at birth after 1 January 2024 weren't checked for this file. On 2026-11-03 the primary was read: SPF Affaires étrangères (Belgium), Perte, conservation et recouvrement de la nationalité belge; SPF Affaires étrangères (Belgium), Attribution de la nationalité belge avant 18 ans (mise à jour 10 décembre 2024); SPF Justice (Belgium), Déclaration de nationalité, read from Common Crawl capture CC-MAIN-2025-30 of 16 July 2025 (WARC CC-MAIN-20250716005150-20250716035150-00420, offset 284342476). It confirmed the years of residence, loss on taking another citizenship, birth in the territory and descent. It was silent on renunciation, which still rests on the sources above, re-read that day and found the same. The Justice FPS's page came from a Common Crawl capture of 16 July 2025, the live page being behind a captcha; no page read says outright that no renunciation is asked, so renunciation rests on the dataset.",
+ "sources": [
+  {
+   "url": "https://cadmus.eui.eu/bitstreams/3b166501-e695-48d7-9e27-d7bef061573a/download",
+   "title": "GLOBALCIT Citizenship Law Dataset v3.0 (Vink, van der Baaren, Bauböck, Dzankic, Honohan, Manby; EUI Research Data, 2025), country-year-mode files, Belgium, 2024",
+   "read": "2026-11-03",
+   "kind": "secondary",
+   "quotes": "https://globalcit.eu/national-citizenship-laws/",
+   "said": "Person has been resident in Belgium for at least 5 years. ... n.a. ... n.a. ... Generally applicable provision ... Person is born in Belgium to a citizen. ... Generally applicable provision ... Person is born abroad to a citizen who was born in Belgium.; Person is born abroad to a citizen who was born abroad (by declaration within five years after birth). (Automatic acquisition if person has not acquired citizenship of another country at the age of 18.) ... Parental residence restriction ... Child is born to non-citizens who have lived in Belgium at least 10 years before the birth of the child and who have filed a citizenship claim for the child before the age of 12 years. ... Parental residence restriction ... Person is born in Belgium to a person who was also born in Belgium and resided legally there at least five of the ten years preceding the person's birth."
+  },
+  {
+   "url": "https://diplomatie.belgium.be/fr/pour-les-belges-letranger/nationalite/perte-conservation-et-recouvrement-de-la-nationalite-belge",
+   "title": "SPF Affaires étrangères (Belgium), Perte, conservation et recouvrement de la nationalité belge",
+   "read": "2026-11-03",
+   "kind": "primary",
+   "said": "Si vous avez acquis volontairement une autre nationalité avant le 9 juin 2007, vous avez perdu la nationalité belge. Si vous avez acquis volontairement une autre nationalité entre le 9 juin 2007 et le 28 avril 2008, vous avez perdu la nationalité belge uniquement si la nationalité acquise volontairement est celle d'un des pays suivants : ... Si vous acquérez volontairement une autre nationalité après le 28 avril 2008, vous ne perdez plus la nationalité belge, quelle que soit la nationalité acquise."
+  },
+  {
+   "url": "https://diplomatie.belgium.be/fr/pour-les-belges-letranger/nationalite/attribution-de-la-nationalite-belge-avant-18-ans",
+   "title": "SPF Affaires étrangères (Belgium), Attribution de la nationalité belge avant 18 ans (mise à jour 10 décembre 2024)",
+   "read": "2026-11-03",
+   "kind": "primary",
+   "said": "C. Vous êtes né(e) après le 1er janvier 1985 Vous êtes Belge si : Vous êtes né(e) en Belgique d'un parent belge. Ou vous êtes né(e) à l'étranger et votre parent belge est né en Belgique ... Ou vous êtes né(e) à l'étranger et votre parent belge est né à l'étranger et il a fait dans un délai de cinq ans après votre naissance une déclaration pour vous attribuer la nationalité belge. ... 3. Être né(e) en Belgique ... Ou vous êtes né(e) en Belgique d'un parent étranger qui est né en Belgique et qui a résidé au moins cinq ans en Belgique dans la période de dix ans qui précède votre naissance. ... Ou vous êtes né(e) en Belgique de parents ou adoptants étrangers nés à l'étranger, à condition qu'ils fassent avant votre douzième anniversaire une déclaration pour vous attribuer la nationalité belge. Ils doivent avoir eu leur résidence principale en Belgique pendant les dix années qui précèdent la déclaration ..."
+  },
+  {
+   "url": "https://justice.belgium.be/fr/themes_et_dossiers/personnes_et_familles/nationalite/devenir_belge/declaration_dacquisition/declaration_de_nationalite",
+   "title": "SPF Justice (Belgium), Déclaration de nationalité, read from Common Crawl capture CC-MAIN-2025-30 of 16 July 2025 (WARC CC-MAIN-20250716005150-20250716035150-00420, offset 284342476)",
+   "read": "2026-11-03",
+   "kind": "primary",
+   "said": "Dès 18 ans, pour devenir Belge, par déclaration, il faut : 1. être né en Belgique et y séjourner légalement depuis sa naissance ; 2. séjourner légalement en Belgique depuis cinq ans et apporter la preuve de la connaissance d’une des trois langues nationales ; et prouver son intégration sociale ... et prouver sa participation économique ... 5. séjourner légalement en Belgique depuis dix ans et apporter la preuve de la connaissance d’une des trois langues nationales ; et justifier de sa participation à la vie de sa communauté d’accueil."
+  }
+ ],
+ "atBirth": {
+  "soil": "conditional",
+  "soilIf": "Child is born to non-citizens who have lived in Belgium at least 10 years before the birth of the child and who have filed a citizenship claim for the child before the age of 12 years.; Person is born in Belgium to a person who was also born in Belgium and resided legally there at least five of the ten years preceding the person's birth.",
+  "descent": "either parent"
+ }
+}

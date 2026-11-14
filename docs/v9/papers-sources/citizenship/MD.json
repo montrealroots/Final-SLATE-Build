@@ -1,0 +1,28 @@
+{
+ "country": "MD",
+ "years": 10,
+ "renounce": false,
+ "lapses": false,
+ "note": "GLOBALCIT's Citizenship Law Dataset v3.0 (EUI, 2025), coding the law in force on 1 January 2024 (A06a MOL 17(1)(a); A06b MOL 17(1)(a); L05 No provision): ordinary naturalisation after 10 years' residence; no renunciation of other citizenships required; a citizen keeps it on taking another. Reforms after that date are checked in the file's later sources, where a later source is given. Citizenship at birth is read from the same dataset's 2024 coding of modes A01a (descent, born in country: Generally applicable provision), A01b (descent, born abroad: Generally applicable provision), A02a (birth in country: Generally applicable provision) and A02b (birth in country to a parent born there: No provision), as its codebook (RSC/GLOBALCIT 2025/01, sections 3.2.1a to 3.2.2b) defines them: by birth in the territory unconditionally; by descent from either parent, with no further limit on a child born abroad. Changes to the law at birth after 1 January 2024 weren't checked for this file. On 2026-11-03 the primary was read: Agenția Servicii Publice (Republic of Moldova), \"Cetățenie prin naturalizare\", Informații generale. It confirmed the years of residence. It was silent on renunciation, loss on taking another citizenship, birth in the territory and descent, which still rest on the sources above, re-read that day and found the same. The Agency's page applies the new Legea cetățeniei nr. 253/2025, which replaced the law the dataset coded; its art. 14(a) keeps ten years. The new law's text wasn't read, so the other figures rest on the dataset's coding of the law it replaced.",
+ "sources": [
+  {
+   "url": "https://cadmus.eui.eu/bitstreams/3b166501-e695-48d7-9e27-d7bef061573a/download",
+   "title": "GLOBALCIT Citizenship Law Dataset v3.0 (Vink, van der Baaren, Bauböck, Dzankic, Honohan, Manby; EUI Research Data, 2025), country-year-mode files, Moldova, 2024",
+   "read": "2026-11-03",
+   "kind": "secondary",
+   "quotes": "https://globalcit.eu/national-citizenship-laws/",
+   "said": "Person has been resident in Moldova for 10 years. ... n.a. ... n.a. ... Generally applicable provision ... Person is born in Moldova to a citizen. ... Generally applicable provision ... Person is born abroad to a citizen. ... Generally applicable provision ... Person is born in Moldova to foreign parents or to one foreign parent and the other parent is stateless or a beneficiary of international protection. ... No provision"
+  },
+  {
+   "url": "https://www.asp.gov.md/ro/servicii/persoane-fizice/cetatenie/173",
+   "title": "Agenția Servicii Publice (Republic of Moldova), \"Cetățenie prin naturalizare\", Informații generale",
+   "read": "2026-11-03",
+   "kind": "primary",
+   "said": "Potrivit art. 14 din Legea cetăţeniei Republicii Moldova nr. 253/2025 cetăţenia Republicii Moldova poate fi acordată, la cerere, cetăţeanului străin, apatridului, beneficiarului de protecţie internaţională ori de azil politic, cu vârsta de peste 18 ani, care, la data depunerii cererii, are şedere legală permanentă pe teritoriul Republicii Moldova, cunoaşte limba română şi prevederile Constituţiei, dispune de surse legale de venit şi nu cade sub incidenţa normelor legale care stabilesc temeiurile de refuz ..., cu respectarea cel puțin a uneia dintre următoarele condiții: a) are şedere legală continuă pe teritoriul Republicii Moldova cel puţin în ultimii 10 ani;"
+  }
+ ],
+ "atBirth": {
+  "soil": "unconditional",
+  "descent": "either parent"
+ }
+}

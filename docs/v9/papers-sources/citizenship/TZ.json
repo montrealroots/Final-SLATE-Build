@@ -1,0 +1,30 @@
+{
+ "country": "TZ",
+ "years": 8,
+ "renounce": true,
+ "lapses": true,
+ "note": "GLOBALCIT's Citizenship Law Dataset v3.0 (EUI, 2025), coding the law in force on 1 January 2024 (A06a TAN 9, Schedule 2; A06b TAN 9, Schedule 2; L05 TAN 7(4)): ordinary naturalisation after 7 years' residence; the applicant must give up other citizenships; a citizen loses the citizenship on voluntarily taking another. Reforms after that date are checked in the file's later sources, where a later source is given. Citizenship at birth is read from the same dataset's 2024 coding of modes A01a (descent, born in country: No provision), A01b (descent, born abroad: Generational transmission restriction: conditional on birthplace/place of residence /mode under which parent acquired citizenship), A02a (birth in country: Generally applicable provision) and A02b (birth in country to a parent born there: No provision), as its codebook (RSC/GLOBALCIT 2025/01, sections 3.2.1a to 3.2.2b) defines them: by birth in the territory unconditionally; by descent from either parent, a child born abroad on the limit the dataset states (the dataset codes no separate descent rule for a child born in the country, birth there giving it; the parent's sex is read from mode A01b). Changes to the law at birth after 1 January 2024 weren't checked for this file. On 2026-11-03 the primary was read: Tanzania Citizenship Act, Chapter 357 (R.E. 2002), \"Legislation as at 31 July 2002\", TanzLII (Tanzania Legal Information Institute) source file, ss 5, 6, 7(4), 9 and Second Schedule. It confirmed renunciation, loss on taking another citizenship, birth in the territory, descent and the limit abroad. TanzLII is a legal information institute reproducing the Revised Edition 2002, so its text is secondary. It changed the years: the twelve months immediately before applying plus seven years in aggregate within the ten before them (Second Schedule para. 1), eight at the least, not the dataset's seven. Act 8 of 2015, which TanzLII notes as unapplied, wasn't read.",
+ "sources": [
+  {
+   "url": "https://cadmus.eui.eu/bitstreams/3b166501-e695-48d7-9e27-d7bef061573a/download",
+   "title": "GLOBALCIT Citizenship Law Dataset v3.0 (Vink, van der Baaren, Bauböck, Dzankic, Honohan, Manby; EUI Research Data, 2025), country-year-mode files, Tanzania, 2024",
+   "read": "2026-11-03",
+   "kind": "secondary",
+   "quotes": "https://globalcit.eu/national-citizenship-laws/",
+   "said": "Person has been resident for 12 months prior to the application and at least 7 years during previous 10 years. ... Renunciation of other citizenship required. ... Person acquired citizenship of another country by voluntary act other than marriage, or acquired the citizenship of another country and fails to renounce Tanzanian citizenship. ... No provision ... Generational transmission restriction: conditional on birthplace/place of residence /mode under which parent acquired citizenship ... Person is born abroad to a citizen other than by descent (i.e. not also born outside the country).; Father a citizen by descent (person may apply for citizenship by naturalisation). ... Generally applicable provision ... Person is born in Tanzania unless father has diplomatic immunity and mother is not a citizen, or either parent is an enemy and birth takes place in territory occupied by the enemy. (Note: in practice, the notional provision is not applied and has been overruled by the state's legal office. The Tanzanian authorities thus interpret the ius soli provision to require one parent to be a citizen.) ... No provision"
+  },
+  {
+   "url": "https://media.tanzlii.org/media/legislation/316277/source_file/f5764be765b84f49/1995-6.pdf",
+   "title": "Tanzania Citizenship Act, Chapter 357 (R.E. 2002), \"Legislation as at 31 July 2002\", TanzLII (Tanzania Legal Information Institute) source file, ss 5, 6, 7(4), 9 and Second Schedule",
+   "read": "2026-11-03",
+   "kind": "secondary",
+   "quotes": "https://tanzlii.org/en/akn/tz/act/1995/6",
+   "said": "5. ... (1) ... every person born in the United Republic on or after Union Day shall be deemed to have become and to have continued to be a citizen of the United Republic with effect from the date of his birth ... 6. ... a citizen of the United Republic if at the date of his birth his father or mother is or was a citizen of the United Republic otherwise than by descent ... 7. ... (4) A citizen of the United Republic shall cease to be a citizen if having attained the age of eighteen years– (a) he acquires the citizenship of some country other than the United Republic by a voluntary act other than marriage; ... 9. ... (3) A person shall not be naturalised as a citizen of the United Republic under this section except after he has made a declaration in writing in the prescribed form renouncing, or indicating his willingness, but for the legal restrictions to renounce any other nationality or citizenship ... Second Schedule ... (a) that he has resided in the United Republic throughout the period of twelve months immediately preceding the date of the application; and (b) that during the ten years immediately preceding the said period of twelve months he resided in the United Republic for periods amounting in the aggregate to not less than seven years;"
+  }
+ ],
+ "atBirth": {
+  "soil": "unconditional",
+  "descent": "either parent",
+  "descentAbroad": "Person is born abroad to a citizen other than by descent (i.e. not also born outside the country).; Father a citizen by descent (person may apply for citizenship by naturalisation)."
+ }
+}

@@ -1,0 +1,35 @@
+{
+ "country": "EC",
+ "years": 3,
+ "renounce": false,
+ "lapses": false,
+ "note": "GLOBALCIT's Citizenship Law Dataset v3.0 (EUI, 2025), coding the law in force on 1 January 2024 (A06a Const 8(1), ECU, 71, 72, 79; A06b Const 8(1), ECU, 71, 72, 79; L05 No provision): ordinary naturalisation after 3 years' residence; no renunciation of other citizenships required; a citizen keeps it on taking another. Reforms after that date are checked in the file's later sources, where a later source is given. Citizenship at birth is read from the same dataset's 2024 coding of modes A01a (descent, born in country: No provision), A01b (descent, born abroad: Generational transmission restriction: conditional on birthplace/place of residence /mode under which parent acquired citizenship), A02a (birth in country: Generally applicable provision) and A02b (birth in country to a parent born there: No provision), as its codebook (RSC/GLOBALCIT 2025/01, sections 3.2.1a to 3.2.2b) defines them: by birth in the territory unconditionally; by descent from either parent, a child born abroad on the limit the dataset states (the dataset codes no separate descent rule for a child born in the country, birth there giving it; the parent's sex is read from mode A01b). Changes to the law at birth after 1 January 2024 weren't checked for this file. On 2026-11-03 the primaries were read: Constitución de la República del Ecuador (RO 449, 20 October 2008, with the 2011 referendum reforms), Asamblea Nacional, arts. 6-8; Ley Orgánica Reformatoria de la Ley Orgánica de Movilidad Humana, Registro Oficial Tercer Suplemento N° 386, 5 February 2021 (Asamblea Nacional; scanned, read by OCR, tesseract spa), arts. 48 and 50; Ley Orgánica de Movilidad Humana, RO Suplemento 938, 6 February 2017 (Asamblea Nacional), arts. 71-72 as first enacted. Every figure the file holds now rests on them, and the dataset is no longer cited. Since the 2021 reform the three years run while holding a permanent residence visa, which follows temporary residence, so the effective wait is longer; the form doesn't hold the visa.",
+ "sources": [
+  {
+   "url": "https://www.asambleanacional.gob.ec/sites/default/files/documents/old/constitucion_de_bolsillo.pdf",
+   "title": "Constitución de la República del Ecuador (RO 449, 20 October 2008, with the 2011 referendum reforms), Asamblea Nacional, arts. 6-8",
+   "read": "2026-11-03",
+   "kind": "primary",
+   "said": "Art. 6.- ... La nacionalidad ecuatoriana se obtendrá por nacimiento o por naturalización y no se perderá por el matrimonio o su disolución, ni por la adquisición de otra nacionalidad. Art. 7.- Son ecuatorianas y ecuatorianos por nacimiento: 1. Las personas nacidas en el Ecuador. 2. Las personas nacidas en el extranjero de madre o padre nacidos en el Ecuador; y sus descendientes hasta el tercer grado de consanguinidad. ... Art. 8.- ... Quienes adquieran la nacionalidad ecuatoriana no estarán obligados a renunciar a su nacionalidad de origen."
+  },
+  {
+   "url": "https://www.asambleanacional.gob.ec/es/system/files/3sro386_20210205.pdf",
+   "title": "Ley Orgánica Reformatoria de la Ley Orgánica de Movilidad Humana, Registro Oficial Tercer Suplemento N° 386, 5 February 2021 (Asamblea Nacional; scanned, read by OCR, tesseract spa), arts. 48 and 50",
+   "read": "2026-11-03",
+   "kind": "primary",
+   "said": "Artículo 48.- Sustitúyase el artículo 71 por el siguiente texto: 'Art. 71.- Carta de Naturalización.- Es el acto administrativo por el cual se otorga la nacionalidad ecuatoriana en razón del tiempo de permanencia en el país ... Podrán solicitar la carta de naturalización: 1. Las personas extranjeras que ostenten visa de residencia permanente y se encuentren domiciliadas en el Ecuador de forma regular al menos por tres años, a la fecha de ingreso de la solicitud; y, 2. Las personas reconocidas por el Estado ecuatoriano como refugiadas y apátridas que hayan permanecido en el país al menos por dos años.' ... Artículo 50.- Sustitúyase el artículo 72 por el siguiente: 'Art. 72.- ... 1. Residir de forma regular y continua en el país con una visa de residencia permanente según las disposiciones de esta Ley; ...'"
+  },
+  {
+   "url": "https://www.asambleanacional.gob.ec/es/system/files/ley-movilidad-humana-ro938-s-06-02-2017.pdf",
+   "title": "Ley Orgánica de Movilidad Humana, RO Suplemento 938, 6 February 2017 (Asamblea Nacional), arts. 71-72 as first enacted",
+   "read": "2026-11-03",
+   "kind": "primary",
+   "said": "Artículo 71.- ... Podrán solicitar la carta de naturalización: 1. Las personas extranjeras que hayan residido de forma regular y continua al menos tres años en el Ecuador"
+  }
+ ],
+ "atBirth": {
+  "soil": "unconditional",
+  "descent": "either parent",
+  "descentAbroad": "Person (and his/her descendants up to the third degree) is born abroad to a citizen who was born in Ecuador.; Person is a minor and born abroad to a citizen by naturalisation."
+ }
+}

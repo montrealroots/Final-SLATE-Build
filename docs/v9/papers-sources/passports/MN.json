@@ -1,0 +1,42 @@
+{
+ "country": "MN",
+ "office": "the General Authority for State Registration, at the state registration departments of the capital's 9 districts and the 21 aimags",
+ "currency": "MNT",
+ "routes": [
+  {
+   "id": "home",
+   "where": "home",
+   "speed": "standard",
+   "within": null,
+   "label": "at a state registration department"
+  },
+  {
+   "id": "lost",
+   "where": "home",
+   "speed": "standard",
+   "within": null,
+   "replacement": true,
+   "label": "a lost passport replaced"
+  }
+ ],
+ "passports": [
+  {
+   "for": "any",
+   "validYears": null,
+   "pay": {
+    "home": "82500",
+    "lost": "190000"
+   }
+  }
+ ],
+ "note": "The electronic ordinary passport's price from the General Authority for State Registration's own services page (undated, its footer © 2020; read 2026-11-03): 77,500 tögrög and a 5,000-tögrög stamp duty, 82,500 in all, for a first passport or one replacing an expired or full one; a lost one is replaced for 155,000, the 5,000 stamp and a 30,000 fine, 190,000 in all, written as a replacement route. Until 2026-11-03 the price stood on ikon.mn's report of the Authority's announcement (1 March 2023), and the lost passport's wasn't modelled. A damaged one is replaced for 185,000 (a 25,000 fine), which isn't a route the form holds. Validity and processing time aren't read.",
+ "sources": [
+  {
+   "kind": "primary",
+   "url": "http://burtgel.gov.mn/service/index.php/civil/passport-item",
+   "title": "Улсын бүртгэлийн ерөнхий газар (General Authority for State Registration), services site, Гадаад паспорт: 'Үндэсний энгийн цахим /чиптэй/ гадаад паспортын төлбөрийн мэдээлэл', the table image http://burtgel.gov.mn/service/images/passport/Tsahim_pass.png",
+   "read": "2026-11-03",
+   "said": "(table image, transcribed) Төлбөр, хураамжийн дүн: Үйлчилгээний хөлс /Төрийн банк-106030085647/ | Тэмдэгтийн хураамж /Харьяа дүүргийн татварын хэлтсийн дансаар/ | Торгууль /Төрийн банк-106030085646/ | НИЙТ ДҮН. 1 Үндэсний энгийн цахим ГПаспорт анх удаа, хуудас, хугацаа дууссан үед дахин авах 77,500 | 5,000 | - | 82,500. 2 Үндэсний энгийн цахим ГПаспорт дахин авах /гэмтээсэн үед/ 155,000 | 5,000 | 25,000 | 185,000. 3 Үндэсний энгийн цахим ГПаспорт дахин авах /үрэгдүүлсэн үед/ 155,000 | 5,000 | 30,000 | 190,000"
+  }
+ ]
+}

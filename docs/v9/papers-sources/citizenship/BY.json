@@ -1,0 +1,20 @@
+{
+ "country": "BY",
+ "years": 5,
+ "renounce": true,
+ "lapses": false,
+ "note": "GLOBALCIT's Citizenship Law Dataset v3.0 (EUI, 2025), coding the law in force on 1 January 2024 (A06a BEL 14, 17; A06b BEL 14, 18; L05 No provision): ordinary naturalisation after 5 years' residence; the applicant must give up other citizenships; a citizen keeps it on taking another. Reforms after that date are checked in the file's later sources, where a later source is given. Citizenship at birth is read from the same dataset's 2024 coding of modes A01a (descent, born in country: Generally applicable provision), A01b (descent, born abroad: Generally applicable provision), A02a (birth in country: No provision) and A02b (birth in country to a parent born there: No provision), as its codebook (RSC/GLOBALCIT 2025/01, sections 3.2.1a to 3.2.2b) defines them: not by birth in the territory alone (provisions for foundlings and children otherwise stateless, modes A03a and A03b, aren't held by the form); by descent from either parent, with no further limit on a child born abroad. Changes to the law at birth after 1 January 2024 weren't checked for this file. On 2026-11-03 the primary was read: Pravo.by (Национальный правовой Интернет-портал Республики Беларусь), Закон Республики Беларусь от 1 августа 2002 г. № 136-З «О гражданстве Республики Беларусь», with amendments to Закон № 242-З of 5 January 2023. Every figure the file holds now rests on it, and the dataset is no longer cited.",
+ "sources": [
+  {
+   "url": "https://pravo.by/document/?guid=3871&p0=H10200136",
+   "title": "Pravo.by (Национальный правовой Интернет-портал Республики Беларусь), Закон Республики Беларусь от 1 августа 2002 г. № 136-З «О гражданстве Республики Беларусь», with amendments to Закон № 242-З of 5 January 2023",
+   "read": "2026-11-03",
+   "kind": "primary",
+   "said": "Статья 13. ... Ребенок приобретает гражданство Республики Беларусь по рождению, если на день рождения ребенка: хотя бы один из родителей ребенка состоит в гражданстве Республики Беларусь независимо от места рождения ребенка; ... Статья 14. ... проживает в Республике Беларусь после получения разрешения на постоянное проживание в Республике Беларусь в течение пяти лет непрерывно. ... не имеет гражданства, либо утрачивает гражданство иностранного государства в случае приобретения гражданства Республики Беларусь, либо обратилось в полномочный орган иностранного государства с заявлением о прекращении имеющегося у него гражданства иностранного государства, за исключением случаев, когда прекращение гражданства иностранного государства невозможно по независящим от лица причинам. ... Статья 19. Утрата гражданства Республики Беларусь. Гражданство Республики Беларусь утрачивается: вследствие поступления лица на воинскую службу, службу в полицию, органы безопасности, юстиции или иные государственные органы иностранного государства; по заявлению родителей ... по основаниям, предусмотренным международными договорами Республики Беларусь."
+  }
+ ],
+ "atBirth": {
+  "soil": "none",
+  "descent": "either parent"
+ }
+}

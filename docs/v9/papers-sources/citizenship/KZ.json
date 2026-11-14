@@ -1,0 +1,28 @@
+{
+ "country": "KZ",
+ "years": 5,
+ "renounce": true,
+ "lapses": true,
+ "note": "GLOBALCIT's Citizenship Law Dataset v3.0 (EUI, 2025), coding the law in force on 1 January 2024 (A06a KAZ 16, 17; A06b KAZ 16, 17; L05 KAZ 21): ordinary naturalisation after 5 years' residence; the applicant must give up other citizenships; a citizen loses the citizenship on voluntarily taking another. Reforms after that date are checked in the file's later sources, where a later source is given. Citizenship at birth is read from the same dataset's 2024 coding of modes A01a (descent, born in country: Generally applicable provision), A01b (descent, born abroad: Dual citizenship restriction), A02a (birth in country: No provision) and A02b (birth in country to a parent born there: No provision), as its codebook (RSC/GLOBALCIT 2025/01, sections 3.2.1a to 3.2.2b) defines them: not by birth in the territory alone (provisions for foundlings and children otherwise stateless, modes A03a and A03b, aren't held by the form); by descent from either parent, a child born abroad on the limit the dataset states. The coding also records a dual-citizenship restriction on descent, which the form doesn't hold. Changes to the law at birth after 1 January 2024 weren't checked for this file. On 2026-11-03 the primary was read: Закон Республики Казахстан от 20.12.1991 № 1017-XII «О гражданстве Республики Казахстан», ИПС «Әділет» (Ministry of Justice), ст. 16, 17; Закон «О гражданстве Республики Казахстан», ст. 3, 11, 12, 21. Every figure the file holds now rests on it, and the dataset is no longer cited. Renunciation takes the form of a ground of refusal (art. 17(7)). The limit abroad is now art. 12's words; the dataset's note on joint consent isn't in the text read.",
+ "sources": [
+  {
+   "url": "https://adilet.zan.kz/rus/docs/Z910004800_",
+   "title": "Закон Республики Казахстан от 20.12.1991 № 1017-XII «О гражданстве Республики Казахстан», ИПС «Әділет» (Ministry of Justice), ст. 16, 17",
+   "read": "2026-11-03",
+   "kind": "primary",
+   "said": "Статья 16. Условия приема в гражданство Республики Казахстан В гражданство Республики Казахстан могут быть приняты: 1) лица, постоянно проживающие на территории Республики Казахстан на законных основаниях не менее пяти лет ... Статья 17. ... Ходатайство о приеме в гражданство или восстановлении в гражданстве Республики Казахстан отклоняется, если лицо, ходатайствующее об этом: ... 7) состоит в гражданстве другого (других) государства (государств);"
+  },
+  {
+   "url": "https://adilet.zan.kz/rus/docs/Z910004800_",
+   "title": "Закон «О гражданстве Республики Казахстан», ст. 3, 11, 12, 21",
+   "read": "2026-11-03",
+   "kind": "primary",
+   "said": "За гражданином Республики Казахстан не признается гражданство другого государства. ... Статья 11. ... Ребенок, оба родителя которого к моменту его рождения состояли в гражданстве Республики Казахстан, является гражданином Республики Казахстан независимо от места рождения. ... Статья 12. ... При различном гражданстве родителей, один из которых к моменту рождения ребенка состоял в гражданстве Республики Казахстан, ребенок является гражданином Республики Казахстан, если он родился: 1) на территории Республики Казахстан; 2) вне пределов Республики Казахстан, но родители или один из них в это время имели постоянное место жительства на территории Республики Казахстан. ... Статья 21. Утрата гражданства ... Гражданство Республики Казахстан утрачивается: ... 5) если лицо приобрело гражданство другого государства;"
+  }
+ ],
+ "atBirth": {
+  "soil": "none",
+  "descent": "either parent",
+  "descentAbroad": "Person is born abroad to two citizens; or to one citizen and one parent of another citizenship where the parents, or one of them, then had permanent residence in Kazakhstan."
+ }
+}

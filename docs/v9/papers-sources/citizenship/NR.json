@@ -1,0 +1,34 @@
+{
+ "country": "NR",
+ "years": "none",
+ "renounce": null,
+ "lapses": false,
+ "note": "GLOBALCIT's Citizenship Law Dataset v3.0 (EUI, 2025), coding the law in force on 1 January 2024 (A06a No provision; A06b No provision; L05 No provision): no ordinary naturalisation by residence; a citizen keeps it on taking another. Reforms after that date are checked in the file's later sources, where a later source is given. Citizenship at birth is read from the same dataset's 2024 coding of modes A01a (descent, born in country: Generally applicable provision), A01b (descent, born abroad: Generally applicable provision), A02a (birth in country: No provision) and A02b (birth in country to a parent born there: No provision), as its codebook (RSC/GLOBALCIT 2025/01, sections 3.2.1a to 3.2.2b) defines them: not by birth in the territory alone (provisions for foundlings and children otherwise stateless, modes A03a and A03b, aren't held by the form); by descent from either parent, with no further limit on a child born abroad. Changes to the law at birth after 1 January 2024 weren't checked for this file. On 2026-11-03 the primary was read: Naoero Citizenship Act 2017, RONLAW (Nauru Online Legal Database, Department of Justice), Service 6 compilation, ss 9, 11, 12, 16; Naoero Naturalisation Citizenship Act 2026 (No 37 of 2026, certified and commenced 17 September 2026), RONLAW, ss 5, 7, 26; Naoero Citizenship (Amendment) Act 2024, No. 21 of 2024 (certified 26 November 2024), RONLAW, s 4. Every figure the file holds now rests on it, and the dataset is no longer cited. The Naoero Naturalisation Citizenship Act 2026 (commenced 17 September 2026) opens naturalisation through a licensed Agent with no period of residence (s. 7(2)), so no one is naturalised by residence.",
+ "sources": [
+  {
+   "url": "https://ronlaw.gov.nr/assets/docs/acts/2017/Naoero%20Citizenship%20Act%202017_serv6.pdf",
+   "title": "Naoero Citizenship Act 2017, RONLAW (Nauru Online Legal Database, Department of Justice), Service 6 compilation, ss 9, 11, 12, 16",
+   "read": "2026-11-03",
+   "kind": "primary",
+   "said": "9 Citizenship by birth A person born in the Republic is a citizen by birth, provided that at the time of the person's birth, either one or both parents of that person, is a citizen. ... 11 Citizenship by birth in the Republic and residency (1) A person may apply for citizenship if the person: (a) is born in the Republic to parents who are not citizens; and (b) has for a continuous period of 20 years resided in the Republic. ... 12 Citizenship by descent (1) A person born outside the Republic shall be deemed to be a citizen, if at the time of the person's birth, either one or both parents were citizens. ... 16 Dual citizenship (1) A person who is a citizen of the Republic may also be a citizen of another country. (2) A person who is a citizen of or acquires the citizenship of another country shall not lose his or her citizenship of the Republic."
+  },
+  {
+   "url": "https://ronlaw.gov.nr/assets/docs/acts/2026/Naoero%20Naturalisation%20Citizenship%20Act%202026_serv6.pdf",
+   "title": "Naoero Naturalisation Citizenship Act 2026 (No 37 of 2026, certified and commenced 17 September 2026), RONLAW, ss 5, 7, 26",
+   "read": "2026-11-03",
+   "kind": "primary",
+   "said": "The Naoero Naturalisation Citizenship Act 2026 No 37 was certified and commenced on 17 September 2026. ... 5 Acquisition of Naoero citizenship by naturalisation (1) A person may apply to acquire Naoero citizenship by the process of naturalisation. ... (3) For the purposes of subsection (1), only an Agent may make an application for and on behalf of a person who seeks Naoero citizenship. ... 7 Application for citizenship ... (2) A person is eligible to apply for citizenship, if he or she: (a) is at least 18 years of age; and (b) has not been involved in any manner whatsoever on matters contained in Section 16(1) or (2). (3) The Cabinet may prescribe such other requirements or criteria for the granting of citizenship."
+  },
+  {
+   "url": "https://ronlaw.gov.nr/assets/docs/acts/2024/Naoero%20Citizenship%20(Amendment)%20Act%202024.pdf",
+   "title": "Naoero Citizenship (Amendment) Act 2024, No. 21 of 2024 (certified 26 November 2024), RONLAW, s 4",
+   "read": "2026-11-03",
+   "kind": "primary",
+   "said": "4 Amendment of Section 24 Section 24 is deleted."
+  }
+ ],
+ "atBirth": {
+  "soil": "none",
+  "descent": "either parent"
+ }
+}

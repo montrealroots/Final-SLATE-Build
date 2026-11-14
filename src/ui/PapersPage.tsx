@@ -1,5 +1,5 @@
 // Your Papers (from November 14, 2026; the owner's command, 4 and 5): your documents and permissions, with a way back
-// to Home. The papers' application flow is built in docs/v9 step 4; until then this page holds what the game has.
+// to Home: passports, visiting and working, and applications (Papers.tsx).
 import { store } from './store';
 import { PageHead } from './components';
 import { PapersCard } from './Papers';

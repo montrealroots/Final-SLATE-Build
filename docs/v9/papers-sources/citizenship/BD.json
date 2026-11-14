@@ -1,0 +1,48 @@
+{
+ "country": "BD",
+ "years": 5,
+ "renounce": true,
+ "lapses": true,
+ "note": "GLOBALCIT's Citizenship Law Dataset v3.0 (EUI, 2025), coding the law in force on 1 January 2024 (A06a BAN 9, PO 149 of 1972 4, 1926 Act 3, 6, 1978 Rules 3, 4; A06b BAN 9, PO 149 of 1972 4, 1926 Act 3, 6, 1978 Rules 3, 4; L05 BAN 14,  Bangladesh Citizenship (Temporary Provisions) Order 1972 2B): ordinary naturalisation after 5 years' residence; the applicant must give up other citizenships; a citizen loses the citizenship on voluntarily taking another (with exceptions). Reforms after that date are checked in the file's later sources, where a later source is given. Citizenship at birth is read from the same dataset's 2024 coding of modes A01a (descent, born in country: Generally applicable provision), A01b (descent, born abroad: Generally applicable provision), A02a (birth in country: Generally applicable provision) and A02b (birth in country to a parent born there: No provision), as its codebook (RSC/GLOBALCIT 2025/01, sections 3.2.1a to 3.2.2b) defines them: by birth in the territory unconditionally; by descent from either parent, with no further limit on a child born abroad. Changes to the law at birth after 1 January 2024 weren't checked for this file. On 2026-11-03 the primary was read: Laws of Bangladesh (Legislative and Parliamentary Affairs Division), The Naturalization Act, 1926, section 3; Laws of Bangladesh, The Citizenship Act, 1951, section 14 (Dual citizenship or nationality not permitted); Laws of Bangladesh, The Bangladesh Citizenship (Temporary Provisions) Order, 1972 (P.O. 149), Article 2B; Laws of Bangladesh, The Citizenship Act, 1951, section 4 (Citizenship by birth); Laws of Bangladesh, The Citizenship Act, 1951, section 5 (Citizenship by descent). Every figure the file holds now rests on it, and the dataset is no longer cited. The five years are the twelve months before applying plus four of the seven years before them (Naturalization Act 1926, s. 3(1)(c)). The lapse isn't general: P.O. 149 Art. 2B spares citizens taking the citizenship of a European or North American state or one the Government notifies, and s. 14(1A) spares those under 21.",
+ "sources": [
+  {
+   "url": "http://bdlaws.minlaw.gov.bd/act-139/section-4747.html",
+   "title": "Laws of Bangladesh (Legislative and Parliamentary Affairs Division), The Naturalization Act, 1926, section 3",
+   "read": "2026-11-03",
+   "kind": "primary",
+   "said": "(c) that he has resided in Bangladesh throughout the period of twelve months immediately preceding the date of the application, and has, during the seven years immediately preceding the said period of twelve months, resided in Bangladesh for a period amounting in the aggregate to not less than four years;"
+  },
+  {
+   "url": "http://bdlaws.minlaw.gov.bd/act-242/section-7481.html",
+   "title": "Laws of Bangladesh, The Citizenship Act, 1951, section 14 (Dual citizenship or nationality not permitted)",
+   "read": "2026-11-03",
+   "kind": "primary",
+   "said": "14. (l) Subject to the provisions of this section if any person is a citizen of Bangladesh under the provisions of this Act, and is at the same time a citizen or national of any other country, he shall, unless he makes a declaration according to the laws of that other country renouncing his status as citizen or national thereof, cease to be a citizen of Bangladesh. (1A) Nothing in sub-section (1) applies to a person who has not attained twenty-one years of his age."
+  },
+  {
+   "url": "http://bdlaws.minlaw.gov.bd/act-423/section-18668.html",
+   "title": "Laws of Bangladesh, The Bangladesh Citizenship (Temporary Provisions) Order, 1972 (P.O. 149), Article 2B",
+   "read": "2026-11-03",
+   "kind": "primary",
+   "said": "2B. (1) ... a person shall not, except as provided in clause (2), qualify himself to be a citizen of Bangladesh if he- (i) owes, affirms or acknowledges, expressly or by conduct, allegiance to a foreign state ... Provided that a citizen of Bangladesh shall not, merely by reason of being a citizen or acquiring citizenship of a state specified in or under clause (2), cease to be a citizen of Bangladesh. (2) The Government may grant citizenship of Bangladesh to any person who is a citizen of any state of Europe or North America or of any other state which the Government may, by notification in the official Gazette, specify in this behalf."
+  },
+  {
+   "url": "http://bdlaws.minlaw.gov.bd/act-242/section-7471.html",
+   "title": "Laws of Bangladesh, The Citizenship Act, 1951, section 4 (Citizenship by birth)",
+   "read": "2026-11-03",
+   "kind": "primary",
+   "said": "4. Every person born in Bangladesh after the commencement of this Act shall be a citizen of Bangladesh by birth: Provided that a person shall not be such a citizen by virtue of this section if at the time of his birth- (a) his father possesses such immunity from suit and legal process as is accorded to an envoy of an external sovereign power accredited in Bangladesh and is not a citizen of Bangladesh ; or (b) his father is an enemy alien and the birth occurs in a place then under occupation by the enemy."
+  },
+  {
+   "url": "http://bdlaws.minlaw.gov.bd/act-242/section-7472.html",
+   "title": "Laws of Bangladesh, The Citizenship Act, 1951, section 5 (Citizenship by descent)",
+   "read": "2026-11-03",
+   "kind": "primary",
+   "said": "5. Subject to the provisions of section 3 a person born after the commencement of this Act, shall be a citizen of Bangladesh by descent if his [father or mother] is a citizen of Bangladesh at the time of his birth: Provided that if the [father or mother] of such person is a citizen of Bangladesh by descent only, that person shall not be a citizen ... unless- (a) ... the birth is registered at a Bangladesh Consulate or Mission ... or (b) that person's [father or mother] is, at the time of the birth, in the service of any Government in Bangladesh."
+  }
+ ],
+ "atBirth": {
+  "soil": "unconditional",
+  "descent": "either parent"
+ }
+}

@@ -1,0 +1,32 @@
+{
+ "country": "KR",
+ "others": {
+  "right": "permit",
+  "route": "예술흥행(E-6-1) 체류자격"
+ },
+ "note": "South Korea: a foreigner engaging in paid artistic or entertainment work (music, theatre, performance, advertising and the like) needs the Arts and Entertainment status of stay (E-6), the E-6-1 arts and entertainment kind on a recommendation from the Ministry of Culture, Sports and Tourism (Enforcement Decree of the Immigration Act, art. 12 and Table 1-2). No days of such work without it are named. Read first from a 2026 law-firm guide quoting the Decree (2026-10-29; it answered 403 on 2026-11-03). The Decree itself was read 2026-11-03 on the National Law Information Center (as in force from 2 October 2026, Presidential Decree 36728): art. 12 and Annex 1-2, row 19, 예술흥행 (E-6), for paid music, art and literature and for entertainment, performance, theatre, sport, advertising and fashion modelling. The E-6-1 kind and the Ministry of Culture's recommendation aren't in the Decree (they are the Ministry of Justice's guidelines, not read), so the entry stays secondary on them.",
+ "sources": [
+  {
+   "url": "https://klawguru.com/2026/08/07/koreas-e-6-arts-and-entertainment-visa-a-practical-guide/",
+   "title": "KLawGuru, Korea's E-6 (Arts and Entertainment) Visa: A Practical Guide (7 August 2026)",
+   "read": "2026-10-29",
+   "said": "The E-6 visa is a residence status for Arts and Entertainment activities (예술흥행). Under Article 12 of the Enforcement Decree of the Immigration Control Act and its attached Table 1-2, it is granted to foreigners who intend to engage in profit-generating artistic activities such as music, fine art, or literature, or profit-oriented activities such as entertainment, musical performance, theater, athletics, advertising/fashion modeling, or equivalent activities",
+   "kind": "secondary",
+   "quotes": "https://www.law.go.kr/%EB%B2%95%EB%A0%B9/%EC%B6%9C%EC%9E%85%EA%B5%AD%EA%B4%80%EB%A6%AC%EB%B2%95%EC%8B%9C%ED%96%89%EB%A0%B9"
+  },
+  {
+   "url": "https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=290501&chrClsCd=010202&urlMode=lsInfoP&efYd=20261002&ancYnChk=0",
+   "title": "국가법령정보센터, 출입국관리법 시행령 [시행 2026. 10. 2.] [대통령령 제36728호, 2026. 9. 29.], 제12조 (rendered in a browser)",
+   "read": "2026-11-03",
+   "said": "제12조(일반체류자격) 법 제10조의2제1항제1호에 따른 단기체류자격과 같은 항 제2호에 따른 장기체류자격의 종류, 체류자격에 해당하는 사람 또는 그 체류자격에 따른 활동범위는 각각 별표 1 및 별표 1의2와 같다.",
+   "kind": "primary"
+  },
+  {
+   "url": "https://www.law.go.kr/LSW/flDownload.do?flSeq=169633461",
+   "title": "국가법령정보센터, 출입국관리법 시행령 [별표 1의2] 장기체류자격 (in force 2026-10-02), page image with rows 17-22 (read by eye from the image)",
+   "read": "2026-11-03",
+   "said": "19. 예술흥행 (E-6) | 수익이 따르는 음악, 미술, 문학 등의 예술활동과 수익을 목적으로 하는 연예, 연주, 연극, 운동경기, 광고ㆍ패션 모델, 그 밖에 이에 준하는 활동을 하려는 사람",
+   "kind": "primary"
+  }
+ ]
+}

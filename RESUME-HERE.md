@@ -40,20 +40,32 @@ The command, word for word, is in the conversation of November 14, 2026; its nin
   - Both pass on desktop and phone (Chromium) and the iPhone 15 Pro Max (WebKit emulation). Neither was run on a
     physical device.
 
+**Done (second checkpoint).**
+- **3. Dated exchange** (`docs/v9/FX.md`).
+  - SLATE-REBUILD's 152 series and 622 observations, recounted.
+  - A rate is read on the bank's day, with no lookahead.
+  - A missing rate refuses.
+  - Past 2026-10-30 the last rate is held and called stale.
+  - A payment abroad keeps its quote's rates and settles what was quoted.
+  - Tests: `tests/v9-fx.test.ts`.
+- **4. Papers** (`docs/v9/PAPERS.md`).
+  - The records: passports 236, visits 246, work 232.
+  - Five permissions kept apart: passport, entry, stay, work, and the work itself.
+  - The visa application restored where a fee and time are recorded.
+  - The invented 30 days and one-year permit gone.
+  - The shoot checks acting and directing separately.
+  - Tests: `tests/v8-papers.test.ts`.
+- **7. Coverage by jurisdiction** (`docs/v9/COVERAGE.md`, `docs/v9/coverage.json`): 252 countries, 7 capabilities,
+  held by `tests/v9-coverage.test.ts`.
+- **8. All three journeys:** `e2e/v9-bank.spec.ts`, `e2e/v9-papers.spec.ts` and `e2e/v9-project-money.spec.ts`, each on
+  desktop and phone (Chromium) and the iPhone 15 Pro Max (WebKit emulation).
+
 **Next, in order.**
-1. **Step 3, dated exchange.** Import SLATE-REBUILD's `src/core/money/{money.ts,currencies.json}`,
-   `src/money/rates/{rates.ts,rates.json}`, `research/sources/money/rates/` and `coverage/rates-countries.json`, and
-   recount the series and observations. Replace 1221's fixed table (`bankworld/content/currency.ts` `exchange`) for
-   transfers with a quote: the reference rate effective and published by the game's date, the spread and both fees,
-   persisted on the posting. The quote is then confirmed, reserved, settled and given a receipt. Write the policy for
-   dates past the last observation.
-2. **Step 4, papers.** Import SLATE-REBUILD's passports, visits and work data. Restore an application flow on 1221's
-   `documents.ts` and `papervisits.ts`: eligibility → documents → application → fee → appointment → decision → issued
-   → use → expiry or renewal. Keep entry, stay, work and the production activity apart. Connect papers to the bank
-   (`hasSsn`, `residenceIn`), travel and the shoot (`papers.ts` `workRight`). Your Papers is `src/ui/PapersPage.tsx`,
-   which holds only the v8 permits card so far.
-3. **Step 7, coverage by jurisdiction.** Build it from `src/data/places.ts` countries, with the six classes.
-4. **Step 8.** The papers journey; old-against-new comparison tests.
+1. Connect SLATE-REBUILD's passport records (236) to the passport application, for the 221 countries 1221 has no office
+   for.
+2. Count days of stay against a visit's limit; make travel ask for entry.
+3. Show the international payment's quote on screen in a journey: it needs an account at a bank abroad, which SLATE's
+   start doesn't give.
 5. **Open defects.**
    - Two ported 1221 cases fail and their cause isn't found yet. Both are in `tests/bankworld/remaining-09-banking.test.ts`,
      marked UNRESOLVED: "Cancel It" isn't drawn for a second Berlin account in its first days.

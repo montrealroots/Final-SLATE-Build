@@ -1,0 +1,32 @@
+{
+ "country": "NP",
+ "rules": [
+  {
+   "passports": [
+    "IN"
+   ],
+   "right": "free"
+  }
+ ],
+ "others": {
+  "right": "permit",
+  "route": "Work permit (Department of Labour)"
+ },
+ "note": "Nepal: India's nationals have in Nepal, on a reciprocal basis, the same privileges as its own in residence, ownership of property, participation in trade and commerce and movement (the 1950 Treaty of Peace and Friendship, art. VII, as India's Ministry of External Affairs publishes it), and the Labour Act 2074 (2017) spares a foreigner who needs no labour approval under a treaty with the Government of Nepal (s. 23(2)); read as free to work. Anyone else is employed on the Department of Labour's work permit (श्रम इजाजत), which the employer may seek only where no Nepali citizen can supply the skill, after advertising in a national daily (s. 22). No days without it. Read 2026-11-03 in the Nepal Law Commission's text of the Act; until then from a publisher's copy, and the Treaty from Wikipedia, which added that Indians may not own land or work in government institutions in Nepal: art. VII doesn't say so, and the engine doesn't hold it.",
+ "sources": [
+  {
+   "url": "https://www.mea.gov.in/bilateral-documents.htm?dtl/6295/Treaty+of+Peace+and+Friendship",
+   "title": "Ministry of External Affairs (India), Bilateral documents: Treaty of Peace and Friendship (India-Nepal, 31 July 1950), Article VII (page rendered in a browser; curl gets only the frame)",
+   "read": "2026-11-03",
+   "said": "The Governments of India and Nepal agree to grant, on reciprocal basis, to the nationals of one country in the territories o the other the same privileges in the matter of residence, ownership of property, participation in trade and commerce, movement and other privileges of a similar nature.",
+   "kind": "primary"
+  },
+  {
+   "url": "https://giwmscdnone.gov.np/media/pdf_upload/15.%20%20%E0%A4%B6%E0%A5%8D%E0%A4%B0%E0%A4%AE%20%E0%A4%90%E0%A4%A8%2C_oinkgks.pdf",
+   "title": "श्रम ऐन, २०७४ (Labour Act 2017), Nepal Law Commission's text (www.lawcommission.gov.np, linked from its volume 9 page, lawcommission.gov.np/category/1783/), ss. 22-23 (verbatim from the PDF's text layer, whose legacy font mapping scrambles some letters: 'हवदे िी' is विदेशी (foreign), 'नमलई' is नलिई, 'दि' is दक्ष)",
+   "read": "2026-11-03",
+   "said": "पररच्छे द-६ श्रम इजाजत सम्बन्धी व्यवस्था २२. हवदे िीलाई काममा लगाउन नपाइनेाः (१) हवभागबाट श्रम इजाजत नमलई रोजगारदाताले कुनै पमन हवदे िी नागररकलाई श्रममकको रुपमा काममा लगाउन पाइने छै न। (२) ... रोजगारदाताले आफूलाई चाहहएको दि श्रममक नेपाली नागररकबाट आपूमतध हुन नसकेमा ... (३) ... राहियस्तरको दै मनक पमत्रकामा हवज्ञापन प्रकािन गनुध पनेछ। ... २३. ... (२) ... कुटनीमतक उन्मुशि पाउने वा नेपाल सरकारसँग भएको कुनै सशन्ध वा सम्झौता अन्तगधत श्रम स्वीकृमत मलन नपने अवस्थामा बाहेक नेपालमा काम गने हवदे िी नागररकले तोहकए बमोशजम श्रम स्वीकृमत मलनु पनेछ।",
+   "kind": "primary"
+  }
+ ]
+}

@@ -1,0 +1,63 @@
+{
+ "country": "CI",
+ "rules": [
+  {
+   "entry": "free",
+   "passports": [
+    "BF",
+    "BJ",
+    "CF",
+    "CG",
+    "CV",
+    "GH",
+    "GM",
+    "GN",
+    "GW",
+    "LR",
+    "MA",
+    "ML",
+    "MR",
+    "NE",
+    "NG",
+    "PH",
+    "RW",
+    "SC",
+    "SG",
+    "SL",
+    "SN",
+    "TD",
+    "TG",
+    "TN"
+   ]
+  }
+ ],
+ "others": {
+  "entry": "evisa",
+  "days": 90
+ },
+ "note": "Côte d'Ivoire: nationals of the ECOWAS states and the others listed enter without a visa (some for 90 days, the mark lost in the copy: taken without a set stay); everyone else applies for an airport e-Visa (90 days, EUR 73, collected at Abidjan). Read from Wikipedia's copy of the Ministry of Foreign Affairs' list. Checked on 2026-11-03 against the Ministry of Foreign Affairs and its consulate in Lyon: a visa is required, online through Snedai or at the airport, and the exemptions follow the groups of arrêté n°66/AE of 16 February 1993, whose annex wasn't found; they stand on Wikipedia's copy.",
+ "sources": [
+  {
+   "url": "https://en.wikipedia.org/wiki/Visa_policy_of_Ivory_Coast",
+   "title": "Wikipedia, Visa policy of Ivory Coast",
+   "read": "2026-11-03",
+   "kind": "secondary",
+   "quotes": "https://snedai.com/e-visa/",
+   "said": "Visitors to Ivory Coast must obtain a visa from one of the Ivorian diplomatic missions or online unless they come from one of the visa-exempt countries. ... can visit Côte d'Ivoire without a visa for an indefinite period of stay (unless otherwise stated): All ECOWAS member states Burkina Faso Central African Republic Chad Congo Mali Mauritania Morocco Niger Philippines Rwanda Seychelles Singapore Tunisia 1 - 90 days ... The e-Visa is valid for 90 days and is issued within 48 hours."
+  },
+  {
+   "url": "https://diplomatie.gouv.ci/informations-utiles/conseils-aux-voyageurs",
+   "title": "Ministère des Affaires Étrangères (Côte d'Ivoire): Conseils aux voyageurs",
+   "read": "2026-11-03",
+   "kind": "primary",
+   "said": "Passeport et Visa : Passeport valide plus de 6 mois et visa requis (demande en ligne via le portail officiel de Snedai ou visa aéroportuaire sous conditions). Cliquez sur le lien suivant : https://snedai.com/e-visa/"
+  },
+  {
+   "url": "https://lyon.diplomatie.gouv.ci/visa.php?lang=&num=1",
+   "title": "Consulat de Côte d'Ivoire à Lyon (diplomatie.gouv.ci): Obtenir le visa pour la Côte d'Ivoire",
+   "read": "2026-11-03",
+   "kind": "primary",
+   "said": "L'arrêté n°66/AE du 16 février 1993 aux circulaires n°1402/AE/AJC et 1817/AE/AJC des 07/02 et 10/02/1993, classent les pays en quatre (04) groupes A,B,C,D, conformément aux différents accords passés entre ces différents pays et la Côte d'Ivoire. Pour connaître les pays qui figurent dans les quatre groupes sus-indiqués, consulter l'annexe à cette rubrique."
+  }
+ ]
+}

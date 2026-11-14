@@ -1,0 +1,18 @@
+{
+ "country": "TK",
+ "others": {
+  "right": "permit",
+  "route": "Work permit (Council for the Ongoing Government)"
+ },
+ "note": "Tokelau: a New Zealand citizen who isn't a Tokelauan needs no permit to enter but may not stay past ten days without one and may not work without a current work permit or a special permit that authorises work; anyone else needs a permit to be in Tokelau and the same work permit to work (Immigration Rules 1991, rr. 4–5, as Tulafono a Tokelau 2016 consolidates them). A work permit lets its holder reside and work for up to three months and needs the approval of the Village Councils of all three islands; a special permit, up to three years (rr. 7, 9(3)). Tokelauans need none (r. 3), and the game holds no Tokelauan passport apart from New Zealand's, so New Zealand passports take the work permit. Read in PacLII's copy through archive.org's snapshot of 23 December 2024 (PacLII and New Zealand Legislation refuse this client); no later amendment was looked for beyond PacLII's list. No days without the permit are named. Read again on 2026-11-03: web.archive.org couldn't be read (web.archive.org reset every connection each time it was tried, and PacLII itself answered 403 behind a Cloudflare check), so its reading of 2026-10-31 stands. Until 2026-11-03 PacLII's copy was cited as primary; it is a legal information institute's copy of the law, so secondary since the ruling of 2026-11-03, so it was relabelled, naming the Government of Tokelau's site, and the fact is held as secondary. Tried that day for the state's own text: tokelau.org.nz (its pages and site map hold no legislation), New Zealand Legislation (it answered with an empty 202, a bot check, not passed), and Common Crawl (its index answered 403 every time). The rules didn't change.",
+ "sources": [
+  {
+   "url": "https://web.archive.org/web/20241223015835/https://www.paclii.org/tk/legis/consol_act_2016/ir1991187.pdf",
+   "title": "Immigration Rules 1991, rr. 4–7 (Tulafono a Tokelau 2016, PacLII's copy, archive.org snapshot of 23 December 2024)",
+   "read": "2026-10-31",
+   "said": "A New Zealand citizen who is not a Tokelauan does not require a permit to enter ... may not work in Tokelau unless that person holds a current work permit or a current special permit that authorises the person to work in Tokelau. ... A person who is not a New Zealand citizen ... may not be in Tokelau unless that person holds a current permit; ... work permits, which allow the permit holder to reside and work in Tokelau for a period not exceeding 3 months;",
+   "kind": "secondary",
+   "quotes": "https://www.tokelau.org.nz/"
+  }
+ ]
+}

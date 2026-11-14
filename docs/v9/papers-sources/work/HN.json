@@ -1,0 +1,25 @@
+{
+ "country": "HN",
+ "others": {
+  "right": "permit",
+  "route": "Permiso especial de permanencia (actividades comerciales o de espectáculos públicos)"
+ },
+ "note": "Honduras: the National Migration Institute grants special stay permits (Ley de Migración y Extranjería art. 39; its Regulation art. 42) to, among others, temporary workers, professionals and sportspeople (the Institute's own page, read 2026-11-03). Spain's Embassy in Tegucigalpa, summarising the Honduran rules, counts thirteen of them, of up to five years, one for foreigners in commercial activities or public spectacles, which the route names; the Institute's page doesn't list that category, and the Law's own text (on the Institute's www host, which answered 522) wasn't read. A visitor's stay is up to 90 days (the Embassy). No days of performing without it are named.",
+ "sources": [
+  {
+   "url": "https://exteriores.gob.es/Embajadas/tegucigalpa/es/ViajarA/Paginas/Establecerse.aspx",
+   "title": "Embajada de España en Honduras, Establecerse en Honduras",
+   "read": "2026-11-03",
+   "said": "Hay trece tipos de permisos especiales de permanencia por un máximo de cinco años: ... Extranjeros en actividades comerciales o de espectáculos públicos;",
+   "kind": "secondary",
+   "quotes": "https://www.inm.gob.hn/"
+  },
+  {
+   "url": "https://inm.gob.hn/secretaria-general",
+   "title": "Instituto Nacional de Migración, Secretaría General (last updated 23 October 2026)",
+   "read": "2026-11-03",
+   "said": "Permisos Especiales de Permanencia Se otorgan a determinados extranjeros que desean permanecer legalmente en Honduras, como: Estudiantes, refugiados, apátridas y asilados. Trabajadores migrantes y empleados temporales. Religiosos y voluntarios humanitarios. Científicos, profesionales, deportistas y técnicos especializados. Empresarios y personal directivo de empresas. Extranjeros que participan en proyectos gubernamentales o internacionales. Familiares dependientes de las personas contempladas en la ley. Artículo 39 de la Ley de Migración y Extranjería Artículo 42 del Reglamento de la Ley de Migración y Extranjería",
+   "kind": "primary"
+  }
+ ]
+}

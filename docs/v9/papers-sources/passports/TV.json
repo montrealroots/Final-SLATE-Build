@@ -1,0 +1,51 @@
+{
+ "country": "TV",
+ "office": "a Passport Officer of the Government of Tuvalu",
+ "currency": "AUD",
+ "routes": [
+  {
+   "id": "home",
+   "where": "home",
+   "speed": "standard",
+   "within": null,
+   "label": "from a Passport Officer"
+  },
+  {
+   "id": "renewal",
+   "where": "home",
+   "speed": "standard",
+   "within": null,
+   "renewal": true,
+   "label": "renewal of a passport held"
+  },
+  {
+   "id": "replacement",
+   "where": "home",
+   "speed": "standard",
+   "within": null,
+   "replacement": true,
+   "label": "replacement, as for a new passport"
+  }
+ ],
+ "passports": [
+  {
+   "for": "any",
+   "validYears": 5,
+   "pay": {
+    "home": "50",
+    "renewal": "20",
+    "replacement": "50"
+   }
+  }
+ ],
+ "note": "Tuvalu's Passports Regulations in the 2022 Revised Edition on the Attorney General's legislation site (read 2026-11-03): a new passport costs 50 Australian dollars and is valid 5 years; it may be renewed once for up to 5 more years at 20 dollars, and it ceases 10 years after first issue (the game keeps the renewal as a route, not the cap); a replacement costs as a new passport. A child under 18 may be included in a parent's passport (10 dollars an endorsement, not modelled) or have one of their own with a parent's consent, at the same fee. The investor passport of Part B (15,000 US dollars) and the emergency passport aren't modelled. The fee schedule dates from LN 8/2003, the latest amendment the edition carries; no processing time is published.",
+ "sources": [
+  {
+   "kind": "primary",
+   "url": "https://tuvalu-legislation.tv/cms/images/LEGISLATION/SUBORDINATE/1980/1980-0010/1980-0010_2.pdf",
+   "title": "Tuvalu Legislation, Passports Regulations, Cap. 24.20.1, 2022 Revised Edition (GN 10/1980, as amended by LN 10/1994, LN 1/1999 and LN 8/2003), regulations 3 and 4 and Schedule 2",
+   "read": "2026-11-03",
+   "said": "3 (3) A Tuvalu Passport will only be issued to a person under the age of 18 years on proof that the parent or guardian of such person consents to such issue. ... 4 (1) A Tuvalu Passport shall be valid and current for 5 years from the date of issue in the first instance ... (2) A Tuvalu Passport may be renewed from the date of its expiry for a period not exceeding 5 years upon application in accordance with regulation 9. ... (3) At the end of 10 years from the date of first issue of a Tuvalu Passport ... the passport shall cease to be valid. ... SCHEDULE 2 FEES PART A Item A$ New Tuvalu Passport, other than one to which Part B applies 50 Renewal of a Tuvalu Passport, other than one to which Part B applies 20 ... Replacement of a Tuvalu travel document, other than one to which Part B applies As for a new document Endorsement of a child in a Tuvalu Passport ... 10.00 ... Emergency Passport 25.00"
+  }
+ ]
+}

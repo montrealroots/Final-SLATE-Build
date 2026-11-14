@@ -54,13 +54,15 @@ Status words:
 | Payments: standing orders, scheduled payments, routing of deposits | `payments.ts`, `routing.ts` | same | Payments tab | `payments.test.ts` | Ported, tested |
 | Pending postings and holds | `pending.ts` | same | every balance | `pending.test.ts` | Ported, tested |
 | Domestic transfers between your own accounts and banks | `banking.ts` `bank.transfer`, `bankmoves.ts` | same | Accounts tab, Move Money | `banking.test.ts`, `bank-moves.test.ts` | Ported, tested |
-| International transfers | `abroad.ts` | same | Move Money | `home-account-transfers.test.ts` not runnable (see below) | Ported; dated rates are step 3 |
+| International transfers | `abroad.ts` | same, at dated reference rates (step 3, `docs/v9/FX.md`) | Move Money | `tests/v9-fx.test.ts` (quote, settlement, reload, refusal, staleness); `home-account-transfers.test.ts` skipped (home accounts) | Ported, adapted, tested |
 | Card lock, replacement, fraud disputes and refunds | `security.ts` | same | Security tab | `security.test.ts` (11) | Ported, tested |
 | Statements, alerts and history | `statements.ts`, `obligations.ts` | same | Statements tab | `statements.test.ts` (15 of 17), `coverage-gaps-statements.test.ts` | Ported, tested |
 | Round-ups | `roundups.ts` | same | Accounts Over Time tab | `roundups.test.ts` (22 of 24) | Ported, tested |
 | Account numbers (ABA, IBAN, CLABE, kennitala) | `core/banknumbers.ts`, `systems/banknumber.ts` | same | account inspectors | `banknumbers.test.ts` (14) | Ported, tested |
 | Bank holidays and business days | `content/bankdays.ts`, `holidays.ts` | same, tables in `data/holidays/` | every dated posting | `bankdays.test.ts` | Ported, tested |
-| Passports and visits (the papers' engine) | `documents.ts`, `papervisits.ts`, `content/passports.ts`, `passportsabroad.ts`, `visas.ts` | same | Your Papers (step 4) | `documents.test.ts` (7 of 9), `visas.test.ts`, `paper-visits.test.ts`, `papers-fixes.test.ts` (part) | Ported; the application flow is step 4 |
+| Passports (apply, pay, ready, expiry, lost and stolen) | `documents.ts`, `content/passports.ts`, `passportsabroad.ts` | same | Your Papers, Apply For A Passport | `documents.test.ts` (7 of 9) | Ported, tested |
+| Visitor visas: the application restored (owner's step 4) | `content/visas.ts` (data kept, no workflow in 1221 after its scope reset) | `src/engine/papers.ts` `visaCheck`, `applyForVisa`, decision and expiry | Your Papers, Visiting And Working | `tests/v8-papers.test.ts`, `e2e/v9-papers.spec.ts` | Adapted, tested |
+| Visits and work by country | SLATE-REBUILD `src/papers/{visits,work}` | `src/data/papers/`, `src/engine/papers.ts` | Your Papers; the shoot (`production/shoot.ts`); feasibility | `tests/v8-papers.test.ts` | Inherited, tested |
 | Taxes on interest | `content/tax.ts`, `banking.ts` `interestTaxOn` | ported as code | — | — | Adapted: taxes are excluded (see Deviations) |
 | Company accounts | `company_cash` account kinds | kinds kept, never opened | — | — | Not used: the company is out of play |
 
@@ -119,9 +121,14 @@ The 61 skipped cases, by reason:
    The button isn't drawn, so no control opens nothing.
 7. **ID cards and residence routes** (`systems/identity.ts`, the application side of `residence.ts`) aren't ported. A
    residence document still counts where a save holds one.
-8. **Exchange.** 1221's fixed table of rates (`content/currency.ts`) still converts inside the bank world. Step 3
-   replaces it for transfers with SLATE-REBUILD's dated rates. Until then a transfer between currencies uses 1221's
-   table, which is the gap step 3 closes.
+8. **Exchange.** 1221's fixed table of rates no longer converts anything: every conversion reads SLATE-REBUILD's dated
+   records on the bank's day, and a missing rate refuses rather than converting one to one (`docs/v9/FX.md`). Two
+   ported cases that read balances converted at the fixed rates set those balances to 1221's figures, labelled as
+   test setup.
+9. **Papers.** 1221's visitor visa data had no workflow after its scope reset; SLATE's papers (`engine/papers.ts`)
+   restore the application for the pairs it records a fee and time for, and take none where the records don't. The
+   v8 permit, decided after an invented 30 days and lasting an invented year, went; one a save already holds is kept
+   (`docs/v9/PAPERS.md`).
 
 ## The Company
 

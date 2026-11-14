@@ -1,0 +1,43 @@
+{
+ "country": "DO",
+ "years": 2,
+ "renounce": false,
+ "lapses": false,
+ "note": "GLOBALCIT's Citizenship Law Dataset v3.0 (EUI, 2025), coding the law in force on 1 January 2024 (A06a Const 18(7), DOR 1, 5, 7; A06b Const 18(7), DOR 1, 5, 7; L05 No provision): ordinary naturalisation after 2 years' residence; no renunciation of other citizenships required; a citizen keeps it on taking another. Reforms after that date are checked in the file's later sources, where a later source is given. Citizenship at birth is read from the same dataset's 2024 coding of modes A01a (descent, born in country: Generally applicable provision), A01b (descent, born abroad: Generally applicable provision), A02a (birth in country: Parental residence restriction) and A02b (birth in country to a parent born there: No provision), as its codebook (RSC/GLOBALCIT 2025/01, sections 3.2.1a to 3.2.2b) defines them: by birth in the territory only on the condition the dataset states; by descent from either parent, with no further limit on a child born abroad. Changes to the law at birth after 1 January 2024 weren't checked for this file. On 2026-11-03 the primaries were read: Constitución de la República Dominicana 2024 (promulgated 27 October 2024), Consultoría Jurídica del Poder Ejecutivo, Colección de constituciones (https://www.consultoria.gov.do/consultas?tab=constituciones), arts. 18-20; Ley núm. 4063 de 1955 que modifica varios artículos de la Ley núm. 1683 sobre Naturalización (Consultoría Jurídica del Poder Ejecutivo, legislation database, DocId 3290358; scanned Gaceta text, read with pdftotext); Ley núm. 1683 sobre Naturalización, 16 April 1948, G.O. 6782 (Consultoría Jurídica del Poder Ejecutivo, DocId 3281876; scanned, OCR with tesseract spa); the 1948 text, whose art. 1(b) Ley 4063 of 1955 replaced. They confirmed the years of residence, loss on taking another citizenship, birth in the territory and descent. It was silent on renunciation, which still rests on the sources above, re-read that day and found the same. The two years are Ley 4063 of 1955's (the 1948 law said ten); no renunciation was found in the scanned laws, and the Constitution accepts dual nationality (art. 20), but neither states outright that none is asked.",
+ "sources": [
+  {
+   "url": "https://cadmus.eui.eu/bitstreams/3b166501-e695-48d7-9e27-d7bef061573a/download",
+   "title": "GLOBALCIT Citizenship Law Dataset v3.0 (Vink, van der Baaren, Bauböck, Dzankic, Honohan, Manby; EUI Research Data, 2025), country-year-mode files, Dominican Republic, 2024",
+   "read": "2026-11-03",
+   "kind": "secondary",
+   "quotes": "https://globalcit.eu/national-citizenship-laws/",
+   "said": "Person has been resident in the DR for at least 2 years uninterrupted. ... n.a. ... n.a. ... Generally applicable provision ... Person is born in the DR to a citizen. ... Generally applicable provision ... Person is born abroad to a citizen. If person also obtains another citizenship at birth, citizenship can either be retained or renounced by declaration when he/she reaches the age of majority. ... Parental residence restriction ... Person is born in the DR. Unless born to foreign diplomats, foreigners 'in transit', and those residing illegally in the country. ... No provision"
+  },
+  {
+   "url": "https://www.consultoria.gov.do/uploads/1786127298458-819263307.pdf",
+   "title": "Constitución de la República Dominicana 2024 (promulgated 27 October 2024), Consultoría Jurídica del Poder Ejecutivo, Colección de constituciones (https://www.consultoria.gov.do/consultas?tab=constituciones), arts. 18-20",
+   "read": "2026-11-03",
+   "kind": "primary",
+   "said": "Artículo 18.- Nacionalidad. Son dominicanas y dominicanos: 1) Los hijos e hijas de madre o padre dominicanos; ... 3) Las personas nacidas en territorio nacional, con excepción de los hijos e hijas de extranjeros miembros de legaciones diplomáticas y consulares, de extranjeros que se hallen en tránsito o residan ilegalmente en territorio dominicano. ... 4) Los nacidos en el extranjero, de padre o madre dominicanos, no obstante haber adquirido, por el lugar de nacimiento, una nacionalidad distinta a la de sus padres. Una vez alcanzada la edad de dieciocho años, podrán manifestar su voluntad, ante la autoridad competente, de asumir la doble nacionalidad o renunciar a una de ellas; ... 7) Las personas naturalizadas, de conformidad con las condiciones y formalidades requeridas por la ley. ... Artículo 20.- Doble nacionalidad. Se reconoce a dominicanas y dominicanos la facultad de adquirir una nacionalidad extranjera. La adquisición de otra nacionalidad no implica la pérdida de la dominicana."
+  },
+  {
+   "url": "https://www.consultoria.gov.do/api/document/3290358",
+   "title": "Ley núm. 4063 de 1955 que modifica varios artículos de la Ley núm. 1683 sobre Naturalización (Consultoría Jurídica del Poder Ejecutivo, legislation database, DocId 3290358; scanned Gaceta text, read with pdftotext)",
+   "read": "2026-11-03",
+   "kind": "primary",
+   "said": "Art. 1.- Se modifican los artículos 1, 6 y 27 ... de la Ley sobre Naturalización ... de fecha 16 de abril de 1948, para que rijan del siguiente modo: 'Art. 1.- Puede adquirir la nacionalidad dominicana, por naturalización, toda persona extranjera mayor de edad; a) Que haya obtenido fijación de domicilio en la República de conformidad con el artículo 13 del Código Civil, seis meses después de la concesión del domicilio; b) Que justifique una residencia no interrumpida de dos años por lo menos en la República; ...'"
+  },
+  {
+   "url": "https://www.consultoria.gov.do/api/document/3281876",
+   "title": "Ley núm. 1683 sobre Naturalización, 16 April 1948, G.O. 6782 (Consultoría Jurídica del Poder Ejecutivo, DocId 3281876; scanned, OCR with tesseract spa); the 1948 text, whose art. 1(b) Ley 4063 of 1955 replaced",
+   "read": "2026-11-03",
+   "kind": "primary",
+   "said": "Art. 1.- Pueden adquirir la nacionalidad dominicana, por naturalización: ... b) Toda persona extranjera que justifique una residencia no interrumpida de diez años por lo menos en la República"
+  }
+ ],
+ "atBirth": {
+  "soil": "conditional",
+  "soilIf": "Person is born in the DR. Unless born to foreign diplomats, foreigners 'in transit', and those residing illegally in the country.",
+  "descent": "either parent"
+ }
+}

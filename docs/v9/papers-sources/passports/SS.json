@@ -1,0 +1,58 @@
+{
+ "country": "SS",
+ "office": "the Directorate of Civil Registry, Nationality, Passports and Immigration",
+ "currency": "USD",
+ "routes": [
+  {
+   "id": "home",
+   "where": "home",
+   "speed": "standard",
+   "within": null,
+   "label": "in South Sudan, payable in pounds at the Central Bank's rate"
+  }
+ ],
+ "passports": [
+  {
+   "for": "adult",
+   "from": 18,
+   "validYears": 10,
+   "pay": {
+    "home": "100"
+   }
+  },
+  {
+   "for": "minor",
+   "under": 18,
+   "validYears": 10,
+   "pay": {
+    "home": "50"
+   }
+  }
+ ],
+ "note": "The Director-General's circular under the Financial Act 2024-25, effective 16 December 2024, as Sudans Post reported it: 100 dollars for an adult's regular passport, 50 for a minor's, charged at the Central Bank's prevailing rate or its equivalent; a minor is taken as under 18. Passports are valid ten years since the Director-General's directive reported on 5 December 2022. Processing time isn't read. The Financial Act FY 2024-2025 itself (Schedule 26(b), read in the Ministry of Finance and Planning's scan, 2026-11-03) sets the adult's regular passport at 100 dollars and the minor's at 50, charged at the Central Bank's prevailing rate; the Ministry posts no later Act (its listing ends at FY 2024-2025, and a page for FY 2025-2026 isn't there). The Act doesn't say what age a minor is, the circular's date or the validity, which stay Sudans Post's. Its lost passport fee (100 dollars) isn't written: the schedule doesn't say whether it is paid instead of the passport's fee or with it.",
+ "sources": [
+  {
+   "kind": "secondary",
+   "url": "https://www.sudanspost.com/south-sudan-raises-fees-for-nationality-passports/",
+   "quotes": "https://www.nra.gov.ss/",
+   "title": "Sudans Post, South Sudan raises fees for nationality, passports (16 December 2024)",
+   "read": "2026-11-03",
+   "said": "Simon Majur Pabek, Director-General of Civil Registry, Nationality, Passports and Immigration, announced the new fees in a circular seen by Sudans Post. ... The Financial Act will take immediate effect from December 16, 2024. All immigration visa and passport fees or charges indicated in U.S. dollars should be charged at the Central Bank’s prevailing rate or its equivalent. ... An adult’s regular passport now costs $100, a minor’s regular passport costs $50"
+  },
+  {
+   "kind": "secondary",
+   "url": "https://www.sudanspost.com/south-sudan-extends-lifespan-of-passports-to-ten-years/",
+   "quotes": "https://www.nra.gov.ss/",
+   "title": "Sudans Post, South Sudan extends lifespan of passports to ten years (5 December 2022)",
+   "read": "2026-11-03",
+   "said": "South Sudan’s ministry of interior has extended the lifespan of passports to at least ten years, according to statements by the director-general of nationality, passports, and immigration General Atem Biar Marol. ... “We gave directives to extend the validity period of the passport from five years to ten years, and I have already directed the ICT department to make amendments to the printing system,”"
+  },
+  {
+   "kind": "primary",
+   "url": "https://mofp.gov.ss/wp-content/uploads/2025/02/Finance-Act-Book__2024-2025.pdf",
+   "title": "Ministry of Finance and Planning, Laws of South Sudan, Financial Act FY 2024-2025 (approved January 2025; posted 21 February 2025 at https://mofp.gov.ss/document/financial-act-fy-2024-2025/), Schedule 26(b): Immigration Nationality and Passport, printed pp. 133-134 (PDF pp. 135-136, scanned, read as images)",
+   "read": "2026-11-03",
+   "said": "(table, transcribed) Schedule 26(b): Immigration Nationality and Passport. S/NO | CHARGES / FEES | FY 2023/2024 Current Rate SSP | USD | FY 2024/2025 Approved Rate SSP | USD ... 6 Adult Regular Passport | 66,380 | 100 | | 100. 7 Minor Regular Passport | 33,190 | 50 | | 50. 8 Business Passport | 165,950 | 250 | | 400 ... 12 Lost Passport | 99,570 | 150 | | 100 ... Note: all the immigration Visas and passport fees indicated in USD should be charged at USD 1 Central Bank prevailing rate or its equivalent"
+  }
+ ]
+}

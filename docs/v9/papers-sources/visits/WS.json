@@ -1,0 +1,94 @@
+{
+ "country": "WS",
+ "rules": [
+  {
+   "entry": "free",
+   "days": 90,
+   "passports": [
+    "IL"
+   ]
+  },
+  {
+   "entry": "free",
+   "days": 90,
+   "within": 180,
+   "passports": [
+    "AT",
+    "BE",
+    "BG",
+    "CH",
+    "CY",
+    "CZ",
+    "DE",
+    "DK",
+    "EE",
+    "ES",
+    "FI",
+    "FR",
+    "GR",
+    "HR",
+    "HU",
+    "IS",
+    "IT",
+    "LI",
+    "LT",
+    "LU",
+    "LV",
+    "MT",
+    "NL",
+    "NO",
+    "PL",
+    "PT",
+    "RO",
+    "SE",
+    "SI",
+    "SK"
+   ]
+  },
+  {
+   "entry": "free",
+   "days": 60,
+   "passports": [
+    "HK",
+    "RU"
+   ]
+  },
+  {
+   "entry": "free",
+   "days": 30,
+   "passports": [
+    "CN",
+    "MO"
+   ]
+  }
+ ],
+ "others": {
+  "entry": "free",
+  "days": 90
+ },
+ "note": "Samoa: nationals of the countries with bilateral agreements enter without a visa for 90 days (Israel; 90 in 180 for the Schengen states and the EU but Ireland), 60 (Russia, Hong Kong) or 30 (China, Macao); everyone else is issued a free 90-day visitor's permit on arrival (taken as free), with a return ticket and a bank statement. Read from Wikipedia's copy. Read on 2026-11-03 against the Ministry of Foreign Affairs and Trade's own documents on entry to Samoa and its visa waiver agreements (both of 2021): they give every nationality 60 days without a permit, the EU's citizens 90 in any 180, Russia's and Macao's 60, and Israel's agreement as not yet ratified; they are older than the rules Wikipedia's copy records, and Samoa Immigration's own site wasn't reached, so they are recorded here and not held.",
+ "sources": [
+  {
+   "url": "https://en.wikipedia.org/wiki/Visa_policy_of_Samoa",
+   "title": "Wikipedia, Visa policy of Samoa",
+   "read": "2026-11-03",
+   "kind": "secondary",
+   "quotes": "https://www.samoaimmigration.gov.ws/",
+   "said": "Most visitors to Samoa are issued a free 90-day Visitor's Permit on arrival unless they are citizens of one of the visa-exempt countries. ... Citizens of the following countries may enter Samoa without a visa for the following period in accordance with bilateral agreements: 90 days Israel 90 days within any 180 days European Union member states (except Ireland) Iceland Liechtenstein Norway Switzerland 60 days Russia Hong Kong 30 days China Macau"
+  },
+  {
+   "url": "https://www.mfat.gov.ws/wp-content/uploads/2013/10/Entry-requirements-into-Samoa.pdf",
+   "title": "Samoa Ministry of Foreign Affairs and Trade, Entry requirements into Samoa (PDF created 2021-07-07)",
+   "read": "2026-11-03",
+   "kind": "primary",
+   "said": "All nationalities traveling to Samoa are not required to obtain an entry permit/visa for stays less than 60 days. ... If your visit is for more than 60 days, you must apply for a permit to enter the country from your nearest Samoa Consulate General, High Commission or Embassy in New Zealand, Australia, New York, Tokyo, Beijing and Belgium. Permit extensions in Apia are handled by Samoa Immigration."
+  },
+  {
+   "url": "https://www.mfat.gov.ws/wp-content/uploads/2013/10/List-of-Visa-waiver-Agreements.pdf",
+   "title": "Samoa Ministry of Foreign Affairs and Trade, Visa-waiver agreements (PDF created 2021-07-07)",
+   "read": "2026-11-03",
+   "kind": "primary",
+   "said": "Samoa has signed visa waivers or visa free agreements with a few countries and territories. Passport holders of the listed countries and territories do not have to apply for a visa before they travel to Samoa. ... European Union (28 member states of the EU) ... Signed: 28 May 2015 Ratified: 15 Dec 2015 ... Russia ... Signed: 4 Apr 2017 Enter into force: 9 Jul 2017 ... Macau ... Signed: 2000 ... Such travel shall be for a maximum period of 90 days in any 180 day period."
+  }
+ ]
+}

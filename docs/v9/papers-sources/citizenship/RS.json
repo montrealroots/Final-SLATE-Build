@@ -1,0 +1,21 @@
+{
+ "country": "RS",
+ "years": 3,
+ "renounce": true,
+ "lapses": false,
+ "note": "GLOBALCIT's Citizenship Law Dataset v3.0 (EUI, 2025), coding the law in force on 1 January 2024 (A06a SER 14, 15; A06b SER 14, 15; L05 No provision): ordinary naturalisation after 3 years' residence; the applicant must give up other citizenships (with major exceptions); a citizen keeps it on taking another. Reforms after that date are checked in the file's later sources, where a later source is given. Citizenship at birth is read from the same dataset's 2024 coding of modes A01a (descent, born in country: Generally applicable provision), A01b (descent, born abroad: Dual citizenship restriction), A02a (birth in country: No provision) and A02b (birth in country to a parent born there: No provision), as its codebook (RSC/GLOBALCIT 2025/01, sections 3.2.1a to 3.2.2b) defines them: not by birth in the territory alone (provisions for foundlings and children otherwise stateless, modes A03a and A03b, aren't held by the form); by descent from either parent, a child born abroad on the limit the dataset states. The coding also records a dual-citizenship restriction on descent, which the form doesn't hold. Changes to the law at birth after 1 January 2024 weren't checked for this file. On 2026-11-03 the primary was read: Закон о држављанству Републике Србије (\"Службени гласник РС\", бр. 135/2004, 90/2007, 24/2018), Правно-информациони систем Републике Србије (Službeni glasnik), arts. 7, 9, 14, 27. Every figure the file holds now rests on it, and the dataset is no longer cited.",
+ "sources": [
+  {
+   "url": "https://pravno-informacioni-sistem.rs/SlGlasnikPortal/eli/rep/sgrs/skupstina/zakon/2004/135/4/reg",
+   "title": "Закон о држављанству Републике Србије (\"Службени гласник РС\", бр. 135/2004, 90/2007, 24/2018), Правно-информациони систем Републике Србије (Službeni glasnik), arts. 7, 9, 14, 27",
+   "read": "2026-11-03",
+   "kind": "primary",
+   "said": "Члан 7. Држављанство Републике Србије пореклом стиче дете: 1) чија су оба родитеља у тренутку његовог рођења држављани Републике Србије; 2) чији је један од родитеља у тренутку његовог рођења држављанин Републике Србије а дете је рођено на територији Републике Србије; ... 3) рођено у иностранству, чији је један од родитеља у тренутку његовог рођења држављанин Републике Србије а други је непознат или непознатог држављанства или без држављанства. ... Члан 14. Странац коме је ... одобрено стално настањење у Републици Србији може бити, на свој захтев, примљен у држављанство Републике Србије, под условом: ... 2) да има отпуст из страног држављанства или да поднесе доказ да ће отпуст добити ако буде примљен у држављанство Републике Србије; 3) да је до подношења захтева најмање три године непрекидно имао пријављено пребивалиште на територији Републике Србије ... Члан 27. Држављанство Републике Србије престаје: 1) отпустом; 2) одрицањем; ... 3) по међународним уговорима. ... Члан 9. Држављанство Републике Србије пореклом стиче дете рођено у иностранству, чији је један од родитеља у тренутку његовог рођења држављанин Републике Србије а други је страни држављанин, ако га родитељ који је држављанин Републике Србије пријави до навршене 18. године живота ... Члан 10. Лице старије од 18 година живота рођено у иностранству чији је један од родитеља у тренутку његовог рођења био држављанин Републике Србије а други страни држављанин стиче пореклом држављанство Републике Србије ако до навршене 23. године живота поднесе захтев за упис у евиденцију држављана"
+  }
+ ],
+ "atBirth": {
+  "soil": "none",
+  "descent": "either parent",
+  "descentAbroad": "Person is born abroad to two citizens, or to one citizen and one parent unknown, of unknown citizenship or stateless; a child of one citizen and one foreign parent takes it if the citizen parent registers it before 18, or if it applies for registration itself between 18 and 23, or if it would otherwise be stateless."
+ }
+}

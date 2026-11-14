@@ -1,0 +1,27 @@
+{
+ "country": "DK",
+ "years": 9,
+ "renounce": false,
+ "lapses": false,
+ "note": "GLOBALCIT's Citizenship Law Dataset v3.0 (EUI, 2025), coding the law in force on 1 January 2024 (A06a DEN 6; A06b DEN 6; L05 No provision): ordinary naturalisation after 9 years' residence; no renunciation of other citizenships required; a citizen keeps it on taking another. Reforms after that date are checked in the file's later sources, where a later source is given. Citizenship at birth is read from the same dataset's 2024 coding of modes A01a (descent, born in country: Generally applicable provision), A01b (descent, born abroad: Generally applicable provision), A02a (birth in country: No provision) and A02b (birth in country to a parent born there: No provision), as its codebook (RSC/GLOBALCIT 2025/01, sections 3.2.1a to 3.2.2b) defines them: not by birth in the territory alone (provisions for foundlings and children otherwise stateless, modes A03a and A03b, aren't held by the form); by descent from either parent, with no further limit on a child born abroad. Changes to the law at birth after 1 January 2024 weren't checked for this file. On 2026-11-03 the primary was read: Retsinformation, Cirkulæreskrivelse om naturalisation (CIS nr 9461 af 17/06/2021, gældende), § 7; Retsinformation, Bekendtgørelse af lov om dansk indfødsret (LBK nr 1656 af 23/12/2022, gældende), §§ 1, 6, 8. Every figure the file holds now rests on it, and the dataset is no longer cited. § 8 of the Act takes it at 22 from one born abroad who never lived in Denmark; LOV 410/2025 adds no loss on taking another citizenship.",
+ "sources": [
+  {
+   "url": "https://www.retsinformation.dk/eli/retsinfo/2021/9461",
+   "title": "Retsinformation, Cirkulæreskrivelse om naturalisation (CIS nr 9461 af 17/06/2021, gældende), § 7",
+   "read": "2026-11-03",
+   "kind": "primary",
+   "said": "§ 7. Det er en betingelse for optagelse på et lovforslag om indfødsrets meddelelse, at ansøgeren har haft 9 års uafbrudt ophold her i landet. Stk. 2. Personer, der er anerkendt som flygtninge, personer, der må sidestilles hermed, og statsløse personer kan optages på et lovforslag om indfødsrets meddelelse efter 8 års uafbrudt ophold her i landet. Stk. 3. Statsborgere fra de nordiske lande kan optages på et lovforslag om indfødsrets meddelelse efter 2 års uafbrudt ophold her i landet."
+  },
+  {
+   "url": "https://www.retsinformation.dk/eli/lta/2022/1656",
+   "title": "Retsinformation, Bekendtgørelse af lov om dansk indfødsret (LBK nr 1656 af 23/12/2022, gældende), §§ 1, 6, 8",
+   "read": "2026-11-03",
+   "kind": "primary",
+   "said": "§ 1. Et barn erhverver dansk indfødsret ved fødslen, hvis faderen, moderen eller medmoderen er dansk, jf. dog stk. 2. ... § 6. Indfødsret kan erhverves ved naturalisation i henhold til grundloven. ... § 8. Den, som er født i udlandet og aldrig har boet her i riget og ej heller har opholdt sig her under forhold, som tyder på samhørighed med Danmark, taber sin danske indfødsret ved det fyldte 22. år, medmindre den pågældende derved bliver statsløs."
+  }
+ ],
+ "atBirth": {
+  "soil": "none",
+  "descent": "either parent"
+ }
+}

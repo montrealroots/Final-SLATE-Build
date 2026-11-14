@@ -1,0 +1,21 @@
+{
+ "country": "TR",
+ "years": 5,
+ "renounce": false,
+ "lapses": false,
+ "note": "GLOBALCIT's Citizenship Law Dataset v3.0 (EUI, 2025), coding the law in force on 1 January 2024 (A06a TUR 11, 10; A06b TUR 11, 10; L05 No provision): ordinary naturalisation after 5 years' residence; no renunciation of other citizenships required; a citizen keeps it on taking another. Reforms after that date are checked in the file's later sources, where a later source is given. Citizenship at birth is read from the same dataset's 2024 coding of modes A01a (descent, born in country: Wedlock restriction), A01b (descent, born abroad: Wedlock restriction), A02a (birth in country: No provision) and A02b (birth in country to a parent born there: No provision), as its codebook (RSC/GLOBALCIT 2025/01, sections 3.2.1a to 3.2.2b) defines them: not by birth in the territory alone (provisions for foundlings and children otherwise stateless, modes A03a and A03b, aren't held by the form); by descent from either parent, a child born abroad on the limit the dataset states. The coding also records a wedlock restriction (a child born out of wedlock may not take it from a citizen father), which the form doesn't hold. Changes to the law at birth after 1 January 2024 weren't checked for this file. On 2026-11-03 the primary was read: Türk Vatandaşlığı Kanunu, Kanun No. 5901 (consolidated text, Mevzuat Bilgi Sistemi, Presidency of the Republic of Türkiye; PDF dated 13 Nov 2023), arts. 7, 8, 11, 23-29. Every figure the file holds now rests on it, and the dataset is no longer cited.",
+ "sources": [
+  {
+   "url": "https://www.mevzuat.gov.tr/MevzuatMetin/1.5.5901.pdf",
+   "title": "Türk Vatandaşlığı Kanunu, Kanun No. 5901 (consolidated text, Mevzuat Bilgi Sistemi, Presidency of the Republic of Türkiye; PDF dated 13 Nov 2023), arts. 7, 8, 11, 23-29",
+   "read": "2026-11-03",
+   "kind": "primary",
+   "said": "MADDE 7 – (1) Türkiye içinde veya dışında Türk vatandaşı ana veya babadan evlilik birliği içinde doğan çocuk Türk vatandaşıdır. (2) Türk vatandaşı ana ve yabancı babadan evlilik birliği dışında doğan çocuk Türk vatandaşıdır. ... MADDE 8 – (1) Türkiye'de doğan ve yabancı ana ve babasından dolayı doğumla herhangi bir ülkenin vatandaşlığını kazanamayan çocuk, doğumdan itibaren Türk vatandaşıdır. ... MADDE 11 – (1) Türk vatandaşlığını kazanmak isteyen yabancılarda; ... b) Başvuru tarihinden geriye doğru Türkiye'de kesintisiz beş yıl ikamet etmek, ... şartları aranır. ... MADDE 23 – (1) Türk vatandaşlığı, yetkili makam kararı veya seçme hakkının kullanılması ile kaybedilir."
+  }
+ ],
+ "atBirth": {
+  "soil": "none",
+  "descent": "either parent",
+  "descentAbroad": "Person is born abroad in wedlock to a Turkish mother or father, or out of wedlock to a Turkish mother (or to a Turkish father once descent is established)."
+ }
+}

@@ -1,0 +1,53 @@
+{
+ "country": "LR",
+ "rules": [
+  {
+   "entry": "free",
+   "days": 90,
+   "passports": [
+    "BF",
+    "BJ",
+    "CI",
+    "CV",
+    "GH",
+    "GM",
+    "GN",
+    "GW",
+    "ML",
+    "NE",
+    "NG",
+    "SL",
+    "SN",
+    "TG"
+   ]
+  }
+ ],
+ "others": {
+  "entry": "visa"
+ },
+ "note": "Liberia: nationals of the ECOWAS states, Burkina Faso, Mali and Niger enter without a visa for 90 days; everyone else needs a visa from a Liberian mission, or, where there's none in their country, an electronic visa on arrival applied for online (since 11 March 2025, Monrovia airport only: not modelled apart). Read from Wikipedia's copy. Checked on 2026-11-03 against the Liberia Immigration Service's own pages: they affirm ECOWAS's free movement without naming its states or a length, and give nationals of countries without a Liberian embassy a visa on arrival applied for online (USD 102.5, by air; not modelled, since which countries those are depends on the embassy list, not read). Every figure stands on Wikipedia's copy.",
+ "sources": [
+  {
+   "url": "https://en.wikipedia.org/wiki/Visa_policy_of_Liberia",
+   "title": "Wikipedia, Visa policy of Liberia",
+   "read": "2026-11-03",
+   "kind": "secondary",
+   "quotes": "https://www.lis.gov.lr/",
+   "said": "Visitors to Liberia must obtain a visa from one of the Liberian diplomatic missions or apply for an electronic visa on arrival to visit Liberia unless they are citizens from one of the visa-exempt countries. ... Citizens of the following countries may enter Liberia without a visa for up to 90 days: All ECOWAS member states Burkina Faso Mali Niger ... Starting March 11, 2025, international travelers can apply for an electronic visa on arrival to visit Liberia, but if there is a Liberian embassy in one's country, the traveler is required to apply for a visa directly at the embassy and not through this portal."
+  },
+  {
+   "url": "https://visaonarrival.lis.gov.lr/",
+   "title": "Liberia Immigration Service, Visa on Arrival portal",
+   "read": "2026-11-03",
+   "kind": "primary",
+   "said": "If there is a Liberian embassy in your country, you are required to apply for your visa directly at the embassy and not through this portal. ... The Visa on Arrival fee (USD 102.5) is non-refundable . ... After successful processing and approval by the authorities, you will receive a confirmation email with an attachment (PDF with QR code). You will need to present this at the airport upon arrival. ... Once approved, Liberia Visa on Arrival application is valid for entry into the country within 3 months ."
+  },
+  {
+   "url": "https://www.lis.gov.lr/",
+   "title": "Liberia Immigration Service, home page",
+   "read": "2026-11-03",
+   "kind": "primary",
+   "said": "It adheres to the ECOWAS, MRU Protocols on the free movement of people, goods and services across the sub-region."
+  }
+ ]
+}

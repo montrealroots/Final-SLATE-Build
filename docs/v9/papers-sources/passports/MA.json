@@ -1,0 +1,77 @@
+{
+ "country": "MA",
+ "office": "the prefecture or province in Morocco, or the consulate for the area of residence abroad, the passport stamp paid as a fixed stamp duty under the General Tax Code",
+ "currency": "MAD",
+ "routes": [
+  {
+   "id": "home",
+   "where": "home",
+   "speed": "standard",
+   "within": null,
+   "label": "in Morocco"
+  },
+  {
+   "id": "abroad",
+   "where": "abroad",
+   "speed": "standard",
+   "within": null,
+   "label": "at the consulate for your area of residence"
+  }
+ ],
+ "passports": [
+  {
+   "for": "child under 3",
+   "under": 3,
+   "validYears": null,
+   "pay": {
+    "home": "500",
+    "abroad": "0"
+   }
+  },
+  {
+   "for": "minor",
+   "from": 3,
+   "under": 18,
+   "validYears": 5,
+   "pay": {
+    "home": "500",
+    "abroad": "0"
+   }
+  },
+  {
+   "for": "adult",
+   "from": 18,
+   "validYears": 5,
+   "pay": {
+    "home": "500",
+    "abroad": "500"
+   }
+  }
+ ],
+ "note": "The stamp is a fixed stamp duty under the General Tax Code (its 2026 edition, on the Ministry of Economy and Finance's site, read 2026-11-03): 500 dirhams for every passport and each extension (art. 252-II-B), and none for the passports of the children under 18 of Moroccans living abroad, on issue or extension (art. 250-9°), written as the route abroad. The Code sets no child's rate: LesMRE's news piece of 19 July 2026 gave 100 dirhams for a child under 12, which this file held as the fee in Morocco until 2026-11-03, with no fee read for a minor of 12 to 17; both pay 500 dirhams. The passport is valid 5 years for anyone over 3, as LesMRE's guide (updated October 2026) says; a child under 3's validity isn't read. Consular chancery fees, which vary by consulate, and processing times aren't modelled.",
+ "sources": [
+  {
+   "kind": "secondary",
+   "url": "https://www.lesmre.com/fr/guides/renouveler-passeport-marocain-etranger",
+   "quotes": "https://www.tax.gov.ma/",
+   "title": "LesMRE, Renouveler son passeport marocain depuis l'étranger : guide complet 2026 (published 27 February 2026, updated October 2026)",
+   "read": "2026-11-03",
+   "said": "Timbre fiscal passeport 500 DH adulte / exonération pour les enfants de MRE de moins de 18 ans Droit de timbre fixe (article 252-II-B du CGI) ... Le passeport biométrique marocain est valable 5 ans pour toutes les personnes de plus de 3 ans, sans exception. Le renouvellement se fait exclusivement au consulat de votre zone de résidence."
+  },
+  {
+   "kind": "secondary",
+   "url": "https://aujourdhui.ma/focus/tout-ce-quil-faut-savoir-sur-la-procedure-dobtention-du-nouveau-passeport-68445",
+   "quotes": "https://www.sgg.gov.ma/",
+   "title": "Aujourd'hui le Maroc, Tout ce qu'il faut savoir sur la procédure d'obtention du nouveau passeport",
+   "read": "2026-11-03",
+   "said": "Ainsi, les passeports biométriques seront délivrés dans les provinces et préfectures de Rabat ... Selon le ministère de l’Intérieur, cette démarche s’inscrit dans le cadre d’une stratégie visant la généralisation progressive de la délivrance des passeports biométriques au niveau de l’ensemble des préfectures et provinces, ambassades et consulats du Maroc"
+  },
+  {
+   "kind": "primary",
+   "url": "https://www.finances.gov.ma/Publication/dgi/2025/CGI-2026-FR.pdf",
+   "title": "Direction Générale des Impôts, Code Général des Impôts, édition 2026 (on the Ministry of Economy and Finance's site), Livre III Titre I Droits de timbre, articles 250 (Exonérations) and 252 (Tarif des droits), pp. 495-496",
+   "read": "2026-11-03",
+   "said": "Article 250.- Exonérations ... 9°- Les passeports des enfants des marocains résidents à l'étranger, âgés de moins de dix huit (18) ans : lors de leurs délivrances ou prorogations ... Article 252.- Tarif des droits ... II.- Droits fixes ... B.- Sont soumis au droit fixe de 500 DH : ... - les passeports et chacune de leurs prorogations [note 1847: Article 8 de la loi de finances n° 68-17 pour l'année budgétaire 2018] ... E.- Sont soumis au droit fixe de 100 DH : ... 4°- les titres de séjour des étrangers, par année de validité."
+  }
+ ]
+}

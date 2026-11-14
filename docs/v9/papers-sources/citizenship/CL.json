@@ -1,0 +1,30 @@
+{
+ "country": "CL",
+ "years": 5,
+ "renounce": false,
+ "lapses": false,
+ "note": "GLOBALCIT's Citizenship Law Dataset v3.0 (EUI, 2025), coding the law in force on 1 January 2024 (A06a Const 10(3), CHI 2, 3; A06b Const 10(3), CHI 2, 3; L05 No provision): ordinary naturalisation after 5 years' residence; no renunciation of other citizenships required; a citizen keeps it on taking another. Reforms after that date are checked in the file's later sources, where a later source is given. Citizenship at birth is read from the same dataset's 2024 coding of modes A01a (descent, born in country: No provision), A01b (descent, born abroad: Generational transmission restriction: conditional on birthplace/place of residence /mode under which parent acquired citizenship), A02a (birth in country: Parental residence restriction) and A02b (birth in country to a parent born there: No provision), as its codebook (RSC/GLOBALCIT 2025/01, sections 3.2.1a to 3.2.2b) defines them: by birth in the territory only on the condition the dataset states; by descent from either parent, a child born abroad on the limit the dataset states (the dataset codes no separate descent rule for a child born in the country, birth there giving it; the parent's sex is read from mode A01b). Changes to the law at birth after 1 January 2024 weren't checked for this file. On 2026-11-03 the primary was read: Biblioteca del Congreso Nacional (LeyChile), Constitución Política de la República de Chile, Artículos 10 and 11 (XML of the consolidated text). It confirmed loss on taking another citizenship, birth in the territory, descent and the limit abroad. It was silent on the years of residence and renunciation, which still rest on the sources above, re-read that day and found the same. Five years and no renunciation rest on Decreto 5142 (1960), which wasn't reached.",
+ "sources": [
+  {
+   "url": "https://cadmus.eui.eu/bitstreams/3b166501-e695-48d7-9e27-d7bef061573a/download",
+   "title": "GLOBALCIT Citizenship Law Dataset v3.0 (Vink, van der Baaren, Bauböck, Dzankic, Honohan, Manby; EUI Research Data, 2025), country-year-mode files, Chile, 2024",
+   "read": "2026-11-03",
+   "kind": "secondary",
+   "quotes": "https://globalcit.eu/national-citizenship-laws/",
+   "said": "Person has lived for a period of at least 5 years in Chile, and was granted permanent residence. ... Oath of renunciation of citizenship of another country required (proof of renunciation is not required). ... n.a. ... No provision ... Generational transmission restriction: conditional on birthplace/place of residence /mode under which parent acquired citizenship ... Person is born abroad to a citizen. Other conditions: at least one parent or grandparent acquired citizenship by birth in Chile, by ordinary naturalisation, or by naturalisation granted as a special favour. ... Parental residence restriction ... Person is born in Chile. Unless parents are foreign diplomats or foreigners in transit. Children of migrants in an irregular situation who are residing in the country also obtain Chilean nationality at birth. ... No provision"
+  },
+  {
+   "url": "https://www.leychile.cl/Consulta/obtxml?opt=7&idNorma=242302",
+   "title": "Biblioteca del Congreso Nacional (LeyChile), Constitución Política de la República de Chile, Artículos 10 and 11 (XML of the consolidated text)",
+   "read": "2026-11-03",
+   "kind": "primary",
+   "said": "Artículo 10.- Son chilenos: 1º.- Los nacidos en el territorio de Chile, con excepción de los hijos de extranjeros que se encuentren en Chile en servicio de su Gobierno, y de los hijos de extranjeros transeúntes, todos los que, sin embargo, podrán optar por la nacionalidad chilena; 2º.- Los hijos de padre o madre chilenos, nacidos en territorio extranjero. Con todo, se requerirá que alguno de sus ascendientes en línea recta de primer o segundo grado, haya adquirido la nacionalidad chilena en virtud de lo establecido en los números 1º, 3º ó 4º; 3º.- Los extranjeros que obtuvieren carta de nacionalización en conformidad a la ley ... Artículo 11.- La nacionalidad chilena se pierde: 1º.- Por renuncia voluntaria manifestada ante autoridad chilena competente. Esta renuncia sólo producirá efectos si la persona, previamente, se ha nacionalizado en país extranjero; 2º.- Por decreto supremo, en caso de prestación de servicios durante una guerra exterior a enemigos de Chile o de sus aliados; 3º.- Por cancelación de la carta de nacionalización, y 4º.- Por ley que revoque la nacionalización concedida por gracia."
+  }
+ ],
+ "atBirth": {
+  "soil": "conditional",
+  "soilIf": "Person is born in Chile. Unless parents are foreign diplomats or foreigners in transit. Children of migrants in an irregular situation who are residing in the country also obtain Chilean nationality at birth.",
+  "descent": "either parent",
+  "descentAbroad": "Person is born abroad to a citizen. Other conditions: at least one parent or grandparent acquired citizenship by birth in Chile, by ordinary naturalisation, or by naturalisation granted as a special favour."
+ }
+}

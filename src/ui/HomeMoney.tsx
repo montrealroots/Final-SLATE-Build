@@ -10,7 +10,7 @@ import { formatMoney } from '../engine/bankworld/core/money';
 import { formatDate } from '../engine/bankworld/core/time';
 import { documentsOf, inForce } from '../engine/bankworld/systems/documents';
 import { bankOf } from '../engine/bankworld/systems/banking';
-import { permits, workRight } from '../engine/papers';
+import { applications, permits, workRight } from '../engine/papers';
 import { countryName } from '../world/gazetteer/gazetteer';
 import { getPlace } from '../data/places';
 
@@ -44,7 +44,7 @@ export function YourPapersPanel() {
   const docs = g.bank ? documentsOf(bankSim(g.bank).player) : [];
   const zone = getPlace(g.character.livesIn ?? g.locationId).zone;
   const passports = docs.filter((d) => d.kind === 'passport');
-  const pending = permits(g).filter((p) => p.status === 'pending').length + docs.filter((d) => d.status === 'pending').length;
+  const pending = permits(g).filter((p) => p.status === 'pending').length + docs.filter((d) => d.status === 'pending').length + applications(g).filter((a) => a.stage === 'applied').length;
   const here = getPlace(g.locationId).country;
   const work = workRight(g, here);
   return (
@@ -57,7 +57,7 @@ export function YourPapersPanel() {
           </li>
         ))}
         {!passports.length && <li className="list-item list-static">No passport on record.</li>}
-        <li className="list-item list-static"><span className="grow">Work in {countryName(here)}</span><span>{work.can ? 'Allowed' : 'Not allowed yet'}</span></li>
+        <li className="list-item list-static"><span className="grow">Work in {countryName(here)}</span><span>{work.can ? ('assumed' in work && work.assumed ? 'Allowed by the game\'s assumption' : 'Allowed') : 'Not allowed yet'}</span></li>
       </ul>
       {pending > 0 && <p className="xs dim" style={{ margin: 'var(--s2) 0 0' }}>{pending === 1 ? 'One application is being decided.' : `${pending} applications are being decided.`}</p>}
     </Panel>

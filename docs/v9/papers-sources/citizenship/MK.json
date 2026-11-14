@@ -1,0 +1,28 @@
+{
+ "country": "MK",
+ "years": 7,
+ "renounce": true,
+ "lapses": false,
+ "note": "GLOBALCIT's Citizenship Law Dataset v3.0 (EUI, 2025), coding the law in force on 1 January 2024 (A06a MAC 7; A06b MAC 7; L05 No provision): ordinary naturalisation after 7 years' residence; the applicant must give up other citizenships; a citizen keeps it on taking another. Reforms after that date are checked in the file's later sources, where a later source is given. Citizenship at birth is read from the same dataset's 2024 coding of modes A01a (descent, born in country: Dual citizenship restriction), A01b (descent, born abroad: Dual citizenship restriction), A02a (birth in country: No provision) and A02b (birth in country to a parent born there: No provision), as its codebook (RSC/GLOBALCIT 2025/01, sections 3.2.1a to 3.2.2b) defines them: not by birth in the territory alone (provisions for foundlings and children otherwise stateless, modes A03a and A03b, aren't held by the form); by descent from either parent, a child born abroad on the limit the dataset states. The coding also records a dual-citizenship restriction on descent, which the form doesn't hold. Changes to the law at birth after 1 January 2024 weren't checked for this file. On 2026-11-03 the primary was read: Закон за државјанството на Република Северна Македонија, редакциски пречистен текст (Службен весник 67/92 to 67/22), linked from the Ministry of Interior's laws page https://mvr.gov.mk/mk-MK/legislativa/zakoni, член 7(1); Закон за државјанството, членови 4, 5, 16. Every figure the file holds now rests on it, and the dataset is no longer cited.",
+ "sources": [
+  {
+   "url": "https://portal.mdt.gov.mk/post-body-files/zakoni-mvr-file-Bh91.pdf",
+   "title": "Закон за државјанството на Република Северна Македонија, редакциски пречистен текст (Службен весник 67/92 to 67/22), linked from the Ministry of Interior's laws page https://mvr.gov.mk/mk-MK/legislativa/zakoni, член 7(1)",
+   "read": "2026-11-03",
+   "kind": "primary",
+   "said": "Државјанство на Република Северна Македонија со природување може да стекне странец кој лично поднел барање за прием во државјанство ..., ако ги исполнува следниве услови: 1) да наполнил 18 години живот; 2) до поднесувањето на барањето законски и постојано да живее на територијата на Република Северна Македонија најмалку седум години; ... 10) да има отпуст од досегашното државјанство или да докаже дека ќе го добие ако биде примен во државјанство на Република Северна Македонија."
+  },
+  {
+   "url": "https://portal.mdt.gov.mk/post-body-files/zakoni-mvr-file-Bh91.pdf",
+   "title": "Закон за државјанството, членови 4, 5, 16",
+   "read": "2026-11-03",
+   "kind": "primary",
+   "said": "Со потекло стекнува државјанство на Република Северна Македонија дете на кое: 1) во моментот на раѓањето двата родители се државјани на Република Северна Македонија; 2) во моментот на раѓањето едниот родител е државјанин на Република Северна Македонија, а детето е родено во Република Северна Македонија, доколку родителите спогодбено не определат детето да го добие државјанството на другиот родител и 3) ... едниот родител е државјанин ..., а другиот родител е непознат или со непознато државјанство, односно без државјанство, а детето е родено во странство. ... Член 5 Дете родено во странство на кое едниот родител во моментот на раѓањето е државјанин ..., а другиот странски државјанин, со потекло стекнува државјанство ... ако до наполнети 18 години живот биде пријавено за запишување ... ако до наполнети 18 години живот постојано се насели во Република Северна Македонија со родителот ... Член 16 Државјанство на Република Северна Македонија престанува: 1) со отпуст и 2) според меѓународни договори"
+  }
+ ],
+ "atBirth": {
+  "soil": "none",
+  "descent": "either parent",
+  "descentAbroad": "Person is born abroad to two citizens, or to one citizen and one parent unknown, of unknown citizenship or stateless; a child of one citizen and one foreign parent takes it if registered as a citizen, or settled permanently in North Macedonia with the citizen parent, before 18, or if it registers itself between 18 and 23."
+ }
+}

@@ -1,0 +1,130 @@
+{
+ "country": "HN",
+ "rules": [
+  {
+   "entry": "free",
+   "days": 90,
+   "passports": [
+    "AD",
+    "AE",
+    "AG",
+    "AR",
+    "AT",
+    "AU",
+    "BB",
+    "BE",
+    "BG",
+    "BH",
+    "BN",
+    "BO",
+    "BR",
+    "BS",
+    "BZ",
+    "CA",
+    "CH",
+    "CL",
+    "CO",
+    "CR",
+    "CY",
+    "CZ",
+    "DE",
+    "DK",
+    "EE",
+    "ES",
+    "FI",
+    "FJ",
+    "FR",
+    "GR",
+    "GT",
+    "HR",
+    "HU",
+    "IE",
+    "IL",
+    "IS",
+    "IT",
+    "JP",
+    "KN",
+    "KR",
+    "KW",
+    "LC",
+    "LI",
+    "LT",
+    "LU",
+    "LV",
+    "MC",
+    "MG",
+    "MH",
+    "MK",
+    "MT",
+    "MX",
+    "MY",
+    "NI",
+    "NL",
+    "NO",
+    "NZ",
+    "PA",
+    "PE",
+    "PL",
+    "PT",
+    "PY",
+    "QA",
+    "RO",
+    "RU",
+    "SA",
+    "SB",
+    "SE",
+    "SG",
+    "SI",
+    "SK",
+    "SM",
+    "ST",
+    "SV",
+    "TR",
+    "TT",
+    "TV",
+    "UA",
+    "US",
+    "UY",
+    "VA",
+    "VC",
+    "VU",
+    "ZA"
+   ]
+  },
+  {
+   "entry": "free",
+   "months": 3,
+   "passports": [
+    "TW"
+   ]
+  },
+  {
+   "entry": "free",
+   "days": 60,
+   "passports": [
+    "DO"
+   ]
+  }
+ ],
+ "others": {
+  "entry": "visa"
+ },
+ "note": "Honduras: nationals of the countries listed enter without a visa for 90 days (Taiwan 3 months, the Dominican Republic 60), extendable by 30; British citizens need a visa since 15 August 2024; everyone else needs a visa (holders of Schengen, Canadian or US visas may enter: not modelled). Read from Wikipedia's copy. Read on 2026-11-03 against the CA-4 classification of visas (El Salvador, Guatemala, Honduras and Nicaragua, 23 January 2019), the primary the Dirección General de Migración y Extranjería publishes: it gives no lengths and is older than the changes Wikipedia's copy records since, so it is recorded here and not held; where it differs (its categories for some passports), the current figures are kept.",
+ "sources": [
+  {
+   "url": "https://en.wikipedia.org/wiki/Visa_policy_of_Honduras",
+   "title": "Wikipedia, Visa policy of Honduras",
+   "read": "2026-11-03",
+   "kind": "secondary",
+   "quotes": "https://inm.gob.hn/",
+   "said": "Citizens of the following countries and territories may enter Honduras without a visa for stays up to the duration listed below. The stay may be extended for an additional 30 days. 90 days All European Union member states Andorra Antigua and Barbuda Argentina Australia Bahamas Bahrain Barbados Belize Bolivia Brazil Brunei Canada Chile Colombia Costa Rica El Salvador Guatemala Iceland Israel Japan Kuwait Liechtenstein Madagascar Malaysia Marshall Islands Mexico Monaco New Zealand Nicaragua North Macedonia Norway Panama Paraguay Peru Qatar Russia Saint Kitts and Nevis Saint Lucia Saint Vincent and the Grenadines San Marino São Tomé and Príncipe Saudi Arabia Singapore Solomon Islands South Africa South Korea Switzerland Trinidad and Tobago Turkey Tuvalu Ukraine United Arab Emirates United States Uruguay Vanuatu Vatican City 3 months Taiwan 60 days Dominican Republic ... 15 August 2024: United Kingdom"
+  },
+  {
+   "url": "https://drive.google.com/file/d/16Zh5tqtgI80zfwqGU-hhzuqkbwdSPdh8/view?usp=sharing",
+   "title": "Dirección General de Migración y Extranjería, El Salvador: Clasificación para Fines de Exención y Obligatoriedad de Visas de El Salvador, Guatemala, Honduras y Nicaragua (23 de enero 2019), the file linked as 'Descargue aquí el listado de países que requieren visa' from https://www.migracion.gob.sv/servicios/listado-visa/ (published there 10-11-2020)",
+   "read": "2026-11-03",
+   "kind": "primary",
+   "said": "Clasificación para Fines de Exención y Obligatoriedad de Visas de El Salvador, Guatemala, Honduras y Nicaragua 23 de enero 2019 ... (C) CONSULTADA ... 3 Alemania (A) EXENTO DE VISA ... 7 Arabia Saudita (A) EXENTO DE VISA ... Honduras: dará trato de Categoría “B” a todos los pasaportes. ... 18 Belarus ... (B) CONSULAR O SIN CONSULTA ... Nicaragua y Honduras: dará trato de Categoría “A” a los portadores de pasaportes Ordinarios. ... 142 Reino Unido de Gran Bretaña e Irlanda del Norte ... (A) EXENTO DE VISA ... Honduras: Dará trato de categoría “B” de visa consular o sin consulta a todos los pasaportes. ... El Salvador y Honduras: darán trato de categoría “A” a los portadores de pasaportes ordinarios."
+  }
+ ]
+}

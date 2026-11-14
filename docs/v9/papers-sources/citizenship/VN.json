@@ -1,0 +1,29 @@
+{
+ "country": "VN",
+ "years": 5,
+ "renounce": true,
+ "lapses": false,
+ "note": "GLOBALCIT's Citizenship Law Dataset v3.0 (EUI, 2025), coding the law in force on 1 January 2024 (A06a VIE 19; A06b VIE 19; L05 No provision): ordinary naturalisation after 5 years' residence; the applicant must give up other citizenships; a citizen keeps it on taking another. Reforms after that date are checked in the file's later sources, where a later source is given. Citizenship at birth is read from the same dataset's 2024 coding of modes A01a (descent, born in country: Dual citizenship restriction), A01b (descent, born abroad: Dual citizenship restriction), A02a (birth in country: No provision) and A02b (birth in country to a parent born there: No provision), as its codebook (RSC/GLOBALCIT 2025/01, sections 3.2.1a to 3.2.2b) defines them: not by birth in the territory alone (provisions for foundlings and children otherwise stateless, modes A03a and A03b, aren't held by the form); by descent from either parent, a child born abroad on the limit the dataset states. The coding also records a dual-citizenship restriction on descent, which the form doesn't hold. Changes to the law at birth after 1 January 2024 weren't checked for this file. On 2026-11-03 the primary was read: Luật số 79/2025/QH15 sửa đổi, bổ sung một số điều của Luật Quốc tịch Việt Nam (24 June 2025, in force 1 July 2025), signed PDF on the Government portal (vanban.chinhphu.vn docid 214593), art. 1(4) (art. 16(2)), 1(5) (art. 19), and the art. 20 procedure. It confirmed the years of residence, renunciation and descent. It was silent on loss on taking another citizenship and birth in the territory, which still rest on the sources above, re-read that day and found the same. Law 79/2025/QH15 (in force 1 July 2025, its art. 3) changed the mixed-parent case: only a child born in Viet Nam takes the nationality when the parents can't agree (new art. 16(2)). Art. 19 keeps five years' permanent residence and release from the foreign citizenship for ordinary naturalisation.",
+ "sources": [
+  {
+   "url": "https://cadmus.eui.eu/bitstreams/3b166501-e695-48d7-9e27-d7bef061573a/download",
+   "title": "GLOBALCIT Citizenship Law Dataset v3.0 (Vink, van der Baaren, Bauböck, Dzankic, Honohan, Manby; EUI Research Data, 2025), country-year-mode files, Vietnam, 2024",
+   "read": "2026-11-03",
+   "kind": "secondary",
+   "quotes": "https://globalcit.eu/national-citizenship-laws/",
+   "said": "Person has been resident in Vietnam for 5 years. ... Renunciation of citizenship of another country required (permission for retention of citizenship can be granted). ... n.a. ... Dual citizenship restriction ... Person is born in Vietnam to two citizens, to a citizen and a parent who is stateless, or to a mother who is a citizen and the father is unknown. If one parent is a citizen and the other parent is a citizen of another country, the child acquires Vietnamese citizenship if the parents agree in writing, but also if they do not reach agreement. ... Dual citizenship restriction ... Person is born abroad to two citizens, to a citizen and the other parent is stateless, or to a mother who is a citizen and the father is unknown. If one parent is a citizen and the other parent is a citizen of another country, the child acquires Vietnamese citizenship if the parents agree in writing, but also if they do not reach agreement. ... No provision ... No provision"
+  },
+  {
+   "url": "https://datafiles.chinhphu.vn/cpp/files/vbpq/2025/7/79qh.signed.pdf",
+   "title": "Luật số 79/2025/QH15 sửa đổi, bổ sung một số điều của Luật Quốc tịch Việt Nam (24 June 2025, in force 1 July 2025), signed PDF on the Government portal (vanban.chinhphu.vn docid 214593), art. 1(4) (art. 16(2)), 1(5) (art. 19), and the art. 20 procedure",
+   "read": "2026-11-03",
+   "kind": "primary",
+   "said": "4. Sửa đổi, bổ sung khoản 2 Điều 16 như sau: \"2. Trẻ em sinh ra có cha hoặc mẹ là công dân Việt Nam còn người kia là công dân nước ngoài thì có quốc tịch Việt Nam, nếu cha mẹ thỏa thuận lựa chọn quốc tịch Việt Nam cho con khi thực hiện thủ tục về khai sinh ... Trường hợp trẻ em được sinh ra trên lãnh thổ Việt Nam mà cha mẹ không thỏa thuận được việc lựa chọn quốc tịch cho con thì trẻ em đó có quốc tịch Việt Nam.\" 5. Sửa đổi, bổ sung Điều 19 như sau: \"Điều 19. ... đ) Thời gian thường trú ở Việt Nam từ 05 năm trở lên tính đến thời điểm xin nhập quốc tịch Việt Nam; ... 6. Người xin nhập quốc tịch Việt Nam quy định tại khoản 2 và khoản 3 Điều này được giữ quốc tịch nước ngoài nếu đáp ứng các điều kiện sau đây và được Chủ tịch nước cho phép ... \" ... thì gửi thông báo bằng văn bản cho người xin nhập quốc tịch Việt Nam để làm thủ tục xin thôi quốc tịch nước ngoài, trừ trường hợp người xin nhập quốc tịch Việt Nam xin giữ quốc tịch nước ngoài hoặc là người không quốc tịch."
+  }
+ ],
+ "atBirth": {
+  "soil": "none",
+  "descent": "either parent",
+  "descentAbroad": "Person is born abroad to two citizens, to a citizen and a stateless parent, or to a citizen mother and an unknown father; a child of one Vietnamese and one foreign parent takes it only if the parents choose Vietnamese nationality for it at the birth registration."
+ }
+}

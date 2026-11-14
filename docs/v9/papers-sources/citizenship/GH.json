@@ -1,0 +1,28 @@
+{
+ "country": "GH",
+ "years": 6,
+ "renounce": false,
+ "lapses": false,
+ "note": "GLOBALCIT's Citizenship Law Dataset v3.0 (EUI, 2025), coding the law in force on 1 January 2024 (A06a GHA 12; A06b GHA 12; L05 No provision): ordinary naturalisation after 5 years' residence; no renunciation of other citizenships required; a citizen keeps it on taking another. Reforms after that date are checked in the file's later sources, where a later source is given. Citizenship at birth is read from the same dataset's 2024 coding of modes A01a (descent, born in country: Generally applicable provision), A01b (descent, born abroad: Generally applicable provision), A02a (birth in country: No provision) and A02b (birth in country to a parent born there: No provision), as its codebook (RSC/GLOBALCIT 2025/01, sections 3.2.1a to 3.2.2b) defines them: not by birth in the territory alone (provisions for foundlings and children otherwise stateless, modes A03a and A03b, aren't held by the form); by descent from either parent, with no further limit on a child born abroad. Changes to the law at birth after 1 January 2024 weren't checked for this file. On 2026-11-03 the primary was read: Ministry of the Interior, Ghana, Naturalization as Ghanaian Citizen (service page, Migration Directorate). It confirmed renunciation. It was silent on loss on taking another citizenship, birth in the territory and descent, which still rest on the sources above, re-read that day and found the same. The Ministry changed the years: twelve months immediately before the application plus five years in aggregate in the seven years before those twelve months, six in all, not the dataset's five.",
+ "sources": [
+  {
+   "url": "https://cadmus.eui.eu/bitstreams/3b166501-e695-48d7-9e27-d7bef061573a/download",
+   "title": "GLOBALCIT Citizenship Law Dataset v3.0 (Vink, van der Baaren, Bauböck, Dzankic, Honohan, Manby; EUI Research Data, 2025), country-year-mode files, Ghana, 2024",
+   "read": "2026-11-03",
+   "kind": "secondary",
+   "quotes": "https://globalcit.eu/national-citizenship-laws/",
+   "said": "Person has been legally resident in Ghana for an aggregate period of at least 5 years over 7 years, including the 12 months preceding the date of application. ... n.a. ... n.a. ... Generally applicable provision ... Person is born in Ghana to a citizen. ... Generally applicable provision ... Person is born abroad to a citizen. ... No provision ... No provision"
+  },
+  {
+   "url": "https://mint.gov.gh/public/services/naturalization-as-ghanaian-citizen",
+   "title": "Ministry of the Interior, Ghana, Naturalization as Ghanaian Citizen (service page, Migration Directorate)",
+   "read": "2026-11-03",
+   "kind": "primary",
+   "said": "Subject to subsection (2) of section 14 of the Citizenship Act 2000, a person qualifies for naturalization if: He has resided in Ghana throughout the period of twelve months immediately preceding the date of the application, during the seven years immediately preceding the period of twelve months, he has resided in Ghana for periods amounting in the aggregate to not less than five years He is of good character ... He is able to speak and understand an indigenous Ghanaian language ... He intends to reside permanently in Ghana in the event of a certificate being granted to him He possessed a valid residence Permit on the date of his application"
+  }
+ ],
+ "atBirth": {
+  "soil": "none",
+  "descent": "either parent"
+ }
+}

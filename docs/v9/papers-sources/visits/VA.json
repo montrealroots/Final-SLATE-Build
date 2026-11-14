@@ -1,0 +1,22 @@
+{
+ "country": "VA",
+ "group": "eu1806",
+ "note": "The Vatican City keeps an open border with Italy, entered only through Rome: a visitor meets the EU's common list (the eu1806 list). Checked on 2026-11-03 against the State's own page on its geography: St Peter's Square, the border, is freely reached and normally policed by Italy; no Vatican page read says in words that a visitor meets Schengen's rules.",
+ "sources": [
+  {
+   "url": "https://en.wikipedia.org/wiki/Schengen_Area",
+   "title": "Wikipedia, Schengen Area: territories and European microstates",
+   "read": "2026-11-03",
+   "kind": "secondary",
+   "quotes": "https://home-affairs.ec.europa.eu/policies/schengen-borders-and-visa/schengen-area_en",
+   "said": "The Vatican City maintains an open border with Italy , though it remains a sovereign entity outside of the European Union and the Schengen Area."
+  },
+  {
+   "url": "https://www.vaticanstate.va/it/stato-e-governo/note-generali/geografia.html",
+   "title": "Stato della Città del Vaticano, Note generali: Geografia",
+   "read": "2026-11-03",
+   "kind": "primary",
+   "said": "Il territorio dello Stato ... si estende, sulla Piazza San Pietro, sino ad una fascia di travertino che congiunge al suolo le estremità esterne del colonnato, segnando il confine dello Stato al limite della piazza, alla quale d’ordinario si accede liberamente. Essa, pur facendo parte del territorio della Città del Vaticano, è soggetta, di norma, al controllo delle forze di polizia della Repubblica Italiana. Si accede all’interno dello Stato da cinque ingressi, la cui custodia è affidata alla Guardia Svizzera Pontificia ed al Corpo della Gendarmeria dello Stato della Città del Vaticano."
+  }
+ ]
+}

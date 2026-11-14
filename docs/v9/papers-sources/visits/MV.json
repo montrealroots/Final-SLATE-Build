@@ -1,0 +1,65 @@
+{
+ "country": "MV",
+ "rules": [
+  {
+   "entry": "free",
+   "days": 90,
+   "passports": [
+    "AZ",
+    "IN",
+    "LK",
+    "MY",
+    "RU"
+   ]
+  },
+  {
+   "entry": "free",
+   "months": 3,
+   "passports": [
+    "PK"
+   ]
+  },
+  {
+   "entry": "free",
+   "days": 30,
+   "passports": [
+    "CN",
+    "GY",
+    "KG",
+    "KH",
+    "KZ",
+    "MA",
+    "MN",
+    "SC"
+   ]
+  },
+  {
+   "entry": "visa",
+   "passports": [
+    "IL"
+   ]
+  }
+ ],
+ "others": {
+  "entry": "arrival",
+  "days": 30
+ },
+ "note": "The Maldives: nationals of the countries listed enter without a visa for 90 days, 3 months (Pakistan) or 30 days; everyone else gets a free 30-day visa on arrival, with a confirmed booking, a return ticket and the IMUGA declaration (not modelled); Israelis are refused since 15 April 2025 (taken as a visa). Read from Wikipedia's copy. Checked on 2026-11-03 against Maldives Immigration's own tourist visa page (updated 10 September 2026): a tourist visa is granted on arrival to every foreigner, and Israeli passports are refused from 15 April 2025; the page gives no length and names no exempt nationality, which stand on Wikipedia's copy.",
+ "sources": [
+  {
+   "url": "https://en.wikipedia.org/wiki/Visa_policy_of_the_Maldives",
+   "title": "Wikipedia, Visa policy of the Maldives",
+   "read": "2026-11-03",
+   "kind": "secondary",
+   "quotes": "https://immigration.gov.mv/",
+   "said": "Most visitors to the Maldives must obtain a free 30-day visa on arrival unless they are citizens from one of the visa-exempt countries. However, entry is refused to citizens of Israel . ... Citizens of the following countries may enter the Maldives without a visa for the following period: 90 days Azerbaijan India Malaysia Russia Sri Lanka 3 months Pakistan 30 days Cambodia China Guyana Kazakhstan Kyrgyzstan Mongolia Morocco Seychelles"
+  },
+  {
+   "url": "https://www.immigration.gov.mv/visa/tourist-visa",
+   "title": "Maldives Immigration: Tourist Visa - On Arrival",
+   "read": "2026-11-03",
+   "kind": "primary",
+   "said": "Tourist visa is granted on arrival to the Maldives. Foreigners traveling to Maldives as tourists do not require pre-approval for the visa. However, visitors must satisfy the basic entry requirements to get immigration clearance upon arrival. Note: Effective from 15th April 2025, entry to the Maldives will not be granted on Israeli passports. ... updated: 10/09/2026"
+  }
+ ]
+}

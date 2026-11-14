@@ -1,0 +1,61 @@
+{
+ "country": "SZ",
+ "office": "the Ministry of Home Affairs, paid at a Government Revenue Office",
+ "currency": "SZL",
+ "routes": [
+  {
+   "id": "home",
+   "where": "home",
+   "speed": "standard",
+   "within": null,
+   "label": "at the Ministry of Home Affairs"
+  },
+  {
+   "id": "replacement",
+   "where": "home",
+   "speed": "standard",
+   "within": null,
+   "replacement": true,
+   "label": "in place of one lost or damaged"
+  }
+ ],
+ "passports": [
+  {
+   "for": "16 and over",
+   "from": 16,
+   "pages": 32,
+   "validYears": 10,
+   "pay": {
+    "home": "300",
+    "replacement": "400"
+   }
+  },
+  {
+   "for": "15 and under",
+   "under": 16,
+   "pages": 32,
+   "validYears": 2,
+   "pay": {
+    "home": null,
+    "replacement": null
+   }
+  }
+ ],
+ "note": "Eswatini, from the Ministry of Home Affairs' pages as Common Crawl captured them in August 2026 (the live site didn't answer on 2026-11-03). The Ministry's notice of revised fees from 1 March 2021 raised the 32-page international passport from E150 to E300 (E400 in place of one lost or damaged); its services page still shows the old E150, plus E20 for fingerprints and a E2 revenue stamp, and whether those two still apply on top isn't stated in the notice, so they aren't added. The regular passport is for applicants of 16 and over, valid 10 years; the child passport for 15 and under, valid 2 years, its fee not stated apart. The SADC travel document (E150, E300 or E500 by pages) is a document for the region only and isn't modelled, nor are the service, diplomatic and emergency passports. No processing time is published.",
+ "sources": [
+  {
+   "kind": "primary",
+   "url": "https://gov.sz/index.php/services-sp-22242747/travel-documents-and-passports",
+   "title": "Government of Eswatini, Ministry of Home Affairs, Travel Documents and Passports (Common Crawl's capture of 13 August 2026, CC-MAIN-2026-34; the live site didn't answer)",
+   "read": "2026-11-03",
+   "said": "International Passport This document is issued to Citizens oF Eswatini who intend using it when traveling to other countries besides those within SADC Region. ... E150.00 payable in all Government Revenue Offices (plus E20.00 for finger prints, E2.00 Revenue Stamp) Total E172.00 ... Regular Passports Regular Swazi passports are issued to Swazi applicants who are 16 years old and older. They are valid for 10 years and are renewable. ... Child Passports Child passports are issued to children who are fifteen years and below. They are valid for two years and these passports are renewable."
+  },
+  {
+   "kind": "primary",
+   "url": "https://www.gov.sz/images/CORONA/moha-user-fees-effective-date.pdf",
+   "title": "Government of the Kingdom of Eswatini, Ministry of Home Affairs, 1st March 2021 – Effective Date for Revised Civil Registration and Immigration Services (28 December 2020, N.R. Nxumalo, Principal Secretary; Common Crawl's capture of 9 August 2026, CC-MAIN-2026-34)",
+   "read": "2026-11-03",
+   "said": "The service fees to be effected as follows: ... ACTIVITY OLD FEES NEW FEES ... 32 Pages, Eswatini International Passport E150.00 E300.00 32 Pages, Eswatini International Passport Lost/Damaged E300.00 E400.00 Eswatini Service Passport E200.00 E400.00 ... Eswatini Diplomatic Passport E200.00 E600.00"
+  }
+ ]
+}

@@ -7,7 +7,7 @@ import { placeHolidaysOn } from '../holidays';
 import { covers, isAvailable, personById, roleLabel } from '../people';
 import { approvedCharacters, approvedScenes, isNonfiction, projectModules, sceneLabel } from '../projects';
 import { castIn, stageIn } from '../parts';
-import { workRight } from '../papers';
+import { recordWorkDay, workRight, type Activity } from '../papers';
 import { addLog, cancelEvents, newId, registerHandler } from '../state';
 import { addDaysToKey, dateKey, formatDateKey } from '../time';
 import { BASE_MINUTES_PER_SHOOT_DAY, CROWD_DAY_RATE, HOLIDAY_PREMIUM, dayFees, housePackageFee } from './rates';
@@ -61,8 +61,10 @@ registerHandler('shoot-call', (state, ev) => {
   // Where the day is filmed (destinations.ts): the base, unless its place in the script is filmed somewhere else.
   const here = dayPlace(p, d);
   const away = state.locationId !== here.id || !!state.travel;
-  // Being there isn't being allowed to work there (papers.ts; A16): without the right, the day starts without you.
-  const right = workRight(state, here.country);
+  // Being there isn't being allowed to work there (papers.ts; A16), and leave to act isn't leave to direct (from
+  // November 14, 2026): each thing the day needs you for is checked; without its right, the day starts without you.
+  const needs: Activity[] = [...(d.playerActing ? ['act' as const] : []), ...(!directorHired ? ['direct' as const] : [])];
+  const right = needs.map((a) => workRight(state, here.country, a)).find((r) => !r.can) ?? { can: true as const, why: '' };
   if (!away && !state.sleep.asleep && !right.can) {
     d.late = true;
     const text = `You can't work in ${here.name}: ${right.why} The day on ${p.title} started late without you.`;
@@ -77,6 +79,7 @@ registerHandler('shoot-call', (state, ev) => {
     addLog(state, text, 'warning', { projectId: p.id, route: { view: 'project', projectId: p.id, tab: 'schedule' } });
     return { message: text };
   }
+  recordWorkDay(state, here.country);
   const text = `Call time on ${p.title}: ${d.locationLabel}, ${d.sceneIds.length} ${d.sceneIds.length === 1 ? 'scene' : 'scenes'} today.`;
   addLog(state, text, 'project', { projectId: p.id, route: { view: 'project', projectId: p.id, tab: 'schedule' } });
   return { message: text };

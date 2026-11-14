@@ -1,0 +1,164 @@
+{
+ "country": "BY",
+ "rules": [
+  {
+   "entry": "free",
+   "passports": [
+    "RU"
+   ]
+  },
+  {
+   "entry": "free",
+   "days": 90,
+   "passports": [
+    "AE",
+    "AM",
+    "AR",
+    "AZ",
+    "BR",
+    "CO",
+    "GE",
+    "IL",
+    "KG",
+    "KZ",
+    "LT",
+    "LV",
+    "MD",
+    "MN",
+    "NI",
+    "PL",
+    "TJ",
+    "UA",
+    "UZ",
+    "VE"
+   ]
+  },
+  {
+   "entry": "free",
+   "days": 30,
+   "passports": [
+    "AL",
+    "CN",
+    "CU",
+    "EC",
+    "HK",
+    "KN",
+    "LA",
+    "ME",
+    "MM",
+    "MO",
+    "OM",
+    "QA",
+    "RS",
+    "TR",
+    "VN"
+   ]
+  },
+  {
+   "entry": "free",
+   "days": 30,
+   "passports": [
+    "AD",
+    "AT",
+    "BA",
+    "BE",
+    "BG",
+    "CH",
+    "CY",
+    "CZ",
+    "DE",
+    "DK",
+    "EE",
+    "ES",
+    "FI",
+    "FR",
+    "GB",
+    "GR",
+    "HR",
+    "HU",
+    "IE",
+    "IS",
+    "IT",
+    "LI",
+    "LU",
+    "MC",
+    "MK",
+    "MT",
+    "NL",
+    "NO",
+    "PT",
+    "RO",
+    "SE",
+    "SI",
+    "SK",
+    "SM",
+    "VA"
+   ]
+  },
+  {
+   "entry": "evisa",
+   "days": 30,
+   "passports": [
+    "AG",
+    "AU",
+    "BB",
+    "BH",
+    "CA",
+    "CL",
+    "DM",
+    "FM",
+    "ID",
+    "JP",
+    "KR",
+    "KW",
+    "MX",
+    "MY",
+    "NZ",
+    "PA",
+    "PE",
+    "SA",
+    "SC",
+    "SG",
+    "SV",
+    "UY",
+    "VC",
+    "VU"
+   ]
+  }
+ ],
+ "others": {
+  "entry": "visa"
+ },
+ "note": "Belarus: Russians move freely; nationals of the countries listed enter without a visa for 90 or 30 days, and under a temporary regime to 31 December 2026 the EU, EFTA, the UK and the European microstates for 30 days; nationals of the e-Visa list apply online (30 days), the conditional e-Visa nationalities only with a Schengen, Cypriot or Irish visa (not modelled). Everyone else needs a visa. Read from Wikipedia's copy. Checked on 2026-11-03 against the Ministry of Foreign Affairs' own pages (Common Crawl captures of September and October 2026): they confirmed Russia, the 90- and 30-day lists and the European regime to 31 December 2026, which gives Poland, Lithuania and Latvia 90 days, not 30, so those three were moved to 90 days. The Ministry lists the CIS neighbours and Ecuador visa-free with no period, so their stays stand on Wikipedia's copy; it names only some of the 68 e-Visa countries (30 days), and the 30-day entry through six airports for 76 countries isn't modelled.",
+ "sources": [
+  {
+   "url": "https://en.wikipedia.org/wiki/Visa_policy_of_Belarus",
+   "title": "Wikipedia, Visa policy of Belarus",
+   "read": "2026-11-03",
+   "kind": "secondary",
+   "quotes": "https://mfa.gov.by/",
+   "said": "Freedom of movement Russia 90 days Argentina Armenia Azerbaijan Brazil Colombia Georgia Israel Kazakhstan Kyrgyzstan Moldova Mongolia Nicaragua Tajikistan Ukraine United Arab Emirates Uzbekistan Venezuela 30 days Albania China Cuba Ecuador Hong Kong Laos Macau Montenegro Myanmar Oman Qatar Saint Kitts and Nevis Serbia Turkey Vietnam Temporary regime (until 31 December 2026): 30 days All European Union member states Andorra Bosnia and Herzegovina Iceland Liechtenstein Monaco North Macedonia Norway San Marino Switzerland United Kingdom Vatican City ... European Union member states Andorra Antigua and Barbuda Australia Barbados Bahrain Bosnia and Herzegovina Canada Chile Dominica El Salvador Iceland Indonesia Japan Kuwait Liechtenstein Malaysia Mexico Micronesia Monaco New Zealand Nicaragua North Macedonia Norway Oman Panama Peru Saint Vincent and the Grenadines San Marino Saudi Arabia Seychelles Singapore South Korea Switzerland United Kingdom Uruguay Vanuatu Vatican City"
+  },
+  {
+   "url": "https://mfa.gov.by/en/visa/freemove/general/",
+   "title": "Ministry of Foreign Affairs of Belarus, Visa-free travel (general information) — Common Crawl CC-MAIN-2026-39 capture of 2026-09-10 (record CC-MAIN-20260910213606-20260911003606-00007.warc.gz, offset 332242370)",
+   "read": "2026-11-03",
+   "kind": "primary",
+   "said": "Foreign nationals with ordinary passports to the Republic of Belarus ** : ... Albania (up to 30 days from the date of entry, up to 90 days within a current year) ... Armenia ... Azerbaijan ... Brazil (up to 90 days) ... Ecuador ... Georgia ... Israel (up to 90 days in each period of 180 days) ... Kazakhstan ... Kyrgyzstan ... Moldova ... Mongolia (up to 90 days) ... Russia ... Tajikistan ... Ukraine ... Uzbekistan ... Venezuela (up to 90 days) ... up to 30 days for citizens of 76 countries arriving in Belarus via the checkpoints “Minsk National Airport”, \"Airport Brest\", \"Airport Gomel\", \"Airport Grodno\", \"Airport Mogilev\", \"Airport Vitebsk\" except for flights from the Russian Federation ... not more than 30 days from the day of entry for citizens of 35 European countries via all road and rail international checkpoints (for citizens of Poland, Lithuania, Latvia, as well as persons with the status of non-citizens of Latvia - not more than 90 days from the day of entry)"
+  },
+  {
+   "url": "https://www.mfa.gov.by/en/visa/freemove/europe/",
+   "title": "Ministry of Foreign Affairs of Belarus, Visa-free entry for citizens of a number of European countries — Common Crawl CC-MAIN-2026-43 capture of 2026-10-07",
+   "read": "2026-11-03",
+   "kind": "primary",
+   "said": "Citizens of 38 European states are eligible to enter Belarus without a visa via all international road and rail border crossing points ... may remain in Belarus for up to 30 days from the date of entry. For citizens of Poland, Lithuania and Latvia (including holders of Latvia’s non-citizen status), the permitted stay is extended to 90 days from the date of entry. [list of 38] ... Travellers may make use of this visa-free regime an unlimited number of times until December 31, 2026 inclusive. The total duration of visa-free stays must not exceed 90 days within a calendar year."
+  },
+  {
+   "url": "https://mfa.gov.by/en/visa/general/evisa/",
+   "title": "Ministry of Foreign Affairs of Belarus, E-visa to Belarus — Common Crawl CC-MAIN-2026-43 capture of 2026-10-17",
+   "read": "2026-11-03",
+   "kind": "primary",
+   "said": "This option is available to the holders of ordinary passports of 68 countries , including the USA, Canada, the EU countries, Australia, New Zealand, Japan, and the United Kingdom. An E-visa is a single-entry individual visa. It is issued for a period not exceeding 30 days."
+  }
+ ]
+}

@@ -1,0 +1,27 @@
+{
+ "country": "PK",
+ "years": 5,
+ "renounce": true,
+ "lapses": true,
+ "note": "GLOBALCIT's Citizenship Law Dataset v3.0 (EUI, 2025), coding the law in force on 1 January 2024 (A06a PAK 9, 14, 1926 Act 3, 7; A06b PAK 9, 14, 1926 Act 3, 8; L05 PAK 14): ordinary naturalisation after 5 years' residence; the applicant must give up other citizenships (with major exceptions); a citizen loses the citizenship on voluntarily taking another (with exceptions). Reforms after that date are checked in the file's later sources, where a later source is given. Citizenship at birth is read from the same dataset's 2024 coding of modes A01a (descent, born in country: Generally applicable provision), A01b (descent, born abroad: Generally applicable provision), A02a (birth in country: Generally applicable provision) and A02b (birth in country to a parent born there: No provision), as its codebook (RSC/GLOBALCIT 2025/01, sections 3.2.1a to 3.2.2b) defines them: by birth in the territory unconditionally; by descent from either parent, with no further limit on a child born abroad. Changes to the law at birth after 1 January 2024 weren't checked for this file. On 2026-11-03 the primary was read: The Pakistan Citizenship Act, 1951 (II of 1951), Pakistan Code (Ministry of Law and Justice) PDF, ss 4, 5, 14; Directorate General of Immigration and Passports, \"Acts and Rules\" (includes the Naturalization Act, 1926), s 3(c). Every figure the file holds now rests on it, and the dataset is no longer cited. The five years are the twelve months before applying plus four of the seven years before them (Naturalization Act 1926, s. 3(c)); s. 14(3) allows dual citizenship with the countries the Federal Government notifies.",
+ "sources": [
+  {
+   "url": "https://www.pakistancode.gov.pk/pdffiles/administratora2b6f3407a109a491d47d649f6ff0c01.pdf",
+   "title": "The Pakistan Citizenship Act, 1951 (II of 1951), Pakistan Code (Ministry of Law and Justice) PDF, ss 4, 5, 14",
+   "read": "2026-11-03",
+   "kind": "primary",
+   "said": "4. Citizenship by birth. Every person born in Pakistan after the commencement of this Act shall be a citizen of Pakistan by birth: Provided that a person shall not be such a citizen by virtue of this section if at the time of his birth (a) his father possesses such immunity from suit and legal process as is accorded to an envoy ... or (b) his father is an enemy alien and the birth occurs in a place then under occupation by the enemy. 5. Citizenship by descent. (1) Subject to the provisions of section 3 a person born after the commencement of this Act shall be a citizen of Pakistan by descent if his [parent] is a citizen of Pakistan at the time of his birth ... 14. Dual citizenship or nationality not permitted.__ (1) Subject to the provisions of this section if any person is a citizen of Pakistan under the provisions of this Act, and is at the same time a citizen or national of any other country, he shall, unless he makes a declaration according to the laws of that other country renouncing his status as citizen or national thereof, cease to be a citizen of Pakistan. ... (3) Nothing in sub-section (1) shall apply ... to a person who ... is also the citizen of the United Kingdom and Colonies or of such other country as the Federal Government may, by notification"
+  },
+  {
+   "url": "https://dgip.gov.pk/downloads/Acts%20And%20Rules.pdf",
+   "title": "Directorate General of Immigration and Passports, \"Acts and Rules\" (includes the Naturalization Act, 1926), s 3(c)",
+   "read": "2026-11-03",
+   "kind": "primary",
+   "said": "(c) That he has resided in Pakistan throughout the period of twelve months immediately preceding the date of the application, and has, during the seven years immediately preceding the said period of twelve months, resided in Pakistan for a period amounting in the aggregate to not less than four years;"
+  }
+ ],
+ "atBirth": {
+  "soil": "unconditional",
+  "descent": "either parent"
+ }
+}

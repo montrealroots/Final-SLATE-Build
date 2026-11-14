@@ -1,0 +1,36 @@
+{
+ "country": "NP",
+ "years": "none",
+ "renounce": null,
+ "lapses": true,
+ "note": "GLOBALCIT's Citizenship Law Dataset v3.0 (EUI, 2025), coding the law in force on 1 January 2024 (A06a No provision; A06b No provision; L05 NEP 10(1)): no ordinary naturalisation by residence; a citizen loses the citizenship on voluntarily taking another. Reforms after that date are checked in the file's later sources, where a later source is given. Citizenship at birth is read from the same dataset's 2024 coding of modes A01a (descent, born in country: Gender restriction: no or restricted access if the mother is a citizen (wedlock condition/supplementary provision may apply)), A01b (descent, born abroad: Gender restriction: no or restricted access if the mother is a citizen (wedlock condition/supplementary provision may apply)), A02a (birth in country: No provision) and A02b (birth in country to a parent born there: No provision), as its codebook (RSC/GLOBALCIT 2025/01, sections 3.2.1a to 3.2.2b) defines them: not by birth in the territory alone (provisions for foundlings and children otherwise stateless, modes A03a and A03b, aren't held by the form); by descent from the father only, a child born abroad on the limit the dataset states. Changes to the law at birth after 1 January 2024 weren't checked for this file. On 2026-11-03 the primary was read: नेपाल नागरिकता ऐन, २०६३ (Nepal Citizenship Act 2063), Law Commission text (www.lawcommission.gov.np) as amended to 2072, hosted by the Ministry of Home Affairs (Area Administration Office, Chandrauta), s. 3(1)-(2) [text as extracted from the PDF, whose font mapping garbles some characters]; नेपाल नागरिकता ऐन, २०६३, ss. 4(1), 5(4), 10(1). It confirmed the years of residence, renunciation, loss on taking another citizenship and birth in the territory. It was silent on the limit abroad, which still rests on the sources above, re-read that day and found the same. The Act changed descent: s. 3(1) makes a citizen by descent a person whose father or mother is a citizen at the birth, either parent, not the father only; s. 3(2) sends the child of a Nepali mother married to a foreigner to s. 5(2) instead. The Act has no ordinary naturalisation: s. 5(4) lets the government naturalise only a foreigner of special contribution after 15 years' residence. The 2079 (2023) amendment act wasn't read.",
+ "sources": [
+  {
+   "url": "https://cadmus.eui.eu/bitstreams/3b166501-e695-48d7-9e27-d7bef061573a/download",
+   "title": "GLOBALCIT Citizenship Law Dataset v3.0 (Vink, van der Baaren, Bauböck, Dzankic, Honohan, Manby; EUI Research Data, 2025), country-year-mode files, Nepal, 2024",
+   "read": "2026-11-03",
+   "kind": "secondary",
+   "quotes": "https://globalcit.eu/national-citizenship-laws/",
+   "said": "n.a. ... n.a. ... Person acquires citizenship of another country. ... Gender restriction: no or restricted access if the mother is a citizen (wedlock condition/supplementary provision may apply) ... Person is born in Nepal to a father who is a citizen, or to a mother who is a citizen and the father is untraceable.; Person is born in Nepal to a mother who is a Nepali citizen and a non-citizen father, has permanently resided in Nepal and has not acquired citizenship of a foreign country. ... Gender restriction: no or restricted access if the mother is a citizen (wedlock condition/supplementary provision may apply) ... Person is born abroad to a father who is a citizen, or to a mother who is a citizen and the father is untraceable. ... No provision ... No provision"
+  },
+  {
+   "url": "https://aaochandrauta.moha.gov.np/assets/35/%E0%A4%A8%E0%A5%87%E0%A4%AA%E0%A4%BE%E0%A4%B2_%E0%A4%A8%E0%A4%BE%E0%A4%97%E0%A4%B0%E0%A4%BF%E0%A4%95%E0%A4%A4%E0%A4%BE_%E0%A4%90%E0%A4%A8_%E0%A5%A8%E0%A5%A6%E0%A5%AC%E0%A5%A9.pdf/file",
+   "title": "नेपाल नागरिकता ऐन, २०६३ (Nepal Citizenship Act 2063), Law Commission text (www.lawcommission.gov.np) as amended to 2072, hosted by the Ministry of Home Affairs (Area Administration Office, Chandrauta), s. 3(1)-(2) [text as extracted from the PDF, whose font mapping garbles some characters]",
+   "read": "2026-11-03",
+   "kind": "primary",
+   "said": "३. वंशजको नाताले नेपाली नागरिकता प्राक्तप्त M (१) कुनै व्यक्तिको जन्म हुुँदा मनजका बाबु वा आमा नेपालको नागरिक िहे छ भने त्यस्तो व्यक्ति वंशजको नाताले नेपालको नागरिक हुनेछ । (२) उपदफा (१) मा जुनसुकै कुिा लेक्तखएको भए तापमन हवदे शी नागरिकसुँग हववाह गने नेपाली नागरिक महहलाबाट जक्तन्मएका सन्तानको हकमा दफा ५ को उपदफा (२) बमोक्तजम हुनेछ ।"
+  },
+  {
+   "url": "https://aaochandrauta.moha.gov.np/assets/35/%E0%A4%A8%E0%A5%87%E0%A4%AA%E0%A4%BE%E0%A4%B2_%E0%A4%A8%E0%A4%BE%E0%A4%97%E0%A4%B0%E0%A4%BF%E0%A4%95%E0%A4%A4%E0%A4%BE_%E0%A4%90%E0%A4%A8_%E0%A5%A8%E0%A5%A6%E0%A5%AC%E0%A5%A9.pdf/file",
+   "title": "नेपाल नागरिकता ऐन, २०६३, ss. 4(1), 5(4), 10(1)",
+   "read": "2026-11-03",
+   "kind": "primary",
+   "said": "४. जन्मको आधािमा नेपाली नागरिकता प्राक्तप्त M (१) सम्वत् २०४६ साल चै त्र मसान्तसम्म नेपाल सिहदमभत्र जन्म भई नेपालमा स्थायी रुपले बसोबास गदै आएको व्यक्ति जन्मको आधािमा नेपालको नागरिक हुनेछ । ... (४) दे हायका शतन ि अवस्था पूिा गरिसकेका हवदे शी नागरिकमध्ये हवज्ञान, दशननशास्त्र, कला, साहहत्य, हवश्वशाक्तन्त, मानव कल्याण वा नेपालको औद्योमगक, आमथनक वा सामाक्तजक उन्नमतमा हवशेष योगदान पुर्याएको वा पुर्याउन सक्ने भनी मनामसब आधािमा नेपाल सिकािले ठहर्याएको व्यक्तिलाई तोहकए बमोक्तजम अङ्गीकित नेपाली नागरिकता प्रदान गनन सहकनेछ ... (ग) अन्य मुलकु को नागरिकता त्यागेको वा त्याग्ने घोषणा गिे को, (घ) कम्तीमा पन्र वषनसम्म नेपालमा बसोबास गिे को ... १०. नेपाली नागरिकता कायम निहने M (१) नेपालको कुनै नागरिकले आफूखुशी कुनै हवदे शी मुलकु को नागरिकता प्राप्त गिे पमछ मनजको नेपाली नागरिकता कायम िहने छै न ।"
+  }
+ ],
+ "atBirth": {
+  "soil": "none",
+  "descent": "either parent",
+  "descentAbroad": "Person is born abroad to a father who is a citizen, or to a mother who is a citizen and the father is untraceable."
+ }
+}

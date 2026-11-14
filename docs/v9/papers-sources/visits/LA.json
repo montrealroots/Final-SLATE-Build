@@ -1,0 +1,69 @@
+{
+ "country": "LA",
+ "rules": [
+  {
+   "entry": "free",
+   "days": 30,
+   "passports": [
+    "BN",
+    "BY",
+    "ID",
+    "JP",
+    "KH",
+    "KR",
+    "MN",
+    "MY",
+    "PH",
+    "RU",
+    "SG",
+    "TH",
+    "TL",
+    "VN"
+   ]
+  },
+  {
+   "entry": "free",
+   "days": 15,
+   "passports": [
+    "CH",
+    "LU"
+   ]
+  },
+  {
+   "entry": "free",
+   "days": 14,
+   "passports": [
+    "MM"
+   ]
+  }
+ ],
+ "others": {
+  "entry": "arrival",
+  "days": 30
+ },
+ "note": "Laos: holders of ordinary passports of the countries the Ministry of Public Security lists enter without a visa (30 days for ASEAN, Belarus, Japan, Mongolia, Russia and South Korea; 15 for Luxembourg and Switzerland; 14 for Myanmar); others take a visa on arrival or an e-Visa, each for a stay of 30 days. The nationalities refused a visa on arrival aren't in the source, so every other passport is taken as eligible. Read from Wikipedia's copy. Checked on 2026-11-03 against the Department of Immigration's own list (signed in Vientiane, 12 October 2022) and its visa page (a visa on arrival of up to 30 days): the list confirms every exemption held but gives Japan 15 days and Belarus and Timor-Leste none on an ordinary passport. Those three were kept at 30 days, because Wikipedia dates later changes the 2022 list predates (Japan's extended to 30 days from 1 June 2025, Timor-Leste's from 15 August 2025, Belarus' from 15 January 2026).",
+ "sources": [
+  {
+   "url": "https://en.wikipedia.org/wiki/Visa_policy_of_Laos",
+   "title": "Wikipedia, Visa policy of Laos",
+   "read": "2026-11-03",
+   "kind": "secondary",
+   "quotes": "https://www.mofa.gov.la/",
+   "said": "According to the Ministry of Public Security of Laos , holders of ordinary passports of the following countries (including all ASEAN member states ) may enter Laos without a visa for stays up to the duration listed below: 30 days Belarus Brunei Cambodia Indonesia Japan Malaysia Mongolia Philippines Russia Singapore South Korea Thailand Timor-Leste Vietnam 15 days Luxembourg Switzerland 14 days Myanmar ... The duration of stay of a visa obtained upon arrival in Laos is 30 days"
+  },
+  {
+   "url": "https://api.immigration.gov.la/editor/e1-tt8ikrv0sye.jpg",
+   "title": "Department of Immigration of Lao PDR (Ministry of Public Security), 'List of Countries Having Reached Unilateral and Bilateral Visa Exemption Agreement with Laos', pages 1-4 (e1..e4 images), shown as 'EXEMPTION VISA' at https://immigration.gov.la/en/visas (API record updated 2025-08-15)",
+   "read": "2026-11-03",
+   "kind": "primary",
+   "said": "Ordinary: Brunei Darussalam 30 Days; Cambodia 30 Days; Indonesia 30 Days; Malaysia 30 Days; Myanmar 14 Days; Philippines 30 Days; Singapore 30 Days; Thailand 30 Days; Vietnam 30 Days; Japan 15 Days Ordinary (Unilateral Visa Exemption) 01.01.2007; Mongolia 30 Days Ordinary; R. Korea 30 Days Ordinary (Unilateral Visa Exemption) 01.09.2018; Luxembourg 15 Days Ordinary (Unilateral Visa Exemption); Russia 30 Days Ordinary 02.12.2017; Switzerland 15 Days Ordinary (Unilateral Visa Exemption) ... Belarus 30 Days Diplomatic and Service; Timor Leste 30 Days Diplomatic and Service ... Vientiane, 12 October 2022"
+  },
+  {
+   "url": "https://immigration.gov.la/en/visas",
+   "title": "Department of Immigration of Lao PDR, Visas",
+   "read": "2026-11-03",
+   "kind": "primary",
+   "said": "Most travelers can acquire a visa on arrival at major entry points, such as international airports and border crossings. This visa allows for a stay of up to 30 days and can be extended once."
+  }
+ ]
+}

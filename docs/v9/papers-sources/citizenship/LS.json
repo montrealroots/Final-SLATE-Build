@@ -1,0 +1,29 @@
+{
+ "country": "LS",
+ "years": 5,
+ "renounce": true,
+ "lapses": false,
+ "note": "GLOBALCIT's Citizenship Law Dataset v3.0 (EUI, 2025), coding the law in force on 1 January 2024 (A06a LES 9, 12; A06b LES 9, 12; L05 No provision): ordinary naturalisation after 5 years' residence; the applicant must give up other citizenships; a citizen keeps it on taking another. Reforms after that date are checked in the file's later sources, where a later source is given. Citizenship at birth is read from the same dataset's 2024 coding of modes A01a (descent, born in country: No provision), A01b (descent, born abroad: Generational transmission restriction: conditional on birthplace/place of residence /mode under which parent acquired citizenship), A02a (birth in country: Generally applicable provision) and A02b (birth in country to a parent born there: No provision), as its codebook (RSC/GLOBALCIT 2025/01, sections 3.2.1a to 3.2.2b) defines them: by birth in the territory unconditionally; by descent from either parent, a child born abroad on the limit the dataset states (the dataset codes no separate descent rule for a child born in the country, birth there giving it; the parent's sex is read from mode A01b). Changes to the law at birth after 1 January 2024 weren't checked for this file. On 2026-11-03 the primary was read: Lesotho Constitution (Government of Lesotho, gov.ls downloads, 'Lesotho - Government Constitutional Matters'; undated copy of the 1993 text), Chapter IV Citizenship, ss. 38-43. It confirmed birth in the territory, descent and the limit abroad. It was silent on the years of residence and renunciation, which still rest on the sources above, re-read that day and found the same. This undated copy of the Constitution says a citizen of 21 or over who voluntarily takes another citizenship, other than by marriage, ceases to be a citizen (s. 41(2)(a)), against the dataset's coding that a citizen keeps it; gov.ls also lists a Dual Citizenship Gazette of 2018 that couldn't be read and may have changed s. 41, so the held figure (kept) stands and the question is left open.",
+ "sources": [
+  {
+   "url": "https://cadmus.eui.eu/bitstreams/3b166501-e695-48d7-9e27-d7bef061573a/download",
+   "title": "GLOBALCIT Citizenship Law Dataset v3.0 (Vink, van der Baaren, Bauböck, Dzankic, Honohan, Manby; EUI Research Data, 2025), country-year-mode files, Lesotho, 2024",
+   "read": "2026-11-03",
+   "kind": "secondary",
+   "quotes": "https://globalcit.eu/national-citizenship-laws/",
+   "said": "Person has been lawfully resident in Lesotho for at least 5 years. ... Renunciation of citizenship of another country required. ... n.a. ... No provision ... Generational transmission restriction: conditional on birthplace/place of residence /mode under which parent acquired citizenship ... Person is born abroad and either of the parents is a citizen otherwise than by descent. ... Generally applicable provision ... Person is born in Lesotho. Unless one parent has diplomatic status, or the parent is an enemy alien and the child is born in a place controlled by the enemy, and the other parent is not a citizen. ... No provision"
+  },
+  {
+   "url": "https://www.gov.ls/download/lesotho-constitution/?wpdmdl=1329",
+   "title": "Lesotho Constitution (Government of Lesotho, gov.ls downloads, 'Lesotho - Government Constitutional Matters'; undated copy of the 1993 text), Chapter IV Citizenship, ss. 38-43",
+   "read": "2026-11-03",
+   "kind": "primary",
+   "said": "38. ... (1) Subject to the provisions of subsections (2)and (3), every person born in Lesotho after the coming into operation of this Constitution shall become a citizen of Lesotho. (2) Save as provided in subsection (3), a person shall not become a citizen of Lesotho by virtue of this section if at the time of his birth neither of his parents is a citizen of Lesotho, and - (a) one or both of his parents possesses such immunity from suit and legal process as is accorded to the envoy of a foreign sovereign power accredited to Lesotho; or (b) one or both of his parents is an enemy alien ... 39. ... A person born outside Lesotho after the coming into operation of this Constitution shall become a citizen of Lesotho at the date of his birth, if at that date either of his parents is a citizen of Lesotho otherwise than by descent. ... 41. Dual citizenship ... (2) A citizen of Lesotho shall cease to be such a citizen if - (a) having attained the age of twenty-one years, he acquires the citizenship of some country other than Lesotho by voluntary act (other than marriage)"
+  }
+ ],
+ "atBirth": {
+  "soil": "unconditional",
+  "descent": "either parent",
+  "descentAbroad": "Person is born abroad and either of the parents is a citizen otherwise than by descent."
+ }
+}

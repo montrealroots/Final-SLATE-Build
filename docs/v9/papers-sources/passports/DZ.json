@@ -1,0 +1,89 @@
+{
+ "country": "DZ",
+ "office": "the Ministry of the Interior at home; Algeria's consulates abroad",
+ "currency": "DZD",
+ "routes": [
+  {
+   "id": "home",
+   "where": "home",
+   "speed": "standard",
+   "within": null,
+   "label": "in Algeria"
+  },
+  {
+   "id": "abroad",
+   "where": "abroad",
+   "speed": "standard",
+   "within": null,
+   "label": "at a consulate, paid in foreign currency at the year's rate"
+  },
+  {
+   "id": "abroad-fast",
+   "where": "abroad",
+   "speed": "urgent",
+   "within": {
+    "n": 5,
+    "unit": "day"
+   },
+   "label": "at a consulate, accelerated, within five days"
+  },
+  {
+   "id": "abroad-lost",
+   "where": "abroad",
+   "speed": "standard",
+   "within": null,
+   "replacement": true,
+   "label": "abroad, a passport replacing a lost or damaged one"
+  }
+ ],
+ "passports": [
+  {
+   "for": "any",
+   "pages": 28,
+   "validYears": null,
+   "pay": {
+    "home": "6000",
+    "abroad": "6000",
+    "abroad-fast": "25000",
+    "abroad-lost": "16000"
+   }
+  },
+  {
+   "for": "any",
+   "pages": 48,
+   "validYears": null,
+   "pay": {
+    "home": null,
+    "abroad": "9000",
+    "abroad-fast": "45000",
+    "abroad-lost": "19000"
+   }
+  }
+ ],
+ "note": "The stamp duty on the passport. Abroad, the Finance Law 2026 (Law 25-17, art. 45, Journal officiel n° 88 of 31 December 2025, read 2026-11-03) sets it at the foreign-currency equivalent of 6,000 DA for 28 pages and 9,000 DA for 48 pages, or 25,000 DA and 45,000 DA by the accelerated procedure within five days of filing, and a passport replacing a lost or damaged one carries a further 10,000 DA, written abroad as a replacement route (16,000 DA for 28 pages, 19,000 DA for 48), as TSA had reported. At home the 28-page biometric passport costs 6,000 DA, as Algérie Eco reported; the Law amends the stamp code's article on the passport issued in Algeria leaving its amount unchanged and doesn't reprint it, so that figure stays the paper's, and the 48-page fee at home was not read and is left unpaid. Minors and students pay less abroad (3,000 DA and 4,500 DA, 12,000 DA and 22,500 DA accelerated, 5,000 DA more for a lost one; the Law names them without an age, so they're not modelled), and whether the replacement tax is charged at home isn't read, so no home replacement is written. Validity and the time at home are leads.",
+ "sources": [
+  {
+   "kind": "secondary",
+   "url": "https://www.tsa-algerie.com/tarifs-du-passeport-algerien-ce-qui-change-pour-la-diaspora/",
+   "quotes": "https://www.joradp.dz/",
+   "title": "TSA Algérie, Tarifs du passeport algérien : ce qui change pour la diaspora (8 January 2026)",
+   "read": "2026-11-03",
+   "said": "le droit de timbre pour la délivrance du passeport de 28 pages aux Algériens de l’étranger est fixé à l’équivalent en devises à la somme de 6.000 DA. Celui du passeport biométrique de 48 pages est fixé à l’équivalent de 9.000 DA. ... « Le passeport est délivré à la demande aux ressortissants établis à l’étranger, suivant la procédure accélérée dans un délai, maximum, de cinq jours de la date du dépôt de la demande, contre le paiement d’un droit de timbre de 25.000 DA pour le livret de 28 pages et 45.000 DA pour le livret de 48 pages », précise le texte de loi. ... En cas de « perte » ou de « détérioration » de ce document de voyage, la délivrance d’un nouveau passeport donne lieu à la « perception, en plus du droit de timbre dû selon le type de document, d’une taxe de 10.000 DA », précise la LF 2026."
+  },
+  {
+   "kind": "secondary",
+   "url": "https://algerie-eco.com/2025/12/16/diaspora-algerienne-le-cout-du-passeport-revu-a-la-baisse/",
+   "quotes": "https://www.joradp.dz/",
+   "title": "Algérie Eco, Diaspora algérienne : le coût du passeport revu à la baisse (16 December 2025)",
+   "read": "2026-11-03",
+   "said": "Jusqu’à présent, le passeport biométrique de 28 pages est facturé 6 000 dinars en Algérie"
+  },
+  {
+   "kind": "primary",
+   "url": "https://www.joradp.dz/FTP/jo-francais/2025/F2025088.pdf",
+   "title": "Journal officiel de la République algérienne n° 88 du 31 décembre 2025 (édition française), Loi n° 25-17 du 14 décembre 2025 portant loi de finances pour 2026, article 45 (code du timbre, art. 136 bis)",
+   "read": "2026-11-03",
+   "said": "Art. 45. — Les dispositions de l’article 136 bis du code du timbre, sont modifiées, complétées et rédigées comme suit : « Art. 136 bis. — La délivrance du passeport ............ (sans changement jusqu’à) qui équivaut à la somme de six mille dinars algériens (6.000 DA). Concernant le passeport comportant 48 pages, le droit de timbre est fixé à neuf mille dinars algériens (9.000 DA). Le passeport est délivré à la demande de nos ressortissants établis à l'étranger, suivant la procédure accélérée dans un délai, maximum, de cinq (5) jours de la date du dépôt de la demande, contre le paiement d'un droit de timbre de vingt-cinq mille dinars algériens (25.000 DA) pour le livret de 28 pages et quarante-cinq mille dinars algériens (45.000 DA) pour le livret de 48 pages. En cas de perte ou de détérioration de ce document, la délivrance d'un nouveau passeport donne lieu à la perception, en plus du droit de timbre dû selon le type de document, d'une taxe de dix mille dinars algériens (10.000 DA). La délivrance du passeport à la faveur des mineurs et des étudiants ……(sans changement jusqu’à) trois mille dinars algériens (3.000 DA). Le montant du timbre est fixé à quatre mille cinq cents dinars algériens (4.500 DA) pour le passeport contenant 48 pages délivré à cette frange de citoyens. Le passeport est délivré pour les mineurs et les étudiants membres de la communauté algérienne établie à l'étranger, suivant la procédure accélérée dans un délai, maximum, de cinq (5) jours de la date du dépôt de la demande, contre le paiement d'un droit de timbre de douze mille dinars algériens (12.000 DA) pour le livret de 28 pages et vingt-deux mille cinq cents dinars algériens (22.500 DA) pour le livret de 48 pages. ... La contre-valeur en monnaie étrangère des droits de timbre visés dans le présent article, est fixée annuellement par arrêté conjoint du ministre chargé des affaires étrangères et du ministre chargé des finances, conformément au cours du dinar face aux devises étrangères."
+  }
+ ]
+}

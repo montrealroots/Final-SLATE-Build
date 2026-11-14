@@ -1,0 +1,136 @@
+{
+ "country": "LB",
+ "rules": [
+  {
+   "entry": "free",
+   "months": 6,
+   "passports": [
+    "AE",
+    "BH",
+    "KW",
+    "OM",
+    "QA",
+    "SA"
+   ]
+  },
+  {
+   "entry": "free",
+   "months": 3,
+   "passports": [
+    "JO"
+   ]
+  },
+  {
+   "entry": "arrival",
+   "months": 1,
+   "passports": [
+    "AD",
+    "AG",
+    "AM",
+    "AR",
+    "AT",
+    "AU",
+    "AZ",
+    "BB",
+    "BE",
+    "BG",
+    "BR",
+    "BS",
+    "BT",
+    "BY",
+    "BZ",
+    "CA",
+    "CH",
+    "CL",
+    "CN",
+    "CR",
+    "CY",
+    "CZ",
+    "DE",
+    "DK",
+    "EE",
+    "ES",
+    "FI",
+    "FR",
+    "GB",
+    "GE",
+    "GR",
+    "HK",
+    "HR",
+    "HU",
+    "IE",
+    "IQ",
+    "IS",
+    "IT",
+    "JP",
+    "KG",
+    "KN",
+    "KR",
+    "LI",
+    "LT",
+    "LU",
+    "LV",
+    "MC",
+    "MD",
+    "ME",
+    "MK",
+    "MO",
+    "MT",
+    "MX",
+    "MY",
+    "NL",
+    "NO",
+    "NZ",
+    "PA",
+    "PE",
+    "PL",
+    "PT",
+    "PY",
+    "RO",
+    "RS",
+    "RU",
+    "SE",
+    "SG",
+    "SI",
+    "SK",
+    "SM",
+    "TJ",
+    "TM",
+    "UA",
+    "US",
+    "UY",
+    "UZ",
+    "VA",
+    "VE",
+    "WS"
+   ]
+  },
+  {
+   "entry": "arrival",
+   "months": 3,
+   "passports": [
+    "TR"
+   ]
+  }
+ ],
+ "others": {
+  "entry": "visa"
+ },
+ "note": "Lebanon: the Gulf states' citizens enter without a visa for 6 months in a year, Jordanians 3 in 6 (the windows aren't modelled); nationals of the countries in the General Security's first section get a free visa at the border for a month (extendable to three), if they hold a Lebanese address, a return ticket and no Israeli stamp; Turkish tourists a free multiple-entry visa of 3 months at the airport and border posts; Vatican passport holders a monthly visa. Everyone else needs a visa beforehand. Read on 2026-11-03 from the General Security's own pages (posts/38 and, for the Vatican, posts/210): they corrected Wikipedia's copy, read before, on Uruguay (in the first section, so a visa at the border), Kazakhstan and the Dominican Republic (in no section, so a visa beforehand) and Türkiye (3 months, not one).",
+ "sources": [
+  {
+   "url": "https://www.general-security.gov.lb/en/posts/38",
+   "title": "General Directorate of General Security, Lebanon: The formalities required to obtain a visa to Lebanon (How to enter Lebanon by nationality)",
+   "read": "2026-11-03",
+   "kind": "primary",
+   "said": "First Article: Citizen of countries members of the Gulf Cooperation Council and Citizen of the Hashemite Kingdom of Jordan and their family members for tourism. The concerned countries: Saudi Arabia, Kuwait, United Arab Emirates, Bahrain, Qatar, Oman. ... The statement ‘3months’ or ‘6months’ will be stamped on their passport, the visa will be granted free of charge, at passports or any other border posts. 3months: for Jordanian Citizens. 6months: For Citizen of countries members of the Gulf Cooperation Council. ... N.B: Citizens of countries members of the Gulf Cooperation Council or Citizens of the Hashemite Kingdom of Jordan holding a passport with a national number, that arrive to Lebanon as tourists are exempted from entry visas ... Second Article: Entry of citizens from foreign countries for tourism. Section one: The concerned countries: Andora - Antigua and Barbuda - Argentina - ... - Ukraine - Uruguay - U.S.A - Uzbekistan-Venezuela. The formalities required: A cost-free visa of one month extendable to 3 months is granted for Citizens from the above countries. ... Turkish Citizens that plan to come to Lebanon as tourists: A multiple entry cost-free visa of 3months, is delivered at the airport, and at border posts."
+  },
+  {
+   "url": "https://www.general-security.gov.lb/en/posts/210",
+   "title": "General Directorate of General Security, Lebanon: Entry Visa for the foreigners related to the Vatican",
+   "read": "2026-11-03",
+   "kind": "primary",
+   "said": "The general directorate of general security is declaring that it is granting henceforth, a monthly visa to the holders of a Vatican passport (diplomatic or of service. It is also possible for the latter to enter via an embassy visa."
+  }
+ ]
+}

@@ -1,0 +1,28 @@
+{
+ "country": "VU",
+ "years": 10,
+ "renounce": true,
+ "lapses": false,
+ "note": "GLOBALCIT's Citizenship Law Dataset v3.0 (EUI, 2025), coding the law in force on 1 January 2024 (A06a Const 12, VUT 12(2); A06b Const 12, VUT 12(2); L05 No provision): ordinary naturalisation after 10 years' residence; the applicant must give up other citizenships; a citizen keeps it on taking another. Reforms after that date are checked in the file's later sources, where a later source is given. Citizenship at birth is read from the same dataset's 2024 coding of modes A01a (descent, born in country: Generally applicable provision), A01b (descent, born abroad: Generally applicable provision), A02a (birth in country: No provision) and A02b (birth in country to a parent born there: No provision), as its codebook (RSC/GLOBALCIT 2025/01, sections 3.2.1a to 3.2.2b) defines them: not by birth in the territory alone (provisions for foundlings and children otherwise stateless, modes A03a and A03b, aren't held by the form); by descent from either parent, with no further limit on a child born abroad. Changes to the law at birth after 1 January 2024 weren't checked for this file. On 2026-11-03 the primary was read: Constitution of the Republic of Vanuatu, Laws of the Republic of Vanuatu Consolidated Edition 2020 (Consolidated English Version Order commenced 29 April 2020), Parliament of Vanuatu, Chapter 3 Citizenship, arts. 9-14. It confirmed the years of residence, loss on taking another citizenship, birth in the territory and descent. It was silent on renunciation, which still rests on the sources above, re-read that day and found the same. The Citizenship Act, which holds renunciation, wasn't reached.",
+ "sources": [
+  {
+   "url": "https://cadmus.eui.eu/bitstreams/3b166501-e695-48d7-9e27-d7bef061573a/download",
+   "title": "GLOBALCIT Citizenship Law Dataset v3.0 (Vink, van der Baaren, Bauböck, Dzankic, Honohan, Manby; EUI Research Data, 2025), country-year-mode files, Vanuatu, 2024",
+   "read": "2026-11-03",
+   "kind": "secondary",
+   "quotes": "https://globalcit.eu/national-citizenship-laws/",
+   "said": "Residence in Vanuatu for continuous period of 10 years. ... Person has renounced or agreed to renounce foreign citizenship (except if permission for having dual citizenship is obtained). ... n.a. (Law provides for loss of citizenship if person 'does, agrees to or adopts any act by which he becomes a national or citizen of another country' (TUV 14(1)(b), Constitution 13(1), TUV 13A), but this provision does not apply to persons recognized as dual citizens. ... Generally applicable provision ... Anyone born after Independence Day (30 July 1980) whether in Vanuatu or abroad, shall become a citizen of Vanuatu if at least one parent is a citizen of Vanuatu. ... Generally applicable provision ... Anyone born after Independence Day (30 July 1980) whether in Vanuatu or abroad, shall become a citizen of Vanuatu if at least one parent is a citizen of Vanuatu. ... No provision ... No provision"
+  },
+  {
+   "url": "https://parliament.gov.vu/images/constitution.pdf",
+   "title": "Constitution of the Republic of Vanuatu, Laws of the Republic of Vanuatu Consolidated Edition 2020 (Consolidated English Version Order commenced 29 April 2020), Parliament of Vanuatu, Chapter 3 Citizenship, arts. 9-14",
+   "read": "2026-11-03",
+   "kind": "primary",
+   "said": "11. Persons born after day of independence Anyone born after the Day of Independence, whether in Vanuatu or abroad, shall become a citizen of Vanuatu if at least one of his parents is a citizen of Vanuatu. 12. Naturalisation A national of a foreign state or a stateless person may apply to be naturalised as a citizen of Vanuatu if he has lived continuously in Vanuatu for at least 10 years immediately before the date of the application. Parliament may prescribe further conditions of the eligibility to apply for naturalisation ... 13. Recognition of dual citizenship (1) The Republic of Vanuatu recognises dual citizenship. (2) A person who is a citizen of Vanuatu or of a state other than Vanuatu may be granted dual citizenship."
+  }
+ ],
+ "atBirth": {
+  "soil": "none",
+  "descent": "either parent"
+ }
+}

@@ -1,0 +1,27 @@
+{
+ "country": "GE",
+ "years": 10,
+ "renounce": true,
+ "lapses": true,
+ "note": "GLOBALCIT's Citizenship Law Dataset v3.0 (EUI, 2025), coding the law in force on 1 January 2024 (A06a GEO 12, 12-1, 15-16; A06b GEO 12, 12-1, 15-16; L05 GEO 21, 21-1): ordinary naturalisation after 10 years' residence; the applicant must give up other citizenships; a citizen loses the citizenship on voluntarily taking another (with exceptions). Reforms after that date are checked in the file's later sources, where a later source is given. Citizenship at birth is read from the same dataset's 2024 coding of modes A01a (descent, born in country: Generally applicable provision), A01b (descent, born abroad: Dual citizenship restriction), A02a (birth in country: No provision) and A02b (birth in country to a parent born there: No provision), as its codebook (RSC/GLOBALCIT 2025/01, sections 3.2.1a to 3.2.2b) defines them: not by birth in the territory alone (provisions for foundlings and children otherwise stateless, modes A03a and A03b, aren't held by the form); by descent from either parent, a child born abroad on the limit the dataset states. The coding also records a dual-citizenship restriction on descent, which the form doesn't hold. Changes to the law at birth after 1 January 2024 weren't checked for this file. On 2026-11-03 the primary was read: Legislative Herald of Georgia (matsne.gov.ge), Organic Law of Georgia on Georgian Citizenship No 2319-IIს of 30/04/2014, official English consolidated version 07/03/2025 - 26/06/2025, Articles 10, 12, 15, 21; matsne.gov.ge, საქართველოს ორგანული კანონი საქართველოს მოქალაქეობის შესახებ, consolidated version of 25/06/2026 (Georgian), Articles 12, 21. Every figure the file holds now rests on it, and the dataset is no longer cited. Art. 10(a) of the 2014 law makes a citizen any person one of whose parents is a citizen at the birth, wherever born, so the dataset's limit abroad was dropped. Art. 21(1)(c) keeps loss on acquiring another citizenship, except under Art. 21 1.",
+ "sources": [
+  {
+   "url": "https://matsne.gov.ge/en/document/view/2342552?publication=10",
+   "title": "Legislative Herald of Georgia (matsne.gov.ge), Organic Law of Georgia on Georgian Citizenship No 2319-IIს of 30/04/2014, official English consolidated version 07/03/2025 - 26/06/2025, Articles 10, 12, 15, 21",
+   "read": "2026-11-03",
+   "kind": "primary",
+   "said": "Article 10 ... Citizenship of Georgia shall be acquired by birth by: a) a person, at whose birth one of his/her parents is a citizen of Georgia; ... Article 12 ... 1. Adults shall be granted citizenship of Georgia under regular procedure if they meet the following requirements: a) they have lawfully resided in Georgia for the last 10 consecutive years up to the day of applying for citizenship of Georgia; ... Article 15 ... The Decree of the President of Georgia on granting citizenship of Georgia to a foreign citizen, except for the Decree of the President of Georgia on granting citizenship of Georgia by way of exception, shall take effect upon receiving by the competent Georgian authorities of a document certifying such person's renunciation of the citizenship of another country. ... Article 21 ... 1. A citizen of Georgia shall lose citizenship of Georgia if he/she: ... c) acquires foreign citizenship, except as provided for in Article 21 1 of this Law."
+  },
+  {
+   "url": "https://matsne.gov.ge/ka/document/view/2342552?publication=12",
+   "title": "matsne.gov.ge, საქართველოს ორგანული კანონი საქართველოს მოქალაქეობის შესახებ, consolidated version of 25/06/2026 (Georgian), Articles 12, 21",
+   "read": "2026-11-03",
+   "kind": "primary",
+   "said": "მუხლი 12. ... ა) კანონიერ საფუძველზე უწყვეტად ცხოვრობს საქართველოში საქართველოს მოქალაქეობის მინიჭების შესახებ განცხადების წარდგენის დღემდე ბოლო 10 წლის განმავლობაში; ... მუხლი 21. ... 1. საქართველოს მოქალაქე დაკარგავს საქართველოს მოქალაქეობას, თუ: ... გ) მოიპოვებს სხვა ქვეყნის მოქალაქეობას, გარდა ამ კანონის 21 1 მუხლით გათვალისწინებული შემთხვევისა."
+  }
+ ],
+ "atBirth": {
+  "soil": "none",
+  "descent": "either parent"
+ }
+}

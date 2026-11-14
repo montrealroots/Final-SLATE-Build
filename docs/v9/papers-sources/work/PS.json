@@ -1,0 +1,17 @@
+{
+ "country": "PS",
+ "others": {
+  "right": "permit",
+  "route": "ترخيص عمل لغير الفلسطينيين"
+ },
+ "note": "Palestine: the Ministry of Labour may grant a non-Palestinian a licence to work in Palestine, and no employer may take on a non-Palestinian worker, directly or through another, before making sure the licence was obtained (Labour Law No. 7 of 2000, art. 14); the Minister sets the licence's conditions by regulation (art. 15), not read. Read 2026-11-03 in the Law's text as published in al-Waqa'i' no. 39, as the State of Palestine's Ministry of Health publishes it; until then from An-Najah University's legislation database, which records it as in force in the West Bank and Gaza. Entry, which Israel controls, and East Jerusalem, where the law doesn't apply, aren't modelled. No days without the licence.",
+ "sources": [
+  {
+   "url": "https://www.moh.gov.ps/file_api/assets/uploads/files/e3e68-7-2000-.pdf",
+   "title": "قانون العمل رقم (7) لسنة 2000م (published in al-Waqa'i' no. 39), PDF on the Palestinian Ministry of Health's site, art. 14-15",
+   "read": "2026-11-03",
+   "said": "المادة (14) منح تراخيص عمل لغير الفلسطينيين: للوزارة أن تمنح ترخيصاً بالعمل في فلسطين لغير الفلسطينيين ويحظر على صاحب العمل أن يلحق، مباشرة أو بواسطة الغير، أي عامل غير فلسطيني قبل التأكد من الحصول على الترخيص المشار إليه. المادة (15) إصدار نظام: وفقاً لأحكام هذا القانون وبالتنسيق مع الجهات المعنية بما في ذلك نقابات أصحاب العمل ونقابات العمال يصدر الوزير نظاماً لتحديد شروط منح ترخيص العمل للعمال غير الفلسطينيين.",
+   "kind": "primary"
+  }
+ ]
+}

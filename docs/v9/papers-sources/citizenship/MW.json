@@ -1,0 +1,35 @@
+{
+ "country": "MW",
+ "years": 7,
+ "renounce": true,
+ "lapses": false,
+ "note": "GLOBALCIT's Citizenship Law Dataset v3.0 (EUI, 2025), coding the law in force on 1 January 2024 (A06a MWI 21, 22; A06b MWI 21, 22; L05 No provision): ordinary naturalisation after 7 years' residence; the applicant must give up other citizenships; a citizen keeps it on taking another. Reforms after that date are checked in the file's later sources, where a later source is given. Citizenship at birth is read from the same dataset's 2024 coding of modes A01a (descent, born in country: Generally applicable provision), A01b (descent, born abroad: Generally applicable provision), A02a (birth in country: No provision) and A02b (birth in country to a parent born there: No provision), as its codebook (RSC/GLOBALCIT 2025/01, sections 3.2.1a to 3.2.2b) defines them: not by birth in the territory alone (provisions for foundlings and children otherwise stateless, modes A03a and A03b, aren't held by the form); by descent from either parent, with no further limit on a child born abroad. Changes to the law at birth after 1 January 2024 weren't checked for this file. On 2026-11-03 the primaries were read: Categories of citizenship, Department of Immigration, Republic of Malawi; Dual Citizenship, Department of Immigration, Republic of Malawi; Renunciation and Restoration of Citizenship, Department of Immigration, Republic of Malawi. Every figure the file holds now rests on them, and the dataset is no longer cited. The Department of Immigration's pages state the Act's rules section by section; the Act itself wasn't read. They changed a figure the dataset gave: a child born abroad is a citizen only through a parent who is a citizen by birth (s. 5), so the limit abroad is held. Since the 2019 amendment (regulations of November 2021) a citizen by birth or descent may hold another citizenship on notice; a naturalised or registered citizen may not, which the form doesn't hold.",
+ "sources": [
+  {
+   "url": "https://www.immigration.gov.mw/citizenship/categories-of-citizenship/",
+   "title": "Categories of citizenship, Department of Immigration, Republic of Malawi",
+   "read": "2026-11-03",
+   "kind": "primary",
+   "said": "Citizenship by Birth (sec.4) A person born in Malawi where one or both of the parents was born in Malawi. Citizenship by Descent (sec.5) A child born outside Malawi to one or both of the parents who are Malawi citizens by birth, that child is automatically Malawian and can obtain a Malawi passport provided is a minor. ... Citizenship by Registration of Commonwealth Citizens ... a.A person must have resided in Malawi for five(5) years or above. ... Naturalization of aliens Any person being a non commonwealth citizen who has been resident in Malawi for over 7 years is eligible to apply for Malawi citizenship provided he or she has fulfilled the following:- a.Have adequate knowledge of English and any one of the prescribed vernacular languages. b.Have good character suitable to be a citizen of Malawi. c.Financially solvent."
+  },
+  {
+   "url": "https://www.immigration.gov.mw/citizenship/download-dual-citizenship-forms/",
+   "title": "Dual Citizenship, Department of Immigration, Republic of Malawi",
+   "read": "2026-11-03",
+   "kind": "primary",
+   "said": "On 12th December, 2018, the Malawi National Assembly passed the Malawi Citizenship Amendment Bill to amend the 1966 Citizenship Act, allowing persons of full age and capacity to hold citizenship of another country in addition to their Malawi citizenship. The dual citizenship bill was assented into law in March 2019 and operationalization of dual citizenship regulations were gazetted in November 2021 ... Only Malawians by birth or descent are eligible to acquire dual citizenship. Persons who were naturalized, registered or conferred the citizenship of Malawi are NOT eligible for the Malawi dual citizenship. ... A person of full age who to his/her knowledge has obtained the citizenship of another country, is required to submit an application of notice and registration for the acquisition of a Malawi dual citizenship."
+  },
+  {
+   "url": "https://www.immigration.gov.mw/citizenship/renunciation-and-restoration-of-citizenship/",
+   "title": "Renunciation and Restoration of Citizenship, Department of Immigration, Republic of Malawi",
+   "read": "2026-11-03",
+   "kind": "primary",
+   "said": "Renunciation Of Other Citizenship A person should make a declaration in a set of forms to the Lawyer of his intention to renounce that other citizenship."
+  }
+ ],
+ "atBirth": {
+  "soil": "none",
+  "descent": "either parent",
+  "descentAbroad": "Person is born outside Malawi to one or both parents who are Malawi citizens by birth."
+ }
+}

@@ -1,0 +1,35 @@
+{
+ "country": "ME",
+ "years": 10,
+ "renounce": true,
+ "lapses": true,
+ "note": "GLOBALCIT's Citizenship Law Dataset v3.0 (EUI, 2025), coding the law in force on 1 January 2024 (A06a MON 8; A06b MON 8; L05 MON 24(1)): ordinary naturalisation after 10 years' residence; the applicant must give up other citizenships; a citizen loses the citizenship on voluntarily taking another. Reforms after that date are checked in the file's later sources, where a later source is given. Citizenship at birth is read from the same dataset's 2024 coding of modes A01a (descent, born in country: Generally applicable provision), A01b (descent, born abroad: Dual citizenship restriction), A02a (birth in country: No provision) and A02b (birth in country to a parent born there: No provision), as its codebook (RSC/GLOBALCIT 2025/01, sections 3.2.1a to 3.2.2b) defines them: not by birth in the territory alone (provisions for foundlings and children otherwise stateless, modes A03a and A03b, aren't held by the form); by descent from either parent, a child born abroad on the limit the dataset states. The coding also records a dual-citizenship restriction on descent, which the form doesn't hold. Changes to the law at birth after 1 January 2024 weren't checked for this file. On 2026-11-03 the primaries were read: Zakon o crnogorskom državljanstvu, Službeni list Crne Gore 13/2008 (Službeni list Crne Gore, the Official Gazette's own site; the gazette pages are served as images, read here by OCR, srp_latn, pages 1-5 of 9); art. 7 read from the page image; Zakon o izmjenama i dopunama Zakona o crnogorskom državljanstvu, Službeni list Crne Gore 40/2010 (Cyrillic; OCR, srp); Zakon o izmjeni Zakona o crnogorskom državljanstvu, Službeni list Crne Gore 119/2026, passed 31 July 2026 (OCR, srp_latn). Every figure the file holds now rests on them, and the dataset is no longer cited. The 2026 amendment (Službeni list 119/2026) only extends art. 11 (spouses) to same-sex life partners; the 2010 amendment waives release from the other citizenship for the stateless and those whose state takes it away on admission.",
+ "sources": [
+  {
+   "url": "https://www.sluzbenilist.me/propisi/334199",
+   "title": "Zakon o crnogorskom državljanstvu, Službeni list Crne Gore 13/2008 (Službeni list Crne Gore, the Official Gazette's own site; the gazette pages are served as images, read here by OCR, srp_latn, pages 1-5 of 9); art. 7 read from the page image",
+   "read": "2026-11-03",
+   "kind": "primary",
+   "said": "Član 4 Crnogorsko državljanstvo stiče se: 1) porijeklom: 2) rođenjem na teritoriji Crne Gore; 3) prijemom; ... Član 7 Crnogorsko državljanstvo stiče dijete rođeno ili nađeno na teritoriji Crne Gore, ako su oba roditelja nepoznata ili nepoznatog državljanstva ili bez državljanstva ili ako dijete ostaje bez državljanstva. ... Član 8 Crnogorsko državljanstvo prijemom, može steći lice, u skladu sa interesima Crne Gore, koje je ... 2) ima otpust iz državljanstva druge države; 3) u Crnoj Gori zakonito i neprekidno boravi 10 godina prije podnošenja zahtjeva za prijem ... Član 24 Punoljetni crnogorski državljanin, koji ima i državljanstvo druge države, po sili zakona gubi crnogorsko državljanstvo, ako: 1) je dobrovoljno stekao državljanstvo druge države, osim u slučaju predviđenom članom 18 stav 2"
+  },
+  {
+   "url": "https://www.sluzbenilist.me/propisi/336383",
+   "title": "Zakon o izmjenama i dopunama Zakona o crnogorskom državljanstvu, Službeni list Crne Gore 40/2010 (Cyrillic; OCR, srp)",
+   "read": "2026-11-03",
+   "kind": "primary",
+   "said": "Члан 1 У Закону о црногорском држављанству («Службени лист ЦГ», број 13/08) у члану 6 став 1 тачка 1 ријечи: «ако нема држављанство друге државе» замјењују се ријечима: «а нема држављанство другог родитеља». ... Члан 2 У члану 8 став 2 мијења се и гласи: «Услов из става 1 тачка 2 овог члана не односи се на лице које је поднијело захтјев, ако: - је без држављанства или пружи доказ да ће по закону државе чији је држављанин изгубити држављанство пријемом у црногорско држављанство, или - му је одбијен захтјев за отпуст из држављанства друге државе зато што није регулисало војну обавезу у тој држави, под условом да потпише изјаву да се у случају стицања црногорског држављанства одриче држављанства друге државе»"
+  },
+  {
+   "url": "https://www.sluzbenilist.me/propisi/397079",
+   "title": "Zakon o izmjeni Zakona o crnogorskom državljanstvu, Službeni list Crne Gore 119/2026, passed 31 July 2026 (OCR, srp_latn)",
+   "read": "2026-11-03",
+   "kind": "primary",
+   "said": "U Zakonu o crnogorskom državljanstvu („Službeni list CG”, br. 13/08, 40/10, 28/11, 46/11, 20/14, 54/16, 73/19 i 77/24) u članu 11 stav 2 riječ „druga.” zamjenjuje se riječju „supružnika.”. Poslije stava 2 dodaje se novi stav koji glasi: „Odredbe st. 1 i 2 ovog člana shodno se primjenjuju i na lice koje je zaključilo životno partnerstvo sa crnogorskim državljaninom, u skladu sa zakonom kojim se uređuje životno partnerstvo lica istog pola.”"
+  }
+ ],
+ "atBirth": {
+  "soil": "none",
+  "descent": "either parent",
+  "descentAbroad": "Person is born abroad to two citizens, or to one parent who is a citizen and another parent who is unknown, stateless or of unknown citizenship, or to one parent who is a citizen and the person would otherwise be stateless.; Person is born abroad to a citizen and the person does not hold citizenship of another country (by registration by parent before the age of 18).; Person is born abroad to a citizen (by declaration by person between the age of 18 and 23)."
+ }
+}

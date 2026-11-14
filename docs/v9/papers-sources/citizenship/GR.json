@@ -1,0 +1,29 @@
+{
+ "country": "GR",
+ "years": 7,
+ "renounce": false,
+ "lapses": false,
+ "note": "GLOBALCIT's Citizenship Law Dataset v3.0 (EUI, 2025), coding the law in force on 1 January 2024 (A06a GRE 5, 5A, 5B; A06b GRE 5, 5A, 5B; L05 No provision): ordinary naturalisation after 7 years' residence; no renunciation of other citizenships required; a citizen keeps it on taking another. Reforms after that date are checked in the file's later sources, where a later source is given. Citizenship at birth is read from the same dataset's 2024 coding of modes A01a (descent, born in country: Generally applicable provision), A01b (descent, born abroad: Generally applicable provision), A02a (birth in country: Parental residence restriction) and A02b (birth in country to a parent born there: Parental residence restriction), as its codebook (RSC/GLOBALCIT 2025/01, sections 3.2.1a to 3.2.2b) defines them: by birth in the territory only on the condition the dataset states; by descent from either parent, with no further limit on a child born abroad. Changes to the law at birth after 1 January 2024 weren't checked for this file. On 2026-11-03 the primary was read: Εθνικό Μητρώο Διοικητικών Διαδικασιών (mitos.gov.gr), \"Πολιτογράφηση Αλλογενών Αλλοδαπών\" (Γενική Γραμματεία Ιθαγένειας, Υπουργείο Εσωτερικών), Προϋποθέσεις 5 and 7. It confirmed the years of residence. It was silent on renunciation, loss on taking another citizenship, birth in the territory, birth in the territory's condition and descent, which still rest on the sources above, re-read that day and found the same.",
+ "sources": [
+  {
+   "url": "https://cadmus.eui.eu/bitstreams/3b166501-e695-48d7-9e27-d7bef061573a/download",
+   "title": "GLOBALCIT Citizenship Law Dataset v3.0 (Vink, van der Baaren, Bauböck, Dzankic, Honohan, Manby; EUI Research Data, 2025), country-year-mode files, Greece, 2024",
+   "read": "2026-11-03",
+   "kind": "secondary",
+   "quotes": "https://globalcit.eu/national-citizenship-laws/",
+   "said": "Person has been permanently resident in Greece for 7 years. ... n.a. ... n.a. ... Generally applicable provision ... Person is born in Greece to a citizen. ... Generally applicable provision ... Person is born abroad to a citizen. ... Parental residence restriction ... Person is registered at the 1st class of a Greek primary school and continues to attend this school at the time of declaration of nationality acquisition, is born to parents who both have lawful residence in Greece at the moment the nationality declaration is made, and at least one of his/her parents has had lawful residence in Greece for a minimum of five years before birth. If the child is born before the lapse of the five years<d5> residence, Greek nationality may be acquired after a period of 10 years of continuous lawful residence of the parent. Exceptions may apply if child is disabled. ... Parental residence restriction ... Person is born in Greece to at least one parent also born there and permanently resident in Greece at the time of the person's birth."
+  },
+  {
+   "url": "https://mitos.gov.gr/index.php/%CE%94%CE%94:%CE%A0%CE%BF%CE%BB%CE%B9%CF%84%CE%BF%CE%B3%CF%81%CE%AC%CF%86%CE%B7%CF%83%CE%B7_%CE%91%CE%BB%CE%BB%CE%BF%CE%B3%CE%B5%CE%BD%CF%8E%CE%BD_%CE%91%CE%BB%CE%BB%CE%BF%CE%B4%CE%B1%CF%80%CF%8E%CE%BD",
+   "title": "Εθνικό Μητρώο Διοικητικών Διαδικασιών (mitos.gov.gr), \"Πολιτογράφηση Αλλογενών Αλλοδαπών\" (Γενική Γραμματεία Ιθαγένειας, Υπουργείο Εσωτερικών), Προϋποθέσεις 5 and 7",
+   "read": "2026-11-03",
+   "kind": "primary",
+   "said": "5 Μόνιμης κατοικίας/Διαμονής/Εγκατάστασης Να διαμένει στην Ελλάδα νόμιμα και μόνιμα για επτά (7) έτη πριν την υποβολή της αίτησης πολιτογράφησης. ... 7 ... Ειδικές περιπτώσεις: • για όσους έχουν γεννηθεί και κατοικούν συνεχώς στην Ελλάδα δεν απαιτείται η χρονική προϋπόθεση της επταετούς διαμονής."
+  }
+ ],
+ "atBirth": {
+  "soil": "conditional",
+  "soilIf": "Person is registered at the 1st class of a Greek primary school and continues to attend this school at the time of declaration of nationality acquisition, is born to parents who both have lawful residence in Greece at the moment the nationality declaration is made, and at least one of his/her parents has had lawful residence in Greece for a minimum of five years before birth. If the child is born before the lapse of the five years<d5> residence, Greek nationality may be acquired after a period of 10 years of continuous lawful residence of the parent. Exceptions may apply if child is disabled.; Person is born in Greece to at least one parent also born there and permanently resident in Greece at the time of the person's birth.",
+  "descent": "either parent"
+ }
+}

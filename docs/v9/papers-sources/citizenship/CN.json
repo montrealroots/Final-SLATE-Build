@@ -1,0 +1,21 @@
+{
+ "country": "CN",
+ "years": "none",
+ "renounce": null,
+ "lapses": true,
+ "note": "GLOBALCIT's Citizenship Law Dataset v3.0 (EUI, 2025), coding the law in force on 1 January 2024 (A06a No provision; A06b No provision; L05 CHI 3, 9): no ordinary naturalisation by residence; a citizen loses the citizenship on voluntarily taking another. Reforms after that date are checked in the file's later sources, where a later source is given. Naturalisation in China is discretionary rather than a residence right: the dataset codes it under its discretionary mode (A24, CHI 7 and 8: a person settled in China, with no residence period specified, or with other legitimate reasons, who gives up any other nationality), which is why it is modelled as no naturalisation by residence. Citizenship at birth is read from the same dataset's 2024 coding of modes A01a (descent, born in country: Generally applicable provision), A01b (descent, born abroad: Generational transmission restriction: conditional on birthplace/place of residence /mode under which parent acquired citizenship), A02a (birth in country: No provision) and A02b (birth in country to a parent born there: No provision), as its codebook (RSC/GLOBALCIT 2025/01, sections 3.2.1a to 3.2.2b) defines them: not by birth in the territory alone (provisions for foundlings and children otherwise stateless, modes A03a and A03b, aren't held by the form); by descent from either parent, a child born abroad on the limit the dataset states. Changes to the law at birth after 1 January 2024 weren't checked for this file. On 2026-11-03 the primary was read: National People's Congress, Nationality Law of the People's Republic of China (1980), official English text. Every figure the file holds now rests on it, and the dataset is no longer cited. Naturalisation is by approval on one of art. 7's grounds, with no period of residence, and the naturalised may not keep a foreign nationality (art. 8).",
+ "sources": [
+  {
+   "url": "http://www.npc.gov.cn/zgrdw/englishnpc/Law/2007-12/13/content_1384056.htm",
+   "title": "National People's Congress, Nationality Law of the People's Republic of China (1980), official English text",
+   "read": "2026-11-03",
+   "kind": "primary",
+   "said": "Article 3 The People's Republic of China does not recognize dual nationality for any Chinese national. Article 4 Any person born in China whose parents are both Chinese nationals or one of whose parents is a Chinese national shall have Chinese nationality. Article 5 Any person born abroad whose parents are both Chinese nationals or one of whose parents is a Chinese national shall have Chinese nationality. But a person whose parents are both Chinese nationals and have both settled abroad, or one of whose parents is a Chinese national and has settled abroad, and who has acquired foreign nationality at birth shall not have Chinese nationality. ... Article 7 Foreign nationals or stateless persons who are willing to abide by China's Constitution and other laws and who meet one of the following conditions may be naturalized upon approval of their applications: (1) they are near relatives of Chinese nationals; (2) they have settled in China; or (3) they have other legitimate reasons. Article 8 ... a person whose application for naturalization as a Chinese national has been approved shall not retain foreign nationality. Article 9 Any Chinese national who has settled abroad and who has been naturalized as a foreign national or has acquired foreign nationality of his own free will shall automatically lose Chinese nationality."
+  }
+ ],
+ "atBirth": {
+  "soil": "none",
+  "descent": "either parent",
+  "descentAbroad": "Person is born abroad to a Chinese parent, unless the Chinese parent (or both) has settled abroad and the child acquired a foreign nationality at birth."
+ }
+}

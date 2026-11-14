@@ -1,0 +1,120 @@
+{
+ "country": "BD",
+ "rules": [
+  {
+   "entry": "free",
+   "days": 90,
+   "passports": [
+    "BB",
+    "BF",
+    "BT",
+    "BW",
+    "FJ",
+    "GA",
+    "GD",
+    "GH",
+    "GM",
+    "GN",
+    "GW",
+    "JM",
+    "KN",
+    "LS",
+    "MV",
+    "MW",
+    "PG",
+    "SC",
+    "SL",
+    "TO",
+    "TZ",
+    "WS",
+    "ZM"
+   ]
+  },
+  {
+   "entry": "arrival",
+   "days": 30,
+   "passports": [
+    "AE",
+    "AT",
+    "AU",
+    "BE",
+    "BG",
+    "BH",
+    "BN",
+    "CA",
+    "CH",
+    "CN",
+    "CY",
+    "CZ",
+    "DE",
+    "DK",
+    "EE",
+    "EG",
+    "ES",
+    "FI",
+    "FR",
+    "GB",
+    "GR",
+    "HR",
+    "HU",
+    "ID",
+    "IE",
+    "IS",
+    "IT",
+    "JP",
+    "KR",
+    "KW",
+    "LI",
+    "LT",
+    "LU",
+    "LV",
+    "MT",
+    "MY",
+    "NL",
+    "NO",
+    "NZ",
+    "OM",
+    "PL",
+    "PT",
+    "QA",
+    "RO",
+    "RU",
+    "SA",
+    "SE",
+    "SG",
+    "SI",
+    "SK",
+    "TR",
+    "US"
+   ]
+  }
+ ],
+ "others": {
+  "entry": "visa"
+ },
+ "note": "Bangladesh: nationals of the countries listed enter without a visa for 90 days; nationals of the EU, the Gulf, the Commonwealth's richer members, China, Japan, Korea, Russia, Turkey, the US and the others listed may get a single-entry visa on arrival for tourism or business (USD 51, 30 days, extendable by 30, at the officer's discretion; not modelled apart). Everyone else needs a visa beforehand (nationals of countries without a Bangladeshi mission may also get one on arrival: not modelled). Read from Wikipedia's copy of Timatic's list. Checked on 2026-11-03 against the Special Branch's own visa-on-arrival pages: they name the nationalities eligible for the visa on arrival (single entry, 30 days at most), all held here, and Egypt, which Wikipedia's copy, read before, had left out and was added; they don't name Indonesia, kept from Wikipedia's copy, and say nothing of the visa-free countries, which stand on it.",
+ "sources": [
+  {
+   "url": "https://en.wikipedia.org/wiki/Visa_policy_of_Bangladesh",
+   "title": "Wikipedia, Visa policy of Bangladesh",
+   "read": "2026-11-03",
+   "kind": "secondary",
+   "quotes": "https://www.immi.gov.bd/",
+   "said": "Holders of ordinary passports of the following countries may enter Bangladesh without a visa for up to 90 days: Barbados Bhutan Botswana Burkina Faso Fiji Gabon Gambia Ghana Grenada Guinea Guinea-Bissau Jamaica Lesotho Malawi Maldives Papua New Guinea Saint Kitts and Nevis Samoa Seychelles Sierra Leone Tanzania Tonga Zambia ... The maximum duration of this single-entry Visa On Arrival is 30 days and it can be extended for an additional 30 days. ... All European Union member states Australia Bahrain Brunei Canada China Iceland Indonesia Japan Kuwait Liechtenstein Malaysia New Zealand Norway Oman Qatar Russia Saudi Arabia Singapore South Korea Switzerland Turkey United Arab Emirates United Kingdom United States"
+  },
+  {
+   "url": "https://voa.specialbranch.gov.bd/public/voa-instructions.html",
+   "title": "Special Branch, Bangladesh Police (Immigration): Visa on Arrival (VOA) General Instructions",
+   "read": "2026-11-03",
+   "kind": "primary",
+   "said": "The Bangladesh Visa on Arrival For eligible travelers, Bangladesh offers a visa on arrival facility. This visa is valid for a stay of a maximum of 30 days for tourism, business, investment, or a government job. ... Who can get a Bangladesh visa on arrival? Citizens coming from The US, Canada, Australia, New Zealand, Russian Federation, China, Japan, Singapore, Malaysia, South Korea, United Arab Emirates, Saudi Arabia, Qatar, Kuwait, Oman, Bahrain, Egypt, Turkey, Brunei, and European countries to Bangladesh for tourism, trade, investment, or a government job may get a visa on arrival."
+  },
+  {
+   "url": "https://voa.specialbranch.gov.bd/public/voa-info.html",
+   "title": "Special Branch, Bangladesh Police (Immigration): Visa on Arrival (VOA) in Bangladesh",
+   "read": "2026-11-03",
+   "kind": "primary",
+   "said": "Visa Duration of VOA: Maximum 30 days, single entry ... citizens of the above-mentioned European countries and United States, Canada, Australia, New Zealand, the Russian Federation, China, Japan, Singapore, Malaysia, South Korea, the United Arab Emirates, Saudi Arabia, Qatar, Kuwait, Oman, Bahrain, Egypt, Turkey, Brunei are eligible for Visa on Arrival if they travel to Bangladesh from a country without a resident Bangladesh Embassy or Consulate."
+  }
+ ]
+}

@@ -1,0 +1,21 @@
+{
+ "country": "AR",
+ "years": 2,
+ "renounce": false,
+ "lapses": false,
+ "note": "GLOBALCIT's Citizenship Law Dataset v3.0 (EUI, 2025), coding the law in force on 1 January 2024 (A06a Const 20, ARG 2(1), 6, Decree 3213/84 3-8; A06b Const 20, ARG 2(1), 6, Decree 3213/84 3-8; L05 No provision): ordinary naturalisation after 2 years' residence; no renunciation of other citizenships required; a citizen keeps it on taking another. Reforms after that date are checked in the file's later sources, where a later source is given. Citizenship at birth is read from the same dataset's 2024 coding of modes A01a (descent, born in country: No provision), A01b (descent, born abroad: Generational transmission restriction: conditional on birthplace/place of residence /mode under which parent acquired citizenship), A02a (birth in country: Generally applicable provision) and A02b (birth in country to a parent born there: No provision), as its codebook (RSC/GLOBALCIT 2025/01, sections 3.2.1a to 3.2.2b) defines them: by birth in the territory unconditionally; by descent from either parent, a child born abroad on the limit the dataset states (the dataset codes no separate descent rule for a child born in the country, birth there giving it; the parent's sex is read from mode A01b). Changes to the law at birth after 1 January 2024 weren't checked for this file. On 2026-11-03 the primary was read: Argentina.gob.ar (InfoLEG, Ministerio de Justicia), Ley 346 de Ciudadanía, texto actualizado (with Decreto 366/2025, B.O. 29/5/2025). Every figure the file holds now rests on it, and the dataset is no longer cited. Decreto 366/2025 (B.O. 29 May 2025) rewrote art. 2: the two years must now be continuous and legal with no exit abroad, and naturalisation moved to the Dirección Nacional de Migraciones; an investment route needs no residence, which the form doesn't hold. The limit abroad is art. 1(2)'s; the dataset's second route, for a child of an exiled Argentine, isn't in the text read and was dropped.",
+ "sources": [
+  {
+   "url": "https://www.argentina.gob.ar/normativa/nacional/ley-346-48854/actualizacion",
+   "title": "Argentina.gob.ar (InfoLEG, Ministerio de Justicia), Ley 346 de Ciudadanía, texto actualizado (with Decreto 366/2025, B.O. 29/5/2025)",
+   "read": "2026-11-03",
+   "kind": "primary",
+   "said": "Art. 1° Son argentinos: — 1° Todos los individuos nacidos, ó que nazcan en el territorio de la República Argentina, sea cual fuere la nacionalidad de sus padres, con excepción de los hijos de Ministros estranjeros y miembros de la Legación residentes en la República. — 2° Los hijos de Argentinos nativos, que habiendo nacido en pais estranjero optaren por la ciudadanía de origen. ... Art. 2° — Son ciudadanos por naturalización: 1°. Los extranjeros mayores de DIECIOCHO (18) años que acrediten haber residido en la REPÚBLICA ARGENTINA en forma continua y legal durante los DOS (2) años anteriores a la solicitud y manifiesten su voluntad de serlo ante la DIRECCIÓN NACIONAL DE MIGRACIONES ... Se entenderá que un extranjero residió continuamente en el país cuando hubiere permanecido en el territorio durante todo el plazo al que hace referencia el párrafo anterior, sin haber realizado ninguna salida al exterior. 2°. Los extranjeros que acrediten ante la DIRECCIÓN NACIONAL DE MIGRACIONES, cualquiera sea el tiempo de su residencia, haber realizado una inversión relevante en el país. (Artículo sustituido por art. 37 del Decreto Nº 366/2025 B.O. 29/5/2025 ...)"
+  }
+ ],
+ "atBirth": {
+  "soil": "unconditional",
+  "descent": "either parent",
+  "descentAbroad": "Person is born abroad to a native-born Argentine and opts for the citizenship of origin."
+ }
+}

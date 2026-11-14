@@ -1,0 +1,43 @@
+{
+ "country": "MR",
+ "rules": [
+  {
+   "entry": "free",
+   "days": 90,
+   "passports": [
+    "BF",
+    "CI",
+    "DZ",
+    "GM",
+    "GW",
+    "LY",
+    "ML",
+    "NE",
+    "SN",
+    "TD",
+    "TN"
+   ]
+  }
+ ],
+ "others": {
+  "entry": "evisa"
+ },
+ "note": "Mauritania: nationals of the 10 countries listed enter without a visa for 90 days; everyone else must apply for an e-Visa before boarding (since 5 January 2025; embassies no longer issue visas since June 2025). Read from Wikipedia's copy. Checked on 2026-11-03 against the national population registry agency (ANRPTS), whose list of mutual exemption agreements confirmed the ten held and adds Guinea-Bissau, which was added at the same 90 days; the stay itself stands on Wikipedia's copy.",
+ "sources": [
+  {
+   "url": "https://en.wikipedia.org/wiki/Visa_policy_of_Mauritania",
+   "title": "Wikipedia, Visa policy of Mauritania",
+   "read": "2026-11-03",
+   "kind": "secondary",
+   "quotes": "https://anrpts.gov.mr/",
+   "said": "Most visitors to Mauritania may obtain an electronic visa to Mauritania, unless they are a national of one of the visa-exempt countries. ... Citizens of the following 10 countries can visit Mauritania without a visa for a stay up to 90 days: Algeria Burkina Faso Chad Côte d'Ivoire Gambia Libya Mali Niger Senegal Tunisia ... As of 5 January 2025, all visa required nationals will be required to apply for an e-Visa before boarding their flight to Mauritania."
+  },
+  {
+   "url": "https://anrpts.gov.mr/en/service-de-lagance/visitors",
+   "title": "Agence Nationale du Registre des Populations et des Titres Sécurisés (Mauritania): Procedures for obtaining an entry visa (page data, English; the French and Arabic strings say the same)",
+   "read": "2026-11-03",
+   "kind": "primary",
+   "said": "List of countries whose nationals benefit from an exemption under mutual agreements. ... Here are the mutual visa exemption agreements that our country has signed with these countries: 1- Mali. 2- Gambia. 3- Niger. 4- Senegal. 5- Guinea-Bissau. 6- Tunisia. 7- Libya. 8- Ivory Coast. 9- Algeria. 10- Chad. 11- Burkina Faso. ... Foreigners wishing to visit Mauritania can apply for entry visas online through the National Agency for Population and Secure Titles Registry website. ... The issuance of sticker visas is discontinued, and they are replaced by online visas."
+  }
+ ]
+}

@@ -1,0 +1,62 @@
+{
+ "country": "PA",
+ "office": "the Autoridad de Pasaportes de Panamá (APAP)",
+ "currency": "PAB",
+ "routes": [
+  {
+   "id": "home",
+   "where": "home",
+   "speed": "standard",
+   "within": {
+    "n": 10,
+    "unit": "working day"
+   },
+   "label": "usually 7 to 10 working days once the application is complete"
+  },
+  {
+   "id": "tocumen-express",
+   "where": "home",
+   "speed": "urgent",
+   "within": {
+    "n": 1,
+    "unit": "hour"
+   },
+   "label": "the APAP's express service at Tocumen Airport, Terminal 1"
+  }
+ ],
+ "passports": [
+  {
+   "for": "any",
+   "validYears": 5,
+   "pay": {
+    "home": "100.00",
+    "tocumen-express": "175.00"
+   }
+  }
+ ],
+ "note": "The passport's price, first issue or renewal, from the Autoridad de Pasaportes de Panamá (APAP, 18 November 2024): B/.100.00, and B/.50.00 for retirees, older people and holders of a Senadis card, which isn't modelled since retirement isn't. An urgent passport costs B/.75.00 more, documented medical cases excepted; since 24 November 2025 the APAP's express service at Tocumen Airport, Terminal 1, issues one within an hour to a traveller who asks for it, written as the urgent route (B/.175.00). Until 2026-11-03 the price stood on La Estrella de Panamá's report (13 January 2026), and urgent handling was held to be only for documented exceptional cases, not a route anyone could buy; the APAP's own pages, read that day, showed it is one. The validity (generally five years) and the usual 7 to 10 working days are still La Estrella's. Fees abroad add consular charges and are a lead. The Authority's site is apap.gob.pa; pasaportes.gob.pa, which this file named until 2026-11-03, doesn't resolve.",
+ "sources": [
+  {
+   "kind": "secondary",
+   "url": "https://www.laestrella.com.pa/panama/informacion-util/pasaporte-panameno-requisitos-costos-y-tiempos-de-entrega-GO19063014",
+   "quotes": "https://www.apap.gob.pa/",
+   "title": "La Estrella de Panamá, Pasaporte panameño: requisitos, costos y tiempos de entrega (13 January 2026)",
+   "read": "2026-11-03",
+   "said": "el pasaporte panameño tiene un valor de B/.100.00 para adultos no jubilados y para menores de edad, mientras que los jubilados pagan $50.00. La vigencia del documento es, por lo general, de cinco años ... Los tiempos de entrega suelen oscilar entre 7 y 10 días hábiles una vez completado el trámite. ... Para situaciones excepcionales, como emergencias médicas o viajes impostergables, existen procedimientos de atención urgente, siempre que se presenten los documentos que respalden la solicitud."
+  },
+  {
+   "kind": "primary",
+   "url": "https://www.apap.gob.pa/index.php?option=com_content&view=article&id=223%3Acosto-del-pasaporte&catid=2&Itemid=152",
+   "title": "Autoridad de Pasaportes de Panamá, Costo del pasaporte (Noticias y Eventos, published 18 November 2024)",
+   "read": "2026-11-03",
+   "said": "Recuerda el costo del trámite del pasaporte, primera vez o renovación: - B/.100.00 (cien balboas) - B/.50.00 (cincuenta balboas) jubilados, tercera edad, personas con carné de Senadis. - B/.75.00 adicionales para expedir el pasaporte en casos de urgencias, se exceptúa por temas médicos sustentados."
+  },
+  {
+   "kind": "primary",
+   "url": "https://www.apap.gob.pa/index.php?option=com_content&view=article&id=273:comunicado-de-servicio-espres&catid=2&Itemid=152",
+   "title": "APAP, Servicio exprés en Tocumen (published 25 November 2025)",
+   "read": "2026-11-03",
+   "said": "La Autoridad de Pasaportes de Panamá (APAP) comunica que a partir del lunes 24 de noviembre de 2025 activará el servicio exprés para emitir pasaportes en caso de urgencias a viajeros que lo soliciten en la sede regional del Aeropuerto Internacional de Tocumen, Terminal 1 . El trámite tendrá un costo adicional de B/.75.00 sobre el costo establecido de B/.100.00 para usuarios regulares y B/.50.00 para jubilados. Este servicio permitirá entregar el documento en una hora."
+  }
+ ]
+}

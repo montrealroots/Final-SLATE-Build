@@ -1,0 +1,17 @@
+{
+ "country": "ET",
+ "others": {
+  "right": "permit",
+  "route": "Work permit (Ministry of Labour and Skills)"
+ },
+ "note": "Ethiopia: under the Labour Proclamation No. 1156/2019, article 176, a foreigner may be employed in any type of work in Ethiopia only on a work permit the Ministry gives (the labour ministry, now the Ministry of Labour and Skills), for a specific type of work, for three years and renewed every year, and cancellable where the Ministry finds the foreigner isn't required for the work (the Federal Negarit Gazeta's text as the Ministry publishes it). No performers' exemption and no days are named. The file was first read in UNHCR's Rights Mapping and Analysis Platform, which quotes art. 176(1) in the same words; its note then said foreign nationals of Ethiopian origin may work without a permit, which art. 176 doesn't say, and they aren't modelled apart.",
+ "sources": [
+  {
+   "url": "https://mols.gov.et/wp-content/uploads/2022/07/Labour-proclamation-1156.pdf",
+   "title": "Ministry of Labour and Skills, Labour Proclamation No. 1156/2019 (Federal Negarit Gazeta No. 89, 5 September 2019), the PDF its pages /new-labour-proclamation-1156/ and /labor-proclamation/ embed; a scan, English column of pp. 11782-11783 (PDF pages 92-93) read by OCR and checked against the page image, art. 176 (the scan crops the article number's first digits; 176 follows 173-175 on the page)",
+   "read": "2026-11-03",
+   "said": "Employment of Foreign Nationals 1/ any foreigner may only be employed in any type of work in Ethiopia where he possesses a work permit given to him by the Ministry. 2/ a work permit shall be given for an employment in a specific type of work for three years and shall be renewed every year; provided, however, that the Ministry may vary the three years limit as required. 3/ Where the Ministry ascertains that the foreigner is not required for the work, the work permit may be cancelled. 4/ The Ministry may, in accordance with the law, charge service fees for the issuance, renewal or replacement of work permit.",
+   "kind": "primary"
+  }
+ ]
+}

@@ -1,0 +1,41 @@
+{
+ "country": "KW",
+ "office": "the Ministry of Interior's General Department of Nationality and Travel Documents",
+ "currency": "KWD",
+ "routes": [
+  {
+   "id": "home",
+   "where": "home",
+   "speed": "standard",
+   "within": null,
+   "label": "in Kuwait"
+  }
+ ],
+ "passports": [
+  {
+   "for": "any",
+   "validYears": null,
+   "pay": {
+    "home": "100"
+   }
+  }
+ ],
+ "note": "The fee for issuing or renewing a Kuwaiti passport, KD 100, set by Ministerial Decision No. 1769 of 2026 (5 October 2026, amending Ministerial Decision No. 20 of 1971), in force from its publication in the Official Gazette, as Gulf News reported it. The gazette's own index (Kuwait Al-Youm, read 2026-11-03) lists the decision in edition No. 1812 of 11 October 2026, page 36, so the fee runs from that day; the page itself is behind the gazette's sign-in and wasn't read, so the fee stays Gulf News's. Validity, processing time and fees at missions abroad are leads.",
+ "sources": [
+  {
+   "kind": "secondary",
+   "quotes": "https://kuwaitalyawm.media.gov.kw/",
+   "url": "https://gulfnews.com/world/gulf/kuwait/kuwait-raises-passport-fee-to-kd100-under-new-interior-ministry-decision-1.500706491",
+   "title": "Gulf News, Kuwait raises passport fee to KD100 under new Interior Ministry decision (11 October 2026)",
+   "read": "2026-11-03",
+   "said": "Kuwait has raised the fee for issuing or renewing a Kuwaiti passport to KD100, according to a new ministerial decision published in the Official Gazette. ... Under the amendment, Article 3 of the second article of the 1971 decision has been revised to set the fee for issuing or renewing a Kuwaiti passport at KD100. ... It instructs the relevant authorities to implement the amendment, with the new fee taking effect from the date of its publication in the Official Gazette. The ministerial decision, No. 1769 of 2026, was issued on October 5, 2026."
+  },
+  {
+   "kind": "primary",
+   "url": "https://kuwaitalyawm.media.gov.kw/online/AdsMainEditionJson",
+   "title": "Kuwait Al-Youm (the Official Gazette), index of edition No. 1812 (EditionID 5602), Ministry of Interior items",
+   "read": "2026-11-03",
+   "said": "{\"AdsTitle\": \"2026/1769\", \"EditionNo\": \"1812\", \"EditionDate\": \"/Date(1791666000000)/\", \"HijriDate\": \"30/ربيع الثاني/1448\", \"EditionID_FK\": 5602, \"FromPage\": 36, \"ID\": 172117, \"AgentTitle\": \"وزارة الداخلية\", \"AdsCategoryTitle\": \"قرارات\"}"
+  }
+ ]
+}

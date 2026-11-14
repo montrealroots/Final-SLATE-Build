@@ -1,0 +1,85 @@
+{
+ "country": "TG",
+ "rules": [
+  {
+   "entry": "free",
+   "days": 30,
+   "passports": [
+    "AO",
+    "BF",
+    "BI",
+    "BJ",
+    "BW",
+    "CD",
+    "CF",
+    "CG",
+    "CI",
+    "CM",
+    "CV",
+    "DJ",
+    "DZ",
+    "EG",
+    "ER",
+    "ET",
+    "GA",
+    "GH",
+    "GM",
+    "GN",
+    "GQ",
+    "GW",
+    "KE",
+    "KM",
+    "LR",
+    "LS",
+    "LY",
+    "MA",
+    "MG",
+    "ML",
+    "MR",
+    "MU",
+    "MW",
+    "MZ",
+    "NA",
+    "NE",
+    "NG",
+    "RW",
+    "SC",
+    "SD",
+    "SL",
+    "SN",
+    "SO",
+    "SS",
+    "ST",
+    "SZ",
+    "TD",
+    "TN",
+    "TZ",
+    "UG",
+    "ZA",
+    "ZM",
+    "ZW"
+   ]
+  }
+ ],
+ "others": {
+  "entry": "evisa",
+  "days": 90
+ },
+ "note": "Togo: nationals of every African state hold a valid passport and enter without a visa for up to 30 days (since 18 May 2026), once they have filled in the immigration form online at least 24 hours before arrival (not modelled); everyone else applies for an e-Visa at least five days ahead (up to 90 days); visas on arrival and express visas are suspended. Read on 2026-11-03 from the Togo Voyage platform's own notice and its list of the 55 exempt countries, which corrected Wikipedia's copy, read before, on Morocco (30 days like the rest, not 90 by a bilateral rule) and Western Sahara (not among them, so an e-Visa).",
+ "sources": [
+  {
+   "url": "https://beta.voyage.gouv.tg/",
+   "title": "Togo Voyage (official platform of the Togolese Republic), home page notice",
+   "read": "2026-11-03",
+   "kind": "primary",
+   "said": "ATTENTION !!! To allow the competent authorities to carry out optimization work on visa application procedures, visas on arrival and express visas are suspended until further notice. Henceforth, visa applications must be submitted at least 5 days before arrival on Togolese territory. For urgent requests, please contact the support service. All African nationals holding a valid passport may enter Togo without a visa for stays of up to 30 days, provided they have completed the immigration form at least 24 hours before arrival."
+  },
+  {
+   "url": "https://beta.voyage.gouv.tg/a-propos",
+   "title": "Togo Voyage, About e-Visa: List of countries exempt from visa requirements",
+   "read": "2026-11-03",
+   "kind": "primary",
+   "said": "List of countries exempt from visa requirements The countries listed below are exempt from visa requirements. These are all African countries. If you are coming from one of these countries, you must still complete your immigration formalities online before presenting yourself at Togo's border posts (especially if travelling by air). 55 country/countries found AFRIQUE DU SUD ALGERIE ANGOLA BENIN BOTSWANA BURKINA-FASO BURUNDI CAP-VERT CAMEROUN COMORES CONGO CÔTE D'IVOIRE DJIBOUTI EGYPTE ERYTHREE ESWATINI ETHIOPIE GABON GAMBIE GHANA GUINEE GUINEE-BISSAU GUINEE EQUATORIALE KENYA LESOTHO LIBERIA LIBYE MADAGASCAR MALAWI MALI MAROC MAURICE MAURITANIE MOZAMBIQUE NAMIBIE NIGER NIGERIA OUGANDA REPUBLIQUE CENTRAFRICAINE REPUBLIQUE DEMOCRATIQUE DU CONGO REPUBLIQUE DU CONGO RWANDA SAO TOME-ET-PRINCIPE SENEGAL SEYCHELLES SIERRA LEONE SOMALIE SOUDAN SOUDAN DU SUD TANZANIE TCHAD TOGO TUNISIE ZAMBIE ZIMBABWE ... Tourist Visa ... 1 to 15 days Single 25 000 Fr CFA ... 31 to 90 days Multiple 65 000 Fr CFA"
+  }
+ ]
+}

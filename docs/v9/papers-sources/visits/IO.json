@@ -1,0 +1,31 @@
+{
+ "country": "IO",
+ "rules": [
+  {
+   "entry": "visa",
+   "passports": [
+    "GB"
+   ]
+  }
+ ],
+ "others": {
+  "entry": "visa"
+ },
+ "note": "The British Indian Ocean Territory: every visitor needs a permit from the Territory's Administration in London before travelling (taken as a visa, British citizens included), valid for the outer islands only; Diego Garcia is closed to anyone without a connection to the military facility. Read on 2026-11-03 from the Territory's own pages on visiting and permits (all visitors need an immigration permit in advance, £100).",
+ "sources": [
+  {
+   "url": "https://www.biot.gov.io/visiting/permits/",
+   "title": "British Indian Ocean Territory: Applying for a permit",
+   "read": "2026-11-03",
+   "kind": "primary",
+   "said": "PERMITS Permits are required in advance of travel. They can take 8 weeks to process; please apply for a permit well in advance of your intended arrival dates. All visitors to the territory require an immigration permit and if you intend to moor your vessel in the territory you also require a visiting vessel permit. Immigration Permits The immigration permit system is official permission granted by the BIOT Administration for a person or group to enter and stay in BIOT for an approved purpose and duration. ... There is a £100 fee for processing applications"
+  },
+  {
+   "url": "https://www.biot.gov.io/visiting/",
+   "title": "British Indian Ocean Territory: Visiting",
+   "read": "2026-11-03",
+   "kind": "primary",
+   "said": "The British Indian Ocean Territory is not a tourist destination. Access is restricted and a permit is required in advance of travel. There are no commercial flights and permits for yachts are only issued to allow safe passage through the Indian Ocean (Outer Islands only). Access to Diego Garcia is only permitted to those with connections either to the military facility or to the Territory’s Admi[nistration]"
+  }
+ ]
+}

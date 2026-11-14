@@ -1,88 +1,263 @@
-// Papers for working abroad (the owner's v8 package, 05 "Paperwork, travel and world"; 07 step 8; A16; from November 14,
-// 2026). Where you may work is read from src/data/work-rights.json, the old line's table imported unchanged and labelled
-// unverified: for each country, who may work there freely (its citizens, some passports by treaty or a shared market)
-// and the route everyone else must apply for. A passport lets you travel; it doesn't let you work. A visit is not work.
+// Your papers (from November 14, 2026; the owner's command, 4 "Papers"). Five things are kept apart, as the command asks:
+// - a passport, and whether it is in force (1221's documents in the bank world: engine/bankworld/systems/documents.ts);
+// - permission to enter a country, and how long a visit may last (SLATE-REBUILD's visits records, src/data/papers);
+// - permission to stay longer (a residence document in the bank world; none is applied for here);
+// - permission to work (SLATE-REBUILD's work records: free movement, a short engagement's days, or a permit's route);
+// - permission for the work itself. The work records are what a performer needs. Acting is covered; directing and
+//   producing are not, and need a right to work generally (citizenship, free movement or where you live).
 //
-// The consumer is the call (production/shoot.ts): on a day filmed in a country where you may not work, the day starts
-// without you, as it does when you aren't there. A permit is applied for and decided; until it is granted, and after it
-// expires, it lets you do nothing. What isn't researched is said, never filled: a route with no processing time takes the
-// game's 30 days, and every permit lasts a year, both simulation choices. Fees are in their own currencies and aren't
-// charged, because the game has no exchange rates.
-import rights from '../data/work-rights.json';
+// An application runs eligibility → the documents it needs → applying → the fee paid from your bank → the review → the
+// decision → the document issued → its use → its expiry. It is offered only where the records give its fee and its time:
+// 1221's visitor visas (content/visas.ts) for the pairs it researched. Nothing is invented: a route whose fee or time the
+// records lack says exactly what is missing, and the game takes it no further.
+//
+// Until November 14, 2026 (the owner's v8 package, 05) a work permit could be applied for anywhere, decided after 30 days
+// where its time wasn't recorded and lasting a year: both figures the game's own. Those went with that day. A permit a
+// save already holds is kept until its date.
+import visitsData from '../data/papers/visits.json';
+import workData from '../data/papers/work.json';
+import citizenshipData from '../data/papers/citizenship.json';
 import { addLog, newId, registerHandler, schedule } from './state';
-import { DAY } from './time';
+import { DAY, dateKey } from './time';
 import { countryName } from '../world/gazetteer/gazetteer';
 import { getPlace } from '../data/places';
+import { bankSim } from './bankworld';
+import { documentsOf, inForce, type PersonDocument } from './bankworld/systems/documents';
+import { VISAS, type VisaRule } from './bankworld/content/visas';
+import { exchange } from './bankworld/content/currency';
+import { postToBank } from './bank';
 import type { GameState } from './types';
 
-interface Rule { right: 'free' | 'permit'; route?: string; days?: number }
-interface CountryRules { groups?: string[]; passports: Record<string, Rule>; others: Rule }
-const DATA = rights as unknown as { groups: Record<string, { passports: Record<string, Rule>; others?: Rule }>; countries: Record<string, CountryRules> };
+// ---------------- the records ----------------
 
+type Entry = 'free' | 'eta' | 'evisa' | 'arrival' | 'visa';
+interface Visit { entry: Entry; days?: number; within?: number; months?: number }
+interface VisitList { passports: Record<string, Visit>; others: Visit }
+const VISITS = visitsData as unknown as { groups: Record<string, VisitList>; countries: Record<string, VisitList | { group: string; passports?: Record<string, Visit> }> };
+
+interface WorkRule { right: 'free' | 'permit'; route?: string; days?: number; within?: number; from?: string; only?: string }
+interface WorkList { groups?: string[]; passports: Record<string, WorkRule>; others: WorkRule }
+const WORK = workData as unknown as { groups: Record<string, { passports: Record<string, WorkRule>; others?: WorkRule }>; countries: Record<string, WorkList> };
+
+const CITIZENSHIP = citizenshipData as unknown as Record<string, { nationalityOf?: string }>;
+/** The state a territory's people are nationals of (SLATE-REBUILD's `nationality`): Puerto Rico's are American. */
+const nationality = (country: string): string => CITIZENSHIP[country]?.nationalityOf ?? country;
+
+export type Activity = 'act' | 'direct' | 'produce' | 'write';
+export const ACTIVITY_WORDS: Record<Activity, string> = { act: 'acting', direct: 'directing', produce: 'producing', write: 'writing' };
+
+const citizenships = (state: GameState) => (state.character.nationalities ?? []).map(nationality);
+const isCitizen = (state: GameState, country: string) => citizenships(state).includes(nationality(country));
+/** Where your story is lived: the game's own assumption that you may live and work there (said as one, never "ready"). */
+const livesIn = (state: GameState) => getPlace(state.character.livesIn ?? state.locationId).country;
+
+// ---------------- passports ----------------
+
+/** Your passports, from your bank world's documents: each with whether it is in force today. */
+export function passports(state: GameState): { doc: PersonDocument; inForce: boolean }[] {
+  if (!state.bank) return [];
+  const person = bankSim(state.bank).player;
+  return documentsOf(person).filter((d) => d.kind === 'passport').map((doc) => ({ doc, inForce: inForce(doc, state.now) }));
+}
+/** A passport of yours in force today, and still in force on `until` (a visit's end), if you hold one. */
+export function passportFor(state: GameState, until = state.now): PersonDocument | undefined {
+  return passports(state).find((p) => p.inForce && (p.doc.expiresAt === undefined || p.doc.expiresAt > until))?.doc;
+}
+
+// ---------------- entering and staying ----------------
+
+export type EntryRight =
+  | { kind: 'home'; why: string }
+  | { kind: 'free'; days?: number; within?: number; why: string }
+  | { kind: 'held'; why: string; until?: number }
+  | { kind: 'needs'; entry: Exclude<Entry, 'free'>; days?: number; why: string }
+  | { kind: 'unknown'; why: string };
+
+const ENTRY_WORDS: Record<Exclude<Entry, 'free'>, string> = { eta: 'an electronic travel authorization', evisa: 'an electronic visa', arrival: 'a visa issued on arrival', visa: 'a visa' };
+const ENTRY_ORDER: Entry[] = ['free', 'arrival', 'eta', 'evisa', 'visa'];
+
+function visitRule(passport: string, destination: string): Visit | 'home' | undefined {
+  if (nationality(passport) === nationality(destination)) return 'home';
+  const entry = VISITS.countries[destination];
+  if (!entry) return undefined;
+  const list: VisitList = 'group' in entry ? { passports: { ...VISITS.groups[entry.group].passports, ...(entry.passports ?? {}) }, others: VISITS.groups[entry.group].others } : entry;
+  return list.passports[passport] ?? list.passports[nationality(passport)] ?? list.others;
+}
+
+/** What entering `country` asks of you, by the best of your passports, or the visa you hold for it. */
+export function entryRight(state: GameState, country: string): EntryRight {
+  if (isCitizen(state, country)) return { kind: 'home', why: `You are a citizen of ${countryName(country)}.` };
+  const held = applications(state).find((a) => a.country === country && a.kind === 'visa' && a.stage === 'issued' && (a.expiresAt ?? Infinity) > state.now);
+  if (held) return { kind: 'held', why: `Your ${held.route} lets you in${held.expiresAt ? ` until ${dateKey(held.expiresAt, 'UTC')}` : ''}.`, until: held.expiresAt };
+  const rules = citizenships(state).map((n) => ({ n, r: visitRule(n, country) })).filter((x): x is { n: string; r: Visit | 'home' } => x.r !== undefined);
+  if (!rules.length) return { kind: 'unknown', why: `The game has no record of who may visit ${countryName(country)}.` };
+  if (rules.some((x) => x.r === 'home')) return { kind: 'home', why: `Your passport is ${countryName(country)}'s own.` };
+  const best = rules.map((x) => ({ n: x.n, r: x.r as Visit })).sort((a, b) => ENTRY_ORDER.indexOf(a.r.entry) - ENTRY_ORDER.indexOf(b.r.entry))[0];
+  if (best.r.entry === 'free') return { kind: 'free', days: best.r.days, within: best.r.within, why: `Your ${countryName(best.n)} passport lets you visit ${countryName(country)} without a visa${best.r.days ? `, for up to ${best.r.days} days${best.r.within ? ` in any ${best.r.within}` : ''}` : ''}.` };
+  return { kind: 'needs', entry: best.r.entry, days: best.r.days, why: `To visit ${countryName(country)} on your ${countryName(best.n)} passport you need ${ENTRY_WORDS[best.r.entry]}.` };
+}
+
+// ---------------- working ----------------
+
+export type WorkRight =
+  | { can: true; why: string; assumed?: true }
+  | { can: false; why: string; route: string | null; days: number | null; missing: string[] };
+
+function workRule(passport: string, country: string): WorkRule | 'home' | undefined {
+  if (nationality(passport) === nationality(country)) return 'home';
+  const rules = WORK.countries[country];
+  if (!rules) return undefined;
+  return rules.passports[passport] ?? (rules.groups ?? []).map((g) => WORK.groups[g]?.passports[passport]).find(Boolean) ?? rules.others;
+}
+
+/** Days you worked in `country` (a shoot day you were called to and there for), by day. */
+const workedDays = (state: GameState, country: string): string[] => state.papersWorked?.[country] ?? [];
+
+/** Whether you may do `activity` in `country` now, and why: citizenship, free movement, a short engagement, or what's missing. */
+export function workRight(state: GameState, country: string, activity: Activity = 'act'): WorkRight {
+  if (isCitizen(state, country)) return { can: true, why: `You are a citizen of ${countryName(country)}.` };
+  if (livesIn(state) === country) return { can: true, assumed: true, why: `You live in ${countryName(country)}: the game takes where your story is lived as where you may live and work. That is its assumption, not a checked permission.` };
+  const legacy = (state.permits ?? []).find((p) => p.country === country && p.status === 'granted' && (p.expiresAt ?? 0) > state.now);
+  if (legacy && activity === 'act') return { can: true, why: `Your ${legacy.route}, granted before November 14, 2026, lets you work in ${countryName(country)} until it expires.` };
+  const rules = citizenships(state).map((n) => ({ n, r: workRule(n, country) })).filter((x): x is { n: string; r: WorkRule | 'home' } => x.r !== undefined);
+  if (!rules.length) return { can: false, why: `The game has no record of who may work in ${countryName(country)}.`, route: null, days: null, missing: ['who may work there'] };
+  const free = rules.find((x) => x.r === 'home' || (x.r as WorkRule).right === 'free');
+  if (free) return { can: true, why: free.r === 'home' ? `Your passport is ${countryName(country)}'s own.` : `Your ${countryName(free.n)} passport gives you the right to live and work in ${countryName(country)}.` };
+  const r = rules[0].r as WorkRule;
+  const route = r.route ?? null;
+  // The records are what a performer needs: acting only. Directing or producing there needs a right to work generally.
+  if (activity !== 'act') return { can: false, why: `To work in ${countryName(country)} other than as a performer you need a general right to work there, which you don't have. The game's record covers performers: ${route ?? 'its route isn\'t recorded'}.`, route: null, days: null, missing: [`what ${ACTIVITY_WORDS[activity]} there needs`] };
+  if (r.days) {
+    const used = workedDays(state, country).filter((d) => !r.within || d >= dateKey(state.now - r.within * DAY, 'UTC')).length;
+    if (used < r.days) return { can: true, why: `A short engagement: ${countryName(country)} lets a performer work up to ${r.days} days${r.within ? ` in any ${r.within}` : ''} without ${route ?? 'a permit'}. You have used ${used}.` };
+  }
+  return { can: false, why: `To act in ${countryName(country)} you need ${route ?? 'a permit whose route isn\'t recorded'}${r.days ? `: the ${r.days} days a short engagement may be worked without it are used` : ''}.`, route, days: null, missing: permitMissing() };
+}
+
+/** What the records lack for any work permit route: its fee and how long a decision takes (none is recorded). */
+const permitMissing = () => ['the permit\'s fee', 'how long the decision takes'];
+
+/** Records a day worked in a country, for the short engagement's count. Called by the shoot when you're on set. */
+export function recordWorkDay(state: GameState, country: string): void {
+  const day = dateKey(state.now, 'UTC');
+  const list = ((state.papersWorked ??= {})[country] ??= []);
+  if (!list.includes(day)) list.push(day);
+}
+
+// ---------------- applications ----------------
+
+export interface PaperApplication {
+  id: string;
+  kind: 'visa';
+  country: string;
+  route: string;
+  stage: 'applied' | 'issued' | 'expired';
+  passportId: string;
+  fee: { minor: number; currency: string; paidUsdMinor: number };
+  appliedAt: number;
+  decideAt: number;
+  issuedAt?: number;
+  expiresAt?: number;
+}
+export const applications = (state: GameState): PaperApplication[] => state.paperApplications ?? [];
+
+/** The visitor visa the records give a fee and a time for, for your passport and `country`, or nothing. */
+function visaRule(state: GameState, country: string): { rule: VisaRule; passport: string } | undefined {
+  for (const n of citizenships(state)) {
+    const rule = VISAS[`${country}<${n}`];
+    if (rule) return { rule, passport: n };
+  }
+  return undefined;
+}
+
+export type ApplicationCheck =
+  | { ok: true; rule: VisaRule; needs: string[]; feeText: string }
+  | { ok: false; why: string; missing?: string[] };
+
+/** Whether you may apply for the visa `country` asks of you, what it needs, and what it costs; or exactly why not. */
+export function visaCheck(state: GameState, country: string): ApplicationCheck {
+  const e = entryRight(state, country);
+  if (e.kind !== 'needs') return { ok: false, why: e.kind === 'unknown' ? e.why : `You don't need a visa: ${e.why}` };
+  if (applications(state).some((a) => a.country === country && a.stage === 'applied')) return { ok: false, why: 'Your application is being decided.' };
+  const v = visaRule(state, country);
+  if (!v) return { ok: false, why: `${e.why} The records don't give its fee or how long a decision takes, so the game can't take an application.`, missing: ['the fee', 'how long the decision takes'] };
+  const passport = passportFor(state, state.now + v.rule.days * DAY);
+  if (!passport) return { ok: false, why: 'You need a passport in force until the decision, at least. Apply for one first.' };
+  return { ok: true, rule: v.rule, needs: [`Your ${passport.name ?? 'passport'}, in force until ${dateKey(passport.expiresAt ?? state.now, 'UTC')}`], feeText: `${v.rule.fee} ${v.rule.currency}` };
+}
+
+/** Apply for a visa: the fee paid from your bank now, at the day's reference rate; decided after its recorded days. */
+export function applyForVisa(state: GameState, country: string): PaperApplication {
+  const c = visaCheck(state, country);
+  if (!c.ok) throw new Error(c.why);
+  const passport = passportFor(state, state.now + c.rule.days * DAY)!;
+  const minor = Math.round(c.rule.fee * 100);
+  const usd = c.rule.currency === 'USD' ? minor : exchange(minor, c.rule.currency, 'USD');
+  if (usd === undefined) throw new Error(`No exchange rate for ${c.rule.currency} is recorded by today, so the fee can't be paid.`);
+  const id = newId(state, 'pa');
+  postToBank(state, 'papers', -usd / 100, `${c.rule.name}: The Fee`, `papers:${id}`);
+  const a: PaperApplication = {
+    id, kind: 'visa', country, route: c.rule.name, stage: 'applied', passportId: passport.id,
+    fee: { minor, currency: c.rule.currency, paidUsdMinor: usd }, appliedAt: state.now, decideAt: state.now + c.rule.days * DAY,
+  };
+  (state.paperApplications ??= []).push(a);
+  schedule(state, a.decideAt, 'papers-decision', { id }, { attention: 'notify', priority: 55, id: `papers-decision:${id}` });
+  addLog(state, `You applied for a ${c.rule.name} for ${countryName(country)} and paid its fee. It is decided in ${c.rule.days} days, as recorded.`, 'personal', { route: { view: 'papers' } });
+  return a;
+}
+
+registerHandler('papers-decision', (state, ev) => {
+  const a = applications(state).find((x) => x.id === ev.payload.id);
+  if (!a || a.stage !== 'applied') return { suppressInterrupt: true };
+  const v = visaRule(state, a.country);
+  // Granted: the game models no grounds for refusal, and says so rather than inventing a chance of one.
+  a.stage = 'issued';
+  a.issuedAt = state.now;
+  if (v?.rule.years) a.expiresAt = state.now + Math.round(v.rule.years * 365.25) * DAY;
+  else if (v?.rule.validDays) a.expiresAt = state.now + v.rule.validDays * DAY;
+  if (a.expiresAt) schedule(state, a.expiresAt, 'papers-expiry', { id: a.id }, { attention: 'notify', priority: 55, id: `papers-expiry:${a.id}` });
+  const message = `Your ${a.route} for ${countryName(a.country)} was issued.${a.expiresAt ? ` It's good until ${dateKey(a.expiresAt, 'UTC')}.` : ''}`;
+  addLog(state, message, 'personal', { route: { view: 'papers' } });
+  return { message };
+});
+
+registerHandler('papers-expiry', (state, ev) => {
+  const a = applications(state).find((x) => x.id === ev.payload.id);
+  if (!a || a.stage !== 'issued') return { suppressInterrupt: true };
+  a.stage = 'expired';
+  const message = `Your ${a.route} for ${countryName(a.country)} has expired. Apply again before your next visit.`;
+  addLog(state, message, 'personal', { route: { view: 'papers' } });
+  return { message };
+});
+
+// ---------------- what older saves hold ----------------
+
+/** A work permit from before November 14, 2026, kept until its date. */
 export interface WorkPermit {
   id: string; country: string; route: string;
   status: 'pending' | 'granted' | 'refused';
   appliedAt: number; decideAt: number; grantedAt?: number; expiresAt?: number;
 }
-/** A route the record gives no processing time for: the game's own figure. */
-export const PERMIT_DAYS_UNKNOWN = 30;
-/** How long a granted permit lasts here: one year, a simulation choice (real permits run for a stated job or period). */
-export const PERMIT_VALID_DAYS = 365;
-
-export type WorkRight = { can: true; why: string } | { can: false; why: string; route: string | null; days: number | null };
-
-/** Whether you may work in `country` now, and why: citizenship, a passport's treaty right, a permit, or what you'd need. */
-export function workRight(state: GameState, country: string): WorkRight {
-  const mine = state.character.nationalities ?? [];
-  if (mine.includes(country)) return { can: true, why: `You are a citizen of ${countryName(country)}.` };
-  // Where you live is where you may work: a simulation choice, said as one. Residence papers aren't modelled, and a
-  // story begun somewhere is a life settled there.
-  if (getPlace(state.character.livesIn ?? state.locationId).country === country) return { can: true, why: `You live in ${countryName(country)}: the game treats where you live as where you may work.` };
-  const rules = DATA.countries[country];
-  if (!rules) return { can: false, why: `The game has no record of who may work in ${countryName(country)}.`, route: null, days: null };
-  for (const n of mine) {
-    const own = rules.passports[n] ?? (rules.groups ?? []).map((g) => DATA.groups[g]?.passports[n]).find(Boolean);
-    if (own?.right === 'free') return { can: true, why: `Your ${countryName(n)} passport lets you work in ${countryName(country)}.` };
-  }
-  const p = permits(state).find((x) => x.country === country && x.status === 'granted' && (x.expiresAt ?? 0) > state.now);
-  if (p) return { can: true, why: `Your ${p.route} lets you work in ${countryName(country)} until it expires.` };
-  const r = rules.others;
-  if (r.right === 'free') return { can: true, why: `${countryName(country)} lets anyone work there.` };
-  return { can: false, why: `To work in ${countryName(country)} you need a permit: ${r.route ?? 'its route isn\'t recorded'}. Visiting isn't working.`, route: r.route ?? null, days: r.days ?? null };
-}
-
 export const permits = (state: GameState): WorkPermit[] => state.permits ?? [];
 
-/** Why you can't apply for a permit for `country` now, or null. */
+/** Why a work permit can't be applied for (always, now: no route's fee or decision time is recorded). */
 export function permitRefusal(state: GameState, country: string): string | null {
   const w = workRight(state, country);
   if (w.can) return w.why;
-  if (!w.route) return w.why;
-  if (permits(state).some((x) => x.country === country && x.status === 'pending')) return 'Your application is being decided.';
-  return null;
+  return `${w.why} The records don't give ${w.missing.join(' or ')}, so the game can't take an application.`;
+}
+export function applyForPermit(state: GameState, country: string): never {
+  throw new Error(permitRefusal(state, country) ?? 'You may already work there.');
 }
 
-/** Apply for the permit `country` asks of you. It is decided after its processing time; until then it lets you do nothing. */
-export function applyForPermit(state: GameState, country: string): WorkPermit {
-  const no = permitRefusal(state, country);
-  if (no) throw new Error(no);
-  const w = workRight(state, country) as Extract<WorkRight, { can: false }>;
-  const days = w.days ?? PERMIT_DAYS_UNKNOWN;
-  const p: WorkPermit = { id: newId(state, 'wp'), country, route: w.route!, status: 'pending', appliedAt: state.now, decideAt: state.now + days * DAY };
-  (state.permits ??= []).push(p);
-  schedule(state, p.decideAt, 'permit-decision', { id: p.id }, { attention: 'notify', priority: 55, id: `permit-decision:${p.id}` });
-  addLog(state, `You applied for a ${p.route} to work in ${countryName(country)}. It is decided in about ${days} days${w.days ? '' : ' (the game\'s figure: the route\'s time isn\'t recorded)'}.`, 'project', { route: { view: 'profile' } });
-  return p;
-}
-
+// A permit applied for before November 14, 2026 and still waiting: decided as it was promised, on its own terms.
 registerHandler('permit-decision', (state, ev) => {
   const p = permits(state).find((x) => x.id === ev.payload.id);
   if (!p || p.status !== 'pending') return { suppressInterrupt: true };
-  // Granted: the game models no grounds for refusal yet, and says so rather than inventing a chance of one.
   p.status = 'granted';
   p.grantedAt = state.now;
-  p.expiresAt = state.now + PERMIT_VALID_DAYS * DAY;
-  const message = `Your ${p.route} was granted: you may work in ${countryName(p.country)} for a year.`;
-  addLog(state, message, 'project', { route: { view: 'profile' } });
+  p.expiresAt = state.now + 365 * DAY; // the term it was applied for under, before that day
+  const message = `Your ${p.route} was granted: you may work in ${countryName(p.country)} for a year, as applied for.`;
+  addLog(state, message, 'project', { route: { view: 'papers' } });
   return { message };
 });

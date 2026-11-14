@@ -1,0 +1,151 @@
+{
+ "group": "ma",
+ "rules": [
+  {
+   "entry": "free",
+   "days": 90,
+   "passports": [
+    "AD",
+    "AE",
+    "AL",
+    "AR",
+    "AT",
+    "AU",
+    "AZ",
+    "BE",
+    "BF",
+    "BG",
+    "BH",
+    "BR",
+    "CA",
+    "CH",
+    "CL",
+    "CN",
+    "CO",
+    "CV",
+    "CY",
+    "CZ",
+    "DE",
+    "DK",
+    "DZ",
+    "EE",
+    "ES",
+    "FI",
+    "FR",
+    "GA",
+    "GB",
+    "GR",
+    "HR",
+    "HU",
+    "ID",
+    "IE",
+    "IS",
+    "IT",
+    "JP",
+    "KR",
+    "KW",
+    "LI",
+    "LT",
+    "LU",
+    "LV",
+    "MC",
+    "ML",
+    "MO",
+    "MT",
+    "MX",
+    "MY",
+    "NE",
+    "NL",
+    "NO",
+    "NZ",
+    "OM",
+    "PE",
+    "PH",
+    "PL",
+    "PT",
+    "QA",
+    "RO",
+    "RU",
+    "SA",
+    "SE",
+    "SG",
+    "SI",
+    "SK",
+    "SM",
+    "SN",
+    "TG",
+    "TN",
+    "TR",
+    "US"
+   ]
+  },
+  {
+   "entry": "free",
+   "days": 60,
+   "passports": [
+    "DO"
+   ]
+  },
+  {
+   "entry": "free",
+   "days": 30,
+   "passports": [
+    "HK",
+    "MV"
+   ]
+  },
+  {
+   "entry": "free",
+   "days": 30,
+   "within": 180,
+   "passports": [
+    "KZ"
+   ]
+  },
+  {
+   "entry": "eta",
+   "passports": [
+    "CG",
+    "EC",
+    "GH",
+    "GN"
+   ]
+  },
+  {
+   "entry": "evisa",
+   "passports": [
+    "BJ",
+    "BN",
+    "GT",
+    "IL",
+    "IN",
+    "JO",
+    "KH",
+    "LA",
+    "TH",
+    "VN"
+   ]
+  }
+ ],
+ "others": {
+  "entry": "visa"
+ },
+ "note": "Morocco's (kept by Morocco and the Moroccan-administered Western Sahara): nationals of the countries listed (the EU, EFTA and the Gulf among them) enter without a visa for 90 days, 60 (the Dominican Republic), 30 (Hong Kong, the Maldives; Kazakhstan in 180); nationals of the Congo, Ecuador, Ghana and Guinea need an Electronic Travel Authorisation (AEVM) beforehand; nationals of Benin, Brunei, Cambodia, Guatemala, India, Israel, Jordan, Laos, Thailand and Vietnam may apply for an e-Visa; everyone else needs a visa from a mission (or an e-Visa if holding a Schengen, Australian, Canadian, Irish, Japanese, New Zealand, UAE, UK or US visa or residence: not modelled). Algeria's exemption is read as the list has it. Read from Wikipedia's copy. Checked on 2026-11-03 against the Ministry of Foreign Affairs' own list, only as archived in June 2024 (the current page sits behind a firewall): it confirmed most exemptions held, Hong Kong's and the Maldives' 30 days and the Dominican Republic's 60, but it names Côte d'Ivoire as exempt, Mali as needing an AEVM, and not Albania, Azerbaijan or Cape Verde. The list predates the changes Wikipedia reports, so the current figures were kept.",
+ "sources": [
+  {
+   "url": "https://en.wikipedia.org/wiki/Visa_policy_of_Morocco",
+   "title": "Wikipedia, Visa policy of Morocco",
+   "read": "2026-11-03",
+   "kind": "secondary",
+   "quotes": "https://www.acces-maroc.ma/",
+   "said": "Visitors to Morocco must obtain a visa unless they are citizens from one of the visa-exempt countries, or citizens who may obtain an Electronic Travel Authorisation (AEVM), or citizens eligible for an e-Visa . ... Citizens of the following countries and territories may enter Morocco without a visa for the following period: 90 days All European Union member states All European Free Trade Association member states All Gulf Cooperation Council member states Albania Algeria Andorra Argentina Australia Azerbaijan Brazil Burkina Faso Canada Cape Verde Chile China Colombia Gabon Indonesia Japan Macau Malaysia Mali Mexico Monaco New Zealand Niger Peru Philippines Russia San Marino Senegal Singapore South Korea Togo Tunisia Turkey United Kingdom United States 60 days Dominican Republic 30 days Hong Kong Maldives 30 days within any 180 days Kazakhstan ... Citizens of the following countries do not require a visa but must obtain an AEVM in advance to enter Morocco. Congo Ecuador Ghana Guinea ... Citizens of the following countries holding ordinary passports may apply for an e-Visa without further document requirement: Benin Brunei Darussalam Cambodia Guatemala India Israel Jordan Laos Thailand Vietnam"
+  },
+  {
+   "url": "https://www.consulat.ma/fr/liste-des-pays-dont-les-ressortissants-sont-dispenses-du-visa-dentree-au-maroc",
+   "title": "Ministère des Affaires Étrangères (Maroc), consulat.ma: Liste des pays dont les ressortissants sont dispensés du visa d'entrée au Maroc (Common Crawl capture CC-MAIN-2024-26, 2024-06-14 12:22 GMT)",
+   "read": "2026-11-03",
+   "kind": "primary",
+   "said": "Liste des pays dont les ressortissants sont dispensés du visa d'entrée au Maroc ... Algérie Liechtenstein Allemagne Lituanie Autriche Luxembourg Australie Macao Arabie Saoudite Mali (Besoin d'une AEVM ) Argentine Malaisie (Pour un séjour ne dépassant pas 90 jours) Belgique Maldives (Pour un séjour ne dépassant pas 30 jours) Bahreïn Malte Brésil Mexique Bulgarie Niger Burkina-Faso Norvège Côte d'Ivoire Nouvelle Zélande Canada Oman Chili Portugal Chine Pays-Bas Chypre Philippines Colombie Pérou Congo (Brazzaville) (Besoin d'une AEVM ) Pologne Corée du Sud Porto-Rico Croatie Qatar Danemark Roumanie Dominicane (REP) (Pour un séjour de 60 jours, Renouvenable pour la méme periode,pendant une année) Russie (Fédération) Emirats Arabes-Unis Saint-Marin Espagne + Andorre Sénégal Estonie Singapour Etats-Unis d'Amérique Suisse Finlande Slovénie France + Monaco Slovaquie Gabon Suède Grande Bretagne Tchéquie (République) Grèce Tunisie Guinée (Conakry) (Besoin d'une AEVM ) Turquie Islande Togo Italie Irlande Indonésie Japon Hong-Kong (séjour limité à 30 jours) Hongrie (un séjour limité à 90 jours) Koweït Lettonie"
+  }
+ ]
+}

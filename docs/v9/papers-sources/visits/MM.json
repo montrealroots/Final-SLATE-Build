@@ -1,0 +1,153 @@
+{
+ "country": "MM",
+ "rules": [
+  {
+   "entry": "free",
+   "days": 30,
+   "passports": [
+    "BY",
+    "RU",
+    "SG",
+    "VN"
+   ]
+  },
+  {
+   "entry": "free",
+   "days": 14,
+   "passports": [
+    "BN",
+    "ID",
+    "KH",
+    "LA",
+    "MY",
+    "PH",
+    "TH"
+   ]
+  },
+  {
+   "entry": "arrival",
+   "days": 30,
+   "passports": [
+    "CN",
+    "HK",
+    "IN"
+   ]
+  },
+  {
+   "entry": "evisa",
+   "days": 28,
+   "passports": [
+    "AL",
+    "AR",
+    "AT",
+    "AU",
+    "BA",
+    "BD",
+    "BE",
+    "BG",
+    "BO",
+    "BR",
+    "BT",
+    "CA",
+    "CH",
+    "CI",
+    "CL",
+    "CM",
+    "CO",
+    "CR",
+    "CY",
+    "CZ",
+    "DE",
+    "DK",
+    "DZ",
+    "EC",
+    "EE",
+    "EG",
+    "ER",
+    "ES",
+    "FI",
+    "FJ",
+    "FR",
+    "GB",
+    "GE",
+    "GH",
+    "GN",
+    "GR",
+    "GT",
+    "HR",
+    "HU",
+    "IE",
+    "IL",
+    "IS",
+    "IT",
+    "JM",
+    "JO",
+    "JP",
+    "KE",
+    "KG",
+    "KP",
+    "KR",
+    "KW",
+    "KZ",
+    "LK",
+    "LT",
+    "LU",
+    "LV",
+    "MA",
+    "MC",
+    "MN",
+    "MO",
+    "MT",
+    "MU",
+    "MV",
+    "MX",
+    "NL",
+    "NO",
+    "NP",
+    "NZ",
+    "PA",
+    "PE",
+    "PK",
+    "PL",
+    "PT",
+    "QA",
+    "RO",
+    "RS",
+    "SA",
+    "SE",
+    "SI",
+    "SK",
+    "TR",
+    "TW",
+    "UA",
+    "UG",
+    "US",
+    "UY",
+    "UZ",
+    "VE",
+    "ZA"
+   ]
+  }
+ ],
+ "others": {
+  "entry": "visa"
+ },
+ "note": "Myanmar: Singapore's citizens enter without a visa for 30 days; Russia's, Belarus's and Vietnam's for 30 days and the rest of ASEAN's (Malaysia's since 1 October 2025) for 14, for tourism through the Yangon, Nay Pyi Taw or Mandalay airports. China, Hong Kong and India take a visa on arrival (30 days; Japan's, Macao's and Korea's arrangement ran to 21 October 2026 and has lapsed). The citizens of the 100 countries the Ministry of Immigration and Population lists, and of Taiwan, Hong Kong and Macao, may apply for a tourist e-Visa online (a stay of up to 28 days); everyone else needs a visa from a mission. Read on 2026-11-03 from the Ministry's own eVisa notice, which gives the e-Visa's list and its 28 days and corrected the file, which had held the e-Visa open to every other passport; its exemption list, dated 1 September 2022, predates the exemptions for Russia, Belarus and Malaysia that Wikipedia's copy records, so those are kept from Wikipedia, as are the visas on arrival, which the notice doesn't give.",
+ "sources": [
+  {
+   "url": "https://en.wikipedia.org/wiki/Visa_policy_of_Myanmar",
+   "title": "Wikipedia, Visa policy of Myanmar",
+   "read": "2026-11-03",
+   "kind": "secondary",
+   "quotes": "https://evisa.moip.gov.mm/",
+   "said": "Citizens of Singapore may enter Myanmar without a visa for both tourist and business purposes for a maximum stay of 30 days. ... 30 days Russia Belarus Vietnam 14 days Brunei Cambodia Indonesia Laos Malaysia Philippines Thailand ... Visas obtained on arrival are valid for a maximum stay of 30 days. China Hong Kong India Japan Macau South Korea ... T1 - From 30 August 2026 to 29 August 2027. T2 - From 11 March 2026 to 10 March 2027. T3 - From 21 October 2025 to 21 October 2026. ... 21 October 2025: Japan, Macau, South Korea ... allows a maximum stay of up to 28 days (for tourists)"
+  },
+  {
+   "url": "https://evisa.moip.gov.mm/notice/tourist",
+   "title": "Ministry of Immigration and Population, Myanmar eVisa, Notice to Tourist (rendered page)",
+   "read": "2026-11-03",
+   "kind": "primary",
+   "said": "Length of stay is (28) days from the date of arrival in Myanmar. ... Effective from 01 September 2022, ordinary passport holders from the following countries do not require a visa for tourist visits of up to Exemption Period if entering and departing from Yangon, Mandalay, or Naypyidaw International Airports. ... Brunei 14 days ... Vietnam 30 days Effective from 01 September 2022, ordinary passport holders of Singapore citizens do not require a visa for tourist visits of up to 30 days and you can enter and depart from all International Checkpoints. Ordinary passport holders from the following countries/ region, Chinese Taiwan, Hong Kong Special Administrative Region of China and Macao Special Administrative Region of China are eligible to apply Tourist Visa. No. Country Name ... 1. Albania ... 100. Vietnam"
+  }
+ ]
+}

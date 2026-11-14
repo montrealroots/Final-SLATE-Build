@@ -1,0 +1,21 @@
+{
+ "country": "YE",
+ "years": "none",
+ "renounce": null,
+ "lapses": false,
+ "note": "GLOBALCIT's Citizenship Law Dataset v3.0 (EUI, 2025), coding the law in force on 1 January 2024 (A06a No provision; A06b No provision; L05 No provision): no ordinary naturalisation by residence; a citizen keeps it on taking another. Reforms after that date are checked in the file's later sources, where a later source is given. Citizenship at birth is read from the same dataset's 2024 coding of modes A01a (descent, born in country: Generally applicable provision), A01b (descent, born abroad: Generally applicable provision), A02a (birth in country: No provision) and A02b (birth in country to a parent born there: Gender restriction: only if the father is also born in country), as its codebook (RSC/GLOBALCIT 2025/01, sections 3.2.1a to 3.2.2b) defines them: by birth in the territory only on the condition the dataset states; by descent from either parent, with no further limit on a child born abroad. Changes to the law at birth after 1 January 2024 weren't checked for this file. On 2026-11-03 the primary was read: قانون رقم (6) لسنة 1990م بشأن الجنسية اليمنية (with amendments noted to Law 24 of 2010), Ministry of Justice and Human Rights, Yemen, laws list https://www.moj.gov.ye/LawsM?page=4, item 30, download https://www.moj.gov.ye/LawsMD/30 (PDF, 9 pages; its text layer is in reversed visual order, read by OCR, ara). Every figure the file holds now rests on it, and the dataset is no longer cited. The law changed a figure the dataset gave: a child is Yemeni through the father (art. 3(a)); through a Yemeni mother only when born in Yemen and the father is stateless, of unknown nationality or not legally established (art. 3(b)-(c)), so descent is from the father, not either parent. Birth in the territory gives it only by presidential decree (art. 4(b)-(c)), restated from the law. The second pass read art. 5 as a ten-year naturalisation, but it is open only to an Arab or a Muslim foreigner who also has a competence the country needs (art. 5), and art. 4(e) asks Yemeni origin, so no one is naturalised on residence alone and the years stay none. A Yemeni emigrant keeps Yemen's nationality on taking another (art. 3(e)); and the law forbids stripping it from a Yemeni.",
+ "sources": [
+  {
+   "url": "https://www.moj.gov.ye/LawsMD/30",
+   "title": "قانون رقم (6) لسنة 1990م بشأن الجنسية اليمنية (with amendments noted to Law 24 of 2010), Ministry of Justice and Human Rights, Yemen, laws list https://www.moj.gov.ye/LawsM?page=4, item 30, download https://www.moj.gov.ye/LawsMD/30 (PDF, 9 pages; its text layer is in reversed visual order, read by OCR, ara)",
+   "read": "2026-11-03",
+   "kind": "primary",
+   "said": "(3) يتمتع بالجنسية اليمنية :- أ- من ولد لأب متمتع بهذه الجنسية. ب- من ولد في اليمن من أم تحمل هذه الجنسية وأب مجهول الجنسية أو لا جنسية له. ج- من ولد في اليمن من أم تحمل هذه الجنسية ولم تثبت نسبته إلى أبيه قانوناً. د- من ولد في اليمن من والدين مجهولين ... ه- من كان يحمل الجنسية اليمنية من المغتربين حين مغادرته أراضي الوطن ولم يتخل عن هذه الجنسية وفقاً للقانون وبناءً على طلب صريح منه ولو اكتسب جنسية البلاد التي يقطنها بمفروض قوانينها. ... (4) يجوز بقرار جمهوري بناءً على عرض الوزير منح الجنسية في أي من الحالات التالية:- ... ج- من ولد في اليمن لأب أجنبي ولد أيضاً فيه. ... (5) يجوز بقرار جمهوري بناءً على عرض الوزير منح الجنسية اليمنية للعربي وللأجنبي المسلم الذي لا تنطبق عليه أحكام المادة السابقة وذلك متى توافرت في شأنه الشروط الآتية :- 1- أن يكون بالغاً سن الرشد. 2- أن تكون إقامته العادية في الجمهورية بطريقة مشروعة لمدة عشر سنوات متتاليات. 3- أن يكون حسن السلوك ... 4- أن تكون له وسيلة مشروعة لكسب العيش. 5- أن يكون ملماً باللغة العربية."
+  }
+ ],
+ "atBirth": {
+  "soil": "conditional",
+  "soilIf": "Person is born in Yemen to a foreign father also born there, or to foreign parents and has lived there until majority, knows Arabic and asks within a year of majority; granted by presidential decree.",
+  "descent": "father"
+ }
+}

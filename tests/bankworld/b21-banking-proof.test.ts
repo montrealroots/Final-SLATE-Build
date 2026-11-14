@@ -107,7 +107,9 @@ describe('B1: a rate quoted as a yield earns that yield in a year, and a nominal
     const London = 'Europe/London';
     const saver = mine(sim, 'savings', 'gb-lloyds');
     expect(dateKey(saver.openedAt!, London)).toBe('2026-01-05');
-    setTo(sim, saver, saver.balance); // TEST SETUP: the fraction carried set aside
+    // SLATE: 1221 converted the starting euros at its fixed rate, £36,065; the dated record's rate gives more. Set to
+    // 1221's figure (TEST SETUP), so the interest this case checks is checked on the balance it was written for.
+    setTo(sim, saver, 36_065_00); // TEST SETUP: the fraction carried set aside
     setTo(sim, mine(sim, 'checking', 'gb-lloyds'), 1_000_000_00); // TEST SETUP: so nothing draws on the savings
     const held = saver.balance;
     expect(held).toBe(36_065_00);
@@ -155,7 +157,8 @@ describe('B1: a rate quoted as a yield earns that yield in a year, and a nominal
     const sim = abroad('ca-on-toronto', 'ca-rbc', 'b21-yield-rbc');
     const Toronto = 'America/Toronto';
     const saver = mine(sim, 'savings', 'ca-rbc');
-    setTo(sim, saver, saver.balance); // TEST SETUP: the fraction carried set aside
+    // SLATE: 1221's figure, its fixed rate's conversion of the starting euros (TEST SETUP; see the Lloyds case).
+    setTo(sim, saver, 62_543_00); // TEST SETUP: the fraction carried set aside
     setTo(sim, mine(sim, 'checking', 'ca-rbc'), 1_000_000_00); // TEST SETUP
     expect(saver.balance).toBe(62_543_00);
     sim.advanceTo(at(2026, 7, 1, 9, 0, Toronto));

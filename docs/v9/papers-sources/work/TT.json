@@ -1,0 +1,28 @@
+{
+ "country": "TT",
+ "group": "csme",
+ "others": {
+  "right": "permit",
+  "route": "Work Permit (Ministry of Homeland Security)",
+  "days": 30,
+  "within": 365
+ },
+ "note": "Trinidad and Tobago: a person entering to engage in gainful occupation for one period not exceeding thirty days in every twelve consecutive months need not apply for a work permit (the Ministry of Homeland Security's page, read 2026-11-03; taken as 30 within 365), and the Housing Minister told the Senate the non-national declares it to the immigration officer on entry; beyond that the work permit, now the Ministry of Homeland Security's (the route named the Ministry of National Security until 2026-11-03, when its site redirected to the new ministry's). CARICOM artistes and musicians of the participating states work on the Skills Certificate (the csme list), which wasn't read on a primary, so the entry stays secondary.",
+ "sources": [
+  {
+   "url": "https://stabroeknews.com/?p=497963",
+   "title": "Stabroek News (from the Trinidad Guardian), Non-nationals may work up to 30 days per year without permit in Trinidad",
+   "read": "2026-11-03",
+   "said": "Non-nationals can come into this country – as long as they declare to the Immigration officer – and they can work without a work permit for 30 days. They can do so for once in any one year.",
+   "kind": "secondary",
+   "quotes": "https://www.ttconnect.gov.tt/"
+  },
+  {
+   "url": "https://homelandsecurity.gov.tt/services/work-permit/",
+   "title": "Ministry of Homeland Security (Trinidad and Tobago), Services: Work Permits",
+   "read": "2026-11-03",
+   "said": "This service is applicable to any non-national of Trinidad and Tobago who is seeking employment in Trinidad and Tobago, whether for gain or not, and is desirous of obtaining a work permit. A person entering Trinidad and Tobago to engage in gainful occupation for one period not exceeding thirty days in every twelve consecutive months, need not apply for a work permit.",
+   "kind": "primary"
+  }
+ ]
+}

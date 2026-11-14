@@ -1,0 +1,20 @@
+{
+ "country": "RW",
+ "years": 15,
+ "renounce": false,
+ "lapses": false,
+ "note": "GLOBALCIT's Citizenship Law Dataset v3.0 (EUI, 2025), coding the law in force on 1 January 2024 (A06a RWA 16; A06b RWA 16; L05 No provision): ordinary naturalisation after 15 years' residence; no renunciation of other citizenships required; a citizen keeps it on taking another. Reforms after that date are checked in the file's later sources, where a later source is given. Citizenship at birth is read from the same dataset's 2024 coding of modes A01a (descent, born in country: Generally applicable provision), A01b (descent, born abroad: Generally applicable provision), A02a (birth in country: No provision) and A02b (birth in country to a parent born there: No provision), as its codebook (RSC/GLOBALCIT 2025/01, sections 3.2.1a to 3.2.2b) defines them: not by birth in the territory alone (provisions for foundlings and children otherwise stateless, modes A03a and A03b, aren't held by the form); by descent from either parent, with no further limit on a child born abroad. Changes to the law at birth after 1 January 2024 weren't checked for this file. On 2026-11-03 the primary was read: Organic Law N° 002/2021.OL of 16/07/2021 governing Rwandan nationality, Official Gazette n° Special of 28/07/2021 (English column), Directorate General of Immigration and Emigration, arts. 2(7), 9, 16, 45-46. Every figure the file holds now rests on it, and the dataset is no longer cited. Birth in Rwanda to legally resident foreigners gives only a right to apply at majority (art. 9).",
+ "sources": [
+  {
+   "url": "https://www.migration.gov.rw/fileadmin/user_upload/pdf_files/og_special_of_28.07.2021_ubwenegihugu_nyarwanda.pdf",
+   "title": "Organic Law N° 002/2021.OL of 16/07/2021 governing Rwandan nationality, Official Gazette n° Special of 28/07/2021 (English column), Directorate General of Immigration and Emigration, arts. 2(7), 9, 16, 45-46",
+   "read": "2026-11-03",
+   "kind": "primary",
+   "said": "7º Rwandan nationality by origin: Rwandan nationality resulting from being born to at least one parent who is a Rwandan national by origin; ... Article 9: Conditions for applying for Rwandan nationality by acquisition on grounds of birth on the territory of Rwanda ... 1° to have been born to foreigners who were legally residing in Rwanda at the time of his or her birth; 2° to have the age of majority by the date of application; ... Article 16: Conditions for applying for Rwandan nationality by acquisition on grounds of residing in Rwanda ... 1 º to have legally resided and physically lived on the territory of Rwanda for at least fifteen (15) years on the date of application; ... Article 45: Definition of dual nationality Dual nationality means a status in which a person concurrently holds Rwandan nationality and the nationality of one or multiple States. Article 46: Declaration of dual nationality A Rwandan national with dual nationality declares that dual nationality within three (3) months as of the date on which he or she acquired another nationality."
+  }
+ ],
+ "atBirth": {
+  "soil": "none",
+  "descent": "either parent"
+ }
+}

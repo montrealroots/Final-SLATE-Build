@@ -1,0 +1,41 @@
+{
+ "country": "CR",
+ "office": "the Dirección General de Migración y Extranjería (DGME)",
+ "currency": "USD",
+ "routes": [
+  {
+   "id": "home",
+   "where": "home",
+   "speed": "standard",
+   "within": null,
+   "label": "from the DGME"
+  }
+ ],
+ "passports": [
+  {
+   "for": "any",
+   "validYears": null,
+   "pay": {
+    "home": null
+   }
+  }
+ ],
+ "note": "The biometric passport costs $45 for the document (article 251 of the Ley General de Migración y Extranjería) and $30 of the tax under its article 252, plus ¢250 in stamps under the National Parks Service Act, as the DGME explained to La Nación in March 2022. The fee is in two currencies, so it isn't summed and is left unpaid. Validity, processing time, any handling charge and the fees abroad are leads; the DGME's site answers this client with 403. Ley 8764 itself (SINALEVI, the version in force, read 2026-11-03) sets the $30 under article 252, payable in colones at the Central Bank's reference selling rate; article 251 lets the DGME charge the document's cost without stating it, so the $45 stays La Nación's, and the Parks Act's ¢250 wasn't read.",
+ "sources": [
+  {
+   "kind": "secondary",
+   "url": "https://www.nacion.com/el-pais/servicios/migracion-explica-por-que-subio-precio-de/H3J2ZWJFUVC4VODFVYIB562TCE/story/",
+   "quotes": "https://www.migracion.go.cr/",
+   "title": "La Nación, Migración explica por qué subió precio de pasaporte (8 March 2022)",
+   "read": "2026-11-03",
+   "said": "Para obtener el nuevo pasaporte costarricense con tecnología biométrica hay que cancelar $75 más ¢250 por timbres. ... el precio del documento se estableció en $45 conforme al artículo 251 de la Ley General de Migración y Extranjería ... A ese monto (al igual que con el pasaporte anterior) hay que agregar $30 del impuesto que ordena el artículo 252 de la misma normativa. ... Además, se cobran ¢250 por timbres con base en el artículo 7 de la Ley de Creación del Servicio de Parques Nacionales"
+  },
+  {
+   "kind": "primary",
+   "url": "https://sinalevi.go.cr/ResultadosNormativa/Informacion?param1=66139&param2=&param3=1&param4=",
+   "title": "Procuraduría General de la República, SINALEVI (Sistema Nacional de Legislación Vigente), Ley 8764, Ley General de Migración y Extranjería, texto completo, versión 19 de 19 (vigente)",
+   "read": "2026-11-03",
+   "said": "ARTÍCULO 251.- La Dirección General podrá cobrar el costo de los documentos y accesorios que extienda tanto a nivel nacional como consular. Los fondos integrarán el Fondo Especial Migratorio establecido en la presente Ley y se utilizarán en la compra de materiales y equipo para la confección de dichos documentos y accesorios. ARTÍCULO 252.- Los nacionales que soliciten pasaporte o salvoconducto, así como las personas extranjeras que requieran cédula de extranjería, deberán cancelar a favor del Estado la suma de treinta dólares en moneda de los Estados Unidos de América (US$30,00), o su equivalente en colones al tipo de cambio de referencia “venta” que diariamente calcula y publica el Banco Central de Costa Rica."
+  }
+ ]
+}

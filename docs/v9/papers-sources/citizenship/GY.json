@@ -1,0 +1,28 @@
+{
+ "country": "GY",
+ "years": 6,
+ "renounce": false,
+ "lapses": true,
+ "note": "GLOBALCIT's Citizenship Law Dataset v3.0 (EUI, 2025), coding the law in force on 1 January 2024 (A06a Const 48(1)(a), GUY 9,  Schedule 1, 2; A06b Const 48(1)(a), GUY 9,  Schedule 1, 2; L05 Const 46(1)): ordinary naturalisation after 6 years' residence; no renunciation of other citizenships required; a citizen loses the citizenship on voluntarily taking another. Reforms after that date are checked in the file's later sources, where a later source is given. Citizenship at birth is read from the same dataset's 2024 coding of modes A01a (descent, born in country: No provision), A01b (descent, born abroad: Generational transmission restriction: conditional on birthplace/place of residence /mode under which parent acquired citizenship), A02a (birth in country: Generally applicable provision) and A02b (birth in country to a parent born there: No provision), as its codebook (RSC/GLOBALCIT 2025/01, sections 3.2.1a to 3.2.2b) defines them: by birth in the territory unconditionally; by descent from either parent, a child born abroad on the limit the dataset states (the dataset codes no separate descent rule for a child born in the country, birth there giving it; the parent's sex is read from mode A01b). Changes to the law at birth after 1 January 2024 weren't checked for this file. On 2026-11-03 the primary was read: Laws of Guyana, Guyana Citizenship Act, Cap. 14:01 (L.R.O. 1/2012, Ministry of Legal Affairs), Second Schedule para. 1; Constitution of the Co-operative Republic of Guyana, Cap. 1:01 (L.R.O. 1/2012, Parliament of Guyana), arts. 43, 44, 46(1). Every figure the file holds now rests on it, and the dataset is no longer cited. Art. 44 states only the first of the dataset's two limits abroad; the second (a citizen parent also born abroad) isn't in the Constitution and was dropped. Loss on taking another citizenship is by the President's order (art. 46(1)), not automatic; the file holds it as a loss.",
+ "sources": [
+  {
+   "url": "https://mola.gov.gy/laws/Volume%205%20Cap.%2012.22%20-%2017.021696970015.pdf",
+   "title": "Laws of Guyana, Guyana Citizenship Act, Cap. 14:01 (L.R.O. 1/2012, Ministry of Legal Affairs), Second Schedule para. 1",
+   "read": "2026-11-03",
+   "kind": "primary",
+   "said": "1. Subject to paragraph 2 the qualifications for naturalisation of an alien who applies therefor are— (a) that he has resided in Guyana throughout the period of twelve months immediately preceding the date of the application; (b) that during the seven years immediately preceding the said period of twelve months he has resided in Guyana for periods amounting in the aggregate to not less than five years; (c) that he is of good character; and (d) that he intends in the event of a certificate being granted to him to reside in Guyana."
+  },
+  {
+   "url": "https://parliament.gov.gy/Constitution%20of%20the%20Cooperatiive%20Republic%20of%20Guyana.pdf",
+   "title": "Constitution of the Co-operative Republic of Guyana, Cap. 1:01 (L.R.O. 1/2012, Parliament of Guyana), arts. 43, 44, 46(1)",
+   "read": "2026-11-03",
+   "kind": "primary",
+   "said": "43. Every person born in Guyana after the commencement of this Constitution shall become a citizen of Guyana at the date of his or her birth: Provided that a person shall not become a citizen of Guyana by virtue of this article if at the time of his or her birth – (a) his or her father or his or her mother possesses such immunity from suit and legal process as is accorded to an envoy of a foreign sovereign power accredited to Guyana and neither of them is a citizen of Guyana; or (b) his or her father or his or her mother is an enemy alien and the birth occurs in a place then under occupation by the enemy. 44. A person born outside Guyana after the commencement of this Constitution shall become a citizen of Guyana at the date of his or her birth if at that date his or her father or his or her mother is a citizen of Guyana otherwise than by virtue of this article. ... 46. (1) If the President of Guyana is satisfied that any citizen of Guyana has any time after 25th May 1966, acquired by registration, naturalisation or any other or other voluntary and formal act (other than marriage) the citizenship of any country other than Guyana, the President may by order deprive that person of his or her citizenship."
+  }
+ ],
+ "atBirth": {
+  "soil": "unconditional",
+  "descent": "either parent",
+  "descentAbroad": "Person is born abroad to a father or mother who is a citizen of Guyana otherwise than by descent."
+ }
+}

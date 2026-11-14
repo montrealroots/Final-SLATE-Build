@@ -1,0 +1,22 @@
+{
+ "country": "MC",
+ "group": "eu1806",
+ "note": "Monaco, though outside the EU and not a Schengen signatory, is administered as part of the Schengen Area through France (Convention of 1963): a visitor meets the EU's common list (the eu1806 list). Checked on 2026-11-03 against the Government's own page (a Common Crawl capture), which calls Monaco a gateway of the Schengen Area; the 1963 convention wasn't reached.",
+ "sources": [
+  {
+   "url": "https://en.wikipedia.org/wiki/Schengen_Area",
+   "title": "Wikipedia, Schengen Area: territories and European microstates",
+   "read": "2026-11-03",
+   "kind": "secondary",
+   "quotes": "https://home-affairs.ec.europa.eu/policies/schengen-borders-and-visa/schengen-area_en",
+   "said": "Although Monaco is not an official member of the European Union or a formal signatory to the Schengen Agreement, its territory is administered as an integral part of the Schengen Area."
+  },
+  {
+   "url": "https://www.gouv.mc/action-gouvernementale/conforter-la-situation-de-monaco-a-l-international/entretenir-les-relations-avec-l-union-europeenne",
+   "title": "Gouvernement Princier de Monaco, Entretenir les relations avec l’Union européenne — Common Crawl CC-MAIN-2026-43 capture of 2026-10-07",
+   "read": "2026-11-03",
+   "kind": "primary",
+   "said": "Seul Etat tiers à être intégré au territoire douanier européen, porte d’entrée de l’Espace Schengen et membre de la zone euro, la Principauté de Monaco entretient des liens multiples avec l’Union européenne."
+  }
+ ]
+}

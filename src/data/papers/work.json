@@ -1,0 +1,8214 @@
+{
+ "groups": {
+  "au": {
+   "passports": {
+    "NZ": {
+     "right": "free"
+    }
+   },
+   "others": {
+    "right": "permit",
+    "route": "Temporary Activity visa (subclass 408), Entertainment Activities stream"
+   }
+  },
+  "csme": {
+   "passports": {
+    "AG": {
+     "right": "permit",
+     "route": "CARICOM Skills Certificate"
+    },
+    "BB": {
+     "right": "permit",
+     "route": "CARICOM Skills Certificate"
+    },
+    "BZ": {
+     "right": "permit",
+     "route": "CARICOM Skills Certificate"
+    },
+    "DM": {
+     "right": "permit",
+     "route": "CARICOM Skills Certificate"
+    },
+    "GD": {
+     "right": "permit",
+     "route": "CARICOM Skills Certificate"
+    },
+    "GY": {
+     "right": "permit",
+     "route": "CARICOM Skills Certificate"
+    },
+    "JM": {
+     "right": "permit",
+     "route": "CARICOM Skills Certificate"
+    },
+    "KN": {
+     "right": "permit",
+     "route": "CARICOM Skills Certificate"
+    },
+    "LC": {
+     "right": "permit",
+     "route": "CARICOM Skills Certificate"
+    },
+    "VC": {
+     "right": "permit",
+     "route": "CARICOM Skills Certificate"
+    },
+    "SR": {
+     "right": "permit",
+     "route": "CARICOM Skills Certificate"
+    },
+    "TT": {
+     "right": "permit",
+     "route": "CARICOM Skills Certificate"
+    }
+   }
+  },
+  "eaeu": {
+   "passports": {
+    "AM": {
+     "right": "free"
+    },
+    "BY": {
+     "right": "free"
+    },
+    "KZ": {
+     "right": "free"
+    },
+    "KG": {
+     "right": "free"
+    },
+    "RU": {
+     "right": "free"
+    }
+   }
+  },
+  "ecowas": {
+   "passports": {
+    "BJ": {
+     "right": "free"
+    },
+    "CV": {
+     "right": "free"
+    },
+    "CI": {
+     "right": "free"
+    },
+    "GM": {
+     "right": "free"
+    },
+    "GH": {
+     "right": "free"
+    },
+    "GN": {
+     "right": "free"
+    },
+    "GW": {
+     "right": "free"
+    },
+    "LR": {
+     "right": "free"
+    },
+    "NG": {
+     "right": "free"
+    },
+    "SN": {
+     "right": "free"
+    },
+    "SL": {
+     "right": "free"
+    },
+    "TG": {
+     "right": "free"
+    }
+   }
+  },
+  "eea": {
+   "passports": {
+    "AT": {
+     "right": "free"
+    },
+    "BE": {
+     "right": "free"
+    },
+    "BG": {
+     "right": "free"
+    },
+    "CH": {
+     "right": "free"
+    },
+    "CY": {
+     "right": "free"
+    },
+    "CZ": {
+     "right": "free"
+    },
+    "DE": {
+     "right": "free"
+    },
+    "DK": {
+     "right": "free"
+    },
+    "EE": {
+     "right": "free"
+    },
+    "ES": {
+     "right": "free"
+    },
+    "FI": {
+     "right": "free"
+    },
+    "FR": {
+     "right": "free"
+    },
+    "GR": {
+     "right": "free"
+    },
+    "HR": {
+     "right": "free"
+    },
+    "HU": {
+     "right": "free"
+    },
+    "IE": {
+     "right": "free"
+    },
+    "IS": {
+     "right": "free"
+    },
+    "IT": {
+     "right": "free"
+    },
+    "LI": {
+     "right": "free"
+    },
+    "LT": {
+     "right": "free"
+    },
+    "LU": {
+     "right": "free"
+    },
+    "LV": {
+     "right": "free"
+    },
+    "MT": {
+     "right": "free"
+    },
+    "NL": {
+     "right": "free"
+    },
+    "NO": {
+     "right": "free"
+    },
+    "PL": {
+     "right": "free"
+    },
+    "PT": {
+     "right": "free"
+    },
+    "RO": {
+     "right": "free"
+    },
+    "SE": {
+     "right": "free"
+    },
+    "SI": {
+     "right": "free"
+    },
+    "SK": {
+     "right": "free"
+    }
+   }
+  },
+  "oecs": {
+   "passports": {
+    "AG": {
+     "right": "free"
+    },
+    "DM": {
+     "right": "free"
+    },
+    "GD": {
+     "right": "free"
+    },
+    "KN": {
+     "right": "free"
+    },
+    "LC": {
+     "right": "free"
+    },
+    "VC": {
+     "right": "free"
+    },
+    "MS": {
+     "right": "free"
+    }
+   }
+  },
+  "us": {
+   "passports": {
+    "FM": {
+     "right": "free"
+    },
+    "MH": {
+     "right": "free"
+    },
+    "PW": {
+     "right": "free"
+    }
+   },
+   "others": {
+    "right": "permit",
+    "route": "O-1 (extraordinary ability in the arts, or extraordinary achievement in motion pictures or television)"
+   }
+  }
+ },
+ "countries": {
+  "AD": {
+   "passports": {},
+   "others": {
+    "right": "permit",
+    "route": "Autorització de residència i treball",
+    "days": 30,
+    "within": 365
+   }
+  },
+  "AE": {
+   "passports": {
+    "BH": {
+     "right": "permit",
+     "route": "UAE/GCC national work permit"
+    },
+    "KW": {
+     "right": "permit",
+     "route": "UAE/GCC national work permit"
+    },
+    "OM": {
+     "right": "permit",
+     "route": "UAE/GCC national work permit"
+    },
+    "QA": {
+     "right": "permit",
+     "route": "UAE/GCC national work permit"
+    },
+    "SA": {
+     "right": "permit",
+     "route": "UAE/GCC national work permit"
+    }
+   },
+   "others": {
+    "right": "permit",
+    "route": "Mission work permit"
+   }
+  },
+  "AG": {
+   "groups": [
+    "oecs",
+    "csme"
+   ],
+   "passports": {
+    "AG": {
+     "right": "free"
+    },
+    "BB": {
+     "right": "permit",
+     "route": "CARICOM Skills Certificate"
+    },
+    "BZ": {
+     "right": "permit",
+     "route": "CARICOM Skills Certificate"
+    },
+    "DM": {
+     "right": "free"
+    },
+    "GD": {
+     "right": "free"
+    },
+    "GY": {
+     "right": "permit",
+     "route": "CARICOM Skills Certificate"
+    },
+    "JM": {
+     "right": "permit",
+     "route": "CARICOM Skills Certificate"
+    },
+    "KN": {
+     "right": "free"
+    },
+    "LC": {
+     "right": "free"
+    },
+    "VC": {
+     "right": "free"
+    },
+    "SR": {
+     "right": "permit",
+     "route": "CARICOM Skills Certificate"
+    },
+    "TT": {
+     "right": "permit",
+     "route": "CARICOM Skills Certificate"
+    },
+    "MS": {
+     "right": "free"
+    }
+   },
+   "others": {
+    "right": "permit",
+    "route": "Work permit (Labour Code, Work Permits Division)"
+   }
+  },
+  "AI": {
+   "passports": {
+    "GB": {
+     "right": "permit",
+     "route": "Work permit (general or temporary) under the Labour (Relations) Act, R.S.A. c. L7, Part 11"
+    },
+    "BM": {
+     "right": "permit",
+     "route": "Work permit (general or temporary) under the Labour (Relations) Act, R.S.A. c. L7, Part 11"
+    },
+    "FK": {
+     "right": "permit",
+     "route": "Work permit (general or temporary) under the Labour (Relations) Act, R.S.A. c. L7, Part 11"
+    },
+    "GG": {
+     "right": "permit",
+     "route": "Work permit (general or temporary) under the Labour (Relations) Act, R.S.A. c. L7, Part 11"
+    },
+    "GI": {
+     "right": "permit",
+     "route": "Work permit (general or temporary) under the Labour (Relations) Act, R.S.A. c. L7, Part 11"
+    },
+    "GS": {
+     "right": "permit",
+     "route": "Work permit (general or temporary) under the Labour (Relations) Act, R.S.A. c. L7, Part 11"
+    },
+    "IM": {
+     "right": "permit",
+     "route": "Work permit (general or temporary) under the Labour (Relations) Act, R.S.A. c. L7, Part 11"
+    },
+    "IO": {
+     "right": "permit",
+     "route": "Work permit (general or temporary) under the Labour (Relations) Act, R.S.A. c. L7, Part 11"
+    },
+    "JE": {
+     "right": "permit",
+     "route": "Work permit (general or temporary) under the Labour (Relations) Act, R.S.A. c. L7, Part 11"
+    },
+    "KY": {
+     "right": "permit",
+     "route": "Work permit (general or temporary) under the Labour (Relations) Act, R.S.A. c. L7, Part 11"
+    },
+    "MS": {
+     "right": "permit",
+     "route": "Work permit (general or temporary) under the Labour (Relations) Act, R.S.A. c. L7, Part 11"
+    },
+    "PN": {
+     "right": "permit",
+     "route": "Work permit (general or temporary) under the Labour (Relations) Act, R.S.A. c. L7, Part 11"
+    },
+    "SH": {
+     "right": "permit",
+     "route": "Work permit (general or temporary) under the Labour (Relations) Act, R.S.A. c. L7, Part 11"
+    },
+    "TC": {
+     "right": "permit",
+     "route": "Work permit (general or temporary) under the Labour (Relations) Act, R.S.A. c. L7, Part 11"
+    },
+    "VG": {
+     "right": "permit",
+     "route": "Work permit (general or temporary) under the Labour (Relations) Act, R.S.A. c. L7, Part 11"
+    }
+   },
+   "others": {
+    "right": "permit",
+    "route": "Work permit (general or temporary) under the Labour (Relations) Act, R.S.A. c. L7, Part 11"
+   }
+  },
+  "AL": {
+   "groups": [
+    "eea"
+   ],
+   "passports": {
+    "AT": {
+     "right": "free"
+    },
+    "BE": {
+     "right": "free"
+    },
+    "BG": {
+     "right": "free"
+    },
+    "CH": {
+     "right": "free"
+    },
+    "CY": {
+     "right": "free"
+    },
+    "CZ": {
+     "right": "free"
+    },
+    "DE": {
+     "right": "free"
+    },
+    "DK": {
+     "right": "free"
+    },
+    "EE": {
+     "right": "free"
+    },
+    "ES": {
+     "right": "free"
+    },
+    "FI": {
+     "right": "free"
+    },
+    "FR": {
+     "right": "free"
+    },
+    "GR": {
+     "right": "free"
+    },
+    "HR": {
+     "right": "free"
+    },
+    "HU": {
+     "right": "free"
+    },
+    "IE": {
+     "right": "free"
+    },
+    "IS": {
+     "right": "free"
+    },
+    "IT": {
+     "right": "free"
+    },
+    "LI": {
+     "right": "free"
+    },
+    "LT": {
+     "right": "free"
+    },
+    "LU": {
+     "right": "free"
+    },
+    "LV": {
+     "right": "free"
+    },
+    "MT": {
+     "right": "free"
+    },
+    "NL": {
+     "right": "free"
+    },
+    "NO": {
+     "right": "free"
+    },
+    "PL": {
+     "right": "free"
+    },
+    "PT": {
+     "right": "free"
+    },
+    "RO": {
+     "right": "free"
+    },
+    "SE": {
+     "right": "free"
+    },
+    "SI": {
+     "right": "free"
+    },
+    "SK": {
+     "right": "free"
+    },
+    "US": {
+     "right": "free"
+    },
+    "BA": {
+     "right": "free"
+    },
+    "ME": {
+     "right": "free"
+    },
+    "XK": {
+     "right": "free"
+    },
+    "RS": {
+     "right": "free"
+    },
+    "MK": {
+     "right": "free"
+    }
+   },
+   "others": {
+    "right": "permit",
+    "route": "Leje unike për kategori të veçanta"
+   }
+  },
+  "AM": {
+   "groups": [
+    "eaeu"
+   ],
+   "passports": {
+    "AM": {
+     "right": "free"
+    },
+    "BY": {
+     "right": "free"
+    },
+    "KZ": {
+     "right": "free"
+    },
+    "KG": {
+     "right": "free"
+    },
+    "RU": {
+     "right": "free"
+    }
+   },
+   "others": {
+    "right": "free"
+   }
+  },
+  "AO": {
+   "passports": {},
+   "others": {
+    "right": "permit",
+    "route": "Visto de trabalho"
+   }
+  },
+  "AR": {
+   "passports": {},
+   "others": {
+    "right": "permit",
+    "route": "Residencia temporaria – artistas y deportistas (artículo 23 inciso f, Ley 25.871), on a Permiso de Ingreso"
+   }
+  },
+  "AS": {
+   "passports": {
+    "US": {
+     "right": "free"
+    }
+   },
+   "others": {
+    "right": "permit",
+    "route": "Written approval of the Immigration Board"
+   }
+  },
+  "AT": {
+   "groups": [
+    "eea"
+   ],
+   "passports": {
+    "AT": {
+     "right": "free"
+    },
+    "BE": {
+     "right": "free"
+    },
+    "BG": {
+     "right": "free"
+    },
+    "CH": {
+     "right": "free"
+    },
+    "CY": {
+     "right": "free"
+    },
+    "CZ": {
+     "right": "free"
+    },
+    "DE": {
+     "right": "free"
+    },
+    "DK": {
+     "right": "free"
+    },
+    "EE": {
+     "right": "free"
+    },
+    "ES": {
+     "right": "free"
+    },
+    "FI": {
+     "right": "free"
+    },
+    "FR": {
+     "right": "free"
+    },
+    "GR": {
+     "right": "free"
+    },
+    "HR": {
+     "right": "free"
+    },
+    "HU": {
+     "right": "free"
+    },
+    "IE": {
+     "right": "free"
+    },
+    "IS": {
+     "right": "free"
+    },
+    "IT": {
+     "right": "free"
+    },
+    "LI": {
+     "right": "free"
+    },
+    "LT": {
+     "right": "free"
+    },
+    "LU": {
+     "right": "free"
+    },
+    "LV": {
+     "right": "free"
+    },
+    "MT": {
+     "right": "free"
+    },
+    "NL": {
+     "right": "free"
+    },
+    "NO": {
+     "right": "free"
+    },
+    "PL": {
+     "right": "free"
+    },
+    "PT": {
+     "right": "free"
+    },
+    "RO": {
+     "right": "free"
+    },
+    "SE": {
+     "right": "free"
+    },
+    "SI": {
+     "right": "free"
+    },
+    "SK": {
+     "right": "free"
+    }
+   },
+   "others": {
+    "right": "permit",
+    "route": "Beschäftigungsbewilligung für Künstler (AMS, up to 6 months); beyond half a year, the « Niederlassungsbewilligung – Künstler »",
+    "days": 56
+   }
+  },
+  "AU": {
+   "groups": [
+    "au"
+   ],
+   "passports": {
+    "NZ": {
+     "right": "free"
+    }
+   },
+   "others": {
+    "right": "permit",
+    "route": "Temporary Activity visa (subclass 408), Entertainment Activities stream"
+   }
+  },
+  "AW": {
+   "passports": {
+    "NL": {
+     "right": "permit",
+     "route": "Vergunning tot tijdelijk verblijf met toestemming om arbeid te verrichten"
+    },
+    "BQ": {
+     "right": "permit",
+     "route": "Vergunning tot tijdelijk verblijf met toestemming om arbeid te verrichten"
+    },
+    "CW": {
+     "right": "permit",
+     "route": "Vergunning tot tijdelijk verblijf met toestemming om arbeid te verrichten"
+    },
+    "SX": {
+     "right": "permit",
+     "route": "Vergunning tot tijdelijk verblijf met toestemming om arbeid te verrichten"
+    }
+   },
+   "others": {
+    "right": "permit",
+    "route": "Vergunning tot tijdelijk verblijf met toestemming om arbeid te verrichten"
+   }
+  },
+  "AX": {
+   "groups": [
+    "eea"
+   ],
+   "passports": {
+    "AT": {
+     "right": "free"
+    },
+    "BE": {
+     "right": "free"
+    },
+    "BG": {
+     "right": "free"
+    },
+    "CH": {
+     "right": "free"
+    },
+    "CY": {
+     "right": "free"
+    },
+    "CZ": {
+     "right": "free"
+    },
+    "DE": {
+     "right": "free"
+    },
+    "DK": {
+     "right": "free"
+    },
+    "EE": {
+     "right": "free"
+    },
+    "ES": {
+     "right": "free"
+    },
+    "FI": {
+     "right": "free"
+    },
+    "FR": {
+     "right": "free"
+    },
+    "GR": {
+     "right": "free"
+    },
+    "HR": {
+     "right": "free"
+    },
+    "HU": {
+     "right": "free"
+    },
+    "IE": {
+     "right": "free"
+    },
+    "IS": {
+     "right": "free"
+    },
+    "IT": {
+     "right": "free"
+    },
+    "LI": {
+     "right": "free"
+    },
+    "LT": {
+     "right": "free"
+    },
+    "LU": {
+     "right": "free"
+    },
+    "LV": {
+     "right": "free"
+    },
+    "MT": {
+     "right": "free"
+    },
+    "NL": {
+     "right": "free"
+    },
+    "NO": {
+     "right": "free"
+    },
+    "PL": {
+     "right": "free"
+    },
+    "PT": {
+     "right": "free"
+    },
+    "RO": {
+     "right": "free"
+    },
+    "SE": {
+     "right": "free"
+    },
+    "SI": {
+     "right": "free"
+    },
+    "SK": {
+     "right": "free"
+    }
+   },
+   "others": {
+    "right": "permit",
+    "route": "Uppehållstillstånd för arbetstagare",
+    "days": 90
+   }
+  },
+  "AZ": {
+   "passports": {},
+   "others": {
+    "right": "permit",
+    "route": "Work permit (State Migration Service)"
+   }
+  },
+  "BA": {
+   "passports": {},
+   "others": {
+    "right": "permit",
+    "route": "Radna dozvola",
+    "days": 90,
+    "within": 365
+   }
+  },
+  "BB": {
+   "groups": [
+    "csme"
+   ],
+   "passports": {
+    "AG": {
+     "right": "permit",
+     "route": "CARICOM Skills Certificate"
+    },
+    "BB": {
+     "right": "permit",
+     "route": "CARICOM Skills Certificate"
+    },
+    "BZ": {
+     "right": "permit",
+     "route": "CARICOM Skills Certificate"
+    },
+    "DM": {
+     "right": "permit",
+     "route": "CARICOM Skills Certificate"
+    },
+    "GD": {
+     "right": "permit",
+     "route": "CARICOM Skills Certificate"
+    },
+    "GY": {
+     "right": "permit",
+     "route": "CARICOM Skills Certificate"
+    },
+    "JM": {
+     "right": "permit",
+     "route": "CARICOM Skills Certificate"
+    },
+    "KN": {
+     "right": "permit",
+     "route": "CARICOM Skills Certificate"
+    },
+    "LC": {
+     "right": "permit",
+     "route": "CARICOM Skills Certificate"
+    },
+    "VC": {
+     "right": "permit",
+     "route": "CARICOM Skills Certificate"
+    },
+    "SR": {
+     "right": "permit",
+     "route": "CARICOM Skills Certificate"
+    },
+    "TT": {
+     "right": "permit",
+     "route": "CARICOM Skills Certificate"
+    }
+   },
+   "others": {
+    "right": "permit",
+    "route": "Short-Term Work Permit"
+   }
+  },
+  "BD": {
+   "passports": {},
+   "others": {
+    "right": "permit",
+    "route": "P (Performers on contract) visa"
+   }
+  },
+  "BE": {
+   "groups": [
+    "eea"
+   ],
+   "passports": {
+    "AT": {
+     "right": "free"
+    },
+    "BE": {
+     "right": "free"
+    },
+    "BG": {
+     "right": "free"
+    },
+    "CH": {
+     "right": "free"
+    },
+    "CY": {
+     "right": "free"
+    },
+    "CZ": {
+     "right": "free"
+    },
+    "DE": {
+     "right": "free"
+    },
+    "DK": {
+     "right": "free"
+    },
+    "EE": {
+     "right": "free"
+    },
+    "ES": {
+     "right": "free"
+    },
+    "FI": {
+     "right": "free"
+    },
+    "FR": {
+     "right": "free"
+    },
+    "GR": {
+     "right": "free"
+    },
+    "HR": {
+     "right": "free"
+    },
+    "HU": {
+     "right": "free"
+    },
+    "IE": {
+     "right": "free"
+    },
+    "IS": {
+     "right": "free"
+    },
+    "IT": {
+     "right": "free"
+    },
+    "LI": {
+     "right": "free"
+    },
+    "LT": {
+     "right": "free"
+    },
+    "LU": {
+     "right": "free"
+    },
+    "LV": {
+     "right": "free"
+    },
+    "MT": {
+     "right": "free"
+    },
+    "NL": {
+     "right": "free"
+    },
+    "NO": {
+     "right": "free"
+    },
+    "PL": {
+     "right": "free"
+    },
+    "PT": {
+     "right": "free"
+    },
+    "RO": {
+     "right": "free"
+    },
+    "SE": {
+     "right": "free"
+    },
+    "SI": {
+     "right": "free"
+    },
+    "SK": {
+     "right": "free"
+    }
+   },
+   "others": {
+    "right": "permit",
+    "route": "Toelating tot arbeid als schouwspelartiest (up to 90 days; beyond, the gecombineerde vergunning)",
+    "days": 21,
+    "within": 91,
+    "only": "renowned"
+   }
+  },
+  "BG": {
+   "groups": [
+    "eea"
+   ],
+   "passports": {
+    "AT": {
+     "right": "free"
+    },
+    "BE": {
+     "right": "free"
+    },
+    "BG": {
+     "right": "free"
+    },
+    "CH": {
+     "right": "free"
+    },
+    "CY": {
+     "right": "free"
+    },
+    "CZ": {
+     "right": "free"
+    },
+    "DE": {
+     "right": "free"
+    },
+    "DK": {
+     "right": "free"
+    },
+    "EE": {
+     "right": "free"
+    },
+    "ES": {
+     "right": "free"
+    },
+    "FI": {
+     "right": "free"
+    },
+    "FR": {
+     "right": "free"
+    },
+    "GR": {
+     "right": "free"
+    },
+    "HR": {
+     "right": "free"
+    },
+    "HU": {
+     "right": "free"
+    },
+    "IE": {
+     "right": "free"
+    },
+    "IS": {
+     "right": "free"
+    },
+    "IT": {
+     "right": "free"
+    },
+    "LI": {
+     "right": "free"
+    },
+    "LT": {
+     "right": "free"
+    },
+    "LU": {
+     "right": "free"
+    },
+    "LV": {
+     "right": "free"
+    },
+    "MT": {
+     "right": "free"
+    },
+    "NL": {
+     "right": "free"
+    },
+    "NO": {
+     "right": "free"
+    },
+    "PL": {
+     "right": "free"
+    },
+    "PT": {
+     "right": "free"
+    },
+    "RO": {
+     "right": "free"
+    },
+    "SE": {
+     "right": "free"
+    },
+    "SI": {
+     "right": "free"
+    },
+    "SK": {
+     "right": "free"
+    }
+   },
+   "others": {
+    "right": "permit",
+    "route": "Единно разрешение за пребиваване и работа"
+   }
+  },
+  "BH": {
+   "passports": {},
+   "others": {
+    "right": "permit",
+    "route": "Work permit (Labour Market Regulatory Authority)",
+    "days": 15
+   }
+  },
+  "BI": {
+   "passports": {},
+   "others": {
+    "right": "permit",
+    "route": "Visa d'établissement ordinaire"
+   }
+  },
+  "BJ": {
+   "groups": [
+    "ecowas"
+   ],
+   "passports": {
+    "BJ": {
+     "right": "free"
+    },
+    "CV": {
+     "right": "free"
+    },
+    "CI": {
+     "right": "free"
+    },
+    "GM": {
+     "right": "free"
+    },
+    "GH": {
+     "right": "free"
+    },
+    "GN": {
+     "right": "free"
+    },
+    "GW": {
+     "right": "free"
+    },
+    "LR": {
+     "right": "free"
+    },
+    "NG": {
+     "right": "free"
+    },
+    "SN": {
+     "right": "free"
+    },
+    "SL": {
+     "right": "free"
+    },
+    "TG": {
+     "right": "free"
+    }
+   },
+   "others": {
+    "right": "permit",
+    "route": "Permis de travail (ministre chargé du travail)"
+   }
+  },
+  "BL": {
+   "groups": [
+    "eea"
+   ],
+   "passports": {
+    "AT": {
+     "right": "free"
+    },
+    "BE": {
+     "right": "free"
+    },
+    "BG": {
+     "right": "free"
+    },
+    "CH": {
+     "right": "free"
+    },
+    "CY": {
+     "right": "free"
+    },
+    "CZ": {
+     "right": "free"
+    },
+    "DE": {
+     "right": "free"
+    },
+    "DK": {
+     "right": "free"
+    },
+    "EE": {
+     "right": "free"
+    },
+    "ES": {
+     "right": "free"
+    },
+    "FI": {
+     "right": "free"
+    },
+    "FR": {
+     "right": "free"
+    },
+    "GR": {
+     "right": "free"
+    },
+    "HR": {
+     "right": "free"
+    },
+    "HU": {
+     "right": "free"
+    },
+    "IE": {
+     "right": "free"
+    },
+    "IS": {
+     "right": "free"
+    },
+    "IT": {
+     "right": "free"
+    },
+    "LI": {
+     "right": "free"
+    },
+    "LT": {
+     "right": "free"
+    },
+    "LU": {
+     "right": "free"
+    },
+    "LV": {
+     "right": "free"
+    },
+    "MT": {
+     "right": "free"
+    },
+    "NL": {
+     "right": "free"
+    },
+    "NO": {
+     "right": "free"
+    },
+    "PL": {
+     "right": "free"
+    },
+    "PT": {
+     "right": "free"
+    },
+    "RO": {
+     "right": "free"
+    },
+    "SE": {
+     "right": "free"
+    },
+    "SI": {
+     "right": "free"
+    },
+    "SK": {
+     "right": "free"
+    }
+   },
+   "others": {
+    "right": "permit",
+    "route": "Carte de séjour « talent – profession artistique et culturelle »",
+    "days": 90
+   }
+  },
+  "BM": {
+   "passports": {
+    "GB": {
+     "right": "permit",
+     "route": "Work permit (Department of Immigration)"
+    },
+    "AI": {
+     "right": "permit",
+     "route": "Work permit (Department of Immigration)"
+    },
+    "FK": {
+     "right": "permit",
+     "route": "Work permit (Department of Immigration)"
+    },
+    "GG": {
+     "right": "permit",
+     "route": "Work permit (Department of Immigration)"
+    },
+    "GI": {
+     "right": "permit",
+     "route": "Work permit (Department of Immigration)"
+    },
+    "GS": {
+     "right": "permit",
+     "route": "Work permit (Department of Immigration)"
+    },
+    "IM": {
+     "right": "permit",
+     "route": "Work permit (Department of Immigration)"
+    },
+    "IO": {
+     "right": "permit",
+     "route": "Work permit (Department of Immigration)"
+    },
+    "JE": {
+     "right": "permit",
+     "route": "Work permit (Department of Immigration)"
+    },
+    "KY": {
+     "right": "permit",
+     "route": "Work permit (Department of Immigration)"
+    },
+    "MS": {
+     "right": "permit",
+     "route": "Work permit (Department of Immigration)"
+    },
+    "PN": {
+     "right": "permit",
+     "route": "Work permit (Department of Immigration)"
+    },
+    "SH": {
+     "right": "permit",
+     "route": "Work permit (Department of Immigration)"
+    },
+    "TC": {
+     "right": "permit",
+     "route": "Work permit (Department of Immigration)"
+    },
+    "VG": {
+     "right": "permit",
+     "route": "Work permit (Department of Immigration)"
+    }
+   },
+   "others": {
+    "right": "permit",
+    "route": "Work permit (Department of Immigration)"
+   }
+  },
+  "BN": {
+   "passports": {},
+   "others": {
+    "right": "permit",
+    "route": "Pas Kerja (work pass)"
+   }
+  },
+  "BO": {
+   "passports": {},
+   "others": {
+    "right": "permit",
+    "route": "Visa de objeto determinado"
+   }
+  },
+  "BQ": {
+   "passports": {},
+   "others": {
+    "right": "permit",
+    "route": "Tewerkstellingsvergunning (Wet arbeid vreemdelingen BES)",
+    "days": 28,
+    "within": 91
+   }
+  },
+  "BR": {
+   "passports": {},
+   "others": {
+    "right": "permit",
+    "route": "Visto temporário para atividades artísticas ou desportivas com contrato por prazo determinado"
+   }
+  },
+  "BS": {
+   "passports": {},
+   "others": {
+    "right": "permit",
+    "route": "Short Term Work Permit"
+   }
+  },
+  "BT": {
+   "passports": {},
+   "others": {
+    "right": "permit",
+    "route": "Work permit (Department of Labour approval, Department of Immigration)"
+   }
+  },
+  "BW": {
+   "passports": {},
+   "others": {
+    "right": "permit",
+    "route": "Work permit (Employment of Non-Citizens Act), with the residence permit"
+   }
+  },
+  "BY": {
+   "groups": [
+    "eaeu"
+   ],
+   "passports": {
+    "AM": {
+     "right": "free"
+    },
+    "BY": {
+     "right": "free"
+    },
+    "KZ": {
+     "right": "free"
+    },
+    "KG": {
+     "right": "free"
+    },
+    "RU": {
+     "right": "free"
+    }
+   },
+   "others": {
+    "right": "permit",
+    "route": "Специальное разрешение на право занятия трудовой деятельностью"
+   }
+  },
+  "BZ": {
+   "groups": [
+    "csme"
+   ],
+   "passports": {
+    "AG": {
+     "right": "permit",
+     "route": "CARICOM Skills Certificate"
+    },
+    "BB": {
+     "right": "permit",
+     "route": "CARICOM Skills Certificate"
+    },
+    "BZ": {
+     "right": "permit",
+     "route": "CARICOM Skills Certificate"
+    },
+    "DM": {
+     "right": "permit",
+     "route": "CARICOM Skills Certificate"
+    },
+    "GD": {
+     "right": "permit",
+     "route": "CARICOM Skills Certificate"
+    },
+    "GY": {
+     "right": "permit",
+     "route": "CARICOM Skills Certificate"
+    },
+    "JM": {
+     "right": "permit",
+     "route": "CARICOM Skills Certificate"
+    },
+    "KN": {
+     "right": "permit",
+     "route": "CARICOM Skills Certificate"
+    },
+    "LC": {
+     "right": "permit",
+     "route": "CARICOM Skills Certificate"
+    },
+    "VC": {
+     "right": "permit",
+     "route": "CARICOM Skills Certificate"
+    },
+    "SR": {
+     "right": "permit",
+     "route": "CARICOM Skills Certificate"
+    },
+    "TT": {
+     "right": "permit",
+     "route": "CARICOM Skills Certificate"
+    }
+   },
+   "others": {
+    "right": "permit",
+    "route": "Temporary Employment Permit (entertainers)"
+   }
+  },
+  "CA": {
+   "passports": {},
+   "others": {
+    "right": "permit",
+    "route": "Work permit"
+   }
+  },
+  "CC": {
+   "groups": [
+    "au"
+   ],
+   "passports": {
+    "NZ": {
+     "right": "free"
+    }
+   },
+   "others": {
+    "right": "permit",
+    "route": "Temporary Activity visa (subclass 408), Entertainment Activities stream"
+   }
+  },
+  "CD": {
+   "passports": {},
+   "others": {
+    "right": "permit",
+    "route": "Carte de travail pour étrangers"
+   }
+  },
+  "CF": {
+   "passports": {},
+   "others": {
+    "right": "permit",
+    "route": "Visa du contrat de travail (the Minister in charge of Employment's visa on the contract or letter of engagement of a non-Central African worker; Code du travail, loi n° 09.004, art. 100)"
+   }
+  },
+  "CG": {
+   "passports": {},
+   "others": {
+    "right": "permit",
+    "route": "Autorisation de travail temporaire"
+   }
+  },
+  "CH": {
+   "groups": [
+    "eea"
+   ],
+   "passports": {
+    "AT": {
+     "right": "free"
+    },
+    "BE": {
+     "right": "free"
+    },
+    "BG": {
+     "right": "free"
+    },
+    "CH": {
+     "right": "free"
+    },
+    "CY": {
+     "right": "free"
+    },
+    "CZ": {
+     "right": "free"
+    },
+    "DE": {
+     "right": "free"
+    },
+    "DK": {
+     "right": "free"
+    },
+    "EE": {
+     "right": "free"
+    },
+    "ES": {
+     "right": "free"
+    },
+    "FI": {
+     "right": "free"
+    },
+    "FR": {
+     "right": "free"
+    },
+    "GR": {
+     "right": "free"
+    },
+    "HR": {
+     "right": "free"
+    },
+    "HU": {
+     "right": "free"
+    },
+    "IE": {
+     "right": "free"
+    },
+    "IS": {
+     "right": "free"
+    },
+    "IT": {
+     "right": "free"
+    },
+    "LI": {
+     "right": "free"
+    },
+    "LT": {
+     "right": "free"
+    },
+    "LU": {
+     "right": "free"
+    },
+    "LV": {
+     "right": "free"
+    },
+    "MT": {
+     "right": "free"
+    },
+    "NL": {
+     "right": "free"
+    },
+    "NO": {
+     "right": "free"
+    },
+    "PL": {
+     "right": "free"
+    },
+    "PT": {
+     "right": "free"
+    },
+    "RO": {
+     "right": "free"
+    },
+    "SE": {
+     "right": "free"
+    },
+    "SI": {
+     "right": "free"
+    },
+    "SK": {
+     "right": "free"
+    }
+   },
+   "others": {
+    "right": "permit",
+    "route": "Bewilligung für Künstlerinnen und Künstler (Art. 19 Abs. 4 lit. b VZAE)",
+    "days": 8,
+    "within": 365,
+    "only": "engaged-abroad"
+   }
+  },
+  "CI": {
+   "groups": [
+    "ecowas"
+   ],
+   "passports": {
+    "BJ": {
+     "right": "free"
+    },
+    "CV": {
+     "right": "free"
+    },
+    "CI": {
+     "right": "free"
+    },
+    "GM": {
+     "right": "free"
+    },
+    "GH": {
+     "right": "free"
+    },
+    "GN": {
+     "right": "free"
+    },
+    "GW": {
+     "right": "free"
+    },
+    "LR": {
+     "right": "free"
+    },
+    "NG": {
+     "right": "free"
+    },
+    "SN": {
+     "right": "free"
+    },
+    "SL": {
+     "right": "free"
+    },
+    "TG": {
+     "right": "free"
+    }
+   },
+   "others": {
+    "right": "permit",
+    "route": "Visa préalable du contrat de travail (Ministre chargé du Travail)"
+   }
+  },
+  "CK": {
+   "passports": {},
+   "others": {
+    "right": "permit",
+    "route": "Work permit (Ministry of Foreign Affairs and Immigration)"
+   }
+  },
+  "CL": {
+   "passports": {},
+   "others": {
+    "right": "permit",
+    "route": "Autorización para trabajar con Permanencia Transitoria"
+   }
+  },
+  "CM": {
+   "passports": {},
+   "others": {
+    "right": "permit",
+    "route": "Visa du contrat de travail by the Minister of Employment and Vocational Training (MINEFOP) (Code du travail, loi du 14 août 1992, art. 27)"
+   }
+  },
+  "CN": {
+   "passports": {},
+   "others": {
+    "right": "permit",
+    "route": "Z字签证（营业性演出）"
+   }
+  },
+  "CO": {
+   "passports": {},
+   "others": {
+    "right": "permit",
+    "route": "Permiso para Otras Actividades (POA)"
+   }
+  },
+  "CR": {
+   "passports": {},
+   "others": {
+    "right": "permit",
+    "route": "Categoría especial: artistas, deportistas e integrantes de espectáculos públicos (Ley 8764 art. 94(6); Reglamento de Extranjería art. 129)"
+   }
+  },
+  "CU": {
+   "passports": {},
+   "others": {
+    "right": "permit",
+    "route": "Permiso de trabajo (Ministerio de Trabajo y Seguridad Social), as a Residente Temporal, artistas de profesión (Decreto 136/2025, art. 100)"
+   }
+  },
+  "CV": {
+   "groups": [
+    "ecowas"
+   ],
+   "passports": {
+    "BJ": {
+     "right": "free"
+    },
+    "CV": {
+     "right": "free"
+    },
+    "CI": {
+     "right": "free"
+    },
+    "GM": {
+     "right": "free"
+    },
+    "GH": {
+     "right": "free"
+    },
+    "GN": {
+     "right": "free"
+    },
+    "GW": {
+     "right": "free"
+    },
+    "LR": {
+     "right": "free"
+    },
+    "NG": {
+     "right": "free"
+    },
+    "SN": {
+     "right": "free"
+    },
+    "SL": {
+     "right": "free"
+    },
+    "TG": {
+     "right": "free"
+    }
+   },
+   "others": {
+    "right": "permit",
+    "route": "Visto temporário"
+   }
+  },
+  "CW": {
+   "passports": {},
+   "others": {
+    "right": "permit",
+    "route": "Tewerkstellingsvergunning (Landsverordening arbeid vreemdelingen)"
+   }
+  },
+  "CX": {
+   "groups": [
+    "au"
+   ],
+   "passports": {
+    "NZ": {
+     "right": "free"
+    }
+   },
+   "others": {
+    "right": "permit",
+    "route": "Temporary Activity visa (subclass 408), Entertainment Activities stream"
+   }
+  },
+  "CY": {
+   "groups": [
+    "eea"
+   ],
+   "passports": {
+    "AT": {
+     "right": "free"
+    },
+    "BE": {
+     "right": "free"
+    },
+    "BG": {
+     "right": "free"
+    },
+    "CH": {
+     "right": "free"
+    },
+    "CY": {
+     "right": "free"
+    },
+    "CZ": {
+     "right": "free"
+    },
+    "DE": {
+     "right": "free"
+    },
+    "DK": {
+     "right": "free"
+    },
+    "EE": {
+     "right": "free"
+    },
+    "ES": {
+     "right": "free"
+    },
+    "FI": {
+     "right": "free"
+    },
+    "FR": {
+     "right": "free"
+    },
+    "GR": {
+     "right": "free"
+    },
+    "HR": {
+     "right": "free"
+    },
+    "HU": {
+     "right": "free"
+    },
+    "IE": {
+     "right": "free"
+    },
+    "IS": {
+     "right": "free"
+    },
+    "IT": {
+     "right": "free"
+    },
+    "LI": {
+     "right": "free"
+    },
+    "LT": {
+     "right": "free"
+    },
+    "LU": {
+     "right": "free"
+    },
+    "LV": {
+     "right": "free"
+    },
+    "MT": {
+     "right": "free"
+    },
+    "NL": {
+     "right": "free"
+    },
+    "NO": {
+     "right": "free"
+    },
+    "PL": {
+     "right": "free"
+    },
+    "PT": {
+     "right": "free"
+    },
+    "RO": {
+     "right": "free"
+    },
+    "SE": {
+     "right": "free"
+    },
+    "SI": {
+     "right": "free"
+    },
+    "SK": {
+     "right": "free"
+    }
+   },
+   "others": {
+    "right": "permit",
+    "route": "Entry/Temporary Residence and Work Permit for artists"
+   }
+  },
+  "CZ": {
+   "groups": [
+    "eea"
+   ],
+   "passports": {
+    "AT": {
+     "right": "free"
+    },
+    "BE": {
+     "right": "free"
+    },
+    "BG": {
+     "right": "free"
+    },
+    "CH": {
+     "right": "free"
+    },
+    "CY": {
+     "right": "free"
+    },
+    "CZ": {
+     "right": "free"
+    },
+    "DE": {
+     "right": "free"
+    },
+    "DK": {
+     "right": "free"
+    },
+    "EE": {
+     "right": "free"
+    },
+    "ES": {
+     "right": "free"
+    },
+    "FI": {
+     "right": "free"
+    },
+    "FR": {
+     "right": "free"
+    },
+    "GR": {
+     "right": "free"
+    },
+    "HR": {
+     "right": "free"
+    },
+    "HU": {
+     "right": "free"
+    },
+    "IE": {
+     "right": "free"
+    },
+    "IS": {
+     "right": "free"
+    },
+    "IT": {
+     "right": "free"
+    },
+    "LI": {
+     "right": "free"
+    },
+    "LT": {
+     "right": "free"
+    },
+    "LU": {
+     "right": "free"
+    },
+    "LV": {
+     "right": "free"
+    },
+    "MT": {
+     "right": "free"
+    },
+    "NL": {
+     "right": "free"
+    },
+    "NO": {
+     "right": "free"
+    },
+    "PL": {
+     "right": "free"
+    },
+    "PT": {
+     "right": "free"
+    },
+    "RO": {
+     "right": "free"
+    },
+    "SE": {
+     "right": "free"
+    },
+    "SI": {
+     "right": "free"
+    },
+    "SK": {
+     "right": "free"
+    }
+   },
+   "others": {
+    "right": "permit",
+    "route": "Zaměstnanecká karta (povolení k zaměstnání)",
+    "days": 30,
+    "within": 365
+   }
+  },
+  "DE": {
+   "groups": [
+    "eea"
+   ],
+   "passports": {
+    "AT": {
+     "right": "free"
+    },
+    "BE": {
+     "right": "free"
+    },
+    "BG": {
+     "right": "free"
+    },
+    "CH": {
+     "right": "free"
+    },
+    "CY": {
+     "right": "free"
+    },
+    "CZ": {
+     "right": "free"
+    },
+    "DE": {
+     "right": "free"
+    },
+    "DK": {
+     "right": "free"
+    },
+    "EE": {
+     "right": "free"
+    },
+    "ES": {
+     "right": "free"
+    },
+    "FI": {
+     "right": "free"
+    },
+    "FR": {
+     "right": "free"
+    },
+    "GR": {
+     "right": "free"
+    },
+    "HR": {
+     "right": "free"
+    },
+    "HU": {
+     "right": "free"
+    },
+    "IE": {
+     "right": "free"
+    },
+    "IS": {
+     "right": "free"
+    },
+    "IT": {
+     "right": "free"
+    },
+    "LI": {
+     "right": "free"
+    },
+    "LT": {
+     "right": "free"
+    },
+    "LU": {
+     "right": "free"
+    },
+    "LV": {
+     "right": "free"
+    },
+    "MT": {
+     "right": "free"
+    },
+    "NL": {
+     "right": "free"
+    },
+    "NO": {
+     "right": "free"
+    },
+    "PL": {
+     "right": "free"
+    },
+    "PT": {
+     "right": "free"
+    },
+    "RO": {
+     "right": "free"
+    },
+    "SE": {
+     "right": "free"
+    },
+    "SI": {
+     "right": "free"
+    },
+    "SK": {
+     "right": "free"
+    }
+   },
+   "others": {
+    "right": "permit",
+    "route": "Aufenthaltserlaubnis zur Beschäftigung (Kultur und Unterhaltung, § 25 BeschV)",
+    "days": 90,
+    "within": 365
+   }
+  },
+  "DJ": {
+   "passports": {},
+   "others": {
+    "right": "permit",
+    "route": "Autorisation de travail (visa du contrat, Ministère du Travail)"
+   }
+  },
+  "DK": {
+   "groups": [
+    "eea"
+   ],
+   "passports": {
+    "AT": {
+     "right": "free"
+    },
+    "BE": {
+     "right": "free"
+    },
+    "BG": {
+     "right": "free"
+    },
+    "CH": {
+     "right": "free"
+    },
+    "CY": {
+     "right": "free"
+    },
+    "CZ": {
+     "right": "free"
+    },
+    "DE": {
+     "right": "free"
+    },
+    "DK": {
+     "right": "free"
+    },
+    "EE": {
+     "right": "free"
+    },
+    "ES": {
+     "right": "free"
+    },
+    "FI": {
+     "right": "free"
+    },
+    "FR": {
+     "right": "free"
+    },
+    "GR": {
+     "right": "free"
+    },
+    "HR": {
+     "right": "free"
+    },
+    "HU": {
+     "right": "free"
+    },
+    "IE": {
+     "right": "free"
+    },
+    "IS": {
+     "right": "free"
+    },
+    "IT": {
+     "right": "free"
+    },
+    "LI": {
+     "right": "free"
+    },
+    "LT": {
+     "right": "free"
+    },
+    "LU": {
+     "right": "free"
+    },
+    "LV": {
+     "right": "free"
+    },
+    "MT": {
+     "right": "free"
+    },
+    "NL": {
+     "right": "free"
+    },
+    "NO": {
+     "right": "free"
+    },
+    "PL": {
+     "right": "free"
+    },
+    "PT": {
+     "right": "free"
+    },
+    "RO": {
+     "right": "free"
+    },
+    "SE": {
+     "right": "free"
+    },
+    "SI": {
+     "right": "free"
+    },
+    "SK": {
+     "right": "free"
+    }
+   },
+   "others": {
+    "right": "permit",
+    "route": "Residence and work permit on special individual qualifications – artists and performers"
+   }
+  },
+  "DM": {
+   "groups": [
+    "oecs",
+    "csme"
+   ],
+   "passports": {
+    "AG": {
+     "right": "free"
+    },
+    "BB": {
+     "right": "permit",
+     "route": "CARICOM Skills Certificate"
+    },
+    "BZ": {
+     "right": "permit",
+     "route": "CARICOM Skills Certificate"
+    },
+    "DM": {
+     "right": "free"
+    },
+    "GD": {
+     "right": "free"
+    },
+    "GY": {
+     "right": "permit",
+     "route": "CARICOM Skills Certificate"
+    },
+    "JM": {
+     "right": "permit",
+     "route": "CARICOM Skills Certificate"
+    },
+    "KN": {
+     "right": "free"
+    },
+    "LC": {
+     "right": "free"
+    },
+    "VC": {
+     "right": "free"
+    },
+    "SR": {
+     "right": "permit",
+     "route": "CARICOM Skills Certificate"
+    },
+    "TT": {
+     "right": "permit",
+     "route": "CARICOM Skills Certificate"
+    },
+    "MS": {
+     "right": "free"
+    }
+   },
+   "others": {
+    "right": "permit",
+    "route": "Work Permit (Labour Division)"
+   }
+  },
+  "DO": {
+   "passports": {},
+   "others": {
+    "right": "permit",
+    "route": "Residencia temporal (Ley 285-04, art. 35)"
+   }
+  },
+  "DZ": {
+   "passports": {},
+   "others": {
+    "right": "permit",
+    "route": "Permis de travail ou autorisation de travail temporaire",
+    "days": 15
+   }
+  },
+  "EC": {
+   "passports": {},
+   "others": {
+    "right": "permit",
+    "route": "Visa de residencia temporal de deportista, artista o gestor cultural"
+   }
+  },
+  "EE": {
+   "groups": [
+    "eea"
+   ],
+   "passports": {
+    "AT": {
+     "right": "free"
+    },
+    "BE": {
+     "right": "free"
+    },
+    "BG": {
+     "right": "free"
+    },
+    "CH": {
+     "right": "free"
+    },
+    "CY": {
+     "right": "free"
+    },
+    "CZ": {
+     "right": "free"
+    },
+    "DE": {
+     "right": "free"
+    },
+    "DK": {
+     "right": "free"
+    },
+    "EE": {
+     "right": "free"
+    },
+    "ES": {
+     "right": "free"
+    },
+    "FI": {
+     "right": "free"
+    },
+    "FR": {
+     "right": "free"
+    },
+    "GR": {
+     "right": "free"
+    },
+    "HR": {
+     "right": "free"
+    },
+    "HU": {
+     "right": "free"
+    },
+    "IE": {
+     "right": "free"
+    },
+    "IS": {
+     "right": "free"
+    },
+    "IT": {
+     "right": "free"
+    },
+    "LI": {
+     "right": "free"
+    },
+    "LT": {
+     "right": "free"
+    },
+    "LU": {
+     "right": "free"
+    },
+    "LV": {
+     "right": "free"
+    },
+    "MT": {
+     "right": "free"
+    },
+    "NL": {
+     "right": "free"
+    },
+    "NO": {
+     "right": "free"
+    },
+    "PL": {
+     "right": "free"
+    },
+    "PT": {
+     "right": "free"
+    },
+    "RO": {
+     "right": "free"
+    },
+    "SE": {
+     "right": "free"
+    },
+    "SI": {
+     "right": "free"
+    },
+    "SK": {
+     "right": "free"
+    }
+   },
+   "others": {
+    "right": "permit",
+    "route": "Registration of short-term employment",
+    "days": 5,
+    "within": 30
+   }
+  },
+  "EG": {
+   "passports": {},
+   "others": {
+    "right": "permit",
+    "route": "تصريح مزاولة المهنة للأجانب (نقابات المهن التمثيلية والسينمائية والموسيقية، القانون 35 لسنة 1978)"
+   }
+  },
+  "ER": {
+   "passports": {},
+   "others": {
+    "right": "permit",
+    "route": "Work permit (Ministry of Labour and Human Welfare)"
+   }
+  },
+  "ES": {
+   "groups": [
+    "eea"
+   ],
+   "passports": {
+    "AT": {
+     "right": "free"
+    },
+    "BE": {
+     "right": "free"
+    },
+    "BG": {
+     "right": "free"
+    },
+    "CH": {
+     "right": "free"
+    },
+    "CY": {
+     "right": "free"
+    },
+    "CZ": {
+     "right": "free"
+    },
+    "DE": {
+     "right": "free"
+    },
+    "DK": {
+     "right": "free"
+    },
+    "EE": {
+     "right": "free"
+    },
+    "ES": {
+     "right": "free"
+    },
+    "FI": {
+     "right": "free"
+    },
+    "FR": {
+     "right": "free"
+    },
+    "GR": {
+     "right": "free"
+    },
+    "HR": {
+     "right": "free"
+    },
+    "HU": {
+     "right": "free"
+    },
+    "IE": {
+     "right": "free"
+    },
+    "IS": {
+     "right": "free"
+    },
+    "IT": {
+     "right": "free"
+    },
+    "LI": {
+     "right": "free"
+    },
+    "LT": {
+     "right": "free"
+    },
+    "LU": {
+     "right": "free"
+    },
+    "LV": {
+     "right": "free"
+    },
+    "MT": {
+     "right": "free"
+    },
+    "NL": {
+     "right": "free"
+    },
+    "NO": {
+     "right": "free"
+    },
+    "PL": {
+     "right": "free"
+    },
+    "PT": {
+     "right": "free"
+    },
+    "RO": {
+     "right": "free"
+    },
+    "SE": {
+     "right": "free"
+    },
+    "SI": {
+     "right": "free"
+    },
+    "SK": {
+     "right": "free"
+    }
+   },
+   "others": {
+    "right": "permit",
+    "route": "Autorización de residencia temporal y trabajo por cuenta ajena"
+   }
+  },
+  "ET": {
+   "passports": {},
+   "others": {
+    "right": "permit",
+    "route": "Work permit (Ministry of Labour and Skills)"
+   }
+  },
+  "FI": {
+   "groups": [
+    "eea"
+   ],
+   "passports": {
+    "AT": {
+     "right": "free"
+    },
+    "BE": {
+     "right": "free"
+    },
+    "BG": {
+     "right": "free"
+    },
+    "CH": {
+     "right": "free"
+    },
+    "CY": {
+     "right": "free"
+    },
+    "CZ": {
+     "right": "free"
+    },
+    "DE": {
+     "right": "free"
+    },
+    "DK": {
+     "right": "free"
+    },
+    "EE": {
+     "right": "free"
+    },
+    "ES": {
+     "right": "free"
+    },
+    "FI": {
+     "right": "free"
+    },
+    "FR": {
+     "right": "free"
+    },
+    "GR": {
+     "right": "free"
+    },
+    "HR": {
+     "right": "free"
+    },
+    "HU": {
+     "right": "free"
+    },
+    "IE": {
+     "right": "free"
+    },
+    "IS": {
+     "right": "free"
+    },
+    "IT": {
+     "right": "free"
+    },
+    "LI": {
+     "right": "free"
+    },
+    "LT": {
+     "right": "free"
+    },
+    "LU": {
+     "right": "free"
+    },
+    "LV": {
+     "right": "free"
+    },
+    "MT": {
+     "right": "free"
+    },
+    "NL": {
+     "right": "free"
+    },
+    "NO": {
+     "right": "free"
+    },
+    "PL": {
+     "right": "free"
+    },
+    "PT": {
+     "right": "free"
+    },
+    "RO": {
+     "right": "free"
+    },
+    "SE": {
+     "right": "free"
+    },
+    "SI": {
+     "right": "free"
+    },
+    "SK": {
+     "right": "free"
+    }
+   },
+   "others": {
+    "right": "permit",
+    "route": "Muu oleskelulupa ansiotyötä varten: residence permit for professional work in culture or the arts (Aliens Act section 74(1)(9); Finnish Immigration Service)",
+    "days": 90,
+    "within": 180
+   }
+  },
+  "FJ": {
+   "passports": {},
+   "others": {
+    "right": "permit",
+    "route": "Authority to work while on a visitor’s permit"
+   }
+  },
+  "FK": {
+   "passports": {
+    "GB": {
+     "right": "permit",
+     "route": "Work permit"
+    },
+    "AI": {
+     "right": "permit",
+     "route": "Work permit"
+    },
+    "BM": {
+     "right": "permit",
+     "route": "Work permit"
+    },
+    "GG": {
+     "right": "permit",
+     "route": "Work permit"
+    },
+    "GI": {
+     "right": "permit",
+     "route": "Work permit"
+    },
+    "GS": {
+     "right": "permit",
+     "route": "Work permit"
+    },
+    "IM": {
+     "right": "permit",
+     "route": "Work permit"
+    },
+    "IO": {
+     "right": "permit",
+     "route": "Work permit"
+    },
+    "JE": {
+     "right": "permit",
+     "route": "Work permit"
+    },
+    "KY": {
+     "right": "permit",
+     "route": "Work permit"
+    },
+    "MS": {
+     "right": "permit",
+     "route": "Work permit"
+    },
+    "PN": {
+     "right": "permit",
+     "route": "Work permit"
+    },
+    "SH": {
+     "right": "permit",
+     "route": "Work permit"
+    },
+    "TC": {
+     "right": "permit",
+     "route": "Work permit"
+    },
+    "VG": {
+     "right": "permit",
+     "route": "Work permit"
+    }
+   },
+   "others": {
+    "right": "permit",
+    "route": "Work permit"
+   }
+  },
+  "FM": {
+   "passports": {},
+   "others": {
+    "right": "permit",
+    "route": "Alien worker's permit (Immigration Act)"
+   }
+  },
+  "FO": {
+   "passports": {},
+   "others": {
+    "right": "permit",
+    "route": "Arbejdstilladelse på Færøerne (work permit)",
+    "days": 90
+   }
+  },
+  "FR": {
+   "groups": [
+    "eea"
+   ],
+   "passports": {
+    "AT": {
+     "right": "free"
+    },
+    "BE": {
+     "right": "free"
+    },
+    "BG": {
+     "right": "free"
+    },
+    "CH": {
+     "right": "free"
+    },
+    "CY": {
+     "right": "free"
+    },
+    "CZ": {
+     "right": "free"
+    },
+    "DE": {
+     "right": "free"
+    },
+    "DK": {
+     "right": "free"
+    },
+    "EE": {
+     "right": "free"
+    },
+    "ES": {
+     "right": "free"
+    },
+    "FI": {
+     "right": "free"
+    },
+    "FR": {
+     "right": "free"
+    },
+    "GR": {
+     "right": "free"
+    },
+    "HR": {
+     "right": "free"
+    },
+    "HU": {
+     "right": "free"
+    },
+    "IE": {
+     "right": "free"
+    },
+    "IS": {
+     "right": "free"
+    },
+    "IT": {
+     "right": "free"
+    },
+    "LI": {
+     "right": "free"
+    },
+    "LT": {
+     "right": "free"
+    },
+    "LU": {
+     "right": "free"
+    },
+    "LV": {
+     "right": "free"
+    },
+    "MT": {
+     "right": "free"
+    },
+    "NL": {
+     "right": "free"
+    },
+    "NO": {
+     "right": "free"
+    },
+    "PL": {
+     "right": "free"
+    },
+    "PT": {
+     "right": "free"
+    },
+    "RO": {
+     "right": "free"
+    },
+    "SE": {
+     "right": "free"
+    },
+    "SI": {
+     "right": "free"
+    },
+    "SK": {
+     "right": "free"
+    }
+   },
+   "others": {
+    "right": "permit",
+    "route": "Carte de séjour « talent – profession artistique et culturelle »",
+    "days": 90
+   }
+  },
+  "GA": {
+   "passports": {},
+   "others": {
+    "right": "permit",
+    "route": "Autorisation d’emploi et autorisation d’entrée en tant que travailleur"
+   }
+  },
+  "GB": {
+   "passports": {
+    "IE": {
+     "right": "free"
+    }
+   },
+   "others": {
+    "right": "permit",
+    "route": "Temporary Work – Creative Worker visa",
+    "days": 30
+   }
+  },
+  "GD": {
+   "groups": [
+    "oecs",
+    "csme"
+   ],
+   "passports": {
+    "AG": {
+     "right": "free"
+    },
+    "BB": {
+     "right": "permit",
+     "route": "CARICOM Skills Certificate"
+    },
+    "BZ": {
+     "right": "permit",
+     "route": "CARICOM Skills Certificate"
+    },
+    "DM": {
+     "right": "free"
+    },
+    "GD": {
+     "right": "free"
+    },
+    "GY": {
+     "right": "permit",
+     "route": "CARICOM Skills Certificate"
+    },
+    "JM": {
+     "right": "permit",
+     "route": "CARICOM Skills Certificate"
+    },
+    "KN": {
+     "right": "free"
+    },
+    "LC": {
+     "right": "free"
+    },
+    "VC": {
+     "right": "free"
+    },
+    "SR": {
+     "right": "permit",
+     "route": "CARICOM Skills Certificate"
+    },
+    "TT": {
+     "right": "permit",
+     "route": "CARICOM Skills Certificate"
+    },
+    "MS": {
+     "right": "free"
+    }
+   },
+   "others": {
+    "right": "permit",
+    "route": "Work Permit (entertainers)"
+   }
+  },
+  "GE": {
+   "passports": {},
+   "others": {
+    "right": "permit",
+    "route": "Labour permit (State Agency for Employment Promotion)",
+    "days": 120,
+    "within": 365
+   }
+  },
+  "GF": {
+   "groups": [
+    "eea"
+   ],
+   "passports": {
+    "AT": {
+     "right": "free"
+    },
+    "BE": {
+     "right": "free"
+    },
+    "BG": {
+     "right": "free"
+    },
+    "CH": {
+     "right": "free"
+    },
+    "CY": {
+     "right": "free"
+    },
+    "CZ": {
+     "right": "free"
+    },
+    "DE": {
+     "right": "free"
+    },
+    "DK": {
+     "right": "free"
+    },
+    "EE": {
+     "right": "free"
+    },
+    "ES": {
+     "right": "free"
+    },
+    "FI": {
+     "right": "free"
+    },
+    "FR": {
+     "right": "free"
+    },
+    "GR": {
+     "right": "free"
+    },
+    "HR": {
+     "right": "free"
+    },
+    "HU": {
+     "right": "free"
+    },
+    "IE": {
+     "right": "free"
+    },
+    "IS": {
+     "right": "free"
+    },
+    "IT": {
+     "right": "free"
+    },
+    "LI": {
+     "right": "free"
+    },
+    "LT": {
+     "right": "free"
+    },
+    "LU": {
+     "right": "free"
+    },
+    "LV": {
+     "right": "free"
+    },
+    "MT": {
+     "right": "free"
+    },
+    "NL": {
+     "right": "free"
+    },
+    "NO": {
+     "right": "free"
+    },
+    "PL": {
+     "right": "free"
+    },
+    "PT": {
+     "right": "free"
+    },
+    "RO": {
+     "right": "free"
+    },
+    "SE": {
+     "right": "free"
+    },
+    "SI": {
+     "right": "free"
+    },
+    "SK": {
+     "right": "free"
+    }
+   },
+   "others": {
+    "right": "permit",
+    "route": "Carte de séjour « talent – profession artistique et culturelle »",
+    "days": 90
+   }
+  },
+  "GG": {
+   "passports": {
+    "GB": {
+     "right": "permit",
+     "route": "Short Term Employment Permit"
+    },
+    "IE": {
+     "right": "permit",
+     "route": "Short Term Employment Permit"
+    }
+   },
+   "others": {
+    "right": "permit",
+    "route": "Employment Permit and work visa"
+   }
+  },
+  "GH": {
+   "groups": [
+    "ecowas"
+   ],
+   "passports": {
+    "BJ": {
+     "right": "free"
+    },
+    "CV": {
+     "right": "free"
+    },
+    "CI": {
+     "right": "free"
+    },
+    "GM": {
+     "right": "free"
+    },
+    "GH": {
+     "right": "free"
+    },
+    "GN": {
+     "right": "free"
+    },
+    "GW": {
+     "right": "free"
+    },
+    "LR": {
+     "right": "free"
+    },
+    "NG": {
+     "right": "free"
+    },
+    "SN": {
+     "right": "free"
+    },
+    "SL": {
+     "right": "free"
+    },
+    "TG": {
+     "right": "free"
+    }
+   },
+   "others": {
+    "right": "permit",
+    "route": "Work and Residence Permit (GIS)"
+   }
+  },
+  "GI": {
+   "groups": [
+    "eea"
+   ],
+   "passports": {
+    "AT": {
+     "right": "free"
+    },
+    "BE": {
+     "right": "free"
+    },
+    "BG": {
+     "right": "free"
+    },
+    "CH": {
+     "right": "free"
+    },
+    "CY": {
+     "right": "free"
+    },
+    "CZ": {
+     "right": "free"
+    },
+    "DE": {
+     "right": "free"
+    },
+    "DK": {
+     "right": "free"
+    },
+    "EE": {
+     "right": "free"
+    },
+    "ES": {
+     "right": "free"
+    },
+    "FI": {
+     "right": "free"
+    },
+    "FR": {
+     "right": "free"
+    },
+    "GR": {
+     "right": "free"
+    },
+    "HR": {
+     "right": "free"
+    },
+    "HU": {
+     "right": "free"
+    },
+    "IE": {
+     "right": "free"
+    },
+    "IS": {
+     "right": "free"
+    },
+    "IT": {
+     "right": "free"
+    },
+    "LI": {
+     "right": "free"
+    },
+    "LT": {
+     "right": "free"
+    },
+    "LU": {
+     "right": "free"
+    },
+    "LV": {
+     "right": "free"
+    },
+    "MT": {
+     "right": "free"
+    },
+    "NL": {
+     "right": "free"
+    },
+    "NO": {
+     "right": "free"
+    },
+    "PL": {
+     "right": "free"
+    },
+    "PT": {
+     "right": "free"
+    },
+    "RO": {
+     "right": "free"
+    },
+    "SE": {
+     "right": "free"
+    },
+    "SI": {
+     "right": "free"
+    },
+    "SK": {
+     "right": "free"
+    }
+   },
+   "others": {
+    "right": "permit",
+    "route": "Work Permit"
+   }
+  },
+  "GL": {
+   "passports": {
+    "FI": {
+     "right": "free"
+    },
+    "IS": {
+     "right": "free"
+    },
+    "NO": {
+     "right": "free"
+    },
+    "SE": {
+     "right": "free"
+    }
+   },
+   "others": {
+    "right": "permit",
+    "route": "Residence and work permit"
+   }
+  },
+  "GM": {
+   "groups": [
+    "ecowas"
+   ],
+   "passports": {
+    "BJ": {
+     "right": "free"
+    },
+    "CV": {
+     "right": "free"
+    },
+    "CI": {
+     "right": "free"
+    },
+    "GM": {
+     "right": "free"
+    },
+    "GH": {
+     "right": "free"
+    },
+    "GN": {
+     "right": "free"
+    },
+    "GW": {
+     "right": "free"
+    },
+    "LR": {
+     "right": "free"
+    },
+    "NG": {
+     "right": "free"
+    },
+    "SN": {
+     "right": "free"
+    },
+    "SL": {
+     "right": "free"
+    },
+    "TG": {
+     "right": "free"
+    }
+   },
+   "others": {
+    "right": "permit",
+    "route": "Expatriate quota clearance"
+   }
+  },
+  "GN": {
+   "groups": [
+    "ecowas"
+   ],
+   "passports": {
+    "BJ": {
+     "right": "free"
+    },
+    "CV": {
+     "right": "free"
+    },
+    "CI": {
+     "right": "free"
+    },
+    "GM": {
+     "right": "free"
+    },
+    "GH": {
+     "right": "free"
+    },
+    "GN": {
+     "right": "free"
+    },
+    "GW": {
+     "right": "free"
+    },
+    "LR": {
+     "right": "free"
+    },
+    "NG": {
+     "right": "free"
+    },
+    "SN": {
+     "right": "free"
+    },
+    "SL": {
+     "right": "free"
+    },
+    "TG": {
+     "right": "free"
+    }
+   },
+   "others": {
+    "right": "permit",
+    "route": "Permis de travail (service public d’emploi)"
+   }
+  },
+  "GP": {
+   "groups": [
+    "eea"
+   ],
+   "passports": {
+    "AT": {
+     "right": "free"
+    },
+    "BE": {
+     "right": "free"
+    },
+    "BG": {
+     "right": "free"
+    },
+    "CH": {
+     "right": "free"
+    },
+    "CY": {
+     "right": "free"
+    },
+    "CZ": {
+     "right": "free"
+    },
+    "DE": {
+     "right": "free"
+    },
+    "DK": {
+     "right": "free"
+    },
+    "EE": {
+     "right": "free"
+    },
+    "ES": {
+     "right": "free"
+    },
+    "FI": {
+     "right": "free"
+    },
+    "FR": {
+     "right": "free"
+    },
+    "GR": {
+     "right": "free"
+    },
+    "HR": {
+     "right": "free"
+    },
+    "HU": {
+     "right": "free"
+    },
+    "IE": {
+     "right": "free"
+    },
+    "IS": {
+     "right": "free"
+    },
+    "IT": {
+     "right": "free"
+    },
+    "LI": {
+     "right": "free"
+    },
+    "LT": {
+     "right": "free"
+    },
+    "LU": {
+     "right": "free"
+    },
+    "LV": {
+     "right": "free"
+    },
+    "MT": {
+     "right": "free"
+    },
+    "NL": {
+     "right": "free"
+    },
+    "NO": {
+     "right": "free"
+    },
+    "PL": {
+     "right": "free"
+    },
+    "PT": {
+     "right": "free"
+    },
+    "RO": {
+     "right": "free"
+    },
+    "SE": {
+     "right": "free"
+    },
+    "SI": {
+     "right": "free"
+    },
+    "SK": {
+     "right": "free"
+    }
+   },
+   "others": {
+    "right": "permit",
+    "route": "Carte de séjour « talent – profession artistique et culturelle »",
+    "days": 90
+   }
+  },
+  "GQ": {
+   "passports": {},
+   "others": {
+    "right": "permit",
+    "route": "Permiso de trabajo y permiso de residencia"
+   }
+  },
+  "GR": {
+   "groups": [
+    "eea"
+   ],
+   "passports": {
+    "AT": {
+     "right": "free"
+    },
+    "BE": {
+     "right": "free"
+    },
+    "BG": {
+     "right": "free"
+    },
+    "CH": {
+     "right": "free"
+    },
+    "CY": {
+     "right": "free"
+    },
+    "CZ": {
+     "right": "free"
+    },
+    "DE": {
+     "right": "free"
+    },
+    "DK": {
+     "right": "free"
+    },
+    "EE": {
+     "right": "free"
+    },
+    "ES": {
+     "right": "free"
+    },
+    "FI": {
+     "right": "free"
+    },
+    "FR": {
+     "right": "free"
+    },
+    "GR": {
+     "right": "free"
+    },
+    "HR": {
+     "right": "free"
+    },
+    "HU": {
+     "right": "free"
+    },
+    "IE": {
+     "right": "free"
+    },
+    "IS": {
+     "right": "free"
+    },
+    "IT": {
+     "right": "free"
+    },
+    "LI": {
+     "right": "free"
+    },
+    "LT": {
+     "right": "free"
+    },
+    "LU": {
+     "right": "free"
+    },
+    "LV": {
+     "right": "free"
+    },
+    "MT": {
+     "right": "free"
+    },
+    "NL": {
+     "right": "free"
+    },
+    "NO": {
+     "right": "free"
+    },
+    "PL": {
+     "right": "free"
+    },
+    "PT": {
+     "right": "free"
+    },
+    "RO": {
+     "right": "free"
+    },
+    "SE": {
+     "right": "free"
+    },
+    "SI": {
+     "right": "free"
+    },
+    "SK": {
+     "right": "free"
+    }
+   },
+   "others": {
+    "right": "permit",
+    "route": "Εθνική θεώρηση εισόδου για πνευματικούς δημιουργούς (Ζ.3)"
+   }
+  },
+  "GS": {
+   "passports": {
+    "GB": {
+     "right": "permit",
+     "route": "Entry Permit for work"
+    },
+    "AI": {
+     "right": "permit",
+     "route": "Entry Permit for work"
+    },
+    "BM": {
+     "right": "permit",
+     "route": "Entry Permit for work"
+    },
+    "FK": {
+     "right": "permit",
+     "route": "Entry Permit for work"
+    },
+    "GG": {
+     "right": "permit",
+     "route": "Entry Permit for work"
+    },
+    "GI": {
+     "right": "permit",
+     "route": "Entry Permit for work"
+    },
+    "IM": {
+     "right": "permit",
+     "route": "Entry Permit for work"
+    },
+    "IO": {
+     "right": "permit",
+     "route": "Entry Permit for work"
+    },
+    "JE": {
+     "right": "permit",
+     "route": "Entry Permit for work"
+    },
+    "KY": {
+     "right": "permit",
+     "route": "Entry Permit for work"
+    },
+    "MS": {
+     "right": "permit",
+     "route": "Entry Permit for work"
+    },
+    "PN": {
+     "right": "permit",
+     "route": "Entry Permit for work"
+    },
+    "SH": {
+     "right": "permit",
+     "route": "Entry Permit for work"
+    },
+    "TC": {
+     "right": "permit",
+     "route": "Entry Permit for work"
+    },
+    "VG": {
+     "right": "permit",
+     "route": "Entry Permit for work"
+    }
+   },
+   "others": {
+    "right": "permit",
+    "route": "Entry Permit for work"
+   }
+  },
+  "GT": {
+   "passports": {},
+   "others": {
+    "right": "permit",
+    "route": "Autorización de presentación de artistas extranjeros (Dirección de Espectáculos Públicos)"
+   }
+  },
+  "GU": {
+   "groups": [
+    "us"
+   ],
+   "passports": {
+    "FM": {
+     "right": "free"
+    },
+    "MH": {
+     "right": "free"
+    },
+    "PW": {
+     "right": "free"
+    }
+   },
+   "others": {
+    "right": "permit",
+    "route": "O-1 (extraordinary ability in the arts, or extraordinary achievement in motion pictures or television)"
+   }
+  },
+  "GY": {
+   "groups": [
+    "csme"
+   ],
+   "passports": {
+    "AG": {
+     "right": "permit",
+     "route": "CARICOM Skills Certificate"
+    },
+    "BB": {
+     "right": "permit",
+     "route": "CARICOM Skills Certificate"
+    },
+    "BZ": {
+     "right": "permit",
+     "route": "CARICOM Skills Certificate"
+    },
+    "DM": {
+     "right": "permit",
+     "route": "CARICOM Skills Certificate"
+    },
+    "GD": {
+     "right": "permit",
+     "route": "CARICOM Skills Certificate"
+    },
+    "GY": {
+     "right": "permit",
+     "route": "CARICOM Skills Certificate"
+    },
+    "JM": {
+     "right": "permit",
+     "route": "CARICOM Skills Certificate"
+    },
+    "KN": {
+     "right": "permit",
+     "route": "CARICOM Skills Certificate"
+    },
+    "LC": {
+     "right": "permit",
+     "route": "CARICOM Skills Certificate"
+    },
+    "VC": {
+     "right": "permit",
+     "route": "CARICOM Skills Certificate"
+    },
+    "SR": {
+     "right": "permit",
+     "route": "CARICOM Skills Certificate"
+    },
+    "TT": {
+     "right": "permit",
+     "route": "CARICOM Skills Certificate"
+    }
+   },
+   "others": {
+    "right": "permit",
+    "route": "Landing Permit for Employment Status"
+   }
+  },
+  "HK": {
+   "passports": {
+    "CN": {
+     "right": "permit",
+     "route": "Admission Scheme for Mainland Talents and Professionals",
+     "days": 14
+    },
+    "MO": {
+     "right": "permit",
+     "route": "Employment visa",
+     "days": 14
+    }
+   },
+   "others": {
+    "right": "permit",
+    "route": "Employment visa",
+    "days": 14
+   }
+  },
+  "HN": {
+   "passports": {},
+   "others": {
+    "right": "permit",
+    "route": "Permiso especial de permanencia (actividades comerciales o de espectáculos públicos)"
+   }
+  },
+  "HR": {
+   "groups": [
+    "eea"
+   ],
+   "passports": {
+    "AT": {
+     "right": "free"
+    },
+    "BE": {
+     "right": "free"
+    },
+    "BG": {
+     "right": "free"
+    },
+    "CH": {
+     "right": "free"
+    },
+    "CY": {
+     "right": "free"
+    },
+    "CZ": {
+     "right": "free"
+    },
+    "DE": {
+     "right": "free"
+    },
+    "DK": {
+     "right": "free"
+    },
+    "EE": {
+     "right": "free"
+    },
+    "ES": {
+     "right": "free"
+    },
+    "FI": {
+     "right": "free"
+    },
+    "FR": {
+     "right": "free"
+    },
+    "GR": {
+     "right": "free"
+    },
+    "HR": {
+     "right": "free"
+    },
+    "HU": {
+     "right": "free"
+    },
+    "IE": {
+     "right": "free"
+    },
+    "IS": {
+     "right": "free"
+    },
+    "IT": {
+     "right": "free"
+    },
+    "LI": {
+     "right": "free"
+    },
+    "LT": {
+     "right": "free"
+    },
+    "LU": {
+     "right": "free"
+    },
+    "LV": {
+     "right": "free"
+    },
+    "MT": {
+     "right": "free"
+    },
+    "NL": {
+     "right": "free"
+    },
+    "NO": {
+     "right": "free"
+    },
+    "PL": {
+     "right": "free"
+    },
+    "PT": {
+     "right": "free"
+    },
+    "RO": {
+     "right": "free"
+    },
+    "SE": {
+     "right": "free"
+    },
+    "SI": {
+     "right": "free"
+    },
+    "SK": {
+     "right": "free"
+    },
+    "AU": {
+     "right": "permit",
+     "route": "Dozvola za boravak i rad",
+     "days": 90,
+     "within": 180
+    },
+    "CA": {
+     "right": "permit",
+     "route": "Dozvola za boravak i rad",
+     "days": 90,
+     "within": 180
+    },
+    "CL": {
+     "right": "permit",
+     "route": "Dozvola za boravak i rad",
+     "days": 90,
+     "within": 180
+    },
+    "CO": {
+     "right": "permit",
+     "route": "Dozvola za boravak i rad",
+     "days": 90,
+     "within": 180
+    },
+    "CR": {
+     "right": "permit",
+     "route": "Dozvola za boravak i rad",
+     "days": 90,
+     "within": 180
+    },
+    "IL": {
+     "right": "permit",
+     "route": "Dozvola za boravak i rad",
+     "days": 90,
+     "within": 180
+    },
+    "JP": {
+     "right": "permit",
+     "route": "Dozvola za boravak i rad",
+     "days": 90,
+     "within": 180
+    },
+    "KR": {
+     "right": "permit",
+     "route": "Dozvola za boravak i rad",
+     "days": 90,
+     "within": 180
+    },
+    "MX": {
+     "right": "permit",
+     "route": "Dozvola za boravak i rad",
+     "days": 90,
+     "within": 180
+    },
+    "NZ": {
+     "right": "permit",
+     "route": "Dozvola za boravak i rad",
+     "days": 90,
+     "within": 180
+    },
+    "TR": {
+     "right": "permit",
+     "route": "Dozvola za boravak i rad",
+     "days": 90,
+     "within": 180
+    },
+    "GB": {
+     "right": "permit",
+     "route": "Dozvola za boravak i rad",
+     "days": 90,
+     "within": 180
+    },
+    "US": {
+     "right": "permit",
+     "route": "Dozvola za boravak i rad",
+     "days": 90,
+     "within": 180
+    }
+   },
+   "others": {
+    "right": "permit",
+    "route": "Dozvola za boravak i rad"
+   }
+  },
+  "HU": {
+   "groups": [
+    "eea"
+   ],
+   "passports": {
+    "AT": {
+     "right": "free"
+    },
+    "BE": {
+     "right": "free"
+    },
+    "BG": {
+     "right": "free"
+    },
+    "CH": {
+     "right": "free"
+    },
+    "CY": {
+     "right": "free"
+    },
+    "CZ": {
+     "right": "free"
+    },
+    "DE": {
+     "right": "free"
+    },
+    "DK": {
+     "right": "free"
+    },
+    "EE": {
+     "right": "free"
+    },
+    "ES": {
+     "right": "free"
+    },
+    "FI": {
+     "right": "free"
+    },
+    "FR": {
+     "right": "free"
+    },
+    "GR": {
+     "right": "free"
+    },
+    "HR": {
+     "right": "free"
+    },
+    "HU": {
+     "right": "free"
+    },
+    "IE": {
+     "right": "free"
+    },
+    "IS": {
+     "right": "free"
+    },
+    "IT": {
+     "right": "free"
+    },
+    "LI": {
+     "right": "free"
+    },
+    "LT": {
+     "right": "free"
+    },
+    "LU": {
+     "right": "free"
+    },
+    "LV": {
+     "right": "free"
+    },
+    "MT": {
+     "right": "free"
+    },
+    "NL": {
+     "right": "free"
+    },
+    "NO": {
+     "right": "free"
+    },
+    "PL": {
+     "right": "free"
+    },
+    "PT": {
+     "right": "free"
+    },
+    "RO": {
+     "right": "free"
+    },
+    "SE": {
+     "right": "free"
+    },
+    "SI": {
+     "right": "free"
+    },
+    "SK": {
+     "right": "free"
+    }
+   },
+   "others": {
+    "right": "permit",
+    "route": "Magyar Kártya (előadóművész)"
+   }
+  },
+  "ID": {
+   "passports": {},
+   "others": {
+    "right": "permit",
+    "route": "C7 Visa Kunjungan Penampilan Seni dan Budaya"
+   }
+  },
+  "IE": {
+   "groups": [
+    "eea"
+   ],
+   "passports": {
+    "AT": {
+     "right": "free"
+    },
+    "BE": {
+     "right": "free"
+    },
+    "BG": {
+     "right": "free"
+    },
+    "CH": {
+     "right": "free"
+    },
+    "CY": {
+     "right": "free"
+    },
+    "CZ": {
+     "right": "free"
+    },
+    "DE": {
+     "right": "free"
+    },
+    "DK": {
+     "right": "free"
+    },
+    "EE": {
+     "right": "free"
+    },
+    "ES": {
+     "right": "free"
+    },
+    "FI": {
+     "right": "free"
+    },
+    "FR": {
+     "right": "free"
+    },
+    "GR": {
+     "right": "free"
+    },
+    "HR": {
+     "right": "free"
+    },
+    "HU": {
+     "right": "free"
+    },
+    "IE": {
+     "right": "free"
+    },
+    "IS": {
+     "right": "free"
+    },
+    "IT": {
+     "right": "free"
+    },
+    "LI": {
+     "right": "free"
+    },
+    "LT": {
+     "right": "free"
+    },
+    "LU": {
+     "right": "free"
+    },
+    "LV": {
+     "right": "free"
+    },
+    "MT": {
+     "right": "free"
+    },
+    "NL": {
+     "right": "free"
+    },
+    "NO": {
+     "right": "free"
+    },
+    "PL": {
+     "right": "free"
+    },
+    "PT": {
+     "right": "free"
+    },
+    "RO": {
+     "right": "free"
+    },
+    "SE": {
+     "right": "free"
+    },
+    "SI": {
+     "right": "free"
+    },
+    "SK": {
+     "right": "free"
+    },
+    "GB": {
+     "right": "free"
+    }
+   },
+   "others": {
+    "right": "permit",
+    "route": "Atypical Working Scheme permission (beyond 90 days, an Employment Permit)"
+   }
+  },
+  "IL": {
+   "passports": {},
+   "others": {
+    "right": "permit",
+    "route": "B/1 work visa (foreign artist)"
+   }
+  },
+  "IM": {
+   "passports": {
+    "GB": {
+     "right": "permit",
+     "route": "Work permit (Control of Employment)",
+     "days": 48,
+     "within": 365
+    },
+    "IE": {
+     "right": "permit",
+     "route": "Work permit (Control of Employment)",
+     "days": 48,
+     "within": 365
+    }
+   },
+   "others": {
+    "right": "permit",
+    "route": "Tier 5 (Temporary Worker – Creative and Sporting) visa"
+   }
+  },
+  "IN": {
+   "passports": {
+    "NP": {
+     "right": "free"
+    }
+   },
+   "others": {
+    "right": "permit",
+    "route": "Employment Visa"
+   }
+  },
+  "IO": {
+   "passports": {
+    "GB": {
+     "right": "permit",
+     "route": "Permit to enter (BIOT Administration)"
+    },
+    "AI": {
+     "right": "permit",
+     "route": "Permit to enter (BIOT Administration)"
+    },
+    "BM": {
+     "right": "permit",
+     "route": "Permit to enter (BIOT Administration)"
+    },
+    "FK": {
+     "right": "permit",
+     "route": "Permit to enter (BIOT Administration)"
+    },
+    "GG": {
+     "right": "permit",
+     "route": "Permit to enter (BIOT Administration)"
+    },
+    "GI": {
+     "right": "permit",
+     "route": "Permit to enter (BIOT Administration)"
+    },
+    "GS": {
+     "right": "permit",
+     "route": "Permit to enter (BIOT Administration)"
+    },
+    "IM": {
+     "right": "permit",
+     "route": "Permit to enter (BIOT Administration)"
+    },
+    "JE": {
+     "right": "permit",
+     "route": "Permit to enter (BIOT Administration)"
+    },
+    "KY": {
+     "right": "permit",
+     "route": "Permit to enter (BIOT Administration)"
+    },
+    "MS": {
+     "right": "permit",
+     "route": "Permit to enter (BIOT Administration)"
+    },
+    "PN": {
+     "right": "permit",
+     "route": "Permit to enter (BIOT Administration)"
+    },
+    "SH": {
+     "right": "permit",
+     "route": "Permit to enter (BIOT Administration)"
+    },
+    "TC": {
+     "right": "permit",
+     "route": "Permit to enter (BIOT Administration)"
+    },
+    "VG": {
+     "right": "permit",
+     "route": "Permit to enter (BIOT Administration)"
+    }
+   },
+   "others": {
+    "right": "permit",
+    "route": "Permit to enter (BIOT Administration)"
+   }
+  },
+  "IQ": {
+   "passports": {},
+   "others": {
+    "right": "permit",
+    "route": "Work permit (Ministry of Labour and Social Affairs)"
+   }
+  },
+  "IR": {
+   "passports": {},
+   "others": {
+    "right": "permit",
+    "route": "Work permit (Department General for Employment of Foreign Nationals)"
+   }
+  },
+  "IS": {
+   "groups": [
+    "eea"
+   ],
+   "passports": {
+    "AT": {
+     "right": "free"
+    },
+    "BE": {
+     "right": "free"
+    },
+    "BG": {
+     "right": "free"
+    },
+    "CH": {
+     "right": "free"
+    },
+    "CY": {
+     "right": "free"
+    },
+    "CZ": {
+     "right": "free"
+    },
+    "DE": {
+     "right": "free"
+    },
+    "DK": {
+     "right": "free"
+    },
+    "EE": {
+     "right": "free"
+    },
+    "ES": {
+     "right": "free"
+    },
+    "FI": {
+     "right": "free"
+    },
+    "FR": {
+     "right": "free"
+    },
+    "GR": {
+     "right": "free"
+    },
+    "HR": {
+     "right": "free"
+    },
+    "HU": {
+     "right": "free"
+    },
+    "IE": {
+     "right": "free"
+    },
+    "IS": {
+     "right": "free"
+    },
+    "IT": {
+     "right": "free"
+    },
+    "LI": {
+     "right": "free"
+    },
+    "LT": {
+     "right": "free"
+    },
+    "LU": {
+     "right": "free"
+    },
+    "LV": {
+     "right": "free"
+    },
+    "MT": {
+     "right": "free"
+    },
+    "NL": {
+     "right": "free"
+    },
+    "NO": {
+     "right": "free"
+    },
+    "PL": {
+     "right": "free"
+    },
+    "PT": {
+     "right": "free"
+    },
+    "RO": {
+     "right": "free"
+    },
+    "SE": {
+     "right": "free"
+    },
+    "SI": {
+     "right": "free"
+    },
+    "SK": {
+     "right": "free"
+    }
+   },
+   "others": {
+    "right": "permit",
+    "route": "Work permit and residence permit",
+    "days": 90,
+    "within": 365
+   }
+  },
+  "IT": {
+   "groups": [
+    "eea"
+   ],
+   "passports": {
+    "AT": {
+     "right": "free"
+    },
+    "BE": {
+     "right": "free"
+    },
+    "BG": {
+     "right": "free"
+    },
+    "CH": {
+     "right": "free"
+    },
+    "CY": {
+     "right": "free"
+    },
+    "CZ": {
+     "right": "free"
+    },
+    "DE": {
+     "right": "free"
+    },
+    "DK": {
+     "right": "free"
+    },
+    "EE": {
+     "right": "free"
+    },
+    "ES": {
+     "right": "free"
+    },
+    "FI": {
+     "right": "free"
+    },
+    "FR": {
+     "right": "free"
+    },
+    "GR": {
+     "right": "free"
+    },
+    "HR": {
+     "right": "free"
+    },
+    "HU": {
+     "right": "free"
+    },
+    "IE": {
+     "right": "free"
+    },
+    "IS": {
+     "right": "free"
+    },
+    "IT": {
+     "right": "free"
+    },
+    "LI": {
+     "right": "free"
+    },
+    "LT": {
+     "right": "free"
+    },
+    "LU": {
+     "right": "free"
+    },
+    "LV": {
+     "right": "free"
+    },
+    "MT": {
+     "right": "free"
+    },
+    "NL": {
+     "right": "free"
+    },
+    "NO": {
+     "right": "free"
+    },
+    "PL": {
+     "right": "free"
+    },
+    "PT": {
+     "right": "free"
+    },
+    "RO": {
+     "right": "free"
+    },
+    "SE": {
+     "right": "free"
+    },
+    "SI": {
+     "right": "free"
+    },
+    "SK": {
+     "right": "free"
+    }
+   },
+   "others": {
+    "right": "permit",
+    "route": "Nulla osta al lavoro per lavoratori dello spettacolo (art. 27 TUI)"
+   }
+  },
+  "JE": {
+   "passports": {
+    "GB": {
+     "right": "free"
+    },
+    "IE": {
+     "right": "free"
+    }
+   },
+   "others": {
+    "right": "permit",
+    "route": "Work permit (Jersey Customs and Immigration Service) and visa"
+   }
+  },
+  "JM": {
+   "groups": [
+    "csme"
+   ],
+   "passports": {
+    "AG": {
+     "right": "permit",
+     "route": "CARICOM Skills Certificate"
+    },
+    "BB": {
+     "right": "permit",
+     "route": "CARICOM Skills Certificate"
+    },
+    "BZ": {
+     "right": "permit",
+     "route": "CARICOM Skills Certificate"
+    },
+    "DM": {
+     "right": "permit",
+     "route": "CARICOM Skills Certificate"
+    },
+    "GD": {
+     "right": "permit",
+     "route": "CARICOM Skills Certificate"
+    },
+    "GY": {
+     "right": "permit",
+     "route": "CARICOM Skills Certificate"
+    },
+    "JM": {
+     "right": "permit",
+     "route": "CARICOM Skills Certificate"
+    },
+    "KN": {
+     "right": "permit",
+     "route": "CARICOM Skills Certificate"
+    },
+    "LC": {
+     "right": "permit",
+     "route": "CARICOM Skills Certificate"
+    },
+    "VC": {
+     "right": "permit",
+     "route": "CARICOM Skills Certificate"
+    },
+    "SR": {
+     "right": "permit",
+     "route": "CARICOM Skills Certificate"
+    },
+    "TT": {
+     "right": "permit",
+     "route": "CARICOM Skills Certificate"
+    }
+   },
+   "others": {
+    "right": "permit",
+    "route": "Work Permit (Ministry of Labour and Social Security)"
+   }
+  },
+  "JO": {
+   "passports": {},
+   "others": {
+    "right": "permit",
+    "route": "Work permit (Ministry of Labour)"
+   }
+  },
+  "JP": {
+   "passports": {},
+   "others": {
+    "right": "permit",
+    "route": "在留資格「興行」"
+   }
+  },
+  "KE": {
+   "passports": {},
+   "others": {
+    "right": "permit",
+    "route": "Special Pass (Director of Immigration Services)"
+   }
+  },
+  "KG": {
+   "groups": [
+    "eaeu"
+   ],
+   "passports": {
+    "AM": {
+     "right": "free"
+    },
+    "BY": {
+     "right": "free"
+    },
+    "KZ": {
+     "right": "free"
+    },
+    "KG": {
+     "right": "free"
+    },
+    "RU": {
+     "right": "free"
+    }
+   },
+   "others": {
+    "right": "permit",
+    "route": "Единое разрешение на пребывание и трудовую деятельность"
+   }
+  },
+  "KH": {
+   "passports": {},
+   "others": {
+    "right": "permit",
+    "route": "Work permit and employment card (MLVT)"
+   }
+  },
+  "KI": {
+   "passports": {},
+   "others": {
+    "right": "permit",
+    "route": "Work permit (Ministry of Foreign Affairs and Immigration)"
+   }
+  },
+  "KN": {
+   "groups": [
+    "oecs",
+    "csme"
+   ],
+   "passports": {
+    "AG": {
+     "right": "free"
+    },
+    "BB": {
+     "right": "permit",
+     "route": "CARICOM Skills Certificate"
+    },
+    "BZ": {
+     "right": "permit",
+     "route": "CARICOM Skills Certificate"
+    },
+    "DM": {
+     "right": "free"
+    },
+    "GD": {
+     "right": "free"
+    },
+    "GY": {
+     "right": "permit",
+     "route": "CARICOM Skills Certificate"
+    },
+    "JM": {
+     "right": "permit",
+     "route": "CARICOM Skills Certificate"
+    },
+    "KN": {
+     "right": "free"
+    },
+    "LC": {
+     "right": "free"
+    },
+    "VC": {
+     "right": "free"
+    },
+    "SR": {
+     "right": "permit",
+     "route": "CARICOM Skills Certificate"
+    },
+    "TT": {
+     "right": "permit",
+     "route": "CARICOM Skills Certificate"
+    },
+    "MS": {
+     "right": "free"
+    }
+   },
+   "others": {
+    "right": "permit",
+    "route": "Work Permit (Ministry of National Security)"
+   }
+  },
+  "KR": {
+   "passports": {},
+   "others": {
+    "right": "permit",
+    "route": "예술흥행(E-6-1) 체류자격"
+   }
+  },
+  "KW": {
+   "passports": {},
+   "others": {
+    "right": "permit",
+    "route": "سمة دخول للعمل في القطاع الاهلي"
+   }
+  },
+  "KY": {
+   "passports": {},
+   "others": {
+    "right": "permit",
+    "route": "Temporary Work Permit (WORC)"
+   }
+  },
+  "KZ": {
+   "groups": [
+    "eaeu"
+   ],
+   "passports": {
+    "AM": {
+     "right": "free"
+    },
+    "BY": {
+     "right": "free"
+    },
+    "KZ": {
+     "right": "free"
+    },
+    "KG": {
+     "right": "free"
+    },
+    "RU": {
+     "right": "free"
+    }
+   },
+   "others": {
+    "right": "free"
+   }
+  },
+  "LA": {
+   "passports": {},
+   "others": {
+    "right": "permit",
+    "route": "Permit for Foreign Labour to Work in Lao"
+   }
+  },
+  "LB": {
+   "passports": {},
+   "others": {
+    "right": "permit",
+    "route": "Artist entry visa (General Security, artists department)"
+   }
+  },
+  "LC": {
+   "groups": [
+    "oecs",
+    "csme"
+   ],
+   "passports": {
+    "AG": {
+     "right": "free"
+    },
+    "BB": {
+     "right": "permit",
+     "route": "CARICOM Skills Certificate"
+    },
+    "BZ": {
+     "right": "permit",
+     "route": "CARICOM Skills Certificate"
+    },
+    "DM": {
+     "right": "free"
+    },
+    "GD": {
+     "right": "free"
+    },
+    "GY": {
+     "right": "permit",
+     "route": "CARICOM Skills Certificate"
+    },
+    "JM": {
+     "right": "permit",
+     "route": "CARICOM Skills Certificate"
+    },
+    "KN": {
+     "right": "free"
+    },
+    "LC": {
+     "right": "free"
+    },
+    "VC": {
+     "right": "free"
+    },
+    "SR": {
+     "right": "permit",
+     "route": "CARICOM Skills Certificate"
+    },
+    "TT": {
+     "right": "permit",
+     "route": "CARICOM Skills Certificate"
+    },
+    "MS": {
+     "right": "free"
+    }
+   },
+   "others": {
+    "right": "permit",
+    "route": "Work Permit (Labour Act, s. 317)"
+   }
+  },
+  "LI": {
+   "passports": {
+    "AT": {
+     "right": "permit",
+     "route": "Kurzaufenthaltsbewilligung (Art. 15 PFZG)",
+     "days": 90,
+     "within": 365
+    },
+    "BE": {
+     "right": "permit",
+     "route": "Kurzaufenthaltsbewilligung (Art. 15 PFZG)",
+     "days": 90,
+     "within": 365
+    },
+    "BG": {
+     "right": "permit",
+     "route": "Kurzaufenthaltsbewilligung (Art. 15 PFZG)",
+     "days": 90,
+     "within": 365
+    },
+    "CH": {
+     "right": "permit",
+     "route": "Kurzaufenthaltsbewilligung (Art. 15 PFZG)",
+     "days": 90,
+     "within": 365
+    },
+    "CY": {
+     "right": "permit",
+     "route": "Kurzaufenthaltsbewilligung (Art. 15 PFZG)",
+     "days": 90,
+     "within": 365
+    },
+    "CZ": {
+     "right": "permit",
+     "route": "Kurzaufenthaltsbewilligung (Art. 15 PFZG)",
+     "days": 90,
+     "within": 365
+    },
+    "DE": {
+     "right": "permit",
+     "route": "Kurzaufenthaltsbewilligung (Art. 15 PFZG)",
+     "days": 90,
+     "within": 365
+    },
+    "DK": {
+     "right": "permit",
+     "route": "Kurzaufenthaltsbewilligung (Art. 15 PFZG)",
+     "days": 90,
+     "within": 365
+    },
+    "EE": {
+     "right": "permit",
+     "route": "Kurzaufenthaltsbewilligung (Art. 15 PFZG)",
+     "days": 90,
+     "within": 365
+    },
+    "ES": {
+     "right": "permit",
+     "route": "Kurzaufenthaltsbewilligung (Art. 15 PFZG)",
+     "days": 90,
+     "within": 365
+    },
+    "FI": {
+     "right": "permit",
+     "route": "Kurzaufenthaltsbewilligung (Art. 15 PFZG)",
+     "days": 90,
+     "within": 365
+    },
+    "FR": {
+     "right": "permit",
+     "route": "Kurzaufenthaltsbewilligung (Art. 15 PFZG)",
+     "days": 90,
+     "within": 365
+    },
+    "GR": {
+     "right": "permit",
+     "route": "Kurzaufenthaltsbewilligung (Art. 15 PFZG)",
+     "days": 90,
+     "within": 365
+    },
+    "HR": {
+     "right": "permit",
+     "route": "Kurzaufenthaltsbewilligung (Art. 15 PFZG)",
+     "days": 90,
+     "within": 365
+    },
+    "HU": {
+     "right": "permit",
+     "route": "Kurzaufenthaltsbewilligung (Art. 15 PFZG)",
+     "days": 90,
+     "within": 365
+    },
+    "IE": {
+     "right": "permit",
+     "route": "Kurzaufenthaltsbewilligung (Art. 15 PFZG)",
+     "days": 90,
+     "within": 365
+    },
+    "IS": {
+     "right": "permit",
+     "route": "Kurzaufenthaltsbewilligung (Art. 15 PFZG)",
+     "days": 90,
+     "within": 365
+    },
+    "IT": {
+     "right": "permit",
+     "route": "Kurzaufenthaltsbewilligung (Art. 15 PFZG)",
+     "days": 90,
+     "within": 365
+    },
+    "LT": {
+     "right": "permit",
+     "route": "Kurzaufenthaltsbewilligung (Art. 15 PFZG)",
+     "days": 90,
+     "within": 365
+    },
+    "LU": {
+     "right": "permit",
+     "route": "Kurzaufenthaltsbewilligung (Art. 15 PFZG)",
+     "days": 90,
+     "within": 365
+    },
+    "LV": {
+     "right": "permit",
+     "route": "Kurzaufenthaltsbewilligung (Art. 15 PFZG)",
+     "days": 90,
+     "within": 365
+    },
+    "MT": {
+     "right": "permit",
+     "route": "Kurzaufenthaltsbewilligung (Art. 15 PFZG)",
+     "days": 90,
+     "within": 365
+    },
+    "NL": {
+     "right": "permit",
+     "route": "Kurzaufenthaltsbewilligung (Art. 15 PFZG)",
+     "days": 90,
+     "within": 365
+    },
+    "NO": {
+     "right": "permit",
+     "route": "Kurzaufenthaltsbewilligung (Art. 15 PFZG)",
+     "days": 90,
+     "within": 365
+    },
+    "PL": {
+     "right": "permit",
+     "route": "Kurzaufenthaltsbewilligung (Art. 15 PFZG)",
+     "days": 90,
+     "within": 365
+    },
+    "PT": {
+     "right": "permit",
+     "route": "Kurzaufenthaltsbewilligung (Art. 15 PFZG)",
+     "days": 90,
+     "within": 365
+    },
+    "RO": {
+     "right": "permit",
+     "route": "Kurzaufenthaltsbewilligung (Art. 15 PFZG)",
+     "days": 90,
+     "within": 365
+    },
+    "SE": {
+     "right": "permit",
+     "route": "Kurzaufenthaltsbewilligung (Art. 15 PFZG)",
+     "days": 90,
+     "within": 365
+    },
+    "SI": {
+     "right": "permit",
+     "route": "Kurzaufenthaltsbewilligung (Art. 15 PFZG)",
+     "days": 90,
+     "within": 365
+    },
+    "SK": {
+     "right": "permit",
+     "route": "Kurzaufenthaltsbewilligung (Art. 15 PFZG)",
+     "days": 90,
+     "within": 365
+    }
+   },
+   "others": {
+    "right": "permit",
+    "route": "Kurzaufenthaltsbewilligung (Art. 25 AuG)",
+    "days": 8,
+    "within": 90
+   }
+  },
+  "LK": {
+   "passports": {},
+   "others": {
+    "right": "permit",
+    "route": "Business Purpose Visa (art, music and dance events)"
+   }
+  },
+  "LR": {
+   "groups": [
+    "ecowas"
+   ],
+   "passports": {
+    "BJ": {
+     "right": "free"
+    },
+    "CV": {
+     "right": "free"
+    },
+    "CI": {
+     "right": "free"
+    },
+    "GM": {
+     "right": "free"
+    },
+    "GH": {
+     "right": "free"
+    },
+    "GN": {
+     "right": "free"
+    },
+    "GW": {
+     "right": "free"
+    },
+    "LR": {
+     "right": "free"
+    },
+    "NG": {
+     "right": "free"
+    },
+    "SN": {
+     "right": "free"
+    },
+    "SL": {
+     "right": "free"
+    },
+    "TG": {
+     "right": "free"
+    }
+   },
+   "others": {
+    "right": "permit",
+    "route": "Alien work permit (Ministry of Labour)"
+   }
+  },
+  "LS": {
+   "passports": {},
+   "others": {
+    "right": "permit",
+    "route": "Work permit (Director, National Employment Service)"
+   }
+  },
+  "LT": {
+   "groups": [
+    "eea"
+   ],
+   "passports": {
+    "AT": {
+     "right": "free"
+    },
+    "BE": {
+     "right": "free"
+    },
+    "BG": {
+     "right": "free"
+    },
+    "CH": {
+     "right": "free"
+    },
+    "CY": {
+     "right": "free"
+    },
+    "CZ": {
+     "right": "free"
+    },
+    "DE": {
+     "right": "free"
+    },
+    "DK": {
+     "right": "free"
+    },
+    "EE": {
+     "right": "free"
+    },
+    "ES": {
+     "right": "free"
+    },
+    "FI": {
+     "right": "free"
+    },
+    "FR": {
+     "right": "free"
+    },
+    "GR": {
+     "right": "free"
+    },
+    "HR": {
+     "right": "free"
+    },
+    "HU": {
+     "right": "free"
+    },
+    "IE": {
+     "right": "free"
+    },
+    "IS": {
+     "right": "free"
+    },
+    "IT": {
+     "right": "free"
+    },
+    "LI": {
+     "right": "free"
+    },
+    "LT": {
+     "right": "free"
+    },
+    "LU": {
+     "right": "free"
+    },
+    "LV": {
+     "right": "free"
+    },
+    "MT": {
+     "right": "free"
+    },
+    "NL": {
+     "right": "free"
+    },
+    "NO": {
+     "right": "free"
+    },
+    "PL": {
+     "right": "free"
+    },
+    "PT": {
+     "right": "free"
+    },
+    "RO": {
+     "right": "free"
+    },
+    "SE": {
+     "right": "free"
+    },
+    "SI": {
+     "right": "free"
+    },
+    "SK": {
+     "right": "free"
+    }
+   },
+   "others": {
+    "right": "permit",
+    "route": "Leidimas laikinai gyventi (temporary residence permit as a performer)"
+   }
+  },
+  "LU": {
+   "groups": [
+    "eea"
+   ],
+   "passports": {
+    "AT": {
+     "right": "free"
+    },
+    "BE": {
+     "right": "free"
+    },
+    "BG": {
+     "right": "free"
+    },
+    "CH": {
+     "right": "free"
+    },
+    "CY": {
+     "right": "free"
+    },
+    "CZ": {
+     "right": "free"
+    },
+    "DE": {
+     "right": "free"
+    },
+    "DK": {
+     "right": "free"
+    },
+    "EE": {
+     "right": "free"
+    },
+    "ES": {
+     "right": "free"
+    },
+    "FI": {
+     "right": "free"
+    },
+    "FR": {
+     "right": "free"
+    },
+    "GR": {
+     "right": "free"
+    },
+    "HR": {
+     "right": "free"
+    },
+    "HU": {
+     "right": "free"
+    },
+    "IE": {
+     "right": "free"
+    },
+    "IS": {
+     "right": "free"
+    },
+    "IT": {
+     "right": "free"
+    },
+    "LI": {
+     "right": "free"
+    },
+    "LT": {
+     "right": "free"
+    },
+    "LU": {
+     "right": "free"
+    },
+    "LV": {
+     "right": "free"
+    },
+    "MT": {
+     "right": "free"
+    },
+    "NL": {
+     "right": "free"
+    },
+    "NO": {
+     "right": "free"
+    },
+    "PL": {
+     "right": "free"
+    },
+    "PT": {
+     "right": "free"
+    },
+    "RO": {
+     "right": "free"
+    },
+    "SE": {
+     "right": "free"
+    },
+    "SI": {
+     "right": "free"
+    },
+    "SK": {
+     "right": "free"
+    }
+   },
+   "others": {
+    "right": "permit",
+    "route": "Autorisation de travail (au-delà de 3 mois, autorisation de séjour en tant que travailleur salarié)",
+    "days": 90,
+    "within": 365
+   }
+  },
+  "LV": {
+   "groups": [
+    "eea"
+   ],
+   "passports": {
+    "AT": {
+     "right": "free"
+    },
+    "BE": {
+     "right": "free"
+    },
+    "BG": {
+     "right": "free"
+    },
+    "CH": {
+     "right": "free"
+    },
+    "CY": {
+     "right": "free"
+    },
+    "CZ": {
+     "right": "free"
+    },
+    "DE": {
+     "right": "free"
+    },
+    "DK": {
+     "right": "free"
+    },
+    "EE": {
+     "right": "free"
+    },
+    "ES": {
+     "right": "free"
+    },
+    "FI": {
+     "right": "free"
+    },
+    "FR": {
+     "right": "free"
+    },
+    "GR": {
+     "right": "free"
+    },
+    "HR": {
+     "right": "free"
+    },
+    "HU": {
+     "right": "free"
+    },
+    "IE": {
+     "right": "free"
+    },
+    "IS": {
+     "right": "free"
+    },
+    "IT": {
+     "right": "free"
+    },
+    "LI": {
+     "right": "free"
+    },
+    "LT": {
+     "right": "free"
+    },
+    "LU": {
+     "right": "free"
+    },
+    "LV": {
+     "right": "free"
+    },
+    "MT": {
+     "right": "free"
+    },
+    "NL": {
+     "right": "free"
+    },
+    "NO": {
+     "right": "free"
+    },
+    "PL": {
+     "right": "free"
+    },
+    "PT": {
+     "right": "free"
+    },
+    "RO": {
+     "right": "free"
+    },
+    "SE": {
+     "right": "free"
+    },
+    "SI": {
+     "right": "free"
+    },
+    "SK": {
+     "right": "free"
+    }
+   },
+   "others": {
+    "right": "permit",
+    "route": "Termiņuzturēšanās atļauja ar tiesībām uz nodarbinātību"
+   }
+  },
+  "LY": {
+   "passports": {},
+   "others": {
+    "right": "permit",
+    "route": "Permit for recruiting foreign labour, then an entry visa for residence and work (Decree No. 212 of 2009; Labour Relations Law No. 12 of 2010)"
+   }
+  },
+  "MA": {
+   "passports": {},
+   "others": {
+    "right": "permit",
+    "route": "Visa du contrat de travail d’étranger (Ministère de l’Emploi)"
+   }
+  },
+  "MC": {
+   "passports": {},
+   "others": {
+    "right": "permit",
+    "route": "Autorisation d'embauchage et permis de travail"
+   }
+  },
+  "MD": {
+   "passports": {},
+   "others": {
+    "right": "permit",
+    "route": "Permis de ședere în scop de muncă"
+   }
+  },
+  "ME": {
+   "passports": {},
+   "others": {
+    "right": "permit",
+    "route": "Dozvola za privremeni boravak i rad",
+    "days": 90,
+    "within": 365
+   }
+  },
+  "MF": {
+   "groups": [
+    "eea"
+   ],
+   "passports": {
+    "AT": {
+     "right": "free"
+    },
+    "BE": {
+     "right": "free"
+    },
+    "BG": {
+     "right": "free"
+    },
+    "CH": {
+     "right": "free"
+    },
+    "CY": {
+     "right": "free"
+    },
+    "CZ": {
+     "right": "free"
+    },
+    "DE": {
+     "right": "free"
+    },
+    "DK": {
+     "right": "free"
+    },
+    "EE": {
+     "right": "free"
+    },
+    "ES": {
+     "right": "free"
+    },
+    "FI": {
+     "right": "free"
+    },
+    "FR": {
+     "right": "free"
+    },
+    "GR": {
+     "right": "free"
+    },
+    "HR": {
+     "right": "free"
+    },
+    "HU": {
+     "right": "free"
+    },
+    "IE": {
+     "right": "free"
+    },
+    "IS": {
+     "right": "free"
+    },
+    "IT": {
+     "right": "free"
+    },
+    "LI": {
+     "right": "free"
+    },
+    "LT": {
+     "right": "free"
+    },
+    "LU": {
+     "right": "free"
+    },
+    "LV": {
+     "right": "free"
+    },
+    "MT": {
+     "right": "free"
+    },
+    "NL": {
+     "right": "free"
+    },
+    "NO": {
+     "right": "free"
+    },
+    "PL": {
+     "right": "free"
+    },
+    "PT": {
+     "right": "free"
+    },
+    "RO": {
+     "right": "free"
+    },
+    "SE": {
+     "right": "free"
+    },
+    "SI": {
+     "right": "free"
+    },
+    "SK": {
+     "right": "free"
+    }
+   },
+   "others": {
+    "right": "permit",
+    "route": "Carte de séjour « talent – profession artistique et culturelle »",
+    "days": 90
+   }
+  },
+  "MG": {
+   "passports": {},
+   "others": {
+    "right": "permit",
+    "route": "Autorisation de travail (Ministère du Travail)"
+   }
+  },
+  "MH": {
+   "passports": {
+    "US": {
+     "right": "free"
+    },
+    "PW": {
+     "right": "free"
+    },
+    "FM": {
+     "right": "free"
+    }
+   },
+   "others": {
+    "right": "permit",
+    "route": "Work permit (Labor Division) and work visa"
+   }
+  },
+  "MK": {
+   "passports": {},
+   "others": {
+    "right": "permit",
+    "route": "Дозвола за привремен престој заради работа (Ministry of Internal Affairs), on the Employment Service Agency's opinion"
+   }
+  },
+  "ML": {
+   "passports": {},
+   "others": {
+    "right": "permit",
+    "route": "Visa du contrat de travail (Direction nationale du travail)"
+   }
+  },
+  "MN": {
+   "passports": {},
+   "others": {
+    "right": "permit",
+    "route": "Work permit (Labour Migration Law)"
+   }
+  },
+  "MO": {
+   "passports": {
+    "CN": {
+     "right": "permit",
+     "route": "Autorização de permanência na qualidade de trabalhador não residente",
+     "days": 45,
+     "within": 180
+    },
+    "HK": {
+     "right": "permit",
+     "route": "Autorização de permanência na qualidade de trabalhador não residente",
+     "days": 45,
+     "within": 180
+    }
+   },
+   "others": {
+    "right": "permit",
+    "route": "Autorização de permanência na qualidade de trabalhador não residente",
+    "days": 45,
+    "within": 180
+   }
+  },
+  "MP": {
+   "groups": [
+    "us"
+   ],
+   "passports": {
+    "FM": {
+     "right": "free"
+    },
+    "MH": {
+     "right": "free"
+    },
+    "PW": {
+     "right": "free"
+    }
+   },
+   "others": {
+    "right": "permit",
+    "route": "O-1 (extraordinary ability in the arts, or extraordinary achievement in motion pictures or television)"
+   }
+  },
+  "MQ": {
+   "groups": [
+    "eea"
+   ],
+   "passports": {
+    "AT": {
+     "right": "free"
+    },
+    "BE": {
+     "right": "free"
+    },
+    "BG": {
+     "right": "free"
+    },
+    "CH": {
+     "right": "free"
+    },
+    "CY": {
+     "right": "free"
+    },
+    "CZ": {
+     "right": "free"
+    },
+    "DE": {
+     "right": "free"
+    },
+    "DK": {
+     "right": "free"
+    },
+    "EE": {
+     "right": "free"
+    },
+    "ES": {
+     "right": "free"
+    },
+    "FI": {
+     "right": "free"
+    },
+    "FR": {
+     "right": "free"
+    },
+    "GR": {
+     "right": "free"
+    },
+    "HR": {
+     "right": "free"
+    },
+    "HU": {
+     "right": "free"
+    },
+    "IE": {
+     "right": "free"
+    },
+    "IS": {
+     "right": "free"
+    },
+    "IT": {
+     "right": "free"
+    },
+    "LI": {
+     "right": "free"
+    },
+    "LT": {
+     "right": "free"
+    },
+    "LU": {
+     "right": "free"
+    },
+    "LV": {
+     "right": "free"
+    },
+    "MT": {
+     "right": "free"
+    },
+    "NL": {
+     "right": "free"
+    },
+    "NO": {
+     "right": "free"
+    },
+    "PL": {
+     "right": "free"
+    },
+    "PT": {
+     "right": "free"
+    },
+    "RO": {
+     "right": "free"
+    },
+    "SE": {
+     "right": "free"
+    },
+    "SI": {
+     "right": "free"
+    },
+    "SK": {
+     "right": "free"
+    }
+   },
+   "others": {
+    "right": "permit",
+    "route": "Carte de séjour « talent – profession artistique et culturelle »",
+    "days": 90
+   }
+  },
+  "MR": {
+   "passports": {},
+   "others": {
+    "right": "permit",
+    "route": "Permis de travail"
+   }
+  },
+  "MS": {
+   "groups": [
+    "oecs"
+   ],
+   "passports": {
+    "AG": {
+     "right": "free"
+    },
+    "DM": {
+     "right": "free"
+    },
+    "GD": {
+     "right": "free"
+    },
+    "KN": {
+     "right": "free"
+    },
+    "LC": {
+     "right": "free"
+    },
+    "VC": {
+     "right": "free"
+    },
+    "MS": {
+     "right": "free"
+    },
+    "GB": {
+     "right": "permit",
+     "route": "Work permit (Labour Department)"
+    },
+    "AI": {
+     "right": "permit",
+     "route": "Work permit (Labour Department)"
+    },
+    "BM": {
+     "right": "permit",
+     "route": "Work permit (Labour Department)"
+    },
+    "FK": {
+     "right": "permit",
+     "route": "Work permit (Labour Department)"
+    },
+    "GG": {
+     "right": "permit",
+     "route": "Work permit (Labour Department)"
+    },
+    "GI": {
+     "right": "permit",
+     "route": "Work permit (Labour Department)"
+    },
+    "GS": {
+     "right": "permit",
+     "route": "Work permit (Labour Department)"
+    },
+    "IM": {
+     "right": "permit",
+     "route": "Work permit (Labour Department)"
+    },
+    "IO": {
+     "right": "permit",
+     "route": "Work permit (Labour Department)"
+    },
+    "JE": {
+     "right": "permit",
+     "route": "Work permit (Labour Department)"
+    },
+    "KY": {
+     "right": "permit",
+     "route": "Work permit (Labour Department)"
+    },
+    "PN": {
+     "right": "permit",
+     "route": "Work permit (Labour Department)"
+    },
+    "SH": {
+     "right": "permit",
+     "route": "Work permit (Labour Department)"
+    },
+    "TC": {
+     "right": "permit",
+     "route": "Work permit (Labour Department)"
+    },
+    "VG": {
+     "right": "permit",
+     "route": "Work permit (Labour Department)"
+    }
+   },
+   "others": {
+    "right": "permit",
+    "route": "Work permit (Labour Department)"
+   }
+  },
+  "MT": {
+   "groups": [
+    "eea"
+   ],
+   "passports": {
+    "AT": {
+     "right": "free"
+    },
+    "BE": {
+     "right": "free"
+    },
+    "BG": {
+     "right": "free"
+    },
+    "CH": {
+     "right": "free"
+    },
+    "CY": {
+     "right": "free"
+    },
+    "CZ": {
+     "right": "free"
+    },
+    "DE": {
+     "right": "free"
+    },
+    "DK": {
+     "right": "free"
+    },
+    "EE": {
+     "right": "free"
+    },
+    "ES": {
+     "right": "free"
+    },
+    "FI": {
+     "right": "free"
+    },
+    "FR": {
+     "right": "free"
+    },
+    "GR": {
+     "right": "free"
+    },
+    "HR": {
+     "right": "free"
+    },
+    "HU": {
+     "right": "free"
+    },
+    "IE": {
+     "right": "free"
+    },
+    "IS": {
+     "right": "free"
+    },
+    "IT": {
+     "right": "free"
+    },
+    "LI": {
+     "right": "free"
+    },
+    "LT": {
+     "right": "free"
+    },
+    "LU": {
+     "right": "free"
+    },
+    "LV": {
+     "right": "free"
+    },
+    "MT": {
+     "right": "free"
+    },
+    "NL": {
+     "right": "free"
+    },
+    "NO": {
+     "right": "free"
+    },
+    "PL": {
+     "right": "free"
+    },
+    "PT": {
+     "right": "free"
+    },
+    "RO": {
+     "right": "free"
+    },
+    "SE": {
+     "right": "free"
+    },
+    "SI": {
+     "right": "free"
+    },
+    "SK": {
+     "right": "free"
+    }
+   },
+   "others": {
+    "right": "permit",
+    "route": "Single Permit"
+   }
+  },
+  "MU": {
+   "passports": {},
+   "others": {
+    "right": "permit",
+    "route": "Work permit and residence permit (Ministry of Labour)"
+   }
+  },
+  "MV": {
+   "passports": {},
+   "others": {
+    "right": "permit",
+    "route": "Work Permit (Work Permit Entry Pass), then the Work Visa"
+   }
+  },
+  "MW": {
+   "passports": {},
+   "others": {
+    "right": "permit",
+    "route": "Temporary Employment Permit"
+   }
+  },
+  "MX": {
+   "passports": {},
+   "others": {
+    "right": "permit",
+    "route": "Visitante con permiso para realizar actividades remuneradas"
+   }
+  },
+  "MY": {
+   "passports": {},
+   "others": {
+    "right": "permit",
+    "route": "Professional Visit Pass (PLIK) through PUSPAL"
+   }
+  },
+  "MZ": {
+   "passports": {},
+   "others": {
+    "right": "permit",
+    "route": "Visto de actividade cultural (on the Ministry of Culture's credential for the show)"
+   }
+  },
+  "NA": {
+   "passports": {},
+   "others": {
+    "right": "permit",
+    "route": "Short-term employment permit"
+   }
+  },
+  "NC": {
+   "passports": {},
+   "others": {
+    "right": "permit",
+    "route": "Autorisation de travail (Direction du Travail et de l’Emploi)"
+   }
+  },
+  "NE": {
+   "passports": {},
+   "others": {
+    "right": "permit",
+    "route": "Visa du contrat de travail (service public de l’emploi)"
+   }
+  },
+  "NF": {
+   "groups": [
+    "au"
+   ],
+   "passports": {
+    "NZ": {
+     "right": "free"
+    }
+   },
+   "others": {
+    "right": "permit",
+    "route": "Temporary Activity visa (subclass 408), Entertainment Activities stream"
+   }
+  },
+  "NG": {
+   "groups": [
+    "ecowas"
+   ],
+   "passports": {
+    "BJ": {
+     "right": "free"
+    },
+    "CV": {
+     "right": "free"
+    },
+    "CI": {
+     "right": "free"
+    },
+    "GM": {
+     "right": "free"
+    },
+    "GH": {
+     "right": "free"
+    },
+    "GN": {
+     "right": "free"
+    },
+    "GW": {
+     "right": "free"
+    },
+    "LR": {
+     "right": "free"
+    },
+    "NG": {
+     "right": "free"
+    },
+    "SN": {
+     "right": "free"
+    },
+    "SL": {
+     "right": "free"
+    },
+    "TG": {
+     "right": "free"
+    }
+   },
+   "others": {
+    "right": "permit",
+    "route": "Creative Arts Visa (F7F)"
+   }
+  },
+  "NI": {
+   "passports": {},
+   "others": {
+    "right": "permit",
+    "route": "No residente, artista de espectáculos públicos"
+   }
+  },
+  "NL": {
+   "groups": [
+    "eea"
+   ],
+   "passports": {
+    "AT": {
+     "right": "free"
+    },
+    "BE": {
+     "right": "free"
+    },
+    "BG": {
+     "right": "free"
+    },
+    "CH": {
+     "right": "free"
+    },
+    "CY": {
+     "right": "free"
+    },
+    "CZ": {
+     "right": "free"
+    },
+    "DE": {
+     "right": "free"
+    },
+    "DK": {
+     "right": "free"
+    },
+    "EE": {
+     "right": "free"
+    },
+    "ES": {
+     "right": "free"
+    },
+    "FI": {
+     "right": "free"
+    },
+    "FR": {
+     "right": "free"
+    },
+    "GR": {
+     "right": "free"
+    },
+    "HR": {
+     "right": "free"
+    },
+    "HU": {
+     "right": "free"
+    },
+    "IE": {
+     "right": "free"
+    },
+    "IS": {
+     "right": "free"
+    },
+    "IT": {
+     "right": "free"
+    },
+    "LI": {
+     "right": "free"
+    },
+    "LT": {
+     "right": "free"
+    },
+    "LU": {
+     "right": "free"
+    },
+    "LV": {
+     "right": "free"
+    },
+    "MT": {
+     "right": "free"
+    },
+    "NL": {
+     "right": "free"
+    },
+    "NO": {
+     "right": "free"
+    },
+    "PL": {
+     "right": "free"
+    },
+    "PT": {
+     "right": "free"
+    },
+    "RO": {
+     "right": "free"
+    },
+    "SE": {
+     "right": "free"
+    },
+    "SI": {
+     "right": "free"
+    },
+    "SK": {
+     "right": "free"
+    }
+   },
+   "others": {
+    "right": "permit",
+    "route": "Gecombineerde vergunning voor verblijf en arbeid (GVVA)",
+    "days": 42,
+    "within": 91
+   }
+  },
+  "NO": {
+   "groups": [
+    "eea"
+   ],
+   "passports": {
+    "AT": {
+     "right": "free"
+    },
+    "BE": {
+     "right": "free"
+    },
+    "BG": {
+     "right": "free"
+    },
+    "CH": {
+     "right": "free"
+    },
+    "CY": {
+     "right": "free"
+    },
+    "CZ": {
+     "right": "free"
+    },
+    "DE": {
+     "right": "free"
+    },
+    "DK": {
+     "right": "free"
+    },
+    "EE": {
+     "right": "free"
+    },
+    "ES": {
+     "right": "free"
+    },
+    "FI": {
+     "right": "free"
+    },
+    "FR": {
+     "right": "free"
+    },
+    "GR": {
+     "right": "free"
+    },
+    "HR": {
+     "right": "free"
+    },
+    "HU": {
+     "right": "free"
+    },
+    "IE": {
+     "right": "free"
+    },
+    "IS": {
+     "right": "free"
+    },
+    "IT": {
+     "right": "free"
+    },
+    "LI": {
+     "right": "free"
+    },
+    "LT": {
+     "right": "free"
+    },
+    "LU": {
+     "right": "free"
+    },
+    "LV": {
+     "right": "free"
+    },
+    "MT": {
+     "right": "free"
+    },
+    "NL": {
+     "right": "free"
+    },
+    "NO": {
+     "right": "free"
+    },
+    "PL": {
+     "right": "free"
+    },
+    "PT": {
+     "right": "free"
+    },
+    "RO": {
+     "right": "free"
+    },
+    "SE": {
+     "right": "free"
+    },
+    "SI": {
+     "right": "free"
+    },
+    "SK": {
+     "right": "free"
+    },
+    "GB": {
+     "right": "permit",
+     "route": "Residence permit as an artist, musician or performer (UDI)",
+     "days": 90,
+     "within": 180
+    }
+   },
+   "others": {
+    "right": "permit",
+    "route": "Residence permit as an artist, musician or performer (UDI)",
+    "days": 14,
+    "within": 365
+   }
+  },
+  "NP": {
+   "passports": {
+    "IN": {
+     "right": "free"
+    }
+   },
+   "others": {
+    "right": "permit",
+    "route": "Work permit (Department of Labour)"
+   }
+  },
+  "NZ": {
+   "passports": {
+    "AU": {
+     "right": "free"
+    }
+   },
+   "others": {
+    "right": "permit",
+    "route": "Entertainers Work Visa"
+   }
+  },
+  "OM": {
+   "passports": {},
+   "others": {
+    "right": "permit",
+    "route": "Cultural visa (Royal Oman Police)"
+   }
+  },
+  "PA": {
+   "passports": {},
+   "others": {
+    "right": "permit",
+    "route": "Visa para trabajadores transeúntes o trabajadores eventuales – artistas"
+   }
+  },
+  "PE": {
+   "passports": {},
+   "others": {
+    "right": "permit",
+    "route": "Calidad Migratoria Artística Temporal (ART)"
+   }
+  },
+  "PF": {
+   "passports": {},
+   "others": {
+    "right": "permit",
+    "route": "Autorisation de travail (SEFI)"
+   }
+  },
+  "PG": {
+   "passports": {},
+   "others": {
+    "right": "permit",
+    "route": "Work permit (Employment of Non-Citizens Act 2007)"
+   }
+  },
+  "PH": {
+   "passports": {},
+   "others": {
+    "right": "permit",
+    "route": "Special Work Permit – Artists and Athletes"
+   }
+  },
+  "PK": {
+   "passports": {},
+   "others": {
+    "right": "permit",
+    "route": "Work Visa (Ministry of Interior)"
+   }
+  },
+  "PL": {
+   "groups": [
+    "eea"
+   ],
+   "passports": {
+    "AT": {
+     "right": "free"
+    },
+    "BE": {
+     "right": "free"
+    },
+    "BG": {
+     "right": "free"
+    },
+    "CH": {
+     "right": "free"
+    },
+    "CY": {
+     "right": "free"
+    },
+    "CZ": {
+     "right": "free"
+    },
+    "DE": {
+     "right": "free"
+    },
+    "DK": {
+     "right": "free"
+    },
+    "EE": {
+     "right": "free"
+    },
+    "ES": {
+     "right": "free"
+    },
+    "FI": {
+     "right": "free"
+    },
+    "FR": {
+     "right": "free"
+    },
+    "GR": {
+     "right": "free"
+    },
+    "HR": {
+     "right": "free"
+    },
+    "HU": {
+     "right": "free"
+    },
+    "IE": {
+     "right": "free"
+    },
+    "IS": {
+     "right": "free"
+    },
+    "IT": {
+     "right": "free"
+    },
+    "LI": {
+     "right": "free"
+    },
+    "LT": {
+     "right": "free"
+    },
+    "LU": {
+     "right": "free"
+    },
+    "LV": {
+     "right": "free"
+    },
+    "MT": {
+     "right": "free"
+    },
+    "NL": {
+     "right": "free"
+    },
+    "NO": {
+     "right": "free"
+    },
+    "PL": {
+     "right": "free"
+    },
+    "PT": {
+     "right": "free"
+    },
+    "RO": {
+     "right": "free"
+    },
+    "SE": {
+     "right": "free"
+    },
+    "SI": {
+     "right": "free"
+    },
+    "SK": {
+     "right": "free"
+    }
+   },
+   "others": {
+    "right": "permit",
+    "route": "Zezwolenie na pracę cudzoziemca",
+    "days": 30,
+    "within": 365
+   }
+  },
+  "PM": {
+   "passports": {},
+   "others": {
+    "right": "permit",
+    "route": "Autorisation provisoire de travail (emploi direct)",
+    "days": 90
+   }
+  },
+  "PN": {
+   "passports": {
+    "GB": {
+     "right": "permit",
+     "route": "Written permission of the Island Council"
+    },
+    "AI": {
+     "right": "permit",
+     "route": "Written permission of the Island Council"
+    },
+    "BM": {
+     "right": "permit",
+     "route": "Written permission of the Island Council"
+    },
+    "FK": {
+     "right": "permit",
+     "route": "Written permission of the Island Council"
+    },
+    "GG": {
+     "right": "permit",
+     "route": "Written permission of the Island Council"
+    },
+    "GI": {
+     "right": "permit",
+     "route": "Written permission of the Island Council"
+    },
+    "GS": {
+     "right": "permit",
+     "route": "Written permission of the Island Council"
+    },
+    "IM": {
+     "right": "permit",
+     "route": "Written permission of the Island Council"
+    },
+    "IO": {
+     "right": "permit",
+     "route": "Written permission of the Island Council"
+    },
+    "JE": {
+     "right": "permit",
+     "route": "Written permission of the Island Council"
+    },
+    "KY": {
+     "right": "permit",
+     "route": "Written permission of the Island Council"
+    },
+    "MS": {
+     "right": "permit",
+     "route": "Written permission of the Island Council"
+    },
+    "SH": {
+     "right": "permit",
+     "route": "Written permission of the Island Council"
+    },
+    "TC": {
+     "right": "permit",
+     "route": "Written permission of the Island Council"
+    },
+    "VG": {
+     "right": "permit",
+     "route": "Written permission of the Island Council"
+    }
+   },
+   "others": {
+    "right": "permit",
+    "route": "Written permission of the Island Council"
+   }
+  },
+  "PR": {
+   "groups": [
+    "us"
+   ],
+   "passports": {
+    "FM": {
+     "right": "free"
+    },
+    "MH": {
+     "right": "free"
+    },
+    "PW": {
+     "right": "free"
+    }
+   },
+   "others": {
+    "right": "permit",
+    "route": "O-1 (extraordinary ability in the arts, or extraordinary achievement in motion pictures or television)"
+   }
+  },
+  "PS": {
+   "passports": {},
+   "others": {
+    "right": "permit",
+    "route": "ترخيص عمل لغير الفلسطينيين"
+   }
+  },
+  "PT": {
+   "groups": [
+    "eea"
+   ],
+   "passports": {
+    "AT": {
+     "right": "free"
+    },
+    "BE": {
+     "right": "free"
+    },
+    "BG": {
+     "right": "free"
+    },
+    "CH": {
+     "right": "free"
+    },
+    "CY": {
+     "right": "free"
+    },
+    "CZ": {
+     "right": "free"
+    },
+    "DE": {
+     "right": "free"
+    },
+    "DK": {
+     "right": "free"
+    },
+    "EE": {
+     "right": "free"
+    },
+    "ES": {
+     "right": "free"
+    },
+    "FI": {
+     "right": "free"
+    },
+    "FR": {
+     "right": "free"
+    },
+    "GR": {
+     "right": "free"
+    },
+    "HR": {
+     "right": "free"
+    },
+    "HU": {
+     "right": "free"
+    },
+    "IE": {
+     "right": "free"
+    },
+    "IS": {
+     "right": "free"
+    },
+    "IT": {
+     "right": "free"
+    },
+    "LI": {
+     "right": "free"
+    },
+    "LT": {
+     "right": "free"
+    },
+    "LU": {
+     "right": "free"
+    },
+    "LV": {
+     "right": "free"
+    },
+    "MT": {
+     "right": "free"
+    },
+    "NL": {
+     "right": "free"
+    },
+    "NO": {
+     "right": "free"
+    },
+    "PL": {
+     "right": "free"
+    },
+    "PT": {
+     "right": "free"
+    },
+    "RO": {
+     "right": "free"
+    },
+    "SE": {
+     "right": "free"
+    },
+    "SI": {
+     "right": "free"
+    },
+    "SK": {
+     "right": "free"
+    }
+   },
+   "others": {
+    "right": "permit",
+    "route": "Visto de estada temporária ou de residência para atividade profissional de espetáculos"
+   }
+  },
+  "PW": {
+   "passports": {},
+   "others": {
+    "right": "permit",
+    "route": "Nonresident work permit (Division of Labor)"
+   }
+  },
+  "PY": {
+   "passports": {},
+   "others": {
+    "right": "permit",
+    "route": "Residencia Espontánea u Ocasional"
+   }
+  },
+  "RE": {
+   "groups": [
+    "eea"
+   ],
+   "passports": {
+    "AT": {
+     "right": "free"
+    },
+    "BE": {
+     "right": "free"
+    },
+    "BG": {
+     "right": "free"
+    },
+    "CH": {
+     "right": "free"
+    },
+    "CY": {
+     "right": "free"
+    },
+    "CZ": {
+     "right": "free"
+    },
+    "DE": {
+     "right": "free"
+    },
+    "DK": {
+     "right": "free"
+    },
+    "EE": {
+     "right": "free"
+    },
+    "ES": {
+     "right": "free"
+    },
+    "FI": {
+     "right": "free"
+    },
+    "FR": {
+     "right": "free"
+    },
+    "GR": {
+     "right": "free"
+    },
+    "HR": {
+     "right": "free"
+    },
+    "HU": {
+     "right": "free"
+    },
+    "IE": {
+     "right": "free"
+    },
+    "IS": {
+     "right": "free"
+    },
+    "IT": {
+     "right": "free"
+    },
+    "LI": {
+     "right": "free"
+    },
+    "LT": {
+     "right": "free"
+    },
+    "LU": {
+     "right": "free"
+    },
+    "LV": {
+     "right": "free"
+    },
+    "MT": {
+     "right": "free"
+    },
+    "NL": {
+     "right": "free"
+    },
+    "NO": {
+     "right": "free"
+    },
+    "PL": {
+     "right": "free"
+    },
+    "PT": {
+     "right": "free"
+    },
+    "RO": {
+     "right": "free"
+    },
+    "SE": {
+     "right": "free"
+    },
+    "SI": {
+     "right": "free"
+    },
+    "SK": {
+     "right": "free"
+    }
+   },
+   "others": {
+    "right": "permit",
+    "route": "Carte de séjour « talent – profession artistique et culturelle »",
+    "days": 90
+   }
+  },
+  "RO": {
+   "groups": [
+    "eea"
+   ],
+   "passports": {
+    "AT": {
+     "right": "free"
+    },
+    "BE": {
+     "right": "free"
+    },
+    "BG": {
+     "right": "free"
+    },
+    "CH": {
+     "right": "free"
+    },
+    "CY": {
+     "right": "free"
+    },
+    "CZ": {
+     "right": "free"
+    },
+    "DE": {
+     "right": "free"
+    },
+    "DK": {
+     "right": "free"
+    },
+    "EE": {
+     "right": "free"
+    },
+    "ES": {
+     "right": "free"
+    },
+    "FI": {
+     "right": "free"
+    },
+    "FR": {
+     "right": "free"
+    },
+    "GR": {
+     "right": "free"
+    },
+    "HR": {
+     "right": "free"
+    },
+    "HU": {
+     "right": "free"
+    },
+    "IE": {
+     "right": "free"
+    },
+    "IS": {
+     "right": "free"
+    },
+    "IT": {
+     "right": "free"
+    },
+    "LI": {
+     "right": "free"
+    },
+    "LT": {
+     "right": "free"
+    },
+    "LU": {
+     "right": "free"
+    },
+    "LV": {
+     "right": "free"
+    },
+    "MT": {
+     "right": "free"
+    },
+    "NL": {
+     "right": "free"
+    },
+    "NO": {
+     "right": "free"
+    },
+    "PL": {
+     "right": "free"
+    },
+    "PT": {
+     "right": "free"
+    },
+    "RO": {
+     "right": "free"
+    },
+    "SE": {
+     "right": "free"
+    },
+    "SI": {
+     "right": "free"
+    },
+    "SK": {
+     "right": "free"
+    }
+   },
+   "others": {
+    "right": "permit",
+    "route": "Viză de lungă şedere pentru angajare în muncă şi permis unic"
+   }
+  },
+  "RS": {
+   "passports": {},
+   "others": {
+    "right": "permit",
+    "route": "Jedinstvena dozvola",
+    "days": 90,
+    "within": 180
+   }
+  },
+  "RU": {
+   "groups": [
+    "eaeu"
+   ],
+   "passports": {
+    "AM": {
+     "right": "free"
+    },
+    "BY": {
+     "right": "free"
+    },
+    "KZ": {
+     "right": "free"
+    },
+    "KG": {
+     "right": "free"
+    },
+    "RU": {
+     "right": "free"
+    }
+   },
+   "others": {
+    "right": "permit",
+    "route": "Разрешение на работу или патент",
+    "days": 30
+   }
+  },
+  "RW": {
+   "passports": {},
+   "others": {
+    "right": "permit",
+    "route": "C2: Professional Player or Artist"
+   }
+  },
+  "SA": {
+   "passports": {},
+   "others": {
+    "right": "permit",
+    "route": "Work permit (Labor Law, art. 33; Ministry of Human Resources and Social Development)"
+   }
+  },
+  "SB": {
+   "passports": {},
+   "others": {
+    "right": "permit",
+    "route": "Entertainer Visa – Musician (Commercial)"
+   }
+  },
+  "SC": {
+   "passports": {},
+   "others": {
+    "right": "permit",
+    "route": "Gainful Occupation Permit"
+   }
+  },
+  "SE": {
+   "groups": [
+    "eea"
+   ],
+   "passports": {
+    "AT": {
+     "right": "free"
+    },
+    "BE": {
+     "right": "free"
+    },
+    "BG": {
+     "right": "free"
+    },
+    "CH": {
+     "right": "free"
+    },
+    "CY": {
+     "right": "free"
+    },
+    "CZ": {
+     "right": "free"
+    },
+    "DE": {
+     "right": "free"
+    },
+    "DK": {
+     "right": "free"
+    },
+    "EE": {
+     "right": "free"
+    },
+    "ES": {
+     "right": "free"
+    },
+    "FI": {
+     "right": "free"
+    },
+    "FR": {
+     "right": "free"
+    },
+    "GR": {
+     "right": "free"
+    },
+    "HR": {
+     "right": "free"
+    },
+    "HU": {
+     "right": "free"
+    },
+    "IE": {
+     "right": "free"
+    },
+    "IS": {
+     "right": "free"
+    },
+    "IT": {
+     "right": "free"
+    },
+    "LI": {
+     "right": "free"
+    },
+    "LT": {
+     "right": "free"
+    },
+    "LU": {
+     "right": "free"
+    },
+    "LV": {
+     "right": "free"
+    },
+    "MT": {
+     "right": "free"
+    },
+    "NL": {
+     "right": "free"
+    },
+    "NO": {
+     "right": "free"
+    },
+    "PL": {
+     "right": "free"
+    },
+    "PT": {
+     "right": "free"
+    },
+    "RO": {
+     "right": "free"
+    },
+    "SE": {
+     "right": "free"
+    },
+    "SI": {
+     "right": "free"
+    },
+    "SK": {
+     "right": "free"
+    }
+   },
+   "others": {
+    "right": "permit",
+    "route": "Arbetstillstånd för artister (Migrationsverket)",
+    "days": 14,
+    "within": 365
+   }
+  },
+  "SG": {
+   "passports": {},
+   "others": {
+    "right": "permit",
+    "route": "Employment Pass",
+    "days": 90,
+    "within": 365
+   }
+  },
+  "SH": {
+   "passports": {
+    "GB": {
+     "right": "permit",
+     "route": "Long Term Entry Permit, on the employer’s Immigrant Employment Certificate",
+     "days": 182,
+     "within": 365
+    },
+    "AI": {
+     "right": "permit",
+     "route": "Long Term Entry Permit, on the employer’s Immigrant Employment Certificate",
+     "days": 182,
+     "within": 365
+    },
+    "BM": {
+     "right": "permit",
+     "route": "Long Term Entry Permit, on the employer’s Immigrant Employment Certificate",
+     "days": 182,
+     "within": 365
+    },
+    "FK": {
+     "right": "permit",
+     "route": "Long Term Entry Permit, on the employer’s Immigrant Employment Certificate",
+     "days": 182,
+     "within": 365
+    },
+    "GG": {
+     "right": "permit",
+     "route": "Long Term Entry Permit, on the employer’s Immigrant Employment Certificate",
+     "days": 182,
+     "within": 365
+    },
+    "GI": {
+     "right": "permit",
+     "route": "Long Term Entry Permit, on the employer’s Immigrant Employment Certificate",
+     "days": 182,
+     "within": 365
+    },
+    "GS": {
+     "right": "permit",
+     "route": "Long Term Entry Permit, on the employer’s Immigrant Employment Certificate",
+     "days": 182,
+     "within": 365
+    },
+    "IM": {
+     "right": "permit",
+     "route": "Long Term Entry Permit, on the employer’s Immigrant Employment Certificate",
+     "days": 182,
+     "within": 365
+    },
+    "IO": {
+     "right": "permit",
+     "route": "Long Term Entry Permit, on the employer’s Immigrant Employment Certificate",
+     "days": 182,
+     "within": 365
+    },
+    "JE": {
+     "right": "permit",
+     "route": "Long Term Entry Permit, on the employer’s Immigrant Employment Certificate",
+     "days": 182,
+     "within": 365
+    },
+    "KY": {
+     "right": "permit",
+     "route": "Long Term Entry Permit, on the employer’s Immigrant Employment Certificate",
+     "days": 182,
+     "within": 365
+    },
+    "MS": {
+     "right": "permit",
+     "route": "Long Term Entry Permit, on the employer’s Immigrant Employment Certificate",
+     "days": 182,
+     "within": 365
+    },
+    "PN": {
+     "right": "permit",
+     "route": "Long Term Entry Permit, on the employer’s Immigrant Employment Certificate",
+     "days": 182,
+     "within": 365
+    },
+    "TC": {
+     "right": "permit",
+     "route": "Long Term Entry Permit, on the employer’s Immigrant Employment Certificate",
+     "days": 182,
+     "within": 365
+    },
+    "VG": {
+     "right": "permit",
+     "route": "Long Term Entry Permit, on the employer’s Immigrant Employment Certificate",
+     "days": 182,
+     "within": 365
+    }
+   },
+   "others": {
+    "right": "permit",
+    "route": "Long Term Entry Permit, on the employer’s Immigrant Employment Certificate",
+    "days": 182,
+    "within": 365
+   }
+  },
+  "SI": {
+   "groups": [
+    "eea"
+   ],
+   "passports": {
+    "AT": {
+     "right": "free"
+    },
+    "BE": {
+     "right": "free"
+    },
+    "BG": {
+     "right": "free"
+    },
+    "CH": {
+     "right": "free"
+    },
+    "CY": {
+     "right": "free"
+    },
+    "CZ": {
+     "right": "free"
+    },
+    "DE": {
+     "right": "free"
+    },
+    "DK": {
+     "right": "free"
+    },
+    "EE": {
+     "right": "free"
+    },
+    "ES": {
+     "right": "free"
+    },
+    "FI": {
+     "right": "free"
+    },
+    "FR": {
+     "right": "free"
+    },
+    "GR": {
+     "right": "free"
+    },
+    "HR": {
+     "right": "free"
+    },
+    "HU": {
+     "right": "free"
+    },
+    "IE": {
+     "right": "free"
+    },
+    "IS": {
+     "right": "free"
+    },
+    "IT": {
+     "right": "free"
+    },
+    "LI": {
+     "right": "free"
+    },
+    "LT": {
+     "right": "free"
+    },
+    "LU": {
+     "right": "free"
+    },
+    "LV": {
+     "right": "free"
+    },
+    "MT": {
+     "right": "free"
+    },
+    "NL": {
+     "right": "free"
+    },
+    "NO": {
+     "right": "free"
+    },
+    "PL": {
+     "right": "free"
+    },
+    "PT": {
+     "right": "free"
+    },
+    "RO": {
+     "right": "free"
+    },
+    "SE": {
+     "right": "free"
+    },
+    "SI": {
+     "right": "free"
+    },
+    "SK": {
+     "right": "free"
+    }
+   },
+   "others": {
+    "right": "free"
+   }
+  },
+  "SJ": {
+   "passports": {},
+   "others": {
+    "right": "free"
+   }
+  },
+  "SK": {
+   "groups": [
+    "eea"
+   ],
+   "passports": {
+    "AT": {
+     "right": "free"
+    },
+    "BE": {
+     "right": "free"
+    },
+    "BG": {
+     "right": "free"
+    },
+    "CH": {
+     "right": "free"
+    },
+    "CY": {
+     "right": "free"
+    },
+    "CZ": {
+     "right": "free"
+    },
+    "DE": {
+     "right": "free"
+    },
+    "DK": {
+     "right": "free"
+    },
+    "EE": {
+     "right": "free"
+    },
+    "ES": {
+     "right": "free"
+    },
+    "FI": {
+     "right": "free"
+    },
+    "FR": {
+     "right": "free"
+    },
+    "GR": {
+     "right": "free"
+    },
+    "HR": {
+     "right": "free"
+    },
+    "HU": {
+     "right": "free"
+    },
+    "IE": {
+     "right": "free"
+    },
+    "IS": {
+     "right": "free"
+    },
+    "IT": {
+     "right": "free"
+    },
+    "LI": {
+     "right": "free"
+    },
+    "LT": {
+     "right": "free"
+    },
+    "LU": {
+     "right": "free"
+    },
+    "LV": {
+     "right": "free"
+    },
+    "MT": {
+     "right": "free"
+    },
+    "NL": {
+     "right": "free"
+    },
+    "NO": {
+     "right": "free"
+    },
+    "PL": {
+     "right": "free"
+    },
+    "PT": {
+     "right": "free"
+    },
+    "RO": {
+     "right": "free"
+    },
+    "SE": {
+     "right": "free"
+    },
+    "SI": {
+     "right": "free"
+    },
+    "SK": {
+     "right": "free"
+    }
+   },
+   "others": {
+    "right": "permit",
+    "route": "Prechodný pobyt na účel zamestnania (potvrdenie o možnosti obsadenia voľného pracovného miesta)",
+    "days": 30,
+    "within": 365
+   }
+  },
+  "SL": {
+   "groups": [
+    "ecowas"
+   ],
+   "passports": {
+    "BJ": {
+     "right": "free"
+    },
+    "CV": {
+     "right": "free"
+    },
+    "CI": {
+     "right": "free"
+    },
+    "GM": {
+     "right": "free"
+    },
+    "GH": {
+     "right": "free"
+    },
+    "GN": {
+     "right": "free"
+    },
+    "GW": {
+     "right": "free"
+    },
+    "LR": {
+     "right": "free"
+    },
+    "NG": {
+     "right": "free"
+    },
+    "SN": {
+     "right": "free"
+    },
+    "SL": {
+     "right": "free"
+    },
+    "TG": {
+     "right": "free"
+    }
+   },
+   "others": {
+    "right": "permit",
+    "route": "Special work permit (Minister of Labour)"
+   }
+  },
+  "SM": {
+   "passports": {},
+   "others": {
+    "right": "permit",
+    "route": "Permesso di soggiorno temporaneo per motivi di lavoro (spettacolo, intrattenimento e attività artistiche)"
+   }
+  },
+  "SN": {
+   "groups": [
+    "ecowas"
+   ],
+   "passports": {
+    "BJ": {
+     "right": "free"
+    },
+    "CV": {
+     "right": "free"
+    },
+    "CI": {
+     "right": "free"
+    },
+    "GM": {
+     "right": "free"
+    },
+    "GH": {
+     "right": "free"
+    },
+    "GN": {
+     "right": "free"
+    },
+    "GW": {
+     "right": "free"
+    },
+    "LR": {
+     "right": "free"
+    },
+    "NG": {
+     "right": "free"
+    },
+    "SN": {
+     "right": "free"
+    },
+    "SL": {
+     "right": "free"
+    },
+    "TG": {
+     "right": "free"
+    }
+   },
+   "others": {
+    "right": "permit",
+    "route": "Visa du contrat de travail (Directeur général du Travail et de la Sécurité sociale)"
+   }
+  },
+  "SO": {
+   "passports": {},
+   "others": {
+    "right": "permit",
+    "route": "Work permit (Immigration and Citizenship Agency)"
+   }
+  },
+  "SR": {
+   "groups": [
+    "csme"
+   ],
+   "passports": {
+    "AG": {
+     "right": "permit",
+     "route": "CARICOM Skills Certificate"
+    },
+    "BB": {
+     "right": "permit",
+     "route": "CARICOM Skills Certificate"
+    },
+    "BZ": {
+     "right": "permit",
+     "route": "CARICOM Skills Certificate"
+    },
+    "DM": {
+     "right": "permit",
+     "route": "CARICOM Skills Certificate"
+    },
+    "GD": {
+     "right": "permit",
+     "route": "CARICOM Skills Certificate"
+    },
+    "GY": {
+     "right": "permit",
+     "route": "CARICOM Skills Certificate"
+    },
+    "JM": {
+     "right": "permit",
+     "route": "CARICOM Skills Certificate"
+    },
+    "KN": {
+     "right": "permit",
+     "route": "CARICOM Skills Certificate"
+    },
+    "LC": {
+     "right": "permit",
+     "route": "CARICOM Skills Certificate"
+    },
+    "VC": {
+     "right": "permit",
+     "route": "CARICOM Skills Certificate"
+    },
+    "SR": {
+     "right": "permit",
+     "route": "CARICOM Skills Certificate"
+    },
+    "TT": {
+     "right": "permit",
+     "route": "CARICOM Skills Certificate"
+    }
+   },
+   "others": {
+    "right": "permit",
+    "route": "Werkvergunning (Wet Werkvergunning Vreemdelingen)"
+   }
+  },
+  "SS": {
+   "passports": {},
+   "others": {
+    "right": "permit",
+    "route": "Work permit (Ministry of Labour)"
+   }
+  },
+  "ST": {
+   "passports": {},
+   "others": {
+    "right": "permit",
+    "route": "Autorização de trabalho (Ministério do Trabalho)"
+   }
+  },
+  "SV": {
+   "passports": {},
+   "others": {
+    "right": "permit",
+    "route": "Permiso Especial de Ingreso para artistas extranjeros"
+   }
+  },
+  "SX": {
+   "passports": {},
+   "others": {
+    "right": "permit",
+    "route": "Tewerkstellingsvergunning (Landsverordening arbeid vreemdelingen)"
+   }
+  },
+  "SZ": {
+   "passports": {},
+   "others": {
+    "right": "permit",
+    "route": "Temporary Residence Permit (Employees, Part I)"
+   }
+  },
+  "TC": {
+   "passports": {
+    "GB": {
+     "right": "permit",
+     "route": "Work permit (Employed)"
+    },
+    "AI": {
+     "right": "permit",
+     "route": "Work permit (Employed)"
+    },
+    "BM": {
+     "right": "permit",
+     "route": "Work permit (Employed)"
+    },
+    "FK": {
+     "right": "permit",
+     "route": "Work permit (Employed)"
+    },
+    "GG": {
+     "right": "permit",
+     "route": "Work permit (Employed)"
+    },
+    "GI": {
+     "right": "permit",
+     "route": "Work permit (Employed)"
+    },
+    "GS": {
+     "right": "permit",
+     "route": "Work permit (Employed)"
+    },
+    "IM": {
+     "right": "permit",
+     "route": "Work permit (Employed)"
+    },
+    "IO": {
+     "right": "permit",
+     "route": "Work permit (Employed)"
+    },
+    "JE": {
+     "right": "permit",
+     "route": "Work permit (Employed)"
+    },
+    "KY": {
+     "right": "permit",
+     "route": "Work permit (Employed)"
+    },
+    "MS": {
+     "right": "permit",
+     "route": "Work permit (Employed)"
+    },
+    "PN": {
+     "right": "permit",
+     "route": "Work permit (Employed)"
+    },
+    "SH": {
+     "right": "permit",
+     "route": "Work permit (Employed)"
+    },
+    "VG": {
+     "right": "permit",
+     "route": "Work permit (Employed)"
+    }
+   },
+   "others": {
+    "right": "permit",
+    "route": "Work permit (Employed)"
+   }
+  },
+  "TD": {
+   "passports": {},
+   "others": {
+    "right": "permit",
+    "route": "Visa du contrat de travail (ONAPE)"
+   }
+  },
+  "TF": {
+   "passports": {
+    "FR": {
+     "right": "permit",
+     "route": "Autorisation du préfet, administrateur supérieur des TAAF"
+    },
+    "BL": {
+     "right": "permit",
+     "route": "Autorisation du préfet, administrateur supérieur des TAAF"
+    },
+    "GF": {
+     "right": "permit",
+     "route": "Autorisation du préfet, administrateur supérieur des TAAF"
+    },
+    "GP": {
+     "right": "permit",
+     "route": "Autorisation du préfet, administrateur supérieur des TAAF"
+    },
+    "MF": {
+     "right": "permit",
+     "route": "Autorisation du préfet, administrateur supérieur des TAAF"
+    },
+    "MQ": {
+     "right": "permit",
+     "route": "Autorisation du préfet, administrateur supérieur des TAAF"
+    },
+    "NC": {
+     "right": "permit",
+     "route": "Autorisation du préfet, administrateur supérieur des TAAF"
+    },
+    "PF": {
+     "right": "permit",
+     "route": "Autorisation du préfet, administrateur supérieur des TAAF"
+    },
+    "PM": {
+     "right": "permit",
+     "route": "Autorisation du préfet, administrateur supérieur des TAAF"
+    },
+    "RE": {
+     "right": "permit",
+     "route": "Autorisation du préfet, administrateur supérieur des TAAF"
+    },
+    "WF": {
+     "right": "permit",
+     "route": "Autorisation du préfet, administrateur supérieur des TAAF"
+    },
+    "YT": {
+     "right": "permit",
+     "route": "Autorisation du préfet, administrateur supérieur des TAAF"
+    }
+   },
+   "others": {
+    "right": "permit",
+    "route": "Autorisation du préfet, administrateur supérieur des TAAF"
+   }
+  },
+  "TG": {
+   "groups": [
+    "ecowas"
+   ],
+   "passports": {
+    "BJ": {
+     "right": "free"
+    },
+    "CV": {
+     "right": "free"
+    },
+    "CI": {
+     "right": "free"
+    },
+    "GM": {
+     "right": "free"
+    },
+    "GH": {
+     "right": "free"
+    },
+    "GN": {
+     "right": "free"
+    },
+    "GW": {
+     "right": "free"
+    },
+    "LR": {
+     "right": "free"
+    },
+    "NG": {
+     "right": "free"
+    },
+    "SN": {
+     "right": "free"
+    },
+    "SL": {
+     "right": "free"
+    },
+    "TG": {
+     "right": "free"
+    }
+   },
+   "others": {
+    "right": "permit",
+    "route": "Autorisation d’embauchage et visa du contrat de travail (directeur général du travail; Code du travail, loi n° 2021-012, arts. 52–53)"
+   }
+  },
+  "TH": {
+   "passports": {},
+   "others": {
+    "right": "permit",
+    "route": "Work permit"
+   }
+  },
+  "TJ": {
+   "passports": {},
+   "others": {
+    "right": "permit",
+    "route": "Разрешение на работу (Миграционная служба)"
+   }
+  },
+  "TK": {
+   "passports": {},
+   "others": {
+    "right": "permit",
+    "route": "Work permit (Council for the Ongoing Government)"
+   }
+  },
+  "TL": {
+   "passports": {},
+   "others": {
+    "right": "permit",
+    "route": "Temporary Stay Visa"
+   }
+  },
+  "TM": {
+   "passports": {},
+   "others": {
+    "right": "permit",
+    "route": "Разрешение на трудовую деятельность (Государственная миграционная служба)"
+   }
+  },
+  "TN": {
+   "passports": {
+    "MA": {
+     "right": "permit",
+     "route": "Attestation de non soumission au visa de contrat de travail"
+    }
+   },
+   "others": {
+    "right": "permit",
+    "route": "Contrat de travail visé (titre de séjour « salarié »)"
+   }
+  },
+  "TO": {
+   "passports": {},
+   "others": {
+    "right": "permit",
+    "route": "Permit to enter and reside, or written permission to work (Principal Immigration Officer)"
+   }
+  },
+  "TR": {
+   "passports": {},
+   "others": {
+    "right": "permit",
+    "route": "Çalışma izni"
+   }
+  },
+  "TT": {
+   "groups": [
+    "csme"
+   ],
+   "passports": {
+    "AG": {
+     "right": "permit",
+     "route": "CARICOM Skills Certificate"
+    },
+    "BB": {
+     "right": "permit",
+     "route": "CARICOM Skills Certificate"
+    },
+    "BZ": {
+     "right": "permit",
+     "route": "CARICOM Skills Certificate"
+    },
+    "DM": {
+     "right": "permit",
+     "route": "CARICOM Skills Certificate"
+    },
+    "GD": {
+     "right": "permit",
+     "route": "CARICOM Skills Certificate"
+    },
+    "GY": {
+     "right": "permit",
+     "route": "CARICOM Skills Certificate"
+    },
+    "JM": {
+     "right": "permit",
+     "route": "CARICOM Skills Certificate"
+    },
+    "KN": {
+     "right": "permit",
+     "route": "CARICOM Skills Certificate"
+    },
+    "LC": {
+     "right": "permit",
+     "route": "CARICOM Skills Certificate"
+    },
+    "VC": {
+     "right": "permit",
+     "route": "CARICOM Skills Certificate"
+    },
+    "SR": {
+     "right": "permit",
+     "route": "CARICOM Skills Certificate"
+    },
+    "TT": {
+     "right": "permit",
+     "route": "CARICOM Skills Certificate"
+    }
+   },
+   "others": {
+    "right": "permit",
+    "route": "Work Permit (Ministry of Homeland Security)",
+    "days": 30,
+    "within": 365
+   }
+  },
+  "TV": {
+   "passports": {},
+   "others": {
+    "right": "permit",
+    "route": "Permit to Enter and Reside (employment)"
+   }
+  },
+  "TW": {
+   "passports": {},
+   "others": {
+    "right": "permit",
+    "route": "Artistic work permit (Act for the Recruitment and Employment of Foreign Professionals, art. 10)"
+   }
+  },
+  "TZ": {
+   "passports": {},
+   "others": {
+    "right": "permit",
+    "route": "Work permit (Labour Commissioner) and residence permit"
+   }
+  },
+  "UA": {
+   "passports": {},
+   "others": {
+    "right": "free"
+   }
+  },
+  "UG": {
+   "passports": {},
+   "others": {
+    "right": "permit",
+    "route": "Special Pass"
+   }
+  },
+  "US": {
+   "groups": [
+    "us"
+   ],
+   "passports": {
+    "FM": {
+     "right": "free"
+    },
+    "MH": {
+     "right": "free"
+    },
+    "PW": {
+     "right": "free"
+    }
+   },
+   "others": {
+    "right": "permit",
+    "route": "O-1 (extraordinary ability in the arts, or extraordinary achievement in motion pictures or television)"
+   }
+  },
+  "UY": {
+   "passports": {},
+   "others": {
+    "right": "permit",
+    "route": "Residencia temporaria (Hoja de Identidad Provisoria)"
+   }
+  },
+  "UZ": {
+   "passports": {},
+   "others": {
+    "right": "permit",
+    "route": "Подтверждение на право осуществления трудовой деятельности"
+   }
+  },
+  "VC": {
+   "groups": [
+    "oecs",
+    "csme"
+   ],
+   "passports": {
+    "AG": {
+     "right": "free"
+    },
+    "BB": {
+     "right": "permit",
+     "route": "CARICOM Skills Certificate"
+    },
+    "BZ": {
+     "right": "permit",
+     "route": "CARICOM Skills Certificate"
+    },
+    "DM": {
+     "right": "free"
+    },
+    "GD": {
+     "right": "free"
+    },
+    "GY": {
+     "right": "permit",
+     "route": "CARICOM Skills Certificate"
+    },
+    "JM": {
+     "right": "permit",
+     "route": "CARICOM Skills Certificate"
+    },
+    "KN": {
+     "right": "free"
+    },
+    "LC": {
+     "right": "free"
+    },
+    "VC": {
+     "right": "free"
+    },
+    "SR": {
+     "right": "permit",
+     "route": "CARICOM Skills Certificate"
+    },
+    "TT": {
+     "right": "permit",
+     "route": "CARICOM Skills Certificate"
+    },
+    "MS": {
+     "right": "free"
+    }
+   },
+   "others": {
+    "right": "permit",
+    "route": "Work permit (Office of the Prime Minister)"
+   }
+  },
+  "VE": {
+   "passports": {},
+   "others": {
+    "right": "permit",
+    "route": "Visado Transeúnte Laboral (TR-L), authorised by the Interior Ministry"
+   }
+  },
+  "VG": {
+   "passports": {
+    "GB": {
+     "right": "permit",
+     "route": "Work permit (Labour Code 2010)"
+    },
+    "AI": {
+     "right": "permit",
+     "route": "Work permit (Labour Code 2010)"
+    },
+    "BM": {
+     "right": "permit",
+     "route": "Work permit (Labour Code 2010)"
+    },
+    "FK": {
+     "right": "permit",
+     "route": "Work permit (Labour Code 2010)"
+    },
+    "GG": {
+     "right": "permit",
+     "route": "Work permit (Labour Code 2010)"
+    },
+    "GI": {
+     "right": "permit",
+     "route": "Work permit (Labour Code 2010)"
+    },
+    "GS": {
+     "right": "permit",
+     "route": "Work permit (Labour Code 2010)"
+    },
+    "IM": {
+     "right": "permit",
+     "route": "Work permit (Labour Code 2010)"
+    },
+    "IO": {
+     "right": "permit",
+     "route": "Work permit (Labour Code 2010)"
+    },
+    "JE": {
+     "right": "permit",
+     "route": "Work permit (Labour Code 2010)"
+    },
+    "KY": {
+     "right": "permit",
+     "route": "Work permit (Labour Code 2010)"
+    },
+    "MS": {
+     "right": "permit",
+     "route": "Work permit (Labour Code 2010)"
+    },
+    "PN": {
+     "right": "permit",
+     "route": "Work permit (Labour Code 2010)"
+    },
+    "SH": {
+     "right": "permit",
+     "route": "Work permit (Labour Code 2010)"
+    },
+    "TC": {
+     "right": "permit",
+     "route": "Work permit (Labour Code 2010)"
+    }
+   },
+   "others": {
+    "right": "permit",
+    "route": "Work permit (Labour Code 2010)"
+   }
+  },
+  "VI": {
+   "groups": [
+    "us"
+   ],
+   "passports": {
+    "FM": {
+     "right": "free"
+    },
+    "MH": {
+     "right": "free"
+    },
+    "PW": {
+     "right": "free"
+    }
+   },
+   "others": {
+    "right": "permit",
+    "route": "O-1 (extraordinary ability in the arts, or extraordinary achievement in motion pictures or television)"
+   }
+  },
+  "VN": {
+   "passports": {},
+   "others": {
+    "right": "permit",
+    "route": "Giấy phép lao động (Decree 219/2025/ND-CP; from 5 December 2026, Decree 393/2026/ND-CP)",
+    "days": 90,
+    "within": 365,
+    "from": "2026-12-05"
+   }
+  },
+  "VU": {
+   "passports": {},
+   "others": {
+    "right": "permit",
+    "route": "Work permit (Department of Labour)"
+   }
+  },
+  "WF": {
+   "passports": {},
+   "others": {
+    "right": "permit",
+    "route": "Autorisation de travail (Préfet, Administrateur supérieur)"
+   }
+  },
+  "WS": {
+   "passports": {},
+   "others": {
+    "right": "permit",
+    "route": "Foreign Employment Employee Permit (FEEP)"
+   }
+  },
+  "XK": {
+   "passports": {},
+   "others": {
+    "right": "permit",
+    "route": "Work permit (Law No. 03/L-136)"
+   }
+  },
+  "YE": {
+   "passports": {},
+   "others": {
+    "right": "permit",
+    "route": "ترخيص عمل رسمي"
+   }
+  },
+  "YT": {
+   "groups": [
+    "eea"
+   ],
+   "passports": {
+    "AT": {
+     "right": "free"
+    },
+    "BE": {
+     "right": "free"
+    },
+    "BG": {
+     "right": "free"
+    },
+    "CH": {
+     "right": "free"
+    },
+    "CY": {
+     "right": "free"
+    },
+    "CZ": {
+     "right": "free"
+    },
+    "DE": {
+     "right": "free"
+    },
+    "DK": {
+     "right": "free"
+    },
+    "EE": {
+     "right": "free"
+    },
+    "ES": {
+     "right": "free"
+    },
+    "FI": {
+     "right": "free"
+    },
+    "FR": {
+     "right": "free"
+    },
+    "GR": {
+     "right": "free"
+    },
+    "HR": {
+     "right": "free"
+    },
+    "HU": {
+     "right": "free"
+    },
+    "IE": {
+     "right": "free"
+    },
+    "IS": {
+     "right": "free"
+    },
+    "IT": {
+     "right": "free"
+    },
+    "LI": {
+     "right": "free"
+    },
+    "LT": {
+     "right": "free"
+    },
+    "LU": {
+     "right": "free"
+    },
+    "LV": {
+     "right": "free"
+    },
+    "MT": {
+     "right": "free"
+    },
+    "NL": {
+     "right": "free"
+    },
+    "NO": {
+     "right": "free"
+    },
+    "PL": {
+     "right": "free"
+    },
+    "PT": {
+     "right": "free"
+    },
+    "RO": {
+     "right": "free"
+    },
+    "SE": {
+     "right": "free"
+    },
+    "SI": {
+     "right": "free"
+    },
+    "SK": {
+     "right": "free"
+    }
+   },
+   "others": {
+    "right": "permit",
+    "route": "Carte de séjour « talent – profession artistique et culturelle »",
+    "days": 90
+   }
+  },
+  "ZA": {
+   "passports": {},
+   "others": {
+    "right": "permit",
+    "route": "Visitor's visa with section 11(2) work authorisation"
+   }
+  },
+  "ZM": {
+   "passports": {},
+   "others": {
+    "right": "permit",
+    "route": "Temporary Employment Permit"
+   }
+  },
+  "ZW": {
+   "passports": {},
+   "others": {
+    "right": "permit",
+    "route": "Temporary employment permit"
+   }
+  }
+ }
+}

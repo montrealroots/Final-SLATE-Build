@@ -1,0 +1,49 @@
+{
+ "country": "SC",
+ "years": "none",
+ "renounce": null,
+ "lapses": false,
+ "note": "GLOBALCIT's Citizenship Law Dataset v3.0 (EUI, 2025), coding the law in force on 1 January 2024 (A06a No provision; A06b No provision; L05 No provision): no ordinary naturalisation by residence; a citizen keeps it on taking another. Reforms after that date are checked in the file's later sources, where a later source is given. Citizenship at birth is read from the same dataset's 2024 coding of modes A01a (descent, born in country: Generally applicable provision), A01b (descent, born abroad: Generally applicable provision), A02a (birth in country: No provision) and A02b (birth in country to a parent born there: No provision), as its codebook (RSC/GLOBALCIT 2025/01, sections 3.2.1a to 3.2.2b) defines them: not by birth in the territory alone (provisions for foundlings and children otherwise stateless, modes A03a and A03b, aren't held by the form); by descent from either parent, with no further limit on a child born abroad. Changes to the law at birth after 1 January 2024 weren't checked for this file. On 2026-11-03 the primaries were read: Citizen of Seychelles, Immigration and Civil Status Department, Seychelles; Application for Citizenship by Naturalisation, Form IMM5 (Article 12 of the Constitution; Citizenship Act (Cap. 30), Section 6), Immigration and Civil Status Department; FAQ: Permanent Resident & Citizenship, Immigration and Civil Status Department; Deprivation and Renunciation of Citizenship, Immigration and Civil Status Department. They confirmed the years of residence, birth in the territory and descent. It was silent on loss on taking another citizenship, which still rests on the sources above, re-read that day and found the same. Form IMM5 ties naturalisation to marriage to a citizen; the department's FAQ mentions an aggregate fifteen years' residence for any citizenship application without naming the route, so no naturalisation on residence alone is held. The Act and the Constitution weren't read.",
+ "sources": [
+  {
+   "url": "https://cadmus.eui.eu/bitstreams/3b166501-e695-48d7-9e27-d7bef061573a/download",
+   "title": "GLOBALCIT Citizenship Law Dataset v3.0 (Vink, van der Baaren, Bauböck, Dzankic, Honohan, Manby; EUI Research Data, 2025), country-year-mode files, Seychelles, 2024",
+   "read": "2026-11-03",
+   "kind": "secondary",
+   "quotes": "https://globalcit.eu/national-citizenship-laws/",
+   "said": "n.a. ... n.a. ... n.a. ... Generally applicable provision ... Person is born in Seychelles to a citizen. ... Generally applicable provision ... Person is born abroad to a citizen.; Person was born abroad after independence but before 1979 to a mother who was a citizen. ... No provision ... No provision"
+  },
+  {
+   "url": "https://www.ics.gov.sc/citizenship/citizen-of-seychelles",
+   "title": "Citizen of Seychelles, Immigration and Civil Status Department, Seychelles",
+   "read": "2026-11-03",
+   "kind": "primary",
+   "said": "A person who was born in Seychelles on or after 5th June 1979 and at the date of his birth one of his parent is a citizen of Seychelles; A person born outside Seychelles on or after 5th June 1979 and one of his parent is a citizen of Seychelles at the date of his birth; Any person who has been registered or naturalised as a citizen of the Republic Seychelles."
+  },
+  {
+   "url": "https://www.ics.gov.sc/downloads/guidelines/guideline-citizenship-by-naturalisation/download",
+   "title": "Application for Citizenship by Naturalisation, Form IMM5 (Article 12 of the Constitution; Citizenship Act (Cap. 30), Section 6), Immigration and Civil Status Department",
+   "read": "2026-11-03",
+   "kind": "primary",
+   "said": "You may apply for citizenship by naturalisation if you fall under the following criteria: i) You have been married to a Seychelles citizen (For marriages from 29th June 1976 and after) for a period of at least 10 years, and ii) Has been a legal resident in Seychelles for a period of 5 years or more immediately before making this application; ... ARTICLE 12 of the Constitution (1) A person who, on or after the coming into force of this Constitution marries another person who is or become a citizen of Seychelles shall, subject to any Act, be eligible to become a citizen of Seychelles by naturalisation."
+  },
+  {
+   "url": "https://www.ics.gov.sc/faq/immigration-services/permanent-resident-citizenship",
+   "title": "FAQ: Permanent Resident & Citizenship, Immigration and Civil Status Department",
+   "read": "2026-11-03",
+   "kind": "primary",
+   "said": "How does one apply for citizenship in Seychelles? The applicant must: Meet the respective criteria for acquisition of citizenship for which he/she wishes to apply under. ... Must have resided in the Seychelles for an aggregate period of 15 years ... I am Seychellois, married to a foreigner, and my spouse wants to apply for citizenship ... The person must have been married for at least 10 years and have been a legal resident in Seychelles for five years or more."
+  },
+  {
+   "url": "https://www.ics.gov.sc/citizenship/deprivation-and-renunciation-of-citizenship",
+   "title": "Deprivation and Renunciation of Citizenship, Immigration and Civil Status Department",
+   "read": "2026-11-03",
+   "kind": "primary",
+   "said": "Deprivation of Citizenship Committed act of treason Acts against security of the state including terrorism, espionage, piracy, joining a non-Seychellois armed forces without approval of the Minister ... Acts of disloyalty or disaffection to Seychelles."
+  }
+ ],
+ "atBirth": {
+  "soil": "none",
+  "descent": "either parent"
+ }
+}

@@ -1,0 +1,48 @@
+{
+ "country": "IN",
+ "rules": [
+  {
+   "passports": [
+    "NP"
+   ],
+   "right": "free"
+  }
+ ],
+ "others": {
+  "right": "permit",
+  "route": "Employment Visa"
+ },
+ "note": "India: Nepalese nationals may cross the open border without passport or visa and live and work in India (the 1950 Treaty of Peace and Friendship). Others come on the Employment Visa, which the Ministry of Home Affairs' FAQs name for foreign artists engaged to perform for the length of a contract, granted by a mission for up to a year and extendable to five, with registration at the FRRO within two weeks; Indian missions send short paid performances to the business visa, not modelled apart. Bhutan's nationals aren't modelled separately. Read from a reproduction of the MHA FAQs and from Wikipedia, since the Bureau of Immigration's, the MHA's and the missions' pages refuse this client. The 1950 Treaty's art. VII, read 2026-11-03 as India's Ministry of External Affairs publishes it, grants each country's nationals in the other, on a reciprocal basis, the same privileges in residence, property, trade and commerce and movement (read as free to work). India's visa portal (indianvisaonline.gov.in, the Bureau of Immigration's), read the same day, lists a Work Visa and no Employment Visa among its categories, without saying what it covers; the route keeps the FAQs' name until the Work Visa's terms are read, and the entry stays secondary.",
+ "sources": [
+  {
+   "url": "https://taxguru.in/finance/business-visa-employment-visa-and-frequently-asked-question-and-answers-on-the-same.html",
+   "title": "TaxGuru, Business Visa, Employment Visa and the MHA's Frequently Asked Questions",
+   "read": "2026-11-03",
+   "said": "Foreign artists engaged to conduct regular performances for the duration of the employment contract given by Hotels, Clubs, other organizations. ... A foreign national coming to India for employment may initially be granted an Employment Visa by the Indian Missions abroad upto one year.",
+   "kind": "secondary",
+   "quotes": "https://www.mha.gov.in/"
+  },
+  {
+   "url": "https://en.wikipedia.org/wiki/India%E2%80%93Nepal_relations",
+   "title": "Wikipedia, India–Nepal relations",
+   "read": "2026-11-03",
+   "said": "The Indo-Nepal border is open; Nepalese and Indian nationals may move freely across the border without passports or visas and may live and work in either country.",
+   "kind": "secondary",
+   "quotes": "https://www.mea.gov.in/bilateral-documents.htm?dtl/6295/Treaty+of+Peace+and+Friendship"
+  },
+  {
+   "url": "https://www.mea.gov.in/bilateral-documents.htm?dtl/6295/Treaty+of+Peace+and+Friendship",
+   "title": "Ministry of External Affairs (India), Bilateral documents: Treaty of Peace and Friendship (India-Nepal, 31 July 1950), Article VII (page rendered in a browser; curl gets only the frame)",
+   "read": "2026-11-03",
+   "said": "The Governments of India and Nepal agree to grant, on reciprocal basis, to the nationals of one country in the territories o the other the same privileges in the matter of residence, ownership of property, participation in trade and commerce, movement and other privileges of a similar nature.",
+   "kind": "primary"
+  },
+  {
+   "url": "https://indianvisaonline.gov.in/visa/visa-category.html",
+   "title": "Indianvisaonline.gov.in (content managed by the Bureau of Immigration, MHA), Visa Categories (rendered in a browser)",
+   "read": "2026-11-03",
+   "said": "Visa Categories Business Visa Diplomatic Visa Work Visa Family Visa (for dependents) Journalist Visa Medical Visa Official Visa Pakistan Specific Visa Student Visa Tourist Visa Transit Visa Miscellaneous Visa",
+   "kind": "primary"
+  }
+ ]
+}

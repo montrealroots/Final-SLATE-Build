@@ -1,0 +1,27 @@
+{
+ "country": "LV",
+ "years": 5,
+ "renounce": true,
+ "lapses": true,
+ "note": "GLOBALCIT's Citizenship Law Dataset v3.0 (EUI, 2025), coding the law in force on 1 January 2024 (A06a LAT 10-12, 17; A06b LAT 10-12, 17; L05 LAT 9(1), 23(2), 24(1)(1)): ordinary naturalisation after 5 years' residence; the applicant must give up other citizenships (with major exceptions); a citizen loses the citizenship on voluntarily taking another (with exceptions). Reforms after that date are checked in the file's later sources, where a later source is given. Citizenship at birth is read from the same dataset's 2024 coding of modes A01a (descent, born in country: Generally applicable provision), A01b (descent, born abroad: Generally applicable provision), A02a (birth in country: No provision) and A02b (birth in country to a parent born there: No provision), as its codebook (RSC/GLOBALCIT 2025/01, sections 3.2.1a to 3.2.2b) defines them: not by birth in the territory alone (provisions for foundlings and children otherwise stateless, modes A03a and A03b, aren't held by the form); by descent from either parent, with no further limit on a child born abroad. Changes to the law at birth after 1 January 2024 weren't checked for this file. On 2026-11-03 the primary was read: Pilsonības likums (Latvijas Vēstnesis), consolidated text on likumi.lv, art. 12(1); Pilsonības likums, art. 2(1)(2) and art. 24(1)(1). Every figure the file holds now rests on it, and the dataset is no longer cited. Both rules on keeping another citizenship carry the law's exceptions (an EU, EFTA or NATO state, Australia, Brazil, New Zealand or a treaty state, arts. 9(1), 12(2)).",
+ "sources": [
+  {
+   "url": "https://likumi.lv/ta/id/57512-pilsonibas-likums",
+   "title": "Pilsonības likums (Latvijas Vēstnesis), consolidated text on likumi.lv, art. 12(1)",
+   "read": "2026-11-03",
+   "kind": "primary",
+   "said": "Naturalizācijas kārtībā Latvijas pilsonībā var uzņemt vienīgi personu: 1) kurai naturalizācijas iesnieguma iesniegšanas dienā pastāvīgā dzīvesvieta ne mazāk kā pēdējos piecus gadus ir bijusi Latvijā ... 6) kura ir iesniegusi paziņojumu par atteikšanos no savas iepriekšējās pilsonības un saņēmusi iepriekšējās pilsonības valsts ekspatriācijas atļauju ... (2) Ja Latvijas pilsonībā uzņem Eiropas Savienības dalībvalsts, Eiropas Brīvās tirdzniecības asociācijas dalībvalsts, Ziemeļatlantijas līguma organizācijas dalībvalsts pilsoni, Austrālijas Savienības, Brazīlijas Federatīvās Republikas, Jaunzēlandes pilsoni vai tādas valsts pilsoni, ar kuru Latvijas Republika noslēgusi līgumu par dubultās pilsonības atzīšanu, tad viņš ir tiesīgs saglabāt attiecīgās valsts pilsonību."
+  },
+  {
+   "url": "https://likumi.lv/ta/id/57512-pilsonibas-likums",
+   "title": "Pilsonības likums, art. 2(1)(2) and art. 24(1)(1)",
+   "read": "2026-11-03",
+   "kind": "primary",
+   "said": "2.pants ... (1) Latvijas pilsonis ir: ... 2) persona, kuras dzimšanas brīdī abi tās vecāki ir Latvijas pilsoņi vai viens no viņiem ir Latvijas pilsonis, ja ievēroti šā likuma 9.panta otrās vai piektās daļas nosacījumi ... 24.pants. Latvijas pilsonības atņemšana (1) Latvijas pilsonību personai atņem, ja tā: 1) ieguvusi citas valsts pilsonību, neiesniedzot šā likuma 23.panta otrajā un trešajā daļā minēto iesniegumu par atteikšanos no Latvijas pilsonības, un nav zaudējusi Latvijas pilsonību, ja Latvijas pilsonības atņemšanas gadījumā persona nekļūst par bezvalstnieku"
+  }
+ ],
+ "atBirth": {
+  "soil": "none",
+  "descent": "either parent"
+ }
+}
