@@ -90,7 +90,9 @@ export function runProbe(p: Probe, seeds = p.seeds ?? 40): Result {
   };
 }
 
+/** Writes a result to docs/v10/proof, or to PROOF_OUT, so a long run outside the repository leaves it untouched until its results are copied in at once. */
 export function writeResult(r: Result): void {
-  mkdirSync('docs/v10/proof', { recursive: true });
-  writeFileSync(`docs/v10/proof/${r.id}.json`, JSON.stringify(r, null, 1) + '\n');
+  const dir = process.env.PROOF_OUT ?? 'docs/v10/proof';
+  mkdirSync(dir, { recursive: true });
+  writeFileSync(`${dir}/${r.id}.json`, JSON.stringify(r, null, 1) + '\n');
 }
