@@ -2,13 +2,14 @@
 // they were announced, with where they come from. They are history, kept apart from this game's own competition.
 import { formatDateKey } from '../engine/time';
 import { holdsRecords, recordedResults, sourceOf } from '../engine/history';
-import type { Edition } from '../engine/types';
+import { checkExtract, extractsFor } from '../engine/rule-extracts';
+import type { Edition, Project } from '../engine/types';
 
-export function RecordedResults({ ed, now }: { ed: Edition; now: number }) {
+export function RecordedResults({ ed, today }: { ed: Edition; today: string }) {
   if (!holdsRecords(ed.institutionId, ed.year)) return null;
-  const shown = recordedResults(ed.institutionId, ed.year, now);
+  const shown = recordedResults(ed.institutionId, ed.year, today);
   const label = shown[0]?.edition ?? ed.label;
-  const through = shown.map((o) => o.published).sort().at(-1);
+  const through = shown.map((o) => o.published!).sort().at(-1);
   const sources = [...new Map(shown.map((o) => { const s = sourceOf(o); return [s.url, s]; })).values()];
   return (
     <section className="card" aria-labelledby="recorded-h">
@@ -29,6 +30,36 @@ export function RecordedResults({ ed, now }: { ed: Edition; now: number }) {
           <p className="dim small">From {sources.map((s, k) => <span key={s.url}>{k ? '; ' : ''}{s.provider}, <a href={s.url} target="_blank" rel="noreferrer noopener">{s.title}</a>, read {formatDateKey(s.retrieved)}</span>)}.</p>
         </>
       )}
+    </section>
+  );
+}
+
+/**
+ * The parts of this edition's rules read from the organizer's own documents (engine/rule-extracts.ts; the v7 package,
+ * decision 10), checked against each of your projects: a stated rule it fails, or what can't be confirmed. Never a pass.
+ */
+export function ReadRules({ ed, projects }: { ed: Edition; projects: Project[] }) {
+  const xs = extractsFor(ed.institutionId, ed.year);
+  if (!xs.length) return null;
+  const facts = (p: Project) => ({
+    runtimeMinutes: p.delivered?.runtimeMin ?? null,
+    animationShare: p.axes.medium === 'animation' ? 1 : p.axes.medium === 'live-action' ? 0 : null,
+    firstRelease: p.releases.filter((r) => r.status === 'released').map((r) => r.date).sort()[0] ?? null,
+  });
+  return (
+    <section className="card" aria-labelledby="read-rules-h">
+      <h2 id="read-rules-h">Rules Read For This Edition</h2>
+      <p className="dim">Parts of the organizer&apos;s rules, read from its own documents. They are incomplete, so they can show a project fails one of them, never that it qualifies.</p>
+      <ul className="list" aria-label="Rules Read For This Edition">
+        {xs.map((x) => <li key={x.id} className="small"><a href={x.source.url} target="_blank" rel="noreferrer noopener">{x.source.title}</a>, read {formatDateKey(x.source.checked)}</li>)}
+      </ul>
+      {projects.length ? (
+        <ul className="list" aria-label="Your Projects Against Them">
+          {projects.flatMap((p) => xs.map((x) => { const c = checkExtract(x, facts(p)); return (
+            <li key={`${p.id}-${x.id}`}><strong>{p.title}</strong> <span className="chip">{c.verdict === 'ineligible' ? 'Fails A Rule' : 'Not Confirmed'}</span><div className="dim small">{c.reasons.join(' ')}</div></li>
+          ); }))}
+        </ul>
+      ) : <p className="muted">You have no projects to check.</p>}
     </section>
   );
 }

@@ -32,6 +32,8 @@ describe('a data pack', () => {
     await expect(parsePack(new Blob([whole.slice(0, whole.byteLength - 5)]))).rejects.toThrow('the file was cut short');
     await expect(parsePack(catalog([...FILES, ['cinemas/GB.json', '[]']]))).rejects.toThrow('it holds files of another kind');
     await expect(parsePack(catalog(FILES, { retrieved: undefined }))).rejects.toThrow("doesn't say when its data was gathered");
+    // The same record listed twice, with different contents: refused, not installed with whichever came last.
+    await expect(parsePack(catalog([...FILES, ['titles/movie-1.json', JSON.stringify({ ref: 'movie:1', title: 'Another' })]]))).rejects.toThrow('it lists the same record twice');
     const newer = new Uint8Array(whole.slice(0));
     const text = new TextDecoder().decode(newer).replace('"format":1', '"format":2');
     await expect(parsePack(new Blob([new TextEncoder().encode(text)]))).rejects.toThrow('made for a newer version');

@@ -8,8 +8,8 @@ import { spend } from './budget';
 import { editScenes } from './finish';
 import { personById } from './people';
 import { assertEditable, sceneLabel } from './projects';
-import { t } from './production/tasks';
-import type { GameState, Project } from './types';
+import { dependents, t } from './production/tasks';
+import type { GameState, Project, Task } from './types';
 
 export const EFFECTS_REVISION_GAIN = 5;
 export const REVOICE_GAIN = 4;
@@ -41,4 +41,27 @@ export function rerecordLines(state: GameState, p: Project, characterId: string)
   if (rate) spend(state, p, `Dialogue Session: ${c.name}`, 'cast', rate, `revoice:${p.id}:${characterId}`);
   p.tasks.push(t('post:revoice', characterId, `Re-Record ${c.name}'s Lines`, 'Post Production', 'sound-designer', 1, 'days', [], { assetRef: characterId }));
   for (const d of p.tasks.filter((x) => x.kind === 'post:dialogue' || x.kind === 'post:sound')) if (!d.dependsOn.includes(id)) d.dependsOn.push(id);
+}
+
+/**
+ * Revising the animatic (the v6 package's J05; from November 13, 2026). The animatic is cut again, and everything built on
+ * it that has begun starts over: before animation that is little, layouts and backgrounds at most; after animation, the
+ * animation, and the lighting, rendering and compositing on it. What is lost is the days already worked on them, which
+ * the preview gives before anything is reset. Work not built on the animatic (designs, models, voices) stays.
+ */
+export function animaticRevisionImpact(p: Project): { reset: Task[]; days: number } {
+  const a = p.tasks.find((x) => x.id === 'anim:animatic:all');
+  if (!a || a.done <= 0) return { reset: [], days: 0 };
+  const hit = dependents(p.tasks, a.id);
+  const reset = [a, ...p.tasks.filter((x) => x !== a && hit.has(x.id) && x.done > 0)];
+  return { reset, days: Math.round(reset.reduce((n, x) => n + x.workedDays, 0) * 10) / 10 };
+}
+
+export function reviseAnimatic(p: Project): Task[] {
+  assertEditable(p);
+  if (p.edit.pictureLocked) throw new Error('Unlock picture to revise the animatic.');
+  const { reset } = animaticRevisionImpact(p);
+  if (!reset.length) throw new Error('The animatic hasn\'t been started yet: there is nothing to revise.');
+  for (const x of reset) { x.done = 0; x.workedDays = 0; x.status = 'waiting'; x.doneAt = undefined; }
+  return reset;
 }

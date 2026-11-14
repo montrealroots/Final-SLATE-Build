@@ -1,0 +1,109 @@
+[
+  {
+    "id": "netflix_pitch",
+    "company": "Netflix",
+    "route_type": "represented_pitch",
+    "source_id": "REL01",
+    "requirements": [
+      "connected representative",
+      "requested submission"
+    ],
+    "guaranteed_income": false,
+    "price_model": "simulation_unless_separately_sourced",
+    "current_policy_observed_on": "2026-11-13",
+    "policy_effective_from": null,
+    "policy_effective_to": null
+  },
+  {
+    "id": "netflix_festival",
+    "company": "Netflix",
+    "route_type": "acquisition_opportunity",
+    "source_id": "REL01",
+    "requirements": [
+      "finished eligible work",
+      "buyer interest"
+    ],
+    "guaranteed_income": false,
+    "price_model": "simulation_unless_separately_sourced",
+    "current_policy_observed_on": "2026-11-13",
+    "policy_effective_from": null,
+    "policy_effective_to": null
+  },
+  {
+    "id": "prime_tvod",
+    "company": "Prime Video",
+    "route_type": "curated_rent_buy_submission",
+    "source_id": "REL03",
+    "requirements": [
+      "compliant title",
+      "technical delivery",
+      "licensing review"
+    ],
+    "guaranteed_income": false,
+    "price_model": "simulation_unless_separately_sourced",
+    "current_policy_observed_on": "2026-11-13",
+    "policy_effective_from": null,
+    "policy_effective_to": null
+  },
+  {
+    "id": "prime_svod",
+    "company": "Prime Video",
+    "route_type": "solicited_subscription_license",
+    "source_id": "REL03",
+    "requirements": [
+      "solicitation",
+      "negotiated license"
+    ],
+    "guaranteed_income": false,
+    "price_model": "simulation_unless_separately_sourced",
+    "current_policy_observed_on": "2026-11-13",
+    "policy_effective_from": null,
+    "policy_effective_to": null
+  },
+  {
+    "id": "apple_transactional",
+    "company": "Apple TV transactional store",
+    "route_type": "aggregator_or_direct_agreement",
+    "source_id": "REL04",
+    "requirements": [
+      "approved encoding delivery",
+      "agreement or aggregator",
+      "territory language assets"
+    ],
+    "guaranteed_income": false,
+    "price_model": "simulation_unless_separately_sourced",
+    "current_policy_observed_on": "2026-11-13",
+    "policy_effective_from": null,
+    "policy_effective_to": null
+  },
+  {
+    "id": "youtube",
+    "company": "YouTube",
+    "route_type": "self_publish_with_separate_monetization",
+    "source_id": "REL08",
+    "requirements": [
+      "channel eligibility for monetization",
+      "review"
+    ],
+    "guaranteed_income": false,
+    "price_model": "simulation_unless_separately_sourced",
+    "current_policy_observed_on": "2026-11-13",
+    "policy_effective_from": null,
+    "policy_effective_to": null
+  },
+  {
+    "id": "vimeo_legacy",
+    "company": "Vimeo On Demand",
+    "route_type": "sunsetting_storefront",
+    "source_id": "REL06",
+    "requirements": [
+      "dated seller eligibility",
+      "end-of-service handling"
+    ],
+    "guaranteed_income": false,
+    "price_model": "simulation_unless_separately_sourced",
+    "current_policy_observed_on": "2026-11-13",
+    "policy_effective_from": null,
+    "policy_effective_to": "2026-11-20"
+  }
+]

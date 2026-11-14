@@ -3,12 +3,12 @@
 // a record, with and without a deal, a pass and a take.
 import { describe, expect, it } from 'vitest';
 import { DAY, acceptDeal, createProject, deserialize, processUntil, serialize, setFinanceTarget } from './engine-api';
-import { pitchToStudio, studioOption } from '../src/engine/finance';
+import { backerOptions, pitchToStudio, studioOption, submitSeries } from '../src/engine/finance';
 import { formCompany, companyBalance } from '../src/engine/company';
 import { personalBalance } from '../src/engine/personal';
 import {
   FIRST_LOOK_NOTICE_DAYS, acceptFirstLook, activeFirstLook, askMoreOverhead, declineFirstLook, developmentRefusal, drawDevelopment, endFirstLook,
-  firstLookCandidate, firstLookTerms, firstLookWords, fundLeft, offerFirstLook, scheduleFirstLookCheck, submissionStanding,
+  covers, firstLookCandidate, firstLookTerms, firstLookWords, fundLeft, offerFirstLook, scheduleFirstLookCheck, scopeOf, submissionStanding,
 } from '../src/engine/first-look';
 import { slateRoom, strategyOf } from '../src/engine/strategy';
 import type { StudioProfile } from '../src/engine/studios';
@@ -214,5 +214,48 @@ describe('a running deal', () => {
     expect(fl.status).toBe('ended');
     const again = s.firstLooks!.find((x) => x.renews === fl.id)!;
     expect([again.status, again.company]).toEqual(['offered', HORROR.c]);
+  });
+});
+
+describe('a television first-look deal (the v6 package, J13; the v7 package, DEAL02: TV scope)', () => {
+  /** A save whose delivered work is a well-received horror series (labelled fixture: a delivered film marked a series). */
+  function tvWorld(tag: string): GameState {
+    const s = world(tag, [HORROR, FAMILY]);
+    record(s, 66).axes.format = 'series';
+    return s;
+  }
+  const series = (s: GameState, title: string, genres = ['horror']) => { const p = feature(s, { title, genres }); p.axes.format = 'series'; return p; }; // labelled: a series to submit
+
+  it('comes after delivered series, covers series and not films, and says so in its terms', () => {
+    const s = tvWorld('fl-tv-offer');
+    expect(firstLookCandidate(s, 'film')).toBeNull(); // no delivered film
+    const fl = offerFirstLook(s, undefined, 'television')!;
+    expect([fl.name, scopeOf(fl.terms)]).toEqual([HORROR.name, 'television']);
+    expect(firstLookWords(fl)[2]).toBe(`It covers the series you make while it runs, not films. You submit each one to ${HORROR.name} before you take it to any commissioner.`);
+    acceptFirstLook(s, fl.id);
+    expect(covers(fl, series(s, 'Night Watch'))).toBe(true);
+    expect(covers(fl, feature(s, { title: 'A Film Outside It' }))).toBe(false);
+  });
+
+  it('holds a covered series from any commissioner until the company answers; its answer is its read, not chance', () => {
+    const answers = [0, 1].map((k) => {
+      const s = tvWorld(`fl-tv-submit-${k}`);
+      acceptFirstLook(s, offerFirstLook(s, undefined, 'television')!.id);
+      const p = series(s, 'Night Watch');
+      const commissioner = () => backerOptions(s, p).find((o) => o.kind === 'commissioner')!;
+      expect(commissioner().needs).toBe(`Your first-look deal gives ${HORROR.name} the first chance at Night Watch: submit it to them first.`);
+      const d = submitSeries(s, p);
+      expect([d.kind, d.backer, d.firstLook, Math.round((d.decideAt! - d.askedAt) / DAY)]).toEqual(['commissioner', HORROR.name, activeFirstLook(s)!.id, activeFirstLook(s)!.terms.considerDays]);
+      expect(commissioner().needs).toBe('Already approached for this project.'); // the submission is in front of it
+      wait(s, activeFirstLook(s)!.terms.considerDays + 1);
+      const read = studioOption(s, p, HORROR.c)!.read;
+      return { status: d.status, verdict: read.verdict, hold: commissioner().needs };
+    });
+    // The same facts give the same answer: an offer to commission it, or a pass that frees it for a commissioner.
+    expect(answers[0].verdict).toBe(answers[1].verdict);
+    for (const a of answers) {
+      if (a.verdict === 'offer' || a.verdict === 'option') expect(a.status).toBe('offered');
+      else { expect(a.status).toBe('declined'); expect(a.hold).not.toMatch(/first-look/); }
+    }
   });
 });

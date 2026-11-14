@@ -1,0 +1,39 @@
+[
+  {
+    "id": "deal:wb-shyamalan",
+    "announcement": "2023-02-16",
+    "company": "Warner Bros. Pictures Group",
+    "partner": "M. Night Shyamalan / Blinding Edge Pictures",
+    "scope": "film directing and producing",
+    "term": "multi-year; exact term unknown",
+    "financial_terms": null,
+    "active_in_2026": null,
+    "source_id": "DEAL01"
+  },
+  {
+    "id": "deal:wb-feig",
+    "announcement": "2025-04-22",
+    "company": "Warner Bros. Television Group",
+    "partner": "Paul Feig / Laura Fischer / Feigco",
+    "scope": [
+      "scripted television",
+      "unscripted television",
+      "animation"
+    ],
+    "term": "multi-year; exact term unknown",
+    "financial_terms": null,
+    "active_in_2026": null,
+    "source_id": "DEAL02"
+  },
+  {
+    "id": "deal:sony-appian",
+    "announcement": "2020-08-13",
+    "company": "Sony Pictures Entertainment",
+    "partner": "Appian Way",
+    "scope": "scripted features",
+    "term": "multi-year, multi-picture; exact term unknown",
+    "financial_terms": null,
+    "active_in_2026": null,
+    "source_id": "DEAL03"
+  }
+]

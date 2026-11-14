@@ -894,6 +894,14 @@
   ]
  },
  {
+  "id": "dlg-revise-animatic",
+  "area": "Production",
+  "name": "Revise The Animatic?",
+  "kind": "dialog",
+  "dialog": "^Revise The Animatic\\?$",
+  "source": "FinishViews | \"Revise The Animatic?\""
+ },
+ {
   "id": "scene-open",
   "area": "Script",
   "name": "A Scene, Open",

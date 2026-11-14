@@ -4,11 +4,12 @@
 // revision. A save never stores one: what a save shows follows from the data and the save's own clock, so a reload
 // can't duplicate one and a later correction can't rewrite what a save already settled.
 //
-// Reportable only once published. A date without a time becomes reportable when that date has ended where it was
-// published: a ceremony in Los Angeles on March 15 is news from midnight going into March 16 there, so no player
-// anywhere learns a result before it happened. A player in Los Angeles hears of it a few hours late; that is the price.
+// Reportable from its published date, in the player's own calendar (the owner's v7 package, reference visible() and its
+// decision: a date known only to the day must not be given a made-up time). Until November 13, 2026 a result waited
+// until its day had ended where it was announced. No publication date, no report: an unknown is never shown as known.
 import awards2026 from '../data/history/awards-2026.json';
-import { addDaysToKey, localToInstant, parseYmd } from './time';
+import awardsReference from '../data/history/awards-2026-reference.json';
+import audienceReference from '../data/history/audience-2026-reference.json';
 
 export interface HistorySource { url: string; title: string; provider: string; retrieved: string; section: string; access: string }
 export interface Observation {
@@ -17,8 +18,8 @@ export interface Observation {
   institution: string;
   year: number;
   edition: string;
-  /** The game's category id for it, and the name as the organizer gives it. */
-  category: string;
+  /** The game's category id for it, or null where the game has no such category; and the name as the organizer gives it. */
+  category: string | null;
   categoryName: string;
   /** Works or people, as the source writes them. */
   subjects: string[];
@@ -26,8 +27,11 @@ export interface Observation {
   work?: string;
   credited?: string;
   occurred: string;
-  published: string;
+  /** null: when it was published isn't known, and it isn't shown. */
+  published: string | null;
   precision: 'day';
+  /** Who the record names: a person, or only the work (and no individual recipient is assigned from it). */
+  recipients?: 'named_person' | 'work_only';
   source: string;
   /** Where the publication date comes from, when that isn't the main source. */
   publishedSource?: string;
@@ -45,21 +49,16 @@ export interface HistoryDataset {
   observations: Observation[];
 }
 
-export const DATASETS: HistoryDataset[] = [awards2026 as HistoryDataset];
-/** Where each institution announces its results, for the end of a published day. */
-const ZONES: Record<string, string> = { oscars: 'America/Los_Angeles', 'golden-globes': 'America/Los_Angeles' };
+export const DATASETS: HistoryDataset[] = [awards2026 as HistoryDataset, awardsReference as HistoryDataset];
 
-/** The instant an observation becomes reportable: the end of its published day where it was published. */
-export function reportableFrom(o: Observation): number {
-  const next = parseYmd(addDaysToKey(o.published, 1));
-  return localToInstant(ZONES[o.institution] ?? 'Etc/GMT+12', next.year, next.month, next.day, 0).instant;
-}
+/** Whether an observation is reportable on `today` (YYYY-MM-DD, the player's own date): published, and by then. */
+export const reportable = (o: Pick<Observation, 'published' | 'occurred'>, today: string): boolean => !!o.published && o.published <= today && o.occurred <= today;
 
-/** Observations reportable at `now`, each at its latest revision published by then. */
-export function observationsAt(now: number, keep: (o: Observation) => boolean = () => true, datasets = DATASETS): Observation[] {
+/** Observations reportable on `today`, each at its latest revision published by then. */
+export function observationsAt(today: string, keep: (o: Observation) => boolean = () => true, datasets = DATASETS): Observation[] {
   const latest = new Map<string, Observation>();
   for (const d of datasets) for (const o of d.observations) {
-    if (!keep(o) || reportableFrom(o) > now) continue;
+    if (!keep(o) || !reportable(o, today)) continue;
     const had = latest.get(o.id);
     if (!had || o.revision > had.revision) latest.set(o.id, o);
   }
@@ -68,10 +67,27 @@ export function observationsAt(now: number, keep: (o: Observation) => boolean = 
 
 /** Whether any recorded results exist for this institution's edition, published or not (not what they are). */
 export const holdsRecords = (institution: string, year: number, datasets = DATASETS) => datasets.some((d) => d.observations.some((o) => o.institution === institution && o.year === year));
-/** The recorded results of one edition reportable at `now`, by category in the order the data lists them. */
-export const recordedResults = (institution: string, year: number, now: number, datasets = DATASETS) => observationsAt(now, (o) => o.institution === institution && o.year === year, datasets);
+/** The recorded results of one edition reportable on `today`, by category in the order the data lists them. */
+export const recordedResults = (institution: string, year: number, today: string, datasets = DATASETS) => observationsAt(today, (o) => o.institution === institution && o.year === year, datasets);
 
 export function sourceOf(o: Observation, datasets = DATASETS): HistorySource {
   const d = datasets.find((x) => x.observations.includes(o) || x.observations.some((y) => y.id === o.id))!;
   return d.sources[o.source];
 }
+
+// ---- Audience charts (the v7 package, MET01-MET04). A chart row keeps its unit, territory, period and method; two rows
+// are comparable only when all of those match (reference comparable()). A row whose publication is inferred, not
+// observed, is shown only in a playback that opts into inference; strict playback (the default) leaves it out.
+export interface AudienceRow { id: string; title: string; rank: number; value: number; unit: string; period_start: string; period_end: string; territory: string; chart: string; source_id: string; available_on: string | null; availability_basis: string; raw_precision: number; methodology?: string }
+export const AUDIENCE_ROWS = (audienceReference as unknown as { rows: AudienceRow[] }).rows;
+export const inferred = (r: Pick<AudienceRow, 'availability_basis'>) => r.availability_basis.startsWith('inferred');
+export function audienceAt(today: string, allowInferred = false, rows = AUDIENCE_ROWS): AudienceRow[] {
+  return rows.filter((r) => !!r.available_on && r.available_on <= today && r.period_end <= today && (allowInferred || !inferred(r)));
+}
+type Scope = Partial<Pick<AudienceRow, 'unit' | 'territory' | 'period_start' | 'period_end' | 'methodology'>> & { metric?: string };
+/** Whether two figures can be set side by side: the same metric, unit, territory, period and method, none of them missing. */
+export function comparable(a: Scope, b: Scope): boolean {
+  return (['metric', 'unit', 'territory', 'period_start', 'period_end', 'methodology'] as const).every((k) => a[k] != null && a[k] === b[k]);
+}
+/** A displayed value as it was displayed: 8.6 million views stays "8.6 million", not 8,600,000 people. */
+export const displayed = (r: Pick<AudienceRow, 'value' | 'raw_precision' | 'unit'>) => `${r.value.toFixed(r.raw_precision)} million ${r.unit.startsWith('million_views') ? 'views' : r.unit}`;

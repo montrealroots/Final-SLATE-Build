@@ -1,0 +1,752 @@
+{
+ "dataset": "awards-2026-reference",
+ "version": 1,
+ "about": "The v7 package's award reference records (docs/v7/package/data/award-reference-records.json), grouped by category: a nomination and a win are separate observations, each reportable from its own date. Work-only results name no individual recipient, and none is assigned. Selected results, not whole ceremonies.",
+ "coverage": {
+  "requested": "2026-01-01 to 2026-11-13",
+  "observed": "2026-01-22 to 2026-09-14",
+  "editions": [
+   "2026 BAFTA Film Awards",
+   "2026 Cannes Film Festival",
+   "2026 Primetime Emmy Awards",
+   "2026 SXSW Film & TV Festival",
+   "2026 Sundance Film Festival",
+   "2026 Venice International Film Festival",
+   "98th Academy Awards"
+  ],
+  "notInSet": "Every category and ceremony not listed; TIFF (secondary evidence only, FEST07); recipients of work-only results."
+ },
+ "sources": {
+  "AW01": {
+   "url": "https://www.oscars.org/oscars/ceremonies/2026",
+   "title": "98th Oscars results",
+   "provider": "Academy of Motion Picture Arts and Sciences",
+   "retrieved": "2026-11-13",
+   "section": "The ceremony took place March 15, 2026 and honored 2025 releases. Included reference records transcribe the four acting categories only.",
+   "access": "primary source, retrieved for the owner's v7 package"
+  },
+  "AW02": {
+   "url": "https://press.oscars.org/news/98th-oscarsr-nominations-announced",
+   "title": "98th nominations announcement",
+   "provider": "Academy of Motion Picture Arts and Sciences",
+   "retrieved": "2026-11-13",
+   "section": "Nominations were announced January 22, 2026; the ceremony was scheduled for March 15.",
+   "access": "primary source, retrieved for the owner's v7 package"
+  },
+  "AW05": {
+   "url": "https://www.televisionacademy.com/files/assets/Downloads/2026-rules-procedures-v1.pdf",
+   "title": "78th Emmy calendar",
+   "provider": "Television Academy",
+   "retrieved": "2026-11-13",
+   "section": "Eligibility runs June 1, 2025–May 31, 2026. Entries close May 7; general nominations July 8; some panel nominations July 15; Creative Arts September 5–6; teleca",
+   "access": "primary source, retrieved for the owner's v7 package"
+  },
+  "AW07": {
+   "url": "https://www.televisionacademy.com/awards/nominees-winners/2026/outstanding-comedy-series",
+   "title": "78th Emmy comedy series results",
+   "provider": "Television Academy",
+   "retrieved": "2026-11-13",
+   "section": "The retrieved category page identifies Widow’s Bay, Apple TV, as winner.",
+   "access": "primary source, retrieved for the owner's v7 package"
+  },
+  "AW08": {
+   "url": "https://www.televisionacademy.com/awards/nominees-winners/2026/outstanding-drama-series",
+   "title": "78th Emmy drama series results",
+   "provider": "Television Academy",
+   "retrieved": "2026-11-13",
+   "section": "The retrieved category page identifies The Pitt, HBO Max, as winner.",
+   "access": "primary source, retrieved for the owner's v7 package"
+  },
+  "AW09": {
+   "url": "https://www.televisionacademy.com/awards/nominees-winners/2026/outstanding-limited-or-anthology-series",
+   "title": "78th Emmy limited/anthology results",
+   "provider": "Television Academy",
+   "retrieved": "2026-11-13",
+   "section": "The retrieved category page identifies DTF St. Louis, HBO Max, as winner.",
+   "access": "primary source, retrieved for the owner's v7 package"
+  },
+  "AW10": {
+   "url": "https://www.bafta.org/media-centre/press-releases/winners-announced-2026-film-awards/",
+   "title": "BAFTA 2026 announcement",
+   "provider": "BAFTA",
+   "retrieved": "2026-11-13",
+   "section": "BAFTA announced film winners on February 22, 2026. One Battle After Another won Best Film; performance winners include Jessie Buckley, Robert Aramayo, Sean Penn",
+   "access": "primary source, retrieved for the owner's v7 package"
+  },
+  "FEST01": {
+   "url": "https://www.festival-cannes.com/en/press/press-releases/the-79th-festival-de-cannes-winners-list/",
+   "title": "Cannes 2026 results",
+   "provider": "Festival de Cannes",
+   "retrieved": "2026-11-13",
+   "section": "The May 23 results include Fjord for the Palme d’Or and Minotaure for the Grand Prix. Best Director is shared between La Bola Negra’s directors and Fatherland’s",
+   "access": "primary source, retrieved for the owner's v7 package"
+  },
+  "FEST04": {
+   "url": "https://www.labiennale.org/en/news/official-awards-83rd-venice-international-film-festival",
+   "title": "Venice 83 official results",
+   "provider": "La Biennale di Venezia",
+   "retrieved": "2026-11-13",
+   "section": "The September 12, 2026 announcement awards the Golden Lion to Woman Unknown and Grand Jury Prize to Possible Love.",
+   "access": "primary source, retrieved for the owner's v7 package"
+  },
+  "FEST05": {
+   "url": "https://www.sundance.org/blogs/2026-sundance-film-festival-announces-award-winners",
+   "title": "Sundance 2026 awards announcement",
+   "provider": "Sundance Institute",
+   "retrieved": "2026-11-13",
+   "section": "January 30 results identify Josephine, Nuisance Bear, Shame and Money and To Hold a Mountain as the four competition grand-jury winners.",
+   "access": "primary source, retrieved for the owner's v7 package"
+  },
+  "FEST06": {
+   "url": "https://sxsw.com/wp-content/uploads/2026/03/2026-FTV-Jury-Special-Awards.pdf",
+   "title": "SXSW 2026 jury awards",
+   "provider": "SXSW",
+   "retrieved": "2026-11-13",
+   "section": "March 18 announcement identifies Wishful Thinking as narrative feature jury winner and states audience voting/results follow a distinct schedule.",
+   "access": "primary source, retrieved for the owner's v7 package"
+  }
+ },
+ "observations": [
+  {
+   "id": "v7-oscars-lead_actor-nominee",
+   "kind": "nominees",
+   "institution": "oscars",
+   "year": 2026,
+   "edition": "98th Academy Awards",
+   "category": "actor",
+   "categoryName": "Actor In A Leading Role",
+   "subjects": [
+    "Michael B. Jordan (Sinners)",
+    "Timothée Chalamet (Marty Supreme)",
+    "Leonardo DiCaprio (One Battle after Another)",
+    "Ethan Hawke (Blue Moon)",
+    "Wagner Moura (The Secret Agent)"
+   ],
+   "occurred": "2026-01-22",
+   "published": "2026-01-22",
+   "precision": "day",
+   "source": "AW01",
+   "status": "verified",
+   "revision": 1,
+   "imported": "2026-11-13",
+   "recipients": "named_person",
+   "packetIds": [
+    "award:1",
+    "award:3",
+    "award:4",
+    "award:5",
+    "award:6"
+   ],
+   "publishedSource": "AW02"
+  },
+  {
+   "id": "v7-oscars-lead_actor-winner",
+   "kind": "winner",
+   "institution": "oscars",
+   "year": 2026,
+   "edition": "98th Academy Awards",
+   "category": "actor",
+   "categoryName": "Actor In A Leading Role",
+   "subjects": [
+    "Michael B. Jordan (Sinners)"
+   ],
+   "occurred": "2026-03-15",
+   "published": "2026-03-15",
+   "precision": "day",
+   "source": "AW01",
+   "status": "verified",
+   "revision": 1,
+   "imported": "2026-11-13",
+   "recipients": "named_person",
+   "packetIds": [
+    "award:2"
+   ]
+  },
+  {
+   "id": "v7-oscars-supporting_actor-nominee",
+   "kind": "nominees",
+   "institution": "oscars",
+   "year": 2026,
+   "edition": "98th Academy Awards",
+   "category": "supporting-actor",
+   "categoryName": "Actor In A Supporting Role",
+   "subjects": [
+    "Sean Penn (One Battle after Another)",
+    "Benicio Del Toro (One Battle after Another)",
+    "Jacob Elordi (Frankenstein)",
+    "Delroy Lindo (Sinners)",
+    "Stellan Skarsgård (Sentimental Value)"
+   ],
+   "occurred": "2026-01-22",
+   "published": "2026-01-22",
+   "precision": "day",
+   "source": "AW01",
+   "status": "verified",
+   "revision": 1,
+   "imported": "2026-11-13",
+   "recipients": "named_person",
+   "packetIds": [
+    "award:7",
+    "award:9",
+    "award:10",
+    "award:11",
+    "award:12"
+   ],
+   "publishedSource": "AW02"
+  },
+  {
+   "id": "v7-oscars-supporting_actor-winner",
+   "kind": "winner",
+   "institution": "oscars",
+   "year": 2026,
+   "edition": "98th Academy Awards",
+   "category": "supporting-actor",
+   "categoryName": "Actor In A Supporting Role",
+   "subjects": [
+    "Sean Penn (One Battle after Another)"
+   ],
+   "occurred": "2026-03-15",
+   "published": "2026-03-15",
+   "precision": "day",
+   "source": "AW01",
+   "status": "verified",
+   "revision": 1,
+   "imported": "2026-11-13",
+   "recipients": "named_person",
+   "packetIds": [
+    "award:8"
+   ]
+  },
+  {
+   "id": "v7-oscars-lead_actress-nominee",
+   "kind": "nominees",
+   "institution": "oscars",
+   "year": 2026,
+   "edition": "98th Academy Awards",
+   "category": "actress",
+   "categoryName": "Actress In A Leading Role",
+   "subjects": [
+    "Jessie Buckley (Hamnet)",
+    "Rose Byrne (If I Had Legs I'd Kick You)",
+    "Kate Hudson (Song Sung Blue)",
+    "Renate Reinsve (Sentimental Value)",
+    "Emma Stone (Bugonia)"
+   ],
+   "occurred": "2026-01-22",
+   "published": "2026-01-22",
+   "precision": "day",
+   "source": "AW01",
+   "status": "verified",
+   "revision": 1,
+   "imported": "2026-11-13",
+   "recipients": "named_person",
+   "packetIds": [
+    "award:13",
+    "award:15",
+    "award:16",
+    "award:17",
+    "award:18"
+   ],
+   "publishedSource": "AW02"
+  },
+  {
+   "id": "v7-oscars-lead_actress-winner",
+   "kind": "winner",
+   "institution": "oscars",
+   "year": 2026,
+   "edition": "98th Academy Awards",
+   "category": "actress",
+   "categoryName": "Actress In A Leading Role",
+   "subjects": [
+    "Jessie Buckley (Hamnet)"
+   ],
+   "occurred": "2026-03-15",
+   "published": "2026-03-15",
+   "precision": "day",
+   "source": "AW01",
+   "status": "verified",
+   "revision": 1,
+   "imported": "2026-11-13",
+   "recipients": "named_person",
+   "packetIds": [
+    "award:14"
+   ]
+  },
+  {
+   "id": "v7-oscars-supporting_actress-nominee",
+   "kind": "nominees",
+   "institution": "oscars",
+   "year": 2026,
+   "edition": "98th Academy Awards",
+   "category": "supporting-actress",
+   "categoryName": "Actress In A Supporting Role",
+   "subjects": [
+    "Amy Madigan (Weapons)",
+    "Elle Fanning (Sentimental Value)",
+    "Inga Ibsdotter Lilleaas (Sentimental Value)",
+    "Wunmi Mosaku (Sinners)",
+    "Teyana Taylor (One Battle after Another)"
+   ],
+   "occurred": "2026-01-22",
+   "published": "2026-01-22",
+   "precision": "day",
+   "source": "AW01",
+   "status": "verified",
+   "revision": 1,
+   "imported": "2026-11-13",
+   "recipients": "named_person",
+   "packetIds": [
+    "award:19",
+    "award:21",
+    "award:22",
+    "award:23",
+    "award:24"
+   ],
+   "publishedSource": "AW02"
+  },
+  {
+   "id": "v7-oscars-supporting_actress-winner",
+   "kind": "winner",
+   "institution": "oscars",
+   "year": 2026,
+   "edition": "98th Academy Awards",
+   "category": "supporting-actress",
+   "categoryName": "Actress In A Supporting Role",
+   "subjects": [
+    "Amy Madigan (Weapons)"
+   ],
+   "occurred": "2026-03-15",
+   "published": "2026-03-15",
+   "precision": "day",
+   "source": "AW01",
+   "status": "verified",
+   "revision": 1,
+   "imported": "2026-11-13",
+   "recipients": "named_person",
+   "packetIds": [
+    "award:20"
+   ]
+  },
+  {
+   "id": "v7-emmys-comedy_series-winner",
+   "kind": "winner",
+   "institution": "emmys",
+   "year": 2026,
+   "edition": "2026 Primetime Emmy Awards",
+   "category": "comedy",
+   "categoryName": "Outstanding Comedy Series",
+   "subjects": [
+    "Widow’s Bay"
+   ],
+   "occurred": "2026-09-14",
+   "published": "2026-09-14",
+   "precision": "day",
+   "source": "AW07",
+   "status": "verified",
+   "revision": 1,
+   "imported": "2026-11-13",
+   "recipients": "work_only",
+   "packetIds": [
+    "award:25"
+   ],
+   "publishedSource": "AW05"
+  },
+  {
+   "id": "v7-emmys-drama_series-winner",
+   "kind": "winner",
+   "institution": "emmys",
+   "year": 2026,
+   "edition": "2026 Primetime Emmy Awards",
+   "category": "drama",
+   "categoryName": "Outstanding Drama Series",
+   "subjects": [
+    "The Pitt"
+   ],
+   "occurred": "2026-09-14",
+   "published": "2026-09-14",
+   "precision": "day",
+   "source": "AW08",
+   "status": "verified",
+   "revision": 1,
+   "imported": "2026-11-13",
+   "recipients": "work_only",
+   "packetIds": [
+    "award:26"
+   ],
+   "publishedSource": "AW05"
+  },
+  {
+   "id": "v7-emmys-limited_anthology_series-winner",
+   "kind": "winner",
+   "institution": "emmys",
+   "year": 2026,
+   "edition": "2026 Primetime Emmy Awards",
+   "category": "limited",
+   "categoryName": "Outstanding Limited Or Anthology Series",
+   "subjects": [
+    "DTF St. Louis"
+   ],
+   "occurred": "2026-09-14",
+   "published": "2026-09-14",
+   "precision": "day",
+   "source": "AW09",
+   "status": "verified",
+   "revision": 1,
+   "imported": "2026-11-13",
+   "recipients": "work_only",
+   "packetIds": [
+    "award:27"
+   ],
+   "publishedSource": "AW05"
+  },
+  {
+   "id": "v7-bafta-film-best_film-winner",
+   "kind": "winner",
+   "institution": "bafta-film",
+   "year": 2026,
+   "edition": "2026 BAFTA Film Awards",
+   "category": "film",
+   "categoryName": "Best Film",
+   "subjects": [
+    "One Battle after Another"
+   ],
+   "occurred": "2026-02-22",
+   "published": "2026-02-22",
+   "precision": "day",
+   "source": "AW10",
+   "status": "verified",
+   "revision": 1,
+   "imported": "2026-11-13",
+   "recipients": "work_only",
+   "packetIds": [
+    "award:28"
+   ]
+  },
+  {
+   "id": "v7-cannes-palme_dor-winner",
+   "kind": "winner",
+   "institution": "cannes",
+   "year": 2026,
+   "edition": "2026 Cannes Film Festival",
+   "category": "palme",
+   "categoryName": "Palme d'Or",
+   "subjects": [
+    "Fjord"
+   ],
+   "occurred": "2026-05-23",
+   "published": "2026-05-23",
+   "precision": "day",
+   "source": "FEST01",
+   "status": "verified",
+   "revision": 1,
+   "imported": "2026-11-13",
+   "recipients": "work_only",
+   "packetIds": [
+    "award:29"
+   ]
+  },
+  {
+   "id": "v7-cannes-grand_prix-winner",
+   "kind": "winner",
+   "institution": "cannes",
+   "year": 2026,
+   "edition": "2026 Cannes Film Festival",
+   "category": "grand-prix",
+   "categoryName": "Grand Prix",
+   "subjects": [
+    "Minotaure"
+   ],
+   "occurred": "2026-05-23",
+   "published": "2026-05-23",
+   "precision": "day",
+   "source": "FEST01",
+   "status": "verified",
+   "revision": 1,
+   "imported": "2026-11-13",
+   "recipients": "work_only",
+   "packetIds": [
+    "award:30"
+   ]
+  },
+  {
+   "id": "v7-venice-golden_lion-winner",
+   "kind": "winner",
+   "institution": "venice",
+   "year": 2026,
+   "edition": "2026 Venice International Film Festival",
+   "category": "golden-lion",
+   "categoryName": "Golden Lion For Best Film",
+   "subjects": [
+    "Woman Unknown"
+   ],
+   "occurred": "2026-09-12",
+   "published": "2026-09-12",
+   "precision": "day",
+   "source": "FEST04",
+   "status": "verified",
+   "revision": 1,
+   "imported": "2026-11-13",
+   "recipients": "work_only",
+   "packetIds": [
+    "award:31"
+   ]
+  },
+  {
+   "id": "v7-venice-grand_jury-winner",
+   "kind": "winner",
+   "institution": "venice",
+   "year": 2026,
+   "edition": "2026 Venice International Film Festival",
+   "category": "grand-jury",
+   "categoryName": "Silver Lion - Grand Jury Prize",
+   "subjects": [
+    "Possible Love"
+   ],
+   "occurred": "2026-09-12",
+   "published": "2026-09-12",
+   "precision": "day",
+   "source": "FEST04",
+   "status": "verified",
+   "revision": 1,
+   "imported": "2026-11-13",
+   "recipients": "work_only",
+   "packetIds": [
+    "award:32"
+   ]
+  },
+  {
+   "id": "v7-sundance-us_dramatic_grand_jury-winner",
+   "kind": "winner",
+   "institution": "sundance",
+   "year": 2026,
+   "edition": "2026 Sundance Film Festival",
+   "category": "dramatic-grand-jury",
+   "categoryName": "U.S. Grand Jury Prize: Dramatic",
+   "subjects": [
+    "Josephine"
+   ],
+   "occurred": "2026-01-30",
+   "published": "2026-01-30",
+   "precision": "day",
+   "source": "FEST05",
+   "status": "verified",
+   "revision": 1,
+   "imported": "2026-11-13",
+   "recipients": "work_only",
+   "packetIds": [
+    "award:33"
+   ]
+  },
+  {
+   "id": "v7-sundance-us_documentary_grand_jury-winner",
+   "kind": "winner",
+   "institution": "sundance",
+   "year": 2026,
+   "edition": "2026 Sundance Film Festival",
+   "category": "documentary-grand-jury",
+   "categoryName": "U.S. Grand Jury Prize: Documentary",
+   "subjects": [
+    "Nuisance Bear"
+   ],
+   "occurred": "2026-01-30",
+   "published": "2026-01-30",
+   "precision": "day",
+   "source": "FEST05",
+   "status": "verified",
+   "revision": 1,
+   "imported": "2026-11-13",
+   "recipients": "work_only",
+   "packetIds": [
+    "award:34"
+   ]
+  },
+  {
+   "id": "v7-sundance-world_dramatic_grand_jury-winner",
+   "kind": "winner",
+   "institution": "sundance",
+   "year": 2026,
+   "edition": "2026 Sundance Film Festival",
+   "category": "world-dramatic-grand-jury",
+   "categoryName": "World Cinema Grand Jury Prize: Dramatic",
+   "subjects": [
+    "Shame and Money"
+   ],
+   "occurred": "2026-01-30",
+   "published": "2026-01-30",
+   "precision": "day",
+   "source": "FEST05",
+   "status": "verified",
+   "revision": 1,
+   "imported": "2026-11-13",
+   "recipients": "work_only",
+   "packetIds": [
+    "award:35"
+   ]
+  },
+  {
+   "id": "v7-sundance-world_documentary_grand_jury-winner",
+   "kind": "winner",
+   "institution": "sundance",
+   "year": 2026,
+   "edition": "2026 Sundance Film Festival",
+   "category": "world-documentary-grand-jury",
+   "categoryName": "World Cinema Grand Jury Prize: Documentary",
+   "subjects": [
+    "To Hold a Mountain"
+   ],
+   "occurred": "2026-01-30",
+   "published": "2026-01-30",
+   "precision": "day",
+   "source": "FEST05",
+   "status": "verified",
+   "revision": 1,
+   "imported": "2026-11-13",
+   "recipients": "work_only",
+   "packetIds": [
+    "award:36"
+   ]
+  },
+  {
+   "id": "v7-sxsw-narrative_feature_jury-winner",
+   "kind": "winner",
+   "institution": "sxsw",
+   "year": 2026,
+   "edition": "2026 SXSW Film & TV Festival",
+   "category": "narrative-jury",
+   "categoryName": "Grand Jury Award: Narrative Feature",
+   "subjects": [
+    "Wishful Thinking"
+   ],
+   "occurred": "2026-03-18",
+   "published": "2026-03-18",
+   "precision": "day",
+   "source": "FEST06",
+   "status": "verified",
+   "revision": 1,
+   "imported": "2026-11-13",
+   "recipients": "work_only",
+   "packetIds": [
+    "award:37"
+   ]
+  },
+  {
+   "id": "v7-bafta-film-leading_actress-winner",
+   "kind": "winner",
+   "institution": "bafta-film",
+   "year": 2026,
+   "edition": "2026 BAFTA Film Awards",
+   "category": "leading-actress",
+   "categoryName": "Leading Actress",
+   "subjects": [
+    "Jessie Buckley (Hamnet)"
+   ],
+   "occurred": "2026-02-22",
+   "published": "2026-02-22",
+   "precision": "day",
+   "source": "AW10",
+   "status": "verified",
+   "revision": 1,
+   "imported": "2026-11-13",
+   "recipients": "named_person",
+   "packetIds": [
+    "award:38"
+   ]
+  },
+  {
+   "id": "v7-bafta-film-leading_actor-winner",
+   "kind": "winner",
+   "institution": "bafta-film",
+   "year": 2026,
+   "edition": "2026 BAFTA Film Awards",
+   "category": "leading-actor",
+   "categoryName": "Leading Actor",
+   "subjects": [
+    "Robert Aramayo (I Swear)"
+   ],
+   "occurred": "2026-02-22",
+   "published": "2026-02-22",
+   "precision": "day",
+   "source": "AW10",
+   "status": "verified",
+   "revision": 1,
+   "imported": "2026-11-13",
+   "recipients": "named_person",
+   "packetIds": [
+    "award:39"
+   ]
+  },
+  {
+   "id": "v7-bafta-film-supporting_actor-winner",
+   "kind": "winner",
+   "institution": "bafta-film",
+   "year": 2026,
+   "edition": "2026 BAFTA Film Awards",
+   "category": null,
+   "categoryName": "Supporting Actor",
+   "subjects": [
+    "Sean Penn (One Battle after Another)"
+   ],
+   "occurred": "2026-02-22",
+   "published": "2026-02-22",
+   "precision": "day",
+   "source": "AW10",
+   "status": "verified",
+   "revision": 1,
+   "imported": "2026-11-13",
+   "recipients": "named_person",
+   "packetIds": [
+    "award:40"
+   ]
+  },
+  {
+   "id": "v7-bafta-film-supporting_actress-winner",
+   "kind": "winner",
+   "institution": "bafta-film",
+   "year": 2026,
+   "edition": "2026 BAFTA Film Awards",
+   "category": null,
+   "categoryName": "Supporting Actress",
+   "subjects": [
+    "Wunmi Mosaku (Sinners)"
+   ],
+   "occurred": "2026-02-22",
+   "published": "2026-02-22",
+   "precision": "day",
+   "source": "AW10",
+   "status": "verified",
+   "revision": 1,
+   "imported": "2026-11-13",
+   "recipients": "named_person",
+   "packetIds": [
+    "award:41"
+   ]
+  },
+  {
+   "id": "v7-cannes-best_director-winner",
+   "kind": "winner",
+   "institution": "cannes",
+   "year": 2026,
+   "edition": "2026 Cannes Film Festival",
+   "category": "director",
+   "categoryName": "Award For Best Director",
+   "subjects": [
+    "Javier Calvo (La Bola Negra)",
+    "Javier Ambrossi (La Bola Negra)",
+    "Pawel Pawlikowski (Fatherland)"
+   ],
+   "occurred": "2026-05-23",
+   "published": "2026-05-23",
+   "precision": "day",
+   "source": "FEST01",
+   "status": "verified",
+   "revision": 1,
+   "imported": "2026-11-13",
+   "recipients": "named_person",
+   "packetIds": [
+    "award:42",
+    "award:43",
+    "award:44"
+   ]
+  }
+ ]
+}

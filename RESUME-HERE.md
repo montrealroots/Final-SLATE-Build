@@ -44,6 +44,40 @@ order of work is at its end. The owner said: "Don't stop until 100% perfect comp
 
 ## Newest Requests (November 13, 2026)
 
+- **The v7 package, "SLATE Researched World" (the owner, November 13, 2026).** It is in `docs/v7/package` (its 33 MANIFEST
+  hashes match; its 15 Python reference tests pass: `python3 -I -m unittest discover -s reference -v` from that folder).
+  It supersedes the v6 command's research steps; the v6 ledger (`docs/v6/requirements.csv`) is still the scope.
+  The half-built v6 television first look is on the local branch `wip/tv-first-look` (not pushed).
+  - *Done, in the package's order:* 1. Elantris corrected from its publisher and author (three viewpoint co-leads;
+    `src/data/source-corrections.json`). 2. The seven real release routes, each a different door, with a film's standing
+    from the save (`engine/platform-routes.ts`, the Release Plan's Real Services). 3. The package's 44 award events and
+    the Netflix chart week in recorded history, visible from their published date in the player's calendar, inferred
+    availability hidden unless opted into, figures comparable only in the same scope (`engine/history.ts`).
+  - *Also done:* 4. partial eligibility extracts as tri-state checks (`engine/rule-extracts.ts`); 5. task graphs checked
+    for every method, and a changed take reworks everything built on it (`production/tasks.ts` dependents, graphFaults);
+    6. standing and grade by role per `reputation-design.json` (`engine/reputation.ts` standings; read by the reputation
+    card only, offers still use craft); 7. television first-look deals (`first-look.ts` scope, `finance.ts`
+    submitSeries); 8. camera modes and composer credits as reference records (`engine/reference-records.ts`; nothing in
+    play reads them yet).
+  - *The 22 journeys (after PR #89):* `docs/v6/JOURNEYS.md` maps J01 to J22 to the tests that run them, checked by
+    `tests/v6-journeys.test.ts`: (then) 5 Covered, 17 Partly Covered, each saying which steps don't run. New: J13 through the
+    screens (`e2e/v6-first-look-tv.spec.ts`, seed 3, desktop, phone and iPhone 15 Pro Max), and J22's exploits in
+    `tests/standing.test.ts`. On an unpinned world desktop and phone got different answers from the company, by their
+    slates, so the journey pins the seed. V6-039 and V6-040 in `docs/v6/requirements.csv` no longer say TV scope and
+    anti-farming aren't built.
+  - J05: the animatic can be revised (`revisions.ts` reviseAnimatic, the Animatic card on Production, a preview of
+    what starts over and the days lost); `e2e/v6-animatic.spec.ts` revises it before and after animation and delivers.
+  - J03: `e2e/v6-one-person.spec.ts` adapts The Mystery of Marie Rogêt (one person) through the screens to release.
+    It then reads Standing By Role on the Profile, before and after a reload (J22). Matrix now 7 Covered, 15 Partly
+    Covered.
+  - Engine tests added for J04 (a part recast from episode 2 leaves every other credit whole, `parts.test.ts`) and J19
+    (ten years of the world: the event queue bounded, the save growing evenly, `long-run.test.ts`); J16's and J17's rows
+    now cite the engine tests that already ran them (`rulebooks.test.ts`).
+  - *Next:* the partly covered journeys, each row saying what doesn't run (J21's correction on screen waits for a real
+    correction in a recorded dataset; none is invented for a test). Then grades feeding offers; cameras and composers into the shop and hiring once prices and terms are sourced; the TMDB
+    inventory import from ID exports (`docs/v7/package/reference/tmdb_inventory.py`).
+  - *Research questions:* `docs/v7/RETURN-TO-RESEARCH.md`.
+
 - **The v6 package, "SLATE: Connected Realism" (the owner, November 13, 2026, after #88).** It is in `docs/v6/package`
   (unchanged; MANIFEST.json hashes match). Its 48 requirements are tracked in `docs/v6/requirements.csv`
   (`tests/v6-ledger.test.ts` fails a missing row, a status not the package's own, a cited file that doesn't exist, or a
@@ -211,7 +245,10 @@ order of work is at its end. The owner said: "Don't stop until 100% perfect comp
 ## State
 
 - **Branch:** `claude/clever-archimedes-x0r26v`, pushed to https://github.com/montrealroots/Final-SLATE-Build. After each merge the branch restarts from `main`.
-- **Latest merge:** montrealroots/Final-SLATE-Build#87 (adapted briefs from the story with roles reviewed by hand; the
+- **Latest merge:** montrealroots/Final-SLATE-Build#88 (first-look shorts, article casts, and the v6 first stretch),
+  squash-merged as `3290e2d` on November 13, 2026, 22:00 UTC, with `checks` and all six journeys runs green on its
+  final commit `c063b69`; `main` merged back with `-s ours`, the tree unchanged.
+- **Earlier merge:** montrealroots/Final-SLATE-Build#87 (adapted briefs from the story with roles reviewed by hand; the
   owner's four items: ledgers, UI coverage 88 of 88, two pinned journeys, works with one person or none), squash-merged
   as `b08dc04` on November 13, 2026, 19:47 UTC, with `checks` and all six journeys runs green on its final commit
   `6389249`; `main` merged back with `-s ours`, the tree unchanged. Nothing is open on this branch.

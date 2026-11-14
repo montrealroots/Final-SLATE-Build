@@ -46,10 +46,18 @@ describe('the people an article lists', () => {
     // One person under another name is not added twice; two who share a family name are two people.
     expect(propose('Persepolis').blueprint.characters.map((c) => c.name)).not.toContain('Marjane');
     expect(propose('Fox Spirit Matchmaker').blueprint.characters.map((c) => c.name)).toEqual(expect.arrayContaining(['Tushan Susu', 'Tushan Yaya']));
-    // Reviewed: Elantris is Raoden's story, against Hrathen, beside Sarene; Hoid stays, and the magic system is no one.
-    const elantris = propose('Elantris').blueprint.characters.map((c) => [c.name, c.functions[0]]);
-    expect(elantris.slice(0, 3)).toEqual([['Prince Raoden', 'protagonist'], ['Gyorn Hrathen', 'antagonist'], ['Princess Sarene', 'ally']]);
+    // Corrected from its publisher and author (the v7 package, BOOK01-BOOK02; src/data/source-corrections.json): Elantris
+    // has three viewpoint characters, each leading, with no one set against or beside them; Hoid stays as a supporting
+    // part, and the magic system is no one. Until November 13, 2026 it was Raoden against Hrathen, with Sarene.
+    const e = propose('Elantris');
+    const elantris = e.blueprint.characters.map((c) => [c.name, c.functions[0]]);
+    expect(elantris.slice(0, 3)).toEqual([['Raoden', 'protagonist'], ['Sarene', 'protagonist'], ['Hrathen', 'protagonist']]);
+    expect(e.blueprint.characters.some((c) => c.functions.includes('antagonist') || c.functions.includes('ally'))).toBe(false);
+    expect(elantris.map((x) => x[0])).toContain('Hoid');
     expect(elantris.map((x) => x[0])).not.toContain('Aons');
+    expect(e.why.characters).toContain('are Elantris\'s viewpoint characters, as Macmillan and Brandon Sanderson describe it');
+    expect([e.blueprint.logline, e.origin['story.logline']]).toEqual(['A confined prince, a newly arrived princess and a driven missionary confront a kingdom’s crisis from opposing positions.', 'proposed']);
+    expect(e.why['story.logline']).toContain('not the book\'s words');
     // The project's credits name the article the names came from.
     const p = { source: { kind: 'adapted', ref: { id: work('Rip Van Winkle').id, title: 'Rip Van Winkle', creators: [], standing: 'public-domain-recorded' } }, proposal: { workId: work('Rip Van Winkle').id, cast: rip.blueprint.origin!.cast } } as unknown as Project;
     expect(creditLine(p)).toContain('Some of its characters\' names are from the Characters section of the English Wikipedia article "Rip Van Winkle" (CC BY-SA 4.0).');

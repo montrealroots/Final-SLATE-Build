@@ -355,3 +355,36 @@ export function epSuffix(p: Project, e: number): string {
   return isEpisodic(p.axes.format) ? `, Episode ${e}` : '';
 }
 
+
+/**
+ * Every task built on `changed`, however far down, `changed` itself included (the owner's v7 package, reference
+ * affected_tasks: rework is transitive and scoped). Throws on a task that isn't in the graph.
+ */
+export function dependents(tasks: Pick<Task, 'id' | 'dependsOn'>[], changed: string): Set<string> {
+  if (!tasks.some((x) => x.id === changed)) throw new Error(`No task ${changed}.`);
+  const hit = new Set([changed]);
+  for (let grew = true; grew;) {
+    grew = false;
+    for (const x of tasks) if (!hit.has(x.id) && x.dependsOn.some((d) => hit.has(d))) { hit.add(x.id); grew = true; }
+  }
+  return hit;
+}
+
+/** A milestone a task can wait for, met by the production rather than a task (workday.ts milestoneDone): capture, picture lock. */
+export const MILESTONE = /^(capture:(\d+|all)|milestone:lock:\d+)$/;
+
+/** What is wrong with a task graph: a task listed twice, a dependency on no task or milestone, or a cycle (reference validate_graph). */
+export function graphFaults(tasks: Pick<Task, 'id' | 'dependsOn'>[]): string[] {
+  const ids = new Set(tasks.map((x) => x.id));
+  const out: string[] = [];
+  if (ids.size !== tasks.length) out.push('A task is listed twice.');
+  for (const x of tasks) for (const d of x.dependsOn) if (!ids.has(d) && !MILESTONE.test(d)) out.push(`${x.id} depends on ${d}, which isn't a task.`);
+  const pending = new Map(tasks.map((x) => [x.id, new Set(x.dependsOn.filter((d) => ids.has(d)))]));
+  while (pending.size) {
+    const ready = [...pending].filter(([, v]) => !v.size).map(([k]) => k);
+    if (!ready.length) { out.push(`A cycle: ${[...pending.keys()].slice(0, 4).join(', ')}.`); break; }
+    for (const k of ready) pending.delete(k);
+    for (const v of pending.values()) for (const k of ready) v.delete(k);
+  }
+  return out;
+}

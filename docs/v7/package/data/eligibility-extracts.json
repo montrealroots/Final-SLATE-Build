@@ -1,0 +1,52 @@
+[
+  {
+    "id": "oscar98-general",
+    "source_id": "AW03",
+    "complete": false,
+    "eligibility_start": "2025-01-01",
+    "eligibility_end": "2025-12-31",
+    "runtime_minutes_exclusive_min": 40,
+    "qualifying_run_days_min": 7,
+    "additional_checks": "Metro, venue and all category-specific requirements; Best Picture has additional rules"
+  },
+  {
+    "id": "oscar98-animation",
+    "source_id": "AW04",
+    "complete": false,
+    "runtime_minutes_exclusive_min": 40,
+    "animation_fraction_excluding_credits_min": 0.75,
+    "additional_checks": "Applicable qualification route and all remaining edition rules"
+  },
+  {
+    "id": "emmy78",
+    "source_id": "AW05",
+    "complete": false,
+    "eligibility_start": "2025-06-01",
+    "eligibility_end": "2026-05-31",
+    "additional_checks": "Program/category, national platform, credits and all remaining rules"
+  },
+  {
+    "id": "international-emmy2026",
+    "source_id": "AW06",
+    "complete": false,
+    "eligibility_start": "2025-01-01",
+    "eligibility_end": "2025-12-31",
+    "initial_release": "outside_US_or_simultaneous",
+    "production": "primarily_outside_US",
+    "additional_checks": "Category and complete organizer regulations"
+  },
+  {
+    "id": "cannes2026-short",
+    "source_id": "FEST03",
+    "complete": false,
+    "runtime_minutes_inclusive_max": 15,
+    "runtime_includes_credits": true,
+    "additional_checks": "Production age, exhibition and festival history; actual selection discretionary"
+  },
+  {
+    "id": "cannes2026-feature",
+    "source_id": "FEST02",
+    "complete": false,
+    "additional_checks": "Production age, prior international/foreign/online exhibition and Competition French release obligation"
+  }
+]

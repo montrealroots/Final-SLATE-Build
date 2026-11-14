@@ -59,6 +59,10 @@ export async function parsePack(file: Blob): Promise<{ meta: PackMeta; records: 
   // Every record belongs to the pack's own kind, so one pack can never replace the other's files.
   const kind: PackKind = h.kind === 'pictures' ? `pictures.${h.part}` : (h.kind as PackKind);
   if (h.entries.some(([p]) => kindOf(p) !== kind)) throw new Error('This data pack is damaged: it holds files of another kind.');
+  // One record listed twice would leave which copy is kept to the order they are stored in (the v6 package's J18,
+  // duplicate ids; from November 13, 2026, when such a pack still installed).
+  const twice = h.entries.map(([p]) => p).find((p, i, all) => all.indexOf(p) !== i);
+  if (twice) throw new Error("This data pack is damaged: it lists the same record twice. It wasn't installed.");
   const { name, source, builtAt, retrieved } = h;
   return { meta: { kind, name, source, builtAt, ...(retrieved ? { retrieved } : {}) }, records: h.entries.map(([p, o, n]) => [p, file.slice(start + o, start + o + n)]) };
 }

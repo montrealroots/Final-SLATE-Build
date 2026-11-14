@@ -1,0 +1,100 @@
+{
+ "about": "Composer and work links from BAFTA's 2026 score nominees (the owner's v7 package, AW11). Identity only: no fee, availability, rights or permission to use a recording.",
+ "credits": [
+  {
+   "name": "Ludwig Göransson",
+   "work": "Sinners",
+   "credit": "score_composer",
+   "source_id": "AW11",
+   "fee": null,
+   "availability": null,
+   "simulation_required": [
+    "offer",
+    "schedule",
+    "rate",
+    "fit"
+   ],
+   "source": {
+    "url": "https://www.bafta.org/awards/film/?award-year=2026",
+    "title": "BAFTA 2026 category results",
+    "checked": "2026-11-13"
+   }
+  },
+  {
+   "name": "Jerskin Fendrix",
+   "work": "Bugonia",
+   "credit": "score_composer",
+   "source_id": "AW11",
+   "fee": null,
+   "availability": null,
+   "simulation_required": [
+    "offer",
+    "schedule",
+    "rate",
+    "fit"
+   ],
+   "source": {
+    "url": "https://www.bafta.org/awards/film/?award-year=2026",
+    "title": "BAFTA 2026 category results",
+    "checked": "2026-11-13"
+   }
+  },
+  {
+   "name": "Alexandre Desplat",
+   "work": "Frankenstein",
+   "credit": "score_composer",
+   "source_id": "AW11",
+   "fee": null,
+   "availability": null,
+   "simulation_required": [
+    "offer",
+    "schedule",
+    "rate",
+    "fit"
+   ],
+   "source": {
+    "url": "https://www.bafta.org/awards/film/?award-year=2026",
+    "title": "BAFTA 2026 category results",
+    "checked": "2026-11-13"
+   }
+  },
+  {
+   "name": "Max Richter",
+   "work": "Hamnet",
+   "credit": "score_composer",
+   "source_id": "AW11",
+   "fee": null,
+   "availability": null,
+   "simulation_required": [
+    "offer",
+    "schedule",
+    "rate",
+    "fit"
+   ],
+   "source": {
+    "url": "https://www.bafta.org/awards/film/?award-year=2026",
+    "title": "BAFTA 2026 category results",
+    "checked": "2026-11-13"
+   }
+  },
+  {
+   "name": "Jonny Greenwood",
+   "work": "One Battle after Another",
+   "credit": "score_composer",
+   "source_id": "AW11",
+   "fee": null,
+   "availability": null,
+   "simulation_required": [
+    "offer",
+    "schedule",
+    "rate",
+    "fit"
+   ],
+   "source": {
+    "url": "https://www.bafta.org/awards/film/?award-year=2026",
+    "title": "BAFTA 2026 category results",
+    "checked": "2026-11-13"
+   }
+  }
+ ]
+}

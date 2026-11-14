@@ -1,0 +1,642 @@
+[
+  {
+    "id": "TM01",
+    "title": "TMDB daily ID exports",
+    "url": "https://developer.themoviedb.org/docs/daily-id-exports",
+    "checked_on": "2026-11-13",
+    "evidence_type": "primary",
+    "retrieval_status": "retrieved",
+    "finding": "Daily compressed files contain line-delimited ID records, not complete details. Exports cover movies, series, people, collections, networks, keywords and production companies. Files are normally available by 08:00 UTC and retained for three months.",
+    "implementation_decision": "Use exports for inventory; fetch details separately. A current inventory cannot reconstruct the January catalog."
+  },
+  {
+    "id": "TM02",
+    "title": "TMDB change tracking",
+    "url": "https://developer.themoviedb.org/docs/tracking-content-changes",
+    "checked_on": "2026-11-13",
+    "evidence_type": "primary",
+    "retrieval_status": "retrieved",
+    "finding": "Movie, person and TV changed-ID lists default to the preceding day and can cover up to fourteen days. Individual changes provide field-level information.",
+    "implementation_decision": "Checkpoint updates; a longer outage requires reconciliation. Do not claim an unlimited historical archive."
+  },
+  {
+    "id": "TM03",
+    "title": "TMDB API FAQ",
+    "url": "https://developer.themoviedb.org/docs/faq",
+    "checked_on": "2026-11-13",
+    "evidence_type": "primary",
+    "retrieval_status": "retrieved",
+    "finding": "Noncommercial API use requires attribution. Commercial use requires contacting TMDB. Approved logo and a non-endorsement notice belong in an About or Credits section. No service-level guarantee is provided.",
+    "implementation_decision": "Provide Settings → Credits, approved logo and required notice; API access does not grant every underlying media right."
+  },
+  {
+    "id": "TM04",
+    "title": "TMDB rate limiting",
+    "url": "https://developer.themoviedb.org/docs/rate-limiting",
+    "checked_on": "2026-11-13",
+    "evidence_type": "primary",
+    "retrieval_status": "retrieved",
+    "finding": "The former ten-second limit was removed. Current protective limits are roughly forty requests per second and may change; clients must honor HTTP 429.",
+    "implementation_decision": "Default to a conservative bounded request rate; retry/backoff is mandatory, not permission to scrape aggressively."
+  },
+  {
+    "id": "TM05",
+    "title": "TMDB movie watch providers",
+    "url": "https://developer.themoviedb.org/reference/movie-watch-providers",
+    "checked_on": "2026-11-13",
+    "evidence_type": "primary",
+    "retrieval_status": "retrieved",
+    "finding": "The endpoint supplies country-specific provider availability using JustWatch data, requires JustWatch attribution, and does not supply full content deep links.",
+    "implementation_decision": "Keep availability distinct from ownership, commissioning and historical window evidence; retain provided TMDB link."
+  },
+  {
+    "id": "TM06",
+    "title": "TMDB image URL construction",
+    "url": "https://developer.themoviedb.org/docs/image-basics",
+    "checked_on": "2026-11-13",
+    "evidence_type": "primary",
+    "retrieval_status": "retrieved",
+    "finding": "Image URLs combine configured base URL, supported size and record path. Company/network SVG logos use original size; PNG alternatives are supported.",
+    "implementation_decision": "Cache configuration, deduplicate paths and use measured pack sizes. Do not assume all people have portraits."
+  },
+  {
+    "id": "TM07",
+    "title": "Movie details",
+    "url": "https://developer.themoviedb.org/reference/movie-details",
+    "checked_on": "2026-11-13",
+    "evidence_type": "primary",
+    "retrieval_status": "retrieved",
+    "finding": "Movie detail supports append_to_response with up to twenty appended endpoints.",
+    "implementation_decision": "Documented API path: /movie/{movie_id}. Store stable IDs and versioned retrieval dates; no authenticated catalog call was made here."
+  },
+  {
+    "id": "TM08",
+    "title": "Series details",
+    "url": "https://developer.themoviedb.org/reference/tv-series-details",
+    "checked_on": "2026-11-13",
+    "evidence_type": "primary",
+    "retrieval_status": "retrieved",
+    "finding": "Series detail supports append_to_response.",
+    "implementation_decision": "Documented API path: /tv/{series_id}. Store stable IDs and versioned retrieval dates; no authenticated catalog call was made here."
+  },
+  {
+    "id": "TM09",
+    "title": "Aggregate series credits",
+    "url": "https://developer.themoviedb.org/reference/tv-series-aggregate-credits",
+    "checked_on": "2026-11-13",
+    "evidence_type": "primary",
+    "retrieval_status": "retrieved",
+    "finding": "Aggregate credits cover cast and crew across episodes, rather than only the newest season.",
+    "implementation_decision": "Documented API path: /tv/{series_id}/aggregate_credits. Store stable IDs and versioned retrieval dates; no authenticated catalog call was made here."
+  },
+  {
+    "id": "TM10",
+    "title": "Person combined credits",
+    "url": "https://developer.themoviedb.org/reference/person-combined-credits",
+    "checked_on": "2026-11-13",
+    "evidence_type": "primary",
+    "retrieval_status": "retrieved",
+    "finding": "Combined credits cover a person’s movie and television work.",
+    "implementation_decision": "Documented API path: /person/{person_id}/combined_credits. Store stable IDs and versioned retrieval dates; no authenticated catalog call was made here."
+  },
+  {
+    "id": "TM11",
+    "title": "Movie release dates",
+    "url": "https://developer.themoviedb.org/reference/movie-release-dates",
+    "checked_on": "2026-11-13",
+    "evidence_type": "primary",
+    "retrieval_status": "retrieved",
+    "finding": "Release types are premiere=1, limited theatrical=2, theatrical=3, digital=4, physical=5, TV=6.",
+    "implementation_decision": "Documented API path: /movie/{movie_id}/release_dates. Store stable IDs and versioned retrieval dates; no authenticated catalog call was made here."
+  },
+  {
+    "id": "TM12",
+    "title": "Season details",
+    "url": "https://developer.themoviedb.org/reference/tv-season-details",
+    "checked_on": "2026-11-13",
+    "evidence_type": "primary",
+    "retrieval_status": "retrieved",
+    "finding": "Season detail is separately addressable by series and season number.",
+    "implementation_decision": "Documented API path: /tv/{series_id}/season/{season_number}. Store stable IDs and versioned retrieval dates; no authenticated catalog call was made here."
+  },
+  {
+    "id": "MET01",
+    "title": "Nielsen public Top Ten",
+    "url": "https://www.nielsen.com/data-center/top-ten/",
+    "checked_on": "2026-11-13",
+    "evidence_type": "primary",
+    "retrieval_status": "retrieved",
+    "finding": "The retrieved streaming chart reports U.S. television viewing for persons aged two and older, ranked by minutes. Its visible period was October 26–November 1, 2026.",
+    "implementation_decision": "Preserve geography, device scope and units. Never equate minutes with unique people or Netflix views."
+  },
+  {
+    "id": "MET02",
+    "title": "Netflix Top Ten methodology update",
+    "url": "https://about.netflix.com/en/news/top-10-things-about-netflix-top-10",
+    "checked_on": "2026-11-13",
+    "evidence_type": "primary",
+    "retrieval_status": "retrieved",
+    "finding": "The June 2023 update ranks by views computed from hours divided by runtime and extends most-popular measurement to 91 days. Weekly periods run Monday–Sunday and results publish Tuesday; seasons are measured separately. Older text on the same page describes superseded metrics.",
+    "implementation_decision": "Version methodology by effective date. Do not apply the older hours ranking or 28-day window to current records."
+  },
+  {
+    "id": "MET03",
+    "title": "Netflix current weekly chart",
+    "url": "https://www.netflix.com/tudum/top10",
+    "checked_on": "2026-11-13",
+    "evidence_type": "primary",
+    "retrieval_status": "retrieved",
+    "finding": "The retrieved English-language global film chart covers November 2–8, 2026 and displays rounded millions of views.",
+    "implementation_decision": "Included values preserve display precision. Publication availability is inferred from MET02 and marked accordingly, not claimed observed."
+  },
+  {
+    "id": "MET04",
+    "title": "Netflix most-popular film chart",
+    "url": "https://www.netflix.com/tudum/top10/most-popular",
+    "checked_on": "2026-11-13",
+    "evidence_type": "primary",
+    "retrieval_status": "retrieved",
+    "finding": "The retrieved chart describes first-91-day views rather than unlimited lifetime viewing.",
+    "implementation_decision": "Do not label this a lifetime total or mix it with annual television audience rankings."
+  },
+  {
+    "id": "BOX01",
+    "title": "The Numbers data access",
+    "url": "https://www.the-numbers.com/data-services",
+    "checked_on": "2026-11-13",
+    "evidence_type": "primary",
+    "retrieval_status": "retrieved",
+    "finding": "OpusData is a subscription-based structured data service covering dated box-office measures. The public site permits personal reference but reserves systematic copying, scraping and redistribution for licensed customers.",
+    "implementation_decision": "No bulk box-office scrape is included. Accept a licensed import or separately authorized data. Full 2026 box-office replay remains a data-access gap."
+  },
+  {
+    "id": "REL01",
+    "title": "Netflix pitch policy",
+    "url": "https://help.netflix.com/en/node/100386",
+    "checked_on": "2026-11-13",
+    "evidence_type": "primary",
+    "retrieval_status": "retrieved",
+    "finding": "Netflix does not accept unsolicited material directly. Pitches require an appropriate representative with an existing relationship; acquisition can also occur through festivals and other established venues.",
+    "implementation_decision": "Expose represented pitch and acquisition routes, not guaranteed direct upload; keep acceptance uncertain."
+  },
+  {
+    "id": "REL02",
+    "title": "Prime Video Direct landing",
+    "url": "https://videodirect.amazon.com/home/landing/",
+    "checked_on": "2026-11-13",
+    "evidence_type": "primary",
+    "retrieval_status": "retrieved",
+    "finding": "Prime Video Direct describes rent/buy distribution with no setup or recurring submission-management charge.",
+    "implementation_decision": "Submission fee zero does not imply zero delivery costs or guaranteed publication."
+  },
+  {
+    "id": "REL03",
+    "title": "Prime licensing and review",
+    "url": "https://videocentral.amazon.com/support/delivery-experience/licensing-rights-and-avails/self-publishing-contracts",
+    "checked_on": "2026-11-13",
+    "evidence_type": "primary",
+    "retrieval_status": "retrieved",
+    "finding": "Prime distinguishes rent/buy consideration from solicited subscription licensing. Publication is discretionary; eligibility does not guarantee acceptance or a date. Performance reviews can remove titles.",
+    "implementation_decision": "Separate TVOD submission, SVOD invitation, review and removal states. No automatic subscription listing on upload."
+  },
+  {
+    "id": "REL04",
+    "title": "Apple approved delivery partners",
+    "url": "https://itunespartner.apple.com/tv-movies/support/5407-encoding-houses-aggregators",
+    "checked_on": "2026-11-13",
+    "evidence_type": "primary",
+    "retrieval_status": "retrieved",
+    "finding": "Aggregators can deliver and manage transactional titles and receive Apple payments before paying owners. Direct delivery requires an agreement; approved encoding houses handle delivery.",
+    "implementation_decision": "Model Apple transactional delivery separately from Apple subscription commissioning. Track aggregator receivable and settlement."
+  },
+  {
+    "id": "REL05",
+    "title": "Apple territory language requirements",
+    "url": "https://itunespartner.apple.com/tv-movies/support/5344-movies-minimum-storefront-requirements",
+    "checked_on": "2026-11-13",
+    "evidence_type": "primary",
+    "retrieval_status": "retrieved",
+    "finding": "Transactional delivery requirements depend on storefront language assets for the full film and preview. Noncompliance is surfaced in title and rights/pricing details.",
+    "implementation_decision": "A territory release requires applicable language delivery; subtitle choices have costs and eligibility effects."
+  },
+  {
+    "id": "REL06",
+    "title": "Vimeo On Demand seller instructions",
+    "url": "https://help.vimeo.com/hc/en-us/articles/12427367616913-How-to-start-selling-with-Vimeo-On-Demand",
+    "checked_on": "2026-11-13",
+    "evidence_type": "primary",
+    "retrieval_status": "retrieved",
+    "finding": "The retrieved page announces closure on November 20, 2026, and says new subscriptions/renewals are disabled after September 21, 2026. It points new sellers toward Vimeo OTT.",
+    "implementation_decision": "Treat this as a dated winding-down service, not an evergreen route. Announcement date is not established here; do not expose the notice in January by guessing."
+  },
+  {
+    "id": "REL07",
+    "title": "Vimeo On Demand charges",
+    "url": "https://help.vimeo.com/hc/en-us/articles/12427353166865-Fees-and-taxes-on-Vimeo-on-Demand",
+    "checked_on": "2026-11-13",
+    "evidence_type": "primary",
+    "retrieval_status": "retrieved",
+    "finding": "The seller share is ninety percent after transaction costs, not ninety percent of every gross purchase without deductions.",
+    "implementation_decision": "Use separate cost and share bases. This is a reference fact, not authorization to add a full tax engine."
+  },
+  {
+    "id": "REL08",
+    "title": "YouTube Partner Program",
+    "url": "https://support.google.com/youtube/answer/72851?product=sales",
+    "checked_on": "2026-11-13",
+    "evidence_type": "primary",
+    "retrieval_status": "retrieved",
+    "finding": "The retrieved page lists 1,000 subscribers plus either 4,000 qualifying annual watch hours or ten million qualifying Shorts views in ninety days, with review and policy requirements. It also announces a 2027 terms change.",
+    "implementation_decision": "Uploading alone does not earn ad revenue. Preserve current and announced-future policy versions; no guaranteed RPM or revenue."
+  },
+  {
+    "id": "DEAL01",
+    "title": "WB Shyamalan announcement",
+    "url": "https://press.wbd.com/na/media-release/warner-bros-pictures/warner-bros-pictures-seals-multi-year-first-look-pact-oscar-nominated-filmmaker-m",
+    "checked_on": "2026-11-13",
+    "evidence_type": "primary",
+    "retrieval_status": "retrieved",
+    "finding": "On February 16, 2023, Warner announced a multi-year directing/producing first-look arrangement involving M. Night Shyamalan and Blinding Edge Pictures, for Warner Bros. Pictures and New Line projects.",
+    "implementation_decision": "Use as a historical film-deal precedent, not proof it remains active in 2026 or a source of exact financial terms. Discard the page’s implausible box-office typo."
+  },
+  {
+    "id": "DEAL02",
+    "title": "WBTV Paul Feig announcement",
+    "url": "https://press.wbd.com/ca/media-release/paul-feig-signs-first-look-deal-warner-bros-television-group?language_content_entity=en",
+    "checked_on": "2026-11-13",
+    "evidence_type": "primary",
+    "retrieval_status": "retrieved",
+    "finding": "On April 22, 2025, WBTV announced a multi-year first-look television agreement with Paul Feig and Laura Fischer through Feigco, covering multiple production forms and platforms. Financial terms were undisclosed.",
+    "implementation_decision": "TV scope may span scripted, unscripted and animation. Retain unknown term expiry and money; simulated offers must say their numbers are modeled."
+  },
+  {
+    "id": "DEAL03",
+    "title": "Sony Appian Way announcement",
+    "url": "https://www.sonypictures.com/corp/press_releases/2020/0813",
+    "checked_on": "2026-11-13",
+    "evidence_type": "primary",
+    "retrieval_status": "retrieved",
+    "finding": "Sony announced a multi-picture, multi-year scripted-feature first-look agreement with Appian Way on August 13, 2020.",
+    "implementation_decision": "Historical precedent only; do not set a current agreement, expiry or fee from this announcement."
+  },
+  {
+    "id": "DEAL04",
+    "title": "Sony–Netflix window agreement",
+    "url": "https://www.sonypictures.com/corp/press_releases/2021/0408",
+    "checked_on": "2026-11-13",
+    "evidence_type": "primary",
+    "retrieval_status": "retrieved",
+    "finding": "The 2021 announcement describes a U.S. pay-one window after theatrical/home-entertainment releases beginning with the 2022 slate, plus a direct-streaming first look.",
+    "implementation_decision": "Distinct territory, window and agreement scope are necessary; this announcement does not establish all current global rights."
+  },
+  {
+    "id": "AW01",
+    "title": "98th Oscars results",
+    "url": "https://www.oscars.org/oscars/ceremonies/2026",
+    "checked_on": "2026-11-13",
+    "evidence_type": "primary",
+    "retrieval_status": "retrieved",
+    "finding": "The ceremony took place March 15, 2026 and honored 2025 releases. Included reference records transcribe the four acting categories only.",
+    "implementation_decision": "Nomination and win are separate events. Four complete acting categories are not the full Oscars roster."
+  },
+  {
+    "id": "AW02",
+    "title": "98th nominations announcement",
+    "url": "https://press.oscars.org/news/98th-oscarsr-nominations-announced",
+    "checked_on": "2026-11-13",
+    "evidence_type": "primary",
+    "retrieval_status": "retrieved",
+    "finding": "Nominations were announced January 22, 2026; the ceremony was scheduled for March 15.",
+    "implementation_decision": "Gate nominee visibility from January 22 and winner visibility from ceremony date; exact result timestamps are not supplied."
+  },
+  {
+    "id": "AW03",
+    "title": "98th general and Best Picture eligibility",
+    "url": "https://press.oscars.org/news/317-feature-films-contention-98th-academy-awardsr",
+    "checked_on": "2026-11-13",
+    "evidence_type": "primary",
+    "retrieval_status": "retrieved",
+    "finding": "General-entry features exceed forty minutes and require a qualifying seven-day theatrical run in a listed U.S. metro during 2025. Best Picture has additional representation/inclusion and expanded-release requirements.",
+    "implementation_decision": "Do not equate general-entry eligibility with Best Picture eligibility or apply 2025 windows to 2026 productions."
+  },
+  {
+    "id": "AW04",
+    "title": "98th complete rules",
+    "url": "https://www.oscars.org/sites/oscars/files/2025-04/98th_aa_complete_rules.pdf",
+    "checked_on": "2026-11-13",
+    "evidence_type": "primary",
+    "retrieval_status": "retrieved",
+    "finding": "Animated-feature rules specify more than forty minutes and animation of primary subjects for at least seventy-five percent of runtime excluding credits. Multiple qualification routes exist.",
+    "implementation_decision": "Animation is not a binary tag sufficient to qualify. The included rule extract is partial; missing rule branches remain unknown."
+  },
+  {
+    "id": "AW05",
+    "title": "78th Emmy calendar",
+    "url": "https://www.televisionacademy.com/files/assets/Downloads/2026-rules-procedures-v1.pdf",
+    "checked_on": "2026-11-13",
+    "evidence_type": "primary",
+    "retrieval_status": "retrieved",
+    "finding": "Eligibility runs June 1, 2025–May 31, 2026. Entries close May 7; general nominations July 8; some panel nominations July 15; Creative Arts September 5–6; telecast September 14.",
+    "implementation_decision": "Use distinct edition/calendar events. Version one is the retrieved document, not proof of no later amendments."
+  },
+  {
+    "id": "AW06",
+    "title": "International Emmy 2026 checklist",
+    "url": "https://www.iemmys.tv/wp-content/uploads/2026/01/2026-Entry-Materials-Checklist.pdf",
+    "checked_on": "2026-11-13",
+    "evidence_type": "primary",
+    "retrieval_status": "retrieved",
+    "finding": "The checklist identifies first broadcast/screening/streaming during January–December 2025, primarily non-U.S. production and initial non-U.S. or simultaneous release; entry deadline January 31, 2026.",
+    "implementation_decision": "This resolves the earlier missing eligibility-period issue. Checklist is not a complete category rulebook."
+  },
+  {
+    "id": "AW07",
+    "title": "78th Emmy comedy series results",
+    "url": "https://www.televisionacademy.com/awards/nominees-winners/2026/outstanding-comedy-series",
+    "checked_on": "2026-11-13",
+    "evidence_type": "primary",
+    "retrieval_status": "retrieved",
+    "finding": "The retrieved category page identifies Widow’s Bay, Apple TV, as winner.",
+    "implementation_decision": "Program result only in this package; do not assign all listed producers awards without importing the full recipient record."
+  },
+  {
+    "id": "AW08",
+    "title": "78th Emmy drama series results",
+    "url": "https://www.televisionacademy.com/awards/nominees-winners/2026/outstanding-drama-series",
+    "checked_on": "2026-11-13",
+    "evidence_type": "primary",
+    "retrieval_status": "retrieved",
+    "finding": "The retrieved category page identifies The Pitt, HBO Max, as winner.",
+    "implementation_decision": "Preserve category and service label as recorded; do not infer ownership from the service."
+  },
+  {
+    "id": "AW09",
+    "title": "78th Emmy limited/anthology results",
+    "url": "https://www.televisionacademy.com/awards/nominees-winners/2026/outstanding-limited-or-anthology-series",
+    "checked_on": "2026-11-13",
+    "evidence_type": "primary",
+    "retrieval_status": "retrieved",
+    "finding": "The retrieved category page identifies DTF St. Louis, HBO Max, as winner.",
+    "implementation_decision": "Keep limited/anthology category distinct from drama series. Included data is not all Emmys competitions."
+  },
+  {
+    "id": "AW10",
+    "title": "BAFTA 2026 announcement",
+    "url": "https://www.bafta.org/media-centre/press-releases/winners-announced-2026-film-awards/",
+    "checked_on": "2026-11-13",
+    "evidence_type": "primary",
+    "retrieval_status": "retrieved",
+    "finding": "BAFTA announced film winners on February 22, 2026. One Battle After Another won Best Film; performance winners include Jessie Buckley, Robert Aramayo, Sean Penn and Wunmi Mosaku.",
+    "implementation_decision": "Separate Best Film and acting recognition; only included verified records count as imported."
+  },
+  {
+    "id": "AW11",
+    "title": "BAFTA 2026 category results",
+    "url": "https://www.bafta.org/awards/film/?award-year=2026",
+    "checked_on": "2026-11-13",
+    "evidence_type": "primary",
+    "retrieval_status": "retrieved",
+    "finding": "The score nominees identify Ludwig Göransson/Sinners, Jerskin Fendrix/Bugonia, Alexandre Desplat/Frankenstein, Max Richter/Hamnet and Jonny Greenwood/One Battle After Another.",
+    "implementation_decision": "These support real composer identities and work credits, not fees, availability or skill ratings."
+  },
+  {
+    "id": "FEST01",
+    "title": "Cannes 2026 results",
+    "url": "https://www.festival-cannes.com/en/press/press-releases/the-79th-festival-de-cannes-winners-list/",
+    "checked_on": "2026-11-13",
+    "evidence_type": "primary",
+    "retrieval_status": "retrieved",
+    "finding": "The May 23 results include Fjord for the Palme d’Or and Minotaure for the Grand Prix. Best Director is shared between La Bola Negra’s directors and Fatherland’s director.",
+    "implementation_decision": "Allow multiple recipients and tied winning works; not one winner per category in all cases."
+  },
+  {
+    "id": "FEST02",
+    "title": "Cannes feature rules 2026",
+    "url": "https://www.festival-cannes.com/en/take-part/submit-a-film/feature-films-in-official-selection/",
+    "checked_on": "2026-11-13",
+    "evidence_type": "primary",
+    "retrieval_status": "retrieved",
+    "finding": "Selection criteria include production in the preceding twelve months, restrictions on international festival/foreign/Internet exhibition, and a French theatrical-release commitment for Competition features.",
+    "implementation_decision": "Check premiere history and section-specific obligations before submission. Eligible does not mean selected."
+  },
+  {
+    "id": "FEST03",
+    "title": "Cannes short rules 2026",
+    "url": "https://cdn.festival-cannes.com/media/uploads/2025/11/reglement_courts-metrages_2026-en.pdf",
+    "checked_on": "2026-11-13",
+    "evidence_type": "primary",
+    "retrieval_status": "retrieved",
+    "finding": "Competition shorts cannot exceed fifteen minutes including credits and have prior-exhibition restrictions.",
+    "implementation_decision": "Do not apply the feature or Oscars runtime definition to Cannes shorts; boundaries differ by edition/section."
+  },
+  {
+    "id": "FEST04",
+    "title": "Venice 83 official results",
+    "url": "https://www.labiennale.org/en/news/official-awards-83rd-venice-international-film-festival",
+    "checked_on": "2026-11-13",
+    "evidence_type": "primary",
+    "retrieval_status": "retrieved",
+    "finding": "The September 12, 2026 announcement awards the Golden Lion to Woman Unknown and Grand Jury Prize to Possible Love.",
+    "implementation_decision": "Included result records are selected examples, not full sections or all festival nominations."
+  },
+  {
+    "id": "FEST05",
+    "title": "Sundance 2026 awards announcement",
+    "url": "https://www.sundance.org/blogs/2026-sundance-film-festival-announces-award-winners",
+    "checked_on": "2026-11-13",
+    "evidence_type": "primary",
+    "retrieval_status": "retrieved",
+    "finding": "January 30 results identify Josephine, Nuisance Bear, Shame and Money and To Hold a Mountain as the four competition grand-jury winners.",
+    "implementation_decision": "Separate four competition identities and retain announcement date."
+  },
+  {
+    "id": "FEST06",
+    "title": "SXSW 2026 jury awards",
+    "url": "https://sxsw.com/wp-content/uploads/2026/03/2026-FTV-Jury-Special-Awards.pdf",
+    "checked_on": "2026-11-13",
+    "evidence_type": "primary",
+    "retrieval_status": "retrieved",
+    "finding": "March 18 announcement identifies Wishful Thinking as narrative feature jury winner and states audience voting/results follow a distinct schedule.",
+    "implementation_decision": "Do not assign audience recognition on the jury announcement date."
+  },
+  {
+    "id": "FEST07",
+    "title": "TIFF 2026 reporting",
+    "url": "https://www.thewrap.com/industry-news/awards/la-bola-negra-wins-tiff-peoples-choice-award/",
+    "checked_on": "2026-11-13",
+    "evidence_type": "secondary",
+    "retrieval_status": "retrieved",
+    "finding": "Trade reporting identifies La Bola Negra as People’s Choice winner and distinguishes runners-up and other prizes. An official TIFF result page was not obtained in this pass.",
+    "implementation_decision": "Secondary evidence only; keep in research ledger, not verified-primary event seeds."
+  },
+  {
+    "id": "PROD01",
+    "title": "ScreenSkills animation model maker",
+    "url": "https://www.screenskills.com/job-profiles/browse/animation/pre-production/modeller-model-maker/",
+    "checked_on": "2026-11-13",
+    "evidence_type": "primary",
+    "retrieval_status": "retrieved",
+    "finding": "Stop-motion model makers construct physical characters and objects; CG modellers create digital assets that can be rigged. Size, materials, timing and budget constrain designs.",
+    "implementation_decision": "Build separate physical fabrication and digital model/rig tasks. Shared asset IDs propagate revisions into dependent shots."
+  },
+  {
+    "id": "PROD02",
+    "title": "ScreenSkills production manager",
+    "url": "https://www.screenskills.com/skills-checklists/scripted-film-and-tv/production-department/production-manager-skills/",
+    "checked_on": "2026-11-13",
+    "evidence_type": "primary",
+    "retrieval_status": "retrieved",
+    "finding": "Production managers organize schedules/budgets, breakdowns and resources; duties vary with production scale and genre.",
+    "implementation_decision": "A hire changes scheduling capacity and delegated tasks, not a universal quality bonus."
+  },
+  {
+    "id": "PROD03",
+    "title": "ScreenSkills VFX animator",
+    "url": "https://www.screenskills.com/job-profiles/browse/visual-effects-vfx/computer-generated/animator-visual-effects-vfx/",
+    "checked_on": "2026-11-13",
+    "evidence_type": "primary",
+    "retrieval_status": "retrieved",
+    "finding": "VFX animation integrates with live-action plates and camera positions. Motion capture transfers performance into character animation.",
+    "implementation_decision": "Plate/version/capture dependencies differ from voice casting and ordinary live-action acting."
+  },
+  {
+    "id": "PROD04",
+    "title": "ScreenSkills line producer",
+    "url": "https://www.screenskills.com/job-profiles/browse/film-and-tv-drama/production-management/line-producer-film-and-tv-drama/",
+    "checked_on": "2026-11-13",
+    "evidence_type": "primary",
+    "retrieval_status": "retrieved",
+    "finding": "Line production includes crew, money and shoot completion, followed by handoff to post-production supervision.",
+    "implementation_decision": "Keep hiring, resource control, wrap and finishing responsibilities explicit."
+  },
+  {
+    "id": "MUS01",
+    "title": "Copyright Office audiovisual music explanation",
+    "url": "https://www.copyright.gov/music-modernization/educational-materials/musicians-income.pdf?loclr=blogcop",
+    "checked_on": "2026-11-13",
+    "evidence_type": "primary",
+    "retrieval_status": "retrieved",
+    "finding": "Composition synchronization and recording master-use permissions are separate. Audiovisual synchronization does not use the mechanical compulsory-license route.",
+    "implementation_decision": "Metadata selection is not permission to distribute audio. Simulated clearance gameplay and actual package media rights are separate."
+  },
+  {
+    "id": "MUS02",
+    "title": "CMRRA synchronization FAQ",
+    "url": "https://www.cmrra.org/faq/synchronization-licensing/",
+    "checked_on": "2026-11-13",
+    "evidence_type": "primary",
+    "retrieval_status": "retrieved",
+    "finding": "Synchronization permissions are individually negotiated with the publisher or copyright owner; CMRRA does not currently provide that service.",
+    "implementation_decision": "Do not install universal artist pay rates or a guaranteed one-price clearance button."
+  },
+  {
+    "id": "MUS03",
+    "title": "Decca Hamnet soundtrack",
+    "url": "https://maxrichter.decca.com/collections/all-music/products/hamnet-original-motion-picture-soundtrack",
+    "checked_on": "2026-11-13",
+    "evidence_type": "primary",
+    "retrieval_status": "retrieved",
+    "finding": "The label identifies Max Richter’s Hamnet score and lists a January 9, 2026 product release date.",
+    "implementation_decision": "This is a soundtrack-product date, not automatically the film premiere or first availability of every recording."
+  },
+  {
+    "id": "MUS04",
+    "title": "Recording Academy Sinners album",
+    "url": "https://www.grammy.com/albums/sinners-2/",
+    "checked_on": "2026-11-13",
+    "evidence_type": "primary",
+    "retrieval_status": "retrieved",
+    "finding": "The Recording Academy identifies Ludwig Göransson and Sinners as a 2026 score-soundtrack winner.",
+    "implementation_decision": "Can substantiate composer/work link; ceremony date and full category roster are not imported here."
+  },
+  {
+    "id": "BOOK01",
+    "title": "Macmillan Elantris",
+    "url": "https://us.macmillan.com/books/9780765350374/elantris/",
+    "checked_on": "2026-11-13",
+    "evidence_type": "primary",
+    "retrieval_status": "retrieved",
+    "finding": "Publisher description identifies Raoden, Sarene and Hrathen, with Elantris/Kae in Arelon central to the story.",
+    "implementation_decision": "Replace Hoid-only autofill with a structured multi-viewpoint correction; never infer sole lead from name count."
+  },
+  {
+    "id": "BOOK02",
+    "title": "Sanderson standalone overview",
+    "url": "https://www.brandonsanderson.com/pages/standalones-cosmere",
+    "checked_on": "2026-11-13",
+    "evidence_type": "primary",
+    "retrieval_status": "retrieved",
+    "finding": "The author describes Elantris through three interweaving viewpoints: Raoden, Sarene and Hrathen.",
+    "implementation_decision": "The source itself supports an ensemble approach; antagonist/ally labels are interpretive and remain editable."
+  },
+  {
+    "id": "BOOK03",
+    "title": "Sanderson Warbreaker annotation",
+    "url": "https://www.brandonsanderson.com/blogs/blog/annotation-warbreaker-chapter-forty-three",
+    "checked_on": "2026-11-13",
+    "evidence_type": "primary",
+    "retrieval_status": "retrieved",
+    "finding": "The author contrasts Vivenna’s disruptive character change with Siri’s more gradual development.",
+    "implementation_decision": "A single global pacing label cannot fully describe multiple arcs; keep character-level progression separate."
+  },
+  {
+    "id": "CAM01",
+    "title": "ARRI ALEXA 35 technical page",
+    "url": "https://www.arri.com/en/cine-systems/cine-cameras/legacy-cine-cameras/alexa-35",
+    "checked_on": "2026-11-13",
+    "evidence_type": "primary",
+    "retrieval_status": "retrieved",
+    "finding": "The manufacturer specifies a Super 35 sensor with 4608×3164 photosites and seventeen stops; supported maximum rates depend on recording mode/media.",
+    "implementation_decision": "Store mode-specific constraints. Do not combine maximum resolution and maximum frame rate into a nonexistent mode."
+  },
+  {
+    "id": "CAM02",
+    "title": "Sony FX3 launch",
+    "url": "https://sony.mediaroom.com/2021-02-23-Sony-Electronics-Launches-FX3-Full-Frame-Camera-for-Cinematic-Look-and-Enhanced-Operability-for-Creators",
+    "checked_on": "2026-11-13",
+    "evidence_type": "primary",
+    "retrieval_status": "retrieved",
+    "finding": "Sony describes the FX3 as a compact full-frame camera supporting up to 4K120p and an XLR handle.",
+    "implementation_decision": "Use for mobility/capture choices; no manufacturer evidence of automatic creative-quality points."
+  },
+  {
+    "id": "CAM03",
+    "title": "Blackmagic 6K Pro specifications",
+    "url": "https://www.blackmagicdesign.com/products/blackmagicpocketcinemacamera/techspecs",
+    "checked_on": "2026-11-13",
+    "evidence_type": "primary",
+    "retrieval_status": "retrieved",
+    "finding": "6K Pro specifies active EF mount, Super 35 sensor, thirteen stops and 6144×3456 up to fifty fps. Higher frame rates use different formats.",
+    "implementation_decision": "Lens compatibility and mode restrictions are real; current advertised prices are not historical prices."
+  },
+  {
+    "id": "CAM04",
+    "title": "Netflix camera requirements relocation",
+    "url": "https://studiopartner.netflix.net/studio/branded-cameras-and-image-capture",
+    "checked_on": "2026-11-13",
+    "evidence_type": "primary",
+    "retrieval_status": "content_not_retrieved",
+    "finding": "The previous camera-documentation URL redirects to a JavaScript application whose requirements were not readable in this retrieval.",
+    "implementation_decision": "Do not certify every listed camera as Netflix-approved or apply branded production requirements to all acquisitions."
+  },
+  {
+    "id": "UI01",
+    "title": "W3C minimum target-size explanation",
+    "url": "https://www.w3.org/WAI/WCAG22/Understanding/target-size-minimum",
+    "checked_on": "2026-11-13",
+    "evidence_type": "primary",
+    "retrieval_status": "retrieved",
+    "finding": "WCAG 2.2 minimum target guidance uses twenty-four by twenty-four CSS pixels with defined exceptions. User zoom alone does not satisfy target-size requirements.",
+    "implementation_decision": "Audit controls at rendered scale; choose a larger comfortable touch design target without mislabeling it a mandatory standard."
+  },
+  {
+    "id": "UI02",
+    "title": "W3C reflow explanation",
+    "url": "https://www.w3.org/WAI/WCAG22/Understanding/reflow.html",
+    "checked_on": "2026-11-13",
+    "evidence_type": "primary",
+    "retrieval_status": "retrieved",
+    "finding": "Reflow guidance discusses vertically scrolling content at 320 CSS pixels, with applicable exceptions for inherently two-dimensional content.",
+    "implementation_decision": "Keep desktop-like hierarchy on phones but test reflow and contained tables; shrinking everything is not proof of accessibility."
+  }
+]

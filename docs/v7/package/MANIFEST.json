@@ -1,0 +1,175 @@
+{
+  "counts": {
+    "source_records": 64,
+    "award_event_records": 44,
+    "audience_chart_rows": 10,
+    "reference_tests_passed": 15
+  },
+  "files": [
+    {
+      "path": "00-START-HERE.md",
+      "bytes": 1762,
+      "sha256": "c0f482284cf0876c6c8b22dbaa85bf4478cc540f18df795e4542d4eff37f9f98"
+    },
+    {
+      "path": "01-RESEARCH-FINDINGS.md",
+      "bytes": 28934,
+      "sha256": "b525df91a14a7039d9ba449a30869abb00aeec1849ef90ad9d7f39dd76be1bd9"
+    },
+    {
+      "path": "02-IMPLEMENTATION-DECISIONS.md",
+      "bytes": 6070,
+      "sha256": "e2f48dcadbcc68615f027514c317e27d7d776943899780160fe0eee869d0ea73"
+    },
+    {
+      "path": "03-COVERAGE-AND-UNRESOLVED.md",
+      "bytes": 3179,
+      "sha256": "b2a4fc23aa159a68307d8e136722746611b37a28f30875b521903385ad212071"
+    },
+    {
+      "path": "04-DATA-INTEGRATION.md",
+      "bytes": 3386,
+      "sha256": "e02ece97518da2735e38866520a74e15e28c2ec087b8d1f82d12b2606379faf7"
+    },
+    {
+      "path": "05-CLAUDE-COMMAND.txt",
+      "bytes": 2305,
+      "sha256": "7631b3aeb79a5f4091d7005659e36c0461142ec022ae5f53eb45f17d14648214"
+    },
+    {
+      "path": "06-VALIDATION-REPORT.md",
+      "bytes": 2275,
+      "sha256": "67210d5ffc143a9955a4cb90b1201ac7fcdddb842e15a0e66dac47b20851746b"
+    },
+    {
+      "path": "data/audience-reference-records.json",
+      "bytes": 4939,
+      "sha256": "99e48f00990f4ca6491ba4f7b0850dc90101230f2869975b7c6e586240712ee7"
+    },
+    {
+      "path": "data/award-reference-records.json",
+      "bytes": 17860,
+      "sha256": "97b5766806cf854230f988f221fee7985c57d1582d1efece0ce8777c1545f13c"
+    },
+    {
+      "path": "data/calendar.json",
+      "bytes": 3414,
+      "sha256": "5f8ae07e9c3e2332bf0a4dd34f0484fd7a9e9939f5b092206ad0f779bfdc3f78"
+    },
+    {
+      "path": "data/composer-credits.json",
+      "bytes": 1309,
+      "sha256": "63d553b1383453b1f19db71c7655dbe41822501655585d82bbe76097da09d1cd"
+    },
+    {
+      "path": "data/deal-precedents.json",
+      "bytes": 1084,
+      "sha256": "f15a360861156a28e28b672dcdef15b219f8edc8a59acf6d875394e8b674ab3b"
+    },
+    {
+      "path": "data/distribution-routes.json",
+      "bytes": 3121,
+      "sha256": "7b0cae6d8564b376d1c7eee7a51033a55bce6b9bbb60df89f8bec0e2a423e85d"
+    },
+    {
+      "path": "data/elantris-correction.json",
+      "bytes": 2186,
+      "sha256": "49e14518d6f1d5c76941f580cd1a645f0a2b7e31d3ace1d82dd79c1b30bd261d"
+    },
+    {
+      "path": "data/eligibility-extracts.json",
+      "bytes": 1708,
+      "sha256": "802210a05a22ffdc82af90b35ffd92edb9d7f8427993e5a6e9120a61df14b843"
+    },
+    {
+      "path": "data/entities.json",
+      "bytes": 4634,
+      "sha256": "7262b6e1f5ea4c0fb599ad86bb758e6cfc1247eebcf01d75767cd45335d2f3e8"
+    },
+    {
+      "path": "data/equipment.json",
+      "bytes": 1192,
+      "sha256": "ffe85be4c0dc3b211e8a806c4af62f7e0089a09a412c220b171a7c8d2b768468"
+    },
+    {
+      "path": "data/production-blueprints.json",
+      "bytes": 14815,
+      "sha256": "0829239946dd32906858385d6ab57ad60b57d7878c2bc14d50a3242b50f90708"
+    },
+    {
+      "path": "data/reputation-design.json",
+      "bytes": 1052,
+      "sha256": "648aeb97134a67cbbc45a14be57aff50af7b283f9906fb454134c705dd02dcc3"
+    },
+    {
+      "path": "data/sources.csv",
+      "bytes": 25681,
+      "sha256": "e1ab066507bf41a8d8f0f89a6f3d68c8e88526297f65e69c606f970a4545e967"
+    },
+    {
+      "path": "data/sources.json",
+      "bytes": 36618,
+      "sha256": "11f180584ab9a69fb8c0da8d4df95a3554aef90a046e4c8eda627b7a093bbdd6"
+    },
+    {
+      "path": "reference/reference_core.py",
+      "bytes": 2318,
+      "sha256": "ffec863c4d7c1ebc38be3a646072d16c773cc2601b64d816e046f785b07af732"
+    },
+    {
+      "path": "reference/test_reference.py",
+      "bytes": 4129,
+      "sha256": "b49690e9d0bb060d97beb87fbfd1efa8746db7b2da9aea237812c05b49f4c024"
+    },
+    {
+      "path": "reference/tmdb_inventory.py",
+      "bytes": 1506,
+      "sha256": "fb6d9fd8c2ef172d1dd315be95ca77bb98743a45108a68bf133b2c57a981b6a6"
+    },
+    {
+      "path": "specification/01-REALISM-CONTRACT.md",
+      "bytes": 3971,
+      "sha256": "c059769e468e7e0fb78634f15e4f8f888bd95844ba45a0d1c9de45092e43d993"
+    },
+    {
+      "path": "specification/02-WORLD-AND-HISTORY.md",
+      "bytes": 7507,
+      "sha256": "39c1b73fbf4c1d04a751f62877d0e6b4e2b0af3844a0cee4db51098fd04c506c"
+    },
+    {
+      "path": "specification/03-FULL-GAMEPLAY-LOOPS.md",
+      "bytes": 13274,
+      "sha256": "0502603c6898e1f27af1af69443a4c0c1374517daffca377eb058ac6b91b1c7a"
+    },
+    {
+      "path": "specification/04-REPUTATION-AND-DEALS.md",
+      "bytes": 5032,
+      "sha256": "d62aee63ef1687080919faf0ddc5b40c969160b3d9a6361da84eaaa295aececc"
+    },
+    {
+      "path": "specification/05-UI-AND-PLAYER-VOICE.md",
+      "bytes": 3522,
+      "sha256": "d6306c49dacc0d9a09c1f1262430640b3541cf5043be6b59e1dc24917e061e09"
+    },
+    {
+      "path": "specification/06-ARCHITECTURE-AND-DATA.md",
+      "bytes": 5376,
+      "sha256": "7fe314645d410c1399815d2159c02e130e2986b13c792d40b6bccb2732bca9b0"
+    },
+    {
+      "path": "specification/07-VERIFICATION-AND-JOURNEYS.md",
+      "bytes": 6033,
+      "sha256": "6f25b30b77e0b99a68b8614eab771e59f7a00d5d536736498c90383f735638a4"
+    },
+    {
+      "path": "specification/08-REQUIREMENTS.csv",
+      "bytes": 9221,
+      "sha256": "18246f046444cd4a09204c8f40a77f66a4b7a20b3eb7f00a7358f8f2564e0237"
+    },
+    {
+      "path": "specification/10-DELIVERY-AND-COVERAGE.md",
+      "bytes": 3763,
+      "sha256": "0386e5b5e405708a33d00cb1c9c5c0e90b4ba9c1f3c104dc0f514c3862eade73"
+    }
+  ]
+}

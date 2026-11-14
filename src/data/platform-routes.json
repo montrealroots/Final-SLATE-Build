@@ -1,0 +1,147 @@
+{
+ "about": "Real services' release routes, as their own pages described them when read (the owner's v7 package, REL01-REL08, distribution-routes.json). Observed policy, not a contract: nothing here entitles a release, sets a price or guarantees income. Copied from docs/v7/package/data.",
+ "routes": [
+  {
+   "id": "netflix_pitch",
+   "company": "Netflix",
+   "route_type": "represented_pitch",
+   "source_id": "REL01",
+   "requirements": [
+    "connected representative",
+    "requested submission"
+   ],
+   "guaranteed_income": false,
+   "price_model": "simulation_unless_separately_sourced",
+   "current_policy_observed_on": "2026-11-13",
+   "policy_effective_from": null,
+   "policy_effective_to": null,
+   "source": {
+    "url": "https://help.netflix.com/en/node/100386",
+    "title": "Netflix pitch policy",
+    "checked": "2026-11-13"
+   }
+  },
+  {
+   "id": "netflix_festival",
+   "company": "Netflix",
+   "route_type": "acquisition_opportunity",
+   "source_id": "REL01",
+   "requirements": [
+    "finished eligible work",
+    "buyer interest"
+   ],
+   "guaranteed_income": false,
+   "price_model": "simulation_unless_separately_sourced",
+   "current_policy_observed_on": "2026-11-13",
+   "policy_effective_from": null,
+   "policy_effective_to": null,
+   "source": {
+    "url": "https://help.netflix.com/en/node/100386",
+    "title": "Netflix pitch policy",
+    "checked": "2026-11-13"
+   }
+  },
+  {
+   "id": "prime_tvod",
+   "company": "Prime Video",
+   "route_type": "curated_rent_buy_submission",
+   "source_id": "REL03",
+   "requirements": [
+    "compliant title",
+    "technical delivery",
+    "licensing review"
+   ],
+   "guaranteed_income": false,
+   "price_model": "simulation_unless_separately_sourced",
+   "current_policy_observed_on": "2026-11-13",
+   "policy_effective_from": null,
+   "policy_effective_to": null,
+   "source": {
+    "url": "https://videocentral.amazon.com/support/delivery-experience/licensing-rights-and-avails/self-publishing-contracts",
+    "title": "Prime licensing and review",
+    "checked": "2026-11-13"
+   }
+  },
+  {
+   "id": "prime_svod",
+   "company": "Prime Video",
+   "route_type": "solicited_subscription_license",
+   "source_id": "REL03",
+   "requirements": [
+    "solicitation",
+    "negotiated license"
+   ],
+   "guaranteed_income": false,
+   "price_model": "simulation_unless_separately_sourced",
+   "current_policy_observed_on": "2026-11-13",
+   "policy_effective_from": null,
+   "policy_effective_to": null,
+   "source": {
+    "url": "https://videocentral.amazon.com/support/delivery-experience/licensing-rights-and-avails/self-publishing-contracts",
+    "title": "Prime licensing and review",
+    "checked": "2026-11-13"
+   }
+  },
+  {
+   "id": "apple_transactional",
+   "company": "Apple TV transactional store",
+   "route_type": "aggregator_or_direct_agreement",
+   "source_id": "REL04",
+   "requirements": [
+    "approved encoding delivery",
+    "agreement or aggregator",
+    "territory language assets"
+   ],
+   "guaranteed_income": false,
+   "price_model": "simulation_unless_separately_sourced",
+   "current_policy_observed_on": "2026-11-13",
+   "policy_effective_from": null,
+   "policy_effective_to": null,
+   "source": {
+    "url": "https://itunespartner.apple.com/tv-movies/support/5407-encoding-houses-aggregators",
+    "title": "Apple approved delivery partners",
+    "checked": "2026-11-13"
+   }
+  },
+  {
+   "id": "youtube",
+   "company": "YouTube",
+   "route_type": "self_publish_with_separate_monetization",
+   "source_id": "REL08",
+   "requirements": [
+    "channel eligibility for monetization",
+    "review"
+   ],
+   "guaranteed_income": false,
+   "price_model": "simulation_unless_separately_sourced",
+   "current_policy_observed_on": "2026-11-13",
+   "policy_effective_from": null,
+   "policy_effective_to": null,
+   "source": {
+    "url": "https://support.google.com/youtube/answer/72851?product=sales",
+    "title": "YouTube Partner Program",
+    "checked": "2026-11-13"
+   }
+  },
+  {
+   "id": "vimeo_legacy",
+   "company": "Vimeo On Demand",
+   "route_type": "sunsetting_storefront",
+   "source_id": "REL06",
+   "requirements": [
+    "dated seller eligibility",
+    "end-of-service handling"
+   ],
+   "guaranteed_income": false,
+   "price_model": "simulation_unless_separately_sourced",
+   "current_policy_observed_on": "2026-11-13",
+   "policy_effective_from": null,
+   "policy_effective_to": "2026-11-20",
+   "source": {
+    "url": "https://help.vimeo.com/hc/en-us/articles/12427367616913-How-to-start-selling-with-Vimeo-On-Demand",
+    "title": "Vimeo On Demand seller instructions",
+    "checked": "2026-11-13"
+   }
+  }
+ ]
+}
