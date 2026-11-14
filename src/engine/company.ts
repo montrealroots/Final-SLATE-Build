@@ -14,13 +14,16 @@
 // is game calibration, not a registry's real fee.
 import { ledgerTotals, money, reserve, settle, closeSettled } from './budget';
 import { financeSummary, moneyKept, scriptApprovedFor } from './finance';
-import { personalBalance, postPersonal } from './personal';
+import { openPersonalAccount, PERSONAL_CASH, personalBalance, postPersonal } from './personal';
+import { available, ensureAccount, outsideAccount, postTx, statementLines } from './cash/journal';
+import { fromMinor, toMinor } from './cash/money';
 import { addLog, newId } from './state';
 import type { FinanceDeal, GameState, Project } from './types';
 
 export type CompanyKind = 'capital' | 'draw' | 'to-project' | 'from-project' | 'formation' | 'overhead';
 export interface CompanyPosting { id: string; at: number; kind: CompanyKind; amount: number; label: string; key: string }
-export interface Company { name: string; foundedAt: number; postings: CompanyPosting[] }
+/** The company's postings live in the journal from November 14, 2026 (companyPostings reads them); before, a list here. */
+export interface Company { name: string; foundedAt: number }
 
 /** What forming a company costs, from your own account. Game calibration, not a registry's fee. */
 export const FORMATION_FEE = 300;
@@ -28,13 +31,32 @@ export const COMPANY_LABELS: Record<CompanyKind, string> = {
   capital: 'Put In By You', draw: 'Drawn By You', 'to-project': 'Put Into Projects', 'from-project': 'Back From Projects', formation: 'Formation', overhead: 'Overhead From A First-Look Deal',
 };
 
-const post = (state: GameState, kind: CompanyKind, amount: number, label: string, key: string) => {
-  state.company!.postings.push({ id: newId(state, 'cp'), at: state.now, kind, amount: Math.round(amount), label, key });
+// The company's account is the journal's company cash account. A move between you and the company is one transaction
+// with a line on each account, so the two can't disagree and the pair is never revenue (A02). Before November 14, 2026
+// it was a posting on each side, joined only by their keys.
+export const COMPANY_CASH = 'company:cash:USD';
+const COUNTER: Record<CompanyKind, string> = { capital: 'company-transfers', draw: 'company-transfers', 'to-project': 'projects', 'from-project': 'projects', formation: 'formation', overhead: 'first-look-overhead' };
+const openCompanyAccount = (state: GameState) => ensureAccount(state, { id: COMPANY_CASH, owner: 'company', type: 'asset', currency: 'USD', label: `${state.company!.name}'s Account` });
+/** A movement between the company and the outside world (a project, a studio's overhead). */
+export const postCompany = (state: GameState, kind: CompanyKind, amount: number, label: string, key: string) => {
+  openCompanyAccount(state);
+  const minor = toMinor(Math.round(amount));
+  postTx(state, { key, kind, memo: label, lines: [{ account: COMPANY_CASH, minor, kind, label }, { account: outsideAccount(state, COUNTER[kind], 'USD'), minor: -minor }] });
 };
-export const companyBalance = (state: GameState): number => (state.company?.postings ?? []).reduce((a, x) => a + x.amount, 0);
+/** A movement between your account and the company's, as one transaction. `amount` > 0 goes to the company. */
+function transfer(state: GameState, amount: number, key: string, mine: string, theirs: string): void {
+  openCompanyAccount(state);
+  openPersonalAccount(state);
+  const minor = toMinor(Math.round(amount));
+  const kind: CompanyKind = minor > 0 ? 'capital' : 'draw';
+  postTx(state, { key, kind, memo: minor > 0 ? mine : theirs, lines: [{ account: PERSONAL_CASH, minor: -minor, kind: 'company', label: mine }, { account: COMPANY_CASH, minor, kind, label: theirs }] });
+}
+export const companyPostings = (state: GameState): CompanyPosting[] =>
+  statementLines(state, COMPANY_CASH).map(({ tx, line }) => ({ id: tx.id, at: tx.at, kind: line.kind as CompanyKind, amount: fromMinor(line.minor), label: line.label ?? tx.memo, key: tx.key }));
+export const companyBalance = (state: GameState): number => fromMinor(available(state, COMPANY_CASH));
 /** The company's account by what each part is, so money put in by you never reads as income. */
 export const companyStatement = (state: GameState): { kind: CompanyKind; total: number }[] =>
-  (Object.keys(COMPANY_LABELS) as CompanyKind[]).map((kind) => ({ kind, total: (state.company?.postings ?? []).filter((x) => x.kind === kind).reduce((a, x) => a + x.amount, 0) })).filter((x) => x.total !== 0);
+  (Object.keys(COMPANY_LABELS) as CompanyKind[]).map((kind) => ({ kind, total: companyPostings(state).filter((x) => x.kind === kind).reduce((a, x) => a + x.amount, 0) })).filter((x) => x.total !== 0);
 
 /** Why a company can't be formed with this name and capital, or null. */
 export function formRefusal(state: GameState, name: string, capital: number): string | null {
@@ -52,13 +74,10 @@ export function formRefusal(state: GameState, name: string, capital: number): st
 export function formCompany(state: GameState, name: string, capital: number): Company {
   const no = formRefusal(state, name, capital);
   if (no) throw new Error(no);
-  state.company = { name: name.trim(), foundedAt: state.now, postings: [] };
+  state.company = { name: name.trim(), foundedAt: state.now };
   const id = newId(state, 'co');
-  postPersonal(state, 'company', -FORMATION_FEE, `Forming ${state.company.name}`, `company:form:${id}`);
-  if (capital > 0) {
-    postPersonal(state, 'company', -Math.round(capital), `Put Into ${state.company.name}`, `company:capital:${id}`);
-    post(state, 'capital', capital, 'Put In By You When It Was Formed', `capital:${id}`);
-  }
+  postPersonal(state, 'company', -FORMATION_FEE, `Forming ${state.company.name}`, `company:form:${id}`, 'formation');
+  if (capital > 0) transfer(state, capital, `company:capital:${id}`, `Put Into ${state.company.name}`, 'Put In By You When It Was Formed');
   addLog(state, `You formed ${state.company.name}${capital > 0 ? ` with ${money(capital)} of your own money` : ''}. Forming it cost ${money(FORMATION_FEE)}.`, 'money', { route: { view: 'profile' } });
   return state.company;
 }
@@ -72,12 +91,10 @@ export function moveCompanyMoney(state: GameState, direction: 'in' | 'out', amou
   const id = newId(state, 'cm');
   if (direction === 'in') {
     if (a > personalBalance(state)) throw new Error(`You have ${money(personalBalance(state))} in your own account.`);
-    postPersonal(state, 'company', -a, `Put Into ${c.name}`, `company:capital:${id}`);
-    post(state, 'capital', a, 'Put In By You', `capital:${id}`);
+    transfer(state, a, `company:capital:${id}`, `Put Into ${c.name}`, 'Put In By You');
   } else {
     if (a > companyBalance(state)) throw new Error(`${c.name} has ${money(companyBalance(state))}.`);
-    post(state, 'draw', -a, 'Drawn By You', `draw:${id}`);
-    postPersonal(state, 'company', a, `Drawn From ${c.name}`, `company:draw:${id}`);
+    transfer(state, -a, `company:draw:${id}`, `Drawn From ${c.name}`, 'Drawn By You');
   }
   addLog(state, direction === 'in' ? `You put ${money(a)} into ${c.name}.` : `You drew ${money(a)} from ${c.name}.`, 'money', { route: { view: 'profile' } });
 }
@@ -108,7 +125,7 @@ export function companyIntoProject(state: GameState, p: Project, amount: number)
   (p.finance ??= { estimate: 0, target: 0, deals: [] }).deals.push(d);
   p.funding.fund += a;
   p.producedBy ??= c.name;
-  post(state, 'to-project', -a, `Put Into ${p.title}`, `to-project:${d.id}`);
+  postCompany(state, 'to-project', -a, `Put Into ${p.title}`, `to-project:${d.id}`);
   addLog(state, `${c.name} put ${money(a)} into ${p.title}, and produces it.`, 'money', { projectId: p.id, route: { view: 'project', projectId: p.id, tab: 'budget' } });
   return d;
 }
@@ -132,7 +149,7 @@ export function takeToCompany(state: GameState, p: Project, kind: 'earnings' | '
   settle(state, p, o.id, a, `transfer:company-${id}`);
   closeSettled(p, o.id);
   p.history.push({ at: state.now, text: `${money(a)} of the ${kind === 'earnings' ? 'income it kept' : 'money put in that it didn\'t spend'} went to ${c.name}.` });
-  post(state, 'from-project', a, kind === 'earnings' ? `Income From ${p.title}` : `Unspent Money Back From ${p.title}`, `from-project:${id}`);
+  postCompany(state, 'from-project', a, kind === 'earnings' ? `Income From ${p.title}` : `Unspent Money Back From ${p.title}`, `from-project:${id}`);
   addLog(state, `${money(a)} went from ${p.title} to ${c.name}.`, 'money', { projectId: p.id, route: { view: 'project', projectId: p.id, tab: 'budget' } });
 }
 

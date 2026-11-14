@@ -5,7 +5,7 @@
 // (tests/jobs.test.ts).
 import type { Page } from '@playwright/test';
 import { expect, test } from './test';
-import { addScene, advance, nav, newProject, readSavedState, saveAndApprove, section, seededLife } from './helpers';
+import { addScene, advance, nav, newProject, personalPostingsOf, readSavedState, saveAndApprove, section, seededLife } from './helpers';
 
 const card = (page: Page, heading: string) => page.locator('section.card', { has: page.getByRole('heading', { name: heading, exact: true }) });
 
@@ -64,8 +64,8 @@ test('an agent finds paid work: offered with its days and their share, taken, wo
   const saved = await readSavedState(page);
   const job = saved.jobs.find((j: { production: string }) => j.production === production);
   expect(job.status).toBe('done');
-  const paid = saved.money.postings.filter((x: { key: string }) => x.key === `job:${job.id}`).map((x: { amount: number }) => x.amount);
+  const paid = personalPostingsOf(saved).filter((x: { key: string }) => x.key === `job:${job.id}`).map((x: { amount: number }) => x.amount);
   expect(paid).toEqual([job.dayRate * job.attended.length]);
-  const commission = saved.money.postings.filter((x: { key: string }) => x.key === `job-commission:${job.id}`).map((x: { amount: number }) => x.amount);
+  const commission = personalPostingsOf(saved).filter((x: { key: string }) => x.key === `job-commission:${job.id}`).map((x: { amount: number }) => x.amount);
   expect(commission).toEqual([-Math.round(paid[0] * 0.15)]);
 });

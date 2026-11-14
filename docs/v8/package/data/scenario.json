@@ -1,0 +1,23 @@
+{
+  "id": "oil-family-independent-19-v1",
+  "status": "original_design_default",
+  "age": 19,
+  "inheritance": {
+    "currency": "USD",
+    "amountMinor": 2500000000,
+    "editableBeforeStart": true,
+    "source": "fictional_estate_distribution",
+    "recurring": false
+  },
+  "companyAtStart": null,
+  "roles": [
+    "actor_or_actress",
+    "screenwriter",
+    "producer",
+    "director"
+  ],
+  "familySelectionMenu": false,
+  "taxSimulation": false,
+  "mobileMode": "responsive",
+  "awardsMode": "single_save_alternate_history"
+}

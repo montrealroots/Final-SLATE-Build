@@ -3,7 +3,7 @@
 // part is, and money put into a project only by your choice, still there after a reload. The rules are the engine's
 // (tests/personal.test.ts).
 import { expect, test } from './test';
-import { addScene, nav, openStart, pressSaveAndExit, quickDraft, readSavedState, saveAndApprove, section, newProject } from './helpers';
+import { addScene, nav, openStart, pressSaveAndExit, quickDraft, personalPostingsOf, readSavedState, saveAndApprove, section, newProject } from './helpers';
 
 test('savings and a family gift chosen at creation, read on Review, kept apart on Profile, and put into a project by choice', async ({ page }) => {
   await openStart(page);
@@ -64,6 +64,6 @@ test('savings and a family gift chosen at creation, read on Review, kept apart o
   await nav(page, 'Profile');
   await expect(mine).toContainText('$5,500 in your own account.');
   const saved = await readSavedState(page);
-  expect(saved.money.postings.map((x: { kind: string; amount: number }) => [x.kind, x.amount])).toEqual([['savings', 1500], ['gift', 8000], ['to-project', -4000]]);
+  expect(personalPostingsOf(saved).map((x: { kind: string; amount: number }) => [x.kind, x.amount])).toEqual([['savings', 1500], ['gift', 8000], ['to-project', -4000]]);
   expect(saved.projects[0].finance.deals.find((d: { kind: string }) => d.kind === 'savings')).toMatchObject({ amount: 4000, received: 4000, status: 'accepted' });
 });

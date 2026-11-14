@@ -17,6 +17,8 @@ import { BACKERS, deals, financeSummary, moneyKept, ownMoney, scriptApprovedFor 
 import { closeSettled, ledgerTotals, money, reserve, settle } from './budget';
 import { addLog, newId, onDraftCheck, onNewGame, registerHandler, schedule } from './state';
 import { DAY } from './time';
+import { available, ensureAccount, outsideAccount, postTx, statementLines } from './cash/journal';
+import { fromMinor, toMinor } from './cash/money';
 import type { FinanceDeal, GameState, Project } from './types';
 
 export type FamilyCircumstances = 'stretched' | 'getting-by' | 'comfortable' | 'wealthy';
@@ -36,7 +38,12 @@ export interface FamilyTerms {
   /** Equipment lent (equipment.ts): what, by shop id. `amount` is its value at listed prices; no money moves. */
   gear?: string[];
 }
-export interface PersonalMoney { postings: PersonalPosting[]; family?: FamilyTerms }
+/**
+ * What the account knows beyond its transactions: a family's terms, from a save made before the v8 start. The postings
+ * themselves live in the journal (cash/journal.ts) from November 14, 2026; personalPostings reads them back. Before then
+ * they were a list here, migrated by migrateV9toV10.
+ */
+export interface PersonalMoney { family?: FamilyTerms }
 
 /** How much each family could offer at most. Game calibration, not income data; it decides nothing else. */
 export const CIRCUMSTANCES: Record<FamilyCircumstances, { label: string; says: string; most: number }> = {
@@ -78,23 +85,40 @@ export function openingPreview(savings: number, terms: FamilyTerms | null): { li
   return { lines, balance: lines.reduce((a, x) => a + x.amount, 0), owe };
 }
 
-// No posting is guarded against being made twice by its key: each caller makes one only once (a repayment is what is due
-// less what was repaid, so a repeated month repays nothing; transfers have ids of their own). The key says what it was.
-export const postPersonal = (state: GameState, kind: PersonalKind, amount: number, label: string, key: string) => {
-  (state.money ??= { postings: [] }).postings.push({ id: newId(state, 'pp'), at: state.now, kind, amount: Math.round(amount), label, key });
+// The account is the journal's player cash account (cash/journal.ts). Each kind of movement comes from or goes to its own
+// outside account, so the statement can say what it was; a key posted twice moves money once (from November 14, 2026;
+// until then nothing guarded a repeated key, and each caller made sure it posted only once).
+export const PERSONAL_CASH = 'player:cash:USD';
+const COUNTER: Record<PersonalKind, string> = {
+  savings: 'opening-savings', gift: 'family-gift', loan: 'family-loan', investment: 'family-investment', repayment: 'family-loan', participation: 'family-investment',
+  'to-project': 'projects', 'from-project': 'projects', equipment: 'equipment', 'equipment-sale': 'equipment', 'paid-work': 'paid-work', commission: 'agent-commission',
+  company: 'company-transfers', overhead: 'first-look-overhead',
 };
+export const counterOf = (kind: PersonalKind) => COUNTER[kind];
+export const openPersonalAccount = (state: GameState) => ensureAccount(state, { id: PERSONAL_CASH, owner: 'player', type: 'asset', currency: 'USD', label: 'Your Account' });
+export const postPersonal = (state: GameState, kind: PersonalKind, amount: number, label: string, key: string, counter = COUNTER[kind]) => {
+  state.money ??= {};
+  openPersonalAccount(state);
+  const minor = toMinor(Math.round(amount));
+  postTx(state, { key, kind, memo: label, lines: [{ account: PERSONAL_CASH, minor, kind, label }, { account: outsideAccount(state, counter, 'USD'), minor: -minor }] });
+};
+/** The account's postings, read back from the journal in whole dollars, oldest first. */
+export const personalPostings = (state: GameState): PersonalPosting[] =>
+  statementLines(state, PERSONAL_CASH).map(({ tx, line }) => ({ id: tx.id, at: tx.at, kind: line.kind as PersonalKind, amount: fromMinor(line.minor), label: line.label ?? tx.memo, key: tx.key }));
 
 /** Your account at the start of a new story, from what was chosen at creation. */
 export function openPersonalMoney(state: GameState, savings: number, terms: FamilyTerms | null): void {
-  state.money = { postings: [], ...(terms ? { family: terms } : {}) };
+  state.money = terms ? { family: terms } : {};
+  openPersonalAccount(state);
   if (savings > 0) postPersonal(state, 'savings', Math.min(SAVINGS_MOST, savings), 'Your Savings', 'opening:savings');
   if (!terms || terms.support === 'none' || terms.support === 'equipment') return; // lent equipment is equipment.ts's
   postPersonal(state, terms.support, terms.amount, `From Your Family: ${SUPPORT_LABELS[terms.support]}`, `opening:${terms.support}`);
   if (terms.support === 'loan') schedule(state, state.now + 30 * DAY, 'family-repayment', { month: 1 }, { attention: 'silent', priority: 60 });
 }
 
-export const personalBalance = (state: GameState): number => (state.money?.postings ?? []).reduce((a, x) => a + x.amount, 0);
-const sumOf = (state: GameState, kind: PersonalKind) => (state.money?.postings ?? []).filter((x) => x.kind === kind).reduce((a, x) => a + x.amount, 0);
+/** What you can spend now, in whole dollars: settled, less anything held. */
+export const personalBalance = (state: GameState): number => fromMinor(available(state, PERSONAL_CASH));
+export const sumOf = (state: GameState, kind: PersonalKind) => personalPostings(state).filter((x) => x.kind === kind).reduce((a, x) => a + x.amount, 0);
 
 /** Where a family loan stands: repaid so far and what is still owed. Derived from postings. */
 export function loanStanding(state: GameState): { repaid: number; owed: number } | null {

@@ -1,0 +1,1524 @@
+/* The widths this stylesheet turns at, and there are no others (from 2026-11-12; until then twelve: 520, 560, 599,
+   620, 640, 700, 720, 760, 860, 900 and 1024 pixels, each chosen for one screen):
+   - a phone held upright: (max-width: 620px), with (min-width: 621px) for what only wider screens do;
+   - the drawer in place of the rail, a tablet or a phone: (max-width: 56.25em), 900 pixels at the usual text size;
+   - a short window, a phone on its side: (max-height: 500px), alone or with one of the widths;
+   - the bar's date and zone give way: (max-width: 64em);
+   - a small phone on its side, where the bar is at its tightest: (max-height: 500px) and (max-width: 760px).
+   A layout that can size itself from its own contents (auto-fit columns, wrapping rows) does that instead of
+   taking a width from this list. tests/stylesheet.test.ts holds the list. */
+/*
+  SLATE's look, taken whole from the 1221 build (montrealroots/1221 at d6eba5d, src/styles/app.css), so the two read as
+  one design: the same tokens, bar, rail, cards, tabs, buttons, fields and dialogs. Final SLATE's own screens use these
+  classes; the few things 1221 has no rule for (film tables, the review list, calendar cells, scenes) follow at the end.
+*/
+/* ==========================================================================
+   SLATE — design system
+   Dark-first, because that is how the industry works and how long sessions
+   are comfortable. Light is fully supported. Every colour is a token so the
+   two themes can never drift apart.
+   ========================================================================== */
+
+:root {
+  color-scheme: dark light;
+
+  /* Surfaces, from furthest back to nearest the reader. */
+  --bg: #0c0d10;
+  --surface: #131519;
+  --surface-2: #191c21;
+  --surface-3: #21252c;
+  --surface-hover: #262b33;
+  --overlay: rgba(6, 7, 9, 0.82);
+
+  /* Text. */
+  --text: #eceef2;
+  --text-muted: #a3aab6;
+  /* Dim text at 4.9:1 or better on every surface, WCAG AA; it was #6f7783 until 2026-09-26, 3.4:1 to 4.3:1. */
+  --text-dim: #8a929e;
+  --text-inverse: #0c0d10;
+
+  /* Lines. */
+  --line: #262a31;
+  --line-strong: #363c45;
+
+  /* The clapper gold. Used sparingly, for identity and for what matters. */
+  --accent: #d8b25f;
+  --accent-strong: #efc978;
+  --accent-dim: rgba(216, 178, 95, 0.14);
+  --accent-line: rgba(216, 178, 95, 0.32);
+
+  /* Semantic. */
+  --positive: #6db98a;
+  --positive-dim: rgba(109, 185, 138, 0.14);
+  --negative: #d97a6c;
+  --negative-dim: rgba(217, 122, 108, 0.14);
+  --warning: #dda863;
+  --warning-dim: rgba(221, 168, 99, 0.14);
+  --info: #7aa5c9;
+  --info-dim: rgba(122, 165, 201, 0.14);
+
+  /* Type. */
+  --font: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Inter, Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-mono: ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas, monospace;
+
+  --size-xs: 0.72rem;
+  --size-sm: 0.8rem;
+  --size-base: 0.875rem;
+  --size-md: 1rem;
+  --size-lg: 1.25rem;
+  --size-xl: 1.6rem;
+  --size-2xl: 2.1rem;
+  --size-3xl: 3rem;
+
+  /* Space. */
+  --s1: 4px; --s2: 8px; --s3: 12px; --s4: 16px;
+  --s5: 24px; --s6: 32px; --s7: 48px; --s8: 64px;
+
+  /* The distance from a chip's outer edge to its text: its padding plus its
+     border. Kept with the space tokens because .chip is defined from it. */
+  --chip-inset: 9px;
+
+  --radius: 10px;
+  --radius-sm: 6px;
+  --radius-lg: 16px;
+
+  --shadow: 0 1px 2px rgba(0,0,0,.3), 0 8px 24px rgba(0,0,0,.28);
+  --shadow-lg: 0 2px 6px rgba(0,0,0,.35), 0 24px 60px rgba(0,0,0,.45);
+
+  --nav-h: 56px;
+  --rail-w: 232px;
+
+  /* The map. Land has to read as land against water at a glance, which the
+     surface tokens are deliberately too close together to do. */
+  --map-sea: #10141b;
+  --map-land: #333a45;
+  --map-land-hover: #4a5361;
+  --map-land-quiet: #22272f;
+}
+
+:root[data-theme="light"] {
+  --bg: #f6f5f2;
+  --surface: #ffffff;
+  --surface-2: #f1efeb;
+  --surface-3: #e7e4de;
+  --surface-hover: #ddd9d2;
+  --overlay: rgba(30, 28, 24, 0.55);
+  --text: #1a1c20;
+  --text-muted: #565d68;
+  /* 4.6:1 or better on every surface; #858c97 until 2026-09-26, 2.7:1 to 3.4:1. */
+  --text-dim: #5f6671;
+  --text-inverse: #ffffff;
+  --line: #dedad3;
+  --line-strong: #c4bfb6;
+  --accent: #94701f;
+  --accent-strong: #7c5d14;
+  --accent-dim: rgba(148, 112, 31, 0.12);
+  --accent-line: rgba(148, 112, 31, 0.3);
+  --positive: #2e7d55;
+  --negative: #b04a3c;
+  --warning: #98661d;
+  --info: #3d6d95;
+  --shadow: 0 1px 2px rgba(30,28,24,.08), 0 8px 24px rgba(30,28,24,.06);
+  --shadow-lg: 0 2px 6px rgba(30,28,24,.1), 0 24px 60px rgba(30,28,24,.14);
+  --map-sea: #d7e1e8;
+  --map-land: #c6c1b7;
+  --map-land-hover: #aca69a;
+  --map-land-quiet: #e2ded7;
+}
+
+* { box-sizing: border-box; }
+
+/* ==========================================================================
+   Containment
+   Nothing is allowed to bleed out of the box it lives in.
+
+   Two defaults cause almost all of it. A flex or grid child is min-width:auto,
+   which refuses to shrink below its own content, so one long word or one long
+   number pushes the whole row wide. And text does not break inside a word by
+   default, so a place name like Llanfairpwllgwyngyll, an email address or a
+   long id runs straight through the panel edge.
+
+   These rules fix both at the root rather than one component at a time.
+   ========================================================================== */
+
+/* Long words break rather than escape. Applies to every text-bearing element. */
+body, p, span, strong, em, small, li, dd, dt, td, th, label, button, a,
+h1, h2, h3, h4, h5, h6, figcaption, blockquote, .hint, .small {
+  overflow-wrap: anywhere;
+  word-break: normal;
+}
+
+/* Flex and grid children can shrink. Without this they never do. */
+.row > *, .col > *, .grid > *, .panel > *, .topbar > *, .card > * {
+  min-width: 0;
+}
+
+/* Except the controls that have a real size of their own. A checkbox told it
+   may shrink will shrink to nothing in a flex row, which is a tick box three
+   pixels wide and no way to tell whether it is ticked. */
+input[type="checkbox"], input[type="radio"] {
+  flex: none;
+  min-width: 1rem;
+  width: 1rem;
+  height: 1rem;
+  margin: 0;
+  accent-color: var(--accent);
+  cursor: pointer;
+}
+
+/* Nothing pushes the page itself sideways. Until 2026-10-23 that was said here by `html, body { overflow-x: hidden; }`,
+   which hid what pushed it rather than stopping it: at 667 by 375 the bar ran 34 pixels past the window, cut off unseen
+   (brief 23's walk measured it with the rule set aside). What is genuinely wide scrolls in its own box below. */
+
+/* Wide content scrolls inside its own container rather than widening the page. Each box that scrolls is the one its
+   hidden labels are placed by (`position: relative`), so a label positioned out of the flow is clipped with the rest.
+   Until 2026-10-23 none was, and with the page no longer clipped a table's Action label, `sr-only` in its last
+   heading, ran out of its box: in a 390-wide window Papers' Passport And ID and Permission To Work scrolled 178 to 319
+   pixels sideways (brief 22's walk in its final runs played again on brief 23's commit). */
+.table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; position: relative; }
+table { table-layout: auto; }
+
+/* Anything genuinely unbreakable gets its own scroller instead of overflowing. */
+pre, code {
+  overflow-x: auto;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+/* One-line labels that should cut off cleanly rather than wrap. */
+.truncate { min-width: 0;
+}
+
+/* Two- and three-line clamps, for cards where a title may run long. */
+.clamp-2 {
+  display: -webkit-box; -webkit-box-orient: vertical; overflow: hidden;
+}
+.clamp-2 { -webkit-line-clamp: 2; }
+
+/* An emoji glyph is often drawn wider than the box the browser measures for
+   it, which reads as a few pixels of overflow. Let it size itself. */
+[role="img"] {
+  flex: none;
+  line-height: 1;
+  overflow: visible;
+  overflow-wrap: normal;
+}
+
+/* Numbers line up and never wrap mid-figure. */
+.money { font-variant-numeric: tabular-nums; white-space: nowrap; }
+
+html, body, #root { height: 100%; }
+/* A phone's browser enlarges text it thinks is too small in a page shrunk to fit; the desktop layout on a phone has to be
+   the desktop's to the letter (November 13, 2026), so it never does. */
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font);
+  font-size: var(--size-base);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  overscroll-behavior: none;
+}
+
+/* Respect the reader's motion preference, and SLATE's own setting. */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .001ms !important;
+  }
+}
+body[data-reduced-motion="true"] *,
+body[data-reduced-motion="true"] *::before,
+body[data-reduced-motion="true"] *::after {
+  animation-duration: .001ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: .001ms !important;
+}
+
+h1, h2, h3, h4 { margin: 0; font-weight: 600; letter-spacing: -0.01em; }
+h1 { font-size: var(--size-xl); }
+h2 { font-size: var(--size-lg); }
+h3 { font-size: var(--size-md); }
+h4 { font-size: var(--size-base); }
+p { margin: 0 0 var(--s3); }
+p:last-child { margin-bottom: 0; }
+
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* Focus is always visible. Non-negotiable. */
+:focus-visible {
+  outline: 2px solid var(--accent-strong);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+:focus:not(:focus-visible) { outline: none; }
+
+.sr-only {
+  position: absolute; width: 1px; height: 1px;
+  padding: 0; margin: -1px; overflow: hidden;
+  clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+}
+
+.skip-link {
+  position: absolute; left: var(--s4); top: -60px;
+  background: var(--accent); color: var(--text-inverse);
+  padding: var(--s2) var(--s4); border-radius: var(--radius-sm);
+  z-index: 999; transition: top .15s;
+}
+.skip-link:focus { top: var(--s4); }
+
+/* ---------- Primitives ---------- */
+
+.btn {
+  display: inline-flex; align-items: center; gap: var(--s2);
+  padding: var(--s2) var(--s4);
+  /* A button's label is a label. The containment layer lets text break
+     inside a word so nothing escapes its box, which for a button in a tight
+     flex slot meant "Unlo / ck". A button keeps its words whole and its
+     width, and the slot wraps around it instead; one wider than its panel
+     wraps between words rather than running out of it, as a Close It button
+     naming its whole balance did at 1024 pixels until 2026-09-26. */
+  white-space: normal; overflow-wrap: normal; flex: none; max-width: 100%;
+  font: inherit; font-size: var(--size-sm); font-weight: 550;
+  color: var(--text); background: var(--surface-3);
+  border: 1px solid var(--line-strong); border-radius: var(--radius-sm);
+  cursor: pointer; transition: background .12s, border-color .12s, transform .06s;
+  text-align: left;
+}
+.btn:hover:not(:disabled) { background: var(--surface-hover); border-color: var(--text-dim); }
+.btn:active:not(:disabled) { transform: translateY(1px); }
+.btn:disabled { opacity: .45; cursor: not-allowed; }
+
+.btn-primary {
+  background: var(--accent); color: var(--text-inverse);
+  border-color: var(--accent);
+  font-weight: 650;
+}
+.btn-primary:hover:not(:disabled) { background: var(--accent-strong); border-color: var(--accent-strong); }
+
+.btn-ghost { background: transparent; border-color: transparent; color: var(--text-muted); }
+.btn-ghost:hover:not(:disabled) { background: var(--surface-2); color: var(--text); }
+
+.btn-danger { color: var(--negative); border-color: var(--line-strong); }
+.btn-danger:hover:not(:disabled) { background: var(--negative-dim); border-color: var(--negative); }
+
+.btn-sm { padding: var(--s1) var(--s3); font-size: var(--size-xs); }
+.btn-lg { padding: var(--s3) var(--s6); font-size: var(--size-md); }
+
+.card {
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: var(--radius); padding: var(--s5);
+}
+.card-tight { padding: var(--s4); }
+.card-flush { padding: 0; overflow: hidden; }
+
+.panel-head {
+  display: flex; align-items: baseline; justify-content: space-between;
+  gap: var(--s2) var(--s3); margin-bottom: var(--s4);
+  /* The title shrinks; the action keeps its size; when both cannot fit on
+     one line the action drops below rather than either being squeezed. */
+  flex-wrap: wrap;
+}
+.panel-head > :first-child { min-width: 0; flex: 1 1 8rem; }
+/* A title with a line of help under it keeps a width the help reads at, and its actions go under it instead (November
+   13, 2026: in a card 250 pixels wide In The Industry's help ran a word or two a line beside Open Companies). */
+.panel-head > :first-child:has(> p) { flex-basis: 18rem; }
+/* Four actions do not fit across a phone. They wrap onto a second line rather
+   than pushing the card open and bleeding out of its right edge. */
+.panel-head > .row { flex-wrap: wrap; justify-content: flex-end; }
+.panel-head h2, .panel-head h3 { margin: 0; }
+/* A heading's words that open its look line up with its actions on their first line, as words alone do (from 2026-10-23,
+   the owner's brief 24). A button is an inline block, whose baseline is its last line's: until then a heading that ran to
+   two lines on a phone had its How This Works beside the second (School's Coursework, 30 pixels down). */
+.panel-head :is(h2, h3) > button.link { display: inline-flex; flex-wrap: wrap; }
+
+.eyebrow {
+  font-size: var(--size-xs); font-weight: 650; letter-spacing: .1em;
+  text-transform: uppercase; color: var(--text-dim);
+}
+
+.muted { color: var(--text-muted); }
+.dim { color: var(--text-dim); }
+/*
+ * A figure is read as one thing. Breaking "+$10,221,240" across two lines, or
+ * splitting "53°F" from its degree sign, is never right however narrow the
+ * column, so numbers stay whole and the box around them gives way instead.
+ */
+.mono { font-family: var(--font-mono); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.mono.wrap { white-space: normal; overflow-wrap: anywhere; }
+/* A name that is also a way in: a button dressed as a link inside running text. */
+button.link { background: none; border: 0; padding: 0; margin: 0; color: inherit; font: inherit; text-align: inherit; cursor: pointer; text-decoration: underline; text-decoration-style: dotted; text-underline-offset: 3px; }
+button.link:hover { color: var(--accent-strong); }
+.negative { color: var(--negative); }
+.small { font-size: var(--size-sm); }
+.xs { font-size: var(--size-xs); }
+.strong { font-weight: 650; }
+.center { text-align: center; }
+.nowrap { white-space: nowrap; }
+.truncate { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+.row { display: flex; align-items: center; gap: var(--s3); }
+.row-between { display: flex; align-items: center; justify-content: space-between; gap: var(--s3); }
+.col { display: flex; flex-direction: column; gap: var(--s3); }
+.wrap { flex-wrap: wrap; }
+.grow { flex: 1; min-width: 0; }
+.gap-1 { gap: var(--s1); } .gap-2 { gap: var(--s2); } .gap-5 { gap: var(--s5); }
+
+.grid { display: grid; gap: var(--s4); }
+.grid-2 { grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr)); }
+.grid-3 { grid-template-columns: repeat(auto-fit, minmax(min(200px, 100%), 1fr)); }
+
+.chip {
+  display: inline-flex; align-items: center; gap: var(--s1);
+  padding: 2px calc(var(--chip-inset) - 1px); border-radius: 100px;
+  font-size: var(--size-xs); font-weight: 600;
+  /* A chip is a label, never prose. "0 / 4" split over two lines is not a
+     smaller chip, it is a broken one. */
+  white-space: nowrap; flex: none;
+  background: var(--surface-3); color: var(--text-muted);
+  border: 1px solid var(--line);
+}
+
+/*
+ * A chip's text sits inside its own padding and border, so a chip under a
+ * label starts nine pixels right of where the label starts and the two read as
+ * misaligned even though nothing has moved. Anything that has to line up with
+ * a chip pulls back by this, and it is written once here rather than guessed
+ * at each site.
+ */
+.chip-row {
+  display: flex; flex-wrap: wrap; gap: var(--s1);
+}
+
+.chip-accent { background: var(--accent-dim); color: var(--accent-strong); border-color: var(--accent-line); }
+.chip-positive { background: var(--positive-dim); color: var(--positive); border-color: transparent; }
+.chip-negative { background: var(--negative-dim); color: var(--negative); border-color: transparent; }
+.chip-warning { background: var(--warning-dim); color: var(--warning); border-color: transparent; }
+.chip-info { background: var(--info-dim); color: var(--info); border-color: transparent; }
+
+.stat { display: flex; flex-direction: column; gap: 2px; }
+/* A stat that opens is one control covering the whole tile. The button lays
+   itself out exactly as the tile did, and only the label carries the
+   underline — three underlines in a tile this small is noise, not an
+   affordance. */
+.stat > button.link {
+  display: flex; flex-direction: column; gap: 2px; align-items: flex-start;
+  text-align: left; width: 100%; text-decoration: none;
+}
+.stat > button.link .stat-label {
+  text-decoration: underline; text-decoration-style: dotted; text-underline-offset: 3px;
+}
+/* Only the label answers to the pointer. The generic link hover would tint
+   the figure and the note with it, and a whole tile changing color reads as a
+   state rather than as an affordance. */
+.stat > button.link:hover { color: inherit; }
+.stat > button.link:hover .stat-label { color: var(--accent-strong); }
+.stat-label { font-size: var(--size-xs); color: var(--text-dim); text-transform: uppercase; letter-spacing: .06em; font-weight: 600; }
+/* A long value wraps rather than running out of its panel: a list of formats
+   is as much a stat as a number is. */
+/* Wraps rather than clips: a stat can hold a person's name as well as a
+   number, and nowrap cut long ones off. break-word keeps a figure like
+   $10,000,000 whole while letting two words fall onto two lines. */
+.stat-value { font-size: var(--size-lg); font-weight: 650; font-variant-numeric: tabular-nums; white-space: normal; overflow-wrap: break-word; min-width: 0; }
+.stat-note { font-size: var(--size-xs); color: var(--text-muted); }
+
+/* Meters: always paired with a number, never colour alone. */
+.meter { height: 6px; background: var(--surface-3); border-radius: 100px; overflow: hidden; }
+.meter > span { display: block; height: 100%; background: var(--accent); border-radius: 100px; transition: width .3s; }
+
+.divider { height: 1px; background: var(--line); border: 0; margin: var(--s4) 0; }
+
+/* An input with no type is a text box; until 2026-09-26 one without it was
+   left in the browser's white, and sat short beside the dark selects. */
+input:not([type]), input[type="text"], input[type="number"], input[type="date"], input[type="search"], select, textarea {
+  width: 100%; padding: var(--s2) var(--s3);
+  font: inherit; font-size: var(--size-sm);
+  color: var(--text); background: var(--surface-2);
+  border: 1px solid var(--line-strong); border-radius: var(--radius-sm);
+}
+input:focus, select:focus, textarea:focus { border-color: var(--accent); }
+/* A one-line select draws its own arrow, so it is the same box in every browser (November 13, 2026): left to the
+   browser, WebKit drew a white box with grey text where Chrome drew the dark one, and a phone shown the desktop layout
+   has to show the desktop's. The arrow is drawn in each theme's muted text colour (#a3aab6, #565d68). */
+select:not([multiple]):not([size]) {
+  -webkit-appearance: none; appearance: none;
+  padding-right: calc(var(--s3) + 14px);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M0 0h10L5 6z' fill='%23a3aab6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat; background-position: right var(--s3) center; background-size: 10px 6px;
+}
+:root[data-theme="light"] select:not([multiple]):not([size]) {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M0 0h10L5 6z' fill='%23565d68'/%3E%3C/svg%3E");
+}
+/* A field that reports rather than asks. Kept the same shape so the form still
+   lines up, and visibly not one you can type in — styled the same as the rest,
+   it read as a box somebody had simply not filled in yet. */
+input[readonly] {
+  background: var(--surface-3); color: var(--text-muted);
+  border-style: dashed; cursor: default;
+}
+input[readonly]:focus { border-color: var(--line-strong); }
+textarea { resize: vertical; min-height: 72px; }
+label, .label { display: block; font-size: var(--size-xs); font-weight: 600; color: var(--text-muted); margin-bottom: var(--s1); }
+
+/* A value the form worked out, not one it asked for: the billing the pronouns
+   settle, and the citizenship the place of birth decides. Standing in for the
+   Billed As buttons it is shorter than they are, so the form below moves up
+   when the pronouns settle it. */
+.settled-title {
+  display: block; padding: var(--s2) 0;
+  font-size: var(--size-sm); font-weight: 650;
+  color: var(--accent-strong);
+}
+
+/* A helper line under a control: what it takes, or how many there are to
+   choose from. The same size and color as every other hint on a form, which
+   the pickers write as a class rather than as `xs dim`. */
+.hint { font-size: var(--size-xs); color: var(--text-dim); line-height: 1.45; margin: var(--s1) 0 0; }
+/* The same line saying something went wrong is not a hint, and is not dimmed. */
+.hint[role="alert"] { color: var(--warning); }
+
+/* Chromium gives a range input a default side margin, which pushes it a few
+   pixels past the field it sits in. */
+input[type="range"] {
+  width: 100%; min-width: 0; margin: 0;
+  accent-color: var(--accent); box-sizing: border-box;
+}
+.field-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: var(--s4); }
+/* A button among the fields sits level with their boxes, not their labels. */
+.field-row > .btn { align-self: end; justify-self: start; margin-bottom: var(--s4); }
+/* And as tall as the box beside it: a field and a full-size button share their
+   padding, type and line, so a small one takes the full size here. */
+.field-row > .btn { padding: var(--s2) var(--s4); font-size: var(--size-sm); }
+
+.list { display: flex; flex-direction: column; }
+.list-item {
+  display: flex; align-items: center; gap: var(--s3);
+  padding: var(--s3) var(--s4);
+  border-bottom: 1px solid var(--line);
+  text-align: left; width: 100%;
+  background: transparent; border-left: 0; border-right: 0; border-top: 0;
+  color: inherit; font: inherit; cursor: pointer;
+}
+.list-item:last-child { border-bottom: 0; }
+
+/* A row with several fixed-width things on the right of it — a price, a
+   button, a status chip — will squeeze the text column down to a couple of
+   characters a word rather than wrap, which reads as broken even though
+   nothing has technically overflowed. Wrapping the row and giving the text a
+   floor it cannot go below fixes it at every width. */
+.list-item { flex-wrap: wrap; }
+.list-item > .grow { flex: 1 1 14rem; min-width: min(14rem, 100%); }
+@media (max-width: 620px) {
+  .list-item > .grow { flex-basis: 100%; }
+}
+.list-item:hover { background: var(--surface-2); }
+.list-item[aria-selected="true"] { background: var(--accent-dim); }
+.list-static { cursor: default; }
+.list-static:hover { background: transparent; }
+
+table { width: 100%; border-collapse: collapse; font-size: var(--size-sm); }
+th, td { padding: var(--s2) var(--s3); text-align: left; border-bottom: 1px solid var(--line); }
+th { font-size: var(--size-xs); text-transform: uppercase; letter-spacing: .06em; color: var(--text-dim); font-weight: 650; white-space: nowrap; }
+
+.empty {
+  padding: var(--s7) var(--s5); text-align: center; color: var(--text-dim);
+}
+.empty h3 { color: var(--text-muted); margin-bottom: var(--s2); }
+
+.callout {
+  padding: var(--s3) var(--s4); border-radius: var(--radius-sm);
+  border-left: 3px solid var(--line-strong); background: var(--surface-2);
+  font-size: var(--size-sm);
+}
+.callout-accent { border-left-color: var(--accent); background: var(--accent-dim); }
+.callout-negative { border-left-color: var(--negative); background: var(--negative-dim); }
+.callout-warning { border-left-color: var(--warning); background: var(--warning-dim); }
+.callout-info { border-left-color: var(--info); background: var(--info-dim); }
+
+.clapper {
+  font-size: 68px; line-height: 1; display: block;
+  margin-bottom: var(--s5);
+  animation: clapper-in 900ms cubic-bezier(.2,.8,.2,1) both;
+}
+@keyframes clapper-in {
+  0% { opacity: 0; transform: translateY(14px) rotate(-9deg) scale(.86); }
+  60% { opacity: 1; transform: translateY(0) rotate(3deg) scale(1.04); }
+  100% { opacity: 1; transform: translateY(0) rotate(0) scale(1); }
+}
+
+.wordmark {
+  font-size: 46px; font-weight: 300; letter-spacing: .42em;
+  text-indent: .42em; color: var(--text);
+  margin-bottom: var(--s2);
+}
+.slot {
+  display: flex; flex-direction: column; gap: var(--s4);
+  padding: var(--s5); min-height: 300px;
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: var(--radius); text-align: left;
+}
+
+/* ---------- App shell ---------- */
+
+.shell { display: flex; flex-direction: column; height: 100%; }
+/* The date and zone's wrapper: nothing on a wide bar, where they sit in the row; a line of their own on a narrow one. */
+.topbar-clock-when { display: contents; }
+/* The game for its first moment on screen: see Shell.tsx. */
+.shell-arriving { pointer-events: none; }
+/* The height the browser shows now (from 2026-10-23, brief 23): a phone's address bar comes and goes, and 100% was the
+   height with it gone, so the foot of the page sat under it. */
+@supports (height: 100dvh) { .shell { height: 100dvh; } }
+
+.topbar {
+  display: flex; align-items: center; gap: var(--s4); padding: 0 var(--s4);
+  background: var(--surface); border-bottom: 1px solid var(--line);
+  flex-shrink: 0; position: relative; z-index: 20;
+}
+.topbar-brand {
+  display: flex; align-items: center; gap: var(--s2);
+  font-weight: 600; letter-spacing: .18em; font-size: var(--size-sm);
+}
+/* The clock reads across, not down. Stacking the date under the time made a
+   tall, narrow column that crowded everything beside it in the bar. */
+.topbar-clock {
+  display: flex; flex-direction: row; align-items: baseline;
+  gap: var(--s2); white-space: nowrap; min-width: 0;
+  font-variant-numeric: tabular-nums;
+}
+.topbar-clock strong { font-size: var(--size-base); font-weight: 650; }
+.topbar-clock-sep { color: var(--line-strong); }
+.topbar-clock-date { font-size: var(--size-sm); color: var(--text-dim); }
+.topbar-clock-zone {
+  font-size: var(--size-xs); color: var(--text-dim);
+  border: 1px solid var(--line); border-radius: var(--radius-sm);
+  padding: 0 var(--s1); letter-spacing: .04em;
+}
+/* On a narrow screen the time is what matters; the rest steps aside rather
+   than pushing into the controls next to it. The clock never grows the bar. */
+.topbar-clock { flex: none; }
+.topbar-clock strong { flex: none; }
+.topbar-clock-date { overflow: hidden; text-overflow: ellipsis; }
+/* Below a laptop the bar has no room to spare, so the clock is just the time.
+   It is the part anyone actually reads at a glance. Buttons keep their words
+   whole everywhere, so the room is found in the gaps and the padding, not by
+   crushing a label into "Unlo / ck". The bar's widths, and the drawer's, are in em from 2026-10-23 (brief 24), 16 pixels
+   to one at the browser's own text size, so a player who sets larger text gets the layout a narrower window does: until
+   then, in px, text at 150% in a window 1280 wide kept the desktop's bar, Look After Yourself ran to three lines out of
+   it and Save & Exit 5 pixels past the window (app/checks.mjs). */
+@media (max-width: 64em) {
+  /* The date and the zone go under the time, a size smaller, where there is no room beside it. Until 2026-11-12 they
+     were dropped at this width, so on a phone or a tablet no screen but Home said what day it was. */
+  .topbar-clock-sep { display: none; }
+  .topbar-clock { flex-wrap: wrap; justify-content: flex-end; row-gap: 0; column-gap: var(--s2); }
+  .topbar-clock-when { display: flex; gap: var(--s1); order: 3; flex: 1 1 100%; justify-content: flex-end; min-width: 0; font-size: var(--size-xs); color: var(--text-muted); line-height: 1.3; flex-wrap: wrap; }
+  .topbar-clock-when > * { font-size: inherit; }
+  /* At 320 pixels the date takes two lines rather than ending in an ellipsis. */
+  .topbar-clock-date { overflow: visible; text-overflow: clip; text-align: right; }
+  .topbar { gap: var(--s2); }
+  .topbar .btn { padding-inline: var(--s2); }
+  /* The hairline between the tool group and the save group is decoration,
+     and at this width its own gaps are what pushed Save & Exit off the edge. */
+  .topbar-divider { display: none; }
+}
+/* On a phone (from 2026-10-10) the bar is the desktop's in two ordered rows: the menu, the name, the clock with its
+   date, the guide and Save & Exit; under them the time controls across the width, as one toolbar. Until then it
+   wrapped where it ran out, three ragged lines, and the date was dropped. */
+@media (max-width: 620px) {
+  header.topbar {
+    display: grid; height: auto; min-height: var(--nav-h);
+    grid-template-columns: auto auto minmax(0, 1fr);
+    grid-template-areas: "menu here clock" "time time time";
+    column-gap: var(--s2); row-gap: var(--s1); padding: var(--s1) var(--s3) var(--s2);
+  }
+  .topbar > .rail-toggle { grid-area: menu; }
+  /* The name of the screen stands where the brand did: the drawer has Home (from 2026-10-23). */
+  .topbar > .topbar-brand { display: none; }
+  .topbar > .topbar-here { grid-area: here; }
+  .topbar > .topbar-clock { grid-area: clock; min-width: 0; justify-content: flex-end; }
+  .topbar > .topbar-time { grid-area: time; display: flex; gap: var(--s1); }
+  .topbar-time > * { flex: 1 1 auto; justify-content: center; }
+  .topbar > .grow, .topbar-divider { display: none; }
+}
+/* On a narrow phone the guide and Save & Exit took a row of their own from 2026-10-19 to 2026-10-23, when they went to
+   the drawer's foot with the rail (brief 23). */
+
+/* Below a laptop the rail folds away and comes back as a drawer, and on a screen too short for it beside the page, as a
+   phone's on its side is (from 2026-10-23, brief 23: until then a phone 932 wide kept the desktop's rail). */
+@media (max-width: 56.25em), (max-height: 500px) {
+  /* Closed, the drawer is off the left edge and hidden outright, so nothing
+     in it can take focus or be read as spilling out of the page. */
+  .rail {
+    position: fixed; bottom: 0; left: 0; width: 260px;
+    z-index: 30; transform: translateX(-100%); visibility: hidden;
+    transition: transform .2s, visibility 0s linear .2s;
+    box-shadow: var(--shadow-lg);
+  }
+  .rail[data-open="true"] { transform: none; visibility: visible; transition: transform .2s, visibility 0s; }
+  /* With the drawer, the screen's name stands where the brand did, as on a phone, and the bar's buttons keep to one line
+     (from 2026-10-23, brief 23's walk: in a 760-pixel window "Player Profile" was cut to "Player Pro…" beside the brand,
+     and Look After Yourself took two lines). */
+  .topbar > .topbar-brand { display: none; }
+  .topbar .btn { white-space: nowrap; }
+}
+/* Menu only where the rail is a drawer: the complement of the drawer's query, its width in em with it (from brief 24,
+   2026-10-23; 56.3125em is 901 pixels at the browser's own text size). A first version left this at 901px, and with text
+   at 150% in a window 1280 wide the rail was a drawer with no Menu to open it (app/checks.mjs found it). */
+@media (min-width: 56.3125em) and (min-height: 501px) {
+  .rail-toggle { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .rail { transition: none; }
+}
+
+.shell-body { display: flex; flex: 1; min-height: 0; position: relative; }
+
+/*
+  The rail: every destination, always in reach, down the left of every screen.
+  Words only. A locked room says Locked in a chip rather than showing a padlock,
+  and there are no icons, because a glyph that is a picture on one platform and
+  a box on another is not a label.
+*/
+.rail {
+  width: var(--rail-w); flex-shrink: 0; overflow-y: auto;
+  background: var(--surface); border-right: 1px solid var(--line);
+  padding: var(--s3) var(--s2);
+  display: flex; flex-direction: column;
+}
+.rail-group { margin-bottom: var(--s4); }
+.rail-group-label {
+  font-size: var(--size-xs); text-transform: uppercase; letter-spacing: .1em;
+  color: var(--text-dim); font-weight: 650; padding: var(--s2) var(--s3);
+}
+.rail-item {
+  display: flex; align-items: center; gap: var(--s3); width: 100%;
+  padding: var(--s2) var(--s3); border-radius: var(--radius-sm);
+  background: transparent; border: 0; color: var(--text-muted);
+  font: inherit; font-size: var(--size-sm); cursor: pointer; text-align: left;
+}
+.rail-item:hover { background: var(--surface-2); color: var(--text); }
+/* The screen you're on, and Home on its own screens, Calendar and Updates (from 2026-10-23, brief 24). */
+.rail-item[aria-current="page"], .rail-item[aria-current="true"] { background: var(--accent-dim); color: var(--accent-strong); font-weight: 600; }
+.rail-player { margin-top: auto; margin-bottom: 0; }
+.rail-you { padding: var(--s2) var(--s3); }
+/* Below a laptop the rail is a drawer, and this is what you press to close it. */
+.rail-shade {
+  display: none; position: fixed; inset: var(--nav-h) 0 0 0; z-index: 29;
+  background: rgba(0, 0, 0, 0.35); border: 0; cursor: pointer;
+}
+
+/* The two sides of the bar. Left is the world; right is you. */
+.topbar-group { display: flex; align-items: center; gap: var(--s2); }
+.topbar-divider { width: 1px; height: 22px; background: var(--line); flex: none; }
+
+.main {
+  flex: 1; overflow-y: auto; min-width: 0;
+}
+.main-inner { max-width: 1180px; margin: 0 auto; }
+/* A card standing on its own in the page gets the same room below it as a row
+   of cards does, so two stacked panels never share a border. */
+.main-inner > .card { margin-bottom: var(--s5); }
+
+.breadcrumbs {
+  display: flex; align-items: center; gap: var(--s2); flex-wrap: wrap;
+  font-size: var(--size-xs); color: var(--text-dim); margin-bottom: var(--s4);
+}
+.breadcrumbs button {
+  background: none; border: 0; color: var(--text-muted); font: inherit;
+  cursor: pointer; padding: 0;
+}
+.breadcrumbs button:hover { color: var(--accent); text-decoration: underline; }
+
+.page-head { margin-bottom: var(--s5); }
+.page-head h1 { margin-bottom: var(--s1); }
+/* The way back from Home's own screens (`BackToHome`, from 2026-10-23, brief 24), where an eyebrow stands on the rest:
+   its words on the heading's left edge, its button's padding outside it. */
+.back-home { margin: 0 0 var(--s1) calc(-1 * var(--s3)); }
+.back-home::before { content: "‹ " / ""; }
+
+.tabs {
+  display: flex; gap: var(--s1); border-bottom: 1px solid var(--line);
+  margin-bottom: var(--s5); overflow-x: auto;
+}
+.tab {
+  padding: var(--s3) var(--s4); background: none; border: 0;
+  border-bottom: 2px solid transparent; color: var(--text-muted);
+  font: inherit; font-size: var(--size-sm); font-weight: 550;
+  cursor: pointer; white-space: nowrap;
+}
+.tab:hover { color: var(--text); }
+.tab[aria-selected="true"] { color: var(--accent-strong); border-bottom-color: var(--accent); }
+
+/* ---------- Go Anywhere ---------- */
+
+.overlay {
+  position: fixed; inset: 0; background: var(--overlay);
+  display: flex; justify-content: center; align-items: flex-start;
+  padding: 10vh var(--s4) var(--s4); z-index: 200;
+}
+kbd {
+  font-family: var(--font-mono); font-size: 11px;
+  background: var(--surface-3); border: 1px solid var(--line-strong);
+  border-radius: 4px; padding: 1px 5px;
+}
+
+/* ---------- Calendar ---------- */
+
+.cal-grid { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; }
+.cal-day { display: flex; flex-direction: column; gap: 2px; }
+.cal-day > * { min-width: 0; max-width: 100%; }
+.cal-day[data-out="true"] { background: var(--surface-2); opacity: .5; }
+.cal-day[data-today="true"] { box-shadow: inset 0 0 0 2px var(--accent); }
+
+/* ---------- Decision Center ---------- */
+
+.decision {
+  display: flex; gap: var(--s3); padding: var(--s4);
+  border-bottom: 1px solid var(--line);
+}
+.decision:last-child { border-bottom: 0; }
+
+/* ---------- Modal ---------- */
+
+.modal {
+  width: min(640px, 100%); background: var(--surface);
+  border: 1px solid var(--line-strong); border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg); max-height: 84vh; max-height: 84dvh;
+  display: flex; flex-direction: column;
+}
+.modal-head { padding: var(--s5); border-bottom: 1px solid var(--line); }
+.modal-body { padding: var(--s5); overflow-y: auto; flex: 1; }
+/* The footer wraps its buttons to a second line where they don't fit, as `.btn` asks of the slot it sits in. It didn't
+   wrap until 2026-10-21: at 390 the clock's stop at a meeting, with Ask To Move beside How This Works, Stand Here and
+   Go, ran past the dialog's right edge (brief 19's agent walk found it; the app walk measured it). */
+.modal-foot { padding: var(--s4) var(--s5); border-top: 1px solid var(--line); display: flex; flex-wrap: wrap; justify-content: flex-end; gap: var(--s2); }
+
+/* ---------- Creation ---------- */
+
+.creation { max-width: 780px; margin: 0 auto; padding: var(--s6) var(--s4); }
+.creation-steps { display: flex; gap: var(--s1); margin-bottom: var(--s6); flex-wrap: wrap; }
+/* On a phone the five share the width and a long name takes two lines, so
+   every name is centered in its box and a one-line tab sits level with a
+   two-line one, and the side padding is kept small so "Dispositions &" fits
+   on its first line. With room for all five on one line, each is as wide as
+   its name and none of them wraps. */
+.creation-step {
+  flex: 1; min-width: 92px; padding: var(--s2) var(--s1);
+  border-bottom: 2px solid var(--line); font-size: var(--size-xs);
+  color: var(--text-dim); text-align: center; font-weight: 600;
+  display: flex; align-items: center; justify-content: center; line-height: 1.25;
+}
+.creation-step[data-state="active"] { border-bottom-color: var(--accent); color: var(--accent-strong); }
+.creation-step[data-state="done"] { border-bottom-color: var(--text-dim); color: var(--text-muted); }
+
+.trait {
+  padding: var(--s3); border: 1px solid var(--line); border-radius: var(--radius-sm);
+  background: var(--surface-2); text-align: left; cursor: pointer; color: inherit; font: inherit;
+}
+.trait:hover:not(:disabled) { border-color: var(--line-strong); }
+.trait[aria-pressed="true"] { border-color: var(--accent); background: var(--accent-dim); }
+.trait:disabled { cursor: not-allowed; }
+/* A trait that can't be picked fades, all but the line saying why. */
+.trait:disabled > * { opacity: .55; }
+.trait-name { font-weight: 650; font-size: var(--size-sm); margin-bottom: 2px; }
+
+/* ---------- The scene in front of you ----------
+   Above every screen while a scene is in progress. It is a card with the
+   clapper's gold down its left edge, so it reads as the thing happening now
+   rather than one panel among many. */
+
+.scene {
+  margin-bottom: var(--s5); padding: var(--s4) var(--s5);
+  background: var(--surface); border: 1px solid var(--line); border-left: 3px solid var(--accent);
+  border-radius: var(--radius);
+}
+.scene .panel-head { padding: 0; margin-bottom: var(--s3); }
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 56.25em) {
+  .main { padding: var(--s4) var(--s3); }
+  .cal-day { min-height: 62px; }
+  .topbar { padding: 0 var(--s3); gap: var(--s3); }
+}
+
+/* A month's bar: the way back, the month, the way on. */
+.month-bar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--s2) var(--s3); }
+.month-bar > h2 { margin: 0; text-align: center; flex: 1 1 auto; }
+
+@media (max-width: 620px) {
+
+  .wordmark { font-size: 34px; letter-spacing: .34em; text-indent: .34em; }
+  .clapper { font-size: 54px; }
+  /* A grid of three or four short facts keeps two across (from 2026-10-10: until then one a row, so a card's three
+     figures took a screen); a grid of two is two panels' worth, one above the other. */
+  .grid-2 { grid-template-columns: 1fr; }
+  .grid-3 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  /* A form's boxes one to a row (from 2026-11-12): two across cut a chooser's own value short ("Choose A Ch"). */
+  .grid-3.form { grid-template-columns: minmax(0, 1fr); }
+  /* A card's own margin a step smaller, so what is in it has the phone's width; and a month's seven columns run to
+     the card's edge, so a day is wide enough for a thumb on the narrowest phone (38.6 pixels at 360 until 2026-11-12). */
+  .card { padding: var(--s4); }
+  .cal-grid { margin-inline: calc(var(--s3) * -1); }
+  /* A month's bar: its name above, the two ways to move below it sharing the row. */
+  .month-bar > h2 { order: -1; flex: 1 1 100%; text-align: center; }
+  .month-bar > .btn { flex: 1 1 0; }
+  .creation { padding: var(--s4) var(--s3); }
+  .hide-sm { display: none !important; }
+}
+
+/* Print is not a target, but a history export should not be unreadable. */
+@media print {
+  .rail, .rail-shade { display: none !important; }
+  .topbar { display: none !important; }
+  body { background: #fff; color: #000; }
+}
+.worldmap {
+  display: block; width: 100%; aspect-ratio: 2 / 1;
+  max-height: 360px; margin-inline: auto;
+  background: var(--map-sea);
+  /* A tap is a tap. No double-tap-to-zoom swallowing the first one. */
+  touch-action: manipulation;
+}
+.worldmap-loading { display: flex; align-items: center; justify-content: center; }
+.worldmap-sea { fill: var(--map-sea); }
+.worldmap-country {
+  fill: var(--map-land); stroke: var(--map-sea);
+  cursor: pointer; transition: fill 90ms linear;
+}
+.worldmap-country:hover { fill: var(--map-land-hover); }
+.worldmap-country[data-empty] {
+  fill: var(--map-land-quiet); stroke: var(--map-sea); cursor: default;
+}
+.worldmap-country[data-empty]:hover { fill: var(--map-land-quiet); }
+.worldmap-country[data-selected] { fill: var(--accent); stroke: var(--accent-strong); }
+.worldmap-country[data-selected]:hover { fill: var(--accent-strong); }
+.worldmap-marker { fill: var(--accent-strong); stroke: var(--bg); stroke-width: 0.6; }
+
+/* A checkbox and its sentence, on one line, aligned on the first line of it. */
+.check {
+  margin-bottom: 0; font-weight: 400; font-size: var(--size-sm);
+  color: var(--text); line-height: 1.5; cursor: pointer;
+}
+.check input[type="checkbox"] { margin-top: 2px; }
+
+/* Sandbox, offered at creation rather than buried in a menu. */
+/* A label element makes everything inside it bold. The explanation under the
+   heading is body copy and should read like it. */
+
+/* Four by five, because that is the shape a headshot has always been. */
+/* [hidden] is display:none in the UA sheet, and any author display rule beats
+   it. The canvas exists before a photo does, so without this the empty frame
+   is a blank canvas with the invitation to choose a photo squeezed into a
+   one-character sliver beside it. */
+
+/* The empty frame is the upload control, not a caption beside one: the whole
+   thing is the button, so tapping anywhere in it opens the file picker. */
+
+/* The picture-and-arrow. Stroked in currentColor so it follows the frame. */
+
+.visually-hidden {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+}
+
+/* The headshot wherever it appears afterwards. */
+.headshot { flex: none;
+}
+.headshot-sm { height: 55px; }
+.weather-week {
+  display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: var(--s2);
+  margin-top: var(--s3); padding-top: var(--s3); border-top: 1px solid var(--line);
+}
+.weather-day { text-align: center; min-width: 0; }
+.weather-cond { line-height: 1.6; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+/* A phone (2026-09-28): the tabs wrap onto a second line rather than hide
+   off the edge, and a table keeps its words whole, scrolling in its panel
+   when it's wider than the screen. Table cells broke words anywhere, which
+   let a column shrink past a word ("Mon/day", "Profession/al"). */
+td, th { overflow-wrap: break-word; }
+/* From 2026-10-10 the tabs stay one row, as the desktop's, scrolling sideways with a fade at the edge where there's
+   more; until then they wrapped onto a second row, and a page's tabs read as two rows of choices. A table keeps every
+   column the desktop shows, scrolling in its panel, with a shadow on the side that has more (the scrolling-shadows
+   technique: covers that move with the content, shadows that stay with the box). */
+@media (max-width: 620px) {
+  /* The fade at the edge with more is the tab bar's own at every width from 2026-10-23 (`.tabs-wrap`, below): until
+     then it was here, at 640 or narrower, and always at the right, so a bar scrolled to its end faded its last tab. */
+  .tab { padding-inline: var(--s3); }
+  table {
+    display: block; max-width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; position: relative;
+    background:
+      linear-gradient(to right, var(--surface) 30%, transparent) left center / 24px 100% no-repeat local,
+      linear-gradient(to left, var(--surface) 30%, transparent) right center / 24px 100% no-repeat local,
+      radial-gradient(farthest-side at 0 50%, rgba(0, 0, 0, .45), transparent) left center / 12px 100% no-repeat scroll,
+      radial-gradient(farthest-side at 100% 50%, rgba(0, 0, 0, .45), transparent) right center / 12px 100% no-repeat scroll;
+  }
+}
+
+/* --- The guide's reference (ui/guide/Help.tsx, from 2026-10-12) ---------- */
+.panel-actions { flex-wrap: wrap; justify-content: flex-end; }
+/* Contextual help placed by where it stands (from 2026-10-23, the owner's brief 24). How This Works is a small ghost
+   button whose padding keeps its focus ring whole and, on a phone, its 44 pixels; a margin as wide as that padding, on
+   the side it lines up with, puts its words on the edge rather than its box. Until then its words stood 13 pixels in from
+   each edge they lined up with, and on a narrow head's second row up to 131 pixels from the heading, with 6 to 22
+   pixels above it beneath content (`docs/verification/ui-polish-2026-10-23/app/help-audit.mjs`, brief 23's build). */
+:root { --ghost-pad: var(--s3); }
+/* In a card's head its words end at the content's edge, as the heading's start at the other, on the heading's baseline;
+   wrapped onto a second row, the row starts under the heading (the head's space-between puts a line's one item at its
+   start). The margin is the actions' own, on the side a ghost action ends them: on the action itself, the first version
+   of this, a head whose one action was its help took both margins, and its words ran 11 pixels past the edge. */
+.panel-actions:has(> .btn-ghost:last-child) { margin-right: calc(-1 * var(--ghost-pad)); }
+.panel-actions:has(> .btn-ghost:first-child) { margin-left: calc(-1 * var(--ghost-pad)); }
+/* Beneath what it explains: a row of its own, one step under it, its first words on that content's left edge. */
+.help-below { display: flex; flex-wrap: wrap; align-items: center; gap: var(--s2); margin-top: var(--s2); }
+.help-below > .btn-ghost:first-child { margin-left: calc(-1 * var(--ghost-pad)); }
+
+/* ==========================================================================
+   Brief 23 (2026-10-23): desktop and landscape phones
+   ========================================================================== */
+
+:root {
+  /* The page's gutter, one for every screen: the main column's padding, and what a drawer and the bar keep from a
+     notch. */
+  --gutter: var(--s5);
+  /* A readable line of running text, held at about 75 characters. */
+  --measure: 78ch;
+  /* The smallest a control is: a pointer's, and a finger's (WCAG 2.5.5's 44 pixels) on a touch screen. */
+  --control: 32px;
+  --control-sm: 28px;
+}
+@media (max-width: 56.25em) { :root { --gutter: var(--s4); } }
+@media (max-height: 500px) { :root { --gutter: var(--s3); --nav-h: 48px; } }
+@media (pointer: coarse) { :root:not([data-layout="scaled"]) { --control: 44px; --control-sm: 44px; } }
+
+/* Controls, one height each. A link inside a sentence keeps the sentence's line (WCAG 2.5.8 excepts it). */
+.btn { min-height: var(--control); }
+.btn-sm { min-height: var(--control-sm); }
+.tab, .rail-item { min-height: var(--control); }
+.btn, .tab, .rail-item { justify-content: center; }
+.rail-item { justify-content: flex-start; }
+@media (pointer: coarse) {
+  :where(:root:not([data-layout="scaled"])) .btn-sm { padding-inline: var(--s3); }
+  /* Every box a person types or chooses in (a passphrase's was 24 pixels until 2026-11-12: the list named four kinds). */
+  :where(:root:not([data-layout="scaled"])) select, :where(:root:not([data-layout="scaled"])) input:not([type="checkbox"], [type="radio"], [type="range"], [type="file"], [type="hidden"], [type="color"]) { min-height: 44px; }
+  :where(:root:not([data-layout="scaled"])) summary { min-height: 44px; display: flex; align-items: center; gap: var(--s1); }
+  :where(:root:not([data-layout="scaled"])) details > summary { list-style-position: inside; }
+  :where(:root:not([data-layout="scaled"])) .breadcrumbs button { min-height: 44px; min-width: 44px; padding: 0 var(--s1); }
+  /* A `.link.strong` rule, 32 pixels tall, stood here from 2026-10-23 to 2026-10-24: no element carries both classes
+     (Help's topics are `.help-link`), so it matched nothing and went (brief 26). */
+  /* A slider's track as tall as a control, so a finger finds it (Sleep's hours, 16 pixels until 2026-10-23). */
+  :where(:root:not([data-layout="scaled"])) input[type="range"] { min-height: var(--control); }
+  /* A tick box's own label, beside it rather than around it, is what a finger presses (from 2026-10-23). */
+  :where(:root:not([data-layout="scaled"])) input[type="checkbox"] + label, :where(:root:not([data-layout="scaled"])) input[type="radio"] + label { min-height: var(--control); display: inline-flex; align-items: center; }
+  /* And a label around its box, as the Playing chooser's are (brief 23's walk: 16-pixel radios in 38-pixel labels). */
+  :where(:root:not([data-layout="scaled"])) label:has(> input[type="checkbox"]), :where(:root:not([data-layout="scaled"])) label:has(> input[type="radio"]) { min-height: var(--control); min-width: var(--control); }
+  :where(:root:not([data-layout="scaled"])) .cal-day { cursor: pointer; }
+  /* An idea's tag, and a name that leads a row and opens something, as tall as a control (from 2026-11-12: 32 and 21
+     pixels until then). A link inside a sentence keeps the sentence's line. */
+  :where(:root:not([data-layout="scaled"])) strong > button.link:only-child, :where(:root:not([data-layout="scaled"])) li > button.link, :where(:root:not([data-layout="scaled"])) .list-item > .grow > button.link, :where(:root:not([data-layout="scaled"])) dd > button.link:only-child { display: inline-flex; align-items: center; min-height: var(--control); min-width: var(--control); }
+  /* A button of one glyph (‹, ›, ✕) as wide as it is tall, and the skip link as tall as a control (from 2026-10-23, brief
+     23's walk: the Calendar's month arrows were 31 pixels wide, the skip link 37 tall). */
+  :where(:root:not([data-layout="scaled"])) .btn { min-width: var(--control); }
+  :where(:root:not([data-layout="scaled"])) .skip-link { min-height: var(--control); display: inline-flex; align-items: center; }
+}
+
+/* The page's gutter and the notch. The bar, the drawer and the column keep clear of a phone's notch and its home bar
+   (`viewport-fit=cover`, `env(safe-area-inset-*)`). */
+.topbar { padding-left: max(var(--s4), env(safe-area-inset-left)); padding-right: max(var(--s4), env(safe-area-inset-right)); }
+.main {
+  padding: var(--gutter);
+  padding-left: max(var(--gutter), env(safe-area-inset-left));
+  padding-right: max(var(--gutter), env(safe-area-inset-right));
+  padding-bottom: max(var(--gutter), env(safe-area-inset-bottom));
+}
+@media (max-width: 56.25em), (max-height: 500px) {
+  .rail { padding-left: max(var(--s2), env(safe-area-inset-left)); padding-bottom: max(var(--s3), env(safe-area-inset-bottom)); }
+}
+
+/* Running text held to a readable line, in a card and at a page's head. */
+.card p, .page-head p { max-width: var(--measure); }
+
+/* ---------- The bar ---------- */
+
+.topbar-here {
+  font-weight: 650; font-size: var(--size-sm); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  min-width: 0; max-width: 11rem; flex: 0 1 auto;
+}
+.clock-state {
+  display: inline-flex; align-items: center; gap: 6px; align-self: center;
+  font-size: var(--size-xs); font-weight: 650; color: var(--text-muted);
+  border: 1px solid var(--line); border-radius: 100px; padding: 1px 8px; line-height: 1.5;
+}
+.clock-state::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--text-dim); }
+.clock-state[data-running="true"] { color: var(--positive); border-color: transparent; background: var(--positive-dim); }
+.clock-state[data-running="true"]::before { background: var(--positive); }
+/* The bar on a phone on its side: one row, every control a finger's size, the clock's date stepping aside first. */
+@media (max-height: 500px) {
+  .topbar { gap: var(--s2); padding-top: 0; padding-bottom: 0; }
+  .topbar > .topbar-brand { display: none; }
+  .topbar .btn { padding-inline: var(--s2); }
+  .topbar-time { gap: var(--s1); }
+  .page-head { margin-bottom: var(--s4); }
+  .breadcrumbs { margin-bottom: var(--s2); }
+}
+@media (max-height: 500px) and (max-width: 760px) {
+  .clock-state { padding: 1px 6px; }
+  .topbar-here { max-width: 7rem; }
+}
+
+/* ---------- The rail ---------- */
+
+/* `.rail-badge-quiet`, the quiet colour of the rail's Updates badge (brief 23), outlived the badge, which went when brief 24
+   took Updates off the rail; the rule went on 2026-10-24 (brief 26). */
+.rail-foot { border-top: 1px solid var(--line); padding-top: var(--s3); margin-top: var(--s3); }
+.rail-foot .topbar-group { flex-wrap: wrap; padding: 0 var(--s2); }
+
+/* ---------- Tabs ---------- */
+
+/* A tab bar wider than its page scrolls sideways, and fades on the side that has more, with a button there that scrolls
+   it on (from 2026-10-23, brief 23): until then a phone's bar cut "Opportunities" in half at its right edge. */
+.tabs-wrap { position: relative; margin-bottom: var(--s5); }
+.tabs-wrap > .tabs { margin-bottom: 0; flex-wrap: nowrap; scrollbar-width: none; overscroll-behavior-x: contain; scroll-padding-inline: 40px; }
+/* The arrows sat over the faded tab under them, so a phone read "‹haracters" (November 10, 2026): they are opaque now,
+   and a tab scrolled into view stops clear of them. */
+.tabs-wrap > .tabs::-webkit-scrollbar { display: none; }
+.tabs-wrap[data-overflow="end"] > .tabs { mask-image: linear-gradient(to right, #000 calc(100% - 56px), transparent); }
+.tabs-wrap[data-overflow="start"] > .tabs { mask-image: linear-gradient(to left, #000 calc(100% - 56px), transparent); }
+.tabs-wrap[data-overflow="both"] > .tabs { mask-image: linear-gradient(to right, transparent, #000 56px, #000 calc(100% - 56px), transparent); }
+.tabs-more {
+  position: absolute; top: 0; bottom: 1px; display: none; align-items: center; justify-content: center;
+  width: 36px; border: 0; background: var(--bg); color: var(--accent-strong); cursor: pointer; font-size: var(--size-md);
+  z-index: 1; /* the tab strip's fade mask makes it a layer of its own, painted over an arrow before it in the page */
+}
+.tabs-more[data-side="end"] { right: 0; }
+.tabs-more[data-side="start"] { left: 0; }
+.tabs-wrap[data-overflow="end"] > .tabs-more[data-side="end"],
+.tabs-wrap[data-overflow="start"] > .tabs-more[data-side="start"],
+.tabs-wrap[data-overflow="both"] > .tabs-more { display: flex; }
+
+/* ---------- Home ---------- */
+
+.today { display: flex; flex-wrap: wrap; align-items: flex-start; justify-content: space-between; gap: var(--s4) var(--s6); }
+.today-main { flex: 1 1 24rem; min-width: 0; }
+.today-line { margin: var(--s1) 0 0; }
+.today-weather { flex: 0 1 22rem; min-width: min(16rem, 100%); }
+.today-weather-now { display: flex; align-items: center; gap: var(--s2); font-size: var(--size-sm); }
+.today-weather-now > span:last-child { display: flex; flex-wrap: wrap; gap: 0 var(--s2); align-items: baseline; }
+.today-weather-icon { font-size: var(--size-lg); }
+.today-week { margin-top: var(--s2); padding-top: var(--s2); }
+
+.home-grid {
+  display: grid; gap: var(--s4); margin-bottom: var(--s5);
+  grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: start;
+}
+.home-grid > .card { margin: 0; }
+/* Two columns that each stack, What Needs You over How You Are and Up Next over Recent Updates, each card as tall as what
+   it holds, in Home's own order on one column (from 2026-10-23, the owner's brief 24). Until then each row stretched its
+   cards to the taller one's height, so an All Clear stood in a card as tall as Up Next, mostly empty, and How You Are
+   waited under both. Two columns from 600 wide, as on a phone's side at 667, so What Needs You and Up Next both start in
+   the first window. Until then 700 was the line: a column at 667 had no room for a head's title and its actions on one
+   line, and in one column Up Next started below the first window. Its actions go on a second row under the title now. */
+/* From November 13, 2026 each column is its own stack (World.tsx), so a long card in one leaves no gap in the other. */
+.home-col { display: flex; flex-direction: column; gap: var(--s4); min-width: 0; }
+.home-col > .card { margin: 0; }
+@media (max-width: 620px) {
+  /* One column, in Home's own order: Projects, Up Next, In The Industry, Proposals, Recent Updates. */
+  .home-grid { grid-template-columns: minmax(0, 1fr); }
+  .home-col { display: contents; }
+  .home-col:first-child > :first-child { order: 1; }
+  .home-col:last-child > :first-child { order: 2; }
+  .home-col:first-child > :not(:first-child) { order: 3; }
+  .home-col:last-child > :not(:first-child) { order: 4; }
+}
+/* On a phone on its side a heading of Home's keeps its help beside it, its line under it wrapping instead: at 12rem, the
+   head's own, What Needs You's help took a row of its own in a column at 667, and the first thing waiting started at the
+   window's foot, cut (brief 24's pictures, 2026-10-23). Up Next's two actions still go under its title. */
+.notice-row { align-items: flex-start; flex-wrap: wrap; }
+/* Its words keep a width they read at; in a narrow column its buttons go under them (from 2026-10-23, brief 24). */
+.notice-row > .grow { flex: 1 1 13rem; min-width: 0; }
+.notice-row-actions { flex: none; }
+@media (max-height: 500px) {
+  .overlay { padding: var(--s2) max(var(--s3), env(safe-area-inset-right)) var(--s2) max(var(--s3), env(safe-area-inset-left)); align-items: center; }
+  .modal { max-height: calc(100dvh - 2 * var(--s2)); }
+  .modal-head { padding: var(--s3) var(--s4); }
+  .modal-body { padding: var(--s4); }
+  .modal-foot { padding: var(--s2) var(--s4); }
+}
+/* A section that opens: its name a control a finger can press, its body under a hairline. */
+details.section-fold { border-top: 1px solid var(--line); padding-top: var(--s2); }
+details.section-fold > summary { cursor: pointer; font-weight: 600; font-size: var(--size-sm); min-height: var(--control); display: flex; align-items: center; gap: var(--s2); }
+details.section-fold > summary::-webkit-details-marker { display: none; }
+details.section-fold > summary::before { content: "›"; display: inline-block; width: 1em; color: var(--accent); transition: transform .12s; }
+details.section-fold[open] > summary::before { transform: rotate(90deg); }
+details.section-fold[open] > summary { margin-bottom: var(--s2); }
+section.card[tabindex="-1"]:focus { outline: none; }
+.cell-wide { min-width: 14rem; }
+
+/* A page's head on a phone on its side (from 2026-10-23, brief 23): the trail is the screen you came from, as a way back,
+   and the heading's group, which the drawer shows, steps aside, so the page's own content starts nearer the top. The
+   heading is a step smaller; running text isn't. */
+@media (max-height: 500px) {
+  .breadcrumbs > span { display: none; }
+  .breadcrumbs > span:nth-last-child(2) { display: flex; }
+  .breadcrumbs > span:nth-last-child(2) > [aria-hidden="true"] { display: none; }
+  .breadcrumbs > span:nth-last-child(2) button::before { content: "‹ "; }
+  .page-head > .eyebrow:first-child { display: none; }
+  .page-head h1 { font-size: var(--size-lg); }
+  .tabs-wrap { margin-bottom: var(--s3); }
+  .main-inner > .card, .home-grid { margin-bottom: var(--s4); }
+  /* Home's head (from 2026-10-23, the owner's brief 24): the day, the greeting and one line of the town, the season and
+     the sky in a few words, the clock being the bar's; the days ahead, the high and low and the daylight under Forecast
+     And Daylight, opened in place across the width (which of them Home draws is its own, by the same query). The space
+     between them is what went, not their size. Until then the line, the forecast and the five days took the whole of
+     the first window at 667 by 375. */
+  .page-head.today { margin-bottom: var(--s3); gap: var(--s2) var(--s4); }
+  .today-weather { flex-basis: 100%; }
+  .today-weather[hidden] { display: none; }
+}
+.decision .row-between > span:last-child { white-space: nowrap; }
+
+/* ==========================================================================
+   Final SLATE's own screens, in 1221's terms
+   ========================================================================== */
+
+:root[data-text='large'] { font-size: 112.5%; }
+[hidden] { display: none !important; }
+
+/* A card's heading written straight into it, without a panel head. */
+.card > h2, .card > h3, .card > header > h2 { margin-bottom: var(--s3); }
+.card > h3:not(:first-child), .card > h2:not(:first-child) { margin-top: var(--s4); }
+.card + .card { margin-top: var(--s5); }
+.home-grid > .card + .card, .grid > .card + .card, .col > .card + .card { margin-top: 0; }
+.card-grid { display: grid; gap: var(--s4); grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); align-items: start; margin-bottom: var(--s5); }
+.card-grid > .card { margin: 0; }
+.card-grid > .card + .card { margin-top: 0; }
+.card-grid > .card-wide { grid-column: 1 / -1; }
+.card-wide .grid-2.form { grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr)); }
+
+/* Lists of things in a card: one row each, under a hairline. */
+ul.list { list-style: none; margin: 0; padding: 0; }
+ul.list > li { padding: var(--s3) 0; border-bottom: 1px solid var(--line); min-width: 0; }
+ul.list > li:last-child { border-bottom: 0; }
+.row-wrap { display: flex; gap: var(--s3); align-items: flex-start; justify-content: space-between; flex-wrap: wrap; }
+.row-wrap > .grow { flex: 1 1 220px; min-width: 0; }
+.chip-row .dot { color: var(--text-dim); }
+.chip-row { margin-left: 0; }
+
+/* Label and value pairs. */
+.kv { display: grid; grid-template-columns: minmax(110px, max-content) 1fr; gap: var(--s1) var(--s4); margin: 0; font-size: var(--size-sm); }
+.kv dt { color: var(--text-dim); }
+.kv dd { margin: 0; }
+
+/* A note that sits in the page: 1221's callout, with a green for what went well. */
+.callout { margin-bottom: var(--s4); }
+.callout > :last-child { margin-bottom: 0; }
+.callout-positive { border-left-color: var(--positive); background: var(--positive-dim); }
+.topbar .save-alert { position: absolute; top: calc(100% + var(--s2)); right: var(--s4); left: auto; width: min(520px, calc(100% - 2 * var(--s4))); z-index: 40; box-shadow: var(--shadow-lg); background: var(--surface-2); }
+
+/* Fields side by side, and a field with its button. */
+.field { margin-bottom: var(--s4); }
+.field .error { color: var(--negative); font-size: var(--size-xs); }
+.inline-form { display: flex; flex-wrap: wrap; gap: var(--s2); align-items: flex-end; }
+.inline-form .field { margin-bottom: 0; flex: 1 1 200px; }
+.grid-2.form, .grid-3.form { gap: 0 var(--s4); }
+.check { display: flex; gap: var(--s2); align-items: center; min-height: var(--control); }
+.check input { width: 18px; height: 18px; accent-color: var(--accent); margin: 0; flex: none; }
+/* The earlier rule's 2px nudge lifted the box for a first line set flush to the top; with the row centred it pushed the
+   box below its label (seen on the Schedule tab, November 10, 2026), so the box sits on the label's centre line. */
+
+/* Tables that become labelled cards on phones. */
+table.data { width: 100%; border-collapse: collapse; font-size: var(--size-sm); }
+table.data th, table.data td { text-align: left; padding: var(--s2) var(--s3); border-bottom: 1px solid var(--line); vertical-align: top; }
+table.data th { color: var(--text-dim); font-weight: 650; font-size: var(--size-xs); text-transform: uppercase; letter-spacing: .06em; }
+@media (max-width: 620px) {
+  table.data thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+  table.data, table.data tbody, table.data tr, table.data td { display: block; width: 100%; }
+  table.data tr { border: 1px solid var(--line); border-radius: var(--radius-sm); margin-bottom: var(--s3); padding: var(--s2) var(--s3); background: var(--surface-2); }
+  table.data td { border: 0; padding: var(--s1) 0; display: grid; grid-template-columns: minmax(96px, 38%) 1fr; gap: var(--s3); }
+  table.data td::before { content: attr(data-label); color: var(--text-dim); font-weight: 600; }
+  table.data td[data-label=''] { display: block; }
+  table.data td[data-label='']::before { content: none; }
+}
+
+/* The start screen and its pages: 1221's save-slot page. */
+.start-page { min-height: 100%; overflow-y: auto; padding: var(--s5) max(var(--s4), env(safe-area-inset-right)) var(--s7) max(var(--s4), env(safe-area-inset-left)); }
+.start-page .main-inner { max-width: 780px; }
+.start-head { text-align: center; padding-top: var(--s6); margin-bottom: var(--s6); }
+.start-head .clapper { margin-bottom: var(--s4); }
+.start-head .wordmark { font-size: 32px; }
+.start-actions { justify-content: center; margin: var(--s5) 0; }
+
+/* Creation's steps are 1221's step tabs; eight of them wrap onto two rows on a phone. */
+.creation-title { font-size: var(--size-lg); font-weight: 600; letter-spacing: -0.01em; line-height: 1.25; }
+.creation-foot { margin-top: var(--s6); }
+.start-page > .creation { max-width: 780px; margin: 0 auto; }
+
+/* Calendar cells. */
+.cal-grid .dow { font-size: var(--size-xs); color: var(--text-dim); text-align: center; padding: var(--s1); }
+.cal-day { min-height: 84px; background: var(--surface-2); border: 1px solid var(--line); border-radius: var(--radius-sm); padding: 4px; font-size: var(--size-xs); text-align: left; cursor: pointer; min-width: 0; overflow: hidden; color: inherit; }
+.cal-day.out { opacity: .45; }
+.cal-day.today { border-color: var(--accent); }
+.cal-day[aria-pressed='true'] { outline: 2px solid var(--accent); }
+.cal-day .n { font-weight: 700; font-size: var(--size-sm); }
+.cal-day .dot { display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.cal-day .count { display: none; }
+@media (max-width: 620px) { .cal-day { min-height: 54px; } .cal-day .dot { display: none; } .cal-day .count { display: block; color: var(--accent-strong); } }
+
+/* Scenes, pick lists and the rest of the project screens. */
+.scene-card { border: 1px solid var(--line); border-radius: var(--radius); padding: var(--s3) var(--s4); margin-bottom: var(--s3); background: var(--surface-2); }
+.scene-card h3 { margin: 0; }
+.picklist { max-height: 320px; overflow-y: auto; border: 1px solid var(--line); border-radius: var(--radius-sm); }
+.picklist button { display: flex; width: 100%; text-align: left; background: none; border: 0; border-bottom: 1px solid var(--line); padding: var(--s2) var(--s3); min-height: var(--control); cursor: pointer; flex-direction: column; align-items: flex-start; color: inherit; font: inherit; }
+.picklist button:hover, .picklist button[aria-pressed='true'] { background: var(--accent-dim); }
+.spaced { margin-top: var(--s4); }
+.right { text-align: right; }
+.worldmap-here { fill: none; stroke: var(--accent-strong); stroke-width: 0.6; }
+/* The place a picker already has: a solid dot with a dark rim, readable on a highlighted country (November 8, 2026). */
+.worldmap-chosen { fill: var(--text); stroke: var(--bg); stroke-width: 0.5; pointer-events: none; }
+.worldmap-marker:focus { outline: none; }
+.worldmap-marker:focus-visible { stroke: var(--text); stroke-width: 0.8; fill: var(--accent-strong); }
+/* Phones zoom into fields under 16px; keep entry fields at 16px on small screens. */
+@media (max-width: 56.25em) { input:not([type='checkbox']):not([type='radio']), select, textarea { font-size: 16px !important; } }
+/* Eight steps, not 1221's five: they share the row equally and a long name takes two lines, as 1221's do on a phone. */
+@media (min-width: 621px) { .creation-step { flex: 1 1 0; white-space: normal; padding: var(--s2) var(--s1); } }
+/* With very large text the bar wraps onto a second row rather than running off the edge. */
+.topbar { flex-wrap: wrap; height: auto; min-height: var(--nav-h); row-gap: var(--s1); }
+.save-state { white-space: nowrap; }
+/* The drawer opens under the bar however many rows it has, and the shade behind it closes it (1221 declared the shade
+   hidden after the rule that shows it, so it never showed). */
+@media (max-width: 56.25em), (max-height: 500px) {
+  .rail { top: var(--bar-h, var(--nav-h)); }
+  .rail-shade { display: block; inset: var(--bar-h, var(--nav-h)) 0 0 0; }
+}
+/* Checkboxes in a row (the calendar's filters): room between them, no field gap under the row. */
+.chip-row > .field { margin: 0 var(--s4) 0 0; }
+/* A field's hint sits on its own line. Until November 11, 2026 that line was under the label; it is under the box now
+   ("Form rows that line up", at the end). 1221 styles no time field; it gets the date field's look. */
+.field > .hint { display: block; }
+input[type='time'] { width: 100%; min-height: var(--control); padding: var(--s2) var(--s3); border-radius: var(--radius-sm); border: 1px solid var(--line-strong); background: var(--surface-2); color: var(--text); font: inherit; font-size: var(--size-sm); color-scheme: dark; }
+:root[data-theme='light'] input[type='time'] { color-scheme: light; }
+/* A list of checkboxes (creation's holidays): the hint under each, not a field's gap. */
+.col.gap-1 > .field { margin-bottom: var(--s1); }
+
+/* --------------------------------------------------------------------------
+   Headshot, from 1221 (November 8, 2026): the picker on Identity, and the picture on Profile and beside your credits.
+   -------------------------------------------------------------------------- */
+
+
+.identity-top { display: flex; gap: var(--s5); align-items: flex-start; }
+.identity-fields { flex: 1; min-width: 0; }
+@media (max-width: 56.25em) {
+  .identity-top { flex-direction: column; }
+  .identity-fields { width: 100%; }
+}
+
+.portrait-picker { display: flex; flex-direction: column; gap: var(--s3); flex: none; width: 208px; }
+
+/* Four by five, because that is the shape a headshot has always been. */
+.portrait-frame {
+  position: relative; width: 208px; aspect-ratio: 4 / 5;
+  border: 1px solid var(--line); border-radius: var(--radius);
+  background: var(--surface-2); overflow: hidden;
+  display: flex; align-items: center; justify-content: center;
+  touch-action: none;
+}
+.portrait-frame[data-empty] { border-style: dashed; }
+.portrait-frame[data-dragging="true"] { border-color: var(--accent); background: var(--accent-dim); }
+/* [hidden] is display:none in the UA sheet, and any author display rule beats
+   it. The canvas exists before a photo does, so without this the empty frame
+   is a blank canvas with the invitation to choose a photo squeezed into a
+   one-character sliver beside it. */
+.portrait-frame canvas[hidden] { display: none; }
+.portrait-frame canvas,
+.portrait-frame img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.portrait-frame canvas:not([hidden]) { cursor: grab; }
+.portrait-frame canvas:not([hidden]):active { cursor: grabbing; }
+
+/* The empty frame is the upload control, not a caption beside one: the whole
+   thing is the button, so tapping anywhere in it opens the file picker. */
+.portrait-empty {
+  display: flex; flex-direction: column; align-items: center;
+  justify-content: center; gap: var(--s2);
+  width: 100%; height: 100%; padding: var(--s3); text-align: center;
+  background: none; border: 0; color: var(--text-muted);
+  font: inherit; cursor: pointer;
+  /* A flex item is min-width:auto, so without this the invitation to drop a
+     photo is wider than the frame and gets clipped rather than wrapping. */
+  max-width: 100%; min-width: 0;
+}
+.portrait-empty:hover { background: var(--surface-3); }
+.portrait-empty:hover .portrait-glyph,
+.portrait-empty:focus-visible .portrait-glyph { color: var(--accent); }
+.portrait-empty-title {
+  font-size: var(--size-sm); font-weight: 650; color: var(--text);
+}
+.portrait-empty-note { font-size: var(--size-xs); color: var(--text-dim); }
+
+/* The picture-and-arrow. Stroked in currentColor so it follows the frame. */
+.portrait-glyph {
+  width: 54px; height: 54px; flex: none;
+  fill: none; stroke: currentColor; stroke-width: 2.2;
+  stroke-linecap: round; stroke-linejoin: round;
+  color: var(--text-dim); transition: color 90ms linear;
+}
+.portrait-frame[data-dragging="true"] .portrait-glyph { color: var(--accent); }
+
+.portrait-controls { display: flex; flex-wrap: wrap; gap: var(--s2); align-items: center; }
+.portrait-controls .hint { flex-basis: 100%; margin: 0; }
+.portrait-zoom { flex-basis: 100%; margin: 0; }
+.portrait-zoom label { font-size: var(--size-xs); }
+.headshot { display: block; aspect-ratio: 4 / 5; object-fit: cover; border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface-2); }
+.headshot-lg { width: 120px; flex: none; }
+.headshot-sm { width: 28px; border-radius: var(--radius-sm); display: inline-block; vertical-align: middle; margin-right: var(--s2); }
+.profile-head { display: flex; gap: var(--s4); align-items: flex-end; }
+/* First, middle and last name on one row beside the headshot; one under another on a phone (November 8, 2026). */
+.field-row.field-row-names { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+@media (max-width: 620px) { .field-row.field-row-names { grid-template-columns: 1fr; } }
+
+/* Text after a row of buttons, a button or a list of facts starts a step below it. Until November 10, 2026 it sat against
+   them: "Rebuild Schedule" with its note, the Cut card's buttons, a festival's Status line and its dates note. */
+.row + p, .row-between + p, .btn + p, .kv + p, .inline-form + p, :is(.inline-form) + :empty + p { margin-top: var(--s3); }
+/* A heading and the button or boxes under it, and a heading after them: a step apart. Not in a row, where a heading
+   and its button sit side by side. Until November 11, 2026 "Add Scene To Episode 2" touched "Episode 2" above it, and
+   "Production Needs" touched the dialogue boxes it follows. */
+:not(.row, .row-between, .row-wrap) > :is(h3, h4) + :is(.btn, .field, .inline-form, .grid, .chip-row, .ideas-row) { margin-top: var(--s2); }
+:not(.row, .row-between, .row-wrap, .list-item) > * + :is(h3, h4) { margin-top: var(--s4); }
+/* The same step under a row of boxes before a tick box (the catalog's "Include titles not released"), under a tick box
+   before what it switches (creation's "I Still Live Where I Was Born" and the map), and under a row of chips before
+   the count they filter (the idea picker). Each touched until November 11, 2026. */
+:is(.inline-form) + .field { margin-top: var(--s2); }
+:is(fieldset, .inline-form) + :is(.idea-field, .grid, .field-row) { margin-top: var(--s3); }
+.ideas-row + p { margin-top: var(--s2); }
+:not(.row, .row-between, .row-wrap, .chip-row) > label.check + :not(.hint, .check) { margin-top: var(--s3); }
+.chip-row + p { margin-top: var(--s2); }
+/* A group of boxes after something else (a character's Arc after Choose Ideas), and the logline builder's sentence
+   before its button. */
+:not(.row, .row-between, .row-wrap) > * + fieldset:not(.idea-block, .spaced) { margin-top: var(--s3); }
+.idea-block + .btn { margin-top: var(--s3); }
+/* A row of buttons under a table (the Crew page's "Hire A Writer" sat on the table's last line), and a part's heading
+   and the paragraph that explains it ("Writing Work"). A title and its one-line note in a list or a scene card are
+   left as close as they were. */
+:is(.table-wrap, table) + .row { margin-top: var(--s3); }
+:is(section, fieldset, .card, .spaced) > :is(h3, h4) + p { margin-top: var(--s2); }
+/* A table row with a button in it: its words sit level with the button's, not 4 pixels above them ("Release" in Offers
+   And Contracts). Rows without one keep their words at the top, where a cell of several lines reads best. */
+table.data tr:has(.btn) > td { vertical-align: middle; }
+/* The count under a list of places ("Showing 60 of 1,204 places") sat against the list's last row. */
+.picklist + p { margin-top: var(--s2); }
+/* A button under a block of its card ("Rebuild Schedule" under the puppets, "Combine" under the dialogue boxes). */
+:is(section, article, fieldset, details, .card) > :is(div, ul, details, table) + .btn { margin-top: var(--s3); }
+/* Chips after a name, on its line: a step from the name and from each other. On the event page they touched both until
+   November 10, 2026 ("Golden Lion For Best FilmPrize"). */
+.chips-after { display: inline-flex; flex-wrap: wrap; gap: var(--s1); vertical-align: middle; } /* the space before it collapses when the chips wrap under the name, so they start at its edge */
+.chips-after:empty { display: none; }
+/* A browser indents a fieldset and its legend by a few pixels, so a form inside a card (New Song) started 2 to 4 pixels
+   right of the card's own text (November 10, 2026). */
+fieldset { margin: 0; min-inline-size: 0; }
+legend { padding: 0; }
+
+/* ---------- The idea picker (ui/IdeaPicker.tsx) ----------
+   A dialog on a desktop and a full-width sheet on a phone: the same list, the same preview, the same buttons. On a
+   phone its actions sit above the home indicator, and the list scrolls under them. */
+.modal-sheet { width: min(760px, 100%); }
+.idea-list { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--s2); grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); }
+.idea-card {
+  display: flex; flex-direction: column; gap: var(--s2); width: 100%; height: 100%; text-align: left;
+  padding: var(--s3) var(--s4); background: var(--surface-2); color: var(--text);
+  border: 1px solid var(--line); border-radius: var(--radius-sm); cursor: pointer; font: inherit;
+}
+.idea-card:hover { border-color: var(--line-strong); }
+.idea-card:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.idea-label { font-weight: 600; }
+.idea-text { color: var(--text-muted); font-size: var(--size-sm); }
+.idea-card .chip-row { margin: auto 0 0; }
+.idea-block { border: 0; padding: 0; margin: var(--s4) 0 0; min-width: 0; }
+.idea-block > legend, .idea-block > h3 { font-weight: 600; font-size: var(--size-base); margin: 0 0 var(--s2); padding: 0; }
+.idea-block ul { margin: 0; padding-left: var(--s5); }
+.idea-sentence { font-size: var(--size-lg); margin: 0; }
+.chip-button { cursor: pointer; font: inherit; font-size: var(--size-xs); min-height: 32px; }
+@media (pointer: coarse) { :where(:root:not([data-layout="scaled"])) .chip-button { min-height: var(--control); padding-inline: var(--s3); } }
+.ideas-row { display: flex; flex-wrap: wrap; align-items: center; gap: var(--s2); margin-top: var(--s2); }
+@media (max-width: 620px) {
+  .overlay-sheet { padding: 0; align-items: stretch; }
+  .modal-sheet { width: 100%; max-height: 100dvh; height: 100dvh; border-radius: 0; border: 0; }
+  .modal-sheet .modal-head { padding-top: max(var(--s4), env(safe-area-inset-top)); }
+  .modal-sheet .modal-foot { padding-bottom: max(var(--s4), env(safe-area-inset-bottom)); justify-content: stretch; }
+  .modal-sheet .modal-foot .btn { flex: 1 1 auto; }
+  .idea-list { grid-template-columns: 1fr; }
+}
+
+/* A hired writer's work on the Crew page (WritingWork.tsx): a quieter panel inside the Writer And Director card. */
+.writing-work { background: var(--surface-2, transparent); box-shadow: none; }
+.writing-work + .writing-work { margin-top: var(--s3); }
+.writing-work > * + * { margin-top: var(--s3); }
+
+/* ---------- Form rows that line up (November 11, 2026) ----------
+   Until then a form grid was cells as tall as whatever was in them. A hint of two lines put its box below its
+   neighbour's; a Choose Ideas button sat on the label of the row under it; a hint touched the box it was for; a select
+   was 2 pixels shorter than the text box beside it. e2e/layout.ts measures all of these, and e2e/layout.spec.ts holds
+   the Script page to none.
+
+   One-line boxes are one height, and no shorter than a button. */
+:root { --box-h: max(var(--control), calc(var(--size-sm) * 1.5 + 2 * var(--s2) + 2px)); }
+input:not([type]), input[type="text"], input[type="number"], input[type="date"], input[type="search"], input[type="time"], select:not([multiple]):not([size]) {
+  box-sizing: border-box; height: var(--box-h);
+}
+/* A text area is a block: set in a line, it kept a few pixels under it for letters' tails, so what came after a text
+   area sat 5 pixels lower than what came after a text box. */
+textarea { display: block; }
+/* Boxes and a button in a row that wraps (a performer's screen time, a song's scene): the button is level with the
+   boxes, not with their labels, where it sat 21 pixels above them. */
+.row-wrap > .field ~ .btn { align-self: flex-end; min-height: var(--box-h); margin-bottom: var(--s4); }
+/* A button beside a box is as tall as the box, a small one too ("Rename" beside an episode's title sat 5 pixels off). */
+:is(.inline-form) > .btn { min-height: var(--box-h); }
+/* A field's hint sits under its box, as the stylesheet's own note on hints always said ("a helper line under a
+   control"); the Field component had put it between the label and the box, so in a row of fields a longer hint pushed
+   its box down. It is still written before the box and read out with it; only where it is shown changed. Beside a
+   button it stays above, so the box is the last thing in its field and level with the button; and above a list of
+   results (the place picker), where under the list is too far from the box. */
+.field-std { display: flex; flex-direction: column; }
+.field-std > .error { order: 1; margin-top: var(--s1); }
+.field-std > .hint { order: 2; margin: var(--s1) 0 0; }
+:is(.inline-form) .field-std > .hint, .row-wrap > .field-std > .hint, .field-std.hint-lead > .hint { order: 0; margin: 0 0 var(--s1); }
+/* A field with a button under it that opens ideas for it (ScriptViews.tsx IdeaField). */
+.idea-field { display: flex; flex-direction: column; margin-bottom: var(--s4); min-width: 0; }
+.idea-field > .field { margin-bottom: 0; }
+/* A cell that takes the whole row of a form grid, and what it holds kept to a readable width. */
+.cell-wide { grid-column: 1 / -1; }
+.place-cell { max-width: 36rem; margin-bottom: var(--s4); }
+fieldset > legend { margin-bottom: var(--s2); }
+.grid.form { row-gap: 0; }
+/* Each row of a form is five lines its cells share: label, box, error, the button that opens ideas for it, and hint.
+   The button comes before the hint so that it sits against its box and level with its neighbours'. The first four
+   are exactly as tall as what is in them: a maximum of 0, which the content floors, keeps a taller neighbour's height
+   out of them, so anything a cell has beyond its lines goes to the fifth. A cell that is not a field takes all five.
+   A sixth line is the space under the row: a cell's own bottom margin was not counted by WebKit when the cell's last
+   lines were empty, and the rows closed up on an iPhone. */
+@supports (grid-template-rows: subgrid) {
+  .grid.form, .field-row { row-gap: 0; grid-auto-rows: minmax(min-content, 0px) minmax(min-content, 0px) minmax(min-content, 0px) minmax(min-content, 0px) auto var(--s4); }
+  .grid.form > *, .field-row > * { grid-row: span 6; }
+  /* A field's own bottom margin gives way to the sixth line; a cell that is not a field keeps one, lying over it. */
+  :is(.grid.form, .field-row) > :is(.field-std, .idea-field) { margin-bottom: 0; }
+  :is(.grid.form, .field-row) > :not(.field-std, .idea-field) { margin-bottom: var(--s4); }
+  :is(.grid.form, .field-row) > :is(.field-std, .idea-field) { display: grid; grid-template-rows: subgrid; grid-template-columns: minmax(0, 1fr); }
+  :is(.grid.form, .field-row) > .idea-field > .field-std { display: contents; }
+  :is(.grid.form, .field-row) > .field-std > label, :is(.grid.form, .field-row) > .idea-field > .field-std > label { grid-row: 1; align-self: end; }
+  :is(.grid.form, .field-row) > .field-std > .field-box, :is(.grid.form, .field-row) > .idea-field > .field-std > .field-box { grid-row: 2; min-width: 0; }
+  /* With no button of its own, a hint starts where its neighbours' buttons do, right under its box. */
+  :is(.grid.form, .field-row) > .field-std > .hint { grid-row: 4 / 6; align-self: start; }
+  :is(.grid.form, .field-row) > .idea-field > .field-std > .hint { grid-row: 5; }
+  :is(.grid.form, .field-row) > .field-std > .error, :is(.grid.form, .field-row) > .idea-field > .field-std > .error { grid-row: 3; }
+  :is(.grid.form, .field-row) > .idea-field > .ideas-row { grid-row: 4; }
+}
+
+/* A page's own picture, with what is known about it beside or under it. */
+.picture-row { align-items: flex-start; margin-bottom: var(--s3); }
+
+/* A casting director's searches for a part: under the part's row, above its readings. */
+.casting-search > * + * { margin-top: var(--s2); }
+

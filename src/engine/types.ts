@@ -3,7 +3,7 @@
 
 import type { Place } from '../data/places';
 
-export const SAVE_VERSION = 9;
+export const SAVE_VERSION = 10;
 
 export type PronounSet = 'he' | 'she' | 'they';
 export type ActingTitle = 'Actor' | 'Actress';
@@ -1376,6 +1376,8 @@ export interface GameState {
   places: Record<string, Place>;
   /** Your own account and your family's terms (personal.ts). Absent in saves from before November 12, 2026: no money of your own. */
   money?: import('./personal').PersonalMoney;
+  /** Every account's transactions (cash/journal.ts), from save version 10. */
+  journal?: import('./cash/journal').Journal;
   /** The player's own production company (company.ts). Absent until they form one, and in saves from before November 13, 2026. */
   company?: import('./company').Company;
   /** First-look deals offered, running and past (first-look.ts). Absent until the first offer, and in saves from before November 13, 2026. */

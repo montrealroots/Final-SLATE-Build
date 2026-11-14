@@ -3,7 +3,7 @@
 // only way money moves between your account and a project: put some in, or take home what a delivered project kept.
 import { useState } from 'react';
 import { money } from '../engine/budget';
-import { PERSONAL_LABELS, SUPPORT_LABELS, loanStanding, personalBalance, personalStatement, putInOwnMoney, putInRefusal, takeHome, takeHomeAvailable } from '../engine/personal';
+import { PERSONAL_LABELS, personalPostings, SUPPORT_LABELS, loanStanding, personalBalance, personalStatement, putInOwnMoney, putInRefusal, takeHome, takeHomeAvailable } from '../engine/personal';
 import type { Project } from '../engine/types';
 import { NumberField, TextField } from './components';
 import { COMPANY_LABELS, FORMATION_FEE, companyBalance, companyInRefusal, companyIntoProject, companyStatement, formCompany, formRefusal, moveCompanyMoney, takeToCompany } from '../engine/company';
@@ -13,7 +13,7 @@ export function YourMoneyCard() {
   const g = useGame();
   const f = g.money?.family;
   const loan = loanStanding(g);
-  const shareBack = f?.support === 'investment' ? -(g.money?.postings ?? []).filter((x) => x.kind === 'participation').reduce((a, x) => a + x.amount, 0) : 0;
+  const shareBack = f?.support === 'investment' ? -personalPostings(g).filter((x) => x.kind === 'participation').reduce((a, x) => a + x.amount, 0) : 0;
   return (
     <section className="card" aria-labelledby="yourmoney-h">
       <h2 id="yourmoney-h">Your Money</h2>

@@ -5,7 +5,7 @@
 // seed is pinned (labelled fixtures); nothing is written into the save.
 import { expect, test, type Page } from './test';
 import { CATALOG_FIXTURE, serveCatalog } from './catalog-fixture';
-import { addScene, advance, castRoles, nav, pinSeed, quickLife, readSavedState, runToDelivery, saveAndApprove, section, staffEveryDepartment, writePitch } from './helpers';
+import { addScene, advance, castRoles, nav, pinSeed, quickLife, personalPostingsOf, readSavedState, runToDelivery, saveAndApprove, section, staffEveryDepartment, writePitch } from './helpers';
 
 test.use({ actionTimeout: 20_000 });
 
@@ -76,7 +76,7 @@ test('a first-look deal: offered after delivered work, read in full, bargained, 
   await expect(terms).toContainText(`${NIGHT} pays $3,500 a month toward your overhead, into your company's account if you have one, or your own.`);
   await expect(terms).toContainText(`${NIGHT} has 60 days to answer each one.`);
   await expect(offer).toContainText('Nothing binds you until you accept.');
-  const before = (await readSavedState(page)).money.postings.length;
+  const before = personalPostingsOf(await readSavedState(page)).length;
   await offer.getByRole('button', { name: 'Ask For $5,250 A Month' }).click();
   await expect(offer).toContainText('You asked for more overhead. It answers by');
   await expect(offer.getByRole('button', { name: 'Accept The First-Look Deal' })).toBeDisabled();
@@ -88,7 +88,7 @@ test('a first-look deal: offered after delivered work, read in full, bargained, 
   const running = fl.getByRole('region', { name: 'Your First-Look Deal' });
   await expect(running).toContainText(`${NIGHT}: $`);
   await expect(running).toContainText('$50,000 of development money left.');
-  await expect.poll(async () => (await readSavedState(page)).money.postings.slice(before).filter((x: { kind: string }) => x.kind === 'overhead').length, { timeout: 30_000 }).toBe(1);
+  await expect.poll(async () => personalPostingsOf(await readSavedState(page)).slice(before).filter((x: { kind: string }) => x.kind === 'overhead').length, { timeout: 30_000 }).toBe(1);
   await expect(card(page, 'Your Money')).toContainText('Overhead From A First-Look Deal');
 
   // The next film, a family one: the studio first. Another studio waits; development money goes in.

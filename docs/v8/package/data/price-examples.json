@@ -1,0 +1,77 @@
+[
+  {
+    "id": "chase-business-monthly",
+    "provider": "Chase",
+    "product": "Business Complete Checking",
+    "market": "US",
+    "currency": "USD",
+    "amountMinor": 1500,
+    "period": "statement_month",
+    "source": "B01",
+    "validFrom": null,
+    "observed": "2026-11-13",
+    "coverage": "partial",
+    "waiverExample": {
+      "minimumDailyBalanceMinor": 200000
+    },
+    "fullWaiverRulesRequired": true
+  },
+  {
+    "id": "wise-us-details",
+    "provider": "Wise",
+    "product": "Business account details",
+    "market": "US",
+    "currency": "USD",
+    "amountMinor": 3100,
+    "period": "once",
+    "source": "B02",
+    "validFrom": null,
+    "observed": "2026-11-13",
+    "coverage": "partial"
+  },
+  {
+    "id": "wise-us-wire-receipt",
+    "provider": "Wise",
+    "market": "US",
+    "currency": "USD",
+    "amountMinor": 611,
+    "period": "per_wire_or_swift_receipt",
+    "source": "B02",
+    "validFrom": null,
+    "observed": "2026-11-13",
+    "coverage": "partial"
+  },
+  {
+    "id": "uk-creative-application",
+    "provider": "UK Home Office",
+    "currency": "GBP",
+    "amountMinor": 34000,
+    "period": "application",
+    "source": "V02",
+    "validFrom": "2026-10-08",
+    "observed": "2026-11-13",
+    "coverage": "application_fee_only"
+  },
+  {
+    "id": "canada-work-application",
+    "provider": "IRCC",
+    "currency": "CAD",
+    "amountMinor": 15500,
+    "period": "application",
+    "source": "V03",
+    "validFrom": null,
+    "observed": "2026-11-13",
+    "coverage": "general_fee_only"
+  },
+  {
+    "id": "canada-biometrics",
+    "provider": "IRCC",
+    "currency": "CAD",
+    "amountMinor": 8500,
+    "period": "application_if_required",
+    "source": "V03",
+    "validFrom": null,
+    "observed": "2026-11-13",
+    "coverage": "individual_conditional_fee_only"
+  }
+]

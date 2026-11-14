@@ -26,6 +26,7 @@
 import { closeSettled, money, reserve, settle } from './budget';
 import { deals, projectFamilies, trackRecord } from './finance';
 import { postPersonal } from './personal';
+import { postCompany } from './company';
 import { FILM_FORMATS, TV_FORMATS } from './blueprints';
 import { ANIMATION_HOUSE, FAMILY_AS_RECORDED, fitWeight, strategyOf, type StudioStrategy } from './strategy';
 import { addLog, cancelEvents, newId, registerHandler, schedule } from './state';
@@ -296,7 +297,7 @@ export function endFirstLook(state: GameState, id: string): void {
 function payOverhead(state: GameState, fl: FirstLook, month: number): void {
   const label = `Overhead From ${fl.name}, Month ${month}`;
   const key = `first-look:${fl.id}:${month}`;
-  if (state.company) state.company.postings.push({ id: newId(state, 'cp'), at: state.now, kind: 'overhead', amount: fl.terms.overhead, label, key });
+  if (state.company) postCompany(state, 'overhead', fl.terms.overhead, label, key);
   else postPersonal(state, 'overhead', fl.terms.overhead, label, key);
   if (month < fl.terms.months) schedule(state, state.now + MONTH, 'first-look-overhead', { id: fl.id, month: month + 1 }, { attention: 'silent', priority: 60, id: `fl-oh:${fl.id}:${month + 1}` });
 }

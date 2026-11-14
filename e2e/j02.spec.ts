@@ -6,7 +6,7 @@
 // released, the loan repaid month by month from the player's own account, and nothing from the project reaching that
 // account unless the player takes it home. The world seed is pinned (a labelled fixture).
 import { expect, test, type Page } from './test';
-import { addScene, advance, castRoles, nav, newProject, openStart, pickPlace, pinSeed, quickDraft, readSavedState, runToDelivery, saveAndApprove, section, staffEveryDepartment } from './helpers';
+import { addScene, advance, castRoles, nav, newProject, openStart, pickPlace, pinSeed, quickDraft, personalPostingsOf, readSavedState, runToDelivery, saveAndApprove, section, staffEveryDepartment } from './helpers';
 
 test.use({ actionTimeout: 20_000 });
 
@@ -171,7 +171,7 @@ test('J02: a family loan, a feature on a rented kit, a harbour filmed abroad wit
   // is still owed. Nothing from the project reaches that account unless the player takes it home.
   for (let i = 0; i < 6; i++) await advance(page, 'month');
   const end = await readSavedState(page);
-  const repaid = end.money.postings.filter((x: { kind: string }) => x.kind === 'repayment');
+  const repaid = personalPostingsOf(end).filter((x: { kind: string }) => x.kind === 'repayment');
   expect(repaid.length).toBeGreaterThan(0);
   // By the end of month k, never more than k months' repayments (personal.ts family-repayment): what is short one
   // month is due with the next, and is said.
@@ -184,7 +184,7 @@ test('J02: a family loan, a feature on a rented kit, a harbour filmed abroad wit
   const lastMonth = Math.max(...repaid.map((x: { key: string }) => Number(x.key.split(':')[1])));
   if (paid < Math.min(6000, monthly * lastMonth)) expect(end.log.some((l: { text: string }) => l.text.startsWith("You couldn't repay your family all that was due this month"))).toBe(true);
   expect(months * monthly).toBeGreaterThanOrEqual(6000);
-  expect(end.money.postings.filter((x: { kind: string }) => x.kind === 'from-project')).toEqual([]);
+  expect(personalPostingsOf(end).filter((x: { kind: string }) => x.kind === 'from-project')).toEqual([]);
   await nav(page, 'Profile');
   await expect(mine).toContainText(`$${paid.toLocaleString('en-US')} repaid, $${(6000 - paid).toLocaleString('en-US')} still owed at $${monthly.toLocaleString('en-US')} a month.`);
 });

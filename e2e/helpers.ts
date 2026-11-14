@@ -201,6 +201,16 @@ export async function staffEveryDepartment(page: Page): Promise<number> {
 }
 
 /** The saved game as stored on disk; assertions run in the test, not in the page. */
+/**
+ * Your account's postings from a saved state, in whole dollars, oldest first: the journal's lines on your cash account
+ * (src/engine/cash/journal.ts; from November 14, 2026, when they stopped being a list of their own).
+ */
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export function personalPostingsOf(saved: any): { kind: string; amount: number; key: string; label: string }[] {
+  const out: { kind: string; amount: number; key: string; label: string }[] = [];
+  for (const t of saved?.journal?.txs ?? []) if (t.status === 'settled' || t.status === 'reversed') for (const l of t.lines) if (l.account === 'player:cash:USD') out.push({ kind: l.kind, amount: l.minor / 100, key: t.key, label: l.label ?? t.memo });
+  return out;
+}
 export async function readSavedState(page: Page): Promise<any> { // eslint-disable-line @typescript-eslint/no-explicit-any
   const id = await firstSaveId(page).catch(() => null);
   if (!id) return null;

@@ -1,7 +1,7 @@
 // Your own money and your family's support (engine/personal.ts; the v4 package, 02; ledger V4-016 and V4-017).
 import { describe, expect, it } from 'vitest';
 import { DAY, processUntil } from './engine-api';
-import { CIRCUMSTANCES, LOAN_MONTHS, SAVINGS_MOST, familyTerms, loanStanding, openingPreview, personalBalance, personalStatement, putInOwnMoney, putInRefusal, takeHome, takeHomeAvailable } from '../src/engine/personal';
+import { CIRCUMSTANCES, LOAN_MONTHS, SAVINGS_MOST, familyTerms, loanStanding, openingPreview, personalBalance, personalStatement, personalPostings, postPersonal, putInOwnMoney, putInRefusal, takeHome, takeHomeAvailable } from '../src/engine/personal';
 import { financeSummary, setFinanceTarget } from '../src/engine/finance';
 import { ledgerTotals } from '../src/engine/budget';
 import { deserialize, serialize } from '../src/engine/save';
@@ -85,7 +85,7 @@ describe('your account', () => {
     expect(takeHomeAvailable(p).earnings).toBe(can.earnings - 8_000);
     expect(() => takeHome(s, p, 'earnings', can.earnings)).toThrow(/^At most \$[\d,]+ can come home/);
     // The family's share stops at what the terms say: 1.5 times what they put in.
-    const back = s.money!.postings.filter((x) => x.kind === 'participation').reduce((a, x) => a - x.amount, 0);
+    const back = personalPostings(s).filter((x) => x.kind === 'participation').reduce((a, x) => a - x.amount, 0);
     expect(back).toBeLessThanOrEqual(6_000);
   });
 
@@ -102,7 +102,7 @@ describe('your account', () => {
     putInOwnMoney(s, p, 4_000);
     p.delivered = { at: s.now, runtimeMin: 12 }; // labelled fixtures: delivered, with income kept
     p.revenue = 40_000;
-    const theirs = () => -s.money!.postings.filter((x) => x.kind === 'participation').reduce((a, x) => a + x.amount, 0);
+    const theirs = () => -personalPostings(s).filter((x) => x.kind === 'participation').reduce((a, x) => a + x.amount, 0);
     takeHome(s, p, 'earnings', Math.min(30_000, takeHomeAvailable(p).earnings));
     expect(theirs()).toBe(6_000); // 25% would be 7,500: the cap is 1.5 times the 4,000
     const capital = takeHomeAvailable(p).capital;
@@ -113,7 +113,7 @@ describe('your account', () => {
     putInOwnMoney(t, q, 4_000);
     q.delivered = { at: t.now, runtimeMin: 12 };
     takeHome(t, q, 'capital', takeHomeAvailable(q).capital);
-    expect(t.money!.postings.some((x) => x.kind === 'participation')).toBe(false);
+    expect(personalPostings(t).some((x) => x.kind === 'participation')).toBe(false);
   });
 
   it('a month missed is due with the next, and a repeated month repays nothing twice', () => {
@@ -122,7 +122,7 @@ describe('your account', () => {
     putInOwnMoney(s, p, 2_400); // nothing left for month one
     processUntil(s, s.now + 31 * DAY, 'tick', 100000);
     expect(loanStanding(s)).toEqual({ repaid: 0, owed: 2_400 });
-    s.money!.postings.push({ id: 'pp-fixture', at: s.now, kind: 'gift', amount: 1_000, label: 'Fixture', key: 'fixture' }); // labelled fixture: money arrives
+    postPersonal(s, 'gift', 1_000, 'Fixture', 'fixture'); // labelled fixture: money arrives
     processUntil(s, s.now + 30 * DAY, 'tick', 100000);
     expect(loanStanding(s)!.repaid).toBe(200); // months one and two
     // The same month's event delivered twice (labelled fixture) repays it once.
@@ -134,7 +134,7 @@ describe('your account', () => {
 
   it('a story from before your own money existed opens with an empty account and no new money', () => {
     const s = life({}, 'old');
-    delete s.money; // labelled fixture: a save made before November 12, 2026
+    delete s.money; delete s.journal; // labelled fixture: a save made before November 12, 2026
     const back = deserialize(serialize(s));
     expect(back.money).toBeUndefined();
     expect(personalBalance(back)).toBe(0);
