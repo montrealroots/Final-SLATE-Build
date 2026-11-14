@@ -50,20 +50,23 @@ jobs:
           test "$locked" = "1.63.0" || { echo "package.json locks Playwright $locked; update the container image tag in ci.yml to match."; exit 1; }
 
   journeys:
-    name: journeys (${{ matrix.build }}, ${{ matrix.profile }})
+    name: journeys (${{ matrix.build }}, ${{ matrix.profile }}, ${{ matrix.shard }}/2)
     runs-on: ubuntu-latest
     container:
       image: mcr.microsoft.com/playwright:v1.63.0-noble
       options: --ipc=host
     # The whole browser suite, split by build (the dev server; the production build served by server/serve.mjs, which
     # playwright.config.ts builds when SLATE_E2E_PROD is 1) and by profile (playwright.config.ts projects). Each run is
-    # one worker. The slowest, desktop, took about 24 minutes locally on November 12, 2026.
+    # one worker. The slowest, desktop, took about 24 minutes locally on November 12, 2026. On November 14, 2026 the dev
+    # server's desktop run passed its 60 minutes with 191 journeys done and none failed, so each run is now split in two
+    # halves (Playwright's --shard) that run side by side.
     timeout-minutes: 75
     strategy:
       fail-fast: false
       matrix:
         build: [dev, production]
         profile: [desktop, phone, webkit]
+        shard: [1, 2]
         include:
           - profile: desktop
             projects: --project=desktop
@@ -83,11 +86,11 @@ jobs:
         env:
           HOME: /root
           SLATE_E2E_PROD: ${{ matrix.build == 'production' && '1' || '' }}
-        run: npm run e2e -- ${{ matrix.projects }} --trace retain-on-failure
+        run: npm run e2e -- ${{ matrix.projects }} --shard=${{ matrix.shard }}/2 --trace retain-on-failure
       - name: Upload failure artifacts
         if: failure()
         uses: actions/upload-artifact@v4
         with:
-          name: playwright-results-${{ matrix.build }}-${{ matrix.profile }}
+          name: playwright-results-${{ matrix.build }}-${{ matrix.profile }}-${{ matrix.shard }}
           path: test-results/
           retention-days: 14
