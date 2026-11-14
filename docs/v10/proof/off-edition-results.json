@@ -49,9 +49,9 @@
   "quality.editing": 60.678,
   "quality.music": 59.844,
   "standing.writing": 50,
-  "standing.directing": 56.367,
+  "standing.directing": 56.5,
   "standing.acting": 50,
-  "standing.producing": 54.033,
+  "standing.producing": 60.633,
   "interestIn": 0,
   "interestOut": 0,
   "bankFees": 0,
@@ -60,9 +60,12 @@
   "rewards": 0,
   "entries": 41.9,
   "selected": 5.333,
+  "won": 0.033,
+  "decided": 31.667,
   "editionsOpen": 136.433,
   "firstLookOffers": 0,
   "opportunities": 0.5,
+  "openOpportunities": 0,
   "openOffers": 0,
   "productionResults": 5.8,
   "fired": 109
@@ -108,9 +111,9 @@
   "quality.editing": 60.678,
   "quality.music": 59.844,
   "standing.writing": 50,
-  "standing.directing": 56.467,
+  "standing.directing": 57.067,
   "standing.acting": 50,
-  "standing.producing": 54,
+  "standing.producing": 60.6,
   "interestIn": 0,
   "interestOut": 0,
   "bankFees": 0,
@@ -119,9 +122,12 @@
   "rewards": 0,
   "entries": 34.533,
   "selected": 5.633,
+  "won": 0,
+  "decided": 24.367,
   "editionsOpen": 136.433,
   "firstLookOffers": 0,
   "opportunities": 0.367,
+  "openOpportunities": 0,
   "openOffers": 0,
   "productionResults": 5.233,
   "fired": 109
@@ -408,10 +414,10 @@
    "n": 30
   },
   "standing.directing": {
-   "mean": 0.1,
-   "lo": -0.05,
-   "hi": 0.25,
-   "changed": 5,
+   "mean": 0.567,
+   "lo": -0.019,
+   "hi": 1.152,
+   "changed": 11,
    "n": 30
   },
   "standing.acting": {
@@ -423,9 +429,9 @@
   },
   "standing.producing": {
    "mean": -0.033,
-   "lo": -0.764,
-   "hi": 0.697,
-   "changed": 21,
+   "lo": -0.518,
+   "hi": 0.452,
+   "changed": 20,
    "n": 30
   },
   "interestIn": {
@@ -484,6 +490,20 @@
    "changed": 16,
    "n": 30
   },
+  "won": {
+   "mean": -0.033,
+   "lo": -0.101,
+   "hi": 0.035,
+   "changed": 1,
+   "n": 30
+  },
+  "decided": {
+   "mean": -7.3,
+   "lo": -8.929,
+   "hi": -5.671,
+   "changed": 30,
+   "n": 30
+  },
   "editionsOpen": {
    "mean": 0,
    "lo": 0,
@@ -503,6 +523,13 @@
    "lo": -0.323,
    "hi": 0.056,
    "changed": 8,
+   "n": 30
+  },
+  "openOpportunities": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
    "n": 30
   },
   "openOffers": {
@@ -529,23 +556,23 @@
  },
  "bites": [
   {
-   "metric": "selected",
+   "metric": "won",
    "ok": false
   }
  ],
  "downstream": [
   {
-   "metric": "opportunities",
+   "metric": "standing.producing",
    "ok": false
   },
   {
-   "metric": "money",
+   "metric": "opportunities",
    "ok": false
   }
  ],
  "verdict": "does not bite",
  "hashes": {
   "src/engine/awards.ts": "28e4ea9a8ba8ebbc",
-  "tests/proof/career.ts": "6e652367d4da531d"
+  "tests/proof/career.ts": "2d4877367212a0ea"
  }
 }

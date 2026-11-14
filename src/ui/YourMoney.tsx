@@ -4,6 +4,7 @@
 import { useState } from 'react';
 import { money } from '../engine/budget';
 import { PERSONAL_LABELS, personalPostings, SUPPORT_LABELS, loanStanding, personalBalance, personalStatement, putInOwnMoney, putInRefusal, takeHome, takeHomeAvailable } from '../engine/personal';
+import { bankHeldNote } from '../engine/bank';
 import type { Project } from '../engine/types';
 import { formatMoney } from '../engine/cash/money';
 import { formatDateKey } from '../engine/time';
@@ -23,7 +24,7 @@ export function YourMoneyCard() {
         <p className="muted">This story began before your own money was part of the game, so your account is empty. Money you take home from a delivered project comes here.</p>
       ) : (
         <>
-          <p><strong>{money(personalBalance(g))}</strong> in your own account.</p>
+          <p><strong>{money(personalBalance(g))}</strong> in your own account.{bankHeldNote(g)}</p>
           <ul className="list" aria-label="Your Account, By What It Is">
             {personalStatement(g).map((x) => <li key={x.kind} className="list-item"><span className="grow">{PERSONAL_LABELS[x.kind]}</span><span>{money(x.total)}</span></li>)}
           </ul>
@@ -49,7 +50,7 @@ export function OwnAccountCard({ p }: { p: Project }) {
   return (
     <section className="card" aria-labelledby="ownacc-h">
       <h2 id="ownacc-h">Your Own Account</h2>
-      <p className="muted">{money(have)} in your own account.</p>
+      <p className="muted">{money(have)} in your own account.{bankHeldNote(g)}</p>
       {!p.delivered ? (
         <>
           <div className="inline-form">

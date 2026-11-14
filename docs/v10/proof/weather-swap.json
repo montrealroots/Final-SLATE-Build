@@ -1,0 +1,438 @@
+{
+ "id": "weather-swap",
+ "features": [
+  "action:production/shoot.swapWithInteriorDay"
+ ],
+ "decision": "When rain is forecast for an exterior day, film an interior day instead",
+ "reads": [
+  "src/engine/production/shoot.ts#swapWithInteriorDay"
+ ],
+ "seeds": 60,
+ "base": {
+  "delivered": 2,
+  "released": 2,
+  "reception": 59.667,
+  "overall": 58.992,
+  "gross": 89646.667,
+  "revenue": 134946.5,
+  "distributed": 1.767,
+  "money": 25077093.593,
+  "moneyChange": 77093.593,
+  "jobsTaken": 0.967,
+  "jobsOffered": 0.967,
+  "jobPay": 3946.467,
+  "offeredDayRate": 422.25,
+  "ownIn": 80583.333,
+  "backerIn": 0,
+  "backerDeals": 0,
+  "leftInProjects": 0,
+  "jobsDone": 0.917,
+  "jobsWithdrawn": 0,
+  "jobsDeclined": 0,
+  "ratesAgreed": 0,
+  "logLines": 121.717,
+  "hired": 16,
+  "castRates": 3221.167,
+  "releaseDelay": 99.608,
+  "licenceDeals": 0,
+  "licenceFee": 0,
+  "offersDeclined": 0.483,
+  "countersSeen": 0,
+  "countersDeclined": 0.05,
+  "spent": 70581,
+  "shootDays": 8.033,
+  "lostDays": 2.033,
+  "daysToDeliver": 34.317,
+  "quality.script": 48.5,
+  "quality.direction": 64.025,
+  "quality.craft": 59.783,
+  "quality.editing": 60.483,
+  "quality.music": 59.642,
+  "standing.writing": 50,
+  "standing.directing": 54.783,
+  "standing.acting": 50,
+  "standing.producing": 53.25,
+  "fired": 0
+ },
+ "variant": {
+  "delivered": 2,
+  "released": 2,
+  "reception": 59.667,
+  "overall": 58.992,
+  "gross": 89646.667,
+  "revenue": 134946.5,
+  "distributed": 1.767,
+  "money": 25077093.593,
+  "moneyChange": 77093.593,
+  "jobsTaken": 0.967,
+  "jobsOffered": 0.967,
+  "jobPay": 3946.467,
+  "offeredDayRate": 422.25,
+  "ownIn": 80583.333,
+  "backerIn": 0,
+  "backerDeals": 0,
+  "leftInProjects": 0,
+  "jobsDone": 0.917,
+  "jobsWithdrawn": 0,
+  "jobsDeclined": 0,
+  "ratesAgreed": 0,
+  "logLines": 121.717,
+  "hired": 16,
+  "castRates": 3221.167,
+  "releaseDelay": 99.608,
+  "licenceDeals": 0,
+  "licenceFee": 0,
+  "offersDeclined": 0.483,
+  "countersSeen": 0,
+  "countersDeclined": 0.05,
+  "spent": 70581,
+  "shootDays": 8.033,
+  "lostDays": 2.033,
+  "daysToDeliver": 34.317,
+  "quality.script": 48.5,
+  "quality.direction": 64.025,
+  "quality.craft": 59.783,
+  "quality.editing": 60.483,
+  "quality.music": 59.642,
+  "standing.writing": 50,
+  "standing.directing": 54.783,
+  "standing.acting": 50,
+  "standing.producing": 53.25,
+  "fired": 0
+ },
+ "diff": {
+  "delivered": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 60
+  },
+  "released": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 60
+  },
+  "reception": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 60
+  },
+  "overall": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 60
+  },
+  "gross": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 60
+  },
+  "revenue": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 60
+  },
+  "distributed": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 60
+  },
+  "money": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 60
+  },
+  "moneyChange": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 60
+  },
+  "jobsTaken": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 60
+  },
+  "jobsOffered": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 60
+  },
+  "jobPay": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 60
+  },
+  "offeredDayRate": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 60
+  },
+  "ownIn": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 60
+  },
+  "backerIn": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 60
+  },
+  "backerDeals": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 60
+  },
+  "leftInProjects": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 60
+  },
+  "jobsDone": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 60
+  },
+  "jobsWithdrawn": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 60
+  },
+  "jobsDeclined": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 60
+  },
+  "ratesAgreed": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 60
+  },
+  "logLines": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 60
+  },
+  "hired": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 60
+  },
+  "castRates": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 60
+  },
+  "releaseDelay": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 60
+  },
+  "licenceDeals": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 60
+  },
+  "licenceFee": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 60
+  },
+  "offersDeclined": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 60
+  },
+  "countersSeen": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 60
+  },
+  "countersDeclined": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 60
+  },
+  "spent": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 60
+  },
+  "shootDays": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 60
+  },
+  "lostDays": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 60
+  },
+  "daysToDeliver": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 60
+  },
+  "quality.script": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 60
+  },
+  "quality.direction": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 60
+  },
+  "quality.craft": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 60
+  },
+  "quality.editing": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 60
+  },
+  "quality.music": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 60
+  },
+  "standing.writing": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 60
+  },
+  "standing.directing": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 60
+  },
+  "standing.acting": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 60
+  },
+  "standing.producing": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 60
+  },
+  "fired": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 60
+  }
+ },
+ "bites": [
+  {
+   "metric": "lostDays",
+   "ok": false
+  }
+ ],
+ "downstream": [
+  {
+   "metric": "daysToDeliver",
+   "ok": false
+  },
+  {
+   "metric": "spent",
+   "ok": false
+  },
+  {
+   "metric": "money",
+   "ok": false
+  }
+ ],
+ "verdict": "does not bite",
+ "hashes": {
+  "src/engine/production/shoot.ts": "13afd29aa280e427",
+  "tests/proof/career.ts": "2d4877367212a0ea"
+ }
+}

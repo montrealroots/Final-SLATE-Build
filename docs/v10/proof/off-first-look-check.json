@@ -60,9 +60,12 @@
   "rewards": 0,
   "entries": 0,
   "selected": 0,
+  "won": 0,
+  "decided": 0,
   "editionsOpen": 99.433,
   "firstLookOffers": 0,
   "opportunities": 0.3,
+  "openOpportunities": 0,
   "openOffers": 0,
   "productionResults": 3.6,
   "fired": 2
@@ -119,9 +122,12 @@
   "rewards": 0,
   "entries": 0,
   "selected": 0,
+  "won": 0,
+  "decided": 0,
   "editionsOpen": 99.433,
   "firstLookOffers": 0,
   "opportunities": 0.3,
+  "openOpportunities": 0,
   "openOffers": 0,
   "productionResults": 3.6,
   "fired": 2
@@ -484,6 +490,20 @@
    "changed": 0,
    "n": 30
   },
+  "won": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 30
+  },
+  "decided": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 30
+  },
   "editionsOpen": {
    "mean": 0,
    "lo": 0,
@@ -499,6 +519,13 @@
    "n": 30
   },
   "opportunities": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 30
+  },
+  "openOpportunities": {
    "mean": 0,
    "lo": 0,
    "hi": 0,
@@ -542,6 +569,6 @@
  "verdict": "does not bite",
  "hashes": {
   "src/engine/first-look.ts": "60b6dfb03138f023",
-  "tests/proof/career.ts": "6e652367d4da531d"
+  "tests/proof/career.ts": "2d4877367212a0ea"
  }
 }

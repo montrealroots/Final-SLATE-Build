@@ -2,7 +2,7 @@
 // results are the game's, labelled; these tests are about what persists and what follows from what.
 import { describe, expect, it } from 'vitest';
 import { KILL_FEE_DAYS, SLATE_SIZE, industryStanding, productionById, slateHere } from '../src/engine/productions';
-import { personalBalance } from '../src/engine/personal';
+import { personalPostings } from '../src/engine/personal';
 import { stream } from '../src/engine/rng';
 import { acceptJob, acceptRefusal, askBetterRate, evidenceFor, reliability, rolesOffered, type OutsideJob } from '../src/engine/jobs';
 import { deserialize, serialize } from '../src/engine/save';
@@ -10,6 +10,9 @@ import { processUntil, schedule } from '../src/engine/state';
 import { DAY, addDaysToKey } from '../src/engine/time';
 import type { GameState } from '../src/engine/types';
 import { approve, buildProject, startLife } from './helpers';
+
+/** What SLATE has posted to the bank, in dollars at each day's rate: a balance held in pounds moves with the rate, and this doesn't. */
+const posted = (x: GameState) => Math.round(personalPostings(x).reduce((a, p) => a + p.amount, 0) * 100) / 100;
 
 function offered(s: GameState, via?: string): OutsideJob {
   for (let i = 0; i < 60 && !(s.jobs ?? []).some((j) => j.status === 'offered'); i++) {
@@ -106,10 +109,10 @@ describe('confirmed, put back or cancelled', () => {
 
   it('cancelled, the work taken on it is released and paid its kill fee, with nothing against the player', () => {
     const { s, p, j } = withJob('prod-cancel', (r) => r < 0.05);
-    const before = personalBalance(s);
+    const before = posted(s);
     processUntil(s, Date.parse(`${p.shootsFrom}T00:00:00Z`) - DAY, 'tick', 100_000);
     expect([p.cancelled, j.status]).toEqual([true, 'cancelled']);
-    expect(personalBalance(s) - before).toBe(400 * KILL_FEE_DAYS);
+    expect(posted(s) - before).toBe(400 * KILL_FEE_DAYS);
     expect(s.events.some((e) => e.kind === 'job-day' && e.payload.jobId === j.id)).toBe(false);
     expect(reliability(s)).toBe(1);
     expect(slateHere(s, s.locationId, 'Europe/London').some((x) => x.id === p.id)).toBe(false); // the slate moves on

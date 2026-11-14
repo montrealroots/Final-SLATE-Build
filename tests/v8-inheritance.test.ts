@@ -7,6 +7,7 @@ import { deserialize, serialize } from '../src/engine/save';
 import { DEFAULT_INHERITANCE_MINOR, characterAge, emptyDraft, newGame, normalizeDraft, validateDraft } from '../src/engine/state';
 import { reputation, standings } from '../src/engine/reputation';
 import { born19, draft } from './fixtures';
+import { bankHeld } from '../src/engine/bank';
 
 const fresh = (over = {}, tag = 'v8-start') => newGame({ ...draft(), ...over }, 0, `save-${tag}`);
 
@@ -25,9 +26,12 @@ describe('A01: a new life starts at 19 with one inheritance', () => {
     const s = fresh({}, 'v8-year');
     const back = deserialize(serialize(s));
     expect(personalPostings(back)).toHaveLength(1);
+    const held = bankHeld(back);
     processUntil(back, back.now + 400 * DAY, 'advance', 1_000_000);
     expect(personalPostings(back).filter((p) => p.kind === 'inheritance')).toHaveLength(1);
-    expect(personalBalance(back)).toBe(25_000_000);
+    expect(personalPostings(back)[0].amount).toBe(25_000_000);
+    // The bank holds what it held: in its own money (pounds here), which in dollars moves with the rate.
+    expect(bankHeld(back)).toBe(held);
   });
 
   it('is a default, not a fixed amount: changed before the start, refused past the cap or below nothing', () => {

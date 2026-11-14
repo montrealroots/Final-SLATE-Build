@@ -481,6 +481,6 @@
  "hashes": {
   "src/engine/bankworld/systems/lending.ts": "4d70426b81705b20",
   "src/engine/bankworld/core/ledger.ts": "1defec12c13ca934",
-  "tests/proof/career.ts": "6e652367d4da531d"
+  "tests/proof/career.ts": "2d4877367212a0ea"
  }
 }

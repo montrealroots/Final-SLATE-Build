@@ -17,7 +17,7 @@
 // kept untouched by save.ts, as for every upgrade.
 import type { GameState } from '../types';
 import { available, held, journalOf, posted, type Journal } from './journal';
-import { startBank } from '../bank';
+import { REPORTING_CURRENCY, startBank } from '../bank';
 import { bankSim } from '../bankworld';
 import { capitalOutstanding } from '../company';
 
@@ -61,7 +61,8 @@ export function openBankFromJournal(s: GameState): void {
   if (s.bank || s.reconciliation) return;
   const j: Journal = journalOf(s);
   const rec: Reconciliation = { at: s.now, from: 10, to: 11, brought: [], notBrought: [], checks: [] };
-  startBank(s);
+  // In dollars, as the journal it brings over was: a save's money keeps the currency it was kept in.
+  startBank(s, undefined, REPORTING_CURRENCY);
   const bank = s.bank!;
   const primary = bank.people[bank.playerId]!.primaryAccountId!;
   const startBalance = bank.accounts[primary]!.balance;

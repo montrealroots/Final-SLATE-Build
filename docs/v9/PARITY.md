@@ -108,8 +108,10 @@ The 61 skipped cases, by reason:
    - 1221's starting wealth levels and starting card don't apply. SLATE's inheritance is paid once into the current
      account, as one posting from "Your Family's Estate".
    - The bank's town is the 1221 town nearest the SLATE place where the player lives (`cityForPlace`).
-   - The reporting currency is the dollar, named (`engine/bank.ts` `REPORTING_CURRENCY`). An account at a bank
-     elsewhere keeps its own currency's figure (`held`).
+   - The reporting currency is the dollar, named (`engine/bank.ts` `REPORTING_CURRENCY`). Until November 14, 2026 the
+     bank was kept in it too; from then a new life's bank keeps the currency of the country it starts in, as 1221's
+     did, and SLATE's dollars meet it at the day's rate (`bankCurrencyFor`). An account at a bank elsewhere keeps its
+     own currency's figure (`held`).
 5. **Excluded by the owner.**
    - Yale-only assumptions: the F-1 visa at the start, the account kept at home from before Yale, and the school's
      money.

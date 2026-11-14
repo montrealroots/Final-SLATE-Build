@@ -429,6 +429,6 @@
  "verdict": "proven",
  "hashes": {
   "src/engine/looks.ts": "854505d66f87c43b",
-  "tests/proof/career.ts": "6e652367d4da531d"
+  "tests/proof/career.ts": "2d4877367212a0ea"
  }
 }

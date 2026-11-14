@@ -60,9 +60,12 @@
   "rewards": 0,
   "entries": 0,
   "selected": 0,
+  "won": 0,
+  "decided": 0,
   "editionsOpen": 99.5,
   "firstLookOffers": 0,
   "opportunities": 0.333,
+  "openOpportunities": 0,
   "openOffers": 0,
   "productionResults": 3.733,
   "fired": 1
@@ -119,9 +122,12 @@
   "rewards": 0,
   "entries": 0,
   "selected": 0,
+  "won": 0,
+  "decided": 0,
   "editionsOpen": 99.5,
   "firstLookOffers": 0,
   "opportunities": 0.367,
+  "openOpportunities": 0,
   "openOffers": 0,
   "productionResults": 3.767,
   "fired": 1
@@ -484,6 +490,20 @@
    "changed": 0,
    "n": 30
   },
+  "won": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 30
+  },
+  "decided": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 30
+  },
   "editionsOpen": {
    "mean": 0,
    "lo": 0,
@@ -503,6 +523,13 @@
    "lo": -0.035,
    "hi": 0.101,
    "changed": 1,
+   "n": 30
+  },
+  "openOpportunities": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
    "n": 30
   },
   "openOffers": {
@@ -529,8 +556,8 @@
  },
  "bites": [
   {
-   "metric": "backerDeals",
-   "ok": false
+   "metric": "backerIn",
+   "ok": true
   },
   {
    "metric": "ownIn",
@@ -543,9 +570,9 @@
    "ok": true
   }
  ],
- "verdict": "does not bite",
+ "verdict": "proven",
  "hashes": {
   "src/engine/finance.ts": "fd404d23ee7bef1b",
-  "tests/proof/career.ts": "6e652367d4da531d"
+  "tests/proof/career.ts": "2d4877367212a0ea"
  }
 }

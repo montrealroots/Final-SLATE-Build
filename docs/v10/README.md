@@ -40,6 +40,10 @@ Run the proofs with `npm run proof` (`PROBES=id,id` for some, `SEEDS=n` to chang
 - **Cash and credit cards have no use.** 1221's everyday spending (food, the day's purchases) is what cash and cards pay
   for, and SLATE left it out, so a card is never used and cash withdrawn is never spent. Open: the matrix shows both as
   "no downstream effect".
+- **Every bank kept dollars,** so a life in Paris banked at BNP Paribas in dollars. Fixed: a new life's bank keeps
+  the money of the country it starts in, and SLATE's dollars meet it at the day's rate (`bank.ts`,
+  `tests/v10-bank-currency.test.ts`). A family repayment read cents it couldn't post (SLATE posts whole dollars), so it
+  takes whole dollars.
 - **The harness's own faults**, found and fixed before any result was kept: the backer kind was misnamed; a run-once flag
   was shared across seeds; the test helper's fixture money was taken out of played careers.
 

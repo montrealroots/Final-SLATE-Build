@@ -428,7 +428,7 @@
  ],
  "verdict": "does not bite",
  "hashes": {
-  "src/engine/estimate.ts": "a8c6a3d9d98d968b",
-  "tests/proof/career.ts": "6e652367d4da531d"
+  "src/engine/estimate.ts": "7aa1dbfca7b27ce7",
+  "tests/proof/career.ts": "2d4877367212a0ea"
  }
 }

@@ -467,6 +467,6 @@
  "hashes": {
   "src/engine/papers.ts": "f884b882851afb48",
   "src/engine/production/shoot.ts": "13afd29aa280e427",
-  "tests/proof/career.ts": "6e652367d4da531d"
+  "tests/proof/career.ts": "2d4877367212a0ea"
  }
 }
