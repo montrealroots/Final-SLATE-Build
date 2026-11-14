@@ -19,7 +19,10 @@ async function open(page: Page, label: string, day?: string): Promise<void> {
   }
   await expect(page.getByRole('heading', { name: label, level: 1 })).toBeVisible();
 }
-const recorded = (page: Page) => page.getByRole('region', { name: 'Recorded Results' });
+// From November 14, 2026 (the owner's v8 decision 7) the recorded results are this save's history, each under its
+// category; the card that listed them apart now says where they come from.
+const recorded = (page: Page) => page.getByRole('region', { name: 'Where The Record Comes From' });
+const cats = (page: Page) => page.locator('section', { has: page.locator('#categories-h') });
 async function weeksTo(page: Page, day: string): Promise<void> {
   for (let i = 0; i < 12; i++) {
     const s = await readSavedState(page);
@@ -36,31 +39,29 @@ test('J01: recorded award results appear only once announced, the nominees befor
   // January 1: neither ceremony has happened, and nothing of either is shown.
   await open(page, '83rd Golden Globe Awards');
   await expect(recorded(page)).toContainText('No results for the 83rd Golden Globe Awards have been announced yet.');
-  await expect(recorded(page)).not.toContainText('Hamnet');
+  await expect(cats(page)).not.toContainText('Hamnet');
   await open(page, '98th Academy Awards');
   await expect(recorded(page)).toContainText('No results for the 98th Academy Awards have been announced yet.');
 
-  // After January 11: the Golden Globes' winners, with where they come from.
+  // After January 11: the Golden Globes' winners, under their categories, from the record, with where it comes from.
   await weeksTo(page, '2026-01-13');
   await open(page, '83rd Golden Globe Awards', 'January 11, 2026');
-  const globes = recorded(page).getByRole('list', { name: 'Recorded Results' });
-  await expect(globes).toContainText('Best Motion Picture – Drama: Hamnet.');
-  await expect(globes).toContainText('Best Director – Motion Picture: Paul Thomas Anderson, for One Battle After Another.');
-  await expect(recorded(page)).toContainText('Recorded results through January 11, 2026.');
+  await expect(cats(page)).toContainText('Winner: Hamnet.');
+  await expect(cats(page)).toContainText('Winner: Paul Thomas Anderson, for One Battle After Another.');
+  await expect(cats(page)).toContainText('From the record.');
   await expect(recorded(page).getByRole('link', { name: "'One Battle After Another' and 'Hamnet' Take Best Picture Prizes at Golden Globes" })).toBeVisible();
 
   // After January 22, before March 15: the Oscars' Best Picture nominees, and no winner.
   await weeksTo(page, '2026-01-23');
   await open(page, '98th Academy Awards');
-  await expect(recorded(page)).toContainText('Best Picture, the nominees: One Battle after Another, Bugonia, F1, Frankenstein, Hamnet, Marty Supreme, The Secret Agent, Sentimental Value, Sinners, Train Dreams.');
-  await expect(recorded(page)).toContainText('Actor In A Leading Role, the nominees:');
-  await expect(recorded(page)).not.toContainText('Best Picture: '); // a winner reads "Category: Winner"; none yet
+  await expect(cats(page)).toContainText('Nominees: One Battle after Another, Bugonia, F1, Frankenstein, Hamnet');
+  await expect(cats(page)).not.toContainText('Winner: One Battle');
   await page.screenshot({ path: `test-results/v6-history-oscars-nominees-${info.project.name}.png`, fullPage: true });
 
   // Saved and opened again: each result once, and none of it in the save.
   await page.reload();
   await page.getByRole('button', { name: 'Continue', exact: true }).click();
   await open(page, '98th Academy Awards');
-  await expect(recorded(page).getByRole('listitem')).toHaveCount(5); // Best Picture and the four acting categories' nominees, once each
+  expect(((await cats(page).textContent()) ?? '').split('Nominees: One Battle after Another').length - 1).toBe(1);
   expect(JSON.stringify(await readSavedState(page))).not.toContain('Train Dreams');
 });

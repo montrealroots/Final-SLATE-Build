@@ -19,7 +19,6 @@ import { scheduleChangeEffects } from '../engine/release-schedule';
 import { deliverEpisode, episodeDeliveryBlockers, episodeLockBlockers, episodeLocked, lockEpisode, startEpisodeCutPass } from '../engine/episode-delivery';
 import { coverageGaps, lockBlockers, lockPicture, requestPickups, pickupIntegration, cutPassDays, startCutPass, unlockImpact, unlockPicture, restoreToEdit } from '../engine/edit-actions';
 import { rsvpScreening, screeningConflicts, submitEntry, withdrawEntry } from '../engine/awards-actions';
-import { publicResult } from '../engine/awards-results';
 import { enterable, entryEpisodes, festivalListFor } from '../engine/awards';
 import { FORMAT_LABELS } from '../engine/projects';
 import { roleLabel } from '../engine/people';
@@ -33,6 +32,7 @@ import { ReleaseCinemas } from './Cinemas';
 import { store, useGame } from './store';
 import { FollowButton } from './Places';
 import { ReadRules, RecordedResults } from './RecordedResults';
+import { savedResult } from '../engine/awards-history';
 import { editScenes } from '../engine/finish';
 import { animaticRevisionImpact, reviseAnimatic, reviseEffects, rerecordLines } from '../engine/revisions';
 import { forecastFinish } from '../engine/production/forecast';
@@ -815,7 +815,9 @@ export function recipientWords(c: Category): string {
 
 /** What an edition shows for a category: its selection or nominees, and the winners or honoree once known. */
 function ResultLine({ g, ed, c }: { g: GameState; ed: Edition; c: Category }) {
-  const res = publicResult(g, ed, c);
+  // One outcome per category for this save (awards-history.ts, from November 14, 2026): the record's where it has one,
+  // changed only by your own work; this story's own decision elsewhere.
+  const res = savedResult(g, ed, c, dateKey(g.now, getPlace(g.locationId).zone));
   if (!res) return null;
   const festival = institution(ed.institutionId).kind === 'festival' || c.kind === 'section';
   const list = (xs: string[]) => `${xs.slice(0, 8).join(', ')}${xs.length > 8 ? ', and others' : ''}`;
@@ -824,6 +826,7 @@ function ResultLine({ g, ed, c }: { g: GameState; ed: Edition; c: Category }) {
       {res.honoree === 'player' ? 'Honorary: you, for your body of work. ' : res.honoree ? `Given to ${res.honoree}. ` : ''}
       {res.winners.length === 1 ? `Winner: ${res.winners[0]}. ` : res.winners.length > 1 ? `Winners: ${res.winners.join(' and ')}. ` : res.none ? 'No award was given this year. ' : ''}
       {res.field.length > 0 && `${festival ? 'Selected' : 'Nominees'}: ${list(res.field)}.`}
+      {res.from !== 'story' && <span className="small"> {res.from === 'record-changed' ? 'From the record, with your work in it.' : 'From the record.'}</span>}
       {res.about.length > 0 && <details className="small"><summary>About The Other Works</summary><ul>{res.about.map((a) => <li key={a}>{a}.</li>)}</ul></details>}
     </div>
   );
@@ -936,7 +939,7 @@ function CategoryBrowser({ ed, onPrepare }: { ed: Edition; onPrepare: (projectId
   return (
     <section className="card card-wide" aria-labelledby="categories-h">
       <h2 id="categories-h">{word}</h2>
-      {(ed.status === 'announced' || ed.status === 'complete') && <p>Simulated results from {formatDateKey(dateKey(ed.announce, getPlace(inst.placeId).zone))}: the game decides them among the work it follows. They are not the recorded results, which are shown apart where there are any.</p>}
+      {(ed.status === 'announced' || ed.status === 'complete') && <p>Results from {formatDateKey(dateKey(ed.announce, getPlace(inst.placeId).zone))}, as they stand in your story: where the record has a category&apos;s results they stand unless your own work changed them; elsewhere the game decided them among the work it follows.</p>}
       <p className="dim">{all.length} {all.length === 1 ? (inst.kind === 'festival' ? 'section or award' : 'category') : (inst.kind === 'festival' ? 'sections and awards' : 'categories')} this edition. {inst.kind === 'festival' ? 'Sections select work; selection is not a win. Prizes are decided among the films selected for their sections, and honorary awards are chosen by the organizer: neither takes an entry.' : 'Honorary awards are chosen by the organizer and take no entries.'}</p>
       <div className="grid grid-2 form">
         <SelectField label="Project" value={projectId} options={[{ value: '', label: 'Any Project' }, ...delivered.map((x) => ({ value: x.id, label: x.title }))]} onChange={setProjectId} hint={delivered.length ? 'Shows what keeps the project out of each category.' : 'Deliver a project to check it against these.'} />
