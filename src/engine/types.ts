@@ -3,7 +3,7 @@
 
 import type { Place } from '../data/places';
 
-export const SAVE_VERSION = 10;
+export const SAVE_VERSION = 11;
 
 export type PronounSet = 'he' | 'she' | 'they';
 export type ActingTitle = 'Actor' | 'Actress';
@@ -1351,6 +1351,13 @@ export interface Opportunity {
 }
 
 export interface GameState {
+  /**
+   * The bank, which is 1221's (engine/bankworld; from November 14, 2026): a 1221 universe holding the player's accounts,
+   * cards, loans, papers and every posting to them. Its ledger is the one journal of the player's own money.
+   */
+  bank?: import('./bankworld').SaveUniverse;
+  /** How a save from version 10 was brought to the bank (cash/migrate11.ts): what moved, what didn't and why, and the company's inventory. */
+  reconciliation?: import('./cash/migrate11').Reconciliation;
   version: number;
   saveId: string;
   saveName: string;

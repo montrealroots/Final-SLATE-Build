@@ -117,6 +117,26 @@
   ]
  },
  {
+  "id": "bank",
+  "area": "You",
+  "name": "Your Bank",
+  "kind": "screen",
+  "screen": "bank",
+  "walk": [
+   "bank"
+  ]
+ },
+ {
+  "id": "papers",
+  "area": "You",
+  "name": "Your Papers",
+  "kind": "screen",
+  "screen": "papers",
+  "walk": [
+   "papers"
+  ]
+ },
+ {
   "id": "dlg-agent-list",
   "area": "You",
   "name": "Find An Agent",

@@ -5,8 +5,8 @@
     "mocap + world place": {
       "runs": 10,
       "deliveredRate": 1,
-      "medianDays": 63,
-      "meanOverall": 60.7,
+      "medianDays": 64,
+      "meanOverall": 61.3,
       "withdrawals": 0,
       "integrity": {
         "negativeCash": 0,
@@ -16,8 +16,8 @@
     "live action + world place": {
       "runs": 10,
       "deliveredRate": 1,
-      "medianDays": 28,
-      "meanOverall": 61.6,
+      "medianDays": 29,
+      "meanOverall": 59.5,
       "withdrawals": 0,
       "integrity": {
         "negativeCash": 0,
@@ -28,7 +28,7 @@
       "runs": 10,
       "deliveredRate": 1,
       "medianDays": 42,
-      "meanOverall": 53.3,
+      "meanOverall": 53.2,
       "withdrawals": 10,
       "integrity": {
         "negativeCash": 0,

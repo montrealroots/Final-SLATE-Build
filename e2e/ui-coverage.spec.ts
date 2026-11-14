@@ -144,6 +144,9 @@ test('the UI audit: one career, every screen it reaches, measured at each size',
   await page.getByRole('button', { name: 'Open The Shop' }).click();
   await v('shop', 'You', 'The Shop', 'dialog');
   await page.keyboard.press('Escape');
+  // Your Bank and Your Papers, from Home (from November 14, 2026).
+  await nav(page, 'Home'); await page.getByRole('button', { name: 'Open Your Bank' }).click(); await v('bank', 'You', 'Your Bank');
+  await page.getByRole('button', { name: 'Back To Home' }).click(); await page.getByRole('button', { name: 'Open Your Papers' }).click(); await v('papers', 'You', 'Your Papers');
   await nav(page, 'Calendar'); await v('calendar', 'Your Day', 'Calendar');
   const add = page.getByRole('button', { name: 'Add Plan' });
   if (await add.count()) { await add.first().click(); await v('add-plan', 'Your Day', 'Add Plan', 'dialog'); await page.keyboard.press('Escape'); }

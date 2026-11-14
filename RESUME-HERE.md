@@ -6,6 +6,60 @@ Read this first. It lists what is finished, what the Gap Completion Package stil
 
 At every stopping point, open a pull request into `main` and merge it (see `CLAUDE.md`, certified by the user on November 6, 2026). Never merge red checks.
 
+## The Owner's Banking, Papers And Homepage Migration (From November 14, 2026)
+
+The command, word for word, is in the conversation of November 14, 2026; its nine sections are summarised in
+`docs/v9/PARITY.md`, which also pins the sources: 1221 `d6eba5d`, SLATE-REBUILD `88256bf`, and this repository's main at
+`19b566c`. It supersedes earlier instructions about the company and the primary bank.
+
+**Done (first checkpoint).**
+- **1. Sources pinned, parity matrix.** `docs/v9/PARITY.md`.
+- **2. 1221's banking, ported whole.**
+  - The engine is in `src/engine/bankworld/`; `engine/bank.ts` is where SLATE meets it.
+  - The bank's ledger is the one journal of your money: `personal.ts` posts and reads only through it.
+  - The bank keeps SLATE's clock (`state.ts` `onClockMove`), and its notices go into the log.
+  - The screens are in `src/ui/bankworld/`; `BankPage.tsx` is the Your Bank view.
+  - 1221's tests are in `tests/bankworld/`: 317 pass and 61 are skipped, each with its reason. Ten files weren't
+    brought over, also with reasons. Everything is listed in `PARITY.md`.
+- **5. Home (part).**
+  - Your Bank and Your Papers are always on Home (`src/ui/HomeMoney.tsx`).
+  - Your Bank reads available, pending and owed apart, and each currency apart.
+  - Back To Home is on both pages, and both are in the UI inventory and the coverage walk.
+- **6. The company is out of play.**
+  - `company.ts` keeps the banner and an old save's record.
+  - The save goes from version 10 to 11 (`cash/migrate11.ts`). It brings your v8 journal money to the bank once,
+    reconciled to the cent, and inventories the company without adding its money to yours.
+  - A first-look deal signed with a company goes on paying it (`payee`).
+  - Company money in a project isn't yours (`finance.ts` `moneyKept`).
+  - Tests: `tests/v9-company-removed.test.ts`, `tests/v8-money.test.ts` A21.
+- **The v8 bank is retired:** `banking.ts`, `Banking.tsx`, `src/data/banks.json` and their tests are gone.
+- **8. Journeys (two of three):**
+  - `e2e/v9-bank.spec.ts`: Home → Your Bank → savings → move → second bank applied for and decided → statement → Home.
+  - `e2e/v9-project-money.spec.ts`: Home → project → custom budget → own money in → purchase → reconciled statement →
+    Home.
+  - Both pass on desktop and phone (Chromium) and the iPhone 15 Pro Max (WebKit emulation). Neither was run on a
+    physical device.
+
+**Next, in order.**
+1. **Step 3, dated exchange.** Import SLATE-REBUILD's `src/core/money/{money.ts,currencies.json}`,
+   `src/money/rates/{rates.ts,rates.json}`, `research/sources/money/rates/` and `coverage/rates-countries.json`, and
+   recount the series and observations. Replace 1221's fixed table (`bankworld/content/currency.ts` `exchange`) for
+   transfers with a quote: the reference rate effective and published by the game's date, the spread and both fees,
+   persisted on the posting. The quote is then confirmed, reserved, settled and given a receipt. Write the policy for
+   dates past the last observation.
+2. **Step 4, papers.** Import SLATE-REBUILD's passports, visits and work data. Restore an application flow on 1221's
+   `documents.ts` and `papervisits.ts`: eligibility → documents → application → fee → appointment → decision → issued
+   → use → expiry or renewal. Keep entry, stay, work and the production activity apart. Connect papers to the bank
+   (`hasSsn`, `residenceIn`), travel and the shoot (`papers.ts` `workRight`). Your Papers is `src/ui/PapersPage.tsx`,
+   which holds only the v8 permits card so far.
+3. **Step 7, coverage by jurisdiction.** Build it from `src/data/places.ts` countries, with the six classes.
+4. **Step 8.** The papers journey; old-against-new comparison tests.
+5. **Open defects.**
+   - Two ported 1221 cases fail and their cause isn't found yet. Both are in `tests/bankworld/remaining-09-banking.test.ts`,
+     marked UNRESOLVED: "Cancel It" isn't drawn for a second Berlin account in its first days.
+   - The ported bank UI's controls aren't yet in `docs/input-audit/CONTROLS.csv` or the disabled-reasons record: those
+     audits read top-level `src/ui/*.tsx` only.
+
 ## The Owner's v8 Overhaul (From November 14, 2026)
 
 The package is `docs/v8/package`. Its order is `07-IMPLEMENTATION-AND-ACCEPTANCE.md`, and `docs/v8/STATUS.md` says where

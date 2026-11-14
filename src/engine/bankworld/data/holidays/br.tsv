@@ -1,0 +1,1307 @@
+# AC	Acre
+# AL	Alagoas
+# AM	Amazonas
+# AP	Amapá
+# BA	Bahia
+# CE	Ceará
+# DF	Distrito Federal
+# ES	Espírito Santo
+# GO	Goiás
+# MA	Maranhão
+# MG	Minas Gerais
+# MS	Mato Grosso do Sul
+# MT	Mato Grosso
+# PA	Pará
+# PB	Paraíba
+# PE	Pernambuco
+# PI	Piauí
+# PR	Paraná
+# RJ	Rio de Janeiro
+# RN	Rio Grande do Norte
+# RO	Rondônia
+# RR	Roraima
+# RS	Rio Grande do Sul
+# SC	Santa Catarina
+# SE	Sergipe
+# SP	São Paulo
+# TO	Tocantins
+2026-01-01	Ano Novo	New Year's Day	public	
+2026-01-04	Criação do estado	Criação do estado	public	RO
+2026-01-12	Dia do evangélico	Dia do evangélico	public	AC
+2026-02-14	Carnaval	Carnival	optional	
+2026-02-16	Carnaval	Carnival	bank	
+2026-02-17	Carnaval	Carnival	bank	
+2026-02-18	Carnaval	Carnival	optional	
+2026-03-01	Revolução Pernambucana de 1817	Revolução Pernambucana de 1817	public	PE
+2026-03-08	Alusivo ao Dia Internacional da Mulher	Alusivo ao Dia Internacional da Mulher	public	AC
+2026-03-18	Autonomia do Estado	Autonomia do Estado	public	TO
+2026-03-19	Dia de São José	Dia de São José	public	AP
+2026-03-25	Data magna do estado	Data magna do estado	public	CE
+2026-04-03	Sexta-Feira Santa	Good Friday	public	
+2026-04-05	Páscoa	Easter Sunday	observance	
+2026-04-13	Dia de Nossa Senhora da Penha	Dia de Nossa Senhora da Penha	public	ES
+2026-04-21	Dia de Tiradentes	Tiradentes' Day	public	
+2026-04-21	Fundação de Brasília	Fundação de Brasília	public	DF
+2026-04-21	Data magna do estado	Data magna do estado	public	MG
+2026-04-23	Dia de São Jorge	Dia de São Jorge	public	RJ
+2026-05-01	Dia do trabalhador	Labour Day	public	
+2026-05-10	Dia das Mães	Mother's Day	observance	
+2026-06-04	Corpo de Deus	Corpus Christi	bank	
+2026-06-12	Dia dos Namorados	Lovers' Day	observance	
+2026-06-15	Aniversário do estado	Aniversário do estado	public	AC
+2026-06-18	Dia do evangélico	Dia do evangélico	public	RO
+2026-06-24	São João	São João	public	AL
+2026-06-29	São Pedro	São Pedro	public	AL
+2026-07-02	Independência da Bahia	Independência da Bahia	public	BA
+2026-07-08	Emancipação política de Sergipe	Emancipação política de Sergipe	public	SE
+2026-07-09	Revolução Constitucionalista	Revolução Constitucionalista	public	SP
+2026-07-26	Fundação da Cidade de Goiás	Fundação da Cidade de Goiás	public	GO
+2026-07-26	Homenagem à memória do ex-presidente João Pessoa	Homenagem à memória do ex-presidente João Pessoa	public	PB
+2026-07-28	Adesão do Maranhão à independência do Brasil	Adesão do Maranhão à independência do Brasil	public	MA
+2026-08-05	Nossa Senhora das Neves	Nossa Senhora das Neves	public	PB
+2026-08-09	Dia dos Pais	Father's Day	observance	
+2026-08-15	Adesão do Grão-Pará à independência do Brasil	Adesão do Grão-Pará à independência do Brasil	public	PA
+2026-08-16	Dia de Santa Catarina	Dia de Santa Catarina	public	SC
+2026-09-05	Dia da Amazônia	Dia da Amazônia	public	AC
+2026-09-05	Elevação do Amazonas à categoria de província	Elevação do Amazonas à categoria de província	public	AM
+2026-09-07	Dia da Independência	Independence Day	public	
+2026-09-08	Nossa Senhora da Natividade	Nossa Senhora da Natividade	public	TO
+2026-09-13	Criação do Território Federal	Criação do Território Federal	public	AP
+2026-09-16	Emancipação política	Emancipação política	public	AL
+2026-09-20	Proclamação da República Rio-Grandense	Proclamação da República Rio-Grandense	public	RS
+2026-10-03	Mártires de Cunhaú e Uruaçu	Mártires de Cunhaú e Uruaçu	public	RN
+2026-10-04	Dia de Eleição	Election Day	public	
+2026-10-05	Criação do estado	Criação do estado	public	RR
+2026-10-05	Criação do estado	Criação do estado	public	TO
+2026-10-11	Criação do estado	Criação do estado	public	MS
+2026-10-12	Nossa Senhora Aparecida	Our Lady of Aparecida	public	
+2026-10-19	Dia do Piauí	Dia do Piauí	public	PI
+2026-10-20	Dia do Comércio	Dia do Comércio	observance	RJ
+2026-10-24	Lançamento da pedra fundamental de Goiânia	Lançamento da pedra fundamental de Goiânia	public	GO
+2026-10-25	Dia de Eleição	Election Day	public	
+2026-11-02	Dia de Finados	All Souls' Day	public	
+2026-11-15	Proclamação da República	Republic Day	public	
+2026-11-17	Assinatura do Tratado de Petrópolis	Assinatura do Tratado de Petrópolis	optional	AC
+2026-11-20	Dia da Consciência Negra	Black Awareness Day	public	
+2026-11-20	Morte de Zumbi dos Palmares	Morte de Zumbi dos Palmares	public	AL
+2026-11-29	Dia de Santa Catarina de Alexandria	Dia de Santa Catarina de Alexandria	public	SC
+2026-11-30	Dia do Evangélico	Dia do Evangélico	public	DF
+2026-12-19	Emancipação política do estado do Paraná	Emancipação política do estado do Paraná	public	PR
+2026-12-24	Noite de Natal	Christmas Eve	optional	
+2026-12-25	Natal	Christmas Day	public	
+2026-12-31	Véspera de Ano Novo	New Year's Eve	optional	
+2027-01-01	Ano Novo	New Year's Day	public	
+2027-01-04	Criação do estado	Criação do estado	public	RO
+2027-01-12	Dia do evangélico	Dia do evangélico	public	AC
+2027-02-06	Carnaval	Carnival	optional	
+2027-02-08	Carnaval	Carnival	bank	
+2027-02-09	Carnaval	Carnival	bank	
+2027-02-10	Carnaval	Carnival	optional	
+2027-03-07	Revolução Pernambucana de 1817	Revolução Pernambucana de 1817	public	PE
+2027-03-08	Alusivo ao Dia Internacional da Mulher	Alusivo ao Dia Internacional da Mulher	public	AC
+2027-03-18	Autonomia do Estado	Autonomia do Estado	public	TO
+2027-03-19	Dia de São José	Dia de São José	public	AP
+2027-03-25	Data magna do estado	Data magna do estado	public	CE
+2027-03-26	Sexta-Feira Santa	Good Friday	public	
+2027-03-28	Páscoa	Easter Sunday	observance	
+2027-04-05	Dia de Nossa Senhora da Penha	Dia de Nossa Senhora da Penha	public	ES
+2027-04-21	Dia de Tiradentes	Tiradentes' Day	public	
+2027-04-21	Fundação de Brasília	Fundação de Brasília	public	DF
+2027-04-21	Data magna do estado	Data magna do estado	public	MG
+2027-04-23	Dia de São Jorge	Dia de São Jorge	public	RJ
+2027-05-01	Dia do trabalhador	Labour Day	public	
+2027-05-09	Dia das Mães	Mother's Day	observance	
+2027-05-27	Corpo de Deus	Corpus Christi	bank	
+2027-06-12	Dia dos Namorados	Lovers' Day	observance	
+2027-06-15	Aniversário do estado	Aniversário do estado	public	AC
+2027-06-18	Dia do evangélico	Dia do evangélico	public	RO
+2027-06-24	São João	São João	public	AL
+2027-06-29	São Pedro	São Pedro	public	AL
+2027-07-02	Independência da Bahia	Independência da Bahia	public	BA
+2027-07-08	Emancipação política de Sergipe	Emancipação política de Sergipe	public	SE
+2027-07-09	Revolução Constitucionalista	Revolução Constitucionalista	public	SP
+2027-07-26	Fundação da Cidade de Goiás	Fundação da Cidade de Goiás	public	GO
+2027-07-26	Homenagem à memória do ex-presidente João Pessoa	Homenagem à memória do ex-presidente João Pessoa	public	PB
+2027-07-28	Adesão do Maranhão à independência do Brasil	Adesão do Maranhão à independência do Brasil	public	MA
+2027-08-05	Nossa Senhora das Neves	Nossa Senhora das Neves	public	PB
+2027-08-08	Dia dos Pais	Father's Day	observance	
+2027-08-15	Adesão do Grão-Pará à independência do Brasil	Adesão do Grão-Pará à independência do Brasil	public	PA
+2027-08-15	Dia de Santa Catarina	Dia de Santa Catarina	public	SC
+2027-09-05	Dia da Amazônia	Dia da Amazônia	public	AC
+2027-09-05	Elevação do Amazonas à categoria de província	Elevação do Amazonas à categoria de província	public	AM
+2027-09-07	Dia da Independência	Independence Day	public	
+2027-09-08	Nossa Senhora da Natividade	Nossa Senhora da Natividade	public	TO
+2027-09-13	Criação do Território Federal	Criação do Território Federal	public	AP
+2027-09-16	Emancipação política	Emancipação política	public	AL
+2027-09-20	Proclamação da República Rio-Grandense	Proclamação da República Rio-Grandense	public	RS
+2027-10-03	Mártires de Cunhaú e Uruaçu	Mártires de Cunhaú e Uruaçu	public	RN
+2027-10-05	Criação do estado	Criação do estado	public	RR
+2027-10-05	Criação do estado	Criação do estado	public	TO
+2027-10-11	Criação do estado	Criação do estado	public	MS
+2027-10-12	Nossa Senhora Aparecida	Our Lady of Aparecida	public	
+2027-10-19	Dia do Piauí	Dia do Piauí	public	PI
+2027-10-19	Dia do Comércio	Dia do Comércio	observance	RJ
+2027-10-24	Lançamento da pedra fundamental de Goiânia	Lançamento da pedra fundamental de Goiânia	public	GO
+2027-11-02	Dia de Finados	All Souls' Day	public	
+2027-11-15	Proclamação da República	Republic Day	public	
+2027-11-17	Assinatura do Tratado de Petrópolis	Assinatura do Tratado de Petrópolis	optional	AC
+2027-11-20	Dia da Consciência Negra	Black Awareness Day	public	
+2027-11-20	Morte de Zumbi dos Palmares	Morte de Zumbi dos Palmares	public	AL
+2027-11-28	Dia de Santa Catarina de Alexandria	Dia de Santa Catarina de Alexandria	public	SC
+2027-11-30	Dia do Evangélico	Dia do Evangélico	public	DF
+2027-12-19	Emancipação política do estado do Paraná	Emancipação política do estado do Paraná	public	PR
+2027-12-24	Noite de Natal	Christmas Eve	optional	
+2027-12-25	Natal	Christmas Day	public	
+2027-12-31	Véspera de Ano Novo	New Year's Eve	optional	
+2028-01-01	Ano Novo	New Year's Day	public	
+2028-01-04	Criação do estado	Criação do estado	public	RO
+2028-01-12	Dia do evangélico	Dia do evangélico	public	AC
+2028-02-26	Carnaval	Carnival	optional	
+2028-02-28	Carnaval	Carnival	bank	
+2028-02-29	Carnaval	Carnival	bank	
+2028-03-01	Carnaval	Carnival	optional	
+2028-03-05	Revolução Pernambucana de 1817	Revolução Pernambucana de 1817	public	PE
+2028-03-08	Alusivo ao Dia Internacional da Mulher	Alusivo ao Dia Internacional da Mulher	public	AC
+2028-03-18	Autonomia do Estado	Autonomia do Estado	public	TO
+2028-03-19	Dia de São José	Dia de São José	public	AP
+2028-03-25	Data magna do estado	Data magna do estado	public	CE
+2028-04-14	Sexta-Feira Santa	Good Friday	public	
+2028-04-16	Páscoa	Easter Sunday	observance	
+2028-04-21	Dia de Tiradentes	Tiradentes' Day	public	
+2028-04-21	Fundação de Brasília	Fundação de Brasília	public	DF
+2028-04-21	Data magna do estado	Data magna do estado	public	MG
+2028-04-23	Dia de São Jorge	Dia de São Jorge	public	RJ
+2028-04-24	Dia de Nossa Senhora da Penha	Dia de Nossa Senhora da Penha	public	ES
+2028-05-01	Dia do trabalhador	Labour Day	public	
+2028-05-14	Dia das Mães	Mother's Day	observance	
+2028-06-12	Dia dos Namorados	Lovers' Day	observance	
+2028-06-15	Corpo de Deus	Corpus Christi	bank	
+2028-06-15	Aniversário do estado	Aniversário do estado	public	AC
+2028-06-18	Dia do evangélico	Dia do evangélico	public	RO
+2028-06-24	São João	São João	public	AL
+2028-06-29	São Pedro	São Pedro	public	AL
+2028-07-02	Independência da Bahia	Independência da Bahia	public	BA
+2028-07-08	Emancipação política de Sergipe	Emancipação política de Sergipe	public	SE
+2028-07-09	Revolução Constitucionalista	Revolução Constitucionalista	public	SP
+2028-07-26	Fundação da Cidade de Goiás	Fundação da Cidade de Goiás	public	GO
+2028-07-26	Homenagem à memória do ex-presidente João Pessoa	Homenagem à memória do ex-presidente João Pessoa	public	PB
+2028-07-28	Adesão do Maranhão à independência do Brasil	Adesão do Maranhão à independência do Brasil	public	MA
+2028-08-05	Nossa Senhora das Neves	Nossa Senhora das Neves	public	PB
+2028-08-13	Dia dos Pais	Father's Day	observance	
+2028-08-13	Dia de Santa Catarina	Dia de Santa Catarina	public	SC
+2028-08-15	Adesão do Grão-Pará à independência do Brasil	Adesão do Grão-Pará à independência do Brasil	public	PA
+2028-09-05	Dia da Amazônia	Dia da Amazônia	public	AC
+2028-09-05	Elevação do Amazonas à categoria de província	Elevação do Amazonas à categoria de província	public	AM
+2028-09-07	Dia da Independência	Independence Day	public	
+2028-09-08	Nossa Senhora da Natividade	Nossa Senhora da Natividade	public	TO
+2028-09-13	Criação do Território Federal	Criação do Território Federal	public	AP
+2028-09-16	Emancipação política	Emancipação política	public	AL
+2028-09-20	Proclamação da República Rio-Grandense	Proclamação da República Rio-Grandense	public	RS
+2028-10-01	Dia de Eleição	Election Day	public	
+2028-10-03	Mártires de Cunhaú e Uruaçu	Mártires de Cunhaú e Uruaçu	public	RN
+2028-10-05	Criação do estado	Criação do estado	public	RR
+2028-10-05	Criação do estado	Criação do estado	public	TO
+2028-10-11	Criação do estado	Criação do estado	public	MS
+2028-10-12	Nossa Senhora Aparecida	Our Lady of Aparecida	public	
+2028-10-17	Dia do Comércio	Dia do Comércio	observance	RJ
+2028-10-19	Dia do Piauí	Dia do Piauí	public	PI
+2028-10-24	Lançamento da pedra fundamental de Goiânia	Lançamento da pedra fundamental de Goiânia	public	GO
+2028-10-29	Dia de Eleição	Election Day	public	
+2028-11-02	Dia de Finados	All Souls' Day	public	
+2028-11-15	Proclamação da República	Republic Day	public	
+2028-11-17	Assinatura do Tratado de Petrópolis	Assinatura do Tratado de Petrópolis	optional	AC
+2028-11-20	Dia da Consciência Negra	Black Awareness Day	public	
+2028-11-20	Morte de Zumbi dos Palmares	Morte de Zumbi dos Palmares	public	AL
+2028-11-26	Dia de Santa Catarina de Alexandria	Dia de Santa Catarina de Alexandria	public	SC
+2028-11-30	Dia do Evangélico	Dia do Evangélico	public	DF
+2028-12-19	Emancipação política do estado do Paraná	Emancipação política do estado do Paraná	public	PR
+2028-12-24	Noite de Natal	Christmas Eve	optional	
+2028-12-25	Natal	Christmas Day	public	
+2028-12-31	Véspera de Ano Novo	New Year's Eve	optional	
+2029-01-01	Ano Novo	New Year's Day	public	
+2029-01-04	Criação do estado	Criação do estado	public	RO
+2029-01-12	Dia do evangélico	Dia do evangélico	public	AC
+2029-02-10	Carnaval	Carnival	optional	
+2029-02-12	Carnaval	Carnival	bank	
+2029-02-13	Carnaval	Carnival	bank	
+2029-02-14	Carnaval	Carnival	optional	
+2029-03-04	Revolução Pernambucana de 1817	Revolução Pernambucana de 1817	public	PE
+2029-03-08	Alusivo ao Dia Internacional da Mulher	Alusivo ao Dia Internacional da Mulher	public	AC
+2029-03-18	Autonomia do Estado	Autonomia do Estado	public	TO
+2029-03-19	Dia de São José	Dia de São José	public	AP
+2029-03-25	Data magna do estado	Data magna do estado	public	CE
+2029-03-30	Sexta-Feira Santa	Good Friday	public	
+2029-04-01	Páscoa	Easter Sunday	observance	
+2029-04-09	Dia de Nossa Senhora da Penha	Dia de Nossa Senhora da Penha	public	ES
+2029-04-21	Dia de Tiradentes	Tiradentes' Day	public	
+2029-04-21	Fundação de Brasília	Fundação de Brasília	public	DF
+2029-04-21	Data magna do estado	Data magna do estado	public	MG
+2029-04-23	Dia de São Jorge	Dia de São Jorge	public	RJ
+2029-05-01	Dia do trabalhador	Labour Day	public	
+2029-05-13	Dia das Mães	Mother's Day	observance	
+2029-05-31	Corpo de Deus	Corpus Christi	bank	
+2029-06-12	Dia dos Namorados	Lovers' Day	observance	
+2029-06-15	Aniversário do estado	Aniversário do estado	public	AC
+2029-06-18	Dia do evangélico	Dia do evangélico	public	RO
+2029-06-24	São João	São João	public	AL
+2029-06-29	São Pedro	São Pedro	public	AL
+2029-07-02	Independência da Bahia	Independência da Bahia	public	BA
+2029-07-08	Emancipação política de Sergipe	Emancipação política de Sergipe	public	SE
+2029-07-09	Revolução Constitucionalista	Revolução Constitucionalista	public	SP
+2029-07-26	Fundação da Cidade de Goiás	Fundação da Cidade de Goiás	public	GO
+2029-07-26	Homenagem à memória do ex-presidente João Pessoa	Homenagem à memória do ex-presidente João Pessoa	public	PB
+2029-07-28	Adesão do Maranhão à independência do Brasil	Adesão do Maranhão à independência do Brasil	public	MA
+2029-08-05	Nossa Senhora das Neves	Nossa Senhora das Neves	public	PB
+2029-08-12	Dia dos Pais	Father's Day	observance	
+2029-08-12	Dia de Santa Catarina	Dia de Santa Catarina	public	SC
+2029-08-15	Adesão do Grão-Pará à independência do Brasil	Adesão do Grão-Pará à independência do Brasil	public	PA
+2029-09-05	Dia da Amazônia	Dia da Amazônia	public	AC
+2029-09-05	Elevação do Amazonas à categoria de província	Elevação do Amazonas à categoria de província	public	AM
+2029-09-07	Dia da Independência	Independence Day	public	
+2029-09-08	Nossa Senhora da Natividade	Nossa Senhora da Natividade	public	TO
+2029-09-13	Criação do Território Federal	Criação do Território Federal	public	AP
+2029-09-16	Emancipação política	Emancipação política	public	AL
+2029-09-20	Proclamação da República Rio-Grandense	Proclamação da República Rio-Grandense	public	RS
+2029-10-03	Mártires de Cunhaú e Uruaçu	Mártires de Cunhaú e Uruaçu	public	RN
+2029-10-05	Criação do estado	Criação do estado	public	RR
+2029-10-05	Criação do estado	Criação do estado	public	TO
+2029-10-11	Criação do estado	Criação do estado	public	MS
+2029-10-12	Nossa Senhora Aparecida	Our Lady of Aparecida	public	
+2029-10-16	Dia do Comércio	Dia do Comércio	observance	RJ
+2029-10-19	Dia do Piauí	Dia do Piauí	public	PI
+2029-10-24	Lançamento da pedra fundamental de Goiânia	Lançamento da pedra fundamental de Goiânia	public	GO
+2029-11-02	Dia de Finados	All Souls' Day	public	
+2029-11-15	Proclamação da República	Republic Day	public	
+2029-11-17	Assinatura do Tratado de Petrópolis	Assinatura do Tratado de Petrópolis	optional	AC
+2029-11-20	Dia da Consciência Negra	Black Awareness Day	public	
+2029-11-20	Morte de Zumbi dos Palmares	Morte de Zumbi dos Palmares	public	AL
+2029-11-25	Dia de Santa Catarina de Alexandria	Dia de Santa Catarina de Alexandria	public	SC
+2029-11-30	Dia do Evangélico	Dia do Evangélico	public	DF
+2029-12-19	Emancipação política do estado do Paraná	Emancipação política do estado do Paraná	public	PR
+2029-12-24	Noite de Natal	Christmas Eve	optional	
+2029-12-25	Natal	Christmas Day	public	
+2029-12-31	Véspera de Ano Novo	New Year's Eve	optional	
+2030-01-01	Ano Novo	New Year's Day	public	
+2030-01-04	Criação do estado	Criação do estado	public	RO
+2030-01-12	Dia do evangélico	Dia do evangélico	public	AC
+2030-03-02	Carnaval	Carnival	optional	
+2030-03-03	Revolução Pernambucana de 1817	Revolução Pernambucana de 1817	public	PE
+2030-03-04	Carnaval	Carnival	bank	
+2030-03-05	Carnaval	Carnival	bank	
+2030-03-06	Carnaval	Carnival	optional	
+2030-03-08	Alusivo ao Dia Internacional da Mulher	Alusivo ao Dia Internacional da Mulher	public	AC
+2030-03-18	Autonomia do Estado	Autonomia do Estado	public	TO
+2030-03-19	Dia de São José	Dia de São José	public	AP
+2030-03-25	Data magna do estado	Data magna do estado	public	CE
+2030-04-19	Sexta-Feira Santa	Good Friday	public	
+2030-04-21	Dia de Tiradentes	Tiradentes' Day	public	
+2030-04-21	Páscoa	Easter Sunday	observance	
+2030-04-21	Fundação de Brasília	Fundação de Brasília	public	DF
+2030-04-21	Data magna do estado	Data magna do estado	public	MG
+2030-04-23	Dia de São Jorge	Dia de São Jorge	public	RJ
+2030-04-29	Dia de Nossa Senhora da Penha	Dia de Nossa Senhora da Penha	public	ES
+2030-05-01	Dia do trabalhador	Labour Day	public	
+2030-05-12	Dia das Mães	Mother's Day	observance	
+2030-06-12	Dia dos Namorados	Lovers' Day	observance	
+2030-06-15	Aniversário do estado	Aniversário do estado	public	AC
+2030-06-18	Dia do evangélico	Dia do evangélico	public	RO
+2030-06-20	Corpo de Deus	Corpus Christi	bank	
+2030-06-24	São João	São João	public	AL
+2030-06-29	São Pedro	São Pedro	public	AL
+2030-07-02	Independência da Bahia	Independência da Bahia	public	BA
+2030-07-08	Emancipação política de Sergipe	Emancipação política de Sergipe	public	SE
+2030-07-09	Revolução Constitucionalista	Revolução Constitucionalista	public	SP
+2030-07-26	Fundação da Cidade de Goiás	Fundação da Cidade de Goiás	public	GO
+2030-07-26	Homenagem à memória do ex-presidente João Pessoa	Homenagem à memória do ex-presidente João Pessoa	public	PB
+2030-07-28	Adesão do Maranhão à independência do Brasil	Adesão do Maranhão à independência do Brasil	public	MA
+2030-08-05	Nossa Senhora das Neves	Nossa Senhora das Neves	public	PB
+2030-08-11	Dia dos Pais	Father's Day	observance	
+2030-08-11	Dia de Santa Catarina	Dia de Santa Catarina	public	SC
+2030-08-15	Adesão do Grão-Pará à independência do Brasil	Adesão do Grão-Pará à independência do Brasil	public	PA
+2030-09-05	Dia da Amazônia	Dia da Amazônia	public	AC
+2030-09-05	Elevação do Amazonas à categoria de província	Elevação do Amazonas à categoria de província	public	AM
+2030-09-07	Dia da Independência	Independence Day	public	
+2030-09-08	Nossa Senhora da Natividade	Nossa Senhora da Natividade	public	TO
+2030-09-13	Criação do Território Federal	Criação do Território Federal	public	AP
+2030-09-16	Emancipação política	Emancipação política	public	AL
+2030-09-20	Proclamação da República Rio-Grandense	Proclamação da República Rio-Grandense	public	RS
+2030-10-03	Mártires de Cunhaú e Uruaçu	Mártires de Cunhaú e Uruaçu	public	RN
+2030-10-05	Criação do estado	Criação do estado	public	RR
+2030-10-05	Criação do estado	Criação do estado	public	TO
+2030-10-06	Dia de Eleição	Election Day	public	
+2030-10-11	Criação do estado	Criação do estado	public	MS
+2030-10-12	Nossa Senhora Aparecida	Our Lady of Aparecida	public	
+2030-10-15	Dia do Comércio	Dia do Comércio	observance	RJ
+2030-10-19	Dia do Piauí	Dia do Piauí	public	PI
+2030-10-24	Lançamento da pedra fundamental de Goiânia	Lançamento da pedra fundamental de Goiânia	public	GO
+2030-10-27	Dia de Eleição	Election Day	public	
+2030-11-02	Dia de Finados	All Souls' Day	public	
+2030-11-15	Proclamação da República	Republic Day	public	
+2030-11-17	Assinatura do Tratado de Petrópolis	Assinatura do Tratado de Petrópolis	optional	AC
+2030-11-20	Dia da Consciência Negra	Black Awareness Day	public	
+2030-11-20	Morte de Zumbi dos Palmares	Morte de Zumbi dos Palmares	public	AL
+2030-11-30	Dia do Evangélico	Dia do Evangélico	public	DF
+2030-12-01	Dia de Santa Catarina de Alexandria	Dia de Santa Catarina de Alexandria	public	SC
+2030-12-19	Emancipação política do estado do Paraná	Emancipação política do estado do Paraná	public	PR
+2030-12-24	Noite de Natal	Christmas Eve	optional	
+2030-12-25	Natal	Christmas Day	public	
+2030-12-31	Véspera de Ano Novo	New Year's Eve	optional	
+2031-01-01	Ano Novo	New Year's Day	public	
+2031-01-04	Criação do estado	Criação do estado	public	RO
+2031-01-12	Dia do evangélico	Dia do evangélico	public	AC
+2031-02-22	Carnaval	Carnival	optional	
+2031-02-24	Carnaval	Carnival	bank	
+2031-02-25	Carnaval	Carnival	bank	
+2031-02-26	Carnaval	Carnival	optional	
+2031-03-02	Revolução Pernambucana de 1817	Revolução Pernambucana de 1817	public	PE
+2031-03-08	Alusivo ao Dia Internacional da Mulher	Alusivo ao Dia Internacional da Mulher	public	AC
+2031-03-18	Autonomia do Estado	Autonomia do Estado	public	TO
+2031-03-19	Dia de São José	Dia de São José	public	AP
+2031-03-25	Data magna do estado	Data magna do estado	public	CE
+2031-04-11	Sexta-Feira Santa	Good Friday	public	
+2031-04-13	Páscoa	Easter Sunday	observance	
+2031-04-21	Dia de Tiradentes	Tiradentes' Day	public	
+2031-04-21	Fundação de Brasília	Fundação de Brasília	public	DF
+2031-04-21	Dia de Nossa Senhora da Penha	Dia de Nossa Senhora da Penha	public	ES
+2031-04-21	Data magna do estado	Data magna do estado	public	MG
+2031-04-23	Dia de São Jorge	Dia de São Jorge	public	RJ
+2031-05-01	Dia do trabalhador	Labour Day	public	
+2031-05-11	Dia das Mães	Mother's Day	observance	
+2031-06-12	Corpo de Deus	Corpus Christi	bank	
+2031-06-12	Dia dos Namorados	Lovers' Day	observance	
+2031-06-15	Aniversário do estado	Aniversário do estado	public	AC
+2031-06-18	Dia do evangélico	Dia do evangélico	public	RO
+2031-06-24	São João	São João	public	AL
+2031-06-29	São Pedro	São Pedro	public	AL
+2031-07-02	Independência da Bahia	Independência da Bahia	public	BA
+2031-07-08	Emancipação política de Sergipe	Emancipação política de Sergipe	public	SE
+2031-07-09	Revolução Constitucionalista	Revolução Constitucionalista	public	SP
+2031-07-26	Fundação da Cidade de Goiás	Fundação da Cidade de Goiás	public	GO
+2031-07-26	Homenagem à memória do ex-presidente João Pessoa	Homenagem à memória do ex-presidente João Pessoa	public	PB
+2031-07-28	Adesão do Maranhão à independência do Brasil	Adesão do Maranhão à independência do Brasil	public	MA
+2031-08-05	Nossa Senhora das Neves	Nossa Senhora das Neves	public	PB
+2031-08-10	Dia dos Pais	Father's Day	observance	
+2031-08-15	Adesão do Grão-Pará à independência do Brasil	Adesão do Grão-Pará à independência do Brasil	public	PA
+2031-08-17	Dia de Santa Catarina	Dia de Santa Catarina	public	SC
+2031-09-05	Dia da Amazônia	Dia da Amazônia	public	AC
+2031-09-05	Elevação do Amazonas à categoria de província	Elevação do Amazonas à categoria de província	public	AM
+2031-09-07	Dia da Independência	Independence Day	public	
+2031-09-08	Nossa Senhora da Natividade	Nossa Senhora da Natividade	public	TO
+2031-09-13	Criação do Território Federal	Criação do Território Federal	public	AP
+2031-09-16	Emancipação política	Emancipação política	public	AL
+2031-09-20	Proclamação da República Rio-Grandense	Proclamação da República Rio-Grandense	public	RS
+2031-10-03	Mártires de Cunhaú e Uruaçu	Mártires de Cunhaú e Uruaçu	public	RN
+2031-10-05	Criação do estado	Criação do estado	public	RR
+2031-10-05	Criação do estado	Criação do estado	public	TO
+2031-10-11	Criação do estado	Criação do estado	public	MS
+2031-10-12	Nossa Senhora Aparecida	Our Lady of Aparecida	public	
+2031-10-19	Dia do Piauí	Dia do Piauí	public	PI
+2031-10-21	Dia do Comércio	Dia do Comércio	observance	RJ
+2031-10-24	Lançamento da pedra fundamental de Goiânia	Lançamento da pedra fundamental de Goiânia	public	GO
+2031-11-02	Dia de Finados	All Souls' Day	public	
+2031-11-15	Proclamação da República	Republic Day	public	
+2031-11-17	Assinatura do Tratado de Petrópolis	Assinatura do Tratado de Petrópolis	optional	AC
+2031-11-20	Dia da Consciência Negra	Black Awareness Day	public	
+2031-11-20	Morte de Zumbi dos Palmares	Morte de Zumbi dos Palmares	public	AL
+2031-11-30	Dia do Evangélico	Dia do Evangélico	public	DF
+2031-11-30	Dia de Santa Catarina de Alexandria	Dia de Santa Catarina de Alexandria	public	SC
+2031-12-19	Emancipação política do estado do Paraná	Emancipação política do estado do Paraná	public	PR
+2031-12-24	Noite de Natal	Christmas Eve	optional	
+2031-12-25	Natal	Christmas Day	public	
+2031-12-31	Véspera de Ano Novo	New Year's Eve	optional	
+2032-01-01	Ano Novo	New Year's Day	public	
+2032-01-04	Criação do estado	Criação do estado	public	RO
+2032-01-12	Dia do evangélico	Dia do evangélico	public	AC
+2032-02-07	Carnaval	Carnival	optional	
+2032-02-09	Carnaval	Carnival	bank	
+2032-02-10	Carnaval	Carnival	bank	
+2032-02-11	Carnaval	Carnival	optional	
+2032-03-07	Revolução Pernambucana de 1817	Revolução Pernambucana de 1817	public	PE
+2032-03-08	Alusivo ao Dia Internacional da Mulher	Alusivo ao Dia Internacional da Mulher	public	AC
+2032-03-18	Autonomia do Estado	Autonomia do Estado	public	TO
+2032-03-19	Dia de São José	Dia de São José	public	AP
+2032-03-25	Data magna do estado	Data magna do estado	public	CE
+2032-03-26	Sexta-Feira Santa	Good Friday	public	
+2032-03-28	Páscoa	Easter Sunday	observance	
+2032-04-05	Dia de Nossa Senhora da Penha	Dia de Nossa Senhora da Penha	public	ES
+2032-04-21	Dia de Tiradentes	Tiradentes' Day	public	
+2032-04-21	Fundação de Brasília	Fundação de Brasília	public	DF
+2032-04-21	Data magna do estado	Data magna do estado	public	MG
+2032-04-23	Dia de São Jorge	Dia de São Jorge	public	RJ
+2032-05-01	Dia do trabalhador	Labour Day	public	
+2032-05-09	Dia das Mães	Mother's Day	observance	
+2032-05-27	Corpo de Deus	Corpus Christi	bank	
+2032-06-12	Dia dos Namorados	Lovers' Day	observance	
+2032-06-15	Aniversário do estado	Aniversário do estado	public	AC
+2032-06-18	Dia do evangélico	Dia do evangélico	public	RO
+2032-06-24	São João	São João	public	AL
+2032-06-29	São Pedro	São Pedro	public	AL
+2032-07-02	Independência da Bahia	Independência da Bahia	public	BA
+2032-07-08	Emancipação política de Sergipe	Emancipação política de Sergipe	public	SE
+2032-07-09	Revolução Constitucionalista	Revolução Constitucionalista	public	SP
+2032-07-26	Fundação da Cidade de Goiás	Fundação da Cidade de Goiás	public	GO
+2032-07-26	Homenagem à memória do ex-presidente João Pessoa	Homenagem à memória do ex-presidente João Pessoa	public	PB
+2032-07-28	Adesão do Maranhão à independência do Brasil	Adesão do Maranhão à independência do Brasil	public	MA
+2032-08-05	Nossa Senhora das Neves	Nossa Senhora das Neves	public	PB
+2032-08-08	Dia dos Pais	Father's Day	observance	
+2032-08-15	Adesão do Grão-Pará à independência do Brasil	Adesão do Grão-Pará à independência do Brasil	public	PA
+2032-08-15	Dia de Santa Catarina	Dia de Santa Catarina	public	SC
+2032-09-05	Dia da Amazônia	Dia da Amazônia	public	AC
+2032-09-05	Elevação do Amazonas à categoria de província	Elevação do Amazonas à categoria de província	public	AM
+2032-09-07	Dia da Independência	Independence Day	public	
+2032-09-08	Nossa Senhora da Natividade	Nossa Senhora da Natividade	public	TO
+2032-09-13	Criação do Território Federal	Criação do Território Federal	public	AP
+2032-09-16	Emancipação política	Emancipação política	public	AL
+2032-09-20	Proclamação da República Rio-Grandense	Proclamação da República Rio-Grandense	public	RS
+2032-10-03	Dia de Eleição	Election Day	public	
+2032-10-03	Mártires de Cunhaú e Uruaçu	Mártires de Cunhaú e Uruaçu	public	RN
+2032-10-05	Criação do estado	Criação do estado	public	RR
+2032-10-05	Criação do estado	Criação do estado	public	TO
+2032-10-11	Criação do estado	Criação do estado	public	MS
+2032-10-12	Nossa Senhora Aparecida	Our Lady of Aparecida	public	
+2032-10-19	Dia do Piauí	Dia do Piauí	public	PI
+2032-10-19	Dia do Comércio	Dia do Comércio	observance	RJ
+2032-10-24	Lançamento da pedra fundamental de Goiânia	Lançamento da pedra fundamental de Goiânia	public	GO
+2032-10-31	Dia de Eleição	Election Day	public	
+2032-11-02	Dia de Finados	All Souls' Day	public	
+2032-11-15	Proclamação da República	Republic Day	public	
+2032-11-17	Assinatura do Tratado de Petrópolis	Assinatura do Tratado de Petrópolis	optional	AC
+2032-11-20	Dia da Consciência Negra	Black Awareness Day	public	
+2032-11-20	Morte de Zumbi dos Palmares	Morte de Zumbi dos Palmares	public	AL
+2032-11-28	Dia de Santa Catarina de Alexandria	Dia de Santa Catarina de Alexandria	public	SC
+2032-11-30	Dia do Evangélico	Dia do Evangélico	public	DF
+2032-12-19	Emancipação política do estado do Paraná	Emancipação política do estado do Paraná	public	PR
+2032-12-24	Noite de Natal	Christmas Eve	optional	
+2032-12-25	Natal	Christmas Day	public	
+2032-12-31	Véspera de Ano Novo	New Year's Eve	optional	
+2033-01-01	Ano Novo	New Year's Day	public	
+2033-01-04	Criação do estado	Criação do estado	public	RO
+2033-01-12	Dia do evangélico	Dia do evangélico	public	AC
+2033-02-26	Carnaval	Carnival	optional	
+2033-02-28	Carnaval	Carnival	bank	
+2033-03-01	Carnaval	Carnival	bank	
+2033-03-02	Carnaval	Carnival	optional	
+2033-03-06	Revolução Pernambucana de 1817	Revolução Pernambucana de 1817	public	PE
+2033-03-08	Alusivo ao Dia Internacional da Mulher	Alusivo ao Dia Internacional da Mulher	public	AC
+2033-03-18	Autonomia do Estado	Autonomia do Estado	public	TO
+2033-03-19	Dia de São José	Dia de São José	public	AP
+2033-03-25	Data magna do estado	Data magna do estado	public	CE
+2033-04-15	Sexta-Feira Santa	Good Friday	public	
+2033-04-17	Páscoa	Easter Sunday	observance	
+2033-04-21	Dia de Tiradentes	Tiradentes' Day	public	
+2033-04-21	Fundação de Brasília	Fundação de Brasília	public	DF
+2033-04-21	Data magna do estado	Data magna do estado	public	MG
+2033-04-23	Dia de São Jorge	Dia de São Jorge	public	RJ
+2033-04-25	Dia de Nossa Senhora da Penha	Dia de Nossa Senhora da Penha	public	ES
+2033-05-01	Dia do trabalhador	Labour Day	public	
+2033-05-08	Dia das Mães	Mother's Day	observance	
+2033-06-12	Dia dos Namorados	Lovers' Day	observance	
+2033-06-15	Aniversário do estado	Aniversário do estado	public	AC
+2033-06-16	Corpo de Deus	Corpus Christi	bank	
+2033-06-18	Dia do evangélico	Dia do evangélico	public	RO
+2033-06-24	São João	São João	public	AL
+2033-06-29	São Pedro	São Pedro	public	AL
+2033-07-02	Independência da Bahia	Independência da Bahia	public	BA
+2033-07-08	Emancipação política de Sergipe	Emancipação política de Sergipe	public	SE
+2033-07-09	Revolução Constitucionalista	Revolução Constitucionalista	public	SP
+2033-07-26	Fundação da Cidade de Goiás	Fundação da Cidade de Goiás	public	GO
+2033-07-26	Homenagem à memória do ex-presidente João Pessoa	Homenagem à memória do ex-presidente João Pessoa	public	PB
+2033-07-28	Adesão do Maranhão à independência do Brasil	Adesão do Maranhão à independência do Brasil	public	MA
+2033-08-05	Nossa Senhora das Neves	Nossa Senhora das Neves	public	PB
+2033-08-14	Dia dos Pais	Father's Day	observance	
+2033-08-14	Dia de Santa Catarina	Dia de Santa Catarina	public	SC
+2033-08-15	Adesão do Grão-Pará à independência do Brasil	Adesão do Grão-Pará à independência do Brasil	public	PA
+2033-09-05	Dia da Amazônia	Dia da Amazônia	public	AC
+2033-09-05	Elevação do Amazonas à categoria de província	Elevação do Amazonas à categoria de província	public	AM
+2033-09-07	Dia da Independência	Independence Day	public	
+2033-09-08	Nossa Senhora da Natividade	Nossa Senhora da Natividade	public	TO
+2033-09-13	Criação do Território Federal	Criação do Território Federal	public	AP
+2033-09-16	Emancipação política	Emancipação política	public	AL
+2033-09-20	Proclamação da República Rio-Grandense	Proclamação da República Rio-Grandense	public	RS
+2033-10-03	Mártires de Cunhaú e Uruaçu	Mártires de Cunhaú e Uruaçu	public	RN
+2033-10-05	Criação do estado	Criação do estado	public	RR
+2033-10-05	Criação do estado	Criação do estado	public	TO
+2033-10-11	Criação do estado	Criação do estado	public	MS
+2033-10-12	Nossa Senhora Aparecida	Our Lady of Aparecida	public	
+2033-10-18	Dia do Comércio	Dia do Comércio	observance	RJ
+2033-10-19	Dia do Piauí	Dia do Piauí	public	PI
+2033-10-24	Lançamento da pedra fundamental de Goiânia	Lançamento da pedra fundamental de Goiânia	public	GO
+2033-11-02	Dia de Finados	All Souls' Day	public	
+2033-11-15	Proclamação da República	Republic Day	public	
+2033-11-17	Assinatura do Tratado de Petrópolis	Assinatura do Tratado de Petrópolis	optional	AC
+2033-11-20	Dia da Consciência Negra	Black Awareness Day	public	
+2033-11-20	Morte de Zumbi dos Palmares	Morte de Zumbi dos Palmares	public	AL
+2033-11-27	Dia de Santa Catarina de Alexandria	Dia de Santa Catarina de Alexandria	public	SC
+2033-11-30	Dia do Evangélico	Dia do Evangélico	public	DF
+2033-12-19	Emancipação política do estado do Paraná	Emancipação política do estado do Paraná	public	PR
+2033-12-24	Noite de Natal	Christmas Eve	optional	
+2033-12-25	Natal	Christmas Day	public	
+2033-12-31	Véspera de Ano Novo	New Year's Eve	optional	
+2034-01-01	Ano Novo	New Year's Day	public	
+2034-01-04	Criação do estado	Criação do estado	public	RO
+2034-01-12	Dia do evangélico	Dia do evangélico	public	AC
+2034-02-18	Carnaval	Carnival	optional	
+2034-02-20	Carnaval	Carnival	bank	
+2034-02-21	Carnaval	Carnival	bank	
+2034-02-22	Carnaval	Carnival	optional	
+2034-03-05	Revolução Pernambucana de 1817	Revolução Pernambucana de 1817	public	PE
+2034-03-08	Alusivo ao Dia Internacional da Mulher	Alusivo ao Dia Internacional da Mulher	public	AC
+2034-03-18	Autonomia do Estado	Autonomia do Estado	public	TO
+2034-03-19	Dia de São José	Dia de São José	public	AP
+2034-03-25	Data magna do estado	Data magna do estado	public	CE
+2034-04-07	Sexta-Feira Santa	Good Friday	public	
+2034-04-09	Páscoa	Easter Sunday	observance	
+2034-04-17	Dia de Nossa Senhora da Penha	Dia de Nossa Senhora da Penha	public	ES
+2034-04-21	Dia de Tiradentes	Tiradentes' Day	public	
+2034-04-21	Fundação de Brasília	Fundação de Brasília	public	DF
+2034-04-21	Data magna do estado	Data magna do estado	public	MG
+2034-04-23	Dia de São Jorge	Dia de São Jorge	public	RJ
+2034-05-01	Dia do trabalhador	Labour Day	public	
+2034-05-14	Dia das Mães	Mother's Day	observance	
+2034-06-08	Corpo de Deus	Corpus Christi	bank	
+2034-06-12	Dia dos Namorados	Lovers' Day	observance	
+2034-06-15	Aniversário do estado	Aniversário do estado	public	AC
+2034-06-18	Dia do evangélico	Dia do evangélico	public	RO
+2034-06-24	São João	São João	public	AL
+2034-06-29	São Pedro	São Pedro	public	AL
+2034-07-02	Independência da Bahia	Independência da Bahia	public	BA
+2034-07-08	Emancipação política de Sergipe	Emancipação política de Sergipe	public	SE
+2034-07-09	Revolução Constitucionalista	Revolução Constitucionalista	public	SP
+2034-07-26	Fundação da Cidade de Goiás	Fundação da Cidade de Goiás	public	GO
+2034-07-26	Homenagem à memória do ex-presidente João Pessoa	Homenagem à memória do ex-presidente João Pessoa	public	PB
+2034-07-28	Adesão do Maranhão à independência do Brasil	Adesão do Maranhão à independência do Brasil	public	MA
+2034-08-05	Nossa Senhora das Neves	Nossa Senhora das Neves	public	PB
+2034-08-13	Dia dos Pais	Father's Day	observance	
+2034-08-13	Dia de Santa Catarina	Dia de Santa Catarina	public	SC
+2034-08-15	Adesão do Grão-Pará à independência do Brasil	Adesão do Grão-Pará à independência do Brasil	public	PA
+2034-09-05	Dia da Amazônia	Dia da Amazônia	public	AC
+2034-09-05	Elevação do Amazonas à categoria de província	Elevação do Amazonas à categoria de província	public	AM
+2034-09-07	Dia da Independência	Independence Day	public	
+2034-09-08	Nossa Senhora da Natividade	Nossa Senhora da Natividade	public	TO
+2034-09-13	Criação do Território Federal	Criação do Território Federal	public	AP
+2034-09-16	Emancipação política	Emancipação política	public	AL
+2034-09-20	Proclamação da República Rio-Grandense	Proclamação da República Rio-Grandense	public	RS
+2034-10-01	Dia de Eleição	Election Day	public	
+2034-10-03	Mártires de Cunhaú e Uruaçu	Mártires de Cunhaú e Uruaçu	public	RN
+2034-10-05	Criação do estado	Criação do estado	public	RR
+2034-10-05	Criação do estado	Criação do estado	public	TO
+2034-10-11	Criação do estado	Criação do estado	public	MS
+2034-10-12	Nossa Senhora Aparecida	Our Lady of Aparecida	public	
+2034-10-17	Dia do Comércio	Dia do Comércio	observance	RJ
+2034-10-19	Dia do Piauí	Dia do Piauí	public	PI
+2034-10-24	Lançamento da pedra fundamental de Goiânia	Lançamento da pedra fundamental de Goiânia	public	GO
+2034-10-29	Dia de Eleição	Election Day	public	
+2034-11-02	Dia de Finados	All Souls' Day	public	
+2034-11-15	Proclamação da República	Republic Day	public	
+2034-11-17	Assinatura do Tratado de Petrópolis	Assinatura do Tratado de Petrópolis	optional	AC
+2034-11-20	Dia da Consciência Negra	Black Awareness Day	public	
+2034-11-20	Morte de Zumbi dos Palmares	Morte de Zumbi dos Palmares	public	AL
+2034-11-26	Dia de Santa Catarina de Alexandria	Dia de Santa Catarina de Alexandria	public	SC
+2034-11-30	Dia do Evangélico	Dia do Evangélico	public	DF
+2034-12-19	Emancipação política do estado do Paraná	Emancipação política do estado do Paraná	public	PR
+2034-12-24	Noite de Natal	Christmas Eve	optional	
+2034-12-25	Natal	Christmas Day	public	
+2034-12-31	Véspera de Ano Novo	New Year's Eve	optional	
+2035-01-01	Ano Novo	New Year's Day	public	
+2035-01-04	Criação do estado	Criação do estado	public	RO
+2035-01-12	Dia do evangélico	Dia do evangélico	public	AC
+2035-02-03	Carnaval	Carnival	optional	
+2035-02-05	Carnaval	Carnival	bank	
+2035-02-06	Carnaval	Carnival	bank	
+2035-02-07	Carnaval	Carnival	optional	
+2035-03-04	Revolução Pernambucana de 1817	Revolução Pernambucana de 1817	public	PE
+2035-03-08	Alusivo ao Dia Internacional da Mulher	Alusivo ao Dia Internacional da Mulher	public	AC
+2035-03-18	Autonomia do Estado	Autonomia do Estado	public	TO
+2035-03-19	Dia de São José	Dia de São José	public	AP
+2035-03-23	Sexta-Feira Santa	Good Friday	public	
+2035-03-25	Páscoa	Easter Sunday	observance	
+2035-03-25	Data magna do estado	Data magna do estado	public	CE
+2035-04-02	Dia de Nossa Senhora da Penha	Dia de Nossa Senhora da Penha	public	ES
+2035-04-21	Dia de Tiradentes	Tiradentes' Day	public	
+2035-04-21	Fundação de Brasília	Fundação de Brasília	public	DF
+2035-04-21	Data magna do estado	Data magna do estado	public	MG
+2035-04-23	Dia de São Jorge	Dia de São Jorge	public	RJ
+2035-05-01	Dia do trabalhador	Labour Day	public	
+2035-05-13	Dia das Mães	Mother's Day	observance	
+2035-05-24	Corpo de Deus	Corpus Christi	bank	
+2035-06-12	Dia dos Namorados	Lovers' Day	observance	
+2035-06-15	Aniversário do estado	Aniversário do estado	public	AC
+2035-06-18	Dia do evangélico	Dia do evangélico	public	RO
+2035-06-24	São João	São João	public	AL
+2035-06-29	São Pedro	São Pedro	public	AL
+2035-07-02	Independência da Bahia	Independência da Bahia	public	BA
+2035-07-08	Emancipação política de Sergipe	Emancipação política de Sergipe	public	SE
+2035-07-09	Revolução Constitucionalista	Revolução Constitucionalista	public	SP
+2035-07-26	Fundação da Cidade de Goiás	Fundação da Cidade de Goiás	public	GO
+2035-07-26	Homenagem à memória do ex-presidente João Pessoa	Homenagem à memória do ex-presidente João Pessoa	public	PB
+2035-07-28	Adesão do Maranhão à independência do Brasil	Adesão do Maranhão à independência do Brasil	public	MA
+2035-08-05	Nossa Senhora das Neves	Nossa Senhora das Neves	public	PB
+2035-08-12	Dia dos Pais	Father's Day	observance	
+2035-08-12	Dia de Santa Catarina	Dia de Santa Catarina	public	SC
+2035-08-15	Adesão do Grão-Pará à independência do Brasil	Adesão do Grão-Pará à independência do Brasil	public	PA
+2035-09-05	Dia da Amazônia	Dia da Amazônia	public	AC
+2035-09-05	Elevação do Amazonas à categoria de província	Elevação do Amazonas à categoria de província	public	AM
+2035-09-07	Dia da Independência	Independence Day	public	
+2035-09-08	Nossa Senhora da Natividade	Nossa Senhora da Natividade	public	TO
+2035-09-13	Criação do Território Federal	Criação do Território Federal	public	AP
+2035-09-16	Emancipação política	Emancipação política	public	AL
+2035-09-20	Proclamação da República Rio-Grandense	Proclamação da República Rio-Grandense	public	RS
+2035-10-03	Mártires de Cunhaú e Uruaçu	Mártires de Cunhaú e Uruaçu	public	RN
+2035-10-05	Criação do estado	Criação do estado	public	RR
+2035-10-05	Criação do estado	Criação do estado	public	TO
+2035-10-11	Criação do estado	Criação do estado	public	MS
+2035-10-12	Nossa Senhora Aparecida	Our Lady of Aparecida	public	
+2035-10-16	Dia do Comércio	Dia do Comércio	observance	RJ
+2035-10-19	Dia do Piauí	Dia do Piauí	public	PI
+2035-10-24	Lançamento da pedra fundamental de Goiânia	Lançamento da pedra fundamental de Goiânia	public	GO
+2035-11-02	Dia de Finados	All Souls' Day	public	
+2035-11-15	Proclamação da República	Republic Day	public	
+2035-11-17	Assinatura do Tratado de Petrópolis	Assinatura do Tratado de Petrópolis	optional	AC
+2035-11-20	Dia da Consciência Negra	Black Awareness Day	public	
+2035-11-20	Morte de Zumbi dos Palmares	Morte de Zumbi dos Palmares	public	AL
+2035-11-25	Dia de Santa Catarina de Alexandria	Dia de Santa Catarina de Alexandria	public	SC
+2035-11-30	Dia do Evangélico	Dia do Evangélico	public	DF
+2035-12-19	Emancipação política do estado do Paraná	Emancipação política do estado do Paraná	public	PR
+2035-12-24	Noite de Natal	Christmas Eve	optional	
+2035-12-25	Natal	Christmas Day	public	
+2035-12-31	Véspera de Ano Novo	New Year's Eve	optional	
+2036-01-01	Ano Novo	New Year's Day	public	
+2036-01-04	Criação do estado	Criação do estado	public	RO
+2036-01-12	Dia do evangélico	Dia do evangélico	public	AC
+2036-02-23	Carnaval	Carnival	optional	
+2036-02-25	Carnaval	Carnival	bank	
+2036-02-26	Carnaval	Carnival	bank	
+2036-02-27	Carnaval	Carnival	optional	
+2036-03-02	Revolução Pernambucana de 1817	Revolução Pernambucana de 1817	public	PE
+2036-03-08	Alusivo ao Dia Internacional da Mulher	Alusivo ao Dia Internacional da Mulher	public	AC
+2036-03-18	Autonomia do Estado	Autonomia do Estado	public	TO
+2036-03-19	Dia de São José	Dia de São José	public	AP
+2036-03-25	Data magna do estado	Data magna do estado	public	CE
+2036-04-11	Sexta-Feira Santa	Good Friday	public	
+2036-04-13	Páscoa	Easter Sunday	observance	
+2036-04-21	Dia de Tiradentes	Tiradentes' Day	public	
+2036-04-21	Fundação de Brasília	Fundação de Brasília	public	DF
+2036-04-21	Dia de Nossa Senhora da Penha	Dia de Nossa Senhora da Penha	public	ES
+2036-04-21	Data magna do estado	Data magna do estado	public	MG
+2036-04-23	Dia de São Jorge	Dia de São Jorge	public	RJ
+2036-05-01	Dia do trabalhador	Labour Day	public	
+2036-05-11	Dia das Mães	Mother's Day	observance	
+2036-06-12	Corpo de Deus	Corpus Christi	bank	
+2036-06-12	Dia dos Namorados	Lovers' Day	observance	
+2036-06-15	Aniversário do estado	Aniversário do estado	public	AC
+2036-06-18	Dia do evangélico	Dia do evangélico	public	RO
+2036-06-24	São João	São João	public	AL
+2036-06-29	São Pedro	São Pedro	public	AL
+2036-07-02	Independência da Bahia	Independência da Bahia	public	BA
+2036-07-08	Emancipação política de Sergipe	Emancipação política de Sergipe	public	SE
+2036-07-09	Revolução Constitucionalista	Revolução Constitucionalista	public	SP
+2036-07-26	Fundação da Cidade de Goiás	Fundação da Cidade de Goiás	public	GO
+2036-07-26	Homenagem à memória do ex-presidente João Pessoa	Homenagem à memória do ex-presidente João Pessoa	public	PB
+2036-07-28	Adesão do Maranhão à independência do Brasil	Adesão do Maranhão à independência do Brasil	public	MA
+2036-08-05	Nossa Senhora das Neves	Nossa Senhora das Neves	public	PB
+2036-08-10	Dia dos Pais	Father's Day	observance	
+2036-08-15	Adesão do Grão-Pará à independência do Brasil	Adesão do Grão-Pará à independência do Brasil	public	PA
+2036-08-17	Dia de Santa Catarina	Dia de Santa Catarina	public	SC
+2036-09-05	Dia da Amazônia	Dia da Amazônia	public	AC
+2036-09-05	Elevação do Amazonas à categoria de província	Elevação do Amazonas à categoria de província	public	AM
+2036-09-07	Dia da Independência	Independence Day	public	
+2036-09-08	Nossa Senhora da Natividade	Nossa Senhora da Natividade	public	TO
+2036-09-13	Criação do Território Federal	Criação do Território Federal	public	AP
+2036-09-16	Emancipação política	Emancipação política	public	AL
+2036-09-20	Proclamação da República Rio-Grandense	Proclamação da República Rio-Grandense	public	RS
+2036-10-03	Mártires de Cunhaú e Uruaçu	Mártires de Cunhaú e Uruaçu	public	RN
+2036-10-05	Dia de Eleição	Election Day	public	
+2036-10-05	Criação do estado	Criação do estado	public	RR
+2036-10-05	Criação do estado	Criação do estado	public	TO
+2036-10-11	Criação do estado	Criação do estado	public	MS
+2036-10-12	Nossa Senhora Aparecida	Our Lady of Aparecida	public	
+2036-10-19	Dia do Piauí	Dia do Piauí	public	PI
+2036-10-21	Dia do Comércio	Dia do Comércio	observance	RJ
+2036-10-24	Lançamento da pedra fundamental de Goiânia	Lançamento da pedra fundamental de Goiânia	public	GO
+2036-10-26	Dia de Eleição	Election Day	public	
+2036-11-02	Dia de Finados	All Souls' Day	public	
+2036-11-15	Proclamação da República	Republic Day	public	
+2036-11-17	Assinatura do Tratado de Petrópolis	Assinatura do Tratado de Petrópolis	optional	AC
+2036-11-20	Dia da Consciência Negra	Black Awareness Day	public	
+2036-11-20	Morte de Zumbi dos Palmares	Morte de Zumbi dos Palmares	public	AL
+2036-11-30	Dia do Evangélico	Dia do Evangélico	public	DF
+2036-11-30	Dia de Santa Catarina de Alexandria	Dia de Santa Catarina de Alexandria	public	SC
+2036-12-19	Emancipação política do estado do Paraná	Emancipação política do estado do Paraná	public	PR
+2036-12-24	Noite de Natal	Christmas Eve	optional	
+2036-12-25	Natal	Christmas Day	public	
+2036-12-31	Véspera de Ano Novo	New Year's Eve	optional	
+2037-01-01	Ano Novo	New Year's Day	public	
+2037-01-04	Criação do estado	Criação do estado	public	RO
+2037-01-12	Dia do evangélico	Dia do evangélico	public	AC
+2037-02-14	Carnaval	Carnival	optional	
+2037-02-16	Carnaval	Carnival	bank	
+2037-02-17	Carnaval	Carnival	bank	
+2037-02-18	Carnaval	Carnival	optional	
+2037-03-01	Revolução Pernambucana de 1817	Revolução Pernambucana de 1817	public	PE
+2037-03-08	Alusivo ao Dia Internacional da Mulher	Alusivo ao Dia Internacional da Mulher	public	AC
+2037-03-18	Autonomia do Estado	Autonomia do Estado	public	TO
+2037-03-19	Dia de São José	Dia de São José	public	AP
+2037-03-25	Data magna do estado	Data magna do estado	public	CE
+2037-04-03	Sexta-Feira Santa	Good Friday	public	
+2037-04-05	Páscoa	Easter Sunday	observance	
+2037-04-13	Dia de Nossa Senhora da Penha	Dia de Nossa Senhora da Penha	public	ES
+2037-04-21	Dia de Tiradentes	Tiradentes' Day	public	
+2037-04-21	Fundação de Brasília	Fundação de Brasília	public	DF
+2037-04-21	Data magna do estado	Data magna do estado	public	MG
+2037-04-23	Dia de São Jorge	Dia de São Jorge	public	RJ
+2037-05-01	Dia do trabalhador	Labour Day	public	
+2037-05-10	Dia das Mães	Mother's Day	observance	
+2037-06-04	Corpo de Deus	Corpus Christi	bank	
+2037-06-12	Dia dos Namorados	Lovers' Day	observance	
+2037-06-15	Aniversário do estado	Aniversário do estado	public	AC
+2037-06-18	Dia do evangélico	Dia do evangélico	public	RO
+2037-06-24	São João	São João	public	AL
+2037-06-29	São Pedro	São Pedro	public	AL
+2037-07-02	Independência da Bahia	Independência da Bahia	public	BA
+2037-07-08	Emancipação política de Sergipe	Emancipação política de Sergipe	public	SE
+2037-07-09	Revolução Constitucionalista	Revolução Constitucionalista	public	SP
+2037-07-26	Fundação da Cidade de Goiás	Fundação da Cidade de Goiás	public	GO
+2037-07-26	Homenagem à memória do ex-presidente João Pessoa	Homenagem à memória do ex-presidente João Pessoa	public	PB
+2037-07-28	Adesão do Maranhão à independência do Brasil	Adesão do Maranhão à independência do Brasil	public	MA
+2037-08-05	Nossa Senhora das Neves	Nossa Senhora das Neves	public	PB
+2037-08-09	Dia dos Pais	Father's Day	observance	
+2037-08-15	Adesão do Grão-Pará à independência do Brasil	Adesão do Grão-Pará à independência do Brasil	public	PA
+2037-08-16	Dia de Santa Catarina	Dia de Santa Catarina	public	SC
+2037-09-05	Dia da Amazônia	Dia da Amazônia	public	AC
+2037-09-05	Elevação do Amazonas à categoria de província	Elevação do Amazonas à categoria de província	public	AM
+2037-09-07	Dia da Independência	Independence Day	public	
+2037-09-08	Nossa Senhora da Natividade	Nossa Senhora da Natividade	public	TO
+2037-09-13	Criação do Território Federal	Criação do Território Federal	public	AP
+2037-09-16	Emancipação política	Emancipação política	public	AL
+2037-09-20	Proclamação da República Rio-Grandense	Proclamação da República Rio-Grandense	public	RS
+2037-10-03	Mártires de Cunhaú e Uruaçu	Mártires de Cunhaú e Uruaçu	public	RN
+2037-10-05	Criação do estado	Criação do estado	public	RR
+2037-10-05	Criação do estado	Criação do estado	public	TO
+2037-10-11	Criação do estado	Criação do estado	public	MS
+2037-10-12	Nossa Senhora Aparecida	Our Lady of Aparecida	public	
+2037-10-19	Dia do Piauí	Dia do Piauí	public	PI
+2037-10-20	Dia do Comércio	Dia do Comércio	observance	RJ
+2037-10-24	Lançamento da pedra fundamental de Goiânia	Lançamento da pedra fundamental de Goiânia	public	GO
+2037-11-02	Dia de Finados	All Souls' Day	public	
+2037-11-15	Proclamação da República	Republic Day	public	
+2037-11-17	Assinatura do Tratado de Petrópolis	Assinatura do Tratado de Petrópolis	optional	AC
+2037-11-20	Dia da Consciência Negra	Black Awareness Day	public	
+2037-11-20	Morte de Zumbi dos Palmares	Morte de Zumbi dos Palmares	public	AL
+2037-11-29	Dia de Santa Catarina de Alexandria	Dia de Santa Catarina de Alexandria	public	SC
+2037-11-30	Dia do Evangélico	Dia do Evangélico	public	DF
+2037-12-19	Emancipação política do estado do Paraná	Emancipação política do estado do Paraná	public	PR
+2037-12-24	Noite de Natal	Christmas Eve	optional	
+2037-12-25	Natal	Christmas Day	public	
+2037-12-31	Véspera de Ano Novo	New Year's Eve	optional	
+2038-01-01	Ano Novo	New Year's Day	public	
+2038-01-04	Criação do estado	Criação do estado	public	RO
+2038-01-12	Dia do evangélico	Dia do evangélico	public	AC
+2038-03-06	Carnaval	Carnival	optional	
+2038-03-07	Revolução Pernambucana de 1817	Revolução Pernambucana de 1817	public	PE
+2038-03-08	Carnaval	Carnival	bank	
+2038-03-08	Alusivo ao Dia Internacional da Mulher	Alusivo ao Dia Internacional da Mulher	public	AC
+2038-03-09	Carnaval	Carnival	bank	
+2038-03-10	Carnaval	Carnival	optional	
+2038-03-18	Autonomia do Estado	Autonomia do Estado	public	TO
+2038-03-19	Dia de São José	Dia de São José	public	AP
+2038-03-25	Data magna do estado	Data magna do estado	public	CE
+2038-04-21	Dia de Tiradentes	Tiradentes' Day	public	
+2038-04-21	Fundação de Brasília	Fundação de Brasília	public	DF
+2038-04-21	Data magna do estado	Data magna do estado	public	MG
+2038-04-23	Sexta-Feira Santa	Good Friday	public	
+2038-04-23	Dia de São Jorge	Dia de São Jorge	public	RJ
+2038-04-25	Páscoa	Easter Sunday	observance	
+2038-05-01	Dia do trabalhador	Labour Day	public	
+2038-05-03	Dia de Nossa Senhora da Penha	Dia de Nossa Senhora da Penha	public	ES
+2038-05-09	Dia das Mães	Mother's Day	observance	
+2038-06-12	Dia dos Namorados	Lovers' Day	observance	
+2038-06-15	Aniversário do estado	Aniversário do estado	public	AC
+2038-06-18	Dia do evangélico	Dia do evangélico	public	RO
+2038-06-24	Corpo de Deus	Corpus Christi	bank	
+2038-06-24	São João	São João	public	AL
+2038-06-29	São Pedro	São Pedro	public	AL
+2038-07-02	Independência da Bahia	Independência da Bahia	public	BA
+2038-07-08	Emancipação política de Sergipe	Emancipação política de Sergipe	public	SE
+2038-07-09	Revolução Constitucionalista	Revolução Constitucionalista	public	SP
+2038-07-26	Fundação da Cidade de Goiás	Fundação da Cidade de Goiás	public	GO
+2038-07-26	Homenagem à memória do ex-presidente João Pessoa	Homenagem à memória do ex-presidente João Pessoa	public	PB
+2038-07-28	Adesão do Maranhão à independência do Brasil	Adesão do Maranhão à independência do Brasil	public	MA
+2038-08-05	Nossa Senhora das Neves	Nossa Senhora das Neves	public	PB
+2038-08-08	Dia dos Pais	Father's Day	observance	
+2038-08-15	Adesão do Grão-Pará à independência do Brasil	Adesão do Grão-Pará à independência do Brasil	public	PA
+2038-08-15	Dia de Santa Catarina	Dia de Santa Catarina	public	SC
+2038-09-05	Dia da Amazônia	Dia da Amazônia	public	AC
+2038-09-05	Elevação do Amazonas à categoria de província	Elevação do Amazonas à categoria de província	public	AM
+2038-09-07	Dia da Independência	Independence Day	public	
+2038-09-08	Nossa Senhora da Natividade	Nossa Senhora da Natividade	public	TO
+2038-09-13	Criação do Território Federal	Criação do Território Federal	public	AP
+2038-09-16	Emancipação política	Emancipação política	public	AL
+2038-09-20	Proclamação da República Rio-Grandense	Proclamação da República Rio-Grandense	public	RS
+2038-10-03	Dia de Eleição	Election Day	public	
+2038-10-03	Mártires de Cunhaú e Uruaçu	Mártires de Cunhaú e Uruaçu	public	RN
+2038-10-05	Criação do estado	Criação do estado	public	RR
+2038-10-05	Criação do estado	Criação do estado	public	TO
+2038-10-11	Criação do estado	Criação do estado	public	MS
+2038-10-12	Nossa Senhora Aparecida	Our Lady of Aparecida	public	
+2038-10-19	Dia do Piauí	Dia do Piauí	public	PI
+2038-10-19	Dia do Comércio	Dia do Comércio	observance	RJ
+2038-10-24	Lançamento da pedra fundamental de Goiânia	Lançamento da pedra fundamental de Goiânia	public	GO
+2038-10-31	Dia de Eleição	Election Day	public	
+2038-11-02	Dia de Finados	All Souls' Day	public	
+2038-11-15	Proclamação da República	Republic Day	public	
+2038-11-17	Assinatura do Tratado de Petrópolis	Assinatura do Tratado de Petrópolis	optional	AC
+2038-11-20	Dia da Consciência Negra	Black Awareness Day	public	
+2038-11-20	Morte de Zumbi dos Palmares	Morte de Zumbi dos Palmares	public	AL
+2038-11-28	Dia de Santa Catarina de Alexandria	Dia de Santa Catarina de Alexandria	public	SC
+2038-11-30	Dia do Evangélico	Dia do Evangélico	public	DF
+2038-12-19	Emancipação política do estado do Paraná	Emancipação política do estado do Paraná	public	PR
+2038-12-24	Noite de Natal	Christmas Eve	optional	
+2038-12-25	Natal	Christmas Day	public	
+2038-12-31	Véspera de Ano Novo	New Year's Eve	optional	
+2039-01-01	Ano Novo	New Year's Day	public	
+2039-01-04	Criação do estado	Criação do estado	public	RO
+2039-01-12	Dia do evangélico	Dia do evangélico	public	AC
+2039-02-19	Carnaval	Carnival	optional	
+2039-02-21	Carnaval	Carnival	bank	
+2039-02-22	Carnaval	Carnival	bank	
+2039-02-23	Carnaval	Carnival	optional	
+2039-03-06	Revolução Pernambucana de 1817	Revolução Pernambucana de 1817	public	PE
+2039-03-08	Alusivo ao Dia Internacional da Mulher	Alusivo ao Dia Internacional da Mulher	public	AC
+2039-03-18	Autonomia do Estado	Autonomia do Estado	public	TO
+2039-03-19	Dia de São José	Dia de São José	public	AP
+2039-03-25	Data magna do estado	Data magna do estado	public	CE
+2039-04-08	Sexta-Feira Santa	Good Friday	public	
+2039-04-10	Páscoa	Easter Sunday	observance	
+2039-04-18	Dia de Nossa Senhora da Penha	Dia de Nossa Senhora da Penha	public	ES
+2039-04-21	Dia de Tiradentes	Tiradentes' Day	public	
+2039-04-21	Fundação de Brasília	Fundação de Brasília	public	DF
+2039-04-21	Data magna do estado	Data magna do estado	public	MG
+2039-04-23	Dia de São Jorge	Dia de São Jorge	public	RJ
+2039-05-01	Dia do trabalhador	Labour Day	public	
+2039-05-08	Dia das Mães	Mother's Day	observance	
+2039-06-09	Corpo de Deus	Corpus Christi	bank	
+2039-06-12	Dia dos Namorados	Lovers' Day	observance	
+2039-06-15	Aniversário do estado	Aniversário do estado	public	AC
+2039-06-18	Dia do evangélico	Dia do evangélico	public	RO
+2039-06-24	São João	São João	public	AL
+2039-06-29	São Pedro	São Pedro	public	AL
+2039-07-02	Independência da Bahia	Independência da Bahia	public	BA
+2039-07-08	Emancipação política de Sergipe	Emancipação política de Sergipe	public	SE
+2039-07-09	Revolução Constitucionalista	Revolução Constitucionalista	public	SP
+2039-07-26	Fundação da Cidade de Goiás	Fundação da Cidade de Goiás	public	GO
+2039-07-26	Homenagem à memória do ex-presidente João Pessoa	Homenagem à memória do ex-presidente João Pessoa	public	PB
+2039-07-28	Adesão do Maranhão à independência do Brasil	Adesão do Maranhão à independência do Brasil	public	MA
+2039-08-05	Nossa Senhora das Neves	Nossa Senhora das Neves	public	PB
+2039-08-14	Dia dos Pais	Father's Day	observance	
+2039-08-14	Dia de Santa Catarina	Dia de Santa Catarina	public	SC
+2039-08-15	Adesão do Grão-Pará à independência do Brasil	Adesão do Grão-Pará à independência do Brasil	public	PA
+2039-09-05	Dia da Amazônia	Dia da Amazônia	public	AC
+2039-09-05	Elevação do Amazonas à categoria de província	Elevação do Amazonas à categoria de província	public	AM
+2039-09-07	Dia da Independência	Independence Day	public	
+2039-09-08	Nossa Senhora da Natividade	Nossa Senhora da Natividade	public	TO
+2039-09-13	Criação do Território Federal	Criação do Território Federal	public	AP
+2039-09-16	Emancipação política	Emancipação política	public	AL
+2039-09-20	Proclamação da República Rio-Grandense	Proclamação da República Rio-Grandense	public	RS
+2039-10-03	Mártires de Cunhaú e Uruaçu	Mártires de Cunhaú e Uruaçu	public	RN
+2039-10-05	Criação do estado	Criação do estado	public	RR
+2039-10-05	Criação do estado	Criação do estado	public	TO
+2039-10-11	Criação do estado	Criação do estado	public	MS
+2039-10-12	Nossa Senhora Aparecida	Our Lady of Aparecida	public	
+2039-10-18	Dia do Comércio	Dia do Comércio	observance	RJ
+2039-10-19	Dia do Piauí	Dia do Piauí	public	PI
+2039-10-24	Lançamento da pedra fundamental de Goiânia	Lançamento da pedra fundamental de Goiânia	public	GO
+2039-11-02	Dia de Finados	All Souls' Day	public	
+2039-11-15	Proclamação da República	Republic Day	public	
+2039-11-17	Assinatura do Tratado de Petrópolis	Assinatura do Tratado de Petrópolis	optional	AC
+2039-11-20	Dia da Consciência Negra	Black Awareness Day	public	
+2039-11-20	Morte de Zumbi dos Palmares	Morte de Zumbi dos Palmares	public	AL
+2039-11-27	Dia de Santa Catarina de Alexandria	Dia de Santa Catarina de Alexandria	public	SC
+2039-11-30	Dia do Evangélico	Dia do Evangélico	public	DF
+2039-12-19	Emancipação política do estado do Paraná	Emancipação política do estado do Paraná	public	PR
+2039-12-24	Noite de Natal	Christmas Eve	optional	
+2039-12-25	Natal	Christmas Day	public	
+2039-12-31	Véspera de Ano Novo	New Year's Eve	optional	
+2040-01-01	Ano Novo	New Year's Day	public	
+2040-01-04	Criação do estado	Criação do estado	public	RO
+2040-01-12	Dia do evangélico	Dia do evangélico	public	AC
+2040-02-11	Carnaval	Carnival	optional	
+2040-02-13	Carnaval	Carnival	bank	
+2040-02-14	Carnaval	Carnival	bank	
+2040-02-15	Carnaval	Carnival	optional	
+2040-03-04	Revolução Pernambucana de 1817	Revolução Pernambucana de 1817	public	PE
+2040-03-08	Alusivo ao Dia Internacional da Mulher	Alusivo ao Dia Internacional da Mulher	public	AC
+2040-03-18	Autonomia do Estado	Autonomia do Estado	public	TO
+2040-03-19	Dia de São José	Dia de São José	public	AP
+2040-03-25	Data magna do estado	Data magna do estado	public	CE
+2040-03-30	Sexta-Feira Santa	Good Friday	public	
+2040-04-01	Páscoa	Easter Sunday	observance	
+2040-04-09	Dia de Nossa Senhora da Penha	Dia de Nossa Senhora da Penha	public	ES
+2040-04-21	Dia de Tiradentes	Tiradentes' Day	public	
+2040-04-21	Fundação de Brasília	Fundação de Brasília	public	DF
+2040-04-21	Data magna do estado	Data magna do estado	public	MG
+2040-04-23	Dia de São Jorge	Dia de São Jorge	public	RJ
+2040-05-01	Dia do trabalhador	Labour Day	public	
+2040-05-13	Dia das Mães	Mother's Day	observance	
+2040-05-31	Corpo de Deus	Corpus Christi	bank	
+2040-06-12	Dia dos Namorados	Lovers' Day	observance	
+2040-06-15	Aniversário do estado	Aniversário do estado	public	AC
+2040-06-18	Dia do evangélico	Dia do evangélico	public	RO
+2040-06-24	São João	São João	public	AL
+2040-06-29	São Pedro	São Pedro	public	AL
+2040-07-02	Independência da Bahia	Independência da Bahia	public	BA
+2040-07-08	Emancipação política de Sergipe	Emancipação política de Sergipe	public	SE
+2040-07-09	Revolução Constitucionalista	Revolução Constitucionalista	public	SP
+2040-07-26	Fundação da Cidade de Goiás	Fundação da Cidade de Goiás	public	GO
+2040-07-26	Homenagem à memória do ex-presidente João Pessoa	Homenagem à memória do ex-presidente João Pessoa	public	PB
+2040-07-28	Adesão do Maranhão à independência do Brasil	Adesão do Maranhão à independência do Brasil	public	MA
+2040-08-05	Nossa Senhora das Neves	Nossa Senhora das Neves	public	PB
+2040-08-12	Dia dos Pais	Father's Day	observance	
+2040-08-12	Dia de Santa Catarina	Dia de Santa Catarina	public	SC
+2040-08-15	Adesão do Grão-Pará à independência do Brasil	Adesão do Grão-Pará à independência do Brasil	public	PA
+2040-09-05	Dia da Amazônia	Dia da Amazônia	public	AC
+2040-09-05	Elevação do Amazonas à categoria de província	Elevação do Amazonas à categoria de província	public	AM
+2040-09-07	Dia da Independência	Independence Day	public	
+2040-09-08	Nossa Senhora da Natividade	Nossa Senhora da Natividade	public	TO
+2040-09-13	Criação do Território Federal	Criação do Território Federal	public	AP
+2040-09-16	Emancipação política	Emancipação política	public	AL
+2040-09-20	Proclamação da República Rio-Grandense	Proclamação da República Rio-Grandense	public	RS
+2040-10-03	Mártires de Cunhaú e Uruaçu	Mártires de Cunhaú e Uruaçu	public	RN
+2040-10-05	Criação do estado	Criação do estado	public	RR
+2040-10-05	Criação do estado	Criação do estado	public	TO
+2040-10-07	Dia de Eleição	Election Day	public	
+2040-10-11	Criação do estado	Criação do estado	public	MS
+2040-10-12	Nossa Senhora Aparecida	Our Lady of Aparecida	public	
+2040-10-16	Dia do Comércio	Dia do Comércio	observance	RJ
+2040-10-19	Dia do Piauí	Dia do Piauí	public	PI
+2040-10-24	Lançamento da pedra fundamental de Goiânia	Lançamento da pedra fundamental de Goiânia	public	GO
+2040-10-28	Dia de Eleição	Election Day	public	
+2040-11-02	Dia de Finados	All Souls' Day	public	
+2040-11-15	Proclamação da República	Republic Day	public	
+2040-11-17	Assinatura do Tratado de Petrópolis	Assinatura do Tratado de Petrópolis	optional	AC
+2040-11-20	Dia da Consciência Negra	Black Awareness Day	public	
+2040-11-20	Morte de Zumbi dos Palmares	Morte de Zumbi dos Palmares	public	AL
+2040-11-25	Dia de Santa Catarina de Alexandria	Dia de Santa Catarina de Alexandria	public	SC
+2040-11-30	Dia do Evangélico	Dia do Evangélico	public	DF
+2040-12-19	Emancipação política do estado do Paraná	Emancipação política do estado do Paraná	public	PR
+2040-12-24	Noite de Natal	Christmas Eve	optional	
+2040-12-25	Natal	Christmas Day	public	
+2040-12-31	Véspera de Ano Novo	New Year's Eve	optional	
+2041-01-01	Ano Novo	New Year's Day	public	
+2041-01-04	Criação do estado	Criação do estado	public	RO
+2041-01-12	Dia do evangélico	Dia do evangélico	public	AC
+2041-03-02	Carnaval	Carnival	optional	
+2041-03-03	Revolução Pernambucana de 1817	Revolução Pernambucana de 1817	public	PE
+2041-03-04	Carnaval	Carnival	bank	
+2041-03-05	Carnaval	Carnival	bank	
+2041-03-06	Carnaval	Carnival	optional	
+2041-03-08	Alusivo ao Dia Internacional da Mulher	Alusivo ao Dia Internacional da Mulher	public	AC
+2041-03-18	Autonomia do Estado	Autonomia do Estado	public	TO
+2041-03-19	Dia de São José	Dia de São José	public	AP
+2041-03-25	Data magna do estado	Data magna do estado	public	CE
+2041-04-19	Sexta-Feira Santa	Good Friday	public	
+2041-04-21	Dia de Tiradentes	Tiradentes' Day	public	
+2041-04-21	Páscoa	Easter Sunday	observance	
+2041-04-21	Fundação de Brasília	Fundação de Brasília	public	DF
+2041-04-21	Data magna do estado	Data magna do estado	public	MG
+2041-04-23	Dia de São Jorge	Dia de São Jorge	public	RJ
+2041-04-29	Dia de Nossa Senhora da Penha	Dia de Nossa Senhora da Penha	public	ES
+2041-05-01	Dia do trabalhador	Labour Day	public	
+2041-05-12	Dia das Mães	Mother's Day	observance	
+2041-06-12	Dia dos Namorados	Lovers' Day	observance	
+2041-06-15	Aniversário do estado	Aniversário do estado	public	AC
+2041-06-18	Dia do evangélico	Dia do evangélico	public	RO
+2041-06-20	Corpo de Deus	Corpus Christi	bank	
+2041-06-24	São João	São João	public	AL
+2041-06-29	São Pedro	São Pedro	public	AL
+2041-07-02	Independência da Bahia	Independência da Bahia	public	BA
+2041-07-08	Emancipação política de Sergipe	Emancipação política de Sergipe	public	SE
+2041-07-09	Revolução Constitucionalista	Revolução Constitucionalista	public	SP
+2041-07-26	Fundação da Cidade de Goiás	Fundação da Cidade de Goiás	public	GO
+2041-07-26	Homenagem à memória do ex-presidente João Pessoa	Homenagem à memória do ex-presidente João Pessoa	public	PB
+2041-07-28	Adesão do Maranhão à independência do Brasil	Adesão do Maranhão à independência do Brasil	public	MA
+2041-08-05	Nossa Senhora das Neves	Nossa Senhora das Neves	public	PB
+2041-08-11	Dia dos Pais	Father's Day	observance	
+2041-08-11	Dia de Santa Catarina	Dia de Santa Catarina	public	SC
+2041-08-15	Adesão do Grão-Pará à independência do Brasil	Adesão do Grão-Pará à independência do Brasil	public	PA
+2041-09-05	Dia da Amazônia	Dia da Amazônia	public	AC
+2041-09-05	Elevação do Amazonas à categoria de província	Elevação do Amazonas à categoria de província	public	AM
+2041-09-07	Dia da Independência	Independence Day	public	
+2041-09-08	Nossa Senhora da Natividade	Nossa Senhora da Natividade	public	TO
+2041-09-13	Criação do Território Federal	Criação do Território Federal	public	AP
+2041-09-16	Emancipação política	Emancipação política	public	AL
+2041-09-20	Proclamação da República Rio-Grandense	Proclamação da República Rio-Grandense	public	RS
+2041-10-03	Mártires de Cunhaú e Uruaçu	Mártires de Cunhaú e Uruaçu	public	RN
+2041-10-05	Criação do estado	Criação do estado	public	RR
+2041-10-05	Criação do estado	Criação do estado	public	TO
+2041-10-11	Criação do estado	Criação do estado	public	MS
+2041-10-12	Nossa Senhora Aparecida	Our Lady of Aparecida	public	
+2041-10-15	Dia do Comércio	Dia do Comércio	observance	RJ
+2041-10-19	Dia do Piauí	Dia do Piauí	public	PI
+2041-10-24	Lançamento da pedra fundamental de Goiânia	Lançamento da pedra fundamental de Goiânia	public	GO
+2041-11-02	Dia de Finados	All Souls' Day	public	
+2041-11-15	Proclamação da República	Republic Day	public	
+2041-11-17	Assinatura do Tratado de Petrópolis	Assinatura do Tratado de Petrópolis	optional	AC
+2041-11-20	Dia da Consciência Negra	Black Awareness Day	public	
+2041-11-20	Morte de Zumbi dos Palmares	Morte de Zumbi dos Palmares	public	AL
+2041-11-30	Dia do Evangélico	Dia do Evangélico	public	DF
+2041-12-01	Dia de Santa Catarina de Alexandria	Dia de Santa Catarina de Alexandria	public	SC
+2041-12-19	Emancipação política do estado do Paraná	Emancipação política do estado do Paraná	public	PR
+2041-12-24	Noite de Natal	Christmas Eve	optional	
+2041-12-25	Natal	Christmas Day	public	
+2041-12-31	Véspera de Ano Novo	New Year's Eve	optional	
+2042-01-01	Ano Novo	New Year's Day	public	
+2042-01-04	Criação do estado	Criação do estado	public	RO
+2042-01-12	Dia do evangélico	Dia do evangélico	public	AC
+2042-02-15	Carnaval	Carnival	optional	
+2042-02-17	Carnaval	Carnival	bank	
+2042-02-18	Carnaval	Carnival	bank	
+2042-02-19	Carnaval	Carnival	optional	
+2042-03-02	Revolução Pernambucana de 1817	Revolução Pernambucana de 1817	public	PE
+2042-03-08	Alusivo ao Dia Internacional da Mulher	Alusivo ao Dia Internacional da Mulher	public	AC
+2042-03-18	Autonomia do Estado	Autonomia do Estado	public	TO
+2042-03-19	Dia de São José	Dia de São José	public	AP
+2042-03-25	Data magna do estado	Data magna do estado	public	CE
+2042-04-04	Sexta-Feira Santa	Good Friday	public	
+2042-04-06	Páscoa	Easter Sunday	observance	
+2042-04-14	Dia de Nossa Senhora da Penha	Dia de Nossa Senhora da Penha	public	ES
+2042-04-21	Dia de Tiradentes	Tiradentes' Day	public	
+2042-04-21	Fundação de Brasília	Fundação de Brasília	public	DF
+2042-04-21	Data magna do estado	Data magna do estado	public	MG
+2042-04-23	Dia de São Jorge	Dia de São Jorge	public	RJ
+2042-05-01	Dia do trabalhador	Labour Day	public	
+2042-05-11	Dia das Mães	Mother's Day	observance	
+2042-06-05	Corpo de Deus	Corpus Christi	bank	
+2042-06-12	Dia dos Namorados	Lovers' Day	observance	
+2042-06-15	Aniversário do estado	Aniversário do estado	public	AC
+2042-06-18	Dia do evangélico	Dia do evangélico	public	RO
+2042-06-24	São João	São João	public	AL
+2042-06-29	São Pedro	São Pedro	public	AL
+2042-07-02	Independência da Bahia	Independência da Bahia	public	BA
+2042-07-08	Emancipação política de Sergipe	Emancipação política de Sergipe	public	SE
+2042-07-09	Revolução Constitucionalista	Revolução Constitucionalista	public	SP
+2042-07-26	Fundação da Cidade de Goiás	Fundação da Cidade de Goiás	public	GO
+2042-07-26	Homenagem à memória do ex-presidente João Pessoa	Homenagem à memória do ex-presidente João Pessoa	public	PB
+2042-07-28	Adesão do Maranhão à independência do Brasil	Adesão do Maranhão à independência do Brasil	public	MA
+2042-08-05	Nossa Senhora das Neves	Nossa Senhora das Neves	public	PB
+2042-08-10	Dia dos Pais	Father's Day	observance	
+2042-08-15	Adesão do Grão-Pará à independência do Brasil	Adesão do Grão-Pará à independência do Brasil	public	PA
+2042-08-17	Dia de Santa Catarina	Dia de Santa Catarina	public	SC
+2042-09-05	Dia da Amazônia	Dia da Amazônia	public	AC
+2042-09-05	Elevação do Amazonas à categoria de província	Elevação do Amazonas à categoria de província	public	AM
+2042-09-07	Dia da Independência	Independence Day	public	
+2042-09-08	Nossa Senhora da Natividade	Nossa Senhora da Natividade	public	TO
+2042-09-13	Criação do Território Federal	Criação do Território Federal	public	AP
+2042-09-16	Emancipação política	Emancipação política	public	AL
+2042-09-20	Proclamação da República Rio-Grandense	Proclamação da República Rio-Grandense	public	RS
+2042-10-03	Mártires de Cunhaú e Uruaçu	Mártires de Cunhaú e Uruaçu	public	RN
+2042-10-05	Dia de Eleição	Election Day	public	
+2042-10-05	Criação do estado	Criação do estado	public	RR
+2042-10-05	Criação do estado	Criação do estado	public	TO
+2042-10-11	Criação do estado	Criação do estado	public	MS
+2042-10-12	Nossa Senhora Aparecida	Our Lady of Aparecida	public	
+2042-10-19	Dia do Piauí	Dia do Piauí	public	PI
+2042-10-21	Dia do Comércio	Dia do Comércio	observance	RJ
+2042-10-24	Lançamento da pedra fundamental de Goiânia	Lançamento da pedra fundamental de Goiânia	public	GO
+2042-10-26	Dia de Eleição	Election Day	public	
+2042-11-02	Dia de Finados	All Souls' Day	public	
+2042-11-15	Proclamação da República	Republic Day	public	
+2042-11-17	Assinatura do Tratado de Petrópolis	Assinatura do Tratado de Petrópolis	optional	AC
+2042-11-20	Dia da Consciência Negra	Black Awareness Day	public	
+2042-11-20	Morte de Zumbi dos Palmares	Morte de Zumbi dos Palmares	public	AL
+2042-11-30	Dia do Evangélico	Dia do Evangélico	public	DF
+2042-11-30	Dia de Santa Catarina de Alexandria	Dia de Santa Catarina de Alexandria	public	SC
+2042-12-19	Emancipação política do estado do Paraná	Emancipação política do estado do Paraná	public	PR
+2042-12-24	Noite de Natal	Christmas Eve	optional	
+2042-12-25	Natal	Christmas Day	public	
+2042-12-31	Véspera de Ano Novo	New Year's Eve	optional	
+2043-01-01	Ano Novo	New Year's Day	public	
+2043-01-04	Criação do estado	Criação do estado	public	RO
+2043-01-12	Dia do evangélico	Dia do evangélico	public	AC
+2043-02-07	Carnaval	Carnival	optional	
+2043-02-09	Carnaval	Carnival	bank	
+2043-02-10	Carnaval	Carnival	bank	
+2043-02-11	Carnaval	Carnival	optional	
+2043-03-01	Revolução Pernambucana de 1817	Revolução Pernambucana de 1817	public	PE
+2043-03-08	Alusivo ao Dia Internacional da Mulher	Alusivo ao Dia Internacional da Mulher	public	AC
+2043-03-18	Autonomia do Estado	Autonomia do Estado	public	TO
+2043-03-19	Dia de São José	Dia de São José	public	AP
+2043-03-25	Data magna do estado	Data magna do estado	public	CE
+2043-03-27	Sexta-Feira Santa	Good Friday	public	
+2043-03-29	Páscoa	Easter Sunday	observance	
+2043-04-06	Dia de Nossa Senhora da Penha	Dia de Nossa Senhora da Penha	public	ES
+2043-04-21	Dia de Tiradentes	Tiradentes' Day	public	
+2043-04-21	Fundação de Brasília	Fundação de Brasília	public	DF
+2043-04-21	Data magna do estado	Data magna do estado	public	MG
+2043-04-23	Dia de São Jorge	Dia de São Jorge	public	RJ
+2043-05-01	Dia do trabalhador	Labour Day	public	
+2043-05-10	Dia das Mães	Mother's Day	observance	
+2043-05-28	Corpo de Deus	Corpus Christi	bank	
+2043-06-12	Dia dos Namorados	Lovers' Day	observance	
+2043-06-15	Aniversário do estado	Aniversário do estado	public	AC
+2043-06-18	Dia do evangélico	Dia do evangélico	public	RO
+2043-06-24	São João	São João	public	AL
+2043-06-29	São Pedro	São Pedro	public	AL
+2043-07-02	Independência da Bahia	Independência da Bahia	public	BA
+2043-07-08	Emancipação política de Sergipe	Emancipação política de Sergipe	public	SE
+2043-07-09	Revolução Constitucionalista	Revolução Constitucionalista	public	SP
+2043-07-26	Fundação da Cidade de Goiás	Fundação da Cidade de Goiás	public	GO
+2043-07-26	Homenagem à memória do ex-presidente João Pessoa	Homenagem à memória do ex-presidente João Pessoa	public	PB
+2043-07-28	Adesão do Maranhão à independência do Brasil	Adesão do Maranhão à independência do Brasil	public	MA
+2043-08-05	Nossa Senhora das Neves	Nossa Senhora das Neves	public	PB
+2043-08-09	Dia dos Pais	Father's Day	observance	
+2043-08-15	Adesão do Grão-Pará à independência do Brasil	Adesão do Grão-Pará à independência do Brasil	public	PA
+2043-08-16	Dia de Santa Catarina	Dia de Santa Catarina	public	SC
+2043-09-05	Dia da Amazônia	Dia da Amazônia	public	AC
+2043-09-05	Elevação do Amazonas à categoria de província	Elevação do Amazonas à categoria de província	public	AM
+2043-09-07	Dia da Independência	Independence Day	public	
+2043-09-08	Nossa Senhora da Natividade	Nossa Senhora da Natividade	public	TO
+2043-09-13	Criação do Território Federal	Criação do Território Federal	public	AP
+2043-09-16	Emancipação política	Emancipação política	public	AL
+2043-09-20	Proclamação da República Rio-Grandense	Proclamação da República Rio-Grandense	public	RS
+2043-10-03	Mártires de Cunhaú e Uruaçu	Mártires de Cunhaú e Uruaçu	public	RN
+2043-10-05	Criação do estado	Criação do estado	public	RR
+2043-10-05	Criação do estado	Criação do estado	public	TO
+2043-10-11	Criação do estado	Criação do estado	public	MS
+2043-10-12	Nossa Senhora Aparecida	Our Lady of Aparecida	public	
+2043-10-19	Dia do Piauí	Dia do Piauí	public	PI
+2043-10-20	Dia do Comércio	Dia do Comércio	observance	RJ
+2043-10-24	Lançamento da pedra fundamental de Goiânia	Lançamento da pedra fundamental de Goiânia	public	GO
+2043-11-02	Dia de Finados	All Souls' Day	public	
+2043-11-15	Proclamação da República	Republic Day	public	
+2043-11-17	Assinatura do Tratado de Petrópolis	Assinatura do Tratado de Petrópolis	optional	AC
+2043-11-20	Dia da Consciência Negra	Black Awareness Day	public	
+2043-11-20	Morte de Zumbi dos Palmares	Morte de Zumbi dos Palmares	public	AL
+2043-11-29	Dia de Santa Catarina de Alexandria	Dia de Santa Catarina de Alexandria	public	SC
+2043-11-30	Dia do Evangélico	Dia do Evangélico	public	DF
+2043-12-19	Emancipação política do estado do Paraná	Emancipação política do estado do Paraná	public	PR
+2043-12-24	Noite de Natal	Christmas Eve	optional	
+2043-12-25	Natal	Christmas Day	public	
+2043-12-31	Véspera de Ano Novo	New Year's Eve	optional	
+2044-01-01	Ano Novo	New Year's Day	public	
+2044-01-04	Criação do estado	Criação do estado	public	RO
+2044-01-12	Dia do evangélico	Dia do evangélico	public	AC
+2044-02-27	Carnaval	Carnival	optional	
+2044-02-29	Carnaval	Carnival	bank	
+2044-03-01	Carnaval	Carnival	bank	
+2044-03-02	Carnaval	Carnival	optional	
+2044-03-06	Revolução Pernambucana de 1817	Revolução Pernambucana de 1817	public	PE
+2044-03-08	Alusivo ao Dia Internacional da Mulher	Alusivo ao Dia Internacional da Mulher	public	AC
+2044-03-18	Autonomia do Estado	Autonomia do Estado	public	TO
+2044-03-19	Dia de São José	Dia de São José	public	AP
+2044-03-25	Data magna do estado	Data magna do estado	public	CE
+2044-04-15	Sexta-Feira Santa	Good Friday	public	
+2044-04-17	Páscoa	Easter Sunday	observance	
+2044-04-21	Dia de Tiradentes	Tiradentes' Day	public	
+2044-04-21	Fundação de Brasília	Fundação de Brasília	public	DF
+2044-04-21	Data magna do estado	Data magna do estado	public	MG
+2044-04-23	Dia de São Jorge	Dia de São Jorge	public	RJ
+2044-04-25	Dia de Nossa Senhora da Penha	Dia de Nossa Senhora da Penha	public	ES
+2044-05-01	Dia do trabalhador	Labour Day	public	
+2044-05-08	Dia das Mães	Mother's Day	observance	
+2044-06-12	Dia dos Namorados	Lovers' Day	observance	
+2044-06-15	Aniversário do estado	Aniversário do estado	public	AC
+2044-06-16	Corpo de Deus	Corpus Christi	bank	
+2044-06-18	Dia do evangélico	Dia do evangélico	public	RO
+2044-06-24	São João	São João	public	AL
+2044-06-29	São Pedro	São Pedro	public	AL
+2044-07-02	Independência da Bahia	Independência da Bahia	public	BA
+2044-07-08	Emancipação política de Sergipe	Emancipação política de Sergipe	public	SE
+2044-07-09	Revolução Constitucionalista	Revolução Constitucionalista	public	SP
+2044-07-26	Fundação da Cidade de Goiás	Fundação da Cidade de Goiás	public	GO
+2044-07-26	Homenagem à memória do ex-presidente João Pessoa	Homenagem à memória do ex-presidente João Pessoa	public	PB
+2044-07-28	Adesão do Maranhão à independência do Brasil	Adesão do Maranhão à independência do Brasil	public	MA
+2044-08-05	Nossa Senhora das Neves	Nossa Senhora das Neves	public	PB
+2044-08-14	Dia dos Pais	Father's Day	observance	
+2044-08-14	Dia de Santa Catarina	Dia de Santa Catarina	public	SC
+2044-08-15	Adesão do Grão-Pará à independência do Brasil	Adesão do Grão-Pará à independência do Brasil	public	PA
+2044-09-05	Dia da Amazônia	Dia da Amazônia	public	AC
+2044-09-05	Elevação do Amazonas à categoria de província	Elevação do Amazonas à categoria de província	public	AM
+2044-09-07	Dia da Independência	Independence Day	public	
+2044-09-08	Nossa Senhora da Natividade	Nossa Senhora da Natividade	public	TO
+2044-09-13	Criação do Território Federal	Criação do Território Federal	public	AP
+2044-09-16	Emancipação política	Emancipação política	public	AL
+2044-09-20	Proclamação da República Rio-Grandense	Proclamação da República Rio-Grandense	public	RS
+2044-10-02	Dia de Eleição	Election Day	public	
+2044-10-03	Mártires de Cunhaú e Uruaçu	Mártires de Cunhaú e Uruaçu	public	RN
+2044-10-05	Criação do estado	Criação do estado	public	RR
+2044-10-05	Criação do estado	Criação do estado	public	TO
+2044-10-11	Criação do estado	Criação do estado	public	MS
+2044-10-12	Nossa Senhora Aparecida	Our Lady of Aparecida	public	
+2044-10-18	Dia do Comércio	Dia do Comércio	observance	RJ
+2044-10-19	Dia do Piauí	Dia do Piauí	public	PI
+2044-10-24	Lançamento da pedra fundamental de Goiânia	Lançamento da pedra fundamental de Goiânia	public	GO
+2044-10-30	Dia de Eleição	Election Day	public	
+2044-11-02	Dia de Finados	All Souls' Day	public	
+2044-11-15	Proclamação da República	Republic Day	public	
+2044-11-17	Assinatura do Tratado de Petrópolis	Assinatura do Tratado de Petrópolis	optional	AC
+2044-11-20	Dia da Consciência Negra	Black Awareness Day	public	
+2044-11-20	Morte de Zumbi dos Palmares	Morte de Zumbi dos Palmares	public	AL
+2044-11-27	Dia de Santa Catarina de Alexandria	Dia de Santa Catarina de Alexandria	public	SC
+2044-11-30	Dia do Evangélico	Dia do Evangélico	public	DF
+2044-12-19	Emancipação política do estado do Paraná	Emancipação política do estado do Paraná	public	PR
+2044-12-24	Noite de Natal	Christmas Eve	optional	
+2044-12-25	Natal	Christmas Day	public	
+2044-12-31	Véspera de Ano Novo	New Year's Eve	optional	
+2045-01-01	Ano Novo	New Year's Day	public	
+2045-01-04	Criação do estado	Criação do estado	public	RO
+2045-01-12	Dia do evangélico	Dia do evangélico	public	AC
+2045-02-18	Carnaval	Carnival	optional	
+2045-02-20	Carnaval	Carnival	bank	
+2045-02-21	Carnaval	Carnival	bank	
+2045-02-22	Carnaval	Carnival	optional	
+2045-03-05	Revolução Pernambucana de 1817	Revolução Pernambucana de 1817	public	PE
+2045-03-08	Alusivo ao Dia Internacional da Mulher	Alusivo ao Dia Internacional da Mulher	public	AC
+2045-03-18	Autonomia do Estado	Autonomia do Estado	public	TO
+2045-03-19	Dia de São José	Dia de São José	public	AP
+2045-03-25	Data magna do estado	Data magna do estado	public	CE
+2045-04-07	Sexta-Feira Santa	Good Friday	public	
+2045-04-09	Páscoa	Easter Sunday	observance	
+2045-04-17	Dia de Nossa Senhora da Penha	Dia de Nossa Senhora da Penha	public	ES
+2045-04-21	Dia de Tiradentes	Tiradentes' Day	public	
+2045-04-21	Fundação de Brasília	Fundação de Brasília	public	DF
+2045-04-21	Data magna do estado	Data magna do estado	public	MG
+2045-04-23	Dia de São Jorge	Dia de São Jorge	public	RJ
+2045-05-01	Dia do trabalhador	Labour Day	public	
+2045-05-14	Dia das Mães	Mother's Day	observance	
+2045-06-08	Corpo de Deus	Corpus Christi	bank	
+2045-06-12	Dia dos Namorados	Lovers' Day	observance	
+2045-06-15	Aniversário do estado	Aniversário do estado	public	AC
+2045-06-18	Dia do evangélico	Dia do evangélico	public	RO
+2045-06-24	São João	São João	public	AL
+2045-06-29	São Pedro	São Pedro	public	AL
+2045-07-02	Independência da Bahia	Independência da Bahia	public	BA
+2045-07-08	Emancipação política de Sergipe	Emancipação política de Sergipe	public	SE
+2045-07-09	Revolução Constitucionalista	Revolução Constitucionalista	public	SP
+2045-07-26	Fundação da Cidade de Goiás	Fundação da Cidade de Goiás	public	GO
+2045-07-26	Homenagem à memória do ex-presidente João Pessoa	Homenagem à memória do ex-presidente João Pessoa	public	PB
+2045-07-28	Adesão do Maranhão à independência do Brasil	Adesão do Maranhão à independência do Brasil	public	MA
+2045-08-05	Nossa Senhora das Neves	Nossa Senhora das Neves	public	PB
+2045-08-13	Dia dos Pais	Father's Day	observance	
+2045-08-13	Dia de Santa Catarina	Dia de Santa Catarina	public	SC
+2045-08-15	Adesão do Grão-Pará à independência do Brasil	Adesão do Grão-Pará à independência do Brasil	public	PA
+2045-09-05	Dia da Amazônia	Dia da Amazônia	public	AC
+2045-09-05	Elevação do Amazonas à categoria de província	Elevação do Amazonas à categoria de província	public	AM
+2045-09-07	Dia da Independência	Independence Day	public	
+2045-09-08	Nossa Senhora da Natividade	Nossa Senhora da Natividade	public	TO
+2045-09-13	Criação do Território Federal	Criação do Território Federal	public	AP
+2045-09-16	Emancipação política	Emancipação política	public	AL
+2045-09-20	Proclamação da República Rio-Grandense	Proclamação da República Rio-Grandense	public	RS
+2045-10-03	Mártires de Cunhaú e Uruaçu	Mártires de Cunhaú e Uruaçu	public	RN
+2045-10-05	Criação do estado	Criação do estado	public	RR
+2045-10-05	Criação do estado	Criação do estado	public	TO
+2045-10-11	Criação do estado	Criação do estado	public	MS
+2045-10-12	Nossa Senhora Aparecida	Our Lady of Aparecida	public	
+2045-10-17	Dia do Comércio	Dia do Comércio	observance	RJ
+2045-10-19	Dia do Piauí	Dia do Piauí	public	PI
+2045-10-24	Lançamento da pedra fundamental de Goiânia	Lançamento da pedra fundamental de Goiânia	public	GO
+2045-11-02	Dia de Finados	All Souls' Day	public	
+2045-11-15	Proclamação da República	Republic Day	public	
+2045-11-17	Assinatura do Tratado de Petrópolis	Assinatura do Tratado de Petrópolis	optional	AC
+2045-11-20	Dia da Consciência Negra	Black Awareness Day	public	
+2045-11-20	Morte de Zumbi dos Palmares	Morte de Zumbi dos Palmares	public	AL
+2045-11-26	Dia de Santa Catarina de Alexandria	Dia de Santa Catarina de Alexandria	public	SC
+2045-11-30	Dia do Evangélico	Dia do Evangélico	public	DF
+2045-12-19	Emancipação política do estado do Paraná	Emancipação política do estado do Paraná	public	PR
+2045-12-24	Noite de Natal	Christmas Eve	optional	
+2045-12-25	Natal	Christmas Day	public	
+2045-12-31	Véspera de Ano Novo	New Year's Eve	optional	

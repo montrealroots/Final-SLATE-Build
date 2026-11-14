@@ -2,7 +2,6 @@
 // contracts): 19, all four roles, one inheritance posted once, no family menus, no company. Each case reads the journal.
 import { describe, expect, it } from 'vitest';
 import { DAY, processUntil } from './engine-api';
-import { companyBalance, formCompany } from '../src/engine/company';
 import { INHERITANCE_MOST_MINOR, inheritanceDay, inheritanceStory, loanStanding, personalBalance, personalPostings } from '../src/engine/personal';
 import { deserialize, serialize } from '../src/engine/save';
 import { DEFAULT_INHERITANCE_MINOR, characterAge, emptyDraft, newGame, normalizeDraft, validateDraft } from '../src/engine/state';
@@ -29,13 +28,6 @@ describe('A01: a new life starts at 19 with one inheritance', () => {
     processUntil(back, back.now + 400 * DAY, 'advance', 1_000_000);
     expect(personalPostings(back).filter((p) => p.kind === 'inheritance')).toHaveLength(1);
     expect(personalBalance(back)).toBe(25_000_000);
-  });
-
-  it('forming a company moves your money; it never deposits the inheritance again', () => {
-    const s = fresh({}, 'v8-co');
-    formCompany(s, 'Derrick Lane Pictures', 1_000_000);
-    expect(personalBalance(s) + companyBalance(s)).toBe(25_000_000 - 300);
-    expect(personalPostings(s).filter((p) => p.kind === 'inheritance')).toHaveLength(1);
   });
 
   it('is a default, not a fixed amount: changed before the start, refused past the cap or below nothing', () => {

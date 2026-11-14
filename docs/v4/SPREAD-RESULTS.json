@@ -20,70 +20,70 @@
       "place": "gb-london",
       "runs": 10,
       "deliveredRate": 1,
-      "meanOverall": 59.2,
+      "meanOverall": 57.6,
       "integrity": true,
-      "maxSpentShare": 0.71
+      "maxSpentShare": 0.866
     },
     "live-action short @ us-los-angeles": {
       "level": "micro",
       "place": "us-los-angeles",
       "runs": 10,
       "deliveredRate": 1,
-      "meanOverall": 59,
+      "meanOverall": 58.4,
       "integrity": true,
-      "maxSpentShare": 0.78
+      "maxSpentShare": 0.862
     },
     "live-action short @ ng-lagos": {
       "level": "micro",
       "place": "ng-lagos",
       "runs": 10,
       "deliveredRate": 1,
-      "meanOverall": 58.9,
+      "meanOverall": 59.6,
       "integrity": true,
-      "maxSpentShare": 0.734
+      "maxSpentShare": 0.747
     },
     "live-action short @ jp-tokyo": {
       "level": "micro",
       "place": "jp-tokyo",
       "runs": 10,
       "deliveredRate": 1,
-      "meanOverall": 59.1,
+      "meanOverall": 58.1,
       "integrity": true,
-      "maxSpentShare": 0.813
+      "maxSpentShare": 0.775
     },
     "live-action feature @ gb-london": {
       "level": "low",
       "place": "gb-london",
       "runs": 10,
       "deliveredRate": 1,
-      "meanOverall": 57.7,
+      "meanOverall": 56.4,
       "integrity": true,
-      "maxSpentShare": 0.201
+      "maxSpentShare": 0.222
     },
     "live-action feature @ us-los-angeles": {
       "level": "low",
       "place": "us-los-angeles",
       "runs": 10,
       "deliveredRate": 1,
-      "meanOverall": 57.8,
+      "meanOverall": 57.3,
       "integrity": true,
-      "maxSpentShare": 0.178
+      "maxSpentShare": 0.206
     },
     "live-action feature @ ng-lagos": {
       "level": "low",
       "place": "ng-lagos",
       "runs": 10,
       "deliveredRate": 1,
-      "meanOverall": 58.1,
+      "meanOverall": 57.8,
       "integrity": true,
-      "maxSpentShare": 0.164
+      "maxSpentShare": 0.206
     },
     "live-action feature @ jp-tokyo": {
       "level": "low",
       "place": "jp-tokyo",
       "runs": 10,
       "deliveredRate": 1,
-      "meanOverall": 59.3,
+      "meanOverall": 58.2,
       "integrity": true,
       "maxSpentShare": 0.194
     },
@@ -92,144 +92,144 @@
       "place": "gb-london",
       "runs": 10,
       "deliveredRate": 1,
-      "meanOverall": 60,
+      "meanOverall": 58.4,
       "integrity": true,
-      "maxSpentShare": 0.013
+      "maxSpentShare": 0.018
     },
     "live-action limited series @ us-los-angeles": {
       "level": "mid",
       "place": "us-los-angeles",
       "runs": 10,
       "deliveredRate": 1,
-      "meanOverall": 58.7,
+      "meanOverall": 59.5,
       "integrity": true,
-      "maxSpentShare": 0.011
+      "maxSpentShare": 0.012
     },
     "live-action limited series @ ng-lagos": {
       "level": "mid",
       "place": "ng-lagos",
       "runs": 10,
       "deliveredRate": 1,
-      "meanOverall": 59.2,
+      "meanOverall": 60.3,
       "integrity": true,
-      "maxSpentShare": 0.011
+      "maxSpentShare": 0.012
     },
     "live-action limited series @ jp-tokyo": {
       "level": "mid",
       "place": "jp-tokyo",
       "runs": 10,
       "deliveredRate": 1,
-      "meanOverall": 57.9,
+      "meanOverall": 60.8,
       "integrity": true,
-      "maxSpentShare": 0.015
+      "maxSpentShare": 0.016
     },
     "2D drawn short @ gb-london": {
       "level": "low",
       "place": "gb-london",
       "runs": 10,
       "deliveredRate": 1,
-      "meanOverall": 60.9,
+      "meanOverall": 61.3,
       "integrity": true,
-      "maxSpentShare": 0.225
+      "maxSpentShare": 0.217
     },
     "2D drawn short @ us-los-angeles": {
       "level": "low",
       "place": "us-los-angeles",
       "runs": 10,
       "deliveredRate": 1,
-      "meanOverall": 60.4,
+      "meanOverall": 61.3,
       "integrity": true,
-      "maxSpentShare": 0.199
+      "maxSpentShare": 0.224
     },
     "2D drawn short @ ng-lagos": {
       "level": "low",
       "place": "ng-lagos",
       "runs": 10,
       "deliveredRate": 1,
-      "meanOverall": 60.8,
+      "meanOverall": 62,
       "integrity": true,
-      "maxSpentShare": 0.221
+      "maxSpentShare": 0.217
     },
     "2D drawn short @ jp-tokyo": {
       "level": "low",
       "place": "jp-tokyo",
       "runs": 10,
       "deliveredRate": 1,
-      "meanOverall": 61.9,
+      "meanOverall": 62.1,
       "integrity": true,
-      "maxSpentShare": 0.215
+      "maxSpentShare": 0.223
     },
     "3D CG short @ gb-london": {
       "level": "micro",
       "place": "gb-london",
       "runs": 10,
       "deliveredRate": 1,
-      "meanOverall": 61.1,
+      "meanOverall": 60.6,
       "integrity": true,
-      "maxSpentShare": 0.791
+      "maxSpentShare": 0.806
     },
     "3D CG short @ us-los-angeles": {
       "level": "micro",
       "place": "us-los-angeles",
       "runs": 10,
       "deliveredRate": 1,
-      "meanOverall": 60.7,
+      "meanOverall": 61.7,
       "integrity": true,
-      "maxSpentShare": 0.792
+      "maxSpentShare": 0.826
     },
     "3D CG short @ ng-lagos": {
       "level": "micro",
       "place": "ng-lagos",
       "runs": 10,
       "deliveredRate": 1,
-      "meanOverall": 61.1,
+      "meanOverall": 61.2,
       "integrity": true,
-      "maxSpentShare": 0.79
+      "maxSpentShare": 0.825
     },
     "3D CG short @ jp-tokyo": {
       "level": "micro",
       "place": "jp-tokyo",
       "runs": 10,
       "deliveredRate": 1,
-      "meanOverall": 60.8,
+      "meanOverall": 60.7,
       "integrity": true,
-      "maxSpentShare": 0.796
+      "maxSpentShare": 0.825
     },
     "stop-motion short @ gb-london": {
       "level": "micro",
       "place": "gb-london",
       "runs": 10,
       "deliveredRate": 1,
-      "meanOverall": 60.8,
+      "meanOverall": 61.4,
       "integrity": true,
-      "maxSpentShare": 0.81
+      "maxSpentShare": 0.819
     },
     "stop-motion short @ us-los-angeles": {
       "level": "micro",
       "place": "us-los-angeles",
       "runs": 10,
       "deliveredRate": 1,
-      "meanOverall": 61.2,
+      "meanOverall": 61.4,
       "integrity": true,
-      "maxSpentShare": 0.803
+      "maxSpentShare": 0.81
     },
     "stop-motion short @ ng-lagos": {
       "level": "micro",
       "place": "ng-lagos",
       "runs": 10,
       "deliveredRate": 1,
-      "meanOverall": 61.2,
+      "meanOverall": 61.5,
       "integrity": true,
-      "maxSpentShare": 0.813
+      "maxSpentShare": 0.804
     },
     "stop-motion short @ jp-tokyo": {
       "level": "micro",
       "place": "jp-tokyo",
       "runs": 10,
       "deliveredRate": 1,
-      "meanOverall": 61.4,
+      "meanOverall": 61.1,
       "integrity": true,
-      "maxSpentShare": 0.806
+      "maxSpentShare": 0.81
     }
   },
   "misses": []

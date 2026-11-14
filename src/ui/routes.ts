@@ -21,7 +21,15 @@ export interface DestinationGroup {
 export const HOME: Destination = { view: 'home', label: 'Home', detail: 'Your day, what is coming up and your projects' };
 
 export const DESTINATIONS: readonly DestinationGroup[] = [
-  { label: 'You', items: [{ view: 'profile', label: 'Player Profile', detail: 'Your professions, credits and history' }] },
+  {
+    label: 'You',
+    items: [
+      { view: 'profile', label: 'Player Profile', detail: 'Your professions, credits and history' },
+      // Home's Your Bank and Your Papers are the way in (the owner, November 14, 2026), as the calendar's is.
+      { view: 'bank', label: 'Your Bank', detail: 'Your accounts, cards, loans and payments', homeOnly: true },
+      { view: 'papers', label: 'Your Papers', detail: 'Your passports, visas and permissions to work', homeOnly: true },
+    ],
+  },
   {
     label: 'Your Day',
     items: [

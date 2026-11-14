@@ -202,13 +202,22 @@ export async function staffEveryDepartment(page: Page): Promise<number> {
 
 /** The saved game as stored on disk; assertions run in the test, not in the page. */
 /**
- * Your account's postings from a saved state, in whole dollars, oldest first: the journal's lines on your cash account
- * (src/engine/cash/journal.ts; from November 14, 2026, when they stopped being a list of their own).
+ * Your account's postings from a saved state, in whole dollars, oldest first: the bank ledger's SLATE postings on your
+ * accounts (src/engine/bank.ts bankPostings; from November 14, 2026, when your money moved to the bank). Until then they
+ * were the v8 journal's lines on its cash account, and before that a list of their own.
  */
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function personalPostingsOf(saved: any): { kind: string; amount: number; key: string; label: string }[] {
+  const u = saved?.bank;
+  if (!u) return [];
+  const mine = new Set(Object.values(u.accounts as Record<string, { id: string; ownerId?: string; nominal?: boolean }>).filter((a) => a.ownerId === u.playerId && !a.nominal).map((a) => a.id));
   const out: { kind: string; amount: number; key: string; label: string }[] = [];
-  for (const t of saved?.journal?.txs ?? []) if (t.status === 'settled' || t.status === 'reversed') for (const l of t.lines) if (l.account === 'player:cash:USD') out.push({ kind: l.kind, amount: l.minor / 100, key: t.key, label: l.label ?? t.memo });
+  for (const t of u.transactions as { category: string; memo: string; id: string; reversedBy?: string; reverses?: string; postings: { accountId: string; amount: number }[] }[]) {
+    if (t.reversedBy || t.reverses || !(t.category.startsWith('slate:') || t.category === 'opening')) continue;
+    const [kind, key] = t.category === 'opening' ? ['inheritance', 'opening:inheritance'] : t.category.slice(6).split('#');
+    const amount = t.postings.filter((p) => mine.has(p.accountId)).reduce((s, p) => s + p.amount, 0) / 100;
+    if (amount !== 0) out.push({ kind, amount, key: key ?? t.id, label: t.memo });
+  }
   return out;
 }
 export async function readSavedState(page: Page): Promise<any> { // eslint-disable-line @typescript-eslint/no-explicit-any

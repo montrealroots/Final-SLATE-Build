@@ -1,0 +1,1157 @@
+# BB	Brandenburg
+# BE	Berlin
+# BW	Baden-Württemberg
+# BY	Bayern
+# HB	Hansestadt Bremen
+# HE	Hessen
+# HH	Hansestadt Hamburg
+# MV	Mecklenburg-Vorpommern
+# NI	Niedersachsen
+# NW	Nordrhein-Westfalen
+# RP	Rheinland-Pfalz
+# SH	Schleswig-Holstein
+# SL	Saarland
+# SN	Sachsen
+# ST	Sachsen-Anhalt
+# TH	Thüringen
+2026-01-01	Neujahr	New Year's Day	public	
+2026-01-06	Heilige Drei Könige	Epiphany	public	BW
+2026-01-06	Heilige Drei Könige	Epiphany	public	BY
+2026-01-06	Heilige Drei Könige	Epiphany	public	ST
+2026-02-02	Lichtmess	Candlemas	observance	BY
+2026-02-12	Weiberfastnacht	Women's Carnival Day	observance	
+2026-02-14	Valentinstag	Valentine's Day	observance	
+2026-02-16	Rosenmontag	Shrove Monday	observance	
+2026-02-17	Faschingsdienstag	Shrove Tuesday	observance	
+2026-02-18	Aschermittwoch	Ash Wednesday	observance	
+2026-03-08	Internationaler Frauentag	International Women's Day	public	BE
+2026-03-08	Internationaler Frauentag	International Women's Day	public	MV
+2026-04-02	Gründonnerstag	Maundy Thursday	observance	
+2026-04-03	Karfreitag	Good Friday	public	
+2026-04-05	Ostersonntag	Easter Sunday	observance	
+2026-04-06	Ostermontag	Easter Monday	public	
+2026-05-01	Maifeiertag	Labour Day	public	
+2026-05-10	Muttertag	Mother's Day	observance	
+2026-05-14	Christi Himmelfahrt	Ascension Day	public	
+2026-05-24	Pfingstsonntag	Pentecost	observance	
+2026-05-25	Pfingstmontag	Whit Monday	public	
+2026-06-04	Fronleichnam	Corpus Christi	public	BW
+2026-06-04	Fronleichnam	Corpus Christi	public	BY
+2026-06-04	Fronleichnam	Corpus Christi	public	HE
+2026-06-04	Fronleichnam	Corpus Christi	public	NW
+2026-06-04	Fronleichnam	Corpus Christi	public	RP
+2026-06-04	Fronleichnam	Corpus Christi	public	SL
+2026-06-04	Fronleichnam	Corpus Christi	observance	SN
+2026-06-04	Fronleichnam	Corpus Christi	observance	TH
+2026-08-15	Mariä Himmelfahrt	Assumption	observance	BY
+2026-08-15	Mariä Himmelfahrt	Assumption	public	SL
+2026-09-20	Weltkindertag	International Children's Day	public	TH
+2026-10-03	Tag der Deutschen Einheit	National Holiday	public	
+2026-10-31	Reformationstag	Reformation Day	public	BB
+2026-10-31	Reformationstag	Reformation Day	school	BW
+2026-10-31	Reformationstag	Reformation Day	public	HB
+2026-10-31	Reformationstag	Reformation Day	public	HH
+2026-10-31	Reformationstag	Reformation Day	public	MV
+2026-10-31	Reformationstag	Reformation Day	public	NI
+2026-10-31	Reformationstag	Reformation Day	public	SH
+2026-10-31	Reformationstag	Reformation Day	public	SN
+2026-10-31	Reformationstag	Reformation Day	public	ST
+2026-10-31	Reformationstag	Reformation Day	public	TH
+2026-11-01	Allerheiligen	All Saints' Day	observance	
+2026-11-02	Allerseelen	All Souls' Day	observance	
+2026-11-11	Sankt Martin (Faschingsbeginn)	Saint Martin	observance	
+2026-11-15	Volkstrauertag	Memorial Day	observance	
+2026-11-18	Buß- und Bettag	Day of Prayer and Repentance	observance	
+2026-11-22	Totensonntag	Totensonntag	observance	
+2026-11-29	1. Advent	1. Advent	observance	
+2026-12-06	2. Advent	2. Advent	observance	
+2026-12-13	3. Advent	3. Advent	observance	
+2026-12-20	4. Advent	4. Advent	observance	
+2026-12-24	Heiliger Abend	Christmas Eve	bank	
+2026-12-25	1. Weihnachtstag	Christmas Day	public	
+2026-12-26	2. Weihnachtstag	Boxing Day	public	
+2026-12-31	Silvester	New Year's Eve	bank	
+2027-01-01	Neujahr	New Year's Day	public	
+2027-01-06	Heilige Drei Könige	Epiphany	public	BW
+2027-01-06	Heilige Drei Könige	Epiphany	public	BY
+2027-01-06	Heilige Drei Könige	Epiphany	public	ST
+2027-02-02	Lichtmess	Candlemas	observance	BY
+2027-02-04	Weiberfastnacht	Women's Carnival Day	observance	
+2027-02-08	Rosenmontag	Shrove Monday	observance	
+2027-02-09	Faschingsdienstag	Shrove Tuesday	observance	
+2027-02-10	Aschermittwoch	Ash Wednesday	observance	
+2027-02-14	Valentinstag	Valentine's Day	observance	
+2027-03-08	Internationaler Frauentag	International Women's Day	public	BE
+2027-03-08	Internationaler Frauentag	International Women's Day	public	MV
+2027-03-25	Gründonnerstag	Maundy Thursday	observance	
+2027-03-26	Karfreitag	Good Friday	public	
+2027-03-28	Ostersonntag	Easter Sunday	observance	
+2027-03-29	Ostermontag	Easter Monday	public	
+2027-05-01	Maifeiertag	Labour Day	public	
+2027-05-06	Christi Himmelfahrt	Ascension Day	public	
+2027-05-09	Muttertag	Mother's Day	observance	
+2027-05-16	Pfingstsonntag	Pentecost	observance	
+2027-05-17	Pfingstmontag	Whit Monday	public	
+2027-05-27	Fronleichnam	Corpus Christi	public	BW
+2027-05-27	Fronleichnam	Corpus Christi	public	BY
+2027-05-27	Fronleichnam	Corpus Christi	public	HE
+2027-05-27	Fronleichnam	Corpus Christi	public	NW
+2027-05-27	Fronleichnam	Corpus Christi	public	RP
+2027-05-27	Fronleichnam	Corpus Christi	public	SL
+2027-05-27	Fronleichnam	Corpus Christi	observance	SN
+2027-05-27	Fronleichnam	Corpus Christi	observance	TH
+2027-08-15	Mariä Himmelfahrt	Assumption	observance	BY
+2027-08-15	Mariä Himmelfahrt	Assumption	public	SL
+2027-09-20	Weltkindertag	International Children's Day	public	TH
+2027-10-03	Tag der Deutschen Einheit	National Holiday	public	
+2027-10-31	Reformationstag	Reformation Day	public	BB
+2027-10-31	Reformationstag	Reformation Day	school	BW
+2027-10-31	Reformationstag	Reformation Day	public	HB
+2027-10-31	Reformationstag	Reformation Day	public	HH
+2027-10-31	Reformationstag	Reformation Day	public	MV
+2027-10-31	Reformationstag	Reformation Day	public	NI
+2027-10-31	Reformationstag	Reformation Day	public	SH
+2027-10-31	Reformationstag	Reformation Day	public	SN
+2027-10-31	Reformationstag	Reformation Day	public	ST
+2027-10-31	Reformationstag	Reformation Day	public	TH
+2027-11-01	Allerheiligen	All Saints' Day	observance	
+2027-11-02	Allerseelen	All Souls' Day	observance	
+2027-11-11	Sankt Martin (Faschingsbeginn)	Saint Martin	observance	
+2027-11-14	Volkstrauertag	Memorial Day	observance	
+2027-11-17	Buß- und Bettag	Day of Prayer and Repentance	observance	
+2027-11-21	Totensonntag	Totensonntag	observance	
+2027-11-28	1. Advent	1. Advent	observance	
+2027-12-05	2. Advent	2. Advent	observance	
+2027-12-12	3. Advent	3. Advent	observance	
+2027-12-19	4. Advent	4. Advent	observance	
+2027-12-24	Heiliger Abend	Christmas Eve	bank	
+2027-12-25	1. Weihnachtstag	Christmas Day	public	
+2027-12-26	2. Weihnachtstag	Boxing Day	public	
+2027-12-31	Silvester	New Year's Eve	bank	
+2028-01-01	Neujahr	New Year's Day	public	
+2028-01-06	Heilige Drei Könige	Epiphany	public	BW
+2028-01-06	Heilige Drei Könige	Epiphany	public	BY
+2028-01-06	Heilige Drei Könige	Epiphany	public	ST
+2028-02-02	Lichtmess	Candlemas	observance	BY
+2028-02-14	Valentinstag	Valentine's Day	observance	
+2028-02-24	Weiberfastnacht	Women's Carnival Day	observance	
+2028-02-28	Rosenmontag	Shrove Monday	observance	
+2028-02-29	Faschingsdienstag	Shrove Tuesday	observance	
+2028-03-01	Aschermittwoch	Ash Wednesday	observance	
+2028-03-08	Internationaler Frauentag	International Women's Day	public	BE
+2028-03-08	Internationaler Frauentag	International Women's Day	public	MV
+2028-04-13	Gründonnerstag	Maundy Thursday	observance	
+2028-04-14	Karfreitag	Good Friday	public	
+2028-04-16	Ostersonntag	Easter Sunday	observance	
+2028-04-17	Ostermontag	Easter Monday	public	
+2028-05-01	Maifeiertag	Labour Day	public	
+2028-05-14	Muttertag	Mother's Day	observance	
+2028-05-25	Christi Himmelfahrt	Ascension Day	public	
+2028-06-04	Pfingstsonntag	Pentecost	observance	
+2028-06-05	Pfingstmontag	Whit Monday	public	
+2028-06-15	Fronleichnam	Corpus Christi	public	BW
+2028-06-15	Fronleichnam	Corpus Christi	public	BY
+2028-06-15	Fronleichnam	Corpus Christi	public	HE
+2028-06-15	Fronleichnam	Corpus Christi	public	NW
+2028-06-15	Fronleichnam	Corpus Christi	public	RP
+2028-06-15	Fronleichnam	Corpus Christi	public	SL
+2028-06-15	Fronleichnam	Corpus Christi	observance	SN
+2028-06-15	Fronleichnam	Corpus Christi	observance	TH
+2028-06-17	75-jähriges Jubiläum des Volksaufstands in der DDR	75th anniversary of the GDR uprising	public	BE
+2028-08-15	Mariä Himmelfahrt	Assumption	observance	BY
+2028-08-15	Mariä Himmelfahrt	Assumption	public	SL
+2028-09-20	Weltkindertag	International Children's Day	public	TH
+2028-10-03	Tag der Deutschen Einheit	National Holiday	public	
+2028-10-31	Reformationstag	Reformation Day	public	BB
+2028-10-31	Reformationstag	Reformation Day	school	BW
+2028-10-31	Reformationstag	Reformation Day	public	HB
+2028-10-31	Reformationstag	Reformation Day	public	HH
+2028-10-31	Reformationstag	Reformation Day	public	MV
+2028-10-31	Reformationstag	Reformation Day	public	NI
+2028-10-31	Reformationstag	Reformation Day	public	SH
+2028-10-31	Reformationstag	Reformation Day	public	SN
+2028-10-31	Reformationstag	Reformation Day	public	ST
+2028-10-31	Reformationstag	Reformation Day	public	TH
+2028-11-01	Allerheiligen	All Saints' Day	observance	
+2028-11-02	Allerseelen	All Souls' Day	observance	
+2028-11-11	Sankt Martin (Faschingsbeginn)	Saint Martin	observance	
+2028-11-19	Volkstrauertag	Memorial Day	observance	
+2028-11-22	Buß- und Bettag	Day of Prayer and Repentance	observance	
+2028-11-26	Totensonntag	Totensonntag	observance	
+2028-12-03	1. Advent	1. Advent	observance	
+2028-12-10	2. Advent	2. Advent	observance	
+2028-12-17	3. Advent	3. Advent	observance	
+2028-12-24	4. Advent	4. Advent	observance	
+2028-12-24	Heiliger Abend	Christmas Eve	bank	
+2028-12-25	1. Weihnachtstag	Christmas Day	public	
+2028-12-26	2. Weihnachtstag	Boxing Day	public	
+2028-12-31	Silvester	New Year's Eve	bank	
+2029-01-01	Neujahr	New Year's Day	public	
+2029-01-06	Heilige Drei Könige	Epiphany	public	BW
+2029-01-06	Heilige Drei Könige	Epiphany	public	BY
+2029-01-06	Heilige Drei Könige	Epiphany	public	ST
+2029-02-02	Lichtmess	Candlemas	observance	BY
+2029-02-08	Weiberfastnacht	Women's Carnival Day	observance	
+2029-02-12	Rosenmontag	Shrove Monday	observance	
+2029-02-13	Faschingsdienstag	Shrove Tuesday	observance	
+2029-02-14	Aschermittwoch	Ash Wednesday	observance	
+2029-02-14	Valentinstag	Valentine's Day	observance	
+2029-03-08	Internationaler Frauentag	International Women's Day	public	BE
+2029-03-08	Internationaler Frauentag	International Women's Day	public	MV
+2029-03-29	Gründonnerstag	Maundy Thursday	observance	
+2029-03-30	Karfreitag	Good Friday	public	
+2029-04-01	Ostersonntag	Easter Sunday	observance	
+2029-04-02	Ostermontag	Easter Monday	public	
+2029-05-01	Maifeiertag	Labour Day	public	
+2029-05-10	Christi Himmelfahrt	Ascension Day	public	
+2029-05-13	Muttertag	Mother's Day	observance	
+2029-05-20	Pfingstsonntag	Pentecost	observance	
+2029-05-21	Pfingstmontag	Whit Monday	public	
+2029-05-31	Fronleichnam	Corpus Christi	public	BW
+2029-05-31	Fronleichnam	Corpus Christi	public	BY
+2029-05-31	Fronleichnam	Corpus Christi	public	HE
+2029-05-31	Fronleichnam	Corpus Christi	public	NW
+2029-05-31	Fronleichnam	Corpus Christi	public	RP
+2029-05-31	Fronleichnam	Corpus Christi	public	SL
+2029-05-31	Fronleichnam	Corpus Christi	observance	SN
+2029-05-31	Fronleichnam	Corpus Christi	observance	TH
+2029-08-15	Mariä Himmelfahrt	Assumption	observance	BY
+2029-08-15	Mariä Himmelfahrt	Assumption	public	SL
+2029-09-20	Weltkindertag	International Children's Day	public	TH
+2029-10-03	Tag der Deutschen Einheit	National Holiday	public	
+2029-10-31	Reformationstag	Reformation Day	public	BB
+2029-10-31	Reformationstag	Reformation Day	school	BW
+2029-10-31	Reformationstag	Reformation Day	public	HB
+2029-10-31	Reformationstag	Reformation Day	public	HH
+2029-10-31	Reformationstag	Reformation Day	public	MV
+2029-10-31	Reformationstag	Reformation Day	public	NI
+2029-10-31	Reformationstag	Reformation Day	public	SH
+2029-10-31	Reformationstag	Reformation Day	public	SN
+2029-10-31	Reformationstag	Reformation Day	public	ST
+2029-10-31	Reformationstag	Reformation Day	public	TH
+2029-11-01	Allerheiligen	All Saints' Day	observance	
+2029-11-02	Allerseelen	All Souls' Day	observance	
+2029-11-11	Sankt Martin (Faschingsbeginn)	Saint Martin	observance	
+2029-11-18	Volkstrauertag	Memorial Day	observance	
+2029-11-21	Buß- und Bettag	Day of Prayer and Repentance	observance	
+2029-11-25	Totensonntag	Totensonntag	observance	
+2029-12-02	1. Advent	1. Advent	observance	
+2029-12-09	2. Advent	2. Advent	observance	
+2029-12-16	3. Advent	3. Advent	observance	
+2029-12-23	4. Advent	4. Advent	observance	
+2029-12-24	Heiliger Abend	Christmas Eve	bank	
+2029-12-25	1. Weihnachtstag	Christmas Day	public	
+2029-12-26	2. Weihnachtstag	Boxing Day	public	
+2029-12-31	Silvester	New Year's Eve	bank	
+2030-01-01	Neujahr	New Year's Day	public	
+2030-01-06	Heilige Drei Könige	Epiphany	public	BW
+2030-01-06	Heilige Drei Könige	Epiphany	public	BY
+2030-01-06	Heilige Drei Könige	Epiphany	public	ST
+2030-02-02	Lichtmess	Candlemas	observance	BY
+2030-02-14	Valentinstag	Valentine's Day	observance	
+2030-02-28	Weiberfastnacht	Women's Carnival Day	observance	
+2030-03-04	Rosenmontag	Shrove Monday	observance	
+2030-03-05	Faschingsdienstag	Shrove Tuesday	observance	
+2030-03-06	Aschermittwoch	Ash Wednesday	observance	
+2030-03-08	Internationaler Frauentag	International Women's Day	public	BE
+2030-03-08	Internationaler Frauentag	International Women's Day	public	MV
+2030-04-18	Gründonnerstag	Maundy Thursday	observance	
+2030-04-19	Karfreitag	Good Friday	public	
+2030-04-21	Ostersonntag	Easter Sunday	observance	
+2030-04-22	Ostermontag	Easter Monday	public	
+2030-05-01	Maifeiertag	Labour Day	public	
+2030-05-12	Muttertag	Mother's Day	observance	
+2030-05-30	Christi Himmelfahrt	Ascension Day	public	
+2030-06-09	Pfingstsonntag	Pentecost	observance	
+2030-06-10	Pfingstmontag	Whit Monday	public	
+2030-06-20	Fronleichnam	Corpus Christi	public	BW
+2030-06-20	Fronleichnam	Corpus Christi	public	BY
+2030-06-20	Fronleichnam	Corpus Christi	public	HE
+2030-06-20	Fronleichnam	Corpus Christi	public	NW
+2030-06-20	Fronleichnam	Corpus Christi	public	RP
+2030-06-20	Fronleichnam	Corpus Christi	public	SL
+2030-06-20	Fronleichnam	Corpus Christi	observance	SN
+2030-06-20	Fronleichnam	Corpus Christi	observance	TH
+2030-08-15	Mariä Himmelfahrt	Assumption	observance	BY
+2030-08-15	Mariä Himmelfahrt	Assumption	public	SL
+2030-09-20	Weltkindertag	International Children's Day	public	TH
+2030-10-03	Tag der Deutschen Einheit	National Holiday	public	
+2030-10-31	Reformationstag	Reformation Day	public	BB
+2030-10-31	Reformationstag	Reformation Day	school	BW
+2030-10-31	Reformationstag	Reformation Day	public	HB
+2030-10-31	Reformationstag	Reformation Day	public	HH
+2030-10-31	Reformationstag	Reformation Day	public	MV
+2030-10-31	Reformationstag	Reformation Day	public	NI
+2030-10-31	Reformationstag	Reformation Day	public	SH
+2030-10-31	Reformationstag	Reformation Day	public	SN
+2030-10-31	Reformationstag	Reformation Day	public	ST
+2030-10-31	Reformationstag	Reformation Day	public	TH
+2030-11-01	Allerheiligen	All Saints' Day	observance	
+2030-11-02	Allerseelen	All Souls' Day	observance	
+2030-11-11	Sankt Martin (Faschingsbeginn)	Saint Martin	observance	
+2030-11-17	Volkstrauertag	Memorial Day	observance	
+2030-11-20	Buß- und Bettag	Day of Prayer and Repentance	observance	
+2030-11-24	Totensonntag	Totensonntag	observance	
+2030-12-01	1. Advent	1. Advent	observance	
+2030-12-08	2. Advent	2. Advent	observance	
+2030-12-15	3. Advent	3. Advent	observance	
+2030-12-22	4. Advent	4. Advent	observance	
+2030-12-24	Heiliger Abend	Christmas Eve	bank	
+2030-12-25	1. Weihnachtstag	Christmas Day	public	
+2030-12-26	2. Weihnachtstag	Boxing Day	public	
+2030-12-31	Silvester	New Year's Eve	bank	
+2031-01-01	Neujahr	New Year's Day	public	
+2031-01-06	Heilige Drei Könige	Epiphany	public	BW
+2031-01-06	Heilige Drei Könige	Epiphany	public	BY
+2031-01-06	Heilige Drei Könige	Epiphany	public	ST
+2031-02-02	Lichtmess	Candlemas	observance	BY
+2031-02-14	Valentinstag	Valentine's Day	observance	
+2031-02-20	Weiberfastnacht	Women's Carnival Day	observance	
+2031-02-24	Rosenmontag	Shrove Monday	observance	
+2031-02-25	Faschingsdienstag	Shrove Tuesday	observance	
+2031-02-26	Aschermittwoch	Ash Wednesday	observance	
+2031-03-08	Internationaler Frauentag	International Women's Day	public	BE
+2031-03-08	Internationaler Frauentag	International Women's Day	public	MV
+2031-04-10	Gründonnerstag	Maundy Thursday	observance	
+2031-04-11	Karfreitag	Good Friday	public	
+2031-04-13	Ostersonntag	Easter Sunday	observance	
+2031-04-14	Ostermontag	Easter Monday	public	
+2031-05-01	Maifeiertag	Labour Day	public	
+2031-05-11	Muttertag	Mother's Day	observance	
+2031-05-22	Christi Himmelfahrt	Ascension Day	public	
+2031-06-01	Pfingstsonntag	Pentecost	observance	
+2031-06-02	Pfingstmontag	Whit Monday	public	
+2031-06-12	Fronleichnam	Corpus Christi	public	BW
+2031-06-12	Fronleichnam	Corpus Christi	public	BY
+2031-06-12	Fronleichnam	Corpus Christi	public	HE
+2031-06-12	Fronleichnam	Corpus Christi	public	NW
+2031-06-12	Fronleichnam	Corpus Christi	public	RP
+2031-06-12	Fronleichnam	Corpus Christi	public	SL
+2031-06-12	Fronleichnam	Corpus Christi	observance	SN
+2031-06-12	Fronleichnam	Corpus Christi	observance	TH
+2031-08-15	Mariä Himmelfahrt	Assumption	observance	BY
+2031-08-15	Mariä Himmelfahrt	Assumption	public	SL
+2031-09-20	Weltkindertag	International Children's Day	public	TH
+2031-10-03	Tag der Deutschen Einheit	National Holiday	public	
+2031-10-31	Reformationstag	Reformation Day	public	BB
+2031-10-31	Reformationstag	Reformation Day	school	BW
+2031-10-31	Reformationstag	Reformation Day	public	HB
+2031-10-31	Reformationstag	Reformation Day	public	HH
+2031-10-31	Reformationstag	Reformation Day	public	MV
+2031-10-31	Reformationstag	Reformation Day	public	NI
+2031-10-31	Reformationstag	Reformation Day	public	SH
+2031-10-31	Reformationstag	Reformation Day	public	SN
+2031-10-31	Reformationstag	Reformation Day	public	ST
+2031-10-31	Reformationstag	Reformation Day	public	TH
+2031-11-01	Allerheiligen	All Saints' Day	observance	
+2031-11-02	Allerseelen	All Souls' Day	observance	
+2031-11-11	Sankt Martin (Faschingsbeginn)	Saint Martin	observance	
+2031-11-16	Volkstrauertag	Memorial Day	observance	
+2031-11-19	Buß- und Bettag	Day of Prayer and Repentance	observance	
+2031-11-23	Totensonntag	Totensonntag	observance	
+2031-11-30	1. Advent	1. Advent	observance	
+2031-12-07	2. Advent	2. Advent	observance	
+2031-12-14	3. Advent	3. Advent	observance	
+2031-12-21	4. Advent	4. Advent	observance	
+2031-12-24	Heiliger Abend	Christmas Eve	bank	
+2031-12-25	1. Weihnachtstag	Christmas Day	public	
+2031-12-26	2. Weihnachtstag	Boxing Day	public	
+2031-12-31	Silvester	New Year's Eve	bank	
+2032-01-01	Neujahr	New Year's Day	public	
+2032-01-06	Heilige Drei Könige	Epiphany	public	BW
+2032-01-06	Heilige Drei Könige	Epiphany	public	BY
+2032-01-06	Heilige Drei Könige	Epiphany	public	ST
+2032-02-02	Lichtmess	Candlemas	observance	BY
+2032-02-05	Weiberfastnacht	Women's Carnival Day	observance	
+2032-02-09	Rosenmontag	Shrove Monday	observance	
+2032-02-10	Faschingsdienstag	Shrove Tuesday	observance	
+2032-02-11	Aschermittwoch	Ash Wednesday	observance	
+2032-02-14	Valentinstag	Valentine's Day	observance	
+2032-03-08	Internationaler Frauentag	International Women's Day	public	BE
+2032-03-08	Internationaler Frauentag	International Women's Day	public	MV
+2032-03-25	Gründonnerstag	Maundy Thursday	observance	
+2032-03-26	Karfreitag	Good Friday	public	
+2032-03-28	Ostersonntag	Easter Sunday	observance	
+2032-03-29	Ostermontag	Easter Monday	public	
+2032-05-01	Maifeiertag	Labour Day	public	
+2032-05-06	Christi Himmelfahrt	Ascension Day	public	
+2032-05-09	Muttertag	Mother's Day	observance	
+2032-05-16	Pfingstsonntag	Pentecost	observance	
+2032-05-17	Pfingstmontag	Whit Monday	public	
+2032-05-27	Fronleichnam	Corpus Christi	public	BW
+2032-05-27	Fronleichnam	Corpus Christi	public	BY
+2032-05-27	Fronleichnam	Corpus Christi	public	HE
+2032-05-27	Fronleichnam	Corpus Christi	public	NW
+2032-05-27	Fronleichnam	Corpus Christi	public	RP
+2032-05-27	Fronleichnam	Corpus Christi	public	SL
+2032-05-27	Fronleichnam	Corpus Christi	observance	SN
+2032-05-27	Fronleichnam	Corpus Christi	observance	TH
+2032-08-15	Mariä Himmelfahrt	Assumption	observance	BY
+2032-08-15	Mariä Himmelfahrt	Assumption	public	SL
+2032-09-20	Weltkindertag	International Children's Day	public	TH
+2032-10-03	Tag der Deutschen Einheit	National Holiday	public	
+2032-10-31	Reformationstag	Reformation Day	public	BB
+2032-10-31	Reformationstag	Reformation Day	school	BW
+2032-10-31	Reformationstag	Reformation Day	public	HB
+2032-10-31	Reformationstag	Reformation Day	public	HH
+2032-10-31	Reformationstag	Reformation Day	public	MV
+2032-10-31	Reformationstag	Reformation Day	public	NI
+2032-10-31	Reformationstag	Reformation Day	public	SH
+2032-10-31	Reformationstag	Reformation Day	public	SN
+2032-10-31	Reformationstag	Reformation Day	public	ST
+2032-10-31	Reformationstag	Reformation Day	public	TH
+2032-11-01	Allerheiligen	All Saints' Day	observance	
+2032-11-02	Allerseelen	All Souls' Day	observance	
+2032-11-11	Sankt Martin (Faschingsbeginn)	Saint Martin	observance	
+2032-11-14	Volkstrauertag	Memorial Day	observance	
+2032-11-17	Buß- und Bettag	Day of Prayer and Repentance	observance	
+2032-11-21	Totensonntag	Totensonntag	observance	
+2032-11-28	1. Advent	1. Advent	observance	
+2032-12-05	2. Advent	2. Advent	observance	
+2032-12-12	3. Advent	3. Advent	observance	
+2032-12-19	4. Advent	4. Advent	observance	
+2032-12-24	Heiliger Abend	Christmas Eve	bank	
+2032-12-25	1. Weihnachtstag	Christmas Day	public	
+2032-12-26	2. Weihnachtstag	Boxing Day	public	
+2032-12-31	Silvester	New Year's Eve	bank	
+2033-01-01	Neujahr	New Year's Day	public	
+2033-01-06	Heilige Drei Könige	Epiphany	public	BW
+2033-01-06	Heilige Drei Könige	Epiphany	public	BY
+2033-01-06	Heilige Drei Könige	Epiphany	public	ST
+2033-02-02	Lichtmess	Candlemas	observance	BY
+2033-02-14	Valentinstag	Valentine's Day	observance	
+2033-02-24	Weiberfastnacht	Women's Carnival Day	observance	
+2033-02-28	Rosenmontag	Shrove Monday	observance	
+2033-03-01	Faschingsdienstag	Shrove Tuesday	observance	
+2033-03-02	Aschermittwoch	Ash Wednesday	observance	
+2033-03-08	Internationaler Frauentag	International Women's Day	public	BE
+2033-03-08	Internationaler Frauentag	International Women's Day	public	MV
+2033-04-14	Gründonnerstag	Maundy Thursday	observance	
+2033-04-15	Karfreitag	Good Friday	public	
+2033-04-17	Ostersonntag	Easter Sunday	observance	
+2033-04-18	Ostermontag	Easter Monday	public	
+2033-05-01	Maifeiertag	Labour Day	public	
+2033-05-08	Muttertag	Mother's Day	observance	
+2033-05-26	Christi Himmelfahrt	Ascension Day	public	
+2033-06-05	Pfingstsonntag	Pentecost	observance	
+2033-06-06	Pfingstmontag	Whit Monday	public	
+2033-06-16	Fronleichnam	Corpus Christi	public	BW
+2033-06-16	Fronleichnam	Corpus Christi	public	BY
+2033-06-16	Fronleichnam	Corpus Christi	public	HE
+2033-06-16	Fronleichnam	Corpus Christi	public	NW
+2033-06-16	Fronleichnam	Corpus Christi	public	RP
+2033-06-16	Fronleichnam	Corpus Christi	public	SL
+2033-06-16	Fronleichnam	Corpus Christi	observance	SN
+2033-06-16	Fronleichnam	Corpus Christi	observance	TH
+2033-08-15	Mariä Himmelfahrt	Assumption	observance	BY
+2033-08-15	Mariä Himmelfahrt	Assumption	public	SL
+2033-09-20	Weltkindertag	International Children's Day	public	TH
+2033-10-03	Tag der Deutschen Einheit	National Holiday	public	
+2033-10-31	Reformationstag	Reformation Day	public	BB
+2033-10-31	Reformationstag	Reformation Day	school	BW
+2033-10-31	Reformationstag	Reformation Day	public	HB
+2033-10-31	Reformationstag	Reformation Day	public	HH
+2033-10-31	Reformationstag	Reformation Day	public	MV
+2033-10-31	Reformationstag	Reformation Day	public	NI
+2033-10-31	Reformationstag	Reformation Day	public	SH
+2033-10-31	Reformationstag	Reformation Day	public	SN
+2033-10-31	Reformationstag	Reformation Day	public	ST
+2033-10-31	Reformationstag	Reformation Day	public	TH
+2033-11-01	Allerheiligen	All Saints' Day	observance	
+2033-11-02	Allerseelen	All Souls' Day	observance	
+2033-11-11	Sankt Martin (Faschingsbeginn)	Saint Martin	observance	
+2033-11-13	Volkstrauertag	Memorial Day	observance	
+2033-11-16	Buß- und Bettag	Day of Prayer and Repentance	observance	
+2033-11-20	Totensonntag	Totensonntag	observance	
+2033-11-27	1. Advent	1. Advent	observance	
+2033-12-04	2. Advent	2. Advent	observance	
+2033-12-11	3. Advent	3. Advent	observance	
+2033-12-18	4. Advent	4. Advent	observance	
+2033-12-24	Heiliger Abend	Christmas Eve	bank	
+2033-12-25	1. Weihnachtstag	Christmas Day	public	
+2033-12-26	2. Weihnachtstag	Boxing Day	public	
+2033-12-31	Silvester	New Year's Eve	bank	
+2034-01-01	Neujahr	New Year's Day	public	
+2034-01-06	Heilige Drei Könige	Epiphany	public	BW
+2034-01-06	Heilige Drei Könige	Epiphany	public	BY
+2034-01-06	Heilige Drei Könige	Epiphany	public	ST
+2034-02-02	Lichtmess	Candlemas	observance	BY
+2034-02-14	Valentinstag	Valentine's Day	observance	
+2034-02-16	Weiberfastnacht	Women's Carnival Day	observance	
+2034-02-20	Rosenmontag	Shrove Monday	observance	
+2034-02-21	Faschingsdienstag	Shrove Tuesday	observance	
+2034-02-22	Aschermittwoch	Ash Wednesday	observance	
+2034-03-08	Internationaler Frauentag	International Women's Day	public	BE
+2034-03-08	Internationaler Frauentag	International Women's Day	public	MV
+2034-04-06	Gründonnerstag	Maundy Thursday	observance	
+2034-04-07	Karfreitag	Good Friday	public	
+2034-04-09	Ostersonntag	Easter Sunday	observance	
+2034-04-10	Ostermontag	Easter Monday	public	
+2034-05-01	Maifeiertag	Labour Day	public	
+2034-05-14	Muttertag	Mother's Day	observance	
+2034-05-18	Christi Himmelfahrt	Ascension Day	public	
+2034-05-28	Pfingstsonntag	Pentecost	observance	
+2034-05-29	Pfingstmontag	Whit Monday	public	
+2034-06-08	Fronleichnam	Corpus Christi	public	BW
+2034-06-08	Fronleichnam	Corpus Christi	public	BY
+2034-06-08	Fronleichnam	Corpus Christi	public	HE
+2034-06-08	Fronleichnam	Corpus Christi	public	NW
+2034-06-08	Fronleichnam	Corpus Christi	public	RP
+2034-06-08	Fronleichnam	Corpus Christi	public	SL
+2034-06-08	Fronleichnam	Corpus Christi	observance	SN
+2034-06-08	Fronleichnam	Corpus Christi	observance	TH
+2034-08-15	Mariä Himmelfahrt	Assumption	observance	BY
+2034-08-15	Mariä Himmelfahrt	Assumption	public	SL
+2034-09-20	Weltkindertag	International Children's Day	public	TH
+2034-10-03	Tag der Deutschen Einheit	National Holiday	public	
+2034-10-31	Reformationstag	Reformation Day	public	BB
+2034-10-31	Reformationstag	Reformation Day	school	BW
+2034-10-31	Reformationstag	Reformation Day	public	HB
+2034-10-31	Reformationstag	Reformation Day	public	HH
+2034-10-31	Reformationstag	Reformation Day	public	MV
+2034-10-31	Reformationstag	Reformation Day	public	NI
+2034-10-31	Reformationstag	Reformation Day	public	SH
+2034-10-31	Reformationstag	Reformation Day	public	SN
+2034-10-31	Reformationstag	Reformation Day	public	ST
+2034-10-31	Reformationstag	Reformation Day	public	TH
+2034-11-01	Allerheiligen	All Saints' Day	observance	
+2034-11-02	Allerseelen	All Souls' Day	observance	
+2034-11-11	Sankt Martin (Faschingsbeginn)	Saint Martin	observance	
+2034-11-19	Volkstrauertag	Memorial Day	observance	
+2034-11-22	Buß- und Bettag	Day of Prayer and Repentance	observance	
+2034-11-26	Totensonntag	Totensonntag	observance	
+2034-12-03	1. Advent	1. Advent	observance	
+2034-12-10	2. Advent	2. Advent	observance	
+2034-12-17	3. Advent	3. Advent	observance	
+2034-12-24	4. Advent	4. Advent	observance	
+2034-12-24	Heiliger Abend	Christmas Eve	bank	
+2034-12-25	1. Weihnachtstag	Christmas Day	public	
+2034-12-26	2. Weihnachtstag	Boxing Day	public	
+2034-12-31	Silvester	New Year's Eve	bank	
+2035-01-01	Neujahr	New Year's Day	public	
+2035-01-06	Heilige Drei Könige	Epiphany	public	BW
+2035-01-06	Heilige Drei Könige	Epiphany	public	BY
+2035-01-06	Heilige Drei Könige	Epiphany	public	ST
+2035-02-01	Weiberfastnacht	Women's Carnival Day	observance	
+2035-02-02	Lichtmess	Candlemas	observance	BY
+2035-02-05	Rosenmontag	Shrove Monday	observance	
+2035-02-06	Faschingsdienstag	Shrove Tuesday	observance	
+2035-02-07	Aschermittwoch	Ash Wednesday	observance	
+2035-02-14	Valentinstag	Valentine's Day	observance	
+2035-03-08	Internationaler Frauentag	International Women's Day	public	BE
+2035-03-08	Internationaler Frauentag	International Women's Day	public	MV
+2035-03-22	Gründonnerstag	Maundy Thursday	observance	
+2035-03-23	Karfreitag	Good Friday	public	
+2035-03-25	Ostersonntag	Easter Sunday	observance	
+2035-03-26	Ostermontag	Easter Monday	public	
+2035-05-01	Maifeiertag	Labour Day	public	
+2035-05-03	Christi Himmelfahrt	Ascension Day	public	
+2035-05-13	Muttertag	Mother's Day	observance	
+2035-05-13	Pfingstsonntag	Pentecost	observance	
+2035-05-14	Pfingstmontag	Whit Monday	public	
+2035-05-24	Fronleichnam	Corpus Christi	public	BW
+2035-05-24	Fronleichnam	Corpus Christi	public	BY
+2035-05-24	Fronleichnam	Corpus Christi	public	HE
+2035-05-24	Fronleichnam	Corpus Christi	public	NW
+2035-05-24	Fronleichnam	Corpus Christi	public	RP
+2035-05-24	Fronleichnam	Corpus Christi	public	SL
+2035-05-24	Fronleichnam	Corpus Christi	observance	SN
+2035-05-24	Fronleichnam	Corpus Christi	observance	TH
+2035-08-15	Mariä Himmelfahrt	Assumption	observance	BY
+2035-08-15	Mariä Himmelfahrt	Assumption	public	SL
+2035-09-20	Weltkindertag	International Children's Day	public	TH
+2035-10-03	Tag der Deutschen Einheit	National Holiday	public	
+2035-10-31	Reformationstag	Reformation Day	public	BB
+2035-10-31	Reformationstag	Reformation Day	school	BW
+2035-10-31	Reformationstag	Reformation Day	public	HB
+2035-10-31	Reformationstag	Reformation Day	public	HH
+2035-10-31	Reformationstag	Reformation Day	public	MV
+2035-10-31	Reformationstag	Reformation Day	public	NI
+2035-10-31	Reformationstag	Reformation Day	public	SH
+2035-10-31	Reformationstag	Reformation Day	public	SN
+2035-10-31	Reformationstag	Reformation Day	public	ST
+2035-10-31	Reformationstag	Reformation Day	public	TH
+2035-11-01	Allerheiligen	All Saints' Day	observance	
+2035-11-02	Allerseelen	All Souls' Day	observance	
+2035-11-11	Sankt Martin (Faschingsbeginn)	Saint Martin	observance	
+2035-11-18	Volkstrauertag	Memorial Day	observance	
+2035-11-21	Buß- und Bettag	Day of Prayer and Repentance	observance	
+2035-11-25	Totensonntag	Totensonntag	observance	
+2035-12-02	1. Advent	1. Advent	observance	
+2035-12-09	2. Advent	2. Advent	observance	
+2035-12-16	3. Advent	3. Advent	observance	
+2035-12-23	4. Advent	4. Advent	observance	
+2035-12-24	Heiliger Abend	Christmas Eve	bank	
+2035-12-25	1. Weihnachtstag	Christmas Day	public	
+2035-12-26	2. Weihnachtstag	Boxing Day	public	
+2035-12-31	Silvester	New Year's Eve	bank	
+2036-01-01	Neujahr	New Year's Day	public	
+2036-01-06	Heilige Drei Könige	Epiphany	public	BW
+2036-01-06	Heilige Drei Könige	Epiphany	public	BY
+2036-01-06	Heilige Drei Könige	Epiphany	public	ST
+2036-02-02	Lichtmess	Candlemas	observance	BY
+2036-02-14	Valentinstag	Valentine's Day	observance	
+2036-02-21	Weiberfastnacht	Women's Carnival Day	observance	
+2036-02-25	Rosenmontag	Shrove Monday	observance	
+2036-02-26	Faschingsdienstag	Shrove Tuesday	observance	
+2036-02-27	Aschermittwoch	Ash Wednesday	observance	
+2036-03-08	Internationaler Frauentag	International Women's Day	public	BE
+2036-03-08	Internationaler Frauentag	International Women's Day	public	MV
+2036-04-10	Gründonnerstag	Maundy Thursday	observance	
+2036-04-11	Karfreitag	Good Friday	public	
+2036-04-13	Ostersonntag	Easter Sunday	observance	
+2036-04-14	Ostermontag	Easter Monday	public	
+2036-05-01	Maifeiertag	Labour Day	public	
+2036-05-11	Muttertag	Mother's Day	observance	
+2036-05-22	Christi Himmelfahrt	Ascension Day	public	
+2036-06-01	Pfingstsonntag	Pentecost	observance	
+2036-06-02	Pfingstmontag	Whit Monday	public	
+2036-06-12	Fronleichnam	Corpus Christi	public	BW
+2036-06-12	Fronleichnam	Corpus Christi	public	BY
+2036-06-12	Fronleichnam	Corpus Christi	public	HE
+2036-06-12	Fronleichnam	Corpus Christi	public	NW
+2036-06-12	Fronleichnam	Corpus Christi	public	RP
+2036-06-12	Fronleichnam	Corpus Christi	public	SL
+2036-06-12	Fronleichnam	Corpus Christi	observance	SN
+2036-06-12	Fronleichnam	Corpus Christi	observance	TH
+2036-08-15	Mariä Himmelfahrt	Assumption	observance	BY
+2036-08-15	Mariä Himmelfahrt	Assumption	public	SL
+2036-09-20	Weltkindertag	International Children's Day	public	TH
+2036-10-03	Tag der Deutschen Einheit	National Holiday	public	
+2036-10-31	Reformationstag	Reformation Day	public	BB
+2036-10-31	Reformationstag	Reformation Day	school	BW
+2036-10-31	Reformationstag	Reformation Day	public	HB
+2036-10-31	Reformationstag	Reformation Day	public	HH
+2036-10-31	Reformationstag	Reformation Day	public	MV
+2036-10-31	Reformationstag	Reformation Day	public	NI
+2036-10-31	Reformationstag	Reformation Day	public	SH
+2036-10-31	Reformationstag	Reformation Day	public	SN
+2036-10-31	Reformationstag	Reformation Day	public	ST
+2036-10-31	Reformationstag	Reformation Day	public	TH
+2036-11-01	Allerheiligen	All Saints' Day	observance	
+2036-11-02	Allerseelen	All Souls' Day	observance	
+2036-11-11	Sankt Martin (Faschingsbeginn)	Saint Martin	observance	
+2036-11-16	Volkstrauertag	Memorial Day	observance	
+2036-11-19	Buß- und Bettag	Day of Prayer and Repentance	observance	
+2036-11-23	Totensonntag	Totensonntag	observance	
+2036-11-30	1. Advent	1. Advent	observance	
+2036-12-07	2. Advent	2. Advent	observance	
+2036-12-14	3. Advent	3. Advent	observance	
+2036-12-21	4. Advent	4. Advent	observance	
+2036-12-24	Heiliger Abend	Christmas Eve	bank	
+2036-12-25	1. Weihnachtstag	Christmas Day	public	
+2036-12-26	2. Weihnachtstag	Boxing Day	public	
+2036-12-31	Silvester	New Year's Eve	bank	
+2037-01-01	Neujahr	New Year's Day	public	
+2037-01-06	Heilige Drei Könige	Epiphany	public	BW
+2037-01-06	Heilige Drei Könige	Epiphany	public	BY
+2037-01-06	Heilige Drei Könige	Epiphany	public	ST
+2037-02-02	Lichtmess	Candlemas	observance	BY
+2037-02-12	Weiberfastnacht	Women's Carnival Day	observance	
+2037-02-14	Valentinstag	Valentine's Day	observance	
+2037-02-16	Rosenmontag	Shrove Monday	observance	
+2037-02-17	Faschingsdienstag	Shrove Tuesday	observance	
+2037-02-18	Aschermittwoch	Ash Wednesday	observance	
+2037-03-08	Internationaler Frauentag	International Women's Day	public	BE
+2037-03-08	Internationaler Frauentag	International Women's Day	public	MV
+2037-04-02	Gründonnerstag	Maundy Thursday	observance	
+2037-04-03	Karfreitag	Good Friday	public	
+2037-04-05	Ostersonntag	Easter Sunday	observance	
+2037-04-06	Ostermontag	Easter Monday	public	
+2037-05-01	Maifeiertag	Labour Day	public	
+2037-05-10	Muttertag	Mother's Day	observance	
+2037-05-14	Christi Himmelfahrt	Ascension Day	public	
+2037-05-24	Pfingstsonntag	Pentecost	observance	
+2037-05-25	Pfingstmontag	Whit Monday	public	
+2037-06-04	Fronleichnam	Corpus Christi	public	BW
+2037-06-04	Fronleichnam	Corpus Christi	public	BY
+2037-06-04	Fronleichnam	Corpus Christi	public	HE
+2037-06-04	Fronleichnam	Corpus Christi	public	NW
+2037-06-04	Fronleichnam	Corpus Christi	public	RP
+2037-06-04	Fronleichnam	Corpus Christi	public	SL
+2037-06-04	Fronleichnam	Corpus Christi	observance	SN
+2037-06-04	Fronleichnam	Corpus Christi	observance	TH
+2037-08-15	Mariä Himmelfahrt	Assumption	observance	BY
+2037-08-15	Mariä Himmelfahrt	Assumption	public	SL
+2037-09-20	Weltkindertag	International Children's Day	public	TH
+2037-10-03	Tag der Deutschen Einheit	National Holiday	public	
+2037-10-31	Reformationstag	Reformation Day	public	BB
+2037-10-31	Reformationstag	Reformation Day	school	BW
+2037-10-31	Reformationstag	Reformation Day	public	HB
+2037-10-31	Reformationstag	Reformation Day	public	HH
+2037-10-31	Reformationstag	Reformation Day	public	MV
+2037-10-31	Reformationstag	Reformation Day	public	NI
+2037-10-31	Reformationstag	Reformation Day	public	SH
+2037-10-31	Reformationstag	Reformation Day	public	SN
+2037-10-31	Reformationstag	Reformation Day	public	ST
+2037-10-31	Reformationstag	Reformation Day	public	TH
+2037-11-01	Allerheiligen	All Saints' Day	observance	
+2037-11-02	Allerseelen	All Souls' Day	observance	
+2037-11-11	Sankt Martin (Faschingsbeginn)	Saint Martin	observance	
+2037-11-15	Volkstrauertag	Memorial Day	observance	
+2037-11-18	Buß- und Bettag	Day of Prayer and Repentance	observance	
+2037-11-22	Totensonntag	Totensonntag	observance	
+2037-11-29	1. Advent	1. Advent	observance	
+2037-12-06	2. Advent	2. Advent	observance	
+2037-12-13	3. Advent	3. Advent	observance	
+2037-12-20	4. Advent	4. Advent	observance	
+2037-12-24	Heiliger Abend	Christmas Eve	bank	
+2037-12-25	1. Weihnachtstag	Christmas Day	public	
+2037-12-26	2. Weihnachtstag	Boxing Day	public	
+2037-12-31	Silvester	New Year's Eve	bank	
+2038-01-01	Neujahr	New Year's Day	public	
+2038-01-06	Heilige Drei Könige	Epiphany	public	BW
+2038-01-06	Heilige Drei Könige	Epiphany	public	BY
+2038-01-06	Heilige Drei Könige	Epiphany	public	ST
+2038-02-02	Lichtmess	Candlemas	observance	BY
+2038-02-14	Valentinstag	Valentine's Day	observance	
+2038-03-04	Weiberfastnacht	Women's Carnival Day	observance	
+2038-03-08	Rosenmontag	Shrove Monday	observance	
+2038-03-08	Internationaler Frauentag	International Women's Day	public	BE
+2038-03-08	Internationaler Frauentag	International Women's Day	public	MV
+2038-03-09	Faschingsdienstag	Shrove Tuesday	observance	
+2038-03-10	Aschermittwoch	Ash Wednesday	observance	
+2038-04-22	Gründonnerstag	Maundy Thursday	observance	
+2038-04-23	Karfreitag	Good Friday	public	
+2038-04-25	Ostersonntag	Easter Sunday	observance	
+2038-04-26	Ostermontag	Easter Monday	public	
+2038-05-01	Maifeiertag	Labour Day	public	
+2038-05-09	Muttertag	Mother's Day	observance	
+2038-06-03	Christi Himmelfahrt	Ascension Day	public	
+2038-06-13	Pfingstsonntag	Pentecost	observance	
+2038-06-14	Pfingstmontag	Whit Monday	public	
+2038-06-24	Fronleichnam	Corpus Christi	public	BW
+2038-06-24	Fronleichnam	Corpus Christi	public	BY
+2038-06-24	Fronleichnam	Corpus Christi	public	HE
+2038-06-24	Fronleichnam	Corpus Christi	public	NW
+2038-06-24	Fronleichnam	Corpus Christi	public	RP
+2038-06-24	Fronleichnam	Corpus Christi	public	SL
+2038-06-24	Fronleichnam	Corpus Christi	observance	SN
+2038-06-24	Fronleichnam	Corpus Christi	observance	TH
+2038-08-15	Mariä Himmelfahrt	Assumption	observance	BY
+2038-08-15	Mariä Himmelfahrt	Assumption	public	SL
+2038-09-20	Weltkindertag	International Children's Day	public	TH
+2038-10-03	Tag der Deutschen Einheit	National Holiday	public	
+2038-10-31	Reformationstag	Reformation Day	public	BB
+2038-10-31	Reformationstag	Reformation Day	school	BW
+2038-10-31	Reformationstag	Reformation Day	public	HB
+2038-10-31	Reformationstag	Reformation Day	public	HH
+2038-10-31	Reformationstag	Reformation Day	public	MV
+2038-10-31	Reformationstag	Reformation Day	public	NI
+2038-10-31	Reformationstag	Reformation Day	public	SH
+2038-10-31	Reformationstag	Reformation Day	public	SN
+2038-10-31	Reformationstag	Reformation Day	public	ST
+2038-10-31	Reformationstag	Reformation Day	public	TH
+2038-11-01	Allerheiligen	All Saints' Day	observance	
+2038-11-02	Allerseelen	All Souls' Day	observance	
+2038-11-11	Sankt Martin (Faschingsbeginn)	Saint Martin	observance	
+2038-11-14	Volkstrauertag	Memorial Day	observance	
+2038-11-17	Buß- und Bettag	Day of Prayer and Repentance	observance	
+2038-11-21	Totensonntag	Totensonntag	observance	
+2038-11-28	1. Advent	1. Advent	observance	
+2038-12-05	2. Advent	2. Advent	observance	
+2038-12-12	3. Advent	3. Advent	observance	
+2038-12-19	4. Advent	4. Advent	observance	
+2038-12-24	Heiliger Abend	Christmas Eve	bank	
+2038-12-25	1. Weihnachtstag	Christmas Day	public	
+2038-12-26	2. Weihnachtstag	Boxing Day	public	
+2038-12-31	Silvester	New Year's Eve	bank	
+2039-01-01	Neujahr	New Year's Day	public	
+2039-01-06	Heilige Drei Könige	Epiphany	public	BW
+2039-01-06	Heilige Drei Könige	Epiphany	public	BY
+2039-01-06	Heilige Drei Könige	Epiphany	public	ST
+2039-02-02	Lichtmess	Candlemas	observance	BY
+2039-02-14	Valentinstag	Valentine's Day	observance	
+2039-02-17	Weiberfastnacht	Women's Carnival Day	observance	
+2039-02-21	Rosenmontag	Shrove Monday	observance	
+2039-02-22	Faschingsdienstag	Shrove Tuesday	observance	
+2039-02-23	Aschermittwoch	Ash Wednesday	observance	
+2039-03-08	Internationaler Frauentag	International Women's Day	public	BE
+2039-03-08	Internationaler Frauentag	International Women's Day	public	MV
+2039-04-07	Gründonnerstag	Maundy Thursday	observance	
+2039-04-08	Karfreitag	Good Friday	public	
+2039-04-10	Ostersonntag	Easter Sunday	observance	
+2039-04-11	Ostermontag	Easter Monday	public	
+2039-05-01	Maifeiertag	Labour Day	public	
+2039-05-08	Muttertag	Mother's Day	observance	
+2039-05-19	Christi Himmelfahrt	Ascension Day	public	
+2039-05-29	Pfingstsonntag	Pentecost	observance	
+2039-05-30	Pfingstmontag	Whit Monday	public	
+2039-06-09	Fronleichnam	Corpus Christi	public	BW
+2039-06-09	Fronleichnam	Corpus Christi	public	BY
+2039-06-09	Fronleichnam	Corpus Christi	public	HE
+2039-06-09	Fronleichnam	Corpus Christi	public	NW
+2039-06-09	Fronleichnam	Corpus Christi	public	RP
+2039-06-09	Fronleichnam	Corpus Christi	public	SL
+2039-06-09	Fronleichnam	Corpus Christi	observance	SN
+2039-06-09	Fronleichnam	Corpus Christi	observance	TH
+2039-08-15	Mariä Himmelfahrt	Assumption	observance	BY
+2039-08-15	Mariä Himmelfahrt	Assumption	public	SL
+2039-09-20	Weltkindertag	International Children's Day	public	TH
+2039-10-03	Tag der Deutschen Einheit	National Holiday	public	
+2039-10-31	Reformationstag	Reformation Day	public	BB
+2039-10-31	Reformationstag	Reformation Day	school	BW
+2039-10-31	Reformationstag	Reformation Day	public	HB
+2039-10-31	Reformationstag	Reformation Day	public	HH
+2039-10-31	Reformationstag	Reformation Day	public	MV
+2039-10-31	Reformationstag	Reformation Day	public	NI
+2039-10-31	Reformationstag	Reformation Day	public	SH
+2039-10-31	Reformationstag	Reformation Day	public	SN
+2039-10-31	Reformationstag	Reformation Day	public	ST
+2039-10-31	Reformationstag	Reformation Day	public	TH
+2039-11-01	Allerheiligen	All Saints' Day	observance	
+2039-11-02	Allerseelen	All Souls' Day	observance	
+2039-11-11	Sankt Martin (Faschingsbeginn)	Saint Martin	observance	
+2039-11-13	Volkstrauertag	Memorial Day	observance	
+2039-11-16	Buß- und Bettag	Day of Prayer and Repentance	observance	
+2039-11-20	Totensonntag	Totensonntag	observance	
+2039-11-27	1. Advent	1. Advent	observance	
+2039-12-04	2. Advent	2. Advent	observance	
+2039-12-11	3. Advent	3. Advent	observance	
+2039-12-18	4. Advent	4. Advent	observance	
+2039-12-24	Heiliger Abend	Christmas Eve	bank	
+2039-12-25	1. Weihnachtstag	Christmas Day	public	
+2039-12-26	2. Weihnachtstag	Boxing Day	public	
+2039-12-31	Silvester	New Year's Eve	bank	
+2040-01-01	Neujahr	New Year's Day	public	
+2040-01-06	Heilige Drei Könige	Epiphany	public	BW
+2040-01-06	Heilige Drei Könige	Epiphany	public	BY
+2040-01-06	Heilige Drei Könige	Epiphany	public	ST
+2040-02-02	Lichtmess	Candlemas	observance	BY
+2040-02-09	Weiberfastnacht	Women's Carnival Day	observance	
+2040-02-13	Rosenmontag	Shrove Monday	observance	
+2040-02-14	Faschingsdienstag	Shrove Tuesday	observance	
+2040-02-14	Valentinstag	Valentine's Day	observance	
+2040-02-15	Aschermittwoch	Ash Wednesday	observance	
+2040-03-08	Internationaler Frauentag	International Women's Day	public	BE
+2040-03-08	Internationaler Frauentag	International Women's Day	public	MV
+2040-03-29	Gründonnerstag	Maundy Thursday	observance	
+2040-03-30	Karfreitag	Good Friday	public	
+2040-04-01	Ostersonntag	Easter Sunday	observance	
+2040-04-02	Ostermontag	Easter Monday	public	
+2040-05-01	Maifeiertag	Labour Day	public	
+2040-05-10	Christi Himmelfahrt	Ascension Day	public	
+2040-05-13	Muttertag	Mother's Day	observance	
+2040-05-20	Pfingstsonntag	Pentecost	observance	
+2040-05-21	Pfingstmontag	Whit Monday	public	
+2040-05-31	Fronleichnam	Corpus Christi	public	BW
+2040-05-31	Fronleichnam	Corpus Christi	public	BY
+2040-05-31	Fronleichnam	Corpus Christi	public	HE
+2040-05-31	Fronleichnam	Corpus Christi	public	NW
+2040-05-31	Fronleichnam	Corpus Christi	public	RP
+2040-05-31	Fronleichnam	Corpus Christi	public	SL
+2040-05-31	Fronleichnam	Corpus Christi	observance	SN
+2040-05-31	Fronleichnam	Corpus Christi	observance	TH
+2040-08-15	Mariä Himmelfahrt	Assumption	observance	BY
+2040-08-15	Mariä Himmelfahrt	Assumption	public	SL
+2040-09-20	Weltkindertag	International Children's Day	public	TH
+2040-10-03	Tag der Deutschen Einheit	National Holiday	public	
+2040-10-31	Reformationstag	Reformation Day	public	BB
+2040-10-31	Reformationstag	Reformation Day	school	BW
+2040-10-31	Reformationstag	Reformation Day	public	HB
+2040-10-31	Reformationstag	Reformation Day	public	HH
+2040-10-31	Reformationstag	Reformation Day	public	MV
+2040-10-31	Reformationstag	Reformation Day	public	NI
+2040-10-31	Reformationstag	Reformation Day	public	SH
+2040-10-31	Reformationstag	Reformation Day	public	SN
+2040-10-31	Reformationstag	Reformation Day	public	ST
+2040-10-31	Reformationstag	Reformation Day	public	TH
+2040-11-01	Allerheiligen	All Saints' Day	observance	
+2040-11-02	Allerseelen	All Souls' Day	observance	
+2040-11-11	Sankt Martin (Faschingsbeginn)	Saint Martin	observance	
+2040-11-18	Volkstrauertag	Memorial Day	observance	
+2040-11-21	Buß- und Bettag	Day of Prayer and Repentance	observance	
+2040-11-25	Totensonntag	Totensonntag	observance	
+2040-12-02	1. Advent	1. Advent	observance	
+2040-12-09	2. Advent	2. Advent	observance	
+2040-12-16	3. Advent	3. Advent	observance	
+2040-12-23	4. Advent	4. Advent	observance	
+2040-12-24	Heiliger Abend	Christmas Eve	bank	
+2040-12-25	1. Weihnachtstag	Christmas Day	public	
+2040-12-26	2. Weihnachtstag	Boxing Day	public	
+2040-12-31	Silvester	New Year's Eve	bank	
+2041-01-01	Neujahr	New Year's Day	public	
+2041-01-06	Heilige Drei Könige	Epiphany	public	BW
+2041-01-06	Heilige Drei Könige	Epiphany	public	BY
+2041-01-06	Heilige Drei Könige	Epiphany	public	ST
+2041-02-02	Lichtmess	Candlemas	observance	BY
+2041-02-14	Valentinstag	Valentine's Day	observance	
+2041-02-28	Weiberfastnacht	Women's Carnival Day	observance	
+2041-03-04	Rosenmontag	Shrove Monday	observance	
+2041-03-05	Faschingsdienstag	Shrove Tuesday	observance	
+2041-03-06	Aschermittwoch	Ash Wednesday	observance	
+2041-03-08	Internationaler Frauentag	International Women's Day	public	BE
+2041-03-08	Internationaler Frauentag	International Women's Day	public	MV
+2041-04-18	Gründonnerstag	Maundy Thursday	observance	
+2041-04-19	Karfreitag	Good Friday	public	
+2041-04-21	Ostersonntag	Easter Sunday	observance	
+2041-04-22	Ostermontag	Easter Monday	public	
+2041-05-01	Maifeiertag	Labour Day	public	
+2041-05-12	Muttertag	Mother's Day	observance	
+2041-05-30	Christi Himmelfahrt	Ascension Day	public	
+2041-06-09	Pfingstsonntag	Pentecost	observance	
+2041-06-10	Pfingstmontag	Whit Monday	public	
+2041-06-20	Fronleichnam	Corpus Christi	public	BW
+2041-06-20	Fronleichnam	Corpus Christi	public	BY
+2041-06-20	Fronleichnam	Corpus Christi	public	HE
+2041-06-20	Fronleichnam	Corpus Christi	public	NW
+2041-06-20	Fronleichnam	Corpus Christi	public	RP
+2041-06-20	Fronleichnam	Corpus Christi	public	SL
+2041-06-20	Fronleichnam	Corpus Christi	observance	SN
+2041-06-20	Fronleichnam	Corpus Christi	observance	TH
+2041-08-15	Mariä Himmelfahrt	Assumption	observance	BY
+2041-08-15	Mariä Himmelfahrt	Assumption	public	SL
+2041-09-20	Weltkindertag	International Children's Day	public	TH
+2041-10-03	Tag der Deutschen Einheit	National Holiday	public	
+2041-10-31	Reformationstag	Reformation Day	public	BB
+2041-10-31	Reformationstag	Reformation Day	school	BW
+2041-10-31	Reformationstag	Reformation Day	public	HB
+2041-10-31	Reformationstag	Reformation Day	public	HH
+2041-10-31	Reformationstag	Reformation Day	public	MV
+2041-10-31	Reformationstag	Reformation Day	public	NI
+2041-10-31	Reformationstag	Reformation Day	public	SH
+2041-10-31	Reformationstag	Reformation Day	public	SN
+2041-10-31	Reformationstag	Reformation Day	public	ST
+2041-10-31	Reformationstag	Reformation Day	public	TH
+2041-11-01	Allerheiligen	All Saints' Day	observance	
+2041-11-02	Allerseelen	All Souls' Day	observance	
+2041-11-11	Sankt Martin (Faschingsbeginn)	Saint Martin	observance	
+2041-11-17	Volkstrauertag	Memorial Day	observance	
+2041-11-20	Buß- und Bettag	Day of Prayer and Repentance	observance	
+2041-11-24	Totensonntag	Totensonntag	observance	
+2041-12-01	1. Advent	1. Advent	observance	
+2041-12-08	2. Advent	2. Advent	observance	
+2041-12-15	3. Advent	3. Advent	observance	
+2041-12-22	4. Advent	4. Advent	observance	
+2041-12-24	Heiliger Abend	Christmas Eve	bank	
+2041-12-25	1. Weihnachtstag	Christmas Day	public	
+2041-12-26	2. Weihnachtstag	Boxing Day	public	
+2041-12-31	Silvester	New Year's Eve	bank	
+2042-01-01	Neujahr	New Year's Day	public	
+2042-01-06	Heilige Drei Könige	Epiphany	public	BW
+2042-01-06	Heilige Drei Könige	Epiphany	public	BY
+2042-01-06	Heilige Drei Könige	Epiphany	public	ST
+2042-02-02	Lichtmess	Candlemas	observance	BY
+2042-02-13	Weiberfastnacht	Women's Carnival Day	observance	
+2042-02-14	Valentinstag	Valentine's Day	observance	
+2042-02-17	Rosenmontag	Shrove Monday	observance	
+2042-02-18	Faschingsdienstag	Shrove Tuesday	observance	
+2042-02-19	Aschermittwoch	Ash Wednesday	observance	
+2042-03-08	Internationaler Frauentag	International Women's Day	public	BE
+2042-03-08	Internationaler Frauentag	International Women's Day	public	MV
+2042-04-03	Gründonnerstag	Maundy Thursday	observance	
+2042-04-04	Karfreitag	Good Friday	public	
+2042-04-06	Ostersonntag	Easter Sunday	observance	
+2042-04-07	Ostermontag	Easter Monday	public	
+2042-05-01	Maifeiertag	Labour Day	public	
+2042-05-11	Muttertag	Mother's Day	observance	
+2042-05-15	Christi Himmelfahrt	Ascension Day	public	
+2042-05-25	Pfingstsonntag	Pentecost	observance	
+2042-05-26	Pfingstmontag	Whit Monday	public	
+2042-06-05	Fronleichnam	Corpus Christi	public	BW
+2042-06-05	Fronleichnam	Corpus Christi	public	BY
+2042-06-05	Fronleichnam	Corpus Christi	public	HE
+2042-06-05	Fronleichnam	Corpus Christi	public	NW
+2042-06-05	Fronleichnam	Corpus Christi	public	RP
+2042-06-05	Fronleichnam	Corpus Christi	public	SL
+2042-06-05	Fronleichnam	Corpus Christi	observance	SN
+2042-06-05	Fronleichnam	Corpus Christi	observance	TH
+2042-08-15	Mariä Himmelfahrt	Assumption	observance	BY
+2042-08-15	Mariä Himmelfahrt	Assumption	public	SL
+2042-09-20	Weltkindertag	International Children's Day	public	TH
+2042-10-03	Tag der Deutschen Einheit	National Holiday	public	
+2042-10-31	Reformationstag	Reformation Day	public	BB
+2042-10-31	Reformationstag	Reformation Day	school	BW
+2042-10-31	Reformationstag	Reformation Day	public	HB
+2042-10-31	Reformationstag	Reformation Day	public	HH
+2042-10-31	Reformationstag	Reformation Day	public	MV
+2042-10-31	Reformationstag	Reformation Day	public	NI
+2042-10-31	Reformationstag	Reformation Day	public	SH
+2042-10-31	Reformationstag	Reformation Day	public	SN
+2042-10-31	Reformationstag	Reformation Day	public	ST
+2042-10-31	Reformationstag	Reformation Day	public	TH
+2042-11-01	Allerheiligen	All Saints' Day	observance	
+2042-11-02	Allerseelen	All Souls' Day	observance	
+2042-11-11	Sankt Martin (Faschingsbeginn)	Saint Martin	observance	
+2042-11-16	Volkstrauertag	Memorial Day	observance	
+2042-11-19	Buß- und Bettag	Day of Prayer and Repentance	observance	
+2042-11-23	Totensonntag	Totensonntag	observance	
+2042-11-30	1. Advent	1. Advent	observance	
+2042-12-07	2. Advent	2. Advent	observance	
+2042-12-14	3. Advent	3. Advent	observance	
+2042-12-21	4. Advent	4. Advent	observance	
+2042-12-24	Heiliger Abend	Christmas Eve	bank	
+2042-12-25	1. Weihnachtstag	Christmas Day	public	
+2042-12-26	2. Weihnachtstag	Boxing Day	public	
+2042-12-31	Silvester	New Year's Eve	bank	
+2043-01-01	Neujahr	New Year's Day	public	
+2043-01-06	Heilige Drei Könige	Epiphany	public	BW
+2043-01-06	Heilige Drei Könige	Epiphany	public	BY
+2043-01-06	Heilige Drei Könige	Epiphany	public	ST
+2043-02-02	Lichtmess	Candlemas	observance	BY
+2043-02-05	Weiberfastnacht	Women's Carnival Day	observance	
+2043-02-09	Rosenmontag	Shrove Monday	observance	
+2043-02-10	Faschingsdienstag	Shrove Tuesday	observance	
+2043-02-11	Aschermittwoch	Ash Wednesday	observance	
+2043-02-14	Valentinstag	Valentine's Day	observance	
+2043-03-08	Internationaler Frauentag	International Women's Day	public	BE
+2043-03-08	Internationaler Frauentag	International Women's Day	public	MV
+2043-03-26	Gründonnerstag	Maundy Thursday	observance	
+2043-03-27	Karfreitag	Good Friday	public	
+2043-03-29	Ostersonntag	Easter Sunday	observance	
+2043-03-30	Ostermontag	Easter Monday	public	
+2043-05-01	Maifeiertag	Labour Day	public	
+2043-05-07	Christi Himmelfahrt	Ascension Day	public	
+2043-05-10	Muttertag	Mother's Day	observance	
+2043-05-17	Pfingstsonntag	Pentecost	observance	
+2043-05-18	Pfingstmontag	Whit Monday	public	
+2043-05-28	Fronleichnam	Corpus Christi	public	BW
+2043-05-28	Fronleichnam	Corpus Christi	public	BY
+2043-05-28	Fronleichnam	Corpus Christi	public	HE
+2043-05-28	Fronleichnam	Corpus Christi	public	NW
+2043-05-28	Fronleichnam	Corpus Christi	public	RP
+2043-05-28	Fronleichnam	Corpus Christi	public	SL
+2043-05-28	Fronleichnam	Corpus Christi	observance	SN
+2043-05-28	Fronleichnam	Corpus Christi	observance	TH
+2043-08-15	Mariä Himmelfahrt	Assumption	observance	BY
+2043-08-15	Mariä Himmelfahrt	Assumption	public	SL
+2043-09-20	Weltkindertag	International Children's Day	public	TH
+2043-10-03	Tag der Deutschen Einheit	National Holiday	public	
+2043-10-31	Reformationstag	Reformation Day	public	BB
+2043-10-31	Reformationstag	Reformation Day	school	BW
+2043-10-31	Reformationstag	Reformation Day	public	HB
+2043-10-31	Reformationstag	Reformation Day	public	HH
+2043-10-31	Reformationstag	Reformation Day	public	MV
+2043-10-31	Reformationstag	Reformation Day	public	NI
+2043-10-31	Reformationstag	Reformation Day	public	SH
+2043-10-31	Reformationstag	Reformation Day	public	SN
+2043-10-31	Reformationstag	Reformation Day	public	ST
+2043-10-31	Reformationstag	Reformation Day	public	TH
+2043-11-01	Allerheiligen	All Saints' Day	observance	
+2043-11-02	Allerseelen	All Souls' Day	observance	
+2043-11-11	Sankt Martin (Faschingsbeginn)	Saint Martin	observance	
+2043-11-15	Volkstrauertag	Memorial Day	observance	
+2043-11-18	Buß- und Bettag	Day of Prayer and Repentance	observance	
+2043-11-22	Totensonntag	Totensonntag	observance	
+2043-11-29	1. Advent	1. Advent	observance	
+2043-12-06	2. Advent	2. Advent	observance	
+2043-12-13	3. Advent	3. Advent	observance	
+2043-12-20	4. Advent	4. Advent	observance	
+2043-12-24	Heiliger Abend	Christmas Eve	bank	
+2043-12-25	1. Weihnachtstag	Christmas Day	public	
+2043-12-26	2. Weihnachtstag	Boxing Day	public	
+2043-12-31	Silvester	New Year's Eve	bank	
+2044-01-01	Neujahr	New Year's Day	public	
+2044-01-06	Heilige Drei Könige	Epiphany	public	BW
+2044-01-06	Heilige Drei Könige	Epiphany	public	BY
+2044-01-06	Heilige Drei Könige	Epiphany	public	ST
+2044-02-02	Lichtmess	Candlemas	observance	BY
+2044-02-14	Valentinstag	Valentine's Day	observance	
+2044-02-25	Weiberfastnacht	Women's Carnival Day	observance	
+2044-02-29	Rosenmontag	Shrove Monday	observance	
+2044-03-01	Faschingsdienstag	Shrove Tuesday	observance	
+2044-03-02	Aschermittwoch	Ash Wednesday	observance	
+2044-03-08	Internationaler Frauentag	International Women's Day	public	BE
+2044-03-08	Internationaler Frauentag	International Women's Day	public	MV
+2044-04-14	Gründonnerstag	Maundy Thursday	observance	
+2044-04-15	Karfreitag	Good Friday	public	
+2044-04-17	Ostersonntag	Easter Sunday	observance	
+2044-04-18	Ostermontag	Easter Monday	public	
+2044-05-01	Maifeiertag	Labour Day	public	
+2044-05-08	Muttertag	Mother's Day	observance	
+2044-05-26	Christi Himmelfahrt	Ascension Day	public	
+2044-06-05	Pfingstsonntag	Pentecost	observance	
+2044-06-06	Pfingstmontag	Whit Monday	public	
+2044-06-16	Fronleichnam	Corpus Christi	public	BW
+2044-06-16	Fronleichnam	Corpus Christi	public	BY
+2044-06-16	Fronleichnam	Corpus Christi	public	HE
+2044-06-16	Fronleichnam	Corpus Christi	public	NW
+2044-06-16	Fronleichnam	Corpus Christi	public	RP
+2044-06-16	Fronleichnam	Corpus Christi	public	SL
+2044-06-16	Fronleichnam	Corpus Christi	observance	SN
+2044-06-16	Fronleichnam	Corpus Christi	observance	TH
+2044-08-15	Mariä Himmelfahrt	Assumption	observance	BY
+2044-08-15	Mariä Himmelfahrt	Assumption	public	SL
+2044-09-20	Weltkindertag	International Children's Day	public	TH
+2044-10-03	Tag der Deutschen Einheit	National Holiday	public	
+2044-10-31	Reformationstag	Reformation Day	public	BB
+2044-10-31	Reformationstag	Reformation Day	school	BW
+2044-10-31	Reformationstag	Reformation Day	public	HB
+2044-10-31	Reformationstag	Reformation Day	public	HH
+2044-10-31	Reformationstag	Reformation Day	public	MV
+2044-10-31	Reformationstag	Reformation Day	public	NI
+2044-10-31	Reformationstag	Reformation Day	public	SH
+2044-10-31	Reformationstag	Reformation Day	public	SN
+2044-10-31	Reformationstag	Reformation Day	public	ST
+2044-10-31	Reformationstag	Reformation Day	public	TH
+2044-11-01	Allerheiligen	All Saints' Day	observance	
+2044-11-02	Allerseelen	All Souls' Day	observance	
+2044-11-11	Sankt Martin (Faschingsbeginn)	Saint Martin	observance	
+2044-11-13	Volkstrauertag	Memorial Day	observance	
+2044-11-16	Buß- und Bettag	Day of Prayer and Repentance	observance	
+2044-11-20	Totensonntag	Totensonntag	observance	
+2044-11-27	1. Advent	1. Advent	observance	
+2044-12-04	2. Advent	2. Advent	observance	
+2044-12-11	3. Advent	3. Advent	observance	
+2044-12-18	4. Advent	4. Advent	observance	
+2044-12-24	Heiliger Abend	Christmas Eve	bank	
+2044-12-25	1. Weihnachtstag	Christmas Day	public	
+2044-12-26	2. Weihnachtstag	Boxing Day	public	
+2044-12-31	Silvester	New Year's Eve	bank	
+2045-01-01	Neujahr	New Year's Day	public	
+2045-01-06	Heilige Drei Könige	Epiphany	public	BW
+2045-01-06	Heilige Drei Könige	Epiphany	public	BY
+2045-01-06	Heilige Drei Könige	Epiphany	public	ST
+2045-02-02	Lichtmess	Candlemas	observance	BY
+2045-02-14	Valentinstag	Valentine's Day	observance	
+2045-02-16	Weiberfastnacht	Women's Carnival Day	observance	
+2045-02-20	Rosenmontag	Shrove Monday	observance	
+2045-02-21	Faschingsdienstag	Shrove Tuesday	observance	
+2045-02-22	Aschermittwoch	Ash Wednesday	observance	
+2045-03-08	Internationaler Frauentag	International Women's Day	public	BE
+2045-03-08	Internationaler Frauentag	International Women's Day	public	MV
+2045-04-06	Gründonnerstag	Maundy Thursday	observance	
+2045-04-07	Karfreitag	Good Friday	public	
+2045-04-09	Ostersonntag	Easter Sunday	observance	
+2045-04-10	Ostermontag	Easter Monday	public	
+2045-05-01	Maifeiertag	Labour Day	public	
+2045-05-14	Muttertag	Mother's Day	observance	
+2045-05-18	Christi Himmelfahrt	Ascension Day	public	
+2045-05-28	Pfingstsonntag	Pentecost	observance	
+2045-05-29	Pfingstmontag	Whit Monday	public	
+2045-06-08	Fronleichnam	Corpus Christi	public	BW
+2045-06-08	Fronleichnam	Corpus Christi	public	BY
+2045-06-08	Fronleichnam	Corpus Christi	public	HE
+2045-06-08	Fronleichnam	Corpus Christi	public	NW
+2045-06-08	Fronleichnam	Corpus Christi	public	RP
+2045-06-08	Fronleichnam	Corpus Christi	public	SL
+2045-06-08	Fronleichnam	Corpus Christi	observance	SN
+2045-06-08	Fronleichnam	Corpus Christi	observance	TH
+2045-08-15	Mariä Himmelfahrt	Assumption	observance	BY
+2045-08-15	Mariä Himmelfahrt	Assumption	public	SL
+2045-09-20	Weltkindertag	International Children's Day	public	TH
+2045-10-03	Tag der Deutschen Einheit	National Holiday	public	
+2045-10-31	Reformationstag	Reformation Day	public	BB
+2045-10-31	Reformationstag	Reformation Day	school	BW
+2045-10-31	Reformationstag	Reformation Day	public	HB
+2045-10-31	Reformationstag	Reformation Day	public	HH
+2045-10-31	Reformationstag	Reformation Day	public	MV
+2045-10-31	Reformationstag	Reformation Day	public	NI
+2045-10-31	Reformationstag	Reformation Day	public	SH
+2045-10-31	Reformationstag	Reformation Day	public	SN
+2045-10-31	Reformationstag	Reformation Day	public	ST
+2045-10-31	Reformationstag	Reformation Day	public	TH
+2045-11-01	Allerheiligen	All Saints' Day	observance	
+2045-11-02	Allerseelen	All Souls' Day	observance	
+2045-11-11	Sankt Martin (Faschingsbeginn)	Saint Martin	observance	
+2045-11-19	Volkstrauertag	Memorial Day	observance	
+2045-11-22	Buß- und Bettag	Day of Prayer and Repentance	observance	
+2045-11-26	Totensonntag	Totensonntag	observance	
+2045-12-03	1. Advent	1. Advent	observance	
+2045-12-10	2. Advent	2. Advent	observance	
+2045-12-17	3. Advent	3. Advent	observance	
+2045-12-24	4. Advent	4. Advent	observance	
+2045-12-24	Heiliger Abend	Christmas Eve	bank	
+2045-12-25	1. Weihnachtstag	Christmas Day	public	
+2045-12-26	2. Weihnachtstag	Boxing Day	public	
+2045-12-31	Silvester	New Year's Eve	bank	

@@ -17,8 +17,7 @@ import { BACKERS, deals, financeSummary, moneyKept, ownMoney, scriptApprovedFor 
 import { closeSettled, ledgerTotals, money, reserve, settle } from './budget';
 import { addLog, newId, onDraftCheck, onNewGame, registerHandler, schedule } from './state';
 import { DAY, formatDateKey } from './time';
-import { available, ensureAccount, outsideAccount, postTx, statementLines } from './cash/journal';
-import { fromMinor, toMinor } from './cash/money';
+import { bankPostings, bankSpendable, postToBank, startBank } from './bank';
 import type { CreationDraft, FinanceDeal, GameState, Project } from './types';
 
 export type FamilyCircumstances = 'stretched' | 'getting-by' | 'comfortable' | 'wealthy';
@@ -100,9 +99,10 @@ export function openingPreview(savings: number, terms: FamilyTerms | null): { li
   return { lines, balance: lines.reduce((a, x) => a + x.amount, 0), owe };
 }
 
-// The account is the journal's player cash account (cash/journal.ts). Each kind of movement comes from or goes to its own
-// outside account, so the statement can say what it was; a key posted twice moves money once (from November 14, 2026;
-// until then nothing guarded a repeated key, and each caller made sure it posted only once).
+// The account is the bank's (engine/bank.ts, from November 14, 2026): your current account at a real bank, in the one
+// journal of your money, 1221's ledger. Until then it was the v8 journal's player cash account (cash/journal.ts), whose
+// id stays named here for the saves `migrateV10toV11` brings over. Each kind of movement comes from or goes to its own
+// account in the bank's books, so the statement can say what it was; a key posted twice moves money once.
 export const PERSONAL_CASH = 'player:cash:USD';
 const COUNTER: Record<PersonalKind, string> = {
   inheritance: 'inheritance', savings: 'opening-savings', gift: 'family-gift', loan: 'family-loan', investment: 'family-investment', repayment: 'family-loan', participation: 'family-investment',
@@ -110,16 +110,16 @@ const COUNTER: Record<PersonalKind, string> = {
   company: 'company-transfers', overhead: 'first-look-overhead',
 };
 export const counterOf = (kind: PersonalKind) => COUNTER[kind];
-export const openPersonalAccount = (state: GameState) => ensureAccount(state, { id: PERSONAL_CASH, owner: 'player', type: 'asset', currency: 'USD', label: 'Your Account' });
-export const postPersonal = (state: GameState, kind: PersonalKind, amount: number, label: string, key: string, counter = COUNTER[kind]) => {
+/** Opens your bank, where a story has none yet: a current account with nothing in it. */
+export const openPersonalAccount = (state: GameState) => { if (!state.bank) startBank(state); };
+export const postPersonal = (state: GameState, kind: PersonalKind, amount: number, label: string, key: string, _counter = COUNTER[kind]) => {
   state.money ??= {};
   openPersonalAccount(state);
-  const minor = toMinor(Math.round(amount));
-  postTx(state, { key, kind, memo: label, lines: [{ account: PERSONAL_CASH, minor, kind, label }, { account: outsideAccount(state, counter, 'USD'), minor: -minor }] });
+  postToBank(state, kind, Math.round(amount), label, key, kind);
 };
-/** The account's postings, read back from the journal in whole dollars, oldest first. */
+/** The account's postings, read back from the bank's ledger in whole dollars, oldest first. */
 export const personalPostings = (state: GameState): PersonalPosting[] =>
-  statementLines(state, PERSONAL_CASH).map(({ tx, line }) => ({ id: tx.id, at: tx.at, kind: line.kind as PersonalKind, amount: fromMinor(line.minor), label: line.label ?? tx.memo, key: tx.key }));
+  bankPostings(state).map((x) => ({ id: x.id, at: x.at, kind: x.kind as PersonalKind, amount: x.amount, label: x.label, key: x.key }));
 
 /** Your account at the start of a new story, from what was chosen at creation. */
 export function openPersonalMoney(state: GameState, savings: number, terms: FamilyTerms | null): void {
@@ -132,7 +132,7 @@ export function openPersonalMoney(state: GameState, savings: number, terms: Fami
 }
 
 /** What you can spend now, in whole dollars: settled, less anything held. */
-export const personalBalance = (state: GameState): number => fromMinor(available(state, PERSONAL_CASH));
+export const personalBalance = (state: GameState): number => bankSpendable(state);
 export const sumOf = (state: GameState, kind: PersonalKind) => personalPostings(state).filter((x) => x.kind === kind).reduce((a, x) => a + x.amount, 0);
 
 /** Where a family loan stands: repaid so far and what is still owed. Derived from postings. */
@@ -272,12 +272,9 @@ export function inheritanceDay(birthDate: string, startDate: string): string {
  * source kept. Nothing recurs: no allowance, no share of what you earn, no second deposit when a company is formed.
  */
 export function openInheritance(state: GameState, amountMinor: number, releasedOn: string, currency: 'USD' = 'USD'): void {
-  // Only dollars until the game's own money has other currencies: the account and the estate are in the currency chosen.
+  // In dollars, the bank's reporting currency (engine/bank.ts); an account held in another currency says its own.
   state.money = { source: { kind: 'inheritance', background: 'oil-family', currency, amountMinor, releasedOn, settledOffstage: true } };
-  openPersonalAccount(state);
-  if (amountMinor <= 0) return;
-  ensureAccount(state, { id: 'outside:inheritance:USD', owner: 'outside', type: 'equity', currency: 'USD', label: 'Your Family\'s Estate' });
-  postTx(state, { key: 'opening:inheritance', kind: 'inheritance', memo: 'Your Inheritance', lines: [{ account: PERSONAL_CASH, minor: amountMinor, kind: 'inheritance', label: 'Your Inheritance' }, { account: 'outside:inheritance:USD', minor: -amountMinor }] });
+  startBank(state, amountMinor > 0 ? { minor: amountMinor, memo: 'Your Inheritance', source: 'Your Family\'s Estate' } : undefined);
 }
 
 /** What the inheritance says on the screen: the story's words, with the amount and the day. */

@@ -4,7 +4,7 @@
 import { describe, expect, it } from 'vitest';
 import { DAY, acceptDeal, createProject, deserialize, processUntil, serialize, setFinanceTarget } from './engine-api';
 import { backerOptions, pitchToStudio, studioOption, submitSeries } from '../src/engine/finance';
-import { formCompany, companyBalance } from '../src/engine/company';
+import { companyBalance } from '../src/engine/company';
 import { personalBalance, postPersonal } from '../src/engine/personal';
 import {
   dealTier,
@@ -127,17 +127,24 @@ describe('an offer', () => {
 const MONTHLY = firstLookTerms(strategyOf(HORROR)).overhead; // an emerging record, a mid-sized studio
 
 describe('a running deal', () => {
-  it('pays overhead monthly into your company if you have one, or your own account', () => {
+  it('pays overhead monthly into your own account; only a deal signed while an old save\'s company held it pays the company', () => {
     const own = signed('fl-own');
     expect(personalBalance(own)).toBe(2_000 + MONTHLY);
     wait(own, 61);
     expect(personalBalance(own)).toBe(2_000 + 3 * MONTHLY);
+    // Labelled fixture: a company from a save before November 14, 2026. A deal signed now pays you, not it.
     const co = world('fl-co', [HORROR]);
     record(co, 66);
-    formCompany(co, 'Tidewater Pictures', 0);
-    acceptFirstLook(co, offerFirstLook(co)!.id);
+    co.company = { name: 'Tidewater Pictures', foundedAt: co.now, status: 'registered' };
+    const id = offerFirstLook(co)!.id;
+    acceptFirstLook(co, id);
+    const fl = co.firstLooks!.find((x) => x.id === id)!;
     wait(co, 31);
-    expect(companyBalance(co)).toBe(2 * MONTHLY);
+    expect([companyBalance(co), personalBalance(co)]).toEqual([0, 2_000 + 2 * MONTHLY]);
+    // The same deal marked as signed while the company held it (cash/migrate11.ts sets `payee`) pays the company.
+    fl.payee = 'company';
+    wait(co, 30);
+    expect([companyBalance(co), personalBalance(co)]).toEqual([MONTHLY, 2_000 + 2 * MONTHLY]);
   });
 
   it('makes a covered film go to the studio first, with its own days to answer; another studio can be pitched only after a pass', () => {

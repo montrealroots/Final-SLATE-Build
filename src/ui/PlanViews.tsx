@@ -26,7 +26,7 @@ import { askForBetterTerms, askRefusal } from '../engine/negotiation-actions';
 import { SITES, roofed, scoutedPlaces, siteName, siteNote } from '../engine/locations';
 import { currentZone, dayFees, estimatedShootDays, personAge, playingAgeAt, willingness } from '../engine';
 import { candidatesFor, childrenIn } from '../engine/hiring';
-import { CompanyProjectCard, OwnAccountCard } from './YourMoney';
+import { OwnAccountCard } from './YourMoney';
 import { FirstLookProjectCard } from './FirstLook';
 import { ProjectKitCard } from './Equipment';
 import { CAST, WRITING, WRITING_STANDARD, activeMandate, approveGuideMe, endGuideMe, guideMePlan, guideMeRefusal, mandateCommitted } from '../engine/mandates';
@@ -1128,7 +1128,6 @@ function FinancingPanel({ p }: { p: Project }) {
       )}
       <BasedOn p={p} />
       <OwnAccountCard p={p} />
-      <CompanyProjectCard p={p} />
       <FirstLookProjectCard p={p} />
       <ProjectKitCard p={p} />
       <section className="card" aria-labelledby="raise-h">

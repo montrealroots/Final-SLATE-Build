@@ -1,0 +1,490 @@
+# EH	El Hierro
+# FU	Fuerteventura
+# GC	Gran Canaria
+# LA	Lanzarote
+# LG	La Gomera
+# LP	La Palma
+# TE	Tenerife
+2026-01-01	Año Nuevo	New Year's Day	public	
+2026-01-06	Día de los Reyes Magos	Epiphany	public	
+2026-03-19	San José	Saint Joseph	observance	
+2026-04-02	Jueves Santo	Maundy Thursday	public	
+2026-04-03	Viernes Santo	Good Friday	public	
+2026-04-05	Pascua	Easter Sunday	observance	
+2026-05-01	Día del Trabajador	Labour Day	public	
+2026-05-03	Día de la Madre	Mother's Day	observance	
+2026-05-24	Pentecostés	Pentecost	observance	
+2026-05-30	Día de Canarias	Canary Islands Day	public	
+2026-08-05	Nuestra Señora de las Nieves	Nuestra Señora de las Nieves	public	LP
+2026-08-15	Asunción	Assumption	public	
+2026-09-07	La Bajada de la Virgen del Socorro	La Bajada de la Virgen del Socorro	public	TE
+2026-09-08	Nuestra Señora del Pino	Nuestra Señora del Pino	public	GC
+2026-09-15	Nuestra Señora de los Dolores	Nuestra Señora de los Dolores	public	LA
+2026-09-18	Nuestra Señora de la Peña	Nuestra Señora de la Peña	public	FU
+2026-09-24	Nuestra Señora de los Reyes	Nuestra Señora de los Reyes	public	EH
+2026-10-05	Nuestra Señora de Guadalupe	Nuestra Señora de Guadalupe	public	LG
+2026-10-12	Fiesta Nacional de España	Fiesta Nacional de España	public	
+2026-11-01	Todos los Santos	All Saints' Day	public	
+2026-11-02	Todos los Santos (día sustituto)	All Saints' Day (substitute day)	public	
+2026-12-06	Día de la Constitución Española	Día de la Constitución Española	public	
+2026-12-08	La inmaculada concepción	Immaculate Conception	public	
+2026-12-25	Navidad	Christmas Day	public	
+2027-01-01	Año Nuevo	New Year's Day	public	
+2027-01-06	Día de los Reyes Magos	Epiphany	public	
+2027-03-19	San José	Saint Joseph	observance	
+2027-03-25	Jueves Santo	Maundy Thursday	public	
+2027-03-26	Viernes Santo	Good Friday	public	
+2027-03-28	Pascua	Easter Sunday	observance	
+2027-05-01	Día del Trabajador	Labour Day	public	
+2027-05-02	Día de la Madre	Mother's Day	observance	
+2027-05-16	Pentecostés	Pentecost	observance	
+2027-05-30	Día de Canarias	Canary Islands Day	public	
+2027-05-31	Día de Canarias (día sustituto)	Canary Islands Day (substitute day)	public	
+2027-08-05	Nuestra Señora de las Nieves	Nuestra Señora de las Nieves	public	LP
+2027-08-15	Asunción	Assumption	public	
+2027-08-16	Asunción (día sustituto)	Assumption (substitute day)	public	
+2027-09-07	La Bajada de la Virgen del Socorro	La Bajada de la Virgen del Socorro	public	TE
+2027-09-08	Nuestra Señora del Pino	Nuestra Señora del Pino	public	GC
+2027-09-15	Nuestra Señora de los Dolores	Nuestra Señora de los Dolores	public	LA
+2027-09-18	Nuestra Señora de la Peña	Nuestra Señora de la Peña	public	FU
+2027-09-24	Nuestra Señora de los Reyes	Nuestra Señora de los Reyes	public	EH
+2027-10-05	Nuestra Señora de Guadalupe	Nuestra Señora de Guadalupe	public	LG
+2027-10-12	Fiesta Nacional de España	Fiesta Nacional de España	public	
+2027-11-01	Todos los Santos	All Saints' Day	public	
+2027-12-06	Día de la Constitución Española	Día de la Constitución Española	public	
+2027-12-08	La inmaculada concepción	Immaculate Conception	public	
+2027-12-25	Navidad	Christmas Day	public	
+2028-01-01	Año Nuevo	New Year's Day	public	
+2028-01-06	Día de los Reyes Magos	Epiphany	public	
+2028-03-19	San José	Saint Joseph	observance	
+2028-04-13	Jueves Santo	Maundy Thursday	public	
+2028-04-14	Viernes Santo	Good Friday	public	
+2028-04-16	Pascua	Easter Sunday	observance	
+2028-05-01	Día del Trabajador	Labour Day	public	
+2028-05-07	Día de la Madre	Mother's Day	observance	
+2028-05-30	Día de Canarias	Canary Islands Day	public	
+2028-06-04	Pentecostés	Pentecost	observance	
+2028-08-05	Nuestra Señora de las Nieves	Nuestra Señora de las Nieves	public	LP
+2028-08-15	Asunción	Assumption	public	
+2028-09-07	La Bajada de la Virgen del Socorro	La Bajada de la Virgen del Socorro	public	TE
+2028-09-08	Nuestra Señora del Pino	Nuestra Señora del Pino	public	GC
+2028-09-15	Nuestra Señora de los Dolores	Nuestra Señora de los Dolores	public	LA
+2028-09-18	Nuestra Señora de la Peña	Nuestra Señora de la Peña	public	FU
+2028-09-24	Nuestra Señora de los Reyes	Nuestra Señora de los Reyes	public	EH
+2028-10-05	Nuestra Señora de Guadalupe	Nuestra Señora de Guadalupe	public	LG
+2028-10-12	Fiesta Nacional de España	Fiesta Nacional de España	public	
+2028-11-01	Todos los Santos	All Saints' Day	public	
+2028-12-06	Día de la Constitución Española	Día de la Constitución Española	public	
+2028-12-08	La inmaculada concepción	Immaculate Conception	public	
+2028-12-25	Navidad	Christmas Day	public	
+2029-01-01	Año Nuevo	New Year's Day	public	
+2029-01-06	Día de los Reyes Magos	Epiphany	public	
+2029-03-19	San José	Saint Joseph	observance	
+2029-03-29	Jueves Santo	Maundy Thursday	public	
+2029-03-30	Viernes Santo	Good Friday	public	
+2029-04-01	Pascua	Easter Sunday	observance	
+2029-05-01	Día del Trabajador	Labour Day	public	
+2029-05-06	Día de la Madre	Mother's Day	observance	
+2029-05-20	Pentecostés	Pentecost	observance	
+2029-05-30	Día de Canarias	Canary Islands Day	public	
+2029-08-05	Nuestra Señora de las Nieves	Nuestra Señora de las Nieves	public	LP
+2029-08-15	Asunción	Assumption	public	
+2029-09-07	La Bajada de la Virgen del Socorro	La Bajada de la Virgen del Socorro	public	TE
+2029-09-08	Nuestra Señora del Pino	Nuestra Señora del Pino	public	GC
+2029-09-15	Nuestra Señora de los Dolores	Nuestra Señora de los Dolores	public	LA
+2029-09-18	Nuestra Señora de la Peña	Nuestra Señora de la Peña	public	FU
+2029-09-24	Nuestra Señora de los Reyes	Nuestra Señora de los Reyes	public	EH
+2029-10-05	Nuestra Señora de Guadalupe	Nuestra Señora de Guadalupe	public	LG
+2029-10-12	Fiesta Nacional de España	Fiesta Nacional de España	public	
+2029-11-01	Todos los Santos	All Saints' Day	public	
+2029-12-06	Día de la Constitución Española	Día de la Constitución Española	public	
+2029-12-08	La inmaculada concepción	Immaculate Conception	public	
+2029-12-25	Navidad	Christmas Day	public	
+2030-01-01	Año Nuevo	New Year's Day	public	
+2030-01-06	Día de los Reyes Magos	Epiphany	public	
+2030-01-07	Día de los Reyes Magos (día sustituto)	Epiphany (substitute day)	observance	
+2030-03-19	San José	Saint Joseph	observance	
+2030-04-18	Jueves Santo	Maundy Thursday	public	
+2030-04-19	Viernes Santo	Good Friday	public	
+2030-04-21	Pascua	Easter Sunday	observance	
+2030-05-01	Día del Trabajador	Labour Day	public	
+2030-05-05	Día de la Madre	Mother's Day	observance	
+2030-05-30	Día de Canarias	Canary Islands Day	public	
+2030-06-09	Pentecostés	Pentecost	observance	
+2030-08-05	Nuestra Señora de las Nieves	Nuestra Señora de las Nieves	public	LP
+2030-08-15	Asunción	Assumption	public	
+2030-09-07	La Bajada de la Virgen del Socorro	La Bajada de la Virgen del Socorro	public	TE
+2030-09-08	Nuestra Señora del Pino	Nuestra Señora del Pino	public	GC
+2030-09-15	Nuestra Señora de los Dolores	Nuestra Señora de los Dolores	public	LA
+2030-09-18	Nuestra Señora de la Peña	Nuestra Señora de la Peña	public	FU
+2030-09-24	Nuestra Señora de los Reyes	Nuestra Señora de los Reyes	public	EH
+2030-10-05	Nuestra Señora de Guadalupe	Nuestra Señora de Guadalupe	public	LG
+2030-10-12	Fiesta Nacional de España	Fiesta Nacional de España	public	
+2030-11-01	Todos los Santos	All Saints' Day	public	
+2030-12-06	Día de la Constitución Española	Día de la Constitución Española	public	
+2030-12-08	La inmaculada concepción	Immaculate Conception	public	
+2030-12-09	La inmaculada concepción (día sustituto)	Immaculate Conception (substitute day)	observance	
+2030-12-25	Navidad	Christmas Day	public	
+2031-01-01	Año Nuevo	New Year's Day	public	
+2031-01-06	Día de los Reyes Magos	Epiphany	public	
+2031-03-19	San José	Saint Joseph	observance	
+2031-04-10	Jueves Santo	Maundy Thursday	public	
+2031-04-11	Viernes Santo	Good Friday	public	
+2031-04-13	Pascua	Easter Sunday	observance	
+2031-05-01	Día del Trabajador	Labour Day	public	
+2031-05-04	Día de la Madre	Mother's Day	observance	
+2031-05-30	Día de Canarias	Canary Islands Day	public	
+2031-06-01	Pentecostés	Pentecost	observance	
+2031-08-05	Nuestra Señora de las Nieves	Nuestra Señora de las Nieves	public	LP
+2031-08-15	Asunción	Assumption	public	
+2031-09-07	La Bajada de la Virgen del Socorro	La Bajada de la Virgen del Socorro	public	TE
+2031-09-08	Nuestra Señora del Pino	Nuestra Señora del Pino	public	GC
+2031-09-15	Nuestra Señora de los Dolores	Nuestra Señora de los Dolores	public	LA
+2031-09-18	Nuestra Señora de la Peña	Nuestra Señora de la Peña	public	FU
+2031-09-24	Nuestra Señora de los Reyes	Nuestra Señora de los Reyes	public	EH
+2031-10-05	Nuestra Señora de Guadalupe	Nuestra Señora de Guadalupe	public	LG
+2031-10-12	Fiesta Nacional de España	Fiesta Nacional de España	public	
+2031-10-13	Fiesta Nacional de España (día sustituto)	Fiesta Nacional de España (substitute day)	observance	
+2031-11-01	Todos los Santos	All Saints' Day	public	
+2031-12-06	Día de la Constitución Española	Día de la Constitución Española	public	
+2031-12-08	La inmaculada concepción	Immaculate Conception	public	
+2031-12-25	Navidad	Christmas Day	public	
+2032-01-01	Año Nuevo	New Year's Day	public	
+2032-01-06	Día de los Reyes Magos	Epiphany	public	
+2032-03-19	San José	Saint Joseph	observance	
+2032-03-25	Jueves Santo	Maundy Thursday	public	
+2032-03-26	Viernes Santo	Good Friday	public	
+2032-03-28	Pascua	Easter Sunday	observance	
+2032-05-01	Día del Trabajador	Labour Day	public	
+2032-05-02	Día de la Madre	Mother's Day	observance	
+2032-05-16	Pentecostés	Pentecost	observance	
+2032-05-30	Día de Canarias	Canary Islands Day	public	
+2032-05-31	Día de Canarias (día sustituto)	Canary Islands Day (substitute day)	public	
+2032-08-05	Nuestra Señora de las Nieves	Nuestra Señora de las Nieves	public	LP
+2032-08-15	Asunción	Assumption	public	
+2032-08-16	Asunción (día sustituto)	Assumption (substitute day)	public	
+2032-09-07	La Bajada de la Virgen del Socorro	La Bajada de la Virgen del Socorro	public	TE
+2032-09-08	Nuestra Señora del Pino	Nuestra Señora del Pino	public	GC
+2032-09-15	Nuestra Señora de los Dolores	Nuestra Señora de los Dolores	public	LA
+2032-09-18	Nuestra Señora de la Peña	Nuestra Señora de la Peña	public	FU
+2032-09-24	Nuestra Señora de los Reyes	Nuestra Señora de los Reyes	public	EH
+2032-10-05	Nuestra Señora de Guadalupe	Nuestra Señora de Guadalupe	public	LG
+2032-10-12	Fiesta Nacional de España	Fiesta Nacional de España	public	
+2032-11-01	Todos los Santos	All Saints' Day	public	
+2032-12-06	Día de la Constitución Española	Día de la Constitución Española	public	
+2032-12-08	La inmaculada concepción	Immaculate Conception	public	
+2032-12-25	Navidad	Christmas Day	public	
+2033-01-01	Año Nuevo	New Year's Day	public	
+2033-01-06	Día de los Reyes Magos	Epiphany	public	
+2033-03-19	San José	Saint Joseph	observance	
+2033-04-14	Jueves Santo	Maundy Thursday	public	
+2033-04-15	Viernes Santo	Good Friday	public	
+2033-04-17	Pascua	Easter Sunday	observance	
+2033-05-01	Día de la Madre	Mother's Day	observance	
+2033-05-01	Día del Trabajador	Labour Day	public	
+2033-05-30	Día de Canarias	Canary Islands Day	public	
+2033-06-05	Pentecostés	Pentecost	observance	
+2033-08-05	Nuestra Señora de las Nieves	Nuestra Señora de las Nieves	public	LP
+2033-08-15	Asunción	Assumption	public	
+2033-09-07	La Bajada de la Virgen del Socorro	La Bajada de la Virgen del Socorro	public	TE
+2033-09-08	Nuestra Señora del Pino	Nuestra Señora del Pino	public	GC
+2033-09-15	Nuestra Señora de los Dolores	Nuestra Señora de los Dolores	public	LA
+2033-09-18	Nuestra Señora de la Peña	Nuestra Señora de la Peña	public	FU
+2033-09-24	Nuestra Señora de los Reyes	Nuestra Señora de los Reyes	public	EH
+2033-10-05	Nuestra Señora de Guadalupe	Nuestra Señora de Guadalupe	public	LG
+2033-10-12	Fiesta Nacional de España	Fiesta Nacional de España	public	
+2033-11-01	Todos los Santos	All Saints' Day	public	
+2033-12-06	Día de la Constitución Española	Día de la Constitución Española	public	
+2033-12-08	La inmaculada concepción	Immaculate Conception	public	
+2033-12-25	Navidad	Christmas Day	public	
+2033-12-26	Navidad (día sustituto)	Christmas Day (substitute day)	public	
+2034-01-01	Año Nuevo	New Year's Day	public	
+2034-01-02	Año Nuevo (día sustituto)	New Year's Day (substitute day)	observance	
+2034-01-06	Día de los Reyes Magos	Epiphany	public	
+2034-03-19	San José	Saint Joseph	observance	
+2034-04-06	Jueves Santo	Maundy Thursday	public	
+2034-04-07	Viernes Santo	Good Friday	public	
+2034-04-09	Pascua	Easter Sunday	observance	
+2034-05-01	Día del Trabajador	Labour Day	public	
+2034-05-07	Día de la Madre	Mother's Day	observance	
+2034-05-28	Pentecostés	Pentecost	observance	
+2034-05-30	Día de Canarias	Canary Islands Day	public	
+2034-08-05	Nuestra Señora de las Nieves	Nuestra Señora de las Nieves	public	LP
+2034-08-15	Asunción	Assumption	public	
+2034-09-07	La Bajada de la Virgen del Socorro	La Bajada de la Virgen del Socorro	public	TE
+2034-09-08	Nuestra Señora del Pino	Nuestra Señora del Pino	public	GC
+2034-09-15	Nuestra Señora de los Dolores	Nuestra Señora de los Dolores	public	LA
+2034-09-18	Nuestra Señora de la Peña	Nuestra Señora de la Peña	public	FU
+2034-09-24	Nuestra Señora de los Reyes	Nuestra Señora de los Reyes	public	EH
+2034-10-05	Nuestra Señora de Guadalupe	Nuestra Señora de Guadalupe	public	LG
+2034-10-12	Fiesta Nacional de España	Fiesta Nacional de España	public	
+2034-11-01	Todos los Santos	All Saints' Day	public	
+2034-12-06	Día de la Constitución Española	Día de la Constitución Española	public	
+2034-12-08	La inmaculada concepción	Immaculate Conception	public	
+2034-12-25	Navidad	Christmas Day	public	
+2035-01-01	Año Nuevo	New Year's Day	public	
+2035-01-06	Día de los Reyes Magos	Epiphany	public	
+2035-03-19	San José	Saint Joseph	observance	
+2035-03-22	Jueves Santo	Maundy Thursday	public	
+2035-03-23	Viernes Santo	Good Friday	public	
+2035-03-25	Pascua	Easter Sunday	observance	
+2035-05-01	Día del Trabajador	Labour Day	public	
+2035-05-06	Día de la Madre	Mother's Day	observance	
+2035-05-13	Pentecostés	Pentecost	observance	
+2035-05-30	Día de Canarias	Canary Islands Day	public	
+2035-08-05	Nuestra Señora de las Nieves	Nuestra Señora de las Nieves	public	LP
+2035-08-15	Asunción	Assumption	public	
+2035-09-07	La Bajada de la Virgen del Socorro	La Bajada de la Virgen del Socorro	public	TE
+2035-09-08	Nuestra Señora del Pino	Nuestra Señora del Pino	public	GC
+2035-09-15	Nuestra Señora de los Dolores	Nuestra Señora de los Dolores	public	LA
+2035-09-18	Nuestra Señora de la Peña	Nuestra Señora de la Peña	public	FU
+2035-09-24	Nuestra Señora de los Reyes	Nuestra Señora de los Reyes	public	EH
+2035-10-05	Nuestra Señora de Guadalupe	Nuestra Señora de Guadalupe	public	LG
+2035-10-12	Fiesta Nacional de España	Fiesta Nacional de España	public	
+2035-11-01	Todos los Santos	All Saints' Day	public	
+2035-12-06	Día de la Constitución Española	Día de la Constitución Española	public	
+2035-12-08	La inmaculada concepción	Immaculate Conception	public	
+2035-12-25	Navidad	Christmas Day	public	
+2036-01-01	Año Nuevo	New Year's Day	public	
+2036-01-06	Día de los Reyes Magos	Epiphany	public	
+2036-01-07	Día de los Reyes Magos (día sustituto)	Epiphany (substitute day)	observance	
+2036-03-19	San José	Saint Joseph	observance	
+2036-04-10	Jueves Santo	Maundy Thursday	public	
+2036-04-11	Viernes Santo	Good Friday	public	
+2036-04-13	Pascua	Easter Sunday	observance	
+2036-05-01	Día del Trabajador	Labour Day	public	
+2036-05-04	Día de la Madre	Mother's Day	observance	
+2036-05-30	Día de Canarias	Canary Islands Day	public	
+2036-06-01	Pentecostés	Pentecost	observance	
+2036-08-05	Nuestra Señora de las Nieves	Nuestra Señora de las Nieves	public	LP
+2036-08-15	Asunción	Assumption	public	
+2036-09-07	La Bajada de la Virgen del Socorro	La Bajada de la Virgen del Socorro	public	TE
+2036-09-08	Nuestra Señora del Pino	Nuestra Señora del Pino	public	GC
+2036-09-15	Nuestra Señora de los Dolores	Nuestra Señora de los Dolores	public	LA
+2036-09-18	Nuestra Señora de la Peña	Nuestra Señora de la Peña	public	FU
+2036-09-24	Nuestra Señora de los Reyes	Nuestra Señora de los Reyes	public	EH
+2036-10-05	Nuestra Señora de Guadalupe	Nuestra Señora de Guadalupe	public	LG
+2036-10-12	Fiesta Nacional de España	Fiesta Nacional de España	public	
+2036-10-13	Fiesta Nacional de España (día sustituto)	Fiesta Nacional de España (substitute day)	observance	
+2036-11-01	Todos los Santos	All Saints' Day	public	
+2036-12-06	Día de la Constitución Española	Día de la Constitución Española	public	
+2036-12-08	La inmaculada concepción	Immaculate Conception	public	
+2036-12-25	Navidad	Christmas Day	public	
+2037-01-01	Año Nuevo	New Year's Day	public	
+2037-01-06	Día de los Reyes Magos	Epiphany	public	
+2037-03-19	San José	Saint Joseph	observance	
+2037-04-02	Jueves Santo	Maundy Thursday	public	
+2037-04-03	Viernes Santo	Good Friday	public	
+2037-04-05	Pascua	Easter Sunday	observance	
+2037-05-01	Día del Trabajador	Labour Day	public	
+2037-05-03	Día de la Madre	Mother's Day	observance	
+2037-05-24	Pentecostés	Pentecost	observance	
+2037-05-30	Día de Canarias	Canary Islands Day	public	
+2037-08-05	Nuestra Señora de las Nieves	Nuestra Señora de las Nieves	public	LP
+2037-08-15	Asunción	Assumption	public	
+2037-09-07	La Bajada de la Virgen del Socorro	La Bajada de la Virgen del Socorro	public	TE
+2037-09-08	Nuestra Señora del Pino	Nuestra Señora del Pino	public	GC
+2037-09-15	Nuestra Señora de los Dolores	Nuestra Señora de los Dolores	public	LA
+2037-09-18	Nuestra Señora de la Peña	Nuestra Señora de la Peña	public	FU
+2037-09-24	Nuestra Señora de los Reyes	Nuestra Señora de los Reyes	public	EH
+2037-10-05	Nuestra Señora de Guadalupe	Nuestra Señora de Guadalupe	public	LG
+2037-10-12	Fiesta Nacional de España	Fiesta Nacional de España	public	
+2037-11-01	Todos los Santos	All Saints' Day	public	
+2037-11-02	Todos los Santos (día sustituto)	All Saints' Day (substitute day)	public	
+2037-12-06	Día de la Constitución Española	Día de la Constitución Española	public	
+2037-12-08	La inmaculada concepción	Immaculate Conception	public	
+2037-12-25	Navidad	Christmas Day	public	
+2038-01-01	Año Nuevo	New Year's Day	public	
+2038-01-06	Día de los Reyes Magos	Epiphany	public	
+2038-03-19	San José	Saint Joseph	observance	
+2038-04-22	Jueves Santo	Maundy Thursday	public	
+2038-04-23	Viernes Santo	Good Friday	public	
+2038-04-25	Pascua	Easter Sunday	observance	
+2038-05-01	Día del Trabajador	Labour Day	public	
+2038-05-02	Día de la Madre	Mother's Day	observance	
+2038-05-30	Día de Canarias	Canary Islands Day	public	
+2038-05-31	Día de Canarias (día sustituto)	Canary Islands Day (substitute day)	public	
+2038-06-13	Pentecostés	Pentecost	observance	
+2038-08-05	Nuestra Señora de las Nieves	Nuestra Señora de las Nieves	public	LP
+2038-08-15	Asunción	Assumption	public	
+2038-08-16	Asunción (día sustituto)	Assumption (substitute day)	public	
+2038-09-07	La Bajada de la Virgen del Socorro	La Bajada de la Virgen del Socorro	public	TE
+2038-09-08	Nuestra Señora del Pino	Nuestra Señora del Pino	public	GC
+2038-09-15	Nuestra Señora de los Dolores	Nuestra Señora de los Dolores	public	LA
+2038-09-18	Nuestra Señora de la Peña	Nuestra Señora de la Peña	public	FU
+2038-09-24	Nuestra Señora de los Reyes	Nuestra Señora de los Reyes	public	EH
+2038-10-05	Nuestra Señora de Guadalupe	Nuestra Señora de Guadalupe	public	LG
+2038-10-12	Fiesta Nacional de España	Fiesta Nacional de España	public	
+2038-11-01	Todos los Santos	All Saints' Day	public	
+2038-12-06	Día de la Constitución Española	Día de la Constitución Española	public	
+2038-12-08	La inmaculada concepción	Immaculate Conception	public	
+2038-12-25	Navidad	Christmas Day	public	
+2039-01-01	Año Nuevo	New Year's Day	public	
+2039-01-06	Día de los Reyes Magos	Epiphany	public	
+2039-03-19	San José	Saint Joseph	observance	
+2039-04-07	Jueves Santo	Maundy Thursday	public	
+2039-04-08	Viernes Santo	Good Friday	public	
+2039-04-10	Pascua	Easter Sunday	observance	
+2039-05-01	Día de la Madre	Mother's Day	observance	
+2039-05-01	Día del Trabajador	Labour Day	public	
+2039-05-29	Pentecostés	Pentecost	observance	
+2039-05-30	Día de Canarias	Canary Islands Day	public	
+2039-08-05	Nuestra Señora de las Nieves	Nuestra Señora de las Nieves	public	LP
+2039-08-15	Asunción	Assumption	public	
+2039-09-07	La Bajada de la Virgen del Socorro	La Bajada de la Virgen del Socorro	public	TE
+2039-09-08	Nuestra Señora del Pino	Nuestra Señora del Pino	public	GC
+2039-09-15	Nuestra Señora de los Dolores	Nuestra Señora de los Dolores	public	LA
+2039-09-18	Nuestra Señora de la Peña	Nuestra Señora de la Peña	public	FU
+2039-09-24	Nuestra Señora de los Reyes	Nuestra Señora de los Reyes	public	EH
+2039-10-05	Nuestra Señora de Guadalupe	Nuestra Señora de Guadalupe	public	LG
+2039-10-12	Fiesta Nacional de España	Fiesta Nacional de España	public	
+2039-11-01	Todos los Santos	All Saints' Day	public	
+2039-12-06	Día de la Constitución Española	Día de la Constitución Española	public	
+2039-12-08	La inmaculada concepción	Immaculate Conception	public	
+2039-12-25	Navidad	Christmas Day	public	
+2039-12-26	Navidad (día sustituto)	Christmas Day (substitute day)	public	
+2040-01-01	Año Nuevo	New Year's Day	public	
+2040-01-02	Año Nuevo (día sustituto)	New Year's Day (substitute day)	observance	
+2040-01-06	Día de los Reyes Magos	Epiphany	public	
+2040-03-19	San José	Saint Joseph	observance	
+2040-03-29	Jueves Santo	Maundy Thursday	public	
+2040-03-30	Viernes Santo	Good Friday	public	
+2040-04-01	Pascua	Easter Sunday	observance	
+2040-05-01	Día del Trabajador	Labour Day	public	
+2040-05-06	Día de la Madre	Mother's Day	observance	
+2040-05-20	Pentecostés	Pentecost	observance	
+2040-05-30	Día de Canarias	Canary Islands Day	public	
+2040-08-05	Nuestra Señora de las Nieves	Nuestra Señora de las Nieves	public	LP
+2040-08-15	Asunción	Assumption	public	
+2040-09-07	La Bajada de la Virgen del Socorro	La Bajada de la Virgen del Socorro	public	TE
+2040-09-08	Nuestra Señora del Pino	Nuestra Señora del Pino	public	GC
+2040-09-15	Nuestra Señora de los Dolores	Nuestra Señora de los Dolores	public	LA
+2040-09-18	Nuestra Señora de la Peña	Nuestra Señora de la Peña	public	FU
+2040-09-24	Nuestra Señora de los Reyes	Nuestra Señora de los Reyes	public	EH
+2040-10-05	Nuestra Señora de Guadalupe	Nuestra Señora de Guadalupe	public	LG
+2040-10-12	Fiesta Nacional de España	Fiesta Nacional de España	public	
+2040-11-01	Todos los Santos	All Saints' Day	public	
+2040-12-06	Día de la Constitución Española	Día de la Constitución Española	public	
+2040-12-08	La inmaculada concepción	Immaculate Conception	public	
+2040-12-25	Navidad	Christmas Day	public	
+2041-01-01	Año Nuevo	New Year's Day	public	
+2041-01-06	Día de los Reyes Magos	Epiphany	public	
+2041-01-07	Día de los Reyes Magos (día sustituto)	Epiphany (substitute day)	observance	
+2041-03-19	San José	Saint Joseph	observance	
+2041-04-18	Jueves Santo	Maundy Thursday	public	
+2041-04-19	Viernes Santo	Good Friday	public	
+2041-04-21	Pascua	Easter Sunday	observance	
+2041-05-01	Día del Trabajador	Labour Day	public	
+2041-05-05	Día de la Madre	Mother's Day	observance	
+2041-05-30	Día de Canarias	Canary Islands Day	public	
+2041-06-09	Pentecostés	Pentecost	observance	
+2041-08-05	Nuestra Señora de las Nieves	Nuestra Señora de las Nieves	public	LP
+2041-08-15	Asunción	Assumption	public	
+2041-09-07	La Bajada de la Virgen del Socorro	La Bajada de la Virgen del Socorro	public	TE
+2041-09-08	Nuestra Señora del Pino	Nuestra Señora del Pino	public	GC
+2041-09-15	Nuestra Señora de los Dolores	Nuestra Señora de los Dolores	public	LA
+2041-09-18	Nuestra Señora de la Peña	Nuestra Señora de la Peña	public	FU
+2041-09-24	Nuestra Señora de los Reyes	Nuestra Señora de los Reyes	public	EH
+2041-10-05	Nuestra Señora de Guadalupe	Nuestra Señora de Guadalupe	public	LG
+2041-10-12	Fiesta Nacional de España	Fiesta Nacional de España	public	
+2041-11-01	Todos los Santos	All Saints' Day	public	
+2041-12-06	Día de la Constitución Española	Día de la Constitución Española	public	
+2041-12-08	La inmaculada concepción	Immaculate Conception	public	
+2041-12-09	La inmaculada concepción (día sustituto)	Immaculate Conception (substitute day)	observance	
+2041-12-25	Navidad	Christmas Day	public	
+2042-01-01	Año Nuevo	New Year's Day	public	
+2042-01-06	Día de los Reyes Magos	Epiphany	public	
+2042-03-19	San José	Saint Joseph	observance	
+2042-04-03	Jueves Santo	Maundy Thursday	public	
+2042-04-04	Viernes Santo	Good Friday	public	
+2042-04-06	Pascua	Easter Sunday	observance	
+2042-05-01	Día del Trabajador	Labour Day	public	
+2042-05-04	Día de la Madre	Mother's Day	observance	
+2042-05-25	Pentecostés	Pentecost	observance	
+2042-05-30	Día de Canarias	Canary Islands Day	public	
+2042-08-05	Nuestra Señora de las Nieves	Nuestra Señora de las Nieves	public	LP
+2042-08-15	Asunción	Assumption	public	
+2042-09-07	La Bajada de la Virgen del Socorro	La Bajada de la Virgen del Socorro	public	TE
+2042-09-08	Nuestra Señora del Pino	Nuestra Señora del Pino	public	GC
+2042-09-15	Nuestra Señora de los Dolores	Nuestra Señora de los Dolores	public	LA
+2042-09-18	Nuestra Señora de la Peña	Nuestra Señora de la Peña	public	FU
+2042-09-24	Nuestra Señora de los Reyes	Nuestra Señora de los Reyes	public	EH
+2042-10-05	Nuestra Señora de Guadalupe	Nuestra Señora de Guadalupe	public	LG
+2042-10-12	Fiesta Nacional de España	Fiesta Nacional de España	public	
+2042-10-13	Fiesta Nacional de España (día sustituto)	Fiesta Nacional de España (substitute day)	observance	
+2042-11-01	Todos los Santos	All Saints' Day	public	
+2042-12-06	Día de la Constitución Española	Día de la Constitución Española	public	
+2042-12-08	La inmaculada concepción	Immaculate Conception	public	
+2042-12-25	Navidad	Christmas Day	public	
+2043-01-01	Año Nuevo	New Year's Day	public	
+2043-01-06	Día de los Reyes Magos	Epiphany	public	
+2043-03-19	San José	Saint Joseph	observance	
+2043-03-26	Jueves Santo	Maundy Thursday	public	
+2043-03-27	Viernes Santo	Good Friday	public	
+2043-03-29	Pascua	Easter Sunday	observance	
+2043-05-01	Día del Trabajador	Labour Day	public	
+2043-05-03	Día de la Madre	Mother's Day	observance	
+2043-05-17	Pentecostés	Pentecost	observance	
+2043-05-30	Día de Canarias	Canary Islands Day	public	
+2043-08-05	Nuestra Señora de las Nieves	Nuestra Señora de las Nieves	public	LP
+2043-08-15	Asunción	Assumption	public	
+2043-09-07	La Bajada de la Virgen del Socorro	La Bajada de la Virgen del Socorro	public	TE
+2043-09-08	Nuestra Señora del Pino	Nuestra Señora del Pino	public	GC
+2043-09-15	Nuestra Señora de los Dolores	Nuestra Señora de los Dolores	public	LA
+2043-09-18	Nuestra Señora de la Peña	Nuestra Señora de la Peña	public	FU
+2043-09-24	Nuestra Señora de los Reyes	Nuestra Señora de los Reyes	public	EH
+2043-10-05	Nuestra Señora de Guadalupe	Nuestra Señora de Guadalupe	public	LG
+2043-10-12	Fiesta Nacional de España	Fiesta Nacional de España	public	
+2043-11-01	Todos los Santos	All Saints' Day	public	
+2043-11-02	Todos los Santos (día sustituto)	All Saints' Day (substitute day)	public	
+2043-12-06	Día de la Constitución Española	Día de la Constitución Española	public	
+2043-12-08	La inmaculada concepción	Immaculate Conception	public	
+2043-12-25	Navidad	Christmas Day	public	
+2044-01-01	Año Nuevo	New Year's Day	public	
+2044-01-06	Día de los Reyes Magos	Epiphany	public	
+2044-03-19	San José	Saint Joseph	observance	
+2044-04-14	Jueves Santo	Maundy Thursday	public	
+2044-04-15	Viernes Santo	Good Friday	public	
+2044-04-17	Pascua	Easter Sunday	observance	
+2044-05-01	Día de la Madre	Mother's Day	observance	
+2044-05-01	Día del Trabajador	Labour Day	public	
+2044-05-30	Día de Canarias	Canary Islands Day	public	
+2044-06-05	Pentecostés	Pentecost	observance	
+2044-08-05	Nuestra Señora de las Nieves	Nuestra Señora de las Nieves	public	LP
+2044-08-15	Asunción	Assumption	public	
+2044-09-07	La Bajada de la Virgen del Socorro	La Bajada de la Virgen del Socorro	public	TE
+2044-09-08	Nuestra Señora del Pino	Nuestra Señora del Pino	public	GC
+2044-09-15	Nuestra Señora de los Dolores	Nuestra Señora de los Dolores	public	LA
+2044-09-18	Nuestra Señora de la Peña	Nuestra Señora de la Peña	public	FU
+2044-09-24	Nuestra Señora de los Reyes	Nuestra Señora de los Reyes	public	EH
+2044-10-05	Nuestra Señora de Guadalupe	Nuestra Señora de Guadalupe	public	LG
+2044-10-12	Fiesta Nacional de España	Fiesta Nacional de España	public	
+2044-11-01	Todos los Santos	All Saints' Day	public	
+2044-12-06	Día de la Constitución Española	Día de la Constitución Española	public	
+2044-12-08	La inmaculada concepción	Immaculate Conception	public	
+2044-12-25	Navidad	Christmas Day	public	
+2044-12-26	Navidad (día sustituto)	Christmas Day (substitute day)	public	
+2045-01-01	Año Nuevo	New Year's Day	public	
+2045-01-02	Año Nuevo (día sustituto)	New Year's Day (substitute day)	observance	
+2045-01-06	Día de los Reyes Magos	Epiphany	public	
+2045-03-19	San José	Saint Joseph	observance	
+2045-04-06	Jueves Santo	Maundy Thursday	public	
+2045-04-07	Viernes Santo	Good Friday	public	
+2045-04-09	Pascua	Easter Sunday	observance	
+2045-05-01	Día del Trabajador	Labour Day	public	
+2045-05-07	Día de la Madre	Mother's Day	observance	
+2045-05-28	Pentecostés	Pentecost	observance	
+2045-05-30	Día de Canarias	Canary Islands Day	public	
+2045-08-05	Nuestra Señora de las Nieves	Nuestra Señora de las Nieves	public	LP
+2045-08-15	Asunción	Assumption	public	
+2045-09-07	La Bajada de la Virgen del Socorro	La Bajada de la Virgen del Socorro	public	TE
+2045-09-08	Nuestra Señora del Pino	Nuestra Señora del Pino	public	GC
+2045-09-15	Nuestra Señora de los Dolores	Nuestra Señora de los Dolores	public	LA
+2045-09-18	Nuestra Señora de la Peña	Nuestra Señora de la Peña	public	FU
+2045-09-24	Nuestra Señora de los Reyes	Nuestra Señora de los Reyes	public	EH
+2045-10-05	Nuestra Señora de Guadalupe	Nuestra Señora de Guadalupe	public	LG
+2045-10-12	Fiesta Nacional de España	Fiesta Nacional de España	public	
+2045-11-01	Todos los Santos	All Saints' Day	public	
+2045-12-06	Día de la Constitución Española	Día de la Constitución Española	public	
+2045-12-08	La inmaculada concepción	Immaculate Conception	public	
+2045-12-25	Navidad	Christmas Day	public	

@@ -7,6 +7,8 @@ import { lazy, Suspense, useState } from 'react';
 
 // The industry card lives with the catalog's pages and loads with them, keeping startup small.
 const IndustryCard = lazy(() => import('./Catalog').then((m) => ({ default: m.IndustryCard })));
+const YourBankPanel = lazy(() => import('./HomeMoney').then((m) => ({ default: m.YourBankPanel })));
+const YourPapersPanel = lazy(() => import('./HomeMoney').then((m) => ({ default: m.YourPapersPanel })));
 import { store, useClock, useGame } from './store';
 
 const PHASE_LABEL: Record<string, string> = {
@@ -154,6 +156,10 @@ export function Home() {
               </>
             )}
           </Panel>
+
+          {/* Your bank and your papers, always on Home (the owner, November 14, 2026). */}
+          <Suspense fallback={null}><YourBankPanel /></Suspense>
+          <Suspense fallback={null}><YourPapersPanel /></Suspense>
 
           <Proposals />
 

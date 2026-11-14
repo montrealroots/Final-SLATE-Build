@@ -4,12 +4,13 @@ import { describe, expect, it } from 'vitest';
 import { convert, formatMoney, fromMinor, monthlyDue, parseAmount, toMinor } from '../src/engine/cash/money';
 import { available, captureHold, ensureAccount, exchange, held, outsideAccount, pendingIn, placeHold, postTx, posted, releaseHold, reverseTx, setTxStatus } from '../src/engine/cash/journal';
 import { migrateV9toV10 } from '../src/engine/cash/migrate';
-import { COMPANY_CASH, companyBalance, companyIntoProject, formCompany, moveCompanyMoney } from '../src/engine/company';
-import { PERSONAL_CASH, personalBalance, personalPostings, postPersonal } from '../src/engine/personal';
+import { companyBalance } from '../src/engine/company';
+import { PERSONAL_CASH, personalBalance, personalPostings, postPersonal, putInOwnMoney } from '../src/engine/personal';
+import { statementLines } from '../src/engine/cash/journal';
 import { financeSummary, setFinanceTarget } from '../src/engine/finance';
 import { SaveFormatError, deserialize, memoryStore, openSave, serialize, writeSave } from '../src/engine/save';
 import { newGame } from '../src/engine/state';
-import type { CreationDraft, GameState } from '../src/engine/types';
+import type { CreationDraft } from '../src/engine/types';
 import { draft } from './fixtures';
 import { approve, buildProject } from './helpers';
 
@@ -130,29 +131,24 @@ describe('A09: monthly dates', () => {
   });
 });
 
-describe('A02: your money, your company\'s, and a project\'s', () => {
-  it('moves conserve what is yours, the fee aside, and none is revenue', () => {
+describe('A02: your money and a project\'s', () => {
+  // From November 14, 2026 your money is in the bank's ledger (engine/bank.ts) and there is no company to move it to:
+  // until then this case formed one and moved money in and out of it through the v8 journal.
+  it('a move into a project takes exactly that from your bank, balances, and is never income', () => {
     const s = life({ savings: 20_000 }, 'a02');
-    const yours = (g: GameState) => personalBalance(g) + companyBalance(g);
-    const start = yours(s);
-    formCompany(s, 'Tidewater Pictures', 5_000);
-    expect(yours(s)).toBe(start - 300);
-    moveCompanyMoney(s, 'in', 4_000);
-    moveCompanyMoney(s, 'out', 1_000);
-    expect(yours(s)).toBe(start - 300);
-    // Each move between you and the company is one transaction with a line on each account.
-    const moves = s.journal!.txs.filter((t) => t.lines.some((l) => l.account === PERSONAL_CASH) && t.lines.some((l) => l.account === COMPANY_CASH));
-    expect(moves).toHaveLength(3);
-    for (const t of moves) expect(t.lines.reduce((a, l) => a + l.minor, 0)).toBe(0);
-    // Nothing reached an income account.
-    expect(Object.values(s.journal!.accounts).filter((a) => a.type === 'income')).toEqual([]);
     const p = buildProject(s, { title: 'Harbour Lights', format: 'short', medium: 'live-action', runtime: 12, scenario: 'low' }, [{ name: 'Mara', patch: { roleSize: 'lead' } }], [{ place: 'Pier', chars: ['Mara'], minutes: 4 }]);
     approve(s, p);
     setFinanceTarget(p, financeSummary(p).promised + 50_000);
-    const before = companyBalance(s);
-    companyIntoProject(s, p, 2_000);
-    expect(companyBalance(s)).toBe(before - 2_000);
-    expect(posted(s, 'outside:projects:USD')).toBe(200_000); // the project's side, in cents
+    const before = personalBalance(s);
+    const txs = s.bank!.transactions.length;
+    putInOwnMoney(s, p, 2_000);
+    expect(personalBalance(s)).toBe(before - 2_000);
+    const t = s.bank!.transactions.slice(txs);
+    expect(t).toHaveLength(1);
+    expect(t[0].postings.reduce((a, x) => a + x.amount, 0)).toBe(0);
+    // It went to the bank's account for your projects, an expense line, not to any income account.
+    const to = t[0].postings.filter((x) => x.amount > 0).map((x) => s.bank!.accounts[x.accountId]);
+    expect(to.map((a) => [a.kind, a.name])).toEqual([['expense', 'Your Projects']]);
   });
 
   it('survives a save and reload with every cent and key, and a repeated key still moves once', () => {
@@ -170,7 +166,7 @@ describe('A21: a save from version 9', () => {
     const s = life({ savings: 3_000 }, 'v9');
     // Labelled fixture: the shape a version-9 save had, postings on each account.
     const raw = JSON.parse(JSON.stringify(s));
-    delete raw.journal;
+    delete raw.journal; delete raw.bank;
     raw.version = 9;
     raw.money = { postings: [
       { id: 'pp-1', at: 0, kind: 'savings', amount: 3_000, label: 'Your Savings', key: 'opening:savings' },
@@ -185,14 +181,22 @@ describe('A21: a save from version 9', () => {
   const envelope = (raw: Record<string, unknown>) => { const data = JSON.stringify(raw); return JSON.stringify({ format: 'slate-save', version: raw.version, checksum: hashOf(data), data }); };
   let hashOf: (s: string) => number;
 
-  it('keeps every posting, cent for cent, with the family terms and the company', async () => {
+  it('keeps every posting, cent for cent, with the family terms and the company, and brings your money to your bank', async () => {
     hashOf = (await import('../src/engine/rng')).hashString;
     const s = deserialize(envelope(v9()));
+    // Through version 10 (the v8 journal) to 11 (the bank, cash/migrate11.ts): your money is brought once, for exactly
+    // what it held; the company's is left its own.
     expect(personalBalance(s)).toBe(3_000 - 300 - 1_000 + 500 + 500);
     expect(companyBalance(s)).toBe(1_000);
-    expect(personalPostings(s).map((p) => [p.kind, p.amount, p.key])).toEqual([
+    expect(personalPostings(s).map((p) => [p.kind, p.amount, p.key])).toEqual([['brought', 2_700, `brought:${PERSONAL_CASH}`]]);
+    // The old journal keeps every posting, and the move to the bank, which leaves it holding nothing.
+    expect(statementLines(s, PERSONAL_CASH).map(({ tx, line }) => [line.kind, line.minor / 100, tx.key])).toEqual([
       ['savings', 3_000, 'opening:savings'], ['company', -300, 'company:form:co-1'], ['company', -1_000, 'company:capital:co-1'], ['paid-work', 500, 'job:1'], ['paid-work', 500, 'job:1#pp-5'],
+      ['moved-to-bank', -2_700, `moved-to-bank:${PERSONAL_CASH}`],
     ]);
+    expect(posted(s, PERSONAL_CASH)).toBe(0);
+    expect(s.reconciliation!.brought).toEqual([{ account: PERSONAL_CASH, label: 'Your Account', currency: 'USD', minor: 270_000, holdsReleased: 0 }]);
+    expect(s.reconciliation!.company).toMatchObject({ name: 'Tide', cashMinor: 100_000, capitalOutstanding: 1_000, needsOwnershipDecision: true });
     expect(s.money).toEqual({ family: { circumstances: 'comfortable', support: 'gift', amount: 0 } });
     expect(s.company).toEqual({ name: 'Tide', foundedAt: 10 });
     expect(posted(s, 'outside:company-transfers:USD')).toBe(0); // both sides of the old capital move arrived

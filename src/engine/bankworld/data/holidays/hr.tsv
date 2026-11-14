@@ -1,0 +1,544 @@
+# 17	Split-Dalmatia
+# 19	Dubrovnik-Neretva
+2026-01-01	Nova godina	New Year's Day	public	
+2026-01-06	Bogojavljenje, Sveta tri kralja	Epiphany	public	
+2026-01-07	Pravoslavni Božić	Orthodox Christmas	optional	
+2026-02-03	Sveti Vlaho	Saint Blaise	optional	19
+2026-02-17	Pokladni utorak	Shrove Tuesday	observance	
+2026-03-08	International Women's Day	International Women's Day	observance	
+2026-03-20	Ramazanski bajram	End of Ramadan (Eid al-Fitr)	optional	
+2026-04-05	Uskrs	Easter Sunday	public	
+2026-04-06	Uskršnji ponedjeljak	Easter Monday	public	
+2026-04-12	Pravoslavni Uskrs	Orthodox Easter	optional	
+2026-04-13	Orthodox Easter Monday	Orthodox Easter Monday	optional	
+2026-05-01	Praznik rada	Labour Day	public	
+2026-05-07	Sveti Duje	Saint Domnius	optional	17
+2026-05-10	Majčin dan	Mother's Day	observance	
+2026-05-27	Kurban-bajram	Feast of the Sacrifice (Eid al-Adha)	optional	
+2026-05-30	Dan državnosti	National Day	public	
+2026-06-04	Tijelovo	Corpus Christi	public	
+2026-06-22	Dan antifašističke borbe	Anti-Fascist Struggle Day	public	
+2026-06-25	Dan neovisnosti	Independence Day	observance	
+2026-08-05	Dan pobjede i domovinske zahvalnosti i Dan hrvatskih branitelja	Victory and Homeland Thanksgiving Day and the Day of Croatian defenders	public	
+2026-08-15	Velika Gospa	Assumption	public	
+2026-09-12	Jom Kipur	Yom Kippur	optional	
+2026-09-21	Jom Kipur	Yom Kippur	optional	
+2026-11-01	Svi sveti	All Saints' Day	public	
+2026-11-18	Dan sjećanja na žrtve Domovinskog rata i Dan sjećanja na žrtvu Vukovara i Škabrnje	Remembrance Day	public	
+2026-12-25	Božić	Christmas Day	public	
+2026-12-26	Svetog Stjepana	Boxing Day	public	
+2027-01-01	Nova godina	New Year's Day	public	
+2027-01-06	Bogojavljenje, Sveta tri kralja	Epiphany	public	
+2027-01-07	Pravoslavni Božić	Orthodox Christmas	optional	
+2027-02-03	Sveti Vlaho	Saint Blaise	optional	19
+2027-02-09	Pokladni utorak	Shrove Tuesday	observance	
+2027-03-08	International Women's Day	International Women's Day	observance	
+2027-03-09	Ramazanski bajram	End of Ramadan (Eid al-Fitr)	optional	
+2027-03-28	Uskrs	Easter Sunday	public	
+2027-03-29	Uskršnji ponedjeljak	Easter Monday	public	
+2027-05-01	Praznik rada	Labour Day	public	
+2027-05-02	Pravoslavni Uskrs	Orthodox Easter	optional	
+2027-05-03	Orthodox Easter Monday	Orthodox Easter Monday	optional	
+2027-05-07	Sveti Duje	Saint Domnius	optional	17
+2027-05-09	Majčin dan	Mother's Day	observance	
+2027-05-16	Kurban-bajram	Feast of the Sacrifice (Eid al-Adha)	optional	
+2027-05-27	Tijelovo	Corpus Christi	public	
+2027-05-30	Dan državnosti	National Day	public	
+2027-06-22	Dan antifašističke borbe	Anti-Fascist Struggle Day	public	
+2027-06-25	Dan neovisnosti	Independence Day	observance	
+2027-08-05	Dan pobjede i domovinske zahvalnosti i Dan hrvatskih branitelja	Victory and Homeland Thanksgiving Day and the Day of Croatian defenders	public	
+2027-08-15	Velika Gospa	Assumption	public	
+2027-10-02	Jom Kipur	Yom Kippur	optional	
+2027-10-11	Jom Kipur	Yom Kippur	optional	
+2027-11-01	Svi sveti	All Saints' Day	public	
+2027-11-18	Dan sjećanja na žrtve Domovinskog rata i Dan sjećanja na žrtvu Vukovara i Škabrnje	Remembrance Day	public	
+2027-12-25	Božić	Christmas Day	public	
+2027-12-26	Svetog Stjepana	Boxing Day	public	
+2028-01-01	Nova godina	New Year's Day	public	
+2028-01-06	Bogojavljenje, Sveta tri kralja	Epiphany	public	
+2028-01-07	Pravoslavni Božić	Orthodox Christmas	optional	
+2028-02-03	Sveti Vlaho	Saint Blaise	optional	19
+2028-02-26	Ramazanski bajram	End of Ramadan (Eid al-Fitr)	optional	
+2028-02-29	Pokladni utorak	Shrove Tuesday	observance	
+2028-03-08	International Women's Day	International Women's Day	observance	
+2028-04-16	Pravoslavni Uskrs	Orthodox Easter	optional	
+2028-04-16	Uskrs	Easter Sunday	public	
+2028-04-17	Orthodox Easter Monday	Orthodox Easter Monday	optional	
+2028-04-17	Uskršnji ponedjeljak	Easter Monday	public	
+2028-05-01	Praznik rada	Labour Day	public	
+2028-05-05	Kurban-bajram	Feast of the Sacrifice (Eid al-Adha)	optional	
+2028-05-07	Sveti Duje	Saint Domnius	optional	17
+2028-05-14	Majčin dan	Mother's Day	observance	
+2028-05-30	Dan državnosti	National Day	public	
+2028-06-15	Tijelovo	Corpus Christi	public	
+2028-06-22	Dan antifašističke borbe	Anti-Fascist Struggle Day	public	
+2028-06-25	Dan neovisnosti	Independence Day	observance	
+2028-08-05	Dan pobjede i domovinske zahvalnosti i Dan hrvatskih branitelja	Victory and Homeland Thanksgiving Day and the Day of Croatian defenders	public	
+2028-08-15	Velika Gospa	Assumption	public	
+2028-09-21	Jom Kipur	Yom Kippur	optional	
+2028-09-30	Jom Kipur	Yom Kippur	optional	
+2028-11-01	Svi sveti	All Saints' Day	public	
+2028-11-18	Dan sjećanja na žrtve Domovinskog rata i Dan sjećanja na žrtvu Vukovara i Škabrnje	Remembrance Day	public	
+2028-12-25	Božić	Christmas Day	public	
+2028-12-26	Svetog Stjepana	Boxing Day	public	
+2029-01-01	Nova godina	New Year's Day	public	
+2029-01-06	Bogojavljenje, Sveta tri kralja	Epiphany	public	
+2029-01-07	Pravoslavni Božić	Orthodox Christmas	optional	
+2029-02-03	Sveti Vlaho	Saint Blaise	optional	19
+2029-02-13	Pokladni utorak	Shrove Tuesday	observance	
+2029-02-14	Ramazanski bajram	End of Ramadan (Eid al-Fitr)	optional	
+2029-03-08	International Women's Day	International Women's Day	observance	
+2029-04-01	Uskrs	Easter Sunday	public	
+2029-04-02	Uskršnji ponedjeljak	Easter Monday	public	
+2029-04-08	Pravoslavni Uskrs	Orthodox Easter	optional	
+2029-04-09	Orthodox Easter Monday	Orthodox Easter Monday	optional	
+2029-04-24	Kurban-bajram	Feast of the Sacrifice (Eid al-Adha)	optional	
+2029-05-01	Praznik rada	Labour Day	public	
+2029-05-07	Sveti Duje	Saint Domnius	optional	17
+2029-05-13	Majčin dan	Mother's Day	observance	
+2029-05-30	Dan državnosti	National Day	public	
+2029-05-31	Tijelovo	Corpus Christi	public	
+2029-06-22	Dan antifašističke borbe	Anti-Fascist Struggle Day	public	
+2029-06-25	Dan neovisnosti	Independence Day	observance	
+2029-08-05	Dan pobjede i domovinske zahvalnosti i Dan hrvatskih branitelja	Victory and Homeland Thanksgiving Day and the Day of Croatian defenders	public	
+2029-08-15	Velika Gospa	Assumption	public	
+2029-09-10	Jom Kipur	Yom Kippur	optional	
+2029-09-19	Jom Kipur	Yom Kippur	optional	
+2029-11-01	Svi sveti	All Saints' Day	public	
+2029-11-18	Dan sjećanja na žrtve Domovinskog rata i Dan sjećanja na žrtvu Vukovara i Škabrnje	Remembrance Day	public	
+2029-12-25	Božić	Christmas Day	public	
+2029-12-26	Svetog Stjepana	Boxing Day	public	
+2030-01-01	Nova godina	New Year's Day	public	
+2030-01-06	Bogojavljenje, Sveta tri kralja	Epiphany	public	
+2030-01-07	Pravoslavni Božić	Orthodox Christmas	optional	
+2030-02-03	Sveti Vlaho	Saint Blaise	optional	19
+2030-02-04	Ramazanski bajram	End of Ramadan (Eid al-Fitr)	optional	
+2030-03-05	Pokladni utorak	Shrove Tuesday	observance	
+2030-03-08	International Women's Day	International Women's Day	observance	
+2030-04-13	Kurban-bajram	Feast of the Sacrifice (Eid al-Adha)	optional	
+2030-04-21	Uskrs	Easter Sunday	public	
+2030-04-22	Uskršnji ponedjeljak	Easter Monday	public	
+2030-04-28	Pravoslavni Uskrs	Orthodox Easter	optional	
+2030-04-29	Orthodox Easter Monday	Orthodox Easter Monday	optional	
+2030-05-01	Praznik rada	Labour Day	public	
+2030-05-07	Sveti Duje	Saint Domnius	optional	17
+2030-05-12	Majčin dan	Mother's Day	observance	
+2030-05-30	Dan državnosti	National Day	public	
+2030-06-20	Tijelovo	Corpus Christi	public	
+2030-06-22	Dan antifašističke borbe	Anti-Fascist Struggle Day	public	
+2030-06-25	Dan neovisnosti	Independence Day	observance	
+2030-08-05	Dan pobjede i domovinske zahvalnosti i Dan hrvatskih branitelja	Victory and Homeland Thanksgiving Day and the Day of Croatian defenders	public	
+2030-08-15	Velika Gospa	Assumption	public	
+2030-09-28	Jom Kipur	Yom Kippur	optional	
+2030-10-07	Jom Kipur	Yom Kippur	optional	
+2030-11-01	Svi sveti	All Saints' Day	public	
+2030-11-18	Dan sjećanja na žrtve Domovinskog rata i Dan sjećanja na žrtvu Vukovara i Škabrnje	Remembrance Day	public	
+2030-12-25	Božić	Christmas Day	public	
+2030-12-26	Svetog Stjepana	Boxing Day	public	
+2031-01-01	Nova godina	New Year's Day	public	
+2031-01-06	Bogojavljenje, Sveta tri kralja	Epiphany	public	
+2031-01-07	Pravoslavni Božić	Orthodox Christmas	optional	
+2031-01-24	Ramazanski bajram	End of Ramadan (Eid al-Fitr)	optional	
+2031-02-03	Sveti Vlaho	Saint Blaise	optional	19
+2031-02-25	Pokladni utorak	Shrove Tuesday	observance	
+2031-03-08	International Women's Day	International Women's Day	observance	
+2031-04-02	Kurban-bajram	Feast of the Sacrifice (Eid al-Adha)	optional	
+2031-04-13	Pravoslavni Uskrs	Orthodox Easter	optional	
+2031-04-13	Uskrs	Easter Sunday	public	
+2031-04-14	Orthodox Easter Monday	Orthodox Easter Monday	optional	
+2031-04-14	Uskršnji ponedjeljak	Easter Monday	public	
+2031-05-01	Praznik rada	Labour Day	public	
+2031-05-07	Sveti Duje	Saint Domnius	optional	17
+2031-05-11	Majčin dan	Mother's Day	observance	
+2031-05-30	Dan državnosti	National Day	public	
+2031-06-12	Tijelovo	Corpus Christi	public	
+2031-06-22	Dan antifašističke borbe	Anti-Fascist Struggle Day	public	
+2031-06-25	Dan neovisnosti	Independence Day	observance	
+2031-08-05	Dan pobjede i domovinske zahvalnosti i Dan hrvatskih branitelja	Victory and Homeland Thanksgiving Day and the Day of Croatian defenders	public	
+2031-08-15	Velika Gospa	Assumption	public	
+2031-09-18	Jom Kipur	Yom Kippur	optional	
+2031-09-27	Jom Kipur	Yom Kippur	optional	
+2031-11-01	Svi sveti	All Saints' Day	public	
+2031-11-18	Dan sjećanja na žrtve Domovinskog rata i Dan sjećanja na žrtvu Vukovara i Škabrnje	Remembrance Day	public	
+2031-12-25	Božić	Christmas Day	public	
+2031-12-26	Svetog Stjepana	Boxing Day	public	
+2032-01-01	Nova godina	New Year's Day	public	
+2032-01-06	Bogojavljenje, Sveta tri kralja	Epiphany	public	
+2032-01-07	Pravoslavni Božić	Orthodox Christmas	optional	
+2032-01-14	Ramazanski bajram	End of Ramadan (Eid al-Fitr)	optional	
+2032-02-03	Sveti Vlaho	Saint Blaise	optional	19
+2032-02-10	Pokladni utorak	Shrove Tuesday	observance	
+2032-03-08	International Women's Day	International Women's Day	observance	
+2032-03-22	Kurban-bajram	Feast of the Sacrifice (Eid al-Adha)	optional	
+2032-03-28	Uskrs	Easter Sunday	public	
+2032-03-29	Uskršnji ponedjeljak	Easter Monday	public	
+2032-05-01	Praznik rada	Labour Day	public	
+2032-05-02	Pravoslavni Uskrs	Orthodox Easter	optional	
+2032-05-03	Orthodox Easter Monday	Orthodox Easter Monday	optional	
+2032-05-07	Sveti Duje	Saint Domnius	optional	17
+2032-05-09	Majčin dan	Mother's Day	observance	
+2032-05-27	Tijelovo	Corpus Christi	public	
+2032-05-30	Dan državnosti	National Day	public	
+2032-06-22	Dan antifašističke borbe	Anti-Fascist Struggle Day	public	
+2032-06-25	Dan neovisnosti	Independence Day	observance	
+2032-08-05	Dan pobjede i domovinske zahvalnosti i Dan hrvatskih branitelja	Victory and Homeland Thanksgiving Day and the Day of Croatian defenders	public	
+2032-08-15	Velika Gospa	Assumption	public	
+2032-09-06	Jom Kipur	Yom Kippur	optional	
+2032-09-15	Jom Kipur	Yom Kippur	optional	
+2032-11-01	Svi sveti	All Saints' Day	public	
+2032-11-18	Dan sjećanja na žrtve Domovinskog rata i Dan sjećanja na žrtvu Vukovara i Škabrnje	Remembrance Day	public	
+2032-12-25	Božić	Christmas Day	public	
+2032-12-26	Svetog Stjepana	Boxing Day	public	
+2033-01-01	Nova godina	New Year's Day	public	
+2033-01-02	Ramazanski bajram	End of Ramadan (Eid al-Fitr)	optional	
+2033-01-06	Bogojavljenje, Sveta tri kralja	Epiphany	public	
+2033-01-07	Pravoslavni Božić	Orthodox Christmas	optional	
+2033-02-03	Sveti Vlaho	Saint Blaise	optional	19
+2033-03-01	Pokladni utorak	Shrove Tuesday	observance	
+2033-03-08	International Women's Day	International Women's Day	observance	
+2033-03-11	Kurban-bajram	Feast of the Sacrifice (Eid al-Adha)	optional	
+2033-04-17	Uskrs	Easter Sunday	public	
+2033-04-18	Uskršnji ponedjeljak	Easter Monday	public	
+2033-04-24	Pravoslavni Uskrs	Orthodox Easter	optional	
+2033-04-25	Orthodox Easter Monday	Orthodox Easter Monday	optional	
+2033-05-01	Praznik rada	Labour Day	public	
+2033-05-07	Sveti Duje	Saint Domnius	optional	17
+2033-05-08	Majčin dan	Mother's Day	observance	
+2033-05-30	Dan državnosti	National Day	public	
+2033-06-16	Tijelovo	Corpus Christi	public	
+2033-06-22	Dan antifašističke borbe	Anti-Fascist Struggle Day	public	
+2033-06-25	Dan neovisnosti	Independence Day	observance	
+2033-08-05	Dan pobjede i domovinske zahvalnosti i Dan hrvatskih branitelja	Victory and Homeland Thanksgiving Day and the Day of Croatian defenders	public	
+2033-08-15	Velika Gospa	Assumption	public	
+2033-09-24	Jom Kipur	Yom Kippur	optional	
+2033-10-03	Jom Kipur	Yom Kippur	optional	
+2033-11-01	Svi sveti	All Saints' Day	public	
+2033-11-18	Dan sjećanja na žrtve Domovinskog rata i Dan sjećanja na žrtvu Vukovara i Škabrnje	Remembrance Day	public	
+2033-12-23	Ramazanski bajram	End of Ramadan (Eid al-Fitr)	optional	
+2033-12-25	Božić	Christmas Day	public	
+2033-12-26	Svetog Stjepana	Boxing Day	public	
+2034-01-01	Nova godina	New Year's Day	public	
+2034-01-06	Bogojavljenje, Sveta tri kralja	Epiphany	public	
+2034-01-07	Pravoslavni Božić	Orthodox Christmas	optional	
+2034-02-03	Sveti Vlaho	Saint Blaise	optional	19
+2034-02-21	Pokladni utorak	Shrove Tuesday	observance	
+2034-03-01	Kurban-bajram	Feast of the Sacrifice (Eid al-Adha)	optional	
+2034-03-08	International Women's Day	International Women's Day	observance	
+2034-04-09	Pravoslavni Uskrs	Orthodox Easter	optional	
+2034-04-09	Uskrs	Easter Sunday	public	
+2034-04-10	Orthodox Easter Monday	Orthodox Easter Monday	optional	
+2034-04-10	Uskršnji ponedjeljak	Easter Monday	public	
+2034-05-01	Praznik rada	Labour Day	public	
+2034-05-07	Sveti Duje	Saint Domnius	optional	17
+2034-05-14	Majčin dan	Mother's Day	observance	
+2034-05-30	Dan državnosti	National Day	public	
+2034-06-08	Tijelovo	Corpus Christi	public	
+2034-06-22	Dan antifašističke borbe	Anti-Fascist Struggle Day	public	
+2034-06-25	Dan neovisnosti	Independence Day	observance	
+2034-08-05	Dan pobjede i domovinske zahvalnosti i Dan hrvatskih branitelja	Victory and Homeland Thanksgiving Day and the Day of Croatian defenders	public	
+2034-08-15	Velika Gospa	Assumption	public	
+2034-09-14	Jom Kipur	Yom Kippur	optional	
+2034-09-23	Jom Kipur	Yom Kippur	optional	
+2034-11-01	Svi sveti	All Saints' Day	public	
+2034-11-18	Dan sjećanja na žrtve Domovinskog rata i Dan sjećanja na žrtvu Vukovara i Škabrnje	Remembrance Day	public	
+2034-12-12	Ramazanski bajram	End of Ramadan (Eid al-Fitr)	optional	
+2034-12-25	Božić	Christmas Day	public	
+2034-12-26	Svetog Stjepana	Boxing Day	public	
+2035-01-01	Nova godina	New Year's Day	public	
+2035-01-06	Bogojavljenje, Sveta tri kralja	Epiphany	public	
+2035-01-07	Pravoslavni Božić	Orthodox Christmas	optional	
+2035-02-03	Sveti Vlaho	Saint Blaise	optional	19
+2035-02-06	Pokladni utorak	Shrove Tuesday	observance	
+2035-02-18	Kurban-bajram	Feast of the Sacrifice (Eid al-Adha)	optional	
+2035-03-08	International Women's Day	International Women's Day	observance	
+2035-03-25	Uskrs	Easter Sunday	public	
+2035-03-26	Uskršnji ponedjeljak	Easter Monday	public	
+2035-04-29	Pravoslavni Uskrs	Orthodox Easter	optional	
+2035-04-30	Orthodox Easter Monday	Orthodox Easter Monday	optional	
+2035-05-01	Praznik rada	Labour Day	public	
+2035-05-07	Sveti Duje	Saint Domnius	optional	17
+2035-05-13	Majčin dan	Mother's Day	observance	
+2035-05-24	Tijelovo	Corpus Christi	public	
+2035-05-30	Dan državnosti	National Day	public	
+2035-06-22	Dan antifašističke borbe	Anti-Fascist Struggle Day	public	
+2035-06-25	Dan neovisnosti	Independence Day	observance	
+2035-08-05	Dan pobjede i domovinske zahvalnosti i Dan hrvatskih branitelja	Victory and Homeland Thanksgiving Day and the Day of Croatian defenders	public	
+2035-08-15	Velika Gospa	Assumption	public	
+2035-10-04	Jom Kipur	Yom Kippur	optional	
+2035-10-13	Jom Kipur	Yom Kippur	optional	
+2035-11-01	Svi sveti	All Saints' Day	public	
+2035-11-18	Dan sjećanja na žrtve Domovinskog rata i Dan sjećanja na žrtvu Vukovara i Škabrnje	Remembrance Day	public	
+2035-12-01	Ramazanski bajram	End of Ramadan (Eid al-Fitr)	optional	
+2035-12-25	Božić	Christmas Day	public	
+2035-12-26	Svetog Stjepana	Boxing Day	public	
+2036-01-01	Nova godina	New Year's Day	public	
+2036-01-06	Bogojavljenje, Sveta tri kralja	Epiphany	public	
+2036-01-07	Pravoslavni Božić	Orthodox Christmas	optional	
+2036-02-03	Sveti Vlaho	Saint Blaise	optional	19
+2036-02-07	Kurban-bajram	Feast of the Sacrifice (Eid al-Adha)	optional	
+2036-02-26	Pokladni utorak	Shrove Tuesday	observance	
+2036-03-08	International Women's Day	International Women's Day	observance	
+2036-04-13	Uskrs	Easter Sunday	public	
+2036-04-14	Uskršnji ponedjeljak	Easter Monday	public	
+2036-04-20	Pravoslavni Uskrs	Orthodox Easter	optional	
+2036-04-21	Orthodox Easter Monday	Orthodox Easter Monday	optional	
+2036-05-01	Praznik rada	Labour Day	public	
+2036-05-07	Sveti Duje	Saint Domnius	optional	17
+2036-05-11	Majčin dan	Mother's Day	observance	
+2036-05-30	Dan državnosti	National Day	public	
+2036-06-12	Tijelovo	Corpus Christi	public	
+2036-06-22	Dan antifašističke borbe	Anti-Fascist Struggle Day	public	
+2036-06-25	Dan neovisnosti	Independence Day	observance	
+2036-08-05	Dan pobjede i domovinske zahvalnosti i Dan hrvatskih branitelja	Victory and Homeland Thanksgiving Day and the Day of Croatian defenders	public	
+2036-08-15	Velika Gospa	Assumption	public	
+2036-09-22	Jom Kipur	Yom Kippur	optional	
+2036-10-01	Jom Kipur	Yom Kippur	optional	
+2036-11-01	Svi sveti	All Saints' Day	public	
+2036-11-18	Dan sjećanja na žrtve Domovinskog rata i Dan sjećanja na žrtvu Vukovara i Škabrnje	Remembrance Day	public	
+2036-11-19	Ramazanski bajram	End of Ramadan (Eid al-Fitr)	optional	
+2036-12-25	Božić	Christmas Day	public	
+2036-12-26	Svetog Stjepana	Boxing Day	public	
+2037-01-01	Nova godina	New Year's Day	public	
+2037-01-06	Bogojavljenje, Sveta tri kralja	Epiphany	public	
+2037-01-07	Pravoslavni Božić	Orthodox Christmas	optional	
+2037-01-26	Kurban-bajram	Feast of the Sacrifice (Eid al-Adha)	optional	
+2037-02-03	Sveti Vlaho	Saint Blaise	optional	19
+2037-02-17	Pokladni utorak	Shrove Tuesday	observance	
+2037-03-08	International Women's Day	International Women's Day	observance	
+2037-04-05	Pravoslavni Uskrs	Orthodox Easter	optional	
+2037-04-05	Uskrs	Easter Sunday	public	
+2037-04-06	Orthodox Easter Monday	Orthodox Easter Monday	optional	
+2037-04-06	Uskršnji ponedjeljak	Easter Monday	public	
+2037-05-01	Praznik rada	Labour Day	public	
+2037-05-07	Sveti Duje	Saint Domnius	optional	17
+2037-05-10	Majčin dan	Mother's Day	observance	
+2037-05-30	Dan državnosti	National Day	public	
+2037-06-04	Tijelovo	Corpus Christi	public	
+2037-06-22	Dan antifašističke borbe	Anti-Fascist Struggle Day	public	
+2037-06-25	Dan neovisnosti	Independence Day	observance	
+2037-08-05	Dan pobjede i domovinske zahvalnosti i Dan hrvatskih branitelja	Victory and Homeland Thanksgiving Day and the Day of Croatian defenders	public	
+2037-08-15	Velika Gospa	Assumption	public	
+2037-09-10	Jom Kipur	Yom Kippur	optional	
+2037-09-19	Jom Kipur	Yom Kippur	optional	
+2037-11-01	Svi sveti	All Saints' Day	public	
+2037-11-08	Ramazanski bajram	End of Ramadan (Eid al-Fitr)	optional	
+2037-11-18	Dan sjećanja na žrtve Domovinskog rata i Dan sjećanja na žrtvu Vukovara i Škabrnje	Remembrance Day	public	
+2037-12-25	Božić	Christmas Day	public	
+2037-12-26	Svetog Stjepana	Boxing Day	public	
+2038-01-01	Nova godina	New Year's Day	public	
+2038-01-06	Bogojavljenje, Sveta tri kralja	Epiphany	public	
+2038-01-07	Pravoslavni Božić	Orthodox Christmas	optional	
+2038-01-16	Kurban-bajram	Feast of the Sacrifice (Eid al-Adha)	optional	
+2038-02-03	Sveti Vlaho	Saint Blaise	optional	19
+2038-03-08	International Women's Day	International Women's Day	observance	
+2038-03-09	Pokladni utorak	Shrove Tuesday	observance	
+2038-04-25	Pravoslavni Uskrs	Orthodox Easter	optional	
+2038-04-25	Uskrs	Easter Sunday	public	
+2038-04-26	Orthodox Easter Monday	Orthodox Easter Monday	optional	
+2038-04-26	Uskršnji ponedjeljak	Easter Monday	public	
+2038-05-01	Praznik rada	Labour Day	public	
+2038-05-07	Sveti Duje	Saint Domnius	optional	17
+2038-05-09	Majčin dan	Mother's Day	observance	
+2038-05-30	Dan državnosti	National Day	public	
+2038-06-22	Dan antifašističke borbe	Anti-Fascist Struggle Day	public	
+2038-06-24	Tijelovo	Corpus Christi	public	
+2038-06-25	Dan neovisnosti	Independence Day	observance	
+2038-08-05	Dan pobjede i domovinske zahvalnosti i Dan hrvatskih branitelja	Victory and Homeland Thanksgiving Day and the Day of Croatian defenders	public	
+2038-08-15	Velika Gospa	Assumption	public	
+2038-09-30	Jom Kipur	Yom Kippur	optional	
+2038-10-09	Jom Kipur	Yom Kippur	optional	
+2038-10-29	Ramazanski bajram	End of Ramadan (Eid al-Fitr)	optional	
+2038-11-01	Svi sveti	All Saints' Day	public	
+2038-11-18	Dan sjećanja na žrtve Domovinskog rata i Dan sjećanja na žrtvu Vukovara i Škabrnje	Remembrance Day	public	
+2038-12-25	Božić	Christmas Day	public	
+2038-12-26	Svetog Stjepana	Boxing Day	public	
+2039-01-01	Nova godina	New Year's Day	public	
+2039-01-05	Kurban-bajram	Feast of the Sacrifice (Eid al-Adha)	optional	
+2039-01-06	Bogojavljenje, Sveta tri kralja	Epiphany	public	
+2039-01-07	Pravoslavni Božić	Orthodox Christmas	optional	
+2039-02-03	Sveti Vlaho	Saint Blaise	optional	19
+2039-02-22	Pokladni utorak	Shrove Tuesday	observance	
+2039-03-08	International Women's Day	International Women's Day	observance	
+2039-04-10	Uskrs	Easter Sunday	public	
+2039-04-11	Uskršnji ponedjeljak	Easter Monday	public	
+2039-04-17	Pravoslavni Uskrs	Orthodox Easter	optional	
+2039-04-18	Orthodox Easter Monday	Orthodox Easter Monday	optional	
+2039-05-01	Praznik rada	Labour Day	public	
+2039-05-07	Sveti Duje	Saint Domnius	optional	17
+2039-05-08	Majčin dan	Mother's Day	observance	
+2039-05-30	Dan državnosti	National Day	public	
+2039-06-09	Tijelovo	Corpus Christi	public	
+2039-06-22	Dan antifašističke borbe	Anti-Fascist Struggle Day	public	
+2039-06-25	Dan neovisnosti	Independence Day	observance	
+2039-08-05	Dan pobjede i domovinske zahvalnosti i Dan hrvatskih branitelja	Victory and Homeland Thanksgiving Day and the Day of Croatian defenders	public	
+2039-08-15	Velika Gospa	Assumption	public	
+2039-09-19	Jom Kipur	Yom Kippur	optional	
+2039-09-28	Jom Kipur	Yom Kippur	optional	
+2039-10-19	Ramazanski bajram	End of Ramadan (Eid al-Fitr)	optional	
+2039-11-01	Svi sveti	All Saints' Day	public	
+2039-11-18	Dan sjećanja na žrtve Domovinskog rata i Dan sjećanja na žrtvu Vukovara i Škabrnje	Remembrance Day	public	
+2039-12-25	Božić	Christmas Day	public	
+2039-12-26	Kurban-bajram	Feast of the Sacrifice (Eid al-Adha)	optional	
+2039-12-26	Svetog Stjepana	Boxing Day	public	
+2040-01-01	Nova godina	New Year's Day	public	
+2040-01-06	Bogojavljenje, Sveta tri kralja	Epiphany	public	
+2040-01-07	Pravoslavni Božić	Orthodox Christmas	optional	
+2040-02-03	Sveti Vlaho	Saint Blaise	optional	19
+2040-02-14	Pokladni utorak	Shrove Tuesday	observance	
+2040-03-08	International Women's Day	International Women's Day	observance	
+2040-04-01	Uskrs	Easter Sunday	public	
+2040-04-02	Uskršnji ponedjeljak	Easter Monday	public	
+2040-05-01	Praznik rada	Labour Day	public	
+2040-05-06	Pravoslavni Uskrs	Orthodox Easter	optional	
+2040-05-07	Orthodox Easter Monday	Orthodox Easter Monday	optional	
+2040-05-07	Sveti Duje	Saint Domnius	optional	17
+2040-05-13	Majčin dan	Mother's Day	observance	
+2040-05-30	Dan državnosti	National Day	public	
+2040-05-31	Tijelovo	Corpus Christi	public	
+2040-06-22	Dan antifašističke borbe	Anti-Fascist Struggle Day	public	
+2040-06-25	Dan neovisnosti	Independence Day	observance	
+2040-08-05	Dan pobjede i domovinske zahvalnosti i Dan hrvatskih branitelja	Victory and Homeland Thanksgiving Day and the Day of Croatian defenders	public	
+2040-08-15	Velika Gospa	Assumption	public	
+2040-09-08	Jom Kipur	Yom Kippur	optional	
+2040-09-17	Jom Kipur	Yom Kippur	optional	
+2040-10-07	Ramazanski bajram	End of Ramadan (Eid al-Fitr)	optional	
+2040-11-01	Svi sveti	All Saints' Day	public	
+2040-11-18	Dan sjećanja na žrtve Domovinskog rata i Dan sjećanja na žrtvu Vukovara i Škabrnje	Remembrance Day	public	
+2040-12-14	Kurban-bajram	Feast of the Sacrifice (Eid al-Adha)	optional	
+2040-12-25	Božić	Christmas Day	public	
+2040-12-26	Svetog Stjepana	Boxing Day	public	
+2041-01-01	Nova godina	New Year's Day	public	
+2041-01-06	Bogojavljenje, Sveta tri kralja	Epiphany	public	
+2041-01-07	Pravoslavni Božić	Orthodox Christmas	optional	
+2041-02-03	Sveti Vlaho	Saint Blaise	optional	19
+2041-03-05	Pokladni utorak	Shrove Tuesday	observance	
+2041-03-08	International Women's Day	International Women's Day	observance	
+2041-04-21	Pravoslavni Uskrs	Orthodox Easter	optional	
+2041-04-21	Uskrs	Easter Sunday	public	
+2041-04-22	Orthodox Easter Monday	Orthodox Easter Monday	optional	
+2041-04-22	Uskršnji ponedjeljak	Easter Monday	public	
+2041-05-01	Praznik rada	Labour Day	public	
+2041-05-07	Sveti Duje	Saint Domnius	optional	17
+2041-05-12	Majčin dan	Mother's Day	observance	
+2041-05-30	Dan državnosti	National Day	public	
+2041-06-20	Tijelovo	Corpus Christi	public	
+2041-06-22	Dan antifašističke borbe	Anti-Fascist Struggle Day	public	
+2041-06-25	Dan neovisnosti	Independence Day	observance	
+2041-08-05	Dan pobjede i domovinske zahvalnosti i Dan hrvatskih branitelja	Victory and Homeland Thanksgiving Day and the Day of Croatian defenders	public	
+2041-08-15	Velika Gospa	Assumption	public	
+2041-09-26	Jom Kipur	Yom Kippur	optional	
+2041-09-26	Ramazanski bajram	End of Ramadan (Eid al-Fitr)	optional	
+2041-10-05	Jom Kipur	Yom Kippur	optional	
+2041-11-01	Svi sveti	All Saints' Day	public	
+2041-11-18	Dan sjećanja na žrtve Domovinskog rata i Dan sjećanja na žrtvu Vukovara i Škabrnje	Remembrance Day	public	
+2041-12-04	Kurban-bajram	Feast of the Sacrifice (Eid al-Adha)	optional	
+2041-12-25	Božić	Christmas Day	public	
+2041-12-26	Svetog Stjepana	Boxing Day	public	
+2042-01-01	Nova godina	New Year's Day	public	
+2042-01-06	Bogojavljenje, Sveta tri kralja	Epiphany	public	
+2042-01-07	Pravoslavni Božić	Orthodox Christmas	optional	
+2042-02-03	Sveti Vlaho	Saint Blaise	optional	19
+2042-02-18	Pokladni utorak	Shrove Tuesday	observance	
+2042-03-08	International Women's Day	International Women's Day	observance	
+2042-04-06	Uskrs	Easter Sunday	public	
+2042-04-07	Uskršnji ponedjeljak	Easter Monday	public	
+2042-04-13	Pravoslavni Uskrs	Orthodox Easter	optional	
+2042-04-14	Orthodox Easter Monday	Orthodox Easter Monday	optional	
+2042-05-01	Praznik rada	Labour Day	public	
+2042-05-07	Sveti Duje	Saint Domnius	optional	17
+2042-05-11	Majčin dan	Mother's Day	observance	
+2042-05-30	Dan državnosti	National Day	public	
+2042-06-05	Tijelovo	Corpus Christi	public	
+2042-06-22	Dan antifašističke borbe	Anti-Fascist Struggle Day	public	
+2042-06-25	Dan neovisnosti	Independence Day	observance	
+2042-08-05	Dan pobjede i domovinske zahvalnosti i Dan hrvatskih branitelja	Victory and Homeland Thanksgiving Day and the Day of Croatian defenders	public	
+2042-08-15	Velika Gospa	Assumption	public	
+2042-09-15	Jom Kipur	Yom Kippur	optional	
+2042-09-15	Ramazanski bajram	End of Ramadan (Eid al-Fitr)	optional	
+2042-09-24	Jom Kipur	Yom Kippur	optional	
+2042-11-01	Svi sveti	All Saints' Day	public	
+2042-11-18	Dan sjećanja na žrtve Domovinskog rata i Dan sjećanja na žrtvu Vukovara i Škabrnje	Remembrance Day	public	
+2042-11-23	Kurban-bajram	Feast of the Sacrifice (Eid al-Adha)	optional	
+2042-12-25	Božić	Christmas Day	public	
+2042-12-26	Svetog Stjepana	Boxing Day	public	
+2043-01-01	Nova godina	New Year's Day	public	
+2043-01-06	Bogojavljenje, Sveta tri kralja	Epiphany	public	
+2043-01-07	Pravoslavni Božić	Orthodox Christmas	optional	
+2043-02-03	Sveti Vlaho	Saint Blaise	optional	19
+2043-02-10	Pokladni utorak	Shrove Tuesday	observance	
+2043-03-08	International Women's Day	International Women's Day	observance	
+2043-03-29	Uskrs	Easter Sunday	public	
+2043-03-30	Uskršnji ponedjeljak	Easter Monday	public	
+2043-05-01	Praznik rada	Labour Day	public	
+2043-05-03	Pravoslavni Uskrs	Orthodox Easter	optional	
+2043-05-04	Orthodox Easter Monday	Orthodox Easter Monday	optional	
+2043-05-07	Sveti Duje	Saint Domnius	optional	17
+2043-05-10	Majčin dan	Mother's Day	observance	
+2043-05-28	Tijelovo	Corpus Christi	public	
+2043-05-30	Dan državnosti	National Day	public	
+2043-06-22	Dan antifašističke borbe	Anti-Fascist Struggle Day	public	
+2043-06-25	Dan neovisnosti	Independence Day	observance	
+2043-08-05	Dan pobjede i domovinske zahvalnosti i Dan hrvatskih branitelja	Victory and Homeland Thanksgiving Day and the Day of Croatian defenders	public	
+2043-08-15	Velika Gospa	Assumption	public	
+2043-09-04	Ramazanski bajram	End of Ramadan (Eid al-Fitr)	optional	
+2043-10-05	Jom Kipur	Yom Kippur	optional	
+2043-10-14	Jom Kipur	Yom Kippur	optional	
+2043-11-01	Svi sveti	All Saints' Day	public	
+2043-11-12	Kurban-bajram	Feast of the Sacrifice (Eid al-Adha)	optional	
+2043-11-18	Dan sjećanja na žrtve Domovinskog rata i Dan sjećanja na žrtvu Vukovara i Škabrnje	Remembrance Day	public	
+2043-12-25	Božić	Christmas Day	public	
+2043-12-26	Svetog Stjepana	Boxing Day	public	
+2044-01-01	Nova godina	New Year's Day	public	
+2044-01-06	Bogojavljenje, Sveta tri kralja	Epiphany	public	
+2044-01-07	Pravoslavni Božić	Orthodox Christmas	optional	
+2044-02-03	Sveti Vlaho	Saint Blaise	optional	19
+2044-03-01	Pokladni utorak	Shrove Tuesday	observance	
+2044-03-08	International Women's Day	International Women's Day	observance	
+2044-04-17	Uskrs	Easter Sunday	public	
+2044-04-18	Uskršnji ponedjeljak	Easter Monday	public	
+2044-04-24	Pravoslavni Uskrs	Orthodox Easter	optional	
+2044-04-25	Orthodox Easter Monday	Orthodox Easter Monday	optional	
+2044-05-01	Praznik rada	Labour Day	public	
+2044-05-07	Sveti Duje	Saint Domnius	optional	17
+2044-05-08	Majčin dan	Mother's Day	observance	
+2044-05-30	Dan državnosti	National Day	public	
+2044-06-16	Tijelovo	Corpus Christi	public	
+2044-06-22	Dan antifašističke borbe	Anti-Fascist Struggle Day	public	
+2044-06-25	Dan neovisnosti	Independence Day	observance	
+2044-08-05	Dan pobjede i domovinske zahvalnosti i Dan hrvatskih branitelja	Victory and Homeland Thanksgiving Day and the Day of Croatian defenders	public	
+2044-08-15	Velika Gospa	Assumption	public	
+2044-08-24	Ramazanski bajram	End of Ramadan (Eid al-Fitr)	optional	
+2044-09-22	Jom Kipur	Yom Kippur	optional	
+2044-10-01	Jom Kipur	Yom Kippur	optional	
+2044-10-31	Kurban-bajram	Feast of the Sacrifice (Eid al-Adha)	optional	
+2044-11-01	Svi sveti	All Saints' Day	public	
+2044-11-18	Dan sjećanja na žrtve Domovinskog rata i Dan sjećanja na žrtvu Vukovara i Škabrnje	Remembrance Day	public	
+2044-12-25	Božić	Christmas Day	public	
+2044-12-26	Svetog Stjepana	Boxing Day	public	
+2045-01-01	Nova godina	New Year's Day	public	
+2045-01-06	Bogojavljenje, Sveta tri kralja	Epiphany	public	
+2045-01-07	Pravoslavni Božić	Orthodox Christmas	optional	
+2045-02-03	Sveti Vlaho	Saint Blaise	optional	19
+2045-02-21	Pokladni utorak	Shrove Tuesday	observance	
+2045-03-08	International Women's Day	International Women's Day	observance	
+2045-04-09	Pravoslavni Uskrs	Orthodox Easter	optional	
+2045-04-09	Uskrs	Easter Sunday	public	
+2045-04-10	Orthodox Easter Monday	Orthodox Easter Monday	optional	
+2045-04-10	Uskršnji ponedjeljak	Easter Monday	public	
+2045-05-01	Praznik rada	Labour Day	public	
+2045-05-07	Sveti Duje	Saint Domnius	optional	17
+2045-05-14	Majčin dan	Mother's Day	observance	
+2045-05-30	Dan državnosti	National Day	public	
+2045-06-08	Tijelovo	Corpus Christi	public	
+2045-06-22	Dan antifašističke borbe	Anti-Fascist Struggle Day	public	
+2045-06-25	Dan neovisnosti	Independence Day	observance	
+2045-08-05	Dan pobjede i domovinske zahvalnosti i Dan hrvatskih branitelja	Victory and Homeland Thanksgiving Day and the Day of Croatian defenders	public	
+2045-08-14	Ramazanski bajram	End of Ramadan (Eid al-Fitr)	optional	
+2045-08-15	Velika Gospa	Assumption	public	
+2045-09-12	Jom Kipur	Yom Kippur	optional	
+2045-09-21	Jom Kipur	Yom Kippur	optional	
+2045-10-21	Kurban-bajram	Feast of the Sacrifice (Eid al-Adha)	optional	
+2045-11-01	Svi sveti	All Saints' Day	public	
+2045-11-18	Dan sjećanja na žrtve Domovinskog rata i Dan sjećanja na žrtvu Vukovara i Škabrnje	Remembrance Day	public	
+2045-12-25	Božić	Christmas Day	public	
+2045-12-26	Svetog Stjepana	Boxing Day	public	
