@@ -58,16 +58,27 @@ export function reputation(s: GameState): Reputation {
   };
 }
 
-/** Game calibration: how much a role's craft moves offers in it. 60 is a solid record; each 10 above it weighs more. */
-export const CRAFT_WEIGHT_PER_10 = 0.5;
-export const CRAFT_RATE_PER_POINT = 0.01;
-export const CRAFT_RATE_BOUNDS: [number, number] = [0.8, 1.3];
+/**
+ * Game calibration: how much a role's standing moves offers in it (from November 14, 2026, the owner's v7 package, 02:
+ * "A high reputation can raise access or negotiation leverage"). Until then offers read the role's raw craft average, so
+ * one brilliant work moved them as far as ten; the standing is bounded per work and leans to the midpoint until there
+ * are several. 50 is the midpoint.
+ */
+export const STANDING_WEIGHT_PER_10 = 0.5;
+export const STANDING_RATE_PER_POINT = 0.02;
+export const STANDING_RATE_BOUNDS: [number, number] = [0.8, 1.3];
 
-/** How strongly offers lean to a role: 1 with no record in it, more for strong work, less for weak. */
-export const roleWeight = (r: CraftRecord): number => (r.craft === null ? 1 : Math.max(0.25, 1 + (CRAFT_WEIGHT_PER_10 * (r.craft - 60)) / 10));
+/** How strongly offers lean to a role: 1 with no completed work in it, more above the midpoint, less below. */
+export const standingWeight = (st: Standing): number => (st.works === 0 ? 1 : Math.max(0.25, 1 + (STANDING_WEIGHT_PER_10 * (st.standing - 50)) / 10));
 
-/** What a role's craft does to its day rate: nothing with no record; more for strong work, less for weak, within bounds. */
-export const craftRate = (r: CraftRecord): number => (r.craft === null ? 1 : Math.min(CRAFT_RATE_BOUNDS[1], Math.max(CRAFT_RATE_BOUNDS[0], 1 + CRAFT_RATE_PER_POINT * (r.craft - 60))));
+/** What a role's standing does to its day rate: nothing with no completed work; more above the midpoint, less below, within bounds. */
+export const standingRate = (st: Standing): number => (st.works === 0 ? 1 : Math.min(STANDING_RATE_BOUNDS[1], Math.max(STANDING_RATE_BOUNDS[0], 1 + STANDING_RATE_PER_POINT * (st.standing - 50))));
+
+/** A role's standing and grade, from the save as it stands. */
+export const standingIn = (s: GameState, role: StandingRole): Standing => standings(s).find((x) => x.role === role)!;
+
+/** Leverage: a grade above the first, Established or higher, is what makes a request for a better rate agreed. */
+export const hasLeverage = (st: Standing): boolean => st.grade !== REPUTATION_MODEL.grades[0][1];
 
 // ---- Standing and grade by role (the owner's v7 package, 04 and reputation-design.json; from November 13, 2026). Its
 // calibration is the package's own, versioned, and original game design, not an industry formula. Each completed work in
