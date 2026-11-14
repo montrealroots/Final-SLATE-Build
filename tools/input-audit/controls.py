@@ -42,6 +42,7 @@ c(f, '{`${languageName(l.code)} Proficiency`}', D, 'character.languages', 'produ
 
 # ---------------- New Script and the project ----------------
 f = 'Projects.tsx'
+c(f, '"Planned Budget (US Dollars)"', D, 'project.finance.planned (cents), finance.target', 'project-budget.ts setPlannedBudget, budgetPicture, plannedText; finance.ts financeSummary', 'What you plan to spend, kept exactly; at $1,000 or more it becomes what backers are asked for. It moves no money', U('v8-budget', 'keeps 20,000 and 2,000,000 exactly'))
 c(f, '"Working Title"', R, 'project.title', 'everywhere a project is named', 'The project\'s name', '', E('title-input', 'a title typed, edited, cleared, pasted and submitted'))
 c(f, '"Format"', D, 'axes.format', 'projects.ts, production/tasks.ts, awards.ts', 'Episodes, runtime, work, and which awards it can enter', U('genres', 'module consumers change the right downstream state and nothing else'), E('awards', 'SXSW'))
 c(f, '"Medium"', D, 'axes.medium', 'production/tasks.ts buildTasks', 'Live action shoots; animation has no shoot days but studio and render time', U('estimates', 'same script, different production method'), E('journeys', '2D animation'))
@@ -164,6 +165,8 @@ c(f, '{i.label}', D, 'axes.content', 'script-explain.ts; finish.ts outlet requir
 
 # ---------------- Casting, crew, schedule, budget ----------------
 f = 'PlanViews.tsx'
+c(f, '"New Planned Budget (US Dollars)"', D, 'project.finance.planned, revisions, target', 'project-budget.ts setPlannedBudget, readiness', 'Changes the plan with its reason; never moves money or cancels anything signed', U('v8-budget', 'keeps 20,000 and 2,000,000 exactly'))
+c(f, '"Why"', R, 'project.finance.revisions[].reason', 'PlanViews.tsx Plan Revisions', 'The reason kept with the change and shown in the revisions', U('v8-budget', 'keeps 20,000 and 2,000,000 exactly'))
 c(f, '"Only Show People Who Are Free"', V)
 c(f, '"What To Call It"', R, 'stage.label', 'parts.ts partName: the Cast page, call sheets, offers, credits', 'The stage is named by it beside the part: Mara (Age 10)', U('parts', 'is cast on its own'))
 c(f, '"Age In These Scenes (Optional)"', D, 'stage.age', 'minors.ts minorFor (an uncast stage)', 'Under 16, the stage is a child\'s part before anyone is cast: child rules, supervision and hours in its scenes', U('parts', 'with an age of its own'))

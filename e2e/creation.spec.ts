@@ -30,7 +30,8 @@ async function fillIdentity(page: Page, name: string, pronouns: string): Promise
   await fillName(page, name);
   await page.getByLabel('Pronouns').selectOption({ label: pronouns });
   if (pronouns === 'They/Them') await page.getByRole('group', { name: 'Billed As' }).getByRole('button', { name: 'Actor', exact: true }).click();
-  await fillBirthDate(page, '2006-05-20');
+  // 19 on January 5, 2026 (the default start) and on September 13, 2026 (the Jewish background's start).
+  await fillBirthDate(page, '2006-11-20');
   await pickPlace(page, 'Place Of Birth', 'Lagos');
 }
 
@@ -291,9 +292,9 @@ test('Starting Point: featured cities A to Z, a choice settles the list, and the
   await page.getByRole('group', { name: 'Where You Live Results' }).getByRole('button').first().click();
   await expect(page.getByRole('searchbox', { name: 'Where You Live, Town Or City' })).toHaveValue('');
   await expect(page.getByText("Type to search Canada's places, or choose another country.")).toBeVisible();
-  await page.getByLabel('Starting Date').fill('2027-03-15');
+  await page.getByLabel('Starting Date').fill('2026-03-16'); // 2027-03-15 until November 14, 2026, when the draft's player, born in 2006, would be 20
   await page.getByLabel('Starting Time').fill('19:45');
-  await expect(page.getByText('Your story starts on Monday, March 15, 2027, at 7:45 PM EDT in Toronto.')).toBeVisible();
+  await expect(page.getByText('Your story starts on Monday, March 16, 2026, at 7:45 PM EDT in Toronto.')).toBeVisible();
   // The chosen place is marked on the map, and the date and time boxes sit level (their notes are one line each).
   await expect(page.getByRole('img', { name: 'Toronto, your choice' })).toBeVisible();
   const [date, time] = [await page.getByLabel('Starting Date').boundingBox(), await page.getByLabel('Starting Time').boundingBox()];

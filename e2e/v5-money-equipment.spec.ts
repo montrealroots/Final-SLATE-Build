@@ -104,5 +104,6 @@ test('a company of your own: formed from your account, money moved both ways, pu
   await expect(page.getByRole('region', { name: 'Backers' })).toContainText('Tidewater Pictures');
   await expect.poll(async () => (await project(page))?.producedBy).toBe('Tidewater Pictures');
   const saved = await readSavedState(page);
-  expect(saved.company.postings.reduce((a: number, x: { amount: number }) => a + x.amount, 0)).toBe(300);
+  // The company's account is the journal's company cash account from November 14, 2026 (its postings were a list before).
+  expect(saved.journal.txs.filter((t: { status: string }) => t.status === 'settled').flatMap((t: { lines: { account: string; minor: number }[] }) => t.lines).filter((l: { account: string }) => l.account === 'company:cash:USD').reduce((a: number, l: { minor: number }) => a + l.minor, 0)).toBe(30_000);
 });

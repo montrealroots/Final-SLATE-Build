@@ -79,7 +79,7 @@ test('every main screen fits each viewport without sideways scrolling', async ({
   const problems: string[] = [];
   const screens: [string, () => Promise<void>][] = [
     ['Home', () => nav(page, 'Home')],
-    ['Calendar', async () => { await nav(page, 'Calendar'); await expect(page.getByRole('button', { name: /December 25, 2026, 1 entry/ })).toBeVisible(); }],
+    ['Calendar', async () => { await nav(page, 'Calendar'); await expect(page.getByRole('button', { name: /December 25, 2027, 1 entry/ })).toBeVisible(); }],
     ['Profile', () => nav(page, 'Profile')],
     ['Projects', () => nav(page, 'Projects')],
     ['Place', async () => { await nav(page, 'Home'); await page.getByRole('button', { name: 'Weather And Place Details' }).click(); }],

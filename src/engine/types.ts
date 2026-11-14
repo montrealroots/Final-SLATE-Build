@@ -651,6 +651,10 @@ export interface ProjectFinance {
   deals: FinanceDeal[];
   /** What the estimate was made of when the draft was approved (estimate.ts), to compare spending with; absent before November 8, 2026. */
   estimateAtApproval?: { draft: number; at: number; total: number; byArea: Record<string, number>; shootDays: number };
+  /** What you plan to spend, exactly, in cents (project-budget.ts, from November 14, 2026). Absent: not set, which isn't zero. */
+  planned?: import('./project-budget').PlannedBudget;
+  /** Every change to the plan, with its reason; a revision never moves money. */
+  revisions?: import('./project-budget').BudgetRevision[];
 }
 
 export interface Obligation {

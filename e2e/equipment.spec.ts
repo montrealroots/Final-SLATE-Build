@@ -27,6 +27,7 @@ test('a camera and a kit bought to fit, checked against the script, and a short 
   }
   await expect(shop).toContainText('$3,000 in your own account.');
   // Too dear for the account says so, under the item.
+  await shop.getByLabel('Show').selectOption({ label: 'Cameras' });
   await expect(shop.getByRole('button', { name: 'Buy Blackmagic PYXIS 12K (L-Mount)' })).toBeDisabled();
   await expect(shop).toContainText('It costs $5,829 and you have $3,000 in your own account.');
   for (const [kind, name] of [['Lenses', 'Lumix G 12-35mm f/2.8 Leica DG Vario-Elmarit (Micro Four Thirds)'], ['Lights', 'Amaran Halo 100x Bi-Color Light (100W)'], ['Light Stands', 'Godox 300F Light Stand'], ['Tripods', 'Manfrotto Befree Live Video Tripod Kit']]) {
