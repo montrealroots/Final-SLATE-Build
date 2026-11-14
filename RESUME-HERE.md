@@ -19,8 +19,25 @@ each step and acceptance case stands. Done so far:
   move to step 8.
 - **Step 5, budgets (partly).** `project-budget.ts`: the planned budget, ten figures kept apart, and two readiness
   answers. `cash/forecast.ts` holds the dated forecast. Budget lines with suppliers and payment dates are still to do.
+- **Step 6, banner and company.** A banner is a credit name. A company is applied for, and the registry decides. Draws
+  are split into capital returned and earnings paid out.
+- **Step 7, first-look terms (partly).** Terms come from the track-record tier (`dealTier`) and `src/data/deal-model.json`.
+  Overall deals (A14) are still not built.
+- **Step 8, papers.** `papers.ts` and `src/data/work-rights.json`. A day filmed where you may not work starts without
+  you.
+- **Step 9, one awards history.** `awards-history.ts`.
+- **Step 10, the phone layout.** Phones open in the responsive layout by default.
+- **Step 11 (partly).** `tests/v8-economy.test.ts`.
 
-Next is **step 6, company versus banner**. After that, steps 7 to 11 in order. `docs/v8/STATUS.md` has every row.
+All of this is on PR #92 (montrealroots/Final-SLATE-Build#92). Merge only after its CI is green on the final head.
+
+What is still open is listed row by row in `docs/v8/STATUS.md`. In order of importance:
+1. A14, overall deals.
+2. Budget lines with payment dates.
+3. One browser journey through the whole v8 path.
+4. Visits and passports data.
+5. Judging the recorded field in awards.
+6. Physical-phone and pacing tests.
 
 The age rule changed every fixture world, because the world seed hashes the birth date. The STATUS file lists each test
 that had to be re-pinned, and why. Any later failure that depends on a seed should be checked against that list first.
