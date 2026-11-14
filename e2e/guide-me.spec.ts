@@ -133,13 +133,18 @@ test('writing by Guide Me: a co-writer\'s rewrite and a script editor\'s polish,
   type Job = { scope: string; status: string; passes: { read?: number; done: number }[] };
   // A co-writer can say no to the offer (CI on 880b91c, production phone: "Zeynep Wójcik said no"), and then there is
   // no rewrite at all: the writing is returned to the player, who is told to hire someone, and the polish waits.
-  const settled = (js: Job[] | undefined) => Array.isArray(js) && js.every((j) => j.status !== 'working') && (js.find((j) => j.scope === 'rewrite')?.status !== 'accepted' || js.some((j) => j.scope === 'polish'));
-  await expect.poll(async () => settled((await readSavedState(page))?.projects?.[0]?.writing), { timeout: 30_000 }).toBe(true);
+  // An accepted rewrite can also finish with no polish, said in the box: the script editor said no, or the polish would
+  // go past the ceiling once the rewrite's revisions were paid (mandates.ts runWriting). CI on a1dc7a0 (dev, desktop)
+  // drew such a world, and this waited for a polish that was never coming (November 14, 2026).
+  const settled = (js: Job[] | undefined) => Array.isArray(js) && js.every((j) => j.status !== 'working') && (js.find((j) => j.scope === 'rewrite')?.status !== 'accepted' || js.some((j) => j.scope === 'polish' && j.status !== 'working'));
+  const polishTold = async () => /Script Editor: /.test(await box.innerText());
+  await expect.poll(async () => { const js = (await readSavedState(page))?.projects?.[0]?.writing as Job[] | undefined; return settled(js) || (Array.isArray(js) && js.every((j) => j.status !== 'working') && await polishTold()); }, { timeout: 30_000 }).toBe(true);
   const jobs = (await readSavedState(page)).projects[0].writing as Job[];
   // Both passes accepted at the standard; or the rewrite came back to the player, and the polish with it; or the
   // co-writer said no, and both came back.
   const rewrite = jobs.find((j) => j.scope === 'rewrite');
-  if (rewrite?.status === 'accepted') expect(jobs.map((j) => j.scope).sort()).toEqual(['polish', 'rewrite']);
+  if (rewrite?.status === 'accepted' && jobs.some((j) => j.scope === 'polish')) expect(jobs.map((j) => j.scope).sort()).toEqual(['polish', 'rewrite']);
+  else if (rewrite?.status === 'accepted') await expect(box).toContainText(/Script Editor: .+(said no|past the ceiling|\.)/); // no polish, and why
   else await expect(box).toContainText('Script Editor: the polish waits on the rewrite that came back to you.');
   if (!rewrite) await expect(box).toContainText(/Co-Writer: .+ said no\. Hire someone in Writing on the Crew page\./);
   for (const j of jobs.filter((x) => x.status === 'accepted')) expect(j.passes.at(-1)!.read!).toBeGreaterThanOrEqual(55);
