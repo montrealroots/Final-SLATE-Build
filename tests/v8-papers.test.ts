@@ -14,7 +14,7 @@ describe('A16: a passport lets you travel; it doesn\'t let you work', () => {
     const s = startLife('papers');
     expect(workRight(s, 'FR')).toMatchObject({ can: true, why: 'You are a citizen of France.' });
     expect(workRight(s, 'GB')).toMatchObject({ can: true, assumed: true }); // where you live: the game's assumption, said as one
-    expect(workRight(s, 'NO')).toMatchObject({ can: true, why: 'Your France passport gives you the right to live and work in Norway.' }); // the shared market
+    expect(workRight(s, 'NO')).toMatchObject({ can: true, why: 'Your passport from France gives you the right to live and work in Norway.' }); // the shared market
     const us = workRight(s, 'US');
     expect(us).toMatchObject({ can: false, route: 'O-1 (extraordinary ability in the arts, or extraordinary achievement in motion pictures or television)', missing: ["the permit's fee", 'how long the decision takes'] });
   });
@@ -50,6 +50,12 @@ describe('A16: a passport lets you travel; it doesn\'t let you work', () => {
     // A Brazilian in Mexico City, visiting the United States: 1221's B-1/B-2 record, $185 and 157 days.
     const s = startLife('papers-visa', 'mx-mexico-city', { nationalities: ['BR'], birthplaceId: 'br-sao-paulo' } as never);
     expect(entryRight(s, 'US')).toMatchObject({ kind: 'needs', entry: 'visa' });
+    // Where you live asks no visa of you: the game's assumption, said as one (the owner, November 14, 2026).
+    expect(entryRight(s, 'MX')).toMatchObject({ kind: 'lives' });
+    expect(entryRight(s, 'MX').why).toMatch(/^You live in Mexico: .*not a checked permission\.$/);
+    // A visa with no record says what's missing once, without repeating the entry sentence above it.
+    const unrecorded = visaCheck(s, 'IN');
+    if (!unrecorded.ok) expect(unrecorded.why).not.toContain(entryRight(s, 'IN').why);
     expect(passportFor(s)).toBeDefined();
     const c = visaCheck(s, 'US');
     expect(c).toMatchObject({ ok: true, feeText: '185 USD' });
@@ -88,7 +94,7 @@ describe('A16: a passport lets you travel; it doesn\'t let you work', () => {
     schedule(s, s.now + 1, 'shoot-call', { projectId: p.id, dayId: 'day-1' });
     processUntil(s, s.now + 2, 'tick', 1000);
     expect(d.late).toBe(true);
-    expect(s.log[0].text).toMatch(/^You can't work in Los Angeles: To act in United States you need O-1/);
+    expect(s.log[0].text).toMatch(/^You can't work in Los Angeles: To act in the United States you need O-1/);
   });
 });
 

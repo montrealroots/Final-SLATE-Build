@@ -31,11 +31,16 @@ test('Home to Your Papers: a visa applied for and paid, decided on its day, in u
 
   await page.getByRole('button', { name: 'Open Your Papers' }).click();
   await expect(page.getByRole('heading', { name: 'Your Papers', level: 1 })).toBeVisible();
+  // The rail marks Your Papers, not Home (the owner, November 14, 2026).
+  const rail = page.locator('nav.rail');
+  await expect(rail.getByRole('button', { name: 'Your Papers', includeHidden: true })).toHaveAttribute('aria-current', 'page');
+  await expect(rail.getByRole('button', { name: 'Home', exact: true, includeHidden: true })).not.toHaveAttribute('aria-current', /.+/);
   await page.getByLabel('Country', { exact: true }).selectOption('US');
   await expect(page.getByRole('status', { name: 'Entering' })).toContainText('you need a visa');
   await expect(page.locator('main')).toContainText('B-1/B-2 Visitor Visa: 185 USD, decided in 157 days.');
-  // Acting there isn't allowed by a visitor visa, before or after.
-  await expect(page.locator('main')).toContainText('Not allowed yet.');
+  // All four kinds of work are listed at once; none is allowed by a visitor visa, before or after.
+  const working = page.getByRole('list', { name: 'Working' });
+  await expect(working.getByRole('listitem')).toHaveText([/^Acting: Not allowed yet\./, /^Directing: Not allowed yet\./, /^Producing: Not allowed yet\./, /^Writing: Not allowed yet\./]);
   await page.getByRole('button', { name: 'Apply And Pay The Fee' }).click();
   await expect(page.getByRole('list', { name: 'Your Applications' })).toContainText('Being decided');
   // Paid from the bank, once.
@@ -50,7 +55,7 @@ test('Home to Your Papers: a visa applied for and paid, decided on its day, in u
   await expect(page.getByRole('list', { name: 'Your Applications' })).toContainText('Issued, until');
   await page.getByLabel('Country', { exact: true }).selectOption('US');
   await expect(page.getByRole('status', { name: 'Entering' })).toContainText('Your B-1/B-2 Visitor Visa lets you in');
-  await expect(page.locator('main')).toContainText('Not allowed yet.'); // still not leave to work
+  await expect(page.getByRole('list', { name: 'Working' })).toContainText('Acting: Not allowed yet.'); // still not leave to work
   await page.getByRole('button', { name: 'Back To Home' }).click();
   await expect(papersPanel(page)).not.toContainText('being decided');
 });

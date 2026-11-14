@@ -22,7 +22,7 @@ const SIZES: Record<string, Size[]> = {
   'iphone-15-pro-max': [[430, 932, 'iPhone 15 Pro Max (WebKit)']],
 };
 // What a phone's navigation is instead of the rail: the same destinations, behind Menu.
-const NAV = new Set(['Menu', 'Close Menu', 'Close Navigation', 'SLATE, Go To Home', 'Home', 'Player Profile', 'World', 'Projects', 'Companies', 'Saved Games', 'Settings', 'Save & Exit', 'Skip To Content']);
+const NAV = new Set(['Menu', 'Close Menu', 'Close Navigation', 'SLATE, Go To Home', 'Home', 'Player Profile', 'Your Bank', 'Your Papers', 'World', 'Projects', 'Companies', 'Saved Games', 'Settings', 'Save & Exit', 'Skip To Content']);
 
 // UI_SHOTS=<folder>: a picture of each screen at the phone and desktop sizes, for a person to look at side by side.
 const SHOTS = process.env.UI_SHOTS;

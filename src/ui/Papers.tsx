@@ -21,7 +21,6 @@ const STAGE: Record<string, string> = { applied: 'Being decided', issued: 'Issue
 export function PapersCard() {
   const g = useGame();
   const [country, setCountry] = useState(g.character.nationalities?.includes('US') ? 'GB' : 'US');
-  const [activity, setActivity] = useState<Activity>('act');
   const [err, setErr] = useState<string | null>(null);
   const zone = getPlace(g.character.livesIn ?? g.locationId).zone;
   const day = (t: number) => formatDateKey(dateKey(t, zone));
@@ -31,7 +30,6 @@ export function PapersCard() {
   const passportNo = person ? passportRefusal(person) : 'This story has no papers yet.';
   const enter = entryRight(g, country);
   const visa = visaCheck(g, country);
-  const work = workRight(g, country, activity);
   return (
     <>
       <section className="card" aria-labelledby="passports-h">
@@ -57,7 +55,7 @@ export function PapersCard() {
           <ul className="list small" aria-label="Ways To Get Your Passport">
             {passportOffers(g).map((o, i) => (
               <li key={`${o.route.id}-${i}`} className="list-item list-static">
-                <span className="grow">{o.route.speed === 'urgent' ? 'Urgent' : 'Standard'}, {o.route.where === 'home' ? 'at home' : 'from abroad'}: {o.fee ? formatMoney(o.fee.minor, o.fee.currency) : 'fee not recorded'}, {o.route.within ? `ready in ${o.route.within.n} ${o.route.within.unit}${o.route.within.n === 1 ? '' : 's'}` : 'time not recorded'}{o.validYears ? `, valid ${o.validYears} years` : ''}</span>
+                <span className="grow">{o.route.speed === 'urgent' ? 'Urgent' : 'Standard'}, {o.route.where === 'home' ? 'at home' : 'from abroad'}: {o.fee ? formatMoney(o.fee.minor, o.fee.currency) : 'fee not recorded'}, {o.route.within ? `ready in ${o.route.within.n} ${o.route.within.unit}${o.route.within.n === 1 ? '' : 's'}` : 'time not recorded'}{o.pages ? `, ${o.pages} pages` : ''}{o.validYears ? `, valid ${o.validYears} years` : ''}</span>
                 {o.missing.length ? <span className="dim">Not taken: {o.missing.join(' and ')} not recorded</span>
                   : <button className="btn btn-sm" aria-label={`Apply: ${o.route.id}`} onClick={() => setErr(store.act((s) => applyForRecordedPassport(s, i)))}>Apply</button>}
               </li>
@@ -79,9 +77,17 @@ export function PapersCard() {
           </>
         ) : <p className="dim small">{visa.why}</p>)}
         <h3>Working</h3>
-        <SelectField label="Work" value={activity} options={ACTIVITIES} onChange={setActivity} />
-        <p className="small">{work.can ? (work.assumed ? 'Allowed by the game\'s assumption. ' : 'Allowed. ') : 'Not allowed yet. '}{work.why}</p>
-        {!work.can && work.missing.length > 0 && <p className="dim small">Not recorded: {work.missing.join(', ')}. The game doesn&apos;t make these up, so it can&apos;t take an application.</p>}
+        <ul className="list small" aria-label="Working">
+          {ACTIVITIES.map(({ value, label }) => {
+            const work = workRight(g, country, value);
+            return (
+              <li key={value} className="list-item list-static">
+                <span className="grow"><strong>{label}:</strong> {work.can ? (work.assumed ? 'Allowed by the game\'s assumption. ' : 'Allowed. ') : 'Not allowed yet. '}{work.why}
+                  {!work.can && work.missing.length > 0 && <span className="dim"> Not recorded: {work.missing.join(', ')}. The game doesn&apos;t make these up, so it can&apos;t take an application.</span>}</span>
+              </li>
+            );
+          })}
+        </ul>
         {err && <p className="error" role="alert">{err}</p>}
       </section>
 
