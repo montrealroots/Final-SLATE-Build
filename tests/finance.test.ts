@@ -143,7 +143,7 @@ describe('terms are enforced after acceptance', () => {
       wait(s, BACKERS['co-producer'].decideDays + 1);
       return { s, p, d };
     };
-    const no = run('fin-cop');
+    const no = run('fin-cop-4'); // re-chosen November 14, 2026, when the fixtures' worlds changed with the player's age (was 'fin-cop')
     expect(no.d).toMatchObject({ status: 'declined', reason: 'Their slate is full this year.' });
     expect(approvalRights(no.p)).toEqual([]);
     const { s, p, d } = run('fin-cop-2');

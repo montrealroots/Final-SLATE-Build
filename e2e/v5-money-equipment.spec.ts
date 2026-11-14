@@ -2,7 +2,7 @@
 // and is approved by renting what's missing; and a company of your own that funds a project and produces it, every move
 // posted on both sides. Nothing is written into the save; the world seed is pinned (a labelled fixture).
 import { expect, test, type Page } from './test';
-import { addScene, advance, castRoles, nav, newProject, openStart, pinSeed, quickDraft, quickLife, readSavedState, runToDelivery, saveAndApprove, section, staffEveryDepartment } from './helpers';
+import { addScene, advance, castRoles, nav, newProject, openStart, pinSeed, quickDraft, quickLife, readSavedState, runToDelivery, saveAndApprove, section, staffEveryDepartment, setInheritance } from './helpers';
 
 test.use({ actionTimeout: 20_000 });
 const card = (page: Page, heading: string) => page.locator('section.card', { has: page.getByRole('heading', { name: heading, exact: true }) });
@@ -63,14 +63,12 @@ test('a kit that can\'t light an interior: the day waits for the player, who ren
 
 test('a company of your own: formed from your account, money moved both ways, put into a project it then produces', async ({ page }, info) => {
   test.skip(!['desktop', 'phone', 'iphone-15-pro-max'].includes(info.project.name), 'Desktop, phone and the iPhone 15 Pro Max (WebKit).');
-  // A story with $5,000 of savings, chosen on Review.
+  // A story with a $5,000 inheritance, set on Review (savings until November 14, 2026).
   await openStart(page);
   await quickDraft(page, 'gb-london', '2026-03-02');
   await page.reload();
   await page.getByRole('button', { name: 'Continue Creation' }).click();
-  await page.getByRole('button', { name: 'Edit Money And Family' }).click();
-  await page.locator('section', { has: page.getByRole('heading', { name: 'Money And Family' }) }).getByLabel('Your Savings').fill('5000');
-  await page.getByRole('button', { name: 'Save And Return To Review' }).click();
+  await setInheritance(page, '5,000');
   await page.getByRole('button', { name: 'Start My Story' }).click();
   await expect(page.getByRole('heading', { name: /^Good (Morning|Afternoon|Evening), /, level: 1 })).toBeVisible();
   await nav(page, 'Profile');

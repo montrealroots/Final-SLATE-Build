@@ -5,11 +5,11 @@ import { LANGUAGES, PRONOUNS, languageName, searchEthnicities, searchLanguages, 
 import { findPlace, isCatalogPlace, placeLabel, type Place } from '../data/places';
 import { CREATION_STEPS, FIRST_START_YEAR, LAST_START_YEAR, MIN_START_AGE, NATIONALITIES, OBSERVANCES, ageOn, backgroundLabels, citizenshipFor, draftNames, latestBirthDate, creationStepIndex, formatClock, formatZoneAbbrev, monthName, weekdayName, weekdayOfKey, observance, observanceDates, parseYmd, suggestedObservances, validateDraft, type DraftProblem, type Observance } from '../engine';
 import type { CreationDraft, CreationStepId, Heritage, Proficiency } from '../engine/types';
-import { Check, ErrorText, Field, NumberField, Professions, SelectField, TextField } from './components';
-import { CIRCUMSTANCES, SAVINGS_MOST, SUPPORT_LABELS, familyTerms, openingPreview, type FamilyCircumstances, type FamilySupportKind } from '../engine/personal';
+import { Check, Field, Professions, SelectField, TextField } from './components';
+import { INHERITANCE_MOST_MINOR, inheritanceDay, inheritanceStory } from '../engine/personal';
+import { formatMoney, parseAmount } from '../engine/cash/money';
+import { DEFAULT_INHERITANCE_MINOR, earliestBirthDate } from '../engine/state';
 import { money } from '../engine/budget';
-import { lentValue } from '../engine/equipment';
-import { GEAR } from '../engine/gear-catalog';
 import { store, useStore } from './store';
 import { WorldPlacePicker } from './WorldPicker';
 import { PortraitPicker } from './PortraitPicker';
@@ -162,6 +162,7 @@ function IdentityStep({ d, set, err, head }: { d: CreationDraft; set: Set; err: 
   const settled = settledTitle(d.pronouns);
   const citizen = citizenshipFor(d.birthplaceId);
   const latest = latestBirthDate(d.startDate);
+  const earliest = earliestBirthDate(d.startDate);
   return (
     <section className="card">
       {head}
@@ -223,9 +224,9 @@ function IdentityStep({ d, set, err, head }: { d: CreationDraft; set: Set; err: 
         {/* Month, day, year: the order the game writes every date in ("May 20, 1990"), from November 8, 2026. */}
         <SelectField label="Month" value={m} options={[{ value: '', label: 'Choose A Month' }, ...MONTHS.map((name, i) => ({ value: String(i + 1).padStart(2, '0'), label: name }))]} onChange={(v) => setBirth(y, v, day)} />
         <TextField label="Day" type="number" inputMode="numeric" value={day ? String(Number(day)) : ''} onChange={(v) => setBirth(y, m, v ? v.slice(0, 2).padStart(2, '0') : '')} />
-        <TextField label="Year Of Birth" type="number" inputMode="numeric" value={y} min={latest ? String(Number(latest.slice(0, 4)) - 81) : undefined} max={latest?.slice(0, 4)} onChange={(v) => setBirth(v.slice(0, 4), m, day)} />
+        <TextField label="Year Of Birth" type="number" inputMode="numeric" value={y} min={earliest?.slice(0, 4)} max={latest?.slice(0, 4)} onChange={(v) => setBirth(v.slice(0, 4), m, day)} />
       </div>
-      {err('birthDate') ? <p className="error" role="alert" style={{ color: 'var(--negative)' }}>{err('birthDate')}</p> : <p className="xs dim">{latest ? `You must be at least ${MIN_START_AGE} on your starting date, ${longDate(d.startDate)}: born on or before ${longDate(latest)}. You can change the starting date on Starting Point.` : `You must be at least ${MIN_START_AGE} on your starting date.`}</p>}
+      {err('birthDate') ? <p className="error" role="alert" style={{ color: 'var(--negative)' }}>{err('birthDate')}</p> : <p className="xs dim">{latest && earliest ? `You start at ${MIN_START_AGE}. On your starting date, ${longDate(d.startDate)}, that means a birth date from ${longDate(earliest)} to ${longDate(latest)}. You can change the starting date on Starting Point.` : `You start at ${MIN_START_AGE}.`}</p>}
       {age !== null && age >= 0 && (
         <div className="callout" style={{ marginTop: 'var(--s3)' }}>You’ll be <strong>{age}</strong> when you start.</div>
       )}
@@ -316,47 +317,39 @@ function StartingPointStep({ d, set, err, head }: { d: CreationDraft; set: Set; 
         </div>
         {/* The date and time as the game writes them, not the browser's 01/05/2026 (November 8, 2026). */}
         {/* Each box's note is one short line, so the two boxes sit level; the rest is said here (November 8, 2026). */}
-        <p className="small" style={{ marginTop: 'var(--s3)' }}>{startsAt ? `Your story starts on ${startsAt}. ` : ''}{FIRST_START_YEAR} is the default year. You must be at least {MIN_START_AGE} on the day.</p>
+        <p className="small" style={{ marginTop: 'var(--s3)' }}>{startsAt ? `Your story starts on ${startsAt}. ` : ''}{FIRST_START_YEAR} is the default year. You start at {MIN_START_AGE}.</p>
+        {/* A date that would change your age is refused on the date itself, with the dates that keep you 19 (state.ts). */}
       </section>
-      <MoneyAndFamily d={d} set={set} err={err} />
+      <Inheritance d={d} set={set} err={err} />
     </div>
   );
 }
 
 /**
- * Your savings and what your family offers (personal.ts; the v4 package, 02). Three things kept apart: your family's
- * circumstances (how much they could offer at most, and nothing else about you), what they actually offer, and your own
- * savings. What it all comes to, and what you will owe, is shown here and again on Review.
+ * Your inheritance (personal.ts; the owner's v8 package, decisions 2 and 3; from November 14, 2026). One fictional
+ * background, a family whose wealth comes from oil, and one amount released at nineteen: $25,000,000 unless changed here
+ * before the story starts. There is no allowance after it and nobody to bail you out. Until November 14 this panel asked
+ * your savings, your family's circumstances and what they offered.
  */
-function MoneyAndFamily({ d, set, err }: { d: CreationDraft; set: Set; err: (f: string) => string | null }) {
-  const f = d.family ?? { circumstances: 'getting-by' as FamilyCircumstances, support: 'none' as FamilySupportKind, amount: 0 };
-  const put = (patch: Partial<typeof f>) => set({ family: { ...f, ...patch } });
-  const terms = familyTerms(f.circumstances, f.support, f.amount, f.gear);
-  const lent = new Set(f.gear ?? []);
-  const lend = (id: string, on: boolean) => { const gear = GEAR.filter((g) => (g.id === id ? on : lent.has(g.id))).map((g) => g.id); put({ gear, amount: lentValue(gear) }); };
-  const pre = openingPreview(d.savings ?? 0, typeof terms === 'string' ? null : terms);
+function Inheritance({ d, set, err }: { d: CreationDraft; set: Set; err: (f: string) => string | null }) {
+  const minor = d.inheritance?.amountMinor ?? DEFAULT_INHERITANCE_MINOR;
+  const [text, setText] = useState(() => (minor / 100).toLocaleString('en-US'));
+  const parsed = parseAmount(text, 'USD');
+  const typed = (v: string) => {
+    setText(v);
+    const r = parseAmount(v, 'USD');
+    if (r.ok) set({ inheritance: { currency: 'USD', amountMinor: r.minor } });
+  };
+  const released = /^\d{4}-\d{2}-\d{2}$/.test(d.birthDate) && /^\d{4}-\d{2}-\d{2}$/.test(d.startDate) && ageAtStart(d) === 19 ? inheritanceDay(d.birthDate, d.startDate) : null;
+  const problem = parsed.ok ? (parsed.minor > INHERITANCE_MOST_MINOR ? `Your inheritance can be from nothing to ${money(INHERITANCE_MOST_MINOR / 100)}.` : err('inheritance')) : parsed.reason;
   return (
-    <section className="card" aria-labelledby="money-h">
-      <div className="panel-head"><div><h2 id="money-h">Money And Family</h2><p className="muted small" style={{ margin: 0 }}>What you have of your own, and whether your family helps. Neither decides who you are or what you can do.</p></div></div>
+    <section className="card" aria-labelledby="inheritance-h">
+      <div className="panel-head"><div><h2 id="inheritance-h">Your Inheritance</h2><p className="muted small" style={{ margin: 0 }}>Released once, at nineteen. It buys things; it doesn&apos;t buy craft, awards, fame, papers or a studio&apos;s trust.</p></div></div>
+      <p>{inheritanceStory(minor, released, d.startDate)}</p>
       <div className="field-row">
-        <NumberField label="Your Savings" value={d.savings ?? 0} min={0} max={SAVINGS_MOST} error={err('savings')} hint={`From nothing to ${money(SAVINGS_MOST)}.`} onChange={(v) => set({ savings: v })} />
-        <SelectField label="Your Family's Circumstances" value={f.circumstances} options={(Object.keys(CIRCUMSTANCES) as FamilyCircumstances[]).map((c) => ({ value: c, label: CIRCUMSTANCES[c].label }))} hint={CIRCUMSTANCES[f.circumstances].says} onChange={(v) => put({ circumstances: v, ...(CIRCUMSTANCES[v].most === 0 ? { support: 'none', amount: 0 } : {}) })} />
+        <TextField label="Amount (US Dollars)" inputMode="decimal" value={text} error={problem} hint="Digits, with commas between thousands if you like: 25,000,000." onChange={typed} />
       </div>
-      {CIRCUMSTANCES[f.circumstances].most > 0 && (
-        <div className="field-row">
-          <SelectField label="What Your Family Offers" value={f.support} options={(Object.keys(SUPPORT_LABELS) as FamilySupportKind[]).map((k) => ({ value: k, label: SUPPORT_LABELS[k] }))} onChange={(v) => put(v === 'equipment' ? { support: v, gear: [], amount: 0 } : { support: v, gear: undefined, amount: v === 'none' ? 0 : f.amount || Math.min(1_000, CIRCUMSTANCES[f.circumstances].most) })} />
-          {f.support !== 'none' && f.support !== 'equipment' && <NumberField label="How Much" value={f.amount} min={0} max={CIRCUMSTANCES[f.circumstances].most} error={err('family')} hint={`At most ${money(CIRCUMSTANCES[f.circumstances].most)}.`} onChange={(v) => put({ amount: v })} />}
-        </div>
-      )}
-      {f.support === 'equipment' && CIRCUMSTANCES[f.circumstances].most > 0 && (
-        <fieldset className="field" aria-describedby="lend-hint">
-          <legend>What Your Family Lends</legend>
-          <p id="lend-hint" className="dim small" style={{ margin: 0 }}>Worth {money(f.amount)} at listed prices, of at most {money(CIRCUMSTANCES[f.circumstances].most)}. Lent for as long as you need it: it costs nothing to use and isn't yours to sell.</p>
-          <ErrorText error={err('family')} />
-          {GEAR.filter((g) => g.price !== null).map((g) => <Check key={g.id} label={`${g.name}, ${money(g.price!)}`} checked={lent.has(g.id)} onChange={(on) => lend(g.id, on)} />)}
-        </fieldset>
-      )}
-      <p className="small" style={{ marginTop: 'var(--s3)' }}><strong>You Start With:</strong> {money(pre.balance)} in your own account.{pre.owe.length ? ` ${pre.owe.join(' ')}` : ''} Amounts are game calibration, not real prices.</p>
+      <p className="small" style={{ marginTop: 'var(--s3)' }}><strong>You Start With:</strong> {parsed.ok ? formatMoney({ currency: 'USD', minor: parsed.minor }) : 'Enter an amount'} in your own account, and no company. A fictional family and a fictional estate: its administration and any taxes are settled before your story begins.</p>
     </section>
   );
 }
@@ -554,15 +547,14 @@ function LanguageStep({ d, set, error }: { d: CreationDraft; set: (p: Partial<Cr
 /** One line of Review, as 1221's: the label on the left, the value against the right edge. */
 /** What you start with and what you will owe, read before the story starts. */
 function MoneyReview({ d, onEdit }: { d: CreationDraft; onEdit: () => void }) {
-  const f = d.family;
-  const terms = f ? familyTerms(f.circumstances, f.support, f.amount, f.gear) : null;
-  const pre = openingPreview(d.savings ?? 0, typeof terms === 'string' ? null : terms);
+  const minor = d.inheritance?.amountMinor ?? DEFAULT_INHERITANCE_MINOR;
+  const released = ageAtStart(d) === 19 ? inheritanceDay(d.birthDate, d.startDate) : null;
   return (
-    <ReviewCard title="Money" edit="Edit Money And Family" onEdit={onEdit}>
-      {pre.lines.map((l) => <Line key={l.label} label={l.label} value={money(l.amount)} />)}
-      {f?.support === 'equipment' && <Line label="Lent By Your Family" value={(f.gear ?? []).map((id) => GEAR.find((g) => g.id === id)?.name ?? id).join(', ') || 'Nothing chosen'} />}
-      <Line label="Your Own Account" value={money(pre.balance)} />
-      <Line label="What You Will Owe" value={pre.owe.join(' ') || 'Nothing'} />
+    <ReviewCard title="Money" edit="Edit Your Inheritance" onEdit={onEdit}>
+      <Line label="Your Inheritance" value={formatMoney({ currency: 'USD', minor })} />
+      <Line label="Released" value={released ? (released === d.startDate ? 'Today, your nineteenth birthday' : `${longDate(released)}, your nineteenth birthday`) : 'At nineteen'} />
+      <Line label="Your Company" value="None: you start on your own" />
+      <Line label="What Comes After" value="No allowance, and nobody to bail you out" />
     </ReviewCard>
   );
 }

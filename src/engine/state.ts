@@ -17,10 +17,14 @@ export function newId(state: GameState, prefix: string): string {
   return `${prefix}${state.idCounter.toString(36)}`;
 }
 
+/** The inheritance a new story starts with unless it is changed: $25,000,000 (the owner's v8 package, data/scenario.json). */
+export const DEFAULT_INHERITANCE_MINOR = 2_500_000_000;
+
 export function emptyDraft(): CreationDraft {
   return {
     step: 'identity', firstName: '', middleName: '', lastName: '', preferredName: '', pronouns: '', actingTitle: '', birthDate: '', birthplaceId: '', heritages: [], heritageCustomText: '', nationalities: [], observances: [],
     mainLanguage: '', languages: [], startPlaceId: '', startDate: '2026-01-05', startTime: '08:00', updatedAt: 0,
+    inheritance: { currency: 'USD', amountMinor: DEFAULT_INHERITANCE_MINOR },
   };
 }
 
@@ -71,6 +75,11 @@ export function normalizeDraft(raw: unknown): CreationDraft | null {
   // A draft from before the pronouns settled the title takes the settled one.
   const settled = settledTitle(d.pronouns);
   if (settled) d.actingTitle = settled;
+  // From November 14, 2026 a new story starts with an inheritance and no family menus: a saved draft's family choices go.
+  delete d.savings;
+  delete d.family;
+  const inh = d.inheritance as { currency?: unknown; amountMinor?: unknown } | undefined;
+  if (!inh || inh.currency !== 'USD' || !Number.isSafeInteger(inh.amountMinor)) d.inheritance = { ...base.inheritance! };
   return d;
 }
 
@@ -94,9 +103,40 @@ export function adoptPlace(state: GameState, place: Place): void {
  */
 export const FIRST_START_YEAR = 2026;
 export const LAST_START_YEAR = 2050;
-export const MIN_START_AGE = 19;
+/**
+ * You start at exactly 19 (the owner's v8 package, decision 1; from November 14, 2026). Until then 19 was the least you
+ * could be. MIN_START_AGE keeps its name for the code that reads it as a floor, which it still is.
+ */
+export const START_AGE = 19;
+export const MIN_START_AGE = START_AGE;
 
-/** The latest birth date that makes you MIN_START_AGE on this starting date (29 February becomes 28 February). */
+/** The earliest birth date that still makes you START_AGE on this starting date: the day after your 20th birthday would fall. */
+export function earliestBirthDate(startDate: string): string | null {
+  if (!isDateKey(startDate)) return null;
+  const { year, month, day } = parseYmd(startDate);
+  const t = new Date(Date.UTC(year - START_AGE - 1, month - 1, day));
+  // A 29 February start: twenty years back has no such day in a common year, and Date rolls it to 1 March, the right answer.
+  t.setUTCDate(t.getUTCDate() + 1);
+  return t.toISOString().slice(0, 10);
+}
+
+/** The starting dates that keep this birth date START_AGE: from the 19th birthday to the day before the 20th. */
+export function startWindow(birthDate: string): { from: string; to: string } {
+  const birth = parseYmd(birthDate);
+  // The first day ageOn calls you `age`: the birthday, or, born 29 February, the day after 28 February in a common year.
+  const turns = (age: number) => {
+    const y = birth.year + age;
+    const t = new Date(Date.UTC(y, birth.month - 1, Math.min(birth.day, new Date(Date.UTC(y, birth.month, 0)).getUTCDate())));
+    const key = () => t.toISOString().slice(0, 10);
+    while (ageOn(birth, parseYmd(key())) < age) t.setUTCDate(t.getUTCDate() + 1);
+    return t;
+  };
+  const to = turns(START_AGE + 1);
+  to.setUTCDate(to.getUTCDate() - 1);
+  return { from: turns(START_AGE).toISOString().slice(0, 10), to: to.toISOString().slice(0, 10) };
+}
+
+/** The latest birth date that makes you START_AGE on this starting date (29 February becomes 28 February). */
 export function latestBirthDate(startDate: string): string | null {
   if (!isDateKey(startDate)) return null;
   const { year, month, day } = parseYmd(startDate);
@@ -121,16 +161,20 @@ export function validateDraft(d: CreationDraft): DraftProblem[] {
   // Real calendar dates only: Date.UTC would quietly turn 31 February into 3 March.
   const start = isDateKey(d.startDate) ? parseYmd(d.startDate) : null;
   const birth = isDateKey(d.birthDate) ? parseYmd(d.birthDate) : null;
+  // You start at exactly 19 (from November 14, 2026). Identity asks only for a birth date that is 19 on some day the story
+  // can start; Starting Point, where the date is chosen, says whether that date keeps you 19 and which dates do. Until
+  // then Identity held both, which stopped someone born early in 2007 there while the start date still read January.
   if (!birth) {
     out.push({ field: 'birthDate', step: 'identity', message: 'Enter your birth date.' });
-  } else if (start) {
-    const age = ageOn(birth, start);
-    if (Date.UTC(birth.year, birth.month - 1, birth.day) > Date.UTC(start.year, start.month - 1, start.day)) {
+  } else {
+    const first = `${FIRST_START_YEAR}-01-01`, last = `${LAST_START_YEAR}-12-31`;
+    if (start && d.birthDate > d.startDate) {
       out.push({ field: 'birthDate', step: 'identity', message: 'Your birth date must be before your starting date.' });
-    } else if (age < MIN_START_AGE) {
-      out.push({ field: 'birthDate', step: 'identity', message: `Your character must be at least ${MIN_START_AGE} on the starting date.` });
-    } else if (age > 100) {
-      out.push({ field: 'birthDate', step: 'identity', message: 'Choose a birth date within the last 100 years.' });
+    } else if (d.birthDate < earliestBirthDate(first)! || d.birthDate > latestBirthDate(last)!) {
+      out.push({ field: 'birthDate', step: 'identity', message: `You start at ${START_AGE}, in a year from ${FIRST_START_YEAR} to ${LAST_START_YEAR}: choose a birth date from ${formatDateKey(earliestBirthDate(first)!)} to ${formatDateKey(latestBirthDate(last)!)}.` });
+    } else if (start && ageOn(birth, start) !== START_AGE) {
+      const w = startWindow(d.birthDate);
+      out.push({ field: 'startDate', step: 'starting-point', message: `On ${formatDateKey(d.startDate)} you would be ${ageOn(birth, start)}. You start at ${START_AGE}: choose a date from ${formatDateKey(w.from)} to ${formatDateKey(w.to)}.` });
     }
   }
   if (!findPlace(d.birthplaceId)) out.push({ field: 'birthplaceId', step: 'identity', message: 'Choose a birthplace.' });

@@ -327,7 +327,7 @@ test('the UI audit: the rest of creation, and the dialogs the first walk does no
   await page.getByRole('button', { name: /^Back/ }).first().click();
   // A finished draft beside the save, as helpers.ts quickDraft leaves one: New Game then offers to go on with it.
   await page.evaluate(() => localStorage.setItem('slate.v1.creationDraft', JSON.stringify({
-    step: 7, name: 'Odalys Brannigan-Vasquez', pronouns: 'she', actingTitle: 'Actress', birthDate: '1990-05-20', birthplaceId: 'ke-nairobi',
+    step: 7, name: 'Odalys Brannigan-Vasquez', pronouns: 'she', actingTitle: 'Actress', birthDate: '2006-05-20', birthplaceId: 'ke-nairobi',
     heritages: [{ id: 'Kikuyu', label: 'Kikuyu', custom: false }, { id: 'Norwegian', label: 'Norwegian', custom: false }], heritageCustomText: '', mainLanguage: 'en',
     languages: [{ code: 'sw', proficiency: 'Fluent' }, { code: 'no', proficiency: 'Conversational' }], startPlaceId: 'gb-london', startDate: '2026-01-05', startTime: '08:00', updatedAt: 1,
   })));

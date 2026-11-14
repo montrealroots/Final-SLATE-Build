@@ -27,7 +27,7 @@ test('a connected career, from creation to a broadcast deal, saved and reloaded 
 
   // Creation, with two edits from Review: a corrected name, and a different starting time.
   await createCharacter(page, {
-    name: 'Nia Halvorsen', pronouns: 'She/Her', birthDate: '1990-05-20', birthplace: 'Nairobi', heritages: ['Kikuyu', 'Norwegian'], nationalities: ['Kenya', 'Norway'],
+    name: 'Nia Halvorsen', pronouns: 'She/Her', birthDate: '2006-05-20', birthplace: 'Nairobi', heritages: ['Kikuyu', 'Norwegian'], nationalities: ['Kenya', 'Norway'],
     mainLanguage: 'English', extraLanguages: ['Swahili'], start: 'London', startDate: '2026-01-05', startTime: '08:00',
   }, async (page) => {
     await page.getByRole('button', { name: 'Edit Identity' }).click();

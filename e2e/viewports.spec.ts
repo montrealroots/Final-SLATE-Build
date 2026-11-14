@@ -13,10 +13,10 @@ async function seedGame(page: Page): Promise<void> {
   await page.evaluate(() => {
     localStorage.clear();
     localStorage.setItem('slate.v1.creationDraft', JSON.stringify({
-      step: 7, name: 'Wilhelmina Oyelaran-Castellanos Bjørnstad', pronouns: 'they', actingTitle: 'Actor', birthDate: '1988-02-29', birthplaceId: 'no-tromso',
+      step: 7, name: 'Wilhelmina Oyelaran-Castellanos Bjørnstad', pronouns: 'they', actingTitle: 'Actor', birthDate: '2008-02-29', birthplaceId: 'no-tromso',
       heritages: [{ id: 'Yoruba', label: 'Yoruba', custom: false }, { id: 'Sámi', label: 'Sámi', custom: false }, { id: 'c1', label: 'Norwegian-Nigerian from Tromsø', custom: true }],
       heritageCustomText: '', mainLanguage: 'no', languages: [{ code: 'en', proficiency: 'Fluent' }, { code: 'yo', proficiency: 'Conversational' }, { code: 'se', proficiency: 'Basic' }],
-      startPlaceId: 'no-tromso', startDate: '2026-12-15', startTime: '11:30', updatedAt: 1,
+      startPlaceId: 'no-tromso', startDate: '2027-12-15', startTime: '11:30', updatedAt: 1,
     }));
   });
   await page.reload();

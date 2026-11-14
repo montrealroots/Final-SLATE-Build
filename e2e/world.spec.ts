@@ -4,7 +4,7 @@ import { createCharacter, freshStart, nav, quickLife } from './helpers';
 test('a life can start anywhere in the world, and world places travel and persist', async ({ page }) => {
   await freshStart(page);
   await createCharacter(page, {
-    name: 'Ola Nordmann', pronouns: 'They/Them', birthDate: '1995-02-14',
+    name: 'Ola Nordmann', pronouns: 'They/Them', birthDate: '2007-02-14',
     birthplace: 'Krakow', birthCountry: 'Poland', heritages: ['Polish'], nationalities: ['Poland'], mainLanguage: 'English', extraLanguages: [],
     start: 'Stavanger', startCountry: 'Norway', startDate: '2026-06-01', startTime: '09:00',
   });

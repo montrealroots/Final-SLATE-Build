@@ -82,7 +82,16 @@ export interface CreationDraft {
   updatedAt: number;
   /** World-catalog places chosen during creation (catalog places don't need a record here). */
   places?: Record<string, Place>;
-  /** Your own savings at the start, and what your family offers (personal.ts). Absent in drafts from before November 12, 2026: none of either. */
+  /**
+   * What you inherit at nineteen (personal.ts; the owner's v8 package, decision 3): $25,000,000 unless changed before the
+   * story starts. Released once; there is no allowance after it.
+   */
+  inheritance?: { currency: 'USD'; amountMinor: number };
+  /**
+   * The v4 opening: your savings and what your family offers. The creation screens stopped asking on November 14, 2026
+   * (normalizeDraft drops them from a saved draft); a draft that names either still opens that way, which is how the
+   * family contracts old saves hold stay tested.
+   */
   savings?: number;
   family?: { circumstances: import('./personal').FamilyCircumstances; support: import('./personal').FamilySupportKind; amount: number; gear?: string[] };
 }

@@ -6,6 +6,22 @@ Read this first. It lists what is finished, what the Gap Completion Package stil
 
 At every stopping point, open a pull request into `main` and merge it (see `CLAUDE.md`, certified by the user on November 6, 2026). Never merge red checks.
 
+## The Owner's v8 Overhaul (From November 14, 2026)
+
+The package is `docs/v8/package`. Its order is `07-IMPLEMENTATION-AND-ACCEPTANCE.md`, and `docs/v8/STATUS.md` says where
+each step and acceptance case stands. Done so far:
+
+- **Step 2, canonical money.** `src/engine/cash/` holds the money, the journal and the version 9→10 migration. Your
+  account and the company's are now views of the journal.
+- **Step 3, the start.** You start at 19 with a $25,000,000 inheritance, which can be edited before the story starts.
+  The family menus are gone.
+
+Next is **step 4, banks and documents**: the package's `repository-reference` banks and papers files, read as migration
+evidence only. After that, steps 5 to 11 in order.
+
+The age rule changed every fixture world, because the world seed hashes the birth date. The STATUS file lists each test
+that had to be re-pinned, and why. Any later failure that depends on a seed should be checked against that list first.
+
 ## The Owner's v5 Brief (From November 13, 2026)
 
 The brief is `docs/v5/00-OWNER-BRIEF.md`, word for word. `docs/v5/LEDGER.md` says where each section stands, and the

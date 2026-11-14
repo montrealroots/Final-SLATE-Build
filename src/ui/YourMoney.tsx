@@ -5,6 +5,8 @@ import { useState } from 'react';
 import { money } from '../engine/budget';
 import { PERSONAL_LABELS, personalPostings, SUPPORT_LABELS, loanStanding, personalBalance, personalStatement, putInOwnMoney, putInRefusal, takeHome, takeHomeAvailable } from '../engine/personal';
 import type { Project } from '../engine/types';
+import { formatMoney } from '../engine/cash/money';
+import { formatDateKey } from '../engine/time';
 import { NumberField, TextField } from './components';
 import { COMPANY_LABELS, FORMATION_FEE, companyBalance, companyInRefusal, companyIntoProject, companyStatement, formCompany, formRefusal, moveCompanyMoney, takeToCompany } from '../engine/company';
 import { store, useGame } from './store';
@@ -25,6 +27,7 @@ export function YourMoneyCard() {
           <ul className="list" aria-label="Your Account, By What It Is">
             {personalStatement(g).map((x) => <li key={x.kind} className="list-item"><span className="grow">{PERSONAL_LABELS[x.kind]}</span><span>{money(x.total)}</span></li>)}
           </ul>
+          {g.money.source && <p className="small"><strong>Where It Came From:</strong> Your inheritance of {formatMoney({ currency: g.money.source.currency, minor: g.money.source.amountMinor })}, released on your nineteenth birthday, {formatDateKey(g.money.source.releasedOn)}. Your family&apos;s wealth comes from oil; there is no allowance after it, and nobody to bail you out.</p>}
           {f && f.support !== 'none' && <p className="small"><strong>Your Family:</strong> {f.support === 'equipment' ? `Lends you equipment worth ${money(f.amount)} at listed prices; it's under Your Equipment.` : `${SUPPORT_LABELS[f.support]} of ${money(f.amount)}.`}{loan ? ` ${money(loan.repaid)} repaid, ${money(loan.owed)} still owed at ${money(f.monthly!)} a month.` : ''}{f.support === 'investment' ? ` They take ${Math.round(f.share! * 100)}% of the income you take home, until they have had ${money(f.cap!)} back; ${money(shareBack)} so far.` : ''}</p>}
           <p className="dim small">Money moves between your account and a project only when you move it, on the project's Budget page. Amounts are game calibration.</p>
         </>

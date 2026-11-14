@@ -3,24 +3,25 @@
 import { expect, test } from './test';
 import { addScene, advance, castRoles, creditsTable, nav, newProject, openStart, pinSeed, quickDraft, readSavedState, runToDelivery, saveAndApprove, section, staffEveryDepartment, writePitch } from './helpers';
 
-test('J06: a hybrid of a live scene and a 3D one, you in both, one crew and a lent camera; a second shoot can\'t take the camera on the same days; nobody is paid twice for a day', async ({ page }, info) => {
+test('J06: a hybrid of a live scene and a 3D one, you in both, one crew and a bought camera; a second shoot can\'t take the camera on the same days; nobody is paid twice for a day', async ({ page }, info) => {
   test.skip(info.project.name !== 'desktop', 'One whole career run, at desktop width.');
   test.setTimeout(600_000);
-  // A family that lends a camera and a card.
+  // A camera and a card bought with the inheritance (a family lent them until November 14, 2026; a new story no longer
+  // offers that).
   await openStart(page);
   await quickDraft(page, 'gb-london', '2026-04-06');
   await page.reload();
   await page.getByRole('button', { name: 'Continue Creation' }).click();
-  await page.getByRole('button', { name: 'Edit Money And Family' }).click();
-  const fam = page.locator('section', { has: page.getByRole('heading', { name: 'Money And Family' }) });
-  await fam.getByLabel("Your Family's Circumstances").selectOption({ label: 'Comfortable' });
-  await fam.getByLabel('What Your Family Offers').selectOption({ label: 'Equipment To Use' });
-  const lend = fam.getByRole('group', { name: 'What Your Family Lends' });
-  await lend.getByLabel(/^Blackmagic Pocket Cinema Camera 4K, /).check();
-  await lend.getByLabel(/^SanDisk 256GB Extreme PRO UHS-II SDXC, /).check();
-  await page.getByRole('button', { name: 'Save And Return To Review' }).click();
   await page.getByRole('button', { name: 'Start My Story' }).click();
   await expect(page.getByRole('heading', { name: /^Good (Morning|Afternoon|Evening), /, level: 1 })).toBeVisible();
+  await nav(page, 'Profile');
+  await page.locator('section', { has: page.getByRole('heading', { name: 'Your Equipment' }) }).getByRole('button', { name: 'Open The Shop' }).click();
+  const shop = page.getByRole('dialog', { name: 'The Shop' });
+  for (const [kind, name] of [['Cameras', 'Blackmagic Pocket Cinema Camera 4K'], ['Recording Media', 'SanDisk 256GB Extreme PRO UHS-II SDXC']]) {
+    await shop.getByLabel('Show').selectOption({ label: kind });
+    await shop.getByRole('button', { name: `Buy ${name}` }).click();
+  }
+  await shop.getByRole('button', { name: 'Close', exact: true }).click();
   await pinSeed(page, 6);
 
   // The hybrid: Mara on camera in the kitchen, Sprite a 3D character in the burrow; you play Mara and voice Sprite.

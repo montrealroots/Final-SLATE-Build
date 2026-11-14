@@ -8,7 +8,7 @@ test('phone device: screens fit, drawer works, focused fields stay visible', asy
   await page.evaluate(() => {
     localStorage.clear();
     localStorage.setItem('slate.v1.creationDraft', JSON.stringify({
-      step: 7, name: 'Zoë Nakamura-Fitzgerald Ó Briain', pronouns: 'she', actingTitle: 'Actress', birthDate: '1999-11-02', birthplaceId: 'ie-dublin',
+      step: 7, name: 'Zoë Nakamura-Fitzgerald Ó Briain', pronouns: 'she', actingTitle: 'Actress', birthDate: '2006-11-02', birthplaceId: 'ie-dublin',
       heritages: [{ id: 'Irish', label: 'Irish', custom: false }, { id: 'Japanese', label: 'Japanese', custom: false }], heritageCustomText: '', mainLanguage: 'en',
       languages: [{ code: 'ga', proficiency: 'Conversational' }, { code: 'ja', proficiency: 'Basic' }], startPlaceId: 'au-melbourne', startDate: '2026-07-01', startTime: '19:45', updatedAt: 1,
     }));

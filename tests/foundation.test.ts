@@ -147,7 +147,8 @@ describe('creation and events', () => {
   it('validates birth date against the chosen start date', () => {
     expect(validateDraft(draft())).toEqual([]);
     expect(validateDraft(draft({ birthDate: '2026-05-01' })).map((p) => p.field)).toContain('birthDate');
-    expect(validateDraft(draft({ birthDate: '2012-01-01' })).map((p) => p.field)).toContain('birthDate');
+    // 19 only in 2031: a birth date the game can start, but not on this starting date, which is where it is refused.
+    expect(validateDraft(draft({ birthDate: '2012-01-01' })).map((p) => p.field)).toContain('startDate');
     // Any start from 2026 to 2050 (November 8, 2026: it was 2026 only).
     expect(validateDraft(draft({ startDate: '2027-01-01' })).map((p) => p.field)).not.toContain('startDate');
     expect(validateDraft(draft({ startDate: '2051-01-01' })).map((p) => p.field)).toContain('startDate');
@@ -160,22 +161,22 @@ describe('creation and events', () => {
     const s = newGame(draft(), 0, 'save1');
     const p = localParts(s.now, 'Europe/London');
     expect([p.year, p.month, p.day, p.hour, p.minute]).toEqual([2026, 3, 27, 8, 0]);
-    expect(characterAge(s)).toBe(30);
+    expect(characterAge(s)).toBe(19);
   });
   it('a whole simulated year fires each birthday exactly once, by tick, advance or sleep', () => {
-    const s = newGame(draft(), 0, 'save1');
+    // Born on 29 February: 19 on the first day, 20 on the leap day 2028, 21 on the observed 28 February 2029. (Until
+    // November 14, 2026 the fixture was 30 and the first year held only an observed birthday; at 19 the next is a leap day.)
+    const s = newGame(draft({ startDate: '2027-03-01', birthDate: '2008-02-29' }), 0, 'save1');
     const zone = 'Europe/London';
     let t = s.now;
     // Mix of natural ticks, advances and a sleep across the year boundary.
-    for (let i = 0; i < 400; i++) {
+    for (let i = 0; i < 760; i++) {
       t += DAY;
       processUntil(s, t, i % 3 === 0 ? 'tick' : 'advance');
     }
     const bdays = s.log.filter((l) => l.text.startsWith('Today is your birthday'));
-    expect(bdays.length).toBe(1); // Feb 28, 2027 (observed) only
-    expect(localParts(bdays[0].at, s.ageZone).month).toBe(2);
-    expect(localParts(bdays[0].at, s.ageZone).day).toBe(28);
-    expect(characterAge(s)).toBe(31);
+    expect(bdays.map((b) => { const x = localParts(b.at, s.ageZone); return `${x.year}-${x.month}-${x.day}`; }).sort()).toEqual(['2028-2-29', '2029-2-28']);
+    expect(characterAge(s)).toBe(21);
     expect(zone).toBe('Europe/London');
   });
   it('Advance stops at a reminder; ticking does not; everything stays exactly-once', () => {

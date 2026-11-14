@@ -3,6 +3,8 @@ import { describe, expect, it } from 'vitest';
 import { COUNTER_OPEN_DAYS, DAY, addDaysToKey, dateKey, isWorkingDay, buildTasks, computeCredits, declineCounter, teamFor, historyWith, ledgerTotals, makeOffer, processUntil, recordHistory, releaseHire, resolveOffer, roleCandidates, willingness } from './engine-api';
 import type { Project } from '../src/engine/types';
 import { runWorkDay } from '../src/engine/production/workday';
+import { productionWindow } from '../src/engine/hiring';
+import { isAvailable } from '../src/engine/people';
 import { approve, buildProject, startLife } from './helpers';
 
 function project(tag: string) {
@@ -12,6 +14,14 @@ function project(tag: string) {
   p.funding.fund = 1_000_000; // labelled fixture: money for the offers
   return { s, p };
 }
+/**
+ * Experienced editors free for the production. Who is booked elsewhere is drawn from the world's seed; until November 14,
+ * 2026 these tests took the first experienced editors, and the fixtures' worlds happened to have them free.
+ */
+const editors = (s: ReturnType<typeof project>['s'], p: Project) => {
+  const win = productionWindow(s, p);
+  return roleCandidates(s, p, 'editor').filter((x) => x.experience >= 2 && isAvailable(s, x, win.from, win.to, p.id).ok);
+};
 const answer = (s: ReturnType<typeof project>['s'], p: Project, personId: string, ratio: number) => {
   const person = roleCandidates(s, p, 'editor').find((x) => x.id === personId)!;
   const h = makeOffer(s, p, { personId, roleId: 'editor', dayRate: Math.round(person.dayRate * ratio) });
@@ -22,7 +32,7 @@ const answer = (s: ReturnType<typeof project>['s'], p: Project, personId: string
 describe('working relationships', () => {
   it('someone who saw a project through with you takes a fair offer without haggling; a stranger may not', () => {
     const { s, p } = project('rel-done');
-    const [friend, stranger] = roleCandidates(s, p, 'editor').filter((x) => x.experience >= 2);
+    const [friend, stranger] = editors(s, p);
     recordHistory(s, friend.id, { ...p, id: 'old', title: 'Old Film' }, 'Editor', 'completed'); // labelled fixture: an earlier project
     expect(willingness(s, friend.id)).toEqual({ minRatio: 0.9, refuses: false, reason: 'They worked with you on Old Film.' });
     expect(answer(s, p, friend.id, 0.9).status).toBe('accepted');
@@ -31,7 +41,7 @@ describe('working relationships', () => {
 
   it('letting someone go makes them ask for more, and twice makes them refuse', () => {
     const { s, p } = project('rel-letgo');
-    const ed = roleCandidates(s, p, 'editor').filter((x) => x.experience >= 2)[0];
+    const ed = editors(s, p)[0];
     const h = answer(s, p, ed.id, 1);
     expect(h.status).toBe('accepted');
     releaseHire(s, p, h.id);
@@ -46,7 +56,7 @@ describe('working relationships', () => {
 
   it("turning down someone's counteroffer means they won't take less than their rate next time", () => {
     const { s, p } = project('rel-counter');
-    const ed = roleCandidates(s, p, 'editor').filter((x) => x.experience >= 2)[1];
+    const ed = editors(s, p)[1];
     const first = answer(s, p, ed.id, 0.8);
     expect(first.status).toBe('countered');
     declineCounter(s, p, first.id);
@@ -61,7 +71,7 @@ describe('working relationships', () => {
 describe('a counteroffer left unanswered', () => {
   it('waits its open days, then lapses, releasing the money it held and the part', () => {
     const { s, p } = project('rel-lapse');
-    const ed = roleCandidates(s, p, 'editor').filter((x) => x.experience >= 2)[0];
+    const ed = editors(s, p)[0];
     const before = ledgerTotals(p).available;
     const h = answer(s, p, ed.id, 0.8); // below the rate, above the floor: a stranger counters
     expect(h.status).toBe('countered');
@@ -83,7 +93,7 @@ describe('a handover mid-task', () => {
   it('releasing someone keeps the work they did and their credit; the replacement carries on from there', () => {
     const { s, p } = project('rel-handover');
     p.tasks = buildTasks(p); // as production start builds them
-    const [first, second] = roleCandidates(s, p, 'editor').filter((x) => x.experience >= 2);
+    const [first, second] = editors(s, p);
     const h1 = answer(s, p, first.id, 1.2);
     expect(h1.status).toBe('accepted');
     const task = p.tasks.find((t) => t.roleId === 'editor')!;
@@ -95,8 +105,8 @@ describe('a handover mid-task', () => {
     expect(h2.status).toBe('accepted');
     expect(teamFor(p, 'editor', 1)).toEqual([second.id]);
     expect(task.done).toBe(2);
-    const editors = computeCredits(s, p).filter((c) => c.roleId === 'editor').map((c) => c.person);
-    expect(editors).toContain(first.id);
+    const credited = computeCredits(s, p).filter((c) => c.roleId === 'editor').map((c) => c.person);
+    expect(credited).toContain(first.id);
   });
 });
 
@@ -104,7 +114,7 @@ describe('a handover mid-task', () => {
 describe('a combined role', () => {
   it('an editor who also covers the grade works one of the two tasks each day, paid once', () => {
     const { s, p } = project('rel-combined');
-    const ed = roleCandidates(s, p, 'editor').filter((x) => x.experience >= 2)[0];
+    const ed = editors(s, p)[0];
     const h = answer(s, p, ed.id, 1.2);
     expect(h.status).toBe('accepted');
     const all = buildTasks(p);
