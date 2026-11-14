@@ -17,10 +17,12 @@ import { lockBlockers, lockPicture, startCutPass, unlockPicture } from '../src/e
 
 import { born19 } from './fixtures';
 
+// British too (from November 14, 2026, when living abroad took a work visa): a London life that isn't about papers pays
+// for none. Tests about papers say which passports they hold.
 export function startLife(seedTag: string, placeId = 'gb-london', over: Partial<CreationDraft> = {}): GameState {
   const d: CreationDraft = {
     ...emptyDraft(), name: 'Rin Sato-Moreau', pronouns: 'they', actingTitle: 'Actor', birthDate: born19(over.startDate ?? '2026-01-05'), birthplaceId: 'jp-tokyo',
-    heritages: [{ id: 'Japanese', label: 'Japanese', custom: false }, { id: 'French', label: 'French', custom: false }], nationalities: ['JP', 'FR'], mainLanguage: 'en',
+    heritages: [{ id: 'Japanese', label: 'Japanese', custom: false }, { id: 'French', label: 'French', custom: false }], nationalities: ['JP', 'FR', 'GB'], mainLanguage: 'en',
     languages: [{ code: 'ja', proficiency: 'Fluent' }, { code: 'fr', proficiency: 'Conversational' }], startPlaceId: placeId, startDate: '2026-01-05', startTime: '08:00', ...over,
   };
   return newGame(d, 0, `save-${seedTag}`);

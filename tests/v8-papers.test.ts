@@ -15,9 +15,11 @@ const posted = (x: GameState) => Math.round(personalPostings(x).reduce((a, p) =>
 // The fixture player is Japanese and French and lives in London.
 describe('A16: a passport lets you travel; it doesn\'t let you work', () => {
   it('reads citizenship, where you live, a treaty right, and the permit everyone else needs', () => {
-    const s = startLife('papers');
+    const s = startLife('papers', 'gb-london', { nationalities: ['JP', 'FR'] }); // not British, unlike the fixture
     expect(workRight(s, 'FR')).toMatchObject({ can: true, why: 'You are a citizen of France.' });
-    expect(workRight(s, 'GB')).toMatchObject({ can: true, assumed: true }); // where you live: the game's assumption, said as one
+    // Where you live takes papers too (from November 14, 2026; until then the game assumed it): this life arrived on the
+    // United Kingdom's Creative Worker visa, its fee paid on the first day.
+    expect((workRight(s, 'GB') as { why: string }).why).toMatch(/^Your Temporary Work – Creative Worker visa lets you work in the United Kingdom until \d{4}-\d{2}-\d{2}\.$/);
     expect(workRight(s, 'NO')).toMatchObject({ can: true, why: 'Your passport from France gives you the right to live and work in Norway.' }); // the shared market
     const us = workRight(s, 'US');
     expect(us).toMatchObject({ can: false, route: 'O-1 (extraordinary ability in the arts, or extraordinary achievement in motion pictures or television)', missing: [] });
@@ -38,6 +40,7 @@ describe('A16: a passport lets you travel; it doesn\'t let you work', () => {
     // The United Kingdom lets a performer work 30 days without the Creative Worker visa: a fixture life that lives elsewhere.
     s.character.livesIn = 'fr-paris';
     s.character.nationalities = ['JP'];
+    s.paperApplications = []; // and without the visa it arrived in London on
     const gb = workRight(s, 'GB');
     expect(gb).toMatchObject({ can: true });
     for (let i = 0; i < 30; i++) { s.now += 86_400_000; recordWorkDay(s, 'GB'); }
@@ -87,9 +90,9 @@ describe('A16: a passport lets you travel; it doesn\'t let you work', () => {
     // A Brazilian in Mexico City, visiting the United States: 1221's B-1/B-2 record, $185 and 157 days.
     const s = startLife('papers-visa', 'mx-mexico-city', { nationalities: ['BR'], birthplaceId: 'br-sao-paulo' } as never);
     expect(entryRight(s, 'US')).toMatchObject({ kind: 'needs', entry: 'visa' });
-    // Where you live asks no visa of you: the game's assumption, said as one (the owner, November 14, 2026).
+    // Where you live, you stay on the work visa you arrived on (from November 14, 2026; until then the game assumed it).
     expect(entryRight(s, 'MX')).toMatchObject({ kind: 'lives' });
-    expect(entryRight(s, 'MX').why).toMatch(/^You live in Mexico: .*not a checked permission\.$/);
+    expect(entryRight(s, 'MX').why).toMatch(/^You live in Mexico on your .+, good until \d{4}-\d{2}-\d{2}\.$/);
     // A visa with no record says what's missing once, without repeating the entry sentence above it.
     const unrecorded = visaCheck(s, 'IN');
     if (!unrecorded.ok) expect(unrecorded.why).not.toContain(entryRight(s, 'IN').why);
@@ -102,14 +105,14 @@ describe('A16: a passport lets you travel; it doesn\'t let you work', () => {
     expect(visaCheck(s, 'US')).toEqual({ ok: false, why: 'Your application is being decided.' });
     expect(entryRight(s, 'US').kind).toBe('needs'); // applied for isn't issued
     processUntil(s, a.decideAt - 1000, 'tick', 1_000_000);
-    expect(applications(s)[0].stage).toBe('applied');
+    expect(applications(s).find((x) => x.id === a.id)!.stage).toBe('applied');
     processUntil(s, a.decideAt + 1000, 'tick', 1_000_000);
-    expect(applications(s)[0].stage).toBe('issued');
+    expect(applications(s).find((x) => x.id === a.id)!.stage).toBe('issued');
     expect(entryRight(s, 'US').kind).toBe('held');
     // A visa to visit isn't leave to work.
     expect(workRight(s, 'US').can).toBe(false);
-    processUntil(s, applications(s)[0].expiresAt! + 1000, 'tick', 5_000_000);
-    expect(applications(s)[0].stage).toBe('expired');
+    processUntil(s, applications(s).find((x) => x.id === a.id)!.expiresAt! + 1000, 'tick', 5_000_000);
+    expect(applications(s).find((x) => x.id === a.id)!.stage).toBe('expired');
     expect(entryRight(s, 'US').kind).toBe('needs');
   }, 120_000);
 

@@ -18,6 +18,7 @@ import { closeSettled, ledgerTotals, money, reserve, settle } from './budget';
 import { addLog, newId, onDraftCheck, onNewGame, registerHandler, schedule } from './state';
 import { DAY, formatDateKey } from './time';
 import { bankPostings, bankSpendable, postToBank, startBank } from './bank';
+import { grantArrivalPapers } from './papers';
 import type { CreationDraft, FinanceDeal, GameState, Project } from './types';
 
 export type FamilyCircumstances = 'stretched' | 'getting-by' | 'comfortable' | 'wealthy';
@@ -254,8 +255,10 @@ onDraftCheck((d) => {
   return out;
 });
 onNewGame((state, d) => {
-  if (legacyOpening(d) || !d.inheritance) { const t = draftTerms(d); openPersonalMoney(state, d.savings ?? 0, typeof t === 'string' ? null : t); return; }
-  openInheritance(state, d.inheritance.amountMinor, inheritanceDay(d.birthDate, d.startDate), d.inheritance.currency);
+  if (legacyOpening(d) || !d.inheritance) { const t = draftTerms(d); openPersonalMoney(state, d.savings ?? 0, typeof t === 'string' ? null : t); }
+  else openInheritance(state, d.inheritance.amountMinor, inheritanceDay(d.birthDate, d.startDate), d.inheritance.currency);
+  // A life abroad arrives on the work visa it needs, its fee from the money just opened (papers.ts).
+  grantArrivalPapers(state);
 });
 
 /** The day the inheritance was released: your 19th birthday (28 February for a 29 February birthday in a common year). */

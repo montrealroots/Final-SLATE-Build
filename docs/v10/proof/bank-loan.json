@@ -17,8 +17,8 @@
   "gross": 108316.667,
   "revenue": 203473.833,
   "distributed": 2.567,
-  "money": 25115966.103,
-  "moneyChange": 115966.103,
+  "money": 24817257.753,
+  "moneyChange": -182742.246,
   "jobsTaken": 1.367,
   "jobsOffered": 1.367,
   "jobPay": 7835.2,
@@ -69,8 +69,8 @@
   "gross": 108316.667,
   "revenue": 203473.833,
   "distributed": 2.567,
-  "money": 25123910.389,
-  "moneyChange": 123910.389,
+  "money": 24827604.649,
+  "moneyChange": -172395.351,
   "jobsTaken": 1.367,
   "jobsOffered": 1.367,
   "jobPay": 7835.2,
@@ -106,9 +106,9 @@
   "standing.acting": 50,
   "standing.producing": 53.95,
   "interestIn": 0,
-  "interestOut": 1777.573,
+  "interestOut": 1722.856,
   "bankFees": 0,
-  "owed": 9721.859,
+  "owed": 9503.721,
   "accounts": 1.783,
   "rewards": 0,
   "fired": 0
@@ -164,16 +164,16 @@
    "n": 60
   },
   "money": {
-   "mean": 7944.286,
-   "lo": 6562.403,
-   "hi": 9326.168,
+   "mean": 10346.895,
+   "lo": 8501.257,
+   "hi": 12192.533,
    "changed": 47,
    "n": 60
   },
   "moneyChange": {
-   "mean": 7944.286,
-   "lo": 6562.403,
-   "hi": 9326.168,
+   "mean": 10346.895,
+   "lo": 8501.257,
+   "hi": 12192.533,
    "changed": 47,
    "n": 60
   },
@@ -423,9 +423,9 @@
    "n": 60
   },
   "interestOut": {
-   "mean": 1777.573,
-   "lo": 1481.298,
-   "hi": 2073.849,
+   "mean": 1722.856,
+   "lo": 1432.306,
+   "hi": 2013.405,
    "changed": 47,
    "n": 60
   },
@@ -437,9 +437,9 @@
    "n": 60
   },
   "owed": {
-   "mean": 9721.859,
-   "lo": 8218.649,
-   "hi": 11225.069,
+   "mean": 9503.721,
+   "lo": 7995.073,
+   "hi": 11012.368,
    "changed": 47,
    "n": 60
   },
