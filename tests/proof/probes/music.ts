@@ -14,6 +14,8 @@ export const useTrack = (s: GameState, p: Project) => {
   const song = createSong(s, p, { title: TRACK, source: 'licensed', holder: 'A Record Label', writers: [{ name: 'A Songwriter', music: true, lyrics: true }] });
   attachSong(p, song.id, approvedScenes(p)[0].id, 'background');
 };
+/** A song commissioned for the film, before money is raised. */
+const commission = (s: GameState, p: Project) => (p.music ? createSong(s, p, { title: 'Second Light', source: 'commission' }) : undefined);
 export const track = (p: Project) => (p.songs ?? []).find((x) => x.title === TRACK);
 /** Each day: ask the holders once, for digital sale in Britain for 3 years (the career's release), then answer a quote. */
 const licensing = (answer: 'agree' | 'decline') => (s: GameState) => {
@@ -93,10 +95,12 @@ export const PROBES: Probe[] = [
   {
     id: 'remove-song',
     features: ['action:song-actions.removeSong'],
-    decision: 'Remove the unlicensed track from the project (taken out of its scene first, as the game asks)',
-    reads: ['src/engine/song-actions.ts#removeSong', 'src/engine/music.ts#releaseLicenceRefusal'],
-    base: { decide: (s, p) => { useTrack(s, p); const song = track(p); if (song) detachSong(p, song.id, song.uses[0].sceneId); } },
-    variant: { decide: (s, p) => { useTrack(s, p); const song = track(p); if (song) { detachSong(p, song.id, song.uses[0].sceneId); removeSong(p, song.id); } } },
+    // A song commissioned for the film and then dropped: its writing work goes with it. Until November 14, 2026 the probe
+    // removed a licensed track already taken out of its scene, which carries no work, so nothing could follow.
+    decision: 'Drop a song commissioned for the film before it is written',
+    reads: ['src/engine/song-actions.ts#removeSong', 'src/engine/song-actions.ts#createSong'],
+    base: { decide: (s, p) => { commission(s, p); } },
+    variant: { decide: (s, p) => { const song = commission(s, p); if (song) removeSong(p, song.id); } },
     measure,
     bites: ['songs'],
     downstream: ['spent', 'daysToDeliver', 'quality.music'],

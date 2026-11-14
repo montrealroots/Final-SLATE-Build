@@ -2,7 +2,7 @@
 // locked picture opened again, and a release called off.
 import type { Probe } from '../probe';
 import { setShotPlan, chooseTake } from '../../../src/engine/takes-actions';
-import { requestPickups, restoreToEdit, unlockPicture } from '../../../src/engine/edit-actions';
+import { requestPickups, restoreToEdit, unlockImpact, unlockPicture } from '../../../src/engine/edit-actions';
 import { cancelRelease, cutFromEdit, editScenes } from '../../../src/engine/finish';
 import { approvedScenes } from '../../../src/engine/projects';
 import type { GameState, Project } from '../../../src/engine/types';
@@ -28,8 +28,10 @@ const pickups = () => { const done = new WeakSet<Project>(); return (s: GameStat
   for (const p of s.projects.filter((x) => !x.delivered && !x.edit.pictureLocked && !done.has(x) && x.schedule.days.length && !x.schedule.days.some((d) => d.status === 'scheduled'))) { try { requestPickups(s, p, [editScenes(p)[0].id]); } catch { /* none needed */ } done.add(p); }
 }; };
 /** Once per project: the picture opened again the day it is locked, before delivery. */
+/** Once per film, once finishing work after the lock is under way (until November 14, 2026 this unlocked on the day of
+ *  the lock, when nothing after it had started, so there was nothing to redo): the picture opened again. */
 const reopen = () => { const done = new WeakSet<Project>(); return (s: GameState) => {
-  for (const p of s.projects.filter((x) => x.edit.pictureLocked && !x.delivered && !done.has(x))) { unlockPicture(s, p); done.add(p); }
+  for (const p of s.projects.filter((x) => x.edit.pictureLocked && !x.delivered && !done.has(x) && unlockImpact(x).length > 0)) { unlockPicture(s, p); done.add(p); }
 }; };
 /** The first planned release of each film called off. */
 const callOff = (s: GameState) => { for (const p of s.projects) for (const r of p.releases.filter((x) => x.status === 'planned')) { try { cancelRelease(s, p, r.id); } catch { /* a studio's term */ } } };

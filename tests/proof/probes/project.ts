@@ -32,7 +32,11 @@ export const PROBES: Probe[] = [
   { id: 'finance-target', features: ['field:PlanViews.tsx#"Change Financing Target"#1', 'action:finance.setFinanceTarget'], decision: 'Raise half as much again as the estimate', reads: ['src/engine/finance.ts#setFinanceTarget', 'src/engine/finance.ts#financeSummary'],
     // Backers asked first, as a target above the estimate matters where others' money is raised and repaid.
     base: { ownShare: 0 },
-    variant: { ownShare: 0, decide: (_s, p) => setFinanceTarget(p, Math.round((p.finance?.estimate ?? financeSummary(p).target) * 1.5)) }, bites: ['backerIn', 'ownIn'], downstream: ['money', 'revenue', 'leftInProjects'] },
+    variant: { ownShare: 0, decide: (_s, p) => setFinanceTarget(p, Math.round((p.finance?.estimate ?? financeSummary(p).target) * 1.5)) },
+    // Everything is asked of backers here, so your own money never moved (until November 14, 2026 it was looked for as a
+    // bite); what a larger raise changes is what the backers hold and take a share for.
+    measure: (_s, projects) => ({ investorShare: projects.reduce((a, p) => a + (p.finance?.deals ?? []).filter((d) => d.status === 'accepted' && d.kind !== 'savings').reduce((b, d) => b + d.terms.incomeShare, 0), 0) }),
+    bites: ['backerIn'], downstream: ['investorShare', 'leftInProjects', 'money', 'revenue'] },
   { id: 'genre-comedy', features: ['field:Projects.tsx#?#1'], decision: 'Make it a comedy rather than a drama', reads: ['src/engine/script-effects.ts#competesAs'],
     variant: { project: make({ ...SHORT, genres: ['comedy'] }) }, bites: ['reception', 'overall'], downstream: ['revenue', 'money'] },
 ];

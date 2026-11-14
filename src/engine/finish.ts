@@ -331,7 +331,11 @@ export function assessQuality(state: GameState, p: Project, episode?: number): R
   }
   const perf = avg(Object.entries(out).filter(([k]) => k.startsWith('performance:')).map(([, v]) => v), 55);
   // Rounded to the nearest whole value; never derived from genre labels, budget size or identity.
-  out.overall = clamp(script * 0.3 + direction * 0.25 + craft * 0.2 + perf * 0.25);
+  // The edit counts in the film's overall (from November 14, 2026): until then the editing assessment reached only the
+  // editing awards, so the editor, the cut passes, the coverage the cut had and a gap where an essential scene was cut
+  // never reached how the film was received (the feature proofs found it, docs/v10/proof/scene-essential.json). It takes
+  // a tenth, from direction and craft, so a typical film's overall stays where it was. Game calibration.
+  out.overall = clamp(script * 0.3 + direction * 0.2 + craft * 0.15 + out.editing * 0.1 + perf * 0.25);
   if (episode === undefined) {
     const r = stream(state.seed, 'reception', p.id);
     out.reception = clamp(out.overall + gaussian(r, 0, 8)); // audiences and critics vary

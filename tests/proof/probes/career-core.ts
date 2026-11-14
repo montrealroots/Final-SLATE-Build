@@ -1,5 +1,6 @@
 // The career's own loop: raising money, selling or releasing, taking money home, and outside work.
 import type { Probe } from '../probe';
+import { withAgent } from './career-wide';
 
 export const PROBES: Probe[] = [
   {
@@ -52,8 +53,11 @@ export const PROBES: Probe[] = [
     features: ['action:jobs.askBetterRate', 'scheduled:job-counter'],
     decision: 'Ask once for a better rate before taking outside work',
     reads: ['src/engine/jobs.ts#askBetterRate', 'src/engine/reputation.ts#hasLeverage'],
+    // With an agent, who gets a client the higher rate (jobs.ts job-counter): without one the young career asked with
+    // no leverage, was agreed one time in eight, and the pay that followed was lost in the noise (until November 14, 2026).
     seeds: 60,
-    variant: { jobAnswer: 'ask' },
+    base: { daily: withAgent('vale') },
+    variant: { jobAnswer: 'ask', daily: withAgent('vale') },
     bites: ['ratesAgreed'],
     downstream: ['jobPay', 'money', 'jobsDone'],
   },

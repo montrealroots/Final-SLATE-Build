@@ -20,6 +20,9 @@ const measure = (s: GameState, projects: Project[]) => {
     selected: mine.filter((e) => ['selected', 'nominated', 'won', 'mention'].includes(e.status)).length,
     won: mine.filter((e) => e.status === 'won').length,
     decided: mine.filter((e) => ['won', 'lost', 'mention', 'not-selected', 'not-nominated', 'nominated', 'selected'].includes(e.status)).length,
+    finalised: mine.filter((e) => ['won', 'lost', 'mention'].includes(e.status)).length,
+    screenings: s.editions.reduce((a, ed) => a + (ed.screenings ?? []).filter((sc) => projects.some((p) => p.id === sc.projectId)).length, 0),
+    offers: projects.reduce((a, p) => a + p.offers.length, 0),
     editionsOpen: s.editions.filter((e) => e.status !== 'upcoming').length,
     firstLookOffers: firstLooks(s).length,
     opportunities: (s.opportunities ?? []).length,
@@ -41,9 +44,12 @@ const off = (kind: string, decision: string, bites: string[], downstream: string
 export const PROBES: Probe[] = [
   off('edition-open', 'awards editions opening for entries', ['entries'], ['selected', 'money'], AWARDS),
   off('edition-deadline', 'entry deadlines closing', ['selected'], ['standing.producing', 'won'], AWARDS),
-  off('edition-start', 'editions starting', ['decided', 'won'], ['standing.producing', 'money'], AWARDS),
-  off('edition-announce', 'selections and nominations being announced', ['decided'], ['standing.producing', 'won'], AWARDS),
-  off('edition-results', 'results being decided', ['won'], ['standing.producing', 'opportunities'], AWARDS),
+  // An edition's opening is when a selected film screens (awards-results.ts festivalOpens), and its screening is what
+  // brings buyers; an announcement before it is what has the film selected by then. The results step announces anything
+  // not yet announced, so neither was missed by what was decided (until November 14, 2026 these looked only there).
+  off('edition-start', 'editions starting', ['screenings'], ['offers', 'distributed', 'revenue'], AWARDS),
+  off('edition-announce', 'selections and nominations being announced', ['screenings'], ['offers', 'distributed', 'revenue'], AWARDS),
+  off('edition-results', 'results being decided', ['finalised'], ['won', 'standing.producing', 'opportunities'], AWARDS),
   off('editions-roll', 'next year\'s editions being made', ['editionsOpen'], ['entries', 'selected'], AWARDS),
   off('screening', 'awards screenings', ['logLines'], ['selected'], AWARDS),
   off('work-day', 'the production\'s working days', ['delivered'], ['revenue', 'money']),
