@@ -6,6 +6,7 @@ import type { GameState, Project } from '../../../src/engine/types';
 import { enterEverything } from './awards';
 import { bankMeasures } from './bank';
 import { firstLooks } from '../../../src/engine/first-look';
+import { industryStanding } from '../../../src/engine/productions';
 import { scheduled } from '../register';
 
 /** Where each kind's handler is, so a proof reads (and is hashed against) the system it switches off. */
@@ -24,6 +25,9 @@ const measure = (s: GameState, projects: Project[]) => {
     opportunities: (s.opportunities ?? []).length,
     openOpportunities: (s.opportunities ?? []).filter((o) => (o as { status?: string }).status === 'open' || (o as { status?: string }).status === 'offered').length,
     openOffers: (s.jobs ?? []).filter((j) => j.status === 'offered').length,
+    industryStanding: industryStanding(s),
+    productionsChanged: (s.productions ?? []).filter((p) => p.cancelled || (p.delayedDays ?? 0) > 0).length,
+    jobsCancelled: (s.jobs ?? []).filter((j) => j.status === 'cancelled').length,
     productionResults: Object.values(s.productions ?? {}).filter((p) => (p as { result?: unknown }).result).length,
   };
 };
@@ -55,8 +59,9 @@ export const PROBES: Probe[] = [
   off('job-offer', 'outside work being offered', ['jobsOffered'], ['jobPay', 'money']),
   off('job-day', 'outside work\'s working days', ['jobsDone'], ['jobPay', 'money']),
   off('job-lapse', 'unanswered outside work lapsing', ['openOffers'], ['jobsOffered'], { takeJobs: false }),
-  off('production-confirm', 'industry productions being confirmed', ['jobsOffered'], ['jobPay', 'money']),
-  off('production-release', 'industry productions coming out', ['productionResults'], ['jobsOffered', 'offeredDayRate']),
+  // One in twenty productions is cancelled before it shoots and one in ten put back (productions.ts): rare, so 100 careers of three years.
+  { ...off('production-confirm', 'industry productions being confirmed, cancelled or put back', ['productionsChanged'], ['jobsDone', 'jobPay', 'jobsCancelled'], { years: 3 }), seeds: 100 },
+  { ...off('production-release', 'industry productions coming out', ['productionResults', 'industryStanding'], ['jobsOffered', 'jobPay'], { years: 3 }), seeds: 60 },
   off('first-look-check', 'companies considering a first-look deal', ['firstLookOffers'], ['money']),
   off('opportunity', 'opportunities after well-received work', ['opportunities'], ['money', 'delivered']),
   off('opportunity-expire', 'unanswered opportunities expiring', ['openOpportunities'], ['opportunities']),
