@@ -72,7 +72,9 @@ export const PROBES: Probe[] = [
     variant: { project: short({ time: 'NIGHT' }) }, bites: ['spent'], downstream: ['money', 'overall'] },
   { id: 'scene-minutes', features: [field('ScriptViews.tsx', 'Estimated Minutes')], decision: 'Make each scene twice as long', reads: ['src/engine/production/schedule.ts#generatePlan'],
     // A short's scenes fit a day's capacity either way (schedule.ts groupShootDays), so the length shows in what the shoot and post cost and take.
-    variant: { project: short({ minutes: 7 }) }, bites: ['spent', 'daysToDeliver'], downstream: ['money', 'revenue'] },
+    // A longer film is offered more: a distributor's guarantee follows its running time up to 90 minutes (finish.ts).
+    measure: (_s, projects) => ({ runtime: projects.reduce((a, p) => a + (p.delivered?.runtimeMin ?? 0), 0), guarantees: projects.reduce((a, p) => a + p.offers.filter((o) => o.status === 'accepted').reduce((b, o) => b + o.minimumGuarantee, 0), 0), offered: projects.reduce((a, p) => a + p.offers.reduce((b, o) => b + o.minimumGuarantee, 0), 0) }),
+    variant: { project: short({ minutes: 7 }) }, bites: ['runtime', 'spent', 'daysToDeliver'], downstream: ['offered', 'guarantees', 'money', 'revenue'] },
   { id: 'scene-crowd', seeds: 60, features: [field('ScriptViews.tsx', 'Crowd Size')], decision: 'Put a crowd of 40 in each scene', reads: ['src/engine/production/rates.ts#dayFees'],
     variant: { project: short({ scene: { crowd: 40 } }) }, bites: ['spent'], downstream: ['money', 'overall'] },
   { id: 'scene-stunts', features: [field('ScriptViews.tsx', 'Stunts')], decision: 'Give each scene a stunt', reads: ['src/engine/projects.ts#deriveRequirements'],
@@ -106,7 +108,10 @@ export const PROBES: Probe[] = [
     base: { ownShare: 0 }, variant: { ownShare: 0, project: short({ story: { logline: '' } }) }, bites: ['backerDeals'], downstream: ['ownIn', 'money'] },
   { id: 'rehearsal-days', features: [field('PlanViews.tsx', 'Rehearsal Days')], decision: 'Rehearse for eight days rather than none', reads: ['src/engine/production/shoot.ts#runShootDay'],
     base: { decide: (_s, p) => { p.schedule.rehearsalDays = 0; } }, variant: { decide: (_s, p) => { p.schedule.rehearsalDays = 8; } },
-    bites: ['quality.direction', 'overall'], downstream: ['reception', 'spent', 'revenue'] },
+    // Rehearsal reaches the performances (finish.ts assessQuality), not the direction's score: the film's overall is where
+    // it shows (until November 14, 2026 this probe looked for it in the direction's score).
+    measure: (_s, projects) => ({ performance: (() => { const v = projects.flatMap((p) => Object.entries(p.quality ?? {}).filter(([k]) => k.startsWith('performance:')).map(([, x]) => Number(x))); return v.length ? v.reduce((a, b) => a + b, 0) / v.length : 0; })() }),
+    bites: ['performance', 'overall'], downstream: ['reception', 'spent', 'revenue'] },
   // On a budget above the low-budget line, where a sixth day is paid time and a half (rates.ts SIXTH_DAY_PREMIUM): both
   // careers plan $8m, and what isn't spent comes home at the year's end.
   { id: 'six-day-weeks', seeds: 60, features: [field('PlanViews.tsx', 'Six-Day Weeks')], decision: 'Shoot six days a week, on an $8m budget', reads: ['src/engine/production/schedule.ts#isWorkingDay', 'src/engine/production/schedule.ts#isSixthDay', 'src/engine/production/rates.ts#dayPremium'],

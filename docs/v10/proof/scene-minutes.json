@@ -432,7 +432,7 @@
  ],
  "verdict": "no downstream effect",
  "hashes": {
-  "src/engine/production/schedule.ts": "78a3deb097886f25",
+  "src/engine/production/schedule.ts": "65a8a82a6ef81225",
   "tests/proof/career.ts": "2d4877367212a0ea"
  }
 }

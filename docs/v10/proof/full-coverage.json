@@ -67,10 +67,10 @@
   "reception": 60.513,
   "overall": 60.263,
   "gross": 59270,
-  "revenue": 156778.375,
+  "revenue": 156810.875,
   "distributed": 1.825,
-  "money": 24766892.166,
-  "moneyChange": -233107.834,
+  "money": 24766924.666,
+  "moneyChange": -233075.334,
   "jobsTaken": 0.95,
   "jobsOffered": 0.95,
   "jobPay": 4423.1,
@@ -150,9 +150,9 @@
    "n": 40
   },
   "revenue": {
-   "mean": 28312.375,
-   "lo": -6772.696,
-   "hi": 63397.446,
+   "mean": 28344.875,
+   "lo": -6742.792,
+   "hi": 63432.542,
    "changed": 40,
    "n": 40
   },
@@ -164,16 +164,16 @@
    "n": 40
   },
   "money": {
-   "mean": -4428.973,
-   "lo": -38870.125,
-   "hi": 30012.179,
+   "mean": -4396.473,
+   "lo": -38841.701,
+   "hi": 30048.755,
    "changed": 40,
    "n": 40
   },
   "moneyChange": {
-   "mean": -4428.973,
-   "lo": -38870.125,
-   "hi": 30012.179,
+   "mean": -4396.473,
+   "lo": -38841.701,
+   "hi": 30048.755,
    "changed": 40,
    "n": 40
   },
@@ -492,7 +492,7 @@
  "verdict": "proven",
  "hashes": {
   "src/engine/takes-actions.ts": "dd1d3187f0e9727c",
-  "src/engine/production/shoot.ts": "c192fe85cf2645f9",
+  "src/engine/production/shoot.ts": "891fa9e2b13b6e49",
   "tests/proof/career.ts": "2d4877367212a0ea"
  }
 }

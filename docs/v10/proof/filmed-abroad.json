@@ -457,8 +457,8 @@
  "verdict": "proven",
  "hashes": {
   "src/engine/destinations.ts": "757a75ed90be18c3",
-  "src/engine/production/shoot.ts": "c192fe85cf2645f9",
-  "src/engine/production/schedule.ts": "78a3deb097886f25",
+  "src/engine/production/shoot.ts": "891fa9e2b13b6e49",
+  "src/engine/production/schedule.ts": "65a8a82a6ef81225",
   "tests/proof/career.ts": "2d4877367212a0ea"
  }
 }
