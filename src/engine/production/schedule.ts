@@ -423,3 +423,16 @@ export function ensureWorkEvent(state: GameState, p: Project): void {
   schedule(state, localToInstant(zone, year, month, day, 18).instant, 'work-day', { projectId: p.id, date: key }, { priority: 60 });
 }
 
+/**
+ * The scenes an approved change has moved away from the built schedule (the owner's v6 package, 05 voice: "Your changes
+ * affect six scenes. Review the revised schedule before confirming."; from November 14, 2026): live scenes no shoot day
+ * holds, and scenes a day still holds that the approved draft no longer has. Empty before a schedule is built.
+ */
+export function scheduleDrift(p: Project): string[] {
+  if (!p.schedule.startDate) return [];
+  const live = new Set(approvedScenes(p).filter((s) => sceneTechnique(p, s) === 'live' && s.kind !== 'archival').map((s) => s.id));
+  const days = p.schedule.days.filter((d) => d.status !== 'lost' && d.status !== 'moved' && d.status !== 'cancelled');
+  const held = new Set(days.flatMap((d) => d.sceneIds));
+  return [...new Set([...[...live].filter((id) => !held.has(id)), ...days.filter((d) => d.status === 'scheduled').flatMap((d) => d.sceneIds).filter((id) => !live.has(id))])];
+}
+

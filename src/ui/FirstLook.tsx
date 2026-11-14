@@ -33,7 +33,7 @@ export function FirstLookCard() {
           <p><strong>{offer.name}</strong> offers you a first-look deal{offer.renews ? ', renewing the last one' : ''}. {offer.why}</p>
           <ul className="list" aria-label="Its Terms">{firstLookWords(offer).map((w) => <li key={w} className="list-item">{w}</li>)}</ul>
           {offer.counter && <p className="dim small">{offer.counter.outcome === 'agreed' ? `It agreed to ${money(offer.terms.overhead)} a month.` : offer.counter.outcome === 'held' ? `It kept its offer of ${money(offer.terms.overhead)} a month.` : `You asked for more overhead. It answers by ${day(offer.counter.answerAt)}.`}</p>}
-          <p className="dim small">Open until {day(offer.answerBy)}. Nothing binds you until you accept. Amounts are game calibration by the company's recorded scale, not its real terms.</p>
+          <p className="dim small">The offer expires on {day(offer.answerBy)}. Nothing binds you until you accept. Amounts are game calibration by the company's recorded scale, not its real terms.</p>
           <div className="row gap-2 wrap">
             <button className="btn primary" disabled={!!fl || (!!offer.counter && !offer.counter.outcome)} onClick={() => setErr(store.act((s) => acceptFirstLook(s, offer.id)))}>Accept The First-Look Deal</button>
             <button className="btn" disabled={!!offer.counter} onClick={() => setErr(store.act((s) => askMoreOverhead(s, offer.id)))}>Ask For {money(Math.round(offer.terms.overhead * 1.5))} A Month</button>

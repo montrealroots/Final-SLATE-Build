@@ -55,7 +55,7 @@ export function AdaptWork() {
     return (
       <>
         {crumbs}
-        <PageHead eyebrow="New Project" title={open ? open.title : 'Adapt A Work'} lede={open ? 'What is recorded about it. Adapt it, or go back to the works.' : 'Choose the novel, story, play, comic, game or online fiction to make it from. Nothing is made until you create the project.'} />
+        <PageHead eyebrow="New Project" title={open ? open.title : 'Adapt A Work'} lede={open ? 'What is recorded about it. Adapt it, or go back to the works.' : 'Choose a source: the novel, story, play, comic, game or online fiction to make it from. Nothing is made until you create the project.'} />
         {open ? (
           <section className="card" aria-label={`About ${open.title}`}>
             <WorkFacts w={open} />
@@ -120,7 +120,7 @@ export function AdaptWork() {
         <div className="row gap-2 wrap">
           <button className="btn" onClick={() => setWork(null)}>Back To The Work</button>
           <button className="btn" onClick={() => store.back()}>Cancel</button>
-          <button className="btn btn-primary" onClick={() => { void loadPlots().catch(() => {}).finally(() => setShaped(true)); }}>Preview The Brief</button>
+          <button className="btn btn-primary" onClick={() => { void loadPlots().catch(() => {}).finally(() => setShaped(true)); }}>Review Your Adaptation</button>
         </div>
       </>
     );

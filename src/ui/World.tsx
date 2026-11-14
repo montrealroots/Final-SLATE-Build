@@ -194,7 +194,7 @@ function Proposals() {
           return (
             <div key={o.id} className="col gap-2">
               <p className="small" style={{ margin: 0 }}>{o.reason}</p>
-              <p className="xs dim" style={{ margin: 0 }}>{money(o.amount)} for a new {FORMAT_LABELS[o.format].toLowerCase()}, delivered within {Math.round(OPPORTUNITY_DELIVER_DAYS / 30)} months of accepting. They take most of the income and approve the picture. Open until {longLocal(o.expiresAt, zone).date}.</p>
+              <p className="xs dim" style={{ margin: 0 }}>{money(o.amount)} for a new {FORMAT_LABELS[o.format].toLowerCase()}, delivered within {Math.round(OPPORTUNITY_DELIVER_DAYS / 30)} months of accepting. They take most of the income and approve the picture. The offer expires on {longLocal(o.expiresAt, zone).date}.</p>
               <TextField label="Title For The New Project" value={title} maxLength={80} onChange={(v) => setTitles({ ...titles, [o.id]: v })} />
               <div className="row gap-2">
                 <button className="btn btn-sm btn-primary" disabled={!title.trim()} onClick={() => {

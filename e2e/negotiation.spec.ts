@@ -27,7 +27,7 @@ test('an investor offer: when it lapses, asking for better terms, and their answ
     await section(page, 'Budget');
   }
   await expect(investor.getByText('Offer Made', { exact: true })).toBeVisible();
-  await expect(investor).toContainText(/Open until .+\. After that it lapses, and they aren't asked again for this project\./);
+  await expect(investor).toContainText(/The offer expires on .+\. After that it lapses, and they aren't asked again for this project\./);
   await investor.getByLabel('Ask The Private Investor For').selectOption({ label: 'Less To Repay First' });
   await expect(investor).toContainText(/They are repaid \$[\d,]+, what they put in, instead of \$[\d,]+\./);
   await investor.getByRole('button', { name: 'Ask For Better Terms' }).click();

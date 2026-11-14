@@ -511,7 +511,7 @@ export async function adaptWork(page: Page, o: { query: string; work: RegExp; ti
   if (o.approach) await page.getByRole('radio', { name: new RegExp(`^${o.approach}`) }).check();
   if (o.budget) await page.getByRole('radio', { name: new RegExp(`^${o.budget}:`) }).check();
   await o.onStep?.('shape');
-  await page.getByRole('button', { name: 'Preview The Brief' }).click();
+  await page.getByRole('button', { name: 'Review Your Adaptation' }).click();
   await page.getByRole('list', { name: 'Brief Fields' }).waitFor();
   for (const [from, to] of Object.entries(o.names ?? {})) await page.getByLabel(`Name For ${from}`).fill(to);
   await o.onStep?.('preview');

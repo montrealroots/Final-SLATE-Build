@@ -38,9 +38,10 @@ test('a screening invitation: accept, travel to the venue, the 30-minute reminde
   await page.getByRole('button', { name: /Venice/ }).first().click();
   const panel = page.getByRole('region', { name: 'Screenings' });
   await expect(panel.getByText(/^Reply by/)).toBeVisible();
+  await expect(panel).toContainText(/The screening starts in \d+ days?/); // counted from now (the v6 package's voice, November 14, 2026)
   await panel.getByRole('button', { name: 'Accept Invitation' }).click();
   await expect(panel.getByText(/You're attending\. The trip takes about \d+ hours\./)).toBeVisible();
-  await panel.getByRole('button', { name: 'Travel to the Venue' }).click();
+  await panel.getByRole('button', { name: 'Travel To The Screening' }).click();
   // Travel, then let time run until the screening has happened.
   for (let i = 0; i < 40 && !(await panel.getByText('You attended.').isVisible()); i++) await advance(page, 'next-event');
   await expect(panel.getByText('You attended.')).toBeVisible();

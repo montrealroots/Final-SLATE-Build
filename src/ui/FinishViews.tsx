@@ -35,6 +35,7 @@ import { ReadRules, RecordedResults } from './RecordedResults';
 import { editScenes } from '../engine/finish';
 import { animaticRevisionImpact, reviseAnimatic, reviseEffects, rerecordLines } from '../engine/revisions';
 import { forecastFinish } from '../engine/production/forecast';
+import { formatDuration } from '../engine/time';
 import { deals } from '../engine/finance';
 import { countryName } from '../world/gazetteer/gazetteer';
 import { EXCLUSIVE_DAYS, dubbingCost, offerConflicts, setReleaseVersion, versionLanguages, versionRefusal } from '../engine/finish';
@@ -618,6 +619,13 @@ export function ReleaseTab({ p }: { p: Project }) {
       {p.offers.some((o) => o.status === 'accepted') && (
         <section className="card" aria-labelledby="earnings-h">
           <h2 id="earnings-h">Earnings</h2>
+          {(() => {
+            // From November 14, 2026 (the owner's v6 package, 05 voice): said only when it is so, with the amounts from the deals.
+            const earned = p.offers.filter((o) => o.status === 'accepted').reduce((a, o) => a + o.minimumGuarantee + (o.reported?.overagePaid ?? 0), 0);
+            const owing = deals(p).filter((d) => (d.status === 'accepted' || d.status === 'breached') && d.terms.recoup > d.repaid);
+            const left = owing.reduce((a, d) => a + d.terms.recoup - d.repaid, 0);
+            return earned > 0 && left > 0 ? <p>Your {isEpisodic(p.axes.format) ? 'series' : 'film'} earned revenue, but the proceeds are still repaying its backers: {money(left)} is still owed to {owing.map((d) => d.backer).join(' and ')} before the rest reaches you.</p> : null;
+          })()}
           <p className="dim">What each distributor reports is not what you receive. Their fee comes off what they report first, and what is left repays the guarantee they already paid you. Only what they report beyond that reaches you, as an overage. They report monthly for {REPORT_MONTHS} months after release.</p>
           <ul className="list">{p.offers.filter((o) => o.status === 'accepted').map((o) => (
             <li key={o.id}>
@@ -629,7 +637,7 @@ export function ReleaseTab({ p }: { p: Project }) {
                 <dt>Received By You</dt><dd>{money(o.minimumGuarantee + (o.reported?.overagePaid ?? 0))}</dd>
               </dl>
               {o.weeks?.length ? <WeeksInCinemas o={o} /> : null}
-              {o.audience?.length ? <WeeklyAudience o={o} /> : null}
+              {o.audience?.length ? <WeeklyAudience o={o} /> : routeMetrics(o.route).length ? <p className="dim">No audience figures are available for this reporting period. They come the day each week on {o.distributor} ends.</p> : null}
             </li>
           ))}</ul>
         </section>
@@ -927,6 +935,7 @@ function CategoryBrowser({ ed, onPrepare }: { ed: Edition; onPrepare: (projectId
   return (
     <section className="card card-wide" aria-labelledby="categories-h">
       <h2 id="categories-h">{word}</h2>
+      {(ed.status === 'announced' || ed.status === 'complete') && <p>Simulated results from {formatDateKey(dateKey(ed.announce, getPlace(inst.placeId).zone))}: the game decides them among the work it follows. They are not the recorded results, which are shown apart where there are any.</p>}
       <p className="dim">{all.length} {all.length === 1 ? (inst.kind === 'festival' ? 'section or award' : 'category') : (inst.kind === 'festival' ? 'sections and awards' : 'categories')} this edition. {inst.kind === 'festival' ? 'Sections select work; selection is not a win. Prizes are decided among the films selected for their sections, and honorary awards are chosen by the organizer: neither takes an entry.' : 'Honorary awards are chosen by the organizer and take no entries.'}</p>
       <div className="grid grid-2 form">
         <SelectField label="Project" value={projectId} options={[{ value: '', label: 'Any Project' }, ...delivered.map((x) => ({ value: x.id, label: x.title }))]} onChange={setProjectId} hint={delivered.length ? 'Shows what keeps the project out of each category.' : 'Deliver a project to check it against these.'} />
@@ -1219,7 +1228,7 @@ function ScreeningsPanel({ editionId }: { editionId: string }) {
           const travelThere = () => setErr(store.act((s) => { rsvpScreening(s, ed.id, sc.projectId, sc.at, true); travelTo(s, inst.placeId); }));
           return (
             <li key={sc.at} aria-label={`Screening Of ${p?.title ?? 'Your Film'} On ${when.date}`}>
-              <div><strong>{p?.title ?? 'Your film'}</strong>: {when.weekday}, {when.date}, {when.time} at the {ed.label}, {venue.name}.</div>
+              <div><strong>{p?.title ?? 'Your film'}</strong>: {when.weekday}, {when.date}, {when.time} at the {ed.label}, {venue.name}.{!sc.done && sc.at > g.now ? ` The screening starts in ${formatDuration(sc.at - g.now)}.` : ''}</div>
               <div className="dim">
                 {sc.done ? (sc.attended ? 'You attended.' : 'It screened without you.')
                   : sc.rsvp === 'accepted' ? (travel.here ? "You're attending, and you're here." : `You're attending. The trip takes about ${Math.round(travel.hours)} hours.`)
@@ -1233,7 +1242,7 @@ function ScreeningsPanel({ editionId }: { editionId: string }) {
                 <div className="row gap-2 wrap">
                   {open && travel.here && <button className="btn btn-primary btn-sm" onClick={accept}>Attend Screening</button>}
                   {open && !travel.here && travel.arrivesInTime && <button className="btn btn-primary btn-sm" onClick={accept}>Accept Invitation</button>}
-                  {sc.rsvp === 'accepted' && !travel.here && travel.arrivesInTime && !g.travel && <button className="btn btn-sm" onClick={travelThere}>Travel to the Venue</button>}
+                  {sc.rsvp === 'accepted' && !travel.here && travel.arrivesInTime && !g.travel && <button className="btn btn-sm" onClick={travelThere}>Travel To The Screening</button>}
                   {conflicts.length > 0 && p && <button className="btn btn-sm" onClick={() => store.go({ view: 'project', projectId: p.id, tab: 'schedule' })}>View Schedule</button>}
                   {(open || sc.rsvp === 'accepted') && <button className="btn btn-sm" onClick={decline}>Decline Invitation</button>}
                 </div>

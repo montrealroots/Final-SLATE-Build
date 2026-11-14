@@ -660,7 +660,7 @@ test('festival under official rules: submit, selection, screening attended, resu
   await liveEntry(page).getByRole('button', { name: 'Sundance Film Festival 2027' }).click();
   const panel = page.getByRole('region', { name: 'Screenings' });
   await panel.getByRole('button', { name: 'Accept Invitation' }).first().click();
-  await panel.getByRole('button', { name: 'Travel to the Venue' }).first().click();
+  await panel.getByRole('button', { name: 'Travel To The Screening' }).first().click();
   for (let i = 0; i < 60 && !(await panel.getByText('You attended.').first().isVisible()); i++) await advance(page, 'next-event');
   await expect(panel.getByText('You attended.').first()).toBeVisible();
   mark('attended');
