@@ -11,8 +11,9 @@ import { PROBES as PAPERS } from './probes/papers';
 import { PROBES as SCRIPT } from './probes/script';
 import { PROBES as PROJECT } from './probes/project';
 import { PROBES as CAREER_WIDE } from './probes/career-wide';
+import { PROBES as WEATHER } from './probes/weather';
 
-const ALL = [...CORE, ...PRODUCTION, ...RELEASE, ...AWARDS, ...BANK, ...PAPERS, ...SCRIPT, ...PROJECT, ...CAREER_WIDE];
+const ALL = [...CORE, ...PRODUCTION, ...RELEASE, ...AWARDS, ...BANK, ...PAPERS, ...SCRIPT, ...PROJECT, ...CAREER_WIDE, ...WEATHER];
 const pick = process.env.PROBES?.split(',');
 const seeds = process.env.SEEDS ? Number(process.env.SEEDS) : undefined;
 
