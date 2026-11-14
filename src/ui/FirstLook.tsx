@@ -9,11 +9,13 @@ import {
   scopeOf,
 } from '../engine/first-look';
 import { deals, submitSeries } from '../engine/finance';
+import { formatDateKey } from '../engine/time';
 import type { Project } from '../engine/types';
 import { NumberField } from './components';
 import { store, useGame } from './store';
 
-const day = (t: number) => new Date(t).toISOString().slice(0, 10);
+// Written out, as the rest of the game writes dates (until November 14, 2026 these were ISO keys, 2026-05-11).
+const day = (t: number) => formatDateKey(new Date(t).toISOString().slice(0, 10));
 const STAGE: Record<string, string> = { 'not-submitted': 'Not submitted yet', considering: 'Considering', offered: 'Offered: answer it on the project\'s Budget page', taken: 'Taken', turnaround: 'Passed: free to take elsewhere' };
 
 export function FirstLookCard() {

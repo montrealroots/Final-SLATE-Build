@@ -122,7 +122,7 @@ export function estimateAgainstSpending(p: Project): { rows: EstimateComparison[
   const shot = days.filter((d) => d.status !== 'lost' && d.status !== 'moved').length;
   if (shot !== snap.shootDays) reasons.push(`${shot} shoot ${shot === 1 ? 'day' : 'days'} planned or shot against ${snap.shootDays} estimated.`);
   if (lost) reasons.push(`${lost} shoot ${lost === 1 ? 'day was' : 'days were'} lost and paid again.`);
-  const extra = p.tasks.filter((t) => ['post:vfx-rev', 'post:revoice', 'sm:repair', 'post:adr'].includes(t.kind));
+  const extra = p.tasks.filter((t) => ['post:vfx-rev', 'post:revoice', 'sm:repair', 'anim:rig-fix', 'post:adr'].includes(t.kind));
   if (extra.length) reasons.push(`Work the estimate didn't include: ${extra.map((t) => t.label).slice(0, 4).join(', ')}${extra.length > 4 ? ', and more' : ''}.`);
   const missed = Object.values(p.mocap ?? {}).flatMap((r) => r.sessions ?? []).filter((x) => x.status === 'missed').length;
   if (missed) reasons.push(`${missed} capture ${missed === 1 ? 'session was' : 'sessions were'} missed and rebooked.`);

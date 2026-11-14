@@ -138,7 +138,7 @@ describe('a running deal', () => {
     expect(() => pitchToStudio(s, p, FAMILY.c)).toThrow('submit it to them first');
     const sub = pitchToStudio(s, p, HORROR.c);
     expect(Math.round((sub.decideAt! - sub.askedAt) / DAY)).toBe(60);
-    expect(studioOption(s, p, FAMILY.c)!.needs).toMatch(/^Night Shift Pictures \(Fixture\) is considering it under your first-look deal, until \d{4}-\d\d-\d\d\.$/);
+    expect(studioOption(s, p, FAMILY.c)!.needs).toMatch(/^Night Shift Pictures \(Fixture\) is considering it under your first-look deal, until [A-Z][a-z]+ \d{1,2}, \d{4}\.$/);
     wait(s, 61);
     expect(submissionStanding(s, p)!.stage).toBe('turnaround'); // a family film isn't what it makes
     expect(studioOption(s, p, FAMILY.c)!.needs).toBe('');
@@ -217,14 +217,46 @@ describe('a running deal', () => {
   });
 });
 
+describe('studios too thin to read, tied on fit (November 14, 2026)', () => {
+  // Labelled fixtures: two studios under two films a year, so the same fit for anything; the one alphabetically first
+  // has none of the work's genre, the other has some.
+  const AARDVARK: StudioProfile = { c: 'company:fixture-aardvark', name: 'Aardvark Films (Fixture)', n: 1.8, g: [['Comedy', 3]], m: EVEN, ann: {} };
+  const ZEPHYR: StudioProfile = { c: 'company:fixture-zephyr', name: 'Zephyr Pictures (Fixture)', n: 1.8, g: [['Horror', 2], ['Comedy', 1]], m: EVEN, ann: {} };
+  it('goes to the one whose few credits are nearer the work, not the first name', () => {
+    const s = world('fl-thin', [AARDVARK, ZEPHYR]);
+    record(s, 70); // a horror film
+    expect(firstLookCandidate(s)!.company).toBe(ZEPHYR.c);
+  });
+});
+
 describe('a television first-look deal (the v6 package, J13; the v7 package, DEAL02: TV scope)', () => {
   /** A save whose delivered work is a well-received horror series (labelled fixture: a delivered film marked a series). */
-  function tvWorld(tag: string): GameState {
-    const s = world(tag, [HORROR, FAMILY]);
-    record(s, 66).axes.format = 'series';
+  // Labelled fixture: the horror studio's television record, as the series the world follows would give it (studios.ts
+  // withSeriesRecord). TMDB's TV genres have no Horror, so the series here are crime, which they do have.
+  const HORROR_TV: StudioProfile = { ...HORROR, tv: { n: 12, g: [['Crime', 6], ['Drama', 6], ['Mystery', 3]] } };
+  function tvWorld(tag: string, studios = [HORROR_TV, FAMILY]): GameState {
+    const s = world(tag, studios);
+    const p = record(s, 66);
+    p.axes.format = 'series';
+    p.axes.genres = [{ id: 'crime', emphasis: 'primary' }];
     return s;
   }
-  const series = (s: GameState, title: string, genres = ['horror']) => { const p = feature(s, { title, genres }); p.axes.format = 'series'; return p; }; // labelled: a series to submit
+  const series = (s: GameState, title: string, genres = ['crime']) => { const p = feature(s, { title, genres }); p.axes.format = 'series'; return p; }; // labelled: a series to submit
+
+  it('comes only from a company with series on its record, judged on them (November 14, 2026)', () => {
+    // A film studio with no series doesn't offer a television deal, however well its films fit; until then the horror
+    // studio below, read on its films, could have.
+    expect(firstLookCandidate(tvWorld('fl-tv-film-only', [HORROR, FAMILY]), 'television')).toBeNull();
+    const c = firstLookCandidate(tvWorld('fl-tv-record'), 'television')!;
+    expect([c.company, c.strategy.pace]).toEqual([HORROR.c, 12]); // its pace here is its series, not its 5 films a year
+    expect(c.why).toBe(`Your series sits with what ${HORROR.name} makes, most of all crime. How well your work was received counted.`);
+    expect(firstLookTerms(c.strategy, 'television')).toMatchObject({ considerDays: 60, overhead: 3_500 }); // 12 series: mid-sized
+    // Its read of a series says series, from its series' genres, and claims no slate it doesn't model.
+    const s = tvWorld('fl-tv-read');
+    const read = studioOption(s, series(s, 'Night Watch'), HORROR.c, 'television')!.read;
+    expect(read.for).toContain('It makes this kind of series: Crime is 40% of the genre credits on its series.');
+    expect(read.for.join(' ')).not.toMatch(/slate|film/);
+  });
 
   it('comes after delivered series, covers series and not films, and says so in its terms', () => {
     const s = tvWorld('fl-tv-offer');
@@ -248,7 +280,7 @@ describe('a television first-look deal (the v6 package, J13; the v7 package, DEA
       expect([d.kind, d.backer, d.firstLook, Math.round((d.decideAt! - d.askedAt) / DAY)]).toEqual(['commissioner', HORROR.name, activeFirstLook(s)!.id, activeFirstLook(s)!.terms.considerDays]);
       expect(commissioner().needs).toBe('Already approached for this project.'); // the submission is in front of it
       wait(s, activeFirstLook(s)!.terms.considerDays + 1);
-      const read = studioOption(s, p, HORROR.c)!.read;
+      const read = studioOption(s, p, HORROR.c, 'television')!.read; // read on its series, as the decision reads it
       return { status: d.status, verdict: read.verdict, hold: commissioner().needs };
     });
     // The same facts give the same answer: an offer to commission it, or a pass that frees it for a commissioner.

@@ -14,6 +14,7 @@ import { stream } from '../rng';
 import { decideCompetition } from '../unscripted';
 import { addLog, registerHandler, schedule } from '../state';
 import { addDaysToKey, formatDateKey, localToInstant, parseYmd } from '../time';
+import { forecastFinish } from './forecast';
 import { HOLIDAY_PREMIUM, MATERIAL_COST, RENDER_HOURS_PER_FRAME, RENDER_NODE_DAY_COST, VOICE_SESSION_STUDIO } from './rates';
 import { SHOOT_CREW, markCaptured } from './shoot';
 import { designGate } from '../designs';
@@ -318,6 +319,7 @@ export function runWorkDay(state: GameState, p: Project, date: string): void {
     addLog(state, msg, 'project', { projectId: p.id, route: { view: 'project', projectId: p.id, tab: 'production' } });
   }
   maybePuppetDamage(state, p, date);
+  maybeRigFault(state, p, date);
   if (p.axes.format === 'unscripted-series') decideCompetition(state, p, (e) => milestoneDone(p, `capture:${e}`));
 }
 
@@ -409,6 +411,42 @@ export function onTaskDone(state: GameState, p: Project, task: Task, date: strin
     if (r < 0.5) addLog(state, `Research on ${p.title} turned up a new lead. You can add a scene for it in the script.`, 'project', { projectId: p.id, route: { view: 'project', projectId: p.id, tab: 'script' } });
   }
   void date;
+}
+
+/** Simulation assumption: about 3% of the days animation is under way on rigged characters, a rig shows a fault. */
+export const RIG_FAULT_CHANCE = 0.03;
+
+/**
+ * A rig fault in 3D animation (the owner's v6 package, J06; from November 14, 2026): a character's rig shows a fault
+ * while their shots are being animated. A rigger fixes it, two days' work, and the shots with that character that
+ * aren't finished wait for the fix; the rest go on. The log says how far the finish moved (forecast.ts).
+ */
+export function maybeRigFault(state: GameState, p: Project, date: string): void {
+  const active = p.tasks.filter((x) => x.kind === 'anim:animation' && x.status === 'active');
+  if (!active.length) return;
+  if (stream(state.seed, 'rig-fault', p.id, date)() > RIG_FAULT_CHANCE) return;
+  const scene = approvedScenes(p).find((s) => s.id === active[0].sceneIds[0]);
+  const cid = scene?.participants.find((c) => p.tasks.some((x) => x.id === `anim:rig:${c}` && x.status === 'done'));
+  if (!cid) return;
+  rigFault(state, p, cid, date);
+}
+
+/** A fault in `cid`'s rig, found on `date`: the fix, the shots that wait for it, and the moved finish, said. */
+export function rigFault(state: GameState, p: Project, cid: string, date: string): Task {
+  const before = forecastFinish(p, date);
+  const fix = t('anim:rig-fix', `${cid}:${date}`, `Fix Rig: ${approvedCharacters(p).find((c) => c.id === cid)?.name ?? 'A character'}`, 'Animation', 'rigger', 2, 'days', [], { assetRef: cid });
+  if (p.tasks.some((x) => x.id === fix.id)) return p.tasks.find((x) => x.id === fix.id)!;
+  p.tasks.push(fix);
+  for (const task of p.tasks.filter((x) => x.kind === 'anim:animation' && x.status !== 'done')) {
+    if (approvedScenes(p).find((s) => s.id === task.sceneIds[0])?.participants.includes(cid)) task.dependsOn.push(fix.id);
+  }
+  const after = forecastFinish(p, date);
+  const name = fix.label.replace(/^Fix Rig: /, '');
+  const moved = before && after && after.finish !== before.finish ? ` The work now finishes around ${formatDateKey(after.finish)}, not ${formatDateKey(before.finish)}.` : '';
+  addLog(state, `${name}'s rig showed a fault in animation. A rigger fixes it; shots with ${name} wait until then.${moved}`, 'warning', {
+    projectId: p.id, route: { view: 'project', projectId: p.id, tab: 'production' },
+  });
+  return fix;
 }
 
 export function maybePuppetDamage(state: GameState, p: Project, date: string): void {

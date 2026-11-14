@@ -35,7 +35,7 @@ async function rewrite(page: Page, change: (state: any) => void): Promise<void> 
   await page.getByRole('button', { name: 'Continue', exact: true }).click();
 }
 
-async function horror(page: Page, title: string, format: string, opts: { episodes?: string; approve: boolean }): Promise<void> {
+async function horror(page: Page, title: string, format: string, opts: { episodes?: string; approve: boolean; genre?: string }): Promise<void> {
   await nav(page, 'Projects');
   await page.getByRole('button', { name: 'New Project' }).first().click();
   await page.getByRole('button', { name: 'Write An Original' }).click();
@@ -44,8 +44,9 @@ async function horror(page: Page, title: string, format: string, opts: { episode
   if (opts.episodes) await page.getByLabel('Episodes').fill(opts.episodes);
   await page.getByLabel(/Target (Runtime In Minutes|Minutes Per Episode)/).fill('10');
   await page.getByRole('radio', { name: /^Low Budget:/ }).check();
-  await page.getByRole('searchbox', { name: 'Search Genres' }).fill('horror');
-  await page.getByRole('button', { name: 'Add Horror', exact: true }).click();
+  const genre = opts.genre ?? 'Horror';
+  await page.getByRole('searchbox', { name: 'Search Genres' }).fill(genre.toLowerCase());
+  await page.getByRole('button', { name: `Add ${genre}`, exact: true }).click();
   await page.getByRole('button', { name: 'Create Project' }).click();
   await expect(page.getByRole('heading', { name: title, level: 1 })).toBeVisible();
   if (!opts.approve) return;
@@ -75,18 +76,21 @@ test('J13: a first-look deal for television covers series, not films; a covered 
   await quickLife(page, 'us-los-angeles', '2026-11-12');
   await expect.poll(async () => (await readSavedState(page)).industry?.studios?.length, { timeout: 20_000 }).toBe(2);
   await pinSeed(page, 3);
-  await horror(page, 'Night Watch', 'Limited Series', { episodes: '2', approve: true });
+  // The series are crime: TMDB's television genres have no Horror, so a company's series record can't match one.
+  await horror(page, 'Night Watch', 'Limited Series', { episodes: '2', approve: true, genre: 'Crime' });
   await horror(page, 'Last Tram', 'Short Film', { approve: false });
-  await horror(page, 'Harbour Lights', 'Limited Series', { episodes: '2', approve: false });
+  await horror(page, 'Harbour Lights', 'Limited Series', { episodes: '2', approve: false, genre: 'Crime' });
 
   // Before any deal, nothing on the series' page speaks of one.
   await open(page, 'Night Watch');
   await expect(card(page, `First Look: ${NIGHT}`)).toHaveCount(0);
   await expect(commissioner(page)).not.toContainText('first-look');
 
-  // Labelled fixture: the series the offer follows, delivered two months ago and well received; and the offer, as
-  // offerFirstLook makes it for a studio of this scale after one.
+  // Labelled fixture: the series the offer follows, delivered two months ago and well received; the company's television
+  // record, as the series the world follows would give it (studios.ts withSeriesRecord; the fixture catalog's series
+  // credit no fixture studio); and the offer, as offerFirstLook makes it for a company of this scale after one.
   await rewrite(page, (state) => {
+    state.industry.studios.find((x: { c: string }) => x.c === 'company:fixture-horror').tv = { n: 12, g: [['Crime', 6], ['Drama', 6], ['Mystery', 3]] };
     const before = state.projects.find((p: { title: string }) => p.title === 'Harbour Lights');
     before.delivered = { at: state.now - 60 * DAY, runtimeMin: 20 };
     before.quality = { ...before.quality, reception: 72 };
@@ -133,15 +137,15 @@ test('J13: a first-look deal for television covers series, not films; a covered 
   await open(page, 'Night Watch');
   await expect(commissioner(page)).toContainText('Already approached for this project.');
 
-  // Sixty days on, it answers, by its read of the series and nothing drawn. Pinned on this world (seed 3, from November 13,
-  // 2026): its 2028 slate has room, and horror is most of what it makes, so it offers to commission it. Two worlds with
-  // the same facts give the same answer, and a pass frees the series for a commissioner: tests/first-look.test.ts ("its
-  // answer is its read, not chance"). On an unpinned world, desktop and phone were seen to get different answers, by
-  // their slates.
+  // Sixty days on, it answers, by its read of the series and nothing drawn: crime is a large part of its series, and the
+  // work it saw was well received, so it offers to commission it. From November 14, 2026 a series is read on the
+  // company's series; until then it was read on its films and its film slate, and on an unpinned world desktop and phone
+  // were seen to get different answers, by their slates. Two worlds with the same facts give the same answer, and a pass
+  // frees the series for a commissioner: tests/first-look.test.ts ("its answer is its read, not chance").
   const nightWatch = async () => (await readSavedState(page)).projects.find((p: { title: string }) => p.title === 'Night Watch');
   for (let i = 0; i < 12 && (await nightWatch()).finance.deals.find((x: { firstLook?: string }) => x.firstLook === 'fl-fixture').status === 'considering'; i++) await advance(page, 'week');
   const answered = (await nightWatch()).finance.deals.find((x: { firstLook?: string }) => x.firstLook === 'fl-fixture');
-  expect([answered.status, answered.reason]).toEqual(['offered', `It commissions the series under your first-look deal. Your first-look deal with it covers this limited series. Its slate for 2028 has room for 5 more. It makes this kind of film: Horror is 56% of its genre credits. Your delivered work was well received.`]);
+  expect([answered.status, answered.reason]).toEqual(['offered', `It commissions the series under your first-look deal. Your first-look deal with it covers this limited series. It makes this kind of series: Crime is 40% of the genre credits on its series. Your delivered work was well received.`]);
   await open(page, 'Night Watch');
   await expect(look).toContainText(`${NIGHT} offered to commission it. Accept or refuse it below.`);
   await expect(commissioner(page)).toContainText('Already approached for this project.'); // its submission is the approach

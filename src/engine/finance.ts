@@ -16,6 +16,7 @@ import { genre } from './genres';
 import { stream } from './rng';
 import { FORMAT_LABELS } from './projects';
 import { ANIMATION_HOUSE, MONTHS, familyKey, pitchRead, reachTerritories, slateRoom, strategyOf, type PitchRead, type StudioStrategy } from './strategy';
+import { asTelevision } from './studios';
 import { bindingFor, commissionerHold, considerDaysFor, firstLookHold, noteSubmission, repayTurnaround, scopeOf } from './first-look';
 import { addLog, newId, registerHandler, schedule } from './state';
 import { DAY, dateKey } from './time';
@@ -443,7 +444,7 @@ function decide(state: GameState, p: Project, deal: FinanceDeal): void {
         // reads a film (strategy.ts pitchRead), with no chance in it. The deal covers series, so a series isn't ruled out
         // for not being a film; what it makes, the script and the record still count, and so does its slate.
         const fl = (state.firstLooks ?? []).find((x) => x.id === deal.firstLook);
-        const read = fl ? studioOption(state, p, fl.company)?.read : undefined;
+        const read = fl ? studioOption(state, p, fl.company, 'television')?.read : undefined;
         if (!fl || !read) { refusal = 'It is no longer one of the companies your story follows.'; break; }
         if (read.verdict === 'offer' || read.verdict === 'option') {
           offer = stillToRaise;
@@ -517,9 +518,11 @@ export function projectFamilies(p: Project): string[] {
  * One followed studio's read of this project today, and why it can't be pitched to if it can't. The read is shown
  * before the pitch is sent: it is the studio's strategy against the project, with nothing hidden and no chance in it.
  */
-export function studioOption(state: GameState, p: Project, company: string): StudioOption | null {
+export function studioOption(state: GameState, p: Project, company: string, scope: 'film' | 'television' = 'film'): StudioOption | null {
   const ind = state.industry;
-  const profile = ind?.studios?.find((x) => x.c === company);
+  const found = ind?.studios?.find((x) => x.c === company);
+  // Under a television deal it reads a series on its own series, not its films (November 14, 2026).
+  const profile = found && (scope === 'television' ? asTelevision(found) : found);
   if (!ind || !profile) return null;
   const strategy = strategyOf(profile);
   const year = pitchYear(state, p);
@@ -533,8 +536,8 @@ export function studioOption(state: GameState, p: Project, company: string): Stu
     title: p.title, format: p.axes.format, formatLabel: FORMAT_LABELS[p.axes.format], medium: p.axes.medium, families: projectFamilies(p), script: scriptScore(p),
     works: record.works, reception: record.reception, wins: record.wins,
     deliveredForThem: theirs.filter(({ x, d }) => d.status === 'accepted' && x.delivered).length, brokenWithThem: theirs.filter(({ d }) => d.status === 'breached').length,
-    year, room: slateRoom(state.seed, ind.horizon, profile, year, held),
-    ...(better && (animated ? better.animation >= 0.15 : better.animation < ANIMATION_HOUSE) ? { betterFit: better.name } : {}),
+    year, ...(scope === 'television' ? { television: true } : { room: slateRoom(state.seed, ind.horizon, profile, year, held) }),
+    ...(scope === 'film' && better && (animated ? better.animation >= 0.15 : better.animation < ANIMATION_HOUSE) ? { betterFit: better.name } : {}),
     ...(bindingFor(state, p)?.status === 'active' && bindingFor(state, p)!.company === company ? { firstLook: true } : {}),
   });
   const { stillToRaise } = financeSummary(p);

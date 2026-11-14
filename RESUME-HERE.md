@@ -59,7 +59,7 @@ order of work is at its end. The owner said: "Don't stop until 100% perfect comp
     card only, offers still use craft); 7. television first-look deals (`first-look.ts` scope, `finance.ts`
     submitSeries); 8. camera modes and composer credits as reference records (`engine/reference-records.ts`; nothing in
     play reads them yet).
-  - *The 22 journeys (after PR #89):* `docs/v6/JOURNEYS.md` maps J01 to J22 to the tests that run them, checked by
+  - *The 22 journeys (merged with PR #89):* `docs/v6/JOURNEYS.md` maps J01 to J22 to the tests that run them, checked by
     `tests/v6-journeys.test.ts`: (then) 5 Covered, 17 Partly Covered, each saying which steps don't run. New: J13 through the
     screens (`e2e/v6-first-look-tv.spec.ts`, seed 3, desktop, phone and iPhone 15 Pro Max), and J22's exploits in
     `tests/standing.test.ts`. On an unpinned world desktop and phone got different answers from the company, by their
@@ -245,7 +245,10 @@ order of work is at its end. The owner said: "Don't stop until 100% perfect comp
 ## State
 
 - **Branch:** `claude/clever-archimedes-x0r26v`, pushed to https://github.com/montrealroots/Final-SLATE-Build. After each merge the branch restarts from `main`.
-- **Latest merge:** montrealroots/Final-SLATE-Build#88 (first-look shorts, article casts, and the v6 first stretch),
+- **Latest merge:** montrealroots/Final-SLATE-Build#89 (v7 steps 1 to 8, and the v6 22 journeys mapped and extended),
+  squash-merged as `3d52d29` on November 14, 2026, 00:05 UTC, with `checks` and all six journeys runs green on its
+  final commit `9c8cdbb`; `main` merged back with `-s ours`, the tree unchanged. Nothing is open on this branch.
+- **Earlier merge:** montrealroots/Final-SLATE-Build#88 (first-look shorts, article casts, and the v6 first stretch),
   squash-merged as `3290e2d` on November 13, 2026, 22:00 UTC, with `checks` and all six journeys runs green on its
   final commit `c063b69`; `main` merged back with `-s ours`, the tree unchanged.
 - **Earlier merge:** montrealroots/Final-SLATE-Build#87 (adapted briefs from the story with roles reviewed by hand; the

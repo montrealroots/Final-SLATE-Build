@@ -2,7 +2,7 @@
 // invented films at its recorded pace, in its recorded genres and months, kept from the save's own snapshot.
 import { afterAll, describe, expect, it } from 'vitest';
 import { ensureIndustry, setIndustryWorld, type IndustryWorld } from '../src/engine/industry';
-import { snapshotStudios, studioFilm, studioFilms, studioYear, type StudioProfile } from '../src/engine/studios';
+import { asTelevision, snapshotStudios, studioFilm, studioFilms, studioYear, withSeriesRecord, type StudioProfile } from '../src/engine/studios';
 import { simulatedEvents } from '../src/catalog/world';
 import { deserialize, serialize } from '../src/engine/save';
 import { startLife } from './helpers';
@@ -54,7 +54,7 @@ describe('a save\'s studios', () => {
     setIndustryWorld(world([PIXARISH]));
     const s = startLife('studios-a');
     ensureIndustry(s);
-    expect(s.industry!.studios).toEqual(snapshotStudios([PIXARISH]));
+    expect(s.industry!.studios).toEqual(snapshotStudios([PIXARISH]).map((p) => ({ ...p, tv: { n: 0, g: [] } }))); // no series in this world credits it
     const before = studioFilms(s, '2027-01-01', '2030-12-31');
     expect(before.length).toBeGreaterThan(4);
     // A newer catalog with a different pace: the save keeps its own.
@@ -84,5 +84,35 @@ describe('a save\'s studios', () => {
     const s = startLife('studios-c');
     expect(ensureIndustry(s)).toBe(false);
     expect(studioFilms(s, '2027-01-01', '2040-12-31')).toEqual([]);
+  });
+});
+
+describe('a studio\'s television record (November 14, 2026)', () => {
+  // Labelled fixture: three followed series, two crediting the studio. Only the fields the record reads are filled.
+  const SERIES = [
+    { ci: [PIXARISH.c], genres: ['Animation', 'Comedy'] },
+    { ci: [PIXARISH.c, 'company:other'], genres: ['Animation', 'Kids'] },
+    { ci: ['company:other'], genres: ['Drama'] },
+  ];
+  const later = { horizon: HORIZON, builtAt: '2027-01-01T00:00:00Z', series: [{ ...SERIES[2], ci: [PIXARISH.c] }] } as unknown as IndustryWorld;
+
+  it('counts the series that credit it and their genres, and is a maker of series only where some do', () => {
+    const [p] = withSeriesRecord([PIXARISH], SERIES);
+    expect(p.tv).toEqual({ n: 2, g: [['Animation', 2], ['Comedy', 1], ['Kids', 1]] });
+    expect(asTelevision(p)).toMatchObject({ n: 2, g: p.tv!.g });
+    expect(asTelevision(withSeriesRecord([PIXARISH], [])[0])).toBeNull();
+    expect(asTelevision(PIXARISH)).toBeNull(); // a save that kept no record offers no television deal
+  });
+
+  it('is added once to a save whose studios were kept before it, and a later catalog doesn\'t change it', () => {
+    const s = startLife('studios-tv');
+    s.industry = { horizon: HORIZON, builtAt: '2026-11-10T00:00:00Z', series: {}, studios: snapshotStudios([PIXARISH]) };
+    setIndustryWorld({ ...world([PIXARISH]), series: SERIES } as unknown as IndustryWorld);
+    expect(ensureIndustry(s)).toBe(true);
+    expect(s.industry.studios![0].tv!.n).toBe(2);
+    setIndustryWorld(later);
+    expect(ensureIndustry(s)).toBe(false);
+    expect(s.industry.studios![0].tv!.n).toBe(2);
+    expect(deserialize(serialize(s)).industry!.studios![0].tv).toEqual(s.industry.studios![0].tv);
   });
 });

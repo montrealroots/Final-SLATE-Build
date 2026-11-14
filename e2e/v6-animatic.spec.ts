@@ -70,6 +70,9 @@ test('J05: a 2D animatic revised before animation costs its own days and little 
   await workUntil(page, (ts) => animation(ts).length > 0 && animation(ts).every((t) => t.status === 'done'));
   const after = await tasks(page);
   const late = await preview(page);
+  // And the finish it moves, said before anything resets (forecast.ts; from November 14, 2026).
+  await expect(page.getByRole('dialog', { name: 'Revise The Animatic?' })).toContainText(/Doing it again costs about \$[\d,]+ at your team's rates\./);
+  await expect(page.getByRole('dialog', { name: 'Revise The Animatic?' })).toContainText(/The work left then finishes around \w+day, \w+ \d+, \d{4}, not \w+day, \w+ \d+, \d{4}\./);
   expect(late.names).toEqual(expect.arrayContaining(['Animatic', ...animation(after).map((t) => t.label)]));
   expect(late.days).toBe(sum(late.names, after));
   expect(late.days).toBeGreaterThan(early.days);

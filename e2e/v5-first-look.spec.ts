@@ -103,7 +103,7 @@ test('a first-look deal: offered after delivered work, read in full, bargained, 
   await expect(pitch.getByRole('listitem', { name: MATINEE })).toContainText(`Your first-look deal gives ${NIGHT} the first chance at Night Bus: submit it to them first.`);
   await expect(page.getByRole('button', { name: `Pitch To ${MATINEE}` })).toBeDisabled();
   await page.getByRole('button', { name: `Pitch To ${NIGHT}` }).click();
-  await expect(look).toContainText(new RegExp(`${NIGHT.replace(/[()]/g, '\\$&')} is considering it until \\d{4}-\\d\\d-\\d\\d\\.`));
+  await expect(look).toContainText(new RegExp(`${NIGHT.replace(/[()]/g, '\\$&')} is considering it until [A-Z][a-z]+ \\d{1,2}, \\d{4}\\.`));
   await expect.poll(async () => (await readSavedState(page)).firstLooks[0].submissions.length, { timeout: 30_000 }).toBe(1);
   const saved = await readSavedState(page);
   const sub = saved.projects[1].finance.deals.find((d: { kind: string }) => d.kind === 'studio');
