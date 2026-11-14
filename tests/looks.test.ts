@@ -228,6 +228,9 @@ describe('the year the story is set in', () => {
     expect(kinds(period.p)).toContain('prep:research');
     expect(task(period.p, 'prep:costume:all')!.units).toBe(task(present.p, 'prep:costume:all')!.units * PERIOD_WORK.period);
     expect(task(present.p, 'prep:costume:all')!.units).toBe(task(base.p, 'prep:costume:all')!.units);
+    // Sets and props for another time too (from November 14, 2026).
+    expect(task(period.p, 'prep:design:all')!.units).toBe(task(present.p, 'prep:design:all')!.units * PERIOD_WORK.period);
+    expect(task(period.p, 'prep:design:all')!.dependsOn).toContain('prep:research:period');
     // Costumes and design wait for the research; nothing after the shoot is touched.
     expect(task(period.p, 'prep:costume:all')!.dependsOn).toContain('prep:research:period');
     for (const id of ['post:assembly:1', 'post:music:1', 'post:mix:1']) expect(task(period.p, id)!.units).toBe(task(present.p, id)!.units);
