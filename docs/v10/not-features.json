@@ -6,5 +6,8 @@
  "action:song-actions.syncMusicTasks": "Follows a song change with the work it now needs; the song changes are their own rows.",
  "action:song-actions.syncSongTasks": "Follows a song change with the work it now needs; the song changes are their own rows.",
  "action:state.adoptPlace": "Makes a chosen place known to the world; the place field that chose it is the row.",
- "action:time.formatDateKey": "Formats a date inside a change; not a decision."
+ "action:time.formatDateKey": "Formats a date inside a change; not a decision.",
+ "scheduled:birthday": "A notice: it tells the player their age has changed. Age itself is read from the birth date wherever it matters (casting, licences), never from this event; switched off, nothing else changed (docs/v10/proof/off-birthday.json).",
+ "scheduled:edition-deadline-soon": "A notice: it tells the player an entry deadline is near. The deadline that closes entries is its own system (edition-deadline), proven separately.",
+ "scheduled:screening-reminder": "A notice: it tells the player a screening they were invited to is near. Attending is the screening itself and the RSVP, proven separately."
 }

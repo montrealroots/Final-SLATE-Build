@@ -48,6 +48,11 @@ export interface Policy {
   takeHome: boolean;
   releaseRoute: 'theatrical' | 'digital';
   territories: string[];
+  /**
+   * Studios in the world, for a probe that needs them (a first-look deal, a studio pitch): labelled fixtures standing in for
+   * the catalog's studios, which tests don't load (tests/first-look.test.ts does the same).
+   */
+  studios?: import('../../src/engine/studios').StudioProfile[];
   /** Runs every day, after the player's management and before time passes. */
   daily?: (s: GameState, day: number) => void;
   /** Runs once the cast and crew are asked and before the shoot is planned. */
@@ -238,6 +243,7 @@ function takeOffers(s: GameState, answer: Policy['jobAnswer']): number {
 
 export function playCareer(seed: string, policy: Policy = DEFAULT_POLICY): CareerResult {
   const s = startLife(seed, policy.placeId, policy.creation);
+  if (policy.studios) s.industry = { horizon: '2026-11-10', builtAt: '2026-11-10T00:00:00Z', series: {}, studios: policy.studios };
   const start = personalBalance(s);
   const projects: Project[] = [];
   let jobsTaken = 0;
