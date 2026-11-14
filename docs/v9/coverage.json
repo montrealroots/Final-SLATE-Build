@@ -9,8 +9,8 @@
    "the currency's dated rate: SLATE-REBUILD researched it; not re-checked here"
   ],
   "passport application": [
-   "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "inherited-unverified",
+   "SLATE-REBUILD's record: a route with its fee and time"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -40,7 +40,7 @@
   ],
   "passport application": [
    "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "no route with both its fee and its time recorded"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -69,8 +69,8 @@
    "the currency's dated rate: SLATE-REBUILD researched it; not re-checked here"
   ],
   "passport application": [
-   "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "inherited-unverified",
+   "SLATE-REBUILD's record: a route with its fee and time"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -99,8 +99,8 @@
    "the currency's dated rate: SLATE-REBUILD researched it; not re-checked here"
   ],
   "passport application": [
-   "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "inherited-unverified",
+   "SLATE-REBUILD's record: a route with its fee and time"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -130,7 +130,7 @@
   ],
   "passport application": [
    "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "no route with both its fee and its time recorded"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -160,7 +160,7 @@
   ],
   "passport application": [
    "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "no route with both its fee and its time recorded"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -190,7 +190,7 @@
   ],
   "passport application": [
    "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "no route with both its fee and its time recorded"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -220,7 +220,7 @@
   ],
   "passport application": [
    "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "no route with both its fee and its time recorded"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -280,7 +280,7 @@
   ],
   "passport application": [
    "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "no route with both its fee and its time recorded"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -309,8 +309,8 @@
    "the currency's dated rate: SLATE-REBUILD researched it; not re-checked here"
   ],
   "passport application": [
-   "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "inherited-unverified",
+   "SLATE-REBUILD's record: a route with its fee and time"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -340,7 +340,7 @@
   ],
   "passport application": [
    "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "no route with both its fee and its time recorded"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -369,8 +369,8 @@
    "the currency's dated rate: SLATE-REBUILD researched it; not re-checked here"
   ],
   "passport application": [
-   "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "inherited-unverified",
+   "SLATE-REBUILD's record: a route with its fee and time"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -429,8 +429,8 @@
    "the currency's dated rate: SLATE-REBUILD researched it; not re-checked here"
   ],
   "passport application": [
-   "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "inherited-unverified",
+   "SLATE-REBUILD's record: a route with its fee and time"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -460,7 +460,7 @@
   ],
   "passport application": [
    "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "no route with both its fee and its time recorded"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -489,8 +489,8 @@
    "the currency's dated rate: SLATE-REBUILD researched it; not re-checked here"
   ],
   "passport application": [
-   "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "inherited-unverified",
+   "SLATE-REBUILD's record: a route with its fee and time"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -520,7 +520,7 @@
   ],
   "passport application": [
    "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "no route with both its fee and its time recorded"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -549,8 +549,8 @@
    "the currency's dated rate: SLATE-REBUILD researched it; not re-checked here"
   ],
   "passport application": [
-   "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "inherited-unverified",
+   "SLATE-REBUILD's record: a route with its fee and time"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -579,8 +579,8 @@
    "the currency's dated rate: SLATE-REBUILD researched it; not re-checked here"
   ],
   "passport application": [
-   "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "inherited-unverified",
+   "SLATE-REBUILD's record: a route with its fee and time"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -609,8 +609,8 @@
    "the currency's dated rate: SLATE-REBUILD researched it; not re-checked here"
   ],
   "passport application": [
-   "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "inherited-unverified",
+   "SLATE-REBUILD's record: a route with its fee and time"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -639,8 +639,8 @@
    "the currency's dated rate: SLATE-REBUILD researched it; not re-checked here"
   ],
   "passport application": [
-   "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "inherited-unverified",
+   "SLATE-REBUILD's record: a route with its fee and time"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -669,8 +669,8 @@
    "the currency's dated rate: SLATE-REBUILD researched it; not re-checked here"
   ],
   "passport application": [
-   "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "inherited-unverified",
+   "SLATE-REBUILD's record: a route with its fee and time"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -699,8 +699,8 @@
    "the currency's dated rate: SLATE-REBUILD researched it; not re-checked here"
   ],
   "passport application": [
-   "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "inherited-unverified",
+   "SLATE-REBUILD's record: a route with its fee and time"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -730,7 +730,7 @@
   ],
   "passport application": [
    "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "no route with both its fee and its time recorded"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -819,8 +819,8 @@
    "SLATE-REBUILD proves no rate is needed: the dollar, or no populated place"
   ],
   "passport application": [
-   "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "inherited-unverified",
+   "SLATE-REBUILD's record: a route with its fee and time"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -850,7 +850,7 @@
   ],
   "passport application": [
    "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "no route with both its fee and its time recorded"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -879,8 +879,8 @@
    "the currency's dated rate: SLATE-REBUILD researched it; not re-checked here"
   ],
   "passport application": [
-   "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "inherited-unverified",
+   "SLATE-REBUILD's record: a route with its fee and time"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -969,8 +969,8 @@
    "SLATE-REBUILD proves no rate is needed: the dollar, or no populated place"
   ],
   "passport application": [
-   "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "inherited-unverified",
+   "SLATE-REBUILD's record: a route with its fee and time"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -1000,7 +1000,7 @@
   ],
   "passport application": [
    "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "no route with both its fee and its time recorded"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -1030,7 +1030,7 @@
   ],
   "passport application": [
    "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "no route with both its fee and its time recorded"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -1059,8 +1059,8 @@
    "the currency's dated rate: SLATE-REBUILD researched it; not re-checked here"
   ],
   "passport application": [
-   "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "inherited-unverified",
+   "SLATE-REBUILD's record: a route with its fee and time"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -1090,7 +1090,7 @@
   ],
   "passport application": [
    "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "no route with both its fee and its time recorded"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -1120,7 +1120,7 @@
   ],
   "passport application": [
    "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "no route with both its fee and its time recorded"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -1150,7 +1150,7 @@
   ],
   "passport application": [
    "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "no route with both its fee and its time recorded"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -1179,8 +1179,8 @@
    "the currency's dated rate: SLATE-REBUILD researched it; not re-checked here"
   ],
   "passport application": [
-   "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "inherited-unverified",
+   "SLATE-REBUILD's record: a route with its fee and time"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -1210,7 +1210,7 @@
   ],
   "passport application": [
    "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "no route with both its fee and its time recorded"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -1270,7 +1270,7 @@
   ],
   "passport application": [
    "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "no route with both its fee and its time recorded"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -1330,7 +1330,7 @@
   ],
   "passport application": [
    "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "no route with both its fee and its time recorded"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -1360,7 +1360,7 @@
   ],
   "passport application": [
    "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "no route with both its fee and its time recorded"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -1389,8 +1389,8 @@
    "the currency's dated rate: SLATE-REBUILD researched it; not re-checked here"
   ],
   "passport application": [
-   "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "inherited-unverified",
+   "SLATE-REBUILD's record: a route with its fee and time"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -1419,8 +1419,8 @@
    "the currency's dated rate: SLATE-REBUILD researched it; not re-checked here"
   ],
   "passport application": [
-   "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "inherited-unverified",
+   "SLATE-REBUILD's record: a route with its fee and time"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -1449,8 +1449,8 @@
    "the currency's dated rate: SLATE-REBUILD researched it; not re-checked here"
   ],
   "passport application": [
-   "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "inherited-unverified",
+   "SLATE-REBUILD's record: a route with its fee and time"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -1480,7 +1480,7 @@
   ],
   "passport application": [
    "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "no route with both its fee and its time recorded"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -1539,8 +1539,8 @@
    "the currency's dated rate: SLATE-REBUILD researched it; not re-checked here"
   ],
   "passport application": [
-   "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "inherited-unverified",
+   "SLATE-REBUILD's record: a route with its fee and time"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -1570,7 +1570,7 @@
   ],
   "passport application": [
    "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "no route with both its fee and its time recorded"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -1599,8 +1599,8 @@
    "the currency's dated rate: SLATE-REBUILD researched it; not re-checked here"
   ],
   "passport application": [
-   "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "inherited-unverified",
+   "SLATE-REBUILD's record: a route with its fee and time"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -1630,7 +1630,7 @@
   ],
   "passport application": [
    "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "no route with both its fee and its time recorded"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -1659,8 +1659,8 @@
    "the currency's dated rate: SLATE-REBUILD researched it; not re-checked here"
   ],
   "passport application": [
-   "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "inherited-unverified",
+   "SLATE-REBUILD's record: a route with its fee and time"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -1689,8 +1689,8 @@
    "the currency's dated rate: SLATE-REBUILD researched it; not re-checked here"
   ],
   "passport application": [
-   "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "inherited-unverified",
+   "SLATE-REBUILD's record: a route with its fee and time"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -1719,8 +1719,8 @@
    "the currency's dated rate: SLATE-REBUILD researched it; not re-checked here"
   ],
   "passport application": [
-   "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "inherited-unverified",
+   "SLATE-REBUILD's record: a route with its fee and time"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -1750,7 +1750,7 @@
   ],
   "passport application": [
    "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "no route with both its fee and its time recorded"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -1779,8 +1779,8 @@
    "the currency's dated rate: SLATE-REBUILD researched it; not re-checked here"
   ],
   "passport application": [
-   "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "inherited-unverified",
+   "SLATE-REBUILD's record: a route with its fee and time"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -1809,8 +1809,8 @@
    "the currency's dated rate: SLATE-REBUILD researched it; not re-checked here"
   ],
   "passport application": [
-   "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "inherited-unverified",
+   "SLATE-REBUILD's record: a route with its fee and time"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -1839,8 +1839,8 @@
    "the currency's dated rate: SLATE-REBUILD researched it; not re-checked here"
   ],
   "passport application": [
-   "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "inherited-unverified",
+   "SLATE-REBUILD's record: a route with its fee and time"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -1869,8 +1869,8 @@
    "the currency's dated rate: SLATE-REBUILD researched it; not re-checked here"
   ],
   "passport application": [
-   "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "inherited-unverified",
+   "SLATE-REBUILD's record: a route with its fee and time"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -1899,8 +1899,8 @@
    "SLATE-REBUILD proves no rate is needed: the dollar, or no populated place"
   ],
   "passport application": [
-   "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "inherited-unverified",
+   "SLATE-REBUILD's record: a route with its fee and time"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -1959,8 +1959,8 @@
    "SLATE-REBUILD proves no rate is needed: the dollar, or no populated place"
   ],
   "passport application": [
-   "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "inherited-unverified",
+   "SLATE-REBUILD's record: a route with its fee and time"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -1990,7 +1990,7 @@
   ],
   "passport application": [
    "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "no route with both its fee and its time recorded"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -2020,7 +2020,7 @@
   ],
   "passport application": [
    "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "no route with both its fee and its time recorded"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -2049,8 +2049,8 @@
    "the currency's dated rate: SLATE-REBUILD researched it; not re-checked here"
   ],
   "passport application": [
-   "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "inherited-unverified",
+   "SLATE-REBUILD's record: a route with its fee and time"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -2080,7 +2080,7 @@
   ],
   "passport application": [
    "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "no route with both its fee and its time recorded"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -2109,8 +2109,8 @@
    "the currency's dated rate: SLATE-REBUILD researched it; not re-checked here"
   ],
   "passport application": [
-   "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "inherited-unverified",
+   "SLATE-REBUILD's record: a route with its fee and time"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -2140,7 +2140,7 @@
   ],
   "passport application": [
    "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "no route with both its fee and its time recorded"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -2170,7 +2170,7 @@
   ],
   "passport application": [
    "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "no route with both its fee and its time recorded"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -2199,8 +2199,8 @@
    "the currency's dated rate: SLATE-REBUILD researched it; not re-checked here"
   ],
   "passport application": [
-   "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "inherited-unverified",
+   "SLATE-REBUILD's record: a route with its fee and time"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -2230,7 +2230,7 @@
   ],
   "passport application": [
    "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "no route with both its fee and its time recorded"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -2290,7 +2290,7 @@
   ],
   "passport application": [
    "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "no route with both its fee and its time recorded"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -2319,8 +2319,8 @@
    "the currency's dated rate: SLATE-REBUILD researched it; not re-checked here"
   ],
   "passport application": [
-   "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "inherited-unverified",
+   "SLATE-REBUILD's record: a route with its fee and time"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -2350,7 +2350,7 @@
   ],
   "passport application": [
    "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "no route with both its fee and its time recorded"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -2380,7 +2380,7 @@
   ],
   "passport application": [
    "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "no route with both its fee and its time recorded"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -2410,7 +2410,7 @@
   ],
   "passport application": [
    "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "no route with both its fee and its time recorded"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -2439,8 +2439,8 @@
    "the currency's dated rate: SLATE-REBUILD researched it; not re-checked here"
   ],
   "passport application": [
-   "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "inherited-unverified",
+   "SLATE-REBUILD's record: a route with its fee and time"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -2499,8 +2499,8 @@
    "the currency's dated rate: SLATE-REBUILD researched it; not re-checked here"
   ],
   "passport application": [
-   "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "inherited-unverified",
+   "SLATE-REBUILD's record: a route with its fee and time"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -2530,7 +2530,7 @@
   ],
   "passport application": [
    "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "no route with both its fee and its time recorded"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -2559,8 +2559,8 @@
    "the currency's dated rate: SLATE-REBUILD researched it; not re-checked here"
   ],
   "passport application": [
-   "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "inherited-unverified",
+   "SLATE-REBUILD's record: a route with its fee and time"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -2589,8 +2589,8 @@
    "the currency's dated rate: SLATE-REBUILD researched it; not re-checked here"
   ],
   "passport application": [
-   "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "inherited-unverified",
+   "SLATE-REBUILD's record: a route with its fee and time"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -2619,8 +2619,8 @@
    "the currency's dated rate: SLATE-REBUILD researched it; not re-checked here"
   ],
   "passport application": [
-   "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "inherited-unverified",
+   "SLATE-REBUILD's record: a route with its fee and time"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -2650,7 +2650,7 @@
   ],
   "passport application": [
    "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "no route with both its fee and its time recorded"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -2680,7 +2680,7 @@
   ],
   "passport application": [
    "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "no route with both its fee and its time recorded"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -2709,8 +2709,8 @@
    "the currency's dated rate: SLATE-REBUILD researched it; not re-checked here"
   ],
   "passport application": [
-   "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "inherited-unverified",
+   "SLATE-REBUILD's record: a route with its fee and time"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -2739,8 +2739,8 @@
    "the currency's dated rate: SLATE-REBUILD researched it; not re-checked here"
   ],
   "passport application": [
-   "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "inherited-unverified",
+   "SLATE-REBUILD's record: a route with its fee and time"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -2770,7 +2770,7 @@
   ],
   "passport application": [
    "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "no route with both its fee and its time recorded"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -2830,7 +2830,7 @@
   ],
   "passport application": [
    "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "no route with both its fee and its time recorded"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -2860,7 +2860,7 @@
   ],
   "passport application": [
    "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "no route with both its fee and its time recorded"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -2920,7 +2920,7 @@
   ],
   "passport application": [
    "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "no route with both its fee and its time recorded"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -2950,7 +2950,7 @@
   ],
   "passport application": [
    "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "no route with both its fee and its time recorded"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -2980,7 +2980,7 @@
   ],
   "passport application": [
    "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "no route with both its fee and its time recorded"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -3040,7 +3040,7 @@
   ],
   "passport application": [
    "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "no route with both its fee and its time recorded"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -3069,8 +3069,8 @@
    "the currency's dated rate: SLATE-REBUILD researched it; not re-checked here"
   ],
   "passport application": [
-   "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "inherited-unverified",
+   "SLATE-REBUILD's record: a route with its fee and time"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -3100,7 +3100,7 @@
   ],
   "passport application": [
    "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "no route with both its fee and its time recorded"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -3130,7 +3130,7 @@
   ],
   "passport application": [
    "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "no route with both its fee and its time recorded"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -3189,8 +3189,8 @@
    "the currency's dated rate: SLATE-REBUILD researched it; not re-checked here"
   ],
   "passport application": [
-   "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "inherited-unverified",
+   "SLATE-REBUILD's record: a route with its fee and time"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -3219,8 +3219,8 @@
    "the currency's dated rate: SLATE-REBUILD researched it; not re-checked here"
   ],
   "passport application": [
-   "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "inherited-unverified",
+   "SLATE-REBUILD's record: a route with its fee and time"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -3250,7 +3250,7 @@
   ],
   "passport application": [
    "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "no route with both its fee and its time recorded"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -3280,7 +3280,7 @@
   ],
   "passport application": [
    "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "no route with both its fee and its time recorded"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -3309,8 +3309,8 @@
    "the currency's dated rate: SLATE-REBUILD researched it; not re-checked here"
   ],
   "passport application": [
-   "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "inherited-unverified",
+   "SLATE-REBUILD's record: a route with its fee and time"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -3370,7 +3370,7 @@
   ],
   "passport application": [
    "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "no route with both its fee and its time recorded"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -3399,8 +3399,8 @@
    "the currency's dated rate: SLATE-REBUILD researched it; not re-checked here"
   ],
   "passport application": [
-   "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "inherited-unverified",
+   "SLATE-REBUILD's record: a route with its fee and time"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -3430,7 +3430,7 @@
   ],
   "passport application": [
    "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "no route with both its fee and its time recorded"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -3460,7 +3460,7 @@
   ],
   "passport application": [
    "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "no route with both its fee and its time recorded"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -3489,8 +3489,8 @@
    "the currency's dated rate: SLATE-REBUILD researched it; not re-checked here"
   ],
   "passport application": [
-   "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "inherited-unverified",
+   "SLATE-REBUILD's record: a route with its fee and time"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -3519,8 +3519,8 @@
    "the currency's dated rate: SLATE-REBUILD researched it; not re-checked here"
   ],
   "passport application": [
-   "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "inherited-unverified",
+   "SLATE-REBUILD's record: a route with its fee and time"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -3550,7 +3550,7 @@
   ],
   "passport application": [
    "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "no route with both its fee and its time recorded"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -3579,8 +3579,8 @@
    "the currency's dated rate: SLATE-REBUILD researched it; not re-checked here"
   ],
   "passport application": [
-   "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "inherited-unverified",
+   "SLATE-REBUILD's record: a route with its fee and time"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -3609,8 +3609,8 @@
    "the currency's dated rate: SLATE-REBUILD researched it; not re-checked here"
   ],
   "passport application": [
-   "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "inherited-unverified",
+   "SLATE-REBUILD's record: a route with its fee and time"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -3670,7 +3670,7 @@
   ],
   "passport application": [
    "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "no route with both its fee and its time recorded"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -3700,7 +3700,7 @@
   ],
   "passport application": [
    "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "no route with both its fee and its time recorded"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -3729,8 +3729,8 @@
    "the currency's dated rate: SLATE-REBUILD researched it; not re-checked here"
   ],
   "passport application": [
-   "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "inherited-unverified",
+   "SLATE-REBUILD's record: a route with its fee and time"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -3790,7 +3790,7 @@
   ],
   "passport application": [
    "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "no route with both its fee and its time recorded"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -3819,8 +3819,8 @@
    "the currency's dated rate: SLATE-REBUILD researched it; not re-checked here"
   ],
   "passport application": [
-   "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "inherited-unverified",
+   "SLATE-REBUILD's record: a route with its fee and time"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -3849,8 +3849,8 @@
    "the currency's dated rate: SLATE-REBUILD researched it; not re-checked here"
   ],
   "passport application": [
-   "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "inherited-unverified",
+   "SLATE-REBUILD's record: a route with its fee and time"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -3879,8 +3879,8 @@
    "the currency's dated rate: SLATE-REBUILD researched it; not re-checked here"
   ],
   "passport application": [
-   "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "inherited-unverified",
+   "SLATE-REBUILD's record: a route with its fee and time"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -3910,7 +3910,7 @@
   ],
   "passport application": [
    "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "no route with both its fee and its time recorded"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -3940,7 +3940,7 @@
   ],
   "passport application": [
    "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "no route with both its fee and its time recorded"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -3970,7 +3970,7 @@
   ],
   "passport application": [
    "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "no route with both its fee and its time recorded"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -4000,7 +4000,7 @@
   ],
   "passport application": [
    "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "no route with both its fee and its time recorded"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -4030,7 +4030,7 @@
   ],
   "passport application": [
    "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "no route with both its fee and its time recorded"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -4059,8 +4059,8 @@
    "the currency's dated rate: SLATE-REBUILD researched it; not re-checked here"
   ],
   "passport application": [
-   "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "inherited-unverified",
+   "SLATE-REBUILD's record: a route with its fee and time"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -4090,7 +4090,7 @@
   ],
   "passport application": [
    "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "no route with both its fee and its time recorded"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -4120,7 +4120,7 @@
   ],
   "passport application": [
    "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "no route with both its fee and its time recorded"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -4150,7 +4150,7 @@
   ],
   "passport application": [
    "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "no route with both its fee and its time recorded"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -4180,7 +4180,7 @@
   ],
   "passport application": [
    "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "no route with both its fee and its time recorded"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -4210,7 +4210,7 @@
   ],
   "passport application": [
    "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "no route with both its fee and its time recorded"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -4270,7 +4270,7 @@
   ],
   "passport application": [
    "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "no route with both its fee and its time recorded"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -4299,8 +4299,8 @@
    "the currency's dated rate: SLATE-REBUILD researched it; not re-checked here"
   ],
   "passport application": [
-   "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "inherited-unverified",
+   "SLATE-REBUILD's record: a route with its fee and time"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -4330,7 +4330,7 @@
   ],
   "passport application": [
    "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "no route with both its fee and its time recorded"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -4360,7 +4360,7 @@
   ],
   "passport application": [
    "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "no route with both its fee and its time recorded"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -4390,7 +4390,7 @@
   ],
   "passport application": [
    "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "no route with both its fee and its time recorded"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -4420,7 +4420,7 @@
   ],
   "passport application": [
    "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "no route with both its fee and its time recorded"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -4450,7 +4450,7 @@
   ],
   "passport application": [
    "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "no route with both its fee and its time recorded"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -4480,7 +4480,7 @@
   ],
   "passport application": [
    "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "no route with both its fee and its time recorded"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -4510,7 +4510,7 @@
   ],
   "passport application": [
    "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "no route with both its fee and its time recorded"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -4540,7 +4540,7 @@
   ],
   "passport application": [
    "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "no route with both its fee and its time recorded"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -4569,8 +4569,8 @@
    "the currency's dated rate: SLATE-REBUILD researched it; not re-checked here"
   ],
   "passport application": [
-   "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "inherited-unverified",
+   "SLATE-REBUILD's record: a route with its fee and time"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -4600,7 +4600,7 @@
   ],
   "passport application": [
    "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "no route with both its fee and its time recorded"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -4660,7 +4660,7 @@
   ],
   "passport application": [
    "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "no route with both its fee and its time recorded"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -4719,8 +4719,8 @@
    "the currency's dated rate: SLATE-REBUILD researched it; not re-checked here"
   ],
   "passport application": [
-   "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "inherited-unverified",
+   "SLATE-REBUILD's record: a route with its fee and time"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -4750,7 +4750,7 @@
   ],
   "passport application": [
    "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "no route with both its fee and its time recorded"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -4780,7 +4780,7 @@
   ],
   "passport application": [
    "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "no route with both its fee and its time recorded"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -4809,8 +4809,8 @@
    "the currency's dated rate: SLATE-REBUILD researched it; not re-checked here"
   ],
   "passport application": [
-   "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "inherited-unverified",
+   "SLATE-REBUILD's record: a route with its fee and time"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -4839,8 +4839,8 @@
    "the currency's dated rate: SLATE-REBUILD researched it; not re-checked here"
   ],
   "passport application": [
-   "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "inherited-unverified",
+   "SLATE-REBUILD's record: a route with its fee and time"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -4899,8 +4899,8 @@
    "the currency's dated rate: SLATE-REBUILD researched it; not re-checked here"
   ],
   "passport application": [
-   "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "inherited-unverified",
+   "SLATE-REBUILD's record: a route with its fee and time"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -4930,7 +4930,7 @@
   ],
   "passport application": [
    "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "no route with both its fee and its time recorded"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -4960,7 +4960,7 @@
   ],
   "passport application": [
    "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "no route with both its fee and its time recorded"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -4990,7 +4990,7 @@
   ],
   "passport application": [
    "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "no route with both its fee and its time recorded"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -5019,8 +5019,8 @@
    "the currency's dated rate: SLATE-REBUILD researched it; not re-checked here"
   ],
   "passport application": [
-   "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "inherited-unverified",
+   "SLATE-REBUILD's record: a route with its fee and time"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -5079,8 +5079,8 @@
    "the currency's dated rate: SLATE-REBUILD researched it; not re-checked here"
   ],
   "passport application": [
-   "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "inherited-unverified",
+   "SLATE-REBUILD's record: a route with its fee and time"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -5109,8 +5109,8 @@
    "the currency's dated rate: SLATE-REBUILD researched it; not re-checked here"
   ],
   "passport application": [
-   "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "inherited-unverified",
+   "SLATE-REBUILD's record: a route with its fee and time"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -5140,7 +5140,7 @@
   ],
   "passport application": [
    "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "no route with both its fee and its time recorded"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -5169,8 +5169,8 @@
    "the currency's dated rate: SLATE-REBUILD researched it; not re-checked here"
   ],
   "passport application": [
-   "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "inherited-unverified",
+   "SLATE-REBUILD's record: a route with its fee and time"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -5200,7 +5200,7 @@
   ],
   "passport application": [
    "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "no route with both its fee and its time recorded"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -5230,7 +5230,7 @@
   ],
   "passport application": [
    "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "no route with both its fee and its time recorded"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -5259,8 +5259,8 @@
    "the currency's dated rate: SLATE-REBUILD researched it; not re-checked here"
   ],
   "passport application": [
-   "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "inherited-unverified",
+   "SLATE-REBUILD's record: a route with its fee and time"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -5290,7 +5290,7 @@
   ],
   "passport application": [
    "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "no route with both its fee and its time recorded"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -5319,8 +5319,8 @@
    "the currency's dated rate: SLATE-REBUILD researched it; not re-checked here"
   ],
   "passport application": [
-   "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "inherited-unverified",
+   "SLATE-REBUILD's record: a route with its fee and time"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -5350,7 +5350,7 @@
   ],
   "passport application": [
    "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "no route with both its fee and its time recorded"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -5380,7 +5380,7 @@
   ],
   "passport application": [
    "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "no route with both its fee and its time recorded"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -5410,7 +5410,7 @@
   ],
   "passport application": [
    "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "no route with both its fee and its time recorded"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -5440,7 +5440,7 @@
   ],
   "passport application": [
    "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "no route with both its fee and its time recorded"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -5469,8 +5469,8 @@
    "the currency's dated rate: SLATE-REBUILD researched it; not re-checked here"
   ],
   "passport application": [
-   "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "inherited-unverified",
+   "SLATE-REBUILD's record: a route with its fee and time"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -5499,8 +5499,8 @@
    "the currency's dated rate: SLATE-REBUILD researched it; not re-checked here"
   ],
   "passport application": [
-   "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "inherited-unverified",
+   "SLATE-REBUILD's record: a route with its fee and time"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -5529,8 +5529,8 @@
    "the currency's dated rate: SLATE-REBUILD researched it; not re-checked here"
   ],
   "passport application": [
-   "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "inherited-unverified",
+   "SLATE-REBUILD's record: a route with its fee and time"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -5560,7 +5560,7 @@
   ],
   "passport application": [
    "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "no route with both its fee and its time recorded"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -5590,7 +5590,7 @@
   ],
   "passport application": [
    "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "no route with both its fee and its time recorded"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -5620,7 +5620,7 @@
   ],
   "passport application": [
    "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "no route with both its fee and its time recorded"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -5649,8 +5649,8 @@
    "the currency's dated rate: SLATE-REBUILD researched it; not re-checked here"
   ],
   "passport application": [
-   "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "inherited-unverified",
+   "SLATE-REBUILD's record: a route with its fee and time"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -5680,7 +5680,7 @@
   ],
   "passport application": [
    "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "no route with both its fee and its time recorded"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -5709,8 +5709,8 @@
    "the currency's dated rate: SLATE-REBUILD researched it; not re-checked here"
   ],
   "passport application": [
-   "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "inherited-unverified",
+   "SLATE-REBUILD's record: a route with its fee and time"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -5740,7 +5740,7 @@
   ],
   "passport application": [
    "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "no route with both its fee and its time recorded"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -5769,8 +5769,8 @@
    "the currency's dated rate: SLATE-REBUILD researched it; not re-checked here"
   ],
   "passport application": [
-   "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "inherited-unverified",
+   "SLATE-REBUILD's record: a route with its fee and time"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -5800,7 +5800,7 @@
   ],
   "passport application": [
    "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "no route with both its fee and its time recorded"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -5829,8 +5829,8 @@
    "the currency's dated rate: SLATE-REBUILD researched it; not re-checked here"
   ],
   "passport application": [
-   "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "inherited-unverified",
+   "SLATE-REBUILD's record: a route with its fee and time"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -5860,7 +5860,7 @@
   ],
   "passport application": [
    "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "no route with both its fee and its time recorded"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -5890,7 +5890,7 @@
   ],
   "passport application": [
    "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "no route with both its fee and its time recorded"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -5919,8 +5919,8 @@
    "the currency's dated rate: SLATE-REBUILD researched it; not re-checked here"
   ],
   "passport application": [
-   "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "inherited-unverified",
+   "SLATE-REBUILD's record: a route with its fee and time"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -5979,8 +5979,8 @@
    "the currency's dated rate: SLATE-REBUILD researched it; not re-checked here"
   ],
   "passport application": [
-   "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "inherited-unverified",
+   "SLATE-REBUILD's record: a route with its fee and time"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -6010,7 +6010,7 @@
   ],
   "passport application": [
    "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "no route with both its fee and its time recorded"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -6039,8 +6039,8 @@
    "the currency's dated rate: SLATE-REBUILD researched it; not re-checked here"
   ],
   "passport application": [
-   "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "inherited-unverified",
+   "SLATE-REBUILD's record: a route with its fee and time"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -6069,8 +6069,8 @@
    "the currency's dated rate: SLATE-REBUILD researched it; not re-checked here"
   ],
   "passport application": [
-   "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "inherited-unverified",
+   "SLATE-REBUILD's record: a route with its fee and time"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -6099,8 +6099,8 @@
    "the currency's dated rate: SLATE-REBUILD researched it; not re-checked here"
   ],
   "passport application": [
-   "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "inherited-unverified",
+   "SLATE-REBUILD's record: a route with its fee and time"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -6130,7 +6130,7 @@
   ],
   "passport application": [
    "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "no route with both its fee and its time recorded"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -6159,8 +6159,8 @@
    "the currency's dated rate: SLATE-REBUILD researched it; not re-checked here"
   ],
   "passport application": [
-   "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "inherited-unverified",
+   "SLATE-REBUILD's record: a route with its fee and time"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -6219,8 +6219,8 @@
    "the currency's dated rate: SLATE-REBUILD researched it; not re-checked here"
   ],
   "passport application": [
-   "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "inherited-unverified",
+   "SLATE-REBUILD's record: a route with its fee and time"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -6249,8 +6249,8 @@
    "the currency's dated rate: SLATE-REBUILD researched it; not re-checked here"
   ],
   "passport application": [
-   "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "inherited-unverified",
+   "SLATE-REBUILD's record: a route with its fee and time"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -6310,7 +6310,7 @@
   ],
   "passport application": [
    "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "no route with both its fee and its time recorded"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -6369,8 +6369,8 @@
    "the currency's dated rate: SLATE-REBUILD researched it; not re-checked here"
   ],
   "passport application": [
-   "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "inherited-unverified",
+   "SLATE-REBUILD's record: a route with its fee and time"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -6400,7 +6400,7 @@
   ],
   "passport application": [
    "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "no route with both its fee and its time recorded"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -6430,7 +6430,7 @@
   ],
   "passport application": [
    "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "no route with both its fee and its time recorded"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -6460,7 +6460,7 @@
   ],
   "passport application": [
    "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "no route with both its fee and its time recorded"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -6489,8 +6489,8 @@
    "the currency's dated rate: SLATE-REBUILD researched it; not re-checked here"
   ],
   "passport application": [
-   "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "implemented/tested",
+   "SLATE-REBUILD's record, a route with its fee and time; tests/v8-papers.test.ts"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -6520,7 +6520,7 @@
   ],
   "passport application": [
    "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "no route with both its fee and its time recorded"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -6550,7 +6550,7 @@
   ],
   "passport application": [
    "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "no route with both its fee and its time recorded"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -6579,8 +6579,8 @@
    "the currency's dated rate: SLATE-REBUILD researched it; not re-checked here"
   ],
   "passport application": [
-   "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "inherited-unverified",
+   "SLATE-REBUILD's record: a route with its fee and time"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -6610,7 +6610,7 @@
   ],
   "passport application": [
    "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "no route with both its fee and its time recorded"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -6640,7 +6640,7 @@
   ],
   "passport application": [
    "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "no route with both its fee and its time recorded"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -6669,8 +6669,8 @@
    "the currency's dated rate: SLATE-REBUILD researched it; not re-checked here"
   ],
   "passport application": [
-   "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "inherited-unverified",
+   "SLATE-REBUILD's record: a route with its fee and time"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -6699,8 +6699,8 @@
    "the currency's dated rate: SLATE-REBUILD researched it; not re-checked here"
   ],
   "passport application": [
-   "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "inherited-unverified",
+   "SLATE-REBUILD's record: a route with its fee and time"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -6730,7 +6730,7 @@
   ],
   "passport application": [
    "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "no route with both its fee and its time recorded"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -6760,7 +6760,7 @@
   ],
   "passport application": [
    "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "no route with both its fee and its time recorded"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -6789,8 +6789,8 @@
    "the currency's dated rate: SLATE-REBUILD researched it; not re-checked here"
   ],
   "passport application": [
-   "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "inherited-unverified",
+   "SLATE-REBUILD's record: a route with its fee and time"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -6819,8 +6819,8 @@
    "the currency's dated rate: SLATE-REBUILD researched it; not re-checked here"
   ],
   "passport application": [
-   "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "inherited-unverified",
+   "SLATE-REBUILD's record: a route with its fee and time"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -6849,8 +6849,8 @@
    "the currency's dated rate: SLATE-REBUILD researched it; not re-checked here"
   ],
   "passport application": [
-   "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "inherited-unverified",
+   "SLATE-REBUILD's record: a route with its fee and time"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -6880,7 +6880,7 @@
   ],
   "passport application": [
    "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "no route with both its fee and its time recorded"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -6910,7 +6910,7 @@
   ],
   "passport application": [
    "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "no route with both its fee and its time recorded"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -6939,8 +6939,8 @@
    "the currency's dated rate: SLATE-REBUILD researched it; not re-checked here"
   ],
   "passport application": [
-   "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "inherited-unverified",
+   "SLATE-REBUILD's record: a route with its fee and time"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -6970,7 +6970,7 @@
   ],
   "passport application": [
    "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "no route with both its fee and its time recorded"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -7000,7 +7000,7 @@
   ],
   "passport application": [
    "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "no route with both its fee and its time recorded"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -7030,7 +7030,7 @@
   ],
   "passport application": [
    "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "no route with both its fee and its time recorded"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -7060,7 +7060,7 @@
   ],
   "passport application": [
    "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "no route with both its fee and its time recorded"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -7089,8 +7089,8 @@
    "the currency's dated rate: SLATE-REBUILD researched it; not re-checked here"
   ],
   "passport application": [
-   "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "inherited-unverified",
+   "SLATE-REBUILD's record: a route with its fee and time"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -7119,8 +7119,8 @@
    "the currency's dated rate: SLATE-REBUILD researched it; not re-checked here"
   ],
   "passport application": [
-   "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "inherited-unverified",
+   "SLATE-REBUILD's record: a route with its fee and time"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -7239,8 +7239,8 @@
    "the currency's dated rate: SLATE-REBUILD researched it; not re-checked here"
   ],
   "passport application": [
-   "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "inherited-unverified",
+   "SLATE-REBUILD's record: a route with its fee and time"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -7269,8 +7269,8 @@
    "the currency's dated rate: SLATE-REBUILD researched it; not re-checked here"
   ],
   "passport application": [
-   "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "inherited-unverified",
+   "SLATE-REBUILD's record: a route with its fee and time"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -7299,8 +7299,8 @@
    "the currency's dated rate: SLATE-REBUILD researched it; not re-checked here"
   ],
   "passport application": [
-   "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "inherited-unverified",
+   "SLATE-REBUILD's record: a route with its fee and time"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -7330,7 +7330,7 @@
   ],
   "passport application": [
    "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "no route with both its fee and its time recorded"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -7359,8 +7359,8 @@
    "the currency's dated rate: SLATE-REBUILD researched it; not re-checked here"
   ],
   "passport application": [
-   "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "inherited-unverified",
+   "SLATE-REBUILD's record: a route with its fee and time"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -7390,7 +7390,7 @@
   ],
   "passport application": [
    "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "no route with both its fee and its time recorded"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -7419,8 +7419,8 @@
    "the currency's dated rate: SLATE-REBUILD researched it; not re-checked here"
   ],
   "passport application": [
-   "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "inherited-unverified",
+   "SLATE-REBUILD's record: a route with its fee and time"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -7450,7 +7450,7 @@
   ],
   "passport application": [
    "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "no route with both its fee and its time recorded"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -7479,8 +7479,8 @@
    "the currency's dated rate: SLATE-REBUILD researched it; not re-checked here"
   ],
   "passport application": [
-   "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "inherited-unverified",
+   "SLATE-REBUILD's record: a route with its fee and time"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -7510,7 +7510,7 @@
   ],
   "passport application": [
    "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "no route with both its fee and its time recorded"
   ],
   "visiting rules": [
    "inherited-unverified",
@@ -7540,7 +7540,7 @@
   ],
   "passport application": [
    "missing",
-   "SLATE-REBUILD records the passport, but no application is wired for it"
+   "no route with both its fee and its time recorded"
   ],
   "visiting rules": [
    "inherited-unverified",

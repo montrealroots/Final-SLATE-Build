@@ -106,3 +106,30 @@ describe('A17: where the story is set and where it is filmed are two things', ()
     expect([p.axes.storySetting, p.axes.settingPlaceId]).toEqual(['Port Venn, years later', 'no-tromso']);
   });
 });
+
+describe('a passport from SLATE-REBUILD\'s records, where 1221 has no office', () => {
+  it('is applied for by a recorded route, its fee paid from the bank, and issued after its recorded time, valid its years', async () => {
+    const { passportOffers, applyForRecordedPassport, passports } = await import('../src/engine/papers');
+    // A Swede living in Stockholm: the standard route, 500 kronor, a week, five years for an adult.
+    const s = startLife('papers-se', 'se-stockholm', { nationalities: ['SE'], birthplaceId: 'se-stockholm' } as never);
+    const offers = passportOffers(s);
+    const i = offers.findIndex((o) => o.route.id === 'standard');
+    expect(offers[i]).toMatchObject({ issuer: 'SE', fee: { minor: 50000, currency: 'SEK' }, validYears: 5, missing: [] });
+    const before = personalBalance(s);
+    applyForRecordedPassport(s, i);
+    expect(before - personalBalance(s)).toBeGreaterThan(40); // 500 kronor at the day's reference rate, about $50
+    expect(before - personalBalance(s)).toBeLessThan(60);
+    const pending = passports(s).find((p) => p.doc.status === 'pending')!;
+    expect(pending).toBeDefined();
+    processUntil(s, s.now + 6 * 86_400_000, 'tick', 1_000_000);
+    expect(passports(s).find((p) => p.doc.id === pending.doc.id)!.inForce).toBe(false); // not before its week
+    processUntil(s, s.now + 2 * 86_400_000, 'tick', 1_000_000);
+    const issued = passports(s).find((p) => p.doc.id === pending.doc.id)!;
+    expect(issued.inForce).toBe(true);
+    expect(Math.round((issued.doc.expiresAt! - issued.doc.issuedAt!) / 86_400_000 / 365.25)).toBe(5);
+    // A route whose time isn't recorded is never taken: Kenya's.
+    const ke = startLife('papers-ke', 'ke-nairobi', { nationalities: ['KE'], birthplaceId: 'ke-nairobi' } as never);
+    expect(passportOffers(ke)[0].missing).toEqual(['how long it takes']);
+    expect(() => applyForRecordedPassport(ke, 0)).toThrow("The records don't give how long it takes for this route, so the game can't take an application.");
+  });
+});

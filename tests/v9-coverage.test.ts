@@ -24,6 +24,13 @@ const PASSPORT_DATA = rows('docs/v9/papers-sources/passports-countries.json');
 const tests = [...readdirSync('tests/bankworld').map((f) => `tests/bankworld/${f}`), ...readdirSync('e2e').filter((f) => f.startsWith('v9-')).map((f) => `e2e/${f}`), 'tests/v9-fx.test.ts', 'tests/v8-papers.test.ts']
   .map((f) => readFileSync(f, 'utf8')).join('\n');
 const testedBank = (iso: string) => banksIn(iso).some((b) => tests.includes(`'${b.id}'`)) || (iso === 'US' && tests.includes('Chase'));
+const PASSPORT_RECORDS = JSON.parse(readFileSync('src/data/papers/passports.json', 'utf8')) as Record<string, { issuedBy?: string; routes?: { id: string; within: unknown }[]; bands?: { pay: Record<string, number | null> }[] }>;
+/** A passport record with a route whose fee and time are both recorded, as papers.ts \`passportOffers\` takes it. */
+const passportRoutes = (iso: string): boolean => {
+  const e = PASSPORT_RECORDS[iso];
+  const p = e?.issuedBy ? PASSPORT_RECORDS[e.issuedBy] : e;
+  return !!p?.routes?.some((r) => r.within && p.bands?.some((b) => typeof b.pay[r.id] === 'number'));
+};
 const VISA_DESTINATIONS = new Set(Object.keys(VISAS).map((k) => k.split('<')[0]));
 
 /** SLATE-REBUILD's coverage words in the owner's classes: researched isn't re-verified here; proven rows are the six places with no settlement. */
@@ -48,7 +55,8 @@ function matrix() {
           : fromRebuild(RATES[iso], 'the currency\'s dated rate'),
       'passport application': empty ? ['not applicable', 'no populated place']
         : PASSPORTS[iso] ? ['inherited-unverified', '1221\'s passport office: fee, days and validity']
-          : ['missing', PASSPORT_DATA[iso] === 'researched' ? 'SLATE-REBUILD records the passport, but no application is wired for it' : 'no passport office recorded'],
+          : passportRoutes(iso) ? (iso === 'SE' ? ['implemented/tested', 'SLATE-REBUILD\'s record, a route with its fee and time; tests/v8-papers.test.ts'] : ['inherited-unverified', 'SLATE-REBUILD\'s record: a route with its fee and time'])
+            : ['missing', PASSPORT_DATA[iso] === 'researched' ? 'no route with both its fee and its time recorded' : 'no passport office recorded'],
       'visiting rules': fromRebuild(VISITS[iso], 'who may visit'),
       'visitor visa application': empty ? ['not applicable', 'no populated place']
         : VISA_DESTINATIONS.has(iso) ? (iso === 'US' ? ['implemented/tested', '1221\'s visa record for some passports; tests/v8-papers.test.ts, e2e/v9-papers.spec.ts'] : ['inherited-unverified', '1221\'s visa record, for some passports only'])

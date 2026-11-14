@@ -15,8 +15,9 @@ code.
 | bank | not applicable | 6 |
 | exchange rate | inherited-unverified | 230 |
 | exchange rate | not applicable | 22 |
-| passport application | inherited-unverified | 15 |
-| passport application | missing | 231 |
+| passport application | implemented/tested | 1 |
+| passport application | inherited-unverified | 115 |
+| passport application | missing | 130 |
 | passport application | not applicable | 6 |
 | visiting rules | inherited-unverified | 246 |
 | visiting rules | not applicable | 6 |
@@ -36,10 +37,11 @@ code.
   1221's or SLATE-REBUILD's research, as it was.
 - **"Implemented/tested"** means a test here runs that capability for that country. The banks of 26 countries are named
   by the ported 1221 tests or the new journeys. One visitor visa route is tested end to end: a Brazilian visiting the
-  United States.
+  United States. One passport from SLATE-REBUILD's records is tested end to end: a Swede's, applied for in Stockholm.
 - **What is missing, precisely.**
-  - Passport applications: 1221 recorded 15 passport offices. SLATE-REBUILD records 236 passports' fees, routes and
-    validity, but its data isn't yet connected to an application. That is the next gain.
+  - Passport applications: 1221's 15 passport offices, plus SLATE-REBUILD's records, which are taken wherever a route's
+    fee and its time are both recorded. That covers 101 more citizenships, applied for at home, and from abroad where
+    recorded. For the other 130, no route has both its fee and its time recorded, and the screen says which is missing.
   - Visitor visas: a fee and a decision time are recorded for nine passport and destination pairs only (1221's
     `content/visas.ts`).
   - Work permits: no route's fee or decision time is recorded anywhere, so none can be applied for in the game. The

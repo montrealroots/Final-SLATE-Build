@@ -261,3 +261,83 @@ registerHandler('permit-decision', (state, ev) => {
   addLog(state, message, 'project', { route: { view: 'papers' } });
   return { message };
 });
+
+// ---------------- passports from SLATE-REBUILD's records ----------------
+// 1221 kept fifteen passport offices (bankworld content/passports.ts), which its own application uses. For every other
+// citizenship, SLATE-REBUILD's records (236 entries) give each office's routes, its fee by age band and its time. An
+// application is taken from them only where the route's fee and its time are both recorded (from November 14, 2026).
+import passportData from '../data/papers/passports.json';
+
+type Unit = 'minute' | 'hour' | 'day' | 'working day' | 'week' | 'month';
+interface PRoute { id: string; where: 'home' | 'abroad'; speed: 'standard' | 'urgent'; within: { n: number; unit: Unit } | null; months?: number[]; renewal?: true; replacement?: true }
+interface PBand { from?: number; under?: number; pages?: number; validYears: number | null; pay: Record<string, number | null> }
+interface PRecord { currency: string; abroad?: { currency: string }; routes: PRoute[]; bands: PBand[] }
+const PASSPORT_RECORDS = passportData as unknown as Record<string, PRecord | { issuedBy: string; onlyRoutes?: string[] }>;
+
+export interface PassportOffer { issuer: string; route: PRoute; fee: { minor: number; currency: string } | null; validYears: number | null; missing: string[] }
+
+/** The ways your citizenship's office issues a passport to you now (SLATE-REBUILD's `passportOffers`), each with what's missing. */
+export function passportOffers(state: GameState, need?: 'renewal' | 'replacement'): PassportOffer[] {
+  const country = citizenships(state)[0];
+  const entry = country ? PASSPORT_RECORDS[country] : undefined;
+  if (!country || !entry) return [];
+  const p = ('issuedBy' in entry ? PASSPORT_RECORDS[entry.issuedBy] : entry) as PRecord;
+  const only = 'issuedBy' in entry ? entry.onlyRoutes : undefined;
+  const parts = new Date(state.now);
+  const age = parts.getUTCFullYear() - state.character.birth.year - ((parts.getUTCMonth() + 1 < state.character.birth.month || (parts.getUTCMonth() + 1 === state.character.birth.month && parts.getUTCDate() < state.character.birth.day)) ? 1 : 0);
+  const where = livesIn(state) === country ? 'home' : 'abroad';
+  const offered = p.routes.filter((r) => (only === undefined || only.includes(r.id)) && (r.months === undefined || r.months.includes(parts.getUTCMonth() + 1)) && r.where === where);
+  const own = (r: PRoute) => (need ? r[need] === true : false);
+  const routes = offered.filter((r) => (r.renewal || r.replacement ? own(r) : !offered.some(own)));
+  const out: PassportOffer[] = [];
+  for (const route of routes) {
+    const currency = route.where === 'abroad' ? p.abroad?.currency ?? p.currency : p.currency;
+    for (const b of p.bands) {
+      if (!((b.from ?? 0) <= age && age < (b.under ?? Infinity)) || !Object.hasOwn(b.pay, route.id)) continue;
+      const minor = b.pay[route.id];
+      const missing = [...(minor === null ? ['the fee'] : []), ...(route.within === null ? ['how long it takes'] : [])];
+      out.push({ issuer: 'issuedBy' in entry ? entry.issuedBy : country, route, fee: minor === null ? null : { minor, currency }, validYears: b.validYears, missing });
+    }
+  }
+  return out;
+}
+
+/** When an application made now is ready: its recorded time; working days skip Saturdays and Sundays (holidays aren't counted). */
+function readyAfter(now: number, within: { n: number; unit: Unit }): number {
+  const unit = { minute: 60_000, hour: 3_600_000, day: DAY, week: 7 * DAY, month: 30 * DAY } as Record<string, number>;
+  if (within.unit !== 'working day') return now + within.n * unit[within.unit];
+  let t = now;
+  for (let n = 0; n < within.n;) { t += DAY; const wd = new Date(t).getUTCDay(); if (wd !== 0 && wd !== 6) n++; }
+  return t;
+}
+
+/** Apply for a passport by SLATE-REBUILD's record: the fee paid from your bank, issued after its recorded time. */
+export function applyForRecordedPassport(state: GameState, offerIndex: number): void {
+  const o = passportOffers(state)[offerIndex];
+  if (!o) throw new Error('That route isn\'t offered to you now.');
+  if (o.missing.length) throw new Error(`The records don't give ${o.missing.join(' or ')} for this route, so the game can't take an application.`);
+  if (!state.bank) throw new Error('This story has no bank to pay from.');
+  const person = bankSim(state.bank).player;
+  if (documentsOf(person).some((d) => d.kind === 'passport' && d.status === 'pending')) throw new Error('You’ve already applied, and it’s being decided.');
+  const usd = o.fee!.currency === 'USD' ? o.fee!.minor : exchange(o.fee!.minor, o.fee!.currency, 'USD');
+  if (usd === undefined) throw new Error(`No exchange rate for ${o.fee!.currency} is recorded by today, so the fee can't be paid.`);
+  const id = newId(state, 'pp');
+  postToBank(state, 'papers', -usd / 100, `Passport (${countryName(o.issuer)}): The Fee`, `papers:${id}`);
+  const readyAt = readyAfter(state.now, o.route.within!);
+  documentsOf(person).push({ id, kind: 'passport', issuer: o.issuer, name: `${countryName(o.issuer)} Passport`, number: `P${id.replace(/\D/g, '').padStart(8, '0')}`, status: 'pending', appliedAt: state.now, readyAt } as PersonDocument);
+  schedule(state, readyAt, 'papers-passport', { id, years: o.validYears }, { attention: 'notify', priority: 55, id: `papers-passport:${id}` });
+  addLog(state, `You applied for your ${countryName(o.issuer)} passport and paid its fee. It should be ready by ${dateKey(readyAt, 'UTC')}, as recorded.`, 'personal', { route: { view: 'papers' } });
+}
+
+registerHandler('papers-passport', (state, ev) => {
+  if (!state.bank) return { suppressInterrupt: true };
+  const doc = documentsOf(bankSim(state.bank).player).find((d) => d.id === ev.payload.id);
+  if (!doc || doc.status !== 'pending') return { suppressInterrupt: true };
+  doc.status = 'valid';
+  doc.issuedAt = state.now;
+  const years = ev.payload.years as number | null;
+  if (years) doc.expiresAt = state.now + Math.round(years * 365.25) * DAY;
+  const message = `Your ${doc.name} is ready.${doc.expiresAt ? ` It's valid until ${dateKey(doc.expiresAt, 'UTC')}.` : ' Its validity isn\'t recorded.'}`;
+  addLog(state, message, 'personal', { route: { view: 'papers' } });
+  return { message };
+});

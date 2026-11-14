@@ -29,7 +29,11 @@ What the records don't hold, said so the game never fills it:
 
 1. **A passport and whether it is in force.** This is 1221's document in the bank world. You apply on Your Papers: the
    fee is paid from your bank, it is ready after the office's days, it expires, and it can be reported lost or stolen.
-   A passport lets you travel, nothing more.
+   - For the citizenships 1221 has no office for, SLATE-REBUILD's records are used (`passportOffers`,
+     `applyForRecordedPassport`). Each route shows its fee and its time, and is taken only where both are recorded.
+     That is 101 more citizenships (docs/v9/COVERAGE.md).
+   - Working days skip weekends; public holidays aren't counted, which is a simplification.
+   - A passport lets you travel, nothing more.
 2. **Permission to enter** (`entryRight`). By the best of your passports: your own country, free, an electronic
    authorization, an e-visa, a visa on arrival or a visa. Or the visa you hold.
 3. **Permission to stay.** A visit's length comes from the records and is said. Days spent in a country aren't counted
@@ -67,8 +71,6 @@ it was applied for under.
 
 ## Not Yet Done
 
-- **Passport applications for the 221 countries 1221 has no office for.** SLATE-REBUILD's 236 records hold routes, fees
-  by age and validity: connecting them is the next gain.
 - **Counting days of stay against a visit's limit.**
 - **A residence application.**
 - **Travel refusing entry without the permission.** SLATE's journeys don't yet ask; the shoot refuses the work.

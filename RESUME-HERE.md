@@ -54,6 +54,7 @@ The command, word for word, is in the conversation of November 14, 2026; its nin
   - The visa application restored where a fee and time are recorded.
   - The invented 30 days and one-year permit gone.
   - The shoot checks acting and directing separately.
+  - Passports from SLATE-REBUILD's records where 1221 has no office: 101 more citizenships.
   - Tests: `tests/v8-papers.test.ts`.
 - **7. Coverage by jurisdiction** (`docs/v9/COVERAGE.md`, `docs/v9/coverage.json`): 252 countries, 7 capabilities,
   held by `tests/v9-coverage.test.ts`.
@@ -61,10 +62,8 @@ The command, word for word, is in the conversation of November 14, 2026; its nin
   desktop and phone (Chromium) and the iPhone 15 Pro Max (WebKit emulation).
 
 **Next, in order.**
-1. Connect SLATE-REBUILD's passport records (236) to the passport application, for the 221 countries 1221 has no office
-   for.
-2. Count days of stay against a visit's limit; make travel ask for entry.
-3. Show the international payment's quote on screen in a journey: it needs an account at a bank abroad, which SLATE's
+1. Count days of stay against a visit's limit; make travel ask for entry.
+2. Show the international payment's quote on screen in a journey: it needs an account at a bank abroad, which SLATE's
    start doesn't give.
 5. **Open defects.**
    - Two ported 1221 cases fail and their cause isn't found yet. Both are in `tests/bankworld/remaining-09-banking.test.ts`,

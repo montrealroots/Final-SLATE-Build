@@ -2,7 +2,7 @@
 // country asks of you, what working there asks for each kind of work, and what you have applied for. Each line says
 // where its answer comes from; nothing the game hasn't confirmed is called ready.
 import { useState } from 'react';
-import { ACTIVITY_WORDS, applications, applyForVisa, entryRight, passports, permits, visaCheck, workRight, type Activity } from '../engine/papers';
+import { ACTIVITY_WORDS, applications, applyForRecordedPassport, applyForVisa, entryRight, passportOffers, passports, permits, visaCheck, workRight, type Activity } from '../engine/papers';
 import { bankSim } from '../engine/bankworld';
 import { passportOffice, passportRefusal, passportRuleFor } from '../engine/bankworld/systems/documents';
 import { formatMoney } from '../engine/bankworld/core/money';
@@ -47,8 +47,24 @@ export function PapersCard() {
           {!passports(g).length && <li className="list-item list-static">No passport on record.</li>}
         </ul>
         {rule && office && <p className="small">{rule.name}: {formatMoney(Math.round(office.fee * 100), office.currency)} from your bank, ready in about {office.days} days{rule.daysEstimated ? ' (an estimate)' : ''}. {rule.feeBasis}</p>}
-        <button className="btn btn-sm" disabled={!!passportNo} onClick={() => { const r = run('documents.apply_passport', {}); setErr(r.ok ? null : r.error ?? null); }}>Apply For A Passport</button>
-        {passportNo && <p className="dim small">{passportNo}</p>}
+        {rule ? (
+          <>
+            <button className="btn btn-sm" disabled={!!passportNo} onClick={() => { const r = run('documents.apply_passport', {}); setErr(r.ok ? null : r.error ?? null); }}>Apply For A Passport</button>
+            {passportNo && <p className="dim small">{passportNo}</p>}
+          </>
+        ) : (
+          // No 1221 office for your citizenship: SLATE-REBUILD's record of it, each route with its fee and time, or what's missing.
+          <ul className="list small" aria-label="Ways To Get Your Passport">
+            {passportOffers(g).map((o, i) => (
+              <li key={`${o.route.id}-${i}`} className="list-item list-static">
+                <span className="grow">{o.route.speed === 'urgent' ? 'Urgent' : 'Standard'}, {o.route.where === 'home' ? 'at home' : 'from abroad'}: {o.fee ? formatMoney(o.fee.minor, o.fee.currency) : 'fee not recorded'}, {o.route.within ? `ready in ${o.route.within.n} ${o.route.within.unit}${o.route.within.n === 1 ? '' : 's'}` : 'time not recorded'}{o.validYears ? `, valid ${o.validYears} years` : ''}</span>
+                {o.missing.length ? <span className="dim">Not taken: {o.missing.join(' and ')} not recorded</span>
+                  : <button className="btn btn-sm" aria-label={`Apply: ${o.route.id}`} onClick={() => setErr(store.act((s) => applyForRecordedPassport(s, i)))}>Apply</button>}
+              </li>
+            ))}
+            {!passportOffers(g).length && <li className="list-item list-static">No record of your country&apos;s passport office for where you live.</li>}
+          </ul>
+        )}
       </section>
 
       <section className="card" aria-labelledby="visit-h">
