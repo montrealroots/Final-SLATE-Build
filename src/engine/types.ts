@@ -3,7 +3,7 @@
 
 import type { Place } from '../data/places';
 
-export const SAVE_VERSION = 9;
+export const SAVE_VERSION = 10;
 
 export type PronounSet = 'he' | 'she' | 'they';
 export type ActingTitle = 'Actor' | 'Actress';
@@ -82,7 +82,16 @@ export interface CreationDraft {
   updatedAt: number;
   /** World-catalog places chosen during creation (catalog places don't need a record here). */
   places?: Record<string, Place>;
-  /** Your own savings at the start, and what your family offers (personal.ts). Absent in drafts from before November 12, 2026: none of either. */
+  /**
+   * What you inherit at nineteen (personal.ts; the owner's v8 package, decision 3): $25,000,000 unless changed before the
+   * story starts. Released once; there is no allowance after it.
+   */
+  inheritance?: { currency: 'USD'; amountMinor: number };
+  /**
+   * The v4 opening: your savings and what your family offers. The creation screens stopped asking on November 14, 2026
+   * (normalizeDraft drops them from a saved draft); a draft that names either still opens that way, which is how the
+   * family contracts old saves hold stay tested.
+   */
   savings?: number;
   family?: { circumstances: import('./personal').FamilyCircumstances; support: import('./personal').FamilySupportKind; amount: number; gear?: string[] };
 }
@@ -642,6 +651,10 @@ export interface ProjectFinance {
   deals: FinanceDeal[];
   /** What the estimate was made of when the draft was approved (estimate.ts), to compare spending with; absent before November 8, 2026. */
   estimateAtApproval?: { draft: number; at: number; total: number; byArea: Record<string, number>; shootDays: number };
+  /** What you plan to spend, exactly, in cents (project-budget.ts, from November 14, 2026). Absent: not set, which isn't zero. */
+  planned?: import('./project-budget').PlannedBudget;
+  /** Every change to the plan, with its reason; a revision never moves money. */
+  revisions?: import('./project-budget').BudgetRevision[];
 }
 
 export interface Obligation {
@@ -1376,8 +1389,14 @@ export interface GameState {
   places: Record<string, Place>;
   /** Your own account and your family's terms (personal.ts). Absent in saves from before November 12, 2026: no money of your own. */
   money?: import('./personal').PersonalMoney;
+  /** Every account's transactions (cash/journal.ts), from save version 10. */
+  journal?: import('./cash/journal').Journal;
   /** The player's own production company (company.ts). Absent until they form one, and in saves from before November 13, 2026. */
   company?: import('./company').Company;
+  /** The name your work is credited under, which is you (company.ts Banner, from November 14, 2026). */
+  banner?: import('./company').Banner;
+  /** Work permits applied for and granted (papers.ts, from November 14, 2026). */
+  permits?: import('./papers').WorkPermit[];
   /** First-look deals offered, running and past (first-look.ts). Absent until the first offer, and in saves from before November 13, 2026. */
   firstLooks?: import('./first-look').FirstLook[];
   /** Equipment you own or your family lends (equipment.ts). Absent in saves from before November 12, 2026: none. */

@@ -83,7 +83,25 @@ export function validateGameState(raw: unknown): asserts raw is GameState {
 
   if (s.money !== undefined) {
     const m = s.money as Obj;
-    need(isObj(m) && Array.isArray(m.postings) && (m.postings as unknown[]).every((x) => isObj(x) && isId((x as Obj).id) && isNum((x as Obj).amount) && isNum((x as Obj).at) && typeof (x as Obj).key === 'string' && typeof (x as Obj).kind === 'string'), 'your own account', 'is malformed');
+    need(isObj(m) && (m.postings === undefined) && (m.family === undefined || isObj(m.family)), 'your own account', 'is malformed');
+  }
+  if (s.journal !== undefined) {
+    // The journal's rules (cash/journal.ts): every amount a safe whole number of cents, every line on a known account in
+    // its currency, and every transaction summing to zero in each currency. A save that breaks one is damaged.
+    const j = s.journal as Obj;
+    need(isObj(j) && isObj(j.accounts) && Array.isArray(j.txs) && Array.isArray(j.holds) && isNum(j.seq), 'your accounts', 'are malformed');
+    const accts = j.accounts as Record<string, Obj>;
+    for (const t of j.txs as Obj[]) {
+      need(isObj(t) && isStr(t.id) && typeof t.key === 'string' && isNum(t.at) && Array.isArray(t.lines), 'a transaction', 'is malformed');
+      const sums: Record<string, number> = {};
+      for (const l of t.lines as Obj[]) {
+        const a = accts[l.account as string];
+        need(isObj(l) && Number.isSafeInteger(l.minor) && isObj(a), 'a transaction', 'has a malformed line');
+        sums[a.currency as string] = (sums[a.currency as string] ?? 0) + (l.minor as number);
+      }
+      need(Object.values(sums).every((x) => x === 0), 'a transaction', "doesn't balance");
+    }
+    need((j.holds as Obj[]).every((h) => isObj(h) && Number.isSafeInteger(h.minor) && isObj(accts[h.account as string])), 'a hold', 'is malformed');
   }
 
   if (s.gear !== undefined) {

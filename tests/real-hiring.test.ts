@@ -34,7 +34,9 @@ const idOf = (p: Project, name: string) => approvedCharacters(p).find((c) => c.n
 const ADA_ID = 'tp_800001';
 
 describe('one real person, from the catalog to the credits', () => {
-  const s = startLife('real-hire');
+  // A world in which she is free for the production (re-chosen November 14, 2026, when the fixtures' worlds changed with
+  // the player's age: in 'real-hire' her drawn bookings now cover it; in seven others they don't).
+  const s = startLife('real-hire-2');
   const p = short(s, 'Harbour Song');
   const mara = idOf(p, 'Mara');
   let hire: Hire;

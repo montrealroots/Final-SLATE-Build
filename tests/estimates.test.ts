@@ -5,6 +5,8 @@ import { buildTasks, costBreakdown, generatePlan, groupShootDays, ledgerTotals, 
 import { approvalScope, costCuts, estimateAgainstSpending, scopeChange } from '../src/engine/cost-cuts';
 import { setShotPlan } from '../src/engine/takes-actions';
 import { deserialize, serialize } from '../src/engine/save';
+import { productionWindow } from '../src/engine/hiring';
+import { isAvailable } from '../src/engine/people';
 import type { GameState, Project } from '../src/engine/types';
 import { approve, buildProject, castAll, manage, runDays, staffAll, startLife, startProduction } from './helpers';
 
@@ -137,7 +139,9 @@ describe('changing scope', () => {
     // After hiring a stunt coordinator (needed only for the roof, which stays) and a crowd casting coordinator (needed
     // only for the pier crowd, which goes), the second is named as a commitment that outlasts the change.
     p.funding.fund += 1_000_000;
-    const coord = roleCandidates(s, p, 'extras-casting')[0];
+    // The first coordinator free for the production (the world's bookings are drawn from its seed).
+    const win = productionWindow(s, p);
+    const coord = roleCandidates(s, p, 'extras-casting').find((c) => isAvailable(s, c, win.from, win.to, p.id).ok)!;
     const h = makeOffer(s, p, { personId: coord.id, roleId: 'extras-casting', dayRate: coord.dayRate * 2 });
     for (let i = 0; i < 5 && h.status === 'offered'; i++) manage(s, p), runDays(s, p, 1);
     expect(h.status).toBe('accepted');
@@ -158,7 +162,9 @@ describe('changing scope', () => {
 
 describe('estimate against spending', () => {
   it('after shooting, spending is compared by area with the estimate made at approval, the differences explained, and it survives a save', () => {
-    const s = startLife('vs-actual', 'gb-london', { startDate: '2026-10-05', startTime: '09:00' });
+    // A world whose October rains on one exterior day (re-chosen November 14, 2026, when the fixtures' worlds changed with
+    // the player's age; 'vs-actual' now stays dry).
+    const s = startLife('vs-actual-7', 'gb-london', { startDate: '2026-10-05', startTime: '09:00' });
     const p = buildProject(s, { title: 'Wet Streets', format: 'short', medium: 'live-action', scenario: 'micro', runtime: 6 }, [{ name: 'Ada', patch: { roleSize: 'lead' } }],
       [1, 2, 3].map((i) => ({ place: `Street ${i}`, intExt: 'EXT' as const, time: 'DAY' as const, chars: ['Ada'], minutes: 2 })));
     approve(s, p);

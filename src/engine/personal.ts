@@ -16,12 +16,14 @@
 import { BACKERS, deals, financeSummary, moneyKept, ownMoney, scriptApprovedFor } from './finance';
 import { closeSettled, ledgerTotals, money, reserve, settle } from './budget';
 import { addLog, newId, onDraftCheck, onNewGame, registerHandler, schedule } from './state';
-import { DAY } from './time';
-import type { FinanceDeal, GameState, Project } from './types';
+import { DAY, formatDateKey } from './time';
+import { available, ensureAccount, outsideAccount, postTx, statementLines } from './cash/journal';
+import { fromMinor, toMinor } from './cash/money';
+import type { CreationDraft, FinanceDeal, GameState, Project } from './types';
 
 export type FamilyCircumstances = 'stretched' | 'getting-by' | 'comfortable' | 'wealthy';
 export type FamilySupportKind = 'none' | 'gift' | 'loan' | 'investment' | 'equipment';
-export type PersonalKind = 'savings' | 'gift' | 'loan' | 'investment' | 'repayment' | 'participation' | 'to-project' | 'from-project' | 'equipment' | 'equipment-sale' | 'paid-work' | 'commission' | 'company' | 'overhead';
+export type PersonalKind = 'inheritance' | 'savings' | 'gift' | 'loan' | 'investment' | 'repayment' | 'participation' | 'to-project' | 'from-project' | 'equipment' | 'equipment-sale' | 'paid-work' | 'commission' | 'company' | 'overhead';
 export interface PersonalPosting { id: string; at: number; kind: PersonalKind; amount: number; label: string; key: string }
 export interface FamilyTerms {
   circumstances: FamilyCircumstances;
@@ -36,7 +38,27 @@ export interface FamilyTerms {
   /** Equipment lent (equipment.ts): what, by shop id. `amount` is its value at listed prices; no money moves. */
   gear?: string[];
 }
-export interface PersonalMoney { postings: PersonalPosting[]; family?: FamilyTerms }
+/**
+ * What the account knows beyond its transactions: a family's terms, from a save made before the v8 start. The postings
+ * themselves live in the journal (cash/journal.ts) from November 14, 2026; personalPostings reads them back. Before then
+ * they were a list here, migrated by migrateV9toV10.
+ */
+export interface PersonalMoney {
+  family?: FamilyTerms;
+  /** Where your opening money came from (the v8 start): one inheritance, released once, recorded with its source. */
+  source?: InheritanceSource;
+}
+export interface InheritanceSource {
+  kind: 'inheritance';
+  /** The game's fictional background, not a real family or company. */
+  background: 'oil-family';
+  currency: 'USD';
+  amountMinor: number;
+  /** The day it was released: your 19th birthday, on or before the story's first day. */
+  releasedOn: string;
+  /** Estate administration and any taxes are settled before the story starts and aren't simulated. */
+  settledOffstage: true;
+}
 
 /** How much each family could offer at most. Game calibration, not income data; it decides nothing else. */
 export const CIRCUMSTANCES: Record<FamilyCircumstances, { label: string; says: string; most: number }> = {
@@ -78,23 +100,40 @@ export function openingPreview(savings: number, terms: FamilyTerms | null): { li
   return { lines, balance: lines.reduce((a, x) => a + x.amount, 0), owe };
 }
 
-// No posting is guarded against being made twice by its key: each caller makes one only once (a repayment is what is due
-// less what was repaid, so a repeated month repays nothing; transfers have ids of their own). The key says what it was.
-export const postPersonal = (state: GameState, kind: PersonalKind, amount: number, label: string, key: string) => {
-  (state.money ??= { postings: [] }).postings.push({ id: newId(state, 'pp'), at: state.now, kind, amount: Math.round(amount), label, key });
+// The account is the journal's player cash account (cash/journal.ts). Each kind of movement comes from or goes to its own
+// outside account, so the statement can say what it was; a key posted twice moves money once (from November 14, 2026;
+// until then nothing guarded a repeated key, and each caller made sure it posted only once).
+export const PERSONAL_CASH = 'player:cash:USD';
+const COUNTER: Record<PersonalKind, string> = {
+  inheritance: 'inheritance', savings: 'opening-savings', gift: 'family-gift', loan: 'family-loan', investment: 'family-investment', repayment: 'family-loan', participation: 'family-investment',
+  'to-project': 'projects', 'from-project': 'projects', equipment: 'equipment', 'equipment-sale': 'equipment', 'paid-work': 'paid-work', commission: 'agent-commission',
+  company: 'company-transfers', overhead: 'first-look-overhead',
 };
+export const counterOf = (kind: PersonalKind) => COUNTER[kind];
+export const openPersonalAccount = (state: GameState) => ensureAccount(state, { id: PERSONAL_CASH, owner: 'player', type: 'asset', currency: 'USD', label: 'Your Account' });
+export const postPersonal = (state: GameState, kind: PersonalKind, amount: number, label: string, key: string, counter = COUNTER[kind]) => {
+  state.money ??= {};
+  openPersonalAccount(state);
+  const minor = toMinor(Math.round(amount));
+  postTx(state, { key, kind, memo: label, lines: [{ account: PERSONAL_CASH, minor, kind, label }, { account: outsideAccount(state, counter, 'USD'), minor: -minor }] });
+};
+/** The account's postings, read back from the journal in whole dollars, oldest first. */
+export const personalPostings = (state: GameState): PersonalPosting[] =>
+  statementLines(state, PERSONAL_CASH).map(({ tx, line }) => ({ id: tx.id, at: tx.at, kind: line.kind as PersonalKind, amount: fromMinor(line.minor), label: line.label ?? tx.memo, key: tx.key }));
 
 /** Your account at the start of a new story, from what was chosen at creation. */
 export function openPersonalMoney(state: GameState, savings: number, terms: FamilyTerms | null): void {
-  state.money = { postings: [], ...(terms ? { family: terms } : {}) };
+  state.money = terms ? { family: terms } : {};
+  openPersonalAccount(state);
   if (savings > 0) postPersonal(state, 'savings', Math.min(SAVINGS_MOST, savings), 'Your Savings', 'opening:savings');
   if (!terms || terms.support === 'none' || terms.support === 'equipment') return; // lent equipment is equipment.ts's
   postPersonal(state, terms.support, terms.amount, `From Your Family: ${SUPPORT_LABELS[terms.support]}`, `opening:${terms.support}`);
   if (terms.support === 'loan') schedule(state, state.now + 30 * DAY, 'family-repayment', { month: 1 }, { attention: 'silent', priority: 60 });
 }
 
-export const personalBalance = (state: GameState): number => (state.money?.postings ?? []).reduce((a, x) => a + x.amount, 0);
-const sumOf = (state: GameState, kind: PersonalKind) => (state.money?.postings ?? []).filter((x) => x.kind === kind).reduce((a, x) => a + x.amount, 0);
+/** What you can spend now, in whole dollars: settled, less anything held. */
+export const personalBalance = (state: GameState): number => fromMinor(available(state, PERSONAL_CASH));
+export const sumOf = (state: GameState, kind: PersonalKind) => personalPostings(state).filter((x) => x.kind === kind).reduce((a, x) => a + x.amount, 0);
 
 /** Where a family loan stands: repaid so far and what is still owed. Derived from postings. */
 export function loanStanding(state: GameState): { repaid: number; owed: number } | null {
@@ -188,19 +227,62 @@ export function personalStatement(state: GameState): { kind: PersonalKind; total
   return order.map((kind) => ({ kind, total: sumOf(state, kind) })).filter((x) => x.total !== 0);
 }
 export const PERSONAL_LABELS: Record<PersonalKind, string> = {
-  savings: 'Your Savings', gift: 'Gift From Your Family', loan: 'Loan From Your Family', investment: 'Investment From Your Family', 'from-project': 'Taken Home From Your Projects',
+  inheritance: 'Your Inheritance', savings: 'Your Savings', gift: 'Gift From Your Family', loan: 'Loan From Your Family', investment: 'Investment From Your Family', 'from-project': 'Taken Home From Your Projects',
   'to-project': 'Put Into Your Projects', repayment: 'Repaid To Your Family', participation: "Your Family's Share Of What You Took Home",
   equipment: 'Equipment Bought And Serviced', 'equipment-sale': 'Equipment Sold', 'paid-work': 'Paid For Work On Others\' Productions', commission: 'Commission To Your Agent', company: 'To And From Your Company', overhead: 'Overhead From A First-Look Deal',
 };
 void deals; void ownMoney;
 
-// A new story opens your account from what was chosen at creation; a draft from before has none of either.
-const draftTerms = (d: { family?: { circumstances: FamilyCircumstances; support: FamilySupportKind; amount: number; gear?: string[] } }): FamilyTerms | string | null => (d.family ? familyTerms(d.family.circumstances, d.family.support, d.family.amount, d.family.gear) : null);
+// A new story opens your account with its inheritance (the v8 start, from November 14, 2026). A draft that names savings or
+// a family's offer is the v4 opening, which the creation screens no longer make (state.ts normalizeDraft); it is kept so
+// the family contracts old saves hold stay tested. A draft from before either has none of them.
+const draftTerms = (d: Pick<CreationDraft, 'family'>): FamilyTerms | string | null => (d.family ? familyTerms(d.family.circumstances, d.family.support, d.family.amount, d.family.gear) : null);
+const legacyOpening = (d: { savings?: number; family?: unknown }) => d.savings !== undefined || d.family !== undefined;
+/** The most an inheritance can be set to before a new story: game calibration, so a typo can't make a fortune of billions. */
+export const INHERITANCE_MOST_MINOR = 100_000_000_000; // $1,000,000,000
 onDraftCheck((d) => {
   const out: { field: string; step: 'starting-point'; message: string }[] = [];
-  if (d.savings !== undefined && !(d.savings >= 0 && d.savings <= SAVINGS_MOST)) out.push({ field: 'savings', step: 'starting-point', message: `Your savings can be from nothing to ${money(SAVINGS_MOST)}.` });
-  const t = draftTerms(d);
-  if (typeof t === 'string') out.push({ field: 'family', step: 'starting-point', message: t });
+  if (legacyOpening(d)) {
+    if (d.savings !== undefined && !(d.savings >= 0 && d.savings <= SAVINGS_MOST)) out.push({ field: 'savings', step: 'starting-point', message: `Your savings can be from nothing to ${money(SAVINGS_MOST)}.` });
+    const t = draftTerms(d);
+    if (typeof t === 'string') out.push({ field: 'family', step: 'starting-point', message: t });
+    return out;
+  }
+  const m = d.inheritance?.amountMinor;
+  if (d.inheritance && !(Number.isSafeInteger(m) && m! >= 0 && m! <= INHERITANCE_MOST_MINOR)) out.push({ field: 'inheritance', step: 'starting-point', message: `Your inheritance can be from nothing to ${money(INHERITANCE_MOST_MINOR / 100)}.` });
   return out;
 });
-onNewGame((state, d) => { const t = draftTerms(d); openPersonalMoney(state, d.savings ?? 0, typeof t === 'string' ? null : t); });
+onNewGame((state, d) => {
+  if (legacyOpening(d) || !d.inheritance) { const t = draftTerms(d); openPersonalMoney(state, d.savings ?? 0, typeof t === 'string' ? null : t); return; }
+  openInheritance(state, d.inheritance.amountMinor, inheritanceDay(d.birthDate, d.startDate), d.inheritance.currency);
+});
+
+/** The day the inheritance was released: your 19th birthday (28 February for a 29 February birthday in a common year). */
+export function inheritanceDay(birthDate: string, startDate: string): string {
+  const [y, m, dd] = birthDate.split('-').map(Number);
+  const yr = y + 19;
+  const leap = (yr % 4 === 0 && yr % 100 !== 0) || yr % 400 === 0;
+  const day = m === 2 && dd === 29 && !leap ? 28 : dd;
+  const key = `${yr}-${String(m).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
+  return key <= startDate ? key : startDate;
+}
+
+/**
+ * Open your account with the inheritance: one transaction from the estate, keyed so it can never post twice, and its
+ * source kept. Nothing recurs: no allowance, no share of what you earn, no second deposit when a company is formed.
+ */
+export function openInheritance(state: GameState, amountMinor: number, releasedOn: string, currency: 'USD' = 'USD'): void {
+  // Only dollars until the game's own money has other currencies: the account and the estate are in the currency chosen.
+  state.money = { source: { kind: 'inheritance', background: 'oil-family', currency, amountMinor, releasedOn, settledOffstage: true } };
+  openPersonalAccount(state);
+  if (amountMinor <= 0) return;
+  ensureAccount(state, { id: 'outside:inheritance:USD', owner: 'outside', type: 'equity', currency: 'USD', label: 'Your Family\'s Estate' });
+  postTx(state, { key: 'opening:inheritance', kind: 'inheritance', memo: 'Your Inheritance', lines: [{ account: PERSONAL_CASH, minor: amountMinor, kind: 'inheritance', label: 'Your Inheritance' }, { account: 'outside:inheritance:USD', minor: -amountMinor }] });
+}
+
+/** What the inheritance says on the screen: the story's words, with the amount and the day. */
+export function inheritanceStory(amountMinor: number, releasedOn: string | null, startDate: string): string {
+  const amt = money(amountMinor / 100);
+  const when = releasedOn === null ? 'At nineteen, your inheritance is released.' : releasedOn === startDate ? 'Today, your nineteenth birthday, your inheritance is released.' : `Your inheritance was released on your nineteenth birthday, ${formatDateKey(releasedOn)}, and is settled before your story begins.`;
+  return `Your family's wealth comes from oil. ${when} You have ${amt} available to begin your independent career. There is no allowance after it, and nobody to bail you out.`;
+}

@@ -1,0 +1,237 @@
+{
+  "package": "SLATE v8 Independent World Overhaul",
+  "createdOn": "2026-11-14",
+  "researchRecords": 19,
+  "files": [
+    {
+      "path": "00-START-HERE.md",
+      "bytes": 3476,
+      "sha256": "23f7d6225c7d94d9ae7fcb00d529a3408327fb81b2f47d54c8e2c58194795715"
+    },
+    {
+      "path": "01-REPOSITORY-FINDINGS.md",
+      "bytes": 4894,
+      "sha256": "7ea0b34616b964e09639ff13b4c9c7072d89895327cde7d8ef03b5988f28a9dc"
+    },
+    {
+      "path": "02-START-IDENTITY-AND-COMPANY.md",
+      "bytes": 5138,
+      "sha256": "7011ea1fb45497311245fc7841852a46361c197e51c9eacc60fabef5d71f48d6"
+    },
+    {
+      "path": "03-BANKING-BUDGETS-AND-CASHFLOW.md",
+      "bytes": 7195,
+      "sha256": "59eedd756aadbd52ecb9c9ffe8dd257e3c0393512b8884e65e20cf10aa9b9ef0"
+    },
+    {
+      "path": "04-FIRST-LOOK-AND-STUDIO-DEALS.md",
+      "bytes": 7205,
+      "sha256": "876e40e6a7db838e478b7e6d17fb8741ab19aa79e31be8751d3668187aedba40"
+    },
+    {
+      "path": "05-PAPERWORK-TRAVEL-AND-WORLD.md",
+      "bytes": 4808,
+      "sha256": "3d9916f993d8f1b808c763a20b2b3c931109819c38f63d6bed7ebf75a5244208"
+    },
+    {
+      "path": "06-SCRIPT-LOCATION-AND-PHONE-UI.md",
+      "bytes": 5002,
+      "sha256": "d2804afa8d181adc85cb8a7c4e71b2e1325d79a1460e93a7064bbc931593ea15"
+    },
+    {
+      "path": "07-IMPLEMENTATION-AND-ACCEPTANCE.md",
+      "bytes": 5421,
+      "sha256": "f950f1edc8b0bafee5e3adc274b177565015428c139e0369873bd0ff90c43d90"
+    },
+    {
+      "path": "08-COVERAGE-AND-OPEN-RESEARCH.md",
+      "bytes": 2362,
+      "sha256": "abab91b95c758a581e194bf0eefde2110c945269844aa042b5998045d2967750"
+    },
+    {
+      "path": "09-CLAUDE-COMMAND.txt",
+      "bytes": 1684,
+      "sha256": "2c23a9dc8a21ee0f186e64d215cc15a526c50f88fad4b49243dad880dbeea73d"
+    },
+    {
+      "path": "10-AWARDS-AND-FESTIVALS.md",
+      "bytes": 9962,
+      "sha256": "5d35a8277d75a731a7a4ddd534a88ffd75e9099f56e12fce7e036da9b2cf0c0b"
+    },
+    {
+      "path": "11-RESEARCH-NOTES.md",
+      "bytes": 6680,
+      "sha256": "34a5399e89ded8a673927fac8228a7fa2d58717b3220c3b68e4ee9ea1eed4de3"
+    },
+    {
+      "path": "VALIDATION-REPORT.md",
+      "bytes": 885,
+      "sha256": "445c09454021b93d9e18b39b46c137e7cabc2c5f79422cb5a246a467b4e0855d"
+    },
+    {
+      "path": "data/deal-model.json",
+      "bytes": 1116,
+      "sha256": "bc79d7d495c8b20f875056b76d48bee3045311eb4067fa59115387c490506970"
+    },
+    {
+      "path": "data/legacy-coverage-summary.json",
+      "bytes": 16083,
+      "sha256": "de7d085c48ce774c9d49ee3de7be37a31088d498c6045c91148046cd4cf74003"
+    },
+    {
+      "path": "data/price-examples.json",
+      "bytes": 1812,
+      "sha256": "124c24fa8e621952acad9903a0d16f5189cf6144ecea02abb152d157ed34e08a"
+    },
+    {
+      "path": "data/research.json",
+      "bytes": 8400,
+      "sha256": "c4e02b23d9adc4b3c1f57015d4ca5ce177745717fbbd9061a401e30e664ca2f1"
+    },
+    {
+      "path": "data/scenario.json",
+      "bytes": 532,
+      "sha256": "27ddece41b5d0d54ed0d268968743aa45a68fab180abe7e8ced651de0646a6ee"
+    },
+    {
+      "path": "inherited/SLATE-Awards-Design-Addendum.zip",
+      "bytes": 5092,
+      "sha256": "78d5a1e0ff5a93cbe6d9ee699a4ab65d303fcaa83ab3e87f57289943ff35ab14"
+    },
+    {
+      "path": "inherited/SLATE-Complete-Lifecycle-Standard.md",
+      "bytes": 9824,
+      "sha256": "dad14e52528dd1960ca65f7255abd563b1ed24018862a071b5e6f45372e9bbce"
+    },
+    {
+      "path": "inherited/SLATE-Researched-World-v7.zip",
+      "bytes": 83616,
+      "sha256": "db078987d696056b20b3aa20d325f9b8807702479f0fc886443ec039bd89104b"
+    },
+    {
+      "path": "reference/money_reference.py",
+      "bytes": 2969,
+      "sha256": "2f4a485714b75ae44714b263bd606aac4537a24d85ee72e074886b9f85065acc"
+    },
+    {
+      "path": "reference/test_money_reference.py",
+      "bytes": 2849,
+      "sha256": "c6a64c0929bddba75dcae5d58037ce17d4f89f6a0b01b52c9c42ca3edbd5f3b1"
+    },
+    {
+      "path": "repository-reference/Final-SLATE-Build/src/engine/company.ts",
+      "bytes": 9382,
+      "sha256": "c2661784d15f06a6f9dbe6099346ca74d229275d89ffd1fbfa5e16f5ea43dd89"
+    },
+    {
+      "path": "repository-reference/Final-SLATE-Build/src/engine/first-look.ts",
+      "bytes": 27370,
+      "sha256": "6dd98662f3c42cc45641a5c70821507c4480e5ebbbd1e4e70f72421b06a46e9c"
+    },
+    {
+      "path": "repository-reference/Final-SLATE-Build/src/engine/personal.ts",
+      "bytes": 15598,
+      "sha256": "bbe186678323e207a63ee8f99f3bbd72d4f54b331482be31dd39cce40f7e029b"
+    },
+    {
+      "path": "repository-reference/Final-SLATE-Build/src/ui/Creation.tsx",
+      "bytes": 43177,
+      "sha256": "08cec1519a52333218e585d37b3d5da32a60ce5dee2eddcbc19e8191f1db72ca"
+    },
+    {
+      "path": "repository-reference/Final-SLATE-Build/src/ui/ScriptViews.tsx",
+      "bytes": 123925,
+      "sha256": "bd09dba7b142ae823bd1bdf9dd412f0247d81f9a3b4bb8de3bd26dd43c146ee1"
+    },
+    {
+      "path": "repository-reference/Final-SLATE-Build/src/ui/app.css",
+      "bytes": 86085,
+      "sha256": "5e73c78cd9236c9162c0cf8dceda8a622b896e7728c259bf0d513b8559828851"
+    },
+    {
+      "path": "repository-reference/SLATE-REBUILD/coverage/banks-countries.json",
+      "bytes": 76324,
+      "sha256": "050e13ce08b3dc98eb7666d3c97e0e2c182425208b43e0bc8f96306f7081b9b0"
+    },
+    {
+      "path": "repository-reference/SLATE-REBUILD/coverage/work-countries.json",
+      "bytes": 76400,
+      "sha256": "845d94dabed00d368c51edf8c4d28f6d62c6fd200df5e1afe4401124c8a7303e"
+    },
+    {
+      "path": "repository-reference/SLATE-REBUILD/research/sources/money/banks/CA.json",
+      "bytes": 1730,
+      "sha256": "51e193530432c176fdb741af8146501c0f92f84fb12e31333ae58d645ac05641"
+    },
+    {
+      "path": "repository-reference/SLATE-REBUILD/research/sources/money/banks/GB.json",
+      "bytes": 2207,
+      "sha256": "9bd399ce7c34e1e7be57f0cd5d2208fc32dbf77deb5d81da1c72e867c3e3b56f"
+    },
+    {
+      "path": "repository-reference/SLATE-REBUILD/research/sources/money/banks/US.json",
+      "bytes": 3600,
+      "sha256": "5cdbaaec1eb1e80318ea0d2e7ee97a1315e494505accad63b0697e0c45611c66"
+    },
+    {
+      "path": "repository-reference/SLATE-REBUILD/src/core/money/currencies.json",
+      "bytes": 12725,
+      "sha256": "47a3b8ffcb317361b2bc094a096b1ba5794c9e4d14fd5188fedb26502db2bf41"
+    },
+    {
+      "path": "repository-reference/SLATE-REBUILD/src/core/money/money.ts",
+      "bytes": 7050,
+      "sha256": "28818001cfacab32d11e1ebe2472cdca8e81fde859785012d5f0a9aa2af15002"
+    },
+    {
+      "path": "repository-reference/SLATE-REBUILD/src/money/accounts/accounts.ts",
+      "bytes": 19372,
+      "sha256": "d0c84b46631041e0d4bb995face3855028ee8066c4bd6190dbd0f7b5fc323a6a"
+    },
+    {
+      "path": "repository-reference/SLATE-REBUILD/src/money/banks/banks.json",
+      "bytes": 69839,
+      "sha256": "637a05469252be939d56f1911e989b8eb14d7fad92d8c1398fae58b7117a1bb8"
+    },
+    {
+      "path": "repository-reference/SLATE-REBUILD/src/money/banks/banks.ts",
+      "bytes": 7476,
+      "sha256": "0f68b33933a94013a83a27c038f65f111b4d2dbf0c148e2377354ef20c529b4a"
+    },
+    {
+      "path": "repository-reference/SLATE-REBUILD/src/money/formats/number.ts",
+      "bytes": 8323,
+      "sha256": "0e8adf57546a55d308e8479f99b7793a12fb9d5a98b525043856d0a75134b29f"
+    },
+    {
+      "path": "repository-reference/SLATE-REBUILD/src/money/ledger/ledger.ts",
+      "bytes": 5991,
+      "sha256": "bcff30c42ec0a3533a6022f97069b7c113ae351d04eccd049d2e8ea30d5ef59c"
+    },
+    {
+      "path": "repository-reference/SLATE-REBUILD/src/papers/passports/passports.json",
+      "bytes": 130115,
+      "sha256": "a8bf147ffb1489cd149d1d482bfb4194c01ec67bd987d9506acbb2816c66f990"
+    },
+    {
+      "path": "repository-reference/SLATE-REBUILD/src/papers/visits/visits.json",
+      "bytes": 804414,
+      "sha256": "530ac1ab59544b07204442a4b79908c2625108e49d7c4aea1eada01ed1b29ab9"
+    },
+    {
+      "path": "repository-reference/SLATE-REBUILD/src/papers/visits/visits.ts",
+      "bytes": 3561,
+      "sha256": "8c101c6beccbaa4b4207977b6dca514da4b4059fa688eff0b132ea14b3c66e1e"
+    },
+    {
+      "path": "repository-reference/SLATE-REBUILD/src/papers/work/work.json",
+      "bytes": 135997,
+      "sha256": "4c690147f244360c3b63b9e988b494460d08413a1cc4df797958eca4e2905009"
+    },
+    {
+      "path": "repository-reference/SLATE-REBUILD/src/papers/work/work.ts",
+      "bytes": 3297,
+      "sha256": "f43aba9ccd53435a8d64e28379bc5569c714e3c257f9afe8d64394af4d1bba2e"
+    }
+  ]
+}

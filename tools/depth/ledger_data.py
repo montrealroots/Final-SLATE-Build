@@ -35,7 +35,7 @@ C = {
 ]),
 '01-03': ('Creation > Identity, Starting Point', 'src/engine/state.ts; src/engine/time.ts; src/ui/WorldPicker.tsx', [
   ('Birthplace, where you live, birth date and a start from 2026 (default) to 2050 with a time; at least 19 that day', 'VE',
-   ['tests/dates.test.ts::you must be at least 19 on the starting date', 'e2e/creation.spec.ts::Starting Point: featured cities A to Z'],
+   ['tests/dates.test.ts::you are exactly 19 on the starting date', 'e2e/creation.spec.ts::Starting Point: featured cities A to Z'],
    'Owner decision of November 8, 2026 widened the package\'s 2026-only start to 2026-2050'),
   ('Local context before confirming: zone, date and time in words, population, the chosen place on the map', 'VE',
    ['e2e/creation.spec.ts::Starting Point: featured cities A to Z'], ''),

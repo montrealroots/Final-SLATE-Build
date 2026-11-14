@@ -1,12 +1,12 @@
 // J02 as one run (the v4 package, 05: "Family loan/investment -> feature -> rented kit -> changed location ->
 // schedule/travel/child-policy checks -> budget overrun approval -> release -> repayments/participation. No nonexistent
-// automatic profit."; ledger V4-038.02). One game, through the interface: a loan from the family chosen on Review; a
+// automatic profit."; ledger V4-038.02). One game, through the interface: an inheritance set on Review (a family loan
+// until November 14, 2026, when the v8 start replaced the family menus); a
 // feature with a child's part; a kit rented for it; its harbour filmed in Bergen, with the unit's travel and the child
 // rules read where the game says them; Guide Me's ceiling met, returned to the player and approved higher; delivered,
-// released, the loan repaid month by month from the player's own account, and nothing from the project reaching that
-// account unless the player takes it home. The world seed is pinned (a labelled fixture).
+// released, and nothing reaching the player's own account that the player didn't move. The world seed is pinned (a labelled fixture).
 import { expect, test, type Page } from './test';
-import { addScene, advance, castRoles, nav, newProject, openStart, pickPlace, pinSeed, quickDraft, readSavedState, runToDelivery, saveAndApprove, section, staffEveryDepartment } from './helpers';
+import { addScene, advance, castRoles, nav, newProject, openStart, pickPlace, pinSeed, quickDraft, personalPostingsOf, readSavedState, runToDelivery, saveAndApprove, section, setInheritance, staffEveryDepartment } from './helpers';
 
 test.use({ actionTimeout: 20_000 });
 
@@ -20,33 +20,26 @@ const RENT = [
   ['Tripods', 'Manfrotto Befree Live Video Tripod Kit'], ['Lights', 'Amaran Halo 100x Bi-Color Light (100W)'], ['Light Stands', 'Godox 300F Light Stand'],
 ] as const;
 
-test('J02: a family loan, a feature on a rented kit, a harbour filmed abroad with a child in the cast, an overrun approved, released, and the loan repaid', async ({ page }, info) => {
+test('J02: an inheritance, a feature on a rented kit, a harbour filmed abroad with a child in the cast, an overrun approved, released, and nothing more arriving unasked', async ({ page }, info) => {
   test.skip(info.project.name !== 'desktop', 'One whole career run, at desktop width.');
   test.setTimeout(1_500_000);
 
-  // A loan from the family, its terms read on Review before the story starts.
+  // An inheritance of $7,500, read on Review before the story starts. Until November 14, 2026 this was $1,500 of savings
+  // and a $6,000 family loan repaid month by month; a new story no longer offers a loan (the loan's repayment is still
+  // run for the saves that hold one: tests/v8-inheritance.test.ts, tests/personal.test.ts).
   await openStart(page);
   await quickDraft(page, 'gb-london', '2026-05-04');
   await page.reload();
   await page.getByRole('button', { name: 'Continue Creation' }).click();
-  await page.getByRole('button', { name: 'Edit Money And Family' }).click();
-  const family = page.locator('section', { has: page.getByRole('heading', { name: 'Money And Family' }) });
-  await family.getByLabel('Your Savings').fill('1500');
-  await family.getByLabel("Your Family's Circumstances").selectOption({ label: 'Comfortable' });
-  await family.getByLabel('What Your Family Offers').selectOption({ label: 'A Loan' });
-  await family.getByLabel('How Much').fill('6000');
-  await expect(family).toContainText(/You repay your family \$[\d,]+ a month for \d+ months, \$6,000 in all, from your own account\./);
-  await page.getByRole('button', { name: 'Save And Return To Review' }).click();
+  await setInheritance(page, '7,500');
+  await expect(page.locator('section', { has: page.getByRole('heading', { name: 'Money', exact: true }) }).first()).toContainText('$7,500');
   await page.getByRole('button', { name: 'Start My Story' }).click();
   await expect(page.getByRole('heading', { name: /^Good (Morning|Afternoon|Evening), /, level: 1 })).toBeVisible();
   await pinSeed(page, 7);
-  const start = await readSavedState(page);
-  const { monthly, months } = start.money.family;
-  expect(start.money.family).toMatchObject({ support: 'loan', amount: 6000 });
   await nav(page, 'Profile');
   const mine = card(page, 'Your Money');
-  await expect(mine.getByRole('list', { name: 'Your Account, By What It Is' })).toContainText('Loan From Your Family');
-  await expect(mine).toContainText(`$0 repaid, $6,000 still owed at $${monthly.toLocaleString('en-US')} a month.`);
+  await expect(mine.getByRole('list', { name: 'Your Account, By What It Is' })).toContainText('Your Inheritance');
+  await expect(mine).toContainText('$7,500 in your own account.');
 
   // A feature with a child's part: Mia is ten.
   await nav(page, 'Projects');
@@ -63,7 +56,7 @@ test('J02: a family loan, a feature on a rented kit, a harbour filmed abroad wit
   await addScene(page, { index: 2, place: 'Harbour', chars: ['Ada'], minutes: '20', exterior: true });
   await saveAndApprove(page);
 
-  // Part of the loan goes in, by the player's choice: the target raised, and the money moved from their own account.
+  // Part of the inheritance goes in, by the player's choice: the target raised, and the money moved from their own account.
   await section(page, 'Budget');
   const target = Number(await page.getByLabel('Change Financing Target').inputValue());
   await page.getByLabel('Change Financing Target').fill(String(target + 5_000));
@@ -167,24 +160,10 @@ test('J02: a family loan, a feature on a rented kit, a harbour filmed abroad wit
   await accept.click();
   await expect.poll(async () => (await project(page)).offers.some((o: { status: string }) => o.status === 'accepted')).toBe(true);
 
-  // Months on: the loan is repaid from the player's own account, never more than the month asks, and what isn't paid
-  // is still owed. Nothing from the project reaches that account unless the player takes it home.
+  // Months on: nothing arrives in the player's own account that the player didn't move. The inheritance came once, no
+  // allowance follows, and nothing from the project reaches the account unless the player takes it home.
   for (let i = 0; i < 6; i++) await advance(page, 'month');
   const end = await readSavedState(page);
-  const repaid = end.money.postings.filter((x: { kind: string }) => x.kind === 'repayment');
-  expect(repaid.length).toBeGreaterThan(0);
-  // By the end of month k, never more than k months' repayments (personal.ts family-repayment): what is short one
-  // month is due with the next, and is said.
-  let paid = 0;
-  for (const x of repaid) {
-    const k = Number(x.key.split(':')[1]);
-    paid -= x.amount;
-    expect(paid).toBeLessThanOrEqual(Math.min(6000, monthly * k));
-  }
-  const lastMonth = Math.max(...repaid.map((x: { key: string }) => Number(x.key.split(':')[1])));
-  if (paid < Math.min(6000, monthly * lastMonth)) expect(end.log.some((l: { text: string }) => l.text.startsWith("You couldn't repay your family all that was due this month"))).toBe(true);
-  expect(months * monthly).toBeGreaterThanOrEqual(6000);
-  expect(end.money.postings.filter((x: { kind: string }) => x.kind === 'from-project')).toEqual([]);
-  await nav(page, 'Profile');
-  await expect(mine).toContainText(`$${paid.toLocaleString('en-US')} repaid, $${(6000 - paid).toLocaleString('en-US')} still owed at $${monthly.toLocaleString('en-US')} a month.`);
+  expect(personalPostingsOf(end).filter((x: { kind: string }) => x.kind === 'inheritance')).toHaveLength(1);
+  expect(personalPostingsOf(end).filter((x: { kind: string }) => ['from-project', 'gift', 'loan', 'savings', 'investment'].includes(x.kind))).toEqual([]);
 });

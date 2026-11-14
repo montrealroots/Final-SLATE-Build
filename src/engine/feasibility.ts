@@ -11,6 +11,9 @@ import { designsToReview } from './designs';
 import { projectedCost } from './estimate';
 import { money } from './budget';
 import { forecastFinish } from './production/forecast';
+import { readiness } from './project-budget';
+import { workRight } from './papers';
+import { filmPlace } from './destinations';
 import { dateKey, formatDateKey } from './time';
 import { getPlace } from '../data/places';
 import type { GameState, Project } from './types';
@@ -61,6 +64,24 @@ export function feasibility(state: GameState, p: Project): Feasibility {
   add({ label: 'Money', ok: short === 0,
     detail: short ? `The plan is projected to cost about ${money(cost)}; ${money(promised)} is promised, ${money(short)} short.` : `The plan is projected to cost about ${money(cost)}, and ${money(promised)} is promised.`,
     options: short ? ['Raise the rest on the Budget page: each backer has terms and days to answer.', 'Put in money of your own, which you get back only from what the project earns.', 'Cut scope: fewer days, a smaller crew or simpler scenes lower the estimate.'] : [] });
+
+  // 5b. Paying on time (project-budget.ts, from November 14, 2026): promised overall isn't paid in time. Money that arrives
+  // on delivery can't pay for the work before it.
+  if (short === 0) {
+    const r = readiness(state, p);
+    add({ label: 'Paying On Time', ok: r.short === 0, detail: r.short ? r.onTime : r.onTime,
+      options: r.short ? [`Move ${money(r.short)} in now: from your own account or your company's, which counts once it has settled.`, 'Ask a backer for more of their money at signing, and less on delivery.', 'Cut scope so less is paid before delivery.'] : [] });
+  }
+
+  // 5c. Papers (papers.ts; from November 14, 2026): a place filmed in a country where you may not work, when the day needs you.
+  const needsYou = p.cast.some((c) => c.performer === 'player') || p.episodes.some((e) => e.director === 'player');
+  if (needsYou) {
+    const abroad = [...new Set(Object.keys(p.locationChoices ?? {}).map((l) => filmPlace(p, l).country))].filter((c) => !workRight(state, c).can);
+    if (abroad.length) {
+      const w = workRight(state, abroad[0]);
+      add({ label: 'Papers', ok: false, detail: `${w.why}`, options: ['Apply for the permit on the Profile page: until it is granted, a day filmed there starts without you.', 'Film the scene somewhere you may work.', 'Hire someone for the part or to direct, so the day doesn\'t need you.'] });
+    } else add({ label: 'Papers', ok: true, detail: 'You may work everywhere the script is filmed.', options: [] });
+  }
 
   // 6. Delivery: a backer's date the work would run past, once there is a plan to forecast.
   if (p.schedule.startDate && p.tasks.length) {

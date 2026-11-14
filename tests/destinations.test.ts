@@ -138,7 +138,9 @@ describe('a roof over an exterior', () => {
   const made = (roof: 'none' | 'soundstage' | 'stage-set') => {
     // Labelled fixture: the seed. From November 12, 2026 a travel day moves the Quay days one working day on; seed
     // 'destinations-roof' then fell on a dry, light day in the open, so this one was chosen for a day the weather stops.
-    const { s, p } = film('destinations-roof-3');
+    // Re-chosen November 14, 2026, when the fixtures' worlds changed with the player's age: 'destinations-roof-3' then
+    // stopped none of its days, and of six others only this one stopped any.
+    const { s, p } = film('destinations-roof-6');
     setFilmedAt(p, 'Quay', { placeId: 'no-tromso', kind: roof === 'soundstage' ? 'soundstage' : 'port' });
     if (roof === 'stage-set') p.locationChoices!.Quay.main = 'stage';
     p.tasks = buildTasks(p);

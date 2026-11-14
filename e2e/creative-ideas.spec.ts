@@ -22,7 +22,7 @@ test('from a chosen idea to a delivered film: the picker, the 1986 zombie brief,
   test.setTimeout(1_500_000);
   const n = info.project.name;
   await freshStart(page);
-  await createCharacter(page, { name: 'Rin Okafor', pronouns: 'They/Them', birthDate: '1990-06-15', birthplace: 'Lagos', heritages: ['Yoruba'], nationalities: ['Nigeria'], mainLanguage: 'English', extraLanguages: [], start: 'London', startDate: '2026-01-05', startTime: '08:00' });
+  await createCharacter(page, { name: 'Rin Okafor', pronouns: 'They/Them', birthDate: '2006-06-15', birthplace: 'Lagos', heritages: ['Yoruba'], nationalities: ['Nigeria'], mainLanguage: 'English', extraLanguages: [], start: 'London', startDate: '2026-01-05', startTime: '08:00' });
   await pinSeed(page, 7);
   await nav(page, 'Projects');
   await page.getByRole('button', { name: 'New Project' }).first().click();
@@ -194,7 +194,7 @@ test('from a chosen idea to a delivered film: the picker, the 1986 zombie brief,
 test('a logline built from four parts, and a crowd extended in post from a scene\'s own ideas', async ({ page }, info) => {
   test.skip(!['desktop', 'phone'].includes(info.project.name), 'Runs on desktop and phone.');
   await freshStart(page);
-  await createCharacter(page, { name: 'Rin Okafor', pronouns: 'They/Them', birthDate: '1990-06-15', birthplace: 'Lagos', heritages: ['Yoruba'], nationalities: ['Nigeria'], mainLanguage: 'English', extraLanguages: [], start: 'London', startDate: '2026-01-05', startTime: '08:00' });
+  await createCharacter(page, { name: 'Rin Okafor', pronouns: 'They/Them', birthDate: '2006-06-15', birthplace: 'Lagos', heritages: ['Yoruba'], nationalities: ['Nigeria'], mainLanguage: 'English', extraLanguages: [], start: 'London', startDate: '2026-01-05', startTime: '08:00' });
   await nav(page, 'Projects');
   await page.getByRole('button', { name: 'New Project' }).first().click();
   await page.getByRole('button', { name: 'Write An Original' }).click();

@@ -5,7 +5,7 @@
 // (tests/jobs.test.ts).
 import type { Page } from '@playwright/test';
 import { expect, test } from './test';
-import { addScene, advance, nav, newProject, readSavedState, saveAndApprove, section, seededLife } from './helpers';
+import { addScene, advance, nav, newProject, personalPostingsOf, readSavedState, saveAndApprove, section, seededLife } from './helpers';
 
 const card = (page: Page, heading: string) => page.locator('section.card', { has: page.getByRole('heading', { name: heading, exact: true }) });
 
@@ -62,10 +62,12 @@ test('an agent finds paid work: offered with its days and their share, taken, wo
   await expect(mine.getByRole('list', { name: 'Your Account, By What It Is' })).toContainText("Paid For Work On Others' Productions");
   await expect(mine.getByRole('list', { name: 'Your Account, By What It Is' })).toContainText('Commission To Your Agent');
   const saved = await readSavedState(page);
-  const job = saved.jobs.find((j: { production: string }) => j.production === production);
+  // The job taken, as above: a slow run can let an earlier offer on the same production lapse (CI on 55da9cc, production
+  // phone: the first job named for it read "lapsed" while the one taken was done).
+  const job = saved.jobs.find((j: { production: string; status: string }) => j.production === production && j.status !== 'lapsed');
   expect(job.status).toBe('done');
-  const paid = saved.money.postings.filter((x: { key: string }) => x.key === `job:${job.id}`).map((x: { amount: number }) => x.amount);
+  const paid = personalPostingsOf(saved).filter((x: { key: string }) => x.key === `job:${job.id}`).map((x: { amount: number }) => x.amount);
   expect(paid).toEqual([job.dayRate * job.attended.length]);
-  const commission = saved.money.postings.filter((x: { key: string }) => x.key === `job-commission:${job.id}`).map((x: { amount: number }) => x.amount);
+  const commission = personalPostingsOf(saved).filter((x: { key: string }) => x.key === `job-commission:${job.id}`).map((x: { amount: number }) => x.amount);
   expect(commission).toEqual([-Math.round(paid[0] * 0.15)]);
 });

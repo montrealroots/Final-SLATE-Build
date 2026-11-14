@@ -6,6 +6,42 @@ Read this first. It lists what is finished, what the Gap Completion Package stil
 
 At every stopping point, open a pull request into `main` and merge it (see `CLAUDE.md`, certified by the user on November 6, 2026). Never merge red checks.
 
+## The Owner's v8 Overhaul (From November 14, 2026)
+
+The package is `docs/v8/package`. Its order is `07-IMPLEMENTATION-AND-ACCEPTANCE.md`, and `docs/v8/STATUS.md` says where
+each step and acceptance case stands. Done so far:
+
+- **Step 2, canonical money.** `src/engine/cash/` holds the money, the journal and the version 9→10 migration. Your
+  account and the company's are now views of the journal.
+- **Step 3, the start.** You start at 19 with a $25,000,000 inheritance, which can be edited before the story starts.
+  The family menus are gone.
+- **Step 4, banks.** `banking.ts`, `Banking.tsx`, and `src/data/banks.json` from `tools/v8/import_banks.py`. Documents
+  move to step 8.
+- **Step 5, budgets (partly).** `project-budget.ts`: the planned budget, ten figures kept apart, and two readiness
+  answers. `cash/forecast.ts` holds the dated forecast. Budget lines with suppliers and payment dates are still to do.
+- **Step 6, banner and company.** A banner is a credit name. A company is applied for, and the registry decides. Draws
+  are split into capital returned and earnings paid out.
+- **Step 7, first-look terms (partly).** Terms come from the track-record tier (`dealTier`) and `src/data/deal-model.json`.
+  Overall deals (A14) are still not built.
+- **Step 8, papers.** `papers.ts` and `src/data/work-rights.json`. A day filmed where you may not work starts without
+  you.
+- **Step 9, one awards history.** `awards-history.ts`.
+- **Step 10, the phone layout.** Phones open in the responsive layout by default.
+- **Step 11 (partly).** `tests/v8-economy.test.ts`.
+
+All of this is on PR #92 (montrealroots/Final-SLATE-Build#92). Merge only after its CI is green on the final head.
+
+What is still open is listed row by row in `docs/v8/STATUS.md`. In order of importance:
+1. A14, overall deals.
+2. Budget lines with payment dates.
+3. One browser journey through the whole v8 path.
+4. Visits and passports data.
+5. Judging the recorded field in awards.
+6. Physical-phone and pacing tests.
+
+The age rule changed every fixture world, because the world seed hashes the birth date. The STATUS file lists each test
+that had to be re-pinned, and why. Any later failure that depends on a seed should be checked against that list first.
+
 ## The Owner's v5 Brief (From November 13, 2026)
 
 The brief is `docs/v5/00-OWNER-BRIEF.md`, word for word. `docs/v5/LEDGER.md` says where each section stands, and the
@@ -73,7 +109,7 @@ order of work is at its end. The owner said: "Don't stop until 100% perfect comp
   - Engine tests added for J04 (a part recast from episode 2 leaves every other credit whole, `parts.test.ts`) and J19
     (ten years of the world: the event queue bounded, the save growing evenly, `long-run.test.ts`); J16's and J17's rows
     now cite the engine tests that already ran them (`rulebooks.test.ts`).
-  - *After #90 (November 14, 2026, on the branch, for the next PR):*
+  - *After #90 (November 14, 2026; merged in #91):*
     - Unlocking the picture asks first, and its rework reaches everything built after the lock except the score's
       composition, which is conformed (V6-035).
     - Can It Go Ahead? on Overview names the bottleneck and the ways round it (`feasibility.ts`, V6-023).
@@ -262,7 +298,11 @@ order of work is at its end. The owner said: "Don't stop until 100% perfect comp
 ## State
 
 - **Branch:** `claude/clever-archimedes-x0r26v`, pushed to https://github.com/montrealroots/Final-SLATE-Build. After each merge the branch restarts from `main`.
-- **Latest merge:** montrealroots/Final-SLATE-Build#90 (television first looks judged on series; a forecast finish
+- **Latest merge:** montrealroots/Final-SLATE-Build#91 (v6 gaps closed: feasibility, unlock rework, voice, datasets
+  ledger, Venice recorded vs simulated, grades feed offers), squash-merged as `84775c7` on November 14, 2026, 04:14 UTC,
+  with `checks` and all six journeys runs green on its final commit `86f1b68`; `main` merged back with `-s ours`. Its CI
+  first failed twice on the Guide Me writing journey, which depended on an unpinned world; it now plays seed 3.
+- **Earlier merge:** montrealroots/Final-SLATE-Build#90 (television first looks judged on series; a forecast finish
   that rig faults, render farms and animatic revisions move: J05, J06), squash-merged as `7516edd` on November 14, 2026,
   02:08 UTC, with `checks` and all six journeys runs green on its final commit `bd59d31`; `main` merged back with `-s ours`.
 - **Earlier merge:** montrealroots/Final-SLATE-Build#89 (v7 steps 1 to 8, and the v6 22 journeys mapped and extended),

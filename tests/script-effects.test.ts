@@ -117,7 +117,7 @@ describe('content is declared, and outlets apply their own requirements to it', 
     const before = strong.p.revenue;
     acceptDistribution(strong.s, strong.p, b.id, { broadcastEdit: true });
     expect(strong.p.revenue - before).toBe(a.minimumGuarantee);
-    expect(strong.p.obligations.find((o) => o.label.startsWith('Delivery Materials'))!.amount).toBe(DELIVERY_MATERIALS.broadcast + BROADCAST_EDIT_COST);
+    expect(strong.p.obligations.find((o) => o.label.startsWith('Delivery Materials'))!.amount).toBe(DELIVERY_MATERIALS.broadcast + BROADCAST_EDIT_COST + subtitlingCost(strong.p, b.territories)); // subtitles for any territory whose language isn't spoken
   });
 
   it('a family audience with declared strong content is advised, never blocked', () => {

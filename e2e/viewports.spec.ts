@@ -13,10 +13,10 @@ async function seedGame(page: Page): Promise<void> {
   await page.evaluate(() => {
     localStorage.clear();
     localStorage.setItem('slate.v1.creationDraft', JSON.stringify({
-      step: 7, name: 'Wilhelmina Oyelaran-Castellanos Bjørnstad', pronouns: 'they', actingTitle: 'Actor', birthDate: '1988-02-29', birthplaceId: 'no-tromso',
+      step: 7, name: 'Wilhelmina Oyelaran-Castellanos Bjørnstad', pronouns: 'they', actingTitle: 'Actor', birthDate: '2008-02-29', birthplaceId: 'no-tromso',
       heritages: [{ id: 'Yoruba', label: 'Yoruba', custom: false }, { id: 'Sámi', label: 'Sámi', custom: false }, { id: 'c1', label: 'Norwegian-Nigerian from Tromsø', custom: true }],
       heritageCustomText: '', mainLanguage: 'no', languages: [{ code: 'en', proficiency: 'Fluent' }, { code: 'yo', proficiency: 'Conversational' }, { code: 'se', proficiency: 'Basic' }],
-      startPlaceId: 'no-tromso', startDate: '2026-12-15', startTime: '11:30', updatedAt: 1,
+      startPlaceId: 'no-tromso', startDate: '2027-12-15', startTime: '11:30', updatedAt: 1,
     }));
   });
   await page.reload();
@@ -79,7 +79,7 @@ test('every main screen fits each viewport without sideways scrolling', async ({
   const problems: string[] = [];
   const screens: [string, () => Promise<void>][] = [
     ['Home', () => nav(page, 'Home')],
-    ['Calendar', async () => { await nav(page, 'Calendar'); await expect(page.getByRole('button', { name: /December 25, 2026, 1 entry/ })).toBeVisible(); }],
+    ['Calendar', async () => { await nav(page, 'Calendar'); await expect(page.getByRole('button', { name: /December 25, 2027, 1 entry/ })).toBeVisible(); }],
     ['Profile', () => nav(page, 'Profile')],
     ['Projects', () => nav(page, 'Projects')],
     ['Place', async () => { await nav(page, 'Home'); await page.getByRole('button', { name: 'Weather And Place Details' }).click(); }],

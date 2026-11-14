@@ -15,6 +15,8 @@ import type { Format, Medium, Project, Technique } from '../engine/types';
 import { Check, Field, Modal, NumberField, PageHead, SectionNav, SelectField, TextField, longLocal, plural, startedNote } from './components';
 import { PlacePicker } from './Creation';
 import { Breadcrumbs } from './Shell';
+import { formatMoney, parseAmount } from '../engine/cash/money';
+import { setPlannedBudget } from '../engine/project-budget';
 import { store, useGame, useStore } from './store';
 import { CastTab, CrewTab, ScheduleTab, BudgetTab } from './PlanViews';
 import { ScriptTab, CharactersTab } from './ScriptViews';
@@ -105,17 +107,21 @@ function ProjectForm({ documentary }: { documentary: boolean }) {
   const [quality, setQuality] = useState<'limited' | 'tv' | 'feature'>('tv');
   const [langs, setLangs] = useState<string[]>([g.character.mainLanguage]);
   const [genres, setGenres] = useState<{ id: string; emphasis: 'primary' | 'secondary' }[]>([]);
+  const [planned, setPlanned] = useState('');
   const [error, setError] = useState<string | null>(null);
+  const plannedParsed = planned.trim() ? parseAmount(planned, 'USD') : null;
   const episodic = isEpisodic(format);
   const suggestAnimation = genres.some((x) => x.id === 'animated' || x.id === 'anime') && medium === 'live-action';
   const create = () => {
     let id = '';
+    if (plannedParsed && !plannedParsed.ok) { setError(`Planned budget: ${plannedParsed.reason}`); return; }
     const err = store.act((s) => {
       const p = createProject(s, {
         title, scenarioId: scenario,
         axes: { format, medium, technique: medium === 'live-action' ? 'none' : technique === 'none' ? '3d-cg' : technique, episodeCount: episodic ? episodes : 1, targetRuntimeMin: runtime, basePlaceId: base, audience, tone, storyEra: era, storySetting: setting, dialogueLanguages: langs, animationQuality: quality, genres,
           ...(settingPlace ? { settingPlaceId: settingPlace } : {}), ...(register ? { register } : {}) },
       });
+      if (plannedParsed?.ok) setPlannedBudget(s, p, plannedParsed.minor, 'Set when the project was created.');
       id = p.id;
     });
     if (err) setError(err);
@@ -178,18 +184,21 @@ function ProjectForm({ documentary }: { documentary: boolean }) {
         <h2>Production</h2>
         <PlacePicker label="Production Base" value={base} onChange={setBase} />
         <fieldset style={{ border: 0, padding: 0 }}>
-          <legend style={{ fontWeight: 600, marginBottom: 'var(--s2)' }}>Budget Size</legend>
-          <p className="dim">This sets the scale you work at and the least your budget estimate can be. Once your script is approved, the estimate becomes what that script needs at this scale, and that's what you aim to raise (Budget). It doesn't put money in the project: backers do. Amounts are game calibration, not real industry prices.</p>
+          <legend style={{ fontWeight: 600, marginBottom: 'var(--s2)' }}>Way Of Working</legend>
+          <p className="dim">How you work: the crew's scale, which sets day costs and the least an estimate can be. What you plan to spend is your own amount, below. Neither puts money in the project: backers, and you, do. Amounts are game calibration, not real industry prices.</p>
           {FUNDING_SCENARIOS.map((f) => {
             const locked = f.needsTrackRecord && !hasTrackRecord(g);
             return (
               <label key={f.id} className="check" style={{ alignItems: 'flex-start', marginBottom: 'var(--s2)' }}>
                 <input type="radio" name="funding" value={f.id} checked={scenario === f.id} disabled={locked} onChange={() => setScenario(f.id)} />
-                <span><strong>{f.label}: from {money(f.fund)}</strong><br /><span className="muted">{f.description}{locked ? ' Available after you deliver a project.' : ''}</span></span>
+                <span><strong>{f.label}: estimates from {money(f.fund)}</strong><br /><span className="muted">{f.description}{locked ? ' Available after you deliver a project.' : ''}</span></span>
               </label>
             );
           })}
         </fieldset>
+        <TextField label="Planned Budget (US Dollars)" inputMode="decimal" value={planned} onChange={setPlanned}
+          error={plannedParsed && !plannedParsed.ok ? plannedParsed.reason : null}
+          hint={plannedParsed?.ok ? `${formatMoney({ currency: 'USD', minor: plannedParsed.minor })} planned${plannedParsed.minor === 0 ? ': an unfunded draft' : ''}. You can change it later; a plan is never money.` : 'Optional: blank leaves it unknown; 0 is an unfunded draft. Like 20,000 or 2,000,000.'} />
       </section>
       {error && <p role="alert" style={{ color: 'var(--negative)' }}>{error}</p>}
       <div className="row gap-2 wrap">

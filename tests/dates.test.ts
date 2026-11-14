@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { isDateKey, validateDraft } from './engine-api';
-import { draft } from './fixtures';
+import { born19, draft } from './fixtures';
 
 describe('impossible dates are rejected, not normalised', () => {
   it('checks month lengths and leap years', () => {
@@ -19,27 +19,34 @@ describe('impossible dates are rejected, not normalised', () => {
   it('creation refuses impossible birth and start dates and times', () => {
     const msgs = (patch: Record<string, string>) => validateDraft({ ...draft(), ...patch }).map((p) => `${p.field}: ${p.message}`);
     expect(msgs({ startDate: '2026-02-31' })).toContain('startDate: Choose a date from 2026 to 2050.');
-    expect(msgs({ birthDate: '1999-02-30' })).toContain('birthDate: Enter your birth date.');
-    expect(msgs({ birthDate: '2000-02-29' }).some((m) => m.startsWith('birthDate'))).toBe(false); // a real leap day is fine
+    expect(msgs({ birthDate: '2007-02-30' })).toContain('birthDate: Enter your birth date.');
+    expect(msgs({ startDate: '2027-03-01', birthDate: '2008-02-29' }).some((m) => m.startsWith('birthDate'))).toBe(false); // a real leap day is fine
     expect(msgs({ startTime: '24:00' })).toContain('startTime: Enter a time such as 08:00.');
     // 2026 by default, and any later year up to 2050 (the owner's rule, November 8, 2026).
-    expect(msgs({ startDate: '2027-01-05' }).some((m) => m.startsWith('startDate'))).toBe(false);
-    expect(msgs({ startDate: '2050-12-31' }).some((m) => m.startsWith('startDate'))).toBe(false);
+    expect(msgs({ startDate: '2027-01-05', birthDate: born19('2027-01-05') }).some((m) => m.startsWith('startDate'))).toBe(false);
+    expect(msgs({ startDate: '2050-12-31', birthDate: born19('2050-12-31') }).some((m) => m.startsWith('startDate'))).toBe(false);
     expect(msgs({ startDate: '2025-12-31' })).toContain('startDate: Choose a date from 2026 to 2050.');
     expect(msgs({ startDate: '2051-01-01' })).toContain('startDate: Choose a date from 2026 to 2050.');
   });
 
-  it('you must be at least 19 on the starting date, whichever year it is', async () => {
-    const { latestBirthDate } = await import('./engine-api');
+  it('you are exactly 19 on the starting date, whichever year it is (from November 14, 2026; before, at least 19)', async () => {
+    const { earliestBirthDate, latestBirthDate, startWindow } = await import('../src/engine/state');
     const msgs = (patch: Record<string, string>) => validateDraft({ ...draft(), ...patch }).map((p) => `${p.field}: ${p.message}`);
-    const young = 'birthDate: Your character must be at least 19 on the starting date.';
-    expect(latestBirthDate('2026-01-05')).toBe('2007-01-05');
-    expect(msgs({ startDate: '2026-01-05', birthDate: '2007-01-05' })).not.toContain(young); // 19 that day
-    expect(msgs({ startDate: '2026-01-05', birthDate: '2007-01-06' })).toContain(young); // 19 the day after
-    // A later start lets a later birth year through: 2008 is too late for 2026 and fine for 2027.
-    expect(msgs({ startDate: '2026-06-01', birthDate: '2008-03-01' })).toContain(young);
-    expect(msgs({ startDate: '2027-06-01', birthDate: '2008-03-01' })).not.toContain(young);
+    const late = 'startDate: On January 5, 2026 you would be 18. You start at 19: choose a date from January 6, 2026 to January 5, 2027.';
+    expect([earliestBirthDate('2026-01-05'), latestBirthDate('2026-01-05')]).toEqual(['2006-01-06', '2007-01-05']);
+    expect(msgs({ startDate: '2026-01-05', birthDate: '2007-01-05' }).filter((m) => /^(birth|start)Date/.test(m))).toEqual([]); // 19 that day
+    expect(msgs({ startDate: '2026-01-05', birthDate: '2006-01-06' }).filter((m) => /^(birth|start)Date/.test(m))).toEqual([]); // 20 tomorrow
+    expect(msgs({ startDate: '2026-01-05', birthDate: '2007-01-06' })).toContain(late); // 19 the day after: the date says so
+    expect(msgs({ startDate: '2026-01-05', birthDate: '2006-01-05' })).toContain('startDate: On January 5, 2026 you would be 20. You start at 19: choose a date from January 5, 2025 to January 4, 2026.');
+    // A birth date no start from 2026 to 2050 makes 19 is refused on Identity, where it is entered.
+    expect(msgs({ birthDate: '1990-05-20' })).toContain('birthDate: You start at 19, in a year from 2026 to 2050: choose a birth date from January 2, 2006 to December 31, 2031.');
+    // A later start moves the window: 2008 is too late for 2026 and right for 2027.
+    expect(msgs({ startDate: '2026-06-01', birthDate: '2008-03-01' }).some((m) => m.startsWith('startDate: On June 1, 2026 you would be 18.'))).toBe(true);
+    expect(msgs({ startDate: '2027-06-01', birthDate: '2008-03-01' }).some((m) => /^(birth|start)Date/.test(m))).toBe(false);
     expect(latestBirthDate('2028-02-29')).toBe('2009-02-28'); // no 29 February in 2009
+    // Born 29 February: 19 on the observed birthday, 28 February, in a common year, and 20 on the leap day.
+    expect(startWindow('2008-02-29')).toEqual({ from: '2027-02-28', to: '2028-02-28' });
+    expect(earliestBirthDate('2028-02-29')).toBe('2008-03-01'); // 29 February 2008 would make you 20 that day
   });
 });
 

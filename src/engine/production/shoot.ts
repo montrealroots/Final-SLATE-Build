@@ -7,6 +7,7 @@ import { placeHolidaysOn } from '../holidays';
 import { covers, isAvailable, personById, roleLabel } from '../people';
 import { approvedCharacters, approvedScenes, isNonfiction, projectModules, sceneLabel } from '../projects';
 import { castIn, stageIn } from '../parts';
+import { workRight } from '../papers';
 import { addLog, cancelEvents, newId, registerHandler } from '../state';
 import { addDaysToKey, dateKey, formatDateKey } from '../time';
 import { BASE_MINUTES_PER_SHOOT_DAY, CROWD_DAY_RATE, HOLIDAY_PREMIUM, dayFees, housePackageFee } from './rates';
@@ -60,6 +61,14 @@ registerHandler('shoot-call', (state, ev) => {
   // Where the day is filmed (destinations.ts): the base, unless its place in the script is filmed somewhere else.
   const here = dayPlace(p, d);
   const away = state.locationId !== here.id || !!state.travel;
+  // Being there isn't being allowed to work there (papers.ts; A16): without the right, the day starts without you.
+  const right = workRight(state, here.country);
+  if (!away && !state.sleep.asleep && !right.can) {
+    d.late = true;
+    const text = `You can't work in ${here.name}: ${right.why} The day on ${p.title} started late without you.`;
+    addLog(state, text, 'warning', { projectId: p.id, route: { view: 'profile' } });
+    return { message: text };
+  }
   if (state.sleep.asleep || away) {
     d.late = true;
     const text = away

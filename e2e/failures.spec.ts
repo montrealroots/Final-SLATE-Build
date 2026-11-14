@@ -176,7 +176,7 @@ test('a genre catalog that fails to load stops the game from opening with the re
   await page.evaluate(() => {
     localStorage.clear();
     localStorage.setItem('slate.v1.creationDraft', JSON.stringify({
-      step: 'review', name: 'Nia Halvorsen-Mbeki', pronouns: 'she', actingTitle: 'Actress', birthDate: '1990-05-20', birthplaceId: 'ke-nairobi',
+      step: 'review', name: 'Nia Halvorsen-Mbeki', pronouns: 'she', actingTitle: 'Actress', birthDate: '2006-05-20', birthplaceId: 'ke-nairobi',
       heritages: [{ id: 'Kikuyu', label: 'Kikuyu', custom: false }], heritageCustomText: '', mainLanguage: 'en', languages: [],
       startPlaceId: 'gb-london', startDate: '2026-05-04', startTime: '08:00', updatedAt: 1,
     }));
@@ -212,7 +212,7 @@ test('a festival and awards calendar that fails to load stops the game from open
   await page.evaluate(() => {
     localStorage.clear();
     localStorage.setItem('slate.v1.creationDraft', JSON.stringify({
-      step: 'review', name: 'Nia Halvorsen-Mbeki', pronouns: 'she', actingTitle: 'Actress', birthDate: '1990-05-20', birthplaceId: 'ke-nairobi',
+      step: 'review', name: 'Nia Halvorsen-Mbeki', pronouns: 'she', actingTitle: 'Actress', birthDate: '2006-05-20', birthplaceId: 'ke-nairobi',
       heritages: [{ id: 'Kikuyu', label: 'Kikuyu', custom: false }], heritageCustomText: '', mainLanguage: 'en', languages: [],
       startPlaceId: 'gb-london', startDate: '2026-05-04', startTime: '08:00', updatedAt: 1,
     }));
@@ -240,7 +240,7 @@ test('a damaged genre catalog publishes nothing; Try Again with a good one opens
   await page.evaluate(() => {
     localStorage.clear();
     localStorage.setItem('slate.v1.creationDraft', JSON.stringify({
-      step: 'review', name: 'Nia Halvorsen-Mbeki', pronouns: 'she', actingTitle: 'Actress', birthDate: '1990-05-20', birthplaceId: 'ke-nairobi',
+      step: 'review', name: 'Nia Halvorsen-Mbeki', pronouns: 'she', actingTitle: 'Actress', birthDate: '2006-05-20', birthplaceId: 'ke-nairobi',
       heritages: [{ id: 'Kikuyu', label: 'Kikuyu', custom: false }], heritageCustomText: '', mainLanguage: 'en', languages: [],
       startPlaceId: 'gb-london', startDate: '2026-05-04', startTime: '08:00', updatedAt: 1,
     }));

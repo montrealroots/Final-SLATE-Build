@@ -201,6 +201,16 @@ export async function staffEveryDepartment(page: Page): Promise<number> {
 }
 
 /** The saved game as stored on disk; assertions run in the test, not in the page. */
+/**
+ * Your account's postings from a saved state, in whole dollars, oldest first: the journal's lines on your cash account
+ * (src/engine/cash/journal.ts; from November 14, 2026, when they stopped being a list of their own).
+ */
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export function personalPostingsOf(saved: any): { kind: string; amount: number; key: string; label: string }[] {
+  const out: { kind: string; amount: number; key: string; label: string }[] = [];
+  for (const t of saved?.journal?.txs ?? []) if (t.status === 'settled' || t.status === 'reversed') for (const l of t.lines) if (l.account === 'player:cash:USD') out.push({ kind: l.kind, amount: l.minor / 100, key: t.key, label: l.label ?? t.memo });
+  return out;
+}
 export async function readSavedState(page: Page): Promise<any> { // eslint-disable-line @typescript-eslint/no-explicit-any
   const id = await firstSaveId(page).catch(() => null);
   if (!id) return null;
@@ -213,9 +223,25 @@ export async function saveAndExit(page: Page): Promise<void> {
   await expect(page.getByRole('button', { name: 'Continue', exact: true })).toBeVisible();
 }
 
+/**
+ * A 20 May birth date that makes you 19 on this starting date (you start at exactly 19 from November 14, 2026; the quick
+ * character was born on 20 May 1990 until then).
+ */
+export function born19(startDate: string, monthDay = '05-20'): string {
+  const y = Number(startDate.slice(0, 4));
+  return startDate.slice(5) >= monthDay ? `${y - 19}-${monthDay}` : `${y - 20}-${monthDay}`;
+}
+
+/** On Review: change the inheritance to `amount` (as typed) and come back. The default is $25,000,000. */
+export async function setInheritance(page: Page, amount: string): Promise<void> {
+  await page.getByRole('button', { name: 'Edit Your Inheritance' }).click();
+  await page.locator('section', { has: page.getByRole('heading', { name: 'Your Inheritance' }) }).getByLabel('Amount (US Dollars)').fill(amount);
+  await page.getByRole('button', { name: 'Save And Return To Review' }).click();
+}
+
 /** The quick character's finished draft, left for Continue Creation, with nothing else in localStorage unless `keep`. */
 export async function quickDraft(page: Page, startPlaceId: string, startDate: string, opts: { portrait?: boolean; keep?: boolean } = {}): Promise<void> {
-  await page.evaluate(({ pl, sd, withPortrait, keep }) => {
+  await page.evaluate(({ pl, sd, bd, withPortrait, keep }) => {
     if (!keep) localStorage.clear();
     const c = document.createElement('canvas');
     c.width = 512; c.height = 640;
@@ -223,12 +249,12 @@ export async function quickDraft(page: Page, startPlaceId: string, startDate: st
     x.fillStyle = '#7a4b8c'; x.fillRect(0, 0, 512, 640);
     const portrait = withPortrait ? c.toDataURL('image/jpeg', 0.86) : undefined;
     localStorage.setItem('slate.v1.creationDraft', JSON.stringify({
-      step: 7, name: 'Nia Halvorsen-Mbeki', pronouns: 'she', actingTitle: 'Actress', birthDate: '1990-05-20', birthplaceId: 'ke-nairobi',
+      step: 7, name: 'Nia Halvorsen-Mbeki', pronouns: 'she', actingTitle: 'Actress', birthDate: bd, birthplaceId: 'ke-nairobi',
       heritages: [{ id: 'Kikuyu', label: 'Kikuyu', custom: false }, { id: 'Norwegian', label: 'Norwegian', custom: false }], heritageCustomText: '', mainLanguage: 'en',
       languages: [{ code: 'sw', proficiency: 'Fluent' }, { code: 'no', proficiency: 'Conversational' }], startPlaceId: pl, startDate: sd, startTime: '08:00', updatedAt: 1,
       ...(portrait ? { portrait } : {}),
     }));
-  }, { pl: startPlaceId, sd: startDate, withPortrait: !!opts.portrait, keep: !!opts.keep });
+  }, { pl: startPlaceId, sd: startDate, bd: born19(startDate), withPortrait: !!opts.portrait, keep: !!opts.keep });
 }
 
 export async function quickLife(page: Page, startPlaceId: string, startDate: string, opts: { portrait?: boolean } = {}): Promise<void> {

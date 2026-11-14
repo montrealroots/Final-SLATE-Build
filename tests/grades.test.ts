@@ -16,10 +16,15 @@ describe('a grade', () => {
   });
 
   it('follows what someone asks: across the game\'s own candidates, a higher grade asks more on average', () => {
-    const s = startLife('grades-rate');
-    const p = buildProject(s, { title: 'Grades', format: 'feature', medium: 'live-action', runtime: 90 }, [{ name: 'Ada' }], [{ place: 'Pier', chars: ['Ada'] }]);
-    const people = roleCandidates(s, p, 'editor');
-    const by = (g: string) => people.filter((c) => gradeOf(s, c, 'editor').grade === g).map((c) => c.dayRate);
+    // Five worlds' candidates together: one world's handful can put two neighbouring grades out of order by a few dollars
+    // (it did on November 14, 2026, when the fixtures' worlds changed), and the claim is about the game's people, not one draw.
+    const worlds = [1, 2, 3, 4, 5].map((n) => {
+      const s = startLife(`grades-rate-${n}`);
+      const p = buildProject(s, { title: 'Grades', format: 'feature', medium: 'live-action', runtime: 90 }, [{ name: 'Ada' }], [{ place: 'Pier', chars: ['Ada'] }]);
+      return { s, people: roleCandidates(s, p, 'editor') };
+    });
+    const { s, people } = worlds[0];
+    const by = (g: string) => worlds.flatMap((w) => w.people.filter((c) => gradeOf(w.s, c, 'editor').grade === g).map((c) => c.dayRate));
     const avg = (xs: number[]) => xs.reduce((a, b) => a + b, 0) / Math.max(1, xs.length);
     const graded = ['A', 'B', 'C', 'D', 'E'].map(by).filter((xs) => xs.length);
     expect(graded.length).toBeGreaterThan(1);

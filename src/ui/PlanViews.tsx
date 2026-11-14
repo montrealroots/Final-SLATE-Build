@@ -43,6 +43,8 @@ import { RULE_WORDS, ageWords, fitNotes, hoursWords } from '../engine/casting-no
 import { COVERAGE, EMPHASIS, SETUPS_OF, TAKES, TAKE_RULES, isDirecting2, planTime, requiredSetups, shotPlan, type Coverage, type Emphasis, type TakePolicy } from '../engine/takes';
 import type { Audition, FinanceDeal, GameState, Hire, Obligation, PerformanceMethod, Project } from '../engine/types';
 import { Check, Modal, NumberField, SelectField, TextField, longLocal, plural } from './components';
+import { budgetPicture, plannedText, readiness, setPlannedBudget } from '../engine/project-budget';
+import { formatMoney, parseAmount } from '../engine/cash/money';
 import { store, useGame } from './store';
 import { WritingWork } from './WritingWork';
 import { FilmedAtCard } from './FilmedAt';
@@ -967,6 +969,51 @@ function OwnMoneyLines({ p, kind }: { p: Project; kind: 'earnings' | 'capital' }
   );
 }
 
+/**
+ * The plan and the money apart (project-budget.ts; the owner's v8 package, 03; from November 14, 2026): ten figures, each
+ * from its own source; the planned budget changed with a reason, never moving money; and the two readiness answers.
+ */
+function BudgetPlanCard({ p }: { p: Project }) {
+  const g = useGame();
+  const b = budgetPicture(g, p);
+  const r = readiness(g, p);
+  const [text, setText] = useState('');
+  const [reason, setReason] = useState('');
+  const [err, setErr] = useState<string | null>(null);
+  const parsed = text.trim() ? parseAmount(text, 'USD') : null;
+  const rows: [string, string][] = [
+    ['Planned Budget', plannedText(p)], ['Current Estimate', money(b.estimate)], ['Approved Ceiling', money(b.ceiling)], ['Funding Committed', money(b.committed)],
+    ['Funding Received', money(b.received)], ['Cash Available', money(b.cashAvailable)], ['Reserved And Committed', money(b.reserved)], ['Paid', money(b.paid)],
+    ['Forecast Final Cost', money(b.forecastFinal)], ['Funding Gap', money(b.gap)],
+  ];
+  return (
+    <section className="card" aria-labelledby="plan-h">
+      <h2 id="plan-h">Plan And Money</h2>
+      <dl className="kv" aria-label="Plan And Money">{rows.map(([k, v]) => [<dt key={`${k}-t`}>{k}</dt>, <dd key={`${k}-d`}>{v}</dd>])}</dl>
+      <ul className="list" aria-label="Can It Pay?">
+        <li className="list-item">{r.overall}</li>
+        <li className="list-item">{r.onTime}</li>
+      </ul>
+      {!p.delivered && (
+        <>
+          <div className="field-row">
+            <TextField label="New Planned Budget (US Dollars)" inputMode="decimal" value={text} onChange={setText} error={parsed && !parsed.ok ? parsed.reason : null}
+              hint={parsed?.ok ? `${formatMoney({ currency: 'USD', minor: parsed.minor })} planned. It puts no money in and cancels nothing signed.` : 'Blank clears it to unknown. 0 is an unfunded draft.'} />
+            <TextField label="Why" value={reason} maxLength={200} onChange={setReason} />
+          </div>
+          <button className="btn" disabled={!!parsed && !parsed.ok} onClick={() => { const e = store.act((s) => setPlannedBudget(s, s.projects.find((x) => x.id === p.id)!, parsed && parsed.ok ? parsed.minor : null, reason)); setErr(e); if (!e) { setText(''); setReason(''); } }}>Change The Plan</button>
+          {err && <p className="error" role="alert">{err}</p>}
+        </>
+      )}
+      {(p.finance?.revisions ?? []).length > 0 && (
+        <ul className="list small" aria-label="Plan Revisions">
+          {[...p.finance!.revisions!].reverse().map((v, i) => <li key={i} className="list-item"><span className="grow">{v.from === null ? 'Not set' : formatMoney({ currency: 'USD', minor: v.from })} to {v.to === null ? 'not set' : formatMoney({ currency: 'USD', minor: v.to })}: {v.reason}</span></li>)}
+        </ul>
+      )}
+    </section>
+  );
+}
+
 /** Financing: the estimate, the target, what backers promised and paid, and who to approach next. */
 function FinancingPanel({ p }: { p: Project }) {
   const g = useGame();
@@ -1005,6 +1052,7 @@ function FinancingPanel({ p }: { p: Project }) {
           <button className="btn" onClick={() => setTargetErr(store.act((s) => setFinanceTarget(live(s), target)))}>Set Target</button>
         </div>
       </section>
+      <BudgetPlanCard p={p} />
       {deals(p).length > 0 && (
         <section className="card" aria-labelledby="backers-h">
           <h2 id="backers-h">Backers</h2>

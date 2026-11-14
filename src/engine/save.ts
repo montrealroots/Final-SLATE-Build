@@ -13,6 +13,7 @@ import { migrateV4toV5 } from './finance';
 import { knownAs, migrateV5toV6, migrateV6toV7 } from './identity';
 import { migrateV7toV8 } from './songs';
 import { migrateV8toV9 } from './episode-releases';
+import { migrateV9toV10 } from './cash/migrate';
 // The storage primitives that need no migration (key-value stores, the save index, recovery copies, locks, drafts) are in
 // save-store.ts since November 11, 2026, so the start screen can list saves without loading the engine. Re-exported here.
 import { DRAFT, INDEX, PREFIX, bakKey, finishList, indexedSaves, isQuotaError, mainKey, openableKeys, tmpKey, type KeyValueStore, type SaveSummary } from './save-store';
@@ -73,6 +74,8 @@ export const MIGRATIONS: Record<number, Migration> = {
   7: migrateV7toV8,
   // v8 -> v9: a series' releases keep each episode's date; older ones get the dates the rules assumed, marked assumed (episode-releases.ts).
   8: migrateV8toV9,
+  // v9 -> v10: the personal and company accounts move into one journal in cents, reconciled or refused (cash/migrate.ts).
+  9: migrateV9toV10,
 };
 
 export function migrate(raw: unknown): GameState {
@@ -84,7 +87,12 @@ export function migrate(raw: unknown): GameState {
   while (v < SAVE_VERSION) {
     const m = MIGRATIONS[v];
     if (!m) throw new SaveFormatError(`No upgrade path from save version ${v}.`);
-    obj = m(obj);
+    try {
+      obj = m(obj);
+    } catch (e) {
+      // A migration that can't finish opens nothing: the stored save, and the copy kept before the upgrade, stay as they were.
+      throw e instanceof SaveFormatError ? e : new SaveFormatError(`This save couldn't be updated (${(e as Error).message}). It was left as it was.`);
+    }
     v += 1;
     obj.version = v;
   }

@@ -1,0 +1,52 @@
+{
+  "evidence": "original_game_calibration_not_published_company_rates",
+  "currency": "USD",
+  "validation": "requires_economy_playtesting",
+  "firstLookAnnualOverhead": {
+    "emerging": [
+      100000,
+      300000
+    ],
+    "proven": [
+      300000,
+      1000000
+    ],
+    "established": [
+      1000000,
+      3000000
+    ],
+    "elite": [
+      3000000,
+      8000000
+    ]
+  },
+  "overallAnnualGuarantee": {
+    "proven": [
+      1000000,
+      5000000
+    ],
+    "established": [
+      5000000,
+      15000000
+    ],
+    "elite": [
+      15000000,
+      60000000
+    ]
+  },
+  "termYears": [
+    1,
+    2,
+    3,
+    5
+  ],
+  "rules": [
+    "No automatic offer to a new rich player",
+    "Do not multiply a yearly amount twice",
+    "Upper overall example is an exceptional modeled envelope, not evidence all reported value was guaranteed",
+    "Never equate overhead with personal salary",
+    "Development capacity requires separate approvals and is not guaranteed cash",
+    "Current companies require dated scope and authority records",
+    "Report calibrated versus verified amounts internally"
+  ]
+}

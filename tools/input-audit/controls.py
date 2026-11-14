@@ -25,17 +25,14 @@ c(f, '"Middle Name (Optional)"', I, 'character.middleName', 'identity.ts legalNa
 c(f, '"Last Name"', I, 'character.lastName', 'identity.ts legalName', 'The legal name on credits', U('identity', 'credits carry the legal name'))
 c(f, '"Pronouns"', I, 'character.pronouns', 'state.ts newGame (settledTitle)', 'He/Him and She/Her settle Actor or Actress billing', U('creation', 'pronouns settle the billing'), E('creation', 'a step with something missing says what'))
 for lab in ['"Month"', '"Day"', '"Year Of Birth"']:
-    c(f, lab, I, 'character.birthDate', 'state.ts characterAge, observedBirthday', 'Age and birthdays; you must be 19 on the starting date', U('dates', 'you must be at least 19 on the starting date'))
+    c(f, lab, I, 'character.birthDate', 'state.ts characterAge, observedBirthday', 'Age and birthdays; you must be 19 on the starting date', U('dates', 'you are exactly 19 on the starting date'))
 c(f, '"Place Of Birth"', D, 'character.birthplaceId', 'identity.ts citizenshipOf -> awards.ts nationality rules', 'Citizenship, which national and European award rules read', U('recovered-rules', 'European Film Awards'), E('awards', 'European Film Awards'))
 c(f, '"Where You Live"', D, 'state.locationId', 'state.ts newGame; projects.ts createProject (base)', 'Where the game starts: holidays, weather, the default production base', U('dates', 'creation refuses impossible birth and start dates'), E('world', 'a life can start anywhere in the world'))
 c(f, '"Starting Date"', D, 'state.now', 'state.ts newGame', 'When the world starts: which award editions and rules apply', U('dates', 'creation refuses impossible birth and start dates'), E('creation', 'Starting Point'))
 c(f, '"Starting Time"', D, 'state.now', 'state.ts newGame', 'The hour the clock starts', U('dates', 'creation refuses impossible birth and start dates'))
 c(f, '{props.label}', 'component', '', '', 'PlacePicker definition, used by the place controls above')
-c(f, '"Your Savings"', D, 'draft.savings -> state.money (savings posting)', 'personal.ts openPersonalMoney, personalBalance, putInRefusal', 'What is in your own account at the start, and so what you can put into a project', U('personal', 'opens with what was chosen'))
-c(f, '"Your Family\'s Circumstances"', D, 'draft.family.circumstances', 'personal.ts familyTerms', 'The most your family could offer; it decides nothing else about you', U('personal', 'is bounded by their circumstances, and decides nothing else'))
-c(f, '"What Your Family Offers"', D, 'draft.family.support -> state.money.family', 'personal.ts familyTerms, openPersonalMoney, family-repayment, takeHome', 'A gift is yours; a loan is repaid monthly from your account; an investment takes a share of income you take home', U('personal', 'opens with what was chosen'))
-c(f, '{`${g.name}, ${money(g.price!)}`}', D, 'draft.family.gear -> state.gear (owner family)', 'equipment.ts onNewGame, lentValue; personal.ts familyTerms', 'What your family lends goes on your shelf, free to use, not yours to sell, and bounded by their circumstances', U('equipment', 'is bounded by their circumstances'))
-c(f, '"How Much"', D, 'draft.family.amount', 'personal.ts familyTerms, openingPreview', 'What your family puts in, and so what is owed', U('personal', 'is read on Review before the story starts'))
+# The savings and family controls were removed on November 14, 2026 (the owner's v8 package, decisions 2 and 3): one inheritance.
+c(f, '"Amount (US Dollars)"', D, 'draft.inheritance.amountMinor -> journal (one inheritance transaction), state.money.source', 'personal.ts openInheritance, personalBalance, putInRefusal; cash/money.ts parseAmount', 'What is in your own account at the start, and so what you can spend and put into a project', U('v8-inheritance', 'is a default, not a fixed amount'), E('money', 'an inheritance read on Review'))
 c(f, '"Search Ethnicities"', V)
 c(f, '"Describe Your Ethnicity"', I, 'character.heritages (custom)', 'identity.ts splitBackgrounds', 'Your own words for your ethnicity, kept and shown', '', E('creation', 'an ethnicity in your own words'))
 c(f, '"Search Nationalities"', V)
@@ -45,6 +42,7 @@ c(f, '{`${languageName(l.code)} Proficiency`}', D, 'character.languages', 'produ
 
 # ---------------- New Script and the project ----------------
 f = 'Projects.tsx'
+c(f, '"Planned Budget (US Dollars)"', D, 'project.finance.planned (cents), finance.target', 'project-budget.ts setPlannedBudget, budgetPicture, plannedText; finance.ts financeSummary', 'What you plan to spend, kept exactly; at $1,000 or more it becomes what backers are asked for. It moves no money', U('v8-budget', 'keeps 20,000 and 2,000,000 exactly'))
 c(f, '"Working Title"', R, 'project.title', 'everywhere a project is named', 'The project\'s name', '', E('title-input', 'a title typed, edited, cleared, pasted and submitted'))
 c(f, '"Format"', D, 'axes.format', 'projects.ts, production/tasks.ts, awards.ts', 'Episodes, runtime, work, and which awards it can enter', U('genres', 'module consumers change the right downstream state and nothing else'), E('awards', 'SXSW'))
 c(f, '"Medium"', D, 'axes.medium', 'production/tasks.ts buildTasks', 'Live action shoots; animation has no shoot days but studio and render time', U('estimates', 'same script, different production method'), E('journeys', '2D animation'))
@@ -167,6 +165,8 @@ c(f, '{i.label}', D, 'axes.content', 'script-explain.ts; finish.ts outlet requir
 
 # ---------------- Casting, crew, schedule, budget ----------------
 f = 'PlanViews.tsx'
+c(f, '"New Planned Budget (US Dollars)"', D, 'project.finance.planned, revisions, target', 'project-budget.ts setPlannedBudget, readiness', 'Changes the plan with its reason; never moves money or cancels anything signed', U('v8-budget', 'keeps 20,000 and 2,000,000 exactly'))
+c(f, '"Why"', R, 'project.finance.revisions[].reason', 'PlanViews.tsx Plan Revisions', 'The reason kept with the change and shown in the revisions', U('v8-budget', 'keeps 20,000 and 2,000,000 exactly'))
 c(f, '"Only Show People Who Are Free"', V)
 c(f, '"What To Call It"', R, 'stage.label', 'parts.ts partName: the Cast page, call sheets, offers, credits', 'The stage is named by it beside the part: Mara (Age 10)', U('parts', 'is cast on its own'))
 c(f, '"Age In These Scenes (Optional)"', D, 'stage.age', 'minors.ts minorFor (an uncast stage)', 'Under 16, the stage is a child\'s part before anyone is cast: child rules, supervision and hours in its scenes', U('parts', 'with an age of its own'))
@@ -267,7 +267,7 @@ c(f, '"Set An Alarm"', D, 'sleep.alarm', 'state.ts snooze', 'An alarm lets you s
 f = 'SavedGames.tsx'
 c(f, '"Save Name"', R, 'saveName', 'the saved games list', 'The save\'s name')
 c(f, '"Larger Text"', V, 'the browser (not the save)', 'document data-text', 'Larger text on this device')
-c(f, '"Phone Layout"', V, 'the browser (not the save)', 'layout-mode.ts applyLayout (the viewport tag)', "On a phone: the desktop's layout shrunk to fit, or the phone's own layout", '', E('phone-layout', 'a phone shows the desktop layout shrunk to fit'))
+c(f, '"Phone Layout"', V, 'the browser (not the save)', 'layout-mode.ts applyLayout (the viewport tag)', "On a phone: its own layout (the default), or the desktop's shrunk to fit", '', E('phone-layout', 'a phone shows its own readable layout'))
 c(f, '"Wake Me For Obligations"', D, 'settings.wakeForObligations', 'state.ts runEvents', 'Reminders and call times wake you', U('foundation', 'sleep wakes for obligations by default'))
 f = 'Startup.tsx'
 c(f, '{`Replacement Place ${i + 1}`}', D, 'repair replacements', 'save.ts repairSave', 'Which place replaces one a save can\'t find', U('migration', 'open after a repair that keeps a backup and changes only the places'), E('failures', 'asks for a replacement, keeping a backup'))
@@ -348,9 +348,19 @@ f = 'YourMoney.tsx'
 c(f, '"Put In From Your Own Money"', D, 'state.money postings; project finance deal (savings)', 'personal.ts putInOwnMoney, putInRefusal', 'Money leaves your account and arrives in the project as Your Own Money, nobody repaid from it', U('personal', 'puts money into a project only by your choice'))
 # Your company (company.ts, from November 13, 2026: the owner's v5 brief, 9).
 c(f, '"Company Name"', I, 'state.company.name', 'company.ts formCompany; FinishViews.tsx credits (A ... Production)', "The company's name, in its account and in the credits of what it produces", U('company', 'is formed with a name and capital'))
-c(f, '"Put In When It Is Formed"', D, 'state.company postings (capital); state.money postings (company)', 'company.ts formCompany, formRefusal', "Money leaves your account and arrives in the company's, with the formation fee", U('company', 'is formed with a name and capital'))
+c(f, '"Put In When It Is Registered"', D, 'state.company.intendedCapital -> journal capital transaction at registration', 'company.ts applyForCompany, company-decision, formRefusal', "Nothing moves while the registry decides; once registered, that much leaves your account for the company's, if you still have it", U('v8-company', 'is pending, holds nothing until registered'))
+c(f, '"Banner Name"', R, 'state.banner', 'company.ts setBanner, productionCredit; FinishViews.tsx credits', 'The name your work is credited under when no company produces it; it opens no account and moves nothing', U('v8-company', 'credits your work under it'))
 c(f, '"Move Between You And The Company"', D, 'state.company postings (capital, draw); state.money postings (company)', 'company.ts moveCompanyMoney', 'Put in or drawn out, posted once on both sides, never more than the side holds', U('company', 'moves money in and draws it out'))
 c(f, '"Put In From The Company"', D, 'project finance deal (company); state.company postings; Project.producedBy', 'company.ts companyIntoProject, companyInRefusal', "The company's money arrives in the project, nobody repaid from it, and the company produces the project", U('company', 'puts money into a project'))
+f = 'Papers.tsx'
+# Your papers (papers.ts, from November 14, 2026: the owner's v8 package, 05).
+c(f, '"Working In"', V)
+f = 'Banking.tsx'
+# Your bank accounts (banking.ts, from November 14, 2026: the owner's v8 package, 03 "Bank lifecycle").
+c(f, '"Account To Apply For"', D, 'journal account (pending, product)', 'banking.ts applyForAccount, applyRefusal, bank-decision', 'Which bank and product you apply to: its market, holder, currency, fees and transfer fee', U('v8-banking', 'is pending until the bank decides'), E('v8-banking', 'an account applied for'))
+c(f, '"From"', D, 'journal transfer (pending), hold', 'banking.ts transferBetween, transferRefusal, transferFee', 'Which of your accounts the money leaves, and so its fee and what it has available', U('v8-banking', 'moves money on its way'), E('v8-banking', 'an account applied for'))
+c(f, '"To"', D, 'journal transfer (pending)', 'banking.ts transferBetween, transferFee', 'Which of your accounts it arrives in, and so whether a fee is charged', U('v8-banking', 'moves money on its way'))
+c(f, '{`Amount (${A.currency})`}', D, 'journal transfer amount (minor units)', 'banking.ts transferBetween; cash/money.ts parseAmount', 'How much moves, held at once and settled the next business day', U('v8-banking', 'moves money on its way'), E('v8-banking', 'an account applied for'))
 f = 'FirstLook.tsx'
 c(f, '"Development Money From The Deal"', D, 'project finance deal (first-look); FirstLook.drawn', 'first-look.ts drawDevelopment, developmentRefusal, repayTurnaround', "The studio's development money arrives in a covered project, repaid from another studio's money if one takes it after a pass", U('first-look', 'puts development money into a covered film'))
 f = 'YourMoney.tsx'

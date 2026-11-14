@@ -5,8 +5,9 @@ import { describe, expect, it } from 'vitest';
 import { DAY, acceptDeal, createProject, deserialize, processUntil, serialize, setFinanceTarget } from './engine-api';
 import { backerOptions, pitchToStudio, studioOption, submitSeries } from '../src/engine/finance';
 import { formCompany, companyBalance } from '../src/engine/company';
-import { personalBalance } from '../src/engine/personal';
+import { personalBalance, postPersonal } from '../src/engine/personal';
 import {
+  dealTier,
   FIRST_LOOK_NOTICE_DAYS, acceptFirstLook, activeFirstLook, askMoreOverhead, declineFirstLook, developmentRefusal, drawDevelopment, endFirstLook,
   covers, firstLookCandidate, firstLookTerms, firstLookWords, fundLeft, offerFirstLook, scheduleFirstLookCheck, scopeOf, submissionStanding,
 } from '../src/engine/first-look';
@@ -71,8 +72,14 @@ describe('an offer', () => {
   });
 
   it('has terms by the studio\'s recorded scale, shown in full before anything binds', () => {
-    expect(firstLookTerms(strategyOf(HORROR))).toEqual({ months: 12, considerDays: 60, overhead: 3_500, fund: 50_000, animatedOnly: false });
-    expect(firstLookTerms(strategyOf(BIG))).toEqual({ months: 24, considerDays: 90, overhead: 6_000, fund: 100_000, animatedOnly: false });
+    // The yearly overhead from the package's calibration for the record (deal-model.json), placed by the studio's scale and
+    // paid a twelfth a month (from November 14, 2026; $3,500 and $6,000 a month by scale alone before).
+    expect(firstLookTerms(strategyOf(HORROR))).toEqual({ months: 12, considerDays: 60, overhead: 16_700, fund: 50_000, animatedOnly: false, tier: 'emerging', annualOverhead: 200_400 });
+    expect(firstLookTerms(strategyOf(BIG))).toEqual({ months: 12, considerDays: 90, overhead: 25_000, fund: 100_000, animatedOnly: false, tier: 'emerging', annualOverhead: 300_000 });
+    // A better record moves the range and the term, never the money you have.
+    expect(firstLookTerms(strategyOf(BIG), 'film', 'proven')).toMatchObject({ months: 24, annualOverhead: 999_600 });
+    expect(firstLookTerms(strategyOf(BIG), 'film', 'elite')).toMatchObject({ months: 60, annualOverhead: 8_000_400 });
+    for (const t of ['emerging', 'proven', 'established', 'elite'] as const) { const x = firstLookTerms(strategyOf(HORROR), 'film', t); expect(x.overhead * 12).toBe(x.annualOverhead); }
     const s = world('fl-words', [HORROR]);
     record(s, 66);
     const fl = offerFirstLook(s)!;
@@ -95,7 +102,7 @@ describe('an offer', () => {
   });
 
   it('can be asked once for more overhead: agreed for a record well above the bar, held otherwise', () => {
-    for (const [reception, outcome, overhead] of [[75, 'agreed', 5_250], [62, 'held', 3_500]] as const) {
+    for (const [reception, outcome, overhead] of [[75, 'agreed', 25_050], [62, 'held', 16_700]] as const) {
       const s = world(`fl-counter-${reception}`, [HORROR]);
       record(s, reception);
       const fl = offerFirstLook(s)!;
@@ -117,18 +124,20 @@ describe('an offer', () => {
   });
 });
 
+const MONTHLY = firstLookTerms(strategyOf(HORROR)).overhead; // an emerging record, a mid-sized studio
+
 describe('a running deal', () => {
   it('pays overhead monthly into your company if you have one, or your own account', () => {
     const own = signed('fl-own');
-    expect(personalBalance(own)).toBe(2_000 + 3_500);
+    expect(personalBalance(own)).toBe(2_000 + MONTHLY);
     wait(own, 61);
-    expect(personalBalance(own)).toBe(2_000 + 3 * 3_500);
+    expect(personalBalance(own)).toBe(2_000 + 3 * MONTHLY);
     const co = world('fl-co', [HORROR]);
     record(co, 66);
     formCompany(co, 'Tidewater Pictures', 0);
     acceptFirstLook(co, offerFirstLook(co)!.id);
     wait(co, 31);
-    expect(companyBalance(co)).toBe(2 * 3_500);
+    expect(companyBalance(co)).toBe(2 * MONTHLY);
   });
 
   it('makes a covered film go to the studio first, with its own days to answer; another studio can be pitched only after a pass', () => {
@@ -250,7 +259,7 @@ describe('a television first-look deal (the v6 package, J13; the v7 package, DEA
     const c = firstLookCandidate(tvWorld('fl-tv-record'), 'television')!;
     expect([c.company, c.strategy.pace]).toEqual([HORROR.c, 12]); // its pace here is its series, not its 5 films a year
     expect(c.why).toBe(`Your series sits with what ${HORROR.name} makes, most of all crime. How well your work was received counted.`);
-    expect(firstLookTerms(c.strategy, 'television')).toMatchObject({ considerDays: 60, overhead: 3_500 }); // 12 series: mid-sized
+    expect(firstLookTerms(c.strategy, 'television')).toMatchObject({ considerDays: 60, overhead: 16_700 }); // 12 series: mid-sized
     // Its read of a series says series, from its series' genres, and claims no slate it doesn't model.
     const s = tvWorld('fl-tv-read');
     const read = studioOption(s, series(s, 'Night Watch'), HORROR.c, 'television')!.read;
@@ -289,5 +298,20 @@ describe('a television first-look deal (the v6 package, J13; the v7 package, DEA
       if (a.verdict === 'offer' || a.verdict === 'option') expect(a.status).toBe('offered');
       else { expect(a.status).toBe('declined'); expect(a.hold).not.toMatch(/first-look/); }
     }
+  });
+});
+
+// The owner's v8 package, A13 (from November 14, 2026): an inheritance buys things, not a studio's trust.
+describe('A13: what a record earns, and what money doesn\'t', () => {
+  it('a rich novice gets no offer and no better tier; delivered, well-received work moves the tier', () => {
+    const rich = world('fl-rich', [HORROR]);
+    postPersonal(rich, 'inheritance', 25_000_000, 'Labelled fixture: an inheritance', 'fixture:rich');
+    expect([dealTier(rich), offerFirstLook(rich)]).toEqual(['emerging', null]);
+    record(rich, 66);
+    expect(dealTier(rich)).toBe('emerging'); // one work is a start
+    record(rich, 72);
+    expect(dealTier(rich)).toBe('proven');
+    const fl = offerFirstLook(rich)!;
+    expect([fl.terms.tier, fl.terms.months]).toEqual(['proven', 24]);
   });
 });

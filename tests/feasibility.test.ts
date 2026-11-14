@@ -39,7 +39,29 @@ describe('whether a project can go ahead', () => {
     p.funding.extra.push({ source: 'Labelled fixture', amount: short + 1 } as never); // the rest promised
     const ready = feasibility(s, p);
     expect([ready.ready, ready.bottleneck]).toEqual([true, null]);
-    expect(ready.checks.map((c) => c.label)).toEqual(['Script', 'Cast', 'Crew', 'Designs', 'Money']);
+    expect(ready.checks.map((c) => c.label)).toEqual(['Script', 'Cast', 'Crew', 'Designs', 'Money', 'Paying On Time', 'Papers']);
+  });
+
+  it('A06: promised in full but paid on delivery can\'t pay for the work before it; money moved in now can', () => {
+    const s = startLife('feasibility-cash');
+    const p = buildProject(s, { title: 'Ledger', format: 'short', medium: 'live-action', runtime: 8 }, [{ name: 'Mara', patch: { roleSize: 'lead' } }], [{ place: 'Pier', chars: ['Mara'], minutes: 3 }]);
+    approve(s, p);
+    castPlayer(s, p, approvedCharacters(p)[0].id, 'on-camera');
+    staffAll(s, p);
+    for (const h of p.hires) h.status = 'accepted';
+    p.funding.extra = [];
+    p.funding.fund = 0; // labelled fixture: no money of the project's own yet
+    p.finance!.deals = [];
+    const cost = Math.round(projectedCost(s, p).total) + 1;
+    // Labelled fixture: a backer who promised the whole cost, all of it on delivery.
+    p.finance!.deals.push({ id: 'fd-late', kind: 'grant', backer: 'Harbour Arts Fund', amount: cost, status: 'accepted', askedAt: s.now, reason: '', received: 0, repaid: 0, terms: { recoup: 0, incomeShare: 0, approvalRights: [], credit: null, onDelivery: cost, deliverBy: null, unspent: 'stays' } } as never);
+    const f = feasibility(s, p);
+    expect(f.checks.find((c) => c.label === 'Money')!.ok).toBe(true); // funded overall
+    expect(f.bottleneck?.label, JSON.stringify(f.bottleneck)).toBe('Paying On Time');
+    expect(f.bottleneck!.detail).toMatch(/^Not on time: \$[\d,]+ is needed before delivery, and the \$[\d,]+ paid on delivery can't pay for work before it\.$/);
+    // The rest moved in now (labelled fixture: settled money in the project), and it can go ahead.
+    p.funding.extra.push({ source: 'Labelled fixture', amount: cost } as never);
+    expect(feasibility(s, p).bottleneck).toBeNull();
   });
 
   it('holds a project whose work would finish after a backer\'s date, and says what lateness costs', () => {

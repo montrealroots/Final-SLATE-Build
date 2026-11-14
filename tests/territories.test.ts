@@ -59,7 +59,9 @@ describe('territories and exclusivity', () => {
 
 describe('reported earnings and money received', () => {
   it('monthly reports recoup the guarantee first; only the overage reaches you, kept apart from what is reported', () => {
-    const { s, p } = delivered('terr-report');
+    // A world whose later window wants only what GB's exclusive deal holds (re-chosen November 14, 2026, when the fixtures'
+    // worlds changed with the player's age; it was 'terr-report', whose later window now finds rights elsewhere).
+    const { s, p } = delivered('terr-report-2');
     const o = offer(p, 'r', 'theatrical', ['GB'], true, s.now);
     o.minimumGuarantee = 1000; // labelled fixture: a small guarantee, so the reports pass it
     p.quality = { ...(p.quality ?? {}), reception: 80 } as Record<string, number>;

@@ -63,8 +63,9 @@ function runToCalibration(s: GameState, p: Project, characterId: string, zone: s
 }
 
 describe('motion-capture calibration makes progress in every world', () => {
-  // Seeds 1 and 3: the animatic finishes before a booked session, so calibration is seen waiting for it. Seeds 5, 6 and
-  // 13: the animatic finishes on a session day and calibration runs at once (measured November 9, 2026).
+  // Seeds 3 and 13: the animatic finishes before a booked session, so calibration is seen waiting for it. Seeds 1, 5 and
+  // 6: the animatic finishes on a session day and calibration runs at once (measured November 14, 2026, when the
+  // fixtures' player turned 19 and every world changed with the birth date; on November 9 it was 1 and 3, and 5, 6, 13).
   const seeds = [1, 3, 5, 6, 13];
   const results = seeds.map((n) => {
     const { s, p, golem, zone } = booked(`mcseed-${n}`);
@@ -79,8 +80,8 @@ describe('motion-capture calibration makes progress in every world', () => {
   });
 
   it('is seen waiting for its session in some worlds and not in others, so a journey cannot require that state', () => {
-    expect(results.filter((r) => r.sawWaitingForSession).map((r) => r.n)).toEqual([1, 3]);
-    expect(results.filter((r) => !r.sawWaitingForSession).map((r) => r.n)).toEqual([5, 6, 13]);
+    expect(results.filter((r) => r.sawWaitingForSession).map((r) => r.n)).toEqual([3, 13]);
+    expect(results.filter((r) => !r.sawWaitingForSession).map((r) => r.n)).toEqual([1, 5, 6]);
   });
 }, 120_000);
 

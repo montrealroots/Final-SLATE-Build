@@ -1,0 +1,154 @@
+[
+  {
+    "id": "B01",
+    "url": "https://www.chase.com/business/banking/checking/business-complete-banking",
+    "checkedOn": "2026-11-13",
+    "status": "primary_current",
+    "finding": "US Business Complete monthly fee $15; waiver routes include $2,000 minimum daily balance. No minimum opening deposit stated. Full conditions apply.",
+    "implementation": "Current US product example, not a universal fee or historical January price."
+  },
+  {
+    "id": "B02",
+    "url": "https://wise.com/us/pricing/business/receive/",
+    "checkedOn": "2026-11-13",
+    "status": "primary_current",
+    "finding": "US pricing displays $31 account-details setup; USD wire/Swift receipt $6.11. Other routes and currencies differ.",
+    "implementation": "Wise is a separate provider type; do not assume every service is an insured bank deposit. Product availability and fees scoped by market."
+  },
+  {
+    "id": "B03",
+    "url": "https://wise.com/help/articles/2977969/fees-for-using-wise-business",
+    "checkedOn": "2026-11-13",
+    "status": "primary_current",
+    "finding": "Business signup/account-details fee depends on registration country; marketed free registration does not mean all functionality is free.",
+    "implementation": "Store region and action for fees; resolve landing-page generalizations against local terms."
+  },
+  {
+    "id": "B04",
+    "url": "https://www.fdic.gov/resources/deposit-insurance/brochures/deposits-at-a-glance",
+    "checkedOn": "2026-11-13",
+    "status": "primary_current",
+    "finding": "Standard US insurance coverage is $250,000 per depositor per insured bank per ownership category, subject to requirements.",
+    "implementation": "Multiple same-category accounts at one bank do not each create a new limit. No claim of worldwide protection."
+  },
+  {
+    "id": "C01",
+    "url": "https://www.sba.gov/business-guide/launch-your-business/choose-business-structure",
+    "checkedOn": "2026-11-13",
+    "status": "primary_current",
+    "finding": "A US sole proprietorship is not a separate business entity; a trade name does not itself separate personal assets/liabilities.",
+    "implementation": "Supports distinction between independent creator/banner and entity; do not universalize US structure."
+  },
+  {
+    "id": "V01",
+    "url": "https://www.gov.uk/creative-worker-visa/overview",
+    "checkedOn": "2026-11-13",
+    "status": "primary_current",
+    "finding": "Creative Worker route requires sponsorship and relevant eligibility; work is tied to sponsor. The page states that starting one’s own business is not permitted under this route.",
+    "implementation": "A wealthy independent beginner is not automatically eligible. Partial route extract only."
+  },
+  {
+    "id": "V02",
+    "url": "https://www.gov.uk/government/publications/visa-regulations-revised-table/home-office-immigration-and-nationality-fees-8-october-2026",
+    "checkedOn": "2026-11-13",
+    "status": "primary_current",
+    "finding": "Temporary Work including Creative Worker application fee shown as GBP 340 from October 8, 2026.",
+    "implementation": "Not the total cost; healthcare and other conditions are separate; do not backdate without evidence."
+  },
+  {
+    "id": "V03",
+    "url": "https://www.canada.ca/en/immigration-refugees-citizenship/services/application/application-forms-guides/guide-5487-applying-work-permit-outside-canada.html",
+    "checkedOn": "2026-11-13",
+    "status": "primary_current",
+    "finding": "General work-permit application CAD 155; individual biometrics CAD 85 where applicable; permits/eligibility and exceptions must be checked separately.",
+    "implementation": "No complete C14 route encoded from this general fee guide."
+  },
+  {
+    "id": "V04",
+    "url": "https://www.canada.ca/en/immigration-refugees-citizenship/services/work-canada/work-without-permit.html",
+    "checkedOn": "2026-11-13",
+    "status": "primary_current",
+    "finding": "Work-permit exemptions do not necessarily remove visitor visa/eTA entry requirements.",
+    "implementation": "Entry and work permission must be separate checks."
+  },
+  {
+    "id": "V05",
+    "url": "https://content.govdelivery.com/accounts/USDHSCIS/bulletins/30582d3",
+    "checkedOn": "2026-11-13",
+    "status": "primary_historical",
+    "finding": "USCIS January 2022 bulletin distinguishes O-1B motion-picture/TV assessment from arts.",
+    "implementation": "Partial classification guidance, not current complete route eligibility or fee. Main USCIS detail page returned 403."
+  },
+  {
+    "id": "D01",
+    "url": "https://www.sonypictures.com/corp/press_releases/2020/0813",
+    "checkedOn": "2026-11-13",
+    "status": "primary_historical",
+    "finding": "August 2020 Sony/Appian Way multi-year multi-picture first look covered scripted features.",
+    "implementation": "Scope precedent; no verified monetary value or current-active claim."
+  },
+  {
+    "id": "D02",
+    "url": "https://press.aboutamazon.com/2017/5/amazon-studios-secures-producing-deals-with-bona-fide-productions-killer-films-and-le-grisbi-productions",
+    "checkedOn": "2026-11-13",
+    "status": "primary_historical",
+    "finding": "2017 Amazon announcement: Bona Fide and Killer Films two-year film/TV first looks; Le Grisbi two-year indie-film first look.",
+    "implementation": "Separate scope and term; monetary terms unknown."
+  },
+  {
+    "id": "D03",
+    "url": "https://imagine-entertainment.com/highlights/2021-2/imagine-entertainment-apple-first-look-deal/",
+    "checkedOn": "2026-11-13",
+    "status": "primary_historical",
+    "finding": "Imagine announces a multi-year Apple Studios first look for scripted movies.",
+    "implementation": "Producer primary source; no value or current status inferred."
+  },
+  {
+    "id": "D04",
+    "url": "https://about.netflix.com/news/netflix-makes-overall-deal-with-prolific-producer-director-ryan-murphy",
+    "checkedOn": "2026-11-13",
+    "status": "primary_historical",
+    "finding": "Netflix February 2018 announcement describes an exclusive multi-year series/film overall agreement beginning July 1, 2018.",
+    "implementation": "Overall precedent, not a first-look quote."
+  },
+  {
+    "id": "D05",
+    "url": "https://finance.yahoo.com/news/dahmer-producer-ryan-murphy-plans-204857142.html",
+    "checkedOn": "2026-11-13",
+    "status": "secondary_reported",
+    "finding": "Reuters June 2023 report describes the 2018 five-year Netflix agreement as valued as high as USD 300m.",
+    "implementation": "Reported upper headline value; guarantee/component split unknown. Do not annualize as actual personal take-home."
+  },
+  {
+    "id": "D06",
+    "url": "https://press.wbd.com/ca/media-release/warnermedia-and-bad-robot-productions-form-wide-ranging-content-collaboration?language_content_entity=en",
+    "checkedOn": "2026-11-13",
+    "status": "primary_historical",
+    "finding": "2019 WarnerMedia/Bad Robot agreement covered multiple media with initial term through 2024; official financial terms undisclosed.",
+    "implementation": "No automatic active status in 2026; no inferred personal salary."
+  },
+  {
+    "id": "D07",
+    "url": "https://www.investing.com/news/stock-market-news/warner-bros-discovery-expected-to-unveil-new-streaming-strategy-2863171",
+    "checkedOn": "2026-11-13",
+    "status": "secondary_reported",
+    "finding": "Reuters reporting refers to a USD 250m WarnerMedia/Bad Robot agreement and subsequent scrutiny.",
+    "implementation": "Headline agreement value, not a bank deposit or universal deal tariff."
+  },
+  {
+    "id": "D08",
+    "url": "https://www.sec.gov/Archives/edgar/data/813828/000104746912010188/a2211663zex-10.htm",
+    "checkedOn": "2026-11-13",
+    "status": "primary_historical",
+    "finding": "A historical filed contract permits outside submission after rejection/nonresponse but requires resubmission after material changes under its terms.",
+    "implementation": "Contract-specific example; do not impose these clauses on all first-look deals."
+  },
+  {
+    "id": "U01",
+    "url": "https://www.w3.org/WAI/WCAG21/Understanding/reflow",
+    "checkedOn": "2026-11-13",
+    "status": "primary_standard",
+    "finding": "Ordinary vertical content should reflow at width equivalent to 320 CSS pixels without losing function; exceptions exist for inherently two-dimensional content.",
+    "implementation": "Phone requirements use reflow, not shrinking a desktop canvas."
+  }
+]

@@ -17,8 +17,10 @@ const EXAMPLES: [string, string][] = [
   ['The screening starts in', 'src/ui/FinishViews.tsx'],
   ['Travel To The Screening', 'src/ui/FinishViews.tsx'],
   ['Decline Invitation', 'src/ui/FinishViews.tsx'],
-  ['Recorded results through', 'src/ui/RecordedResults.tsx'],
-  ['Simulated results from', 'src/ui/FinishViews.tsx'],
+  // The v6 examples "Recorded results through" and "Simulated results from" named two histories side by side; the owner's
+  // v8 decision 7 (November 14, 2026) made it one history per save, said as such.
+  ["in this story&apos;s history, each under its category", 'src/ui/RecordedResults.tsx'],
+  ['as they stand in your story', 'src/ui/FinishViews.tsx'],
   ['No audience figures are available for this reporting period.', 'src/ui/FinishViews.tsx'],
   ['available after existing commitments', 'src/ui/PlanViews.tsx'],
 ];

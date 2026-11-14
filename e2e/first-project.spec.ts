@@ -22,7 +22,7 @@ async function createFromReview(page: Page) {
   await page.evaluate(() => {
     localStorage.clear();
     localStorage.setItem('slate.v1.creationDraft', JSON.stringify({
-      step: 'review', name: 'Tomasz Wierzbicki-Adeyemi', pronouns: 'he', actingTitle: 'Actor', birthDate: '1991-03-12', birthplaceId: 'ng-lagos',
+      step: 'review', name: 'Tomasz Wierzbicki-Adeyemi', pronouns: 'he', actingTitle: 'Actor', birthDate: '2006-03-12', birthplaceId: 'ng-lagos',
       heritages: [{ id: 'Polish', label: 'Polish', custom: false }, { id: 'Yoruba', label: 'Yoruba', custom: false }], heritageCustomText: '', mainLanguage: 'en',
       languages: [{ code: 'pl', proficiency: 'Fluent' }], startPlaceId: 'gb-london', startDate: '2026-03-02', startTime: '08:00', updatedAt: 1,
     }));

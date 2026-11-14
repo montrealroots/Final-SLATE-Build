@@ -15,9 +15,11 @@ import { designStatus, designsToReview } from '../src/engine/designs';
 import { cutFromEdit, editScenes } from '../src/engine/finish';
 import { lockBlockers, lockPicture, startCutPass, unlockPicture } from '../src/engine/edit-actions';
 
+import { born19 } from './fixtures';
+
 export function startLife(seedTag: string, placeId = 'gb-london', over: Partial<CreationDraft> = {}): GameState {
   const d: CreationDraft = {
-    ...emptyDraft(), name: 'Rin Sato-Moreau', pronouns: 'they', actingTitle: 'Actor', birthDate: '1990-06-15', birthplaceId: 'jp-tokyo',
+    ...emptyDraft(), name: 'Rin Sato-Moreau', pronouns: 'they', actingTitle: 'Actor', birthDate: born19(over.startDate ?? '2026-01-05'), birthplaceId: 'jp-tokyo',
     heritages: [{ id: 'Japanese', label: 'Japanese', custom: false }, { id: 'French', label: 'French', custom: false }], nationalities: ['JP', 'FR'], mainLanguage: 'en',
     languages: [{ code: 'ja', proficiency: 'Fluent' }, { code: 'fr', proficiency: 'Conversational' }], startPlaceId: placeId, startDate: '2026-01-05', startTime: '08:00', ...over,
   };

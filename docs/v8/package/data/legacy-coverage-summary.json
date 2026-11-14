@@ -1,0 +1,456 @@
+{
+  "banks": {
+    "rows": 252,
+    "statusCounts": {
+      "blocked": 15,
+      "proven": 6,
+      "researched": 231
+    },
+    "notResearched": [
+      {
+        "key": "AN",
+        "status": "proven",
+        "tests": [
+          "tests/world/gazetteer/gazetteer.test.ts::places > are none in the six countries with no populated place of their own"
+        ]
+      },
+      {
+        "key": "AQ",
+        "status": "proven",
+        "tests": [
+          "tests/world/gazetteer/gazetteer.test.ts::places > are none in the six countries with no populated place of their own"
+        ]
+      },
+      {
+        "key": "BV",
+        "status": "proven",
+        "tests": [
+          "tests/world/gazetteer/gazetteer.test.ts::places > are none in the six countries with no populated place of their own"
+        ]
+      },
+      {
+        "key": "CC",
+        "status": "blocked",
+        "register": [
+          "R-1935"
+        ],
+        "tests": [
+          "tests/money/banks/banks.test.ts::banks > name each country's banks and what their everyday account costs",
+          "tests/money/banks/banks.places.test.ts::banks > for every place on the map",
+          "tests/money/banks/banks.test.ts::banks > tell the player what the game doesn't know"
+        ]
+      },
+      {
+        "key": "CF",
+        "status": "blocked",
+        "register": [
+          "R-1936"
+        ],
+        "tests": [
+          "tests/money/banks/banks.test.ts::banks > name each country's banks and what their everyday account costs",
+          "tests/money/banks/banks.places.test.ts::banks > for every place on the map",
+          "tests/money/banks/banks.test.ts::banks > tell the player what the game doesn't know"
+        ]
+      },
+      {
+        "key": "CG",
+        "status": "blocked",
+        "register": [
+          "R-1937"
+        ],
+        "tests": [
+          "tests/money/banks/banks.test.ts::banks > name each country's banks and what their everyday account costs",
+          "tests/money/banks/banks.places.test.ts::banks > for every place on the map",
+          "tests/money/banks/banks.test.ts::banks > tell the player what the game doesn't know"
+        ]
+      },
+      {
+        "key": "CS",
+        "status": "proven",
+        "tests": [
+          "tests/world/gazetteer/gazetteer.test.ts::places > are none in the six countries with no populated place of their own"
+        ]
+      },
+      {
+        "key": "CU",
+        "status": "blocked",
+        "register": [
+          "R-1938"
+        ],
+        "tests": [
+          "tests/money/banks/banks.test.ts::banks > name each country's banks and what their everyday account costs",
+          "tests/money/banks/banks.places.test.ts::banks > for every place on the map",
+          "tests/money/banks/banks.test.ts::banks > tell the player what the game doesn't know"
+        ]
+      },
+      {
+        "key": "ER",
+        "status": "blocked",
+        "register": [
+          "R-1940"
+        ],
+        "tests": [
+          "tests/money/banks/banks.test.ts::banks > name each country's banks and what their everyday account costs",
+          "tests/money/banks/banks.places.test.ts::banks > for every place on the map",
+          "tests/money/banks/banks.test.ts::banks > tell the player what the game doesn't know"
+        ]
+      },
+      {
+        "key": "FK",
+        "status": "blocked",
+        "register": [
+          "R-1941"
+        ],
+        "tests": [
+          "tests/money/banks/banks.test.ts::banks > name each country's banks and what their everyday account costs",
+          "tests/money/banks/banks.places.test.ts::banks > for every place on the map",
+          "tests/money/banks/banks.test.ts::banks > tell the player what the game doesn't know"
+        ]
+      },
+      {
+        "key": "GS",
+        "status": "blocked",
+        "register": [
+          "R-1943"
+        ],
+        "tests": [
+          "tests/money/banks/banks.test.ts::banks > name each country's banks and what their everyday account costs",
+          "tests/money/banks/banks.places.test.ts::banks > for every place on the map",
+          "tests/money/banks/banks.test.ts::banks > tell the player what the game doesn't know"
+        ]
+      },
+      {
+        "key": "HM",
+        "status": "proven",
+        "tests": [
+          "tests/world/gazetteer/gazetteer.test.ts::places > are none in the six countries with no populated place of their own"
+        ]
+      },
+      {
+        "key": "IR",
+        "status": "blocked",
+        "register": [
+          "R-1944"
+        ],
+        "tests": [
+          "tests/money/banks/banks.test.ts::banks > name each country's banks and what their everyday account costs",
+          "tests/money/banks/banks.places.test.ts::banks > for every place on the map",
+          "tests/money/banks/banks.test.ts::banks > tell the player what the game doesn't know"
+        ]
+      },
+      {
+        "key": "KM",
+        "status": "blocked",
+        "register": [
+          "R-1945"
+        ],
+        "tests": [
+          "tests/money/banks/banks.test.ts::banks > name each country's banks and what their everyday account costs",
+          "tests/money/banks/banks.places.test.ts::banks > for every place on the map",
+          "tests/money/banks/banks.test.ts::banks > tell the player what the game doesn't know"
+        ]
+      },
+      {
+        "key": "KP",
+        "status": "blocked",
+        "register": [
+          "R-1946"
+        ],
+        "tests": [
+          "tests/money/banks/banks.test.ts::banks > name each country's banks and what their everyday account costs",
+          "tests/money/banks/banks.places.test.ts::banks > for every place on the map",
+          "tests/money/banks/banks.test.ts::banks > tell the player what the game doesn't know"
+        ]
+      },
+      {
+        "key": "SL",
+        "status": "blocked",
+        "register": [
+          "R-1950"
+        ],
+        "tests": [
+          "tests/money/banks/banks.test.ts::banks > name each country's banks and what their everyday account costs",
+          "tests/money/banks/banks.places.test.ts::banks > for every place on the map",
+          "tests/money/banks/banks.test.ts::banks > tell the player what the game doesn't know"
+        ]
+      },
+      {
+        "key": "TF",
+        "status": "blocked",
+        "register": [
+          "R-1954"
+        ],
+        "tests": [
+          "tests/money/banks/banks.test.ts::banks > name each country's banks and what their everyday account costs",
+          "tests/money/banks/banks.places.test.ts::banks > for every place on the map",
+          "tests/money/banks/banks.test.ts::banks > tell the player what the game doesn't know"
+        ]
+      },
+      {
+        "key": "TK",
+        "status": "blocked",
+        "register": [
+          "R-1955"
+        ],
+        "tests": [
+          "tests/money/banks/banks.test.ts::banks > name each country's banks and what their everyday account costs",
+          "tests/money/banks/banks.places.test.ts::banks > for every place on the map",
+          "tests/money/banks/banks.test.ts::banks > tell the player what the game doesn't know"
+        ]
+      },
+      {
+        "key": "TV",
+        "status": "blocked",
+        "register": [
+          "R-1956"
+        ],
+        "tests": [
+          "tests/money/banks/banks.test.ts::banks > name each country's banks and what their everyday account costs",
+          "tests/money/banks/banks.places.test.ts::banks > for every place on the map",
+          "tests/money/banks/banks.test.ts::banks > tell the player what the game doesn't know"
+        ]
+      },
+      {
+        "key": "UM",
+        "status": "proven",
+        "tests": [
+          "tests/world/gazetteer/gazetteer.test.ts::places > are none in the six countries with no populated place of their own"
+        ]
+      },
+      {
+        "key": "VA",
+        "status": "blocked",
+        "register": [
+          "R-1957"
+        ],
+        "tests": [
+          "tests/money/banks/banks.test.ts::banks > name each country's banks and what their everyday account costs",
+          "tests/money/banks/banks.places.test.ts::banks > for every place on the map",
+          "tests/money/banks/banks.test.ts::banks > tell the player what the game doesn't know"
+        ]
+      }
+    ]
+  },
+  "work": {
+    "rows": 252,
+    "statusCounts": {
+      "blocked": 14,
+      "proven": 6,
+      "researched": 232
+    },
+    "notResearched": [
+      {
+        "key": "AF",
+        "status": "blocked",
+        "register": [
+          "R-1625"
+        ],
+        "tests": [
+          "tests/papers/work/work.test.ts::work > ask each country's own, or the list it shares, of each passport",
+          "tests/papers/work/work.places.test.ts::work > for every place on the map",
+          "tests/papers/work/work.test.ts::work > tell the player what the game doesn't know"
+        ]
+      },
+      {
+        "key": "AN",
+        "status": "proven",
+        "tests": [
+          "tests/world/gazetteer/gazetteer.test.ts::places > are none in the six countries with no populated place of their own"
+        ]
+      },
+      {
+        "key": "AQ",
+        "status": "proven",
+        "tests": [
+          "tests/world/gazetteer/gazetteer.test.ts::places > are none in the six countries with no populated place of their own"
+        ]
+      },
+      {
+        "key": "BF",
+        "status": "blocked",
+        "register": [
+          "R-1686"
+        ],
+        "tests": [
+          "tests/papers/work/work.test.ts::work > ask each country's own, or the list it shares, of each passport",
+          "tests/papers/work/work.places.test.ts::work > for every place on the map",
+          "tests/papers/work/work.test.ts::work > tell the player what the game doesn't know"
+        ]
+      },
+      {
+        "key": "BV",
+        "status": "proven",
+        "tests": [
+          "tests/world/gazetteer/gazetteer.test.ts::places > are none in the six countries with no populated place of their own"
+        ]
+      },
+      {
+        "key": "CS",
+        "status": "proven",
+        "tests": [
+          "tests/world/gazetteer/gazetteer.test.ts::places > are none in the six countries with no populated place of their own"
+        ]
+      },
+      {
+        "key": "EH",
+        "status": "blocked",
+        "register": [
+          "R-1651"
+        ],
+        "tests": [
+          "tests/papers/work/work.test.ts::work > ask each country's own, or the list it shares, of each passport",
+          "tests/papers/work/work.places.test.ts::work > for every place on the map",
+          "tests/papers/work/work.test.ts::work > tell the player what the game doesn't know"
+        ]
+      },
+      {
+        "key": "GW",
+        "status": "blocked",
+        "register": [
+          "R-1695"
+        ],
+        "tests": [
+          "tests/papers/work/work.test.ts::work > ask each country's own, or the list it shares, of each passport",
+          "tests/papers/work/work.places.test.ts::work > for every place on the map",
+          "tests/papers/work/work.test.ts::work > tell the player what the game doesn't know"
+        ]
+      },
+      {
+        "key": "HM",
+        "status": "proven",
+        "tests": [
+          "tests/world/gazetteer/gazetteer.test.ts::places > are none in the six countries with no populated place of their own"
+        ]
+      },
+      {
+        "key": "HT",
+        "status": "blocked",
+        "register": [
+          "R-1649"
+        ],
+        "tests": [
+          "tests/papers/work/work.test.ts::work > ask each country's own, or the list it shares, of each passport",
+          "tests/papers/work/work.places.test.ts::work > for every place on the map",
+          "tests/papers/work/work.test.ts::work > tell the player what the game doesn't know"
+        ]
+      },
+      {
+        "key": "KM",
+        "status": "blocked",
+        "register": [
+          "R-1691"
+        ],
+        "tests": [
+          "tests/papers/work/work.test.ts::work > ask each country's own, or the list it shares, of each passport",
+          "tests/papers/work/work.places.test.ts::work > for every place on the map",
+          "tests/papers/work/work.test.ts::work > tell the player what the game doesn't know"
+        ]
+      },
+      {
+        "key": "KP",
+        "status": "blocked",
+        "register": [
+          "R-1632"
+        ],
+        "tests": [
+          "tests/papers/work/work.test.ts::work > ask each country's own, or the list it shares, of each passport",
+          "tests/papers/work/work.places.test.ts::work > for every place on the map",
+          "tests/papers/work/work.test.ts::work > tell the player what the game doesn't know"
+        ]
+      },
+      {
+        "key": "MM",
+        "status": "blocked",
+        "register": [
+          "R-1630"
+        ],
+        "tests": [
+          "tests/papers/work/work.test.ts::work > ask each country's own, or the list it shares, of each passport",
+          "tests/papers/work/work.places.test.ts::work > for every place on the map",
+          "tests/papers/work/work.test.ts::work > tell the player what the game doesn't know"
+        ]
+      },
+      {
+        "key": "NR",
+        "status": "blocked",
+        "register": [
+          "R-1640"
+        ],
+        "tests": [
+          "tests/papers/work/work.test.ts::work > ask each country's own, or the list it shares, of each passport",
+          "tests/papers/work/work.places.test.ts::work > for every place on the map",
+          "tests/papers/work/work.test.ts::work > tell the player what the game doesn't know"
+        ]
+      },
+      {
+        "key": "NU",
+        "status": "blocked",
+        "register": [
+          "R-1591"
+        ],
+        "tests": [
+          "tests/papers/work/work.test.ts::work > ask each country's own, or the list it shares, of each passport",
+          "tests/papers/work/work.places.test.ts::work > for every place on the map",
+          "tests/papers/work/work.test.ts::work > tell the player what the game doesn't know"
+        ]
+      },
+      {
+        "key": "QA",
+        "status": "blocked",
+        "register": [
+          "R-1546"
+        ],
+        "tests": [
+          "tests/papers/work/work.test.ts::work > ask each country's own, or the list it shares, of each passport",
+          "tests/papers/work/work.places.test.ts::work > for every place on the map",
+          "tests/papers/work/work.test.ts::work > tell the player what the game doesn't know"
+        ]
+      },
+      {
+        "key": "SD",
+        "status": "blocked",
+        "register": [
+          "R-1677"
+        ],
+        "tests": [
+          "tests/papers/work/work.test.ts::work > ask each country's own, or the list it shares, of each passport",
+          "tests/papers/work/work.places.test.ts::work > for every place on the map",
+          "tests/papers/work/work.test.ts::work > tell the player what the game doesn't know"
+        ]
+      },
+      {
+        "key": "SY",
+        "status": "blocked",
+        "register": [
+          "R-1615"
+        ],
+        "tests": [
+          "tests/papers/work/work.test.ts::work > ask each country's own, or the list it shares, of each passport",
+          "tests/papers/work/work.places.test.ts::work > for every place on the map",
+          "tests/papers/work/work.test.ts::work > tell the player what the game doesn't know"
+        ]
+      },
+      {
+        "key": "UM",
+        "status": "proven",
+        "tests": [
+          "tests/world/gazetteer/gazetteer.test.ts::places > are none in the six countries with no populated place of their own"
+        ]
+      },
+      {
+        "key": "VA",
+        "status": "blocked",
+        "register": [
+          "R-1650"
+        ],
+        "tests": [
+          "tests/papers/work/work.test.ts::work > ask each country's own, or the list it shares, of each passport",
+          "tests/papers/work/work.places.test.ts::work > for every place on the map",
+          "tests/papers/work/work.test.ts::work > tell the player what the game doesn't know"
+        ]
+      }
+    ]
+  },
+  "bankAccountRecords": 249,
+  "notice": "Legacy repository coverage, not independent fresh source verification."
+}

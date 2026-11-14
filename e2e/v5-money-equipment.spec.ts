@@ -2,7 +2,7 @@
 // and is approved by renting what's missing; and a company of your own that funds a project and produces it, every move
 // posted on both sides. Nothing is written into the save; the world seed is pinned (a labelled fixture).
 import { expect, test, type Page } from './test';
-import { addScene, advance, castRoles, nav, newProject, openStart, pinSeed, quickDraft, quickLife, readSavedState, runToDelivery, saveAndApprove, section, staffEveryDepartment } from './helpers';
+import { addScene, advance, castRoles, nav, newProject, openStart, pinSeed, quickDraft, quickLife, readSavedState, runToDelivery, saveAndApprove, section, staffEveryDepartment, setInheritance } from './helpers';
 
 test.use({ actionTimeout: 20_000 });
 const card = (page: Page, heading: string) => page.locator('section.card', { has: page.getByRole('heading', { name: heading, exact: true }) });
@@ -63,14 +63,12 @@ test('a kit that can\'t light an interior: the day waits for the player, who ren
 
 test('a company of your own: formed from your account, money moved both ways, put into a project it then produces', async ({ page }, info) => {
   test.skip(!['desktop', 'phone', 'iphone-15-pro-max'].includes(info.project.name), 'Desktop, phone and the iPhone 15 Pro Max (WebKit).');
-  // A story with $5,000 of savings, chosen on Review.
+  // A story with a $5,000 inheritance, set on Review (savings until November 14, 2026).
   await openStart(page);
   await quickDraft(page, 'gb-london', '2026-03-02');
   await page.reload();
   await page.getByRole('button', { name: 'Continue Creation' }).click();
-  await page.getByRole('button', { name: 'Edit Money And Family' }).click();
-  await page.locator('section', { has: page.getByRole('heading', { name: 'Money And Family' }) }).getByLabel('Your Savings').fill('5000');
-  await page.getByRole('button', { name: 'Save And Return To Review' }).click();
+  await setInheritance(page, '5,000');
   await page.getByRole('button', { name: 'Start My Story' }).click();
   await expect(page.getByRole('heading', { name: /^Good (Morning|Afternoon|Evening), /, level: 1 })).toBeVisible();
   await nav(page, 'Profile');
@@ -78,14 +76,17 @@ test('a company of your own: formed from your account, money moved both ways, pu
   const start = Number((await mine.locator('strong').first().innerText()).replace(/[^\d]/g, ''));
   const co = card(page, 'Your Company');
   await co.getByLabel('Company Name').fill('Tidewater Pictures');
-  await co.getByLabel('Put In When It Is Formed').fill('1000');
-  await co.getByRole('button', { name: 'Form The Company' }).click();
+  await co.getByLabel('Put In When It Is Registered').fill('1000');
+  // Applied for (v8 package, from November 14, 2026): pending, nothing moved, until the registry decides.
+  await co.getByRole('button', { name: 'Apply To Register' }).click();
+  await expect(co).toContainText('Tidewater Pictures is waiting for the registry');
+  for (let i = 0; i < 10 && !(await co.getByText('Tidewater Pictures: $1,000 in its account.').count()); i++) { await advance(page, 'next-day'); await nav(page, 'Profile'); }
   await expect(co).toContainText('Tidewater Pictures: $1,000 in its account.');
   await expect(mine).toContainText(`$${(start - 1000 - 300).toLocaleString('en-US')} in your own account.`);
   await co.getByLabel('Move Between You And The Company').fill('200');
   await co.getByRole('button', { name: 'Draw It Out' }).click();
   await expect(co).toContainText('Tidewater Pictures: $800 in its account.');
-  await expect(co.getByRole('list', { name: 'Its Account, By What It Is' })).toContainText('Drawn By You');
+  await expect(co.getByRole('list', { name: 'Its Account, By What It Is' })).toContainText('Capital Returned To You'); // your own money back, not earnings
   // A project: the company's money goes in, and the company produces it.
   await nav(page, 'Projects');
   await newProject(page, { title: 'Harbour Lights', format: 'Short Film', runtime: '6', budget: 'Low Budget' });
@@ -106,5 +107,6 @@ test('a company of your own: formed from your account, money moved both ways, pu
   await expect(page.getByRole('region', { name: 'Backers' })).toContainText('Tidewater Pictures');
   await expect.poll(async () => (await project(page))?.producedBy).toBe('Tidewater Pictures');
   const saved = await readSavedState(page);
-  expect(saved.company.postings.reduce((a: number, x: { amount: number }) => a + x.amount, 0)).toBe(300);
+  // The company's account is the journal's company cash account from November 14, 2026 (its postings were a list before).
+  expect(saved.journal.txs.filter((t: { status: string }) => t.status === 'settled').flatMap((t: { lines: { account: string; minor: number }[] }) => t.lines).filter((l: { account: string }) => l.account === 'company:cash:USD').reduce((a: number, l: { minor: number }) => a + l.minor, 0)).toBe(30_000);
 });

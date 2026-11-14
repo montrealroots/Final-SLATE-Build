@@ -1,27 +1,22 @@
-// J01 as one run (the v4 package, 05: "New game with family gift -> select book -> choose live-action short -> complete
+// J01 as one run (the v4 package, 05: "New game with family gift [an inheritance from November 14, 2026] -> select book -> choose live-action short -> complete
 // editable brief -> add/rename character -> buy compatible affordable kit -> cast -> write/delegate -> shoot/post ->
 // distribution -> settled receipts -> reinvest. Include birthday and save/reload"; ledger V4-038.01). Each step is
 // the player's, through the interface; nothing is put into the save. The world seed is pinned (a labelled fixture) so
 // the run is the same each time.
 import { expect, test } from './test';
-import { adaptWork, addScene, advance, nav, openStart, pinSeed, produceToDelivery, quickDraft, readSavedState, saveAndApprove, section, writePitch } from './helpers';
+import { adaptWork, addScene, advance, nav, openStart, pinSeed, produceToDelivery, quickDraft, readSavedState, saveAndApprove, section, setInheritance, writePitch } from './helpers';
 
-test('J01: a family gift, a book, a live-action short on a kit bought for it, released, its receipts settled, and the next one funded', async ({ page }, info) => {
+test('J01: an inheritance, a book, a live-action short on a kit bought for it, released, its receipts settled, and the next one funded', async ({ page }, info) => {
   test.skip(info.project.name !== 'desktop', 'One whole career run, at desktop width.');
   test.setTimeout(600_000);
 
-  // A new game with a family gift, read on Review before the story starts.
+  // A new game with an inheritance, read on Review before the story starts.
   await openStart(page);
   await quickDraft(page, 'gb-london', '2026-02-02');
   await page.reload();
   await page.getByRole('button', { name: 'Continue Creation' }).click();
-  await page.getByRole('button', { name: 'Edit Money And Family' }).click();
-  const family = page.locator('section', { has: page.getByRole('heading', { name: 'Money And Family' }) });
-  await family.getByLabel('Your Savings').fill('1500');
-  await family.getByLabel("Your Family's Circumstances").selectOption({ label: 'Comfortable' });
-  await family.getByLabel('What Your Family Offers').selectOption({ label: 'A Gift' });
-  await family.getByLabel('How Much').fill('8000');
-  await page.getByRole('button', { name: 'Save And Return To Review' }).click();
+  // From November 14, 2026 an inheritance, set to the $9,500 the savings and gift came to (the v8 start has no family menus).
+  await setInheritance(page, '9,500');
   await page.getByRole('button', { name: 'Start My Story' }).click();
   await expect(page.getByRole('heading', { name: /^Good (Morning|Afternoon|Evening), /, level: 1 })).toBeVisible();
   await pinSeed(page, 5);
@@ -34,7 +29,7 @@ test('J01: a family gift, a book, a live-action short on a kit bought for it, re
   await expect(page.getByText('Teresa').first()).toBeVisible();
   await saveAndApprove(page);
 
-  // A camera, lens, card and tripod the gift can pay for, from the shop, into the project's kit.
+  // A camera, lens, card and tripod the inheritance can pay for, from the shop, into the project's kit.
   await nav(page, 'Profile');
   const gear = page.locator('section', { has: page.getByRole('heading', { name: 'Your Equipment' }) });
   await gear.getByRole('button', { name: 'Open The Shop' }).click();
@@ -100,12 +95,12 @@ test('J01: a family gift, a book, a live-action short on a kit bought for it, re
   await own.getByRole('button', { name: 'Put It In' }).click();
   await expect(page.getByRole('region', { name: 'Backers' })).toContainText('Your Own Money');
 
-  // The player's birthday (born May 20, 1990 in quickDraft; the story started February 2, 2026): lived to, a month at a
-  // time, said on the day, and the next one scheduled.
+  // The player's birthday (born May 20, 2006 in quickDraft, 19 on February 2, 2026 when the story starts; born 1990, and
+  // turning 36, until November 14, 2026): lived to, a month at a time, said on the day, and the next one scheduled.
   const nextAge = async () => (await readSavedState(page)).events.find((e: { kind: string }) => e.kind === 'birthday')?.payload.age;
-  for (let i = 0; i < 12 && (await nextAge()) === 36; i++) await advance(page, 'month');
-  await expect.poll(nextAge).toBe(37);
-  expect((await readSavedState(page)).log.some((l: { text: string }) => l.text === "Today is your birthday. You're 36.")).toBe(true);
+  for (let i = 0; i < 12 && (await nextAge()) === 20; i++) await advance(page, 'month');
+  await expect.poll(nextAge).toBe(21);
+  expect((await readSavedState(page)).log.some((l: { text: string }) => l.text === "Today is your birthday. You're 20.")).toBe(true);
 
   // Everything kept after a reload.
   await page.reload();
