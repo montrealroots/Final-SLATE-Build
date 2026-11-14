@@ -902,6 +902,14 @@
   "source": "FinishViews | \"Revise The Animatic?\""
  },
  {
+  "id": "dlg-unlock-picture",
+  "area": "Edit",
+  "name": "Unlock The Picture?",
+  "kind": "dialog",
+  "dialog": "^Unlock The Picture\\?$",
+  "source": "FinishViews | \"Unlock The Picture?\""
+ },
+ {
   "id": "scene-open",
   "area": "Script",
   "name": "A Scene, Open",

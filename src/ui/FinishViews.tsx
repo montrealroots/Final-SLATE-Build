@@ -16,7 +16,7 @@ import {
 import { scheduleChangeEffects } from '../engine/release-schedule';
 // A series delivered an episode at a time: only the Edit and Release tabs ask (November 10, 2026, after #59).
 import { deliverEpisode, episodeDeliveryBlockers, episodeLockBlockers, episodeLocked, lockEpisode, startEpisodeCutPass } from '../engine/episode-delivery';
-import { coverageGaps, lockBlockers, lockPicture, requestPickups, pickupIntegration, cutPassDays, startCutPass, unlockPicture, restoreToEdit } from '../engine/edit-actions';
+import { coverageGaps, lockBlockers, lockPicture, requestPickups, pickupIntegration, cutPassDays, startCutPass, unlockImpact, unlockPicture, restoreToEdit } from '../engine/edit-actions';
 import { rsvpScreening, screeningConflicts, submitEntry, withdrawEntry } from '../engine/awards-actions';
 import { publicResult } from '../engine/awards-results';
 import { enterable, entryEpisodes, festivalListFor } from '../engine/awards';
@@ -396,6 +396,7 @@ function TakesCard({ p, onError }: { p: Project; onError: (e: string | null) => 
 export function EditTab({ p }: { p: Project }) {
   const g = useGame();
   const [err, setErr] = useState<string | null>(null);
+  const [unlocking, setUnlocking] = useState<string[] | null>(null);
   const [pick, setPick] = useState<string[]>([]);
   const [cutting2, setCutting2] = useState<string | null>(null);
   const gaps = coverageGaps(p);
@@ -417,8 +418,20 @@ export function EditTab({ p }: { p: Project }) {
           <button className="btn" disabled={!assemblyComplete(p) || p.edit.pictureLocked || !!cutting} onClick={() => setErr(store.act((s) => void startCutPass(s, p)))}>Start Cut Pass</button>
           {!p.edit.pictureLocked ? (
             <button className="btn btn-primary" disabled={lb.length > 0} onClick={() => setErr(store.act((s) => lockPicture(s, p)))}>Lock Picture</button>
-          ) : !p.delivered && <button className="btn" onClick={() => setErr(store.act((s) => void unlockPicture(s, p)))}>Unlock Picture</button>}
+          ) : !p.delivered && <button className="btn" onClick={() => setUnlocking(unlockImpact(p).map((t) => t.label))}>Unlock Picture</button>}
         </div>
+        {unlocking && (
+          <Modal title="Unlock The Picture?" onClose={() => setUnlocking(null)} footer={<>
+            <button className="btn" onClick={() => setUnlocking(null)}>Keep It Locked</button>
+            <button className="btn btn-danger" onClick={() => { setErr(store.act((s) => void unlockPicture(s, s.projects.find((x) => x.id === p.id)!))); setUnlocking(null); }}>Unlock It</button>
+          </>}>
+            {unlocking.length ? <>
+              <p>The finishing work done on this cut starts over:</p>
+              <ul aria-label="Work That Starts Over">{unlocking.map((n) => <li key={n}>{n}</li>)}</ul>
+            </> : <p>No finishing work has started on this cut, so nothing starts over.</p>}
+            {p.contributors.some((c) => c.cutApproval && c.cutApproval.status !== 'refused') && <p>Contributors who approved this cut are shown the new one again.</p>}
+          </Modal>
+        )}
         {!p.edit.pictureLocked && !assemblyComplete(p) && <p className="dim">A cut pass starts once the assembly edit is finished.</p>}
         {!p.edit.pictureLocked && assemblyComplete(p) && <p className="dim">A cut pass takes the editor about {plural(cutPassDays(p), 'day')}. Locking the picture starts the finishing work that waits for it{(() => { const n = p.tasks.filter((t) => t.status !== 'done' && t.dependsOn.some((d) => d.startsWith('milestone:lock'))).length; return n ? ` (${plural(n, 'task')})` : ''; })()}.</p>}
         {!p.edit.pictureLocked && lb.length > 0 && <p className="dim">Before you lock: {lb.join(' ')}</p>}

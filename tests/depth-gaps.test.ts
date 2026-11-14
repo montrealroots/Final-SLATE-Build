@@ -4,7 +4,7 @@ import { describe, expect, it } from 'vitest';
 import { computeCredits, estimateDays, neededRoles, proposeStaffing, roleCandidates, scriptIssues, validateAxes } from '../src/engine';
 import { costBreakdown, projectedCost } from '../src/engine/estimate';
 import { unlockPicture } from '../src/engine/edit-actions';
-import { buildTasks } from '../src/engine/production/tasks';
+import { buildTasks, dependents } from '../src/engine/production/tasks';
 import { breakdownComplete } from '../src/engine/script-explain';
 import type { ProjectAxes } from '../src/engine/types';
 import { approve, buildProject, castAll, startLife } from './helpers';
@@ -76,9 +76,14 @@ describe('unlocking the picture (SLATE-15-04)', () => {
     const p = buildProject(s, { title: 'Ink', format: 'short', medium: 'live-action', runtime: 10 }, [{ name: 'Ada' }], [{ place: 'Room', chars: ['Ada'] }]);
     approve(s, p);
     p.tasks = buildTasks(p); // as production start builds them
-    const afterLock = p.tasks.filter((t) => t.dependsOn.some((d) => d.startsWith('milestone:lock')));
+    // Everything built after the lock, however far down: the mix waits for sound that waits for the lock (November 14, 2026).
+    const direct = p.tasks.filter((t) => t.dependsOn.some((d) => d.startsWith('milestone:lock')));
+    const reach = new Set(direct.flatMap((t) => [...dependents(p.tasks, t.id)]));
+    const composition = /^post:(themes|themes-revision|music|orchestration|score-session|conform|stems)$/; // conformed, not written again
+    const afterLock = p.tasks.filter((t) => reach.has(t.id) && !composition.test(t.kind));
     const before = p.tasks.filter((t) => !afterLock.includes(t));
-    expect(afterLock.length).toBeGreaterThan(0);
+    expect(afterLock.length).toBeGreaterThan(direct.length);
+    expect(afterLock.some((t) => t.kind === 'post:mix' && !direct.includes(t))).toBe(true);
     // Labelled fixture: the picture is locked and finishing work and shooting are underway.
     p.edit.pictureLocked = true;
     for (const t of p.tasks) { t.done = 1; t.status = 'active'; }

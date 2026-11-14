@@ -2,7 +2,7 @@
 
 Written by `node tools/v3/ui-coverage.mjs` from `docs/v3/ui-inventory.json`, the walk (`e2e/ui-coverage.spec.ts`, last run 2026-11-13) and the journey sweep (`SLATE_UI_SWEEP`). The owner's brief is `docs/v3/UI-BRIEF.md`.
 
-89 rows. 88 measured, 1 not visited. 0 open defects.
+90 rows. 88 measured, 2 not visited. 0 open defects.
 
 What the columns mean. **Walked**: the screen was opened on purpose and measured at that many window sizes in each browser profile. **Desktop And Phone**: the same screen in the same state at 1280 and at 390 pixels wide, compared for headings, things to press, fields and their order. **Reached In Journeys**: a full play-through reached it and the same measure ran there, at the sizes listed. **Desktop And Phone, In Journeys**: what the screen offered when the same journeys ran in each layout. Browser emulation is not a real device: nothing here measures a virtual keyboard, and that is tracked in the limits below.
 
@@ -96,6 +96,7 @@ What the columns mean. **Walked**: the screen was opened on purpose and measured
 | Festivals And Awards | Prepare Submission | dialog | no | not compared | phone (390x844), desktop (1280x720), iphone-15-plus (430x739) | not compared | none found |
 | Edit | Change The Approved Take? | dialog | desktop: 5, iphone-15-plus: 2, iphone-15-pro-max: 1, phone: 5 | same headings, actions and fields, same order | no | not compared | none found |
 | Production | Revise The Animatic? | dialog | no | not compared | no | not compared | **not visited** |
+| Edit | Unlock The Picture? | dialog | no | not compared | no | not compared | **not visited** |
 | Script | A Scene, Open | panel | desktop: 5, iphone-15-plus: 2, iphone-15-pro-max: 1, phone: 5 | same headings, actions and fields, same order | no | not compared | none found |
 
 ## Open Defects

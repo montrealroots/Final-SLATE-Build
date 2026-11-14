@@ -76,6 +76,10 @@ test('J09: a score commissioned through Guide Me within a ceiling, its themes re
   // The pier is filmed again: picture unlocked, the pickup requested from Coverage.
   await open('Edit');
   await page.getByRole('button', { name: 'Unlock Picture' }).click();
+  // It asks first, naming the finishing work that starts over (from November 14, 2026).
+  const unlocking = page.getByRole('dialog', { name: 'Unlock The Picture?' });
+  await expect(unlocking).toContainText(/finishing work done on this cut starts over|nothing starts over/);
+  await unlocking.getByRole('button', { name: 'Unlock It' }).click();
   const coverage = page.locator('section.card', { has: page.getByRole('heading', { name: 'Coverage' }) });
   await coverage.getByRole('checkbox', { name: /Pier/ }).first().check();
   await coverage.getByRole('button', { name: 'Request Pickups' }).click();
