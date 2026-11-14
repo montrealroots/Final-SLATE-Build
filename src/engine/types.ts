@@ -1395,6 +1395,8 @@ export interface GameState {
   company?: import('./company').Company;
   /** The name your work is credited under, which is you (company.ts Banner, from November 14, 2026). */
   banner?: import('./company').Banner;
+  /** Work permits applied for and granted (papers.ts, from November 14, 2026). */
+  permits?: import('./papers').WorkPermit[];
   /** First-look deals offered, running and past (first-look.ts). Absent until the first offer, and in saves from before November 13, 2026. */
   firstLooks?: import('./first-look').FirstLook[];
   /** Equipment you own or your family lends (equipment.ts). Absent in saves from before November 12, 2026: none. */

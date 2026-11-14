@@ -352,6 +352,9 @@ c(f, '"Put In When It Is Registered"', D, 'state.company.intendedCapital -> jour
 c(f, '"Banner Name"', R, 'state.banner', 'company.ts setBanner, productionCredit; FinishViews.tsx credits', 'The name your work is credited under when no company produces it; it opens no account and moves nothing', U('v8-company', 'credits your work under it'))
 c(f, '"Move Between You And The Company"', D, 'state.company postings (capital, draw); state.money postings (company)', 'company.ts moveCompanyMoney', 'Put in or drawn out, posted once on both sides, never more than the side holds', U('company', 'moves money in and draws it out'))
 c(f, '"Put In From The Company"', D, 'project finance deal (company); state.company postings; Project.producedBy', 'company.ts companyIntoProject, companyInRefusal', "The company's money arrives in the project, nobody repaid from it, and the company produces the project", U('company', 'puts money into a project'))
+f = 'Papers.tsx'
+# Your papers (papers.ts, from November 14, 2026: the owner's v8 package, 05).
+c(f, '"Working In"', V)
 f = 'Banking.tsx'
 # Your bank accounts (banking.ts, from November 14, 2026: the owner's v8 package, 03 "Bank lifecycle").
 c(f, '"Account To Apply For"', D, 'journal account (pending, product)', 'banking.ts applyForAccount, applyRefusal, bank-decision', 'Which bank and product you apply to: its market, holder, currency, fees and transfer fee', U('v8-banking', 'is pending until the bank decides'), E('v8-banking', 'an account applied for'))

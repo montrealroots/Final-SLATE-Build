@@ -108,3 +108,11 @@ by = {}
 for p in products:
     by[p['evidence']] = by.get(p['evidence'], 0) + 1
 print(len(products), 'products in', len({p['market'] for p in products}), 'markets;', by, ';', len(currencies), 'currencies')
+
+# Work rights by country (the old line's src/papers/work/work.json), for shooting abroad (07 step 8; A16). Each
+# destination's rule for a passport: free to work, or a permit by a named route, sometimes with its processing days.
+work = load(f'{REF}/src/papers/work/work.json')
+with open('src/data/work-rights.json', 'w', encoding='utf-8') as f:
+    json.dump({'imported': '2026-11-14', 'evidence': 'legacy-unreverified', 'source': 'SLATE-REBUILD src/papers/work/work.json', 'groups': work['groups'], 'countries': work['countries']}, f, ensure_ascii=False, separators=(',', ':'))
+    f.write('\n')
+print(len(work['countries']), 'countries of work rights')

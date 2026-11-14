@@ -39,7 +39,7 @@ describe('whether a project can go ahead', () => {
     p.funding.extra.push({ source: 'Labelled fixture', amount: short + 1 } as never); // the rest promised
     const ready = feasibility(s, p);
     expect([ready.ready, ready.bottleneck]).toEqual([true, null]);
-    expect(ready.checks.map((c) => c.label)).toEqual(['Script', 'Cast', 'Crew', 'Designs', 'Money', 'Paying On Time']);
+    expect(ready.checks.map((c) => c.label)).toEqual(['Script', 'Cast', 'Crew', 'Designs', 'Money', 'Paying On Time', 'Papers']);
   });
 
   it('A06: promised in full but paid on delivery can\'t pay for the work before it; money moved in now can', () => {

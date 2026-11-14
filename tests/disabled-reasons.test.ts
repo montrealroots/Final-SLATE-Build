@@ -12,6 +12,7 @@ const REASONS: Record<string, string> = {
   'Creation.tsx | !d.pronouns': 'Choose your pronouns first, under the buttons.',
   'FinishViews.tsx | !VERSION_LABELS.some((l) => l === label && !(p.versions ?? []).some((v) => v.label === l))': 'The runtime line says a version with that name exists already.',
   'FinishViews.tsx | !assemblyComplete(p) || p.edit.pictureLocked || !!cutting': 'A line under the buttons says a cut pass waits for the assembly; Picture says Locked; Cut Passes shows a pass under way.',
+  'Papers.tsx | !!no': 'Under the button: the application is already being decided.',
   'PlanViews.tsx | !!parsed && !parsed.ok': 'The planned budget field says what is wrong with the amount typed.',
   'Banking.tsx | !!applyRefusal(g, product!.id)': 'The reason is under Apply (a business account without a company, another country\'s market, one already applied for).',
   'Banking.tsx | !!moveNo': 'Under Move It once an amount is typed: what is wrong with the amount, or what the accounts have available.',
