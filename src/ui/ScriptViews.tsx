@@ -9,7 +9,7 @@ import {
   removeCharacterImpact, renameDraft, restoreDraft, revisionDurationHours, saveDraft, sceneDeleteImpact, sceneLabel, scriptIssues, setNoteStatus,
   startRevision, updateCharacter, updateScene, workingCopyDiffersFromLatestDraft, requestConsent, approvedScenes, type ModuleId,
   requirementRemovalImpact, addResearch, removeResearch, updateResearch, resolutionLabel,
-  approvalImpact, combineScenes, combineScenesImpact, duplicateScene, splitScene, splitSceneImpact, FAMILIES, setFamily, setupCompetition, unscriptedOf, withdrawRelease, redactionWords, type UnscriptedFamily,
+  approvalImpact, combineScenes, combineScenesImpact, duplicateScene, splitScene, splitSceneImpact, FAMILIES, contestantTraits, setFamily, setupCompetition, unscriptedOf, withdrawRelease, redactionWords, type UnscriptedFamily,
 } from '../engine';
 import { addAct, addBeat, addThread, removeAct, removeBeat, removeThread, setSceneAct, updateThread } from '../engine/structure-edit';
 // Loaded with this page, not at startup (the startup budget): the engine index leaves season.ts out.
@@ -1390,7 +1390,7 @@ function ShowFormat({ p }: { p: Project }) {
             <legend style={{ fontWeight: 600, marginBottom: 'var(--s2)' }}>Contestants</legend>
             {p.contributors.length === 0 && <p className="muted">Add participants below, then choose who competes.</p>}
             {p.contributors.map((c) => (
-              <Check key={c.id} label={c.name} checked={!!comp?.contestants.includes(c.id)} onChange={(on) => setError(edit(p, () => {
+              <Check key={c.id} label={c.name} hint={((t) => `Skill ${t.skill}, screen presence ${t.presence}. Skill helps them go through; presence is what viewers watch for.`)(contestantTraits(store.state!, p, c.id))} checked={!!comp?.contestants.includes(c.id)} onChange={(on) => setError(edit(p, () => {
                 const list = new Set(comp?.contestants ?? []);
                 if (on) list.add(c.id); else list.delete(c.id);
                 setupCompetition(p, [...list], comp?.eliminatePerEpisode ?? 1);

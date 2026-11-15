@@ -30,16 +30,40 @@ export const SCORE_DAYS = 30;
 export const songFeeFrom = (points: number): number => Math.min(400_000, Math.round(12_000 * (1 + points / 4) ** 1.3 / 1000) * 1000);
 /** The songwriter days a song takes (songs.ts: Write The Song). */
 export const SONG_DAYS = 4;
+/**
+ * A recognised director's fee for a feature: $500,000 × (1 + weight ÷ 4)^1.4, at most $20 million. Until November 15,
+ * 2026 a director asked a crew member's rate, so Steven Spielberg directed a feature for about $250,000. Reported: "the
+ * average director salary for a studio film is in the $750,000 to $1.5 million range, depending on the number of past
+ * credits" (The Hollywood Reporter, Hollywood Salaries 2016), and Ridley Scott "got $10 million to $12 million upfront
+ * for Alien: Covenant" (The Hollywood Reporter, 2017). The curve is the game's: Modeled assumption.
+ */
+export const directFeeFrom = (points: number): number => Math.min(20_000_000, Math.round(500_000 * (1 + points / 4) ** 1.4 / 1000) * 1000);
+/** The shoot days a director's fee is asked over: a feature's (hiring.ts estimateDays pays a director for each shoot day). */
+export const DIRECT_DAYS = 40;
+/**
+ * A recognised screenwriter's fee for a feature's script: $150,000 × (1 + weight ÷ 4)^1.2, at most $5 million. Until
+ * November 15, 2026 Aaron Sorkin wrote a feature's draft for about $70,000. The WGA's minimum for an original screenplay
+ * with treatment on a film of $5 million or more is $173,215 (2026 Schedule of Minimums, May 2, 2026 to May 1, 2027);
+ * "established movie scribes can make $1 million a script" (The Hollywood Reporter); the highest reported, "$3 million
+ * against $5 million" for Déjà Vu. The curve is the game's: Modeled assumption.
+ */
+export const scriptFeeFrom = (points: number): number => Math.min(5_000_000, Math.round(150_000 * (1 + points / 4) ** 1.2 / 1000) * 1000);
+/** The days a feature's draft takes (writing-jobs.ts: four minutes of script a day, a 100-minute feature). */
+export const SCRIPT_DAYS = 25;
+/** The jobs a recognised person asks a fee for the work in, and the fee and days it is asked over. */
+const FEE_JOBS: Record<string, [(points: number) => number, number]> = {
+  composer: [(x) => scoreFeeFrom(x), SCORE_DAYS], songwriter: [(x) => songFeeFrom(x), SONG_DAYS], 'episode-director': [(x) => directFeeFrom(x), DIRECT_DAYS],
+  'co-writer': [(x) => scriptFeeFrom(x), SCRIPT_DAYS], 'episode-writer': [(x) => scriptFeeFrom(x), SCRIPT_DAYS],
+};
 
 /**
  * A crew member's day rate from the job, their experience (1 to 5) and the weight of their recognition. A recognised
- * composer asks their score's fee over a feature's score days, and a recognised songwriter their song's fee over a song's
- * days, if that is more.
+ * composer, songwriter, director or writer asks the fee for the work over the days it takes (FEE_JOBS), if that is more.
  */
 export function crewAskFrom(job: string, experience: number, points: number): number {
   const crew = Math.round((role(job).rate * (0.62 + experience * 0.2) * (1 + Math.min(CREW_RAISE_CEILING, points / 10))) / 10) * 10;
-  const fee = !points ? 0 : job === 'composer' ? scoreFeeFrom(points) / SCORE_DAYS : job === 'songwriter' ? songFeeFrom(points) / SONG_DAYS : 0;
-  return Math.max(crew, Math.round(fee / 10) * 10);
+  const asks = FEE_JOBS[job];
+  return points > 0 && asks ? Math.max(crew, Math.round(asks[0](points) / asks[1] / 10) * 10) : crew;
 }
 
 /** A performer's day rate from their recognition, at least the SAG-AFTRA minimum for this budget on this date. */

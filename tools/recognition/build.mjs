@@ -29,7 +29,7 @@ export const BODIES = [
   ['cesar', /^César Award for /],
 ];
 /** Honours for a whole career, or for a film rather than someone's work on it, which say nothing about the job. */
-const NOT_A_JOB = /Honorary|Lifetime|Cecil B|Carol Burnett|Jean Hersholt|Thalberg|Special|Humanitarian|Best (Motion )?Picture|Best Film|Best (Drama|Comedy|Limited|Animated|Documentary|Foreign|International|Short)|Outstanding (Drama|Comedy|Limited|Variety|Television Movie|Animated|Children)|Best (Television )?Series|Program/i;
+const NOT_A_JOB = /Honorary|Lifetime|Cecil B|Carol Burnett|Jean Hersholt|Thalberg|Special|Humanitarian|Best (Motion )?Picture|Best Film\b(?! (Editing|Music))|Best (Drama|Comedy|Limited|Animated|Documentary|Foreign|International|Short)|Outstanding (Drama|Comedy|Limited|Variety|Television Movie|Animated|Children)|Best (Television )?Series|Program/i;
 /** The game's jobs a category recognises, by what its name says. */
 const JOBS = [
   ['voice-actor', /Voice/i],
@@ -46,7 +46,7 @@ const JOBS = [
   ['sound-designer', /Sound (Editing|Effects)|Best Sound$|Sound$/i],
   ['editor', /(Film|Picture) Editing|Best Editing|Editor/i],
   ['songwriter', /Original Song/i],
-  ['composer', /Score|Original Music|Music Composition|Best Music/i],
+  ['composer', /Score|Original Music|Music Composition|Best Music|Film Music/i],
   ['co-writer', /Screenplay|Writing|Writer/i],
   ['episode-writer', /Screenplay|Writing|Writer/i],
   ['episode-director', /Direct(or|ing)\b(?!.*(Art|Photography))/i],
@@ -54,20 +54,20 @@ const JOBS = [
 ];
 
 async function sparql(query) {
-  for (let i = 0; i < 4; i++) {
-    const res = await fetch(`${ENDPOINT}?${new URLSearchParams({ query, format: 'json' })}`, { headers: { 'User-Agent': UA, Accept: 'application/sparql-results+json' } });
-    if (res.ok) return (await res.json()).results.bindings;
-    console.error(`\nWikidata answered ${res.status}: ${(await res.text()).slice(0, 200)}`);
-    await new Promise((r) => setTimeout(r, 2000 * (i + 1)));
+  for (let i = 0; i < 8; i++) {
+    // A connection that breaks off mid-answer is asked again, as a refusal is.
+    const res = await fetch(`${ENDPOINT}?${new URLSearchParams({ query, format: 'json' })}`, { headers: { 'User-Agent': UA, Accept: 'application/sparql-results+json' } }).catch((e) => ({ ok: false, status: e.message, text: async () => '' }));
+    if (res.ok) { const got = await res.json().catch(() => null); if (got) return got.results.bindings; }
+    console.error(`\nWikidata answered ${res.status}: ${(await res.text().catch(() => '')).slice(0, 200)}`);
+    await new Promise((r) => setTimeout(r, 3000 * (i + 1)));
   }
   throw new Error(`Wikidata refused a query: ${query.slice(0, 120)}`);
 }
 const qid = (uri) => uri.slice(uri.lastIndexOf('/') + 1);
 
 const CLASSES = 'wd:Q19020 wd:Q732997 wd:Q1044427 wd:Q28444913 wd:Q56116950 wd:Q107549740 wd:Q38033430 wd:Q96474676 wd:Q96474589 wd:Q708135 wd:Q174389 wd:Q223740';
-const rows = await sparql(`SELECT DISTINCT ?award ?label WHERE { VALUES ?cls { ${CLASSES} } ?award wdt:P31 ?cls . ?award rdfs:label ?label . FILTER(LANG(?label) = "en") }`);
 const categories = {};
-for (const r of rows) {
+const keep = (rows) => { for (const r of rows) {
   const label = r.label.value;
   const body = BODIES.find(([, re]) => re.test(label))?.[0];
   if (!body || NOT_A_JOB.test(label)) continue;
@@ -75,6 +75,25 @@ for (const r of rows) {
   // A category for performers names only them; one that also matched a crew job by a word in passing keeps the crew job.
   const kept = jobs.includes('actor') && jobs.length > 1 ? jobs.filter((j) => j !== 'actor') : jobs;
   if (kept.length) categories[qid(r.award.value)] = { label, body, jobs: kept };
+} };
+keep(await sparql(`SELECT DISTINCT ?award ?label WHERE { VALUES ?cls { ${CLASSES} } ?award wdt:P31 ?cls . ?award rdfs:label ?label . FILTER(LANG(?label) = "en") }`));
+// Wikidata files some categories only under a class of their kind and not their body's: until November 15, 2026 the
+// Academy Award for Best Director (only "award for best direction") was missing, so no director's Oscar counted. Every
+// other class the categories found belong to is read too, and its categories of these bodies kept.
+const known = new Set(CLASSES.split(' ').map((x) => x.slice(3)));
+const more = new Set();
+const pause = () => new Promise((r) => setTimeout(r, 1000));
+for (let i = 0; i < Object.keys(categories).length; i += 15) {
+  // ?a is selected as well: without it, the query service drops the VALUES and answers every class of everything.
+  const chunk = Object.keys(categories).slice(i, i + 15).map((x) => `wd:${x}`).join(' ');
+  for (const g of await sparql(`SELECT ?a ?c WHERE { VALUES ?a { ${chunk} } ?a wdt:P31 ?c . }`)) if (!known.has(qid(g.c.value))) more.add(qid(g.c.value));
+  await pause();
+}
+for (const c of more) {
+  // Only these bodies' categories, by name: a class like "film award" has thousands of members.
+  const named = BODIES.map(([, re]) => re.source.replace(/^\^/, '')).join('|').replace(/\\/g, '\\\\').replace(/"/g, '\\"');
+  keep(await sparql(`SELECT DISTINCT ?award ?label WHERE { ?award wdt:P31 wd:${c} . ?award rdfs:label ?label . FILTER(LANG(?label) = "en" && REGEX(?label, "^(${named})")) }`));
+  await pause();
 }
 const ids = Object.keys(categories);
 console.log(`${ids.length} categories`);
