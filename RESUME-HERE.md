@@ -94,21 +94,31 @@ and the rest) with real grades filling the hiring lists.
   (`more-fields.ts`), the project's (`project-fields.ts`), the release plan's (`release-fields.ts`), the music brief's
   (`music-fields.ts`) and a scene's look, kind and basis and a series regular (`scene-fields.ts`). Six fields aren't
   decisions (`not-features.json`: the clock's Advance fields, the catalog's role filter, a plan's reminder, a repaired
-  save's place). Open 270 -> 210 so far, with 25 more results still to run at 40 careers (below).
+  save's place). Open 270 -> 210 at the fourth batch's checkpoint.
 - Fixed from them, each with a test that fails without the fix: Wake Me For Obligations moved nothing (it stopped Sleep
   at the call itself, after the call had found you asleep and started the day late); sleep now ends an hour before the
   first call or job morning it would cross (`state.ts startSleep`). A documentary scene's basis only added a note; a
   scene presented as sourced fact with no fact linked is now an item the researcher must source (`production/tasks.ts`).
   The documentary journey now expects the withdrawal message that says the scene left the cut.
 
-**Next.** Run at 40 careers and copy in (after the staleness check): format-feature, medium-animation,
-restore-version-song, version-song, method-capture, puppet-face (stale on `production/tasks.ts`), friend-out-of-cafe
-(remeasured), technique-stop-motion, story-era, dialogue-french, setting-abroad, episodes-three, story-years,
-plan-territories, first-public-date, festival-hold, version-dubbed, music-silence, score-sound-chamber, score-density,
-themes-stand, scene-look, scene-archival, scene-dramatized, series-regular. Then the rest of the fields: creation
-(start date, observances, language proficiency, place of birth), the stage and episode fields on the plan, awards entry
-fields, songs, ideas, licence scope, writing scope. One shown only somewhere is carried once a test shows it there; one
-an engine function reads needs a played-career proof. Then the eleven bank commands a $25m career never reaches (collections,
+- Fifth batch: the creation fields (start date, holidays kept, French proficiency; `creation-fields.ts`), a stage's
+  age and a season shot in blocks (`plan-more.ts`), a song's fields (`song-fields.ts`: commissioned, a lyricist, how a
+  licensed track plays and for how long), a co-writer's rewrite (`writing.ts`), the kind of site and a new planned
+  budget (`places.ts`). Music By and Lyrics By (an existing song's writers) went to `not-features.json`.
+- Fixed from them: the staffing screen told a player short of money for the crew to "raise the rest", but with the
+  target promised nothing more could be put in ("nothing left to raise"), so a film shot somewhere dearer than its
+  estimate was a dead end; it now says to raise the target on the Budget page (`hiring.ts proposeStaffing`, test in
+  `tight-budget.test.ts`, careers journey updated). Proven by `new-planned-budget`: two films delivered against none.
+- Observed, not changed: the project's estimate doesn't follow where a film is shot (a station in Paris costs more than
+  the $40,000 target the micro short was raised to); the staffing screen is where the player learns it.
+
+**Next.** Copy in from the runs started at 17:00 (after the staleness check): every result that reads `hiring.ts`
+(16, stale since the message change; two are scheduled, `off-counter-lapse` and `off-offer-response`) and the fifth
+batch at 40 careers. Then rebuild the matrix, check, checkpoint. Then the rest of the fields: awards entry (project,
+episode, song, version, performer), ideas and the revise-brief keeps, the music mandate and licence scope, Place Of
+Birth (it decides only awards nationality rules and the bank's home region), the Writer and Director selects, the
+episode for a writer, unscripted competitions, the remaining script fields. One shown only somewhere is carried once a
+test shows it there; one an engine function reads needs a played-career proof. Then the eleven bank commands a $25m career never reaches (collections,
 overdrafts, disputes, hardship), and an episode delivered early (a release planned while the season is in production). The writer's revision
 focus still waits on the owner (nothing reads it).
 
