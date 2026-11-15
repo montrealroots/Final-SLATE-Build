@@ -11,7 +11,8 @@ import {
 } from '../src/engine/looks';
 import { chairsOf, sceneLoad } from '../src/engine/production/schedule';
 import { covers } from '../src/engine/people';
-import { CROWD_DAY_RATE } from '../src/engine/production/rates';
+import { crowdDayRate } from '../src/engine/production/rates';
+import { dateKey } from '../src/engine/time';
 import type { GameState, Project, Scene, StoryCharacter } from '../src/engine/types';
 import { approve, buildProject, castAll, runDays, staffAll, startLife, startProduction, summary } from './helpers';
 
@@ -259,8 +260,9 @@ describe('a crowd', () => {
     expect(neededRoles(practical.p, practical.s).some((r) => r.roleId === 'extras-casting')).toBe(true);
     expect(neededRoles(digital.p, digital.s).some((r) => r.roleId === 'extras-casting')).toBe(false);
     const crowdCost = (x: { s: GameState; p: Project }) => toCome(x.s, x.p, /^Background performers/);
-    expect(crowdCost(practical) % (40 * CROWD_DAY_RATE)).toBe(0);
-    expect(crowdCost(digital) % (10 * CROWD_DAY_RATE)).toBe(0);
+    const rate = (x: { s: GameState; p: Project }) => crowdDayRate(x.p, dateKey(x.s.now, 'UTC'));
+    expect(crowdCost(practical) % (40 * rate(practical))).toBe(0);
+    expect(crowdCost(digital) % (10 * rate(digital))).toBe(0);
     expect(crowdCost(digital)).toBeLessThan(crowdCost(practical));
   });
 

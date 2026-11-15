@@ -83,9 +83,9 @@ describe('a week in cinemas', () => {
   it('everything else about a week follows from its rental, and the parts add up', () => {
     const w: BoxOfficeWeek = { week: 1, from: '2026-03-06', to: '2026-03-12', territories: 1, rental: 13_700, status: 'final' };
     const m = weekMoney(w, DISTRIBUTOR_FEE);
-    expect(m).toEqual({ gross: 27_400, admissions: 2_740, cinemas: 13_700, rental: 13_700, fee: 4_795, net: 8_905 });
+    expect(m).toEqual({ gross: 27_400, admissions: 2_423, cinemas: 13_700, rental: 13_700, fee: 4_795, net: 8_905 });
     expect(m.gross).toBe(m.rental / RENTAL_SHARE);
-    expect(m.admissions * TICKET_PRICE).toBe(m.gross);
+    expect(Math.abs(m.admissions * TICKET_PRICE - m.gross)).toBeLessThan(TICKET_PRICE); // to the nearest whole admission
     expect(m.cinemas + m.rental).toBe(m.gross);
     expect(m.fee + m.net).toBe(m.rental);
   });
@@ -154,7 +154,7 @@ describe('the record book', () => {
     film(s, 'Never Released', []);
     const book = recordBook(s);
     expect(book.map((r) => r.title)).toEqual(['Alder', 'Birch', 'Cedar']);
-    expect(book[0]).toMatchObject({ projectId: a.id, opened: '2026-12-18', opening: 20_000, best: { gross: 20_000, week: 1 }, lifetime: 40_000, admissions: 4_000, weeks: 3, runs: 1, settled: true });
+    expect(book[0]).toMatchObject({ projectId: a.id, opened: '2026-12-18', opening: 20_000, best: { gross: 20_000, week: 1 }, lifetime: 40_000, admissions: 3_537, weeks: 3, runs: 1, settled: true });
     // Its weeks ended on December 24 and 31, 2026 and January 7, 2027: a year is the year a week ended in.
     expect(book[0].byYear).toEqual({ 2026: 32_000, 2027: 8_000 });
     expect(book[1]).toMatchObject({ projectId: b.id, opening: 16_000, best: { gross: 24_000, week: 2 }, lifetime: 40_000 });

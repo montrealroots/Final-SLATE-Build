@@ -22,7 +22,8 @@ import { ledgerTotals, money } from './budget';
 import { castRoleFor, estimateDays, requiredCrewPlan, roleCandidates } from './hiring';
 import { roleLabel } from './people';
 import { buildTasks, dayFees, groupShootDays, materialCost, VOICE_SESSION_STUDIO, RENDER_NODE_DAY_COST, type ShootDayGroup } from './production';
-import { CROWD_DAY_RATE, NIGHT_PREMIUM, RENDER_HOURS_PER_FRAME } from './production/rates';
+import { dateKey } from './time';
+import { crowdDayRate, NIGHT_PREMIUM, RENDER_HOURS_PER_FRAME } from './production/rates';
 import { rigDayCost } from './craft';
 import { awayCosts } from './destinations';
 import { makeupDayCost, physicalCrowd } from './looks';
@@ -119,7 +120,8 @@ export function costBreakdown(state: GameState, p: Project): CostBreakdown {
       const c = crowds.get(groupLabel(g)) ?? { people: 0, days: 0 };
       crowds.set(groupLabel(g), { people: c.people + crowd, days: c.days + 1 });
     }
-    for (const [label, c] of crowds) lines.push({ area: 'shoot', label: `Background performers: ${label}`, amount: c.people * CROWD_DAY_RATE, driver: `${c.people} performer-days at ${money(CROWD_DAY_RATE)}, over ${c.days} ${c.days === 1 ? 'day' : 'days'}` });
+    const crowdRate = crowdDayRate(p, dateKey(state.now, 'UTC'));
+    for (const [label, c] of crowds) lines.push({ area: 'shoot', label: `Background performers: ${label}`, amount: c.people * crowdRate, driver: `${c.people} performer-days at ${money(crowdRate)}, over ${c.days} ${c.days === 1 ? 'day' : 'days'}` });
     if (makeupCost) lines.push({ area: 'shoot', label: 'Makeup materials', amount: makeupCost, driver: `Applied fresh on ${makeupDays} shoot ${makeupDays === 1 ? 'day' : 'days'}` });
     if (rigCost) lines.push({ area: 'shoot', label: 'Camera rig rental', amount: rigCost, driver: `A dolly and track or a stabiliser on ${rigDays} shoot ${rigDays === 1 ? 'day' : 'days'}` });
     // Filming away from the base (destinations.ts): the unit's move and its housing, place by place.

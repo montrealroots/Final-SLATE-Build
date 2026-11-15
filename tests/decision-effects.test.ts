@@ -14,7 +14,7 @@ import { neededRoles } from '../src/engine/hiring';
 import { coachingNeeded } from '../src/engine/production';
 import { agreedFunding, approve, buildProject, castAll, startLife, writePitch } from './helpers';
 import { isSixthDay } from '../src/engine/production/schedule';
-import { SIXTH_DAY_BUDGET_FLOOR, SIXTH_DAY_PREMIUM, dayPremium } from '../src/engine/production/rates';
+import { HOLIDAY_PREMIUM, SIXTH_DAY_BUDGET_FLOOR, SIXTH_DAY_PREMIUM, dayPremium } from '../src/engine/production/rates';
 import { callSheet } from '../src/engine/callsheet';
 
 /** A short with two characters and three scenes, approved: the starting point every comparison here shares. */
@@ -190,7 +190,7 @@ describe('six-day weeks', () => {
     const sat = p.schedule.days.find((d) => new Date(`${d.date}T12:00:00Z`).getUTCDay() === 6)!;
     const mon = p.schedule.days.find((d) => new Date(`${d.date}T12:00:00Z`).getUTCDay() === 1)!;
     expect([isSixthDay(p, sat.date), isSixthDay(p, mon.date)]).toEqual([true, false]);
-    expect([dayPremium(false, true), dayPremium(false, false), dayPremium(true, true)]).toEqual([SIXTH_DAY_PREMIUM, 1, 1.5]);
+    expect([dayPremium(false, true), dayPremium(false, false), dayPremium(true, true)]).toEqual([SIXTH_DAY_PREMIUM, 1, HOLIDAY_PREMIUM]);
     expect(callSheet(s, p, sat.id).notes).toContain(`The sixth day of the week: everyone on set is paid ${SIXTH_DAY_PREMIUM} times their day rate.`);
     expect(callSheet(s, p, mon.id).notes.some((n) => n.startsWith('The sixth day'))).toBe(false);
     // Below the line (Pact's low-budget terms), a sixth day is paid as any other.

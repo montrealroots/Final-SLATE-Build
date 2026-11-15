@@ -32,6 +32,8 @@ export interface RecognitionData {
   categories: { id: string; label: string; body: Body; jobs: string[] }[];
   /** TMDB person ID: [name, born, died, marks]; a mark is [category index, won (1) or nominated (0), year or null]. */
   people: Record<string, [string | null, string | null, string | null, [number, 0 | 1, number | null][]]>;
+  /** TMDB person ID: how many Wikipedia editions have an article on them, for everyone with ten or more (tools/recognition/fame.mjs). */
+  fame?: Record<string, number>;
 }
 
 let loaded: RecognitionData | null = null;
@@ -99,6 +101,19 @@ export const LEAD_DAYS = 40;
 export const FEE_CEILING = 30_000_000;
 /** A performer's fee for a film from their recognition (the game's curve, calibrated against fees reported in July 2022: docs/people/PAY.md). */
 export const filmFeeFrom = (points: number): number => Math.min(FEE_CEILING, Math.round(250_000 * (1 + points / 4) ** 1.5 / 1000) * 1000);
+/** How many Wikipedia editions have an article on a person, by TMDB ID: 0 when fewer than ten, or the record isn't loaded. */
+export const fameOf = (tmdbId: number | string): number => loaded?.fame?.[String(tmdbId)] ?? 0;
+/**
+ * A performer's fee for a film from how widely they are known: $4,700 × editions^1.75, at most the ceiling. Recognition
+ * prices prestige and not an audience's draw, so until November 15, 2026 a star with few awards was under-priced (Daniel
+ * Craig about 2% of his reported fee) and a star with none asked a working actor's rate. Calibrated on fees reported in
+ * 2021 and 2022: Margot Robbie and Ryan Gosling, $12.5 million each for Barbie at 92 and 90 editions; Dwayne Johnson,
+ * $23.5 million, Gal Gadot and Ryan Reynolds, $20 million each, for Red Notice (Variety) at 113, 94 and 91. The fame is
+ * today's: a fee before a star was this well known is over-read. The curve is the game's: Modeled assumption.
+ */
+export const fameFeeFrom = (editions: number): number => (editions > 0 ? Math.min(FEE_CEILING, Math.round(4_700 * editions ** 1.75 / 1000) * 1000) : 0);
+/** A performer's fee for a film: whichever of their recognition and their fame asks more. */
+export const performerFee = (points: number, editions: number): number => Math.max(filmFeeFrom(points), fameFeeFrom(editions));
 
 /** The recognition in words: "2 Academy Award nominations and a Golden Globe win". */
 export function describeStanding(s: Standing): string {

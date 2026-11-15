@@ -189,7 +189,7 @@ test('J08: a horror film pitched to two studios, optioned by one for its reasons
   await nav(page, 'Profile');
   const book = card(page, 'Box Office Records');
   await expect(book).toContainText('Simulated by the game, and only what happened in this story: no real box office is in these records.');
-  await expect(book.getByRole('listitem').filter({ hasText: 'The Long Night' })).toContainText(`Opening week ${dollars(weeks[0].rental * 2)} (1st). Lifetime ${dollars(offer.reported.gross * 2)} (1st) from ${((offer.reported.gross * 2) / 10).toLocaleString('en-US')} admissions over`);
+  await expect(book.getByRole('listitem').filter({ hasText: 'The Long Night' })).toContainText(`Opening week ${dollars(weeks[0].rental * 2)} (1st). Lifetime ${dollars(offer.reported.gross * 2)} (1st) from ${Math.round((offer.reported.gross * 2) / 11.31).toLocaleString('en-US')} admissions over`);
   await page.screenshot({ path: `test-results/studio-pitch-${info.project.name}-04-record-book.png`, fullPage: true });
   if (info.project.name !== 'desktop') expect((await audit(page)).defects, 'the record book, on a phone').toEqual([]);
 });

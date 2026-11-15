@@ -11,7 +11,7 @@
 // can stop the day, and how often noise spoils dialogue. Every figure is game calibration (docs/ASSUMPTIONS.md,
 // "Filming Somewhere Else"), not a quote, a rate or legal guidance.
 import { findPlace, getPlace, type Place } from '../data/places';
-import { dayFees, housePackageFee } from './production/rates';
+import { housePackageFee } from './production/rates';
 import { stream } from './rng';
 import { distanceKm } from './state';
 import type { Project, Scene, ShootDay } from './types';
@@ -50,9 +50,14 @@ export const SITE_KINDS: Record<SiteKind, SiteKindDef> = {
 
 /** A place this far from the base, or further, is away: the unit is moved there and housed. */
 export const AWAY_KM = 80;
-/** Housing and feeding the unit for a shooting day away, as a share of the budget size's day fees (location and the house
- *  equipment package: a kit of your own, from November 12, 2026, changes what gear costs, not what the unit eats). */
-export const AWAY_DAY_SHARE = 0.6;
+/**
+ * Housing and feeding one person in the unit for a day away: the US government's standard rates, $110 lodging and $68
+ * meals and incidentals (GSA, FY 2026 CONUS per diem rates, Federal Register, August 19, 2025), wherever the place is.
+ * Until November 15, 2026 the unit's housing was 0.6 of the day's location and equipment fees, whoever was in it.
+ */
+export const PER_DIEM = { lodging: 110, meals: 68 };
+/** The people housed away: everyone hired who has accepted, and you. */
+export const unitSize = (p: Project): number => p.hires.filter((h) => h.status === 'accepted').length + 1;
 /** Moving the unit there and back, once for a place: half the house equipment package's day fee, and as much again for each 1,000 km, up to four times it. */
 export const MOVE_BASE = 0.5;
 export const MOVE_PER_1000_KM = 1;
@@ -83,8 +88,7 @@ export const kindFee = (p: Project, label: string): number => { const at = filme
 /** Housing the unit for a shooting day at this place: nothing at the base or near it. */
 export function awayDayCost(p: Project, label: string): number {
   if (!isAway(p, label)) return 0;
-  const f = dayFees(p);
-  return Math.round((f.location + housePackageFee(p)) * AWAY_DAY_SHARE);
+  return unitSize(p) * (PER_DIEM.lodging + PER_DIEM.meals);
 }
 
 /** Moving the unit to this place and back, once: nothing at the base or near it. */

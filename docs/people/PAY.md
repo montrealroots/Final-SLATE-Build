@@ -20,16 +20,21 @@ A recognised performer's fee for a film is the game's curve on the weight of the
 
 A recognised composer's fee for a feature's score is the game's curve on the same weight: $40,000 × (1 + weight ÷ 4)^1.4, at most $3 million, asked as a day rate over the 30 days a fully scored feature takes, and never under what their experience asks. Reported composer fees run from $20,000 for a lower-budget film to over $1 million for a studio release with a well-known composer (Jeffrey and Todd Brabec, "Film Composing Fees", taxi.com). At a weight of 65 (Hans Zimmer's) it asks $2,156,000. A recognised songwriter's fee for a film's song is $12,000 × (1 + weight ÷ 4)^1.3, at most $400,000, over the 4 days a song takes: film songwriting fees run from nothing to over $100,000 for established writers, occasionally more (Donald Passman, All You Need to Know About the Music Business, 11th edition). At a weight of 29 (Elton John's) it asks $186,000. A recognised director's fee for a feature is $500,000 × (1 + weight ÷ 4)^1.4, at most $20 million, over the 40 days of a feature's shoot: studio directors average $750,000 to $1.5 million, and Ridley Scott was paid $10 to $12 million for Alien: Covenant (The Hollywood Reporter, 2016 and 2017); at a weight of 19 (Christopher Nolan's) it asks $5,788,000. A recognised writer's fee for a feature's script is $150,000 × (1 + weight ÷ 4)^1.2, at most $5 million, over the 25 days a draft takes: the WGA's minimum for an original screenplay on a film of $5 million or more is $173,215 (2026), and established writers are paid about $1 million a script (The Hollywood Reporter); at a weight of 33 (Aaron Sorkin's) it asks $2,165,000. Recognition explains what prestige is paid, not what drawing an audience is. Modeled assumption.
 
-Beside fees that were reported, at the weight of recognition recorded before the year of each deal. Recognition explains what prestige is paid. It does not explain what drawing an audience is paid, which the game has no record of (it reads no popularity figure), so a star paid for that is under-priced here.
+A performer's fee is also read from how widely they are known: $4,700 × (Wikipedia editions with an article on them)^1.75, at most $30 million, and the fee asked is whichever of the two is more. Recognition prices prestige; fame prices an audience's draw. The fame is today's (Wikidata sitelinks, tools/recognition/fame.mjs): a fee before a star was this well known is over-read, and a singer's or a public figure's fame counts as an actor's. Modeled assumption.
 
-| Performer | Film | Year | Reported | Weight Then | The Game's Fee | Game ÷ Reported |
-|---|---|---|---|---|---|---|
-| Leonardo DiCaprio | Killers of the Flower Moon | 2022 | $30,000,000 | 76 | $22,361,000 | 0.75 |
-| Joaquin Phoenix | Joker: Folie à Deux | 2022 | $20,000,000 | 60 | $16,000,000 | 0.80 |
-| Joaquin Phoenix | Joker | 2018 | $4,500,000 | 31 | $6,471,000 | 1.44 |
-| Margot Robbie | Barbie | 2022 | $12,500,000 | 25.6 | $5,033,000 | 0.40 |
-| Ryan Gosling | Barbie | 2022 | $12,500,000 | 13 | $2,190,000 | 0.18 |
-| Lady Gaga | Joker: Folie à Deux | 2022 | $10,000,000 | 9 | $1,465,000 | 0.15 |
-| Daniel Craig | Knives Out sequels (each of two) | 2021 | $50,000,000 | 4.8 | $816,000 | 0.02 |
+Beside fees that were reported, at the weight of recognition recorded before the year of each deal and the fame recorded now. Variety reported the Red Notice fees.
+
+| Performer | Film | Year | Reported | Weight Then | Editions | The Game's Fee | Game ÷ Reported |
+|---|---|---|---|---|---|---|---|
+| Leonardo DiCaprio | Killers of the Flower Moon | 2022 | $30,000,000 | 76 | 150 | $30,000,000 | 1.00 |
+| Joaquin Phoenix | Joker: Folie à Deux | 2022 | $20,000,000 | 60 | 92 | $16,000,000 | 0.80 |
+| Joaquin Phoenix | Joker | 2018 | $4,500,000 | 31 | 92 | $12,845,000 | 2.85 |
+| Margot Robbie | Barbie | 2022 | $12,500,000 | 25.6 | 92 | $12,845,000 | 1.03 |
+| Ryan Gosling | Barbie | 2022 | $12,500,000 | 13 | 90 | $12,360,000 | 0.99 |
+| Lady Gaga | Joker: Folie à Deux | 2022 | $10,000,000 | 9 | 199 | $30,000,000 | 3.00 |
+| Daniel Craig | Knives Out sequels (each of two) | 2021 | $50,000,000 | 4.8 | 105 | $16,187,000 | 0.32 |
+| Dwayne Johnson | Red Notice | 2021 | $23,500,000 | 0 | 113 | $18,407,000 | 0.78 |
+| Gal Gadot | Red Notice | 2021 | $20,000,000 | 0 | 94 | $13,337,000 | 0.67 |
+| Ryan Reynolds | Red Notice | 2021 | $20,000,000 | 0 | 91 | $12,601,000 | 0.63 |
 
 Every recognised performer and crew member, with their grade and what they ask: `docs/people/PERFORMERS.csv` and `docs/people/CREW.csv`. Recognition from Wikidata (CC0 1.0), retrieved 2026-11-15.

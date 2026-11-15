@@ -4,7 +4,7 @@
 import { describe, expect, it } from 'vitest';
 import { getPlace, registerPlace } from '../src/data/places';
 import {
-  AWAY_DAY_SHARE, AWAY_KM, SITE_KINDS, awayCosts, awayDayCost, candidateSite, dayPlace, filmPlace, filmedAtPreview, isAway, kindFee, kmFromBase, moveCost, noisyDay, permitWork, setFilmedAt, underCover,
+  PER_DIEM, AWAY_KM, unitSize, SITE_KINDS, awayCosts, awayDayCost, candidateSite, dayPlace, filmPlace, filmedAtPreview, isAway, kindFee, kmFromBase, moveCost, noisyDay, permitWork, setFilmedAt, underCover,
 } from '../src/engine/destinations';
 import { dayFees } from '../src/engine/production/rates';
 import { addDaysToKey, approvedScenes, buildTasks, costBreakdown, deserialize, serialize } from './engine-api';
@@ -40,7 +40,9 @@ describe('where a script location is filmed', () => {
     expect(isAway(p, 'Quay')).toBe(true);
     expect(kindFee(p, 'Quay')).toBe(SITE_KINDS.port.fee);
     const f = dayFees(p);
-    expect(awayDayCost(p, 'Quay')).toBe(Math.round((f.location + f.equipment) * AWAY_DAY_SHARE));
+    // Everyone in the unit housed and fed at the US government's standard per diem, $178 a person a day.
+    expect(awayDayCost(p, 'Quay')).toBe(unitSize(p) * (PER_DIEM.lodging + PER_DIEM.meals));
+    expect(PER_DIEM.lodging + PER_DIEM.meals).toBe(178);
     expect(moveCost(p, 'Quay')).toBe(Math.round(f.equipment * Math.min(4, 0.5 + kmFromBase(p, 'Quay') / 1000)));
     expect(awayCosts(p, [{ locationLabel: 'Quay' }, { locationLabel: 'Quay' }, { locationLabel: 'Office' }])).toEqual([{ label: 'Quay', place: getPlace('no-tromso').name, days: 2, move: moveCost(p, 'Quay'), housing: 2 * awayDayCost(p, 'Quay') }]);
     // Permits are work before the shoot, for that place alone.

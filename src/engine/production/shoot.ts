@@ -10,7 +10,7 @@ import { castIn, stageIn } from '../parts';
 import { recordWorkDay, workRight, type Activity } from '../papers';
 import { addLog, cancelEvents, newId, registerHandler } from '../state';
 import { addDaysToKey, dateKey, formatDateKey } from '../time';
-import { BASE_MINUTES_PER_SHOOT_DAY, CROWD_DAY_RATE, NIGHT_PREMIUM, dayFees, dayPremium, housePackageFee } from './rates';
+import { BASE_MINUTES_PER_SHOOT_DAY, NIGHT_PREMIUM, crowdDayRate, dayFees, dayPremium, housePackageFee } from './rates';
 import { dayKitProblems, kitDayRate, wearKit } from '../equipment';
 import { chairsOf, ensureWorkEvent, isSixthDay, isWorkingDay, lastDay, minorsInScenes, relabelTravel, nextWorkingDay, performedSong, sceneComplexity, sceneLoad, scheduleShootDay, travelFrom } from './schedule';
 import { childShare, ensureLicence, isSchoolDay, licenceReady, setAsideOf, supervisionFor, type Minor } from '../minors';
@@ -252,7 +252,7 @@ export function runShootDay(state: GameState, p: Project, d: ShootDay): string {
     const o = p.obligations.find((x) => x.id === h.obligationId)!;
     const pay = Math.round(h.dayRate * dayPremium(holidayToday, isSixthDay(p, d.date)) * (d.night ? NIGHT_PREMIUM : 1));
     return a + Math.max(0, o.settled + pay - Math.max(o.amount, o.settled));
-  }, 0) + Math.max(0, locationFee + gearFee + scenes.reduce((a, s) => a + physicalCrowd(s), 0) * CROWD_DAY_RATE + makeupDayCost(scenes, approvedCharacters(p)) + rigDayCost(p, scenes, onKit && kitStabilizer(p)) + housing + move - plannedRemaining(p, 'plan:shoot'));
+  }, 0) + Math.max(0, locationFee + gearFee + scenes.reduce((a, s) => a + physicalCrowd(s), 0) * crowdDayRate(p, d.date) + makeupDayCost(scenes, approvedCharacters(p)) + rigDayCost(p, scenes, onKit && kitStabilizer(p)) + housing + move - plannedRemaining(p, 'plan:shoot'));
   if (overrun > ledgerTotals(p).available) {
     d.status = 'lost';
     d.result = `There wasn't enough money for this shoot day (${money(overrun)} needed beyond what's already agreed). Add funding or cut scope, then rebuild the schedule.`;
@@ -460,7 +460,7 @@ export function runShootDay(state: GameState, p: Project, d: ShootDay): string {
     payPlanned(state, p, 'plan:shoot', onKit ? `Rented Equipment (${d.date})` : p.kit ? `Equipment Package, Hired For The Day (${d.date})` : `Equipment Package (${d.date})`, 'equipment', gearFee, `eq:${d.id}`);
     if (p.kit && !onKit) addLogOnce(state, p, `kit:${d.id}`, `${p.title}: your kit couldn't serve ${formatDateKey(d.date)}. ${kitWhy[0].text} As you approved, the rental house's package was hired for the day, for ${money(gearFee)}.`);
     const crowd = scenes.reduce((a, s) => a + physicalCrowd(s), 0);
-    if (crowd) payPlanned(state, p, 'plan:shoot', `Background Performers (${d.date})`, 'cast', crowd * CROWD_DAY_RATE, `crowd:${d.id}`);
+    if (crowd) payPlanned(state, p, 'plan:shoot', `Background Performers (${d.date})`, 'cast', crowd * crowdDayRate(p, d.date), `crowd:${d.id}`);
     // The day's makeup materials (looks.ts), once for the day, for the scenes that were called.
     payPlanned(state, p, 'plan:shoot', `Makeup Materials (${d.date})`, 'materials', makeupDayCost(scenes, approvedCharacters(p)), `makeup:${d.id}`);
     // The day's rented camera rig (craft.ts): a dolly and track, or a stabiliser, once for the day.

@@ -1,6 +1,7 @@
 // Real people's grades and pay in the game (November 15, 2026): a capability and a rate read from how the industry has
 // judged their work (recognition.ts), the same in every save; recognised crew offered in the hiring lists; a makeup
 // artist's or a gaffer's catalog credits counted for that job; and SAG-AFTRA's minimum on every performer's offer.
+import { guildMinimum } from '../src/engine/union';
 import { readFileSync } from 'node:fs';
 import { describe, expect, it } from 'vitest';
 import { candidatesFor, makeOffer, roleCandidates } from './engine-api';
@@ -79,7 +80,7 @@ describe("SAG-AFTRA's minimum on every performer's offer", () => {
     expect(Math.min(...actors.map((a) => a.dayRate))).toBeGreaterThanOrEqual(1246);
     const mara = p.characters[0].id;
     expect(() => makeOffer(s, p, { personId: actors[0].id, roleId: 'actor', dayRate: 1000, characterId: mara, method: 'on-camera' }))
-      .toThrow("Under the SAG-AFTRA Theatrical Agreement, which a production of this budget works under, a performer's day is at least $1,246.");
+      .toThrow("Under the SAG-AFTRA Theatrical Agreement, which a production of this budget works under, a day of this work is at least $1,246.");
     expect(() => makeOffer(s, p, { personId: actors[0].id, roleId: 'actor', dayRate: 1246, characterId: mara, method: 'on-camera' })).not.toThrow();
   });
 
@@ -90,5 +91,16 @@ describe("SAG-AFTRA's minimum on every performer's offer", () => {
     expect(actors.some((a) => a.dayRate < 1246)).toBe(true); // nobody lifted to the full agreement's minimum
     expect(() => makeOffer(s, p, { personId: actors[0].id, roleId: 'actor', dayRate: 200, characterId: p.characters[0].id, method: 'on-camera' }))
       .toThrow(/Moderate Low Budget Agreement.*at least \$436\./);
+  });
+});
+
+describe('the guilds\' minimums', () => {
+  // Until November 15, 2026 a director or a writer could be paid anything on a production of any size.
+  it('a director on a production over $11 million and a writer on one of $5 million or more are paid at least the guild minimum', () => {
+    expect(guildMinimum('episode-director', 15_000_000, '2026-08-01')).toEqual({ amount: 5043, agreement: 'DGA Basic Agreement' }); // $25,214 a week
+    expect(guildMinimum('episode-director', 4_000_000, '2026-08-01')).toBeNull(); // the low-budget sideletter's levels: not modeled
+    expect(guildMinimum('co-writer', 5_000_000, '2026-08-01')).toEqual({ amount: 6929, agreement: 'WGA Minimum Basic Agreement' }); // $173,215 over a draft's 25 days
+    expect(guildMinimum('co-writer', 4_999_999, '2026-08-01')).toBeNull();
+    expect(guildMinimum('editor', 15_000_000, '2026-08-01')).toBeNull();
   });
 });
