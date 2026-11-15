@@ -1,6 +1,9 @@
 // What Home's Your Bank says (SLATE's own, from November 14, 2026; the owner's command, 5 "Home entry points"): read
 // from the journal (the bank world's postings), never stored. Three figures are kept apart, never added into each other:
-// - available: what the player's own accounts hold now, posted, and not yet owed to anybody (a card paid over counts);
+// - available: what the player's own accounts hold now, posted, less what is held for a payment not yet posted (a card
+//   hold), and not yet owed to anybody (a card paid over counts). A bank's available balance drops when a card payment
+//   is authorized, and money coming in counts once it posts (from November 15, 2026: until then a hold left available
+//   as it was until it posted, so a purchase paid by debit card didn't show as spent for some days);
 // - pending: what is on its way and not yet posted (a hold's postings, `systems/pending.ts`), in or out;
 // - owed: every card, loan and overdraft's balance owed.
 // And each currency apart: an account held in another currency than the save's is counted in its own (`held`), and
@@ -35,9 +38,11 @@ export function bankSummary(sim: Simulation, ownerId = sim.universe.playerId): C
     f.accounts += 1;
     f.pending += w.minor;
     if (a.kind === 'escrow') { f.pending += p.minor; continue; } // money on its way between banks (`systems/bankmoves.ts`)
-    if (isLiability(a.kind)) { if (p.minor < 0) f.owed += -p.minor; else f.available += p.minor; }
-    else if (p.minor < 0) f.owed += -p.minor; // an overdraft: owed to the bank, not money less
-    else f.available += p.minor;
+    if (isLiability(a.kind)) { if (p.minor < 0) f.owed += -p.minor; else f.available += p.minor; continue; }
+    // What can be spent: the posted balance less what a hold has set aside; money on its way in waits until it posts.
+    const usable = native(sim, a, posted + Math.min(0, waiting)).minor;
+    if (usable < 0) f.owed += -usable; // an overdraft: owed to the bank, not money less
+    else f.available += usable;
   }
   return [...by.values()].sort((x, y) => (x.currency === saveCurrency(sim.universe) ? -1 : y.currency === saveCurrency(sim.universe) ? 1 : x.currency.localeCompare(y.currency)));
 }

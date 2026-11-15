@@ -12,6 +12,7 @@ import { startLife } from './helpers';
 import { DAY, processUntil } from './engine-api';
 import { buyGear } from '../src/engine/equipment';
 import { advanceBankWorld, bankSim } from '../src/engine/bankworld';
+import { bankSummary } from '../src/engine/bankworld/summary';
 
 // Each life a citizen where it lives, so no work visa's fee is in its money (tests/v10-living-abroad.test.ts has those).
 const life = (startPlaceId: string, tag: string) => newGame(draft({ startPlaceId, nationalities: [startPlaceId.slice(0, 2).toUpperCase()] }), 0, `save-${tag}`);
@@ -78,5 +79,22 @@ describe('how you pay, for what a SLATE life buys', () => {
     // The same purchase, the same amount, whichever way it is paid.
     expect(-credit.card).toBe(-debit.checking);
     expect(-cash.cash).toBe(-debit.checking);
+  });
+});
+
+describe('what Home calls available', () => {
+  it('drops when a purchase is authorized on the debit card, and shows it pending until it posts', () => {
+    // From November 15, 2026: a hold left available as it was until it posted (bankworld/summary.ts).
+    const s = startLife('available-hold', 'gb-london');
+    const sim = () => bankSim(s.bank!);
+    const before = bankSummary(sim())[0];
+    buyGear(s, 'stand-300f');
+    const held = bankSummary(sim())[0];
+    expect(held.pending).toBeLessThan(0);
+    expect(before.available - held.available).toBe(-held.pending);
+    processUntil(s, s.now + 20 * DAY, 'tick', 1_000_000); // posted, some bank days on
+    const posted = bankSummary(sim())[0];
+    expect(posted.pending).toBe(0);
+    expect(posted.available).toBeLessThanOrEqual(held.available);
   });
 });
