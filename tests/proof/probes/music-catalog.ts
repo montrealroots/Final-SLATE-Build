@@ -7,7 +7,7 @@ import type { Probe } from '../probe';
 import type { GameState, Project } from '../../../src/engine/types';
 import { applyMusicCatalog, considerComposer, licenseRecording } from '../../../src/engine/music-catalog';
 import { attachSong } from '../../../src/engine/song-actions';
-import { agreeLicence, requestLicence } from '../../../src/engine/music';
+import { agreeLicence, licenceTotal, requestLicence } from '../../../src/engine/music';
 import { approvedScenes } from '../../../src/engine/projects';
 import { considerFor } from '../../../src/engine/guests';
 import { estimateDays, makeOffer } from '../../../src/engine/hiring';
@@ -27,14 +27,22 @@ const useRecording = (s: GameState, p: Project) => {
   const song = licenseRecording(s, p, CATALOG, RECORDING);
   attachSong(p, song.id, approvedScenes(p).at(-1)!.id, 'background');
 };
-/** Each day: its holders asked once, for digital sale in Britain for 3 years (the career's release), and their quote agreed. */
+/**
+ * Each day: its holders asked for digital sale in Britain for 3 years (the career's release), and asked again after a
+ * refusal; their quote agreed, the money for it put in first. Since November 15, 2026 a famous recording is priced as
+ * one (music.ts holderFee): "Gangnam Style" asks about $16,000 of a micro-budget short, more than it has left.
+ */
 const licensing = (s: GameState) => {
   for (const p of s.projects.filter((x) => !x.delivered && x.music)) {
     const song = (p.songs ?? []).find((x) => x.recording?.id === RECORDING.id);
     if (!song) continue;
     const ls = p.music!.licences.filter((l) => l.songId === song.id);
-    if (!ls.length) { requestLicence(s, p, song.id, { territories: ['GB'], media: ['digital'], years: 3 }); continue; }
-    for (const l of ls.filter((x) => x.status === 'quoted' || x.status === 'countered')) agreeLicence(s, p, l.id);
+    if (!ls.some((l) => l.status !== 'refused' && l.status !== 'declined')) { requestLicence(s, p, song.id, { territories: ['GB'], media: ['digital'], years: 3 }); continue; }
+    for (const l of ls.filter((x) => x.status === 'quoted' || x.status === 'countered')) {
+      const need = licenceTotal(l);
+      setFinanceTarget(p, financeSummary(p).target + need); putInOwnMoney(s, p, need);
+      agreeLicence(s, p, l.id);
+    }
   }
 };
 
