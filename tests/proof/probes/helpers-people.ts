@@ -60,7 +60,8 @@ export const PROBES: Probe[] = [
     id: 'line-producer-negotiates', features: ['action:line-producer.negotiate'], decision: 'Have the line producer negotiate each counteroffer before accepting it',
     reads: ['src/engine/line-producer.ts#negotiate'],
     // Every performer offered four fifths of their ask (castRate 0.8), so they counter at it, and counters are accepted.
-    base: { castRate: 0.8, decide: withLineProducer }, variant: { castRate: 0.8, decide: withLineProducer, beforeManage: negotiateCounters() }, measure,
+    // Its fees come near what it saves on a short this size, so 120 careers (November 15, 2026: at 40 the net cost's interval touched none).
+    seeds: 120, base: { castRate: 0.8, decide: withLineProducer }, variant: { castRate: 0.8, decide: withLineProducer, beforeManage: negotiateCounters() }, measure,
     bites: ['counterRates'], downstream: ['spent', 'money'],
   },
 ];

@@ -47,8 +47,22 @@ and the rest) with real grades filling the hiring lists.
   seeds as revenue grew noisier; rerun at 120. The 200-seed "results being decided" is proven through the player's
   standing.
 
-**Next.** Proofs for the 364 features not yet proven (most are fields), in batches; the writer's revision focus still
-waits on the owner (nothing reads it).
+**Proofs for the rest, in batches (the owner, November 15, 2026: "Keep going with proofs for the rest").**
+- Written and proven: the card's commands (`tests/proof/probes/bank-cards.ts`), the account commands (`bank-moves.ts`,
+  `bank-rest.ts`), a series' episode decisions (`series.ts`), revisions in post (`revisions.ts`), Guide Me and the
+  line producer (`helpers-people.ts`), motion capture (`mocap.ts`). Four record-keeping actions went to
+  `docs/v10/not-features.json`.
+- Fixed from them, each with a test that fails without the fix: money coming in ignored the bank's instruction for where
+  wages go (`bank.ts postToBank`); an episode's own cut pass counted for nothing (`finish.ts`); Guide Me's writing threw
+  when the money ran short and stopped the day (`mandates.ts`); a captured performance was scored as uncaptured, 60,
+  whatever take was approved, and skipping the face cost nothing (`finish.ts`, `FACE_KEYFRAMED`).
+- Not reachable by these careers (recorded in `docs/v10/explained.json` where tried): an episode delivered early
+  (needs a release planned mid-production); the bank's collections, dormant accounts, unclaimed money, disputes and
+  hardship plans (a career with $25m in the bank doesn't reach them).
+
+**Next.** The remaining actions (songs, documentary consent and cuts, screen time, sequels, studio pitches, first-look
+development, representation, stages of a part, a project from a source), the scheduled kinds, then the fields. The
+writer's revision focus still waits on the owner (nothing reads it).
 
 ## The Owner's Command Of November 14, 2026 (Later): Every Feature Proven, Everything Possible
 

@@ -155,7 +155,7 @@ describe('Guide Me for writing', () => {
     const { s, p } = film('gm-write-short');
     const m = approveGuideMe(s, p, WRITING, guideMePlan(s, p, WRITING).total * 2);
     // Labelled fixture: with the offers' money held, everything else uncommitted is held for something else.
-    reserve(s, p, 'Held for something else (fixture)', 'other', ledgerTotals(p).available);
+    reserve(s, p, 'Held for something else (fixture)', 'materials', ledgerTotals(p).available);
     expect(() => days(s, 20)).not.toThrow();
     expect(m.told.some((t) => /uncommitted|funding/i.test(t))).toBe(true);
     expect((p.writing ?? []).some((j) => j.scope === 'rewrite')).toBe(false);

@@ -225,6 +225,9 @@ const clamp = (x: number) => Math.round(Math.max(0, Math.min(100, x)));
  * worked on it. Work done once for every episode (cut passes, the script's open notes, crew hired for the whole season)
  * counts for each. Nothing is drawn at random per episode: two episodes differ only where their work differs.
  */
+/** What a captured performance's take counts for when its face is keyframed instead of captured (game calibration). */
+const FACE_KEYFRAMED = 0.85;
+
 export function assessQuality(state: GameState, p: Project, episode?: number): Record<string, number> {
   const inEp = (n: number | undefined) => episode === undefined || n === episode;
   const covers = (eps: number[] | 'all') => episode === undefined || eps === 'all' || eps.includes(episode);
@@ -329,7 +332,14 @@ export function assessQuality(state: GameState, p: Project, episode?: number): R
     // Their own scenes: a stage's performer is judged on its scenes alone (parts.ts).
     const theirs = scenes.filter((s) => s.participants.includes(a.characterId) && stageIn(p, a.characterId, s) === a.stage);
     if (episode !== undefined && !theirs.length) continue; // not in this episode: nothing of theirs to assess
-    const sc = theirs.map((s) => { const c = p.captures.find((x) => x.sceneId === s.id); return (c ? editPerformance(p, c) : undefined) ?? c?.quality ?? 60; });
+    // A performance in motion capture is its approved take (mocap.ts): what retakes and calibration raise, and what the
+    // player chooses; a face not captured is keyframed by the animators, and the take counts at FACE_KEYFRAMED of
+    // itself (game calibration). Until November 15, 2026 the approved take decided only the credit, and a captured
+    // part was scored as an uncaptured one, 60, whatever its take.
+    const take = a.method === 'motion-capture' ? approvedTake(p, a.characterId) : undefined;
+    const face = (p.mocap?.[a.characterId]?.parts ?? ['body', 'face']).includes('face');
+    const sc = take ? theirs.map(() => Math.round(take.quality * (face ? 1 : FACE_KEYFRAMED)))
+      : theirs.map((s) => { const c = p.captures.find((x) => x.sceneId === s.id); return (c ? editPerformance(p, c) : undefined) ?? c?.quality ?? 60; });
     // Rehearsal reaches every performer, not only the player (from November 14, 2026): a hired one plays three points
     // worse with none and up to five better with eight days, against the default three. Game calibration.
     const base = a.performer === 'player' ? 58 + playerExperience(state, p, 'performer') + Math.min(14, p.schedule.rehearsalDays * 2) : personById(state, a.performer).capability + Math.min(8, p.schedule.rehearsalDays) - 3;
