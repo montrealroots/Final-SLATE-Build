@@ -83,9 +83,14 @@ and the rest) with real grades filling the hiring lists.
 - Observed, not changed (the owner's settled grading): a catalog performer or composer with many credits and no awards
   is graded 55, below the game's experienced people (88 cast on average), so they are rarely the best read.
 
-**Next.** The remaining actions: a series submitted under a television first-look deal, and a project made from a
-source; moving an episode moves the audience both ways (explained), to prove with a season whose episodes are known to
-differ in reception. Then the scheduled kinds, then the fields. The writer's revision
+- Third batch: a series under a television first-look deal, a project made from a source, a song played first over the
+  end credits (the Academy needs a US cinema release, booked through a partner), and seventeen scheduled systems
+  switched off in careers where they run (`scheduled-more.ts`). Six scheduled kinds are older saves' or display only
+  (`not-features.json`). The matrix: actions 144 proven, scheduled 55 proven, open 320 -> 270.
+
+**Next.** The 256 fields (inputs): one shown only somewhere is carried once a test shows it there; one an engine
+function reads needs a played-career proof. Then the eleven bank commands a $25m career never reaches (collections,
+overdrafts, disputes, hardship), and an episode delivered early (a release planned while the season is in production). The writer's revision
 focus still waits on the owner (nothing reads it).
 
 ## The Owner's Command Of November 14, 2026 (Later): Every Feature Proven, Everything Possible
