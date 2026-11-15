@@ -16,8 +16,8 @@
   "gross": 31845,
   "revenue": 220089.625,
   "distributed": 1.05,
-  "money": 24384554.652,
-  "moneyChange": -615445.349,
+  "money": 24432013.152,
+  "moneyChange": -567986.849,
   "jobsTaken": 0.675,
   "jobsOffered": 0.675,
   "jobPay": 3777.8,
@@ -39,7 +39,7 @@
   "offersDeclined": 0.35,
   "countersSeen": 0,
   "countersDeclined": 0,
-  "spent": 366149.95,
+  "spent": 318691.45,
   "shootDays": 34.725,
   "lostDays": 0,
   "daysToDeliver": 84.425,
@@ -52,7 +52,7 @@
   "standing.directing": 53.875,
   "standing.acting": 50,
   "standing.producing": 52.25,
-  "licenceFees": 72891,
+  "licenceFees": 8895.5,
   "fired": 0
  },
  "variant": {
@@ -63,8 +63,8 @@
   "gross": 31845,
   "revenue": 220089.625,
   "distributed": 1.05,
-  "money": 24357527.652,
-  "moneyChange": -642472.349,
+  "money": 24428708.652,
+  "moneyChange": -571291.349,
   "jobsTaken": 0.675,
   "jobsOffered": 0.675,
   "jobPay": 3777.8,
@@ -86,7 +86,7 @@
   "offersDeclined": 0.35,
   "countersSeen": 0,
   "countersDeclined": 0,
-  "spent": 393176.95,
+  "spent": 321995.95,
   "shootDays": 34.725,
   "lostDays": 0,
   "daysToDeliver": 84.425,
@@ -99,7 +99,7 @@
   "standing.directing": 53.875,
   "standing.acting": 50,
   "standing.producing": 52.25,
-  "licenceFees": 109336.5,
+  "licenceFees": 13350,
   "fired": 0
  },
  "diff": {
@@ -153,16 +153,16 @@
    "n": 40
   },
   "money": {
-   "mean": -27027,
-   "lo": -33763.892,
-   "hi": -20290.108,
+   "mean": -3304.5,
+   "lo": -4127.053,
+   "hi": -2481.947,
    "changed": 33,
    "n": 40
   },
   "moneyChange": {
-   "mean": -27027,
-   "lo": -33763.892,
-   "hi": -20290.108,
+   "mean": -3304.5,
+   "lo": -4127.053,
+   "hi": -2481.947,
    "changed": 33,
    "n": 40
   },
@@ -314,9 +314,9 @@
    "n": 40
   },
   "spent": {
-   "mean": 27027,
-   "lo": 20290.108,
-   "hi": 33763.892,
+   "mean": 3304.5,
+   "lo": 2481.947,
+   "hi": 4127.053,
    "changed": 33,
    "n": 40
   },
@@ -405,9 +405,9 @@
    "n": 40
   },
   "licenceFees": {
-   "mean": 36445.5,
-   "lo": 31725.407,
-   "hi": 41165.593,
+   "mean": 4454.5,
+   "lo": 3878.613,
+   "hi": 5030.387,
    "changed": 40,
    "n": 40
   },
@@ -437,7 +437,7 @@
  ],
  "verdict": "proven",
  "hashes": {
-  "src/engine/music.ts": "e7eebaeebdd0335b",
+  "src/engine/music.ts": "4e92741a35910193",
   "tests/proof/career.ts": "50bea06f19a02c5b"
  }
 }

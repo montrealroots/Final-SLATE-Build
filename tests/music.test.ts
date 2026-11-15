@@ -1,7 +1,7 @@
 // Licences for existing songs (engine/music.ts; the v4 package, 03; ledger V4-024, V4-026.01, V4-026.02).
 import { describe, expect, it } from 'vitest';
 import {
-  LIBRARY_HOLDER, LIBRARY_YEARS, LICENCE_ANSWER_DAYS, LICENCE_MEDIA, RENEWAL_SHARE, agreeLicence, libraryFee, libraryRefusal, releaseSongs, replaceWithLibrary, holderFee, licenceTotal, releaseLicenceRefusal, renewLicence, renewalFee, requestLicence, requestRefusal, standingLicence,
+  LIBRARY_HOLDER, LIBRARY_YEARS, LICENCE_ANSWER_DAYS, fameOf, LICENCE_MEDIA, RENEWAL_SHARE, agreeLicence, libraryFee, libraryRefusal, releaseSongs, replaceWithLibrary, holderFee, licenceTotal, releaseLicenceRefusal, renewLicence, renewalFee, requestLicence, requestRefusal, standingLicence,
   type LicenceScope,
 } from '../src/engine/music';
 import { attachSong, createSong, detachSong, syncSongTasks } from '../src/engine/song-actions';
@@ -36,6 +36,45 @@ function until(s: GameState, p: Project, songId: string, scope: LicenceScope, wa
   }
   throw new Error(`no ${want} in forty requests`);
 }
+
+describe('what a song costs', () => {
+  // Until November 15, 2026 every song cost the same, whoever recorded it: Adele's "Hello" for one country's festivals on
+  // a micro budget came to about $2,500 in all. Quotes follow reported sync fees now (music.ts holderFee).
+  const known = (s: GameState, p: Project, id: string) => { const song = createSong(s, p, { title: `Track ${id}`, source: 'licensed', holder: 'Its label', writers: [{ name: 'A Writer', music: true, lyrics: true }] }); song.recording = { id, performers: ['A Performer'], writersRecorded: true, retrieved: '2026-11-13' }; attachSong(p, song.id, p.scenes[0].id, 'background', 1); return song; };
+  const FEST: LicenceScope = { territories: ['US'], media: ['festival'], years: 1 };
+  const ALL: LicenceScope = { territories: 'worldwide', media: [...LICENCE_MEDIA], years: 10 };
+  it('a superstar\'s hit costs far more than an unknown song, and more the bigger the production and the grant', () => {
+    const { s, p } = film('fee-fame');
+    const hello = known(s, p, 'Q21172725'); // Adele, "Hello": written about in 36 editions, Adele in 137
+    const stripper = known(s, p, 'Q0'); // not in the catalog: nothing on record
+    expect(fameOf(hello)).toBeCloseTo(0.95, 2);
+    expect(fameOf(stripper)).toBe(0);
+    p.funding.scenarioId = 'micro';
+    // One country's festivals for a year, both sides: never the price of an unknown song.
+    expect(2 * holderFee(p, hello, FEST)).toBeGreaterThan(15_000);
+    expect(2 * holderFee(p, stripper, FEST)).toBeLessThan(500);
+    p.funding.scenarioId = 'commissioned';
+    // The world, every medium, ten years, on a studio-sized production: in the reported six figures a side.
+    expect(holderFee(p, hello, ALL)).toBeGreaterThan(200_000);
+    expect(holderFee(p, hello, ALL)).toBeLessThan(400_000);
+    expect(holderFee(p, stripper, ALL)).toBe(20_000); // "$10,000 to $25,000 for a song or master by an indie writer"
+    p.funding.scenarioId = 'low';
+    expect(holderFee(p, hello, ALL)).toBeLessThan(holderFee({ ...p, funding: { ...p.funding, scenarioId: 'mid' } }, hello, ALL));
+  });
+  it('a superstar\'s holders say no to a micro-budget film more often than an unknown song\'s', () => {
+    let hit = 0, unknown = 0;
+    for (let i = 0; i < 30; i++) {
+      const { s, p } = film(`fee-no-${i}`);
+      p.funding.scenarioId = 'micro';
+      const a = known(s, p, 'Q21172725'), b = known(s, p, 'Q0');
+      const la = requestLicence(s, p, a.id, FEST), lb = requestLicence(s, p, b.id, FEST);
+      answer(s);
+      if (la.status !== 'quoted') hit++;
+      if (lb.status !== 'quoted') unknown++;
+    }
+    expect(hit).toBeGreaterThan(unknown + 5);
+  });
+});
 
 describe('asking for a licence', () => {
   it('is asked of the composition\'s publisher and the recording\'s owner apart, each pricing the scope; never a real price', () => {

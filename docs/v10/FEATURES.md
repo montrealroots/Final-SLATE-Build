@@ -9,10 +9,10 @@ journey that shows it there.
 | Kind | proven | carried | does not bite | no downstream effect | stale | not a feature | not yet proven | All |
 |---|---|---|---|---|---|---|---|---|
 | action | 146 | 0 | 0 | 1 | 0 | 13 | 0 | 160 |
-| bank | 53 | 0 | 1 | 0 | 0 | 0 | 0 | 54 |
+| bank | 54 | 0 | 0 | 0 | 0 | 0 | 0 | 54 |
 | scheduled | 55 | 0 | 0 | 0 | 0 | 11 | 0 | 66 |
-| field | 195 | 97 | 0 | 4 | 0 | 9 | 0 | 305 |
-| all | 449 | 97 | 1 | 5 | 0 | 33 | 0 | 585 |
+| field | 196 | 97 | 0 | 3 | 0 | 9 | 0 | 305 |
+| all | 451 | 97 | 0 | 4 | 0 | 33 | 0 | 585 |
 
 ## Rows
 
@@ -101,12 +101,12 @@ journey that shows it there.
 | cancelMocapBooking | action | src/engine/mocap.ts | proven | cancel-mocap (40 seeds) | cancelled +2; cancellationFees +3000; spent +2174.5 |
 | requestRetake | action | src/engine/mocap.ts | proven | mocap-retake (20 seeds) | retakes +2; takes +2; spent +6730.5 |
 | considerComposer | action | src/engine/music-catalog.ts | proven | consider-composer (40 seeds) | realComposers +1.9; spent +2847.75; quality.music -3.037 |
-| licenseRecording | action | src/engine/music-catalog.ts | proven | license-recording (40 seeds) | catalogSongs +2; licensed +1.65; money -68007.999 |
-| agreeLicence | action | src/engine/music.ts | proven | license-song (40 seeds) | licensed +1.475; released +1.475; revenue +38436.25; spent +2563.25 |
-| declineQuote | action | src/engine/music.ts | proven | decline-quote (40 seeds) | licensed -1.575; released -1.575; revenue -38963.5; spent -2434.25 |
-| renewLicence | action | src/engine/music.ts | proven | renew-licence (40 seeds) | renewals +0.65; released +0.65; spent +292.5 |
+| licenseRecording | action | src/engine/music-catalog.ts | proven | license-recording (40 seeds) | catalogSongs +2; licensed +2; spent +28985; money -89157.037 |
+| agreeLicence | action | src/engine/music.ts | proven | license-song (40 seeds) | licensed +1.575; released +1.575; revenue +39955.5; spent +491.5 |
+| declineQuote | action | src/engine/music.ts | proven | decline-quote (40 seeds) | licensed -1.55; released -1.55; revenue -37446.25; spent -411 |
+| renewLicence | action | src/engine/music.ts | proven | renew-licence (40 seeds) | renewals +0.65; released +0.65; spent +32.5 |
 | replaceWithLibrary | action | src/engine/music.ts | proven | library-track (40 seeds) | libraryTracks +2; released +1.95; revenue +132873; spent +6889 |
-| requestLicence | action | src/engine/music.ts | proven | license-song (40 seeds) | licensed +1.475; released +1.475; revenue +38436.25; spent +2563.25 |
+| requestLicence | action | src/engine/music.ts | proven | license-song (40 seeds) | licensed +1.575; released +1.575; revenue +39955.5; spent +491.5 |
 | askForBetterTerms | action | src/engine/negotiation-actions.ts | proven | better-terms (40 seeds) | asked +1.525; investorShare -0.14; investorIn -8925; ownIn +8925 |
 | acceptOpportunity | action | src/engine/opportunities.ts | proven | accept-opportunity (30 seeds) | proposalsAccepted +0.6; commissioned +0.6; commissionMoney +49600 |
 | declineOpportunity | action | src/engine/opportunities.ts | proven | decline-opportunity (30 seeds) | proposalsAccepted -0.567; commissioned -0.567; commissionMoney -44373.333 |
@@ -208,7 +208,7 @@ journey that shows it there.
 | bank.set_term_end | bank | src/engine/bankworld | proven | term-end (30 seeds) | interestIn -58062.09; worth -16962.1 |
 | bank.stop_balance_transfer | bank | src/engine/bankworld | proven | stop-balance-transfer (40 seeds) | atFirstBank +18565036.675; interestIn -4302.46; worth -6981.664 |
 | bank.switch | bank | src/engine/bankworld | proven | switch-bank (40 seeds) | atFirstBank -2; interestIn +3052.17; worth +3624.89; money +4820.332 |
-| bank.take_overrun_loan | bank | src/engine/bankworld | does not bite | overrun-loan (40 seeds) | nothing moved. Career not reached: French law has the bank offer a loan for an account three months past its limit (lending.ts frenchOverrun), but a SLATE career doesn't take a French account past it: a debit card purchase past the balance is refused there (spending.ts spendRefusal), and a career has no direct debits or charges that would run it over (4 careers, November 15, 2026). A career paying bills by direct debit from a nearly empty account is where it would be offered. |
+| bank.take_overrun_loan | bank | src/engine/bankworld | proven | overrun-loan (40 seeds) | loans +1; inCollections -12.12; lclOpen +1; worth -23.47 |
 | bank.take_term_interest | bank | src/engine/bankworld | proven | term-interest (40 seeds) | termHeld -617.53; inCurrent +617.53 |
 | bank.transfer | bank | src/engine/bankworld | proven | bank-savings (40 seeds) | accounts +1; interestIn +19961; money +26543.882 |
 | card.apply | bank | src/engine/bankworld | proven | credit-card (40 seeds) | accounts +1; onCard +1; cardPaid +846.28 |
@@ -272,8 +272,8 @@ journey that shows it there.
 | job-day | scheduled | src/engine/jobs.ts | proven | off-job-day (40 seeds) | jobsDone -0.875; jobPay -4126.25 |
 | job-lapse | scheduled | src/engine/jobs.ts | not a feature |  | Record-keeping: on an unanswered offer's last day it marks the offer lapsed, for your list and the record. The deadline itself is enforced when you answer (jobs.ts acceptRefusal: "That offer has lapsed."), so with this event switched off an offer still can't be taken late; nothing else reads the mark (docs/v10/proof/off-job-lapse.json). |
 | job-offer | scheduled | src/engine/jobs.ts | proven | off-job-offer (40 seeds) | jobsOffered -0.9; jobPay -4198.4 |
-| licence-answer | scheduled | src/engine/music.ts | proven | license-song (40 seeds) | licensed +1.475; released +1.475; revenue +38436.25; spent +2563.25 |
-| licence-expiry | scheduled | src/engine/music.ts | proven | renew-licence (40 seeds) | renewals +0.65; released +0.65; spent +292.5 |
+| licence-answer | scheduled | src/engine/music.ts | proven | license-song (40 seeds) | licensed +1.575; released +1.575; revenue +39955.5; spent +491.5 |
+| licence-expiry | scheduled | src/engine/music.ts | proven | renew-licence (40 seeds) | renewals +0.65; released +0.65; spent +32.5 |
 | offer-response | scheduled | src/engine/hiring.ts | proven | off-offer-response (40 seeds) | hired -16; delivered -2; revenue -124177.625 |
 | opportunity | scheduled | src/engine/opportunities.ts | proven | off-opportunity (40 seeds) | opportunities -0.375; commissioned -0.375 |
 | opportunity-expire | scheduled | src/engine/opportunities.ts | not a feature |  | Record-keeping: on an unanswered proposal's last day it marks it lapsed, for your list. The deadline is enforced when you answer (opportunities.ts acceptOpportunity checks expiresAt), so with this event switched off a proposal still can't be taken late; nothing else reads the mark (docs/v10/proof/off-opportunity-expire.json). |
@@ -353,17 +353,17 @@ journey that shows it there.
 | "What It Costs" | field | shown as the logline it builds: src/ideas/loglines.ts compose; brief.ts applyIdea | carried | tests/ideas.test.ts::refuses parts that don't go together, and parts that aren't there | A name or a record, carried to shown as the logline it builds: src/ideas/loglines.ts compose; brief.ts applyIdea: it decides nothing by its nature. |
 | "Find A Composer, Artist Or Recording" | field | music-catalog.ts searchMusic | not a feature |  | A search of the music catalog: it narrows who and what is listed (tests/music-catalog.test.ts::finds people by name and role), as the role filter beside it does. Licensing a recording or considering a composer found is the decision, proven by license-recording and consider-composer. |
 | "Their Role" | field | music-catalog.ts searchMusic | not a feature |  | A filter of the music catalog: it narrows who is listed (tests/music-catalog.test.ts::finds people by name and role). Choosing someone listed is the decision, and those are their own rows. |
-| "Music Spending Ceiling" | field | mandates.ts guideMePlan, runMandate, guideMeRefusal | no downstream effect | music-ceiling (40 seeds) | moved: guideMeHires -2. Career not reached: a ceiling too small for its plan leaves Guide Me hiring no one, but these careers also staff each department by hand, and hire the same composer Guide Me would have (its pick and the staffing proposal are both the cheapest free person with experience). A career that leaves the music to Guide Me alone is where a tight ceiling would cost the score. |
+| "Music Spending Ceiling" | field | mandates.ts guideMePlan, runMandate, guideMeRefusal | proven | music-ceiling (40 seeds) | guideMeHires -2; quality.music -61.812; delivered -2 |
 | "Let The Composer's Themes Stand Without My Review" | field | cues.ts onThemesDone, themesGate; production/workday.ts | proven | themes-stand (40 seeds) | themesApproved +2; delivered +2; released +2 |
 | "What Music It Has" | field | cues.ts proposeCues, scoreMinutes; production/tasks.ts (post:music, post:score-session) | proven | music-silence (40 seeds) | cues -4; spent -5224.5; daysToDeliver -1.937; quality.music -58.487 |
 | "The Score's Sound" | field | craft.ts SCORES, scoreSessions; production/tasks.ts | proven | score-sound-chamber (40 seeds) | chamber +2; spent +10581.75; daysToDeliver +2.125 |
 | "How Much Of It Is Scored" | field | cues.ts proposeCues, scoreMinutes; production/tasks.ts post:music | proven | score-density (40 seeds) | scoredSeconds +2574; spent +22389.7; daysToDeliver +16 |
 | "Let The Composer's Themes Stand Without My Review" | field | cues.ts onThemesDone, themesGate; production/workday.ts | proven | themes-stand (40 seeds) | themesApproved +2; delivered +2; released +2 |
 | {`Intensity Of ${c.code}`} | field | cues.ts judgeScore | proven | cue-loud (40 seeds) | highUnderTalk +8; quality.music -8 |
-| {LICENCE_MEDIUM_LABELS[m]} | field | music.ts holderFee, releaseLicenceRefusal | proven | licence-media (40 seeds) | licenceFees +29883; spent +23702.75; money -163933.841 |
-| "The Whole World" | field | music.ts holderFee, licence-answer (refusal odds, counteroffer), releaseLicenceRefusal | proven | licence-world (40 seeds) | licenceFees +37947; spent +38740.5; money +168062.739 |
-| "Countries, By Two-Letter Code" | field | music.ts holderFee, releaseLicenceRefusal | proven | licence-countries (40 seeds) | licenceFees +22317.75; spent +15151.5; money -15151.5 |
-| "For How Long" | field | music.ts holderFee, agreeLicence (expiry), licence-expiry | proven | licence-years (40 seeds) | licenceYears +3.125; released +0.8 |
+| {LICENCE_MEDIUM_LABELS[m]} | field | music.ts holderFee, releaseLicenceRefusal | proven | licence-media (40 seeds) | licenceFees +3642.5; spent +6256.75; money -146487.841 |
+| "The Whole World" | field | music.ts holderFee, licence-answer (refusal odds, counteroffer), releaseLicenceRefusal | proven | licence-world (40 seeds) | licenceFees +4636.5; spent +9980.5; money +196822.739 |
+| "Countries, By Two-Letter Code" | field | music.ts holderFee, releaseLicenceRefusal | proven | licence-countries (40 seeds) | licenceFees +2725; spent +1850; money -1850 |
+| "For How Long" | field | music.ts holderFee, agreeLicence (expiry), licence-expiry | proven | licence-years (40 seeds) | licenceYears +3.05; released +0.8; spent +30.5 |
 | "Your Notes On The Themes" | field | cues.ts giveThemeNotes, themeTasks; song-actions.ts syncMusicTasks | proven | theme-notes (40 seeds) | themeRounds +4; quality.music +4; spent +2664; daysToDeliver +3.65 |
 | "Treat As An Adult In This Story" | field | guests.ts canApproach -> hiring.ts makeOffer, casting-calls.ts inviteRefusal | proven | treat-as-adult (40 seeds) | realCast +1.85; castCapability -7.812; performance -6.656; castRates +322.75 |
 | "Consider Them For" | field | guests.ts considerFor -> hiring.ts candidatesFor | proven | consider-real (40 seeds) | realCast +1.725; castCapability -3.525; performance -2.744; castRates +556 |
@@ -589,8 +589,8 @@ journey that shows it there.
 | "Lyrics By" | field | songs.ts songCredits; awards recipients | not a feature |  | Names typed for a song that existed before the film, carried to its credits (songs.ts songCredits). An award for an original song takes only one written for the project (awards-rules.ts writtenForProject), so these names never decide an entry; who writes a song made for the film is its own row (Where It Comes From, Lyrics). |
 | "Rights Holder" | field | shown with the song | carried | e2e/journey-e.spec.ts::refused with a reason, then recovered | A name or a record, carried to shown with the song: it decides nothing by its nature. |
 | {`Scene For ${s.title}`} | field | songs.ts songUses | proven | add-song (40 seeds) | songs +2; songUses +2; released -2; revenue -108215.25 |
-| "How It Plays" | field | awards-rules.ts songRuleProblem | proven | song-opening-titles (40 seeds) | licenceFees +36445.5; spent +27027; money -27027 |
-| "Minutes It Plays" | field | awards-rules.ts songRuleProblem | proven | song-minutes (40 seeds) | licenceFees +166461.75; spent +127764 |
+| "How It Plays" | field | awards-rules.ts songRuleProblem | proven | song-opening-titles (40 seeds) | licenceFees +4454.5; spent +3304.5; money -3304.5 |
+| "Minutes It Plays" | field | awards-rules.ts songRuleProblem | proven | song-minutes (40 seeds) | licenceFees +20325; spent +15600 |
 | {`${c.name} Performs ${s.title}`} | field | credits: songs.ts songCredits (Song Performed By), and the casting notes: casting-notes.ts fitNotes | carried | tests/songs.test.ts::played to delivery: writers are whoever wrote | A name or a record, carried to credits: songs.ts songCredits (Song Performed By), and the casting notes: casting-notes.ts fitNotes: it decides nothing by its nature. |
 | {`${v.label}: ${sceneLabel(p, sc)}, In Place Of "${song.title}"`} | field | song-actions.ts changeVersionSong | proven | version-song (40 seeds) | songChanges +2; songTasks +4; spent +1872 |
 | {`${c.name} On Screen (Minutes)`} | field | screen-time.ts shareCheck | proven | record-screen-time (40 seeds) | screenRecords +12; screenEntries +1; screenDecided +1 |

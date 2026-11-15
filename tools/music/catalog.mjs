@@ -25,6 +25,8 @@ const UA = "slate-music-catalog/1.0 (a game's catalog build; Wikidata CC0)";
 const CACHE = '.sources-cache/music';
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 let last = 0;
+/** Whether any answer came from Wikidata rather than the cache: if none did, the catalog keeps the date it was read. */
+let fetched = false;
 async function sparql(query) {
   mkdirSync(CACHE, { recursive: true });
   const file = `${CACHE}/${createHash('sha1').update(query).digest('hex')}.json`;
@@ -33,6 +35,7 @@ async function sparql(query) {
     const wait = 1000 - (Date.now() - last);
     if (wait > 0) await sleep(wait);
     last = Date.now();
+    fetched = true;
     const r = await fetch(`${ENDPOINT}?format=json&query=${encodeURIComponent(query)}`, { headers: { 'user-agent': UA, accept: 'application/sparql-results+json' } }).catch(() => null);
     if (r?.ok) {
       const rows = (await r.json()).results.bindings;
@@ -160,7 +163,7 @@ async function recordings(artists) {
 }
 
 async function main() {
-  const retrieved = new Date().toISOString().slice(0, 10);
+  const before = existsSync('src/data/music.json') ? JSON.parse(readFileSync('src/data/music.json', 'utf8')).retrieved : undefined;
   const picked = await pick();
   const ppl = await people(picked);
   const composers = [...ppl.values()].filter((x) => x.roles.includes('composer')).map((x) => x.id);
@@ -184,8 +187,15 @@ async function main() {
     return y;
   });
   const recordingsOut = kept.map(({ sl, ...r }) => { void sl; for (const k of Object.keys(r)) if (r[k] === undefined || (Array.isArray(r[k]) && !r[k].length)) delete r[k]; return r; });
+  const retrieved = !fetched && before ? before : new Date().toISOString().slice(0, 10);
   const out = { version: 1, source: 'Wikidata', licence: 'CC0 1.0', link: 'https://www.wikidata.org/wiki/Wikidata:Licensing', retrieved, people: peopleOut, recordings: recordingsOut };
   writeFileSync('src/data/music.json', JSON.stringify(out));
+  // How widely each kept recording and its best-known performer are written about: the number of Wikipedia editions
+  // with an article on each (Wikidata's sitelinks). The engine prices a licence by it (music.ts fameOf), so it is
+  // bundled, small, apart from the catalog, which loads on demand.
+  const editions = new Map(picked.map((x) => [x.id, x.sl]));
+  const fame = Object.fromEntries(kept.map((r) => [r.id, [r.sl, Math.max(0, ...r.performers.map((a) => editions.get(a) ?? 0))]]));
+  writeFileSync('src/data/music-fame.json', JSON.stringify({ source: 'Wikidata sitelinks', licence: 'CC0 1.0', retrieved, recordings: fame }));
   const count = (r) => peopleOut.filter((x) => x.roles?.includes(r)).length;
   console.log(`${peopleOut.length} people and groups (composers ${count('composer')}, songwriters ${count('songwriter')}, lyricists ${count('lyricist')}, recording artists ${count('recording-artist')}, performers ${count('performer')}, producers ${count('music-producer')}, conductors ${count('conductor')}); ${peopleOut.filter((x) => x.tmdb).length} with a TMDB ID; ${recordingsOut.length} recordings (${recordingsOut.filter((x) => x.seconds).length} with a duration, ${recordingsOut.filter((x) => x.versionOf).length} versions of another)`);
 }

@@ -278,7 +278,7 @@ function AskForm({ p, s, onDone }: { p: Project; s: Song; onDone: () => void }) 
       <Check label="The Whole World" checked={world} onChange={setWorld} />
       {!world && <TextField label="Countries, By Two-Letter Code" hint="Separated by commas, such as US, GB." value={codes} onChange={setCodes} />}
       <SelectField label="For How Long" value={years} options={SCOPE_YEARS.map((y) => ({ value: String(y), label: `${y} ${y === 1 ? 'Year' : 'Years'}` }))} onChange={setYears} />
-      <p className="small">{no ?? `If both say yes, likely about ${money(2 * holderFee(p, s, scope))} in all. They answer in days; a broad request is refused more often. Game calibration.`}</p>
+      <p className="small">{no ?? `If both say yes, likely about ${money(2 * holderFee(p, s, scope))} in all. They answer in days. A well-known song costs more and is refused more often, and so is a broad request. An estimate from reported fees, not a real quote.`}</p>
       <div className="row gap-2 wrap">
         <button className="btn btn-primary" disabled={!!no} onClick={() => { const e = store.act((st) => void requestLicence(st, st.projects.find((x) => x.id === p.id)!, s.id, scope)); setErr(e); if (!e) onDone(); }}>Ask Both Holders</button>
         <button className="btn" onClick={onDone}>Cancel</button>

@@ -474,7 +474,7 @@
  "verdict": "proven",
  "hashes": {
   "src/engine/song-actions.ts": "6c8e9ec0751613f6",
-  "src/engine/music.ts": "e7eebaeebdd0335b",
+  "src/engine/music.ts": "4e92741a35910193",
   "tests/proof/career.ts": "50bea06f19a02c5b"
  }
 }

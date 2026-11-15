@@ -17,8 +17,8 @@
   "gross": 0,
   "revenue": 0,
   "distributed": 0,
-  "money": 23805690.96,
-  "moneyChange": -1194309.041,
+  "money": 23831104.46,
+  "moneyChange": -1168895.541,
   "jobsTaken": 0.875,
   "jobsOffered": 0.875,
   "jobPay": 4244,
@@ -40,7 +40,7 @@
   "offersDeclined": 0,
   "countersSeen": 0,
   "countersDeclined": 0,
-  "spent": 488554.125,
+  "spent": 463140.625,
   "shootDays": 51.65,
   "lostDays": 0,
   "daysToDeliver": 84.904,
@@ -72,8 +72,8 @@
   "gross": 0,
   "revenue": 0,
   "distributed": 0,
-  "money": 23819619.835,
-  "moneyChange": -1180380.165,
+  "money": 23845992.335,
+  "moneyChange": -1154007.665,
   "jobsTaken": 0.85,
   "jobsOffered": 0.85,
   "jobPay": 4743.5,
@@ -95,7 +95,7 @@
   "offersDeclined": 0,
   "countersSeen": 0,
   "countersDeclined": 0,
-  "spent": 486974.5,
+  "spent": 460602,
   "shootDays": 51.5,
   "lostDays": 0,
   "daysToDeliver": 84.879,
@@ -170,16 +170,16 @@
    "n": 40
   },
   "money": {
-   "mean": 13928.875,
-   "lo": -38826.121,
-   "hi": 66683.871,
+   "mean": 14887.875,
+   "lo": -42291.512,
+   "hi": 72067.263,
    "changed": 33,
    "n": 40
   },
   "moneyChange": {
-   "mean": 13928.875,
-   "lo": -38826.121,
-   "hi": 66683.871,
+   "mean": 14887.875,
+   "lo": -42291.512,
+   "hi": 72067.263,
    "changed": 33,
    "n": 40
   },
@@ -331,9 +331,9 @@
    "n": 40
   },
   "spent": {
-   "mean": -1579.625,
-   "lo": -8140.262,
-   "hi": 4981.012,
+   "mean": -2538.625,
+   "lo": -5601.078,
+   "hi": 523.828,
    "changed": 33,
    "n": 40
   },
@@ -515,7 +515,7 @@
  "verdict": "proven",
  "hashes": {
   "src/engine/finish.ts": "f91be05a7e69ff70",
-  "src/engine/music.ts": "e7eebaeebdd0335b",
+  "src/engine/music.ts": "4e92741a35910193",
   "tests/proof/career.ts": "50bea06f19a02c5b"
  }
 }
