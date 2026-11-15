@@ -16,15 +16,15 @@ const song = (source: 'write' | 'commission', lyrics: 'with-music' | 'commission
   attachSong(p, x.id, approvedScenes(p).at(-1)!.id, 'background', 2);
 };
 /** Before the shoot: the licensed track (music.ts useTrack) in the feature's first scene, as `placement`, for `minutes`. */
-const track = (placement: SongUse['placement'], minutes: number) => (s: GameState, p: Project) => {
+export const track = (placement: SongUse['placement'], minutes: number) => (s: GameState, p: Project) => {
   if (!p.music) return;
   const x = createSong(s, p, { title: 'Harbour Lights', source: 'licensed', holder: 'A Record Label', writers: [{ name: 'A Songwriter', music: true, lyrics: true }] });
   attachSong(p, x.id, approvedScenes(p)[0].id, placement, minutes);
 };
 type Scope = Parameters<typeof requestLicence>[3];
-const EVERYWHERE: Scope = { territories: 'worldwide', media: ['theatrical', 'streaming', 'broadcast', 'digital', 'festival'], years: 10 };
+export const EVERYWHERE: Scope = { territories: 'worldwide', media: ['theatrical', 'streaming', 'broadcast', 'digital', 'festival'], years: 10 };
 /** Each day: its holders asked once for `scope` (every medium, worldwide, for ten years unless said), and the quote agreed. */
-const licensedFor = (scope: Scope = EVERYWHERE) => (s: GameState) => {
+export const licensedFor = (scope: Scope = EVERYWHERE) => (s: GameState) => {
   for (const p of s.projects.filter((x) => !x.delivered && x.music)) {
     const song = (p.songs ?? []).find((x) => x.title === 'Harbour Lights');
     if (!song) continue;

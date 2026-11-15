@@ -16,7 +16,7 @@ const eightMillion = (s: GameState, p: Project) => setPlannedBudget(s, p, 8_000_
 
 /** Once a week, each delivered film entered in every leading and supporting acting category it is eligible for. */
 const actingLook = new WeakMap<GameState, number>();
-const ACTING = ['lead', 'supporting'];
+export const ACTING = ['lead', 'supporting'];
 export const enterActing = (s: GameState) => {
   if (s.now - (actingLook.get(s) ?? -Infinity) < 7 * 86_400_000) return;
   actingLook.set(s, s.now);
