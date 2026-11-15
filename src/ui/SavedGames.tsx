@@ -243,7 +243,7 @@ export function SettingsPanel() {
         <Check label="Phone Layout" hint="On, the page is laid out for the phone: a menu for the sections, one column, larger text. Off, this screen shows the desktop's layout shrunk to fit, which you can pinch to zoom." checked={layoutMode() === 'phone'} onChange={(v) => { setLayoutMode(v ? 'phone' : 'desktop'); store.emit(); }} />
       )}
       {s.state && (
-        <Check label="Wake Me For Obligations" hint="Reminders and call times wake you during Sleep." checked={s.state.settings.wakeForObligations}
+        <Check label="Wake Me For Obligations" hint="While you sleep, reminders wake you, and you're woken an hour before a call time or a job." checked={s.state.settings.wakeForObligations}
           onChange={(v) => store.act((g) => (g.settings.wakeForObligations = v))} />
       )}
       <p className="dim">Motion follows your device's reduced-motion setting.</p>

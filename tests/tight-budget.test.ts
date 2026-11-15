@@ -56,6 +56,16 @@ describe('staffing proposals on a small budget', () => {
     if (!animator) expect(skippedAnywhere.join(' ')).toMatch(/The required crew still to hire costs about \$[\d,]+ at the lowest rates, and \$[\d,]+ is uncommitted\./);
     expect(animator || !p.hires.some((h) => h.roleId === 'composer')).toBe(true);
   });
+
+  it('short of money for its crew, it says how to find more: the rest of the target, or a higher target once it is promised', () => {
+    const { s, p } = stopMotion('raise-how');
+    agreedFunding(p, 2_000);
+    // The target is promised in full by the funding above: only a higher target takes more money (personal.ts putInRefusal).
+    setFinanceTarget(p, 2_000);
+    expect(proposeStaffing(s, p, 'Stop Motion').skipped.join(' ')).toMatch(/Your financing target is already promised: raise the target on the Budget page and the money for it, or cut scope\.$/);
+    setFinanceTarget(p, 400_000);
+    expect(proposeStaffing(s, p, 'Stop Motion').skipped.join(' ')).toMatch(/Raise the rest before staffing, or cut scope\.$/);
+  });
 });
 
 describe("an approved script's budget estimate", () => {

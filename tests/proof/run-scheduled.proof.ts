@@ -1,7 +1,10 @@
-// The scheduled systems' proofs (tests/proof/probes/scheduled.ts), a file of their own so they run beside the others.
+// The scheduled systems' proofs (tests/proof/probes/scheduled.ts, scheduled-more.ts), a file of their own so they run beside the others.
 import { describe, expect, it } from 'vitest';
 import { runProbe, writeResult } from './probe';
-import { PROBES } from './probes/scheduled';
+import { PROBES as FIRST } from './probes/scheduled';
+import { PROBES as MORE } from './probes/scheduled-more';
+
+const PROBES = [...FIRST, ...MORE];
 
 const pick = process.env.PROBES?.split(',');
 const seeds = process.env.SEEDS ? Number(process.env.SEEDS) : undefined;

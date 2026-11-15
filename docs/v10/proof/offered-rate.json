@@ -1,7 +1,8 @@
 {
  "id": "offered-rate",
  "features": [
-  "action:hiring.makeOffer"
+  "action:hiring.makeOffer",
+  "field:PlanViews.tsx#{`Day Rate For ${c.name}`}#1"
  ],
  "decision": "Offer performers a little less than they ask (92%)",
  "reads": [
@@ -432,7 +433,7 @@
  ],
  "verdict": "proven",
  "hashes": {
-  "src/engine/hiring.ts": "5abf1af98eda4186",
+  "src/engine/hiring.ts": "8fca92a28a9f5b87",
   "tests/proof/career.ts": "50bea06f19a02c5b"
  }
 }

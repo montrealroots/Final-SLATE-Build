@@ -19,7 +19,7 @@ function firstShootAt(s: GameState, hour: number): { p: Project; at: number } | 
   return undefined;
 }
 /** Once per career: `fn` with the first shoot day ahead, the day a schedule exists. */
-const onceWithShoot = (fn: (s: GameState, at: (hour: number) => number) => void) => {
+export const onceWithShoot = (fn: (s: GameState, at: (hour: number) => number) => void) => {
   const done = new WeakSet<GameState>();
   // Hours count from the shoot day's local midnight, fixed once: -2 is ten the night before.
   return (s: GameState) => { if (done.has(s)) return; const f = firstShootAt(s, 0); if (!f) return; done.add(s); fn(s, (h) => f.at + h * 3_600_000); };
@@ -56,9 +56,10 @@ export const PROBES: Probe[] = [
   {
     id: 'sleep-through-call',
     features: ['action:state.startSleep', 'scheduled:shoot-call'],
-    decision: 'Go to sleep the night before the first shoot day without an alarm, until ten',
+    // Without being woken for obligations, which since November 15, 2026 wakes you an hour before the call (state.ts startSleep).
+    decision: 'Go to sleep the night before the first shoot day without an alarm, until ten, not woken for obligations',
     reads: ['src/engine/state.ts#startSleep', 'src/engine/production/shoot.ts#runShootDay', 'src/engine/production/shoot.ts#handler:shoot-call'],
-    variant: { daily: onceWithShoot((s, at) => { processUntil(s, at(-2), 'tick', 1_000_000); startSleep(s, at(10), false); }) },
+    variant: { daily: onceWithShoot((s, at) => { s.settings.wakeForObligations = false; processUntil(s, at(-2), 'tick', 1_000_000); startSleep(s, at(10), false); }) },
     measure,
     bites: ['lateDays'],
     downstream: ['quality.direction', 'overall', 'reception'],

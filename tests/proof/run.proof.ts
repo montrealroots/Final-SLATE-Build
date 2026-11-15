@@ -40,15 +40,40 @@ import { PROBES as SERIES_PROBES } from './probes/series';
 import { PROBES as REVISIONS } from './probes/revisions';
 import { PROBES as HELPERS_PEOPLE } from './probes/helpers-people';
 import { PROBES as MOCAP } from './probes/mocap';
+import { PROBES as SONGS } from './probes/songs';
+import { PROBES as DOCUMENTARY } from './probes/documentary';
+import { PROBES as CASTING_DIRECTOR } from './probes/casting-director';
+import { PROBES as STAGES } from './probes/stages';
+import { PROBES as SCREEN_TIME } from './probes/screen-time';
+import { PROBES as VERSION_SONGS } from './probes/version-songs';
+import { PROBES as MUSIC_CATALOG } from './probes/music-catalog';
+import { PROBES as CONTINUATION } from './probes/continuation';
+import { PROBES as STUDIO_PROBES } from './probes/studios';
+import { PROBES as BLUEPRINT_LOCK } from './probes/blueprint-lock';
+import { PROBES as SOURCE } from './probes/source';
+import { PROBES as SCRIPT_FIELDS } from './probes/script-fields';
+import { PROBES as PLAN_FIELDS } from './probes/plan-fields';
+import { PROBES as STORY_FIELDS } from './probes/story-fields';
+import { PROBES as MORE_FIELDS } from './probes/more-fields';
+import { PROBES as PROJECT_FIELDS } from './probes/project-fields';
+import { PROBES as RELEASE_FIELDS } from './probes/release-fields';
+import { PROBES as MUSIC_FIELDS } from './probes/music-fields';
+import { PROBES as SCENE_FIELDS } from './probes/scene-fields';
+import { PROBES as CREATION_FIELDS } from './probes/creation-fields';
+import { PROBES as PLAN_MORE } from './probes/plan-more';
+import { PROBES as SONG_FIELDS } from './probes/song-fields';
+import { PROBES as FILM_ROLES } from './probes/film-roles';
 
-const ALL = [...CORE, ...PRODUCTION, ...RELEASE, ...AWARDS, ...BANK, ...PAPERS, ...SCRIPT, ...PROJECT, ...CAREER_WIDE, ...WEATHER, ...EQUIPMENT, ...WRITING, ...HIRING, ...DAYS, ...MUSIC, ...VERSIONS, ...SCORE, ...EDIT, ...NOTES, ...SLATE, ...BANK_MORE, ...AGENTS_PROBES, ...FESTIVAL, ...OPPS, ...BACKERS_PROBES, ...PLACES, ...PLAN, ...LATE, ...CASTING, ...DESIGNS, ...PEOPLE, ...BANK_CARDS, ...BANK_MOVES, ...BANK_REST, ...SERIES_PROBES, ...REVISIONS, ...HELPERS_PEOPLE, ...MOCAP];
+const ALL = [...CORE, ...PRODUCTION, ...RELEASE, ...AWARDS, ...BANK, ...PAPERS, ...SCRIPT, ...PROJECT, ...CAREER_WIDE, ...WEATHER, ...EQUIPMENT, ...WRITING, ...HIRING, ...DAYS, ...MUSIC, ...VERSIONS, ...SCORE, ...EDIT, ...NOTES, ...SLATE, ...BANK_MORE, ...AGENTS_PROBES, ...FESTIVAL, ...OPPS, ...BACKERS_PROBES, ...PLACES, ...PLAN, ...LATE, ...CASTING, ...DESIGNS, ...PEOPLE, ...BANK_CARDS, ...BANK_MOVES, ...BANK_REST, ...SERIES_PROBES, ...REVISIONS, ...HELPERS_PEOPLE, ...MOCAP, ...SONGS, ...DOCUMENTARY, ...CASTING_DIRECTOR, ...STAGES, ...SCREEN_TIME, ...VERSION_SONGS, ...MUSIC_CATALOG, ...CONTINUATION, ...STUDIO_PROBES, ...BLUEPRINT_LOCK, ...SOURCE, ...SCRIPT_FIELDS, ...PLAN_FIELDS, ...STORY_FIELDS, ...MORE_FIELDS, ...PROJECT_FIELDS, ...RELEASE_FIELDS, ...MUSIC_FIELDS, ...SCENE_FIELDS, ...CREATION_FIELDS, ...PLAN_MORE, ...SONG_FIELDS, ...FILM_ROLES];
+import { FIELD_PROOFS } from './field-proofs';
+
 const pick = process.env.PROBES?.split(',');
 const seeds = process.env.SEEDS ? Number(process.env.SEEDS) : undefined;
 
 describe('feature proofs', () => {
   for (const p of ALL.filter((x) => !pick || pick.includes(x.id))) {
     it(`${p.id}: ${p.decision}`, () => {
-      const r = runProbe(p, p.seeds ?? seeds);
+      const r = runProbe({ ...p, features: [...p.features, ...(FIELD_PROOFS[p.id] ?? [])] }, p.seeds ?? seeds);
       writeResult(r);
       const why = JSON.stringify({ bites: r.bites, downstream: r.downstream, diff: Object.fromEntries([...p.bites, ...p.downstream].map((m) => [m, r.diff[m]])) });
       expect(r.verdict, why).toBe('proven');

@@ -1,7 +1,8 @@
 {
  "id": "episode-director",
  "features": [
-  "action:projects.assignEpisodeRole"
+  "action:projects.assignEpisodeRole",
+  "field:PlanViews.tsx#{`Director For Episode ${e.number}`}#1"
  ],
  "decision": "Hire the best episode director and give them episode 2",
  "reads": [
@@ -461,7 +462,7 @@
  "verdict": "proven",
  "hashes": {
   "src/engine/projects.ts": "19dd27c5768b23e7",
-  "src/engine/finish.ts": "48cd177ad2e5ecb2",
+  "src/engine/finish.ts": "f91be05a7e69ff70",
   "tests/proof/career.ts": "50bea06f19a02c5b"
  }
 }

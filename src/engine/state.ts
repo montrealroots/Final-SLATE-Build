@@ -4,7 +4,7 @@ import { observance } from './observances';
 import { copyPlain } from './copy';
 import { hashString } from './rng';
 import {
-  DAY, MINUTE, addLocal, ageOn, dateKey, formatClock, formatDateKey, localParts, localToInstant, observedBirthday, parseYmd, isDateKey,
+  DAY, HOUR, MINUTE, addLocal, ageOn, dateKey, formatClock, formatDateKey, localParts, localToInstant, observedBirthday, parseYmd, isDateKey,
 } from './time';
 import type {
   Attention, CharacterIdentity, CreationDraft, CreationStepId, GameState, LogEntry, Plan, Route, ScheduledEvent,
@@ -586,9 +586,16 @@ export function startSleep(state: GameState, wakeAt: number, alarm: boolean): vo
   if (wakeAt - state.now > 2 * DAY) throw new SleepError('Choose a wake time within the next two days.');
   state.sleep = { asleep: true, since: state.now, wakeAt, alarm };
   cancelEvents(state, (e) => e.kind === 'wake');
-  // Without an alarm the character still wakes naturally at the chosen time; the alarm
-  // matters for obligations (see wakeForObligations) and is recorded for messaging.
-  schedule(state, wakeAt, 'wake', {}, { attention: 'interrupt', priority: 5, id: newId(state, 'wake') });
+  // Without an alarm the character still wakes naturally at the chosen time; the alarm is recorded for messaging.
+  // Waking for obligations wakes you an hour before a call time or a job's morning while you sleep. Until November 15,
+  // 2026 it only stopped Sleep at the call itself, which had already found you asleep and started the day late: the
+  // feature proofs found the setting moved nothing. A plan wakes you at its own reminder (addPlan), as before.
+  // shortcut: an obligation added after you fall asleep doesn't move the wake; sleep is at most two days.
+  const obligation = state.settings.wakeForObligations
+    ? state.events.filter((e) => (e.kind === 'shoot-call' || e.kind === 'job-day') && e.at > state.now && e.at <= wakeAt).reduce((a, e) => Math.min(a, e.at), Infinity)
+    : Infinity;
+  const at = Math.min(wakeAt, Math.max(state.now + MINUTE, obligation - HOUR));
+  schedule(state, at, 'wake', {}, { attention: 'interrupt', priority: 5, id: newId(state, 'wake') });
 }
 
 /** Called when Sleep stops early at an obligation: the character is awake. */

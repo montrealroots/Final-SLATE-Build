@@ -85,7 +85,7 @@ export function deliveryBlockers(p: Project, now = 0): string[] {
   if (open.length) out.push(`${open.length} production ${open.length === 1 ? 'task is' : 'tasks are'} unfinished, including ${open[0].label}.`);
   const contributorsUsed = new Set(approvedScenes(p).flatMap((s) => s.contributorIds));
   const noConsent = p.contributors.filter((c) => contributorsUsed.has(c.id) && c.consent !== 'given' && c.consent !== 'withdrawn');
-  if (noConsent.length) out.push(`${noConsent[0].name} hasn't given consent to appear.`);
+  if (noConsent.length) out.push(noConsent[0].consent === 'declined' ? `${noConsent[0].name} declined to appear. Cut their scenes from the edit to deliver.` : `${noConsent[0].name} hasn't given consent to appear.`);
   const unredacted = p.contributors.filter((c) => c.consent === 'withdrawn' && contributorsUsed.has(c.id) && !redactionComplete(p, c.id));
   if (unredacted.length) out.push(`${unredacted[0].name} withdrew; their footage still has to be redacted.`);
   // Approval of how they appear (documentary.ts): only for contributors still in the cut.

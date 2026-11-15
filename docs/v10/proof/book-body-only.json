@@ -1,7 +1,8 @@
 {
  "id": "book-body-only",
  "features": [
-  "action:mocap.bookMocap"
+  "action:mocap.bookMocap",
+  "field:FinishViews.tsx#{`What To Capture For ${name}`}#1"
  ],
  "decision": "Book the stage for the lead's body only, not the face",
  "reads": [
@@ -56,7 +57,8 @@
   "takes": 4,
   "retakes": 0,
   "approvedTake": 163.8,
-  "cancelled": 0.05,
+  "cancelled": 0,
+  "cancellationFees": 0,
   "fired": 0
  },
  "variant": {
@@ -107,7 +109,8 @@
   "takes": 4,
   "retakes": 0,
   "approvedTake": 162.5,
-  "cancelled": 0.05,
+  "cancelled": 0,
+  "cancellationFees": 0,
   "fired": 0
  },
  "diff": {
@@ -441,6 +444,13 @@
    "n": 20
   },
   "cancelled": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 20
+  },
+  "cancellationFees": {
    "mean": 0,
    "lo": 0,
    "hi": 0,

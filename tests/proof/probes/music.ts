@@ -18,7 +18,7 @@ export const useTrack = (s: GameState, p: Project) => {
 const commission = (s: GameState, p: Project) => (p.music ? createSong(s, p, { title: 'Second Light', source: 'commission' }) : undefined);
 export const track = (p: Project) => (p.songs ?? []).find((x) => x.title === TRACK);
 /** Each day: ask the holders once, for digital sale in Britain for 3 years (the career's release), then answer a quote. */
-const licensing = (answer: 'agree' | 'decline') => (s: GameState) => {
+export const licensing = (answer: 'agree' | 'decline') => (s: GameState) => {
   for (const p of s.projects.filter((x) => !x.delivered && x.music)) {
     const song = track(p);
     if (!song) continue;

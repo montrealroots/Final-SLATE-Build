@@ -356,10 +356,15 @@ export function runShootDay(state: GameState, p: Project, d: ShootDay): string {
       }
     }
     if (nonfiction && s.kind === 'interview') {
-      const noConsent = s.contributorIds.find((cid) => p.contributors.find((c) => c.id === cid)?.consent !== 'given');
-      if (noConsent) {
-        reasons.push(`${label} was skipped: ${p.contributors.find((c) => c.id === noConsent)?.name ?? 'the contributor'} hasn't given consent.`);
-        pending.push(s.id);
+      const noConsent = s.contributorIds.map((cid) => p.contributors.find((c) => c.id === cid)).find((c) => c?.consent !== 'given');
+      if (noConsent !== undefined) {
+        const name = noConsent?.name ?? 'the contributor';
+        // Only a scene waiting on an answer waits for another day. One whose contributor declined, or was never asked,
+        // isn't put back on the schedule: until November 15, 2026 it was, every day, and a documentary short lost 164
+        // days and $579,190 in a year with its crew paid to shoot nothing.
+        if (noConsent?.consent === 'requested') { reasons.push(`${label} was skipped: ${name} hasn't answered yet.`); pending.push(s.id); }
+        else if (noConsent?.consent === 'withdrawn') reasons.push(`${label} wasn't shot: ${name} withdrew, so it is off the schedule.`);
+        else reasons.push(`${label} wasn't shot: ${name} ${noConsent?.consent === 'declined' ? 'declined to appear' : "hasn't been asked to appear"}, so it is off the schedule. ${noConsent?.consent === 'declined' ? 'Cut it from the edit to deliver.' : 'Ask them on the Story page, then rebuild the schedule.'}`);
         continue;
       }
     }

@@ -178,7 +178,8 @@ test('stop motion: refused for lack of money, backed for less than its estimate,
   await section(page, 'Crew');
   await page.locator('section.card', { has: page.getByRole('heading', { name: 'Stop Motion' }) }).getByRole('button', { name: 'Staff This Department' }).click();
   const staff = page.getByRole('dialog');
-  await expect(staff).toContainText(/The required crew still to hire costs about \$[\d,]+ at the lowest rates, and \$[\d,]+ is uncommitted\. Raise the rest before staffing, or cut scope\./);
+  // The target set to $40,000 is promised by the starting backing, so the way to more money is a higher target.
+  await expect(staff).toContainText(/The required crew still to hire costs about \$[\d,]+ at the lowest rates, and \$[\d,]+ is uncommitted\. Your financing target is already promised: raise the target on the Budget page and the money for it, or cut scope\./);
   await expect(staff.getByRole('button', { name: 'Send Offers' })).toBeDisabled();
   await expect(staff).not.toContainText('Every role here already has someone');
   await shot(page, 'stop-motion', '03-crew-short');

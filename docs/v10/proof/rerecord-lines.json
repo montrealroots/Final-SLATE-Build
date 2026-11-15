@@ -448,7 +448,7 @@
  "verdict": "proven",
  "hashes": {
   "src/engine/revisions.ts": "eb191cb43bd9f77d",
-  "src/engine/finish.ts": "48cd177ad2e5ecb2",
+  "src/engine/finish.ts": "f91be05a7e69ff70",
   "tests/proof/career.ts": "50bea06f19a02c5b"
  }
 }

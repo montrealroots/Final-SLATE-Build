@@ -253,7 +253,8 @@ test('documentary: a contributor who withdraws after filming is redacted before 
   await sweepSees(page);
   await dialog.getByRole('button', { name: 'Record Withdrawal' }).click();
   await expect(consentOf(page, 'Fenna Bakker')).toHaveText('Withdrew');
-  await expect.poll(async () => (await readSavedState(page)).log.map((l: { text: string }) => l.text)).toContain('Fenna Bakker withdrew from Lock Keepers. Their footage is being redacted from the film.');
+  // Her sequence had no one else in it, so it leaves the cut too (unscripted.ts withdrawRelease, from November 15, 2026).
+  await expect.poll(async () => (await readSavedState(page)).log.map((l: { text: string }) => l.text)).toContainEqual(expect.stringMatching(/^Fenna Bakker withdrew from Lock Keepers\. Their footage is being redacted from the film\. .+ is out of the cut\.$/));
   await section(page, 'Production');
   await expect(page.locator('li', { hasText: 'Redact Fenna Bakker' }).first()).toBeVisible();
   await runToDelivery(page);

@@ -7,19 +7,19 @@ import { acceptWriting, cancelWriting, commissionWriting, requestRevision } from
 import type { GameState, Project } from '../../../src/engine/types';
 
 /** Offer the job to the first script editor the project's candidates list, at their asking rate, once the money is raised. */
-const hireEditor = (s: GameState, p: Project) => {
-  if (p.hires.some((h) => h.roleId === 'script-editor' && h.status !== 'declined')) return;
-  const c = roleCandidates(s, p, 'script-editor')[0];
-  if (c) { try { makeOffer(s, p, { personId: c.id, roleId: 'script-editor', dayRate: c.dayRate, episodes: 'all' }); } catch { /* no money yet: tomorrow */ } }
+const hireEditor = (s: GameState, p: Project, role = 'script-editor') => {
+  if (p.hires.some((h) => h.roleId === role && h.status !== 'declined')) return;
+  const c = roleCandidates(s, p, role)[0];
+  if (c) { try { makeOffer(s, p, { personId: c.id, roleId: role, dayRate: c.dayRate, episodes: 'all' }); } catch { /* no money yet: tomorrow */ } }
 };
-const editor = (p: Project) => p.hires.find((h) => h.roleId === 'script-editor' && h.status === 'accepted');
+const editor = (p: Project, role = 'script-editor') => p.hires.find((h) => h.roleId === role && h.status === 'accepted');
 
 /** Each day: commission a polish once the editor has accepted, then what to do with the delivered pass. */
-const writingDay = (onDelivered: 'accept' | 'revise' | 'cancel') => (s: GameState) => {
+export const writingDay = (onDelivered: 'accept' | 'revise' | 'cancel', scope: 'polish' | 'rewrite' = 'polish', role = 'script-editor') => (s: GameState) => {
   for (const p of s.projects.filter((x) => !x.delivered && x.writing && x.approvedDraft !== null)) {
-    hireEditor(s, p);
-    const h = editor(p);
-    if (h && !p.writing!.some((j) => j.hireId === h.id)) { try { commissionWriting(s, p, h.id, { scope: 'polish', episode: 1 }); } catch { /* not yet */ } }
+    hireEditor(s, p, role);
+    const h = editor(p, role);
+    if (h && !p.writing!.some((j) => j.hireId === h.id)) { try { commissionWriting(s, p, h.id, { scope, episode: 1 }); } catch { /* not yet */ } }
     for (const j of p.writing!.filter((x) => x.hireId === h?.id)) {
       if (onDelivered === 'cancel' && j.status === 'working') cancelWriting(s, p, j.id);
       if (j.status !== 'delivered') continue;
@@ -33,6 +33,7 @@ const measure = (_s: GameState, projects: Project[]) => ({
   passesAccepted: projects.reduce((a, p) => a + (p.writing ?? []).filter((j) => j.status === 'accepted').length, 0),
   passesWritten: projects.reduce((a, p) => a + (p.writing ?? []).reduce((b, j) => b + j.passes.length, 0), 0),
   passesCancelled: projects.reduce((a, p) => a + (p.writing ?? []).filter((j) => j.status === 'cancelled').length, 0),
+  writingDays: projects.reduce((a, p) => a + (p.writing ?? []).reduce((b, j) => b + j.passes.reduce((c, x) => c + x.days, 0), 0), 0),
 });
 
 export const PROBES: Probe[] = [
@@ -70,5 +71,15 @@ export const PROBES: Probe[] = [
     measure,
     bites: ['passesAccepted', 'passesCancelled'],
     downstream: ['quality.script', 'overall', 'spent'],
+  },
+  // A rewrite takes the writer more days than a polish (writing-jobs.ts writingTerms), and three fifths of the script is
+  // read as theirs rather than three tenths (writing-jobs.ts acceptedRead). A script editor only
+  // polishes (writing-jobs.ts SCOPES_FOR); a co-writer is hired in both arms.
+  {
+    id: 'writing-rewrite', features: ['field:WritingWork.tsx#{`Ask ${name} For`}#1'],
+    decision: 'Ask a co-writer for a rewrite of the approved script rather than a polish',
+    reads: ['src/engine/writing-jobs.ts#writingTerms', 'src/engine/writing-jobs.ts#acceptedRead'],
+    base: { daily: writingDay('accept', 'polish', 'co-writer') }, variant: { daily: writingDay('accept', 'rewrite', 'co-writer') }, measure,
+    bites: ['writingDays'], downstream: ['quality.script', 'standing.writing', 'overall'],
   },
 ];

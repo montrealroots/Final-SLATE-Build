@@ -1,7 +1,9 @@
 {
  "id": "full-coverage",
  "features": [
-  "action:takes-actions.setShotPlan"
+  "action:takes-actions.setShotPlan",
+  "field:PlanViews.tsx#{`Coverage For ${sceneLabel(p, s)}`}#1",
+  "field:PlanViews.tsx#{`Takes For ${sceneLabel(p, s)}`}#1"
  ],
  "decision": "Shoot every scene with full coverage and many takes",
  "reads": [
@@ -492,7 +494,7 @@
  "verdict": "proven",
  "hashes": {
   "src/engine/takes-actions.ts": "dd1d3187f0e9727c",
-  "src/engine/production/shoot.ts": "891fa9e2b13b6e49",
+  "src/engine/production/shoot.ts": "e993db97ff8c5d24",
   "tests/proof/career.ts": "50bea06f19a02c5b"
  }
 }

@@ -4,6 +4,7 @@ import type { Probe } from '../probe';
 import { bank, bankMeasures, both, buysCamera, first, once, walletMeasures } from './bank';
 import { bankSim } from '../../../src/engine/bankworld';
 import type { GameState } from '../../../src/engine/types';
+import { applyForRecordedPassport } from '../../../src/engine/papers';
 
 const sim = (s: GameState) => bankSim(s.bank!);
 const mine = (s: GameState) => sim(s).ledger.accountsOf(sim(s).universe.playerId).filter((a) => !a.nominal && !a.closedAt);
@@ -25,6 +26,8 @@ const measure = (s: GameState) => ({
   ...bankMeasures(s), ...walletMeasures(s),
   savingsHeld: mine(s).filter((a) => a.kind === 'savings').reduce((x, a) => x + a.balance, 0) / 100,
   passports: ((sim(s).player as unknown as { documents?: { kind: string }[] }).documents ?? []).filter((d) => d.kind === 'passport').length,
+  // What went out of the bank for papers (papers.ts postToBank, category slate:papers).
+  papersPaid: sim(s).universe.transactions.filter((t) => /^slate:papers#/.test(t.category ?? '')).reduce((x, t) => x + Math.abs(t.postings.filter((p) => mine(s).some((a) => a.id === p.accountId)).reduce((y, p) => y + p.amount, 0)), 0) / 100,
   termHeld: mine(s).filter((a) => a.category === 'term').reduce((x, a) => x + a.balance, 0) / 100,
   inCurrent: mine(s).filter((a) => a.kind === 'checking').reduce((x, a) => x + a.balance, 0) / 100,
   // How much of what was bought went on a credit card.
@@ -44,6 +47,10 @@ export const PROBES: Probe[] = [
   P('bank-passport', 'documents.apply_passport', 'Apply for a passport through Your Papers', 'src/engine/bankworld/systems/documents.ts#registerDocuments',
     {}, { daily: from(5, (s) => { bank(s, 'documents.apply_passport', {}); }) },
     ['passports'], ['worth', 'inCurrent']),
+  // Your Papers' own route, priced and timed from the passport office's record (papers.ts), the fee paid from the bank.
+  { ...P('recorded-passport', 'documents.apply_passport', "Apply for a passport by the passport office's recorded route", 'src/engine/papers.ts#applyForRecordedPassport',
+    {}, { daily: from(5, (s) => { applyForRecordedPassport(s, 0); }) },
+    ['passports'], ['papersPaid', 'worth']), features: ['action:papers.applyForRecordedPassport', 'scheduled:papers-passport'] },
   P('card-over-limit', 'card.set_over_limit', 'In New York, let the card go over its limit before buying the camera', 'src/engine/bankworld/systems/cardlife.ts#registerCardLife',
     { placeId: NY, daily: lowCard }, { placeId: NY, daily: both(lowCard, from(9, (s) => { bank(s, 'card.set_over_limit', { on: true }); })) },
     // Over the limit the purchase goes through and its fee is charged and paid; under it, it is declined on the card.

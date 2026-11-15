@@ -60,9 +60,76 @@ and the rest) with real grades filling the hiring lists.
   (needs a release planned mid-production); the bank's collections, dormant accounts, unclaimed money, disputes and
   hardship plans (a career with $25m in the bank doesn't reach them).
 
-**Next.** The remaining actions (songs, documentary consent and cuts, screen time, sequels, studio pitches, first-look
-development, representation, stages of a part, a project from a source), the scheduled kinds, then the fields. The
-writer's revision focus still waits on the owner (nothing reads it).
+- Second batch, written and proven: a documentary's consent and its contributors (`documentary.ts`: asking, showing
+  the cut, a withdrawal), the casting director's search and advice, the shortlist and a performer with no recorded age
+  (`casting-director.ts`), sending a department's staffing (`helpers-people.ts`), a part's stages (`stages.ts`), screen
+  time recorded for the International Emmys (`screen-time.ts`), a version's song swapped and put back
+  (`version-songs.ts`), a catalog recording licensed and a catalog composer hired (`music-catalog.ts`), a sequel
+  (`continuation.ts`), a season's episodes moved later (`series.ts`), a pitch to a studio and a first-look deal's
+  development money (`studios.ts`), an investor approached through the agent (`agent.ts`), a passport by the office's
+  recorded route (`bank-rest.ts`), a field locked against a story (`blueprint-lock.ts`). Song performers went to
+  `not-features.json`.
+- Fixed from them, each with a test that fails without the fix: a documentary never delivered when a contributor
+  declined, because their interview was put back on the schedule every day (164 lost days and $579,190 a year;
+  `production/shoot.ts`); a withdrawal took nothing out of the film, and now a scene with nobody left who agreed leaves
+  the cut (`unscripted.ts withdrawRelease`); a sequel read the builds it carried over as its whole task list, needed
+  only a modeler, was estimated at $40,000 against $145,000 fresh and never got its crew (`hiring.ts plannedTasks`).
+- The awards record named nobody whose Wikidata name is kept under "mul" rather than English: 75 of 6,202, among them
+  Denzel Washington, Meryl Streep, Dustin Hoffman, Christopher Nolan and Emma Stone, so none of them could be offered as
+  recognised. `tools/recognition/names.mjs` asks for those by TMDB ID (English, then "mul", then British or American
+  English); the build runs it, and it filled all 75 here. A grade's reading said "counted as new to it" beside an
+  experience of 5 read from the years of someone's recognition; it now says where the 5 came from (`grades.ts
+  recognisedSpan`, also on the person's page). Denzel Washington as a performer: grade A, capability 98, experience 5.
+- Observed, not changed (the owner's settled grading): a catalog performer or composer with many credits and no awards
+  is graded 55, below the game's experienced people (88 cast on average), so they are rarely the best read.
+
+- Third batch: a series under a television first-look deal, a project made from a source, a song played first over the
+  end credits (the Academy needs a US cinema release, booked through a partner), and seventeen scheduled systems
+  switched off in careers where they run (`scheduled-more.ts`). Six scheduled kinds are older saves' or display only
+  (`not-features.json`). The matrix: actions 144 proven, scheduled 55 proven, open 320 -> 270.
+
+- Fourth batch, the fields (inputs), each named on the proof that varies it (`tests/proof/field-proofs.ts`, or the
+  probe's own `features`): the script's scene and character fields (`script-fields.ts`), the plan's (`plan-fields.ts`),
+  the Story panel's (`story-fields.ts`, each document field a backer reads), more of the script's and the player's
+  (`more-fields.ts`), the project's (`project-fields.ts`), the release plan's (`release-fields.ts`), the music brief's
+  (`music-fields.ts`) and a scene's look, kind and basis and a series regular (`scene-fields.ts`). Six fields aren't
+  decisions (`not-features.json`: the clock's Advance fields, the catalog's role filter, a plan's reminder, a repaired
+  save's place). Open 270 -> 210 at the fourth batch's checkpoint.
+- Fixed from them, each with a test that fails without the fix: Wake Me For Obligations moved nothing (it stopped Sleep
+  at the call itself, after the call had found you asleep and started the day late); sleep now ends an hour before the
+  first call or job morning it would cross (`state.ts startSleep`). A documentary scene's basis only added a note; a
+  scene presented as sourced fact with no fact linked is now an item the researcher must source (`production/tasks.ts`).
+  The documentary journey now expects the withdrawal message that says the scene left the cut.
+
+- Fifth batch: the creation fields (start date, holidays kept, French proficiency; `creation-fields.ts`), a stage's
+  age and a season shot in blocks (`plan-more.ts`), a song's fields (`song-fields.ts`: commissioned, a lyricist, how a
+  licensed track plays and for how long), a co-writer's rewrite (`writing.ts`), the kind of site and a new planned
+  budget (`places.ts`). Music By and Lyrics By (an existing song's writers) went to `not-features.json`.
+- Fixed from them: the staffing screen told a player short of money for the crew to "raise the rest", but with the
+  target promised nothing more could be put in ("nothing left to raise"), so a film shot somewhere dearer than its
+  estimate was a dead end; it now says to raise the target on the Budget page (`hiring.ts proposeStaffing`, test in
+  `tight-budget.test.ts`, careers journey updated). Proven by `new-planned-budget`: two films delivered against none.
+- Observed, not changed: the project's estimate doesn't follow where a film is shot (a station in Paris costs more than
+  the $40,000 target the micro short was raised to); the staffing screen is where the player learns it.
+
+- Sixth batch: keeping your own fields when revising a brief from a story (`blueprint-lock.ts`), a film's writer and
+  director (`film-roles.ts`: a hired director directs better; the Writer select's decision is the credit, which puts
+  the film in your writing record), the song entered for an award (`songs.ts`), the starting time (`creation-fields.ts`).
+  Twenty-nine of the player's own words (a synopsis, a draft's name, a character's wants, a contributor's name and the
+  rest) are carried: `tests/carried-text.test.ts` saves each and reads it back, and CONTROLS.csv cites it.
+- Explained, not proven (`explained.json`): keeping every holiday and an evening start each move only the delivery date
+  (4.6 days later, 1.3 days sooner at 40 careers) and nothing measured after it.
+- The matrix: open 270 -> 136 over this round, every result fresh (nothing stale).
+
+**Next.** The rest of the fields (136 open): the awards entry fields (episode, version, performer, project), ideas
+(IdeaPicker), the music mandate and licence scope, Place Of Birth (it decides only awards nationality rules and the
+bank's home region), names and pronouns and the birth date (identity read by the engine), the episode for a writer,
+unscripted competitions, the season plan's world rules and shared facts, structure and research notes, and the rest
+of the script's fields. One shown only somewhere is carried once a test shows it there; one an engine function reads
+needs a played-career proof. Then the eleven bank commands a $25m career never reaches, and an episode delivered
+early. Then the eleven bank commands a $25m career never reaches (collections,
+overdrafts, disputes, hardship), and an episode delivered early (a release planned while the season is in production). The writer's revision
+focus still waits on the owner (nothing reads it).
 
 ## The Owner's Command Of November 14, 2026 (Later): Every Feature Proven, Everything Possible
 

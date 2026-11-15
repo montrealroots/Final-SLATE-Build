@@ -3,7 +3,8 @@
  "features": [
   "action:personal.putInOwnMoney",
   "action:finance.approachBacker",
-  "action:finance.acceptDeal"
+  "action:finance.acceptDeal",
+  "field:YourMoney.tsx#\"Put In From Your Own Money\"#1"
  ],
  "decision": "Pay for the film yourself, or ask a backer for the money first",
  "reads": [

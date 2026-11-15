@@ -4,7 +4,7 @@ import { ActiveClock } from '../src/engine/clock';
 import { holidaysForYear, easterSunday } from '../src/engine/holidays';
 import { memoryStore, readSave, writeSave, deserialize, serialize, listSaves, SaveFormatError, canTakeLock, takeLock } from '../src/engine/save';
 import {
-  addPlan, reminderWords, sleptWords, advanceTargetInstant, characterAge, newGame, processUntil, startSleep, validateDraft, snooze,
+  addPlan, reminderWords, sleptWords, advanceTargetInstant, characterAge, newGame, processUntil, startSleep, validateDraft, snooze, schedule,
 } from '../src/engine/state';
 import { DAY, HOUR, MINUTE, addLocal, ageOn, localParts, localToInstant, observedBirthday } from '../src/engine/time';
 import { daylight, forecast, weatherOn, wetProbability } from '../src/engine/weather';
@@ -225,6 +225,16 @@ describe('creation and events', () => {
     snooze(s, 30);
     processUntil(s, s.sleep.wakeAt!, 'sleep');
     expect(s.plans[0].status).toBe('missed');
+  });
+  it('waking for obligations wakes you an hour before a call time, not at it; off, you sleep through it', () => {
+    for (const on of [true, false]) {
+      const s = newGame(draft(), 0, 'save1');
+      s.settings.wakeForObligations = on;
+      const start = s.now;
+      schedule(s, start + 9 * HOUR, 'shoot-call', {}, { attention: 'interrupt', priority: 15 });
+      startSleep(s, start + 12 * HOUR, false);
+      expect(s.events.find((e) => e.kind === 'wake')?.at).toBe(on ? start + 8 * HOUR : start + 12 * HOUR);
+    }
   });
 });
 

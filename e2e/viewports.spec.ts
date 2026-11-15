@@ -186,7 +186,9 @@ test('a second tab opens the same save read-only until it takes over', async ({ 
   await expect(second.getByText('This game is open in another tab')).toBeVisible();
   await expect(second.getByRole('button', { name: 'Advance', exact: true })).toBeDisabled();
   await second.getByRole('button', { name: 'Take Over Here' }).click();
-  await expect(second.getByRole('button', { name: 'Advance', exact: true })).toBeEnabled();
+  // Taking over reads the latest save first (store.ts takeOver), through a module loaded on first use: on the dev
+  // server under CI load that first load is compiled on demand, and once (November 15, 2026) took past ten seconds.
+  await expect(second.getByRole('button', { name: 'Advance', exact: true })).toBeEnabled({ timeout: 30_000 });
   await expect(page.getByText('This game is open in another tab')).toBeVisible({ timeout: 8000 });
 });
 

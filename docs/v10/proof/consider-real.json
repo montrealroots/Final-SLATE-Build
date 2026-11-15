@@ -2,7 +2,8 @@
  "id": "consider-real",
  "features": [
   "action:guests.considerFor",
-  "action:guests.considerPerson"
+  "action:guests.considerPerson",
+  "field:PersonWork.tsx#\"Consider Them For\"#1"
  ],
  "decision": "Consider a performer from the film catalog with forty-five parts behind them for the lead, and offer it to them",
  "reads": [
@@ -481,7 +482,7 @@
  "verdict": "proven",
  "hashes": {
   "src/engine/guests.ts": "4405115c206c8214",
-  "src/engine/hiring.ts": "5abf1af98eda4186",
+  "src/engine/hiring.ts": "8fca92a28a9f5b87",
   "tests/proof/career.ts": "50bea06f19a02c5b"
  }
 }

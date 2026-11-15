@@ -1,7 +1,8 @@
 {
  "id": "guide-me-writing",
  "features": [
-  "action:mandates.approveGuideMe"
+  "action:mandates.approveGuideMe",
+  "field:PlanViews.tsx#\"Spending Ceiling\"#1"
  ],
  "decision": "Let Guide Me run the writing within what its plan costs",
  "reads": [
@@ -53,6 +54,8 @@
   "standing.directing": 55.075,
   "standing.acting": 50,
   "standing.producing": 53.1,
+  "crewExperience": 2.263,
+  "crewRates": 7950,
   "writingPasses": 0,
   "counterRates": 0,
   "writersHired": 0,
@@ -102,6 +105,8 @@
   "standing.directing": 54.85,
   "standing.acting": 50,
   "standing.producing": 52.85,
+  "crewExperience": 2.259,
+  "crewRates": 9510.75,
   "writingPasses": 3,
   "counterRates": 0,
   "writersHired": 3.975,
@@ -409,6 +414,20 @@
    "changed": 33,
    "n": 40
   },
+  "crewExperience": {
+   "mean": -0.003,
+   "lo": -0.039,
+   "hi": 0.032,
+   "changed": 34,
+   "n": 40
+  },
+  "crewRates": {
+   "mean": 1560.75,
+   "lo": 1515.332,
+   "hi": 1606.168,
+   "changed": 40,
+   "n": 40
+  },
   "writingPasses": {
    "mean": 3,
    "lo": 2.592,
@@ -461,7 +480,7 @@
  "verdict": "proven",
  "hashes": {
   "src/engine/mandates.ts": "932814b9588192fc",
-  "src/engine/finish.ts": "48cd177ad2e5ecb2",
+  "src/engine/finish.ts": "f91be05a7e69ff70",
   "tests/proof/career.ts": "50bea06f19a02c5b"
  }
 }

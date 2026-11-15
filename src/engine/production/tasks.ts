@@ -123,7 +123,11 @@ export function buildTasks(p: Project): Task[] {
     }
   }
   if (nonfiction && !unscripted) {
-    tasks.push(t('doc:research', 'all', 'Research And Access Planning', 'Documentary', 'researcher', 3 + p.evidence.length, 'items'));
+    // A scene presented as sourced fact with no fact linked to it is one more thing the researcher must source; a scene
+    // marked dramatized asks nothing. Until November 15, 2026 the basis only added a note, and the feature proofs found
+    // it changed nothing.
+    const unsourced = scenes.filter((s) => s.basis === 'sourced' && !s.evidenceIds.length && s.kind !== 'interview').length;
+    tasks.push(t('doc:research', 'all', 'Research And Access Planning', 'Documentary', 'researcher', 3 + p.evidence.length + unsourced, 'items'));
     prepIds.push('doc:research:all');
     if (p.evidence.some((e) => e.status !== 'dramatized')) {
       tasks.push(t('doc:factcheck', 'all', 'Fact Checking', 'Documentary', 'fact-checker', p.evidence.filter((e) => e.status !== 'dramatized').length, 'claims', ['doc:research:all']));

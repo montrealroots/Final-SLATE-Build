@@ -8,6 +8,7 @@
 // what Wikidata states: a person's award (P166) and nomination (P1411) statements, each with its year where the
 // statement has one. Nothing is scored here; src/engine/recognition.ts reads it and says how.
 import { writeFileSync } from 'node:fs';
+import { namesFor } from './names.mjs';
 
 const ENDPOINT = 'https://query.wikidata.org/sparql';
 const UA = 'slate-build/1.0 (game data tool)';
@@ -108,6 +109,10 @@ for (let i = 0; i < ids.length; i += STEP) {
   process.stdout.write(`\r${Math.min(i + STEP, ids.length)} of ${ids.length} categories read, ${Object.keys(people).length} people`);
 }
 console.log();
+// A name kept only under "mul", or in British or American English, is asked for by TMDB ID (names.mjs).
+const nameless = Object.keys(people).filter((t) => !people[t].name);
+const found = await namesFor(nameless);
+for (const [t, name] of Object.entries(found)) people[t].name = name;
 
 // Compact: categories once; each person's marks as [category index, won, year].
 const index = Object.fromEntries(ids.map((x, n) => [x, n]));

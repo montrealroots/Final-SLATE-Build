@@ -3,6 +3,7 @@
 import { describe, expect, it } from 'vitest';
 import { DAY, RENEWAL_DECISION_DAYS, assignEpisodeRole, deleteScene, scriptIssues, backerOptions, buildTasks, makeOffer, planShootDays, processUntil, projectedCost, roleCandidates, scheduleRenewal, updateCharacter } from './engine-api';
 import { continueProject } from '../src/engine/sequel';
+import { neededRoles } from '../src/engine/hiring';
 import { addThread } from '../src/engine/structure-edit';
 import { moveEpisode, removeWorldRule, reorderRefusal, setEpisodeArc, setEpisodeTitle, setSeasonArc, sharedFactImpact, sharedFactPreview, updateRelationship, updateWorldRule } from '../src/engine/season';
 import type { GameState, Project } from '../src/engine/types';
@@ -96,6 +97,12 @@ describe('continuing a project', () => {
     approve(s, sequel);
     const twin = delivered('cont-puppets-twin', 'stop-motion').p;
     expect(projectedCost(s, sequel).total).toBeLessThan(projectedCost(s, twin).total);
+    // It needs everyone the same film made fresh needs, but the makers of what it carried over. Until November 15, 2026
+    // the carried builds were read as its whole task list: it needed only their makers, and was priced at a fraction.
+    const roles = (q: Project) => neededRoles(q, s).filter((r) => r.required).map((r) => r.roleId);
+    const builders = new Set(sequel.tasks.map((t) => t.roleId));
+    expect(roles(twin).filter((r) => !roles(sequel).includes(r)).every((r) => builders.has(r))).toBe(true);
+    expect(roles(sequel).length).toBeGreaterThan(builders.size);
     // A changed design makes it a new build: planning would rebuild it, so the estimate counts it again.
     const reused = projectedCost(s, sequel).total;
     updateCharacter(sequel, sequel.characters[0].id, { entityNote: 'Older now, weathered clay' , realization: 'puppet', methods: ['puppetry'] });

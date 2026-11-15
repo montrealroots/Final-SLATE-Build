@@ -2,7 +2,8 @@
  "id": "better-terms",
  "features": [
   "action:negotiation-actions.askForBetterTerms",
-  "scheduled:finance-counter"
+  "scheduled:finance-counter",
+  "field:PlanViews.tsx#{`Ask The ${d.backer} For`}#1"
  ],
  "decision": "Ask the investor for a smaller share of income before taking their offer",
  "reads": [

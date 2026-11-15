@@ -91,7 +91,9 @@ describe('a documentary contributor withdraws', () => {
     const made = withdrawRelease(s, p, 'ct1');
     expect(c1(p).consent).toBe('withdrawn');
     expect(made.map((t) => [t.kind, t.roleId, t.sceneIds])).toEqual([['doc:redact', 'editor', ['a1']]]); // a2 was never shot
-    expect(s.log[0].text).toBe('Nomvula Dube withdrew from Tide Keepers. Their footage is being redacted from the film.');
+    expect(s.log[0].text).toBe('Nomvula Dube withdrew from Tide Keepers. Their footage is being redacted from the film. 2 scenes with only them are out of the cut.');
+    // Nothing of theirs is left to show, so their scenes leave the cut: until November 15, 2026 both stayed, counted whole.
+    expect(editScenes(p).map((x) => x.id)).toEqual([]);
     expect(redactionComplete(p, 'ct1')).toBe(false);
     for (const t of p.tasks) { t.status = 'done'; t.done = t.units; } // labelled fixture: every other piece of work finished
     made[0].status = 'waiting';
@@ -101,6 +103,18 @@ describe('a documentary contributor withdraws', () => {
     expect(redactionComplete(p, 'ct1')).toBe(true);
     expect(deliveryBlockers(p).some((b) => b.includes('Nomvula Dube'))).toBe(false);
     expect(() => withdrawRelease(s, p, 'ct1')).toThrow('Nomvula Dube has already withdrawn.');
+  });
+
+  it('a scene shared with someone who agreed stays in the cut; only theirs leaves', () => {
+    const { s, p } = doc('withdraw-shared');
+    p.contributors.push({ id: 'ct2', name: 'A Coach (Fixture)', role: 'Coach', consent: 'given' });
+    p.scenes.push({ ...blankDoc('a3', 'ct1'), contributorIds: ['ct1', 'ct2'] });
+    approve(s, p);
+    c1(p).consent = 'given';
+    p.tasks = buildTasks(p);
+    withdrawRelease(s, p, 'ct1');
+    expect(editScenes(p).map((x) => x.id)).toEqual(['a3']);
+    expect(s.log[0].text).toBe('Nomvula Dube withdrew from Tide Keepers. They were not recorded. 2 scenes with only them are out of the cut.');
   });
 
   it('before filming: nothing to redact; with the picture locked after filming, unlock first', () => {
@@ -115,5 +129,18 @@ describe('a documentary contributor withdraws', () => {
     locked.p.edit.pictureLocked = true;
     expect(() => withdrawRelease(locked.s, locked.p, 'ct1')).toThrow("Unlock the picture first; Nomvula Dube's footage has to be taken out of the cut.");
     expect(c1(locked.p).consent).toBe('given'); // refused, nothing changed
+  });
+});
+
+describe("a documentary scene's basis", () => {
+  it('a scene presented as sourced fact with no fact linked is one more item to research; marked dramatized, it asks nothing', () => {
+    const research = (basis: Scene['basis']) => {
+      const s = startLife('basis', 'za-durban');
+      const p = buildProject(s, { title: 'Tide Keepers', format: 'documentary-short', medium: 'live-action', genres: ['documentary'], runtime: 10 }, [], []);
+      p.scenes.push({ ...blankDoc('a1', 'ct1'), kind: 'actuality', basis, contributorIds: [] });
+      approve(s, p);
+      return buildTasks(p).find((t) => t.kind === 'doc:research')!.units;
+    };
+    expect(research('sourced')).toBe(research('dramatized') + 1);
   });
 });

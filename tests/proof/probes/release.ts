@@ -5,9 +5,9 @@ import { addDaysToKey, dateKey } from '../../../src/engine/time';
 import type { GameState, Project, ReleasePlan } from '../../../src/engine/types';
 
 const today = (s: GameState) => dateKey(s.now, 'Europe/London');
-const plan = (s: GameState, over: Partial<ReleasePlan>): Omit<ReleasePlan, 'proposals'> => ({ routes: ['transactional'], territories: ['GB'], date: addDaysToKey(today(s), 20), festivalUntil: null, version: 'subtitled', promo: 0, ...over });
+export const plan = (s: GameState, over: Partial<ReleasePlan>): Omit<ReleasePlan, 'proposals'> => ({ routes: ['transactional'], territories: ['GB'], date: addDaysToKey(today(s), 20), festivalUntil: null, version: 'subtitled', promo: 0, ...over });
 /** The player runs one route themselves, as the Release Plan page lets them. */
-const selfRelease = (over: Partial<ReleasePlan> = {}) => (s: GameState, p: Project) => {
+export const selfRelease = (over: Partial<ReleasePlan> = {}) => (s: GameState, p: Project) => {
   setReleasePlan(s, p, plan(s, over));
   try { releaseYourself(s, p, (over.routes ?? ['transactional'])[0] as 'transactional'); } catch { /* refused: what it says is counted as no release */ }
 };
