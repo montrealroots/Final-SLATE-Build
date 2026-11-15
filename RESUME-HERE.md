@@ -192,12 +192,25 @@ and the rest) with real grades filling the hiring lists.
   (`music-fields.ts`: both arms leave music to Guide Me; with a tenth of its plan it hires no one, and neither film is
   delivered, 40 of 40).
 
-**Next.** 4 open, explained (`docs/v10/explained.json`):
-- The starting hour and holidays kept move only the delivery date. A fixed deadline is noisy: delivery varies by about
-  ten days between careers, and holidays sometimes land a career earlier.
-- Contestants: a game gap, not a proof gap. Contestants' scores are drawn at random (`unscripted.ts
-  decideCompetition`), unrelated to who they are, and nothing outside the competition reads who competes.
-- Moving an episode: its audience moves both ways.
+- After PR #104 ("Do all perfect", November 15, 2026):
+  - Directors and writers priced like composers (`recognition-pay.ts FEE_JOBS`): a recognised director asks a feature's
+    fee over its 40 shoot days (`directFeeFrom`, up to $20 million: Spielberg and Scorsese at it, Nolan about $5.8
+    million), a writer a script's over its 25 draft days (`scriptFeeFrom`, up to $5 million: Sorkin about $2.2 million).
+  - The awards record (`tools/recognition/build.mjs`) missed the Academy Award for Best Director (Wikidata files it only
+    as "award for best direction") and Best Film Editing (dropped by the "Best Film" filter). The build now reads every
+    class its categories belong to; the query must select `?a` too, or the query service drops the VALUES and answers
+    190 MB. Rebuilt: 213 categories (was 200), 6,715 people (was 6,202).
+  - Contestants (`unscripted.ts contestantTraits`): a skill that weighs on who goes through and a screen presence that is
+    the show's performance (`finish.ts`), shown where contestants are chosen. Proven: the five with the most presence
+    raise overall and reception.
+  - Holidays kept and the evening start proven against a labelled delivery date (`creation-fields.ts commissioned`).
+  - Moving an episode still explained: moving one reorders the shoot, which redraws every scene's footage, so the season
+    itself changes (`explained.json`).
+  - The real-composer journey hires Lorne Balfe (a working composer's rate) rather than Hans Zimmer ($2.2 million).
+
+**Next.** Open, explained (`docs/v10/explained.json`): moving an episode (the footage is drawn by shoot day, so a
+reordered season is a different season). Possible next steps: hold each scene's footage the same whichever order it is
+shot in; union minimums for directors (DGA) and writers (WGA) as performers have SAG-AFTRA's.
 
 ## The Owner's Command Of November 14, 2026 (Later): Every Feature Proven, Everything Possible
 

@@ -112,6 +112,20 @@ const directLast = (s: GameState) => {
   }
 };
 const cutOn = new WeakSet<Project>();
+/**
+ * Each day, once a season is sold: its two episodes put out on the same calendar days in both arms, the 300th and 307th
+ * of its year, so the weeks it airs in (audiences.ts weekCompetition, seasonFactor) are the same and only the order differs.
+ */
+const started = new WeakMap<GameState, number>();
+const fixedDates = new WeakSet<object>();
+const sameWeeks = (s: GameState) => {
+  if (!started.has(s)) started.set(s, s.now);
+  for (const p of s.projects) for (const r of p.releases.filter((x) => x.episodes?.length === 2 && x.status === 'planned' && !fixedDates.has(x))) {
+    const year = Number(/Season (\d+)/.exec(p.title)?.[1] ?? 1) - 1;
+    const day = (n: number) => dateKey(started.get(s)! + (year * 365 + n) * 86_400_000, 'UTC');
+    try { setEpisodeDates(s, p, r.id, [day(300), day(307)]); fixedDates.add(r); } catch { /* past, or not now */ }
+  }
+};
 /** The season with its second episode's last scene marked, and the most capable director offered the job. */
 const directed = (move: boolean) => (s: GameState, p: Project) => {
   lastScene.set(p, p.scenes.filter((x) => x.episode === 2).at(-1)!.id);
@@ -122,8 +136,8 @@ PROBES.push({
   id: 'move-episode', features: ['action:season.moveEpisode'], decision: 'Put the episode a hired director directs, and cuts again, first',
   reads: ['src/engine/season.ts#moveEpisode', 'src/engine/audiences.ts#observeWeek'],
   // Only a season that airs has an audience to move: about half do.
-  seeds: 240,
-  base: { ...SERIES, decide: directed(false), daily: both(SERIES.daily, directLast) }, variant: { ...SERIES, decide: directed(true), daily: both(SERIES.daily, directLast) },
+  seeds: 120,
+  base: { ...SERIES, decide: directed(false), daily: both(SERIES.daily, directLast, sameWeeks) }, variant: { ...SERIES, decide: directed(true), daily: both(SERIES.daily, directLast, sameWeeks) },
   measure: (_s, projects) => ({
     firstEpisodeDirected: projects.filter((p) => { const e = p.episodes.find((x) => x.number === 1); return !!e?.director && e.director !== 'player'; }).length,
     // Streaming hours (each episode's from its own first day) and broadcast viewers (each kept from the one before), apart.
