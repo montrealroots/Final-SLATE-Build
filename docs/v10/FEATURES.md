@@ -8,11 +8,11 @@ journey that shows it there.
 
 | Kind | proven | carried | does not bite | no downstream effect | stale | not a feature | not yet proven | All |
 |---|---|---|---|---|---|---|---|---|
-| action | 144 | 0 | 0 | 3 | 0 | 13 | 0 | 160 |
-| bank | 43 | 0 | 0 | 0 | 0 | 0 | 11 | 54 |
+| action | 146 | 0 | 0 | 1 | 0 | 13 | 0 | 160 |
+| bank | 53 | 0 | 1 | 0 | 0 | 0 | 0 | 54 |
 | scheduled | 55 | 0 | 0 | 0 | 0 | 11 | 0 | 66 |
 | field | 195 | 97 | 0 | 4 | 0 | 9 | 0 | 305 |
-| all | 437 | 97 | 0 | 7 | 0 | 33 | 11 | 585 |
+| all | 449 | 97 | 1 | 5 | 0 | 33 | 0 | 585 |
 
 ## Rows
 
@@ -47,8 +47,8 @@ journey that shows it there.
 | restoreToEdit | action | src/engine/edit-actions.ts | proven | restore-to-edit (40 seeds) | cutFromEdit -2; overall -0.6 |
 | startCutPass | action | src/engine/edit-actions.ts | proven | cut-passes (40 seeds) | quality.editing +8; daysToDeliver +3.175; overall +1.725; spent +3049.5 |
 | unlockPicture | action | src/engine/edit-actions.ts | proven | unlock-picture (40 seeds) | daysToDeliver +3; spent +2042.75 |
-| deliverEpisode | action | src/engine/episode-delivery.ts | no downstream effect | deliver-episode (40 seeds) | moved: episodesDeliveredAlone +1.85. Career not reached: an episode delivered on its own can come out before the season is finished, but only on a release planned before then; these careers sell a season once it is finished, so episode 1 delivered early (1.85 episodes a career, proven to bite) changes no release. To prove with a release planned while the season is in production. |
-| lockEpisode | action | src/engine/episode-delivery.ts | no downstream effect | deliver-episode (40 seeds) | moved: episodesDeliveredAlone +1.85. Career not reached: an episode delivered on its own can come out before the season is finished, but only on a release planned before then; these careers sell a season once it is finished, so episode 1 delivered early (1.85 episodes a career, proven to bite) changes no release. To prove with a release planned while the season is in production. |
+| deliverEpisode | action | src/engine/episode-delivery.ts | proven | deliver-episode-release (40 seeds) | episodesDeliveredAlone +1.875; firstOut -7.4 |
+| lockEpisode | action | src/engine/episode-delivery.ts | proven | deliver-episode-release (40 seeds) | episodesDeliveredAlone +1.875; firstOut -7.4 |
 | startEpisodeCutPass | action | src/engine/episode-delivery.ts | proven | episode-cut-pass (40 seeds) | episodeCutPasses +1.7; quality.editing +3.35; spent +1348.55 |
 | setEpisodeDates | action | src/engine/episode-releases.ts | proven | episode-dates (40 seeds) | episodesMoved +2.8; renewalWait +49.35 |
 | addToKit | action | src/engine/equipment.ts | proven | own-kit (40 seeds) | gearOwned +12; kitItems +12; spent -2981.5 |
@@ -179,27 +179,27 @@ journey that shows it there.
 | commissionWriting | action | src/engine/writing-jobs.ts | proven | writing-polish (40 seeds) | passesAccepted +1.925; quality.script +1.85; overall +0.65 |
 | requestRevision | action | src/engine/writing-jobs.ts | proven | writing-revision (80 seeds) | passesWritten +1.9; spent +1432.125 |
 | bank.add_standing_order | bank | src/engine/bankworld | proven | standing-order (40 seeds) | interestIn +11501.04; money +15293.933 |
-| bank.arrange_overdraft | bank | src/engine/bankworld | not yet proven |  |  |
+| bank.arrange_overdraft | bank | src/engine/bankworld | proven | arrange-overdraft (40 seeds) | gearOwned +0.375; interestOut +5.542; worth -110.026 |
 | bank.borrow | bank | src/engine/bankworld | proven | bank-loan (60 seeds) | interestOut +1721.445; money +10355.682 |
 | bank.break_term | bank | src/engine/bankworld | proven | break-term (40 seeds) | accounts -1; interestIn -41099.99; worth -41099.99 |
 | bank.cancel_new | bank | src/engine/bankworld | proven | cancel-new (40 seeds) | accounts -1; bankFees -10.81; worth +10.81 |
 | bank.cancel_scheduled | bank | src/engine/bankworld | proven | cancel-scheduled (40 seeds) | savingsHeld -1019127.17; interestIn -19127.17; worth -19127.17 |
 | bank.cancel_standing_order | bank | src/engine/bankworld | proven | cancel-standing-order (40 seeds) | interestIn -8743.03; money -11626.37 |
 | bank.cancel_switch | bank | src/engine/bankworld | proven | cancel-switch (40 seeds) | atFirstBank +18652932.151; interestIn -4302.46; worth -4875.18 |
-| bank.claim_unclaimed | bank | src/engine/bankworld | not yet proven |  |  |
+| bank.claim_unclaimed | bank | src/engine/bankworld | proven | claim-unclaimed (40 seeds) | heldByState -10003.07; worth +10003.07 |
 | bank.close_current | bank | src/engine/bankworld | proven | close-current (40 seeds) | accounts -1; bankFees -10.81; worth +8.71 |
 | bank.close_savings | bank | src/engine/bankworld | proven | close-savings (40 seeds) | accounts -1; interestIn -19961; money -25455.788 |
-| bank.debit_overdraft | bank | src/engine/bankworld | not yet proven |  |  |
-| bank.new_number | bank | src/engine/bankworld | not yet proven |  |  |
+| bank.debit_overdraft | bank | src/engine/bankworld | proven | debit-overdraft (40 seeds) | gearOwned +1; bankFees +34; worth -404.026 |
+| bank.new_number | bank | src/engine/bankworld | proven | new-number (40 seeds) | takenByNumber -671.69; fraudCarried -671.69 |
 | bank.open_current | bank | src/engine/bankworld | proven | open-current (40 seeds) | accounts +1; bankFees +10.81; worth -10.81 |
 | bank.open_savings | bank | src/engine/bankworld | proven | bank-savings (40 seeds) | accounts +1; interestIn +19961; money +26543.882 |
 | bank.open_term | bank | src/engine/bankworld | proven | term-deposit (40 seeds) | accounts +1; interestIn +41099.99; worth +41099.99 |
-| bank.pay_collections | bank | src/engine/bankworld | not yet proven |  |  |
-| bank.reactivate | bank | src/engine/bankworld | not yet proven |  |  |
+| bank.pay_collections | bank | src/engine/bankworld | proven | pay-collections (40 seeds) | inCollections -119.75; wellsAccounts +0.475 |
+| bank.reactivate | bank | src/engine/bankworld | proven | reactivate (40 seeds) | dormantAccounts -1; inSavings -5000 |
 | bank.redirect_deposits | bank | src/engine/bankworld | proven | redirect-deposits (40 seeds) | savingsHeld +131539.827; interestIn +660.732; worth +660.733 |
 | bank.repay_loan | bank | src/engine/bankworld | proven | repay-loan (40 seeds) | loansOwed -3156.004; interestOut -408.002; worth +365.568 |
 | bank.schedule_payment | bank | src/engine/bankworld | proven | scheduled-payment (40 seeds) | interestIn +19127.17; money +25435.064 |
-| bank.set_alerts | bank | src/engine/bankworld | not yet proven |  |  |
+| bank.set_alerts | bank | src/engine/bankworld | proven | large-payment-alert (40 seeds) | fraudKnownAfter -9.442; fraudCarried +350; worth -350 |
 | bank.set_loan_repayment | bank | src/engine/bankworld | proven | loan-repayment (40 seeds) | paidFromNatwest +2795.129; natwestHeld -2795.129; atFirstBank +4098.834 |
 | bank.set_order_source | bank | src/engine/bankworld | proven | order-source (40 seeds) | paidFromNatwest +5000; natwestHeld -5000; atFirstBank +4962.21 |
 | bank.set_payments | bank | src/engine/bankworld | proven | credit-card (40 seeds) | accounts +1; onCard +1; cardPaid +846.28 |
@@ -208,21 +208,21 @@ journey that shows it there.
 | bank.set_term_end | bank | src/engine/bankworld | proven | term-end (30 seeds) | interestIn -58062.09; worth -16962.1 |
 | bank.stop_balance_transfer | bank | src/engine/bankworld | proven | stop-balance-transfer (40 seeds) | atFirstBank +18565036.675; interestIn -4302.46; worth -6981.664 |
 | bank.switch | bank | src/engine/bankworld | proven | switch-bank (40 seeds) | atFirstBank -2; interestIn +3052.17; worth +3624.89; money +4820.332 |
-| bank.take_overrun_loan | bank | src/engine/bankworld | not yet proven |  |  |
+| bank.take_overrun_loan | bank | src/engine/bankworld | does not bite | overrun-loan (40 seeds) | nothing moved. Career not reached: French law has the bank offer a loan for an account three months past its limit (lending.ts frenchOverrun), but a SLATE career doesn't take a French account past it: a debit card purchase past the balance is refused there (spending.ts spendRefusal), and a career has no direct debits or charges that would run it over (4 careers, November 15, 2026). A career paying bills by direct debit from a nearly empty account is where it would be offered. |
 | bank.take_term_interest | bank | src/engine/bankworld | proven | term-interest (40 seeds) | termHeld -617.53; inCurrent +617.53 |
 | bank.transfer | bank | src/engine/bankworld | proven | bank-savings (40 seeds) | accounts +1; interestIn +19961; money +26543.882 |
 | card.apply | bank | src/engine/bankworld | proven | credit-card (40 seeds) | accounts +1; onCard +1; cardPaid +846.28 |
 | card.close | bank | src/engine/bankworld | proven | card-close (40 seeds) | cardsOpen -1; onCard -1; cardPaid -861.08 |
-| card.dispute | bank | src/engine/bankworld | not yet proven |  |  |
+| card.dispute | bank | src/engine/bankworld | proven | dispute-charge (40 seeds) | fraudReported +1; fraudCarried -350; worth +350 |
 | card.lock | bank | src/engine/bankworld | proven | card-lock (40 seeds) | onCard -1; cardPaid -853.139 |
 | card.money_transfer | bank | src/engine/bankworld | proven | card-money-transfer (40 seeds) | transferredIn +1000; bankFees +30; interestOut +1.82; worth -31.82 |
 | card.plan | bank | src/engine/bankworld | proven | card-plan (40 seeds) | interestOut -68.054; cardPaid +223; worth +68.054 |
 | card.redeem_rewards | bank | src/engine/bankworld | proven | card-redeem (40 seeds) | rewardsLeft -17.09; worth +17.09; money +17.09 |
 | card.refund_credit | bank | src/engine/bankworld | proven | card-refund (40 seeds) | cardCredit -1000; money +1329.785 |
 | card.report | bank | src/engine/bankworld | proven | card-report (40 seeds) | onCard -1; cardPaid -846.28 |
-| card.request_hardship | bank | src/engine/bankworld | not yet proven |  |  |
+| card.request_hardship | bank | src/engine/bankworld | proven | card-hardship (40 seeds) | bankFees -175.26; worth +175.26; owed -175.26 |
 | card.request_limit | bank | src/engine/bankworld | proven | card-limit-down (40 seeds) | limit -2347; cardPaid -346.28 |
-| card.set_auto_raise | bank | src/engine/bankworld | not yet proven |  |  |
+| card.set_auto_raise | bank | src/engine/bankworld | proven | card-no-auto-raise (40 seeds) | cardLimit -1353; cardPaid -704.82 |
 | card.set_autopay_from | bank | src/engine/bankworld | proven | autopay-from (40 seeds) | paidFromNatwest +849.995; natwestHeld -849.995; atFirstBank +849.996 |
 | card.set_everyday | bank | src/engine/bankworld | proven | card-everyday (40 seeds) | onNatwestCard +1; cardBillsToNatwest +846.28 |
 | card.set_over_limit | bank | src/engine/bankworld | proven | card-over-limit (40 seeds) | onCardAmount +50; cardPaid +50 |

@@ -17,6 +17,7 @@
 import { GEAR, RESALE_SHARE, SERVICE_BELOW, SERVICE_DAYS, SERVICE_SHARE, WEAR_PER_DAY, gearById, rentDayRate, type Gear } from './gear-catalog';
 import { lightOf, rigOf, soundsOf } from './craft';
 import { personalBalance, postPersonal } from './personal';
+import { bankPurchaseRefusal } from './bank';
 import { approvedScenes } from './projects';
 import { newId, onDraftCheck, onNewGame } from './state';
 import { DAY } from './time';
@@ -67,7 +68,11 @@ export function buyRefusal(state: GameState, gearId: string): string | null {
   if (!g) return 'That isn\'t in the shop.';
   if (g.price === null) return 'No price is recorded for this, so it isn\'t sold.';
   if (!state.money) return 'This story began before your own money was part of the game: you have no account to buy from.';
-  if (personalBalance(state) < Math.round(g.price)) return `It costs ${money(g.price)} and you have ${money(personalBalance(state))} in your own account.`;
+  // What the bank's payment would say (bank.ts bankPurchaseRefusal): the card's room, the overdraft and a French debit
+  // card's ceiling count as they do there. Until November 15, 2026 only the accounts' whole balance was read, so a
+  // purchase meant for the card was refused for want of cash, and one the debit card couldn't pay was offered.
+  const why = bankPurchaseRefusal(state, Math.round(g.price));
+  if (why) return personalBalance(state) < Math.round(g.price) ? `It costs ${money(g.price)} and you have ${money(personalBalance(state))} in your own account.` : `It costs ${money(g.price)}, and your bank won't pay it now: ${why.charAt(0).toLowerCase()}${why.slice(1)} Move money into your current account, link your savings, or put it on a card.`;
   return null;
 }
 
@@ -76,8 +81,10 @@ export function buyGear(state: GameState, gearId: string): OwnedGear {
   if (no) throw new Error(no);
   const g = gearById(gearId)!;
   const item: OwnedGear = { id: newId(state, 'gr'), gearId, owner: 'you', at: state.now, paid: Math.round(g.price!), condition: 100 };
-  (state.gear ??= { items: [] }).items.push(item);
+  // Paid for first, then yours: until November 15, 2026 the item was added before the bank paid, so a purchase the bank
+  // refused (the debit card short, with savings unlinked) threw and left the camera owned, unpaid for.
   postPersonal(state, 'equipment', -item.paid, `Bought: ${g.name}`, `gear:${item.id}`);
+  (state.gear ??= { items: [] }).items.push(item);
   return item;
 }
 

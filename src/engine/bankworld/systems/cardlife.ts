@@ -244,9 +244,11 @@ export function registerCardLife(sim: Simulation): void {
   });
 
   sim.onCommand<{ on: boolean; accountId?: string }, { on: boolean }>('card.set_auto_raise', (p, { sim: s }) => {
-    if (!s.player.credit) throw new CommandError('You don’t have a card.');
     const card = cardFor(s, s.player, p.accountId);
-    (card ? stateOf(s.player, card) : s.player.credit).noAutoRaise = !p.on;
+    // A card's own: until 2026-11-15 it was kept on the record before any card arrived, and the card's own state, made
+    // fresh when it came, lost it, so the bank raised a limit its holder had asked it not to.
+    if (!card || !s.player.credit) throw new CommandError('You don’t have a card.');
+    stateOf(s.player, card).noAutoRaise = !p.on;
     return { on: Boolean(p.on) };
   });
 

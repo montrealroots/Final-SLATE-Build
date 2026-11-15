@@ -97,6 +97,24 @@ describe('a record with no card open', () => {
   });
 });
 
+describe('a card\'s own settings', () => {
+  it('asking never to be raised unasked waits for a card, and stays with the card that comes', () => {
+    const sim = lifeIn('is-39-mosfellsbr', { wealth: 'comfortable' }, 'cl-noraise');
+    const old = card(sim)!;
+    give(sim, old.id, -old.balance);
+    run(sim, 'card.close');
+    expect(card(sim)).toBeUndefined();
+    sim.player.credit!.score = 760;
+    run(sim, 'card.apply');
+    // Until 2026-11-15 this was accepted with no card, kept on the record, and lost when the card came.
+    expect(sim.execute({ kind: 'card.set_auto_raise', payload: { on: false } }).error).toBe('You don’t have a card.');
+    sim.advanceBy(8 * MS_DAY);
+    const fresh = card(sim)!;
+    run(sim, 'card.set_auto_raise', { on: false });
+    expect(stateOf(sim.player, fresh).noAutoRaise).toBe(true);
+  });
+});
+
 describe('applying for a card', () => {
   it('is approved for a record that earns it, costs the record a few points, and the bank’s card arrives in a week', () => {
     const sim = lifeIn('is-39-mosfellsbr', { wealth: 'comfortable' }, 'cl-apply');

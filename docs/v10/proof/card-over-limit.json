@@ -65,6 +65,7 @@
   "cardPaid": 500,
   "savingsHeld": 0,
   "passports": 1,
+  "papersPaid": 1655,
   "termHeld": 0,
   "inCurrent": 25080125.266,
   "onCardAmount": 500,
@@ -127,6 +128,7 @@
   "cardPaid": 550,
   "savingsHeld": 0,
   "passports": 1,
+  "papersPaid": 1655,
   "termHeld": 0,
   "inCurrent": 25080125.266,
   "onCardAmount": 550,
@@ -525,6 +527,13 @@
    "changed": 0,
    "n": 40
   },
+  "papersPaid": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 40
+  },
   "termHeld": {
    "mean": 0,
    "lo": 0,
@@ -568,7 +577,7 @@
  ],
  "verdict": "proven",
  "hashes": {
-  "src/engine/bankworld/systems/cardlife.ts": "4410ca438c2f22b7",
+  "src/engine/bankworld/systems/cardlife.ts": "b032293a1a289eb6",
   "tests/proof/career.ts": "50bea06f19a02c5b"
  }
 }
