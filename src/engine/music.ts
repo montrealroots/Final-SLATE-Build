@@ -10,8 +10,11 @@
 // years. What the grant covers is read when a release is planned: a medium or territory outside it, or a date after it
 // ends, is refused with the reason. An agreement can be renewed. A refusal leaves the song in the script and offers the
 // routes the package names: ask again for less, choose another track, commission an original, or take the cue out.
-// Holders, quotes and odds are invented by the game (labelled so); nothing here is a real rights holder or a real price,
-// and nothing agreed in the game is permission to use a real recording.
+// Holders and odds are invented by the game (labelled so); nothing here is a real rights holder, and nothing agreed in the
+// game is permission to use a real recording. Until November 15, 2026 every song was priced alike, whoever recorded it:
+// $1,500 a side scaled by the budget, so Adele's "Hello" for a micro-budget film's festivals came to about $2,500 in
+// all. Quotes now follow what is reported of real sync fees (holderFee), by how widely the recording and its performer
+// are known (fameOf), with no song's rights holder named or quoted as a real one.
 import { money, spend } from './budget';
 import { stream } from './rng';
 import { addLog, newId, registerHandler, schedule } from './state';
@@ -19,6 +22,7 @@ import { DAY, addLocal, dateKey } from './time';
 import { getPlace } from '../data/places';
 import { songUses, songsOf } from './songs';
 import type { GameState, Project, ReleaseRecord, Song } from './types';
+import fame from '../data/music-fame.json';
 
 export type LicenceMedium = Exclude<ReleaseRecord['route'], 'festival-premiere'> | 'festival';
 export const LICENCE_MEDIA: LicenceMedium[] = ['festival', 'theatrical', 'streaming', 'broadcast', 'digital'];
@@ -49,9 +53,26 @@ export interface MusicPlan {
   themes?: import('./cues').ThemesState;
 }
 
-/** Game calibration: what a holder asks, and how often they say no. */
-export const LICENCE_BASE_FEE = 1_500;
+/** What a production music library charges a use (libraryFee), by the production's size. Game calibration. */
 export const LICENCE_SCALE: Record<string, number> = { micro: 0.4, low: 1, mid: 2, commissioned: 3 };
+/**
+ * What one holder asks for the widest grant (the world, every medium, ten years) of a minute in the background: the
+ * least-known song and the best-known, by the production's size. The reported ranges they follow (November 15, 2026):
+ * an independent film "may only be able to afford $5,000 or less for any song or master", a major film pays "$10,000
+ * to $25,000 for a song or master by an indie writer", and "a pop hit in major studio movie can easily fetch $100,000
+ * or more" (Music Connection, "Sync Deals", musicconnection.com/sync-deals/2/); one Beatles master and its song for an
+ * episode of Mad Men were reported at about $250,000 (The New York Times and The Wall Street Journal, May 2012, the
+ * figure disputed by the show's creator). Each side, the publisher's and the recording's, asks its own; the two
+ * usually match ("most favoured nations").
+ */
+export const LICENCE_ANCHOR: Record<string, [number, number]> = { micro: [1_000, 50_000], low: [3_000, 90_000], mid: [10_000, 175_000], commissioned: [20_000, 300_000] };
+/**
+ * The least a holder of the best-known song asks a side, however narrow the grant; a song half as known, a quarter of
+ * it. Game calibration: festival-only licences are reported at "hundreds to low thousands" for an existing song (Fox
+ * Music's 2026 pricing guide, foximusic.com/blog/how-much-does-a-song-license-cost/), but nothing reported puts a
+ * superstar's hit there, and this keeps one from coming to the price of an unknown song.
+ */
+export const LICENCE_FLOOR = 10_000;
 export const LICENCE_ANSWER_DAYS = 6;
 export const LICENCE_REFUSAL = { base: 0.12, worldwide: 0.12, perMediumOverTwo: 0.06 };
 export const RENEWAL_SHARE = 0.5;
@@ -68,14 +89,39 @@ const holderOf = (song: Song): { composition: string; recording: string } => ({
   recording: song.license?.holder ?? 'Its recording\'s owner',
 });
 
-/** What one holder would ask for this song, this scope and this production. Game calibration, never a real price. */
+/**
+ * How widely a song is known, from 0 (nothing on record: a song you name yourself, or the least-known in the catalog)
+ * to 1: half from how many Wikipedia editions write about the recording (4 to 40), half from how many write about its
+ * best-known performer (20 to 150), each on a log scale (music-fame.json, read from Wikidata's sitelinks). Measured on
+ * November 15, 2026: Adele's "Hello" (36 and 137) 0.95, "Gangnam Style" (77 and 99) 0.90, the catalog's median 0.57,
+ * "The Stripper" (4 and 19) 0.
+ */
+export function fameOf(song: Song): number {
+  const known = song.recording ? (fame.recordings as Record<string, number[]>)[song.recording.id] : undefined;
+  if (!known) return 0;
+  const scale = (x: number, lo: number, hi: number) => Math.min(1, Math.max(0, Math.log(x / lo) / Math.log(hi / lo)));
+  return 0.5 * scale(known[0], 4, 40) + 0.5 * scale(known[1], 20, 150);
+}
+
+/**
+ * What one holder would ask for this song, this scope and this production: the anchor for the song's fame and the
+ * production's size (LICENCE_ANCHOR, between the two ends on a log scale), the share of the widest grant asked for (the
+ * whole world three times one country, each medium and each year more, so one country's festivals for a year is about a
+ * twentieth), more for a prominent or long use, and never under the floor for a song this well known. An estimate from
+ * reported ranges, never a real holder's quote.
+ */
 export function holderFee(p: Project, song: Song, scope: LicenceScope): number {
+  const f = fameOf(song);
+  const [lo, hi] = LICENCE_ANCHOR[p.funding.scenarioId] ?? LICENCE_ANCHOR.low;
+  const anchor = lo * (hi / lo) ** f;
   const territory = scope.territories === 'worldwide' ? 3 : Math.min(3, 1 + 0.25 * (scope.territories.length - 1));
   const media = 0.6 + 0.4 * scope.media.length;
   const years = 1 + 0.2 * (scope.years - 1);
+  const share = (territory * media * years) / (3 * (0.6 + 0.4 * LICENCE_MEDIA.length) * (1 + 0.2 * 9));
   const prominent = song.uses.some((u) => u.placement === 'performed' || u.placement === 'opening-titles') ? 1.5 : 1;
   const minutes = Math.max(1, song.uses.reduce((a, u) => a + (u.minutes ?? 1), 0));
-  return Math.round(LICENCE_BASE_FEE * (LICENCE_SCALE[p.funding.scenarioId] ?? 1) * territory * media * years * prominent * Math.min(3, 0.5 + 0.25 * minutes) / 10) * 10;
+  const use = prominent * Math.min(4, (0.5 + 0.25 * minutes) / 0.75);
+  return Math.round(Math.max(LICENCE_FLOOR * f * f, anchor * share * use) / 10) * 10;
 }
 
 export function requestRefusal(p: Project, songId: string, scope: LicenceScope): string | null {
@@ -104,7 +150,9 @@ export function requestLicence(state: GameState, p: Project, songId: string, sco
   return l;
 }
 
-const refuseChance = (s: LicenceScope) => LICENCE_REFUSAL.base + (s.territories === 'worldwide' ? LICENCE_REFUSAL.worldwide : 0) + LICENCE_REFUSAL.perMediumOverTwo * Math.max(0, s.media.length - 2);
+/** A well-known song's holders turn down more, and more so a small production: its fame times this, by the production's size. */
+export const FAME_REFUSAL: Record<string, number> = { micro: 0.35, low: 0.2, mid: 0.1, commissioned: 0.05 };
+const refuseChance = (p: Project, song: Song, s: LicenceScope) => LICENCE_REFUSAL.base + (s.territories === 'worldwide' ? LICENCE_REFUSAL.worldwide : 0) + LICENCE_REFUSAL.perMediumOverTwo * Math.max(0, s.media.length - 2) + fameOf(song) * (FAME_REFUSAL[p.funding.scenarioId] ?? FAME_REFUSAL.low);
 
 registerHandler('licence-answer', (state, ev) => {
   const p = state.projects.find((x) => x.id === ev.payload.projectId);
@@ -113,7 +161,7 @@ registerHandler('licence-answer', (state, ev) => {
   const song = songsOf(p).find((x) => x.id === l.songId)!;
   const rng = stream(state.seed, 'licence', l.id);
   for (const side of ['composition', 'recording'] as const) {
-    const yes = rng() >= refuseChance(l.scope);
+    const yes = rng() >= refuseChance(p, song, l.scope);
     l[side] = { ...l[side], answer: yes ? 'yes' : 'no', ...(yes ? { fee: holderFee(p, song, l.scope) } : {}) };
   }
   const refused = (['composition', 'recording'] as const).filter((x) => l[x].answer === 'no');

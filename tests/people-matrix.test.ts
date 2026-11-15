@@ -6,7 +6,7 @@
 import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
 import { describe, expect, it } from 'vitest';
 import { applyRecognition, capabilityFrom, describeStanding, experienceFrom, filmFeeFrom, recognisedIn, standingOf, BODY_WEIGHT, BODY_NAME, LEAD_DAYS, NOMINATION_SHARE, type Body } from '../src/engine/recognition';
-import { crewAskFrom } from '../src/engine/recognition-pay';
+import { crewAskFrom, scoreFeeFrom, songFeeFrom, SCORE_DAYS, SONG_DAYS } from '../src/engine/recognition-pay';
 import { gradeFrom, gradeScore } from '../src/engine/grades';
 import { SAG_PERIODS, AGREEMENT_CEILING, AGREEMENT_NAME } from '../src/engine/union';
 
@@ -57,6 +57,8 @@ function payPage(): string {
     '## Fees From Recognition',
     '',
     `A recognised performer's fee for a film is the game's curve on the weight of their recognition: $250,000 × (1 + weight ÷ 4)^1.5, at most $30 million, asked as a day rate over ${LEAD_DAYS} days, and never under the SAG-AFTRA minimum. A win weighs ${Object.entries(BODY_WEIGHT).map(([b, w]) => `${w} at the ${BODY_NAME[b as Body][1]}`).join(', ')}; a nomination weighs ${NOMINATION_SHARE} of a win. The weights and the curve are the game's: Modeled assumption.`,
+    '',
+    `A recognised composer's fee for a feature's score is the game's curve on the same weight: $40,000 × (1 + weight ÷ 4)^1.4, at most $3 million, asked as a day rate over the ${SCORE_DAYS} days a fully scored feature takes, and never under what their experience asks. Reported composer fees run from $20,000 for a lower-budget film to over $1 million for a studio release with a well-known composer (Jeffrey and Todd Brabec, "Film Composing Fees", taxi.com). At a weight of 65 (Hans Zimmer's) it asks ${money(scoreFeeFrom(65))}. A recognised songwriter's fee for a film's song is $12,000 × (1 + weight ÷ 4)^1.3, at most $400,000, over the ${SONG_DAYS} days a song takes: film songwriting fees run from nothing to over $100,000 for established writers, occasionally more (Donald Passman, All You Need to Know About the Music Business, 11th edition). At a weight of 29 (Elton John's) it asks ${money(songFeeFrom(29))}. Modeled assumption.`,
     '',
     'Beside fees that were reported, at the weight of recognition recorded before the year of each deal. Recognition explains what prestige is paid. It does not explain what drawing an audience is paid, which the game has no record of (it reads no popularity figure), so a star paid for that is under-priced here.',
     '',

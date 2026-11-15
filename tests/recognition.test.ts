@@ -2,6 +2,7 @@
 import { readFileSync } from 'node:fs';
 import { describe, expect, it } from 'vitest';
 import { applyRecognition, capabilityFrom, describeStanding, filmFeeFrom, recognisedIn, standingOf, FEE_CEILING } from '../src/engine/recognition';
+import { crewAskFrom, scoreFeeFrom, songFeeFrom, SCORE_DAYS, SONG_DAYS } from '../src/engine/recognition-pay';
 import { agreementFor, performerMinimum } from '../src/engine/union';
 import { gradeFrom, gradeScore } from '../src/engine/grades';
 
@@ -72,5 +73,28 @@ describe("SAG-AFTRA's minimums", () => {
     expect(performerMinimum('background', 10_000_000, '2026-01-05')).toEqual({ amount: 224, agreement: 'theatrical' });
     expect(performerMinimum('background', 100_000, '2026-01-05')).toBeNull();
     expect(performerMinimum('gaffer', 10_000_000, '2026-01-05')).toBeNull();
+  });
+});
+
+describe('a composer\'s fee', () => {
+  // Until November 15, 2026 a composer asked a crew rate, so Hans Zimmer's whole score came to about $100,000.
+  it('a recognised composer asks their score\'s fee over a feature\'s score days; one with no recognition, a crew rate', () => {
+    const zimmer = standingOf(947, 'composer', 2026)!.points;
+    expect(scoreFeeFrom(zimmer)).toBeGreaterThan(1_500_000); // "in excess of $1,000,000" for a well-known composer
+    expect(scoreFeeFrom(zimmer)).toBeLessThanOrEqual(3_000_000);
+    expect(crewAskFrom('composer', 5, zimmer) * SCORE_DAYS).toBeGreaterThan(1_500_000);
+    expect(crewAskFrom('composer', 5, 0)).toBe(crewAskFrom('editor', 5, 0)); // both jobs are $600 a day before experience
+    // Recognition raises other crew no further than five times their rate.
+    expect(crewAskFrom('editor', 5, zimmer)).toBe(crewAskFrom('editor', 5, 1000));
+  });
+});
+
+describe('a songwriter\'s fee', () => {
+  // Until November 15, 2026 Elton John wrote a film's song for about $12,600.
+  it('a recognised songwriter asks their song\'s fee over a song\'s days', () => {
+    const elton = standingOf(11370, 'songwriter', 2026)!.points;
+    expect(songFeeFrom(elton) ).toBeGreaterThan(100_000); // "$100,000-plus for established writers"
+    expect(crewAskFrom('songwriter', 5, elton) * SONG_DAYS).toBeGreaterThan(100_000);
+    expect(crewAskFrom('songwriter', 5, 0)).toBe(810); // $500 a day at the most experience, with nothing recognised
   });
 });
