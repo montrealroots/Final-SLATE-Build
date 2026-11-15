@@ -3,7 +3,7 @@
 import { describe, expect, it } from 'vitest';
 import { DAY, addDaysToKey, approvedScenes, bookMocap, castPlayer, estimateDays, ledgerTotals, mocapRecord, precipitationDuring, processUntil, weatherOn } from '../src/engine';
 import { rebookMissed } from '../src/engine/mocap';
-import { pickupIntegration, requestPickups } from '../src/engine/edit-actions';
+import { pickupDaysCost, pickupIntegration, requestPickups } from '../src/engine/edit-actions';
 import { getPlace } from '../src/data/places';
 import { maybePuppetDamage } from '../src/engine/production/workday';
 import { captureQuality, runShootDay } from '../src/engine/production/shoot';
@@ -182,6 +182,25 @@ describe('a changed plate (SLATE-13-05)', () => {
     requestPickups(s, p, [garden.id]);
     expect([integrate.done, integrate.status]).toEqual([0, 'waiting']);
     expect(s.log.some((l) => l.text === `New plates for Bramble restart ${integrate.label}: the compositor's days are worked again.`)).toBe(true);
+  });
+
+  it('pickups the money can\'t cover are refused before any footage is touched; with the money they are booked', () => {
+    const s = startLife('gaps-pickup-money');
+    const p = buildProject(s, { title: 'Garden', format: 'short', medium: 'live-action', runtime: 8 }, [{ name: 'June' }], [{ place: 'Garden', chars: ['June'] }, { place: 'Shed', chars: ['June'] }]);
+    approve(s, p);
+    p.tasks = buildTasks(p);
+    const [garden, shed] = approvedScenes(p);
+    for (const sc of [garden, shed]) p.captures.push({ sceneId: sc.id, captured: 1, quality: 60, version: p.approvedDraft!, weatherCompromised: false });
+    const cost = pickupDaysCost(p, [garden.id, shed.id]);
+    expect(cost).toBeGreaterThan(pickupDaysCost(p, [garden.id])); // two places, two days
+    const days = p.schedule.days.length;
+    p.funding.fund -= ledgerTotals(p).available - (cost - 1); // labelled fixture: a dollar short
+    expect(() => requestPickups(s, p, [garden.id, shed.id])).toThrow(/uncommitted\. Raise the financing target by \$1 on the Budget page/);
+    expect(p.captures.map((c) => c.captured)).toEqual([1, 1]);
+    expect([p.schedule.days.length, p.edit.pickupsNeeded]).toEqual([days, []]);
+    p.funding.fund += 1;
+    expect(requestPickups(s, p, [garden.id, shed.id])).toBe(2);
+    expect(p.captures.map((c) => c.captured)).toEqual([0.5, 0.5]);
   });
 
   it('outside a hybrid project a pickup restarts no integration', () => {

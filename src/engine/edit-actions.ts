@@ -3,7 +3,9 @@
 // on November 8, 2026 so they load with the Edit page, not at startup (the startup JavaScript budget).
 import { addLog } from './state';
 import { approvalRights, approvedScenes, sceneLabel, sceneTechnique } from './projects';
-import { ensureWorkEvent, schedulePickups } from './production';
+import { dayFees, ensureWorkEvent, schedulePickups } from './production';
+import { SHOOT_CREW } from './production/shoot';
+import { ledgerTotals, money } from './budget';
 import { formatDateKey } from './time';
 import { assemblyComplete, cutScenes, editScenes } from './finish';
 import type { GameState, Project, Task } from './types';
@@ -62,6 +64,23 @@ export function pickupIntegration(p: Project, sceneIds: string[]): Task[] {
   return p.tasks.filter((t) => t.kind === 'hy:integrate' && t.done > 0 && eps.has(t.episode ?? 1));
 }
 
+/**
+ * What the pickup days for these scenes cost: a day for each place and time of day, as schedulePickups books them, with
+ * the location and gear, the shoot crew and the cast in its scenes (as directing.ts pickupCost prices one scene's day).
+ */
+export function pickupDaysCost(p: Project, sceneIds: string[]): number {
+  const fees = dayFees(p);
+  const crew = p.hires.filter((h) => h.status === 'accepted' && SHOOT_CREW.has(h.roleId)).reduce((a, h) => a + h.dayRate, 0);
+  const days = new Map<string, Set<string>>();
+  for (const s of editScenes(p).filter((x) => sceneIds.includes(x.id))) {
+    const k = `${s.episode}|${s.storyLocation || s.heading.place}|${s.heading.intExt}|${s.heading.time}`;
+    const who = days.get(k) ?? days.set(k, new Set()).get(k)!;
+    s.participants.forEach((c) => who.add(c));
+  }
+  const cast = (who: Set<string>) => p.hires.filter((h) => h.status === 'accepted' && h.kind === 'cast' && h.method !== 'voice' && who.has(h.characterId ?? '')).reduce((a, h) => a + h.dayRate, 0);
+  return [...days.values()].reduce((a, who) => a + fees.location + fees.equipment + crew + cast(who), 0);
+}
+
 export function requestPickups(state: GameState, p: Project, sceneIds: string[]): number {
   if (p.edit.pictureLocked) throw new Error('The picture is locked. Unlock it to add pickups.');
   const live = sceneIds.filter((id) => {
@@ -69,6 +88,12 @@ export function requestPickups(state: GameState, p: Project, sceneIds: string[])
     return s && sceneTechnique(p, s) === 'live';
   });
   if (!live.length) throw new Error('Choose live-action scenes to reshoot.');
+  // Pickup days are paid like any other, and a day without the money for it is lost. Until November 15, 2026 they were
+  // booked regardless, their scenes' footage marked half-shot first: a day lost for money left the scene half-shot and
+  // the picture unable to lock, which is how a proof that ticked every scene stalled most of its films.
+  const cost = pickupDaysCost(p, live);
+  const free = ledgerTotals(p).available;
+  if (free < cost) throw new Error(`Those pickups take ${money(cost)} of shoot days, and ${money(free)} is uncommitted. Raise the financing target by ${money(cost - free)} on the Budget page and add the money, or tick fewer scenes.`);
   for (const id of live) {
     const c = p.captures.find((x) => x.sceneId === id);
     if (c) {
