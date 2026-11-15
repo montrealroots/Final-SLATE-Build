@@ -1,89 +1,97 @@
 tmdb_person,name,job,recognition (Wikidata),weight,experience,capability,grade,asks a day
 5064,Meryl Streep,actor,"3 Academy Award wins, 2 BAFTA Film Award wins, a Screen Actors Guild Award win, a Cannes Festival prize win, a Berlin Silver Bear win, 2 Primetime Emmy wins, 8 Golden Globe wins, 18 Academy Award nominations and 4 Golden Globe nominations, 1978 to 2018",196,5,98,A,750000
+3151,Jack Lemmon,actor,"2 Academy Award wins, 3 BAFTA Film Award wins, a Screen Actors Guild Award win, 2 Cannes Festival prize wins, a Venice Festival prize win, a Berlin Silver Bear win, a Primetime Emmy win, 4 Golden Globe wins and 6 Academy Award nominations, 1956 to 2000",125,5,98,A,750000
 514,Jack Nicholson,actor,"3 Academy Award wins, 3 BAFTA Film Award wins, a Cannes Festival prize win, 6 Golden Globe wins and 9 Academy Award nominations, 1970 to 2003",124,5,98,A,750000
 15735,Helen Mirren,actor,"An Academy Award win, a BAFTA Film Award win, 4 Screen Actors Guild Award wins, 2 Cannes Festival prize wins, a Venice Festival prize win, 4 Primetime Emmy wins, 3 Golden Globe wins, a BAFTA Television Award win and 3 Academy Award nominations, 1984 to 2014",122,5,98,A,750000
-3151,Jack Lemmon,actor,"2 Academy Award wins, 3 BAFTA Film Award wins, a Screen Actors Guild Award win, 2 Cannes Festival prize wins, a Berlin Silver Bear win, a Primetime Emmy win, 4 Golden Globe wins and 6 Academy Award nominations, 1956 to 2000",118,5,98,A,750000
+19,Allison Janney,actor,"An Academy Award win, a BAFTA Film Award win, 4 Screen Actors Guild Award wins, 7 Primetime Emmy wins, a Golden Globe win, 7 Screen Actors Guild Award nominations, 2 Primetime Emmy nominations and 2 Golden Globe nominations, 2000 to 2018",120.4,4,98,A,750000
 10978,Maggie Smith,actor,"2 Academy Award wins, 5 BAFTA Film Award wins, a Screen Actors Guild Award win, 4 Primetime Emmy wins, 3 Golden Globe wins and 4 Academy Award nominations, 1966 to 2016",117,5,98,A,750000
 112,Cate Blanchett,actor,"2 Academy Award wins, 4 BAFTA Film Award wins, 2 Screen Actors Guild Award wins, 2 Venice Festival prize wins, 2 Golden Globe wins and 6 Academy Award nominations, 1999 to 2023",110,5,98,A,750000
-19,Allison Janney,actor,"An Academy Award win, a BAFTA Film Award win, 4 Screen Actors Guild Award wins, 5 Primetime Emmy wins, a Golden Globe win, 7 Screen Actors Guild Award nominations, 2 Primetime Emmy nominations and 2 Golden Globe nominations, 2000 to 2018",108.4,4,98,A,750000
 10774,Anne Bancroft,actor,"An Academy Award win, a BAFTA Film Award win, a Cannes Festival prize win, a Primetime Emmy win, 2 Golden Globe wins, 4 Academy Award nominations, 4 BAFTA Film Award nominations, 2 Screen Actors Guild Award nominations, 5 Primetime Emmy nominations and 6 Golden Globe nominations, 1962 to 2004",96.8,5,98,A,750000
 11390,Peter O'Toole,actor,"2 BAFTA Film Award wins, a Primetime Emmy win, 4 Golden Globe wins, 8 Academy Award nominations, 2 BAFTA Film Award nominations, a Screen Actors Guild Award nomination, 2 Primetime Emmy nominations, 5 Golden Globe nominations and a Critics' Choice Award nomination, 1962 to 2007",96.8,5,98,A,750000
 3926,Albert Finney,actor,"A Screen Actors Guild Award win, a Primetime Emmy win, 3 Golden Globe wins, a BAFTA Television Award win, 5 Academy Award nominations, 6 BAFTA Film Award nominations, a Screen Actors Guild Award nomination, a Primetime Emmy nomination, 6 Golden Globe nominations and 3 BAFTA Television Award nominations, 1963 to 2004",93,5,98,A,746350
+7447,Alec Baldwin,actor,"8 Screen Actors Guild Award wins, 3 Primetime Emmy wins, 3 Golden Globe wins and an Academy Award nomination, 2004 to 2017",93,4,98,A,746350
 4090,Shirley MacLaine,actor,"An Academy Award win, 2 BAFTA Film Award wins, 2 Venice Festival prize wins, 2 Berlin Silver Bear wins, 5 Golden Globe wins and 4 Academy Award nominations, 1955 to 1989",91,5,98,A,723400
 18686,Holly Hunter,actor,"An Academy Award win, a BAFTA Film Award win, a Cannes Festival prize win, 2 Primetime Emmy wins, a Golden Globe win, 3 Academy Award nominations, 2 BAFTA Film Award nominations, 5 Screen Actors Guild Award nominations, 5 Primetime Emmy nominations and 3 Golden Globe nominations, 1987 to 2014",90.6,5,98,A,718825
 109410,Joanne Woodward,actor,"An Academy Award win, a BAFTA Film Award win, a Screen Actors Guild Award win, a Cannes Festival prize win, a Primetime Emmy win, 3 Golden Globe wins, 3 Academy Award nominations, 2 BAFTA Film Award nominations, a Screen Actors Guild Award nomination, 4 Primetime Emmy nominations and 4 Golden Globe nominations, 1957 to 2006",90,5,98,A,712000
-7447,Alec Baldwin,actor,"8 Screen Actors Guild Award wins, 2 Primetime Emmy wins, 3 Golden Globe wins and an Academy Award nomination, 2004 to 2013",87,3,98,A,678200
 8893,Stockard Channing,actor,"2 Screen Actors Guild Award wins, 2 Primetime Emmy wins, an Academy Award nomination, 9 Screen Actors Guild Award nominations, 11 Primetime Emmy nominations and 2 Golden Globe nominations, 1975 to 2006",85.6,5,98,A,662600
 2227,Nicole Kidman,actor,"An Academy Award win, a BAFTA Film Award win, a Screen Actors Guild Award win, a Venice Festival prize win, a Berlin Silver Bear win, a Primetime Emmy win, 5 Golden Globe wins and 4 Academy Award nominations, 1995 to 2024",84,5,98,A,644925
 1158,Al Pacino,actor,"An Academy Award win, a BAFTA Film Award win, 2 Primetime Emmy wins, 4 Golden Globe wins, 8 Academy Award nominations and a Primetime Emmy nomination, 1973 to 2020",83.4,5,98,A,638350
 11850,Candice Bergen,actor,"5 Primetime Emmy wins, 2 Golden Globe wins, an Academy Award nomination, a BAFTA Film Award nomination, 8 Screen Actors Guild Award nominations, 4 Primetime Emmy nominations and 2 Golden Globe nominations, 1966 to 2009",82.8,5,98,A,631775
+3359,Laurence Olivier,actor,"An Academy Award win, a BAFTA Film Award win, 3 Primetime Emmy wins, 2 Golden Globe wins and 9 Academy Award nominations, 1940 to 1984",81,5,98,A,612225
 1137,Juliette Binoche,actor,"An Academy Award win, a BAFTA Film Award win, a Cannes Festival prize win, a Venice Festival prize win, a Berlin Silver Bear win, a César win, an Academy Award nomination, a BAFTA Film Award nomination, 2 Screen Actors Guild Award nominations, 3 Golden Globe nominations and 10 César nominations, 1986 to 2023",80.4,5,98,A,605775
 3910,Frances McDormand,actor,"3 Academy Award wins, 2 BAFTA Film Award wins, a Screen Actors Guild Award win, a Primetime Emmy win, 2 Golden Globe wins and 3 Academy Award nominations, 1989 to 2021",79,5,98,A,590750
-3359,Laurence Olivier,actor,"An Academy Award win, a BAFTA Film Award win, 3 Primetime Emmy wins, a Golden Globe win and 9 Academy Award nominations, 1940 to 1984",76,5,98,A,559025
+15886,Julia Louis-Dreyfus,actor,"3 Screen Actors Guild Award wins, 8 Primetime Emmy wins, a Golden Globe win and a Critics' Choice Award win, 1994 to 2017",78,5,98,A,580100
+5376,Jean Smart,actor,"3 Screen Actors Guild Award wins, 7 Primetime Emmy wins, 2 Golden Globe wins, a Primetime Emmy nomination and a Golden Globe nomination, 2000 to 2025",77.4,5,98,A,573750
 6193,Leonardo DiCaprio,actor,"An Academy Award win, a BAFTA Film Award win, a Berlin Silver Bear win, 3 Golden Globe wins, 5 Academy Award nominations, a BAFTA Film Award nomination, 2 Screen Actors Guild Award nominations, 4 Golden Globe nominations and a Critics' Choice Award nomination, 1993 to 2020",76,5,98,A,559025
 17882,Isabelle Huppert,actor,"2 Cannes Festival prize wins, 2 Venice Festival prize wins, a Golden Globe win, 2 César wins, an Academy Award nomination and 14 César nominations, 1976 to 2017",75,5,98,A,548575
-15886,Julia Louis-Dreyfus,actor,"3 Screen Actors Guild Award wins, 7 Primetime Emmy wins, a Golden Globe win and a Critics' Choice Award win, 1994 to 2017",72,5,98,A,517625
+71727,Betty White,actor,"2 Screen Actors Guild Award wins, 5 Primetime Emmy wins, 4 Golden Globe wins, 2 Screen Actors Guild Award nominations and 2 Primetime Emmy nominations, 1975 to 2013",74.4,5,98,A,542325
 6598,Katharine Hepburn,actor,"4 Academy Award wins and 8 Academy Award nominations, 1934 to 1982",72,5,98,A,517625
-5376,Jean Smart,actor,"3 Screen Actors Guild Award wins, 6 Primetime Emmy wins, 2 Golden Globe wins, a Primetime Emmy nomination and a Golden Globe nomination, 2000 to 2025",71.4,5,98,A,511500
+21277,Mary Tyler Moore,actor,"6 Primetime Emmy wins, a Golden Globe win, an Academy Award nomination, a BAFTA Film Award nomination and 10 Primetime Emmy nominations, 1966 to 1993",71.8,5,98,A,515575
 5292,Denzel Washington,actor,"2 Academy Award wins, 2 Berlin Silver Bear wins, 2 Golden Globe wins and 7 Academy Award nominations, 1988 to 2022",70,5,98,A,497325
+10127,Jon Voight,actor,"An Academy Award win, a Cannes Festival prize win, 4 Golden Globe wins, 3 Academy Award nominations, a Screen Actors Guild Award nomination, 3 Primetime Emmy nominations and 5 Golden Globe nominations, 1969 to 2014",69,5,98,A,487275
 1038,Jodie Foster,actor,"2 Academy Award wins, 2 BAFTA Film Award wins, a Screen Actors Guild Award win, 3 Golden Globe wins and 3 Academy Award nominations, 1977 to 2025",68,5,98,A,477300
 12266,Simone Signoret,actor,"An Academy Award win, 3 BAFTA Film Award wins, a Cannes Festival prize win, a Berlin Silver Bear win, a Primetime Emmy win, a César win, an Academy Award nomination, a BAFTA Film Award nomination, 2 Golden Globe nominations and a César nomination, 1953 to 1983",67.8,5,98,A,475300
 3092,Diane Keaton,actor,"An Academy Award win, a BAFTA Film Award win, 2 Golden Globe wins, 3 Academy Award nominations, 2 BAFTA Film Award nominations, 3 Screen Actors Guild Award nominations, a Primetime Emmy nomination and 6 Golden Globe nominations, 1978 to 2004",67.4,5,98,A,471350
 193,Gene Hackman,actor,"2 Academy Award wins, 2 BAFTA Film Award wins, a Berlin Silver Bear win, 3 Golden Globe wins and 3 Academy Award nominations, 1968 to 2001",67,5,98,A,467400
 41283,Geraldine Page,actor,"An Academy Award win, a BAFTA Film Award win, 2 Primetime Emmy wins, 2 Golden Globe wins and 7 Academy Award nominations, 1954 to 1986",67,5,98,A,467400
 12147,Spencer Tracy,actor,"2 Academy Award wins, a BAFTA Film Award win, a Cannes Festival prize win, a Golden Globe win and 7 Academy Award nominations, 1937 to 1969",67,5,98,A,467400
+16927,Gérard Depardieu,actor,"A Cannes Festival prize win, a Venice Festival prize win, a Golden Globe win, 2 César wins, an Academy Award nomination, 2 BAFTA Film Award nominations and 14 César nominations, 1976 to 2011",66.6,5,98,A,463450
+4252,Tony Shalhoub,actor,"2 Screen Actors Guild Award wins, 4 Primetime Emmy wins, 5 Screen Actors Guild Award nominations and 6 Primetime Emmy nominations, 2003 to 2019",66.4,4,98,A,461475
 13333,Vanessa Redgrave,actor,"An Academy Award win, 2 Cannes Festival prize wins, 2 Primetime Emmy wins, 2 Golden Globe wins and 5 Academy Award nominations, 1966 to 2001",66,5,98,A,457550
 1461,George Clooney,actor,"An Academy Award win, 4 Screen Actors Guild Award wins, 3 Golden Globe wins and 3 Academy Award nominations, 1995 to 2012",65,4,98,A,447775
-21277,Mary Tyler Moore,actor,"6 Primetime Emmy wins, a Golden Globe win, an Academy Award nomination, a BAFTA Film Award nomination and 7 Primetime Emmy nominations, 1966 to 1993",64.6,5,98,A,443900
 12214,Gillian Anderson,actor,"2 Screen Actors Guild Award wins, a Primetime Emmy win, a Golden Globe win, 7 Screen Actors Guild Award nominations, 4 Primetime Emmy nominations, 3 Golden Globe nominations and 2 BAFTA Television Award nominations, 1995 to 2011",64.2,4,98,A,440025
 3810,Javier Bardem,actor,"An Academy Award win, a BAFTA Film Award win, a Screen Actors Guild Award win, a Cannes Festival prize win, a Golden Globe win, 3 Academy Award nominations, 2 BAFTA Film Award nominations, a Screen Actors Guild Award nomination, 3 Golden Globe nominations and a Critics' Choice Award nomination, 2000 to 2022",64,5,98,A,438075
 31,Tom Hanks,actor,"2 Academy Award wins, a Screen Actors Guild Award win, 4 Golden Globe wins and 4 Academy Award nominations, 1989 to 2020",63,5,98,A,428450
 1903,Alan Arkin,actor,"An Academy Award win, a BAFTA Film Award win, 2 Golden Globe wins, 3 Academy Award nominations, a BAFTA Film Award nomination, 2 Screen Actors Guild Award nominations, 3 Primetime Emmy nominations and 4 Golden Globe nominations, 1966 to 2018",62.6,5,98,A,424625
-71727,Betty White,actor,"2 Screen Actors Guild Award wins, 3 Primetime Emmy wins, 4 Golden Globe wins, 2 Screen Actors Guild Award nominations and 2 Primetime Emmy nominations, 1977 to 2013",62.4,5,98,A,422700
 3380,Bette Davis,actor,"2 Academy Award wins, a Primetime Emmy win and 9 Academy Award nominations, 1935 to 1979",62,5,98,A,418900
 9137,Renée Zellweger,actor,"2 Academy Award wins, 2 BAFTA Film Award wins, 4 Golden Globe wins and 2 Academy Award nominations, 2001 to 2020",62,4,98,A,418900
 2157,Robin Williams,actor,"An Academy Award win, a Screen Actors Guild Award win, 3 Golden Globe wins, 3 Academy Award nominations, 2 BAFTA Film Award nominations, 2 Primetime Emmy nominations, 3 Golden Globe nominations and a Critics' Choice Award nomination, 1979 to 2008",62,5,98,A,418900
-10127,Jon Voight,actor,"An Academy Award win, a Cannes Festival prize win, 3 Golden Globe wins, 3 Academy Award nominations, a Screen Actors Guild Award nomination, 2 Primetime Emmy nominations and 5 Golden Globe nominations, 1969 to 2006",61.6,5,98,A,415100
+68812,Ed Asner,actor,"6 Primetime Emmy wins and 5 Golden Globe wins, 1971 to 1980",61,3,98,A,409400
 204,Kate Winslet,actor,"An Academy Award win, 3 BAFTA Film Award wins, a Primetime Emmy win and 6 Academy Award nominations, 1996 to 2023",61,5,98,A,409400
+228,Ed Harris,actor,"A Screen Actors Guild Award win, 2 Golden Globe wins, 4 Academy Award nominations, 2 BAFTA Film Award nominations, 4 Screen Actors Guild Award nominations, 2 Primetime Emmy nominations and 3 Golden Globe nominations, 1989 to 2013",60.6,5,98,A,405650
+73421,Joaquin Phoenix,actor,"An Academy Award win, a BAFTA Film Award win, a Screen Actors Guild Award win, a Cannes Festival prize win, a Venice Festival prize win, 2 Golden Globe wins and 3 Academy Award nominations, 2001 to 2020",60,4,98,A,400000
+18793,Kieran Culkin,actor,"An Academy Award win, a BAFTA Film Award win, 3 Screen Actors Guild Award wins, a Primetime Emmy win, 2 Golden Globe wins, a Critics' Choice Award win and a Golden Globe nomination, 2018 to 2025",60,3,98,A,400000
 3084,Marlon Brando,actor,"2 Academy Award wins, a Primetime Emmy win, 2 Golden Globe wins and 6 Academy Award nominations, 1952 to 1990",60,5,98,A,400000
-16927,Gérard Depardieu,actor,"A Cannes Festival prize win, a Golden Globe win, 2 César wins, an Academy Award nomination, 2 BAFTA Film Award nominations and 14 César nominations, 1976 to 2011",59.6,5,98,A,396250
 54693,Emma Stone,actor,"2 Academy Award wins, 2 BAFTA Film Award wins, a Venice Festival prize win, 2 Golden Globe wins and 2 Academy Award nominations, 2015 to 2024",59,3,98,A,390650
 4431,Jessica Lange,actor,"2 Academy Award wins, 3 Primetime Emmy wins, a Golden Globe win and 4 Academy Award nominations, 1976 to 2014",59,5,98,A,390650
 5309,Judi Dench,actor,"An Academy Award win, 3 BAFTA Film Award wins and 7 Academy Award nominations, 1987 to 2022",59,5,98,A,390650
 1231,Julianne Moore,actor,"An Academy Award win, a BAFTA Film Award win, a Cannes Festival prize win, a Venice Festival prize win, a Berlin Silver Bear win, a Primetime Emmy win and 4 Academy Award nominations, 1998 to 2015",59,4,98,A,390650
-18793,Kieran Culkin,actor,"An Academy Award win, a BAFTA Film Award win, 3 Screen Actors Guild Award wins, a Primetime Emmy win, 2 Golden Globe wins and a Critics' Choice Award win, 2022 to 2025",58,3,98,A,381400
+2628,Kiefer Sutherland,actor,"2 Screen Actors Guild Award wins, a Primetime Emmy win, a Golden Globe win, 7 Screen Actors Guild Award nominations and 6 Primetime Emmy nominations, 2002 to 2009",59,3,98,A,390650
 3895,Michael Caine,actor,"2 Academy Award wins, a BAFTA Film Award win, 3 Golden Globe wins and 4 Academy Award nominations, 1967 to 2003",58,5,98,A,381400
-4252,Tony Shalhoub,actor,"2 Screen Actors Guild Award wins, 3 Primetime Emmy wins, 5 Screen Actors Guild Award nominations and 5 Primetime Emmy nominations, 2003 to 2010",58,3,98,A,381400
+2228,Sean Penn,actor,"2 Academy Award wins, a Cannes Festival prize win, 2 Venice Festival prize wins, a Golden Globe win and 3 Academy Award nominations, 1996 to 2009",58,4,98,A,381400
 11701,Angelina Jolie,actor,"An Academy Award win, 2 Screen Actors Guild Award wins, 3 Golden Globe wins, an Academy Award nomination, a BAFTA Film Award nomination, 2 Screen Actors Guild Award nominations and 3 Golden Globe nominations, 1998 to 2011",57.4,4,98,A,375875
+884,Steve Buscemi,actor,"3 Screen Actors Guild Award wins, a Golden Globe win, 6 Screen Actors Guild Award nominations, 5 Primetime Emmy nominations and a Golden Globe nomination, 2001 to 2014",56.8,4,98,A,370375
 16896,James Garner,actor,"A Primetime Emmy win, a Golden Globe win, an Academy Award nomination, 4 Screen Actors Guild Award nominations, 11 Primetime Emmy nominations and 2 Golden Globe nominations, 1957 to 2005",56.6,5,98,A,368550
 4784,Laura Dern,actor,"An Academy Award win, a BAFTA Film Award win, a Primetime Emmy win, 5 Golden Globe wins and 2 Academy Award nominations, 1992 to 2020",56,5,98,A,363100
-228,Ed Harris,actor,"A Screen Actors Guild Award win, a Golden Globe win, 4 Academy Award nominations, 2 BAFTA Film Award nominations, 4 Screen Actors Guild Award nominations, 2 Primetime Emmy nominations and 3 Golden Globe nominations, 1989 to 2013",55.6,5,98,A,359475
 2282,Ben Kingsley,actor,"An Academy Award win, a BAFTA Film Award win, a Screen Actors Guild Award win, 2 Golden Globe wins, 3 Academy Award nominations, a BAFTA Film Award nomination, 2 Primetime Emmy nominations and a Critics' Choice Award nomination, 1982 to 2006",55.2,5,98,A,355850
 4173,Anthony Hopkins,actor,"2 Academy Award wins, a BAFTA Film Award win, a Primetime Emmy win, a BAFTA Television Award win and 4 Academy Award nominations, 1973 to 2021",54,5,98,A,345100
 6194,Claire Danes,actor,"2 Screen Actors Guild Award wins, 3 Primetime Emmy wins, 4 Golden Globe wins and a Golden Globe nomination, 1994 to 2023",54,5,98,A,345100
 9560,Ellen Burstyn,actor,"An Academy Award win, a BAFTA Film Award win, 2 Primetime Emmy wins, a Golden Globe win and 5 Academy Award nominations, 1972 to 2013",54,5,98,A,345100
 521,Michael J. Fox,actor,"2 Screen Actors Guild Award wins, 5 Primetime Emmy wins and 2 Golden Globe wins, 1986 to 2009",54,5,98,A,345100
+3223,Robert Downey Jr.,actor,"An Academy Award win, 2 BAFTA Film Award wins, a Screen Actors Guild Award win, 3 Golden Globe wins and 2 Academy Award nominations, 1993 to 2024",54,5,98,A,345100
 207,Tom Wilkinson,actor,"A BAFTA Film Award win, a Primetime Emmy win, 2 Academy Award nominations, 3 BAFTA Film Award nominations, 4 Screen Actors Guild Award nominations, 3 Primetime Emmy nominations, a Golden Globe nomination and 2 BAFTA Television Award nominations, 1995 to 2011",53.8,4,98,A,343300
-73421,Joaquin Phoenix,actor,"An Academy Award win, a BAFTA Film Award win, a Screen Actors Guild Award win, a Cannes Festival prize win, 2 Golden Globe wins and 3 Academy Award nominations, 2001 to 2020",53,4,98,A,336200
 4111,Ingrid Bergman,actor,"3 Academy Award wins, a Primetime Emmy win and 4 Academy Award nominations, 1944 to 1982",52,5,98,A,327400
 27319,Christoph Waltz,actor,"2 Academy Award wins, 2 BAFTA Film Award wins, a Cannes Festival prize win and 2 Golden Globe wins, 2009 to 2013",51,3,98,A,318675
 72129,Jennifer Lawrence,actor,"An Academy Award win, a BAFTA Film Award win, a Screen Actors Guild Award win, 3 Golden Globe wins and 3 Academy Award nominations, 2011 to 2016",51,3,98,A,318675
+12074,John Lithgow,actor,"6 Primetime Emmy wins, a Golden Globe win, 2 Academy Award nominations and a Golden Globe nomination, 1983 to 2023",51,5,98,A,318675
 3635,Elizabeth Taylor,actor,"2 Academy Award wins, a BAFTA Film Award win, a Berlin Silver Bear win, a Golden Globe win and 3 Academy Award nominations, 1958 to 1972",50,4,98,A,310025
 515,Glenn Close,actor,"3 Primetime Emmy wins and 8 Academy Award nominations, 1983 to 2021",50,5,98,A,310025
 39187,Olivia Colman,actor,"An Academy Award win, a BAFTA Film Award win, a Venice Festival prize win, a Primetime Emmy win, 2 Golden Globe wins, 2 Academy Award nominations and a Golden Globe nomination, 2018 to 2023",50,3,98,A,310025
 7056,Emma Thompson,actor,"An Academy Award win, 2 BAFTA Film Award wins, a Primetime Emmy win, a Golden Globe win, 3 Academy Award nominations and a Golden Globe nomination, 1992 to 2023",49,5,98,A,301450
 118,Geoffrey Rush,actor,"An Academy Award win, 3 BAFTA Film Award wins, a Primetime Emmy win and 3 Academy Award nominations, 1997 to 2011",49,4,98,A,301450
 380,Robert De Niro,actor,"2 Academy Award wins, a Golden Globe win and 6 Academy Award nominations, 1975 to 2024",49,5,98,A,301450
-3223,Robert Downey Jr.,actor,"An Academy Award win, 2 BAFTA Film Award wins, a Screen Actors Guild Award win, 2 Golden Globe wins and 2 Academy Award nominations, 1993 to 2024",49,5,98,A,301450
 35,Sally Field,actor,"2 Academy Award wins, a Screen Actors Guild Award win, 3 Primetime Emmy wins and an Academy Award nomination, 1977 to 2013",49,5,98,A,301450
 524,Natalie Portman,actor,"An Academy Award win, a BAFTA Film Award win, a Screen Actors Guild Award win, 2 Golden Globe wins, 2 Academy Award nominations, a BAFTA Film Award nomination and 2 Golden Globe nominations, 2000 to 2017",48.8,4,98,A,299725
+227,William Hurt,actor,"An Academy Award win, a BAFTA Film Award win, a Cannes Festival prize win, 3 Academy Award nominations, 2 Primetime Emmy nominations and 4 Golden Globe nominations, 1980 to 2011",48.8,5,98,A,299725
 18249,Cicely Tyson,actor,"2 Primetime Emmy wins, an Academy Award nomination, a BAFTA Film Award nomination, 3 Screen Actors Guild Award nominations, 8 Primetime Emmy nominations and a Golden Globe nomination, 1973 to 2020",48.4,5,98,A,296350
+287,Brad Pitt,actor,"An Academy Award win, a BAFTA Film Award win, a Venice Festival prize win, 2 Golden Globe wins, 3 Academy Award nominations and a Golden Globe nomination, 1996 to 2023",48,5,98,A,292950
 3636,Paul Newman,actor,"An Academy Award win, a Primetime Emmy win and 8 Academy Award nominations, 1959 to 2005",48,5,98,A,292950
 50,Catherine Deneuve,actor,"A Venice Festival prize win, 2 César wins, an Academy Award nomination, a BAFTA Film Award nomination and 12 César nominations, 1969 to 2016",47.8,5,98,A,291275
+9599,Cloris Leachman,actor,"An Academy Award win, a BAFTA Film Award win and 5 Primetime Emmy wins, 1972 to 2006",47,5,98,A,284550
 6553,Isabelle Adjani,actor,"2 Cannes Festival prize wins, a Berlin Silver Bear win, a César win, 2 Academy Award nominations and 7 César nominations, 1976 to 2010",47,5,98,A,284550
 3087,Robert Duvall,actor,"An Academy Award win, a BAFTA Film Award win, a Primetime Emmy win and 6 Academy Award nominations, 1973 to 2015",47,5,98,A,284550
+8487,Gregory Peck,actor,"An Academy Award win, 2 Golden Globe wins, 4 Academy Award nominations, a Primetime Emmy nomination and 4 Golden Globe nominations, 1946 to 1998",46.4,5,98,A,279525
 5049,John Hurt,actor,"2 BAFTA Film Award wins, a Golden Globe win, a BAFTA Television Award win, 2 Academy Award nominations, 3 BAFTA Film Award nominations, 2 Golden Globe nominations and a BAFTA Television Award nomination, 1972 to 2010",46.4,5,98,A,279525
-227,William Hurt,actor,"An Academy Award win, a BAFTA Film Award win, a Cannes Festival prize win, 3 Academy Award nominations, a Primetime Emmy nomination and 4 Golden Globe nominations, 1980 to 2011",46.4,5,98,A,279525
 4483,Dustin Hoffman,actor,"2 Academy Award wins, a Primetime Emmy win and 5 Academy Award nominations, 1968 to 1998",46,5,98,A,276225
 6352,Jane Fonda,actor,"2 Academy Award wins, a Primetime Emmy win and 5 Academy Award nominations, 1970 to 1987",46,4,98,A,276225
 1204,Julia Roberts,actor,"An Academy Award win, a BAFTA Film Award win, 3 Golden Globe wins, 3 Academy Award nominations and a Golden Globe nomination, 1990 to 2023",46,5,98,A,276225
@@ -92,25 +100,25 @@ tmdb_person,name,job,recognition (Wikidata),weight,experience,capability,grade,a
 5606,Sissy Spacek,actor,"An Academy Award win, 3 Golden Globe wins and 5 Academy Award nominations, 1977 to 2002",45,5,98,A,267975
 6012,Daniel Auteuil,actor,"A BAFTA Film Award win, a Cannes Festival prize win, 2 César wins and 10 César nominations, 1987 to 2005",44,4,98,A,259800
 27446,Patty Duke,actor,"An Academy Award win, 4 Primetime Emmy wins and 2 Golden Globe wins, 1962 to 1980",44,4,98,A,259800
-2228,Sean Penn,actor,"2 Academy Award wins, a Cannes Festival prize win, a Golden Globe win and 3 Academy Award nominations, 1996 to 2009",44,4,98,A,259800
 6240,Mariska Hargitay,actor,"A Primetime Emmy win, a Golden Globe win, 5 Screen Actors Guild Award nominations, 7 Primetime Emmy nominations and a Golden Globe nomination, 2004 to 2011",43.8,3,98,A,258175
-68812,Ed Asner,actor,"3 Primetime Emmy wins and 5 Golden Globe wins, 1972 to 1980",43,3,98,A,251725
 9994,Helen Hunt,actor,"An Academy Award win, 4 Primetime Emmy wins, a Golden Globe win and an Academy Award nomination, 1996 to 2013",43,4,98,A,251725
 1229,Jeff Bridges,actor,"An Academy Award win, a Screen Actors Guild Award win, 6 Academy Award nominations and a Golden Globe nomination, 1972 to 2023",43,5,98,A,251725
-12074,John Lithgow,actor,"5 Primetime Emmy wins, a Golden Globe win and 2 Academy Award nominations, 1983 to 2010",43,5,98,A,251725
 955,Penélope Cruz,actor,"An Academy Award win, a BAFTA Film Award win, a Cannes Festival prize win, a Venice Festival prize win and 3 Academy Award nominations, 2006 to 2022",43,4,98,A,251725
 16897,Sidney Poitier,actor,"An Academy Award win, a Berlin Silver Bear win, a Golden Globe win, an Academy Award nomination, a Screen Actors Guild Award nomination, 2 Primetime Emmy nominations and 5 Golden Globe nominations, 1958 to 1998",42.6,5,98,A,248525
 14730,Angela Lansbury,actor,"6 Golden Globe wins and 3 Academy Award nominations, 1945 to 1992",42,5,98,A,243750
+11367,Bradley Whitford,actor,"2 Screen Actors Guild Award wins, 2 Primetime Emmy wins, 4 Screen Actors Guild Award nominations and 2 Primetime Emmy nominations, 2001 to 2015",42,4,98,A,243750
 11856,Daniel Day-Lewis,actor,"3 Academy Award wins and 3 Academy Award nominations, 1990 to 2018",42,5,98,A,243750
 4800,Gena Rowlands,actor,"A Berlin Silver Bear win, 3 Primetime Emmy wins, 2 Golden Globe wins and 2 Academy Award nominations, 1975 to 2003",42,5,98,A,243750
-8487,Gregory Peck,actor,"An Academy Award win, a Golden Globe win, 4 Academy Award nominations, a Primetime Emmy nomination and 4 Golden Globe nominations, 1946 to 1998",41.4,5,98,A,238975
-287,Brad Pitt,actor,"An Academy Award win, a BAFTA Film Award win, 2 Golden Globe wins, 3 Academy Award nominations and a Golden Globe nomination, 1996 to 2023",41,5,98,A,235825
-9599,Cloris Leachman,actor,"An Academy Award win, a BAFTA Film Award win and 4 Primetime Emmy wins, 1972 to 2006",41,5,98,A,235825
+83170,Valerie Harper,actor,"4 Primetime Emmy wins, 2 Golden Globe wins and 3 Primetime Emmy nominations, 1971 to 1978",41.2,3,98,A,237400
 23959,Debra Messing,actor,"5 Screen Actors Guild Award wins and a Primetime Emmy win, 2000 to 2004",41,3,98,A,235825
 1902,Dianne Wiest,actor,"2 Academy Award wins, 2 Primetime Emmy wins, a Golden Globe win and an Academy Award nomination, 1987 to 2008",41,5,98,A,235825
 64,Gary Oldman,actor,"An Academy Award win, a BAFTA Film Award win, a Screen Actors Guild Award win, a Golden Globe win, a Critics' Choice Award win and 2 Academy Award nominations, 2012 to 2021",41,3,98,A,235825
+1233,Philip Seymour Hoffman,actor,"An Academy Award win, a BAFTA Film Award win, a Venice Festival prize win, a Golden Globe win and 3 Academy Award nominations, 2006 to 2013",41,3,98,A,235825
 30233,Rosalind Russell,actor,"5 Golden Globe wins and 4 Academy Award nominations, 1943 to 1963",41,5,98,A,235825
+34691,John Spencer,actor,"2 Screen Actors Guild Award wins, a Primetime Emmy win, 4 Screen Actors Guild Award nominations and 4 Primetime Emmy nominations, 2000 to 2006",40.8,3,98,A,234275
+12688,Peter MacNicol,actor,"A Screen Actors Guild Award win, a Primetime Emmy win, 8 Screen Actors Guild Award nominations and 2 Primetime Emmy nominations, 1995 to 2001",40.2,3,98,A,229575
 115573,Glenda Jackson,actor,"2 Academy Award wins, 2 Primetime Emmy wins and 2 Academy Award nominations, 1971 to 1976",40,3,98,A,228025
+31171,Julie Bowen,actor,"4 Screen Actors Guild Award wins and 2 Primetime Emmy wins, 2011 to 2014",40,3,98,A,228025
 13567,Ann-Margret,actor,"A Primetime Emmy win, 5 Golden Globe wins and 2 Academy Award nominations, 1962 to 2010",39,5,98,A,220300
 1121,Benicio del Toro,actor,"An Academy Award win, a Screen Actors Guild Award win, a Cannes Festival prize win, a Berlin Silver Bear win, a Golden Globe win and an Academy Award nomination, 2001 to 2008",39,3,98,A,220300
 30181,Fred Astaire,actor,"A BAFTA Film Award win, 2 Primetime Emmy wins, 2 Golden Globe wins, an Academy Award nomination and 3 Golden Globe nominations, 1950 to 1978",39,5,98,A,220300
@@ -121,38 +129,39 @@ tmdb_person,name,job,recognition (Wikidata),weight,experience,capability,grade,a
 9788,Regina King,actor,"An Academy Award win, 4 Primetime Emmy wins and a Golden Globe win, 2015 to 2020",39,3,98,A,220300
 12957,Nancy Marchand,actor,"A Screen Actors Guild Award win, 4 Primetime Emmy wins, a Golden Globe win and a Primetime Emmy nomination, 1978 to 2000",38.4,5,98,A,215700
 350,Laura Linney,actor,"4 Primetime Emmy wins, 3 Academy Award nominations and a Golden Globe nomination, 2001 to 2023",38,5,98,A,212650
+20959,Louis Gossett Jr.,actor,"An Academy Award win, a Primetime Emmy win, 2 Golden Globe wins and 5 Primetime Emmy nominations, 1977 to 1997",38,5,98,A,212650
 1812,Michelle Williams,actor,"A Primetime Emmy win, 2 Golden Globe wins, 5 Academy Award nominations and a Golden Globe nomination, 2006 to 2023",38,4,98,A,212650
 8945,Kevin Kline,actor,"An Academy Award win, a Screen Actors Guild Award win, a BAFTA Film Award nomination, 2 Screen Actors Guild Award nominations, a Primetime Emmy nomination and 5 Golden Globe nominations, 1982 to 2010",37.8,5,98,A,211125
 3293,Rachel Weisz,actor,"An Academy Award win, a BAFTA Film Award win, a Screen Actors Guild Award win, a Golden Globe win, an Academy Award nomination, a BAFTA Film Award nomination and a Golden Globe nomination, 2005 to 2019",37.8,4,98,A,211125
 3490,Adrien Brody,actor,"2 Academy Award wins, a Golden Globe win, a César win, a BAFTA Film Award nomination, a Screen Actors Guild Award nomination and a Golden Globe nomination, 2002 to 2025",37.6,5,98,A,209625
 20141,Deborah Kerr,actor,"A Golden Globe win, 6 Academy Award nominations, a Primetime Emmy nomination and 3 Golden Globe nominations, 1949 to 1985",37.4,5,98,A,208100
+72466,Colin Farrell,actor,"A Screen Actors Guild Award win, a Venice Festival prize win, 3 Golden Globe wins, a Critics' Choice Award win and an Academy Award nomination, 2009 to 2025",37,4,98,A,205100
 4068,Gary Cooper,actor,"2 Academy Award wins, a Golden Globe win and 3 Academy Award nominations, 1937 to 1953",37,4,98,A,205100
 134,Jamie Foxx,actor,"An Academy Award win, a BAFTA Film Award win, a Screen Actors Guild Award win, a Golden Globe win, a Critics' Choice Award win and an Academy Award nomination, 2004 to 2005",37,3,98,A,205100
 20391,Jane Wyman,actor,"An Academy Award win, 3 Golden Globe wins and 3 Academy Award nominations, 1947 to 1984",37,5,98,A,205100
 4765,Jason Robards,actor,"2 Academy Award wins, a Cannes Festival prize win, a Primetime Emmy win and an Academy Award nomination, 1962 to 1988",37,5,98,A,205100
 85848,Loretta Young,actor,"An Academy Award win, 3 Primetime Emmy wins, a Golden Globe win and an Academy Award nomination, 1948 to 1987",37,5,98,A,205100
+13352,Paul Muni,actor,"An Academy Award win, a Venice Festival prize win and 5 Academy Award nominations, 1929 to 1960",37,5,98,A,205100
 19492,Viola Davis,actor,"An Academy Award win, a BAFTA Film Award win, a Primetime Emmy win, 3 Academy Award nominations and a Golden Globe nomination, 2009 to 2023",37,4,98,A,205100
-2628,Kiefer Sutherland,actor,"A Primetime Emmy win, a Golden Globe win, 4 Screen Actors Guild Award nominations and 6 Primetime Emmy nominations, 2002 to 2009",36.6,3,98,A,202100
 8944,Jamie Lee Curtis,actor,"An Academy Award win, a BAFTA Film Award win, a Golden Globe win, a BAFTA Film Award nomination, a Screen Actors Guild Award nomination, a Primetime Emmy nomination and 3 Golden Globe nominations, 1984 to 2023",36,5,98,A,197650
+22970,Peter Dinklage,actor,"A Screen Actors Guild Award win, 4 Primetime Emmy wins and a Golden Globe win, 2011 to 2020",36,3,98,A,197650
 14501,Peter Ustinov,actor,"2 Academy Award wins, 2 Primetime Emmy wins and an Academy Award nomination, 1952 to 1967",36,4,98,A,197650
 66221,Tyne Daly,actor,"6 Primetime Emmy wins, 1983 to 2003",36,5,98,A,197650
-884,Steve Buscemi,actor,"A Screen Actors Guild Award win, a Golden Globe win, 4 Screen Actors Guild Award nominations, 4 Primetime Emmy nominations and a Golden Globe nomination, 2001 to 2014",34.8,4,98,A,188825
 738,Sean Connery,actor,"An Academy Award win, a BAFTA Film Award win, a Golden Globe win, 3 BAFTA Film Award nominations and 2 Golden Globe nominations, 1987 to 1991",34.4,3,98,A,185900
 9273,Amy Adams,actor,"2 Golden Globe wins and 6 Academy Award nominations, 2006 to 2019",34,4,98,A,183000
+40176,Art Carney,actor,"An Academy Award win and 4 Primetime Emmy wins, 1954 to 1984",34,5,98,A,183000
 36190,Edie Falco,actor,"4 Primetime Emmy wins and 2 Golden Globe wins, 1999 to 2010",34,4,98,A,183000
 862,George C. Scott,actor,"An Academy Award win, 2 Primetime Emmy wins and 3 Academy Award nominations, 1960 to 1998",34,5,98,A,183000
 93805,Greer Garson,actor,"An Academy Award win and 6 Academy Award nominations, 1940 to 1961",34,5,98,A,183000
 8534,Kathy Bates,actor,"An Academy Award win, 2 Primetime Emmy wins and 3 Academy Award nominations, 1991 to 2020",34,5,98,A,183000
 30123,Lee Grant,actor,"An Academy Award win, 2 Primetime Emmy wins and 3 Academy Award nominations, 1952 to 1977",34,5,98,A,183000
 4687,Patricia Arquette,actor,"An Academy Award win, a BAFTA Film Award win, 2 Primetime Emmy wins and a Golden Globe win, 2005 to 2019",34,4,98,A,183000
-1233,Philip Seymour Hoffman,actor,"An Academy Award win, a BAFTA Film Award win, a Golden Globe win and 3 Academy Award nominations, 2006 to 2013",34,3,98,A,183000
 7632,Shelley Winters,actor,"2 Academy Award wins, a Primetime Emmy win and 2 Academy Award nominations, 1952 to 1973",34,5,98,A,183000
 4302,Walter Brennan,actor,"3 Academy Award wins and an Academy Award nomination, 1937 to 1942",34,3,98,A,183000
 15152,James Earl Jones,actor,"2 Primetime Emmy wins, a Golden Globe win, an Academy Award nomination, a Screen Actors Guild Award nomination and 4 Primetime Emmy nominations, 1970 to 2004",33.4,5,98,A,178700
 206905,Jeremy Allen White,actor,"A Screen Actors Guild Award win, 2 Primetime Emmy wins, 2 Golden Globe wins and a Critics' Choice Award win, 2022 to 2024",33,3,98,A,175825
 5823,Julie Andrews,actor,"An Academy Award win, 3 Golden Globe wins and 2 Academy Award nominations, 1965 to 1983",33,4,98,A,175825
 5320,Leslie Caron,actor,"2 BAFTA Film Award wins, a Primetime Emmy win, a Golden Globe win and 2 Academy Award nominations, 1954 to 2007",33,5,98,A,175825
-20959,Louis Gossett Jr.,actor,"An Academy Award win, a Primetime Emmy win, a Golden Globe win and 5 Primetime Emmy nominations, 1977 to 1997",33,5,98,A,175825
 88867,Norma Shearer,actor,"An Academy Award win, a Venice Festival prize win and 4 Academy Award nominations, 1930 to 1939",33,3,98,A,175825
 1934,Patricia Neal,actor,"An Academy Award win, 2 BAFTA Film Award wins, a Golden Globe win and an Academy Award nomination, 1964 to 1972",33,3,98,A,175825
 368,Reese Witherspoon,actor,"An Academy Award win, a BAFTA Film Award win, a Screen Actors Guild Award win, a Golden Globe win and an Academy Award nomination, 2006 to 2015",33,3,98,A,175825
@@ -163,33 +172,35 @@ tmdb_person,name,job,recognition (Wikidata),weight,experience,capability,grade,a
 13576,Fredric March,actor,"2 Academy Award wins and 3 Academy Award nominations, 1931 to 1952",32,5,98,A,168750
 448,Hilary Swank,actor,"2 Academy Award wins, 2 Golden Globe wins and a Golden Globe nomination, 1999 to 2023",32,5,98,A,168750
 11148,Joan Allen,actor,"3 Academy Award nominations, a BAFTA Film Award nomination, 3 Screen Actors Guild Award nominations, 2 Primetime Emmy nominations and 2 Golden Globe nominations, 1996 to 2010",32,4,98,A,168750
+8349,Martin Sheen,actor,"3 Screen Actors Guild Award wins, a Primetime Emmy win and a Golden Globe win, 1994 to 2002",32,3,98,A,168750
 2314,Peter Falk,actor,"4 Primetime Emmy wins and 2 Academy Award nominations, 1961 to 1990",32,5,98,A,168750
 71580,Benedict Cumberbatch,actor,"A Primetime Emmy win, a BAFTA Television Award win, 2 Academy Award nominations, 2 Primetime Emmy nominations and 4 BAFTA Television Award nominations, 2005 to 2022",31.8,4,98,A,167350
 3063,Tilda Swinton,actor,"An Academy Award win, a BAFTA Film Award win, a Venice Festival prize win, 2 BAFTA Film Award nominations and a César nomination, 1992 to 2012",31.6,5,98,A,165950
-11367,Bradley Whitford,actor,"2 Screen Actors Guild Award wins, a Primetime Emmy win and 4 Screen Actors Guild Award nominations, 2001 to 2015",31.2,4,98,A,163150
 1932,Audrey Hepburn,actor,"An Academy Award win, a Golden Globe win and 4 Academy Award nominations, 1953 to 1968",31,4,98,A,161775
 2037,Cillian Murphy,actor,"An Academy Award win, a BAFTA Film Award win, a Screen Actors Guild Award win, a Golden Globe win and a Golden Globe nomination, 2005 to 2024",31,4,98,A,161775
 4566,Alan Rickman,actor,"A BAFTA Film Award win, a Screen Actors Guild Award win, a Primetime Emmy win, 3 BAFTA Film Award nominations and a Primetime Emmy nomination, 1992 to 2004",30.8,4,98,A,160375
 26512,Carroll O'Connor,actor,"5 Primetime Emmy wins, 1972 to 1989",30,4,98,A,154875
-72466,Colin Farrell,actor,"A Screen Actors Guild Award win, 3 Golden Globe wins, a Critics' Choice Award win and an Academy Award nomination, 2009 to 2025",30,4,98,A,154875
+27726,Don Knotts,actor,"5 Primetime Emmy wins, 1961 to 1967",30,3,98,A,154875
+45863,Doris Roberts,actor,"5 Primetime Emmy wins, 1983 to 2005",30,5,98,A,154875
 37632,Eddie Redmayne,actor,"An Academy Award win, a BAFTA Film Award win, a Screen Actors Guild Award win, an Academy Award nomination and a Golden Globe nomination, 2015 to 2023",30,3,98,A,154875
 45465,Edith Evans,actor,"A BAFTA Film Award win, a Berlin Silver Bear win, a Golden Globe win and 3 Academy Award nominations, 1964 to 1968",30,3,98,A,154875
 854,James Stewart,actor,"An Academy Award win, 4 Academy Award nominations and 2 Golden Globe nominations, 1940 to 1962",30,5,98,A,154875
 56024,Jean Dujardin,actor,"An Academy Award win, a BAFTA Film Award win, a Golden Globe win and 4 César nominations, 2007 to 2023",30,4,98,A,154875
+14101,John Larroquette,actor,"5 Primetime Emmy wins, 1985 to 1998",30,4,98,A,154875
 103,Mark Ruffalo,actor,"A Primetime Emmy win, 4 Academy Award nominations, a BAFTA Film Award nomination, a Screen Actors Guild Award nomination and a Primetime Emmy nomination, 2011 to 2024",30,4,98,A,154875
+15576,Matthew Macfadyen,actor,"A Screen Actors Guild Award win, a Primetime Emmy win, a Golden Globe win, 2 BAFTA Television Award wins and a BAFTA Television Award nomination, 2008 to 2023",30,4,98,A,154875
 19550,Melvyn Douglas,actor,"2 Academy Award wins, a Primetime Emmy win and an Academy Award nomination, 1964 to 1980",30,4,98,A,154875
 1160,Michelle Pfeiffer,actor,"A BAFTA Film Award win, a Berlin Silver Bear win, a Golden Globe win and 3 Academy Award nominations, 1989 to 1993",30,3,98,A,154875
 136761,Nathalie Baye,actor,"4 César wins and 5 César nominations, 1981 to 2006",30,5,98,A,154875
-13352,Paul Muni,actor,"An Academy Award win and 5 Academy Award nominations, 1929 to 1960",30,5,98,A,154875
 934,Russell Crowe,actor,"An Academy Award win, a BAFTA Film Award win, a Golden Globe win and 2 Academy Award nominations, 2000 to 2002",30,3,98,A,154875
 235416,Sarah Snook,actor,"2 Screen Actors Guild Award wins, a Primetime Emmy win and 2 Golden Globe wins, 2021 to 2024",30,3,98,A,154875
 1937,Mickey Rooney,actor,"A Primetime Emmy win, a Golden Globe win, 4 Academy Award nominations and a Primetime Emmy nomination, 1940 to 1984",29.4,5,98,A,150800
-12688,Peter MacNicol,actor,"A Screen Actors Guild Award win and 8 Screen Actors Guild Award nominations, 1995 to 2001",29.4,3,98,A,150800
 10767,Barbara Hershey,actor,"2 Cannes Festival prize wins, a Primetime Emmy win, a Golden Globe win and an Academy Award nomination, 1987 to 1997",29,4,98,A,148100
 60073,Brie Larson,actor,"An Academy Award win, a BAFTA Film Award win, a Screen Actors Guild Award win and a Golden Globe win, 2016",29,3,98,A,148100
 38225,Cher,actor,"An Academy Award win, 3 Golden Globe wins and an Academy Award nomination, 1974 to 1988",29,4,98,A,148100
 1180099,Da'Vine Joy Randolph,actor,"An Academy Award win, a BAFTA Film Award win, a Screen Actors Guild Award win and a Golden Globe win, 2024",29,3,98,A,148100
 2178,Forest Whitaker,actor,"An Academy Award win, a BAFTA Film Award win, a Cannes Festival prize win and a Golden Globe win, 1988 to 2007",29,4,98,A,148100
+41419,Hugh Laurie,actor,"2 Screen Actors Guild Award wins and 3 Golden Globe wins, 2006 to 2017",29,4,98,A,148100
 15565,Jennifer Hudson,actor,"An Academy Award win, a BAFTA Film Award win, a Screen Actors Guild Award win and a Golden Globe win, 2006 to 2007",29,3,98,A,148100
 5374,Jim Parsons,actor,"4 Primetime Emmy wins and a Golden Globe win, 2010 to 2014",29,3,98,A,148100
 522,Rod Steiger,actor,"An Academy Award win, a Berlin Silver Bear win, a Golden Globe win and 2 Academy Award nominations, 1955 to 1968",29,4,98,A,148100
@@ -203,13 +214,15 @@ tmdb_person,name,job,recognition (Wikidata),weight,experience,capability,grade,a
 1922,Catherine Zeta-Jones,actor,"An Academy Award win, a BAFTA Film Award win, a Screen Actors Guild Award win and 2 Golden Globe nominations, 2000 to 2003",28,3,98,A,141425
 12052,Gwyneth Paltrow,actor,"An Academy Award win, a Screen Actors Guild Award win, a Primetime Emmy win and a Golden Globe win, 1999 to 2011",28,4,98,A,141425
 13724,Jane Alexander,actor,"2 Primetime Emmy wins and 4 Academy Award nominations, 1971 to 2005",28,5,98,A,141425
-31171,Julie Bowen,actor,"4 Screen Actors Guild Award wins, 2011 to 2014",28,3,98,A,141425
 1230842,Leslie David Baker,actor,"2 Screen Actors Guild Award wins and 5 Screen Actors Guild Award nominations, 2007 to 2013",28,3,98,A,141425
+12150,Maximilian Schell,actor,"An Academy Award win, 2 Golden Globe wins and 2 Academy Award nominations, 1962 to 1993",28,5,98,A,141425
 76094,Oscar Nunez,actor,"2 Screen Actors Guild Award wins and 5 Screen Actors Guild Award nominations, 2007 to 2013",28,3,98,A,141425
 5341,Richard Burton,actor,"7 Academy Award nominations, 1953 to 1978",28,5,98,A,141425
+2283,Stanley Tucci,actor,"2 Primetime Emmy wins, 2 Golden Globe wins, an Academy Award nomination and a Golden Globe nomination, 1999 to 2010",28,4,98,A,141425
 234352,Margot Robbie,actor,"2 Critics' Choice Award wins, 2 Academy Award nominations, a BAFTA Film Award nomination, a Screen Actors Guild Award nomination and 3 Golden Globe nominations, 2016 to 2023",27.6,3,98,A,138775
 3141,Marisa Tomei,actor,"An Academy Award win, 2 Academy Award nominations, a BAFTA Film Award nomination, a Screen Actors Guild Award nomination and 2 Golden Globe nominations, 1993 to 2009",27.6,4,98,A,138775
 4491,Jennifer Aniston,actor,"2 Screen Actors Guild Award wins, a Primetime Emmy win, a Golden Globe win and a Primetime Emmy nomination, 1996 to 2019",27.4,5,98,A,137475
+14406,Lisa Kudrow,actor,"2 Screen Actors Guild Award wins, a Primetime Emmy win, a Screen Actors Guild Award nomination, a Primetime Emmy nomination and a Golden Globe nomination, 1995 to 2003",27.2,3,98,A,136150
 5698,Jessica Tandy,actor,"An Academy Award win, a BAFTA Film Award win, a Primetime Emmy win and an Academy Award nomination, 1988 to 1992",27,3,98,A,134850
 11857,John Gielgud,actor,"An Academy Award win, a BAFTA Film Award win, a Primetime Emmy win and an Academy Award nomination, 1965 to 1991",27,5,98,A,134850
 477,Julie Walters,actor,"2 BAFTA Film Award wins, a Golden Globe win and 2 Academy Award nominations, 1984 to 2001",27,4,98,A,134850
@@ -224,6 +237,7 @@ tmdb_person,name,job,recognition (Wikidata),weight,experience,capability,grade,a
 1813,Anne Hathaway,actor,"An Academy Award win, a BAFTA Film Award win, a Golden Globe win and an Academy Award nomination, 2009 to 2013",26,3,97,A,128375
 1810,Heath Ledger,actor,"An Academy Award win, a BAFTA Film Award win, a Golden Globe win and an Academy Award nomination, 2006 to 2009",26,3,97,A,128375
 47439,Helen Hayes,actor,"2 Academy Award wins and a Primetime Emmy win, 1932 to 1971",26,5,98,A,128375
+1327,Ian McKellen,actor,"A Screen Actors Guild Award win, a Golden Globe win, a Critics' Choice Award win, 2 Academy Award nominations and a BAFTA Television Award nomination, 1996 to 2016",26,5,98,A,128375
 1352,Jean-Louis Trintignant,actor,"A Cannes Festival prize win, a Berlin Silver Bear win, a César win and 4 César nominations, 1968 to 2013",26,5,98,A,128375
 39554,Jennifer Jones,actor,"An Academy Award win and 4 Academy Award nominations, 1944 to 1956",26,4,98,A,128375
 351,Judy Davis,actor,"3 Primetime Emmy wins and 2 Academy Award nominations, 1985 to 2007",26,5,98,A,128375
@@ -235,7 +249,7 @@ tmdb_person,name,job,recognition (Wikidata),weight,experience,capability,grade,a
 30124,Susan Hayward,actor,"An Academy Award win and 4 Academy Award nominations, 1948 to 1959",26,4,98,A,128375
 4038,Susan Sarandon,actor,"An Academy Award win and 4 Academy Award nominations, 1982 to 1996",26,4,98,A,128375
 106791,Aida Turturro,actor,"A Screen Actors Guild Award win, 5 Screen Actors Guild Award nominations and 2 Primetime Emmy nominations, 2001 to 2008",25.8,3,97,A,127100
-34691,John Spencer,actor,"2 Screen Actors Guild Award wins and 4 Screen Actors Guild Award nominations, 2001 to 2006",25.2,3,97,A,123275
+4073,Harry Morgan,actor,"A Primetime Emmy win and 8 Primetime Emmy nominations, 1959 to 1983",25.2,5,98,A,123275
 5682,Anouk Aimée,actor,"A BAFTA Film Award win, a Cannes Festival prize win, a Golden Globe win, an Academy Award nomination and a César nomination, 1966 to 1980",25,4,98,A,122000
 11128,Arthur Kennedy,actor,"A Golden Globe win and 5 Academy Award nominations, 1950 to 1959",25,3,97,A,122000
 656,Denholm Elliott,actor,"3 BAFTA Film Award wins and an Academy Award nomination, 1984 to 1987",25,3,97,A,122000
@@ -246,14 +260,17 @@ tmdb_person,name,job,recognition (Wikidata),weight,experience,capability,grade,a
 6944,Octavia Spencer,actor,"An Academy Award win, a BAFTA Film Award win and 2 Academy Award nominations, 2012 to 2018",25,3,97,A,122000
 82495,Rachel Roberts,actor,"3 BAFTA Film Award wins and an Academy Award nomination, 1961 to 1980",25,4,98,A,122000
 4970,Ruth Gordon,actor,"An Academy Award win, a Primetime Emmy win, a Golden Globe win and an Academy Award nomination, 1966 to 1979",25,4,98,A,122000
+56322,Amy Poehler,actor,"A Golden Globe win, a Screen Actors Guild Award nomination and 7 Primetime Emmy nominations, 2008 to 2014",24.6,3,96,A,119500
 1893,Casey Affleck,actor,"An Academy Award win, a Golden Globe win, an Academy Award nomination and 2 Screen Actors Guild Award nominations, 2008 to 2017",24.6,3,96,A,119500
 1245,Scarlett Johansson,actor,"A BAFTA Film Award win, 2 Academy Award nominations, 2 BAFTA Film Award nominations and 2 Golden Globe nominations, 2004 to 2020",24.6,4,98,A,119500
+7124,Ray Milland,actor,"An Academy Award win, a Cannes Festival prize win, a Golden Globe win and a Primetime Emmy nomination, 1946 to 1976",24.4,5,98,A,118250
 44079,Charlotte Rampling,actor,"A Venice Festival prize win, an Academy Award nomination, a Screen Actors Guild Award nomination, a Primetime Emmy nomination and 4 César nominations, 1986 to 2017",24.2,5,98,A,117000
 11356,Imelda Staunton,actor,"A BAFTA Film Award win, an Academy Award nomination, a Screen Actors Guild Award nomination, a Primetime Emmy nomination, 2 Golden Globe nominations and 2 BAFTA Television Award nominations, 2004 to 2023",24.2,4,98,A,117000
 11025,Agnes Moorehead,actor,"A Primetime Emmy win, 2 Golden Globe wins and 2 Academy Award nominations, 1943 to 1967",24,5,98,A,115750
 290,Christopher Plummer,actor,"An Academy Award win, a Primetime Emmy win and 2 Academy Award nominations, 1977 to 2018",24,5,98,A,115750
 14965,Claire Trevor,actor,"An Academy Award win, a Primetime Emmy win and 2 Academy Award nominations, 1938 to 1957",24,4,98,A,115750
 10559,Colleen Dewhurst,actor,"4 Primetime Emmy wins, 1986 to 1991",24,3,96,A,115750
+11076,David Hyde Pierce,actor,"4 Primetime Emmy wins, 1995 to 2004",24,3,96,A,115750
 11901,Dennis Franz,actor,"4 Primetime Emmy wins, 1994 to 1999",24,3,96,A,115750
 19068,Dominique Blanc,actor,"A Venice Festival prize win, 3 César wins and a César nomination, 1991 to 2010",24,4,98,A,115750
 22600,Edmund Gwenn,actor,"An Academy Award win, 2 Golden Globe wins and an Academy Award nomination, 1948 to 1951",24,3,96,A,115750
@@ -264,6 +281,7 @@ tmdb_person,name,job,recognition (Wikidata),weight,experience,capability,grade,a
 7570,Lauren Bacall,actor,"A Screen Actors Guild Award win, a Golden Globe win, an Academy Award nomination, 2 BAFTA Film Award nominations and a Primetime Emmy nomination, 1977 to 1997",24,5,98,A,115750
 65101,Michael Learned,actor,"4 Primetime Emmy wins, 1973 to 1982",24,3,96,A,115750
 5004,Omar Sharif,actor,"3 Golden Globe wins, a César win and an Academy Award nomination, 1963 to 2004",24,5,98,A,115750
+24203,Rhea Perlman,actor,"4 Primetime Emmy wins, 1984 to 1989",24,3,96,A,115750
 2231,Samuel L. Jackson,actor,"A BAFTA Film Award win, a Cannes Festival prize win, a Berlin Silver Bear win and an Academy Award nomination, 1991 to 1997",24,3,96,A,115750
 7684,Thelma Ritter,actor,"6 Academy Award nominations, 1951 to 1963",24,4,98,A,115750
 8252,William Holden,actor,"An Academy Award win, a Primetime Emmy win and 2 Academy Award nominations, 1951 to 1977",24,5,98,A,115750
@@ -272,6 +290,7 @@ tmdb_person,name,job,recognition (Wikidata),weight,experience,capability,grade,a
 36592,Saoirse Ronan,actor,"A Golden Globe win, 4 Academy Award nominations and a BAFTA Film Award nomination, 2008 to 2020",23.8,4,98,A,114525
 2229,Catherine Keener,actor,"2 Academy Award nominations, a BAFTA Film Award nomination, 3 Screen Actors Guild Award nominations, a Primetime Emmy nomination and a Golden Globe nomination, 1999 to 2008",23.6,3,95,A,113275
 2750,Julie Harris,actor,"2 Primetime Emmy wins, an Academy Award nomination and 3 Primetime Emmy nominations, 1953 to 1998",23.2,5,98,A,110825
+28633,Richard Jenkins,actor,"A Primetime Emmy win, 2 Academy Award nominations, 2 Screen Actors Guild Award nominations, a Golden Globe nomination and a Critics' Choice Award nomination, 2002 to 2023",23.2,5,98,A,110825
 62,Bruce Willis,actor,"2 Primetime Emmy wins, a Golden Globe win and 3 Golden Globe nominations, 1986 to 2000",23,4,98,A,109600
 36662,Carey Mulligan,actor,"A BAFTA Film Award win, 3 Academy Award nominations and 2 Golden Globe nominations, 2010 to 2024",23,4,98,A,109600
 10607,Celeste Holm,actor,"An Academy Award win, a Golden Globe win and 2 Academy Award nominations, 1947 to 1951",23,3,95,A,109600
@@ -280,18 +299,18 @@ tmdb_person,name,job,recognition (Wikidata),weight,experience,capability,grade,a
 267962,Emmanuelle Riva,actor,"A BAFTA Film Award win, a Venice Festival prize win, a César win and an Academy Award nomination, 1962 to 2013",23,5,98,A,109600
 14812,Jeanne Moreau,actor,"A BAFTA Film Award win, a Cannes Festival prize win, a César win and 2 César nominations, 1960 to 1992",23,5,98,A,109600
 1907,Kathy Baker,actor,"3 Primetime Emmy wins and a Golden Globe win, 1993 to 1996",23,3,95,A,109600
-12150,Maximilian Schell,actor,"An Academy Award win, a Golden Globe win and 2 Academy Award nominations, 1962 to 1978",23,4,98,A,109600
 4274,Miou-Miou,actor,"A César win and 9 César nominations, 1977 to 1998",23,5,98,A,109600
 24366,Philippe Noiret,actor,"A BAFTA Film Award win, 2 César wins and 3 César nominations, 1976 to 1991",23,4,98,A,109600
 6721,Piper Laurie,actor,"A Primetime Emmy win, a Golden Globe win and 3 Academy Award nominations, 1962 to 1991",23,5,98,A,109600
 29522,Ronald Colman,actor,"An Academy Award win, a Golden Globe win and 2 Academy Award nominations, 1930 to 1948",23,4,98,A,109600
-2283,Stanley Tucci,actor,"2 Primetime Emmy wins, a Golden Globe win, an Academy Award nomination and a Golden Globe nomination, 1999 to 2010",23,4,98,A,109600
 2888,Will Smith,actor,"An Academy Award win, a Golden Globe win and 2 Academy Award nominations, 2002 to 2022",23,5,98,A,109600
+5293,Willem Dafoe,actor,"A Venice Festival prize win and 4 Academy Award nominations, 1987 to 2019",23,5,98,A,109600
 55536,Melissa McCarthy,actor,"2 Primetime Emmy wins, 2 Academy Award nominations and a BAFTA Film Award nomination, 2011 to 2019",22.8,3,95,A,108400
 1190668,Timothée Chalamet,actor,"A Screen Actors Guild Award win, 2 Academy Award nominations, a BAFTA Film Award nomination, a Screen Actors Guild Award nomination and a Golden Globe nomination, 2018 to 2025",22.6,3,94,A,107175
 41296,Aaron Staton,actor,"2 Screen Actors Guild Award wins and 3 Screen Actors Guild Award nominations, 2008 to 2013",22.4,3,94,A,105975
 137924,John Thaw,actor,"2 BAFTA Film Award wins and 3 BAFTA Film Award nominations, 1988 to 1993",22.4,3,94,A,105975
 10581,Rich Sommer,actor,"2 Screen Actors Guild Award wins and 3 Screen Actors Guild Award nominations, 2008 to 2013",22.4,3,94,A,105975
+21278,Alan Alda,actor,"3 Primetime Emmy wins and an Academy Award nomination, 1974 to 2006",22,5,98,A,103575
 1437491,Ariana DeBose,actor,"An Academy Award win, a BAFTA Film Award win and a Golden Globe win, 2021 to 2022",22,3,94,A,103575
 8258,Ben Johnson,actor,"An Academy Award win, a BAFTA Film Award win and a Golden Globe win, 1972 to 1973",22,3,94,A,103575
 5442,Benoît Magimel,actor,"A Cannes Festival prize win and 3 César wins, 2001 to 2023",22,5,98,A,103575
@@ -306,6 +325,7 @@ tmdb_person,name,job,recognition (Wikidata),weight,experience,capability,grade,a
 690,Ke Huy Quan,actor,"An Academy Award win, a Screen Actors Guild Award win and a Golden Globe win, 2022 to 2023",22,3,94,A,103575
 1269,Kevin Costner,actor,"A Screen Actors Guild Award win, a Primetime Emmy win, a Golden Globe win and an Academy Award nomination, 1991 to 2023",22,5,98,A,103575
 326,Kim Basinger,actor,"An Academy Award win, a Screen Actors Guild Award win and a Golden Globe win, 1997 to 1998",22,3,94,A,103575
+12133,Laurie Metcalf,actor,"3 Primetime Emmy wins and an Academy Award nomination, 1992 to 2018",22,5,98,A,103575
 40900,Mark Rylance,actor,"An Academy Award win, a BAFTA Film Award win and a BAFTA Television Award win, 2016",22,3,94,A,103575
 21151,Maureen Stapleton,actor,"An Academy Award win and 3 Academy Award nominations, 1959 to 1982",22,5,98,A,103575
 1620,Michelle Yeoh,actor,"An Academy Award win, a Screen Actors Guild Award win and a Golden Globe win, 2022 to 2023",22,3,94,A,103575
@@ -316,11 +336,9 @@ tmdb_person,name,job,recognition (Wikidata),weight,experience,capability,grade,a
 8691,Zoe Saldaña,actor,"An Academy Award win, a BAFTA Film Award win and a Golden Globe win, 2024 to 2025",22,3,94,A,103575
 11064,David Strathairn,actor,"A Primetime Emmy win, an Academy Award nomination, a BAFTA Film Award nomination, a Screen Actors Guild Award nomination, a Primetime Emmy nomination, a Golden Globe nomination and a Critics' Choice Award nomination, 2005 to 2012",21.6,3,94,A,101200
 80966,Janel Moloney,actor,"2 Screen Actors Guild Award wins, a Screen Actors Guild Award nomination and 2 Primetime Emmy nominations, 2001 to 2004",21.6,3,94,A,101200
-28633,Richard Jenkins,actor,"A Primetime Emmy win, 2 Academy Award nominations, 2 Screen Actors Guild Award nominations and a Critics' Choice Award nomination, 2002 to 2018",21.2,4,98,A,98825
 6905,Bruce Dern,actor,"A Cannes Festival prize win, a Berlin Silver Bear win and 2 Academy Award nominations, 1979 to 2014",21,5,98,A,97650
 4690,Christopher Walken,actor,"An Academy Award win, a BAFTA Film Award win and an Academy Award nomination, 1979 to 2003",21,5,98,A,97650
 206919,Daniel Kaluuya,actor,"An Academy Award win, a BAFTA Film Award win and an Academy Award nomination, 2018 to 2021",21,3,93,A,97650
-1327,Ian McKellen,actor,"A Screen Actors Guild Award win, a Critics' Choice Award win, 2 Academy Award nominations and a BAFTA Television Award nomination, 1998 to 2016",21,4,98,A,97650
 18999,J. K. Simmons,actor,"An Academy Award win, a BAFTA Film Award win and an Academy Award nomination, 2015 to 2022",21,3,93,A,97650
 11889,Mark Moses,actor,"3 Screen Actors Guild Award wins, 2005 to 2009",21,3,93,A,97650
 1276,Patricia Clarkson,actor,"2 Primetime Emmy wins, a Golden Globe win and an Academy Award nomination, 2002 to 2018",21,4,98,A,97650
@@ -328,9 +346,11 @@ tmdb_person,name,job,recognition (Wikidata),weight,experience,capability,grade,a
 16757,Sophia Loren,actor,"An Academy Award win, a Cannes Festival prize win and an Academy Award nomination, 1961 to 1965",21,3,93,A,97650
 1225953,Sterling K. Brown,actor,"2 Primetime Emmy wins, a Golden Globe win and an Academy Award nomination, 2016 to 2024",21,3,93,A,97650
 10742,Teri Hatcher,actor,"2 Screen Actors Guild Award wins, a Golden Globe win and a Golden Globe nomination, 2005 to 2006",21,3,93,A,97650
+29260,Wallace Beery,actor,"An Academy Award win, a Venice Festival prize win and an Academy Award nomination, 1930 to 1934",21,3,93,A,97650
 2395,Whoopi Goldberg,actor,"An Academy Award win, a BAFTA Film Award win and an Academy Award nomination, 1986 to 1991",21,3,93,A,97650
 88124,Jesse Plemons,actor,"A Screen Actors Guild Award win, a Cannes Festival prize win, an Academy Award nomination and a Screen Actors Guild Award nomination, 2013 to 2024",20.8,4,98,A,96475
 61303,Dick Van Dyke,actor,"3 Primetime Emmy wins and a Primetime Emmy nomination, 1963 to 1966",20.4,3,92,A,94150
+55636,Donald Sutherland,actor,"A Primetime Emmy win, a Golden Globe win, a BAFTA Film Award nomination, a Primetime Emmy nomination and 2 Golden Globe nominations, 1970 to 2006",20.2,5,98,A,93000
 37625,Andrew Garfield,actor,"A Golden Globe win, a BAFTA Television Award win, 2 Academy Award nominations and a Golden Globe nomination, 2008 to 2023",20,4,97,A,91850
 516,Annette Bening,actor,"5 Academy Award nominations, 1991 to 2024",20,5,98,A,91850
 51329,Bradley Cooper,actor,"5 Academy Award nominations, 2013 to 2024",20,4,97,A,91850
@@ -353,9 +373,10 @@ tmdb_person,name,job,recognition (Wikidata),weight,experience,capability,grade,a
 10169,Telly Savalas,actor,"A Primetime Emmy win, 2 Golden Globe wins and an Academy Award nomination, 1963 to 1976",20,4,97,A,91850
 16327,Timothy Hutton,actor,"An Academy Award win and 2 Golden Globe wins, 1981",20,3,92,A,91850
 10538,Vivien Leigh,actor,"2 Academy Award wins, 1940 to 1952",20,4,97,A,91850
-56322,Amy Poehler,actor,"A Golden Globe win, a Screen Actors Guild Award nomination and 5 Primetime Emmy nominations, 2010 to 2014",19.8,3,92,A,90700
+3896,Liam Neeson,actor,"A Venice Festival prize win, an Academy Award nomination, a BAFTA Film Award nomination and 3 Golden Globe nominations, 1993 to 2004",19.8,4,97,A,90700
 17764,Charles S. Dutton,actor,"2 Primetime Emmy wins, a Screen Actors Guild Award nomination and 2 Primetime Emmy nominations, 1995 to 2003",19.6,3,92,A,89575
 6748,Joel Grey,actor,"An Academy Award win, a Golden Globe win, a Primetime Emmy nomination and a Golden Globe nomination, 1972 to 1993",19.4,5,98,A,88425
+1023139,Adam Driver,actor,"A Venice Festival prize win, 2 Academy Award nominations, a Golden Globe nomination and a César nomination, 2014 to 2023",19,3,91,A,86175
 10606,Anne Baxter,actor,"An Academy Award win, a Golden Globe win and an Academy Award nomination, 1946 to 1951",19,3,91,A,86175
 18269,Brendan Fraser,actor,"An Academy Award win, a Screen Actors Guild Award win and a Golden Globe nomination, 2022 to 2023",19,3,91,A,86175
 16935,Geena Davis,actor,"An Academy Award win, a Golden Globe win and an Academy Award nomination, 1989 to 2006",19,4,96,A,86175
@@ -364,11 +385,11 @@ tmdb_person,name,job,recognition (Wikidata),weight,experience,capability,grade,a
 4165,John Wayne,actor,"An Academy Award win, a Golden Globe win and an Academy Award nomination, 1950 to 1970",19,5,98,A,86175
 85,Johnny Depp,actor,"A Screen Actors Guild Award win and 3 Academy Award nominations, 2004 to 2008",19,3,91,A,86175
 936970,Julia Garner,actor,"2 Primetime Emmy wins, a Golden Globe win and a Golden Globe nomination, 2019 to 2023",19,3,91,A,86175
-15576,Matthew Macfadyen,actor,"A Screen Actors Guild Award win, 2 BAFTA Television Award wins and a BAFTA Television Award nomination, 2008 to 2022",19,4,96,A,86175
+5676,Marcello Mastroianni,actor,"A Venice Festival prize win and 3 Academy Award nominations, 1963 to 1989",19,5,98,A,86175
 13242,Paul Giamatti,actor,"A Primetime Emmy win, a Golden Globe win and 2 Academy Award nominations, 2006 to 2024",19,4,96,A,86175
 14011,Tom Courtenay,actor,"A Berlin Silver Bear win, a BAFTA Television Award win and 2 Academy Award nominations, 1966 to 2016",19,5,98,A,86175
 62531,Valérie Lemercier,actor,"3 César wins and 2 César nominations, 1992 to 2022",19,5,98,A,86175
-14406,Lisa Kudrow,actor,"2 Screen Actors Guild Award wins, a Screen Actors Guild Award nomination and a Golden Globe nomination, 1995 to 2003",18.8,3,91,A,85050
+84497,Aaron Paul,actor,"3 Primetime Emmy wins, 2009 to 2014",18,3,90,A,80625
 99,Amanda Plummer,actor,"3 Primetime Emmy wins, 1992 to 2005",18,4,95,A,80625
 9780,Angela Bassett,actor,"2 Golden Globe wins and 2 Academy Award nominations, 1994 to 2023",18,5,98,A,80625
 5657,Anjelica Huston,actor,"An Academy Award win and 2 Academy Award nominations, 1986 to 1991",18,3,90,A,80625
@@ -381,11 +402,14 @@ tmdb_person,name,job,recognition (Wikidata),weight,experience,capability,grade,a
 51962,Bill Cosby,actor,"3 Primetime Emmy wins, 1966 to 1968",18,3,90,A,80625
 879,Billy Bob Thornton,actor,"2 Golden Globe wins and 2 Academy Award nominations, 1997 to 2017",18,5,98,A,80625
 24937,Bing Crosby,actor,"An Academy Award win and 2 Academy Award nominations, 1945 to 1955",18,4,95,A,80625
+18,Brad Garrett,actor,"3 Primetime Emmy wins, 2002 to 2005",18,3,90,A,80625
+1895,Carl Reiner,actor,"3 Primetime Emmy wins, 1957 to 1995",18,5,98,A,80625
 11514,Catherine O'Hara,actor,"A Screen Actors Guild Award win, a Primetime Emmy win and a Golden Globe win, 2020 to 2021",18,3,90,A,80625
 29519,Charles Boyer,actor,"4 Academy Award nominations and a Golden Globe nomination, 1938 to 1962",18,5,98,A,80625
 11169,Charles Coburn,actor,"An Academy Award win and 2 Academy Award nominations, 1942 to 1947",18,3,90,A,80625
 10921,Charles Laughton,actor,"An Academy Award win and 2 Academy Award nominations, 1934 to 1958",18,5,98,A,80625
 6885,Charlize Theron,actor,"An Academy Award win and 2 Academy Award nominations, 2004 to 2020",18,4,95,A,80625
+1062,Christopher Lloyd,actor,"3 Primetime Emmy wins, 1982 to 1992",18,4,95,A,80625
 11492,Clark Gable,actor,"An Academy Award win and 2 Academy Award nominations, 1935 to 1940",18,3,90,A,80625
 12850,Dabney Coleman,actor,"A Screen Actors Guild Award win, a Primetime Emmy win and a Golden Globe win, 1987 to 2011",18,5,98,A,80625
 94845,Don Adams,actor,"3 Primetime Emmy wins, 1967 to 1969",18,3,90,A,80625
@@ -397,8 +421,10 @@ tmdb_person,name,job,recognition (Wikidata),weight,experience,capability,grade,a
 5788,James Cagney,actor,"An Academy Award win and 2 Academy Award nominations, 1939 to 1956",18,4,95,A,80625
 4691,James Gandolfini,actor,"3 Primetime Emmy wins, 2000 to 2003",18,3,90,A,80625
 13548,James Spader,actor,"3 Primetime Emmy wins, 2004 to 2007",18,3,90,A,80625
+43775,Jane Lynch,actor,"3 Primetime Emmy wins, 2010 to 2019",18,3,90,A,80625
 24421,Jean Rochefort,actor,"2 César wins and 4 César nominations, 1976 to 1997",18,5,98,A,80625
 28933,Jean Stapleton,actor,"3 Primetime Emmy wins, 1971 to 1978",18,3,90,A,80625
+12799,Jeremy Piven,actor,"3 Primetime Emmy wins, 2006 to 2008",18,3,90,A,80625
 31550,Joan Crawford,actor,"An Academy Award win and 2 Academy Award nominations, 1946 to 1953",18,3,90,A,80625
 3360,Joan Fontaine,actor,"An Academy Award win and 2 Academy Award nominations, 1941 to 1944",18,3,90,A,80625
 4517,Joe Pesci,actor,"An Academy Award win and 2 Academy Award nominations, 1981 to 2020",18,5,98,A,80625
@@ -409,7 +435,8 @@ tmdb_person,name,job,recognition (Wikidata),weight,experience,capability,grade,a
 29791,Lynn Redgrave,actor,"2 Golden Globe wins and 2 Academy Award nominations, 1967 to 1999",18,5,98,A,80625
 452,Margo Martindale,actor,"3 Primetime Emmy wins, 2011 to 2016",18,3,90,A,80625
 2641,Martin Landau,actor,"An Academy Award win and 2 Academy Award nominations, 1989 to 1995",18,3,90,A,80625
-8349,Martin Sheen,actor,"A Screen Actors Guild Award win, a Primetime Emmy win and a Golden Globe win, 1994 to 2001",18,3,90,A,80625
+21030,Michael Moriarty,actor,"3 Primetime Emmy wins, 1974 to 2002",18,5,98,A,80625
+50807,Michael Richards,actor,"3 Primetime Emmy wins, 1993 to 1997",18,3,90,A,80625
 33487,Patricia Wettig,actor,"3 Primetime Emmy wins, 1988 to 1991",18,3,90,A,80625
 26660,Richard Kiley,actor,"3 Primetime Emmy wins, 1983 to 1994",18,4,95,A,80625
 19092,Stéphane Audran,actor,"A BAFTA Film Award win, a Berlin Silver Bear win and a César win, 1968 to 1979",18,4,95,A,80625
@@ -419,18 +446,23 @@ tmdb_person,name,job,recognition (Wikidata),weight,experience,capability,grade,a
 1332680,Uzo Aduba,actor,"3 Primetime Emmy wins, 2014 to 2020",18,3,90,A,80625
 6837,Walter Matthau,actor,"An Academy Award win and 2 Academy Award nominations, 1967 to 1976",18,3,90,A,80625
 13325,Wendy Hiller,actor,"An Academy Award win and 2 Academy Award nominations, 1939 to 1967",18,5,98,A,80625
+12152,Werner Klemperer,actor,"3 Primetime Emmy wins, 1968 to 1969",18,3,90,A,80625
+57755,Woody Harrelson,actor,"A Primetime Emmy win and 3 Academy Award nominations, 1989 to 2018",18,5,98,A,80625
 7060,Martin Freeman,actor,"A Primetime Emmy win, a BAFTA Television Award win, 2 Primetime Emmy nominations and a BAFTA Television Award nomination, 2011 to 2014",17.8,3,90,A,79525
 6014,Annie Girardot,actor,"3 César wins and a César nomination, 1977 to 2002",17,5,98,A,75175
 20080,Catherine Frot,actor,"A César win and 6 César nominations, 2000 to 2016",17,4,94,A,75175
 20125,Clifton Webb,actor,"A Golden Globe win and 3 Academy Award nominations, 1945 to 1949",17,3,89,A,75175
 937,Derek Jacobi,actor,"2 Primetime Emmy wins and a BAFTA Television Award win, 1976 to 2001",17,5,98,A,75175
+18156,Don Ameche,actor,"An Academy Award win and a Venice Festival prize win, 1986 to 1988",17,3,89,A,75175
+2895,Emil Jannings,actor,"An Academy Award win and a Venice Festival prize win, 1929 to 1937",17,3,89,A,75175
+1164,F. Murray Abraham,actor,"An Academy Award win, a Golden Globe win and a Golden Globe nomination, 1985 to 2023",17,5,98,A,75175
 8629,Gloria Swanson,actor,"A Golden Globe win and 3 Academy Award nominations, 1929 to 1951",17,5,98,A,75175
 2091,James Mason,actor,"A Golden Globe win and 3 Academy Award nominations, 1954 to 1983",17,5,98,A,75175
 1796,Kirstie Alley,actor,"2 Primetime Emmy wins and a Golden Globe win, 1991 to 1994",17,3,89,A,75175
+73249,Lee Jung-jae,actor,"A Screen Actors Guild Award win, a Primetime Emmy win and a Critics' Choice Award win, 2022",17,3,89,A,75175
 1267329,Lupita Nyong'o,actor,"An Academy Award win and a Screen Actors Guild Award win, 2014",17,3,89,A,75175
 1640439,Mikey Madison,actor,"An Academy Award win and a BAFTA Film Award win, 2025",17,3,89,A,75175
 1733,Nick Nolte,actor,"A Golden Globe win and 3 Academy Award nominations, 1992 to 2012",17,5,98,A,75175
-7124,Ray Milland,actor,"An Academy Award win and a Cannes Festival prize win, 1946",17,3,89,A,75175
 4786,Richard Attenborough,actor,"A BAFTA Film Award win and 2 Golden Globe wins, 1965 to 1968",17,3,89,A,75175
 14868,Robert Young,actor,"2 Primetime Emmy wins and a Golden Globe win, 1957 to 1972",17,4,94,A,75175
 4818,Roberto Benigni,actor,"An Academy Award win and a BAFTA Film Award win, 1999",17,3,89,A,75175
@@ -438,14 +470,17 @@ tmdb_person,name,job,recognition (Wikidata),weight,experience,capability,grade,a
 6068,Sela Ward,actor,"2 Primetime Emmy wins and a Golden Globe win, 1994 to 2000",17,3,89,A,75175
 12726,Trevor Howard,actor,"A BAFTA Film Award win, a Primetime Emmy win and an Academy Award nomination, 1959 to 1963",17,3,89,A,75175
 1571661,Troy Kotsur,actor,"An Academy Award win and a BAFTA Film Award win, 2022",17,3,89,A,75175
+1748,William Shatner,actor,"2 Primetime Emmy wins and a Golden Globe win, 2004 to 2005",17,3,89,A,75175
 505710,Zendaya,actor,"2 Primetime Emmy wins and a Golden Globe win, 2020 to 2023",17,3,89,A,75175
+41232,Jessica Walter,actor,"A Primetime Emmy win, 3 Screen Actors Guild Award nominations and a Primetime Emmy nomination, 1975 to 2013",16.8,5,98,A,74100
 18277,Sandra Bullock,actor,"An Academy Award win, an Academy Award nomination and a BAFTA Film Award nomination, 2010 to 2014",16.8,3,89,A,74100
+7450,Toshirō Mifune,actor,"2 Venice Festival prize wins and a BAFTA Film Award nomination, 1955 to 1965",16.8,4,94,A,74100
+41517,Christian Clemenson,actor,"A Primetime Emmy win, 2 Screen Actors Guild Award nominations and 2 Primetime Emmy nominations, 2006 to 2009",16.4,3,88,A,71975
 8857,Debbie Reynolds,actor,"An Academy Award nomination, a Primetime Emmy nomination and 5 Golden Globe nominations, 1951 to 2000",16.4,5,98,A,71975
-21278,Alan Alda,actor,"2 Primetime Emmy wins and an Academy Award nomination, 1974 to 2005",16,5,98,A,69875
 7301,Anthony Perkins,actor,"A Cannes Festival prize win, a Golden Globe win and an Academy Award nomination, 1957 to 1961",16,3,88,A,69875
 72590,Ariane Ascaride,actor,"A Venice Festival prize win, a César win and 2 César nominations, 1998 to 2019",16,5,98,A,69875
-40176,Art Carney,actor,"An Academy Award win and a Primetime Emmy win, 1975 to 1984",16,3,88,A,69875
 32774,Beah Richards,actor,"2 Primetime Emmy wins and an Academy Award nomination, 1968 to 2000",16,5,98,A,69875
+10556,Carol Kane,actor,"2 Primetime Emmy wins and an Academy Award nomination, 1976 to 1983",16,3,88,A,69875
 1958,Claude Brasseur,actor,"2 César wins and 3 César nominations, 1977 to 1993",16,4,93,A,69875
 4113,Claude Rains,actor,"4 Academy Award nominations, 1940 to 1947",16,3,88,A,69875
 19153,Cliff Robertson,actor,"An Academy Award win and a Primetime Emmy win, 1966 to 1969",16,3,88,A,69875
@@ -456,11 +491,13 @@ tmdb_person,name,job,recognition (Wikidata),weight,experience,capability,grade,a
 87335,Fernanda Torres,actor,"A Cannes Festival prize win, a Golden Globe win and an Academy Award nomination, 1986 to 2025",16,5,98,A,69875
 3382,Hope Lange,actor,"2 Primetime Emmy wins and an Academy Award nomination, 1958 to 1970",16,4,93,A,69875
 3461,Jack Albertson,actor,"An Academy Award win and a Primetime Emmy win, 1969 to 1976",16,3,88,A,69875
+9274,James Brolin,actor,"A Primetime Emmy win and 2 Golden Globe wins, 1970 to 1973",16,3,88,A,69875
 10223,Jane Seymour,actor,"A Primetime Emmy win and 2 Golden Globe wins, 1982 to 1996",16,4,93,A,69875
 16940,Jeremy Irons,actor,"An Academy Award win and a Primetime Emmy win, 1991 to 2006",16,4,93,A,69875
 1196101,Jessica Gunning,actor,"A Primetime Emmy win, a Golden Globe win and a BAFTA Television Award win, 2024 to 2025",16,3,88,A,69875
 1388593,Jodie Comer,actor,"A Primetime Emmy win and 2 BAFTA Television Award wins, 2019 to 2022",16,3,88,A,69875
 3362,Judith Anderson,actor,"2 Primetime Emmy wins and an Academy Award nomination, 1941 to 1961",16,5,98,A,69875
+381,Katherine Helmond,actor,"2 Golden Globe wins and 3 Golden Globe nominations, 1980 to 1989",16,3,88,A,69875
 2975,Laurence Fishburne,actor,"2 Primetime Emmy wins and an Academy Award nomination, 1993 to 2020",16,5,98,A,69875
 519,Martin Short,actor,"2 Screen Actors Guild Award wins and a Golden Globe nomination, 2023 to 2025",16,3,88,A,69875
 3392,Michael Douglas,actor,"An Academy Award win and a Primetime Emmy win, 1988 to 2013",16,5,98,A,69875
@@ -469,13 +506,12 @@ tmdb_person,name,job,recognition (Wikidata),weight,experience,capability,grade,a
 993774,Rachel Brosnahan,actor,"A Primetime Emmy win and 2 Golden Globe wins, 2017 to 2018",16,3,88,A,69875
 3609,Robert Donat,actor,"An Academy Award win, an Academy Award nomination and a Golden Globe nomination, 1939 to 1958",16,4,93,A,69875
 56881,Shelley Long,actor,"A Primetime Emmy win and 2 Golden Globe wins, 1983 to 1985",16,3,88,A,69875
-83170,Valerie Harper,actor,"A Primetime Emmy win and 2 Golden Globe wins, 1974 to 1975",16,3,88,A,69875
 6449,Warren Beatty,actor,"4 Academy Award nominations, 1968 to 1992",16,5,98,A,69875
-5293,Willem Dafoe,actor,"4 Academy Award nominations, 1987 to 2019",16,5,98,A,69875
 1261694,Barkhad Abdi,actor,"A BAFTA Film Award win, an Academy Award nomination, a Screen Actors Guild Award nomination and a Golden Globe nomination, 2013 to 2014",15.8,3,87,B,68825
-55636,Donald Sutherland,actor,"A Primetime Emmy win, a BAFTA Film Award nomination, a Primetime Emmy nomination and 2 Golden Globe nominations, 1970 to 2006",15.2,5,97,A,65725
+3265,Eli Wallach,actor,"A Primetime Emmy win, 3 Primetime Emmy nominations and a Golden Globe nomination, 1956 to 2010",15.2,5,97,A,65725
 59174,America Ferrera,actor,"A Primetime Emmy win, a Golden Globe win and an Academy Award nomination, 2007 to 2024",15,4,91,A,64700
 10690,Anna Paquin,actor,"An Academy Award win and a Golden Globe win, 1994 to 2009",15,4,91,A,64700
+2195140,Ayo Edebiri,actor,"A Primetime Emmy win, a Golden Globe win and a Critics' Choice Award win, 2023",15,3,86,B,64700
 17064,Ben Whishaw,actor,"A Primetime Emmy win, a BAFTA Television Award win and 2 BAFTA Television Award nominations, 2009 to 2019",15,4,91,A,64700
 85895,Broderick Crawford,actor,"An Academy Award win and a Golden Globe win, 1950",15,3,86,B,64700
 2753,Burl Ives,actor,"An Academy Award win and a Golden Globe win, 1958 to 1959",15,3,86,B,64700
@@ -483,12 +519,14 @@ tmdb_person,name,job,recognition (Wikidata),weight,experience,capability,grade,a
 1036,Cybill Shepherd,actor,"3 Golden Globe wins, 1985 to 1995",15,4,91,A,64700
 17752,Donna Reed,actor,"An Academy Award win and a Golden Globe win, 1954 to 1962",15,3,86,B,64700
 776,Eddie Murphy,actor,"A Primetime Emmy win, a Golden Globe win and an Academy Award nomination, 2007 to 2020",15,4,91,A,64700
+587,Edward James Olmos,actor,"A Primetime Emmy win, a Golden Globe win and an Academy Award nomination, 1985 to 1989",15,3,86,B,64700
+39015,Eileen Brennan,actor,"A Primetime Emmy win, a Golden Globe win and an Academy Award nomination, 1981 to 1982",15,3,86,B,64700
 4885,Emmanuelle Béart,actor,"A César win and 5 César nominations, 1987 to 2001",15,4,91,A,64700
-1164,F. Murray Abraham,actor,"An Academy Award win and a Golden Globe win, 1985",15,3,86,B,64700
 7427,Felicity Huffman,actor,"A Primetime Emmy win, a Golden Globe win and an Academy Award nomination, 2005 to 2006",15,3,86,B,64700
 33,Gary Sinise,actor,"A Primetime Emmy win, a Golden Globe win and an Academy Award nomination, 1995 to 1998",15,3,86,B,64700
 24880,George Chakiris,actor,"An Academy Award win and a Golden Globe win, 1962",15,3,86,B,64700
 1283,Helena Bonham Carter,actor,"A BAFTA Film Award win and 2 Academy Award nominations, 1998 to 2011",15,4,91,A,64700
+1241,John Turturro,actor,"A Cannes Festival prize win, a Primetime Emmy win and a Golden Globe nomination, 1991 to 2023",15,5,96,A,64700
 2667,Josephine Hull,actor,"An Academy Award win and a Golden Globe win, 1950 to 1951",15,3,86,B,64700
 9642,Jude Law,actor,"A BAFTA Film Award win and 2 Academy Award nominations, 2000 to 2004",15,3,86,B,64700
 9066,Judy Garland,actor,"A Golden Globe win, 2 Academy Award nominations and a Golden Globe nomination, 1954 to 1962",15,3,86,B,64700
@@ -496,10 +534,14 @@ tmdb_person,name,job,recognition (Wikidata),weight,experience,capability,grade,a
 10539,Kim Hunter,actor,"An Academy Award win and a Golden Globe win, 1951 to 1952",15,3,86,B,64700
 205,Kirsten Dunst,actor,"A Cannes Festival prize win, a Critics' Choice Award win and an Academy Award nomination, 2011 to 2022",15,4,91,A,64700
 18391,Lee Marvin,actor,"An Academy Award win and a Golden Globe win, 1965 to 1966",15,3,86,B,64700
+11493,Leslie Howard,actor,"A Venice Festival prize win and 2 Academy Award nominations, 1934 to 1939",15,3,86,B,64700
 113223,Linda Lavin,actor,"3 Golden Globe wins, 1978 to 1980",15,3,86,B,64700
 2167,Mercedes Ruehl,actor,"An Academy Award win and a Golden Globe win, 1992",15,3,86,B,64700
+17288,Michael Fassbender,actor,"A Venice Festival prize win and 2 Academy Award nominations, 2011 to 2016",15,3,86,B,64700
 17498,Niels Arestrup,actor,"3 César wins, 2006 to 2014",15,3,86,B,64700
 3019,Olympia Dukakis,actor,"An Academy Award win and a Golden Globe win, 1987 to 1988",15,3,86,B,64700
+2092,Paul Lukas,actor,"An Academy Award win and a Golden Globe win, 1944",15,3,86,B,64700
+1294982,Paul Walter Hauser,actor,"A Primetime Emmy win, a Golden Globe win and a Critics' Choice Award win, 2022 to 2023",15,3,86,B,64700
 6250,Romy Schneider,actor,"A César win, a Golden Globe nomination and 4 César nominations, 1963 to 1983",15,5,96,A,64700
 19161,Sandrine Bonnaire,actor,"A César win and 5 César nominations, 1986 to 2000",15,4,91,A,64700
 4430,Sharon Stone,actor,"A Primetime Emmy win, a Golden Globe win and an Academy Award nomination, 1995 to 2004",15,3,86,B,64700
@@ -511,7 +553,7 @@ tmdb_person,name,job,recognition (Wikidata),weight,experience,capability,grade,a
 40036,Taraji P. Henson,actor,"An Academy Award nomination, 3 Screen Actors Guild Award nominations and a Primetime Emmy nomination, 2008 to 2011",14.8,3,86,B,63675
 120582,Valerie Bertinelli,actor,"2 Golden Globe wins, a Screen Actors Guild Award nomination and a Golden Globe nomination, 1981 to 2011",14.8,5,96,A,63675
 36819,Hayley Mills,actor,"A Golden Globe win, 2 BAFTA Film Award nominations and 2 Golden Globe nominations, 1961 to 1964",14.6,3,86,B,62675
-41232,Jessica Walter,actor,"A Primetime Emmy win and 3 Screen Actors Guild Award nominations, 1975 to 2013",14.4,5,96,A,61650
+1240487,Kate McKinnon,actor,"2 Primetime Emmy wins and a Primetime Emmy nomination, 2014 to 2017",14.4,3,86,B,61650
 2165,Rosanna Arquette,actor,"A BAFTA Film Award win, a BAFTA Film Award nomination, a Primetime Emmy nomination and a Golden Globe nomination, 1983 to 1987",14.2,3,85,B,60650
 125841,Alice Brady,actor,"An Academy Award win and an Academy Award nomination, 1937 to 1938",14,3,85,B,59650
 10400,Barbra Streisand,actor,"An Academy Award win and an Academy Award nomination, 1969 to 1974",14,3,85,B,59650
@@ -520,7 +562,6 @@ tmdb_person,name,job,recognition (Wikidata),weight,experience,capability,grade,a
 19278,Bill Hader,actor,"2 Primetime Emmy wins and a Golden Globe nomination, 2018 to 2023",14,3,85,B,59650
 16523,Burgess Meredith,actor,"A Primetime Emmy win and 2 Academy Award nominations, 1976 to 1977",14,3,85,B,59650
 44831,Carrie Snodgress,actor,"2 Golden Globe wins and an Academy Award nomination, 1970 to 1971",14,3,85,B,59650
-41517,Christian Clemenson,actor,"A Primetime Emmy win, 2 Screen Actors Guild Award nominations and a Primetime Emmy nomination, 2006 to 2009",14,3,85,B,59650
 56819,Dudley Moore,actor,"2 Golden Globe wins and an Academy Award nomination, 1982 to 1985",14,3,85,B,59650
 8254,Edmond O'Brien,actor,"An Academy Award win and an Academy Award nomination, 1955 to 1965",14,4,90,A,59650
 9126,Edward Fox,actor,"2 BAFTA Film Award wins, 1972 to 1978",14,3,85,B,59650
@@ -533,14 +574,16 @@ tmdb_person,name,job,recognition (Wikidata),weight,experience,capability,grade,a
 77081,Gloria Grahame,actor,"An Academy Award win and an Academy Award nomination, 1948 to 1953",14,3,85,B,59650
 18892,Goldie Hawn,actor,"An Academy Award win and an Academy Award nomination, 1970 to 1981",14,4,90,A,59650
 4958,Henry Fonda,actor,"An Academy Award win and an Academy Award nomination, 1941 to 1982",14,5,95,A,59650
+3291,Hugh Grant,actor,"A BAFTA Film Award win and a Venice Festival prize win, 1987 to 1995",14,3,85,B,59650
 10021,Hugh Griffith,actor,"An Academy Award win and an Academy Award nomination, 1960 to 1964",14,3,85,B,59650
+5251,Jack Warden,actor,"A Primetime Emmy win and 2 Academy Award nominations, 1972 to 1979",14,3,85,B,59650
 9088,Janet Gaynor,actor,"An Academy Award win and an Academy Award nomination, 1929 to 1938",14,3,85,B,59650
 3234,Joan Cusack,actor,"A Primetime Emmy win and 2 Academy Award nominations, 1989 to 2015",14,5,95,A,59650
 23709,Joan Plowright,actor,"2 Golden Globe wins and an Academy Award nomination, 1993",14,3,85,B,59650
 6949,John Malkovich,actor,"A Primetime Emmy win and 2 Academy Award nominations, 1985 to 1994",14,3,85,B,59650
-381,Katherine Helmond,actor,"2 Golden Globe wins and 2 Golden Globe nominations, 1980 to 1989",14,3,85,B,59650
 3391,Kathleen Turner,actor,"2 Golden Globe wins and an Academy Award nomination, 1984 to 1987",14,3,85,B,59650
 11181,Kenneth Branagh,actor,"A Primetime Emmy win and 2 Academy Award nominations, 1990 to 2012",14,5,95,A,59650
+67676,Kenneth More,actor,"A BAFTA Film Award win and a Venice Festival prize win, 1955",14,3,85,B,59650
 2192,Lambert Wilson,actor,"7 César nominations, 1985 to 2021",14,5,95,A,59650
 855,Lee Remick,actor,"2 Golden Globe wins and an Academy Award nomination, 1963 to 1975",14,4,90,A,59650
 66776,Liza Minnelli,actor,"An Academy Award win and an Academy Award nomination, 1970 to 1973",14,3,85,B,59650
@@ -549,8 +592,10 @@ tmdb_person,name,job,recognition (Wikidata),weight,experience,capability,grade,a
 40954,Maria Schell,actor,"A Cannes Festival prize win and a Venice Festival prize win, 1954 to 1956",14,3,85,B,59650
 89610,Marie Dressler,actor,"An Academy Award win and an Academy Award nomination, 1931 to 1932",14,3,85,B,59650
 100047,Mary Pickford,actor,"An Academy Award win and an Academy Award nomination, 1929 to 1930",14,3,85,B,59650
+8654,Matthew Modine,actor,"A Screen Actors Guild Award win and a Venice Festival prize win, 1983 to 2017",14,5,95,A,59650
 18737,Mercedes McCambridge,actor,"An Academy Award win and an Academy Award nomination, 1950 to 1957",14,3,85,B,59650
 29903,Peter Finch,actor,"An Academy Award win and an Academy Award nomination, 1972 to 1977",14,3,85,B,59650
+8949,Peter Fonda,actor,"2 Golden Globe wins and an Academy Award nomination, 1998 to 2000",14,3,85,B,59650
 23119,Peter Krause,actor,"2 Screen Actors Guild Award wins, 2003 to 2004",14,3,85,B,59650
 40008,Ray McAnally,actor,"2 BAFTA Film Award wins, 1987 to 1990",14,3,85,B,59650
 35321,Rex Harrison,actor,"An Academy Award win and an Academy Award nomination, 1964 to 1965",14,3,85,B,59650
@@ -561,10 +606,11 @@ tmdb_person,name,job,recognition (Wikidata),weight,experience,capability,grade,a
 30495,Victor McLaglen,actor,"An Academy Award win and an Academy Award nomination, 1936 to 1953",14,4,90,A,59650
 110,Viggo Mortensen,actor,"3 Academy Award nominations and a Golden Globe nomination, 2008 to 2019",14,4,90,A,59650
 14830,Vincent Gardenia,actor,"A Primetime Emmy win and 2 Academy Award nominations, 1974 to 1990",14,4,90,A,59650
-29260,Wallace Beery,actor,"An Academy Award win and an Academy Award nomination, 1930 to 1932",14,3,85,B,59650
+15413,Richard Dysart,actor,"A Primetime Emmy win and 3 Primetime Emmy nominations, 1989 to 1992",13.2,3,84,B,55725
 71070,Amanda Seyfried,actor,"A Golden Globe win, a Critics' Choice Award win and an Academy Award nomination, 2021 to 2023",13,3,84,B,54750
 1290466,Barry Keoghan,actor,"A BAFTA Film Award win, an Academy Award nomination and a Golden Globe nomination, 2023",13,3,84,B,54750
 6657,Bibi Andersson,actor,"A Cannes Festival prize win and a Berlin Silver Bear win, 1958 to 1963",13,3,84,B,54750
+11870,Christine Baranski,actor,"A Screen Actors Guild Award win and a Primetime Emmy win, 1995 to 1996",13,3,84,B,54750
 24903,Claude Rich,actor,"A César win and 4 César nominations, 1993 to 2013",13,5,94,A,54750
 119589,Donald Glover,actor,"A Primetime Emmy win, a Golden Globe win and a Golden Globe nomination, 2017 to 2023",13,3,84,B,54750
 2926,Elsa Lanchester,actor,"A Golden Globe win and 2 Academy Award nominations, 1950 to 1958",13,3,84,B,54750
@@ -576,7 +622,7 @@ tmdb_person,name,job,recognition (Wikidata),weight,experience,capability,grade,a
 14464,Jenny Agutter,actor,"A BAFTA Film Award win and a Primetime Emmy win, 1972 to 1978",13,3,84,B,54750
 8930,John Cleese,actor,"A BAFTA Film Award win and a Primetime Emmy win, 1987 to 1989",13,3,84,B,54750
 8891,John Travolta,actor,"A Golden Globe win and 2 Academy Award nominations, 1978 to 1996",13,4,89,A,54750
-1241,John Turturro,actor,"A Cannes Festival prize win and a Primetime Emmy win, 1991 to 2004",13,4,89,A,54750
+378,Jonathan Pryce,actor,"A Cannes Festival prize win, an Academy Award nomination and a Golden Globe nomination, 1995 to 2023",13,5,94,A,54750
 25541,Katherine Heigl,actor,"A Screen Actors Guild Award win and a Primetime Emmy win, 2007",13,3,84,B,54750
 9015,Kelly Macdonald,actor,"A Screen Actors Guild Award win and a Primetime Emmy win, 2006 to 2012",13,3,84,B,54750
 62105,Kerry Condon,actor,"A BAFTA Film Award win, an Academy Award nomination and a Golden Globe nomination, 2023",13,3,84,B,54750
@@ -584,6 +630,7 @@ tmdb_person,name,job,recognition (Wikidata),weight,experience,capability,grade,a
 11916,Liv Ullmann,actor,"A Golden Globe win and 2 Academy Award nominations, 1973 to 1977",13,3,84,B,54750
 3784,Michel Piccoli,actor,"A Cannes Festival prize win and a Berlin Silver Bear win, 1980 to 1982",13,3,84,B,54750
 27888,Raul Julia,actor,"A Screen Actors Guild Award win and a Primetime Emmy win, 1994 to 1995",13,3,84,B,54750
+741,River Phoenix,actor,"A Venice Festival prize win, an Academy Award nomination and a Golden Globe nomination, 1988 to 1991",13,3,84,B,54750
 20442,Roschdy Zem,actor,"A César win and 4 César nominations, 2000 to 2023",13,5,94,A,54750
 2206,Samantha Morton,actor,"A Golden Globe win and 2 Academy Award nominations, 2000 to 2007",13,3,84,B,54750
 81821,Sandrine Kiberlain,actor,"A César win and 4 César nominations, 1998 to 2015",13,4,89,A,54750
@@ -591,20 +638,24 @@ tmdb_person,name,job,recognition (Wikidata),weight,experience,capability,grade,a
 9030,Thandiwe Newton,actor,"A BAFTA Film Award win and a Primetime Emmy win, 2006 to 2018",13,4,89,A,54750
 3129,Tim Roth,actor,"A BAFTA Film Award win, an Academy Award nomination and a Golden Globe nomination, 1995 to 1996",13,3,84,B,54750
 39740,Yvonne Mitchell,actor,"A BAFTA Film Award win and a Berlin Silver Bear win, 1955 to 1957",13,3,84,B,54750
-3896,Liam Neeson,actor,"An Academy Award nomination, a BAFTA Film Award nomination and 3 Golden Globe nominations, 1993 to 2004",12.8,4,88,A,53800
 127164,Phyllis Logan,actor,"A Screen Actors Guild Award win, a BAFTA Film Award nomination and a Screen Actors Guild Award nomination, 1984 to 2014",12.6,5,93,A,52850
 209674,RJ Mitte,actor,"A Screen Actors Guild Award win and 2 Screen Actors Guild Award nominations, 2012 to 2014",12.6,3,83,B,52850
 10083,Beatrice Straight,actor,"An Academy Award win and a Primetime Emmy nomination, 1977 to 1978",12.4,3,83,B,51875
 51544,Mare Winningham,actor,"A Primetime Emmy win, an Academy Award nomination and a Primetime Emmy nomination, 1980 to 1998",12.4,4,88,A,51875
-1023139,Adam Driver,actor,"2 Academy Award nominations, a Golden Globe nomination and a César nomination, 2019 to 2023",12,3,82,B,50000
 14606,Albert Dupontel,actor,"6 César nominations, 1997 to 2021",12,5,92,A,50000
+14736,Albert Paulsen,actor,"2 Primetime Emmy wins, 1964",12,3,82,B,50000
+24357,Alex Borstein,actor,"2 Primetime Emmy wins, 2018 to 2019",12,3,82,B,50000
 6861,Andre Braugher,actor,"2 Primetime Emmy wins, 1998 to 2006",12,3,82,B,50000
+125110,Ann B. Davis,actor,"2 Primetime Emmy wins, 1958 to 1959",12,3,82,B,50000
 134531,Anna Gunn,actor,"2 Primetime Emmy wins, 2013 to 2014",12,3,82,B,50000
+10739,Bebe Neuwirth,actor,"2 Primetime Emmy wins, 1990 to 1991",12,3,82,B,50000
 10401,Blythe Danner,actor,"2 Primetime Emmy wins, 2005 to 2006",12,3,82,B,50000
+21127,Bobby Cannavale,actor,"2 Primetime Emmy wins, 2005 to 2013",12,3,82,B,50000
 32479,Bonnie Bartlett,actor,"2 Primetime Emmy wins, 1986 to 1987",12,3,82,B,50000
 2039,Brendan Gleeson,actor,"A Primetime Emmy win, an Academy Award nomination and a Golden Globe nomination, 2009 to 2023",12,4,87,A,50000
 2744,Carmen Maura,actor,"A Cannes Festival prize win and a César win, 2006 to 2012",12,3,82,B,50000
 30527,Charles Bickford,actor,"3 Academy Award nominations, 1944 to 1949",12,3,82,B,50000
+38024,Cynthia Nixon,actor,"2 Primetime Emmy wins, 2004 to 2008",12,3,82,B,50000
 65002,Dana Delany,actor,"2 Primetime Emmy wins, 1989 to 1992",12,3,82,B,50000
 36170,Daniel J. Travanti,actor,"2 Primetime Emmy wins, 1981 to 1982",12,3,82,B,50000
 26513,Debra Winger,actor,"3 Academy Award nominations, 1983 to 1994",12,4,87,A,50000
@@ -613,42 +664,59 @@ tmdb_person,name,job,recognition (Wikidata),weight,experience,capability,grade,a
 70746,Ed Flanders,actor,"2 Primetime Emmy wins, 1976 to 1983",12,3,82,B,50000
 36802,Elaine Stritch,actor,"2 Primetime Emmy wins, 1993 to 2007",12,4,87,A,50000
 7331,Eleanor Parker,actor,"3 Academy Award nominations, 1951 to 1956",12,3,82,B,50000
+156962,Eric Stonestreet,actor,"2 Primetime Emmy wins, 2010 to 2012",12,3,82,B,50000
+28255,Fabrice Luchini,actor,"A Venice Festival prize win and a César win, 1994 to 2015",12,5,92,A,50000
 3366,Gladys Cooper,actor,"3 Academy Award nominations, 1943 to 1965",12,5,92,A,50000
 19549,Greta Garbo,actor,"3 Academy Award nominations, 1930 to 1940",12,4,87,A,50000
 5587,Hank Azaria,actor,"2 Primetime Emmy wins, 2000 to 2016",12,4,87,A,50000
 58184,Jane Curtin,actor,"2 Primetime Emmy wins, 1984 to 1985",12,3,82,B,50000
-43775,Jane Lynch,actor,"2 Primetime Emmy wins, 2017 to 2019",12,3,82,B,50000
 21105,Jay Thomas,actor,"2 Primetime Emmy wins, 1990 to 1991",12,3,82,B,50000
 8447,Jeff Daniels,actor,"2 Primetime Emmy wins, 2013 to 2018",12,3,82,B,50000
 4175,Jeffrey Tambor,actor,"2 Primetime Emmy wins, 2015 to 2016",12,3,82,B,50000
 11669,Jimmy Fallon,actor,"2 Primetime Emmy wins, 2012 to 2014",12,3,82,B,50000
 5589,John Glover,actor,"5 Primetime Emmy nominations, 1986 to 1994",12,3,82,B,50000
+69718,Jon Cryer,actor,"2 Primetime Emmy wins, 2009 to 2012",12,3,82,B,50000
 37920,Julie Depardieu,actor,"2 César wins and a César nomination, 2004 to 2008",12,3,82,B,50000
 12111,Justin Timberlake,actor,"2 Primetime Emmy wins, 2009 to 2011",12,3,82,B,50000
 106935,Kathryn Joosten,actor,"2 Primetime Emmy wins, 2005 to 2008",12,3,82,B,50000
+13635,Kristen Johnston,actor,"2 Primetime Emmy wins, 1997 to 1999",12,3,82,B,50000
 42195,Kristy McNichol,actor,"2 Primetime Emmy wins, 1977 to 1979",12,3,82,B,50000
+16476,Larry Drake,actor,"2 Primetime Emmy wins, 1988 to 1989",12,3,82,B,50000
 5248,Lee J. Cobb,actor,"2 Academy Award nominations and 2 Golden Globe nominations, 1955 to 1963",12,3,82,B,50000
-5676,Marcello Mastroianni,actor,"3 Academy Award nominations, 1963 to 1988",12,5,92,A,50000
+55428,Loretta Swit,actor,"2 Primetime Emmy wins, 1980 to 1982",12,3,82,B,50000
 8789,Mathieu Amalric,actor,"2 César wins and a César nomination, 2005 to 2014",12,3,82,B,50000
 1892,Matt Damon,actor,"3 Academy Award nominations, 1998 to 2016",12,4,87,A,50000
-21030,Michael Moriarty,actor,"2 Primetime Emmy wins, 1978 to 2002",12,5,92,A,50000
+52119,Megan Mullally,actor,"2 Primetime Emmy wins, 2000 to 2006",12,3,82,B,50000
+28044,Merritt Wever,actor,"2 Primetime Emmy wins, 2013 to 2018",12,3,82,B,50000
+40390,Michael Conrad,actor,"2 Primetime Emmy wins, 1981 to 1982",12,3,82,B,50000
+2136,Michael Emerson,actor,"2 Primetime Emmy wins, 2001 to 2009",12,3,82,B,50000
 21175,Michel Blanc,actor,"A Cannes Festival prize win and a César win, 1986 to 2012",12,5,92,A,50000
+160239,Nanette Fabray,actor,"2 Primetime Emmy wins, 1956 to 1957",12,3,82,B,50000
 49168,Noémie Lvovsky,actor,"6 César nominations, 2002 to 2013",12,4,87,A,50000
 26996,Patricia Heaton,actor,"2 Primetime Emmy wins, 2000 to 2001",12,3,82,B,50000
 34581,Patrick Dewaere,actor,"6 César nominations, 1976 to 1982",12,3,82,B,50000
 2463,Patrick McGoohan,actor,"2 Primetime Emmy wins, 1975 to 1990",12,4,87,A,50000
+4093,Ray Walston,actor,"2 Primetime Emmy wins, 1995 to 1996",12,3,82,B,50000
 58661,Richard Mulligan,actor,"2 Primetime Emmy wins, 1980 to 1989",12,3,82,B,50000
+3026,Rob Reiner,actor,"2 Primetime Emmy wins, 1974 to 1978",12,3,82,B,50000
+8294,Robert Guillaume,actor,"2 Primetime Emmy wins, 1979 to 1985",12,3,82,B,50000
+49352,Sally Struthers,actor,"2 Primetime Emmy wins, 1972 to 1979",12,3,82,B,50000
 20667,Sami Bouajila,actor,"2 César wins and a César nomination, 2008 to 2021",12,4,87,A,50000
 73177,Sharon Gless,actor,"2 Primetime Emmy wins, 1986 to 1987",12,3,82,B,50000
+41406,Stuart Margolin,actor,"2 Primetime Emmy wins, 1979 to 1980",12,3,82,B,50000
+83974,Susan Saint James,actor,"2 Primetime Emmy wins, 1969",12,3,82,B,50000
 12836,Ted Danson,actor,"2 Primetime Emmy wins, 1990 to 1993",12,3,82,B,50000
+71146,Ted Knight,actor,"2 Primetime Emmy wins, 1973 to 1976",12,3,82,B,50000
 83414,Tim Conway,actor,"2 Primetime Emmy wins, 1996 to 2008",12,4,87,A,50000
+25147,Tony Hale,actor,"2 Primetime Emmy wins, 2013 to 2015",12,3,82,B,50000
 40206,Tony Randall,actor,"A Primetime Emmy win and 3 Golden Globe nominations, 1975 to 1982",12,3,82,B,50000
 30364,Tracey Ullman,actor,"2 Primetime Emmy wins, 1993 to 1999",12,3,82,B,50000
+15232,Ty Burrell,actor,"2 Primetime Emmy wins, 2011 to 2014",12,3,82,B,50000
+5443,Vincent Lindon,actor,"A Venice Festival prize win and a César win, 2016 to 2024",12,3,82,B,50000
 31895,Virna Lisi,actor,"A Cannes Festival prize win and a César win, 1994 to 1995",12,3,82,B,50000
 22137,Viveca Lindfors,actor,"A Berlin Silver Bear win and a Primetime Emmy win, 1962 to 1990",12,5,92,A,50000
 10775,William Daniels,actor,"2 Primetime Emmy wins, 1985 to 1986",12,3,82,B,50000
 32428,William Powell,actor,"3 Academy Award nominations, 1935 to 1948",12,4,87,A,50000
-57755,Woody Harrelson,actor,"3 Academy Award nominations, 1997 to 2018",12,5,92,A,50000
 2415,Yolande Moreau,actor,"2 César wins and a César nomination, 2005 to 2013",12,3,82,B,50000
 14528,Yul Brynner,actor,"An Academy Award win and a Golden Globe nomination, 1956 to 1957",12,3,82,B,50000
 9827,Rose Byrne,actor,"A Venice Festival prize win and 2 Primetime Emmy nominations, 2000 to 2010",11.8,4,87,A,49075
@@ -669,20 +737,22 @@ tmdb_person,name,job,recognition (Wikidata),weight,experience,capability,grade,a
 1350,Irène Jacob,actor,"A Cannes Festival prize win and 2 César nominations, 1991 to 1995",11,3,81,B,45375
 4166,Isabelle Carré,actor,"A César win and 3 César nominations, 2003 to 2011",11,3,81,B,45375
 131,Jake Gyllenhaal,actor,"A BAFTA Film Award win and an Academy Award nomination, 2005 to 2006",11,3,81,B,45375
-378,Jonathan Pryce,actor,"A Cannes Festival prize win and an Academy Award nomination, 1995 to 2020",11,5,91,A,45375
 1505938,Karla Sofía Gascón,actor,"A Cannes Festival prize win and an Academy Award nomination, 2024 to 2025",11,3,81,B,45375
 4069,Katy Jurado,actor,"A Golden Globe win, an Academy Award nomination and a Golden Globe nomination, 1952 to 1955",11,3,81,B,45375
 29902,Melina Mercouri,actor,"A Cannes Festival prize win and an Academy Award nomination, 1960 to 1961",11,3,81,B,45375
 7640,Michael Redgrave,actor,"A Cannes Festival prize win and an Academy Award nomination, 1948 to 1951",11,3,81,B,45375
 24485,Nicole Garcia,actor,"A César win and 3 César nominations, 1980 to 1986",11,3,81,B,45375
+78618,Pat Harrington Jr.,actor,"A Primetime Emmy win and a Golden Globe win, 1980 to 1984",11,3,81,B,45375
 1023483,Phoebe Waller-Bridge,actor,"A Primetime Emmy win and a Golden Globe win, 2019",11,3,81,B,45375
 15758,Queen Latifah,actor,"A Screen Actors Guild Award win and an Academy Award nomination, 2003 to 2008",11,3,81,B,45375
 1745988,Quinta Brunson,actor,"A Primetime Emmy win and a Golden Globe win, 2023",11,3,81,B,45375
 46780,Samantha Eggar,actor,"A Cannes Festival prize win and an Academy Award nomination, 1965 to 1966",11,3,81,B,45375
 520,Sarah Jessica Parker,actor,"A Primetime Emmy win and a Golden Globe win, 2004",11,3,81,B,45375
+1640,Stellan Skarsgård,actor,"A Berlin Silver Bear win and a Golden Globe win, 1982 to 2020",11,5,91,A,45375
 28641,Terence Stamp,actor,"A Cannes Festival prize win and an Academy Award nomination, 1963 to 1965",11,3,81,B,45375
 556356,Vanessa Kirby,actor,"A Venice Festival prize win and an Academy Award nomination, 2020 to 2021",11,3,81,B,45375
 83797,Vincent Lacoste,actor,"A César win and 3 César nominations, 2015 to 2022",11,3,81,B,45375
+1281,Freddie Highmore,actor,"2 Critics' Choice Award wins and a Screen Actors Guild Award nomination, 2005 to 2006",10.8,3,80,B,44475
 71240,Leigh Taylor-Young,actor,"A Primetime Emmy win, a Screen Actors Guild Award nomination and a Golden Globe nomination, 1968 to 1995",10.8,5,90,A,44475
 72305,Lesley Manville,actor,"An Academy Award nomination, a BAFTA Film Award nomination, a Golden Globe nomination and a BAFTA Television Award nomination, 2011 to 2023",10.8,4,85,A,44475
 3829,Jean-Paul Belmondo,actor,"A César win and 2 BAFTA Film Award nominations, 1963 to 1989",10.6,5,90,A,43575
@@ -699,7 +769,6 @@ tmdb_person,name,job,recognition (Wikidata),weight,experience,capability,grade,a
 1532,Bill Murray,actor,"A Primetime Emmy win and an Academy Award nomination, 2004 to 2015",10,4,84,A,40925
 18345,Brenda Fricker,actor,"An Academy Award win, 1990",10,3,79,B,40925
 16475,Burt Reynolds,actor,"A Primetime Emmy win and an Academy Award nomination, 1991 to 1998",10,3,79,B,40925
-10556,Carol Kane,actor,"A Primetime Emmy win and an Academy Award nomination, 1976 to 1982",10,3,79,B,40925
 5887,Catalina Sandino Moreno,actor,"A Berlin Silver Bear win and an Academy Award nomination, 2004 to 2005",10,3,79,B,40925
 10017,Charlton Heston,actor,"An Academy Award win, 1960",10,3,79,B,40925
 77133,Christine Lahti,actor,"A Primetime Emmy win and an Academy Award nomination, 1985 to 1998",10,4,84,A,40925
@@ -707,11 +776,9 @@ tmdb_person,name,job,recognition (Wikidata),weight,experience,capability,grade,a
 70668,Danny Kaye,actor,"2 Golden Globe wins, 1951 to 1959",10,3,79,B,40925
 12640,David Duchovny,actor,"2 Golden Globe wins, 1997 to 2008",10,4,84,A,40925
 29313,Dean Jagger,actor,"An Academy Award win, 1950",10,3,79,B,40925
-18156,Don Ameche,actor,"An Academy Award win, 1986",10,3,79,B,40925
 8841,Donald Crisp,actor,"An Academy Award win, 1942",10,3,79,B,40925
 10487,Dorothy Malone,actor,"An Academy Award win, 1957",10,3,79,B,40925
 39816,Ed Begley,actor,"An Academy Award win, 1963",10,3,79,B,40925
-2895,Emil Jannings,actor,"An Academy Award win, 1929",10,3,79,B,40925
 1212070,Eva Le Gallienne,actor,"A Primetime Emmy win and an Academy Award nomination, 1978 to 1981",10,3,79,B,40925
 10055,Fernanda Montenegro,actor,"A Berlin Silver Bear win and an Academy Award nomination, 1998 to 1999",10,3,79,B,40925
 3460,Gene Wilder,actor,"A Primetime Emmy win and an Academy Award nomination, 1969 to 2003",10,5,89,A,40925
@@ -725,9 +792,9 @@ tmdb_person,name,job,recognition (Wikidata),weight,experience,capability,grade,a
 13580,Harold Russell,actor,"An Academy Award win, 1947",10,3,79,B,40925
 11498,Hattie McDaniel,actor,"An Academy Award win, 1940",10,3,79,B,40925
 58691,Heather Locklear,actor,"5 Golden Globe nominations, 1994 to 1999",10,3,79,B,40925
-41419,Hugh Laurie,actor,"2 Golden Globe wins, 2006 to 2007",10,3,79,B,40925
 35323,Jacques Villeret,actor,"2 César wins, 1979 to 1999",10,5,89,A,40925
 5563,James Coburn,actor,"An Academy Award win, 1999",10,3,79,B,40925
+41220,James Coco,actor,"A Primetime Emmy win and an Academy Award nomination, 1982 to 1983",10,3,79,B,40925
 2505,James Cromwell,actor,"A Primetime Emmy win and an Academy Award nomination, 1996 to 2013",10,4,84,A,40925
 131618,James Dunn,actor,"An Academy Award win, 1946",10,3,79,B,40925
 8515,Jane Darwell,actor,"An Academy Award win, 1941",10,3,79,B,40925
@@ -740,7 +807,6 @@ tmdb_person,name,job,recognition (Wikidata),weight,experience,capability,grade,a
 11859,John Mills,actor,"An Academy Award win, 1971",10,3,79,B,40925
 24820,Joseph Schildkraut,actor,"An Academy Award win, 1938",10,3,79,B,40925
 85651,Judy Holliday,actor,"An Academy Award win, 1951",10,3,79,B,40925
-73249,Lee Jung-jae,actor,"A Primetime Emmy win and a Critics' Choice Award win, 2022",10,3,79,B,40925
 45523,Lila Kedrova,actor,"An Academy Award win, 1965",10,3,79,B,40925
 10437,Lily Tomlin,actor,"A Berlin Silver Bear win and an Academy Award nomination, 1976 to 1977",10,3,79,B,40925
 12516,Linda Hunt,actor,"An Academy Award win, 1984",10,3,79,B,40925
@@ -758,14 +824,14 @@ tmdb_person,name,job,recognition (Wikidata),weight,experience,capability,grade,a
 12969,Mildred Natwick,actor,"A Primetime Emmy win and an Academy Award nomination, 1968 to 1974",10,3,79,B,40925
 23931,Mira Sorvino,actor,"An Academy Award win, 1996",10,3,79,B,40925
 124933,Miyoshi Umeki,actor,"An Academy Award win, 1958",10,3,79,B,40925
-2092,Paul Lukas,actor,"An Academy Award win, 1944",10,3,79,B,40925
-1294982,Paul Walter Hauser,actor,"A Primetime Emmy win and a Critics' Choice Award win, 2023",10,3,79,B,40925
 1818,Paul Winfield,actor,"A Primetime Emmy win and an Academy Award nomination, 1973 to 1995",10,5,89,A,40925
 24816,Pierre Arditi,actor,"2 César wins, 1987 to 1994",10,3,79,B,40925
 7503,Red Buttons,actor,"An Academy Award win, 1958",10,3,79,B,40925
+9626,Rip Torn,actor,"A Primetime Emmy win and an Academy Award nomination, 1984 to 1996",10,4,84,A,40925
 13299,Rita Moreno,actor,"An Academy Award win, 1962",10,3,79,B,40925
 53240,Riz Ahmed,actor,"A Primetime Emmy win and an Academy Award nomination, 2017 to 2021",10,3,79,B,40925
 2493,Robert Stack,actor,"A Primetime Emmy win and an Academy Award nomination, 1957 to 1960",10,3,79,B,40925
+14060,Robert Vaughn,actor,"A Primetime Emmy win and an Academy Award nomination, 1960 to 1978",10,4,84,A,40925
 10882,Rosamund Pike,actor,"A Primetime Emmy win and an Academy Award nomination, 2015 to 2019",10,3,79,B,40925
 15532,Ruby Dee,actor,"A Primetime Emmy win and an Academy Award nomination, 1991 to 2008",10,4,84,A,40925
 18365,Sandy Dennis,actor,"An Academy Award win, 1967",10,3,79,B,40925
@@ -786,17 +852,16 @@ tmdb_person,name,job,recognition (Wikidata),weight,experience,capability,grade,a
 178058,Karen Robinson,actor,"A Screen Actors Guild Award win and a Screen Actors Guild Award nomination, 2020 to 2021",9.8,3,78,B,40050
 168283,Vonda Shepard,actor,"A Screen Actors Guild Award win and a Screen Actors Guild Award nomination, 1999 to 2001",9.8,3,78,B,40050
 3150,Tony Curtis,actor,"An Academy Award nomination and 2 BAFTA Film Award nominations, 1958 to 1959",9.6,3,78,B,39175
-3265,Eli Wallach,actor,"3 Primetime Emmy nominations and a Golden Globe nomination, 1956 to 2010",9.2,5,87,A,37475
+15531,Ossie Davis,actor,"3 Primetime Emmy nominations and a Golden Globe nomination, 1968 to 2005",9.2,5,87,A,37475
+40529,Alexander Knox,actor,"A Golden Globe win and an Academy Award nomination, 1944 to 1945",9,3,77,B,36625
 23882,Amy Madigan,actor,"A Golden Globe win and an Academy Award nomination, 1986 to 1989",9,3,77,B,36625
 125660,Andrew Scott,actor,"A BAFTA Television Award win and a Critics' Choice Award win, 2012 to 2019",9,3,77,B,36625
 39350,Anémone,actor,"A César win and 2 César nominations, 1988 to 1995",9,3,77,B,36625
 86654,Austin Butler,actor,"A Golden Globe win and an Academy Award nomination, 2023",9,3,77,B,36625
-2195140,Ayo Edebiri,actor,"A Golden Globe win and a Critics' Choice Award win, 2023",9,3,77,B,36625
 97832,Carol Channing,actor,"A Golden Globe win and an Academy Award nomination, 1968",9,3,77,B,36625
 10501,Chaim Topol,actor,"A Golden Globe win and an Academy Award nomination, 1965 to 1972",9,3,77,B,36625
 2838,Chloë Sevigny,actor,"A Golden Globe win and an Academy Award nomination, 2000 to 2010",9,4,82,A,36625
 20158,Diahann Carroll,actor,"A Golden Globe win and an Academy Award nomination, 1968 to 1975",9,3,77,B,36625
-39015,Eileen Brennan,actor,"A Golden Globe win and an Academy Award nomination, 1981 to 1982",9,3,77,B,36625
 19117,Emmanuelle Devos,actor,"A César win and 2 César nominations, 2002 to 2018",9,4,82,A,36625
 35341,Geneviève Bujold,actor,"A Golden Globe win and an Academy Award nomination, 1969 to 1970",9,3,77,B,36625
 18364,George Segal,actor,"A Golden Globe win and an Academy Award nomination, 1967 to 1974",9,3,77,B,36625
@@ -822,7 +887,6 @@ tmdb_person,name,job,recognition (Wikidata),weight,experience,capability,grade,a
 96967,Pascale Ogier,actor,"A Venice Festival prize win and a César nomination, 1984 to 1985",9,3,77,B,36625
 2326151,Paul Mescal,actor,"A BAFTA Television Award win and an Academy Award nomination, 2021 to 2023",9,3,77,B,36625
 22109,Peter Firth,actor,"A Golden Globe win and an Academy Award nomination, 1977 to 1978",9,3,77,B,36625
-8949,Peter Fonda,actor,"A Golden Globe win and an Academy Award nomination, 1998",9,3,77,B,36625
 3052,Rachel Griffiths,actor,"A Golden Globe win and an Academy Award nomination, 1999 to 2001",9,3,77,B,36625
 1811,Randy Quaid,actor,"A Golden Globe win and an Academy Award nomination, 1974 to 1988",9,4,82,A,36625
 89626,Reda Kateb,actor,"A César win and 2 César nominations, 2015 to 2020",9,3,77,B,36625
@@ -869,7 +933,8 @@ tmdb_person,name,job,recognition (Wikidata),weight,experience,capability,grade,a
 569,Ethan Hawke,actor,"2 Academy Award nominations, 2002 to 2015",8,4,80,A,32475
 72855,Felicity Jones,actor,"2 Academy Award nominations, 2015 to 2025",8,4,80,A,32475
 9067,Frank Morgan,actor,"2 Academy Award nominations, 1935 to 1943",8,3,75,B,32475
-5251,Jack Warden,actor,"2 Academy Award nominations, 1976 to 1979",8,3,75,B,32475
+2559506,Hannah Einbinder,actor,"A Primetime Emmy win and a Golden Globe nomination, 2023 to 2025",8,3,75,B,32475
+31903,Henry Winkler,actor,"A Primetime Emmy win and a Golden Globe nomination, 2018 to 2023",8,3,75,B,32475
 67837,Jacki Weaver,actor,"2 Academy Award nominations, 2011 to 2013",8,3,75,B,32475
 2749,James Dean,actor,"2 Academy Award nominations, 1956 to 1957",8,3,75,B,32475
 47627,Janet McTeer,actor,"2 Academy Award nominations, 2000 to 2012",8,4,80,A,32475
@@ -880,7 +945,6 @@ tmdb_person,name,job,recognition (Wikidata),weight,experience,capability,grade,a
 37441,Joyce Redman,actor,"2 Academy Award nominations, 1964 to 1966",8,3,75,B,32475
 116,Keira Knightley,actor,"2 Academy Award nominations, 2006 to 2015",8,3,75,B,32475
 17286,Lena Headey,actor,"2 Screen Actors Guild Award nominations and a Primetime Emmy nomination, 2012 to 2014",8,3,75,B,32475
-11493,Leslie Howard,actor,"2 Academy Award nominations, 1934 to 1939",8,3,75,B,32475
 14873,Maria Ouspenskaya,actor,"2 Academy Award nominations, 1937 to 1940",8,3,75,B,32475
 76820,Marina Foïs,actor,"4 César nominations, 2008 to 2018",8,4,80,A,32475
 83235,Marjorie Rambeau,actor,"2 Academy Award nominations, 1941 to 1954",8,4,80,A,32475
@@ -889,7 +953,6 @@ tmdb_person,name,job,recognition (Wikidata),weight,experience,capability,grade,a
 2201,Max von Sydow,actor,"2 Academy Award nominations, 1989 to 2012",8,5,85,A,32475
 14299,May Whitty,actor,"2 Academy Award nominations, 1938 to 1943",8,3,75,B,32475
 4778,Melinda Dillon,actor,"2 Academy Award nominations, 1978 to 1982",8,3,75,B,32475
-17288,Michael Fassbender,actor,"2 Academy Award nominations, 2014 to 2016",8,3,75,B,32475
 335,Michael Shannon,actor,"2 Academy Award nominations, 2009 to 2017",8,3,75,B,32475
 68642,Mildred Dunnock,actor,"2 Academy Award nominations, 1952 to 1957",8,3,75,B,32475
 93123,Monty Woolley,actor,"2 Academy Award nominations, 1943 to 1945",8,3,75,B,32475
@@ -905,6 +968,7 @@ tmdb_person,name,job,recognition (Wikidata),weight,experience,capability,grade,a
 31070,Ryan O'Neal,actor,"An Academy Award nomination and 2 Golden Globe nominations, 1970 to 1973",8,3,75,B,32475
 2770,Sal Mineo,actor,"2 Academy Award nominations, 1956 to 1961",8,3,75,B,32475
 39658,Sally Hawkins,actor,"2 Academy Award nominations, 2014 to 2018",8,3,75,B,32475
+19274,Seth Rogen,actor,"A Primetime Emmy win and a Golden Globe nomination, 2023 to 2025",8,3,75,B,32475
 1115,Stephen Graham,actor,"A Primetime Emmy win and a BAFTA Television Award nomination, 2016 to 2025",8,3,75,B,32475
 16483,Sylvester Stallone,actor,"2 Academy Award nominations, 1977 to 2016",8,5,85,A,32475
 19335,Sylvia Miles,actor,"2 Academy Award nominations, 1970 to 1976",8,3,75,B,32475
@@ -912,8 +976,11 @@ tmdb_person,name,job,recognition (Wikidata),weight,experience,capability,grade,a
 12308,Walter Pidgeon,actor,"2 Academy Award nominations, 1943 to 1944",8,3,75,B,32475
 5530,James McAvoy,actor,"2 BAFTA Film Award nominations and a Golden Globe nomination, 2007 to 2008",7.6,3,74,B,30875
 115440,Sydney Sweeney,actor,"A Screen Actors Guild Award nomination and 2 Primetime Emmy nominations, 2019 to 2022",7.6,3,74,B,30875
+55257,Adam Arkin,actor,"3 Primetime Emmy nominations, 1993 to 2002",7.2,3,73,B,29275
+1211888,Charles Nelson Reilly,actor,"3 Primetime Emmy nominations, 1970 to 1999",7.2,5,83,A,29275
 38940,Evan Rachel Wood,actor,"A Screen Actors Guild Award nomination, a Primetime Emmy nomination and a Golden Globe nomination, 2003 to 2011",7.2,3,73,B,29275
 27769,Harry Anderson,actor,"3 Primetime Emmy nominations, 1985 to 1987",7.2,3,73,B,29275
+151298,McLean Stevenson,actor,"3 Primetime Emmy nominations, 1973 to 1975",7.2,3,73,B,29275
 13725,Meredith Baxter,actor,"3 Primetime Emmy nominations, 1977 to 1992",7.2,4,78,B,29275
 31164,Adewale Akinnuoye-Agbaje,actor,"A Screen Actors Guild Award win, 2006",7,3,73,B,28500
 128748,Alba Rohrwacher,actor,"A Venice Festival prize win, 2014",7,3,73,B,28500
@@ -925,11 +992,13 @@ tmdb_person,name,job,recognition (Wikidata),weight,experience,capability,grade,a
 70182,Anne Brochet,actor,"A César win and a César nomination, 1991 to 1992",7,3,73,B,28500
 235125,Ariane Labed,actor,"A Venice Festival prize win, 2010",7,3,73,B,28500
 39024,Arthur Lowe,actor,"A BAFTA Film Award win, 1974",7,3,73,B,28500
+880,Ben Affleck,actor,"A Venice Festival prize win, 2006",7,3,73,B,28500
+37131,Bourvil,actor,"A Venice Festival prize win, 1956",7,3,73,B,28500
 2239159,Brady Noon,actor,"A Screen Actors Guild Award win, 2012",7,3,73,B,28500
 1683343,Cailee Spaeny,actor,"A Venice Festival prize win, 2023",7,3,73,B,28500
+94419,Carlo Delle Piane,actor,"A Venice Festival prize win, 1986",7,3,73,B,28500
 10500,Carole Bouquet,actor,"A César win and a César nomination, 1985 to 1990",7,3,73,B,28500
 25838,Caroline Cellier,actor,"A César win and a César nomination, 1985 to 1993",7,3,73,B,28500
-11870,Christine Baranski,actor,"A Screen Actors Guild Award win, 1996",7,3,73,B,28500
 3482,Chus Lampreave,actor,"A Cannes Festival prize win, 2006",7,3,73,B,28500
 14957,Colin Welland,actor,"A BAFTA Film Award win, 1971",7,3,73,B,28500
 14405,Courteney Cox,actor,"A Screen Actors Guild Award win, 1996",7,3,73,B,28500
@@ -944,6 +1013,7 @@ tmdb_person,name,job,recognition (Wikidata),weight,experience,capability,grade,a
 93109,Elena Cotta,actor,"A Venice Festival prize win, 2013",7,3,73,B,28500
 59269,Elio Germano,actor,"A Cannes Festival prize win, 2010",7,3,73,B,28500
 9280,Ellen Pompeo,actor,"A Screen Actors Guild Award win, 2007",7,3,73,B,28500
+1174514,Ermete Zacconi,actor,"A Venice Festival prize win, 1941",7,3,73,B,28500
 14821,Fernando Rey,actor,"A Cannes Festival prize win, 1977",7,3,73,B,28500
 9768,Francisco Rabal,actor,"A Cannes Festival prize win, 1984",7,3,73,B,28500
 27440,François Périer,actor,"A BAFTA Film Award win, 1957",7,3,73,B,28500
@@ -956,21 +1026,24 @@ tmdb_person,name,job,recognition (Wikidata),weight,experience,capability,grade,a
 3734,Hanna Schygulla,actor,"A Cannes Festival prize win, 1983",7,3,73,B,28500
 6195,Harold Perrineau,actor,"A Screen Actors Guild Award win, 2006",7,3,73,B,28500
 221606,Heather Morris,actor,"A Screen Actors Guild Award win, 2010",7,3,73,B,28500
-3291,Hugh Grant,actor,"A BAFTA Film Award win, 1995",7,3,73,B,28500
 8742,Ingrid Thulin,actor,"A Cannes Festival prize win, 1958",7,3,73,B,28500
 21353,Isaiah Washington,actor,"A Screen Actors Guild Award win, 2007",7,3,73,B,28500
 54738,Jack Huston,actor,"A Screen Actors Guild Award win, 2012",7,3,73,B,28500
+20030,Jacques Perrin,actor,"A Venice Festival prize win, 1966",7,3,73,B,28500
 81372,James McDaniel,actor,"A Screen Actors Guild Award win, 1995",7,3,73,B,28500
+23532,Jason Bateman,actor,"A Screen Actors Guild Award win, 2019",7,3,73,B,28500
+11544,Jean Gabin,actor,"A Venice Festival prize win, 1954",7,3,73,B,28500
 24299,Jean-Claude Brialy,actor,"A César win and a César nomination, 1977 to 1988",7,4,78,B,28500
 221609,Jenna Ushkowitz,actor,"A Screen Actors Guild Award win, 2010",7,3,73,B,28500
 20737,Jeon Do-yeon,actor,"A Cannes Festival prize win, 2007",7,3,73,B,28500
 33450,Joanna Scanlan,actor,"A BAFTA Film Award win, 2022",7,3,73,B,28500
 57449,Jodhi May,actor,"A Cannes Festival prize win, 1988",7,3,73,B,28500
+625924,John Arcilla,actor,"A Venice Festival prize win, 2021",7,3,73,B,28500
 72631,José Luis Gómez,actor,"A Cannes Festival prize win, 1976",7,3,73,B,28500
 1689289,Justine Lupe,actor,"A Screen Actors Guild Award win, 2022",7,3,73,B,28500
+1585765,Kamel El Basha,actor,"A Venice Festival prize win, 2017",7,3,73,B,28500
 5999,Kati Outinen,actor,"A Cannes Festival prize win, 2002",7,3,73,B,28500
 1874,Katja Riemann,actor,"A Venice Festival prize win, 2003",7,3,73,B,28500
-67676,Kenneth More,actor,"A BAFTA Film Award win, 1955",7,3,73,B,28500
 197070,Kevin McHale,actor,"A Screen Actors Guild Award win, 2010",7,3,73,B,28500
 57921,Kitty Winn,actor,"A Cannes Festival prize win, 1971",7,3,73,B,28500
 18056,Kōji Yakusho,actor,"A Cannes Festival prize win, 2023",7,3,73,B,28500
@@ -979,6 +1052,7 @@ tmdb_person,name,job,recognition (Wikidata),weight,experience,capability,grade,a
 7710,Laura Betti,actor,"A Venice Festival prize win, 1968",7,3,73,B,28500
 128206,Lea Michele,actor,"A Screen Actors Guild Award win, 2010",7,3,73,B,28500
 2759,Lola Dueñas,actor,"A Cannes Festival prize win, 2006",7,3,73,B,28500
+509344,Luca Marinelli,actor,"A Venice Festival prize win, 2019",7,3,73,B,28500
 590751,Luise Ullrich,actor,"A Venice Festival prize win, 1941",7,3,73,B,28500
 1019,Mads Mikkelsen,actor,"A Cannes Festival prize win, 2012",7,3,73,B,28500
 543091,Marie-José Nat,actor,"A Cannes Festival prize win, 1974",7,3,73,B,28500
@@ -986,7 +1060,6 @@ tmdb_person,name,job,recognition (Wikidata),weight,experience,capability,grade,a
 14813,Marina Vlady,actor,"A Cannes Festival prize win, 1963",7,3,73,B,28500
 102723,Mark Salling,actor,"A Screen Actors Guild Award win, 2010",7,3,73,B,28500
 28657,Matthew Fox,actor,"A Screen Actors Guild Award win, 2006",7,3,73,B,28500
-8654,Matthew Modine,actor,"A Screen Actors Guild Award win, 2017",7,3,73,B,28500
 14408,Matthew Perry,actor,"A Screen Actors Guild Award win, 1996",7,3,73,B,28500
 1064167,Merve Dizdar,actor,"A Cannes Festival prize win, 2023",7,3,73,B,28500
 135651,Michael B. Jordan,actor,"A Screen Actors Guild Award win, 2025",7,3,73,B,28500
@@ -1000,13 +1073,19 @@ tmdb_person,name,job,recognition (Wikidata),weight,experience,capability,grade,a
 28640,Molly Shannon,actor,"A Screen Actors Guild Award win, 2024",7,3,73,B,28500
 31722,Murray Melvin,actor,"A Cannes Festival prize win, 1962",7,3,73,B,28500
 5375369,Nadia Melliti,actor,"A Cannes Festival prize win, 2025",7,3,73,B,28500
+6497,Naseeruddin Shah,actor,"A Venice Festival prize win, 1984",7,3,73,B,28500
 59826,Natacha Régnier,actor,"A Cannes Festival prize win, 1998",7,3,73,B,28500
 158136,Naya Rivera,actor,"A Screen Actors Guild Award win, 2010",7,3,73,B,28500
 1393177,Noah Schnapp,actor,"A Screen Actors Guild Award win, 2017",7,3,73,B,28500
 25072,Oscar Isaac,actor,"A Golden Globe win and a Golden Globe nomination, 2013 to 2015",7,3,73,B,28500
+10242,Oscar Martínez,actor,"A Venice Festival prize win, 2016",7,3,73,B,28500
 15138,Ottavia Piccolo,actor,"A Cannes Festival prize win, 1970",7,3,73,B,28500
 534031,Pascal Duquenne,actor,"A Cannes Festival prize win, 1996",7,3,73,B,28500
+1253360,Pedro Pascal,actor,"A Screen Actors Guild Award win, 2024",7,3,73,B,28500
 33190,Pernilla August,actor,"A Cannes Festival prize win, 1992",7,3,73,B,28500
+133,Peter Sarsgaard,actor,"A Venice Festival prize win, 2023",7,3,73,B,28500
+17839,Pierfrancesco Favino,actor,"A Venice Festival prize win, 2020",7,3,73,B,28500
+239396,Pierre Blanchar,actor,"A Venice Festival prize win, 1935",7,3,73,B,28500
 62010,Portia de Rossi,actor,"A Screen Actors Guild Award win, 1999",7,3,73,B,28500
 56949,Redd Foxx,actor,"A Golden Globe win and a Golden Globe nomination, 1973 to 1974",7,3,73,B,28500
 1576786,Renate Reinsve,actor,"A Cannes Festival prize win, 2021",7,3,73,B,28500
@@ -1019,91 +1098,112 @@ tmdb_person,name,job,recognition (Wikidata),weight,experience,capability,grade,a
 119431,Saro Urzì,actor,"A Cannes Festival prize win, 1964",7,3,73,B,28500
 236858,Sergei Lukyanov,actor,"A Cannes Festival prize win, 1955",7,3,73,B,28500
 32683,Sidse Babett Knudsen,actor,"A César win and a César nomination, 2016 to 2017",7,3,73,B,28500
+108900,Silvio Orlando,actor,"A Venice Festival prize win, 2008",7,3,73,B,28500
 63522,Sofía Vergara,actor,"A Screen Actors Guild Award win, 2011",7,3,73,B,28500
+65571,Stefano Accorsi,actor,"A Venice Festival prize win, 2002",7,3,73,B,28500
 10020,Stephen Boyd,actor,"A Golden Globe win and a Golden Globe nomination, 1959 to 1963",7,3,73,B,28500
 1181329,Timothy Simons,actor,"A Screen Actors Guild Award win, 2017",7,3,73,B,28500
+72782,Toni Servillo,actor,"A Venice Festival prize win, 2025",7,3,73,B,28500
 32312,Ugo Tognazzi,actor,"A Cannes Festival prize win, 1981",7,3,73,B,28500
+22461,Vincent Gallo,actor,"A Venice Festival prize win, 2010",7,3,73,B,28500
 52646,Vincent Kartheiser,actor,"A Screen Actors Guild Award win, 2009",7,3,73,B,28500
 12259,Vittorio Gassman,actor,"A Cannes Festival prize win, 1975",7,3,73,B,28500
 52583,Wagner Moura,actor,"A Cannes Festival prize win, 2025",7,3,73,B,28500
+10814,Wesley Snipes,actor,"A Venice Festival prize win, 1997",7,3,73,B,28500
 52267,William Petersen,actor,"A Screen Actors Guild Award win, 2005",7,3,73,B,28500
 1569934,Xin Zhilei,actor,"A Venice Festival prize win, 2025",7,3,73,B,28500
 25648,Yūya Yagira,actor,"A Cannes Festival prize win, 2004",7,3,73,B,28500
 1236122,Zar Amir-Ebrahimi,actor,"A Cannes Festival prize win, 2022",7,3,73,B,28500
 8784,Daniel Craig,actor,"A BAFTA Film Award nomination and 2 Golden Globe nominations, 2007 to 2023",6.8,4,77,B,27725
 5658,Michael Gambon,actor,"2 Primetime Emmy nominations and a Golden Globe nomination, 2002 to 2010",6.8,3,72,B,27725
-15531,Ossie Davis,actor,"2 Primetime Emmy nominations and a Golden Globe nomination, 1968 to 2005",6.8,5,82,A,27725
 83437,Pauline Collins,actor,"An Academy Award nomination and a BAFTA Film Award nomination, 1973 to 1990",6.8,4,77,B,27725
 2565,Yves Montand,actor,"A BAFTA Film Award nomination and 2 César nominations, 1980 to 1988",6.8,3,72,B,27725
 84223,Anna Kendrick,actor,"An Academy Award nomination and a Primetime Emmy nomination, 2010 to 2020",6.4,4,76,B,26200
+4810,Rosie Perez,actor,"An Academy Award nomination and a Primetime Emmy nomination, 1994 to 2021",6.4,5,81,A,26200
 11664,Zooey Deschanel,actor,"A Critics' Choice Award win and a Primetime Emmy nomination, 2012",6.4,3,71,B,26200
+20752,Alex Rocco,actor,"A Primetime Emmy win, 1990",6,3,70,C,24700
 6279,Alexis Bledel,actor,"A Primetime Emmy win, 2017",6,3,70,C,24700
+113952,Alice Pearce,actor,"A Primetime Emmy win, 1966",6,3,70,C,24700
 1961671,Ana Brun,actor,"A Berlin Silver Bear win, 2018",6,3,70,C,24700
 224513,Ana de Armas,actor,"An Academy Award nomination and a Golden Globe nomination, 2023",6,3,70,C,24700
 43366,Ann Dowd,actor,"A Primetime Emmy win, 2017",6,3,70,C,24700
 18197,Anna Karina,actor,"A Berlin Silver Bear win, 1961",6,3,70,C,24700
 1434487,Anna Sawai,actor,"A Primetime Emmy win, 2024",6,3,70,C,24700
 7276,Anne Consigny,actor,"3 César nominations, 2006 to 2010",6,3,70,C,24700
+1392140,Annie Murphy,actor,"A Primetime Emmy win, 2020",6,3,70,C,24700
 1660839,Anthony Bajon,actor,"A Berlin Silver Bear win, 2018",6,3,70,C,24700
 57829,Anthony LaPaglia,actor,"A Primetime Emmy win, 2002",6,3,70,C,24700
+2516,Anthony Zerbe,actor,"A Primetime Emmy win, 1976",6,3,70,C,24700
 128645,Archie Panjabi,actor,"A Primetime Emmy win, 2010",6,3,70,C,24700
 23346,Armand Assante,actor,"A Primetime Emmy win, 1997",6,3,70,C,24700
+73942,Audrey Meadows,actor,"A Primetime Emmy win, 1955",6,3,70,C,24700
 25787,Ava Gardner,actor,"An Academy Award nomination and a Golden Globe nomination, 1954 to 1964",6,4,75,B,24700
 161255,Barbara Anderson,actor,"A Primetime Emmy win, 1968",6,3,70,C,24700
 15746,Barbara Babcock,actor,"A Primetime Emmy win, 1981",6,3,70,C,24700
 109701,Barbara Hale,actor,"A Primetime Emmy win, 1959",6,3,70,C,24700
 12834,Barry Pepper,actor,"A Primetime Emmy win, 2011",6,3,70,C,24700
 856,Ben Gazzara,actor,"A Primetime Emmy win, 2003",6,3,70,C,24700
+77335,Ben Mendelsohn,actor,"A Primetime Emmy win, 2016",6,3,70,C,24700
 31024,Betty Thomas,actor,"A Primetime Emmy win, 1985",6,3,70,C,24700
 2440,Bill Nighy,actor,"An Academy Award nomination and a Golden Globe nomination, 2023",6,3,70,C,24700
+8289,Billy Crudup,actor,"A Primetime Emmy win, 2020",6,3,70,C,24700
 7904,Billy Crystal,actor,"3 Golden Globe nominations, 1989 to 1992",6,3,70,C,24700
 88966,Billy Porter,actor,"A Primetime Emmy win, 2019",6,3,70,C,24700
 8800,Birgit Minichmayr,actor,"A Berlin Silver Bear win, 2009",6,3,70,C,24700
 64930,Bob Newhart,actor,"A Primetime Emmy win, 2013",6,3,70,C,24700
-21127,Bobby Cannavale,actor,"A Primetime Emmy win, 2005",6,3,70,C,24700
+21422,Brett Goldstein,actor,"A Primetime Emmy win, 2021",6,3,70,C,24700
 1248,Brian Cox,actor,"A Primetime Emmy win, 2001",6,3,70,C,24700
 973497,Britt Lower,actor,"A Primetime Emmy win, 2025",6,3,70,C,24700
+36058,Bruce Weitz,actor,"A Primetime Emmy win, 1984",6,3,70,C,24700
 93799,Carl Betz,actor,"A Primetime Emmy win, 1969",6,3,70,C,24700
-1895,Carl Reiner,actor,"A Primetime Emmy win, 1995",6,3,70,C,24700
 14837,Carol Burnett,actor,"A Primetime Emmy win, 1997",6,3,70,C,24700
 7465,Carrie Preston,actor,"A Primetime Emmy win, 2013",6,3,70,C,24700
 73773,Cathryn Damon,actor,"A Primetime Emmy win, 1980",6,3,70,C,24700
+21549,Chad Lowe,actor,"A Primetime Emmy win, 1993",6,3,70,C,24700
 1048672,Charlotte Valandrey,actor,"A Berlin Silver Bear win, 1986",6,3,70,C,24700
 1956,Cherry Jones,actor,"A Primetime Emmy win, 2009",6,3,70,C,24700
 40477,Chris O'Dowd,actor,"A Primetime Emmy win, 2019",6,3,70,C,24700
 18979,Christina Applegate,actor,"A Primetime Emmy win, 2003",6,3,70,C,24700
 94978,Christina Pickles,actor,"A Primetime Emmy win, 2018",6,3,70,C,24700
-1062,Christopher Lloyd,actor,"A Primetime Emmy win, 1992",6,3,70,C,24700
 68091,Cleavon Little,actor,"A Primetime Emmy win, 1989",6,3,70,C,24700
 24047,Courtney B. Vance,actor,"A Primetime Emmy win, 2016",6,3,70,C,24700
 8977,Craig T. Nelson,actor,"A Primetime Emmy win, 1992",6,3,70,C,24700
 204392,Cristin Milioti,actor,"A Primetime Emmy win, 2025",6,3,70,C,24700
 87255,Cyndi Lauper,actor,"A Primetime Emmy win, 1995",6,3,70,C,24700
-38024,Cynthia Nixon,actor,"A Primetime Emmy win, 2008",6,3,70,C,24700
 20186,Damian Lewis,actor,"A Primetime Emmy win, 2012",6,3,70,C,24700
 579211,Damien Bonnard,actor,"3 César nominations, 2019 to 2022",6,3,70,C,24700
 87034,Dan Bucatinsky,actor,"A Primetime Emmy win, 2013",6,3,70,C,24700
+1392152,Dan Levy,actor,"A Primetime Emmy win, 2020",6,3,70,C,24700
+518,Danny DeVito,actor,"A Primetime Emmy win, 1981",6,3,70,C,24700
 228721,Darren Criss,actor,"A Primetime Emmy win, 2018",6,3,70,C,24700
 4169,Dave Chappelle,actor,"A Primetime Emmy win, 2017",6,3,70,C,24700
+130941,David Burns,actor,"A Primetime Emmy win, 1971",6,3,70,C,24700
 15412,David Clennon,actor,"A Primetime Emmy win, 1993",6,3,70,C,24700
 15744,David Opatoshu,actor,"A Primetime Emmy win, 1991",6,3,70,C,24700
 2076,David Warner,actor,"A Primetime Emmy win, 1981",6,3,70,C,24700
 10386,Debra Monk,actor,"A Primetime Emmy win, 1999",6,3,70,C,24700
+12422,Dennis Weaver,actor,"A Primetime Emmy win, 1959",6,3,70,C,24700
 77135,Dexter Gordon,actor,"An Academy Award nomination and a Golden Globe nomination, 1986 to 1987",6,3,70,C,24700
 59965,Diana Hyland,actor,"A Primetime Emmy win, 1977",6,3,70,C,24700
 10168,Diana Rigg,actor,"A Primetime Emmy win, 1997",6,3,70,C,24700
 67274,Dolly Parton,actor,"3 Golden Globe nominations, 1980 to 1982",6,3,70,C,24700
-45863,Doris Roberts,actor,"A Primetime Emmy win, 1983",6,3,70,C,24700
+1896,Don Cheadle,actor,"An Academy Award nomination and a Golden Globe nomination, 1998 to 2005",6,3,70,C,24700
 70767,Drea de Matteo,actor,"A Primetime Emmy win, 2004",6,3,70,C,24700
+21042,Ebon Moss-Bachrach,actor,"A Primetime Emmy win, 2023",6,3,70,C,24700
 52995,Edward Herrmann,actor,"A Primetime Emmy win, 1999",6,3,70,C,24700
 20300,Eileen Atkins,actor,"A Primetime Emmy win, 2008",6,3,70,C,24700
 32798,Elisabeth Moss,actor,"A Primetime Emmy win, 2017",6,3,70,C,24700
 29428,Elsa Martinelli,actor,"A Berlin Silver Bear win, 1956",6,3,70,C,24700
 29298,Eric McCormack,actor,"A Primetime Emmy win, 2001",6,3,70,C,24700
 2121856,Erin Doherty,actor,"A Primetime Emmy win, 2025",6,3,70,C,24700
+59956,Estelle Getty,actor,"A Primetime Emmy win, 1988",6,3,70,C,24700
 5700,Esther Rolle,actor,"A Primetime Emmy win, 1979",6,3,70,C,24700
 26510,Eugene Levy,actor,"A Primetime Emmy win, 2020",6,3,70,C,24700
+12283,Frances Bavier,actor,"A Primetime Emmy win, 1967",6,3,70,C,24700
+56687,Fyvush Finkel,actor,"A Primetime Emmy win, 1994",6,3,70,C,24700
 160326,Gail Fisher,actor,"A Primetime Emmy win, 1970",6,3,70,C,24700
+9810,Gary Burghoff,actor,"A Primetime Emmy win, 1977",6,3,70,C,24700
+160274,Gary Frank,actor,"A Primetime Emmy win, 1977",6,3,70,C,24700
 40526,Georg Friedrich,actor,"A Berlin Silver Bear win, 2017",6,3,70,C,24700
 72056,George Grizzard,actor,"A Primetime Emmy win, 1980",6,3,70,C,24700
 29512,Gerald McRaney,actor,"A Primetime Emmy win, 2017",6,3,70,C,24700
@@ -1111,38 +1211,50 @@ tmdb_person,name,job,recognition (Wikidata),weight,experience,capability,grade,a
 29315,Glenda Farrell,actor,"A Primetime Emmy win, 1963",6,3,70,C,24700
 5826,Glynis Johns,actor,"An Academy Award nomination and a Golden Globe nomination, 1961 to 1963",6,3,70,C,24700
 114674,Glynn Turman,actor,"A Primetime Emmy win, 2008",6,3,70,C,24700
+26008,Gordon Clapp,actor,"A Primetime Emmy win, 1998",6,3,70,C,24700
 21245,Greta Scacchi,actor,"A Primetime Emmy win, 1996",6,3,70,C,24700
+1278487,Hannah Waddingham,actor,"A Primetime Emmy win, 2021",6,3,70,C,24700
 1054260,Haru Kuroki,actor,"A Berlin Silver Bear win, 2014",6,3,70,C,24700
+1210,Héctor Elizondo,actor,"A Primetime Emmy win, 1997",6,3,70,C,24700
 9195,Hiroyuki Sanada,actor,"A Primetime Emmy win, 2024",6,3,70,C,24700
 11318,Holland Taylor,actor,"A Primetime Emmy win, 1999",6,3,70,C,24700
 79247,Howard da Silva,actor,"A Primetime Emmy win, 1978",6,3,70,C,24700
 21009,Isabel Sanford,actor,"A Primetime Emmy win, 1981",6,3,70,C,24700
 2492,Jack Benny,actor,"A Primetime Emmy win, 1959",6,3,70,C,24700
+78740,Jackée Harry,actor,"A Primetime Emmy win, 1987",6,3,70,C,24700
 1014192,Jadwiga Barańska,actor,"A Berlin Silver Bear win, 1976",6,3,70,C,24700
+56824,Jaime Pressly,actor,"A Primetime Emmy win, 2007",6,3,70,C,24700
 55466,James Corden,actor,"A Primetime Emmy win, 2018",6,3,70,C,24700
+13259,James Daly,actor,"A Primetime Emmy win, 1966",6,3,70,C,24700
 2021,Jane Wyatt,actor,"A Primetime Emmy win, 1959",6,3,70,C,24700
 1291890,Jasmine Cephas-Jones,actor,"A Primetime Emmy win, 2020",6,3,70,C,24700
 58224,Jason Sudeikis,actor,"A Primetime Emmy win, 2021",6,3,70,C,24700
 12657,Jean Marsh,actor,"A Primetime Emmy win, 1975",6,3,70,C,24700
+143236,Jeff Hiller,actor,"A Primetime Emmy win, 2025",6,3,70,C,24700
 38334,Jennifer Coolidge,actor,"A Primetime Emmy win, 2023",6,3,70,C,24700
 4654,Jeremy Davies,actor,"A Primetime Emmy win, 2012",6,3,70,C,24700
+33181,Jimmy Smits,actor,"A Primetime Emmy win, 1990",6,3,70,C,24700
 106765,Joanna Miles,actor,"A Primetime Emmy win, 1974",6,3,70,C,24700
 3977,Joe Morton,actor,"A Primetime Emmy win, 2014",6,3,70,C,24700
+532,Joe Pantoliano,actor,"A Primetime Emmy win, 2003",6,3,70,C,24700
 8192,Joe Spano,actor,"A Primetime Emmy win, 1989",6,3,70,C,24700
 1230,John Goodman,actor,"A Primetime Emmy win, 2006",6,3,70,C,24700
-14101,John Larroquette,actor,"A Primetime Emmy win, 1998",6,3,70,C,24700
+12296,John Hillerman,actor,"A Primetime Emmy win, 1987",6,3,70,C,24700
+30048,John Karlen,actor,"A Primetime Emmy win, 1986",6,3,70,C,24700
 27772,John Ritter,actor,"A Primetime Emmy win, 1984",6,3,70,C,24700
 78439,John Shea,actor,"A Primetime Emmy win, 1988",6,3,70,C,24700
-69718,Jon Cryer,actor,"A Primetime Emmy win, 2012",6,3,70,C,24700
 65717,Jon Hamm,actor,"A Primetime Emmy win, 2015",6,3,70,C,24700
+13593,Jonathan Winters,actor,"A Primetime Emmy win, 1991",6,3,70,C,24700
 82177,Josephine Siao,actor,"A Berlin Silver Bear win, 1995",6,3,70,C,24700
 35137,Josiane Balasko,actor,"3 César nominations, 1990 to 2004",6,4,75,B,24700
 72946,Judith Chemla,actor,"3 César nominations, 2013 to 2023",6,4,75,B,24700
 3932,Julia Jentsch,actor,"A Berlin Silver Bear win, 2005",6,3,70,C,24700
 15887,Julia Ormond,actor,"A Primetime Emmy win, 2010",6,3,70,C,24700
+199,Julie Kavner,actor,"A Primetime Emmy win, 1978",6,3,70,C,24700
 44404,Juliet Mills,actor,"A Primetime Emmy win, 1975",6,3,70,C,24700
 24300,Juliette Mayniel,actor,"A Berlin Silver Bear win, 1960",6,3,70,C,24700
 53862,Kaley Cuoco,actor,"A Critics' Choice Award win and a Golden Globe nomination, 2013 to 2023",6,4,75,B,24700
+101779,Karen Valentine,actor,"A Primetime Emmy win, 1970",6,3,70,C,24700
 169337,Katherine LaNasa,actor,"A Primetime Emmy win, 2025",6,3,70,C,24700
 58926,Katt Williams,actor,"A Primetime Emmy win, 2018",6,3,70,C,24700
 42174,Kay Lenz,actor,"A Primetime Emmy win, 1989",6,3,70,C,24700
@@ -1153,6 +1265,7 @@ tmdb_person,name,job,recognition (Wikidata),weight,experience,capability,grade,a
 205440,Kim Estes,actor,"A Primetime Emmy win, 2017",6,3,70,C,24700
 123664,Kim Min-hee,actor,"A Berlin Silver Bear win, 2017",6,3,70,C,24700
 24551,Kinuyo Tanaka,actor,"A Berlin Silver Bear win, 1975",6,3,70,C,24700
+52775,Kristin Chenoweth,actor,"A Primetime Emmy win, 2009",6,3,70,C,24700
 3497,Kyle Chandler,actor,"A Primetime Emmy win, 2011",6,3,70,C,24700
 26467,Kyra Sedgwick,actor,"A Primetime Emmy win, 2010",6,3,70,C,24700
 1985557,Lee You-mi,actor,"A Primetime Emmy win, 2022",6,3,70,C,24700
@@ -1165,6 +1278,7 @@ tmdb_person,name,job,recognition (Wikidata),weight,experience,capability,grade,a
 83442,Lola Albright,actor,"A Berlin Silver Bear win, 1966",6,3,70,C,24700
 18284,Loretta Devine,actor,"A Primetime Emmy win, 2011",6,3,70,C,24700
 17441,Lou Taylor Pucci,actor,"A Berlin Silver Bear win, 2005",6,3,70,C,24700
+44795,Louie Anderson,actor,"A Primetime Emmy win, 2016",6,3,70,C,24700
 7002,Luke Kirby,actor,"A Primetime Emmy win, 2019",6,3,70,C,24700
 16217,Lynn Whitfield,actor,"A Primetime Emmy win, 1991",6,3,70,C,24700
 58074,Madge Sinclair,actor,"A Primetime Emmy win, 1991",6,3,70,C,24700
@@ -1172,22 +1286,26 @@ tmdb_person,name,job,recognition (Wikidata),weight,experience,capability,grade,a
 25503,Mandy Patinkin,actor,"A Primetime Emmy win, 1995",6,3,70,C,24700
 19838,Marg Helgenberger,actor,"A Primetime Emmy win, 1990",6,3,70,C,24700
 16131,Mariette Hartley,actor,"A Primetime Emmy win, 1979",6,3,70,C,24700
+12501,Marion Lorne,actor,"A Primetime Emmy win, 1968",6,3,70,C,24700
 17495,Martha Plimpton,actor,"A Primetime Emmy win, 2012",6,3,70,C,24700
 9572,Mary Alice,actor,"A Primetime Emmy win, 1993",6,3,70,C,24700
+5960,Mary Kay Place,actor,"A Primetime Emmy win, 1977",6,3,70,C,24700
 143406,Mary Martin,actor,"A Primetime Emmy win, 1956",6,3,70,C,24700
 67916,Mary Ure,actor,"An Academy Award nomination and a Golden Globe nomination, 1960 to 1961",6,3,70,C,24700
 29528,Matthew Rhys,actor,"A Primetime Emmy win, 2018",6,3,70,C,24700
 12023,Maurice Evans,actor,"A Primetime Emmy win, 1961",6,3,70,C,24700
 52792,Maya Rudolph,actor,"A Primetime Emmy win, 2020",6,3,70,C,24700
 83313,Melanie Mayron,actor,"A Primetime Emmy win, 1989",6,3,70,C,24700
-28044,Merritt Wever,actor,"A Primetime Emmy win, 2018",6,3,70,C,24700
 49424,Michael A. Goorjian,actor,"A Primetime Emmy win, 1994",6,3,70,C,24700
+1010,Michael Badalucco,actor,"A Primetime Emmy win, 1999",6,3,70,C,24700
 19654,Michael Chiklis,actor,"A Primetime Emmy win, 2002",6,3,70,C,24700
-2136,Michael Emerson,actor,"A Primetime Emmy win, 2001",6,3,70,C,24700
+14884,Michael Constantine,actor,"A Primetime Emmy win, 1970",6,3,70,C,24700
+11486,Michael Imperioli,actor,"A Primetime Emmy win, 2004",6,3,70,C,24700
+2169,Michael Jeter,actor,"A Primetime Emmy win, 1992",6,3,70,C,24700
 25819,Michele Placido,actor,"A Berlin Silver Bear win, 1979",6,3,70,C,24700
 1013156,Mikkel Boe Følsgaard,actor,"A Berlin Silver Bear win, 2012",6,3,70,C,24700
+86356,Milburn Stone,actor,"A Primetime Emmy win, 1968",6,3,70,C,24700
 677,Moritz Bleibtreu,actor,"A Berlin Silver Bear win, 2006",6,3,70,C,24700
-160239,Nanette Fabray,actor,"A Primetime Emmy win, 1957",6,3,70,C,24700
 1141853,Nazif Mujic,actor,"A Berlin Silver Bear win, 2013",6,3,70,C,24700
 41686,Neil Patrick Harris,actor,"A Primetime Emmy win, 2010",6,3,70,C,24700
 21316,Nestor Carbonell,actor,"A Primetime Emmy win, 2024",6,3,70,C,24700
@@ -1197,6 +1315,7 @@ tmdb_person,name,job,recognition (Wikidata),weight,experience,capability,grade,a
 5225942,Owen Cooper,actor,"A Primetime Emmy win, 2025",6,3,70,C,24700
 53818,Pamela Brown,actor,"A Primetime Emmy win, 1962",6,3,70,C,24700
 16923,Pascal Greggory,actor,"3 César nominations, 1999 to 2008",6,3,70,C,24700
+35232,Pat Carroll,actor,"A Primetime Emmy win, 1957",6,3,70,C,24700
 54044,Patrika Darbo,actor,"A Primetime Emmy win, 2016",6,3,70,C,24700
 32393,Paul McCrane,actor,"A Primetime Emmy win, 2011",6,3,70,C,24700
 1532436,Paulina García,actor,"A Berlin Silver Bear win, 2013",6,3,70,C,24700
@@ -1216,13 +1335,12 @@ tmdb_person,name,job,recognition (Wikidata),weight,experience,capability,grade,a
 105636,Red Skelton,actor,"A Primetime Emmy win, 1952",6,3,70,C,24700
 38951,Reg E. Cathey,actor,"A Primetime Emmy win, 2015",6,3,70,C,24700
 16554,Richard Crenna,actor,"A Primetime Emmy win, 1985",6,3,70,C,24700
+31028,Richard Schiff,actor,"A Primetime Emmy win, 2000",6,3,70,C,24700
 19576,Richard Thomas,actor,"A Primetime Emmy win, 1973",6,3,70,C,24700
 17835,Ricky Gervais,actor,"A Primetime Emmy win, 2007",6,3,70,C,24700
-741,River Phoenix,actor,"An Academy Award nomination and a Golden Globe nomination, 1988 to 1989",6,3,70,C,24700
 52997,Rob Corddry,actor,"A Primetime Emmy win, 2016",6,3,70,C,24700
 9287,Robert Blake,actor,"A Primetime Emmy win, 1975",6,3,70,C,24700
 7125,Robert Cummings,actor,"A Primetime Emmy win, 1955",6,3,70,C,24700
-8294,Robert Guillaume,actor,"A Primetime Emmy win, 1985",6,3,70,C,24700
 40173,Robert Morse,actor,"A Primetime Emmy win, 1993",6,3,70,C,24700
 58525,Ron Cephas Jones,actor,"A Primetime Emmy win, 2018",6,3,70,C,24700
 5372,Ron Leibman,actor,"A Primetime Emmy win, 1979",6,3,70,C,24700
@@ -1237,27 +1355,32 @@ tmdb_person,name,job,recognition (Wikidata),weight,experience,capability,grade,a
 1034197,Samira Wiley,actor,"A Primetime Emmy win, 2018",6,3,70,C,24700
 34490,Sarah Paulson,actor,"A Primetime Emmy win, 2016",6,3,70,C,24700
 559567,Sareh Bayat,actor,"A Berlin Silver Bear win, 2011",6,3,70,C,24700
+125650,Scott Jacoby,actor,"A Primetime Emmy win, 1973",6,3,70,C,24700
+52601,Sean Hayes,actor,"A Primetime Emmy win, 2000",6,3,70,C,24700
 60898,Sebastian Stan,actor,"An Academy Award nomination and a Golden Globe nomination, 2023 to 2025",6,3,70,C,24700
 590133,Sergei Puskepalis,actor,"A Berlin Silver Bear win, 2010",6,3,70,C,24700
-19274,Seth Rogen,actor,"A Primetime Emmy win, 2025",6,3,70,C,24700
 52647,Shawn Hatosy,actor,"A Primetime Emmy win, 2025",6,3,70,C,24700
 83527,Shinobu Terajima,actor,"A Berlin Silver Bear win, 2010",6,3,70,C,24700
 8902,Sid Caesar,actor,"A Primetime Emmy win, 1957",6,3,70,C,24700
-1640,Stellan Skarsgård,actor,"A Berlin Silver Bear win, 1982",6,3,70,C,24700
-83974,Susan Saint James,actor,"A Primetime Emmy win, 1969",6,3,70,C,24700
 12967,Swoosie Kurtz,actor,"A Primetime Emmy win, 1990",6,3,70,C,24700
 16859,Tammy Blanchard,actor,"A Primetime Emmy win, 2001",6,3,70,C,24700
 61134,Tatiana Maslany,actor,"A Primetime Emmy win, 2016",6,3,70,C,24700
+12646,Terry O'Quinn,actor,"A Primetime Emmy win, 2007",6,3,70,C,24700
 1230868,Tiffany Haddish,actor,"A Primetime Emmy win, 2018",6,3,70,C,24700
+23881,Timothy Busfield,actor,"A Primetime Emmy win, 1991",6,3,70,C,24700
+71728,Tom Poston,actor,"A Primetime Emmy win, 1959",6,3,70,C,24700
 15112,Tom Selleck,actor,"A Primetime Emmy win, 1984",6,3,70,C,24700
 4139,Tom Skerritt,actor,"A Primetime Emmy win, 1993",6,3,70,C,24700
+2028037,Tramell Tillman,actor,"A Primetime Emmy win, 2025",6,3,70,C,24700
 4460,Trine Dyrholm,actor,"A Berlin Silver Bear win, 2016",6,3,70,C,24700
 99351,Valerie Mahaffey,actor,"A Primetime Emmy win, 1992",6,3,70,C,24700
+153254,Vivian Vance,actor,"A Primetime Emmy win, 1954",6,3,70,C,24700
 11733,Vlastimil Brodský,actor,"A Berlin Silver Bear win, 1975",6,3,70,C,24700
-1748,William Shatner,actor,"A Primetime Emmy win, 2004",6,3,70,C,24700
+70990,Will Geer,actor,"A Primetime Emmy win, 1975",6,3,70,C,24700
 8499,William Windom,actor,"A Primetime Emmy win, 1970",6,3,70,C,24700
 1639847,Yahya Abdul-Mateen II,actor,"A Primetime Emmy win, 2020",6,3,70,C,24700
 572086,Yong Mei,actor,"A Berlin Silver Bear win, 2019",6,3,70,C,24700
+6752,Željko Ivanek,actor,"A Primetime Emmy win, 2008",6,3,70,C,24700
 15336,Dougray Scott,actor,"2 Screen Actors Guild Award nominations, 2007 to 2008",5.6,3,69,C,23250
 12795,Nikolaj Coster-Waldau,actor,"2 Screen Actors Guild Award nominations, 2012 to 2014",5.6,3,69,C,23250
 36602,Peter Berg,actor,"2 Screen Actors Guild Award nominations, 1996 to 1997",5.6,3,69,C,23250
@@ -1281,6 +1404,8 @@ tmdb_person,name,job,recognition (Wikidata),weight,experience,capability,grade,a
 47822,Bouli Lanners,actor,"A César win, 2023",5,3,68,C,21100
 49148,Calista Flockhart,actor,"A Golden Globe win, 1998",5,3,68,C,21100
 225612,Chanel Cresswell,actor,"A BAFTA Television Award win, 2016",5,3,68,C,21100
+221607,Chris Colfer,actor,"A Golden Globe win, 2011",5,3,68,C,21100
+2224,Christian Slater,actor,"A Golden Globe win, 2016",5,3,68,C,21100
 3762,Christine Kaufmann,actor,"A Golden Globe win, 1962",5,3,68,C,21100
 38559,Christopher Lambert,actor,"A César win, 1986",5,3,68,C,21100
 24832,Daniel Prévost,actor,"A César win, 1999",5,3,68,C,21100
@@ -1291,7 +1416,6 @@ tmdb_person,name,job,recognition (Wikidata),weight,experience,capability,grade,a
 39195,Elsa Zylberstein,actor,"A César win, 2009",5,3,68,C,21100
 24465,Éric Elmosnino,actor,"A César win, 2011",5,3,68,C,21100
 55089,Evan Peters,actor,"A Golden Globe win, 2023",5,3,68,C,21100
-28255,Fabrice Luchini,actor,"A César win, 1994",5,3,68,C,21100
 10981,Fiona Shaw,actor,"A BAFTA Television Award win, 2019",5,3,68,C,21100
 33161,François Cluzet,actor,"A César win, 2007",5,3,68,C,21100
 16790,Gaspard Ulliel,actor,"A César win, 2017",5,3,68,C,21100
@@ -1343,6 +1467,7 @@ tmdb_person,name,job,recognition (Wikidata),weight,experience,capability,grade,a
 2217977,Rachel Zegler,actor,"A Golden Globe win, 2021",5,3,68,C,21100
 101752,Ray Sharkey,actor,"A Golden Globe win, 1981",5,3,68,C,21100
 1205,Richard Gere,actor,"A Golden Globe win, 2002",5,3,68,C,21100
+585,Rutger Hauer,actor,"A Golden Globe win, 1988",5,3,68,C,21100
 47720,Ruth Wilson,actor,"A Golden Globe win, 2014",5,3,68,C,21100
 89808,Sandra Dee,actor,"A Golden Globe win, 1958",5,3,68,C,21100
 25540,Sandra Oh,actor,"A Golden Globe win, 2006",5,3,68,C,21100
@@ -1358,17 +1483,17 @@ tmdb_person,name,job,recognition (Wikidata),weight,experience,capability,grade,a
 6929,Tippi Hedren,actor,"A Golden Globe win, 1964",5,3,68,C,21100
 91606,Tom Hiddleston,actor,"A Golden Globe win, 2016",5,3,68,C,21100
 74611,Tracee Ellis Ross,actor,"A Golden Globe win, 2017",5,3,68,C,21100
+1214870,Tyler James Williams,actor,"A Golden Globe win, 2023",5,3,68,C,21100
 9871,Ursula Andress,actor,"A Golden Globe win, 1964",5,3,68,C,21100
 138175,Victoria Wood,actor,"A BAFTA Television Award win, 2007",5,3,68,C,21100
-5443,Vincent Lindon,actor,"A César win, 2016",5,3,68,C,21100
 10182,Ving Rhames,actor,"A Golden Globe win, 1998",5,3,68,C,21100
 94713,Warren Mitchell,actor,"A BAFTA Television Award win, 1967",5,3,68,C,21100
-55257,Adam Arkin,actor,"2 Primetime Emmy nominations, 1993 to 2002",4.8,3,67,C,20400
-1211888,Charles Nelson Reilly,actor,"2 Primetime Emmy nominations, 1998 to 1999",4.8,3,67,C,20400
+3093,Abe Vigoda,actor,"2 Primetime Emmy nominations, 1976 to 1977",4.8,3,67,C,20400
 133788,Elena Verdugo,actor,"2 Primetime Emmy nominations, 1971 to 1972",4.8,3,67,C,20400
 47468,Frances de la Tour,actor,"A BAFTA Film Award nomination and a BAFTA Television Award nomination, 1986 to 2007",4.8,5,77,A,20400
 5168,Gabriel Byrne,actor,"2 Primetime Emmy nominations, 2008 to 2009",4.8,3,67,C,20400
 6840,Larry Hagman,actor,"2 Primetime Emmy nominations, 1980 to 1981",4.8,3,67,C,20400
+65760,Marin Hinkle,actor,"2 Primetime Emmy nominations, 2019 to 2020",4.8,3,67,C,20400
 6159,Ron Howard,actor,"A Screen Actors Guild Award nomination and a Golden Globe nomination, 1976 to 2014",4.8,5,77,A,20400
 2372,Ron Perlman,actor,"2 Primetime Emmy nominations, 1988 to 1989",4.8,3,67,C,20400
 48,Sean Bean,actor,"A Screen Actors Guild Award nomination and a BAFTA Television Award nomination, 2012 to 2013",4.8,3,67,C,20400
@@ -1387,7 +1512,6 @@ tmdb_person,name,job,recognition (Wikidata),weight,experience,capability,grade,a
 27554,Alan Bates,actor,"An Academy Award nomination, 1969",4,3,65,C,17675
 29137,Albert Bassermann,actor,"An Academy Award nomination, 1941",4,3,65,C,17675
 13,Albert Brooks,actor,"An Academy Award nomination, 1988",4,3,65,C,17675
-40529,Alexander Knox,actor,"An Academy Award nomination, 1945",4,3,65,C,17675
 46597,Ali MacGraw,actor,"An Academy Award nomination, 1971",4,3,65,C,17675
 74874,Aline MacMahon,actor,"An Academy Award nomination, 1945",4,3,65,C,17675
 27563,Amy Irving,actor,"An Academy Award nomination, 1984",4,3,65,C,17675
@@ -1461,13 +1585,11 @@ tmdb_person,name,job,recognition (Wikidata),weight,experience,capability,grade,a
 45467,Diane Cilento,actor,"An Academy Award nomination, 1964",4,3,65,C,17675
 2882,Diane Lane,actor,"An Academy Award nomination, 2003",4,3,65,C,17675
 115334,Diane Varsi,actor,"An Academy Award nomination, 1958",4,3,65,C,17675
-1896,Don Cheadle,actor,"An Academy Award nomination, 2005",4,3,65,C,17675
 18666,Don Murray,actor,"An Academy Award nomination, 1957",4,3,65,C,17675
 20155,Dorothy Dandridge,actor,"An Academy Award nomination, 1955",4,3,65,C,17675
 24815,Dorothy McGuire,actor,"An Academy Award nomination, 1948",4,3,65,C,17675
 5833,Ed Wynn,actor,"An Academy Award nomination, 1960",4,3,65,C,17675
 82412,Edna May Oliver,actor,"An Academy Award nomination, 1940",4,3,65,C,17675
-587,Edward James Olmos,actor,"An Academy Award nomination, 1989",4,3,65,C,17675
 36942,Elisabeth Bergner,actor,"An Academy Award nomination, 1936",4,3,65,C,17675
 1951,Elisabeth Shue,actor,"An Academy Award nomination, 1996",4,3,65,C,17675
 70286,Elizabeth Hartman,actor,"An Academy Award nomination, 1966",4,3,65,C,17675
@@ -1520,7 +1642,6 @@ tmdb_person,name,job,recognition (Wikidata),weight,experience,capability,grade,a
 17183,Jackie Earle Haley,actor,"An Academy Award nomination, 2007",4,3,65,C,17675
 14882,Jackie Gleason,actor,"An Academy Award nomination, 1962",4,3,65,C,17675
 3085,James Caan,actor,"An Academy Award nomination, 1973",4,3,65,C,17675
-41220,James Coco,actor,"An Academy Award nomination, 1982",4,3,65,C,17675
 30537,James Gleason,actor,"An Academy Award nomination, 1942",4,3,65,C,17675
 82382,James Stephenson,actor,"An Academy Award nomination, 1941",4,3,65,C,17675
 15200,Jane Birkin,actor,"2 César nominations, 1985 to 1987",4,3,65,C,17675
@@ -1568,7 +1689,6 @@ tmdb_person,name,job,recognition (Wikidata),weight,experience,capability,grade,a
 29623,Lana Turner,actor,"An Academy Award nomination, 1958",4,3,65,C,17675
 34316,Larry Parks,actor,"An Academy Award nomination, 1947",4,3,65,C,17675
 14729,Laurence Harvey,actor,"An Academy Award nomination, 1960",4,3,65,C,17675
-12133,Laurie Metcalf,actor,"An Academy Award nomination, 2018",4,3,65,C,17675
 121529,Léa Seydoux,actor,"2 César nominations, 2013 to 2014",4,3,65,C,17675
 3171,Lee Strasberg,actor,"An Academy Award nomination, 1975",4,3,65,C,17675
 33003,Lee Tracy,actor,"An Academy Award nomination, 1965",4,3,65,C,17675
@@ -1664,7 +1784,6 @@ tmdb_person,name,job,recognition (Wikidata),weight,experience,capability,grade,a
 3086,Richard S. Castellano,actor,"An Academy Award nomination, 1971",4,3,65,C,17675
 20393,Richard Todd,actor,"An Academy Award nomination, 1950",4,3,65,C,17675
 18054,Rinko Kikuchi,actor,"An Academy Award nomination, 2007",4,3,65,C,17675
-9626,Rip Torn,actor,"An Academy Award nomination, 1984",4,3,65,C,17675
 5694,Robert Forster,actor,"An Academy Award nomination, 1998",4,3,65,C,17675
 10158,Robert Mitchum,actor,"An Academy Award nomination, 1946",4,3,65,C,17675
 6599,Robert Morley,actor,"An Academy Award nomination, 1939",4,3,65,C,17675
@@ -1673,12 +1792,10 @@ tmdb_person,name,job,recognition (Wikidata),weight,experience,capability,grade,a
 8253,Robert Ryan,actor,"An Academy Award nomination, 1948",4,3,65,C,17675
 8606,Robert Shaw,actor,"An Academy Award nomination, 1967",4,3,65,C,17675
 7347,Robert Strauss,actor,"An Academy Award nomination, 1954",4,3,65,C,17675
-14060,Robert Vaughn,actor,"An Academy Award nomination, 1960",4,3,65,C,17675
 18735,Rock Hudson,actor,"An Academy Award nomination, 1957",4,3,65,C,17675
 14685,Roland Young,actor,"An Academy Award nomination, 1938",4,3,65,C,17675
 13652,Ronee Blakley,actor,"An Academy Award nomination, 1976",4,3,65,C,17675
 18998,Rosemary Harris,actor,"An Academy Award nomination, 1995",4,3,65,C,17675
-4810,Rosie Perez,actor,"An Academy Award nomination, 1994",4,3,65,C,17675
 157211,Rupert Crosse,actor,"An Academy Award nomination, 1970",4,3,65,C,17675
 6725,Russ Tamblyn,actor,"An Academy Award nomination, 1958",4,3,65,C,17675
 14683,Ruth Hussey,actor,"An Academy Award nomination, 1941",4,3,65,C,17675
@@ -1751,7 +1868,6 @@ tmdb_person,name,job,recognition (Wikidata),weight,experience,capability,grade,a
 25837,Elisha Cuthbert,actor,"A Screen Actors Guild Award nomination, 2003",2.8,3,60,C,13850
 1333809,Forrie J. Smith,actor,"A Screen Actors Guild Award nomination, 2022",2.8,3,60,C,13850
 1650,François Truffaut,actor,"A BAFTA Film Award nomination, 1979",2.8,3,60,C,13850
-1281,Freddie Highmore,actor,"A Screen Actors Guild Award nomination, 2005",2.8,3,60,C,13850
 76792,Freida Pinto,actor,"A BAFTA Film Award nomination, 2009",2.8,3,60,C,13850
 1182598,Hayley Squires,actor,"A BAFTA Film Award nomination, 2017",2.8,3,60,C,13850
 26469,Holly Marie Combs,actor,"A Screen Actors Guild Award nomination, 1995",2.8,3,60,C,13850
@@ -1767,21 +1883,26 @@ tmdb_person,name,job,recognition (Wikidata),weight,experience,capability,grade,a
 21702,Ming-Na Wen,actor,"A Screen Actors Guild Award nomination, 2001",2.8,3,60,C,13850
 41779,Monica Vitti,actor,"A BAFTA Film Award nomination, 1961",2.8,3,60,C,13850
 1452940,Nick Gracer,actor,"A Screen Actors Guild Award nomination, 2020",2.8,3,60,C,13850
+51935,Patrick J. Adams,actor,"A Screen Actors Guild Award nomination, 2012",2.8,3,60,C,13850
 6162,Paul Bettany,actor,"A BAFTA Film Award nomination, 2004",2.8,3,60,C,13850
 17142,Paul Dano,actor,"A BAFTA Film Award nomination, 2008",2.8,3,60,C,13850
 32203,Stephen Moyer,actor,"A Screen Actors Guild Award nomination, 2010",2.8,3,60,C,13850
-7450,Toshirō Mifune,actor,"A BAFTA Film Award nomination, 1955",2.8,3,60,C,13850
 65284,Alexis Smith,actor,"A Primetime Emmy nomination, 1990",2.4,3,59,C,12650
 8256,Anne Heche,actor,"A Primetime Emmy nomination, 2004",2.4,3,59,C,12650
+74056,Brendan Coyle,actor,"A Primetime Emmy nomination, 2012",2.4,3,59,C,12650
+28010,David Ogden Stiers,actor,"A Primetime Emmy nomination, 1981",2.4,3,59,C,12650
 31167,Elizabeth Mitchell,actor,"A Primetime Emmy nomination, 2010",2.4,3,59,C,12650
 21179,John Benjamin Hickey,actor,"A Primetime Emmy nomination, 2013",2.4,3,59,C,12650
 1298360,Laverne Cox,actor,"A Primetime Emmy nomination, 2014",2.4,3,59,C,12650
 2390,LeVar Burton,actor,"A Primetime Emmy nomination, 1977",2.4,3,59,C,12650
 51988,Lizzy Caplan,actor,"A Primetime Emmy nomination, 2014",2.4,3,59,C,12650
+40259,Malcolm-Jamal Warner,actor,"A Primetime Emmy nomination, 1986",2.4,3,59,C,12650
+167640,Mayim Bialik,actor,"A Primetime Emmy nomination, 2012",2.4,3,59,C,12650
 1355653,Megan Amram,actor,"A Primetime Emmy nomination, 2018",2.4,3,59,C,12650
 5699,Patti LuPone,actor,"A Primetime Emmy nomination, 1998",2.4,3,59,C,12650
 12518,Richard Jordan,actor,"A Primetime Emmy nomination, 1977",2.4,3,59,C,12650
 825,Stacy Keach,actor,"A Primetime Emmy nomination, 1988",2.4,3,59,C,12650
+61980,Wendie Malick,actor,"A Primetime Emmy nomination, 2002",2.4,3,59,C,12650
 19292,Adam Sandler,actor,"A Golden Globe nomination, 2003",2,3,57,C,11475
 36801,Adam Scott,actor,"A Golden Globe nomination, 2023",2,3,57,C,11475
 85199,Alan Thicke,actor,"A Golden Globe nomination, 1988",2,3,57,C,11475
@@ -1806,6 +1927,7 @@ tmdb_person,name,job,recognition (Wikidata),weight,experience,capability,grade,a
 1413390,Diego Calva,actor,"A Golden Globe nomination, 2023",2,3,57,C,11475
 8688,Diego Luna,actor,"A Golden Globe nomination, 2023",2,3,57,C,11475
 1513304,Dolly de Leon,actor,"A Golden Globe nomination, 2023",2,3,57,C,11475
+93210,Domhnall Gleeson,actor,"A Golden Globe nomination, 2023",2,3,57,C,11475
 35134,Dominique Laffin,actor,"A César nomination, 1980",2,3,57,C,11475
 1280476,Doria Tillier,actor,"A César nomination, 2018",2,3,57,C,11475
 1462923,Eleanor Worthington Cox,actor,"A BAFTA Television Award nomination, 2016",2,3,57,C,11475
@@ -1818,7 +1940,6 @@ tmdb_person,name,job,recognition (Wikidata),weight,experience,capability,grade,a
 78124,François Civil,actor,"A César nomination, 2023",2,3,57,C,11475
 86110,Glen Campbell,actor,"A Golden Globe nomination, 1969",2,3,57,C,11475
 223532,Grégory Gadebois,actor,"A César nomination, 2020",2,3,57,C,11475
-2559506,Hannah Einbinder,actor,"A Golden Globe nomination, 2023",2,3,57,C,11475
 114097,Harvey Stephens,actor,"A Golden Globe nomination, 1976",2,3,57,C,11475
 1756490,Helena Zengel,actor,"A Golden Globe nomination, 2021",2,3,57,C,11475
 39753,Hugh O'Brian,actor,"A Golden Globe nomination, 1953",2,3,57,C,11475
@@ -1884,6 +2005,7 @@ tmdb_person,name,job,recognition (Wikidata),weight,experience,capability,grade,a
 15211,Valérie Kaprisky,actor,"A César nomination, 1985",2,3,57,C,11475
 65007,Vanessa Paradis,actor,"A César nomination, 2000",2,3,57,C,11475
 992623,Vincent Macaigne,actor,"A César nomination, 2023",2,3,57,C,11475
+1285,AnnaSophia Robb,actor,"A Critics' Choice Award nomination, 2007",1.6,3,55,C,10350
 52139,Seth MacFarlane,voice-actor,"4 Primetime Emmy wins, 2000 to 2019",24,4,98,A,115750
 24357,Alex Borstein,voice-actor,"A Primetime Emmy win, 2018",6,3,70,C,24700
 1813,Anne Hathaway,voice-actor,"A Primetime Emmy win, 2010",6,3,70,C,24700

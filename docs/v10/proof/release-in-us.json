@@ -56,6 +56,7 @@
   "entries": 92.75,
   "entryFees": 5077,
   "selected": 1.775,
+  "decided": 58.05,
   "comedyEntries": 0,
   "adaptedEntries": 0,
   "childrenEntries": 0,
@@ -109,6 +110,7 @@
   "entries": 90.4,
   "entryFees": 4539.25,
   "selected": 1.25,
+  "decided": 56.575,
   "comedyEntries": 0,
   "adaptedEntries": 0,
   "childrenEntries": 0,
@@ -438,6 +440,13 @@
    "changed": 18,
    "n": 40
   },
+  "decided": {
+   "mean": -1.475,
+   "lo": -2.656,
+   "hi": -0.294,
+   "changed": 29,
+   "n": 40
+  },
   "comedyEntries": {
    "mean": 0,
    "lo": 0,
@@ -492,7 +501,7 @@
  ],
  "verdict": "proven",
  "hashes": {
-  "src/engine/finish.ts": "f91be05a7e69ff70",
+  "src/engine/finish.ts": "e0a1318764a0a429",
   "src/engine/awards.ts": "28e4ea9a8ba8ebbc",
   "tests/proof/career.ts": "50bea06f19a02c5b"
  }

@@ -53,6 +53,8 @@
   "standing.directing": 50,
   "standing.acting": 50,
   "standing.producing": 50,
+  "redactions": 0,
+  "runtime": 0,
   "consentGiven": 0,
   "cutApproved": 0,
   "fired": 0
@@ -101,6 +103,8 @@
   "standing.directing": 50.7,
   "standing.acting": 50,
   "standing.producing": 51.25,
+  "redactions": 0,
+  "runtime": 10.35,
   "consentGiven": 3.1,
   "cutApproved": 1.15,
   "fired": 0
@@ -407,6 +411,20 @@
    "changed": 11,
    "n": 20
   },
+  "redactions": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 20
+  },
+  "runtime": {
+   "mean": 10.35,
+   "lo": 7.03,
+   "hi": 13.67,
+   "changed": 16,
+   "n": 20
+  },
   "consentGiven": {
    "mean": 3.1,
    "lo": 2.534,
@@ -448,7 +466,7 @@
  "verdict": "proven",
  "hashes": {
   "src/engine/documentary.ts": "51078083c92dcd65",
-  "src/engine/finish.ts": "f91be05a7e69ff70",
+  "src/engine/finish.ts": "e0a1318764a0a429",
   "tests/proof/career.ts": "50bea06f19a02c5b"
  }
 }

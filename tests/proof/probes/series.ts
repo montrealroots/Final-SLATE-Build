@@ -11,7 +11,6 @@ import { fund } from './casting';
 import { setEpisodeDates } from '../../../src/engine/episode-releases';
 import { addDaysToKey } from '../../../src/engine/time';
 import { moveEpisode } from '../../../src/engine/season';
-import { addScene, updateScene } from '../../engine-api';
 import { planRelease } from '../../../src/engine/finish';
 import { dateKey } from '../../../src/engine/time';
 
@@ -92,30 +91,61 @@ PROBES.push({
   bites: ['episodesMoved'], downstream: ['renewalWait', 'renewed', 'money'],
 });
 
-// An episode moved (season.ts moveEpisode): a season of a short first episode (one scene) and a long second (three),
-// the long one moved first. Streaming hours fall week by week from each episode's own first day (audiences.ts
-// observeWeek), so what comes out first is watched longest.
-const uneven = (s: GameState, year: number): Project => {
-  const p = SERIES.project(s, year);
-  // The fixture's season, its second episode given a third scene of its own: six minutes, then nine.
-  const ep2 = p.scenes.find((x) => x.episode === 2)!;
-  const extra = addScene(s, p, 2);
-  updateScene(p, extra.id, { heading: { intExt: 'INT', place: 'Boathouse', time: 'DAY' }, storyLocation: 'Boathouse', participants: [...ep2.participants], objective: 'Move the story forward.', action: 'Action.', estMinutes: 3 } as never);
-  return p;
-};
+// An episode moved (season.ts moveEpisode): the episode a hired director directs, received better, put first. On
+// broadcast each episode keeps the audience of the one before it (audiences.ts retention), so the better one first keeps
+// more; on streaming what comes out first is watched longest (audiences.ts observeWeek).
 const audienceOf = (p: Project, metric: 'hours' | 'viewers') => p.offers.flatMap((o) => o.audience ?? []).reduce((a, x) => a + (x.metric === metric ? x.value : 0), 0);
+/**
+ * Each day: the hired director given the episode the season was written to end on (the one holding its last scene),
+ * wherever it now falls, and that episode given an extra cut pass. Until November 15, 2026 this proof moved a longer episode first, and which of two episodes is
+ * received better wasn't settled by its length, so the audience moved both ways (21 of 40 careers aired).
+ */
+const lastScene = new WeakMap<Project, string>();
+const directLast = (s: GameState) => {
+  for (const p of live(s)) {
+    const h = p.hires.find((x) => x.roleId === 'episode-director' && x.status === 'accepted');
+    const last = p.scenes.find((x) => x.id === lastScene.get(p))?.episode;
+    const e = p.episodes.find((x) => x.number === last);
+    if (h && e && e.director !== h.personId) try { assignEpisodeRole(p, e.number, 'director', h.personId); } catch { /* not now */ }
+    // And an extra cut pass on it as soon as its assembly allows (episode-delivery.ts startEpisodeCutPass).
+    if (e && !cutOn.has(p)) try { startEpisodeCutPass(s, p, e.number); cutOn.add(p); } catch { /* not yet */ }
+  }
+};
+const cutOn = new WeakSet<Project>();
+/**
+ * Each day, once a season is sold: its two episodes put out on the same calendar days in both arms, the 300th and 307th
+ * of its year, so the weeks it airs in (audiences.ts weekCompetition, seasonFactor) are the same and only the order differs.
+ */
+const started = new WeakMap<GameState, number>();
+const fixedDates = new WeakSet<object>();
+const sameWeeks = (s: GameState) => {
+  if (!started.has(s)) started.set(s, s.now);
+  for (const p of s.projects) for (const r of p.releases.filter((x) => x.episodes?.length === 2 && x.status === 'planned' && !fixedDates.has(x))) {
+    const year = Number(/Season (\d+)/.exec(p.title)?.[1] ?? 1) - 1;
+    const day = (n: number) => dateKey(started.get(s)! + (year * 365 + n) * 86_400_000, 'UTC');
+    try { setEpisodeDates(s, p, r.id, [day(300), day(307)]); fixedDates.add(r); } catch { /* past, or not now */ }
+  }
+};
+/** The season with its second episode's last scene marked, and the most capable director offered the job. */
+const directed = (move: boolean) => (s: GameState, p: Project) => {
+  lastScene.set(p, p.scenes.filter((x) => x.episode === 2).at(-1)!.id);
+  if (move) moveEpisode(p, 2, -1);
+  hireDirector(s, p);
+};
 PROBES.push({
-  id: 'move-episode', features: ['action:season.moveEpisode'], decision: 'Put the longer episode first',
+  id: 'move-episode', features: ['action:season.moveEpisode'], decision: 'Put the episode a hired director directs, and cuts again, first',
   reads: ['src/engine/season.ts#moveEpisode', 'src/engine/audiences.ts#observeWeek'],
-  base: { ...SERIES, project: uneven }, variant: { ...SERIES, project: uneven, decide: (_s, p) => moveEpisode(p, 2, -1) },
+  // Only a season that airs has an audience to move: about half do.
+  seeds: 120,
+  base: { ...SERIES, decide: directed(false), daily: both(SERIES.daily, directLast, sameWeeks) }, variant: { ...SERIES, decide: directed(true), daily: both(SERIES.daily, directLast, sameWeeks) },
   measure: (_s, projects) => ({
-    firstEpisodeMinutes: projects.reduce((a, p) => a + p.scenes.filter((x) => x.episode === 1).reduce((b, x) => b + x.estMinutes, 0), 0),
+    firstEpisodeDirected: projects.filter((p) => { const e = p.episodes.find((x) => x.number === 1); return !!e?.director && e.director !== 'player'; }).length,
     // Streaming hours (each episode's from its own first day) and broadcast viewers (each kept from the one before), apart.
     hours: projects.reduce((a, p) => a + audienceOf(p, 'hours'), 0),
     viewers: projects.reduce((a, p) => a + audienceOf(p, 'viewers'), 0),
     renewed: projects.filter((p) => p.renewal?.outcome === 'renewed').length,
   }),
-  bites: ['firstEpisodeMinutes'], downstream: ['hours', 'viewers', 'renewed'],
+  bites: ['firstEpisodeDirected'], downstream: ['hours', 'viewers', 'renewed'],
 });
 
 // A season streamed by you (finish.ts planRelease) can be planned once an episode is delivered (episode-delivery.ts),

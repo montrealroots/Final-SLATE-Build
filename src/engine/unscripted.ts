@@ -42,6 +42,25 @@ export function setupCompetition(p: Project, contestants: string[], eliminatePer
   u.competition = { contestants: [...new Set(contestants)], eliminatePerEpisode, results: [] };
 }
 
+/**
+ * A participant as a contestant: how good they are at what the competition tests, and how they come across on screen,
+ * each from 30 to 90. Drawn from the save's seed and the participant, so it is the same every time it is read, and
+ * shown where contestants are chosen. Until November 15, 2026 a contestant was a name: results were a draw unrelated to
+ * who competed, and nothing outside the competition read who did. Game calibration.
+ */
+export function contestantTraits(state: GameState, p: Project, id: string): { skill: number; presence: number } {
+  const r = stream(state.seed, 'contestant', p.id, id);
+  return { skill: Math.round(30 + r() * 60), presence: Math.round(30 + r() * 60) };
+}
+
+/** How the contestants in these scenes come across on screen, on average; null where none are contestants. */
+export function contestantPresence(state: GameState, p: Project, scenes: { contributorIds?: string[] }[]): number | null {
+  const c = unscriptedOf(p).competition;
+  if (p.axes.format !== 'unscripted-series' || unscriptedOf(p).family !== 'competition' || !c) return null;
+  const on = [...new Set(scenes.flatMap((s) => s.contributorIds ?? []))].filter((id) => c.contestants.includes(id));
+  return on.length ? on.reduce((a, id) => a + contestantTraits(state, p, id).presence, 0) / on.length : null;
+}
+
 /** Contestants still in the competition at the start of an episode. */
 export function stillIn(p: Project, episode: number): string[] {
   const c = unscriptedOf(p).competition;
@@ -99,7 +118,8 @@ export function decideCompetition(state: GameState, p: Project, recorded: (episo
     if (c.results.length < e - 1) break; // results follow episode order
     const inPlay = stillIn(p, e).filter((id) => approvedScenes(p).some((s) => s.episode === e && s.contributorIds.includes(id)));
     const scores: Record<string, number> = {};
-    for (const id of inPlay) scores[id] = Math.round(40 + stream(state.seed, 'competition', p.id, e, id)() * 60);
+    // Half their skill and half the day: the stronger contestant usually goes through, not always.
+    for (const id of inPlay) scores[id] = Math.round(contestantTraits(state, p, id).skill / 2 + 20 + stream(state.seed, 'competition', p.id, e, id)() * 30);
     const ranked = [...inPlay].sort((a, b) => scores[b] - scores[a] || a.localeCompare(b));
     const last = e === p.axes.episodeCount;
     const eliminated = last ? ranked.slice(1) : ranked.slice(Math.max(1, ranked.length - c.eliminatePerEpisode));

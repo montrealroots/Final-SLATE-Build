@@ -24,7 +24,7 @@ import { ensureWorkEvent } from './production';
 import { gaussian, pick, stream } from './rng';
 import { addLog, cancelEvents, newId, registerHandler, schedule } from './state';
 import { careerStudio } from './studios';
-import { redactionComplete } from './unscripted';
+import { contestantPresence, redactionComplete } from './unscripted';
 import { songCredits, songUses } from './songs';
 import { releaseLicenceRefusal, releaseSongs, unlicensed } from './music';
 import { judgeScore } from './cues';
@@ -355,7 +355,9 @@ export function assessQuality(state: GameState, p: Project, episode?: number): R
     const revoiced = p.tasks.some((x) => x.id === `post:revoice:${a.characterId}` && x.status === 'done') ? REVOICE_GAIN : 0;
     out[`performance:${a.characterId}:${a.performer}`] = clamp(base * 0.6 + avg(sc, 60) * 0.4 + avg(chem, 0) * 0.5 + revoiced);
   }
-  const perf = avg(Object.entries(out).filter(([k]) => k.startsWith('performance:')).map(([, v]) => v), 55);
+  // A competition's contestants are its performers (unscripted.ts contestantPresence): how they come across on screen,
+  // where no part is cast. Until November 15, 2026 an unscripted show's performance was 55 whoever competed.
+  const perf = avg(Object.entries(out).filter(([k]) => k.startsWith('performance:')).map(([, v]) => v), contestantPresence(state, p, scenes) ?? 55);
   // Rounded to the nearest whole value; never derived from genre labels, budget size or identity.
   // The edit counts in the film's overall (from November 14, 2026): until then the editing assessment reached only the
   // editing awards, so the editor, the cut passes, the coverage the cut had and a gap where an essential scene was cut
