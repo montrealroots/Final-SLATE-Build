@@ -4,11 +4,13 @@
 // day's work or a day's pay. Now each is asked for a pass with a scope, works its days and is paid for each, delivers it,
 // and the player accepts it or asks for a revision. Only accepted work is credited or counted. The player's brief and
 // notes are kept as written and never read: the standard of a pass is drawn around the writer's level, not from words.
+// What a revision looks at was a label until November 15, 2026; now one aimed at what the episode has notes on reads
+// better (aimedAt).
 import { getPlace } from '../data/places';
 import { extend, money, settle } from './budget';
 import { personById, roleLabel } from './people';
 import { isWorkingDay, nextWorkingDay } from './production/schedule';
-import { approvedScenes, assignEpisodeRole } from './projects';
+import { approvedScenes, assignEpisodeRole, scriptIssues } from './projects';
 import { gaussian, stream } from './rng';
 import { addLog, newId, registerHandler, schedule } from './state';
 import { addDaysToKey, dateKey, formatDateKey, localToInstant, parseYmd } from './time';
@@ -25,8 +27,31 @@ export const SCOPE: Record<WritingScope, { label: string; hint: string; minutesP
   polish: { label: 'A Polish', hint: 'They tighten what is there without restructuring it.', minutesPerDay: 15, minDays: 1, weight: 0.3 },
 };
 
-/** What a revision can be asked to look at. A label for the record: the game reads none of it. */
+/** What a revision can be asked to look at. Until November 15, 2026 a label the game read none of. */
 export const REVISION_FOCUS = ['Structure', 'Character', 'Dialogue', 'Pace', 'Tone', 'Something Else'];
+/** The notes each focus answers: a script check's area, or a tonal one. Something Else answers none. */
+const FOCUS_AREAS: Record<string, (i: { area: string; module?: string }) => boolean> = {
+  Structure: (i) => i.area === 'structure' || i.area === 'causality',
+  Character: (i) => i.area === 'characterization',
+  Dialogue: (i) => i.area === 'dialogue',
+  Pace: (i) => i.area === 'pacing' && i.module !== 'tonal',
+  Tone: (i) => i.module === 'tonal' || i.area === 'genre',
+};
+/** How many points better a revision aimed at what the episode has notes on is read: two fifths of a first pass's spread. */
+export const REVISION_AIM = 4;
+/**
+ * The focuses that answer something the episode has notes on: a script check that counts (advice doesn't), or a note of
+ * yours still open or accepted, on one of its scenes or on the whole script.
+ */
+export function revisionAims(p: Project, episode: number): string[] {
+  const inEp = new Set(p.scenes.filter((s) => (s.episode ?? 1) === episode).map((s) => s.id));
+  const here = (sceneId?: string | null) => !sceneId || inEp.has(sceneId);
+  const notes: { area: string; module?: string }[] = [
+    ...scriptIssues(p).filter((i) => !i.advisory && here(i.sceneId)),
+    ...(p.notes ?? []).filter((n) => !n.advisory && (n.status === 'open' || n.status === 'accepted') && here(n.sceneId)),
+  ];
+  return REVISION_FOCUS.filter((f) => FOCUS_AREAS[f] && notes.some(FOCUS_AREAS[f]));
+}
 /** A contract covers the pass and two revisions of it; more is a new commission. */
 export const MAX_REVISIONS = 2;
 /** A revision takes two fifths of the pass's days. */
@@ -153,7 +178,8 @@ registerHandler('writing-day', (state, ev) => {
   if (pass.done >= pass.days) {
     pass.deliveredOn = date;
     const level = personById(state, j.personId, h.roleId).capability;
-    pass.read = Math.round(Math.min(98, Math.max(5, level + gaussian(stream(state.seed, 'writing', j.id, j.passes.length), 0, READ_SPREAD[Math.min(1, j.passes.length - 1)]))));
+    const aimed = j.passes.length > 1 && revisionAims(p, j.episode).includes(pass.focus ?? '') ? REVISION_AIM : 0;
+    pass.read = Math.round(Math.min(98, Math.max(5, level + aimed + gaussian(stream(state.seed, 'writing', j.id, j.passes.length), 0, READ_SPREAD[Math.min(1, j.passes.length - 1)]))));
     j.status = 'delivered';
     const name = personById(state, j.personId, h.roleId).name;
     addLog(state, `${name} delivered ${j.passes.length > 1 ? 'the revision' : SCOPE[j.scope].label.toLowerCase().replace('their own', 'a')} of ${episodeName(p, j.episode)} on ${formatDateKey(date)}. Accept it or ask for a revision on the Crew page.`, 'project', { projectId: p.id, route: { view: 'project', projectId: p.id, tab: 'crew' } });

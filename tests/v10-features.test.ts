@@ -30,8 +30,8 @@ function register(): Feature[] {
  * decision in effect and needs a played-career proof like any other (from November 14, 2026).
  */
 const DISPLAY_ONLY = /^(shown|everywhere|the |drafts list|credits|[A-Za-z]+\.tsx\b)/i;
-/** A choice from a list the player would expect to matter, though nothing reads it: open, not carried, until it does. */
-const CHOICES_NOTHING_READS = new Set(['field:WritingWork.tsx#{`What ${name}\'s Revision Should Look At`}#1']);
+/** A choice from a list the player would expect to matter, though nothing reads it: open, not carried, until it does (a revision's focus was one until November 15, 2026). */
+const CHOICES_NOTHING_READS = new Set<string>([]);
 const CARRIED = new Map(fields().filter((x) => (x.class === 'identity' || x.class === 'record') && DISPLAY_ONLY.test(x.consumer.trim()) && (x.test || x.journey) && !CHOICES_NOTHING_READS.has(x.id)).map((x) => [x.id, x]));
 
 function matrix(): Row[] {
