@@ -11,8 +11,8 @@ journey that shows it there.
 | action | 132 | 0 | 0 | 3 | 12 | 13 | 0 | 160 |
 | bank | 43 | 0 | 0 | 0 | 0 | 0 | 11 | 54 |
 | scheduled | 53 | 0 | 0 | 0 | 2 | 11 | 0 | 66 |
-| field | 110 | 13 | 0 | 0 | 6 | 8 | 168 | 305 |
-| all | 338 | 13 | 0 | 3 | 20 | 32 | 179 | 585 |
+| field | 110 | 42 | 0 | 0 | 6 | 8 | 139 | 305 |
+| all | 338 | 42 | 0 | 3 | 20 | 32 | 150 | 585 |
 
 ## Rows
 
@@ -428,14 +428,14 @@ journey that shows it there.
 | {`${label}: Exclusive`} | field | release-plan.ts buyerValue; distribution.ts heldTerritories | proven | licence-exclusive (100 seeds) | licenceFee +8880; money -12061.25 |
 | {`Keep My ${c.label}`} | field | blueprints.ts applyBlueprint | not yet proven |  |  |
 | {`Keep My ${c.label} And Add None`} | field | blueprints.ts applyBlueprint | not yet proven |  |  |
-| "Save Name" | field | the saved games list | not yet proven |  |  |
+| "Save Name" | field | the saved games list | carried | tests/carried-text.test.ts::kept through a save exactly as written | A name or a record, carried to the saved games list: it decides nothing by its nature. |
 | "Wake Me For Obligations" | field | state.ts runEvents | proven | no-wake-for-obligations (40 seeds) | lateDays +1; quality.direction -0.6; overall -0.187 |
 | "The Light It Is Shot In" | field | craft.ts craftTime, gafferNeeded, cameraTestDays, postFactors; takes.ts planTime; hiring.ts neededRoles; production/tasks.ts buildTasks | proven | light-contrast (120 seeds) | spent +3507.333; money -4596.85; daysToDeliver +0.229 |
 | "The Score" | field | craft.ts postFactors, scoreSessions; production/tasks.ts buildTasks | proven | score-chamber (40 seeds) | spent +11613.25; ownIn +11500; daysToDeliver +3.263 |
 | {SOUNDS[k].label} | field | craft.ts craftTime, craftRoles, postFactors, dialogueHolds; production/tasks.ts buildTasks; production/shoot.ts needsDialogueReplacement | proven | sound-clarity (40 seeds) | hired +2; spent +11216.25; ownIn +9425 |
 | "Central Question" | field | script-effects.ts documentsNeeded | proven | question-missing (20 seeds) | grantsAsked -2; grantIn -66000; ownIn +90000 |
-| "Central Question" | field | shown in the Story panel; part of the Statement Of Intent for a documentary | not yet proven |  |  |
-| "Synopsis" | field | shown in the Story panel | not yet proven |  |  |
+| "Central Question" | field | shown in the Story panel; part of the Statement Of Intent for a documentary | carried | tests/carried-text.test.ts::kept through a save exactly as written | A name or a record, carried to shown in the Story panel; part of the Statement Of Intent for a documentary: it decides nothing by its nature. |
+| "Synopsis" | field | shown in the Story panel | carried | tests/carried-text.test.ts::kept through a save exactly as written | A name or a record, carried to shown in the Story panel: it decides nothing by its nature. |
 | "Logline" | field | script-effects.ts documentsNeeded | proven | logline-missing (40 seeds) | backerDeals -1; ownIn +37125; money -95956.55 |
 | "Premise" | field | script-effects.ts documentsNeeded | proven | premise-missing (40 seeds) | backerDeals -1; ownIn +37275; money -79563.126 |
 | "Stakes" | field | script-effects.ts documentsNeeded | proven | stakes-missing (40 seeds) | grantsAsked -2; grantIn -35275; ownIn +35275 |
@@ -444,21 +444,21 @@ journey that shows it there.
 | "Theme" | field | script-effects.ts documentsNeeded | proven | theme-missing (40 seeds) | grantsAsked -2; grantIn -43200; ownIn +43200 |
 | "Intended Ending" | field | script-effects.ts documentsNeeded | proven | ending-missing (40 seeds) | grantsAsked -2; grantIn -29150; ownIn +29150 |
 | "Intended Experience" | field | cues.ts proposeBrief | proven | intended-experience (40 seeds) | silent +2; cues -4; spent -5219; daysToDeliver -2.812; quality.music -61.025 |
-| "Who It Is For" | field | shown in the Story panel | not yet proven |  |  |
-| "How It Is Built" | field | shown in the Story panel | not yet proven |  |  |
+| "Who It Is For" | field | shown in the Story panel | carried | tests/carried-text.test.ts::kept through a save exactly as written | A name or a record, carried to shown in the Story panel: it decides nothing by its nature. |
+| "How It Is Built" | field | shown in the Story panel | carried | tests/carried-text.test.ts::kept through a save exactly as written | A name or a record, carried to shown in the Story panel: it decides nothing by its nature. |
 | "Tone" | field | cues.ts proposeBrief | proven | tone (40 seeds) | chamber +2; spent +9183.5; cues -2 |
 | "Competes As" | field | script-effects.ts competesAs | not yet proven |  |  |
 | "Source Material" | field | awards-rules.ts (original or adapted screenplay) | not yet proven |  |  |
-| "Adapted From" | field | shown with the project | not yet proven |  |  |
+| "Adapted From" | field | shown with the project | carried | tests/carried-text.test.ts::kept through a save exactly as written | A name or a record, carried to shown with the project: it decides nothing by its nature. |
 | "When It Is Set" | field | awards-rules.ts requirementProblems | not yet proven |  |  |
 | "Year It Is Set In" | field | looks.ts periodBand, projectBand; projects.ts deriveRequirements; production/tasks.ts buildTasks | proven | story-year (40 seeds) | spent +8786.75; money -26599.279; daysToDeliver +1.688 |
 | "The Look It Borrows" | field | the Creative Brief card | carried | tests/looks.test.ts::1986 made in 2026 is a period: research, and half as much costume work again; 2026 is neither; the look it borrows changes no work | A name or a record, carried to the Creative Brief card: it decides nothing by its nature. |
 | "Story Setting Place" | field | projects.ts deriveRequirements | proven | setting-abroad (40 seeds) | spent +2504.25; hired +2; ownIn +2425 |
 | "Story Setting" | field | shown in the Story panel | carried | tests/script-effects.test.ts::briefs add no work | A name or a record, carried to shown in the Story panel: it decides nothing by its nature. |
 | {x.label} | field | awards-rules.ts PROJECT_SUBJECTS | not yet proven |  |  |
-| {q.label} | field | shown with the genre questions | not yet proven |  |  |
-| "Draft Name" | field | drafts list | not yet proven |  |  |
-| "Draft Name" | field | drafts list | not yet proven |  |  |
+| {q.label} | field | shown with the genre questions | carried | tests/carried-text.test.ts::kept through a save exactly as written | A name or a record, carried to shown with the genre questions: it decides nothing by its nature. |
+| "Draft Name" | field | drafts list | carried | tests/carried-text.test.ts::kept through a save exactly as written | A name or a record, carried to drafts list: it decides nothing by its nature. |
+| "Draft Name" | field | drafts list | carried | tests/carried-text.test.ts::kept through a save exactly as written | A name or a record, carried to drafts list: it decides nothing by its nature. |
 | {`"${x.title}" In This Scene`} | field | songs.ts songUses; projects.ts deriveRequirements | not yet proven |  |  |
 | "Interior Or Exterior" | field | production/shoot.ts (weather) | proven | scene-exterior (40 seeds) | lostDays +1.4; shootDays +1.2; money -24746.941 |
 | "Place" | field | production/schedule.ts groupShootDays | proven | scenes-one-place (40 seeds) | shootDays -3.475; spent -17914.5; ownIn -575 |
@@ -475,8 +475,8 @@ journey that shows it there.
 | {c.name} | field | projects.ts deriveRequirements (interviews, consent) | not yet proven |  |  |
 | {e.claim.slice(0, 50)} | field | projects.ts scriptIssues | not yet proven |  |  |
 | "Objective" | field | projects.ts scriptIssues (advisory note when empty) | not yet proven |  |  |
-| {nonfiction ? 'What Happens' : 'Action'} | field | shown on the scene | not yet proven |  |  |
-| "Turning Point" | field | shown on the scene | not yet proven |  |  |
+| {nonfiction ? 'What Happens' : 'Action'} | field | shown on the scene | carried | tests/carried-text.test.ts::kept through a save exactly as written | A name or a record, carried to shown on the scene: it decides nothing by its nature. |
+| "Turning Point" | field | shown on the scene | carried | tests/carried-text.test.ts::kept through a save exactly as written | A name or a record, carried to shown on the scene: it decides nothing by its nature. |
 | "Essential To The Story" | field | finish.ts (cutting it costs the edit); cost-cuts.ts | proven | scene-essential (40 seeds) | quality.editing -8; overall -0.787; reception -0.587 |
 | "Props" | field | projects.ts deriveRequirements; production/tasks.ts | proven | scene-props (40 seeds) | spent +11258; daysToDeliver +4.4 |
 | "Animals" | field | projects.ts deriveRequirements; production/tasks.ts | proven | scene-animals (40 seeds) | spent +2948.75; daysToDeliver +1.313 |
@@ -515,21 +515,21 @@ journey that shows it there.
 | "New Question" | field | research.ts | not yet proven |  |  |
 | "Planted In" | field | script-effects.ts; finish.ts edit consequences | not yet proven |  |  |
 | "Pays Off In" | field | script-effects.ts; finish.ts edit consequences | not yet proven |  |  |
-| "What Is Set Up" | field | shown with the setup | not yet proven |  |  |
+| "What Is Set Up" | field | shown with the setup | carried | tests/carried-text.test.ts::kept through a save exactly as written | A name or a record, carried to shown with the setup: it decides nothing by its nature. |
 | "Kind" | field | projects.ts deriveRequirements (clue props) | not yet proven |  |  |
 | "First Character" | field | season.ts sharedFactImpact | not yet proven |  |  |
 | "Second Character" | field | season.ts sharedFactImpact | not yet proven |  |  |
-| "Relationship" | field | shown in the season plan | not yet proven |  |  |
-| "Where It Starts" | field | shown in the season plan | not yet proven |  |  |
-| "Where It Ends" | field | shown in the season plan | not yet proven |  |  |
-| "Relationship" | field | shown in the season plan | not yet proven |  |  |
-| "Where It Starts" | field | shown in the season plan | not yet proven |  |  |
-| "Where It Ends" | field | shown in the season plan | not yet proven |  |  |
+| "Relationship" | field | shown in the season plan | carried | tests/carried-text.test.ts::kept through a save exactly as written | A name or a record, carried to shown in the season plan: it decides nothing by its nature. |
+| "Where It Starts" | field | shown in the season plan | carried | tests/carried-text.test.ts::kept through a save exactly as written | A name or a record, carried to shown in the season plan: it decides nothing by its nature. |
+| "Where It Ends" | field | shown in the season plan | carried | tests/carried-text.test.ts::kept through a save exactly as written | A name or a record, carried to shown in the season plan: it decides nothing by its nature. |
+| "Relationship" | field | shown in the season plan | carried | tests/carried-text.test.ts::kept through a save exactly as written | A name or a record, carried to shown in the season plan: it decides nothing by its nature. |
+| "Where It Starts" | field | shown in the season plan | carried | tests/carried-text.test.ts::kept through a save exactly as written | A name or a record, carried to shown in the season plan: it decides nothing by its nature. |
+| "Where It Ends" | field | shown in the season plan | carried | tests/carried-text.test.ts::kept through a save exactly as written | A name or a record, carried to shown in the season plan: it decides nothing by its nature. |
 | "Claim" | field | projects.ts deriveRequirements (fact-check) | not yet proven |  |  |
 | "Status" | field | projects.ts deriveRequirements | not yet proven |  |  |
-| "Source Note" | field | shown with the fact | not yet proven |  |  |
-| "Contributor Name" | field | credits, consent | not yet proven |  |  |
-| "Who They Are" | field | shown with the contributor | not yet proven |  |  |
+| "Source Note" | field | shown with the fact | carried | tests/carried-text.test.ts::kept through a save exactly as written | A name or a record, carried to shown with the fact: it decides nothing by its nature. |
+| "Contributor Name" | field | credits, consent | carried | tests/carried-text.test.ts::kept through a save exactly as written | A name or a record, carried to credits, consent: it decides nothing by its nature. |
+| "Who They Are" | field | shown with the contributor | carried | tests/carried-text.test.ts::kept through a save exactly as written | A name or a record, carried to shown with the contributor: it decides nothing by its nature. |
 | "What It Is About" | field | documentary.ts proposeDocumentaryPlan (the questions it writes) | not yet proven |  |  |
 | "Kind Of Subject" | field | documentary.ts proposeDocumentaryPlan | not yet proven |  |  |
 | "Note" | field | projects.ts addNote, finish.ts assessQuality | proven | own-notes (40 seeds) | ownNotes +6; quality.script +6; overall +1.725 |
@@ -546,22 +546,22 @@ journey that shows it there.
 | "Entity" | field | projects.ts deriveRequirements; production/shoot.ts | proven | lead-entity (40 seeds) | spent +17308.25; hired +2; ownIn +14725 |
 | "Realized As" | field | projects.ts deriveRequirements; production/shoot.ts | proven | lead-puppet (40 seeds) | spent +16263.75; daysToDeliver +2.513 |
 | "Puppet Face" | field | production/tasks.ts (sm:faces, sm:armature, sm:animation); rates.ts FACE_METHODS | proven | puppet-face (40 seeds) | spent +16329.7; ownIn +18050; daysToDeliver +20.9 |
-| "Also Called" | field | shown with the part in casting | not yet proven |  |  |
+| "Also Called" | field | shown with the part in casting | carried | tests/carried-text.test.ts::kept through a save exactly as written | A name or a record, carried to shown with the part in casting: it decides nothing by its nature. |
 | "Pronouns" | field | script-explain.ts characterPronouns | not yet proven |  |  |
 | "Speaks" | field | production/language.ts personLanguagesFit | proven | lead-speaks (40 seeds) | spent +2874; hired +2 |
 | "Awards Placement" | field | script-effects.ts castPlacement | not yet proven |  |  |
 | "Series Involvement" | field | hiring.ts estimateDays; finish.ts computeCredits | stale | series-regular | measured before the code it reads last changed |
 | {title(f)} | field | awards-rules.ts isNarrator; hiring.ts estimateDays | stale | lead-narrator | measured before the code it reads last changed |
 | {title(m)} | field | hiring.ts; production | stale | method-capture | measured before the code it reads last changed |
-| "What Kind Of Being" | field | shown to design and casting | not yet proven |  |  |
+| "What Kind Of Being" | field | shown to design and casting | carried | tests/carried-text.test.ts::kept through a save exactly as written | A name or a record, carried to shown to design and casting: it decides nothing by its nature. |
 | "Description" | field | script-explain.ts breakdownComplete | not yet proven |  |  |
 | "Wants" | field | script-explain.ts breakdownComplete | not yet proven |  |  |
 | "Fears" | field | script-explain.ts breakdownComplete | not yet proven |  |  |
-| "Why They Want It" | field | shown with the part | not yet proven |  |  |
-| "What Stands In The Way" | field | shown with the part | not yet proven |  |  |
-| "What In Them Pulls Against It" | field | shown with the part | not yet proven |  |  |
-| "How They Change" | field | shown with the part | not yet proven |  |  |
-| "How They Speak" | field | shown with the part | not yet proven |  |  |
+| "Why They Want It" | field | shown with the part | carried | tests/carried-text.test.ts::kept through a save exactly as written | A name or a record, carried to shown with the part: it decides nothing by its nature. |
+| "What Stands In The Way" | field | shown with the part | carried | tests/carried-text.test.ts::kept through a save exactly as written | A name or a record, carried to shown with the part: it decides nothing by its nature. |
+| "What In Them Pulls Against It" | field | shown with the part | carried | tests/carried-text.test.ts::kept through a save exactly as written | A name or a record, carried to shown with the part: it decides nothing by its nature. |
+| "How They Change" | field | shown with the part | carried | tests/carried-text.test.ts::kept through a save exactly as written | A name or a record, carried to shown with the part: it decides nothing by its nature. |
+| "How They Speak" | field | shown with the part | carried | tests/carried-text.test.ts::kept through a save exactly as written | A name or a record, carried to shown with the part: it decides nothing by its nature. |
 | "Makeup" | field | looks.ts makeupShare, makeupDayCost; production/tasks.ts buildTasks; production/schedule.ts groupShootDays; production/shoot.ts runShootDay; callsheet.ts callSheet; hiring.ts neededRoles | proven | lead-makeup (40 seeds) | spent +22088.75; money -40690.12; daysToDeliver +1.525 |
 | "Costume From" | field | looks.ts costumeCopies, wardrobeMismatch; production/tasks.ts buildTasks | proven | lead-costume (40 seeds) | spent +8563; daysToDeliver +4.525 |
 | "Appearance States" | field | looks.ts statesOf, costumeCopies; production/tasks.ts buildTasks | proven | lead-states (40 seeds) | spent +26120; money -53194.614; daysToDeliver +20.213 |
@@ -582,7 +582,7 @@ journey that shows it there.
 | "Hours Of Sleep" | field | state.ts startSleep | not yet proven |  |  |
 | "Set An Alarm" | field | state.ts snooze | proven | sleep-through-call (40 seeds) | lateDays +1; quality.direction -0.775; overall -0.25 |
 | {`Replacement Place ${i + 1}`} | field | save.ts repairSave | not a feature |  | A repair of a save whose places can't be found: it puts a place where the save had one (tests/migration.test.ts::open after a repair that keeps a backup and changes only the places). Where you live, the decision a place makes, is proven by base-los-angeles. |
-| "Song Title" | field | everywhere a song is named | not yet proven |  |  |
+| "Song Title" | field | everywhere a song is named | carried | tests/carried-text.test.ts::kept through a save exactly as written | A name or a record, carried to everywhere a song is named: it decides nothing by its nature. |
 | "Where It Comes From" | field | songs.ts songTasks; awards-rules.ts songProblems | not yet proven |  |  |
 | "Lyrics" | field | songs.ts songTasks | not yet proven |  |  |
 | "Music By" | field | songs.ts songCredits; awards recipients | not a feature |  | Names typed for a song that existed before the film, carried to its credits (songs.ts songCredits). An award for an original song takes only one written for the project (awards-rules.ts writtenForProject), so these names never decide an entry; who writes a song made for the film is its own row (Where It Comes From, Lyrics). |
