@@ -40,8 +40,10 @@ const licensing = (s: GameState) => {
     if (!ls.some((l) => l.status !== 'refused' && l.status !== 'declined')) { requestLicence(s, p, song.id, { territories: ['GB'], media: ['digital'], years: 3 }); continue; }
     for (const l of ls.filter((x) => x.status === 'quoted' || x.status === 'countered')) {
       const need = licenceTotal(l);
-      setFinanceTarget(p, financeSummary(p).target + need); putInOwnMoney(s, p, need);
-      agreeLicence(s, p, l.id);
+      // Agreed from what the project has; where that's short, the target raised by the quote and the money put in first.
+      try { agreeLicence(s, p, l.id); } catch {
+        try { setFinanceTarget(p, financeSummary(p).target + need); putInOwnMoney(s, p, need); agreeLicence(s, p, l.id); } catch { /* the money can't be raised now: tomorrow */ }
+      }
     }
   }
 };

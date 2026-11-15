@@ -172,10 +172,32 @@ and the rest) with real grades filling the hiring lists.
 - The bank proofs use labelled fixtures where a career never meets the situation (a stranger's charge, an attempt on an
   account number) and a small step sequencer for set-ups that wait on the bank (`bank-last.ts steps`).
 
-**Next.** The 6 open are explained (`docs/v10/explained.json`): the starting hour and holidays kept move only the
-delivery date; the music ceiling with Guide Me (the career staffs by hand); who competes, among enough; moving an
-episode (its audience moves both ways); France's overrun loan (a career never takes a French account past its limit).
-Each says where a proof would reach next.
+- Realistic prices for music (the owner, November 15, 2026: "Adele not charging $2,500 to use one of her songs… Be
+  realistic"):
+  - A song licence cost the same whoever recorded it ($1,500 a side, scaled by the budget). Now `music.ts holderFee`
+    prices by the song's fame (`fameOf`: Wikipedia editions writing about the recording and its best-known performer,
+    from Wikidata's sitelinks, kept by `tools/music/catalog.mjs` in `src/data/music-fame.json`) and the production's
+    size (`LICENCE_ANCHOR`, from Music Connection's reported ranges and the Mad Men Beatles licence), with a floor for a
+    famous song (`LICENCE_FLOOR`, game calibration). "Hello": about $18,000 for one country's festivals on a micro
+    budget, about $530,000 for the world on a commissioned one. A famous song's holders refuse a small production more
+    (`FAME_REFUSAL`). The Music page says it's an estimate from reported fees.
+  - Recognised composers and songwriters asked crew rates. `recognition-pay.ts` now asks a fee for the work from their
+    recognition, over its days: a score (`scoreFeeFrom`, 30 days; Zimmer about $2.2 million, Brabec's "in excess of
+    $1,000,000") and a song (`songFeeFrom`, 4 days; Elton John about $186,000, Passman's "$100,000-plus").
+    `docs/people/PAY.md` and `CREW.csv` regenerated.
+  - Nineteen proofs that read the changed code were rerun at 40 careers; all held. The catalog-recording proof now puts
+    the licence money in first (a famous recording costs more than a micro short has left).
+- Proven this round: France's overrun loan (`bank-last.ts`: a second account at LCL, whose fee has no youth waiver, runs
+  past its limit; taking the loan keeps it open and out of collections, 40 of 40), and the music ceiling
+  (`music-fields.ts`: both arms leave music to Guide Me; with a tenth of its plan it hires no one, and neither film is
+  delivered, 40 of 40).
+
+**Next.** 4 open, explained (`docs/v10/explained.json`):
+- The starting hour and holidays kept move only the delivery date. A fixed deadline is noisy: delivery varies by about
+  ten days between careers, and holidays sometimes land a career earlier.
+- Contestants: a game gap, not a proof gap. Contestants' scores are drawn at random (`unscripted.ts
+  decideCompetition`), unrelated to who they are, and nothing outside the competition reads who competes.
+- Moving an episode: its audience moves both ways.
 
 ## The Owner's Command Of November 14, 2026 (Later): Every Feature Proven, Everything Possible
 
