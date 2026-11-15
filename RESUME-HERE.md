@@ -143,16 +143,16 @@ and the rest) with real grades filling the hiring lists.
 - Probes that measured nothing until fixed: the stop-motion stages probe hired 3D CG's animator; a probe that set its
   genre as a string, which the engine doesn't read (genres are `{ id, emphasis }`).
 - Explained, not proven: the music spending ceiling with Guide Me (the career staffs by hand either way).
-- The matrix: open 136 at PR #100's merge -> 45, every result fresh.
+- Carried as a credit: who sings a song (the Song Performed By credit and the casting note; nothing else reads it).
+- The matrix: open 136 at PR #100's merge -> 41, every result fresh.
 
-**Next.** The 45 open: the eleven bank commands a $25m career never reaches (collections, overdrafts, disputes,
+**Next.** The 41 open: the eleven bank commands a $25m career never reaches (collections, overdrafts, disputes,
 hardship), and an episode delivered, locked or moved early (a release planned while the season is in production);
 episode release fields (schedule, premiere, later episodes) and the release's date, territory and cut; the awards
 entry fields (project, episode, version, performer); When It Is Set and the subject categories; unscripted format,
-competitors and who leaves; a chemistry read; who performs a song and heard-only time; a stage's episode and its
+competitors and who leaves; a chemistry read (drafted in the scratchpad, not run); heard-only time; a stage's episode and its
 scenes; a version's scenes; pickups; Place Of Birth, the player's pronouns, observances kept and the starting hour;
-an idea's characters ticked; the idea beats' interior or exterior. Running when this was written: g15 (site-backup,
-archive-reassign, split-scenes at forty), in the scratchpad.
+an idea's characters ticked; the idea beats' interior or exterior.
 
 ## The Owner's Command Of November 14, 2026 (Later): Every Feature Proven, Everything Possible
 
