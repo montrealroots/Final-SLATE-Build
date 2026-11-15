@@ -55,8 +55,11 @@ import { PROBES as SCRIPT_FIELDS } from './probes/script-fields';
 import { PROBES as PLAN_FIELDS } from './probes/plan-fields';
 import { PROBES as STORY_FIELDS } from './probes/story-fields';
 import { PROBES as MORE_FIELDS } from './probes/more-fields';
+import { PROBES as PROJECT_FIELDS } from './probes/project-fields';
+import { PROBES as RELEASE_FIELDS } from './probes/release-fields';
+import { PROBES as MUSIC_FIELDS } from './probes/music-fields';
 
-const ALL = [...CORE, ...PRODUCTION, ...RELEASE, ...AWARDS, ...BANK, ...PAPERS, ...SCRIPT, ...PROJECT, ...CAREER_WIDE, ...WEATHER, ...EQUIPMENT, ...WRITING, ...HIRING, ...DAYS, ...MUSIC, ...VERSIONS, ...SCORE, ...EDIT, ...NOTES, ...SLATE, ...BANK_MORE, ...AGENTS_PROBES, ...FESTIVAL, ...OPPS, ...BACKERS_PROBES, ...PLACES, ...PLAN, ...LATE, ...CASTING, ...DESIGNS, ...PEOPLE, ...BANK_CARDS, ...BANK_MOVES, ...BANK_REST, ...SERIES_PROBES, ...REVISIONS, ...HELPERS_PEOPLE, ...MOCAP, ...SONGS, ...DOCUMENTARY, ...CASTING_DIRECTOR, ...STAGES, ...SCREEN_TIME, ...VERSION_SONGS, ...MUSIC_CATALOG, ...CONTINUATION, ...STUDIO_PROBES, ...BLUEPRINT_LOCK, ...SOURCE, ...SCRIPT_FIELDS, ...PLAN_FIELDS, ...STORY_FIELDS, ...MORE_FIELDS];
+const ALL = [...CORE, ...PRODUCTION, ...RELEASE, ...AWARDS, ...BANK, ...PAPERS, ...SCRIPT, ...PROJECT, ...CAREER_WIDE, ...WEATHER, ...EQUIPMENT, ...WRITING, ...HIRING, ...DAYS, ...MUSIC, ...VERSIONS, ...SCORE, ...EDIT, ...NOTES, ...SLATE, ...BANK_MORE, ...AGENTS_PROBES, ...FESTIVAL, ...OPPS, ...BACKERS_PROBES, ...PLACES, ...PLAN, ...LATE, ...CASTING, ...DESIGNS, ...PEOPLE, ...BANK_CARDS, ...BANK_MOVES, ...BANK_REST, ...SERIES_PROBES, ...REVISIONS, ...HELPERS_PEOPLE, ...MOCAP, ...SONGS, ...DOCUMENTARY, ...CASTING_DIRECTOR, ...STAGES, ...SCREEN_TIME, ...VERSION_SONGS, ...MUSIC_CATALOG, ...CONTINUATION, ...STUDIO_PROBES, ...BLUEPRINT_LOCK, ...SOURCE, ...SCRIPT_FIELDS, ...PLAN_FIELDS, ...STORY_FIELDS, ...MORE_FIELDS, ...PROJECT_FIELDS, ...RELEASE_FIELDS, ...MUSIC_FIELDS];
 import { FIELD_PROOFS } from './field-proofs';
 
 const pick = process.env.PROBES?.split(',');

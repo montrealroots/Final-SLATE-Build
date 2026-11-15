@@ -7,9 +7,9 @@ import { syncMusicTasks } from '../../../src/engine/song-actions';
 import type { GameState, Project } from '../../../src/engine/types';
 
 /** Take the brief the project proposes, as the Music page does, before the money is raised. */
-const takeBrief = (s: GameState, p: Project) => { if (p.music && !p.music.brief) { applyBrief(s, p, proposeBrief(p, s.now)); syncMusicTasks(p); } };
+export const takeBrief = (s: GameState, p: Project) => { if (p.music && !p.music.brief) { applyBrief(s, p, proposeBrief(p, s.now)); syncMusicTasks(p); } };
 /** Each day: themes awaiting you are approved, after `rounds` rounds of notes. */
-const reviewThemes = (rounds: number) => (s: GameState) => {
+export const reviewThemes = (rounds: number) => (s: GameState) => {
   for (const p of s.projects.filter((x) => !x.delivered && x.music?.themes?.status === 'awaiting')) {
     if (p.music!.themes!.rounds < rounds) giveThemeNotes(p, 'Warmer, and less of the strings under the talk.', s.now, () => syncMusicTasks(p));
     else approveThemes(p, s.now);
@@ -22,7 +22,7 @@ const fewerCues = (s: GameState, p: Project) => { takeBrief(s, p); for (const c 
 /** The player's words for what the project wants, written before the brief is taken (the Story panel). */
 const words = (tone: string, experience: string) => (s: GameState, p: Project) => { p.axes.tone = tone; p.story.intendedExperience = experience; takeBrief(s, p); };
 
-const measure = (_s: GameState, projects: Project[]) => ({
+export const measure = (_s: GameState, projects: Project[]) => ({
   chamber: projects.filter((p) => p.axes.score === 'chamber').length,
   silent: projects.filter((p) => p.music?.brief?.approach === 'silence').length,
   cues: projects.reduce((a, p) => a + (p.music?.cues ?? []).filter((c) => c.source === 'score').length, 0),
