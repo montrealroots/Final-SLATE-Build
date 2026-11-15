@@ -10,6 +10,7 @@
 import { advanceBankWorld, bankSim, cityForPlace, createBankWorld, type SaveUniverse } from './bankworld';
 import { drawFromBank, inTheBank, isEveryday, spend } from './bankworld/systems/spending';
 import { overdraftHeadroom } from './bankworld/systems/lending';
+import { depositAccount } from './bankworld/systems/routing';
 import { COUNTRIES } from './bankworld/content/geography';
 import { exchange, exchangeHeld, hasRate } from './bankworld/content/currency';
 import { formatMoney, saveCurrency } from './bankworld/core/money';
@@ -95,8 +96,10 @@ export function postToBank(state: GameState, kind: string, dollars: number, labe
   // The kind and the key ride on the category (`slate:<kind>#<key>`), which 1221's statements show by its memo alone.
   const category = `slate:${kind}#${key}`;
   if (minor > 0) {
+    // Money coming in goes where the player told the bank to pay it (routing.ts depositAccount, Wages Paid Into). Until
+    // November 15, 2026 it always went to the primary account, so redirecting wages to savings was accepted and did nothing.
     sim.post({ memo: label, category, postings: [
-      { accountId: person.primaryAccountId!, amount: minor },
+      { accountId: depositAccount(sim, person)?.id ?? person.primaryAccountId!, amount: minor },
       { accountId: sim.nominalAccount('income', counterLabel(counter)).id, amount: -minor },
     ] });
   } else if (isEveryday(category)) {
