@@ -1846,9 +1846,9 @@ tmdb_person,name,job,recognition (Wikidata),weight,experience,capability,grade,a
 10079,Freddie Young,dop,"3 Academy Award wins and 2 Academy Award nominations, 1953 to 1972",38,4,98,A,5450
 4101,Joseph LaShelle,dop,"An Academy Award win and 7 Academy Award nominations, 1945 to 1967",38,5,98,A,6220
 17668,William V. Skall,dop,"An Academy Award win and 7 Academy Award nominations, 1940 to 1955",38,4,98,A,5450
+8969,Chris Menges,dop,"2 Academy Award wins, a BAFTA Film Award win, 2 Academy Award nominations and an Independent Spirit Award nomination, 1985 to 2009",36.6,5,98,A,6040
 9080,Charles Rosher,dop,"2 Academy Award wins and 4 Academy Award nominations, 1929 to 1952",36,5,98,A,5960
 11905,Sven Nykvist,dop,"2 Academy Award wins, a BAFTA Film Award win, a César win and an Academy Award nomination, 1974 to 1989",36,4,98,A,5230
-8969,Chris Menges,dop,"2 Academy Award wins, a BAFTA Film Award win and 2 Academy Award nominations, 1985 to 2009",35,5,98,A,5830
 5806,Daniel L. Fapp,dop,"An Academy Award win and 6 Academy Award nominations, 1959 to 1970",34,4,98,A,5000
 2774,Ernest Haller,dop,"An Academy Award win and 6 Academy Award nominations, 1939 to 1964",34,5,98,A,5700
 10602,Milton Krasner,dop,"An Academy Award win and 6 Academy Award nominations, 1943 to 1965",34,5,98,A,5700
@@ -1939,6 +1939,7 @@ tmdb_person,name,job,recognition (Wikidata),weight,experience,capability,grade,a
 8714,Sol Polito,dop,"3 Academy Award nominations, 1940 to 1943",12,3,82,B,2150
 2760,Ted McCord,dop,"3 Academy Award nominations, 1949 to 1966",12,4,87,A,2500
 41709,William E. Snyder,dop,"3 Academy Award nominations, 1942 to 1950",12,3,82,B,2150
+17765,Fred Murphy,dop,"4 Primetime Emmy nominations and an Independent Spirit Award nomination, 1988 to 2011",11.2,5,91,A,2750
 14196,Agnès Godard,dop,"A César win and 3 César nominations, 1999 to 2009",11,4,86,A,2390
 15493,Barry Ackroyd,dop,"A BAFTA Film Award win and an Academy Award nomination, 2010",11,3,81,B,2050
 15131,Giuseppe Rotunno,dop,"A BAFTA Film Award win and an Academy Award nomination, 1980 to 1981",11,3,81,B,2050
@@ -1968,7 +1969,7 @@ tmdb_person,name,job,recognition (Wikidata),weight,experience,capability,grade,a
 36967,Walter Lassally,dop,"An Academy Award win, 1965",10,3,79,B,1950
 32097,Walter Wottitz,dop,"An Academy Award win, 1963",10,3,79,B,1950
 1027225,Willard Van der Veer,dop,"An Academy Award win, 1930",10,3,79,B,1950
-17765,Fred Murphy,dop,"4 Primetime Emmy nominations, 1990 to 2011",9.6,5,88,A,2540
+5667,Robert Yeoman,dop,"An Independent Spirit Award win, an Academy Award nomination and an Independent Spirit Award nomination, 1990 to 2015",9.6,5,88,A,2540
 1665518,Paul Guilhaume,dop,"A César win and an Academy Award nomination, 2025",9,3,77,B,1850
 3561,Paweł Edelman,dop,"A César win and an Academy Award nomination, 2003",9,3,77,B,1850
 17556,Pierre Lhomme,dop,"A BAFTA Film Award win and a César nomination, 1976 to 1992",9,4,82,A,2160
@@ -2094,7 +2095,6 @@ tmdb_person,name,job,recognition (Wikidata),weight,experience,capability,grade,a
 20065,Richard Greatrex,dop,"An Academy Award nomination, 1999",4,3,65,C,1370
 33413,Robert De Grasse,dop,"An Academy Award nomination, 1939",4,3,65,C,1370
 2596,Robert Fraisse,dop,"An Academy Award nomination, 1993",4,3,65,C,1370
-5667,Robert Yeoman,dop,"An Academy Award nomination, 2015",4,3,65,C,1370
 293,Roger Pratt,dop,"An Academy Award nomination, 2000",4,3,65,C,1370
 960261,Ryszard Lenczewski,dop,"An Academy Award nomination, 2015",4,3,65,C,1370
 54926,Sean Bobbitt,dop,"An Academy Award nomination, 2021",4,3,65,C,1370
@@ -2105,6 +2105,7 @@ tmdb_person,name,job,recognition (Wikidata),weight,experience,capability,grade,a
 7262,Stuart Dryburgh,dop,"An Academy Award nomination, 1994",4,3,65,C,1370
 70129,Takao Saito,dop,"An Academy Award nomination, 1986",4,3,65,C,1370
 4346,Ted Tetzlaff,dop,"An Academy Award nomination, 1943",4,3,65,C,1370
+57709,Toyomichi Kurita,dop,"An Independent Spirit Award win, 1985",4,3,65,C,1370
 14477,Virgil Miller,dop,"An Academy Award nomination, 1953",4,3,65,C,1370
 40055,Walter Strenge,dop,"An Academy Award nomination, 1957",4,3,65,C,1370
 544755,Wilfred M. Cline,dop,"An Academy Award nomination, 1942",4,3,65,C,1370
@@ -2119,30 +2120,183 @@ tmdb_person,name,job,recognition (Wikidata),weight,experience,capability,grade,a
 1438570,Julien Poupard,dop,"A César nomination, 2023",2,3,57,C,1170
 1618180,Patrick Ghiringhelli,dop,"A César nomination, 2023",2,3,57,C,1170
 997,Thierry Arbogast,dop,"A César nomination, 1998",2,3,57,C,1170
-12758,Noëlle Boisson,editor,"4 César wins, 1983 to 2005",20,5,98,A,2920
+966571,Matthias Grunsky,dop,"An Independent Spirit Award nomination, 2014",1.6,3,55,C,1130
+3661,Thelma Schoonmaker,editor,"3 Academy Award wins and 6 Academy Award nominations, 1971 to 2024",54,5,98,A,4860
+493,Michael Kahn,editor,"3 Academy Award wins and 4 Academy Award nominations, 1978 to 2013",46,5,98,A,4860
+3099,William H. Reynolds,editor,"2 Academy Award wins and 5 Academy Award nominations, 1962 to 1978",40,4,98,A,4260
+4102,Daniel Mandell,editor,"3 Academy Award wins and 2 Academy Award nominations, 1942 to 1961",38,4,98,A,4090
+6346,Anne V. Coates,editor,"An Academy Award win, 4 Academy Award nominations and 4 BAFTA Film Award nominations, 1963 to 2001",37.2,5,98,A,4590
+7510,Harold F. Kress,editor,"2 Academy Award wins and 4 Academy Award nominations, 1942 to 1975",36,5,98,A,4470
+10007,Ralph E. Winters,editor,"2 Academy Award wins and 4 Academy Award nominations, 1951 to 1972",36,5,98,A,4470
+64118,William Lyon,editor,"2 Academy Award wins and 4 Academy Award nominations, 1947 to 1970",36,5,98,A,4470
+10603,Barbara McLean,editor,"An Academy Award win and 6 Academy Award nominations, 1936 to 1951",34,4,98,A,3750
+8715,Ralph Dawson,editor,"3 Academy Award wins and an Academy Award nomination, 1936 to 1955",34,4,98,A,3750
+11880,Claire Simpson,editor,"An Academy Award win, 2 BAFTA Film Award wins and an Academy Award nomination, 1987 to 2006",28,4,98,A,3240
+8970,Jim Clark,editor,"An Academy Award win, 2 BAFTA Film Award wins and an Academy Award nomination, 1985 to 1987",28,3,98,A,2780
+4186,Joe Hutshing,editor,"2 Academy Award wins and 2 Academy Award nominations, 1990 to 2001",28,4,98,A,3240
+950,Pietro Scalia,editor,"2 Academy Award wins and 2 Academy Award nominations, 1992 to 2002",28,4,98,A,3240
+10640,Fredric Steinkamp,editor,"An Academy Award win and 4 Academy Award nominations, 1967 to 1986",26,4,98,A,3070
+154,Walter Murch,editor,"An Academy Award win and 4 Academy Award nominations, 1978 to 2004",26,5,98,A,3500
+17455,Angus Wall,editor,"2 Academy Award wins and an Academy Award nomination, 2009 to 2012",24,3,96,A,2490
+38,Arthur Schmidt,editor,"2 Academy Award wins and an Academy Award nomination, 1981 to 1995",24,4,98,A,2900
+42065,Conrad A. Nervig,editor,"2 Academy Award wins and an Academy Award nomination, 1935 to 1951",24,4,98,A,2900
+12143,Frederic Knudtson,editor,"6 Academy Award nominations, 1950 to 1964",24,4,98,A,2900
+9852,Gene Milford,editor,"2 Academy Award wins and an Academy Award nomination, 1935 to 1955",24,5,98,A,3300
+9163,Gerry Hambling,editor,"6 Academy Award nominations, 1979 to 1997",24,4,98,A,2900
+964726,Kirk Baxter,editor,"2 Academy Award wins and an Academy Award nomination, 2009 to 2012",24,3,96,A,2490
+12758,Noëlle Boisson,editor,"4 César wins and an Academy Award nomination, 1983 to 2005",24,5,98,A,3300
+64954,Mikkel E.G. Nielsen,editor,"An Academy Award win, a BAFTA Film Award win, an Academy Award nomination and a BAFTA Film Award nomination, 2021 to 2023",23.8,3,96,A,2470
+51311,Anne Bauchens,editor,"An Academy Award win and 3 Academy Award nominations, 1935 to 1957",22,5,98,A,3110
+6189,Daniel P. Hanley,editor,"An Academy Award win and 3 Academy Award nominations, 1996 to 2009",22,4,98,A,2730
+3449,Frank P. Keller,editor,"An Academy Award win and 3 Academy Award nominations, 1968 to 1974",22,3,94,A,2340
+68417,James E. Newcom,editor,"An Academy Award win and 3 Academy Award nominations, 1940 to 1971",22,5,98,A,3110
+6190,Mike Hill,editor,"An Academy Award win and 3 Academy Award nominations, 1996 to 2009",22,4,98,A,2730
+15841,William Goldenberg,editor,"An Academy Award win and 3 Academy Award nominations, 2000 to 2015",22,4,98,A,2730
+17762,William Hornbeck,editor,"An Academy Award win and 3 Academy Award nominations, 1947 to 1959",22,4,98,A,2730
+1891,Stephen Mirrione,editor,"An Academy Award win, 2 Academy Award nominations and a BAFTA Film Award nomination, 2001 to 2016",20.8,4,98,A,2620
+117774,Al Clark,editor,"5 Academy Award nominations, 1938 to 1961",20,5,98,A,2920
+4167,Harry W. Gerstad,editor,"2 Academy Award wins, 1950 to 1953",20,3,92,A,2200
+120032,Paul Weatherwax,editor,"2 Academy Award wins, 1949 to 1957",20,3,92,A,2200
+6453,Dede Allen,editor,"A BAFTA Film Award win and 3 Academy Award nominations, 1975 to 2001",19,5,98,A,2820
+3190,Hank Corwin,editor,"A BAFTA Film Award win and 3 Academy Award nominations, 2016 to 2022",19,3,91,A,2120
+3564,Hervé de Luze,editor,"3 César wins and an Academy Award nomination, 1998 to 2011",19,4,96,A,2470
+20601,Charles Nelson,editor,"An Academy Award win and 2 Academy Award nominations, 1946 to 1966",18,5,98,A,2720
+29405,Christopher Rouse,editor,"An Academy Award win and 2 Academy Award nominations, 2007 to 2014",18,3,90,A,2050
+30154,Gene Havlick,editor,"An Academy Award win and 2 Academy Award nominations, 1938 to 1940",18,3,90,A,2050
+18800,George Amy,editor,"An Academy Award win and 2 Academy Award nominations, 1943 to 1946",18,3,90,A,2050
+119397,Hal C. Kern,editor,"An Academy Award win and 2 Academy Award nominations, 1940 to 1945",18,3,90,A,2050
+999565,Joe Walker,editor,"An Academy Award win and 2 Academy Award nominations, 2014 to 2022",18,3,90,A,2050
+384,Joel Cox,editor,"An Academy Award win and 2 Academy Award nominations, 1993 to 2015",18,5,98,A,2720
+6491,John Bloom,editor,"An Academy Award win and 2 Academy Award nominations, 1982 to 1986",18,3,90,A,2050
+3904,Lee Smith,editor,"An Academy Award win and 2 Academy Award nominations, 2004 to 2018",18,4,95,A,2390
+3274,Lisa Fruchtman,editor,"An Academy Award win and 2 Academy Award nominations, 1980 to 1991",18,4,95,A,2390
+3100,Peter Zinner,editor,"An Academy Award win and 2 Academy Award nominations, 1973 to 1983",18,4,95,A,2390
+11114,Chris Dickens,editor,"An Academy Award win and a BAFTA Film Award win, 2009",17,3,89,A,1980
+1099045,Chris Innis,editor,"An Academy Award win and a BAFTA Film Award win, 2010",17,3,89,A,1980
 1663,Marie-Josèphe Yoyotte,editor,"3 César wins and a César nomination, 1976 to 2001",17,5,98,A,2620
-3564,Hervé de Luze,editor,"3 César wins, 1998 to 2011",15,4,91,A,2130
-11880,Claire Simpson,editor,"2 BAFTA Film Award wins, 1988 to 2006",14,4,90,A,2040
-8970,Jim Clark,editor,"2 BAFTA Film Award wins, 1985 to 1987",14,3,85,B,1760
+3987,Conrad Buff IV,editor,"An Academy Award win, an Academy Award nomination and a BAFTA Film Award nomination, 1992 to 1998",16.8,3,89,A,1960
+8556,Verna Fields,editor,"An Academy Award win, an Academy Award nomination and a BAFTA Film Award nomination, 1974 to 1976",16.8,3,89,A,1960
+14962,Dorothy Spencer,editor,"4 Academy Award nominations, 1940 to 1975",16,5,98,A,2530
+21781,Michael Luciano,editor,"4 Academy Award nominations, 1965 to 1975",16,4,93,A,2220
+3175,Richard Marks,editor,"4 Academy Award nominations, 1980 to 1998",16,4,93,A,2220
+18595,Warren Low,editor,"4 Academy Award nominations, 1941 to 1958",16,4,93,A,2220
+23914,Bud S. Smith,editor,"A BAFTA Film Award win and 2 Academy Award nominations, 1974 to 1984",15,4,91,A,2130
+13289,Adrienne Fazan,editor,"An Academy Award win and an Academy Award nomination, 1952 to 1959",14,3,85,B,1760
+853,Alan Heim,editor,"An Academy Award win and an Academy Award nomination, 1977 to 1980",14,3,85,B,1760
+11218,Alfonso Cuarón,editor,"An Academy Award win and an Academy Award nomination, 2007 to 2014",14,3,85,B,1760
+5841,Cotton Warburton,editor,"An Academy Award win and an Academy Award nomination, 1954 to 1965",14,4,90,A,2040
+2108,Elmo Williams,editor,"An Academy Award win and an Academy Award nomination, 1953 to 1955",14,3,85,B,1760
+19409,Gene Ruggiero,editor,"An Academy Award win and an Academy Award nomination, 1956 to 1957",14,3,85,B,1760
+852,Gerald B. Greenberg,editor,"An Academy Award win and an Academy Award nomination, 1972 to 1980",14,3,85,B,1760
+4964,Hal Ashby,editor,"An Academy Award win and an Academy Award nomination, 1967 to 1968",14,3,85,B,1760
+2710,James Cameron,editor,"An Academy Award win and an Academy Award nomination, 1998 to 2010",14,4,90,A,2040
+10006,John Dunning,editor,"An Academy Award win and an Academy Award nomination, 1950 to 1960",14,4,90,A,2040
+1315,John Gilbert,editor,"An Academy Award win and an Academy Award nomination, 2002 to 2017",14,4,90,A,2040
+2551,Marcia Lucas,editor,"An Academy Award win and an Academy Award nomination, 1974 to 1978",14,3,85,B,1760
+10766,Paul Hirsch,editor,"An Academy Award win and an Academy Award nomination, 1978 to 2005",14,5,95,A,2330
+3985,Richard A. Harris,editor,"An Academy Award win and an Academy Award nomination, 1992 to 1998",14,3,85,B,1760
+8425,Richard Chew,editor,"An Academy Award win and an Academy Award nomination, 1976 to 1978",14,3,85,B,1760
+32439,Robert J. Kern,editor,"An Academy Award win and an Academy Award nomination, 1936 to 1946",14,4,90,A,2040
+8514,Robert Parrish,editor,"An Academy Award win and an Academy Award nomination, 1948 to 1950",14,3,85,B,1760
+5166,Stu Linder,editor,"An Academy Award win and an Academy Award nomination, 1967 to 1989",14,5,95,A,2330
+17399,Thom Noble,editor,"An Academy Award win and an Academy Award nomination, 1986 to 1992",14,3,85,B,1760
+1156888,Tom Cross,editor,"An Academy Award win and an Academy Award nomination, 2015 to 2017",14,3,85,B,1760
 2425,Hervé Schneid,editor,"A César win, a BAFTA Film Award nomination and 3 César nominations, 1992 to 2009",13.8,4,90,A,2030
-6346,Anne V. Coates,editor,"4 BAFTA Film Award nominations, 1975 to 2001",11.2,5,91,A,2060
+1224,Ethan Coen,editor,"2 Academy Award nominations and 2 BAFTA Film Award nominations, 1997 to 2008",13.6,4,89,A,2010
+1223,Joel Coen,editor,"2 Academy Award nominations and 2 BAFTA Film Award nominations, 1997 to 2008",13.6,4,89,A,2010
+3898,David Bretherton,editor,"An Academy Award win and a BAFTA Film Award nomination, 1973",12.8,3,83,B,1670
+1113553,Jennifer Lame,editor,"An Academy Award win and a BAFTA Film Award nomination, 2016 to 2024",12.8,3,83,B,1670
+22483,Sidney Wolinsky,editor,"A Primetime Emmy win, an Academy Award nomination and a Primetime Emmy nomination, 2004 to 2018",12.4,4,88,A,1910
+3159,Doane Harrison,editor,"3 Academy Award nominations, 1944 to 1951",12,3,82,B,1610
+3643,Ferris Webster,editor,"3 Academy Award nominations, 1956 to 1964",12,3,82,B,1610
+7715,Frank J. Urioste,editor,"3 Academy Award nominations, 1988 to 1993",12,3,82,B,1610
+13227,Jay Cassidy,editor,"3 Academy Award nominations, 2008 to 2014",12,3,82,B,1610
+1531,Pembroke J. Herring,editor,"3 Academy Award nominations, 1971 to 1986",12,4,87,A,1870
+4359,Philip W. Anderson,editor,"3 Academy Award nominations, 1957 to 1962",12,3,82,B,1610
+6604,Ralph Kemplen,editor,"3 Academy Award nominations, 1953 to 1974",12,5,92,A,2140
+6581,Richard Francis-Bruce,editor,"3 Academy Award nominations, 1995 to 1998",12,3,82,B,1610
+21012,Robert C. Jones,editor,"3 Academy Award nominations, 1964 to 1977",12,4,87,A,1870
+13721,Robert L. Wolfe,editor,"3 Academy Award nominations, 1977 to 1982",12,3,82,B,1610
+11997,Robert Swink,editor,"3 Academy Award nominations, 1954 to 1979",12,5,92,A,2140
+12015,Sam O'Steen,editor,"3 Academy Award nominations, 1967 to 1984",12,4,87,A,1870
+2484,Steven Rosenblum,editor,"3 Academy Award nominations, 1990 to 2007",12,4,87,A,1870
+30259,Stuart Gilmore,editor,"3 Academy Award nominations, 1961 to 1972",12,4,87,A,1870
+2773,William H. Ziegler,editor,"3 Academy Award nominations, 1959 to 1965",12,3,82,B,1610
+2241,William Steinkamp,editor,"3 Academy Award nominations, 1983 to 1990",12,3,82,B,1610
 11198,Albert Jurgenson,editor,"2 César wins, 1978 to 1982",10,3,79,B,1460
+1533060,Andrew Buckland,editor,"An Academy Award win, 2020",10,3,79,B,1460
+7712,Bob Murawski,editor,"An Academy Award win, 2010",10,3,79,B,1460
+21821,Carl Kress,editor,"An Academy Award win, 1975",10,3,79,B,1460
+6051,David Brenner,editor,"An Academy Award win, 1990",10,3,79,B,1460
+57950,Douglas Stewart,editor,"An Academy Award win, 1984",10,3,79,B,1460
+29324,Francis D. Lyon,editor,"An Academy Award win, 1948",10,3,79,B,1460
+16403,Françoise Bonnot,editor,"An Academy Award win, 1970",10,3,79,B,1460
+959496,Frank Santillo,editor,"An Academy Award win, 1967",10,3,79,B,1460
+11383,Gabriella Cristiani,editor,"An Academy Award win, 1988",10,3,79,B,1460
+21244,Glenn Farr,editor,"An Academy Award win, 1984",10,3,79,B,1460
+1174596,Henry Berman,editor,"An Academy Award win, 1967",10,3,79,B,1460
+11443,Hugh S. Fowler,editor,"An Academy Award win, 1971",10,3,79,B,1460
+20649,Hughes Winborne,editor,"An Academy Award win, 2006",10,3,79,B,1460
 1136,Jacques Witta,editor,"2 César wins, 1984 to 1994",10,4,84,A,1700
+1390,Jamie Selkirk,editor,"An Academy Award win, 2004",10,3,79,B,1460
+58067,Margaret Sixel,editor,"An Academy Award win, 2016",10,3,79,B,1460
+1084741,Mark Sanger,editor,"An Academy Award win, 2014",10,3,79,B,1460
+9154,Martin Walsh,editor,"An Academy Award win, 2003",10,3,79,B,1460
+15350,Mary Jo Markey,editor,"A Primetime Emmy win and an Academy Award nomination, 2005 to 2016",10,4,84,A,1700
 1158823,Mathilde Van de Moortel,editor,"2 César wins, 2016 to 2023",10,3,79,B,1460
+7231,Neil Travis,editor,"An Academy Award win, 1991",10,3,79,B,1460
+1644442,Paul Rogers,editor,"An Academy Award win, 2023",10,3,79,B,1460
+93959,Peter Taylor,editor,"An Academy Award win, 1958",10,3,79,B,1460
 1074300,Raymonde Guyot,editor,"2 César wins, 1979 to 1986",10,3,79,B,1460
-64954,Mikkel E.G. Nielsen,editor,"A BAFTA Film Award win and a BAFTA Film Award nomination, 2021 to 2023",9.8,3,78,B,1450
-22483,Sidney Wolinsky,editor,"A Primetime Emmy win and a Primetime Emmy nomination, 2004 to 2011",8.4,3,76,B,1350
-23914,Bud S. Smith,editor,"A BAFTA Film Award win, 1984",7,3,73,B,1240
-11114,Chris Dickens,editor,"A BAFTA Film Award win, 2009",7,3,73,B,1240
-1099045,Chris Innis,editor,"A BAFTA Film Award win, 2010",7,3,73,B,1240
-6453,Dede Allen,editor,"A BAFTA Film Award win, 1975",7,3,73,B,1240
-3190,Hank Corwin,editor,"A BAFTA Film Award win, 2019",7,3,73,B,1240
+1918,Richard Halsey,editor,"An Academy Award win, 1977",10,3,79,B,1460
+16515,Scott Conrad,editor,"An Academy Award win, 1977",10,3,79,B,1460
+118415,Sean Baker,editor,"An Academy Award win, 2025",10,3,79,B,1460
+34484,Stephen A. Rotter,editor,"An Academy Award win, 1984",10,3,79,B,1460
+37880,Thomas Stanford,editor,"An Academy Award win, 1962",10,3,79,B,1460
+1047,Tom Rolf,editor,"An Academy Award win, 1984",10,3,79,B,1460
+107683,William Holmes,editor,"An Academy Award win, 1942",10,3,79,B,1460
+4671,Zach Staenberg,editor,"An Academy Award win, 2000",10,3,79,B,1460
+1273514,Yorgos Lamprinos,editor,"A César win and an Academy Award nomination, 2019 to 2021",9,3,77,B,1390
+10393,Alan Baumgarten,editor,"2 Academy Award nominations, 2014 to 2021",8,3,75,B,1320
+38805,Andrew Weisblum,editor,"2 Academy Award nominations, 2011 to 2022",8,4,80,A,1530
+8621,Arthur P. Schmidt,editor,"2 Academy Award nominations, 1951 to 1958",8,3,75,B,1320
+2988,Barry Malkin,editor,"2 Academy Award nominations, 1985 to 1991",8,3,75,B,1320
+909,Billy Weber,editor,"2 Academy Award nominations, 1987 to 1999",8,4,80,A,1530
+541,Chris Lebenzon,editor,"2 Academy Award nominations, 1987 to 1996",8,3,75,B,1320
+4869,Craig McKay,editor,"2 Academy Award nominations, 1982 to 1992",8,4,80,A,1530
+1133292,Crispin Struthers,editor,"2 Academy Award nominations, 2013 to 2014",8,3,75,B,1320
+9797,Danford B. Greene,editor,"2 Academy Award nominations, 1971 to 1975",8,3,75,B,1320
+5584,Dennis Virkler,editor,"2 Academy Award nominations, 1991 to 1994",8,3,75,B,1320
+1809,Dylan Tichenor,editor,"2 Academy Award nominations, 2008 to 2013",8,3,75,B,1320
+51379,Eve Newman,editor,"2 Academy Award nominations, 1969 to 1977",8,3,75,B,1320
+12419,Frank Morriss,editor,"2 Academy Award nominations, 1984 to 1985",8,3,75,B,1320
+8752,John Wright,editor,"2 Academy Award nominations, 1991 to 1995",8,3,75,B,1320
+4280,Juliette Welfling,editor,"2 Academy Award nominations, 2008 to 2025",8,4,80,A,1530
+32796,Kevin Tent,editor,"2 Academy Award nominations, 2012 to 2024",8,4,80,A,1530
+871,Louis R. Loeffler,editor,"2 Academy Award nominations, 1960 to 1964",8,3,75,B,1320
+433,Michael McCusker,editor,"2 Academy Award nominations, 2006 to 2020",8,4,80,A,1530
+5388,Myron Kerstein,editor,"2 Academy Award nominations, 2022 to 2025",8,3,75,B,1320
+34232,Otto Meyer,editor,"2 Academy Award nominations, 1937 to 1943",8,3,75,B,1320
+2761,Owen Marks,editor,"2 Academy Award nominations, 1944 to 1945",8,3,75,B,1320
+17147,Pamela Martin,editor,"2 Academy Award nominations, 2011 to 2022",8,4,80,A,1530
+10816,Paul Rubell,editor,"2 Academy Award nominations, 2000 to 2005",8,3,75,B,1320
+11657,Saar Klein,editor,"2 Academy Award nominations, 1999 to 2001",8,3,75,B,1320
+156,Sally Menke,editor,"2 Academy Award nominations, 1995 to 2010",8,4,80,A,1530
+10151,Samuel E. Beetley,editor,"2 Academy Award nominations, 1963 to 1968",8,3,75,B,1320
+7068,Sheldon Kahn,editor,"2 Academy Award nominations, 1976 to 1986",8,4,80,A,1530
+127627,Sherman Todd,editor,"2 Academy Award nominations, 1941 to 1944",8,3,75,B,1320
+2523,Stuart Baird,editor,"2 Academy Award nominations, 1979 to 1989",8,4,80,A,1530
+8219,Tariq Anwar,editor,"2 Academy Award nominations, 2000 to 2011",8,4,80,A,1530
+1635,Tim Squyres,editor,"2 Academy Award nominations, 2001 to 2013",8,4,80,A,1530
+34224,Viola Lawrence,editor,"2 Academy Award nominations, 1958 to 1961",8,3,75,B,1320
+19334,Walter A. Thompson,editor,"2 Academy Award nominations, 1943 to 1960",8,4,80,A,1530
+51378,Walter Hannemann,editor,"2 Academy Award nominations, 1977 to 1978",8,3,75,B,1320
+72525,Yorgos Mavropsaridis,editor,"2 Academy Award nominations, 2019 to 2024",8,3,75,B,1320
+15349,Maryann Brandon,editor,"An Academy Award nomination and a Primetime Emmy nomination, 2003 to 2016",6.4,4,76,B,1400
+937652,Anne-Sophie Bion,editor,"An Academy Award nomination and a César nomination, 2012 to 2023",6,4,75,B,1360
 1094937,Christophe Pinel,editor,"3 César nominations, 2014 to 2021",6,3,70,C,1170
 6592,Duwayne Dunham,editor,"A Primetime Emmy win, 1990",6,3,70,C,1170
 1280074,Kelley Dixon,editor,"A Primetime Emmy win, 2013",6,3,70,C,1170
-15350,Mary Jo Markey,editor,"A Primetime Emmy win, 2005",6,3,70,C,1170
-1224,Ethan Coen,editor,"2 BAFTA Film Award nominations, 1997 to 2008",5.6,4,74,B,1330
-1223,Joel Coen,editor,"2 BAFTA Film Award nominations, 1997 to 2008",5.6,4,74,B,1330
 1768053,Flora Volpelière,editor,"A César win, 2020",5,3,68,C,1100
 27721,Geneviève Winding,editor,"A César win, 1976",5,3,68,C,1100
 38522,Isabelle Dedieu,editor,"A César win, 1987",5,3,68,C,1100
@@ -2157,17 +2311,167 @@ tmdb_person,name,job,recognition (Wikidata),weight,experience,capability,grade,a
 1810659,Xavier Sirven,editor,"A César win, 2025",5,3,68,C,1100
 6318,Yann Dedet,editor,"A César win, 2012",5,3,68,C,1100
 19379,Yannick Kergoat,editor,"A César win, 2001",5,3,68,C,1100
-1273514,Yorgos Lamprinos,editor,"A César win, 2019",5,3,68,C,1100
+30924,Alan Osbiston,editor,"An Academy Award nomination, 1962",4,3,65,C,1020
+13984,Albert Akst,editor,"An Academy Award nomination, 1957",4,3,65,C,1020
+23401,Alex Rodríguez,editor,"An Academy Award nomination, 2007",4,3,65,C,1020
+68645,Alma Macrorie,editor,"An Academy Award nomination, 1956",4,3,65,C,1020
+5327,Andrew Mondshein,editor,"An Academy Award nomination, 2000",4,3,65,C,1020
+67772,Angelo Ross,editor,"An Academy Award nomination, 1978",4,3,65,C,1020
 1175710,Annette Dutertre,editor,"2 César nominations, 2011 to 2013",4,3,65,C,1020
+7649,Arthur Hilton,editor,"An Academy Award nomination, 1947",4,3,65,C,1020
+71534,Barney Pilling,editor,"An Academy Award nomination, 2015",4,3,65,C,1020
+5289,Barry Alexander Brown,editor,"An Academy Award nomination, 2019",4,3,65,C,1020
+1499,Basil Wrangell,editor,"An Academy Award nomination, 1938",4,3,65,C,1020
+993210,Bernard W. Burton,editor,"An Academy Award nomination, 1938",4,3,65,C,1020
+8424,Bill Butler,editor,"An Academy Award nomination, 1972",4,3,65,C,1020
+9966,Carol Littleton,editor,"An Academy Award nomination, 1983",4,3,65,C,1020
+46008,Carroll Timothy O'Meara,editor,"An Academy Award nomination, 1980",4,3,65,C,1020
+27920,Charles Frend,editor,"An Academy Award nomination, 1940",4,3,65,C,1020
+103085,Chester Schaeffer,editor,"An Academy Award nomination, 1952",4,3,65,C,1020
+68416,Chikaya Inoue,editor,"An Academy Award nomination, 1971",4,3,65,C,1020
+1395183,Chloé Zhao,editor,"An Academy Award nomination, 2021",4,3,65,C,1020
+13973,Christian Nyby,editor,"An Academy Award nomination, 1949",4,3,65,C,1020
+7414,Christopher Greenbury,editor,"An Academy Award nomination, 2000",4,3,65,C,1020
+5361,Christopher Tellefsen,editor,"An Academy Award nomination, 2012",4,3,65,C,1020
+59680,Clare Douglas,editor,"An Academy Award nomination, 2007",4,3,65,C,1020
+8578,Daniel Rezende,editor,"An Academy Award nomination, 2004",4,3,65,C,1020
+8863,David Blewitt,editor,"An Academy Award nomination, 1981",4,3,65,C,1020
+18387,David Finfer,editor,"An Academy Award nomination, 1994",4,3,65,C,1020
+20066,David Gamble,editor,"An Academy Award nomination, 1999",4,3,65,C,1020
+1037857,Dávid Jancsó,editor,"An Academy Award nomination, 2025",4,3,65,C,1020
+12238,David Lean,editor,"An Academy Award nomination, 1985",4,3,65,C,1020
+17816,David Rosenbloom,editor,"An Academy Award nomination, 2000",4,3,65,C,1020
+2766,David Weisbart,editor,"An Academy Award nomination, 1949",4,3,65,C,1020
+1654393,Dean Goodhill,editor,"An Academy Award nomination, 1994",4,3,65,C,1020
+563,Dody Dorn,editor,"An Academy Award nomination, 2002",4,3,65,C,1020
+58208,Don Brochu,editor,"An Academy Award nomination, 1994",4,3,65,C,1020
+71115,Don Guidice,editor,"An Academy Award nomination, 1976",4,3,65,C,1020
+15005,Don Zimmerman,editor,"An Academy Award nomination, 1979",4,3,65,C,1020
+8847,Donn Cambern,editor,"An Academy Award nomination, 1985",4,3,65,C,1020
+17115,Douglas Crise,editor,"An Academy Award nomination, 2007",4,3,65,C,1020
+15842,Dov Hoenig,editor,"An Academy Award nomination, 1994",4,3,65,C,1020
+49809,Eddie Hamilton,editor,"An Academy Award nomination, 2023",4,3,65,C,1020
+13350,Edward Curtiss,editor,"An Academy Award nomination, 1937",4,3,65,C,1020
+51228,Edward M. Abroms,editor,"An Academy Award nomination, 1984",4,3,65,C,1020
+11017,Elliot Graham,editor,"An Academy Award nomination, 2009",4,3,65,C,1020
+26025,Ellsworth Hoagland,editor,"An Academy Award nomination, 1936",4,3,65,C,1020
+14865,Elmo Veron,editor,"An Academy Award nomination, 1938",4,3,65,C,1020
+57925,Evan A. Lottman,editor,"An Academy Award nomination, 1974",4,3,65,C,1020
+50578,Everett Douglas,editor,"An Academy Award nomination, 1954",4,3,65,C,1020
+123773,Fergus McDonell,editor,"An Academy Award nomination, 1948",4,3,65,C,1020
+4309,Folmar Blangsted,editor,"An Academy Award nomination, 1972",4,3,65,C,1020
+16751,Frank Bracht,editor,"An Academy Award nomination, 1969",4,3,65,C,1020
+14679,Frank Sullivan,editor,"An Academy Award nomination, 1949",4,3,65,C,1020
+99726,Fred R. Feitshans Jr.,editor,"An Academy Award nomination, 1969",4,3,65,C,1020
+1811901,Fred W. Berger,editor,"An Academy Award nomination, 1973",4,3,65,C,1020
+62434,Frédéric Thoraval,editor,"An Academy Award nomination, 2021",4,3,65,C,1020
+134121,Frederick Marx,editor,"An Academy Award nomination, 1995",4,3,65,C,1020
+74319,Gary D. Roach,editor,"An Academy Award nomination, 2015",4,3,65,C,1020
+51767,Gene Fowler Jr.,editor,"An Academy Award nomination, 1964",4,3,65,C,1020
+22086,George Boemler,editor,"An Academy Award nomination, 1956",4,3,65,C,1020
+1182098,George Hively,editor,"An Academy Award nomination, 1936",4,3,65,C,1020
+2655,George Tomasini,editor,"An Academy Award nomination, 1960",4,3,65,C,1020
+120314,George White,editor,"An Academy Award nomination, 1948",4,3,65,C,1020
+1808,Geraldine Peroni,editor,"An Academy Award nomination, 1993",4,3,65,C,1020
+5242,Hannes Nikel,editor,"An Academy Award nomination, 1983",4,3,65,C,1020
+127678,Harmon Jones,editor,"An Academy Award nomination, 1948",4,3,65,C,1020
+109414,Harry Marker,editor,"An Academy Award nomination, 1946",4,3,65,C,1020
+34428,Henry Batista,editor,"An Academy Award nomination, 1955",4,3,65,C,1020
+10613,Henry Richardson,editor,"An Academy Award nomination, 1986",4,3,65,C,1020
+6571,Hugh A. Robertson,editor,"An Academy Award nomination, 1970",4,3,65,C,1020
+570728,J. Terry Williams,editor,"An Academy Award nomination, 1967",4,3,65,C,1020
+1353255,Jake Roberts,editor,"An Academy Award nomination, 2017",4,3,65,C,1020
+38250,James B. Clark,editor,"An Academy Award nomination, 1942",4,3,65,C,1020
+58066,Jay Friedkin,editor,"An Academy Award nomination, 1996",4,3,65,C,1020
+69371,Jean-Marc Vallée,editor,"An Academy Award nomination, 2014",4,3,65,C,1020
+961610,Jeff Groth,editor,"An Academy Award nomination, 2020",4,3,65,C,1020
+34439,Jerome Thoms,editor,"An Academy Award nomination, 1958",4,3,65,C,1020
+3050,Jill Bilcock,editor,"An Academy Award nomination, 2002",4,3,65,C,1020
+9615,Jim Miller,editor,"An Academy Award nomination, 2005",4,3,65,C,1020
+68392,Joe Klotz,editor,"An Academy Award nomination, 2010",4,3,65,C,1020
+9582,John C. Howard,editor,"An Academy Award nomination, 1975",4,3,65,C,1020
+44591,John F. Link Sr.,editor,"An Academy Award nomination, 1944",4,3,65,C,1020
+21508,"John McSweeney, Jr.",editor,"An Academy Award nomination, 1963",4,3,65,C,1020
+9039,John Ottman,editor,"An Academy Award nomination, 2019",4,3,65,C,1020
+58871,John Refoua,editor,"An Academy Award nomination, 2010",4,3,65,C,1020
+10186,John W. Holmes,editor,"An Academy Award nomination, 1972",4,3,65,C,1020
+10725,Jon Gregory,editor,"An Academy Award nomination, 2018",4,3,65,C,1020
+1114,Jon Harris,editor,"An Academy Award nomination, 2011",4,3,65,C,1020
+969704,Jonathan Amos,editor,"An Academy Award nomination, 2018",4,3,65,C,1020
+2001193,Jonathan Redmond,editor,"An Academy Award nomination, 2023",4,3,65,C,1020
+1050728,Jordan Leondopoulos,editor,"An Academy Award nomination, 1974",4,3,65,C,1020
+62907,Julian Clarke,editor,"An Academy Award nomination, 2010",4,3,65,C,1020
+21281,Kaja Fehr,editor,"An Academy Award nomination, 1986",4,3,65,C,1020
+16675,Kant Pan,editor,"An Academy Award nomination, 1993",4,3,65,C,1020
+30013,LeRoy Stone,editor,"An Academy Award nomination, 1945",4,3,65,C,1020
+53683,Leslie Jones,editor,"An Academy Award nomination, 1999",4,3,65,C,1020
 1510130,Lilian Corbeille,editor,"2 César nominations, 2015 to 2018",4,3,65,C,1020
-3987,Conrad Buff IV,editor,"A BAFTA Film Award nomination, 1998",2.8,3,60,C,940
-3898,David Bretherton,editor,"A BAFTA Film Award nomination, 1973",2.8,3,60,C,940
-1113553,Jennifer Lame,editor,"A BAFTA Film Award nomination, 2016",2.8,3,60,C,940
-1891,Stephen Mirrione,editor,"A BAFTA Film Award nomination, 2006",2.8,3,60,C,940
-8556,Verna Fields,editor,"A BAFTA Film Award nomination, 1976",2.8,3,60,C,940
-15349,Maryann Brandon,editor,"A Primetime Emmy nomination, 2003",2.4,3,59,C,910
+11625,Lisa Zeno Churgin,editor,"An Academy Award nomination, 2000",4,3,65,C,1020
+3394,Lynzee Klingman,editor,"An Academy Award nomination, 1976",4,3,65,C,1020
+11650,Marcus D'Arcy,editor,"An Academy Award nomination, 1996",4,3,65,C,1020
+72067,Margaret Booth,editor,"An Academy Award nomination, 1936",4,3,65,C,1020
+18664,Marjorie Fowler,editor,"An Academy Award nomination, 1968",4,3,65,C,1020
+898,Mark Goldblatt,editor,"An Academy Award nomination, 1992",4,3,65,C,1020
+1732,Mark Warner,editor,"An Academy Award nomination, 1990",4,3,65,C,1020
+1287614,Martin Pensa,editor,"An Academy Award nomination, 2014",4,3,65,C,1020
+13005,Matt Chesse,editor,"An Academy Award nomination, 2005",4,3,65,C,1020
+966022,Matt Villa,editor,"An Academy Award nomination, 2023",4,3,65,C,1020
+31066,Maury Winetrobe,editor,"An Academy Award nomination, 1969",4,3,65,C,1020
+70568,Merrill G. White,editor,"An Academy Award nomination, 1957",4,3,65,C,1020
+4009,Michael A. Chandler,editor,"An Academy Award nomination, 1985",4,3,65,C,1020
+1376,Michael J. Horton,editor,"An Academy Award nomination, 2003",4,3,65,C,1020
+67717,Michel Hazanavicius,editor,"An Academy Award nomination, 2012",4,3,65,C,1020
+1369390,Monica Collingwood,editor,"An Academy Award nomination, 1948",4,3,65,C,1020
+55491,Monika Willi,editor,"An Academy Award nomination, 2023",4,3,65,C,1020
+148737,Nat Sanders,editor,"An Academy Award nomination, 2017",4,3,65,C,1020
+4011,Nena Danevic,editor,"An Academy Award nomination, 1985",4,3,65,C,1020
+1155165,Nick Emerson,editor,"An Academy Award nomination, 2025",4,3,65,C,1020
+57924,Norman Gay,editor,"An Academy Award nomination, 1974",4,3,65,C,1020
+14004,Norman Savage,editor,"An Academy Award nomination, 1966",4,3,65,C,1020
+15384,Oswald Hafenrichter,editor,"An Academy Award nomination, 1951",4,3,65,C,1020
+14961,Otho Lovering,editor,"An Academy Award nomination, 1940",4,3,65,C,1020
+101498,Otto Ludwig,editor,"An Academy Award nomination, 1954",4,3,65,C,1020
+69670,Patrick J. Don Vito,editor,"An Academy Award nomination, 2019",4,3,65,C,1020
+969705,Paul Machliss,editor,"An Academy Award nomination, 2018",4,3,65,C,1020
+8307,Peter Boyle,editor,"An Academy Award nomination, 2003",4,3,65,C,1020
+2033,Peter E. Berger,editor,"An Academy Award nomination, 1988",4,3,65,C,1020
+6875,Peter Honess,editor,"An Academy Award nomination, 1998",4,3,65,C,1020
+1363758,Peter Sciberras,editor,"An Academy Award nomination, 2022",4,3,65,C,1020
+33438,Pip Karmel,editor,"An Academy Award nomination, 1997",4,3,65,C,1020
+244,Ray Lovejoy,editor,"An Academy Award nomination, 1987",4,3,65,C,1020
+24667,Reginald Mills,editor,"An Academy Award nomination, 1949",4,3,65,C,1020
+120518,Richard L. Van Enger,editor,"An Academy Award nomination, 1950",4,3,65,C,1020
+53291,Richard Nord,editor,"An Academy Award nomination, 1994",4,3,65,C,1020
+9646,Richard Pearson,editor,"An Academy Award nomination, 2007",4,3,65,C,1020
+4951,Robert Dalva,editor,"An Academy Award nomination, 1980",4,3,65,C,1020
+8505,Robert L. Simpson,editor,"An Academy Award nomination, 1941",4,3,65,C,1020
+14491,Robert Lawrence,editor,"An Academy Award nomination, 1961",4,3,65,C,1020
+3032,Robert Leighton,editor,"An Academy Award nomination, 1993",4,3,65,C,1020
+17949,Robert Q. Lovett,editor,"An Academy Award nomination, 1985",4,3,65,C,1020
+1744,Robert Wise,editor,"An Academy Award nomination, 1942",4,3,65,C,1020
+22087,Roland Gross,editor,"An Academy Award nomination, 1945",4,3,65,C,1020
+7126,Rudi Fehr,editor,"An Academy Award nomination, 1986",4,3,65,C,1020
+14745,Russell Lloyd,editor,"An Academy Award nomination, 1976",4,3,65,C,1020
+580,Sandra Adair,editor,"An Academy Award nomination, 2015",4,3,65,C,1020
+9244,Simona Paggi,editor,"An Academy Award nomination, 1999",4,3,65,C,1020
+1721,Stephen E. Rivkin,editor,"An Academy Award nomination, 2010",4,3,65,C,1020
+122449,Steve James,editor,"An Academy Award nomination, 1995",4,3,65,C,1020
+10440,Susan E. Morse,editor,"An Academy Award nomination, 1987",4,3,65,C,1020
+33685,Tatiana S. Riegel,editor,"An Academy Award nomination, 2018",4,3,65,C,1020
+2920,Ted J. Kent,editor,"An Academy Award nomination, 1965",4,3,65,C,1020
+5056,Terry Rawlings,editor,"An Academy Award nomination, 1982",4,3,65,C,1020
+1409489,Tom Eagles,editor,"An Academy Award nomination, 2020",4,3,65,C,1020
+1067439,Tom Held,editor,"An Academy Award nomination, 1939",4,3,65,C,1020
+21267,Tom McArdle,editor,"An Academy Award nomination, 2016",4,3,65,C,1020
+25633,Tom Priestley,editor,"An Academy Award nomination, 1973",4,3,65,C,1020
+10762,Veronika Jenet,editor,"An Academy Award nomination, 1994",4,3,65,C,1020
+23913,Walt Mulconery,editor,"An Academy Award nomination, 1984",4,3,65,C,1020
+25169,William Austin,editor,"An Academy Award nomination, 1953",4,3,65,C,1020
+22096,William B. Murphy,editor,"An Academy Award nomination, 1967",4,3,65,C,1020
+107201,William Haugse,editor,"An Academy Award nomination, 1995",4,3,65,C,1020
+1167084,William S. Gray,editor,"An Academy Award nomination, 1937",4,3,65,C,1020
+1674268,Yang Jin-mo,editor,"An Academy Award nomination, 2020",4,3,65,C,1020
 22218,Meg Reticker,editor,"A Primetime Emmy nomination, 2025",2.4,3,59,C,910
-937652,Anne-Sophie Bion,editor,"A César nomination, 2023",2,3,57,C,880
 9956,Chris Marker,editor,"A César nomination, 1978",2,3,57,C,880
 32086,Christiane Lack,editor,"A César nomination, 1976",2,3,57,C,880
 32015,Eva Zora,editor,"A César nomination, 1976",2,3,57,C,880
@@ -2182,97 +2486,217 @@ tmdb_person,name,job,recognition (Wikidata),weight,experience,capability,grade,a
 2324304,Valentin Féron,editor,"A César nomination, 2022",2,3,57,C,880
 968532,Ron Patane,editor,"An Independent Spirit Award nomination, 2015",1.6,3,55,C,850
 76624,Shane Carruth,editor,"An Independent Spirit Award nomination, 2014",1.6,3,55,C,850
+10001,William Wyler,episode-director,"3 Academy Award wins, a Golden Globe win and 9 Academy Award nominations, 1937 to 1966",71,5,98,A,500000
+488,Steven Spielberg,episode-director,"2 Academy Award wins, 3 Golden Globe wins, a Critics' Choice Award win and 7 Academy Award nominations, 1978 to 2023",67,5,98,A,500000
+1032,Martin Scorsese,episode-director,"An Academy Award win, a Primetime Emmy win, 2 Golden Globe wins and 9 Academy Award nominations, 1981 to 2024",62,5,98,A,500000
+3146,Billy Wilder,episode-director,"2 Academy Award wins, 2 Golden Globe wins and 6 Academy Award nominations, 1945 to 1961",54,4,98,A,500000
 217361,Don Roy King,episode-director,"9 Primetime Emmy wins, 2010 to 2020",54,4,98,A,500000
+4065,Fred Zinnemann,episode-director,"2 Academy Award wins, 2 Golden Globe wins and 5 Academy Award nominations, 1949 to 1978",50,5,98,A,477950
+3556,Roman Polanski,episode-director,"An Academy Award win, a Berlin Silver Bear win, 5 César wins and 2 Academy Award nominations, 1975 to 2020",49,5,98,A,465600
+12238,David Lean,episode-director,"2 Academy Award wins, a Golden Globe win and 5 Academy Award nominations, 1947 to 1985",45,5,98,A,417150
+8500,John Ford,episode-director,"4 Academy Award wins and an Academy Award nomination, 1936 to 1953",44,4,98,A,405300
+2662,Frank Capra,episode-director,"3 Academy Award wins and 3 Academy Award nominations, 1934 to 1947",42,4,98,A,381850
+190,Clint Eastwood,episode-director,"2 Academy Award wins, 2 Golden Globe wins and 2 Academy Award nominations, 1993 to 2007",38,4,98,A,336180
+1223,Joel Coen,episode-director,"An Academy Award win, a Critics' Choice Award win, 2 Independent Spirit Award wins, 2 Academy Award nominations, 2 Golden Globe nominations, a Critics' Choice Award nomination and an Independent Spirit Award nomination, 1986 to 2011",37.2,5,98,A,327250
 94270,Louis J. Horvitz,episode-director,"6 Primetime Emmy wins, 1996 to 2008",36,4,98,A,313980
-3556,Roman Polanski,episode-director,"A Berlin Silver Bear win and 5 César wins, 1980 to 2020",31,5,98,A,260450
+1243,Woody Allen,episode-director,"An Academy Award win and 6 Academy Award nominations, 1978 to 2012",34,5,98,A,292230
+2746,Elia Kazan,episode-director,"2 Academy Award wins and 3 Academy Award nominations, 1948 to 1964",32,4,98,A,270930
+18738,George Stevens,episode-director,"2 Academy Award wins and 3 Academy Award nominations, 1944 to 1960",32,4,98,A,270930
+17496,Jacques Audiard,episode-director,"4 César wins, an Academy Award nomination and 3 César nominations, 1997 to 2025",30,5,98,A,250100
 157437,James Burrows,episode-director,"5 Primetime Emmy wins, 1980 to 1994",30,4,98,A,250100
 1213162,Todd Holland,episode-director,"3 Primetime Emmy wins and 5 Primetime Emmy nominations, 1994 to 2009",30,4,98,A,250100
-17496,Jacques Audiard,episode-director,"4 César wins and 3 César nominations, 1997 to 2025",26,5,98,A,209900
+1614,Ang Lee,episode-director,"2 Academy Award wins, a Golden Globe win and an Academy Award nomination, 2001 to 2013",29,4,98,A,239850
+3974,Miloš Forman,episode-director,"2 Academy Award wins, a Golden Globe win and an Academy Award nomination, 1976 to 1997",29,5,98,A,239850
+72061,Frank Lloyd,episode-director,"2 Academy Award wins and 2 Academy Award nominations, 1929 to 1936",28,3,98,A,229750
+13265,Franklin J. Schaffner,episode-director,"An Academy Award win and 3 Primetime Emmy wins, 1955 to 1971",28,4,98,A,229750
+10601,Joseph L. Mankiewicz,episode-director,"2 Academy Award wins and 2 Academy Award nominations, 1950 to 1973",28,5,98,A,229750
+6159,Ron Howard,episode-director,"An Academy Award win, a Critics' Choice Award win, an Academy Award nomination, 3 Golden Globe nominations and 2 Critics' Choice Award nominations, 1995 to 2009",27.2,4,98,A,221750
+5342,Mike Nichols,episode-director,"An Academy Award win, a Golden Globe win and 3 Academy Award nominations, 1967 to 1989",27,5,98,A,219750
+14674,George Cukor,episode-director,"An Academy Award win and 4 Academy Award nominations, 1934 to 1965",26,5,98,A,209900
+2710,James Cameron,episode-director,"An Academy Award win, 2 Golden Globe wins, an Academy Award nomination and a Golden Globe nomination, 1997 to 2023",26,5,98,A,209900
+6593,John Huston,episode-director,"An Academy Award win and 4 Academy Award nominations, 1949 to 1986",26,5,98,A,209900
+9789,Robert Altman,episode-director,"A Primetime Emmy win and 5 Academy Award nominations, 1971 to 2002",26,5,98,A,209900
+11218,Alfonso Cuarón,episode-director,"2 Academy Award wins and a Golden Globe win, 2014 to 2019",25,3,97,A,200180
+223,Alejandro González Iñárritu,episode-director,"2 Academy Award wins and an Academy Award nomination, 2007 to 2016",24,3,96,A,190580
 1222065,Dave Powers,episode-director,"4 Primetime Emmy wins, 1974 to 1978",24,3,96,A,190580
 51760,Jay Sandrich,episode-director,"4 Primetime Emmy wins, 1971 to 1986",24,4,98,A,190580
+30008,Leo McCarey,episode-director,"2 Academy Award wins and an Academy Award nomination, 1938 to 1946",24,3,96,A,190580
+2000,Lewis Milestone,episode-director,"2 Academy Award wins and an Academy Award nomination, 1929 to 1931",24,3,96,A,190580
+1152,Oliver Stone,episode-director,"2 Academy Award wins and an Academy Award nomination, 1987 to 1992",24,3,96,A,190580
 55146,Paul Bogart,episode-director,"4 Primetime Emmy wins, 1965 to 1978",24,4,98,A,190580
+1744,Robert Wise,episode-director,"2 Academy Award wins and an Academy Award nomination, 1959 to 1966",24,3,96,A,190580
+2226,Sydney Pollack,episode-director,"An Academy Award win, a Primetime Emmy win and 2 Academy Award nominations, 1966 to 1986",24,5,98,A,190580
+15175,William Friedkin,episode-director,"An Academy Award win, 2 Golden Globe wins and an Academy Award nomination, 1971 to 1974",24,3,96,A,190580
+1224,Ethan Coen,episode-director,"An Academy Award win, a Critics' Choice Award win, an Academy Award nomination, a Golden Globe nomination, a Critics' Choice Award nomination and an Independent Spirit Award nomination, 2007 to 2011",23.2,3,95,A,183000
+1884,Steven Soderbergh,episode-director,"An Academy Award win, a Critics' Choice Award win, an Independent Spirit Award win, a Golden Globe nomination and 2 Independent Spirit Award nominations, 1990 to 2007",23.2,4,98,A,183000
+4956,Bernardo Bertolucci,episode-director,"An Academy Award win, a Golden Globe win, an Academy Award nomination and 2 Golden Globe nominations, 1973 to 1991",23,4,98,A,181100
 11983,Alain Resnais,episode-director,"2 César wins and 6 César nominations, 1978 to 2007",22,5,98,A,171780
+1776,Francis Ford Coppola,episode-director,"An Academy Award win and 3 Academy Award nominations, 1973 to 1991",22,4,98,A,171780
+4109,Michael Curtiz,episode-director,"An Academy Award win and 3 Academy Award nominations, 1936 to 1944",22,3,94,A,171780
+564,Richard Linklater,episode-director,"2 Berlin Silver Bear wins, a Golden Globe win and an Academy Award nomination, 1995 to 2015",21,5,98,A,162600
+2636,Alfred Hitchcock,episode-director,"5 Academy Award nominations, 1941 to 1961",20,5,98,A,153580
+8246,Barry Levinson,episode-director,"An Academy Award win, a Primetime Emmy win and an Academy Award nomination, 1989 to 1993",20,3,92,A,153580
 20556,Bertrand Tavernier,episode-director,"2 César wins and 5 César nominations, 1976 to 1997",20,5,98,A,153580
-1223,Joel Coen,episode-director,"A Critics' Choice Award win, 2 Independent Spirit Award wins, 2 Golden Globe nominations, a Critics' Choice Award nomination and an Independent Spirit Award nomination, 1986 to 2010",19.2,5,98,A,146450
-488,Steven Spielberg,episode-director,"3 Golden Globe wins and a Critics' Choice Award win, 1994 to 2023",19,5,98,A,144700
+84034,Clarence Brown,episode-director,"5 Academy Award nominations, 1930 to 1947",20,4,97,A,153580
+14855,Frank Borzage,episode-director,"2 Academy Award wins, 1929 to 1932",20,3,92,A,153580
+29962,King Vidor,episode-director,"5 Academy Award nominations, 1929 to 1957",20,5,98,A,153580
+525,Christopher Nolan,episode-director,"An Academy Award win, a Golden Globe win and an Academy Award nomination, 2018 to 2024",19,3,91,A,144700
+10757,Jane Campion,episode-director,"An Academy Award win, a Golden Globe win and an Academy Award nomination, 1994 to 2022",19,5,98,A,144700
+2461,Mel Gibson,episode-director,"An Academy Award win, a Golden Globe win and an Academy Award nomination, 1996 to 2017",19,5,98,A,144700
+13980,Vincente Minnelli,episode-director,"An Academy Award win, a Golden Globe win and an Academy Award nomination, 1952 to 1959",19,3,91,A,144700
+66777,Bob Fosse,episode-director,"An Academy Award win and 2 Academy Award nominations, 1973 to 1980",18,3,90,A,135950
+15378,Carol Reed,episode-director,"An Academy Award win and 2 Academy Award nominations, 1950 to 1969",18,4,95,A,135950
+7467,David Fincher,episode-director,"A Primetime Emmy win and 3 Academy Award nominations, 2009 to 2021",18,4,95,A,135950
 37915,David Greene,episode-director,"3 Primetime Emmy wins, 1969 to 1977",18,3,90,A,135950
 41272,Don Mischer,episode-director,"3 Primetime Emmy wins, 1981 to 1997",18,4,95,A,135950
-13265,Franklin J. Schaffner,episode-director,"3 Primetime Emmy wins, 1955 to 1962",18,3,90,A,135950
+19304,John Schlesinger,episode-director,"An Academy Award win and 2 Academy Award nominations, 1966 to 1972",18,3,90,A,135950
 32375,Mario Monicelli,episode-director,"3 Berlin Silver Bear wins, 1957 to 1982",18,5,98,A,135950
 1211988,Mark Tinker,episode-director,"3 Primetime Emmy wins, 1988 to 1998",18,4,95,A,135950
+13563,Norman Jewison,episode-director,"A Berlin Silver Bear win and 3 Academy Award nominations, 1968 to 1988",18,5,98,A,135950
+4762,Paul Thomas Anderson,episode-director,"A Berlin Silver Bear win and 3 Academy Award nominations, 2008 to 2022",18,4,95,A,135950
+468,Stephen Daldry,episode-director,"A Primetime Emmy win and 3 Academy Award nominations, 2001 to 2018",18,4,95,A,135950
 15106,Thomas Schlamme,episode-director,"3 Primetime Emmy wins, 1999 to 2001",18,3,90,A,135950
 96627,André Téchiné,episode-director,"A César win and 6 César nominations, 1977 to 2008",17,5,98,A,127400
-564,Richard Linklater,episode-director,"2 Berlin Silver Bear wins and a Golden Globe win, 1995 to 2015",17,5,98,A,127400
-1032,Martin Scorsese,episode-director,"A Primetime Emmy win and 2 Golden Globe wins, 2006 to 2011",16,3,88,A,118980
+4081,Stanley Kramer,episode-director,"A Golden Globe win and 3 Academy Award nominations, 1959 to 1968",17,3,89,A,127400
+4415,Federico Fellini,episode-director,"4 Academy Award nominations, 1962 to 1976",16,4,93,A,118980
+2690,Peter Weir,episode-director,"4 Academy Award nominations, 1986 to 2004",16,4,93,A,118980
+39996,Sidney Lumet,episode-director,"4 Academy Award nominations, 1958 to 1983",16,5,98,A,118980
+240,Stanley Kubrick,episode-director,"4 Academy Award nominations, 1965 to 1976",16,4,93,A,118980
+1395183,Chloé Zhao,episode-director,"An Academy Award win and a Golden Globe win, 2021",15,3,86,B,110730
+10828,Guillermo del Toro,episode-director,"An Academy Award win and a Golden Globe win, 2018",15,3,86,B,110730
+12114,Michael Cimino,episode-director,"An Academy Award win and a Golden Globe win, 1979",15,3,86,B,110730
+67717,Michel Hazanavicius,episode-director,"An Academy Award win and a César win, 2012",15,3,86,B,110730
 23724,Patrice Chéreau,episode-director,"A Berlin Silver Bear win, a César win and 2 César nominations, 1995 to 2003",15,3,86,B,110730
+4786,Richard Attenborough,episode-director,"An Academy Award win and a Golden Globe win, 1983",15,3,86,B,110730
+24,Robert Zemeckis,episode-director,"An Academy Award win and a Golden Globe win, 1995",15,3,86,B,110730
 1345843,Charles Dorian,episode-director,"An Academy Award win and an Academy Award nomination, 1933 to 1934",14,3,85,B,102650
 18209,Claude Miller,episode-director,"7 César nominations, 1977 to 2008",14,5,95,A,102650
 20789,Claude Sautet,episode-director,"2 César wins and 2 César nominations, 1979 to 1996",14,4,90,A,102650
 1056670,Clem Beauchamp,episode-director,"An Academy Award win and an Academy Award nomination, 1936 to 1937",14,3,85,B,102650
+9577,George Roy Hill,episode-director,"An Academy Award win and an Academy Award nomination, 1970 to 1974",14,3,85,B,102650
 1117050,John Waters,episode-director,"An Academy Award win and an Academy Award nomination, 1934 to 1935",14,3,85,B,102650
+82800,Norman Taurog,episode-director,"An Academy Award win and an Academy Award nomination, 1931 to 1939",14,3,85,B,102650
+108,Peter Jackson,episode-director,"An Academy Award win and an Academy Award nomination, 2002 to 2004",14,3,85,B,102650
+6729,Robert Benton,episode-director,"An Academy Award win and an Academy Award nomination, 1980 to 1985",14,3,85,B,102650
+4135,Robert Redford,episode-director,"An Academy Award win and an Academy Award nomination, 1981 to 1995",14,4,90,A,102650
+39,Sam Mendes,episode-director,"An Academy Award win and an Academy Award nomination, 2000 to 2020",14,5,95,A,102650
 1297581,Scott Beal,episode-director,"An Academy Award win and an Academy Award nomination, 1934 to 1935",14,3,85,B,102650
-6159,Ron Howard,episode-director,"A Critics' Choice Award win, 3 Golden Globe nominations and 2 Critics' Choice Award nominations, 1995 to 2008",13.2,4,89,A,96330
-1884,Steven Soderbergh,episode-director,"A Critics' Choice Award win, an Independent Spirit Award win, a Golden Globe nomination and 2 Independent Spirit Award nominations, 1990 to 2007",13.2,4,89,A,96330
+6449,Warren Beatty,episode-director,"An Academy Award win and an Academy Award nomination, 1979 to 1982",14,3,85,B,102650
+1650,François Truffaut,episode-director,"A César win, an Academy Award nomination and 2 César nominations, 1975 to 1984",13,3,84,B,94780
+37362,Henry King,episode-director,"A Golden Globe win and 2 Academy Award nominations, 1944 to 1945",13,3,84,B,94780
+52443,Jason Reitman,episode-director,"A Golden Globe win and 2 Academy Award nominations, 2008 to 2010",13,3,84,B,94780
 37626,Patrice Leconte,episode-director,"A César win and 4 César nominations, 1988 to 2000",13,4,89,A,94780
+14875,Robert Rossen,episode-director,"A Golden Globe win and 2 Academy Award nominations, 1949 to 1962",13,4,89,A,94780
 17458,Abdellatif Kechiche,episode-director,"2 César wins and a César nomination, 2005 to 2014",12,3,82,B,87050
 14606,Albert Dupontel,episode-director,"2 César wins and a César nomination, 2014 to 2021",12,3,82,B,87050
+13235,Alexander Payne,episode-director,"3 Academy Award nominations, 2005 to 2014",12,3,82,B,87050
+6448,Arthur Penn,episode-director,"3 Academy Award nominations, 1963 to 1970",12,3,82,B,87050
 96369,Carlos Saura,episode-director,"2 Berlin Silver Bear wins, 1966 to 1968",12,3,82,B,87050
+1383612,Dan Kwan,episode-director,"An Academy Award win and a Golden Globe nomination, 2023",12,3,82,B,87050
+1317730,Daniel Scheinert,episode-director,"An Academy Award win and a Golden Globe nomination, 2023",12,3,82,B,87050
 1212926,David Lee,episode-director,"2 Primetime Emmy wins, 1995 to 1997",12,3,82,B,87050
+5602,David Lynch,episode-director,"3 Academy Award nominations, 1981 to 2002",12,5,92,A,87050
+17883,David O. Russell,episode-director,"3 Academy Award nominations, 2011 to 2014",12,3,82,B,87050
 79469,Dwight Hemion,episode-director,"2 Primetime Emmy wins, 1970 to 1990",12,5,92,A,87050
 91234,Eric G. Stacey,episode-director,"3 Academy Award nominations, 1936 to 1938",12,3,82,B,87050
+2428,Ernst Lubitsch,episode-director,"3 Academy Award nominations, 1929 to 1944",12,4,87,A,87050
 1212755,Gail Mancuso,episode-director,"2 Primetime Emmy wins, 2013 to 2014",12,3,82,B,87050
 14874,Gene Reynolds,episode-director,"2 Primetime Emmy wins, 1975 to 1976",12,3,82,B,87050
 11035,George Schaefer,episode-director,"2 Primetime Emmy wins, 1959 to 1961",12,3,82,B,87050
 17812,Gregory Hoblit,episode-director,"2 Primetime Emmy wins, 1987 to 1988",12,3,82,B,87050
+6648,Ingmar Bergman,episode-director,"3 Academy Award nominations, 1974 to 1984",12,4,87,A,87050
 55278,Jackie Cooper,episode-director,"2 Primetime Emmy wins, 1974 to 1979",12,3,82,B,87050
-2710,James Cameron,episode-director,"2 Golden Globe wins and a Golden Globe nomination, 1997 to 2023",12,5,92,A,87050
+54441,James Ivory,episode-director,"3 Academy Award nominations, 1987 to 1994",12,3,82,B,87050
 182009,Joey Soloway,episode-director,"2 Primetime Emmy wins, 2015 to 2016",12,3,82,B,87050
+19665,John Boorman,episode-director,"2 Academy Award nominations and 2 Golden Globe nominations, 1972 to 1988",12,4,87,A,87050
 21452,John Rich,episode-director,"2 Primetime Emmy wins, 1963 to 1972",12,3,82,B,87050
 45649,Paris Barclay,episode-director,"2 Primetime Emmy wins, 1998 to 1999",12,3,82,B,87050
 56755,Patricia Birch,episode-director,"2 Primetime Emmy wins, 1988 to 1992",12,3,82,B,87050
+138,Quentin Tarantino,episode-director,"3 Academy Award nominations, 1995 to 2020",12,5,92,A,87050
+3632,Richard Brooks,episode-director,"3 Academy Award nominations, 1959 to 1968",12,3,82,B,87050
 101767,Robert Butler,episode-director,"2 Primetime Emmy wins, 1974 to 1981",12,3,82,B,87050
+10790,Sam Wood,episode-director,"3 Academy Award nominations, 1940 to 1943",12,3,82,B,87050
 12160,Satyajit Ray,episode-director,"2 Berlin Silver Bear wins, 1964 to 1965",12,3,82,B,87050
 15239,Terry Hughes,episode-director,"2 Primetime Emmy wins, 1985 to 1987",12,3,82,B,87050
 52038,Thomas Carter,episode-director,"2 Primetime Emmy wins, 1990 to 1991",12,3,82,B,87050
 1227247,Walter C. Miller,episode-director,"2 Primetime Emmy wins, 1993 to 1994",12,3,82,B,87050
+14643,William A. Wellman,episode-director,"3 Academy Award nominations, 1938 to 1955",12,4,87,A,87050
 38883,Arnaud Desplechin,episode-director,"A César win and 3 César nominations, 2005 to 2016",11,4,86,A,79530
 31894,Ettore Scola,episode-director,"A Berlin Silver Bear win and a César win, 1984",11,3,81,B,79530
 25950,Jean-Paul Rappeneau,episode-director,"A César win and 3 César nominations, 1976 to 2004",11,5,91,A,79530
+15389,Louis Malle,episode-director,"A César win, an Academy Award nomination and a Golden Globe nomination, 1981 to 1988",11,3,81,B,79530
 39243,Michel Deville,episode-director,"A César win and 3 César nominations, 1979 to 2000",11,5,91,A,79530
 16863,Todd Haynes,episode-director,"An Independent Spirit Award win and 4 Independent Spirit Award nominations, 1992 to 2008",10.4,4,85,A,75130
-3146,Billy Wilder,episode-director,"2 Golden Globe wins, 1946 to 1951",10,3,79,B,72200
+5026,Akira Kurosawa,episode-director,"A Berlin Silver Bear win and an Academy Award nomination, 1959 to 1986",10,5,89,A,72200
+2239,Anthony Minghella,episode-director,"An Academy Award win, 1997",10,3,79,B,72200
+21684,Bong Joon-ho,episode-director,"An Academy Award win, 2020",10,3,79,B,72200
 30099,Charles Barton,episode-director,"An Academy Award win, 1934",10,3,79,B,72200
-190,Clint Eastwood,episode-director,"2 Golden Globe wins, 1993 to 2005",10,4,84,A,72200
+27436,Costa-Gavras,episode-director,"An Academy Award nomination, a Golden Globe nomination and 2 César nominations, 1970 to 2003",10,5,89,A,72200
+136495,Damien Chazelle,episode-director,"An Academy Award win, 2017",10,3,79,B,72200
+2034,Danny Boyle,episode-director,"An Academy Award win, 2009",10,3,79,B,72200
+67451,Delbert Mann,episode-director,"An Academy Award win, 1956",10,3,79,B,72200
 1312997,Dewey Starkey,episode-director,"An Academy Award win, 1934",10,3,79,B,72200
 18175,Dominik Moll,episode-director,"2 César wins, 2001 to 2023",10,5,89,A,72200
-14855,Frank Borzage,episode-director,"An Academy Award win, 1929",10,3,79,B,72200
 1371687,Fred Fox,episode-director,"An Academy Award win, 1934",10,3,79,B,72200
-4065,Fred Zinnemann,episode-director,"2 Golden Globe wins, 1954 to 1967",10,4,84,A,72200
 1102133,Gordon Hollingshead,episode-director,"An Academy Award win, 1934",10,3,79,B,72200
 1544013,Jack Sullivan,episode-director,"An Academy Award win, 1937",10,3,79,B,72200
+3388,James L. Brooks,episode-director,"An Academy Award win, 1984",10,3,79,B,72200
+27014,Jan Troell,episode-director,"A Berlin Silver Bear win and an Academy Award nomination, 1973 to 1992",10,4,84,A,72200
 2352,Jean-Jacques Annaud,episode-director,"2 César wins, 1982 to 1989",10,3,79,B,72200
 3776,Jean-Luc Godard,episode-director,"A Berlin Silver Bear win and 2 César nominations, 1960 to 1983",10,5,89,A,72200
-2000,Lewis Milestone,episode-director,"An Academy Award win, 1929",10,3,79,B,72200
+18868,Jerome Robbins,episode-director,"An Academy Award win, 1962",10,3,79,B,72200
+16513,John G. Avildsen,episode-director,"An Academy Award win, 1977",10,3,79,B,72200
+16294,Jonathan Demme,episode-director,"An Academy Award win, 1992",10,3,79,B,72200
+14392,Kathryn Bigelow,episode-director,"An Academy Award win, 2010",10,3,79,B,72200
+1269,Kevin Costner,episode-director,"An Academy Award win, 1991",10,3,79,B,72200
+17633,Rob Marshall,episode-director,"A Primetime Emmy win and an Academy Award nomination, 2003 to 2007",10,3,79,B,72200
 89216,Robert D. Webb,episode-director,"An Academy Award win, 1938",10,3,79,B,72200
-15175,William Friedkin,episode-director,"2 Golden Globe wins, 1971 to 1973",10,3,79,B,72200
+8482,Robert Mulligan,episode-director,"A Primetime Emmy win and an Academy Award nomination, 1960 to 1963",10,3,79,B,72200
+118415,Sean Baker,episode-director,"An Academy Award win, 2025",10,3,79,B,72200
+70500,Tom Hooper,episode-director,"An Academy Award win, 2011",10,3,79,B,72200
+32765,Tony Richardson,episode-director,"An Academy Award win, 1964",10,3,79,B,72200
+9049,Victor Fleming,episode-director,"An Academy Award win, 1940",10,3,79,B,72200
 87829,William Tummel,episode-director,"An Academy Award win, 1934",10,3,79,B,72200
-1224,Ethan Coen,episode-director,"A Critics' Choice Award win, a Golden Globe nomination, a Critics' Choice Award nomination and an Independent Spirit Award nomination, 2007 to 2010",9.2,3,77,B,66500
+20019,Lee Daniels,episode-director,"An Independent Spirit Award win, an Academy Award nomination and a Critics' Choice Award nomination, 2009 to 2010",9.6,3,78,B,69350
 35927,Alain Corneau,episode-director,"A César win and 2 César nominations, 1990 to 1998",9,3,77,B,65100
-4956,Bernardo Bertolucci,episode-director,"A Golden Globe win and 2 Golden Globe nominations, 1973 to 1991",9,4,82,A,65100
-1650,François Truffaut,episode-director,"A César win and 2 César nominations, 1976 to 1984",9,3,77,B,65100
+55493,Brady Corbet,episode-director,"A Golden Globe win and an Academy Award nomination, 2025",9,3,77,B,65100
+18378,Herbert Ross,episode-director,"A Golden Globe win and an Academy Award nomination, 1977 to 1978",9,3,77,B,65100
+6603,Jack Cardiff,episode-director,"A Golden Globe win and an Academy Award nomination, 1961",9,3,77,B,65100
+1175620,Justine Triet,episode-director,"A César win and an Academy Award nomination, 2024",9,3,77,B,65100
+6011,Michael Haneke,episode-director,"A César win and an Academy Award nomination, 2013",9,3,77,B,65100
 47005,Alan Taylor,episode-director,"A Primetime Emmy win and a Primetime Emmy nomination, 2007 to 2008",8.4,3,76,B,60930
 157771,Charles McDougall,episode-director,"A Primetime Emmy win and a Primetime Emmy nomination, 2001 to 2005",8.4,3,76,B,60930
 2775,Corey Allen,episode-director,"A Primetime Emmy win and a Primetime Emmy nomination, 1981 to 1984",8.4,3,76,B,60930
 38023,Michael Patrick King,episode-director,"A Primetime Emmy win and a Primetime Emmy nomination, 2002 to 2006",8.4,3,76,B,60930
+55710,Adam McKay,episode-director,"2 Academy Award nominations, 2016 to 2019",8,3,75,B,58200
 16767,Aki Kaurismäki,episode-director,"A Berlin Silver Bear win and a César nomination, 2012 to 2017",8,3,75,B,58200
+9168,Alan Parker,episode-director,"2 Academy Award nominations, 1979 to 1989",8,4,80,A,58200
+5345,Bennett Miller,episode-director,"2 Academy Award nominations, 2006 to 2015",8,3,75,B,58200
 28615,Éric Rohmer,episode-director,"A Berlin Silver Bear win and a César nomination, 1983 to 1985",8,3,75,B,58200
 87267,Francesco Rosi,episode-director,"A Berlin Silver Bear win and a César nomination, 1962 to 1985",8,5,85,A,58200
+1,George Lucas,episode-director,"2 Academy Award nominations, 1974 to 1978",8,3,75,B,58200
+74659,Gregory La Cava,episode-director,"2 Academy Award nominations, 1937 to 1938",8,3,75,B,58200
+5216,Gus Van Sant,episode-director,"2 Academy Award nominations, 1998 to 2009",8,4,80,A,58200
+53334,Jim Sheridan,episode-director,"2 Academy Award nominations, 1990 to 1994",8,3,75,B,58200
+2891,Josef von Sternberg,episode-director,"2 Academy Award nominations, 1931 to 1932",8,3,75,B,58200
 12327,Joseph M. Newman,episode-director,"2 Academy Award nominations, 1936 to 1937",8,3,75,B,58200
+86051,Joshua Logan,episode-director,"2 Academy Award nominations, 1956 to 1958",8,3,75,B,58200
+11181,Kenneth Branagh,episode-director,"2 Academy Award nominations, 1990 to 2022",8,5,85,A,58200
+5306,Lasse Hallström,episode-director,"2 Academy Award nominations, 1988 to 2000",8,4,80,A,58200
+19457,Mark Robson,episode-director,"2 Academy Award nominations, 1958 to 1959",8,3,75,B,58200
+65452,Mike Leigh,episode-director,"2 Academy Award nominations, 1997 to 2005",8,3,75,B,58200
+834,Otto Preminger,episode-director,"2 Academy Award nominations, 1945 to 1964",8,4,80,A,58200
+12804,Peter Yates,episode-director,"2 Academy Award nominations, 1980 to 1984",8,3,75,B,58200
+578,Ridley Scott,episode-director,"2 Academy Award nominations, 1992 to 2002",8,4,80,A,58200
+93906,Robert Z. Leonard,episode-director,"2 Academy Award nominations, 1930 to 1937",8,3,75,B,58200
+8965,Roland Joffé,episode-director,"2 Academy Award nominations, 1985 to 1987",8,3,75,B,58200
+3224,Stephen Frears,episode-director,"2 Academy Award nominations, 1991 to 2007",8,4,80,A,58200
+30715,Terrence Malick,episode-director,"2 Academy Award nominations, 1999 to 2012",8,4,80,A,58200
+32427,W. S. Van Dyke,episode-director,"2 Academy Award nominations, 1935 to 1937",8,3,75,B,58200
+122423,Yorgos Lanthimos,episode-director,"2 Academy Award nominations, 2019 to 2024",8,3,75,B,58200
 26182,Alain Cavalier,episode-director,"A César win and a César nomination, 1987 to 2012",7,5,83,A,51530
 27977,Leos Carax,episode-director,"A César win and a César nomination, 2013 to 2022",7,3,73,B,51530
-15389,Louis Malle,episode-director,"A César win and a Golden Globe nomination, 1981 to 1988",7,3,73,B,51530
 1667260,Adam Randall,episode-director,"A Primetime Emmy win, 2025",6,3,70,C,45080
-5026,Akira Kurosawa,episode-director,"A Berlin Silver Bear win, 1959",6,3,70,C,45080
 21278,Alan Alda,episode-director,"A Primetime Emmy win, 1977",6,3,70,C,45080
 2152,Alan Ball,episode-director,"A Primetime Emmy win, 2002",6,3,70,C,45080
 85840,Alan Rafkin,episode-director,"A Primetime Emmy win, 1982",6,3,70,C,45080
@@ -2284,7 +2708,6 @@ tmdb_person,name,job,recognition (Wikidata),weight,experience,capability,grade,a
 40485,Angela Schanelec,episode-director,"A Berlin Silver Bear win, 2019",6,3,70,C,45080
 229931,Asghar Farhadi,episode-director,"A Berlin Silver Bear win, 2009",6,3,70,C,45080
 121829,Barnet Kellman,episode-director,"A Primetime Emmy win, 1992",6,3,70,C,45080
-8246,Barry Levinson,episode-director,"A Primetime Emmy win, 1993",6,3,70,C,45080
 5174,Barry Sonnenfeld,episode-director,"A Primetime Emmy win, 2008",6,3,70,C,45080
 9894,Bernhard Wicki,episode-director,"A Berlin Silver Bear win, 1961",6,3,70,C,45080
 31024,Betty Thomas,episode-director,"A Primetime Emmy win, 1993",6,3,70,C,45080
@@ -2298,12 +2721,10 @@ tmdb_person,name,job,recognition (Wikidata),weight,experience,capability,grade,a
 2332,Christian Petzold,episode-director,"A Berlin Silver Bear win, 2012",6,3,70,C,45080
 1214433,Christopher Misiano,episode-director,"A Primetime Emmy win, 2003",6,3,70,C,45080
 1057655,Christopher Storer,episode-director,"A Primetime Emmy win, 2023",6,3,70,C,45080
-27436,Costa-Gavras,episode-director,"A Golden Globe nomination and 2 César nominations, 1980 to 2003",6,5,80,A,45080
 1392152,Dan Levy,episode-director,"A Primetime Emmy win, 2020",6,3,70,C,45080
 12632,Daniel Sackheim,episode-director,"A Primetime Emmy win, 1994",6,3,70,C,45080
 93587,Daryl Duke,episode-director,"A Primetime Emmy win, 1971",6,3,70,C,45080
 1267152,Dave Wilson,episode-director,"A Primetime Emmy win, 1976",6,3,70,C,45080
-7467,David Fincher,episode-director,"A Primetime Emmy win, 2013",6,3,70,C,45080
 90657,David Mallet,episode-director,"A Primetime Emmy win, 2001",6,3,70,C,45080
 33316,David Nutter,episode-director,"A Primetime Emmy win, 2015",6,3,70,C,45080
 1521847,Dénes Nagy,episode-director,"A Berlin Silver Bear win, 2021",6,3,70,C,45080
@@ -2322,9 +2743,9 @@ tmdb_person,name,job,recognition (Wikidata),weight,experience,capability,grade,a
 1242372,Humphrey Burton,episode-director,"A Primetime Emmy win, 1988",6,3,70,C,45080
 32244,István Szabó,episode-director,"A Berlin Silver Bear win, 1980",6,3,70,C,45080
 15344,J. J. Abrams,episode-director,"A Primetime Emmy win, 2005",6,3,70,C,45080
+18669,J. Lee Thompson,episode-director,"An Academy Award nomination and a Golden Globe nomination, 1961 to 1962",6,3,70,C,45080
 30422,Jack Smight,episode-director,"A Primetime Emmy win, 1959",6,3,70,C,45080
 68457,James Frawley,episode-director,"A Primetime Emmy win, 1967",6,3,70,C,45080
-27014,Jan Troell,episode-director,"A Berlin Silver Bear win, 1992",6,3,70,C,45080
 23532,Jason Bateman,episode-director,"A Primetime Emmy win, 2019",6,3,70,C,45080
 69982,Jeff Bleckner,episode-director,"A Primetime Emmy win, 1983",6,3,70,C,45080
 89576,Jeffrey Blitz,episode-director,"A Primetime Emmy win, 2009",6,3,70,C,45080
@@ -2340,8 +2761,10 @@ tmdb_person,name,job,recognition (Wikidata),weight,experience,capability,grade,a
 649147,Manuel Gutiérrez Aragón,episode-director,"A Berlin Silver Bear win, 1977",6,3,70,C,45080
 1217930,Marc Buckland,episode-director,"A Primetime Emmy win, 2006",6,3,70,C,45080
 1227479,Mark Warren,episode-director,"A Primetime Emmy win, 1971",6,3,70,C,45080
+54472,Martin McDonagh,episode-director,"An Academy Award nomination and a Golden Globe nomination, 2023",6,3,70,C,45080
 29765,Marvin J. Chomsky,episode-director,"A Primetime Emmy win, 1978",6,3,70,C,45080
 16988,Maurice Pialat,episode-director,"3 César nominations, 1984 to 1992",6,3,70,C,45080
+9054,Mervyn LeRoy,episode-director,"An Academy Award nomination and a Golden Globe nomination, 1943 to 1962",6,4,75,B,45080
 222686,Mia Hansen-Løve,episode-director,"A Berlin Silver Bear win, 2016",6,3,70,C,45080
 84165,Michael Dinner,episode-director,"A Primetime Emmy win, 1990",6,3,70,C,45080
 15045,Michael Lembeck,episode-director,"A Primetime Emmy win, 1996",6,3,70,C,45080
@@ -2352,9 +2775,7 @@ tmdb_person,name,job,recognition (Wikidata),weight,experience,capability,grade,a
 131565,Nat Hiken,episode-director,"A Primetime Emmy win, 1962",6,3,70,C,45080
 590896,Nikos Koundouros,episode-director,"A Berlin Silver Bear win, 1963",6,3,70,C,45080
 1213215,Noam Pitlik,episode-director,"A Primetime Emmy win, 1979",6,3,70,C,45080
-13563,Norman Jewison,episode-director,"A Berlin Silver Bear win, 1988",6,3,70,C,45080
 120870,Paul Miller,episode-director,"A Primetime Emmy win, 1999",6,3,70,C,45080
-4762,Paul Thomas Anderson,episode-director,"A Berlin Silver Bear win, 2008",6,3,70,C,45080
 34651,Peter Baldwin,episode-director,"A Primetime Emmy win, 1989",6,3,70,C,45080
 37876,Peter Tewksbury,episode-director,"A Primetime Emmy win, 1959",6,3,70,C,45080
 56207,Philippe Garrel,episode-director,"A Berlin Silver Bear win, 2023",6,3,70,C,45080
@@ -2362,11 +2783,8 @@ tmdb_person,name,job,recognition (Wikidata),weight,experience,capability,grade,a
 16888,Ralph Nelson,episode-director,"A Primetime Emmy win, 1957",6,3,70,C,45080
 67356,Reed Morano,episode-director,"A Primetime Emmy win, 2017",6,3,70,C,45080
 44740,Richard Shepard,episode-director,"A Primetime Emmy win, 2007",6,3,70,C,45080
-17633,Rob Marshall,episode-director,"A Primetime Emmy win, 2007",6,3,70,C,45080
 18392,Robert Aldrich,episode-director,"A Berlin Silver Bear win, 1956",6,3,70,C,45080
-9789,Robert Altman,episode-director,"A Primetime Emmy win, 1989",6,3,70,C,45080
 74159,Robert B. Weide,episode-director,"A Primetime Emmy win, 2003",6,3,70,C,45080
-8482,Robert Mulligan,episode-director,"A Primetime Emmy win, 1960",6,3,70,C,45080
 39460,Rod Holcomb,episode-director,"A Primetime Emmy win, 2009",6,3,70,C,45080
 23946,Roger Young,episode-director,"A Primetime Emmy win, 1980",6,3,70,C,45080
 1592610,Ron de Moraes,episode-director,"A Primetime Emmy win, 2002",6,3,70,C,45080
@@ -2374,81 +2792,159 @@ tmdb_person,name,job,recognition (Wikidata),weight,experience,capability,grade,a
 1214396,Scott Winant,episode-director,"A Primetime Emmy win, 1990",6,3,70,C,45080
 41750,Sheldon Leonard,episode-director,"A Primetime Emmy win, 1961",6,3,70,C,45080
 1198165,Sohrab Shahid-Saless,episode-director,"A Berlin Silver Bear win, 1974",6,3,70,C,45080
-468,Stephen Daldry,episode-director,"A Primetime Emmy win, 2018",6,3,70,C,45080
 80747,Steve Shill,episode-director,"A Primetime Emmy win, 2010",6,3,70,C,45080
 1215785,Steven Levitan,episode-director,"A Primetime Emmy win, 2012",6,3,70,C,45080
 13859,Stuart Rosenberg,episode-director,"A Primetime Emmy win, 1963",6,3,70,C,45080
-2226,Sydney Pollack,episode-director,"A Primetime Emmy win, 1966",6,3,70,C,45080
 44797,Tim Van Patten,episode-director,"A Primetime Emmy win, 2012",6,3,70,C,45080
 18592,Tom Gries,episode-director,"A Primetime Emmy win, 1964",6,3,70,C,45080
 40357,Ulrich Köhler,episode-director,"A Berlin Silver Bear win, 2011",6,3,70,C,45080
 1723,Walter Hill,episode-director,"A Primetime Emmy win, 2004",6,3,70,C,45080
 44726,Waris Hussein,episode-director,"A Primetime Emmy win, 1986",6,3,70,C,45080
 95526,William Asher,episode-director,"A Primetime Emmy win, 1966",6,3,70,C,45080
-20019,Lee Daniels,episode-director,"An Independent Spirit Award win and a Critics' Choice Award nomination, 2009 to 2010",5.6,3,69,C,42580
+223516,Benh Zeitlin,episode-director,"An Academy Award nomination and an Independent Spirit Award nomination, 2013",5.6,3,69,C,42580
 118772,Abderrahmane Sissako,episode-director,"A César win, 2015",5,3,68,C,38900
-11218,Alfonso Cuarón,episode-director,"A Golden Globe win, 2014",5,3,68,C,38900
 2801,Andrzej Wajda,episode-director,"A César win, 1983",5,3,68,C,38900
-1614,Ang Lee,episode-director,"A Golden Globe win, 2005",5,3,68,C,38900
 34262,Bertrand Blier,episode-director,"A César win, 1990",5,3,68,C,38900
-55493,Brady Corbet,episode-director,"A Golden Globe win, 2025",5,3,68,C,38900
 29646,Charles Jarrott,episode-director,"A Golden Globe win, 1970",5,3,68,C,38900
-1395183,Chloé Zhao,episode-director,"A Golden Globe win, 2021",5,3,68,C,38900
 122418,Christian de Chalonge,episode-director,"A César win, 1979",5,3,68,C,38900
-525,Christopher Nolan,episode-director,"A Golden Globe win, 2024",5,3,68,C,38900
 11201,Claude Zidi,episode-director,"A César win, 1985",5,3,68,C,38900
-12238,David Lean,episode-director,"A Golden Globe win, 1957",5,3,68,C,38900
 38516,Denys Arcand,episode-director,"A César win, 2004",5,3,68,C,38900
 19866,Guillaume Canet,episode-director,"A César win, 2007",5,3,68,C,38900
-10828,Guillermo del Toro,episode-director,"A Golden Globe win, 2018",5,3,68,C,38900
-37362,Henry King,episode-director,"A Golden Globe win, 1944",5,3,68,C,38900
-18378,Herbert Ross,episode-director,"A Golden Globe win, 1977",5,3,68,C,38900
-6603,Jack Cardiff,episode-director,"A Golden Globe win, 1961",5,3,68,C,38900
-10757,Jane Campion,episode-director,"A Golden Globe win, 2021",5,3,68,C,38900
-52443,Jason Reitman,episode-director,"A Golden Globe win, 2010",5,3,68,C,38900
 58324,Jean-François Richet,episode-director,"A César win, 2009",5,3,68,C,38900
 2419,Jean-Pierre Jeunet,episode-director,"A César win, 2002",5,3,68,C,38900
 39009,Joseph Losey,episode-director,"A César win, 1977",5,3,68,C,38900
-1175620,Justine Triet,episode-director,"A César win, 2024",5,3,68,C,38900
 59,Luc Besson,episode-director,"A César win, 1998",5,3,68,C,38900
-2461,Mel Gibson,episode-director,"A Golden Globe win, 1996",5,3,68,C,38900
-12114,Michael Cimino,episode-director,"A Golden Globe win, 1979",5,3,68,C,38900
-6011,Michael Haneke,episode-director,"A César win, 2013",5,3,68,C,38900
-67717,Michel Hazanavicius,episode-director,"A César win, 2012",5,3,68,C,38900
-5342,Mike Nichols,episode-director,"A Golden Globe win, 1968",5,3,68,C,38900
-3974,Miloš Forman,episode-director,"A Golden Globe win, 1984",5,3,68,C,38900
-4786,Richard Attenborough,episode-director,"A Golden Globe win, 1983",5,3,68,C,38900
-14875,Robert Rossen,episode-director,"A Golden Globe win, 1949",5,3,68,C,38900
-24,Robert Zemeckis,episode-director,"A Golden Globe win, 1995",5,3,68,C,38900
 13268,Rod Serling,episode-director,"A Golden Globe win, 1963",5,3,68,C,38900
-4081,Stanley Kramer,episode-director,"A Golden Globe win, 1962",5,3,68,C,38900
 125037,Tonie Marshall,episode-director,"A César win, 2000",5,3,68,C,38900
-13980,Vincente Minnelli,episode-director,"A Golden Globe win, 1959",5,3,68,C,38900
-10001,William Wyler,episode-director,"A Golden Globe win, 1960",5,3,68,C,38900
 143593,Xavier Dolan,episode-director,"A César win, 2017",5,3,68,C,38900
 141194,Marc Daniels,episode-director,"2 Primetime Emmy nominations, 1982 to 1985",4.8,3,67,C,37700
 29779,Michelle MacLaren,episode-director,"2 Primetime Emmy nominations, 2010 to 2013",4.8,3,67,C,37700
+7270,Adrian Lyne,episode-director,"An Academy Award nomination, 1988",4,3,65,C,33000
 1417676,Al Alleborn,episode-director,"An Academy Award nomination, 1934",4,3,65,C,33000
+6349,Alan J. Pakula,episode-director,"An Academy Award nomination, 1977",4,3,65,C,33000
+99667,Alexander Hall,episode-director,"An Academy Award nomination, 1942",4,3,65,C,33000
+37361,Anatole Litvak,episode-director,"An Academy Award nomination, 1949",4,3,65,C,33000
+12009,Anthony Harvey,episode-director,"An Academy Award nomination, 1969",4,3,65,C,33000
+133259,Arthur Hiller,episode-director,"An Academy Award nomination, 1971",4,3,65,C,33000
 1533674,Arthur Jacobson,episode-director,"An Academy Award nomination, 1934",4,3,65,C,33000
+56205,Atom Egoyan,episode-director,"An Academy Award nomination, 1998",4,3,65,C,33000
+23393,Barbet Schroeder,episode-director,"An Academy Award nomination, 1991",4,3,65,C,33000
+92784,Barry Jenkins,episode-director,"An Academy Award nomination, 2017",4,3,65,C,33000
 129560,Ben Silvey,episode-director,"An Academy Award nomination, 1934",4,3,65,C,33000
+5696,Bruce Beresford,episode-director,"An Academy Award nomination, 1984",4,3,65,C,33000
+7795,Buck Henry,episode-director,"An Academy Award nomination, 1979",4,3,65,C,33000
+8636,Cecil B. DeMille,episode-director,"An Academy Award nomination, 1953",4,3,65,C,33000
 97755,Charles Burnett,episode-director,"An Independent Spirit Award win, 1991",4,3,65,C,33000
 1183417,Charles C. Coleman,episode-director,"An Academy Award nomination, 1938",4,3,65,C,33000
+8929,Charles Crichton,episode-director,"An Academy Award nomination, 1989",4,3,65,C,33000
+69392,Charles Walters,episode-director,"An Academy Award nomination, 1954",4,3,65,C,33000
+58137,Chris Noonan,episode-director,"An Academy Award nomination, 1996",4,3,65,C,33000
 19069,Claude Chabrol,episode-director,"2 César nominations, 1989 to 1996",4,3,65,C,33000
+16862,Claude Lelouch,episode-director,"An Academy Award nomination, 1967",4,3,65,C,33000
+1607016,Coralie Fargeat,episode-director,"An Academy Award nomination, 2025",4,3,65,C,33000
 1530554,Cullen Tate,episode-director,"An Academy Award nomination, 1935",4,3,65,C,33000
+323,Curtis Hanson,episode-director,"An Academy Award nomination, 1998",4,3,65,C,33000
+6431,Darren Aronofsky,episode-director,"An Academy Award nomination, 2011",4,3,65,C,33000
+137427,Denis Villeneuve,episode-director,"An Academy Award nomination, 2017",4,3,65,C,33000
+24380,Édouard Molinaro,episode-director,"An Academy Award nomination, 1980",4,3,65,C,33000
+64114,Edward Dmytryk,episode-director,"An Academy Award nomination, 1948",4,3,65,C,33000
 121047,Edward Killy,episode-director,"An Academy Award nomination, 1934",4,3,65,C,33000
+1252934,Emerald Fennell,episode-director,"An Academy Award nomination, 2021",4,3,65,C,33000
+8557,Fernando Meirelles,episode-director,"An Academy Award nomination, 2004",4,3,65,C,33000
+24657,Franco Zeffirelli,episode-director,"An Academy Award nomination, 1969",4,3,65,C,33000
+113799,Frank Perry,episode-director,"An Academy Award nomination, 1963",4,3,65,C,33000
+1461,George Clooney,episode-director,"An Academy Award nomination, 2006",4,3,65,C,33000
+20629,George Miller,episode-director,"An Academy Award nomination, 2016",4,3,65,C,33000
+24939,George Seaton,episode-director,"An Academy Award nomination, 1955",4,3,65,C,33000
+90694,Gillo Pontecorvo,episode-director,"An Academy Award nomination, 1969",4,3,65,C,33000
+45400,Greta Gerwig,episode-director,"An Academy Award nomination, 2018",4,3,65,C,33000
+4964,Hal Ashby,episode-director,"An Academy Award nomination, 1979",4,3,65,C,33000
 102601,Hal Walker,episode-director,"An Academy Award nomination, 1938",4,3,65,C,33000
+145605,Harry Beaumont,episode-director,"An Academy Award nomination, 1929",4,3,65,C,33000
+40542,Héctor Babenco,episode-director,"An Academy Award nomination, 1986",4,3,65,C,33000
+37360,Henry Hathaway,episode-director,"An Academy Award nomination, 1936",4,3,65,C,33000
+33064,Henry Koster,episode-director,"An Academy Award nomination, 1948",4,3,65,C,33000
 930791,Herbert Brenon,episode-director,"An Academy Award nomination, 1929",4,3,65,C,33000
+96801,Hiroshi Teshigahara,episode-director,"An Academy Award nomination, 1966",4,3,65,C,33000
+11435,Howard Hawks,episode-director,"An Academy Award nomination, 1942",4,3,65,C,33000
+58220,Hugh Hudson,episode-director,"An Academy Award nomination, 1982",4,3,65,C,33000
+129422,Irving Cummings,episode-director,"An Academy Award nomination, 1929",4,3,65,C,33000
+25630,Jack Clayton,episode-director,"An Academy Award nomination, 1960",4,3,65,C,33000
 118020,Jacques Doillon,episode-director,"2 César nominations, 1980 to 1991",4,4,70,B,33000
-19665,John Boorman,episode-director,"2 Golden Globe nominations, 1972 to 1987",4,4,70,B,33000
+366,James Mangold,episode-director,"An Academy Award nomination, 2025",4,3,65,C,33000
+19606,Jean Negulesco,episode-director,"An Academy Award nomination, 1949",4,3,65,C,33000
+11528,Jean Renoir,episode-director,"An Academy Award nomination, 1946",4,3,65,C,33000
+11147,John Cassavetes,episode-director,"An Academy Award nomination, 1975",4,3,65,C,33000
+50300,John Farrow,episode-director,"An Academy Award nomination, 1943",4,3,65,C,33000
+18844,John Madden,episode-director,"An Academy Award nomination, 1999",4,3,65,C,33000
+6482,John Singleton,episode-director,"An Academy Award nomination, 1992",4,3,65,C,33000
+14520,John Sturges,episode-director,"An Academy Award nomination, 1956",4,3,65,C,33000
+66728,Jonathan Glazer,episode-director,"An Academy Award nomination, 2024",4,3,65,C,33000
+291263,Jordan Peele,episode-director,"An Academy Award nomination, 2018",4,3,65,C,33000
 1348279,Joseph A. McDonough,episode-director,"An Academy Award nomination, 1934",4,3,65,C,33000
-29962,King Vidor,episode-director,"An Academy Award nomination, 1929",4,3,65,C,33000
+14227,Jules Dassin,episode-director,"An Academy Award nomination, 1961",4,3,65,C,33000
+7482,Julian Schnabel,episode-director,"An Academy Award nomination, 2008",4,3,65,C,33000
+32327,Ken Russell,episode-director,"An Academy Award nomination, 1971",4,3,65,C,33000
+30711,Kenneth Lonergan,episode-director,"An Academy Award nomination, 2017",4,3,65,C,33000
+1126,Krzysztof Kieślowski,episode-director,"An Academy Award nomination, 1995",4,3,65,C,33000
+3359,Laurence Olivier,episode-director,"An Academy Award nomination, 1949",4,3,65,C,33000
+931952,Lee Isaac Chung,episode-director,"An Academy Award nomination, 2021",4,3,65,C,33000
+83281,Lenny Abrahamson,episode-director,"An Academy Award nomination, 2016",4,3,65,C,33000
+26265,Lina Wertmüller,episode-director,"An Academy Award nomination, 1977",4,3,65,C,33000
+17753,Lionel Barrymore,episode-director,"An Academy Award nomination, 1929",4,3,65,C,33000
 25854,Lucas Belvaux,episode-director,"2 César nominations, 2004 to 2010",4,3,65,C,33000
+11614,M. Night Shyamalan,episode-director,"An Academy Award nomination, 2000",4,3,65,C,33000
+21958,Mark Rydell,episode-director,"An Academy Award nomination, 1982",4,3,65,C,33000
+769,Martin Brest,episode-director,"An Academy Award nomination, 1993",4,3,65,C,33000
+18854,Martin Ritt,episode-director,"An Academy Award nomination, 1964",4,3,65,C,33000
+20412,Michael Anderson,episode-director,"An Academy Award nomination, 1957",4,3,65,C,33000
+65843,Michael Cacoyannis,episode-director,"An Academy Award nomination, 1965",4,3,65,C,33000
+638,Michael Mann,episode-director,"An Academy Award nomination, 2000",4,3,65,C,33000
+28898,Michael Radford,episode-director,"An Academy Award nomination, 1996",4,3,65,C,33000
+15189,Michelangelo Antonioni,episode-director,"An Academy Award nomination, 1967",4,3,65,C,33000
+6111,Mike Figgis,episode-director,"An Academy Award nomination, 1996",4,3,65,C,33000
+77965,Morten Tyldum,episode-director,"An Academy Award nomination, 2015",4,3,65,C,33000
+17016,Neil Jordan,episode-director,"An Academy Award nomination, 1993",4,3,65,C,33000
+40,Orson Welles,episode-director,"An Academy Award nomination, 1942",4,3,65,C,33000
 949860,Orville O. Dull,episode-director,"An Academy Award nomination, 1934",4,3,65,C,33000
+25598,Paul Greengrass,episode-director,"An Academy Award nomination, 2007",4,3,65,C,33000
+455,Paul Haggis,episode-director,"An Academy Award nomination, 2006",4,3,65,C,33000
+64194,Paweł Pawlikowski,episode-director,"An Academy Award nomination, 2019",4,3,65,C,33000
+309,Pedro Almodóvar,episode-director,"An Academy Award nomination, 2003",4,3,65,C,33000
+39012,Peter Bogdanovich,episode-director,"An Academy Award nomination, 1972",4,3,65,C,33000
+57630,Peter Cattaneo,episode-director,"An Academy Award nomination, 1998",4,3,65,C,33000
+86659,Peter Glenville,episode-director,"An Academy Award nomination, 1965",4,3,65,C,33000
+95040,Pietro Germi,episode-director,"An Academy Award nomination, 1963",4,3,65,C,33000
+21806,Richard Rush,episode-director,"An Academy Award nomination, 1981",4,3,65,C,33000
+5029,Robert Siodmak,episode-director,"An Academy Award nomination, 1947",4,3,65,C,33000
+5834,Robert Stevenson,episode-director,"An Academy Award nomination, 1965",4,3,65,C,33000
+4818,Roberto Benigni,episode-director,"An Academy Award nomination, 1999",4,3,65,C,33000
+56370,Ruben Östlund,episode-director,"An Academy Award nomination, 2023",4,3,65,C,33000
 1529473,Russ Saunders,episode-director,"An Academy Award nomination, 1938",4,3,65,C,33000
+1487492,Ryusuke Hamaguchi,episode-director,"An Academy Award nomination, 2022",4,3,65,C,33000
+33433,Scott Hicks,episode-director,"An Academy Award nomination, 1997",4,3,65,C,33000
 1008625,Sherry Shourds,episode-director,"An Academy Award nomination, 1936",4,3,65,C,33000
+42060,Sidney Franklin,episode-director,"An Academy Award nomination, 1938",4,3,65,C,33000
+1769,Sofia Coppola,episode-director,"An Academy Award nomination, 2004",4,3,65,C,33000
+5953,Spike Jonze,episode-director,"An Academy Award nomination, 2000",4,3,65,C,33000
+5281,Spike Lee,episode-director,"An Academy Award nomination, 2019",4,3,65,C,33000
+72757,Steve McQueen,episode-director,"An Academy Award nomination, 2014",4,3,65,C,33000
+18596,Taylor Hackford,episode-director,"An Academy Award nomination, 2005",4,3,65,C,33000
 1249775,Ted Wilde,episode-director,"An Academy Award nomination, 1929",4,3,65,C,33000
+4453,Thomas Vinterberg,episode-director,"An Academy Award nomination, 2021",4,3,65,C,33000
+504,Tim Robbins,episode-director,"An Academy Award nomination, 1996",4,3,65,C,33000
+5010,Todd Field,episode-director,"An Academy Award nomination, 2023",4,3,65,C,33000
+57130,Todd Phillips,episode-director,"An Academy Award nomination, 2020",4,3,65,C,33000
+17867,Tom McCarthy,episode-director,"An Academy Award nomination, 2016",4,3,65,C,33000
+19242,Tony Gilroy,episode-director,"An Academy Award nomination, 2008",4,3,65,C,33000
 16960,Valerie Faris,episode-director,"An Independent Spirit Award win, 2007",4,3,65,C,33000
+148849,Victor Schertzinger,episode-director,"An Academy Award nomination, 1935",4,3,65,C,33000
+80570,Walter Lang,episode-director,"An Academy Award nomination, 1957",4,3,65,C,33000
+5655,Wes Anderson,episode-director,"An Academy Award nomination, 2015",4,3,65,C,33000
+21311,Wesley Ruggles,episode-director,"An Academy Award nomination, 1931",4,3,65,C,33000
+49214,William Dieterle,episode-director,"An Academy Award nomination, 1938",4,3,65,C,33000
 1354030,William J. Reiter,episode-director,"An Academy Award nomination, 1934",4,3,65,C,33000
+5231,Wolfgang Petersen,episode-director,"An Academy Award nomination, 1983",4,3,65,C,33000
 76624,Shane Carruth,episode-director,"2 Independent Spirit Award nominations, 2005 to 2014",3.2,3,62,C,28480
 66605,Todd Solondz,episode-director,"2 Independent Spirit Award nominations, 1997 to 1999",3.2,3,62,C,28480
 138322,Victor Nuñez,episode-director,"2 Independent Spirit Award nominations, 1994 to 1998",3.2,3,62,C,28480
@@ -2469,18 +2965,13 @@ tmdb_person,name,job,recognition (Wikidata),weight,experience,capability,grade,a
 1002647,Cédric Jiménez,episode-director,"A César nomination, 2023",2,3,57,C,22050
 17520,Cédric Klapisch,episode-director,"A César nomination, 2023",2,3,57,C,22050
 3200,Christine Pascal,episode-director,"A César nomination, 1993",2,3,57,C,22050
-1383612,Dan Kwan,episode-director,"A Golden Globe nomination, 2023",2,3,57,C,22050
-1317730,Daniel Scheinert,episode-director,"A Golden Globe nomination, 2023",2,3,57,C,22050
 23945,Gérard Pirès,episode-director,"A César nomination, 1999",2,3,57,C,22050
-18669,J. Lee Thompson,episode-director,"A Golden Globe nomination, 1961",2,3,57,C,22050
 24882,Jacques Demy,episode-director,"A César nomination, 1983",2,3,57,C,22050
 73153,Jacques Rivette,episode-director,"A César nomination, 1992",2,3,57,C,22050
 17386,Laurent Cantet,episode-director,"A César nomination, 2009",2,3,57,C,22050
 16269,Louis Garrel,episode-director,"A César nomination, 2023",2,3,57,C,22050
 64210,Maïwenn,episode-director,"A César nomination, 2012",2,3,57,C,22050
-54472,Martin McDonagh,episode-director,"A Golden Globe nomination, 2023",2,3,57,C,22050
 8789,Mathieu Amalric,episode-director,"A César nomination, 2011",2,3,57,C,22050
-9054,Mervyn LeRoy,episode-director,"A Golden Globe nomination, 1962",2,3,57,C,22050
 41788,Nicolas Philibert,episode-director,"A César nomination, 2003",2,3,57,C,22050
 49168,Noémie Lvovsky,episode-director,"A César nomination, 2013",2,3,57,C,22050
 21678,Olivier Assayas,episode-director,"A César nomination, 2011",2,3,57,C,22050
@@ -2490,7 +2981,6 @@ tmdb_person,name,job,recognition (Wikidata),weight,experience,capability,grade,a
 32012,Robert Enrico,episode-director,"A César nomination, 1976",2,3,57,C,22050
 5069,Robert Guédiguian,episode-director,"A César nomination, 1998",2,3,57,C,22050
 62531,Valérie Lemercier,episode-director,"A César nomination, 2022",2,3,57,C,22050
-223516,Benh Zeitlin,episode-director,"An Independent Spirit Award nomination, 2013",1.6,3,55,C,20030
 232937,Cheryl Dunye,episode-director,"An Independent Spirit Award nomination, 2002",1.6,3,55,C,20030
 64131,Courtney Hunt,episode-director,"An Independent Spirit Award nomination, 2009",1.6,3,55,C,20030
 121873,Debra Granik,episode-director,"An Independent Spirit Award nomination, 2011",1.6,3,55,C,20030
@@ -4785,6 +5275,7 @@ tmdb_person,name,job,recognition (Wikidata),weight,experience,capability,grade,a
 1354908,Nara Kollery,re-recording-mixer,"A César win, 1976",5,3,68,C,1190
 1779701,Nicolas Moreau,re-recording-mixer,"A César win, 2018",5,3,68,C,1190
 1367649,Paul Heymans,re-recording-mixer,"A César win, 2022",5,3,68,C,1190
+22320,Pierre Excoffier,re-recording-mixer,"A César win, 2010",5,3,68,C,1190
 1611816,Al Overton,re-recording-mixer,"An Academy Award nomination, 1972",4,3,65,C,1110
 1368865,Alan Robert Murray,re-recording-mixer,"An Academy Award nomination, 2020",4,3,65,C,1110
 1117303,Alan Splet,re-recording-mixer,"An Academy Award nomination, 1984",4,3,65,C,1110
@@ -5640,6 +6131,7 @@ tmdb_person,name,job,recognition (Wikidata),weight,experience,capability,grade,a
 1354908,Nara Kollery,sound-designer,"A César win, 1976",5,3,68,C,1010
 1779701,Nicolas Moreau,sound-designer,"A César win, 2018",5,3,68,C,1010
 1367649,Paul Heymans,sound-designer,"A César win, 2022",5,3,68,C,1010
+22320,Pierre Excoffier,sound-designer,"A César win, 2010",5,3,68,C,1010
 1404716,Aaron Glascock,sound-designer,"An Academy Award nomination, 2015",4,3,65,C,940
 1360103,Addison Teague,sound-designer,"An Academy Award nomination, 2011",4,3,65,C,940
 1611816,Al Overton,sound-designer,"An Academy Award nomination, 1972",4,3,65,C,940
@@ -6038,6 +6530,7 @@ tmdb_person,name,job,recognition (Wikidata),weight,experience,capability,grade,a
 1354908,Nara Kollery,sound-mixer,"A César win, 1976",5,3,68,C,1010
 1779701,Nicolas Moreau,sound-mixer,"A César win, 2018",5,3,68,C,1010
 1367649,Paul Heymans,sound-mixer,"A César win, 2022",5,3,68,C,1010
+22320,Pierre Excoffier,sound-mixer,"A César win, 2010",5,3,68,C,1010
 1611816,Al Overton,sound-mixer,"An Academy Award nomination, 1972",4,3,65,C,940
 1368865,Alan Robert Murray,sound-mixer,"An Academy Award nomination, 2020",4,3,65,C,940
 1117303,Alan Splet,sound-mixer,"An Academy Award nomination, 1984",4,3,65,C,940

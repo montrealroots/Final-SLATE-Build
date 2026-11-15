@@ -2,7 +2,7 @@
 import { readFileSync } from 'node:fs';
 import { describe, expect, it } from 'vitest';
 import { applyRecognition, capabilityFrom, describeStanding, filmFeeFrom, recognisedIn, standingOf, FEE_CEILING } from '../src/engine/recognition';
-import { crewAskFrom, scoreFeeFrom, songFeeFrom, SCORE_DAYS, SONG_DAYS } from '../src/engine/recognition-pay';
+import { crewAskFrom, scoreFeeFrom, scriptFeeFrom, songFeeFrom, DIRECT_DAYS, SCORE_DAYS, SCRIPT_DAYS, SONG_DAYS } from '../src/engine/recognition-pay';
 import { agreementFor, performerMinimum } from '../src/engine/union';
 import { gradeFrom, gradeScore } from '../src/engine/grades';
 
@@ -96,5 +96,17 @@ describe('a songwriter\'s fee', () => {
     expect(songFeeFrom(elton) ).toBeGreaterThan(100_000); // "$100,000-plus for established writers"
     expect(crewAskFrom('songwriter', 5, elton) * SONG_DAYS).toBeGreaterThan(100_000);
     expect(crewAskFrom('songwriter', 5, 0)).toBe(810); // $500 a day at the most experience, with nothing recognised
+  });
+});
+
+describe('a director\'s and a writer\'s fee', () => {
+  // Until November 15, 2026 Steven Spielberg directed a feature for about $250,000 and Aaron Sorkin wrote one for $70,000.
+  it('a recognised director asks a feature\'s fee over its shoot, a recognised writer a script\'s over its draft', () => {
+    const spielberg = standingOf(488, 'episode-director', 2026)!.points;
+    expect(crewAskFrom('episode-director', 5, spielberg) * DIRECT_DAYS).toBeGreaterThan(10_000_000); // Ridley Scott: $10 to $12 million reported
+    const sorkin = standingOf(13520, 'co-writer', 2026)!.points;
+    expect(crewAskFrom('co-writer', 5, sorkin) * SCRIPT_DAYS).toBeGreaterThan(1_000_000); // "established movie scribes can make $1 million a script"
+    expect(scriptFeeFrom(0.1)).toBeGreaterThan(150_000); // never under the WGA's $173,215 by much, once recognised at all
+    expect(crewAskFrom('episode-director', 5, 0)).toBe(1460); // with nothing recognised, the job's rate for their experience
   });
 });
