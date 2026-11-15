@@ -8,11 +8,11 @@ journey that shows it there.
 
 | Kind | proven | carried | does not bite | no downstream effect | stale | not a feature | not yet proven | All |
 |---|---|---|---|---|---|---|---|---|
-| action | 144 | 0 | 0 | 3 | 0 | 13 | 0 | 160 |
+| action | 140 | 0 | 0 | 3 | 4 | 13 | 0 | 160 |
 | bank | 43 | 0 | 0 | 0 | 0 | 0 | 11 | 54 |
-| scheduled | 55 | 0 | 0 | 0 | 0 | 11 | 0 | 66 |
-| field | 36 | 13 | 0 | 0 | 0 | 0 | 256 | 305 |
-| all | 278 | 13 | 0 | 3 | 0 | 24 | 267 | 585 |
+| scheduled | 52 | 0 | 0 | 0 | 3 | 11 | 0 | 66 |
+| field | 77 | 13 | 0 | 0 | 0 | 6 | 209 | 305 |
+| all | 312 | 13 | 0 | 3 | 7 | 30 | 220 | 585 |
 
 ## Rows
 
@@ -163,11 +163,11 @@ journey that shows it there.
 | setSongPerformers | action | src/engine/song-actions.ts | not a feature |  | Names who sings a song, shown in the credits as "Song Performed By" (songs.ts) and in a casting note; a name, read only where it is shown. |
 | syncMusicTasks | action | src/engine/song-actions.ts | not a feature |  | Follows a song change with the work it now needs; the song changes are their own rows. |
 | syncSongTasks | action | src/engine/song-actions.ts | not a feature |  | Follows a song change with the work it now needs; the song changes are their own rows. |
-| addPlan | action | src/engine/state.ts | proven | plan-over-call (40 seeds) | lateDays +1; quality.direction -0.487 |
+| addPlan | action | src/engine/state.ts | stale | plan-over-call | measured before the code it reads last changed |
 | adoptPlace | action | src/engine/state.ts | not a feature |  | Makes a chosen place known to the world; the place field that chose it is the row. |
-| cancelPlan | action | src/engine/state.ts | proven | cancel-plan (40 seeds) | lateDays -1; quality.direction +0.688 |
-| startSleep | action | src/engine/state.ts | proven | sleep-through-call (40 seeds) | lateDays +1; quality.direction -0.775; overall -0.25 |
-| travelTo | action | src/engine/state.ts | proven | travel-away (40 seeds) | lateDays +3.8; quality.direction -1.875; overall -0.662 |
+| cancelPlan | action | src/engine/state.ts | stale | cancel-plan | measured before the code it reads last changed |
+| startSleep | action | src/engine/state.ts | stale | sleep-through-call | measured before the code it reads last changed |
+| travelTo | action | src/engine/state.ts | stale | travel-away | measured before the code it reads last changed |
 | chooseTake | action | src/engine/takes-actions.ts | proven | weakest-takes (40 seeds) | weakTakes +0.975; quality.direction -0.75; overall -0.25; reception -0.25 |
 | setShotPlan | action | src/engine/takes-actions.ts | proven | full-coverage (40 seeds) | setups +6; shootDays +25.775; spent +84311.5; quality.direction +2.213; overall +1.063 |
 | formatDateKey | action | src/engine/time.ts | not a feature |  | Formats a date inside a change; not a decision. |
@@ -237,7 +237,7 @@ journey that shows it there.
 | agent-offer-lapse | scheduled | src/engine/representation.ts | proven | off-agent-offer-lapse (40 seeds) | represented -1; viaAgent -40.9; jobsOffered -41.125 |
 | agent-renewal | scheduled | src/engine/representation.ts | proven | agent-renew (40 seeds) | renewals +3; represented +1; viaAgent +14.05; jobsOffered +14.025; jobPay +68621.175; money +69897.8 |
 | agent-term-end | scheduled | src/engine/representation.ts | proven | agent-renew (40 seeds) | renewals +3; represented +1; viaAgent +14.05; jobsOffered +14.025; jobPay +68621.175; money +69897.8 |
-| arrive | scheduled | src/engine/state.ts | proven | travel-away (40 seeds) | lateDays +3.8; quality.direction -1.875; overall -0.662 |
+| arrive | scheduled | src/engine/state.ts | stale | travel-away | measured before the code it reads last changed |
 | audience-week | scheduled | src/engine/distribution.ts | proven | off-audience-week (40 seeds) | renewalWait +55.275; renewed -0.425 |
 | audition | scheduled | src/engine/auditions.ts | proven | audition (40 seeds) | readsSeen +14.8; castCapability +9.113; performance +7.469; overall +2.488; castRates +236.75 |
 | birthday | scheduled | src/engine/state.ts | not a feature |  | A notice: it tells the player their age has changed. Age itself is read from the birth date wherever it matters (casting, licences), never from this event; switched off, nothing else changed (docs/v10/proof/off-birthday.json). |
@@ -282,7 +282,7 @@ journey that shows it there.
 | papers-passport | scheduled | src/engine/papers.ts | proven | recorded-passport (40 seeds) | passports +1; papersPaid +36.64 |
 | permit-decision | scheduled | src/engine/papers.ts | not a feature |  | Decides a work permit applied for before November 14, 2026, which older saves still hold (papers.ts "what older saves hold"); nothing in a new story schedules it, and permits now go through Your Papers (papers-decision). |
 | plan-reminder | scheduled | src/engine/state.ts | not a feature |  | A reminder in the log before a plan starts; the plan itself is proven (plan-over-call, cancel-plan), and the reminder decides nothing. |
-| plan-start | scheduled | src/engine/state.ts | proven | plan-over-call (40 seeds) | lateDays +1; quality.direction -0.487 |
+| plan-start | scheduled | src/engine/state.ts | stale | plan-over-call | measured before the code it reads last changed |
 | production-confirm | scheduled | src/engine/productions.ts | proven | off-production-confirm (100 seeds) | productionsChanged -1.37; jobsCancelled -0.06 |
 | production-release | scheduled | src/engine/productions.ts | proven | off-production-release (60 seeds) | productionResults -6.25; jobsOffered -0.133 |
 | release | scheduled | src/engine/finish.ts | proven | off-release (40 seeds) | released -2; revenue -94019.25; money -93319.4 |
@@ -294,7 +294,7 @@ journey that shows it there.
 | shoot-call | scheduled | src/engine/production/shoot.ts | proven | off-shoot-call (40 seeds) | lateDays -1; quality.direction +0.5 |
 | shoot-wrap | scheduled | src/engine/production/shoot.ts | proven | off-shoot-wrap (40 seeds) | delivered -2; revenue -136877; money -160305.616 |
 | studio-release | scheduled | src/engine/finish.ts | proven | off-studio-release (40 seeds) | released -8.925; gross -1919910 |
-| wake | scheduled | src/engine/state.ts | proven | off-wake (40 seeds) | lateDays +6.75; quality.direction -63.587; overall -58.75 |
+| wake | scheduled | src/engine/state.ts | stale | off-wake | measured before the code it reads last changed |
 | weather-check | scheduled | src/engine/production/shoot.ts | proven | off-weather-check (60 seeds) | lostDays +1.333; spent +2949 |
 | work-day | scheduled | src/engine/production/workday.ts | proven | off-work-day (40 seeds) | delivered -1.975; revenue -129840.75; money -152559.996 |
 | writing-day | scheduled | src/engine/writing-jobs.ts | proven | off-writing-day (40 seeds) | passesAccepted -1.875; quality.script -1.325 |
@@ -313,18 +313,18 @@ journey that shows it there.
 | "Day" | field | state.ts characterAge, observedBirthday | not yet proven |  |  |
 | "Year Of Birth" | field | state.ts characterAge, observedBirthday | not yet proven |  |  |
 | "Place Of Birth" | field | identity.ts citizenshipOf -> awards.ts nationality rules | not yet proven |  |  |
-| "Where You Live" | field | state.ts newGame; projects.ts createProject (base) | not yet proven |  |  |
+| "Where You Live" | field | state.ts newGame; projects.ts createProject (base) | proven | base-los-angeles (40 seeds) | lostDays -1.225; daysToDeliver -2.013 |
 | "Starting Date" | field | state.ts newGame | not yet proven |  |  |
 | "Starting Time" | field | state.ts newGame | not yet proven |  |  |
 | "Amount (US Dollars)" | field | personal.ts openInheritance, personalBalance, putInRefusal; cash/money.ts parseAmount | not yet proven |  |  |
 | "Describe Your Ethnicity" | field | identity.ts splitBackgrounds | not yet proven |  |  |
 | {o.name} | field | projects.ts createProject -> schedule.observances; schedule.ts isWorkingDay | not yet proven |  |  |
 | {`${languageName(l.code)} Proficiency`} | field | production/language.ts personLanguagesFit; casting-notes.ts fitNotes | not yet proven |  |  |
-| {`Hire The Rental House's Package On A Day The Kit Can't Serve (${money(housePackageFee(p))} A Day)`} | field | production/shoot.ts (a day the kit cannot serve); equipment.ts setPackageApproval | not yet proven |  |  |
-| "Film It In" | field | destinations.ts dayPlace, awayCosts, permitWork; production/shoot.ts runShootDay; production/schedule.ts scheduleShootDay | not yet proven |  |  |
+| {`Hire The Rental House's Package On A Day The Kit Can't Serve (${money(housePackageFee(p))} A Day)`} | field | production/shoot.ts (a day the kit cannot serve); equipment.ts setPackageApproval | proven | package-approval (40 seeds) | kitPostponed -729; lostDays -727.4; daysToDeliver +33.563; delivered +2; spent +49552.75 |
+| "Film It In" | field | destinations.ts dayPlace, awayCosts, permitWork; production/shoot.ts runShootDay; production/schedule.ts scheduleShootDay | proven | filmed-abroad (40 seeds) | filmedAway +6; spent +17781.9; daysToDeliver +10.85 |
 | "Kind Of Site" | field | destinations.ts kindFee, permitWork, underCover, noisyDay | not yet proven |  |  |
 | "Version" | field | versions.ts addVersion (named and unique); shown where the version is entered | not yet proven |  |  |
-| {sceneLabel(p, s)} | field | versions.ts versionScenes | not yet proven |  |  |
+| {sceneLabel(p, s)} | field | versions.ts versionScenes | proven | add-version (40 seeds) | versions +2; versionDays +1.925; spent +1174.5 |
 | {`${g.label}: ${g.reason}`} | field | edit-actions.ts requestPickups | not yet proven |  |  |
 | "Route" | field | finish.ts planRelease; awards.ts qualifying | not yet proven |  |  |
 | "Release Date" | field | finish.ts planRelease; awards.ts qualifying windows | not yet proven |  |  |
@@ -333,15 +333,15 @@ journey that shows it there.
 | "Episode Schedule" | field | episode-releases.ts presetDates; finish.ts planRelease | not yet proven |  |  |
 | "Episodes On The Premiere" | field | episode-releases.ts presetDates | not yet proven |  |  |
 | {`Episode ${i + 2}`} | field | episode-releases.ts episodeDateProblem; awards-rules.ts airing; awards.ts ruledReleaseFits | not yet proven |  |  |
-| {`New Date For Episode ${e.number}`} | field | episode-releases.ts setEpisodeDates; release-schedule.ts scheduleChangeEffects | not yet proven |  |  |
+| {`New Date For Episode ${e.number}`} | field | episode-releases.ts setEpisodeDates; release-schedule.ts scheduleChangeEffects | proven | episode-dates (40 seeds) | episodesMoved +2.8; renewalWait +49.35 |
 | "Project" | field | awards.ts checkEligibility | not yet proven |  |  |
 | "Episode To Enter" | field | awards-actions.ts submitEntry; finish.ts assessEpisode | not yet proven |  |  |
 | "Song To Enter" | field | awards-rules.ts songProblems | not yet proven |  |  |
 | "Version To Enter" | field | awards-actions.ts entrySnapshot | not yet proven |  |  |
 | {performerLabel(c)} | field | awards-actions.ts submitEntry | not yet proven |  |  |
-| {`What To Capture For ${name}`} | field | mocap.ts bookMocap, sessionCost | not yet proven |  |  |
+| {`What To Capture For ${name}`} | field | mocap.ts bookMocap, sessionCost | proven | book-body-only (20 seeds) | spent -4982.5; overall -0.475 |
 | {`Version In ${r.territories.map(countryName).join(', ')}`} | field | finish.ts setReleaseVersion, the release handler; distribution.ts territoriesReached, reportedGross | proven | release-dubbed (60 seeds) | dubbed +0.917; spent +4942; revenue +17728.75 |
-| "Development Money From The Deal" | field | first-look.ts drawDevelopment, developmentRefusal, repayTurnaround | not yet proven |  |  |
+| "Development Money From The Deal" | field | first-look.ts drawDevelopment, developmentRefusal, repayTurnaround | proven | draw-development (40 seeds) | developmentIn +48150; ownIn -48150 |
 | {s.label} | field | brief.ts fill | not yet proven |  |  |
 | {c.name} | field | brief.ts applyIdea | not yet proven |  |  |
 | {`Scene ${i + 1} | field | brief.ts applyIdea | not yet proven |  |  |
@@ -352,7 +352,7 @@ journey that shows it there.
 | "What They Must Do" | field | src/ideas/loglines.ts compose; brief.ts applyIdea | not yet proven |  |  |
 | "What It Costs" | field | src/ideas/loglines.ts compose; brief.ts applyIdea | not yet proven |  |  |
 | "Find A Composer, Artist Or Recording" | field | music-catalog.ts searchMusic | not yet proven |  |  |
-| "Their Role" | field | music-catalog.ts searchMusic | not yet proven |  |  |
+| "Their Role" | field | music-catalog.ts searchMusic | not a feature |  | A filter of the music catalog: it narrows who is listed (tests/music-catalog.test.ts::finds people by name and role). Choosing someone listed is the decision, and those are their own rows. |
 | "Music Spending Ceiling" | field | mandates.ts guideMePlan, runMandate, guideMeRefusal | not yet proven |  |  |
 | "Let The Composer's Themes Stand Without My Review" | field | cues.ts onThemesDone, themesGate; production/workday.ts | not yet proven |  |  |
 | "What Music It Has" | field | cues.ts proposeCues, scoreMinutes; production/tasks.ts (post:music, post:score-session) | not yet proven |  |  |
@@ -364,47 +364,47 @@ journey that shows it there.
 | "The Whole World" | field | music.ts holderFee, licence-answer (refusal odds, counteroffer), releaseLicenceRefusal | not yet proven |  |  |
 | "Countries, By Two-Letter Code" | field | music.ts holderFee, releaseLicenceRefusal | not yet proven |  |  |
 | "For How Long" | field | music.ts holderFee, agreeLicence (expiry), licence-expiry | proven | licence-years (40 seeds) | licenceYears +3.125; released +0.8 |
-| "Your Notes On The Themes" | field | cues.ts giveThemeNotes, themeTasks; song-actions.ts syncMusicTasks | not yet proven |  |  |
-| "Treat As An Adult In This Story" | field | guests.ts canApproach -> hiring.ts makeOffer, casting-calls.ts inviteRefusal | not yet proven |  |  |
-| "Consider Them For" | field | guests.ts considerFor -> hiring.ts candidatesFor | not yet proven |  |  |
+| "Your Notes On The Themes" | field | cues.ts giveThemeNotes, themeTasks; song-actions.ts syncMusicTasks | proven | theme-notes (40 seeds) | themeRounds +4; quality.music +4; spent +2664; daysToDeliver +3.65 |
+| "Treat As An Adult In This Story" | field | guests.ts canApproach -> hiring.ts makeOffer, casting-calls.ts inviteRefusal | proven | treat-as-adult (40 seeds) | realCast +1.85; castCapability -7.812; performance -6.656; castRates +322.75 |
+| "Consider Them For" | field | guests.ts considerFor -> hiring.ts candidatesFor | proven | consider-real (40 seeds) | realCast +1.725; castCapability -3.525; performance -2.744; castRates +556 |
 | "Title" | field | the calendar, reminders | carried | tests/foundation.test.ts::Advance stops at a reminder | A name or a record, carried to the calendar, reminders: it decides nothing by its nature. |
 | "Start Time" | field | state.ts addPlan | not yet proven |  |  |
 | "Length In Minutes" | field | production/schedule.ts planShootDays (your commitments) | not yet proven |  |  |
-| "Reminder" | field | state.ts addPlan (plan-reminder event) | not yet proven |  |  |
-| {`Day Rate For ${c.name}`} | field | hiring.ts resolveOffer | not yet proven |  |  |
+| "Reminder" | field | state.ts addPlan (plan-reminder event) | not a feature |  | When a plan's reminder comes: a notice, as its event is (scheduled:plan-reminder above). A plan you sleep through is marked missed, and nothing reads a missed plan. |
+| {`Day Rate For ${c.name}`} | field | hiring.ts resolveOffer | proven | offered-rate (40 seeds) | castRates -209.1; spent -1157.925; countersSeen +0.75 |
 | "What To Call It" | field | parts.ts partName: the Cast page, call sheets, offers, credits | not yet proven |  |  |
 | "Age In These Scenes (Optional)" | field | minors.ts minorFor (an uncast stage) | not yet proven |  |  |
 | {`Episode ${e}`} | field | parts.ts stageIn, partScenes; hiring.ts estimateDays | not yet proven |  |  |
-| {sceneLabel(p, s)} | field | parts.ts stageIn, castIn; production/shoot.ts; callsheet.ts; finish.ts | not yet proven |  |  |
+| {sceneLabel(p, s)} | field | parts.ts stageIn, castIn; production/shoot.ts; callsheet.ts; finish.ts | proven | add-stage (40 seeds) | stages +2; stageCast +2; performersCast +2; castRates +1578.75 |
 | {`Read ${who.name} With`} | field | auditions.ts pairChemistry | not yet proven |  |  |
 | {`Writer For Episode ${e.number}`} | field | finish.ts assessEpisode | not yet proven |  |  |
 | "Writer" | field | projects.ts assignEpisodeRole; finish.ts computeCredits, assessQuality | not yet proven |  |  |
-| {`Director For Episode ${e.number}`} | field | finish.ts assessEpisode; production/schedule.ts blocks | not yet proven |  |  |
+| {`Director For Episode ${e.number}`} | field | finish.ts assessEpisode; production/schedule.ts blocks | proven | episode-director (40 seeds) | directedByHire +1.8; quality.direction +3.763; overall +0.775; spent +6278.95 |
 | "Director" | field | production/shoot.ts onSetHires; finish.ts computeCredits, assessQuality | not yet proven |  |  |
-| "Production Start" | field | production/schedule.ts generatePlan | not yet proven |  |  |
+| "Production Start" | field | production/schedule.ts generatePlan | proven | plan-later (40 seeds) | firstShootDay +70; daysToDeliver +67.363 |
 | "Rehearsal Days" | field | production/shoot.ts; hiring.ts (booked days) | proven | rehearsal-days (40 seeds) | performance +5.188; overall +1.338; reception +2.038 |
 | "Stop-Motion Stages" | field | production/workday.ts | not yet proven |  |  |
-| "Render Nodes" | field | production/workday.ts | not yet proven |  |  |
+| "Render Nodes" | field | production/workday.ts | proven | render-nodes (40 seeds) | daysToDeliver +56.088; spent -1163; money -13166.901 |
 | "Six-Day Weeks" | field | production/schedule.ts isWorkingDay | proven | six-day-weeks (60 seeds) | daysToDeliver -3.608; spent +4676.5 |
 | "Shoot Episodes In Blocks" | field | production/schedule.ts | not yet proven |  |  |
-| "Work On Public Holidays" | field | production/schedule.ts isWorkingDay | not yet proven |  |  |
-| {`${c.name} Puppet Copies`} | field | production/schedule.ts; production/workday.ts | not yet proven |  |  |
-| {`Emphasis For ${sceneLabel(p, s)}`} | field | takes.ts; directing.ts | not yet proven |  |  |
-| {`Camera For ${sceneLabel(p, s)}`} | field | craft.ts craftTime, craftRoles, rigDayCost, takeSpread; takes.ts planTime, recordTakes | not yet proven |  |  |
-| {`Coverage For ${sceneLabel(p, s)}`} | field | takes.ts requiredSetups; production/shoot.ts | not yet proven |  |  |
-| {`Takes For ${sceneLabel(p, s)}`} | field | takes.ts setupTime | not yet proven |  |  |
+| "Work On Public Holidays" | field | production/schedule.ts isWorkingDay | proven | work-holidays (40 seeds) | daysToDeliver -7.325; spent +1735.125 |
+| {`${c.name} Puppet Copies`} | field | production/schedule.ts; production/workday.ts | proven | puppet-copies (40 seeds) | spent +30622.6; money +48586.309; daysToDeliver +21.338 |
+| {`Emphasis For ${sceneLabel(p, s)}`} | field | takes.ts; directing.ts | proven | emphasis-performances (40 seeds) | spent +183566.5; shootDays +34.4; money -188012.459 |
+| {`Camera For ${sceneLabel(p, s)}`} | field | craft.ts craftTime, craftRoles, rigDayCost, takeSpread; takes.ts planTime, recordTakes | proven | camera-moving (40 seeds) | spent +3189.5; ownIn +1900; overall -0.412 |
+| {`Coverage For ${sceneLabel(p, s)}`} | field | takes.ts requiredSetups; production/shoot.ts | proven | full-coverage (40 seeds) | setups +6; shootDays +25.775; spent +84311.5; quality.direction +2.213; overall +1.063 |
+| {`Takes For ${sceneLabel(p, s)}`} | field | takes.ts setupTime | proven | full-coverage (40 seeds) | setups +6; shootDays +25.775; spent +84311.5; quality.direction +2.213; overall +1.063 |
 | {`Site For ${place}`} | field | locations.ts | not yet proven |  |  |
 | {`Backup For ${place}`} | field | locations.ts | not yet proven |  |  |
 | "New Planned Budget (US Dollars)" | field | project-budget.ts setPlannedBudget, readiness | not yet proven |  |  |
 | "Why" | field | PlanViews.tsx Plan Revisions | carried | tests/v8-budget.test.ts::keeps 20,000 and 2,000,000 exactly | A name or a record, carried to PlanViews.tsx Plan Revisions: it decides nothing by its nature. |
 | "Change Financing Target" | field | finance.ts financeSummary, decide | proven | finance-target (40 seeds) | backerIn +38750; leftInProjects +32709.5; money -7180.28; revenue -9014.2 |
-| {`Ask The ${d.backer} For`} | field | negotiation.ts | not yet proven |  |  |
-| "Spending Ceiling" | field | mandates.ts guideMePlan, runMandate, guideMeRefusal | not yet proven |  |  |
+| {`Ask The ${d.backer} For`} | field | negotiation.ts | proven | better-terms (40 seeds) | asked +1.525; investorShare -0.14; investorIn -8925; ownIn +8925 |
+| "Spending Ceiling" | field | mandates.ts guideMePlan, runMandate, guideMeRefusal | proven | guide-me-writing (40 seeds) | writersHired +3.975; quality.script +2.163; overall +0.538; spent +2221 |
 | "Working Title" | field | everywhere a project is named | carried | e2e/title-input.spec.ts::a title typed, edited, cleared, pasted and submitted | A name or a record, carried to everywhere a project is named: it decides nothing by its nature. |
 | "Format" | field | projects.ts, production/tasks.ts, awards.ts | proven | format-feature (120 seeds) | revenue -6751.333; money -6632.466 |
 | "Medium" | field | production/tasks.ts buildTasks | proven | medium-animation (40 seeds) | shootDays -7.775; daysToDeliver -33.987; spent +284298.5; money -598133.265; revenue -128142.625 |
 | {medium === 'hybrid' ? 'Animation Technique For Animated Scenes' : 'Animation Technique'} | field | production/tasks.ts buildTasks | not yet proven |  |  |
-| "Animation Finish" | field | production/workday.ts (render hours per frame); estimate.ts | not yet proven |  |  |
+| "Animation Finish" | field | production/workday.ts (render hours per frame); estimate.ts | proven | animation-finish (40 seeds) | spent +182895.5; daysToDeliver -233.175; quality.craft -59.55; money -440523.007 |
 | "Episodes" | field | projects.ts; production/tasks.ts | not yet proven |  |  |
 | {episodic ? 'Target Minutes Per Episode' : 'Target Runtime In Minutes'} | field | awards.ts checkEligibility (running time); estimate.ts | proven | runtime-longer (40 seeds) | quality.script -1; overall -0.312; revenue -1413.75 |
 | ? | field | genres.ts composeGenres; script-effects.ts competesAs; finish.ts subtitlingCost | proven | genre-comedy (120 seeds) | reception -0.412; overall -0.279; gross -753.333; standing.writing -1 |
@@ -415,7 +415,7 @@ journey that shows it there.
 | ? | field | finish.ts subtitlingCost; awards.ts language rules | not yet proven |  |  |
 | "Story Setting Place" | field | projects.ts deriveRequirements; production/tasks.ts | not yet proven |  |  |
 | "Production Base" | field | production/schedule.ts isWorkingDay; weather.ts | proven | base-los-angeles (40 seeds) | lostDays -1.225; daysToDeliver -2.013 |
-| "Planned Budget (US Dollars)" | field | project-budget.ts setPlannedBudget, budgetPicture, plannedText; finance.ts financeSummary | not yet proven |  |  |
+| "Planned Budget (US Dollars)" | field | project-budget.ts setPlannedBudget, budgetPicture, plannedText; finance.ts financeSummary | proven | plan-budget (40 seeds) | target +80525; ownIn +10000; backerIn +70525; revenue -17844.95; money -19909.443 |
 | "Years That Pass In The Story" | field | sequel.ts continueProject | not yet proven |  |  |
 | {PLAN_ROUTES[r].label} | field | release-plan.ts setReleasePlan, proposalRefusal, selfRefusal; finish.ts festivalHold | proven | self-release-stores (40 seeds) | revenue +39593.75; money +36625.299; spent +2600 |
 | "Plan Territories" | field | release-plan.ts buyerValue, proposeLicence, selfCosts, releaseYourself | not yet proven |  |  |
@@ -451,7 +451,7 @@ journey that shows it there.
 | "Source Material" | field | awards-rules.ts (original or adapted screenplay) | not yet proven |  |  |
 | "Adapted From" | field | shown with the project | not yet proven |  |  |
 | "When It Is Set" | field | awards-rules.ts requirementProblems | not yet proven |  |  |
-| "Year It Is Set In" | field | looks.ts periodBand, projectBand; projects.ts deriveRequirements; production/tasks.ts buildTasks | not yet proven |  |  |
+| "Year It Is Set In" | field | looks.ts periodBand, projectBand; projects.ts deriveRequirements; production/tasks.ts buildTasks | proven | story-year (40 seeds) | spent +8786.75; money -26599.279; daysToDeliver +1.688 |
 | "The Look It Borrows" | field | the Creative Brief card | carried | tests/looks.test.ts::1986 made in 2026 is a period: research, and half as much costume work again; 2026 is neither; the look it borrows changes no work | A name or a record, carried to the Creative Brief card: it decides nothing by its nature. |
 | "Story Setting Place" | field | projects.ts deriveRequirements | not yet proven |  |  |
 | "Story Setting" | field | shown in the Story panel | carried | tests/script-effects.test.ts::briefs add no work | A name or a record, carried to shown in the Story panel: it decides nothing by its nature. |
@@ -483,12 +483,12 @@ journey that shows it there.
 | "Vehicles" | field | projects.ts deriveRequirements; production/tasks.ts | proven | scene-vehicles (40 seeds) | spent +3020.75; daysToDeliver +1.425 |
 | "Stunts" | field | projects.ts deriveRequirements; production/tasks.ts | proven | scene-stunts (40 seeds) | spent +66567; daysToDeliver +9.013 |
 | "Crowd Size" | field | production/rates.ts (crowd day rate) | proven | scene-crowd (60 seeds) | spent +51841.833; money -40560.91 |
-| "Crowd Makeup" | field | looks.ts chairMinutes, makeupDayCost; production/shoot.ts runShootDay | not yet proven |  |  |
-| "Extend The Crowd In Post" | field | looks.ts physicalCrowd, digitalCrowd; production/tasks.ts buildTasks; production/schedule.ts sceneLoad | not yet proven |  |  |
+| "Crowd Makeup" | field | looks.ts chairMinutes, makeupDayCost; production/shoot.ts runShootDay | proven | crowd-makeup (40 seeds) | spent +50493; ownIn +47175; overall -0.475 |
+| "Extend The Crowd In Post" | field | looks.ts physicalCrowd, digitalCrowd; production/tasks.ts buildTasks; production/schedule.ts sceneLoad | proven | crowd-digital (40 seeds) | spent -25755.75; money +31680.947; daysToDeliver +7.2 |
 | "Visual Effects" | field | projects.ts deriveRequirements; production/tasks.ts | proven | scene-vfx (40 seeds) | spent +43959.25; daysToDeliver +14.338 |
-| "Dance" | field | projects.ts deriveRequirements | not yet proven |  |  |
-| "Intimate Scene" | field | projects.ts deriveRequirements | not yet proven |  |  |
-| "Water Work" | field | projects.ts deriveRequirements | not yet proven |  |  |
+| "Dance" | field | projects.ts deriveRequirements | proven | scene-dance (40 seeds) | spent +11221.25; daysToDeliver +3.113 |
+| "Intimate Scene" | field | projects.ts deriveRequirements | proven | scene-intimacy (40 seeds) | spent +2244.5; hired +2; ownIn +675 |
+| "Water Work" | field | projects.ts deriveRequirements | proven | scene-water (40 seeds) | spent +3503.5; hired +2; ownIn +500 |
 | "Intentional Discontinuity" | field | projects.ts scriptIssues | not yet proven |  |  |
 | "Speaker" | field | projects.ts scriptIssues; finish.ts | not yet proven |  |  |
 | "Line" | field | script-explain.ts spokenMinutes (a guide only) | not yet proven |  |  |
@@ -543,15 +543,15 @@ journey that shows it there.
 | {sceneLabel(p, s)} | field | projects.ts splitCharacter | not yet proven |  |  |
 | "Name" | field | everywhere a part is named | carried | tests/scenes.test.ts::renaming changes the name everywhere it is shown | A name or a record, carried to everywhere a part is named: it decides nothing by its nature. |
 | "Role Size" | field | script-effects.ts castPlacement; hiring.ts | proven | lead-role-size (30 seeds) | leadEntries -2.967; actingDecided -2.967 |
-| "Entity" | field | projects.ts deriveRequirements; production/shoot.ts | not yet proven |  |  |
-| "Realized As" | field | projects.ts deriveRequirements; production/shoot.ts | not yet proven |  |  |
+| "Entity" | field | projects.ts deriveRequirements; production/shoot.ts | proven | lead-entity (40 seeds) | spent +17308.25; hired +2; ownIn +14725 |
+| "Realized As" | field | projects.ts deriveRequirements; production/shoot.ts | proven | lead-puppet (40 seeds) | spent +16263.75; daysToDeliver +2.513 |
 | "Puppet Face" | field | production/tasks.ts (sm:faces, sm:armature, sm:animation); rates.ts FACE_METHODS | not yet proven |  |  |
 | "Also Called" | field | shown with the part in casting | not yet proven |  |  |
 | "Pronouns" | field | script-explain.ts characterPronouns | not yet proven |  |  |
-| "Speaks" | field | production/language.ts personLanguagesFit | not yet proven |  |  |
+| "Speaks" | field | production/language.ts personLanguagesFit | proven | lead-speaks (40 seeds) | spent +2874; hired +2 |
 | "Awards Placement" | field | script-effects.ts castPlacement | not yet proven |  |  |
 | "Series Involvement" | field | hiring.ts estimateDays; finish.ts computeCredits | not yet proven |  |  |
-| {title(f)} | field | awards-rules.ts isNarrator; hiring.ts estimateDays | not yet proven |  |  |
+| {title(f)} | field | awards-rules.ts isNarrator; hiring.ts estimateDays | proven | lead-narrator (40 seeds) | spent +1491.25; daysToDeliver +1.863; ownIn +1100 |
 | {title(m)} | field | hiring.ts; production | not yet proven |  |  |
 | "What Kind Of Being" | field | shown to design and casting | not yet proven |  |  |
 | "Description" | field | script-explain.ts breakdownComplete | not yet proven |  |  |
@@ -564,24 +564,24 @@ journey that shows it there.
 | "How They Speak" | field | shown with the part | not yet proven |  |  |
 | "Makeup" | field | looks.ts makeupShare, makeupDayCost; production/tasks.ts buildTasks; production/schedule.ts groupShootDays; production/shoot.ts runShootDay; callsheet.ts callSheet; hiring.ts neededRoles | proven | lead-makeup (40 seeds) | spent +22088.75; money -40690.12; daysToDeliver +1.525 |
 | "Costume From" | field | looks.ts costumeCopies, wardrobeMismatch; production/tasks.ts buildTasks | proven | lead-costume (40 seeds) | spent +8563; daysToDeliver +4.525 |
-| "Appearance States" | field | looks.ts statesOf, costumeCopies; production/tasks.ts buildTasks | not yet proven |  |  |
+| "Appearance States" | field | looks.ts statesOf, costumeCopies; production/tasks.ts buildTasks | proven | lead-states (40 seeds) | spent +26120; money -53194.614; daysToDeliver +20.213 |
 | {`Names Of ${c.name}'s Looks`} | field | looks.ts statesOf, stateNames; brief.ts setLook | not yet proven |  |  |
 | "Format Family" | field | unscripted.ts buildTasks | not yet proven |  |  |
 | {c.name} | field | unscripted.ts decideCompetition | not yet proven |  |  |
 | "Leave Each Episode" | field | unscripted.ts decideCompetition | not yet proven |  |  |
 | {`Add Ethnicity For ${who}`} | field | hiring.ts sharedHeritages | not yet proven |  |  |
 | {`Add Nationality For ${who}`} | field | hiring.ts | not yet proven |  |  |
-| {i.label} | field | script-explain.ts; finish.ts outlet requirements | not yet proven |  |  |
-| "Age In Story" | field | story-age.ts storyAge; casting-notes.ts fitNotes; minors.ts minorFor | not yet proven |  |  |
+| {i.label} | field | script-explain.ts; finish.ts outlet requirements | proven | content-strong (40 seeds) | lateSlots +0.45; viewers -71800 |
+| "Age In Story" | field | story-age.ts storyAge; casting-notes.ts fitNotes; minors.ts minorFor | proven | lead-child (40 seeds) | spent +7616; daysToDeliver +8.325 |
 | "Up To" | field | story-age.ts storyAge; casting-notes.ts fitNotes | not yet proven |  |  |
-| "Advance To" | field | state.ts processUntil | not yet proven |  |  |
-| "Date" | field | state.ts processUntil | not yet proven |  |  |
-| "Time" | field | state.ts processUntil | not yet proven |  |  |
+| "Advance To" | field | state.ts processUntil | not a feature |  | How far to let the clock run. Time passing is the engine every proof plays a career through; what happens by a date is each system's own row, and Advance stopping for a plan or a call is tested (tests/foundation.test.ts::Advance stops at a reminder). |
+| "Date" | field | state.ts processUntil | not a feature |  | How far to let the clock run. Time passing is the engine every proof plays a career through; what happens by a date is each system's own row, and Advance stopping for a plan or a call is tested (tests/foundation.test.ts::Advance stops at a reminder). |
+| "Time" | field | state.ts processUntil | not a feature |  | How far to let the clock run. Time passing is the engine every proof plays a career through; what happens by a date is each system's own row, and Advance stopping for a plan or a call is tested (tests/foundation.test.ts::Advance stops at a reminder). |
 | "Wake Up" | field | state.ts startSleep | not yet proven |  |  |
 | "Set Wake Time" | field | state.ts startSleep | not yet proven |  |  |
 | "Hours Of Sleep" | field | state.ts startSleep | not yet proven |  |  |
 | "Set An Alarm" | field | state.ts snooze | not yet proven |  |  |
-| {`Replacement Place ${i + 1}`} | field | save.ts repairSave | not yet proven |  |  |
+| {`Replacement Place ${i + 1}`} | field | save.ts repairSave | not a feature |  | A repair of a save whose places can't be found: it puts a place where the save had one (tests/migration.test.ts::open after a repair that keeps a backup and changes only the places). Where you live, the decision a place makes, is proven by base-los-angeles. |
 | "Song Title" | field | everywhere a song is named | not yet proven |  |  |
 | "Where It Comes From" | field | songs.ts songTasks; awards-rules.ts songProblems | not yet proven |  |  |
 | "Lyrics" | field | songs.ts songTasks | not yet proven |  |  |
@@ -592,8 +592,8 @@ journey that shows it there.
 | "How It Plays" | field | awards-rules.ts songRuleProblem | not yet proven |  |  |
 | "Minutes It Plays" | field | awards-rules.ts songRuleProblem | not yet proven |  |  |
 | {`${c.name} Performs ${s.title}`} | field | casting-notes.ts fitNotes; songs.ts songCredits | not yet proven |  |  |
-| {`${v.label}: ${sceneLabel(p, sc)}, In Place Of "${song.title}"`} | field | song-actions.ts changeVersionSong | not yet proven |  |  |
-| {`${c.name} On Screen (Minutes)`} | field | screen-time.ts shareCheck | not yet proven |  |  |
+| {`${v.label}: ${sceneLabel(p, sc)}, In Place Of "${song.title}"`} | field | song-actions.ts changeVersionSong | proven | version-song (40 seeds) | songChanges +2; songTasks +4; spent +1872 |
+| {`${c.name} On Screen (Minutes)`} | field | screen-time.ts shareCheck | proven | record-screen-time (40 seeds) | screenRecords +12; screenEntries +1; screenDecided +1 |
 | {`${c.name} Heard Only (Minutes)`} | field | screen-time.ts screenTotal | not yet proven |  |  |
 | "Title For The New Project" | field | opportunities.ts acceptOpportunity | not yet proven |  |  |
 | {`What ${name}'s Revision Should Look At`} | field | WritingWork.tsx JobLine | not yet proven |  |  |
@@ -601,5 +601,5 @@ journey that shows it there.
 | {`Ask ${name} For`} | field | writing-jobs.ts writingTerms, acceptedRead | not yet proven |  |  |
 | {`Episode For ${name}`} | field | writing-jobs.ts writingTerms, acceptedRead | not yet proven |  |  |
 | {`Your Brief For ${name} (Optional)`} | field | WritingWork.tsx JobLine | carried | tests/writing-jobs.test.ts::the brief and the notes are kept as written and change nothing | A name or a record, carried to WritingWork.tsx JobLine: it decides nothing by its nature. |
-| "Put In From Your Own Money" | field | personal.ts putInOwnMoney, putInRefusal | not yet proven |  |  |
+| "Put In From Your Own Money" | field | personal.ts putInOwnMoney, putInRefusal | proven | own-money-or-backer (40 seeds) | ownIn -73300; backerDeals +2; revenue -66630.85 |
 | "Banner Name" | field | company.ts setBanner, productionCredit; FinishViews.tsx credits | not yet proven |  |  |
