@@ -8,7 +8,9 @@ import { submitEntry } from '../../../src/engine/awards-actions';
 import { editScenes } from '../../../src/engine/finish';
 import { addVersion } from '../../../src/engine/versions';
 import { ACTING, feature, short } from './script';
-import { kinds } from './awards-fields';
+import { HOUR, kinds } from './awards-fields';
+import { assignDirector, hireDirector } from './series';
+import { categoryRules } from '../../../src/engine/awards';
 
 /** Once picture is locked: the Short Cut, without the last scene. */
 const shortCut = () => { const made = new WeakSet<Project>(); return (s: GameState) => {
@@ -28,6 +30,25 @@ const enter = (asCut: boolean) => { const cut = shortCut(); const last = new Wea
   }
 }; };
 const LONG = short({ minutes: 16 });
+/** Weekly: each delivered season entered in every category it is eligible for; one-episode categories for `episode`. */
+const enterEpisode = (episode?: number) => { const last = new WeakMap<GameState, number>(); return (s: GameState) => {
+  assignDirector(s);
+  if (s.now - (last.get(s) ?? -Infinity) < 7 * 86_400_000) return;
+  last.set(s, s.now);
+  for (const p of s.projects.filter((x) => x.delivered && !x.shelved)) {
+    for (const ed of s.editions.filter((e) => e.status === 'open' && e.deadline > s.now)) for (const cat of categoriesFor(institution(ed.institutionId), ed.year)) {
+      const one = !!categoryRules(ed, cat.id, p)?.oneEpisode;
+      const ep = one ? episode : undefined;
+      if (ed.entries.some((e) => e.projectId === p.id && e.categoryId === cat.id) || !checkEligibility(s, p, ed, cat, undefined, undefined, ep).eligible) continue;
+      try { submitEntry(s, p, ed.id, cat.id, undefined, undefined, ep); } catch { /* its fee or form */ }
+    }
+  }
+}; };
+/** The one-episode entries: which episode each is for, and the score it was judged on. */
+const episodeEntries = (s: GameState) => {
+  const one = s.editions.flatMap((ed) => ed.entries.filter((e) => s.projects.some((p) => p.id === e.projectId && categoryRules(ed, e.categoryId, p)?.oneEpisode)));
+  return { ...kinds(s), oneEpisodeEntries: one.length, enteredEpisode: one.reduce((a, e) => a + (e.episode ?? 0), 0), episodeScore: one.length ? one.reduce((a, e) => a + (e.snapshot?.score ?? 0), 0) / one.length : 0 };
+};
 /** The feature, its friend placed in the lead categories too. */
 const twoLeads = (s: GameState, year: number): Project => { const p = feature()(s, year); p.characters.find((c) => c.name === 'Friend')!.awardPlacement = 'lead'; return p; };
 /** Weekly: each delivered film entered in every acting category it is eligible for; for the lead ones, the friend alone where `friendOnly`. */
@@ -61,4 +82,8 @@ export const PROBES: Probe[] = [
   // placed as a lead too, so both are in the lead categories: entered for the friend alone, rather than both.
   { id: 'performer-entry', features: ['field:FinishViews.tsx#{performerLabel(c)}#1'], decision: 'Enter the friend\'s performance alone in the lead categories, rather than the lead\'s and the friend\'s', reads: ['src/engine/awards-actions.ts#submitEntry', 'src/engine/awards-results.ts#playerScore'],
     seeds: 30, base: { years: 3, project: twoLeads, daily: enterActs(false) }, variant: { years: 3, project: twoLeads, daily: enterActs(true) }, measure: leadScores, bites: ['leadRecipients'], downstream: ['leadScore', 'leadHonours'] },
+  // A one-episode category judges the episode entered (awards-results.ts playerScore reads its own assessment): the
+  // American season's second episode directed by the most capable director hired for it, entered rather than the first.
+  { id: 'episode-entry', features: ['field:FinishViews.tsx#"Episode To Enter"#1'], decision: 'Enter the episode the hired director made, rather than the first', reads: ['src/engine/awards-actions.ts#submitEntry', 'src/engine/finish.ts#assessEpisodes', 'src/engine/awards-results.ts#playerScore'],
+    base: { ...HOUR(), decide: hireDirector, daily: enterEpisode(1) }, variant: { ...HOUR(), decide: hireDirector, daily: enterEpisode(2) }, measure: episodeEntries, bites: ['enteredEpisode'], downstream: ['episodeScore', 'selected'] },
 ];

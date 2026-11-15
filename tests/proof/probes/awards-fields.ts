@@ -44,7 +44,7 @@ export const kinds = (s: GameState) => {
 const film = (fn: (p: Project) => void = () => {}) => (s: GameState, year: number): Project => { const p = feature()(s, year); fn(p); return p; };
 /** The feature released by the career itself (career.ts: a digital release a fortnight after delivery), entered in everything. */
 /** A commissioned American season of two 45-minute episodes, streamed in the US, entered in everything; changed by `fn`. */
-const HOUR = (fn: (p: Project) => void = () => {}) => ({
+export const HOUR = (fn: (p: Project) => void = () => {}) => ({
   ...SERIES, years: 3, placeId: 'us-los-angeles', territories: ['US'], releaseRoute: 'streaming' as never,
   project: (s: GameState, year: number) => { const p = commission(s, unfunded(buildProject(s, { title: `Season ${year + 1}`, format: 'limited-series', medium: 'live-action', scenario: 'micro', genres: ['drama'], episodes: 2, runtime: 90 },
     [{ name: 'Mara', patch: { roleSize: 'lead' } }], [1, 2].flatMap((e) => [1, 2, 3].map((k) => ({ place: k === 2 ? 'Quay' : 'Pier', chars: ['Mara'], minutes: 15, extra: { episode: e } })))))); fn(p); return p; },

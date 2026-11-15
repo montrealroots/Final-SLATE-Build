@@ -11,8 +11,8 @@ journey that shows it there.
 | action | 144 | 0 | 0 | 3 | 0 | 13 | 0 | 160 |
 | bank | 43 | 0 | 0 | 0 | 0 | 0 | 11 | 54 |
 | scheduled | 55 | 0 | 0 | 0 | 0 | 11 | 0 | 66 |
-| field | 186 | 97 | 0 | 3 | 0 | 9 | 10 | 305 |
-| all | 428 | 97 | 0 | 6 | 0 | 33 | 21 | 585 |
+| field | 195 | 97 | 0 | 4 | 0 | 9 | 0 | 305 |
+| all | 437 | 97 | 0 | 7 | 0 | 33 | 11 | 585 |
 
 ## Rows
 
@@ -327,25 +327,25 @@ journey that shows it there.
 | {sceneLabel(p, s)} | field | versions.ts versionScenes | proven | add-version (40 seeds) | versions +2; versionDays +1.925; spent +1174.5 |
 | {`${g.label}: ${g.reason}`} | field | edit-actions.ts requestPickups | proven | pickup-scenes (40 seeds) | shootDays +5.05; spent +14911.5; daysToDeliver +3.75 |
 | "Route" | field | finish.ts planRelease; awards.ts qualifying | proven | release-route (40 seeds) | entries +31.65; entryFees +1959.5 |
-| "Release Date" | field | finish.ts planRelease; awards.ts qualifying windows | not yet proven |  |  |
+| "Release Date" | field | finish.ts planRelease; awards.ts qualifying windows | proven | release-date (40 seeds) | releaseDelay +166; entries +1.025; decided +0.925; entryFees +36 |
 | "Territory Code" | field | awards.ts; finish.ts | proven | release-in-us (40 seeds) | entries -2.35; entryFees -537.75; selected -0.525 |
-| "Which Cut" | field | finish.ts planRelease; music.ts releaseSongs, releaseLicenceRefusal | not yet proven |  |  |
+| "Which Cut" | field | finish.ts planRelease; music.ts releaseSongs, releaseLicenceRefusal | proven | which-cut (40 seeds) | released +1.375; usEntries +4.725; entries -22.175; decided -17.825 |
 | "Episode Schedule" | field | episode-releases.ts presetDates; finish.ts planRelease | proven | schedule-weekly (40 seeds) | emmyYears -1; decided -1; emmyEntries -1 |
 | "Episodes On The Premiere" | field | episode-releases.ts presetDates | proven | premiere-count (40 seeds) | emmyYears -1; decided -1; emmyEntries -1 |
 | {`Episode ${i + 2}`} | field | episode-releases.ts episodeDateProblem; awards-rules.ts airing; awards.ts ruledReleaseFits | proven | episode-date (40 seeds) | emmyYears -1; decided -0.975; emmyEntries -1 |
 | {`New Date For Episode ${e.number}`} | field | episode-releases.ts setEpisodeDates; release-schedule.ts scheduleChangeEffects | proven | episode-dates (40 seeds) | episodesMoved +2.8; renewalWait +49.35 |
-| "Project" | field | awards.ts checkEligibility | not yet proven |  |  |
-| "Episode To Enter" | field | awards-actions.ts submitEntry; finish.ts assessEpisode | not yet proven |  |  |
+| "Project" | field | awards.ts checkEligibility | proven | enter-awards (40 seeds) | entries +41.7; selected +4.9 |
+| "Episode To Enter" | field | awards-actions.ts submitEntry; finish.ts assessEpisode | proven | episode-entry (40 seeds) | enteredEpisode +4.35; episodeScore +4.843; selected +0.625 |
 | "Song To Enter" | field | awards-rules.ts songProblems | proven | song-to-enter (40 seeds) | songEntries +1; songDecided +1 |
-| "Version To Enter" | field | awards-actions.ts entrySnapshot | not yet proven |  |  |
-| {performerLabel(c)} | field | awards-actions.ts submitEntry | not yet proven |  |  |
+| "Version To Enter" | field | awards-actions.ts entrySnapshot | proven | version-entry (40 seeds) | entries +29.525; decided +20.95; entryFees +1138; selected +3.675 |
+| {performerLabel(c)} | field | awards-actions.ts submitEntry | proven | performer-entry (30 seeds) | leadRecipients -2.7; leadScore -4.978 |
 | {`What To Capture For ${name}`} | field | mocap.ts bookMocap, sessionCost | proven | book-body-only (20 seeds) | spent -4982.5; overall -0.475 |
 | {`Version In ${r.territories.map(countryName).join(', ')}`} | field | finish.ts setReleaseVersion, the release handler; distribution.ts territoriesReached, reportedGross | proven | release-dubbed (60 seeds) | dubbed +0.917; spent +4942; revenue +17728.75 |
 | "Development Money From The Deal" | field | first-look.ts drawDevelopment, developmentRefusal, repayTurnaround | proven | draw-development (40 seeds) | developmentIn +48150; ownIn -48150 |
 | {s.label} | field | shown in the idea's words: brief.ts fill | carried | tests/brief.test.ts::writes the player's names where the idea has slots, and its suggestions where they left them blank | A name or a record, carried to shown in the idea's words: brief.ts fill: it decides nothing by its nature. |
 | {c.name} | field | brief.ts applyIdea | proven | idea-characters (40 seeds) | ownIn +9600; daysToDeliver +6.1; spent +9581.25 |
 | {`Scene ${i + 1} | field | brief.ts applyIdea | proven | idea-scenes (40 seeds) | spent +40142.5; ownIn +18075; daysToDeliver +6.25 |
-| {`${b.intExt === 'EXT' ? 'Exterior' : 'Interior'} | field | brief.ts applyIdea; projects.ts addScene | not yet proven |  |  |
+| {`${b.intExt === 'EXT' ? 'Exterior' : 'Interior'} | field | brief.ts applyIdea; projects.ts addScene | proven | idea-beat (40 seeds) | shootDays +1.3; spent +10850.675; daysToDeliver +3.3 |
 | {`Keep My ${o.label}`} | field | brief.ts applyIdea | proven | idea-keep-tone (40 seeds) | chamber +2; spent +10287 |
 | "When It Starts" | field | shown as the logline it builds: src/ideas/loglines.ts compose; brief.ts applyIdea | carried | tests/ideas.test.ts::refuses parts that don't go together, and parts that aren't there | A name or a record, carried to shown as the logline it builds: src/ideas/loglines.ts compose; brief.ts applyIdea: it decides nothing by its nature. |
 | "Who It Happens To" | field | shown as the logline it builds: src/ideas/loglines.ts compose; brief.ts applyIdea | carried | tests/ideas.test.ts::refuses parts that don't go together, and parts that aren't there | A name or a record, carried to shown as the logline it builds: src/ideas/loglines.ts compose; brief.ts applyIdea: it decides nothing by its nature. |
@@ -566,9 +566,9 @@ journey that shows it there.
 | "Costume From" | field | looks.ts costumeCopies, wardrobeMismatch; production/tasks.ts buildTasks | proven | lead-costume (40 seeds) | spent +8563; daysToDeliver +4.525 |
 | "Appearance States" | field | looks.ts statesOf, costumeCopies; production/tasks.ts buildTasks | proven | lead-states (40 seeds) | spent +26120; money -53194.614; daysToDeliver +20.213 |
 | {`Names Of ${c.name}'s Looks`} | field | looks.ts statesOf, stateNames; brief.ts setLook | proven | looks-named (40 seeds) | spent +18892.25; ownIn +19250; daysToDeliver +13.038 |
-| "Format Family" | field | unscripted.ts buildTasks | not yet proven |  |  |
-| {c.name} | field | unscripted.ts decideCompetition | not yet proven |  |  |
-| "Leave Each Episode" | field | unscripted.ts decideCompetition | not yet proven |  |  |
+| "Format Family" | field | unscripted.ts unscriptedIssues, decideCompetition; awards-rules.ts requirementProblems | proven | format-competition (40 seeds) | results +6; leftNotes +6 |
+| {c.name} | field | unscripted.ts decideCompetition | no downstream effect | contestants (40 seeds) | moved: eliminated -2. Nothing outside the competition reads who competes: among enough contestants to last the episodes (unscripted.ts unscriptedIssues, which blocks approval with too few), it decides who can be eliminated and who wins, and one leaves each episode either way, so the later episodes' notes are the same. Too few, and the script can't be approved, which the career can't play (4 careers, November 15, 2026). |
+| "Leave Each Episode" | field | unscripted.ts decideCompetition | proven | leave-each (40 seeds) | eliminatedEarly +4; leftNotes +6 |
 | {`Add Ethnicity For ${who}`} | field | shown in casting: hiring.ts sharedHeritages | carried | tests/heritage.test.ts::a performer from the pool | A name or a record, carried to shown in casting: hiring.ts sharedHeritages: it decides nothing by its nature. |
 | {`Add Nationality For ${who}`} | field | shown in casting: hiring.ts | carried | tests/identity.test.ts::a version 6 save | A name or a record, carried to shown in casting: hiring.ts: it decides nothing by its nature. |
 | {i.label} | field | script-explain.ts; finish.ts outlet requirements | proven | content-strong (40 seeds) | lateSlots +0.45; viewers -71800 |
