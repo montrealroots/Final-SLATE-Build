@@ -38,7 +38,8 @@ const twoAnimators = (s: GameState, p: Project) => {
 
 export const PROBES: Probe[] = [
   { id: 'camera-moving', features: [P('{`Camera For ${sceneLabel(p, s)}`}')], decision: 'Shoot every scene on a moving camera', reads: ['src/engine/craft.ts#rigDayCost', 'src/engine/craft.ts#craftTime'],
-    variant: { decide: everyScene({ rig: 'moving' }) }, ...COST },
+    variant: { decide: everyScene({ rig: 'moving' }) }, // A moving camera's takes vary more (craft.ts takeSpread): it costs, and the film is a little worse for it.
+    bites: ['spent'], downstream: ['ownIn', 'overall'] },
   // A scene with no dialogue is shot as a master by default (takes.ts requiredSetups), so playing it in one shot asks for
   // nothing different; the emphasis on the performances adds a single on each part.
   { id: 'emphasis-performances', features: [P('{`Emphasis For ${sceneLabel(p, s)}`}')], decision: 'Put every scene\'s emphasis on the performances', reads: ['src/engine/takes.ts#requiredSetups'],

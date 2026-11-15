@@ -1,7 +1,8 @@
 {
  "id": "record-screen-time",
  "features": [
-  "action:screen-time.recordScreenTime"
+  "action:screen-time.recordScreenTime",
+  "field:WorkViews.tsx#{`${c.name} On Screen (Minutes)`}#1"
  ],
  "decision": "Record each performer's screen time from the locked cut",
  "reads": [

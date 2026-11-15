@@ -2,7 +2,8 @@
  "id": "consider-real",
  "features": [
   "action:guests.considerFor",
-  "action:guests.considerPerson"
+  "action:guests.considerPerson",
+  "field:PersonWork.tsx#\"Consider Them For\"#1"
  ],
  "decision": "Consider a performer from the film catalog with forty-five parts behind them for the lead, and offer it to them",
  "reads": [

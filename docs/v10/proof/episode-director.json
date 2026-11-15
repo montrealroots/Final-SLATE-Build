@@ -1,7 +1,8 @@
 {
  "id": "episode-director",
  "features": [
-  "action:projects.assignEpisodeRole"
+  "action:projects.assignEpisodeRole",
+  "field:PlanViews.tsx#{`Director For Episode ${e.number}`}#1"
  ],
  "decision": "Hire the best episode director and give them episode 2",
  "reads": [

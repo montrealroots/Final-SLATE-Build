@@ -1,7 +1,8 @@
 {
  "id": "plan-budget",
  "features": [
-  "action:project-budget.setPlannedBudget"
+  "action:project-budget.setPlannedBudget",
+  "field:Projects.tsx#\"Planned Budget (US Dollars)\"#1"
  ],
  "decision": "Plan twice the estimate before raising the money, half of it asked of backers",
  "reads": [

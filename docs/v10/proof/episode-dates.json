@@ -1,7 +1,8 @@
 {
  "id": "episode-dates",
  "features": [
-  "action:episode-releases.setEpisodeDates"
+  "action:episode-releases.setEpisodeDates",
+  "field:FinishViews.tsx#{`New Date For Episode ${e.number}`}#1"
  ],
  "decision": "Put a sold season's episodes out four weeks later than planned",
  "reads": [

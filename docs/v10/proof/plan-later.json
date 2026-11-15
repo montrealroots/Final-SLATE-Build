@@ -1,7 +1,8 @@
 {
  "id": "plan-later",
  "features": [
-  "action:production/schedule.generatePlan"
+  "action:production/schedule.generatePlan",
+  "field:PlanViews.tsx#\"Production Start\"#1"
  ],
  "decision": "Plan the shoot again to start two months later than first planned",
  "reads": [

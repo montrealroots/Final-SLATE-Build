@@ -1,7 +1,8 @@
 {
  "id": "treat-as-adult",
  "features": [
-  "action:guests.treatAsAdult"
+  "action:guests.treatAsAdult",
+  "field:PersonWork.tsx#\"Treat As An Adult In This Story\"#1"
  ],
  "decision": "Treat a catalog performer with no recorded birth date as an adult, and offer them the lead",
  "reads": [

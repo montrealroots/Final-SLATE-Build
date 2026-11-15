@@ -1,7 +1,9 @@
 {
  "id": "full-coverage",
  "features": [
-  "action:takes-actions.setShotPlan"
+  "action:takes-actions.setShotPlan",
+  "field:PlanViews.tsx#{`Coverage For ${sceneLabel(p, s)}`}#1",
+  "field:PlanViews.tsx#{`Takes For ${sceneLabel(p, s)}`}#1"
  ],
  "decision": "Shoot every scene with full coverage and many takes",
  "reads": [

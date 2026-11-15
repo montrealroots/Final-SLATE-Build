@@ -1,7 +1,8 @@
 {
  "id": "theme-notes",
  "features": [
-  "action:cues.giveThemeNotes"
+  "action:cues.giveThemeNotes",
+  "field:MusicTab.tsx#\"Your Notes On The Themes\"#1"
  ],
  "decision": "Give the composer two rounds of notes on the themes before approving them",
  "reads": [

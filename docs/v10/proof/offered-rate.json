@@ -1,7 +1,8 @@
 {
  "id": "offered-rate",
  "features": [
-  "action:hiring.makeOffer"
+  "action:hiring.makeOffer",
+  "field:PlanViews.tsx#{`Day Rate For ${c.name}`}#1"
  ],
  "decision": "Offer performers a little less than they ask (92%)",
  "reads": [

@@ -1,7 +1,8 @@
 {
  "id": "version-song",
  "features": [
-  "action:song-actions.changeVersionSong"
+  "action:song-actions.changeVersionSong",
+  "field:WorkViews.tsx#{`${v.label}: ${sceneLabel(p, sc)}, In Place Of \"${song.title}\"`}#1"
  ],
  "decision": "Play \"Second Light\" instead of \"First Light\" in the Festival Cut",
  "reads": [

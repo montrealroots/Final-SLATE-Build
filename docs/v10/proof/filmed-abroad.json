@@ -1,7 +1,8 @@
 {
  "id": "filmed-abroad",
  "features": [
-  "action:destinations.setFilmedAt"
+  "action:destinations.setFilmedAt",
+  "field:FilmedAt.tsx#\"Film It In\"#1"
  ],
  "decision": "Film every place in the script in Paris rather than at the London base",
  "reads": [

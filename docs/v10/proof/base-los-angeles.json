@@ -1,7 +1,8 @@
 {
  "id": "base-los-angeles",
  "features": [
-  "field:Projects.tsx#\"Production Base\"#1"
+  "field:Projects.tsx#\"Production Base\"#1",
+  "field:Creation.tsx#\"Where You Live\"#1"
  ],
  "decision": "Base the production in Los Angeles rather than London",
  "reads": [

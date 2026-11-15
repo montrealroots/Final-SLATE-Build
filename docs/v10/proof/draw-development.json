@@ -1,7 +1,8 @@
 {
  "id": "draw-development",
  "features": [
-  "action:first-look.drawDevelopment"
+  "action:first-look.drawDevelopment",
+  "field:FirstLook.tsx#\"Development Money From The Deal\"#1"
  ],
  "decision": "Put the first-look deal's development money into the short",
  "reads": [
