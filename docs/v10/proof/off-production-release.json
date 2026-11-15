@@ -64,6 +64,7 @@
   "won": 0,
   "decided": 0,
   "finalised": 0,
+  "backerBonus": 0.024,
   "screenings": 0,
   "offers": 5.75,
   "editionsOpen": 136.483,
@@ -76,6 +77,9 @@
   "jobsCancelled": 0.067,
   "overheadPaid": 0,
   "commissioned": 0,
+  "renewalWait": 0,
+  "renewed": 0,
+  "aired": 1.417,
   "productionResults": 6.25,
   "fired": 6.25
  },
@@ -135,6 +139,7 @@
   "won": 0,
   "decided": 0,
   "finalised": 0,
+  "backerBonus": 0.027,
   "screenings": 0,
   "offers": 5.767,
   "editionsOpen": 136.483,
@@ -147,6 +152,9 @@
   "jobsCancelled": 0.067,
   "overheadPaid": 0,
   "commissioned": 0,
+  "renewalWait": 0,
+  "renewed": 0,
+  "aired": 1.517,
   "productionResults": 0,
   "fired": 5.85
  },
@@ -536,6 +544,13 @@
    "changed": 0,
    "n": 60
   },
+  "backerBonus": {
+   "mean": 0.002,
+   "lo": 0,
+   "hi": 0.005,
+   "changed": 25,
+   "n": 60
+  },
   "screenings": {
    "mean": 0,
    "lo": 0,
@@ -620,6 +635,27 @@
    "changed": 0,
    "n": 60
   },
+  "renewalWait": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 60
+  },
+  "renewed": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 60
+  },
+  "aired": {
+   "mean": 0.1,
+   "lo": -0.013,
+   "hi": 0.213,
+   "changed": 12,
+   "n": 60
+  },
   "productionResults": {
    "mean": -6.25,
    "lo": -7.418,
@@ -658,6 +694,6 @@
  "verdict": "proven",
  "hashes": {
   "src/engine/productions.ts": "2da8ec3f85a0af0d",
-  "tests/proof/career.ts": "2d4877367212a0ea"
+  "tests/proof/career.ts": "50bea06f19a02c5b"
  }
 }

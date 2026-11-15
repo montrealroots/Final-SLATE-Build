@@ -458,7 +458,7 @@
  "hashes": {
   "src/engine/destinations.ts": "757a75ed90be18c3",
   "src/engine/production/shoot.ts": "891fa9e2b13b6e49",
-  "src/engine/production/schedule.ts": "65a8a82a6ef81225",
+  "src/engine/production/schedule.ts": "6a266533994741ab",
   "tests/proof/career.ts": "50bea06f19a02c5b"
  }
 }

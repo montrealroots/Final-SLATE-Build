@@ -7,67 +7,80 @@
  "reads": [
   "src/engine/hiring.ts#handler:offer-response"
  ],
- "seeds": 30,
+ "seeds": 40,
  "base": {
   "delivered": 2,
   "released": 2,
-  "reception": 58.483,
-  "overall": 58.867,
-  "gross": 60326.667,
-  "revenue": 127289.5,
-  "distributed": 1.733,
-  "money": 25070222.317,
-  "moneyChange": 70222.317,
-  "jobsTaken": 0.933,
-  "jobsOffered": 0.933,
-  "jobPay": 5011.133,
-  "offeredDayRate": 473.267,
-  "ownIn": 80900,
+  "reception": 58.95,
+  "overall": 58.738,
+  "gross": 85600,
+  "revenue": 124177.625,
+  "distributed": 1.725,
+  "money": 24767671.243,
+  "moneyChange": -232328.757,
+  "jobsTaken": 0.875,
+  "jobsOffered": 0.875,
+  "jobPay": 4416.6,
+  "offeredDayRate": 455.075,
+  "ownIn": 80750,
   "backerIn": 0,
   "backerDeals": 0,
   "leftInProjects": 0,
-  "jobsDone": 0.933,
+  "jobsDone": 0.875,
   "jobsWithdrawn": 0,
   "jobsDeclined": 0,
   "ratesAgreed": 0,
-  "logLines": 121.8,
+  "logLines": 120.6,
   "hired": 16,
-  "castRates": 3212,
-  "releaseDelay": 98.65,
+  "castRates": 3203,
+  "releaseDelay": 99.529,
   "licenceDeals": 0,
   "licenceFee": 0,
-  "offersDeclined": 0.4,
+  "offersDeclined": 0.5,
   "countersSeen": 0,
   "countersDeclined": 0,
-  "spent": 70241,
-  "shootDays": 7.967,
-  "lostDays": 1.967,
-  "daysToDeliver": 33.983,
+  "spent": 70337,
+  "shootDays": 7.9,
+  "lostDays": 1.9,
+  "daysToDeliver": 33.975,
   "quality.script": 48.5,
-  "quality.direction": 63.883,
-  "quality.craft": 59.867,
-  "quality.editing": 61.717,
-  "quality.music": 58.983,
+  "quality.direction": 63.975,
+  "quality.craft": 59.5,
+  "quality.editing": 61.663,
+  "quality.music": 57.488,
   "standing.writing": 50,
-  "standing.directing": 54.667,
+  "standing.directing": 54.7,
   "standing.acting": 50,
-  "standing.producing": 52.9,
+  "standing.producing": 53.05,
   "interestIn": 0,
   "interestOut": 0,
   "bankFees": 0,
   "owed": 0,
   "accounts": 1,
+  "worth": 18625288.774,
   "rewards": 0,
   "entries": 0,
   "selected": 0,
   "won": 0,
   "decided": 0,
-  "editionsOpen": 99.667,
+  "finalised": 0,
+  "backerBonus": 0.02,
+  "screenings": 0,
+  "offers": 3.45,
+  "editionsOpen": 99.65,
   "firstLookOffers": 0,
-  "opportunities": 0.267,
+  "opportunities": 0.35,
   "openOpportunities": 0,
   "openOffers": 0,
-  "productionResults": 3.333,
+  "industryStanding": 0.991,
+  "productionsChanged": 0.575,
+  "jobsCancelled": 0,
+  "overheadPaid": 0,
+  "commissioned": 0,
+  "renewalWait": 0,
+  "renewed": 0,
+  "aired": 0.8,
+  "productionResults": 3.15,
   "fired": 16
  },
  "variant": {
@@ -78,16 +91,16 @@
   "gross": 0,
   "revenue": 0,
   "distributed": 0,
-  "money": 24919096.017,
-  "moneyChange": -80903.983,
+  "money": 24620527.501,
+  "moneyChange": -379472.499,
   "jobsTaken": 0,
   "jobsOffered": 0,
   "jobPay": 0,
   "offeredDayRate": 0,
-  "ownIn": 80900,
+  "ownIn": 80750,
   "backerIn": 0,
   "backerDeals": 0,
-  "leftInProjects": 6899.333,
+  "leftInProjects": 6811.5,
   "jobsDone": 0,
   "jobsWithdrawn": 0,
   "jobsDeclined": 0,
@@ -119,16 +132,29 @@
   "bankFees": 0,
   "owed": 0,
   "accounts": 1,
+  "worth": 18514636.679,
   "rewards": 0,
   "entries": 0,
   "selected": 0,
   "won": 0,
   "decided": 0,
-  "editionsOpen": 99.667,
+  "finalised": 0,
+  "backerBonus": 0,
+  "screenings": 0,
+  "offers": 0,
+  "editionsOpen": 99.65,
   "firstLookOffers": 0,
   "opportunities": 0,
   "openOpportunities": 0,
   "openOffers": 0,
+  "industryStanding": 1,
+  "productionsChanged": 0,
+  "jobsCancelled": 0,
+  "overheadPaid": 0,
+  "commissioned": 0,
+  "renewalWait": 0,
+  "renewed": 0,
+  "aired": 0,
   "productionResults": 0,
   "fired": 16
  },
@@ -137,421 +163,512 @@
    "mean": -2,
    "lo": -2,
    "hi": -2,
-   "changed": 30,
-   "n": 30
+   "changed": 40,
+   "n": 40
   },
   "released": {
    "mean": -2,
    "lo": -2,
    "hi": -2,
-   "changed": 30,
-   "n": 30
+   "changed": 40,
+   "n": 40
   },
   "reception": {
-   "mean": -58.483,
-   "lo": -60.137,
-   "hi": -56.83,
-   "changed": 30,
-   "n": 30
+   "mean": -58.95,
+   "lo": -60.792,
+   "hi": -57.108,
+   "changed": 40,
+   "n": 40
   },
   "overall": {
-   "mean": -58.867,
-   "lo": -59.549,
-   "hi": -58.184,
-   "changed": 30,
-   "n": 30
+   "mean": -58.737,
+   "lo": -59.394,
+   "hi": -58.081,
+   "changed": 40,
+   "n": 40
   },
   "gross": {
-   "mean": -60326.667,
-   "lo": -93830.471,
-   "hi": -26822.862,
-   "changed": 11,
-   "n": 30
+   "mean": -85600,
+   "lo": -121424.381,
+   "hi": -49775.619,
+   "changed": 18,
+   "n": 40
   },
   "revenue": {
-   "mean": -127289.5,
-   "lo": -150997.286,
-   "hi": -103581.714,
-   "changed": 30,
-   "n": 30
+   "mean": -124177.625,
+   "lo": -146561.353,
+   "hi": -101793.897,
+   "changed": 40,
+   "n": 40
   },
   "distributed": {
-   "mean": -1.733,
-   "lo": -1.901,
-   "hi": -1.565,
-   "changed": 30,
-   "n": 30
+   "mean": -1.725,
+   "lo": -1.871,
+   "hi": -1.579,
+   "changed": 40,
+   "n": 40
   },
   "money": {
-   "mean": -151126.3,
-   "lo": -173845.866,
-   "hi": -128406.734,
-   "changed": 30,
-   "n": 30
+   "mean": -147143.742,
+   "lo": -168564.086,
+   "hi": -125723.398,
+   "changed": 40,
+   "n": 40
   },
   "moneyChange": {
-   "mean": -151126.3,
-   "lo": -173845.866,
-   "hi": -128406.734,
-   "changed": 30,
-   "n": 30
+   "mean": -147143.742,
+   "lo": -168564.086,
+   "hi": -125723.398,
+   "changed": 40,
+   "n": 40
   },
   "jobsTaken": {
-   "mean": -0.933,
-   "lo": -1.192,
-   "hi": -0.675,
-   "changed": 22,
-   "n": 30
+   "mean": -0.875,
+   "lo": -1.085,
+   "hi": -0.665,
+   "changed": 29,
+   "n": 40
   },
   "jobsOffered": {
-   "mean": -0.933,
-   "lo": -1.192,
-   "hi": -0.675,
-   "changed": 22,
-   "n": 30
+   "mean": -0.875,
+   "lo": -1.085,
+   "hi": -0.665,
+   "changed": 29,
+   "n": 40
   },
   "jobPay": {
-   "mean": -5011.133,
-   "lo": -6910.404,
-   "hi": -3111.863,
-   "changed": 22,
-   "n": 30
+   "mean": -4416.6,
+   "lo": -5979.329,
+   "hi": -2853.871,
+   "changed": 29,
+   "n": 40
   },
   "offeredDayRate": {
-   "mean": -473.267,
-   "lo": -594.974,
-   "hi": -351.559,
-   "changed": 22,
-   "n": 30
+   "mean": -455.075,
+   "lo": -555.465,
+   "hi": -354.685,
+   "changed": 29,
+   "n": 40
   },
   "ownIn": {
    "mean": 0,
    "lo": 0,
    "hi": 0,
    "changed": 0,
-   "n": 30
+   "n": 40
   },
   "backerIn": {
    "mean": 0,
    "lo": 0,
    "hi": 0,
    "changed": 0,
-   "n": 30
+   "n": 40
   },
   "backerDeals": {
    "mean": 0,
    "lo": 0,
    "hi": 0,
    "changed": 0,
-   "n": 30
+   "n": 40
   },
   "leftInProjects": {
-   "mean": 6899.333,
-   "lo": 6156.165,
-   "hi": 7642.502,
-   "changed": 30,
-   "n": 30
+   "mean": 6811.5,
+   "lo": 6246.446,
+   "hi": 7376.554,
+   "changed": 40,
+   "n": 40
   },
   "jobsDone": {
-   "mean": -0.933,
-   "lo": -1.192,
-   "hi": -0.675,
-   "changed": 22,
-   "n": 30
+   "mean": -0.875,
+   "lo": -1.085,
+   "hi": -0.665,
+   "changed": 29,
+   "n": 40
   },
   "jobsWithdrawn": {
    "mean": 0,
    "lo": 0,
    "hi": 0,
    "changed": 0,
-   "n": 30
+   "n": 40
   },
   "jobsDeclined": {
    "mean": 0,
    "lo": 0,
    "hi": 0,
    "changed": 0,
-   "n": 30
+   "n": 40
   },
   "ratesAgreed": {
    "mean": 0,
    "lo": 0,
    "hi": 0,
    "changed": 0,
-   "n": 30
+   "n": 40
   },
   "logLines": {
-   "mean": 278.2,
-   "lo": 273.432,
-   "hi": 282.968,
-   "changed": 30,
-   "n": 30
+   "mean": 279.4,
+   "lo": 275.678,
+   "hi": 283.122,
+   "changed": 40,
+   "n": 40
   },
   "hired": {
    "mean": -16,
    "lo": -16,
    "hi": -16,
-   "changed": 30,
-   "n": 30
+   "changed": 40,
+   "n": 40
   },
   "castRates": {
-   "mean": -3212,
-   "lo": -3252.681,
-   "hi": -3171.319,
-   "changed": 30,
-   "n": 30
+   "mean": -3203,
+   "lo": -3235.592,
+   "hi": -3170.408,
+   "changed": 40,
+   "n": 40
   },
   "releaseDelay": {
-   "mean": -98.65,
-   "lo": -105.843,
-   "hi": -91.457,
-   "changed": 30,
-   "n": 30
+   "mean": -99.529,
+   "lo": -106.924,
+   "hi": -92.135,
+   "changed": 40,
+   "n": 40
   },
   "licenceDeals": {
    "mean": 0,
    "lo": 0,
    "hi": 0,
    "changed": 0,
-   "n": 30
+   "n": 40
   },
   "licenceFee": {
    "mean": 0,
    "lo": 0,
    "hi": 0,
    "changed": 0,
-   "n": 30
+   "n": 40
   },
   "offersDeclined": {
-   "mean": -0.4,
-   "lo": -0.61,
-   "hi": -0.19,
-   "changed": 11,
-   "n": 30
+   "mean": -0.5,
+   "lo": -0.754,
+   "hi": -0.246,
+   "changed": 16,
+   "n": 40
   },
   "countersSeen": {
    "mean": 0,
    "lo": 0,
    "hi": 0,
    "changed": 0,
-   "n": 30
+   "n": 40
   },
   "countersDeclined": {
    "mean": 0,
    "lo": 0,
    "hi": 0,
    "changed": 0,
-   "n": 30
+   "n": 40
   },
   "spent": {
-   "mean": -70241,
-   "lo": -72978.976,
-   "hi": -67503.024,
-   "changed": 30,
-   "n": 30
+   "mean": -70337,
+   "lo": -72634.518,
+   "hi": -68039.482,
+   "changed": 40,
+   "n": 40
   },
   "shootDays": {
-   "mean": 727.033,
-   "lo": 726.176,
+   "mean": 727.1,
+   "lo": 726.309,
    "hi": 727.891,
-   "changed": 30,
-   "n": 30
+   "changed": 40,
+   "n": 40
   },
   "lostDays": {
-   "mean": 727.033,
-   "lo": 726.176,
+   "mean": 727.1,
+   "lo": 726.309,
    "hi": 727.891,
-   "changed": 30,
-   "n": 30
+   "changed": 40,
+   "n": 40
   },
   "daysToDeliver": {
-   "mean": -33.983,
-   "lo": -35.426,
-   "hi": -32.54,
-   "changed": 30,
-   "n": 30
+   "mean": -33.975,
+   "lo": -35.3,
+   "hi": -32.65,
+   "changed": 40,
+   "n": 40
   },
   "quality.script": {
    "mean": -48.5,
    "lo": -48.5,
    "hi": -48.5,
-   "changed": 30,
-   "n": 30
+   "changed": 40,
+   "n": 40
   },
   "quality.direction": {
-   "mean": -63.883,
-   "lo": -65.354,
-   "hi": -62.413,
-   "changed": 30,
-   "n": 30
+   "mean": -63.975,
+   "lo": -65.321,
+   "hi": -62.629,
+   "changed": 40,
+   "n": 40
   },
   "quality.craft": {
-   "mean": -59.867,
-   "lo": -60.994,
-   "hi": -58.739,
-   "changed": 30,
-   "n": 30
+   "mean": -59.5,
+   "lo": -60.473,
+   "hi": -58.527,
+   "changed": 40,
+   "n": 40
   },
   "quality.editing": {
-   "mean": -61.717,
-   "lo": -64.408,
-   "hi": -59.025,
-   "changed": 30,
-   "n": 30
+   "mean": -61.662,
+   "lo": -63.922,
+   "hi": -59.403,
+   "changed": 40,
+   "n": 40
   },
   "quality.music": {
-   "mean": -58.983,
-   "lo": -62.095,
-   "hi": -55.871,
-   "changed": 30,
-   "n": 30
+   "mean": -57.487,
+   "lo": -60.225,
+   "hi": -54.75,
+   "changed": 40,
+   "n": 40
   },
   "standing.writing": {
    "mean": 0,
    "lo": 0,
    "hi": 0,
    "changed": 0,
-   "n": 30
+   "n": 40
   },
   "standing.directing": {
-   "mean": -4.667,
-   "lo": -5.16,
-   "hi": -4.173,
-   "changed": 30,
-   "n": 30
+   "mean": -4.7,
+   "lo": -5.158,
+   "hi": -4.242,
+   "changed": 40,
+   "n": 40
   },
   "standing.acting": {
    "mean": 0,
    "lo": 0,
    "hi": 0,
    "changed": 0,
-   "n": 30
+   "n": 40
   },
   "standing.producing": {
-   "mean": -2.9,
-   "lo": -3.449,
-   "hi": -2.351,
-   "changed": 29,
-   "n": 30
+   "mean": -3.05,
+   "lo": -3.662,
+   "hi": -2.438,
+   "changed": 37,
+   "n": 40
   },
   "interestIn": {
    "mean": 0,
    "lo": 0,
    "hi": 0,
    "changed": 0,
-   "n": 30
+   "n": 40
   },
   "interestOut": {
    "mean": 0,
    "lo": 0,
    "hi": 0,
    "changed": 0,
-   "n": 30
+   "n": 40
   },
   "bankFees": {
    "mean": 0,
    "lo": 0,
    "hi": 0,
    "changed": 0,
-   "n": 30
+   "n": 40
   },
   "owed": {
    "mean": 0,
    "lo": 0,
    "hi": 0,
    "changed": 0,
-   "n": 30
+   "n": 40
   },
   "accounts": {
    "mean": 0,
    "lo": 0,
    "hi": 0,
    "changed": 0,
-   "n": 30
+   "n": 40
+  },
+  "worth": {
+   "mean": -110652.096,
+   "lo": -126760.194,
+   "hi": -94543.997,
+   "changed": 40,
+   "n": 40
   },
   "rewards": {
    "mean": 0,
    "lo": 0,
    "hi": 0,
    "changed": 0,
-   "n": 30
+   "n": 40
   },
   "entries": {
    "mean": 0,
    "lo": 0,
    "hi": 0,
    "changed": 0,
-   "n": 30
+   "n": 40
   },
   "selected": {
    "mean": 0,
    "lo": 0,
    "hi": 0,
    "changed": 0,
-   "n": 30
+   "n": 40
   },
   "won": {
    "mean": 0,
    "lo": 0,
    "hi": 0,
    "changed": 0,
-   "n": 30
+   "n": 40
   },
   "decided": {
    "mean": 0,
    "lo": 0,
    "hi": 0,
    "changed": 0,
-   "n": 30
+   "n": 40
+  },
+  "finalised": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 40
+  },
+  "backerBonus": {
+   "mean": -0.02,
+   "lo": -0.029,
+   "hi": -0.012,
+   "changed": 37,
+   "n": 40
+  },
+  "screenings": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 40
+  },
+  "offers": {
+   "mean": -3.45,
+   "lo": -3.883,
+   "hi": -3.017,
+   "changed": 40,
+   "n": 40
   },
   "editionsOpen": {
    "mean": 0,
    "lo": 0,
    "hi": 0,
    "changed": 0,
-   "n": 30
+   "n": 40
   },
   "firstLookOffers": {
    "mean": 0,
    "lo": 0,
    "hi": 0,
    "changed": 0,
-   "n": 30
+   "n": 40
   },
   "opportunities": {
-   "mean": -0.267,
-   "lo": -0.461,
-   "hi": -0.072,
-   "changed": 7,
-   "n": 30
+   "mean": -0.35,
+   "lo": -0.551,
+   "hi": -0.149,
+   "changed": 11,
+   "n": 40
   },
   "openOpportunities": {
    "mean": 0,
    "lo": 0,
    "hi": 0,
    "changed": 0,
-   "n": 30
+   "n": 40
   },
   "openOffers": {
    "mean": 0,
    "lo": 0,
    "hi": 0,
    "changed": 0,
-   "n": 30
+   "n": 40
+  },
+  "industryStanding": {
+   "mean": 0.009,
+   "lo": -0.023,
+   "hi": 0.042,
+   "changed": 19,
+   "n": 40
+  },
+  "productionsChanged": {
+   "mean": -0.575,
+   "lo": -0.827,
+   "hi": -0.323,
+   "changed": 16,
+   "n": 40
+  },
+  "jobsCancelled": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 40
+  },
+  "overheadPaid": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 40
+  },
+  "commissioned": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 40
+  },
+  "renewalWait": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 40
+  },
+  "renewed": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 40
+  },
+  "aired": {
+   "mean": -0.8,
+   "lo": -1.022,
+   "hi": -0.578,
+   "changed": 26,
+   "n": 40
   },
   "productionResults": {
-   "mean": -3.333,
-   "lo": -4.418,
-   "hi": -2.249,
-   "changed": 19,
-   "n": 30
+   "mean": -3.15,
+   "lo": -4.086,
+   "hi": -2.214,
+   "changed": 25,
+   "n": 40
   },
   "fired": {
    "mean": 0,
    "lo": 0,
    "hi": 0,
    "changed": 0,
-   "n": 30
+   "n": 40
   }
  },
  "bites": [
@@ -572,7 +689,7 @@
  ],
  "verdict": "proven",
  "hashes": {
-  "src/engine/hiring.ts": "44670769ecbe1ee9",
-  "tests/proof/career.ts": "2d4877367212a0ea"
+  "src/engine/hiring.ts": "5abf1af98eda4186",
+  "tests/proof/career.ts": "50bea06f19a02c5b"
  }
 }
