@@ -51,15 +51,19 @@ import { PROBES as CONTINUATION } from './probes/continuation';
 import { PROBES as STUDIO_PROBES } from './probes/studios';
 import { PROBES as BLUEPRINT_LOCK } from './probes/blueprint-lock';
 import { PROBES as SOURCE } from './probes/source';
+import { PROBES as SCRIPT_FIELDS } from './probes/script-fields';
+import { PROBES as PLAN_FIELDS } from './probes/plan-fields';
 
-const ALL = [...CORE, ...PRODUCTION, ...RELEASE, ...AWARDS, ...BANK, ...PAPERS, ...SCRIPT, ...PROJECT, ...CAREER_WIDE, ...WEATHER, ...EQUIPMENT, ...WRITING, ...HIRING, ...DAYS, ...MUSIC, ...VERSIONS, ...SCORE, ...EDIT, ...NOTES, ...SLATE, ...BANK_MORE, ...AGENTS_PROBES, ...FESTIVAL, ...OPPS, ...BACKERS_PROBES, ...PLACES, ...PLAN, ...LATE, ...CASTING, ...DESIGNS, ...PEOPLE, ...BANK_CARDS, ...BANK_MOVES, ...BANK_REST, ...SERIES_PROBES, ...REVISIONS, ...HELPERS_PEOPLE, ...MOCAP, ...SONGS, ...DOCUMENTARY, ...CASTING_DIRECTOR, ...STAGES, ...SCREEN_TIME, ...VERSION_SONGS, ...MUSIC_CATALOG, ...CONTINUATION, ...STUDIO_PROBES, ...BLUEPRINT_LOCK, ...SOURCE];
+const ALL = [...CORE, ...PRODUCTION, ...RELEASE, ...AWARDS, ...BANK, ...PAPERS, ...SCRIPT, ...PROJECT, ...CAREER_WIDE, ...WEATHER, ...EQUIPMENT, ...WRITING, ...HIRING, ...DAYS, ...MUSIC, ...VERSIONS, ...SCORE, ...EDIT, ...NOTES, ...SLATE, ...BANK_MORE, ...AGENTS_PROBES, ...FESTIVAL, ...OPPS, ...BACKERS_PROBES, ...PLACES, ...PLAN, ...LATE, ...CASTING, ...DESIGNS, ...PEOPLE, ...BANK_CARDS, ...BANK_MOVES, ...BANK_REST, ...SERIES_PROBES, ...REVISIONS, ...HELPERS_PEOPLE, ...MOCAP, ...SONGS, ...DOCUMENTARY, ...CASTING_DIRECTOR, ...STAGES, ...SCREEN_TIME, ...VERSION_SONGS, ...MUSIC_CATALOG, ...CONTINUATION, ...STUDIO_PROBES, ...BLUEPRINT_LOCK, ...SOURCE, ...SCRIPT_FIELDS, ...PLAN_FIELDS];
+import { FIELD_PROOFS } from './field-proofs';
+
 const pick = process.env.PROBES?.split(',');
 const seeds = process.env.SEEDS ? Number(process.env.SEEDS) : undefined;
 
 describe('feature proofs', () => {
   for (const p of ALL.filter((x) => !pick || pick.includes(x.id))) {
     it(`${p.id}: ${p.decision}`, () => {
-      const r = runProbe(p, p.seeds ?? seeds);
+      const r = runProbe({ ...p, features: [...p.features, ...(FIELD_PROOFS[p.id] ?? [])] }, p.seeds ?? seeds);
       writeResult(r);
       const why = JSON.stringify({ bites: r.bites, downstream: r.downstream, diff: Object.fromEntries([...p.bites, ...p.downstream].map((m) => [m, r.diff[m]])) });
       expect(r.verdict, why).toBe('proven');
