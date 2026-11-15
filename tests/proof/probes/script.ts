@@ -17,7 +17,7 @@ const eightMillion = (s: GameState, p: Project) => setPlannedBudget(s, p, 8_000_
 /** Once a week, each delivered film entered in every leading and supporting acting category it is eligible for. */
 const actingLook = new WeakMap<GameState, number>();
 const ACTING = ['lead', 'supporting'];
-const enterActing = (s: GameState) => {
+export const enterActing = (s: GameState) => {
   if (s.now - (actingLook.get(s) ?? -Infinity) < 7 * 86_400_000) return;
   actingLook.set(s, s.now);
   for (const p of s.projects.filter((x) => x.delivered && !x.shelved)) for (const ed of s.editions.filter((e) => e.status === 'open' && e.deadline > s.now)) {
@@ -27,7 +27,7 @@ const enterActing = (s: GameState) => {
     }
   }
 };
-const actingMeasure = (s: GameState) => {
+export const actingMeasure = (s: GameState) => {
   const recipientOf = new Map(s.editions.flatMap((ed) => categoriesFor(institution(ed.institutionId), ed.year).map((c) => [`${ed.id}|${c.id}`, c.recipient] as const)));
   const mine = s.editions.flatMap((ed) => ed.entries.filter((e) => s.projects.some((p) => p.id === e.projectId) && e.status !== 'withdrawn').map((e) => ({ e, r: recipientOf.get(`${ed.id}|${e.categoryId}`) })));
   return {

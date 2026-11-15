@@ -55,6 +55,8 @@
   "passesAccepted": 1.9,
   "passesWritten": 1.913,
   "passesCancelled": 0,
+  "writingDays": 1.913,
+  "passRead": 120.6,
   "fired": 0
  },
  "variant": {
@@ -104,6 +106,8 @@
   "passesAccepted": 1.9,
   "passesWritten": 3.813,
   "passesCancelled": 0,
+  "writingDays": 3.813,
+  "passRead": 120.163,
   "fired": 0
  },
  "diff": {
@@ -429,6 +433,20 @@
    "changed": 0,
    "n": 80
   },
+  "writingDays": {
+   "mean": 1.9,
+   "lo": 1.832,
+   "hi": 1.968,
+   "changed": 80,
+   "n": 80
+  },
+  "passRead": {
+   "mean": -0.437,
+   "lo": -3.624,
+   "hi": 2.749,
+   "changed": 79,
+   "n": 80
+  },
   "fired": {
    "mean": 0,
    "lo": 0,
@@ -459,7 +477,7 @@
  ],
  "verdict": "proven",
  "hashes": {
-  "src/engine/writing-jobs.ts": "355ea74d3a0f109a",
+  "src/engine/writing-jobs.ts": "363b113df0e37aee",
   "tests/proof/career.ts": "50bea06f19a02c5b"
  }
 }

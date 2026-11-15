@@ -3,6 +3,8 @@
 // you live is base-los-angeles's, a plan's start and length plan-over-call's, coverage and takes full-coverage's, and so
 // on. A field no proof varies stays unproven until one does (from November 15, 2026).
 export const FIELD_PROOFS: Record<string, string[]> = {
+  'stage-sets': ['field:PlanViews.tsx#{`Site For ${place}`}#1'],
+  'add-song': ["field:WorkViews.tsx#{`Scene For ${s.title}`}#1", "field:ScriptViews.tsx#{`\"${x.title}\" In This Scene`}#1"],
   'add-stage': ["field:PlanViews.tsx#{sceneLabel(p, s)}#1"],
   'add-version': ["field:FinishViews.tsx#{sceneLabel(p, s)}#1"],
   'base-los-angeles': ["field:Creation.tsx#\"Where You Live\"#1"],

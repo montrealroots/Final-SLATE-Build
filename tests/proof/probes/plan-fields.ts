@@ -23,6 +23,8 @@ const animated = (technique: '3d-cg' | 'stop-motion', quality: 'tv' | 'feature' 
   [{ place: 'Flat', chars: ['Lead', 'Friend'], minutes: minutes[0] }, { place: 'Cafe', chars: ['Lead', 'Friend'], minutes: minutes[1] }]));
 export const CG = animated('3d-cg');
 const SM = animated('stop-motion', 'tv', [1, 1]);
+/** Four minutes: long enough that animating its two scenes one at a time outlasts the stage setup a second stage takes. */
+const SM4 = animated('stop-motion', 'tv', [2, 2]);
 const lead = (p: Project) => p.characters.find((c) => c.name === 'Lead')!.id;
 /**
  * Two animators at once, as a stop-motion production that wants speed hires: funded, two animators offered their rates,
@@ -31,8 +33,10 @@ const lead = (p: Project) => p.characters.find((c) => c.name === 'Lead')!.id;
  */
 const twoAnimators = (s: GameState, p: Project) => {
   fund(s, p);
-  // The two cheapest: the career's staffing sees the job filled once anyone holds it, so both are offered here.
-  for (const x of roleCandidates(s, p, 'animator').sort((a, b) => a.dayRate - b.dayRate).slice(0, 2)) try { makeOffer(s, p, { personId: x.id, roleId: 'animator', dayRate: x.dayRate }); } catch { /* not free */ }
+  // The two cheapest: the career's staffing sees the job filled once anyone holds it, so both are offered here. Until
+  // November 15, 2026 the role asked was 3D CG's animator, who does no stop-motion work. Where one declines, the film has
+  // one animator and the stages can't matter: those careers show no difference.
+  for (const x of roleCandidates(s, p, 'stopmo-animator').sort((a, b) => a.dayRate - b.dayRate).slice(0, 2)) try { makeOffer(s, p, { personId: x.id, roleId: 'stopmo-animator', dayRate: x.dayRate }); } catch { /* not free */ }
   for (const c of p.characters) p.schedule.puppetCopies[c.id] = 2;
 };
 
@@ -49,7 +53,9 @@ export const PROBES: Probe[] = [
   { id: 'render-nodes', features: [P('"Render Nodes"')], decision: 'Render the 3D short on two nodes rather than twenty', reads: ['src/engine/production/workday.ts#runWorkDay'],
     base: { project: CG }, variant: { project: CG, decide: (_s, p) => { p.schedule.renderNodes = 2; } }, ...TIME },
   { id: 'stopmotion-stages', features: [P('"Stop-Motion Stages"')], decision: 'With two animators, animate on one stage rather than two', reads: ['src/engine/production/workday.ts#runWorkDay'],
-    base: { project: SM, decide: twoAnimators }, variant: { project: SM, decide: (s, p) => { twoAnimators(s, p); p.schedule.stages = 1; } }, ...TIME },
+    // A shot takes a stage (workday.ts): on one, the two scenes are animated one after the other. On the two-minute
+    // short, and while the role asked was 3D CG's animator, that saved no days (November 15, 2026).
+    base: { project: SM4, decide: twoAnimators }, variant: { project: SM4, decide: (s, p) => { twoAnimators(s, p); p.schedule.stages = 1; } }, ...TIME },
   { id: 'puppet-copies', features: [P('{`${c.name} Puppet Copies`}')], decision: 'Build three copies of the lead\'s puppet', reads: ['src/engine/production/workday.ts#runWorkDay'],
     base: { project: SM }, variant: { project: SM, decide: (_s, p) => { p.schedule.puppetCopies[lead(p)] = 3; } }, ...COST },
   { id: 'work-holidays', features: [P('"Work On Public Holidays"')], decision: 'Keep the 3D short working through public holidays', reads: ['src/engine/production/schedule.ts#isWorkingDay'],

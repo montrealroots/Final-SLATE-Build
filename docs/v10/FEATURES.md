@@ -11,8 +11,8 @@ journey that shows it there.
 | action | 144 | 0 | 0 | 3 | 0 | 13 | 0 | 160 |
 | bank | 43 | 0 | 0 | 0 | 0 | 0 | 11 | 54 |
 | scheduled | 55 | 0 | 0 | 0 | 0 | 11 | 0 | 66 |
-| field | 150 | 94 | 0 | 2 | 0 | 9 | 50 | 305 |
-| all | 392 | 94 | 0 | 5 | 0 | 33 | 61 | 585 |
+| field | 155 | 94 | 0 | 2 | 0 | 9 | 45 | 305 |
+| all | 397 | 94 | 0 | 5 | 0 | 33 | 56 | 585 |
 
 ## Rows
 
@@ -383,7 +383,7 @@ journey that shows it there.
 | "Director" | field | production/shoot.ts onSetHires; finish.ts computeCredits, assessQuality | proven | film-director (40 seeds) | directedByHire +1.85; quality.direction +7.7; overall +1.5; standing.directing -4.7 |
 | "Production Start" | field | production/schedule.ts generatePlan | proven | plan-later (40 seeds) | firstShootDay +70; daysToDeliver +67.363 |
 | "Rehearsal Days" | field | production/shoot.ts; hiring.ts (booked days) | proven | rehearsal-days (40 seeds) | performance +5.188; overall +1.338; reception +2.038 |
-| "Stop-Motion Stages" | field | production/workday.ts | not yet proven |  |  |
+| "Stop-Motion Stages" | field | production/workday.ts | proven | stopmotion-stages (40 seeds) | daysToDeliver +38.5; spent -7128.7; money -33362.865 |
 | "Render Nodes" | field | production/workday.ts | proven | render-nodes (40 seeds) | daysToDeliver +56.088; spent -1163; money -13166.901 |
 | "Six-Day Weeks" | field | production/schedule.ts isWorkingDay | proven | six-day-weeks (60 seeds) | daysToDeliver -3.608; spent +4676.5 |
 | "Shoot Episodes In Blocks" | field | production/schedule.ts | proven | shoot-in-blocks (40 seeds) | shootDays -4.425; spent -9364; daysToDeliver -3.037 |
@@ -466,7 +466,7 @@ journey that shows it there.
 | "Estimated Minutes" | field | production/schedule.ts sceneLoad; finish.ts runtime | proven | scene-minutes (40 seeds) | runtime +22; spent +11793.2; daysToDeliver +7.55; offered +93875; guarantees +42500 |
 | "Kind" | field | projects.ts deriveRequirements (interview, archival) | proven | scene-archival (40 seeds) | shootDays -2.95; hired +2 |
 | "Basis" | field | projects.ts scriptIssues (sourced needs a fact) | proven | scene-dramatized (40 seeds) | researchItems -2; spent -639 |
-| "Technique For This Scene" | field | projects.ts sceneTechnique; production/tasks.ts | not yet proven |  |  |
+| "Technique For This Scene" | field | projects.ts sceneTechnique; production/tasks.ts | proven | scene-technique (40 seeds) | taskKinds +3.975; spent +39979.75; daysToDeliver +52.763 |
 | "Act" | field | shown as advice: structure.ts structureNotes | carried | tests/structure.test.ts::group scenes; an empty act is noted | A name or a record, carried to shown as advice: structure.ts structureNotes: it decides nothing by its nature. |
 | "Tonal Intention" | field | shown as advice: projects.ts scriptIssues (tonal genres note a missing one) | carried | tests/advice-carried.test.ts::reach the advice they are written for, and are scored by nothing | A name or a record, carried to shown as advice: projects.ts scriptIssues (tonal genres note a missing one): it decides nothing by its nature. |
 | "Who Is Recording" | field | shown as advice: projects.ts scriptIssues (found footage) | carried | tests/genres.test.ts::module consumers change the right downstream state | A name or a record, carried to shown as advice: projects.ts scriptIssues (found footage): it decides nothing by its nature. |
@@ -516,7 +516,7 @@ journey that shows it there.
 | "Planted In" | field | script-effects.ts; finish.ts edit consequences | proven | setup-planted (40 seeds) | quality.script +11.013; overall +3.288; reception +4.338 |
 | "Pays Off In" | field | script-effects.ts; finish.ts edit consequences | proven | setup-paid-off (40 seeds) | quality.script +11; overall +3.288; reception +2.825 |
 | "What Is Set Up" | field | shown with the setup | carried | tests/carried-text.test.ts::kept through a save exactly as written | A name or a record, carried to shown with the setup: it decides nothing by its nature. |
-| "Kind" | field | projects.ts deriveRequirements (clue props) | not yet proven |  |  |
+| "Kind" | field | projects.ts deriveRequirements (clue props) | proven | setup-clue (40 seeds) | quality.script +1; spent +3415.25; overall -0.212; money -8650.035 |
 | "First Character" | field | shown as a preview: season.ts sharedFactImpact | carried | tests/episodes.test.ts::a relationship touches every scene its two characters share | A name or a record, carried to shown as a preview: season.ts sharedFactImpact: it decides nothing by its nature. |
 | "Second Character" | field | shown as a preview: season.ts sharedFactImpact | carried | tests/episodes.test.ts::a relationship touches every scene its two characters share | A name or a record, carried to shown as a preview: season.ts sharedFactImpact: it decides nothing by its nature. |
 | "Relationship" | field | shown in the season plan | carried | tests/carried-text.test.ts::kept through a save exactly as written | A name or a record, carried to shown in the season plan: it decides nothing by its nature. |
@@ -596,10 +596,10 @@ journey that shows it there.
 | {`${c.name} On Screen (Minutes)`} | field | screen-time.ts shareCheck | proven | record-screen-time (40 seeds) | screenRecords +12; screenEntries +1; screenDecided +1 |
 | {`${c.name} Heard Only (Minutes)`} | field | screen-time.ts screenTotal | not yet proven |  |  |
 | "Title For The New Project" | field | shown as the project's title: opportunities.ts acceptOpportunity | carried | tests/opportunities.test.ts::accepted, starts a project funded by the commission | A name or a record, carried to shown as the project's title: opportunities.ts acceptOpportunity: it decides nothing by its nature. |
-| {`What ${name}'s Revision Should Look At`} | field | WritingWork.tsx JobLine | not yet proven |  |  |
+| {`What ${name}'s Revision Should Look At`} | field | writing-jobs.ts revisionAims | proven | revision-focus (40 seeds) | passRead +7.15; quality.script +0.738; overall +0.238 |
 | {`Your Note To ${name} (Optional)`} | field | WritingWork.tsx JobLine | carried | tests/writing-jobs.test.ts::the brief and the notes are kept as written and change nothing | A name or a record, carried to WritingWork.tsx JobLine: it decides nothing by its nature. |
 | {`Ask ${name} For`} | field | writing-jobs.ts writingTerms, acceptedRead | proven | writing-rewrite (40 seeds) | writingDays +1.925; quality.script +1.538; standing.writing +0.55; overall +0.5 |
-| {`Episode For ${name}`} | field | writing-jobs.ts writingTerms, acceptedRead | not yet proven |  |  |
+| {`Episode For ${name}`} | field | writing-jobs.ts writingTerms, acceptedRead | proven | writer-episode (40 seeds) | writingDays +5.625; writerPaid +3428.5; minutesByHire +34.05 |
 | {`Your Brief For ${name} (Optional)`} | field | WritingWork.tsx JobLine | carried | tests/writing-jobs.test.ts::the brief and the notes are kept as written and change nothing | A name or a record, carried to WritingWork.tsx JobLine: it decides nothing by its nature. |
 | "Put In From Your Own Money" | field | personal.ts putInOwnMoney, putInRefusal | proven | own-money-or-backer (40 seeds) | ownIn -73300; backerDeals +2; revenue -66630.85 |
 | "Banner Name" | field | shown in credits: company.ts setBanner, productionCredit; FinishViews.tsx credits | carried | tests/v8-company.test.ts::credits your work under it | A name or a record, carried to shown in credits: company.ts setBanner, productionCredit; FinishViews.tsx credits: it decides nothing by its nature. |
