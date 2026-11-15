@@ -61,9 +61,10 @@ export const PROBES: Probe[] = [
     base: { project: doc, ...DOC }, variant: { project: docWith((p) => { p.evidence[0].status = 'dramatized'; }), ...DOC }, measure: research, bites: ['claimsChecked'], downstream: ['spent', 'hired'] },
   { id: 'claim-added', features: [S('Claim')], decision: 'Add a second claim to the documentary, "The lifeguards saved forty people in 1987."', reads: ['src/engine/projects.ts#deriveRequirements', 'src/engine/production/tasks.ts#buildTasks'],
     base: { project: doc, ...DOC }, variant: { project: docWith((p) => { p.evidence.push({ id: 'ev2', claim: 'The lifeguards saved forty people in 1987.', status: 'established', sourceNote: '', verified: false } as never); }), ...DOC }, measure: research, bites: ['claimsChecked', 'researchItems'], downstream: ['spent', 'daysToDeliver'] },
-  // A scene presented as sourced fact with a fact linked needs no sourcing of its own (production/tasks.ts doc:research).
+  // A scene presented as sourced fact with a fact linked needs no sourcing of its own (production/tasks.ts doc:research),
+  // and its readiness note is gone (40 careers: the script 1.8 better).
   { id: 'claim-linked', features: ['field:ScriptViews.tsx#{e.claim.slice(0, 50)}#1'], decision: 'Link the documentary\'s third scene to its checked claim rather than to none', reads: ['src/engine/production/tasks.ts#buildTasks'],
-    base: { project: docWith((p) => { p.scenes[2].evidenceIds = []; }), ...DOC }, variant: { project: doc, ...DOC }, measure: research, bites: ['researchItems'], downstream: ['spent', 'daysToDeliver'] },
+    base: { project: docWith((p) => { p.scenes[2].evidenceIds = []; }), ...DOC }, variant: { project: doc, ...DOC }, measure: research, bites: ['researchItems'], downstream: ['quality.script', 'overall'] },
   // An age range reaching sixteen or over isn't a child's part (minors.ts minorFor): no tutor or chaperone, no child's hours.
   { id: 'age-range', features: [S('Up To')], decision: 'Write the lead as ten to thirty rather than ten', reads: ['src/engine/story-age.ts#storyAge', 'src/engine/minors.ts#minorFor'],
     base: { project: short({ lead: { ageInStory: '10' } }) }, variant: { project: short({ lead: { ageInStory: '10 to 30' } }) }, bites: ['hired'], downstream: ['daysToDeliver', 'spent'] },
