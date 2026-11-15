@@ -296,7 +296,12 @@ export function assessQuality(state: GameState, p: Project, episode?: number): R
     const h = p.hires.find((x) => x.roleId === r && x.daysWorked > 0 && covers(x.episodes));
     return h ? personById(state, h.personId).capability : null;
   };
-  const cut = Math.min(10, p.edit.cutPasses * 4);
+  // A cut pass on one episode (episode-delivery.ts startEpisodeCutPass) counts for that episode, and for the season as
+  // the average across its episodes. Until November 15, 2026 only a whole-season pass counted: an episode's own was paid
+  // for and changed nothing.
+  const own = (n: number) => p.edit.episodeCutPasses?.[n] ?? 0;
+  const episodePasses = episode !== undefined ? own(episode) : p.episodes.length ? p.episodes.reduce((a, e) => a + own(e.number), 0) / p.episodes.length : 0;
+  const cut = Math.min(10, (p.edit.cutPasses + episodePasses) * 4);
   const direction = clamp(captureQ * 0.7 + 18 + cut - (lostDays / totalDays) * 20 + byWho('director'));
   const anim = ['animator', 'stopmo-animator', 'layout-artist', 'lighting-artist'].map(crewCap).filter((x): x is number => x !== null);
   const craftRoles = ['dop', 'production-designer', 'costume-designer', 'sound-designer', 'editor', 'composer', 'colorist', 'visdev-artist'];

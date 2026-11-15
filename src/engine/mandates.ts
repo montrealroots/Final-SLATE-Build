@@ -147,14 +147,19 @@ function runWriting(state: GameState, p: Project, m: Mandate): void {
         if (why) { tell(state, p, m, `${what}: ${why}`); continue; }
         const cost = writingTerms(p, h, w.scope, ep).cost;
         if (mandateCommitted(p, m) + cost > m.ceiling) { tell(state, p, m, `${what}: the pass would go past the ceiling. Commission it under Writing Work, or approve a higher ceiling.`); continue; }
-        commissionWriting(state, p, h.id, { scope: w.scope, episode: ep });
+        // Money short of the pass comes back to the player, as everything Guide Me can't do does (until November 15,
+        // 2026 it threw, and the day stopped: "Something went wrong while time passed").
+        try { commissionWriting(state, p, h.id, { scope: w.scope, episode: ep }); } catch (e) { tell(state, p, m, `${what}: ${(e as Error).message}`); }
         continue;
       }
       if (job.status !== 'delivered') continue;
       const read = job.passes.at(-1)!.read ?? 0;
       if (read >= WRITING_STANDARD) { acceptWriting(state, p, job.id); continue; }
       const cost = revisionTerms(p, job).cost;
-      if (!revisionRefusal(p, job) && mandateCommitted(p, m) + cost <= m.ceiling) { requestRevision(state, p, job.id, { focus: GUIDE_FOCUS, text: `Guide Me: it read ${read}, below the ${WRITING_STANDARD} it accepts.` }); continue; }
+      if (!revisionRefusal(p, job) && mandateCommitted(p, m) + cost <= m.ceiling) {
+        try { requestRevision(state, p, job.id, { focus: GUIDE_FOCUS, text: `Guide Me: it read ${read}, below the ${WRITING_STANDARD} it accepts.` }); } catch (e) { tell(state, p, m, `${what}: ${(e as Error).message}`); }
+        continue;
+      }
       tell(state, p, m, `${what}: the pass reads ${read}, below the ${WRITING_STANDARD} Guide Me accepts, ${revisionRefusal(p, job) ? 'and its revisions are used' : 'and another revision would go past the ceiling'}. Accept it or commission more under Writing Work.`);
     }
   }

@@ -106,3 +106,18 @@ describe('a series delivered an episode at a time', () => {
     expect(() => planRelease(s, p, { route: 'streaming', date: addDaysToKey(today(s), 5), territories: ['GB'] })).toThrow('Deliver the season, or at least one episode, before planning a release.');
   });
 });
+
+describe("an episode's own cut pass", () => {
+  it('counts for that episode, and for the season as the average across its episodes (until November 15, 2026 it counted for nothing)', async () => {
+    const { assessQuality } = await import('../src/engine/finish');
+    const s = startLife('ep-cut-quality');
+    const p = buildProject(s, { title: 'Two Tides', format: 'limited-series', medium: 'live-action', episodes: 2, runtime: 20 }, [{ name: 'Mara', patch: { roleSize: 'lead' } }],
+      [{ place: 'Pier', chars: ['Mara'], extra: { episode: 1 } }, { place: 'Pier', chars: ['Mara'], extra: { episode: 2 } }]);
+    approve(s, p);
+    const before = [assessQuality(s, p, 1).direction, assessQuality(s, p, 2).direction, assessQuality(s, p).direction];
+    p.edit.episodeCutPasses = { 1: 1 }; // labelled fixture: one finished cut pass on episode 1
+    expect(assessQuality(s, p, 1).direction).toBeGreaterThan(before[0]);
+    expect(assessQuality(s, p, 2).direction).toBe(before[1]);
+    expect(assessQuality(s, p).direction).toBeGreaterThan(before[2]);
+  });
+});

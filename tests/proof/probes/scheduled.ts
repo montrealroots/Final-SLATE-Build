@@ -59,7 +59,7 @@ const AWARDS_STRONG = { ...AWARDS, decide: (s: GameState, p: Project) => { p.sch
  * sold to whoever will air it: the only careers where a season's audience is read, for the commissioner's renewal
  * (continuation.ts season-decision). The career's short is never aired, so its audience weeks reached nothing.
  */
-const SERIES = {
+export const SERIES = {
   years: 2,
   takeDistribution: false,
   project: (s: GameState, year: number) => {
