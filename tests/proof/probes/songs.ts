@@ -39,7 +39,7 @@ const enterSong = (title: string) => (s: GameState) => {
  * offers these careers get are streaming or cinemas without the US. Until November 15, 2026 this took those offers, and
  * no song ever reached the Academy.
  */
-const inUsCinemas = (s: GameState, p: Project) => {
+export const inUsCinemas = (s: GameState, p: Project) => {
   setReleasePlan(s, p, { routes: ['partner-theatrical'], territories: ['US', 'GB'], date: addDaysToKey(dateKey(s.now, 'Europe/London'), 20), festivalUntil: null, version: 'subtitled', promo: 0 });
   try { releaseYourself(s, p, 'partner-theatrical'); } catch { /* refused: no release */ }
 };
