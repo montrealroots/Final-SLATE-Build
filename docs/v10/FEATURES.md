@@ -11,8 +11,8 @@ journey that shows it there.
 | action | 146 | 0 | 0 | 1 | 0 | 13 | 0 | 160 |
 | bank | 54 | 0 | 0 | 0 | 0 | 0 | 0 | 54 |
 | scheduled | 55 | 0 | 0 | 0 | 0 | 11 | 0 | 66 |
-| field | 196 | 97 | 0 | 3 | 0 | 9 | 0 | 305 |
-| all | 451 | 97 | 0 | 4 | 0 | 33 | 0 | 585 |
+| field | 199 | 97 | 0 | 0 | 0 | 9 | 0 | 305 |
+| all | 454 | 97 | 0 | 1 | 0 | 33 | 0 | 585 |
 
 ## Rows
 
@@ -149,7 +149,7 @@ journey that shows it there.
 | reviseEffects | action | src/engine/revisions.ts | proven | revise-effects (40 seeds) | effectsRevised +2.25; quality.direction +1.363; spent +11443.25; overall +0.25 |
 | clearScreenTime | action | src/engine/screen-time.ts | proven | clear-screen-time (40 seeds) | screenRecords -12; screenEntries -1; screenDecided -1 |
 | recordScreenTime | action | src/engine/screen-time.ts | proven | record-screen-time (40 seeds) | screenRecords +12; screenEntries +1; screenDecided +1 |
-| moveEpisode | action | src/engine/season.ts | no downstream effect | move-episode (40 seeds) | moved: firstEpisodeMinutes +6. Bites, and moves the audience in every career whose season airs (21 of 40), but in both directions: an episode's place matters through its own reception (broadcast viewers kept from the one before, audiences.ts retention) and its own first day (streaming hours), and which of two episodes is received better isn't settled by its length. Not a gap; to prove with a season whose episodes are known to differ in reception. |
+| moveEpisode | action | src/engine/season.ts | no downstream effect | move-episode (120 seeds) | moved: firstEpisodeDirected +1.833. Measure: the episode a hired director directs and cuts again, put first, both arms airing on the same days (120 careers, November 15, 2026): streaming hours +23,700 (interval -11,700 to +59,000), broadcast viewers -43,500 (interval -93,500 to +6,500). The order changes what each episode keeps of the audience before it (audiences.ts retention), but moving an episode also changes the order the season is shot in, and each scene's footage is drawn by its shoot day, so the season is a different season: its reception moves by several points, which decides whether it is offered for broadcast or streaming at all and on which route (seen career by career). That swamps what the order does. To prove with the footage held the same whichever order it is shot in. |
 | continueProject | action | src/engine/sequel.ts | proven | continue-project (40 seeds) | continued +1; buildDays -22; spent -10944; daysToDeliver -13.325 |
 | resumeProject | action | src/engine/shelve.ts | proven | shelve-resume (60 seeds) | hiresReleased +16; deliveredDay +264.783; offersDeclined +318.217; castRates +169.333; revenue -94136.25; money -102728.477 |
 | shelveProject | action | src/engine/shelve.ts | proven | shelve-resume (60 seeds) | hiresReleased +16; deliveredDay +264.783; offersDeclined +318.217; castRates +169.333; revenue -94136.25; money -102728.477 |
@@ -315,10 +315,10 @@ journey that shows it there.
 | "Place Of Birth" | field | identity.ts citizenshipOf -> awards.ts nationality rules | proven | born-in-paris (40 seeds) | efaEntries +2.6; decided +2.6; entries +2.85 |
 | "Where You Live" | field | state.ts newGame; projects.ts createProject (base) | proven | base-los-angeles (40 seeds) | lostDays -1.225; daysToDeliver -2.013 |
 | "Starting Date" | field | state.ts newGame | proven | start-2040 (40 seeds) | year +14; money +277034.155 |
-| "Starting Time" | field | state.ts newGame | no downstream effect | start-evening (40 seeds) | moved: daysToDeliver -1.275. Measure: starting at eight in the evening rather than the morning delivered the short 1.3 days sooner (40 careers, interval 1.1 to 1.5); nothing measured after the delivery date moved (a final balance $52,000 lower at four careers was noise). |
+| "Starting Time" | field | state.ts newGame | proven | start-evening (40 seeds) | daysToDeliver -0.675; breached -1.375; repaymentDue -27500; money +101503.661 |
 | "Amount (US Dollars)" | field | personal.ts openInheritance, personalBalance, putInRefusal; cash/money.ts parseAmount | proven | small-inheritance (40 seeds) | ownIn -60450; delivered -2 |
 | "Describe Your Ethnicity" | field | shown with your ethnicities: identity.ts splitBackgrounds | carried | e2e/creation.spec.ts::an ethnicity in your own words | A name or a record, carried to shown with your ethnicities: identity.ts splitBackgrounds: it decides nothing by its nature. |
-| {o.name} | field | projects.ts createProject -> schedule.observances; schedule.ts isWorkingDay | no downstream effect | observances-kept (40 seeds) | moved: daysToDeliver +4.613. Measure: keeping every listed holiday put the 3D short 4.6 days later (40 careers, interval 3.6 to 5.6); nothing measured after the delivery date moved, in careers with no deadline to meet. A delivery due by a date (a commission's deliverBy) is where a later date would bite next. |
+| {o.name} | field | projects.ts createProject -> schedule.observances; schedule.ts isWorkingDay | proven | observances-kept (40 seeds) | daysToDeliver +4.6; breached +0.7; repaymentDue +14000; money -60079.05 |
 | {`${languageName(l.code)} Proficiency`} | field | production/language.ts personLanguagesFit; casting-notes.ts fitNotes | proven | french-basic (40 seeds) | hired +2; spent +2502.25 |
 | {`Hire The Rental House's Package On A Day The Kit Can't Serve (${money(housePackageFee(p))} A Day)`} | field | production/shoot.ts (a day the kit cannot serve); equipment.ts setPackageApproval | proven | package-approval (40 seeds) | kitPostponed -729; lostDays -727.4; daysToDeliver +33.563; delivered +2; spent +49552.75 |
 | "Film It In" | field | destinations.ts dayPlace, awayCosts, permitWork; production/shoot.ts runShootDay; production/schedule.ts scheduleShootDay | proven | filmed-abroad (40 seeds) | filmedAway +6; spent +17781.9; daysToDeliver +10.85 |
@@ -567,7 +567,7 @@ journey that shows it there.
 | "Appearance States" | field | looks.ts statesOf, costumeCopies; production/tasks.ts buildTasks | proven | lead-states (40 seeds) | spent +26120; money -53194.614; daysToDeliver +20.213 |
 | {`Names Of ${c.name}'s Looks`} | field | looks.ts statesOf, stateNames; brief.ts setLook | proven | looks-named (40 seeds) | spent +18892.25; ownIn +19250; daysToDeliver +13.038 |
 | "Format Family" | field | unscripted.ts unscriptedIssues, decideCompetition; awards-rules.ts requirementProblems | proven | format-competition (40 seeds) | results +6; leftNotes +6 |
-| {c.name} | field | unscripted.ts decideCompetition | no downstream effect | contestants (40 seeds) | moved: eliminated -2. Nothing outside the competition reads who competes: among enough contestants to last the episodes (unscripted.ts unscriptedIssues, which blocks approval with too few), it decides who can be eliminated and who wins, and one leaves each episode either way, so the later episodes' notes are the same. Too few, and the script can't be approved, which the career can't play (4 careers, November 15, 2026). |
+| {c.name} | field | unscripted.ts decideCompetition | proven | contestants (40 seeds) | presence +8.185; overall +1.038; reception +1.325 |
 | "Leave Each Episode" | field | unscripted.ts decideCompetition | proven | leave-each (40 seeds) | eliminatedEarly +4; leftNotes +6 |
 | {`Add Ethnicity For ${who}`} | field | shown in casting: hiring.ts sharedHeritages | carried | tests/heritage.test.ts::a performer from the pool | A name or a record, carried to shown in casting: hiring.ts sharedHeritages: it decides nothing by its nature. |
 | {`Add Nationality For ${who}`} | field | shown in casting: hiring.ts | carried | tests/identity.test.ts::a version 6 save | A name or a record, carried to shown in casting: hiring.ts: it decides nothing by its nature. |

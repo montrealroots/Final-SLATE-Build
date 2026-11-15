@@ -57,7 +57,8 @@
   "takes": 4,
   "retakes": 0,
   "approvedTake": 167.1,
-  "cancelled": 0.15,
+  "cancelled": 0,
+  "cancellationFees": 0,
   "fired": 0
  },
  "variant": {
@@ -108,7 +109,8 @@
   "takes": 6,
   "retakes": 2,
   "approvedTake": 171.95,
-  "cancelled": 0.2,
+  "cancelled": 0,
+  "cancellationFees": 0,
   "fired": 0
  },
  "diff": {
@@ -442,10 +444,17 @@
    "n": 20
   },
   "cancelled": {
-   "mean": 0.05,
-   "lo": -0.063,
-   "hi": 0.163,
-   "changed": 1,
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 20
+  },
+  "cancellationFees": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
    "n": 20
   },
   "fired": {
@@ -479,7 +488,7 @@
  "verdict": "proven",
  "hashes": {
   "src/engine/mocap.ts": "ecbd1e7603d8e15c",
-  "src/engine/finish.ts": "f91be05a7e69ff70",
+  "src/engine/finish.ts": "e0a1318764a0a429",
   "tests/proof/career.ts": "50bea06f19a02c5b"
  }
 }
