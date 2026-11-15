@@ -11,8 +11,8 @@ journey that shows it there.
 | action | 144 | 0 | 0 | 3 | 0 | 13 | 0 | 160 |
 | bank | 43 | 0 | 0 | 0 | 0 | 0 | 11 | 54 |
 | scheduled | 55 | 0 | 0 | 0 | 0 | 11 | 0 | 66 |
-| field | 128 | 42 | 0 | 1 | 0 | 8 | 126 | 305 |
-| all | 370 | 42 | 0 | 4 | 0 | 32 | 137 | 585 |
+| field | 133 | 42 | 0 | 2 | 0 | 8 | 120 | 305 |
+| all | 375 | 42 | 0 | 5 | 0 | 32 | 131 | 585 |
 
 ## Rows
 
@@ -315,7 +315,7 @@ journey that shows it there.
 | "Place Of Birth" | field | identity.ts citizenshipOf -> awards.ts nationality rules | not yet proven |  |  |
 | "Where You Live" | field | state.ts newGame; projects.ts createProject (base) | proven | base-los-angeles (40 seeds) | lostDays -1.225; daysToDeliver -2.013 |
 | "Starting Date" | field | state.ts newGame | proven | start-2040 (40 seeds) | year +14; money +277034.155 |
-| "Starting Time" | field | state.ts newGame | not yet proven |  |  |
+| "Starting Time" | field | state.ts newGame | no downstream effect | start-evening (40 seeds) | moved: daysToDeliver -1.275. Measure: starting at eight in the evening rather than the morning delivered the short 1.3 days sooner (40 careers, interval 1.1 to 1.5); nothing measured after the delivery date moved (a final balance $52,000 lower at four careers was noise). |
 | "Amount (US Dollars)" | field | personal.ts openInheritance, personalBalance, putInRefusal; cash/money.ts parseAmount | proven | small-inheritance (40 seeds) | ownIn -60450; delivered -2 |
 | "Describe Your Ethnicity" | field | identity.ts splitBackgrounds | not yet proven |  |  |
 | {o.name} | field | projects.ts createProject -> schedule.observances; schedule.ts isWorkingDay | no downstream effect | observances-kept (40 seeds) | moved: daysToDeliver +4.613. Measure: keeping every listed holiday put the 3D short 4.6 days later (40 careers, interval 3.6 to 5.6); nothing measured after the delivery date moved, in careers with no deadline to meet. A delivery due by a date (a commission's deliverBy) is where a later date would bite next. |
@@ -336,7 +336,7 @@ journey that shows it there.
 | {`New Date For Episode ${e.number}`} | field | episode-releases.ts setEpisodeDates; release-schedule.ts scheduleChangeEffects | proven | episode-dates (40 seeds) | episodesMoved +2.8; renewalWait +49.35 |
 | "Project" | field | awards.ts checkEligibility | not yet proven |  |  |
 | "Episode To Enter" | field | awards-actions.ts submitEntry; finish.ts assessEpisode | not yet proven |  |  |
-| "Song To Enter" | field | awards-rules.ts songProblems | not yet proven |  |  |
+| "Song To Enter" | field | awards-rules.ts songProblems | proven | song-to-enter (40 seeds) | songEntries +1; songDecided +1 |
 | "Version To Enter" | field | awards-actions.ts entrySnapshot | not yet proven |  |  |
 | {performerLabel(c)} | field | awards-actions.ts submitEntry | not yet proven |  |  |
 | {`What To Capture For ${name}`} | field | mocap.ts bookMocap, sessionCost | proven | book-body-only (20 seeds) | spent -4982.5; overall -0.475 |
@@ -378,9 +378,9 @@ journey that shows it there.
 | {sceneLabel(p, s)} | field | parts.ts stageIn, castIn; production/shoot.ts; callsheet.ts; finish.ts | proven | add-stage (40 seeds) | stages +2; stageCast +2; performersCast +2; castRates +1578.75 |
 | {`Read ${who.name} With`} | field | auditions.ts pairChemistry | not yet proven |  |  |
 | {`Writer For Episode ${e.number}`} | field | finish.ts assessEpisode | not yet proven |  |  |
-| "Writer" | field | projects.ts assignEpisodeRole; finish.ts computeCredits, assessQuality | not yet proven |  |  |
+| "Writer" | field | projects.ts assignEpisodeRole; finish.ts computeCredits, assessQuality | proven | film-writer (40 seeds) | writtenByHire -1.9; writingWorks +1.9; writingCraft +46.1 |
 | {`Director For Episode ${e.number}`} | field | finish.ts assessEpisode; production/schedule.ts blocks | proven | episode-director (40 seeds) | directedByHire +1.8; quality.direction +3.763; overall +0.775; spent +6278.95 |
-| "Director" | field | production/shoot.ts onSetHires; finish.ts computeCredits, assessQuality | not yet proven |  |  |
+| "Director" | field | production/shoot.ts onSetHires; finish.ts computeCredits, assessQuality | proven | film-director (40 seeds) | directedByHire +1.85; quality.direction +7.7; overall +1.5; standing.directing -4.7 |
 | "Production Start" | field | production/schedule.ts generatePlan | proven | plan-later (40 seeds) | firstShootDay +70; daysToDeliver +67.363 |
 | "Rehearsal Days" | field | production/shoot.ts; hiring.ts (booked days) | proven | rehearsal-days (40 seeds) | performance +5.188; overall +1.338; reception +2.038 |
 | "Stop-Motion Stages" | field | production/workday.ts | not yet proven |  |  |
@@ -426,8 +426,8 @@ journey that shows it there.
 | {`${label}: Buyer`} | field | release-plan.ts proposeLicence, answerProposal | proven | licence-proposal (40 seeds) | licenceDeals +0.875; money -27693.375 |
 | {`${label}: Your Ask`} | field | release-plan.ts answerProposal | proven | licence-ask (100 seeds) | licenceDeals -0.83; releaseDelay +29.235; licenceFee -14800 |
 | {`${label}: Exclusive`} | field | release-plan.ts buyerValue; distribution.ts heldTerritories | proven | licence-exclusive (100 seeds) | licenceFee +8880; money -12061.25 |
-| {`Keep My ${c.label}`} | field | blueprints.ts applyBlueprint | not yet proven |  |  |
-| {`Keep My ${c.label} And Add None`} | field | blueprints.ts applyBlueprint | not yet proven |  |  |
+| {`Keep My ${c.label}`} | field | blueprints.ts applyBlueprint | proven | keep-year (40 seeds) | periodFilms +2; spent +55435.8; daysToDeliver +12.95 |
+| {`Keep My ${c.label} And Add None`} | field | blueprints.ts applyBlueprint | proven | keep-characters (40 seeds) | parts -10; castRates -8653; spent -115827.825 |
 | "Save Name" | field | the saved games list | carried | tests/carried-text.test.ts::kept through a save exactly as written | A name or a record, carried to the saved games list: it decides nothing by its nature. |
 | "Wake Me For Obligations" | field | state.ts runEvents | proven | no-wake-for-obligations (40 seeds) | lateDays +1; quality.direction -0.6; overall -0.187 |
 | "The Light It Is Shot In" | field | craft.ts craftTime, gafferNeeded, cameraTestDays, postFactors; takes.ts planTime; hiring.ts neededRoles; production/tasks.ts buildTasks | proven | light-contrast (120 seeds) | spent +3507.333; money -4596.85; daysToDeliver +0.229 |

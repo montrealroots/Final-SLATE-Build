@@ -112,13 +112,22 @@ and the rest) with real grades filling the hiring lists.
 - Observed, not changed: the project's estimate doesn't follow where a film is shot (a station in Paris costs more than
   the $40,000 target the micro short was raised to); the staffing screen is where the player learns it.
 
-**Next.** Copy in from the runs started at 17:00 (after the staleness check): every result that reads `hiring.ts`
-(16, stale since the message change; two are scheduled, `off-counter-lapse` and `off-offer-response`) and the fifth
-batch at 40 careers. Then rebuild the matrix, check, checkpoint. Then the rest of the fields: awards entry (project,
-episode, song, version, performer), ideas and the revise-brief keeps, the music mandate and licence scope, Place Of
-Birth (it decides only awards nationality rules and the bank's home region), the Writer and Director selects, the
-episode for a writer, unscripted competitions, the remaining script fields. One shown only somewhere is carried once a
-test shows it there; one an engine function reads needs a played-career proof. Then the eleven bank commands a $25m career never reaches (collections,
+- Sixth batch: keeping your own fields when revising a brief from a story (`blueprint-lock.ts`), a film's writer and
+  director (`film-roles.ts`: a hired director directs better; the Writer select's decision is the credit, which puts
+  the film in your writing record), the song entered for an award (`songs.ts`), the starting time (`creation-fields.ts`).
+  Twenty-nine of the player's own words (a synopsis, a draft's name, a character's wants, a contributor's name and the
+  rest) are carried: `tests/carried-text.test.ts` saves each and reads it back, and CONTROLS.csv cites it.
+- Explained, not proven (`explained.json`): keeping every holiday and an evening start each move only the delivery date
+  (4.6 days later, 1.3 days sooner at 40 careers) and nothing measured after it.
+- The matrix: open 270 -> 136 over this round, every result fresh (nothing stale).
+
+**Next.** The rest of the fields (136 open): the awards entry fields (episode, version, performer, project), ideas
+(IdeaPicker), the music mandate and licence scope, Place Of Birth (it decides only awards nationality rules and the
+bank's home region), names and pronouns and the birth date (identity read by the engine), the episode for a writer,
+unscripted competitions, the season plan's world rules and shared facts, structure and research notes, and the rest
+of the script's fields. One shown only somewhere is carried once a test shows it there; one an engine function reads
+needs a played-career proof. Then the eleven bank commands a $25m career never reaches, and an episode delivered
+early. Then the eleven bank commands a $25m career never reaches (collections,
 overdrafts, disputes, hardship), and an episode delivered early (a release planned while the season is in production). The writer's revision
 focus still waits on the owner (nothing reads it).
 
