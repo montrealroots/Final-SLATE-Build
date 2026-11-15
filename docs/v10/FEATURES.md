@@ -8,11 +8,11 @@ journey that shows it there.
 
 | Kind | proven | carried | does not bite | no downstream effect | stale | not a feature | not yet proven | All |
 |---|---|---|---|---|---|---|---|---|
-| action | 144 | 0 | 0 | 3 | 0 | 13 | 0 | 160 |
-| bank | 52 | 0 | 1 | 0 | 0 | 0 | 1 | 54 |
+| action | 146 | 0 | 0 | 1 | 0 | 13 | 0 | 160 |
+| bank | 53 | 0 | 1 | 0 | 0 | 0 | 0 | 54 |
 | scheduled | 55 | 0 | 0 | 0 | 0 | 11 | 0 | 66 |
 | field | 195 | 97 | 0 | 4 | 0 | 9 | 0 | 305 |
-| all | 446 | 97 | 1 | 7 | 0 | 33 | 1 | 585 |
+| all | 449 | 97 | 1 | 5 | 0 | 33 | 0 | 585 |
 
 ## Rows
 
@@ -47,8 +47,8 @@ journey that shows it there.
 | restoreToEdit | action | src/engine/edit-actions.ts | proven | restore-to-edit (40 seeds) | cutFromEdit -2; overall -0.6 |
 | startCutPass | action | src/engine/edit-actions.ts | proven | cut-passes (40 seeds) | quality.editing +8; daysToDeliver +3.175; overall +1.725; spent +3049.5 |
 | unlockPicture | action | src/engine/edit-actions.ts | proven | unlock-picture (40 seeds) | daysToDeliver +3; spent +2042.75 |
-| deliverEpisode | action | src/engine/episode-delivery.ts | no downstream effect | deliver-episode (40 seeds) | moved: episodesDeliveredAlone +1.85. Career not reached: an episode delivered on its own can come out before the season is finished, but only on a release planned before then; these careers sell a season once it is finished, so episode 1 delivered early (1.85 episodes a career, proven to bite) changes no release. To prove with a release planned while the season is in production. |
-| lockEpisode | action | src/engine/episode-delivery.ts | no downstream effect | deliver-episode (40 seeds) | moved: episodesDeliveredAlone +1.85. Career not reached: an episode delivered on its own can come out before the season is finished, but only on a release planned before then; these careers sell a season once it is finished, so episode 1 delivered early (1.85 episodes a career, proven to bite) changes no release. To prove with a release planned while the season is in production. |
+| deliverEpisode | action | src/engine/episode-delivery.ts | proven | deliver-episode-release (40 seeds) | episodesDeliveredAlone +1.875; firstOut -7.4 |
+| lockEpisode | action | src/engine/episode-delivery.ts | proven | deliver-episode-release (40 seeds) | episodesDeliveredAlone +1.875; firstOut -7.4 |
 | startEpisodeCutPass | action | src/engine/episode-delivery.ts | proven | episode-cut-pass (40 seeds) | episodeCutPasses +1.7; quality.editing +3.35; spent +1348.55 |
 | setEpisodeDates | action | src/engine/episode-releases.ts | proven | episode-dates (40 seeds) | episodesMoved +2.8; renewalWait +49.35 |
 | addToKit | action | src/engine/equipment.ts | proven | own-kit (40 seeds) | gearOwned +12; kitItems +12; spent -2981.5 |
@@ -194,7 +194,7 @@ journey that shows it there.
 | bank.open_current | bank | src/engine/bankworld | proven | open-current (40 seeds) | accounts +1; bankFees +10.81; worth -10.81 |
 | bank.open_savings | bank | src/engine/bankworld | proven | bank-savings (40 seeds) | accounts +1; interestIn +19961; money +26543.882 |
 | bank.open_term | bank | src/engine/bankworld | proven | term-deposit (40 seeds) | accounts +1; interestIn +41099.99; worth +41099.99 |
-| bank.pay_collections | bank | src/engine/bankworld | not yet proven |  |  |
+| bank.pay_collections | bank | src/engine/bankworld | proven | pay-collections (40 seeds) | inCollections -119.75; wellsAccounts +0.475 |
 | bank.reactivate | bank | src/engine/bankworld | proven | reactivate (40 seeds) | dormantAccounts -1; inSavings -5000 |
 | bank.redirect_deposits | bank | src/engine/bankworld | proven | redirect-deposits (40 seeds) | savingsHeld +131539.827; interestIn +660.732; worth +660.733 |
 | bank.repay_loan | bank | src/engine/bankworld | proven | repay-loan (40 seeds) | loansOwed -3156.004; interestOut -408.002; worth +365.568 |
