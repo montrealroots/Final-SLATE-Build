@@ -5,7 +5,7 @@ import { describe, expect, it } from 'vitest';
 import { DAY, assessQuality, assignEpisodeRole, computeCredits, deserialize, makeOffer, processUntil, releaseHire, roleCandidates, serialize } from './engine-api';
 import { ledgerTotals } from '../src/engine/budget';
 import { personById } from '../src/engine/people';
-import { MAX_REVISIONS, SCOPE, acceptWriting, acceptedRead, cancelWriting, commissionRefusal, commissionWriting, requestRevision, revisionRefusal, revisionTerms, standing, writingTerms } from '../src/engine/writing-jobs';
+import { MAX_REVISIONS, REVISION_AIM, REVISION_FOCUS, SCOPE, revisionAims, acceptWriting, acceptedRead, cancelWriting, commissionRefusal, commissionWriting, requestRevision, revisionRefusal, revisionTerms, standing, writingTerms } from '../src/engine/writing-jobs';
 import type { GameState, Hire, Project } from '../src/engine/types';
 import { approve, buildProject, castAll, runDays, staffAll, startLife, startProduction, summary } from './helpers';
 
@@ -134,6 +134,29 @@ describe('a writer is commissioned, works, delivers and is paid', () => {
     const back = deserialize(serialize(s));
     expect(back.projects[0].writing![0]).toMatchObject({ brief: 'Keep the harbour. Lose the brother.' });
     expect(back.projects[0].writing![0].passes[1].text).toBe('The brother talks like a brochure.');
+  });
+});
+
+describe('what a revision looks at', () => {
+  it('a revision aimed at what the episode has notes on reads better; aimed elsewhere, as it would have', () => {
+    const s = startLife('revision-focus');
+    const p = film(s);
+    const h = hire(s, p, 'episode-writer');
+    const j = commissionWriting(s, p, h.id, { scope: 'rewrite', episode: 1 });
+    days(s, 8);
+    expect(j.status).toBe('delivered');
+    const before = revisionAims(p, 1);
+    expect(before).not.toContain('Pace');
+    p.notes.push({ id: 'n-pace', text: 'The middle drags.', area: 'pacing', sceneId: p.scenes[0].id, status: 'open', source: 'player' });
+    expect(revisionAims(p, 1)).toEqual(REVISION_FOCUS.filter((f) => f === 'Pace' || before.includes(f)));
+    // The same save, the same draw: only what the revision looks at changes.
+    const read = (focus: string) => { const t = structuredClone(s); const q = t.projects.find((x) => x.id === p.id)!; requestRevision(t, q, j.id, { focus }); days(t, 8); return q.writing![0].passes[1].read!; };
+    const aimed = read('Pace');
+    const elsewhere = read('Something Else');
+    expect(aimed - elsewhere).toBe(REVISION_AIM);
+    // A note addressed, or advice, is nothing to aim at.
+    p.notes[p.notes.length - 1].status = 'addressed';
+    expect(revisionAims(p, 1)).toEqual(before);
   });
 });
 

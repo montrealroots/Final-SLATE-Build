@@ -3,6 +3,8 @@
 // you live is base-los-angeles's, a plan's start and length plan-over-call's, coverage and takes full-coverage's, and so
 // on. A field no proof varies stays unproven until one does (from November 15, 2026).
 export const FIELD_PROOFS: Record<string, string[]> = {
+  'stage-sets': ['field:PlanViews.tsx#{`Site For ${place}`}#1'],
+  'add-song': ["field:WorkViews.tsx#{`Scene For ${s.title}`}#1", "field:ScriptViews.tsx#{`\"${x.title}\" In This Scene`}#1"],
   'add-stage': ["field:PlanViews.tsx#{sceneLabel(p, s)}#1"],
   'add-version': ["field:FinishViews.tsx#{sceneLabel(p, s)}#1"],
   'base-los-angeles': ["field:Creation.tsx#\"Where You Live\"#1"],
@@ -22,7 +24,8 @@ export const FIELD_PROOFS: Record<string, string[]> = {
   'plan-later': ["field:PlanViews.tsx#\"Production Start\"#1"],
   'plan-over-call': ["field:Places.tsx#\"Start Time\"#1", "field:Places.tsx#\"Length In Minutes\"#1"],
   'record-screen-time': ["field:WorkViews.tsx#{`${c.name} On Screen (Minutes)`}#1"],
-  'sleep-through-call': ["field:Shell.tsx#\"Set Wake Time\"#1", "field:Shell.tsx#\"Set An Alarm\"#1"],
+  'sleep-through-call': ["field:Shell.tsx#\"Set Wake Time\"#1", "field:Shell.tsx#\"Set An Alarm\"#1", "field:Shell.tsx#\"Hours Of Sleep\"#1"],
+  'themes-stand': ["field:MusicTab.tsx#\"Let The Composer's Themes Stand Without My Review\"#1"],
   'theme-notes': ["field:MusicTab.tsx#\"Your Notes On The Themes\"#1"],
   'treat-as-adult': ["field:PersonWork.tsx#\"Treat As An Adult In This Story\"#1"],
   'version-song': ["field:WorkViews.tsx#{`${v.label}: ${sceneLabel(p, sc)}, In Place Of \"${song.title}\"`}#1"],

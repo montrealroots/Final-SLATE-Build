@@ -4,7 +4,7 @@
 import { useState } from 'react';
 import { formatDateKey, money, personById, qualityWords } from '../engine';
 import { jobLabel } from '../engine/guests';
-import { REVISION_FOCUS, SCOPE, SCOPES_FOR, WRITER_ROLES, acceptWriting, cancelWriting, commissionRefusal, commissionWriting, requestRevision, revisionRefusal, revisionTerms, standing, writingTerms } from '../engine/writing-jobs';
+import { REVISION_FOCUS, SCOPE, revisionAims, SCOPES_FOR, WRITER_ROLES, acceptWriting, cancelWriting, commissionRefusal, commissionWriting, requestRevision, revisionRefusal, revisionTerms, standing, writingTerms } from '../engine/writing-jobs';
 import type { Hire, Project, WritingJob, WritingScope } from '../engine/types';
 import { SelectField, TextField, plural } from './components';
 import { store, useGame } from './store';
@@ -77,6 +77,7 @@ function Writer({ p, h }: { p: Project; h: Hire }) {
       {open?.status === 'delivered' && (() => {
         const why = revisionRefusal(p, open);
         const rev = revisionTerms(p, open);
+        const aims = revisionAims(p, open.episode);
         return (
           <>
             <p className="dim small">How it reads is the game's measure of the delivered work, drawn around {name}'s level. It isn't a judgement of any words, yours or theirs.</p>
@@ -84,7 +85,8 @@ function Writer({ p, h }: { p: Project; h: Hire }) {
             {why ? <p className="muted">{why}</p> : (
               <div className="form">
                 <div className="grid grid-2">
-                  <SelectField label={`What ${name}'s Revision Should Look At`} value={focus} options={REVISION_FOCUS.map((f) => ({ value: f, label: f }))} onChange={setFocus} />
+                  <SelectField label={`What ${name}'s Revision Should Look At`} value={focus} options={REVISION_FOCUS.map((f) => ({ value: f, label: f }))} onChange={setFocus}
+                    hint={aims.length ? `The script has notes on ${aims.join(', ').toLowerCase()}: a revision that looks at one of them reads better.` : 'The script has no notes a revision could look at, so what it looks at changes nothing.'} />
                   <TextField label={`Your Note To ${name} (Optional)`} value={note} onChange={setNote} multiline maxLength={2000} hint="Kept as you write it. The game doesn't read it." />
                 </div>
                 <p className="muted">A revision takes {plural(rev.days, 'working day')} at {money(h.dayRate)} a day: {money(rev.cost)}. It replaces this pass, and may read better or worse: a revision usually lands nearer their level than a first pass does.</p>

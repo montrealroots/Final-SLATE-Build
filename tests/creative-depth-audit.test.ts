@@ -166,8 +166,8 @@ describe('the field inventory', () => {
     expect(n).toMatchInlineSnapshot(`
       {
         "has ideas": 52,
-        "no picker yet": 25,
-        "no picker, by design": 254,
+        "no picker yet": 26,
+        "no picker, by design": 253,
         "the picker itself": 10,
       }
     `);

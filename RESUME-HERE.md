@@ -121,15 +121,38 @@ and the rest) with real grades filling the hiring lists.
   (4.6 days later, 1.3 days sooner at 40 careers) and nothing measured after it.
 - The matrix: open 270 -> 136 over this round, every result fresh (nothing stale).
 
-**Next.** The rest of the fields (136 open): the awards entry fields (episode, version, performer, project), ideas
-(IdeaPicker), the music mandate and licence scope, Place Of Birth (it decides only awards nationality rules and the
-bank's home region), names and pronouns and the birth date (identity read by the engine), the episode for a writer,
-unscripted competitions, the season plan's world rules and shared facts, structure and research notes, and the rest
-of the script's fields. One shown only somewhere is carried once a test shows it there; one an engine function reads
-needs a played-career proof. Then the eleven bank commands a $25m career never reaches, and an episode delivered
-early. Then the eleven bank commands a $25m career never reaches (collections,
-overdrafts, disputes, hardship), and an episode delivered early (a release planned while the season is in production). The writer's revision
-focus still waits on the owner (nothing reads it).
+- Seventh batch onward (the owner, November 15, 2026: "Keep going until everything is perfect and fixed and has
+  proof"). Advice the player writes or picks is carried, not proven: `tests/advice-carried.test.ts` shows each one
+  reaching the advice it is written for and scoring nothing (a scene's objective, tone and operator; acts, threads and
+  beats; research questions; a casting breakdown and pronouns; the season plan and world rules; a documentary plan's
+  subject and kind). Your name and birth date are your legal name and age, seed the world and date the inheritance
+  (`tests/carried-text.test.ts`).
+- Proven at forty careers: music (silence, density, the composer's themes, a loud cue under dialogue, the licence's
+  world, countries and media), songs (commissioned, lyricist, opening titles, minutes, a track in a scene), scenes (a
+  look per scene, archival, dramatized, a series regular, who is in a scene, a contributor in an interview, a clue in a
+  detective story, a 2D scene in a 3D short), ideas (characters, scenes, tone), script checks (setups, claims, looks),
+  sources (short, animated, longer, episodes), awards entries (comedy, adapted, family, US cinemas, route, placement),
+  writing (a revision's focus, a series' episode writer, the episode a hired writer drafts), stop-motion stages, a
+  site's backup, setting a character aside, splitting one.
+- Fixed in the game this round: woken an hour before a call time or a job while asleep (`state.ts startSleep`); a
+  documentary's sourced scene with no fact linked is a research item (`production/tasks.ts`); the staffing screen says
+  how to fund crew when the target is already promised (`hiring.ts proposeStaffing`); a revision aimed at what the
+  episode has notes on reads four points better, and the screen says which focuses answer them
+  (`writing-jobs.ts revisionAims`). Decided and done without the owner, as `CLAUDE.md` asks: the focus had been held
+  open for them.
+- Probes that measured nothing until fixed: the stop-motion stages probe hired 3D CG's animator; a probe that set its
+  genre as a string, which the engine doesn't read (genres are `{ id, emphasis }`).
+- Explained, not proven: the music spending ceiling with Guide Me (the career staffs by hand either way).
+- Carried as a credit: who sings a song (the Song Performed By credit and the casting note; nothing else reads it).
+- The matrix: open 136 at PR #100's merge -> 41, every result fresh.
+
+**Next.** The 41 open: the eleven bank commands a $25m career never reaches (collections, overdrafts, disputes,
+hardship), and an episode delivered, locked or moved early (a release planned while the season is in production);
+episode release fields (schedule, premiere, later episodes) and the release's date, territory and cut; the awards
+entry fields (project, episode, version, performer); When It Is Set and the subject categories; unscripted format,
+competitors and who leaves; a chemistry read (drafted in the scratchpad, not run); heard-only time; a stage's episode and its
+scenes; a version's scenes; pickups; Place Of Birth, the player's pronouns, observances kept and the starting hour;
+an idea's characters ticked; the idea beats' interior or exterior.
 
 ## The Owner's Command Of November 14, 2026 (Later): Every Feature Proven, Everything Possible
 
