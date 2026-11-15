@@ -510,6 +510,6 @@
  "verdict": "proven",
  "hashes": {
   "src/engine/first-look.ts": "60b6dfb03138f023",
-  "tests/proof/career.ts": "2d4877367212a0ea"
+  "tests/proof/career.ts": "50bea06f19a02c5b"
  }
 }

@@ -436,6 +436,6 @@
  "hashes": {
   "src/engine/jobs.ts": "812153fda40c6228",
   "src/engine/reputation.ts": "77e4de4fa0479889",
-  "tests/proof/career.ts": "2d4877367212a0ea"
+  "tests/proof/career.ts": "50bea06f19a02c5b"
  }
 }

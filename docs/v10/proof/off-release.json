@@ -64,6 +64,7 @@
   "won": 0,
   "decided": 0,
   "finalised": 0,
+  "backerBonus": 0.024,
   "screenings": 0,
   "offers": 3.525,
   "editionsOpen": 99.6,
@@ -138,6 +139,7 @@
   "won": 0,
   "decided": 0,
   "finalised": 0,
+  "backerBonus": 0.027,
   "screenings": 0,
   "offers": 2.325,
   "editionsOpen": 99.6,
@@ -542,6 +544,13 @@
    "changed": 0,
    "n": 40
   },
+  "backerBonus": {
+   "mean": 0.004,
+   "lo": -0.003,
+   "hi": 0.01,
+   "changed": 34,
+   "n": 40
+  },
   "screenings": {
    "mean": 0,
    "lo": 0,
@@ -680,7 +689,7 @@
  ],
  "verdict": "proven",
  "hashes": {
-  "src/engine/finish.ts": "a24433fe72efaf22",
-  "tests/proof/career.ts": "2d4877367212a0ea"
+  "src/engine/finish.ts": "3bb0bc714a23c39d",
+  "tests/proof/career.ts": "50bea06f19a02c5b"
  }
 }

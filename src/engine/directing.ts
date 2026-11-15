@@ -97,7 +97,9 @@ export function applyFix(state: GameState, p: Project, sceneId: string, fix: Fix
   // A pickup day is paid like any other; it isn't booked when the money for it isn't there (the day would be lost).
   const { cost } = pickupCost(p, sceneId);
   const free = ledgerTotals(p).available;
-  if (free < cost) throw new Error(`A pickup day costs about ${money(cost)}, and ${money(free)} is uncommitted. Add funding first.`);
+  // The project raises only up to its financing target, so the way to the money is to raise the target first (until
+  // November 15, 2026 this said only "Add funding first", and adding it was refused while the target was met).
+  if (free < cost) throw new Error(`A pickup day costs about ${money(cost)}, and ${money(free)} is uncommitted. Raise the financing target by ${money(cost - free)} on the Budget page and add the money first.`);
   schedulePickups(state, p, [sceneId], { [sceneId]: fix.kind });
   return `A pickup of ${sceneLabel(p, s)} is scheduled.`;
 }

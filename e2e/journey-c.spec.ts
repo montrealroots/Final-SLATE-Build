@@ -50,10 +50,10 @@ test('journey C: songs written, recorded and cleared in production, placed in sc
     await songs.getByRole('button', { name: 'Add Song' }).click();
     await expect(song(title)).toBeVisible();
   };
-  await make('Salt Water', 'Commission It From A Songwriter', async (s) => { await s.getByLabel('Lyrics').selectOption({ label: 'Commissioned From A Lyricist' }); });
+  await make('Salt Water', 'Commission It From A Songwriter', async (s) => { await s.getByLabel('Lyrics').selectOption({ label: 'By A Lyricist You Hire' }); });
   await make('Harbour Lights', 'An Existing Song, Licensed', async (s) => { await s.getByLabel('Music By').fill('Ada Brook'); await s.getByLabel('Lyrics By').fill('Ada Brook'); await s.getByLabel('Rights Holder').fill('Tidewater Music'); });
   // The form keeps the last lyrics choice; the work it describes says who writes the words before the song is added.
-  await make('Lantern', 'Write It Yourself', async (s) => { await s.getByLabel('Lyrics').selectOption({ label: 'With The Music, By The Same Writer' }); });
+  await make('Lantern', 'Write It Yourself', async (s) => { await s.getByLabel('Lyrics').selectOption({ label: 'By The Songwriter' }); });
   await make('Ember', 'Write It Yourself');
   await make('Tidewater', 'Write It Yourself');
   const use = async (t: string, scene: RegExp, how: string) => {

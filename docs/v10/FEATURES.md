@@ -8,59 +8,59 @@ journey that shows it there.
 
 | Kind | proven | carried | does not bite | no downstream effect | stale | not a feature | not yet proven | All |
 |---|---|---|---|---|---|---|---|---|
-| action | 101 | 0 | 0 | 0 | 0 | 8 | 50 | 159 |
+| action | 106 | 0 | 0 | 0 | 0 | 8 | 46 | 160 |
 | bank | 15 | 0 | 0 | 0 | 0 | 0 | 39 | 54 |
-| scheduled | 38 | 0 | 0 | 1 | 0 | 5 | 22 | 66 |
-| field | 36 | 13 | 0 | 0 | 0 | 0 | 257 | 306 |
-| all | 190 | 13 | 0 | 1 | 0 | 13 | 368 | 585 |
+| scheduled | 39 | 0 | 0 | 0 | 0 | 5 | 22 | 66 |
+| field | 36 | 13 | 0 | 0 | 0 | 0 | 256 | 305 |
+| all | 196 | 13 | 0 | 0 | 0 | 13 | 363 | 585 |
 
 ## Rows
 
 | Feature | Kind | Read by | Status | Proof | What moved, or why |
 |---|---|---|---|---|---|
-| rsvpScreening | action | src/engine/awards-actions.ts | proven | attend-screening (30 seeds) | accepted +6.867; attended +5.367; offers +7.1 |
-| submitEntry | action | src/engine/awards-actions.ts | proven | enter-awards (30 seeds) | entries +41.5; selected +4.8 |
-| withdrawEntry | action | src/engine/awards-actions.ts | proven | withdraw-entry (30 seeds) | withdrawn +32.8; selected -5.433 |
+| rsvpScreening | action | src/engine/awards-actions.ts | proven | attend-screening (30 seeds) | accepted +6.633; attended +5.1; offers +6.633 |
+| submitEntry | action | src/engine/awards-actions.ts | proven | enter-awards (40 seeds) | entries +41.7; selected +4.9 |
+| withdrawEntry | action | src/engine/awards-actions.ts | proven | withdraw-entry (40 seeds) | withdrawn +33.425; selected -5.35 |
 | execute | action | src/engine/bankworld/core/simulation.ts | not a feature |  | The bank world's dispatcher: every bank command a screen runs goes through it, and each command is its own row. |
 | advanceBankWorld | action | src/engine/bankworld/index.ts | not a feature |  | Brings the bank to the game's clock before a bank command runs; time passing is proven through the scheduled rows and the bank commands. |
 | bankSim | action | src/engine/bankworld/index.ts | not a feature |  | Reads the bank world for the command that follows; not a decision. |
 | setLock | action | src/engine/blueprints.ts | not yet proven |  |  |
 | saveIdea | action | src/engine/brief.ts | not yet proven |  |  |
-| callBack | action | src/engine/casting-calls.ts | proven | callback (40 seeds) | callbacksSeen +7.35; castCapability +0.563 |
+| callBack | action | src/engine/casting-calls.ts | proven | callback (40 seeds) | callbacksSeen +7.425; castCapability +0.525 |
 | inviteToAudition | action | src/engine/casting-calls.ts | proven | audition (40 seeds) | readsSeen +14.8; castCapability +9.113; performance +7.469; overall +2.488; castRates +236.75 |
-| setShortlisted | action | src/engine/casting-calls.ts | proven | callback (40 seeds) | callbacksSeen +7.35; castCapability +0.563 |
+| setShortlisted | action | src/engine/casting-calls.ts | proven | callback (40 seeds) | callbacksSeen +7.425; castCapability +0.525 |
 | shortlistAdvice | action | src/engine/casting-director.ts | not yet proven |  |  |
 | startSearch | action | src/engine/casting-director.ts | not yet proven |  |  |
 | setBanner | action | src/engine/company.ts | not yet proven |  |  |
-| applyBrief | action | src/engine/cues.ts | proven | music-brief (40 seeds) | cues +4; spent +3758; daysToDeliver +2.1 |
+| applyBrief | action | src/engine/cues.ts | proven | music-brief (40 seeds) | cues +4; spent +3873.5; daysToDeliver +2.1 |
 | approveThemes | action | src/engine/cues.ts | proven | approve-themes (40 seeds) | themesApproved +2; delivered +2; released +2; quality.music +59.725 |
-| editCue | action | src/engine/cues.ts | proven | edit-cue (40 seeds) | cues -4; spent -5533; daysToDeliver -1.712; quality.music -14.575 |
-| giveThemeNotes | action | src/engine/cues.ts | proven | theme-notes (40 seeds) | themeRounds +4; quality.music +4; spent +2608.5; daysToDeliver +3.65 |
-| approveDesign | action | src/engine/designs-actions.ts | not yet proven |  |  |
-| askForDesignChanges | action | src/engine/designs-actions.ts | not yet proven |  |  |
-| setFilmedAt | action | src/engine/destinations.ts | proven | filmed-abroad (40 seeds) | filmedAway +6; spent +17385.9; daysToDeliver +10.85 |
-| applyFix | action | src/engine/directing.ts | not yet proven |  |  |
+| editCue | action | src/engine/cues.ts | proven | edit-cue (40 seeds) | cues -4; spent -5280; daysToDeliver -1.712; quality.music -14.575 |
+| giveThemeNotes | action | src/engine/cues.ts | proven | theme-notes (40 seeds) | themeRounds +4; quality.music +4; spent +2664; daysToDeliver +3.65 |
+| approveDesign | action | src/engine/designs-actions.ts | proven | approve-design (20 seeds) | delivered +2; revenue +83788.5; money +109689.8 |
+| askForDesignChanges | action | src/engine/designs-actions.ts | proven | ask-design-changes (20 seeds) | designDays +1.7; spent +671 |
+| setFilmedAt | action | src/engine/destinations.ts | proven | filmed-abroad (40 seeds) | filmedAway +6; spent +17781.9; daysToDeliver +10.85 |
+| applyFix | action | src/engine/directing.ts | proven | fix-with-pickups (40 seeds) | pickupDays +2.85; spent +6543; quality.editing +1.6 |
 | showCut | action | src/engine/documentary-actions.ts | not yet proven |  |  |
 | requestConsent | action | src/engine/documentary.ts | not yet proven |  |  |
-| lockPicture | action | src/engine/edit-actions.ts | proven | lock-picture (30 seeds) | delivered -2; released -2; revenue -144950; standing.producing -3.3 |
-| requestPickups | action | src/engine/edit-actions.ts | proven | request-pickups (40 seeds) | shootDays +2.675; spent +7538; daysToDeliver +6.863 |
+| lockPicture | action | src/engine/edit-actions.ts | proven | lock-picture (40 seeds) | delivered -2; released -2; revenue -142510.875; standing.producing -3.125 |
+| requestPickups | action | src/engine/edit-actions.ts | proven | request-pickups (40 seeds) | shootDays +2.675; spent +7527.5; daysToDeliver +6.863 |
 | restoreToEdit | action | src/engine/edit-actions.ts | proven | restore-to-edit (40 seeds) | cutFromEdit -2; overall -0.6 |
-| startCutPass | action | src/engine/edit-actions.ts | proven | cut-passes (30 seeds) | quality.editing +8; daysToDeliver +3.217; overall +1.1; spent +2898 |
+| startCutPass | action | src/engine/edit-actions.ts | proven | cut-passes (40 seeds) | quality.editing +8; daysToDeliver +3.175; overall +1.725; spent +3049.5 |
 | unlockPicture | action | src/engine/edit-actions.ts | proven | unlock-picture (40 seeds) | daysToDeliver +3; spent +2042.75 |
 | deliverEpisode | action | src/engine/episode-delivery.ts | not yet proven |  |  |
 | lockEpisode | action | src/engine/episode-delivery.ts | not yet proven |  |  |
 | startEpisodeCutPass | action | src/engine/episode-delivery.ts | not yet proven |  |  |
 | setEpisodeDates | action | src/engine/episode-releases.ts | not yet proven |  |  |
-| addToKit | action | src/engine/equipment.ts | proven | own-kit (40 seeds) | gearOwned +12; kitItems +12; spent -2793.5 |
-| buyGear | action | src/engine/equipment.ts | proven | own-kit (40 seeds) | gearOwned +12; kitItems +12; spent -2793.5 |
-| removeFromKit | action | src/engine/equipment.ts | proven | remove-from-kit (40 seeds) | kitItems -2; spent +2904.375 |
+| addToKit | action | src/engine/equipment.ts | proven | own-kit (40 seeds) | gearOwned +12; kitItems +12; spent -2981.5 |
+| buyGear | action | src/engine/equipment.ts | proven | own-kit (40 seeds) | gearOwned +12; kitItems +12; spent -2981.5 |
+| removeFromKit | action | src/engine/equipment.ts | proven | remove-from-kit (40 seeds) | kitItems -2; spent +2791.875 |
 | sellGear | action | src/engine/equipment.ts | proven | sell-gear (30 seeds) | gearOwned -6; spent +478.367 |
-| serviceGear | action | src/engine/equipment.ts | proven | service-gear (30 seeds) | worn -6; kitPostponed -725; lostDays -724.033; daysToDeliver +2.1; spent +42775; money +139614.108 |
-| setPackageApproval | action | src/engine/equipment.ts | proven | package-approval (40 seeds) | kitPostponed -729; lostDays -727.4; daysToDeliver +33.563; delivered +2; spent +49743.25 |
-| acceptDeal | action | src/engine/finance.ts | proven | own-money-or-backer (40 seeds) | ownIn -72300; backerDeals +2; revenue -65075.175 |
-| approachBacker | action | src/engine/finance.ts | proven | own-money-or-backer (40 seeds) | ownIn -72300; backerDeals +2; revenue -65075.175 |
+| serviceGear | action | src/engine/equipment.ts | proven | service-gear (30 seeds) | worn -6; kitPostponed -725; lostDays -724.033; daysToDeliver +2.1; spent +42581; money +136987.541 |
+| setPackageApproval | action | src/engine/equipment.ts | proven | package-approval (40 seeds) | kitPostponed -729; lostDays -727.4; daysToDeliver +33.563; delivered +2; spent +49552.75 |
+| acceptDeal | action | src/engine/finance.ts | proven | own-money-or-backer (40 seeds) | ownIn -73300; backerDeals +2; revenue -66630.85 |
+| approachBacker | action | src/engine/finance.ts | proven | own-money-or-backer (40 seeds) | ownIn -73300; backerDeals +2; revenue -66630.85 |
 | pitchToStudio | action | src/engine/finance.ts | not yet proven |  |  |
-| refuseDeal | action | src/engine/finance.ts | proven | refuse-deal (40 seeds) | refused +1.65; investorIn -61375; ownIn +61375; money +21270.955; leftInProjects -12945.5 |
+| refuseDeal | action | src/engine/finance.ts | proven | refuse-deal (40 seeds) | refused +1.675; investorIn -62375; ownIn +62375; money +26519.555; leftInProjects -13112.25 |
 | setFinanceTarget | action | src/engine/finance.ts | proven | finance-target (40 seeds) | backerIn +38750; leftInProjects +32709.5; money -7180.28; revenue -9014.2 |
 | submitSeries | action | src/engine/finance.ts | not yet proven |  |  |
 | acceptDistribution | action | src/engine/finish.ts | proven | distributor-or-self (40 seeds) | distributed -1.725; revenue -129892.75; money -122776.35 |
@@ -70,30 +70,30 @@ journey that shows it there.
 | deliver | action | src/engine/finish.ts | proven | deliver (40 seeds) | delivered -2; released -2; revenue -138815.625; standing.producing -3.375 |
 | planRelease | action | src/engine/finish.ts | proven | release-or-not (40 seeds) | released -2; revenue -136576.375; money -131252.575 |
 | setReleaseVersion | action | src/engine/finish.ts | proven | release-dubbed (60 seeds) | dubbed +0.917; spent +4942; revenue +17728.75 |
-| acceptFirstLook | action | src/engine/first-look.ts | proven | first-look-accept (30 seeds) | firstLookActive +0.9; money +686273 |
+| acceptFirstLook | action | src/engine/first-look.ts | proven | first-look-accept (40 seeds) | firstLookActive +1.025; money +670839.742 |
 | askMoreOverhead | action | src/engine/first-look.ts | proven | first-look-overhead (40 seeds) | overheadAsked +1.825; overheadAgreed +0.2 |
-| declineFirstLook | action | src/engine/first-look.ts | proven | first-look-decline (30 seeds) | firstLookDeclined +1.3; firstLookActive -1.367; money -513714.867 |
+| declineFirstLook | action | src/engine/first-look.ts | proven | first-look-decline (40 seeds) | firstLookDeclined +1.2; firstLookActive -1.325; money -515027.426 |
 | drawDevelopment | action | src/engine/first-look.ts | not yet proven |  |  |
-| endFirstLook | action | src/engine/first-look.ts | proven | first-look-end (30 seeds) | firstLookEnded +1.433; money -391398.5 |
-| considerFor | action | src/engine/guests.ts | proven | consider-real (40 seeds) | realCast +1.725; castCapability +9.356; performance +7.85; castRates +570.25 |
-| considerPerson | action | src/engine/guests.ts | proven | consider-real (40 seeds) | realCast +1.725; castCapability +9.356; performance +7.85; castRates +570.25 |
+| endFirstLook | action | src/engine/first-look.ts | proven | first-look-end (40 seeds) | firstLookEnded +1.55; money -352329.992 |
+| considerFor | action | src/engine/guests.ts | proven | consider-real (40 seeds) | realCast +1.725; castCapability -3.525; performance -2.744; castRates +556 |
+| considerPerson | action | src/engine/guests.ts | proven | consider-real (40 seeds) | realCast +1.725; castCapability -3.525; performance -2.744; castRates +556 |
 | stopConsidering | action | src/engine/guests.ts | not yet proven |  |  |
 | treatAsAdult | action | src/engine/guests.ts | not yet proven |  |  |
-| acceptCounter | action | src/engine/hiring.ts | proven | counter-offers (30 seeds) | countersDeclined +89.333; spent +10760; quality.craft -59.65; overall -58.433; daysToDeliver -33.517 |
-| castPlayer | action | src/engine/hiring.ts | proven | cast-yourself (40 seeds) | playerParts +2; castRates -1631.75; spent -5586.75; standing.acting +4.625; overall -0.512 |
+| acceptCounter | action | src/engine/hiring.ts | proven | counter-offers (40 seeds) | countersDeclined +90.65; spent +10552.75; quality.craft -59.712; overall -58.362; daysToDeliver -33.987 |
+| castPlayer | action | src/engine/hiring.ts | proven | cast-yourself (40 seeds) | playerParts +2; castRates -1631.75; spent -5264.75; standing.acting +4.65 |
 | castRoleFor | action | src/engine/hiring.ts | not yet proven |  |  |
-| declineCounter | action | src/engine/hiring.ts | proven | counter-offers (30 seeds) | countersDeclined +89.333; spent +10760; quality.craft -59.65; overall -58.433; daysToDeliver -33.517 |
-| makeOffer | action | src/engine/hiring.ts | proven | offered-rate (30 seeds) | castRates -208.633; spent -1625.867; countersSeen +0.767; money -17052.633 |
-| releaseHire | action | src/engine/hiring.ts | proven | release-hire (40 seeds) | released +2; offersMade +37.975; spent +2481.875 |
+| declineCounter | action | src/engine/hiring.ts | proven | counter-offers (40 seeds) | countersDeclined +90.65; spent +10552.75; quality.craft -59.712; overall -58.362; daysToDeliver -33.987 |
+| makeOffer | action | src/engine/hiring.ts | proven | offered-rate (40 seeds) | castRates -209.1; spent -1157.925; countersSeen +0.75 |
+| releaseHire | action | src/engine/hiring.ts | proven | release-hire (40 seeds) | released +2; offersMade +37.625 |
 | sendStaffingOffers | action | src/engine/hiring.ts | not yet proven |  |  |
-| uncastPlayer | action | src/engine/hiring.ts | proven | uncast-yourself (40 seeds) | playerParts -2; castRates +1637; spent +5783.5; standing.acting -4.65; overall +0.525 |
+| uncastPlayer | action | src/engine/hiring.ts | proven | uncast-yourself (40 seeds) | playerParts -2; castRates +1637; spent +5638.5; standing.acting -4.65; overall +0.475 |
 | withdrawOffer | action | src/engine/hiring.ts | proven | withdraw-offer (40 seeds) | withdrawn +2; offersMade +2; castRates +86 |
 | acceptJob | action | src/engine/jobs.ts | proven | outside-work (40 seeds) | jobsDone -0.9; jobPay -5206.2; jobsOffered -0.175 |
 | askBetterRate | action | src/engine/jobs.ts | proven | ask-better-rate (60 seeds) | ratesAgreed +7.5; jobPay +5917.083 |
-| declineJob | action | src/engine/jobs.ts | proven | decline-job (40 seeds) | jobsDeclined +0.95; jobsDone -0.8; jobPay -4354.9 |
+| declineJob | action | src/engine/jobs.ts | proven | decline-job (40 seeds) | jobsDeclined +0.975; jobsDone -0.875; jobPay -4960.85 |
 | withdrawJob | action | src/engine/jobs.ts | proven | withdraw-job (40 seeds) | jobsWithdrawn +0.9; jobsDone -0.975; jobPay -5139.65 |
 | negotiate | action | src/engine/line-producer.ts | not yet proven |  |  |
-| chooseSite | action | src/engine/locations-actions.ts | proven | stage-sets (40 seeds) | onStage +6; spent -2240.5; lostDays -1.45; daysToDeliver -1.987 |
+| chooseSite | action | src/engine/locations-actions.ts | proven | stage-sets (40 seeds) | onStage +6; lostDays -1.45; daysToDeliver -1.987 |
 | approveGuideMe | action | src/engine/mandates.ts | not yet proven |  |  |
 | endGuideMe | action | src/engine/mandates.ts | not yet proven |  |  |
 | approveTake | action | src/engine/mocap.ts | not yet proven |  |  |
@@ -102,29 +102,29 @@ journey that shows it there.
 | requestRetake | action | src/engine/mocap.ts | not yet proven |  |  |
 | considerComposer | action | src/engine/music-catalog.ts | not yet proven |  |  |
 | licenseRecording | action | src/engine/music-catalog.ts | not yet proven |  |  |
-| agreeLicence | action | src/engine/music.ts | proven | license-song (40 seeds) | licensed +1.475; released +1.475; revenue +36961.25; spent +2563.25 |
-| declineQuote | action | src/engine/music.ts | proven | decline-quote (40 seeds) | licensed -1.525; released -1.525; revenue -37008.625; spent -2333.75 |
+| agreeLicence | action | src/engine/music.ts | proven | license-song (40 seeds) | licensed +1.475; released +1.475; revenue +38436.25; spent +2563.25 |
+| declineQuote | action | src/engine/music.ts | proven | decline-quote (40 seeds) | licensed -1.575; released -1.575; revenue -38963.5; spent -2434.25 |
 | renewLicence | action | src/engine/music.ts | proven | renew-licence (40 seeds) | renewals +0.65; released +0.65; spent +292.5 |
-| replaceWithLibrary | action | src/engine/music.ts | proven | library-track (40 seeds) | libraryTracks +2; released +1.95; revenue +131056.25; spent +6899.5 |
-| requestLicence | action | src/engine/music.ts | proven | license-song (40 seeds) | licensed +1.475; released +1.475; revenue +36961.25; spent +2563.25 |
-| askForBetterTerms | action | src/engine/negotiation-actions.ts | proven | better-terms (40 seeds) | asked +1.525; investorShare -0.137; investorIn -8925; ownIn +8925 |
-| acceptOpportunity | action | src/engine/opportunities.ts | proven | accept-opportunity (30 seeds) | proposalsAccepted +0.6; commissioned +0.6; commissionMoney +50240 |
-| declineOpportunity | action | src/engine/opportunities.ts | proven | decline-opportunity (30 seeds) | proposalsAccepted -0.533; commissioned -0.533; commissionMoney -39626.667 |
-| applyForPermit | action | src/engine/papers.ts | proven | work-permit (100 seeds) | permits +0.99; lateDays -7.11; shootDays -1.13; daysToDeliver -1.35; spent -1678.68; quality.direction +3.745; overall +1.545 |
+| replaceWithLibrary | action | src/engine/music.ts | proven | library-track (40 seeds) | libraryTracks +2; released +1.95; revenue +132873; spent +6889 |
+| requestLicence | action | src/engine/music.ts | proven | license-song (40 seeds) | licensed +1.475; released +1.475; revenue +38436.25; spent +2563.25 |
+| askForBetterTerms | action | src/engine/negotiation-actions.ts | proven | better-terms (40 seeds) | asked +1.525; investorShare -0.14; investorIn -8925; ownIn +8925 |
+| acceptOpportunity | action | src/engine/opportunities.ts | proven | accept-opportunity (30 seeds) | proposalsAccepted +0.6; commissioned +0.6; commissionMoney +49600 |
+| declineOpportunity | action | src/engine/opportunities.ts | proven | decline-opportunity (30 seeds) | proposalsAccepted -0.567; commissioned -0.567; commissionMoney -44373.333 |
+| applyForPermit | action | src/engine/papers.ts | proven | work-permit (100 seeds) | permits +1; lateDays -7.14; shootDays -1.13; daysToDeliver -1.35; spent -1672.28; quality.direction +3.76; overall +1.345 |
 | applyForRecordedPassport | action | src/engine/papers.ts | not yet proven |  |  |
-| applyForVisa | action | src/engine/papers.ts | proven | visitor-visa (30 seeds) | visas +1.067; attended +0.667 |
-| moveTo | action | src/engine/papers.ts | proven | move-home (40 seeds) | livesInLondon -1; frenchAccounts +2; bankFees +31.19; overall -0.662; quality.direction -1.237; money -682861.9 |
+| applyForVisa | action | src/engine/papers.ts | proven | visitor-visa (30 seeds) | visas +1.033; attended +0.667; offers +1.833 |
+| moveTo | action | src/engine/papers.ts | proven | move-home (40 seeds) | livesInLondon -1; frenchAccounts +2; bankFees +31.19; overall -0.625; quality.direction -1.4; money -676193.125 |
 | addStage | action | src/engine/parts.ts | not yet proven |  |  |
 | removeStage | action | src/engine/parts.ts | not yet proven |  |  |
-| putInOwnMoney | action | src/engine/personal.ts | proven | own-money-or-backer (40 seeds) | ownIn -72300; backerDeals +2; revenue -65075.175 |
-| takeHome | action | src/engine/personal.ts | proven | take-money-home (40 seeds) | leftInProjects +146629.125; money -166082.875 |
+| putInOwnMoney | action | src/engine/personal.ts | proven | own-money-or-backer (40 seeds) | ownIn -73300; backerDeals +2; revenue -66630.85 |
+| takeHome | action | src/engine/personal.ts | proven | take-money-home (40 seeds) | leftInProjects +141512.875; money -160344.375 |
 | takeHomeAvailable | action | src/engine/personal.ts | not a feature |  | Reads how much may come home, inside the Take Home action, which is its own row. |
-| applyDesignChange | action | src/engine/production.ts | not yet proven |  |  |
+| applyDesignChange | action | src/engine/production.ts | proven | change-design-redo (20 seeds) | redone +10; daysToDeliver +59.475; spent +44075 |
 | generatePlan | action | src/engine/production/schedule.ts | proven | plan-later (40 seeds) | firstShootDay +70; daysToDeliver +67.363 |
-| keepWeatherPlan | action | src/engine/production/shoot.ts | proven | weather-keep (60 seeds) | lostDays -1.3; overall +0.208; daysToDeliver -1.883; spent -3092.167 |
-| moveShootDay | action | src/engine/production/shoot.ts | proven | weather-move (60 seeds) | lostDays -2.067; daysToDeliver -1.475; spent -4170.5 |
-| swapWithInteriorDay | action | src/engine/production/shoot.ts | proven | weather-swap (60 seeds) | lostDays -0.7; daysToDeliver -0.942; spent -2031 |
-| setPlannedBudget | action | src/engine/project-budget.ts | proven | plan-budget (40 seeds) | target +80525; ownIn +9000; backerIn +71525; revenue -19359.425; money -21761.218 |
+| keepWeatherPlan | action | src/engine/production/shoot.ts | proven | weather-keep (60 seeds) | lostDays -1.3; overall +0.2; daysToDeliver -1.883; spent -3092.167 |
+| moveShootDay | action | src/engine/production/shoot.ts | proven | weather-move (60 seeds) | lostDays -2.067; daysToDeliver -1.475; spent -4243.5 |
+| swapWithInteriorDay | action | src/engine/production/shoot.ts | proven | weather-swap (60 seeds) | lostDays -0.7; daysToDeliver -0.942; spent -2191.333 |
+| setPlannedBudget | action | src/engine/project-budget.ts | proven | plan-budget (40 seeds) | target +80525; ownIn +10000; backerIn +70525; revenue -17844.95; money -19909.443 |
 | addNote | action | src/engine/projects.ts | proven | own-notes (40 seeds) | ownNotes +6; quality.script +6; overall +1.725 |
 | approveDraft | action | src/engine/projects.ts | proven | second-project (40 seeds) | projects +2; approvedProjects +2; deliveredAll +1.75; money -55741.884; standing.producing +1.4; jobsDone +0.8 |
 | assignEpisodeRole | action | src/engine/projects.ts | not yet proven |  |  |
@@ -134,14 +134,15 @@ journey that shows it there.
 | setNoteStatus | action | src/engine/projects.ts | proven | revision-notes (40 seeds) | notesAddressed +6; quality.script +6; overall +1.9 |
 | startRevision | action | src/engine/projects.ts | proven | revision-notes (40 seeds) | notesAddressed +6; quality.script +6; overall +1.9 |
 | createFromSource | action | src/engine/proposal.ts | not yet proven |  |  |
-| proposeLicence | action | src/engine/release-plan.ts | proven | licence-proposal (30 seeds) | licenceDeals +0.767; revenue -35555; money -37580.067 |
-| releaseYourself | action | src/engine/release-plan.ts | proven | self-release-stores (30 seeds) | revenue +38987.667; money +34773.933; spent +2600 |
-| setReleasePlan | action | src/engine/release-plan.ts | proven | self-release-stores (30 seeds) | revenue +38987.667; money +34773.933; spent +2600 |
-| approachAgent | action | src/engine/representation.ts | proven | agent (40 seeds) | viaAgent +7.1; jobsOffered +7.1; commission +3627.575; jobPay +22883.725 |
-| declineMandate | action | src/engine/representation.ts | proven | agent-decline (40 seeds) | viaAgent -6.775; jobsOffered -6.6; jobPay -18802.85 |
-| giveNotice | action | src/engine/representation.ts | proven | agent-notice (40 seeds) | viaAgent -5.425; jobsOffered -5.425; jobPay -19731.075; commission -3154.2 |
-| renewMandate | action | src/engine/representation.ts | proven | agent-renew (40 seeds) | renewals +3; represented +1; viaAgent +14.05; jobsOffered +14.125; jobPay +68818.3; money +63763.15 |
-| signWith | action | src/engine/representation.ts | proven | agent (40 seeds) | viaAgent +7.1; jobsOffered +7.1; commission +3627.575; jobPay +22883.725 |
+| considerRecognised | action | src/engine/recognition-hire.ts | proven | hire-recognised (40 seeds) | recognisedHired +3.85; spent +25974.75; quality.craft -53.662; overall -52.487 |
+| proposeLicence | action | src/engine/release-plan.ts | proven | licence-proposal (40 seeds) | licenceDeals +0.875; money -27693.375 |
+| releaseYourself | action | src/engine/release-plan.ts | proven | self-release-stores (40 seeds) | revenue +39593.75; money +36625.299; spent +2600 |
+| setReleasePlan | action | src/engine/release-plan.ts | proven | self-release-stores (40 seeds) | revenue +39593.75; money +36625.299; spent +2600 |
+| approachAgent | action | src/engine/representation.ts | proven | agent (40 seeds) | viaAgent +7.1; jobsOffered +7.15; commission +3627.575; jobPay +22465.025 |
+| declineMandate | action | src/engine/representation.ts | proven | agent-decline (40 seeds) | viaAgent -6.775; jobsOffered -6.7; jobPay -19641.85 |
+| giveNotice | action | src/engine/representation.ts | proven | agent-notice (40 seeds) | viaAgent -5.425; jobsOffered -5.45; jobPay -20631.425; commission -3154.2 |
+| renewMandate | action | src/engine/representation.ts | proven | agent-renew (40 seeds) | renewals +3; represented +1; viaAgent +14.05; jobsOffered +14.025; jobPay +68621.175; money +69897.8 |
+| signWith | action | src/engine/representation.ts | proven | agent (40 seeds) | viaAgent +7.1; jobsOffered +7.15; commission +3627.575; jobPay +22465.025 |
 | submitThrough | action | src/engine/representation.ts | not yet proven |  |  |
 | rerecordLines | action | src/engine/revisions.ts | not yet proven |  |  |
 | reviseAnimatic | action | src/engine/revisions.ts | not yet proven |  |  |
@@ -152,34 +153,34 @@ journey that shows it there.
 | continueProject | action | src/engine/sequel.ts | not yet proven |  |  |
 | resumeProject | action | src/engine/shelve.ts | proven | shelve-resume (60 seeds) | hiresReleased +16; deliveredDay +264.783; offersDeclined +318.217; castRates +169.333; revenue -94136.25; money -102728.477 |
 | shelveProject | action | src/engine/shelve.ts | proven | shelve-resume (60 seeds) | hiresReleased +16; deliveredDay +264.783; offersDeclined +318.217; castRates +169.333; revenue -94136.25; money -102728.477 |
-| attachSong | action | src/engine/song-actions.ts | proven | add-song (40 seeds) | songs +2; songUses +2; released -2; revenue -111865 |
+| attachSong | action | src/engine/song-actions.ts | proven | add-song (40 seeds) | songs +2; songUses +2; released -2; revenue -108215.25 |
 | changeVersionSong | action | src/engine/song-actions.ts | not yet proven |  |  |
-| createSong | action | src/engine/song-actions.ts | proven | add-song (40 seeds) | songs +2; songUses +2; released -2; revenue -111865 |
-| detachSong | action | src/engine/song-actions.ts | proven | detach-song (40 seeds) | songUses -2; released +2; revenue +121808.375 |
+| createSong | action | src/engine/song-actions.ts | proven | add-song (40 seeds) | songs +2; songUses +2; released -2; revenue -108215.25 |
+| detachSong | action | src/engine/song-actions.ts | proven | detach-song (40 seeds) | songUses -2; released +2; revenue +120740.75 |
 | playFirstOverEndCredits | action | src/engine/song-actions.ts | not yet proven |  |  |
 | removeSong | action | src/engine/song-actions.ts | proven | remove-song (40 seeds) | songs -2; spent -4131.75; daysToDeliver -1.375 |
 | restoreVersionSong | action | src/engine/song-actions.ts | not yet proven |  |  |
 | setSongPerformers | action | src/engine/song-actions.ts | not yet proven |  |  |
 | syncMusicTasks | action | src/engine/song-actions.ts | not a feature |  | Follows a song change with the work it now needs; the song changes are their own rows. |
 | syncSongTasks | action | src/engine/song-actions.ts | not a feature |  | Follows a song change with the work it now needs; the song changes are their own rows. |
-| addPlan | action | src/engine/state.ts | proven | plan-over-call (40 seeds) | lateDays +1; quality.direction -0.5; overall -0.3 |
+| addPlan | action | src/engine/state.ts | proven | plan-over-call (40 seeds) | lateDays +1; quality.direction -0.487 |
 | adoptPlace | action | src/engine/state.ts | not a feature |  | Makes a chosen place known to the world; the place field that chose it is the row. |
-| cancelPlan | action | src/engine/state.ts | proven | cancel-plan (40 seeds) | lateDays -1; quality.direction +0.638; overall +0.3 |
-| startSleep | action | src/engine/state.ts | proven | sleep-through-call (40 seeds) | lateDays +1; quality.direction -0.75; overall -0.237 |
-| travelTo | action | src/engine/state.ts | proven | travel-away (40 seeds) | lateDays +3.8; quality.direction -1.862; overall -0.712 |
+| cancelPlan | action | src/engine/state.ts | proven | cancel-plan (40 seeds) | lateDays -1; quality.direction +0.688 |
+| startSleep | action | src/engine/state.ts | proven | sleep-through-call (40 seeds) | lateDays +1; quality.direction -0.775; overall -0.25 |
+| travelTo | action | src/engine/state.ts | proven | travel-away (40 seeds) | lateDays +3.8; quality.direction -1.875; overall -0.662 |
 | chooseTake | action | src/engine/takes-actions.ts | proven | weakest-takes (40 seeds) | weakTakes +0.975; quality.direction -0.75; overall -0.25; reception -0.25 |
-| setShotPlan | action | src/engine/takes-actions.ts | proven | full-coverage (40 seeds) | setups +6; shootDays +25.775; spent +84118; quality.direction +2.188; overall +1.113 |
+| setShotPlan | action | src/engine/takes-actions.ts | proven | full-coverage (40 seeds) | setups +6; shootDays +25.775; spent +84311.5; quality.direction +2.213; overall +1.063 |
 | formatDateKey | action | src/engine/time.ts | not a feature |  | Formats a date inside a change; not a decision. |
 | withdrawRelease | action | src/engine/unscripted.ts | not yet proven |  |  |
 | addVersion | action | src/engine/versions.ts | proven | add-version (40 seeds) | versions +2; versionDays +1.925; spent +1174.5 |
 | removeVersion | action | src/engine/versions.ts | proven | remove-version (40 seeds) | versions -2; versionDays -1.875; spent -1166.5 |
-| acceptWriting | action | src/engine/writing-jobs.ts | proven | writing-polish (40 seeds) | passesAccepted +1.925; quality.script +1.888; overall +0.638 |
-| cancelWriting | action | src/engine/writing-jobs.ts | proven | writing-cancel (40 seeds) | passesAccepted -1.9; passesCancelled +1.925; quality.script -2.1; overall -0.512; spent -1102.25 |
-| commissionWriting | action | src/engine/writing-jobs.ts | proven | writing-polish (40 seeds) | passesAccepted +1.925; quality.script +1.888; overall +0.638 |
+| acceptWriting | action | src/engine/writing-jobs.ts | proven | writing-polish (40 seeds) | passesAccepted +1.925; quality.script +1.85; overall +0.65 |
+| cancelWriting | action | src/engine/writing-jobs.ts | proven | writing-cancel (40 seeds) | passesAccepted -1.9; passesCancelled +1.925; quality.script -2.075; overall -0.587; spent -1345.25 |
+| commissionWriting | action | src/engine/writing-jobs.ts | proven | writing-polish (40 seeds) | passesAccepted +1.925; quality.script +1.85; overall +0.65 |
 | requestRevision | action | src/engine/writing-jobs.ts | proven | writing-revision (80 seeds) | passesWritten +1.9; spent +1432.125 |
 | bank.add_standing_order | bank | src/engine/bankworld | proven | standing-order (40 seeds) | interestIn +11501.04; money +15293.933 |
 | bank.arrange_overdraft | bank | src/engine/bankworld | not yet proven |  |  |
-| bank.borrow | bank | src/engine/bankworld | proven | bank-loan (60 seeds) | interestOut +1722.856; money +10346.895 |
+| bank.borrow | bank | src/engine/bankworld | proven | bank-loan (60 seeds) | interestOut +1721.445; money +10355.682 |
 | bank.break_term | bank | src/engine/bankworld | proven | break-term (40 seeds) | accounts -1; interestIn -41099.99; worth -41099.99 |
 | bank.cancel_new | bank | src/engine/bankworld | not yet proven |  |  |
 | bank.cancel_scheduled | bank | src/engine/bankworld | not yet proven |  |  |
@@ -231,71 +232,71 @@ journey that shows it there.
 | documents.apply_passport | bank | src/engine/bankworld | not yet proven |  |  |
 | finance.pay_card | bank | src/engine/bankworld | not yet proven |  |  |
 | finance.set_autopay | bank | src/engine/bankworld | not yet proven |  |  |
-| agent-answer | scheduled | src/engine/representation.ts | proven | agent (40 seeds) | viaAgent +7.1; jobsOffered +7.1; commission +3627.575; jobPay +22883.725 |
-| agent-notice-end | scheduled | src/engine/representation.ts | proven | agent-notice (40 seeds) | viaAgent -5.425; jobsOffered -5.425; jobPay -19731.075; commission -3154.2 |
+| agent-answer | scheduled | src/engine/representation.ts | proven | agent (40 seeds) | viaAgent +7.1; jobsOffered +7.15; commission +3627.575; jobPay +22465.025 |
+| agent-notice-end | scheduled | src/engine/representation.ts | proven | agent-notice (40 seeds) | viaAgent -5.425; jobsOffered -5.45; jobPay -20631.425; commission -3154.2 |
 | agent-offer-lapse | scheduled | src/engine/representation.ts | not yet proven |  |  |
-| agent-renewal | scheduled | src/engine/representation.ts | proven | agent-renew (40 seeds) | renewals +3; represented +1; viaAgent +14.05; jobsOffered +14.125; jobPay +68818.3; money +63763.15 |
-| agent-term-end | scheduled | src/engine/representation.ts | proven | agent-renew (40 seeds) | renewals +3; represented +1; viaAgent +14.05; jobsOffered +14.125; jobPay +68818.3; money +63763.15 |
-| arrive | scheduled | src/engine/state.ts | proven | travel-away (40 seeds) | lateDays +3.8; quality.direction -1.862; overall -0.712 |
+| agent-renewal | scheduled | src/engine/representation.ts | proven | agent-renew (40 seeds) | renewals +3; represented +1; viaAgent +14.05; jobsOffered +14.025; jobPay +68621.175; money +69897.8 |
+| agent-term-end | scheduled | src/engine/representation.ts | proven | agent-renew (40 seeds) | renewals +3; represented +1; viaAgent +14.05; jobsOffered +14.025; jobPay +68621.175; money +69897.8 |
+| arrive | scheduled | src/engine/state.ts | proven | travel-away (40 seeds) | lateDays +3.8; quality.direction -1.875; overall -0.662 |
 | audience-week | scheduled | src/engine/distribution.ts | proven | off-audience-week (40 seeds) | renewalWait +55.275; renewed -0.425 |
 | audition | scheduled | src/engine/auditions.ts | proven | audition (40 seeds) | readsSeen +14.8; castCapability +9.113; performance +7.469; overall +2.488; castRates +236.75 |
 | birthday | scheduled | src/engine/state.ts | not a feature |  | A notice: it tells the player their age has changed. Age itself is read from the birth date wherever it matters (casting, licences), never from this event; switched off, nothing else changed (docs/v10/proof/off-birthday.json). |
-| box-office-week | scheduled | src/engine/distribution.ts | proven | off-box-office-week (30 seeds) | gross +151560; revenue +48225.667; money +48149.4 |
+| box-office-week | scheduled | src/engine/distribution.ts | proven | off-box-office-week (40 seeds) | gross +131040; revenue +41822.625; money +41790.925 |
 | company-decision | scheduled | src/engine/company.ts | not yet proven |  |  |
 | consent-response | scheduled | src/engine/documentary.ts | not yet proven |  |  |
 | contributor-cut | scheduled | src/engine/documentary.ts | not yet proven |  |  |
 | counter-lapse | scheduled | src/engine/hiring.ts | not yet proven |  |  |
 | distribution-offer | scheduled | src/engine/finish.ts | proven | off-distribution-offer (40 seeds) | distributed -1.8; revenue -119806.375; money -113801.275 |
-| distribution-report | scheduled | src/engine/distribution.ts | proven | off-distribution-report (30 seeds) | revenue -92526.5; money -91433.833 |
+| distribution-report | scheduled | src/engine/distribution.ts | proven | off-distribution-report (40 seeds) | revenue -88230.125; money -87763.325 |
 | edition-announce | scheduled | src/engine/awards.ts | proven | off-edition-announce (40 seeds) | screenings -8.25; offers -7.525 |
-| edition-deadline | scheduled | src/engine/awards.ts | proven | off-edition-deadline (30 seeds) | selected -4.8; standing.producing -5.6 |
+| edition-deadline | scheduled | src/engine/awards.ts | proven | off-edition-deadline (40 seeds) | selected -4.7; standing.producing -5.7 |
 | edition-deadline-soon | scheduled | src/engine/awards.ts | not a feature |  | A notice: it tells the player an entry deadline is near. The deadline that closes entries is its own system (edition-deadline), proven separately. |
-| edition-open | scheduled | src/engine/awards.ts | proven | off-edition-open (30 seeds) | entries -38.633; selected -4.267 |
-| edition-results | scheduled | src/engine/awards.ts | no downstream effect | off-edition-results (40 seeds) | moved: finalised -7.275. Career not reached: the careers' shorts almost never reach a final result to win or lose; to prove with careers whose work is selected for competitive categories. |
+| edition-open | scheduled | src/engine/awards.ts | proven | off-edition-open (40 seeds) | entries -39.175; selected -4.15 |
+| edition-results | scheduled | src/engine/awards.ts | proven | off-edition-results (200 seeds) | finalised -8.645; won -0.11; standing.directing +0.34 |
 | edition-start | scheduled | src/engine/awards.ts | proven | off-edition-start (40 seeds) | screenings -8.25; offers -7.05 |
-| editions-roll | scheduled | src/engine/awards.ts | proven | off-editions-roll (30 seeds) | editionsOpen -63.733; entries -24.867; selected -2.733 |
+| editions-roll | scheduled | src/engine/awards.ts | proven | off-editions-roll (40 seeds) | editionsOpen -63.725; entries -25.225; selected -2.725 |
 | episode-release | scheduled | src/engine/episode-releases.ts | not yet proven |  |  |
 | family-repayment | scheduled | src/engine/personal.ts | not yet proven |  |  |
-| finance-counter | scheduled | src/engine/negotiation.ts | proven | better-terms (40 seeds) | asked +1.525; investorShare -0.137; investorIn -8925; ownIn +8925 |
+| finance-counter | scheduled | src/engine/negotiation.ts | proven | better-terms (40 seeds) | asked +1.525; investorShare -0.14; investorIn -8925; ownIn +8925 |
 | finance-deadline | scheduled | src/engine/finance.ts | not yet proven |  |  |
-| finance-decision | scheduled | src/engine/finance.ts | proven | off-finance-decision (30 seeds) | backerIn -30966.667; ownIn +30966.667; money +17144.8 |
+| finance-decision | scheduled | src/engine/finance.ts | proven | off-finance-decision (40 seeds) | backerIn -32250; ownIn +32250; money +16521.1 |
 | finance-offer-lapse | scheduled | src/engine/negotiation.ts | not yet proven |  |  |
 | first-look-check | scheduled | src/engine/first-look.ts | proven | off-first-look-check (40 seeds) | firstLookOffers -1.075; overheadPaid -539890; money -536702.539 |
 | first-look-counter | scheduled | src/engine/first-look.ts | proven | first-look-overhead (40 seeds) | overheadAsked +1.825; overheadAgreed +0.2 |
 | first-look-end | scheduled | src/engine/first-look.ts | not yet proven |  |  |
 | first-look-lapse | scheduled | src/engine/first-look.ts | not yet proven |  |  |
-| first-look-overhead | scheduled | src/engine/first-look.ts | proven | first-look-accept (30 seeds) | firstLookActive +0.9; money +686273 |
+| first-look-overhead | scheduled | src/engine/first-look.ts | proven | first-look-accept (40 seeds) | firstLookActive +1.025; money +670839.742 |
 | guide-me | scheduled | src/engine/mandates.ts | not yet proven |  |  |
 | industry-decision | scheduled | src/engine/industry.ts | not yet proven |  |  |
 | job-counter | scheduled | src/engine/jobs.ts | proven | ask-better-rate (60 seeds) | ratesAgreed +7.5; jobPay +5917.083 |
-| job-day | scheduled | src/engine/jobs.ts | proven | off-job-day (40 seeds) | jobsDone -0.85; jobPay -4210.85 |
+| job-day | scheduled | src/engine/jobs.ts | proven | off-job-day (40 seeds) | jobsDone -0.875; jobPay -4126.25 |
 | job-lapse | scheduled | src/engine/jobs.ts | not a feature |  | Record-keeping: on an unanswered offer's last day it marks the offer lapsed, for your list and the record. The deadline itself is enforced when you answer (jobs.ts acceptRefusal: "That offer has lapsed."), so with this event switched off an offer still can't be taken late; nothing else reads the mark (docs/v10/proof/off-job-lapse.json). |
-| job-offer | scheduled | src/engine/jobs.ts | proven | off-job-offer (40 seeds) | jobsOffered -0.875; jobPay -4103.9 |
-| licence-answer | scheduled | src/engine/music.ts | proven | license-song (40 seeds) | licensed +1.475; released +1.475; revenue +36961.25; spent +2563.25 |
+| job-offer | scheduled | src/engine/jobs.ts | proven | off-job-offer (40 seeds) | jobsOffered -0.9; jobPay -4198.4 |
+| licence-answer | scheduled | src/engine/music.ts | proven | license-song (40 seeds) | licensed +1.475; released +1.475; revenue +38436.25; spent +2563.25 |
 | licence-expiry | scheduled | src/engine/music.ts | proven | renew-licence (40 seeds) | renewals +0.65; released +0.65; spent +292.5 |
-| offer-response | scheduled | src/engine/hiring.ts | proven | off-offer-response (30 seeds) | hired -16; delivered -2; revenue -127289.5 |
+| offer-response | scheduled | src/engine/hiring.ts | proven | off-offer-response (40 seeds) | hired -16; delivered -2; revenue -124177.625 |
 | opportunity | scheduled | src/engine/opportunities.ts | proven | off-opportunity (40 seeds) | opportunities -0.375; commissioned -0.375 |
 | opportunity-expire | scheduled | src/engine/opportunities.ts | not a feature |  | Record-keeping: on an unanswered proposal's last day it marks it lapsed, for your list. The deadline is enforced when you answer (opportunities.ts acceptOpportunity checks expiresAt), so with this event switched off a proposal still can't be taken late; nothing else reads the mark (docs/v10/proof/off-opportunity-expire.json). |
-| papers-decision | scheduled | src/engine/papers.ts | proven | work-permit (100 seeds) | permits +0.99; lateDays -7.11; shootDays -1.13; daysToDeliver -1.35; spent -1678.68; quality.direction +3.745; overall +1.545 |
+| papers-decision | scheduled | src/engine/papers.ts | proven | work-permit (100 seeds) | permits +1; lateDays -7.14; shootDays -1.13; daysToDeliver -1.35; spent -1672.28; quality.direction +3.76; overall +1.345 |
 | papers-expiry | scheduled | src/engine/papers.ts | not yet proven |  |  |
 | papers-passport | scheduled | src/engine/papers.ts | not yet proven |  |  |
 | permit-decision | scheduled | src/engine/papers.ts | not yet proven |  |  |
 | plan-reminder | scheduled | src/engine/state.ts | not yet proven |  |  |
-| plan-start | scheduled | src/engine/state.ts | proven | plan-over-call (40 seeds) | lateDays +1; quality.direction -0.5; overall -0.3 |
-| production-confirm | scheduled | src/engine/productions.ts | proven | off-production-confirm (100 seeds) | productionsChanged -1.39; jobsCancelled -0.07 |
+| plan-start | scheduled | src/engine/state.ts | proven | plan-over-call (40 seeds) | lateDays +1; quality.direction -0.487 |
+| production-confirm | scheduled | src/engine/productions.ts | proven | off-production-confirm (100 seeds) | productionsChanged -1.37; jobsCancelled -0.06 |
 | production-release | scheduled | src/engine/productions.ts | proven | off-production-release (60 seeds) | productionResults -6.25; jobsOffered -0.133 |
 | release | scheduled | src/engine/finish.ts | proven | off-release (40 seeds) | released -2; revenue -94019.25; money -93319.4 |
 | release-licence-answer | scheduled | src/engine/release-plan.ts | not yet proven |  |  |
 | revision-done | scheduled | src/engine/projects.ts | proven | revision-notes (40 seeds) | notesAddressed +6; quality.script +6; overall +1.9 |
-| screening | scheduled | src/engine/awards.ts | proven | attend-screening (30 seeds) | accepted +6.867; attended +5.367; offers +7.1 |
+| screening | scheduled | src/engine/awards.ts | proven | attend-screening (30 seeds) | accepted +6.633; attended +5.1; offers +6.633 |
 | screening-reminder | scheduled | src/engine/awards.ts | not a feature |  | A notice: it tells the player a screening they were invited to is near. Attending is the screening itself and the RSVP, proven separately. |
 | season-decision | scheduled | src/engine/continuation.ts | not yet proven |  |  |
-| shoot-call | scheduled | src/engine/production/shoot.ts | proven | sleep-through-call (40 seeds) | lateDays +1; quality.direction -0.75; overall -0.237 |
-| shoot-wrap | scheduled | src/engine/production/shoot.ts | proven | off-shoot-wrap (40 seeds) | delivered -2; revenue -137164.625; money -160388.041 |
+| shoot-call | scheduled | src/engine/production/shoot.ts | proven | sleep-through-call (40 seeds) | lateDays +1; quality.direction -0.775; overall -0.25 |
+| shoot-wrap | scheduled | src/engine/production/shoot.ts | proven | off-shoot-wrap (40 seeds) | delivered -2; revenue -136877; money -160305.616 |
 | studio-release | scheduled | src/engine/finish.ts | not yet proven |  |  |
 | wake | scheduled | src/engine/state.ts | not yet proven |  |  |
-| weather-check | scheduled | src/engine/production/shoot.ts | proven | weather-keep (60 seeds) | lostDays -1.3; overall +0.208; daysToDeliver -1.883; spent -3092.167 |
-| work-day | scheduled | src/engine/production/workday.ts | proven | off-work-day (40 seeds) | delivered -1.975; revenue -133664.375; money -156294.921 |
+| weather-check | scheduled | src/engine/production/shoot.ts | proven | weather-keep (60 seeds) | lostDays -1.3; overall +0.2; daysToDeliver -1.883; spent -3092.167 |
+| work-day | scheduled | src/engine/production/workday.ts | proven | off-work-day (40 seeds) | delivered -1.975; revenue -129840.75; money -152559.996 |
 | writing-day | scheduled | src/engine/writing-jobs.ts | not yet proven |  |  |
 | "Working Title" | field | everywhere a project is named | carried | tests/proposal.test.ts::makes one project | A name or a record, carried to everywhere a project is named: it decides nothing by its nature. |
 | "Format" | field | proposal.ts proposeFromSource; projects.ts, production/tasks.ts | not yet proven |  |  |
@@ -381,10 +382,10 @@ journey that shows it there.
 | {`Director For Episode ${e.number}`} | field | finish.ts assessEpisode; production/schedule.ts blocks | not yet proven |  |  |
 | "Director" | field | production/shoot.ts onSetHires; finish.ts computeCredits, assessQuality | not yet proven |  |  |
 | "Production Start" | field | production/schedule.ts generatePlan | not yet proven |  |  |
-| "Rehearsal Days" | field | production/shoot.ts; hiring.ts (booked days) | proven | rehearsal-days (40 seeds) | performance +5.225; overall +1.388; reception +2.125 |
+| "Rehearsal Days" | field | production/shoot.ts; hiring.ts (booked days) | proven | rehearsal-days (40 seeds) | performance +5.188; overall +1.338; reception +2.038 |
 | "Stop-Motion Stages" | field | production/workday.ts | not yet proven |  |  |
 | "Render Nodes" | field | production/workday.ts | not yet proven |  |  |
-| "Six-Day Weeks" | field | production/schedule.ts isWorkingDay | proven | six-day-weeks (60 seeds) | daysToDeliver -3.608; spent +3842.333 |
+| "Six-Day Weeks" | field | production/schedule.ts isWorkingDay | proven | six-day-weeks (60 seeds) | daysToDeliver -3.608; spent +4676.5 |
 | "Shoot Episodes In Blocks" | field | production/schedule.ts | not yet proven |  |  |
 | "Work On Public Holidays" | field | production/schedule.ts isWorkingDay | not yet proven |  |  |
 | {`${c.name} Puppet Copies`} | field | production/schedule.ts; production/workday.ts | not yet proven |  |  |
@@ -400,43 +401,42 @@ journey that shows it there.
 | {`Ask The ${d.backer} For`} | field | negotiation.ts | not yet proven |  |  |
 | "Spending Ceiling" | field | mandates.ts guideMePlan, runMandate, guideMeRefusal | not yet proven |  |  |
 | "Working Title" | field | everywhere a project is named | carried | e2e/title-input.spec.ts::a title typed, edited, cleared, pasted and submitted | A name or a record, carried to everywhere a project is named: it decides nothing by its nature. |
-| "Format" | field | projects.ts, production/tasks.ts, awards.ts | proven | format-feature (30 seeds) | revenue -2974.833; money -2851.6 |
-| "Medium" | field | production/tasks.ts buildTasks | proven | medium-animation (30 seeds) | shootDays -7.633; daysToDeliver -33.767; spent +285118; money -603131.233; revenue -128754.167 |
+| "Format" | field | projects.ts, production/tasks.ts, awards.ts | proven | format-feature (120 seeds) | revenue -6751.333; money -6632.466 |
+| "Medium" | field | production/tasks.ts buildTasks | proven | medium-animation (40 seeds) | shootDays -7.775; daysToDeliver -33.987; spent +284298.5; money -598133.265; revenue -128142.625 |
 | {medium === 'hybrid' ? 'Animation Technique For Animated Scenes' : 'Animation Technique'} | field | production/tasks.ts buildTasks | not yet proven |  |  |
 | "Animation Finish" | field | production/workday.ts (render hours per frame); estimate.ts | not yet proven |  |  |
 | "Episodes" | field | projects.ts; production/tasks.ts | not yet proven |  |  |
 | {episodic ? 'Target Minutes Per Episode' : 'Target Runtime In Minutes'} | field | awards.ts checkEligibility (running time); estimate.ts | proven | runtime-longer (40 seeds) | quality.script -1; overall -0.312; revenue -1413.75 |
-| ? | field | genres.ts composeGenres; script-effects.ts competesAs; finish.ts subtitlingCost | proven | genre-comedy (30 seeds) | reception -0.267; overall -0.267; revenue -1304.333; money -1087.767 |
+| ? | field | genres.ts composeGenres; script-effects.ts competesAs; finish.ts subtitlingCost | proven | genre-comedy (120 seeds) | reception -0.412; overall -0.279; gross -753.333; standing.writing -1 |
 | "Intended Audience" | field | awards-rules.ts; script-explain.ts audienceContentNote | not yet proven |  |  |
-| "Tone" | field | cues.ts proposeBrief | proven | tone (40 seeds) | chamber +2; spent +9052; cues -2 |
+| "Tone" | field | cues.ts proposeBrief | proven | tone (40 seeds) | chamber +2; spent +9183.5; cues -2 |
 | "Competes As" | field | script-effects.ts competesAs | not yet proven |  |  |
 | "Story Era" | field | projects.ts deriveRequirements (period research); production/tasks.ts costumes | not yet proven |  |  |
-| "Story Setting" | field | shown in the Story panel | not yet proven |  |  |
 | ? | field | finish.ts subtitlingCost; awards.ts language rules | not yet proven |  |  |
 | "Story Setting Place" | field | projects.ts deriveRequirements; production/tasks.ts | not yet proven |  |  |
 | "Production Base" | field | production/schedule.ts isWorkingDay; weather.ts | proven | base-los-angeles (40 seeds) | lostDays -1.225; daysToDeliver -2.013 |
 | "Planned Budget (US Dollars)" | field | project-budget.ts setPlannedBudget, budgetPicture, plannedText; finance.ts financeSummary | not yet proven |  |  |
 | "Years That Pass In The Story" | field | sequel.ts continueProject | not yet proven |  |  |
-| {PLAN_ROUTES[r].label} | field | release-plan.ts setReleasePlan, proposalRefusal, selfRefusal; finish.ts festivalHold | proven | self-release-stores (30 seeds) | revenue +38987.667; money +34773.933; spent +2600 |
+| {PLAN_ROUTES[r].label} | field | release-plan.ts setReleasePlan, proposalRefusal, selfRefusal; finish.ts festivalHold | proven | self-release-stores (40 seeds) | revenue +39593.75; money +36625.299; spent +2600 |
 | "Plan Territories" | field | release-plan.ts buyerValue, proposeLicence, selfCosts, releaseYourself | not yet proven |  |  |
 | "First Public Date" | field | release-plan.ts leadDays, releaseYourself (planRelease date) | not yet proven |  |  |
 | "Held For Festivals Until" | field | finish.ts festivalHold in planRelease and acceptDistribution | not yet proven |  |  |
 | "Version Abroad" | field | release-plan.ts releaseYourself (finish.ts setReleaseVersion) | not yet proven |  |  |
-| "Promotion Budget" | field | release-plan.ts selfCosts; distribution.ts promoLift in reportedGross | proven | promotion-budget (30 seeds) | spent +5993.333; revenue +8516.667 |
-| {`${label}: Buyer`} | field | release-plan.ts proposeLicence, answerProposal | proven | licence-proposal (30 seeds) | licenceDeals +0.767; revenue -35555; money -37580.067 |
-| {`${label}: Your Ask`} | field | release-plan.ts answerProposal | proven | licence-ask (100 seeds) | licenceDeals -0.82; releaseDelay +29.33; licenceFee -14680 |
-| {`${label}: Exclusive`} | field | release-plan.ts buyerValue; distribution.ts heldTerritories | proven | licence-exclusive (100 seeds) | licenceFee +8950; money -10555.66 |
+| "Promotion Budget" | field | release-plan.ts selfCosts; distribution.ts promoLift in reportedGross | proven | promotion-budget (40 seeds) | spent +5995; revenue +8267 |
+| {`${label}: Buyer`} | field | release-plan.ts proposeLicence, answerProposal | proven | licence-proposal (40 seeds) | licenceDeals +0.875; money -27693.375 |
+| {`${label}: Your Ask`} | field | release-plan.ts answerProposal | proven | licence-ask (100 seeds) | licenceDeals -0.83; releaseDelay +29.235; licenceFee -14800 |
+| {`${label}: Exclusive`} | field | release-plan.ts buyerValue; distribution.ts heldTerritories | proven | licence-exclusive (100 seeds) | licenceFee +8880; money -12061.25 |
 | {`Keep My ${c.label}`} | field | blueprints.ts applyBlueprint | not yet proven |  |  |
 | {`Keep My ${c.label} And Add None`} | field | blueprints.ts applyBlueprint | not yet proven |  |  |
 | "Save Name" | field | the saved games list | not yet proven |  |  |
 | "Wake Me For Obligations" | field | state.ts runEvents | not yet proven |  |  |
-| "The Light It Is Shot In" | field | craft.ts craftTime, gafferNeeded, cameraTestDays, postFactors; takes.ts planTime; hiring.ts neededRoles; production/tasks.ts buildTasks | proven | light-contrast (30 seeds) | spent +3722.667; money -5003.967 |
+| "The Light It Is Shot In" | field | craft.ts craftTime, gafferNeeded, cameraTestDays, postFactors; takes.ts planTime; hiring.ts neededRoles; production/tasks.ts buildTasks | proven | light-contrast (120 seeds) | spent +3507.333; money -4596.85; daysToDeliver +0.229 |
 | "The Score" | field | craft.ts postFactors, scoreSessions; production/tasks.ts buildTasks | not yet proven |  |  |
 | {SOUNDS[k].label} | field | craft.ts craftTime, craftRoles, postFactors, dialogueHolds; production/tasks.ts buildTasks; production/shoot.ts needsDialogueReplacement | not yet proven |  |  |
 | "Central Question" | field | script-effects.ts documentsNeeded | not yet proven |  |  |
 | "Central Question" | field | shown in the Story panel; part of the Statement Of Intent for a documentary | not yet proven |  |  |
 | "Synopsis" | field | shown in the Story panel | not yet proven |  |  |
-| "Logline" | field | script-effects.ts documentsNeeded | proven | logline-missing (30 seeds) | backerDeals -1; ownIn +34733.333; money -95919.7 |
+| "Logline" | field | script-effects.ts documentsNeeded | proven | logline-missing (40 seeds) | backerDeals -1; ownIn +37125; money -95956.55 |
 | "Premise" | field | script-effects.ts documentsNeeded | not yet proven |  |  |
 | "Stakes" | field | script-effects.ts documentsNeeded | not yet proven |  |  |
 | "Central Conflict" | field | script-effects.ts documentsNeeded | not yet proven |  |  |
@@ -446,8 +446,7 @@ journey that shows it there.
 | "Intended Experience" | field | cues.ts proposeBrief | proven | intended-experience (40 seeds) | silent +2; cues -4; spent -5219; daysToDeliver -2.812; quality.music -61.025 |
 | "Who It Is For" | field | shown in the Story panel | not yet proven |  |  |
 | "How It Is Built" | field | shown in the Story panel | not yet proven |  |  |
-| "Tone" | field | cues.ts proposeBrief | proven | tone (40 seeds) | chamber +2; spent +9052; cues -2 |
-| "Story Setting" | field | shown in the Story panel | carried | tests/script-effects.test.ts::briefs add no work | A name or a record, carried to shown in the Story panel: it decides nothing by its nature. |
+| "Tone" | field | cues.ts proposeBrief | proven | tone (40 seeds) | chamber +2; spent +9183.5; cues -2 |
 | "Competes As" | field | script-effects.ts competesAs | not yet proven |  |  |
 | "Source Material" | field | awards-rules.ts (original or adapted screenplay) | not yet proven |  |  |
 | "Adapted From" | field | shown with the project | not yet proven |  |  |
@@ -455,15 +454,16 @@ journey that shows it there.
 | "Year It Is Set In" | field | looks.ts periodBand, projectBand; projects.ts deriveRequirements; production/tasks.ts buildTasks | not yet proven |  |  |
 | "The Look It Borrows" | field | the Creative Brief card | carried | tests/looks.test.ts::1986 made in 2026 is a period: research, and half as much costume work again; 2026 is neither; the look it borrows changes no work | A name or a record, carried to the Creative Brief card: it decides nothing by its nature. |
 | "Story Setting Place" | field | projects.ts deriveRequirements | not yet proven |  |  |
+| "Story Setting" | field | shown in the Story panel | carried | tests/script-effects.test.ts::briefs add no work | A name or a record, carried to shown in the Story panel: it decides nothing by its nature. |
 | {x.label} | field | awards-rules.ts PROJECT_SUBJECTS | not yet proven |  |  |
 | {q.label} | field | shown with the genre questions | not yet proven |  |  |
 | "Draft Name" | field | drafts list | not yet proven |  |  |
 | "Draft Name" | field | drafts list | not yet proven |  |  |
 | {`"${x.title}" In This Scene`} | field | songs.ts songUses; projects.ts deriveRequirements | not yet proven |  |  |
-| "Interior Or Exterior" | field | production/shoot.ts (weather) | proven | scene-exterior (40 seeds) | lostDays +1.4; shootDays +1.2; money -25465.841 |
+| "Interior Or Exterior" | field | production/shoot.ts (weather) | proven | scene-exterior (40 seeds) | lostDays +1.4; shootDays +1.2; money -24746.941 |
 | "Place" | field | production/schedule.ts groupShootDays | not yet proven |  |  |
-| "Time Of Day" | field | production/rates.ts dayFees | proven | scene-night (40 seeds) | spent +1438.55; overall +0.588 |
-| "Estimated Minutes" | field | production/schedule.ts sceneLoad; finish.ts runtime | proven | scene-minutes (40 seeds) | runtime +22; spent +11593.1; daysToDeliver +7.55; offered +94350; guarantees +42350 |
+| "Time Of Day" | field | production/rates.ts dayFees | proven | scene-night (40 seeds) | spent +1438.55; overall +0.438 |
+| "Estimated Minutes" | field | production/schedule.ts sceneLoad; finish.ts runtime | proven | scene-minutes (40 seeds) | runtime +22; spent +11793.2; daysToDeliver +7.55; offered +93875; guarantees +42500 |
 | "Kind" | field | projects.ts deriveRequirements (interview, archival) | not yet proven |  |  |
 | "Basis" | field | projects.ts scriptIssues (sourced needs a fact) | not yet proven |  |  |
 | "Technique For This Scene" | field | projects.ts sceneTechnique; production/tasks.ts | not yet proven |  |  |
@@ -482,7 +482,7 @@ journey that shows it there.
 | "Animals" | field | projects.ts deriveRequirements; production/tasks.ts | proven | scene-animals (40 seeds) | spent +2948.75; daysToDeliver +1.313 |
 | "Vehicles" | field | projects.ts deriveRequirements; production/tasks.ts | proven | scene-vehicles (40 seeds) | spent +3020.75; daysToDeliver +1.425 |
 | "Stunts" | field | projects.ts deriveRequirements; production/tasks.ts | proven | scene-stunts (40 seeds) | spent +66567; daysToDeliver +9.013 |
-| "Crowd Size" | field | production/rates.ts (crowd day rate) | proven | scene-crowd (60 seeds) | spent +52006.167; money -40741.16 |
+| "Crowd Size" | field | production/rates.ts (crowd day rate) | proven | scene-crowd (60 seeds) | spent +51841.833; money -40560.91 |
 | "Crowd Makeup" | field | looks.ts chairMinutes, makeupDayCost; production/shoot.ts runShootDay | not yet proven |  |  |
 | "Extend The Crowd In Post" | field | looks.ts physicalCrowd, digitalCrowd; production/tasks.ts buildTasks; production/schedule.ts sceneLoad | not yet proven |  |  |
 | "Visual Effects" | field | projects.ts deriveRequirements; production/tasks.ts | proven | scene-vfx (40 seeds) | spent +43959.25; daysToDeliver +14.338 |
@@ -562,8 +562,8 @@ journey that shows it there.
 | "What In Them Pulls Against It" | field | shown with the part | not yet proven |  |  |
 | "How They Change" | field | shown with the part | not yet proven |  |  |
 | "How They Speak" | field | shown with the part | not yet proven |  |  |
-| "Makeup" | field | looks.ts makeupShare, makeupDayCost; production/tasks.ts buildTasks; production/schedule.ts groupShootDays; production/shoot.ts runShootDay; callsheet.ts callSheet; hiring.ts neededRoles | proven | lead-makeup (30 seeds) | spent +22890.667; daysToDeliver +1.833 |
-| "Costume From" | field | looks.ts costumeCopies, wardrobeMismatch; production/tasks.ts buildTasks | proven | lead-costume (30 seeds) | spent +19353; money -40642.1; daysToDeliver +6.317 |
+| "Makeup" | field | looks.ts makeupShare, makeupDayCost; production/tasks.ts buildTasks; production/schedule.ts groupShootDays; production/shoot.ts runShootDay; callsheet.ts callSheet; hiring.ts neededRoles | proven | lead-makeup (40 seeds) | spent +22088.75; money -40690.12; daysToDeliver +1.525 |
+| "Costume From" | field | looks.ts costumeCopies, wardrobeMismatch; production/tasks.ts buildTasks | proven | lead-costume (40 seeds) | spent +8563; daysToDeliver +4.525 |
 | "Appearance States" | field | looks.ts statesOf, costumeCopies; production/tasks.ts buildTasks | not yet proven |  |  |
 | {`Names Of ${c.name}'s Looks`} | field | looks.ts statesOf, stateNames; brief.ts setLook | not yet proven |  |  |
 | "Format Family" | field | unscripted.ts buildTasks | not yet proven |  |  |

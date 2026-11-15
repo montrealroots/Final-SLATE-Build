@@ -32,11 +32,12 @@ describe('a grade', () => {
     expect(gradeOf(s, people[0], 'editor').madeOf[0]).toMatch(/both modeled by the game\.$/);
   });
 
-  it('for a real person, says their experience is their record and their capability the game\'s', () => {
+  it('for a real person, says their experience is their record and where their capability comes from', () => {
     const s = startLife('grades-real');
     const real = considerPerson(s, { id: 947, name: 'A Composer (Fixture)', details: { birthday: '1957-09-12', deathday: null, retrievedAt: '2026-11-01' }, credits: Array.from({ length: 25 }, (_, i) => ({ kind: 'crew', role: 'Original Music Composer', date: i === 0 ? '1985-01-01' : i === 1 ? '2024-01-01' : null })) }, '2026-11-01');
     const r = gradeOf(s, asPerson(s, real.id, 'composer'), 'composer');
     expect(r.madeOf[0]).toBe('Experience 4 of 5, from their record: 25 recorded credits in the job, 1985 to 2024.');
-    expect(r.madeOf[1]).toMatch(/drawn by the game around that record for this story: simulated, not a measure of them\.$/);
+    // Considered with the industry's record of awards not loaded: said so (recognition-hire.test.ts has it loaded).
+    expect(r.madeOf[1]).toBe("Capability 50 of 100, from their experience alone: the industry's record of awards wasn't read when they were first considered.");
   });
 });

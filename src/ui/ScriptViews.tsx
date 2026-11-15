@@ -354,12 +354,11 @@ export function ScriptTab({ p }: { p: Project }) {
           <TextField label="Who It Is For" maxLength={200} value={p.story.audience ?? ''} hint="Who you are making it for, in your words. The audience's age range is chosen on the Overview page." onChange={(v) => edit(p, () => { if (v) p.story.audience = v; else delete p.story.audience; })} />
           <TextField label="How It Is Built" maxLength={60} value={p.story.structure ?? ''} hint="Three acts, five, a circle, chapters. The acts themselves are under Acts And Threads." onChange={(v) => edit(p, () => { if (v) p.story.structure = v; else delete p.story.structure; })} />
           <IdeaField p={p} fields={['tone']} title="Choose A Tone"><TextField label="Tone" value={p.axes.tone} maxLength={80} onChange={(v) => edit(p, () => (p.axes.tone = v))} /></IdeaField>
-          <IdeaField p={p} fields={['setting']} title="Choose Where It Is Set"><TextField label="Story Setting" maxLength={120} value={p.axes.storySetting} onChange={(v) => edit(p, () => (p.axes.storySetting = v))} /></IdeaField>
           <SelectField label="Competes As" value={p.axes.register ?? ''} hint="Where awards that split drama from comedy enter it, as you declare it. Left to its genres, it competes as comedy when a primary genre is comedy or musical; a secondary one doesn't change it."
             options={[{ value: '', label: 'By Its Genres' }, { value: 'drama', label: 'Drama' }, { value: 'comedy', label: 'Comedy Or Musical' }]}
             onChange={(v) => edit(p, () => { if (v) p.axes.register = v as 'comedy' | 'drama'; else delete p.axes.register; })} />
           {!nonfiction && <SelectField label="Source Material" value={p.source?.kind ?? 'original'} hint="Awards with separate original and adapted screenplay categories enter it by what you declare here."
-            options={[{ value: 'original', label: 'Original' }, { value: 'adapted', label: 'Adapted From Another Work' }]}
+            options={[{ value: 'original', label: 'Original' }, { value: 'adapted', label: 'Adapted' }]}
             onChange={(v) => edit(p, () => { if (v === 'adapted') p.source = { ...p.source, kind: 'adapted', work: p.source?.work ?? '' }; else delete p.source; })} />}
           {p.source?.kind === 'adapted' && <TextField label="Adapted From" maxLength={120} value={p.source.work ?? ''} hint="The novel, play, article or film it adapts. Your own words; a work chosen from the catalog stays below until you let it go." onChange={(v) => edit(p, () => (p.source = { ...p.source, kind: 'adapted', work: v }))} />}
           <TheWorkItAdapts p={p} />
@@ -376,8 +375,14 @@ export function ScriptTab({ p }: { p: Project }) {
               onChange={(v) => edit(p, () => { if (v.trim()) p.axes.styleEra = v; else delete p.axes.styleEra; })} />
           </IdeaField>
           {/* A country, a search box and a list of places: a row of its own, not a cell beside one-line boxes, which it stretched to its own height until November 11, 2026. */}
+          {/* Where the story is set, once: the place, and the same setting in your words (until November 15, 2026 they were
+              asked apart, and with the base at creation, the player was asked where three times). Where it is shot is the
+              production base, and each place's filming on the Plan page. */}
           <div className="cell-wide place-cell">
-            <PlacePicker label="Story Setting Place" value={p.axes.settingPlaceId ?? ''} onChange={(id, place) => setErr(store.act((s) => { snapshot(p); adoptPlace(s, place); p.axes.settingPlaceId = id; }))} />
+            <h3 className="small">Where The Story Is Set</h3>
+            <p className="dim small">Not where you shoot: that is your production base, and where each place is filmed is on the Plan page.</p>
+            <PlacePicker label="Story Setting Place" value={p.axes.settingPlaceId ?? ''} onChange={(id, place) => setErr(store.act((s) => { snapshot(p); adoptPlace(s, place); p.axes.settingPlaceId = id; if (!p.axes.storySetting.trim()) p.axes.storySetting = place.name; }))} />
+            <IdeaField p={p} fields={['setting']} title="Choose Where It Is Set"><TextField label="Story Setting" maxLength={120} value={p.axes.storySetting} hint="The same setting, in your words: a street, a town, a night." onChange={(v) => edit(p, () => (p.axes.storySetting = v))} /></IdeaField>
             <p className="dim small">{settingNote(p)}</p>
             {p.axes.settingPlaceId && <button className="btn btn-sm" onClick={() => setErr(edit(p, () => { delete p.axes.settingPlaceId; }))}>No Setting Place</button>}
           </div>

@@ -2,6 +2,7 @@
 // 03-PEOPLE-CASTING-AND-HIRING.md). Their recorded credits, above this, are TMDB's and never change. This panel is the
 // story's: bringing them into the save, what they can be asked to do, adding them to a project's list for a part or a
 // job, and what they have done here. Everything in it that the game makes up says so.
+import { loadRecognition } from '../engine/recognition';
 import { useState } from 'react';
 import type { PersonRecord } from '../catalog/model';
 import { currentZone, dateKey, formatDateKey, money, roleLabel } from '../engine';
@@ -52,7 +53,7 @@ export function PersonWork({ record, gathered }: { record: PersonRecord; gathere
     return (
       <Panel title="In Your Story" subtitle={subtitle}>
         <p className="muted">{person ? `${record.name}'s record in your story was withdrawn when the film catalog's six months passed. Bring it back from the catalog installed now, and they can be approached again; what they did in your story is unchanged.` : `${record.name} isn't in your story yet. Consider them, and they can be asked to read for a part, offered one, or approached for a job they have a recorded credit in. Considering someone offers and costs nothing.`}</p>
-        <button className="btn btn-primary" onClick={() => setErr(store.act((s) => void considerPerson(s, record, gathered)))}>{person ? `Bring Back ${record.name}'s Record` : `Consider ${record.name} For Your Projects`}</button>
+        <button className="btn btn-primary" onClick={() => void loadRecognition().catch(() => null).then(() => setErr(store.act((s) => void considerPerson(s, record, gathered))))}>{person ? `Bring Back ${record.name}'s Record` : `Consider ${record.name} For Your Projects`}</button>
         {err && <p role="alert" className="error">{err}</p>}
         <Work id={id} />
       </Panel>

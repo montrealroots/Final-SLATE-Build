@@ -125,7 +125,10 @@ export function groupShootDays(p: Project, state?: GameState): ShootDayGroup[] {
   const mods = projectModules(p);
   // Scenes already filmed in full for the approved draft are done: a rebuilt plan and the estimate leave them out alike.
   const filmed = new Set(p.captures.filter((c) => c.captured >= 0.999 && c.version === p.approvedDraft).map((c) => c.sceneId));
-  const scenes = approvedScenes(p).filter((s) => sceneTechnique(p, s) === 'live' && s.kind !== 'archival' && s.kind !== 'narration' && !filmed.has(s.id));
+  // Scenes cut from the edit (finish.ts cutFromEdit) aren't shot: until November 15, 2026 a scene cut before the schedule
+  // was made was planned, shot and paid for all the same, though the edit was never going to use it.
+  const cut = new Set(p.edit.cutSceneIds ?? []);
+  const scenes = approvedScenes(p).filter((s) => sceneTechnique(p, s) === 'live' && s.kind !== 'archival' && s.kind !== 'narration' && !filmed.has(s.id) && !cut.has(s.id));
   const groups = new Map<string, Scene[]>();
   const block = !!p.schedule.blockEpisodes && p.episodes.length > 1;
   const directorOf = (ep: number) => p.episodes.find((e) => e.number === ep)?.director ?? 'player';

@@ -62,19 +62,13 @@ describe('considering someone', () => {
     expect(deserialize(serialize(s))).toMatchObject({ real: { tp_800001: { sim: frozen } } });
   });
 
-  it('draws their capability and rate from this save\'s seed, by the same rule as anyone in the game', () => {
+  it('reads their capability and rate from their record, the same in every save (until November 15, 2026 drawn from the seed)', () => {
     const one = considerPerson(startLife('guests-a'), ADA, GATHERED).sim;
-    const same = considerPerson(startLife('guests-a'), ADA, GATHERED).sim;
     const other = considerPerson(startLife('guests-b'), ADA, GATHERED).sim;
-    expect(same).toEqual({ ...one, at: same.at });
-    expect([other.jobs.actor.cap, other.jobs.actor.rate]).not.toEqual([one.jobs.actor.cap, one.jobs.actor.rate]);
-    for (const sim of [one, other]) {
-      expect(sim.jobs.actor.cap).toBeGreaterThanOrEqual(30);
-      expect(sim.jobs.actor.cap).toBeLessThanOrEqual(98);
-      // 700 a day for a performer, at the second level: between 0.9 and 1.1 of 700 x 1.02.
-      expect(sim.jobs.actor.rate).toBeGreaterThanOrEqual(640);
-      expect(sim.jobs.actor.rate).toBeLessThanOrEqual(790);
-    }
+    expect(other.jobs).toEqual(one.jobs);
+    // Four acting credits (level 2) and no recognition recorded for this fixture: 30 + 2 x 5 = 40, and the performer's
+    // $700 a day at the second level, 700 x 1.02, to the nearest ten.
+    expect(one.jobs.actor).toEqual({ exp: 2, cap: 40, rate: 710 });
   });
 
   it('as a person in the game: their name and birth date from the record, everything else this story\'s, and nothing guessed', () => {

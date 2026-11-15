@@ -104,7 +104,7 @@ export const PROBES: Probe[] = [
   { id: 'lead-role-size', features: [field('ScriptViews.tsx', 'Role Size')], decision: 'Write the lead as a supporting part', reads: ['src/engine/script-effects.ts#castPlacement', 'src/engine/awards.ts#creditedRecipients'],
     seeds: 30, base: { years: 3, daily: enterActing, project: feature() }, variant: { years: 3, daily: enterActing, project: feature({ roleSize: 'supporting' }) },
     measure: actingMeasure, bites: ['leadEntries'], downstream: ['actingDecided', 'actingHonours', 'supportingEntries'] },
-  { id: 'light-contrast', features: [field('ScriptViews.tsx', 'The Light It Is Shot In')], decision: 'Shoot it in high-contrast light', reads: ['src/engine/craft.ts#craftTime'],
+  { id: 'light-contrast', seeds: 120, features: [field('ScriptViews.tsx', 'The Light It Is Shot In')], decision: 'Shoot it in high-contrast light', reads: ['src/engine/craft.ts#craftTime'],
     variant: { project: short({ axes: { light: 'contrast' } }) }, bites: ['spent'], downstream: ['money', 'daysToDeliver', 'quality.craft'] },
   { id: 'logline-missing', features: [field('ScriptViews.tsx', 'Logline')], decision: 'Leave the logline unwritten (backers read the pitch)', reads: ['src/engine/script-effects.ts#documentsNeeded'],
     base: { ownShare: 0 }, variant: { ownShare: 0, project: short({ story: { logline: '' } }) }, bites: ['backerDeals'], downstream: ['ownIn', 'money'] },

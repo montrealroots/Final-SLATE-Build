@@ -153,14 +153,20 @@ export function takeFigures(t: { perf: number; tech: number }): Pick<SceneCaptur
   return { quality: Math.round((t.perf + t.tech) / 2), perf: t.perf };
 }
 
-/** What a scene's material is missing against what it needs, for the edit (directing 2): setups, and a continuity break. */
+/** What a scene's material is missing against what it needs, for the edit (directing 2): setups, and a continuity break,
+ *  less what the player has accepted, which the dailies stop raising. */
 export function missingMaterial(p: Project, s: Scene, c: SceneCapture): { setup?: Setup; continuity?: true; reason: string }[] {
+  return lacking(p, s, c).filter((m) => !(c.accepted ?? []).includes(m.setup ?? 'continuity'));
+}
+
+/** All the scene's material lacks, accepted or not: accepting a gap keeps the cut without it; it doesn't shoot it. */
+function lacking(p: Project, s: Scene, c: SceneCapture): { setup?: Setup; continuity?: true; reason: string }[] {
   if (!isDirecting2(p) || !c.setups) return [];
   const out: { setup?: Setup; continuity?: true; reason: string }[] = [];
   for (const need of requiredSetups(p, s)) if (!c.setups.includes(need.setup)) out.push({ setup: need.setup, reason: need.reason });
   // A scene shot across more than one day has to match from day to day; inserts let the editor cut around a mismatch.
   if ((c.days ?? 1) > 1 && !c.setups.includes('inserts')) out.push({ continuity: true, reason: 'It was shot over more than one day, and the days don\'t match; an insert would let the editor cut around it.' });
-  return out.filter((m) => !(c.accepted ?? []).includes(m.setup ?? 'continuity'));
+  return out;
 }
 
 /** The performance the edit can make of a scene: with singles, the editor cuts between takes for the best usable moments. */
@@ -176,12 +182,13 @@ export function coverageEdit(p: Project, sceneIds: string[]): number {
   if (!p.takesModel) return 0;
   const captured = sceneIds.filter((id) => p.captures.some((c) => c.sceneId === id && c.captured > 0));
   if (isDirecting2(p)) {
-    // Only what the scene needed and lacks costs the edit: 6 for each missing setup, 3 for a continuity break.
+    // Only what the scene needed and lacks costs the edit: 6 for each missing setup, 3 for a continuity break. A gap the
+    // player accepted costs the same (until November 15, 2026 accepting it took the cost away, as if it had been shot).
     const costs = captured.flatMap((id) => {
       const s = p.scenes.find((x) => x.id === id);
       const c = p.captures.find((x) => x.sceneId === id)!;
       if (!s || !c.setups) return [];
-      return [-missingMaterial(p, s, c).reduce((a, m) => a + (m.continuity ? 3 : 6), 0)];
+      return [-lacking(p, s, c).reduce((a, m) => a + (m.continuity ? 3 : 6), 0)];
     });
     return costs.length ? costs.reduce((a, b) => a + b, 0) / costs.length : 0;
   }

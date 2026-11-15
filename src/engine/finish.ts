@@ -278,7 +278,17 @@ export function assessQuality(state: GameState, p: Project, episode?: number): R
   const caps = p.captures.filter((c) => inCut.has(c.sceneId));
   // A finished effects revision counts once toward its scene's capture (revisions.ts).
   const revised = (sceneId: string) => p.tasks.some((x) => x.id === `post:vfx-rev:${sceneId}` && x.status === 'done') ? EFFECTS_REVISION_GAIN : 0;
-  const captureQ = avg(caps.map((c) => Math.min(100, c.quality + revised(c.sceneId))), 60);
+  // Lines replaced in post (directing.ts, Replace The Lines In Post) mend a take whose sound was unusable: once the
+  // dialogue replacement is done, the take counts with the sound the scene's clean takes had, or, with none clean, as
+  // sound as its performance. Until November 15, 2026 the day was booked and paid and changed nothing.
+  const relined = (c: (typeof caps)[number]) => {
+    const t = c.chosenTake !== undefined ? c.takes?.[c.chosenTake] : undefined;
+    if (t?.issue !== 'sound' || !p.tasks.some((x) => x.id === `post:adr:${c.sceneId}` && x.status === 'done')) return 0;
+    const clean = (c.takes ?? []).filter((x) => !x.issue);
+    const tech = clean.length ? clean.reduce((a, x) => a + x.tech, 0) / clean.length : t.perf;
+    return Math.max(0, Math.round((t.perf + Math.max(t.tech, tech)) / 2) - c.quality);
+  };
+  const captureQ = avg(caps.map((c) => Math.min(100, c.quality + revised(c.sceneId) + relined(c))), 60);
   const days = p.schedule.days.filter((d) => episode === undefined || d.episode === episode || d.episodes?.includes(episode));
   const lostDays = days.filter((d) => d.status === 'lost').length;
   const totalDays = Math.max(1, days.length);

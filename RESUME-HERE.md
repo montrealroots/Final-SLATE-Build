@@ -6,6 +6,50 @@ Read this first. It lists what is finished, what the Gap Completion Package stil
 
 At every stopping point, open a pull request into `main` and merge it (see `CLAUDE.md`, certified by the user on November 6, 2026). Never merge red checks.
 
+## The Owner's Command Of November 15, 2026: Designs, Director's Fixes, Phone, Real Grades And Real Pay
+
+Six asks: prove designs and the director's fixes; stop the script asking three times where things are filmed; a phone
+UI with nothing misaligned and no text bleeding; real grades for performers "based off how everybody of importance sees
+them", with a coverage matrix; real SAG-AFTRA pay in the game, with a coverage matrix; and real crew (makeup, costume
+and the rest) with real grades filling the hiring lists.
+
+**Done.**
+- Where it's filmed: the creation form asks where you shoot (Production Base) and the Script page asks where the story
+  is set, once, the place and its words together under "Where The Story Is Set".
+- Designs and fixes proven (`tests/proof/probes/designs.ts`): approving a design, asking for changes, changing a design
+  and keeping or redoing finished shots, and shooting a pickup for each problem the dailies raise. Fixed from them:
+  accepting a gap ("Cut It Without Singles") took its cost out of the edit as if it had been shot; replacing the lines
+  in post was booked and paid and mended nothing; a pickup's refusal said "Add funding first" when adding it was refused
+  until the financing target went up. The harness gained `approveDesigns` and `beforeManage`
+  (`tests/proof/career.ts`), which made every earlier proof stale (each hashes the harness): all were rerun.
+- Phone: the audit measured only the first screenful of a scrolling page; it now measures the whole of it, and checks a
+  new fault, things drawn over each other (`e2e/ui-audit.ts`, `overlap`). It found the Lyrics chooser cut short (its
+  choices are shorter now). Text boxes grow to fit what is written (`GrowingTextarea`); a box kept three lines and cut
+  the next in half. `UI_SHOTS` pictures are now the whole length of each screen.
+- Real grades and pay: `tools/recognition/build.mjs` reads every win and nomination of the Academy, BAFTA, SAG, the
+  Emmys, the Golden Globes, Critics' Choice, Cannes, Venice, Berlin, Spirit and César awards from Wikidata (CC0) into
+  `src/data/recognition.json` (6,202 people with a TMDB ID, 200 categories). `src/engine/recognition.ts` reads a
+  person's standing in a job before the story's year (no future knowledge), and from it a capability, a grade and a
+  fee; `src/engine/union.ts` holds SAG-AFTRA's minimums by agreement (Ultra Low, Moderate Low, Low, Theatrical) and
+  date, read from the union's wage table. The coverage matrix: `docs/people/PERFORMERS.csv` (1,857), `CREW.csv`
+  (6,431 rows across 17 crafts) and `PAY.md` (the minimums, and the game's fees beside reported ones), written by
+  `tests/people-matrix.test.ts`.
+
+- Wired in: a real person's capability and rate are read from their recognition, the same in every save (`guests.ts`;
+  nothing is drawn at random now), and the grade says what it was made of (`grades.ts`); the crafts' TMDB jobs (makeup
+  artist, hairstylist, gaffer, key grip, sound mixer, script supervisor, first assistant director and more) count as
+  evidence for those jobs; every hiring list has "Recognised By The Industry" (`src/ui/Recognised.tsx`); every
+  performer's offer is at least the SAG-AFTRA minimum for the production's budget, and what performers ask is lifted to
+  it (`hiring.ts scaleFor`). Screens read the awards record before anyone is first considered.
+- Fixed from the proof rerun: a scene cut from the edit before the schedule was made was still planned, shot and paid
+  for (`production/schedule.ts groupShootDays`).
+- Proof rerun: 130 of 134 career proofs held. Three (comedy, feature, high-contrast light) lost their margin at 40
+  seeds as revenue grew noisier; rerun at 120. The 200-seed "results being decided" is proven through the player's
+  standing.
+
+**Next.** Proofs for the 364 features not yet proven (most are fields), in batches; the writer's revision focus still
+waits on the owner (nothing reads it).
+
 ## The Owner's Command Of November 14, 2026 (Later): Every Feature Proven, Everything Possible
 
 Two asks: a coverage matrix of every feature with Monte Carlo proof that each reads, bites and has downstream effects

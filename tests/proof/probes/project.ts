@@ -17,7 +17,7 @@ const SHORT: Opts = { format: 'short', medium: 'live-action', scenario: 'micro',
 const field = (label: string, n = 1) => `field:Projects.tsx#"${label}"#${n}`;
 
 export const PROBES: Probe[] = [
-  { id: 'format-feature', features: [field('Format')], decision: 'Make a feature rather than a short', reads: ['src/engine/production/tasks.ts#buildTasks'],
+  { id: 'format-feature', seeds: 120, features: [field('Format')], decision: 'Make a feature rather than a short', reads: ['src/engine/production/tasks.ts#buildTasks'],
     // With the same scenes a film costs what its scenes cost (production follows the script, not its label); what the
     // format changes is how buyers and audiences take it.
     variant: { project: make({ ...SHORT, format: 'feature', runtime: 80 }) }, bites: ['revenue'], downstream: ['money'] },
@@ -38,5 +38,7 @@ export const PROBES: Probe[] = [
     measure: (_s, projects) => ({ investorShare: projects.reduce((a, p) => a + (p.finance?.deals ?? []).filter((d) => d.status === 'accepted' && d.kind !== 'savings').reduce((b, d) => b + d.terms.incomeShare, 0), 0) }),
     bites: ['backerIn'], downstream: ['investorShare', 'leftInProjects', 'money', 'revenue'] },
   { id: 'genre-comedy', features: ['field:Projects.tsx#?#1'], decision: 'Make it a comedy rather than a drama', reads: ['src/engine/script-effects.ts#competesAs'],
-    variant: { project: make({ ...SHORT, genres: ['comedy'] }) }, bites: ['reception', 'overall'], downstream: ['revenue', 'money'] },
+    // At 40 seeds revenue grew too noisy to show it (November 15, 2026): what reception reaches first is the box office's
+    // gross and the writer's standing, measured on 120.
+    seeds: 120, variant: { project: make({ ...SHORT, genres: ['comedy'] }) }, bites: ['reception', 'overall'], downstream: ['gross', 'standing.writing', 'revenue', 'money'] },
 ];

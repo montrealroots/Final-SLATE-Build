@@ -8,9 +8,12 @@
 //   many credits of each kind it holds for them. It is the catalog's, so it lasts only as long as the catalog may: six
 //   months from when it was gathered (TMDB's API terms, 1.C, as docs/CATALOG.md reads them). An installed catalog renews
 //   it; with none, it is removed, and their name is shown as withdrawn until one is back.
-// - `sim`, what the game makes up for this story: how experienced they count as in each job, a capability drawn around
-//   that, a rate they ask, and other work that keeps them busy. None of it is a fact about the person, and every screen
-//   that shows it says so. It is frozen when they are first considered, so a refreshed catalog never changes it.
+// - `sim`, what the game reads from the record for this story: how experienced they count as in each job (their credits),
+//   a capability and a rate they ask, both from how the industry has judged their work in that job (recognition.ts: the
+//   wins and nominations recorded before the story's year), and other work that keeps them busy, which is made up. Until
+//   November 15, 2026 the capability was drawn at random around their credits and the rate around the job's; now the
+//   same person is the same in every save. It is frozen when they are first considered, so a refreshed record never
+//   changes it.
 //
 // What is never done: no background, nationality, language, pronoun, health or temperament is guessed from a name, a
 // photograph or a place of birth. No rating, vote count or popularity figure is read (the catalog pages show TMDB's
@@ -20,7 +23,9 @@
 // A real person has one ID wherever they were credited, TMDB's own, so they have one diary: bookings are kept per
 // person across every project (state.people), and a second project finds them busy.
 import { ROLES, role, type Person } from './people';
-import { gaussian, intBetween, stream } from './rng';
+import { capabilityFrom, experienceFrom, filmFeeFrom, jobsRecognised, recognitionData, standingOf, LEAD_DAYS } from './recognition';
+import { crewAskFrom } from './recognition-pay';
+import { intBetween, stream } from './rng';
 import { DAY, addDaysToKey, dateKey } from './time';
 import type { GameState, PerformanceMethod, Project } from './types';
 
@@ -43,8 +48,9 @@ export interface RealPerson {
   /**
    * The catalog's record, copied. Absent once it has been withdrawn for its age. `cc0`: copied from the music catalog
    * (music-catalog.ts, Wikidata, CC0), which TMDB's six months don't bind; a TMDB record of the same person replaces it.
+   * `awards`: copied from the industry's record of awards (recognition.ts, Wikidata, CC0), likewise.
    */
-  rec?: { name: string; born?: string; died?: string; ev: Evidence; from: string; cc0?: true };
+  rec?: { name: string; born?: string; died?: string; ev: Evidence; from: string; cc0?: true; awards?: true };
   /** This story's own, made by the game when they were first considered, and kept. */
   sim: {
     at: number;
@@ -54,6 +60,8 @@ export interface RealPerson {
     busy: { from: string; to: string }[];
     /** Set by the player for someone with no recorded birth date: treated as an adult in this story. */
     adult?: true;
+    /** When the industry's record of awards was read for them (its retrieval date); absent if it wasn't loaded then. */
+    awardsRead?: string;
     /** Their age range for parts, kept when they were first considered with a recorded birth date. */
     playing?: [number, number];
   };
@@ -80,8 +88,22 @@ const JOBS: Record<string, string[]> = {
   Director: ['episode-director'], Screenplay: ['episode-writer', 'co-writer'], Writer: ['episode-writer', 'co-writer'], Story: ['co-writer'], Teleplay: ['episode-writer', 'co-writer'], Creator: ['episode-writer', 'co-writer'],
   'Director of Photography': ['dop'], Editor: ['editor'], 'Original Music Composer': ['composer'],
   'Production Design': ['production-designer'], 'Costume Design': ['costume-designer'],
+  // The crafts, as TMDB names them (from November 15, 2026; until then a makeup artist's or a gaffer's credits were
+  // evidence for nothing, so the crew lists had none of the people who did that work).
+  'Makeup Artist': ['hair-makeup'], 'Key Makeup Artist': ['hair-makeup'], 'Makeup Department Head': ['hair-makeup'], 'Makeup Designer': ['hair-makeup'],
+  Hairstylist: ['hair-makeup'], 'Key Hair Stylist': ['hair-makeup'], 'Hair Department Head': ['hair-makeup'], 'Hair Designer': ['hair-makeup'],
+  'Prosthetic Makeup Artist': ['prosthetics'], 'Prosthetic Designer': ['prosthetics'], 'Special Effects Makeup Artist': ['prosthetics'],
+  Gaffer: ['gaffer'], 'Key Grip': ['key-grip'], 'Sound Mixer': ['sound-mixer'], 'Production Sound Mixer': ['sound-mixer'], 'Boom Operator': ['boom-operator'],
+  'Camera Operator': ['camera-operator'], 'Steadicam Operator': ['camera-operator'], 'First Assistant Camera': ['camera-assistant'], 'Focus Puller': ['camera-assistant'],
+  'Script Supervisor': ['script-supervisor'], 'First Assistant Director': ['first-ad'], 'Art Direction': ['art-director'], 'Property Master': ['prop-master'],
+  'Location Manager': ['location-manager'], 'Stunt Coordinator': ['stunt-coordinator'], Choreographer: ['choreographer'], 'Dialect Coach': ['dialect-coach'],
+  Colorist: ['colorist'], 'Sound Designer': ['sound-designer'], 'Supervising Sound Editor': ['sound-designer'], 'Re-Recording Mixer': ['re-recording-mixer'],
+  'Visual Effects Supervisor': ['vfx-artist'], 'Visual Effects Artist': ['vfx-artist'], Storyboard: ['storyboard-artist'], 'Storyboard Artist': ['storyboard-artist'],
+  Animation: ['animator'], Animator: ['animator'], 'Character Designer': ['character-designer'], 'Music Supervisor': ['music-supervisor'], 'Music Editor': ['music-editor'],
+  Orchestrator: ['orchestrator'],
 };
 const ACTING = new Set(['cast', 'series-cast', 'episode-guest']);
+const PERFORMING = new Set(['actor', 'voice-actor']);
 
 /** Count a person's recorded credits by the game's jobs. Only what is recorded counts; nothing is supposed. */
 export function evidenceOf(credits: RecordedCredit[]): Evidence {
@@ -122,7 +144,7 @@ export function jobsOf(p: RealPerson): string[] {
  * the game makes up about them is made once, the first time, from this save's seed and their recorded credits, and
  * never again: a later catalog renews their name and dates and nothing else.
  */
-export function considerPerson(state: GameState, record: RecordedPerson, gathered: string, opts: { cc0?: true } = {}): RealPerson {
+export function considerPerson(state: GameState, record: RecordedPerson, gathered: string, opts: { cc0?: true; awards?: true } = {}): RealPerson {
   const id = realId(record.id);
   const real = realOf(state);
   const ev = evidenceOf(record.credits);
@@ -131,24 +153,28 @@ export function considerPerson(state: GameState, record: RecordedPerson, gathere
   if (record.details?.deathday) rec.died = record.details.deathday;
   const have = real[id];
   if (opts.cc0) rec.cc0 = true;
+  if (opts.awards) rec.awards = true;
   // The music catalog's copy never replaces the film catalog's fuller one.
   if (have?.rec && !have.rec.cc0 && opts.cc0) return have;
   // A record brought back puts their name on their credits in the story again.
   if (have) { const back = !have.rec; have.rec = rec; if (back) restoreNames(state); return have; }
   const jobs: RealPerson['sim']['jobs'] = {};
-  for (const [job, e] of Object.entries(ev)) {
-    const def = ROLES.find((r) => r.id === job);
-    if (!def) continue;
-    const r = stream(state.seed, 'real-person', id, job);
-    const exp = levelFrom(e.n);
-    // The same calibration as anyone in the game (people.ts): a capability drawn around the level, and a rate from the
-    // job's base rate. The draw is this save's; another save draws its own.
-    jobs[job] = { exp, cap: Math.round(Math.min(98, Math.max(30, 40 + exp * 9 + gaussian(r, 0, 8)))), rate: Math.round((def.rate * (0.62 + exp * 0.2) * (0.9 + r() * 0.2)) / 10) * 10 };
+  const year = Number(dateKey(state.now, 'UTC').slice(0, 4));
+  // Each job their credits or their recognition shows. Experience is their credits' count, and at least what a career
+  // recognised over the years shows (recognition.ts experienceFrom); capability and rate are read from their recognition.
+  const read = (job: string, exp: number, points: number) => ({
+    exp, cap: capabilityFrom(exp, points),
+    rate: PERFORMING.has(job) ? Math.max(crewAskFrom(job, exp, 0), points ? Math.round(filmFeeFrom(points) / LEAD_DAYS / 10) * 10 : 0) : crewAskFrom(job, exp, points),
+  });
+  for (const job of new Set([...Object.keys(ev), ...jobsRecognised(record.id, year)])) {
+    if (!ROLES.some((r) => r.id === job)) continue;
+    const s = standingOf(record.id, job, year);
+    jobs[job] = read(job, Math.max(ev[job] ? levelFrom(ev[job].n) : 1, s ? experienceFrom(s) : 1), s?.points ?? 0);
   }
   if (jobs.actor && !jobs['voice-actor']) {
-    // A performer with no recorded voice part can still be asked to read for one: counted as new to it.
-    const r = stream(state.seed, 'real-person', id, 'voice-actor');
-    jobs['voice-actor'] = { exp: 1, cap: Math.round(Math.min(98, Math.max(30, 49 + gaussian(r, 0, 8)))), rate: Math.round((role('voice-actor').rate * 0.82 * (0.9 + r() * 0.2)) / 10) * 10 };
+    // A performer with no recorded voice part can still be asked to read for one: counted as new to it, with what their
+    // performing has been recognised for.
+    jobs['voice-actor'] = read('voice-actor', 1, standingOf(record.id, 'actor', year)?.points ?? 0);
   }
   const rb = stream(state.seed, 'real-person', id, 'busy');
   const busy: { from: string; to: string }[] = [];
@@ -157,6 +183,8 @@ export function considerPerson(state: GameState, record: RecordedPerson, gathere
     busy.push({ from, to: addDaysToKey(from, intBetween(rb, 10, 70)) });
   }
   const p: RealPerson = { id, rec, sim: { at: state.now, jobs, busy } };
+  const awards = recognitionData();
+  if (awards) p.sim.awardsRead = awards.source.retrieved;
   if (rec.born && jobs.actor) {
     const age = yearsBetween(rec.born, dateKey(state.now, 'UTC'));
     const width = intBetween(stream(state.seed, 'real-person', id, 'playing'), 6, 14);
@@ -173,7 +201,7 @@ const yearsBetween = (born: string, on: string): number => {
 
 export const realPerson = (state: GameState, id: string): RealPerson | undefined => peek(state)[id];
 /** Where a real person's record came from, in words: the film catalog (TMDB), or the music catalog (Wikidata). */
-export const catalogOf = (p: RealPerson | undefined): string => (p?.rec?.cc0 ? 'the music catalog (Wikidata)' : 'the film catalog');
+export const catalogOf = (p: RealPerson | undefined): string => (p?.rec?.awards ? "the industry's record of awards (Wikidata)" : p?.rec?.cc0 ? 'the music catalog (Wikidata)' : 'the film catalog');
 export const realPeople = (state: GameState): RealPerson[] => Object.values(peek(state));
 
 /** Treat someone with no recorded birth date as an adult in this story, or stop doing so. The player's choice, and labelled. */

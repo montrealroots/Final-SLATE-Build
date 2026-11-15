@@ -2,6 +2,7 @@
 // songwriter, an artist or a recording as Wikidata records them, license a recording into the project, or consider a
 // composer for the job under the one identity they have in the save. Records are facts with their source; everything
 // about working with them is the game's simulation, and says so.
+import { loadRecognition } from '../engine/recognition';
 import { useEffect, useState } from 'react';
 import { considerFor } from '../engine/guests';
 import { MUSIC_ROLE_LABELS, considerComposer, composerRecord, licenseRecording, loadMusicCatalog, musicCatalog, performerNames, searchMusic, wikidataLink, type MusicCatalog, type MusicPerson, type MusicRole, type Recording } from '../engine/music-catalog';
@@ -48,7 +49,7 @@ export function MusicCatalogCard({ p }: { p: Project }) {
                 <p className="dim small">{[m.kind === 'group' ? 'A group' : null, lifespan(m), m.country].filter(Boolean).join('; ')}.{m.occupations?.length ? ` Recorded as: ${m.occupations.slice(0, 6).join(', ')}.` : ''} <a href={wikidataLink(m.id)} target="_blank" rel="noreferrer noopener">Its record</a>.</p>
                 {m.scores && <p className="small">{m.scores.films} film {m.scores.films === 1 ? 'score' : 'scores'} recorded{m.scores.first ? `, ${m.scores.first} to ${m.scores.last}` : ''}: {m.scores.known.map((f) => `${f.title}${f.year ? ` (${f.year})` : ''}`).join(', ')}.</p>}
                 {rec && !m.died && (
-                  <button className="btn btn-sm" disabled={listed} onClick={() => setErr(store.act((s) => { considerComposer(s, cat, m); considerFor(s, live(), { personId: `tp_${rec.id}`, roleId: 'composer' }, today); }))}>{listed ? 'Considered For Composer' : 'Consider For Composer'}</button>
+                  <button className="btn btn-sm" disabled={listed} onClick={() => void loadRecognition().catch(() => null).then(() => setErr(store.act((s) => { considerComposer(s, cat, m); considerFor(s, live(), { personId: `tp_${rec.id}`, roleId: 'composer' }, today); })))}>{listed ? 'Considered For Composer' : 'Consider For Composer'}</button>
                 )}
                 {rec && m.died && <p className="dim small">Recorded as having died in {m.died.slice(0, 4)}: not approached.</p>}
               </li>

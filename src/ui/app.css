@@ -462,7 +462,7 @@ input[readonly] {
   border-style: dashed; cursor: default;
 }
 input[readonly]:focus { border-color: var(--line-strong); }
-textarea { resize: vertical; min-height: 72px; }
+textarea { resize: vertical; min-height: 72px; max-height: 28em; } /* grows with its words (components.tsx GrowingTextarea), then scrolls */
 label, .label { display: block; font-size: var(--size-xs); font-weight: 600; color: var(--text-muted); margin-bottom: var(--s1); }
 
 /* A value the form worked out, not one it asked for: the billing the pronouns
