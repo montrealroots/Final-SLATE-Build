@@ -612,7 +612,7 @@
  ],
  "verdict": "proven",
  "hashes": {
-  "src/engine/bankworld/systems/cardlife.ts": "4410ca438c2f22b7",
+  "src/engine/bankworld/systems/cardlife.ts": "b032293a1a289eb6",
   "tests/proof/career.ts": "50bea06f19a02c5b"
  }
 }

@@ -4,9 +4,10 @@ import { describe, expect, it } from 'vitest';
 import { GEAR, GEAR_SOURCE, RENT_LEAST, RENT_SHARE, SERVICE_BELOW, gearById, rentDayRate } from '../src/engine/gear-catalog';
 import { addToKit, buyGear, buyRefusal, dayKitProblems, kitAddRefusal, kitClash, kitProblems, lentValue, removeFromKit, resaleValue, sellGear, sellRefusal, serviceCost, serviceGear, serviceRefusal, setPackageApproval } from '../src/engine/equipment';
 import { personalBalance, personalPostings, personalStatement } from '../src/engine/personal';
+import { bankSim } from '../src/engine/bankworld';
 import { dayFees, housePackageFee } from '../src/engine/production/rates';
 import { rigDayCost } from '../src/engine/craft';
-import { approvedScenes, deserialize, serialize } from './engine-api';
+import { DAY, approvedScenes, deserialize, processUntil, serialize } from './engine-api';
 import { validateDraft } from '../src/engine/state';
 import type { CreationDraft, GameState, Project } from '../src/engine/types';
 import { approve, buildProject, castAll, runDays, staffAll, startLife, startProduction, summary } from './helpers';
@@ -49,6 +50,23 @@ describe('the shop', () => {
     expect(it).toMatchObject({ owner: 'you', paid: 43, condition: 100 });
     expect(personalBalance(s)).toBe(957);
     expect(personalStatement(s)).toContainEqual({ kind: 'equipment', total: -43 });
+    // A purchase the bank can't pay (the debit card short, savings not linked) is refused and leaves nothing bought:
+    // until November 15, 2026 it was offered on the accounts' whole balance, the item added before the payment, which
+    // then threw, and the item stayed owned, unpaid for.
+    const short = startLife('short-current', 'gb-london');
+    const sim = bankSim(short.bank!);
+    const saved = sim.execute<{ accountId: string }>({ kind: 'bank.open_savings', payload: {} });
+    const cur = sim.universe.accounts[sim.player.primaryAccountId!]!;
+    expect(sim.execute({ kind: 'bank.transfer', payload: { fromId: cur.id, toId: saved.value!.accountId, amount: cur.balance - 30_000 } }).ok).toBe(true);
+    expect(buyRefusal(short, 'bmpcc-4k')).toBe('It costs $1,139, and your bank won\'t pay it now: you can’t afford it. Move money into your current account, link your savings, or put it on a card.');
+    expect(() => buyGear(short, 'bmpcc-4k')).toThrow(/your bank won't pay it now/);
+    expect(short.gear?.items ?? []).toEqual([]);
+    // With a card and everyday spending on it, the card's room pays: until November 15, 2026 the cash alone was read.
+    expect(sim.execute({ kind: 'card.apply', payload: {} }).ok).toBe(true);
+    processUntil(short, short.now + 8 * DAY, 'tick', 100000);
+    expect(sim.execute({ kind: 'bank.set_payments', payload: { everyday: 'credit' } }).ok).toBe(true);
+    expect(buyRefusal(short, 'bmpcc-4k')).toBeNull();
+    expect(buyGear(short, 'bmpcc-4k')).toMatchObject({ owner: 'you' });
     const old = startLife('old');
     delete old.money; // labelled fixture: a story from before your own money
     expect(buyRefusal(old, 'stand-300f')).toMatch(/^This story began before your own money/);

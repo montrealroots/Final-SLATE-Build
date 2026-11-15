@@ -8,7 +8,7 @@
 // instant (`onClockMove`), so its interest, fees, statements and payments fall on their own days. What it tells the
 // player (1221's notifications) goes into SLATE's log, routed to the bank.
 import { advanceBankWorld, bankSim, cityForPlace, createBankWorld, type SaveUniverse } from './bankworld';
-import { drawFromBank, inTheBank, isEveryday, spend } from './bankworld/systems/spending';
+import { drawFromBank, inTheBank, isEveryday, spend, spendRefusal } from './bankworld/systems/spending';
 import { overdraftHeadroom } from './bankworld/systems/lending';
 import { depositAccount } from './bankworld/systems/routing';
 import { COUNTRIES } from './bankworld/content/geography';
@@ -139,6 +139,18 @@ export function bankSpendable(state: GameState): number {
   advanceBankWorld(u, state.now);
   const sim = bankSim(u);
   return Math.round(fromBank(u, inTheBank(sim, sim.player))) / 100;
+}
+
+/**
+ * Why the bank wouldn't pay a purchase of `dollars` now, in its words, or null: the same check its payment makes
+ * (spending.ts spendRefusal), so the card's room, the overdraft and a French debit card's ceiling count as they do there.
+ */
+export function bankPurchaseRefusal(state: GameState, dollars: number): string | null {
+  const u = state.bank;
+  if (!u) return 'This story has no bank.';
+  advanceBankWorld(u, state.now);
+  const sim = bankSim(u);
+  return spendRefusal(sim, sim.player, toBank(u, Math.round(dollars * 100)), 'slate:equipment#check') ?? null;
 }
 
 /** Where the bank isn't in dollars, what it holds in its own money: " Your bank holds it in pounds: £7,505.00." Nothing where it is. */

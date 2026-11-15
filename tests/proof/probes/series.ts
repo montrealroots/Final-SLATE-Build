@@ -12,6 +12,8 @@ import { setEpisodeDates } from '../../../src/engine/episode-releases';
 import { addDaysToKey } from '../../../src/engine/time';
 import { moveEpisode } from '../../../src/engine/season';
 import { addScene, updateScene } from '../../engine-api';
+import { planRelease } from '../../../src/engine/finish';
+import { dateKey } from '../../../src/engine/time';
 
 const live = (s: GameState) => s.projects.filter((p) => !p.delivered && !p.shelved);
 const both = (...fns: ((s: GameState, day: number) => void)[]) => (s: GameState, day: number) => { for (const f of fns) f(s, day); };
@@ -115,3 +117,26 @@ PROBES.push({
   }),
   bites: ['firstEpisodeMinutes'], downstream: ['hours', 'viewers', 'renewed'],
 });
+
+// A season streamed by you (finish.ts planRelease) can be planned once an episode is delivered (episode-delivery.ts),
+// not only the whole season: each day, a release a week on is tried for every season not yet released, so a first
+// episode delivered on its own comes out before the rest are finished.
+const streamSoon = (s: GameState) => {
+  for (const p of s.projects.filter((x) => !x.shelved && !x.releases.some((r) => r.status !== 'cancelled'))) {
+    try { planRelease(s, p, { route: 'streaming', date: addDaysToKey(dateKey(s.now, 'Europe/London'), 7), territories: ['GB'] }); } catch { /* nothing delivered yet */ }
+  }
+};
+const DAY_MS = 86_400_000;
+PROBES.push({
+  id: 'deliver-episode-release', features: ['action:episode-delivery.lockEpisode', 'action:episode-delivery.deliverEpisode'], decision: 'Lock and deliver episode 1 before the rest, and stream the season as soon as it can be',
+  reads: ['src/engine/episode-delivery.ts#deliverEpisode', 'src/engine/finish.ts#planRelease'],
+  base: { ...SERIES, release: false, daily: streamSoon }, variant: { ...SERIES, release: false, daily: both(streamSoon, deliverOne) },
+  measure: (s, projects) => ({
+    ...measure(s, projects),
+    // How long after each season was made its first episode came out.
+    firstOut: projects.reduce((a, p) => { const at = p.releases.flatMap((r) => (r.episodes ?? []).filter((e) => e.status === 'released').map((e) => Date.parse(`${e.date}T12:00:00Z`))).sort((x, y) => x - y)[0]; return a + (at ? (at - Number(p.createdAt)) / DAY_MS : 0); }, 0),
+    episodesOut: projects.reduce((a, p) => a + p.releases.reduce((b, r) => b + (r.episodes ?? []).filter((e) => e.status === 'released').length, 0), 0),
+  }),
+  bites: ['episodesDeliveredAlone'], downstream: ['firstOut', 'episodesOut'],
+});
+
