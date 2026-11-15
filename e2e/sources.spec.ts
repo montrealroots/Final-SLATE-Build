@@ -51,7 +51,7 @@ test('a real work found, read with its recorded rights, chosen, undone, chosen a
   await expect(work.getByRole('region', { name: 'Where This Comes From' })).toContainText("The summary above is Wikipedia's.");
   await expect(work.getByRole('link', { name: 'Its Wikidata Record' })).toHaveAttribute('href', 'https://www.wikidata.org/wiki/Q480');
   const changes = work.getByRole('region', { name: 'What Choosing It Changes' });
-  await expect(changes).toContainText('Source Material becomes Adapted From Another Work.');
+  await expect(changes).toContainText('Source Material becomes Adapted.');
   await expect(changes).toContainText('Adapted From becomes "Don Quixote by Miguel de Cervantes".');
   if (phone) expect((await audit(page)).defects, 'one work open, on a phone').toEqual([]);
   // Going back chooses nothing.

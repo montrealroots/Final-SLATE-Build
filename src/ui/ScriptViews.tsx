@@ -358,7 +358,7 @@ export function ScriptTab({ p }: { p: Project }) {
             options={[{ value: '', label: 'By Its Genres' }, { value: 'drama', label: 'Drama' }, { value: 'comedy', label: 'Comedy Or Musical' }]}
             onChange={(v) => edit(p, () => { if (v) p.axes.register = v as 'comedy' | 'drama'; else delete p.axes.register; })} />
           {!nonfiction && <SelectField label="Source Material" value={p.source?.kind ?? 'original'} hint="Awards with separate original and adapted screenplay categories enter it by what you declare here."
-            options={[{ value: 'original', label: 'Original' }, { value: 'adapted', label: 'Adapted From Another Work' }]}
+            options={[{ value: 'original', label: 'Original' }, { value: 'adapted', label: 'Adapted' }]}
             onChange={(v) => edit(p, () => { if (v === 'adapted') p.source = { ...p.source, kind: 'adapted', work: p.source?.work ?? '' }; else delete p.source; })} />}
           {p.source?.kind === 'adapted' && <TextField label="Adapted From" maxLength={120} value={p.source.work ?? ''} hint="The novel, play, article or film it adapts. Your own words; a work chosen from the catalog stays below until you let it go." onChange={(v) => edit(p, () => (p.source = { ...p.source, kind: 'adapted', work: v }))} />}
           <TheWorkItAdapts p={p} />

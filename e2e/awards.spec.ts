@@ -143,7 +143,7 @@ test('Oscars: one film in several categories, each to its own credited people; a
   await nav(page, 'Projects');
   await page.getByRole('button', { name: 'Harbor Lights' }).click();
   await section(page, 'Script');
-  await page.getByLabel('Source Material').selectOption({ label: 'Adapted From Another Work' });
+  await page.getByLabel('Source Material').selectOption({ label: 'Adapted' });
   await page.getByLabel('Adapted From').fill('The Salt Road, a novel');
   await openEvent(page, 'Harbor Lights', '99th Academy Awards');
   await filterTo(page, 'Harbor Lights');

@@ -195,7 +195,7 @@ function OpenWork({ p, w, run, back, onClose, onChosen }: { p: Project; w: Sourc
         <fieldset className="idea-block" role="region" aria-label="What Choosing It Changes">
           <legend>What Choosing It Changes</legend>
           <ul className="list">
-            <li><strong>Source Material</strong> becomes Adapted From Another Work{p.source?.kind === 'adapted' ? ' (it is already)' : ''}.</li>
+            <li><strong>Source Material</strong> becomes Adapted{p.source?.kind === 'adapted' ? ' (it is already)' : ''}.</li>
             <li><strong>Adapted From</strong> becomes "{basedOn(w).slice(0, 120)}"{had && had !== basedOn(w).slice(0, 120) ? `, in place of "${had}"` : ''}.</li>
           </ul>
           <p className="dim small">Nothing else in your script is touched. Undo Last Change takes it back.</p>

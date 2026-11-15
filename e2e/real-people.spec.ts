@@ -75,7 +75,7 @@ test('J04: a performer from the film catalog is considered, reads, counters, is 
   await expect(dialog.locator('ul.list > li').first()).toContainText('Ada Quill');
   await expect(ada.getByText('From The Film Catalog', { exact: true })).toBeVisible();
   await expect(ada).toContainText("3 recorded credits in the film catalog. Age 45. In this story they play ages");
-  await expect(ada).toContainText("Languages, background and nationality aren't recorded, and none is assumed. In this story they ask $660 a day.");
+  await expect(ada).toContainText("Languages, background and nationality aren't recorded, and none is assumed. In this story they ask $710 a day.");
   await expect(ada.getByText('Pronouns Match', { exact: true })).toHaveCount(0);
   await ada.getByRole('button', { name: 'Invite Ada Quill To Read' }).click();
   await expect(ada.getByText('Asked To Read', { exact: true })).toBeVisible();
@@ -99,9 +99,9 @@ test('J04: a performer from the film catalog is considered, reads, counters, is 
   await section(page, 'Cast');
   const contracts = card(page, 'Offers And Contracts');
   const deal = contracts.locator('tr', { hasText: 'Ada Quill' });
-  await expect(deal).toContainText('Asks $660 a day');
+  await expect(deal).toContainText('Asks $710 a day');
   await deal.getByRole('button', { name: 'Accept Counteroffer' }).click();
-  await expect(deal).toContainText('$660 a day');
+  await expect(deal).toContainText('$710 a day');
   await expect(deal).toContainText('Accepted');
   await expect(role(page, 'Ines')).toContainText('On Camera: Ada Quill');
 
@@ -140,7 +140,7 @@ test('J04: a performer from the film catalog is considered, reads, counters, is 
   await page.getByRole('button', { name: 'Build Schedule' }).click();
   await section(page, 'Cast');
   await role(page, 'Juno').getByRole('button', { name: 'Find Performers' }).click();
-  await expect(ada2).toContainText('In this story they ask $660 a day.');
+  await expect(ada2).toContainText('In this story they ask $710 a day.');
   await expect(ada2).not.toContainText('already working on another of your projects');
   await ada2.getByRole('button', { name: 'Make Offer' }).click();
   await advance(page, 'week');
@@ -158,7 +158,7 @@ test('J04: a performer from the film catalog is considered, reads, counters, is 
     const film = saved.projects.find((x: { title: string }) => x.title === 'Night Ferry');
     const hire = film.hires.find((h: { personId: string; status: string }) => h.personId === 'tp_800001' && h.status === 'accepted');
     expect(hire.daysWorked).toBeGreaterThan(0);
-    expect(hire.dayRate).toBe(660);
+    expect(hire.dayRate).toBe(710);
     const line = film.obligations.find((o: { ref: string }) => o.ref === hire.id);
     expect(line.settled).toBe(hire.dayRate * hire.daysWorked);
     expect(film.credits.find((c: { person: string }) => c.person === 'tp_800001')).toMatchObject({ personName: 'Ada Quill' });
@@ -189,7 +189,7 @@ test('J04: a performer from the film catalog is considered, reads, counters, is 
   await check();
   await openPerson(page, 'Ada Quill');
   await expect(work.locator('li', { hasText: 'Night Ferry' })).toContainText('Credited');
-  await expect(story.getByRole('list', { name: 'What They Can Be Asked To Do' }).locator('li', { hasText: /^Performer/ })).toContainText('In this story they ask about $660 a day.');
+  await expect(story.getByRole('list', { name: 'What They Can Be Asked To Do' }).locator('li', { hasText: /^Performer/ })).toContainText('In this story they ask about $710 a day.');
   expect(tmdb.tmdbRequests).toEqual([]);
 });
 
@@ -259,7 +259,7 @@ test('J05: a director with no recorded date of birth and a writer are hired for 
   await section(page, 'Crew');
   const offers = card(page, 'Crew Offers And Contracts');
   await expect(offers.locator('tr', { hasText: 'Ben Rook' })).toHaveText([/Director.*\$740 a day.*Accepted/s, /Editor.*a day.*Accepted/s]);
-  await expect(offers.locator('tr', { hasText: 'Fen Ward' })).toHaveText(/Writer.*\$430 a day.*Accepted/s);
+  await expect(offers.locator('tr', { hasText: 'Fen Ward' })).toHaveText(/Writer.*\$410 a day.*Accepted/s);
 
   // Hired isn't credited. The director is chosen now; the writer once a draft of theirs is accepted.
   await wd.getByLabel('Director', { exact: true }).selectOption({ label: 'Ben Rook' });
@@ -268,7 +268,7 @@ test('J05: a director with no recorded date of birth and a writer are hired for 
   const fen = page.getByRole('region', { name: 'Writing Work For Fen Ward' });
   await fen.getByLabel('Ask Fen Ward For').selectOption({ label: 'A Rewrite' });
   await fen.getByLabel('Your Brief For Fen Ward (Optional)').fill('Keep the dock. Make Ines say less.');
-  await expect(fen).toContainText('2 working days at $430 a day: $860, added to what is agreed with them.');
+  await expect(fen).toContainText('2 working days at $410 a day: $820, added to what is agreed with them.');
   await fen.getByRole('button', { name: 'Commission This Pass' }).click();
   await expect(fen).toContainText('Fen Ward: a rewrite. Writing: day 1 of 2.');
   await advance(page, 'week');
@@ -278,7 +278,7 @@ test('J05: a director with no recorded date of birth and a writer are hired for 
   // Sent back once with a note in the player's own words, which is kept and never read.
   await fen.getByLabel("What Fen Ward's Revision Should Look At").selectOption({ label: 'Dialogue' });
   await fen.getByLabel('Your Note To Fen Ward (Optional)').fill('Ines still explains the plot on page two.');
-  await expect(fen).toContainText('A revision takes 1 working day at $430 a day: $430.');
+  await expect(fen).toContainText('A revision takes 1 working day at $410 a day: $410.');
   await fen.getByRole('button', { name: 'Ask For A Revision' }).click();
   await expect(fen).toContainText('Revising (Dialogue): day 1 of 1.');
   expect(await noSidewaysScroll(page)).toBe(true);
