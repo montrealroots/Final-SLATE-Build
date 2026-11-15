@@ -5,7 +5,9 @@ import type { Probe } from '../probe';
 import type { GameState, Project } from '../../../src/engine/types';
 import { WRITING, approveGuideMe, endGuideMe, guideMePlan } from '../../../src/engine/mandates';
 import { fund } from './casting';
-import { makeOffer, roleCandidates } from '../../../src/engine/hiring';
+import { makeOffer, neededRoles, productionWindow, proposeStaffing, roleCandidates, sendStaffingOffers } from '../../../src/engine/hiring';
+import { isAvailable, personById } from '../../../src/engine/people';
+import { ledgerTotals } from '../../../src/engine/budget';
 import { negotiate, negotiationRefusal } from '../../../src/engine/line-producer';
 
 /** Before the money is raised: funded first, then Guide Me given the writing, its ceiling what its plan costs. */
@@ -37,7 +39,31 @@ const negotiateCounters = () => { const done = new Set<string>(); return (s: Gam
   }
 }; };
 
-const measure = (_s: GameState, projects: Project[]) => ({
+/** Funded, then each department's proposal sent as it stands (the Crew page's Send Offers): the most affordable free people. */
+const sendProposals = (s: GameState, p: Project) => {
+  fund(s, p);
+  for (const d of [...new Set(neededRoles(p, s).map((r) => r.dept))]) sendStaffingOffers(s, p, proposeStaffing(s, p, d).proposals);
+};
+/**
+ * Funded, then the same jobs the proposals fill, each offered by hand to the most experienced person free for the
+ * production whose days the uncommitted money can still pay (the Crew page's Find Candidates). Until November 15, 2026
+ * this offered every job the script names, including those another hire covers, and the careers it played went broke.
+ */
+const handPick = (s: GameState, p: Project) => {
+  fund(s, p);
+  const win = productionWindow(s, p);
+  for (const d of [...new Set(neededRoles(p, s).map((r) => r.dept))]) {
+    for (const pr of proposeStaffing(s, p, d).proposals) {
+      const left = ledgerTotals(p).available;
+      const pool = roleCandidates(s, p, pr.roleId).filter((x) => isAvailable(s, x, win.from, win.to, p.id).ok && x.dayRate * pr.days <= left).sort((a, b) => b.experience - a.experience || a.dayRate - b.dayRate);
+      for (const x of pool) { try { makeOffer(s, p, { personId: x.id, roleId: pr.roleId, dayRate: x.dayRate }); break; } catch { /* funds or a clash: the next */ } }
+    }
+  }
+};
+
+const measure = (s: GameState, projects: Project[]) => ({
+  crewExperience: (() => { const e = projects.flatMap((p) => p.hires.filter((h) => h.kind === 'crew' && (h.status === 'accepted' || h.status === 'released')).map((h) => personById(s, h.personId, h.roleId).experience)); return e.length ? e.reduce((a, b) => a + b, 0) / e.length : 0; })(),
+  crewRates: projects.reduce((a, p) => a + p.hires.filter((h) => h.kind === 'crew' && (h.status === 'accepted' || h.status === 'released')).reduce((b, h) => b + h.dayRate, 0), 0),
   writingPasses: projects.reduce((a, p) => a + (p.writing ?? []).filter((j) => j.status === 'accepted').length, 0),
   counterRates: projects.reduce((a, p) => a + p.hires.filter((h) => h.counterRate !== undefined && h.status === 'accepted').reduce((b, h) => b + h.dayRate, 0), 0),
   writersHired: projects.reduce((a, p) => a + p.hires.filter((h) => ['co-writer', 'script-editor', 'episode-writer'].includes(h.roleId) && (h.status === 'accepted' || h.status === 'released')).length, 0),
@@ -63,5 +89,11 @@ export const PROBES: Probe[] = [
     // Its fees come near what it saves on a short this size, so 120 careers (November 15, 2026: at 40 the net cost's interval touched none).
     seeds: 120, base: { castRate: 0.8, decide: withLineProducer }, variant: { castRate: 0.8, decide: withLineProducer, beforeManage: negotiateCounters() }, measure,
     bites: ['counterRates'], downstream: ['spent', 'money'],
+  },
+  {
+    id: 'send-staffing', features: ['action:hiring.sendStaffingOffers'], decision: "Send each department's proposed crew rather than hiring the most experienced person free for each job",
+    reads: ['src/engine/hiring.ts#sendStaffingOffers', 'src/engine/hiring.ts#proposeStaffing', 'src/engine/finish.ts#assessQuality'],
+    base: { decide: handPick }, variant: { decide: sendProposals }, measure,
+    bites: ['crewRates', 'crewExperience'], downstream: ['spent', 'quality.craft', 'overall'],
   },
 ];

@@ -15,5 +15,6 @@
  "action:hiring.castRoleFor": "Names the job a part's casting method is (performer or voice performer) inside an offer; the offer is its own row (hiring.makeOffer).",
  "action:projects.renameDraft": "Names a draft; the name is shown in the draft list and nothing else reads it, as a label shouldn't be.",
  "action:brief.saveIdea": "Keeps an idea on the player's shortlist in the idea picker (IdeaPicker.tsx); the idea itself is used through the brief, its own row.",
- "action:company.setBanner": "Names your banner, shown on your credits as \"A … Production\" (YourMoney.tsx); a name, read only where it is shown."
+ "action:company.setBanner": "Names your banner, shown on your credits as \"A … Production\" (YourMoney.tsx); a name, read only where it is shown.",
+ "action:song-actions.setSongPerformers": "Names who sings a song, shown in the credits as \"Song Performed By\" (songs.ts) and in a casting note; a name, read only where it is shown."
 }

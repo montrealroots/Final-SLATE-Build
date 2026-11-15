@@ -17,7 +17,7 @@ import { recordHistory, willingness } from './relationships';
 import { stream } from './rng';
 import { addLog, newId, registerHandler, schedule } from './state';
 import { DAY, HOUR, addDaysToKey, dateKey, formatDateKey, weekdayName, weekdayOfKey } from './time';
-import type { CastAssignment, GameState, Hire, PerformanceMethod, Project } from './types';
+import type { CastAssignment, GameState, Hire, PerformanceMethod, Project, Task } from './types';
 import { PRONOUNS } from '../data/identity';
 import { minorFor, supervisionFor, type Minor } from './minors';
 import { groupShootDays, minorsInScenes, planningDate } from './production/schedule';
@@ -38,6 +38,20 @@ const LIVE_CORE: [string, string, boolean][] = [
   ['editor', 'Cuts the picture.', true],
 ];
 
+/**
+ * The work the hiring reads: the production's own task list, or, before it has one, the script's. A continuation starts
+ * with only the builds it carried over finished (sequel.ts), and those are taken off the script's work, not taken for
+ * all of it. Until November 15, 2026 any task at all was read as the whole list: a sequel needed only a modeler, every
+ * other job was priced at a day, its estimate came to $40,000 for a film that costs $145,000 made fresh, and it never
+ * got its crew (docs/v10/proof/continue-project.json).
+ */
+export function plannedTasks(p: Project): Task[] {
+  if (!p.tasks.length) return buildTasks(p);
+  if (p.schedule.startDate || p.tasks.some((t) => t.status !== 'done')) return p.tasks;
+  const finished = new Map(p.tasks.map((t) => [t.id, t]));
+  return buildTasks(p).filter((t) => !((finished.get(t.id)?.needsVersion ?? -1) >= (t.needsVersion ?? 0)));
+}
+
 export function neededRoles(p: Project, state?: GameState): NeededRole[] {
   if (p.approvedDraft === null) return [];
   const out = new Map<string, NeededRole>();
@@ -53,7 +67,7 @@ export function neededRoles(p: Project, state?: GameState): NeededRole[] {
   if (live) for (const [r, why, req] of LIVE_CORE) add(r, r === 'gaffer' && gaffer ? 'Lights interiors and night scenes. Required for this script.' : r === 'gaffer' && litScenes ? 'Not needed for interiors shot in practical and available light. Useful if you want one.' : why, r === 'gaffer' ? gaffer : req);
   // Crew the camera rigs and the sound plan need on the day.
   if (live) for (const c of craftRoles(p, scenes.filter((s) => sceneTechnique(p, s) === 'live' && s.kind !== 'archival'))) { out.delete(c.roleId); add(c.roleId, `${c.reason} Required for this plan.`, true); }
-  const tasks = p.tasks.length ? p.tasks : buildTasks(p);
+  const tasks = plannedTasks(p);
   for (const t of tasks) add(t.roleId, `Needed for ${t.label.toLowerCase()}.`, true);
   // Optional, wherever there is a part to cast (from November 12, 2026: until then the role existed and no production
   // could ask for one). What they do is in casting-director.ts; it is never required, and Staff This Department,
@@ -95,7 +109,7 @@ export function childrenIn(p: Project, state?: GameState): Minor[] {
   const out = [...minorsInScenes(p, live, on, state).values()];
   for (const c of approvedCharacters(p)) {
     for (const m of ['voice', 'motion-capture'] as const) {
-      if (!(p.tasks.length ? p.tasks : buildTasks(p)).some((t) => t.assetRef === c.id && (m === 'voice' ? t.kind === 'anim:voice' : t.kind === 'anim:mocap'))) continue;
+      if (!plannedTasks(p).some((t) => t.assetRef === c.id && (m === 'voice' ? t.kind === 'anim:voice' : t.kind === 'anim:mocap'))) continue;
       const kid = minorFor(state, p, c.id, on, m);
       if (kid && !out.some((x) => x.characterId === kid.characterId)) out.push(kid);
     }
@@ -112,7 +126,7 @@ function childDays(p: Project, state?: GameState): number {
   const shoot = p.schedule.days.length
     ? p.schedule.days.filter((d) => d.status !== 'cancelled' && d.status !== 'moved' && scenes.some((s) => d.sceneIds.includes(s.id) && s.participants.some((c) => ids.has(c)))).length
     : groupShootDays(p, state).filter((g) => scenes.some((s) => g.sceneIds.includes(s.id) && s.participants.some((c) => ids.has(c)))).length;
-  const sessions = (p.tasks.length ? p.tasks : buildTasks(p)).filter((t) => (t.kind === 'anim:voice' || t.kind === 'anim:mocap') && ids.has(t.assetRef ?? '')).reduce((a, t) => a + Math.max(1, Math.ceil(t.units)), 0);
+  const sessions = plannedTasks(p).filter((t) => (t.kind === 'anim:voice' || t.kind === 'anim:mocap') && ids.has(t.assetRef ?? '')).reduce((a, t) => a + Math.max(1, Math.ceil(t.units)), 0);
   return shoot + sessions;
 }
 const WELFARE = new Set(['studio-teacher', 'chaperone', 'tutor', 'set-nurse']);
@@ -142,7 +156,7 @@ export function estimateDays(p: Project, roleId: string, characterId?: string, m
   if (WELFARE.has(roleId)) return Math.max(1, childDays(p, state));
   // A casting director's agreement covers one search; each further search adds its days (casting-director.ts).
   if (roleId === 'casting-director') return CASTING_SEARCH_DAYS;
-  const tasks = p.tasks.length ? p.tasks : buildTasks(p);
+  const tasks = plannedTasks(p);
   const shootDays = p.schedule.days.length ? p.schedule.days.filter((d) => d.status === 'scheduled' || d.status === 'shot' || d.status === 'partial').length : estimatedShootDays(p, state);
   if (characterId) {
     if (method === 'voice') return Math.max(1, tasks.filter((t) => t.kind === 'anim:voice' && t.assetRef === characterId).length);

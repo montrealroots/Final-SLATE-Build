@@ -4,6 +4,7 @@
 import type { Probe } from '../probe';
 import type { GameState, Project } from '../../../src/engine/types';
 import { enterEverything } from './awards';
+import { askAll, checkClaims, doc } from './documentary';
 import { audition, castBest, fund } from './casting';
 import { bankMeasures } from './bank';
 import { firstLooks } from '../../../src/engine/first-look';
@@ -83,7 +84,13 @@ const off = (kind: string, decision: string, bites: string[], downstream: string
   reads: [`${HANDLER[kind]}#handler:${kind}`], disable: [kind], base, variant: base, measure, bites, downstream,
 });
 
+/** A documentary short whose contributors are all asked for consent, one with approval over the cut (documentary.ts). */
+const DOC = { project: doc, decide: askAll, beforeManage: checkClaims };
+
 export const PROBES: Probe[] = [
+  // Delivery waits on every contributor's answer, and on the cut being approved by one who has approval over it.
+  { ...off('consent-response', 'contributors answering a request for consent', ['delivered'], ['revenue', 'money'], DOC), seeds: 20 },
+  { ...off('contributor-cut', 'contributors answering the cut they were shown', ['delivered'], ['revenue', 'money'], DOC), seeds: 20 },
   off('edition-open', 'awards editions opening for entries', ['entries'], ['selected', 'money'], AWARDS),
   off('edition-deadline', 'entry deadlines closing', ['selected'], ['standing.producing', 'won'], AWARDS),
   // An edition's opening is when a selected film screens (awards-results.ts festivalOpens), and its screening is what

@@ -60,9 +60,27 @@ and the rest) with real grades filling the hiring lists.
   (needs a release planned mid-production); the bank's collections, dormant accounts, unclaimed money, disputes and
   hardship plans (a career with $25m in the bank doesn't reach them).
 
-**Next.** The remaining actions (songs, documentary consent and cuts, screen time, sequels, studio pitches, first-look
-development, representation, stages of a part, a project from a source), the scheduled kinds, then the fields. The
-writer's revision focus still waits on the owner (nothing reads it).
+- Second batch, written and proven: a documentary's consent and its contributors (`documentary.ts`: asking, showing
+  the cut, a withdrawal), the casting director's search and advice, the shortlist and a performer with no recorded age
+  (`casting-director.ts`), sending a department's staffing (`helpers-people.ts`), a part's stages (`stages.ts`), screen
+  time recorded for the International Emmys (`screen-time.ts`), a version's song swapped and put back
+  (`version-songs.ts`), a catalog recording licensed and a catalog composer hired (`music-catalog.ts`), a sequel
+  (`continuation.ts`), a season's episodes moved later (`series.ts`), a pitch to a studio and a first-look deal's
+  development money (`studios.ts`), an investor approached through the agent (`agent.ts`), a passport by the office's
+  recorded route (`bank-rest.ts`), a field locked against a story (`blueprint-lock.ts`). Song performers went to
+  `not-features.json`.
+- Fixed from them, each with a test that fails without the fix: a documentary never delivered when a contributor
+  declined, because their interview was put back on the schedule every day (164 lost days and $579,190 a year;
+  `production/shoot.ts`); a withdrawal took nothing out of the film, and now a scene with nobody left who agreed leaves
+  the cut (`unscripted.ts withdrawRelease`); a sequel read the builds it carried over as its whole task list, needed
+  only a modeler, was estimated at $40,000 against $145,000 fresh and never got its crew (`hiring.ts plannedTasks`).
+- Observed, not changed (the owner's settled grading): a catalog performer or composer with many credits and no awards
+  is graded 55, below the game's experienced people (88 cast on average), so they are rarely the best read.
+
+**Next.** The remaining actions: moving an episode (its place matters through each episode's reception, audiences.ts
+`retention`, so it needs a season whose episodes differ), a series submitted under a television first-look deal, a
+project made from a source. Then the scheduled kinds, then the fields. The writer's revision
+focus still waits on the owner (nothing reads it).
 
 ## The Owner's Command Of November 14, 2026 (Later): Every Feature Proven, Everything Possible
 

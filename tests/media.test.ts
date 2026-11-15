@@ -213,7 +213,9 @@ describe('documentary', () => {
     p.evidence[0].verified = true;
     runDays(s, p, 60);
     expect(p.delivered).toBeNull();
-    expect(s.log.some((l) => /skipped: Nomvula Dube hasn't given consent/.test(l.text))).toBe(true);
+    expect(s.log.some((l) => /Nomvula Dube declined to appear, so it is off the schedule/.test(l.text))).toBe(true);
+    // Tried once, then off the schedule: until November 15, 2026 a declined interview was put back every day.
+    expect(s.log.filter((l) => /Nomvula Dube declined to appear/.test(l.text)).length).toBe(1);
   }, 60000);
 });
 

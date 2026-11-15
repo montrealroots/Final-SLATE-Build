@@ -40,8 +40,18 @@ import { PROBES as SERIES_PROBES } from './probes/series';
 import { PROBES as REVISIONS } from './probes/revisions';
 import { PROBES as HELPERS_PEOPLE } from './probes/helpers-people';
 import { PROBES as MOCAP } from './probes/mocap';
+import { PROBES as SONGS } from './probes/songs';
+import { PROBES as DOCUMENTARY } from './probes/documentary';
+import { PROBES as CASTING_DIRECTOR } from './probes/casting-director';
+import { PROBES as STAGES } from './probes/stages';
+import { PROBES as SCREEN_TIME } from './probes/screen-time';
+import { PROBES as VERSION_SONGS } from './probes/version-songs';
+import { PROBES as MUSIC_CATALOG } from './probes/music-catalog';
+import { PROBES as CONTINUATION } from './probes/continuation';
+import { PROBES as STUDIO_PROBES } from './probes/studios';
+import { PROBES as BLUEPRINT_LOCK } from './probes/blueprint-lock';
 
-const ALL = [...CORE, ...PRODUCTION, ...RELEASE, ...AWARDS, ...BANK, ...PAPERS, ...SCRIPT, ...PROJECT, ...CAREER_WIDE, ...WEATHER, ...EQUIPMENT, ...WRITING, ...HIRING, ...DAYS, ...MUSIC, ...VERSIONS, ...SCORE, ...EDIT, ...NOTES, ...SLATE, ...BANK_MORE, ...AGENTS_PROBES, ...FESTIVAL, ...OPPS, ...BACKERS_PROBES, ...PLACES, ...PLAN, ...LATE, ...CASTING, ...DESIGNS, ...PEOPLE, ...BANK_CARDS, ...BANK_MOVES, ...BANK_REST, ...SERIES_PROBES, ...REVISIONS, ...HELPERS_PEOPLE, ...MOCAP];
+const ALL = [...CORE, ...PRODUCTION, ...RELEASE, ...AWARDS, ...BANK, ...PAPERS, ...SCRIPT, ...PROJECT, ...CAREER_WIDE, ...WEATHER, ...EQUIPMENT, ...WRITING, ...HIRING, ...DAYS, ...MUSIC, ...VERSIONS, ...SCORE, ...EDIT, ...NOTES, ...SLATE, ...BANK_MORE, ...AGENTS_PROBES, ...FESTIVAL, ...OPPS, ...BACKERS_PROBES, ...PLACES, ...PLAN, ...LATE, ...CASTING, ...DESIGNS, ...PEOPLE, ...BANK_CARDS, ...BANK_MOVES, ...BANK_REST, ...SERIES_PROBES, ...REVISIONS, ...HELPERS_PEOPLE, ...MOCAP, ...SONGS, ...DOCUMENTARY, ...CASTING_DIRECTOR, ...STAGES, ...SCREEN_TIME, ...VERSION_SONGS, ...MUSIC_CATALOG, ...CONTINUATION, ...STUDIO_PROBES, ...BLUEPRINT_LOCK];
 const pick = process.env.PROBES?.split(',');
 const seeds = process.env.SEEDS ? Number(process.env.SEEDS) : undefined;
 

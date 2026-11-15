@@ -153,8 +153,20 @@ export function withdrawRelease(state: GameState, p: Project, contributorId: str
     if (unscripted) unscriptedOf(p).redactions.push({ contributorId, episode: e, sceneIds, taskId: id });
     made.push(task);
   }
+  // A documentary scene with nobody left in it who agreed to appear has nothing to show once their footage is out: it
+  // leaves the cut, as a scene the player cuts does. Until November 15, 2026 it stayed, its minutes and its quality
+  // counted whole, and a withdrawal cost an editor's day and nothing else (docs/v10/proof/withdraw-release.json).
+  const emptied = unscripted ? [] : affected.filter((s) => s.contributorIds.every((id) => p.contributors.find((x) => x.id === id)?.consent === 'withdrawn') && !p.edit.cutSceneIds?.includes(s.id));
+  if (emptied.length) {
+    p.edit.cutSceneIds = [...(p.edit.cutSceneIds ?? []), ...emptied.map((s) => s.id)];
+    for (const d of p.schedule.days.filter((x) => x.status === 'scheduled' && x.sceneIds.some((id) => emptied.some((s) => s.id === id)))) {
+      d.sceneIds = d.sceneIds.filter((id) => !emptied.some((s) => s.id === id));
+      if (!d.sceneIds.length) { d.status = 'cancelled'; d.result = `Cancelled: ${c.name} withdrew.`; }
+    }
+  }
   const where = p.episodes.length > 1 ? (made.length === 1 ? 'one episode' : `${made.length} episodes`) : 'the film';
-  addLog(state, `${c.name} withdrew from ${p.title}. ${made.length ? `Their footage is being redacted from ${where}.` : 'They were not recorded.'}`, 'warning', { projectId: p.id, route: { view: 'project', projectId: p.id, tab: 'script' } });
+  const out = emptied.length ? ` ${emptied.length === 1 ? `${sceneLabel(p, emptied[0])} is` : `${emptied.length} scenes with only them are`} out of the cut.` : '';
+  addLog(state, `${c.name} withdrew from ${p.title}. ${made.length ? `Their footage is being redacted from ${where}.` : 'They were not recorded.'}${out}`, 'warning', { projectId: p.id, route: { view: 'project', projectId: p.id, tab: 'script' } });
   return made;
 }
 

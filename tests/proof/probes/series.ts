@@ -8,6 +8,10 @@ import { deliverEpisode, episodeDeliveryBlockers, episodeLockBlockers, episodeLo
 import { assignEpisodeRole } from '../../../src/engine/projects';
 import { makeOffer, roleCandidates } from '../../../src/engine/hiring';
 import { fund } from './casting';
+import { setEpisodeDates } from '../../../src/engine/episode-releases';
+import { addDaysToKey } from '../../../src/engine/time';
+import { moveEpisode } from '../../../src/engine/season';
+import { addScene, updateScene } from '../../engine-api';
 
 const live = (s: GameState) => s.projects.filter((p) => !p.delivered && !p.shelved);
 const both = (...fns: ((s: GameState, day: number) => void)[]) => (s: GameState, day: number) => { for (const f of fns) f(s, day); };
@@ -63,3 +67,49 @@ export const PROBES: Probe[] = [
     bites: ['directedByHire'], downstream: ['quality.direction', 'overall', 'spent'],
   },
 ];
+
+// Episode dates (episode-releases.ts setEpisodeDates): a season sold to air, its episodes put out four weeks later than
+// planned. The commissioner's renewal reads the weeks it is watched (continuation.ts season-decision), so it waits.
+const moved = new WeakSet<object>();
+const later = (s: GameState, day: number) => {
+  SERIES.daily(s);
+  for (const p of s.projects) for (const r of p.releases.filter((x) => x.episodes?.length && x.status === 'planned' && !moved.has(x))) {
+    moved.add(r);
+    try { setEpisodeDates(s, p, r.id, r.episodes!.map((e) => (e.status === 'released' ? e.date : addDaysToKey(e.date, 28)))); } catch { /* not now */ }
+  }
+  void day;
+};
+PROBES.push({
+  id: 'episode-dates', features: ['action:episode-releases.setEpisodeDates'], decision: "Put a sold season's episodes out four weeks later than planned",
+  reads: ['src/engine/episode-releases.ts#setEpisodeDates', 'src/engine/continuation.ts#handler:season-decision'],
+  base: SERIES, variant: { ...SERIES, daily: later }, measure: (_s, projects) => ({
+    episodesMoved: projects.reduce((a, p) => a + p.releases.filter((r) => r.pattern === 'custom').length, 0),
+    renewalWait: projects.filter((p) => p.renewal && p.delivered).reduce((a, p) => a + (p.renewal!.decidedAt - p.delivered!.at) / 86_400_000, 0),
+    renewed: projects.filter((p) => p.renewal?.outcome === 'renewed').length,
+  }),
+  bites: ['episodesMoved'], downstream: ['renewalWait', 'renewed', 'money'],
+});
+
+// An episode moved (season.ts moveEpisode): a season of a short first episode (one scene) and a long second (three),
+// the long one moved first. Streaming hours fall week by week from each episode's own first day (audiences.ts
+// observeWeek), so what comes out first is watched longest.
+const uneven = (s: GameState, year: number): Project => {
+  const p = SERIES.project(s, year);
+  // The fixture's season, its second episode given a third scene of its own: six minutes, then nine.
+  const ep2 = p.scenes.find((x) => x.episode === 2)!;
+  const extra = addScene(s, p, 2);
+  updateScene(p, extra.id, { heading: { intExt: 'INT', place: 'Boathouse', time: 'DAY' }, storyLocation: 'Boathouse', participants: [...ep2.participants], objective: 'Move the story forward.', action: 'Action.', estMinutes: 3 } as never);
+  return p;
+};
+const audienceOf = (p: Project) => p.offers.flatMap((o) => o.audience ?? []).reduce((a, x) => a + (x.metric === 'views' ? 0 : x.value), 0);
+PROBES.push({
+  id: 'move-episode', features: ['action:season.moveEpisode'], decision: 'Put the longer episode first',
+  reads: ['src/engine/season.ts#moveEpisode', 'src/engine/audiences.ts#observeWeek'],
+  base: { ...SERIES, project: uneven }, variant: { ...SERIES, project: uneven, decide: (_s, p) => moveEpisode(p, 2, -1) },
+  measure: (_s, projects) => ({
+    firstEpisodeMinutes: projects.reduce((a, p) => a + p.scenes.filter((x) => x.episode === 1).reduce((b, x) => b + x.estMinutes, 0), 0),
+    audience: projects.reduce((a, p) => a + audienceOf(p), 0),
+    renewed: projects.filter((p) => p.renewal?.outcome === 'renewed').length,
+  }),
+  bites: ['firstEpisodeMinutes'], downstream: ['audience', 'renewed'],
+});

@@ -2,7 +2,10 @@
 // agent probe does (career-wide.ts), and one thing about the mandate changes; what an agent does is find outside work
 // and take commission on it (jobs.ts), so that's what each later measure reads.
 import type { Probe } from '../probe';
-import { approachAgent, declineMandate, giveNotice, renewMandate, renewRefusal, signWith } from '../../../src/engine/representation';
+import { approachAgent, declineMandate, giveNotice, renewMandate, renewRefusal, signWith, submitThrough, submitRefusal } from '../../../src/engine/representation';
+import { DAY, processUntil } from '../../engine-api';
+import { acceptDeal, approachBacker, backerOptions } from '../../../src/engine/finance';
+import type { FinanceDeal, Project } from '../../../src/engine/types';
 import type { GameState } from '../../../src/engine/types';
 
 const DAYMS = 86_400_000;
@@ -21,7 +24,22 @@ const noticeAfter60 = (s: GameState) => { const c = s.representation?.current; i
 /** Renewed as soon as the agent says they would. */
 const renewWhenAsked = (s: GameState) => { if (s.representation?.current && !renewRefusal(s)) renewMandate(s); };
 
+/**
+ * Before the money is raised, once represented: the investor approached, through the agent (`via`) or directly, and
+ * their offer taken. A career signs with Vale in its first months, so the later years' shorts are the ones submitted.
+ */
+const investorVia = (via: boolean) => (s: GameState, p: Project) => {
+  let d: FinanceDeal;
+  if (via) { if (submitRefusal(s, p, 'investor')) return; d = submitThrough(s, p, 'investor'); }
+  else { if (!s.representation?.current || !backerOptions(s, p).find((o) => o.kind === 'investor')?.ready) return; d = approachBacker(s, p, 'investor'); }
+  for (let i = 0; i < 30 && d.status === 'considering'; i++) processUntil(s, s.now + DAY, 'tick', 1_000_000);
+  if (d.status === 'offered') acceptDeal(s, p, d.id);
+};
+
 const measure = (s: GameState) => ({
+  submitted: s.projects.reduce((a, p) => a + (p.finance?.deals ?? []).filter((d) => d.via).length, 0),
+  investorIn: s.projects.reduce((a, p) => a + (p.finance?.deals ?? []).filter((d) => d.kind === 'investor' && d.status === 'accepted').reduce((b, d) => b + d.amount, 0), 0),
+  dealCommission: s.projects.reduce((a, p) => a + p.obligations.filter((o) => o.ref?.startsWith('commission:')).reduce((b, o) => b + o.settled, 0), 0),
   viaAgent: (s.jobs ?? []).filter((j) => j.viaAgent).length,
   commission: (s.jobs ?? []).filter((j) => j.viaAgent && j.status === 'done').reduce((a, j) => a + Math.round(j.dayRate * j.attended.length * j.viaAgent!.rate), 0),
   represented: Number(!!s.representation?.current),
@@ -62,5 +80,16 @@ export const PROBES: Probe[] = [
     measure,
     bites: ['viaAgent'],
     downstream: ['jobsOffered', 'jobPay', 'money'],
+  },
+  {
+    id: 'submit-through-agent',
+    features: ['action:representation.submitThrough'],
+    decision: 'Have your agent submit the short to an investor, rather than approaching them yourself',
+    reads: ['src/engine/representation.ts#submitThrough', 'src/engine/finance.ts#payCommission'],
+    base: { years: 3, daily: agentDay('sign'), decide: investorVia(false) },
+    variant: { years: 3, daily: agentDay('sign'), decide: investorVia(true) },
+    measure,
+    bites: ['submitted'],
+    downstream: ['dealCommission', 'investorIn', 'money'],
   },
 ];

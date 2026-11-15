@@ -57,7 +57,7 @@ export function short(b: Build = {}): Policy['project'] {
 
 /** A low-budget feature of eight scenes, about 90 minutes, its lead written with `lead`'s changes: acting categories take
  *  features, never shorts (src/data/institutions.json). */
-const feature = (lead: Record<string, unknown> = {}): Policy['project'] => (s: GameState, year: number): Project =>
+export const feature = (lead: Record<string, unknown> = {}): Policy['project'] => (s: GameState, year: number): Project =>
   unfunded(buildProject(s, { title: `Year ${year + 1}`, format: 'feature', medium: 'live-action', scenario: 'low', genres: ['drama'], runtime: 90 },
     [{ name: 'Lead', patch: { roleSize: 'lead', ...lead } }, { name: 'Friend', patch: { roleSize: 'supporting' } }],
     Array.from({ length: 8 }, (_, i) => ({ place: ['Flat', 'Street', 'Cafe', 'Office'][i % 4], chars: i % 2 ? ['Lead'] : ['Lead', 'Friend'], minutes: 11 }))));
