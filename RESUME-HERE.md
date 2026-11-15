@@ -144,7 +144,7 @@ and the rest) with real grades filling the hiring lists.
   genre as a string, which the engine doesn't read (genres are `{ id, emphasis }`).
 - Explained, not proven: the music spending ceiling with Guide Me (the career staffs by hand either way).
 - Carried as a credit: who sings a song (the Song Performed By credit and the casting note; nothing else reads it).
-- The matrix: open 136 at PR #100's merge -> 41 at PR #101's.
+- The matrix: open 136 at PR #100's merge -> 41 at PR #101's -> 18 at PR #102's -> 6.
 
 - After PR #101 (open 41 -> 18), proven at forty careers: a chemistry read (cast on chemistry over the read, the pair
   plays better and the film worse: at half weight it is worth less than the better read), heard-only time, a declared
@@ -160,11 +160,22 @@ and the rest) with real grades filling the hiring lists.
 - A release you plan yourself with no distributor earns nothing (money comes through a deal or your own release plan);
   what its date and cut decide is the awards it may enter.
 
-**Next.** The 18 open: the eleven bank commands a $25m career never reaches (overdrafts, collections, an overrun loan,
-a dormant account and unclaimed money, a new number, alerts, a card's dispute, hardship plan and automatic raises),
-each needing a career short of money or long enough to go dormant; an episode delivered, locked or moved early, which
-bite but move nothing measured after (`deliverEpisode`, `lockEpisode`, `moveEpisode`); and four explained (the
-starting hour, holidays kept, the music ceiling with Guide Me, who competes).
+- After PR #102 (open 18 -> 6), proven at forty careers: the eleven bank commands but France's overrun loan (no
+  automatic raises, a dispute, a large-payment alert, a new account number, an arranged overdraft and the debit card's,
+  a dormant account reactivated, a collections debt paid, a hardship plan, unclaimed money claimed back), and an
+  episode delivered early and streamed at once (`series.ts deliver-episode-release`).
+- Fixed this round:
+  - `card.set_auto_raise` set before the card arrived was lost when the card came; it now waits for a card.
+  - Buying equipment read only the accounts' whole balance: a purchase meant for the card was refused, and one the
+    debit card couldn't pay was offered, added to your gear before the payment, and kept unpaid when it threw. The shop
+    now asks the bank's own check (`bank.ts bankPurchaseRefusal`), and the item is yours only once paid.
+- The bank proofs use labelled fixtures where a career never meets the situation (a stranger's charge, an attempt on an
+  account number) and a small step sequencer for set-ups that wait on the bank (`bank-last.ts steps`).
+
+**Next.** The 6 open are explained (`docs/v10/explained.json`): the starting hour and holidays kept move only the
+delivery date; the music ceiling with Guide Me (the career staffs by hand); who competes, among enough; moving an
+episode (its audience moves both ways); France's overrun loan (a career never takes a French account past its limit).
+Each says where a proof would reach next.
 
 ## The Owner's Command Of November 14, 2026 (Later): Every Feature Proven, Everything Possible
 
