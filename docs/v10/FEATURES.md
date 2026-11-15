@@ -8,11 +8,11 @@ journey that shows it there.
 
 | Kind | proven | carried | does not bite | no downstream effect | stale | not a feature | not yet proven | All |
 |---|---|---|---|---|---|---|---|---|
-| action | 132 | 0 | 0 | 3 | 12 | 13 | 0 | 160 |
+| action | 144 | 0 | 0 | 3 | 0 | 13 | 0 | 160 |
 | bank | 43 | 0 | 0 | 0 | 0 | 0 | 11 | 54 |
-| scheduled | 53 | 0 | 0 | 0 | 2 | 11 | 0 | 66 |
-| field | 110 | 42 | 0 | 0 | 6 | 8 | 139 | 305 |
-| all | 338 | 42 | 0 | 3 | 20 | 32 | 150 | 585 |
+| scheduled | 55 | 0 | 0 | 0 | 0 | 11 | 0 | 66 |
+| field | 128 | 42 | 0 | 1 | 0 | 8 | 126 | 305 |
+| all | 370 | 42 | 0 | 4 | 0 | 32 | 137 | 585 |
 
 ## Rows
 
@@ -30,7 +30,7 @@ journey that shows it there.
 | inviteToAudition | action | src/engine/casting-calls.ts | proven | audition (40 seeds) | readsSeen +14.8; castCapability +9.113; performance +7.469; overall +2.488; castRates +236.75 |
 | setShortlisted | action | src/engine/casting-calls.ts | proven | callback (40 seeds) | callbacksSeen +7.425; castCapability +0.525 |
 | shortlistAdvice | action | src/engine/casting-director.ts | proven | shortlist-advice (40 seeds) | callbacksSeen +10.125; castCapability +1.281 |
-| startSearch | action | src/engine/casting-director.ts | stale | casting-search | measured before the code it reads last changed |
+| startSearch | action | src/engine/casting-director.ts | proven | casting-search (40 seeds) | searches +3.85; readsSeen +20.725; castCapability +17.431; performance +14.375; castRates +1150.25; spent +11382.5 |
 | setBanner | action | src/engine/company.ts | not a feature |  | Names your banner, shown on your credits as "A … Production" (YourMoney.tsx); a name, read only where it is shown. |
 | applyBrief | action | src/engine/cues.ts | proven | music-brief (40 seeds) | cues +4; spent +3873.5; daysToDeliver +2.1 |
 | approveThemes | action | src/engine/cues.ts | proven | approve-themes (40 seeds) | themesApproved +2; delivered +2; released +2; quality.music +59.725 |
@@ -75,19 +75,19 @@ journey that shows it there.
 | declineFirstLook | action | src/engine/first-look.ts | proven | first-look-decline (40 seeds) | firstLookDeclined +1.2; firstLookActive -1.325; money -515027.426 |
 | drawDevelopment | action | src/engine/first-look.ts | proven | draw-development (40 seeds) | developmentIn +48150; ownIn -48150 |
 | endFirstLook | action | src/engine/first-look.ts | proven | first-look-end (40 seeds) | firstLookEnded +1.55; money -352329.992 |
-| considerFor | action | src/engine/guests.ts | stale | consider-real | measured before the code it reads last changed |
-| considerPerson | action | src/engine/guests.ts | stale | consider-real | measured before the code it reads last changed |
-| stopConsidering | action | src/engine/guests.ts | stale | stop-considering | measured before the code it reads last changed |
+| considerFor | action | src/engine/guests.ts | proven | consider-real (40 seeds) | realCast +1.725; castCapability -3.525; performance -2.744; castRates +556 |
+| considerPerson | action | src/engine/guests.ts | proven | consider-real (40 seeds) | realCast +1.725; castCapability -3.525; performance -2.744; castRates +556 |
+| stopConsidering | action | src/engine/guests.ts | proven | stop-considering (40 seeds) | realReads -1.45; realCast -1.325; castRates -992452.925; spent -3482348.75 |
 | treatAsAdult | action | src/engine/guests.ts | proven | treat-as-adult (40 seeds) | realCast +1.85; castCapability -7.812; performance -6.656; castRates +322.75 |
-| acceptCounter | action | src/engine/hiring.ts | stale | counter-offers | measured before the code it reads last changed |
-| castPlayer | action | src/engine/hiring.ts | stale | cast-yourself | measured before the code it reads last changed |
+| acceptCounter | action | src/engine/hiring.ts | proven | counter-offers (40 seeds) | countersDeclined +90.65; spent +10552.75; quality.craft -59.712; overall -58.362; daysToDeliver -33.987 |
+| castPlayer | action | src/engine/hiring.ts | proven | cast-yourself (40 seeds) | playerParts +2; castRates -1631.75; spent -5264.75; standing.acting +4.65 |
 | castRoleFor | action | src/engine/hiring.ts | not a feature |  | Names the job a part's casting method is (performer or voice performer) inside an offer; the offer is its own row (hiring.makeOffer). |
-| declineCounter | action | src/engine/hiring.ts | stale | counter-offers | measured before the code it reads last changed |
-| makeOffer | action | src/engine/hiring.ts | stale | offered-rate | measured before the code it reads last changed |
-| releaseHire | action | src/engine/hiring.ts | stale | release-hire | measured before the code it reads last changed |
-| sendStaffingOffers | action | src/engine/hiring.ts | stale | send-staffing | measured before the code it reads last changed |
-| uncastPlayer | action | src/engine/hiring.ts | stale | uncast-yourself | measured before the code it reads last changed |
-| withdrawOffer | action | src/engine/hiring.ts | stale | withdraw-offer | measured before the code it reads last changed |
+| declineCounter | action | src/engine/hiring.ts | proven | counter-offers (40 seeds) | countersDeclined +90.65; spent +10552.75; quality.craft -59.712; overall -58.362; daysToDeliver -33.987 |
+| makeOffer | action | src/engine/hiring.ts | proven | offered-rate (40 seeds) | castRates -209.1; spent -1157.925; countersSeen +0.75 |
+| releaseHire | action | src/engine/hiring.ts | proven | release-hire (40 seeds) | released +2; offersMade +37.625 |
+| sendStaffingOffers | action | src/engine/hiring.ts | proven | send-staffing (40 seeds) | crewRates -3542.25; crewExperience -2.367; spent -16557.5; quality.craft -18.125; overall -4.825 |
+| uncastPlayer | action | src/engine/hiring.ts | proven | uncast-yourself (40 seeds) | playerParts -2; castRates +1637; spent +5638.5; standing.acting -4.65; overall +0.475 |
+| withdrawOffer | action | src/engine/hiring.ts | proven | withdraw-offer (40 seeds) | withdrawn +2; offersMade +2; castRates +86 |
 | acceptJob | action | src/engine/jobs.ts | proven | outside-work (40 seeds) | jobsDone -0.9; jobPay -5206.2; jobsOffered -0.175 |
 | askBetterRate | action | src/engine/jobs.ts | proven | ask-better-rate (60 seeds) | ratesAgreed +7.5; jobPay +5917.083 |
 | declineJob | action | src/engine/jobs.ts | proven | decline-job (40 seeds) | jobsDeclined +0.975; jobsDone -0.875; jobPay -4960.85 |
@@ -245,7 +245,7 @@ journey that shows it there.
 | company-decision | scheduled | src/engine/company.ts | not a feature |  | Withdraws a company registration an older save had pending: companies left the game (v9 step 6), and nothing in a new story schedules it. |
 | consent-response | scheduled | src/engine/documentary.ts | proven | off-consent-response (20 seeds) | delivered -1.35; revenue -53878.5; money -554405.78 |
 | contributor-cut | scheduled | src/engine/documentary.ts | proven | off-contributor-cut (20 seeds) | delivered -1.1; revenue -44096; money -452654.449 |
-| counter-lapse | scheduled | src/engine/hiring.ts | stale | off-counter-lapse | measured before the code it reads last changed |
+| counter-lapse | scheduled | src/engine/hiring.ts | proven | off-counter-lapse (40 seeds) | countersTaken +3.675; castRates -26.75; hired +1.2 |
 | distribution-offer | scheduled | src/engine/finish.ts | proven | off-distribution-offer (40 seeds) | distributed -1.8; revenue -119806.375; money -113801.275 |
 | distribution-report | scheduled | src/engine/distribution.ts | proven | off-distribution-report (40 seeds) | revenue -88230.125; money -87763.325 |
 | edition-announce | scheduled | src/engine/awards.ts | proven | off-edition-announce (40 seeds) | screenings -8.25; offers -7.525 |
@@ -274,7 +274,7 @@ journey that shows it there.
 | job-offer | scheduled | src/engine/jobs.ts | proven | off-job-offer (40 seeds) | jobsOffered -0.9; jobPay -4198.4 |
 | licence-answer | scheduled | src/engine/music.ts | proven | license-song (40 seeds) | licensed +1.475; released +1.475; revenue +38436.25; spent +2563.25 |
 | licence-expiry | scheduled | src/engine/music.ts | proven | renew-licence (40 seeds) | renewals +0.65; released +0.65; spent +292.5 |
-| offer-response | scheduled | src/engine/hiring.ts | stale | off-offer-response | measured before the code it reads last changed |
+| offer-response | scheduled | src/engine/hiring.ts | proven | off-offer-response (40 seeds) | hired -16; delivered -2; revenue -124177.625 |
 | opportunity | scheduled | src/engine/opportunities.ts | proven | off-opportunity (40 seeds) | opportunities -0.375; commissioned -0.375 |
 | opportunity-expire | scheduled | src/engine/opportunities.ts | not a feature |  | Record-keeping: on an unanswered proposal's last day it marks it lapsed, for your list. The deadline is enforced when you answer (opportunities.ts acceptOpportunity checks expiresAt), so with this event switched off a proposal still can't be taken late; nothing else reads the mark (docs/v10/proof/off-opportunity-expire.json). |
 | papers-decision | scheduled | src/engine/papers.ts | proven | work-permit (100 seeds) | permits +1; lateDays -7.14; shootDays -1.13; daysToDeliver -1.35; spent -1672.28; quality.direction +3.76; overall +1.345 |
@@ -314,15 +314,15 @@ journey that shows it there.
 | "Year Of Birth" | field | state.ts characterAge, observedBirthday | not yet proven |  |  |
 | "Place Of Birth" | field | identity.ts citizenshipOf -> awards.ts nationality rules | not yet proven |  |  |
 | "Where You Live" | field | state.ts newGame; projects.ts createProject (base) | proven | base-los-angeles (40 seeds) | lostDays -1.225; daysToDeliver -2.013 |
-| "Starting Date" | field | state.ts newGame | not yet proven |  |  |
+| "Starting Date" | field | state.ts newGame | proven | start-2040 (40 seeds) | year +14; money +277034.155 |
 | "Starting Time" | field | state.ts newGame | not yet proven |  |  |
 | "Amount (US Dollars)" | field | personal.ts openInheritance, personalBalance, putInRefusal; cash/money.ts parseAmount | proven | small-inheritance (40 seeds) | ownIn -60450; delivered -2 |
 | "Describe Your Ethnicity" | field | identity.ts splitBackgrounds | not yet proven |  |  |
-| {o.name} | field | projects.ts createProject -> schedule.observances; schedule.ts isWorkingDay | not yet proven |  |  |
-| {`${languageName(l.code)} Proficiency`} | field | production/language.ts personLanguagesFit; casting-notes.ts fitNotes | not yet proven |  |  |
+| {o.name} | field | projects.ts createProject -> schedule.observances; schedule.ts isWorkingDay | no downstream effect | observances-kept (40 seeds) | moved: daysToDeliver +4.613. Measure: keeping every listed holiday put the 3D short 4.6 days later (40 careers, interval 3.6 to 5.6); nothing measured after the delivery date moved, in careers with no deadline to meet. A delivery due by a date (a commission's deliverBy) is where a later date would bite next. |
+| {`${languageName(l.code)} Proficiency`} | field | production/language.ts personLanguagesFit; casting-notes.ts fitNotes | proven | french-basic (40 seeds) | hired +2; spent +2502.25 |
 | {`Hire The Rental House's Package On A Day The Kit Can't Serve (${money(housePackageFee(p))} A Day)`} | field | production/shoot.ts (a day the kit cannot serve); equipment.ts setPackageApproval | proven | package-approval (40 seeds) | kitPostponed -729; lostDays -727.4; daysToDeliver +33.563; delivered +2; spent +49552.75 |
 | "Film It In" | field | destinations.ts dayPlace, awayCosts, permitWork; production/shoot.ts runShootDay; production/schedule.ts scheduleShootDay | proven | filmed-abroad (40 seeds) | filmedAway +6; spent +17781.9; daysToDeliver +10.85 |
-| "Kind Of Site" | field | destinations.ts kindFee, permitWork, underCover, noisyDay | not yet proven |  |  |
+| "Kind Of Site" | field | destinations.ts kindFee, permitWork, underCover, noisyDay | proven | site-station (40 seeds) | daysToDeliver +12.975; ownIn +5591.5; spent +13157.95 |
 | "Version" | field | versions.ts addVersion (named and unique); shown where the version is entered | not yet proven |  |  |
 | {sceneLabel(p, s)} | field | versions.ts versionScenes | proven | add-version (40 seeds) | versions +2; versionDays +1.925; spent +1174.5 |
 | {`${g.label}: ${g.reason}`} | field | edit-actions.ts requestPickups | not yet proven |  |  |
@@ -366,14 +366,14 @@ journey that shows it there.
 | "For How Long" | field | music.ts holderFee, agreeLicence (expiry), licence-expiry | proven | licence-years (40 seeds) | licenceYears +3.125; released +0.8 |
 | "Your Notes On The Themes" | field | cues.ts giveThemeNotes, themeTasks; song-actions.ts syncMusicTasks | proven | theme-notes (40 seeds) | themeRounds +4; quality.music +4; spent +2664; daysToDeliver +3.65 |
 | "Treat As An Adult In This Story" | field | guests.ts canApproach -> hiring.ts makeOffer, casting-calls.ts inviteRefusal | proven | treat-as-adult (40 seeds) | realCast +1.85; castCapability -7.812; performance -6.656; castRates +322.75 |
-| "Consider Them For" | field | guests.ts considerFor -> hiring.ts candidatesFor | stale | consider-real | measured before the code it reads last changed |
+| "Consider Them For" | field | guests.ts considerFor -> hiring.ts candidatesFor | proven | consider-real (40 seeds) | realCast +1.725; castCapability -3.525; performance -2.744; castRates +556 |
 | "Title" | field | the calendar, reminders | carried | tests/foundation.test.ts::Advance stops at a reminder | A name or a record, carried to the calendar, reminders: it decides nothing by its nature. |
 | "Start Time" | field | state.ts addPlan | proven | plan-over-call (40 seeds) | lateDays +1; quality.direction -0.487 |
 | "Length In Minutes" | field | production/schedule.ts planShootDays (your commitments) | proven | plan-over-call (40 seeds) | lateDays +1; quality.direction -0.487 |
 | "Reminder" | field | state.ts addPlan (plan-reminder event) | not a feature |  | When a plan's reminder comes: a notice, as its event is (scheduled:plan-reminder above). A plan you sleep through is marked missed, and nothing reads a missed plan. |
-| {`Day Rate For ${c.name}`} | field | hiring.ts resolveOffer | stale | offered-rate | measured before the code it reads last changed |
+| {`Day Rate For ${c.name}`} | field | hiring.ts resolveOffer | proven | offered-rate (40 seeds) | castRates -209.1; spent -1157.925; countersSeen +0.75 |
 | "What To Call It" | field | parts.ts partName: the Cast page, call sheets, offers, credits | not yet proven |  |  |
-| "Age In These Scenes (Optional)" | field | minors.ts minorFor (an uncast stage) | not yet proven |  |  |
+| "Age In These Scenes (Optional)" | field | minors.ts minorFor (an uncast stage) | proven | stage-age-child (40 seeds) | hired +4; spent +4301.5; daysToDeliver +5.063 |
 | {`Episode ${e}`} | field | parts.ts stageIn, partScenes; hiring.ts estimateDays | not yet proven |  |  |
 | {sceneLabel(p, s)} | field | parts.ts stageIn, castIn; production/shoot.ts; callsheet.ts; finish.ts | proven | add-stage (40 seeds) | stages +2; stageCast +2; performersCast +2; castRates +1578.75 |
 | {`Read ${who.name} With`} | field | auditions.ts pairChemistry | not yet proven |  |  |
@@ -386,7 +386,7 @@ journey that shows it there.
 | "Stop-Motion Stages" | field | production/workday.ts | not yet proven |  |  |
 | "Render Nodes" | field | production/workday.ts | proven | render-nodes (40 seeds) | daysToDeliver +56.088; spent -1163; money -13166.901 |
 | "Six-Day Weeks" | field | production/schedule.ts isWorkingDay | proven | six-day-weeks (60 seeds) | daysToDeliver -3.608; spent +4676.5 |
-| "Shoot Episodes In Blocks" | field | production/schedule.ts | not yet proven |  |  |
+| "Shoot Episodes In Blocks" | field | production/schedule.ts | proven | shoot-in-blocks (40 seeds) | shootDays -4.425; spent -9364; daysToDeliver -3.037 |
 | "Work On Public Holidays" | field | production/schedule.ts isWorkingDay | proven | work-holidays (40 seeds) | daysToDeliver -7.325; spent +1735.125 |
 | {`${c.name} Puppet Copies`} | field | production/schedule.ts; production/workday.ts | proven | puppet-copies (40 seeds) | spent +30622.6; money +48586.309; daysToDeliver +21.338 |
 | {`Emphasis For ${sceneLabel(p, s)}`} | field | takes.ts; directing.ts | proven | emphasis-performances (40 seeds) | spent +183566.5; shootDays +34.4; money -188012.459 |
@@ -395,7 +395,7 @@ journey that shows it there.
 | {`Takes For ${sceneLabel(p, s)}`} | field | takes.ts setupTime | proven | full-coverage (40 seeds) | setups +6; shootDays +25.775; spent +84311.5; quality.direction +2.213; overall +1.063 |
 | {`Site For ${place}`} | field | locations.ts | not yet proven |  |  |
 | {`Backup For ${place}`} | field | locations.ts | not yet proven |  |  |
-| "New Planned Budget (US Dollars)" | field | project-budget.ts setPlannedBudget, readiness | not yet proven |  |  |
+| "New Planned Budget (US Dollars)" | field | project-budget.ts setPlannedBudget, readiness | proven | new-planned-budget (40 seeds) | ownIn +6270.5; hired +12.075; delivered +1.85; lostDays -672.15; revenue +126819.875 |
 | "Why" | field | PlanViews.tsx Plan Revisions | carried | tests/v8-budget.test.ts::keeps 20,000 and 2,000,000 exactly | A name or a record, carried to PlanViews.tsx Plan Revisions: it decides nothing by its nature. |
 | "Change Financing Target" | field | finance.ts financeSummary, decide | proven | finance-target (40 seeds) | backerIn +38750; leftInProjects +32709.5; money -7180.28; revenue -9014.2 |
 | {`Ask The ${d.backer} For`} | field | negotiation.ts | proven | better-terms (40 seeds) | asked +1.525; investorShare -0.14; investorIn -8925; ownIn +8925 |
@@ -412,7 +412,7 @@ journey that shows it there.
 | "Tone" | field | cues.ts proposeBrief | proven | tone (40 seeds) | chamber +2; spent +9183.5; cues -2 |
 | "Competes As" | field | script-effects.ts competesAs | not yet proven |  |  |
 | "Story Era" | field | projects.ts deriveRequirements (period research); production/tasks.ts costumes | proven | story-era (40 seeds) | spent +8784.75; hired +2; ownIn +10275 |
-| ? | field | finish.ts subtitlingCost; awards.ts language rules | not yet proven |  |  |
+| ? | field | finish.ts subtitlingCost; awards.ts language rules | proven | dialogue-french (40 seeds) | hired +2; spent +15218.75 |
 | "Story Setting Place" | field | projects.ts deriveRequirements; production/tasks.ts | proven | setting-abroad (40 seeds) | spent +2504.25; hired +2; ownIn +2425 |
 | "Production Base" | field | production/schedule.ts isWorkingDay; weather.ts | proven | base-los-angeles (40 seeds) | lostDays -1.225; daysToDeliver -2.013 |
 | "Planned Budget (US Dollars)" | field | project-budget.ts setPlannedBudget, budgetPicture, plannedText; finance.ts financeSummary | proven | plan-budget (40 seeds) | target +80525; ownIn +10000; backerIn +70525; revenue -17844.95; money -19909.443 |
@@ -470,7 +470,7 @@ journey that shows it there.
 | "Act" | field | structure.ts structureNotes | not yet proven |  |  |
 | "Tonal Intention" | field | projects.ts scriptIssues (tonal genres note a missing one) | not yet proven |  |  |
 | "Who Is Recording" | field | projects.ts scriptIssues (found footage) | not yet proven |  |  |
-| {c.name} | field | projects.ts deriveRequirements; hiring.ts estimateDays | stale | friend-out-of-cafe | measured before the code it reads last changed |
+| {c.name} | field | projects.ts deriveRequirements; hiring.ts estimateDays | proven | friend-out-of-cafe (40 seeds) | spent -1641; ownIn -100 |
 | {`${c.name}'s Look In This Scene`} | field | looks.ts stateIn, statesUsed, costumeCopies, changeMinutes, makeupShare | proven | scene-look (40 seeds) | spent +17585.5; ownIn +18575 |
 | {c.name} | field | projects.ts deriveRequirements (interviews, consent) | not yet proven |  |  |
 | {e.claim.slice(0, 50)} | field | projects.ts scriptIssues | not yet proven |  |  |
@@ -550,9 +550,9 @@ journey that shows it there.
 | "Pronouns" | field | script-explain.ts characterPronouns | not yet proven |  |  |
 | "Speaks" | field | production/language.ts personLanguagesFit | proven | lead-speaks (40 seeds) | spent +2874; hired +2 |
 | "Awards Placement" | field | script-effects.ts castPlacement | not yet proven |  |  |
-| "Series Involvement" | field | hiring.ts estimateDays; finish.ts computeCredits | stale | series-regular | measured before the code it reads last changed |
-| {title(f)} | field | awards-rules.ts isNarrator; hiring.ts estimateDays | stale | lead-narrator | measured before the code it reads last changed |
-| {title(m)} | field | hiring.ts; production | stale | method-capture | measured before the code it reads last changed |
+| "Series Involvement" | field | hiring.ts estimateDays; finish.ts computeCredits | proven | series-regular (40 seeds) | guideDays +6; ownIn +4250 |
+| {title(f)} | field | awards-rules.ts isNarrator; hiring.ts estimateDays | proven | lead-narrator (40 seeds) | spent +1491.25; daysToDeliver +1.863; ownIn +1100 |
+| {title(m)} | field | hiring.ts; production | proven | method-capture (40 seeds) | hired +2; castRates +1577.5; daysToDeliver -25.187 |
 | "What Kind Of Being" | field | shown to design and casting | carried | tests/carried-text.test.ts::kept through a save exactly as written | A name or a record, carried to shown to design and casting: it decides nothing by its nature. |
 | "Description" | field | script-explain.ts breakdownComplete | not yet proven |  |  |
 | "Wants" | field | script-explain.ts breakdownComplete | not yet proven |  |  |
@@ -583,14 +583,14 @@ journey that shows it there.
 | "Set An Alarm" | field | state.ts snooze | proven | sleep-through-call (40 seeds) | lateDays +1; quality.direction -0.775; overall -0.25 |
 | {`Replacement Place ${i + 1}`} | field | save.ts repairSave | not a feature |  | A repair of a save whose places can't be found: it puts a place where the save had one (tests/migration.test.ts::open after a repair that keeps a backup and changes only the places). Where you live, the decision a place makes, is proven by base-los-angeles. |
 | "Song Title" | field | everywhere a song is named | carried | tests/carried-text.test.ts::kept through a save exactly as written | A name or a record, carried to everywhere a song is named: it decides nothing by its nature. |
-| "Where It Comes From" | field | songs.ts songTasks; awards-rules.ts songProblems | not yet proven |  |  |
-| "Lyrics" | field | songs.ts songTasks | not yet proven |  |  |
+| "Where It Comes From" | field | songs.ts songTasks; awards-rules.ts songProblems | proven | song-commissioned (40 seeds) | hired +2; spent +4575.5 |
+| "Lyrics" | field | songs.ts songTasks | proven | song-lyricist (40 seeds) | hired +2; spent +2317.75; daysToDeliver -1.575 |
 | "Music By" | field | songs.ts songCredits; awards recipients | not a feature |  | Names typed for a song that existed before the film, carried to its credits (songs.ts songCredits). An award for an original song takes only one written for the project (awards-rules.ts writtenForProject), so these names never decide an entry; who writes a song made for the film is its own row (Where It Comes From, Lyrics). |
 | "Lyrics By" | field | songs.ts songCredits; awards recipients | not a feature |  | Names typed for a song that existed before the film, carried to its credits (songs.ts songCredits). An award for an original song takes only one written for the project (awards-rules.ts writtenForProject), so these names never decide an entry; who writes a song made for the film is its own row (Where It Comes From, Lyrics). |
 | "Rights Holder" | field | shown with the song | carried | e2e/journey-e.spec.ts::refused with a reason, then recovered | A name or a record, carried to shown with the song: it decides nothing by its nature. |
 | {`Scene For ${s.title}`} | field | songs.ts songUses | not yet proven |  |  |
-| "How It Plays" | field | awards-rules.ts songRuleProblem | not yet proven |  |  |
-| "Minutes It Plays" | field | awards-rules.ts songRuleProblem | not yet proven |  |  |
+| "How It Plays" | field | awards-rules.ts songRuleProblem | proven | song-opening-titles (40 seeds) | licenceFees +36445.5; spent +27027; money -27027 |
+| "Minutes It Plays" | field | awards-rules.ts songRuleProblem | proven | song-minutes (40 seeds) | licenceFees +166461.75; spent +127764 |
 | {`${c.name} Performs ${s.title}`} | field | casting-notes.ts fitNotes; songs.ts songCredits | not yet proven |  |  |
 | {`${v.label}: ${sceneLabel(p, sc)}, In Place Of "${song.title}"`} | field | song-actions.ts changeVersionSong | proven | version-song (40 seeds) | songChanges +2; songTasks +4; spent +1872 |
 | {`${c.name} On Screen (Minutes)`} | field | screen-time.ts shareCheck | proven | record-screen-time (40 seeds) | screenRecords +12; screenEntries +1; screenDecided +1 |
@@ -598,7 +598,7 @@ journey that shows it there.
 | "Title For The New Project" | field | opportunities.ts acceptOpportunity | not yet proven |  |  |
 | {`What ${name}'s Revision Should Look At`} | field | WritingWork.tsx JobLine | not yet proven |  |  |
 | {`Your Note To ${name} (Optional)`} | field | WritingWork.tsx JobLine | carried | tests/writing-jobs.test.ts::the brief and the notes are kept as written and change nothing | A name or a record, carried to WritingWork.tsx JobLine: it decides nothing by its nature. |
-| {`Ask ${name} For`} | field | writing-jobs.ts writingTerms, acceptedRead | not yet proven |  |  |
+| {`Ask ${name} For`} | field | writing-jobs.ts writingTerms, acceptedRead | proven | writing-rewrite (40 seeds) | writingDays +1.925; quality.script +1.538; standing.writing +0.55; overall +0.5 |
 | {`Episode For ${name}`} | field | writing-jobs.ts writingTerms, acceptedRead | not yet proven |  |  |
 | {`Your Brief For ${name} (Optional)`} | field | WritingWork.tsx JobLine | carried | tests/writing-jobs.test.ts::the brief and the notes are kept as written and change nothing | A name or a record, carried to WritingWork.tsx JobLine: it decides nothing by its nature. |
 | "Put In From Your Own Money" | field | personal.ts putInOwnMoney, putInRefusal | proven | own-money-or-backer (40 seeds) | ownIn -73300; backerDeals +2; revenue -66630.85 |
