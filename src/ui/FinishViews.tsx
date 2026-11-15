@@ -17,7 +17,7 @@ import {
 import { scheduleChangeEffects } from '../engine/release-schedule';
 // A series delivered an episode at a time: only the Edit and Release tabs ask (November 10, 2026, after #59).
 import { deliverEpisode, episodeDeliveryBlockers, episodeLockBlockers, episodeLocked, lockEpisode, startEpisodeCutPass } from '../engine/episode-delivery';
-import { coverageGaps, lockBlockers, lockPicture, requestPickups, pickupIntegration, cutPassDays, startCutPass, unlockImpact, unlockPicture, restoreToEdit } from '../engine/edit-actions';
+import { coverageGaps, lockBlockers, lockPicture, requestPickups, pickupDaysCost, pickupIntegration, cutPassDays, startCutPass, unlockImpact, unlockPicture, restoreToEdit } from '../engine/edit-actions';
 import { rsvpScreening, screeningConflicts, submitEntry, withdrawEntry } from '../engine/awards-actions';
 import { enterable, entryEpisodes, festivalListFor } from '../engine/awards';
 import { FORMAT_LABELS } from '../engine/projects';
@@ -458,6 +458,7 @@ export function EditTab({ p }: { p: Project }) {
               </li>
             ))}</ul>
             {(() => { const redo = pickupIntegration(p, pick); return redo.length ? <p className="callout callout-warning">New plates restart {redo.map((t) => t.label).join(', ')}: about {plural(Math.ceil(redo.reduce((a, t) => a + t.units, 0)), 'compositor day')} worked again.</p> : null; })()}
+            {pick.length > 0 && <p className="dim small">Their shoot days cost about {money(pickupDaysCost(p, pick))}; {money(ledgerTotals(p).available)} is uncommitted. Pickups aren't booked without the money for their days.</p>}
             <button className="btn" disabled={!pick.length || p.edit.pictureLocked} onClick={() => { setErr(store.act((s) => void requestPickups(s, p, pick))); setPick([]); }}>Request Pickups</button>
           </>
         ) : <p className="muted">No coverage gaps found.</p>}
