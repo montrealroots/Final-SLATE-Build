@@ -101,7 +101,6 @@ function ProjectForm({ documentary }: { documentary: boolean }) {
   const [audience, setAudience] = useState('General');
   const [tone, setTone] = useState('');
   const [era, setEra] = useState('Contemporary');
-  const [setting, setSetting] = useState('');
   const [settingPlace, setSettingPlace] = useState('');
   const [register, setRegister] = useState<'' | 'comedy' | 'drama'>('');
   const [quality, setQuality] = useState<'limited' | 'tv' | 'feature'>('tv');
@@ -118,7 +117,7 @@ function ProjectForm({ documentary }: { documentary: boolean }) {
     const err = store.act((s) => {
       const p = createProject(s, {
         title, scenarioId: scenario,
-        axes: { format, medium, technique: medium === 'live-action' ? 'none' : technique === 'none' ? '3d-cg' : technique, episodeCount: episodic ? episodes : 1, targetRuntimeMin: runtime, basePlaceId: base, audience, tone, storyEra: era, storySetting: setting, dialogueLanguages: langs, animationQuality: quality, genres,
+        axes: { format, medium, technique: medium === 'live-action' ? 'none' : technique === 'none' ? '3d-cg' : technique, episodeCount: episodic ? episodes : 1, targetRuntimeMin: runtime, basePlaceId: base, audience, tone, storyEra: era, storySetting: settingPlace ? getPlace(settingPlace).name : '', dialogueLanguages: langs, animationQuality: quality, genres,
           ...(settingPlace ? { settingPlaceId: settingPlace } : {}), ...(register ? { register } : {}) },
       });
       if (plannedParsed?.ok) setPlannedBudget(s, p, plannedParsed.minor, 'Set when the project was created.');
@@ -171,17 +170,17 @@ function ProjectForm({ documentary }: { documentary: boolean }) {
           <TextField label="Tone" value={tone} maxLength={80} hint="For example: dry and tense, warm and absurd. Your own words, kept with the script; you can change it in the Story panel." onChange={setTone} />
           <SelectField label="Competes As" value={register} hint="Where awards that split drama from comedy enter it. By its genres, a primary comedy or musical genre makes it a comedy. You can change it in the Story panel." options={[{ value: '', label: 'By Its Genres' }, { value: 'drama', label: 'Drama' }, { value: 'comedy', label: 'Comedy Or Musical' }]} onChange={setRegister} />
           <TextField label="Story Era" value={era} maxLength={60} hint="When the story takes place. Period settings add research and wardrobe work." onChange={setEra} />
-          <TextField label="Story Setting" value={setting} maxLength={120} hint="Where the story takes place, in your words, separate from where you shoot." onChange={setSetting} />
         </div>
         <LanguagePicker value={langs} onChange={setLangs} />
         <details className="section-fold">
           <summary>Where The Story Is Set (Optional)</summary>
-          <p className="dim">You shoot at your production base. A setting in another country than your base is researched by your designers before design and costumes start; you can change it in the Story panel.</p>
+          <p className="dim">Where the story takes place, not where you shoot: you shoot at your production base, below. A setting in another country than your base is researched by your designers before design and costumes start; you can describe it in your own words, and change it, in the Story panel.</p>
           <PlacePicker label="Story Setting Place" value={settingPlace} onChange={setSettingPlace} />
         </details>
       </section>
       <section className="card">
         <h2>Production</h2>
+        <p className="dim">Where you shoot: the crew works from here, and its holidays, weather and costs apply. A place in the script can be filmed somewhere else later, on the Plan page.</p>
         <PlacePicker label="Production Base" value={base} onChange={setBase} />
         <fieldset style={{ border: 0, padding: 0 }}>
           <legend style={{ fontWeight: 600, marginBottom: 'var(--s2)' }}>Way Of Working</legend>

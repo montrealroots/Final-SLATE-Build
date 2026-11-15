@@ -165,7 +165,7 @@ describe('the field inventory', () => {
     for (const r of out.slice(1)) n[kind(r[6])] = (n[kind(r[6])] ?? 0) + 1;
     expect(n).toMatchInlineSnapshot(`
       {
-        "has ideas": 53,
+        "has ideas": 52,
         "no picker yet": 25,
         "no picker, by design": 253,
         "the picker itself": 10,

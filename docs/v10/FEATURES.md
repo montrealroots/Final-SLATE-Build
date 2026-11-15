@@ -11,8 +11,8 @@ journey that shows it there.
 | action | 101 | 0 | 0 | 0 | 0 | 8 | 50 | 159 |
 | bank | 15 | 0 | 0 | 0 | 0 | 0 | 39 | 54 |
 | scheduled | 38 | 0 | 0 | 1 | 0 | 5 | 22 | 66 |
-| field | 36 | 13 | 0 | 0 | 0 | 0 | 257 | 306 |
-| all | 190 | 13 | 0 | 1 | 0 | 13 | 368 | 585 |
+| field | 36 | 13 | 0 | 0 | 0 | 0 | 256 | 305 |
+| all | 190 | 13 | 0 | 1 | 0 | 13 | 367 | 584 |
 
 ## Rows
 
@@ -411,7 +411,6 @@ journey that shows it there.
 | "Tone" | field | cues.ts proposeBrief | proven | tone (40 seeds) | chamber +2; spent +9052; cues -2 |
 | "Competes As" | field | script-effects.ts competesAs | not yet proven |  |  |
 | "Story Era" | field | projects.ts deriveRequirements (period research); production/tasks.ts costumes | not yet proven |  |  |
-| "Story Setting" | field | shown in the Story panel | not yet proven |  |  |
 | ? | field | finish.ts subtitlingCost; awards.ts language rules | not yet proven |  |  |
 | "Story Setting Place" | field | projects.ts deriveRequirements; production/tasks.ts | not yet proven |  |  |
 | "Production Base" | field | production/schedule.ts isWorkingDay; weather.ts | proven | base-los-angeles (40 seeds) | lostDays -1.225; daysToDeliver -2.013 |
