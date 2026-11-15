@@ -146,6 +146,7 @@ Projects.tsx,"""Production Base""",1,decision,PlacePicker,production/schedule.ts
 Projects.tsx,"""Planned Budget (US Dollars)""",1,decision,TextField,"project-budget.ts setPlannedBudget, budgetPicture, plannedText; finance.ts financeSummary",None: entered as text,Unchanged,"tests/v8-budget.test.ts::keeps 20,000 and 2,000,000 exactly"
 Projects.tsx,"""Search Genres""",1,view,TextField (search),,"None: a control of the screen, not of the game",n/a,
 Projects.tsx,"""Years That Pass In The Story""",1,decision,NumberField,sequel.ts continueProject,"None: a quantity, entered as a number within its range",n/a,tests/minors.test.ts::ages a series' characters by the years that pass between seasons
+Recognised.tsx,"""Search By Name""",1,view,TextField,,"None: a control of the screen, not of the game",n/a,
 RecordBook.tsx,"""As Of""",1,view,SelectField,,"None: a control of the screen, not of the game",n/a,
 ReleasePlan.tsx,{PLAN_ROUTES[r].label},1,decision,Check,"release-plan.ts setReleasePlan, proposalRefusal, selfRefusal; finish.ts festivalHold",None: a yes or no,n/a,tests/release-plan.test.ts::festival-first holds every public release
 ReleasePlan.tsx,"""Plan Territories""",1,decision,TextField,"release-plan.ts buyerValue, proposeLicence, selfCosts, releaseYourself",None: entered as text,Unchanged,tests/release-plan.test.ts::where an exclusive deal holds the rights

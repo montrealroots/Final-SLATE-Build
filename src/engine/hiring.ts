@@ -5,6 +5,7 @@
 import { getPlace } from '../data/places';
 import { craftRoles, gafferNeeded } from './craft';
 import { canApproach, consideredOn, isReal, jobsOf, realPerson } from './guests';
+import { AGREEMENT_NAME, performerMinimum } from './union';
 import { needsMakeupCrew, physicalCrowd } from './looks';
 import { cancel, commit, ledgerTotals, money, obligation, reserve, settle, FundsError } from './budget';
 import { genre } from './genres';
@@ -184,7 +185,23 @@ export function productionWindow(state: GameState, p: Project): { from: string; 
 }
 
 export function roleCandidates(state: GameState, p: Project, roleId: string): Person[] {
-  return candidates(state, roleId, getPlace(p.axes.basePlaceId).country);
+  return atLeastScale(state, p, roleId, candidates(state, roleId, getPlace(p.axes.basePlaceId).country));
+}
+
+/**
+ * What a performer must be paid at least on this project today: the SAG-AFTRA minimum of the agreement its budget falls
+ * under (union.ts), or null for a job no minimum covers. From November 15, 2026; until then a performer could be paid
+ * the game's own rate for the job, $700 a day, under the union's $1,246 on a production above $2 million.
+ */
+export function scaleFor(state: GameState, p: Project, roleId: string): { amount: number; agreement: string } | null {
+  const m = performerMinimum(roleId, Math.max(p.finance?.target ?? 0, p.funding.fund), dateKey(state.now, getPlace(p.axes.basePlaceId).zone));
+  return m && { amount: m.amount, agreement: AGREEMENT_NAME[m.agreement] };
+}
+
+/** Anyone asking less than the minimum asks the minimum: an offer can't be lower. */
+function atLeastScale(state: GameState, p: Project, roleId: string, people: Person[]): Person[] {
+  const min = scaleFor(state, p, roleId)?.amount;
+  return min ? people.map((c) => (c.dayRate >= min ? c : { ...c, dayRate: min })) : people;
 }
 
 /**
@@ -195,7 +212,7 @@ export function roleCandidates(state: GameState, p: Project, roleId: string): Pe
 export function candidatesFor(state: GameState, p: Project, roleId: string, characterId?: string): Person[] {
   const real = consideredOn(p).filter((c) => c.roleId === roleId && (!characterId || !c.characterId || c.characterId === characterId) && realPerson(state, c.personId))
     .map((c) => personById(state, c.personId, roleId));
-  return [...new Map(real.map((x) => [x.id, x])).values(), ...roleCandidates(state, p, roleId)];
+  return [...atLeastScale(state, p, roleId, [...new Map(real.map((x) => [x.id, x])).values()]), ...roleCandidates(state, p, roleId)];
 }
 
 /** Whether a person can be asked to do a job on this project at all: one of the game's own for it, or a real person with a recorded credit in it. */
@@ -237,6 +254,8 @@ export function makeOffer(state: GameState, p: Project, input: OfferInput): Hire
   const person = personById(state, input.personId, input.roleId);
   if (person.roleId !== input.roleId) throw new Error(`${person.name} doesn't work as ${roleLabel(input.roleId).toLowerCase()}.`);
   if (!(input.dayRate > 0) || !Number.isFinite(input.dayRate)) throw new Error('Offer a day rate above zero.');
+  const scale = scaleFor(state, p, input.roleId);
+  if (scale && input.dayRate < scale.amount) throw new Error(`Under the ${scale.agreement}, which a production of this budget works under, a performer's day is at least ${money(scale.amount)}.`);
   if (input.dayRate > person.dayRate * 3) throw new Error('That offer is far above any reasonable rate for this role.');
   if (input.stage && !stageById(p, input.stage)) throw new Error('That stage of the part no longer exists.');
   if (p.hires.some((h) => h.personId === input.personId && h.roleId === input.roleId && h.characterId === input.characterId && h.stage === input.stage && ['offered', 'accepted', 'countered'].includes(h.status))) {

@@ -480,6 +480,6 @@
  "hashes": {
   "src/engine/script-effects.ts": "b1e3a8cd804c7414",
   "src/engine/awards.ts": "28e4ea9a8ba8ebbc",
-  "tests/proof/career.ts": "2d4877367212a0ea"
+  "tests/proof/career.ts": "50bea06f19a02c5b"
  }
 }

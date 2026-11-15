@@ -72,10 +72,10 @@ describe("SAG-AFTRA's minimum on every performer's offer", () => {
 
   it('asks less of a low-budget production, under its own agreement', () => {
     const s = startLife('scale-2');
-    const p = film(s, 250_000);
+    const p = film(s, 250_000); // the fixture's budget is $400,000: the target only raises it
     const actors = roleCandidates(s, p, 'actor');
     expect(actors.some((a) => a.dayRate < 1246)).toBe(true); // nobody lifted to the full agreement's minimum
     expect(() => makeOffer(s, p, { personId: actors[0].id, roleId: 'actor', dayRate: 200, characterId: p.characters[0].id, method: 'on-camera' }))
-      .toThrow(/Ultra Low Budget Agreement.*at least \$249\./);
+      .toThrow(/Moderate Low Budget Agreement.*at least \$436\./);
   });
 });

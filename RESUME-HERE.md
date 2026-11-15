@@ -35,11 +35,20 @@ and the rest) with real grades filling the hiring lists.
   (6,431 rows across 17 crafts) and `PAY.md` (the minimums, and the game's fees beside reported ones), written by
   `tests/people-matrix.test.ts`.
 
-**Next.** Wire it in once the proof rerun has finished (it can't change files the proofs read while they run): the
-patches are written (`guests.ts`: capability and rate read from recognition, the crafts' TMDB jobs counted;
-`hiring.ts`: the SAG-AFTRA minimum on every performer's offer, and what performers ask lifted to it), then run
-`tests/recognition-hire.test.ts`, rewrite `tests/guests.test.ts`'s "draws their capability" test (nothing is drawn now),
-and run the `hire-recognised` proof and the proofs that read `guests.ts` and `hiring.ts`.
+- Wired in: a real person's capability and rate are read from their recognition, the same in every save (`guests.ts`;
+  nothing is drawn at random now), and the grade says what it was made of (`grades.ts`); the crafts' TMDB jobs (makeup
+  artist, hairstylist, gaffer, key grip, sound mixer, script supervisor, first assistant director and more) count as
+  evidence for those jobs; every hiring list has "Recognised By The Industry" (`src/ui/Recognised.tsx`); every
+  performer's offer is at least the SAG-AFTRA minimum for the production's budget, and what performers ask is lifted to
+  it (`hiring.ts scaleFor`). Screens read the awards record before anyone is first considered.
+- Fixed from the proof rerun: a scene cut from the edit before the schedule was made was still planned, shot and paid
+  for (`production/schedule.ts groupShootDays`).
+- Proof rerun: 130 of 134 career proofs held. Three (comedy, feature, high-contrast light) lost their margin at 40
+  seeds as revenue grew noisier; rerun at 120. The 200-seed "results being decided" is proven through the player's
+  standing.
+
+**Next.** Proofs for the 364 features not yet proven (most are fields), in batches; the writer's revision focus still
+waits on the owner (nothing reads it).
 
 ## The Owner's Command Of November 14, 2026 (Later): Every Feature Proven, Everything Possible
 
