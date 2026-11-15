@@ -8,6 +8,8 @@ import { approvedScenes } from '../../../src/engine/projects';
 import { categoriesFor, checkEligibility, institution } from '../../../src/engine/awards';
 import { submitEntry } from '../../../src/engine/awards-actions';
 import { feature } from './script';
+import { releaseYourself, setReleasePlan } from '../../../src/engine/release-plan';
+import { addDaysToKey, dateKey } from '../../../src/engine/time';
 
 const SECOND = 'The Last Bell';
 /** After the script is approved: two songs written for the film, both over the end credits; "The Last Bell" second. */
@@ -31,8 +33,17 @@ const enterSongs = (s: GameState) => {
     }
   }
 };
-/** A feature released in American cinemas (the Academy and the Golden Globes take only a US release in the year). */
-const US = { years: 3, project: feature(), releaseRoute: 'theatrical' as const, territories: ['US', 'GB'], daily: enterSongs };
+/**
+ * A feature released in American cinemas (the Academy takes only a US theatrical release in the year), booked by the
+ * player through a booking partner (release-plan.ts partner-theatrical): a cinema release needs a distributor, and the
+ * offers these careers get are streaming or cinemas without the US. Until November 15, 2026 this took those offers, and
+ * no song ever reached the Academy.
+ */
+const inUsCinemas = (s: GameState, p: Project) => {
+  setReleasePlan(s, p, { routes: ['partner-theatrical'], territories: ['US', 'GB'], date: addDaysToKey(dateKey(s.now, 'Europe/London'), 20), festivalUntil: null, version: 'subtitled', promo: 0 });
+  try { releaseYourself(s, p, 'partner-theatrical'); } catch { /* refused: no release */ }
+};
+const US = { years: 3, project: feature(), takeDistribution: false, release: false, afterDelivery: inUsCinemas, daily: enterSongs };
 const measure = (s: GameState) => {
   const mine = s.editions.flatMap((ed) => ed.entries.filter((e) => s.projects.some((p) => p.id === e.projectId) && categoriesFor(institution(ed.institutionId), ed.year).find((c) => c.id === e.categoryId)?.recipient === 'song'));
   return { songEntries: mine.length, songFees: mine.reduce((a, e) => a + e.fee, 0), songDecided: mine.filter((e) => ['nominated', 'not-nominated', 'won', 'lost', 'selected', 'not-selected'].includes(e.status)).length };

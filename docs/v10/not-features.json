@@ -16,5 +16,11 @@
  "action:projects.renameDraft": "Names a draft; the name is shown in the draft list and nothing else reads it, as a label shouldn't be.",
  "action:brief.saveIdea": "Keeps an idea on the player's shortlist in the idea picker (IdeaPicker.tsx); the idea itself is used through the brief, its own row.",
  "action:company.setBanner": "Names your banner, shown on your credits as \"A … Production\" (YourMoney.tsx); a name, read only where it is shown.",
- "action:song-actions.setSongPerformers": "Names who sings a song, shown in the credits as \"Song Performed By\" (songs.ts) and in a casting note; a name, read only where it is shown."
+ "action:song-actions.setSongPerformers": "Names who sings a song, shown in the credits as \"Song Performed By\" (songs.ts) and in a casting note; a name, read only where it is shown.",
+ "scheduled:permit-decision": "Decides a work permit applied for before November 14, 2026, which older saves still hold (papers.ts \"what older saves hold\"); nothing in a new story schedules it, and permits now go through Your Papers (papers-decision).",
+ "scheduled:company-decision": "Withdraws a company registration an older save had pending: companies left the game (v9 step 6), and nothing in a new story schedules it.",
+ "scheduled:family-repayment": "Takes a month's repayment of a family loan chosen in an older save's creation: a new story starts with the inheritance and no family terms (personal.ts openPersonalMoney), so nothing in it schedules this.",
+ "scheduled:industry-decision": "Renews or ends the real series the world follows, as the catalog's world pages show them (catalog/world.ts, simseason.ts); nothing in a player's career reads those outcomes.",
+ "scheduled:plan-reminder": "A reminder in the log before a plan starts; the plan itself is proven (plan-over-call, cancel-plan), and the reminder decides nothing.",
+ "scheduled:papers-expiry": "Marks a visa or permit expired on its date and tells you to apply again. Whether it still lets you in or lets you work is read from its date wherever that matters (papers.ts entryRight, permitIn), so the stage it sets changes only the words."
 }

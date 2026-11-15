@@ -56,7 +56,8 @@
   "takes": 4,
   "retakes": 0,
   "approvedTake": 164.925,
-  "cancelled": 0.025,
+  "cancelled": 0,
+  "cancellationFees": 0,
   "fired": 0
  },
  "variant": {
@@ -107,7 +108,8 @@
   "takes": 4,
   "retakes": 0,
   "approvedTake": 162.45,
-  "cancelled": 0.025,
+  "cancelled": 2,
+  "cancellationFees": 3000,
   "fired": 0
  },
  "diff": {
@@ -441,10 +443,17 @@
    "n": 40
   },
   "cancelled": {
-   "mean": 0,
-   "lo": 0,
-   "hi": 0,
-   "changed": 0,
+   "mean": 2,
+   "lo": 2,
+   "hi": 2,
+   "changed": 40,
+   "n": 40
+  },
+  "cancellationFees": {
+   "mean": 3000,
+   "lo": 3000,
+   "hi": 3000,
+   "changed": 40,
    "n": 40
   },
   "fired": {
@@ -457,21 +466,25 @@
  },
  "bites": [
   {
-   "metric": "spent",
+   "metric": "cancelled",
    "ok": true
   }
  ],
  "downstream": [
   {
-   "metric": "money",
-   "ok": false
+   "metric": "cancellationFees",
+   "ok": true
+  },
+  {
+   "metric": "spent",
+   "ok": true
   },
   {
    "metric": "daysToDeliver",
    "ok": false
   }
  ],
- "verdict": "no downstream effect",
+ "verdict": "proven",
  "hashes": {
   "src/engine/mocap.ts": "ecbd1e7603d8e15c",
   "tests/proof/career.ts": "50bea06f19a02c5b"

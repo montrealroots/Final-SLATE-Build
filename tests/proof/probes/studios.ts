@@ -4,10 +4,11 @@
 import type { Probe } from '../probe';
 import type { FinanceDeal, GameState, Project } from '../../../src/engine/types';
 import { DAY, processUntil } from '../../engine-api';
-import { acceptDeal, financeSummary, pitchToStudio, studioOptions } from '../../../src/engine/finance';
+import { acceptDeal, financeSummary, pitchToStudio, studioOptions, submitSeries } from '../../../src/engine/finance';
 import { activeFirstLook, developmentRefusal, drawDevelopment, fundLeft } from '../../../src/engine/first-look';
 import { STUDIOS, answerFirstLooks } from './career-wide';
 import { feature } from './script';
+import { SERIES } from './scheduled';
 
 /** Before the money is raised: pitched to the studio that reads it best, the answer waited for, and an offer taken. */
 const pitch = (s: GameState, p: Project) => {
@@ -48,3 +49,35 @@ export const PROBES: Probe[] = [
     bites: ['developmentIn'], downstream: ['ownIn', 'money'],
   },
 ];
+
+// A season submitted under a television first-look deal (finance.ts submitSeries). A company with series on its record
+// offers a television deal once you have delivered a series (first-look.ts, TV scope); while it runs, each series goes
+// to it first. The career's two-episode limited series, made three years running and paid for from your own money; a
+// labelled fixture studio with a television record, whose offer of a deal is taken.
+const TV_STUDIOS: typeof STUDIOS = STUDIOS.map((x) => ({ ...x, tv: { n: 12, g: [['Drama', 6], ['Crime', 6], ['Mystery', 3]] } }));
+const ownSeries = (s: GameState, year: number): Project => {
+  const p = SERIES.project(s, year);
+  // Not commissioned here: the fixture commissioner taken off, so the season is the player's to place.
+  const fixture = (p.finance?.deals ?? []).filter((d) => d.kind === 'commissioner');
+  for (const d of fixture) p.funding.fund -= d.amount;
+  if (p.finance) p.finance.deals = p.finance.deals.filter((d) => !fixture.includes(d));
+  return p;
+};
+/** Before the money is raised, under a television deal: submitted to its company, the answer waited for, and an offer taken. */
+const submit = (s: GameState, p: Project) => {
+  let d: FinanceDeal;
+  try { d = submitSeries(s, p); } catch { return; }
+  for (let i = 0; i < 90 && d.status === 'considering'; i++) processUntil(s, s.now + DAY, 'tick', 1_000_000);
+  if (d.status === 'offered') try { acceptDeal(s, p, d.id); } catch { /* its terms can't be met */ }
+};
+const TV_RUN = { years: 3, studios: TV_STUDIOS, takeDistribution: false, project: ownSeries, daily: (s: GameState) => { SERIES.daily(s); answerFirstLooks('accept')(s); } };
+PROBES.push({
+  id: 'submit-series', features: ['action:finance.submitSeries'], decision: 'Submit each season to the company your television first-look deal is with, and take its offer',
+  reads: ['src/engine/finance.ts#submitSeries', 'src/engine/finance.ts#studioOption'],
+  base: TV_RUN, variant: { ...TV_RUN, decide: submit },
+  measure: (_s, projects) => ({
+    submittedSeries: projects.reduce((a, p) => a + (p.finance?.deals ?? []).filter((d) => d.firstLook && d.kind === 'commissioner').length, 0),
+    commissionedIn: projects.reduce((a, p) => a + (p.finance?.deals ?? []).filter((d) => d.kind === 'commissioner' && d.status === 'accepted').reduce((b, d) => b + d.amount, 0), 0),
+  }),
+  bites: ['submittedSeries'], downstream: ['commissionedIn', 'ownIn', 'money'],
+});

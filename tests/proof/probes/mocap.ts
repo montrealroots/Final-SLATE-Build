@@ -23,7 +23,10 @@ const measure = (_s: GameState, projects: Project[]) => ({
   takes: projects.reduce((a, p) => a + Object.values(p.mocap ?? {}).reduce((b, r) => b + r.takes.length, 0), 0),
   retakes: projects.reduce((a, p) => a + Object.values(p.mocap ?? {}).reduce((b, r) => b + r.retakes, 0), 0),
   approvedTake: projects.reduce((a, p) => a + Object.values(p.mocap ?? {}).reduce((b, r) => b + (r.takes.find((t) => t.id === r.approvedTakeId)?.quality ?? 0), 0), 0),
-  cancelled: projects.reduce((a, p) => a + p.obligations.filter((o) => /cancel/i.test(o.label) || o.state === 'cancelled').length, 0),
+  // A booking cancelled: one with a cancellation posting (budget.ts cancel); with a fee kept it ends settled, not cancelled.
+  cancelled: projects.reduce((a, p) => a + p.obligations.filter((o) => o.ref?.startsWith('mocap:') && o.postings.some((x) => x.kind === 'cancel')).length, 0),
+  // What the stage kept of a cancelled booking (mocap.ts MOCAP_CANCEL_SHARE), paid from the project.
+  cancellationFees: projects.reduce((a, p) => a + p.obligations.reduce((b, o) => b + o.postings.filter((x) => x.key.endsWith(':cancellation-fee')).reduce((c, x) => c + x.amount, 0), 0), 0),
 });
 
 export const PROBES: Probe[] = [
@@ -31,8 +34,10 @@ export const PROBES: Probe[] = [
     id: 'cancel-mocap', features: ['action:mocap.cancelMocapBooking'], decision: 'Cancel the capture booking once it is made (the career books again)',
     reads: ['src/engine/mocap.ts#cancelMocapBooking'],
     base: { project: captured }, variant: { project: captured, beforeManage: once((s, p) => { if (mocapRecord(p, lead(p)).status !== 'booked') throw new Error('not yet'); cancelMocapBooking(s, p, lead(p)); }) },
-    // The cancellation's fee is paid (mocap.ts cancelMocapBooking), and the stage is booked again.
-    measure, bites: ['spent'], downstream: ['money', 'daysToDeliver'],
+    // The booking is cancelled; its fee is paid (mocap.ts cancelMocapBooking), and the stage is booked again. Until
+    // November 15, 2026 the money spent was the bite and the career's end balance the downstream, where the fee is lost
+    // among two years of income: no downstream effect at 40 seeds.
+    measure, bites: ['cancelled'], downstream: ['cancellationFees', 'spent', 'daysToDeliver'],
   },
   {
     id: 'mocap-retake', features: ['action:mocap.requestRetake'], decision: 'Ask for a retake once the capture is done',

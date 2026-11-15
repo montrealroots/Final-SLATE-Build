@@ -23,7 +23,22 @@ const onWarning = (act: 'swap' | 'move' | 'keep') => (s: GameState) => {
     }
   }
 };
-const RAINY = { years: 2 };
+/**
+ * Each day, from the log: a warning of rain on tomorrow's exterior shoot (production/shoot.ts weather-check) moves that
+ * day to after the last. This player learns of the weather only from the warning; onWarning reads the forecast itself.
+ */
+export const onLoggedWarning = (s: GameState) => {
+  for (const p of s.projects.filter((x) => !x.delivered)) {
+    // Each warning since yesterday names the day after it was given.
+    for (const l of s.log.filter((x) => x.projectId === p.id && x.at >= s.now - 86_400_000 && / films outside tomorrow\./.test(x.text))) {
+      for (const d of p.schedule.days.filter((x) => x.status === 'scheduled' && !x.interior)) {
+        if (d.date !== addDaysToKey(dateKey(l.at, dayPlace(p, d).zone), 1)) continue;
+        try { moveShootDay(s, p, d.id); } catch { /* no free day: kept */ }
+      }
+    }
+  }
+};
+export const RAINY = { years: 2 };
 /**
  * The default short with its exterior shot first: the plan orders places by name (schedule.ts groupShootDays), and the
  * default's one exterior, the Street, comes last, so there was never a later interior day to swap it with and the swap
