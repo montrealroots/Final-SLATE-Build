@@ -8,11 +8,11 @@ journey that shows it there.
 
 | Kind | proven | carried | does not bite | no downstream effect | stale | not a feature | not yet proven | All |
 |---|---|---|---|---|---|---|---|---|
-| action | 139 | 0 | 0 | 3 | 5 | 13 | 0 | 160 |
+| action | 144 | 0 | 0 | 3 | 0 | 13 | 0 | 160 |
 | bank | 43 | 0 | 0 | 0 | 0 | 0 | 11 | 54 |
 | scheduled | 55 | 0 | 0 | 0 | 0 | 11 | 0 | 66 |
-| field | 185 | 97 | 0 | 3 | 0 | 9 | 11 | 305 |
-| all | 422 | 97 | 0 | 6 | 5 | 33 | 22 | 585 |
+| field | 186 | 97 | 0 | 3 | 0 | 9 | 10 | 305 |
+| all | 428 | 97 | 0 | 6 | 0 | 33 | 21 | 585 |
 
 ## Rows
 
@@ -42,11 +42,11 @@ journey that shows it there.
 | applyFix | action | src/engine/directing.ts | proven | fix-with-pickups (40 seeds) | pickupDays +2.85; spent +6543; quality.editing +1.6 |
 | showCut | action | src/engine/documentary-actions.ts | proven | show-cut (120 seeds) | cutApproved +1; runtime +3.525; daysToDeliver +2.971 |
 | requestConsent | action | src/engine/documentary.ts | proven | request-consent (20 seeds) | consentGiven +3.1; delivered +1.25; revenue +90207 |
-| lockPicture | action | src/engine/edit-actions.ts | stale | lock-picture | measured before the code it reads last changed |
-| requestPickups | action | src/engine/edit-actions.ts | stale | request-pickups | measured before the code it reads last changed |
-| restoreToEdit | action | src/engine/edit-actions.ts | stale | restore-to-edit | measured before the code it reads last changed |
-| startCutPass | action | src/engine/edit-actions.ts | stale | cut-passes | measured before the code it reads last changed |
-| unlockPicture | action | src/engine/edit-actions.ts | stale | unlock-picture | measured before the code it reads last changed |
+| lockPicture | action | src/engine/edit-actions.ts | proven | lock-picture (40 seeds) | delivered -2; released -2; revenue -142510.875; standing.producing -3.125 |
+| requestPickups | action | src/engine/edit-actions.ts | proven | request-pickups (40 seeds) | shootDays +2; spent +7251.5; daysToDeliver +4.275; quality.direction +0.6 |
+| restoreToEdit | action | src/engine/edit-actions.ts | proven | restore-to-edit (40 seeds) | cutFromEdit -2; overall -0.6 |
+| startCutPass | action | src/engine/edit-actions.ts | proven | cut-passes (40 seeds) | quality.editing +8; daysToDeliver +3.175; overall +1.725; spent +3049.5 |
+| unlockPicture | action | src/engine/edit-actions.ts | proven | unlock-picture (40 seeds) | daysToDeliver +3; spent +2042.75 |
 | deliverEpisode | action | src/engine/episode-delivery.ts | no downstream effect | deliver-episode (40 seeds) | moved: episodesDeliveredAlone +1.85. Career not reached: an episode delivered on its own can come out before the season is finished, but only on a release planned before then; these careers sell a season once it is finished, so episode 1 delivered early (1.85 episodes a career, proven to bite) changes no release. To prove with a release planned while the season is in production. |
 | lockEpisode | action | src/engine/episode-delivery.ts | no downstream effect | deliver-episode (40 seeds) | moved: episodesDeliveredAlone +1.85. Career not reached: an episode delivered on its own can come out before the season is finished, but only on a release planned before then; these careers sell a season once it is finished, so episode 1 delivered early (1.85 episodes a career, proven to bite) changes no release. To prove with a release planned while the season is in production. |
 | startEpisodeCutPass | action | src/engine/episode-delivery.ts | proven | episode-cut-pass (40 seeds) | episodeCutPasses +1.7; quality.editing +3.35; spent +1348.55 |
@@ -325,7 +325,7 @@ journey that shows it there.
 | "Kind Of Site" | field | destinations.ts kindFee, permitWork, underCover, noisyDay | proven | site-station (40 seeds) | daysToDeliver +12.975; ownIn +5591.5; spent +13157.95 |
 | "Version" | field | shown where the version is entered: versions.ts addVersion (named and unique) | carried | tests/versions.test.ts::a version is conformed from the locked cut | A name or a record, carried to shown where the version is entered: versions.ts addVersion (named and unique): it decides nothing by its nature. |
 | {sceneLabel(p, s)} | field | versions.ts versionScenes | proven | add-version (40 seeds) | versions +2; versionDays +1.925; spent +1174.5 |
-| {`${g.label}: ${g.reason}`} | field | edit-actions.ts requestPickups | not yet proven |  |  |
+| {`${g.label}: ${g.reason}`} | field | edit-actions.ts requestPickups | proven | pickup-scenes (40 seeds) | shootDays +5.05; spent +14911.5; daysToDeliver +3.75 |
 | "Route" | field | finish.ts planRelease; awards.ts qualifying | proven | release-route (40 seeds) | entries +31.65; entryFees +1959.5 |
 | "Release Date" | field | finish.ts planRelease; awards.ts qualifying windows | not yet proven |  |  |
 | "Territory Code" | field | awards.ts; finish.ts | proven | release-in-us (40 seeds) | entries -2.35; entryFees -537.75; selected -0.525 |
