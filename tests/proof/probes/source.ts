@@ -10,6 +10,8 @@ import { createFromSource } from '../../../src/engine/proposal';
 import registry from '../../../src/data/genre-registry.json';
 import { unfunded } from '../career';
 import { feature } from './script';
+import { SERIES } from './scheduled';
+import { commission } from './project-fields';
 
 const GENRES = new Set((registry as { records: { id: string }[] }).records.map((r) => r.id));
 const WORK = (JSON.parse(readFileSync('src/data/sources.json', 'utf8')) as { records: SourceWork[] }).records.find((w) => w.title === 'The Picture of Dorian Gray')!;
@@ -43,4 +45,8 @@ export const PROBES: Probe[] = [
   { id: 'adapt-longer', features: [A("{episodic ? 'Target Minutes Per Episode' : 'Target Runtime In Minutes'}")], decision: 'Adapt it as a two-hour feature rather than ninety minutes', reads: ['src/engine/proposal.ts#proposeFromSource'],
     base: { project: adapted }, // The work's outline is the same scenes, each longer (4 careers: nineteen more shoot days).
     variant: { project: adaptedAs({ targetRuntimeMin: 120 }) }, measure, bites: ['shootDays'], downstream: ['spent', 'daysToDeliver'] },
+  // A season adapted from it, commissioned as the scheduled proofs' season is (project-fields.ts commission).
+  { id: 'adapt-episodes', features: [A('"Episodes"')], decision: 'Adapt it as a four-episode season rather than two', reads: ['src/engine/proposal.ts#proposeFromSource'],
+    base: { ...SERIES, project: (s, y) => commission(s, adaptedAs({ format: 'limited-series', episodeCount: 2, targetRuntimeMin: 30 })(s, y)) },
+    variant: { ...SERIES, project: (s, y) => commission(s, adaptedAs({ format: 'limited-series', episodeCount: 4, targetRuntimeMin: 30 })(s, y)) }, measure, bites: ['scenes'], downstream: ['spent', 'shootDays'] },
 ];
