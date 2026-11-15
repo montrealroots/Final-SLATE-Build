@@ -411,7 +411,9 @@ export function runShootDay(state: GameState, p: Project, d: ShootDay): string {
     // With a shot plan, the takes are recorded and the best balanced one is used (takes.ts). Directing 2 records them on
     // the scene's first day, until its rule stops, and the time the scene needs follows the takes actually shot.
     const keepTakes = isDirecting2(p) && !!cap?.takes?.length && cap.version === p.approvedDraft;
-    const recorded = shotPlan(p, s.id) && !keepTakes ? recordTakes(state.seed, p, s, d.date, quality, soundAtRisk) : null;
+    // Which attempt at the scene this is: its shoot days before this one.
+    const attempt = String(p.schedule.days.filter((x) => x.sceneIds.includes(s.id) && x.date < d.date).length + 1);
+    const recorded = shotPlan(p, s.id) && !keepTakes ? recordTakes(state.seed, p, s, attempt, quality, soundAtRisk) : null;
     const plan = shotPlan(p, s.id);
     const need2 = isDirecting2(p) && plan
       ? (s.estMinutes / sceneComplexity(s, mods, performedSong(p, s))) * setupTime(SETUPS_OF[plan.coverage].length, (recorded?.takes ?? cap?.takes ?? []).length || TAKE_RULES[plan.takes].planned)

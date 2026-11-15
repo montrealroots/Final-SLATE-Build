@@ -122,10 +122,15 @@ export function takeIssue(t: { perf: number; tech: number }, base: number, sound
   return undefined;
 }
 
-/** The takes of a scene, around what the crew and cast can do; the best balanced one is used. */
-export function recordTakes(seed: number, p: Project, s: Scene, date: string, base: number, soundAtRisk = false): { takes: { perf: number; tech: number; issue?: TakeIssue }[]; chosen: number } {
+/**
+ * The takes of a scene, around what the crew and cast can do; the best balanced one is used. Drawn by the scene and which
+ * attempt at it this is (its first shoot day, its second), not by the date: until November 15, 2026 the date, so moving
+ * an episode, which moves its scenes' days, drew every scene's takes afresh and the season came out a different season
+ * (docs/v10/explained.json move-episode). The weather still follows the date (production/shoot.ts).
+ */
+export function recordTakes(seed: number, p: Project, s: Scene, attempt: string, base: number, soundAtRisk = false): { takes: { perf: number; tech: number; issue?: TakeIssue }[]; chosen: number } {
   const plan = shotPlan(p, s.id)!;
-  const r = stream(seed, 'takes', p.id, s.id, date);
+  const r = stream(seed, 'takes', p.id, s.id, attempt);
   const clamp = (n: number) => Math.round(Math.max(5, Math.min(100, n)));
   const best = (xs: { perf: number; tech: number; issue?: TakeIssue }[], among: number[]) => among.reduce((b, i) => (xs[i].perf + xs[i].tech > xs[b].perf + xs[b].tech ? i : b), among[0]);
   if (isDirecting2(p)) {

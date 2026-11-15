@@ -9,7 +9,7 @@
     "credits": "Cast:Thandiwe Yilmaz:Lead; Composer:Imani Schmidt; Costume Designer:Priya Rossi; Directed By:Rin Sato-Moreau; Director Of Photography:Quinn Tanaka; Editor:Tomás Petrov; Produced By:Rin Sato-Moreau; Production Designer:Ifeoma Kim; Sound Designer:Nadia Bergström; Written By:Rin Sato-Moreau",
     "quality": {
       "script": 47,
-      "direction": 68,
+      "direction": 69,
       "craft": 61,
       "editing": 72,
       "music": 59,
@@ -20,8 +20,8 @@
       "craft:editor": 73,
       "craft:sound-designer": 61,
       "performance:c3:np_actor_GB_11": 69,
-      "overall": 61,
-      "reception": 56
+      "overall": 62,
+      "reception": 57
     }
   },
   "live-action short / g2": {
@@ -34,7 +34,7 @@
     "credits": "Cast:Nadia Okafor:Lead; Composer:Wanjiru Schmidt; Costume Designer:Gustavo Eriksen; Directed By:Rin Sato-Moreau; Director Of Photography:Ifeoma Castillo; Editor:Wanjiru Iyer; Produced By:Rin Sato-Moreau; Production Designer:Kavya García; Sound Designer:Hugo Zhang; Written By:Rin Sato-Moreau",
     "quality": {
       "script": 47,
-      "direction": 68,
+      "direction": 69,
       "craft": 63,
       "editing": 68,
       "music": 70,
@@ -44,7 +44,7 @@
       "craft:editor": 69,
       "craft:sound-designer": 70,
       "craft:composer": 69,
-      "performance:c3:np_actor_GB_32": 69,
+      "performance:c3:np_actor_GB_32": 68,
       "overall": 61,
       "reception": 76
     }
@@ -259,7 +259,7 @@
     "credits": "Cast:Imani Zhang:Detective; Colorist:Valentina Santos; Composer:Mateo Quispe; Costume Designer:Jonas Achebe; Delivery Quality Control:Anouk Ueda; Directed By:Rin Sato-Moreau; Director Of Photography:Beatriz Kim; Editor:Soren O'Neill; Executive Producer And Showrunner:Rin Sato-Moreau; Production Designer:Maya Fernandes; Re-Recording Mixer:Dev Dubois; Sound Designer:Chloé Yilmaz; Written By:Rin Sato-Moreau",
     "quality": {
       "script": 45,
-      "direction": 56,
+      "direction": 52,
       "craft": 56,
       "editing": 68,
       "music": 58,
@@ -272,9 +272,9 @@
       "craft:editor": 69,
       "craft:re-recording-mixer": 60,
       "craft:sound-designer": 53,
-      "performance:c3:np_actor_GB_10": 61,
-      "overall": 55,
-      "reception": 60
+      "performance:c3:np_actor_GB_10": 58,
+      "overall": 54,
+      "reception": 59
     }
   },
   "TV limited series / g2": {
@@ -287,7 +287,7 @@
     "credits": "Cast:Elif Varga:Detective; Colorist:Nikolai Hosseini; Composer:Alejandro Schmidt; Costume Designer:Sione Moreau; Delivery Quality Control:Jasmine Walker; Directed By:Rin Sato-Moreau; Director Of Photography:Wei García; Editor:Tomás Reyes; Executive Producer And Showrunner:Rin Sato-Moreau; Production Designer:Sione Abara; Re-Recording Mixer:Vikram Fernandes; Sound Designer:Soren Kowalski; Written By:Rin Sato-Moreau",
     "quality": {
       "script": 45,
-      "direction": 66,
+      "direction": 64,
       "craft": 61,
       "editing": 64,
       "music": 56,
@@ -300,9 +300,9 @@
       "craft:editor": 63,
       "craft:re-recording-mixer": 63,
       "craft:sound-designer": 73,
-      "performance:c3:np_actor_GB_29": 64,
-      "overall": 58,
-      "reception": 59
+      "performance:c3:np_actor_GB_29": 62,
+      "overall": 57,
+      "reception": 58
     }
   }
 }
