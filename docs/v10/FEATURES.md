@@ -11,8 +11,8 @@ journey that shows it there.
 | action | 144 | 0 | 0 | 3 | 0 | 13 | 0 | 160 |
 | bank | 43 | 0 | 0 | 0 | 0 | 0 | 11 | 54 |
 | scheduled | 55 | 0 | 0 | 0 | 0 | 11 | 0 | 66 |
-| field | 136 | 91 | 0 | 2 | 0 | 9 | 67 | 305 |
-| all | 378 | 91 | 0 | 5 | 0 | 33 | 78 | 585 |
+| field | 136 | 94 | 0 | 2 | 0 | 9 | 64 | 305 |
+| all | 378 | 94 | 0 | 5 | 0 | 33 | 75 | 585 |
 
 ## Rows
 
@@ -547,7 +547,7 @@ journey that shows it there.
 | "Realized As" | field | projects.ts deriveRequirements; production/shoot.ts | proven | lead-puppet (40 seeds) | spent +16263.75; daysToDeliver +2.513 |
 | "Puppet Face" | field | production/tasks.ts (sm:faces, sm:armature, sm:animation); rates.ts FACE_METHODS | proven | puppet-face (40 seeds) | spent +16329.7; ownIn +18050; daysToDeliver +20.9 |
 | "Also Called" | field | shown with the part in casting | carried | tests/carried-text.test.ts::kept through a save exactly as written | A name or a record, carried to shown with the part in casting: it decides nothing by its nature. |
-| "Pronouns" | field | script-explain.ts characterPronouns | not yet proven |  |  |
+| "Pronouns" | field | shown in casting: script-explain.ts characterPronouns | carried | tests/advice-carried.test.ts::reach the advice they are written for, and are scored by nothing | A name or a record, carried to shown in casting: script-explain.ts characterPronouns: it decides nothing by its nature. |
 | "Speaks" | field | production/language.ts personLanguagesFit | proven | lead-speaks (40 seeds) | spent +2874; hired +2 |
 | "Awards Placement" | field | script-effects.ts castPlacement | not yet proven |  |  |
 | "Series Involvement" | field | hiring.ts estimateDays; finish.ts computeCredits | proven | series-regular (40 seeds) | guideDays +6; ownIn +4250 |
@@ -569,8 +569,8 @@ journey that shows it there.
 | "Format Family" | field | unscripted.ts buildTasks | not yet proven |  |  |
 | {c.name} | field | unscripted.ts decideCompetition | not yet proven |  |  |
 | "Leave Each Episode" | field | unscripted.ts decideCompetition | not yet proven |  |  |
-| {`Add Ethnicity For ${who}`} | field | hiring.ts sharedHeritages | not yet proven |  |  |
-| {`Add Nationality For ${who}`} | field | hiring.ts | not yet proven |  |  |
+| {`Add Ethnicity For ${who}`} | field | shown in casting: hiring.ts sharedHeritages | carried | tests/heritage.test.ts::a performer from the pool | A name or a record, carried to shown in casting: hiring.ts sharedHeritages: it decides nothing by its nature. |
+| {`Add Nationality For ${who}`} | field | shown in casting: hiring.ts | carried | tests/identity.test.ts::a version 6 save | A name or a record, carried to shown in casting: hiring.ts: it decides nothing by its nature. |
 | {i.label} | field | script-explain.ts; finish.ts outlet requirements | proven | content-strong (40 seeds) | lateSlots +0.45; viewers -71800 |
 | "Age In Story" | field | story-age.ts storyAge; casting-notes.ts fitNotes; minors.ts minorFor | proven | lead-child (40 seeds) | spent +7616; daysToDeliver +8.325 |
 | "Up To" | field | story-age.ts storyAge; casting-notes.ts fitNotes | not yet proven |  |  |

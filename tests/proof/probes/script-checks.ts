@@ -64,4 +64,7 @@ export const PROBES: Probe[] = [
   // A scene presented as sourced fact with a fact linked needs no sourcing of its own (production/tasks.ts doc:research).
   { id: 'claim-linked', features: ['field:ScriptViews.tsx#{e.claim.slice(0, 50)}#1'], decision: 'Link the documentary\'s third scene to its checked claim rather than to none', reads: ['src/engine/production/tasks.ts#buildTasks'],
     base: { project: docWith((p) => { p.scenes[2].evidenceIds = []; }), ...DOC }, variant: { project: doc, ...DOC }, measure: research, bites: ['researchItems'], downstream: ['spent', 'daysToDeliver'] },
+  // An age range reaching sixteen or over isn't a child's part (minors.ts minorFor): no tutor or chaperone, no child's hours.
+  { id: 'age-range', features: [S('Up To')], decision: 'Write the lead as ten to thirty rather than ten', reads: ['src/engine/story-age.ts#storyAge', 'src/engine/minors.ts#minorFor'],
+    base: { project: short({ lead: { ageInStory: '10' } }) }, variant: { project: short({ lead: { ageInStory: '10 to 30' } }) }, bites: ['hired'], downstream: ['daysToDeliver', 'spent'] },
 ];

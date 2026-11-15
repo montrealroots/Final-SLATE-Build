@@ -22,7 +22,7 @@ export const FIELD_PROOFS: Record<string, string[]> = {
   'plan-later': ["field:PlanViews.tsx#\"Production Start\"#1"],
   'plan-over-call': ["field:Places.tsx#\"Start Time\"#1", "field:Places.tsx#\"Length In Minutes\"#1"],
   'record-screen-time': ["field:WorkViews.tsx#{`${c.name} On Screen (Minutes)`}#1"],
-  'sleep-through-call': ["field:Shell.tsx#\"Set Wake Time\"#1", "field:Shell.tsx#\"Set An Alarm\"#1"],
+  'sleep-through-call': ["field:Shell.tsx#\"Set Wake Time\"#1", "field:Shell.tsx#\"Set An Alarm\"#1", "field:Shell.tsx#\"Hours Of Sleep\"#1"],
   'theme-notes': ["field:MusicTab.tsx#\"Your Notes On The Themes\"#1"],
   'treat-as-adult': ["field:PersonWork.tsx#\"Treat As An Adult In This Story\"#1"],
   'version-song': ["field:WorkViews.tsx#{`${v.label}: ${sceneLabel(p, sc)}, In Place Of \"${song.title}\"`}#1"],

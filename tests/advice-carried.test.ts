@@ -8,7 +8,7 @@ import { scriptIssues } from '../src/engine/projects';
 import { structureNotes, threadCutConsequences } from '../src/engine/structure';
 import { addResearch, researchNotes, updateResearch } from '../src/engine/research';
 import { setSeriesPlan, updateWorldRule } from '../src/engine/season';
-import { breakdownComplete, spokenMinutes } from '../src/engine/script-explain';
+import { breakdownComplete, pronounsMatch, spokenMinutes } from '../src/engine/script-explain';
 import { buildProject, startLife } from './helpers';
 
 const film = (genres: string[] = ['drama']): Project => buildProject(startLife('advice'), { title: 'The Pier', format: 'short', medium: 'live-action', genres, runtime: 10 },
@@ -60,6 +60,11 @@ describe('words shown back as advice', () => {
     expect(breakdownComplete(c)).toBe(false);
     Object.assign(c, { description: 'A lighthouse keeper.', wants: 'To keep the light.', fears: 'The automation.' });
     expect(breakdownComplete(c)).toBe(true);
+    // A part's pronouns mark the performers who match in casting; nobody is filtered (casting shows the mark).
+    c.pronouns = 'She/Her';
+    expect([pronounsMatch(c, 'she'), pronounsMatch(c, 'he')]).toEqual([true, false]);
+    c.pronouns = '';
+    expect(pronounsMatch(c, 'he')).toBe(true);
 
     // A season's plan and its world rules: kept as written, and shown in the season plan.
     const show = buildProject(startLife('season'), { title: 'Lock Keepers', format: 'limited-series', medium: 'live-action', genres: ['drama'], episodes: 2, runtime: 20 },
