@@ -19,15 +19,18 @@ const animated = (technique: '3d-cg' | 'stop-motion') => (s: GameState, year: nu
   { title: `Year ${year + 1}`, format: 'short', medium: 'animation', technique, quality: 'tv', scenario: 'micro', genres: ['drama'], runtime: 2 },
   [{ name: 'Lead', patch: { roleSize: 'lead' } }, { name: 'Friend', patch: { roleSize: 'supporting' } }],
   [{ place: 'Flat', chars: ['Lead', 'Friend'], minutes: 1 }, { place: 'Cafe', chars: ['Lead', 'Friend'], minutes: 1 }]));
-/** The commissioned series (scheduled.ts SERIES) with a third episode of the same two scenes. */
-const threeEpisodes = (s: GameState, year: number): Project => {
-  const p = unfunded(buildProject(s, { title: `Season ${year + 1}`, format: 'limited-series', medium: 'live-action', scenario: 'micro', genres: ['drama'], episodes: 3, runtime: 20 }, [{ name: 'Mara', patch: { roleSize: 'lead' } }],
-    [1, 2, 3].flatMap((e) => [{ place: 'Pier', chars: ['Mara'], minutes: 3, extra: { episode: e } }, { place: 'Quay', intExt: 'EXT' as const, chars: ['Mara'], minutes: 3, extra: { episode: e } }])));
-  // Commissioned as SERIES is: the season's whole cost met by the broadcaster.
+/** Commissioned as SERIES is: the season's whole cost met by the broadcaster. */
+export const commission = (s: GameState, p: Project): Project => {
   const amount = Math.max(1, financeSummary(p).stillToRaise);
   (p.finance ??= { estimate: amount, target: amount, deals: [] }).deals.push({ id: `${p.id}-commission`, kind: 'commissioner', backer: 'A Broadcaster (Fixture)', amount, status: 'accepted', askedAt: s.now, reason: 'Labelled fixture: the season is commissioned.', received: amount, repaid: 0, terms: { recoup: 0, incomeShare: 0, approvalRights: [], credit: null, onDelivery: 0, deliverBy: null } });
   p.funding.fund += amount;
   return p;
+};
+/** The commissioned series (scheduled.ts SERIES) with a third episode of the same two scenes. */
+const threeEpisodes = (s: GameState, year: number): Project => {
+  const p = unfunded(buildProject(s, { title: `Season ${year + 1}`, format: 'limited-series', medium: 'live-action', scenario: 'micro', genres: ['drama'], episodes: 3, runtime: 20 }, [{ name: 'Mara', patch: { roleSize: 'lead' } }],
+    [1, 2, 3].flatMap((e) => [{ place: 'Pier', chars: ['Mara'], minutes: 3, extra: { episode: e } }, { place: 'Quay', intExt: 'EXT' as const, chars: ['Mara'], minutes: 3, extra: { episode: e } }])));
+  return commission(s, p);
 };
 /**
  * The default short, its lead a ten-year-old; in the second year a sequel to it, `years` later in the story (sequel.ts

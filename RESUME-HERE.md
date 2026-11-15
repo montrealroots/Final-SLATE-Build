@@ -88,8 +88,27 @@ and the rest) with real grades filling the hiring lists.
   switched off in careers where they run (`scheduled-more.ts`). Six scheduled kinds are older saves' or display only
   (`not-features.json`). The matrix: actions 144 proven, scheduled 55 proven, open 320 -> 270.
 
-**Next.** The 256 fields (inputs): one shown only somewhere is carried once a test shows it there; one an engine
-function reads needs a played-career proof. Then the eleven bank commands a $25m career never reaches (collections,
+- Fourth batch, the fields (inputs), each named on the proof that varies it (`tests/proof/field-proofs.ts`, or the
+  probe's own `features`): the script's scene and character fields (`script-fields.ts`), the plan's (`plan-fields.ts`),
+  the Story panel's (`story-fields.ts`, each document field a backer reads), more of the script's and the player's
+  (`more-fields.ts`), the project's (`project-fields.ts`), the release plan's (`release-fields.ts`), the music brief's
+  (`music-fields.ts`) and a scene's look, kind and basis and a series regular (`scene-fields.ts`). Six fields aren't
+  decisions (`not-features.json`: the clock's Advance fields, the catalog's role filter, a plan's reminder, a repaired
+  save's place). Open 270 -> 210 so far, with 25 more results still to run at 40 careers (below).
+- Fixed from them, each with a test that fails without the fix: Wake Me For Obligations moved nothing (it stopped Sleep
+  at the call itself, after the call had found you asleep and started the day late); sleep now ends an hour before the
+  first call or job morning it would cross (`state.ts startSleep`). A documentary scene's basis only added a note; a
+  scene presented as sourced fact with no fact linked is now an item the researcher must source (`production/tasks.ts`).
+  The documentary journey now expects the withdrawal message that says the scene left the cut.
+
+**Next.** Run at 40 careers and copy in (after the staleness check): format-feature, medium-animation,
+restore-version-song, version-song, method-capture, puppet-face (stale on `production/tasks.ts`), friend-out-of-cafe
+(remeasured), technique-stop-motion, story-era, dialogue-french, setting-abroad, episodes-three, story-years,
+plan-territories, first-public-date, festival-hold, version-dubbed, music-silence, score-sound-chamber, score-density,
+themes-stand, scene-look, scene-archival, scene-dramatized, series-regular. Then the rest of the fields: creation
+(start date, observances, language proficiency, place of birth), the stage and episode fields on the plan, awards entry
+fields, songs, ideas, licence scope, writing scope. One shown only somewhere is carried once a test shows it there; one
+an engine function reads needs a played-career proof. Then the eleven bank commands a $25m career never reaches (collections,
 overdrafts, disputes, hardship), and an episode delivered early (a release planned while the season is in production). The writer's revision
 focus still waits on the owner (nothing reads it).
 

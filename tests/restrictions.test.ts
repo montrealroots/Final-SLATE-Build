@@ -131,3 +131,16 @@ describe('a documentary contributor withdraws', () => {
     expect(c1(locked.p).consent).toBe('given'); // refused, nothing changed
   });
 });
+
+describe("a documentary scene's basis", () => {
+  it('a scene presented as sourced fact with no fact linked is one more item to research; marked dramatized, it asks nothing', () => {
+    const research = (basis: Scene['basis']) => {
+      const s = startLife('basis', 'za-durban');
+      const p = buildProject(s, { title: 'Tide Keepers', format: 'documentary-short', medium: 'live-action', genres: ['documentary'], runtime: 10 }, [], []);
+      p.scenes.push({ ...blankDoc('a1', 'ct1'), kind: 'actuality', basis, contributorIds: [] });
+      approve(s, p);
+      return buildTasks(p).find((t) => t.kind === 'doc:research')!.units;
+    };
+    expect(research('sourced')).toBe(research('dramatized') + 1);
+  });
+});

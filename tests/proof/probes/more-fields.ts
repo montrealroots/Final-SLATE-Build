@@ -49,8 +49,8 @@ export const PROBES: Probe[] = [
     // The singles are shot in the same shoot days, and the cut between them takes longer (4 careers: about three and a half days).
     variant: { project: edited(exchange) }, measure: singles, bites: ['singles'], downstream: ['daysToDeliver'] },
   { id: 'friend-out-of-cafe', features: [F('{c.name}', 1)], decision: 'Take the friend out of the café scene', reads: ['src/engine/hiring.ts#estimateDays'],
-    // A day less of the friend's fee (4 careers: two thousand dollars less spent, and more left at the end).
-    variant: { project: edited((p) => { const cafe = p.scenes.find((s) => s.heading.place === 'Cafe')!; cafe.participants = cafe.participants.filter((c) => c !== id(p, 'Friend')); }) }, bites: ['spent'], downstream: ['money', 'daysToDeliver'] },
+    // A day less of the friend's fee (40 careers: $1,641 less spent, and less of the player's own money put in).
+    variant: { project: edited((p) => { const cafe = p.scenes.find((s) => s.heading.place === 'Cafe')!; cafe.participants = cafe.participants.filter((c) => c !== id(p, 'Friend')); }) }, bites: ['spent'], downstream: ['ownIn', 'money'] },
   // On, as a new game starts, sleep ends an hour before the call (state.ts startSleep); off, it runs to ten.
   { id: 'no-wake-for-obligations', features: ['field:SavedGames.tsx#"Wake Me For Obligations"#1'], decision: 'Stop being woken for obligations, then sleep in before the first shoot day', reads: ['src/engine/state.ts#startSleep'],
     base: { daily: sleepIn }, variant: { daily: sleepThrough }, measure: lateDays, bites: ['lateDays'], downstream: ['quality.direction', 'overall'] },
