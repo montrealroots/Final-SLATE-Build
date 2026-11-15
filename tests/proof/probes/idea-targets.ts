@@ -7,6 +7,7 @@ import type { GameState, Project } from '../../../src/engine/types';
 import { applyIdea } from '../../../src/engine/brief';
 import { IDEAS } from '../../../src/ideas';
 import { short } from './script';
+import { measure as scoreMeasure, reviewThemes, takeBrief } from './score';
 
 const I = (label: string) => `field:IdeaPicker.tsx#${label}#1`;
 const idea = (id: string) => IDEAS.find((x) => x.id === id)!;
@@ -21,9 +22,21 @@ const named = (p: Project, ...names: string[]) => p.characters.filter((c) => nam
 const disguise = (...names: string[]) => withIdea((s, p) => { applyIdea(s, p, idea('creature_rule.009'), { characterIds: named(p, ...names) }); });
 const slapstick = (...places: string[]) => withIdea((s, p) => { applyIdea(s, p, idea('comedy_treatment.004'), { sceneIds: p.scenes.filter((x) => places.includes(x.heading.place)).map((x) => x.id) }); });
 
+/** The short, its tone "quiet and tender", given "Mistaken Identity" (a tone) with the tone kept or not. */
+const farce = (keep: string[]) => (s: GameState, year: number): Project => {
+  const p = short({ axes: { tone: 'quiet and tender' } })(s, year);
+  applyIdea(s, p, idea('comedy_treatment.001'), { keep });
+  return p;
+};
+
 export const PROBES: Probe[] = [
   { id: 'idea-characters', features: [I('{c.name}')], decision: 'Apply "Human Disguise" to the lead as well as the friend', reads: ['src/engine/brief.ts#applyIdea', 'src/engine/looks.ts#costumeCopies'],
     base: { project: disguise('Friend') }, variant: { project: disguise('Friend', 'Lead') }, bites: ['ownIn'], downstream: ['daysToDeliver', 'spent'] },
   { id: 'idea-scenes', features: [I('{`Scene ${i + 1}')], decision: 'Apply "Physical Slapstick" to all three scenes rather than the flat\'s alone', reads: ['src/engine/brief.ts#applyIdea', 'src/engine/projects.ts#deriveRequirements'],
     base: { project: slapstick('Flat') }, variant: { project: slapstick('Flat', 'Street', 'Cafe') }, bites: ['spent'], downstream: ['ownIn', 'daysToDeliver'] },
+  // A kept field is left as the player wrote it (brief.ts applyIdea): here the tone, which the music brief reads; quiet
+  // and tender asks for a chamber score, a farce's tone for none in particular, and a micro budget then asks for synth.
+  { id: 'idea-keep-tone', features: [I('{`Keep My ${o.label}`}')], decision: 'Keep your own tone when applying "Mistaken Identity", then take the music brief it proposes', reads: ['src/engine/brief.ts#applyIdea', 'src/engine/cues.ts#proposeBrief'],
+    base: { project: farce([]), decide: takeBrief, daily: reviewThemes(0) }, variant: { project: farce(['tone']), decide: takeBrief, daily: reviewThemes(0) }, measure: scoreMeasure,
+    bites: ['chamber'], downstream: ['spent', 'daysToDeliver'] },
 ];
