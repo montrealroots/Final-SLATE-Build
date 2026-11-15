@@ -11,8 +11,8 @@ journey that shows it there.
 | action | 144 | 0 | 0 | 3 | 0 | 13 | 0 | 160 |
 | bank | 43 | 0 | 0 | 0 | 0 | 0 | 11 | 54 |
 | scheduled | 55 | 0 | 0 | 0 | 0 | 11 | 0 | 66 |
-| field | 133 | 42 | 0 | 2 | 0 | 8 | 120 | 305 |
-| all | 375 | 42 | 0 | 5 | 0 | 32 | 131 | 585 |
+| field | 136 | 72 | 0 | 2 | 0 | 8 | 87 | 305 |
+| all | 378 | 72 | 0 | 5 | 0 | 32 | 98 | 585 |
 
 ## Rows
 
@@ -343,10 +343,10 @@ journey that shows it there.
 | {`Version In ${r.territories.map(countryName).join(', ')}`} | field | finish.ts setReleaseVersion, the release handler; distribution.ts territoriesReached, reportedGross | proven | release-dubbed (60 seeds) | dubbed +0.917; spent +4942; revenue +17728.75 |
 | "Development Money From The Deal" | field | first-look.ts drawDevelopment, developmentRefusal, repayTurnaround | proven | draw-development (40 seeds) | developmentIn +48150; ownIn -48150 |
 | {s.label} | field | brief.ts fill | not yet proven |  |  |
-| {c.name} | field | brief.ts applyIdea | not yet proven |  |  |
-| {`Scene ${i + 1} | field | brief.ts applyIdea | not yet proven |  |  |
+| {c.name} | field | brief.ts applyIdea | proven | idea-characters (40 seeds) | ownIn +9600; daysToDeliver +6.1; spent +9581.25 |
+| {`Scene ${i + 1} | field | brief.ts applyIdea | proven | idea-scenes (40 seeds) | spent +40142.5; ownIn +18075; daysToDeliver +6.25 |
 | {`${b.intExt === 'EXT' ? 'Exterior' : 'Interior'} | field | brief.ts applyIdea; projects.ts addScene | not yet proven |  |  |
-| {`Keep My ${o.label}`} | field | brief.ts applyIdea | not yet proven |  |  |
+| {`Keep My ${o.label}`} | field | brief.ts applyIdea | proven | idea-keep-tone (40 seeds) | chamber +2; spent +10287 |
 | "When It Starts" | field | src/ideas/loglines.ts compose; brief.ts applyIdea | not yet proven |  |  |
 | "Who It Happens To" | field | src/ideas/loglines.ts compose; brief.ts applyIdea | not yet proven |  |  |
 | "What They Must Do" | field | src/ideas/loglines.ts compose; brief.ts applyIdea | not yet proven |  |  |
@@ -467,14 +467,14 @@ journey that shows it there.
 | "Kind" | field | projects.ts deriveRequirements (interview, archival) | proven | scene-archival (40 seeds) | shootDays -2.95; hired +2 |
 | "Basis" | field | projects.ts scriptIssues (sourced needs a fact) | proven | scene-dramatized (40 seeds) | researchItems -2; spent -639 |
 | "Technique For This Scene" | field | projects.ts sceneTechnique; production/tasks.ts | not yet proven |  |  |
-| "Act" | field | structure.ts structureNotes | not yet proven |  |  |
-| "Tonal Intention" | field | projects.ts scriptIssues (tonal genres note a missing one) | not yet proven |  |  |
-| "Who Is Recording" | field | projects.ts scriptIssues (found footage) | not yet proven |  |  |
+| "Act" | field | shown as advice: structure.ts structureNotes | carried | tests/structure.test.ts::group scenes; an empty act is noted | A name or a record, carried to shown as advice: structure.ts structureNotes: it decides nothing by its nature. |
+| "Tonal Intention" | field | shown as advice: projects.ts scriptIssues (tonal genres note a missing one) | carried | tests/advice-carried.test.ts::reach the advice they are written for, and are scored by nothing | A name or a record, carried to shown as advice: projects.ts scriptIssues (tonal genres note a missing one): it decides nothing by its nature. |
+| "Who Is Recording" | field | shown as advice: projects.ts scriptIssues (found footage) | carried | tests/genres.test.ts::module consumers change the right downstream state | A name or a record, carried to shown as advice: projects.ts scriptIssues (found footage): it decides nothing by its nature. |
 | {c.name} | field | projects.ts deriveRequirements; hiring.ts estimateDays | proven | friend-out-of-cafe (40 seeds) | spent -1641; ownIn -100 |
 | {`${c.name}'s Look In This Scene`} | field | looks.ts stateIn, statesUsed, costumeCopies, changeMinutes, makeupShare | proven | scene-look (40 seeds) | spent +17585.5; ownIn +18575 |
 | {c.name} | field | projects.ts deriveRequirements (interviews, consent) | not yet proven |  |  |
 | {e.claim.slice(0, 50)} | field | projects.ts scriptIssues | not yet proven |  |  |
-| "Objective" | field | projects.ts scriptIssues (advisory note when empty) | not yet proven |  |  |
+| "Objective" | field | shown as advice: projects.ts scriptIssues (advisory note when empty) | carried | tests/advice-carried.test.ts::reach the advice they are written for, and are scored by nothing | A name or a record, carried to shown as advice: projects.ts scriptIssues (advisory note when empty): it decides nothing by its nature. |
 | {nonfiction ? 'What Happens' : 'Action'} | field | shown on the scene | carried | tests/carried-text.test.ts::kept through a save exactly as written | A name or a record, carried to shown on the scene: it decides nothing by its nature. |
 | "Turning Point" | field | shown on the scene | carried | tests/carried-text.test.ts::kept through a save exactly as written | A name or a record, carried to shown on the scene: it decides nothing by its nature. |
 | "Essential To The Story" | field | finish.ts (cutting it costs the edit); cost-cuts.ts | proven | scene-essential (40 seeds) | quality.editing -8; overall -0.787; reception -0.587 |
@@ -491,34 +491,34 @@ journey that shows it there.
 | "Water Work" | field | projects.ts deriveRequirements | proven | scene-water (40 seeds) | spent +3503.5; hired +2; ownIn +500 |
 | "Intentional Discontinuity" | field | projects.ts scriptIssues | not yet proven |  |  |
 | "Speaker" | field | projects.ts scriptIssues; finish.ts | proven | dialogue-two-speakers (40 seeds) | singles +4; daysToDeliver +2.888 |
-| "Line" | field | script-explain.ts spokenMinutes (a guide only) | not yet proven |  |  |
-| {o.label} | field | season.ts sharedFactImpact | not yet proven |  |  |
-| "Rule" | field | season.ts | not yet proven |  |  |
-| "Limit Or Cost" | field | season.ts | not yet proven |  |  |
-| "Rule" | field | season.ts | not yet proven |  |  |
-| "Limit Or Cost" | field | season.ts | not yet proven |  |  |
+| "Line" | field | shown as advice: script-explain.ts spokenMinutes (a guide only) | carried | tests/advice-carried.test.ts::reach the advice they are written for, and are scored by nothing | A name or a record, carried to shown as advice: script-explain.ts spokenMinutes (a guide only): it decides nothing by its nature. |
+| {o.label} | field | shown as a preview: season.ts sharedFactImpact | carried | tests/episodes.test.ts::a rule lists the scenes that rely on it | A name or a record, carried to shown as a preview: season.ts sharedFactImpact: it decides nothing by its nature. |
+| "Rule" | field | shown in the season plan: season.ts | carried | tests/advice-carried.test.ts::reach the advice they are written for, and are scored by nothing | A name or a record, carried to shown in the season plan: season.ts: it decides nothing by its nature. |
+| "Limit Or Cost" | field | shown in the season plan: season.ts | carried | tests/advice-carried.test.ts::reach the advice they are written for, and are scored by nothing | A name or a record, carried to shown in the season plan: season.ts: it decides nothing by its nature. |
+| "Rule" | field | shown in the season plan: season.ts | carried | tests/advice-carried.test.ts::reach the advice they are written for, and are scored by nothing | A name or a record, carried to shown in the season plan: season.ts: it decides nothing by its nature. |
+| "Limit Or Cost" | field | shown in the season plan: season.ts | carried | tests/advice-carried.test.ts::reach the advice they are written for, and are scored by nothing | A name or a record, carried to shown in the season plan: season.ts: it decides nothing by its nature. |
 | "Season Arc" | field | sequel.ts continueProject (carried into the next season) | not yet proven |  |  |
-| "What An Episode Does" | field | season.ts setSeriesPlan; shown in the season plan | not yet proven |  |  |
-| "How Its People Change" | field | season.ts setSeriesPlan; shown in the season plan | not yet proven |  |  |
-| "Places It Returns To" | field | season.ts setSeriesPlan; shown in the season plan | not yet proven |  |  |
-| "How It Goes On Or Ends" | field | season.ts setSeriesPlan; shown in the season plan | not yet proven |  |  |
+| "What An Episode Does" | field | shown in the season plan: season.ts setSeriesPlan | carried | tests/advice-carried.test.ts::reach the advice they are written for, and are scored by nothing | A name or a record, carried to shown in the season plan: season.ts setSeriesPlan: it decides nothing by its nature. |
+| "How Its People Change" | field | shown in the season plan: season.ts setSeriesPlan | carried | tests/advice-carried.test.ts::reach the advice they are written for, and are scored by nothing | A name or a record, carried to shown in the season plan: season.ts setSeriesPlan: it decides nothing by its nature. |
+| "Places It Returns To" | field | shown in the season plan: season.ts setSeriesPlan | carried | tests/advice-carried.test.ts::reach the advice they are written for, and are scored by nothing | A name or a record, carried to shown in the season plan: season.ts setSeriesPlan: it decides nothing by its nature. |
+| "How It Goes On Or Ends" | field | shown in the season plan: season.ts setSeriesPlan | carried | tests/advice-carried.test.ts::reach the advice they are written for, and are scored by nothing | A name or a record, carried to shown in the season plan: season.ts setSeriesPlan: it decides nothing by its nature. |
 | {`Title Of Episode ${n}`} | field | shown wherever an episode is named | carried | tests/episodes.test.ts::an episode moves with its scenes | A name or a record, carried to shown wherever an episode is named: it decides nothing by its nature. |
 | {`What Episode ${n} Moves`} | field | shown in the season plan | carried | tests/episodes.test.ts::an episode moves with its scenes | A name or a record, carried to shown in the season plan: it decides nothing by its nature. |
-| "New Act Or Sequence" | field | structure.ts | not yet proven |  |  |
-| {o.label} | field | structure.ts structureNotes; threadCutConsequences | not yet proven |  |  |
-| {c.name} | field | structure.ts structureNotes | not yet proven |  |  |
-| {`How ${t.name} Ends`} | field | structure.ts | not yet proven |  |  |
-| "New Thread" | field | structure.ts | not yet proven |  |  |
-| "Reference" | field | research.ts | not yet proven |  |  |
-| "Status" | field | research.ts researchNotes | not yet proven |  |  |
-| {sceneLabel(p, s)} | field | research.ts researchNotes | not yet proven |  |  |
-| "New Question" | field | research.ts | not yet proven |  |  |
+| "New Act Or Sequence" | field | shown as advice: structure.ts | carried | tests/advice-carried.test.ts::reach the advice they are written for, and are scored by nothing | A name or a record, carried to shown as advice: structure.ts: it decides nothing by its nature. |
+| {o.label} | field | shown as advice: structure.ts structureNotes; threadCutConsequences | carried | tests/structure.test.ts::cutting the resolving scene from the edit warns by name | A name or a record, carried to shown as advice: structure.ts structureNotes; threadCutConsequences: it decides nothing by its nature. |
+| {c.name} | field | shown as advice: structure.ts structureNotes | carried | tests/decision-effects.test.ts::raise a structure note when one is in none of its scenes | A name or a record, carried to shown as advice: structure.ts structureNotes: it decides nothing by its nature. |
+| {`How ${t.name} Ends`} | field | shown as advice: structure.ts | carried | tests/structure.test.ts::a thread resolves in a named scene or is left open | A name or a record, carried to shown as advice: structure.ts: it decides nothing by its nature. |
+| "New Thread" | field | shown as advice: structure.ts | carried | tests/advice-carried.test.ts::reach the advice they are written for, and are scored by nothing | A name or a record, carried to shown as advice: structure.ts: it decides nothing by its nature. |
+| "Reference" | field | shown as advice: research.ts | carried | tests/advice-carried.test.ts::reach the advice they are written for, and are scored by nothing | A name or a record, carried to shown as advice: research.ts: it decides nothing by its nature. |
+| "Status" | field | shown as advice: research.ts researchNotes | carried | tests/structure.test.ts::note open and uncertain questions on their scenes | A name or a record, carried to shown as advice: research.ts researchNotes: it decides nothing by its nature. |
+| {sceneLabel(p, s)} | field | shown as advice: research.ts researchNotes | carried | tests/structure.test.ts::note open and uncertain questions on their scenes | A name or a record, carried to shown as advice: research.ts researchNotes: it decides nothing by its nature. |
+| "New Question" | field | shown as advice: research.ts | carried | tests/advice-carried.test.ts::reach the advice they are written for, and are scored by nothing | A name or a record, carried to shown as advice: research.ts: it decides nothing by its nature. |
 | "Planted In" | field | script-effects.ts; finish.ts edit consequences | not yet proven |  |  |
 | "Pays Off In" | field | script-effects.ts; finish.ts edit consequences | not yet proven |  |  |
 | "What Is Set Up" | field | shown with the setup | carried | tests/carried-text.test.ts::kept through a save exactly as written | A name or a record, carried to shown with the setup: it decides nothing by its nature. |
 | "Kind" | field | projects.ts deriveRequirements (clue props) | not yet proven |  |  |
-| "First Character" | field | season.ts sharedFactImpact | not yet proven |  |  |
-| "Second Character" | field | season.ts sharedFactImpact | not yet proven |  |  |
+| "First Character" | field | shown as a preview: season.ts sharedFactImpact | carried | tests/episodes.test.ts::a relationship touches every scene its two characters share | A name or a record, carried to shown as a preview: season.ts sharedFactImpact: it decides nothing by its nature. |
+| "Second Character" | field | shown as a preview: season.ts sharedFactImpact | carried | tests/episodes.test.ts::a relationship touches every scene its two characters share | A name or a record, carried to shown as a preview: season.ts sharedFactImpact: it decides nothing by its nature. |
 | "Relationship" | field | shown in the season plan | carried | tests/carried-text.test.ts::kept through a save exactly as written | A name or a record, carried to shown in the season plan: it decides nothing by its nature. |
 | "Where It Starts" | field | shown in the season plan | carried | tests/carried-text.test.ts::kept through a save exactly as written | A name or a record, carried to shown in the season plan: it decides nothing by its nature. |
 | "Where It Ends" | field | shown in the season plan | carried | tests/carried-text.test.ts::kept through a save exactly as written | A name or a record, carried to shown in the season plan: it decides nothing by its nature. |
@@ -537,8 +537,8 @@ journey that shows it there.
 | "About" | field | projects.ts addNote | proven | own-notes (40 seeds) | ownNotes +6; quality.script +6; overall +1.725 |
 | "Character Name" | field | everywhere a part is named | carried | tests/scenes.test.ts::renaming changes the name everywhere it is shown | A name or a record, carried to everywhere a part is named: it decides nothing by its nature. |
 | "Give Their Scenes, Lines And Relationships To" | field | projects.ts archiveCharacter | not yet proven |  |  |
-| "Scene" | field | structure.ts beatsIn | not yet proven |  |  |
-| "What Changes" | field | structure.ts | not yet proven |  |  |
+| "Scene" | field | shown as advice: structure.ts beatsIn | carried | tests/structure.test.ts::a beat goes only in a scene the character is in | A name or a record, carried to shown as advice: structure.ts beatsIn: it decides nothing by its nature. |
+| "What Changes" | field | shown as advice: structure.ts | carried | tests/advice-carried.test.ts::reach the advice they are written for, and are scored by nothing | A name or a record, carried to shown as advice: structure.ts: it decides nothing by its nature. |
 | "New Character's Name" | field | projects.ts splitCharacter | not yet proven |  |  |
 | {sceneLabel(p, s)} | field | projects.ts splitCharacter | not yet proven |  |  |
 | "Name" | field | everywhere a part is named | carried | tests/scenes.test.ts::renaming changes the name everywhere it is shown | A name or a record, carried to everywhere a part is named: it decides nothing by its nature. |
@@ -554,9 +554,9 @@ journey that shows it there.
 | {title(f)} | field | awards-rules.ts isNarrator; hiring.ts estimateDays | proven | lead-narrator (40 seeds) | spent +1491.25; daysToDeliver +1.863; ownIn +1100 |
 | {title(m)} | field | hiring.ts; production | proven | method-capture (40 seeds) | hired +2; castRates +1577.5; daysToDeliver -25.187 |
 | "What Kind Of Being" | field | shown to design and casting | carried | tests/carried-text.test.ts::kept through a save exactly as written | A name or a record, carried to shown to design and casting: it decides nothing by its nature. |
-| "Description" | field | script-explain.ts breakdownComplete | not yet proven |  |  |
-| "Wants" | field | script-explain.ts breakdownComplete | not yet proven |  |  |
-| "Fears" | field | script-explain.ts breakdownComplete | not yet proven |  |  |
+| "Description" | field | shown as advice: script-explain.ts breakdownComplete | carried | tests/advice-carried.test.ts::reach the advice they are written for, and are scored by nothing | A name or a record, carried to shown as advice: script-explain.ts breakdownComplete: it decides nothing by its nature. |
+| "Wants" | field | shown as advice: script-explain.ts breakdownComplete | carried | tests/advice-carried.test.ts::reach the advice they are written for, and are scored by nothing | A name or a record, carried to shown as advice: script-explain.ts breakdownComplete: it decides nothing by its nature. |
+| "Fears" | field | shown as advice: script-explain.ts breakdownComplete | carried | tests/advice-carried.test.ts::reach the advice they are written for, and are scored by nothing | A name or a record, carried to shown as advice: script-explain.ts breakdownComplete: it decides nothing by its nature. |
 | "Why They Want It" | field | shown with the part | carried | tests/carried-text.test.ts::kept through a save exactly as written | A name or a record, carried to shown with the part: it decides nothing by its nature. |
 | "What Stands In The Way" | field | shown with the part | carried | tests/carried-text.test.ts::kept through a save exactly as written | A name or a record, carried to shown with the part: it decides nothing by its nature. |
 | "What In Them Pulls Against It" | field | shown with the part | carried | tests/carried-text.test.ts::kept through a save exactly as written | A name or a record, carried to shown with the part: it decides nothing by its nature. |
