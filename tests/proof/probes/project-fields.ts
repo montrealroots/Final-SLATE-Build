@@ -8,7 +8,7 @@ import { addScene, updateScene } from '../../engine-api';
 import { unfunded } from '../career';
 import { continueProject } from '../../../src/engine/sequel';
 import { financeSummary } from '../../../src/engine/finance';
-import { short } from './script';
+import { feature, short } from './script';
 import { SERIES } from './scheduled';
 
 const F = (label: string, n = 1) => `field:Projects.tsx#${label}#${n}`;
@@ -49,6 +49,8 @@ const childSequel = (years: number) => (s: GameState, year: number): Project => 
   }
   return unfunded(p);
 };
+/** The feature (script.ts feature) written in French, its lead a French speaker. */
+const inFrench = (s: GameState, year: number): Project => { const p = feature({ languages: ['fr'] })(s, year); p.axes.dialogueLanguages = ['fr']; return p; };
 const sequels = (_s: GameState, projects: Project[]) => ({ continued: projects.filter((p) => p.continues).length });
 
 export const PROBES: Probe[] = [
@@ -57,8 +59,11 @@ export const PROBES: Probe[] = [
   // Research is a specialist's work: the researcher is hired, and the player puts in what it costs.
   { id: 'story-era', features: [F('"Story Era"')], decision: 'Set the costume drama in Victorian times rather than the present', reads: ['src/engine/projects.ts#deriveRequirements', 'src/engine/production/tasks.ts#buildTasks'],
     base: { project: short({ axes: { storyEra: 'Contemporary', genres: PERIOD } }) }, variant: { project: short({ axes: { storyEra: 'Victorian', genres: PERIOD } }) }, bites: ['spent'], downstream: ['hired', 'ownIn'] },
-  { id: 'dialogue-french', features: [F('?', 2)], decision: 'Write the short\'s dialogue in French', reads: ['src/engine/production/language.ts#personLanguagesFit', 'src/engine/finish.ts#versionLanguages'],
-    variant: { project: short({ axes: { dialogueLanguages: ['fr'] }, lead: { languages: ['fr'] } }) }, bites: ['spent'], downstream: ['hired', 'money'] },
+  // A part in French is coached for an actor who doesn't speak it (production/language.ts personLanguagesFit). On the
+  // short the coach's few days were lost among the rest of what it spent (40 careers: two more hired, spending not
+  // measurably different); on the feature they run the length of the lead's shoot.
+  { id: 'dialogue-french', features: [F('?', 2)], decision: 'Write the feature\'s dialogue in French', reads: ['src/engine/production/language.ts#personLanguagesFit', 'src/engine/finish.ts#versionLanguages'],
+    base: { project: feature() }, variant: { project: inFrench }, bites: ['hired'], downstream: ['spent', 'ownIn'] },
   // A story set in another country than the base is researched before design and costumes (projects.ts deriveRequirements).
   { id: 'setting-abroad', features: [F('"Story Setting Place"'), 'field:ScriptViews.tsx#"Story Setting Place"#1'], decision: 'Set the short in Paris, made from London', reads: ['src/engine/projects.ts#deriveRequirements', 'src/engine/production/tasks.ts#buildTasks'],
     variant: { project: short({ axes: { settingPlaceId: 'fr-paris' } }) }, bites: ['spent'], downstream: ['hired', 'ownIn'] },

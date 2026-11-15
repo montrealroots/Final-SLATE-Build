@@ -8,6 +8,7 @@ import { canApproach, consideredOn, isReal, jobsOf, realPerson } from './guests'
 import { AGREEMENT_NAME, performerMinimum } from './union';
 import { needsMakeupCrew, physicalCrowd } from './looks';
 import { cancel, commit, ledgerTotals, money, obligation, reserve, settle, FundsError } from './budget';
+import { financeSummary } from './finance';
 import { genre } from './genres';
 import { COMBINES, candidates, countryLanguage, covers, isAvailable, personById, role, roleLabel, type Person } from './people';
 import { buildTasks, coachingNeeded, estimatedShootDays, planShootDays } from './production';
@@ -566,7 +567,11 @@ export function proposeStaffing(state: GameState, p: Project, dept: string): { p
   // Staffing can only hire someone free: a role no one free can take is the estimate's uncertainty, not money to find now.
   const crew = plan.filter((x) => !x.noCandidate).reduce((a, x) => a + x.cost, 0);
   if (crew > available) {
-    if (plan.some((x) => x.nr.dept === dept)) skipped.push(`The required crew still to hire costs about ${money(crew)} at the lowest rates, and ${money(available)} is uncommitted. Raise the rest before staffing, or cut scope.`);
+    // With the target already promised, nothing more can be put in until the target is raised (personal.ts putInRefusal:
+    // "nothing left to raise"). Until November 15, 2026 this said to raise the rest either way, and a film shot somewhere
+    // dearer than its estimate, its target met, was a dead end for a player who did as it said (docs/v10/proof/new-planned-budget.json).
+    const how = financeSummary(p).stillToRaise > 0 ? 'Raise the rest before staffing, or cut scope.' : 'Your financing target is already promised: raise the target on the Budget page and the money for it, or cut scope.';
+    if (plan.some((x) => x.nr.dept === dept)) skipped.push(`The required crew still to hire costs about ${money(crew)} at the lowest rates, and ${money(available)} is uncommitted. ${how}`);
     return { proposals, skipped };
   }
   let budget = available;

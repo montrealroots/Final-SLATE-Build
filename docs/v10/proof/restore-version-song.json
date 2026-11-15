@@ -452,7 +452,7 @@
  "verdict": "proven",
  "hashes": {
   "src/engine/song-actions.ts": "6c8e9ec0751613f6",
-  "src/engine/production/tasks.ts": "ebc0367de7aa3be2",
+  "src/engine/production/tasks.ts": "3717ecfff7839e82",
   "tests/proof/career.ts": "50bea06f19a02c5b"
  }
 }
