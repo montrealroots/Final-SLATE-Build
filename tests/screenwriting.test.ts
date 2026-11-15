@@ -35,15 +35,43 @@ describe('modeled script quality cannot be manufactured', () => {
     expect(after).toBeLessThan(75);
   });
 
-  it('your own notes and repeated revision passes add nothing', () => {
+  it('your own notes on no problem, and repeated revision passes, add nothing', () => {
     const { s, p } = mystery('sw-passes');
     const before = script(s, p);
     for (let round = 0; round < 3; round++) {
-      for (let i = 0; i < 4; i++) setNoteStatus(p, addNote(s, p, `Make it better ${round}-${i}`, 'pacing', null).id, 'accepted');
+      for (let i = 0; i < 4; i++) setNoteStatus(p, addNote(s, p, `Make it better ${round}-${i}`, 'dialogue', null).id, 'accepted');
       revise(s, p);
     }
     expect(p.revisionPasses).toBe(3);
     expect(script(s, p)).toBe(before);
+  });
+
+  it('a note of your own on a problem the checks flag counts once that problem is revised and resolved; one on nothing counts nothing', () => {
+    const { s, p } = mystery('sw-own');
+    const issue = scriptIssues(p).find((i) => i.text === 'Add the clues your audience can follow.')!;
+    expect(issue.area).toBe('structure');
+    const before = script(s, p);
+    // On the whole script, in the area of a real problem: it is on that problem. One on dialogue, where nothing is flagged, isn't.
+    const mine = addNote(s, p, 'The audience needs clues to follow the ledger.', 'structure', null);
+    const idle = addNote(s, p, 'Sharper lines for Vera.', 'dialogue', null);
+    expect(mine.onIssue).toBe(issue.text);
+    expect(idle.onIssue).toBeUndefined();
+    for (const n of [mine, idle]) setNoteStatus(p, n.id, 'accepted');
+    revise(s, p);
+    expect(script(s, p)).toBe(before); // addressed, but the problem is still in the script
+    p.setups.push({ id: 'su1', kind: 'clue', label: 'The torn receipt', plantedIn: p.scenes[0].id, paidIn: p.scenes[1].id } as Project['setups'][number]);
+    approve(s, p);
+    const resolved = script(s, p);
+    // The same fix with only the note on nothing: the clue still counts as structure, but not the note on it.
+    const other = mystery('sw-own');
+    const idle2 = addNote(other.s, other.p, 'Sharper lines for Vera.', 'dialogue', null);
+    setNoteStatus(other.p, idle2.id, 'accepted');
+    revise(other.s, other.p);
+    other.p.setups.push({ id: 'su1', kind: 'clue', label: 'The torn receipt', plantedIn: other.p.scenes[0].id, paidIn: other.p.scenes[1].id } as Project['setups'][number]);
+    approve(other.s, other.p);
+    expect(resolved).toBeGreaterThan(script(other.s, other.p));
+    // A second note on the same problem is on nothing: each problem counts once.
+    expect(addNote(s, p, 'Clues again.', 'structure', null).onIssue).toBeUndefined();
   });
 
   it('a readiness check counts only once revised and actually resolved in the script', () => {

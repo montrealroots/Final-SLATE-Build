@@ -34,6 +34,8 @@ const actingMeasure = (s: GameState) => {
     leadEntries: mine.filter((x) => x.r === 'lead').length,
     supportingEntries: mine.filter((x) => x.r === 'supporting').length,
     actingHonours: mine.filter((x) => ACTING.includes(x.r ?? '') && ['selected', 'nominated', 'won', 'mention'].includes(x.e.status)).length,
+    // Entries the members or jury went on to decide (nominated or not), after the deadline: the judging that follows.
+    actingDecided: mine.filter((x) => ACTING.includes(x.r ?? '') && ['nominated', 'not-nominated', 'selected', 'not-selected', 'won', 'lost', 'mention'].includes(x.e.status)).length,
     entryFees: mine.reduce((a, x) => a + x.e.fee, 0),
   };
 };
@@ -101,7 +103,7 @@ export const PROBES: Probe[] = [
   // cost, which the size was never meant to set).
   { id: 'lead-role-size', features: [field('ScriptViews.tsx', 'Role Size')], decision: 'Write the lead as a supporting part', reads: ['src/engine/script-effects.ts#castPlacement', 'src/engine/awards.ts#creditedRecipients'],
     seeds: 30, base: { years: 3, daily: enterActing, project: feature() }, variant: { years: 3, daily: enterActing, project: feature({ roleSize: 'supporting' }) },
-    measure: actingMeasure, bites: ['leadEntries'], downstream: ['supportingEntries', 'actingHonours', 'entryFees'] },
+    measure: actingMeasure, bites: ['leadEntries'], downstream: ['actingDecided', 'actingHonours', 'supportingEntries'] },
   { id: 'light-contrast', features: [field('ScriptViews.tsx', 'The Light It Is Shot In')], decision: 'Shoot it in high-contrast light', reads: ['src/engine/craft.ts#craftTime'],
     variant: { project: short({ axes: { light: 'contrast' } }) }, bites: ['spent'], downstream: ['money', 'daysToDeliver', 'quality.craft'] },
   { id: 'logline-missing', features: [field('ScriptViews.tsx', 'Logline')], decision: 'Leave the logline unwritten (backers read the pitch)', reads: ['src/engine/script-effects.ts#documentsNeeded'],

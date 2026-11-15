@@ -28,7 +28,6 @@ const bestOther = (s: GameState, kind: 'savings' | 'current') => {
 };
 /** A million in savings at your own bank, on the first day it can be done. */
 const saveMillion = once((s) => { bank(s, 'bank.transfer', { fromId: current(s), toId: savings(s), amount: TERM }); });
-const another = (s: GameState) => { const here = bankSim(s.bank!).player.currentLocationId; const mineBanks = new Set(mine(s).map((a) => a.bankId)); return banksFor(here).find((b) => !mineBanks.has(b.id))!.id; };
 
 const TERM = 1_000_000_00; // a million in the bank's money
 /** The standing order each career adds, by id, so it can be cancelled. */
@@ -123,22 +122,22 @@ export const PROBES: Probe[] = [
   {
     id: 'open-current',
     features: ['bank:bank.open_current'],
-    // At the bank here whose current account pays most, with a million moved there (until November 14, 2026 the account
-    // was opened and left empty, so it could change nothing).
-    decision: 'Open a current account at the bank here that pays most on one, and move a million to it',
-    reads: ['src/engine/bankworld/systems/bankmoves.ts#registerBankMoves', 'src/engine/bankworld/systems/banking.ts#rateOn'],
-    variant: { daily: once((s) => {
-      const to = bestOther(s, 'current') ?? another(s);
-      if (!mine(s).some((x) => x.kind === 'checking' && x.bankId === to)) bank(s, 'bank.open_current', { bankId: to });
-      const id = mine(s).find((x) => x.kind === 'checking' && x.bankId === to)?.id;
-      if (!id) throw new Error('not open yet');
-      bank(s, 'bank.transfer', { fromId: current(s), toId: id, amount: TERM });
+    // A life in Paris, where a current account has a monthly fee (La Banque Postale's, Crédit Agricole's: no waiver).
+    // In London no bank in the data charges for one or pays on one, so a second there changed nothing (until November
+    // 14, 2026 the probe was there).
+    decision: 'In Paris, open a second current account at a bank whose monthly fee nothing waives',
+    reads: ['src/engine/bankworld/systems/bankmoves.ts#registerBankMoves', 'src/engine/bankworld/systems/accountlife.ts#registerAccountLife'],
+    base: { placeId: 'fr-paris' },
+    variant: { placeId: 'fr-paris', daily: once((s) => {
+      const here = bankSim(s.bank!).player.currentLocationId;
+      const mineBanks = new Set(mine(s).map((a) => a.bankId));
+      const to = banksFor(here).filter((b) => !mineBanks.has(b.id) && (b.current?.monthlyFee ?? 0) > 0 && !b.current?.waiver).sort((x, y) => (y.current?.monthlyFee ?? 0) - (x.current?.monthlyFee ?? 0))[0];
+      if (!to) throw new Error('no such bank here');
+      bank(s, 'bank.open_current', { bankId: to.id });
     }) },
     measure: bankMeasures,
     bites: ['accounts'],
-    // Not 'money': moving a million out of the account SLATE pays from lowers it by the transfer itself, which is no
-    // consequence of the account.
-    downstream: ['interestIn', 'bankFees', 'worth'],
+    downstream: ['bankFees', 'worth'],
   },
   {
     id: 'switch-bank',

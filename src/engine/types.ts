@@ -504,6 +504,8 @@ export interface RevisionNote {
   source: 'readiness' | 'player';
   /** Came from advice (a prompt that only checks a text field is filled, or a fit suggestion): addressing it earns nothing (finish.ts). */
   advisory?: boolean;
+  /** A note of your own on a problem the readiness checks flagged when it was written (its scene and area): that check. */
+  onIssue?: string;
 }
 
 export interface Requirement {

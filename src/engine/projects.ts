@@ -850,9 +850,22 @@ export function workingCopyDiffersFromLatestDraft(p: Project): boolean {
 
 // ---------------- Revision passes (take scheduled time) ----------------
 
+/** The revision note area a readiness check's area is filed under. */
+const noteArea = (area: string): RevisionNote['area'] => (area === 'production' ? 'continuity' : area === 'genre' ? 'structure' : area) as RevisionNote['area'];
+
+/**
+ * A note of your own. Where its area, and its scene or the whole script, is where the readiness checks flag a problem
+ * now (not advice), it is on that problem, and counts as the check's own note does once a revision addresses it and the check is gone (finish.ts; the
+ * owner's choice of November 14, 2026: until then your notes counted for nothing, so that writing notes couldn't buy a
+ * score). A note on no problem still counts for nothing: the problem is what counts, once, however many notes name it.
+ */
 export function addNote(state: GameState, p: Project, text: string, area: RevisionNote['area'], sceneId: string | null): RevisionNote {
   if (!text.trim()) throw new Error('Write the note first.');
-  const n: RevisionNote = { id: newId(state, 'n'), text: text.trim(), area, sceneId, status: 'open', source: 'player' };
+  // In the same area, and on the same scene where the check names one (a check on the whole script, by a note naming no
+  // scene); the first such problem no other note is already on.
+  const taken = new Set(p.notes.filter((n) => n.status !== 'addressed' && n.status !== 'rejected').map((n) => (n.source === 'readiness' ? n.text : n.onIssue)));
+  const issue = scriptIssues(p).find((i) => i.severity === 'note' && !i.advisory && noteArea(i.area) === area && (i.sceneId ?? null) === sceneId && !taken.has(i.text));
+  const n: RevisionNote = { id: newId(state, 'n'), text: text.trim(), area, sceneId, status: 'open', source: 'player', ...(issue ? { onIssue: issue.text } : {}) };
   p.notes.push(n);
   return n;
 }
@@ -865,7 +878,7 @@ export function noteFromIssue(state: GameState, p: Project, text: string): Revis
   const issue = scriptIssues(p).find((i) => i.text === text && i.severity === 'note');
   if (!issue) throw new Error('That readiness check no longer applies.');
   if (p.notes.some((n) => n.source === 'readiness' && n.text === text && n.status !== 'addressed')) throw new Error('That check is already in your revision notes.');
-  const n: RevisionNote = { id: newId(state, 'n'), text, area: issue.area === 'production' ? 'continuity' : issue.area === 'genre' ? 'structure' : issue.area, sceneId: issue.sceneId ?? null, status: 'open', source: 'readiness', ...(issue.advisory ? { advisory: true } : {}) };
+  const n: RevisionNote = { id: newId(state, 'n'), text, area: noteArea(issue.area), sceneId: issue.sceneId ?? null, status: 'open', source: 'readiness', ...(issue.advisory ? { advisory: true } : {}) };
   p.notes.push(n);
   return n;
 }

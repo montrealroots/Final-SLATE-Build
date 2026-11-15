@@ -14,7 +14,7 @@ import type { Audition, GameState, Project } from '../../../src/engine/types';
 
 const READERS = 4;
 /** The money raised first, from your own account as the career raises it, so offers can be made before the career's casting. */
-const fund = (s: GameState, p: Project) => { const need = financeSummary(p).stillToRaise; if (need > 0) putInOwnMoney(s, p, need); };
+export const fund = (s: GameState, p: Project) => { const need = financeSummary(p).stillToRaise; if (need > 0) putInOwnMoney(s, p, need); };
 /** The speaking parts, and for each the cheapest few adults free for the production, as the career's casting chooses. */
 const parts = (s: GameState, p: Project) => {
   const win = productionWindow(s, p);
@@ -24,7 +24,7 @@ const parts = (s: GameState, p: Project) => {
 };
 const mid = (a: Audition) => (a.read ? (a.read[0] + a.read[1]) / 2 : -1);
 /** Invite the cheapest READERS to read for each part (each person reads for one part), and wait for the sessions. */
-const audition = (s: GameState, p: Project) => {
+export const audition = (s: GameState, p: Project) => {
   const asked = new Set<string>();
   for (const { c, pool } of parts(s, p)) {
     for (const x of pool.filter((y) => !asked.has(y.id)).slice(0, READERS)) { try { inviteToAudition(s, p, c.id, 'on-camera', x.id); asked.add(x.id); } catch { /* can't come: the next */ } }
@@ -32,7 +32,7 @@ const audition = (s: GameState, p: Project) => {
   processUntil(s, s.now + 7 * DAY, 'tick', 1_000_000);
 };
 /** Offer each part to the best read seen for it, at their asking rate. Parts nobody read for are cast as the career does. */
-const castBest = (s: GameState, p: Project) => {
+export const castBest = (s: GameState, p: Project) => {
   for (const { c } of parts(s, p)) {
     const seen = (p.auditions ?? []).filter((a) => a.characterId === c.id && a.status === 'seen').sort((a, b) => mid(b) - mid(a));
     for (const a of seen) { try { makeOffer(s, p, { personId: a.personId, roleId: 'actor', dayRate: personById(s, a.personId, 'actor').dayRate, characterId: c.id, method: 'on-camera' }); break; } catch { /* clash or funds: the next */ } }

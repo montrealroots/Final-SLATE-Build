@@ -102,10 +102,26 @@ Run the proofs with `npm run proof` (`PROBES=id,id` for some, `SEEDS=n` to chang
   million); the first-look overhead paid; a writer's revision at 80 seeds (its days paid); festival openings and
   announcements by the screenings and buyers' offers they bring. A second current account stays open: no London bank in
   the data pays interest on one or charges for it.
+- **How You Pay paid for nothing.** SLATE's purchases (equipment bought or serviced, papers' fees) came out of the current
+  account whatever How You Pay said, so a credit card, the setting and cash in hand had no use. Fixed: they are paid as
+  1221's day's spending was, in cash first, on the credit card first or by debit card, with the card's hold, the bank's
+  purchase fees and round-ups (`bankworld/systems/spending.ts isEveryday`, `tests/v10-bank-currency.test.ts`). A camera
+  bought on the card is paid from the current account a statement later.
+- **A second current account** is proven in Paris, where La Banque Postale's monthly fee has no waiver (€10.81); no London
+  bank in the data charges or pays on one.
+- **A season's audience** is proven on a commissioned series that airs: without the weeks it is watched, the commissioner
+  waits 55 days longer to decide and renews fewer seasons. The career's shorts were never aired, so nothing read it.
+- **A part's size** is proven by the judging it reaches: written as supporting, the lead leaves the European Film Awards'
+  actor category (the one acting category a London feature can enter), and three entries a career are never judged.
+- **Record-keeping, not features:** a job offer lapsing and a proposal expiring only mark them for your list; the deadline
+  is enforced when you answer, and nothing else reads the mark (`docs/v10/not-features.json`).
 - **Open, a decision for the owner:** what a writer's revision should look at (Structure, Dialogue, Pace and the rest) is
   a choice the game reads nowhere. It is left open in the matrix, not carried.
-- **By design, not fixed:** notes you write yourself change no assessment (`finish.ts`: quality can't be manufactured by
-  writing notes); they're for your own process.
+- **Your own notes count on a real problem** (the owner's choice, November 14, 2026). A note of yours in the area of a
+  problem the readiness checks flag, on its scene or the whole script, is on that problem, and counts as the check's own
+  note does once a revision addresses it and the problem is fixed. Each problem counts once; a note on nothing counts
+  nothing, so writing notes still can't buy a score (`projects.ts addNote`, `finish.ts`, `tests/screenwriting.test.ts`).
+  Until then your notes counted for nothing.
 - **The harness's own faults**, found and fixed before any result was kept: the backer kind was misnamed; a run-once flag
   was shared across seeds; the test helper's fixture money was taken out of played careers.
 

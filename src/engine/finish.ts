@@ -240,11 +240,12 @@ export function assessQuality(state: GameState, p: Project, episode?: number): R
   const episodeOf = (id: string | null) => allApproved.find((s) => s.id === id)?.episode;
   const mine = p.setups.filter((x) => episode === undefined || inEp(episodeOf(x.plantedIn)) || inEp(episodeOf(x.paidIn)));
   const setups = mine.length ? mine.filter((x) => x.plantedIn && x.paidIn && cutIds.has(x.plantedIn) && cutIds.has(x.paidIn)).length / mine.length : 0.6;
-  // Only notes the readiness checks raised count, once a revision pass has addressed them. Notes you write yourself are
-  // for your own process, and a pass with nothing to address adds nothing: repeating passes can't manufacture quality.
-  // ...and only when the check it came from is gone from the script's readiness checks, and wasn't advice.
+  // A problem the readiness checks raised counts once a revision pass has addressed a note on it and the check is gone
+  // from the script, and wasn't advice: the check's own note, or one of yours written on it (projects.ts addNote, from
+  // November 14, 2026; until then yours counted for nothing). Each problem counts once, and a note on no problem counts
+  // nothing, so a pass with nothing to address adds nothing: repeating passes can't manufacture quality.
   const open = new Set(issues.map((i) => i.text));
-  const addressed = p.notes.filter((n) => n.status === 'addressed' && n.source === 'readiness' && !n.advisory && !open.has(n.text)).length;
+  const addressed = new Set(p.notes.filter((n) => n.status === 'addressed' && !n.advisory).map((n) => (n.source === 'readiness' ? n.text : n.onIssue)).filter((t): t is string => !!t && !open.has(t))).size;
   // Writing help counts for the passes the player accepted, each as it was delivered (writing-jobs.ts). On a project
   // from before November 11, 2026 it is anyone hired to help, at their level, as it was.
   const writerHelp = p.writing
