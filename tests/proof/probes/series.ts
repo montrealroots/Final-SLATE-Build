@@ -101,15 +101,17 @@ const uneven = (s: GameState, year: number): Project => {
   updateScene(p, extra.id, { heading: { intExt: 'INT', place: 'Boathouse', time: 'DAY' }, storyLocation: 'Boathouse', participants: [...ep2.participants], objective: 'Move the story forward.', action: 'Action.', estMinutes: 3 } as never);
   return p;
 };
-const audienceOf = (p: Project) => p.offers.flatMap((o) => o.audience ?? []).reduce((a, x) => a + (x.metric === 'views' ? 0 : x.value), 0);
+const audienceOf = (p: Project, metric: 'hours' | 'viewers') => p.offers.flatMap((o) => o.audience ?? []).reduce((a, x) => a + (x.metric === metric ? x.value : 0), 0);
 PROBES.push({
   id: 'move-episode', features: ['action:season.moveEpisode'], decision: 'Put the longer episode first',
   reads: ['src/engine/season.ts#moveEpisode', 'src/engine/audiences.ts#observeWeek'],
   base: { ...SERIES, project: uneven }, variant: { ...SERIES, project: uneven, decide: (_s, p) => moveEpisode(p, 2, -1) },
   measure: (_s, projects) => ({
     firstEpisodeMinutes: projects.reduce((a, p) => a + p.scenes.filter((x) => x.episode === 1).reduce((b, x) => b + x.estMinutes, 0), 0),
-    audience: projects.reduce((a, p) => a + audienceOf(p), 0),
+    // Streaming hours (each episode's from its own first day) and broadcast viewers (each kept from the one before), apart.
+    hours: projects.reduce((a, p) => a + audienceOf(p, 'hours'), 0),
+    viewers: projects.reduce((a, p) => a + audienceOf(p, 'viewers'), 0),
     renewed: projects.filter((p) => p.renewal?.outcome === 'renewed').length,
   }),
-  bites: ['firstEpisodeMinutes'], downstream: ['audience', 'renewed'],
+  bites: ['firstEpisodeMinutes'], downstream: ['hours', 'viewers', 'renewed'],
 });
