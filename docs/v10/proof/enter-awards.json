@@ -1,7 +1,8 @@
 {
  "id": "enter-awards",
  "features": [
-  "action:awards-actions.submitEntry"
+  "action:awards-actions.submitEntry",
+  "field:FinishViews.tsx#\"Project\"#2"
  ],
  "decision": "Enter your finished films in the festivals and awards they qualify for",
  "reads": [

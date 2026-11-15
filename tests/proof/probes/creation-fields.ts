@@ -9,7 +9,7 @@ import { CG } from './plan-fields';
 
 const C = (label: string) => `field:Creation.tsx#${label}#1`;
 /** Before the money is raised: the player cast as the lead, on camera. */
-const castSelf = (s: GameState, p: Project) => { const c = p.characters.find((x) => x.name === 'Lead'); if (c && !p.cast.some((x) => x.characterId === c.id)) try { castPlayer(s, p, c.id, 'on-camera'); } catch { /* not castable */ } };
+export const castSelf = (s: GameState, p: Project) => { const c = p.characters.find((x) => x.name === 'Lead'); if (c && !p.cast.some((x) => x.characterId === c.id)) try { castPlayer(s, p, c.id, 'on-camera'); } catch { /* not castable */ } };
 /** The default short written in French, its lead a French speaker. */
 const FRENCH = short({ axes: { dialogueLanguages: ['fr'] }, lead: { languages: ['fr'] } });
 /** startLife's languages (helpers.ts) with French at `level`. */

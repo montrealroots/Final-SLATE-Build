@@ -27,12 +27,12 @@ const deliverOne = (s: GameState) => {
   }
 };
 /** Before the money is raised: the best episode director asked at their rate; once they accept, episode 2 is theirs. */
-const hireDirector = (s: GameState, p: Project) => {
+export const hireDirector = (s: GameState, p: Project) => {
   fund(s, p);
   const best = [...roleCandidates(s, p, 'episode-director')].sort((a, b) => b.capability - a.capability)[0];
   if (best) try { makeOffer(s, p, { personId: best.id, roleId: 'episode-director', dayRate: best.dayRate }); } catch { /* not this one */ }
 };
-const assignDirector = (s: GameState) => {
+export const assignDirector = (s: GameState) => {
   for (const p of live(s)) {
     const h = p.hires.find((x) => x.roleId === 'episode-director' && x.status === 'accepted');
     const e = p.episodes.find((x) => x.number === 2);

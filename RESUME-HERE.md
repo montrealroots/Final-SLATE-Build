@@ -144,15 +144,27 @@ and the rest) with real grades filling the hiring lists.
   genre as a string, which the engine doesn't read (genres are `{ id, emphasis }`).
 - Explained, not proven: the music spending ceiling with Guide Me (the career staffs by hand either way).
 - Carried as a credit: who sings a song (the Song Performed By credit and the casting note; nothing else reads it).
-- The matrix: open 136 at PR #100's merge -> 41, every result fresh.
+- The matrix: open 136 at PR #100's merge -> 41 at PR #101's.
 
-**Next.** The 41 open: the eleven bank commands a $25m career never reaches (collections, overdrafts, disputes,
-hardship), and an episode delivered, locked or moved early (a release planned while the season is in production);
-episode release fields (schedule, premiere, later episodes) and the release's date, territory and cut; the awards
-entry fields (project, episode, version, performer); When It Is Set and the subject categories; unscripted format,
-competitors and who leaves; a chemistry read (drafted in the scratchpad, not run); heard-only time; a stage's episode and its
-scenes; a version's scenes; pickups; Place Of Birth, the player's pronouns, observances kept and the starting hour;
-an idea's characters ticked; the idea beats' interior or exterior.
+- After PR #101 (open 41 -> 18), proven at forty careers: a chemistry read (cast on chemistry over the read, the pair
+  plays better and the film worse: at half weight it is worth less than the better read), heard-only time, a declared
+  subject, when a season is set (an American one-hour season, the Emmys' period crafts), the episode schedule, the
+  number on the premiere and a later episode's date (a British season from December 25: the International Emmys count
+  the year most episodes aired), place of birth (European Film Awards), She/Her pronouns (actress categories), a stage
+  given an episode, pickups of every scene, which cut is released, the release date, the version, performer and episode
+  an entry is for, the project (enter-awards), the unscripted format family and who leaves each episode, and a route's
+  offered scene. Who competes among enough is explained: nothing outside the competition reads it.
+- Fixed this round: asking for pickups is refused when their days can't be paid (`edit-actions.ts pickupDaysCost`);
+  before, the scenes were marked half-shot first, a day lost for money left them so, and the film never delivered. The
+  screen shows what the ticked pickups cost.
+- A release you plan yourself with no distributor earns nothing (money comes through a deal or your own release plan);
+  what its date and cut decide is the awards it may enter.
+
+**Next.** The 18 open: the eleven bank commands a $25m career never reaches (overdrafts, collections, an overrun loan,
+a dormant account and unclaimed money, a new number, alerts, a card's dispute, hardship plan and automatic raises),
+each needing a career short of money or long enough to go dormant; an episode delivered, locked or moved early, which
+bite but move nothing measured after (`deliverEpisode`, `lockEpisode`, `moveEpisode`); and four explained (the
+starting hour, holidays kept, the music ceiling with Guide Me, who competes).
 
 ## The Owner's Command Of November 14, 2026 (Later): Every Feature Proven, Everything Possible
 

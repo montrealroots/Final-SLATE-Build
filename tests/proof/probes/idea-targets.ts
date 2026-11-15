@@ -22,6 +22,14 @@ const named = (p: Project, ...names: string[]) => p.characters.filter((c) => nam
 const disguise = (...names: string[]) => withIdea((s, p) => { applyIdea(s, p, idea('creature_rule.009'), { characterIds: named(p, ...names) }); });
 const slapstick = (...places: string[]) => withIdea((s, p) => { applyIdea(s, p, idea('comedy_treatment.004'), { sceneIds: p.scenes.filter((x) => places.includes(x.heading.place)).map((x) => x.id) }); });
 
+/** The short given the romance route "Letters", its offered scenes ticked by index; a scene added is given its action. */
+const letters = (beats: number[]) => (s: GameState, year: number): Project => {
+  const p = short()(s, year);
+  const before = new Set(p.scenes.map((x) => x.id));
+  applyIdea(s, p, idea('route.romance-letters'), { beats });
+  for (const sc of p.scenes.filter((x) => !before.has(x.id))) sc.action = 'A letter is written, and nearly not sent.';
+  return p;
+};
 /** The short, its tone "quiet and tender", given "Mistaken Identity" (a tone) with the tone kept or not. */
 const farce = (keep: string[]) => (s: GameState, year: number): Project => {
   const p = short({ axes: { tone: 'quiet and tender' } })(s, year);
@@ -39,4 +47,8 @@ export const PROBES: Probe[] = [
   { id: 'idea-keep-tone', features: [I('{`Keep My ${o.label}`}')], decision: 'Keep your own tone when applying "Mistaken Identity", then take the music brief it proposes', reads: ['src/engine/brief.ts#applyIdea', 'src/engine/cues.ts#proposeBrief'],
     base: { project: farce([]), decide: takeBrief, daily: reviewThemes(0) }, variant: { project: farce(['tone']), decide: takeBrief, daily: reviewThemes(0) }, measure: scoreMeasure,
     bites: ['chamber'], downstream: ['spent', 'daysToDeliver'] },
+  // Each offered scene ticked is added to the script (brief.ts applyIdea; projects.ts addScene): a night at a desk, a
+  // place and a shoot day of its own.
+  { id: 'idea-beat', features: [I("{`${b.intExt === 'EXT' ? 'Exterior' : 'Interior'}")], decision: 'Apply the route "Letters" with its desk scene ticked, rather than none of its scenes', reads: ['src/engine/brief.ts#applyIdea', 'src/engine/projects.ts#addScene'],
+    base: { project: letters([]) }, variant: { project: letters([0]) }, bites: ['shootDays'], downstream: ['spent', 'daysToDeliver'] },
 ];

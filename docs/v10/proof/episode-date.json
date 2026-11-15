@@ -1,0 +1,526 @@
+{
+ "id": "episode-date",
+ "features": [
+  "field:FinishViews.tsx#{`Episode ${i + 2}`}#1"
+ ],
+ "decision": "Hold the second and third episodes until the spring, a break that splits the season",
+ "reads": [
+  "src/engine/episode-releases.ts#episodeDateProblem",
+  "src/engine/awards-rules.ts#requirementProblems"
+ ],
+ "seeds": 40,
+ "base": {
+  "delivered": 3,
+  "released": 3,
+  "reception": 59.05,
+  "overall": 59.325,
+  "gross": 0,
+  "revenue": 0,
+  "distributed": 0,
+  "money": 24546224.39,
+  "moneyChange": -453775.61,
+  "jobsTaken": 1.35,
+  "jobsOffered": 1.35,
+  "jobPay": 8694.8,
+  "offeredDayRate": 609.667,
+  "ownIn": 306300,
+  "backerIn": 120000,
+  "backerDeals": 3,
+  "leftInProjects": 0,
+  "jobsDone": 1.275,
+  "jobsWithdrawn": 0,
+  "jobsDeclined": 0,
+  "ratesAgreed": 0,
+  "logLines": 400,
+  "hired": 21,
+  "castRates": 2389.25,
+  "releaseDelay": 215.9,
+  "licenceDeals": 0,
+  "licenceFee": 0,
+  "offersDeclined": 0,
+  "countersSeen": 0,
+  "countersDeclined": 0.075,
+  "spent": 497742.5,
+  "shootDays": 81.575,
+  "lostDays": 3,
+  "daysToDeliver": 131.1,
+  "quality.script": 48,
+  "quality.direction": 67.992,
+  "quality.craft": 59.883,
+  "quality.editing": 57.133,
+  "quality.music": 58.9,
+  "standing.writing": 49,
+  "standing.directing": 58.55,
+  "standing.acting": 50,
+  "standing.producing": 57.15,
+  "entries": 35.65,
+  "entryFees": 790.5,
+  "selected": 2.1,
+  "decided": 25.25,
+  "comedyEntries": 0,
+  "adaptedEntries": 0,
+  "childrenEntries": 0,
+  "periodEntries": 0,
+  "emmyEntries": 2,
+  "emmyYears": 3,
+  "fired": 0
+ },
+ "variant": {
+  "delivered": 3,
+  "released": 3,
+  "reception": 59.575,
+  "overall": 59.292,
+  "gross": 0,
+  "revenue": 0,
+  "distributed": 0,
+  "money": 24547194.439,
+  "moneyChange": -452805.56,
+  "jobsTaken": 1.575,
+  "jobsOffered": 1.575,
+  "jobPay": 9798.85,
+  "offeredDayRate": 724.646,
+  "ownIn": 306300,
+  "backerIn": 120000,
+  "backerDeals": 3,
+  "leftInProjects": 0,
+  "jobsDone": 1.475,
+  "jobsWithdrawn": 0,
+  "jobsDeclined": 0,
+  "ratesAgreed": 0,
+  "logLines": 400,
+  "hired": 21,
+  "castRates": 2389.25,
+  "releaseDelay": 215.808,
+  "licenceDeals": 0,
+  "licenceFee": 0,
+  "offersDeclined": 0,
+  "countersSeen": 0,
+  "countersDeclined": 0.1,
+  "spent": 497926,
+  "shootDays": 81.575,
+  "lostDays": 3,
+  "daysToDeliver": 131.192,
+  "quality.script": 48,
+  "quality.direction": 67.917,
+  "quality.craft": 59.908,
+  "quality.editing": 57.133,
+  "quality.music": 58.9,
+  "standing.writing": 49,
+  "standing.directing": 58.575,
+  "standing.acting": 50,
+  "standing.producing": 57.1,
+  "entries": 34.675,
+  "entryFees": 790.5,
+  "selected": 2.05,
+  "decided": 24.275,
+  "comedyEntries": 0,
+  "adaptedEntries": 0,
+  "childrenEntries": 0,
+  "periodEntries": 0,
+  "emmyEntries": 1,
+  "emmyYears": 2,
+  "fired": 0
+ },
+ "diff": {
+  "delivered": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 40
+  },
+  "released": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 40
+  },
+  "reception": {
+   "mean": 0.525,
+   "lo": -1.12,
+   "hi": 2.17,
+   "changed": 40,
+   "n": 40
+  },
+  "overall": {
+   "mean": -0.033,
+   "lo": -0.13,
+   "hi": 0.064,
+   "changed": 26,
+   "n": 40
+  },
+  "gross": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 40
+  },
+  "revenue": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 40
+  },
+  "distributed": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 40
+  },
+  "money": {
+   "mean": 970.05,
+   "lo": -2135.553,
+   "hi": 4075.653,
+   "changed": 38,
+   "n": 40
+  },
+  "moneyChange": {
+   "mean": 970.05,
+   "lo": -2135.553,
+   "hi": 4075.653,
+   "changed": 38,
+   "n": 40
+  },
+  "jobsTaken": {
+   "mean": 0.225,
+   "lo": -0.044,
+   "hi": 0.494,
+   "changed": 23,
+   "n": 40
+  },
+  "jobsOffered": {
+   "mean": 0.225,
+   "lo": -0.044,
+   "hi": 0.494,
+   "changed": 23,
+   "n": 40
+  },
+  "jobPay": {
+   "mean": 1104.05,
+   "lo": -1854.269,
+   "hi": 4062.369,
+   "changed": 34,
+   "n": 40
+  },
+  "offeredDayRate": {
+   "mean": 114.979,
+   "lo": -15.852,
+   "hi": 245.811,
+   "changed": 33,
+   "n": 40
+  },
+  "ownIn": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 40
+  },
+  "backerIn": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 40
+  },
+  "backerDeals": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 40
+  },
+  "leftInProjects": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 40
+  },
+  "jobsDone": {
+   "mean": 0.2,
+   "lo": -0.056,
+   "hi": 0.456,
+   "changed": 23,
+   "n": 40
+  },
+  "jobsWithdrawn": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 40
+  },
+  "jobsDeclined": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 40
+  },
+  "ratesAgreed": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 40
+  },
+  "logLines": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 40
+  },
+  "hired": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 40
+  },
+  "castRates": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 40
+  },
+  "releaseDelay": {
+   "mean": -0.092,
+   "lo": -0.378,
+   "hi": 0.195,
+   "changed": 11,
+   "n": 40
+  },
+  "licenceDeals": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 40
+  },
+  "licenceFee": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 40
+  },
+  "offersDeclined": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 40
+  },
+  "countersSeen": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 40
+  },
+  "countersDeclined": {
+   "mean": 0.025,
+   "lo": -0.026,
+   "hi": 0.076,
+   "changed": 1,
+   "n": 40
+  },
+  "spent": {
+   "mean": 183.5,
+   "lo": -817.984,
+   "hi": 1184.984,
+   "changed": 24,
+   "n": 40
+  },
+  "shootDays": {
+   "mean": 0,
+   "lo": -0.311,
+   "hi": 0.311,
+   "changed": 22,
+   "n": 40
+  },
+  "lostDays": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 40
+  },
+  "daysToDeliver": {
+   "mean": 0.092,
+   "lo": -0.195,
+   "hi": 0.378,
+   "changed": 11,
+   "n": 40
+  },
+  "quality.script": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 40
+  },
+  "quality.direction": {
+   "mean": -0.075,
+   "lo": -0.271,
+   "hi": 0.121,
+   "changed": 29,
+   "n": 40
+  },
+  "quality.craft": {
+   "mean": 0.025,
+   "lo": -0.026,
+   "hi": 0.076,
+   "changed": 1,
+   "n": 40
+  },
+  "quality.editing": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 40
+  },
+  "quality.music": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 40
+  },
+  "standing.writing": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 40
+  },
+  "standing.directing": {
+   "mean": 0.025,
+   "lo": -0.272,
+   "hi": 0.322,
+   "changed": 9,
+   "n": 40
+  },
+  "standing.acting": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 40
+  },
+  "standing.producing": {
+   "mean": -0.05,
+   "lo": -0.631,
+   "hi": 0.531,
+   "changed": 27,
+   "n": 40
+  },
+  "entries": {
+   "mean": -0.975,
+   "lo": -1.026,
+   "hi": -0.924,
+   "changed": 39,
+   "n": 40
+  },
+  "entryFees": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 40
+  },
+  "selected": {
+   "mean": -0.05,
+   "lo": -0.176,
+   "hi": 0.076,
+   "changed": 6,
+   "n": 40
+  },
+  "decided": {
+   "mean": -0.975,
+   "lo": -1.026,
+   "hi": -0.924,
+   "changed": 39,
+   "n": 40
+  },
+  "comedyEntries": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 40
+  },
+  "adaptedEntries": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 40
+  },
+  "childrenEntries": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 40
+  },
+  "periodEntries": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 40
+  },
+  "emmyEntries": {
+   "mean": -1,
+   "lo": -1,
+   "hi": -1,
+   "changed": 40,
+   "n": 40
+  },
+  "emmyYears": {
+   "mean": -1,
+   "lo": -1,
+   "hi": -1,
+   "changed": 40,
+   "n": 40
+  },
+  "fired": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 40
+  }
+ },
+ "bites": [
+  {
+   "metric": "emmyYears",
+   "ok": true
+  }
+ ],
+ "downstream": [
+  {
+   "metric": "decided",
+   "ok": true
+  },
+  {
+   "metric": "emmyEntries",
+   "ok": true
+  }
+ ],
+ "verdict": "proven",
+ "hashes": {
+  "src/engine/episode-releases.ts": "7fd01a5dcda8b234",
+  "src/engine/awards-rules.ts": "9e27d96ba6ec918f",
+  "tests/proof/career.ts": "50bea06f19a02c5b"
+ }
+}

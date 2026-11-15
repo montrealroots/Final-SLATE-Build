@@ -14,6 +14,17 @@ const later = (age?: number) => (s: GameState, p: Project) => {
   const lead = approvedCharacters(p).find((c) => c.name === 'Lead');
   if (street && lead) addStage(s, p, { characterId: lead.id, label: 'Years Earlier', sceneIds: [street.id], episodes: [], ...(age !== undefined ? { age } : {}) });
 };
+/** Once the script is approved: Mara years later in the second episode, as a stage given the episode or its pier scene. */
+const olderIn = (episode: boolean) => (s: GameState, p: Project) => {
+  const mara = approvedCharacters(p).find((c) => c.name === 'Mara');
+  const pier = approvedScenes(p).find((x) => x.episode === 2 && x.heading.place === 'Pier');
+  if (mara && pier) addStage(s, p, { characterId: mara.id, label: 'Years Later', sceneIds: episode ? [] : [pier.id], episodes: episode ? [2] : [] });
+};
+/** The days booked for the stage's performer, and for the main one. */
+const stageDays = (_s: GameState, projects: Project[]) => {
+  const hired = projects.flatMap((p) => p.hires.filter((h) => h.status === 'accepted' && h.characterId && h.roleId === 'actor'));
+  return { stageDays: hired.filter((h) => h.stage).reduce((a, h) => a + h.estDays, 0), mainDays: hired.filter((h) => !h.stage).reduce((a, h) => a + h.estDays, 0) };
+};
 /** Before the money is raised: the season shot in blocks. */
 const blocks = (_s: GameState, p: Project) => { p.schedule.blockEpisodes = true; };
 
@@ -24,4 +35,9 @@ export const PROBES: Probe[] = [
   // Scenes at the same place in episodes with the same director share days (production/schedule.ts).
   { id: 'shoot-in-blocks', features: [P('"Shoot Episodes In Blocks"')], decision: 'Shoot the season\'s two episodes in a block, sharing days at the pier and the quay', reads: ['src/engine/production/schedule.ts#generatePlan'],
     base: SERIES, variant: { ...SERIES, decide: blocks }, bites: ['shootDays'], downstream: ['spent', 'daysToDeliver'] },
+  // A stage given an episode takes every scene of it (parts.ts stageIn): its performer is booked for them, the main
+  // performer for fewer (hiring.ts estimateDays). Mara years later in the season's second episode: all of it, or its pier
+  // scene alone.
+  { id: 'stage-episode', features: [P('{`Episode ${e}`}')], decision: 'Give the older Mara all of the second episode rather than its pier scene alone', reads: ['src/engine/parts.ts#stageIn', 'src/engine/hiring.ts#estimateDays'],
+    base: { ...SERIES, decide: olderIn(false) }, variant: { ...SERIES, decide: olderIn(true) }, measure: stageDays, bites: ['stageDays'], downstream: ['mainDays', 'spent'] },
 ];

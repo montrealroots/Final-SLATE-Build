@@ -76,3 +76,18 @@ export const PROBES: Probe[] = [
     bites: ['screenRecords', 'screenEntries'], downstream: ['screenFees', 'screenDecided', 'money'],
   },
 ];
+/** Once picture is locked: each performer's time recorded, heard for all but half a minute of every scene they're in (a voice over the pictures), or on screen throughout. */
+const heard = new WeakSet<Project>();
+const recordHeard = (s: GameState, p: Project) => {
+  if (!p.edit.pictureLocked || heard.has(p)) return;
+  for (const sc of editScenes(p)) for (const cid of sc.participants) recordScreenTime(s, p, sc.id, cid, 0.5, sc.estMinutes - 0.5);
+  heard.add(p);
+};
+PROBES.push({
+  // Heard-only time never counts as on screen (screen-time.ts screenTotal): a voice over the pictures doesn't meet a
+  // category's share of the running time, so the series isn't eligible for those categories.
+  id: 'heard-only', features: ['field:WorkViews.tsx#{`${c.name} Heard Only (Minutes)`}#1'], decision: 'Record Mara as heard, not seen, for all but half a minute of each scene, rather than on screen throughout',
+  reads: ['src/engine/screen-time.ts#screenTotal', 'src/engine/screen-time.ts#shareCheck', 'src/engine/awards.ts#checkEligibility'],
+  base: { ...RUN, beforeManage: record }, variant: { ...RUN, beforeManage: recordHeard }, measure,
+  bites: ['screenEntries'], downstream: ['screenFees', 'screenDecided', 'money'],
+});

@@ -1,7 +1,8 @@
 {
  "id": "stage-sets",
  "features": [
-  "action:locations-actions.chooseSite"
+  "action:locations-actions.chooseSite",
+  "field:PlanViews.tsx#{`Site For ${place}`}#1"
  ],
  "decision": "Shoot every scouted place on a stage set built to match",
  "reads": [
