@@ -11,5 +11,9 @@
  "scheduled:edition-deadline-soon": "A notice: it tells the player an entry deadline is near. The deadline that closes entries is its own system (edition-deadline), proven separately.",
  "scheduled:screening-reminder": "A notice: it tells the player a screening they were invited to is near. Attending is the screening itself and the RSVP, proven separately.",
  "scheduled:job-lapse": "Record-keeping: on an unanswered offer's last day it marks the offer lapsed, for your list and the record. The deadline itself is enforced when you answer (jobs.ts acceptRefusal: \"That offer has lapsed.\"), so with this event switched off an offer still can't be taken late; nothing else reads the mark (docs/v10/proof/off-job-lapse.json).",
- "scheduled:opportunity-expire": "Record-keeping: on an unanswered proposal's last day it marks it lapsed, for your list. The deadline is enforced when you answer (opportunities.ts acceptOpportunity checks expiresAt), so with this event switched off a proposal still can't be taken late; nothing else reads the mark (docs/v10/proof/off-opportunity-expire.json)."
+ "scheduled:opportunity-expire": "Record-keeping: on an unanswered proposal's last day it marks it lapsed, for your list. The deadline is enforced when you answer (opportunities.ts acceptOpportunity checks expiresAt), so with this event switched off a proposal still can't be taken late; nothing else reads the mark (docs/v10/proof/off-opportunity-expire.json).",
+ "action:hiring.castRoleFor": "Names the job a part's casting method is (performer or voice performer) inside an offer; the offer is its own row (hiring.makeOffer).",
+ "action:projects.renameDraft": "Names a draft; the name is shown in the draft list and nothing else reads it, as a label shouldn't be.",
+ "action:brief.saveIdea": "Keeps an idea on the player's shortlist in the idea picker (IdeaPicker.tsx); the idea itself is used through the brief, its own row.",
+ "action:company.setBanner": "Names your banner, shown on your credits as \"A … Production\" (YourMoney.tsx); a name, read only where it is shown."
 }

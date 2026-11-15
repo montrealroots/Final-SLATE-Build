@@ -150,6 +150,17 @@ describe('Guide Me for casting', () => {
 // Guide Me for writing (the owner's v5 brief, 1: "commission/delegate development, drafts and revisions within an
 // approved mandate, with actual work, time, costs, review and delivery"). From November 13, 2026.
 describe('Guide Me for writing', () => {
+  it('when the money runs short of a pass, gives it back to the player and the day goes on (until November 15, 2026 it threw)', async () => {
+    const { reserve } = await import('../src/engine/budget');
+    const { s, p } = film('gm-write-short');
+    const m = approveGuideMe(s, p, WRITING, guideMePlan(s, p, WRITING).total * 2);
+    // Labelled fixture: with the offers' money held, everything else uncommitted is held for something else.
+    reserve(s, p, 'Held for something else (fixture)', 'materials', ledgerTotals(p).available);
+    expect(() => days(s, 20)).not.toThrow();
+    expect(m.told.some((t) => /uncommitted|funding/i.test(t))).toBe(true);
+    expect((p.writing ?? []).some((j) => j.scope === 'rewrite')).toBe(false);
+  });
+
   it('a film: hires a co-writer for a rewrite and a script editor for a polish, each pass worked, reviewed and accepted in turn', () => {
     const { s, p } = film('gm-write');
     const plan = guideMePlan(s, p, WRITING);

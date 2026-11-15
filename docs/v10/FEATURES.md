@@ -8,11 +8,11 @@ journey that shows it there.
 
 | Kind | proven | carried | does not bite | no downstream effect | stale | not a feature | not yet proven | All |
 |---|---|---|---|---|---|---|---|---|
-| action | 106 | 0 | 0 | 0 | 0 | 8 | 46 | 160 |
-| bank | 15 | 0 | 0 | 0 | 0 | 0 | 39 | 54 |
+| action | 117 | 0 | 0 | 3 | 0 | 12 | 28 | 160 |
+| bank | 43 | 0 | 0 | 0 | 0 | 0 | 11 | 54 |
 | scheduled | 39 | 0 | 0 | 0 | 0 | 5 | 22 | 66 |
 | field | 36 | 13 | 0 | 0 | 0 | 0 | 256 | 305 |
-| all | 196 | 13 | 0 | 0 | 0 | 13 | 363 | 585 |
+| all | 235 | 13 | 0 | 3 | 0 | 17 | 317 | 585 |
 
 ## Rows
 
@@ -25,13 +25,13 @@ journey that shows it there.
 | advanceBankWorld | action | src/engine/bankworld/index.ts | not a feature |  | Brings the bank to the game's clock before a bank command runs; time passing is proven through the scheduled rows and the bank commands. |
 | bankSim | action | src/engine/bankworld/index.ts | not a feature |  | Reads the bank world for the command that follows; not a decision. |
 | setLock | action | src/engine/blueprints.ts | not yet proven |  |  |
-| saveIdea | action | src/engine/brief.ts | not yet proven |  |  |
+| saveIdea | action | src/engine/brief.ts | not a feature |  | Keeps an idea on the player's shortlist in the idea picker (IdeaPicker.tsx); the idea itself is used through the brief, its own row. |
 | callBack | action | src/engine/casting-calls.ts | proven | callback (40 seeds) | callbacksSeen +7.425; castCapability +0.525 |
 | inviteToAudition | action | src/engine/casting-calls.ts | proven | audition (40 seeds) | readsSeen +14.8; castCapability +9.113; performance +7.469; overall +2.488; castRates +236.75 |
 | setShortlisted | action | src/engine/casting-calls.ts | proven | callback (40 seeds) | callbacksSeen +7.425; castCapability +0.525 |
 | shortlistAdvice | action | src/engine/casting-director.ts | not yet proven |  |  |
 | startSearch | action | src/engine/casting-director.ts | not yet proven |  |  |
-| setBanner | action | src/engine/company.ts | not yet proven |  |  |
+| setBanner | action | src/engine/company.ts | not a feature |  | Names your banner, shown on your credits as "A … Production" (YourMoney.tsx); a name, read only where it is shown. |
 | applyBrief | action | src/engine/cues.ts | proven | music-brief (40 seeds) | cues +4; spent +3873.5; daysToDeliver +2.1 |
 | approveThemes | action | src/engine/cues.ts | proven | approve-themes (40 seeds) | themesApproved +2; delivered +2; released +2; quality.music +59.725 |
 | editCue | action | src/engine/cues.ts | proven | edit-cue (40 seeds) | cues -4; spent -5280; daysToDeliver -1.712; quality.music -14.575 |
@@ -47,9 +47,9 @@ journey that shows it there.
 | restoreToEdit | action | src/engine/edit-actions.ts | proven | restore-to-edit (40 seeds) | cutFromEdit -2; overall -0.6 |
 | startCutPass | action | src/engine/edit-actions.ts | proven | cut-passes (40 seeds) | quality.editing +8; daysToDeliver +3.175; overall +1.725; spent +3049.5 |
 | unlockPicture | action | src/engine/edit-actions.ts | proven | unlock-picture (40 seeds) | daysToDeliver +3; spent +2042.75 |
-| deliverEpisode | action | src/engine/episode-delivery.ts | not yet proven |  |  |
-| lockEpisode | action | src/engine/episode-delivery.ts | not yet proven |  |  |
-| startEpisodeCutPass | action | src/engine/episode-delivery.ts | not yet proven |  |  |
+| deliverEpisode | action | src/engine/episode-delivery.ts | no downstream effect | deliver-episode (40 seeds) | moved: episodesDeliveredAlone +1.85. Career not reached: an episode delivered on its own can come out before the season is finished, but only on a release planned before then; these careers sell a season once it is finished, so episode 1 delivered early (1.85 episodes a career, proven to bite) changes no release. To prove with a release planned while the season is in production. |
+| lockEpisode | action | src/engine/episode-delivery.ts | no downstream effect | deliver-episode (40 seeds) | moved: episodesDeliveredAlone +1.85. Career not reached: an episode delivered on its own can come out before the season is finished, but only on a release planned before then; these careers sell a season once it is finished, so episode 1 delivered early (1.85 episodes a career, proven to bite) changes no release. To prove with a release planned while the season is in production. |
+| startEpisodeCutPass | action | src/engine/episode-delivery.ts | proven | episode-cut-pass (40 seeds) | episodeCutPasses +1.7; quality.editing +3.35; spent +1348.55 |
 | setEpisodeDates | action | src/engine/episode-releases.ts | not yet proven |  |  |
 | addToKit | action | src/engine/equipment.ts | proven | own-kit (40 seeds) | gearOwned +12; kitItems +12; spent -2981.5 |
 | buyGear | action | src/engine/equipment.ts | proven | own-kit (40 seeds) | gearOwned +12; kitItems +12; spent -2981.5 |
@@ -81,7 +81,7 @@ journey that shows it there.
 | treatAsAdult | action | src/engine/guests.ts | not yet proven |  |  |
 | acceptCounter | action | src/engine/hiring.ts | proven | counter-offers (40 seeds) | countersDeclined +90.65; spent +10552.75; quality.craft -59.712; overall -58.362; daysToDeliver -33.987 |
 | castPlayer | action | src/engine/hiring.ts | proven | cast-yourself (40 seeds) | playerParts +2; castRates -1631.75; spent -5264.75; standing.acting +4.65 |
-| castRoleFor | action | src/engine/hiring.ts | not yet proven |  |  |
+| castRoleFor | action | src/engine/hiring.ts | not a feature |  | Names the job a part's casting method is (performer or voice performer) inside an offer; the offer is its own row (hiring.makeOffer). |
 | declineCounter | action | src/engine/hiring.ts | proven | counter-offers (40 seeds) | countersDeclined +90.65; spent +10552.75; quality.craft -59.712; overall -58.362; daysToDeliver -33.987 |
 | makeOffer | action | src/engine/hiring.ts | proven | offered-rate (40 seeds) | castRates -209.1; spent -1157.925; countersSeen +0.75 |
 | releaseHire | action | src/engine/hiring.ts | proven | release-hire (40 seeds) | released +2; offersMade +37.625 |
@@ -92,14 +92,14 @@ journey that shows it there.
 | askBetterRate | action | src/engine/jobs.ts | proven | ask-better-rate (60 seeds) | ratesAgreed +7.5; jobPay +5917.083 |
 | declineJob | action | src/engine/jobs.ts | proven | decline-job (40 seeds) | jobsDeclined +0.975; jobsDone -0.875; jobPay -4960.85 |
 | withdrawJob | action | src/engine/jobs.ts | proven | withdraw-job (40 seeds) | jobsWithdrawn +0.9; jobsDone -0.975; jobPay -5139.65 |
-| negotiate | action | src/engine/line-producer.ts | not yet proven |  |  |
+| negotiate | action | src/engine/line-producer.ts | proven | line-producer-negotiates (120 seeds) | counterRates -38.75; spent +372.458 |
 | chooseSite | action | src/engine/locations-actions.ts | proven | stage-sets (40 seeds) | onStage +6; lostDays -1.45; daysToDeliver -1.987 |
-| approveGuideMe | action | src/engine/mandates.ts | not yet proven |  |  |
-| endGuideMe | action | src/engine/mandates.ts | not yet proven |  |  |
-| approveTake | action | src/engine/mocap.ts | not yet proven |  |  |
-| bookMocap | action | src/engine/mocap.ts | not yet proven |  |  |
-| cancelMocapBooking | action | src/engine/mocap.ts | not yet proven |  |  |
-| requestRetake | action | src/engine/mocap.ts | not yet proven |  |  |
+| approveGuideMe | action | src/engine/mandates.ts | proven | guide-me-writing (40 seeds) | writersHired +3.975; quality.script +2.163; overall +0.538; spent +2221 |
+| endGuideMe | action | src/engine/mandates.ts | proven | end-guide-me (40 seeds) | writingPasses -3.1; quality.script -2.362; spent -2695.75 |
+| approveTake | action | src/engine/mocap.ts | proven | approve-weak-take (20 seeds) | approvedTake -21.25; overall -0.275 |
+| bookMocap | action | src/engine/mocap.ts | proven | book-body-only (20 seeds) | spent -4982.5; overall -0.475 |
+| cancelMocapBooking | action | src/engine/mocap.ts | no downstream effect | cancel-mocap (40 seeds) | moved: spent +2174.5 |
+| requestRetake | action | src/engine/mocap.ts | proven | mocap-retake (20 seeds) | retakes +2; takes +2; spent +6730.5 |
 | considerComposer | action | src/engine/music-catalog.ts | not yet proven |  |  |
 | licenseRecording | action | src/engine/music-catalog.ts | not yet proven |  |  |
 | agreeLicence | action | src/engine/music.ts | proven | license-song (40 seeds) | licensed +1.475; released +1.475; revenue +38436.25; spent +2563.25 |
@@ -127,10 +127,10 @@ journey that shows it there.
 | setPlannedBudget | action | src/engine/project-budget.ts | proven | plan-budget (40 seeds) | target +80525; ownIn +10000; backerIn +70525; revenue -17844.95; money -19909.443 |
 | addNote | action | src/engine/projects.ts | proven | own-notes (40 seeds) | ownNotes +6; quality.script +6; overall +1.725 |
 | approveDraft | action | src/engine/projects.ts | proven | second-project (40 seeds) | projects +2; approvedProjects +2; deliveredAll +1.75; money -55741.884; standing.producing +1.4; jobsDone +0.8 |
-| assignEpisodeRole | action | src/engine/projects.ts | not yet proven |  |  |
+| assignEpisodeRole | action | src/engine/projects.ts | proven | episode-director (40 seeds) | directedByHire +1.8; quality.direction +3.763; overall +0.775; spent +6278.95 |
 | createProject | action | src/engine/projects.ts | proven | second-project (40 seeds) | projects +2; approvedProjects +2; deliveredAll +1.75; money -55741.884; standing.producing +1.4; jobsDone +0.8 |
 | noteFromIssue | action | src/engine/projects.ts | proven | revision-notes (40 seeds) | notesAddressed +6; quality.script +6; overall +1.9 |
-| renameDraft | action | src/engine/projects.ts | not yet proven |  |  |
+| renameDraft | action | src/engine/projects.ts | not a feature |  | Names a draft; the name is shown in the draft list and nothing else reads it, as a label shouldn't be. |
 | setNoteStatus | action | src/engine/projects.ts | proven | revision-notes (40 seeds) | notesAddressed +6; quality.script +6; overall +1.9 |
 | startRevision | action | src/engine/projects.ts | proven | revision-notes (40 seeds) | notesAddressed +6; quality.script +6; overall +1.9 |
 | createFromSource | action | src/engine/proposal.ts | not yet proven |  |  |
@@ -144,9 +144,9 @@ journey that shows it there.
 | renewMandate | action | src/engine/representation.ts | proven | agent-renew (40 seeds) | renewals +3; represented +1; viaAgent +14.05; jobsOffered +14.025; jobPay +68621.175; money +69897.8 |
 | signWith | action | src/engine/representation.ts | proven | agent (40 seeds) | viaAgent +7.1; jobsOffered +7.15; commission +3627.575; jobPay +22465.025 |
 | submitThrough | action | src/engine/representation.ts | not yet proven |  |  |
-| rerecordLines | action | src/engine/revisions.ts | not yet proven |  |  |
-| reviseAnimatic | action | src/engine/revisions.ts | not yet proven |  |  |
-| reviseEffects | action | src/engine/revisions.ts | not yet proven |  |  |
+| rerecordLines | action | src/engine/revisions.ts | proven | rerecord-lines (20 seeds) | linesRerecorded +2; overall +0.475 |
+| reviseAnimatic | action | src/engine/revisions.ts | proven | revise-animatic (20 seeds) | spent +1289.5; money -1289.5 |
+| reviseEffects | action | src/engine/revisions.ts | proven | revise-effects (40 seeds) | effectsRevised +2.25; quality.direction +1.363; spent +11443.25; overall +0.25 |
 | clearScreenTime | action | src/engine/screen-time.ts | not yet proven |  |  |
 | recordScreenTime | action | src/engine/screen-time.ts | not yet proven |  |  |
 | moveEpisode | action | src/engine/season.ts | not yet proven |  |  |
@@ -182,12 +182,12 @@ journey that shows it there.
 | bank.arrange_overdraft | bank | src/engine/bankworld | not yet proven |  |  |
 | bank.borrow | bank | src/engine/bankworld | proven | bank-loan (60 seeds) | interestOut +1721.445; money +10355.682 |
 | bank.break_term | bank | src/engine/bankworld | proven | break-term (40 seeds) | accounts -1; interestIn -41099.99; worth -41099.99 |
-| bank.cancel_new | bank | src/engine/bankworld | not yet proven |  |  |
-| bank.cancel_scheduled | bank | src/engine/bankworld | not yet proven |  |  |
+| bank.cancel_new | bank | src/engine/bankworld | proven | cancel-new (40 seeds) | accounts -1; bankFees -10.81; worth +10.81 |
+| bank.cancel_scheduled | bank | src/engine/bankworld | proven | cancel-scheduled (40 seeds) | savingsHeld -1019127.17; interestIn -19127.17; worth -19127.17 |
 | bank.cancel_standing_order | bank | src/engine/bankworld | proven | cancel-standing-order (40 seeds) | interestIn -8743.03; money -11626.37 |
-| bank.cancel_switch | bank | src/engine/bankworld | not yet proven |  |  |
+| bank.cancel_switch | bank | src/engine/bankworld | proven | cancel-switch (40 seeds) | atFirstBank +18652932.151; interestIn -4302.46; worth -4875.18 |
 | bank.claim_unclaimed | bank | src/engine/bankworld | not yet proven |  |  |
-| bank.close_current | bank | src/engine/bankworld | not yet proven |  |  |
+| bank.close_current | bank | src/engine/bankworld | proven | close-current (40 seeds) | accounts -1; bankFees -10.81; worth +8.71 |
 | bank.close_savings | bank | src/engine/bankworld | proven | close-savings (40 seeds) | accounts -1; interestIn -19961; money -25455.788 |
 | bank.debit_overdraft | bank | src/engine/bankworld | not yet proven |  |  |
 | bank.new_number | bank | src/engine/bankworld | not yet proven |  |  |
@@ -196,42 +196,42 @@ journey that shows it there.
 | bank.open_term | bank | src/engine/bankworld | proven | term-deposit (40 seeds) | accounts +1; interestIn +41099.99; worth +41099.99 |
 | bank.pay_collections | bank | src/engine/bankworld | not yet proven |  |  |
 | bank.reactivate | bank | src/engine/bankworld | not yet proven |  |  |
-| bank.redirect_deposits | bank | src/engine/bankworld | not yet proven |  |  |
-| bank.repay_loan | bank | src/engine/bankworld | not yet proven |  |  |
+| bank.redirect_deposits | bank | src/engine/bankworld | proven | redirect-deposits (40 seeds) | savingsHeld +131539.827; interestIn +660.732; worth +660.733 |
+| bank.repay_loan | bank | src/engine/bankworld | proven | repay-loan (40 seeds) | loansOwed -3156.004; interestOut -408.002; worth +365.568 |
 | bank.schedule_payment | bank | src/engine/bankworld | proven | scheduled-payment (40 seeds) | interestIn +19127.17; money +25435.064 |
 | bank.set_alerts | bank | src/engine/bankworld | not yet proven |  |  |
-| bank.set_loan_repayment | bank | src/engine/bankworld | not yet proven |  |  |
-| bank.set_order_source | bank | src/engine/bankworld | not yet proven |  |  |
+| bank.set_loan_repayment | bank | src/engine/bankworld | proven | loan-repayment (40 seeds) | paidFromNatwest +2795.129; natwestHeld -2795.129; atFirstBank +4098.834 |
+| bank.set_order_source | bank | src/engine/bankworld | proven | order-source (40 seeds) | paidFromNatwest +5000; natwestHeld -5000; atFirstBank +4962.21 |
 | bank.set_payments | bank | src/engine/bankworld | proven | credit-card (40 seeds) | accounts +1; onCard +1; cardPaid +846.28 |
-| bank.set_primary | bank | src/engine/bankworld | not yet proven |  |  |
-| bank.set_round_ups | bank | src/engine/bankworld | not yet proven |  |  |
+| bank.set_primary | bank | src/engine/bankworld | proven | set-primary (40 seeds) | primaryIsFirst -0.975; paidFromNatwest +4874.601; natwestHeld -4999.601 |
+| bank.set_round_ups | bank | src/engine/bankworld | proven | round-ups (40 seeds) | savingsHeld +0.39; inCurrent -0.38; interestIn +0.01 |
 | bank.set_term_end | bank | src/engine/bankworld | proven | term-end (30 seeds) | interestIn -58062.09; worth -16962.1 |
-| bank.stop_balance_transfer | bank | src/engine/bankworld | not yet proven |  |  |
+| bank.stop_balance_transfer | bank | src/engine/bankworld | proven | stop-balance-transfer (40 seeds) | atFirstBank +18565036.675; interestIn -4302.46; worth -6981.664 |
 | bank.switch | bank | src/engine/bankworld | proven | switch-bank (40 seeds) | atFirstBank -2; interestIn +3052.17; worth +3624.89; money +4820.332 |
 | bank.take_overrun_loan | bank | src/engine/bankworld | not yet proven |  |  |
-| bank.take_term_interest | bank | src/engine/bankworld | not yet proven |  |  |
+| bank.take_term_interest | bank | src/engine/bankworld | proven | term-interest (40 seeds) | termHeld -617.53; inCurrent +617.53 |
 | bank.transfer | bank | src/engine/bankworld | proven | bank-savings (40 seeds) | accounts +1; interestIn +19961; money +26543.882 |
 | card.apply | bank | src/engine/bankworld | proven | credit-card (40 seeds) | accounts +1; onCard +1; cardPaid +846.28 |
-| card.close | bank | src/engine/bankworld | not yet proven |  |  |
+| card.close | bank | src/engine/bankworld | proven | card-close (40 seeds) | cardsOpen -1; onCard -1; cardPaid -861.08 |
 | card.dispute | bank | src/engine/bankworld | not yet proven |  |  |
-| card.lock | bank | src/engine/bankworld | not yet proven |  |  |
-| card.money_transfer | bank | src/engine/bankworld | not yet proven |  |  |
-| card.plan | bank | src/engine/bankworld | not yet proven |  |  |
-| card.redeem_rewards | bank | src/engine/bankworld | not yet proven |  |  |
-| card.refund_credit | bank | src/engine/bankworld | not yet proven |  |  |
-| card.report | bank | src/engine/bankworld | not yet proven |  |  |
+| card.lock | bank | src/engine/bankworld | proven | card-lock (40 seeds) | onCard -1; cardPaid -853.139 |
+| card.money_transfer | bank | src/engine/bankworld | proven | card-money-transfer (40 seeds) | transferredIn +1000; bankFees +30; interestOut +1.82; worth -31.82 |
+| card.plan | bank | src/engine/bankworld | proven | card-plan (40 seeds) | interestOut -68.054; cardPaid +223; worth +68.054 |
+| card.redeem_rewards | bank | src/engine/bankworld | proven | card-redeem (40 seeds) | rewardsLeft -17.09; worth +17.09; money +17.09 |
+| card.refund_credit | bank | src/engine/bankworld | proven | card-refund (40 seeds) | cardCredit -1000; money +1329.785 |
+| card.report | bank | src/engine/bankworld | proven | card-report (40 seeds) | onCard -1; cardPaid -846.28 |
 | card.request_hardship | bank | src/engine/bankworld | not yet proven |  |  |
-| card.request_limit | bank | src/engine/bankworld | not yet proven |  |  |
+| card.request_limit | bank | src/engine/bankworld | proven | card-limit-down (40 seeds) | limit -2347; cardPaid -346.28 |
 | card.set_auto_raise | bank | src/engine/bankworld | not yet proven |  |  |
-| card.set_autopay_from | bank | src/engine/bankworld | not yet proven |  |  |
-| card.set_everyday | bank | src/engine/bankworld | not yet proven |  |  |
-| card.set_over_limit | bank | src/engine/bankworld | not yet proven |  |  |
-| card.set_statement_day | bank | src/engine/bankworld | not yet proven |  |  |
-| cash.deposit | bank | src/engine/bankworld | not yet proven |  |  |
+| card.set_autopay_from | bank | src/engine/bankworld | proven | autopay-from (40 seeds) | paidFromNatwest +849.995; natwestHeld -849.995; atFirstBank +849.996 |
+| card.set_everyday | bank | src/engine/bankworld | proven | card-everyday (40 seeds) | onNatwestCard +1; cardBillsToNatwest +846.28 |
+| card.set_over_limit | bank | src/engine/bankworld | proven | card-over-limit (40 seeds) | onCardAmount +50; cardPaid +50 |
+| card.set_statement_day | bank | src/engine/bankworld | proven | card-statement-day (40 seeds) | statementDay +28; interestOut +9.84; cardPaid -3.16 |
+| cash.deposit | bank | src/engine/bankworld | proven | cash-deposit (40 seeds) | cashHeld -500; atFirstBank +500 |
 | cash.withdraw | bank | src/engine/bankworld | proven | cash-withdrawal (40 seeds) | withdrawn +250; paidInCash +250 |
-| documents.apply_passport | bank | src/engine/bankworld | not yet proven |  |  |
-| finance.pay_card | bank | src/engine/bankworld | not yet proven |  |  |
-| finance.set_autopay | bank | src/engine/bankworld | not yet proven |  |  |
+| documents.apply_passport | bank | src/engine/bankworld | proven | bank-passport (40 seeds) | passports +1; worth -46.07; inCurrent -46.07 |
+| finance.pay_card | bank | src/engine/bankworld | proven | card-pay-full (40 seeds) | cardPaid +144.64; interestOut -281.33; worth +281.33 |
+| finance.set_autopay | bank | src/engine/bankworld | proven | card-autopay-minimum (40 seeds) | cardPaid -145.165; interestOut +282.351; worth -282.351 |
 | agent-answer | scheduled | src/engine/representation.ts | proven | agent (40 seeds) | viaAgent +7.1; jobsOffered +7.15; commission +3627.575; jobPay +22465.025 |
 | agent-notice-end | scheduled | src/engine/representation.ts | proven | agent-notice (40 seeds) | viaAgent -5.425; jobsOffered -5.45; jobPay -20631.425; commission -3154.2 |
 | agent-offer-lapse | scheduled | src/engine/representation.ts | not yet proven |  |  |
@@ -477,7 +477,7 @@ journey that shows it there.
 | "Objective" | field | projects.ts scriptIssues (advisory note when empty) | not yet proven |  |  |
 | {nonfiction ? 'What Happens' : 'Action'} | field | shown on the scene | not yet proven |  |  |
 | "Turning Point" | field | shown on the scene | not yet proven |  |  |
-| "Essential To The Story" | field | finish.ts (cutting it costs the edit); cost-cuts.ts | proven | scene-essential (40 seeds) | quality.editing -8; overall -0.737; reception -0.612; revenue -4397.25 |
+| "Essential To The Story" | field | finish.ts (cutting it costs the edit); cost-cuts.ts | proven | scene-essential (40 seeds) | quality.editing -8; overall -0.787; reception -0.587 |
 | "Props" | field | projects.ts deriveRequirements; production/tasks.ts | proven | scene-props (40 seeds) | spent +11258; daysToDeliver +4.4 |
 | "Animals" | field | projects.ts deriveRequirements; production/tasks.ts | proven | scene-animals (40 seeds) | spent +2948.75; daysToDeliver +1.313 |
 | "Vehicles" | field | projects.ts deriveRequirements; production/tasks.ts | proven | scene-vehicles (40 seeds) | spent +3020.75; daysToDeliver +1.425 |

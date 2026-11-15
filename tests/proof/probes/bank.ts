@@ -14,17 +14,17 @@ export function bank(s: GameState, kind: string, payload: Record<string, unknown
   if (!r.ok) throw new Error(`${kind}: ${r.error}`);
   return r.value ?? {};
 }
-const current = (s: GameState) => bankSim(s.bank!).ledger.accountsOf(bankSim(s.bank!).universe.playerId).find((a) => !a.nominal && !a.closedAt && a.kind === 'checking')!.id;
+export const current = (s: GameState) => bankSim(s.bank!).ledger.accountsOf(bankSim(s.bank!).universe.playerId).find((a) => !a.nominal && !a.closedAt && a.kind === 'checking')!.id;
 /** Each day until the command is allowed, then never again: for a command the bank allows only in some circumstances. */
-const once = (fn: (s: GameState) => void) => { const done = new WeakSet<GameState>(); return (s: GameState) => { if (done.has(s)) return; try { fn(s); done.add(s); } catch { /* not yet allowed */ } }; };
+export const once = (fn: (s: GameState) => void) => { const done = new WeakSet<GameState>(); return (s: GameState) => { if (done.has(s)) return; try { fn(s); done.add(s); } catch { /* not yet allowed */ } }; };
 /** On the first day only. */
-const first = (fn: (s: GameState) => void) => (s: GameState, day: number) => { if (day === 0) fn(s); };
+export const first = (fn: (s: GameState) => void) => (s: GameState, day: number) => { if (day === 0) fn(s); };
 
 /** On the tenth day, once a card applied for has arrived: a camera bought (equipment.ts buyGear), as a player kits up. */
-const buysCamera = (s: GameState, day: number) => { if (day === 10) buyGear(s, 'bmpcc-4k'); };
-const both = (...fns: ((s: GameState, day: number) => void)[]) => (s: GameState, day: number) => { for (const f of fns) f(s, day); };
+export const buysCamera = (s: GameState, day: number) => { if (day === 10) buyGear(s, 'bmpcc-4k'); };
+export const both = (...fns: ((s: GameState, day: number) => void)[]) => (s: GameState, day: number) => { for (const f of fns) f(s, day); };
 /** What purchases were paid from cash in hand, and what is in hand: the wallet's own postings. */
-const walletMeasures = (s: GameState) => {
+export const walletMeasures = (s: GameState) => {
   const sim = bankSim(s.bank!);
   const wallet = sim.ledger.accountsOf(sim.universe.playerId).find((a) => a.kind === 'cash');
   const paidInCash = wallet ? sim.universe.transactions.filter((t) => /^slate:(equipment|papers)#/.test(t.category ?? '')).reduce((a, t) => a - t.postings.filter((p) => p.accountId === wallet.id).reduce((b, p) => b + p.amount, 0), 0) : 0;

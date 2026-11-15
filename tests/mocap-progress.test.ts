@@ -133,3 +133,23 @@ describe('a session the performer cannot attend', () => {
     }
   }, 120_000);
 });
+
+describe('a performance in motion capture is its approved take', () => {
+  it('scores the take the player approves, and a face keyframed instead of captured counts for less (until November 15, 2026 neither mattered)', async () => {
+    const { assessQuality } = await import('../src/engine/finish');
+    const { s, p, golem } = booked('mocap-take-quality');
+    const cast = p.cast.find((c) => c.characterId === golem.id && c.method === 'motion-capture')!;
+    const key = `performance:${golem.id}:${cast.performer}`;
+    // Labelled fixture: two recorded takes, a strong one and a weak one.
+    const rec = p.mocap![golem.id];
+    rec.takes = [{ id: 'strong', quality: 90, performer: cast.performer } as never, { id: 'weak', quality: 40, performer: cast.performer } as never];
+    rec.approvedTakeId = 'strong';
+    const strong = assessQuality(s, p)[key];
+    rec.approvedTakeId = 'weak';
+    const weak = assessQuality(s, p)[key];
+    expect(strong).toBeGreaterThan(weak);
+    rec.approvedTakeId = 'strong';
+    rec.parts = ['body'];
+    expect(assessQuality(s, p)[key]).toBeLessThan(strong);
+  });
+});

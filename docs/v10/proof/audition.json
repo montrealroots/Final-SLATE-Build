@@ -486,7 +486,7 @@
  "hashes": {
   "src/engine/casting-calls.ts": "ba8b188e2c9ddd1a",
   "src/engine/auditions.ts": "25d0c9e808af28e7",
-  "src/engine/finish.ts": "3bb0bc714a23c39d",
+  "src/engine/finish.ts": "48cd177ad2e5ecb2",
   "tests/proof/career.ts": "50bea06f19a02c5b"
  }
 }
