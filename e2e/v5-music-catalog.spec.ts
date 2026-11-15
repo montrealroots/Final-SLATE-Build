@@ -74,20 +74,22 @@ test('a real composer: considered from the music catalog, offered the job, hired
   await brief.getByLabel("Let The Composer's Themes Stand Without My Review").check();
   await brief.getByRole('button', { name: 'Take This Brief' }).click();
   // The composer: found in the music catalog and offered the job like anyone else, at the rate the game asks for them.
+  // One a low-budget short can pay: Lorne Balfe, with 56 scores and no award on record, asks a working composer's rate.
+  // Until November 15, 2026 this was Hans Zimmer, who asked a crew rate; his recognition now asks about $2.2 million.
   const real = card(page, 'Real Music');
-  await real.getByLabel('Find A Composer, Artist Or Recording').fill('hans zimmer');
+  await real.getByLabel('Find A Composer, Artist Or Recording').fill('lorne balfe');
   await real.getByLabel('Their Role').selectOption({ label: 'Composer' });
-  await real.getByRole('list', { name: 'People And Groups' }).getByRole('listitem', { name: 'Hans Zimmer' }).getByRole('button', { name: 'Consider For Composer' }).click();
+  await real.getByRole('list', { name: 'People And Groups' }).getByRole('listitem', { name: 'Lorne Balfe' }).getByRole('button', { name: 'Consider For Composer' }).click();
   await section(page, 'Crew');
   await page.getByRole('listitem').filter({ has: page.getByText('Composer', { exact: true }) }).first().getByRole('button', { name: 'Find Candidates' }).click();
   const dialog = page.getByRole('dialog');
-  await dialog.getByRole('listitem').filter({ hasText: 'Hans Zimmer' }).getByRole('button', { name: 'Make Offer' }).click();
+  await dialog.getByRole('listitem').filter({ hasText: 'Lorne Balfe' }).getByRole('button', { name: 'Make Offer' }).click();
   // The answer is the game's (simulated): wait for it, and the rest of the crew.
-  for (let i = 0; i < 6 && !((await readSavedState(page))?.projects?.[0]?.hires ?? []).some((h: { personId: string; status: string }) => h.personId === 'tp_947' && h.status === 'accepted'); i++) {
+  for (let i = 0; i < 6 && !((await readSavedState(page))?.projects?.[0]?.hires ?? []).some((h: { personId: string; status: string }) => h.personId === 'tp_929145' && h.status === 'accepted'); i++) {
     await advance(page, 'next-day');
     for (const b of await page.getByRole('button', { name: 'Accept Counteroffer' }).all()) await b.click();
   }
-  const hired = ((await readSavedState(page)).projects[0].hires as { personId: string; status: string }[]).find((h) => h.personId === 'tp_947');
+  const hired = ((await readSavedState(page)).projects[0].hires as { personId: string; status: string }[]).find((h) => h.personId === 'tp_929145');
   test.skip(hired?.status !== 'accepted', `In the pinned world he answered ${hired?.status ?? 'nothing'}; the engine tests cover a hire.`);
   await castRoles(page);
   await staffEveryDepartment(page);
@@ -101,5 +103,5 @@ test('a real composer: considered from the music catalog, offered the job, hired
   // His score is the film's: the score's work was his, and the credits name him as its composer.
   const p = (await readSavedState(page)).projects[0];
   expect(p.tasks.filter((t: { kind: string }) => t.kind === 'post:music').every((t: { status: string }) => t.status === 'done')).toBe(true);
-  expect(await creditsTable(page)).toMatch(/Composer[\s\S]*Hans Zimmer|Hans Zimmer[\s\S]*Composer/);
+  expect(await creditsTable(page)).toMatch(/Composer[\s\S]*Lorne Balfe|Lorne Balfe[\s\S]*Composer/);
 });
