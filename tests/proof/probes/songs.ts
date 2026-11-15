@@ -20,13 +20,13 @@ const twoOverCredits = (s: GameState, p: Project) => {
 };
 const second = (p: Project) => (p.songs ?? []).find((x) => x.title === SECOND)!;
 const playSecondFirst = (s: GameState, p: Project) => { twoOverCredits(s, p); if (p.music) playFirstOverEndCredits(p, second(p).id, approvedScenes(p).at(-1)!.id); };
-/** Weekly: each delivered film entered for every original-song award it is eligible for. */
-const enterSongs = (s: GameState) => {
+/** Weekly: each delivered film entered with `title` for every original-song award that song is eligible for. */
+const enterSong = (title: string) => (s: GameState) => {
   for (const p of s.projects.filter((x) => x.delivered && !x.shelved)) {
     for (const ed of s.editions.filter((e) => e.status === 'open' && e.deadline > s.now)) {
       for (const cat of categoriesFor(institution(ed.institutionId), ed.year).filter((c) => c.recipient === 'song')) {
         if (ed.entries.some((e) => e.projectId === p.id && e.categoryId === cat.id)) continue;
-        const song = (p.songs ?? []).find((x) => x.title === SECOND);
+        const song = (p.songs ?? []).find((x) => x.title === title);
         if (!song || !checkEligibility(s, p, ed, cat, undefined, undefined, undefined, song.id).eligible) continue;
         try { submitEntry(s, p, ed.id, cat.id, undefined, undefined, undefined, song.id); } catch { /* its fee or form */ }
       }
@@ -43,6 +43,7 @@ const inUsCinemas = (s: GameState, p: Project) => {
   setReleasePlan(s, p, { routes: ['partner-theatrical'], territories: ['US', 'GB'], date: addDaysToKey(dateKey(s.now, 'Europe/London'), 20), festivalUntil: null, version: 'subtitled', promo: 0 });
   try { releaseYourself(s, p, 'partner-theatrical'); } catch { /* refused: no release */ }
 };
+const enterSongs = enterSong(SECOND);
 const US = { years: 3, project: feature(), takeDistribution: false, release: false, afterDelivery: inUsCinemas, daily: enterSongs };
 const measure = (s: GameState) => {
   const mine = s.editions.flatMap((ed) => ed.entries.filter((e) => s.projects.some((p) => p.id === e.projectId) && categoriesFor(institution(ed.institutionId), ed.year).find((c) => c.id === e.categoryId)?.recipient === 'song'));
@@ -55,5 +56,13 @@ export const PROBES: Probe[] = [
     reads: ['src/engine/song-actions.ts#playFirstOverEndCredits', 'src/engine/awards-rules.ts#songRuleProblem'],
     base: { ...US, decide: twoOverCredits }, variant: { ...US, decide: playSecondFirst }, measure,
     bites: ['songEntries'], downstream: ['songFees', 'songDecided', 'money'],
+  },
+  // Which song goes in (FinishViews.tsx "Song To Enter"): of two over the end credits only the first new one there
+  // qualifies for the awards that take end-credits songs at all (awards-rules.ts songRuleProblem).
+  {
+    id: 'song-to-enter', features: ['field:FinishViews.tsx#"Song To Enter"#1'], decision: 'Enter "First Light", the first song over the end credits, rather than "The Last Bell", the second',
+    reads: ['src/engine/awards-rules.ts#songRuleProblem', 'src/engine/awards-actions.ts#submitEntry'],
+    base: { ...US, decide: twoOverCredits }, variant: { ...US, decide: twoOverCredits, daily: enterSong('First Light') }, measure,
+    bites: ['songEntries'], downstream: ['songFees', 'songDecided'],
   },
 ];

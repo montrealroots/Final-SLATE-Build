@@ -15,7 +15,7 @@ const hireEditor = (s: GameState, p: Project, role = 'script-editor') => {
 const editor = (p: Project, role = 'script-editor') => p.hires.find((h) => h.roleId === role && h.status === 'accepted');
 
 /** Each day: commission a polish once the editor has accepted, then what to do with the delivered pass. */
-const writingDay = (onDelivered: 'accept' | 'revise' | 'cancel', scope: 'polish' | 'rewrite' = 'polish', role = 'script-editor') => (s: GameState) => {
+export const writingDay = (onDelivered: 'accept' | 'revise' | 'cancel', scope: 'polish' | 'rewrite' = 'polish', role = 'script-editor') => (s: GameState) => {
   for (const p of s.projects.filter((x) => !x.delivered && x.writing && x.approvedDraft !== null)) {
     hireEditor(s, p, role);
     const h = editor(p, role);
