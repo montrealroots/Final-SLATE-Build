@@ -21,7 +21,7 @@ const animated = (technique: '3d-cg' | 'stop-motion', quality: 'tv' | 'feature' 
   { title: `Year ${year + 1}`, format: 'short', medium: 'animation', technique, quality, scenario: 'micro', genres: ['drama'], runtime: minutes[0] + minutes[1] },
   [{ name: 'Lead', patch: { roleSize: 'lead' } }, { name: 'Friend', patch: { roleSize: 'supporting' } }],
   [{ place: 'Flat', chars: ['Lead', 'Friend'], minutes: minutes[0] }, { place: 'Cafe', chars: ['Lead', 'Friend'], minutes: minutes[1] }]));
-const CG = animated('3d-cg');
+export const CG = animated('3d-cg');
 const SM = animated('stop-motion', 'tv', [1, 1]);
 const lead = (p: Project) => p.characters.find((c) => c.name === 'Lead')!.id;
 /**
