@@ -8,11 +8,11 @@ journey that shows it there.
 
 | Kind | proven | carried | does not bite | no downstream effect | stale | not a feature | not yet proven | All |
 |---|---|---|---|---|---|---|---|---|
-| action | 98 | 0 | 2 | 1 | 0 | 8 | 50 | 159 |
+| action | 98 | 0 | 0 | 3 | 0 | 8 | 50 | 159 |
 | bank | 11 | 0 | 0 | 4 | 0 | 0 | 39 | 54 |
-| scheduled | 34 | 0 | 3 | 4 | 0 | 3 | 22 | 66 |
+| scheduled | 37 | 0 | 1 | 3 | 0 | 3 | 22 | 66 |
 | field | 32 | 14 | 0 | 1 | 0 | 0 | 259 | 306 |
-| all | 175 | 14 | 5 | 10 | 0 | 11 | 370 | 585 |
+| all | 178 | 14 | 1 | 11 | 0 | 11 | 370 | 585 |
 
 ## Rows
 
@@ -150,8 +150,8 @@ journey that shows it there.
 | recordScreenTime | action | src/engine/screen-time.ts | not yet proven |  |  |
 | moveEpisode | action | src/engine/season.ts | not yet proven |  |  |
 | continueProject | action | src/engine/sequel.ts | not yet proven |  |  |
-| resumeProject | action | src/engine/shelve.ts | does not bite | shelve-resume (30 seeds) | moved: daysToDeliver +3.5. Measure: shelving delays delivery (seen) and costs money and revenue on average, inside the seeds' spread at 30 seeds; to run with 100. |
-| shelveProject | action | src/engine/shelve.ts | does not bite | shelve-resume (30 seeds) | moved: daysToDeliver +3.5. Measure: shelving delays delivery (seen) and costs money and revenue on average, inside the seeds' spread at 30 seeds; to run with 100. |
+| resumeProject | action | src/engine/shelve.ts | no downstream effect | shelve-resume (60 seeds) | moved: deliveredDay +51.867. Shelved straight after the script is approved, before anyone is hired, the film is delivered 52 days later and nothing else changes: there are no offers to withdraw, no crew to settle and no days booked, so shelving early costs only time. Within a two-year career the later delivery doesn't show in what the film earns. |
+| shelveProject | action | src/engine/shelve.ts | no downstream effect | shelve-resume (60 seeds) | moved: deliveredDay +51.867. Shelved straight after the script is approved, before anyone is hired, the film is delivered 52 days later and nothing else changes: there are no offers to withdraw, no crew to settle and no days booked, so shelving early costs only time. Within a two-year career the later delivery doesn't show in what the film earns. |
 | attachSong | action | src/engine/song-actions.ts | proven | add-song (40 seeds) | songs +2; songUses +2; released -2; revenue -111865 |
 | changeVersionSong | action | src/engine/song-actions.ts | not yet proven |  |  |
 | createSong | action | src/engine/song-actions.ts | proven | add-song (40 seeds) | songs +2; songUses +2; released -2; revenue -111865 |
@@ -260,7 +260,7 @@ journey that shows it there.
 | finance-deadline | scheduled | src/engine/finance.ts | not yet proven |  |  |
 | finance-decision | scheduled | src/engine/finance.ts | proven | off-finance-decision (30 seeds) | backerIn -30966.667; ownIn +30966.667; money +17144.8 |
 | finance-offer-lapse | scheduled | src/engine/negotiation.ts | not yet proven |  |  |
-| first-look-check | scheduled | src/engine/first-look.ts | does not bite | off-first-look-check (30 seeds) | nothing moved. Career not reached: the scheduled check needs studios, which this probe's careers don't have (the first-look probes do). |
+| first-look-check | scheduled | src/engine/first-look.ts | proven | off-first-look-check (40 seeds) | firstLookOffers -1.075; overheadPaid -539890; money -536702.539 |
 | first-look-counter | scheduled | src/engine/first-look.ts | proven | first-look-overhead (40 seeds) | overheadAsked +1.825; overheadAgreed +0.2 |
 | first-look-end | scheduled | src/engine/first-look.ts | not yet proven |  |  |
 | first-look-lapse | scheduled | src/engine/first-look.ts | not yet proven |  |  |
@@ -274,7 +274,7 @@ journey that shows it there.
 | licence-answer | scheduled | src/engine/music.ts | proven | license-song (40 seeds) | licensed +1.475; released +1.475; revenue +36961.25; spent +2563.25 |
 | licence-expiry | scheduled | src/engine/music.ts | proven | renew-licence (40 seeds) | renewals +0.65; released +0.65; spent +292.5 |
 | offer-response | scheduled | src/engine/hiring.ts | proven | off-offer-response (30 seeds) | hired -16; delivered -2; revenue -127289.5 |
-| opportunity | scheduled | src/engine/opportunities.ts | no downstream effect | off-opportunity (30 seeds) | moved: opportunities -0.467. Career not reached: an opportunity is a project offered after well-received work; no career here accepts one, so nothing follows it. |
+| opportunity | scheduled | src/engine/opportunities.ts | proven | off-opportunity (40 seeds) | opportunities -0.375; commissioned -0.375 |
 | opportunity-expire | scheduled | src/engine/opportunities.ts | no downstream effect | off-opportunity-expire (30 seeds) | moved: openOpportunities +0.267. Measure: unanswered opportunities stay open when expiry is off (direct effect seen); no career here answers or counts them later. |
 | papers-decision | scheduled | src/engine/papers.ts | proven | work-permit (100 seeds) | permits +0.99; lateDays -7.11; shootDays -1.13; daysToDeliver -1.35; spent -1678.68; quality.direction +3.745; overall +1.545 |
 | papers-expiry | scheduled | src/engine/papers.ts | not yet proven |  |  |
@@ -283,7 +283,7 @@ journey that shows it there.
 | plan-reminder | scheduled | src/engine/state.ts | not yet proven |  |  |
 | plan-start | scheduled | src/engine/state.ts | proven | plan-over-call (40 seeds) | lateDays +1; quality.direction -0.5; overall -0.3 |
 | production-confirm | scheduled | src/engine/productions.ts | proven | off-production-confirm (100 seeds) | productionsChanged -1.39; jobsCancelled -0.07 |
-| production-release | scheduled | src/engine/productions.ts | does not bite | off-production-release (60 seeds) | moved: productionResults -6.083; jobsOffered -0.117 |
+| production-release | scheduled | src/engine/productions.ts | proven | off-production-release (60 seeds) | productionResults -6.25; jobsOffered -0.133 |
 | release | scheduled | src/engine/finish.ts | proven | off-release (40 seeds) | released -2; revenue -94019.25; money -93319.4 |
 | release-licence-answer | scheduled | src/engine/release-plan.ts | not yet proven |  |  |
 | revision-done | scheduled | src/engine/projects.ts | proven | revision-notes (40 seeds) | notesAddressed +6; quality.script +6; overall +1.9 |
