@@ -106,7 +106,9 @@ Run the proofs with `npm run proof` (`PROBES=id,id` for some, `SEEDS=n` to chang
   account whatever How You Pay said, so a credit card, the setting and cash in hand had no use. Fixed: they are paid as
   1221's day's spending was, in cash first, on the credit card first or by debit card, with the card's hold, the bank's
   purchase fees and round-ups (`bankworld/systems/spending.ts isEveryday`, `tests/v10-bank-currency.test.ts`). A camera
-  bought on the card is paid from the current account a statement later.
+  bought on the card is paid from the current account a statement later. A debit card purchase is held until it posts,
+  so Home's Available now counts the hold at once, as a bank's available balance does (`bankworld/summary.ts`); until
+  November 15, 2026 it left it out until it posted.
 - **A second current account** is proven in Paris, where La Banque Postale's monthly fee has no waiver (€10.81); no London
   bank in the data charges or pays on one.
 - **A season's audience** is proven on a commissioned series that airs: without the weeks it is watched, the commissioner
