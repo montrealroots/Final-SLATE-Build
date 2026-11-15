@@ -28,4 +28,9 @@ export const PROBES: Probe[] = [
   // A part in a language you speak only a little is coached (production/language.ts personLanguagesFit).
   { id: 'french-basic', features: [C("{`${languageName(l.code)} Proficiency`}")], decision: 'Speak basic French rather than fluent, then play the French-speaking lead yourself', reads: ['src/engine/production/language.ts#personLanguagesFit'],
     base: { project: FRENCH, decide: castSelf, creation: french('Fluent') }, variant: { project: FRENCH, decide: castSelf, creation: french('Basic') }, bites: ['hired'], downstream: ['spent', 'ownIn'] },
+  // The hour the clock starts on the first day (state.ts newGame).
+  { id: 'start-evening', features: [C('"Starting Time"')], decision: 'Start the career at eight in the evening rather than eight in the morning', reads: ['src/engine/state.ts#newGame'],
+    // The career's days run from the start, so each falls twelve hours later on the calendar (4 careers: 1.4 days sooner
+    // delivered, the final balance lower).
+    variant: { creation: { startTime: '20:00' } }, bites: ['daysToDeliver'], downstream: ['money', 'revenue'] },
 ];
