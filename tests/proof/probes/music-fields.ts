@@ -8,7 +8,8 @@ import { applyBrief, editCue, proposeBrief } from '../../../src/engine/cues';
 import { syncMusicTasks } from '../../../src/engine/song-actions';
 import { measure, reviewThemes, takeBrief } from './score';
 import { approveGuideMe, guideMePlan, runMandate } from '../../../src/engine/mandates';
-import { personById } from '../../../src/engine/people';
+import { personById, role } from '../../../src/engine/people';
+import { releaseHire, withdrawOffer } from '../../../src/engine/hiring';
 import { fund } from './casting';
 import { feature } from './script';
 
@@ -29,6 +30,17 @@ const guideMusic = (share: number) => (s: GameState, p: Project) => {
   // Its first day's offers made at once, before the career staffs what is left (career.ts staffAll), as a player who
   // approves it on the Music page then leaves the department to it.
   try { runMandate(s, p, approveGuideMe(s, p, 'Music', Math.max(1, Math.round(total * share)))); } catch { /* refused: the career staffs it */ }
+};
+/**
+ * Each day before the career's own management: an offer or a hire in the music department that Guide Me didn't make
+ * withdrawn or released, as a player who has left the department to Guide Me and hires no one there by hand. Until
+ * November 15, 2026 the career's staffing (career.ts staffAll) hired the same composer Guide Me would have whenever a
+ * ceiling left it hiring no one, so the ceiling changed who signed the offer and not the film.
+ */
+const leftToGuide = (s: GameState, p: Project) => {
+  for (const h of p.hires.filter((x) => !x.guided && role(x.roleId).dept === 'Music')) {
+    try { if (h.status === 'offered') withdrawOffer(s, p, h.id); else if (h.status === 'accepted') releaseHire(s, p, h.id); } catch { /* answered meanwhile */ }
+  }
 };
 const composers = (s: GameState, projects: Project[]) => {
   const hired = projects.flatMap((p) => p.hires.filter((h) => h.roleId === 'composer' && (h.status === 'accepted' || h.status === 'released')));
@@ -61,5 +73,5 @@ export const PROBES: Probe[] = [
     base: { project: talking, decide: underTalk(2), ...REVIEWED }, variant: { project: talking, decide: underTalk(3), ...REVIEWED }, measure: minutes, bites: ['highUnderTalk'], downstream: ['quality.music', 'reception'] },
   // Guide Me hires within the ceiling and nobody beyond it (mandates.ts guideMePlan): a tenth of what its plan costs.
   { id: 'music-ceiling', features: [M('Music Spending Ceiling')], decision: 'Give Guide Me the music with a ceiling of a tenth of its plan\'s cost rather than all of it', reads: ['src/engine/mandates.ts#guideMePlan', 'src/engine/mandates.ts#runMandate'],
-    base: { decide: guideMusic(1), ...REVIEWED }, variant: { decide: guideMusic(0.1), ...REVIEWED }, measure: composers, bites: ['guideMeHires'], downstream: ['composerRates', 'quality.music'] },
+    base: { decide: guideMusic(1), beforeManage: leftToGuide, ...REVIEWED }, variant: { decide: guideMusic(0.1), beforeManage: leftToGuide, ...REVIEWED }, measure: composers, bites: ['guideMeHires'], downstream: ['composerRates', 'quality.music', 'delivered'] },
 ];

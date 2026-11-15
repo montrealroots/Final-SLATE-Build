@@ -30,6 +30,7 @@ const measure = (s: GameState) => ({
   takenByNumber: fraudOf(s).filter((f) => f.via === 'number').reduce((a, f) => a + f.amount, 0) / 100,
   cardLimit: cards(s).reduce((a, c) => a + (c.creditLimit ?? 0), 0) / 100,
   creditScore: sim(s).player.credit?.score ?? 0,
+  lclOpen: sg(s) ? 1 : 0,
 });
 const P = (id: string, command: string, decision: string, reads: string, base: Probe['base'], variant: Probe['variant'], bites: string[], downstream: string[]): Probe =>
   ({ id, features: [`bank:${command}`], decision, reads: [reads], base, variant, measure, bites, downstream });
@@ -111,18 +112,30 @@ const hardship = (s: GameState) => { try { bank(s, 'card.request_hardship'); } c
 const forgotten = first((s) => { const { accountId } = bank(s, 'bank.open_savings') as { accountId: string }; bank(s, 'bank.transfer', { fromId: primary(s), toId: accountId, amount: 1_000_000 }); });
 /** Each day: unclaimed money of yours claimed back, once there is any. */
 const claim = (s: GameState) => { if ((sim(s).player.unclaimed ?? []).length) try { bank(s, 'bank.claim_unclaimed'); } catch { /* nothing to claim */ } };
-/** Paris: on the fifth day, all but €50 of the current account moved to savings, and the camera bought on the debit card past it. */
+/**
+ * Paris: a second current account opened at LCL, €5 put in it and left alone. LCL keeps an account no salary is paid
+ * into for €3.33 a month (BNP Paribas, where a Parisian's money is, and SG waive theirs under 25, so a career's own
+ * account never goes past zero), so the second month's fee takes it past its limit.
+ */
 const PARIS = 'fr-paris';
-const overrun = (s: GameState, d: number) => {
-  if (d !== 5) return;
-  const mine = sim(s).ledger.accountsOf(sim(s).universe.playerId);
-  const savings = mine.find((a) => a.kind === 'savings' && !a.closedAt)?.id ?? (bank(s, 'bank.open_savings') as { accountId: string }).accountId;
-  const cur = sim(s).universe.accounts[primary(s)]!;
-  bank(s, 'bank.transfer', { fromId: cur.id, toId: savings, amount: cur.balance - 5_000 });
-  try { buyGear(s, 'bmpcc-4k'); } catch { /* refused */ }
-};
-/** Each day: the bank's loan for the overrun taken, once it is offered. */
-const takeLoan = (s: GameState) => { if (sim(s).universe.accounts[primary(s)]?.creditOffered) try { bank(s, 'bank.take_overrun_loan'); } catch { /* not now */ } };
+const LCL = 'fr-lcl';
+const sg = (s: GameState) => sim(s).ledger.accountsOf(sim(s).universe.playerId).find((a) => a.kind === 'checking' && a.bankId === LCL && !a.closedAt);
+const openSg: Step = (s) => { if (!sg(s)) bank(s, 'bank.open_current', { bankId: LCL }); };
+const fundSg: Step = (s) => { const a = sg(s); if (!a) throw new Error('not open yet'); bank(s, 'bank.transfer', { fromId: primary(s), toId: a.id, amount: 500 }); };
+/**
+ * Each day: the day LCL's offer of a loan for the overrun is first seen kept; with `take`, the loan taken. Forty-five
+ * days after the offer, €40 put into the LCL account, in both arms, if it's still open: money that comes, as it does
+ * for somebody past their limit, after the bank's notice to close (ninety days of overrun and thirty more) has run out.
+ */
+const offered = new WeakMap<GameState, number>();
+const overrun = (take: boolean) => { const open = steps(passport, openSg, fundSg); return (s: GameState) => {
+  open(s);
+  const a = sg(s);
+  if (a?.creditOffered && !offered.has(s)) offered.set(s, s.now);
+  if (take && a?.creditOffered) try { bank(s, 'bank.take_overrun_loan', { accountId: a.id }); } catch { /* not now */ }
+  const at = offered.get(s);
+  if (a && at !== undefined && s.now - at >= 45 * DAY && s.now - at < 46 * DAY) try { bank(s, 'bank.transfer', { fromId: primary(s), toId: a.id, amount: 4_000 }); } catch { /* refused */ }
+}; };
 /** In Toronto: a TD current account and a TD savings account with $10,000 in it, both left alone; on day 500, $5,000 asked back from it to the everyday account. */
 const TORONTO = 'ca-toronto';
 const tdSavings = (s: GameState) => sim(s).ledger.accountsOf(sim(s).universe.playerId).find((a) => a.kind === 'savings' && a.bankId === 'ca-td' && !a.closedAt);
@@ -196,8 +209,9 @@ export const PROBES: Probe[] = [
     { placeId: NY, years: 4, daily: forgotten }, { placeId: NY, years: 4, daily: both(forgotten, claim) },
     ['heldByState'], ['worth', 'inCurrent']),
   // French law has the bank offer a loan for an account past its limit three months (lending.ts frenchOverrun): taken,
-  // the overrun is cleared into a loan at its rate, before the bank's notice to close the account runs out.
-  P('overrun-loan', 'bank.take_overrun_loan', 'In Paris, take the loan the bank offers for the overrun', 'src/engine/bankworld/systems/lending.ts#frenchOverrun',
-    { placeId: PARIS, takeJobs: false, daily: overrun }, { placeId: PARIS, takeJobs: false, daily: both(overrun, takeLoan) },
-    ['loans'], ['overdrawnBy', 'inCollections', 'worth']),
+  // the overrun is cleared into a loan at its rate, so the bank's notice to close the account starts again, and the
+  // account is still open when money comes.
+  P('overrun-loan', 'bank.take_overrun_loan', 'In Paris, take the loan LCL offers when a second account\'s fees run it past its limit', 'src/engine/bankworld/systems/lending.ts#frenchOverrun',
+    { placeId: PARIS, takeJobs: false, years: 1, daily: overrun(false) }, { placeId: PARIS, takeJobs: false, years: 1, daily: overrun(true) },
+    ['loans'], ['inCollections', 'lclOpen', 'worth']),
 ];
