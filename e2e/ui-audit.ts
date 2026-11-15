@@ -11,6 +11,7 @@ import { findMisalignments, type Finding } from './layout';
  * - `bleed`: something is wider than the card, row, cell or button it is in;
  * - `clipped`: words are cut off by their own box, across or down, or a chooser is too narrow for the choice it shows;
  * - `target`: on a touch screen, something to tap is under 44 pixels in either direction;
+ * - `overlap`: two things that show words or take a tap are drawn over each other (from November 15, 2026);
  * - `dialog`: an open dialog is not wholly on the screen, or its buttons are not;
  * - `covered` (coveredWhenFocused): a field or button, brought into view by focusing it, is under a bar that stays put;
  * - `shift` (watchShifts, Chromium only): the page moved by itself after it was drawn, more than a tenth of the
@@ -23,7 +24,7 @@ import { findMisalignments, type Finding } from './layout';
  * a form is not. The signature is what parity compares between a desktop and a phone: the same headings in the same
  * order, the same things to press, the same fields.
  */
-export interface Defect { kind: Finding['kind'] | 'sideways' | 'outside' | 'bleed' | 'clipped' | 'target' | 'dialog' | 'covered' | 'shift'; what: string; by: number; where: string }
+export interface Defect { kind: Finding['kind'] | 'sideways' | 'outside' | 'bleed' | 'clipped' | 'target' | 'overlap' | 'dialog' | 'covered' | 'shift'; what: string; by: number; where: string }
 export interface Audit { signature: { headings: string[]; actions: string[]; fields: string[] }; defects: Defect[]; scrollers: string[]; accepted: string[] }
 
 /** Runs in the page, so it uses nothing from outside itself. */
@@ -44,6 +45,9 @@ export function auditPage(): Audit {
     for (let up = el.parentElement; up; up = up.parentElement) {
       const st = getComputedStyle(up);
       if (st.overflowY === 'visible' && st.overflowX === 'visible') continue;
+      // A pane that scrolls brings what is past its edge into view; only a pane that cuts off hides it. Until November
+      // 15, 2026 a pane that scrolls counted too, so on a phone only the first screenful of a long page was measured.
+      if (/auto|scroll/.test(st.overflowY) && /auto|scroll/.test(st.overflowX)) continue;
       const c = up.getBoundingClientRect();
       if (r.bottom <= c.top + 1 || r.top >= c.bottom - 1 || r.right <= c.left + 1 || r.left >= c.right - 1) return false;
     }
@@ -91,6 +95,37 @@ export function auditPage(): Audit {
     if (over > 1) add('outside', el, over);
     const boxEl = el.parentElement?.closest(BOXES);
     if (boxEl) { const b = boxEl.getBoundingClientRect(); const out = Math.max(r.right - b.right, b.left - r.left); if (out > 1.5 && b.width > 0) add('bleed', el, out, ` out of ${words(boxEl)}`); }
+  }
+  // Two things drawn over each other: words over words, or a button over words. Neither holds the other; a thing fixed
+  // to the screen (a bar) is left to `covered`, which asks the same of it with focus.
+  {
+    // What shows now: a list that scrolls inside the page hides what is past its edge, so each thing is cut to the
+    // part its scrolling boxes show (the page's own pane is scrolled to it).
+    type Box = { left: number; right: number; top: number; bottom: number };
+    // Each line's piece of it: words that wrap onto a second line are two pieces, not the box around both lines.
+    const shown = (el: Element): Box[] => {
+      const clips: Box[] = [];
+      for (let up = el.parentElement; up && !up.matches('main, .start-page, body'); up = up.parentElement) {
+        const st = getComputedStyle(up);
+        if (st.overflowY !== 'visible' || st.overflowX !== 'visible') clips.push(up.getBoundingClientRect());
+      }
+      return [...el.getClientRects()].map((r) => clips.reduce<Box>((b, c) => ({ left: Math.max(b.left, c.left), right: Math.min(b.right, c.right), top: Math.max(b.top, c.top), bottom: Math.min(b.bottom, c.bottom) }), { left: r.left, right: r.right, top: r.top, bottom: r.bottom }))
+        .filter((b) => b.right - b.left > 1 && b.bottom - b.top > 1);
+    };
+    const boxes = leaves.filter((el) => !el.matches('img') && (el.textContent?.trim() || el.matches('input, select, textarea')) && !/fixed|sticky/.test(getComputedStyle(el).position) && !el.matches('.skip-link'))
+      .map((el) => ({ el, rs: shown(el), pane: el.closest('main, [role="dialog"]') })).filter((b) => b.rs.length);
+    for (let i = 0; i < boxes.length; i++) for (let j = i + 1; j < boxes.length; j++) {
+      const a = boxes[i], b = boxes[j];
+      // The bar above the page and what the page has scrolled up under it are in different panes: the page's pane hides it.
+      if (a.pane !== b.pane || a.el.contains(b.el) || b.el.contains(a.el)) continue;
+      let most = 0;
+      for (const p of a.rs) for (const q of b.rs) {
+        const x = Math.min(p.right, q.right) - Math.max(p.left, q.left);
+        const y = Math.min(p.bottom, q.bottom) - Math.max(p.top, q.top);
+        if (x > 2 && y > 2) most = Math.max(most, Math.min(x, y));
+      }
+      if (most) add('overlap', a.el, most, ` over ${words(b.el)}`);
+    }
   }
   // Words cut off by their own box.
   for (const el of root.querySelectorAll('p, span, strong, label, button, a, h1, h2, h3, h4, li, dt, dd, td, th, summary, legend, .chip, .btn, option')) {

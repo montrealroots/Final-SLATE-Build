@@ -20,10 +20,10 @@ const SOURCES: { value: SongSource; label: string }[] = [
   { value: 'licensed', label: 'An Existing Song, Licensed' },
 ];
 const LYRICS = [
-  { value: 'with-music' as const, label: 'With The Music, By The Same Writer' },
-  { value: 'you' as const, label: 'Written By You' },
-  { value: 'commission' as const, label: 'Commissioned From A Lyricist' },
-  { value: 'none' as const, label: 'No Lyrics (Instrumental)' },
+  { value: 'with-music' as const, label: 'By The Songwriter' },
+  { value: 'you' as const, label: 'By You' },
+  { value: 'commission' as const, label: 'By A Lyricist You Hire' },
+  { value: 'none' as const, label: 'None (Instrumental)' },
 ];
 
 const names = (v: string) => v.split(',').map((x) => x.trim()).filter(Boolean);

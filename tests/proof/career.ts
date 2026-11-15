@@ -53,6 +53,11 @@ export interface Policy {
    * the catalog's studios, which tests don't load (tests/first-look.test.ts does the same).
    */
   studios?: import('../../src/engine/studios').StudioProfile[];
+  /** Approve each design as it is finished (a producer's default); off, nothing approves them. */
+  approveDesigns?: boolean;
+  /** Runs every day for the year's project, before the player's management: where a probe acts on something the
+   *  management would otherwise settle first, as a design waiting for approval. */
+  beforeManage?: (s: GameState, p: Project) => void;
   /** Runs every day, after the player's management and before time passes. */
   daily?: (s: GameState, day: number) => void;
   /** Runs once the cast and crew are asked and before the shoot is planned. */
@@ -129,7 +134,7 @@ function manageDay(state: GameState, p: Project, policy: Policy): string[] {
     staffAll(state, p);
     castEveryone(state, p, policy.castRate);
     // Designs: approve each one as it is finished, as a producer would (designs.ts).
-    for (const cid of designsToReview(p)) if (designStatus(p, cid) === 'awaiting') { approveDesign(p, cid); did.push('design-approved'); }
+    if (policy.approveDesigns !== false) for (const cid of designsToReview(p)) if (designStatus(p, cid) === 'awaiting') { approveDesign(p, cid); did.push('design-approved'); }
     // Motion capture: book the stage once the schedule exists, then approve the best take when capture is done.
     for (const t of p.tasks.filter((x) => x.kind === 'anim:mocap' && x.assetRef)) {
       const rec = mocapRecord(p, t.assetRef!);
@@ -255,6 +260,7 @@ export function playCareer(seed: string, policy: Policy = DEFAULT_POLICY): Caree
       if (!p.delivered && assemblyComplete(p) && !p.edit.pictureLocked && p.edit.cutPasses < policy.cutPasses && !p.tasks.some((t) => t.kind === 'post:cutpass' && t.status !== 'done')) {
         try { startCutPass(s, p); } catch { /* not now: tomorrow */ }
       }
+      policy.beforeManage?.(s, p);
       manageDay(s, p, policy);
     }
     if (policy.takeJobs) jobsTaken += takeOffers(s, policy.jobAnswer);

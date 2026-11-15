@@ -93,8 +93,10 @@ export const PROBES: Probe[] = [
   off('edition-announce', 'selections and nominations being announced', ['screenings'], ['offers', 'distributed', 'revenue'], AWARDS),
   // Results decide the prizes too (awards-results.ts decidePrizes), and a prize brings buyers' offers.
   // Films made to win (until November 14, 2026 the career's shorts won once in twenty careers, too seldom for what a win
-  // brings to show): a win counts in the opportunities its film draws and the record a studio reads.
-  { ...off('edition-results', 'results being decided', ['finalised', 'won'], ['backerBonus', 'opportunities', 'offers'], AWARDS_STRONG), seeds: 200 },
+  // brings to show): a win counts in the opportunities its film draws and the record a studio reads. Two hundred careers
+  // left those too small to tell apart from none (November 15, 2026: backer bonus -0.003, its interval reaching 0); a
+  // win is first an honour in the player's standing (reputation.ts HONOUR_SCORE, 95 against a selection's 70).
+  { ...off('edition-results', 'results being decided', ['finalised', 'won'], ['standing.producing', 'standing.directing', 'backerBonus', 'opportunities', 'offers'], AWARDS_STRONG), seeds: 200 },
   off('editions-roll', 'next year\'s editions being made', ['editionsOpen'], ['entries', 'selected'], AWARDS),
   off('screening', 'awards screenings', ['logLines'], ['selected'], AWARDS),
   off('work-day', 'the production\'s working days', ['delivered'], ['revenue', 'money']),

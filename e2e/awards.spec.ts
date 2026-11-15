@@ -821,7 +821,7 @@ test('Songs: made in the Production tab with separate writers, one licensed; a v
     await songs.getByRole('button', { name: 'Add Song' }).click();
     await expect(songs.getByRole('listitem', { name: `Song: ${title}` })).toBeVisible();
   };
-  await make('Salt Water', 'Commission It From A Songwriter', async (s) => { await s.getByLabel('Lyrics').selectOption({ label: 'Commissioned From A Lyricist' }); });
+  await make('Salt Water', 'Commission It From A Songwriter', async (s) => { await s.getByLabel('Lyrics').selectOption({ label: 'By A Lyricist You Hire' }); });
   await make('Harbour Lights', 'An Existing Song, Licensed', async (s) => { await s.getByLabel('Music By').fill('Ada Brook'); await s.getByLabel('Lyrics By').fill('Ada Brook'); await s.getByLabel('Rights Holder').fill('Tidewater Music'); });
   await make('Lantern', 'Write It Yourself');
   const song = (t: string) => songs.getByRole('listitem', { name: `Song: ${t}` });

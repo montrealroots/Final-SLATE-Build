@@ -6,6 +6,41 @@ Read this first. It lists what is finished, what the Gap Completion Package stil
 
 At every stopping point, open a pull request into `main` and merge it (see `CLAUDE.md`, certified by the user on November 6, 2026). Never merge red checks.
 
+## The Owner's Command Of November 15, 2026: Designs, Director's Fixes, Phone, Real Grades And Real Pay
+
+Six asks: prove designs and the director's fixes; stop the script asking three times where things are filmed; a phone
+UI with nothing misaligned and no text bleeding; real grades for performers "based off how everybody of importance sees
+them", with a coverage matrix; real SAG-AFTRA pay in the game, with a coverage matrix; and real crew (makeup, costume
+and the rest) with real grades filling the hiring lists.
+
+**Done.**
+- Where it's filmed: the creation form asks where you shoot (Production Base) and the Script page asks where the story
+  is set, once, the place and its words together under "Where The Story Is Set".
+- Designs and fixes proven (`tests/proof/probes/designs.ts`): approving a design, asking for changes, changing a design
+  and keeping or redoing finished shots, and shooting a pickup for each problem the dailies raise. Fixed from them:
+  accepting a gap ("Cut It Without Singles") took its cost out of the edit as if it had been shot; replacing the lines
+  in post was booked and paid and mended nothing; a pickup's refusal said "Add funding first" when adding it was refused
+  until the financing target went up. The harness gained `approveDesigns` and `beforeManage`
+  (`tests/proof/career.ts`), which made every earlier proof stale (each hashes the harness): all were rerun.
+- Phone: the audit measured only the first screenful of a scrolling page; it now measures the whole of it, and checks a
+  new fault, things drawn over each other (`e2e/ui-audit.ts`, `overlap`). It found the Lyrics chooser cut short (its
+  choices are shorter now). Text boxes grow to fit what is written (`GrowingTextarea`); a box kept three lines and cut
+  the next in half. `UI_SHOTS` pictures are now the whole length of each screen.
+- Real grades and pay: `tools/recognition/build.mjs` reads every win and nomination of the Academy, BAFTA, SAG, the
+  Emmys, the Golden Globes, Critics' Choice, Cannes, Venice, Berlin, Spirit and César awards from Wikidata (CC0) into
+  `src/data/recognition.json` (6,202 people with a TMDB ID, 200 categories). `src/engine/recognition.ts` reads a
+  person's standing in a job before the story's year (no future knowledge), and from it a capability, a grade and a
+  fee; `src/engine/union.ts` holds SAG-AFTRA's minimums by agreement (Ultra Low, Moderate Low, Low, Theatrical) and
+  date, read from the union's wage table. The coverage matrix: `docs/people/PERFORMERS.csv` (1,857), `CREW.csv`
+  (6,431 rows across 17 crafts) and `PAY.md` (the minimums, and the game's fees beside reported ones), written by
+  `tests/people-matrix.test.ts`.
+
+**Next.** Wire it in once the proof rerun has finished (it can't change files the proofs read while they run): the
+patches are written (`guests.ts`: capability and rate read from recognition, the crafts' TMDB jobs counted;
+`hiring.ts`: the SAG-AFTRA minimum on every performer's offer, and what performers ask lifted to it), then run
+`tests/recognition-hire.test.ts`, rewrite `tests/guests.test.ts`'s "draws their capability" test (nothing is drawn now),
+and run the `hire-recognised` proof and the proofs that read `guests.ts` and `hiring.ts`.
+
 ## The Owner's Command Of November 14, 2026 (Later): Every Feature Proven, Everything Possible
 
 Two asks: a coverage matrix of every feature with Monte Carlo proof that each reads, bites and has downstream effects

@@ -43,6 +43,17 @@ function styleSheetOf(): Record<string, string> {
   return out;
 }
 
+/** The whole length of a screen, not the first screenful: the pane it scrolls in is let out for the picture, then put back. */
+async function shot(page: Page, path: string, kind: string): Promise<void> {
+  if (kind === 'dialog' || kind === 'drawer') { await page.screenshot({ path }); return; }
+  await page.addStyleTag({ content: 'html, body, #root, #root > *, main { height: auto !important; max-height: none !important; overflow: visible !important; } /* shot */' });
+  // A browser draws a picture at most 32,767 pixels tall, counted in the screen's own pixels, and a very tall one takes
+  // longer to draw than a test waits: past 12,000 screen pixels the rest is left out of the picture.
+  const tall = await page.evaluate(() => Math.min(document.documentElement.scrollHeight, Math.floor(12_000 / devicePixelRatio)));
+  await page.screenshot({ path, fullPage: true, clip: { x: 0, y: 0, width: page.viewportSize()!.width, height: tall } });
+  await page.evaluate(() => { for (const s of document.querySelectorAll('style')) if (s.textContent?.endsWith('/* shot */')) s.remove(); });
+}
+
 interface Row { id: string; area: string; name: string; kind: string; sizes: Record<string, { defects: Defect[] }>; scrollers: string[]; accepted: string[]; parity?: { onlyDesktop: string[]; onlyPhone: string[]; sameOrder: boolean } }
 const rows: Row[] = [];
 
@@ -69,7 +80,7 @@ async function visit(page: Page, project: string, id: string, area: string, name
     // At the profile's own size: what moved by itself since the last screen, and what focus leaves under a bar.
     if (sizes[0][0] === w && sizes[0][1] === h) a.defects.push(...await shiftSince(page), ...await page.evaluate(coveredWhenFocused));
     row.sizes[`${label} (${w} by ${h})`] = { defects: a.defects };
-    if (SHOTS && (label === 'phone' || label === 'desktop' || label.includes('WebKit'))) await page.screenshot({ path: `${SHOTS}/${String(rows.length + 1).padStart(2, '0')}-${id}-${project}-${w}.png` });
+    if (SHOTS && (label === 'phone' || label === 'desktop' || label.includes('WebKit'))) await shot(page, `${SHOTS}/${String(rows.length + 1).padStart(2, '0')}-${id}-${project}-${w}.png`, kind);
     if (STYLES && (label === 'phone' || label === 'desktop')) styles[`${id} ${w}`] = await page.evaluate(styleSheetOf);
     for (const s of a.scrollers) if (!row.scrollers.includes(s)) row.scrollers.push(s);
     for (const s of a.accepted) if (!row.accepted.includes(s)) row.accepted.push(s);

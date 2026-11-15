@@ -1,4 +1,4 @@
-import { useEffect, useId, useRef, useState, type ReactNode } from 'react';
+import { useEffect, useId, useLayoutEffect, useRef, useState, type ReactNode, type TextareaHTMLAttributes } from 'react';
 import { getPlace } from '../data/places';
 import { formatClock, localParts, monthName, weekdayName } from '../engine/time';
 
@@ -46,12 +46,28 @@ export function Field(props: { label: string; error?: string | null; hint?: stri
   );
 }
 
+/**
+ * A text box as tall as what is written in it (from November 15, 2026): until then a box kept three lines, so longer
+ * writing showed a line cut in half at its foot. It grows to about twenty lines and scrolls after that.
+ */
+function GrowingTextarea(props: TextareaHTMLAttributes<HTMLTextAreaElement> & { value: string }) {
+  const ref = useRef<HTMLTextAreaElement>(null);
+  useLayoutEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    el.style.height = 'auto';
+    const st = getComputedStyle(el);
+    el.style.height = `${el.scrollHeight + parseFloat(st.borderTopWidth) + parseFloat(st.borderBottomWidth)}px`;
+  }, [props.value]);
+  return <textarea ref={ref} {...props} />;
+}
+
 export function TextField(props: { label: string; value: string; onChange: (v: string) => void; error?: string | null; hint?: string; type?: string; multiline?: boolean; maxLength?: number; autoComplete?: string; inputMode?: 'numeric' | 'text' | 'decimal'; min?: string; max?: string }) {
   return (
     <Field label={props.label} error={props.error} hint={props.hint}>
       {(id, db) =>
         props.multiline ? (
-          <textarea id={id} value={props.value} aria-invalid={!!props.error} aria-describedby={db} maxLength={props.maxLength} onChange={(e) => props.onChange(e.target.value)} />
+          <GrowingTextarea id={id} value={props.value} aria-invalid={!!props.error} aria-describedby={db} maxLength={props.maxLength} onChange={(e) => props.onChange(e.target.value)} />
         ) : (
           <input id={id} type={props.type ?? 'text'} value={props.value} aria-invalid={!!props.error} aria-describedby={db} maxLength={props.maxLength} min={props.min} max={props.max} autoComplete={props.autoComplete ?? 'off'} inputMode={props.inputMode} onChange={(e) => props.onChange(e.target.value)} />
         )
