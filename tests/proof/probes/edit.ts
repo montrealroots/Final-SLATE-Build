@@ -2,7 +2,11 @@
 // locked picture opened again, and a release called off.
 import type { Probe } from '../probe';
 import { setShotPlan, chooseTake } from '../../../src/engine/takes-actions';
-import { requestPickups, restoreToEdit, unlockImpact, unlockPicture } from '../../../src/engine/edit-actions';
+import { pickupDaysCost, requestPickups, restoreToEdit, unlockImpact, unlockPicture } from '../../../src/engine/edit-actions';
+import { ledgerTotals } from '../../../src/engine/budget';
+import { setPlannedBudget } from '../../../src/engine/project-budget';
+import { financeSummary } from '../../../src/engine/finance';
+import { putInOwnMoney } from '../../../src/engine/personal';
 import { cancelRelease, cutFromEdit, editScenes } from '../../../src/engine/finish';
 import { approvedScenes } from '../../../src/engine/projects';
 import type { GameState, Project } from '../../../src/engine/types';
@@ -23,9 +27,18 @@ const cutLast = (restore: boolean) => { const cut = new WeakMap<Project, string>
     else if (restore && !back.has(p)) { restoreToEdit(s, p, cut.get(p)!); back.add(p); }
   }
 }; };
-/** Once per project, after the shoot: pickups asked for the first scene. */
-const pickups = () => { const done = new WeakSet<Project>(); return (s: GameState) => {
-  for (const p of s.projects.filter((x) => !x.delivered && !x.edit.pictureLocked && !done.has(x) && x.schedule.days.length && !x.schedule.days.some((d) => d.status === 'scheduled'))) { try { requestPickups(s, p, [editScenes(p)[0].id]); } catch { /* none needed */ } done.add(p); }
+/**
+ * Once per project, after the shoot: pickups asked for the first scene, or with `all` for every scene in the cut. Where
+ * the money isn't there, the target raised by the shortfall and that much put in first, as the refusal says.
+ */
+const pickups = (all = false) => { const done = new WeakSet<Project>(); return (s: GameState) => {
+  for (const p of s.projects.filter((x) => !x.delivered && !x.edit.pictureLocked && !done.has(x) && x.schedule.days.length && !x.schedule.days.some((d) => d.status === 'scheduled'))) {
+    const ids = (all ? editScenes(p) : editScenes(p).slice(0, 1)).map((x) => x.id);
+    const short = Math.ceil(pickupDaysCost(p, ids) - ledgerTotals(p).available);
+    if (short > 0) try { setPlannedBudget(s, p, (financeSummary(p).target + short) * 100, 'Pickups.'); putInOwnMoney(s, p, financeSummary(p).stillToRaise); } catch { /* not allowed now */ }
+    try { requestPickups(s, p, ids); } catch { /* none needed */ }
+    done.add(p);
+  }
 }; };
 /** Once per project: the picture opened again the day it is locked, before delivery. */
 /** Once per film, once finishing work after the lock is under way (until November 14, 2026 this unlocked on the day of
@@ -116,5 +129,16 @@ export const PROBES: Probe[] = [
     measure,
     bites: ['cancelledReleases'],
     downstream: ['released', 'revenue', 'money'],
+  },  // Each scene ticked for pickups is reshot (edit-actions.ts requestPickups): every scene of the cut rather than the first.
+  {
+    id: 'pickup-scenes',
+    features: ['field:FinishViews.tsx#{`${g.label}: ${g.reason}`}#1'],
+    decision: 'Tick every scene of the cut for pickups rather than the first alone',
+    reads: ['src/engine/edit-actions.ts#requestPickups'],
+    base: { daily: pickups() },
+    variant: { daily: pickups(true) },
+    measure,
+    bites: ['shootDays'],
+    downstream: ['spent', 'daysToDeliver'],
   },
 ];

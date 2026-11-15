@@ -8,11 +8,11 @@ journey that shows it there.
 
 | Kind | proven | carried | does not bite | no downstream effect | stale | not a feature | not yet proven | All |
 |---|---|---|---|---|---|---|---|---|
-| action | 144 | 0 | 0 | 3 | 0 | 13 | 0 | 160 |
+| action | 139 | 0 | 0 | 3 | 5 | 13 | 0 | 160 |
 | bank | 43 | 0 | 0 | 0 | 0 | 0 | 11 | 54 |
 | scheduled | 55 | 0 | 0 | 0 | 0 | 11 | 0 | 66 |
-| field | 175 | 97 | 0 | 3 | 0 | 9 | 21 | 305 |
-| all | 417 | 97 | 0 | 6 | 0 | 33 | 32 | 585 |
+| field | 185 | 97 | 0 | 3 | 0 | 9 | 11 | 305 |
+| all | 422 | 97 | 0 | 6 | 5 | 33 | 22 | 585 |
 
 ## Rows
 
@@ -42,11 +42,11 @@ journey that shows it there.
 | applyFix | action | src/engine/directing.ts | proven | fix-with-pickups (40 seeds) | pickupDays +2.85; spent +6543; quality.editing +1.6 |
 | showCut | action | src/engine/documentary-actions.ts | proven | show-cut (120 seeds) | cutApproved +1; runtime +3.525; daysToDeliver +2.971 |
 | requestConsent | action | src/engine/documentary.ts | proven | request-consent (20 seeds) | consentGiven +3.1; delivered +1.25; revenue +90207 |
-| lockPicture | action | src/engine/edit-actions.ts | proven | lock-picture (40 seeds) | delivered -2; released -2; revenue -142510.875; standing.producing -3.125 |
-| requestPickups | action | src/engine/edit-actions.ts | proven | request-pickups (40 seeds) | shootDays +2.675; spent +7527.5; daysToDeliver +6.863 |
-| restoreToEdit | action | src/engine/edit-actions.ts | proven | restore-to-edit (40 seeds) | cutFromEdit -2; overall -0.6 |
-| startCutPass | action | src/engine/edit-actions.ts | proven | cut-passes (40 seeds) | quality.editing +8; daysToDeliver +3.175; overall +1.725; spent +3049.5 |
-| unlockPicture | action | src/engine/edit-actions.ts | proven | unlock-picture (40 seeds) | daysToDeliver +3; spent +2042.75 |
+| lockPicture | action | src/engine/edit-actions.ts | stale | lock-picture | measured before the code it reads last changed |
+| requestPickups | action | src/engine/edit-actions.ts | stale | request-pickups | measured before the code it reads last changed |
+| restoreToEdit | action | src/engine/edit-actions.ts | stale | restore-to-edit | measured before the code it reads last changed |
+| startCutPass | action | src/engine/edit-actions.ts | stale | cut-passes | measured before the code it reads last changed |
+| unlockPicture | action | src/engine/edit-actions.ts | stale | unlock-picture | measured before the code it reads last changed |
 | deliverEpisode | action | src/engine/episode-delivery.ts | no downstream effect | deliver-episode (40 seeds) | moved: episodesDeliveredAlone +1.85. Career not reached: an episode delivered on its own can come out before the season is finished, but only on a release planned before then; these careers sell a season once it is finished, so episode 1 delivered early (1.85 episodes a career, proven to bite) changes no release. To prove with a release planned while the season is in production. |
 | lockEpisode | action | src/engine/episode-delivery.ts | no downstream effect | deliver-episode (40 seeds) | moved: episodesDeliveredAlone +1.85. Career not reached: an episode delivered on its own can come out before the season is finished, but only on a release planned before then; these careers sell a season once it is finished, so episode 1 delivered early (1.85 episodes a career, proven to bite) changes no release. To prove with a release planned while the season is in production. |
 | startEpisodeCutPass | action | src/engine/episode-delivery.ts | proven | episode-cut-pass (40 seeds) | episodeCutPasses +1.7; quality.editing +3.35; spent +1348.55 |
@@ -308,11 +308,11 @@ journey that shows it there.
 | "First Name" | field | shown as your legal name, on credits: identity.ts legalName; with the birth and start dates it seeds the world (state.ts newGame) | carried | tests/identity.test.ts::credits carry the legal name | A name or a record, carried to shown as your legal name, on credits: identity.ts legalName; with the birth and start dates it seeds the world (state.ts newGame): it decides nothing by its nature. |
 | "Middle Name (Optional)" | field | shown as your legal name, on credits: identity.ts legalName; with the birth and start dates it seeds the world (state.ts newGame) | carried | tests/identity.test.ts::credits carry the legal name | A name or a record, carried to shown as your legal name, on credits: identity.ts legalName; with the birth and start dates it seeds the world (state.ts newGame): it decides nothing by its nature. |
 | "Last Name" | field | shown as your legal name, on credits: identity.ts legalName; with the birth and start dates it seeds the world (state.ts newGame) | carried | tests/identity.test.ts::credits carry the legal name | A name or a record, carried to shown as your legal name, on credits: identity.ts legalName; with the birth and start dates it seeds the world (state.ts newGame): it decides nothing by its nature. |
-| "Pronouns" | field | state.ts newGame (settledTitle) | not yet proven |  |  |
+| "Pronouns" | field | state.ts newGame (settledTitle) | proven | pronouns-she (40 seeds) | actressEntries +12; actorEntries -12 |
 | "Month" | field | shown as your age and birthday: state.ts characterAge, observedBirthday; it dates the inheritance (personal.ts inheritanceDay) and seeds the world (state.ts newGame) | carried | tests/dates.test.ts::you are exactly 19 on the starting date | A name or a record, carried to shown as your age and birthday: state.ts characterAge, observedBirthday; it dates the inheritance (personal.ts inheritanceDay) and seeds the world (state.ts newGame): it decides nothing by its nature. |
 | "Day" | field | shown as your age and birthday: state.ts characterAge, observedBirthday; it dates the inheritance (personal.ts inheritanceDay) and seeds the world (state.ts newGame) | carried | tests/dates.test.ts::you are exactly 19 on the starting date | A name or a record, carried to shown as your age and birthday: state.ts characterAge, observedBirthday; it dates the inheritance (personal.ts inheritanceDay) and seeds the world (state.ts newGame): it decides nothing by its nature. |
 | "Year Of Birth" | field | shown as your age and birthday: state.ts characterAge, observedBirthday; it dates the inheritance (personal.ts inheritanceDay) and seeds the world (state.ts newGame) | carried | tests/dates.test.ts::you are exactly 19 on the starting date | A name or a record, carried to shown as your age and birthday: state.ts characterAge, observedBirthday; it dates the inheritance (personal.ts inheritanceDay) and seeds the world (state.ts newGame): it decides nothing by its nature. |
-| "Place Of Birth" | field | identity.ts citizenshipOf -> awards.ts nationality rules | not yet proven |  |  |
+| "Place Of Birth" | field | identity.ts citizenshipOf -> awards.ts nationality rules | proven | born-in-paris (40 seeds) | efaEntries +2.6; decided +2.6; entries +2.85 |
 | "Where You Live" | field | state.ts newGame; projects.ts createProject (base) | proven | base-los-angeles (40 seeds) | lostDays -1.225; daysToDeliver -2.013 |
 | "Starting Date" | field | state.ts newGame | proven | start-2040 (40 seeds) | year +14; money +277034.155 |
 | "Starting Time" | field | state.ts newGame | no downstream effect | start-evening (40 seeds) | moved: daysToDeliver -1.275. Measure: starting at eight in the evening rather than the morning delivered the short 1.3 days sooner (40 careers, interval 1.1 to 1.5); nothing measured after the delivery date moved (a final balance $52,000 lower at four careers was noise). |
@@ -330,9 +330,9 @@ journey that shows it there.
 | "Release Date" | field | finish.ts planRelease; awards.ts qualifying windows | not yet proven |  |  |
 | "Territory Code" | field | awards.ts; finish.ts | proven | release-in-us (40 seeds) | entries -2.35; entryFees -537.75; selected -0.525 |
 | "Which Cut" | field | finish.ts planRelease; music.ts releaseSongs, releaseLicenceRefusal | not yet proven |  |  |
-| "Episode Schedule" | field | episode-releases.ts presetDates; finish.ts planRelease | not yet proven |  |  |
-| "Episodes On The Premiere" | field | episode-releases.ts presetDates | not yet proven |  |  |
-| {`Episode ${i + 2}`} | field | episode-releases.ts episodeDateProblem; awards-rules.ts airing; awards.ts ruledReleaseFits | not yet proven |  |  |
+| "Episode Schedule" | field | episode-releases.ts presetDates; finish.ts planRelease | proven | schedule-weekly (40 seeds) | emmyYears -1; decided -1; emmyEntries -1 |
+| "Episodes On The Premiere" | field | episode-releases.ts presetDates | proven | premiere-count (40 seeds) | emmyYears -1; decided -1; emmyEntries -1 |
+| {`Episode ${i + 2}`} | field | episode-releases.ts episodeDateProblem; awards-rules.ts airing; awards.ts ruledReleaseFits | proven | episode-date (40 seeds) | emmyYears -1; decided -0.975; emmyEntries -1 |
 | {`New Date For Episode ${e.number}`} | field | episode-releases.ts setEpisodeDates; release-schedule.ts scheduleChangeEffects | proven | episode-dates (40 seeds) | episodesMoved +2.8; renewalWait +49.35 |
 | "Project" | field | awards.ts checkEligibility | not yet proven |  |  |
 | "Episode To Enter" | field | awards-actions.ts submitEntry; finish.ts assessEpisode | not yet proven |  |  |
@@ -374,7 +374,7 @@ journey that shows it there.
 | {`Day Rate For ${c.name}`} | field | hiring.ts resolveOffer | proven | offered-rate (40 seeds) | castRates -209.1; spent -1157.925; countersSeen +0.75 |
 | "What To Call It" | field | shown as the stage's name: parts.ts partName: the Cast page, call sheets, offers, credits | carried | tests/parts.test.ts::is cast on its own | A name or a record, carried to shown as the stage's name: parts.ts partName: the Cast page, call sheets, offers, credits: it decides nothing by its nature. |
 | "Age In These Scenes (Optional)" | field | minors.ts minorFor (an uncast stage) | proven | stage-age-child (40 seeds) | hired +4; spent +4301.5; daysToDeliver +5.063 |
-| {`Episode ${e}`} | field | parts.ts stageIn, partScenes; hiring.ts estimateDays | not yet proven |  |  |
+| {`Episode ${e}`} | field | parts.ts stageIn, partScenes; hiring.ts estimateDays | proven | stage-episode (40 seeds) | stageDays +2; mainDays -2 |
 | {sceneLabel(p, s)} | field | parts.ts stageIn, castIn; production/shoot.ts; callsheet.ts; finish.ts | proven | add-stage (40 seeds) | stages +2; stageCast +2; performersCast +2; castRates +1578.75 |
 | {`Read ${who.name} With`} | field | auditions.ts pairChemistry | proven | chemistry-read (40 seeds) | chemistryRead +3.7; castChemistry +6.025; performance -0.831; overall -0.312 |
 | {`Writer For Episode ${e.number}`} | field | finish.ts assessEpisode | proven | episode-writer (40 seeds) | episodesByHire -2.925; writingWorks +0.375; writingCraft +13.275 |
@@ -393,7 +393,7 @@ journey that shows it there.
 | {`Camera For ${sceneLabel(p, s)}`} | field | craft.ts craftTime, craftRoles, rigDayCost, takeSpread; takes.ts planTime, recordTakes | proven | camera-moving (40 seeds) | spent +3189.5; ownIn +1900; overall -0.412 |
 | {`Coverage For ${sceneLabel(p, s)}`} | field | takes.ts requiredSetups; production/shoot.ts | proven | full-coverage (40 seeds) | setups +6; shootDays +25.775; spent +84311.5; quality.direction +2.213; overall +1.063 |
 | {`Takes For ${sceneLabel(p, s)}`} | field | takes.ts setupTime | proven | full-coverage (40 seeds) | setups +6; shootDays +25.775; spent +84311.5; quality.direction +2.213; overall +1.063 |
-| {`Site For ${place}`} | field | locations.ts | not yet proven |  |  |
+| {`Site For ${place}`} | field | locations.ts | proven | stage-sets (40 seeds) | onStage +6; lostDays -1.45; daysToDeliver -1.987 |
 | {`Backup For ${place}`} | field | locations.ts | proven | site-backup (40 seeds) | lostDays -1.275; shootDays -1.275 |
 | "New Planned Budget (US Dollars)" | field | project-budget.ts setPlannedBudget, readiness | proven | new-planned-budget (40 seeds) | ownIn +6270.5; hired +12.075; delivered +1.85; lostDays -672.15; revenue +126819.875 |
 | "Why" | field | PlanViews.tsx Plan Revisions | carried | tests/v8-budget.test.ts::keeps 20,000 and 2,000,000 exactly | A name or a record, carried to PlanViews.tsx Plan Revisions: it decides nothing by its nature. |
@@ -450,7 +450,7 @@ journey that shows it there.
 | "Competes As" | field | script-effects.ts competesAs | proven | competes-comedy (40 seeds) | comedyEntries +3; selected +0.2 |
 | "Source Material" | field | awards-rules.ts (original or adapted screenplay) | proven | source-adapted (40 seeds) | adaptedEntries +9; entries -3.125 |
 | "Adapted From" | field | shown with the project | carried | tests/carried-text.test.ts::kept through a save exactly as written | A name or a record, carried to shown with the project: it decides nothing by its nature. |
-| "When It Is Set" | field | awards-rules.ts requirementProblems | not yet proven |  |  |
+| "When It Is Set" | field | awards-rules.ts requirementProblems | proven | set-in-period (40 seeds) | periodEntries +5.45; decided +2.725; entries +2.675 |
 | "Year It Is Set In" | field | looks.ts periodBand, projectBand; projects.ts deriveRequirements; production/tasks.ts buildTasks | proven | story-year (40 seeds) | spent +8786.75; money -26599.279; daysToDeliver +1.688 |
 | "The Look It Borrows" | field | the Creative Brief card | carried | tests/looks.test.ts::1986 made in 2026 is a period: research, and half as much costume work again; 2026 is neither; the look it borrows changes no work | A name or a record, carried to the Creative Brief card: it decides nothing by its nature. |
 | "Story Setting Place" | field | projects.ts deriveRequirements | proven | setting-abroad (40 seeds) | spent +2504.25; hired +2; ownIn +2425 |
@@ -459,7 +459,7 @@ journey that shows it there.
 | {q.label} | field | shown with the genre questions | carried | tests/carried-text.test.ts::kept through a save exactly as written | A name or a record, carried to shown with the genre questions: it decides nothing by its nature. |
 | "Draft Name" | field | drafts list | carried | tests/carried-text.test.ts::kept through a save exactly as written | A name or a record, carried to drafts list: it decides nothing by its nature. |
 | "Draft Name" | field | drafts list | carried | tests/carried-text.test.ts::kept through a save exactly as written | A name or a record, carried to drafts list: it decides nothing by its nature. |
-| {`"${x.title}" In This Scene`} | field | songs.ts songUses; projects.ts deriveRequirements | not yet proven |  |  |
+| {`"${x.title}" In This Scene`} | field | songs.ts songUses; projects.ts deriveRequirements | proven | add-song (40 seeds) | songs +2; songUses +2; released -2; revenue -108215.25 |
 | "Interior Or Exterior" | field | production/shoot.ts (weather) | proven | scene-exterior (40 seeds) | lostDays +1.4; shootDays +1.2; money -24746.941 |
 | "Place" | field | production/schedule.ts groupShootDays | proven | scenes-one-place (40 seeds) | shootDays -3.475; spent -17914.5; ownIn -575 |
 | "Time Of Day" | field | production/rates.ts dayFees | proven | scene-night (40 seeds) | spent +1438.55; overall +0.438 |
@@ -588,7 +588,7 @@ journey that shows it there.
 | "Music By" | field | songs.ts songCredits; awards recipients | not a feature |  | Names typed for a song that existed before the film, carried to its credits (songs.ts songCredits). An award for an original song takes only one written for the project (awards-rules.ts writtenForProject), so these names never decide an entry; who writes a song made for the film is its own row (Where It Comes From, Lyrics). |
 | "Lyrics By" | field | songs.ts songCredits; awards recipients | not a feature |  | Names typed for a song that existed before the film, carried to its credits (songs.ts songCredits). An award for an original song takes only one written for the project (awards-rules.ts writtenForProject), so these names never decide an entry; who writes a song made for the film is its own row (Where It Comes From, Lyrics). |
 | "Rights Holder" | field | shown with the song | carried | e2e/journey-e.spec.ts::refused with a reason, then recovered | A name or a record, carried to shown with the song: it decides nothing by its nature. |
-| {`Scene For ${s.title}`} | field | songs.ts songUses | not yet proven |  |  |
+| {`Scene For ${s.title}`} | field | songs.ts songUses | proven | add-song (40 seeds) | songs +2; songUses +2; released -2; revenue -108215.25 |
 | "How It Plays" | field | awards-rules.ts songRuleProblem | proven | song-opening-titles (40 seeds) | licenceFees +36445.5; spent +27027; money -27027 |
 | "Minutes It Plays" | field | awards-rules.ts songRuleProblem | proven | song-minutes (40 seeds) | licenceFees +166461.75; spent +127764 |
 | {`${c.name} Performs ${s.title}`} | field | credits: songs.ts songCredits (Song Performed By), and the casting notes: casting-notes.ts fitNotes | carried | tests/songs.test.ts::played to delivery: writers are whoever wrote | A name or a record, carried to credits: songs.ts songCredits (Song Performed By), and the casting notes: casting-notes.ts fitNotes: it decides nothing by its nature. |

@@ -2,7 +2,9 @@
  "id": "add-song",
  "features": [
   "action:song-actions.createSong",
-  "action:song-actions.attachSong"
+  "action:song-actions.attachSong",
+  "field:WorkViews.tsx#{`Scene For ${s.title}`}#1",
+  "field:ScriptViews.tsx#{`\"${x.title}\" In This Scene`}#1"
  ],
  "decision": "Use a licensed track in the first scene (unlicensed), or no track at all",
  "reads": [

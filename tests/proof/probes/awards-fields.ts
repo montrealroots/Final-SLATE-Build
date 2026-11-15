@@ -9,6 +9,7 @@ import { submitEntry } from '../../../src/engine/awards-actions';
 import { feature } from './script';
 import { inUsCinemas } from './songs';
 import { SERIES } from './scheduled';
+import { castSelf } from './creation-fields';
 import { commission } from './project-fields';
 import { unfunded } from '../career';
 import { buildProject } from '../../helpers';
@@ -50,6 +51,14 @@ const HOUR = (fn: (p: Project) => void = () => {}) => ({
   daily: enterAll,
 });
 const SELF = { years: 3, project: feature(), takeDistribution: false, daily: enterAll };
+/** The entries in categories for actresses and for actors, with kinds(). */
+const billed = (s: GameState) => {
+  const title = (instId: string, year: number, catId: string) => categoriesFor(institution(instId), year).find((c) => c.id === catId)?.actingTitle;
+  const mine = s.editions.flatMap((ed) => ed.entries.filter((e) => s.projects.some((p) => p.id === e.projectId)).map((e) => title(ed.institutionId, ed.year, e.categoryId)));
+  return { ...kinds(s), actressEntries: mine.filter((t) => t === 'Actress').length, actorEntries: mine.filter((t) => t === 'Actor').length };
+};
+/** The feature opened by the career in cinemas in Britain, France and Germany. */
+const THREE = { ...SELF, releaseRoute: 'theatrical' as const, territories: ['GB', 'FR', 'DE'] };
 const US = (fn?: (p: Project) => void) => ({ years: 3, project: film(fn), takeDistribution: false, release: false, afterDelivery: inUsCinemas, daily: enterAll });
 
 export const PROBES: Probe[] = [
@@ -74,4 +83,15 @@ export const PROBES: Probe[] = [
   // 45-minute episodes, made in Los Angeles, streamed in the US a fortnight after delivery, entered in everything.
   { id: 'set-in-period', features: ['field:ScriptViews.tsx#"When It Is Set"#1'], decision: 'Set the season in the past rather than the present day', reads: ['src/engine/awards-rules.ts#requirementProblems'],
     base: HOUR(), variant: HOUR((p) => { p.storyTime = 'period'; }), measure: kinds, bites: ['periodEntries'], downstream: ['decided', 'entryFees', 'entries'] },
+  // Where you were born is your citizenship (identity.ts citizenshipOf), which the European Film Awards read for the
+  // director: born in Europe or holding a European passport (awards-rules.ts nationalitiesOf). On the feature made in
+  // London, which you direct, opened by the career in cinemas in three countries (the awards ask for three, or a festival).
+  { id: 'born-in-paris', features: ['field:Creation.tsx#"Place Of Birth"#1'], decision: 'Be born in Paris rather than Tokyo', reads: ['src/engine/identity.ts#citizenshipOf', 'src/engine/awards-rules.ts#nationalitiesOf'],
+    base: THREE, variant: { ...THREE, creation: { birthplaceId: 'fr-paris' } }, measure: (s) => ({ ...kinds(s), efaEntries: s.editions.filter((e) => e.institutionId === 'european-film-awards').reduce((a, ed) => a + ed.entries.filter((e) => s.projects.some((p) => p.id === e.projectId)).length, 0) }),
+    bites: ['efaEntries'], downstream: ['decided', 'entryFees', 'entries'] },
+  // He/Him and She/Her settle how you are billed (state.ts newGame: Actor, Actress); the gendered acting categories take
+  // your own performance under that title (awards.ts creditedRecipients). On the US-released feature, its lead played by
+  // you: She/Her rather than the default draft's They/Them billed as an actor.
+  { id: 'pronouns-she', features: ['field:Creation.tsx#"Pronouns"#1'], decision: 'Choose She/Her, then play the lead of your feature yourself', reads: ['src/engine/state.ts#newGame', 'src/engine/awards.ts#creditedRecipients'],
+    base: { ...US(), decide: castSelf }, variant: { ...US(), decide: castSelf, creation: { pronouns: 'she' } }, measure: billed, bites: ['actressEntries'], downstream: ['actorEntries', 'decided'] },
 ];
