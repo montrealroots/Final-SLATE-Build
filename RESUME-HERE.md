@@ -51,6 +51,13 @@ estimate" for figures no source gives. Start at `docs/v10/README.md`.
   they are shown are "carried" in the matrix, with the test that shows them; a writer's revision focus is left open for
   the owner (nothing reads it).
 
+**Paused by the owner (November 15, 2026), to pick up later.** PR #97 is open; its last CI run failed one journey:
+`e2e/journey-c.spec.ts` (a pinned seed whose US cinema offer moved when the edit started counting in a film's overall).
+The journey now picks a theatrical offer its song licences cover; a seed that gives one is still to be found (seeds 8 to
+20 tried on the desktop project: none; `SONG_SEED=<n> npx playwright test e2e/journey-c.spec.ts --project=desktop`). Local
+commits after #97's head are not pushed. Then: `npm run check`, push, merge #97 on green. The fix list has one row left,
+festival results (`off-edition-results`, set to 200 seeds, not yet run); everything else on it is proven or explained.
+
 **Next, in order.**
 1. Probes for the remaining actions (about 60 actions, 39 bank commands, 260 fields), bank commands and fields; careers that reach the unreached event kinds.
 2. Fix each feature a proof fails: cash first, then festival selections and outside work.

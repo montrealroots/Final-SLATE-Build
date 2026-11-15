@@ -113,6 +113,13 @@ Run the proofs with `npm run proof` (`PROBES=id,id` for some, `SEEDS=n` to chang
   waits 55 days longer to decide and renews fewer seasons. The career's shorts were never aired, so nothing read it.
 - **A part's size** is proven by the judging it reaches: written as supporting, the lead leaves the European Film Awards'
   actor category (the one acting category a London feature can enter), and three entries a career are never judged.
+- **Shelving is proven where it is used, after hiring.** Shelved before anyone is hired, a film is only delivered 52 days
+  later. Shelved once cast and crew are hired, everyone is released, and the game records each as let go
+  (`relationships.ts`): asked back, they want 15% more, so the cast costs $169 a day more, offers are turned down and the
+  film earns less. The delay the probe measures (265 days) is inflated by its own rehiring, which keeps offering the
+  asking rate; a player who offered the 15% would be quicker.
+- **Your own notes are proven:** written on the script's unpaid setups and revised before they are fixed, they add 6 to the
+  script and 1.7 to the film.
 - **Record-keeping, not features:** a job offer lapsing and a proposal expiring only mark them for your list; the deadline
   is enforced when you answer, and nothing else reads the mark (`docs/v10/not-features.json`).
 - **Open, a decision for the owner:** what a writer's revision should look at (Structure, Dialogue, Pace and the rest) is

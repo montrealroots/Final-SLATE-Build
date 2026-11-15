@@ -8,11 +8,11 @@ journey that shows it there.
 
 | Kind | proven | carried | does not bite | no downstream effect | stale | not a feature | not yet proven | All |
 |---|---|---|---|---|---|---|---|---|
-| action | 99 | 0 | 0 | 2 | 0 | 8 | 50 | 159 |
+| action | 101 | 0 | 0 | 0 | 0 | 8 | 50 | 159 |
 | bank | 15 | 0 | 0 | 0 | 0 | 0 | 39 | 54 |
 | scheduled | 38 | 0 | 0 | 1 | 0 | 5 | 22 | 66 |
 | field | 36 | 13 | 0 | 0 | 0 | 0 | 257 | 306 |
-| all | 188 | 13 | 0 | 3 | 0 | 13 | 368 | 585 |
+| all | 190 | 13 | 0 | 1 | 0 | 13 | 368 | 585 |
 
 ## Rows
 
@@ -150,8 +150,8 @@ journey that shows it there.
 | recordScreenTime | action | src/engine/screen-time.ts | not yet proven |  |  |
 | moveEpisode | action | src/engine/season.ts | not yet proven |  |  |
 | continueProject | action | src/engine/sequel.ts | not yet proven |  |  |
-| resumeProject | action | src/engine/shelve.ts | no downstream effect | shelve-resume (60 seeds) | moved: deliveredDay +51.867. Shelved straight after the script is approved, before anyone is hired, the film is delivered 52 days later and nothing else changes: there are no offers to withdraw, no crew to settle and no days booked, so shelving early costs only time. Within a two-year career the later delivery doesn't show in what the film earns. |
-| shelveProject | action | src/engine/shelve.ts | no downstream effect | shelve-resume (60 seeds) | moved: deliveredDay +51.867. Shelved straight after the script is approved, before anyone is hired, the film is delivered 52 days later and nothing else changes: there are no offers to withdraw, no crew to settle and no days booked, so shelving early costs only time. Within a two-year career the later delivery doesn't show in what the film earns. |
+| resumeProject | action | src/engine/shelve.ts | proven | shelve-resume (60 seeds) | hiresReleased +16; deliveredDay +264.783; offersDeclined +318.217; castRates +169.333; revenue -94136.25; money -102728.477 |
+| shelveProject | action | src/engine/shelve.ts | proven | shelve-resume (60 seeds) | hiresReleased +16; deliveredDay +264.783; offersDeclined +318.217; castRates +169.333; revenue -94136.25; money -102728.477 |
 | attachSong | action | src/engine/song-actions.ts | proven | add-song (40 seeds) | songs +2; songUses +2; released -2; revenue -111865 |
 | changeVersionSong | action | src/engine/song-actions.ts | not yet proven |  |  |
 | createSong | action | src/engine/song-actions.ts | proven | add-song (40 seeds) | songs +2; songUses +2; released -2; revenue -111865 |
