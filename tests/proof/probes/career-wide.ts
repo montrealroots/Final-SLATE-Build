@@ -7,6 +7,7 @@ import { acceptFirstLook, askMoreOverhead, declineFirstLook, endFirstLook, first
 import { resumeProject, shelveProject } from '../../../src/engine/shelve';
 import { personalPostings } from '../../../src/engine/personal';
 import { DAY, processUntil } from '../../engine-api';
+import { castAll, staffAll } from '../../helpers';
 
 /** Approaches the first agent until one offers, then signs. */
 export const withAgent = (agentId: string) => (s: GameState) => {
@@ -44,7 +45,14 @@ const measure = (s: GameState) => ({
   firstLookEnded: firstLooks(s).filter((f) => f.status === 'ended-early').length,
 });
 /** Shelves the year's project once its script is approved, and takes it up again two months later. */
-const shelveTwoMonths = (s: GameState, p: Project) => { shelveProject(s, p); processUntil(s, s.now + 60 * DAY, 'tick', 5_000_000); resumeProject(s, p); };
+/** Shelved once the cast and crew are hired, taken up two months later and hired again (they were released). */
+const shelveHired = (s: GameState, p: Project) => {
+  shelveProject(s, p);
+  processUntil(s, s.now + 60 * DAY, 'tick', 5_000_000);
+  resumeProject(s, p);
+  // Hired again, each part and job offered to someone else when its first choice says no, as a player keeps asking.
+  for (let day = 0; day < 21; day++) { castAll(s, p); staffAll(s, p); processUntil(s, s.now + DAY, 'tick', 5_000_000); }
+};
 
 export const PROBES: Probe[] = [
   { id: 'agent', features: ['action:representation.approachAgent', 'action:representation.signWith', 'scheduled:agent-answer'], decision: 'Approach an agent and sign when they offer',
@@ -65,9 +73,16 @@ export const PROBES: Probe[] = [
   { id: 'shelve-resume', features: ['action:shelve.shelveProject', 'action:shelve.resumeProject'], decision: 'Shelve the film after its script is approved and take it up two months later',
     // Measured by the day the film is delivered: the career's daysToDeliver counts from the shoot, after the shelf (until
     // November 14, 2026 this probe looked there and saw 3.5 days).
-    seeds: 60, reads: ['src/engine/shelve.ts#shelveProject', 'src/engine/shelve.ts#resumeProject'], variant: { decide: shelveTwoMonths },
+    // Shelved once the cast and crew are hired, as a player stops a production: they are released, and taken up again
+    // the work is hired afresh (until November 14, 2026 it was shelved before anyone was hired, which cost only time).
+    seeds: 60, reads: ['src/engine/shelve.ts#shelveProject', 'src/engine/shelve.ts#resumeProject'], variant: { beforeShoot: shelveHired },
     // The first film, the one shelved; one not delivered counts as the career's last day (an average over both years
     // counted it as day zero, which swamped the two months).
-    measure: (s, projects) => ({ deliveredDay: Math.round((projects[0]?.delivered?.at ?? s.now) / 86_400_000) }),
-    bites: ['deliveredDay'], downstream: ['revenue', 'money', 'released', 'gross'] },
+    measure: (s, projects) => ({
+      deliveredDay: Math.round((projects[0]?.delivered?.at ?? s.now) / 86_400_000),
+      hiresReleased: projects.reduce((a, p) => a + p.hires.filter((h) => h.status === 'released').length, 0),
+      // Offers turned down: people you let go are less willing to come back (relationships.ts).
+      offersDeclined: projects.reduce((a, p) => a + p.hires.filter((h) => h.status === 'declined').length, 0),
+    }),
+    bites: ['hiresReleased', 'deliveredDay'], downstream: ['offersDeclined', 'castRates', 'revenue', 'money'] },
 ];

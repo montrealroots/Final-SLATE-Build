@@ -50,7 +50,7 @@ export const PROBES: Probe[] = [
   },
   {
     id: 'own-notes',
-    features: ['action:projects.addNote'],
+    features: ['action:projects.addNote', 'field:ScriptViews.tsx#"Note"#1', 'field:ScriptViews.tsx#"Area"#1', 'field:ScriptViews.tsx#"About"#1'],
     // The owner's choice of November 14, 2026: a note of your own on a problem the checks flag counts as the check's own
     // note does, once a revision addresses it and the problem is fixed (projects.ts addNote, finish.ts). Until then your
     // notes counted for nothing, and this probe added two on nothing.

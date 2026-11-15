@@ -488,7 +488,7 @@
  "verdict": "proven",
  "hashes": {
   "src/engine/edit-actions.ts": "ccfbf20f52e5f59a",
-  "src/engine/finish.ts": "0b2efc44d2050ac2",
+  "src/engine/finish.ts": "a24433fe72efaf22",
   "tests/proof/career.ts": "2d4877367212a0ea"
  }
 }

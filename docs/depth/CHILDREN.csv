@@ -96,7 +96,7 @@ SLATE-06-04.02,SLATE-06-04,"Duplicate a scene (new ID), split one in two, combin
 SLATE-06-04.03,SLATE-06-04,Cut from the edit and restore,VERIFIED EXISTING,tests/script-effects.test.ts::missing footage names the scene and the choices,,,,,,,,,
 SLATE-06-05.01,SLATE-06-05,"Save a draft, compare, restore; the working copy stays separate",VERIFIED EXISTING,"tests/writing.test.ts::compares drafts, restores an earlier one",,,,,,,,,
 SLATE-06-05.02,SLATE-06-05,Re-approving after filming keeps unchanged scenes and redoes only changed ones,VERIFIED EXISTING,tests/writing.test.ts::re-approving after filming keeps unchanged scenes | e2e/careers.spec.ts::an approved scene changed after filming,,,,,,,,,
-SLATE-06-05.03,SLATE-06-05,Repeated revision earns nothing,VERIFIED EXISTING,tests/screenwriting.test.ts::your own notes and repeated revision passes add nothing,,,,,,,,,
+SLATE-06-05.03,SLATE-06-05,Repeated revision earns nothing,VERIFIED EXISTING,tests/screenwriting.test.ts::your own notes on no problem,,,,,,,,,
 SLATE-07-01.01,SLATE-07-01,World rules and relationships shared across episodes,VERIFIED,tests/episodes.test.ts::a relationship touches every scene its two characters share | e2e/season.spec.ts::A relationship touches every scene its two characters share,,,,,,,,,
 SLATE-07-01.02,SLATE-07-01,Changing a shared fact previews the episodes it touches,VERIFIED,"tests/episodes.test.ts::a rule lists the scenes that rely on it, by episode, and which are recorded | e2e/season.spec.ts::changing a shared fact says which episodes it touches first",,,,,,,,,
 SLATE-07-02.01,SLATE-07-02,Episodes with titles and scenes; work and credits per episode,VERIFIED EXISTING,tests/media.test.ts::produces episodes with episode-specific credits,,,,,,,,,

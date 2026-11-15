@@ -63,6 +63,9 @@
   "selected": 0,
   "won": 0,
   "decided": 0,
+  "finalised": 0,
+  "screenings": 0,
+  "offers": 3.525,
   "editionsOpen": 99.6,
   "firstLookOffers": 0,
   "opportunities": 0.275,
@@ -71,6 +74,11 @@
   "industryStanding": 0.996,
   "productionsChanged": 0.6,
   "jobsCancelled": 0,
+  "overheadPaid": 0,
+  "commissioned": 0,
+  "renewalWait": 0,
+  "renewed": 0,
+  "aired": 0.95,
   "productionResults": 2.8,
   "fired": 2
  },
@@ -129,6 +137,9 @@
   "selected": 0,
   "won": 0,
   "decided": 0,
+  "finalised": 0,
+  "screenings": 0,
+  "offers": 2.325,
   "editionsOpen": 99.6,
   "firstLookOffers": 0,
   "opportunities": 0.3,
@@ -137,6 +148,11 @@
   "industryStanding": 1.01,
   "productionsChanged": 0.95,
   "jobsCancelled": 0.025,
+  "overheadPaid": 0,
+  "commissioned": 0,
+  "renewalWait": 0,
+  "renewed": 0,
+  "aired": 0.825,
   "productionResults": 3.25,
   "fired": 2
  },
@@ -519,6 +535,27 @@
    "changed": 0,
    "n": 40
   },
+  "finalised": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 40
+  },
+  "screenings": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 40
+  },
+  "offers": {
+   "mean": -1.2,
+   "lo": -1.575,
+   "hi": -0.825,
+   "changed": 33,
+   "n": 40
+  },
   "editionsOpen": {
    "mean": 0,
    "lo": 0,
@@ -575,6 +612,41 @@
    "changed": 1,
    "n": 40
   },
+  "overheadPaid": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 40
+  },
+  "commissioned": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 40
+  },
+  "renewalWait": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 40
+  },
+  "renewed": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 40
+  },
+  "aired": {
+   "mean": -0.125,
+   "lo": -0.359,
+   "hi": 0.109,
+   "changed": 21,
+   "n": 40
+  },
   "productionResults": {
    "mean": 0.45,
    "lo": 0.017,
@@ -608,7 +680,7 @@
  ],
  "verdict": "proven",
  "hashes": {
-  "src/engine/finish.ts": "0b2efc44d2050ac2",
+  "src/engine/finish.ts": "a24433fe72efaf22",
   "tests/proof/career.ts": "2d4877367212a0ea"
  }
 }

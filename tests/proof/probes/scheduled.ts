@@ -11,7 +11,7 @@ import { industryStanding } from '../../../src/engine/productions';
 import { scheduled } from '../register';
 import { unfunded } from '../career';
 import { buildProject } from '../../helpers';
-import { financeSummary } from '../../../src/engine/finance';
+import { financeSummary, trackRecord } from '../../../src/engine/finance';
 import { acceptDistribution } from '../../../src/engine/finish';
 import { STUDIOS, answerFirstLooks } from './career-wide';
 import { answer as answerOpportunities } from './opportunities';
@@ -29,6 +29,8 @@ const measure = (s: GameState, projects: Project[]) => {
     won: mine.filter((e) => e.status === 'won').length,
     decided: mine.filter((e) => ['won', 'lost', 'mention', 'not-selected', 'not-nominated', 'nominated', 'selected'].includes(e.status)).length,
     finalised: mine.filter((e) => ['won', 'lost', 'mention'].includes(e.status)).length,
+    // How backers weigh your record (finance.ts trackRecord): its bonus to a backer's yes, which a win raises.
+    backerBonus: trackRecord(s).bonus,
     screenings: s.editions.reduce((a, ed) => a + (ed.screenings ?? []).filter((sc) => projects.some((p) => p.id === sc.projectId)).length, 0),
     offers: projects.reduce((a, p) => a + p.offers.length, 0),
     editionsOpen: s.editions.filter((e) => e.status !== 'upcoming').length,
@@ -92,7 +94,7 @@ export const PROBES: Probe[] = [
   // Results decide the prizes too (awards-results.ts decidePrizes), and a prize brings buyers' offers.
   // Films made to win (until November 14, 2026 the career's shorts won once in twenty careers, too seldom for what a win
   // brings to show): a win counts in the opportunities its film draws and the record a studio reads.
-  { ...off('edition-results', 'results being decided', ['finalised', 'won'], ['opportunities', 'offers', 'standing.producing'], AWARDS_STRONG), seeds: 60 },
+  { ...off('edition-results', 'results being decided', ['finalised', 'won'], ['backerBonus', 'opportunities', 'offers'], AWARDS_STRONG), seeds: 60 },
   off('editions-roll', 'next year\'s editions being made', ['editionsOpen'], ['entries', 'selected'], AWARDS),
   off('screening', 'awards screenings', ['logLines'], ['selected'], AWARDS),
   off('work-day', 'the production\'s working days', ['delivered'], ['revenue', 'money']),
