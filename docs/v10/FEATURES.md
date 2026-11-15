@@ -11,8 +11,8 @@ journey that shows it there.
 | action | 144 | 0 | 0 | 3 | 0 | 13 | 0 | 160 |
 | bank | 43 | 0 | 0 | 0 | 0 | 0 | 11 | 54 |
 | scheduled | 55 | 0 | 0 | 0 | 0 | 11 | 0 | 66 |
-| field | 136 | 90 | 0 | 2 | 0 | 8 | 69 | 305 |
-| all | 378 | 90 | 0 | 5 | 0 | 32 | 80 | 585 |
+| field | 136 | 91 | 0 | 2 | 0 | 9 | 67 | 305 |
+| all | 378 | 91 | 0 | 5 | 0 | 33 | 78 | 585 |
 
 ## Rows
 
@@ -351,7 +351,7 @@ journey that shows it there.
 | "Who It Happens To" | field | shown as the logline it builds: src/ideas/loglines.ts compose; brief.ts applyIdea | carried | tests/ideas.test.ts::refuses parts that don't go together, and parts that aren't there | A name or a record, carried to shown as the logline it builds: src/ideas/loglines.ts compose; brief.ts applyIdea: it decides nothing by its nature. |
 | "What They Must Do" | field | shown as the logline it builds: src/ideas/loglines.ts compose; brief.ts applyIdea | carried | tests/ideas.test.ts::refuses parts that don't go together, and parts that aren't there | A name or a record, carried to shown as the logline it builds: src/ideas/loglines.ts compose; brief.ts applyIdea: it decides nothing by its nature. |
 | "What It Costs" | field | shown as the logline it builds: src/ideas/loglines.ts compose; brief.ts applyIdea | carried | tests/ideas.test.ts::refuses parts that don't go together, and parts that aren't there | A name or a record, carried to shown as the logline it builds: src/ideas/loglines.ts compose; brief.ts applyIdea: it decides nothing by its nature. |
-| "Find A Composer, Artist Or Recording" | field | music-catalog.ts searchMusic | not yet proven |  |  |
+| "Find A Composer, Artist Or Recording" | field | music-catalog.ts searchMusic | not a feature |  | A search of the music catalog: it narrows who and what is listed (tests/music-catalog.test.ts::finds people by name and role), as the role filter beside it does. Licensing a recording or considering a composer found is the decision, proven by license-recording and consider-composer. |
 | "Their Role" | field | music-catalog.ts searchMusic | not a feature |  | A filter of the music catalog: it narrows who is listed (tests/music-catalog.test.ts::finds people by name and role). Choosing someone listed is the decision, and those are their own rows. |
 | "Music Spending Ceiling" | field | mandates.ts guideMePlan, runMandate, guideMeRefusal | not yet proven |  |  |
 | "Let The Composer's Themes Stand Without My Review" | field | cues.ts onThemesDone, themesGate; production/workday.ts | not yet proven |  |  |
@@ -497,7 +497,7 @@ journey that shows it there.
 | "Limit Or Cost" | field | shown in the season plan: season.ts | carried | tests/advice-carried.test.ts::reach the advice they are written for, and are scored by nothing | A name or a record, carried to shown in the season plan: season.ts: it decides nothing by its nature. |
 | "Rule" | field | shown in the season plan: season.ts | carried | tests/advice-carried.test.ts::reach the advice they are written for, and are scored by nothing | A name or a record, carried to shown in the season plan: season.ts: it decides nothing by its nature. |
 | "Limit Or Cost" | field | shown in the season plan: season.ts | carried | tests/advice-carried.test.ts::reach the advice they are written for, and are scored by nothing | A name or a record, carried to shown in the season plan: season.ts: it decides nothing by its nature. |
-| "Season Arc" | field | sequel.ts continueProject (carried into the next season) | not yet proven |  |  |
+| "Season Arc" | field | shown in the season plan, and carried into the next season: sequel.ts continueProject (carried into the next season) | carried | tests/episodes.test.ts::carries the same characters, world and open threads | A name or a record, carried to shown in the season plan, and carried into the next season: sequel.ts continueProject (carried into the next season): it decides nothing by its nature. |
 | "What An Episode Does" | field | shown in the season plan: season.ts setSeriesPlan | carried | tests/advice-carried.test.ts::reach the advice they are written for, and are scored by nothing | A name or a record, carried to shown in the season plan: season.ts setSeriesPlan: it decides nothing by its nature. |
 | "How Its People Change" | field | shown in the season plan: season.ts setSeriesPlan | carried | tests/advice-carried.test.ts::reach the advice they are written for, and are scored by nothing | A name or a record, carried to shown in the season plan: season.ts setSeriesPlan: it decides nothing by its nature. |
 | "Places It Returns To" | field | shown in the season plan: season.ts setSeriesPlan | carried | tests/advice-carried.test.ts::reach the advice they are written for, and are scored by nothing | A name or a record, carried to shown in the season plan: season.ts setSeriesPlan: it decides nothing by its nature. |
