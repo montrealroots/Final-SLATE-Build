@@ -35,6 +35,8 @@ const kinds = (s: GameState) => {
 };
 /** The US-released feature, changed by `fn` before the script is approved. */
 const film = (fn: (p: Project) => void = () => {}) => (s: GameState, year: number): Project => { const p = feature()(s, year); fn(p); return p; };
+/** The feature released by the career itself (career.ts: a digital release a fortnight after delivery), entered in everything. */
+const SELF = { years: 3, project: feature(), takeDistribution: false, daily: enterAll };
 const US = (fn?: (p: Project) => void) => ({ years: 3, project: film(fn), takeDistribution: false, release: false, afterDelivery: inUsCinemas, daily: enterAll });
 
 export const PROBES: Probe[] = [
@@ -44,4 +46,10 @@ export const PROBES: Probe[] = [
     base: US(), variant: US((p) => { p.source = { kind: 'adapted', work: 'The Lighthouse Diaries' }; }), measure: kinds, bites: ['adaptedEntries'], downstream: ['entryFees', 'entries'] },
   { id: 'audience-family', features: ['field:Projects.tsx#"Intended Audience"#1'], decision: 'Make the feature for families rather than a general audience', reads: ['src/engine/awards-rules.ts#requirementProblems'],
     base: US(), variant: US((p) => { p.axes.audience = 'Family'; }), measure: kinds, bites: ['entries'], downstream: ['entryFees', 'selected'] },
+  // Where it is released decides whose qualifying rules it meets (awards.ts checkEligibility: a release in the
+  // institution's country).
+  { id: 'release-in-us', features: ['field:FinishViews.tsx#"Territory Code"#1'], decision: 'Release the feature in Britain and the United States rather than Britain alone', reads: ['src/engine/finish.ts#planRelease', 'src/engine/awards.ts#checkEligibility'],
+    base: SELF, variant: { ...SELF, territories: ['GB', 'US'] }, measure: kinds, bites: ['entries'], downstream: ['entryFees', 'selected'] },
+  { id: 'release-route', features: ['field:FinishViews.tsx#"Route"#1'], decision: 'Release the feature as a festival premiere rather than in the digital stores', reads: ['src/engine/finish.ts#planRelease', 'src/engine/awards.ts#checkEligibility'],
+    base: SELF, variant: { ...SELF, releaseRoute: 'festival-premiere' as never }, measure: kinds, bites: ['entries'], downstream: ['entryFees', 'revenue'] },
 ];
