@@ -21,16 +21,19 @@ const track = (placement: SongUse['placement'], minutes: number) => (s: GameStat
   const x = createSong(s, p, { title: 'Harbour Lights', source: 'licensed', holder: 'A Record Label', writers: [{ name: 'A Songwriter', music: true, lyrics: true }] });
   attachSong(p, x.id, approvedScenes(p)[0].id, placement, minutes);
 };
-/** Each day: its holders asked once for every medium, worldwide, for ten years, and the quote agreed. */
-const licensedEverywhere = (s: GameState) => {
+type Scope = Parameters<typeof requestLicence>[3];
+const EVERYWHERE: Scope = { territories: 'worldwide', media: ['theatrical', 'streaming', 'broadcast', 'digital', 'festival'], years: 10 };
+/** Each day: its holders asked once for `scope` (every medium, worldwide, for ten years unless said), and the quote agreed. */
+const licensedFor = (scope: Scope = EVERYWHERE) => (s: GameState) => {
   for (const p of s.projects.filter((x) => !x.delivered && x.music)) {
     const song = (p.songs ?? []).find((x) => x.title === 'Harbour Lights');
     if (!song) continue;
     const ls = p.music!.licences.filter((l) => l.songId === song.id);
-    if (!ls.length) { try { requestLicence(s, p, song.id, { territories: 'worldwide', media: ['theatrical', 'streaming', 'broadcast', 'digital', 'festival'], years: 10 }); } catch { /* not now */ } continue; }
+    if (!ls.length) { try { requestLicence(s, p, song.id, scope); } catch { /* not now */ } continue; }
     for (const l of ls.filter((x) => x.status === 'quoted' || x.status === 'countered')) try { agreeLicence(s, p, l.id); } catch { /* not now */ }
   }
 };
+const licensedEverywhere = licensedFor();
 /** The feature with the licensed track as `placement` for `minutes`, licensed everywhere. */
 const FEATURE = (placement: SongUse['placement'], minutes: number) => ({ project: feature(), decide: track(placement, minutes), daily: licensedEverywhere });
 /** What the holders of each song quoted, composition and recording together. */
@@ -50,4 +53,11 @@ export const PROBES: Probe[] = [
     base: FEATURE('background', 2), variant: FEATURE('opening-titles', 2), measure: fees, bites: ['licenceFees'], downstream: ['spent', 'money'] },
   { id: 'song-minutes', features: [W('Minutes It Plays')], decision: 'Play the licensed track for ten minutes of the feature\'s first scene rather than one', reads: ['src/engine/music.ts#holderFee'],
     base: FEATURE('background', 1), variant: FEATURE('background', 10), measure: fees, bites: ['licenceFees'], downstream: ['spent', 'ownIn'] },
+  // The licence's scope prices it (music.ts holderFee): the whole world three times one country, each medium more.
+  { id: 'licence-world', features: ['field:MusicTab.tsx#"The Whole World"#1'], decision: 'License the track for the whole world rather than Britain alone', reads: ['src/engine/music.ts#holderFee'],
+    base: { project: feature(), decide: track('background', 2), daily: licensedFor({ ...EVERYWHERE, territories: ['GB'] }) }, variant: { project: feature(), decide: track('background', 2), daily: licensedFor() }, measure: fees, bites: ['licenceFees'], downstream: ['spent', 'money'] },
+  { id: 'licence-countries', features: ['field:MusicTab.tsx#"Countries, By Two-Letter Code"#1'], decision: 'License the track for Britain, the United States, France and Germany rather than Britain alone', reads: ['src/engine/music.ts#holderFee'],
+    base: { project: feature(), decide: track('background', 2), daily: licensedFor({ ...EVERYWHERE, territories: ['GB'] }) }, variant: { project: feature(), decide: track('background', 2), daily: licensedFor({ ...EVERYWHERE, territories: ['GB', 'US', 'FR', 'DE'] }) }, measure: fees, bites: ['licenceFees'], downstream: ['spent', 'money'] },
+  { id: 'licence-media', features: ['field:MusicTab.tsx#{LICENCE_MEDIUM_LABELS[m]}#1'], decision: 'License the track for every medium rather than digital sale alone', reads: ['src/engine/music.ts#holderFee'],
+    base: { project: feature(), decide: track('background', 2), daily: licensedFor({ ...EVERYWHERE, media: ['digital'] }) }, variant: { project: feature(), decide: track('background', 2), daily: licensedFor() }, measure: fees, bites: ['licenceFees'], downstream: ['spent', 'money'] },
 ];
