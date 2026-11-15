@@ -8,7 +8,7 @@
 // instant (`onClockMove`), so its interest, fees, statements and payments fall on their own days. What it tells the
 // player (1221's notifications) goes into SLATE's log, routed to the bank.
 import { advanceBankWorld, bankSim, cityForPlace, createBankWorld, type SaveUniverse } from './bankworld';
-import { drawFromBank, inTheBank } from './bankworld/systems/spending';
+import { drawFromBank, inTheBank, isEveryday, spend } from './bankworld/systems/spending';
 import { overdraftHeadroom } from './bankworld/systems/lending';
 import { COUNTRIES } from './bankworld/content/geography';
 import { exchange, exchangeHeld, hasRate } from './bankworld/content/currency';
@@ -99,6 +99,10 @@ export function postToBank(state: GameState, kind: string, dollars: number, labe
       { accountId: person.primaryAccountId!, amount: minor },
       { accountId: sim.nominalAccount('income', counterLabel(counter)).id, amount: -minor },
     ] });
+  } else if (isEveryday(category)) {
+    // A purchase (equipment, papers' fees) is paid as How You Pay says: in cash, on the credit card or by debit card
+    // (spending.ts `isEveryday`, from November 14, 2026). Refused with nothing posted when none of them can pay it.
+    if (!spend(sim, person, -minor, label, category)) throw new Error(`Your bank can't pay that: ${(-dollars).toLocaleString('en-US', { style: 'currency', currency: 'USD' })} is more than your accounts, card and overdraft hold.`);
   } else {
     // A dollar figure read from the bank and paid back in full can come to a unit more than it holds, by the rounding of
     // two conversions; that unit is what it holds.

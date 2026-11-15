@@ -57,6 +57,7 @@
   "bankFees": 0,
   "owed": 0,
   "accounts": 1,
+  "worth": 18635315.454,
   "rewards": 0,
   "entries": 0,
   "selected": 0,
@@ -122,6 +123,7 @@
   "bankFees": 0,
   "owed": 0,
   "accounts": 1,
+  "worth": 18514703.645,
   "rewards": 0,
   "entries": 0,
   "selected": 0,
@@ -475,6 +477,13 @@
    "changed": 0,
    "n": 40
   },
+  "worth": {
+   "mean": -120611.808,
+   "lo": -136899.661,
+   "hi": -104323.955,
+   "changed": 40,
+   "n": 40
+  },
   "rewards": {
    "mean": 0,
    "lo": 0,
@@ -599,7 +608,7 @@
  ],
  "verdict": "proven",
  "hashes": {
-  "src/engine/production/shoot.ts": "c192fe85cf2645f9",
+  "src/engine/production/shoot.ts": "891fa9e2b13b6e49",
   "tests/proof/career.ts": "2d4877367212a0ea"
  }
 }

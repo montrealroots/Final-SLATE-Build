@@ -43,8 +43,23 @@ estimate" for figures no source gives. Start at `docs/v10/README.md`.
   arrived on, fee settled. The test characters (`tests/helpers.ts`, `tests/fixtures.ts`, `e2e/helpers.ts`) are citizens
   where they live, so tests not about papers pay for none. Tests: `tests/v10-living-abroad.test.ts`.
 
+- Proof batch for festivals (attending a screening, a visitor visa for one abroad), opportunities, backers' terms,
+  places (filmed abroad, stage sets), the plan (budget, a later shoot), the tone and intended experience, and late in a
+  film's life (a licence renewed, how long a licence runs, a release dubbed). Fixed from them: a shoot abroad no longer
+  starts before its permits (`prepWorkingDays`); a delivered film takes your money for a renewal; the tone and the
+  intended experience are decisions the music brief reads, not words nothing reads. Names and records shown only where
+  they are shown are "carried" in the matrix, with the test that shows them; a writer's revision focus is left open for
+  the owner (nothing reads it).
+
+**Paused by the owner (November 15, 2026), to pick up later.** PR #97 is open; its last CI run failed one journey:
+`e2e/journey-c.spec.ts` (a pinned seed whose US cinema offer moved when the edit started counting in a film's overall).
+The journey now picks a theatrical offer its song licences cover; a seed that gives one is still to be found (seeds 8 to
+20 tried on the desktop project: none; `SONG_SEED=<n> npx playwright test e2e/journey-c.spec.ts --project=desktop`). Local
+commits after #97's head are not pushed. Then: `npm run check`, push, merge #97 on green. The fix list has one row left,
+festival results (`off-edition-results`, set to 200 seeds, not yet run); everything else on it is proven or explained.
+
 **Next, in order.**
-1. Probes for the remaining actions (about 130), bank commands and fields; careers that reach the unreached event kinds.
+1. Probes for the remaining actions (about 60 actions, 39 bank commands, 260 fields), bank commands and fields; careers that reach the unreached event kinds.
 2. Fix each feature a proof fails: cash first, then festival selections and outside work.
 3. Research the estimated permits and visas, biggest film markets first.
 

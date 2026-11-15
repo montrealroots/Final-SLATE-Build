@@ -1092,12 +1092,12 @@ function Notes({ p }: { p: Project }) {
     <section className="card">
       <h2>Revision Notes</h2>
       <p className="muted">Accept notes you want to work on, then start a revision pass. Revisions take time.</p>
-      <p className="dim">Notes raised by the readiness checks count toward the script's modeled quality once a revision addresses them. Notes you add yourself are for your own process and don't change it.</p>
+      <p className="dim">A note counts toward the script's modeled quality once a revision addresses it and the problem it is on is gone from the readiness checks. The checks' own notes are on a problem; a note you add yourself is on one when its area, and its scene or the whole script, is where the checks flag one. Each problem counts once, and a note on no problem is for your own process.</p>
       {p.revision && <p className="callout callout-info">Revision pass underway. It finishes in {formatDuration(p.revision.endsAt - g.now)}.</p>}
       <ul className="list">
         {p.notes.map((n) => (
           <li key={n.id} className="row-wrap">
-            <span className="grow">{n.text}{n.sceneId && <span className="dim"> ({noteScene(p, n.sceneId)})</span>} <span className="chip">{n.area.charAt(0).toUpperCase() + n.area.slice(1)}</span> <span className={`chip ${n.status === 'addressed' ? 'chip-positive' : n.status === 'rejected' ? 'chip-negative' : ''}`}>{n.status.charAt(0).toUpperCase() + n.status.slice(1)}</span></span>
+            <span className="grow">{n.text}{n.sceneId && <span className="dim"> ({noteScene(p, n.sceneId)})</span>} <span className="chip">{n.area.charAt(0).toUpperCase() + n.area.slice(1)}</span>{n.source === 'player' && n.onIssue && <span className="chip" title={n.onIssue}>On A Flagged Problem</span>} <span className={`chip ${n.status === 'addressed' ? 'chip-positive' : n.status === 'rejected' ? 'chip-negative' : ''}`}>{n.status.charAt(0).toUpperCase() + n.status.slice(1)}</span></span>
             {n.status !== 'addressed' && (
               <div className="row gap-2 wrap">
                 {n.status !== 'accepted' && <button className="btn btn-sm" onClick={() => store.act(() => setNoteStatus(p, n.id, 'accepted'))}>Accept Note</button>}

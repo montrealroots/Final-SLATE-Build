@@ -240,11 +240,12 @@ export function assessQuality(state: GameState, p: Project, episode?: number): R
   const episodeOf = (id: string | null) => allApproved.find((s) => s.id === id)?.episode;
   const mine = p.setups.filter((x) => episode === undefined || inEp(episodeOf(x.plantedIn)) || inEp(episodeOf(x.paidIn)));
   const setups = mine.length ? mine.filter((x) => x.plantedIn && x.paidIn && cutIds.has(x.plantedIn) && cutIds.has(x.paidIn)).length / mine.length : 0.6;
-  // Only notes the readiness checks raised count, once a revision pass has addressed them. Notes you write yourself are
-  // for your own process, and a pass with nothing to address adds nothing: repeating passes can't manufacture quality.
-  // ...and only when the check it came from is gone from the script's readiness checks, and wasn't advice.
+  // A problem the readiness checks raised counts once a revision pass has addressed a note on it and the check is gone
+  // from the script, and wasn't advice: the check's own note, or one of yours written on it (projects.ts addNote, from
+  // November 14, 2026; until then yours counted for nothing). Each problem counts once, and a note on no problem counts
+  // nothing, so a pass with nothing to address adds nothing: repeating passes can't manufacture quality.
   const open = new Set(issues.map((i) => i.text));
-  const addressed = p.notes.filter((n) => n.status === 'addressed' && n.source === 'readiness' && !n.advisory && !open.has(n.text)).length;
+  const addressed = new Set(p.notes.filter((n) => n.status === 'addressed' && !n.advisory).map((n) => (n.source === 'readiness' ? n.text : n.onIssue)).filter((t): t is string => !!t && !open.has(t))).size;
   // Writing help counts for the passes the player accepted, each as it was delivered (writing-jobs.ts). On a project
   // from before November 11, 2026 it is anyone hired to help, at their level, as it was.
   const writerHelp = p.writing
@@ -331,7 +332,11 @@ export function assessQuality(state: GameState, p: Project, episode?: number): R
   }
   const perf = avg(Object.entries(out).filter(([k]) => k.startsWith('performance:')).map(([, v]) => v), 55);
   // Rounded to the nearest whole value; never derived from genre labels, budget size or identity.
-  out.overall = clamp(script * 0.3 + direction * 0.25 + craft * 0.2 + perf * 0.25);
+  // The edit counts in the film's overall (from November 14, 2026): until then the editing assessment reached only the
+  // editing awards, so the editor, the cut passes, the coverage the cut had and a gap where an essential scene was cut
+  // never reached how the film was received (the feature proofs found it, docs/v10/proof/scene-essential.json). It takes
+  // a tenth, from direction and craft, so a typical film's overall stays where it was. Game calibration.
+  out.overall = clamp(script * 0.3 + direction * 0.2 + craft * 0.15 + out.editing * 0.1 + perf * 0.25);
   if (episode === undefined) {
     const r = stream(state.seed, 'reception', p.id);
     out.reception = clamp(out.overall + gaussian(r, 0, 8)); // audiences and critics vary

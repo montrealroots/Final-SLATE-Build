@@ -8,6 +8,11 @@ import { saveCurrency } from '../src/engine/bankworld/core/money';
 import { personalBalance, personalPostings, postPersonal } from '../src/engine/personal';
 import { newGame } from '../src/engine/state';
 import { draft } from './fixtures';
+import { startLife } from './helpers';
+import { DAY, processUntil } from './engine-api';
+import { buyGear } from '../src/engine/equipment';
+import { advanceBankWorld, bankSim } from '../src/engine/bankworld';
+import { bankSummary } from '../src/engine/bankworld/summary';
 
 // Each life a citizen where it lives, so no work visa's fee is in its money (tests/v10-living-abroad.test.ts has those).
 const life = (startPlaceId: string, tag: string) => newGame(draft({ startPlaceId, nationalities: [startPlaceId.slice(0, 2).toUpperCase()] }), 0, `save-${tag}`);
@@ -42,5 +47,54 @@ describe('the bank keeps a life\'s money in its own country\'s currency', () => 
   it('a country\'s own currency where a rate is recorded, and the dollar where none is', () => {
     expect(['FR', 'GB', 'JP', 'US'].map((c) => bankCurrencyFor(c, '2026-04-06'))).toEqual(['EUR', 'GBP', 'JPY', 'USD']);
     expect(bankCurrencyFor('ZZ', '2026-04-06')).toBe('USD');
+  });
+});
+
+describe('how you pay, for what a SLATE life buys', () => {
+  // From November 14, 2026 equipment and papers' fees are paid as How You Pay says (bankworld/systems/spending.ts
+  // `isEveryday`); until then they came out of the current account whatever it said.
+  const run = (how: 'debit' | 'credit' | 'cash') => {
+    const s = startLife('pay-how', 'gb-london');
+    const sim = () => bankSim(s.bank!);
+    const exec = (kind: string, payload: Record<string, unknown> = {}) => { advanceBankWorld(s.bank!, s.now); const r = sim().execute({ kind, payload }); if (!r.ok) throw new Error(`${kind}: ${r.error}`); };
+    if (how === 'credit') { exec('card.apply'); processUntil(s, s.now + 20 * DAY, 'tick', 1_000_000); }
+    if (how === 'cash') exec('cash.withdraw', { amount: 25_000, from: 'atm' });
+    exec('bank.set_payments', { everyday: how });
+    const mine = () => sim().ledger.accountsOf(sim().universe.playerId).filter((a) => !a.nominal && !a.closedAt);
+    const bal = (kind: string) => mine().filter((a) => a.kind === kind).reduce((x, a) => x + a.balance, 0);
+    const before = { checking: bal('checking'), card: bal('credit_card'), cash: bal('cash') };
+    buyGear(s, 'stand-300f');
+    return { checking: bal('checking') - before.checking, card: bal('credit_card') - before.card, cash: bal('cash') - before.cash };
+  };
+  it('by debit card from the current account, on the credit card where that is how you pay, and from cash in hand first', () => {
+    const debit = run('debit');
+    expect(debit.checking).toBeLessThan(0);
+    expect([debit.card, debit.cash]).toEqual([0, 0]);
+    const credit = run('credit');
+    expect(credit.card).toBeLessThan(0); // owed on the card
+    expect(credit.checking).toBe(0);
+    const cash = run('cash');
+    expect(cash.cash).toBeLessThan(0);
+    expect(cash.checking).toBe(0);
+    // The same purchase, the same amount, whichever way it is paid.
+    expect(-credit.card).toBe(-debit.checking);
+    expect(-cash.cash).toBe(-debit.checking);
+  });
+});
+
+describe('what Home calls available', () => {
+  it('drops when a purchase is authorized on the debit card, and shows it pending until it posts', () => {
+    // From November 15, 2026: a hold left available as it was until it posted (bankworld/summary.ts).
+    const s = startLife('available-hold', 'gb-london');
+    const sim = () => bankSim(s.bank!);
+    const before = bankSummary(sim())[0];
+    buyGear(s, 'stand-300f');
+    const held = bankSummary(sim())[0];
+    expect(held.pending).toBeLessThan(0);
+    expect(before.available - held.available).toBe(-held.pending);
+    processUntil(s, s.now + 20 * DAY, 'tick', 1_000_000); // posted, some bank days on
+    const posted = bankSummary(sim())[0];
+    expect(posted.pending).toBe(0);
+    expect(posted.available).toBeLessThanOrEqual(held.available);
   });
 });

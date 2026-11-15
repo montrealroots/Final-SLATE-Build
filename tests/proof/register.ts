@@ -101,11 +101,11 @@ const parseCsv = (s: string): string[][] => {
 };
 
 /** Labelled controls that hold a decision, an identity or a record (views and components change no outcome by design). */
-export function fields(): (Feature & { class: string; consumer: string; effect: string; test: string })[] {
+export function fields(): (Feature & { class: string; consumer: string; effect: string; test: string; journey: string })[] {
   const [head, ...rows] = parseCsv(readFileSync(join(ROOT, 'docs/input-audit/CONTROLS.csv'), 'utf8'));
   const col = (r: string[], k: string) => r[head.indexOf(k)] ?? '';
   return rows.filter((r) => r.length > 3).map((r) => ({
     id: `field:${col(r, 'screen')}#${col(r, 'label')}#${col(r, 'occurrence')}`, kind: 'field' as const, name: col(r, 'label'), module: col(r, 'consumer'), usedAt: [`src/ui/${col(r, 'screen')}`],
-    class: col(r, 'class'), consumer: col(r, 'consumer'), effect: col(r, 'effect'), test: col(r, 'unit_test'),
+    class: col(r, 'class'), consumer: col(r, 'consumer'), effect: col(r, 'effect'), test: col(r, 'unit_test'), journey: col(r, 'journey'),
   }));
 }

@@ -10,9 +10,9 @@ import { observancesOn } from '../observances';
 import { approvedCharacters, approvedScenes, projectModules, sceneTechnique } from '../projects';
 import { addLog, cancelEvents, distanceKm, newId, schedule } from '../state';
 import { addDaysToKey, dateKey, formatDateKey, isDateKey, localParts, localToInstant, parseYmd, weekdayOfKey } from '../time';
-import { materialCost } from './workday';
+import { materialCost, playerDoes, teamFor } from './workday';
 import { buildTasks } from './tasks';
-import { BASE_MINUTES_PER_SHOOT_DAY, CROWD_DAY_RATE, dayFees } from './rates';
+import { BASE_MINUTES_PER_SHOOT_DAY, CROWD_DAY_RATE, SIXTH_DAY_BUDGET_FLOOR, dayFees } from './rates';
 import { planTime } from '../takes';
 import { songUses } from '../songs';
 import { childShare, ensureLicence, minorFor, type Minor } from '../minors';
@@ -44,6 +44,17 @@ export function sceneComplexity(s: Scene, mods: Set<string>, singing = false): n
   if (singing || s.dance) f *= 0.75;
   if (s.kind === 'interview') f *= 1.5;
   return f;
+}
+
+/** What a production plans to spend, for its budget band: its financing target, or what it has raised if more. */
+export const budgetBand = (p: Project): number => Math.max(p.finance?.target ?? 0, p.funding.fund);
+
+/**
+ * A Saturday worked because the week is six days (not a weekday moved to Saturday by the calendar), on a production
+ * above the low-budget line: paid as a sixth day (rates.ts SIXTH_DAY_PREMIUM).
+ */
+export function isSixthDay(p: Project, key: string): boolean {
+  return p.schedule.sixDayWeeks && budgetBand(p) > SIXTH_DAY_BUDGET_FLOOR && weekdayOfKey(key) === 6 && !isMakeUpWorkday(getPlace(p.axes.basePlaceId).country, key);
 }
 
 export function isWorkingDay(p: Project, key: string): boolean {
@@ -271,6 +282,42 @@ export interface PlanResult {
   lastShootDay: string | null;
 }
 
+/**
+ * The working days the open prep work takes as the crew does it (workday.ts runWorkDay): each person on one task a day,
+ * the tasks in their order, each waiting for the prep it depends on. From November 14, 2026: until then prep was taken to
+ * last as long as its longest task, but one location manager does each place's permits in turn, so a script filmed in
+ * three places abroad started shooting before two of them were done and lost its first week (the feature proofs found
+ * it, docs/v10/proof/filmed-abroad.json). The plan starts the shoot on the last of them: a day's prep is done at 6pm and
+ * its shoot is settled at the wrap, after it (scheduleShootDay).
+ */
+export function prepWorkingDays(p: Project): number {
+  // Rehearsals wait for the rest of prep but hold up no scene (shoot.ts), so they don't push the shoot back.
+  const open = new Map(p.tasks.filter((x) => x.kind.startsWith('prep:') && x.kind !== 'prep:rehearsal' && x.status !== 'done').map((x) => [x.id, x.units - x.done]));
+  // A role nobody holds yet counts as one person, to be hired (as forecast.ts counts it).
+  const team = (t: Project['tasks'][number]) => {
+    if (playerDoes(t.roleId)) return ['player'];
+    const people = teamFor(p, t.roleId, t.episode);
+    return people.length ? people : [`to-hire:${t.roleId}`];
+  };
+  let days = 0;
+  while (open.size && days < 365) {
+    days += 1;
+    const used = new Set<string>();
+    for (const t of p.tasks) {
+      const left = open.get(t.id);
+      if (left === undefined || t.dependsOn.some((d) => open.has(d))) continue;
+      const free = team(t).filter((id) => !used.has(id));
+      if (!free.length) continue;
+      // The player works on as many tasks as are theirs; anyone else on one (workday.ts).
+      if (free[0] !== 'player') free.forEach((id) => used.add(id));
+      const after = left - free.length;
+      // A task finished today lets the ones after it that wait for it start today, as runWorkDay's loop does.
+      if (after <= 1e-9) open.delete(t.id); else open.set(t.id, after);
+    }
+  }
+  return days;
+}
+
 export function generatePlan(state: GameState, p: Project, startDate: string): PlanResult {
   if (p.approvedDraft === null) throw new Error('Approve a draft before planning production.');
   if (p.delivered) throw new Error('This project has already been delivered.');
@@ -300,7 +347,7 @@ export function generatePlan(state: GameState, p: Project, startDate: string): P
   // before a place's permits were done, and its days there were lost; the feature proofs found it,
   // docs/v10/proof/work-permit.json).
   const longest = p.tasks.filter((x) => x.kind.startsWith('prep:') && x.status !== 'done' && x.unitLabel === 'days').reduce((a, x) => Math.max(a, Math.ceil(x.units - x.done)), 0);
-  const prepDays = Math.max(5, Math.ceil(prepUnits / 3), longest);
+  const prepDays = Math.max(5, Math.ceil(prepUnits / 3), longest, prepWorkingDays(p) - 1);
   for (let i = 0; i < prepDays; i++) shootStart = nextWorkingDay(p, addDaysToKey(shootStart, 1));
   const kept = p.schedule.days.filter((d) => d.status !== 'scheduled');
   const capturedIds = new Set(p.captures.filter((c) => c.captured >= 0.999 && c.version === p.approvedDraft).map((c) => c.sceneId));

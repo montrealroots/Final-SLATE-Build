@@ -13,6 +13,9 @@ import { costBreakdown } from '../src/engine/estimate';
 import { neededRoles } from '../src/engine/hiring';
 import { coachingNeeded } from '../src/engine/production';
 import { agreedFunding, approve, buildProject, castAll, startLife, writePitch } from './helpers';
+import { isSixthDay } from '../src/engine/production/schedule';
+import { SIXTH_DAY_BUDGET_FLOOR, SIXTH_DAY_PREMIUM, dayPremium } from '../src/engine/production/rates';
+import { callSheet } from '../src/engine/callsheet';
 
 /** A short with two characters and three scenes, approved: the starting point every comparison here shares. */
 function world(tag: string, change?: (s: GameState, p: Project) => void, before?: (s: GameState, p: Project) => void) {
@@ -172,6 +175,31 @@ describe('six-day weeks', () => {
     expect(five.length).toBeGreaterThan(5); // more days than a week holds
     expect(six.some((d) => weekday(d.date) === 6)).toBe(true);
     expect(six[six.length - 1].date < five[five.length - 1].date).toBe(true); // it ends sooner
+  });
+
+  it('above the low-budget line a Saturday worked is a sixth day, paid at time and a half and said so on the call sheet; below it, the usual rate', () => {
+    const s = startLife('dx-six-pay');
+    const p = buildProject(s, { title: 'Ten Places', format: 'feature', medium: 'live-action', runtime: 90 }, [{ name: 'Ines' }, { name: 'Tomas' }],
+      Array.from({ length: 10 }, (_, i) => ({ place: `Place ${i + 1}`, chars: ['Ines', 'Tomas'], minutes: 9 })));
+    p.schedule.sixDayWeeks = true;
+    approve(s, p);
+    agreedFunding(p, 8_000_000); // labelled fixture: a budget above the £5m line
+    p.finance!.target = 8_000_000;
+    castAll(s, p);
+    generatePlan(s, p, '2026-03-02'); // a Monday
+    const sat = p.schedule.days.find((d) => new Date(`${d.date}T12:00:00Z`).getUTCDay() === 6)!;
+    const mon = p.schedule.days.find((d) => new Date(`${d.date}T12:00:00Z`).getUTCDay() === 1)!;
+    expect([isSixthDay(p, sat.date), isSixthDay(p, mon.date)]).toEqual([true, false]);
+    expect([dayPremium(false, true), dayPremium(false, false), dayPremium(true, true)]).toEqual([SIXTH_DAY_PREMIUM, 1, 1.5]);
+    expect(callSheet(s, p, sat.id).notes).toContain(`The sixth day of the week: everyone on set is paid ${SIXTH_DAY_PREMIUM} times their day rate.`);
+    expect(callSheet(s, p, mon.id).notes.some((n) => n.startsWith('The sixth day'))).toBe(false);
+    // Below the line (Pact's low-budget terms), a sixth day is paid as any other.
+    p.finance!.target = SIXTH_DAY_BUDGET_FLOOR;
+    p.funding.fund = SIXTH_DAY_BUDGET_FLOOR;
+    expect(isSixthDay(p, sat.date)).toBe(false);
+    p.finance!.target = 8_000_000;
+    p.schedule.sixDayWeeks = false;
+    expect(isSixthDay(p, sat.date)).toBe(false);
   });
 });
 

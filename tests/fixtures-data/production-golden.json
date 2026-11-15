@@ -76,8 +76,8 @@
       "craft:re-recording-mixer": 62,
       "craft:sound-designer": 51,
       "performance:c3:np_voice-actor_GB_11": 66,
-      "overall": 60,
-      "reception": 53
+      "overall": 61,
+      "reception": 54
     }
   },
   "2D short / g2": {
@@ -107,8 +107,8 @@
       "craft:re-recording-mixer": 65,
       "craft:sound-designer": 60,
       "performance:c3:np_voice-actor_GB_10": 65,
-      "overall": 60,
-      "reception": 63
+      "overall": 59,
+      "reception": 62
     }
   },
   "3D with motion capture / g1": {
@@ -175,8 +175,8 @@
       "craft:sound-designer": 69,
       "performance:c3:np_actor_GB_35": 69,
       "performance:c3:np_voice-actor_GB_8": 74,
-      "overall": 61,
-      "reception": 61
+      "overall": 60,
+      "reception": 60
     }
   },
   "stop motion / g1": {
@@ -210,8 +210,8 @@
       "craft:stage-dp": 57,
       "craft:stopmo-animator": 56,
       "performance:c3:np_voice-actor_GB_3": 81,
-      "overall": 63,
-      "reception": 64
+      "overall": 62,
+      "reception": 63
     }
   },
   "stop motion / g2": {
@@ -245,8 +245,8 @@
       "craft:stage-dp": 63,
       "craft:stopmo-animator": 56,
       "performance:c3:np_voice-actor_GB_5": 69,
-      "overall": 62,
-      "reception": 60
+      "overall": 61,
+      "reception": 59
     }
   },
   "TV limited series / g1": {
@@ -273,8 +273,8 @@
       "craft:re-recording-mixer": 60,
       "craft:sound-designer": 53,
       "performance:c3:np_actor_GB_10": 61,
-      "overall": 54,
-      "reception": 59
+      "overall": 55,
+      "reception": 60
     }
   },
   "TV limited series / g2": {

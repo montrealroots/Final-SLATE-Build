@@ -19,7 +19,12 @@ const reviewThemes = (rounds: number) => (s: GameState) => {
  *  (Turning a cue under talk down changes nothing: the plan never places one loud or in front under dialogue.) */
 const fewerCues = (s: GameState, p: Project) => { takeBrief(s, p); for (const c of (p.music?.cues ?? []).filter((x) => x.source === 'score')) editCue(p, c.id, { remove: true }); };
 
+/** The player's words for what the project wants, written before the brief is taken (the Story panel). */
+const words = (tone: string, experience: string) => (s: GameState, p: Project) => { p.axes.tone = tone; p.story.intendedExperience = experience; takeBrief(s, p); };
+
 const measure = (_s: GameState, projects: Project[]) => ({
+  chamber: projects.filter((p) => p.axes.score === 'chamber').length,
+  silent: projects.filter((p) => p.music?.brief?.approach === 'silence').length,
   cues: projects.reduce((a, p) => a + (p.music?.cues ?? []).filter((c) => c.source === 'score').length, 0),
   themeRounds: projects.reduce((a, p) => a + (p.music?.themes?.rounds ?? 0), 0),
   themesApproved: projects.filter((p) => p.music?.themes?.status === 'approved').length,
@@ -69,6 +74,28 @@ export const PROBES: Probe[] = [
     variant: { decide: fewerCues, daily: reviewThemes(0) },
     measure,
     bites: ['cues'],
+    downstream: ['spent', 'daysToDeliver', 'quality.music'],
+  },
+  {
+    id: 'tone',
+    features: ['field:Projects.tsx#"Tone"#1', 'field:ScriptViews.tsx#"Tone"#1'],
+    decision: 'Call the project\'s tone "quiet and tender" rather than "cold and clinical", then take the brief it proposes',
+    reads: ['src/engine/cues.ts#proposeBrief', 'src/engine/craft.ts#scoreSessions'],
+    base: { decide: words('cold and clinical', ''), daily: reviewThemes(0) },
+    variant: { decide: words('quiet and tender', ''), daily: reviewThemes(0) },
+    measure,
+    bites: ['chamber'],
+    downstream: ['spent', 'cues', 'daysToDeliver'],
+  },
+  {
+    id: 'intended-experience',
+    features: ['field:ScriptViews.tsx#"Intended Experience"#1'],
+    decision: 'Say the intended experience is "observational, without music", then take the brief it proposes',
+    reads: ['src/engine/cues.ts#proposeBrief', 'src/engine/finish.ts#assessQuality'],
+    base: { decide: words('', 'A test experience.'), daily: reviewThemes(0) },
+    variant: { decide: words('', 'Observational, without music.'), daily: reviewThemes(0) },
+    measure,
+    bites: ['silent', 'cues'],
     downstream: ['spent', 'daysToDeliver', 'quality.music'],
   },
 ];

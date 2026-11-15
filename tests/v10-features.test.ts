@@ -11,7 +11,7 @@ import { describe, expect, it } from 'vitest';
 import { actions, bankCommands, fields, scheduled, type Feature } from './proof/register';
 import { hashOf, type Result } from './proof/probe';
 
-type Status = 'proven' | 'does not bite' | 'no downstream effect' | 'stale' | 'not a feature' | 'not yet proven';
+type Status = 'proven' | 'carried' | 'does not bite' | 'no downstream effect' | 'stale' | 'not a feature' | 'not yet proven';
 interface Row { id: string; kind: Feature['kind']; name: string; module: string; status: Status; proof: string; why: string }
 
 const EXPLAINED = JSON.parse(readFileSync('docs/v10/explained.json', 'utf8')) as Record<string, string>;
@@ -23,10 +23,23 @@ function register(): Feature[] {
   return [...actions(), ...bankCommands(), ...scheduled(), ...f];
 }
 
+/**
+ * A name or a record, read only where it is shown (a title, a description, a part's name), decides nothing by its
+ * nature: it is carried, and the proof is the test or journey that shows it there (docs/input-audit/CONTROLS.csv, held
+ * to the code by tests/input-audit.test.ts). One that an engine function reads (a birth date, a character's wants) is a
+ * decision in effect and needs a played-career proof like any other (from November 14, 2026).
+ */
+const DISPLAY_ONLY = /^(shown|everywhere|the |drafts list|credits|[A-Za-z]+\.tsx\b)/i;
+/** A choice from a list the player would expect to matter, though nothing reads it: open, not carried, until it does. */
+const CHOICES_NOTHING_READS = new Set(['field:WritingWork.tsx#{`What ${name}\'s Revision Should Look At`}#1']);
+const CARRIED = new Map(fields().filter((x) => (x.class === 'identity' || x.class === 'record') && DISPLAY_ONLY.test(x.consumer.trim()) && (x.test || x.journey) && !CHOICES_NOTHING_READS.has(x.id)).map((x) => [x.id, x]));
+
 function matrix(): Row[] {
   return register().map((f) => {
     const notFeature = NOT_FEATURES[f.id];
     if (notFeature) return { id: f.id, kind: f.kind, name: f.name, module: f.module, status: 'not a feature', proof: '', why: notFeature };
+    const carried = CARRIED.get(f.id);
+    if (carried) return { id: f.id, kind: f.kind, name: f.name, module: f.module, status: 'carried', proof: carried.test || carried.journey, why: `A name or a record, carried to ${carried.consumer}: it decides nothing by its nature.` };
     const r = RESULTS.filter((x) => x.features.includes(f.id));
     if (!r.length) return { id: f.id, kind: f.kind, name: f.name, module: f.module, status: 'not yet proven', proof: '', why: '' };
     const fresh = r.filter((x) => Object.entries(x.hashes).every(([file, h]) => existsSync(file) && hashOf(file) === h));
@@ -42,13 +55,15 @@ const cell = (s: string) => s.replace(/\|/g, '\\|').replace(/\n/g, ' ');
 function markdown(rows: Row[]): string {
   const count = (k: string, s: Status) => rows.filter((r) => r.kind === k && r.status === s).length;
   const kinds = ['action', 'bank', 'scheduled', 'field'] as const;
-  const statuses: Status[] = ['proven', 'does not bite', 'no downstream effect', 'stale', 'not a feature', 'not yet proven'];
+  const statuses: Status[] = ['proven', 'carried', 'does not bite', 'no downstream effect', 'stale', 'not a feature', 'not yet proven'];
   return [
     '# Every Feature, Proven Or Not',
     '',
     'Written by `tests/v10-features.test.ts` from the code; don\'t edit by hand. A feature is proven only by a played-career',
     'Monte Carlo result in `docs/v10/proof/`: the same seeds played twice, one decision changed, a direct measure and a later',
-    'measure in another system both moving with their 95% interval clear of zero.',
+    'measure in another system both moving with their 95% interval clear of zero. A name or a record that only a screen',
+    'shows (a title, a description) decides nothing, so it is carried rather than proven: its evidence is the test or',
+    'journey that shows it there.',
     '',
     '| Kind | ' + statuses.join(' | ') + ' | All |',
     '|---|' + statuses.map(() => '---').join('|') + '|---|',
@@ -81,7 +96,7 @@ describe('the whole game\'s feature matrix', () => {
   });
 
   it('lets what isn\'t proven fall and never rise', () => {
-    const open = rows.filter((r) => r.status !== 'proven' && r.status !== 'not a feature').length;
+    const open = rows.filter((r) => r.status !== 'proven' && r.status !== 'carried' && r.status !== 'not a feature').length;
     const file = 'docs/v10/ratchet.json';
     if (process.env.SLATE_WRITE_AUDIT) writeFileSync(file, JSON.stringify({ open }, null, 1) + '\n');
     expect(open, 'more features are unproven than before').toBeLessThanOrEqual(JSON.parse(readFileSync(file, 'utf8')).open);

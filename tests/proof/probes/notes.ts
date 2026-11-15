@@ -18,10 +18,11 @@ const withSetups = (s: GameState, year: number): Project => {
 /** Each setup paid off in the last scene: the fix. */
 const payOff = (p: Project) => { for (const sp of p.setups.filter((x) => LABELS.includes(x.label))) sp.paidIn = p.scenes[p.scenes.length - 1].id; };
 /** The script fixed with each check taken through a revision pass first: a note from it, accepted, and the pass worked. */
-const throughNotes = (extra: 'none' | 'own') => (s: GameState, year: number): Project => {
+const throughNotes = (extra: 'none' | 'own' | 'mine') => (s: GameState, year: number): Project => {
   const p = withSetups(s, year);
-  for (const i of scriptIssues(p).filter((x) => x.severity === 'note' && !x.advisory && /never pays off/.test(x.text))) setNoteStatus(p, noteFromIssue(s, p, i.text).id, 'accepted');
+  if (extra !== 'mine') for (const i of scriptIssues(p).filter((x) => x.severity === 'note' && !x.advisory && /never pays off/.test(x.text))) setNoteStatus(p, noteFromIssue(s, p, i.text).id, 'accepted');
   if (extra === 'own') for (const t of ['Tighten the opening.', 'More warmth between them.']) setNoteStatus(p, addNote(s, p, t, 'dialogue', null).id, 'accepted');
+  if (extra === 'mine') for (const i of scriptIssues(p).filter((x) => x.severity === 'note' && !x.advisory && /never pays off/.test(x.text))) setNoteStatus(p, addNote(s, p, `Pay this off: ${i.text}`, 'continuity', null).id, 'accepted');
   startRevision(s, p);
   processUntil(s, p.revision!.endsAt + DAY, 'tick', 1_000_000);
   payOff(p);
@@ -49,13 +50,16 @@ export const PROBES: Probe[] = [
   },
   {
     id: 'own-notes',
-    features: ['action:projects.addNote'],
-    decision: 'Add two notes of your own to the revision pass',
-    reads: ['src/engine/projects.ts#addNote', 'src/engine/projects.ts#startRevision'],
-    base: { project: throughNotes('none') },
-    variant: { project: throughNotes('own') },
+    features: ['action:projects.addNote', 'field:ScriptViews.tsx#"Note"#1', 'field:ScriptViews.tsx#"Area"#1', 'field:ScriptViews.tsx#"About"#1'],
+    // The owner's choice of November 14, 2026: a note of your own on a problem the checks flag counts as the check's own
+    // note does, once a revision addresses it and the problem is fixed (projects.ts addNote, finish.ts). Until then your
+    // notes counted for nothing, and this probe added two on nothing.
+    decision: 'Write your own notes on the script\'s unpaid setups and revise before fixing them, or just fix them',
+    reads: ['src/engine/projects.ts#addNote', 'src/engine/finish.ts#assessQuality'],
+    base: { project: fixed },
+    variant: { project: throughNotes('mine') },
     measure,
     bites: ['ownNotes'],
-    downstream: ['quality.script', 'overall'],
+    downstream: ['quality.script', 'overall', 'reception'],
   },
 ];

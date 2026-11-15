@@ -21,6 +21,8 @@ applicability, and its status becomes "verified fact".
 | `BASE_MINUTES_PER_SHOOT_DAY` | `src/engine/production/rates.ts` | 4 screen minutes | 12-02, 11-05 | Modeled assumption | None |
 | `HOLIDAY_PREMIUM` | `src/engine/production/rates.ts` | 1.5 times the day rate | 11-05, 12-01 | Modeled assumption | None |
 | `NIGHT_PREMIUM` | `src/engine/production/rates.ts` | 1.25 times the day rate on a night shoot day, for everyone on set | 2026-11-14 feature proofs | Modeled assumption | None |
+| `SIXTH_DAY_PREMIUM` | `src/engine/production/rates.ts` | 1.5 times the day rate on the sixth day of a six-day week, above the low-budget line | Pact recommended low-budget feature terms (June 2026); Pact/Bectu scripted TV agreement (2023); Major Motion Pictures agreement, retrieved 2026-11-14 | Modeled assumption, after those terms (read through search summaries, not the documents) | None |
+| `SIXTH_DAY_BUDGET_FLOOR` | `src/engine/production/rates.ts` | $6,300,000: Pact's £5m low-budget line at about 1.26 dollars to the pound | Pact recommended low-budget feature terms (June 2026), retrieved 2026-11-14 | Modeled assumption, after that line (read through a search summary); the exchange rate is game calibration | None |
 | `CROWD_DAY_RATE` | `src/engine/production/rates.ts` | $180 a background performer a day | 12-02, 08-01 | Modeled assumption | None |
 | `MATERIAL_COST` | `src/engine/production/rates.ts` | per build or prep task | 11-03, 13-03, 08-01 | Modeled assumption | None |
 | `LOCATION_FEE_PER_DAY` | `src/engine/production/rates.ts` | $1,200 | 11-02, 12-02 | Modeled assumption | None |

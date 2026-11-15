@@ -5,10 +5,12 @@ import type { StudioProfile } from '../../../src/engine/studios';
 import { approachAgent, signWith } from '../../../src/engine/representation';
 import { acceptFirstLook, askMoreOverhead, declineFirstLook, endFirstLook, firstLooks } from '../../../src/engine/first-look';
 import { resumeProject, shelveProject } from '../../../src/engine/shelve';
+import { personalPostings } from '../../../src/engine/personal';
 import { DAY, processUntil } from '../../engine-api';
+import { castAll, staffAll } from '../../helpers';
 
 /** Approaches the first agent until one offers, then signs. */
-const withAgent = (agentId: string) => (s: GameState) => {
+export const withAgent = (agentId: string) => (s: GameState) => {
   const r = s.representation;
   if (r?.approaches.some((a) => a.status === 'signed')) return;
   const offered = r?.approaches.find((a) => a.status === 'offered');
@@ -16,7 +18,7 @@ const withAgent = (agentId: string) => (s: GameState) => {
   if (r?.approaches.some((a) => a.status === 'asked')) return;
   try { approachAgent(s, agentId); } catch { /* not yet: a script to show first */ }
 };
-const answerFirstLooks = (how: 'accept' | 'decline' | 'ask' | 'accept-then-end') => (s: GameState) => {
+export const answerFirstLooks = (how: 'accept' | 'decline' | 'ask' | 'accept-then-end') => (s: GameState) => {
   for (const fl of firstLooks(s)) {
     if (fl.status === 'active' && how === 'accept-then-end' && s.now - (fl.startsAt ?? s.now) > 90 * DAY) endFirstLook(s, fl.id);
     if (fl.status !== 'offered') continue;
@@ -37,10 +39,20 @@ const measure = (s: GameState) => ({
   firstLookActive: firstLooks(s).filter((f) => f.status === 'active' || f.status === 'ended' || f.status === 'ended-early').length,
   firstLookDeclined: firstLooks(s).filter((f) => f.status === 'declined').length,
   overheadAsked: firstLooks(s).filter((f) => f.counter).length,
+  // The overhead the studios paid you (first-look.ts payOverhead): what asking for more changes, and only that.
+  overheadPaid: personalPostings(s).filter((x) => x.kind === 'overhead').reduce((a, x) => a + x.amount, 0),
+  overheadAgreed: firstLooks(s).filter((f) => f.counter?.outcome === 'agreed').length,
   firstLookEnded: firstLooks(s).filter((f) => f.status === 'ended-early').length,
 });
 /** Shelves the year's project once its script is approved, and takes it up again two months later. */
-const shelveTwoMonths = (s: GameState, p: Project) => { shelveProject(s, p); processUntil(s, s.now + 60 * DAY, 'tick', 5_000_000); resumeProject(s, p); };
+/** Shelved once the cast and crew are hired, taken up two months later and hired again (they were released). */
+const shelveHired = (s: GameState, p: Project) => {
+  shelveProject(s, p);
+  processUntil(s, s.now + 60 * DAY, 'tick', 5_000_000);
+  resumeProject(s, p);
+  // Hired again, each part and job offered to someone else when its first choice says no, as a player keeps asking.
+  for (let day = 0; day < 21; day++) { castAll(s, p); staffAll(s, p); processUntil(s, s.now + DAY, 'tick', 5_000_000); }
+};
 
 export const PROBES: Probe[] = [
   { id: 'agent', features: ['action:representation.approachAgent', 'action:representation.signWith', 'scheduled:agent-answer'], decision: 'Approach an agent and sign when they offer',
@@ -54,11 +66,23 @@ export const PROBES: Probe[] = [
     bites: ['firstLookDeclined', 'firstLookActive'], downstream: ['money'] },
   { id: 'first-look-overhead', features: ['action:first-look.askMoreOverhead', 'scheduled:first-look-counter'], decision: 'Ask for more overhead before signing a first-look deal',
     reads: ['src/engine/first-look.ts#askMoreOverhead'], base: { years: 3, studios: STUDIOS, daily: answerFirstLooks('accept') }, variant: { years: 3, studios: STUDIOS, daily: answerFirstLooks('ask') }, measure,
-    bites: ['overheadAsked'], downstream: ['money', 'firstLookActive'] },
+    bites: ['overheadAsked'], downstream: ['overheadAgreed', 'overheadPaid', 'money', 'firstLookActive'] },
   { id: 'first-look-end', features: ['action:first-look.endFirstLook'], decision: 'End a first-look deal after three months',
     reads: ['src/engine/first-look.ts#endFirstLook'], base: { years: 3, studios: STUDIOS, daily: answerFirstLooks('accept') }, variant: { years: 3, studios: STUDIOS, daily: answerFirstLooks('accept-then-end') }, measure,
     bites: ['firstLookEnded'], downstream: ['money'] },
   { id: 'shelve-resume', features: ['action:shelve.shelveProject', 'action:shelve.resumeProject'], decision: 'Shelve the film after its script is approved and take it up two months later',
-    reads: ['src/engine/shelve.ts#shelveProject', 'src/engine/shelve.ts#resumeProject'], variant: { decide: shelveTwoMonths },
-    bites: ['daysToDeliver', 'delivered'], downstream: ['revenue', 'money', 'released'] },
+    // Measured by the day the film is delivered: the career's daysToDeliver counts from the shoot, after the shelf (until
+    // November 14, 2026 this probe looked there and saw 3.5 days).
+    // Shelved once the cast and crew are hired, as a player stops a production: they are released, and taken up again
+    // the work is hired afresh (until November 14, 2026 it was shelved before anyone was hired, which cost only time).
+    seeds: 60, reads: ['src/engine/shelve.ts#shelveProject', 'src/engine/shelve.ts#resumeProject'], variant: { beforeShoot: shelveHired },
+    // The first film, the one shelved; one not delivered counts as the career's last day (an average over both years
+    // counted it as day zero, which swamped the two months).
+    measure: (s, projects) => ({
+      deliveredDay: Math.round((projects[0]?.delivered?.at ?? s.now) / 86_400_000),
+      hiresReleased: projects.reduce((a, p) => a + p.hires.filter((h) => h.status === 'released').length, 0),
+      // Offers turned down: people you let go are less willing to come back (relationships.ts).
+      offersDeclined: projects.reduce((a, p) => a + p.hires.filter((h) => h.status === 'declined').length, 0),
+    }),
+    bites: ['hiresReleased', 'deliveredDay'], downstream: ['offersDeclined', 'castRates', 'revenue', 'money'] },
 ];

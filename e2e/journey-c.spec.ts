@@ -29,7 +29,9 @@ test('journey C: songs written, recorded and cleared in production, placed in sc
   test.skip(info.project.name !== 'desktop', 'One full production, at desktop width.');
   test.setTimeout(1_200_000);
   await quickLife(page, 'us-los-angeles', '2026-01-05');
-  await pinSeed(page, Number(process.env.SONG_SEED ?? 8)); // seeds 5 to 7 brought no theatrical offer for this film
+  // Seed 22 since November 15, 2026, when the edit began counting in a film's overall and seed 8's offers moved; seeds
+  // 5 to 21 brought no US theatrical offer its song licences cover.
+  await pinSeed(page, Number(process.env.SONG_SEED ?? 22));
   await newProject(page, { title: 'Night Ferry', format: 'Feature Film', runtime: '90' });
   await section(page, 'Characters');
   await page.getByLabel('Character Name').fill('Lena');
@@ -68,7 +70,7 @@ test('journey C: songs written, recorded and cleared in production, placed in sc
   await saveAndApprove(page);
   // The licensed song is asked of both its holders now, for what this film will need (the v4 package, 03); the answer
   // comes while the film is made, and is agreed before delivery.
-  // Labelled fixture: the pinned seed's theatrical offer goes to the US, Great Britain, France and Canada.
+  // Labelled fixture: the licences cover the US, Great Britain, France and Canada; the journey takes a theatrical offer they cover.
   const licensed = ['Festivals', 'Cinemas', 'Digital Sale And Rental'];
   await askLicence(page, 'Harbour Lights', licensed, 'US, GB, FR, CA');
 
@@ -131,9 +133,13 @@ test('journey C: songs written, recorded and cleared in production, placed in sc
   // A distributor's theatrical offer, accepted; the film opens in cinemas on the contract's day.
   for (let i = 0; i < 3 && !(await page.getByRole('button', { name: 'Accept Offer' }).count()); i++) { await advance(page, 'week'); await nav(page, 'Projects'); await page.getByRole('button', { name: 'Night Ferry' }).click(); await section(page, 'Release'); }
   const offers = page.locator('section.card', { has: page.getByRole('heading', { name: 'Distribution Offers' }) }).locator('li');
-  const theatrical = offers.filter({ hasText: /Theatrical release in .*United States/ });
-  expect(await theatrical.count(), `offers for this seed: ${(await offers.allInnerTexts()).join(' | ')}`).toBeGreaterThan(0);
-  await theatrical.first().getByRole('button', { name: 'Accept Offer' }).click();
+  // One the songs' licences cover (the US, Britain, France and Canada, asked for above): an offer for another country too
+  // is refused at acceptance, as a player would see, so a player picks one these licences cover.
+  const covered = new Set(['United States', 'United Kingdom', 'France', 'Canada']);
+  const texts = await offers.allInnerTexts();
+  const pick = texts.findIndex((t) => { const m = /Theatrical release in (.+?) for a minimum guarantee/.exec(t); return !!m && m[1].includes('United States') && m[1].split(/, | and /).every((c) => covered.has(c.trim())); });
+  expect(pick, `offers for this seed: ${texts.join(' | ')}`).toBeGreaterThanOrEqual(0);
+  await offers.nth(pick).getByRole('button', { name: 'Accept Offer' }).click();
   const history = page.locator('section.card', { has: page.getByRole('heading', { name: 'Release History' }) });
   await expect(history).toContainText('Theatrical in US');
   for (let i = 0; i < 8 && !(await history.getByText('Released', { exact: true }).count()); i++) { await advance(page, 'month'); await nav(page, 'Projects'); await page.getByRole('button', { name: 'Night Ferry' }).click(); await section(page, 'Release'); }

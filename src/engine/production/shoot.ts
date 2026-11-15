@@ -10,9 +10,9 @@ import { castIn, stageIn } from '../parts';
 import { recordWorkDay, workRight, type Activity } from '../papers';
 import { addLog, cancelEvents, newId, registerHandler } from '../state';
 import { addDaysToKey, dateKey, formatDateKey } from '../time';
-import { BASE_MINUTES_PER_SHOOT_DAY, CROWD_DAY_RATE, HOLIDAY_PREMIUM, NIGHT_PREMIUM, dayFees, housePackageFee } from './rates';
+import { BASE_MINUTES_PER_SHOOT_DAY, CROWD_DAY_RATE, NIGHT_PREMIUM, dayFees, dayPremium, housePackageFee } from './rates';
 import { dayKitProblems, kitDayRate, wearKit } from '../equipment';
-import { chairsOf, ensureWorkEvent, isWorkingDay, lastDay, minorsInScenes, relabelTravel, nextWorkingDay, performedSong, sceneComplexity, sceneLoad, scheduleShootDay, travelFrom } from './schedule';
+import { chairsOf, ensureWorkEvent, isSixthDay, isWorkingDay, lastDay, minorsInScenes, relabelTravel, nextWorkingDay, performedSong, sceneComplexity, sceneLoad, scheduleShootDay, travelFrom } from './schedule';
 import { childShare, ensureLicence, isSchoolDay, licenceReady, setAsideOf, supervisionFor, type Minor } from '../minors';
 import { dialogueHolds, kitStabilizer, rigDayCost } from '../craft';
 import { awayDayCost, dayPlace, kindFee, moveCost, noisyDay } from '../destinations';
@@ -250,7 +250,7 @@ export function runShootDay(state: GameState, p: Project, d: ShootDay): string {
     .filter((h, i, all) => h.kind !== 'cast' || all.findIndex((x) => x.kind === 'cast' && x.personId === h.personId) === i);
   const overrun = onSetHires.reduce((a, h) => {
     const o = p.obligations.find((x) => x.id === h.obligationId)!;
-    const pay = Math.round(h.dayRate * (holidayToday ? HOLIDAY_PREMIUM : 1) * (d.night ? NIGHT_PREMIUM : 1));
+    const pay = Math.round(h.dayRate * dayPremium(holidayToday, isSixthDay(p, d.date)) * (d.night ? NIGHT_PREMIUM : 1));
     return a + Math.max(0, o.settled + pay - Math.max(o.amount, o.settled));
   }, 0) + Math.max(0, locationFee + gearFee + scenes.reduce((a, s) => a + physicalCrowd(s), 0) * CROWD_DAY_RATE + makeupDayCost(scenes, approvedCharacters(p)) + rigDayCost(p, scenes, onKit && kitStabilizer(p)) + housing + move - plannedRemaining(p, 'plan:shoot'));
   if (overrun > ledgerTotals(p).available) {
@@ -441,7 +441,7 @@ export function runShootDay(state: GameState, p: Project, d: ShootDay): string {
   }
   // Costs: everyone on the shoot crew and the cast in today's scenes is paid once for the day.
   for (const h of onSetHires) {
-    const pay = Math.round(h.dayRate * (holidayToday ? HOLIDAY_PREMIUM : 1) * (d.night ? NIGHT_PREMIUM : 1));
+    const pay = Math.round(h.dayRate * dayPremium(holidayToday, isSixthDay(p, d.date)) * (d.night ? NIGHT_PREMIUM : 1));
     const paidBefore = p.obligations.find((o) => o.id === h.obligationId)?.settled ?? 0;
     if (settle(state, p, h.obligationId!, pay, `${h.id}:${d.date}`)) {
       h.daysWorked += 1;

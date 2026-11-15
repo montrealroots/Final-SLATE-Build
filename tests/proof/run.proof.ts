@@ -24,8 +24,15 @@ import { PROBES as NOTES } from './probes/notes';
 import { PROBES as SLATE } from './probes/slate';
 import { PROBES as BANK_MORE } from './probes/bank-more';
 import { PROBES as AGENTS_PROBES } from './probes/agent';
+import { PROBES as FESTIVAL } from './probes/festival';
+import { PROBES as OPPS } from './probes/opportunities';
+import { PROBES as BACKERS_PROBES } from './probes/backers';
+import { PROBES as PLACES } from './probes/places';
+import { PROBES as PLAN } from './probes/plan';
+import { PROBES as LATE } from './probes/late';
+import { PROBES as CASTING } from './probes/casting';
 
-const ALL = [...CORE, ...PRODUCTION, ...RELEASE, ...AWARDS, ...BANK, ...PAPERS, ...SCRIPT, ...PROJECT, ...CAREER_WIDE, ...WEATHER, ...EQUIPMENT, ...WRITING, ...HIRING, ...DAYS, ...MUSIC, ...VERSIONS, ...SCORE, ...EDIT, ...NOTES, ...SLATE, ...BANK_MORE, ...AGENTS_PROBES];
+const ALL = [...CORE, ...PRODUCTION, ...RELEASE, ...AWARDS, ...BANK, ...PAPERS, ...SCRIPT, ...PROJECT, ...CAREER_WIDE, ...WEATHER, ...EQUIPMENT, ...WRITING, ...HIRING, ...DAYS, ...MUSIC, ...VERSIONS, ...SCORE, ...EDIT, ...NOTES, ...SLATE, ...BANK_MORE, ...AGENTS_PROBES, ...FESTIVAL, ...OPPS, ...BACKERS_PROBES, ...PLACES, ...PLAN, ...LATE, ...CASTING];
 const pick = process.env.PROBES?.split(',');
 const seeds = process.env.SEEDS ? Number(process.env.SEEDS) : undefined;
 

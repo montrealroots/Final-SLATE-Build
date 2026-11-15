@@ -89,6 +89,18 @@ describe('your account', () => {
     expect(back).toBeLessThanOrEqual(6_000);
   });
 
+  it('a delivered project takes your money for what it still has to pay, and what it doesn\'t spend comes home again', () => {
+    const s = life({ savings: 25_000 }, 'after');
+    const p = short(s);
+    p.delivered = { at: s.now, runtimeMin: 12 }; // labelled fixture: delivered, nothing left in it
+    expect(putInRefusal(s, p, 25_001)).toBe('You have $25,000 in your own account.');
+    expect(putInRefusal(s, p, 2_000)).toBeNull();
+    const before = takeHomeAvailable(p).capital;
+    putInOwnMoney(s, p, 2_000);
+    expect(personalBalance(s)).toBe(23_000);
+    expect(takeHomeAvailable(p).capital).toBe(before + 2_000);
+  });
+
   it('refuses more than the project still needs', () => {
     const s = life({ savings: 25_000 }, 'need');
     const p = short(s);

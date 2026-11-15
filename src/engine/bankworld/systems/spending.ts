@@ -179,7 +179,18 @@ export function owe(sim: Simulation, person: Person, amount: Money, memo: string
  * 2026-10-09; the lines a save posted to then are still in its ledger.
  */
 const EXPENSE_LINE: Record<string, string> = { food: 'Food', dues: 'Union Dues', health: 'Medical Care', tax: 'Tax Paid', career: 'Work Costs', school: 'School', documents: 'Documents And Their Fees' };
-export const expenseFor = (category: string) => EXPENSE_LINE[category] ?? 'Other';
+/** SLATE: the lines SLATE's own purchases post to (bank.ts `counterLabel`), by the kind in their category. */
+const SLATE_LINE: Record<string, string> = { equipment: 'Equipment', papers: 'Documents And Their Fees' };
+export const expenseFor = (category: string) => EXPENSE_LINE[category] ?? SLATE_LINE[/^slate:([a-z-]+)#/.exec(category)?.[1] ?? ''] ?? 'Other';
+
+/**
+ * SLATE: what a SLATE life buys (equipment bought or serviced, papers' fees; bank.ts `postToBank`) is paid as 1221's
+ * day's food was: in cash first, on the credit card first or by debit card, as How You Pay says, with the card's hold,
+ * the bank's purchase fees and round-ups. From November 14, 2026: until then SLATE's purchases came out of the current
+ * account whatever How You Pay said, so a credit card, the setting and cash in hand paid for nothing (the feature
+ * proofs found it, docs/v10/proof/credit-card.json). Transfers (into a project, to your family) aren't purchases.
+ */
+export const isEveryday = (category: string): boolean => category === 'food' || /^slate:(equipment|papers)#/.test(category);
 
 
 
@@ -204,7 +215,7 @@ const CASH_UNSPENT = 'Your bank and card can’t cover it. Your cash in hand wou
  */
 export function spendRefusal(sim: Simulation, person: Person, amount: Money, category: string): string | undefined {
   if (amount <= 0) return undefined;
-  const food = category === 'food';
+  const food = isEveryday(category);
   // A debit card purchase goes into an overdraft only where the bank may pay it there.
   const overdraft = !food || purchaseMayOverdraw(sim, person);
   const cash = food ? cashInHand(sim, person) : 0;
@@ -263,14 +274,14 @@ export function spend(sim: Simulation, person: Person, amount: Money, memo: stri
   if (amount <= 0) return true;
   const card = cardOf(sim, person);
   // A debit card purchase goes into an overdraft only where the bank may pay it there.
-  const overdraft = category !== 'food' || purchaseMayOverdraw(sim, person);
+  const overdraft = !isEveryday(category) || purchaseMayOverdraw(sim, person);
   if (!owe && !canSpend(sim, person, amount, category)) return false;
   // In cash first, where that's how they pay for the day.
-  if (category === 'food' && paymentsOf(person).everyday === 'cash') {
+  if (isEveryday(category) && paymentsOf(person).everyday === 'cash') {
     const wallet = accountsOf(sim, person).find((a) => a.kind === 'cash');
     const inHand = Math.min(amount, Math.max(0, wallet?.balance ?? 0));
     if (wallet && inHand > 0) {
-      sim.post({ memo, category, postings: [{ accountId: sim.nominalAccount('expense', 'Food').id, amount: inHand }, { accountId: wallet.id, amount: -inHand }] });
+      sim.post({ memo, category, postings: [{ accountId: sim.nominalAccount('expense', expenseFor(category)).id, amount: inHand }, { accountId: wallet.id, amount: -inHand }] });
       if (inHand === amount) return true;
       return spend(sim, person, amount - inHand, memo, category, owe);
     }
@@ -280,12 +291,12 @@ export function spend(sim: Simulation, person: Person, amount: Money, memo: stri
   const cardFree = cardRoom(person, card);
   // A debit card locked, lost or stolen buys nothing: the day's shopping goes
   // on the credit card or in cash, or isn't bought (`systems/security.ts`).
-  if (category === 'food' && current?.plastic && (current.plastic.locked || current.plastic.stopped)) {
+  if (isEveryday(category) && current?.plastic && (current.plastic.locked || current.plastic.stopped)) {
     const wallet = accountsOf(sim, person).find((a) => a.kind === 'cash');
     const inHand = Math.max(0, wallet?.balance ?? 0);
     if (cardFree + inHand < amount) return false;
     const onCredit = Math.min(amount, cardFree);
-    const postings = [{ accountId: sim.nominalAccount('expense', 'Food').id, amount }];
+    const postings = [{ accountId: sim.nominalAccount('expense', expenseFor(category)).id, amount }];
     if (onCredit > 0 && card) postings.push({ accountId: card.id, amount: -onCredit });
     if (amount > onCredit && wallet) postings.push({ accountId: wallet.id, amount: -(amount - onCredit) });
     const txn = sim.post({ memo, category, postings });
@@ -294,9 +305,9 @@ export function spend(sim: Simulation, person: Person, amount: Money, memo: stri
     return true;
   }
   // On the credit card first where that's how they pay for the day, then the debit card.
-  let creditFirst = category === 'food' && paymentsOf(person).everyday === 'credit' ? Math.min(amount, cardFree) : 0;
+  let creditFirst = isEveryday(category) && paymentsOf(person).everyday === 'credit' ? Math.min(amount, cardFree) : 0;
   // A French debit card past its payment ceiling declines: the credit card takes the day, or it isn't bought.
-  const room = category === 'food' ? cardCeilingRoom(sim, person) : undefined;
+  const room = isEveryday(category) ? cardCeilingRoom(sim, person) : undefined;
   if (room !== undefined && amount - creditFirst > room) {
     if (cardFree < amount) return false;
     creditFirst = amount;
@@ -313,19 +324,19 @@ export function spend(sim: Simulation, person: Person, amount: Money, memo: stri
   if (owed > 0) postings.push({ accountId: arrearsAccount(sim, person).id, amount: -owed });
   const txn = sim.post({ memo, category, postings });
   // A card purchase is authorized now and posts in the bank's days (A95).
-  if (category === 'food') hold(sim, txn, bank.postings.length > 0 && current ? current : card ?? current!);
+  if (isEveryday(category)) hold(sim, txn, bank.postings.length > 0 && current ? current : card ?? current!);
   // An item's fee is for one the bank paid below zero, not one the card took.
   // Until 2026-09-25 a purchase the card paid was charged one if the account
   // happened to be overdrawn already.
   if (current && current.balance < 0 && current.balance < before) chargeForItem(sim, person, before - current.balance);
   // A debit the bank couldn't pay went back unpaid first, where it charges
   // for that; a card purchase it can't pay is only declined.
-  if (bank.short > 0 && category !== 'food') chargeReturned(sim, person, bank.short);
+  if (bank.short > 0 && !isEveryday(category)) chargeReturned(sim, person, bank.short);
   // What the debit card took from the account, for a card from a bank abroad's fee on it (from 2026-10-16).
   const byCard = current ? -bank.postings.filter((q) => q.accountId === current.id).reduce((n, q) => n + q.amount, 0) : 0;
-  if (category === 'food' && bank.postings.length > 0 && creditFirst < amount) chargeForPurchase(sim, person, byCard);
+  if (isEveryday(category) && bank.postings.length > 0 && creditFirst < amount) chargeForPurchase(sim, person, byCard);
   // On what the debit card paid, which until 2026-10-10 counted the part the credit card took when the account ran short.
-  if (category === 'food') countRoundUps(sim, person, amount - creditFirst - bank.short, fromCard, card);
+  if (isEveryday(category)) countRoundUps(sim, person, amount - creditFirst - bank.short, fromCard, card);
   return true;
 }
 

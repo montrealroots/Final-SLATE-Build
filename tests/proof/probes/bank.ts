@@ -1,6 +1,7 @@
 // The bank (1221's, src/engine/bankworld): each command run as the bank screens run it (ui/bankworld/app/game-context.tsx
 // `run`), on the career's first day, and its effect read from the bank's own ledger.
 import type { Probe } from '../probe';
+import { buyGear } from '../../../src/engine/equipment';
 import { advanceBankWorld, bankSim } from '../../../src/engine/bankworld';
 import { bankSummary } from '../../../src/engine/bankworld/summary';
 import { netWorth } from '../../../src/engine/bankworld/systems/finance';
@@ -18,6 +19,24 @@ const current = (s: GameState) => bankSim(s.bank!).ledger.accountsOf(bankSim(s.b
 const once = (fn: (s: GameState) => void) => { const done = new WeakSet<GameState>(); return (s: GameState) => { if (done.has(s)) return; try { fn(s); done.add(s); } catch { /* not yet allowed */ } }; };
 /** On the first day only. */
 const first = (fn: (s: GameState) => void) => (s: GameState, day: number) => { if (day === 0) fn(s); };
+
+/** On the tenth day, once a card applied for has arrived: a camera bought (equipment.ts buyGear), as a player kits up. */
+const buysCamera = (s: GameState, day: number) => { if (day === 10) buyGear(s, 'bmpcc-4k'); };
+const both = (...fns: ((s: GameState, day: number) => void)[]) => (s: GameState, day: number) => { for (const f of fns) f(s, day); };
+/** What purchases were paid from cash in hand, and what is in hand: the wallet's own postings. */
+const walletMeasures = (s: GameState) => {
+  const sim = bankSim(s.bank!);
+  const wallet = sim.ledger.accountsOf(sim.universe.playerId).find((a) => a.kind === 'cash');
+  const paidInCash = wallet ? sim.universe.transactions.filter((t) => /^slate:(equipment|papers)#/.test(t.category ?? '')).reduce((a, t) => a - t.postings.filter((p) => p.accountId === wallet.id).reduce((b, p) => b + p.amount, 0), 0) : 0;
+  const kindOf = (id: string) => sim.universe.accounts[id]?.kind;
+  return {
+    paidInCash: paidInCash / 100,
+    withdrawn: wallet ? sim.universe.transactions.reduce((a, t) => a + t.postings.filter((p) => p.accountId === wallet.id && p.amount > 0).reduce((b, p) => b + p.amount, 0), 0) / 100 : 0,
+    onCard: sim.universe.transactions.filter((t) => /^slate:(equipment|papers)#/.test(t.category ?? '') && t.postings.some((p) => kindOf(p.accountId) === 'credit_card')).length,
+    // The card's bills paid from a current account: a purchase on the card is paid for a statement later.
+    cardPaid: sim.universe.transactions.reduce((a, t) => a + (t.postings.some((p) => kindOf(p.accountId) === 'checking' && p.amount < 0) ? t.postings.filter((p) => kindOf(p.accountId) === 'credit_card' && p.amount > 0).reduce((b, p) => b + p.amount, 0) : 0), 0) / 100,
+  };
+};
 
 /** What the bank's ledger says of the player: interest in and out, fees, what is owed and held. */
 export function bankMeasures(s: GameState): Record<string, number> {
@@ -68,23 +87,27 @@ export const PROBES: Probe[] = [
   {
     id: 'credit-card',
     features: ['bank:card.apply', 'bank:bank.set_payments'],
-    decision: 'Take a credit card and pay for everyday things with it',
-    reads: ['src/engine/bankworld/systems/banking.ts#registerBanking'],
-    variant: { daily: first((s) => { bank(s, 'card.apply'); bank(s, 'bank.set_payments', { everyday: 'credit' }); }) },
-    measure: bankMeasures,
-    bites: ['accounts'],
-    // Only what a card itself feeds: SLATE left out 1221's everyday spending, so money moving here is the seeds diverging
-    // once a card exists, not the card (docs/v10/README.md).
-    downstream: ['bankFees', 'interestOut', 'owed'],
+    // Both careers buy a camera on the tenth day; one has a credit card by then and pays the day's purchases on it.
+    // Until November 14, 2026 SLATE's purchases came out of the current account whatever How You Pay said, so the card
+    // paid for nothing (bankworld/systems/spending.ts isEveryday).
+    decision: 'Take a credit card and pay for what you buy with it',
+    reads: ['src/engine/bankworld/systems/spending.ts#isEveryday', 'src/engine/bank.ts#postToBank'],
+    base: { daily: buysCamera },
+    variant: { daily: both(first((s) => { bank(s, 'card.apply'); bank(s, 'bank.set_payments', { everyday: 'credit' }); }), buysCamera) },
+    measure: (s) => ({ ...bankMeasures(s), ...walletMeasures(s) }),
+    bites: ['accounts', 'onCard'],
+    downstream: ['cardPaid', 'owed', 'interestOut', 'bankFees'],
   },
   {
     id: 'cash-withdrawal',
     features: ['bank:cash.withdraw'],
-    decision: 'Take 250 in the bank\'s own money out of a cash machine',
-    reads: ['src/engine/bankworld/systems/banking.ts#registerBanking'],
-    variant: { daily: first((s) => void bank(s, 'cash.withdraw', { amount: 25_000, from: 'atm' })) },
-    measure: bankMeasures,
-    bites: ['money'],
-    downstream: ['bankFees', 'interestIn'],
+    // Both careers buy a camera on the tenth day; one has drawn cash and pays the day's purchases in cash first.
+    decision: 'Take 250 in the bank\'s own money out of a cash machine and pay for what you buy in cash first',
+    reads: ['src/engine/bankworld/systems/cash.ts#registerCash', 'src/engine/bankworld/systems/spending.ts#isEveryday'],
+    base: { daily: buysCamera },
+    variant: { daily: both(first((s) => { bank(s, 'cash.withdraw', { amount: 25_000, from: 'atm' }); bank(s, 'bank.set_payments', { everyday: 'cash' }); }), buysCamera) },
+    measure: (s) => ({ ...bankMeasures(s), ...walletMeasures(s) }),
+    bites: ['withdrawn'],
+    downstream: ['paidInCash', 'bankFees'],
   },
 ];

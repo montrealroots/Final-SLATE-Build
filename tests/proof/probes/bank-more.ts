@@ -4,7 +4,7 @@
 import type { Probe } from '../probe';
 import { bank, bankMeasures } from './bank';
 import { bankSim } from '../../../src/engine/bankworld';
-import { banksFor } from '../../../src/engine/bankworld/systems/banking';
+import { banksFor, rateOn } from '../../../src/engine/bankworld/systems/banking';
 import type { GameState } from '../../../src/engine/types';
 
 const DAYMS = 86_400_000;
@@ -16,7 +16,18 @@ const once = (fn: (s: GameState) => void) => { const done = new WeakSet<GameStat
 /** On the `n`th day of the career, once. */
 const onDay = (n: number, fn: (s: GameState) => void) => (s: GameState, day: number) => { if (day === n) fn(s); };
 const both = (...fns: ((s: GameState, day: number) => void)[]) => (s: GameState, day: number) => { for (const f of fns) f(s, day); };
-const another = (s: GameState) => { const here = bankSim(s.bank!).player.currentLocationId; const mineBanks = new Set(mine(s).map((a) => a.bankId)); return banksFor(here).find((b) => !mineBanks.has(b.id))!.id; };
+/** The bank here, other than yours, that pays most on `kind` today (null when none pays more than yours). */
+const bestOther = (s: GameState, kind: 'savings' | 'current') => {
+  const sim = bankSim(s.bank!);
+  const here = sim.player.currentLocationId;
+  const mineBanks = new Set(mine(s).map((a) => a.bankId));
+  const pays = (b: ReturnType<typeof banksFor>[number]) => rateOn(kind === 'savings' ? b.savings : b.current, sim.now);
+  const yours = Math.max(0, ...banksFor(here).filter((b) => mineBanks.has(b.id)).map(pays));
+  const best = banksFor(here).filter((b) => !mineBanks.has(b.id)).sort((a, b) => pays(b) - pays(a))[0];
+  return best && pays(best) > yours ? best.id : null;
+};
+/** A million in savings at your own bank, on the first day it can be done. */
+const saveMillion = once((s) => { bank(s, 'bank.transfer', { fromId: current(s), toId: savings(s), amount: TERM }); });
 
 const TERM = 1_000_000_00; // a million in the bank's money
 /** The standing order each career adds, by id, so it can be cancelled. */
@@ -111,21 +122,34 @@ export const PROBES: Probe[] = [
   {
     id: 'open-current',
     features: ['bank:bank.open_current'],
-    decision: 'Open a second current account at another bank',
-    reads: ['src/engine/bankworld/systems/bankmoves.ts#registerBankMoves'],
-    variant: { daily: once((s) => { bank(s, 'bank.open_current', { bankId: another(s) }); }) },
+    // A life in Paris, where a current account has a monthly fee (La Banque Postale's, Crédit Agricole's: no waiver).
+    // In London no bank in the data charges for one or pays on one, so a second there changed nothing (until November
+    // 14, 2026 the probe was there).
+    decision: 'In Paris, open a second current account at a bank whose monthly fee nothing waives',
+    reads: ['src/engine/bankworld/systems/bankmoves.ts#registerBankMoves', 'src/engine/bankworld/systems/accountlife.ts#registerAccountLife'],
+    base: { placeId: 'fr-paris' },
+    variant: { placeId: 'fr-paris', daily: once((s) => {
+      const here = bankSim(s.bank!).player.currentLocationId;
+      const mineBanks = new Set(mine(s).map((a) => a.bankId));
+      const to = banksFor(here).filter((b) => !mineBanks.has(b.id) && (b.current?.monthlyFee ?? 0) > 0 && !b.current?.waiver).sort((x, y) => (y.current?.monthlyFee ?? 0) - (x.current?.monthlyFee ?? 0))[0];
+      if (!to) throw new Error('no such bank here');
+      bank(s, 'bank.open_current', { bankId: to.id });
+    }) },
     measure: bankMeasures,
     bites: ['accounts'],
-    downstream: ['bankFees', 'money'],
+    downstream: ['bankFees', 'worth'],
   },
   {
     id: 'switch-bank',
     features: ['bank:bank.switch'],
-    decision: 'Switch to another bank on the first day',
-    reads: ['src/engine/bankworld/systems/bankmoves.ts#registerBankMoves', 'src/engine/bankworld/systems/lending.ts#registerLending'],
-    variant: { daily: once((s) => { bank(s, 'bank.switch', { bankId: another(s) }); }) },
-    measure: (s) => ({ ...bankMeasures(s), atFirstBank: mine(s).filter((a) => a.bankId === 'gb-barclays').length }),
+    // With a million in savings, switched to the London bank that pays most on it (until November 14, 2026 the probe
+    // switched with nothing saved, between banks that charge nothing for a current account, so nothing could follow).
+    decision: 'With a million in savings, switch to the bank here that pays most on savings',
+    reads: ['src/engine/bankworld/systems/bankmoves.ts#registerBankMoves', 'src/engine/bankworld/systems/banking.ts#rateOn'],
+    base: { daily: saveMillion },
+    variant: { daily: both(saveMillion, onDay(10, (s) => { const to = bestOther(s, 'savings'); if (to) bank(s, 'bank.switch', { bankId: to }); })) },
+    measure: (s) => ({ ...bankMeasures(s), atFirstBank: mine(s).filter((x) => x.bankId === 'gb-barclays').length }),
     bites: ['atFirstBank'],
-    downstream: ['bankFees', 'interestIn', 'money'],
+    downstream: ['interestIn', 'worth', 'money'],
   },
 ];
