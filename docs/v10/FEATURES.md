@@ -11,8 +11,8 @@ journey that shows it there.
 | action | 144 | 0 | 0 | 3 | 0 | 13 | 0 | 160 |
 | bank | 43 | 0 | 0 | 0 | 0 | 0 | 11 | 54 |
 | scheduled | 55 | 0 | 0 | 0 | 0 | 11 | 0 | 66 |
-| field | 169 | 96 | 0 | 3 | 0 | 9 | 28 | 305 |
-| all | 411 | 96 | 0 | 6 | 0 | 33 | 39 | 585 |
+| field | 172 | 97 | 0 | 3 | 0 | 9 | 24 | 305 |
+| all | 414 | 97 | 0 | 6 | 0 | 33 | 35 | 585 |
 
 ## Rows
 
@@ -394,7 +394,7 @@ journey that shows it there.
 | {`Coverage For ${sceneLabel(p, s)}`} | field | takes.ts requiredSetups; production/shoot.ts | proven | full-coverage (40 seeds) | setups +6; shootDays +25.775; spent +84311.5; quality.direction +2.213; overall +1.063 |
 | {`Takes For ${sceneLabel(p, s)}`} | field | takes.ts setupTime | proven | full-coverage (40 seeds) | setups +6; shootDays +25.775; spent +84311.5; quality.direction +2.213; overall +1.063 |
 | {`Site For ${place}`} | field | locations.ts | not yet proven |  |  |
-| {`Backup For ${place}`} | field | locations.ts | not yet proven |  |  |
+| {`Backup For ${place}`} | field | locations.ts | proven | site-backup (40 seeds) | lostDays -1.275; shootDays -1.275 |
 | "New Planned Budget (US Dollars)" | field | project-budget.ts setPlannedBudget, readiness | proven | new-planned-budget (40 seeds) | ownIn +6270.5; hired +12.075; delivered +1.85; lostDays -672.15; revenue +126819.875 |
 | "Why" | field | PlanViews.tsx Plan Revisions | carried | tests/v8-budget.test.ts::keeps 20,000 and 2,000,000 exactly | A name or a record, carried to PlanViews.tsx Plan Revisions: it decides nothing by its nature. |
 | "Change Financing Target" | field | finance.ts financeSummary, decide | proven | finance-target (40 seeds) | backerIn +38750; leftInProjects +32709.5; money -7180.28; revenue -9014.2 |
@@ -536,11 +536,11 @@ journey that shows it there.
 | "Area" | field | projects.ts addNote | proven | own-notes (40 seeds) | ownNotes +6; quality.script +6; overall +1.725 |
 | "About" | field | projects.ts addNote | proven | own-notes (40 seeds) | ownNotes +6; quality.script +6; overall +1.725 |
 | "Character Name" | field | everywhere a part is named | carried | tests/scenes.test.ts::renaming changes the name everywhere it is shown | A name or a record, carried to everywhere a part is named: it decides nothing by its nature. |
-| "Give Their Scenes, Lines And Relationships To" | field | projects.ts archiveCharacter | not yet proven |  |  |
+| "Give Their Scenes, Lines And Relationships To" | field | projects.ts archiveCharacter | proven | archive-reassign (40 seeds) | NeighbourDays +4; spent +2165.5; ownIn +700 |
 | "Scene" | field | shown as advice: structure.ts beatsIn | carried | tests/structure.test.ts::a beat goes only in a scene the character is in | A name or a record, carried to shown as advice: structure.ts beatsIn: it decides nothing by its nature. |
 | "What Changes" | field | shown as advice: structure.ts | carried | tests/advice-carried.test.ts::reach the advice they are written for, and are scored by nothing | A name or a record, carried to shown as advice: structure.ts: it decides nothing by its nature. |
 | "New Character's Name" | field | shown as the new character's name: projects.ts splitCharacter | carried | tests/characters.test.ts::a new character takes the chosen scenes | A name or a record, carried to shown as the new character's name: projects.ts splitCharacter: it decides nothing by its nature. |
-| {sceneLabel(p, s)} | field | projects.ts splitCharacter | not yet proven |  |  |
+| {sceneLabel(p, s)} | field | projects.ts splitCharacter | proven | split-scenes (40 seeds) | OlderDays +2; olderInCut +2; LeadDays -2 |
 | "Name" | field | everywhere a part is named | carried | tests/scenes.test.ts::renaming changes the name everywhere it is shown | A name or a record, carried to everywhere a part is named: it decides nothing by its nature. |
 | "Role Size" | field | script-effects.ts castPlacement; hiring.ts | proven | lead-role-size (30 seeds) | leadEntries -2.967; actingDecided -2.967 |
 | "Entity" | field | projects.ts deriveRequirements; production/shoot.ts | proven | lead-entity (40 seeds) | spent +17308.25; hired +2; ownIn +14725 |
@@ -591,7 +591,7 @@ journey that shows it there.
 | {`Scene For ${s.title}`} | field | songs.ts songUses | not yet proven |  |  |
 | "How It Plays" | field | awards-rules.ts songRuleProblem | proven | song-opening-titles (40 seeds) | licenceFees +36445.5; spent +27027; money -27027 |
 | "Minutes It Plays" | field | awards-rules.ts songRuleProblem | proven | song-minutes (40 seeds) | licenceFees +166461.75; spent +127764 |
-| {`${c.name} Performs ${s.title}`} | field | casting-notes.ts fitNotes; songs.ts songCredits | not yet proven |  |  |
+| {`${c.name} Performs ${s.title}`} | field | credits: songs.ts songCredits (Song Performed By), and the casting notes: casting-notes.ts fitNotes | carried | tests/songs.test.ts::played to delivery: writers are whoever wrote | A name or a record, carried to credits: songs.ts songCredits (Song Performed By), and the casting notes: casting-notes.ts fitNotes: it decides nothing by its nature. |
 | {`${v.label}: ${sceneLabel(p, sc)}, In Place Of "${song.title}"`} | field | song-actions.ts changeVersionSong | proven | version-song (40 seeds) | songChanges +2; songTasks +4; spent +1872 |
 | {`${c.name} On Screen (Minutes)`} | field | screen-time.ts shareCheck | proven | record-screen-time (40 seeds) | screenRecords +12; screenEntries +1; screenDecided +1 |
 | {`${c.name} Heard Only (Minutes)`} | field | screen-time.ts screenTotal | not yet proven |  |  |
