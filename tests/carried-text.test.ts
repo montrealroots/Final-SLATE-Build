@@ -55,3 +55,19 @@ describe('the words a player writes are kept through a save', () => {
     expect((bp.songs ?? []).map((x) => x.title)).toContain('Harbour Lights');
   });
 });
+
+describe('your name and birth date', () => {
+  it('are your legal name and age, seed the world with the start date, and date the inheritance', async () => {
+    const { newGame } = await import('../src/engine/state');
+    const { inheritanceDay } = await import('../src/engine/personal');
+    const { draft } = await import('./fixtures');
+    const a = newGame(draft({ firstName: 'Ada', middleName: 'Rose', lastName: 'Okafor' }), 0, 'save1');
+    expect(a.character.name).toBe('Ada Rose Okafor');
+    // Another name or birth date is another world: the seed is drawn from them (state.ts newGame).
+    expect(newGame(draft({ firstName: 'Ada', middleName: 'Rose', lastName: 'Okafor-Lind' }), 0, 'save1').seed).not.toBe(a.seed);
+    expect(newGame(draft({ firstName: 'Ada', middleName: 'Rose', lastName: 'Okafor', birthDate: '2007-01-02' }), 0, 'save1').seed).not.toBe(a.seed);
+    // The inheritance was released on your nineteenth birthday, or the day the story starts if that is sooner.
+    expect(inheritanceDay('2007-01-02', '2026-03-27')).toBe('2026-01-02');
+    expect(inheritanceDay('2007-06-02', '2026-03-27')).toBe('2026-03-27');
+  });
+});
