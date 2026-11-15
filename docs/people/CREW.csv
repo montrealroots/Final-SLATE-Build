@@ -107,6 +107,7 @@ tmdb_person,name,job,recognition (Wikidata),weight,experience,capability,grade,a
 33323,John Osborne,co-writer,"An Academy Award win and a BAFTA Film Award win, 1964",17,3,89,A,1320
 54472,Martin McDonagh,co-writer,"A Golden Globe win and 3 Academy Award nominations, 2009 to 2023",17,4,94,A,1530
 12240,Pierre Boulle,co-writer,"An Academy Award win and a BAFTA Film Award win, 1958",17,3,89,A,1320
+5346,Dan Futterman,co-writer,"An Independent Spirit Award win, 2 Academy Award nominations, a BAFTA Film Award nomination and a Critics' Choice Award nomination, 2005 to 2015",16.4,4,93,A,1500
 26160,Albert Hackett,co-writer,"4 Academy Award nominations, 1935 to 1955",16,5,98,A,1680
 7,Andrew Stanton,co-writer,"4 Academy Award nominations, 1996 to 2011",16,4,93,A,1480
 4341,Ben Hecht,co-writer,"4 Academy Award nominations, 1935 to 1947",16,4,93,A,1480
@@ -121,6 +122,7 @@ tmdb_person,name,job,recognition (Wikidata),weight,experience,capability,grade,a
 6449,Warren Beatty,co-writer,"4 Academy Award nominations, 1976 to 1999",16,5,98,A,1680
 15389,Louis Malle,co-writer,"A César win, 2 Academy Award nominations and a BAFTA Film Award nomination, 1973 to 1989",15.8,4,92,A,1470
 1226294,Paula Pell,co-writer,"A Primetime Emmy win and 4 Primetime Emmy nominations, 2001 to 2012",15.6,4,92,A,1450
+880,Ben Affleck,co-writer,"An Academy Award win and a Golden Globe win, 1998",15,3,86,B,1220
 17397,Callie Khouri,co-writer,"An Academy Award win and a Golden Globe win, 1992",15,3,86,B,1220
 58251,Elaine May,co-writer,"A BAFTA Film Award win and 2 Academy Award nominations, 1979 to 1999",15,5,96,A,1620
 7056,Emma Thompson,co-writer,"An Academy Award win and a Golden Globe win, 1996",15,3,86,B,1220
@@ -185,6 +187,7 @@ tmdb_person,name,job,recognition (Wikidata),weight,experience,capability,grade,a
 8246,Barry Levinson,co-writer,"3 Academy Award nominations, 1980 to 1991",12,4,87,A,1250
 157208,Bill Persky,co-writer,"2 Primetime Emmy wins, 1964 to 1966",12,3,82,B,1070
 1205496,Christopher Lloyd,co-writer,"2 Primetime Emmy wins, 1996 to 2010",12,4,87,A,1250
+525,Christopher Nolan,co-writer,"3 Academy Award nominations, 2002 to 2024",12,5,92,A,1430
 1383612,Dan Kwan,co-writer,"An Academy Award win and a Golden Globe nomination, 2023",12,3,82,B,1070
 1317730,Daniel Scheinert,co-writer,"An Academy Award win and a Golden Globe nomination, 2023",12,3,82,B,1070
 1213757,David Angell,co-writer,"2 Primetime Emmy wins, 1984 to 1994",12,4,87,A,1250
@@ -543,6 +546,7 @@ tmdb_person,name,job,recognition (Wikidata),weight,experience,capability,grade,a
 12219,Jon Stewart,co-writer,"A Primetime Emmy win, 2012",6,3,70,C,780
 119941,Jonathan Stark,co-writer,"A Primetime Emmy win, 1997",6,3,70,C,780
 1203522,Judith Viorst,co-writer,"A Primetime Emmy win, 1970",6,3,70,C,780
+1213766,Ken Estin,co-writer,"A Primetime Emmy win, 1982",6,3,70,C,780
 6767,Larry Charles,co-writer,"A Primetime Emmy win, 1992",6,3,70,C,780
 79728,Lee Kalcheim,co-writer,"A Primetime Emmy win, 1973",6,3,70,C,780
 1059572,Lena Waithe,co-writer,"A Primetime Emmy win, 2017",6,3,70,C,780
@@ -577,10 +581,12 @@ tmdb_person,name,job,recognition (Wikidata),weight,experience,capability,grade,a
 67773,Steve Martin,co-writer,"A Primetime Emmy win, 1969",6,3,70,C,780
 1213356,Steven Peterman,co-writer,"A Primetime Emmy win, 1991",6,3,70,C,780
 488,Steven Spielberg,co-writer,"An Academy Award nomination and a Golden Globe nomination, 2023",6,3,70,C,780
+1926,Suzy Eddie Izzard,co-writer,"A Primetime Emmy win, 2000",6,3,70,C,780
 1237538,Tracey Wigfield,co-writer,"A Primetime Emmy win, 2013",6,3,70,C,780
 1213121,Tracy Newman,co-writer,"A Primetime Emmy win, 1997",6,3,70,C,780
 57307,Treva Silverman,co-writer,"A Primetime Emmy win, 1974",6,3,70,C,780
 1229487,Tucker Cawley,co-writer,"A Primetime Emmy win, 2003",6,3,70,C,780
+1217123,Vic Rauseo,co-writer,"A Primetime Emmy win, 1996",6,3,70,C,780
 27073,Wang Quan'an,co-writer,"A Berlin Silver Bear win, 2010",6,3,70,C,780
 64131,Courtney Hunt,co-writer,"An Academy Award nomination and an Independent Spirit Award nomination, 2009",5.6,3,69,C,760
 72206,Robert Pulcini,co-writer,"An Academy Award nomination and an Independent Spirit Award nomination, 2004",5.6,3,69,C,760
@@ -989,6 +995,7 @@ tmdb_person,name,job,recognition (Wikidata),weight,experience,capability,grade,a
 191937,Michael Green,co-writer,"An Academy Award nomination, 2018",4,3,65,C,680
 6011,Michael Haneke,co-writer,"An Academy Award nomination, 2013",4,3,65,C,680
 8643,Michael Herr,co-writer,"An Academy Award nomination, 1988",4,3,65,C,680
+638,Michael Mann,co-writer,"An Academy Award nomination, 2000",4,3,65,C,680
 68424,Michael Powell,co-writer,"An Academy Award nomination, 1943",4,3,65,C,680
 28898,Michael Radford,co-writer,"An Academy Award nomination, 1996",4,3,65,C,680
 16939,Michael Tolkin,co-writer,"An Academy Award nomination, 1993",4,3,65,C,680
@@ -1026,6 +1033,7 @@ tmdb_person,name,job,recognition (Wikidata),weight,experience,capability,grade,a
 1900227,Nina Pedrad,co-writer,"An Academy Award nomination, 2021",4,3,65,C,680
 12718,Noël Coward,co-writer,"An Academy Award nomination, 1944",4,3,65,C,680
 49168,Noémie Lvovsky,co-writer,"2 César nominations, 2013 to 2023",4,4,70,B,800
+1042211,Norman Burnstine,co-writer,"An Academy Award nomination, 1941",4,3,65,C,680
 148560,Norman Corwin,co-writer,"An Academy Award nomination, 1957",4,3,65,C,680
 34110,Oren Moverman,co-writer,"An Academy Award nomination, 2010",4,3,65,C,680
 103355,Orville H. Hampton,co-writer,"An Academy Award nomination, 1965",4,3,65,C,680
@@ -1309,6 +1317,7 @@ tmdb_person,name,job,recognition (Wikidata),weight,experience,capability,grade,a
 1213,James Newton Howard,composer,"7 Academy Award nominations, 1992 to 2021",28,5,98,A,3690
 2027,Leonard Rosenman,composer,"2 Academy Award wins and 2 Academy Award nominations, 1976 to 1987",28,4,98,A,3240
 10468,Marvin Hamlisch,composer,"2 Academy Award wins and 2 Academy Award nominations, 1974 to 1983",28,3,98,A,2780
+278,Gustavo Santaolalla,composer,"2 Academy Award wins and a BAFTA Film Award win, 2005 to 2007",27,3,98,A,2710
 37757,David Hirschfelder,composer,"2 BAFTA Film Award wins, 2 Academy Award nominations, a BAFTA Film Award nomination and a Golden Globe nomination, 1993 to 1999",26.8,3,98,A,2690
 3535,Georges Delerue,composer,"An Academy Award win and 4 Academy Award nominations, 1970 to 1986",26,4,98,A,3070
 3616,Leslie Bricusse,composer,"An Academy Award win and 4 Academy Award nominations, 1968 to 1983",26,4,98,A,3070
@@ -1451,6 +1460,7 @@ tmdb_person,name,job,recognition (Wikidata),weight,experience,capability,grade,a
 5287,Terence Blanchard,composer,"2 Academy Award nominations, 2019 to 2021",8,3,75,B,1320
 119339,William Walton,composer,"2 Academy Award nominations, 1947 to 1949",8,3,75,B,1320
 77048,Steve Marmel,composer,"3 Primetime Emmy nominations, 2002 to 2004",7.2,3,73,B,1260
+237405,Lady Gaga,composer,"A BAFTA Film Award win, 2019",7,3,73,B,1240
 27439,Mikis Theodorakis,composer,"A BAFTA Film Award win, 1970",7,3,73,B,1240
 62861,Andy Samberg,composer,"A Primetime Emmy win, 2007",6,3,70,C,1170
 222121,Ben Schwartz,composer,"A Primetime Emmy win, 2009",6,3,70,C,1170
@@ -1460,6 +1470,7 @@ tmdb_person,name,job,recognition (Wikidata),weight,experience,capability,grade,a
 62558,James Dooley,composer,"A Primetime Emmy win, 2008",6,3,70,C,1170
 73345,Jay Chattaway,composer,"A Primetime Emmy win, 2001",6,3,70,C,1170
 933558,John Mulaney,composer,"A Primetime Emmy win, 2011",6,3,70,C,1170
+12111,Justin Timberlake,composer,"A Primetime Emmy win, 2007",6,3,70,C,1170
 1179651,Lin-Manuel Miranda,composer,"A Primetime Emmy win, 2014",6,3,70,C,1170
 68358,Louis Febre,composer,"A Primetime Emmy win, 1997",6,3,70,C,1170
 1238876,Melanie,composer,"A Primetime Emmy win, 1989",6,3,70,C,1170
@@ -1527,6 +1538,7 @@ tmdb_person,name,job,recognition (Wikidata),weight,experience,capability,grade,a
 9079,Hugo Riesenfeld,composer,"An Academy Award nomination, 1938",4,3,65,C,1020
 3555894,Ian Chang,composer,"An Academy Award nomination, 2023",4,3,65,C,1020
 1396191,Ian Fraser,composer,"An Academy Award nomination, 1971",4,3,65,C,1020
+1600049,Irvin Talbot,composer,"An Academy Award nomination, 1936",4,3,65,C,1020
 52029,Jack Elliott,composer,"An Academy Award nomination, 1965",4,3,65,C,1020
 17004,Javier Navarrete,composer,"An Academy Award nomination, 2007",4,3,65,C,1020
 1217317,Jeff Moss,composer,"An Academy Award nomination, 1985",4,3,65,C,1020
@@ -1575,6 +1587,7 @@ tmdb_person,name,job,recognition (Wikidata),weight,experience,capability,grade,a
 1260756,Peter Herman Adler,composer,"An Academy Award nomination, 1952",4,3,65,C,1020
 19425,Peter Matz,composer,"An Academy Award nomination, 1976",4,3,65,C,1020
 1351566,Peter Maxwell Davies,composer,"An Academy Award nomination, 1972",4,3,65,C,1020
+96849,R. Dale Butts,composer,"An Academy Award nomination, 1946",4,3,65,C,1020
 3555893,Rafiq Bhatia,composer,"An Academy Award nomination, 2023",4,3,65,C,1020
 1535098,Randy Kerber,composer,"An Academy Award nomination, 1986",4,3,65,C,1020
 13745,Ravi Shankar,composer,"An Academy Award nomination, 1983",4,3,65,C,1020
@@ -1609,6 +1622,7 @@ tmdb_person,name,job,recognition (Wikidata),weight,experience,capability,grade,a
 13683,Carlos d'Alessio,composer,"A César nomination, 1976",2,3,57,C,880
 109523,Christophe Julien,composer,"A César nomination, 2021",2,3,57,C,880
 1482491,Émilie Simon,composer,"A César nomination, 2006",2,3,57,C,880
+57069,Grégoire Hetzel,composer,"A César nomination, 2023",2,3,57,C,880
 3139702,Jean-Louis Roques,composer,"A César nomination, 1994",2,3,57,C,880
 7491,John Cale,composer,"A César nomination, 2001",2,3,57,C,880
 2719919,Matei Bratescot,composer,"A César nomination, 2021",2,3,57,C,880
@@ -1739,6 +1753,7 @@ tmdb_person,name,job,recognition (Wikidata),weight,experience,capability,grade,a
 1586262,Ariane Daurat,costume-designer,"A César win, 2024",5,3,68,C,1010
 1084248,Gigi Lepage,costume-designer,"A César win, 2023",5,3,68,C,1010
 32510,Marie-Claude Altot,costume-designer,"A César win, 2007",5,3,68,C,1010
+3068692,Tanino Liberatore,costume-designer,"A César win, 2003",5,3,68,C,1010
 960362,Adele Palmer,costume-designer,"An Academy Award nomination, 1960",4,3,65,C,940
 8428,Aggie Guerard Rodgers,costume-designer,"An Academy Award nomination, 1986",4,3,65,C,940
 31934,Alan Barrett,costume-designer,"An Academy Award nomination, 1977",4,3,65,C,940
@@ -1811,6 +1826,7 @@ tmdb_person,name,job,recognition (Wikidata),weight,experience,capability,grade,a
 1321357,Corinne Bruand,costume-designer,"A César nomination, 2023",2,3,57,C,810
 151,Roger Deakins,dop,"2 Academy Award wins, 5 BAFTA Film Award wins, 13 Academy Award nominations and a BAFTA Film Award nomination, 1995 to 2023",109.8,5,98,A,6480
 13270,Leon Shamroy,dop,"4 Academy Award wins and 13 Academy Award nominations, 1939 to 1966",92,5,98,A,6480
+8217,Conrad Hall,dop,"3 Academy Award wins, 3 BAFTA Film Award wins and 7 Academy Award nominations, 1966 to 2003",79,5,98,A,6480
 3148,Charles Lang,dop,"An Academy Award win and 17 Academy Award nominations, 1931 to 1973",78,5,98,A,6480
 4185,Emmanuel Lubezki,dop,"3 Academy Award wins, 4 BAFTA Film Award wins and 5 Academy Award nominations, 1996 to 2016",78,5,98,A,6480
 10005,Robert L. Surtees,dop,"3 Academy Award wins and 11 Academy Award nominations, 1945 to 1979",74,5,98,A,6480
@@ -1841,6 +1857,7 @@ tmdb_person,name,job,recognition (Wikidata),weight,experience,capability,grade,a
 6452,Burnett Guffey,dop,"2 Academy Award wins and 3 Academy Award nominations, 1954 to 1968",32,4,98,A,4770
 7067,Haskell Wexler,dop,"2 Academy Award wins and 3 Academy Award nominations, 1967 to 1990",32,5,98,A,5440
 32996,Ray Rennahan,dop,"2 Academy Award wins and 3 Academy Award nominations, 1940 to 1945",32,3,98,A,4100
+2483,John Toll,dop,"2 Academy Award wins, a BAFTA Film Award win and an Academy Award nomination, 1995 to 1999",31,3,98,A,4000
 8713,Tony Gaudio,dop,"An Academy Award win and 5 Academy Award nominations, 1930 to 1946",30,4,98,A,4540
 85855,W. Howard Greene,dop,"An Academy Award win and 5 Academy Award nominations, 1940 to 1952",30,4,98,A,4540
 22085,Winton Hoch,dop,"3 Academy Award wins, 1949 to 1953",30,3,98,A,3900
@@ -1866,6 +1883,7 @@ tmdb_person,name,job,recognition (Wikidata),weight,experience,capability,grade,a
 2654,Robert Burks,dop,"An Academy Award win and 3 Academy Award nominations, 1952 to 1966",22,4,98,A,3640
 559,Wally Pfister,dop,"An Academy Award win and 3 Academy Award nominations, 2006 to 2011",22,3,94,A,3120
 3637,William Daniels,dop,"An Academy Award win and 3 Academy Award nominations, 1930 to 1964",22,5,98,A,4150
+51333,Claudio Miranda,dop,"An Academy Award win, a BAFTA Film Award win and an Academy Award nomination, 2009 to 2013",21,3,93,A,3030
 74401,Hoyte van Hoytema,dop,"An Academy Award win, a BAFTA Film Award win and an Academy Award nomination, 2018 to 2024",21,3,93,A,3030
 52034,Michael Slovis,dop,"A Primetime Emmy win and 6 Primetime Emmy nominations, 2006 to 2014",20.4,3,92,A,2970
 1940,Franz Planer,dop,"5 Academy Award nominations, 1950 to 1962",20,4,97,A,3410
@@ -1909,6 +1927,7 @@ tmdb_person,name,job,recognition (Wikidata),weight,experience,capability,grade,a
 5261,Boris Kaufman,dop,"An Academy Award win and an Academy Award nomination, 1955 to 1957",14,3,85,B,2340
 20136,Georges Périnal,dop,"An Academy Award win and an Academy Award nomination, 1940 to 1941",14,3,85,B,2340
 96427,Paul Vogel,dop,"An Academy Award win and an Academy Award nomination, 1950 to 1963",14,4,90,A,2730
+2950,Robert Elswit,dop,"An Academy Award win and an Academy Award nomination, 2006 to 2008",14,3,85,B,2340
 13809,Russell Metty,dop,"An Academy Award win and an Academy Award nomination, 1961 to 1962",14,3,85,B,2340
 2005,Arthur Edeson,dop,"3 Academy Award nominations, 1929 to 1944",12,4,87,A,2500
 14960,Bert Glennon,dop,"3 Academy Award nominations, 1940 to 1942",12,3,82,B,2150
@@ -2141,6 +2160,7 @@ tmdb_person,name,job,recognition (Wikidata),weight,experience,capability,grade,a
 1273514,Yorgos Lamprinos,editor,"A César win, 2019",5,3,68,C,1100
 1175710,Annette Dutertre,editor,"2 César nominations, 2011 to 2013",4,3,65,C,1020
 1510130,Lilian Corbeille,editor,"2 César nominations, 2015 to 2018",4,3,65,C,1020
+3987,Conrad Buff IV,editor,"A BAFTA Film Award nomination, 1998",2.8,3,60,C,940
 3898,David Bretherton,editor,"A BAFTA Film Award nomination, 1973",2.8,3,60,C,940
 1113553,Jennifer Lame,editor,"A BAFTA Film Award nomination, 2016",2.8,3,60,C,940
 1891,Stephen Mirrione,editor,"A BAFTA Film Award nomination, 2006",2.8,3,60,C,940
@@ -2375,6 +2395,7 @@ tmdb_person,name,job,recognition (Wikidata),weight,experience,capability,grade,a
 29646,Charles Jarrott,episode-director,"A Golden Globe win, 1970",5,3,68,C,1650
 1395183,Chloé Zhao,episode-director,"A Golden Globe win, 2021",5,3,68,C,1650
 122418,Christian de Chalonge,episode-director,"A César win, 1979",5,3,68,C,1650
+525,Christopher Nolan,episode-director,"A Golden Globe win, 2024",5,3,68,C,1650
 11201,Claude Zidi,episode-director,"A César win, 1985",5,3,68,C,1650
 12238,David Lean,episode-director,"A Golden Globe win, 1957",5,3,68,C,1650
 38516,Denys Arcand,episode-director,"A César win, 2004",5,3,68,C,1650
@@ -2579,6 +2600,7 @@ tmdb_person,name,job,recognition (Wikidata),weight,experience,capability,grade,a
 33323,John Osborne,episode-writer,"An Academy Award win and a BAFTA Film Award win, 1964",17,3,89,A,1650
 54472,Martin McDonagh,episode-writer,"A Golden Globe win and 3 Academy Award nominations, 2009 to 2023",17,4,94,A,1920
 12240,Pierre Boulle,episode-writer,"An Academy Award win and a BAFTA Film Award win, 1958",17,3,89,A,1650
+5346,Dan Futterman,episode-writer,"An Independent Spirit Award win, 2 Academy Award nominations, a BAFTA Film Award nomination and a Critics' Choice Award nomination, 2005 to 2015",16.4,4,93,A,1870
 26160,Albert Hackett,episode-writer,"4 Academy Award nominations, 1935 to 1955",16,5,98,A,2110
 7,Andrew Stanton,episode-writer,"4 Academy Award nominations, 1996 to 2011",16,4,93,A,1850
 4341,Ben Hecht,episode-writer,"4 Academy Award nominations, 1935 to 1947",16,4,93,A,1850
@@ -2593,6 +2615,7 @@ tmdb_person,name,job,recognition (Wikidata),weight,experience,capability,grade,a
 6449,Warren Beatty,episode-writer,"4 Academy Award nominations, 1976 to 1999",16,5,98,A,2110
 15389,Louis Malle,episode-writer,"A César win, 2 Academy Award nominations and a BAFTA Film Award nomination, 1973 to 1989",15.8,4,92,A,1830
 1226294,Paula Pell,episode-writer,"A Primetime Emmy win and 4 Primetime Emmy nominations, 2001 to 2012",15.6,4,92,A,1820
+880,Ben Affleck,episode-writer,"An Academy Award win and a Golden Globe win, 1998",15,3,86,B,1530
 17397,Callie Khouri,episode-writer,"An Academy Award win and a Golden Globe win, 1992",15,3,86,B,1530
 58251,Elaine May,episode-writer,"A BAFTA Film Award win and 2 Academy Award nominations, 1979 to 1999",15,5,96,A,2030
 7056,Emma Thompson,episode-writer,"An Academy Award win and a Golden Globe win, 1996",15,3,86,B,1530
@@ -2657,6 +2680,7 @@ tmdb_person,name,job,recognition (Wikidata),weight,experience,capability,grade,a
 8246,Barry Levinson,episode-writer,"3 Academy Award nominations, 1980 to 1991",12,4,87,A,1560
 157208,Bill Persky,episode-writer,"2 Primetime Emmy wins, 1964 to 1966",12,3,82,B,1340
 1205496,Christopher Lloyd,episode-writer,"2 Primetime Emmy wins, 1996 to 2010",12,4,87,A,1560
+525,Christopher Nolan,episode-writer,"3 Academy Award nominations, 2002 to 2024",12,5,92,A,1780
 1383612,Dan Kwan,episode-writer,"An Academy Award win and a Golden Globe nomination, 2023",12,3,82,B,1340
 1317730,Daniel Scheinert,episode-writer,"An Academy Award win and a Golden Globe nomination, 2023",12,3,82,B,1340
 1213757,David Angell,episode-writer,"2 Primetime Emmy wins, 1984 to 1994",12,4,87,A,1560
@@ -3015,6 +3039,7 @@ tmdb_person,name,job,recognition (Wikidata),weight,experience,capability,grade,a
 12219,Jon Stewart,episode-writer,"A Primetime Emmy win, 2012",6,3,70,C,980
 119941,Jonathan Stark,episode-writer,"A Primetime Emmy win, 1997",6,3,70,C,980
 1203522,Judith Viorst,episode-writer,"A Primetime Emmy win, 1970",6,3,70,C,980
+1213766,Ken Estin,episode-writer,"A Primetime Emmy win, 1982",6,3,70,C,980
 6767,Larry Charles,episode-writer,"A Primetime Emmy win, 1992",6,3,70,C,980
 79728,Lee Kalcheim,episode-writer,"A Primetime Emmy win, 1973",6,3,70,C,980
 1059572,Lena Waithe,episode-writer,"A Primetime Emmy win, 2017",6,3,70,C,980
@@ -3049,10 +3074,12 @@ tmdb_person,name,job,recognition (Wikidata),weight,experience,capability,grade,a
 67773,Steve Martin,episode-writer,"A Primetime Emmy win, 1969",6,3,70,C,980
 1213356,Steven Peterman,episode-writer,"A Primetime Emmy win, 1991",6,3,70,C,980
 488,Steven Spielberg,episode-writer,"An Academy Award nomination and a Golden Globe nomination, 2023",6,3,70,C,980
+1926,Suzy Eddie Izzard,episode-writer,"A Primetime Emmy win, 2000",6,3,70,C,980
 1237538,Tracey Wigfield,episode-writer,"A Primetime Emmy win, 2013",6,3,70,C,980
 1213121,Tracy Newman,episode-writer,"A Primetime Emmy win, 1997",6,3,70,C,980
 57307,Treva Silverman,episode-writer,"A Primetime Emmy win, 1974",6,3,70,C,980
 1229487,Tucker Cawley,episode-writer,"A Primetime Emmy win, 2003",6,3,70,C,980
+1217123,Vic Rauseo,episode-writer,"A Primetime Emmy win, 1996",6,3,70,C,980
 27073,Wang Quan'an,episode-writer,"A Berlin Silver Bear win, 2010",6,3,70,C,980
 64131,Courtney Hunt,episode-writer,"An Academy Award nomination and an Independent Spirit Award nomination, 2009",5.6,3,69,C,950
 72206,Robert Pulcini,episode-writer,"An Academy Award nomination and an Independent Spirit Award nomination, 2004",5.6,3,69,C,950
@@ -3461,6 +3488,7 @@ tmdb_person,name,job,recognition (Wikidata),weight,experience,capability,grade,a
 191937,Michael Green,episode-writer,"An Academy Award nomination, 2018",4,3,65,C,850
 6011,Michael Haneke,episode-writer,"An Academy Award nomination, 2013",4,3,65,C,850
 8643,Michael Herr,episode-writer,"An Academy Award nomination, 1988",4,3,65,C,850
+638,Michael Mann,episode-writer,"An Academy Award nomination, 2000",4,3,65,C,850
 68424,Michael Powell,episode-writer,"An Academy Award nomination, 1943",4,3,65,C,850
 28898,Michael Radford,episode-writer,"An Academy Award nomination, 1996",4,3,65,C,850
 16939,Michael Tolkin,episode-writer,"An Academy Award nomination, 1993",4,3,65,C,850
@@ -3498,6 +3526,7 @@ tmdb_person,name,job,recognition (Wikidata),weight,experience,capability,grade,a
 1900227,Nina Pedrad,episode-writer,"An Academy Award nomination, 2021",4,3,65,C,850
 12718,Noël Coward,episode-writer,"An Academy Award nomination, 1944",4,3,65,C,850
 49168,Noémie Lvovsky,episode-writer,"2 César nominations, 2013 to 2023",4,4,70,B,990
+1042211,Norman Burnstine,episode-writer,"An Academy Award nomination, 1941",4,3,65,C,850
 148560,Norman Corwin,episode-writer,"An Academy Award nomination, 1957",4,3,65,C,850
 34110,Oren Moverman,episode-writer,"An Academy Award nomination, 2010",4,3,65,C,850
 103355,Orville H. Hampton,episode-writer,"An Academy Award nomination, 1965",4,3,65,C,850
@@ -4093,6 +4122,7 @@ tmdb_person,name,job,recognition (Wikidata),weight,experience,capability,grade,a
 1314532,Hein Heckroth,production-designer,"An Academy Award win and an Academy Award nomination, 1949 to 1952",14,3,85,B,2050
 10614,Jack Stephens,production-designer,"An Academy Award win and an Academy Award nomination, 1981 to 1987",14,3,85,B,2050
 13626,Jan Pascale,production-designer,"An Academy Award win and an Academy Award nomination, 2006 to 2021",14,4,90,A,2390
+11460,Jill Quertier,production-designer,"An Academy Award win and an Academy Award nomination, 1999 to 2001",14,3,85,B,2050
 8680,Jim Erickson,production-designer,"An Academy Award win and an Academy Award nomination, 2008 to 2013",14,3,85,B,2050
 9059,Malcolm Brown,production-designer,"An Academy Award win and an Academy Award nomination, 1956 to 1957",14,3,85,B,2050
 11456,Martin Childs,production-designer,"An Academy Award win and an Academy Award nomination, 1999 to 2001",14,3,85,B,2050
@@ -4114,6 +4144,7 @@ tmdb_person,name,job,recognition (Wikidata),weight,experience,capability,grade,a
 119400,Casey Roberts,production-designer,"3 Academy Award nominations, 1943 to 1949",12,3,82,B,1880
 11444,Claude E. Carpenter,production-designer,"3 Academy Award nominations, 1945 to 1953",12,3,82,B,1880
 945,Crispian Sallis,production-designer,"3 Academy Award nominations, 1987 to 2001",12,4,87,A,2190
+715,Elliot Scott,production-designer,"3 Academy Award nominations, 1965 to 1989",12,5,92,A,2490
 31067,Frank Tuttle,production-designer,"3 Academy Award nominations, 1946 to 1968",12,5,92,A,2490
 13974,Fred M. MacLean,production-designer,"3 Academy Award nominations, 1942 to 1966",12,5,92,A,2490
 6934,George Milo,production-designer,"3 Academy Award nominations, 1961 to 1963",12,3,82,B,1880
@@ -4385,6 +4416,7 @@ tmdb_person,name,job,recognition (Wikidata),weight,experience,capability,grade,a
 66552,John Bush,production-designer,"An Academy Award nomination, 2000",4,3,65,C,1200
 16176,John H. Anderson,production-designer,"An Academy Award nomination, 1986",4,3,65,C,1200
 14932,John Jarvis,production-designer,"An Academy Award nomination, 1954",4,3,65,C,1200
+1465095,John Koenig,production-designer,"An Academy Award nomination, 1944",4,3,65,C,1200
 796,John M. Dwyer,production-designer,"An Academy Award nomination, 1981",4,3,65,C,1200
 1159503,John Moore,production-designer,"An Academy Award nomination, 1962",4,3,65,C,1200
 7651,John P. Austin,production-designer,"An Academy Award nomination, 1967",4,3,65,C,1200
@@ -4395,6 +4427,7 @@ tmdb_person,name,job,recognition (Wikidata),weight,experience,capability,grade,a
 7307,Joseph Hurley,production-designer,"An Academy Award nomination, 1961",4,3,65,C,1200
 1802,Joseph R. Jennings,production-designer,"An Academy Award nomination, 1980",4,3,65,C,1200
 1327762,Judy Farr,production-designer,"An Academy Award nomination, 2011",4,3,65,C,1200
+1513801,Julie Ochipinti,production-designer,"An Academy Award nomination, 2007",4,3,65,C,1200
 1783,K. K. Barrett,production-designer,"An Academy Award nomination, 2014",4,3,65,C,1200
 1117953,Karen Murphy,production-designer,"An Academy Award nomination, 2023",4,3,65,C,1200
 1458040,Kenneth A. Reid,production-designer,"An Academy Award nomination, 1961",4,3,65,C,1200
@@ -4412,6 +4445,7 @@ tmdb_person,name,job,recognition (Wikidata),weight,experience,capability,grade,a
 19157,Leslie Pope,production-designer,"An Academy Award nomination, 2004",4,3,65,C,1200
 5021,Leslie Tomkins,production-designer,"An Academy Award nomination, 1984",4,3,65,C,1200
 35497,Lewis J. Rachmil,production-designer,"An Academy Award nomination, 1941",4,3,65,C,1200
+95237,Luigi Scaccianoce,production-designer,"An Academy Award nomination, 1967",4,3,65,C,1200
 1461547,Lyle Reifsnider,production-designer,"An Academy Award nomination, 1950",4,3,65,C,1200
 35836,Marc Frédérix,production-designer,"An Academy Award nomination, 1967",4,3,65,C,1200
 471,Maria Djurkovic,production-designer,"An Academy Award nomination, 2015",4,3,65,C,1200
@@ -4918,9 +4952,11 @@ tmdb_person,name,job,recognition (Wikidata),weight,experience,capability,grade,a
 41747,Frank Loesser,songwriter,"An Academy Award win and 4 Academy Award nominations, 1942 to 1953",26,4,98,A,2560
 1366120,Kristen Anderson-Lopez,songwriter,"2 Academy Award wins, an Academy Award nomination and a Golden Globe nomination, 2013 to 2020",26,3,97,A,2200
 1229800,Robert Lopez,songwriter,"2 Academy Award wins, an Academy Award nomination and a Golden Globe nomination, 2013 to 2020",26,3,97,A,2200
+2413513,Billie Eilish,songwriter,"2 Academy Award wins and a Golden Globe win, 2022 to 2024",25,3,97,A,2140
 1396403,Finneas O'Connell,songwriter,"2 Academy Award wins and a Golden Globe win, 2022 to 2024",25,3,97,A,2140
 42910,Stephen Schwartz,songwriter,"2 Academy Award wins and a Golden Globe win, 1996 to 1999",25,3,97,A,2140
 69343,Ralph Burns,songwriter,"2 Academy Award wins and an Academy Award nomination, 1973 to 1983",24,4,98,A,2410
+237405,Lady Gaga,songwriter,"An Academy Award win, a Golden Globe win and 2 Academy Award nominations, 2016 to 2023",23,3,95,A,2010
 27968,Alan Jay Lerner,songwriter,"An Academy Award win and 3 Academy Award nominations, 1952 to 1975",22,5,98,A,2590
 24315,Fred Karlin,songwriter,"An Academy Award win and 3 Academy Award nominations, 1970 to 1973",22,3,94,A,1950
 21644,Keith Forsey,songwriter,"An Academy Award win, a Golden Globe win, an Academy Award nomination and a BAFTA Film Award nomination, 1984 to 1988",21.8,3,94,A,1940
@@ -4930,6 +4966,7 @@ tmdb_person,name,job,recognition (Wikidata),weight,experience,capability,grade,a
 1015668,Jimmy McHugh,songwriter,"5 Academy Award nominations, 1936 to 1945",20,3,92,A,1830
 2027,Leonard Rosenman,songwriter,"2 Academy Award wins, 1976 to 1977",20,3,92,A,1830
 1009004,Nicholas Brodzsky,songwriter,"5 Academy Award nominations, 1951 to 1956",20,3,92,A,1830
+77071,Mark Ronson,songwriter,"An Academy Award win, a Golden Globe win and an Academy Award nomination, 2019 to 2024",19,3,91,A,1770
 5288,A. R. Rahman,songwriter,"An Academy Award win and 2 Academy Award nominations, 2008 to 2011",18,3,90,A,1710
 1419678,Al Dubin,songwriter,"An Academy Award win and 2 Academy Award nominations, 1936 to 1944",18,3,90,A,1710
 65360,Andrew Lloyd Webber,songwriter,"An Academy Award win and 2 Academy Award nominations, 1974 to 2005",18,5,98,A,2270
@@ -4986,6 +5023,7 @@ tmdb_person,name,job,recognition (Wikidata),weight,experience,capability,grade,a
 1367961,Con Conrad,songwriter,"An Academy Award win, 1935",10,3,79,B,1220
 5394140,D'Mile,songwriter,"An Academy Award win, 2021",10,3,79,B,1220
 8422,David Shire,songwriter,"An Academy Award win, 1980",10,3,79,B,1220
+584069,DJ Paul,songwriter,"An Academy Award win, 2006",10,3,79,B,1220
 51667,Donald Markowitz,songwriter,"An Academy Award win, 1988",10,3,79,B,1220
 325,Eminem,songwriter,"An Academy Award win, 2003",10,3,79,B,1220
 3997579,Franke Previte,songwriter,"An Academy Award win, 1988",10,3,79,B,1220
@@ -5066,6 +5104,7 @@ tmdb_person,name,job,recognition (Wikidata),weight,experience,capability,grade,a
 1173843,Tony Renis,songwriter,"An Academy Award nomination and a Golden Globe nomination, 1999 to 2005",6,3,70,C,980
 1445555,Bert Kaempfert,songwriter,"A Golden Globe win, 1967",5,3,68,C,920
 4347,Frank Sinatra,songwriter,"A Golden Globe win, 1967",5,3,68,C,920
+278,Gustavo Santaolalla,songwriter,"A Golden Globe win, 2006",5,3,68,C,920
 3125,Madonna,songwriter,"A Golden Globe win, 2012",5,3,68,C,920
 1428,Mick Jagger,songwriter,"A Golden Globe win, 2004",5,3,68,C,920
 5171118,Abraham Alexander,songwriter,"An Academy Award nomination, 2025",4,3,65,C,850
@@ -5097,8 +5136,10 @@ tmdb_person,name,job,recognition (Wikidata),weight,experience,capability,grade,a
 59446,Benoît Charest,songwriter,"An Academy Award nomination, 2004",4,3,65,C,850
 30009,Bert Kalmar,songwriter,"An Academy Award nomination, 1952",4,3,65,C,850
 21601,Betty Box,songwriter,"An Academy Award nomination, 1975",4,3,65,C,850
+14386,Beyoncé,songwriter,"An Academy Award nomination, 2022",4,3,65,C,850
 94011,Bill Melendez,songwriter,"An Academy Award nomination, 1971",4,3,65,C,850
 47,Björk,songwriter,"An Academy Award nomination, 2001",4,3,65,C,850
+4870675,BloodPop,songwriter,"An Academy Award nomination, 2023",4,3,65,C,850
 32768,Bob Merrill,songwriter,"An Academy Award nomination, 1969",4,3,65,C,850
 1175294,Bob Seger,songwriter,"An Academy Award nomination, 1988",4,3,65,C,850
 32636,Bob Telson,songwriter,"An Academy Award nomination, 1989",4,3,65,C,850
@@ -5189,8 +5230,10 @@ tmdb_person,name,job,recognition (Wikidata),weight,experience,capability,grade,a
 1098701,Julian Raymond,songwriter,"An Academy Award nomination, 2015",4,3,65,C,850
 16391,Julie Taymor,songwriter,"An Academy Award nomination, 2003",4,3,65,C,850
 1419631,Justin Hurwitz,songwriter,"An Academy Award nomination, 2017",4,3,65,C,850
+12111,Justin Timberlake,songwriter,"An Academy Award nomination, 2017",4,3,65,C,850
 1187023,Karen O,songwriter,"An Academy Award nomination, 2014",4,3,65,C,850
 18293,Kathleen York,songwriter,"An Academy Award nomination, 2006",4,3,65,C,850
+1008292,Kendrick Lamar,songwriter,"An Academy Award nomination, 2019",4,3,65,C,850
 172365,Kenny Loggins,songwriter,"An Academy Award nomination, 1985",4,3,65,C,850
 10823,Kris Kristofferson,songwriter,"An Academy Award nomination, 1985",4,3,65,C,850
 1234404,Lamont Dozier,songwriter,"An Academy Award nomination, 1989",4,3,65,C,850
@@ -5208,6 +5251,7 @@ tmdb_person,name,job,recognition (Wikidata),weight,experience,capability,grade,a
 928158,Ludwig Göransson,songwriter,"An Academy Award nomination, 2023",4,3,65,C,850
 1242428,Lynn Ahrens,songwriter,"An Academy Award nomination, 1998",4,3,65,C,850
 1224985,M.I.A.,songwriter,"An Academy Award nomination, 2009",4,3,65,C,850
+84933,Mary J. Blige,songwriter,"An Academy Award nomination, 2018",4,3,65,C,850
 1833707,Maury Yeston,songwriter,"An Academy Award nomination, 2010",4,3,65,C,850
 1583629,Max Martin,songwriter,"An Academy Award nomination, 2017",4,3,65,C,850
 1849327,Michael Becker,songwriter,"An Academy Award nomination, 2006",4,3,65,C,850
@@ -5231,6 +5275,7 @@ tmdb_person,name,job,recognition (Wikidata),weight,experience,capability,grade,a
 140037,Peter Greenwell,songwriter,"An Academy Award nomination, 1972",4,3,65,C,850
 19425,Peter Matz,songwriter,"An Academy Award nomination, 1976",4,3,65,C,850
 1351566,Peter Maxwell Davies,songwriter,"An Academy Award nomination, 1972",4,3,65,C,850
+558267,Pharrell Williams,songwriter,"An Academy Award nomination, 2014",4,3,65,C,850
 4550601,Phil Charig,songwriter,"An Academy Award nomination, 1939",4,3,65,C,850
 1435048,Ramey Idriss,songwriter,"An Academy Award nomination, 1949",4,3,65,C,850
 927850,Raphael Saadiq,songwriter,"An Academy Award nomination, 2018",4,3,65,C,850
@@ -5266,11 +5311,14 @@ tmdb_person,name,job,recognition (Wikidata),weight,experience,capability,grade,a
 2234346,Stephan Moccio,songwriter,"An Academy Award nomination, 2016",4,3,65,C,850
 938558,Stephen Bishop,songwriter,"An Academy Award nomination, 1986",4,3,65,C,850
 1778308,Stephen Flaherty,songwriter,"An Academy Award nomination, 1998",4,3,65,C,850
+1242722,Sufjan Stevens,songwriter,"An Academy Award nomination, 2018",4,3,65,C,850
 21768,Sylvain Chomet,songwriter,"An Academy Award nomination, 2004",4,3,65,C,850
 1360,Tan Dun,songwriter,"An Academy Award nomination, 2001",4,3,65,C,850
 3659546,Taura Stinson,songwriter,"An Academy Award nomination, 2018",4,3,65,C,850
+3783295,Tems,songwriter,"An Academy Award nomination, 2023",4,3,65,C,850
 940188,Terry Gilkyson,songwriter,"An Academy Award nomination, 1968",4,3,65,C,850
 54605,Terry Lewis,songwriter,"An Academy Award nomination, 1994",4,3,65,C,850
+1549008,The Weeknd,songwriter,"An Academy Award nomination, 2016",4,3,65,C,850
 153,Thomas Newman,songwriter,"An Academy Award nomination, 2009",4,3,65,C,850
 1225416,Tom Adair,songwriter,"An Academy Award nomination, 1957",4,3,65,C,850
 3442046,Tom Douglas,songwriter,"An Academy Award nomination, 2011",4,3,65,C,850
@@ -6127,6 +6175,7 @@ tmdb_person,name,job,recognition (Wikidata),weight,experience,capability,grade,a
 21548,Richard Edlund,vfx-artist,"2 Academy Award wins and 5 Academy Award nominations, 1978 to 1993",40,4,98,A,3910
 1402031,Robert Legato,vfx-artist,"3 Academy Award wins and 2 Academy Award nominations, 1996 to 2020",38,5,98,A,4280
 6060,Neil Corbould,vfx-artist,"2 Academy Award wins and 4 Academy Award nominations, 2001 to 2024",36,5,98,A,4100
+20925,John Dykstra,vfx-artist,"2 Academy Award wins and 3 Academy Award nominations, 1978 to 2005",32,5,98,A,3740
 1417828,Andrew Lockley,vfx-artist,"3 Academy Award wins, 2011 to 2021",30,4,98,A,3120
 1081073,Chris Corbould,vfx-artist,"An Academy Award win and 5 Academy Award nominations, 2009 to 2022",30,4,98,A,3120
 1530231,Gerd Nefzer,vfx-artist,"3 Academy Award wins, 2018 to 2025",30,3,98,A,2680

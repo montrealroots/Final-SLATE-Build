@@ -74,12 +74,18 @@ and the rest) with real grades filling the hiring lists.
   `production/shoot.ts`); a withdrawal took nothing out of the film, and now a scene with nobody left who agreed leaves
   the cut (`unscripted.ts withdrawRelease`); a sequel read the builds it carried over as its whole task list, needed
   only a modeler, was estimated at $40,000 against $145,000 fresh and never got its crew (`hiring.ts plannedTasks`).
+- The awards record named nobody whose Wikidata name is kept under "mul" rather than English: 75 of 6,202, among them
+  Denzel Washington, Meryl Streep, Dustin Hoffman, Christopher Nolan and Emma Stone, so none of them could be offered as
+  recognised. `tools/recognition/names.mjs` asks for those by TMDB ID (English, then "mul", then British or American
+  English); the build runs it, and it filled all 75 here. A grade's reading said "counted as new to it" beside an
+  experience of 5 read from the years of someone's recognition; it now says where the 5 came from (`grades.ts
+  recognisedSpan`, also on the person's page). Denzel Washington as a performer: grade A, capability 98, experience 5.
 - Observed, not changed (the owner's settled grading): a catalog performer or composer with many credits and no awards
   is graded 55, below the game's experienced people (88 cast on average), so they are rarely the best read.
 
-**Next.** The remaining actions: moving an episode (its place matters through each episode's reception, audiences.ts
-`retention`, so it needs a season whose episodes differ), a series submitted under a television first-look deal, a
-project made from a source. Then the scheduled kinds, then the fields. The writer's revision
+**Next.** The remaining actions: a series submitted under a television first-look deal, and a project made from a
+source; moving an episode moves the audience both ways (explained), to prove with a season whose episodes are known to
+differ in reception. Then the scheduled kinds, then the fields. The writer's revision
 focus still waits on the owner (nothing reads it).
 
 ## The Owner's Command Of November 14, 2026 (Later): Every Feature Proven, Everything Possible

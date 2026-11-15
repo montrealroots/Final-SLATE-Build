@@ -23,13 +23,29 @@ export const gradeFrom = (score: number): Grade => GRADE_BANDS.find(([, min]) =>
 
 export interface GradeReading { grade: Grade; score: number; madeOf: string[]; rate: string }
 
+/**
+ * The years the industry has recognised a real person's work in a job, in words ("1988 to 2022"), when their experience
+ * in it was read from that rather than from credits (guests.ts considerPerson). Null when there is no such recognition.
+ */
+export function recognisedSpan(state: GameState, id: string, job: string): string | null {
+  const real = realPerson(state, id);
+  if (!real) return null;
+  const s = standingOf(Number(id.slice(3)), job, Number(new Date(real.sim.at).toISOString().slice(0, 4)));
+  return s ? (s.first === s.last ? `in ${s.first}` : `${s.first} to ${s.last}`) : null;
+}
+
 /** A person's grade for a job, and what it is made of, in words. */
 export function gradeOf(state: GameState, c: Person, job: string): GradeReading {
   const score = gradeScore(c.experience, c.capability);
   const madeOf: string[] = [];
   const ev = isReal(c.id) ? realPerson(state, c.id)?.rec?.ev[job] : undefined;
   if (isReal(c.id)) {
-    madeOf.push(ev ? `Experience ${c.experience} of 5, from their record: ${ev.n} recorded ${ev.n === 1 ? 'credit' : 'credits'} in the job${ev.first ? `, ${ev.first}${ev.last && ev.last !== ev.first ? ` to ${ev.last}` : ''}` : ''}.` : `Experience ${c.experience} of 5: nothing recorded in this job, so counted as new to it.`);
+    // Without credits in the job, their experience is what the years of their recognition in it show. Until November 15,
+    // 2026 this said "nothing recorded in this job, so counted as new to it" beside an experience of 5 of 5.
+    const span = ev ? null : recognisedSpan(state, c.id, job);
+    madeOf.push(ev ? `Experience ${c.experience} of 5, from their record: ${ev.n} recorded ${ev.n === 1 ? 'credit' : 'credits'} in the job${ev.first ? `, ${ev.first}${ev.last && ev.last !== ev.first ? ` to ${ev.last}` : ''}` : ''}.`
+      : span ? `Experience ${c.experience} of 5, from the years the industry has recognised their work in this job, ${span}. None of their credits in it are in this story's film catalog.`
+      : `Experience ${c.experience} of 5: nothing recorded in this job, so counted as new to it.`);
     // Read from how the industry judged their work in this job before they were first considered (recognition.ts); until
     // November 15, 2026 it was drawn at random around their credits.
     const real = realPerson(state, c.id)!;

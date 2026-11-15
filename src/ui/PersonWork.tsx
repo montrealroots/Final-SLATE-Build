@@ -9,6 +9,7 @@ import { currentZone, dateKey, formatDateKey, money, roleLabel } from '../engine
 import { NO_JOB_FOR, asPerson, canApproach, considerFor, jobLabel, considerPerson, consideredOn, jobsOf, realId, realPerson, storyCredits, treatAsAdult, type Considered } from '../engine/guests';
 import { EXPERIENCE, isAvailable } from '../engine/people';
 import { productionWindow } from '../engine/hiring';
+import { recognisedSpan } from '../engine/grades';
 import { approvedCharacters, approvedScenes } from '../engine/projects';
 import type { PerformanceMethod, Project } from '../engine/types';
 import { Check, Panel, SelectField, plural } from './components';
@@ -87,7 +88,7 @@ export function PersonWork({ record, gathered }: { record: PersonRecord; gathere
             return (
               <li key={j} className="list-item">
                 <span className="grow"><strong>{roleLabel(j)}</strong> <span className="chip">{EXPERIENCE[sim.exp - 1]}</span>
-                  <div className="dim small">{ev ? `${plural(ev.n, 'recorded credit')} in this catalog${ev.first ? `, ${ev.first === ev.last ? `in ${ev.first}` : `${ev.first} to ${ev.last}`}` : ''}.` : 'No recorded credit of this kind: counted as new to it.'} In this story they ask about {money(sim.rate)} a day.</div>
+                  <div className="dim small">{ev ? `${plural(ev.n, 'recorded credit')} in this catalog${ev.first ? `, ${ev.first === ev.last ? `in ${ev.first}` : `${ev.first} to ${ev.last}`}` : ''}.` : recognisedSpan(g, id, j) ? `No credit of this kind in this catalog; their experience is read from the years the industry has recognised their work in it, ${recognisedSpan(g, id, j)}.` : 'No recorded credit of this kind: counted as new to it.'} In this story they ask about {money(sim.rate)} a day.</div>
                 </span>
               </li>
             );

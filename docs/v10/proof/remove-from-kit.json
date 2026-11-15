@@ -470,7 +470,7 @@
  "verdict": "proven",
  "hashes": {
   "src/engine/equipment.ts": "add6a635dd113a86",
-  "src/engine/production/shoot.ts": "891fa9e2b13b6e49",
+  "src/engine/production/shoot.ts": "e993db97ff8c5d24",
   "tests/proof/career.ts": "50bea06f19a02c5b"
  }
 }

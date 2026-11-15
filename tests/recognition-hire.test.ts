@@ -40,6 +40,19 @@ describe('a real person graded by how the industry has judged them', () => {
     expect(candidatesFor(s, p, 'hair-makeup').some((c) => c.id === 'tp_16178')).toBe(true);
   });
 
+  it('a performer named only under Wikidata\'s "mul" label is named, offered, and their experience is said to come from their recognition', () => {
+    const s = startLife('recognised-dw');
+    const p = film(s, 10_000_000);
+    // Denzel Washington (TMDB 5292): his name is kept under "mul", not "en"; until November 15, 2026 the record had none.
+    considerRecognised(s, p, 5292, { roleId: 'actor', characterId: p.characters[0].id, method: 'on-camera' }, today(s));
+    const dw = personById(s, 'tp_5292', 'actor');
+    expect(dw.name).toBe('Denzel Washington');
+    const g = gradeOf(s, dw, 'actor');
+    expect(g.grade).toBe('A');
+    // Experience 5 of 5 is the years of his recognition, which the reading says; it said "counted as new to it" until that day.
+    expect(g.madeOf[0]).toBe('Experience 5 of 5, from the years the industry has recognised their work in this job, 1988 to 2022. None of their credits in it are in this story\'s film catalog.');
+  });
+
   it('is the same in every save: nothing about them is drawn at random', () => {
     const one = startLife('recognised-a');
     const two = startLife('recognised-b');
