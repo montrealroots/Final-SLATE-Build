@@ -8,6 +8,8 @@ import { scriptIssues } from '../src/engine/projects';
 import { structureNotes, threadCutConsequences } from '../src/engine/structure';
 import { addResearch, researchNotes, updateResearch } from '../src/engine/research';
 import { setSeriesPlan, updateWorldRule } from '../src/engine/season';
+import { DOC_SUBJECTS, proposeDocumentaryPlan } from '../src/engine/documentary';
+import { assessQuality } from '../src/engine/finish';
 import { breakdownComplete, pronounsMatch, spokenMinutes } from '../src/engine/script-explain';
 import { buildProject, startLife } from './helpers';
 
@@ -74,5 +76,22 @@ describe('words shown back as advice', () => {
     show.worldRules.push({ id: 'w1', rule: 'The lock opens twice a day.', limit: 'Never at night.' });
     updateWorldRule(show, 'w1', { rule: 'The lock opens at dawn and dusk.', limit: 'Never in a storm.' });
     expect(show.worldRules[0]).toMatchObject({ rule: 'The lock opens at dawn and dusk.', limit: 'Never in a storm.' });
+
+    // A documentary's plan: what it is about and what kind of subject that is propose the research questions and the
+    // people to approach, which the player follows or not. Nothing is found, nobody named, and nothing scores them.
+    const ds = startLife('doc-plan');
+    const plan = (kind: 'person' | 'place') => {
+      const d = buildProject(ds, { title: 'Tide Keepers', format: 'documentary-short', medium: 'live-action', genres: ['documentary'], runtime: 15 }, [], []);
+      const before = assessQuality(ds, d);
+      proposeDocumentaryPlan(ds, d, 'the harbour club', kind);
+      expect(assessQuality(ds, d)).toEqual(before);
+      return d;
+    };
+    const person = plan('person');
+    const place = plan('place');
+    expect(person.research!.map((n) => n.question)).toEqual(DOC_SUBJECTS.person.questions('the harbour club'));
+    expect(place.research!.map((n) => n.question)).toEqual(DOC_SUBJECTS.place.questions('the harbour club'));
+    expect(person.docPlan).toMatchObject({ subject: 'the harbour club', kind: 'person', approach: DOC_SUBJECTS.person.approach });
+    expect(place.docPlan!.approach).not.toEqual(person.docPlan!.approach);
   });
 });

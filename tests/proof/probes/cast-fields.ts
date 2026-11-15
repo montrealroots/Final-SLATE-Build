@@ -5,6 +5,8 @@
 import type { Probe } from '../probe';
 import type { GameState, Project } from '../../../src/engine/types';
 import { actingMeasure, enterActing, feature, short } from './script';
+import { archiveCharacter, splitCharacter } from '../../../src/engine/projects';
+import { cutScenes, screenTotal } from '../../../src/engine/screen-time';
 import { askAll, checkClaims, doc } from './documentary';
 
 const S = (label: string, n = 1) => `field:ScriptViews.tsx#${label}#${n}`;
@@ -39,3 +41,34 @@ export const PROBES: Probe[] = [
     seeds: 30, base: { years: 3, daily: enterActing, project: feature() }, variant: { years: 3, daily: enterActing, project: feature({ awardPlacement: 'supporting' }) },
     measure: actingMeasure, bites: ['leadEntries'], downstream: ['actingDecided', 'actingHonours', 'supportingEntries'] },
 ];
+
+// Setting a character aside gives their scenes, lines and relationships to whoever is chosen (projects.ts
+// archiveCharacter); splitting one gives the scenes chosen to a new character (projects.ts splitCharacter). Each is
+// done to the short before it is approved, and what follows is who is booked for which days.
+const daysOf = (name: string) => (_s: GameState, projects: Project[]) => ({ [`${name}Days`]: projects.reduce((a, p) => { const c = p.characters.find((x) => x.name === name); return a + p.hires.filter((h) => h.characterId === c?.id && h.status === 'accepted').reduce((b, h) => b + h.estDays, 0); }, 0) });
+/** The default short with a neighbour in the street scene, the friend set aside and their scenes given to `to`, or to nobody. */
+const friendAside = (to: 'Neighbour' | null) => (s: GameState, year: number): Project => {
+  const p = short()(s, year);
+  const neighbour = { ...structuredClone(p.characters.find((c) => c.name === 'Friend')!), id: `${p.id}-nb`, name: 'Neighbour' };
+  p.characters.push(neighbour);
+  p.scenes.find((x) => x.heading.place === 'Street')!.participants.push(neighbour.id);
+  archiveCharacter(s, p, p.characters.find((c) => c.name === 'Friend')!.id, to ? neighbour.id : undefined);
+  return p;
+};
+/** The default short with the lead split: the scenes at `places` played by their older self. */
+const leadSplit = (places: string[]) => (s: GameState, year: number): Project => {
+  const p = short()(s, year);
+  splitCharacter(s, p, p.characters.find((c) => c.name === 'Lead')!.id, p.scenes.filter((x) => places.includes(x.heading.place)).map((x) => x.id), 'Older');
+  return p;
+};
+/** The older self's booked days, the lead's, and the scenes of the delivered cut the older self is in (screen-time.ts). */
+const splitMeasure = (s: GameState, projects: Project[]) => ({
+  ...daysOf('Older')(s, projects), ...daysOf('Lead')(s, projects),
+  olderInCut: projects.filter((p) => p.delivered).reduce((a, p) => { const c = p.characters.find((x) => x.name === 'Older'); return a + (c ? screenTotal(p, c.id, cutScenes(p)).scenes : 0); }, 0),
+});
+PROBES.push(
+  { id: 'archive-reassign', features: [S('"Give Their Scenes, Lines And Relationships To"')], decision: 'Set the friend aside and give their scenes to the neighbour rather than to nobody', reads: ['src/engine/projects.ts#archiveCharacter', 'src/engine/hiring.ts#estimateDays'],
+    base: { project: friendAside(null) }, variant: { project: friendAside('Neighbour') }, measure: daysOf('Neighbour'), bites: ['NeighbourDays'], downstream: ['spent', 'ownIn'] },
+  { id: 'split-scenes', features: [S('{sceneLabel(p, s)}', 2)], decision: 'Split the lead, the older self taking the street and the café rather than only the café', reads: ['src/engine/projects.ts#splitCharacter', 'src/engine/hiring.ts#estimateDays', 'src/engine/screen-time.ts#screenTotal'],
+    base: { project: leadSplit(['Cafe']) }, variant: { project: leadSplit(['Street', 'Cafe']) }, measure: splitMeasure, bites: ['OlderDays'], downstream: ['olderInCut', 'LeadDays'] },
+);

@@ -101,6 +101,6 @@ export const PROBES: Probe[] = [
     decision: 'Keep the real place as the backup for each place shot at the cheaper stand-in, rather than none',
     reads: ['src/engine/locations.ts#siteOnTheDay', 'src/engine/locations-actions.ts#chooseSite'],
     base: { daily: standIn(false) }, variant: { daily: standIn(true) }, measure,
-    bites: ['lostDays'], downstream: ['daysToDeliver', 'spent', 'money'],
+    bites: ['lostDays'], downstream: ['shootDays', 'daysToDeliver', 'spent', 'money'],
   },
 ];
