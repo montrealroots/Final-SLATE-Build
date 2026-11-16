@@ -40,7 +40,8 @@ export const PROBES: Probe[] = [
     variant: { project: short({ lead: { languages: ['fr'] } }) }, ...CREW },
   // A realization is read for a character that isn't human (projects.ts deriveRequirements): a creature played by a
   // performer, or built as a puppet.
-  { id: 'lead-puppet', features: [F('Realized As')], decision: 'Build the creature the lead is as a puppet, rather than have a performer play it', reads: ['src/engine/projects.ts#deriveRequirements'],
+  { id: 'lead-puppet', seeds: 120, // at 40 careers, delivery time went inside the noise with the realistic prices (November 15, 2026)
+    features: [F('Realized As')], decision: 'Build the creature the lead is as a puppet, rather than have a performer play it', reads: ['src/engine/projects.ts#deriveRequirements'],
     base: { project: short({ lead: { entity: 'monster', realization: 'performer' } }) }, variant: { project: short({ lead: { entity: 'monster', realization: 'puppet', methods: ['puppetry'] } }) }, ...COST },
   { id: 'lead-entity', features: [F('Entity')], decision: 'Make the lead, built as a puppet, a monster rather than a person', reads: ['src/engine/projects.ts#deriveRequirements'],
     base: { project: short({ lead: { entity: 'human', realization: 'puppet' } }) }, variant: { project: short({ lead: { entity: 'monster', realization: 'puppet' } }) }, ...CREW },

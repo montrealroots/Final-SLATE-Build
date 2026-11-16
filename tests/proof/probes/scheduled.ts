@@ -122,7 +122,8 @@ export const PROBES: Probe[] = [
   // One in twenty productions is cancelled before it shoots and one in ten put back (productions.ts): rare, so 100 careers of three years.
   { ...off('production-confirm', 'industry productions being confirmed, cancelled or put back', ['productionsChanged'], ['jobsDone', 'jobPay', 'jobsCancelled'], { years: 3 }), seeds: 100 },
   // A production coming out is a result on your record (productions.ts); standing and offers follow from it.
-  { ...off('production-release', 'industry productions coming out', ['productionResults'], ['industryStanding', 'jobsOffered', 'jobPay'], { years: 3 }), seeds: 60 },
+  // At 60 careers the jobs offered were just outside the noise; with the realistic prices (November 15, 2026) inside it.
+  { ...off('production-release', 'industry productions coming out', ['productionResults'], ['industryStanding', 'jobsOffered', 'jobPay'], { years: 3 }), seeds: 180 },
   // With studios in the world and the player accepting what they offer (until November 14, 2026 this career had no
   // studios, so nobody could offer and switching the check off changed nothing).
   off('first-look-check', 'companies considering a first-look deal', ['firstLookOffers'], ['overheadPaid', 'money'], { years: 3, studios: STUDIOS, daily: answerFirstLooks('accept') }),
