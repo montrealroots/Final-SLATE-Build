@@ -5,7 +5,7 @@ import { useState } from 'react';
 import { money } from '../engine/budget';
 import { formatDateKey } from '../engine/time';
 import { GEAR, GEAR_KIND_LABELS, GEAR_SOURCE, RENT_SHARE, SERVICE_BELOW, gearById, gearFacts, rentDayRate, type GearKind } from '../engine/gear-catalog';
-import { addToKit, buyGear, buyRefusal, kitAddRefusal, kitDayRate, kitProblems, ownedGear, removeFromKit, resaleValue, sellGear, sellRefusal, serviceCost, serviceGear, serviceRefusal, setPackageApproval } from '../engine/equipment';
+import { addToKit, buyGear, buyRefusal, priceText, kitAddRefusal, kitDayRate, kitProblems, ownedGear, removeFromKit, resaleValue, sellGear, sellRefusal, serviceCost, serviceGear, serviceRefusal, setPackageApproval } from '../engine/equipment';
 import { housePackageFee } from '../engine/production/rates';
 import { personalBalance } from '../engine/personal';
 import { bankHeldNote } from '../engine/bank';
@@ -35,7 +35,7 @@ export function YourEquipmentCard() {
               <li key={it.id} className="list-item" style={{ flexWrap: 'wrap', gap: 'var(--s2)' }}>
                 <div className="grow" style={{ minWidth: 0 }}>
                   <strong>{gear.name}</strong>
-                  <div className="dim small">{it.owner === 'family' ? 'Lent by your family' : `Bought for ${money(it.paid)}`}. Condition {it.condition}%{away ? ', away being serviced' : it.condition < SERVICE_BELOW ? ', needs servicing before it is used again' : ''}.</div>
+                  <div className="dim small">{it.owner === 'family' ? 'Lent by your family' : `Bought for ${priceText(it.paid)}`}. Condition {it.condition}%{away ? ', away being serviced' : it.condition < SERVICE_BELOW ? ', needs servicing before it is used again' : ''}.</div>
                   {[service && it.condition < 100 && !away ? service : null, it.owner === 'you' ? sell : null].filter(Boolean).map((r) => <div key={r} className="dim small">{r}</div>)}
                 </div>
                 <button className="btn btn-sm" disabled={!!service} title={service ?? undefined} aria-label={`Service ${gear.name}`} onClick={() => setErr(store.act((s) => serviceGear(s, it.id)))}>Service{!service ? ` For ${money(serviceCost(it))}` : ''}</button>
@@ -59,7 +59,7 @@ function Shop({ onClose }: { onClose: () => void }) {
   const [err, setErr] = useState<string | null>(null);
   return (
     <Modal title="The Shop" kind="shop" onClose={onClose} footer={<button className="btn" onClick={onClose}>Close</button>}>
-      <p className="small">{money(personalBalance(g))} in your own account.{bankHeldNote(g)} Prices are a US retailer's listings on {listed()}; the game charges whole dollars.</p>
+      <p className="small">{money(personalBalance(g))} in your own account.{bankHeldNote(g)} Prices are a US retailer's listings on {listed()}; the game charges what they list, to the cent.</p>
       <SelectField label="Show" value={kind} options={(Object.keys(GEAR_KIND_LABELS) as GearKind[]).map((k) => ({ value: k, label: GEAR_KIND_LABELS[k] }))} onChange={(v) => { setKind(v); setErr(null); }} />
       <ul className="list" aria-label={GEAR_KIND_LABELS[kind]}>
         {GEAR.filter((x) => x.kind === kind).map((x) => {
@@ -70,7 +70,7 @@ function Shop({ onClose }: { onClose: () => void }) {
                 <strong>{x.name}</strong>
                 <div className="small">{gearFacts(x).join('; ')}.</div>
                 {no && x.price !== null && <div className="dim small">{no}</div>}
-                <div className="dim small">{x.price === null ? 'No price recorded: not sold.' : `${money(x.price)}, or rented for ${money(rentDayRate(x))} a shoot day.`} <a href={x.specFrom.startsWith('http') ? x.specFrom : undefined} target="_blank" rel="noreferrer">{x.specFrom.startsWith('http') ? 'Specifications' : 'Specifications from its name'}</a>{x.priceFrom && <>, <a href={x.priceFrom} target="_blank" rel="noreferrer">price</a></>}.</div>
+                <div className="dim small">{x.price === null ? 'No price recorded: not sold.' : `${priceText(x.price)}, or rented for ${money(rentDayRate(x))} a shoot day.`} <a href={x.specFrom.startsWith('http') ? x.specFrom : undefined} target="_blank" rel="noreferrer">{x.specFrom.startsWith('http') ? 'Specifications' : 'Specifications from its name'}</a>{x.priceFrom && <>, <a href={x.priceFrom} target="_blank" rel="noreferrer">price</a></>}.</div>
               </div>
               <button className="btn btn-sm" disabled={!!no} title={no ?? undefined} aria-label={`Buy ${x.name}`} onClick={() => setErr(store.act((s) => void buyGear(s, x.id)))}>Buy</button>
             </li>

@@ -63,6 +63,9 @@ export const gearOf = (k: { gearId: string }): Gear => gearById(k.gearId)!;
 
 // ---------------- Buying, servicing, selling: your own account ----------------
 
+/** A price as listed: to the cent where it has cents ($169.99), else in whole dollars as `money` writes it. */
+export const priceText = (n: number): string => (Number.isInteger(n) ? money(n) : `$${n.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`);
+
 export function buyRefusal(state: GameState, gearId: string): string | null {
   const g = gearById(gearId);
   if (!g) return 'That isn\'t in the shop.';
@@ -71,8 +74,8 @@ export function buyRefusal(state: GameState, gearId: string): string | null {
   // What the bank's payment would say (bank.ts bankPurchaseRefusal): the card's room, the overdraft and a French debit
   // card's ceiling count as they do there. Until November 15, 2026 only the accounts' whole balance was read, so a
   // purchase meant for the card was refused for want of cash, and one the debit card couldn't pay was offered.
-  const why = bankPurchaseRefusal(state, Math.round(g.price));
-  if (why) return personalBalance(state) < Math.round(g.price) ? `It costs ${money(g.price)} and you have ${money(personalBalance(state))} in your own account.` : `It costs ${money(g.price)}, and your bank won't pay it now: ${why.charAt(0).toLowerCase()}${why.slice(1)} Move money into your current account, link your savings, or put it on a card.`;
+  const why = bankPurchaseRefusal(state, g.price);
+  if (why) return personalBalance(state) < g.price ? `It costs ${priceText(g.price)} and you have ${money(personalBalance(state))} in your own account.` : `It costs ${priceText(g.price)}, and your bank won't pay it now: ${why.charAt(0).toLowerCase()}${why.slice(1)} Move money into your current account, link your savings, or put it on a card.`;
   return null;
 }
 
@@ -80,7 +83,9 @@ export function buyGear(state: GameState, gearId: string): OwnedGear {
   const no = buyRefusal(state, gearId);
   if (no) throw new Error(no);
   const g = gearById(gearId)!;
-  const item: OwnedGear = { id: newId(state, 'gr'), gearId, owner: 'you', at: state.now, paid: Math.round(g.price!), condition: 100 };
+  // The listed price to the cent (from November 16, 2026: until then rounded to the dollar, $169.99 charged as $170, which
+  // also left a round-up to the next dollar nothing to save in a US career).
+  const item: OwnedGear = { id: newId(state, 'gr'), gearId, owner: 'you', at: state.now, paid: g.price!, condition: 100 };
   // Paid for first, then yours: until November 15, 2026 the item was added before the bank paid, so a purchase the bank
   // refused (the debit card short, with savings unlinked) threw and left the camera owned, unpaid for.
   postPersonal(state, 'equipment', -item.paid, `Bought: ${g.name}`, `gear:${item.id}`);
