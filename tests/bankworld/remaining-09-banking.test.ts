@@ -390,8 +390,12 @@ describe('banking.1.pro-rata: a German account’s month’s fee on a close, to 
     expect(breaches(sim.universe)).toEqual([]);
   }, 300_000);
 
-  // Not ported: UNRESOLVED: not yet explained; recorded in RESUME-HERE.md as open.
-  it.skip('FIXTURE, Berlin: a Commerzbank GiroKonto opened on Monday 5 January beside Deutsche Bank, €100 under that day and paid back on the 16th: Your Accounts Over Time says canceling charges €1.90 of fees, 12 of January’s 31 days of its €4.90, and refuses it for those and 43 cents of overdraft interest, “Pay in €2.33 first”; paid in, canceled, both charged, once', () => {
+  // Ported and run from November 16, 2026. From the port on November 14 it was skipped as UNRESOLVED ("Cancel It"
+  // isn't drawn for a second Berlin account), but it passes at that commit (822d8e1) and at every one since, alone and
+  // with its file, in UTC, Berlin, Chicago, Los Angeles and Auckland: the failure was never reproduced in SLATE.
+  // Mutations it catches: the month's days counted one short (closingFeesDue), and Cancel It drawn for the panel's own
+  // bank's accounts alone (BankAccountLife).
+  it('FIXTURE, Berlin: a Commerzbank GiroKonto opened on Monday 5 January beside Deutsche Bank, €100 under that day and paid back on the 16th: Your Accounts Over Time says canceling charges €1.90 of fees, 12 of January’s 31 days of its €4.90, and refuses it for those and 43 cents of overdraft interest, “Pay in €2.33 first”; paid in, canceled, both charged, once', () => {
     const sim = inBerlin('de-deutsche-bank', 'rb9-cancel');
     const db = primary(sim);
     const giro = sim.universe.accounts[ok<{ accountId: string }>(sim, 'bank.open_current', { bankId: 'de-commerzbank' }).accountId]!;
@@ -570,8 +574,12 @@ describe('banking.4.sparkassen-card: Berliner Sparkasse’s Sparkassen-Card, €
 });
 
 describe('banking.4.sparkassen-card: on a Giro Digital opened in Berlin', () => {
-  // Not ported: UNRESOLVED: not yet explained; recorded in RESUME-HERE.md as open.
-  it.skip('FIXTURE, Berlin: a Giro Digital opened beside Deutsche Bank on Monday 5 January is charged its card’s €12.00 that night; on the 12th, with nothing in it, Cancel It isn’t refused, as the card’s 358 days left, €11.77, are more than January’s 8 days, €1.28, which Your Accounts Over Time says first; canceled, €10.49 goes to Deutsche Bank', () => {
+  // Ported and run from November 16, 2026. From the port on November 14 it was skipped as UNRESOLVED ("Cancel It"
+  // isn't drawn for a second Berlin account), but it passes at that commit (822d8e1) and at every one since, alone and
+  // with its file, in UTC, Berlin, Chicago, Los Angeles and Auckland: the failure was never reproduced in SLATE.
+  // Mutations it catches: the month's days counted one short (closingFeesDue), and Cancel It drawn for the panel's own
+  // bank's accounts alone (BankAccountLife); and the card's year used counted one day short (cardYearDue).
+  it('FIXTURE, Berlin: a Giro Digital opened beside Deutsche Bank on Monday 5 January is charged its card’s €12.00 that night; on the 12th, with nothing in it, Cancel It isn’t refused, as the card’s 358 days left, €11.77, are more than January’s 8 days, €1.28, which Your Accounts Over Time says first; canceled, €10.49 goes to Deutsche Bank', () => {
     const sim = inBerlin('de-deutsche-bank', 'rb9-card-cancel');
     const db = primary(sim);
     const giro = sim.universe.accounts[ok<{ accountId: string }>(sim, 'bank.open_current', { bankId: 'de-berliner-sparkasse' }).accountId]!;

@@ -360,8 +360,10 @@ The command, word for word, is in the conversation of November 14, 2026; its nin
 2. Show the international payment's quote on screen in a journey: it needs an account at a bank abroad, which SLATE's
    start doesn't give.
 5. **Open defects.**
-   - Two ported 1221 cases fail and their cause isn't found yet. Both are in `tests/bankworld/remaining-09-banking.test.ts`,
-     marked UNRESOLVED: "Cancel It" isn't drawn for a second Berlin account in its first days.
+   - Closed November 16, 2026: the two ported 1221 cases skipped as UNRESOLVED in
+     `tests/bankworld/remaining-09-banking.test.ts` ("Cancel It" on a second Berlin account) pass at the port's commit
+     and every one since, alone and with their file, in five time zones; they run now, and three mutations of what they
+     guard each fail them.
    - The ported bank UI's controls aren't yet in `docs/input-audit/CONTROLS.csv` or the disabled-reasons record: those
      audits read top-level `src/ui/*.tsx` only.
 
