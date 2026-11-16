@@ -67,8 +67,8 @@
   "gross": 48320,
   "revenue": 138790.25,
   "distributed": 1.95,
-  "money": 24620870.552,
-  "moneyChange": -379129.448,
+  "money": 24619096.552,
+  "moneyChange": -380903.448,
   "jobsTaken": 1,
   "jobsOffered": 1,
   "jobPay": 4842.5,
@@ -81,7 +81,7 @@
   "jobsWithdrawn": 0,
   "jobsDeclined": 0,
   "ratesAgreed": 0,
-  "logLines": 139.75,
+  "logLines": 141.65,
   "hired": 20,
   "castRates": 2870,
   "releaseDelay": 110.167,
@@ -90,7 +90,7 @@
   "offersDeclined": 0.9,
   "countersSeen": 0,
   "countersDeclined": 0.05,
-  "spent": 223713.5,
+  "spent": 225487.5,
   "shootDays": 0,
   "lostDays": 0,
   "daysToDeliver": 235.65,
@@ -103,7 +103,7 @@
   "standing.directing": 57,
   "standing.acting": 50,
   "standing.producing": 54.8,
-  "designDays": 10.2,
+  "designDays": 14,
   "redone": 0,
   "pickupDays": 0,
   "accepted": 0,
@@ -160,17 +160,17 @@
    "n": 20
   },
   "money": {
-   "mean": -84,
-   "lo": -274.008,
-   "hi": 106.008,
-   "changed": 1,
+   "mean": -1858,
+   "lo": -1951.576,
+   "hi": -1764.424,
+   "changed": 20,
    "n": 20
   },
   "moneyChange": {
-   "mean": -84,
-   "lo": -274.008,
-   "hi": 106.008,
-   "changed": 1,
+   "mean": -1858,
+   "lo": -1951.576,
+   "hi": -1764.424,
+   "changed": 20,
    "n": 20
   },
   "jobsTaken": {
@@ -258,10 +258,10 @@
    "n": 20
   },
   "logLines": {
-   "mean": 0.1,
-   "lo": -0.126,
-   "hi": 0.326,
-   "changed": 1,
+   "mean": 2,
+   "lo": 2,
+   "hi": 2,
+   "changed": 20,
    "n": 20
   },
   "hired": {
@@ -321,10 +321,10 @@
    "n": 20
   },
   "spent": {
-   "mean": 84,
-   "lo": -106.008,
-   "hi": 274.008,
-   "changed": 1,
+   "mean": 1858,
+   "lo": 1764.424,
+   "hi": 1951.576,
+   "changed": 20,
    "n": 20
   },
   "shootDays": {
@@ -412,10 +412,10 @@
    "n": 20
   },
   "designDays": {
-   "mean": 0.2,
-   "lo": -0.252,
-   "hi": 0.652,
-   "changed": 1,
+   "mean": 4,
+   "lo": 4,
+   "hi": 4,
+   "changed": 20,
    "n": 20
   },
   "redone": {
@@ -450,7 +450,7 @@
  "bites": [
   {
    "metric": "designDays",
-   "ok": false
+   "ok": true
   }
  ],
  "downstream": [
@@ -460,10 +460,10 @@
   },
   {
    "metric": "spent",
-   "ok": false
+   "ok": true
   }
  ],
- "verdict": "does not bite",
+ "verdict": "proven",
  "hashes": {
   "src/engine/designs-actions.ts": "28274ce0d7d4093f",
   "src/engine/designs.ts": "1859c71dc03eab3f",

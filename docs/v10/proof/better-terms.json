@@ -58,6 +58,7 @@
   "investorShare": 0.518,
   "refused": 0,
   "asked": 0,
+  "investorPaid": 74107.45,
   "fired": 0
  },
  "variant": {
@@ -108,6 +109,7 @@
   "investorShare": 0.43,
   "refused": 0,
   "asked": 1.725,
+  "investorPaid": 70071.05,
   "fired": 0
  },
  "diff": {
@@ -440,6 +442,13 @@
    "changed": 40,
    "n": 40
   },
+  "investorPaid": {
+   "mean": -4036.4,
+   "lo": -6032.039,
+   "hi": -2040.761,
+   "changed": 34,
+   "n": 40
+  },
   "fired": {
    "mean": 0,
    "lo": 0,
@@ -460,6 +469,14 @@
  ],
  "downstream": [
   {
+   "metric": "investorPaid",
+   "ok": true
+  },
+  {
+   "metric": "overall",
+   "ok": true
+  },
+  {
    "metric": "money",
    "ok": false
   },
@@ -472,7 +489,7 @@
    "ok": false
   }
  ],
- "verdict": "no downstream effect",
+ "verdict": "proven",
  "hashes": {
   "src/engine/negotiation-actions.ts": "bf1dd3b1c99f8740",
   "tests/proof/career.ts": "50bea06f19a02c5b"

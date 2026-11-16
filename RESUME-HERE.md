@@ -305,6 +305,8 @@ and the rest) with real grades filling the hiring lists.
       terms moving what was put in); each now measures what really follows (the pay in your bank; what the release pays
       the investor, and the days the asking costs);
     - one moved inside its seeds' spread at 40 careers and runs at 100, as its explanation said.
+    All seven reran proven: the matrix is 505 proven, open 0, measured on the game as it is now. `npm run check`
+    passed (1,736 tests).
 Still the game's own figures: the stop-motion and creature materials and the broadcast edit (no published per-item price
 found).
 
