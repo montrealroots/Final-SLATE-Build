@@ -103,7 +103,8 @@ export const PROBES: Probe[] = [
   // brings to show): a win counts in the opportunities its film draws and the record a studio reads. Two hundred careers
   // left those too small to tell apart from none (November 15, 2026: backer bonus -0.003, its interval reaching 0); a
   // win is first an honour in the player's standing (reputation.ts HONOUR_SCORE, 95 against a selection's 70).
-  { ...off('edition-results', 'results being decided', ['finalised', 'won'], ['standing.producing', 'standing.directing', 'backerBonus', 'opportunities', 'offers'], AWARDS_STRONG), seeds: 200 },
+  // At 200 careers, standing as a director was just outside the noise; with the realistic prices (November 15, 2026) inside it.
+  { ...off('edition-results', 'results being decided', ['finalised', 'won'], ['standing.producing', 'standing.directing', 'backerBonus', 'opportunities', 'offers'], AWARDS_STRONG), seeds: 400 },
   off('editions-roll', 'next year\'s editions being made', ['editionsOpen'], ['entries', 'selected'], AWARDS),
   off('screening', 'awards screenings', ['logLines'], ['selected'], AWARDS),
   off('work-day', 'the production\'s working days', ['delivered'], ['revenue', 'money']),
