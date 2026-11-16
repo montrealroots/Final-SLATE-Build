@@ -135,8 +135,9 @@ const directed = (move: boolean) => (s: GameState, p: Project) => {
 PROBES.push({
   id: 'move-episode', features: ['action:season.moveEpisode'], decision: 'Put the episode a hired director directs, and cuts again, first',
   reads: ['src/engine/season.ts#moveEpisode', 'src/engine/audiences.ts#observeWeek'],
-  // Only a season that airs has an audience to move: about half do.
-  seeds: 120,
+  // Only a season that airs has an audience to move: about half do, and the first season's moves in about a quarter of
+  // careers; at 120 careers its interval took in nothing (November 16, 2026, once each kind of id counted on its own).
+  seeds: 240,
   base: { ...SERIES, decide: directed(false), daily: both(SERIES.daily, directLast, sameWeeks) }, variant: { ...SERIES, decide: directed(true), daily: both(SERIES.daily, directLast, sameWeeks) },
   measure: (_s, projects) => ({
     firstEpisodeDirected: projects.filter((p) => { const e = p.episodes.find((x) => x.number === 1); return !!e?.director && e.director !== 'player'; }).length,
