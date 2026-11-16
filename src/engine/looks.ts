@@ -43,6 +43,12 @@ export interface MakeupMethod {
   /** Days of visual-effects work per scene, for a look finished in post. */
   vfxDays: number;
 }
+/**
+ * A worn mask's materials for a build day. "Custom Masks begin at roughly $7,000 for a silicone mask" (Composite Effects,
+ * FAQ), labour included: four build days of the prosthetics designer ($650 a day, people.ts) and $1,100 of materials a
+ * day make $7,000. Until November 16, 2026, $600 a day, the game's own.
+ */
+export const MASK_BUILD_COST = 1_100;
 export const MAKEUP: MakeupMethod[] = [
   { id: 'character', label: 'Everyday Makeup And Hair', summary: 'A simple look kept the same from day to day.', chairMin: 20, removeMin: 5, testDays: 0, buildDays: 0, buildCost: 0, dayCost: 15, specialist: 'hair-makeup', crowdShare: 0.5, vfxDays: 0 },
   { id: 'period-hair', label: 'Period Hair And Wigs', summary: 'Wigs or set hair of another time, tested on camera and dressed each morning.', chairMin: 50, removeMin: 15, testDays: 1, buildDays: 0, buildCost: 0, dayCost: 40, specialist: 'hair-makeup', crowdShare: 0.5, vfxDays: 0 },
@@ -51,7 +57,7 @@ export const MAKEUP: MakeupMethod[] = [
   { id: 'wounds', label: 'Wounds And Blood', summary: 'Injuries that change through the story, matched from scene to scene.', chairMin: 60, removeMin: 20, testDays: 1, buildDays: 1, buildCost: 300, dayCost: 90, specialist: 'hair-makeup', crowdShare: 0.6, vfxDays: 0 },
   { id: 'creature', label: 'Full Creature Appliances', summary: 'A face and hands rebuilt in foam or silicone: sculpted, tested, and hours in the chair every shooting day.', chairMin: 210, removeMin: 45, testDays: 3, buildDays: 8, buildCost: 900, dayCost: 380, specialist: 'prosthetics', crowdShare: 0.25, vfxDays: 0 },
   { id: 'body-paint', label: 'Body Paint', summary: 'Painted skin, redone every day and touched up between takes.', chairMin: 120, removeMin: 40, testDays: 1, buildDays: 0, buildCost: 0, dayCost: 120, specialist: 'hair-makeup', crowdShare: 0.5, vfxDays: 0 },
-  { id: 'mask', label: 'A Worn Mask', summary: 'A made mask the performer puts on: built and fitted once, with almost no time in the chair.', chairMin: 10, removeMin: 5, testDays: 1, buildDays: 4, buildCost: 600, dayCost: 10, specialist: 'prosthetics', crowdShare: 1, vfxDays: 0 },
+  { id: 'mask', label: 'A Worn Mask', summary: 'A made mask the performer puts on: built and fitted once, with almost no time in the chair.', chairMin: 10, removeMin: 5, testDays: 1, buildDays: 4, buildCost: MASK_BUILD_COST, dayCost: 10, specialist: 'prosthetics', crowdShare: 1, vfxDays: 0 },
   { id: 'cleanup', label: 'Practical With Digital Cleanup', summary: 'Applied for real, with edges and joins tidied in post for the shots that show them.', chairMin: 150, removeMin: 40, testDays: 2, buildDays: 5, buildCost: 700, dayCost: 240, specialist: 'prosthetics', crowdShare: 0.3, vfxDays: 1 },
   { id: 'digital', label: 'Finished Digitally', summary: 'Tracking marks on set and the look made in post: little chair time, and effects work for every scene.', chairMin: 15, removeMin: 5, testDays: 1, buildDays: 0, buildCost: 0, dayCost: 10, specialist: 'hair-makeup', crowdShare: 1, vfxDays: 3 },
 ];

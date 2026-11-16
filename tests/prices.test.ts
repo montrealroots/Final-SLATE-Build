@@ -11,7 +11,7 @@ import { RIGS } from '../src/engine/craft';
 import { MAKEUP } from '../src/engine/looks';
 import { MOCAP_SESSION_STAGE, FACIAL_RIG_PER_SESSION } from '../src/engine/mocap';
 import { TICKET_PRICE } from '../src/engine/box-office';
-import { AGGREGATOR_FEE, PARTNER_FEE } from '../src/engine/release-plan';
+import { AGGREGATOR_FEE, BOOKER_SHARE_OF_GROSS } from '../src/engine/release-plan';
 import { SUBTITLE_PER_MINUTE, DUB_PER_MINUTE, BROADCAST_EDIT_COST } from '../src/engine/script-effects';
 import { LIBRARY_FEE_PER_USE } from '../src/engine/music';
 import { role } from '../src/engine/people';
@@ -62,7 +62,9 @@ const ROWS: Row[] = [
   { area: 'Shooting', what: 'Aging appliances, built', game: appliance('aging'), real: '$3,000 to $10,000 custom prosthetic makeup', range: [3000, 10000], source: 'Backstage, The Truth About Prop, Makeup, and Effects Costs', status: 'Sourced', where: 'looks.ts MAKEUP' },
   { area: 'Shooting', what: 'Full creature appliances, built', game: appliance('creature'), real: '$3,000 to $10,000 custom prosthetic makeup', range: [3000, 10000], source: 'Backstage', status: 'Sourced', where: 'looks.ts MAKEUP' },
   { area: 'Shooting', what: 'Practical makeup with digital cleanup, built', game: appliance('cleanup'), real: '$3,000 to $10,000 custom prosthetic makeup', range: [3000, 10000], source: 'Backstage', status: 'Sourced', where: 'looks.ts MAKEUP' },
-  { area: 'Shooting', what: 'Partial appliances, wounds, a mask, built', game: `${money(appliance('partial'))}, ${money(appliance('wounds'))}, ${money(appliance('mask'))}`, real: 'smaller builds than a full prosthetic makeup', source: 'none found for each', status: 'Modeled', where: 'looks.ts MAKEUP' },
+  { area: 'Shooting', what: 'Partial facial appliances, built, a character (materials)', game: appliance('partial'), real: 'within a low-budget film\'s prosthetic materials in all, $4,500 to $7,000 (a mid-range film\'s $15,000 to $22,000)', range: [0, 7000], source: 'Production Beast, cited by Artfolio, Prosthetic budgets: costing a SFX maquilleur for low-to-mid-range films', status: 'Sourced', where: 'looks.ts MAKEUP' },
+  { area: 'Shooting', what: 'Wounds, built, a character (materials)', game: appliance('wounds'), real: 'within a low-budget film\'s prosthetic materials in all, $4,500 to $7,000; ready-made silicone wounds £10 to £35 a piece', range: [0, 7000], source: 'Production Beast via Artfolio; MonsterFX listings (Etsy)', status: 'Sourced', where: 'looks.ts MAKEUP' },
+  { area: 'Shooting', what: 'A worn mask, built (materials and four designer days)', game: appliance('mask') + MAKEUP.find((m) => m.id === 'mask')!.buildDays * role('prosthetics').rate, real: '"Custom Masks begin at roughly $7,000 for a silicone mask"', range: [7000, 7000], source: 'Composite Effects, FAQ', status: 'Fixed', where: 'looks.ts MASK_BUILD_COST' },
   { area: 'Shooting', what: 'Housing and feeding one person for a day away', game: PER_DIEM.lodging + PER_DIEM.meals, real: '$110 lodging and $68 meals', range: [178, 178], source: 'GSA FY 2026 standard CONUS per diem (Federal Register, August 19, 2025)', status: 'Fixed', where: 'destinations.ts PER_DIEM' },
   { area: 'Shooting', what: 'Moving the unit under 500 km: a car by the mile, four to a car', game: CAR_PER_MILE, real: '76 cents a mile', range: [0.76, 0.76], source: 'IRS standard business mileage rate from July 1, 2026', status: 'Fixed', where: 'destinations.ts CAR_PER_MILE' },
   { area: 'Shooting', what: 'Moving the unit under 500 km: the equipment truck by the mile', game: TRUCK_PER_MILE, real: '65 cents a mile', range: [0.65, 0.65], source: 'Cinevo rate card, grip and electric truck mileage', status: 'Fixed', where: 'destinations.ts TRUCK_PER_MILE' },
@@ -85,7 +87,7 @@ const ROWS: Row[] = [
   { area: 'Music', what: 'A library track, a use', game: LIBRARY_FEE_PER_USE, real: 'per-track library licences in the low hundreds', range: [100, 500], source: 'Fox Music, Music Licensing for Short Film 2026', status: 'Sourced', where: 'music.ts LIBRARY_FEE_PER_USE' },
   // ---------------- Release ----------------
   { area: 'Release', what: 'A digital aggregator, a feature on three platforms', game: AGGREGATOR_FEE, real: '$950 the first platform and $175 each more', range: [1125, 1500], source: 'Quiver Digital fees (MovieMaker); Vitrina, aggregators up to a $1,500 flat fee', status: 'Sourced', where: 'release-plan.ts AGGREGATOR_FEE' },
-  { area: 'Release', what: 'A booking partner for your own cinema release', game: PARTNER_FEE, real: 'no published booking fee; renting a cinema yourself in one market is reported at $7,000 to $22,000 with its marketing', source: 'Vitrina, How Much Does It Cost to Distribute a Feature Film Independently (a different service)', status: 'Modeled', where: 'release-plan.ts PARTNER_FEE' },
+  { area: 'Release', what: 'A booking partner for your own cinema release, a share of the ticket sales', game: `${Math.round(BOOKER_SHARE_OF_GROSS * 100)}%`, real: 'a percentage of box office gross, "around 15%" a common average; or a retainer', source: 'International Documentary Association, Alex Megaro on theatrical booking (July 30, 2026)', status: 'Fixed', where: 'release-plan.ts BOOKER_SHARE_OF_GROSS' },
   { area: 'Release', what: 'A cinema ticket', game: TICKET_PRICE, real: '$11.31 (US, 2024)', range: [11.31, 11.31], source: 'The Numbers', status: 'Fixed', where: 'box-office.ts TICKET_PRICE' },
   // ---------------- Elsewhere ----------------
   { area: 'Elsewhere', what: 'Equipment you buy', game: 'Each item at a retailer\'s listed price', real: 'retail', source: 'Each item\'s own link (src/data/equipment.json)', status: 'Sourced', where: 'equipment.json' },

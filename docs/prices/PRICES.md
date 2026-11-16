@@ -2,7 +2,7 @@
 
 Written by `tests/prices.test.ts` from the code; don't edit by hand. Run with `SLATE_WRITE_AUDIT=1` to rewrite it.
 
-Every price the player pays, read from the code, beside a published figure and where it was published. **Sourced**: the game's price sits inside the published range (the test fails if it leaves it). **Fixed**: changed on November 15 or 16, 2026 to the published figure. **Modeled**: no published figure was found, so the price is the game's own. 28 sourced, 20 fixed, 4 modeled.
+Every price the player pays, read from the code, beside a published figure and where it was published. **Sourced**: the game's price sits inside the published range (the test fails if it leaves it). **Fixed**: changed on November 15 or 16, 2026 to the published figure. **Modeled**: no published figure was found, so the price is the game's own. 30 sourced, 22 fixed, 2 modeled.
 
 British rate cards are read at 1.265 dollars to the pound. A US union hourly rate is read as a 10-hour day, eight hours straight and two at time and a half. A non-union background day is 8 hours at California's minimum wage, by date: $16.50 from 2025-01-01, $16.90 from 2026-01-01, $17.40 from 2027-01-01.
 
@@ -35,7 +35,9 @@ British rate cards are read at 1.265 dollars to the pound. A US union hourly rat
 | Shooting | Aging appliances, built | $3,500 | $3,000 to $10,000 custom prosthetic makeup | Backstage, The Truth About Prop, Makeup, and Effects Costs | Sourced | `looks.ts MAKEUP` |
 | Shooting | Full creature appliances, built | $7,200 | $3,000 to $10,000 custom prosthetic makeup | Backstage | Sourced | `looks.ts MAKEUP` |
 | Shooting | Practical makeup with digital cleanup, built | $3,500 | $3,000 to $10,000 custom prosthetic makeup | Backstage | Sourced | `looks.ts MAKEUP` |
-| Shooting | Partial appliances, wounds, a mask, built | $1,500, $300, $2,400 | smaller builds than a full prosthetic makeup | none found for each | Modeled | `looks.ts MAKEUP` |
+| Shooting | Partial facial appliances, built, a character (materials) | $1,500 | within a low-budget film's prosthetic materials in all, $4,500 to $7,000 (a mid-range film's $15,000 to $22,000) | Production Beast, cited by Artfolio, Prosthetic budgets: costing a SFX maquilleur for low-to-mid-range films | Sourced | `looks.ts MAKEUP` |
+| Shooting | Wounds, built, a character (materials) | $300 | within a low-budget film's prosthetic materials in all, $4,500 to $7,000; ready-made silicone wounds £10 to £35 a piece | Production Beast via Artfolio; MonsterFX listings (Etsy) | Sourced | `looks.ts MAKEUP` |
+| Shooting | A worn mask, built (materials and four designer days) | $7,000 | "Custom Masks begin at roughly $7,000 for a silicone mask" | Composite Effects, FAQ | Fixed | `looks.ts MASK_BUILD_COST` |
 | Shooting | Housing and feeding one person for a day away | $178 | $110 lodging and $68 meals | GSA FY 2026 standard CONUS per diem (Federal Register, August 19, 2025) | Fixed | `destinations.ts PER_DIEM` |
 | Shooting | Moving the unit under 500 km: a car by the mile, four to a car | $0.76 | 76 cents a mile | IRS standard business mileage rate from July 1, 2026 | Fixed | `destinations.ts CAR_PER_MILE` |
 | Shooting | Moving the unit under 500 km: the equipment truck by the mile | $0.65 | 65 cents a mile | Cinevo rate card, grip and electric truck mileage | Fixed | `destinations.ts TRUCK_PER_MILE` |
@@ -55,7 +57,7 @@ British rate cards are read at 1.265 dollars to the pound. A US union hourly rat
 | Music | A song licence | By fame, budget and scope | Hello: about $18,000 festivals (micro) to $530,000 the world (commissioned) | Music Connection; the Mad Men Beatles licence (music.ts) | Fixed | `music.ts holderFee` |
 | Music | A library track, a use | $250 | per-track library licences in the low hundreds | Fox Music, Music Licensing for Short Film 2026 | Sourced | `music.ts LIBRARY_FEE_PER_USE` |
 | Release | A digital aggregator, a feature on three platforms | $1,300 | $950 the first platform and $175 each more | Quiver Digital fees (MovieMaker); Vitrina, aggregators up to a $1,500 flat fee | Sourced | `release-plan.ts AGGREGATOR_FEE` |
-| Release | A booking partner for your own cinema release | $5,000 | no published booking fee; renting a cinema yourself in one market is reported at $7,000 to $22,000 with its marketing | Vitrina, How Much Does It Cost to Distribute a Feature Film Independently (a different service) | Modeled | `release-plan.ts PARTNER_FEE` |
+| Release | A booking partner for your own cinema release, a share of the ticket sales | 15% | a percentage of box office gross, "around 15%" a common average; or a retainer | International Documentary Association, Alex Megaro on theatrical booking (July 30, 2026) | Fixed | `release-plan.ts BOOKER_SHARE_OF_GROSS` |
 | Release | A cinema ticket | $11.31 | $11.31 (US, 2024) | The Numbers | Fixed | `box-office.ts TICKET_PRICE` |
 | Elsewhere | Equipment you buy | Each item at a retailer's listed price | retail | Each item's own link (src/data/equipment.json) | Sourced | `equipment.json` |
 | Elsewhere | Festival and awards entry fees | Each institution's own fee | their rules | Each rulebook's own citation (rulebook-data.ts) | Sourced | `rulebook-data.ts` |
