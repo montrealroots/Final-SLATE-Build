@@ -143,9 +143,13 @@ PROBES.push({
     // Streaming hours (each episode's from its own first day) and broadcast viewers (each kept from the one before), apart.
     hours: projects.reduce((a, p) => a + audienceOf(p, 'hours'), 0),
     viewers: projects.reduce((a, p) => a + audienceOf(p, 'viewers'), 0),
+    // The first season's alone: the one both arms make alike, but for the order (later seasons are drawn afresh once the
+    // arms differ, as every scene, hire and offer after the move is numbered differently).
+    firstHours: projects[0] ? audienceOf(projects[0], 'hours') : 0,
+    firstViewers: projects[0] ? audienceOf(projects[0], 'viewers') : 0,
     renewed: projects.filter((p) => p.renewal?.outcome === 'renewed').length,
   }),
-  bites: ['firstEpisodeDirected'], downstream: ['hours', 'viewers', 'renewed'],
+  bites: ['firstEpisodeDirected'], downstream: ['firstHours', 'firstViewers', 'hours', 'viewers', 'renewed'],
 });
 
 // A season streamed by you (finish.ts planRelease) can be planned once an episode is delivered (episode-delivery.ts),
