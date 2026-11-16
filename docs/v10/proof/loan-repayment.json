@@ -1,7 +1,8 @@
 {
  "id": "loan-repayment",
  "features": [
-  "bank:bank.set_loan_repayment"
+  "bank:bank.set_loan_repayment",
+  "field:bankworld/ui/bank/BankLending.tsx#id=\"loan-repay-from\"#1"
  ],
  "decision": "Repay the loan from NatWest",
  "reads": [

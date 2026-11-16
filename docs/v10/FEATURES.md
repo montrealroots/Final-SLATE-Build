@@ -11,8 +11,8 @@ journey that shows it there.
 | action | 146 | 0 | 0 | 1 | 0 | 13 | 0 | 160 |
 | bank | 54 | 0 | 0 | 0 | 0 | 0 | 0 | 54 |
 | scheduled | 55 | 0 | 0 | 0 | 0 | 11 | 0 | 66 |
-| field | 199 | 97 | 0 | 0 | 0 | 9 | 0 | 305 |
-| all | 454 | 97 | 0 | 1 | 0 | 33 | 0 | 585 |
+| field | 248 | 97 | 0 | 0 | 0 | 9 | 0 | 354 |
+| all | 503 | 97 | 0 | 1 | 0 | 33 | 0 | 634 |
 
 ## Rows
 
@@ -55,7 +55,7 @@ journey that shows it there.
 | buyGear | action | src/engine/equipment.ts | proven | own-kit (40 seeds) | gearOwned +12; kitItems +12; spent -3052.25 |
 | removeFromKit | action | src/engine/equipment.ts | proven | remove-from-kit (40 seeds) | kitItems -2; spent +2694.75 |
 | sellGear | action | src/engine/equipment.ts | proven | sell-gear (30 seeds) | gearOwned -6; money +1236.212; spent +288.9 |
-| serviceGear | action | src/engine/equipment.ts | proven | service-gear (30 seeds) | worn -6; kitPostponed -725; lostDays -724.067; daysToDeliver +2.211; spent +43081.333; money +138692.708 |
+| serviceGear | action | src/engine/equipment.ts | proven | service-gear (30 seeds) | worn -6; kitPostponed -725; lostDays -724.067; daysToDeliver +2.211; spent +43081.333; money +138692.707 |
 | setPackageApproval | action | src/engine/equipment.ts | proven | package-approval (40 seeds) | kitPostponed -729; lostDays -727.425; daysToDeliver +33.638; delivered +2; spent +50703.5 |
 | acceptDeal | action | src/engine/finance.ts | proven | own-money-or-backer (40 seeds) | ownIn -70575; backerDeals +2; revenue -56160.525 |
 | approachBacker | action | src/engine/finance.ts | proven | own-money-or-backer (40 seeds) | ownIn -70575; backerDeals +2; revenue -56160.525 |
@@ -395,7 +395,7 @@ journey that shows it there.
 | {`Takes For ${sceneLabel(p, s)}`} | field | takes.ts setupTime | proven | full-coverage (40 seeds) | setups +6; shootDays +25.8; spent +87726; quality.direction +2.288; overall +1.138 |
 | {`Site For ${place}`} | field | locations.ts | proven | stage-sets (40 seeds) | onStage +6; lostDays -1.5; daysToDeliver -2.212 |
 | {`Backup For ${place}`} | field | locations.ts | proven | site-backup (40 seeds) | lostDays -1.275; shootDays -1.275 |
-| "New Planned Budget (US Dollars)" | field | project-budget.ts setPlannedBudget, readiness | proven | new-planned-budget (40 seeds) | ownIn +5945.5; hired +12.075; delivered +1.75; lostDays -672.15; revenue +123966.375 |
+| "New Planned Budget (US Dollars)" | field | project-budget.ts setPlannedBudget, readiness | proven | new-planned-budget (40 seeds) | ownIn +5945.5; hired +12.075; delivered +1.75; lostDays -672.125; revenue +123966.375 |
 | "Why" | field | PlanViews.tsx Plan Revisions | carried | tests/v8-budget.test.ts::keeps 20,000 and 2,000,000 exactly | A name or a record, carried to PlanViews.tsx Plan Revisions: it decides nothing by its nature. |
 | "Change Financing Target" | field | finance.ts financeSummary, decide | proven | finance-target (40 seeds) | backerIn +38025; leftInProjects +32358.25 |
 | {`Ask The ${d.backer} For`} | field | negotiation.ts | proven | better-terms (40 seeds) | asked +1.55; investorShare -0.127; investorIn -7925; ownIn +7925 |
@@ -603,3 +603,52 @@ journey that shows it there.
 | {`Your Brief For ${name} (Optional)`} | field | WritingWork.tsx JobLine | carried | tests/writing-jobs.test.ts::the brief and the notes are kept as written and change nothing | A name or a record, carried to WritingWork.tsx JobLine: it decides nothing by its nature. |
 | "Put In From Your Own Money" | field | personal.ts putInOwnMoney, putInRefusal | proven | own-money-or-backer (40 seeds) | ownIn -70575; backerDeals +2; revenue -56160.525 |
 | "Banner Name" | field | shown in credits: company.ts setBanner, productionCredit; FinishViews.tsx credits | carried | tests/v8-company.test.ts::credits your work under it | A name or a record, carried to shown in credits: company.ts setBanner, productionCredit; FinishViews.tsx credits: it decides nothing by its nature. |
+| id="card-apply-bank" | field | systems/cardlife.ts card.apply | proven | field-card-bank (40 seeds) | cardsAtNatwest +1; interestOut -47.13; worth +47.13 |
+| id="card-apply-from" | field | systems/cardlife.ts card.apply; systems/cardoffers.ts transferRefusal | proven | field-card-transfer (40 seeds) | transferred +1219.89; interestOut -281.33; worth +256.79 |
+| id={`card-statement-day-${card.id}`} | field | systems/cardlife.ts card.set_statement_day | proven | card-statement-day (40 seeds) | statementDay +28; interestOut +9.84; cardPaid -3.16 |
+| id={`card-limit-${card.id}`} | field | systems/cardlife.ts card.request_limit | proven | card-limit-down (40 seeds) | limit -2347; cardPaid -346.28 |
+| id={`card-money-transfer-${card.id}`} | field | systems/cardoffers.ts card.money_transfer | proven | card-money-transfer (40 seeds) | transferredIn +1000; bankFees +30; interestOut +1.82; worth -31.82 |
+| id={`card-plan-amount-${card.id}`} | field | systems/cardoffers.ts card.plan | proven | card-plan (40 seeds) | interestOut -68.054; cardPaid +223; worth +68.054 |
+| id={`card-plan-months-${card.id}`} | field | systems/cardoffers.ts card.plan | proven | field-plan-length (40 seeds) | planMonths +9; cardPaid -500.638; owed +500.638 |
+| id="cash-out" | field | systems/cash.ts cash.withdraw, cashQuote | proven | cash-withdrawal (40 seeds) | withdrawn +250; paidInCash +250 |
+| id="cash-from" | field | systems/cash.ts cash.withdraw, cashQuote | proven | field-cash-from (40 seeds) | bankFees -12.5; interestOut -4.81; worth +17.31; cardPaid -267.31 |
+| id="cash-in" | field | systems/cash.ts cash.deposit | proven | cash-deposit (40 seeds) | cashHeld -500; atFirstBank +500 |
+| id="cash-into" | field | systems/cash.ts cash.deposit | proven | field-cash-into (40 seeds) | savingsHeld +509.91; interestIn +9.91 |
+| id="cash-at" | field | systems/cash.ts cash.deposit | proven | field-cash-at (40 seeds) | cashHeld +500; interestIn -11.43 |
+| id="od-limit" | field | systems/lending.ts bank.arrange_overdraft, overdraftOffer | proven | arrange-overdraft (40 seeds) | gearOwned +0.375; interestOut +5.542 |
+| id="od-per-use" | field | systems/lending.ts bank.arrange_overdraft, chargeForItem | proven | field-od-per-use (80 seeds) | bankFees -57.187; worth +56.691 |
+| id={`term-amount${account ? `-${bank.id}` : ''}`} | field | systems/lending.ts bank.open_term | proven | term-deposit (40 seeds) | accounts +1; interestIn +41099.99; worth +41099.99 |
+| id="collections-pay" | field | systems/lending.ts bank.pay_collections | proven | pay-collections (40 seeds) | inCollections -119.75; wellsAccounts +0.475 |
+| id="loan-repay-from" | field | systems/lending.ts bank.set_loan_repayment, repaymentAccount | proven | loan-repayment (40 seeds) | paidFromNatwest +2772.731; natwestHeld -2772.731; atFirstBank +4087.635 |
+| id="loan-amount" | field | systems/lending.ts bank.borrow, loanOffer | proven | bank-loan (60 seeds) | interestOut +1696.295; money +10061.81 |
+| id="loan-months" | field | systems/lending.ts bank.borrow, loanOffer | proven | bank-loan (60 seeds) | interestOut +1696.295; money +10061.81 |
+| id="loan-purpose" | field | systems/lending.ts loanOffer (notFor) | proven | field-loan-purpose (80 seeds) | loansOwed -2283.114; interestOut -474.442; worth +474.442 |
+| id="loan-into" | field | systems/lending.ts bank.borrow | proven | field-loan-into (80 seeds) | natwestHeld +6250; atFirstBank -6250 |
+| id="loan-repay" | field | systems/lending.ts bank.borrow, repaymentAccount | proven | field-loan-repay (80 seeds) | paidFromNatwest +3010.627; natwestHeld -3010.627; atFirstBank +4535.595 |
+| id="switch-partial" | field | systems/lending.ts bank.switch, completeSwitch | proven | field-switch-partial (40 seeds) | accounts +1; atFirstBank +18564925.225; interestIn -4302.46 |
+| id="switch-to" | field | systems/lending.ts bank.switch, completeSwitch | proven | field-switch-to (40 seeds) | natwestHeld +18661771.892; interestIn +3900.98 |
+| id="switch-on" | field | systems/lending.ts bank.switch | proven | field-switch-on (40 seeds) | daysSinceSwitch -109; interestIn -3733.88 |
+| id={`close-into-${a.id}`} | field | systems/bankmoves.ts bank.close_current | proven | field-close-into (40 seeds) | savingsHeld +5095.63; interestIn +95.63 |
+| id={`order-from-${o.id}`} | field | systems/bankmoves.ts bank.set_order_source, orderSource | proven | order-source (40 seeds) | paidFromNatwest +5000; natwestHeld -5000; atFirstBank +4962.21 |
+| id={`autopay-from-${c.id}`} | field | systems/bankmoves.ts card.set_autopay_from, autopaySource | proven | autopay-from (40 seeds) | paidFromNatwest +849.995; natwestHeld -849.995; atFirstBank +849.995 |
+| id="open-at" | field | systems/bankmoves.ts bank.open_current, openRefusal | proven | field-open-at (40 seeds) | bankFees +17.26; worth -17.26 |
+| id="open-from" | field | systems/bankmoves.ts bank.open_current | proven | field-open-from (40 seeds) | savingsHeld -10199.33; interestIn -199.33 |
+| id="open-amount" | field | systems/bankmoves.ts bank.open_current | proven | field-open-amount (40 seeds) | natwestHeld +99000; atFirstBank -99000 |
+| id="pay-everyday" | field | systems/payments.ts bank.set_payments; systems/spending.ts | proven | credit-card (40 seeds) | accounts +1; onCard +1; cardPaid +846.28 |
+| id="so-amount" | field | systems/payments.ts bank.add_standing_order | proven | standing-order (40 seeds) | interestIn +11501.04; money +15293.934 |
+| id="so-day" | field | systems/payments.ts bank.add_standing_order | proven | field-so-day (40 seeds) | savingsHeld +105.97; interestIn +105.97 |
+| id="so-to" | field | systems/payments.ts bank.add_standing_order | proven | field-so-to (40 seeds) | natwestHeld +1214381.76; interestIn +2880.72 |
+| id="sp-from" | field | systems/payments.ts bank.schedule_payment | proven | field-sp-from (40 seeds) | savingsHeld -101907.16; interestIn -1907.16 |
+| id="sp-to" | field | systems/payments.ts bank.schedule_payment | proven | field-sp-to (40 seeds) | savingsHeld +101907.16; interestIn +1907.16 |
+| id="sp-amount" | field | systems/payments.ts bank.schedule_payment | proven | scheduled-payment (40 seeds) | interestIn +19127.17; money +25435.064 |
+| id="sp-date" | field | systems/payments.ts bank.schedule_payment | proven | scheduled-payment (40 seeds) | interestIn +19127.17; money +25435.064 |
+| aria-label="Why" | field | systems/security.ts card.report | proven | field-why (40 seeds) | bankFees -5; worth +5 |
+| id="alert-low" | field | systems/statements.ts bank.set_alerts; systems/obligations.ts accountAlerts | proven | field-alert-low (40 seeds) | fraudKnownAfter -6.767; fraudCarried +350; worth -350 |
+| id="alert-large" | field | systems/statements.ts bank.set_alerts | proven | large-payment-alert (40 seeds) | fraudKnownAfter -9.442; fraudCarried +350; worth -350 |
+| aria-label={label} | field | systems/accountlife.ts bank.set_round_ups, roundUpRefusal | proven | field-roundup-multiplier (40 seeds) | savingsHeld +0.07; interestIn +0.07 |
+| aria-label="Each Purchase" | field | systems/accountlife.ts bank.set_round_ups | proven | field-roundup-amount (40 seeds) | savingsHeld +20.813; inCurrent -20.812 |
+| aria-label="Minimum Balance" | field | systems/accountlife.ts bank.set_round_ups | proven | field-roundup-minimum (40 seeds) | savingsHeld -0.04; inCurrent +0.04 |
+| id="move-from" | field | systems/banking.ts bank.transfer | proven | field-move-from (40 seeds) | savingsHeld -101990.54; interestIn -1990.54 |
+| id="move-to" | field | systems/banking.ts bank.transfer | proven | field-move-to (40 seeds) | savingsHeld +101990.54; interestIn +1990.54 |
+| id="move-amount" | field | systems/banking.ts bank.transfer | proven | bank-savings (40 seeds) | accounts +1; interestIn +19961; money +26543.882 |
+| id="lender" | field | systems/lending.ts bank.borrow, loanOffer | proven | field-lender (80 seeds) | natwestHeld -382.591; interestOut +8.101; worth -8.1 |

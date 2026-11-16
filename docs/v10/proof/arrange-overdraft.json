@@ -1,7 +1,8 @@
 {
  "id": "arrange-overdraft",
  "features": [
-  "bank:bank.arrange_overdraft"
+  "bank:bank.arrange_overdraft",
+  "field:bankworld/ui/bank/BankLending.tsx#id=\"od-limit\"#1"
  ],
  "decision": "Arrange a £1,000 overdraft once wages are paid in, then buy the memory card with £30 in the current account",
  "reads": [

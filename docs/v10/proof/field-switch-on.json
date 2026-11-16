@@ -1,0 +1,664 @@
+{
+ "id": "field-switch-on",
+ "features": [
+  "field:bankworld/ui/bank/BankLending.tsx#id=\"switch-on\"#1"
+ ],
+ "decision": "With a million in savings, switch to NatWest four months later than the first day the service can",
+ "reads": [
+  "src/engine/bankworld/systems/lending.ts#registerLending"
+ ],
+ "seeds": 40,
+ "base": {
+  "delivered": 2,
+  "released": 2,
+  "reception": 58.7,
+  "overall": 58.613,
+  "gross": 53460,
+  "revenue": 149222.125,
+  "distributed": 1.675,
+  "money": 24825517.894,
+  "moneyChange": -174482.106,
+  "jobsTaken": 1.1,
+  "jobsOffered": 1.1,
+  "jobPay": 4815.15,
+  "offeredDayRate": 456.3,
+  "ownIn": 80775,
+  "backerIn": 0,
+  "backerDeals": 0,
+  "leftInProjects": 0,
+  "jobsDone": 1.05,
+  "jobsWithdrawn": 0,
+  "jobsDeclined": 0,
+  "ratesAgreed": 0,
+  "logLines": 121.35,
+  "hired": 16,
+  "castRates": 3209.75,
+  "releaseDelay": 98.217,
+  "licenceDeals": 0,
+  "licenceFee": 0,
+  "offersDeclined": 0.5,
+  "countersSeen": 0,
+  "countersDeclined": 0.1,
+  "spent": 68983,
+  "shootDays": 7.4,
+  "lostDays": 1.4,
+  "daysToDeliver": 33.275,
+  "quality.script": 48.5,
+  "quality.direction": 64.45,
+  "quality.craft": 59.75,
+  "quality.editing": 58.35,
+  "quality.music": 58.913,
+  "standing.writing": 50,
+  "standing.directing": 54.925,
+  "standing.acting": 50,
+  "standing.producing": 53.025,
+  "interestIn": 24263.46,
+  "interestOut": 0,
+  "bankFees": 0,
+  "owed": 0,
+  "accounts": 2,
+  "worth": 18668789.456,
+  "rewards": 0,
+  "paidInCash": 0,
+  "withdrawn": 0,
+  "onCard": 0,
+  "cardPaid": 0,
+  "savingsHeld": 1024836.18,
+  "inCurrent": 17643953.277,
+  "natwestHeld": 18668789.456,
+  "atFirstBank": 0,
+  "cashHeld": 0,
+  "loansOwed": 0,
+  "cardsAtNatwest": 0,
+  "cardsOpen": 0,
+  "planMonths": 0,
+  "transferred": 0,
+  "paidFromNatwest": 30404.597,
+  "lowAlerts": 0,
+  "fraudKnownAfter": 0.55,
+  "fraudCarried": 4.997,
+  "daysSinceSwitch": 709,
+  "fired": 0
+ },
+ "variant": {
+  "delivered": 2,
+  "released": 2,
+  "reception": 58.7,
+  "overall": 58.613,
+  "gross": 53460,
+  "revenue": 149222.125,
+  "distributed": 1.675,
+  "money": 24824512.296,
+  "moneyChange": -175487.704,
+  "jobsTaken": 1.1,
+  "jobsOffered": 1.1,
+  "jobPay": 4815.15,
+  "offeredDayRate": 456.3,
+  "ownIn": 80775,
+  "backerIn": 0,
+  "backerDeals": 0,
+  "leftInProjects": 0,
+  "jobsDone": 1.05,
+  "jobsWithdrawn": 0,
+  "jobsDeclined": 0,
+  "ratesAgreed": 0,
+  "logLines": 121.35,
+  "hired": 16,
+  "castRates": 3209.75,
+  "releaseDelay": 98.217,
+  "licenceDeals": 0,
+  "licenceFee": 0,
+  "offersDeclined": 0.5,
+  "countersSeen": 0,
+  "countersDeclined": 0.1,
+  "spent": 68983,
+  "shootDays": 7.4,
+  "lostDays": 1.4,
+  "daysToDeliver": 33.275,
+  "quality.script": 48.5,
+  "quality.direction": 64.45,
+  "quality.craft": 59.75,
+  "quality.editing": 58.35,
+  "quality.music": 58.913,
+  "standing.writing": 50,
+  "standing.directing": 54.925,
+  "standing.acting": 50,
+  "standing.producing": 53.025,
+  "interestIn": 20529.58,
+  "interestOut": 0,
+  "bankFees": 0,
+  "owed": 0,
+  "accounts": 2,
+  "worth": 18668033.247,
+  "rewards": 0,
+  "paidInCash": 0,
+  "withdrawn": 0,
+  "onCard": 0,
+  "cardPaid": 0,
+  "savingsHeld": 1024079.97,
+  "inCurrent": 17643953.277,
+  "natwestHeld": 18668033.247,
+  "atFirstBank": 0,
+  "cashHeld": 0,
+  "loansOwed": 0,
+  "cardsAtNatwest": 0,
+  "cardsOpen": 0,
+  "planMonths": 0,
+  "transferred": 0,
+  "paidFromNatwest": 30404.597,
+  "lowAlerts": 0,
+  "fraudKnownAfter": 0.55,
+  "fraudCarried": 4.997,
+  "daysSinceSwitch": 600,
+  "fired": 0
+ },
+ "diff": {
+  "delivered": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 40
+  },
+  "released": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 40
+  },
+  "reception": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 40
+  },
+  "overall": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 40
+  },
+  "gross": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 40
+  },
+  "revenue": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 40
+  },
+  "distributed": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 40
+  },
+  "money": {
+   "mean": -1005.599,
+   "lo": -1005.6,
+   "hi": -1005.598,
+   "changed": 40,
+   "n": 40
+  },
+  "moneyChange": {
+   "mean": -1005.599,
+   "lo": -1005.6,
+   "hi": -1005.598,
+   "changed": 40,
+   "n": 40
+  },
+  "jobsTaken": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 40
+  },
+  "jobsOffered": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 40
+  },
+  "jobPay": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 40
+  },
+  "offeredDayRate": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 40
+  },
+  "ownIn": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 40
+  },
+  "backerIn": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 40
+  },
+  "backerDeals": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 40
+  },
+  "leftInProjects": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 40
+  },
+  "jobsDone": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 40
+  },
+  "jobsWithdrawn": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 40
+  },
+  "jobsDeclined": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 40
+  },
+  "ratesAgreed": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 40
+  },
+  "logLines": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 40
+  },
+  "hired": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 40
+  },
+  "castRates": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 40
+  },
+  "releaseDelay": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 40
+  },
+  "licenceDeals": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 40
+  },
+  "licenceFee": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 40
+  },
+  "offersDeclined": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 40
+  },
+  "countersSeen": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 40
+  },
+  "countersDeclined": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 40
+  },
+  "spent": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 40
+  },
+  "shootDays": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 40
+  },
+  "lostDays": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 40
+  },
+  "daysToDeliver": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 40
+  },
+  "quality.script": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 40
+  },
+  "quality.direction": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 40
+  },
+  "quality.craft": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 40
+  },
+  "quality.editing": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 40
+  },
+  "quality.music": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 40
+  },
+  "standing.writing": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 40
+  },
+  "standing.directing": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 40
+  },
+  "standing.acting": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 40
+  },
+  "standing.producing": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 40
+  },
+  "interestIn": {
+   "mean": -3733.88,
+   "lo": -3733.88,
+   "hi": -3733.88,
+   "changed": 40,
+   "n": 40
+  },
+  "interestOut": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 40
+  },
+  "bankFees": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 40
+  },
+  "owed": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 40
+  },
+  "accounts": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 40
+  },
+  "worth": {
+   "mean": -756.21,
+   "lo": -756.21,
+   "hi": -756.21,
+   "changed": 40,
+   "n": 40
+  },
+  "rewards": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 40
+  },
+  "paidInCash": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 40
+  },
+  "withdrawn": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 40
+  },
+  "onCard": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 40
+  },
+  "cardPaid": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 40
+  },
+  "savingsHeld": {
+   "mean": -756.21,
+   "lo": -756.21,
+   "hi": -756.21,
+   "changed": 40,
+   "n": 40
+  },
+  "inCurrent": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 40
+  },
+  "natwestHeld": {
+   "mean": -756.21,
+   "lo": -756.21,
+   "hi": -756.21,
+   "changed": 40,
+   "n": 40
+  },
+  "atFirstBank": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 40
+  },
+  "cashHeld": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 40
+  },
+  "loansOwed": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 40
+  },
+  "cardsAtNatwest": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 40
+  },
+  "cardsOpen": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 40
+  },
+  "planMonths": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 40
+  },
+  "transferred": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 40
+  },
+  "paidFromNatwest": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 40
+  },
+  "lowAlerts": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 40
+  },
+  "fraudKnownAfter": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 40
+  },
+  "fraudCarried": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 40
+  },
+  "daysSinceSwitch": {
+   "mean": -109,
+   "lo": -109,
+   "hi": -109,
+   "changed": 40,
+   "n": 40
+  },
+  "fired": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 40
+  }
+ },
+ "bites": [
+  {
+   "metric": "daysSinceSwitch",
+   "ok": true
+  }
+ ],
+ "downstream": [
+  {
+   "metric": "interestIn",
+   "ok": true
+  }
+ ],
+ "verdict": "proven",
+ "hashes": {
+  "src/engine/bankworld/systems/lending.ts": "d2131a42dd14812c",
+  "tests/proof/career.ts": "50bea06f19a02c5b"
+ }
+}

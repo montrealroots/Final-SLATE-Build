@@ -237,8 +237,16 @@ and the rest) with real grades filling the hiring lists.
     snapshots were rewritten (only payments and what was settled changed for the prices, and direction, performance and
     reception for the takes).
 
-**Next.** The price sweep merged as #106. The booker and mask change has its 20 proofs rerun and copied in (all proven,
-open 1) and `npm run check` passed (1,709 tests): its checkpoint PR follows #106.
+**Next.** The price sweep merged as #106 and #107, the Berlin cancel cases as #108. Then, November 16:
+- The bank screens' 49 deciding inputs, in the feature matrix once they joined the controls table, are all proven (503
+  proven, open 1): 20 named on the proof whose move sets them (`tests/proof/field-proofs.ts`), 29 each proven by two
+  careers making the same move with the input set two ways (`tests/proof/probes/bank-fields.ts`; loans and overdrafts at
+  80 careers, as wages come only some months).
+- Gear is charged its listed price to the cent ($169.99, not $170) and shown so; personal postings round to the cent.
+  Until then a US career's round-ups to the next dollar (Citi's, Bank of America's) never saved anything.
+- A low balance alert reveals a stranger's debit that takes the account under its line, as the large payment alert did
+  over its own (`security.ts somebodyElse`).
+- `npm run check` passed (1,719 tests); the shop journeys passed (equipment, money, J01, J02, J06, project money).
 Open, explained: moving an episode (once the arms differ, every later scene, hire and offer is numbered differently and
 the draws follow the numbers). Possible next steps: key the game's draws by something both arms share; published figures
 for the two modeled prices.

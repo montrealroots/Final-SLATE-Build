@@ -671,7 +671,7 @@
  ],
  "verdict": "proven",
  "hashes": {
-  "src/engine/bankworld/systems/security.ts": "acaac4a6b8265319",
+  "src/engine/bankworld/systems/security.ts": "3003d1427ed830bb",
   "tests/proof/career.ts": "50bea06f19a02c5b"
  }
 }

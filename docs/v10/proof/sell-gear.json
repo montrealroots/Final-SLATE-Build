@@ -17,8 +17,8 @@
   "gross": 67233.333,
   "revenue": 119723.5,
   "distributed": 1.7,
-  "money": 24761049.754,
-  "moneyChange": -238950.246,
+  "money": 24761049.834,
+  "moneyChange": -238950.166,
   "jobsTaken": 1.133,
   "jobsOffered": 1.133,
   "jobPay": 5209.2,
@@ -67,8 +67,8 @@
   "gross": 66166.667,
   "revenue": 119387.667,
   "distributed": 1.7,
-  "money": 24762285.966,
-  "moneyChange": -237714.034,
+  "money": 24762286.046,
+  "moneyChange": -237713.954,
   "jobsTaken": 1.1,
   "jobsOffered": 1.1,
   "jobPay": 4922.4,
@@ -465,7 +465,7 @@
  ],
  "verdict": "proven",
  "hashes": {
-  "src/engine/equipment.ts": "f70e0d46c0e0f05b",
+  "src/engine/equipment.ts": "6d7fdf25e130a889",
   "tests/proof/career.ts": "50bea06f19a02c5b"
  }
 }

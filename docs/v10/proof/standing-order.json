@@ -1,7 +1,8 @@
 {
  "id": "standing-order",
  "features": [
-  "bank:bank.add_standing_order"
+  "bank:bank.add_standing_order",
+  "field:bankworld/ui/bank/BankPayments.tsx#id=\"so-amount\"#1"
  ],
  "decision": "Send £50,000 a month by standing order to your own savings",
  "reads": [

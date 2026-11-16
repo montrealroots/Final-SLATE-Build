@@ -18,8 +18,8 @@
   "gross": 0,
   "revenue": 0,
   "distributed": 0,
-  "money": 24621046.962,
-  "moneyChange": -378953.038,
+  "money": 24620981.712,
+  "moneyChange": -379018.288,
   "jobsTaken": 0,
   "jobsOffered": 0,
   "jobPay": 0,
@@ -27,7 +27,7 @@
   "ownIn": 80825,
   "backerIn": 0,
   "backerDeals": 0,
-  "leftInProjects": 47211.15,
+  "leftInProjects": 46650.15,
   "jobsDone": 0,
   "jobsWithdrawn": 0,
   "jobsDeclined": 0,
@@ -41,9 +41,9 @@
   "offersDeclined": 0,
   "countersSeen": 0,
   "countersDeclined": 0,
-  "spent": 3533.15,
-  "shootDays": 679.5,
-  "lostDays": 673.575,
+  "spent": 3519.25,
+  "shootDays": 679.475,
+  "lostDays": 673.55,
   "daysToDeliver": 2.875,
   "quality.script": 2.4,
   "quality.direction": 2.825,
@@ -66,8 +66,8 @@
   "gross": 53460,
   "revenue": 123966.375,
   "distributed": 1.5,
-  "money": 24768992.24,
-  "moneyChange": -231007.76,
+  "money": 24766838.99,
+  "moneyChange": -233161.01,
   "jobsTaken": 0.875,
   "jobsOffered": 0.875,
   "jobPay": 5098.85,
@@ -75,12 +75,12 @@
   "ownIn": 86770.5,
   "backerIn": 0,
   "backerDeals": 0,
-  "leftInProjects": 626.025,
+  "leftInProjects": 209.325,
   "jobsDone": 0.825,
   "jobsWithdrawn": 0,
   "jobsDeclined": 0,
   "ratesAgreed": 0,
-  "logLines": 125.125,
+  "logLines": 125.15,
   "hired": 16.5,
   "castRates": 3209.75,
   "releaseDelay": 91.966,
@@ -89,7 +89,7 @@
   "offersDeclined": 0.35,
   "countersSeen": 0,
   "countersDeclined": 0.025,
-  "spent": 101156.5,
+  "spent": 103726.45,
   "shootDays": 7.1,
   "lostDays": 1.425,
   "daysToDeliver": 55.013,
@@ -157,16 +157,16 @@
    "n": 40
   },
   "money": {
-   "mean": 147945.278,
-   "lo": 118022.201,
-   "hi": 177868.355,
+   "mean": 145857.278,
+   "lo": 116055.638,
+   "hi": 175658.919,
    "changed": 40,
    "n": 40
   },
   "moneyChange": {
-   "mean": 147945.278,
-   "lo": 118022.201,
-   "hi": 177868.355,
+   "mean": 145857.278,
+   "lo": 116055.638,
+   "hi": 175658.919,
    "changed": 40,
    "n": 40
   },
@@ -220,9 +220,9 @@
    "n": 40
   },
   "leftInProjects": {
-   "mean": -46585.125,
-   "lo": -48798.491,
-   "hi": -44371.759,
+   "mean": -46440.825,
+   "lo": -48524.877,
+   "hi": -44356.773,
    "changed": 40,
    "n": 40
   },
@@ -255,9 +255,9 @@
    "n": 40
   },
   "logLines": {
-   "mean": -274.875,
-   "lo": -279.299,
-   "hi": -270.451,
+   "mean": -274.85,
+   "lo": -279.26,
+   "hi": -270.44,
    "changed": 40,
    "n": 40
   },
@@ -318,23 +318,23 @@
    "n": 40
   },
   "spent": {
-   "mean": 97623.35,
-   "lo": 92618.322,
-   "hi": 102628.378,
+   "mean": 100207.2,
+   "lo": 95160.289,
+   "hi": 105254.111,
    "changed": 40,
    "n": 40
   },
   "shootDays": {
-   "mean": -672.4,
-   "lo": -703.204,
-   "hi": -641.596,
+   "mean": -672.375,
+   "lo": -703.205,
+   "hi": -641.545,
    "changed": 40,
    "n": 40
   },
   "lostDays": {
-   "mean": -672.15,
-   "lo": -702.912,
-   "hi": -641.388,
+   "mean": -672.125,
+   "lo": -702.913,
+   "hi": -641.337,
    "changed": 40,
    "n": 40
   },
@@ -457,7 +457,7 @@
  "verdict": "proven",
  "hashes": {
   "src/engine/project-budget.ts": "06febb91f5c4d7b3",
-  "src/engine/personal.ts": "e3d38c66bea1a8fe",
+  "src/engine/personal.ts": "0c2d139bab10c90b",
   "src/engine/hiring.ts": "a727f08b0ae8c07f",
   "tests/proof/career.ts": "50bea06f19a02c5b"
  }

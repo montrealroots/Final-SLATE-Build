@@ -1,7 +1,8 @@
 {
  "id": "large-payment-alert",
  "features": [
-  "bank:bank.set_alerts"
+  "bank:bank.set_alerts",
+  "field:bankworld/ui/bank/BankStatements.tsx#id=\"alert-large\"#1"
  ],
  "decision": "Be alerted to payments of $100 or more, then report the stranger's debit when the statement comes",
  "reads": [
@@ -671,7 +672,7 @@
  ],
  "verdict": "proven",
  "hashes": {
-  "src/engine/bankworld/systems/security.ts": "acaac4a6b8265319",
+  "src/engine/bankworld/systems/security.ts": "3003d1427ed830bb",
   "tests/proof/career.ts": "50bea06f19a02c5b"
  }
 }

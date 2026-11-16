@@ -1,7 +1,8 @@
 {
  "id": "cash-withdrawal",
  "features": [
-  "bank:cash.withdraw"
+  "bank:cash.withdraw",
+  "field:bankworld/ui/bank/BankCash.tsx#id=\"cash-out\"#1"
  ],
  "decision": "Take 250 in the bank's own money out of a cash machine and pay for what you buy in cash first",
  "reads": [
