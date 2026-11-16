@@ -8,11 +8,11 @@ journey that shows it there.
 
 | Kind | proven | carried | does not bite | no downstream effect | stale | not a feature | not yet proven | All |
 |---|---|---|---|---|---|---|---|---|
-| action | 146 | 0 | 0 | 1 | 0 | 13 | 0 | 160 |
+| action | 147 | 0 | 0 | 0 | 0 | 13 | 0 | 160 |
 | bank | 54 | 0 | 0 | 0 | 0 | 0 | 0 | 54 |
 | scheduled | 56 | 0 | 0 | 0 | 0 | 11 | 0 | 67 |
 | field | 248 | 97 | 0 | 0 | 0 | 9 | 0 | 354 |
-| all | 504 | 97 | 0 | 1 | 0 | 33 | 0 | 635 |
+| all | 505 | 97 | 0 | 0 | 0 | 33 | 0 | 635 |
 
 ## Rows
 
@@ -149,7 +149,7 @@ journey that shows it there.
 | reviseEffects | action | src/engine/revisions.ts | proven | revise-effects (40 seeds) | effectsRevised +2.325; quality.direction +1.313; spent +11773; overall +0.25 |
 | clearScreenTime | action | src/engine/screen-time.ts | proven | clear-screen-time (40 seeds) | screenRecords -12; screenEntries -1; screenDecided -1 |
 | recordScreenTime | action | src/engine/screen-time.ts | proven | record-screen-time (40 seeds) | screenRecords +12; screenEntries +1; screenDecided +1 |
-| moveEpisode | action | src/engine/season.ts | no downstream effect | move-episode (120 seeds) | moved: firstEpisodeDirected +1.833. Measure: the episode a hired director directs and cuts again, put first, both arms airing on the same days (120 careers, November 15, 2026): streaming hours +17,400 (interval -16,200 to +51,000), broadcast viewers -29,500 (interval -83,000 to +24,100). The order changes what each episode keeps of the audience before it (audiences.ts retention). Two things besides the order differ between the arms: a scene moved to another day meets that day's weather (as it would), and, once the arms differ at all, every later scene, hire and offer is numbered differently, and the game's draws are keyed by those numbers, so the second season is drawn afresh (seen career by career). A scene's takes no longer follow the date (takes.ts recordTakes, from November 15, 2026), which made the first season's footage match; the second season's still doesn't. Not a gap in the game; a proof would need draws keyed by something both arms share. |
+| moveEpisode | action | src/engine/season.ts | proven | move-episode (120 seeds) | firstEpisodeDirected +1.833; firstHours +6366.667 |
 | continueProject | action | src/engine/sequel.ts | proven | continue-project (40 seeds) | continued +1; buildDays -22; spent -10944; daysToDeliver -13.325 |
 | resumeProject | action | src/engine/shelve.ts | proven | shelve-resume (60 seeds) | hiresReleased +16; deliveredDay +318.1; offersDeclined +342.8; castRates +169.333; revenue -100958; money -110849.216 |
 | shelveProject | action | src/engine/shelve.ts | proven | shelve-resume (60 seeds) | hiresReleased +16; deliveredDay +318.1; offersDeclined +342.8; castRates +169.333; revenue -100958; money -110849.216 |

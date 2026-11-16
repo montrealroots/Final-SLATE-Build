@@ -289,8 +289,13 @@ and the rest) with real grades filling the hiring lists.
   its bite as what cast and crew were paid (+$1,545 a career at 120 careers): what all was spent had fallen inside the
   noise once location permits cost more. `npm run check` passed (1,736 tests); the destinations, money, J01,
   live-action and first-project journeys passed.
-Open, explained: moving an episode (once the arms differ, every later scene, hire and offer is numbered differently and
-the draws follow the numbers). Possible next step: key the game's draws by something both arms share.
+- Moving an episode is proven (`move-episode`, 120 careers): measured on the first season's audience, the one both arms
+  make alike but for the order, streaming hours +6,367 (interval +223 to +12,511). Until then it was measured across
+  every season, and later seasons are drawn afresh once the arms differ (every scene, hire and offer after the move is
+  numbered differently), which hid it. Its explanation left docs/v10/explained.json. The matrix: 505 proven, open 0.
+Nothing in the feature matrix is open. Still the game's own figures: the stop-motion and creature materials and the
+broadcast edit (no published per-item price found). Possible next step: key the game's draws by something both arms
+of a proof share, so later seasons compare too.
 
 ## The Owner's Command Of November 14, 2026 (Later): Every Feature Proven, Everything Possible
 
