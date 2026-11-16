@@ -31,13 +31,14 @@ describe('electronic travel authorizations', () => {
     }
   });
 
-  it('covers every destination that asks for one, but four no source confirmed, which are estimated', () => {
-    const estimated = etaDestinations().filter((c) => authorizationTerms(c, ['JP']).estimate);
-    // Morocco's AEVM (and Western Sahara's), Russia's electronic application and Saudi Arabia's ETA for British visitors:
-    // no fee was found that a source stands behind (November 16, 2026). The list may fall and may not grow.
-    expect(estimated).toEqual(['EH', 'MA', 'RU', 'SA']);
-    for (const c of estimated) expect(authorizationTerms(c, ['JP']).basis).toMatch(/^The game's estimate/);
-    expect(RESEARCHED_AUTHORIZATIONS.length).toBe(20);
+  it('covers every destination that asks for one: none is estimated', () => {
+    // Until later on November 16, 2026, Morocco's AEVM (and Western Sahara's), Russia's electronic application and Saudi
+    // Arabia's ETA for British visitors were the game's estimate. Researched since; the list may not grow again.
+    expect(etaDestinations().filter((c) => authorizationTerms(c, ['JP']).estimate)).toEqual([]);
+    expect(RESEARCHED_AUTHORIZATIONS.length).toBe(23);
+    expect(authorizationTerms('EH', ['GH']).route).toBe(authorizationTerms('MA', ['GH']).route);
+    expect(authorizationTerms('RU', ['BR'])).toMatchObject({ fee: { amount: 0 }, days: 3 });
+    expect(authorizationTerms('SA', ['GB'])).toMatchObject({ fee: { amount: 50, currency: 'SAR' }, stayDays: 365 });
   });
 
   it('charges a Japanese visitor to the United States the ESTA, decided in three days and good for two years', () => {

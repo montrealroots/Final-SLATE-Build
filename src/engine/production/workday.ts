@@ -15,7 +15,7 @@ import { decideCompetition } from '../unscripted';
 import { addLog, registerHandler, schedule } from '../state';
 import { addDaysToKey, formatDateKey, localToInstant, parseYmd } from '../time';
 import { forecastFinish } from './forecast';
-import { MATERIAL_COST, dayPremium, RENDER_HOURS_PER_FRAME, RENDER_NODE_DAY_COST, VOICE_SESSION_STUDIO } from './rates';
+import { MATERIAL_COST, dayPremium, locationPermitCost, RENDER_HOURS_PER_FRAME, RENDER_NODE_DAY_COST, VOICE_SESSION_STUDIO } from './rates';
 import { SHOOT_CREW, markCaptured } from './shoot';
 import { designGate } from '../designs';
 import { t } from './tasks';
@@ -333,6 +333,7 @@ export function addLogOnce(state: GameState, p: Project, key: string, text: stri
 export function materialCost(task: Task): number {
   // A task that carries its own materials (looks.ts: a costume by its source, an appliance by its method).
   if (task.material !== undefined) return task.material;
+  if (task.kind === 'prep:locations') return locationPermitCost(task.units);
   const base = MATERIAL_COST[task.kind];
   if (!base) return 0;
   let qty = task.units;

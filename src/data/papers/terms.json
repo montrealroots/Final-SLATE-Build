@@ -1,5 +1,5 @@
 {
- "about": "Fees and decision times for the work permit routes in work.json, and for visitor visas by destination, researched on November 14, 2026 (the owner's command of that day: research, then estimate); and for electronic travel authorizations by destination (authorizations; passports lists the passports whose authorization differs), researched on November 16, 2026. Each entry names its source and whether it is the government's own page (official) or another publication (secondary). days is calendar days, or [shortest, longest] where the source gives a range; stayDays is how long the permission lasts at most, where the source says.",
+ "about": "Fees and decision times for the work permit routes in work.json, and for visitor visas by destination, researched on November 14, 2026 (the owner's command of that day: research, then estimate); and for electronic travel authorizations by destination (authorizations; passports lists the passports whose authorization differs), researched on November 16, 2026 (Morocco, Russia and Saudi Arabia later that day). Each entry names its source and whether it is the government's own page (official) or another publication (secondary). days is calendar days, or [shortest, longest] where the source gives a range; stayDays is how long the permission lasts at most, where the source says.",
  "permits": {
   "US": {
    "route": "O-1 (extraordinary ability in the arts, or extraordinary achievement in motion pictures or television)",
@@ -1241,6 +1241,76 @@
      "kind": "official",
      "url": "https://gov.gs/?p=39307",
      "what": "Government of South Georgia and the South Sandwich Islands, visitor permit fee update, June 3, 2026"
+    }
+   ]
+  },
+  "MA": {
+   "name": "AEVM (Autorisation Électronique de Voyage au Maroc)",
+   "fee": 0,
+   "currency": "MAD",
+   "feeBasis": "Free when applied for on the government's portal, Accès Maroc (sites in between charge for it).",
+   "days": [
+    1,
+    2
+   ],
+   "daysBasis": "Usually decided in 24 to 48 working hours.",
+   "stayDays": 180,
+   "stayBasis": "Valid for 180 days from issue, up to 30 days each entry.",
+   "sources": [
+    {
+     "kind": "secondary",
+     "url": "https://aevmmaroc.fr/",
+     "what": "AEVM Maroc guide: free on acces-maroc.ma, 24 to 48 working hours, 180 days, 30 days an entry"
+    },
+    {
+     "kind": "secondary",
+     "url": "https://www.demarchesmaroc.com/autorisation-electronique-voyage-maroc-aevm-can-2025/",
+     "what": "Démarches Maroc: the AEVM on acces-maroc.ma"
+    }
+   ]
+  },
+  "RU": {
+   "name": "Electronic application (Gosuslugi RuID)",
+   "fee": 0,
+   "currency": "RUB",
+   "feeBasis": "Made in the Gosuslugi RuID app, required of visa-free visitors from July 1, 2026; no fee is charged.",
+   "days": 3,
+   "daysBasis": "Submitted at least 72 hours before arrival.",
+   "sources": [
+    {
+     "kind": "secondary",
+     "url": "https://ivisa.hse.ru/en/news/1163730896.html",
+     "what": "HSE University Visa Support Centre: RuID mandatory for visa-free visitors from July 1, 2026, 72 hours ahead"
+    },
+    {
+     "kind": "secondary",
+     "url": "https://russiable.com/electronic-travel-authorization-russia-visa-free/",
+     "what": "Russiable: the authorization is free"
+    }
+   ]
+  },
+  "SA": {
+   "name": "Electronic Travel Authorization (Saudi Arabia, for UK citizens)",
+   "fee": 50,
+   "currency": "SAR",
+   "feeBasis": "SAR 50, not refunded, from July 1, 2026 (the Ministry of Foreign Affairs announced the service on June 25, 2026; it publishes no fee in the announcement, and sites report SAR 50).",
+   "days": [
+    1,
+    3
+   ],
+   "daysBasis": "Usually decided in one to three business days.",
+   "stayDays": 365,
+   "stayBasis": "Multiple entries for 12 months (some sites say two years), up to 180 days a year.",
+   "sources": [
+    {
+     "kind": "official",
+     "url": "https://www.spa.gov.sa/en/N2620727",
+     "what": "Saudi Press Agency: Ministry of Foreign Affairs launches the ETA for UK citizens"
+    },
+    {
+     "kind": "secondary",
+     "url": "https://myjet24.com/blog/saudi-arabia-eta-uk-citizens-2026",
+     "what": "MyJet24: SAR 50, 24 to 72 hours, 12 months, 180 days a year"
     }
    ]
   }

@@ -5,7 +5,7 @@
 // Written to docs/prices/PRICES.md with SLATE_WRITE_AUDIT=1.
 import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
 import { describe, expect, it } from 'vitest';
-import { crowdDayRate, dayFees, housePackageFee, BACKGROUND_HOURS, MINIMUM_WAGE, RENDER_NODE_DAY_COST, VOICE_SESSION_STUDIO, SIXTH_DAY_PREMIUM, HOLIDAY_PREMIUM, NIGHT_PREMIUM, MATERIAL_COST } from '../src/engine/production/rates';
+import { crowdDayRate, dayFees, housePackageFee, BACKGROUND_HOURS, MINIMUM_WAGE, RENDER_NODE_DAY_COST, VOICE_SESSION_STUDIO, SIXTH_DAY_PREMIUM, HOLIDAY_PREMIUM, NIGHT_PREMIUM, MATERIAL_COST, locationPermitCost } from '../src/engine/production/rates';
 import { PER_DIEM, CAR_PER_MILE, TRUCK_PER_MILE, FARE } from '../src/engine/destinations';
 import { RIGS } from '../src/engine/craft';
 import { MAKEUP } from '../src/engine/looks';
@@ -73,7 +73,8 @@ const ROWS: Row[] = [
   { area: 'Shooting', what: 'Costumes, a character', game: MATERIAL_COST['prep:costume'], real: 'an indie film\'s wardrobe $5,475 to $17,450 in all: $550 to $1,750 a character for ten', range: [550, 1750], source: 'Filmmaker Magazine, DV case study ($5,475); Bloomsbury, Feature Film Budgeting, Sample Budget 3 ($17,450)', status: 'Sourced', where: 'rates.ts MATERIAL_COST' },
   { area: 'Shooting', what: 'Design materials, a design day (about $225 a scene on a feature)', game: MATERIAL_COST['prep:design'], real: 'an indie film\'s art, set dressing and props $11,025 to $39,210 in all', source: 'Filmmaker Magazine, DV case study; Bloomsbury, Sample Budget 3', status: 'Sourced', where: 'rates.ts MATERIAL_COST' },
   { area: 'Shooting', what: 'Archive footage, a clip', game: MATERIAL_COST['doc:archive'], real: '$45 to $75 a second, 30-second minimums: $1,350 to $4,500 for 30 to 60 seconds', range: [1350, 4500], source: 'Film Archives Online ($60 a second, feature documentary); Budget Films ($50 to $75 a second)', status: 'Sourced', where: 'rates.ts MATERIAL_COST' },
-  { area: 'Shooting', what: 'Other materials (creature builds, stop-motion armatures, puppets, faces, sets, location prep)', game: Object.entries(MATERIAL_COST).filter(([k, v]) => v && !['prep:costume', 'prep:design', 'doc:archive', 'post:clearance'].includes(k)).map(([k, v]) => `${k} ${money(v)}`).join(', '), real: 'varies by production', source: 'none found per task', status: 'Modeled', where: 'rates.ts MATERIAL_COST' },
+  { area: 'Shooting', what: 'Location permits, three locations', game: locationPermitCost(3), real: 'FilmLA, City of Los Angeles: $931 a permit (up to five locations over seven days), the fire department\'s $285 spot check a permit, $232 a notification', range: [1912, 1912], source: 'FilmLA Basic Fees List, City of Los Angeles', status: 'Fixed', where: 'rates.ts LOCATION_PERMIT' },
+  { area: 'Shooting', what: 'Other materials (creature builds, stop-motion armatures, puppets, faces, costumes, sets)', game: Object.entries(MATERIAL_COST).filter(([k, v]) => v && !['prep:costume', 'prep:design', 'doc:archive', 'post:clearance'].includes(k)).map(([k, v]) => `${k} ${money(v)}`).join(', '), real: 'varies by production', source: 'none found per task', status: 'Modeled', where: 'rates.ts MATERIAL_COST' },
   // ---------------- Post ----------------
   { area: 'Post', what: 'A recording studio day', game: VOICE_SESSION_STUDIO, real: 'from $1,200 a day; rooms $100 to $400 an hour', range: [1200, 3200], source: 'C&I Studios, Downtown Los Angeles; TagVenue Los Angeles listings', status: 'Fixed', where: 'rates.ts VOICE_SESSION_STUDIO' },
   { area: 'Post', what: 'A motion-capture stage session', game: MOCAP_SESSION_STAGE, real: '$1,500 to $5,000 a day', range: [1500, 5000], source: 'MoCap Online, The Real Cost of Motion Capture in 2026; AUT Motion Capture Lab (NZ$1,800 a day)', status: 'Sourced', where: 'mocap.ts' },
@@ -81,7 +82,7 @@ const ROWS: Row[] = [
   { area: 'Post', what: 'A render node for a day', game: RENDER_NODE_DAY_COST, real: 'GPU render nodes $0.90 to $3.50 an hour ($22 to $84 a day)', range: [22, 84], source: 'Super Renders Farm, Cloud Render Farm Pricing Explained 2026; AWS g5.xlarge on demand, about $1.01 an hour', status: 'Sourced', where: 'rates.ts RENDER_NODE_DAY_COST' },
   { area: 'Post', what: 'Subtitles, a finished minute, each language', game: SUBTITLE_PER_MINUTE, real: '$3 to $20 a minute; translated film subtitles from about £9 ($12)', range: [3, 20], source: 'Voquent subtitling prices; Beverly Boy, How Much Does it Cost to Subtitle a Film?', status: 'Sourced', where: 'script-effects.ts' },
   { area: 'Post', what: 'Dubbing, a finished minute, each language', game: DUB_PER_MINUTE, real: 'human dubbing $50 to $200 a minute', range: [50, 200], source: 'Vitrina, AI Dubbing vs Human Dubbing; Checksub dubbing price guide', status: 'Sourced', where: 'script-effects.ts' },
-  { area: 'Post', what: 'A broadcast edit for an earlier slot', game: BROADCAST_EDIT_COST, real: 'not found', source: 'none found', status: 'Modeled', where: 'script-effects.ts' },
+  { area: 'Post', what: 'A broadcast edit for an earlier slot', game: BROADCAST_EDIT_COST, real: 'no published price for the edit; an editor\'s week is $2,500 in an indie feature budget', source: 'Storiara, Indie Feature Film Budget, Line by Line (editor, 16 weeks at $2,500); how long a broadcast edit takes isn\'t published', status: 'Modeled', where: 'script-effects.ts' },
   // ---------------- Music ----------------
   { area: 'Music', what: 'A song licence', game: 'By fame, budget and scope', real: 'Hello: about $18,000 festivals (micro) to $530,000 the world (commissioned)', source: 'Music Connection; the Mad Men Beatles licence (music.ts)', status: 'Fixed', where: 'music.ts holderFee' },
   { area: 'Music', what: 'A library track, a use', game: LIBRARY_FEE_PER_USE, real: 'per-track library licences in the low hundreds', range: [100, 500], source: 'Fox Music, Music Licensing for Short Film 2026', status: 'Sourced', where: 'music.ts LIBRARY_FEE_PER_USE' },
@@ -123,5 +124,13 @@ describe('what things cost', () => {
     const want = page();
     if (process.env.SLATE_WRITE_AUDIT) { mkdirSync('docs/prices', { recursive: true }); writeFileSync('docs/prices/PRICES.md', want); }
     expect(readFileSync('docs/prices/PRICES.md', 'utf8')).toBe(want);
+  });
+});
+
+describe('location permits', () => {
+  it('charge a permit and its spot check for each five locations, and a notification for each location', () => {
+    expect(locationPermitCost(1)).toBe(931 + 285 + 232);
+    expect(locationPermitCost(5)).toBe(931 + 285 + 5 * 232);
+    expect(locationPermitCost(6)).toBe(2 * (931 + 285) + 6 * 232);
   });
 });

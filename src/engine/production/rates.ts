@@ -71,8 +71,17 @@ export function crowdDayRate(p: Project, date: string): number {
 
 export const MATERIAL_COST: Record<string, number> = {
   'prep:design': 900, 'prep:costume': 600, 'prep:creature': 4000, 'sm:armature': 900, 'sm:puppet': 1500, 'sm:faces': 1200, 'sm:costume': 300, 'sm:sets': 2500,
-  'doc:archive': 2500, 'post:clearance': 8000, 'anim:modeling': 0, 'prep:locations': 500,
+  'doc:archive': 2500, 'post:clearance': 8000, 'anim:modeling': 0,
 };
+/**
+ * Location permits, at the City of Los Angeles' rates through FilmLA (Basic Fees List): a permit, $931, covers up to five
+ * locations over seven days, with the fire department's spot check, $285, on each; and the neighbours of each location are
+ * notified, $232 (charged a base radius, which the game takes as a location). Until November 16, 2026 $500 a location,
+ * the game's own figure.
+ */
+export const LOCATION_PERMIT = { application: 931, spotCheck: 285, locationsPerPermit: 5, notification: 232 } as const;
+export const locationPermitCost = (locations: number): number =>
+  Math.ceil(locations / LOCATION_PERMIT.locationsPerPermit) * (LOCATION_PERMIT.application + LOCATION_PERMIT.spotCheck) + locations * LOCATION_PERMIT.notification;
 /** A stop-motion puppet's face (the v4 package, 02; ledger V4-014.02). Replacement faces are sculpted or printed as a
  *  set and swapped between frames: build days for the set, its materials, and quicker animating. A mechanical head moves
  *  by a mechanism inside: more armature days and slower animating. Game calibration, not studio data. */

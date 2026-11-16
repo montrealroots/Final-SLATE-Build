@@ -278,9 +278,15 @@ and the rest) with real grades filling the hiring lists.
   `tests/authorizations.test.ts`, each rule mutation-checked.
   The five proofs that read papers code were rerun and are proven (504 proven, open 1); `npm run check` passed
   (1,735 tests); the papers journeys passed on desktop and phone, the Paris one now checking the ESTA's terms.
+- That checkpoint merged as #111. Then the four estimated authorizations were researched (Morocco's AEVM, free;
+  Russia's RuID application, free, 72 hours ahead; Saudi Arabia's ETA for UK citizens, SAR 50), from secondary sources,
+  as no government page gave their terms: none is estimated now. Location permits are FilmLA's City of Los Angeles fees
+  ($931 a permit for up to five locations, $285 spot check, $232 a location's notification; until then $500 a
+  location, the game's own). The rest of "other materials" (creature builds, armatures, puppets, faces, stop-motion
+  costumes and sets) and the broadcast edit stay modeled: no published per-item figure was found (searched November 16,
+  2026); the edit's row names an editor's week, $2,500, as what it is set beside.
 Open, explained: moving an episode (once the arms differ, every later scene, hire and offer is numbered differently and
-the draws follow the numbers). Possible next steps: key the game's draws by something both arms share; published
-figures for the two modeled prices; the four estimated authorizations.
+the draws follow the numbers). Possible next step: key the game's draws by something both arms share.
 
 ## The Owner's Command Of November 14, 2026 (Later): Every Feature Proven, Everything Possible
 
