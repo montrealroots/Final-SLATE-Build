@@ -116,7 +116,9 @@ export const PROBES: Probe[] = [
     // Rehearsal reaches the performances (finish.ts assessQuality), not the direction's score: the film's overall is where
     // it shows (until November 14, 2026 this probe looked for it in the direction's score).
     measure: (_s, projects) => ({ performance: (() => { const v = projects.flatMap((p) => Object.entries(p.quality ?? {}).filter(([k]) => k.startsWith('performance:')).map(([, x]) => Number(x))); return v.length ? v.reduce((a, b) => a + b, 0) / v.length : 0; })() }),
-    bites: ['performance', 'overall'], downstream: ['reception', 'spent', 'revenue'] },
+    // Eight days' rehearsal before the shoot delivers the film later (7.5 days at 120 careers, November 16, 2026), as
+    // it must; reception's rise (0.9) stayed inside the noise of the realistic prices.
+    bites: ['performance', 'overall'], downstream: ['daysToDeliver', 'reception', 'spent', 'revenue'] },
   // On a budget above the low-budget line, where a sixth day is paid time and a half (rates.ts SIXTH_DAY_PREMIUM): both
   // careers plan $8m, and what isn't spent comes home at the year's end.
   { id: 'six-day-weeks', seeds: 60, features: [field('PlanViews.tsx', 'Six-Day Weeks')], decision: 'Shoot six days a week, on an $8m budget', reads: ['src/engine/production/schedule.ts#isWorkingDay', 'src/engine/production/schedule.ts#isSixthDay', 'src/engine/production/rates.ts#dayPremium'],
