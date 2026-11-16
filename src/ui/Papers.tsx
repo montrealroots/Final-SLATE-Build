@@ -29,7 +29,7 @@ function TermsLine({ c }: { c: Extract<ApplicationCheck, { ok: true }> }) {
   const t = c.terms;
   return (
     <p className="small">
-      {t.route}: {c.feeText}, decided in {t.daysText}{t.stayDays ? `, good for ${lasts(t.stayDays)}` : ''}. You need: {c.needs.join('; ')}. Refused: {oneIn(c.refusal.chance)} ({Math.round(c.refusal.chance * 1000) / 10}%), and the fee isn&apos;t returned. {c.refusal.basis}{' '}
+      {t.route}: {c.feeText}, decided in {t.daysText}{t.stayDays ? `, good for ${lasts(t.stayDays)}` : ''}. You need: {c.needs.join('; ')}. Refused: {oneIn(c.refusal.chance)} ({Math.round(c.refusal.chance * 1000) / 10}%){t.fee.amount ? ', and the fee isn\'t returned' : ''}. {c.refusal.basis}{' '}
       {t.estimate ? <span className="dim">{t.basis}</span> : <>{t.basis} {t.sources.map((x, i) => <a key={i} href={x.url} target="_blank" rel="noreferrer" className="dim">{x.kind === 'official' ? 'Official source' : 'Source'}{t.sources.length > 1 ? ` ${i + 1}` : ''}</a>).reduce<ReactNode[]>((a, x, i) => (i ? [...a, ', ', x] : [x]), [])}</>}
     </p>
   );
@@ -112,7 +112,7 @@ export function PapersCard() {
         {enter.kind === 'needs' && (visa.ok ? (
           <>
             <TermsLine c={visa} />
-            <button className="btn btn-sm" onClick={() => setErr(store.act((s) => void applyForVisa(s, country)))}>Apply And Pay The Fee</button>
+            <button className="btn btn-sm" onClick={() => setErr(store.act((s) => void applyForVisa(s, country)))}>{visa.terms.fee.amount ? 'Apply And Pay The Fee' : 'Apply'}</button>
           </>
         ) : <p className="dim small">{visa.why}</p>)}
         <h3>Working</h3>

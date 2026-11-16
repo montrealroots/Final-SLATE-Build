@@ -32,7 +32,7 @@ import { documentsOf, inForce, theCountry, type PersonDocument } from './bankwor
 import { VISAS, type VisaRule } from './bankworld/content/visas';
 import { exchange } from './bankworld/content/currency';
 import { bankReach, postToBank } from './bank';
-import { continentOf, permitTerms, visaTerms, type Terms } from './papers-terms';
+import { authorizationTerms, continentOf, permitTerms, visaTerms, type Terms } from './papers-terms';
 import { CONTINENT_NAMES } from './bankworld/content/geography';
 import { filmPlace } from './destinations';
 import { stream } from './rng';
@@ -229,14 +229,22 @@ function visaPair(state: GameState, country: string): Terms | undefined {
   return undefined;
 }
 
-/** What a visitor visa for `country` costs and takes for you: 1221's pair for your passport, the destination's researched visa, or the estimate. */
-export const visaFor = (state: GameState, country: string): Terms => visaPair(state, country) ?? visaTerms(country);
+/**
+ * What the visa `country` asks of you costs and takes: its electronic travel authorization where that's what you need
+ * (from November 16, 2026), or a visitor visa: 1221's pair for your passport, the destination's researched visa, or the
+ * estimate.
+ */
+export function visaFor(state: GameState, country: string): Terms {
+  const e = entryRight(state, country);
+  if (e.kind === 'needs' && e.entry === 'eta') return authorizationTerms(country, citizenships(state));
+  return visaPair(state, country) ?? visaTerms(country);
+}
 
 export type ApplicationCheck =
   | { ok: true; terms: Terms; needs: string[]; feeText: string; refusal: { chance: number; basis: string } }
   | { ok: false; why: string; missing?: string[] };
 
-const feeText = (t: Terms) => `${t.fee.amount.toLocaleString('en-US')} ${t.fee.currency}`;
+const feeText = (t: Terms) => (t.fee.amount ? `${t.fee.amount.toLocaleString('en-US')} ${t.fee.currency}` : 'free');
 
 /** The documents an application needs: a passport in force until the decision, at least. */
 function passportNeed(state: GameState, t: Terms): { passport: PersonDocument } | { why: string } {
@@ -381,7 +389,7 @@ function apply(state: GameState, kind: 'visa' | 'permit', country: string, c: Ex
   (state.paperApplications ??= []).push(a);
   schedule(state, a.decideAt, 'papers-decision', { id }, { attention: 'notify', priority: 55, id: `papers-decision:${id}` });
   const what = kind === 'visa' ? `a ${t.route} for ${the(country)}` : `${t.route} to work in ${the(country)}${activity && activity !== 'act' ? ` (${ACTIVITY_WORDS[activity]})` : ''}`;
-  addLog(state, `You applied for ${what} and paid its fee. It is decided in about ${t.days} days${t.estimate ? ', the game\'s estimate' : ''}.`, 'personal', { route: { view: 'papers' } });
+  addLog(state, `You applied for ${what}${minor ? ' and paid its fee' : '; it\'s free'}. It is decided in about ${t.days} days${t.estimate ? ', the game\'s estimate' : ''}.`, 'personal', { route: { view: 'papers' } });
   return a;
 }
 

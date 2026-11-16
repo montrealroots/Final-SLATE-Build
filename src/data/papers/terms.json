@@ -1,5 +1,5 @@
 {
- "about": "Fees and decision times for the work permit routes in work.json, and for visitor visas by destination,, researched on November 14, 2026 (the owner's command of that day: research, then estimate). Each entry names its source and whether it is the government's own page (official) or another publication (secondary). days is calendar days, or [shortest, longest] where the source gives a range; stayDays is how long the permission lasts at most, where the source says.",
+ "about": "Fees and decision times for the work permit routes in work.json, and for visitor visas by destination, researched on November 14, 2026 (the owner's command of that day: research, then estimate); and for electronic travel authorizations by destination (authorizations; passports lists the passports whose authorization differs), researched on November 16, 2026. Each entry names its source and whether it is the government's own page (official) or another publication (secondary). days is calendar days, or [shortest, longest] where the source gives a range; stayDays is how long the permission lasts at most, where the source says.",
  "permits": {
   "US": {
    "route": "O-1 (extraordinary ability in the arts, or extraordinary achievement in motion pictures or television)",
@@ -718,6 +718,529 @@
      "kind": "secondary",
      "url": "https://thinkhigher.com.au/visitor-visa-subclass-600/",
      "what": "Visitor visa subclass 600: costs (2025-26)"
+    }
+   ]
+  }
+ },
+ "authorizations": {
+  "US": {
+   "name": "ESTA (Electronic System for Travel Authorization)",
+   "fee": 40.62,
+   "currency": "USD",
+   "feeBasis": "The ESTA fee is $40.62 from October 16, 2026 (fiscal year 2027), up from $40.27, adjusted for inflation under H.R. 1 (Federal Register notice 2026-20185).",
+   "days": 3,
+   "daysBasis": "A determination is usually given within 72 hours.",
+   "stayDays": 730,
+   "stayBasis": "An approved ESTA is typically good for two years, or until the passport expires, whichever is sooner.",
+   "sources": [
+    {
+     "kind": "official",
+     "url": "https://www.cbp.gov/travel/international-visitors/esta/frequently-asked-questions-about-visa-waiver-program-vwp-and-electronic-system-travel",
+     "what": "CBP, ESTA frequently asked questions: approvals typically for two years"
+    },
+    {
+     "kind": "secondary",
+     "url": "https://eiglaw.com/dhs-announces-fy-2027-increases-to-parole-esta-and-evus-fees/",
+     "what": "EIG Law, DHS fiscal year 2027 ESTA fee of $40.62"
+    }
+   ]
+  },
+  "GB": {
+   "name": "Electronic Travel Authorisation (ETA)",
+   "fee": 20,
+   "currency": "GBP",
+   "feeBasis": "It costs £20 to apply online or through the UK ETA app, and it covers Jersey, Guernsey and the Isle of Man too.",
+   "days": [
+    1,
+    3
+   ],
+   "daysBasis": "A decision usually comes within a day, and can take up to three working days.",
+   "stayDays": 730,
+   "stayBasis": "An ETA lasts for 2 years or until the passport expires, whichever is sooner.",
+   "sources": [
+    {
+     "kind": "official",
+     "url": "https://www.gov.uk/eta/apply",
+     "what": "GOV.UK, apply for an ETA: £20, a decision usually within a day, lasts 2 years"
+    }
+   ]
+  },
+  "CA": {
+   "name": "Electronic Travel Authorization (eTA)",
+   "fee": 7,
+   "currency": "CAD",
+   "feeBasis": "An eTA costs CAD $7.",
+   "days": 1,
+   "daysBasis": "Most applicants are approved by email within minutes.",
+   "stayDays": 1826,
+   "stayBasis": "Valid for up to five years, or until the passport expires, whichever comes first.",
+   "sources": [
+    {
+     "kind": "official",
+     "url": "https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/eta/facts.html",
+     "what": "Government of Canada, find out about eTA: CAD $7, within minutes, up to five years"
+    }
+   ]
+  },
+  "AU": {
+   "name": "Electronic Travel Authority (subclass 601)",
+   "fee": 20,
+   "currency": "AUD",
+   "feeBasis": "No visa charge; the ETA app's service fee of AUD 20.",
+   "days": 3,
+   "daysBasis": "An outcome by email within 72 hours.",
+   "stayDays": 365,
+   "stayBasis": "Multiple entries for up to one year (or the passport's validity, whichever is shorter), up to three months each visit.",
+   "sources": [
+    {
+     "kind": "official",
+     "url": "https://malaysia.embassy.gov.au/klpr/ETA.html",
+     "what": "Australian High Commission, Malaysia: the ETA app, AUD 20, within 72 hours, up to one year"
+    }
+   ],
+   "passports": [
+    {
+     "codes": [
+      "AT",
+      "BE",
+      "BG",
+      "HR",
+      "CY",
+      "CZ",
+      "DK",
+      "EE",
+      "FI",
+      "FR",
+      "DE",
+      "GR",
+      "HU",
+      "IE",
+      "IT",
+      "LV",
+      "LT",
+      "LU",
+      "MT",
+      "NL",
+      "PL",
+      "PT",
+      "RO",
+      "SK",
+      "SI",
+      "ES",
+      "SE",
+      "AD",
+      "IS",
+      "LI",
+      "MC",
+      "NO",
+      "SM",
+      "CH",
+      "GB",
+      "VA"
+     ],
+     "name": "eVisitor (subclass 651)",
+     "fee": 0,
+     "currency": "AUD",
+     "feeBasis": "The eVisitor is free, for passports of the European Union and other European countries (the United Kingdom's for British citizens).",
+     "stayDays": 365,
+     "stayBasis": "Multiple entries over 12 months, up to three months each visit.",
+     "sources": [
+      {
+       "kind": "secondary",
+       "url": "https://www.remitly.com/blog/en-au/immigration/evisitor-visa/",
+       "what": "Remitly, the eVisitor (subclass 651): free, 12 months, three months a visit"
+      }
+     ]
+    }
+   ]
+  },
+  "NZ": {
+   "name": "NZeTA, with the International Visitor Levy",
+   "fee": 117,
+   "currency": "NZD",
+   "feeBasis": "An NZeTA from NZD 17 (through the app), and the International Visitor Conservation and Tourism Levy of NZD 100 paid with it.",
+   "days": 3,
+   "daysBasis": "Allow 72 hours.",
+   "stayDays": 730,
+   "stayBasis": "Valid for 2 years for travellers, up to 3 months each visit (6 months for UK citizens).",
+   "sources": [
+    {
+     "kind": "official",
+     "url": "https://www.immigration.govt.nz/new-zealand-visas/visas/visa/nzeta",
+     "what": "Immigration New Zealand, NZeTA: from NZD 17, allow 72 hours, valid 2 years"
+    },
+    {
+     "kind": "official",
+     "url": "https://immigration.govt.nz/about-us/media-centre/common-topics/fees-and-levies",
+     "what": "Immigration New Zealand, fees and levies: the IVL of NZD 100"
+    }
+   ]
+  },
+  "KR": {
+   "name": "K-ETA (Korea Electronic Travel Authorization)",
+   "fee": 10000,
+   "currency": "KRW",
+   "feeBasis": "KRW 10,000, not refunded (some passports are exempt to December 31, 2026; the visit records the game keeps ask for it).",
+   "days": 3,
+   "daysBasis": "Usually decided within 72 hours.",
+   "stayDays": 1095,
+   "stayBasis": "Valid for 3 years for applications from July 3, 2023, or until the passport expires.",
+   "sources": [
+    {
+     "kind": "official",
+     "url": "https://overseas.mofa.go.kr/il-en/brd/m_11417/view.do?seq=759889",
+     "what": "Republic of Korea Ministry of Foreign Affairs: K-ETA validity of 3 years"
+    },
+    {
+     "kind": "secondary",
+     "url": "https://www.visatraveler.com/visa/south-korea/k-eta/",
+     "what": "Visa Traveler, K-ETA: KRW 10,000, 72 hours"
+    }
+   ]
+  },
+  "IL": {
+   "name": "ETA-IL (Electronic Travel Authorization to Israel)",
+   "fee": 25,
+   "currency": "ILS",
+   "feeBasis": "ILS 25.",
+   "days": 3,
+   "daysBasis": "An answer by email within 72 hours.",
+   "stayDays": 730,
+   "stayBasis": "Up to 2 years, or until the passport expires, whichever comes first; up to 90 days a visit.",
+   "sources": [
+    {
+     "kind": "official",
+     "url": "https://new.embassies.gov.il/berlin/en/node/6825",
+     "what": "Embassy of Israel in Germany, ETA-IL: 25 shekels, within 72 hours"
+    },
+    {
+     "kind": "official",
+     "url": "https://new.embassies.gov.il/japan/en/node/5717",
+     "what": "Embassy of Israel in Japan, ETA-IL: valid up to 2 years"
+    }
+   ]
+  },
+  "KN": {
+   "name": "Electronic Travel Authorization (St Kitts and Nevis)",
+   "fee": 17,
+   "currency": "USD",
+   "feeBasis": "US$17 a person from September 1, 2025 (citizens of the OECS are exempt).",
+   "days": 3,
+   "daysBasis": "No decision time is published; the game's assumption is three days, as the authorizations that publish one decide within 72 hours.",
+   "stayDays": 90,
+   "stayBasis": "Good for 90 days, or until the passport expires, whichever is sooner.",
+   "sources": [
+    {
+     "kind": "secondary",
+     "url": "https://www.travelpulse.com/news/destinations/saint-kitts-and-nevis-launches-new-electronic-travel-authorization-eta-system",
+     "what": "TravelPulse, St Kitts and Nevis eTA: US$17, 90 days"
+    }
+   ]
+  },
+  "CV": {
+   "name": "EASE pre-registration and Airport Security Fee (Cabo Verde)",
+   "fee": 3400,
+   "currency": "CVE",
+   "feeBasis": "Registration on EASE, and the Airport Security Fee (TSA) of 3,400 escudos for a stay of up to 30 days, which may also be paid on arrival.",
+   "days": 1,
+   "daysBasis": "No decision is made: the registration is taken at once (the game counts a day).",
+   "stayDays": 30,
+   "stayBasis": "The fee covers a stay of up to 30 days.",
+   "sources": [
+    {
+     "kind": "secondary",
+     "url": "https://www.eeas.europa.eu/node/56167",
+     "what": "European External Action Service (archived): EASE and the 3,400 escudo fee"
+    },
+    {
+     "kind": "secondary",
+     "url": "https://visasnews.com/en/cape-verde-visa-on-arrival-suspended-for-citizens-of-96-countries/",
+     "what": "VisasNews, Cabo Verde, 2025: visa-exempt visitors still register and pay the TSA"
+    }
+   ]
+  },
+  "GH": {
+   "name": "Electronic Travel Authorization (Ghana)",
+   "fee": 0,
+   "currency": "USD",
+   "feeBasis": "Free, for the African, Caribbean and African Union nationals it covers, from May 25, 2026.",
+   "days": 3,
+   "daysBasis": "No decision time is published; the game's assumption is three days, as the authorizations that publish one decide within 72 hours.",
+   "sources": [
+    {
+     "kind": "secondary",
+     "url": "https://www.fragomen.com/insights/ghana-new-electronic-travel-authorization-eta-and-evisa-requirements-visa-on-arrival-discontinued.html",
+     "what": "Fragomen, Ghana: new ETA, free"
+    },
+    {
+     "kind": "secondary",
+     "url": "https://taxnews.ey.com/news/2026-1178-ghana-introduces-e-visa-and-waives-visa-fees-for-african-nationals",
+     "what": "EY, Ghana waives visa fees for African nationals"
+    }
+   ]
+  },
+  "MZ": {
+   "name": "Electronic Travel Authorization (Mozambique)",
+   "fee": 48,
+   "currency": "USD",
+   "feeBasis": "About US$48 for the 29 visa-exempt nationalities on the portal relaunched February 11, 2026 (650 meticais, about US$10, before it).",
+   "days": 2,
+   "daysBasis": "Apply at least 48 hours before departure.",
+   "stayDays": 30,
+   "stayBasis": "A single entry for a stay of up to 30 days.",
+   "sources": [
+    {
+     "kind": "secondary",
+     "url": "https://visasnews.com/en/mozambique-e-visa-and-eta-application-portal-gets-a-makeover/",
+     "what": "VisasNews, February 11, 2026: about $48, apply 48 hours ahead"
+    },
+    {
+     "kind": "secondary",
+     "url": "https://safarifind.com/blog/mozambique-entry-requirements-2026-international-travellers",
+     "what": "SafariFind, Mozambique 2026: up to 30 days, single entry"
+    }
+   ]
+  },
+  "KE": {
+   "name": "Electronic Travel Authorisation (eTA, Kenya)",
+   "fee": 30,
+   "currency": "USD",
+   "feeBasis": "Standard processing from US$30 (expedited, US$100 more).",
+   "days": 3,
+   "daysBasis": "Generally processed within three business days (72 hours).",
+   "stayDays": 90,
+   "stayBasis": "A single entry within 90 days of approval.",
+   "sources": [
+    {
+     "kind": "official",
+     "url": "https://www.etakenya.go.ke/faqs",
+     "what": "Republic of Kenya eTA, frequently asked questions: from $30, within 3 business days"
+    },
+    {
+     "kind": "secondary",
+     "url": "https://www.ibn.co.za/kenya/business-tourist/",
+     "what": "IBN, Kenya eTA: valid 90 days, single entry"
+    }
+   ]
+  },
+  "LK": {
+   "name": "Tourist ETA (Sri Lanka)",
+   "fee": 50,
+   "currency": "USD",
+   "feeBasis": "About US$50 for a 30-day tourist ETA; free from May 25, 2026 for nationals of the 40 countries listed, and of the Maldives, Seychelles and Singapore.",
+   "days": 3,
+   "daysBasis": "No decision time is published; the game's assumption is three days, as the authorizations that publish one decide within 72 hours.",
+   "stayDays": 30,
+   "stayBasis": "A stay of up to 30 days.",
+   "sources": [
+    {
+     "kind": "secondary",
+     "url": "https://tripprof.com/de/blog/sri-lanka-free-tourist-eta-2026/",
+     "what": "Tripprof, Sri Lanka 2026: about $50 for the 30-day tourist ETA"
+    },
+    {
+     "kind": "secondary",
+     "url": "https://visasnews.com/en/sri-lanka-makes-tourist-eta-free-for-40-nationalities-from-may-25/",
+     "what": "VisasNews: the 40 nationalities, free from May 25, 2026"
+    }
+   ],
+   "passports": [
+    {
+     "codes": [
+      "AU",
+      "AT",
+      "BH",
+      "BY",
+      "BE",
+      "CA",
+      "CN",
+      "CZ",
+      "DK",
+      "FI",
+      "FR",
+      "DE",
+      "IN",
+      "ID",
+      "IR",
+      "IL",
+      "IT",
+      "JP",
+      "KZ",
+      "KW",
+      "MY",
+      "NP",
+      "NL",
+      "NZ",
+      "NO",
+      "OM",
+      "PK",
+      "PL",
+      "QA",
+      "RU",
+      "SA",
+      "KR",
+      "ES",
+      "SE",
+      "CH",
+      "TH",
+      "TR",
+      "AE",
+      "GB",
+      "US",
+      "MV",
+      "SC",
+      "SG"
+     ],
+     "fee": 0,
+     "feeBasis": "Free from May 25, 2026, for your nationality.",
+     "sources": [
+      {
+       "kind": "official",
+       "url": "https://stockholm.embassy.gov.lk/?p=7412",
+       "what": "Embassy of Sri Lanka in Stockholm: free tourist visas for nationals of 40 countries"
+      },
+      {
+       "kind": "secondary",
+       "url": "https://visasnews.com/en/sri-lanka-makes-tourist-eta-free-for-40-nationalities-from-may-25/",
+       "what": "VisasNews: the 40 nationalities, and the Maldives, Seychelles and Singapore"
+      }
+     ]
+    }
+   ]
+  },
+  "SC": {
+   "name": "Travel Authorisation (Seychelles)",
+   "fee": 10,
+   "currency": "EUR",
+   "feeBasis": "The standard fee of €10 on the government's Seychelles Electronic Border System.",
+   "days": 1,
+   "daysBasis": "The standard option takes up to 24 hours.",
+   "sources": [
+    {
+     "kind": "secondary",
+     "url": "https://www.travelnews.co.za/article/seychelles-clarifies-electronic-travel-authorisation",
+     "what": "Travel News, Seychelles clarifies its travel authorisation: €10"
+    },
+    {
+     "kind": "secondary",
+     "url": "https://evisaguides.pages.dev/en/destination/seychelles",
+     "what": "eVisa Guides, Seychelles: up to 24 hours"
+    }
+   ]
+  },
+  "SR": {
+   "name": "Entry Fee (Suriname)",
+   "fee": 50,
+   "currency": "USD",
+   "feeBasis": "US$50, paid online through VFS Global before travel.",
+   "days": 3,
+   "daysBasis": "No decision time is published; the game's assumption is three days, as the authorizations that publish one decide within 72 hours.",
+   "stayDays": 90,
+   "stayBasis": "A stay of up to 90 days.",
+   "sources": [
+    {
+     "kind": "secondary",
+     "url": "https://www.visaverge.com/visa/complete-guide-suriname-visa-application-requirements-process-3",
+     "what": "VisaVerge, Suriname 2026: the online Entry Fee"
+    },
+    {
+     "kind": "secondary",
+     "url": "https://surinameholidays.nl/en/benodigde-reisdocumenten-suriname/",
+     "what": "Suriname Holidays, travel documents: entry fee, up to 90 days"
+    }
+   ]
+  },
+  "HK": {
+   "name": "Pre-arrival Registration (Hong Kong)",
+   "fee": 0,
+   "currency": "HKD",
+   "feeBasis": "Pre-arrival registration is free of charge.",
+   "days": 1,
+   "daysBasis": "The result is shown instantly (the game counts a day).",
+   "stayDays": 183,
+   "stayBasis": "Valid for six months, or until the passport expires, whichever is earlier; up to 14 days a visit.",
+   "sources": [
+    {
+     "kind": "official",
+     "url": "https://www.immd.gov.hk/eng/press/press-releases/20161212.html",
+     "what": "Hong Kong Immigration Department, December 12, 2016: free, instant, six months"
+    }
+   ]
+  },
+  "JP": {
+   "name": "Visa Waiver Registration (Japan)",
+   "fee": 0,
+   "currency": "JPY",
+   "feeBasis": "The registration of an ePassport at a Japanese mission is free of charge.",
+   "days": 2,
+   "daysBasis": "About two working days.",
+   "stayDays": 1095,
+   "stayBasis": "Good for three years, or until the passport expires; 15 days a visit for Indonesia, 30 for Qatar.",
+   "sources": [
+    {
+     "kind": "official",
+     "url": "https://www.mofa.go.jp/j_info/visit/visa/short/novisa.html",
+     "what": "Ministry of Foreign Affairs of Japan: visa exemptions, registered ePassports"
+    },
+    {
+     "kind": "official",
+     "url": "https://www.vfsglobal.com/one-pager/japan/indonesia/english/pdf/PRE-REGISTRATION-FOR-IC-PASSPORT-HOLDERS.pdf",
+     "what": "Japan, pre-registration for IC passport holders: about two working days"
+    }
+   ]
+  },
+  "AS": {
+   "name": "Entry Permit (American Samoa)",
+   "fee": 40,
+   "currency": "USD",
+   "feeBasis": "A 30-day permit, US$40, not refunded.",
+   "days": 3,
+   "daysBasis": "No decision time is published; the game's assumption is three days, as the authorizations that publish one decide within 72 hours.",
+   "stayDays": 30,
+   "stayBasis": "A stay of up to 30 days (an extension, US$50).",
+   "sources": [
+    {
+     "kind": "official",
+     "url": "https://legalaffairs.as.gov/30-day-permit-info",
+     "what": "American Samoa Department of Legal Affairs: the 30-day permit, $40"
+    }
+   ]
+  },
+  "GU": {
+   "name": "G-CNMI ETA (Guam-CNMI Visa Waiver Program)",
+   "fee": 0,
+   "currency": "USD",
+   "feeBasis": "Form I-736, filed online; the rule charges no fee (an ESTA holder needs none).",
+   "days": 5,
+   "daysBasis": "Apply at least five days before travel.",
+   "stayBasis": "Up to 45 days in Guam or the Northern Mariana Islands.",
+   "sources": [
+    {
+     "kind": "official",
+     "url": "https://www.govinfo.gov/content/pkg/FR-2024-01-18/html/2024-00645.htm",
+     "what": "Federal Register, January 18, 2024: the Guam-CNMI electronic travel authorization"
+    },
+    {
+     "kind": "secondary",
+     "url": "https://www.visitguam.com/about-guam/entry-and-exit-formalities/",
+     "what": "Visit Guam, entry formalities: the G-CNMI ETA, 45 days"
+    }
+   ]
+  },
+  "GS": {
+   "name": "Visitor Permit (South Georgia)",
+   "fee": 250,
+   "currency": "GBP",
+   "feeBasis": "£250 a person from July 1, 2026 (£275 from July 1, 2027, £300 from July 1, 2028).",
+   "days": 8,
+   "daysBasis": "Applied for and paid no later than 8 days before arrival.",
+   "stayDays": 40,
+   "stayBasis": "A permit lasts 40 days.",
+   "sources": [
+    {
+     "kind": "official",
+     "url": "https://gov.gs/?p=39307",
+     "what": "Government of South Georgia and the South Sandwich Islands, visitor permit fee update, June 3, 2026"
     }
    ]
   }
