@@ -2,7 +2,7 @@
 
 Written by `tests/prices.test.ts` from the code; don't edit by hand. Run with `SLATE_WRITE_AUDIT=1` to rewrite it.
 
-Every price the player pays, read from the code, beside a published figure and where it was published. **Sourced**: the game's price sits inside the published range (the test fails if it leaves it). **Fixed**: changed on November 15, 2026 to the published figure. **Modeled**: no published figure was found, so the price is the game's own. 27 sourced, 16 fixed, 6 modeled.
+Every price the player pays, read from the code, beside a published figure and where it was published. **Sourced**: the game's price sits inside the published range (the test fails if it leaves it). **Fixed**: changed on November 15, 2026 to the published figure. **Modeled**: no published figure was found, so the price is the game's own. 28 sourced, 16 fixed, 5 modeled.
 
 British rate cards are read at 1.265 dollars to the pound. A US union hourly rate is read as a 10-hour day, eight hours straight and two at time and a half. A non-union background day is 8 hours at California's minimum wage, by date: $16.50 from 2025-01-01, $16.90 from 2026-01-01, $17.40 from 2027-01-01.
 
@@ -44,7 +44,7 @@ British rate cards are read at 1.265 dollars to the pound. A US union hourly rat
 | Shooting | Other materials (creature builds, stop-motion armatures, puppets, faces, sets, location prep) | prep:creature $4,000, sm:armature $900, sm:puppet $1,500, sm:faces $1,200, sm:costume $300, sm:sets $2,500, prep:locations $500 | varies by production | none found per task | Modeled | `rates.ts MATERIAL_COST` |
 | Post | A recording studio day | $1,200 | from $1,200 a day; rooms $100 to $400 an hour | C&I Studios, Downtown Los Angeles; TagVenue Los Angeles listings | Fixed | `rates.ts VOICE_SESSION_STUDIO` |
 | Post | A motion-capture stage session | $1,500 | $1,500 to $5,000 a day | MoCap Online, The Real Cost of Motion Capture in 2026; AUT Motion Capture Lab (NZ$1,800 a day) | Sourced | `mocap.ts` |
-| Post | A facial rig for a capture session | $500 | not found | none found | Modeled | `mocap.ts` |
+| Post | A facial rig for a capture session | $500 | $175 an actor a day (a university stage) to a $1,125 a day head camera; $500 to $2,000 a day for high-fidelity facial capture | WAAPA Performance Capture Rate Card; Faceware pricing; MoCap Online, The Real Cost of Motion Capture in 2026 | Sourced | `mocap.ts` |
 | Post | A render node for a day | $35 | GPU render nodes $0.90 to $3.50 an hour ($22 to $84 a day) | Super Renders Farm, Cloud Render Farm Pricing Explained 2026; AWS g5.xlarge on demand, about $1.01 an hour | Sourced | `rates.ts RENDER_NODE_DAY_COST` |
 | Post | Subtitles, a finished minute, each language | $12 | $3 to $20 a minute; translated film subtitles from about £9 ($12) | Voquent subtitling prices; Beverly Boy, How Much Does it Cost to Subtitle a Film? | Sourced | `script-effects.ts` |
 | Post | Dubbing, a finished minute, each language | $140 | human dubbing $50 to $200 a minute | Vitrina, AI Dubbing vs Human Dubbing; Checksub dubbing price guide | Sourced | `script-effects.ts` |
@@ -52,7 +52,7 @@ British rate cards are read at 1.265 dollars to the pound. A US union hourly rat
 | Music | A song licence | By fame, budget and scope | Hello: about $18,000 festivals (micro) to $530,000 the world (commissioned) | Music Connection; the Mad Men Beatles licence (music.ts) | Fixed | `music.ts holderFee` |
 | Music | A library track, a use | $250 | per-track library licences in the low hundreds | Fox Music, Music Licensing for Short Film 2026 | Sourced | `music.ts LIBRARY_FEE_PER_USE` |
 | Release | A digital aggregator, a feature on three platforms | $1,300 | $950 the first platform and $175 each more | Quiver Digital fees (MovieMaker); Vitrina, aggregators up to a $1,500 flat fee | Sourced | `release-plan.ts AGGREGATOR_FEE` |
-| Release | A booking partner for your own cinema release | $5,000 | not found | none found | Modeled | `release-plan.ts PARTNER_FEE` |
+| Release | A booking partner for your own cinema release | $5,000 | no published booking fee; renting a cinema yourself in one market is reported at $7,000 to $22,000 with its marketing | Vitrina, How Much Does It Cost to Distribute a Feature Film Independently (a different service) | Modeled | `release-plan.ts PARTNER_FEE` |
 | Release | A cinema ticket | $11.31 | $11.31 (US, 2024) | The Numbers | Fixed | `box-office.ts TICKET_PRICE` |
 | Elsewhere | Equipment you buy | Each item at a retailer's listed price | retail | Each item's own link (src/data/equipment.json) | Sourced | `equipment.json` |
 | Elsewhere | Festival and awards entry fees | Each institution's own fee | their rules | Each rulebook's own citation (rulebook-data.ts) | Sourced | `rulebook-data.ts` |
