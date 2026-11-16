@@ -211,9 +211,11 @@ and the rest) with real grades filling the hiring lists.
 - The owner, November 15, 2026: "do a sweep on everything that costs in the game and make sure the prices match 100%
   realism".
   - `docs/prices/PRICES.md`, written by `tests/prices.test.ts`: every price the player pays, read from the code, beside a
-    published figure and its source. A sourced price that leaves its range fails the test. 28 sourced, 20 fixed, 4 still
-    the game's own (the smaller makeup builds, other materials, the broadcast edit, the booking partner): no published
-    figure was found for them.
+    published figure and its source. A sourced price that leaves its range fails the test. 30 sourced, 22 fixed, 2 still
+    the game's own (other materials, the broadcast edit): no published figure was found for them. November 16: a booking
+    partner takes 15% of the ticket sales and nothing on booking (IDA, `release-plan.ts BOOKER_SHARE_OF_GROSS`); a worn
+    mask's build is $7,000 with the designer's days (Composite Effects, `looks.ts MASK_BUILD_COST`); partial appliances
+    and wounds sit within a low-budget film's prosthetic materials (Production Beast via Artfolio).
   - Fixed: background performers ($231 SAG-AFTRA from $2 million, else 8 hours at California's minimum wage), locations
     ($500 to $5,000 by budget size), a studio day ($1,200), housing a unit away (each person at the GSA per diem,
     $178), a holiday (2x) and a night (1.2x) worked (IATSE), the ticket ($11.31), moving the unit (November 16: under
@@ -235,11 +237,11 @@ and the rest) with real grades filling the hiring lists.
     snapshots were rewritten (only payments and what was settled changed for the prices, and direction, performance and
     reception for the takes).
 
-**Next.** Checkpoint PR for the price sweep (`npm run check` passed: 1,709 tests; journeys 214 passed after the takes
-change; destinations and J02 passed after the move cost).
+**Next.** The price sweep merged as #106. The booker and mask change has its 20 proofs rerun and copied in (all proven,
+open 1) and `npm run check` passed (1,709 tests): its checkpoint PR follows #106.
 Open, explained: moving an episode (once the arms differ, every later scene, hire and offer is numbered differently and
 the draws follow the numbers). Possible next steps: key the game's draws by something both arms share; published figures
-for the four modeled prices.
+for the two modeled prices.
 
 ## The Owner's Command Of November 14, 2026 (Later): Every Feature Proven, Everything Possible
 

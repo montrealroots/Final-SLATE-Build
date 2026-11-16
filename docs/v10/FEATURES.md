@@ -286,7 +286,7 @@ journey that shows it there.
 | production-confirm | scheduled | src/engine/productions.ts | proven | off-production-confirm (100 seeds) | productionsChanged -1.44; jobsCancelled -0.06 |
 | production-release | scheduled | src/engine/productions.ts | proven | off-production-release (180 seeds) | productionResults -6.456; jobsOffered -0.1 |
 | release | scheduled | src/engine/finish.ts | proven | off-release (40 seeds) | released -2; revenue -98227.625; money -97372.025 |
-| release-licence-answer | scheduled | src/engine/release-plan.ts | proven | off-release-licence-answer (40 seeds) | licenceDeals -0.65; revenue -105872; money -96923.55 |
+| release-licence-answer | scheduled | src/engine/release-plan.ts | proven | off-release-licence-answer (120 seeds) | licenceDeals -0.75; revenue -110617; money -101834.317 |
 | revision-done | scheduled | src/engine/projects.ts | proven | revision-notes (40 seeds) | notesAddressed +6; quality.script +6; overall +1.863; reception +2.3 |
 | screening | scheduled | src/engine/awards.ts | proven | attend-screening (30 seeds) | accepted +6.8; attended +5.433; offers +6.8; distributed -0.133 |
 | screening-reminder | scheduled | src/engine/awards.ts | not a feature |  | A notice: it tells the player a screening they were invited to is near. Attending is the screening itself and the RSVP, proven separately. |
