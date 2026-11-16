@@ -261,7 +261,7 @@ and the rest) with real grades filling the hiring lists.
     12 months past 30 days. Elsewhere the overstay is recorded and nothing more.
   - Your Papers: a "Where You Are" card (days used, last day, overstays) and each country's visit limit and refusal.
   - Proof: `off-stay-limit` (20 careers, scheduled runner): with the event on, the overstay voids the ESTA, the second
-    trip asks for a visa ($130 more in fees) and doesn't happen; off, the 30-day second trip does.
+    trip asks for a visa ($130 more in fees then; from the authorizations change, the B-1/B-2's $185) and doesn't happen; off, the 30-day second trip does.
   - The 18 proofs the change made stale (they read papers, state, personal or save) were rerun and copied in, all
     proven: 504 proven, open 1. `npm run check` passed (1,730 tests); `e2e/v9-papers.spec.ts` passed on desktop and
     phone.
@@ -276,6 +276,8 @@ and the rest) with real grades filling the hiring lists.
   Arabia). A visitor visa with no pair for the passport now takes 1221's record for the destination where it has one
   (the United States' B-1/B-2, $185, had been estimated at $135). A free application says so, and posts nothing.
   `tests/authorizations.test.ts`, each rule mutation-checked.
+  The five proofs that read papers code were rerun and are proven (504 proven, open 1); `npm run check` passed
+  (1,735 tests); the papers journeys passed on desktop and phone, the Paris one now checking the ESTA's terms.
 Open, explained: moving an episode (once the arms differ, every later scene, hire and offer is numbered differently and
 the draws follow the numbers). Possible next steps: key the game's draws by something both arms share; published
 figures for the two modeled prices; the four estimated authorizations.

@@ -110,9 +110,9 @@ journey that shows it there.
 | askForBetterTerms | action | src/engine/negotiation-actions.ts | proven | better-terms (40 seeds) | asked +1.55; investorShare -0.127; investorIn -7925; ownIn +7925 |
 | acceptOpportunity | action | src/engine/opportunities.ts | proven | accept-opportunity (30 seeds) | proposalsAccepted +0.667; commissioned +0.667; commissionMoney +54613.333 |
 | declineOpportunity | action | src/engine/opportunities.ts | proven | decline-opportunity (30 seeds) | proposalsAccepted -0.567; commissioned -0.567; commissionMoney -40533.333 |
-| applyForPermit | action | src/engine/papers.ts | proven | work-permit (100 seeds) | permits +0.96; lateDays -3.49; spent +3375.42; quality.direction +3.3 |
+| applyForPermit | action | src/engine/papers.ts | proven | work-permit (100 seeds) | permits +0.96; lateDays -3.42; spent +3968.6; quality.direction +3.385 |
 | applyForRecordedPassport | action | src/engine/papers.ts | proven | recorded-passport (40 seeds) | passports +1; papersPaid +36.64 |
-| applyForVisa | action | src/engine/papers.ts | proven | visitor-visa (30 seeds) | visas +0.933; attended +0.5 |
+| applyForVisa | action | src/engine/papers.ts | proven | visitor-visa (30 seeds) | visas +0.933; attended +0.667; offers +1.067 |
 | moveTo | action | src/engine/papers.ts | proven | move-home (40 seeds) | livesInLondon -1; frenchAccounts +2; bankFees +31.19; overall -0.675; quality.direction -1.5; money -682085.976 |
 | addStage | action | src/engine/parts.ts | proven | add-stage (40 seeds) | stages +2; stageCast +2; performersCast +2; castRates +1578.75 |
 | removeStage | action | src/engine/parts.ts | proven | remove-stage (40 seeds) | stages -2; stageCast -2; performersCast -2; castRates -1590.75 |
@@ -277,7 +277,7 @@ journey that shows it there.
 | offer-response | scheduled | src/engine/hiring.ts | proven | off-offer-response (40 seeds) | hired -16; delivered -2; revenue -123896.5 |
 | opportunity | scheduled | src/engine/opportunities.ts | proven | off-opportunity (40 seeds) | opportunities -0.375; commissioned -0.375; money -3842.125 |
 | opportunity-expire | scheduled | src/engine/opportunities.ts | not a feature |  | Record-keeping: on an unanswered proposal's last day it marks it lapsed, for your list. The deadline is enforced when you answer (opportunities.ts acceptOpportunity checks expiresAt), so with this event switched off a proposal still can't be taken late; nothing else reads the mark (docs/v10/proof/off-opportunity-expire.json). |
-| papers-decision | scheduled | src/engine/papers.ts | proven | work-permit (100 seeds) | permits +0.96; lateDays -3.49; spent +3375.42; quality.direction +3.3 |
+| papers-decision | scheduled | src/engine/papers.ts | proven | work-permit (100 seeds) | permits +0.96; lateDays -3.42; spent +3968.6; quality.direction +3.385 |
 | papers-expiry | scheduled | src/engine/papers.ts | not a feature |  | Marks a visa or permit expired on its date and tells you to apply again. Whether it still lets you in or lets you work is read from its date wherever that matters (papers.ts entryRight, permitIn), so the stage it sets changes only the words. |
 | papers-passport | scheduled | src/engine/papers.ts | proven | recorded-passport (40 seeds) | passports +1; papersPaid +36.64 |
 | permit-decision | scheduled | src/engine/papers.ts | not a feature |  | Decides a work permit applied for before November 14, 2026, which older saves still hold (papers.ts "what older saves hold"); nothing in a new story schedules it, and permits now go through Your Papers (papers-decision). |
@@ -293,7 +293,7 @@ journey that shows it there.
 | season-decision | scheduled | src/engine/continuation.ts | proven | off-season-decision (100 seeds) | renewed -0.5; renewalFunding -19200; ownIn +19200 |
 | shoot-call | scheduled | src/engine/production/shoot.ts | proven | off-shoot-call (40 seeds) | lateDays -1; quality.direction +0.55; overall +0.2 |
 | shoot-wrap | scheduled | src/engine/production/shoot.ts | proven | off-shoot-wrap (40 seeds) | delivered -2; revenue -134715.75; money -157812.385 |
-| stay-limit | scheduled | src/engine/papers.ts | proven | off-stay-limit (20 seeds) | overstays -1; usVisas -1; papersPaid -130; secondTripDays +30 |
+| stay-limit | scheduled | src/engine/papers.ts | proven | off-stay-limit (20 seeds) | overstays -1; usVisas -1; papersPaid -185; secondTripDays +30 |
 | studio-release | scheduled | src/engine/finish.ts | proven | off-studio-release (40 seeds) | released -8.925; gross -1732155 |
 | wake | scheduled | src/engine/state.ts | proven | off-wake (40 seeds) | lateDays +6.8; quality.direction -63.562; overall -58.762 |
 | weather-check | scheduled | src/engine/production/shoot.ts | proven | off-weather-check (60 seeds) | lostDays +1.417; daysToDeliver +0.85; spent +3383.833 |
