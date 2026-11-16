@@ -13,7 +13,8 @@ test.use({ actionTimeout: 20_000 });
 // Seed 11 from November 13, 2026: the reviewed roles changed Portal's cast and so the project's ids, which the
 // commissioner's draw is keyed to, and seed 2 drew "no slot". Seeds 3 to 10 were played: six were refused, one had no
 // platform offer, and one went to a streaming service, which reports by the week and can't show this broadcaster's rule.
-const SEED = Number(process.env.J03_SEED ?? 11);
+// Re-chosen November 16, 2026, when each kind of id got its own counter and the world's draws changed (was 11).
+const SEED = Number(process.env.J03_SEED ?? 20);
 const TITLE = 'Test Chamber';
 const card = (page: Page, heading: string) => page.locator('section.card', { has: page.getByRole('heading', { name: heading, exact: true }) });
 // eslint-disable-next-line @typescript-eslint/no-explicit-any

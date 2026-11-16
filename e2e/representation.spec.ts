@@ -14,7 +14,7 @@ test('an agent: refused on the record, signed with, a submission, commission on 
   test.skip(!['desktop', 'phone', 'iphone-15-pro-max'].includes(info.project.name), 'Runs on desktop, phone and WebKit (iPhone 15 Pro Max).');
   test.setTimeout(480_000);
   const phone = info.project.name !== 'desktop';
-  await seededLife(page, 'gb-london', '2026-01-05', Number(process.env.TRY_SEED ?? 11));
+  await seededLife(page, 'gb-london', '2026-01-05', Number(process.env.TRY_SEED ?? 2)) // re-chosen November 16, 2026, when each kind of id got its own counter and the world's draws changed (was 11);
   const rep = card(page, 'Representation');
 
   // Nobody yet. With nothing written, each agent says what is missing; one is asked anyway, and says no for that reason.

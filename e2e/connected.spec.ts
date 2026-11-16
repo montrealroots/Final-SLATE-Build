@@ -163,26 +163,27 @@ test('a connected career, from creation to a broadcast deal, saved and reloaded 
     await advance(page, 'week');
     await section(page, 'Release');
   }
-  // Territories and exclusivity (SLATE-16-01.02): the exclusive offer says which other offer accepting it ends.
-  const kestrel = offers.locator('li', { hasText: 'Kestrel Media' }).first();
-  await expect(kestrel).toContainText("Accepting it ends Cobalt Screen's broadcast offer: its rights are exclusive there.");
-  await expect(kestrel).toContainText('Exclusive for 365 days from its release');
-  const late = offers.locator('li', { has: page.getByRole('button', { name: 'Accept With A Broadcast Edit' }) }).first();
+  // Territories and exclusivity (SLATE-16-01.02): the exclusive offer says which other offer accepting it ends. The
+  // buyers' names are the world's draws, read from the screen (until November 16, 2026 written in, Kestrel Media and
+  // Cobalt Screen, which the world stopped drawing when each kind of id got its own counter).
+  const late = offers.locator('li', { has: page.getByRole('button', { name: 'Accept With A Broadcast Edit' }) }).filter({ hasText: /Accepting it ends .+'s broadcast offer: its rights are exclusive there\./ }).first();
+  const ended = /Accepting it ends (.+?)'s broadcast offer/.exec(await late.innerText())![1];
+  await expect(late).toContainText('Exclusive for 365 days from its release');
   await expect(late).toContainText('in a late-evening slot');
   await expect(late).toContainText("Ofcom's Broadcasting Code");
   await late.scrollIntoViewIfNeeded();
   await shot(page, p, '06-late-slot');
   await late.getByRole('button', { name: 'Accept With A Broadcast Edit' }).click();
-  // Accepting it ended the competing offer: Cobalt Screen's can no longer be accepted.
-  await expect(offers.locator('li', { hasText: 'Cobalt Screen' }).getByRole('button', { name: /^Accept/ })).toHaveCount(0);
+  // Accepting it ended the competing offer: it can no longer be accepted.
+  await expect(offers.locator('li', { hasText: ended }).getByRole('button', { name: /^Accept/ })).toHaveCount(0);
   const history = page.locator('section.card', { has: page.getByRole('heading', { name: 'Release History' }) });
   await expect(history).toContainText('Broadcast in GB');
   // Earnings (SLATE-16-04.02): what the broadcaster reports is kept apart from what you receive.
   const earnings = page.locator('section.card', { has: page.getByRole('heading', { name: 'Earnings' }) });
   await expect(earnings).toContainText('What each distributor reports is not what you receive.');
   await expect(earnings).toContainText(/Received By You\s*\$[\d,]+/);
-  // Later windows (SLATE-16-05): some months after the broadcast, distributors look at a later window. Kestrel's exclusive
-  // rights still hold what they would offer, and Home says so rather than reading as no interest.
+  // Later windows (SLATE-16-05): some months after the broadcast, distributors look at a later window. The broadcaster's
+  // exclusive rights still hold what they would offer, and Home says so rather than reading as no interest.
   // Read from the log itself: Home shows the newest eight updates, and from November 12, 2026 an offer of work can follow a
   // delivery and push the notice down (jobs.ts).
   const laterNotices = async () => ((await readSavedState(page))?.log ?? []).map((l: { text: string }) => l.text).filter((t: string) => /later window of Hard Water/.test(t));

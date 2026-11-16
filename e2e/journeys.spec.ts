@@ -176,7 +176,8 @@ test('hybrid: a live scene changed after its plate was integrated is picked up, 
 const ALL_AGREE = 2;
 const RAIN_SEED = 2;
 const PUPPET_SEED = 2;
-const ONE_DECLINES = Number(process.env.TRY_SEED ?? 3);
+// ONE_DECLINES re-chosen November 16, 2026, when each kind of id got its own counter and the world's draws changed (was 3).
+const ONE_DECLINES = Number(process.env.TRY_SEED ?? 5);
 
 async function lockKeepers(page: Page, seed: number): Promise<void> {
   await seededLife(page, 'nl-amsterdam', '2026-03-02', seed);

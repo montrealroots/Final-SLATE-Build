@@ -8,7 +8,7 @@ test.use({ actionTimeout: 20_000 });
 
 test('an investor offer: when it lapses, asking for better terms, and their answer', async ({ page }, info) => {
   test.skip(!['desktop', 'phone'].includes(info.project.name), 'Runs at desktop and phone width.');
-  await seededLife(page, 'gb-london', '2026-01-05', Number(process.env.TRY_SEED ?? 11));
+  await seededLife(page, 'gb-london', '2026-01-05', Number(process.env.TRY_SEED ?? 4)) // re-chosen November 16, 2026, when each kind of id got its own counter and the world's draws changed (was 11);
   await newProject(page, { title: 'Night Ferry', format: 'Short Film', runtime: '10', budget: 'Low Budget' });
   await section(page, 'Characters');
   await page.getByLabel('Character Name').fill('Ines');

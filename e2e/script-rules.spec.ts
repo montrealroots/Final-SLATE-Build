@@ -6,7 +6,8 @@ import { expect, test, type Page } from './test';
 import { addScene, advance, castRoles, newProject, pinSeed, quickLife, readSavedState, runToDelivery, section, secureStartingBacking, staffEveryDepartment, writePitch } from './helpers';
 
 // Seed 7 was chosen because its offers include a broadcaster, so the late-slot choice is played; the seed is the only fixture.
-const SEED = Number(process.env.RULES_SEED) || 7;
+// Re-chosen November 16, 2026, when each kind of id got its own counter and the world's draws changed (was 7).
+const SEED = Number(process.env.RULES_SEED) || 2;
 // A control that never appears fails within seconds, naming it, instead of waiting out the whole journey.
 test.use({ actionTimeout: 20_000 });
 

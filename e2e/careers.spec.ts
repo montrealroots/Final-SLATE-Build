@@ -13,7 +13,8 @@ import {
   secureStartingBacking, staffEveryDepartment, writePitch,
 } from './helpers';
 
-const SEEDS = { tv: 11, stopMotion: Number(process.env.TRY_SEED ?? 23), behindTheCamera: 31 };
+// stopMotion re-chosen November 16, 2026, when each kind of id got its own counter and the world's draws changed (was 23).
+const SEEDS = { tv: 11, stopMotion: Number(process.env.TRY_SEED ?? 1), behindTheCamera: 31 };
 test.use({ actionTimeout: 20_000 });
 const shot = (page: Page, project: string, name: string) => page.screenshot({ path: `test-results/careers-${project}-${name}.png`, fullPage: true });
 
