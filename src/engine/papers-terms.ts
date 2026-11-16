@@ -17,7 +17,9 @@ interface Recorded {
   route?: string; name?: string; fee: number; currency: string; feeBasis: string;
   days: number | [number, number]; daysBasis: string; stayDays?: number; stayBasis?: string; sources: Source[];
 }
-const TERMS = termsData as unknown as { permits: Record<string, Recorded>; visas?: Record<string, Recorded> };
+/** An authorization's record, and the passports whose authorization there differs (Australia's free eVisitor for Europeans). */
+interface Authority extends Recorded { passports?: (Partial<Recorded> & { codes: string[] })[] }
+const TERMS = termsData as unknown as { permits: Record<string, Recorded>; visas?: Record<string, Recorded>; authorizations: Record<string, Authority> };
 
 export interface Terms {
   /** The route as the records name it. */
@@ -78,12 +80,38 @@ function visaPool(): [string, Recorded][] {
   return [...own, ...from1221.filter(([c]) => !seen.has(c) && (seen.add(c), true))];
 }
 
-/** What a visitor visa for `country` costs and takes, for a passport 1221 has no pair for: researched, or estimated. */
+/**
+ * What a visitor visa for `country` costs and takes, for a passport 1221 has no pair for: researched, 1221's record for
+ * the destination (from November 16, 2026: until then the United States' B-1/B-2, recorded at $185, was estimated at
+ * $135 for every passport but Mexico's and Brazil's), or estimated.
+ */
 export function visaTerms(country: string): Terms {
-  const r = TERMS.visas?.[country];
+  const r = TERMS.visas?.[country] ?? visaPool().find(([c]) => c === country)?.[1];
   return r ? researched(r, r.name ?? 'Visitor visa') : estimated(country, 'Visitor visa', visaPool());
+}
+
+/**
+ * The authority whose authorization a territory's visitors hold: Puerto Rico and the US Virgin Islands are entered on an
+ * ESTA, the Crown Dependencies on the UK's ETA, Australia's external territories on its ETA, the Palestinian territories
+ * through Israel's ETA-IL, and Western Sahara through Morocco's.
+ */
+const AUTHORITY_OF: Record<string, string> = { PR: 'US', VI: 'US', GG: 'GB', IM: 'GB', JE: 'GB', CC: 'AU', CX: 'AU', NF: 'AU', PS: 'IL', EH: 'MA', MP: 'GU' };
+
+/**
+ * What the electronic travel authorization for `country` costs and takes for the best of `passports` (from November 16,
+ * 2026: until then every authorization was charged the destination's visitor visa, an ESTA $135 and 64 days). Researched
+ * where terms.json records it, or the game's estimate from the authorizations that are.
+ */
+export function authorizationTerms(country: string, passports: string[]): Terms {
+  const r = TERMS.authorizations[AUTHORITY_OF[country] ?? country];
+  if (!r) return estimated(country, 'Electronic travel authorization', Object.entries(TERMS.authorizations));
+  const forPassport = (p: string): Recorded => ({ ...r, ...(r.passports?.find((x) => x.codes.includes(p)) ?? {}) });
+  const best = passports.map(forPassport).sort((a, b) => usd(a.fee, a.currency) - usd(b.fee, b.currency))[0] ?? r;
+  return researched(best, best.name ?? 'Electronic travel authorization');
 }
 
 /** Every researched permit country (for the coverage matrix). */
 export const RESEARCHED_PERMITS = Object.keys(TERMS.permits);
 export const RESEARCHED_VISAS = Object.keys(TERMS.visas ?? {});
+/** Every researched authorization, by the destination that issues it. */
+export const RESEARCHED_AUTHORIZATIONS = Object.keys(TERMS.authorizations);

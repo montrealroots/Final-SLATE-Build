@@ -159,7 +159,7 @@ describe('what the law makes of an overstay', () => {
     processUntil(s, day(plus(last, 1)) + 3_600_000, 'tick', 5_000_000);
     expect(overstays(s)).toMatchObject([{ country: 'US' }]);
     expect(esta.stage).toBe('expired');
-    expect(logged(s, new RegExp(`Your ${esta.route} is void\\.`))).toBe(true);
+    expect(s.log.some((l) => l.text.includes(`Your ${esta.route} is void.`))).toBe(true);
     go(s, 'ca-toronto');
     expect(entryRight(s, 'US')).toMatchObject({ kind: 'needs', entry: 'visa' });
     expect(travelRefusal(s, 'us-new-york')).toMatch(/Visa Waiver Program never admits a visitor who has: to visit, you need a visa\. Apply under Your Papers/);

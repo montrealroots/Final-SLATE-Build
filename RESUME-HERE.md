@@ -261,16 +261,26 @@ and the rest) with real grades filling the hiring lists.
     12 months past 30 days. Elsewhere the overstay is recorded and nothing more.
   - Your Papers: a "Where You Are" card (days used, last day, overstays) and each country's visit limit and refusal.
   - Proof: `off-stay-limit` (20 careers, scheduled runner): with the event on, the overstay voids the ESTA, the second
-    trip asks for a visa ($130 more in fees) and doesn't happen; off, the 30-day second trip does.
+    trip asks for a visa ($130 more in fees then; from the authorizations change, the B-1/B-2's $185) and doesn't happen; off, the 30-day second trip does.
   - The 18 proofs the change made stale (they read papers, state, personal or save) were rerun and copied in, all
     proven: 504 proven, open 1. `npm run check` passed (1,730 tests); `e2e/v9-papers.spec.ts` passed on desktop and
     phone.
+- That checkpoint merged as #110. Then electronic travel authorizations are charged their own terms: until then every
+  destination asking for one charged its visitor visa (an ESTA $135 and 64 days). `terms.json` `authorizations`
+  holds 20, researched November 16, 2026, each with its source (an ESTA $40.62 from October 16, 2026, 72 hours, two
+  years; the UK's ETA £20, a day, two years, covering the Crown Dependencies; Canada's eTA CAD 7; Australia's ETA AUD
+  20, or the free eVisitor for European passports; the NZeTA with its levy, NZD 117; K-ETA, ETA-IL, St Kitts and
+  Nevis, Cabo Verde, Ghana (free), Mozambique, Kenya, Sri Lanka (free for 40 nationalities), Seychelles, Suriname,
+  Hong Kong's and Japan's registrations (free), American Samoa, Guam-CNMI (free) and South Georgia). Territories use
+  their authority's. Four no source confirmed are the game's estimate (Morocco and Western Sahara, Russia, Saudi
+  Arabia). A visitor visa with no pair for the passport now takes 1221's record for the destination where it has one
+  (the United States' B-1/B-2, $185, had been estimated at $135). A free application says so, and posts nothing.
+  `tests/authorizations.test.ts`, each rule mutation-checked.
+  The five proofs that read papers code were rerun and are proven (504 proven, open 1); `npm run check` passed
+  (1,735 tests); the papers journeys passed on desktop and phone, the Paris one now checking the ESTA's terms.
 Open, explained: moving an episode (once the arms differ, every later scene, hire and offer is numbered differently and
-the draws follow the numbers). Found on the way, not yet fixed: an electronic authorization (ESTA, the UK's ETA,
-Canada's eTA and 30 other destinations' `eta` entries) is charged the visitor visa's estimate (for the US $135 and 64
-days, where an ESTA is $40 from September 30, 2025, under H.R. 1, and is decided within 72 hours). Next: research each authorization's fee, time and validity.
-Possible next steps after that: key the game's draws by something both arms share; published figures for the two
-modeled prices.
+the draws follow the numbers). Possible next steps: key the game's draws by something both arms share; published
+figures for the two modeled prices; the four estimated authorizations.
 
 ## The Owner's Command Of November 14, 2026 (Later): Every Feature Proven, Everything Possible
 

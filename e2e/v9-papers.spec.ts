@@ -93,6 +93,9 @@ test('A visit to Paris counted against the Schengen area\'s 90 days, on Your Pap
   await expect(page.getByRole('status', { name: 'Your Stay' })).toHaveText("You're in Canada, where you have the right to stay.");
   await page.getByLabel('Country', { exact: true }).selectOption('FR');
   await expect(page.locator('main')).toContainText('A visit may last 90 days in any 180, by the Schengen Borders Code');
+  // The United States asks this passport for an ESTA, charged its own fee and time (from November 16, 2026).
+  await page.getByLabel('Country', { exact: true }).selectOption('US');
+  await expect(page.locator('main')).toContainText('ESTA (Electronic System for Travel Authorization): 40.62 USD, decided in 3 days');
 
   await nav(page, 'World');
   await page.getByLabel('Country Or Territory').selectOption({ label: 'France' });

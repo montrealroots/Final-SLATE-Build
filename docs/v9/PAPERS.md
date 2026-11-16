@@ -97,8 +97,10 @@ the terms it was applied for under.
   official fee could be confirmed (Japan's varies by nationality; Korea's and Mexico's were on agency sites only), so
   they stay estimates.
 - **A residence application.**
-- **An electronic authorization's own terms.** An ESTA, the UK's ETA, Canada's eTA and the other `eta` entries are
-  charged the destination's visitor visa (researched or estimated), not their own fee and time.
+- **Four electronic authorizations no source confirmed**: Morocco's AEVM (and Western Sahara's), Russia's electronic
+  application and Saudi Arabia's ETA for British visitors. They're the game's estimate, from the researched ones
+  (`tests/authorizations.test.ts` lists them: the list may fall and may not grow).
 
-Done since: travel asks for entry (`entryRefusal`, from November 14, 2026), and a visit's days are counted against its
-limit (November 16, 2026).
+Done since: travel asks for entry (`entryRefusal`, from November 14, 2026); a visit's days are counted against its
+limit (November 16, 2026); and an electronic authorization is charged its own fee and time, not the destination's
+visitor visa (November 16, 2026: `terms.json` `authorizations`, 20 researched, `papers-terms.ts authorizationTerms`).

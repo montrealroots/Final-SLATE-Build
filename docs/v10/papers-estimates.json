@@ -1,7 +1,7 @@
 {
  "counts": {
   "permits": 238,
-  "visas": 214
+  "visas": 211
  },
  "permits": [
   "AF",
@@ -270,7 +270,6 @@
   "BQ",
   "BA",
   "BW",
-  "BR",
   "IO",
   "VG",
   "BN",
@@ -361,7 +360,6 @@
   "MR",
   "MU",
   "YT",
-  "MX",
   "FM",
   "MD",
   "MC",
@@ -446,7 +444,6 @@
   "UG",
   "UA",
   "AE",
-  "US",
   "UY",
   "UZ",
   "VU",
