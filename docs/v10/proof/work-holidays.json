@@ -16,13 +16,13 @@
   "gross": 57290,
   "revenue": 105737.125,
   "distributed": 1.825,
-  "money": 24599133.039,
-  "moneyChange": -400866.961,
+  "money": 24595955.18,
+  "moneyChange": -404044.82,
   "jobsTaken": 1,
   "jobsOffered": 1,
   "jobPay": 4606.5,
   "offeredDayRate": 447.225,
-  "ownIn": 236950,
+  "ownIn": 240575,
   "backerIn": 0,
   "backerDeals": 0,
   "leftInProjects": 0,
@@ -39,7 +39,7 @@
   "offersDeclined": 0.575,
   "countersSeen": 0,
   "countersDeclined": 0.05,
-  "spent": 212515.5,
+  "spent": 215715.5,
   "shootDays": 0,
   "lostDays": 0,
   "daysToDeliver": 233.725,
@@ -62,13 +62,13 @@
   "gross": 53040,
   "revenue": 107492.75,
   "distributed": 1.85,
-  "money": 24598369.388,
-  "moneyChange": -401630.611,
+  "money": 24592841.904,
+  "moneyChange": -407158.096,
   "jobsTaken": 1.025,
   "jobsOffered": 1.025,
   "jobPay": 4135.95,
   "offeredDayRate": 503.8,
-  "ownIn": 236950,
+  "ownIn": 240575,
   "backerIn": 0,
   "backerDeals": 0,
   "leftInProjects": 0,
@@ -85,7 +85,7 @@
   "offersDeclined": 0.6,
   "countersSeen": 0,
   "countersDeclined": 0.05,
-  "spent": 214250.625,
+  "spent": 219800.25,
   "shootDays": 0,
   "lostDays": 0,
   "daysToDeliver": 226.4,
@@ -151,16 +151,16 @@
    "n": 40
   },
   "money": {
-   "mean": -763.65,
-   "lo": -12715.096,
-   "hi": 11187.796,
+   "mean": -3113.276,
+   "lo": -15057.441,
+   "hi": 8830.888,
    "changed": 40,
    "n": 40
   },
   "moneyChange": {
-   "mean": -763.65,
-   "lo": -12715.096,
-   "hi": 11187.796,
+   "mean": -3113.276,
+   "lo": -15057.441,
+   "hi": 8830.888,
    "changed": 40,
    "n": 40
   },
@@ -312,9 +312,9 @@
    "n": 40
   },
   "spent": {
-   "mean": 1735.125,
-   "lo": 407.684,
-   "hi": 3062.566,
+   "mean": 4084.75,
+   "lo": 2723.25,
+   "hi": 5446.25,
    "changed": 40,
    "n": 40
   },
@@ -428,7 +428,7 @@
  ],
  "verdict": "proven",
  "hashes": {
-  "src/engine/production/schedule.ts": "6a266533994741ab",
+  "src/engine/production/schedule.ts": "841556f72e4d85bd",
   "tests/proof/career.ts": "50bea06f19a02c5b"
  }
 }

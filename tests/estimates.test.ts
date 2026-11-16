@@ -1,7 +1,7 @@
 // Scope-driven production estimates (November 8, 2026): the estimate follows the work the script needs, by the same rules
 // the production pays by, and a change of scope says what it does before it is made.
 import { describe, expect, it } from 'vitest';
-import { buildTasks, costBreakdown, generatePlan, groupShootDays, ledgerTotals, makeOffer, roleCandidates, scriptEstimate, CROWD_DAY_RATE, addDaysToKey, dateKey } from './engine-api';
+import { buildTasks, costBreakdown, generatePlan, groupShootDays, ledgerTotals, makeOffer, roleCandidates, scriptEstimate, crowdDayRate, addDaysToKey, dateKey } from './engine-api';
 import { approvalScope, costCuts, estimateAgainstSpending, scopeChange } from '../src/engine/cost-cuts';
 import { setShotPlan } from '../src/engine/takes-actions';
 import { deserialize, serialize } from '../src/engine/save';
@@ -40,7 +40,7 @@ describe('the estimate follows the work', () => {
       expect(bb.shootDays).toBeGreaterThan(ba.shootDays); // a day-or-night and inside-or-out split each needs its own day; the stunt and the crowd are slower
       expect(bb.total).toBeGreaterThan(ba.total);
       expect(bb.toCome.map((x) => x.label)).toEqual(expect.arrayContaining(['Pier, exterior, night', 'Roof, exterior', 'Stunt Coordinator', 'Background performers: Pier, exterior, night']));
-      expect(bb.toCome.find((x) => x.label === 'Background performers: Pier, exterior, night')!.amount % (30 * CROWD_DAY_RATE)).toBe(0);
+      expect(bb.toCome.find((x) => x.label === 'Background performers: Pier, exterior, night')!.amount % (30 * crowdDayRate(b, dateKey(s.now, 'UTC')))).toBe(0);
       expect(ba.risks).toEqual([]); // nothing outside: no day can be lost to rain
       expect(bb.risks[0].item).toMatch(/^\d exterior shoot days can be lost to rain or short daylight/);
     }

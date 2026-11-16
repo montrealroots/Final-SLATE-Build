@@ -3,7 +3,7 @@
 // the production works under; a crew member asks the job's rate for their experience, raised by their recognition, up to
 // five times it. The curve and the raise are the game's (Modeled assumption, docs/people/PAY.md).
 import { role } from './people';
-import { filmFeeFrom, LEAD_DAYS } from './recognition';
+import { performerFee, LEAD_DAYS } from './recognition';
 import { performerMinimum } from './union';
 
 /** The most recognition raises a crew member's rate: five times what their experience alone would ask. */
@@ -66,8 +66,8 @@ export function crewAskFrom(job: string, experience: number, points: number): nu
   return points > 0 && asks ? Math.max(crew, Math.round(asks[0](points) / asks[1] / 10) * 10) : crew;
 }
 
-/** A performer's day rate from their recognition, at least the SAG-AFTRA minimum for this budget on this date. */
-export function performerAskFrom(roleId: string, points: number, budget: number, date: string): number {
-  const fee = Math.round(filmFeeFrom(points) / LEAD_DAYS / 10) * 10;
+/** A performer's day rate from their recognition and fame, at least the SAG-AFTRA minimum for this budget on this date. */
+export function performerAskFrom(roleId: string, points: number, budget: number, date: string, editions = 0): number {
+  const fee = Math.round(performerFee(points, editions) / LEAD_DAYS / 10) * 10;
   return Math.max(fee, performerMinimum(roleId, budget, date)?.amount ?? 0);
 }

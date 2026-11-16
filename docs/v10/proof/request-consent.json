@@ -26,7 +26,7 @@
   "ownIn": 800000,
   "backerIn": 0,
   "backerDeals": 0,
-  "leftInProjects": 743988.5,
+  "leftInProjects": 742428.5,
   "jobsDone": 0,
   "jobsWithdrawn": 0,
   "jobsDeclined": 0,
@@ -40,7 +40,7 @@
   "offersDeclined": 0,
   "countersSeen": 0,
   "countersDeclined": 0.15,
-  "spent": 22012.5,
+  "spent": 23572.5,
   "shootDays": 5.2,
   "lostDays": 1.2,
   "daysToDeliver": 0,
@@ -67,8 +67,8 @@
   "gross": 36600,
   "revenue": 90207,
   "distributed": 0.95,
-  "money": 24461301.508,
-  "moneyChange": -538698.492,
+  "money": 24459711.508,
+  "moneyChange": -540288.492,
   "jobsTaken": 0.9,
   "jobsOffered": 0.9,
   "jobPay": 4055.35,
@@ -76,7 +76,7 @@
   "ownIn": 800000,
   "backerIn": 0,
   "backerDeals": 0,
-  "leftInProjects": 278113,
+  "leftInProjects": 277423,
   "jobsDone": 0.8,
   "jobsWithdrawn": 0,
   "jobsDeclined": 0,
@@ -90,7 +90,7 @@
   "offersDeclined": 0.15,
   "countersSeen": 0,
   "countersDeclined": 0.15,
-  "spent": 48019.8,
+  "spent": 50299.8,
   "shootDays": 7.6,
   "lostDays": 2.1,
   "daysToDeliver": 25.025,
@@ -160,16 +160,16 @@
    "n": 20
   },
   "money": {
-   "mean": 555725.656,
-   "lo": 380741.618,
-   "hi": 730709.694,
+   "mean": 554135.656,
+   "lo": 379637.324,
+   "hi": 728633.988,
    "changed": 16,
    "n": 20
   },
   "moneyChange": {
-   "mean": 555725.656,
-   "lo": 380741.618,
-   "hi": 730709.694,
+   "mean": 554135.656,
+   "lo": 379637.324,
+   "hi": 728633.988,
    "changed": 16,
    "n": 20
   },
@@ -223,9 +223,9 @@
    "n": 20
   },
   "leftInProjects": {
-   "mean": -465875.5,
-   "lo": -613682.412,
-   "hi": -318068.588,
+   "mean": -465005.5,
+   "lo": -612495.133,
+   "hi": -317515.867,
    "changed": 17,
    "n": 20
   },
@@ -321,9 +321,9 @@
    "n": 20
   },
   "spent": {
-   "mean": 26007.3,
-   "lo": 17641.774,
-   "hi": 34372.826,
+   "mean": 26727.3,
+   "lo": 18141.269,
+   "hi": 35313.331,
    "changed": 17,
    "n": 20
   },

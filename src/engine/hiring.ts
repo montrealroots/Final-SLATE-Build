@@ -5,7 +5,7 @@
 import { getPlace } from '../data/places';
 import { craftRoles, gafferNeeded } from './craft';
 import { canApproach, consideredOn, isReal, jobsOf, realPerson } from './guests';
-import { AGREEMENT_NAME, performerMinimum } from './union';
+import { AGREEMENT_NAME, guildMinimum, performerMinimum } from './union';
 import { needsMakeupCrew, physicalCrowd } from './looks';
 import { cancel, commit, ledgerTotals, money, obligation, reserve, settle, FundsError } from './budget';
 import { financeSummary } from './finance';
@@ -204,13 +204,16 @@ export function roleCandidates(state: GameState, p: Project, roleId: string): Pe
 }
 
 /**
- * What a performer must be paid at least on this project today: the SAG-AFTRA minimum of the agreement its budget falls
- * under (union.ts), or null for a job no minimum covers. From November 15, 2026; until then a performer could be paid
- * the game's own rate for the job, $700 a day, under the union's $1,246 on a production above $2 million.
+ * What a day of this job must be paid at least on this project today: a performer's SAG-AFTRA minimum for the agreement
+ * its budget falls under, or a director's (DGA) or a writer's (WGA) where the guild's full terms apply (union.ts), or
+ * null for a job no minimum covers. From November 15, 2026; until then a performer could be paid the game's own rate for
+ * the job, $700 a day, under the union's $1,246 on a production above $2 million, and a director or writer anything.
  */
 export function scaleFor(state: GameState, p: Project, roleId: string): { amount: number; agreement: string } | null {
-  const m = performerMinimum(roleId, Math.max(p.finance?.target ?? 0, p.funding.fund), dateKey(state.now, getPlace(p.axes.basePlaceId).zone));
-  return m && { amount: m.amount, agreement: AGREEMENT_NAME[m.agreement] };
+  const budget = Math.max(p.finance?.target ?? 0, p.funding.fund);
+  const date = dateKey(state.now, getPlace(p.axes.basePlaceId).zone);
+  const m = performerMinimum(roleId, budget, date);
+  return m ? { amount: m.amount, agreement: AGREEMENT_NAME[m.agreement] } : guildMinimum(roleId, budget, date);
 }
 
 /** Anyone asking less than the minimum asks the minimum: an offer can't be lower. */
@@ -270,7 +273,7 @@ export function makeOffer(state: GameState, p: Project, input: OfferInput): Hire
   if (person.roleId !== input.roleId) throw new Error(`${person.name} doesn't work as ${roleLabel(input.roleId).toLowerCase()}.`);
   if (!(input.dayRate > 0) || !Number.isFinite(input.dayRate)) throw new Error('Offer a day rate above zero.');
   const scale = scaleFor(state, p, input.roleId);
-  if (scale && input.dayRate < scale.amount) throw new Error(`Under the ${scale.agreement}, which a production of this budget works under, a performer's day is at least ${money(scale.amount)}.`);
+  if (scale && input.dayRate < scale.amount) throw new Error(`Under the ${scale.agreement}, which a production of this budget works under, a day of this work is at least ${money(scale.amount)}.`);
   if (input.dayRate > person.dayRate * 3) throw new Error('That offer is far above any reasonable rate for this role.');
   if (input.stage && !stageById(p, input.stage)) throw new Error('That stage of the part no longer exists.');
   if (p.hires.some((h) => h.personId === input.personId && h.roleId === input.roleId && h.characterId === input.characterId && h.stage === input.stage && ['offered', 'accepted', 'countered'].includes(h.status))) {

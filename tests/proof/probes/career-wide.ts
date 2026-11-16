@@ -65,7 +65,9 @@ export const PROBES: Probe[] = [
     reads: ['src/engine/first-look.ts#declineFirstLook'], base: { years: 3, studios: STUDIOS, daily: answerFirstLooks('accept') }, variant: { years: 3, studios: STUDIOS, daily: answerFirstLooks('decline') }, measure,
     bites: ['firstLookDeclined', 'firstLookActive'], downstream: ['money'] },
   { id: 'first-look-overhead', features: ['action:first-look.askMoreOverhead', 'scheduled:first-look-counter'], decision: 'Ask for more overhead before signing a first-look deal',
-    reads: ['src/engine/first-look.ts#askMoreOverhead'], base: { years: 3, studios: STUDIOS, daily: answerFirstLooks('accept') }, variant: { years: 3, studios: STUDIOS, daily: answerFirstLooks('ask') }, measure,
+    reads: ['src/engine/first-look.ts#askMoreOverhead'],
+    // At 40 careers a studio agreed in 4 (November 16, 2026), inside the noise; 120 separate it.
+    seeds: 120, base: { years: 3, studios: STUDIOS, daily: answerFirstLooks('accept') }, variant: { years: 3, studios: STUDIOS, daily: answerFirstLooks('ask') }, measure,
     bites: ['overheadAsked'], downstream: ['overheadAgreed', 'overheadPaid', 'money', 'firstLookActive'] },
   { id: 'first-look-end', features: ['action:first-look.endFirstLook'], decision: 'End a first-look deal after three months',
     reads: ['src/engine/first-look.ts#endFirstLook'], base: { years: 3, studios: STUDIOS, daily: answerFirstLooks('accept') }, variant: { years: 3, studios: STUDIOS, daily: answerFirstLooks('accept-then-end') }, measure,

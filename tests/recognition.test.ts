@@ -1,7 +1,7 @@
 // How the industry has judged real people (recognition.ts), and what SAG-AFTRA says a performer is paid at least (union.ts).
 import { readFileSync } from 'node:fs';
 import { describe, expect, it } from 'vitest';
-import { applyRecognition, capabilityFrom, describeStanding, filmFeeFrom, recognisedIn, standingOf, FEE_CEILING } from '../src/engine/recognition';
+import { applyRecognition, capabilityFrom, describeStanding, fameFeeFrom, fameOf, filmFeeFrom, performerFee, recognisedIn, standingOf, FEE_CEILING } from '../src/engine/recognition';
 import { crewAskFrom, scoreFeeFrom, scriptFeeFrom, songFeeFrom, DIRECT_DAYS, SCORE_DAYS, SCRIPT_DAYS, SONG_DAYS } from '../src/engine/recognition-pay';
 import { agreementFor, performerMinimum } from '../src/engine/union';
 import { gradeFrom, gradeScore } from '../src/engine/grades';
@@ -108,5 +108,19 @@ describe('a director\'s and a writer\'s fee', () => {
     expect(crewAskFrom('co-writer', 5, sorkin) * SCRIPT_DAYS).toBeGreaterThan(1_000_000); // "established movie scribes can make $1 million a script"
     expect(scriptFeeFrom(0.1)).toBeGreaterThan(150_000); // never under the WGA's $173,215 by much, once recognised at all
     expect(crewAskFrom('episode-director', 5, 0)).toBe(1460); // with nothing recognised, the job's rate for their experience
+  });
+});
+
+describe('a performer\'s fame', () => {
+  // Until November 15, 2026 a performer was priced by awards alone: Dwayne Johnson, with none, asked a working actor's rate.
+  it('prices a star with no awards by how widely they are known, and whichever of the two asks more', () => {
+    expect(fameOf(18918)).toBeGreaterThan(100); // Dwayne Johnson: no award on record, written about in 113 editions
+    expect(standingOf(18918, 'actor', 2026)).toBeNull();
+    const johnson = performerFee(0, fameOf(18918));
+    expect(johnson).toBeGreaterThan(15_000_000); // $23.5 million reported for Red Notice (Variety)
+    expect(johnson).toBeLessThan(25_000_000);
+    expect(performerFee(0, 0)).toBe(250_000); // nothing on record: the floor recognition starts from
+    expect(performerFee(76, 0)).toBe(performerFee(76, 10)); // little fame adds nothing to a well-recognised performer
+    expect(fameFeeFrom(500)).toBe(30_000_000); // never over the ceiling
   });
 });

@@ -34,8 +34,11 @@ import { stream } from './rng';
 export const WEEKS_PER_REPORT = 4;
 /** The share of ticket sales cinemas pass to the distributor as film rental. A modeled assumption. */
 export const RENTAL_SHARE = 0.5;
-/** A ticket's price, in the game's dollars, everywhere. A modeled assumption: one price, so admissions are comparable. */
-export const TICKET_PRICE = 10;
+/**
+ * A ticket's price, in the game's dollars, everywhere: one price, so admissions are comparable. The US average for 2024,
+ * $11.31 (The Numbers); $10 until November 15, 2026. It turns a gross into admissions and moves no money.
+ */
+export const TICKET_PRICE = 11.31;
 /**
  * How a month's takings fall across its four weeks. The monthly curve loses two fifths a month (distribution.ts), so a
  * week loses the fourth root of that; these are those four weights, in thousandths, adding to 1000.

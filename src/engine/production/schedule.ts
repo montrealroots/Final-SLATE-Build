@@ -12,7 +12,7 @@ import { addLog, cancelEvents, distanceKm, newId, schedule } from '../state';
 import { addDaysToKey, dateKey, formatDateKey, isDateKey, localParts, localToInstant, parseYmd, weekdayOfKey } from '../time';
 import { materialCost, playerDoes, teamFor } from './workday';
 import { buildTasks } from './tasks';
-import { BASE_MINUTES_PER_SHOOT_DAY, CROWD_DAY_RATE, SIXTH_DAY_BUDGET_FLOOR, dayFees } from './rates';
+import { BASE_MINUTES_PER_SHOOT_DAY, SIXTH_DAY_BUDGET_FLOOR, crowdDayRate, dayFees } from './rates';
 import { planTime } from '../takes';
 import { songUses } from '../songs';
 import { childShare, ensureLicence, minorFor, type Minor } from '../minors';
@@ -365,7 +365,7 @@ export function generatePlan(state: GameState, p: Project, startDate: string): P
   }
   // Budget the schedule: shoot-day costs and materials are reserved now, so they can't be spent twice.
   const shootCost = planned.length * (dayFees(p).location + dayFees(p).equipment) +
-    planned.reduce((a, d) => { const its = approvedScenes(p).filter((sc) => d.sceneIds.includes(sc.id)); return a + its.reduce((b, sc) => b + physicalCrowd(sc) * CROWD_DAY_RATE, 0) + makeupDayCost(its, approvedCharacters(p)) + rigDayCost(p, its); }, 0) +
+    planned.reduce((a, d) => { const its = approvedScenes(p).filter((sc) => d.sceneIds.includes(sc.id)); return a + its.reduce((b, sc) => b + physicalCrowd(sc) * crowdDayRate(p, d.date), 0) + makeupDayCost(its, approvedCharacters(p)) + rigDayCost(p, its); }, 0) +
     // Days filmed away from the base: the unit's move, once for each place, and its housing each day (destinations.ts).
     awayCosts(p, planned).reduce((a, x) => a + x.move + x.housing, 0);
   const matCost = p.tasks.filter((x) => x.status !== 'done').reduce((a, x) => a + materialCost(x), 0);

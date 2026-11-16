@@ -103,7 +103,8 @@ export const PROBES: Probe[] = [
   // brings to show): a win counts in the opportunities its film draws and the record a studio reads. Two hundred careers
   // left those too small to tell apart from none (November 15, 2026: backer bonus -0.003, its interval reaching 0); a
   // win is first an honour in the player's standing (reputation.ts HONOUR_SCORE, 95 against a selection's 70).
-  { ...off('edition-results', 'results being decided', ['finalised', 'won'], ['standing.producing', 'standing.directing', 'backerBonus', 'opportunities', 'offers'], AWARDS_STRONG), seeds: 200 },
+  // At 200 careers, standing as a director was just outside the noise; with the realistic prices (November 15, 2026) inside it.
+  { ...off('edition-results', 'results being decided', ['finalised', 'won'], ['standing.producing', 'standing.directing', 'backerBonus', 'opportunities', 'offers'], AWARDS_STRONG), seeds: 400 },
   off('editions-roll', 'next year\'s editions being made', ['editionsOpen'], ['entries', 'selected'], AWARDS),
   off('screening', 'awards screenings', ['logLines'], ['selected'], AWARDS),
   off('work-day', 'the production\'s working days', ['delivered'], ['revenue', 'money']),
@@ -121,7 +122,8 @@ export const PROBES: Probe[] = [
   // One in twenty productions is cancelled before it shoots and one in ten put back (productions.ts): rare, so 100 careers of three years.
   { ...off('production-confirm', 'industry productions being confirmed, cancelled or put back', ['productionsChanged'], ['jobsDone', 'jobPay', 'jobsCancelled'], { years: 3 }), seeds: 100 },
   // A production coming out is a result on your record (productions.ts); standing and offers follow from it.
-  { ...off('production-release', 'industry productions coming out', ['productionResults'], ['industryStanding', 'jobsOffered', 'jobPay'], { years: 3 }), seeds: 60 },
+  // At 60 careers the jobs offered were just outside the noise; with the realistic prices (November 15, 2026) inside it.
+  { ...off('production-release', 'industry productions coming out', ['productionResults'], ['industryStanding', 'jobsOffered', 'jobPay'], { years: 3 }), seeds: 180 },
   // With studios in the world and the player accepting what they offer (until November 14, 2026 this career had no
   // studios, so nobody could offer and switching the check off changed nothing).
   off('first-look-check', 'companies considering a first-look deal', ['firstLookOffers'], ['overheadPaid', 'money'], { years: 3, studios: STUDIOS, daily: answerFirstLooks('accept') }),

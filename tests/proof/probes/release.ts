@@ -44,8 +44,13 @@ export const PROBES: Probe[] = [
     decision: 'Send a distributor a licence proposal',
     reads: ['src/engine/release-plan.ts#proposeLicence', 'src/engine/release-plan.ts#answerProposal'],
     variant: { afterDelivery: propose('distributor-sales') },
+    // Revenue's spread grew with the realistic prices (November 15, 2026): at 40 careers it was inside the noise.
+    seeds: 120,
     bites: ['licenceDeals'],
-    downstream: ['revenue', 'money'],
+    // A licence puts the film out sooner and in more places: 13 days sooner and $67,000 more at the box office at 120
+    // careers (November 16, 2026). What it earns the player barely moves, as the fee stands in for their own release's
+    // takings; until the realistic prices it showed in money, $28,000 less at 40 careers.
+    downstream: ['releaseDelay', 'gross', 'revenue', 'money'],
   },
   {
     id: 'licence-ask',

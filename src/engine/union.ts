@@ -50,3 +50,28 @@ export function performerMinimum(roleId: string, budget: number, date: string): 
   if (roleId === 'background' && agreement === 'theatrical') return { amount: period.background, agreement };
   return null;
 }
+
+/**
+ * A director's and a writer's minimums, where a production is large enough that the guild's full terms apply (November
+ * 15, 2026; until then neither had any). Below these lines the guilds' low-budget terms set pay by level or leave it to
+ * be negotiated, and the game sets none.
+ * - Directors: the DGA Basic Agreement's freelance minimum for a high-budget theatrical, a week, from the 2026-30 wage
+ *   tables (AMPTP, printed June 25, 2026), read as a day over a five-day week, on a production over $11 million (above
+ *   the DGA's low-budget sideletter, whose top level, 4c, ends at $11 million).
+ * - Writers: the WGA's minimum for an original screenplay with treatment on a film of $5 million or more, $173,215 from
+ *   May 2, 2026 (2026 Schedule of Minimums), read as a day over the 25 days a feature's draft takes (writing-jobs.ts).
+ */
+export const DGA_HIGH_BUDGET_WEEK: [string, number][] = [['2025-07-01', 24_599], ['2026-07-01', 25_214], ['2027-07-01', 25_970], ['2028-07-01', 26_749], ['2029-07-01', 27_551]];
+export const DGA_FULL_TERMS_ABOVE = 11_000_000;
+export const WGA_SCREENPLAY: [string, number][] = [['2026-05-02', 173_215]];
+export const WGA_HIGH_BUDGET_FROM = 5_000_000;
+export const WGA_DRAFT_DAYS = 25;
+const inForce = (table: [string, number][], date: string): number => ([...table].reverse().find(([from]) => from <= date) ?? table[0])[1];
+const WRITING = new Set(['episode-writer', 'co-writer']);
+
+/** The least a day of a director's or a writer's work may be paid on this production on this date, and under what; null where none applies. */
+export function guildMinimum(roleId: string, budget: number, date: string): { amount: number; agreement: string } | null {
+  if (roleId === 'episode-director' && budget > DGA_FULL_TERMS_ABOVE) return { amount: Math.round(inForce(DGA_HIGH_BUDGET_WEEK, date) / 5), agreement: 'DGA Basic Agreement' };
+  if (WRITING.has(roleId) && budget >= WGA_HIGH_BUDGET_FROM) return { amount: Math.round(inForce(WGA_SCREENPLAY, date) / WGA_DRAFT_DAYS), agreement: 'WGA Minimum Basic Agreement' };
+  return null;
+}

@@ -208,9 +208,38 @@ and the rest) with real grades filling the hiring lists.
     itself changes (`explained.json`).
   - The real-composer journey hires Lorne Balfe (a working composer's rate) rather than Hans Zimmer ($2.2 million).
 
-**Next.** Open, explained (`docs/v10/explained.json`): moving an episode (the footage is drawn by shoot day, so a
-reordered season is a different season). Possible next steps: hold each scene's footage the same whichever order it is
-shot in; union minimums for directors (DGA) and writers (WGA) as performers have SAG-AFTRA's.
+- The owner, November 15, 2026: "do a sweep on everything that costs in the game and make sure the prices match 100%
+  realism".
+  - `docs/prices/PRICES.md`, written by `tests/prices.test.ts`: every price the player pays, read from the code, beside a
+    published figure and its source. A sourced price that leaves its range fails the test. 28 sourced, 20 fixed, 4 still
+    the game's own (the smaller makeup builds, other materials, the broadcast edit, the booking partner): no published
+    figure was found for them.
+  - Fixed: background performers ($231 SAG-AFTRA from $2 million, else 8 hours at California's minimum wage), locations
+    ($500 to $5,000 by budget size), a studio day ($1,200), housing a unit away (each person at the GSA per diem,
+    $178), a holiday (2x) and a night (1.2x) worked (IATSE), the ticket ($11.31), moving the unit (November 16: under
+    500 km its cars at the IRS 76 cents a mile, four to a car, and the truck at 65 cents, there and back; further, a
+    fare each, $436 at home (BTS, Q2 2026) or $1,138 abroad; `destinations.ts moveCost`).
+  - Stars priced by fame as well as awards (`recognition.ts performerFee`; `tools/recognition/fame.mjs` reads
+    Wikipedia editions for 65,141 people with a TMDB ID into `recognition.json`'s `fame`). The reported-fee table in
+    `docs/people/PAY.md` shows the game within a third for most; Lady Gaga (her music's fame) and Phoenix's 2018 Joker
+    (today's fame) read high, Craig's Netflix deal low.
+  - DGA and WGA minimums (`union.ts guildMinimum`): a director over $11 million at the high-budget weekly minimum, a
+    writer on a film of $5 million or more at $173,215 over a draft's 25 days.
+  - A scene's takes are drawn by the scene and its attempt, not the date (`takes.ts recordTakes`). The heavy-makeup
+    day test moved to seed `looks-day-0`: its old seed's plain workshop day now needed two days too.
+  - Every proof (385) was rerun on the new prices and is in `docs/v10/proof`; 454 features proven, 1 open (moving an
+    episode, explained). Ten probes needed more careers for the wider spread of realistic money (scene-night,
+    rehearsal-days, licence-proposal, writing-revision, lead-puppet, first-look-overhead, edition-results,
+    production-release and two before), and two now name the consequence the realistic prices left measurable: a
+    licence's release (13 days sooner, $67,000 more gross) and rehearsal's later delivery (7.5 days). The production
+    snapshots were rewritten (only payments and what was settled changed for the prices, and direction, performance and
+    reception for the takes).
+
+**Next.** Checkpoint PR for the price sweep (`npm run check` passed: 1,709 tests; journeys 214 passed after the takes
+change; destinations and J02 passed after the move cost).
+Open, explained: moving an episode (once the arms differ, every later scene, hire and offer is numbered differently and
+the draws follow the numbers). Possible next steps: key the game's draws by something both arms share; published figures
+for the four modeled prices.
 
 ## The Owner's Command Of November 14, 2026 (Later): Every Feature Proven, Everything Possible
 

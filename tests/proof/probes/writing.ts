@@ -60,8 +60,8 @@ export const PROBES: Probe[] = [
     decision: 'Ask the script editor for one revision of the polish before accepting it',
     reads: ['src/engine/writing-jobs.ts#requestRevision'],
     // A revision narrows how far the pass stands from the writer's level and costs their days; at 40 seeds the cost was
-    // just inside the noise (until November 14, 2026).
-    seeds: 80,
+    // just inside the noise (until November 14, 2026), and at 80 with the realistic prices (November 15, 2026).
+    seeds: 240,
     base: { daily: writingDay('accept') },
     variant: { daily: writingDay('revise') },
     measure,

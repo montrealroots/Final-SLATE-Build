@@ -5,7 +5,7 @@
 // SLATE_WRITE_AUDIT=1 to rewrite it; the test fails when the files differ from what the code now says.
 import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
 import { describe, expect, it } from 'vitest';
-import { applyRecognition, capabilityFrom, describeStanding, experienceFrom, filmFeeFrom, recognisedIn, standingOf, BODY_WEIGHT, BODY_NAME, LEAD_DAYS, NOMINATION_SHARE, type Body } from '../src/engine/recognition';
+import { applyRecognition, capabilityFrom, describeStanding, experienceFrom, fameOf, performerFee, recognisedIn, standingOf, BODY_WEIGHT, BODY_NAME, LEAD_DAYS, NOMINATION_SHARE, type Body } from '../src/engine/recognition';
 import { crewAskFrom, directFeeFrom, scoreFeeFrom, scriptFeeFrom, songFeeFrom, DIRECT_DAYS, SCORE_DAYS, SCRIPT_DAYS, SONG_DAYS } from '../src/engine/recognition-pay';
 import { gradeFrom, gradeScore } from '../src/engine/grades';
 import { SAG_PERIODS, AGREEMENT_CEILING, AGREEMENT_NAME } from '../src/engine/union';
@@ -21,7 +21,7 @@ function rows(job: string): string[] {
   return recognisedIn(job, YEAR).map(({ tmdbId, name, standing }) => {
     const exp = experienceFrom(standing);
     const cap = capabilityFrom(exp, standing.points);
-    const day = PERFORMING.includes(job) ? Math.round(filmFeeFrom(standing.points) / LEAD_DAYS) : crewAskFrom(job, exp, standing.points);
+    const day = PERFORMING.includes(job) ? Math.round(performerFee(standing.points, fameOf(tmdbId)) / LEAD_DAYS) : crewAskFrom(job, exp, standing.points);
     return csv([tmdbId, name, job, describeStanding(standing), standing.points, exp, cap, gradeFrom(gradeScore(exp, cap)), day]);
   });
 }
@@ -38,6 +38,9 @@ const REPORTED: { tmdb: number; name: string; film: string; year: number; fee: n
   { tmdb: 30614, name: 'Ryan Gosling', film: 'Barbie', year: 2022, fee: 12_500_000 },
   { tmdb: 237405, name: 'Lady Gaga', film: 'Joker: Folie à Deux', year: 2022, fee: 10_000_000 },
   { tmdb: 8784, name: 'Daniel Craig', film: 'Knives Out sequels (each of two)', year: 2021, fee: 50_000_000 },
+  { tmdb: 18918, name: 'Dwayne Johnson', film: 'Red Notice', year: 2021, fee: 23_500_000 },
+  { tmdb: 90633, name: 'Gal Gadot', film: 'Red Notice', year: 2021, fee: 20_000_000 },
+  { tmdb: 10859, name: 'Ryan Reynolds', film: 'Red Notice', year: 2021, fee: 20_000_000 },
 ];
 
 function payPage(): string {
@@ -60,14 +63,16 @@ function payPage(): string {
     '',
     `A recognised composer's fee for a feature's score is the game's curve on the same weight: $40,000 × (1 + weight ÷ 4)^1.4, at most $3 million, asked as a day rate over the ${SCORE_DAYS} days a fully scored feature takes, and never under what their experience asks. Reported composer fees run from $20,000 for a lower-budget film to over $1 million for a studio release with a well-known composer (Jeffrey and Todd Brabec, "Film Composing Fees", taxi.com). At a weight of 65 (Hans Zimmer's) it asks ${money(scoreFeeFrom(65))}. A recognised songwriter's fee for a film's song is $12,000 × (1 + weight ÷ 4)^1.3, at most $400,000, over the ${SONG_DAYS} days a song takes: film songwriting fees run from nothing to over $100,000 for established writers, occasionally more (Donald Passman, All You Need to Know About the Music Business, 11th edition). At a weight of 29 (Elton John's) it asks ${money(songFeeFrom(29))}. A recognised director's fee for a feature is $500,000 × (1 + weight ÷ 4)^1.4, at most $20 million, over the ${DIRECT_DAYS} days of a feature's shoot: studio directors average $750,000 to $1.5 million, and Ridley Scott was paid $10 to $12 million for Alien: Covenant (The Hollywood Reporter, 2016 and 2017); at a weight of 19 (Christopher Nolan's) it asks ${money(directFeeFrom(19))}. A recognised writer's fee for a feature's script is $150,000 × (1 + weight ÷ 4)^1.2, at most $5 million, over the ${SCRIPT_DAYS} days a draft takes: the WGA's minimum for an original screenplay on a film of $5 million or more is $173,215 (2026), and established writers are paid about $1 million a script (The Hollywood Reporter); at a weight of 33 (Aaron Sorkin's) it asks ${money(scriptFeeFrom(33))}. Recognition explains what prestige is paid, not what drawing an audience is. Modeled assumption.`,
     '',
-    'Beside fees that were reported, at the weight of recognition recorded before the year of each deal. Recognition explains what prestige is paid. It does not explain what drawing an audience is paid, which the game has no record of (it reads no popularity figure), so a star paid for that is under-priced here.',
+    `A performer's fee is also read from how widely they are known: $4,700 × (Wikipedia editions with an article on them)^1.75, at most $30 million, and the fee asked is whichever of the two is more. Recognition prices prestige; fame prices an audience's draw. The fame is today's (Wikidata sitelinks, tools/recognition/fame.mjs): a fee before a star was this well known is over-read, and a singer's or a public figure's fame counts as an actor's. Modeled assumption.`,
     '',
-    "| Performer | Film | Year | Reported | Weight Then | The Game's Fee | Game ÷ Reported |",
-    '|---|---|---|---|---|---|---|',
+    'Beside fees that were reported, at the weight of recognition recorded before the year of each deal and the fame recorded now. Variety reported the Red Notice fees.',
+    '',
+    "| Performer | Film | Year | Reported | Weight Then | Editions | The Game's Fee | Game ÷ Reported |",
+    '|---|---|---|---|---|---|---|---|',
     ...REPORTED.map((r) => {
       const w = standingOf(r.tmdb, 'actor', r.year)?.points ?? 0;
-      const fee = filmFeeFrom(w);
-      return `| ${r.name} | ${r.film} | ${r.year} | ${money(r.fee)} | ${w} | ${money(fee)} | ${(fee / r.fee).toFixed(2)} |`;
+      const fee = performerFee(w, fameOf(r.tmdb));
+      return `| ${r.name} | ${r.film} | ${r.year} | ${money(r.fee)} | ${w} | ${fameOf(r.tmdb)} | ${money(fee)} | ${(fee / r.fee).toFixed(2)} |`;
     }),
     '',
     `Every recognised performer and crew member, with their grade and what they ask: \`docs/people/PERFORMERS.csv\` and \`docs/people/CREW.csv\`. Recognition from ${data.source.provider} (${data.source.licence}), retrieved ${data.source.retrieved}.`,

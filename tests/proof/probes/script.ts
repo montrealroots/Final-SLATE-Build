@@ -71,7 +71,9 @@ export const PROBES: Probe[] = [
   { id: 'scene-exterior', features: [field('ScriptViews.tsx', 'Interior Or Exterior')], decision: 'Write the interiors as exteriors', reads: ['src/engine/production/shoot.ts#runShootDay'],
     variant: { project: short({ intExt: 'EXT' }) }, bites: ['lostDays', 'shootDays'], downstream: ['daysToDeliver', ...COST] },
   { id: 'scene-night', features: [field('ScriptViews.tsx', 'Time Of Day')], decision: 'Set every scene at night', reads: ['src/engine/production/rates.ts#dayFees'],
-    variant: { project: short({ time: 'NIGHT' }) }, bites: ['spent'], downstream: ['money', 'overall'] },
+    // The night premium is a fifth since November 15, 2026 (IATSE), and the day's other costs vary more with the realistic
+    // prices: at 40 careers what it spent was inside the noise.
+    seeds: 120, variant: { project: short({ time: 'NIGHT' }) }, bites: ['spent'], downstream: ['money', 'overall'] },
   { id: 'scene-minutes', features: [field('ScriptViews.tsx', 'Estimated Minutes')], decision: 'Make each scene twice as long', reads: ['src/engine/production/schedule.ts#generatePlan'],
     // A short's scenes fit a day's capacity either way (schedule.ts groupShootDays), so the length shows in what the shoot and post cost and take.
     // A longer film is offered more: a distributor's guarantee follows its running time up to 90 minutes (finish.ts).
@@ -109,11 +111,14 @@ export const PROBES: Probe[] = [
   { id: 'logline-missing', features: [field('ScriptViews.tsx', 'Logline')], decision: 'Leave the logline unwritten (backers read the pitch)', reads: ['src/engine/script-effects.ts#documentsNeeded'],
     base: { ownShare: 0 }, variant: { ownShare: 0, project: short({ story: { logline: '' } }) }, bites: ['backerDeals'], downstream: ['ownIn', 'money'] },
   { id: 'rehearsal-days', features: [field('PlanViews.tsx', 'Rehearsal Days')], decision: 'Rehearse for eight days rather than none', reads: ['src/engine/production/shoot.ts#runShootDay'],
-    base: { decide: (_s, p) => { p.schedule.rehearsalDays = 0; } }, variant: { decide: (_s, p) => { p.schedule.rehearsalDays = 8; } },
+    // Reception's spread grew with the realistic prices (November 15, 2026): at 40 careers it was inside the noise.
+    seeds: 120, base: { decide: (_s, p) => { p.schedule.rehearsalDays = 0; } }, variant: { decide: (_s, p) => { p.schedule.rehearsalDays = 8; } },
     // Rehearsal reaches the performances (finish.ts assessQuality), not the direction's score: the film's overall is where
     // it shows (until November 14, 2026 this probe looked for it in the direction's score).
     measure: (_s, projects) => ({ performance: (() => { const v = projects.flatMap((p) => Object.entries(p.quality ?? {}).filter(([k]) => k.startsWith('performance:')).map(([, x]) => Number(x))); return v.length ? v.reduce((a, b) => a + b, 0) / v.length : 0; })() }),
-    bites: ['performance', 'overall'], downstream: ['reception', 'spent', 'revenue'] },
+    // Eight days' rehearsal before the shoot delivers the film later (7.5 days at 120 careers, November 16, 2026), as
+    // it must; reception's rise (0.9) stayed inside the noise of the realistic prices.
+    bites: ['performance', 'overall'], downstream: ['daysToDeliver', 'reception', 'spent', 'revenue'] },
   // On a budget above the low-budget line, where a sixth day is paid time and a half (rates.ts SIXTH_DAY_PREMIUM): both
   // careers plan $8m, and what isn't spent comes home at the year's end.
   { id: 'six-day-weeks', seeds: 60, features: [field('PlanViews.tsx', 'Six-Day Weeks')], decision: 'Shoot six days a week, on an $8m budget', reads: ['src/engine/production/schedule.ts#isWorkingDay', 'src/engine/production/schedule.ts#isSixthDay', 'src/engine/production/rates.ts#dayPremium'],

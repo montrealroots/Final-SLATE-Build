@@ -23,7 +23,7 @@
 // A real person has one ID wherever they were credited, TMDB's own, so they have one diary: bookings are kept per
 // person across every project (state.people), and a second project finds them busy.
 import { ROLES, role, type Person } from './people';
-import { capabilityFrom, experienceFrom, filmFeeFrom, jobsRecognised, recognitionData, standingOf, LEAD_DAYS } from './recognition';
+import { capabilityFrom, experienceFrom, fameOf, jobsRecognised, performerFee, recognitionData, standingOf, LEAD_DAYS } from './recognition';
 import { crewAskFrom } from './recognition-pay';
 import { intBetween, stream } from './rng';
 import { DAY, addDaysToKey, dateKey } from './time';
@@ -162,9 +162,11 @@ export function considerPerson(state: GameState, record: RecordedPerson, gathere
   const year = Number(dateKey(state.now, 'UTC').slice(0, 4));
   // Each job their credits or their recognition shows. Experience is their credits' count, and at least what a career
   // recognised over the years shows (recognition.ts experienceFrom); capability and rate are read from their recognition.
+  const editions = fameOf(record.id);
   const read = (job: string, exp: number, points: number) => ({
     exp, cap: capabilityFrom(exp, points),
-    rate: PERFORMING.has(job) ? Math.max(crewAskFrom(job, exp, 0), points ? Math.round(filmFeeFrom(points) / LEAD_DAYS / 10) * 10 : 0) : crewAskFrom(job, exp, points),
+    // A performer asks a film's fee from their recognition or their fame, whichever is more (recognition.ts performerFee).
+    rate: PERFORMING.has(job) ? Math.max(crewAskFrom(job, exp, 0), points || editions ? Math.round(performerFee(points, editions) / LEAD_DAYS / 10) * 10 : 0) : crewAskFrom(job, exp, points),
   });
   for (const job of new Set([...Object.keys(ev), ...jobsRecognised(record.id, year)])) {
     if (!ROLES.some((r) => r.id === job)) continue;
