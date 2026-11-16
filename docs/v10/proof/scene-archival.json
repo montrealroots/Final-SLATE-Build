@@ -13,11 +13,11 @@
   "released": 1.1,
   "reception": 43.325,
   "overall": 44.025,
-  "gross": 15045,
-  "revenue": 41747.875,
+  "gross": 14600,
+  "revenue": 41603.25,
   "distributed": 0.675,
-  "money": 24354513.595,
-  "moneyChange": -645486.405,
+  "money": 24352733.97,
+  "moneyChange": -647266.03,
   "jobsTaken": 0.675,
   "jobsOffered": 0.675,
   "jobPay": 2438.525,
@@ -25,7 +25,7 @@
   "ownIn": 800000,
   "backerIn": 0,
   "backerDeals": 0,
-  "leftInProjects": 334025,
+  "leftInProjects": 333260,
   "jobsDone": 0.65,
   "jobsWithdrawn": 0,
   "jobsDeclined": 0,
@@ -39,7 +39,7 @@
   "offersDeclined": 0.1,
   "countersSeen": 0,
   "countersDeclined": 0.05,
-  "spent": 45996.75,
+  "spent": 48396.75,
   "shootDays": 8,
   "lostDays": 2.75,
   "daysToDeliver": 26.263,
@@ -62,8 +62,8 @@
   "gross": 10810,
   "revenue": 42797.625,
   "distributed": 0.65,
-  "money": 24329191.345,
-  "moneyChange": -670808.655,
+  "money": 24328141.345,
+  "moneyChange": -671858.655,
   "jobsTaken": 0.425,
   "jobsOffered": 0.425,
   "jobPay": 2254.85,
@@ -71,7 +71,7 @@
   "ownIn": 800000,
   "backerIn": 0,
   "backerDeals": 0,
-  "leftInProjects": 361684.5,
+  "leftInProjects": 361219.5,
   "jobsDone": 0.4,
   "jobsWithdrawn": 0,
   "jobsDeclined": 0,
@@ -85,7 +85,7 @@
   "offersDeclined": 0.05,
   "countersSeen": 0,
   "countersDeclined": 0.05,
-  "spent": 42485,
+  "spent": 44000,
   "shootDays": 5.05,
   "lostDays": 1.8,
   "daysToDeliver": 23.925,
@@ -130,16 +130,16 @@
    "n": 40
   },
   "gross": {
-   "mean": -4235,
-   "lo": -20764.894,
-   "hi": 12294.894,
+   "mean": -3790,
+   "lo": -20325.116,
+   "hi": 12745.116,
    "changed": 6,
    "n": 40
   },
   "revenue": {
-   "mean": 1049.75,
-   "lo": -13811.876,
-   "hi": 15911.376,
+   "mean": 1194.375,
+   "lo": -13665.332,
+   "hi": 16054.082,
    "changed": 27,
    "n": 40
   },
@@ -151,16 +151,16 @@
    "n": 40
   },
   "money": {
-   "mean": -25322.25,
-   "lo": -90143.923,
-   "hi": 39499.423,
+   "mean": -24592.625,
+   "lo": -89148.649,
+   "hi": 39963.399,
    "changed": 33,
    "n": 40
   },
   "moneyChange": {
-   "mean": -25322.25,
-   "lo": -90143.923,
-   "hi": 39499.423,
+   "mean": -24592.625,
+   "lo": -89148.649,
+   "hi": 39963.399,
    "changed": 33,
    "n": 40
   },
@@ -214,9 +214,9 @@
    "n": 40
   },
   "leftInProjects": {
-   "mean": 27659.5,
-   "lo": -29186.12,
-   "hi": 84505.12,
+   "mean": 27959.5,
+   "lo": -28778.151,
+   "hi": 84697.151,
    "changed": 34,
    "n": 40
   },
@@ -312,9 +312,9 @@
    "n": 40
   },
   "spent": {
-   "mean": -3511.75,
-   "lo": -7252.821,
-   "hi": 229.321,
+   "mean": -4396.75,
+   "lo": -8318.082,
+   "hi": -475.418,
    "changed": 40,
    "n": 40
   },
@@ -423,7 +423,7 @@
   },
   {
    "metric": "spent",
-   "ok": false
+   "ok": true
   }
  ],
  "verdict": "proven",

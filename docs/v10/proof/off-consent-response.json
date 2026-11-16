@@ -16,8 +16,8 @@
   "gross": 55970,
   "revenue": 53878.5,
   "distributed": 0.8,
-  "money": 24459990.89,
-  "moneyChange": -540009.111,
+  "money": 24457995.89,
+  "moneyChange": -542004.111,
   "jobsTaken": 0.85,
   "jobsOffered": 0.85,
   "jobPay": 4016.8,
@@ -25,7 +25,7 @@
   "ownIn": 800000,
   "backerIn": 0,
   "backerDeals": 0,
-  "leftInProjects": 241637,
+  "leftInProjects": 241112,
   "jobsDone": 0.8,
   "jobsWithdrawn": 0,
   "jobsDeclined": 0,
@@ -39,7 +39,7 @@
   "offersDeclined": 0.2,
   "countersSeen": 0,
   "countersDeclined": 0.1,
-  "spent": 50888,
+  "spent": 53408,
   "shootDays": 8.4,
   "lostDays": 2.9,
   "daysToDeliver": 29.575,
@@ -57,7 +57,7 @@
   "bankFees": 0,
   "owed": 0,
   "accounts": 1,
-  "worth": 18393913.148,
+  "worth": 18392412.908,
   "rewards": 0,
   "entries": 0,
   "selected": 0,
@@ -100,7 +100,7 @@
   "ownIn": 800000,
   "backerIn": 0,
   "backerDeals": 0,
-  "leftInProjects": 3553,
+  "leftInProjects": 3518.5,
   "jobsDone": 0,
   "jobsWithdrawn": 0,
   "jobsDeclined": 0,
@@ -114,9 +114,9 @@
   "offersDeclined": 0,
   "countersSeen": 0,
   "countersDeclined": 0.1,
-  "spent": 1163815,
-  "shootDays": 335.65,
-  "lostDays": 333.65,
+  "spent": 1163849.5,
+  "shootDays": 309.45,
+  "lostDays": 307.45,
   "daysToDeliver": 0,
   "quality.script": 0,
   "quality.direction": 0,
@@ -209,16 +209,16 @@
    "n": 20
   },
   "money": {
-   "mean": -554405.78,
-   "lo": -692858.999,
-   "hi": -415952.56,
+   "mean": -552410.78,
+   "lo": -690636.888,
+   "hi": -414184.671,
    "changed": 18,
    "n": 20
   },
   "moneyChange": {
-   "mean": -554405.78,
-   "lo": -692858.999,
-   "hi": -415952.56,
+   "mean": -552410.78,
+   "lo": -690636.888,
+   "hi": -414184.671,
    "changed": 18,
    "n": 20
   },
@@ -272,9 +272,9 @@
    "n": 20
   },
   "leftInProjects": {
-   "mean": -238084,
-   "lo": -364136.762,
-   "hi": -112031.238,
+   "mean": -237593.5,
+   "lo": -363260.269,
+   "hi": -111926.731,
    "changed": 20,
    "n": 20
   },
@@ -370,23 +370,23 @@
    "n": 20
   },
   "spent": {
-   "mean": 1112927,
-   "lo": 1105099.625,
-   "hi": 1120754.375,
+   "mean": 1110441.5,
+   "lo": 1101933.204,
+   "hi": 1118949.796,
    "changed": 20,
    "n": 20
   },
   "shootDays": {
-   "mean": 327.25,
-   "lo": 323.063,
-   "hi": 331.437,
+   "mean": 301.05,
+   "lo": 297.267,
+   "hi": 304.833,
    "changed": 20,
    "n": 20
   },
   "lostDays": {
-   "mean": 330.75,
-   "lo": 326.609,
-   "hi": 334.891,
+   "mean": 304.55,
+   "lo": 300.81,
+   "hi": 308.29,
    "changed": 20,
    "n": 20
   },
@@ -496,9 +496,9 @@
    "n": 20
   },
   "worth": {
-   "mean": -416913.148,
-   "lo": -521029.969,
-   "hi": -312796.327,
+   "mean": -415412.908,
+   "lo": -519358.942,
+   "hi": -311466.874,
    "changed": 18,
    "n": 20
   },
