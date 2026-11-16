@@ -2,7 +2,7 @@
 
 Written by `tests/prices.test.ts` from the code; don't edit by hand. Run with `SLATE_WRITE_AUDIT=1` to rewrite it.
 
-Every price the player pays, read from the code, beside a published figure and where it was published. **Sourced**: the game's price sits inside the published range (the test fails if it leaves it). **Fixed**: changed on November 15, 2026 to the published figure. **Modeled**: no published figure was found, so the price is the game's own. 24 sourced, 16 fixed, 6 modeled.
+Every price the player pays, read from the code, beside a published figure and where it was published. **Sourced**: the game's price sits inside the published range (the test fails if it leaves it). **Fixed**: changed on November 15, 2026 to the published figure. **Modeled**: no published figure was found, so the price is the game's own. 27 sourced, 16 fixed, 6 modeled.
 
 British rate cards are read at 1.265 dollars to the pound. A US union hourly rate is read as a 10-hour day, eight hours straight and two at time and a half. A non-union background day is 8 hours at California's minimum wage, by date: $16.50 from 2025-01-01, $16.90 from 2026-01-01, $17.40 from 2027-01-01.
 
@@ -38,7 +38,10 @@ British rate cards are read at 1.265 dollars to the pound. A US union hourly rat
 | Shooting | Partial appliances, wounds, a mask, built | $1,500, $300, $2,400 | smaller builds than a full prosthetic makeup | none found for each | Modeled | `looks.ts MAKEUP` |
 | Shooting | Housing and feeding one person for a day away | $178 | $110 lodging and $68 meals | GSA FY 2026 standard CONUS per diem (Federal Register, August 19, 2025) | Fixed | `destinations.ts PER_DIEM` |
 | Shooting | Moving the unit to a place away | the equipment package × 0.5 + 1 per 1,000 km, at most × 4 | trucks by the mile, crew travel | none found for one figure | Modeled | `destinations.ts moveCost` |
-| Shooting | Materials for a task (designs, costumes, puppets, sets, archive, clearances) | prep:design $900, prep:costume $600, prep:creature $4,000, sm:armature $900, sm:puppet $1,500, sm:faces $1,200, sm:costume $300, sm:sets $2,500, doc:archive $2,500, post:clearance $8,000, prep:locations $500 | varies by production | none found per task | Modeled | `rates.ts MATERIAL_COST` |
+| Shooting | Costumes, a character | $600 | an indie film's wardrobe $5,475 to $17,450 in all: $550 to $1,750 a character for ten | Filmmaker Magazine, DV case study ($5,475); Bloomsbury, Feature Film Budgeting, Sample Budget 3 ($17,450) | Sourced | `rates.ts MATERIAL_COST` |
+| Shooting | Design materials, a design day (about $225 a scene on a feature) | $900 | an indie film's art, set dressing and props $11,025 to $39,210 in all | Filmmaker Magazine, DV case study; Bloomsbury, Sample Budget 3 | Sourced | `rates.ts MATERIAL_COST` |
+| Shooting | Archive footage, a clip | $2,500 | $45 to $75 a second, 30-second minimums: $1,350 to $4,500 for 30 to 60 seconds | Film Archives Online ($60 a second, feature documentary); Budget Films ($50 to $75 a second) | Sourced | `rates.ts MATERIAL_COST` |
+| Shooting | Other materials (creature builds, stop-motion armatures, puppets, faces, sets, location prep) | prep:creature $4,000, sm:armature $900, sm:puppet $1,500, sm:faces $1,200, sm:costume $300, sm:sets $2,500, prep:locations $500 | varies by production | none found per task | Modeled | `rates.ts MATERIAL_COST` |
 | Post | A recording studio day | $1,200 | from $1,200 a day; rooms $100 to $400 an hour | C&I Studios, Downtown Los Angeles; TagVenue Los Angeles listings | Fixed | `rates.ts VOICE_SESSION_STUDIO` |
 | Post | A motion-capture stage session | $1,500 | $1,500 to $5,000 a day | MoCap Online, The Real Cost of Motion Capture in 2026; AUT Motion Capture Lab (NZ$1,800 a day) | Sourced | `mocap.ts` |
 | Post | A facial rig for a capture session | $500 | not found | none found | Modeled | `mocap.ts` |

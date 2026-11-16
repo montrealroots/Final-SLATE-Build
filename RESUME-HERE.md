@@ -208,9 +208,29 @@ and the rest) with real grades filling the hiring lists.
     itself changes (`explained.json`).
   - The real-composer journey hires Lorne Balfe (a working composer's rate) rather than Hans Zimmer ($2.2 million).
 
-**Next.** Open, explained (`docs/v10/explained.json`): moving an episode (the footage is drawn by shoot day, so a
-reordered season is a different season). Possible next steps: hold each scene's footage the same whichever order it is
-shot in; union minimums for directors (DGA) and writers (WGA) as performers have SAG-AFTRA's.
+- The owner, November 15, 2026: "do a sweep on everything that costs in the game and make sure the prices match 100%
+  realism".
+  - `docs/prices/PRICES.md`, written by `tests/prices.test.ts`: every price the player pays, read from the code, beside a
+    published figure and its source. A sourced price that leaves its range fails the test. 27 sourced, 16 fixed, 6 still
+    the game's own (a facial rig, the smaller makeup builds, unit moves, other materials, the broadcast edit, the
+    booking partner): no published figure was found for them.
+  - Fixed: background performers ($231 SAG-AFTRA from $2 million, else 8 hours at California's minimum wage), locations
+    ($500 to $5,000 by budget size), a studio day ($1,200), housing a unit away (each person at the GSA per diem,
+    $178), a holiday (2x) and a night (1.2x) worked (IATSE), the ticket ($11.31).
+  - Stars priced by fame as well as awards (`recognition.ts performerFee`; `tools/recognition/fame.mjs` reads
+    Wikipedia editions for 65,141 people with a TMDB ID into `recognition.json`'s `fame`). The reported-fee table in
+    `docs/people/PAY.md` shows the game within a third for most; Lady Gaga (her music's fame) and Phoenix's 2018 Joker
+    (today's fame) read high, Craig's Netflix deal low.
+  - DGA and WGA minimums (`union.ts guildMinimum`): a director over $11 million at the high-budget weekly minimum, a
+    writer on a film of $5 million or more at $173,215 over a draft's 25 days.
+  - A scene's takes are drawn by the scene and its attempt, not the date (`takes.ts recordTakes`).
+  - Every proof (385) is being rerun on the new prices; the production snapshots were rewritten (only payments and what
+    was settled changed for the prices, and direction, performance and reception for the takes).
+
+**Next.** Copy the full rerun in (stale check first), rebuild the matrix, run the check and every journey, open the PR.
+Open, explained: moving an episode (once the arms differ, every later scene, hire and offer is numbered differently and
+the draws follow the numbers). Possible next steps: key the game's draws by something both arms share; published figures
+for the six modeled prices.
 
 ## The Owner's Command Of November 14, 2026 (Later): Every Feature Proven, Everything Possible
 
