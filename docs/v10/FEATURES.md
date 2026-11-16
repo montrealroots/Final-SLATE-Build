@@ -8,11 +8,11 @@ journey that shows it there.
 
 | Kind | proven | carried | does not bite | no downstream effect | stale | not a feature | not yet proven | All |
 |---|---|---|---|---|---|---|---|---|
-| action | 146 | 0 | 0 | 1 | 0 | 13 | 0 | 160 |
+| action | 147 | 0 | 0 | 0 | 0 | 13 | 0 | 160 |
 | bank | 54 | 0 | 0 | 0 | 0 | 0 | 0 | 54 |
 | scheduled | 56 | 0 | 0 | 0 | 0 | 11 | 0 | 67 |
 | field | 248 | 97 | 0 | 0 | 0 | 9 | 0 | 354 |
-| all | 504 | 97 | 0 | 1 | 0 | 33 | 0 | 635 |
+| all | 505 | 97 | 0 | 0 | 0 | 33 | 0 | 635 |
 
 ## Rows
 
@@ -149,7 +149,7 @@ journey that shows it there.
 | reviseEffects | action | src/engine/revisions.ts | proven | revise-effects (40 seeds) | effectsRevised +2.325; quality.direction +1.313; spent +11773; overall +0.25 |
 | clearScreenTime | action | src/engine/screen-time.ts | proven | clear-screen-time (40 seeds) | screenRecords -12; screenEntries -1; screenDecided -1 |
 | recordScreenTime | action | src/engine/screen-time.ts | proven | record-screen-time (40 seeds) | screenRecords +12; screenEntries +1; screenDecided +1 |
-| moveEpisode | action | src/engine/season.ts | no downstream effect | move-episode (120 seeds) | moved: firstEpisodeDirected +1.833. Measure: the episode a hired director directs and cuts again, put first, both arms airing on the same days (120 careers, November 15, 2026): streaming hours +17,400 (interval -16,200 to +51,000), broadcast viewers -29,500 (interval -83,000 to +24,100). The order changes what each episode keeps of the audience before it (audiences.ts retention). Two things besides the order differ between the arms: a scene moved to another day meets that day's weather (as it would), and, once the arms differ at all, every later scene, hire and offer is numbered differently, and the game's draws are keyed by those numbers, so the second season is drawn afresh (seen career by career). A scene's takes no longer follow the date (takes.ts recordTakes, from November 15, 2026), which made the first season's footage match; the second season's still doesn't. Not a gap in the game; a proof would need draws keyed by something both arms share. |
+| moveEpisode | action | src/engine/season.ts | proven | move-episode (120 seeds) | firstEpisodeDirected +1.833; firstHours +6366.667 |
 | continueProject | action | src/engine/sequel.ts | proven | continue-project (40 seeds) | continued +1; buildDays -22; spent -10944; daysToDeliver -13.325 |
 | resumeProject | action | src/engine/shelve.ts | proven | shelve-resume (60 seeds) | hiresReleased +16; deliveredDay +318.1; offersDeclined +342.8; castRates +169.333; revenue -100958; money -110849.216 |
 | shelveProject | action | src/engine/shelve.ts | proven | shelve-resume (60 seeds) | hiresReleased +16; deliveredDay +318.1; offersDeclined +342.8; castRates +169.333; revenue -100958; money -110849.216 |
@@ -297,7 +297,7 @@ journey that shows it there.
 | studio-release | scheduled | src/engine/finish.ts | proven | off-studio-release (40 seeds) | released -8.925; gross -1732155 |
 | wake | scheduled | src/engine/state.ts | proven | off-wake (40 seeds) | lateDays +6.8; quality.direction -63.562; overall -58.762 |
 | weather-check | scheduled | src/engine/production/shoot.ts | proven | off-weather-check (60 seeds) | lostDays +1.417; daysToDeliver +0.85; spent +3383.833 |
-| work-day | scheduled | src/engine/production/workday.ts | proven | off-work-day (40 seeds) | delivered -1.975; revenue -127859.875; money -150244.529 |
+| work-day | scheduled | src/engine/production/workday.ts | proven | off-work-day (40 seeds) | delivered -1.975; revenue -128443.25; money -151278.315 |
 | writing-day | scheduled | src/engine/writing-jobs.ts | proven | off-writing-day (40 seeds) | passesAccepted -1.875; quality.script -1.312 |
 | "Working Title" | field | everywhere a project is named | carried | tests/proposal.test.ts::makes one project | A name or a record, carried to everywhere a project is named: it decides nothing by its nature. |
 | "Format" | field | proposal.ts proposeFromSource; projects.ts, production/tasks.ts | proven | adapt-short (40 seeds) | scenes -6; spent -296998.55; daysToDeliver -77.512 |
@@ -463,7 +463,7 @@ journey that shows it there.
 | {`"${x.title}" In This Scene`} | field | songs.ts songUses; projects.ts deriveRequirements | proven | add-song (40 seeds) | songs +2; songUses +2; released -2; revenue -108758 |
 | "Interior Or Exterior" | field | production/shoot.ts (weather) | proven | scene-exterior (40 seeds) | lostDays +1.3; shootDays +1.075; money -24686.529 |
 | "Place" | field | production/schedule.ts groupShootDays | proven | scenes-one-place (40 seeds) | shootDays -3.625; spent -18975.25; ownIn -800 |
-| "Time Of Day" | field | production/rates.ts dayFees | proven | scene-night (120 seeds) | spent +1048.083; overall +0.321 |
+| "Time Of Day" | field | production/rates.ts dayFees | proven | scene-night (120 seeds) | wagesPaid +1545.417; overall +0.321 |
 | "Estimated Minutes" | field | production/schedule.ts sceneLoad; finish.ts runtime | proven | scene-minutes (40 seeds) | runtime +22; spent +12275.15; daysToDeliver +7.15; offered +92250; guarantees +42250; money -24397.932 |
 | "Kind" | field | projects.ts deriveRequirements (interview, archival) | proven | scene-archival (40 seeds) | shootDays -2.95; hired +2; spent -4396.75 |
 | "Basis" | field | projects.ts scriptIssues (sourced needs a fact) | proven | scene-dramatized (40 seeds) | researchItems -2; spent -639 |
@@ -483,7 +483,7 @@ journey that shows it there.
 | "Animals" | field | projects.ts deriveRequirements; production/tasks.ts | proven | scene-animals (40 seeds) | spent +3337; daysToDeliver +1.475 |
 | "Vehicles" | field | projects.ts deriveRequirements; production/tasks.ts | proven | scene-vehicles (40 seeds) | spent +3041; daysToDeliver +1.263 |
 | "Stunts" | field | projects.ts deriveRequirements; production/tasks.ts | proven | scene-stunts (40 seeds) | spent +67808.5; money -38503.131; daysToDeliver +8.663 |
-| "Crowd Size" | field | production/rates.ts (crowd day rate) | proven | scene-crowd (60 seeds) | spent +40045; money -29556.921 |
+| "Crowd Size" | field | production/rates.ts (crowd day rate) | proven | scene-crowd (60 seeds) | spent +40499.333; money -29330.116 |
 | "Crowd Makeup" | field | looks.ts chairMinutes, makeupDayCost; production/shoot.ts runShootDay | proven | crowd-makeup (40 seeds) | spent +42977.25; ownIn +42400 |
 | "Extend The Crowd In Post" | field | looks.ts physicalCrowd, digitalCrowd; production/tasks.ts buildTasks; production/schedule.ts sceneLoad | proven | crowd-digital (40 seeds) | spent -16692; daysToDeliver +7.025 |
 | "Visual Effects" | field | projects.ts deriveRequirements; production/tasks.ts | proven | scene-vfx (40 seeds) | spent +44389.75; daysToDeliver +13.775 |

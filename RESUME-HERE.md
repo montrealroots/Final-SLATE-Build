@@ -278,9 +278,24 @@ and the rest) with real grades filling the hiring lists.
   `tests/authorizations.test.ts`, each rule mutation-checked.
   The five proofs that read papers code were rerun and are proven (504 proven, open 1); `npm run check` passed
   (1,735 tests); the papers journeys passed on desktop and phone, the Paris one now checking the ESTA's terms.
-Open, explained: moving an episode (once the arms differ, every later scene, hire and offer is numbered differently and
-the draws follow the numbers). Possible next steps: key the game's draws by something both arms share; published
-figures for the two modeled prices; the four estimated authorizations.
+- That checkpoint merged as #111. Then the four estimated authorizations were researched (Morocco's AEVM, free;
+  Russia's RuID application, free, 72 hours ahead; Saudi Arabia's ETA for UK citizens, SAR 50), from secondary sources,
+  as no government page gave their terms: none is estimated now. Location permits are FilmLA's City of Los Angeles fees
+  ($931 a permit for up to five locations, $285 spot check, $232 a location's notification; until then $500 a
+  location, the game's own). The rest of "other materials" (creature builds, armatures, puppets, faces, stop-motion
+  costumes and sets) and the broadcast edit stay modeled: no published per-item figure was found (searched November 16,
+  2026); the edit's row names an editor's week, $2,500, as what it is set beside.
+  The eight proofs that read the material code were rerun, all proven (504 proven, open 1). `scene-night` now measures
+  its bite as what cast and crew were paid (+$1,545 a career at 120 careers): what all was spent had fallen inside the
+  noise once location permits cost more. `npm run check` passed (1,736 tests); the destinations, money, J01,
+  live-action and first-project journeys passed.
+- Moving an episode is proven (`move-episode`, 120 careers): measured on the first season's audience, the one both arms
+  make alike but for the order, streaming hours +6,367 (interval +223 to +12,511). Until then it was measured across
+  every season, and later seasons are drawn afresh once the arms differ (every scene, hire and offer after the move is
+  numbered differently), which hid it. Its explanation left docs/v10/explained.json. The matrix: 505 proven, open 0.
+Nothing in the feature matrix is open. Still the game's own figures: the stop-motion and creature materials and the
+broadcast edit (no published per-item price found). Possible next step: key the game's draws by something both arms
+of a proof share, so later seasons compare too.
 
 ## The Owner's Command Of November 14, 2026 (Later): Every Feature Proven, Everything Possible
 

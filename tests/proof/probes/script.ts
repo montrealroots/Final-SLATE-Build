@@ -72,8 +72,12 @@ export const PROBES: Probe[] = [
     variant: { project: short({ intExt: 'EXT' }) }, bites: ['lostDays', 'shootDays'], downstream: ['daysToDeliver', ...COST] },
   { id: 'scene-night', features: [field('ScriptViews.tsx', 'Time Of Day')], decision: 'Set every scene at night', reads: ['src/engine/production/rates.ts#dayFees'],
     // The night premium is a fifth since November 15, 2026 (IATSE), and the day's other costs vary more with the realistic
-    // prices: at 40 careers what it spent was inside the noise.
-    seeds: 120, variant: { project: short({ time: 'NIGHT' }) }, bites: ['spent'], downstream: ['money', 'overall'] },
+    // prices: at 40 careers what it spent was inside the noise. From November 16, 2026, with location permits at FilmLA's
+    // fees, all it spent was too (+$785, interval -$55 to +$1,624, at 120 careers): the premium is paid as wages, so the
+    // bite is measured there, what cast and crew were paid.
+    seeds: 120, variant: { project: short({ time: 'NIGHT' }) },
+    measure: (_s, projects) => ({ wagesPaid: projects.reduce((a, p) => a + p.obligations.filter((o) => o.category === 'cast' || o.category === 'crew').reduce((b, o) => b + o.settled, 0), 0) }),
+    bites: ['wagesPaid'], downstream: ['money', 'overall'] },
   { id: 'scene-minutes', features: [field('ScriptViews.tsx', 'Estimated Minutes')], decision: 'Make each scene twice as long', reads: ['src/engine/production/schedule.ts#generatePlan'],
     // A short's scenes fit a day's capacity either way (schedule.ts groupShootDays), so the length shows in what the shoot and post cost and take.
     // A longer film is offered more: a distributor's guarantee follows its running time up to 90 minutes (finish.ts).

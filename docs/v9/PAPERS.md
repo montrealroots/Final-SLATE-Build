@@ -97,10 +97,8 @@ the terms it was applied for under.
   official fee could be confirmed (Japan's varies by nationality; Korea's and Mexico's were on agency sites only), so
   they stay estimates.
 - **A residence application.**
-- **Four electronic authorizations no source confirmed**: Morocco's AEVM (and Western Sahara's), Russia's electronic
-  application and Saudi Arabia's ETA for British visitors. They're the game's estimate, from the researched ones
-  (`tests/authorizations.test.ts` lists them: the list may fall and may not grow).
 
 Done since: travel asks for entry (`entryRefusal`, from November 14, 2026); a visit's days are counted against its
 limit (November 16, 2026); and an electronic authorization is charged its own fee and time, not the destination's
-visitor visa (November 16, 2026: `terms.json` `authorizations`, 20 researched, `papers-terms.ts authorizationTerms`).
+visitor visa (November 16, 2026: `terms.json` `authorizations`, all 23 researched, `papers-terms.ts authorizationTerms`;
+Morocco's, Russia's and Saudi Arabia's from secondary sources, as no government page gave their terms).
