@@ -1,7 +1,8 @@
 {
  "id": "autopay-from",
  "features": [
-  "bank:card.set_autopay_from"
+  "bank:card.set_autopay_from",
+  "field:bankworld/ui/bank/BankMoves.tsx#id={`autopay-from-${c.id}`}#1"
  ],
  "decision": "Pay the card's autopay from NatWest",
  "reads": [

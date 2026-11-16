@@ -1,7 +1,9 @@
 {
  "id": "bank-loan",
  "features": [
-  "bank:bank.borrow"
+  "bank:bank.borrow",
+  "field:bankworld/ui/bank/BankLending.tsx#id=\"loan-amount\"#1",
+  "field:bankworld/ui/bank/BankLending.tsx#id=\"loan-months\"#1"
  ],
  "decision": "Borrow as much as the bank will lend, up to $20,000 over five years, on the first day it will (it lends against wages paid in)",
  "reads": [
@@ -488,7 +490,7 @@
  ],
  "verdict": "proven",
  "hashes": {
-  "src/engine/bankworld/systems/lending.ts": "4d70426b81705b20",
+  "src/engine/bankworld/systems/lending.ts": "d2131a42dd14812c",
   "src/engine/bankworld/core/ledger.ts": "1defec12c13ca934",
   "tests/proof/career.ts": "50bea06f19a02c5b"
  }

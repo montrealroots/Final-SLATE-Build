@@ -9,7 +9,7 @@ import { loadSave, quickSave } from '../../src/engine/bankworld';
 import type { Simulation } from '../../src/engine/bankworld/core/simulation';
 import { MS_DAY } from '../../src/engine/bankworld/core/time';
 import { deserialise, serialise } from '../../src/engine/bankworld/persistence/adapter';
-import { checkingsOf, loanOf, loansOf, overdraftOffer, repaymentAccount, SWITCH_KIND } from '../../src/engine/bankworld/systems/lending';
+import { chargeForItem, checkingsOf, loanOf, loansOf, overdraftOffer, repaymentAccount, SWITCH_KIND } from '../../src/engine/bankworld/systems/lending';
 import { cardsOf, stateOf } from '../../src/engine/bankworld/systems/credit';
 import { cardStatement, periodsOf } from '../../src/engine/bankworld/systems/statements';
 
@@ -139,5 +139,120 @@ describe('instructions on a closing account', () => {
     const order = sim.must<{ id: string }>({ kind: 'bank.add_standing_order', payload: { toId: saver.id, amount: 100_00, day: 15 } }).id;
     const capName = sim.universe.accounts[cap]!.name;
     expect(sim.execute({ kind: 'bank.set_order_source', payload: { orderId: order, accountId: cap } }).error).toBe(`${capName} is closing, so a standing order can’t pay from it.`);
+  });
+});
+
+// From November 16, 2026, when the ported bank screens' controls were added to the input audit
+// (docs/input-audit/CONTROLS.csv): Repaid From and Pay Toward It had no test that issued their commands but the proofs.
+describe('a loan repaid from another account', () => {
+  it('moves the next payment to the account chosen, and refuses one that is closing or not a checking account', () => {
+    const sim = lifeIn('us-ny-newyork', { bankId: 'us-chase', wealth: 'comfortable' }, 'lc-repay-from');
+    const chase = primary(sim).id;
+    const citi = sim.must<{ accountId: string }>({ kind: 'bank.open_current', payload: { bankId: 'us-citi' } }).accountId;
+    wages(sim, chase, 5_000_00);
+    const { loanId } = sim.must<{ loanId: string }>({ kind: 'bank.borrow', payload: { amount: 3_000_00, months: 24, bankId: 'us-citi', intoId: chase, repayFromId: citi } });
+    const name = sim.universe.accounts[loanId]!.name;
+    sim.must({ kind: 'bank.set_loan_repayment', payload: { loanId, accountId: chase } });
+    expect(loansOf(sim, sim.player)[0]!.repayFromId).toBe(chase);
+    fund(sim, citi, 1_000_00);
+    sim.advanceTo(sim.now + 32 * MS_DAY);
+    const paid = sim.universe.transactions.filter((t) => t.memo === `Payment: ${name}`);
+    expect(paid.length).toBe(1);
+    // The payment comes out of Chase alone: nothing of it from Citi, which it would have come from.
+    expect(paid[0]!.postings.filter((q) => q.amount < 0).map((q) => q.accountId)).toEqual([chase]);
+    expect(sim.execute({ kind: 'bank.set_loan_repayment', payload: { loanId, accountId: loanId } }).error).toBe('A loan has to be repaid from one of your open checking accounts.');
+    expect(sim.execute({ kind: 'bank.set_loan_repayment', payload: { loanId: 'no-such-loan', accountId: chase } }).error).toBe('That isn’t an open loan of yours.');
+  });
+});
+
+describe('a debt in collections', () => {
+  it('is paid toward from the checking account, never more than is owed or held, and closes when it is paid', () => {
+    const sim = lifeIn('us-ny-newyork', { bankId: 'us-chase', wealth: 'comfortable' }, 'lc-collections');
+    const chase = primary(sim);
+    // FIXTURE: a debt of $500 in collections, as a charge-off leaves one (credit.ts, lending.ts).
+    const debt = sim.openAccount({ id: sim.nextId('account'), kind: 'loan', category: 'collections', name: 'Owed To Chase, In Collections', ownerId: sim.player.id, institution: 'Chase', openedAt: sim.now });
+    sim.post({ memo: 'TEST SETUP', category: 'test', postings: [{ accountId: debt.id, amount: -500_00 }, { accountId: sim.nominalAccount('income', 'Test').id, amount: 500_00 }] });
+    fund(sim, chase.id, 10_000_00);
+    const before = chase.balance;
+    expect(sim.must<{ paid: number; left: number }>({ kind: 'bank.pay_collections', payload: { amount: 200_00, debtId: debt.id } })).toEqual({ paid: 200_00, left: 300_00 });
+    expect(before - chase.balance).toBe(200_00);
+    // Asked for more than is owed, it pays what is owed, and the debt is closed.
+    expect(sim.must<{ paid: number; left: number }>({ kind: 'bank.pay_collections', payload: { amount: 1_000_00, debtId: debt.id } })).toEqual({ paid: 300_00, left: 0 });
+    expect(before - chase.balance).toBe(500_00);
+    expect(debt.closedAt).toBe(sim.now);
+    expect(sim.execute({ kind: 'bank.pay_collections', payload: { amount: 100_00 } }).error).toBe('You don’t owe anything in collections.');
+  });
+
+  it('pays only what the checking account holds, and nothing from an empty one', () => {
+    const sim = lifeIn('us-ny-newyork', { bankId: 'us-chase', wealth: 'comfortable' }, 'lc-collections-short');
+    const chase = primary(sim);
+    const debt = sim.openAccount({ id: sim.nextId('account'), kind: 'loan', category: 'collections', name: 'Owed To Chase, In Collections', ownerId: sim.player.id, institution: 'Chase', openedAt: sim.now });
+    sim.post({ memo: 'TEST SETUP', category: 'test', postings: [{ accountId: debt.id, amount: -500_00 }, { accountId: sim.nominalAccount('income', 'Test').id, amount: 500_00 }] });
+    fund(sim, chase.id, 120_00 - chase.balance); // TEST SETUP: $120 held
+    expect(sim.must<{ paid: number; left: number }>({ kind: 'bank.pay_collections', payload: { amount: 500_00 } })).toEqual({ paid: 120_00, left: 380_00 });
+    expect(chase.balance).toBe(0);
+    expect(sim.execute({ kind: 'bank.pay_collections', payload: { amount: 50_00 } }).error).toBe(`${chase.name} has nothing available to pay it with, so nothing was paid.`);
+    expect(debt.closedAt).toBeUndefined();
+  });
+});
+
+describe('an overdraft paid for by the use', () => {
+  it('at TD charges $5 the first time a day it is used and nothing a month; the monthly plan charges $5 a month and nothing a use', () => {
+    const toronto = (perUse: boolean) => {
+      const sim = lifeIn('ca-on-toronto', { bankId: 'ca-td', wealth: 'comfortable' }, `lc-od-${perUse}`);
+      const td = primary(sim);
+      wages(sim, td.id, 5_000_00); // TD arranges one against the wages paid in
+      sim.must({ kind: 'bank.arrange_overdraft', payload: { limit: 500_00, perUse } });
+      return { sim, td };
+    };
+    const fees = (sim: Simulation, id: string) => sim.universe.transactions.filter((t) => t.memo === 'Overdraft fee' && t.postings.some((q) => q.accountId === id)).map((t) => t.postings.find((q) => q.accountId === id)!.amount);
+    const use = toronto(true);
+    const plan = toronto(false);
+    expect([use.td.overdraftPerUse, plan.td.overdraftPerUse]).toEqual([true, undefined]);
+    for (const { sim, td } of [use, plan]) {
+      fund(sim, td.id, -td.balance - 100_00); // TEST SETUP: $100 overdrawn
+      chargeForItem(sim, sim.player, 100_00);
+      chargeForItem(sim, sim.player, 20_00); // a second use the same day
+    }
+    expect(fees(use.sim, use.td.id)).toEqual([-5_00]);
+    expect(fees(plan.sim, plan.td.id)).toEqual([]);
+    // Into the next month: the monthly plan's fee, and none for paying by the use.
+    for (const { sim } of [use, plan]) sim.advanceTo(sim.now + 32 * MS_DAY);
+    expect(fees(use.sim, use.td.id)).toEqual([-5_00]);
+    expect(fees(plan.sim, plan.td.id)).toEqual([-5_00]);
+  });
+});
+
+describe('a partial switch', () => {
+  it('in Britain takes CASS’s 20 working days to the full switch’s 7, and leaves the old account open with its balance', () => {
+    const london = (partial: boolean) => {
+      const sim = lifeIn('uk-eng-london', { bankId: 'gb-barclays', wealth: 'comfortable' }, `lc-partial-${partial}`);
+      const old = primary(sim);
+      const set = sim.must<{ at: number }>({ kind: 'bank.switch', payload: { bankId: 'gb-hsbc', ...(partial ? { partial: true } : {}) } });
+      return { sim, old, at: set.at };
+    };
+    const part = london(true);
+    const full = london(false);
+    expect(part.at).toBeGreaterThan(full.at + 13 * MS_DAY);
+    part.sim.advanceTo(part.at + MS_DAY);
+    expect(part.old.closedAt).toBeUndefined();
+    expect(part.old.balance).toBeGreaterThan(0);
+    full.sim.advanceTo(full.at + MS_DAY);
+    expect(full.old.closedAt).toBeDefined();
+    // Only Britain's service runs one.
+    const ny = lifeIn('us-ny-newyork', { bankId: 'us-chase' }, 'lc-partial-us');
+    expect(ny.execute({ kind: 'bank.switch', payload: { bankId: 'us-citi', partial: true } }).error).toBeDefined();
+  });
+});
+
+describe('what a loan is for', () => {
+  it('at Capital One, an education expense is refused in Discover’s terms, and any other purpose is lent', () => {
+    const sim = lifeIn('us-ny-newyork', { bankId: 'us-chase', wealth: 'comfortable' }, 'lc-purpose');
+    const chase = primary(sim).id;
+    sim.must({ kind: 'bank.open_current', payload: { bankId: 'us-capital-one' } });
+    wages(sim, chase, 5_000_00);
+    const ask = (purpose: 'education' | 'other') => sim.execute({ kind: 'bank.borrow', payload: { amount: 5_000_00, months: 36, bankId: 'us-capital-one', purpose } });
+    expect(ask('education').error).toBe('Discover Personal Loans doesn’t lend for a post-secondary education expense.');
+    expect(ask('other').error).toBeUndefined();
   });
 });

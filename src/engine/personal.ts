@@ -116,7 +116,8 @@ export const openPersonalAccount = (state: GameState) => { if (!state.bank) star
 export const postPersonal = (state: GameState, kind: PersonalKind, amount: number, label: string, key: string, _counter = COUNTER[kind]) => {
   state.money ??= {};
   openPersonalAccount(state);
-  postToBank(state, kind, Math.round(amount), label, key, kind);
+  // To the cent (from November 16, 2026: until then to the dollar, so the shop's $169.99 was posted as $170).
+  postToBank(state, kind, Math.round(amount * 100) / 100, label, key, kind);
 };
 /** The account's postings, read back from the bank's ledger in whole dollars, oldest first. */
 export const personalPostings = (state: GameState): PersonalPosting[] =>

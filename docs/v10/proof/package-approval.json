@@ -474,7 +474,7 @@
  ],
  "verdict": "proven",
  "hashes": {
-  "src/engine/equipment.ts": "f70e0d46c0e0f05b",
+  "src/engine/equipment.ts": "6d7fdf25e130a889",
   "src/engine/production/shoot.ts": "4f6baad6273bf3d7",
   "tests/proof/career.ts": "50bea06f19a02c5b"
  }

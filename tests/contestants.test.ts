@@ -47,7 +47,9 @@ describe('contestants', () => {
     }
     expect(runs).toBeGreaterThan(40);
     expect(skilledLonger / runs).toBeGreaterThan(0.6);
-  });
+    // Sixty seasons from a fresh start each: about two seconds here, and past vitest's five on CI's busier runner on
+    // November 16, 2026 (pull request 109's checks), so it is given its own limit, as the bank's long tests are.
+  }, 30_000);
 
   it('the contestants in the cut are what viewers watch: their presence, not the others\'', () => {
     const s = startLife('contestants-presence');

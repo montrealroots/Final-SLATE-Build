@@ -237,8 +237,16 @@ and the rest) with real grades filling the hiring lists.
     snapshots were rewritten (only payments and what was settled changed for the prices, and direction, performance and
     reception for the takes).
 
-**Next.** The price sweep merged as #106. The booker and mask change has its 20 proofs rerun and copied in (all proven,
-open 1) and `npm run check` passed (1,709 tests): its checkpoint PR follows #106.
+**Next.** The price sweep merged as #106 and #107, the Berlin cancel cases as #108. Then, November 16:
+- The bank screens' 49 deciding inputs, in the feature matrix once they joined the controls table, are all proven (503
+  proven, open 1): 20 named on the proof whose move sets them (`tests/proof/field-proofs.ts`), 29 each proven by two
+  careers making the same move with the input set two ways (`tests/proof/probes/bank-fields.ts`; loans and overdrafts at
+  80 careers, as wages come only some months).
+- Gear is charged its listed price to the cent ($169.99, not $170) and shown so; personal postings round to the cent.
+  Until then a US career's round-ups to the next dollar (Citi's, Bank of America's) never saved anything.
+- A low balance alert reveals a stranger's debit that takes the account under its line, as the large payment alert did
+  over its own (`security.ts somebodyElse`).
+- `npm run check` passed (1,719 tests); the shop journeys passed (equipment, money, J01, J02, J06, project money).
 Open, explained: moving an episode (once the arms differ, every later scene, hire and offer is numbered differently and
 the draws follow the numbers). Possible next steps: key the game's draws by something both arms share; published figures
 for the two modeled prices.
@@ -364,8 +372,13 @@ The command, word for word, is in the conversation of November 14, 2026; its nin
      `tests/bankworld/remaining-09-banking.test.ts` ("Cancel It" on a second Berlin account) pass at the port's commit
      and every one since, alone and with their file, in five time zones; they run now, and three mutations of what they
      guard each fail them.
-   - The ported bank UI's controls aren't yet in `docs/input-audit/CONTROLS.csv` or the disabled-reasons record: those
-     audits read top-level `src/ui/*.tsx` only.
+   - Closed November 16, 2026: the ported bank screens' controls are in both audits. `tests/disabled-reasons.test.ts`
+     reads every `.tsx` under `src/ui` (27 bank controls, each found to say why already); `docs/input-audit/CONTROLS.csv`
+     lists the 52 bank inputs and selects by id, 49 decisions each citing a test that runs and issues its command (six
+     new: per-use overdraft, partial switch, a loan's purpose, its repayment account, paying collections, the alert
+     lines). `tools/input-audit/controls.py` had stopped on the company's deleted test since November 14 and was behind
+     the table's hand edits of November 15; it writes the table again, the bank rows its only addition. Paying toward
+     collections said the amount typed, not paid ($1,000 typed against $300 owed said $1,000): it says what was paid.
 
 ## The Owner's v8 Overhaul (From November 14, 2026)
 

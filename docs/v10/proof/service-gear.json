@@ -17,8 +17,8 @@
   "gross": 58080,
   "revenue": 77241.667,
   "distributed": 0.867,
-  "money": 24662620.142,
-  "moneyChange": -337379.858,
+  "money": 24662620.222,
+  "moneyChange": -337379.778,
   "jobsTaken": 0.367,
   "jobsOffered": 0.367,
   "jobPay": 1816.4,
@@ -67,8 +67,8 @@
   "gross": 146080,
   "revenue": 188428.5,
   "distributed": 2.433,
-  "money": 24801312.85,
-  "moneyChange": -198687.15,
+  "money": 24801312.929,
+  "moneyChange": -198687.071,
   "jobsTaken": 1.4,
   "jobsOffered": 1.4,
   "jobPay": 10558.133,
@@ -160,16 +160,16 @@
    "n": 30
   },
   "money": {
-   "mean": 138692.708,
-   "lo": 111203.942,
-   "hi": 166181.475,
+   "mean": 138692.707,
+   "lo": 111203.94,
+   "hi": 166181.474,
    "changed": 30,
    "n": 30
   },
   "moneyChange": {
-   "mean": 138692.708,
-   "lo": 111203.942,
-   "hi": 166181.475,
+   "mean": 138692.707,
+   "lo": 111203.94,
+   "hi": 166181.474,
    "changed": 30,
    "n": 30
   },
@@ -477,7 +477,7 @@
  ],
  "verdict": "proven",
  "hashes": {
-  "src/engine/equipment.ts": "f70e0d46c0e0f05b",
+  "src/engine/equipment.ts": "6d7fdf25e130a889",
   "tests/proof/career.ts": "50bea06f19a02c5b"
  }
 }

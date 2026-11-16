@@ -1,7 +1,8 @@
 {
  "id": "pay-collections",
  "features": [
-  "bank:bank.pay_collections"
+  "bank:bank.pay_collections",
+  "field:bankworld/ui/bank/BankLending.tsx#id=\"collections-pay\"#1"
  ],
  "decision": "Pay the debt Chase charged off, then ask Wells Fargo for an account",
  "reads": [
@@ -667,7 +668,7 @@
  ],
  "verdict": "proven",
  "hashes": {
-  "src/engine/bankworld/systems/lending.ts": "4d70426b81705b20",
+  "src/engine/bankworld/systems/lending.ts": "d2131a42dd14812c",
   "tests/proof/career.ts": "50bea06f19a02c5b"
  }
 }

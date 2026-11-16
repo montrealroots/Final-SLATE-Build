@@ -219,6 +219,36 @@ describe('alerts', () => {
     const sim = lifeIn('is-39-mosfellsbr', {}, 'st-bad');
     expect(sim.execute({ kind: 'bank.set_alerts', payload: { lowBalance: -5 } }).ok).toBe(false);
   });
+
+  // From November 16, 2026, when the bank screens' controls joined the input audit: the 1221 case above reads the day's
+  // groceries, which SLATE doesn't have, so the two lines had no running test. Here the money moves by payments posted.
+  it('the lines set: under the low line tells once until it’s back over; a payment over the large line tells, one under it doesn’t', () => {
+    const sim = lifeIn('us-ny-newyork', { bankId: 'us-chase', wealth: 'comfortable' }, 'st-lines');
+    const spend = (amount: number) => sim.post({ memo: 'A purchase', category: 'purchase', postings: [{ accountId: current(sim).id, amount: -amount }, { accountId: sim.nominalAccount('expense', 'Shopping').id, amount }] });
+    const told = (title: string) => sim.universe.notifications.filter((n) => n.title.startsWith(title)).length;
+    const line = current(sim).balance - 100_00;
+    sim.must({ kind: 'bank.set_alerts', payload: { lowBalance: line, largePayment: 500_00 } });
+    sim.advanceBy(MS_DAY);
+    expect([told('Low Balance'), told('A Large Payment')]).toEqual([0, 0]);
+    spend(1_000_00); // under the line, and over the large one
+    sim.advanceBy(MS_DAY);
+    expect([told('Low Balance'), told('A Large Payment')]).toEqual([1, 1]);
+    spend(50_00); // still under, and under the large line
+    sim.advanceBy(MS_DAY);
+    expect([told('Low Balance'), told('A Large Payment')]).toEqual([1, 1]);
+    give(sim, 2_000_00); // back over
+    sim.advanceBy(MS_DAY);
+    spend(2_000_00); // under again, and large again
+    sim.advanceBy(MS_DAY);
+    expect([told('Low Balance'), told('A Large Payment')]).toEqual([2, 2]);
+    // Cleared, neither tells.
+    sim.must({ kind: 'bank.set_alerts', payload: { lowBalance: null, largePayment: null } });
+    give(sim, 5_000_00);
+    sim.advanceBy(MS_DAY);
+    spend(5_000_00);
+    sim.advanceBy(MS_DAY);
+    expect([told('Low Balance'), told('A Large Payment')]).toEqual([2, 2]);
+  });
 });
 
 describe('the rate and the screen', () => {

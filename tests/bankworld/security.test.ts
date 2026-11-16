@@ -10,7 +10,7 @@ import { MS_DAY } from '../../src/engine/bankworld/core/time';
 import { FRAUD_LAW, SECURITY, type FraudLaw } from '../../src/engine/bankworld/content/security';
 import { cardOf, cardRoom } from '../../src/engine/bankworld/systems/credit';
 import { spend } from '../../src/engine/bankworld/systems/spending';
-import { cardAccount, fraudOn, liabilityFor, plasticOf } from '../../src/engine/bankworld/systems/security';
+import { cardAccount, fraudOn, liabilityFor, plasticOf, somebodyElse } from '../../src/engine/bankworld/systems/security';
 
 const laws = FRAUD_LAW as Record<string, FraudLaw>;
 const kept = new Map<string, FraudLaw>();
@@ -191,5 +191,26 @@ describe('somebody else’s use', () => {
     expect(sim.player.fraud!.length).toBe(1);
     sim.advanceBy(440 * MS_DAY);
     expect(run(sim, 'card.dispute', { index: 0 }).error).toMatch(/passed/);
+  });
+});
+
+// From November 16, 2026: a low balance alert reveals a stranger's debit that takes the account under its line, as the
+// large payment alert does over its own (security.ts somebodyElse).
+describe('a stranger’s debit and the low balance line', () => {
+  const debit = (line: number | undefined, amount: number) => {
+    const sim = lifeIn('us-ny-newyork', 'us-chase', `sec-low-${line ?? 'none'}-${amount}`);
+    const account = sim.universe.accounts[sim.player.primaryAccountId!]!;
+    sim.player.alerts = { statements: true, ...(line !== undefined ? { lowBalance: account.balance - line } : {}) };
+    somebodyElse(sim, sim.player, { which: 'debit', account, amount, stopped: false });
+    return { sim, f: sim.player.fraud!.at(-1)! };
+  };
+  it('is known at once when it takes the account under the line, and at the statement when it doesn’t, or there’s no line', () => {
+    const under = debit(100_00, 400_00); // the line $100 under the balance; $400 takes it under
+    expect(under.f.learnedAt).toBe(under.sim.now);
+    const above = debit(500_00, 400_00); // the line $500 under; $400 leaves it over
+    expect(above.f.learnedAt).toBe(above.f.statedAt);
+    expect(above.f.learnedAt).toBeGreaterThan(above.sim.now);
+    const none = debit(undefined, 400_00);
+    expect(none.f.learnedAt).toBe(none.f.statedAt);
   });
 });

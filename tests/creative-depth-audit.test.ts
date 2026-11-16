@@ -7,6 +7,7 @@
 // To rewrite both after a change: SLATE_WRITE_AUDIT=1 npx vitest run tests/creative-depth-audit.test.ts
 import { existsSync, readFileSync, readdirSync, writeFileSync } from 'node:fs';
 import { describe, expect, it } from 'vitest';
+import { bankControls, rawWidget } from './ui-controls';
 import type { Command, Idea } from '../src/engine/brief';
 import { IDEAS } from '../src/ideas';
 import { COST, MUST, WHEN, WHO } from '../src/ideas/loglines';
@@ -47,6 +48,8 @@ function widgets(): Map<string, string> {
       out.set(`${f}|${label}|${n}`, `${m[1]}${/\bmultiline\b/.test(m[2]) ? ' (long text)' : ''}${/type="(date|time|search|password)"/.test(m[2]) ? ` (${/type="(\w+)"/.exec(m[2])![1]})` : ''}`);
     }
   }
+  // The bank screens ported from 1221 (src/ui/bankworld), from November 16, 2026: plain controls (tests/ui-controls.ts).
+  for (const c of bankControls()) out.set(`${c.file}|${c.label}|${c.n}`, rawWidget(c));
   return out;
 }
 
@@ -130,9 +133,9 @@ function decision(screen: string, label: string, cls: string, widget: string): [
   if (cls === 'view') return ['None: a control of the screen, not of the game', 'n/a', ''];
   if (/Picker$/.test(widget)) return [widget === 'GenrePicker' ? 'None: a search of the genre catalog' : widget === 'LanguagePicker' ? 'None: a search of the languages' : 'None: the world search of real places (destinations: milestone E)', 'n/a', ''];
   if (/\((date|time)\)/.test(widget) || /"(Month|Day|Year Of Birth|Release Date|Starting Date|Starting Time)"/.test(label)) return ['None: a date or time, entered as one', 'n/a', ''];
-  if (widget.startsWith('NumberField')) return ['None: a quantity, entered as a number within its range', 'n/a', ''];
-  if (widget.startsWith('Check')) return ['None: a yes or no', 'n/a', ''];
-  if (widget.startsWith('SelectField')) return ['None: already a short list to choose from', 'n/a', ''];
+  if (widget.startsWith('NumberField') || widget === 'input (number)') return ['None: a quantity, entered as a number within its range', 'n/a', ''];
+  if (widget.startsWith('Check') || widget === 'input (checkbox)') return ['None: a yes or no', 'n/a', ''];
+  if (widget.startsWith('SelectField') || widget === 'select') return ['None: already a short list to choose from', 'n/a', ''];
   if (cls === 'record' || /Name|Title/.test(label)) return ['None: a name or a record, typed. Name suggestions: milestone C', 'Unchanged', ''];
   if (LATER.has(label) || /long text/.test(widget) || cls === 'identity') return ['Not yet: creative text with no ideas written for it. Milestone C', 'Unchanged', ''];
   return ['None: entered as text', 'Unchanged', ''];
@@ -167,7 +170,7 @@ describe('the field inventory', () => {
       {
         "has ideas": 52,
         "no picker yet": 26,
-        "no picker, by design": 253,
+        "no picker, by design": 305,
         "the picker itself": 10,
       }
     `);

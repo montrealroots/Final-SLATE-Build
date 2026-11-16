@@ -46,10 +46,11 @@ describe('the shop', () => {
   it('buys from your own account only, and only what it holds', () => {
     const s = startLife('poor', 'gb-london', { savings: 1_000 });
     expect(buyRefusal(s, 'bmpcc-4k')).toBe('It costs $1,139 and you have $1,000 in your own account.');
+    // Charged what the retailer lists, to the cent (until November 16, 2026, $43 for the $42.99 stand).
     const it = buyGear(s, 'stand-300f');
-    expect(it).toMatchObject({ owner: 'you', paid: 43, condition: 100 });
-    expect(personalBalance(s)).toBe(957);
-    expect(personalStatement(s)).toContainEqual({ kind: 'equipment', total: -43 });
+    expect(it).toMatchObject({ owner: 'you', paid: 42.99, condition: 100 });
+    expect(personalBalance(s)).toBe(957.01);
+    expect(personalStatement(s)).toContainEqual({ kind: 'equipment', total: -42.99 });
     // A purchase the bank can't pay (the debit card short, savings not linked) is refused and leaves nothing bought:
     // until November 15, 2026 it was offered on the accounts' whole balance, the item added before the payment, which
     // then threw, and the item stayed owned, unpaid for.

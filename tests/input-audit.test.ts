@@ -5,6 +5,7 @@
 import { readFileSync, readdirSync } from 'node:fs';
 import { join } from 'node:path';
 import { describe, expect, it } from 'vitest';
+import { bankControls } from './ui-controls';
 
 const root = process.cwd();
 const CLASSES = ['decision', 'identity', 'record', 'view', 'component'];
@@ -40,6 +41,8 @@ function controls(): string[] {
       out.push(`${f} | ${label} | ${n}`);
     }
   }
+  // The bank screens ported from 1221 (src/ui/bankworld), from November 16, 2026 (tests/ui-controls.ts).
+  for (const c of bankControls(root)) out.push(`${c.file} | ${c.label} | ${c.n}`);
   return out;
 }
 

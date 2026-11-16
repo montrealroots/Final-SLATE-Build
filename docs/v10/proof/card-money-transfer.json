@@ -1,7 +1,8 @@
 {
  "id": "card-money-transfer",
  "features": [
-  "bank:card.money_transfer"
+  "bank:card.money_transfer",
+  "field:bankworld/ui/bank/BankCardOffers.tsx#id={`card-money-transfer-${card.id}`}#1"
  ],
  "decision": "Move a thousand from the card into the current account",
  "reads": [

@@ -1,7 +1,8 @@
 {
  "id": "order-source",
  "features": [
-  "bank:bank.set_order_source"
+  "bank:bank.set_order_source",
+  "field:bankworld/ui/bank/BankMoves.tsx#id={`order-from-${o.id}`}#1"
  ],
  "decision": "Have the monthly standing order paid from NatWest",
  "reads": [

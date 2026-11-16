@@ -1,7 +1,8 @@
 {
  "id": "card-statement-day",
  "features": [
-  "bank:card.set_statement_day"
+  "bank:card.set_statement_day",
+  "field:bankworld/ui/bank/BankCard.tsx#id={`card-statement-day-${card.id}`}#1"
  ],
  "decision": "Move the statement to the 28th",
  "reads": [

@@ -87,13 +87,43 @@ const REASONS: Record<string, string> = {
   'Catalog.tsx | at >= pages - 1': 'The line above the list says which page of how many is shown.',
   'Representation.tsx | !!no': 'The line under the agent in Find An Agent gives the reason they can\'t be approached now.',
   'components.tsx | props.disabled': 'Passed through from the caller, which is listed here in its own right.',
+  // The bank screens ported from 1221 (src/ui/bankworld), from November 16, 2026: until then this read src/ui's own
+  // files only. Each was read where it is drawn; every one already said why.
+  'bankworld/ui/bank/BankAccountLife.tsx | Boolean(quote.refused) || term.breakAt !== undefined': 'The line above the buttons says why it can\'t be broken now, or the date it closes on the notice already given.',
+  'bankworld/ui/bank/BankAccountLife.tsx | Math.floor(term.accrued ?? 0) <= 0': 'The button itself reads the interest so far, $0.00.',
+  'bankworld/ui/bank/BankAccountLife.tsx | !!why': 'Under the account\'s line: why canceling is refused (what it owes past what it holds, or Close It\'s own refusal).',
+  'bankworld/ui/bank/BankCard.tsx | Boolean(refused)': 'Under the button: why the bank would refuse the balance transfer.',
+  'bankworld/ui/bank/BankCard.tsx | payable === 0': 'The button itself reads what can be paid, $0.00; the lines above say what the card owes and what your account holds.',
+  'bankworld/ui/bank/BankCard.tsx | !dayWanted || dayWanted === statementDayOf(person, card) || Boolean(statementDayRefusal(person, card))': 'The field beside it shows the current day until another is chosen; a refusal is said under the button (Change The Day: why).',
+  'bankworld/ui/bank/BankCard.tsx | !limitWanted': 'Waits for the limit typed in the field beside it, which names the limit now.',
+  'bankworld/ui/bank/BankCardOffers.tsx | (credit.rewards ?? 0) <= 0': 'The rewards line above says how much there is to redeem: nothing, here.',
+  'bankworld/ui/bank/BankCardOffers.tsx | !moveAmount': 'Waits for the amount typed in the field beside it.',
+  'bankworld/ui/bank/BankCardOffers.tsx | !planAmount || room <= 0': 'Waits for the amount typed beside it; the line above says how much can go into a plan, or that nothing on the card can.',
+  'bankworld/ui/bank/BankCash.tsx | !outAmount || Boolean(quote?.refused)': 'Waits for the amount typed above; once typed, the line above the button says what it costs or why it is refused.',
+  'bankworld/ui/bank/BankCash.tsx | !inAmount': 'Waits for the amount typed in the field above.',
+  'bankworld/ui/bank/BankLending.tsx | !limit': 'Waits for the limit typed in the field beside it; the line above says what the bank would arrange.',
+  'bankworld/ui/bank/BankLending.tsx | !deposit': 'Waits for the amount typed in the field beside it.',
+  'bankworld/ui/bank/BankLending.tsx | !toCollections': 'Waits for the amount typed in the field beside it.',
+  'bankworld/ui/bank/BankLending.tsx | !repay || repay === repayFrom?.id': 'The field beside it shows the account it is repaid from now; choose another.',
+  'bankworld/ui/bank/BankLending.tsx | !quote || \'refused\' in quote': 'Waits for the amount typed above; once typed, the line under the fields says the loan\'s rate and payment, or why the bank refuses it.',
+  'bankworld/ui/bank/BankLending.tsx | !!switching || !target': 'The panel\'s subtitle says a switch is under way and when it is done, and the lines under it describe it.',
+  'bankworld/ui/bank/BankMoves.tsx | !!closing': 'Under the account: You can\'t close it yet, and why.',
+  'bankworld/ui/bank/BankMoves.tsx | !sources[o.id] || sources[o.id] === orderSource(sim, person, o)?.id': 'The field beside it shows the account the order pays from now; choose another.',
+  'bankworld/ui/bank/BankMoves.tsx | !sources[c.id] || sources[c.id] === autopaySource(sim, person, c)?.id': 'The field beside it shows the account autopay pays from now; choose another.',
+  'bankworld/ui/bank/BankMoves.tsx | !chosen || !!refusal': 'Under the bank chosen: why it would refuse the account.',
+  'bankworld/ui/bank/BankPayments.tsx | !soAmount': 'Waits for the amount typed in the field above.',
+  'bankworld/ui/bank/BankPayments.tsx | !spAmount || !spDate': 'Waits for the amount and the date typed in the fields above.',
+  'bankworld/ui/bank/RoundUps.tsx | !on && Boolean(why)': 'Under the buttons: Turn On, and why not.',
+  'bankworld/ui/bank/RoundUps.tsx | Boolean(why)': 'Under the buttons: Save These Choices, and why not.',
+  'bankworld/ui/workspaces/BankWorkspace.tsx | !amount': 'Waits for the amount typed in the field above.',
 };
 for (const f of ['!act.trim()', '!change.trim()', '!changing.kind.trim()', '!changing.rule.trim()', '!claim.trim()', '!label.trim()', '!name.trim()', '!q.trim()', '!rule.trim()', '!thread.trim()', '!text.trim()']) REASONS[`ScriptViews.tsx | ${f}`] = FIELD;
 REASONS['World.tsx | !title.trim()'] = 'Waits for a title for the new project, in the field above.';
 
 function disabledControls(): Set<string> {
   const out = new Set<string>();
-  for (const f of readdirSync('src/ui').filter((x) => x.endsWith('.tsx'))) {
+  // Every .tsx under src/ui, named by its path there: src/ui's own files by their names, as they were keyed before.
+  for (const f of (readdirSync('src/ui', { recursive: true }) as string[]).filter((x) => x.endsWith('.tsx')).map((x) => x.replaceAll('\\', '/'))) {
     const s = readFileSync(`src/ui/${f}`, 'utf8');
     for (const m of s.matchAll(/disabled=\{/g)) {
       let i = m.index! + 10;

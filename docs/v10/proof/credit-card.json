@@ -2,7 +2,8 @@
  "id": "credit-card",
  "features": [
   "bank:card.apply",
-  "bank:bank.set_payments"
+  "bank:bank.set_payments",
+  "field:bankworld/ui/bank/BankPayments.tsx#id=\"pay-everyday\"#1"
  ],
  "decision": "Take a credit card and pay for what you buy with it",
  "reads": [

@@ -1,7 +1,8 @@
 {
  "id": "term-deposit",
  "features": [
-  "bank:bank.open_term"
+  "bank:bank.open_term",
+  "field:bankworld/ui/bank/BankLending.tsx#id={`term-amount${account ? `-${bank.id}` : ''}`}#1"
  ],
  "decision": "Lock a million away in a term deposit on the first day",
  "reads": [
@@ -495,7 +496,7 @@
  ],
  "verdict": "proven",
  "hashes": {
-  "src/engine/bankworld/systems/lending.ts": "4d70426b81705b20",
+  "src/engine/bankworld/systems/lending.ts": "d2131a42dd14812c",
   "tests/proof/career.ts": "50bea06f19a02c5b"
  }
 }

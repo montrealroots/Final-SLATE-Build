@@ -1,7 +1,8 @@
 {
  "id": "card-limit-down",
  "features": [
-  "bank:card.request_limit"
+  "bank:card.request_limit",
+  "field:bankworld/ui/bank/BankCard.tsx#id={`card-limit-${card.id}`}#1"
  ],
  "decision": "Lower the card limit below the camera before buying it",
  "reads": [

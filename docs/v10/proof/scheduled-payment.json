@@ -1,7 +1,9 @@
 {
  "id": "scheduled-payment",
  "features": [
-  "bank:bank.schedule_payment"
+  "bank:bank.schedule_payment",
+  "field:bankworld/ui/bank/BankPayments.tsx#id=\"sp-amount\"#1",
+  "field:bankworld/ui/bank/BankPayments.tsx#id=\"sp-date\"#1"
  ],
  "decision": "Schedule a payment of a million to your own savings a month ahead",
  "reads": [

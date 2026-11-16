@@ -2,7 +2,8 @@
  "id": "bank-savings",
  "features": [
   "bank:bank.open_savings",
-  "bank:bank.transfer"
+  "bank:bank.transfer",
+  "field:bankworld/ui/workspaces/BankWorkspace.tsx#id=\"move-amount\"#1"
  ],
  "decision": "Open a savings account and move $1,000,000 into it",
  "reads": [

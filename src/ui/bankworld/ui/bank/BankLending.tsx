@@ -212,7 +212,7 @@ export function BankLending({ bank, show, account }: { bank: Bank; show: readonl
                     </Gated>
                     {od.perUse && (
                       <label className="row gap-1 small" style={{ alignItems: 'center' }}>
-                        <input type="checkbox" checked={perUse} onChange={(e) => setPerUse(e.target.checked)} /> Pay Per Use
+                        <input id="od-per-use" type="checkbox" checked={perUse} onChange={(e) => setPerUse(e.target.checked)} /> Pay Per Use
                       </label>
                     )}
                   </div>
@@ -301,7 +301,7 @@ export function BankLending({ bank, show, account }: { bank: Bank; show: readonl
             <div className="field-act">
               <div className="field"><label htmlFor="collections-pay">{`Pay Toward It (${cur})`}</label><input id="collections-pay" type="text" inputMode="decimal" value={toCollections} onChange={(e) => setToCollections(e.target.value)} /></div>
               <Gated feature="bank.pay_collections" className="btn btn-sm" disabled={!toCollections}
-                onClick={() => { if (run('bank.pay_collections', { amount: cents(toCollections), debtId: debt.id }).ok) { toast(`Paid ${money(cents(toCollections))} toward the debt.`, 'positive'); setToCollections(''); } }}>
+                onClick={() => { const a = run<{ paid: number; left: number }>('bank.pay_collections', { amount: cents(toCollections), debtId: debt.id }); if (a.ok && a.value) { toast(a.value.left > 0 ? `Paid ${money(a.value.paid)} toward the debt; ${money(a.value.left)} is still owed.` : `Paid ${money(a.value.paid)}: the debt is paid off.`, 'positive'); setToCollections(''); } }}>
                 Pay It
               </Gated>
             </div>
@@ -436,7 +436,7 @@ export function BankLending({ bank, show, account }: { bank: Bank; show: readonl
             )}
             <Fine>Source: {rule.source}.</Fine>
             {bank.iso === 'GB' && (
-              <label className="row gap-1 small" style={{ alignItems: 'center' }}><input type="checkbox" checked={partial} onChange={(e) => setPartial(e.target.checked)} /> Partial: your payments move, the old account stays open, and it takes {CASS.partialDays} working days</label>
+              <label className="row gap-1 small" style={{ alignItems: 'center' }}><input id="switch-partial" type="checkbox" checked={partial} onChange={(e) => setPartial(e.target.checked)} /> Partial: your payments move, the old account stays open, and it takes {CASS.partialDays} working days</label>
             )}
             <div className="field-act">
               <div className="field"><label htmlFor="switch-to">Switch To</label><select id="switch-to" value={target} onChange={(e) => setTarget(e.target.value)}>

@@ -1,7 +1,8 @@
 {
  "id": "cash-deposit",
  "features": [
-  "bank:cash.deposit"
+  "bank:cash.deposit",
+  "field:bankworld/ui/bank/BankCash.tsx#id=\"cash-in\"#1"
  ],
  "decision": "Pay the five hundred drawn out back in at the counter",
  "reads": [
