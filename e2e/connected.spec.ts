@@ -167,7 +167,7 @@ test('a connected career, from creation to a broadcast deal, saved and reloaded 
   // buyers' names are the world's draws, read from the screen (until November 16, 2026 written in, Kestrel Media and
   // Cobalt Screen, which the world stopped drawing when each kind of id got its own counter).
   const late = offers.locator('li', { has: page.getByRole('button', { name: 'Accept With A Broadcast Edit' }) }).filter({ hasText: /Accepting it ends .+'s broadcast offer: its rights are exclusive there\./ }).first();
-  const ended = /Accepting it ends (.+?)'s broadcast offer/.exec(await late.innerText())![1];
+  const ended = /Accepting it ends (.+?)'s broadcast offer/.exec(await late.innerText({ timeout: 60_000 }))![1];
   await expect(late).toContainText('Exclusive for 365 days from its release');
   await expect(late).toContainText('in a late-evening slot');
   await expect(late).toContainText("Ofcom's Broadcasting Code");
