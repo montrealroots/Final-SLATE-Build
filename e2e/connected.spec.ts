@@ -4,7 +4,7 @@
 // iphone-15-pro-max runs in WebKit with the iPhone's viewport and user agent. All are browser emulation, not devices.
 // The only fixture is the pinned world seed (helpers.ts pinSeed), chosen so a broadcaster makes an offer.
 import { expect, test, type Page } from './test';
-import { addScene, advance, castRoles, createCharacter, freshStart, nav, pinSeed, pressSaveAndExit, runToDelivery, section, secureStartingBacking, staffEveryDepartment, writePitch, readSavedState,
+import { addScene, advance, castRoles, createCharacter, editSave, freshStart, nav, pinSeed, pressSaveAndExit, runToDelivery, section, secureStartingBacking, staffEveryDepartment, writePitch, readSavedState,
 } from './helpers';
 
 const SEED = Number(process.env.TRY_SEED ?? 7);
@@ -153,6 +153,18 @@ test('a connected career, from creation to a broadcast deal, saved and reloaded 
   await expect(page.locator('section.card', { has: page.getByRole('heading', { name: "People You've Worked With" }) })).toContainText(/Hard Water \([^)]*, worked through to delivery, [A-Z][a-z]+ \d{1,2}, \d{4}\)/);
   // Credits across projects (SLATE-18-01): the delivered project is listed with what you did on it.
   await expect(page.locator('section.card', { has: page.getByRole('heading', { name: 'Credits', exact: true }) }).getByRole('button', { name: 'Hard Water' }).first()).toBeVisible();
+  // Labelled fixture (from November 16, 2026): two broadcasters' offers for the delivered film, an exclusive one in a
+  // late-evening slot and another it ends. The world drew them with this seed until each kind of id got its own counter;
+  // since, no seed from 1 to 100 draws that pair, so the journey puts it in the save. The exclusive one holds every market
+  // a later window can draw from, so that window finds nothing left to offer, as below.
+  await editSave(page, (st) => {
+    const pr = st.projects.find((x: { title: string }) => x.title === 'Hard Water');
+    const open = { route: 'broadcast', releaseWindowDays: 60, expiresAt: st.now + 21 * 86_400_000, status: 'open', slot: 'late' };
+    pr.offers.push(
+      { ...open, id: 'do_fixture_1', distributor: 'Kestrel Media', minimumGuarantee: 30_000, editedGuarantee: 40_000, exclusive: true, territories: ['GB', 'US', 'FR', 'DE', 'ES', 'IT', 'JP', 'BR', 'CA', 'AU', 'KR', 'MX', 'IN'] },
+      { ...open, id: 'do_fixture_2', distributor: 'Cobalt Screen', minimumGuarantee: 24_000, editedGuarantee: 32_000, territories: ['GB'] },
+    );
+  });
   await nav(page, 'Projects');
   await page.getByRole('button', { name: 'Hard Water' }).click();
 

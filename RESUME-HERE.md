@@ -307,6 +307,10 @@ and the rest) with real grades filling the hiring lists.
     - one moved inside its seeds' spread at 40 careers and runs at 100, as its explanation said.
     All seven reran proven: the matrix is 505 proven, open 0, measured on the game as it is now. `npm run check`
     passed (1,736 tests).
+  - The journeys whose world seeds were chosen for an outcome were re-chosen (nine; each says what it was). Connected's
+    pair of broadcast offers, one exclusive and in a late slot, no seed from 1 to 100 draws now: the journey puts the
+    pair in the save as a labelled fixture (`editSave` in e2e/helpers.ts, which `pinSeed` now uses). The desktop
+    journeys all passed (214 run: 203 at first, then the eleven fixed, 31 tests in their files; phone, 10 of those).
 Still the game's own figures: the stop-motion and creature materials and the broadcast edit (no published per-item price
 found).
 
