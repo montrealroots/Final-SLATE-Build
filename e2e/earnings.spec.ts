@@ -7,7 +7,7 @@ import { expect, test, type Page } from './test';
 import { addScene, advance, nav, newProject, pinSeed, pressSaveAndExit, produceToDelivery, quickLife, readSavedState, section, writePitch } from './helpers';
 import { audit } from './ui-audit';
 
-const SEED = 3;
+const SEED = Number(process.env.TRY_SEED ?? 3);
 /** The kind of release the distributor offers Tidewater in this world: what the game drew, read once and recorded. */
 const ROUTE_PLAYED = 'theatrical';
 const card = (page: Page, heading: string) => page.locator('section.card', { has: page.getByRole('heading', { name: heading, exact: true }) });

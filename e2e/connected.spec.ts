@@ -7,7 +7,7 @@ import { expect, test, type Page } from './test';
 import { addScene, advance, castRoles, createCharacter, freshStart, nav, pinSeed, pressSaveAndExit, runToDelivery, section, secureStartingBacking, staffEveryDepartment, writePitch, readSavedState,
 } from './helpers';
 
-const SEED = 7;
+const SEED = Number(process.env.TRY_SEED ?? 7);
 const shot = (page: Page, project: string, name: string) => page.screenshot({ path: `test-results/connected-${project}-${name}.png`, fullPage: true });
 
 /** Save & Exit, then Continue: the game must come back exactly as it was. */

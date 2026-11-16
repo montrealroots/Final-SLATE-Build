@@ -176,7 +176,7 @@ test('hybrid: a live scene changed after its plate was integrated is picked up, 
 const ALL_AGREE = 2;
 const RAIN_SEED = 2;
 const PUPPET_SEED = 2;
-const ONE_DECLINES = 3;
+const ONE_DECLINES = Number(process.env.TRY_SEED ?? 3);
 
 async function lockKeepers(page: Page, seed: number): Promise<void> {
   await seededLife(page, 'nl-amsterdam', '2026-03-02', seed);

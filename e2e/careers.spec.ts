@@ -13,7 +13,7 @@ import {
   secureStartingBacking, staffEveryDepartment, writePitch,
 } from './helpers';
 
-const SEEDS = { tv: 11, stopMotion: 23, behindTheCamera: 31 };
+const SEEDS = { tv: 11, stopMotion: Number(process.env.TRY_SEED ?? 23), behindTheCamera: 31 };
 test.use({ actionTimeout: 20_000 });
 const shot = (page: Page, project: string, name: string) => page.screenshot({ path: `test-results/careers-${project}-${name}.png`, fullPage: true });
 
