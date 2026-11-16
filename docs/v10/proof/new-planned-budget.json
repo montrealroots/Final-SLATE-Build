@@ -457,7 +457,7 @@
  "verdict": "proven",
  "hashes": {
   "src/engine/project-budget.ts": "06febb91f5c4d7b3",
-  "src/engine/personal.ts": "0c2d139bab10c90b",
+  "src/engine/personal.ts": "33216a033c9ded6f",
   "src/engine/hiring.ts": "a727f08b0ae8c07f",
   "tests/proof/career.ts": "50bea06f19a02c5b"
  }

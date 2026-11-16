@@ -442,7 +442,7 @@
  ],
  "verdict": "proven",
  "hashes": {
-  "src/engine/state.ts": "f0c36a9a0911cce6",
+  "src/engine/state.ts": "3f1abbfc682ee413",
   "src/engine/production/shoot.ts": "4f6baad6273bf3d7",
   "tests/proof/career.ts": "50bea06f19a02c5b"
  }

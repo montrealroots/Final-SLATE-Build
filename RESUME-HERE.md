@@ -262,6 +262,9 @@ and the rest) with real grades filling the hiring lists.
   - Your Papers: a "Where You Are" card (days used, last day, overstays) and each country's visit limit and refusal.
   - Proof: `off-stay-limit` (20 careers, scheduled runner): with the event on, the overstay voids the ESTA, the second
     trip asks for a visa ($130 more in fees) and doesn't happen; off, the 30-day second trip does.
+  - The 18 proofs the change made stale (they read papers, state, personal or save) were rerun and copied in, all
+    proven: 504 proven, open 1. `npm run check` passed (1,730 tests); `e2e/v9-papers.spec.ts` passed on desktop and
+    phone.
 Open, explained: moving an episode (once the arms differ, every later scene, hire and offer is numbered differently and
 the draws follow the numbers). Found on the way, not yet fixed: an electronic authorization (ESTA, the UK's ETA,
 Canada's eTA and 30 other destinations' `eta` entries) is charged the visitor visa's estimate (for the US $135 and 64
