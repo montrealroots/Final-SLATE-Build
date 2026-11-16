@@ -55,19 +55,27 @@ test('a line producer negotiates a counteroffer: asked with its cost, the answer
   }
   const lp = await saved(lineProducer, 30_000);
 
-  // A director of photography is offered four fifths of what they ask, and answers with a counteroffer.
-  await section(page, 'Crew');
-  await row('Director Of Photography').getByRole('button', { name: 'Find Candidates' }).click();
-  const dialog = page.getByRole('dialog', { name: 'Hire A Director Of Photography' });
-  const first = dialog.getByRole('listitem').first();
-  const name = (await first.locator('strong').first().textContent())!;
-  const ask = Number((await first.getByText(/Asks \$[\d,]+ a day\./).textContent())!.match(/Asks \$([\d,]+)/)![1].replace(/,/g, ''));
-  const offered = Math.round(ask * 0.8);
-  await first.getByLabel(`Day Rate For ${name}`).fill(String(offered));
-  await first.getByRole('button', { name: 'Make Offer' }).click();
-  await expect(dialog).toHaveCount(0);
-  const theirs = hires.getByRole('row', { name: new RegExp(name) });
-  for (let i = 0; i < 4 && await theirs.getByText('Offer Sent').count(); i++) { await advance(page, 'next-day'); await section(page, 'Crew'); }
+  // A director of photography is offered four fifths of what they ask, and answers with a counteroffer. One booked
+  // elsewhere during the production turns down any offer (hiring.ts resolveOffer), and which are booked follows the
+  // world's other productions, so a candidate who declines is followed by the next (found November 16, 2026, when
+  // the first candidate on CI's WebKit run was booked).
+  let name = '', ask = 0, offered = 0;
+  let theirs = hires.getByRole('row', { name: /^$/ });
+  for (let c = 0; c < 3; c++) {
+    await section(page, 'Crew');
+    await row('Director Of Photography').getByRole('button', { name: 'Find Candidates' }).click();
+    const dialog = page.getByRole('dialog', { name: 'Hire A Director Of Photography' });
+    const candidate = dialog.getByRole('listitem').nth(c);
+    name = (await candidate.locator('strong').first().textContent())!;
+    ask = Number((await candidate.getByText(/Asks \$[\d,]+ a day\./).textContent())!.match(/Asks \$([\d,]+)/)![1].replace(/,/g, ''));
+    offered = Math.round(ask * 0.8);
+    await candidate.getByLabel(`Day Rate For ${name}`).fill(String(offered));
+    await candidate.getByRole('button', { name: 'Make Offer' }).click();
+    await expect(dialog).toHaveCount(0);
+    theirs = hires.getByRole('row', { name: new RegExp(name) });
+    for (let i = 0; i < 4 && await theirs.getByText('Offer Sent').count(); i++) { await advance(page, 'next-day'); await section(page, 'Crew'); }
+    if (!(await theirs.getByText('Declined').count())) break;
+  }
   await expect(theirs).toContainText(`Asks ${dollars(ask)} a day`);
 
   // Asked: the row says who, what it costs and how much is in question, before the button.
