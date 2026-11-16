@@ -12,7 +12,10 @@ import { buildProject } from '../../helpers';
 const live = (s: GameState) => s.projects.filter((p) => !p.delivered && !p.edit.pictureLocked);
 /** Effects are made after the picture is locked: once they are done, before delivery, the picture is opened again
  *  (as the game asks: "Unlock picture to send effects back") and each scene with an effect is sent back once. */
-const reviseAll = () => { const done = new Set<string>(); return (s: GameState, p: Project) => {
+// Kept for each career (each state), not across them: from November 16, 2026 every career's ids are alike (`pr_1`, `s_1`),
+// as each kind counts on its own, and one set shared by all of them marked the second career's work done already.
+const reviseAll = () => { const sets = new WeakMap<GameState, Set<string>>(); return (s: GameState, p: Project) => {
+  const done = sets.get(s) ?? sets.set(s, new Set()).get(s)!;
   if (p.delivered) return;
   {
     if (p.tasks.find((t) => t.kind === 'post:vfx')?.status !== 'done' || editScenes(p).every((x) => !x.vfx.length || done.has(`${p.id}:${x.id}`))) return;

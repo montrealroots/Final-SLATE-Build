@@ -33,7 +33,10 @@ const withLineProducer = (s: GameState, p: Project) => {
   if (best) try { makeOffer(s, p, { personId: best.id, roleId: 'line-producer', dayRate: best.dayRate }); } catch { /* not this one */ }
 };
 /** Before each day's management accepts a counteroffer: the line producer negotiates it, once each. */
-const negotiateCounters = () => { const done = new Set<string>(); return (s: GameState, p: Project) => {
+// Kept for each career (each state), not across them: from November 16, 2026 every career's ids are alike (`pr_1`, `s_1`),
+// as each kind counts on its own, and one set shared by all of them marked the second career's work done already.
+const negotiateCounters = () => { const sets = new WeakMap<GameState, Set<string>>(); return (s: GameState, p: Project) => {
+  const done = sets.get(s) ?? sets.set(s, new Set()).get(s)!;
   for (const h of p.hires.filter((x) => x.status === 'countered' && !done.has(x.id))) {
     if (!negotiationRefusal(p, h.id)) { try { negotiate(s, p, h.id); } catch { /* not now */ } done.add(h.id); }
   }
