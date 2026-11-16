@@ -14,6 +14,7 @@
 // Buyers, the sales agent and the services are fictional; amounts are game calibration, labelled so where they show.
 import { cancel, closeSettled, ledgerTotals, money, reserve, settle } from './budget';
 import { heldTerritories } from './distribution';
+import { RENTAL_SHARE } from './box-office';
 import { DELIVERY_MATERIALS, DISTRIBUTORS, EXCLUSIVE_DAYS, festivalHold, planRelease, setReleaseVersion, subtitlingCost, versionRefusal } from './finish';
 import { isEpisodic, isNonfiction } from './projects';
 import { contentLevel, documentsNeeded } from './script-effects';
@@ -25,7 +26,7 @@ import type { BuyerRoute, DistributionOffer, GameState, LicenceProposal, PlanRou
 
 export const PLAN_ROUTES: Record<PlanRoute, { label: string; kind: 'festival' | 'buyer' | 'self'; how: string; films?: true }> = {
   'festival-first': { label: 'Festival-First', kind: 'festival', how: 'Festivals first, entered from the Festivals page: nothing is released publicly before the date you hold it for, so it can premiere there.' },
-  'partner-theatrical': { label: 'Partner-Assisted Theatrical', kind: 'self', films: true, how: 'A booking partner books screens for you on a service deal. Nobody has to accept it, but you pay up front: the partner\'s fee and each territory\'s screen rental. You keep the film rental, less the partner\'s 10%.' },
+  'partner-theatrical': { label: 'Partner-Assisted Theatrical', kind: 'self', films: true, how: 'A booking partner books screens for you on a service deal. Nobody has to accept it, but you pay each territory\'s screen rental up front. You keep the film rental, less the partner\'s 15% of the ticket sales.' },
   'distributor-sales': { label: 'Distributor Sales', kind: 'buyer', films: true, how: 'A licence proposal to a distributor, for its cinemas. It accepts, counters or rejects it. It pays a guarantee, and overages after its 35% fee.' },
   'broadcast-licence': { label: 'Broadcast Licence', kind: 'buyer', how: 'A licence proposal to a broadcaster. It accepts, counters or rejects it, and pays a licence fee.' },
   'streaming-licence': { label: 'Streaming Licence', kind: 'buyer', how: 'Selective streaming services take submissions only from distributors and sales agents they know, so a sales agent sends your proposal and takes 20% of the fee. You can\'t upload a film to one.' },
@@ -46,11 +47,17 @@ export const AGENT_SHARE = 0.2;
 export const BUYER_BAR: Record<BuyerRoute, number> = { 'distributor-sales': 50, 'broadcast-licence': 55, 'streaming-licence': 65 };
 export const ANSWER_DAYS: Record<BuyerRoute, number> = { 'distributor-sales': 21, 'broadcast-licence': 21, 'streaming-licence': 28 };
 const RELEASE_ROUTE: Record<BuyerRoute, DistributionOffer['route']> = { 'distributor-sales': 'theatrical', 'broadcast-licence': 'broadcast', 'streaming-licence': 'streaming' };
-/** What the routes you run yourself cost and keep. Game calibration. */
+/** What the routes you run yourself cost and keep. Game calibration, apart from the booking partner's share. */
 export const AGGREGATOR_FEE = 1_300;
-export const PARTNER_FEE = 5_000;
 export const SCREEN_RENTAL = 7_000;
-export const SELF_SHARE: Record<'partner-theatrical' | 'transactional' | 'direct', number> = { 'partner-theatrical': 0.1, transactional: 0.3, direct: 0.1 };
+/**
+ * A theatrical booker takes "a percentage of box office gross, with a range of around 15% being a common average", or
+ * works on a retainer (Alex Megaro, International Documentary Association, July 30, 2026). The share is taken from the
+ * film rental (box-office.ts), so 15% of the ticket sales is 15% over the share cinemas pass on. Until November 16,
+ * 2026 the partner charged $5,000 on booking and kept 10% of the rental: a retainer and a share, both the game's own.
+ */
+export const BOOKER_SHARE_OF_GROSS = 0.15;
+export const SELF_SHARE: Record<'partner-theatrical' | 'transactional' | 'direct', number> = { 'partner-theatrical': BOOKER_SHARE_OF_GROSS / RENTAL_SHARE, transactional: 0.3, direct: 0.1 };
 const SELF_NAMES: Record<'partner-theatrical' | 'transactional' | 'direct', string> = {
   'partner-theatrical': 'Your Booking Partner', transactional: 'The Digital Stores, Through Your Aggregator', direct: 'Your Own Storefront',
 };
@@ -209,7 +216,6 @@ export type SelfRoute = 'partner-theatrical' | 'transactional' | 'direct';
 export function selfCosts(p: Project, route: SelfRoute, territories: string[], promo: number): { label: string; amount: number; when: 'now' | 'release' }[] {
   const out: { label: string; amount: number; when: 'now' | 'release' }[] = [];
   if (route === 'partner-theatrical') {
-    out.push({ label: 'The Booking Partner\'s Fee', amount: PARTNER_FEE, when: 'now' });
     out.push({ label: `Screen Rental In ${territories.length === 1 ? 'One Territory' : `${territories.length} Territories`}`, amount: SCREEN_RENTAL * territories.length, when: 'now' });
     out.push({ label: 'Cinema Delivery Materials', amount: DELIVERY_MATERIALS.theatrical, when: 'release' });
   }

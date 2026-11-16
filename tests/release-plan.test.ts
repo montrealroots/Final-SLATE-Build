@@ -2,9 +2,10 @@
 // built, its pitch written, marked delivered and received as given, with money in its budget, so each test is about
 // the plan. Controlled comparisons: one film, one ask higher than the next; one reception under a buyer's bar and over.
 import { describe, expect, it } from 'vitest';
+import { RENTAL_SHARE } from '../src/engine/box-office';
 import { DAY, acceptDistribution, deserialize, ledgerTotals, planRelease, processUntil, serialize } from './engine-api';
 import {
-  AGENT_SHARE, AGGREGATOR_FEE, BUYERS, PARTNER_FEE, SCREEN_RENTAL, alternatives, buyerValue, planRefusal, proposalRefusal, proposeLicence, releaseYourself,
+  AGENT_SHARE, AGGREGATOR_FEE, BOOKER_SHARE_OF_GROSS, BUYERS, SCREEN_RENTAL, SELF_SHARE, alternatives, buyerValue, planRefusal, proposalRefusal, proposeLicence, releaseYourself,
   selfCosts, selfRefusal, setReleasePlan,
 } from '../src/engine/release-plan';
 import { promoLift, reportedGross } from '../src/engine/distribution';
@@ -105,7 +106,9 @@ describe('a licence proposal', () => {
 describe('releasing it yourself', () => {
   it('names every cost first, books with nobody to accept it, and earns from its reports, more with promotion', () => {
     const { s, p } = film('rp-self', 70);
-    expect(selfCosts(p, 'partner-theatrical', ['GB', 'IE'], 0).map((c) => c.amount)).toEqual([PARTNER_FEE, 2 * SCREEN_RENTAL, 6_000]);
+    // No fee on booking: the partner takes its share of the ticket sales instead, 15% of them, from the film rental.
+    expect(selfCosts(p, 'partner-theatrical', ['GB', 'IE'], 0).map((c) => c.amount)).toEqual([2 * SCREEN_RENTAL, 6_000]);
+    expect(SELF_SHARE['partner-theatrical'] * RENTAL_SHARE).toBeCloseTo(BOOKER_SHARE_OF_GROSS, 10);
     setReleasePlan(s, p, plan(s, p, { routes: ['transactional'], promo: 20_000 }));
     expect(selfCosts(p, 'transactional', ['GB'], 20_000)).toEqual([{ label: "The Aggregator's Fee, Encoding And Quality Check", amount: AGGREGATOR_FEE, when: 'now' }, { label: 'Promotion', amount: 20_000, when: 'release' }]);
     const free = ledgerTotals(p).available;
