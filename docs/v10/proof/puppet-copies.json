@@ -428,7 +428,7 @@
  ],
  "verdict": "proven",
  "hashes": {
-  "src/engine/production/workday.ts": "2ea4114ff7ef43a1",
+  "src/engine/production/workday.ts": "b664860335b36d40",
   "tests/proof/career.ts": "50bea06f19a02c5b"
  }
 }

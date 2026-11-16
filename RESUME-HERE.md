@@ -285,6 +285,10 @@ and the rest) with real grades filling the hiring lists.
   location, the game's own). The rest of "other materials" (creature builds, armatures, puppets, faces, stop-motion
   costumes and sets) and the broadcast edit stay modeled: no published per-item figure was found (searched November 16,
   2026); the edit's row names an editor's week, $2,500, as what it is set beside.
+  The eight proofs that read the material code were rerun, all proven (504 proven, open 1). `scene-night` now measures
+  its bite as what cast and crew were paid (+$1,545 a career at 120 careers): what all was spent had fallen inside the
+  noise once location permits cost more. `npm run check` passed (1,736 tests); the destinations, money, J01,
+  live-action and first-project journeys passed.
 Open, explained: moving an episode (once the arms differ, every later scene, hire and offer is numbered differently and
 the draws follow the numbers). Possible next step: key the game's draws by something both arms share.
 
