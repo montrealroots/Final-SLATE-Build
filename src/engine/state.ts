@@ -640,6 +640,10 @@ export function travelHours(a: Place, b: Place): number {
   return Math.round(km / 800 + 3);
 }
 
+/** What else happens on arriving somewhere (papers.ts: a stay in a country begins), after the place is yours. */
+const arrivals: ((s: GameState, from: Place, to: Place) => void)[] = [];
+export function onArrival(fn: (s: GameState, from: Place, to: Place) => void): void { arrivals.push(fn); }
+
 /** Why a trip to a place is refused by something outside travel (papers.ts: entering a country), or null. */
 const travelChecks: ((s: GameState, to: Place) => string | null)[] = [];
 export function onTravelCheck(fn: (s: GameState, to: Place) => string | null): void { travelChecks.push(fn); }
@@ -666,9 +670,11 @@ export function travelTo(state: GameState, placeId: string): number {
 
 registerHandler('arrive', (state, ev) => {
   const to = String(ev.payload.to);
+  const from = getPlace(state.travel?.from ?? state.locationId);
   state.locationId = to;
   state.travel = null;
   const place = getPlace(to);
+  for (const f of arrivals) f(state, from, place);
   const text = `You've arrived in ${place.name}.`;
   addLog(state, text, 'personal', { route: { view: 'place', placeId: to } });
   return { message: text };

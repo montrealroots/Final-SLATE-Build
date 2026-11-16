@@ -486,7 +486,7 @@
  ],
  "verdict": "proven",
  "hashes": {
-  "src/engine/papers.ts": "1a24b4c076ba83cc",
+  "src/engine/papers.ts": "8b9f10a865899bc9",
   "tests/proof/career.ts": "50bea06f19a02c5b"
  }
 }

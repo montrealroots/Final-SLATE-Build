@@ -97,7 +97,8 @@ const ACTIONS: Record<string, { preview: string; outcome: string }> = {
 const NOT_ACTIONS = new Set(['commit', 'newGame', 'scheduleChangeEffects']); // a portrait picker's own commit(); starting a life; a preview tried on a copy of the game
 // What a save does as it loads: it grants an older story abroad the visa it arrived on, fee settled, and schedules its end.
 // Every save action loads a save, and none of them is the player spending (from November 14, 2026).
-const ON_LOAD = new Set(['grantArrivalPapers']);
+// From November 16, 2026 it also starts an older story's stay where it is, and watches that visit's last day.
+const ON_LOAD = new Set(['grantArrivalPapers', 'startStays']);
 
 function spendingActions(): string[] {
   const files: string[] = [];

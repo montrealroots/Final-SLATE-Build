@@ -20,8 +20,8 @@ import workData from '../data/papers/work.json';
 import citizenshipData from '../data/papers/citizenship.json';
 import refusalData from '../data/papers/refusals.json';
 import sponsorData from '../data/papers/sponsors.json';
-import { addLog, adoptPlace, newId, onTravelCheck, registerHandler, schedule, travelTo } from './state';
-import { DAY, dateKey } from './time';
+import { addLog, adoptPlace, newId, onArrival, onTravelCheck, registerHandler, schedule, travelTo } from './state';
+import { DAY, addDaysToKey, dateKey } from './time';
 import { countryName } from '../world/gazetteer/gazetteer';
 import { getPlace } from '../data/places';
 import { advanceBankWorld, bankSim, cityForPlace } from './bankworld';
@@ -128,6 +128,8 @@ export function entryRight(state: GameState, country: string): EntryRight {
   if (!rules.length) return { kind: 'unknown', why: `The game has no record of who may visit ${the(country)}.` };
   if (rules.some((x) => x.r === 'home')) return { kind: 'home', why: `Your passport is ${the(country)}'s own.` };
   const best = rules.map((x) => ({ n: x.n, r: x.r as Visit })).sort((a, b) => ENTRY_ORDER.indexOf(a.r.entry) - ENTRY_ORDER.indexOf(b.r.entry))[0];
+  // An overstay in the United States ends visiting it on the Visa Waiver Program's authorization (from November 16, 2026).
+  if (best.r.entry === 'eta' && borderOf(country) === 'US' && overstayedInUS(state)) return { kind: 'needs', entry: 'visa', why: `You overstayed in the United States once, and its Visa Waiver Program never admits a visitor who has: to visit, you need a visa.` };
   if (best.r.entry === 'free') return { kind: 'free', days: best.r.days, within: best.r.within, why: `Your passport from ${the(best.n)} lets you visit ${the(country)} without a visa${best.r.days ? `, for up to ${best.r.days} days${best.r.within ? ` in any ${best.r.within}` : ''}` : ''}.` };
   return { kind: 'needs', entry: best.r.entry, days: best.r.days, why: `To visit ${the(country)} on your passport from ${the(best.n)} you need ${ENTRY_WORDS[best.r.entry]}.` };
 }
@@ -246,6 +248,8 @@ function passportNeed(state: GameState, t: Terms): { passport: PersonDocument } 
 export function visaCheck(state: GameState, country: string): ApplicationCheck {
   const e = entryRight(state, country);
   if (e.kind !== 'needs') return { ok: false, why: e.kind === 'unknown' ? e.why : `You don't need a visa: ${e.why}` };
+  const bar = barredFrom(state, country);
+  if (bar) return { ok: false, why: bar.why };
   if (applications(state).some((a) => a.kind === 'visa' && a.country === country && a.stage === 'applied')) return { ok: false, why: 'Your application is being decided.' };
   const t = visaFor(state, country);
   const need = passportNeed(state, t);
@@ -336,6 +340,8 @@ export function permitCheck(state: GameState, country: string, activity: Activit
   const t = permitTerms(country, route ?? 'Work permit');
   // A work visa where you live can be renewed once its end is nearer than its decision and a month (game calibration).
   const renewable = !!held && home && held.expiresAt !== undefined && held.expiresAt - state.now <= (t.days + RENEW_MARGIN_DAYS) * DAY;
+  const bar = barredFrom(state, country);
+  if (bar) return { ok: false, why: bar.why };
   if (w.can && !renewable) return { ok: false, why: `You may already work there: ${w.why}` };
   if (!route && !WORK.countries[country]) return { ok: false, why: w.why };
   if (applications(state).some((a) => a.kind === 'permit' && a.country === country && (home || (a.activity ?? 'act') === activity) && a.stage === 'applied')) return { ok: false, why: 'Your application is being decided.' };
@@ -471,6 +477,7 @@ export function moveTo(state: GameState, placeId: string): void {
   state.character.livesIn = to.id;
   const visa = permitIn(state, to.country);
   if (visa && !isCitizen(state, to.country)) visa.all = true;
+  restartStay(state);
   let opened: string | null | undefined;
   if (state.bank) {
     advanceBankWorld(state.bank, state.now);
@@ -489,6 +496,261 @@ export function moveTo(state: GameState, placeId: string): void {
   addLog(state, `You moved from ${from.name} to ${to.name}${visa && !isCitizen(state, to.country) ? `, on your ${visa.route}` : ''}.${bankWords}${state.travel ? ' You set off now.' : ''}`, 'personal', { route: { view: 'papers' } });
 }
 
+// ---------------- staying ----------------
+//
+// From November 16, 2026 (the owner's list: "count days of stay against a visit's limit; make travel ask for entry"):
+// until then a visitor could stay anywhere for as long as the story ran, and the days in the visit records were shown
+// and read by nothing. Now each stay is recorded as you arrive, a visit's days are counted against its limit, and the
+// border refuses a visitor who has no days left. Staying past the limit is an overstay. Its consequences are modeled
+// where the law fixes them: the United States' (8 U.S.C. 1182(a)(9)(B), and the Visa Waiver Program's own condition,
+// 1187(a)(7)) and the United Kingdom's (Immigration Rules, Part 9, 9.8.7). Where a state decides case by case (a
+// Schengen state may fine you or ban you), the overstay is recorded and nothing more is invented.
+
+/** A stay in a country, from arriving to leaving: open while you're there. `free`: with the right to stay (not a visit). */
+export interface Stay { country: string; from: number; until?: number; free?: boolean }
+/** A stay past what the visit allowed: from its first day over to the day you left the place it was counted in. */
+export interface Overstay { country: string; area: string; from: number; left?: number }
+
+/**
+ * The Schengen area counts one 90 days in any 180 across all its states (the Schengen Borders Code, Regulation (EU)
+ * 2016/399, article 6(1)): its 29 states (REFUSALS.schengen), plus Monaco, San Marino, the Vatican and Åland, which have
+ * no border with it.
+ */
+const SCHENGEN_AREA = new Set([...REFUSALS.schengen, 'MC', 'SM', 'VA', 'AX']);
+/**
+ * Territories inside their state's border: Puerto Rico and the US Virgin Islands are admitted to as the United States
+ * (8 U.S.C. 1101(a)(38)). Every other territory keeps its own immigration (Hong Kong, Bermuda, Guam's own visa waiver),
+ * so it counts its visits apart.
+ */
+const ONE_BORDER: Record<string, string> = { PR: 'US', VI: 'US' };
+const borderOf = (c: string) => ONE_BORDER[c] ?? c;
+/** Whether two countries are one place to the border: within the Schengen area, or one state's admission. */
+const sameArea = (a: string, b: string) => borderOf(a) === borderOf(b) || (SCHENGEN_AREA.has(a) && SCHENGEN_AREA.has(b));
+/** The warning comes this many days before a visit's last day (game calibration). */
+export const STAY_WARNING_DAYS = 7;
+
+export interface StayLimit {
+  /** Where the days are counted, as a sentence says it: "the Schengen area", "the United States". */
+  area: string;
+  /** Whether a country's days count toward it. */
+  counts: (country: string) => boolean;
+  days: number;
+  /** A rolling window: `days` in any `within`. Without one, each visit may last `days`, or `months`. */
+  within?: number;
+  months?: number;
+  basis: string;
+}
+
+/** Whether you may stay in `country` as long as you like: a citizen, living there, a work visa there, or free movement. */
+const mayStay = (state: GameState, country: string) => isCitizen(state, country) || livesIn(state) === country || !!permitIn(state, country) || !!freeMovement(state, country);
+
+/** The visit record of your best passport for `country`, as `entryRight` chooses it, or nothing where none is kept. */
+function bestVisit(state: GameState, country: string): { n: string; r: Visit } | undefined {
+  const rules = citizenships(state).map((n) => ({ n, r: visitRule(n, country) })).filter((x): x is { n: string; r: Visit } => x.r !== undefined && x.r !== 'home');
+  return rules.sort((a, b) => ENTRY_ORDER.indexOf(a.r.entry) - ENTRY_ORDER.indexOf(b.r.entry))[0];
+}
+
+/** How long a visit to `country` may last, and where its days are counted; nothing where you may stay, or no limit is kept. */
+export function stayLimit(state: GameState, country: string): StayLimit | undefined {
+  if (mayStay(state, country)) return undefined;
+  // Days with the right to stay (a stay marked `free`) don't count: a resident of one Schengen state visits the others.
+  if (SCHENGEN_AREA.has(country)) return { area: 'the Schengen area', counts: (c) => SCHENGEN_AREA.has(c), days: 90, within: 180, basis: 'the Schengen Borders Code, which allows 90 days in any 180 across all the Schengen states' };
+  const v = bestVisit(state, country);
+  if (!v || (!v.r.days && !v.r.months)) return undefined;
+  const border = borderOf(country);
+  const counts = (c: string) => borderOf(c) === border;
+  const basis = `the visit rules for your passport from ${the(v.n)}`;
+  if (v.r.days && v.r.within) return { area: the(border), counts, days: v.r.days, within: v.r.within, basis };
+  if (v.r.days) return { area: the(border), counts, days: v.r.days, basis };
+  return { area: the(border), counts, days: Math.round(v.r.months! * 30.44), months: v.r.months, basis };
+}
+
+const dayOf = (t: number) => dateKey(t, 'UTC');
+const startOf = (key: string) => Date.parse(`${key}T00:00:00Z`);
+const addMonths = (t: number, n: number) => { const d = new Date(t); d.setUTCMonth(d.getUTCMonth() + n); return d.getTime(); };
+const daysBetween = (a: string, b: string) => Math.round((startOf(b) - startOf(a)) / DAY);
+
+/** Your stays, oldest first: the first from the story's start (`startStays`). */
+export const stays = (state: GameState): Stay[] => state.stays ?? [];
+const openStay = (state: GameState): Stay | undefined => stays(state).find((s) => s.until === undefined);
+const keptStays = (state: GameState): Stay[] => (state.stays ??= []);
+
+/**
+ * The first stay, where you are: a new story's from its start, and a story begun before November 16, 2026 from the day it
+ * is opened, as no earlier day is known.
+ */
+export function startStays(state: GameState): void {
+  if (state.stays) return;
+  const country = getPlace(state.locationId).country;
+  state.stays = [{ country, from: state.now, ...(mayStay(state, country) ? { free: true } : {}) }];
+  watchStay(state);
+}
+
+/** The days, by date, you were (and, staying on, will be to `through`) where `limit` counts them as a visitor's. */
+function visitDays(state: GameState, limit: StayLimit, through: string): Set<string> {
+  const out = new Set<string>();
+  for (const s of stays(state)) {
+    if (s.free || !limit.counts(s.country)) continue;
+    const last = s.until === undefined ? through : dayOf(s.until);
+    for (let d = dayOf(s.from); d <= last && d <= through; d = addDaysToKey(d, 1)) out.add(d);
+  }
+  return out;
+}
+/** The days of `days` in the `within` days ending on `end`, that day included. */
+const inWindow = (days: Set<string>, end: string, within: number) => { let n = 0; for (let i = 0; i < within; i++) if (days.has(addDaysToKey(end, -i))) n++; return n; };
+
+export interface StayStatus { limit: StayLimit; used: number; lastDay: string; over: boolean }
+
+/** Where you stand on the visit you're on: its days used, the last day you may stay, and whether you're past it. */
+export function stayStatus(state: GameState): StayStatus | undefined {
+  const here = openStay(state);
+  if (!here || here.free) return undefined;
+  const limit = stayLimit(state, here.country);
+  if (!limit) return undefined;
+  const today = dayOf(state.now);
+  if (limit.within) {
+    const end = addDaysToKey(today, limit.within + 1);
+    const ahead = visitDays(state, limit, end);
+    // Staying on, the last day is the one before the first whose window holds more days than the limit.
+    let d = today;
+    while (inWindow(ahead, d, limit.within) <= limit.days && d < end) d = addDaysToKey(d, 1);
+    const used = inWindow(ahead, today, limit.within);
+    return { limit, used, lastDay: addDaysToKey(d, -1), over: used > limit.days };
+  }
+  // Each visit on its own: counted from the day you arrived in the place, however many of its territories you've been to.
+  const all = stays(state);
+  let i = all.indexOf(here);
+  while (i > 0 && !all[i - 1]!.free && limit.counts(all[i - 1]!.country) && all[i - 1]!.until === all[i]!.from) i--;
+  const first = dayOf(all[i]!.from);
+  const lastDay = limit.months ? dayOf(addMonths(startOf(first), limit.months) - DAY) : addDaysToKey(first, limit.days - 1);
+  return { limit, used: daysBetween(first, today) + 1, lastDay, over: today > lastDay };
+}
+
+/** The first day you may begin a visit to `country` where its days in any window are used up; nothing where you may today. */
+export function nextEntry(state: GameState, country: string): { day: string; used: number; limit: StayLimit } | undefined {
+  const limit = stayLimit(state, country);
+  if (!limit?.within) return undefined;
+  const today = dayOf(state.now);
+  const past = visitDays(state, limit, today);
+  if (inWindow(past, today, limit.within) < limit.days) return undefined;
+  // A visit may begin on a day whose window, that day included, has a day left.
+  let d = addDaysToKey(today, 1);
+  while (inWindow(past, d, limit.within) >= limit.days) d = addDaysToKey(d, 1);
+  return { day: d, used: inWindow(past, today, limit.within), limit };
+}
+
+export const overstays = (state: GameState): Overstay[] => state.overstays ?? [];
+/** An overstay's days: from its first day over to the day you left (or today, while it goes on), both counted. */
+export const overstayDays = (o: Overstay, now: number) => daysBetween(dayOf(o.from), dayOf(o.left ?? now)) + 1;
+
+/** The United States' bars after unlawful presence (8 U.S.C. 1182(a)(9)(B)(i)): ten years past a year, three past 180 days. */
+export const US_BARS = [{ over: 364, years: 10 }, { over: 180, years: 3 }] as const;
+/** The United Kingdom's: an overstay of more than 30 days, left voluntarily, is refused entry for 12 months (Part 9, 9.8.7). */
+export const UK_OVERSTAY = { overDays: 30, months: 12 } as const;
+
+/** Whether an overstay you left bars you from `country`, and until when, by its law; nothing where its law fixes none. */
+export function barredFrom(state: GameState, country: string): { until: number; why: string } | undefined {
+  const nat = borderOf(country);
+  for (const o of overstays(state)) {
+    if (o.left === undefined || borderOf(o.country) !== nat) continue;
+    const days = overstayDays(o, state.now);
+    const bar = nat === 'US' ? US_BARS.find((b) => days > b.over) : undefined;
+    if (bar && addMonths(o.left, bar.years * 12) > state.now) {
+      const until = addMonths(o.left, bar.years * 12);
+      return { until, why: `You overstayed in the United States by ${days} days. Its law bars you for ${bar.years} years from the day you left, until ${dayOf(until)}.` };
+    }
+    if (nat === 'GB' && days > UK_OVERSTAY.overDays && addMonths(o.left, UK_OVERSTAY.months) > state.now) {
+      const until = addMonths(o.left, UK_OVERSTAY.months);
+      return { until, why: `You overstayed in the United Kingdom by ${days} days. Its rules refuse you entry for ${UK_OVERSTAY.months} months from the day you left, until ${dayOf(until)}.` };
+    }
+  }
+  return undefined;
+}
+
+/** Whether you've ever overstayed in the United States: the Visa Waiver Program admits nobody who has (8 U.S.C. 1187(a)(7)). */
+const overstayedInUS = (state: GameState) => overstays(state).some((o) => borderOf(o.country) === 'US');
+
+/** As you arrive in another country: the stay before ends, a new one begins, and an overstay ends if you've left its place. */
+function recordArrival(state: GameState, to: string): void {
+  const list = keptStays(state);
+  const open = list.find((s) => s.until === undefined);
+  if (open?.country === to) return;
+  if (open) open.until = state.now;
+  list.push({ country: to, from: state.now, ...(mayStay(state, to) ? { free: true } : {}) });
+  for (const o of state.overstays ?? []) if (o.left === undefined && !sameArea(o.country, to)) o.left = state.now;
+  watchStay(state);
+}
+
+/**
+ * Where your right to stay changes while you're there (you move there, or a work visa is issued or runs out), the stay you
+ * were on ends today and another begins with the right as it now is: a visitor's days before it still count.
+ */
+function restartStay(state: GameState): void {
+  const list = keptStays(state);
+  const open = list.find((s) => s.until === undefined);
+  if (!open || !!open.free === mayStay(state, open.country)) return;
+  open.until = state.now;
+  list.push({ country: open.country, from: state.now, ...(mayStay(state, open.country) ? { free: true } : {}) });
+  watchStay(state);
+}
+
+/** Watch the visit's last day: a warning a week before it (or now, if that's sooner), and the overstay from the day after. */
+function watchStay(state: GameState): void {
+  const here = openStay(state);
+  const st = stayStatus(state);
+  if (!here || !st) return;
+  const key = `${here.country}:${here.from}`;
+  schedule(state, Math.max(startOf(addDaysToKey(st.lastDay, -(STAY_WARNING_DAYS - 1))), state.now), 'stay-limit', { country: here.country, from: here.from, kind: 'warn' }, { attention: 'notify', priority: 55, id: `stay-warn:${key}` });
+  schedule(state, Math.max(startOf(addDaysToKey(st.lastDay, 1)), state.now), 'stay-limit', { country: here.country, from: here.from, kind: 'over' }, { attention: 'notify', priority: 55, id: `stay-over:${key}` });
+}
+
+/** How a visit's limit reads in a sentence: "90 days in any 180", "6 months a visit". */
+export const limitWords = (l: StayLimit) => (l.within ? `${l.days} days in any ${l.within}` : l.months ? `${l.months} months a visit` : `${l.days} days a visit`);
+
+/** Where you are, and how long you may stay there, as Your Papers says it. */
+export function stayNow(state: GameState): string {
+  const here = openStay(state);
+  if (!here) return '';
+  const name = the(here.country);
+  const st = stayStatus(state);
+  if (!st) return mayStay(state, here.country) ? `You're in ${name}, where you have the right to stay.` : `You're in ${name}. The game has no record of how long a visit there may last.`;
+  if (st.over) return `You're in ${name}, overstaying: your visit to ${st.limit.area} ended on ${st.lastDay}. Leave to end it.`;
+  return st.limit.within
+    ? `You're in ${name} as a visitor: ${st.used} of the ${st.limit.days} days in any ${st.limit.within} that ${st.limit.area} allows are used. You may stay until ${st.lastDay}.`
+    : `You're in ${name} as a visitor, on day ${st.used} of a visit that may last ${limitWords(st.limit).replace(' a visit', '')}. You may stay until ${st.lastDay}.`;
+}
+
+registerHandler('stay-limit', (state, ev) => {
+  const here = openStay(state);
+  // Only while the stay it was set for goes on as a visit: left, or with the right to stay since, it says nothing.
+  if (!here || here.country !== ev.payload.country || here.from !== ev.payload.from) return { suppressInterrupt: true };
+  const st = stayStatus(state);
+  if (!st) return { suppressInterrupt: true };
+  if (ev.payload.kind === 'warn') {
+    if (st.over) return { suppressInterrupt: true };
+    const message = `You may stay in ${st.limit.area} until ${st.lastDay} (${limitWords(st.limit)}, by ${st.limit.basis}). Leave by then, or you'll be overstaying.`;
+    addLog(state, message, 'warning', { route: { view: 'papers' } });
+    return { message };
+  }
+  if (!st.over) return { suppressInterrupt: true };
+  if (overstays(state).some((o) => o.left === undefined)) return { suppressInterrupt: true };
+  (state.overstays ??= []).push({ country: here.country, area: st.limit.area, from: startOf(addDaysToKey(st.lastDay, 1)) });
+  // A visitor visa or travel authorization for the United States you hold is void from the day you overstay
+  // (8 U.S.C. 1202(g)).
+  const voided = borderOf(here.country) === 'US' ? applications(state).filter((a) => a.kind === 'visa' && borderOf(a.country) === 'US' && a.stage === 'issued') : [];
+  for (const a of voided) { a.stage = 'expired'; a.expiresAt = state.now; }
+  const law = borderOf(here.country) === 'US'
+    ? `${voided.length ? ` Your ${voided.map((a) => a.route).join(' and ')} is void.` : ''} The United States bars a visitor who overstays more than 180 days for three years after they leave, and one who overstays a year for ten; and the Visa Waiver Program never admits them again.`
+    : borderOf(here.country) === 'GB'
+      ? ' The United Kingdom refuses entry for 12 months to a visitor who overstayed more than 30 days.'
+      : ' Each state decides for itself whether to fine or ban you; the game records the overstay and nothing more.';
+  const message = `Your visit to ${st.limit.area} ended on ${st.lastDay}, and you're still here: you're overstaying.${law} Leave to end it.`;
+  addLog(state, message, 'warning', { route: { view: 'papers' } });
+  return { message };
+});
+
+onArrival((state, _from, to) => recordArrival(state, to.country));
+
 /**
  * Why entering the country a trip goes to is refused, or null (from November 14, 2026; until then travel asked nothing
  * of your papers). A trip within the country you're in asks nothing. Entering asks what Your Papers says: free entry, a
@@ -496,8 +758,18 @@ export function moveTo(state: GameState, placeId: string): void {
  * don't hold, or living there without the right to, doesn't.
  */
 export function entryRefusal(state: GameState, country: string): string | null {
-  if (getPlace(state.locationId).country === country) return null;
+  const here = getPlace(state.locationId).country;
+  if (here === country) return null;
   const e = entryRight(state, country);
+  if (e.kind === 'home' || e.kind === 'lives') return null;
+  // An overstay's bar, and a visit's days used up (from November 16, 2026). Within the Schengen area, or between one
+  // state's territories, there's no border to refuse you at.
+  if (!sameArea(here, country)) {
+    const bar = barredFrom(state, country);
+    if (bar) return bar.why;
+    const next = nextEntry(state, country);
+    if (next) return `You've spent ${next.used} of the ${next.limit.days} days in any ${next.limit.within} that ${next.limit.area} allows a visitor. You can enter again from ${next.day}.`;
+  }
   if (e.kind === 'needs' && e.entry !== 'arrival') return `${e.why} Apply under Your Papers before you travel.`;
   if (e.kind === 'unpermitted') return `${e.why}`;
   return null;
@@ -522,6 +794,7 @@ registerHandler('papers-decision', (state, ev) => {
   a.issuedAt = state.now;
   if (t.stayDays) a.expiresAt = state.now + t.stayDays * DAY;
   if (a.expiresAt) schedule(state, a.expiresAt, 'papers-expiry', { id: a.id }, { attention: 'notify', priority: 55, id: `papers-expiry:${a.id}` });
+  restartStay(state);
   const message = `Your ${a.route} for ${the(a.country)} was issued.${a.expiresAt ? ` It's good until ${dateKey(a.expiresAt, 'UTC')}.` : ''}${a.all && a.expiresAt ? ` You can renew it from ${dateKey(a.expiresAt - (t.days + RENEW_MARGIN_DAYS) * DAY, 'UTC')}.` : ''}`;
   addLog(state, message, 'personal', { route: { view: 'papers' } });
   return { message };
@@ -531,6 +804,7 @@ registerHandler('papers-expiry', (state, ev) => {
   const a = applications(state).find((x) => x.id === ev.payload.id);
   if (!a || a.stage !== 'issued') return { suppressInterrupt: true };
   a.stage = 'expired';
+  restartStay(state);
   const home = a.all && a.country === livesIn(state) && !permitIn(state, a.country);
   const message = home
     ? `Your ${a.route} for ${the(a.country)} has run out. You live there without the right to now, and can't work there until a new one is issued. Apply under Your Papers.`

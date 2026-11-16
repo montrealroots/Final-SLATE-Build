@@ -36,8 +36,12 @@ What the records don't hold, said so the game never fills it:
    - A passport lets you travel, nothing more.
 2. **Permission to enter** (`entryRight`). By the best of your passports: your own country, free, an electronic
    authorization, an e-visa, a visa on arrival or a visa. Or the visa you hold.
-3. **Permission to stay.** A visit's length comes from the records and is said. Days spent in a country aren't counted
-   yet. A residence document counts where a save holds one.
+3. **Permission to stay.** A visit's length comes from the records. Until November 16, 2026 it was said and not
+   counted; from then each arrival records a stay (`state.stays`), the days are counted against the limit (the Schengen
+   area's 90 in any 180 across its states, or the records' days, window or months), the border refuses a visitor with
+   none left, and staying past the last day is an overstay (`state.overstays`, the `stay-limit` event), with the United
+   States' and the United Kingdom's consequences in law (`papers.ts` "staying"). A residence document counts where a
+   save holds one.
 4. **Permission to work** (`workRight`).
    - **Allowed:** citizenship, free movement, or a short engagement's days, counted as you work them
      (`recordWorkDay`, called by the shoot).
@@ -92,6 +96,9 @@ the terms it was applied for under.
 - **Research for the estimated routes.** Japan, South Korea, India and Mexico were searched on November 14, 2026, but no
   official fee could be confirmed (Japan's varies by nationality; Korea's and Mexico's were on agency sites only), so
   they stay estimates.
-- **Counting days of stay against a visit's limit.**
 - **A residence application.**
-- **Travel refusing entry without the permission.** SLATE's journeys don't yet ask; the shoot refuses the work.
+- **An electronic authorization's own terms.** An ESTA, the UK's ETA, Canada's eTA and the other `eta` entries are
+  charged the destination's visitor visa (researched or estimated), not their own fee and time.
+
+Done since: travel asks for entry (`entryRefusal`, from November 14, 2026), and a visit's days are counted against its
+limit (November 16, 2026).

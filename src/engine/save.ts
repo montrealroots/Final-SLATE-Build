@@ -15,7 +15,7 @@ import { migrateV7toV8 } from './songs';
 import { migrateV8toV9 } from './episode-releases';
 import { migrateV9toV10 } from './cash/migrate';
 import { migrateV10toV11, openBankFromJournal } from './cash/migrate11';
-import { grantArrivalPapers } from './papers';
+import { grantArrivalPapers, startStays } from './papers';
 // The storage primitives that need no migration (key-value stores, the save index, recovery copies, locks, drafts) are in
 // save-store.ts since November 11, 2026, so the start screen can list saves without loading the engine. Re-exported here.
 import { DRAFT, INDEX, PREFIX, bakKey, finishList, indexedSaves, isQuotaError, mainKey, openableKeys, tmpKey, type KeyValueStore, type SaveSummary } from './save-store';
@@ -112,6 +112,8 @@ export function migrate(raw: unknown): GameState {
   openBankFromJournal(s);
   // A story from before living abroad needed papers was already under way: it holds the visa it arrived on, fee settled.
   grantArrivalPapers(s, false);
+  // A story from before stays were kept: the one it's on is counted from today (papers.ts `startStays`).
+  startStays(s);
   return s;
 }
 

@@ -2,7 +2,7 @@
 // country asks of you, what working there asks for each kind of work, and what you have applied for. Each line says
 // where its answer comes from; nothing the game hasn't confirmed is called ready.
 import { useState, type ReactNode } from 'react';
-import { ACTIVITY_WORDS, applications, applyForPermit, homeVisa, applyForRecordedPassport, applyForVisa, entryRight, passportOffers, passports, permitCheck, permits, visaCheck, workRight, type Activity, type ApplicationCheck } from '../engine/papers';
+import { ACTIVITY_WORDS, applications, applyForPermit, barredFrom, homeVisa, applyForRecordedPassport, applyForVisa, entryRight, limitWords, nextEntry, overstayDays, overstays, passportOffers, passports, permitCheck, permits, stayLimit, stayNow, visaCheck, workRight, type Activity, type ApplicationCheck } from '../engine/papers';
 import { bankSim } from '../engine/bankworld';
 import { passportOffice, passportRefusal, passportRuleFor } from '../engine/bankworld/systems/documents';
 import { formatMoney } from '../engine/bankworld/core/money';
@@ -49,6 +49,9 @@ export function PapersCard() {
   const liveHere = getPlace(g.character.livesIn ?? g.locationId).country === country;
   const homeCheck = liveHere ? permitCheck(g, country) : ({ ok: false, why: '' } as ApplicationCheck);
   const visa = visaCheck(g, country);
+  const limit = stayLimit(g, country);
+  const bar = barredFrom(g, country);
+  const next = nextEntry(g, country);
   return (
     <>
       <section className="card" aria-labelledby="passports-h">
@@ -83,11 +86,29 @@ export function PapersCard() {
         )}
       </section>
 
+      {/* Days of a visit counted against its limit, and overstays (from November 16, 2026). */}
+      <section className="card" aria-labelledby="stay-h">
+        <h2 id="stay-h">Where You Are</h2>
+        <p role="status" aria-label="Your Stay" className="small">{stayNow(g)}</p>
+        {overstays(g).length > 0 && (
+          <ul className="list small" aria-label="Your Overstays">
+            {overstays(g).map((o) => (
+              <li key={`${o.country}-${o.from}`} className="list-item list-static">
+                <span className="grow">{o.area === 'the Schengen area' ? 'The Schengen area' : countryName(o.country)}: {overstayDays(o, g.now)} {overstayDays(o, g.now) === 1 ? 'day' : 'days'} past the visit&apos;s end</span>
+                <span>{o.left === undefined ? 'Going on now' : `Left ${day(o.left)}`}</span>
+              </li>
+            ))}
+          </ul>
+        )}
+      </section>
+
       <section className="card" aria-labelledby="visit-h">
         <h2 id="visit-h">Visiting And Working</h2>
         <SelectField label="Country" value={country} options={COUNTRIES} onChange={(v) => { setCountry(v); setErr(null); }} />
         <h3>Entering And Staying</h3>
         <p role="status" aria-label="Entering" className="small">{enter.why}</p>
+        {limit && <p className="small">A visit may last {limitWords(limit)}, by {limit.basis}.</p>}
+        {(bar || next) && <p className="small" role="alert">{bar ? bar.why : `You've used the ${next!.limit.days} days in any ${next!.limit.within} that ${next!.limit.area} allows. You can enter again from ${next!.day}.`}</p>}
         {enter.kind === 'needs' && (visa.ok ? (
           <>
             <TermsLine c={visa} />

@@ -1408,6 +1408,10 @@ export interface GameState {
   permits?: import('./papers').WorkPermit[];
   /** Visas applied for and issued (papers.ts, from November 14, 2026). */
   paperApplications?: import('./papers').PaperApplication[];
+  /** Where you have been, country by country, from the story's start (papers.ts `stays`, from November 16, 2026). */
+  stays?: import('./papers').Stay[];
+  /** Stays past what a visit allowed, and when they ended (papers.ts, from November 16, 2026). */
+  overstays?: import('./papers').Overstay[];
   /** Whether the work visa a life abroad arrives on was settled (papers.ts `grantArrivalPapers`), so it's never granted twice. */
   papersArrival?: boolean;
   /** Days worked in each country by its code, for a short engagement's allowance (papers.ts `recordWorkDay`). */
