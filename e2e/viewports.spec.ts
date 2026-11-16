@@ -140,7 +140,8 @@ test('no tutorial, no excluded systems, no raw IDs or source text on screen', as
   const text = (await page.locator('body').innerText()).toLowerCase();
   // 'bank' and 'visa' were banned while banking and papers were outside the game; the owner's command of November 14,
   // 2026 put Your Bank and Your Papers on Home, so they are no longer excluded systems.
-  for (const banned of ['tutorial', 'tax', 'rent', 'https://', 'np_', 'pr1', 'undefined', 'nan']) expect(text, banned).not.toContain(banned);
+  // Ids read `p_1` from November 16, 2026, when each kind got its own counter; `pr1` was the old form.
+  for (const banned of ['tutorial', 'tax', 'rent', 'https://', 'np_', 'pr1', 'p_1', 'undefined', 'nan']) expect(text, banned).not.toContain(banned);
   // Polar night is reported truthfully in Tromsø in mid-December.
   await expect(page.getByText("the sun won't rise today")).toBeVisible();
 });
