@@ -79,15 +79,18 @@ comment above it. Ten more files (108 cases) import 1221 modules that are exclud
 | `remaining-banking.test.ts` | 23 | the school's leave and its Yale account (`systems/leave.ts`) |
 | `term-growth.test.ts` | 3 | the school's terms |
 
-The 61 skipped cases, by reason:
-- 38: 1221's account kept at home from before Yale.
+The 59 skipped cases, by reason (counted from each skip's stated reason on November 16, 2026; this said 61, with 38
+and 3 for the first and fourth, which didn't add up):
+- 36: 1221's account kept at home from before Yale.
 - 13: 1221's daily food spending, which made the lines, balances and remainders those tests read.
 - 4: 1221's own old-save migrations.
-- 3: the F-1 student status and scholarships.
+- 4: the F-1 student status and scholarships.
 - 1: 1221's Home screen.
 - 1: wages.
-- 2 (`remaining-09-banking.test.ts`, "Cancel It" on a second Berlin account): **unresolved**, not explained yet; listed
-  as open in `RESUME-HERE.md`.
+
+Two more (`remaining-09-banking.test.ts`, Cancel It on a second Berlin account) were skipped as unresolved from the port
+on November 14 to November 16, 2026. They pass at the port's commit and at every one since; the failure was never
+reproduced in SLATE, and they run now.
 
 ## Deviations
 
