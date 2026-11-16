@@ -420,6 +420,14 @@
  ],
  "downstream": [
   {
+   "metric": "releaseDelay",
+   "ok": true
+  },
+  {
+   "metric": "gross",
+   "ok": true
+  },
+  {
    "metric": "revenue",
    "ok": false
   },
@@ -428,7 +436,7 @@
    "ok": false
   }
  ],
- "verdict": "no downstream effect",
+ "verdict": "proven",
  "hashes": {
   "src/engine/release-plan.ts": "95604b64365eba40",
   "tests/proof/career.ts": "50bea06f19a02c5b"

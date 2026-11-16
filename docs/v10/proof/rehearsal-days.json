@@ -431,6 +431,10 @@
  ],
  "downstream": [
   {
+   "metric": "daysToDeliver",
+   "ok": true
+  },
+  {
    "metric": "reception",
    "ok": false
   },
@@ -443,7 +447,7 @@
    "ok": false
   }
  ],
- "verdict": "no downstream effect",
+ "verdict": "proven",
  "hashes": {
   "src/engine/production/shoot.ts": "4f6baad6273bf3d7",
   "tests/proof/career.ts": "50bea06f19a02c5b"

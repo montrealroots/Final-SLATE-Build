@@ -8,11 +8,11 @@ journey that shows it there.
 
 | Kind | proven | carried | does not bite | no downstream effect | stale | not a feature | not yet proven | All |
 |---|---|---|---|---|---|---|---|---|
-| action | 144 | 0 | 0 | 3 | 0 | 13 | 0 | 160 |
+| action | 146 | 0 | 0 | 1 | 0 | 13 | 0 | 160 |
 | bank | 54 | 0 | 0 | 0 | 0 | 0 | 0 | 54 |
-| scheduled | 54 | 0 | 0 | 1 | 0 | 11 | 0 | 66 |
-| field | 197 | 97 | 0 | 2 | 0 | 9 | 0 | 305 |
-| all | 449 | 97 | 0 | 6 | 0 | 33 | 0 | 585 |
+| scheduled | 55 | 0 | 0 | 0 | 0 | 11 | 0 | 66 |
+| field | 199 | 97 | 0 | 0 | 0 | 9 | 0 | 305 |
+| all | 454 | 97 | 0 | 1 | 0 | 33 | 0 | 585 |
 
 ## Rows
 
@@ -71,7 +71,7 @@ journey that shows it there.
 | planRelease | action | src/engine/finish.ts | proven | release-or-not (40 seeds) | released -2; revenue -134868.5; money -130032.5 |
 | setReleaseVersion | action | src/engine/finish.ts | proven | release-dubbed (60 seeds) | dubbed +0.933; spent +4542.333 |
 | acceptFirstLook | action | src/engine/first-look.ts | proven | first-look-accept (40 seeds) | firstLookActive +1.125; money +774512.989 |
-| askMoreOverhead | action | src/engine/first-look.ts | no downstream effect | first-look-overhead (40 seeds) | moved: overheadAsked +1.675. Measure: asking for more overhead moves money by about $117,000 a career, inside the seeds' spread at 30 seeds; to run with 100. |
+| askMoreOverhead | action | src/engine/first-look.ts | proven | first-look-overhead (120 seeds) | overheadAsked +1.625; overheadAgreed +0.208; overheadPaid +67083.333; money +73621.837 |
 | declineFirstLook | action | src/engine/first-look.ts | proven | first-look-decline (40 seeds) | firstLookDeclined +1.1; firstLookActive -1.25; money -536159.412 |
 | drawDevelopment | action | src/engine/first-look.ts | proven | draw-development (40 seeds) | developmentIn +48300; ownIn -48300 |
 | endFirstLook | action | src/engine/first-look.ts | proven | first-look-end (40 seeds) | firstLookEnded +1.45; money -278003.744 |
@@ -135,7 +135,7 @@ journey that shows it there.
 | startRevision | action | src/engine/projects.ts | proven | revision-notes (40 seeds) | notesAddressed +6; quality.script +6; overall +1.863; reception +2.3 |
 | createFromSource | action | src/engine/proposal.ts | proven | create-from-source (40 seeds) | adapted +2; parts +2; castRates +1626.75; spent +81889.35; overall -0.837 |
 | considerRecognised | action | src/engine/recognition-hire.ts | proven | hire-recognised (40 seeds) | recognisedHired +3.85; spent +26120; quality.craft -53.662; overall -52.35 |
-| proposeLicence | action | src/engine/release-plan.ts | no downstream effect | licence-proposal (120 seeds) | moved: licenceDeals +0.775 |
+| proposeLicence | action | src/engine/release-plan.ts | proven | licence-proposal (120 seeds) | licenceDeals +0.775; releaseDelay -12.933; gross +66845 |
 | releaseYourself | action | src/engine/release-plan.ts | proven | self-release-stores (40 seeds) | revenue +39443.25; money +36491.8; spent +2600 |
 | setReleasePlan | action | src/engine/release-plan.ts | proven | self-release-stores (40 seeds) | revenue +39443.25; money +36491.8; spent +2600 |
 | approachAgent | action | src/engine/representation.ts | proven | agent (40 seeds) | viaAgent +7.1; jobsOffered +7.175; commission +3576.9; jobPay +21930.75 |
@@ -262,7 +262,7 @@ journey that shows it there.
 | finance-decision | scheduled | src/engine/finance.ts | proven | off-finance-decision (40 seeds) | backerIn -32325; ownIn +32325; money +15895.098 |
 | finance-offer-lapse | scheduled | src/engine/negotiation.ts | proven | off-finance-offer-lapse (40 seeds) | studioIn -850000; ownIn +850000 |
 | first-look-check | scheduled | src/engine/first-look.ts | proven | off-first-look-check (40 seeds) | firstLookOffers -1.1; overheadPaid -546140; money -543806.614 |
-| first-look-counter | scheduled | src/engine/first-look.ts | no downstream effect | first-look-overhead (40 seeds) | moved: overheadAsked +1.675. Measure: asking for more overhead moves money by about $117,000 a career, inside the seeds' spread at 30 seeds; to run with 100. |
+| first-look-counter | scheduled | src/engine/first-look.ts | proven | first-look-overhead (120 seeds) | overheadAsked +1.625; overheadAgreed +0.208; overheadPaid +67083.333; money +73621.837 |
 | first-look-end | scheduled | src/engine/first-look.ts | proven | off-first-look-end (40 seeds) | firstLookEnded -1.275; overheadPaid -388725; money -398945.725 |
 | first-look-lapse | scheduled | src/engine/first-look.ts | proven | off-first-look-lapse (40 seeds) | firstLookActive -0.875; overheadPaid -1209932.5; money -1186224.5 |
 | first-look-overhead | scheduled | src/engine/first-look.ts | proven | first-look-accept (40 seeds) | firstLookActive +1.125; money +774512.989 |
@@ -382,7 +382,7 @@ journey that shows it there.
 | {`Director For Episode ${e.number}`} | field | finish.ts assessEpisode; production/schedule.ts blocks | proven | episode-director (40 seeds) | directedByHire +1.8; quality.direction +3.85; overall +0.813; spent +6553.95 |
 | "Director" | field | production/shoot.ts onSetHires; finish.ts computeCredits, assessQuality | proven | film-director (40 seeds) | directedByHire +1.85; quality.direction +7.625; overall +1.513; standing.directing -5.025 |
 | "Production Start" | field | production/schedule.ts generatePlan | proven | plan-later (40 seeds) | firstShootDay +70; daysToDeliver +67.213 |
-| "Rehearsal Days" | field | production/shoot.ts; hiring.ts (booked days) | no downstream effect | rehearsal-days (120 seeds) | moved: performance +5.1; overall +1.313. Game gap, fixed November 14, 2026: rehearsal reached only the player's own performance; this result predates the fix. |
+| "Rehearsal Days" | field | production/shoot.ts; hiring.ts (booked days) | proven | rehearsal-days (120 seeds) | performance +5.1; overall +1.313; daysToDeliver +7.45 |
 | "Stop-Motion Stages" | field | production/workday.ts | proven | stopmotion-stages (40 seeds) | daysToDeliver +42.638; spent -7357.85; money -19945.916 |
 | "Render Nodes" | field | production/workday.ts | proven | render-nodes (40 seeds) | daysToDeliver +56.088; spent -1163; money -13298.524 |
 | "Six-Day Weeks" | field | production/schedule.ts isWorkingDay | proven | six-day-weeks (60 seeds) | daysToDeliver -3.608; spent +4788.833 |
@@ -423,7 +423,7 @@ journey that shows it there.
 | "Held For Festivals Until" | field | finish.ts festivalHold in planRelease and acceptDistribution | proven | festival-hold (40 seeds) | distributed -1.825; revenue -134538.625; money -129101.175 |
 | "Version Abroad" | field | release-plan.ts releaseYourself (finish.ts setReleaseVersion) | proven | version-dubbed (40 seeds) | spent +2765; money +4544.049; revenue +6695.5 |
 | "Promotion Budget" | field | release-plan.ts selfCosts; distribution.ts promoLift in reportedGross | proven | promotion-budget (40 seeds) | spent +5995; revenue +8526 |
-| {`${label}: Buyer`} | field | release-plan.ts proposeLicence, answerProposal | no downstream effect | licence-proposal (120 seeds) | moved: licenceDeals +0.775 |
+| {`${label}: Buyer`} | field | release-plan.ts proposeLicence, answerProposal | proven | licence-proposal (120 seeds) | licenceDeals +0.775; releaseDelay -12.933; gross +66845 |
 | {`${label}: Your Ask`} | field | release-plan.ts answerProposal | proven | licence-ask (100 seeds) | licenceDeals -0.84; releaseDelay +29.705; licenceFee -15020 |
 | {`${label}: Exclusive`} | field | release-plan.ts buyerValue; distribution.ts heldTerritories | proven | licence-exclusive (100 seeds) | licenceFee +9750; money -9340.43 |
 | {`Keep My ${c.label}`} | field | blueprints.ts applyBlueprint | proven | keep-year (40 seeds) | periodFilms +2; spent +62711.15; daysToDeliver +12.513 |

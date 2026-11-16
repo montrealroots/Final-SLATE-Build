@@ -227,12 +227,16 @@ and the rest) with real grades filling the hiring lists.
     writer on a film of $5 million or more at $173,215 over a draft's 25 days.
   - A scene's takes are drawn by the scene and its attempt, not the date (`takes.ts recordTakes`). The heavy-makeup
     day test moved to seed `looks-day-0`: its old seed's plain workshop day now needed two days too.
-  - Every proof (385) is being rerun on the new prices; the production snapshots were rewritten (only payments and what
-    was settled changed for the prices, and direction, performance and reception for the takes).
+  - Every proof (385) was rerun on the new prices and is in `docs/v10/proof`; 454 features proven, 1 open (moving an
+    episode, explained). Ten probes needed more careers for the wider spread of realistic money (scene-night,
+    rehearsal-days, licence-proposal, writing-revision, lead-puppet, first-look-overhead, edition-results,
+    production-release and two before), and two now name the consequence the realistic prices left measurable: a
+    licence's release (13 days sooner, $67,000 more gross) and rehearsal's later delivery (7.5 days). The production
+    snapshots were rewritten (only payments and what was settled changed for the prices, and direction, performance and
+    reception for the takes).
 
-**Next.** The full rerun is in `$P/full` (367 of 385); 18 proofs had been listed for the scheduled runner by mistake
-and are rerunning with the seven bumped ones and the two that read `destinations.ts` (`$P/fix`). Then copy (stale check
-first), rebuild the matrix, run the check and every journey, open the PR.
+**Next.** Checkpoint PR for the price sweep (`npm run check` passed: 1,709 tests; journeys 214 passed after the takes
+change; destinations and J02 passed after the move cost).
 Open, explained: moving an episode (once the arms differ, every later scene, hire and offer is numbered differently and
 the draws follow the numbers). Possible next steps: key the game's draws by something both arms share; published figures
 for the four modeled prices.
