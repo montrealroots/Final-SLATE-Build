@@ -30,4 +30,25 @@ export const FIELD_PROOFS: Record<string, string[]> = {
   'theme-notes': ["field:MusicTab.tsx#\"Your Notes On The Themes\"#1"],
   'treat-as-adult': ["field:PersonWork.tsx#\"Treat As An Adult In This Story\"#1"],
   'version-song': ["field:WorkViews.tsx#{`${v.label}: ${sceneLabel(p, sc)}, In Place Of \"${song.title}\"`}#1"],
+  // The bank screens' inputs (src/ui/bankworld), from November 16, 2026: each on the proof whose move types or chooses
+  // it: an amount, a date, a limit, the statement day moved to the 28th, the day's spending put on the card, a standing
+  // order or autopay paid from NatWest. The rest are proven two ways each in probes/bank-fields.ts.
+  'card-statement-day': ['field:bankworld/ui/bank/BankCard.tsx#id={`card-statement-day-${card.id}`}#1'],
+  'card-limit-down': ['field:bankworld/ui/bank/BankCard.tsx#id={`card-limit-${card.id}`}#1'],
+  'card-money-transfer': ['field:bankworld/ui/bank/BankCardOffers.tsx#id={`card-money-transfer-${card.id}`}#1'],
+  'card-plan': ['field:bankworld/ui/bank/BankCardOffers.tsx#id={`card-plan-amount-${card.id}`}#1'],
+  'cash-withdrawal': ['field:bankworld/ui/bank/BankCash.tsx#id="cash-out"#1'],
+  'cash-deposit': ['field:bankworld/ui/bank/BankCash.tsx#id="cash-in"#1'],
+  'arrange-overdraft': ['field:bankworld/ui/bank/BankLending.tsx#id="od-limit"#1'],
+  'term-deposit': ['field:bankworld/ui/bank/BankLending.tsx#id={`term-amount${account ? `-${bank.id}` : \'\'}`}#1'],
+  'pay-collections': ['field:bankworld/ui/bank/BankLending.tsx#id="collections-pay"#1'],
+  'loan-repayment': ['field:bankworld/ui/bank/BankLending.tsx#id="loan-repay-from"#1'],
+  'bank-loan': ['field:bankworld/ui/bank/BankLending.tsx#id="loan-amount"#1', 'field:bankworld/ui/bank/BankLending.tsx#id="loan-months"#1'],
+  'order-source': ['field:bankworld/ui/bank/BankMoves.tsx#id={`order-from-${o.id}`}#1'],
+  'autopay-from': ['field:bankworld/ui/bank/BankMoves.tsx#id={`autopay-from-${c.id}`}#1'],
+  'standing-order': ['field:bankworld/ui/bank/BankPayments.tsx#id="so-amount"#1'],
+  'scheduled-payment': ['field:bankworld/ui/bank/BankPayments.tsx#id="sp-amount"#1', 'field:bankworld/ui/bank/BankPayments.tsx#id="sp-date"#1'],
+  'large-payment-alert': ['field:bankworld/ui/bank/BankStatements.tsx#id="alert-large"#1'],
+  'credit-card': ['field:bankworld/ui/bank/BankPayments.tsx#id="pay-everyday"#1'],
+  'bank-savings': ['field:bankworld/ui/workspaces/BankWorkspace.tsx#id="move-amount"#1'],
 };

@@ -400,10 +400,14 @@ export function somebodyElse(sim: Simulation, person: Person, given?: ReturnType
     return;
   }
   sim.post({ memo: 'Card purchase', category: 'card-fraud', postings: [{ accountId: account.id, amount: -amount }, { accountId: sim.nominalAccount('expense', 'Unauthorized Use').id, amount }] });
-  // Learned of at once where an alert catches it, otherwise at the statement.
+  // Learned of at once where an alert catches it, otherwise at the statement. A low balance alert catches it too where the
+  // debit takes the account under the line set, as the large payment alert does over its line (from November 16, 2026:
+  // until then a low balance alert told the holder the balance had fallen and left the debit that did it unknown).
   const alert = alertsOf(person).largePayment;
+  const low = alertsOf(person).lowBalance;
+  const fellUnder = which === 'debit' && low !== undefined && account.balance < low && account.balance + amount >= low;
   const statedAt = statementAfter(sim, account, which, sim.now);
-  const learnedAt = alert !== undefined && amount >= alert ? sim.now : statedAt;
+  const learnedAt = (alert !== undefined && amount >= alert) || fellUnder ? sim.now : statedAt;
   person.fraud = [...(person.fraud ?? []), { accountId: account.id, which, amount, at: sim.now, learnedAt, statedAt }];
   if (alert !== undefined && amount >= alert && person.id === sim.universe.playerId) {
     sim.notify({ category: 'bank', title: 'A Large Payment', body: `${formatMoney(amount, cur)} on your ${which} card ending ${account.plastic!.last4}. If it wasn’t you, report it on Money, under Cards.`, importance: 70, route: '/workspace/bank' });
