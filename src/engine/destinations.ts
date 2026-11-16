@@ -11,7 +11,6 @@
 // can stop the day, and how often noise spoils dialogue. Every figure is game calibration (docs/ASSUMPTIONS.md,
 // "Filming Somewhere Else"), not a quote, a rate or legal guidance.
 import { findPlace, getPlace, type Place } from '../data/places';
-import { housePackageFee } from './production/rates';
 import { stream } from './rng';
 import { distanceKm } from './state';
 import type { Project, Scene, ShootDay } from './types';
@@ -58,10 +57,26 @@ export const AWAY_KM = 80;
 export const PER_DIEM = { lodging: 110, meals: 68 };
 /** The people housed away: everyone hired who has accepted, and you. */
 export const unitSize = (p: Project): number => p.hires.filter((h) => h.status === 'accepted').length + 1;
-/** Moving the unit there and back, once for a place: half the house equipment package's day fee, and as much again for each 1,000 km, up to four times it. */
-export const MOVE_BASE = 0.5;
-export const MOVE_PER_1000_KM = 1;
-export const MOVE_CAP = 4;
+/**
+ * Moving the unit there and back, once for a place (from November 16, 2026; until then half the house equipment
+ * package's day fee and as much again for each 1,000 km, up to four times it, a figure of the game's own).
+ * Nearer than DRIVE_UNDER_KM the unit drives: its cars, FOUR to a car, and the equipment's truck, by the mile there and
+ * back. Further, everyone flies there and back and the equipment is hired where they film, at the day rate the shoot
+ * already pays, so only the fares are added.
+ */
+export const DRIVE_UNDER_KM = 500;
+/** A car by the mile: the IRS standard business mileage rate from July 1, 2026, 76 cents. */
+export const CAR_PER_MILE = 0.76;
+export const PEOPLE_PER_CAR = 4;
+/** The equipment truck by the mile: a grip and electric truck's mileage charge, 65 cents (Cinevo rate card). */
+export const TRUCK_PER_MILE = 0.65;
+/**
+ * A seat there and back: in the same country, the average US domestic fare, $436 in the second quarter of 2026
+ * (Bureau of Transportation Statistics); in another, the median international round trip from the US, $1,138 in the
+ * summer of 2026 (Hopper's analysis, reported by Fox 29).
+ */
+export const FARE = { domestic: 436, international: 1_138 };
+const MILES_PER_KM = 0.621371;
 
 export interface FilmedAt { placeId: string; kind: SiteKind }
 
@@ -94,7 +109,9 @@ export function awayDayCost(p: Project, label: string): number {
 /** Moving the unit to this place and back, once: nothing at the base or near it. */
 export function moveCost(p: Project, label: string): number {
   if (!isAway(p, label)) return 0;
-  return Math.round(housePackageFee(p) * Math.min(MOVE_CAP, MOVE_BASE + (kmFromBase(p, label) / 1000) * MOVE_PER_1000_KM));
+  const km = kmFromBase(p, label);
+  if (km < DRIVE_UNDER_KM) return Math.round(2 * km * MILES_PER_KM * (Math.ceil(unitSize(p) / PEOPLE_PER_CAR) * CAR_PER_MILE + TRUCK_PER_MILE));
+  return unitSize(p) * (filmPlace(p, label).country === base(p).country ? FARE.domestic : FARE.international);
 }
 
 /** What the days planned at each place away cost beyond their fees: the move, once for each place, and housing for each day. */

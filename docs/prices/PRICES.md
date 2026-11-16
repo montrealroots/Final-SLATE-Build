@@ -2,7 +2,7 @@
 
 Written by `tests/prices.test.ts` from the code; don't edit by hand. Run with `SLATE_WRITE_AUDIT=1` to rewrite it.
 
-Every price the player pays, read from the code, beside a published figure and where it was published. **Sourced**: the game's price sits inside the published range (the test fails if it leaves it). **Fixed**: changed on November 15, 2026 to the published figure. **Modeled**: no published figure was found, so the price is the game's own. 28 sourced, 16 fixed, 5 modeled.
+Every price the player pays, read from the code, beside a published figure and where it was published. **Sourced**: the game's price sits inside the published range (the test fails if it leaves it). **Fixed**: changed on November 15 or 16, 2026 to the published figure. **Modeled**: no published figure was found, so the price is the game's own. 28 sourced, 20 fixed, 4 modeled.
 
 British rate cards are read at 1.265 dollars to the pound. A US union hourly rate is read as a 10-hour day, eight hours straight and two at time and a half. A non-union background day is 8 hours at California's minimum wage, by date: $16.50 from 2025-01-01, $16.90 from 2026-01-01, $17.40 from 2027-01-01.
 
@@ -37,7 +37,10 @@ British rate cards are read at 1.265 dollars to the pound. A US union hourly rat
 | Shooting | Practical makeup with digital cleanup, built | $3,500 | $3,000 to $10,000 custom prosthetic makeup | Backstage | Sourced | `looks.ts MAKEUP` |
 | Shooting | Partial appliances, wounds, a mask, built | $1,500, $300, $2,400 | smaller builds than a full prosthetic makeup | none found for each | Modeled | `looks.ts MAKEUP` |
 | Shooting | Housing and feeding one person for a day away | $178 | $110 lodging and $68 meals | GSA FY 2026 standard CONUS per diem (Federal Register, August 19, 2025) | Fixed | `destinations.ts PER_DIEM` |
-| Shooting | Moving the unit to a place away | the equipment package × 0.5 + 1 per 1,000 km, at most × 4 | trucks by the mile, crew travel | none found for one figure | Modeled | `destinations.ts moveCost` |
+| Shooting | Moving the unit under 500 km: a car by the mile, four to a car | $0.76 | 76 cents a mile | IRS standard business mileage rate from July 1, 2026 | Fixed | `destinations.ts CAR_PER_MILE` |
+| Shooting | Moving the unit under 500 km: the equipment truck by the mile | $0.65 | 65 cents a mile | Cinevo rate card, grip and electric truck mileage | Fixed | `destinations.ts TRUCK_PER_MILE` |
+| Shooting | Moving the unit further: a seat there and back, in the same country | $436 | $436, the average US domestic fare, second quarter of 2026 ($428 in the first) | Bureau of Transportation Statistics, average domestic air fares | Fixed | `destinations.ts FARE` |
+| Shooting | Moving the unit further: a seat there and back, to another country | $1,138 | a median international round trip from the US, $1,138 in summer 2026 ($1,115 a year before) | Hopper analysis reported by Fox 29, summer 2026 | Fixed | `destinations.ts FARE` |
 | Shooting | Costumes, a character | $600 | an indie film's wardrobe $5,475 to $17,450 in all: $550 to $1,750 a character for ten | Filmmaker Magazine, DV case study ($5,475); Bloomsbury, Feature Film Budgeting, Sample Budget 3 ($17,450) | Sourced | `rates.ts MATERIAL_COST` |
 | Shooting | Design materials, a design day (about $225 a scene on a feature) | $900 | an indie film's art, set dressing and props $11,025 to $39,210 in all | Filmmaker Magazine, DV case study; Bloomsbury, Sample Budget 3 | Sourced | `rates.ts MATERIAL_COST` |
 | Shooting | Archive footage, a clip | $2,500 | $45 to $75 a second, 30-second minimums: $1,350 to $4,500 for 30 to 60 seconds | Film Archives Online ($60 a second, feature documentary); Budget Films ($50 to $75 a second) | Sourced | `rates.ts MATERIAL_COST` |

@@ -302,7 +302,10 @@ describe('a puppet film', () => {
 describe('through a shoot', () => {
   it('a day with heavy makeup shoots less than the same day without it, and says why', () => {
     const run = (look?: Look) => {
-      const { s, p } = film(look ? { looks: { Marta: look } } : {}, 'looks-day');
+      // 'looks-day' until November 16, 2026: once takes were drawn by the scene's attempt, not the date, that seed's plain
+      // workshop day ran out of time on a slow take and needed two days as well. Twelve other seeds measured (looks-day-0
+      // to -11) all show one workshop day plain and two made up.
+      const { s, p } = film(look ? { looks: { Marta: look } } : {}, 'looks-day-0');
       castAll(s, p);
       staffAll(s, p);
       runDays(s, p, 30);

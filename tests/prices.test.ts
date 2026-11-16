@@ -6,7 +6,7 @@
 import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
 import { describe, expect, it } from 'vitest';
 import { crowdDayRate, dayFees, housePackageFee, BACKGROUND_HOURS, MINIMUM_WAGE, RENDER_NODE_DAY_COST, VOICE_SESSION_STUDIO, SIXTH_DAY_PREMIUM, HOLIDAY_PREMIUM, NIGHT_PREMIUM, MATERIAL_COST } from '../src/engine/production/rates';
-import { PER_DIEM, MOVE_BASE, MOVE_PER_1000_KM, MOVE_CAP } from '../src/engine/destinations';
+import { PER_DIEM, CAR_PER_MILE, TRUCK_PER_MILE, FARE } from '../src/engine/destinations';
 import { RIGS } from '../src/engine/craft';
 import { MAKEUP } from '../src/engine/looks';
 import { MOCAP_SESSION_STAGE, FACIAL_RIG_PER_SESSION } from '../src/engine/mocap';
@@ -64,7 +64,10 @@ const ROWS: Row[] = [
   { area: 'Shooting', what: 'Practical makeup with digital cleanup, built', game: appliance('cleanup'), real: '$3,000 to $10,000 custom prosthetic makeup', range: [3000, 10000], source: 'Backstage', status: 'Sourced', where: 'looks.ts MAKEUP' },
   { area: 'Shooting', what: 'Partial appliances, wounds, a mask, built', game: `${money(appliance('partial'))}, ${money(appliance('wounds'))}, ${money(appliance('mask'))}`, real: 'smaller builds than a full prosthetic makeup', source: 'none found for each', status: 'Modeled', where: 'looks.ts MAKEUP' },
   { area: 'Shooting', what: 'Housing and feeding one person for a day away', game: PER_DIEM.lodging + PER_DIEM.meals, real: '$110 lodging and $68 meals', range: [178, 178], source: 'GSA FY 2026 standard CONUS per diem (Federal Register, August 19, 2025)', status: 'Fixed', where: 'destinations.ts PER_DIEM' },
-  { area: 'Shooting', what: 'Moving the unit to a place away', game: `the equipment package × ${MOVE_BASE} + ${MOVE_PER_1000_KM} per 1,000 km, at most × ${MOVE_CAP}`, real: 'trucks by the mile, crew travel', source: 'none found for one figure', status: 'Modeled', where: 'destinations.ts moveCost' },
+  { area: 'Shooting', what: 'Moving the unit under 500 km: a car by the mile, four to a car', game: CAR_PER_MILE, real: '76 cents a mile', range: [0.76, 0.76], source: 'IRS standard business mileage rate from July 1, 2026', status: 'Fixed', where: 'destinations.ts CAR_PER_MILE' },
+  { area: 'Shooting', what: 'Moving the unit under 500 km: the equipment truck by the mile', game: TRUCK_PER_MILE, real: '65 cents a mile', range: [0.65, 0.65], source: 'Cinevo rate card, grip and electric truck mileage', status: 'Fixed', where: 'destinations.ts TRUCK_PER_MILE' },
+  { area: 'Shooting', what: 'Moving the unit further: a seat there and back, in the same country', game: FARE.domestic, real: '$436, the average US domestic fare, second quarter of 2026 ($428 in the first)', range: [428, 445], source: 'Bureau of Transportation Statistics, average domestic air fares', status: 'Fixed', where: 'destinations.ts FARE' },
+  { area: 'Shooting', what: 'Moving the unit further: a seat there and back, to another country', game: FARE.international, real: 'a median international round trip from the US, $1,138 in summer 2026 ($1,115 a year before)', range: [1115, 1138], source: 'Hopper analysis reported by Fox 29, summer 2026', status: 'Fixed', where: 'destinations.ts FARE' },
   { area: 'Shooting', what: 'Costumes, a character', game: MATERIAL_COST['prep:costume'], real: 'an indie film\'s wardrobe $5,475 to $17,450 in all: $550 to $1,750 a character for ten', range: [550, 1750], source: 'Filmmaker Magazine, DV case study ($5,475); Bloomsbury, Feature Film Budgeting, Sample Budget 3 ($17,450)', status: 'Sourced', where: 'rates.ts MATERIAL_COST' },
   { area: 'Shooting', what: 'Design materials, a design day (about $225 a scene on a feature)', game: MATERIAL_COST['prep:design'], real: 'an indie film\'s art, set dressing and props $11,025 to $39,210 in all', source: 'Filmmaker Magazine, DV case study; Bloomsbury, Sample Budget 3', status: 'Sourced', where: 'rates.ts MATERIAL_COST' },
   { area: 'Shooting', what: 'Archive footage, a clip', game: MATERIAL_COST['doc:archive'], real: '$45 to $75 a second, 30-second minimums: $1,350 to $4,500 for 30 to 60 seconds', range: [1350, 4500], source: 'Film Archives Online ($60 a second, feature documentary); Budget Films ($50 to $75 a second)', status: 'Sourced', where: 'rates.ts MATERIAL_COST' },
@@ -92,13 +95,13 @@ const ROWS: Row[] = [
 
 function page(): string {
   const count = (s: Status) => ROWS.filter((r) => r.status === s).length;
-  const shown = (g: number | string, what: string) => (typeof g === 'number' ? (/holiday|night/i.test(what) ? `× ${g}` : Number.isInteger(g) ? money(g) : `$${g.toFixed(2)}`) : g);
+  const shown = (g: number | string, what: string) => (typeof g === 'number' ? (/holiday|night shoot/i.test(what) ? `× ${g}` : Number.isInteger(g) ? money(g) : `$${g.toFixed(2)}`) : g);
   return [
     '# What Things Cost',
     '',
     'Written by `tests/prices.test.ts` from the code; don\'t edit by hand. Run with `SLATE_WRITE_AUDIT=1` to rewrite it.',
     '',
-    `Every price the player pays, read from the code, beside a published figure and where it was published. **Sourced**: the game's price sits inside the published range (the test fails if it leaves it). **Fixed**: changed on November 15, 2026 to the published figure. **Modeled**: no published figure was found, so the price is the game's own. ${count('Sourced')} sourced, ${count('Fixed')} fixed, ${count('Modeled')} modeled.`,
+    `Every price the player pays, read from the code, beside a published figure and where it was published. **Sourced**: the game's price sits inside the published range (the test fails if it leaves it). **Fixed**: changed on November 15 or 16, 2026 to the published figure. **Modeled**: no published figure was found, so the price is the game's own. ${count('Sourced')} sourced, ${count('Fixed')} fixed, ${count('Modeled')} modeled.`,
     '',
     `British rate cards are read at ${GBP} dollars to the pound. A US union hourly rate is read as a 10-hour day, eight hours straight and two at time and a half. A non-union background day is ${BACKGROUND_HOURS} hours at California's minimum wage, by date: ${MINIMUM_WAGE.map(([d, w]) => `$${w.toFixed(2)} from ${d}`).join(', ')}.`,
     '',
