@@ -247,9 +247,27 @@ and the rest) with real grades filling the hiring lists.
 - A low balance alert reveals a stranger's debit that takes the account under its line, as the large payment alert did
   over its own (`security.ts somebodyElse`).
 - `npm run check` passed (1,719 tests); the shop journeys passed (equipment, money, J01, J02, J06, project money).
+- That checkpoint merged as #109. Then a visit's days are counted against its limit, and travel asks for them
+  (`papers.ts` "staying"; `tests/stays.test.ts`, 11 tests, each rule mutation-checked; `e2e/v9-papers.spec.ts`):
+  - each arrival records a stay (`state.stays`, from the story's start; an older save's from the day it's opened);
+  - the Schengen area's 90 days in any 180 across its states (Monaco, San Marino, the Vatican and Åland with it), and
+    the visit records' days, days in any window, or months a visit; days with the right to stay don't count;
+  - the border refuses a visitor with no days left, and says the day entry is possible again; there's no border within
+    the Schengen area, or between the United States and Puerto Rico or the US Virgin Islands;
+  - a warning a week before a visit's last day, and an overstay recorded the day after (the `stay-limit` event), ended
+    when you leave its place;
+  - the law's consequences where it fixes them: the United States' three- and ten-year bars (past 180 days, a year), the
+    void of a US visa or authorization held (8 U.S.C. 1202(g)) and the Visa Waiver Program closed; the United Kingdom's
+    12 months past 30 days. Elsewhere the overstay is recorded and nothing more.
+  - Your Papers: a "Where You Are" card (days used, last day, overstays) and each country's visit limit and refusal.
+  - Proof: `off-stay-limit` (20 careers, scheduled runner): with the event on, the overstay voids the ESTA, the second
+    trip asks for a visa ($130 more in fees) and doesn't happen; off, the 30-day second trip does.
 Open, explained: moving an episode (once the arms differ, every later scene, hire and offer is numbered differently and
-the draws follow the numbers). Possible next steps: key the game's draws by something both arms share; published figures
-for the two modeled prices.
+the draws follow the numbers). Found on the way, not yet fixed: an electronic authorization (ESTA, the UK's ETA,
+Canada's eTA and 30 other destinations' `eta` entries) is charged the visitor visa's estimate (for the US $135 and 64
+days, where an ESTA is $40 from September 30, 2025, under H.R. 1, and is decided within 72 hours). Next: research each authorization's fee, time and validity.
+Possible next steps after that: key the game's draws by something both arms share; published figures for the two
+modeled prices.
 
 ## The Owner's Command Of November 14, 2026 (Later): Every Feature Proven, Everything Possible
 

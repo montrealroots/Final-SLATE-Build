@@ -42,6 +42,8 @@ test('Home to Your Papers: a visa applied for and paid, decided on its day, in u
   const rail = page.locator('nav.rail');
   await expect(rail.getByRole('button', { name: 'Your Papers', includeHidden: true })).toHaveAttribute('aria-current', 'page');
   await expect(rail.getByRole('button', { name: 'Home', exact: true, includeHidden: true })).not.toHaveAttribute('aria-current', /.+/);
+  // Where you are, and for how long you may stay (from November 16, 2026): where you live, as long as you like.
+  await expect(page.getByRole('status', { name: 'Your Stay' })).toHaveText("You're in Mexico, where you have the right to stay.");
   await page.getByLabel('Country', { exact: true }).selectOption('US');
   await expect(page.getByRole('status', { name: 'Entering' })).toContainText('you need a visa');
   await expect(page.locator('main')).toContainText('B-1/B-2 Visitor Visa: 185 USD, decided in 157 days, good for 10 years.');
@@ -67,4 +69,39 @@ test('Home to Your Papers: a visa applied for and paid, decided on its day, in u
   await expect(page.getByRole('list', { name: 'Working' })).toContainText('Acting: Not allowed yet.'); // still not leave to work
   await page.getByRole('button', { name: 'Back To Home' }).click();
   await expect(papersPanel(page)).not.toContainText('being decided');
+});
+
+// A visit's days counted (from November 16, 2026): a Japanese actor living in Toronto travels to Paris, and Your Papers
+// counts the Schengen area's 90 days in any 180 from the day they arrive.
+test('A visit to Paris counted against the Schengen area\'s 90 days, on Your Papers', async ({ page }, info) => {
+  test.skip(!['desktop', 'phone'].includes(info.project.name), 'Desktop and phone.');
+  test.setTimeout(180_000);
+  await openStart(page);
+  await page.evaluate(() => {
+    localStorage.clear();
+    localStorage.setItem('slate.v1.creationDraft', JSON.stringify({
+      step: 7, name: 'Ren Aoki', pronouns: 'they', actingTitle: 'Actor', birthDate: '2007-03-02', birthplaceId: 'jp-tokyo',
+      heritages: [{ id: 'Japanese', label: 'Japanese', custom: false }], heritageCustomText: '', nationalities: ['JP'], mainLanguage: 'ja', languages: [],
+      startPlaceId: 'ca-toronto', startDate: '2026-04-06', startTime: '08:00', updatedAt: 1,
+    }));
+  });
+  await page.reload();
+  await page.getByRole('button', { name: 'Continue Creation' }).click();
+  await page.getByRole('button', { name: 'Start My Story' }).click();
+  await expect(page.getByRole('heading', { name: /^Good (Morning|Afternoon|Evening), /, level: 1 })).toBeVisible();
+  await page.getByRole('button', { name: 'Open Your Papers' }).click();
+  await expect(page.getByRole('status', { name: 'Your Stay' })).toHaveText("You're in Canada, where you have the right to stay.");
+  await page.getByLabel('Country', { exact: true }).selectOption('FR');
+  await expect(page.locator('main')).toContainText('A visit may last 90 days in any 180, by the Schengen Borders Code');
+
+  await nav(page, 'World');
+  await page.getByLabel('Country Or Territory').selectOption({ label: 'France' });
+  await page.getByRole('searchbox', { name: 'Search Places' }).fill('paris');
+  await page.getByRole('list', { name: 'Places' }).getByRole('button', { name: 'Paris', exact: true }).click();
+  await page.getByRole('button', { name: 'Travel Here' }).click();
+  await expect(page.getByText("You've arrived in Paris.").first()).toBeVisible({ timeout: 30_000 });
+
+  await nav(page, 'Home');
+  await page.getByRole('button', { name: 'Open Your Papers' }).click();
+  await expect(page.getByRole('status', { name: 'Your Stay' })).toHaveText(/^You're in France as a visitor: 1 of the 90 days in any 180 that the Schengen area allows are used\. You may stay until \d{4}-\d\d-\d\d\.$/);
 });

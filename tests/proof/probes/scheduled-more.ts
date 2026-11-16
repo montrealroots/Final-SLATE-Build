@@ -22,6 +22,7 @@ import { shelveProject } from '../../../src/engine/shelve';
 import { approvedCharacters, makeOffer, roleCandidates } from '../../engine-api';
 import { fund } from './casting';
 import { RAINY, onLoggedWarning } from './weather';
+import { STAYS_BASE, staysMeasure } from './stays';
 import { PROBES as HELPERS } from './helpers-people';
 import { PROBES as WRITING } from './writing';
 import { PROBES as DAYS } from './day';
@@ -190,4 +191,7 @@ export const PROBES: Probe[] = [
   offIn('first-look-accept', 'first-look-end', 'a first-look deal reaching its end', ['firstLookEnded'], ['overheadPaid', 'money'], { measure: deals, over: { years: 4 } }),
   // Episodes on dates of their own (the episode-dates proof's four-week move), so each goes out by this system.
   offIn('episode-dates', 'episode-release', 'a season\'s episodes going out', ['episodesOut'], ['audience', 'renewalWait'], { measure: episodes }),
+  // A visit's last day watched (papers.ts, from November 16, 2026): past it in the United States, the overstay voids the
+  // travel authorization and closes the Visa Waiver Program, so the next trip needs a visa first.
+  offOn(STAYS_BASE, 'stay-limit', 'a visit\'s last day being watched', ['overstays'], ['usVisas', 'papersPaid', 'secondTripDays'], staysMeasure, 20),
 ];
