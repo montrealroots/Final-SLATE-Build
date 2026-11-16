@@ -572,7 +572,7 @@
  ],
  "verdict": "proven",
  "hashes": {
-  "src/engine/bankworld/systems/lending.ts": "4d70426b81705b20",
+  "src/engine/bankworld/systems/lending.ts": "d2131a42dd14812c",
   "tests/proof/career.ts": "50bea06f19a02c5b"
  }
 }

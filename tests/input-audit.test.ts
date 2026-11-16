@@ -5,6 +5,7 @@
 import { readFileSync, readdirSync } from 'node:fs';
 import { join } from 'node:path';
 import { describe, expect, it } from 'vitest';
+import { bankControls } from './ui-controls';
 
 const root = process.cwd();
 const CLASSES = ['decision', 'identity', 'record', 'view', 'component'];
@@ -40,33 +41,8 @@ function controls(): string[] {
       out.push(`${f} | ${label} | ${n}`);
     }
   }
-  // The bank screens ported from 1221 (src/ui/bankworld, from November 16, 2026): plain <input>, <select> and
-  // <textarea>, each named by its id, or its aria-label where it has none, read as tools/input-audit/controls.py reads
-  // them: the tag to its own end, as an attribute can hold `=>` and a template its own braces.
-  const attr = (tag: string, name: string): string | undefined => {
-    const m = new RegExp(`\\b${name}=`).exec(tag);
-    if (!m) return undefined;
-    const i = m.index + m[0].length;
-    if (tag[i] === '"') return tag.slice(i, tag.indexOf('"', i + 1) + 1);
-    let depth = 0, j = i;
-    do { depth += tag[j] === '{' ? 1 : tag[j] === '}' ? -1 : 0; j++; } while (depth !== 0);
-    return tag.slice(i, j);
-  };
-  const bank = (readdirSync(join(root, 'src/ui/bankworld'), { recursive: true }) as string[]).filter((x) => x.endsWith('.tsx')).map((x) => `bankworld/${x.replaceAll('\\', '/')}`).sort();
-  for (const f of bank) {
-    const s = readFileSync(join(root, 'src/ui', f), 'utf8');
-    const seen = new Map<string, number>();
-    for (const m of s.matchAll(/<(input|select|textarea)\b/g)) {
-      let depth = 0, j = m.index! + m[0].length;
-      while (!(s[j] === '>' && depth === 0)) { depth += s[j] === '{' ? 1 : s[j] === '}' ? -1 : 0; j++; }
-      const tag = s.slice(m.index! + m[0].length, j);
-      const id = attr(tag, 'id'), aria = attr(tag, 'aria-label');
-      const label = id ? `id=${id}` : aria ? `aria-label=${aria}` : '?';
-      const n = (seen.get(label) ?? 0) + 1;
-      seen.set(label, n);
-      out.push(`${f} | ${label} | ${n}`);
-    }
-  }
+  // The bank screens ported from 1221 (src/ui/bankworld), from November 16, 2026 (tests/ui-controls.ts).
+  for (const c of bankControls(root)) out.push(`${c.file} | ${c.label} | ${c.n}`);
   return out;
 }
 
