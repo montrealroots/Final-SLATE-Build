@@ -1433,7 +1433,8 @@ export function registerLending(sim: Simulation): void {
     if (!(paid > 0)) throw new CommandError(`${current.name} has nothing available to pay it with, so nothing was paid.`);
     post(s, `Paid to collections: ${debt.institution}`, 'transfer', [{ accountId: current.id, amount: -paid }, { accountId: debt.id, amount: paid }]);
     if (debt.balance === 0) debt.closedAt = s.now;
-    return { paid, left: -debt.balance };
+    // What is left, never below nothing: once paid off, -0 until November 16, 2026, which a formatter writes as -$0.00.
+    return { paid, left: Math.max(0, -debt.balance) };
   });
 
   sim.onCommand<{ limit: Money; perUse?: boolean; accountId?: string }, { limit: Money; rate?: number }>('bank.arrange_overdraft', (p, { sim: s }) => {
