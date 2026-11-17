@@ -113,7 +113,8 @@ export function Shell({ children }: { children: ReactNode }) {
             {s.readOnly && (
               <div className="callout callout-negative" role="alert">
                 <p>This game is open in another tab, so time isn't running here and changes are paused.</p>
-                <button className="btn btn-primary btn-sm" onClick={() => store.takeOver()}>Take Over Here</button>
+                {s.takeOverProblem && <p>{s.takeOverProblem}</p>}
+                <button className="btn btn-primary btn-sm" aria-busy={s.takingOver} onClick={() => void store.takeOver()}>Take Over Here</button>
               </div>
             )}
             {exitError && s.saveStatus !== 'saved' && (

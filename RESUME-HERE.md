@@ -375,6 +375,14 @@ and the rest) with real grades filling the hiring lists.
   doesn't catch, so a stuck or failed read leaves the tab read-only with no word to the player. Get the trace from a
   failing run's `playwright-results-dev-desktop-2` artifact (run 44006654291 kept it for 14 days), find the await that
   doesn't settle, fix it, make a failed take-over say so without running a stale save, and test that path.
+- Done the same day, in part. The whole dev desktop shard 2/2 run as CI runs it (one worker, 105 journeys) passed
+  here, so the stall itself still isn't reproduced and its root cause isn't proven. What was proven: a take-over whose
+  read throws was an unhandled rejection that left the tab read-only with no word (the new journey in
+  `e2e/viewports.spec.ts` failed that way, the dev server logging "[Unhandled rejection]"). `takeOver()` now catches
+  it, stays read-only, says "The latest save couldn't be read here, so this tab hasn't taken over. Try again." under
+  the banner, and takes over on the next try; a read whose open errors no longer runs this tab's older copy over the
+  other tab's newer save. Not tested on its own: the open-errors branch (the journey's fixture makes the read throw).
+  If the CI stall recurs, the message now shows whether the read failed (message) or never finished (no message).
 Still the game's own figures: the stop-motion and creature materials and the broadcast edit (no published per-item price
 found).
 

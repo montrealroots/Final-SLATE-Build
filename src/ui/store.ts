@@ -366,12 +366,33 @@ class Store {
     this.emit();
   }
 
+  /** Set while Take Over Here reads the latest save, and why the last attempt didn't take over, if it didn't. */
+  takingOver = false;
+  takeOverProblem: string | null = null;
+
   async takeOver() {
-    if (!this.state) return;
-    // Pick up the latest saved world from the other tab before running it here.
+    if (!this.state || this.takingOver) return;
+    // Pick up the latest saved world from the other tab before running it here. Until November 17, 2026 a read that
+    // threw was never caught, so the tab stayed read-only without a word (e2e/viewports.spec.ts), and one whose open
+    // failed ran this tab's older copy over the other tab's newer save: now neither takes over, and both say so.
     const id = this.state.saveId;
-    const r = await (await this.v()).forSave(id, (kv) => E().openSave(kv, id).state);
-    if (r.value && !r.error && this.state?.saveId === id) this.state = r.value;
+    this.takingOver = true;
+    this.takeOverProblem = null;
+    this.emit();
+    let latest: GameState | undefined;
+    try {
+      const r = await (await this.v()).forSave(id, (kv) => E().openSave(kv, id).state);
+      if (!r.error) latest = r.value;
+    } catch {
+      /* said below */
+    }
+    this.takingOver = false;
+    if (this.state?.saveId !== id) return void this.emit();
+    if (!latest) {
+      this.takeOverProblem = "The latest save couldn't be read here, so this tab hasn't taken over. Try again.";
+      return void this.emit();
+    }
+    this.state = latest;
     this.readOnly = false;
     this.holdLock();
     this.resume();
