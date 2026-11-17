@@ -12,7 +12,7 @@
 // installed or configured in this game, and none is assumed (no key, no account). The one provider here is the game's
 // own drawing from the record. It is labelled as what it is, an illustration drawn by the game: not a photograph, not
 // an AI image, and never a depiction of any real address. Housing works the same with pictures switched off.
-import { designHash, inBuilding, type Design, type Home } from './model';
+import { badDesignValue, designHash, inBuilding, type Design, type Home } from './model';
 import { homesOf } from './core';
 import type { GameState } from '../types';
 
@@ -41,10 +41,10 @@ export const GAME_DRAWING: IllustrationProvider = {
   draw: (b) => {
     const d = b.design;
     const W = 640, H = 400, ground = 330;
-    const floors = Math.min(d.floors, b.building ? 12 : 4);
+    const floors = d.floors;
     const scale = Math.min(26, 420 / Math.max(8, d.widthM));
     const bw = Math.round(Math.min(440, d.widthM * scale));
-    const fh = b.building ? Math.round(Math.min(22, 250 / floors)) : 70;
+    const fh = b.building ? Math.min(22, 250 / floors) : Math.min(70, 250 / floors);
     const bh = fh * floors;
     const x0 = Math.round((W - bw) / 2) - (d.garage !== 'none' ? 50 : 0);
     const top = ground - bh;
@@ -62,31 +62,44 @@ export const GAME_DRAWING: IllustrationProvider = {
     else if (d.roof === 'gable') parts.push(`<polygon points="${x0 - 12},${top} ${x0 + bw / 2},${top - 70} ${x0 + bw + 12},${top}" fill="${rc}" stroke="#222" data-feature="roof:gable:${d.roofMaterial}:${d.roofColor}"/>`);
     else parts.push(`<polygon points="${x0 - 12},${top} ${x0 + bw * 0.25},${top - 55} ${x0 + bw * 0.75},${top - 55} ${x0 + bw + 12},${top}" fill="${rc}" stroke="#222" data-feature="roof:hip:${d.roofMaterial}:${d.roofColor}"/>`);
     if (d.roofMaterial === 'tile' || d.roofMaterial === 'shingle') parts.push(`<line x1="${x0}" y1="${top - 8}" x2="${x0 + bw}" y2="${top - 8}" stroke="#00000030" stroke-dasharray="6 3"/>`);
-    // Windows: the record's number a floor, in its style and frame color; the door on the ground floor.
+    // Windows: the record's number on every floor, in its style and frame colour. On the ground floor they share the
+    // front with the door: half each side of it, so none is left out (a building's ground floor lost two of eight to the
+    // door until November 17, 2026, and the checklist refused its picture).
     let windows = 0;
+    const dx = x0 + bw / 2 - 14;
+    const spans = (f: number): [number, number, number][] => {
+      const n = d.windowsPerFloor;
+      if (f > 0) return [[x0, x0 + bw, n]];
+      const left = Math.floor(n / 2);
+      return [[x0, dx - 4, left], [dx + 32, x0 + bw, n - left]];
+    };
     for (let f = 0; f < floors; f++) {
       const y = ground - (f + 1) * fh + fh * 0.25;
-      const n = d.windowsPerFloor;
-      for (let i = 0; i < n; i++) {
-        const cx = x0 + ((i + 1) * bw) / (n + 1);
-        if (f === 0 && Math.abs(cx - (x0 + bw / 2)) < 26) continue; // the door's place
-        const ww = d.windowStyle === 'ribbon' ? bw / (n + 1) * 0.8 : d.windowStyle === 'picture' ? 34 : 22;
-        const wh = d.windowStyle === 'ribbon' ? fh * 0.35 : fh * 0.45;
-        parts.push(`<rect x="${cx - ww / 2}" y="${y}" width="${ww}" height="${wh}" fill="#b8d3e6" stroke="${col(d.frameColor)}" stroke-width="3" data-feature="window:${d.windowStyle}:${d.frameColor}"/>`);
-        if (d.windowStyle === 'sash') parts.push(`<line x1="${cx - ww / 2}" y1="${y + wh / 2}" x2="${cx + ww / 2}" y2="${y + wh / 2}" stroke="${col(d.frameColor)}" stroke-width="2"/>`);
-        windows += 1;
+      for (const [a, z, n] of spans(f)) {
+        const slot = (z - a) / Math.max(1, n);
+        for (let i = 0; i < n; i++) {
+          const cx = a + slot * (i + 0.5);
+          const ww = Math.min(d.windowStyle === 'ribbon' ? slot * 0.85 : d.windowStyle === 'picture' ? 34 : 22, slot * 0.8);
+          const wh = d.windowStyle === 'ribbon' ? fh * 0.35 : fh * 0.45;
+          parts.push(`<rect x="${cx - ww / 2}" y="${y}" width="${ww}" height="${wh}" fill="#b8d3e6" stroke="${col(d.frameColor)}" stroke-width="${Math.min(3, Math.max(1, wh / 6))}" data-feature="window:${d.windowStyle}:${d.frameColor}"/>`);
+          if (d.windowStyle === 'sash') parts.push(`<line x1="${cx - ww / 2}" y1="${y + wh / 2}" x2="${cx + ww / 2}" y2="${y + wh / 2}" stroke="${col(d.frameColor)}" stroke-width="2"/>`);
+          windows += 1;
+        }
       }
     }
     drawn.windowsDrawn = windows;
-    const dx = x0 + bw / 2 - 14;
+    drawn.floorsDrawn = floors;
     parts.push(`<rect x="${dx}" y="${ground - 52}" width="28" height="52" fill="${col(d.doorColor)}" stroke="#222" data-feature="door:${d.door}:${d.doorColor}"/>`);
     if (d.door === 'glazed') parts.push(`<rect x="${dx + 6}" y="${ground - 46}" width="16" height="20" fill="#b8d3e6"/>`);
     if (d.door === 'panel') parts.push(`<rect x="${dx + 5}" y="${ground - 46}" width="18" height="16" fill="none" stroke="#00000055"/><rect x="${dx + 5}" y="${ground - 26}" width="18" height="16" fill="none" stroke="#00000055"/>`);
-    // Balconies, up to the floors there are above the ground.
-    const balconies = Math.min(d.balconies, Math.max(0, floors - 1));
+    // Balconies: every one the record has, on the floors above the ground, side by side where a floor has more than one.
+    const upper = Math.max(0, floors - 1);
+    const balconies = upper ? d.balconies : 0;
     for (let i = 0; i < balconies; i++) {
-      const y = ground - (i + 2) * fh + fh * 0.75;
-      parts.push(`<rect x="${x0 + bw * 0.62}" y="${y}" width="${bw * 0.24}" height="6" fill="#555" data-feature="balcony"/>`);
+      const floor = i % upper, k = Math.floor(i / upper), per = Math.ceil(d.balconies / upper);
+      const y = ground - (floor + 2) * fh + fh * 0.75;
+      const w = (bw * 0.8) / per;
+      parts.push(`<rect x="${x0 + bw * 0.1 + k * w + w * 0.1}" y="${y}" width="${w * 0.8}" height="${Math.max(2, Math.min(6, fh / 5))}" fill="#555" data-feature="balcony"/>`);
     }
     drawn.balconies = balconies;
     // Garage, drive, porch, pool, terrace, fence: only those the record has.
@@ -119,15 +132,13 @@ export const PROVIDERS: IllustrationProvider[] = [GAME_DRAWING];
 /** Every visible field of the record, checked against what was drawn: a missing, extra or wrong feature is a mismatch. */
 export function validate(design: Design, drawn: DrawResult['drawn'], svg: string): { feature: string; ok: boolean }[] {
   const has = (tag: string) => svg.includes(`data-feature="${tag}`);
-  const floorsCap = Math.min(design.floors, 12);
-  const expectWindows = drawn.windowsDrawn as number;
   const checks: { feature: string; ok: boolean }[] = [
-    { feature: `${design.floors} floor${design.floors > 1 ? 's' : ''}`, ok: drawn.floors === design.floors },
+    { feature: `${design.floors} floor${design.floors > 1 ? 's' : ''}`, ok: drawn.floorsDrawn === design.floors },
     { feature: `A ${design.roof} roof in ${design.roofMaterial}, ${design.roofColor}`, ok: has(`roof:${design.roof}:${design.roofMaterial}:${design.roofColor}`) },
     { feature: `${design.walls[0].toUpperCase()}${design.walls.slice(1)} walls, ${design.wallColor}`, ok: has(`walls:${design.walls}:${design.wallColor}`) },
-    { feature: `${design.windowsPerFloor} ${design.windowStyle} windows a floor, ${design.frameColor} frames`, ok: expectWindows >= Math.max(0, design.windowsPerFloor * floorsCap - 1) && has(`window:${design.windowStyle}:${design.frameColor}`) },
+    { feature: `${design.windowsPerFloor} ${design.windowStyle} windows a floor, ${design.frameColor} frames`, ok: drawn.windowsDrawn === design.windowsPerFloor * design.floors && has(`window:${design.windowStyle}:${design.frameColor}`) },
     { feature: `A ${design.door} door, ${design.doorColor}`, ok: has(`door:${design.door}:${design.doorColor}`) },
-    { feature: design.balconies ? `${design.balconies} balcon${design.balconies > 1 ? 'ies' : 'y'}` : 'No balcony', ok: (drawn.balconies as number) === Math.min(design.balconies, Math.max(0, Math.min(design.floors, 12) - 1)) },
+    { feature: design.balconies ? `${design.balconies} balcon${design.balconies > 1 ? 'ies' : 'y'}` : 'No balcony', ok: (drawn.balconies as number) === design.balconies },
     { feature: design.garage === 'none' ? 'No garage' : `${design.garage === 'carport' ? 'A carport' : `A ${design.garage} garage`}`, ok: design.garage === 'none' ? !has('garage:') : has(`garage:${design.garage}`) },
     { feature: design.driveway === 'none' ? 'No driveway' : `A ${design.driveway} driveway`, ok: design.driveway === 'none' ? !has('driveway:') : has(`driveway:${design.driveway}`) },
     { feature: `Landscaping: ${design.landscaping}`, ok: has(`landscaping:${design.landscaping}`) },
@@ -151,6 +162,9 @@ export function exteriorFor(state: GameState | null, home: Home, provider: Illus
   const kept = pinned ? homesOf(state!).images[home.id] : undefined;
   const brief = briefOf(home);
   if (kept && kept.revision === brief.revision && kept.hash === brief.hash) return { svg: kept.svg, label: kept.label, checklist: kept.checklist, fromCache: true };
+  // Only the design's own choices are drawn: a record with anything else (a save edited by hand) gets no picture.
+  const bad = badDesignValue(home.design);
+  if (bad) return { svg: null, label: provider.label, checklist: [], fromCache: false, refused: `No picture: ${bad}` };
   if (!provider.available()) return { svg: null, label: 'No picture: the illustration provider is unavailable. The home is unaffected.', checklist: [], fromCache: false };
   let attempts = 0;
   let last: { svg: string; checklist: { feature: string; ok: boolean }[] } | null = null;

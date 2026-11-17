@@ -11,7 +11,7 @@ import { newId } from '../state';
 import { unit } from '../rng';
 import type { GameState } from '../types';
 import { HOME_RULES } from './market';
-import { RUNNING_USD, WORK, WORK_COST_USD, gardenOf, inBuilding, permissionFor, type Home, type Room, type WorkKind } from './model';
+import { RUNNING_USD, WORK, WORK_COST_USD, badDesignValue, gardenOf, inBuilding, permissionFor, type Design, type Home, type Room, type WorkKind } from './model';
 import {
   BOOK, addDaysToKey, addMonths, book, canPay, days, document, dollarsOf, formatDateKey, homeOf, homesOf, instantOn, money, note, payOut,
   record, refund, scheduleHome, todayAt, type Item, type Job, type Policy, type Stay,
@@ -58,7 +58,8 @@ export function itemCheck(state: GameState, home: Home, c: CatalogItem, roomId: 
   if (c.sourceId && c.markets && !/United States|Canada/.test(c.markets)) return { buy: 'This model isn\'t recorded as sold here.', install: null, needsMeasurement: false };
   if (c.sourceId && !(home.country === 'US' || home.country === 'CA')) return { buy: `EPA records this model for ${c.markets}; it isn't recorded as sold in this country.`, install: null, needsMeasurement: false };
   if (c.onMarketFrom && c.onMarketFrom > today) return { buy: `This model doesn't come on the market until ${formatDateKey(c.onMarketFrom)}.`, install: null, needsMeasurement: false };
-  if (c.widthIn !== null && inchM(c.widthIn) > DOOR_WIDTH_M + 0.1) return { buy: `At ${Math.round(inchM(c.widthIn) * 100)} cm wide it won't fit through a standard door (the game's ${DOOR_WIDTH_M * 100} cm).`, install: null, needsMeasurement: false };
+  // An appliance comes through the door whole; furniture is delivered flat or turned on its end.
+  if (c.category !== 'furniture' && c.widthIn !== null && inchM(c.widthIn) > DOOR_WIDTH_M + 0.1) return { buy: `At ${Math.round(inchM(c.widthIn) * 100)} cm wide it won't fit through a standard door (the game's ${DOOR_WIDTH_M * 100} cm).`, install: null, needsMeasurement: false };
   const room = roomId ? home.rooms.find((r) => r.id === roomId) : undefined;
   if (!room) return { buy: null, install: 'Choose a room for it.', needsMeasurement: false };
   const missing = needsOf(c).filter((n) => !room.services.includes(n));
@@ -222,6 +223,8 @@ export function workRefusal(state: GameState, homeId: string, work: WorkKind): s
  * like makes a new design revision, and with it a new picture, only when the work is finished.
  */
 export function startWork(state: GameState, homeId: string, work: WorkKind, choice?: { color?: string; roofMaterial?: string }): Job {
+  const bad = badDesignValue({ ...(choice?.color ? { wallColor: choice.color } : {}), ...(choice?.roofMaterial ? { roofMaterial: choice.roofMaterial as Design['roofMaterial'] } : {}) });
+  if (bad) throw new Error(bad);
   const no = workRefusal(state, homeId, work);
   if (no) throw new Error(no);
   const hs = homesOf(state);

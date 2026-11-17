@@ -10,7 +10,7 @@ const IndustryCard = lazy(() => import('./Catalog').then((m) => ({ default: m.In
 import { store, useClock, useGame } from './store';
 // Drawn with Home, not loaded after it: loaded late they pushed the cards under them down (the UI audit's walk, November
 // 14, 2026). The bank is in the engine Home already loads, so this adds nothing to load.
-import { YourBankPanel, YourPapersPanel } from './HomeMoney';
+import { YourBankPanel, YourHomesPanel, YourPapersPanel } from './HomeMoney';
 
 const PHASE_LABEL: Record<string, string> = {
   development: 'In Development', 'pre-production': 'In Pre-Production', production: 'In Production', 'post-production': 'In Post-Production', delivered: 'Delivered', released: 'Released',
@@ -162,6 +162,7 @@ export function Home() {
           <div className="home-money">
             <YourBankPanel />
             <YourPapersPanel />
+            <YourHomesPanel />
           </div>
 
           <Proposals />

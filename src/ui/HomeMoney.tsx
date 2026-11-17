@@ -66,3 +66,33 @@ export function YourPapersPanel() {
     </Panel>
   );
 }
+
+/**
+ * Homes And Property on Home (from November 17, 2026; the owner's Homes & Property package, section 2): where you live,
+ * what you pay for it each month, what's being decided, and the next date that matters. The page has the rest.
+ */
+export function YourHomesPanel() {
+  const g = useGame();
+  useClock();
+  const open = <button className="btn btn-sm btn-primary" onClick={() => store.go({ view: 'homes' })}>Open Homes And Property</button>;
+  const hs = g.homes;
+  const res = hs?.residence ? hs.homes[hs.residence] : undefined;
+  const t = res ? hs!.tenancies.find((x) => x.homeId === res.id && (x.stage === 'active' || x.stage === 'notice')) : undefined;
+  const owned = hs ? hs.owned.filter((o) => !o.soldAt) : [];
+  const mortgages = owned.filter((o) => o.mortgage);
+  const pending = hs ? hs.tenancies.filter((x) => x.stage === 'applied' || x.stage === 'approved').length + hs.purchases.filter((p) => !['completed', 'failed', 'rejected', 'withdrawn'].includes(p.stage)).length + hs.jobs.filter((j) => j.stage === 'awaiting-permission' || j.stage === 'scheduled' || j.stage === 'working').length + hs.builds.filter((b) => b.stage !== 'complete' && b.stage !== 'refused').length : 0;
+  const next = g.events.filter((e) => e.kind === 'home' && e.attention !== 'silent').sort((a, b) => a.at - b.at)[0];
+  const overdue = (t?.arrearsMinor ?? 0) + mortgages.reduce((a, o) => a + (o.mortgage!.arrearsMinor ?? 0), 0);
+  return (
+    <Panel title="Homes And Property" actions={open}>
+      <ul className="list small" style={{ margin: 0 }}>
+        <li className="list-item list-static"><span className="grow">Where you live</span><span>{res ? res.title : 'Not chosen yet'}</span></li>
+        {t && <li className="list-item list-static"><span className="grow">Rent</span><span>{formatMoney(t.rentMinor, res!.currency, { cents: false })} a month</span></li>}
+        {mortgages.map((o) => <li key={o.homeId} className="list-item list-static"><span className="grow">Mortgage: {hs!.homes[o.homeId]?.title}</span><span>{formatMoney(o.mortgage!.paymentMinor, hs!.homes[o.homeId]?.currency ?? 'USD', { cents: false })} a month</span></li>)}
+        {owned.length > 0 && <li className="list-item list-static"><span className="grow">Homes and land you own</span><span>{owned.length}</span></li>}
+      </ul>
+      {overdue > 0 && <p className="xs negative" style={{ margin: 'var(--s2) 0 0' }}>A housing payment is overdue.</p>}
+      {pending > 0 && <p className="xs dim" style={{ margin: 'var(--s2) 0 0' }}>{pending === 1 ? 'One thing is under way.' : `${pending} things are under way.`}{next ? ` Next: ${formatDate(next.at, getPlace(g.character.livesIn ?? g.locationId).zone)}.` : ''}</p>}
+    </Panel>
+  );
+}

@@ -98,13 +98,14 @@ export function makeOffer(state: GameState, offer: Home, offerMinor: number, pla
   return p;
 }
 
-/** The seller's answer, kept once: at 97% of the asking price or more, accepted; from 90%, a counter at the asking price. */
+/** The seller's answer, kept once: at 97% of the asking price or more, accepted; from 90%, a counter halfway to it. */
 export function answerOffer(state: GameState, p: Purchase): void {
   if (p.stage !== 'offered') return;
   const home = homeOf(state, p.homeId);
   const share = p.offerMinor / home.priceMinor;
   if (share >= 0.97) acceptPurchase(state, p, p.offerMinor);
-  else if (share >= 0.9) { p.stage = 'countered'; p.counterMinor = home.priceMinor; note(state, home.id, `The seller of ${home.title} countered at ${money(home.currency, home.priceMinor)}. Accept it or withdraw.`); }
+  // The seller meets you halfway (until November 17, 2026 the counter was always the asking price, so offering less never paid less).
+  else if (share >= 0.9) { p.stage = 'countered'; p.counterMinor = Math.round((p.offerMinor + home.priceMinor) / 2 / 100) * 100; note(state, home.id, `The seller of ${home.title} countered at ${money(home.currency, p.counterMinor)}, halfway between your offer and the asking price. Accept it or withdraw.`); }
   else { p.stage = 'rejected'; note(state, home.id, `The seller of ${home.title} turned down your offer of ${money(home.currency, p.offerMinor)}: it was too far below the asking price.`, 'warning'); }
 }
 export function acceptCounter(state: GameState, id: string): void {
@@ -149,7 +150,7 @@ export function inspect(state: GameState, p: Purchase): void {
   if (p.stage !== 'inspecting' || p.inspection) return;
   const home = homeOf(state, p.homeId);
   const found = (Object.entries(home.condition) as [string, string][]).filter(([, g]) => g !== 'good').map(([k, g]) => `${k === 'finishes' ? 'Floors and walls' : k[0].toUpperCase() + k.slice(1)}: ${g}`);
-  p.inspection = { at: state.now, found, feeMinor: 0 };
+  p.inspection = { at: state.now, found, feeMinor: purchaseQuote(state, home, { finance: 'cash', inspect: true }, p.offerMinor).inspectionMinor };
   p.stage = p.finance.kind === 'mortgage' && !p.finance.decision ? 'financing' : 'ready';
   document(state, home.id, 'Inspection Report', [...(found.length ? found : ['Nothing beyond normal wear found in what was inspected.']), 'The inspection covers what can be seen and reached. It can\'t promise concealed defects aren\'t there.']);
   note(state, home.id, `The inspection of ${home.title} is done: ${found.length ? `${found.length} thing${found.length > 1 ? 's' : ''} to note (${found.join('; ')})` : 'nothing beyond normal wear'}. You can go on or withdraw before completion.`);

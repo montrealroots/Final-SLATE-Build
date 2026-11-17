@@ -37,6 +37,8 @@ export interface Tenancy {
   /** Changes made with the landlord's permission, and whether they must be undone. */
   changes: { work: WorkKind; restore: boolean; restored: boolean }[];
   deductions?: { what: string; minor: number; wear: boolean }[];
+  /** Damage you caused while living here (the game's chance of an accident): yours to repair, not the landlord's. */
+  damaged?: string[];
   disputed?: boolean; disputeDecision?: string;
   refundedMinor?: number; keptMinor?: number;
   payments: Payment[];
@@ -136,6 +138,10 @@ export function dollarsOf(state: GameState, currency: string, minor: number): nu
   if (usd === undefined) throw new Error(`No exchange rate for ${currency} is recorded by today, so the bank can't pay it.`);
   return usd / 100;
 }
+/** A dollar figure of the game's in a home's own money at today's rate, to the whole unit. */
+export function localOf(state: GameState, currency: string, usd: number): number {
+  return Math.round((usd * 100) / (dollarsOf(state, currency, 10000) / 100) / 100) * 100;
+}
 export const money = (currency: string, minor: number) => formatMoney(minor, currency, { cents: minor % 100 !== 0 });
 
 /** Pay out of your bank: an expense. Throws, paying nothing, when the bank can't. */
@@ -180,7 +186,7 @@ export function scheduleHome(state: GameState, at: number, step: string, payload
 export function note(state: GameState, homeId: string | undefined, text: string, kind: 'money' | 'personal' | 'warning' = 'personal'): void {
   homesOf(state).history.unshift({ at: state.now, ...(homeId ? { homeId } : {}), text });
   if (homesOf(state).history.length > 600) homesOf(state).history.length = 600;
-  addLog(state, text, kind, { route: { view: 'homes', ...(homeId ? { homeId } : {}) } as never });
+  addLog(state, text, kind, { route: { view: 'homes', ...(homeId ? { ref: homeId } : {}) } });
 }
 export function document(state: GameState, homeId: string, title: string, lines: string[]): void {
   homesOf(state).documents.unshift({ id: newId(state, 'hdoc'), at: state.now, homeId, title, lines });

@@ -7,12 +7,13 @@ import { bankSpendable, mortgageOwed } from '../src/engine/bank';
 import { bankSim } from '../src/engine/bankworld';
 import { marketEvidence, offersIn } from '../src/engine/homes/market';
 import { homesOf } from '../src/engine/homes/core';
-import { applyRefusal, applyToRent, askPermission, disputeDeductions, giveNotice, moveIn, payArrears, rentQuote, reportRepair, signLease } from '../src/engine/homes/renting';
+import { applyRefusal, applyToRent, askPermission, disputeDeductions, giveNotice, moveIn, payArrears, rentQuote, repairQuote, reportRepair, signLease } from '../src/engine/homes/renting';
 import { acceptSaleOffer, listForSale, makeOffer, purchaseQuote } from '../src/engine/homes/buying';
 import { buyItem, installItem, itemCheck, startWork, type CatalogItem } from '../src/engine/homes/living';
 import { applyForApproval, investigate, saveDesign, signBuild, startDesign } from '../src/engine/homes/building';
 import { advertise, chooseTenant, endLetting } from '../src/engine/homes/letting';
 import { arrangeViewing } from '../src/engine/homes';
+import { exteriorFor } from '../src/engine/homes/illustration';
 import { depositFor, permissionFor, scopesOf, gardenOf, type Home } from '../src/engine/homes/model';
 import { HOME_RULES } from '../src/engine/homes/market';
 import { getPlace } from '../src/data/places';
@@ -59,9 +60,15 @@ describe('renting in London, from application to the deposit back', () => {
     const t2 = homesOf(back).tenancies[0];
     expect(t2.payments.filter((p) => p.key.startsWith(`rent:${t2.id}:`)).length).toBe(3);
     // A broken roof is the landlord's: no cost to you.
+    // The component by its name, as the screen sends it; and the repair puts it right (until November 17, 2026 a
+    // report sent by the screen never matched a component, so nothing was mended).
+    const homeBack = homesOf(back).homes[home.id];
+    homeBack.condition.roof = 'poor';
+    expect(() => reportRepair(back, home.id, 'roof')).toThrow("isn't part of this home");
     reportRepair(back, home.id, 'Roof');
     advance(back, 6);
     expect(homesOf(back).repairs[0].stage).toBe('fixed');
+    expect(homeBack.condition.roof).toBe('good');
     giveNotice(back, t2.id);
     const spentBefore = bankSpendable(back);
     advance(back, 400);
@@ -318,5 +325,71 @@ describe('the exterior picture', () => {
     const second = exteriorFor(s, mine);
     expect(second.fromCache).toBe(false);
     expect(second.svg).toContain('walls:' + mine.design.walls + ':sage');
+  });
+
+  it('draws every offered home exactly as its record says, in every place and month the packs cover', async () => {
+    // The checklist is exact (from November 17, 2026): every window on every floor, every balcony, every floor. Until
+    // then a building's ground floor lost windows to its door, and a London flat's picture was refused in play.
+    const s = startLife('homes-every-picture', 'gb-london', { startDate: '2026-03-02' });
+    let n = 0;
+    for (const place of ['gb-london', 'us-los-angeles', 'us-new-york', 'fr-paris', 'us-austin', 'ca-toronto', 'za-cape-town']) {
+      for (const day of ['2026-03-02', '2026-07-15', '2027-01-10']) {
+        for (const h of offersIn(s.seed, await marketEvidence(place, day), day)) {
+          if (h.form === 'land') continue;
+          const r = exteriorFor(null, h);
+          expect(r.refused, `${h.id}: ${r.checklist.filter((c) => !c.ok).map((c) => c.feature).join('; ')}`).toBeUndefined();
+          expect(r.svg).toContain(`data-revision="${h.design.revision}"`);
+          n++;
+        }
+      }
+    }
+    expect(n).toBeGreaterThan(150);
+  });
+
+  it('wears a lived-in home: a year of wear is never charged; an accident is yours, kept from the deposit, halved on dispute', async () => {
+    // The game's model (from November 17, 2026): finishes go good to fair each year lived in; a 2% chance a month of
+    // accidental damage. Seeds are tried until both cases are seen; each is then followed to the deposit.
+    const seen = { clean: false, damaged: false };
+    for (let i = 0; i < 60 && !(seen.clean && seen.damaged); i++) {
+      const s = startLife(`homes-wear-${i}`, 'gb-london', { startDate: '2026-03-02' });
+      const home = (await offers(s, 'gb-london')).find((h) => h.market === 'rent' && h.condition.finishes === 'good');
+      if (!home) continue;
+      const t = applyToRent(s, home);
+      advance(s, 4);
+      signLease(s, t.id);
+      advance(s, Math.max(0, (Date.parse(`${t.start}T12:00:00Z`) - s.now) / DAY) + 1);
+      moveIn(s, home.id);
+      giveNotice(s, t.id);
+      advance(s, (Date.parse(`${t.endsOn}T23:00:00Z`) - s.now) / DAY); // the day it ends: settled ten days later
+      expect(t.stage).toBe('ended');
+      expect(t.refundedMinor).toBeUndefined();
+      const pinned = homesOf(s).homes[home.id];
+      const held = t.payments.filter((p) => p.kind === 'held').reduce((a, p) => a + p.minor, 0);
+      if (t.damaged?.length) {
+        if (seen.damaged) continue;
+        seen.damaged = true;
+        const charge = t.deductions!.find((d) => !d.wear)!;
+        expect(charge.what).toBe('Floors And Walls: damage beyond wear');
+        // The game's $300 estimate in pounds at the day's rate, to the pound: about £226.
+        expect(charge.minor).toBe(repairQuote(s, pinned, 'Floors And Walls'));
+        expect(charge.minor).toBeGreaterThan(20000);
+        expect(charge.minor).toBeLessThan(26000);
+        const half = Math.round(charge.minor / 2);
+        disputeDeductions(s, t.id);
+        expect(t.deductions!.find((d) => !d.wear)!.minor).toBe(half);
+        advance(s, 15);
+        expect(t.keptMinor).toBe(half);
+        expect(t.refundedMinor).toBe(held - half);
+      } else {
+        if (seen.clean) continue;
+        seen.clean = true;
+        expect(pinned.condition.finishes).toBe('fair');
+        expect(t.deductions!.some((d) => d.wear && d.minor === 0)).toBe(true);
+        advance(s, 15);
+        expect(t.keptMinor).toBe(0);
+        expect(t.refundedMinor).toBe(held);
+      }
+    }
+    expect(seen).toEqual({ clean: true, damaged: true });
   });
 });

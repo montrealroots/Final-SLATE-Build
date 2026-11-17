@@ -356,3 +356,31 @@ export function roomsFrom(kinds: [RoomKind, number][], prefix: string): Room[] {
     return { id: `${prefix}r${i + 1}`, kind, areaM2, widthM, depthM: Math.round((areaM2 / widthM) * 10) / 10, services: SERVICES_OF[kind] };
   });
 }
+
+/** The choices each visible feature can take: the design editor offers these, and nothing else is saved or drawn. */
+export const DESIGN_COLORS = ['white', 'cream', 'grey', 'terracotta', 'sage', 'navy', 'sand', 'charcoal', 'red', 'brown', 'green', 'black', 'oak', 'yellow'] as const;
+export const DESIGN_CHOICES = {
+  style: ['contemporary', 'traditional', 'modernist', 'cottage', 'tower', 'terrace'],
+  roof: ['gable', 'hip', 'flat'],
+  roofMaterial: ['tile', 'slate', 'metal', 'membrane', 'shingle'],
+  walls: ['brick', 'render', 'timber', 'concrete', 'stone', 'glass'],
+  windowStyle: ['sash', 'casement', 'picture', 'ribbon'],
+  door: ['panel', 'glazed', 'flush'],
+  garage: ['none', 'single', 'double', 'carport'],
+  driveway: ['none', 'gravel', 'paved'],
+  landscaping: ['none', 'lawn', 'garden', 'trees'],
+  outdoor: ['pool', 'terrace', 'porch', 'fence'],
+} as const;
+const COLOR_FIELDS = ['roofColor', 'wallColor', 'frameColor', 'doorColor'] as const;
+/** A value the design can't take (a save edited by hand, a colour off the list), in words; null when all are allowed. */
+export function badDesignValue(d: Partial<Design>): string | null {
+  for (const k of COLOR_FIELDS) if (d[k] !== undefined && !(DESIGN_COLORS as readonly string[]).includes(d[k]!)) return `${d[k]} isn't one of the colours on offer.`;
+  for (const [k, allowed] of Object.entries(DESIGN_CHOICES)) {
+    const v = (d as Record<string, unknown>)[k];
+    if (v === undefined) continue;
+    const vals = Array.isArray(v) ? v : [v];
+    if (vals.some((x) => !(allowed as readonly string[]).includes(String(x)))) return `That isn't one of the choices for the ${k === 'roofMaterial' ? 'roof material' : k === 'windowStyle' ? 'windows' : k}.`;
+  }
+  for (const k of ['floors', 'widthM', 'depthM', 'windowsPerFloor', 'balconies'] as const) if (d[k] !== undefined && !(Number.isFinite(d[k]) && d[k]! >= 0)) return `The ${k === 'widthM' ? 'width' : k === 'depthM' ? 'depth' : k === 'windowsPerFloor' ? 'windows per floor' : k} must be a number.`;
+  return null;
+}

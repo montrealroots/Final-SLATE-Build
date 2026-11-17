@@ -29,6 +29,7 @@ export const DESTINATIONS: readonly DestinationGroup[] = [
       // Home's alone, and the rail lit Home on their pages; the owner asked for that to stop, so the rail has them too.
       { view: 'bank', label: 'Your Bank', detail: 'Your accounts, cards, loans and payments' },
       { view: 'papers', label: 'Your Papers', detail: 'Your passports, visas and permissions to work' },
+      { view: 'homes', label: 'Homes And Property', detail: 'Where you live, homes to rent or buy, land, and what you own' },
     ],
   },
   {

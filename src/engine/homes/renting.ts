@@ -7,13 +7,14 @@
 import { getPlace } from '../../data/places';
 import { residenceRight } from '../papers';
 import { newId } from '../state';
+import { unit } from '../rng';
 import type { GameState } from '../types';
 import { HOME_RULES } from './market';
 import { COMPONENT_WORDS, WORK, depositFor, permissionFor, gardenOf, type Condition, type Home, type WorkKind } from './model';
 import { moveBetweenBooks } from '../bank';
 import { moveRefusal, moveTo } from '../papers';
 import {
-  BOOK, addDaysToKey, addMonths, book, canPay, days, document, dollarsOf, formatDateKey, homeOf, homesOf, instantOn, money, note, parseYmdDay,
+  BOOK, addDaysToKey, addMonths, book, canPay, days, document, dollarsOf, formatDateKey, localOf, homeOf, homesOf, instantOn, money, note, parseYmdDay,
   payOut, pin, record, scheduleHome, todayAt, type Repair, type Tenancy,
 } from './core';
 
@@ -150,8 +151,27 @@ export function rentDue(state: GameState, t: Tenancy, n: number): void {
     record(t.payments, { key: `rent:${t.id}:${n}:failed`, label: `Rent from ${formatDateKey(due)} not paid`, minor: t.rentMinor, kind: 'failed' }, state);
     note(state, home.id, `Your rent of ${money(home.currency, t.rentMinor)} on ${home.title} couldn't be paid: your bank refused it. You owe ${money(home.currency, t.arrearsMinor)}. Pay it from Your Home.`, 'warning');
   }
+  if (t.movedIn) wearAndTear(state, t, home, n);
   const next = addMonths(t.start, n, t.anchorDay);
   if (!t.endsOn || next < t.endsOn) scheduleHome(state, instantOn(home, next), 'rent-due', { id: t.id, n: n + 1 }, 'silent', `home-rent:${t.id}:${n + 1}`);
+}
+
+/**
+ * A lived-in home wears (from November 17, 2026: until then nothing ever changed a rented home's condition, so the
+ * move-out inspection and a dispute had nothing to read). The game's model: each year lived in, floors and walls go
+ * from good to fair, which is ordinary wear and never charged; and in any month there is a 2% chance of an accident,
+ * the floors or walls damaged, which is yours to put right before you leave or the landlord charges it from the deposit.
+ */
+function wearAndTear(state: GameState, t: Tenancy, home: Home, n: number): void {
+  if (n % 12 === 0 && home.condition.finishes === 'good') {
+    home.condition.finishes = 'fair';
+    note(state, home.id, `${home.title}: a year's ordinary wear shows on the floors and walls. That's the landlord's, not charged to you.`);
+  }
+  if (home.condition.finishes !== 'poor' && unit(state.seed, 'home-damage', t.id, n) < 0.02) {
+    home.condition.finishes = 'poor';
+    (t.damaged ??= []).push(COMPONENT_WORDS.finishes);
+    note(state, home.id, `${home.title}: an accident damaged the floors and walls (the game's chance of one). It's yours to put right: report it under Your Home for a quote, or the landlord charges it from your deposit when you leave.`, 'warning');
+  }
 }
 
 export function payArrears(state: GameState, id: string): void {
@@ -243,9 +263,12 @@ export function reportRepair(state: GameState, homeId: string, component: string
   if (!renting && !owns) throw new Error("You don't live in or own this home.");
   if (hs.repairs.some((r) => r.homeId === homeId && r.component === component && !['fixed', 'declined'].includes(r.stage))) throw new Error('That repair is already reported.');
   const yourItem = hs.items.find((i) => i.homeId === homeId && i.name === component && i.owner === 'you');
-  const landlords = renting && !yourItem;
+  if (!(Object.values(COMPONENT_WORDS) as string[]).includes(component) && !home.landlordItems.includes(component) && !yourItem) throw new Error(`${component} isn't part of this home or something in it.`);
+  // Damage you caused is yours to repair, even in a rental; the rest of a rented home is the landlord's.
+  const tenancy = hs.tenancies.find((t) => t.homeId === homeId && t.stage === 'active');
+  const landlords = renting && !yourItem && !tenancy?.damaged?.includes(component);
   const today = todayAt(state, home);
-  const quoteMinor = landlords ? 0 : repairQuote(home, component);
+  const quoteMinor = landlords ? 0 : repairQuote(state, home, component);
   const r: Repair = { id: newId(state, 'rep'), homeId, component, reportedAt: state.now, who: landlords ? 'landlord' : 'you', stage: landlords ? 'booked' : 'quoted', quoteMinor, says: '' };
   if (landlords) {
     r.visitAt = instantOn(home, addDaysToKey(today, LANDLORD_REPAIR_DAYS));
@@ -256,9 +279,10 @@ export function reportRepair(state: GameState, homeId: string, component: string
   note(state, homeId, `${home.title}: ${component} reported. ${r.says}`);
   return r;
 }
-export function repairQuote(home: Home, component: string): number {
-  const base: Record<string, number> = { Roof: 140000, Structure: 400000, Plumbing: 45000, Electrics: 38000, Heating: 60000, 'Floors And Walls': 30000 };
-  return Math.round((base[component] ?? 25000) * (home.currency === 'USD' ? 1 : 1));
+/** A contractor's quote, the game's estimate in dollars, in the home's money at today's rate (until November 17, 2026 it was the dollar figure in any currency). */
+export function repairQuote(state: GameState, home: Home, component: string): number {
+  const usd: Record<string, number> = { Roof: 1400, Structure: 4000, Plumbing: 450, Electrics: 380, Heating: 600, 'Floors And Walls': 300 };
+  return localOf(state, home.currency, usd[component] ?? 250);
 }
 /** Approve a quoted repair that's yours: paid now, the contractor visits in two days. */
 export function approveRepair(state: GameState, id: string): void {
@@ -277,6 +301,7 @@ export function repairVisit(state: GameState, r: Repair): void {
   if (r.stage !== 'booked') return;
   const home = homeOf(state, r.homeId);
   r.stage = 'fixed';
+  for (const t of homesOf(state).tenancies.filter((x) => x.homeId === r.homeId && x.damaged?.includes(r.component))) t.damaged = t.damaged!.filter((c) => c !== r.component);
   const key = (Object.keys(COMPONENT_WORDS) as (keyof Condition)[]).find((k) => COMPONENT_WORDS[k] === r.component);
   if (key) home.condition[key] = 'good';
   const item = homesOf(state).items.find((i) => i.homeId === r.homeId && i.name === r.component && i.stage === 'faulty');
@@ -335,14 +360,14 @@ export function endTenancy(state: GameState, t: Tenancy): void {
   for (const [k, was] of Object.entries(inv)) {
     if (was === 'present') {
       const broken = hs.repairs.some((r) => r.homeId === home.id && r.component === k && r.who === 'you' && r.stage !== 'fixed');
-      if (broken) deductions.push({ what: `The landlord's ${k.toLowerCase()} left broken`, minor: 30000, wear: false });
+      if (broken) deductions.push({ what: `The landlord's ${k.toLowerCase()} left broken`, minor: localOf(state, home.currency, 300), wear: false });
       continue;
     }
     const now = home.condition[k as keyof Condition];
     if (was === 'good' && now === 'fair') deductions.push({ what: `${COMPONENT_WORDS[k as keyof Condition]}: ordinary wear`, minor: 0, wear: true });
-    if (now === 'poor' && was !== 'poor') deductions.push({ what: `${COMPONENT_WORDS[k as keyof Condition]}: damage beyond wear`, minor: 40000, wear: false });
+    if (now === 'poor' && was !== 'poor') deductions.push({ what: `${COMPONENT_WORDS[k as keyof Condition]}: damage beyond wear`, minor: repairQuote(state, home, COMPONENT_WORDS[k as keyof Condition]), wear: false });
   }
-  for (const c of t.changes.filter((c) => c.restore && !c.restored)) deductions.push({ what: `${WORK[c.work].label}: not put back as agreed`, minor: 50000, wear: false });
+  for (const c of t.changes.filter((c) => c.restore && !c.restored)) deductions.push({ what: `${WORK[c.work].label}: not put back as agreed`, minor: localOf(state, home.currency, 500), wear: false });
   t.deductions = deductions;
   const owed = deductions.reduce((a, d) => a + d.minor, 0) + t.arrearsMinor;
   const held = t.payments.filter((p) => p.kind === 'held').reduce((a, p) => a + p.minor, 0);

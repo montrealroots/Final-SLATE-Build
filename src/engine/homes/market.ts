@@ -86,7 +86,7 @@ export async function marketEvidence(placeId: string, day: string): Promise<Mark
     if (ons) {
       const avg = ons.value * 100;
       // A population average: the game spreads it by size, a studio at 70% and each bedroom more, as its own model.
-      ev.rent = { byBedrooms: [0.7, 0.85, 1.05, 1.3, 1.6].map((f) => toLocal(Math.round(avg * f))), evidence: { basis: 'benchmark', sourceId: 'GB-ONS', says: `ONS's average private rent in ${region}, ${ons.observation_period} (provisional): £${ons.value.toLocaleString('en-GB')} a month across all homes. Spread by size by the game.` } };
+      ev.rent = { byBedrooms: [0.7, 0.85, 1.05, 1.3, 1.6].map((f) => exchange(Math.round(avg * f), 'GBP', currency, day) ?? Math.round(avg * f)), evidence: { basis: 'benchmark', sourceId: 'GB-ONS', says: `ONS's average private rent in ${region}, ${ons.observation_period} (provisional): £${ons.value.toLocaleString('en-GB')} a month across all homes. Spread by size by the game.` } };
       ev.nearby.push({ label: `ONS average private rent, ${region}`, detail: `£${ons.value.toLocaleString('en-GB')} a month, ${ons.observation_period}, provisional. An average across all rented homes, not a listing.` });
     }
   } else if (place.country === 'FR') {
@@ -151,7 +151,7 @@ function designFor(rng: Rng, form: Form, floorAreaM2: number, plotAreaM2: number
     frameColor: pick(rng, PALETTE.frame),
     door: pick(rng, ['panel', 'glazed', 'flush'] as const),
     doorColor: pick(rng, PALETTE.door),
-    balconies: building ? intBetween(rng, 0, floors) : detached && floors > 1 ? intBetween(rng, 0, 1) : 0,
+    balconies: building ? intBetween(rng, 0, Math.max(0, floors - 1)) : detached && floors > 1 ? intBetween(rng, 0, 1) : 0,
     garage: detached ? pick(rng, ['none', 'single', 'double', 'carport'] as const) : 'none',
     driveway: detached ? pick(rng, ['gravel', 'paved', 'none'] as const) : 'none',
     landscaping: building ? 'none' : plotAreaM2 && plotAreaM2 > 300 ? pick(rng, ['lawn', 'garden', 'trees'] as const) : 'lawn',
@@ -248,5 +248,31 @@ function baseHome(place: Place, ev: MarketEvidence, id: string, form: Form, tenu
     coastal: place.coastal,
     electricity: ev.electricity && ev.currency === 'USD' ? { minorPerKwh: ev.electricity.centsPerKwh, says: ev.electricity.evidence.says } : { minorPerKwh: Math.round(exchange(Math.round(RUNNING_USD.placeholderKwhPrice * 10000), 'USD', ev.currency, day) ?? 2200) / 100, says: "The game's placeholder electricity price: no tariff or average price for this place has been researched." },
     ...extra,
+  };
+}
+
+// ---------------- Appliances ----------------
+
+const APPLIANCES = import.meta.glob<string>('../../data/homes/appliances/*.json', { query: '?url', import: 'default', eager: true });
+type ApplianceCategory = 'refrigerators' | 'washers' | 'dryers' | 'dishwashers' | 'room_ac';
+/**
+ * One category of EPA's ENERGY STAR records, loaded when the player opens it, filtered by brand or model and capped.
+ * The records carry sizes and certified test energy; never a price, a stock level or a clearance.
+ */
+export async function applianceCatalog(category: ApplianceCategory, query = '', limit = 40): Promise<{ total: number; items: import('./living').CatalogItem[] }> {
+  const pack = await fetchJson<{ source: string; columns: string[]; rows: (string | number | null)[][] }>(APPLIANCES[`../../data/homes/appliances/${category}.json`]);
+  if (!pack) return { total: 0, items: [] };
+  const c = Object.fromEntries(pack.columns.map((k, i) => [k, i]));
+  const q = fold(query);
+  const rows = q ? pack.rows.filter((r) => fold(`${r[c.brand]} ${r[c.model]}`).includes(q)) : pack.rows;
+  const num = (v: unknown) => (typeof v === 'number' ? v : null);
+  return {
+    total: rows.length,
+    items: rows.slice(0, limit).map((r) => ({
+      category, name: `${r[c.brand]} ${r[c.model]}`, sourceId: pack.source, recordId: String(r[c.id]), brand: String(r[c.brand]), model: String(r[c.model]),
+      markets: (r[c.markets] as string | null) ?? null, onMarketFrom: (r[c.onMarketFrom] as string | null) ?? null,
+      widthIn: num(r[c.widthIn]), depthIn: num(r[c.depthIn]), heightIn: num(r[c.heightIn]), annualKwh: num(r[c.annualTestKwh]),
+      fuel: (r[c.fuel] as string | null) ?? null, venting: (r[c.venting] as string | null) ?? null,
+    })),
   };
 }

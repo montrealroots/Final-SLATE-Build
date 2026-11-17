@@ -24,6 +24,7 @@ const Profile = lazy(() => import('./Places').then((m) => ({ default: m.Profile 
 const CatalogView = lazy(() => import('./Catalog').then((m) => ({ default: m.CatalogView })));
 const TmdbCredit = lazy(() => import('./Catalog').then((m) => ({ default: m.TmdbCredit })));
 const BankPage = lazy(() => import('./bankworld/BankPage').then((m) => ({ default: m.BankPage })));
+const HomesPage = lazy(() => import('./Homes').then((m) => ({ default: m.HomesPage })));
 const PapersPage = lazy(() => import('./PapersPage').then((m) => ({ default: m.PapersPage })));
 const EventDetail = lazy(() => import('./FinishViews').then((m) => ({ default: m.EventDetail })));
 
@@ -168,6 +169,7 @@ export function App() {
       {v === 'event' && <EventDetail />}
       {v === 'bank' && <BankPage />}
       {v === 'papers' && <PapersPage />}
+      {v === 'homes' && <HomesPage />}
       {v === 'saves' && <SavedGamesPage />}
       {v === 'settings' && <><SettingsPage /><TmdbCredit /></>}
       {CATALOG_VIEWS.includes(v) && <CatalogView route={s.route} />}

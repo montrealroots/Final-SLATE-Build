@@ -15,7 +15,7 @@ import { unit } from '../rng';
 import { weatherOn } from '../weather';
 import type { GameState } from '../types';
 import { HOME_RULES } from './market';
-import { designHash, gardenOf, roomCheck, roomsFrom, rulesFor, scopesOf, type Design, type Home, type RoomKind } from './model';
+import { badDesignValue, designHash, gardenOf, roomCheck, roomsFrom, rulesFor, scopesOf, type Design, type Home, type RoomKind } from './model';
 import {
   BOOK, addDaysToKey, book, canPay, document, dollarsOf, formatDateKey, homeOf, homesOf, instantOn, money, note, payOut, record, scheduleHome, todayAt, type Build, type BuildStage, type Owned,
 } from './core';
@@ -78,6 +78,7 @@ export function designProblems(state: GameState, b: Pick<Build, 'design' | 'floo
   const d = b.design;
   const rc = roomCheck(b.rooms, b.floorAreaM2);
   if (d.floors < 1 || d.floors > 4) out.push('A house here can have one to four floors.');
+  if (d.balconies > 0 && d.floors < 2) out.push('A balcony needs a floor above the ground: add a floor or take the balcony away.');
   if (rc.bedrooms < 1) out.push('Add at least one bedroom.');
   if (rc.fullBaths < 1) out.push('Add at least one full bathroom.');
   if (!b.rooms.some((r) => r.kind === 'kitchen')) out.push('Add a kitchen.');
@@ -137,6 +138,9 @@ export function saveDesign(state: GameState, buildId: string, patch: { design?: 
   const fixturesAt = b.stages.findIndex((s) => s.name.startsWith('Fixtures'));
   if (late && b.current >= fixturesAt) throw new Error('Too late for a change: the fixtures are going in.');
   if (late && (patch.floorAreaM2 !== undefined || patch.design?.floors !== undefined || patch.design?.widthM !== undefined || patch.design?.depthM !== undefined) && b.current >= 2) throw new Error("The structure is up: its size and floors can't change now.");
+  const bad = patch.design ? badDesignValue(patch.design) : null;
+  if (bad) throw new Error(bad);
+  if (patch.floorAreaM2 !== undefined && !(Number.isFinite(patch.floorAreaM2) && patch.floorAreaM2 > 0)) throw new Error('The floor area must be a number of square metres.');
   const before = JSON.stringify({ d: b.design, f: b.floorAreaM2, r: b.rooms });
   const next = { design: { ...b.design, ...(patch.design ?? {}) }, floorAreaM2: patch.floorAreaM2 ?? b.floorAreaM2, rooms: patch.rooms ?? b.rooms, landId: b.landId };
   const problems = designProblems(state, next);
