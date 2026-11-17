@@ -33,7 +33,7 @@
   "jobsWithdrawn": 0,
   "jobsDeclined": 0,
   "ratesAgreed": 0,
-  "logLines": 121.075,
+  "logLines": 120.925,
   "hired": 16,
   "castRates": 3205.5,
   "releaseDelay": 92.779,
@@ -90,7 +90,7 @@
   "jobsWithdrawn": 0,
   "jobsDeclined": 0,
   "ratesAgreed": 0,
-  "logLines": 127.125,
+  "logLines": 126.975,
   "hired": 16,
   "castRates": 3205.5,
   "releaseDelay": 92.779,
@@ -543,7 +543,7 @@
  "verdict": "proven",
  "hashes": {
   "src/engine/bankworld/systems/spending.ts": "185456ff5736a0c9",
-  "src/engine/bank.ts": "87b82e61d48a16e4",
+  "src/engine/bank.ts": "a9105e94a4542c90",
   "tests/proof/career.ts": "50bea06f19a02c5b"
  }
 }

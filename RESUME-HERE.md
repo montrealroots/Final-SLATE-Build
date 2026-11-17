@@ -383,6 +383,29 @@ and the rest) with real grades filling the hiring lists.
   the banner, and takes over on the next try; a read whose open errors no longer runs this tab's older copy over the
   other tab's newer save. Not tested on its own: the open-errors branch (the journey's fixture makes the read throw).
   If the CI stall recurs, the message now shows whether the read failed (message) or never finished (no message).
+- **The owner's order of November 17, 2026 ("complete all of them ... NOT STOP UNTIL YOURE DONE WITH IT ALL"),** the
+  list of that day's "What's next?": overall deals, budget lines with payees and dates, one browser journey through the
+  whole v8 path, `docs/v8/STATUS.md` refreshed, visits and passports data, the older open items, and the papers
+  leftovers. First checkpoint (this pull request):
+  - Overall deals (A14): `first-look.ts overallTerms` (a studio of pace 8 or more, a record beyond emerging), a yearly
+    guarantee paid monthly into your own account (`personal.ts` 'guarantee', counted as wages by the bank), exclusive of
+    your services (`jobs.ts acceptRefusal`), covering films and series. The proof `off-first-look-check` found `moveJob`
+    re-accepting work an overall deal then refused: a moved job is booked (`jobs.ts bookJob`), with a regression test.
+  - Payments dated, each with its payee (`project-budget.ts paymentSchedule`): the Budget page's "When It's Paid".
+  - The whole v8 path in one browser game (`e2e/v10-whole-path.spec.ts`).
+  - Visit rules that end on a date (`src/data/papers/visits-temporary.json`; `papers.ts visitRule`): China's unilateral
+    list, Korea's K-ETA exemption and Brazil's waiver for Chinese passports end with 2026, Russia's in China with 2027.
+  - A page that fails to load says so and offers to reload, saving first (`App.tsx PageBoundary`); the offline journey
+    found a blank screen instead.
+  - Journeys J02, J04, J15, J17 and J18 gained the steps they lacked; `docs/v6/JOURNEYS.md` says what each runs.
+  - The 43 proofs these made stale were rerun: 42 proven, and `off-job-lapse` gave the same "no downstream effect" as
+    its committed result, already explained in `docs/v10/explained.json`. The matrix: 415 results, none stale, open 0.
+  - **Next, already built and tested in a scratch worktree, to land as the second checkpoint:** J10 (a season planned as
+    the last, `continuation.ts planFinalSeason`; one series reported territory by territory), J13 (a commissioned season
+    owed by a date; a TV deal renewed on its series' results, `first-look.ts seriesJudgement`), J14 (licence buyers
+    are real companies from the registry, `release-plan.ts BUYERS`), J19 (`e2e/v10-long-career.spec.ts`), awards
+    judged against the recorded nominees (`awards-results.ts recordedField`), and papers batch 4 (11 visitor visas).
+    It stales about 37 proofs, which must be rerun before it merges.
 Still the game's own figures: the stop-motion and creature materials and the broadcast edit (no published per-item price
 found).
 
