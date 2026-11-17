@@ -22,7 +22,6 @@ const ACTIONS: Record<string, { preview: string; outcome: string }> = {
   askPermission: { preview: "Is It Allowed? on Improvements lists each permission step and who must agree before you ask; asking costs nothing.", outcome: "Repairs And Permissions shows the landlord deciding, then granted (with any condition) or refused." },
   restoreChange: { preview: "Undo names the change agreed to be put back; the cost is a tenth of the work's.", outcome: "The change is no longer listed as owed back, so it isn't deducted at move-out." },
   arrangeViewing: { preview: "Viewing Day is limited to the offer's dates; the viewing is at 11:00 and costs nothing.", outcome: "Viewings lists it booked, then what was seen on the day; the calendar has it." },
-  makeOffer: { preview: "Buy It lists the deposit, inspection, closing costs and, with a mortgage, the monthly payment at the game's rate, before Make The Offer.", outcome: "Your Home shows Buying: the seller's answer, inspection, the lender's decision and completion date; Your Bank shows the deposit held." },
   acceptSaleOffer: { preview: "Your Properties shows the buyer's offer and the agent's fee; a sale that wouldn't repay the mortgage says what you'd need of your own.", outcome: "The sale reads Sold subject to completion on its date; on completion the sold home shows the price, the mortgage repaid and what came to you." },
   declineSaleOffer: { preview: "The offer is shown before Decline It.", outcome: "The home stays for sale; the next buyer is about three weeks away." },
   listForSale: { preview: "Asking Price starts at the game's valuation, shown as Worth Now, and the 2% agent's fee is said once listed.", outcome: "Your Properties shows it for sale and waiting for a buyer." },
@@ -102,7 +101,8 @@ const ACTIONS: Record<string, { preview: string; outcome: string }> = {
   generatePlan: { preview: 'The shoot days and day costs it reserves; rebuilding keeps finished work.', outcome: LOG },
   inviteToAudition: { preview: 'Auditions are on the next working day the notice days ahead.', outcome: 'The candidate shows Asked To Read; the read is logged when it happens.' },
   lockPicture: { preview: 'What locking still needs, and the finishing work it starts.', outcome: LOG },
-  makeOffer: { preview: 'The day rate field and the paid days for the production window.', outcome: 'The hire row shows Offer Out; the answer is logged.' },
+  // Two functions share the name: hiring's (projects) and buying a home's (homes/buying.ts, from November 17, 2026).
+  makeOffer: { preview: "Hiring: the day rate field and the paid days for the production window. A home: Buy It lists the deposit, inspection, closing costs and, with a mortgage, the monthly payment at the game's rate, before Make The Offer.", outcome: "Hiring: the hire row shows Offer Out; the answer is logged. A home: Your Home shows Buying, the seller's answer, inspection, the lender's decision and completion date; Your Bank shows the deposit held." },
   moveShootDay: { preview: 'Where Move the Shoot puts the day, and that agreed costs stay.', outcome: LOG },
   planRelease: { preview: 'You choose the route, date and territory; what each route needs is stated. A series shows every episode\'s date before you plan it.', outcome: `${LOG} Each day episodes come out is on the calendar.` },
   startEpisodeCutPass: { preview: 'The episode row on Delivering Episode By Episode says what a cut pass needs; the editor days show on the Production page once it starts.', outcome: `${LOG} The episode row shows the pass under way.` },

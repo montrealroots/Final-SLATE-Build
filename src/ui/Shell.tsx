@@ -74,7 +74,7 @@ export function Shell({ children }: { children: ReactNode }) {
   return (
     <div className={arriving ? 'shell shell-arriving' : 'shell'}>
       <a className="skip-link" href="#main" onClick={(e) => { e.preventDefault(); document.getElementById('main')?.focus(); }}>Skip To Content</a>
-      <TopBar railOpen={railOpen} onMenu={() => setRailOpen((o) => !o)} drawer={drawer} hereLabel={here.label} onExit={exit} />
+      <TopBar railOpen={railOpen} onMenu={() => setRailOpen((o) => !o)} drawer={drawer} hereLabel={here.short ?? here.label} onExit={exit} />
       <div className="shell-body">
         <nav className="rail" id="rail" data-open={railOpen} aria-label="Main Navigation">
           <div className="rail-group">
