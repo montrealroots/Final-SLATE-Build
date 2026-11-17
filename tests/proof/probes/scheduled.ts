@@ -114,7 +114,8 @@ export const PROBES: Probe[] = [
   off('distribution-report', 'distributors reporting what a release earned', ['revenue'], ['money']),
   off('distribution-offer', 'distributors making offers', ['distributed'], ['revenue', 'money']),
   // On a commissioned series that airs: the weeks it is watched are what the commissioner decides another season on.
-  { ...off('audience-week', 'the weeks a release is watched', ['renewalWait'], ['renewed'], SERIES), seeds: 40 },
+  // At 40 careers the wait for a renewal moved +44 days, interval -6 to +94 (November 16, 2026): 100, as explained.json said.
+  { ...off('audience-week', 'the weeks a release is watched', ['renewalWait'], ['renewed'], SERIES), seeds: 100 },
   off('release', 'releases going out', ['released'], ['revenue', 'money']),
   off('job-offer', 'outside work being offered', ['jobsOffered'], ['jobPay', 'money']),
   off('job-day', 'outside work\'s working days', ['jobsDone'], ['jobPay', 'money']),

@@ -1367,6 +1367,8 @@ export interface GameState {
   updatedAtReal: number;
   seed: number;
   idCounter: number;
+  /** Each kind of id's own counter, by its prefix (state.ts `newId`, from November 16, 2026). */
+  idCounters?: Record<string, number>;
   now: number;
   startedAt: number;
   character: CharacterIdentity;

@@ -122,7 +122,7 @@ describe('applying a film', () => {
     applyBlueprint(b.s, b.p, byId('heist.f01'));
     for (const k of ['funding', 'cast', 'hires', 'obligations', 'schedule', 'requirements', 'drafts', 'approvedDraft', 'phase'] as const) expect(b.p[k], k).toEqual(a.p[k]);
     // And nothing outside the project: no money, no time, no person, no event. Only the counter that numbers new things moved.
-    const rest = (g: GameState) => JSON.stringify({ ...g, projects: [], idCounter: 0 });
+    const rest = (g: GameState) => JSON.stringify({ ...g, projects: [], idCounter: 0, idCounters: {} });
     expect(rest(b.s)).toBe(rest(a.s));
   });
 

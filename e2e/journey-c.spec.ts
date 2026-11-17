@@ -31,7 +31,8 @@ test('journey C: songs written, recorded and cleared in production, placed in sc
   await quickLife(page, 'us-los-angeles', '2026-01-05');
   // Seed 22 since November 15, 2026, when the edit began counting in a film's overall and seed 8's offers moved; seeds
   // 5 to 21 brought no US theatrical offer its song licences cover.
-  await pinSeed(page, Number(process.env.SONG_SEED ?? 22));
+  // The seed re-chosen November 16, 2026, when each kind of id got its own counter and the world's draws changed (was 22).
+  await pinSeed(page, Number(process.env.SONG_SEED ?? 1));
   await newProject(page, { title: 'Night Ferry', format: 'Feature Film', runtime: '90' });
   await section(page, 'Characters');
   await page.getByLabel('Character Name').fill('Lena');

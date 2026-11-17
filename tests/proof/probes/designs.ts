@@ -24,7 +24,10 @@ const live = (s: GameState, year: number): Project => unfunded(buildProject(s, {
   CHARS, [{ place: 'Flat', chars: ['Lead', 'Friend'], minutes: 3 }, { place: 'Street', intExt: 'EXT', chars: ['Lead'], minutes: 3 }, { place: 'Cafe', chars: ['Lead', 'Friend'], minutes: 4 }]));
 
 /** Once per character, the first time its design waits for approval: sent back for changes. */
-const askOnce = () => { const asked = new Set<string>(); return (_s: GameState, p: Project) => {
+// Kept for each career (each state), not across them: from November 16, 2026 every career's ids are alike (`pr_1`, `s_1`),
+// as each kind counts on its own, and one set shared by all of them marked the second career's work done already.
+const askOnce = () => { const sets = new WeakMap<GameState, Set<string>>(); return (s: GameState, p: Project) => {
+  const asked = sets.get(s) ?? sets.set(s, new Set()).get(s)!;
   for (const cid of designsToReview(p)) if (designStatus(p, cid) === 'awaiting' && !asked.has(`${p.id}:${cid}`)) { askForDesignChanges(p, cid); asked.add(`${p.id}:${cid}`); }
 }; };
 /** Once per project, after its first animated shot is finished: the lead's look changed, finished shots kept or redone. */
@@ -45,7 +48,8 @@ const masterOnly = (s: GameState, p: Project) => { if (!p.takesModel) return; fo
 /** Each day of the shoot and after, before the lock: each scene's problems answered the day the dailies raise them,
  *  with the fix asked, once a scene (a director reads the dailies as they come; waiting for the end of a short shoot
  *  found the picture already locked). */
-const answerAll = (action: 'pickup' | 'accept') => { const done = new Set<string>(); return (s: GameState) => {
+const answerAll = (action: 'pickup' | 'accept') => { const sets = new WeakMap<GameState, Set<string>>(); return (s: GameState) => {
+  const done = sets.get(s) ?? sets.set(s, new Set()).get(s)!;
   for (const p of s.projects.filter((x) => !x.delivered && !x.edit.pictureLocked)) {
     for (const d of dailies(p)) {
       if (done.has(`${p.id}:${d.sceneId}`) || !d.issues.length) continue;

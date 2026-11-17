@@ -4,10 +4,10 @@
 // iphone-15-pro-max runs in WebKit with the iPhone's viewport and user agent. All are browser emulation, not devices.
 // The only fixture is the pinned world seed (helpers.ts pinSeed), chosen so a broadcaster makes an offer.
 import { expect, test, type Page } from './test';
-import { addScene, advance, castRoles, createCharacter, freshStart, nav, pinSeed, pressSaveAndExit, runToDelivery, section, secureStartingBacking, staffEveryDepartment, writePitch, readSavedState,
+import { addScene, advance, castRoles, createCharacter, editSave, freshStart, nav, pinSeed, pressSaveAndExit, runToDelivery, section, secureStartingBacking, staffEveryDepartment, writePitch, readSavedState,
 } from './helpers';
 
-const SEED = 7;
+const SEED = Number(process.env.TRY_SEED ?? 7);
 const shot = (page: Page, project: string, name: string) => page.screenshot({ path: `test-results/connected-${project}-${name}.png`, fullPage: true });
 
 /** Save & Exit, then Continue: the game must come back exactly as it was. */
@@ -153,6 +153,18 @@ test('a connected career, from creation to a broadcast deal, saved and reloaded 
   await expect(page.locator('section.card', { has: page.getByRole('heading', { name: "People You've Worked With" }) })).toContainText(/Hard Water \([^)]*, worked through to delivery, [A-Z][a-z]+ \d{1,2}, \d{4}\)/);
   // Credits across projects (SLATE-18-01): the delivered project is listed with what you did on it.
   await expect(page.locator('section.card', { has: page.getByRole('heading', { name: 'Credits', exact: true }) }).getByRole('button', { name: 'Hard Water' }).first()).toBeVisible();
+  // Labelled fixture (from November 16, 2026): two broadcasters' offers for the delivered film, an exclusive one in a
+  // late-evening slot and another it ends. The world drew them with this seed until each kind of id got its own counter;
+  // since, no seed from 1 to 100 draws that pair, so the journey puts it in the save. The exclusive one holds every market
+  // a later window can draw from, so that window finds nothing left to offer, as below.
+  await editSave(page, (st) => {
+    const pr = st.projects.find((x: { title: string }) => x.title === 'Hard Water');
+    const open = { route: 'broadcast', releaseWindowDays: 60, expiresAt: st.now + 21 * 86_400_000, status: 'open', slot: 'late' };
+    pr.offers.push(
+      { ...open, id: 'do_fixture_1', distributor: 'Kestrel Media', minimumGuarantee: 30_000, editedGuarantee: 40_000, exclusive: true, territories: ['GB', 'US', 'FR', 'DE', 'ES', 'IT', 'JP', 'BR', 'CA', 'AU', 'KR', 'MX', 'IN'] },
+      { ...open, id: 'do_fixture_2', distributor: 'Cobalt Screen', minimumGuarantee: 24_000, editedGuarantee: 32_000, territories: ['GB'] },
+    );
+  });
   await nav(page, 'Projects');
   await page.getByRole('button', { name: 'Hard Water' }).click();
 
@@ -163,26 +175,27 @@ test('a connected career, from creation to a broadcast deal, saved and reloaded 
     await advance(page, 'week');
     await section(page, 'Release');
   }
-  // Territories and exclusivity (SLATE-16-01.02): the exclusive offer says which other offer accepting it ends.
-  const kestrel = offers.locator('li', { hasText: 'Kestrel Media' }).first();
-  await expect(kestrel).toContainText("Accepting it ends Cobalt Screen's broadcast offer: its rights are exclusive there.");
-  await expect(kestrel).toContainText('Exclusive for 365 days from its release');
-  const late = offers.locator('li', { has: page.getByRole('button', { name: 'Accept With A Broadcast Edit' }) }).first();
+  // Territories and exclusivity (SLATE-16-01.02): the exclusive offer says which other offer accepting it ends. The
+  // buyers' names are the world's draws, read from the screen (until November 16, 2026 written in, Kestrel Media and
+  // Cobalt Screen, which the world stopped drawing when each kind of id got its own counter).
+  const late = offers.locator('li', { has: page.getByRole('button', { name: 'Accept With A Broadcast Edit' }) }).filter({ hasText: /Accepting it ends .+'s broadcast offer: its rights are exclusive there\./ }).first();
+  const ended = /Accepting it ends (.+?)'s broadcast offer/.exec(await late.innerText({ timeout: 60_000 }))![1];
+  await expect(late).toContainText('Exclusive for 365 days from its release');
   await expect(late).toContainText('in a late-evening slot');
   await expect(late).toContainText("Ofcom's Broadcasting Code");
   await late.scrollIntoViewIfNeeded();
   await shot(page, p, '06-late-slot');
   await late.getByRole('button', { name: 'Accept With A Broadcast Edit' }).click();
-  // Accepting it ended the competing offer: Cobalt Screen's can no longer be accepted.
-  await expect(offers.locator('li', { hasText: 'Cobalt Screen' }).getByRole('button', { name: /^Accept/ })).toHaveCount(0);
+  // Accepting it ended the competing offer: it can no longer be accepted.
+  await expect(offers.locator('li', { hasText: ended }).getByRole('button', { name: /^Accept/ })).toHaveCount(0);
   const history = page.locator('section.card', { has: page.getByRole('heading', { name: 'Release History' }) });
   await expect(history).toContainText('Broadcast in GB');
   // Earnings (SLATE-16-04.02): what the broadcaster reports is kept apart from what you receive.
   const earnings = page.locator('section.card', { has: page.getByRole('heading', { name: 'Earnings' }) });
   await expect(earnings).toContainText('What each distributor reports is not what you receive.');
   await expect(earnings).toContainText(/Received By You\s*\$[\d,]+/);
-  // Later windows (SLATE-16-05): some months after the broadcast, distributors look at a later window. Kestrel's exclusive
-  // rights still hold what they would offer, and Home says so rather than reading as no interest.
+  // Later windows (SLATE-16-05): some months after the broadcast, distributors look at a later window. The broadcaster's
+  // exclusive rights still hold what they would offer, and Home says so rather than reading as no interest.
   // Read from the log itself: Home shows the newest eight updates, and from November 12, 2026 an offer of work can follow a
   // delivery and push the notice down (jobs.ts).
   const laterNotices = async () => ((await readSavedState(page))?.log ?? []).map((l: { text: string }) => l.text).filter((t: string) => /later window of Hard Water/.test(t));

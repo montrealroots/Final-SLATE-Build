@@ -46,7 +46,10 @@ export const PROBES: Probe[] = [
     reads: ['src/engine/jobs.ts#acceptJob', 'src/engine/jobs.ts#pay'],
     variant: { takeJobs: false },
     bites: ['jobsDone', 'jobPay'],
-    downstream: ['offeredDayRate', 'jobsOffered'],
+    // The pay reaches your bank (money). Later offers' count and rate moved too until November 16, 2026, but only because
+    // one counter numbered everything, so the work taken renumbered every later offer: since each kind of id counts on its
+    // own, they don't move at all.
+    downstream: ['money', 'offeredDayRate', 'jobsOffered'],
   },
   {
     id: 'ask-better-rate',

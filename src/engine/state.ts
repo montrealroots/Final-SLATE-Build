@@ -12,9 +12,22 @@ import type {
 import { SAVE_VERSION } from './types';
 import { citizenshipFor, draftNames, isNationality, isPortrait, legalName, splitBackgrounds } from './identity';
 
+/**
+ * A new id: one counter for each kind of thing (from November 16, 2026, as 1221's bank world counts each namespace,
+ * bankworld/core/ids.ts). Until then one counter served everything, so an id was a function of how much else the game
+ * had made before it, and the game's draws are keyed by ids: one more obligation anywhere renumbered every later scene,
+ * hire and offer, and redrew them. Found by the proof of moving an episode, whose second season was drawn afresh
+ * whenever the first differed at all. Now a kind's ids only move when that kind is made in a different number.
+ *
+ * The `_` keeps ids of different kinds apart (a `d` and a `do` could otherwise meet: `d` + `o1` is `do` + `1`), and
+ * keeps them apart from every id made before, which has none. `idCounter` still counts every id ever made.
+ */
 export function newId(state: GameState, prefix: string): string {
   state.idCounter += 1;
-  return `${prefix}${state.idCounter.toString(36)}`;
+  const counters = (state.idCounters ??= {});
+  const at = (counters[prefix] ?? 0) + 1;
+  counters[prefix] = at;
+  return `${prefix}_${at.toString(36)}`;
 }
 
 /** The inheritance a new story starts with unless it is changed: $25,000,000 (the owner's v8 package, data/scenario.json). */

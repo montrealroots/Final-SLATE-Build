@@ -27,6 +27,8 @@ const measure = (_s: GameState, projects: Project[]) => ({
   investorShare: projects.reduce((a, p) => a + (p.finance?.deals ?? []).filter((d) => d.kind === 'investor' && d.status === 'accepted').reduce((b, d) => b + d.terms.incomeShare, 0), 0),
   refused: projects.reduce((a, p) => a + (p.finance?.deals ?? []).filter((d) => d.status === 'refused').length, 0),
   asked: projects.reduce((a, p) => a + (p.finance?.deals ?? []).filter((d) => d.counter).length, 0),
+  // What the release paid the investor: its share of the income (finance.ts receiveIncome).
+  investorPaid: projects.reduce((a, p) => a + (p.finance?.deals ?? []).filter((d) => d.kind === 'investor' && d.status === 'accepted').reduce((b, d) => b + d.repaid, 0), 0),
 });
 
 export const PROBES: Probe[] = [
@@ -50,6 +52,9 @@ export const PROBES: Probe[] = [
     variant: { decide: investor('better') },
     measure,
     bites: ['asked', 'investorShare'],
-    downstream: ['money', 'investorIn', 'ownIn'],
+    // What the investor put in and you did moved until November 16, 2026, but only because one counter numbered
+    // everything; since each kind of id counts on its own, the asking moves what the release pays the investor, and the
+    // days spent waiting for its answer move the shoot's dates and with them how the film is received.
+    downstream: ['investorPaid', 'overall', 'money', 'investorIn', 'ownIn'],
   },
 ];

@@ -80,8 +80,9 @@ describe('motion-capture calibration makes progress in every world', () => {
   });
 
   it('is seen waiting for its session in some worlds and not in others, so a journey cannot require that state', () => {
-    expect(results.filter((r) => r.sawWaitingForSession).map((r) => r.n)).toEqual([3, 13]);
-    expect(results.filter((r) => !r.sawWaitingForSession).map((r) => r.n)).toEqual([1, 5, 6]);
+    // Which seeds wait moved on November 16, 2026, when each kind of id got its own counter (until then 3 and 13).
+    expect(results.filter((r) => r.sawWaitingForSession).map((r) => r.n)).toEqual([1, 3, 13]);
+    expect(results.filter((r) => !r.sawWaitingForSession).map((r) => r.n)).toEqual([5, 6]);
   });
 }, 120_000);
 

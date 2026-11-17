@@ -490,18 +490,26 @@ export async function seededLife(page: Page, startPlaceId: string, startDate: st
  * chance comes out the same on every run. The game is saved and left, its stored seed replaced while no game is open,
  * and it is opened again with Continue.
  */
-export async function pinSeed(page: Page, seed: number): Promise<void> {
+/**
+ * Labelled fixture: the saved game is changed by `change` while the game is closed, then opened again at Home. For a
+ * journey whose subject is a situation the world rarely draws (from November 16, 2026; pinSeed is one).
+ */
+export async function editSave(page: Page, change: (state: any) => void): Promise<void> { // eslint-disable-line @typescript-eslint/no-explicit-any
   await saveAndExit(page);
   const id = await firstSaveId(page);
   const key = `slate.v1.save.${id}`;
   const env = JSON.parse((await readRecord(page, key))!);
   const state = JSON.parse(env.data);
-  state.seed = seed;
+  change(state);
   const data = JSON.stringify(state);
   await writeRecords(page, { [key]: JSON.stringify({ ...env, checksum: hashString(data), data }) });
   await page.reload();
   await page.getByRole('button', { name: 'Continue', exact: true }).click();
   await expect(page.getByRole('heading', { name: /^Good (Morning|Afternoon|Evening), /, level: 1 })).toBeVisible();
+}
+
+export async function pinSeed(page: Page, seed: number): Promise<void> {
+  await editSave(page, (state) => { state.seed = seed; });
   expect((await readSavedState(page)).seed).toBe(seed);
 }
 

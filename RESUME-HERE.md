@@ -293,9 +293,26 @@ and the rest) with real grades filling the hiring lists.
   make alike but for the order, streaming hours +6,367 (interval +223 to +12,511). Until then it was measured across
   every season, and later seasons are drawn afresh once the arms differ (every scene, hire and offer after the move is
   numbered differently), which hid it. Its explanation left docs/v10/explained.json. The matrix: 505 proven, open 0.
-Nothing in the feature matrix is open. Still the game's own figures: the stop-motion and creature materials and the
-broadcast edit (no published per-item price found). Possible next step: key the game's draws by something both arms
-of a proof share, so later seasons compare too.
+- That checkpoint merged as #112. Then the game's ids count each kind on its own (`state.ts newId`, `idCounters`; ids
+  read `p_1`, `s_4`, as 1221's bank world does). One counter had served everything, and the draws are keyed by ids, so
+  one more obligation anywhere renumbered and redrew every later scene, hire and offer. Moving an episode is now proven
+  across both seasons at 240 careers: streaming hours +7,313 (interval +858 to +13,767), the first season's +6,421,
+  renewals -0.10.
+  - Every proof was rerun (415). Seven flipped, and what each had leaned on was found:
+    - four probes kept a set of what they'd done across careers, keyed by ids that now repeat from career to career
+      (`pr_1`, `s_1`), so from the second career on they did nothing; each set is now kept per career;
+    - two had downstream effects that were the renumbering itself (outside work moving later offers, asking for better
+      terms moving what was put in); each now measures what really follows (the pay in your bank; what the release pays
+      the investor, and the days the asking costs);
+    - one moved inside its seeds' spread at 40 careers and runs at 100, as its explanation said.
+    All seven reran proven: the matrix is 505 proven, open 0, measured on the game as it is now. `npm run check`
+    passed (1,736 tests).
+  - The journeys whose world seeds were chosen for an outcome were re-chosen (nine; each says what it was). Connected's
+    pair of broadcast offers, one exclusive and in a late slot, no seed from 1 to 100 draws now: the journey puts the
+    pair in the save as a labelled fixture (`editSave` in e2e/helpers.ts, which `pinSeed` now uses). The desktop
+    journeys all passed (214 run: 203 at first, then the eleven fixed, 31 tests in their files; phone, 10 of those).
+Still the game's own figures: the stop-motion and creature materials and the broadcast edit (no published per-item price
+found).
 
 ## The Owner's Command Of November 14, 2026 (Later): Every Feature Proven, Everything Possible
 

@@ -243,6 +243,7 @@ function moveOwnMoney(state: GameState, p: Project, d: FinanceDeal): void {
     left -= take;
   }
   const counter = state.idCounter;
+  const counters = { ...(state.idCounters ?? {}) };
   const added: { p: Project; id: string }[] = [];
   try {
     for (const x of plan) {
@@ -254,6 +255,7 @@ function moveOwnMoney(state: GameState, p: Project, d: FinanceDeal): void {
   } catch (e) {
     for (const a of added) a.p.obligations = a.p.obligations.filter((o) => o.id !== a.id);
     state.idCounter = counter;
+    state.idCounters = counters;
     throw e;
   }
   d.transfer = { id, sources: plan.map((x) => ({ projectId: x.p.id, amount: x.amount })) };

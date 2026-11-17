@@ -5,7 +5,8 @@
 import { expect, test } from './test';
 import { addScene, advance, castRoles, nav, newProject, readSavedState, runToDelivery, saveAndApprove, section, seededLife, staffEveryDepartment } from './helpers';
 
-const SEED = Number(process.env.MUSIC_SEED ?? 3);
+// Re-chosen November 16, 2026, when each kind of id got its own counter and the world's draws changed (was 3).
+const SEED = Number(process.env.MUSIC_SEED ?? 1);
 
 test('a song licence refused for the world, asked again for less, agreed, renewed, and paid once each time', async ({ page }) => {
   test.setTimeout(300_000);

@@ -143,7 +143,9 @@ describe('terms are enforced after acceptance', () => {
       wait(s, BACKERS['co-producer'].decideDays + 1);
       return { s, p, d };
     };
-    const no = run('fin-cop-4'); // re-chosen November 14, 2026, when the fixtures' worlds changed with the player's age (was 'fin-cop')
+    // Re-chosen November 14, 2026, when the fixtures' worlds changed with the player's age (was 'fin-cop'), and November
+    // 16, 2026, when each kind of id got its own counter and the draws keyed by them changed (was 'fin-cop-4').
+    const no = run('fin-cop-3');
     expect(no.d).toMatchObject({ status: 'declined', reason: 'Their slate is full this year.' });
     expect(approvalRights(no.p)).toEqual([]);
     const { s, p, d } = run('fin-cop-2');
