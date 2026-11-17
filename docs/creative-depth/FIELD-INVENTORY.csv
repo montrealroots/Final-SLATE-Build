@@ -145,6 +145,7 @@ Projects.tsx,"""Story Setting Place""",1,decision,PlacePicker,projects.ts derive
 Projects.tsx,"""Production Base""",1,decision,PlacePicker,production/schedule.ts isWorkingDay; weather.ts,None: the world search of real places (destinations: milestone E),n/a,tests/depth-gaps-production.test.ts::rain stops an exterior day ; e2e/journeys.spec.ts::live action in a wet October
 Projects.tsx,"""Planned Budget (US Dollars)""",1,decision,TextField,"project-budget.ts setPlannedBudget, budgetPicture, plannedText; finance.ts financeSummary",None: entered as text,Unchanged,"tests/v8-budget.test.ts::keeps 20,000 and 2,000,000 exactly"
 Projects.tsx,"""Search Genres""",1,view,TextField (search),,"None: a control of the screen, not of the game",n/a,
+Projects.tsx,"""Plan This Season As The Last""",1,decision,Check,"continuation.ts season-decision, canContinue",None: a yes or no,n/a,tests/v10-planned-ending.test.ts::ends as planned ; e2e/v10-planned-ending.spec.ts::a season planned as the last ends as planned
 Projects.tsx,"""Years That Pass In The Story""",1,decision,NumberField,sequel.ts continueProject,"None: a quantity, entered as a number within its range",n/a,tests/minors.test.ts::ages a series' characters by the years that pass between seasons
 Recognised.tsx,"""Search By Name""",1,view,TextField,,"None: a control of the screen, not of the game",n/a,
 RecordBook.tsx,"""As Of""",1,view,SelectField,,"None: a control of the screen, not of the game",n/a,
