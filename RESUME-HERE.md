@@ -325,7 +325,9 @@ and the rest) with real grades filling the hiring lists.
   - Queue: permits 238 -> 200, visas 211 -> 200. Norway, Iceland, Switzerland and Liechtenstein stay estimated: no
     source found gave both a fee and a decision time (their fees are in `docs/v10/papers-research/fees-without-times.md`).
   - The five proofs that read the papers code (move-home, off-stay-limit, recorded-passport, visitor-visa, work-permit)
-    were rerun; they hash papers.ts, not the terms, so none read stale.
+    were rerun; they hash papers.ts, not the terms, so none read stale. All five reran proven, their results byte for
+    byte the committed ones (they travel where no figure changed). `npm run check` passed (1,737 tests, build,
+    budget); the papers and destinations journeys passed on desktop and phone (7 passed, 1 skipped as desktop-only).
   - **Next batch (researched, not yet in the game: `docs/v10/papers-research/next-*.json`):** permits for Japan (¥15,000 visa from July 1, 2026, COE 18 days),
     India ($200, 5 working days), South Africa ($55 at Washington, 7-10 business days), Hong Kong (HK$1,900, four
     weeks), Singapore (S$330, ten business days), Turkey (13,538.90 lira, 30 days), Thailand (3,000 baht, 7-10 working
