@@ -190,7 +190,8 @@ export const expenseFor = (category: string) => EXPENSE_LINE[category] ?? SLATE_
  * account whatever How You Pay said, so a credit card, the setting and cash in hand paid for nothing (the feature
  * proofs found it, docs/v10/proof/credit-card.json). Transfers (into a project, to your family) aren't purchases.
  */
-export const isEveryday = (category: string): boolean => category === 'food' || /^slate:(equipment|papers)#/.test(category);
+// Furniture and appliances for a home are bought as equipment is, as How You Pay says (from November 17, 2026).
+export const isEveryday = (category: string): boolean => category === 'food' || /^slate:(equipment|papers|home-goods)#/.test(category);
 
 
 

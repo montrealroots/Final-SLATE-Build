@@ -122,6 +122,84 @@ export function postToBank(state: GameState, kind: string, dollars: number, labe
   if (saveCurrency(u) !== REPORTING_CURRENCY) u.counters[`slate:usd:${key}`] = Math.round(dollars * 100);
 }
 
+/**
+ * Housing money that is neither income nor an expense (from November 17, 2026; the Homes & Property package: "deposit
+ * paid creates a restricted/refundable asset, not rent expense; mortgage proceeds create debt, not income; transfer of
+ * one's own money creates no earnings"). A book is where it sits meanwhile: an asset of yours held elsewhere (a deposit
+ * a landlord holds, a home's cost) or a liability (a tenant's deposit you hold, a mortgage). `dollars` > 0 comes into
+ * your bank from the book, < 0 goes out of it to the book. Keyed, as postToBank: a key posted twice moves money once.
+ * Throws, posting nothing, when the bank can't pay.
+ */
+export type HousingBook = { kind: 'asset_value' | 'liability_other' | 'expense' | 'income'; name: string } | { mortgage: string };
+function bookAccount(u: SaveUniverse, book: HousingBook) {
+  const sim = bankSim(u);
+  if ('mortgage' in book) {
+    const had = Object.values(u.accounts).find((a) => a.kind === 'mortgage' && a.ownerId === sim.player.id && a.name === book.mortgage && !a.closedAt);
+    return had ?? sim.openAccount({ id: sim.nextId('account'), kind: 'mortgage', name: book.mortgage, ownerId: sim.player.id, openedAt: sim.now, category: 'housing' });
+  }
+  return sim.nominalAccount(book.kind, book.name);
+}
+export function postHousing(state: GameState, key: string, dollars: number, label: string, book: HousingBook): void {
+  const u = state.bank;
+  if (!u) throw new Error('This story has no bank.');
+  if (keyed(u, key)) return;
+  advanceBankWorld(u, state.now);
+  const sim = bankSim(u);
+  const person = sim.player;
+  const minor = toBank(u, Math.round(dollars * 100));
+  if (minor === 0) return;
+  const category = `slate:housing#${key}`;
+  const other = bookAccount(u, book);
+  if (minor > 0) {
+    sim.post({ memo: label, category, postings: [{ accountId: depositAccount(sim, person)?.id ?? person.primaryAccountId!, amount: minor }, { accountId: other.id, amount: -minor }] });
+  } else {
+    const draw = drawFromBank(sim, person, -minor, true, true);
+    if (draw.short > 0) throw new Error(`Your bank can't pay that: ${(-dollars).toLocaleString('en-US', { style: 'currency', currency: 'USD' })} is more than your accounts and overdraft hold.`);
+    sim.post({ memo: label, category, postings: [{ accountId: other.id, amount: -minor }, ...draw.postings] });
+  }
+  u.counters[`slate:${key}`] = 1;
+  if (saveCurrency(u) !== REPORTING_CURRENCY) u.counters[`slate:usd:${key}`] = Math.round(dollars * 100);
+}
+/** Between two books, no money through your accounts: a mortgage advance paying for a home, a deposit kept for damage. */
+export function moveBetweenBooks(state: GameState, key: string, dollars: number, label: string, from: HousingBook, to: HousingBook): void {
+  const u = state.bank;
+  if (!u) throw new Error('This story has no bank.');
+  if (keyed(u, key)) return;
+  advanceBankWorld(u, state.now);
+  const sim = bankSim(u);
+  const minor = toBank(u, Math.round(dollars * 100));
+  if (minor <= 0) return;
+  sim.post({ memo: label, category: `slate:housing#${key}`, postings: [{ accountId: bookAccount(u, from).id, amount: -minor }, { accountId: bookAccount(u, to).id, amount: minor }] });
+  u.counters[`slate:${key}`] = 1;
+}
+/**
+ * Money given back for something paid for (a returned appliance, an insurer's payout for a repair, a deposit's interest
+ * aside): back into your account against the expense it reverses, so a refund is never income. Keyed, once.
+ */
+export function refundExpense(state: GameState, key: string, dollars: number, label: string, counter: string): void {
+  const u = state.bank;
+  if (!u) throw new Error('This story has no bank.');
+  if (keyed(u, key) || dollars <= 0) return;
+  advanceBankWorld(u, state.now);
+  const sim = bankSim(u);
+  const minor = toBank(u, Math.round(dollars * 100));
+  sim.post({ memo: label, category: `slate:refund#${key}`, postings: [{ accountId: depositAccount(sim, sim.player)?.id ?? sim.player.primaryAccountId!, amount: minor }, { accountId: sim.nominalAccount('expense', counterLabel(counter)).id, amount: -minor }] });
+  u.counters[`slate:${key}`] = 1;
+  if (saveCurrency(u) !== REPORTING_CURRENCY) u.counters[`slate:usd:${key}`] = Math.round(dollars * 100);
+}
+/** What a mortgage account still owes, in whole dollars at today's rate. 0 when there is none. */
+export function mortgageOwed(state: GameState, name: string): number {
+  const u = state.bank;
+  if (!u) return 0;
+  const sim = bankSim(u);
+  const a = Object.values(u.accounts).find((x) => x.kind === 'mortgage' && x.ownerId === sim.player.id && x.name === name && !x.closedAt);
+  return a ? Math.round(fromBank(u, -a.balance)) / 100 : 0;
+}
+/** Whether a key has been posted: a housing payment made, so a retry or a reload never pays it again. */
+export function bankPosted(state: GameState, key: string): boolean {
+  return !!state.bank && keyed(state.bank, key);
+}
+
 /** What each SLATE kind of movement is called in the bank's own books (its nominal account). */
 function counterLabel(kind: string): string {
   return ({

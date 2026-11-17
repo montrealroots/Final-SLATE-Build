@@ -1,0 +1,37 @@
+{
+ "importedAt": "2026-11-17",
+ "package": "SLATE-Homes-Property-Research-v2 (prepared 2026-11-16)",
+ "tables": {
+  "hud": {
+   "areaRowsPerVersion": 4764,
+   "zipAreaRows": 51895,
+   "zipRowsWithoutAreaState": 0,
+   "states": 56
+  },
+  "singapore": {
+   "transactions": 244773,
+   "towns": 26
+  },
+  "france": {
+   "transactionsAggregated": 242378,
+   "communes": 19797,
+   "departments": 97,
+   "rowLevelRecordsPublished": 0,
+   "addressExamplesPublished": 0
+  },
+  "appliances": {
+   "refrigerators": 4942,
+   "washers": 421,
+   "dryers": 706,
+   "dishwashers": 753,
+   "room_ac": 608
+  },
+  "rules": 19,
+  "sources": 46,
+  "coverage": {
+   "jurisdictions": 252,
+   "archivedPlaces": 171750
+  }
+ },
+ "problems": []
+}
