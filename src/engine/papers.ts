@@ -166,6 +166,20 @@ function freeMovement(state: GameState, country: string): string | undefined {
   return citizenships(state).find((n) => { const r = workRule(n, country); return r === 'home' || (r !== undefined && r.right === 'free'); });
 }
 
+/**
+ * Whether you may live in `country` (from November 17, 2026, for Homes & Property): citizenship, free movement, or a work
+ * visa in force there, which covers your stay. A home there is a property right and gives none of these: renting or
+ * buying abroad is allowed, living in it as your home needs this.
+ */
+export function residenceRight(state: GameState, country: string): { can: boolean; why: string } {
+  if (isCitizen(state, country)) return { can: true, why: `You are a citizen of ${the(country)}.` };
+  const free = freeMovement(state, country);
+  if (free) return { can: true, why: `Your passport from ${the(free)} gives you the right to live in ${the(country)}.` };
+  const visa = permitIn(state, country);
+  if (visa) return { can: true, why: `Your ${visa.route} lets you live in ${the(country)}${visa.expiresAt ? ` until ${dateKey(visa.expiresAt, 'UTC')}` : ''}.` };
+  return { can: false, why: `You have no right to live in ${the(country)}: a home there doesn't give you one. A work visa there would; apply under Your Papers.` };
+}
+
 /** Days you worked in `country` (a shoot day you were called to and there for), by day. */
 const workedDays = (state: GameState, country: string): string[] => state.papersWorked?.[country] ?? [];
 

@@ -1530,3 +1530,17 @@ fieldset > legend { margin-bottom: var(--s2); }
 
 /* A casting director's searches for a part: under the part's row, above its readings. */
 .casting-search > * + * { margin-top: var(--s2); }
+
+/* Homes And Property (from November 17, 2026): the picture beside the facts, under them on a phone. */
+.home-split { display: flex; gap: var(--s4); align-items: flex-start; flex-wrap: wrap; }
+.home-split > .grow { flex: 1 1 18rem; min-width: 0; }
+.home-split > :not(.grow) { flex: 1 1 16rem; min-width: 0; max-width: 28rem; }
+.home-picture { margin: 0; min-width: 0; }
+.home-picture-art svg { display: block; width: 100%; height: auto; border-radius: var(--r2, 6px); border: 1px solid var(--line, #0002); }
+.home-picture figcaption { margin-top: var(--s1); overflow-wrap: anywhere; }
+.home-sub { display: block; overflow-wrap: anywhere; }
+.home-act { display: inline-flex; flex-direction: column; gap: var(--s1); max-width: 100%; }
+.home-act > .xs { overflow-wrap: anywhere; }
+.home-stack { display: flex; flex-direction: column; gap: var(--s3); align-items: flex-start; }
+.homes-pane > .card { margin-top: var(--s4); }
+.homes-pane .kv dd, .homes-pane .list-item .grow { overflow-wrap: anywhere; }

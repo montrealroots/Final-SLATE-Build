@@ -1356,6 +1356,12 @@ export interface Opportunity {
 
 export interface GameState {
   /**
+   * Homes & Property (from November 17, 2026; engine/homes): the homes the player has acted on, pinned as offered, and
+   * their tenancies, purchases, ownership, items, work, bills, building projects and lettings. Absent in a save made
+   * before then, which had no housing; it starts empty when first needed.
+   */
+  homes?: import('./homes/core').HomesState;
+  /**
    * The bank, which is 1221's (engine/bankworld; from November 14, 2026): a 1221 universe holding the player's accounts,
    * cards, loans, papers and every posting to them. Its ledger is the one journal of the player's own money.
    */

@@ -6,6 +6,51 @@ Read this first. It lists what is finished, what the Gap Completion Package stil
 
 At every stopping point, open a pull request into `main` and merge it (see `CLAUDE.md`, certified by the user on November 6, 2026). Never merge red checks.
 
+## Parked, Not Done (The Owner, November 17, 2026)
+
+The owner set these aside for now, to start something new. They are **not done**; nothing here may be reported as
+finished, and they come back only when the owner says so:
+- **J01 and J21 (history):** box office reports by publication date, and a recorded correction or late report seen
+  through the screens. No dataset the game holds has them, and none is invented for a test.
+- **J02 (source to feature):** a real work as the source and real catalog people hired, in its one game (each runs in
+  its own journey today).
+- **J20 (phone parity):** every journey on WebKit; today only the iPhone projects' list in `playwright.config.ts` runs.
+- **Papers research:** Iran, Malawi, Turkey, South Africa, Hong Kong, Serbia, Colombia and Argentina stay the game's
+  estimate, as their sources conflict (`docs/v10/papers-research/fees-without-times.md`); 111 visitor visas and 170
+  work permits are still estimates in all (`docs/v10/papers-estimates.json`).
+- **Real-phone and pacing tests:** they need the owner's own device and a person playing.
+
+## The Owner's Homes & Property Package (November 17, 2026)
+
+The owner's SLATE-Homes-Property-Research-v2 package: import its datasets, build Homes And Property beside Your Bank and
+Your Papers, and carry each cycle (rent; buy; land, design and build; furniture and appliances; utilities, insurance and
+renovations; letting; moving and selling) through the bank and the clock, with an exterior picture drawn from the same
+design record. One agent, implementation and tests, not a plan.
+
+**Done, as far as `docs/homes/features.csv` says** (153 requirements: 97 implemented and tested, 6 modeled, 11
+implemented without a dedicated test, 17 partial, 20 not implemented, 2 excluded by the owner). `docs/homes/COVERAGE.md`
+says what the game knows, from where, what it models and what's missing.
+
+- **Data:** `node tools/homes/import.mjs <package dir>` writes the lazy packs in `src/data/homes` (25 MB, fetched when
+  needed): HUD rents (4,764 areas, 51,895 ZIP rows), 244,773 HDB resales, DVF 2025 kept as commune medians (no address
+  or single sale: the repository is public), 7,430 EPA appliance records, 19 scoped rules, 46 sources, coverage of 252
+  jurisdictions with 0 verified listings. `docs/homes/IMPORT-REPORT.json` has the counts.
+- **Engine:** `src/engine/homes/` (model, market, core, renting, buying, living, building, letting, illustration, index);
+  one clock kind, `home`, with a step. Money only through the bank (`bank.ts postHousing`): deposits and purchase
+  deposits held in their own books, a mortgage a debt, a sale's price your own property, never income; keyed so a double
+  click or a reload pays once. Papers decide where you may live (`papers.ts residenceRight`, `moveTo`).
+- **Screens:** `src/ui/Homes.tsx` (six tabs), Home's Homes And Property panel (`HomeMoney.tsx YourHomesPanel`), the rail
+  under You, and Settings, Credits And Data Sources.
+- **Picture:** no AI provider exists here, so none is used: the game draws the design record, labelled as its own
+  drawing, checks every feature, keeps it per revision, and shows nothing rather than a wrong picture.
+- **Tests:** `tests/homes.test.ts`, `tests/homes-choices.test.ts`, `e2e/homes.spec.ts` (6 journeys, desktop and phone),
+  41 probes in `tests/proof/probes/homes.ts` (the feature matrix's housing rows).
+
+**Not done** (the checklist's `not implemented` and `partial` rows): no verified listings; no market movement over
+time; UK, French and Singapore rents and most places' prices are the game's placeholder; ONS, HUD, NAHB and EIA figures
+are used whatever the game's date; no lease renewal or rent review; no utility contracts or providers; one builder and
+no construction loan; no item resale, consumables or planned maintenance; no AI image generation.
+
 ## The Owner's Command Of November 15, 2026: Designs, Director's Fixes, Phone, Real Grades And Real Pay
 
 Six asks: prove designs and the director's fixes; stop the script asking three times where things are filmed; a phone

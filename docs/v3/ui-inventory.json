@@ -137,6 +137,16 @@
   ]
  },
  {
+  "id": "homes",
+  "area": "You",
+  "name": "Homes And Property",
+  "kind": "screen",
+  "screen": "homes",
+  "walk": [
+   "homes"
+  ]
+ },
+ {
   "id": "dlg-agent-list",
   "area": "You",
   "name": "Find An Agent",

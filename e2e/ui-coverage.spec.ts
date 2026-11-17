@@ -22,7 +22,7 @@ const SIZES: Record<string, Size[]> = {
   'iphone-15-pro-max': [[430, 932, 'iPhone 15 Pro Max (WebKit)']],
 };
 // What a phone's navigation is instead of the rail: the same destinations, behind Menu.
-const NAV = new Set(['Menu', 'Close Menu', 'Close Navigation', 'SLATE, Go To Home', 'Home', 'Player Profile', 'Your Bank', 'Your Papers', 'World', 'Projects', 'Companies', 'Saved Games', 'Settings', 'Save & Exit', 'Skip To Content']);
+const NAV = new Set(['Menu', 'Close Menu', 'Close Navigation', 'SLATE, Go To Home', 'Home', 'Player Profile', 'Your Bank', 'Your Papers', 'Homes And Property', 'World', 'Projects', 'Companies', 'Saved Games', 'Settings', 'Save & Exit', 'Skip To Content']);
 
 // UI_SHOTS=<folder>: a picture of each screen at the phone and desktop sizes, for a person to look at side by side.
 const SHOTS = process.env.UI_SHOTS;
@@ -158,6 +158,8 @@ test('the UI audit: one career, every screen it reaches, measured at each size',
   // Your Bank and Your Papers, from Home (from November 14, 2026).
   await nav(page, 'Home'); await page.getByRole('button', { name: 'Open Your Bank' }).click(); await v('bank', 'You', 'Your Bank');
   await page.getByRole('button', { name: 'Back To Home' }).click(); await page.getByRole('button', { name: 'Open Your Papers' }).click(); await v('papers', 'You', 'Your Papers');
+  // Homes And Property, from Home (from November 17, 2026).
+  await page.getByRole('button', { name: 'Back To Home' }).click(); await page.getByRole('button', { name: 'Open Homes And Property' }).click(); await v('homes', 'You', 'Homes And Property');
   await nav(page, 'Calendar'); await v('calendar', 'Your Day', 'Calendar');
   const add = page.getByRole('button', { name: 'Add Plan' });
   if (await add.count()) { await add.first().click(); await v('add-plan', 'Your Day', 'Add Plan', 'dialog'); await page.keyboard.press('Escape'); }
