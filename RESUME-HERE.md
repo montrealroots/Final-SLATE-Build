@@ -365,6 +365,16 @@ and the rest) with real grades filling the hiring lists.
     (`docs/v10/papers-research/fees-without-times.md` lists each); the rest of Africa's, Latin America's and
     Oceania's permits, whose fees are rarely published; China and Brazil, whose fees are each post's or nationality's.
     Recording a figure only one aggregator gives would be inventing precision: those stay the game's estimate, said as one.
+- That checkpoint merged as #115 (all 13 jobs green after one re-run). The re-run was for
+  `e2e/viewports.spec.ts:178` ("a second tab opens the same save read-only until it takes over"), which failed on
+  `journeys (dev, desktop, 2/2)`: after Take Over Here, Advance stayed disabled for the whole 30 seconds. It failed the
+  same way on November 15 (15ffa0b only raised the wait from 10 to 30 seconds), passed 11 of 11 runs here (6 under
+  full CPU load), and #115 touched none of the code it runs. **Next item, before more papers research:** root-cause
+  it. `store.ts takeOver()` awaits `this.v()` and then `vault.forSave`, which queues behind the tab's earlier vault
+  tasks (`vault.ts serial`), before it clears `readOnly`; and it has no error handling, as the button in `Shell.tsx`
+  doesn't catch, so a stuck or failed read leaves the tab read-only with no word to the player. Get the trace from a
+  failing run's `playwright-results-dev-desktop-2` artifact (run 44006654291 kept it for 14 days), find the await that
+  doesn't settle, fix it, make a failed take-over say so without running a stale save, and test that path.
 Still the game's own figures: the stop-motion and creature materials and the broadcast edit (no published per-item price
 found).
 
