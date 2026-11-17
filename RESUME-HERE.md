@@ -6,6 +6,20 @@ Read this first. It lists what is finished, what the Gap Completion Package stil
 
 At every stopping point, open a pull request into `main` and merge it (see `CLAUDE.md`, certified by the user on November 6, 2026). Never merge red checks.
 
+## Parked, Not Done (The Owner, November 17, 2026)
+
+The owner set these aside for now, to start something new. They are **not done**; nothing here may be reported as
+finished, and they come back only when the owner says so:
+- **J01 and J21 (history):** box office reports by publication date, and a recorded correction or late report seen
+  through the screens. No dataset the game holds has them, and none is invented for a test.
+- **J02 (source to feature):** a real work as the source and real catalog people hired, in its one game (each runs in
+  its own journey today).
+- **J20 (phone parity):** every journey on WebKit; today only the iPhone projects' list in `playwright.config.ts` runs.
+- **Papers research:** Iran, Malawi, Turkey, South Africa, Hong Kong, Serbia, Colombia and Argentina stay the game's
+  estimate, as their sources conflict (`docs/v10/papers-research/fees-without-times.md`); 111 visitor visas and 170
+  work permits are still estimates in all (`docs/v10/papers-estimates.json`).
+- **Real-phone and pacing tests:** they need the owner's own device and a person playing.
+
 ## The Owner's Command Of November 15, 2026: Designs, Director's Fixes, Phone, Real Grades And Real Pay
 
 Six asks: prove designs and the director's fixes; stop the script asking three times where things are filmed; a phone
