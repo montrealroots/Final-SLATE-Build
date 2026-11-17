@@ -16,6 +16,7 @@
 // where its time wasn't recorded and lasting a year: both figures the game's own and said as nothing. Earlier that same
 // day they went, and nothing was taken where a figure was missing. A permit a save already holds is kept until its date.
 import visitsData from '../data/papers/visits.json';
+import temporaryVisits from '../data/papers/visits-temporary.json';
 import workData from '../data/papers/work.json';
 import citizenshipData from '../data/papers/citizenship.json';
 import refusalData from '../data/papers/refusals.json';
@@ -44,6 +45,11 @@ type Entry = 'free' | 'eta' | 'evisa' | 'arrival' | 'visa';
 interface Visit { entry: Entry; days?: number; within?: number; months?: number }
 interface VisitList { passports: Record<string, Visit>; others: Visit }
 const VISITS = visitsData as unknown as { groups: Record<string, VisitList>; countries: Record<string, VisitList | { group: string; passports?: Record<string, Visit> }> };
+/** Rules that end on a date, and the rule after (visits-temporary.json, from November 17, 2026), by destination and passport. */
+const ENDS = new Map<string, { until: string; after: Visit }>();
+for (const r of (temporaryVisits as unknown as { rules: { destination: string; passports: string[]; until: string; after: Visit }[] }).rules) {
+  for (const pp of r.passports) ENDS.set(`${r.destination}:${pp}`, { until: r.until, after: r.after });
+}
 
 interface WorkRule { right: 'free' | 'permit'; route?: string; days?: number; within?: number; from?: string; only?: string }
 interface WorkList { groups?: string[]; passports: Record<string, WorkRule>; others: WorkRule; /** Not researched: the game's model, and why. */ modeled?: string }
@@ -100,12 +106,20 @@ export type EntryRight =
 const ENTRY_WORDS: Record<Exclude<Entry, 'free'>, string> = { eta: 'an electronic travel authorization', evisa: 'an electronic visa', arrival: 'a visa issued on arrival', visa: 'a visa' };
 const ENTRY_ORDER: Entry[] = ['free', 'arrival', 'eta', 'evisa', 'visa'];
 
-function visitRule(passport: string, destination: string): Visit | 'home' | undefined {
+/**
+ * The rule for a passport visiting a destination on `day` (YYYY-MM-DD). A rule the records give as temporary is
+ * replaced by the rule after it once its last day is past: until November 17, 2026 it held for ever, so China's
+ * unilateral visa-free entry still let a Briton in without a visa in 2030.
+ */
+function visitRule(passport: string, destination: string, day: string): Visit | 'home' | undefined {
   if (nationality(passport) === nationality(destination)) return 'home';
   const entry = VISITS.countries[destination];
   if (!entry) return undefined;
   const list: VisitList = 'group' in entry ? { passports: { ...VISITS.groups[entry.group].passports, ...(entry.passports ?? {}) }, others: VISITS.groups[entry.group].others } : entry;
-  return list.passports[passport] ?? list.passports[nationality(passport)] ?? list.others;
+  const key = list.passports[passport] ? passport : list.passports[nationality(passport)] ? nationality(passport) : null;
+  const ends = key ? ENDS.get(`${destination}:${key}`) : undefined;
+  if (ends && day > ends.until) return ends.after;
+  return (key ? list.passports[key] : undefined) ?? list.others;
 }
 
 /** What entering `country` asks of you, by the best of your passports, or the visa you hold for it. */
@@ -124,7 +138,7 @@ export function entryRight(state: GameState, country: string): EntryRight {
   // A visitor visa or a work visa in force lets you in (a work visa, from November 14, 2026).
   const held = applications(state).find((a) => a.country === country && a.stage === 'issued' && (a.expiresAt ?? Infinity) > state.now);
   if (held) return { kind: 'held', why: `Your ${held.route} lets you in${held.expiresAt ? ` until ${dateKey(held.expiresAt, 'UTC')}` : ''}.`, until: held.expiresAt };
-  const rules = citizenships(state).map((n) => ({ n, r: visitRule(n, country) })).filter((x): x is { n: string; r: Visit | 'home' } => x.r !== undefined);
+  const rules = citizenships(state).map((n) => ({ n, r: visitRule(n, country, dateKey(state.now, 'UTC')) })).filter((x): x is { n: string; r: Visit | 'home' } => x.r !== undefined);
   if (!rules.length) return { kind: 'unknown', why: `The game has no record of who may visit ${the(country)}.` };
   if (rules.some((x) => x.r === 'home')) return { kind: 'home', why: `Your passport is ${the(country)}'s own.` };
   const best = rules.map((x) => ({ n: x.n, r: x.r as Visit })).sort((a, b) => ENTRY_ORDER.indexOf(a.r.entry) - ENTRY_ORDER.indexOf(b.r.entry))[0];
@@ -554,7 +568,7 @@ const mayStay = (state: GameState, country: string) => isCitizen(state, country)
 
 /** The visit record of your best passport for `country`, as `entryRight` chooses it, or nothing where none is kept. */
 function bestVisit(state: GameState, country: string): { n: string; r: Visit } | undefined {
-  const rules = citizenships(state).map((n) => ({ n, r: visitRule(n, country) })).filter((x): x is { n: string; r: Visit } => x.r !== undefined && x.r !== 'home');
+  const rules = citizenships(state).map((n) => ({ n, r: visitRule(n, country, dateKey(state.now, 'UTC')) })).filter((x): x is { n: string; r: Visit } => x.r !== undefined && x.r !== 'home');
   return rules.sort((a, b) => ENTRY_ORDER.indexOf(a.r.entry) - ENTRY_ORDER.indexOf(b.r.entry))[0];
 }
 

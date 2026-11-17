@@ -4,7 +4,7 @@
 import { describe, expect, it } from 'vitest';
 import { DAY, acceptDeal, createProject, deserialize, processUntil, serialize, setFinanceTarget } from './engine-api';
 import { backerOptions, pitchToStudio, studioOption, submitSeries } from '../src/engine/finance';
-import { acceptRefusal } from '../src/engine/jobs';
+import { acceptJob, acceptRefusal, moveJob } from '../src/engine/jobs';
 import { companyBalance } from '../src/engine/company';
 import { personalBalance, personalStatement, postPersonal } from '../src/engine/personal';
 import {
@@ -388,6 +388,19 @@ describe('A14: an overall deal', () => {
     // A first look leaves your services free.
     const t = signed('ov-fl');
     expect(acceptRefusal(t, job(t, 'Another Company (Fixture)'))).toBeNull();
+  });
+
+  it('keeps work taken before it was signed: a production put back moves that work, it doesn\'t refuse it (proofs, November 17, 2026)', () => {
+    // Until the fix, moving the days re-accepted the work through every check, the deal's exclusivity among them, so the
+    // production's confirmation threw and time couldn't pass (docs/v10/proof/off-first-look-check.json found it).
+    const s = proven('ov-moved');
+    const id = job(s, 'Another Company (Fixture)');
+    acceptJob(s, id);
+    acceptFirstLook(s, offerFirstLook(s)!.id);
+    const j = s.jobs!.find((x) => x.id === id)!;
+    expect(() => moveJob(s, j, 21)).not.toThrow();
+    expect([j.status, j.days[0]]).toEqual(['accepted', '2027-06-22']);
+    expect(s.plans.filter((x) => x.status === 'upcoming' && x.title.includes('Fixture'))).toHaveLength(1);
   });
 
   it('covers films and series both: each goes to its studio first', () => {

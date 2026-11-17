@@ -25,6 +25,36 @@ What the records don't hold, said so the game never fills it:
 - **Work.** The rule, the route's name, and the days a short engagement may be worked without it (42 countries for every
   other passport). No route's fee or decision time.
 
+### Rules That End On A Date (From November 17, 2026)
+
+SLATE-REBUILD's notes give the end of each temporary rule, but until November 17, 2026 the game applied every rule for
+ever, so China's unilateral visa-free entry still let a Briton in without a visa in 2030.
+`src/data/papers/visits-temporary.json` lists each rule that ends, its last day and the rule after it, with its source:
+- China's unilateral 30-day list (48 passports, Canada and the United Kingdom among them) ends after December 31, 2026,
+  then a visa. The mutual agreements (Singapore, Thailand and the others) don't end. Russia's trial ends after
+  December 31, 2027.
+- Korea's K-ETA exemption for its 22 passports ends after December 31, 2026, then a K-ETA.
+- Brazil's waiver for Chinese passports ends after December 31, 2026, then a visa.
+
+A renewal announced later is new research, not assumed. `tests/v10-visits-temporary.test.ts` changes only the day and
+reads the outcome.
+
+### Spot-Checked Against Current Sources (November 17, 2026)
+
+The records for the largest film markets were read for 14 passports (US, GB, DE, FR, JP, CN, IN, BR, NG, AU, CA, MX, KR,
+ZA), and the ones most likely to have changed since were checked against current sources:
+- China's list, with Canada and the United Kingdom from February 17, 2026: matches.
+- Brazil's waiver for Chinese passports, from May 11, 2026: matches.
+- Türkiye's visa-free entry for Chinese passports, from January 2, 2026: matches.
+- Thailand's cut from 60 to 30 days on September 15, 2026, with India in the 30-day group: matches.
+- Korea's K-ETA exemption for 2026: matches.
+- South Africa's free visa for Mexican passports, still a visa: matches.
+- ETIAS isn't operational, so the Schengen states stay free: matches.
+
+Left unsettled, as sources conflict: the UAE's 30-day and 90-day lists, Thailand for Mexican passports, and Türkiye for
+Mexican passports. The coverage matrix keeps visiting rules as SLATE-REBUILD's, unverified: a spot check isn't a
+verification of every passport.
+
 ## What Is Kept Apart (`src/engine/papers.ts`)
 
 1. **A passport and whether it is in force.** This is 1221's document in the bank world. You apply on Your Papers: the

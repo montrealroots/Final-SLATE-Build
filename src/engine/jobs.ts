@@ -235,6 +235,12 @@ export function acceptJob(state: GameState, id: string): void {
   const no = acceptRefusal(state, id);
   if (no) throw new Error(no);
   const j = jobById(state, id)!;
+  bookJob(state, j);
+  addLog(state, `You took the work on ${j.production}: ${j.days.length} days from ${formatDateKey(j.days[0])}.`, 'personal', { route: { view: 'profile' } });
+}
+
+/** The work's days on the calendar, each morning expected there: for work taken, or taken and moved (moveJob). */
+function bookJob(state: GameState, j: OutsideJob): void {
   j.status = 'accepted';
   j.planIds = j.days.map((k) => {
     const { year, month, day } = parseYmd(k);
@@ -244,7 +250,6 @@ export function acceptJob(state: GameState, id: string): void {
     schedule(state, start, 'job-day', { jobId: j.id, date: k, planId }, { attention: 'notify', priority: 30 });
     return planId;
   });
-  addLog(state, `You took the work on ${j.production}: ${j.days.length} days from ${formatDateKey(j.days[0])}.`, 'personal', { route: { view: 'profile' } });
 }
 
 export function declineJob(state: GameState, id: string): void {
@@ -319,7 +324,10 @@ export function moveJob(state: GameState, j: OutsideJob, by: number): void {
     cancelEvents(state, (e) => e.kind === 'job-day' && e.payload.jobId === j.id);
   }
   j.days = moved.days;
-  if (was === 'accepted') { j.status = 'offered'; j.answerBy = Math.max(j.answerBy, state.now); acceptJob(state, j.id); }
+  // Booked again on its new days, not accepted again: it was taken already, so what decides taking it (an overall deal
+  // signed since, papers, a lapsed answer date) doesn't apply. Until November 17, 2026 it went back through acceptJob,
+  // which an overall deal signed after the work was taken refused, and the production's confirmation threw.
+  if (was === 'accepted') bookJob(state, j);
   addLog(state, `${j.production} was put back ${by} days. Your work on it moves with it: ${formatDateKey(j.days[0])} to ${formatDateKey(j.days.at(-1)!)}.`, 'personal', { route: { view: 'profile' } });
 }
 
