@@ -20,6 +20,28 @@ finished, and they come back only when the owner says so:
   work permits are still estimates in all (`docs/v10/papers-estimates.json`).
 - **Real-phone and pacing tests:** they need the owner's own device and a person playing.
 
+## The Owner's Second Housing Brief (November 17, 2026, Later): City-By-City Coverage And The Full Vision
+
+Item by item in `docs/homes/BRIEF-2026-11-17.md`; every place's coverage in `docs/homes/places/`.
+
+**Done in this pass:** the three money and approval bugs from main at 20563b1, reproduced and fixed
+(`tests/homes-regressions.test.ts`); a coverage entry for each of the catalog's 171,750 places, with its verified
+count (0), shortfall (50) and where its prices come from; each place priced only from its own records (US county
+FIPS and French INSEE commune codes from GeoNames, `tools/homes/place-codes.mjs`); dated evidence (`DATASETS`, a
+figure used before it was published is labelled Retrospective); each place's own persistent market of fifty homes
+with staggered listings, fitted to its size and climate; Find A Home shows the place's coverage.
+
+**Not done, in the order to take them:**
+1. Verified homes at real addresses: **8,587,500 short** (50 in every place). Needs a source whose terms permit it;
+   none the game holds does. Never fill it with simulated homes.
+2. Lease renewal and rent review (renting and letting), contractor selection and construction loans (building).
+3. Utility tariffs and mortgage terms by country (one game rate everywhere today), with sources and dates.
+4. Building systems in the property record: age, heating, cooling, water, drainage, connectivity, accessibility;
+   insulation, accessibility, security and energy work.
+5. A forecast view of housing money (committed, upcoming) in Homes And Property.
+6. AI-generated exterior pictures: no provider exists in this environment; needs one the owner authorizes.
+7. Price trends: only where a dated series supports them.
+
 ## The Owner's Homes & Property Package (November 17, 2026)
 
 The owner's SLATE-Homes-Property-Research-v2 package: import its datasets, build Homes And Property beside Your Bank and
