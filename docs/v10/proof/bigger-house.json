@@ -811,7 +811,7 @@
  ],
  "verdict": "proven",
  "hashes": {
-  "src/engine/homes/building.ts": "3b318ad421aa4468",
+  "src/engine/homes/building.ts": "e92fdd58e5eae1bb",
   "tests/proof/career.ts": "50bea06f19a02c5b"
  }
 }
