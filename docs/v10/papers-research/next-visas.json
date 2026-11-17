@@ -1,0 +1,121 @@
+{
+ "JP": {
+  "name": "Temporary visitor visa (single entry)",
+  "fee": 15000,
+  "currency": "JPY",
+  "feeBasis": "About ¥15,000 for a single-entry visa from July 1, 2026, collected in local currency (¥3,000 until then).",
+  "days": 5,
+  "daysBasis": "Normally five working days from the embassy's acceptance; longer where the case is referred to Tokyo.",
+  "sources": [
+   {
+    "kind": "official",
+    "url": "https://www.mofa.go.jp/j_info/visit/visa/procedure/pagewe_000001_00391.html",
+    "what": "Ministry of Foreign Affairs of Japan: visa fees from July 1, 2026, about ¥15,000 single entry"
+   },
+   {
+    "kind": "official",
+    "url": "https://www.sg.emb-japan.go.jp/itpr_en/visa_processingtime.html",
+    "what": "Embassy of Japan in Singapore: a visa can normally be issued in five working days"
+   }
+  ]
+ },
+ "IN": {
+  "name": "e-Tourist Visa (30 days)",
+  "fee": 25,
+  "currency": "USD",
+  "feeBasis": "The 30-day e-Tourist Visa from July to March ($10 from April to June).",
+  "days": 4,
+  "daysBasis": "Applied for online at least four days before arrival.",
+  "stayDays": 30,
+  "stayBasis": "The e-Tourist Visa charged allows 30 days.",
+  "sources": [
+   {
+    "kind": "official",
+    "url": "https://hcisingapore.gov.in/eTourist",
+    "what": "High Commission of India in Singapore, e-Tourist Visa: apply at least four days ahead; 30-day eTV US$25 July to March, US$10 April to June"
+   }
+  ]
+ },
+ "KR": {
+  "name": "Short-term visitor visa (C-3, single entry)",
+  "fee": 40,
+  "currency": "USD",
+  "feeBasis": "A single-entry visa for 90 days or less; fees differ by nationality and post.",
+  "days": [
+   7,
+   21
+  ],
+  "daysBasis": "Seven calendar days at the consulate in Dubai; at least ten to fifteen working days at Los Angeles.",
+  "stayDays": 90,
+  "stayBasis": "A single-entry visa for 90 days or less.",
+  "sources": [
+   {
+    "kind": "official",
+    "url": "https://overseas.mofa.go.kr/us-en/brd/m_4502/view.do?seq=715889",
+    "what": "Embassy of Korea in the US, visa fees: single entry, 90 days or less, USD 40"
+   },
+   {
+    "kind": "official",
+    "url": "https://dubai.mofa.go.kr/ae-dubai-en/wpge/m_10738/contents.do",
+    "what": "Consulate General of Korea in Dubai: visa processing takes 7 calendar days"
+   },
+   {
+    "kind": "official",
+    "url": "https://overseas.mofa.go.kr/us-losangeles-en/wpge/m_4397/contents.do",
+    "what": "Consulate General of Korea in Los Angeles: at least 10 to 15 business days"
+   }
+  ]
+ },
+ "VN": {
+  "name": "E-visa (single entry)",
+  "fee": 25,
+  "currency": "USD",
+  "feeBasis": "The single-entry e-visa ($50 for multiple entries), not refunded if refused.",
+  "days": 5,
+  "daysBasis": "About three working days.",
+  "stayDays": 90,
+  "stayBasis": "Valid for up to 90 days.",
+  "sources": [
+   {
+    "kind": "official",
+    "url": "https://en.vneconomy.vn/more-detailed-information-about-vietnams-e-visa.htm",
+    "what": "Vietnam Economic Times (Ministry of Planning and Investment), Vietnam's e-visa: $25 single entry, $50 multiple, up to 90 days"
+   },
+   {
+    "kind": "secondary",
+    "url": "https://www.issacompass.com/insights/vietnam-tourist-e-visa-2026-fees-entry-window-and-how-issa-compass-files-it",
+    "what": "Issa Compass, Vietnam tourist e-visa 2026: about three working days"
+   }
+  ]
+ },
+ "TH": {
+  "name": "Tourist visa (single entry)",
+  "fee": 40,
+  "currency": "USD",
+  "feeBasis": "A single-entry tourist visa at the Royal Thai Embassies in Washington and Ho Chi Minh City; other posts charge their own currency.",
+  "days": [
+   7,
+   21
+  ],
+  "daysBasis": "Five working days at Ho Chi Minh City; up to fifteen business days at Washington.",
+  "stayDays": 60,
+  "stayBasis": "A single-entry visitor may stay up to 60 days from entry.",
+  "sources": [
+   {
+    "kind": "official",
+    "url": "https://washingtondc.thaiembassy.org/en/page/trsingle-entry",
+    "what": "Royal Thai Embassy, Washington: single entry USD 40, up to 15 business days"
+   },
+   {
+    "kind": "official",
+    "url": "https://hochiminh.thaiembassy.org/en/publicservice/tourist-visa-th%E1%BB%8B-th%E1%BB%B1c-du-l%E1%BB%8Bch",
+    "what": "Royal Thai Consulate-General, Ho Chi Minh City: USD 40, five working days"
+   },
+   {
+    "kind": "official",
+    "url": "https://thaiconsulatela.thaiembassy.org/en/page/visa-information",
+    "what": "Royal Thai Consulate-General, Los Angeles: up to 60 days from entry"
+   }
+  ]
+ }
+}

@@ -1,0 +1,158 @@
+{
+ "JP": {
+  "fee": 15000,
+  "currency": "JPY",
+  "feeBasis": "The Certificate of Eligibility for Entertainer status is free; the single-entry visa that follows costs about ¥15,000 from July 1, 2026 (¥3,000 until then).",
+  "days": 18,
+  "daysBasis": "New Certificates of Eligibility for Entertainer status took 18 days on average over 31 months to July 2026, by the Immigration Services Agency's statistics.",
+  "sources": [
+   {
+    "kind": "secondary",
+    "url": "https://japan-visa.com/coe/time",
+    "what": "Japan COE processing times from the Ministry of Justice's statistics: Entertainer, new, 18.0 days (to July 2026)"
+   },
+   {
+    "kind": "official",
+    "url": "https://www.mofa.go.jp/j_info/visit/visa/procedure/pagewe_000001_00391.html",
+    "what": "Ministry of Foreign Affairs of Japan: visa fees from July 1, 2026, about ¥15,000 single entry, ¥30,000 multiple"
+   }
+  ]
+ },
+ "IN": {
+  "fee": 200,
+  "currency": "USD",
+  "feeBasis": "An employment visa valid for a year, multiple entries, at the Embassy of India in Argentina's chart from July 1, 2026 ($120 for six months); fees differ by nationality.",
+  "days": 7,
+  "daysBasis": "Usually five working days from submission of a complete application.",
+  "stayDays": 365,
+  "stayBasis": "The employment visa charged is valid for a year.",
+  "sources": [
+   {
+    "kind": "official",
+    "url": "https://www.indembarg.gov.in/content/Fee-chart-w.e.f.1-July-2026.pdf",
+    "what": "Embassy of India in Argentina, fees from July 1, 2026: employment visa, one year, USD 200"
+   },
+   {
+    "kind": "official",
+    "url": "https://indianembassydublin.gov.in/page/employment-visa2",
+    "what": "Embassy of India in Dublin, employment visa: usually five working days"
+   }
+  ]
+ },
+ "ZA": {
+  "fee": 55,
+  "currency": "USD",
+  "feeBasis": "The non-refundable application fee for a visitor's visa with section 11(2) work authorisation at the South African Embassy in Washington (April 2026); fees differ by mission.",
+  "days": [
+   10,
+   14
+  ],
+  "daysBasis": "Seven to ten business days.",
+  "stayDays": 90,
+  "stayBasis": "A section 11(2) visa does not exceed 90 days, and the work is limited to 180 days a calendar year.",
+  "sources": [
+   {
+    "kind": "official",
+    "url": "https://www.saembassy.org/wp-content/uploads/2026/04/sec-112.pdf",
+    "what": "South African Embassy in Washington, section 11(2) visitor's visa for short-term work (April 2026): $55, seven to ten business days"
+   },
+   {
+    "kind": "secondary",
+    "url": "https://www.bal.com/immigration-news/south-africa-short-term-work-authorization-restricted-to-180-days-per-year/",
+    "what": "BAL: a section 11(2) visa shall not exceed 90 days; 180 days a calendar year"
+   }
+  ]
+ },
+ "HK": {
+  "fee": 1900,
+  "currency": "HKD",
+  "feeBasis": "The application fee for a specified admission scheme such as the General Employment Policy, HK$600, and the visa for a stay of 181 days or more, HK$1,300 (HK$600 for 180 days or less), from February 26, 2025.",
+  "days": 28,
+  "daysBasis": "Normally four weeks once the Immigration Department has every document and the fee.",
+  "stayDays": 1095,
+  "stayBasis": "An initial stay of 36 months on employment, or the contract's length if shorter.",
+  "sources": [
+   {
+    "kind": "official",
+    "url": "https://www.info.gov.hk/gia/general/202502/26/P2025022600221p.htm",
+    "what": "Hong Kong government, February 26, 2025: a $600 application fee for the specified schemes, the General Employment Policy among them, and a visa fee of $600 or $1,300 by the limit of stay"
+   },
+   {
+    "kind": "official",
+    "url": "https://www.immd.gov.hk/eng/services/visas/GEP.html",
+    "what": "Immigration Department, General Employment Policy: normally four weeks; an initial stay of 36 months"
+   }
+  ]
+ },
+ "SG": {
+  "fee": 330,
+  "currency": "SGD",
+  "feeBasis": "The Ministry of Manpower's Employment Pass application fee, S$105, and issuance fee, S$225.",
+  "days": 14,
+  "daysBasis": "Online applications are processed within ten business days.",
+  "stayDays": 730,
+  "stayBasis": "A first-time Employment Pass runs up to two years.",
+  "sources": [
+   {
+    "kind": "official",
+    "url": "https://www.mom.gov.sg/passes-and-permits/employment-pass/key-facts",
+    "what": "Ministry of Manpower, Employment Pass key facts: first-time candidates up to two years"
+   },
+   {
+    "kind": "secondary",
+    "url": "https://visaatlas.org/processing-times/singapore/employment-pass",
+    "what": "Visa Atlas, Singapore Employment Pass: S$105 application, S$225 issuance; online applications within ten business days, as MOM states"
+   }
+  ]
+ },
+ "TR": {
+  "fee": 13538.9,
+  "currency": "TRY",
+  "feeBasis": "The 2026 fee for a work permit of up to a year, 12,574.90 lira, and the permit card, 964 lira (25,149.80 lira in fee for up to two years).",
+  "days": 30,
+  "daysBasis": "A complete application is decided within 30 days (Law No. 6735).",
+  "stayDays": 365,
+  "stayBasis": "The fee charged is for a permit of up to a year.",
+  "sources": [
+   {
+    "kind": "official",
+    "url": "https://www.csgb.gov.tr/uigm/genel-bilgi/harc-ve-degerli-kagit-bedelinin-odenmesi/",
+    "what": "Ministry of Labour and Social Security, fees and card charge: 2026 work permit fees"
+   },
+   {
+    "kind": "official",
+    "url": "https://www.csgb.gov.tr/sikca-sorulan-sorular/uluslararasi-%C4%B1sgucu-genel-mudurlugu/calisma-%C4%B1zni",
+    "what": "Ministry of Labour and Social Security, work permit FAQ: a complete application is concluded within 30 days"
+   }
+  ]
+ },
+ "TH": {
+  "fee": 3000,
+  "currency": "THB",
+  "feeBasis": "The Department of Employment's fee for a work permit of up to a year (750 baht up to three months, 1,500 up to six).",
+  "days": [
+   7,
+   14
+  ],
+  "daysBasis": "About seven to ten working days, by employers' guides.",
+  "stayDays": 365,
+  "stayBasis": "The fee charged is for a permit of up to a year.",
+  "sources": [
+   {
+    "kind": "official",
+    "url": "https://www.thailand.go.th/issue-focus-detail/001_03_376",
+    "what": "Royal Thai Government portal, work permits: fees by length, 750 baht for three months, 1,500 for six"
+   },
+   {
+    "kind": "secondary",
+    "url": "https://thethaiger.com/visas/work-permit",
+    "what": "The Thaiger, Thailand work permit: 3,000 baht for a year"
+   },
+   {
+    "kind": "secondary",
+    "url": "https://www.commenda.io/thailand/work-permit-for-foreign-companies",
+    "what": "Commenda, Thailand work permit: seven to ten business days"
+   }
+  ]
+ }
+}

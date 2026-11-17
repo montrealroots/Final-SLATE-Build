@@ -1,5 +1,5 @@
 {
- "about": "Fees and decision times for the work permit routes in work.json, and for visitor visas by destination, researched on November 14, 2026 (the owner's command of that day: research, then estimate); and for electronic travel authorizations by destination (authorizations; passports lists the passports whose authorization differs), researched on November 16, 2026 (Morocco, Russia and Saudi Arabia later that day). Each entry names its source and whether it is the government's own page (official) or another publication (secondary). days is calendar days, or [shortest, longest] where the source gives a range; stayDays is how long the permission lasts at most, where the source says.",
+ "about": "Fees and decision times for the work permit routes in work.json, and for visitor visas by destination, researched on November 14, 2026 (the owner's command of that day: research, then estimate); and for electronic travel authorizations by destination (authorizations; passports lists the passports whose authorization differs), researched on November 16, 2026 (Morocco, Russia and Saudi Arabia later that day). Each entry names its source and whether it is the government's own page (official) or another publication (secondary). days is calendar days, or [shortest, longest] where the source gives a range; stayDays is how long the permission lasts at most, where the source says. On November 17, 2026 the work permits of 24 European states were researched (Austria to Sweden, and Åland on Finland's law); permitAuthorities lists the territories whose work permit route is their sovereign's, which take the sovereign's terms; and visaAuthorities lists the territories whose visitors hold their sovereign's visa, with the law or page that says so.",
  "permits": {
   "US": {
    "route": "O-1 (extraordinary ability in the arts, or extraordinary achievement in motion pictures or television)",
@@ -158,7 +158,558 @@
      "what": "Work visa: €75 for a national visa for employment (§ 45 (2) AufenthV); processing times"
     }
    ]
+  },
+  "AT": {
+   "fee": 24.7,
+   "currency": "EUR",
+   "feeBasis": "The AMS charges the employer the application fee, €14.30, a fee for an enclosure, €3.90, and €6.50 for granting the permit (Gebührengesetz 1957).",
+   "days": 42,
+   "daysBasis": "The AMS decides within six weeks, after hearing its regional advisory board.",
+   "stayDays": 182,
+   "stayBasis": "An artist's employment permit covers up to six months; beyond that, the Niederlassungsbewilligung – Künstler.",
+   "sources": [
+    {
+     "kind": "official",
+     "url": "https://api.immigration-guide.workinaustria.com/fileadmin/user_upload/MediaLibrary/Downloads/001_BB_Kuenstler_u_Studenten.pdf",
+     "what": "AMS, application for an employment permit for artists and students: fees and duties"
+    },
+    {
+     "kind": "secondary",
+     "url": "https://www.wko.at/arbeitsrecht/beschaeftigungsbewilligung",
+     "what": "WKO, Beschäftigungsbewilligung (as of January 1, 2026): the AMS decides within six weeks"
+    }
+   ]
+  },
+  "BE": {
+   "fee": 0,
+   "currency": "EUR",
+   "feeBasis": "A short-term work permit, for up to 90 days, is free: Flanders' €180 fee from September 1, 2026 applies only to the combined work and residence permit.",
+   "days": [
+    7,
+    12
+   ],
+   "daysBasis": "Five to eight working days through the Working in Belgium platform, where short-term permits are filed since May 1, 2026.",
+   "stayDays": 90,
+   "stayBasis": "The short-term permit covers at most 90 days and cannot be extended.",
+   "sources": [
+    {
+     "kind": "official",
+     "url": "https://www.vlaanderen.be/en/working-enterprise-and-investment/working/employing-a-foreigner-in-flanders/categories/performing-artist",
+     "what": "Flemish government, employing a performing artist: the short-term permit, at most 90 days, not renewable"
+    },
+    {
+     "kind": "secondary",
+     "url": "https://newlandchase.com/belguim-additional-retribution-fee-payment-of-eur-180-in-the-flanders-region/",
+     "what": "Newland Chase: the €180 Flemish fee from September 1, 2026 is not applicable to short-term work permits"
+    },
+    {
+     "kind": "secondary",
+     "url": "https://www.envoyglobal.com/news-alert/belgium-to-require-digital-mandates-for-short-term-work-permit-filings-in-2026/",
+     "what": "Envoy Global: short-term work permit filings in 2026, about five to eight business days"
+    }
+   ]
+  },
+  "NL": {
+   "fee": 423,
+   "currency": "EUR",
+   "feeBasis": "The IND's fee for a first residence permit for work in employment, including the single permit.",
+   "days": 90,
+   "daysBasis": "The IND has 90 days to decide, after asking the UWV's advice on the work; longer when the application is incomplete.",
+   "stayDays": 365,
+   "stayBasis": "The single permit (GVVA) is valid for at most a year.",
+   "sources": [
+    {
+     "kind": "official",
+     "url": "https://ind.nl/en/fees-costs-of-an-application",
+     "what": "IND, fees: first application including single permit, €423"
+    },
+    {
+     "kind": "official",
+     "url": "https://ind.nl/en/residence-permits/work/employing-a-foreign-national",
+     "what": "IND, employing a foreign national: the IND asks the UWV's advice and decides within 90 days"
+    },
+    {
+     "kind": "official",
+     "url": "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/employed-worker-netherlands_en",
+     "what": "EU Immigration Portal, employed worker in the Netherlands: the GVVA is valid for at most a year"
+    }
+   ]
+  },
+  "CZ": {
+   "fee": 5000,
+   "currency": "CZK",
+   "feeBasis": "The administrative fee for an employee card applied for at a Czech embassy abroad (2,500 CZK when lodged in Czechia).",
+   "days": [
+    60,
+    90
+   ],
+   "daysBasis": "Decided within 60 days, or 90 in especially complex cases or where the labour office's binding opinion is asked.",
+   "stayDays": 730,
+   "stayBasis": "Issued for the employment's length, at most two years.",
+   "sources": [
+    {
+     "kind": "official",
+     "url": "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/employed-worker-czechia_en",
+     "what": "EU Immigration Portal, employed worker in Czechia: fee 5,000 CZK at an embassy, at most two years"
+    },
+    {
+     "kind": "official",
+     "url": "https://mzv.gov.cz/jnp/cz/informace_pro_cizince/pobytova_opravneni_k_pobytu_nad_90_dnu/zamestnanecka_karta.html",
+     "what": "Czech Ministry of Foreign Affairs, employee card: decided within 60 days, 90 in complex cases"
+    }
+   ]
+  },
+  "PL": {
+   "fee": 400,
+   "currency": "PLN",
+   "feeBasis": "The work permit's fee for more than three months, from December 1, 2025 (200 zł for three months or less; until then 100 zł and 50 zł).",
+   "days": [
+    30,
+    60
+   ],
+   "daysBasis": "The voivode decides within a month of a complete application, two months in especially complicated cases.",
+   "stayDays": 1095,
+   "stayBasis": "A type A permit is issued for up to three years.",
+   "sources": [
+    {
+     "kind": "official",
+     "url": "https://zielonalinia.gov.pl/wazne-zmiany-w-zasadach-zatrudniania-cudzoziemcow-wchodza-w-zycie-1-grudnia-2025-r/",
+     "what": "Zielona Linia (Polish public employment services): work permit fees from December 1, 2025, 200 zł up to three months, 400 zł beyond"
+    },
+    {
+     "kind": "official",
+     "url": "https://www.gov.pl/web/uw-mazowiecki/zezwolenie-typ-a",
+     "what": "Mazowiecki Voivodeship Office, type A permit: decided within a month, two in especially complicated cases"
+    }
+   ]
+  },
+  "DK": {
+   "fee": 6810,
+   "currency": "DKK",
+   "feeBasis": "SIRI's processing fee for a residence and work permit on special individual qualifications, the scheme for artists.",
+   "days": [
+    60,
+    90
+   ],
+   "daysBasis": "Normally two months; up to three when more information is needed.",
+   "stayDays": 365,
+   "stayBasis": "In the first two years a permit is granted for a year at a time.",
+   "sources": [
+    {
+     "kind": "official",
+     "url": "https://www.nyidanmark.dk/en-GB/You-want-to-apply/Work/Special-individual-qualifications",
+     "what": "SIRI (nyidanmark.dk), special individual qualifications: a job only you can do, for example as an artist"
+    },
+    {
+     "kind": "official",
+     "url": "https://www.nyidanmark.dk/en-GB/Applying/Work/Special%20individuel%20qualifications",
+     "what": "SIRI: processing fee DKK 6,810, two months (up to three), a year at a time at first"
+    }
+   ]
+  },
+  "EE": {
+   "fee": 130,
+   "currency": "EUR",
+   "feeBasis": "The state fee for registering short-term employment through the Police and Border Guard Board's self-service (€140 at an office), as raised in 2025.",
+   "days": 21,
+   "daysBasis": "Registered or refused within 15 working days.",
+   "stayDays": 365,
+   "stayBasis": "Short-term employment can be registered for up to 365 days in any 455.",
+   "sources": [
+    {
+     "kind": "official",
+     "url": "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/employed-worker-estonia_en",
+     "what": "EU Immigration Portal, employed worker in Estonia: registered within 15 working days, up to 365 days in 455"
+    },
+    {
+     "kind": "secondary",
+     "url": "https://www.jobbatical.com/blog/estonia-short-term-employment-registration-guide",
+     "what": "Jobbatical: the 2026 state fee, €130 by self-service and €140 at an office"
+    }
+   ]
+  },
+  "FI": {
+   "fee": 530,
+   "currency": "EUR",
+   "feeBasis": "The Finnish Immigration Service's fee for a first residence permit for work without labour market testing, the permit for work in culture or the arts, applied for online (€630 on paper).",
+   "days": 61,
+   "daysBasis": "Work-based residence permits took 61 days on average in 2025.",
+   "stayDays": 365,
+   "stayBasis": "A fixed-term residence permit is normally granted for a year.",
+   "sources": [
+    {
+     "kind": "official",
+     "url": "https://migri.fi/kasittelymaksut-ja-maksaminen",
+     "what": "Finnish Immigration Service, processing fees: a first residence permit with no labour market testing, €530 online, €630 on paper"
+    },
+    {
+     "kind": "official",
+     "url": "https://migri.fi/en/-/decline-in-number-of-work-based-residence-permit-applications-growing-number-stay-in-finland-after-completing-a-degree",
+     "what": "Finnish Immigration Service: work-based residence permits took 61 days on average in 2025"
+    },
+    {
+     "kind": "official",
+     "url": "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/employed-worker-finland_en",
+     "what": "EU Immigration Portal, employed worker in Finland: a fixed-term permit is normally granted for a year"
+    }
+   ]
+  },
+  "GR": {
+   "fee": 180,
+   "currency": "EUR",
+   "feeBasis": "The consular fee for a national visa for intellectual or artistic creators (category A.2.8).",
+   "days": [
+    15,
+    60
+   ],
+   "daysBasis": "Decided within 15 calendar days of an admissible application; extendable to 30, or 60 in exceptional cases.",
+   "stayDays": 365,
+   "stayBasis": "A national (type D) visa allows a stay of over 90 days and up to a year.",
+   "sources": [
+    {
+     "kind": "secondary",
+     "url": "https://ru-gr.gvcworld.eu/sites/default/files/paragraph/files/consular_fees_for_national_visa_0.pdf",
+     "what": "Greek visa centre, consular fees for national visas: A.2.8 intellectual or artistic creators, €180"
+    },
+    {
+     "kind": "official",
+     "url": "https://www.mfa.gr/armenia/en/services/visas/",
+     "what": "Greek Ministry of Foreign Affairs (embassy in Armenia), visas: decided in 15 calendar days, up to 30 or 60; the national visa for over 90 days and up to 365"
+    }
+   ]
+  },
+  "HU": {
+   "fee": 110,
+   "currency": "EUR",
+   "feeBasis": "The administrative fee for a residence permit for work applied for at a Hungarian mission abroad (HUF 39,000 in person in Hungary, HUF 24,000 online).",
+   "days": 90,
+   "daysBasis": "A single application procedure takes at most 90 days.",
+   "sources": [
+    {
+     "kind": "official",
+     "url": "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/employed-worker-hungary_en",
+     "what": "EU Immigration Portal, employed worker in Hungary: €110 at a mission, at most 90 days"
+    }
+   ]
+  },
+  "IT": {
+   "fee": 232.46,
+   "currency": "EUR",
+   "feeBasis": "The work permit (nulla osta) is free; the national visa that follows costs €116, and the residence permit for a stay of three to twelve months €40 with €30 for the postal kit, €16 in tax stamp and €30.46 for issuing it.",
+   "days": 90,
+   "daysBasis": "The nulla osta is issued no more than 90 days after the application.",
+   "stayDays": 365,
+   "stayBasis": "The entertainment worker's nulla osta is for at most twelve months, a fixed-term contract's permit for at most a year.",
+   "sources": [
+    {
+     "kind": "official",
+     "url": "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/employed-worker-italy_en",
+     "what": "EU Immigration Portal, employed worker in Italy: national visa €116; residence permit €40, with €30, €16 and €30.46; a fixed-term contract's permit at most a year"
+    },
+    {
+     "kind": "official",
+     "url": "https://prefettura.interno.gov.it/sites/default/files/31/2024-01/vademecum_art._27.pdf",
+     "what": "Prefecture, vademecum on article 27 entries (January 2024): the nulla osta within 90 days of the application; entertainment workers apply to the Ministry of Labour's office"
+    }
+   ]
+  },
+  "LV": {
+   "fee": 100,
+   "currency": "EUR",
+   "feeBasis": "The fee for examining the documents within 30 days (€200 within ten working days, €400 within five).",
+   "days": 30,
+   "daysBasis": "Examined within 30 days at the standard fee.",
+   "sources": [
+    {
+     "kind": "official",
+     "url": "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/employed-worker-latvia_en",
+     "what": "EU Immigration Portal, employed worker in Latvia: examination fees, €100 within 30 days"
+    }
+   ]
+  },
+  "LT": {
+   "fee": 160,
+   "currency": "EUR",
+   "feeBasis": "The state fee for examining a temporary residence permit application in the general procedure (€320 urgent).",
+   "days": 120,
+   "daysBasis": "Decided within four months at the latest; two months for an extra fee.",
+   "stayDays": 730,
+   "stayBasis": "Granted for the work permit's length, at most two years.",
+   "sources": [
+    {
+     "kind": "official",
+     "url": "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/employed-worker-lithuania_en",
+     "what": "EU Immigration Portal, employed worker in Lithuania: decided within four months, granted for at most two years"
+    },
+    {
+     "kind": "secondary",
+     "url": "https://lsmu.lt/wp-content/uploads/TRP-2026.pdf",
+     "what": "Lithuanian University of Health Sciences, temporary residence permit 2026: the general procedure's fee, €160"
+    }
+   ]
+  },
+  "LU": {
+   "fee": 80,
+   "currency": "EUR",
+   "feeBasis": "The fee for issuing a salaried worker's residence permit.",
+   "days": 120,
+   "daysBasis": "The Ministry of Foreign and European Affairs answers within four months at most; no answer by then is a refusal.",
+   "stayDays": 365,
+   "stayBasis": "A first permit is issued for at most a year.",
+   "sources": [
+    {
+     "kind": "official",
+     "url": "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/employed-worker-luxembourg_en",
+     "what": "EU Immigration Portal, employed worker in Luxembourg: €80, at most four months, a first permit for at most a year"
+    }
+   ]
+  },
+  "MT": {
+   "fee": 600,
+   "currency": "EUR",
+   "feeBasis": "Identità's fee for a first-time single permit (€150 a year to renew).",
+   "days": [
+    60,
+    120
+   ],
+   "daysBasis": "Two to four months, by one guide's account; Identità publishes no time.",
+   "stayDays": 365,
+   "stayBasis": "The single permit is normally issued for at most a year.",
+   "sources": [
+    {
+     "kind": "official",
+     "url": "https://identita.gov.mt/?p=1548",
+     "what": "Identità, Expatriates Unit, single permit application: first-time single permit €600"
+    },
+    {
+     "kind": "official",
+     "url": "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/employed-worker-malta_en",
+     "what": "EU Immigration Portal, employed worker in Malta: issued for at most a year"
+    },
+    {
+     "kind": "secondary",
+     "url": "https://www.migrantiq.com/visas/malta/single-permit",
+     "what": "MigrantIQ, Malta single permit: typically two to four months"
+    }
+   ]
+  },
+  "PT": {
+   "fee": 75,
+   "currency": "EUR",
+   "feeBasis": "The temporary stay visa for professional work in entertainment (€90 for a residence visa, for more than a year).",
+   "days": 30,
+   "daysBasis": "A visa application is decided within 30 days.",
+   "stayDays": 365,
+   "stayBasis": "The temporary stay visa allows a stay of up to a year.",
+   "sources": [
+    {
+     "kind": "official",
+     "url": "https://www.gov.pt/servicos/pedir-um-visto-de-residencia-ou-estada-temporaria-para-o-exercicio-de-atividade-profissional-de-espetaculos",
+     "what": "gov.pt, visa for professional work in entertainment (updated March 27, 2026): €75 temporary stay, €90 residence, decided within 30 days"
+    }
+   ]
+  },
+  "RO": {
+   "fee": 100,
+   "currency": "EUR",
+   "feeBasis": "The employer pays the equivalent in lei of €100 for a permanent worker's work permit; the long-stay visa for employment is then obtained from a Romanian mission.",
+   "days": [
+    30,
+    45
+   ],
+   "daysBasis": "The General Inspectorate for Immigration decides within 30 days of registration, extendable by 15 days for further checks.",
+   "stayDays": 365,
+   "stayBasis": "The temporary residence permit runs for the work contract, up to a year.",
+   "sources": [
+    {
+     "kind": "official",
+     "url": "https://igi.mai.gov.ro/en/employment-and-posting/",
+     "what": "General Inspectorate for Immigration, employment: €100 for a permanent worker's permit, within 30 days (plus 15)"
+    },
+    {
+     "kind": "official",
+     "url": "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/employed-worker-romania_en",
+     "what": "EU Immigration Portal, employed worker in Romania: the residence permit for the contract, up to a year"
+    }
+   ]
+  },
+  "SK": {
+   "fee": 174.5,
+   "currency": "EUR",
+   "feeBasis": "The fee for temporary residence for employment applied for at a Slovak embassy, €170, and €4.50 for the residence document (€165.50 at a foreign police department).",
+   "days": 90,
+   "daysBasis": "Ninety days from a complete application under section 35 of Act No. 404/2011, by one law firm's account; the labour office's confirmation of the vacancy takes five working days of that.",
+   "stayDays": 730,
+   "stayBasis": "Granted for the employment contract, at most two years.",
+   "sources": [
+    {
+     "kind": "official",
+     "url": "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/employed-worker-slovakia_en",
+     "what": "EU Immigration Portal, employed worker in Slovakia: €170 at an embassy, €4.50 for the document, at most two years"
+    },
+    {
+     "kind": "secondary",
+     "url": "https://www.aksamec.sk/cudzinec-prechodny-pobyt/",
+     "what": "Aksamec law firm, temporary residence: 90 days from a complete application under section 35 of Act No. 404/2011"
+    }
+   ]
+  },
+  "SI": {
+   "fee": 114,
+   "currency": "EUR",
+   "feeBasis": "The administrative fee for a single residence and work permit lodged at a Slovenian mission abroad, €102, and €12 for the residence permit card (€70 when lodged in Slovenia).",
+   "days": [
+    20,
+    30
+   ],
+   "daysBasis": "Typically 20 to 30 days, by one guide's account; no official time is published.",
+   "stayDays": 365,
+   "stayBasis": "A first single permit covers the contract, at most a year.",
+   "sources": [
+    {
+     "kind": "official",
+     "url": "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/employed-worker-slovenia_en",
+     "what": "EU Immigration Portal, employed worker in Slovenia: €102 abroad, €12 card, a first permit at most a year"
+    },
+    {
+     "kind": "secondary",
+     "url": "https://visaatlas.org/visas/slovenia/single-permit",
+     "what": "Visa Atlas, Slovenia single permit: typically 20 to 30 days"
+    }
+   ]
+  },
+  "HR": {
+   "fee": 106.17,
+   "currency": "EUR",
+   "feeBasis": "The administrative fee for a decision on a residence and work permit, €74.32, and the biometric residence card, €31.85.",
+   "days": 15,
+   "daysBasis": "Police administrations have a statutory 15 days to issue the permit, which the government's own consultation calls often too short for the checks.",
+   "stayDays": 365,
+   "stayBasis": "Issued for the contract, up to a year unless otherwise regulated.",
+   "sources": [
+    {
+     "kind": "official",
+     "url": "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/employed-worker-croatia_en",
+     "what": "EU Immigration Portal, employed worker in Croatia: €74.32 for the decision, €31.85 for the card, up to a year"
+    },
+    {
+     "kind": "official",
+     "url": "https://esavjetovanja.gov.hr/ECon/Slicing/GetDocx/31993",
+     "what": "Croatian government consultation: the statutory 15 days for issuing a residence and work permit"
+    }
+   ]
+  },
+  "ES": {
+   "fee": 214.78,
+   "currency": "EUR",
+   "feeBasis": "The 2026 fees for a first residence authorisation (790-052, €10.94) and for employed work paid under twice the minimum wage (790-062, €203.84, paid by the employer; €407.71 at twice or more).",
+   "days": [
+    30,
+    90
+   ],
+   "daysBasis": "One to three months by province; the legal maximum is three months, and silence is a refusal.",
+   "stayDays": 365,
+   "stayBasis": "A first work permit is granted for a year, renewable.",
+   "sources": [
+    {
+     "kind": "secondary",
+     "url": "https://www.parainmigrantes.info/tasas-extranjeria-nuevos-importes/",
+     "what": "Para Inmigrantes, immigration fees in 2026: 052 first residence €10.94; 062 employed work €203.84 and €407.71"
+    },
+    {
+     "kind": "secondary",
+     "url": "https://www.jobbatical.com/blog/spain-cuenta-ajena-general-employment-permit",
+     "what": "Jobbatical, Spain's cuenta ajena permit: one to three months, legal maximum three"
+    },
+    {
+     "kind": "official",
+     "url": "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/employed-worker-spain_en",
+     "what": "EU Immigration Portal, employed worker in Spain: a first permit for a year"
+    }
+   ]
+  },
+  "SE": {
+   "fee": 1500,
+   "currency": "SEK",
+   "feeBasis": "Migrationsverket's fee for a work permit, which an artist pays.",
+   "days": 60,
+   "daysBasis": "Three in four recent first applications were decided within two months.",
+   "stayDays": 730,
+   "stayBasis": "At most two years, and never longer than the employment.",
+   "sources": [
+    {
+     "kind": "official",
+     "url": "https://www.migrationsverket.se/du-vill-ansoka/arbeta/anstalld-eller-egen-foretagare/artist/flikar/viktigt-att-veta.html",
+     "what": "Migrationsverket, artists: 1,500 kronor; 75% decided within two months; at most two years"
+    }
+   ]
+  },
+  "BG": {
+   "fee": 100,
+   "currency": "EUR",
+   "feeBasis": "The consular fee for the type D visa on which the single permit is entered; the Migration Directorate's own fee is set by a Council of Ministers tariff no source gives.",
+   "days": [
+    60,
+    120
+   ],
+   "daysBasis": "The whole procedure may not exceed two months, extendable by two in complex cases (Foreigners Act, article 24i(18)).",
+   "stayDays": 365,
+   "stayBasis": "The single permit is valid for at most a year, renewable.",
+   "sources": [
+    {
+     "kind": "secondary",
+     "url": "https://www.innovires.com/en/blog/work-permit-bulgaria.html",
+     "what": "Innovires, work permit in Bulgaria (as at October 8, 2026): type D visa €100; two months, extendable by two"
+    },
+    {
+     "kind": "official",
+     "url": "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/employed-worker-bulgaria_en",
+     "what": "EU Immigration Portal, employed worker in Bulgaria: the single permit at most a year"
+    }
+   ]
+  },
+  "AX": {
+   "fee": 750,
+   "currency": "EUR",
+   "feeBasis": "Finland's 2026 fee for a first residence permit for an employed person applied for online (€950 on paper); Finnish immigration law applies in Åland.",
+   "days": 61,
+   "daysBasis": "Work-based residence permits took 61 days on average in 2025.",
+   "stayDays": 365,
+   "stayBasis": "A fixed-term residence permit is normally granted for a year.",
+   "sources": [
+    {
+     "kind": "secondary",
+     "url": "https://eiglaw.com/finland-raises-immigration-processing-fees-for-residence-permits-in-2026/",
+     "what": "EIG Law: Finland's 2026 fees, a first permit for an employed person €750 online, €950 on paper"
+    },
+    {
+     "kind": "official",
+     "url": "https://migri.fi/en/-/decline-in-number-of-work-based-residence-permit-applications-growing-number-stay-in-finland-after-completing-a-degree",
+     "what": "Finnish Immigration Service: work-based residence permits took 61 days on average in 2025"
+    },
+    {
+     "kind": "official",
+     "url": "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/employed-worker-finland_en",
+     "what": "EU Immigration Portal, employed worker in Finland: normally granted for a year"
+    }
+   ]
   }
+ },
+ "permitAuthorities": {
+  "PR": "US",
+  "VI": "US",
+  "GU": "US",
+  "MP": "US",
+  "CX": "AU",
+  "CC": "AU",
+  "NF": "AU",
+  "GF": "FR",
+  "GP": "FR",
+  "MQ": "FR",
+  "RE": "FR",
+  "YT": "FR",
+  "BL": "FR",
+  "MF": "FR"
  },
  "visas": {
   "AT": {
@@ -1311,6 +1862,164 @@
      "kind": "secondary",
      "url": "https://myjet24.com/blog/saudi-arabia-eta-uk-citizens-2026",
      "what": "MyJet24: SAR 50, 24 to 72 hours, 12 months, 180 days a year"
+    }
+   ]
+  }
+ },
+ "visaAuthorities": {
+  "PR": {
+   "authority": "US",
+   "basis": "Entered on a United States visa: it is the United States for immigration.",
+   "sources": [
+    {
+     "kind": "official",
+     "url": "https://fam.state.gov/fam/09FAM/09FAM010201.html",
+     "what": "9 FAM 102.1: Guam, Puerto Rico, the US Virgin Islands and, from Public Law 110-229, the Northern Mariana Islands are the United States for immigration (INA 101(a)(38))"
+    },
+    {
+     "kind": "official",
+     "url": "https://www.visittheusa.com/info/visa-entry",
+     "what": "Brand USA, visa and entry: the same visa process at ports of entry in Puerto Rico, Guam, the US Virgin Islands and the Northern Mariana Islands"
+    }
+   ]
+  },
+  "VI": {
+   "authority": "US",
+   "basis": "Entered on a United States visa: it is the United States for immigration.",
+   "sources": [
+    {
+     "kind": "official",
+     "url": "https://fam.state.gov/fam/09FAM/09FAM010201.html",
+     "what": "9 FAM 102.1: Guam, Puerto Rico, the US Virgin Islands and, from Public Law 110-229, the Northern Mariana Islands are the United States for immigration (INA 101(a)(38))"
+    },
+    {
+     "kind": "official",
+     "url": "https://www.visittheusa.com/info/visa-entry",
+     "what": "Brand USA, visa and entry: the same visa process at ports of entry in Puerto Rico, Guam, the US Virgin Islands and the Northern Mariana Islands"
+    }
+   ]
+  },
+  "GU": {
+   "authority": "US",
+   "basis": "Entered on a United States visa: it is the United States for immigration.",
+   "sources": [
+    {
+     "kind": "official",
+     "url": "https://fam.state.gov/fam/09FAM/09FAM010201.html",
+     "what": "9 FAM 102.1: Guam, Puerto Rico, the US Virgin Islands and, from Public Law 110-229, the Northern Mariana Islands are the United States for immigration (INA 101(a)(38))"
+    },
+    {
+     "kind": "official",
+     "url": "https://www.visittheusa.com/info/visa-entry",
+     "what": "Brand USA, visa and entry: the same visa process at ports of entry in Puerto Rico, Guam, the US Virgin Islands and the Northern Mariana Islands"
+    }
+   ]
+  },
+  "MP": {
+   "authority": "US",
+   "basis": "Entered on a United States visa: it is the United States for immigration.",
+   "sources": [
+    {
+     "kind": "official",
+     "url": "https://fam.state.gov/fam/09FAM/09FAM010201.html",
+     "what": "9 FAM 102.1: Guam, Puerto Rico, the US Virgin Islands and, from Public Law 110-229, the Northern Mariana Islands are the United States for immigration (INA 101(a)(38))"
+    },
+    {
+     "kind": "official",
+     "url": "https://www.visittheusa.com/info/visa-entry",
+     "what": "Brand USA, visa and entry: the same visa process at ports of entry in Puerto Rico, Guam, the US Virgin Islands and the Northern Mariana Islands"
+    }
+   ]
+  },
+  "CX": {
+   "authority": "AU",
+   "basis": "Entered on an Australian visa: it is in Australia's migration zone.",
+   "sources": [
+    {
+     "kind": "official",
+     "url": "https://www.legislation.gov.au/C1958A00062/latest",
+     "what": "Migration Act 1958, section 5: the migration zone takes in Australia's external territories (Norfolk Island from July 1, 2016)"
+    }
+   ]
+  },
+  "CC": {
+   "authority": "AU",
+   "basis": "Entered on an Australian visa: it is in Australia's migration zone.",
+   "sources": [
+    {
+     "kind": "official",
+     "url": "https://www.legislation.gov.au/C1958A00062/latest",
+     "what": "Migration Act 1958, section 5: the migration zone takes in Australia's external territories (Norfolk Island from July 1, 2016)"
+    }
+   ]
+  },
+  "NF": {
+   "authority": "AU",
+   "basis": "Entered on an Australian visa: it is in Australia's migration zone.",
+   "sources": [
+    {
+     "kind": "official",
+     "url": "https://www.legislation.gov.au/C1958A00062/latest",
+     "what": "Migration Act 1958, section 5: the migration zone takes in Australia's external territories (Norfolk Island from July 1, 2016)"
+    }
+   ]
+  },
+  "JE": {
+   "authority": "GB",
+   "basis": "Entered on a UK visit visa, applied for through the UK: a Crown Dependency in the Common Travel Area.",
+   "sources": [
+    {
+     "kind": "official",
+     "url": "https://www.gov.je/Travel/InformationAdvice/Visitors/Pages/ApplyVisa.aspx",
+     "what": "Government of Jersey, apply for a visa: you apply through the UK, and the application is sent to Jersey"
+    },
+    {
+     "kind": "official",
+     "url": "https://www.gov.uk/government/publications/common-travel-area/common-travel-area",
+     "what": "UK Home Office, Common Travel Area guidance: the UK, Ireland and the Crown Dependencies"
+    }
+   ]
+  },
+  "GG": {
+   "authority": "GB",
+   "basis": "Entered on a UK visit visa, applied for through the UK: a Crown Dependency in the Common Travel Area.",
+   "sources": [
+    {
+     "kind": "official",
+     "url": "https://www.gov.je/Travel/InformationAdvice/Visitors/Pages/ApplyVisa.aspx",
+     "what": "Government of Jersey, apply for a visa: you apply through the UK, and the application is sent to Jersey"
+    },
+    {
+     "kind": "official",
+     "url": "https://www.gov.uk/government/publications/common-travel-area/common-travel-area",
+     "what": "UK Home Office, Common Travel Area guidance: the UK, Ireland and the Crown Dependencies"
+    }
+   ]
+  },
+  "IM": {
+   "authority": "GB",
+   "basis": "Entered on a UK visit visa, applied for through the UK: a Crown Dependency in the Common Travel Area.",
+   "sources": [
+    {
+     "kind": "official",
+     "url": "https://www.gov.je/Travel/InformationAdvice/Visitors/Pages/ApplyVisa.aspx",
+     "what": "Government of Jersey, apply for a visa: you apply through the UK, and the application is sent to Jersey"
+    },
+    {
+     "kind": "official",
+     "url": "https://www.gov.uk/government/publications/common-travel-area/common-travel-area",
+     "what": "UK Home Office, Common Travel Area guidance: the UK, Ireland and the Crown Dependencies"
+    }
+   ]
+  },
+  "MC": {
+   "authority": "FR",
+   "basis": "Entered on a Schengen visa, which France issues for Monaco: Monaco has no visa of its own.",
+   "sources": [
+    {
+     "kind": "official",
+     "url": "https://embassy-to-uk.gouv.mc/en/information-and-services/visiting-monaco",
+     "what": "Embassy of Monaco in the UK, visiting Monaco: a visa for the Schengen area, after which a visit needs no further formality"
     }
    ]
   }

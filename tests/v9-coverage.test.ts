@@ -15,11 +15,13 @@ import { COUNTRIES } from '../src/world/gazetteer/gazetteer';
 import { banksIn } from '../src/engine/bankworld/content/banks';
 import { PASSPORTS } from '../src/engine/bankworld/content/passports';
 import { VISAS } from '../src/engine/bankworld/content/visas';
-import { RESEARCHED_PERMITS, RESEARCHED_VISAS } from '../src/engine/papers-terms';
+import { RESEARCHED_PERMITS, RESEARCHED_VISAS, VISA_AUTHORITY_OF, permitTerms } from '../src/engine/papers-terms';
 
 /** Researched on November 14, 2026, and the five places with no bank of their own (banks-world.ts). */
 const BANKS_RESEARCHED = new Set(['NR', 'NU']);
 const BANKS_MODELED = new Set(['IO', 'TF', 'GS', 'PN', 'TK']);
+const WORK_ROUTES = (JSON.parse(readFileSync('src/data/papers/work.json', 'utf8')) as { countries: Record<string, { others?: { route?: string } }> }).countries;
+const WORK_ROUTE = (iso: string) => WORK_ROUTES[iso]?.others?.route ?? 'Work permit';
 const WORK_MODELED = new Set(Object.entries((JSON.parse(readFileSync('src/data/papers/work.json', 'utf8')) as { countries: Record<string, { modeled?: string }> }).countries).filter(([, v]) => v.modeled).map(([k]) => k));
 
 type Status = 'verified' | 'inherited-unverified' | 'modeled' | 'not applicable' | 'missing' | 'implemented/tested';
@@ -73,11 +75,13 @@ function matrix() {
       'visiting rules': fromRebuild(VISITS[iso], 'who may visit'),
       'visitor visa application': empty ? ['not applicable', 'no populated place']
         : RESEARCHED_VISAS.includes(iso) ? ['verified', 'its visitor visa, researched on November 14, 2026, with its source']
+          : VISA_AUTHORITY_OF[iso] ? ['verified', `its sovereign's visa (${VISA_AUTHORITY_OF[iso]}), researched, with the law that says so`]
           : VISA_DESTINATIONS.has(iso) ? (iso === 'US' ? ['implemented/tested', '1221\'s visa record for some passports; tests/v8-papers.test.ts, e2e/v9-papers.spec.ts'] : ['inherited-unverified', '1221\'s visa record, for some passports only'])
             : ['modeled', 'no research gives its fee or time yet: the game estimates both from the researched visas, and says so'],
       'work rules': WORK_MODELED.has(iso) ? ['modeled', 'SLATE-REBUILD\'s research was blocked: the game assumes anyone who isn\'t a citizen needs a permit'] : fromRebuild(WORK[iso], 'who may work'),
       'work permit application': empty ? ['not applicable', 'no populated place']
-        : RESEARCHED_PERMITS.includes(iso) ? (iso === 'US' ? ['implemented/tested', 'researched on November 14, 2026 (USCIS fee schedule); tests/v8-papers.test.ts'] : ['verified', 'its fee and decision time, researched on November 14, 2026, with its source'])
+        : RESEARCHED_PERMITS.includes(iso) ? (iso === 'US' ? ['implemented/tested', 'researched on November 14, 2026 (USCIS fee schedule); tests/v8-papers.test.ts'] : ['verified', 'its fee and decision time, researched (November 14 or 17, 2026), with its source'])
+          : !permitTerms(iso, WORK_ROUTE(iso)).estimate ? ['verified', 'the same route as a researched country\'s, under the same law']
           : ['modeled', 'no research gives its fee or time yet: the game estimates both from the researched permits on its continent, and says so'],
     };
   }

@@ -14,9 +14,28 @@ type Recorded = { fee: number; currency: string; days: number | [number, number]
 const WORK = workData as unknown as { countries: Record<string, { others?: { route?: string } }> };
 
 describe('papers terms', () => {
+  // From November 17, 2026: a territory takes its sovereign's permit only where the work records give it the same route,
+  // and its sovereign's visa only where a law or page says so (terms.json permitAuthorities, visaAuthorities).
+  it('gives a territory its sovereign\'s permit only on the same route, and its sovereign\'s visa with the law that says so', () => {
+    const t = terms as unknown as { permits: Record<string, { route: string }>; permitAuthorities: Record<string, string>; visaAuthorities: Record<string, { authority: string; sources: { url: string }[] }> };
+    for (const [c, by] of Object.entries(t.permitAuthorities)) {
+      expect(WORK.countries[c].others?.route, c).toBe(t.permits[by].route);
+      expect(permitTerms(c, WORK.countries[c].others!.route!)).toMatchObject({ fee: permitTerms(by, t.permits[by].route).fee, estimate: null });
+    }
+    // A route named only "Work permit" is not Canada's because Canada's is named so too.
+    expect(permitTerms('AF', 'Work permit').estimate).not.toBeNull();
+    expect(permitTerms('GU', WORK.countries.GU.others!.route!).basis).toMatch(/^The same permit the United States issues, under the same law\. /);
+    for (const [c, v] of Object.entries(t.visaAuthorities)) {
+      expect(v.sources.length, c).toBeGreaterThan(0);
+      expect(visaTerms(c)).toMatchObject({ fee: visaTerms(v.authority).fee, estimate: null });
+    }
+    expect(visaTerms('JE').route).toBe(visaTerms('GB').route);
+  });
+
   it('names a source for every researched figure, and each is a real amount and a real time', () => {
     for (const [c, r] of Object.entries((terms as unknown as { permits: Record<string, Recorded>; visas?: Record<string, Recorded> }).permits)) {
-      expect(r.fee, c).toBeGreaterThan(0);
+      // A researched fee may be nothing: Belgium's short-term permit is free (from November 17, 2026).
+      expect(r.fee, c).toBeGreaterThanOrEqual(0);
       expect(r.currency, c).toMatch(/^[A-Z]{3}$/);
       for (const d of [r.days].flat()) expect(d, c).toBeGreaterThan(0);
       expect(r.sources.length, c).toBeGreaterThan(0);
@@ -35,7 +54,7 @@ describe('papers terms', () => {
       const p = permitTerms(code, WORK.countries[code].others?.route ?? 'Work permit');
       const v = visaTerms(code);
       for (const t of [p, v]) {
-        expect(Number.isFinite(t.fee.amount) && t.fee.amount > 0, `${code} ${t.route}`).toBe(true);
+        expect(Number.isFinite(t.fee.amount) && (t.fee.amount > 0 || (!t.estimate && t.fee.amount === 0)), `${code} ${t.route}`).toBe(true);
         expect(t.days, `${code} ${t.route}`).toBeGreaterThan(0);
         if (t.estimate) expect(t.basis, code).toMatch(/^The game's estimate/);
       }
