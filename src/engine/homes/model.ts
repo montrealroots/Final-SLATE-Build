@@ -321,7 +321,7 @@ export const WORK_COST_USD: Record<WorkKind, { perM2?: number; fixed?: number }>
   workroom: { fixed: 14000 }, pool: { fixed: 58000 }, 'exterior-paint': { perM2: 22 }, 'new-roof': { perM2: 140 }, porch: { fixed: 16000 }, landscaping: { fixed: 7500 }, driveway: { fixed: 9000 },
 };
 /** Monthly running costs where no tariff is researched, the game's model in dollars. */
-export const RUNNING_USD = { kwhBasePerM2Year: 32, placeholderKwhPrice: 0.22, waterMonthly: 45, internetMonthly: 55, heatingPerM2Month: 0.6, poolMonthly: 140, insuranceContentsMonthly: 18, insuranceBuildingsPerM2Year: 3.2 } as const;
+export const RUNNING_USD = { emptyHomeMonthly: 40, kwhBasePerM2Year: 32, placeholderKwhPrice: 0.22, waterMonthly: 45, internetMonthly: 55, heatingPerM2Month: 0.6, poolMonthly: 140, insuranceContentsMonthly: 18, insuranceBuildingsPerM2Year: 3.2 } as const;
 
 /** The usable garden of a home with land: plot less the footprint, the drive and what's built on it. Null where unknown. */
 export function gardenOf(home: Pick<Home, 'plotAreaM2' | 'design' | 'form'>): number | null {

@@ -1,0 +1,812 @@
+{
+ "id": "approve-tenant-repair",
+ "features": [
+  "action:homes/letting.approveLandlordRepair"
+ ],
+ "decision": "Approve the repairs your tenant asks for",
+ "reads": [
+  "src/engine/homes/letting.ts#approveLandlordRepair",
+  "src/engine/homes/letting.ts#receiveRent"
+ ],
+ "seeds": 80,
+ "base": {
+  "delivered": 2,
+  "released": 2,
+  "reception": 58.9,
+  "overall": 58.713,
+  "gross": 68447.5,
+  "revenue": 139930.375,
+  "distributed": 1.763,
+  "money": 24522743.253,
+  "moneyChange": -477256.747,
+  "jobsTaken": 0.975,
+  "jobsOffered": 0.975,
+  "jobPay": 4934.675,
+  "offeredDayRate": 448.688,
+  "ownIn": 80850,
+  "backerIn": 0,
+  "backerDeals": 0,
+  "leftInProjects": 0,
+  "jobsDone": 0,
+  "jobsWithdrawn": 0,
+  "jobsDeclined": 0,
+  "ratesAgreed": 0,
+  "logLines": 139.95,
+  "hired": 16,
+  "castRates": 3207.5,
+  "releaseDelay": 102.173,
+  "licenceDeals": 0,
+  "licenceFee": 0,
+  "offersDeclined": 0.438,
+  "countersSeen": 0,
+  "countersDeclined": 0.013,
+  "spent": 69856.75,
+  "shootDays": 7.25,
+  "lostDays": 1.25,
+  "daysToDeliver": 33.106,
+  "quality.script": 48.5,
+  "quality.direction": 64.875,
+  "quality.craft": 59.425,
+  "quality.editing": 59.894,
+  "quality.music": 59.825,
+  "standing.writing": 50,
+  "standing.directing": 55.063,
+  "standing.acting": 50,
+  "standing.producing": 53.075,
+  "rentsPaid": 0,
+  "arrears": 0,
+  "depositKept": 0,
+  "depositBack": 0,
+  "tenanciesEnded": 0,
+  "repairSpend": 168.125,
+  "repairsFixed": 0.325,
+  "homesOwned": 1,
+  "pricePaid": 278287.5,
+  "mortgageLoan": 0,
+  "mortgagePayment": 0,
+  "mortgageOwed": 0,
+  "inspections": 0,
+  "purchasesEnded": 0,
+  "sold": 0,
+  "saleProceeds": 0,
+  "saleOffer": 0,
+  "soldAtDay": 0,
+  "workPaid": 0,
+  "designRevisions": 0,
+  "itemsInstalled": 0,
+  "itemsGone": 0,
+  "itemSpend": 0,
+  "policies": 0,
+  "claimsPaid": 0,
+  "staySpend": 0,
+  "buildsDone": 0,
+  "buildStagesDone": 0,
+  "buildQuote": 0,
+  "buildSpend": 0,
+  "letRents": 23,
+  "letIncome": 25566.2,
+  "letCosts": 0,
+  "lettingsEnded": 0,
+  "interestIn": 0,
+  "interestOut": 0,
+  "bankFees": 0,
+  "owed": 0,
+  "accounts": 1,
+  "worth": 18441102.926,
+  "rewards": 0,
+  "fired": 0
+ },
+ "variant": {
+  "delivered": 2,
+  "released": 2,
+  "reception": 58.9,
+  "overall": 58.713,
+  "gross": 68447.5,
+  "revenue": 139930.375,
+  "distributed": 1.763,
+  "money": 24520361.32,
+  "moneyChange": -479638.68,
+  "jobsTaken": 0.975,
+  "jobsOffered": 0.975,
+  "jobPay": 4934.675,
+  "offeredDayRate": 448.688,
+  "ownIn": 80850,
+  "backerIn": 0,
+  "backerDeals": 0,
+  "leftInProjects": 0,
+  "jobsDone": 0,
+  "jobsWithdrawn": 0,
+  "jobsDeclined": 0,
+  "ratesAgreed": 0,
+  "logLines": 141.9,
+  "hired": 16,
+  "castRates": 3207.5,
+  "releaseDelay": 102.173,
+  "licenceDeals": 0,
+  "licenceFee": 0,
+  "offersDeclined": 0.438,
+  "countersSeen": 0,
+  "countersDeclined": 0.013,
+  "spent": 69856.75,
+  "shootDays": 7.25,
+  "lostDays": 1.25,
+  "daysToDeliver": 33.106,
+  "quality.script": 48.5,
+  "quality.direction": 64.875,
+  "quality.craft": 59.425,
+  "quality.editing": 59.894,
+  "quality.music": 59.825,
+  "standing.writing": 50,
+  "standing.directing": 55.063,
+  "standing.acting": 50,
+  "standing.producing": 53.075,
+  "rentsPaid": 0,
+  "arrears": 0,
+  "depositKept": 0,
+  "depositBack": 0,
+  "tenanciesEnded": 0,
+  "repairSpend": 168.125,
+  "repairsFixed": 0.325,
+  "homesOwned": 1,
+  "pricePaid": 278287.5,
+  "mortgageLoan": 0,
+  "mortgagePayment": 0,
+  "mortgageOwed": 0,
+  "inspections": 0,
+  "purchasesEnded": 0,
+  "sold": 0,
+  "saleProceeds": 0,
+  "saleOffer": 0,
+  "soldAtDay": 0,
+  "workPaid": 0,
+  "designRevisions": 0,
+  "itemsInstalled": 0,
+  "itemsGone": 0,
+  "itemSpend": 0,
+  "policies": 0,
+  "claimsPaid": 0,
+  "staySpend": 0,
+  "buildsDone": 0,
+  "buildStagesDone": 0,
+  "buildQuote": 0,
+  "buildSpend": 0,
+  "letRents": 23,
+  "letIncome": 25566.2,
+  "letCosts": 2378.975,
+  "lettingsEnded": 0,
+  "interestIn": 0,
+  "interestOut": 0,
+  "bankFees": 0,
+  "owed": 0,
+  "accounts": 1,
+  "worth": 18439311.712,
+  "rewards": 0,
+  "fired": 0
+ },
+ "diff": {
+  "delivered": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 80
+  },
+  "released": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 80
+  },
+  "reception": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 80
+  },
+  "overall": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 80
+  },
+  "gross": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 80
+  },
+  "revenue": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 80
+  },
+  "distributed": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 80
+  },
+  "money": {
+   "mean": -2381.933,
+   "lo": -2755.562,
+   "hi": -2008.304,
+   "changed": 68,
+   "n": 80
+  },
+  "moneyChange": {
+   "mean": -2381.933,
+   "lo": -2755.562,
+   "hi": -2008.304,
+   "changed": 68,
+   "n": 80
+  },
+  "jobsTaken": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 80
+  },
+  "jobsOffered": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 80
+  },
+  "jobPay": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 80
+  },
+  "offeredDayRate": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 80
+  },
+  "ownIn": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 80
+  },
+  "backerIn": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 80
+  },
+  "backerDeals": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 80
+  },
+  "leftInProjects": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 80
+  },
+  "jobsDone": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 80
+  },
+  "jobsWithdrawn": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 80
+  },
+  "jobsDeclined": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 80
+  },
+  "ratesAgreed": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 80
+  },
+  "logLines": {
+   "mean": 1.95,
+   "lo": 1.653,
+   "hi": 2.247,
+   "changed": 68,
+   "n": 80
+  },
+  "hired": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 80
+  },
+  "castRates": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 80
+  },
+  "releaseDelay": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 80
+  },
+  "licenceDeals": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 80
+  },
+  "licenceFee": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 80
+  },
+  "offersDeclined": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 80
+  },
+  "countersSeen": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 80
+  },
+  "countersDeclined": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 80
+  },
+  "spent": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 80
+  },
+  "shootDays": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 80
+  },
+  "lostDays": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 80
+  },
+  "daysToDeliver": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 80
+  },
+  "quality.script": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 80
+  },
+  "quality.direction": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 80
+  },
+  "quality.craft": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 80
+  },
+  "quality.editing": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 80
+  },
+  "quality.music": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 80
+  },
+  "standing.writing": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 80
+  },
+  "standing.directing": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 80
+  },
+  "standing.acting": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 80
+  },
+  "standing.producing": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 80
+  },
+  "rentsPaid": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 80
+  },
+  "arrears": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 80
+  },
+  "depositKept": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 80
+  },
+  "depositBack": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 80
+  },
+  "tenanciesEnded": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 80
+  },
+  "repairSpend": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 80
+  },
+  "repairsFixed": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 80
+  },
+  "homesOwned": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 80
+  },
+  "pricePaid": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 80
+  },
+  "mortgageLoan": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 80
+  },
+  "mortgagePayment": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 80
+  },
+  "mortgageOwed": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 80
+  },
+  "inspections": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 80
+  },
+  "purchasesEnded": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 80
+  },
+  "sold": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 80
+  },
+  "saleProceeds": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 80
+  },
+  "saleOffer": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 80
+  },
+  "soldAtDay": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 80
+  },
+  "workPaid": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 80
+  },
+  "designRevisions": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 80
+  },
+  "itemsInstalled": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 80
+  },
+  "itemsGone": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 80
+  },
+  "itemSpend": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 80
+  },
+  "policies": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 80
+  },
+  "claimsPaid": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 80
+  },
+  "staySpend": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 80
+  },
+  "buildsDone": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 80
+  },
+  "buildStagesDone": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 80
+  },
+  "buildQuote": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 80
+  },
+  "buildSpend": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 80
+  },
+  "letRents": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 80
+  },
+  "letIncome": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 80
+  },
+  "letCosts": {
+   "mean": 2378.975,
+   "lo": 2005.623,
+   "hi": 2752.327,
+   "changed": 68,
+   "n": 80
+  },
+  "lettingsEnded": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 80
+  },
+  "interestIn": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 80
+  },
+  "interestOut": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 80
+  },
+  "bankFees": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 80
+  },
+  "owed": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 80
+  },
+  "accounts": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 80
+  },
+  "worth": {
+   "mean": -1791.214,
+   "lo": -2072.183,
+   "hi": -1510.245,
+   "changed": 68,
+   "n": 80
+  },
+  "rewards": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 80
+  },
+  "fired": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 80
+  }
+ },
+ "bites": [
+  {
+   "metric": "letCosts",
+   "ok": true
+  }
+ ],
+ "downstream": [
+  {
+   "metric": "money",
+   "ok": true
+  },
+  {
+   "metric": "moneyChange",
+   "ok": true
+  },
+  {
+   "metric": "interestIn",
+   "ok": false
+  },
+  {
+   "metric": "worth",
+   "ok": true
+  }
+ ],
+ "verdict": "proven",
+ "hashes": {
+  "src/engine/homes/letting.ts": "9dae2a4ca178cfd2",
+  "tests/proof/career.ts": "50bea06f19a02c5b"
+ }
+}

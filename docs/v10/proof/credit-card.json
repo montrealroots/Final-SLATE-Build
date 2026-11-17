@@ -542,8 +542,8 @@
  ],
  "verdict": "proven",
  "hashes": {
-  "src/engine/bankworld/systems/spending.ts": "185456ff5736a0c9",
-  "src/engine/bank.ts": "a9105e94a4542c90",
+  "src/engine/bankworld/systems/spending.ts": "2a22d7df08237ca3",
+  "src/engine/bank.ts": "14140b1e01e642bc",
   "tests/proof/career.ts": "50bea06f19a02c5b"
  }
 }

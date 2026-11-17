@@ -10,6 +10,7 @@ import { newId } from '../state';
 import { unit } from '../rng';
 import type { GameState } from '../types';
 import { HOME_RULES } from './market';
+import { startBills } from './living';
 import { COMPONENT_WORDS, WORK, depositFor, permissionFor, gardenOf, type Condition, type Home, type WorkKind } from './model';
 import { moveBetweenBooks } from '../bank';
 import { moveRefusal, moveTo } from '../papers';
@@ -73,8 +74,19 @@ export function decideApplication(state: GameState, t: Tenancy): void {
   const right = residenceRight(state, home.country);
   if (!canPay(state, home.currency, need)) { t.stage = 'declined'; t.decision = `The landlord turned your application down: they look for ${money(home.currency, need)} available, the move-in costs and three months' rent besides.`; }
   else if (!right.can) { t.stage = 'declined'; t.decision = `The landlord turned your application down: a landlord here checks your right to live in ${getPlace(home.placeId).countryName}. ${right.why}`; }
-  else { t.stage = 'approved'; t.decision = `The landlord approved your application. Review the lease and sign by ${formatDateKey(addDaysToKey(todayAt(state, home), APPLICATION.approvalStandsDays))}.`; }
+  else {
+    t.stage = 'approved'; t.decision = `The landlord approved your application. Review the lease and sign by ${formatDateKey(addDaysToKey(todayAt(state, home), APPLICATION.approvalStandsDays))}.`;
+    scheduleHome(state, t.decideAt + days(APPLICATION.approvalStandsDays) + 1, 'rent-lapse', { id: t.id }, 'notify');
+  }
   note(state, home.id, `${home.title}: ${t.decision}`, t.stage === 'declined' ? 'warning' : 'personal');
+}
+
+/** An approval not signed in time lapses (from November 17, 2026: until then it stayed "approved" and only refused to sign). */
+export function lapseApproval(state: GameState, t: Tenancy): void {
+  if (t.stage !== 'approved') return;
+  t.stage = 'lapsed';
+  t.decision = 'The approval lapsed before you signed: the landlord offered the home to someone else. Nothing was paid.';
+  note(state, t.homeId, `${homeOf(state, t.homeId).title}: ${t.decision}`, 'warning');
 }
 
 /** The lease's terms, before signing: what you pay, when, and what you may change. */
@@ -244,7 +256,7 @@ export function moveIn(state: GameState, homeId: string): void {
   }
   // Your belongings move with you; the household's bills start.
   for (const it of hs.items.filter((i) => i.owner === 'you' && i.homeId === before && !i.builtIn && (i.stage === 'installed' || i.stage === 'delivered'))) { it.homeId = homeId; it.roomId = null; it.stage = 'delivered'; }
-  scheduleHome(state, instantOn(home, addMonths(todayAt(state, home), 1)), 'bill', { homeId }, 'silent', `home-bill:${homeId}:${todayAt(state, home).slice(0, 7)}`);
+  startBills(state, home);
   // Living in another place moves your life there (papers.ts moveTo): checked above with its own refusals.
   if (state.character.livesIn !== home.placeId) moveTo(state, home.placeId);
   note(state, homeId, `You moved into ${home.title}. It's your home now.${t ? ' Its condition as you found it is on record.' : ''}`);

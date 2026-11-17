@@ -392,4 +392,16 @@ describe('the exterior picture', () => {
     }
     expect(seen).toEqual({ clean: true, damaged: true });
   });
+
+  it('shows no picture when the provider is unavailable, and the home is unchanged', async () => {
+    const s = startLife('homes-no-provider', 'gb-london', { startDate: '2026-03-02' });
+    const home = (await offers(s, 'gb-london')).find((h) => h.form !== 'land')!;
+    const { GAME_DRAWING } = await import('../src/engine/homes/illustration');
+    const before = JSON.stringify(home);
+    const r = exteriorFor(s, home, { ...GAME_DRAWING, available: () => false });
+    expect(r.svg).toBeNull();
+    expect(r.label).toMatch(/provider is unavailable/);
+    expect(JSON.stringify(home)).toBe(before);
+    expect(applyRefusal(s, home)).toBeNull(); // the home can still be rented
+  });
 });

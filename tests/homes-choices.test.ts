@@ -199,4 +199,19 @@ describe('letting', () => {
     // Within the limit, a repair is done without asking; without an agent it waits for you.
     expect(managed.repairs.every((r) => r.stage !== 'awaiting-you' || r.minor > 200000)).toBe(true);
   });
+
+  it('an empty home costs its owner its standing charges each month; once let, the tenant pays for what they use', async () => {
+    const { s, home } = await ownInLA('choices-empty', true);
+    advance(s, 35);
+    const empty = homesOf(s).bills.filter((b) => b.homeId === home.id);
+    expect(empty.length).toBeGreaterThan(0);
+    expect(empty[0].lines.map((l) => l.what)).toContain('Standing charges while it stands empty');
+    expect(empty[0].lines.some((l) => /Electricity/.test(l.what))).toBe(false);
+    const l = advertise(s, home.id, fairRent(s, home.id), false, 0);
+    advance(s, 11);
+    chooseTenant(s, l.id, 0);
+    advance(s, 35);
+    const let_ = homesOf(s).bills.filter((b) => b.homeId === home.id)[0];
+    expect(let_.lines.map((x) => x.what)).not.toContain('Standing charges while it stands empty');
+  });
 });

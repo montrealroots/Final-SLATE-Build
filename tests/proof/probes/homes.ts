@@ -7,10 +7,10 @@ import type { Probe } from '../probe';
 import type { GameState } from '../../../src/engine/types';
 import { applianceCatalog, marketEvidence, offersIn, type MarketEvidence } from '../../../src/engine/homes/market';
 import { homesOf, todayAt, type Payment } from '../../../src/engine/homes/core';
-import type { Home, WorkKind } from '../../../src/engine/homes/model';
-import { applyToRent, approveRepair, askPermission, disputeDeductions, giveNotice, moveIn, moveInRefusal, payArrears, reportRepair, restoreChange, signLease } from '../../../src/engine/homes/renting';
+import { COMPONENT_WORDS, type Home, type WorkKind } from '../../../src/engine/homes/model';
+import { applyToRent, approveRepair, askPermission, disputeDeductions, giveNotice, moveIn, moveInRefusal, payArrears, reportRepair, signLease } from '../../../src/engine/homes/renting';
 import { acceptCounter, acceptSaleOffer, declineSaleOffer, listForSale, makeOffer, valuation, withdrawPurchase, type Plan } from '../../../src/engine/homes/buying';
-import { GENERIC_FURNITURE, bookStay, buyInsurance, buyItem, cancelWork, claimRepair, disposeItem, installItem, measureForInstall, returnItem, startWork, type CatalogItem } from '../../../src/engine/homes/living';
+import { GENERIC_FURNITURE, bookStay, buyInsurance, buyItem, cancelWork, claimRepair, disposeItem, installItem, measureForInstall, restoreChange, returnItem, startWork, type CatalogItem } from '../../../src/engine/homes/living';
 import { applyForApproval, investigate, resumeBuild, saveDesign, signBuild, startDesign } from '../../../src/engine/homes/building';
 import { advertise, approveLandlordRepair, changeRent, chooseTenant, endLetting, fairRent } from '../../../src/engine/homes/letting';
 import { mortgageOwed } from '../../../src/engine/bank';
@@ -87,10 +87,10 @@ function rent(s: GameState, day: number, pick: (h: Home) => boolean = (h) => h.m
   return t;
 }
 /** Buy the first home for sale in a place (or land), at a share of its price, on a plan. */
-function buy(s: GameState, day: number, plan: Plan, o: { share?: number; place?: PlaceId; land?: boolean } = {}) {
+function buy(s: GameState, day: number, plan: Plan, o: { share?: number; place?: PlaceId; land?: boolean; pick?: (h: Home) => boolean } = {}) {
   const hs = homesOf(s);
   if (day === 0) {
-    const h = offers(s, o.place ?? 'us-los-angeles').find((x) => x.market === 'sale' && (o.land ? x.form === 'land' : x.form !== 'land'));
+    const h = offers(s, o.place ?? 'us-los-angeles').find((x) => x.market === 'sale' && (o.land ? x.form === 'land' : x.form !== 'land') && (!o.pick || o.pick(x)));
     if (h) makeOffer(s, h, Math.round((h.priceMinor * (o.share ?? 1)) / 100) * 100, plan);
   }
   const p = hs.purchases[0];
@@ -121,6 +121,13 @@ function letIt(s: GameState, o: { share?: number; manager?: boolean; capUsd?: nu
   const mine = owned(s);
   const hs = homesOf(s);
   if (!mine) return;
+  // A home isn't let until what's poor is put right: the owner gets each quoted and pays for it.
+  const home = hs.homes[mine.homeId];
+  for (const k of Object.keys(home.condition) as (keyof Home['condition'])[]) {
+    if (home.condition[k] !== 'poor') continue;
+    const word = COMPONENT_WORDS[k];
+    if (!hs.repairs.some((r) => r.homeId === home.id && r.component === word && r.stage !== 'fixed')) tryIt(() => { const r = reportRepair(s, home.id, word); approveRepair(s, r.id); });
+  }
   if (!hs.lettings.length) tryIt(() => void advertise(s, mine.homeId, Math.round((fairRent(s, mine.homeId) * (o.share ?? 1)) / 100) * 100, !!o.manager, (o.capUsd ?? 0) * 100));
   const l = hs.lettings[0];
   if (!l) return;
@@ -185,6 +192,15 @@ export const PROBES: Probe[] = [
     base: { daily: (s, d) => { const t = rent(s, d); if (t?.stage === 'active' && !homesOf(s).items.length) buyItem(s, t.homeId, DESK, homesOf(s).homes[t.homeId].rooms[0].id); if (d === 60 && t?.stage === 'active') tryIt(() => void reportRepair(s, t.homeId, 'Heating')); } },
     variant: { daily: (s, d) => { const t = rent(s, d); if (t?.stage === 'active' && !homesOf(s).items.length) buyItem(s, t.homeId, DESK, homesOf(s).homes[t.homeId].rooms[0].id); if (d === 60 && t?.stage === 'active') tryIt(() => { const r = reportRepair(s, t.homeId, 'Desk'); approveRepair(s, r.id); }); } },
     measure, bites: ['repairSpend'], downstream: money,
+  },
+  {
+    id: 'owner-repairs-roof',
+    features: [F('"Something Broken"', 2)],
+    decision: 'Have the roof of the house you own quoted and repaired',
+    reads: [`${R}#reportRepair`, `${R}#approveRepair`, `${R}#repairVisit`],
+    base: { daily: (s, d) => void buy(s, d, CASH, { pick: (h) => h.form === 'detached' || h.form === 'townhouse' }) },
+    variant: { daily: (s, d) => { buy(s, d, CASH, { pick: (h) => h.form === 'detached' || h.form === 'townhouse' }); const o = owned(s); if (o && !homesOf(s).repairs.length) tryIt(() => { const r = reportRepair(s, o.homeId, 'Roof'); approveRepair(s, r.id); }); } },
+    measure, bites: ['repairSpend', 'repairsFixed'], downstream: money,
   },
   {
     id: 'ask-to-paint',
@@ -321,7 +337,7 @@ export const PROBES: Probe[] = [
     reads: [`${B}#declineSaleOffer`, `${B}#buyerOffer`, `${B}#completeSale`],
     base: { daily: (s, d) => { buy(s, d, CASH); sell(s, d); } },
     variant: { daily: (s, d) => { buy(s, d, CASH); sell(s, d, { declineFirst: true }); } },
-    measure, bites: ['soldAtDay'], downstream: ['interestIn', 'worth', 'money'],
+    measure, bites: ['soldAtDay'], downstream: money,
   },
   {
     id: 'paint-the-outside',
@@ -615,12 +631,12 @@ function deskThen(then: (s: GameState, id: string) => void) {
 /** Own the LA house with buildings cover; report the roof, approve the repair; claim for it or not. */
 function roofRepair(claim: boolean) {
   return (s: GameState, d: number) => {
-    buy(s, d, CASH, { place: 'us-los-angeles' });
+    buy(s, d, CASH, { pick: (h) => h.form === 'detached' || h.form === 'townhouse' });
     const o = owned(s);
     const hs = homesOf(s);
     if (!o) return;
     const home = hs.homes[o.homeId];
-    if (!hs.policies.length) tryIt(() => void buyInsurance(s, home.id, home.form === 'detached' || home.form === 'townhouse' ? 'buildings' : 'contents'));
+    if (!hs.policies.length) tryIt(() => void buyInsurance(s, home.id, 'buildings'));
     if (hs.policies.length && !hs.repairs.length && s.now - o.since > 5 * 86_400_000) tryIt(() => { const r = reportRepair(s, home.id, 'Roof'); approveRepair(s, r.id); });
     const r = hs.repairs[0];
     if (claim && r && !r.claimed && (r.stage === 'booked' || r.stage === 'fixed')) tryIt(() => claimRepair(s, r.id));

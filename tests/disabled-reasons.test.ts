@@ -12,6 +12,8 @@ const REASONS: Record<string, string> = {
   'Creation.tsx | !d.pronouns': 'Choose your pronouns first, under the buttons.',
   'FinishViews.tsx | !VERSION_LABELS.some((l) => l === label && !(p.versions ?? []).some((v) => v.label === l))': 'The runtime line says a version with that name exists already.',
   'FinishViews.tsx | !assemblyComplete(p) || p.edit.pictureLocked || !!cutting': 'A line under the buttons says a cut pass waits for the assembly; Picture says Locked; Cut Passes shows a pass under way.',
+  'Homes.tsx | !!why': "Beside the button, in words: why it can't be done now (the money it needs, a landlord or association to agree, a date it opens, a lapsed offer).",
+  'Homes.tsx | !compare.includes(o.id) && compare.length >= 3': 'The Compare table above already shows three homes; Clear, or unticking one, frees a place.',
   'Papers.tsx | !!passportNo': 'Under the button: why a passport can\'t be applied for now (one already applied for, or no passport office in the game).',
   'PlanViews.tsx | !!parsed && !parsed.ok': 'The planned budget field says what is wrong with the amount typed.',
   'FinishViews.tsx | !el.eligible || !!docs': 'The dialog lists why the entry can\'t be submitted, and the missing documents.',

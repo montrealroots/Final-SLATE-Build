@@ -181,3 +181,9 @@ export function exteriorFor(state: GameState | null, home: Home, provider: Illus
   const wrong = last!.checklist.filter((c) => !c.ok).map((c) => c.feature);
   return { svg: null, label: provider.label, checklist: last!.checklist, fromCache: false, refused: `The picture didn't match the design (${wrong.join('; ')}), so it isn't shown.` };
 }
+
+/** Keep the accepted picture of a home in the save for its current revision (the page asks once when it shows one). */
+export function keepExterior(state: GameState, homeId: string): void {
+  const home = homesOf(state).homes[homeId];
+  if (home) exteriorFor(state, home);
+}

@@ -14,6 +14,7 @@ import { mortgageOwed, moveBetweenBooks, postHousing } from '../bank';
 import { newId } from '../state';
 import type { GameState } from '../types';
 import { HOME_RULES } from './market';
+import { startBills } from './living';
 import { MORTGAGE_MODEL, levelPayment, rulesFor, type Home } from './model';
 import {
   BOOK, addDaysToKey, addMonths, book, canPay, days, document, dollarsOf, formatDateKey, homeOf, homesOf, instantOn, money, note, parseYmdDay,
@@ -222,6 +223,7 @@ export function complete(state: GameState, p: Purchase): void {
     scheduleHome(state, instantOn(home, addMonths(today, 1)), 'mortgage-due', { homeId: home.id, n: 1 }, 'silent', `home-mort:${home.id}:1`);
   }
   homesOf(state).owned.push(owned);
+  startBills(state, home);
   home.market = 'sale';
   document(state, home.id, 'Title And Completion', [`You own ${home.title} from ${formatDateKey(today)}, ${home.tenure === 'strata' ? 'as a unit in a building whose shared parts its owners hold together' : home.tenure === 'hdb-lease' ? `on HDB's lease${home.leaseYearsLeft ? `, ${home.leaseYearsLeft} years left` : ''}` : home.tenure}.`, `Price ${money(home.currency, p.offerMinor)}; closing costs ${money(home.currency, p.closingMinor)}.`, ...(loan ? [`Mortgage ${money(home.currency, loan)} at ${(p.finance.kind === 'mortgage' ? p.finance.rate * 100 : 0).toFixed(1)}%, ${money(home.currency, owned.mortgage!.paymentMinor)} a month for ${owned.mortgage!.months / 12} years.`] : []), ...(p.route ? [p.route] : [])]);
   note(state, home.id, `You own ${home.title}.${loan ? ` Your first mortgage payment, ${money(home.currency, owned.mortgage!.paymentMinor)}, is due on ${formatDateKey(addMonths(today, 1))}.` : ''} Move in from Your Properties.`, 'money');

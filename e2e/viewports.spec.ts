@@ -250,6 +250,8 @@ test('in-game Saved Games and Settings come from the same navigation', async ({ 
   const credits = page.getByRole('list', { name: "Where The Game's Facts Come From" });
   await expect(credits).toContainText('Data from GeoNames, CC BY 4.0.');
   await expect(credits).toContainText('This product uses the TMDB API but is not endorsed or certified by TMDB.');
+  await expect(credits).toContainText('HDB resales in Singapore: Housing & Development Board resale flat prices (data.gov.sg).');
+  await expect(credits).toContainText('Kept only as medians by commune: no address or single sale is in the game');
   await expect(credits).toContainText(/Prices are from Glazer's Camera, a US retailer's public product listings, read on [A-Z][a-z]+ \d{1,2}, \d{4}/);
   // Phones never get entry fields under 16px (they would zoom the page).
   if (info.project.name === 'phone') {

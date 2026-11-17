@@ -15,6 +15,7 @@ import { unit } from '../rng';
 import { weatherOn } from '../weather';
 import type { GameState } from '../types';
 import { HOME_RULES } from './market';
+import { startBills } from './living';
 import { badDesignValue, designHash, gardenOf, roomCheck, roomsFrom, rulesFor, scopesOf, type Design, type Home, type RoomKind } from './model';
 import {
   BOOK, addDaysToKey, book, canPay, document, dollarsOf, formatDateKey, homeOf, homesOf, instantOn, money, note, payOut, record, scheduleHome, todayAt, type Build, type BuildStage, type Owned,
@@ -282,6 +283,7 @@ function completeBuild(state: GameState, b: Build): void {
   landOwned.soldAt = state.now; // the plot is now the house's land: one property, not two
   hs.owned.push(owned);
   b.stage = 'complete'; b.homeId = id;
+  startBills(state, house);
   b.defectsUntil = addDaysToKey(today, 180);
   const snags = ['A sticking door', 'A dripping tap', 'Cracked grout in the bathroom', 'A loose stair rail'].filter((_, i) => unit(state.seed, 'snag', b.id, i) < 0.5);
   b.defects = snags;

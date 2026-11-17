@@ -384,46 +384,62 @@ export function decideClaim(state: GameState, policyId: string, repairId: string
 
 // ---------------- Bills ----------------
 
-/** The month's household costs for a home you live in: electricity by its use, the rest by the game's model. */
+/**
+ * The month's costs of a home: for the one you live in, electricity by its use and the rest by the game's model; for a
+ * home you own and don't live in, what an owner pays whoever lives there (from November 17, 2026: until then an empty
+ * home cost its owner nothing): the building's charges, a pool's upkeep, your insurance, and, while it stands empty, the
+ * standing charges of its connections.
+ */
 export function billLines(state: GameState, home: Home): { what: string; minor: number; basis: string }[] {
   const hs = homesOf(state);
   const lines: { what: string; minor: number; basis: string }[] = [];
   const local = (usd: number) => Math.round(usd * 100 / (dollarsOf(state, home.currency, 10000) / 100));
-  const items = hs.items.filter((i) => i.homeId === home.id && i.stage === 'installed');
-  const electricItems = items.filter((i) => i.fuel !== 'Gas' && i.annualKwh !== null);
-  const kwh = Math.round((home.floorAreaM2 * RUNNING_USD.kwhBasePerM2Year) / 12 + electricItems.reduce((a, i) => a + (i.annualKwh ?? 0), 0) / 12);
-  if (!home.included.includes('electricity')) {
-    const price = home.electricity?.minorPerKwh ?? local(RUNNING_USD.placeholderKwhPrice);
-    lines.push({ what: `Electricity, about ${kwh} kWh`, minor: Math.round(kwh * price), basis: `${home.electricity?.says ?? 'Placeholder price.'} Use: ${home.floorAreaM2} m² by the game's 32 kWh a square metre a year, plus your appliances' certified test energy.` });
-  }
-  const gas = items.filter((i) => i.fuel === 'Gas');
-  if (gas.length) lines.push({ what: 'Gas for your gas appliances', minor: 0, basis: "Not estimated: the EPA figure for a gas dryer combines gas and electricity, and isn't priced as electricity." });
-  if (!home.included.includes('water')) lines.push({ what: 'Water', minor: local(RUNNING_USD.waterMonthly), basis: "The game's placeholder: no water tariff has been researched." });
-  if (!home.included.includes('heating')) lines.push({ what: 'Heating', minor: local(RUNNING_USD.heatingPerM2Month * home.floorAreaM2), basis: "The game's placeholder, by floor area." });
-  if (!home.included.includes('internet')) lines.push({ what: 'Internet', minor: local(RUNNING_USD.internetMonthly), basis: "The game's placeholder." });
   const owns = hs.owned.some((o) => o.homeId === home.id && !o.soldAt);
+  const lives = hs.residence === home.id;
+  if (lives) {
+    const items = hs.items.filter((i) => i.homeId === home.id && i.stage === 'installed');
+    const electricItems = items.filter((i) => i.fuel !== 'Gas' && i.annualKwh !== null);
+    const kwh = Math.round((home.floorAreaM2 * RUNNING_USD.kwhBasePerM2Year) / 12 + electricItems.reduce((a, i) => a + (i.annualKwh ?? 0), 0) / 12);
+    if (!home.included.includes('electricity')) {
+      const price = home.electricity?.minorPerKwh ?? local(RUNNING_USD.placeholderKwhPrice);
+      lines.push({ what: `Electricity, about ${kwh} kWh`, minor: Math.round(kwh * price), basis: `${home.electricity?.says ?? 'Placeholder price.'} Use: ${home.floorAreaM2} m² by the game's 32 kWh a square metre a year, plus your appliances' certified test energy.` });
+    }
+    const gas = items.filter((i) => i.fuel === 'Gas');
+    if (gas.length) lines.push({ what: 'Gas for your gas appliances', minor: 0, basis: "Not estimated: the EPA figure for a gas dryer combines gas and electricity, and isn't priced as electricity." });
+    if (!home.included.includes('water')) lines.push({ what: 'Water', minor: local(RUNNING_USD.waterMonthly), basis: "The game's placeholder: no water tariff has been researched." });
+    if (!home.included.includes('heating')) lines.push({ what: 'Heating', minor: local(RUNNING_USD.heatingPerM2Month * home.floorAreaM2), basis: "The game's placeholder, by floor area." });
+    if (!home.included.includes('internet')) lines.push({ what: 'Internet', minor: local(RUNNING_USD.internetMonthly), basis: "The game's placeholder." });
+  } else if (owns && home.form !== 'land' && !hs.lettings.some((l) => l.homeId === home.id && (l.stage === 'let' || l.stage === 'notice'))) {
+    lines.push({ what: 'Standing charges while it stands empty', minor: local(RUNNING_USD.emptyHomeMonthly), basis: "The game's placeholder for keeping an empty home's water and power connected: no tariff has been researched." });
+  }
   if (owns && home.buildingChargeMinor) lines.push({ what: "The building's charges", minor: home.buildingChargeMinor, basis: 'As offered with the home (simulated).' });
   if (owns && home.design.outdoor.includes('pool')) lines.push({ what: 'Pool upkeep', minor: local(RUNNING_USD.poolMonthly), basis: "The game's estimate for your private pool." });
   for (const p of hs.policies.filter((x) => x.homeId === home.id && !x.endedAt)) lines.push({ what: `${p.cover === 'contents' ? 'Contents' : 'Buildings'} insurance`, minor: p.monthlyMinor, basis: "The game's model." });
   return lines;
 }
-/** The month's bill for the home you live in, paid from the bank once; anything unpaid stays owed and is said. */
+/** Start a home's monthly bill a month from today: once per month whoever starts it (moving in, buying, building). */
+export function startBills(state: GameState, home: Home): void {
+  const due = addMonths(todayAt(state, home), 1);
+  scheduleHome(state, instantOn(home, due), 'bill', { homeId: home.id }, 'silent', `home-bill:${home.id}:${due.slice(0, 7)}`);
+}
+/** The month's bill for a home you live in or own, paid from the bank once; anything unpaid stays owed and is said. */
 export function monthlyBill(state: GameState, homeId: string): void {
   const hs = homesOf(state);
   const home = hs.homes[homeId];
-  if (!home || hs.residence !== homeId) return;
+  if (!home || home.form === 'land') return;
+  if (hs.residence !== homeId && !hs.owned.some((o) => o.homeId === homeId && !o.soldAt)) return;
   const period = todayAt(state, home).slice(0, 7);
   const key = `bill:${homeId}:${period}`;
   if (hs.bills.some((b) => b.key === key)) return;
   const lines = billLines(state, home);
   const total = lines.reduce((a, l) => a + l.minor, 0);
   let paid = true;
-  try { payOut(state, home, key, total, `Household bills, ${period}: ${home.title}`, 'Household Bills'); } catch { paid = false; }
+  if (total > 0) { try { payOut(state, home, key, total, `Household bills, ${period}: ${home.title}`, 'Household Bills'); } catch { paid = false; } }
   hs.bills.unshift({ key, homeId, period, lines, totalMinor: total, paid });
   if (hs.bills.length > 120) hs.bills.length = 120;
   // An installed appliance can develop a fault, a seeded draw kept per item and month: reloading can't change it.
   for (const it of hs.items.filter((i) => i.homeId === homeId && i.stage === 'installed')) if (unit(state.seed, 'item-fault', it.id, period) < 0.02) itemFault(state, it);
-  note(state, homeId, paid ? `Household bills for ${period}: ${money(home.currency, total)}, paid.` : `Household bills for ${period}, ${money(home.currency, total)}, couldn't be paid. They're owed; services aren't cut off by the game.`, paid ? 'money' : 'warning');
-  scheduleHome(state, instantOn(home, addMonths(todayAt(state, home), 1)), 'bill', { homeId }, 'silent', `home-bill:${homeId}:${addMonths(todayAt(state, home), 1).slice(0, 7)}`);
+  if (total > 0) note(state, homeId, paid ? `Bills for ${home.title}, ${period}: ${money(home.currency, total)}, paid.` : `Bills for ${home.title}, ${period}, ${money(home.currency, total)}, couldn't be paid. They're owed; services aren't cut off by the game.`, paid ? 'money' : 'warning');
+  startBills(state, home);
 }
 export { BOOK, book };

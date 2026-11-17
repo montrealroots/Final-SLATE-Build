@@ -9,7 +9,7 @@ import { answerOffer, buyerOffer, complete, completeSale, decideFinance, inspect
 import { applicantsArrive, lettingEnds, receiveRent } from './letting';
 import { decideClaim, deliver, monthlyBill, warrantyRepair, workDone, workStart } from './living';
 import { decideApproval, fixDefect, investigationReport, stageEnd } from './building';
-import { decideApplication, decidePermission, depositInstalment, endTenancy, rentDue, repairVisit, settleDeposit } from './renting';
+import { decideApplication, decidePermission, depositInstalment, endTenancy, lapseApproval, rentDue, repairVisit, settleDeposit } from './renting';
 import { WORK, type Home } from './model';
 import { addDaysToKey, formatDateKey, homesOf, instantOn, note, pin, scheduleHome, todayAt } from './core';
 
@@ -20,6 +20,7 @@ registerHandler('home', (state, ev) => {
   switch (p.step) {
     case 'viewing': { const v = hs.viewings.find((x) => x.id === id); if (v) view(state, v); break; }
     case 'rent-decision': { const t = hs.tenancies.find((x) => x.id === id); if (t) decideApplication(state, t); break; }
+    case 'rent-lapse': { const t = hs.tenancies.find((x) => x.id === id); if (t) lapseApproval(state, t); break; }
     case 'rent-due': { const t = hs.tenancies.find((x) => x.id === id); if (t) rentDue(state, t, Number(p.n)); break; }
     case 'deposit-instalment': { const t = hs.tenancies.find((x) => x.id === id); if (t) depositInstalment(state, t, Number(p.n)); break; }
     case 'repair-visit': { const r = hs.repairs.find((x) => x.id === id); if (r) repairVisit(state, r); break; }
@@ -54,6 +55,7 @@ registerHandler('home', (state, ev) => {
 const LABEL: Record<string, (state: GameState, p: Record<string, unknown>) => string | null> = {
   viewing: (s, p) => { const v = homesOf(s).viewings.find((x) => x.id === p.id); return v ? `Viewing: ${homesOf(s).homes[v.homeId]?.title}` : null; },
   'rent-decision': () => 'Landlord Decides Your Application',
+  'rent-lapse': () => 'Your Approval To Rent Lapses Unless You Sign',
   'rent-due': () => 'Rent Due',
   'tenancy-end': () => 'Your Tenancy Ends',
   'offer-answer': () => 'Seller Answers Your Offer',

@@ -17,7 +17,7 @@ import { GENERIC_FURNITURE, billLines, bookStay, buyInsurance, buyItem, cancelWo
 import { INVESTIGATIONS, applyForApproval, buildQuote, designProblems, investigate, resumeBuild, saveDesign, signBuild, startDesign, type Investigation } from '../engine/homes/building';
 import { advertise, approveLandlordRepair, changeRent, chooseTenant, endLetting, fairRent, letRefusal } from '../engine/homes/letting';
 import { arrangeViewing, toggleFavorite } from '../engine/homes';
-import { exteriorFor } from '../engine/homes/illustration';
+import { exteriorFor, keepExterior } from '../engine/homes/illustration';
 import { mortgageOwed } from '../engine/bank';
 
 type Tab = 'yours' | 'find' | 'build' | 'improve' | 'costs' | 'properties';
@@ -86,7 +86,7 @@ export function HomePicture({ g, home }: { g: GameState; home: Home }) {
     const key = `${home.id}:${home.design.revision}`;
     if (!pinned || fresh || tried.current === key) return;
     tried.current = key;
-    store.act((s) => { const h = homesOf(s).homes[home.id]; if (h) exteriorFor(s, h); });
+    store.act((s) => keepExterior(s, home.id));
   }, [pinned, fresh, home.id, home.design.revision]);
   const shown = useMemo(() => (pinned ? (fresh ? { svg: kept!.svg, label: kept!.label, checklist: kept!.checklist } : exteriorFor(null, home)) : exteriorFor(null, home)), [pinned, fresh, kept, home]);
   const missing = shown.checklist.filter((c) => !c.ok);
@@ -340,7 +340,9 @@ function FindHome({ g }: { g: GameState }) {
   }, [placeId, day]);
   const offers = useMemo(() => (ev ? offersIn(g.seed, ev, day) : []), [ev, g.seed, day]);
   // A home the player acted on is the saved one from then on: its record, not a fresh draw.
-  const shown = offers.map((o) => hs.homes[o.id] ?? o)
+  // A saved favourite from an earlier month stays listed with its own dates, though no longer on offer as new.
+  const kept = hs.favorites.map((id) => hs.homes[id]).filter((h): h is Home => !!h && h.placeId === placeId && !offers.some((o) => o.id === h.id));
+  const shown = [...kept, ...offers.map((o) => hs.homes[o.id] ?? o)]
     .filter((o) => (want === 'land' ? o.form === 'land' : o.market === want && o.form !== 'land'))
     .filter((o) => !maxPrice || o.priceMinor <= maxPrice * 100)
     .filter((o) => !minBeds || (o.bedrooms ?? 0) >= minBeds)
@@ -351,7 +353,7 @@ function FindHome({ g }: { g: GameState }) {
     const cur = findPlace(here);
     return cur && !list.some((p) => p.id === cur.id) ? [cur, ...list] : list;
   }, [here]);
-  const opened = open ? shown.find((o) => o.id === open) ?? offers.find((o) => o.id === open) : undefined;
+  const opened = open ? shown.find((o) => o.id === open) ?? offers.find((o) => o.id === open) ?? kept.find((o) => o.id === open) : undefined;
   const compared = compare.map((id) => offers.find((o) => o.id === id)).filter((x): x is Home => !!x);
   return (
     <>
@@ -839,7 +841,17 @@ function Properties({ g }: { g: GameState }) {
   return (
     <>
       {owned.map((o) => <PropertyPanel key={o.homeId} g={g} homeId={o.homeId} />)}
-      {sold.map((o) => <Panel key={o.homeId} title={hs.homes[o.homeId].title} subtitle={`Sold ${date(o.soldAt!, hs.homes[o.homeId])}.`}><Payments list={o.payments} cur={hs.homes[o.homeId].currency} /></Panel>)}
+      {sold.map((o) => {
+        const h = hs.homes[o.homeId];
+        const sale = hs.sales.find((x) => x.homeId === o.homeId && x.stage === 'completed');
+        return (
+          <Panel key={o.homeId} title={h.title} subtitle={`Sold ${date(o.soldAt!, h)}.`}>
+            {sale && <p className="small" style={{ marginTop: 0 }}>Sold for {money(h.currency, sale.offerMinor ?? 0)}; {money(h.currency, sale.proceedsMinor ?? 0)} came to you after the fee{sale.debtRepaidMinor ? ` and ${money(h.currency, sale.debtRepaidMinor)} to repay the mortgage` : ''}.</p>}
+            {!sale && h.form === 'land' && <p className="small" style={{ marginTop: 0 }}>The plot is now your house's land.</p>}
+            <Payments list={[...o.payments, ...(sale?.payments ?? [])]} cur={h.currency} />
+          </Panel>
+        );
+      })}
     </>
   );
 }
@@ -855,17 +867,46 @@ function PropertyPanel({ g, homeId }: { g: GameState; homeId: string }) {
   const [rent, setRent] = useState(Math.round(fair / 100));
   const [manager, setManager] = useState(false);
   const [cap, setCap] = useState(500);
+  const [component, setComponent] = useState<string>(COMPONENT_WORDS.roof);
   const cur = home.currency;
   const sale = hs.sales.filter((s) => s.homeId === homeId).at(-1);
   const letting = hs.lettings.filter((l) => l.homeId === homeId).at(-1);
   const owedUsd = o.mortgage ? mortgageOwed(g, o.mortgage.name) : 0;
+  const repairs = hs.repairs.filter((r) => r.homeId === homeId);
+  const poor = (Object.keys(home.condition) as (keyof typeof COMPONENT_WORDS)[]).filter((k) => home.condition[k] !== 'good');
   return (
     <Panel title={home.title} subtitle={`${FORM_WORDS[home.form]} in ${getPlace(home.placeId).name}${hs.residence === homeId ? '. You live here.' : '.'}`}>
-      <dl className="kv small">
-        <dt>Bought</dt><dd>{date(o.since, home)} for {money(cur, o.costMinor)}</dd>
-        <dt>Worth Now</dt><dd>About {money(cur, worth)} (the game's valuation)</dd>
-        {o.mortgage && <><dt>Mortgage</dt><dd>{money(cur, o.mortgage.paymentMinor)} a month; {o.mortgage.paidMonths} of {o.mortgage.months} paid; about ${owedUsd.toLocaleString('en-US', { maximumFractionDigits: 0 })} owed{o.mortgage.arrearsMinor ? `; ${money(cur, o.mortgage.arrearsMinor)} overdue` : ''}</dd></>}
-      </dl>
+      <div className="home-split">
+        <div className="grow">
+          <dl className="kv small">
+            <dt>Bought</dt><dd>{date(o.since, home)} for {money(cur, o.costMinor)}</dd>
+            <dt>Worth Now</dt><dd>About {money(cur, worth)} (the game's valuation)</dd>
+            {o.mortgage && <><dt>Mortgage</dt><dd>{money(cur, o.mortgage.paymentMinor)} a month; {o.mortgage.paidMonths} of {o.mortgage.months} paid; about ${owedUsd.toLocaleString('en-US', { maximumFractionDigits: 0 })} owed{o.mortgage.arrearsMinor ? `; ${money(cur, o.mortgage.arrearsMinor)} overdue` : ''}</dd></>}
+            {home.form !== 'land' && hs.residence !== homeId && <><dt>Costs A Month</dt><dd>{(() => { const lines = billLines(g, home); return lines.length ? `${money(cur, lines.reduce((a, x) => a + x.minor, 0))}: ${lines.map((x) => x.what.toLowerCase()).join(', ')}` : 'Nothing while it is let'; })()}</dd></>}
+            {home.form !== 'land' && <><dt>Condition</dt><dd>{poor.length ? poor.map((k) => `${COMPONENT_WORDS[k]} ${home.condition[k]}`).join(', ') : 'Everything good'}</dd></>}
+          </dl>
+          {home.form !== 'land' && (
+            <>
+              <h4>Repairs</h4>
+              <div className="row-wrap">
+                <SelectField label="Something Broken" value={component} options={Object.values(COMPONENT_WORDS).map((w) => ({ value: w, label: w }))} onChange={setComponent} />
+                <button className="btn btn-sm" onClick={() => e.act((s) => void reportRepair(s, homeId, component))}>Get A Quote</button>
+              </div>
+              {repairs.length > 0 && (
+                <ul className="list small" aria-label="Repairs">
+                  {repairs.map((r) => (
+                    <li key={r.id} className="list-item list-static">
+                      <span className="grow">{r.component}: {r.stage === 'fixed' ? 'repaired' : r.says}</span>
+                      {r.stage === 'quoted' && <button className="btn btn-sm" aria-label={`Approve The Repair: ${r.component}`} onClick={() => e.act((s) => approveRepair(s, r.id))}>Approve {money(cur, r.quoteMinor ?? 0)}</button>}
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </>
+          )}
+        </div>
+        {home.form !== 'land' && <HomePicture g={g} home={home} />}
+      </div>
       <h4>Sell It</h4>
       {sale && sale.stage !== 'completed' && sale.stage !== 'withdrawn' ? (
         <div className="small">
@@ -881,7 +922,6 @@ function PropertyPanel({ g, homeId }: { g: GameState; homeId: string }) {
           <Act label="Put It Up For Sale" why={saleRefusal(g, homeId)} onClick={() => e.act((s) => void listForSale(s, homeId, asking * 100))} />
         </div>
       )}
-      {sale?.stage === 'completed' && <p className="small">Sold for {money(cur, sale.offerMinor ?? 0)}; {money(cur, sale.proceedsMinor ?? 0)} came to you after the fee{sale.debtRepaidMinor ? ` and ${money(cur, sale.debtRepaidMinor)} to repay the mortgage` : ''}.</p>}
       {home.form !== 'land' && (
         <>
           <h4>Let It</h4>
