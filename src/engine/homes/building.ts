@@ -148,24 +148,39 @@ export function saveDesign(state: GameState, buildId: string, patch: { design?: 
   if (problems.length) throw new Error(problems[0]);
   if (JSON.stringify({ d: next.design, f: next.floorAreaM2, r: next.rooms }) === before) return b;
   const changed = [...Object.keys(patch.design ?? {}).filter((k) => JSON.stringify((patch.design as Record<string, unknown>)[k]) !== JSON.stringify((b.design as unknown as Record<string, unknown>)[k])), ...(patch.floorAreaM2 !== undefined && patch.floorAreaM2 !== b.floorAreaM2 ? ['floor area'] : []), ...(patch.rooms ? ['rooms'] : [])];
-  const oldQuote = b.quoteMinor;
-  b.design = { ...next.design, revision: b.design.revision + 1 };
-  b.floorAreaM2 = next.floorAreaM2; b.rooms = next.rooms;
-  const q = buildQuote(state, b);
-  b.quoteMinor = q.total;
-  b.revisions.push({ revision: b.design.revision, at: state.now, changed, costMinor: q.total });
+  const revision = b.design.revision + 1;
+  const q = buildQuote(state, { ...next, design: { ...next.design, revision } });
   const land = homeOf(state, b.landId);
+  // A change order (from November 17, 2026): a stage already paid for is paid the difference now, once; a stage still
+  // to come is paid at its new cost when it starts. Until then the whole difference was charged now and again in the
+  // re-costed stages, and a refused payment left the design already changed.
+  const paidStages = late ? b.stages.map((st, i) => (st.paidKey ? i : -1)).filter((i) => i >= 0) : [];
+  const owedNow = paidStages.reduce((a, i) => a + Math.max(0, q.stages[i].costMinor - b.stages[i].costMinor), 0);
+  if (owedNow > 0 && !canPay(state, land.currency, owedNow)) throw new Error(`This change adds ${money(land.currency, owedNow)} to work already paid for, which you don't have available.`);
+  const oldQuote = b.quoteMinor;
+  b.design = { ...next.design, revision };
+  b.floorAreaM2 = next.floorAreaM2; b.rooms = next.rooms;
+  b.quoteMinor = q.total;
+  b.revisions.push({ revision, at: state.now, changed, costMinor: q.total });
   if (late) {
-    // A change order: what it adds is paid now; the stages still to come are re-costed.
-    const diff = q.total - oldQuote;
-    if (diff > 0) {
-      if (!canPay(state, land.currency, diff)) throw new Error(`This change adds ${money(land.currency, diff)}, which you don't have available.`);
-      book(state, land, `build:${b.id}:change:${b.design.revision}`, -diff, `Change order, revision ${b.design.revision}: ${land.title}`, BOOK.homesOwned);
-      record(b.payments, { key: `build:${b.id}:change:${b.design.revision}`, label: `Change order (revision ${b.design.revision})`, minor: diff, kind: 'paid' }, state);
+    const key = `build:${b.id}:change:${revision}`;
+    if (owedNow > 0) {
+      book(state, land, key, -owedNow, `Change order, revision ${revision}: ${land.title}`, BOOK.homesOwned);
+      record(b.payments, { key, label: `Change order (revision ${revision})`, minor: owedNow, kind: 'paid' }, state);
     }
-    for (let i = b.current + 1; i < b.stages.length; i++) b.stages[i].costMinor = q.stages[i].costMinor;
-    note(state, b.landId, `Revision ${b.design.revision}: ${changed.join(', ')}. ${diff > 0 ? `This change adds ${money(land.currency, diff)}, paid now.` : diff < 0 ? `It saves ${money(land.currency, -diff)} on the stages still to come.` : 'The cost is unchanged.'}`);
-  } else note(state, b.landId, `Design revision ${b.design.revision}: ${changed.join(', ') || 'no change'}. The cost plan is now ${money(land.currency, q.total)}.`);
+    // What's been paid for keeps what it cost (plus what it added); the rest is costed anew.
+    b.stages.forEach((st, i) => { st.costMinor = st.paidKey ? Math.max(st.costMinor, q.stages[i].costMinor) : q.stages[i].costMinor; });
+    b.quoteMinor = b.stages.reduce((a, st) => a + st.costMinor, 0);
+    const diff = b.quoteMinor - oldQuote;
+    note(state, b.landId, `Revision ${revision}: ${changed.join(', ')}. ${owedNow > 0 ? `${money(land.currency, owedNow)} of it is for work already paid for, paid now; ` : ''}${diff > owedNow ? `${money(land.currency, diff - owedNow)} more is paid with the stages still to come.` : diff < 0 ? `It saves ${money(land.currency, -diff)} on the stages still to come.` : 'Nothing more is owed.'}`);
+  } else note(state, b.landId, `Design revision ${revision}: ${changed.join(', ') || 'no change'}. The cost plan is now ${money(land.currency, q.total)}.`);
+  if (b.stage === 'awaiting-permission') {
+    // The application was for the earlier design: it's withdrawn, its fee spent, and the new design is applied for anew
+    // (from November 17, 2026: until then the decision for the old revision never landed and the project waited for ever).
+    b.stage = 'designing'; b.permitAskedAt = undefined; b.permitDecideAt = undefined;
+    b.permitSays = `The application for revision ${revision - 1} was withdrawn when the design changed. Apply again for revision ${revision}.`;
+    note(state, b.landId, b.permitSays, 'warning');
+  }
   if (b.stage === 'permitted' || b.stage === 'refused') { b.stage = 'designing'; note(state, b.landId, 'The design changed after the decision: it needs approving again.', 'warning'); }
   return b;
 }

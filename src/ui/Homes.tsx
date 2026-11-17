@@ -204,7 +204,6 @@ function TenancyPanel({ g, t }: { g: GameState; t: Tenancy }) {
       {(t.stage === 'signed' || t.stage === 'active') && hs.residence !== home.id && <Act label="Move In" primary why={moveInRefusal(g, home.id)} onClick={() => e.act((s) => moveIn(s, home.id))} aria={`Move In: ${home.title}`} />}
       {t.stage === 'active' && (
         <div className="home-stack">
-          {t.arrearsMinor > 0 && <Act label={`Pay ${money(cur, t.arrearsMinor)} Overdue`} primary onClick={() => e.act((s) => payArrears(s, t.id))} />}
           <div className="row-wrap">
             <SelectField label="Something Broken" value={component} options={[...Object.values(COMPONENT_WORDS).map((w) => ({ value: w, label: w })), ...home.landlordItems.map((i) => ({ value: i, label: `The Landlord's ${i}` }))]} onChange={setComponent} />
             <button className="btn btn-sm" onClick={() => e.act((s) => void reportRepair(s, home.id, component))}>Report It</button>
@@ -216,6 +215,8 @@ function TenancyPanel({ g, t }: { g: GameState; t: Tenancy }) {
           <Act label="Give Notice" onClick={() => e.act((s) => giveNotice(s, t.id))} />
         </div>
       )}
+      {/* Owed while you live there, or after you've left: a debt never disappears on its own. */}
+      {t.arrearsMinor > 0 && <Act label={`Pay ${money(cur, t.arrearsMinor)} Overdue`} primary onClick={() => e.act((s) => payArrears(s, t.id))} />}
       {t.changes.filter((c) => c.restore && !c.restored).map((c) => (
         <Act key={c.work} label={`Undo: ${WORK[c.work].label}`} onClick={() => e.act((s) => restoreChange(s, t.id, c.work))} />
       ))}
