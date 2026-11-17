@@ -11,6 +11,8 @@ import { WORLD_COUNTRIES } from './bankworld/content/world-data';
 import { CONTINENT_NAMES } from './bankworld/content/geography';
 import { exchange } from './bankworld/content/currency';
 import { VISAS } from './bankworld/content/visas';
+import { theCountry } from './bankworld/systems/documents';
+import { countryName } from '../world/gazetteer/gazetteer';
 
 export interface Source { kind: 'official' | 'secondary'; url: string; what: string }
 interface Recorded {
@@ -19,7 +21,9 @@ interface Recorded {
 }
 /** An authorization's record, and the passports whose authorization there differs (Australia's free eVisitor for Europeans). */
 interface Authority extends Recorded { passports?: (Partial<Recorded> & { codes: string[] })[] }
-const TERMS = termsData as unknown as { permits: Record<string, Recorded>; visas?: Record<string, Recorded>; authorizations: Record<string, Authority> };
+/** A territory whose visitors hold its sovereign's visa (from November 17, 2026), and the law or page that says so. */
+interface VisaAuthority { authority: string; basis: string; sources: Source[] }
+const TERMS = termsData as unknown as { permits: Record<string, Recorded>; permitAuthorities?: Record<string, string>; visas?: Record<string, Recorded>; visaAuthorities?: Record<string, VisaAuthority>; authorizations: Record<string, Authority> };
 
 export interface Terms {
   /** The route as the records name it. */
@@ -66,10 +70,22 @@ function estimated(country: string, route: string, pool: [string, Recorded][]): 
   };
 }
 
-/** What `country`'s work permit route costs and takes: researched, or the game's estimate, said as one. */
+/**
+ * What `country`'s work permit route costs and takes: researched, or the game's estimate, said as one. A territory
+ * whose route is its sovereign's (permitAuthorities: the work records give Guam the O-1, Réunion France's carte de
+ * séjour, Christmas Island Australia's subclass 408) takes the sovereign's terms, as the same law issues it (from
+ * November 17, 2026; until then each was estimated from its own continent's). Matching on the route's name alone
+ * would have given every "Work permit" Canada's.
+ */
 export function permitTerms(country: string, route: string): Terms {
   const r = TERMS.permits[country];
-  return r ? researched(r, route) : estimated(country, route, Object.entries(TERMS.permits));
+  if (r) return researched(r, route);
+  const by = TERMS.permitAuthorities?.[country];
+  if (by) {
+    const t = researched(TERMS.permits[by], route);
+    return { ...t, basis: `The same permit ${theCountry(countryName(by))} issues, under the same law. ${t.basis}` };
+  }
+  return estimated(country, route, Object.entries(TERMS.permits));
 }
 
 /** The researched visitor visas: terms.json's by destination, and 1221's records (one per destination, the first). */
@@ -87,7 +103,13 @@ function visaPool(): [string, Recorded][] {
  */
 export function visaTerms(country: string): Terms {
   const r = TERMS.visas?.[country] ?? visaPool().find(([c]) => c === country)?.[1];
-  return r ? researched(r, r.name ?? 'Visitor visa') : estimated(country, 'Visitor visa', visaPool());
+  if (r) return researched(r, r.name ?? 'Visitor visa');
+  const by = TERMS.visaAuthorities?.[country];
+  if (by) {
+    const t = visaTerms(by.authority);
+    return { ...t, basis: `${by.basis} ${t.basis}`, sources: [...by.sources, ...t.sources] };
+  }
+  return estimated(country, 'Visitor visa', visaPool());
 }
 
 /**
@@ -113,5 +135,7 @@ export function authorizationTerms(country: string, passports: string[]): Terms 
 /** Every researched permit country (for the coverage matrix). */
 export const RESEARCHED_PERMITS = Object.keys(TERMS.permits);
 export const RESEARCHED_VISAS = Object.keys(TERMS.visas ?? {});
+/** Every territory whose visitors hold their sovereign's visa, by territory. */
+export const VISA_AUTHORITY_OF: Record<string, string> = Object.fromEntries(Object.entries(TERMS.visaAuthorities ?? {}).map(([c, v]) => [c, v.authority]));
 /** Every researched authorization, by the destination that issues it. */
 export const RESEARCHED_AUTHORIZATIONS = Object.keys(TERMS.authorizations);

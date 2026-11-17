@@ -311,8 +311,28 @@ and the rest) with real grades filling the hiring lists.
     pair of broadcast offers, one exclusive and in a late slot, no seed from 1 to 100 draws now: the journey puts the
     pair in the save as a labelled fixture (`editSave` in e2e/helpers.ts, which `pinSeed` now uses). The desktop
     journeys all passed (214 run: 203 at first, then the eleven fixed, 31 tests in their files; phone, 10 of those).
-- That checkpoint merged as #113 (all 13 CI jobs green, desktop, phone and WebKit, dev and production). Nothing is open
-  on this branch: the matrix is 505 proven, open 0, and no item of this command is left.
+- That checkpoint merged as #113 (all 13 CI jobs green, desktop, phone and WebKit, dev and production). The matrix is
+  505 proven, open 0, and no item of this command is left.
+- **The papers research queue (the owner, November 17, 2026: "Start the papers research").** 238 work permits and 211
+  visitor visas were the game's estimate (`docs/v10/papers-estimates.json`). Batch 1:
+  - 24 European work permits researched, each with its sources (`terms.json` `permits`: Austria to Sweden, and Åland on
+    Finland's law); the EU Immigration Portal's page for each state where it gives the figure, the state's own page
+    otherwise. Belgium's short-term permit is free, so a researched fee may now be nothing.
+  - 14 territories whose work records name their sovereign's route take its terms (`permitAuthorities`); a test holds
+    each to its sovereign's route. Matching on the route's name alone (tried first) gave about 20 countries whose route
+    is just "Work permit" Canada's: that's why it's a table.
+  - 11 territories' visitors hold their sovereign's visa, with the law or page that says so (`visaAuthorities`).
+  - Queue: permits 238 -> 200, visas 211 -> 200. Norway, Iceland, Switzerland and Liechtenstein stay estimated: no
+    source found gave both a fee and a decision time (their fees are in `docs/v10/papers-research/fees-without-times.md`).
+  - The five proofs that read the papers code (move-home, off-stay-limit, recorded-passport, visitor-visa, work-permit)
+    were rerun; they hash papers.ts, not the terms, so none read stale.
+  - **Next batch (researched, not yet in the game: `docs/v10/papers-research/next-*.json`):** permits for Japan (¥15,000 visa from July 1, 2026, COE 18 days),
+    India ($200, 5 working days), South Africa ($55 at Washington, 7-10 business days), Hong Kong (HK$1,900, four
+    weeks), Singapore (S$330, ten business days), Turkey (13,538.90 lira, 30 days), Thailand (3,000 baht, 7-10 working
+    days); visas for Japan, India (e-Tourist $25), South Korea ($40), Vietnam ($25 e-visa), Thailand ($40). Found
+    without a decision time: Mexico's paid-activity visitor visa ($321 consular, LFD 2026), Korea's E-6 ($60),
+    Norway (NOK 6,300), Iceland (ISK 80,000), Kenya's Special Pass (KSh 15,000 a month). Hard: China (fees by
+    nationality), the Philippines (fees by post), Malaysia, Indonesia, Egypt (sources conflict).
 Still the game's own figures: the stop-motion and creature materials and the broadcast edit (no published per-item price
 found).
 

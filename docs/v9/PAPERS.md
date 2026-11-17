@@ -77,9 +77,17 @@ estimate" (`src/engine/papers-terms.ts`, `src/data/papers/terms.json`):
   then the destination's researched visa (the Schengen visa for its 29 countries, the United Kingdom, Canada,
   Australia); otherwise the game's estimate.
 - **Work permits** can be applied for everywhere, for each kind of work. Researched: the United States (O-1), the United
-  Kingdom, Canada, Australia, New Zealand, Ireland, France and Germany, each with its source. The records name a
+  Kingdom, Canada, Australia, New Zealand, Ireland, France and Germany, each with its source; from November 17, 2026,
+  24 more European states (Austria to Sweden, and Åland on Finland's law), and 14 territories whose route is their
+  sovereign's take its terms (`terms.json` `permitAuthorities`). A researched fee may be nothing: Belgium's short-term
+  permit is free. Norway, Iceland, Switzerland and Liechtenstein are still estimated: no source found gave both a fee
+  and a decision time. The records name a
   performer's route only; directing, producing and writing take the same route at the same terms, an assumption said as
   one. A permit issued lets you do that kind of work there until it expires.
+- **Visitor visas** of 11 territories are their sovereign's, with the law or page that says so (`terms.json`
+  `visaAuthorities`, from November 17, 2026): Puerto Rico, the US Virgin Islands, Guam and the Northern Mariana Islands
+  the United States'; Christmas Island, the Cocos Islands and Norfolk Island Australia's; Jersey, Guernsey and the Isle
+  of Man the United Kingdom's; Monaco the Schengen visa France issues.
 - **Passports**: whatever SLATE-REBUILD's record lacks, the fee, the time or the validity, is estimated.
 - **The estimate** is the middle of the researched figures on the same continent (all of them, where none is on it), in
   dollars at the day's rate. The screen says it is the game's estimate and what it was made from. Every estimate is

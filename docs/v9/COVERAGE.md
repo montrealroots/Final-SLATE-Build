@@ -26,17 +26,17 @@ the screen says so.
 | passport application | not applicable | 6 |
 | visiting rules | inherited-unverified | 246 |
 | visiting rules | not applicable | 6 |
-| visitor visa application | verified | 32 |
+| visitor visa application | verified | 43 |
 | visitor visa application | implemented/tested | 1 |
 | visitor visa application | inherited-unverified | 2 |
-| visitor visa application | modeled | 211 |
+| visitor visa application | modeled | 200 |
 | visitor visa application | not applicable | 6 |
 | work rules | inherited-unverified | 232 |
 | work rules | modeled | 14 |
 | work rules | not applicable | 6 |
-| work permit application | verified | 7 |
+| work permit application | verified | 45 |
 | work permit application | implemented/tested | 1 |
-| work permit application | modeled | 238 |
+| work permit application | modeled | 200 |
 | work permit application | not applicable | 6 |
 
 ## What This Says
@@ -48,6 +48,16 @@ the screen says so.
     implemented/tested one;
   - the visitor visas of 32 destinations (`terms.json` visas): the Schengen visa for its 29 countries, the United
     Kingdom, Canada and Australia;
+  - from November 17, 2026, the work permit fees and decision times of 24 more (Austria, Belgium, Bulgaria, Croatia,
+    Czechia, Denmark, Estonia, Finland and Åland on its law, Greece, Hungary, Italy, Latvia, Lithuania, Luxembourg,
+    Malta, the Netherlands, Poland, Portugal, Romania, Slovakia, Slovenia, Spain and Sweden), each with its sources;
+    14 territories whose route is their sovereign's take its terms (`permitAuthorities`: Guam, Puerto Rico, the US
+    Virgin Islands and the Northern Mariana Islands the O-1; Christmas Island, the Cocos Islands and Norfolk Island
+    the subclass 408; the French overseas departments, Saint Barthélemy and Saint Martin France's carte de séjour);
+    and 11 territories' visitors hold their sovereign's visa, with the law or page that says so (`visaAuthorities`:
+    the same four with the United States, the same three with Australia, Jersey, Guernsey and the Isle of Man with the
+    United Kingdom, Monaco with France). Norway, Iceland, Switzerland and Liechtenstein stay estimated: no source found
+    gave both a fee and a decision time (Switzerland's fees are each canton's);
   - the banks of Nauru and Niue (`banks-world.ts`).
 - **Implemented/tested** means a test that runs counts for that country. A test that only looks a bank up by name, or one
   that's switched off, doesn't count (from November 14, 2026, when the owner asked what "run by a test" meant: until

@@ -6,6 +6,7 @@ import { applyForPermit, applyForVisa, entryRight, passportFor, permitCheck, per
 import { personalBalance, personalPostings } from '../src/engine/personal';
 import { filmPlace, setFilmedAt } from '../src/engine/destinations';
 import { schedule } from '../src/engine/state';
+import { permitTerms } from '../src/engine/papers-terms';
 import { approve, buildProject, sponsorIn, startLife } from './helpers';
 
 import type { GameState } from '../src/engine/types';
@@ -78,13 +79,15 @@ describe('A16: a passport lets you travel; it doesn\'t let you work', () => {
     expect(t.estimate?.where).toBe('all researched routes');
     expect(t.fee.currency).toBe('USD');
     expect(t.basis).toMatch(/^The game's estimate/);
-    // In Europe the estimate is the middle of Europe's researched routes.
-    s.character.nationalities = ['JP'];
-    sponsorIn(s, 'it-rome', 'sponsor-it');
-    const it = permitCheck(s, 'IT');
-    expect((it as { terms: { estimate: { where: string; from: string[] } } }).terms.estimate).toMatchObject({ where: 'researched routes in Europe', from: ['GB', 'IE', 'FR', 'DE'] });
+    // In Europe the estimate is the middle of Europe's researched routes. Italy was the example until November 17, 2026,
+    // when its permit was researched; Norway's still isn't (no source gave its decision time). Norway lets a performer
+    // work 14 days a year without one, so its terms are read directly, and the application is South Korea's.
+    const est = permitTerms('NO', 'Residence permit as an artist, musician or performer (UDI)').estimate!;
+    expect(est.where).toBe('researched routes in Europe');
+    expect(est.from).toEqual(expect.arrayContaining(['GB', 'IE', 'FR', 'DE', 'IT', 'SE']));
+    expect(est.from).not.toContain('US');
     const before = personalBalance(s);
-    const a = applyForPermit(s, 'IT');
+    const a = applyForPermit(s, 'KR');
     expect(a.estimate).toBe(true);
     expect(personalBalance(s)).toBeLessThan(before);
   });
