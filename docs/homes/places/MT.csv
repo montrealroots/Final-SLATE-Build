@@ -1,0 +1,70 @@
+place_id,name,region,population,market,verified_homes,dated_listings,shortfall_to_50,recorded_sales,rent_source,price_source
+gn:2562247,Marsaxlokk,Marsaxlokk,3660,village,0,0,50,0,none,none
+gn:2562250,Żurrieq,Iż-Żurrieq,10962,town,0,0,50,0,none,none
+gn:2562258,Żejtun,Iż-Żejtun,11549,town,0,0,50,0,none,none
+gn:2562260,Żebbuġ,Iż-Żebbuġ,1770,village,0,0,50,0,none,none
+gn:2562261,Haz-Zebbug,Ħaż-Żebbuġ,11079,town,0,0,50,0,none,none
+gn:2562266,Żabbar,Ħaż-Żabbar,15648,town,0,0,50,0,none,none
+gn:2562273,Xgħajra,Ix-Xgħajra,1830,village,0,0,50,0,none,none
+gn:2562274,Xewkija,Ix-Xewkija,3303,village,0,0,50,0,none,none
+gn:2562280,Xagħra,Ix-Xagħra,3680,village,0,0,50,0,none,none
+gn:2562305,Valletta,Valletta,6794,village,0,0,50,0,none,none
+gn:2562320,Ta’ Xbiex,Tarxien,2012,village,0,0,50,0,none,none
+gn:2562349,Tarxien,Ta’ Xbiex,8627,village,0,0,50,0,none,none
+gn:2562501,Sliema,Tas-Sliema,22591,town,0,0,50,0,none,none
+gn:2562504,Siġġiewi,Is-Siġġiewi,8721,village,0,0,50,0,none,none
+gn:2562518,Santa Venera,Saint Venera,7590,village,0,0,50,0,none,none
+gn:2562529,Santa Luċija,Saint Lucia,2954,village,0,0,50,0,none,none
+gn:2562541,San Pawl il-Baħar,Saint Paul’s Bay,32042,town,0,0,50,0,none,none
+gn:2562545,Sannat,Sannat,1681,village,0,0,50,0,none,none
+gn:2562552,San Lawrenz,Saint Lawrence,530,village,0,0,50,0,none,none
+gn:2562557,San Ġiljan,Saint Julian,13792,town,0,0,50,0,none,none
+gn:2562598,Safi,Safi,2280,village,0,0,50,0,none,none
+gn:2562617,Paola,Paola,8706,village,0,0,50,0,none,none
+gn:2562619,Victoria,Victoria,6596,village,0,0,50,0,none,none
+gn:2562620,Rabat,Ir-Rabat,11936,town,0,0,50,0,none,none
+gn:2562622,Qrendi,Il-Qrendi,3148,village,0,0,50,0,none,none
+gn:2562629,Qormi,Qormi,16801,town,0,0,50,0,none,none
+gn:2562655,Qala,Il-Qala,1929,village,0,0,50,0,none,none
+gn:2562664,Pietà,Tal-Pietà,4892,village,0,0,50,0,none,none
+gn:2562683,Naxxar,In-Naxxar,14890,town,0,0,50,0,none,none
+gn:2562687,Nadur,In-Nadur,3933,village,0,0,50,0,none,none
+gn:2562693,Munxar,Il-Munxar,1707,village,0,0,50,0,none,none
+gn:2562694,Imtarfa,Mtarfa,2615,village,0,0,50,0,none,none
+gn:2562698,Imsida,L-Imsida,13713,town,0,0,50,0,none,none
+gn:2562701,Mqabba,L-Imqabba,3339,village,0,0,50,0,none,none
+gn:2562704,Mosta,Il-Mosta,23482,town,0,0,50,0,none,none
+gn:2562734,Mġarr,L-Imġarr,2868,village,0,0,50,0,none,none
+gn:2562735,Imġarr,L-Imġarr,3802,village,0,0,50,0,none,none
+gn:2562744,Mellieħa,Il-Mellieħa,11389,town,0,0,50,0,none,none
+gn:2562746,Imdina,L-Imdina,193,village,0,0,50,0,none,none
+gn:2562750,Marsaskala,Marsaskala,10024,town,0,0,50,0,none,none
+gn:2562755,Marsa,Il-Marsa,5454,village,0,0,50,0,none,none
+gn:2562788,Luqa,Luqa,6162,village,0,0,50,0,none,none
+gn:2562792,Senglea,Senglea,2720,village,0,0,50,0,none,none
+gn:2562800,L-Iklin,L-Iklin,3422,village,0,0,50,0,none,none
+gn:2562801,Lija,Lija,3202,village,0,0,50,0,none,none
+gn:2562815,Kirkop,Kirkop,2397,village,0,0,50,0,none,none
+gn:2562816,Kerċem,Ta’ Kerċem,1627,village,0,0,50,0,none,none
+gn:2562830,Kalkara,Il-Kalkara,3059,village,0,0,50,0,none,none
+gn:2562850,Swieqi,Is-Swieqi,14452,town,0,0,50,0,none,none
+gn:2562946,Gżira,Il-Gżira,11669,town,0,0,50,0,none,none
+gn:2562955,Floriana,Floriana,2032,village,0,0,50,0,none,none
+gn:2562966,Vittoriosa,Il-Birgu,2489,village,0,0,50,0,none,none
+gn:2562998,Ħamrun,Il-Ħamrun,9743,village,0,0,50,0,none,none
+gn:2563020,Gudja,Il-Gudja,3184,village,0,0,50,0,none,none
+gn:2563046,Għaxaq,Ħal Għaxaq,4860,village,0,0,50,0,none,none
+gn:2563062,Hal Gharghur,Ħal Għargħur,2857,village,0,0,50,0,none,none
+gn:2563063,Għarb,L-Għarb,1298,village,0,0,50,0,none,none
+gn:2563081,Għajnsielem,Ghajnsielem,2931,village,0,0,50,0,none,none
+gn:2563115,Fgura,Il-Fgura,12877,town,0,0,50,0,none,none
+gn:2563140,Dingli,Dingli,3711,village,0,0,50,0,none,none
+gn:2563181,Cospicua,Bormla,6096,village,0,0,50,0,none,none
+gn:2563189,Birżebbuġa,Birżebbuġa,12915,town,0,0,50,0,none,none
+gn:2563191,Birkirkara,Birkirkara,24356,town,0,0,50,0,none,none
+gn:2563217,Balzan,Balzan,4689,village,0,0,50,0,none,none
+gn:2563230,Baħar iċ-Ċagħaq,In-Naxxar,1250,village,0,0,50,0,none,none
+gn:2563232,Attard,Attard,11377,town,0,0,50,0,none,none
+gn:2567539,San Ġwann,Saint John,14720,town,0,0,50,0,none,none
+gn:8337342,Fontana,Il-Fontana,922,village,0,0,50,0,none,none
+gn:8337353,Pembroke,Pembroke,3842,village,0,0,50,0,none,none

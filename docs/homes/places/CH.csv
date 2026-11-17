@@ -1,0 +1,1428 @@
+place_id,name,region,population,market,verified_homes,dated_listings,shortfall_to_50,recorded_sales,rent_source,price_source
+gn:2657886,Zwingen,Basel-Landschaft,2162,village,0,0,50,0,none,none
+gn:2657887,Zweisimmen,Bern,2813,village,0,0,50,0,none,none
+gn:2657889,Zuzwil,Saint Gallen,4226,village,0,0,50,0,none,none
+gn:2657891,Bad Zurzach,Aargau,4344,village,0,0,50,0,none,none
+gn:2657896,Zürich,Zurich,415367,city,0,0,50,0,none,none
+gn:2657898,Zuoz,Grisons,1209,village,0,0,50,0,none,none
+gn:2657899,Zunzgen,Basel-Landschaft,2632,village,0,0,50,0,none,none
+gn:2657900,Zumikon,Zurich,4424,village,0,0,50,0,none,none
+gn:2657908,Zug,Zug,30542,town,0,0,50,0,none,none
+gn:2657910,Zuchwil,Solothurn,9268,village,0,0,50,0,none,none
+gn:2657912,Zollikon,Zurich,5812,village,0,0,50,0,none,none
+gn:2657913,Zollikofen,Bern,9121,village,0,0,50,0,none,none
+gn:2657915,Zofingen,Aargau,11655,town,0,0,50,0,none,none
+gn:2657916,Zizers,Grisons,3009,village,0,0,50,0,none,none
+gn:2657926,Zernez,Grisons,1053,village,0,0,50,0,none,none
+gn:2657928,Zermatt,Valais,6629,village,0,0,50,0,none,none
+gn:2657931,Zell,Lucerne,1943,village,0,0,50,0,none,none
+gn:2657935,Zäziwil,Bern,1535,village,0,0,50,0,none,none
+gn:2657940,Yvonand,Vaud,2401,village,0,0,50,0,none,none
+gn:2657941,Yverdon-les-Bains,Vaud,30157,town,0,0,50,0,none,none
+gn:2657943,Wyssachen,Bern,1251,village,0,0,50,0,none,none
+gn:2657944,Wynigen,Bern,2090,village,0,0,50,0,none,none
+gn:2657945,Wynau,Bern,1610,village,0,0,50,0,none,none
+gn:2657947,Würenlos,Aargau,5497,village,0,0,50,0,none,none
+gn:2657948,Würenlingen,Aargau,3741,village,0,0,50,0,none,none
+gn:2657953,Worben,Bern,2042,village,0,0,50,0,none,none
+gn:2657954,Worb,Bern,11053,town,0,0,50,0,none,none
+gn:2657955,Wollerau,Schwyz,6883,village,0,0,50,0,none,none
+gn:2657956,Wolhusen,Lucerne,4050,village,0,0,50,0,none,none
+gn:2657957,Wolfwil,Solothurn,2079,village,0,0,50,0,none,none
+gn:2657959,Wölflinswil,Aargau,910,village,0,0,50,0,none,none
+gn:2657961,Wolfenschiessen,Nidwalden,2080,village,0,0,50,0,none,none
+gn:2657963,Wohlen,Aargau,13875,town,0,0,50,0,none,none
+gn:2657964,Wohlen,Bern,9159,village,0,0,50,0,none,none
+gn:2657967,Wittnau,Aargau,1062,village,0,0,50,0,none,none
+gn:2657968,Wittenbach,Saint Gallen,8542,village,0,0,50,0,none,none
+gn:2657969,Zürich (Kreis 7) / Witikon,Zurich,9099,village,0,0,50,0,none,none
+gn:2657970,Winterthur,Zurich,111840,city,0,0,50,0,none,none
+gn:2657972,Winkeln,Saint Gallen,4300,village,0,0,50,0,none,none
+gn:2657976,Windisch,Aargau,6689,village,0,0,50,0,none,none
+gn:2657977,Wimmis,Bern,2237,village,0,0,50,0,none,none
+gn:2657978,Willisau,Lucerne,7780,village,0,0,50,0,none,none
+gn:2657988,Wildhaus,Saint Gallen,1221,village,0,0,50,0,none,none
+gn:2657989,Wilderswil,Bern,2303,village,0,0,50,0,none,none
+gn:2657992,Wilchingen,Schaffhausen,2193,village,0,0,50,0,none,none
+gn:2657993,Wila,Zurich,1387,village,0,0,50,0,none,none
+gn:2657996,Wil,Saint Gallen,23955,town,0,0,50,0,none,none
+gn:2657997,Wikon,Lucerne,1218,village,0,0,50,0,none,none
+gn:2657998,Wigoltingen,Thurgau,2040,village,0,0,50,0,none,none
+gn:2658004,Wiesendangen / Wiesendangen (Dorf),Zurich,1649,village,0,0,50,0,none,none
+gn:2658006,Wiedlisbach,Bern,2213,village,0,0,50,0,none,none
+gn:2658007,Zürich (Kreis 3) / Alt-Wiedikon,Zurich,14931,town,0,0,50,0,none,none
+gn:2658010,Wetzikon,Zurich,24764,town,0,0,50,0,none,none
+gn:2658011,Wettingen,Aargau,18191,town,0,0,50,0,none,none
+gn:2658014,Werthenstein,Lucerne,1909,village,0,0,50,0,none,none
+gn:2658021,Welschenrohr,Solothurn,1179,village,0,0,50,0,none,none
+gn:2658024,Weisslingen,Zurich,1975,village,0,0,50,0,none,none
+gn:2658035,Weiningen,Zurich,1753,village,0,0,50,0,none,none
+gn:2658036,Weinfelden,Thurgau,9414,village,0,0,50,0,none,none
+gn:2658038,Weggis,Lucerne,3863,village,0,0,50,0,none,none
+gn:2658039,Wegenstetten,Aargau,1080,village,0,0,50,0,none,none
+gn:2658040,Weesen,Saint Gallen,1402,village,0,0,50,0,none,none
+gn:2658041,Wauwil,Lucerne,1657,village,0,0,50,0,none,none
+gn:2658042,Wattwil,Saint Gallen,8089,village,0,0,50,0,none,none
+gn:2658043,Wattenwil,Bern,2788,village,0,0,50,0,none,none
+gn:2658051,Wängi,Thurgau,4051,village,0,0,50,0,none,none
+gn:2658052,Wangen an der Aare,Bern,1944,village,0,0,50,0,none,none
+gn:2658053,Wangen,Solothurn,4686,village,0,0,50,0,none,none
+gn:2658055,Walzenhausen,Appenzell Ausserrhoden,2120,village,0,0,50,0,none,none
+gn:2658058,Waltenschwil,Aargau,2192,village,0,0,50,0,none,none
+gn:2658060,Wallisellen,Zurich,11705,town,0,0,50,0,none,none
+gn:2658061,Walenstadt,Saint Gallen,5000,village,0,0,50,0,none,none
+gn:2658064,Walkringen,Bern,1817,village,0,0,50,0,none,none
+gn:2658066,Waldstatt,Appenzell Ausserrhoden,1722,village,0,0,50,0,none,none
+gn:2658067,Waldkirch,Saint Gallen,3137,village,0,0,50,0,none,none
+gn:2658071,Waldenburg,Basel-Landschaft,1081,village,0,0,50,0,none,none
+gn:2658073,Wald,Zurich,3061,village,0,0,50,0,none,none
+gn:2658075,Walchwil,Zug,3268,village,0,0,50,0,none,none
+gn:2658077,Wahlen,Basel-Landschaft,1383,village,0,0,50,0,none,none
+gn:2658081,Wagenhausen,Thurgau,1524,village,0,0,50,0,none,none
+gn:2658082,Wädenswil,Zurich,13269,town,0,0,50,0,none,none
+gn:2658090,Vuadens,Fribourg,1835,village,0,0,50,0,none,none
+gn:2658093,Vouvry,Valais,3296,village,0,0,50,0,none,none
+gn:2658096,Vorderthal,Schwyz,1006,village,0,0,50,0,none,none
+gn:2658103,Vordemwald,Aargau,1661,village,0,0,50,0,none,none
+gn:2658105,Volketswil / Volketswil (Dorf),Zurich,2723,village,0,0,50,0,none,none
+gn:2658107,Vitznau,Lucerne,1496,village,0,0,50,0,none,none
+gn:2658110,Visperterminen,Valais,1440,village,0,0,50,0,none,none
+gn:2658112,Visp,Valais,7948,village,0,0,50,0,none,none
+gn:2658115,Vionnaz,Valais,1719,village,0,0,50,0,none,none
+gn:2658118,Villnachern,Aargau,1473,village,0,0,50,0,none,none
+gn:2658119,Villmergen,Aargau,5489,village,0,0,50,0,none,none
+gn:2658120,Villigen,Aargau,1381,village,0,0,50,0,none,none
+gn:2658123,Villeneuve,Vaud,4349,village,0,0,50,0,none,none
+gn:2658124,Villaz-Saint-Pierre,Fribourg,1093,village,0,0,50,0,none,none
+gn:2658126,Villars-sur-Ollon,Vaud,2500,village,0,0,50,0,none,none
+gn:2658128,Villars-sur-Glâne,Fribourg,10021,town,0,0,50,0,none,none
+gn:2658135,Viganello,Ticino,6375,village,0,0,50,0,none,none
+gn:2658137,Vicques,Jura,1741,village,0,0,50,0,none,none
+gn:2658143,Veyrier,Geneva,9800,village,0,0,50,0,none,none
+gn:2658144,Vex,Valais,1418,village,0,0,50,0,none,none
+gn:2658145,Vevey,Vaud,19891,town,0,0,50,0,none,none
+gn:2658146,Vétroz,Valais,4137,village,0,0,50,0,none,none
+gn:2658151,Versoix,Geneva,11467,town,0,0,50,0,none,none
+gn:2658152,Verscio,Ticino,1009,village,0,0,50,0,none,none
+gn:2658154,Vernier,Geneva,30086,town,0,0,50,0,none,none
+gn:2658157,Vernayaz,Valais,1612,village,0,0,50,0,none,none
+gn:2658168,Verbier,Valais,2000,village,0,0,50,0,none,none
+gn:2658172,Veltheim (Kreis 5),Zurich,8901,village,0,0,50,0,none,none
+gn:2658173,Veltheim,Aargau,1374,village,0,0,50,0,none,none
+gn:2658176,Vechigen,Bern,4619,village,0,0,50,0,none,none
+gn:2658185,Varen,Valais,1203,village,0,0,50,0,none,none
+gn:2658188,Vandœuvres,Geneva,2826,village,0,0,50,0,none,none
+gn:2658191,Vals Platz,Grisons,1006,village,0,0,50,0,none,none
+gn:2658194,Vallorbe,Vaud,3098,village,0,0,50,0,none,none
+gn:2658209,Uzwil,Saint Gallen,12885,town,0,0,50,0,none,none
+gn:2658210,Uznach,Saint Gallen,5561,village,0,0,50,0,none,none
+gn:2658211,Utzenstorf,Bern,3625,village,0,0,50,0,none,none
+gn:2658212,Uttwil,Thurgau,1492,village,0,0,50,0,none,none
+gn:2658213,Uttigen,Bern,1673,village,0,0,50,0,none,none
+gn:2658216,Uster,Zurich,34715,town,0,0,50,0,none,none
+gn:2658217,Urtenen,Bern,5258,village,0,0,50,0,none,none
+gn:2658223,Urnäsch,Appenzell Ausserrhoden,2304,village,0,0,50,0,none,none
+gn:2658230,Wetzikon / Unter-Wetzikon,Zurich,2521,village,0,0,50,0,none,none
+gn:2658232,Untervaz,Grisons,2303,village,0,0,50,0,none,none
+gn:2658237,Untersiggenthal,Aargau,6344,village,0,0,50,0,none,none
+gn:2658240,Unterseen,Bern,5150,village,0,0,50,0,none,none
+gn:2658244,Unterlunkhofen,Aargau,1263,village,0,0,50,0,none,none
+gn:2658248,Unterkulm,Aargau,3099,village,0,0,50,0,none,none
+gn:2658249,Illnau / Unter-Illnau,Zurich,2011,village,0,0,50,0,none,none
+gn:2658250,Unteriberg,Schwyz,2307,village,0,0,50,0,none,none
+gn:2658253,Unterengstringen,Zurich,2675,village,0,0,50,0,none,none
+gn:2658256,Ehrendingen,Aargau,4519,village,0,0,50,0,none,none
+gn:2658264,Unterägeri,Zug,7973,village,0,0,50,0,none,none
+gn:2658269,Uitikon,Zurich,3282,village,0,0,50,0,none,none
+gn:2658271,Uhwiesen,Zurich,1140,village,0,0,50,0,none,none
+gn:2658276,Uetikon,Zurich,3431,village,0,0,50,0,none,none
+gn:2658277,Uetendorf,Bern,5654,village,0,0,50,0,none,none
+gn:2658279,Uerkheim,Aargau,1302,village,0,0,50,0,none,none
+gn:2658280,Uerikon,Zurich,1794,village,0,0,50,0,none,none
+gn:2658281,Ueberstorf,Fribourg,2133,village,0,0,50,0,none,none
+gn:2658283,Udligenswil,Lucerne,2252,village,0,0,50,0,none,none
+gn:2658287,Turtmann,Valais,1025,village,0,0,50,0,none,none
+gn:2658288,Turgi,Aargau,2982,village,0,0,50,0,none,none
+gn:2658289,Turbenthal,Zurich,3109,village,0,0,50,0,none,none
+gn:2658293,Tuggen,Schwyz,2671,village,0,0,50,0,none,none
+gn:2658299,Trun,Grisons,1243,village,0,0,50,0,none,none
+gn:2658303,Trubschachen,Bern,1530,village,0,0,50,0,none,none
+gn:2658305,Trub,Bern,1503,village,0,0,50,0,none,none
+gn:2658306,Troistorrents,Valais,3873,village,0,0,50,0,none,none
+gn:2658307,Trogen,Appenzell Ausserrhoden,1618,village,0,0,50,0,none,none
+gn:2658311,Trimmis,Grisons,2831,village,0,0,50,0,none,none
+gn:2658312,Trimbach,Solothurn,6220,village,0,0,50,0,none,none
+gn:2658315,Triengen,Lucerne,4193,village,0,0,50,0,none,none
+gn:2658317,Treyvaux,Fribourg,1349,village,0,0,50,0,none,none
+gn:2658324,Trélex,Vaud,1092,village,0,0,50,0,none,none
+gn:2658328,Travers,Neuchâtel,1233,village,0,0,50,0,none,none
+gn:2658331,Tramelan,Bern,4186,village,0,0,50,0,none,none
+gn:2658332,Trachselwald,Bern,1068,village,0,0,50,0,none,none
+gn:2658344,Töss (Kreis 4),Zurich,8672,village,0,0,50,0,none,none
+gn:2658353,Toffen,Bern,2277,village,0,0,50,0,none,none
+gn:2658365,Tiefencastel,Grisons,244,village,0,0,50,0,none,none
+gn:2658371,Thusis,Grisons,2572,village,0,0,50,0,none,none
+gn:2658376,Thundorf,Thurgau,1179,village,0,0,50,0,none,none
+gn:2658377,Thun,Bern,43723,town,0,0,50,0,none,none
+gn:2658382,Thierachern,Bern,2040,village,0,0,50,0,none,none
+gn:2658386,Therwil,Basel-Landschaft,9595,village,0,0,50,0,none,none
+gn:2658387,Thayngen,Schaffhausen,4120,village,0,0,50,0,none,none
+gn:2658388,Thalwil,Zurich,13296,town,0,0,50,0,none,none
+gn:2658395,Teufenthal,Aargau,1665,village,0,0,50,0,none,none
+gn:2658397,Teufen,Appenzell Ausserrhoden,5683,village,0,0,50,0,none,none
+gn:2658398,Tesserete,Ticino,1533,village,0,0,50,0,none,none
+gn:2658410,Tegerfelden,Aargau,1040,village,0,0,50,0,none,none
+gn:2658415,Tavannes,Bern,3367,village,0,0,50,0,none,none
+gn:2658417,Täuffelen,Bern,2492,village,0,0,50,0,none,none
+gn:2658424,Tann,Zurich,3034,village,0,0,50,0,none,none
+gn:2658426,Tanay,Valais,1124,village,0,0,50,0,none,none
+gn:2658427,Tamins,Grisons,1160,village,0,0,50,0,none,none
+gn:2658432,Tägerwilen,Thurgau,3414,village,0,0,50,0,none,none
+gn:2658433,Tafers,Fribourg,2833,village,0,0,50,0,none,none
+gn:2658440,Sursee,Lucerne,9953,village,0,0,50,0,none,none
+gn:2658449,Sumiswald,Bern,5159,village,0,0,50,0,none,none
+gn:2658452,Sulz,Aargau,1215,village,0,0,50,0,none,none
+gn:2658455,Sulgen,Thurgau,3367,village,0,0,50,0,none,none
+gn:2658457,Suhr,Aargau,9374,village,0,0,50,0,none,none
+gn:2658464,Subingen,Solothurn,2852,village,0,0,50,0,none,none
+gn:2658469,Strengelbach,Aargau,4349,village,0,0,50,0,none,none
+gn:2658478,Stettlen,Bern,2884,village,0,0,50,0,none,none
+gn:2658479,Stettfurt,Thurgau,1048,village,0,0,50,0,none,none
+gn:2658483,Steinhausen,Zug,8509,village,0,0,50,0,none,none
+gn:2658488,Steinen,Schwyz,3041,village,0,0,50,0,none,none
+gn:2658489,Stein am Rhein,Schaffhausen,3224,village,0,0,50,0,none,none
+gn:2658490,Stein,Aargau,2504,village,0,0,50,0,none,none
+gn:2658494,Steffisburg,Bern,15709,town,0,0,50,0,none,none
+gn:2658495,Steckborn,Thurgau,3229,village,0,0,50,0,none,none
+gn:2658498,Staufen,Aargau,2424,village,0,0,50,0,none,none
+gn:2658502,Stansstad,Nidwalden,4471,village,0,0,50,0,none,none
+gn:2658504,Stans,Nidwalden,8393,village,0,0,50,0,none,none
+gn:2658512,Stalden,Valais,1232,village,0,0,50,0,none,none
+gn:2658513,Staffelbach,Aargau,1059,village,0,0,50,0,none,none
+gn:2658518,Stäfa,Zurich,5737,village,0,0,50,0,none,none
+gn:2658521,Stabio,Ticino,3917,village,0,0,50,0,none,none
+gn:2658524,Spreitenbach,Aargau,11875,town,0,0,50,0,none,none
+gn:2658536,Spiez,Bern,12594,town,0,0,50,0,none,none
+gn:2658537,Speicher,Appenzell Ausserrhoden,3985,village,0,0,50,0,none,none
+gn:2658543,Sottens,Vaud,209,village,0,0,50,0,none,none
+gn:2658549,Sorengo,Ticino,1629,village,0,0,50,0,none,none
+gn:2658564,Solothurn,Solothurn,16777,town,0,0,50,0,none,none
+gn:2658572,Sissach,Basel-Landschaft,5873,village,0,0,50,0,none,none
+gn:2658575,Sirnach,Thurgau,6463,village,0,0,50,0,none,none
+gn:2658576,Sitten,Valais,34708,town,0,0,50,0,none,none
+gn:2658577,Sins,Aargau,3600,village,0,0,50,0,none,none
+gn:2658588,Silvaplana,Grisons,973,village,0,0,50,0,none,none
+gn:2658592,Silenen,Uri,2243,village,0,0,50,0,none,none
+gn:2658597,Sigriswil,Bern,4341,village,0,0,50,0,none,none
+gn:2658600,Signau,Bern,2821,village,0,0,50,0,none,none
+gn:2658606,Sierre,Valais,16790,town,0,0,50,0,none,none
+gn:2658608,Siebnen,Schwyz,7104,village,0,0,50,0,none,none
+gn:2658613,Sevelen,Saint Gallen,4392,village,0,0,50,0,none,none
+gn:2658614,Seuzach / Seuzach (Dorf),Zurich,1419,village,0,0,50,0,none,none
+gn:2658623,Seon,Aargau,4407,village,0,0,50,0,none,none
+gn:2658626,Sennwald,Saint Gallen,4768,village,0,0,50,0,none,none
+gn:2658631,Sempach,Lucerne,3754,village,0,0,50,0,none,none
+gn:2658632,Sementina,Ticino,2695,village,0,0,50,0,none,none
+gn:2658634,Selzach,Solothurn,2900,village,0,0,50,0,none,none
+gn:2658635,Seltisberg,Basel-Landschaft,1412,village,0,0,50,0,none,none
+gn:2658642,Seftigen,Bern,2014,village,0,0,50,0,none,none
+gn:2658649,Seengen,Aargau,3288,village,0,0,50,0,none,none
+gn:2658653,Seedorf,Bern,2920,village,0,0,50,0,none,none
+gn:2658654,Seedorf,Uri,1522,village,0,0,50,0,none,none
+gn:2658655,Seeberg,Bern,1321,village,0,0,50,0,none,none
+gn:2658656,Zürich (Kreis 11) / Seebach,Zurich,17851,town,0,0,50,0,none,none
+gn:2658660,Scuol,Grisons,2184,village,0,0,50,0,none,none
+gn:2658665,Schwyz,Schwyz,15181,town,0,0,50,0,none,none
+gn:2658669,Schwellbrunn,Appenzell Ausserrhoden,1517,village,0,0,50,0,none,none
+gn:2658681,Schwarzenberg,Lucerne,1591,village,0,0,50,0,none,none
+gn:2658684,Schwanden,Glarus,2541,village,0,0,50,0,none,none
+gn:2658687,Schwaderloch,Aargau,726,village,0,0,50,0,none,none
+gn:2658690,Schüpfheim,Lucerne,3723,village,0,0,50,0,none,none
+gn:2658691,Schüpfen,Bern,3248,village,0,0,50,0,none,none
+gn:2658696,Schübelbach,Schwyz,7745,village,0,0,50,0,none,none
+gn:2658701,Schötz,Lucerne,3231,village,0,0,50,0,none,none
+gn:2658706,Schönenwerd,Solothurn,4732,village,0,0,50,0,none,none
+gn:2658708,Schönenbuch,Basel-Landschaft,1313,village,0,0,50,0,none,none
+gn:2658714,Schöftland,Aargau,3310,village,0,0,50,0,none,none
+gn:2658718,Schmitten,Fribourg,4040,village,0,0,50,0,none,none
+gn:2658720,Schmerikon,Saint Gallen,3307,village,0,0,50,0,none,none
+gn:2658724,Schlieren,Zurich,12695,town,0,0,50,0,none,none
+gn:2658726,Schleitheim,Schaffhausen,1723,village,0,0,50,0,none,none
+gn:2658732,Schinznach Dorf,Aargau,1736,village,0,0,50,0,none,none
+gn:2658733,Schinznach Bad,Aargau,1327,village,0,0,50,0,none,none
+gn:2658734,Schindellegi,Schwyz,3174,village,0,0,50,0,none,none
+gn:2658738,Schiers,Grisons,2423,village,0,0,50,0,none,none
+gn:2658744,Schenkon,Lucerne,2616,village,0,0,50,0,none,none
+gn:2658749,Schattdorf,Uri,4860,village,0,0,50,0,none,none
+gn:2658753,Scharans,Grisons,867,village,0,0,50,0,none,none
+gn:2658754,Schänis,Saint Gallen,3404,village,0,0,50,0,none,none
+gn:2658759,Schafisheim,Aargau,2758,village,0,0,50,0,none,none
+gn:2658761,Schaffhausen,Schaffhausen,36587,town,0,0,50,0,none,none
+gn:2658769,Saxon,Valais,3477,village,0,0,50,0,none,none
+gn:2658774,Savigny,Vaud,3440,village,0,0,50,0,none,none
+gn:2658775,Savièse,Valais,5575,village,0,0,50,0,none,none
+gn:2658781,Sattel,Schwyz,1597,village,0,0,50,0,none,none
+gn:2658782,Satigny,Geneva,3055,village,0,0,50,0,none,none
+gn:2658786,Sarnen,Obwalden,10368,town,0,0,50,0,none,none
+gn:2658788,Sarmenstorf,Aargau,2322,village,0,0,50,0,none,none
+gn:2658793,Sargans,Saint Gallen,6134,village,0,0,50,0,none,none
+gn:2658801,Santa Maria in Calanca,Grisons,0,village,0,0,50,0,none,none
+gn:2658806,Sankt Stephan,Bern,1352,village,0,0,50,0,none,none
+gn:2658807,Sankt Peterzell,Saint Gallen,1207,village,0,0,50,0,none,none
+gn:2658811,Sankt Niklaus,Valais,2352,village,0,0,50,0,none,none
+gn:2658813,St. Moritz,Grisons,4952,village,0,0,50,0,none,none
+gn:2658816,Sankt Margrethen,Saint Gallen,5395,village,0,0,50,0,none,none
+gn:2658820,Sankt Gallenkappel,Saint Gallen,1811,village,0,0,50,0,none,none
+gn:2658822,Sankt Gallen,Saint Gallen,75833,town,0,0,50,0,none,none
+gn:2658826,Sankt Antoni,Fribourg,1849,village,0,0,50,0,none,none
+gn:2658841,Samstagern,Zurich,3163,village,0,0,50,0,none,none
+gn:2658846,Samedan,Grisons,2700,village,0,0,50,0,none,none
+gn:2658847,Salvan,Valais,1127,village,0,0,50,0,none,none
+gn:2658849,Salmsach,Thurgau,1293,village,0,0,50,0,none,none
+gn:2658850,Salgesch,Valais,1240,village,0,0,50,0,none,none
+gn:2658852,Sâles,Fribourg,1326,village,0,0,50,0,none,none
+gn:2658862,Saint-Prex,Vaud,4461,village,0,0,50,0,none,none
+gn:2658864,Saint-Maurice,Valais,3701,village,0,0,50,0,none,none
+gn:2658867,Saint-Livres,Vaud,568,village,0,0,50,0,none,none
+gn:2658868,Saint-Léonard,Valais,1937,village,0,0,50,0,none,none
+gn:2658871,Saint-Imier,Bern,5220,village,0,0,50,0,none,none
+gn:2658874,Sainte-Croix,Vaud,4214,village,0,0,50,0,none,none
+gn:2658876,Saint-Cergue,Vaud,1816,village,0,0,50,0,none,none
+gn:2658878,Saint-Blaise,Neuchâtel,3089,village,0,0,50,0,none,none
+gn:2658880,Saint-Aubin-Sauges,Neuchâtel,2476,village,0,0,50,0,none,none
+gn:2658881,Saillon,Valais,1598,village,0,0,50,0,none,none
+gn:2658882,Saignelégier,Jura,2194,village,0,0,50,0,none,none
+gn:2658892,Safenwil,Aargau,3201,village,0,0,50,0,none,none
+gn:2658894,Sachseln,Obwalden,4511,village,0,0,50,0,none,none
+gn:2658897,Saas-Grund,Valais,1116,village,0,0,50,0,none,none
+gn:2658898,Saas-Fee,Valais,1611,village,0,0,50,0,none,none
+gn:2658904,Saanen,Bern,6621,village,0,0,50,0,none,none
+gn:2658909,Rüti,Zurich,9576,village,0,0,50,0,none,none
+gn:2658912,Rüthi,Saint Gallen,1945,village,0,0,50,0,none,none
+gn:2658914,Ruswil,Lucerne,6432,village,0,0,50,0,none,none
+gn:2658917,Russikon,Zurich,2415,village,0,0,50,0,none,none
+gn:2658919,Rüschlikon,Zurich,4653,village,0,0,50,0,none,none
+gn:2658922,Rüschegg,Bern,1697,village,0,0,50,0,none,none
+gn:2658924,Rupperswil,Aargau,4137,village,0,0,50,0,none,none
+gn:2658927,Rümlang,Zurich,5144,village,0,0,50,0,none,none
+gn:2658935,Rüeggisberg,Bern,1933,village,0,0,50,0,none,none
+gn:2658936,Rue,Fribourg,1108,village,0,0,50,0,none,none
+gn:2658937,Rudolfstetten,Aargau,3800,village,0,0,50,0,none,none
+gn:2658939,Rüderswil,Bern,2329,village,0,0,50,0,none,none
+gn:2658940,Rubigen,Bern,2426,village,0,0,50,0,none,none
+gn:2658950,Rotkreuz,Zug,10439,town,0,0,50,0,none,none
+gn:2658952,Rothrist,Aargau,7423,village,0,0,50,0,none,none
+gn:2658954,Rothenthurm,Schwyz,2098,village,0,0,50,0,none,none
+gn:2658968,Röschenz,Basel-Landschaft,1753,village,0,0,50,0,none,none
+gn:2658969,Rorschach,Saint Gallen,9000,village,0,0,50,0,none,none
+gn:2658974,Rorbas,Zurich,1797,village,0,0,50,0,none,none
+gn:2658976,Root,Lucerne,3886,village,0,0,50,0,none,none
+gn:2658982,Romont,Fribourg,5276,village,0,0,50,0,none,none
+gn:2658983,Römerswil,Lucerne,1882,village,0,0,50,0,none,none
+gn:2658985,Romanshorn,Thurgau,8956,village,0,0,50,0,none,none
+gn:2658986,Romanel-sur-Lausanne,Vaud,3123,village,0,0,50,0,none,none
+gn:2658989,Rolle,Vaud,4425,village,0,0,50,0,none,none
+gn:2658991,Rohrbach,Bern,1386,village,0,0,50,0,none,none
+gn:2658992,Rohr,Solothurn,2849,village,0,0,50,0,none,none
+gn:2658993,Roggwil,Thurgau,2500,village,0,0,50,0,none,none
+gn:2658994,Roggwil,Bern,3673,village,0,0,50,0,none,none
+gn:2658998,Rodersdorf,Solothurn,1338,village,0,0,50,0,none,none
+gn:2659008,Riva San Vitale,Ticino,2390,village,0,0,50,0,none,none
+gn:2659021,Ringgenberg,Bern,2514,village,0,0,50,0,none,none
+gn:2659024,Effretikon / Rikon,Zurich,1120,village,0,0,50,0,none,none
+gn:2659028,Riggisberg,Bern,2001,village,0,0,50,0,none,none
+gn:2659036,Riedholz,Solothurn,1576,village,0,0,50,0,none,none
+gn:2659046,Riddes,Valais,2213,village,0,0,50,0,none,none
+gn:2659048,Rickenbach bei Wil,Thurgau,2714,village,0,0,50,0,none,none
+gn:2659050,Richterswil,Zurich,10189,town,0,0,50,0,none,none
+gn:2659055,Riaz,Fribourg,1894,village,0,0,50,0,none,none
+gn:2659060,Rheinfelden,Aargau,10733,town,0,0,50,0,none,none
+gn:2659062,Rheineck,Saint Gallen,3298,village,0,0,50,0,none,none
+gn:2659064,Rhäzüns,Grisons,1257,village,0,0,50,0,none,none
+gn:2659070,Renens,Vaud,20927,town,0,0,50,0,none,none
+gn:2659076,Reinach,Aargau,7845,village,0,0,50,0,none,none
+gn:2659077,Reigoldswil,Basel-Landschaft,1509,village,0,0,50,0,none,none
+gn:2659078,Reiden,Lucerne,3926,village,0,0,50,0,none,none
+gn:2659079,Reichenburg,Schwyz,2876,village,0,0,50,0,none,none
+gn:2659082,Rehetobel,Appenzell Ausserrhoden,1779,village,0,0,50,0,none,none
+gn:2659083,Regensdorf,Zurich,7531,village,0,0,50,0,none,none
+gn:2659085,Reconvilier,Bern,2291,village,0,0,50,0,none,none
+gn:2659088,Rechthalten,Fribourg,1058,village,0,0,50,0,none,none
+gn:2659089,Rebstein,Saint Gallen,4163,village,0,0,50,0,none,none
+gn:2659095,Elsau-Räterschen / Räterschen,Zurich,1071,village,0,0,50,0,none,none
+gn:2659098,Raron,Valais,1944,village,0,0,50,0,none,none
+gn:2659099,Rapperswil,Saint Gallen,34776,town,0,0,50,0,none,none
+gn:2659105,Randogne,Valais,3157,village,0,0,50,0,none,none
+gn:2659109,Ramsen,Schaffhausen,1316,village,0,0,50,0,none,none
+gn:2659113,Rafz,Zurich,3233,village,0,0,50,0,none,none
+gn:2659115,Radelfingen,Bern,1218,village,0,0,50,0,none,none
+gn:2659122,Quarten,Saint Gallen,2715,village,0,0,50,0,none,none
+gn:2659126,Pura,Ticino,1069,village,0,0,50,0,none,none
+gn:2659127,Pully,Vaud,16263,town,0,0,50,0,none,none
+gn:2659129,Puidoux,Vaud,2398,village,0,0,50,0,none,none
+gn:2659133,Promontogno,Grisons,0,village,0,0,50,0,none,none
+gn:2659136,Prilly,Vaud,10524,town,0,0,50,0,none,none
+gn:2659142,Pregassona,Ticino,7548,village,0,0,50,0,none,none
+gn:2659147,Pratteln,Basel-Landschaft,14877,town,0,0,50,0,none,none
+gn:2659150,Praroman,Fribourg,1223,village,0,0,50,0,none,none
+gn:2659152,Prangins,Vaud,3172,village,0,0,50,0,none,none
+gn:2659165,Poschiavo,Grisons,3428,village,0,0,50,0,none,none
+gn:2659171,Porrentruy,Jura,6675,village,0,0,50,0,none,none
+gn:2659172,Pontresina,Grisons,1863,village,0,0,50,0,none,none
+gn:2659177,La Punt Chamues-ch,Grisons,0,village,0,0,50,0,none,none
+gn:2659190,Plan-les-Ouates,Geneva,10540,town,0,0,50,0,none,none
+gn:2659195,Plaffeien,Fribourg,1938,village,0,0,50,0,none,none
+gn:2659203,Pieterlen,Bern,3317,village,0,0,50,0,none,none
+gn:2659211,Pfyn,Thurgau,1839,village,0,0,50,0,none,none
+gn:2659212,Pfungen,Zurich,2369,village,0,0,50,0,none,none
+gn:2659213,Pfaffhausen,Zurich,1684,village,0,0,50,0,none,none
+gn:2659215,Pfeffingen,Basel-Landschaft,2201,village,0,0,50,0,none,none
+gn:2659218,Pfaffnau,Lucerne,2047,village,0,0,50,0,none,none
+gn:2659219,Pfäffikon,Zurich,11931,town,0,0,50,0,none,none
+gn:2659220,Pfäffikon,Schwyz,7310,village,0,0,50,0,none,none
+gn:2659227,Peseux,Neuchâtel,5716,village,0,0,50,0,none,none
+gn:2659228,Péry,Bern,1342,village,0,0,50,0,none,none
+gn:2659231,Perroy,Vaud,1315,village,0,0,50,0,none,none
+gn:2659234,Penthalaz,Vaud,2241,village,0,0,50,0,none,none
+gn:2659243,Payerne,Vaud,9943,village,0,0,50,0,none,none
+gn:2659246,Paudex,Vaud,1352,village,0,0,50,0,none,none
+gn:2659258,Pampigny,Vaud,843,village,0,0,50,0,none,none
+gn:2659260,Palézieux,Vaud,1209,village,0,0,50,0,none,none
+gn:2659262,Pailly,Vaud,430,village,0,0,50,0,none,none
+gn:2659266,Ottenbach,Zurich,2039,village,0,0,50,0,none,none
+gn:2659267,Othmarsingen,Aargau,2267,village,0,0,50,0,none,none
+gn:2659269,Otelfingen,Zurich,1808,village,0,0,50,0,none,none
+gn:2659272,Ostermundigen,Bern,0,village,0,0,50,0,none,none
+gn:2659277,Orvin,Bern,1181,village,0,0,50,0,none,none
+gn:2659281,Orsières,Valais,2725,village,0,0,50,0,none,none
+gn:2659282,Orpund,Bern,2488,village,0,0,50,0,none,none
+gn:2659283,Oron-la-Ville,Vaud,1198,village,0,0,50,0,none,none
+gn:2659286,Ormalingen,Basel-Landschaft,1803,village,0,0,50,0,none,none
+gn:2659289,Orbe,Vaud,5132,village,0,0,50,0,none,none
+gn:2659292,Opfikon,Zurich,21554,town,0,0,50,0,none,none
+gn:2659296,Onex,Geneva,17302,town,0,0,50,0,none,none
+gn:2659297,Olten,Solothurn,18362,town,0,0,50,0,none,none
+gn:2659298,Ollon,Vaud,6665,village,0,0,50,0,none,none
+gn:2659303,Oftringen,Aargau,10390,town,0,0,50,0,none,none
+gn:2659307,Oetwil,Zurich,4925,village,0,0,50,0,none,none
+gn:2659310,Zürich (Kreis 11) / Oerlikon,Zurich,17922,town,0,0,50,0,none,none
+gn:2659311,Oensingen,Solothurn,4609,village,0,0,50,0,none,none
+gn:2659317,Obfelden,Zurich,4039,village,0,0,50,0,none,none
+gn:2659321,Oberwil,Basel-Landschaft,10187,town,0,0,50,0,none,none
+gn:2659325,Wetzikon / Ober-Wetzikon,Zurich,3858,village,0,0,50,0,none,none
+gn:2659331,Oberuzwil,Saint Gallen,5616,village,0,0,50,0,none,none
+gn:2659332,Urdorf,Zurich,9205,village,0,0,50,0,none,none
+gn:2659344,Obersiggenthal,Aargau,7990,village,0,0,50,0,none,none
+gn:2659348,Oberschrot,Fribourg,1099,village,0,0,50,0,none,none
+gn:2659355,Oberrüti,Aargau,1268,village,0,0,50,0,none,none
+gn:2659357,Oberriet,Saint Gallen,7675,village,0,0,50,0,none,none
+gn:2659358,Oberrieden,Zurich,4413,village,0,0,50,0,none,none
+gn:2659367,Oberlunkhofen,Aargau,1880,village,0,0,50,0,none,none
+gn:2659372,Oberkirch,Lucerne,3228,village,0,0,50,0,none,none
+gn:2659378,Oberhelfenschwil,Saint Gallen,1318,village,0,0,50,0,none,none
+gn:2659384,Obergösgen,Solothurn,2076,village,0,0,50,0,none,none
+gn:2659385,Oberglatt,Zurich,3564,village,0,0,50,0,none,none
+gn:2659391,Oberentfelden,Aargau,7553,village,0,0,50,0,none,none
+gn:2659392,Oberengstringen,Zurich,5805,village,0,0,50,0,none,none
+gn:2659394,Endingen,Aargau,1935,village,0,0,50,0,none,none
+gn:2659397,Oberegg,Appenzell Innerrhoden,1827,village,0,0,50,0,none,none
+gn:2659399,Oberdorf,Basel-Landschaft,2248,village,0,0,50,0,none,none
+gn:2659402,Oberdiessbach,Bern,2860,village,0,0,50,0,none,none
+gn:2659404,Oberburg,Bern,2901,village,0,0,50,0,none,none
+gn:2659406,Oberbuchsiten,Solothurn,1807,village,0,0,50,0,none,none
+gn:2659408,Oberbipp,Bern,1440,village,0,0,50,0,none,none
+gn:2659422,Nyon,Vaud,16797,town,0,0,50,0,none,none
+gn:2659426,Nürensdorf,Zurich,2310,village,0,0,50,0,none,none
+gn:2659427,Nunningen,Solothurn,1939,village,0,0,50,0,none,none
+gn:2659433,Novazzano,Ticino,2395,village,0,0,50,0,none,none
+gn:2659436,Nottwil,Lucerne,2911,village,0,0,50,0,none,none
+gn:2659447,Wichtrach,Bern,3843,village,0,0,50,0,none,none
+gn:2659451,Niederurnen,Glarus,3657,village,0,0,50,0,none,none
+gn:2659456,Niederrohrdorf,Aargau,2784,village,0,0,50,0,none,none
+gn:2659461,Niederlenz,Aargau,4022,village,0,0,50,0,none,none
+gn:2659462,Niederhelfenschwil,Saint Gallen,2668,village,0,0,50,0,none,none
+gn:2659464,Niedergösgen,Solothurn,3847,village,0,0,50,0,none,none
+gn:2659467,Erlinsbach,Solothurn,2258,village,0,0,50,0,none,none
+gn:2659468,Niederbüren,Saint Gallen,1415,village,0,0,50,0,none,none
+gn:2659470,Niederbipp,Bern,3862,village,0,0,50,0,none,none
+gn:2659474,Nidau,Bern,6696,village,0,0,50,0,none,none
+gn:2659478,Neunkirch,Schaffhausen,2289,village,0,0,50,0,none,none
+gn:2659485,Neuhausen,Schaffhausen,10019,town,0,0,50,0,none,none
+gn:2659489,Neuenkirch,Lucerne,5963,village,0,0,50,0,none,none
+gn:2659490,Neuenhof,Aargau,7957,village,0,0,50,0,none,none
+gn:2659493,Neudorf,Lucerne,1068,village,0,0,50,0,none,none
+gn:2659496,Neuchâtel,Neuchâtel,33475,town,0,0,50,0,none,none
+gn:2659497,Netstal,Glarus,2900,village,0,0,50,0,none,none
+gn:2659504,Neftenbach / Dorf Neftenbach,Zurich,3171,village,0,0,50,0,none,none
+gn:2659506,Nebikon,Lucerne,2241,village,0,0,50,0,none,none
+gn:2659510,Naters,Valais,7552,village,0,0,50,0,none,none
+gn:2659515,Nänikon,Zurich,1560,village,0,0,50,0,none,none
+gn:2659516,Näfels,Glarus,3978,village,0,0,50,0,none,none
+gn:2659522,Muttenz,Basel-Landschaft,16927,town,0,0,50,0,none,none
+gn:2659529,Murten/Morat,Fribourg,5800,village,0,0,50,0,none,none
+gn:2659531,Muri,Aargau,6463,village,0,0,50,0,none,none
+gn:2659532,Muri,Bern,13054,town,0,0,50,0,none,none
+gn:2659533,Murgenthal,Aargau,3044,village,0,0,50,0,none,none
+gn:2659538,Muotathal,Schwyz,3548,village,0,0,50,0,none,none
+gn:2659540,Muolen,Saint Gallen,1118,village,0,0,50,0,none,none
+gn:2659542,Müntschemier,Bern,1333,village,0,0,50,0,none,none
+gn:2659544,Münsterlingen,Thurgau,2459,village,0,0,50,0,none,none
+gn:2659546,Münsingen,Bern,10928,town,0,0,50,0,none,none
+gn:2659550,Münchwilen,Thurgau,5623,village,0,0,50,0,none,none
+gn:2659551,Münchenstein,Basel-Landschaft,11644,town,0,0,50,0,none,none
+gn:2659552,Münchenbuchsee,Bern,9801,village,0,0,50,0,none,none
+gn:2659553,Mumpf,Aargau,1425,village,0,0,50,0,none,none
+gn:2659555,Müllheim,Thurgau,2493,village,0,0,50,0,none,none
+gn:2659558,Mühlethurnen,Bern,1265,village,0,0,50,0,none,none
+gn:2659561,Mühleberg,Bern,2739,village,0,0,50,0,none,none
+gn:2659564,Muhen,Aargau,3419,village,0,0,50,0,none,none
+gn:2659568,Moutier,Jura,7721,village,0,0,50,0,none,none
+gn:2659569,Moudon,Vaud,4343,village,0,0,50,0,none,none
+gn:2659574,Mosnang,Saint Gallen,2936,village,0,0,50,0,none,none
+gn:2659579,Mörschwil,Saint Gallen,3496,village,0,0,50,0,none,none
+gn:2659587,Morges,Vaud,15705,town,0,0,50,0,none,none
+gn:2659597,Morbio Inferiore,Ticino,4331,village,0,0,50,0,none,none
+gn:2659601,Montreux,Vaud,25984,town,0,0,50,0,none,none
+gn:2659613,Monthey,Valais,17777,town,0,0,50,0,none,none
+gn:2659616,Monte Carasso,Ticino,2336,village,0,0,50,0,none,none
+gn:2659623,Montana,Valais,2301,village,0,0,50,0,none,none
+gn:2659625,Montagny,Vaud,1467,village,0,0,50,0,none,none
+gn:2659627,Montagnola,Ticino,2297,village,0,0,50,0,none,none
+gn:2659631,Mönchaltorf,Zurich,2779,village,0,0,50,0,none,none
+gn:2659636,Mollis,Glarus,3014,village,0,0,50,0,none,none
+gn:2659638,Mollens,Vaud,282,village,0,0,50,0,none,none
+gn:2659645,Möhlin,Aargau,9382,village,0,0,50,0,none,none
+gn:2659648,Mogelsberg,Saint Gallen,2213,village,0,0,50,0,none,none
+gn:2659658,Minusio,Ticino,6653,village,0,0,50,0,none,none
+gn:2659666,Mézières,Fribourg,1060,village,0,0,50,0,none,none
+gn:2659667,Meyrin,Geneva,19772,town,0,0,50,0,none,none
+gn:2659670,Mettmenstetten,Zurich,2798,village,0,0,50,0,none,none
+gn:2659674,Messen,Solothurn,1018,village,0,0,50,0,none,none
+gn:2659676,Mesocco,Grisons,1262,village,0,0,50,0,none,none
+gn:2659683,Merenschwand,Aargau,2479,village,0,0,50,0,none,none
+gn:2659685,Menznau,Lucerne,2628,village,0,0,50,0,none,none
+gn:2659686,Menzingen,Zug,3878,village,0,0,50,0,none,none
+gn:2659687,Menziken,Aargau,5415,village,0,0,50,0,none,none
+gn:2659689,Mendrisio,Ticino,14942,town,0,0,50,0,none,none
+gn:2659691,Mellingen,Aargau,4224,village,0,0,50,0,none,none
+gn:2659692,Melide,Ticino,1577,village,0,0,50,0,none,none
+gn:2659695,Melchnau,Bern,1467,village,0,0,50,0,none,none
+gn:2659696,Melano,Ticino,1133,village,0,0,50,0,none,none
+gn:2659699,Meisterschwanden,Aargau,2459,village,0,0,50,0,none,none
+gn:2659700,Meiringen,Bern,4652,village,0,0,50,0,none,none
+gn:2659701,Meinisberg,Bern,1198,village,0,0,50,0,none,none
+gn:2659703,Meilen,Zurich,14207,town,0,0,50,0,none,none
+gn:2659704,Meierskappel,Lucerne,1128,village,0,0,50,0,none,none
+gn:2659708,Meggen,Lucerne,6533,village,0,0,50,0,none,none
+gn:2659721,Mauensee,Lucerne,1199,village,0,0,50,0,none,none
+gn:2659724,Matzingen,Thurgau,2399,village,0,0,50,0,none,none
+gn:2659726,Matzendorf,Solothurn,1282,village,0,0,50,0,none,none
+gn:2659731,Matten,Bern,3676,village,0,0,50,0,none,none
+gn:2659739,Massagno,Ticino,5774,village,0,0,50,0,none,none
+gn:2659748,Martigny-Ville,Valais,18301,town,0,0,50,0,none,none
+gn:2659750,Martigny-Combe,Valais,1731,village,0,0,50,0,none,none
+gn:2659753,Marthalen,Zurich,1567,village,0,0,50,0,none,none
+gn:2659754,Märstetten-Dorf,Thurgau,2600,village,0,0,50,0,none,none
+gn:2659755,Marsens,Fribourg,1571,village,0,0,50,0,none,none
+gn:2659758,Marly,Fribourg,7653,village,0,0,50,0,none,none
+gn:2659772,Männedorf,Zurich,7951,village,0,0,50,0,none,none
+gn:2659775,Malvaglia,Ticino,1290,village,0,0,50,0,none,none
+gn:2659776,Malters,Lucerne,6181,village,0,0,50,0,none,none
+gn:2659781,Malleray,Bern,1918,village,0,0,50,0,none,none
+gn:2659784,Malans,Grisons,2051,village,0,0,50,0,none,none
+gn:2659787,Maienfeld,Grisons,2435,village,0,0,50,0,none,none
+gn:2659798,Magden,Aargau,3433,village,0,0,50,0,none,none
+gn:2659800,Magadino,Ticino,1538,village,0,0,50,0,none,none
+gn:2659805,Madiswil,Bern,1991,village,0,0,50,0,none,none
+gn:2659807,Lyssach,Bern,1375,village,0,0,50,0,none,none
+gn:2659808,Lyss,Bern,10937,town,0,0,50,0,none,none
+gn:2659811,Luzern,Lucerne,81691,town,0,0,50,0,none,none
+gn:2659812,Luzein,Grisons,1153,village,0,0,50,0,none,none
+gn:2659814,Lützelflüh,Bern,4035,village,0,0,50,0,none,none
+gn:2659819,Lutry,Vaud,8774,village,0,0,50,0,none,none
+gn:2659820,Lütisburg,Saint Gallen,1476,village,0,0,50,0,none,none
+gn:2659821,Luthern,Lucerne,1392,village,0,0,50,0,none,none
+gn:2659822,Luterbach,Solothurn,3292,village,0,0,50,0,none,none
+gn:2659828,Lungern,Obwalden,1921,village,0,0,50,0,none,none
+gn:2659831,Lumino,Ticino,1190,village,0,0,50,0,none,none
+gn:2659836,Lugano,Ticino,63185,town,0,0,50,0,none,none
+gn:2659839,Luchsingen,Glarus,1119,village,0,0,50,0,none,none
+gn:2659840,Lucens,Vaud,2192,village,0,0,50,0,none,none
+gn:2659845,Lotzwil,Bern,2391,village,0,0,50,0,none,none
+gn:2659851,Lostorf,Solothurn,3749,village,0,0,50,0,none,none
+gn:2659853,Losone,Ticino,6070,village,0,0,50,0,none,none
+gn:2659864,Lodrino,Ticino,1526,village,0,0,50,0,none,none
+ch-locarno,Locarno,Ticino,15824,town,0,0,50,0,none,none
+gn:2659873,Littau,Lucerne,16121,town,0,0,50,0,none,none
+gn:2659878,Linthal,Glarus,1080,village,0,0,50,0,none,none
+gn:2659883,Linden,Bern,1315,village,0,0,50,0,none,none
+gn:2659888,Ligornetto,Ticino,1524,village,0,0,50,0,none,none
+gn:2659891,Liestal,Basel-Landschaft,12832,town,0,0,50,0,none,none
+gn:2659892,Liesberg,Basel-Landschaft,1210,village,0,0,50,0,none,none
+gn:2659898,Lichtensteig,Saint Gallen,1870,village,0,0,50,0,none,none
+gn:2659899,Leytron,Valais,2194,village,0,0,50,0,none,none
+gn:2659900,Leysin,Vaud,3066,village,0,0,50,0,none,none
+gn:2659903,Le Vaud,Vaud,1104,village,0,0,50,0,none,none
+gn:2659904,Leuzigen,Bern,1167,village,0,0,50,0,none,none
+gn:2659907,Leukerbad,Valais,1427,village,0,0,50,0,none,none
+gn:2659908,Leuk,Valais,3386,village,0,0,50,0,none,none
+gn:2659917,Les Ponts-de-Martel,Neuchâtel,1278,village,0,0,50,0,none,none
+gn:2659927,Les Geneveys-sur-Coffrane,Neuchâtel,1458,village,0,0,50,0,none,none
+gn:2659937,Les Breuleux,Jura,1277,village,0,0,50,0,none,none
+gn:2659938,Les Brenets,Neuchâtel,1169,village,0,0,50,0,none,none
+gn:2659939,Les Bois,Jura,1104,village,0,0,50,0,none,none
+gn:2659950,Lenzerheide,Grisons,2610,village,0,0,50,0,none,none
+gn:2659952,Lenzburg,Aargau,10569,town,0,0,50,0,none,none
+gn:2659954,Lens,Valais,3497,village,0,0,50,0,none,none
+gn:2659955,Le Noirmont,Jura,1617,village,0,0,50,0,none,none
+gn:2659956,Lenk,Bern,2268,village,0,0,50,0,none,none
+gn:2659957,Lengnau,Bern,7336,village,0,0,50,0,none,none
+gn:2659959,Le Mont-sur-Lausanne,Vaud,5270,village,0,0,50,0,none,none
+gn:2659960,Le Locle,Neuchâtel,10216,town,0,0,50,0,none,none
+gn:2659963,Le Landeron,Neuchâtel,4278,village,0,0,50,0,none,none
+gn:2659967,Leibstadt,Aargau,1287,village,0,0,50,0,none,none
+gn:2659974,Le Chenit,Vaud,4062,village,0,0,50,0,none,none
+gn:2659988,Lavertezzo,Ticino,1168,village,0,0,50,0,none,none
+gn:2659992,Lauterbrunnen,Bern,2646,village,0,0,50,0,none,none
+gn:2659993,Lausen,Basel-Landschaft,4892,village,0,0,50,0,none,none
+gn:2659994,Lausanne,Vaud,139111,city,0,0,50,0,none,none
+gn:2659996,Lauperswil,Bern,2700,village,0,0,50,0,none,none
+gn:2659997,Laupersdorf,Solothurn,1670,village,0,0,50,0,none,none
+gn:2659998,Laupen,Bern,2774,village,0,0,50,0,none,none
+gn:2659999,Laufenburg,Aargau,3632,village,0,0,50,0,none,none
+gn:2660001,Laufen,Basel-Landschaft,5618,village,0,0,50,0,none,none
+gn:2660002,Läufelfingen,Basel-Landschaft,1271,village,0,0,50,0,none,none
+gn:2660007,La Tour-de-Trême,Fribourg,3686,village,0,0,50,0,none,none
+gn:2660008,La Tour-de-Peilz,Vaud,10522,town,0,0,50,0,none,none
+gn:2660012,La Sarraz,Vaud,1734,village,0,0,50,0,none,none
+gn:2660016,La Roche,Fribourg,1405,village,0,0,50,0,none,none
+gn:2660029,Langrickenbach,Thurgau,1031,village,0,0,50,0,none,none
+gn:2660030,Langnau / Langnau (Dorf),Zurich,4745,village,0,0,50,0,none,none
+gn:2660032,Langnau,Bern,8784,village,0,0,50,0,none,none
+gn:2660034,Langenthal,Bern,14184,town,0,0,50,0,none,none
+gn:2660036,Langenbruck,Basel-Landschaft,1049,village,0,0,50,0,none,none
+gn:2660038,La Neuveville,Bern,3495,village,0,0,50,0,none,none
+gn:2660042,Landquart,Grisons,8886,village,0,0,50,0,none,none
+gn:2660074,St-Légier-La Chiésaz,Vaud,0,village,0,0,50,0,none,none
+gn:2660075,Lachen,Schwyz,8754,village,0,0,50,0,none,none
+gn:2660076,La Chaux-de-Fonds,Neuchâtel,37942,town,0,0,50,0,none,none
+gn:2660080,L'Abbaye,Vaud,0,village,0,0,50,0,none,none
+gn:2660083,Laax,Grisons,1252,village,0,0,50,0,none,none
+gn:2660086,Küttigen,Aargau,5234,village,0,0,50,0,none,none
+gn:2660088,Küssnacht,Schwyz,13084,town,0,0,50,0,none,none
+gn:2660089,Küsnacht,Zurich,11525,town,0,0,50,0,none,none
+gn:2660090,Künten,Aargau,1732,village,0,0,50,0,none,none
+gn:2660099,Krummenau,Saint Gallen,1453,village,0,0,50,0,none,none
+gn:2660104,Kriens,Lucerne,25010,town,0,0,50,0,none,none
+gn:2660105,Kriegstetten,Solothurn,1116,village,0,0,50,0,none,none
+gn:2660108,Kreuzlingen,Thurgau,21997,town,0,0,50,0,none,none
+gn:2660112,Krauchthal,Bern,2339,village,0,0,50,0,none,none
+gn:2660115,Koppigen,Bern,1977,village,0,0,50,0,none,none
+gn:2660117,Konolfingen,Bern,4562,village,0,0,50,0,none,none
+gn:2660119,Köniz,Bern,41784,town,0,0,50,0,none,none
+gn:2660120,Kölliken,Aargau,4059,village,0,0,50,0,none,none
+gn:2660121,Kollbrunn,Zurich,1848,village,0,0,50,0,none,none
+gn:2660123,Koblenz,Aargau,1651,village,0,0,50,0,none,none
+gn:2660124,Knutwil,Lucerne,1722,village,0,0,50,0,none,none
+gn:2660125,Knonau,Zurich,1077,village,0,0,50,0,none,none
+gn:2660127,Kloten,Zurich,16289,town,0,0,50,0,none,none
+gn:2660128,Klosters Serneus,Grisons,4044,village,0,0,50,0,none,none
+gn:2660135,Klingnau,Aargau,3069,village,0,0,50,0,none,none
+gn:2660141,Kleinlützel,Solothurn,1296,village,0,0,50,0,none,none
+gn:2660152,Kirchlindach,Bern,2553,village,0,0,50,0,none,none
+gn:2660155,Kirchberg,Saint Gallen,8127,village,0,0,50,0,none,none
+gn:2660156,Kirchberg,Bern,5335,village,0,0,50,0,none,none
+gn:2660160,Killwangen,Aargau,1783,village,0,0,50,0,none,none
+gn:2660161,Kilchberg,Zurich,6511,village,0,0,50,0,none,none
+gn:2660170,Kerzers,Fribourg,4459,village,0,0,50,0,none,none
+gn:2660171,Kerns,Obwalden,5217,village,0,0,50,0,none,none
+gn:2660177,Kehrsatz,Bern,3636,village,0,0,50,0,none,none
+gn:2660187,Kappelen,Bern,1075,village,0,0,50,0,none,none
+gn:2660191,Kandersteg,Bern,1123,village,0,0,50,0,none,none
+gn:2660194,Kaltbrunn,Saint Gallen,3803,village,0,0,50,0,none,none
+gn:2660195,Kallnach,Bern,1545,village,0,0,50,0,none,none
+gn:2660200,Kaisten,Aargau,2140,village,0,0,50,0,none,none
+gn:2660204,Kaiseraugst,Aargau,3600,village,0,0,50,0,none,none
+gn:2660205,Jussy,Geneva,1356,village,0,0,50,0,none,none
+gn:2660219,Jonschwil,Saint Gallen,3221,village,0,0,50,0,none,none
+gn:2660220,Jonen,Aargau,1683,village,0,0,50,0,none,none
+gn:2660221,Jona,Saint Gallen,17655,town,0,0,50,0,none,none
+gn:2660226,Jenaz,Grisons,1130,village,0,0,50,0,none,none
+gn:2660228,Jegenstorf,Bern,4027,village,0,0,50,0,none,none
+gn:2660247,Pfäffikon / Irgenhausen,Zurich,2032,village,0,0,50,0,none,none
+gn:2660250,Inwil,Lucerne,2163,village,0,0,50,0,none,none
+gn:2660253,Interlaken,Bern,5067,village,0,0,50,0,none,none
+gn:2660254,Ins,Bern,2826,village,0,0,50,0,none,none
+gn:2660261,Ingenbohl,Schwyz,7967,village,0,0,50,0,none,none
+gn:2660269,Illnau,Zurich,2964,village,0,0,50,0,none,none
+gn:2660275,Ilanz,Grisons,2321,village,0,0,50,0,none,none
+gn:2660277,Igis,Grisons,6828,village,0,0,50,0,none,none
+gn:2660279,Ibach,Schwyz,3500,village,0,0,50,0,none,none
+gn:2660280,Hüttwilen,Thurgau,1381,village,0,0,50,0,none,none
+gn:2660281,Huttwil,Bern,4643,village,0,0,50,0,none,none
+gn:2660292,Hünenberg,Zug,9032,village,0,0,50,0,none,none
+gn:2660298,Horw,Lucerne,12348,town,0,0,50,0,none,none
+gn:2660303,Horn,Thurgau,2274,village,0,0,50,0,none,none
+gn:2660305,Horgen,Zurich,22662,town,0,0,50,0,none,none
+gn:2660306,Zürich (Kreis 10) / Höngg,Zurich,17117,town,0,0,50,0,none,none
+gn:2660308,Homburg,Thurgau,1406,village,0,0,50,0,none,none
+gn:2660309,Hombrechtikon,Zurich,9212,village,0,0,50,0,none,none
+gn:2660311,Hölstein,Basel-Landschaft,2249,village,0,0,50,0,none,none
+gn:2660322,Hohenrain,Lucerne,2090,village,0,0,50,0,none,none
+gn:2660329,Hochwald,Solothurn,1254,village,0,0,50,0,none,none
+gn:2660332,Hochdorf,Lucerne,8192,village,0,0,50,0,none,none
+gn:2660334,Hitzkirch,Lucerne,2165,village,0,0,50,0,none,none
+gn:2660335,Hittnau / Hittnau (Dorf),Zurich,1502,village,0,0,50,0,none,none
+gn:2660338,Hinwil,Zurich,11135,town,0,0,50,0,none,none
+gn:2660341,Hinterrhein,Grisons,61,village,0,0,50,0,none,none
+gn:2660349,Hindelbank,Bern,1994,village,0,0,50,0,none,none
+gn:2660350,Himmelried,Solothurn,1002,village,0,0,50,0,none,none
+gn:2660351,Hilterfingen,Bern,3841,village,0,0,50,0,none,none
+gn:2660352,Hildisrieden,Lucerne,1882,village,0,0,50,0,none,none
+gn:2660353,Hettlingen,Zurich,2221,village,0,0,50,0,none,none
+gn:2660355,Herzogenbuchsee,Bern,5522,village,0,0,50,0,none,none
+gn:2660359,Herrliberg,Zurich,5025,village,0,0,50,0,none,none
+gn:2660361,Hermiswil,Bern,3156,village,0,0,50,0,none,none
+gn:2660365,Herisau,Appenzell Ausserrhoden,15744,town,0,0,50,0,none,none
+gn:2660367,Hergiswil,Nidwalden,5437,village,0,0,50,0,none,none
+gn:2660371,Hérémence,Valais,1331,village,0,0,50,0,none,none
+gn:2660376,Henggart,Zurich,1574,village,0,0,50,0,none,none
+gn:2660386,Heitenried,Fribourg,1106,village,0,0,50,0,none,none
+gn:2660388,Heimiswil,Bern,1570,village,0,0,50,0,none,none
+gn:2660390,Heimberg,Bern,5501,village,0,0,50,0,none,none
+gn:2660392,Heiden,Appenzell Ausserrhoden,3999,village,0,0,50,0,none,none
+gn:2660394,Oberwinterthur (Kreis 2) / Hegi,Zurich,1539,village,0,0,50,0,none,none
+gn:2660400,Hausen am Albis / Hausen (Dorf),Zurich,3253,village,0,0,50,0,none,none
+gn:2660408,Haslen,Appenzell Innerrhoden,638,village,0,0,50,0,none,none
+gn:2660410,Hasle,Lucerne,1725,village,0,0,50,0,none,none
+gn:2660418,Hallau,Schaffhausen,2000,village,0,0,50,0,none,none
+gn:2660424,Hägglingen,Aargau,2183,village,0,0,50,0,none,none
+gn:2660425,Häggenschwil,Saint Gallen,1216,village,0,0,50,0,none,none
+gn:2660426,Hägendorf,Solothurn,4338,village,0,0,50,0,none,none
+gn:2660432,Güttingen,Thurgau,1336,village,0,0,50,0,none,none
+gn:2660441,Gunzwil,Lucerne,1925,village,0,0,50,0,none,none
+gn:2660442,Gunzgen,Solothurn,1604,village,0,0,50,0,none,none
+gn:2660452,Guggisberg,Bern,1628,village,0,0,50,0,none,none
+gn:2660461,Gstaad,Bern,9200,village,0,0,50,0,none,none
+gn:2660462,Gryon,Vaud,1122,village,0,0,50,0,none,none
+gn:2660463,Gruyères,Fribourg,1646,village,0,0,50,0,none,none
+gn:2660465,Grüsch,Grisons,1243,village,0,0,50,0,none,none
+gn:2660474,Grosswangen,Lucerne,2941,village,0,0,50,0,none,none
+gn:2660489,Andelfingen,Zurich,1328,village,0,0,50,0,none,none
+gn:2660491,Grossaffoltern,Bern,2810,village,0,0,50,0,none,none
+gn:2660493,Grône,Valais,2039,village,0,0,50,0,none,none
+gn:2660495,Grolley,Fribourg,1575,village,0,0,50,0,none,none
+gn:2660498,Grindelwald,Bern,3730,village,0,0,50,0,none,none
+gn:2660503,Grimisuat,Valais,2332,village,0,0,50,0,none,none
+gn:2660512,Grenchen,Solothurn,15927,town,0,0,50,0,none,none
+gn:2660513,Grellingen,Basel-Landschaft,1767,village,0,0,50,0,none,none
+gn:2660515,Greifensee,Zurich,5032,village,0,0,50,0,none,none
+gn:2660519,Gravesano,Ticino,1062,village,0,0,50,0,none,none
+gn:2660523,Gränichen,Aargau,6557,village,0,0,50,0,none,none
+gn:2660529,Grandson,Vaud,2735,village,0,0,50,0,none,none
+gn:2660531,Grand-Savagnier,Neuchâtel,1116,village,0,0,50,0,none,none
+gn:2660532,Le Grand-Saconnex,Geneva,9781,village,0,0,50,0,none,none
+gn:2660540,Grancy,Vaud,308,village,0,0,50,0,none,none
+gn:2660542,Grächen,Valais,1362,village,0,0,50,0,none,none
+gn:2660543,Grabs,Saint Gallen,6384,village,0,0,50,0,none,none
+gn:2660545,Gottlieben,Thurgau,290,village,0,0,50,0,none,none
+gn:2660549,Gossau,Saint Gallen,17043,town,0,0,50,0,none,none
+gn:2660550,Gossau,Zurich,4287,village,0,0,50,0,none,none
+gn:2660557,Gorgier,Neuchâtel,1832,village,0,0,50,0,none,none
+gn:2660559,Gordola,Ticino,3974,village,0,0,50,0,none,none
+gn:2660563,Gontenschwil,Aargau,2067,village,0,0,50,0,none,none
+gn:2660564,Gonten,Appenzell Innerrhoden,1406,village,0,0,50,0,none,none
+gn:2660568,Gommiswald,Saint Gallen,2781,village,0,0,50,0,none,none
+gn:2660572,Goldingen,Saint Gallen,1013,village,0,0,50,0,none,none
+gn:2660573,Goldau,Schwyz,5285,village,0,0,50,0,none,none
+gn:2660575,Goldach,Saint Gallen,9094,village,0,0,50,0,none,none
+gn:2660579,Glovelier,Jura,1199,village,0,0,50,0,none,none
+gn:2660587,Glattfelden,Zurich,2578,village,0,0,50,0,none,none
+gn:2660590,Glattbrugg,Zurich,2642,village,0,0,50,0,none,none
+gn:2660594,Glarus,Glarus,12425,town,0,0,50,0,none,none
+gn:2660600,Gland,Vaud,10641,town,0,0,50,0,none,none
+gn:2660603,Giubiasco,Ticino,7752,village,0,0,50,0,none,none
+gn:2660604,Giswil,Obwalden,3563,village,0,0,50,0,none,none
+gn:2660607,Gipf-Oberfrick,Aargau,3102,village,0,0,50,0,none,none
+gn:2660612,Gimel,Vaud,1454,village,0,0,50,0,none,none
+gn:2660614,Giffers,Fribourg,1566,village,0,0,50,0,none,none
+gn:2660625,Geuensee,Lucerne,2168,village,0,0,50,0,none,none
+gn:2660631,Gersau,Schwyz,1983,village,0,0,50,0,none,none
+gn:2660637,Gerlafingen,Solothurn,4864,village,0,0,50,0,none,none
+gn:2660643,Genolier,Vaud,1498,village,0,0,50,0,none,none
+gn:2660646,Geneva,Geneva,201741,city,0,0,50,0,none,none
+gn:2660656,Gelterkinden,Basel-Landschaft,5709,village,0,0,50,0,none,none
+gn:2660659,Gebenstorf,Aargau,4100,village,0,0,50,0,none,none
+gn:2660665,Ganterschwil,Saint Gallen,1145,village,0,0,50,0,none,none
+gn:2660670,Gams,Saint Gallen,2971,village,0,0,50,0,none,none
+gn:2660672,Gampel,Valais,1386,village,0,0,50,0,none,none
+gn:2660681,Gais,Appenzell Ausserrhoden,2778,village,0,0,50,0,none,none
+gn:2660688,Gachnang,Thurgau,3235,village,0,0,50,0,none,none
+gn:2660700,Fully,Valais,5922,village,0,0,50,0,none,none
+gn:2660701,Füllinsdorf,Basel-Landschaft,4442,village,0,0,50,0,none,none
+gn:2660703,Fulenbach,Solothurn,1526,village,0,0,50,0,none,none
+gn:2660707,Frutigen,Bern,6671,village,0,0,50,0,none,none
+gn:2660710,Froideville,Vaud,1518,village,0,0,50,0,none,none
+gn:2660716,Frick,Aargau,4583,village,0,0,50,0,none,none
+gn:2660718,Fribourg,Fribourg,38365,town,0,0,50,0,none,none
+gn:2660719,Frenkendorf,Basel-Landschaft,6180,village,0,0,50,0,none,none
+gn:2660721,Freienbach,Schwyz,14302,town,0,0,50,0,none,none
+gn:2660726,Frauenkappelen,Bern,1281,village,0,0,50,0,none,none
+gn:2660727,Frauenfeld,Thurgau,25607,town,0,0,50,0,none,none
+gn:2660728,Fraubrunnen,Bern,1616,village,0,0,50,0,none,none
+gn:2660733,Founex,Vaud,2254,village,0,0,50,0,none,none
+gn:2660742,Fontenais,Jura,1289,village,0,0,50,0,none,none
+gn:2660745,Fontainemelon,Neuchâtel,1647,village,0,0,50,0,none,none
+gn:2660746,Flurlingen,Zurich,1221,village,0,0,50,0,none,none
+gn:2660747,Flums,Saint Gallen,4848,village,0,0,50,0,none,none
+gn:2660748,Flühli,Lucerne,1937,village,0,0,50,0,none,none
+gn:2660751,Flüelen,Uri,2000,village,0,0,50,0,none,none
+gn:2660757,Flims,Grisons,2536,village,0,0,50,0,none,none
+gn:2660758,Fleurier,Neuchâtel,3681,village,0,0,50,0,none,none
+gn:2660762,Flawil,Saint Gallen,9739,village,0,0,50,0,none,none
+gn:2660764,Flamatt,Fribourg,4922,village,0,0,50,0,none,none
+gn:2660766,Fischingen,Thurgau,2548,village,0,0,50,0,none,none
+gn:2660781,Fiesch,Valais,1003,village,0,0,50,0,none,none
+gn:2660787,Feusisberg,Schwyz,4210,village,0,0,50,0,none,none
+gn:2660788,Feuerthalen,Zurich,2165,village,0,0,50,0,none,none
+gn:2660798,Ferenbalm,Bern,1310,village,0,0,50,0,none,none
+gn:2660802,Felsberg,Grisons,2088,village,0,0,50,0,none,none
+gn:2660805,Feldmeilen,Zurich,3732,village,0,0,50,0,none,none
+gn:2660812,Fehraltorf,Zurich,3767,village,0,0,50,0,none,none
+gn:2660826,Fällanden,Zurich,2100,village,0,0,50,0,none,none
+gn:2660830,Faido,Ticino,1512,village,0,0,50,0,none,none
+gn:2660840,Evolène,Valais,1557,village,0,0,50,0,none,none
+gn:2660841,Evionnaz,Valais,1001,village,0,0,50,0,none,none
+gn:2660842,Evilard,Bern,2328,village,0,0,50,0,none,none
+gn:2660848,Ettiswil,Lucerne,1801,village,0,0,50,0,none,none
+gn:2660849,Ettingen,Basel-Landschaft,4980,village,0,0,50,0,none,none
+gn:2660851,Estavayer-le-Lac,Fribourg,5061,village,0,0,50,0,none,none
+gn:2660856,Escholzmatt,Lucerne,3192,village,0,0,50,0,none,none
+gn:2660857,Eschlikon,Thurgau,3425,village,0,0,50,0,none,none
+gn:2660859,Eschenz,Thurgau,1508,village,0,0,50,0,none,none
+gn:2660860,Eschenbach,Saint Gallen,9175,village,0,0,50,0,none,none
+gn:2660863,Erstfeld,Uri,3876,village,0,0,50,0,none,none
+gn:2660864,Ersigen,Bern,1507,village,0,0,50,0,none,none
+gn:2660869,Ermatingen,Thurgau,2453,village,0,0,50,0,none,none
+gn:2660871,Erlenbach im Simmental,Bern,1730,village,0,0,50,0,none,none
+gn:2660872,Erlenbach,Zurich,4519,village,0,0,50,0,none,none
+gn:2660873,Erlen,Thurgau,3057,village,0,0,50,0,none,none
+gn:2660874,Erlach,Bern,1108,village,0,0,50,0,none,none
+gn:2660876,Eriswil,Bern,1414,village,0,0,50,0,none,none
+gn:2660881,Ependes,Fribourg,1006,village,0,0,50,0,none,none
+gn:2660884,Epalinges,Vaud,7706,village,0,0,50,0,none,none
+gn:2660887,Entlebuch,Lucerne,3293,village,0,0,50,0,none,none
+gn:2660892,Ennetbürgen,Nidwalden,4226,village,0,0,50,0,none,none
+gn:2660893,Ennenda,Glarus,2699,village,0,0,50,0,none,none
+gn:2660902,Engelberg,Obwalden,4181,village,0,0,50,0,none,none
+gn:2660907,Emmetten,Nidwalden,1232,village,0,0,50,0,none,none
+gn:2660911,Emmen,Lucerne,30926,town,0,0,50,0,none,none
+gn:2660913,Embrach,Zurich,7088,village,0,0,50,0,none,none
+gn:2660920,Elgg,Zurich,3282,village,0,0,50,0,none,none
+gn:2660925,Einsiedeln,Schwyz,15867,town,0,0,50,0,none,none
+gn:2660927,Eiken,Aargau,1923,village,0,0,50,0,none,none
+gn:2660930,Eichberg,Saint Gallen,1260,village,0,0,50,0,none,none
+gn:2660931,Eich,Lucerne,1627,village,0,0,50,0,none,none
+gn:2660932,Egnach,Thurgau,4179,village,0,0,50,0,none,none
+gn:2660933,Egliswil,Aargau,1401,village,0,0,50,0,none,none
+gn:2660935,Eggiwil,Bern,2559,village,0,0,50,0,none,none
+gn:2660937,Eggersriet,Saint Gallen,2209,village,0,0,50,0,none,none
+gn:2660942,Egg,Zurich,8829,village,0,0,50,0,none,none
+gn:2660943,Egerkingen,Solothurn,2923,village,0,0,50,0,none,none
+gn:2660944,Effretikon,Zurich,10119,town,0,0,50,0,none,none
+gn:2660950,Echallens,Vaud,5740,village,0,0,50,0,none,none
+gn:2660951,Ebnat-Kappel,Saint Gallen,4852,village,0,0,50,0,none,none
+gn:2660953,Ebikon,Lucerne,11471,town,0,0,50,0,none,none
+gn:2660960,Dürrenroth,Bern,1037,village,0,0,50,0,none,none
+gn:2660962,Dürrenäsch,Aargau,1187,village,0,0,50,0,none,none
+gn:2660965,Dürnten,Zurich,1032,village,0,0,50,0,none,none
+gn:2660970,Düdingen,Fribourg,7155,village,0,0,50,0,none,none
+gn:2660971,Dübendorf,Zurich,19882,town,0,0,50,0,none,none
+gn:2660986,Dottikon,Aargau,3125,village,0,0,50,0,none,none
+gn:2660989,Dornach,Solothurn,6449,village,0,0,50,0,none,none
+gn:2660999,Domdidier,Fribourg,2353,village,0,0,50,0,none,none
+gn:2661000,Dombresson,Neuchâtel,1659,village,0,0,50,0,none,none
+gn:2661001,Domat,Grisons,6817,village,0,0,50,0,none,none
+gn:2661009,Disentis,Grisons,2193,village,0,0,50,0,none,none
+gn:2661014,Dietlikon / Dietlikon (Dorf),Zurich,6149,village,0,0,50,0,none,none
+gn:2661015,Dietikon,Zurich,20893,town,0,0,50,0,none,none
+gn:2661016,Diessenhofen,Thurgau,0,village,0,0,50,0,none,none
+gn:2661021,Diepoldsau,Saint Gallen,5401,village,0,0,50,0,none,none
+gn:2661023,Diemtigen,Bern,2027,village,0,0,50,0,none,none
+gn:2661024,Dielsdorf,Zurich,4671,village,0,0,50,0,none,none
+gn:2661025,Diegten,Basel-Landschaft,1633,village,0,0,50,0,none,none
+gn:2661030,Derendingen,Solothurn,6093,village,0,0,50,0,none,none
+gn:2661034,Densbüren,Aargau,758,village,0,0,50,0,none,none
+gn:2661035,Delémont,Jura,12682,town,0,0,50,0,none,none
+gn:2661036,Deitingen,Solothurn,2135,village,0,0,50,0,none,none
+gn:2661038,Degersheim,Saint Gallen,3802,village,0,0,50,0,none,none
+gn:2661039,Davos,Grisons,10898,town,0,0,50,0,none,none
+gn:2661043,Dättwil,Aargau,3500,village,0,0,50,0,none,none
+gn:2661045,Därligen,Bern,390,village,0,0,50,0,none,none
+gn:2661046,Dardagny,Geneva,1329,village,0,0,50,0,none,none
+gn:2661053,Dallenwil,Nidwalden,1738,village,0,0,50,0,none,none
+gn:2661057,Dagmersellen,Lucerne,3300,village,0,0,50,0,none,none
+gn:2661058,Dachsen,Zurich,1470,village,0,0,50,0,none,none
+gn:2661063,Cully,Vaud,1793,village,0,0,50,0,none,none
+gn:2661064,Cugy,Fribourg,1523,village,0,0,50,0,none,none
+gn:2661066,Cugnasco,Ticino,1202,village,0,0,50,0,none,none
+gn:2661072,Crissier,Vaud,6612,village,0,0,50,0,none,none
+gn:2661076,Cressier,Neuchâtel,1912,village,0,0,50,0,none,none
+gn:2661086,Couvet,Neuchâtel,2811,village,0,0,50,0,none,none
+gn:2661089,Courtételle,Jura,2248,village,0,0,50,0,none,none
+gn:2661092,Courtelary,Bern,1163,village,0,0,50,0,none,none
+gn:2661094,Court,Bern,1328,village,0,0,50,0,none,none
+gn:2661095,Courroux,Jura,3085,village,0,0,50,0,none,none
+gn:2661096,Courrendlin,Jura,2314,village,0,0,50,0,none,none
+gn:2661098,Courgevaux,Fribourg,1057,village,0,0,50,0,none,none
+gn:2661099,Courgenay,Jura,2106,village,0,0,50,0,none,none
+gn:2661100,Courfaivre,Jura,1508,village,0,0,50,0,none,none
+gn:2661104,Cossonay,Vaud,2795,village,0,0,50,0,none,none
+gn:2661110,Cortaillod,Neuchâtel,4410,village,0,0,50,0,none,none
+gn:2661111,Corsier,Geneva,1699,village,0,0,50,0,none,none
+gn:2661114,Cornaux,Neuchâtel,1557,village,0,0,50,0,none,none
+gn:2661115,Corminboeuf,Fribourg,1702,village,0,0,50,0,none,none
+gn:2661117,Corgémont,Bern,1503,village,0,0,50,0,none,none
+gn:2661124,Coppet,Vaud,2124,village,0,0,50,0,none,none
+gn:2661129,Conthey,Valais,8792,village,0,0,50,0,none,none
+gn:2661132,Confignon,Geneva,3425,village,0,0,50,0,none,none
+gn:2661140,Comano,Ticino,1729,village,0,0,50,0,none,none
+gn:2661148,Collombey,Valais,5926,village,0,0,50,0,none,none
+gn:2661160,Claro,Ticino,2296,village,0,0,50,0,none,none
+gn:2661167,Churwalden,Grisons,1214,village,0,0,50,0,none,none
+gn:2661169,Chur,Grisons,35373,town,0,0,50,0,none,none
+gn:2661172,Chippis,Valais,1556,village,0,0,50,0,none,none
+gn:2661176,Chiasso,Ticino,8060,village,0,0,50,0,none,none
+gn:2661178,Chézard-Saint-Martin,Neuchâtel,1655,village,0,0,50,0,none,none
+gn:2661180,Chexbres,Vaud,2133,village,0,0,50,0,none,none
+gn:2661187,Cheseaux,Vaud,3946,village,0,0,50,0,none,none
+gn:2661188,Chermignon-d'en Haut,Valais,2773,village,0,0,50,0,none,none
+gn:2661191,Chêne-Bourg,Geneva,7959,village,0,0,50,0,none,none
+gn:2661194,Chavornay,Vaud,2841,village,0,0,50,0,none,none
+gn:2661197,Chavannes,Vaud,5454,village,0,0,50,0,none,none
+gn:2661202,Châtel-Saint-Denis,Fribourg,5094,village,0,0,50,0,none,none
+gn:2661205,Château-d'Oex,Vaud,3034,village,0,0,50,0,none,none
+gn:2661209,Charrat,Valais,1156,village,0,0,50,0,none,none
+gn:2661211,Charmey,Fribourg,1713,village,0,0,50,0,none,none
+gn:2661214,Chardonne,Vaud,2659,village,0,0,50,0,none,none
+gn:2661219,Chancy,Geneva,1653,village,0,0,50,0,none,none
+gn:2661223,Champéry,Valais,1191,village,0,0,50,0,none,none
+gn:2661226,Chamoson,Valais,2628,village,0,0,50,0,none,none
+gn:2661228,Cham,Zug,16719,town,0,0,50,0,none,none
+gn:2661229,Chalais,Valais,2665,village,0,0,50,0,none,none
+gn:2661231,Cevio,Ticino,1844,village,0,0,50,0,none,none
+gn:2661233,Cernier,Neuchâtel,2080,village,0,0,50,0,none,none
+gn:2661241,Celerina,Grisons,1241,village,0,0,50,0,none,none
+gn:2661242,Cazis,Grisons,1641,village,0,0,50,0,none,none
+gn:2661247,Caux,Vaud,2000,village,0,0,50,0,none,none
+gn:2661248,Cauco,Grisons,34,village,0,0,50,0,none,none
+gn:2661253,Castel San Pietro,Ticino,2150,village,0,0,50,0,none,none
+gn:2661260,Caslano,Ticino,3655,village,0,0,50,0,none,none
+gn:2661263,Cartigny,Geneva,1063,village,0,0,50,0,none,none
+gn:2661265,Carouge,Geneva,19344,town,0,0,50,0,none,none
+gn:2661269,Canobbio,Ticino,1869,village,0,0,50,0,none,none
+gn:2661280,Camorino,Ticino,2358,village,0,0,50,0,none,none
+gn:2661293,Cadro,Ticino,1596,village,0,0,50,0,none,none
+gn:2661294,Cadenazzo,Ticino,1906,village,0,0,50,0,none,none
+gn:2661295,Cadempino,Ticino,1351,village,0,0,50,0,none,none
+gn:2661297,Buus,Basel-Landschaft,1005,village,0,0,50,0,none,none
+gn:2661299,Buttwil,Aargau,1185,village,0,0,50,0,none,none
+gn:2661300,Buttisholz,Lucerne,2890,village,0,0,50,0,none,none
+gn:2661302,Bütschwil,Saint Gallen,3393,village,0,0,50,0,none,none
+gn:2661305,Bussigny,Vaud,7408,village,0,0,50,0,none,none
+gn:2661306,Büsserach,Solothurn,1863,village,0,0,50,0,none,none
+gn:2661307,Buseno,Grisons,90,village,0,0,50,0,none,none
+gn:2661313,Büron,Lucerne,1951,village,0,0,50,0,none,none
+gn:2661315,Bürglen,Thurgau,3149,village,0,0,50,0,none,none
+gn:2661316,Bürglen,Uri,3996,village,0,0,50,0,none,none
+gn:2661318,Burgistein,Bern,1058,village,0,0,50,0,none,none
+gn:2661321,Burgdorf,Bern,16420,town,0,0,50,0,none,none
+gn:2661328,Buochs,Nidwalden,5524,village,0,0,50,0,none,none
+gn:2661337,Bulle,Fribourg,23438,town,0,0,50,0,none,none
+gn:2661338,Bülach,Zurich,20443,town,0,0,50,0,none,none
+gn:2661343,Bühler,Appenzell Ausserrhoden,1612,village,0,0,50,0,none,none
+gn:2661348,Buchs,Aargau,6599,village,0,0,50,0,none,none
+gn:2661349,Buchs,Saint Gallen,10418,town,0,0,50,0,none,none
+gn:2661350,Buchrain,Lucerne,5341,village,0,0,50,0,none,none
+gn:2661352,Buchholterberg,Bern,1498,village,0,0,50,0,none,none
+gn:2661359,Bubikon,Zurich,2052,village,0,0,50,0,none,none
+gn:2661360,Bubendorf,Basel-Landschaft,4543,village,0,0,50,0,none,none
+gn:2661361,Brüttisellen,Zurich,3697,village,0,0,50,0,none,none
+gn:2661362,Brütten,Zurich,1556,village,0,0,50,0,none,none
+gn:2661365,Brusio,Grisons,1152,village,0,0,50,0,none,none
+gn:2661374,Brugg,Aargau,11177,town,0,0,50,0,none,none
+gn:2661375,Brügg,Bern,3868,village,0,0,50,0,none,none
+gn:2661380,Bronschhofen,Saint Gallen,4489,village,0,0,50,0,none,none
+gn:2661383,Broc,Fribourg,2148,village,0,0,50,0,none,none
+gn:2661384,Brittnau,Aargau,3735,village,0,0,50,0,none,none
+gn:2661388,Brissago,Ticino,1831,village,0,0,50,0,none,none
+gn:2661389,Brislach,Basel-Landschaft,1493,village,0,0,50,0,none,none
+gn:2661394,Brig,Valais,5000,village,0,0,50,0,none,none
+gn:2661398,Brienz,Bern,3090,village,0,0,50,0,none,none
+gn:2661407,Bremgarten,Aargau,6543,village,0,0,50,0,none,none
+gn:2661412,Breitenbach,Solothurn,3241,village,0,0,50,0,none,none
+gn:2661414,Breíl,Grisons,1344,village,0,0,50,0,none,none
+gn:2661425,Bowil,Bern,1414,village,0,0,50,0,none,none
+gn:2661429,Boudry,Neuchâtel,4886,village,0,0,50,0,none,none
+gn:2661432,Bottmingen,Basel-Landschaft,5912,village,0,0,50,0,none,none
+gn:2661433,Bottighofen,Thurgau,1882,village,0,0,50,0,none,none
+gn:2661435,Bottens,Vaud,1030,village,0,0,50,0,none,none
+gn:2661437,Bösingen,Fribourg,3118,village,0,0,50,0,none,none
+gn:2661446,Bonstetten,Zurich,2260,village,0,0,50,0,none,none
+gn:2661449,Boniswil,Aargau,1436,village,0,0,50,0,none,none
+gn:2661450,Bönigen,Bern,2233,village,0,0,50,0,none,none
+gn:2661452,Boncourt,Jura,1304,village,0,0,50,0,none,none
+gn:2661453,Bonaduz,Grisons,2654,village,0,0,50,0,none,none
+gn:2661455,Boltigen,Bern,1443,village,0,0,50,0,none,none
+gn:2661456,Bolligen,Bern,6086,village,0,0,50,0,none,none
+gn:2661463,Bodio,Ticino,1001,village,0,0,50,0,none,none
+gn:2661467,Blumenstein,Bern,1154,village,0,0,50,0,none,none
+gn:2661468,Blonay,Vaud,5244,village,0,0,50,0,none,none
+gn:2661490,Birsfelden,Basel-Landschaft,10232,town,0,0,50,0,none,none
+gn:2661493,Birr,Aargau,3884,village,0,0,50,0,none,none
+gn:2661495,Birmenstorf,Aargau,2462,village,0,0,50,0,none,none
+gn:2661496,Birmensdorf,Zurich,4772,village,0,0,50,0,none,none
+gn:2661498,Bioggio,Ticino,1784,village,0,0,50,0,none,none
+gn:2661499,Binningen,Basel-Landschaft,14130,town,0,0,50,0,none,none
+gn:2661503,Bilten,Glarus,2011,village,0,0,50,0,none,none
+gn:2661506,Biglen,Bern,1759,village,0,0,50,0,none,none
+gn:2661511,Bière,Vaud,1428,village,0,0,50,0,none,none
+gn:2661513,Biel/Bienne,Bern,55120,town,0,0,50,0,none,none
+gn:2661519,Biberist,Solothurn,7889,village,0,0,50,0,none,none
+gn:2661524,Biasca,Ticino,5885,village,0,0,50,0,none,none
+gn:2661527,Bex,Vaud,5956,village,0,0,50,0,none,none
+gn:2661528,Bévilard,Bern,1736,village,0,0,50,0,none,none
+gn:2661531,Bevaix,Neuchâtel,3866,village,0,0,50,0,none,none
+gn:2661533,Bettlach,Solothurn,4834,village,0,0,50,0,none,none
+gn:2661534,Bettingen,Basel-City,1189,village,0,0,50,0,none,none
+gn:2661542,Beromünster,Lucerne,2876,village,0,0,50,0,none,none
+gn:2661547,Bernex,Geneva,9759,village,0,0,50,0,none,none
+gn:2661552,Bern,Bern,121631,city,0,0,50,0,none,none
+gn:2661554,Beringen,Schaffhausen,3216,village,0,0,50,0,none,none
+gn:2661555,Berikon,Aargau,4527,village,0,0,50,0,none,none
+gn:2661557,Berg,Thurgau,2942,village,0,0,50,0,none,none
+gn:2661560,Benken,Saint Gallen,2419,village,0,0,50,0,none,none
+gn:2661563,Belp,Bern,9307,village,0,0,50,0,none,none
+gn:2661564,Belmont-sur-Lausanne,Vaud,3007,village,0,0,50,0,none,none
+gn:2661566,Bellmund,Bern,1311,village,0,0,50,0,none,none
+gn:2661567,Bellinzona,Ticino,43220,town,0,0,50,0,none,none
+gn:2661568,Bellevue,Geneva,3674,village,0,0,50,0,none,none
+gn:2661574,Belfaux,Fribourg,2286,village,0,0,50,0,none,none
+gn:2661579,Begnins,Vaud,1323,village,0,0,50,0,none,none
+gn:2661585,Beckenried,Nidwalden,3050,village,0,0,50,0,none,none
+gn:2661586,Beatenberg,Bern,1188,village,0,0,50,0,none,none
+gn:2661591,Bavois,Vaud,662,village,0,0,50,0,none,none
+gn:2661593,Bauma,Zurich,1029,village,0,0,50,0,none,none
+gn:2661595,Bauen,Uri,206,village,0,0,50,0,none,none
+gn:2661596,Bätterkinden,Bern,2748,village,0,0,50,0,none,none
+gn:2661599,Bassersdorf,Zurich,7010,village,0,0,50,0,none,none
+gn:2661600,Basse-Nendaz,Valais,5410,village,0,0,50,0,none,none
+gn:2661601,Bassecourt,Jura,3305,village,0,0,50,0,none,none
+gn:2661604,Basel,Basel-City,177595,city,0,0,50,0,none,none
+gn:2661612,Bäriswil,Bern,1036,village,0,0,50,0,none,none
+gn:2661613,Bäretswil,Zurich,1313,village,0,0,50,0,none,none
+gn:2661624,Baltschieder,Valais,1158,village,0,0,50,0,none,none
+gn:2661626,Balsthal,Solothurn,5863,village,0,0,50,0,none,none
+gn:2661632,Ballwil,Lucerne,2284,village,0,0,50,0,none,none
+gn:2661633,Ballens,Vaud,389,village,0,0,50,0,none,none
+gn:2661635,Balgach,Saint Gallen,4019,village,0,0,50,0,none,none
+gn:2661637,Balerna,Ticino,3456,village,0,0,50,0,none,none
+gn:2661641,Bagnes,Valais,6626,village,0,0,50,0,none,none
+gn:2661644,Bad Ragaz,Saint Gallen,5063,village,0,0,50,0,none,none
+gn:2661646,Baden,Aargau,19340,town,0,0,50,0,none,none
+gn:2661651,Bachenbülach,Zurich,2985,village,0,0,50,0,none,none
+gn:2661652,Bäch,Schwyz,1479,village,0,0,50,0,none,none
+gn:2661653,Baar,Zug,20546,town,0,0,50,0,none,none
+gn:2661655,Ayent,Valais,3243,village,0,0,50,0,none,none
+gn:2661658,Avry-sur-Matran,Fribourg,1326,village,0,0,50,0,none,none
+gn:2661661,Avenches,Vaud,2758,village,0,0,50,0,none,none
+gn:2661663,Auw,Aargau,1610,village,0,0,50,0,none,none
+gn:2661664,Auvernier,Neuchâtel,1555,village,0,0,50,0,none,none
+gn:2661666,Zürich (Kreis 4) / Aussersihl,Zurich,27273,town,0,0,50,0,none,none
+gn:2661687,Aubonne,Vaud,2703,village,0,0,50,0,none,none
+gn:2661689,Au,Saint Gallen,6673,village,0,0,50,0,none,none
+gn:2661691,Au,Zurich,4844,village,0,0,50,0,none,none
+gn:2661692,Attiswil,Bern,1389,village,0,0,50,0,none,none
+gn:2661693,Attinghausen,Uri,1515,village,0,0,50,0,none,none
+gn:2661694,Attalens,Fribourg,2380,village,0,0,50,0,none,none
+gn:2661698,Ascona,Ticino,5084,village,0,0,50,0,none,none
+gn:2661701,Arzo,Ticino,1188,village,0,0,50,0,none,none
+gn:2661703,Arzier,Vaud,1919,village,0,0,50,0,none,none
+gn:2661704,Arvigo,Grisons,92,village,0,0,50,0,none,none
+gn:2661708,Arth,Schwyz,9850,village,0,0,50,0,none,none
+gn:2661712,Arosa,Grisons,2307,village,0,0,50,0,none,none
+gn:2661719,Arlesheim,Basel-Landschaft,9301,village,0,0,50,0,none,none
+gn:2661720,Aristau,Aargau,1313,village,0,0,50,0,none,none
+gn:2661721,Arisdorf,Basel-Landschaft,1538,village,0,0,50,0,none,none
+gn:2661725,Ardon,Valais,2305,village,0,0,50,0,none,none
+gn:2661729,Arch,Bern,1574,village,0,0,50,0,none,none
+gn:2661731,Arbon,Thurgau,14631,town,0,0,50,0,none,none
+gn:2661738,Apples,Vaud,1201,village,0,0,50,0,none,none
+gn:2661740,Appenzell,Appenzell Innerrhoden,5649,village,0,0,50,0,none,none
+gn:2661745,Anières,Geneva,2706,village,0,0,50,0,none,none
+gn:2661748,Andwil,Saint Gallen,1737,village,0,0,50,0,none,none
+gn:2661750,Andermatt,Uri,1258,village,0,0,50,0,none,none
+gn:2661756,Amriswil,Thurgau,11351,town,0,0,50,0,none,none
+gn:2661758,Amden,Saint Gallen,1557,village,0,0,50,0,none,none
+gn:2661766,Altstätten,Saint Gallen,10574,town,0,0,50,0,none,none
+gn:2661768,Altnau,Thurgau,1887,village,0,0,50,0,none,none
+gn:2661770,Altishofen,Lucerne,1368,village,0,0,50,0,none,none
+gn:2661773,Alterswil,Fribourg,1850,village,0,0,50,0,none,none
+gn:2661776,Altendorf,Schwyz,5280,village,0,0,50,0,none,none
+gn:2661780,Altdorf,Uri,9401,village,0,0,50,0,none,none
+gn:2661789,Alpnach,Obwalden,5218,village,0,0,50,0,none,none
+gn:2661810,Allschwil,Basel-Landschaft,18189,town,0,0,50,0,none,none
+gn:2661814,Alle,Jura,1693,village,0,0,50,0,none,none
+gn:2661830,Airolo,Ticino,1559,village,0,0,50,0,none,none
+gn:2661834,Aigle,Vaud,10134,town,0,0,50,0,none,none
+gn:2661836,Agno,Ticino,3639,village,0,0,50,0,none,none
+gn:2661842,Affoltern am Albis,Zurich,12226,town,0,0,50,0,none,none
+gn:2661844,Affeltrangen,Thurgau,2135,village,0,0,50,0,none,none
+gn:2661849,Aeschi b. Spiez,Bern,2000,village,0,0,50,0,none,none
+gn:2661852,Aesch,Basel-Landschaft,10138,town,0,0,50,0,none,none
+gn:2661861,Adliswil,Zurich,15230,town,0,0,50,0,none,none
+gn:2661862,Adligenswil,Lucerne,5576,village,0,0,50,0,none,none
+gn:2661863,Adelboden,Bern,3541,village,0,0,50,0,none,none
+gn:2661865,Acquarossa,Ticino,1808,village,0,0,50,0,none,none
+gn:2661874,Aarwangen,Bern,4171,village,0,0,50,0,none,none
+gn:2661879,Aarburg,Aargau,6828,village,0,0,50,0,none,none
+gn:2661880,Aarberg,Bern,3911,village,0,0,50,0,none,none
+gn:2661881,Aarau,Aargau,21503,town,0,0,50,0,none,none
+gn:2661882,Aadorf,Thurgau,7620,village,0,0,50,0,none,none
+gn:3206590,Riehen,Basel-City,20000,town,0,0,50,0,none,none
+gn:3209498,Chêne-Bougeries,Geneva,10487,town,0,0,50,0,none,none
+gn:3209502,Meinier,Geneva,1811,village,0,0,50,0,none,none
+gn:3209504,Puplinge,Geneva,2163,village,0,0,50,0,none,none
+gn:3209505,Thônex,Geneva,13057,town,0,0,50,0,none,none
+gn:6252010,Wettswil / Wettswil (Dorf),Zurich,3605,village,0,0,50,0,none,none
+gn:6252014,Sellenbüren,Zurich,1572,village,0,0,50,0,none,none
+gn:6255069,Itingen,Basel-Landschaft,1750,village,0,0,50,0,none,none
+gn:6285791,Ecublens,Vaud,10262,town,0,0,50,0,none,none
+gn:6290373,Affoltern / Hasenbüel,Zurich,1690,village,0,0,50,0,none,none
+gn:6290375,Affoltern / Oberdorf,Zurich,1759,village,0,0,50,0,none,none
+gn:6290376,Affoltern / Unterdorf,Zurich,1989,village,0,0,50,0,none,none
+gn:6290378,Affoltern / Sonnenberg,Zurich,1262,village,0,0,50,0,none,none
+gn:6290379,Schachen,Zurich,1278,village,0,0,50,0,none,none
+gn:6290434,Hedingen,Zurich,2835,village,0,0,50,0,none,none
+gn:6290552,Obfelden / Oberlunnern,Zurich,1103,village,0,0,50,0,none,none
+gn:6290556,Obfelden / Toussen,Zurich,1146,village,0,0,50,0,none,none
+gn:6290655,Wettswil / Ausser-Dorf,Zurich,1438,village,0,0,50,0,none,none
+gn:6290802,Kleinandelfingen,Zurich,1094,village,0,0,50,0,none,none
+gn:6291056,Bülach / Soligänter,Zurich,1434,village,0,0,50,0,none,none
+gn:6291058,Bülach / Gstückt,Zurich,1863,village,0,0,50,0,none,none
+gn:6291061,Bülach / Seematt,Zurich,2171,village,0,0,50,0,none,none
+gn:6291103,Dietlikon / Eichwiesen,Zurich,1386,village,0,0,50,0,none,none
+gn:6291134,Embrach / Embrach (Dorfkern),Zurich,2960,village,0,0,50,0,none,none
+gn:6291139,Embrach / Kellersacker,Zurich,1467,village,0,0,50,0,none,none
+gn:6291171,Freienstein,Zurich,1617,village,0,0,50,0,none,none
+gn:6291215,Hochfelden,Zurich,1442,village,0,0,50,0,none,none
+gn:6291226,Höri,Zurich,1041,village,0,0,50,0,none,none
+gn:6291242,Kloten / Kloten (Zentrum),Zurich,1681,village,0,0,50,0,none,none
+gn:6291243,Kloten / Freienberg (Chanzler-Chlini Chaseren),Zurich,1588,village,0,0,50,0,none,none
+gn:6291246,Kloten / Horainli,Zurich,1391,village,0,0,50,0,none,none
+gn:6291247,Kloten / Geissberg,Zurich,1941,village,0,0,50,0,none,none
+gn:6291248,Kloten / Hostrass,Zurich,1012,village,0,0,50,0,none,none
+gn:6291249,Kloten / Holberg,Zurich,2239,village,0,0,50,0,none,none
+gn:6291251,Kloten / Balsberg,Zurich,1389,village,0,0,50,0,none,none
+gn:6291253,Kloten / Spitz,Zurich,1153,village,0,0,50,0,none,none
+gn:6291254,Kloten / Rütlen,Zurich,2510,village,0,0,50,0,none,none
+gn:6291286,Birchwil,Zurich,1066,village,0,0,50,0,none,none
+gn:6291324,Glattbrugg / Wydacker/Bettacker/Lättenwiesen,Zurich,1551,village,0,0,50,0,none,none
+gn:6291325,Grossacker/Opfikon,Zurich,1076,village,0,0,50,0,none,none
+gn:6291336,Glattbrugg / Rohr/Platten-Balsberg,Zurich,1780,village,0,0,50,0,none,none
+gn:6291373,Wallisellen / Wallisellen-West,Zurich,3511,village,0,0,50,0,none,none
+gn:6291374,Wallisellen / Wallisellen-Ost,Zurich,5031,village,0,0,50,0,none,none
+gn:6291375,Wallisellen / Rieden,Zurich,2261,village,0,0,50,0,none,none
+gn:6291499,Dällikon / Dällikon (Dorf),Zurich,1583,village,0,0,50,0,none,none
+gn:6291532,Neerach,Zurich,1435,village,0,0,50,0,none,none
+gn:6291546,Niederglatt / Niederglatt (Dorfkern),Zurich,1147,village,0,0,50,0,none,none
+gn:6291558,Niederhasli,Zurich,2848,village,0,0,50,0,none,none
+gn:6291619,Oberglatt / Oberglatt (Dorfkern),Zurich,1406,village,0,0,50,0,none,none
+gn:6291621,Oberglatt / Bahnhofquartier,Zurich,1333,village,0,0,50,0,none,none
+gn:6291625,Hofstetten,Zurich,1115,village,0,0,50,0,none,none
+gn:6291664,Sonnhalde,Zurich,1984,village,0,0,50,0,none,none
+gn:6291682,Regensdorf / Hofacher-Geeren,Zurich,1038,village,0,0,50,0,none,none
+gn:6291683,Regensdorf / Feldblumen-Riedthofstrasse,Zurich,1122,village,0,0,50,0,none,none
+gn:6291714,Regensdorf / Obstgarten,Zurich,1090,village,0,0,50,0,none,none
+gn:6291716,Rümlang / Rümlang (Dorfkern),Zurich,3528,village,0,0,50,0,none,none
+gn:6291996,Tann / Tann (Dorfkern),Zurich,2080,village,0,0,50,0,none,none
+gn:6292217,Grüt,Zurich,1565,village,0,0,50,0,none,none
+gn:6292273,Binzikon,Zurich,1854,village,0,0,50,0,none,none
+gn:6292364,Hadlikon,Zurich,1321,village,0,0,50,0,none,none
+gn:6292396,Rüti / Westlicher Dorfteil,Zurich,3083,village,0,0,50,0,none,none
+gn:6292397,"Rüti / Dorfzentrum, Südl. Teil",Zurich,3618,village,0,0,50,0,none,none
+gn:6292398,Rüti / Oberdorf,Zurich,2875,village,0,0,50,0,none,none
+gn:6292590,Wetzikon / Robenhausen,Zurich,2213,village,0,0,50,0,none,none
+gn:6292591,Wetzikon / Kempten,Zurich,4377,village,0,0,50,0,none,none
+gn:6292636,Adliswil / Adliswil (Stadtkern),Zurich,2538,village,0,0,50,0,none,none
+gn:6292637,Adliswil / Oberleimbach,Zurich,1411,village,0,0,50,0,none,none
+gn:6292638,Adliswil / Sood,Zurich,1494,village,0,0,50,0,none,none
+gn:6292639,Adliswil / Hündli-Zopf,Zurich,1553,village,0,0,50,0,none,none
+gn:6292641,Adliswil / Sonnenberg,Zurich,1283,village,0,0,50,0,none,none
+gn:6292642,Adliswil / Tal,Zurich,1125,village,0,0,50,0,none,none
+gn:6292757,Horgen / Horgen (Dorfkern),Zurich,6140,village,0,0,50,0,none,none
+gn:6292759,Horgen / Allmend,Zurich,3809,village,0,0,50,0,none,none
+gn:6292760,Horgen / Scheller-Stockerstrasse,Zurich,2690,village,0,0,50,0,none,none
+gn:6292761,Horgen / Oberdorf,Zurich,2524,village,0,0,50,0,none,none
+gn:6292878,Kilchberg / Bächler-Stocken,Zurich,1147,village,0,0,50,0,none,none
+gn:6292881,Kilchberg / Kilchberg (Dorfkern),Zurich,2244,village,0,0,50,0,none,none
+gn:6292893,Langnau / Vitaquartier,Zurich,1161,village,0,0,50,0,none,none
+gn:6292896,Mühlehalde,Zurich,1220,village,0,0,50,0,none,none
+gn:6292917,Oberrieden / Mitte,Zurich,1807,village,0,0,50,0,none,none
+gn:6292918,Oberrieden / Berg,Zurich,1961,village,0,0,50,0,none,none
+gn:6292919,Richterswil / Dorfkern,Zurich,1216,village,0,0,50,0,none,none
+gn:6292920,Richterswil / Richterswil (Dorfkern),Zurich,3292,village,0,0,50,0,none,none
+gn:6292921,Richterswil / Burghalde,Zurich,1137,village,0,0,50,0,none,none
+gn:6293080,Thalwil / Dorfkern,Zurich,6829,village,0,0,50,0,none,none
+gn:6293081,Thalwil / Berg,Zurich,1568,village,0,0,50,0,none,none
+gn:6293082,Thalwil / Nord,Zurich,1751,village,0,0,50,0,none,none
+gn:6293083,Thalwil / Süd,Zurich,1255,village,0,0,50,0,none,none
+gn:6293088,Gattikon,Zurich,2142,village,0,0,50,0,none,none
+gn:6293096,Wädenswil / Dorf (Wädenswil),Zurich,2556,village,0,0,50,0,none,none
+gn:6293097,Au / Unter-Dorf,Zurich,1249,village,0,0,50,0,none,none
+gn:6293098,Au / Mittel-Dorf,Zurich,2562,village,0,0,50,0,none,none
+gn:6293101,Wädenswil / Hangenmoos,Zurich,1407,village,0,0,50,0,none,none
+gn:6293102,Wädenswil / Büelen,Zurich,2710,village,0,0,50,0,none,none
+gn:6293103,Wädenswil / Untermosen-Fuhr,Zurich,1976,village,0,0,50,0,none,none
+gn:6293104,Wädenswil / Leihof-Mühlebach,Zurich,1830,village,0,0,50,0,none,none
+gn:6293105,Wädenswil / Eichweid,Zurich,1252,village,0,0,50,0,none,none
+gn:6293106,Wädenswil / Boller-Giessen,Zurich,1538,village,0,0,50,0,none,none
+gn:6293192,Erlenbach / rechts des Dorfbachs oberhalb Bahnlinie,Zurich,1470,village,0,0,50,0,none,none
+gn:6293194,Erlenbach / links des Dorfbachs oberhalb Bahnlinie,Zurich,1709,village,0,0,50,0,none,none
+gn:6293330,Küsnacht / Dorf,Zurich,1574,village,0,0,50,0,none,none
+gn:6293331,Küsnacht / Goldbach,Zurich,2607,village,0,0,50,0,none,none
+gn:6293332,Küsnacht / Itschnach,Zurich,2397,village,0,0,50,0,none,none
+gn:6293333,Küsnacht / Schiedhalden,Zurich,1033,village,0,0,50,0,none,none
+gn:6293334,Küsnacht / Heslibach,Zurich,3228,village,0,0,50,0,none,none
+gn:6293356,Männedorf / Dorfkern,Zurich,4893,village,0,0,50,0,none,none
+gn:6293364,Männedorf / Ausserfeld,Zurich,1175,village,0,0,50,0,none,none
+gn:6293608,Dorf,Zurich,1226,village,0,0,50,0,none,none
+gn:6293652,Uetikon / Grossdorf,Zurich,1040,village,0,0,50,0,none,none
+gn:6293731,Zollikerberg,Zurich,4187,village,0,0,50,0,none,none
+gn:6293903,Effretikon / Watt,Zurich,2632,village,0,0,50,0,none,none
+gn:6293906,Effretikon / Rappenhalde-Bannhalde,Zurich,1758,village,0,0,50,0,none,none
+gn:6293970,Tagelswangen,Zurich,1606,village,0,0,50,0,none,none
+gn:6293977,Pfäffikon / Pfäffikon (Dorfkern),Zurich,5595,village,0,0,50,0,none,none
+gn:6294255,Dübendorf / Vogelquartier,Zurich,1391,village,0,0,50,0,none,none
+gn:6294257,Dübendorf / Wasserfurren,Zurich,1060,village,0,0,50,0,none,none
+gn:6294276,Dübendorf / Sonnenberg,Zurich,1018,village,0,0,50,0,none,none
+gn:6294285,Dübendorf / Kunklerstrasse,Zurich,1284,village,0,0,50,0,none,none
+gn:6294318,Hinteregg,Zurich,1107,village,0,0,50,0,none,none
+gn:6294319,Esslingen,Zurich,1203,village,0,0,50,0,none,none
+gn:6294402,Benglen,Zurich,1937,village,0,0,50,0,none,none
+gn:6294411,Greifensee / Müllerwis / Seilerwis,Zurich,1064,village,0,0,50,0,none,none
+gn:6294425,Greifensee / Pfisterhölzli,Zurich,1135,village,0,0,50,0,none,none
+gn:6294446,Aesch,Zurich,1717,village,0,0,50,0,none,none
+gn:6294449,Binz,Zurich,1601,village,0,0,50,0,none,none
+gn:6294491,Mönchaltorf / Dorf,Zurich,1077,village,0,0,50,0,none,none
+gn:6294531,Schwerzenbach / Chimli,Zurich,1020,village,0,0,50,0,none,none
+gn:6294532,Schwerzenbach / Blatten,Zurich,1078,village,0,0,50,0,none,none
+gn:6294547,Uster / Kirch-Uster,Zurich,10428,town,0,0,50,0,none,none
+gn:6294548,Uster / Nieder-Uster,Zurich,4128,village,0,0,50,0,none,none
+gn:6294549,Uster / Gschwader,Zurich,1763,village,0,0,50,0,none,none
+gn:6294550,Uster / Ober-Uster,Zurich,5100,village,0,0,50,0,none,none
+gn:6294551,Uster / Nossikon,Zurich,1433,village,0,0,50,0,none,none
+gn:6294555,Nänikon / Nänikon (Dorfkern),Zurich,1178,village,0,0,50,0,none,none
+gn:6294594,Kindhausen / Kindhausen (Dorf),Zurich,1107,village,0,0,50,0,none,none
+gn:6294605,Hegnau / Sunnebüel-Eich,Zurich,3250,village,0,0,50,0,none,none
+gn:6294614,Hegnau / Dammboden-Grindel,Zurich,2817,village,0,0,50,0,none,none
+gn:6294617,Gutenswil,Zurich,1188,village,0,0,50,0,none,none
+gn:6294626,Wangen,Zurich,2015,village,0,0,50,0,none,none
+gn:6294764,Elgg / Städtchen und Umgebung,Zurich,2342,village,0,0,50,0,none,none
+gn:6294993,Seuzach Dorf / Breite-Weid,Zurich,1016,village,0,0,50,0,none,none
+gn:6295077,Stadt Winterthur (Kreis 1) / Altstadt,Zurich,1665,village,0,0,50,0,none,none
+gn:6295078,Stadt Winterthur (Kreis 1) / Lind,Zurich,4617,village,0,0,50,0,none,none
+gn:6295079,Stadt Winterthur (Kreis 1) / Heiligberg,Zurich,3034,village,0,0,50,0,none,none
+gn:6295080,Stadt Winterthur (Kreis 1) / Tössfeld,Zurich,2207,village,0,0,50,0,none,none
+gn:6295081,Stadt Winterthur (Kreis 1) / Brühlberg,Zurich,1476,village,0,0,50,0,none,none
+gn:6295082,Stadt Winterthur (Kreis 1) / Neuwiesen,Zurich,3149,village,0,0,50,0,none,none
+gn:6295092,Oberwinterthur (Kreis 2) / Talacker,Zurich,5375,village,0,0,50,0,none,none
+gn:6295102,Oberwinterthur (Kreis 2) / Guggenbühl,Zurich,5376,village,0,0,50,0,none,none
+gn:6295111,Oberwinterthur (Kreis 2) / Zinzikon,Zurich,1842,village,0,0,50,0,none,none
+gn:6295121,Seen (Kreis 3) / Waser,Zurich,4088,village,0,0,50,0,none,none
+gn:6295126,Seen (Kreis 3) / Büelwiesen,Zurich,2632,village,0,0,50,0,none,none
+gn:6295131,Seen (Kreis 3) / Waldegg,Zurich,1184,village,0,0,50,0,none,none
+gn:6295133,Seen (Kreis 3) / Ganzenbühl,Zurich,2362,village,0,0,50,0,none,none
+gn:6295135,Seen (Kreis 3) / Oberseen,Zurich,2133,village,0,0,50,0,none,none
+gn:6295138,Töss (Kreis 4) / Vorder-Dättnau,Zurich,1476,village,0,0,50,0,none,none
+gn:6295143,Töss (Kreis 4) / Schlosstal,Zurich,2762,village,0,0,50,0,none,none
+gn:6295145,Töss (Kreis 4) / Eichliacker,Zurich,3626,village,0,0,50,0,none,none
+gn:6295147,Veltheim (Kreis 5) / Rosenberg,Zurich,4765,village,0,0,50,0,none,none
+gn:6295148,Veltheim (Kreis 5) / Blumenau,Zurich,4135,village,0,0,50,0,none,none
+gn:6295166,Wülflingen (Kreis 6) / Oberfeld,Zurich,4288,village,0,0,50,0,none,none
+gn:6295174,Wülflingen (Kreis 6) / Lindenplatz,Zurich,2555,village,0,0,50,0,none,none
+gn:6295177,Wülflingen (Kreis 6) / Niederfeld,Zurich,1227,village,0,0,50,0,none,none
+gn:6295179,Wülflingen (Kreis 6) / Härti,Zurich,2602,village,0,0,50,0,none,none
+gn:6295183,Mattenbach (Kreis 7) / Deutweg,Zurich,5930,village,0,0,50,0,none,none
+gn:6295184,Mattenbach (Kreis 7) / Gutschick,Zurich,2923,village,0,0,50,0,none,none
+gn:6295185,Mattenbach (Kreis 7) / Endliker,Zurich,2169,village,0,0,50,0,none,none
+gn:6295186,Kollbrunn / Kollbrunn (Dorfkern),Zurich,1040,village,0,0,50,0,none,none
+gn:6295296,Dietikon / Vorstadt,Zurich,2619,village,0,0,50,0,none,none
+gn:6295299,Dietikon / Almend,Zurich,2118,village,0,0,50,0,none,none
+gn:6295300,Dietikon / Oberdorf,Zurich,4147,village,0,0,50,0,none,none
+gn:6295302,Dietikon / Kreuzacker,Zurich,1955,village,0,0,50,0,none,none
+gn:6295304,Dietikon / Guggenbühl,Zurich,1312,village,0,0,50,0,none,none
+gn:6295305,Dietikon / Hofacker,Zurich,2826,village,0,0,50,0,none,none
+gn:6295306,Dietikon / Schönenwerd,Zurich,1218,village,0,0,50,0,none,none
+gn:6295329,Oberengstringen / Zentrum,Zurich,1271,village,0,0,50,0,none,none
+gn:6295331,Oberengstringen / Sonnenberg,Zurich,1477,village,0,0,50,0,none,none
+gn:6295332,Oberengstringen / Rauchacher,Zurich,1126,village,0,0,50,0,none,none
+gn:6295346,Schlieren / Zentrum,Zurich,1207,village,0,0,50,0,none,none
+gn:6295347,Schlieren / Engstringerquartier,Zurich,1877,village,0,0,50,0,none,none
+gn:6295349,Schlieren / Spital,Zurich,2587,village,0,0,50,0,none,none
+gn:6295352,Schlieren / Freiestrasse,Zurich,1212,village,0,0,50,0,none,none
+gn:6295354,Schlieren / Kamp,Zurich,1129,village,0,0,50,0,none,none
+gn:6295357,Schlieren / Boden,Zurich,1241,village,0,0,50,0,none,none
+gn:6295397,Urdorf / Bodenfeld,Zurich,1840,village,0,0,50,0,none,none
+gn:6295398,Urdorf / Moos,Zurich,1266,village,0,0,50,0,none,none
+gn:6295402,Urdorf / Oberurdorf,Zurich,1008,village,0,0,50,0,none,none
+gn:6295432,Zürich (Kreis 12) / Auzelg,Zurich,1143,village,0,0,50,0,none,none
+gn:6295436,Zürich (Kreis 11) / Schwandenholz,Zurich,1145,village,0,0,50,0,none,none
+gn:6295444,Zürich (Kreis 2) / Mittel-Leimbach,Zurich,1891,village,0,0,50,0,none,none
+gn:6295447,Zürich (Kreis 2) / Unter-Leimbach,Zurich,2778,village,0,0,50,0,none,none
+gn:6295475,Zürich (Kreis 10) / Wipkingen,Zurich,15718,town,0,0,50,0,none,none
+gn:6295481,Zürich (Kreis 10) / Rütihof,Zurich,3326,village,0,0,50,0,none,none
+gn:6295483,Zürich (Kreis 1) / Rathaus,Zurich,3091,village,0,0,50,0,none,none
+gn:6295484,Zürich (Kreis 11) / Affoltern,Zurich,17241,town,0,0,50,0,none,none
+gn:6295490,Zürich (Kreis 12) / Saatlen,Zurich,5209,village,0,0,50,0,none,none
+gn:6295491,Zürich (Kreis 12) / Schwamendingen-Mitte,Zurich,10476,town,0,0,50,0,none,none
+gn:6295492,Zürich (Kreis 12) / Hirzenbach,Zurich,11335,town,0,0,50,0,none,none
+gn:6295493,Zürich (Kreis 1) / Lindenhof,Zurich,1298,village,0,0,50,0,none,none
+gn:6295494,Zürich (Kreis 1) / City,Zurich,1089,village,0,0,50,0,none,none
+gn:6295495,Zürich (Kreis 2) / Wollishofen,Zurich,16073,town,0,0,50,0,none,none
+gn:6295496,Zürich (Kreis 2) / Enge,Zurich,8253,village,0,0,50,0,none,none
+gn:6295497,Zürich (Kreis 3) / Friesenberg,Zurich,9909,village,0,0,50,0,none,none
+gn:6295498,Zürich (Kreis 3) / Sihlfeld,Zurich,20977,town,0,0,50,0,none,none
+gn:6295499,Zürich (Kreis 4) / Werd,Zurich,3911,village,0,0,50,0,none,none
+gn:6295500,Zürich (Kreis 4) / Langstrasse,Zurich,10386,town,0,0,50,0,none,none
+gn:6295501,Zürich (Kreis 4) / Hard,Zurich,12976,town,0,0,50,0,none,none
+gn:6295502,Zürich (Kreis 5) / Gewerbeschule,Zurich,9891,village,0,0,50,0,none,none
+gn:6295503,Zürich (Kreis 5) / Escher-Wyss,Zurich,1846,village,0,0,50,0,none,none
+gn:6295504,Zürich (Kreis 6) / Unterstrass,Zurich,20045,town,0,0,50,0,none,none
+gn:6295505,Zürich (Kreis 6) / Oberstrass,Zurich,9906,village,0,0,50,0,none,none
+gn:6295506,Zürich (Kreis 7) / Fluntern,Zurich,7009,village,0,0,50,0,none,none
+gn:6295507,Zürich (Kreis 7) / Hottingen,Zurich,9934,village,0,0,50,0,none,none
+gn:6295508,Zürich (Kreis 7) / Hirslanden,Zurich,6769,village,0,0,50,0,none,none
+gn:6295509,Zürich (Kreis 8) / Seefeld,Zurich,4998,village,0,0,50,0,none,none
+gn:6295510,Zürich (Kreis 8) / Mühlebach,Zurich,5570,village,0,0,50,0,none,none
+gn:6295511,Zürich (Kreis 8) / Weinegg,Zurich,4951,village,0,0,50,0,none,none
+gn:6295512,Zürich (Kreis 9) / Albisrieden,Zurich,16480,town,0,0,50,0,none,none
+gn:6295513,Zürich (Kreis 9) / Altstetten,Zurich,28307,town,0,0,50,0,none,none
+gn:6295514,Schwerzenbach,Zurich,4180,village,0,0,50,0,none,none
+gn:6295515,Steinmaur,Zurich,1438,village,0,0,50,0,none,none
+gn:6295517,Hegnau,Zurich,7961,village,0,0,50,0,none,none
+gn:6295518,Gockhausen,Zurich,1411,village,0,0,50,0,none,none
+gn:6295520,Stadt Winterthur (Kreis 1),Zurich,16182,town,0,0,50,0,none,none
+gn:6295521,Zürich (Kreis 5),Zurich,11737,town,0,0,50,0,none,none
+gn:6295522,Dänikon,Zurich,1682,village,0,0,50,0,none,none
+gn:6295523,Zürich (Kreis 12),Zurich,28189,town,0,0,50,0,none,none
+gn:6295524,Wülflingen (Kreis 6),Zurich,12598,town,0,0,50,0,none,none
+gn:6295525,Sulz,Zurich,1244,village,0,0,50,0,none,none
+gn:6295527,Seglingen,Zurich,1144,village,0,0,50,0,none,none
+gn:6295528,Niederglatt,Zurich,3632,village,0,0,50,0,none,none
+gn:6295530,Ebmatingen,Zurich,2278,village,0,0,50,0,none,none
+gn:6295531,Seen (Kreis 3),Zurich,15434,town,0,0,50,0,none,none
+gn:6295532,Zürich (Kreis 3),Zurich,46018,town,0,0,50,0,none,none
+gn:6295533,Zürich (Kreis 11),Zurich,54260,town,0,0,50,0,none,none
+gn:6295534,Zürich (Kreis 9),Zurich,44878,town,0,0,50,0,none,none
+gn:6295536,Oberwinterthur (Kreis 2),Zurich,16356,town,0,0,50,0,none,none
+gn:6295537,Geroldswil,Zurich,3681,village,0,0,50,0,none,none
+gn:6295539,Zürich (Kreis 10),Zurich,36216,town,0,0,50,0,none,none
+gn:6295540,Zürich (Kreis 2),Zurich,29215,town,0,0,50,0,none,none
+gn:6295542,Zürich (Kreis 8),Zurich,15519,town,0,0,50,0,none,none
+gn:6295543,Wolfhausen,Zurich,2402,village,0,0,50,0,none,none
+gn:6295545,Seuzach Dorf,Zurich,3969,village,0,0,50,0,none,none
+gn:6295546,Zürich (Kreis 1),Zurich,6185,village,0,0,50,0,none,none
+gn:6295547,Mattenbach (Kreis 7),Zurich,11043,town,0,0,50,0,none,none
+gn:6295548,Zürich (Kreis 7),Zurich,33820,town,0,0,50,0,none,none
+gn:6295549,Obermeilen,Zurich,2871,village,0,0,50,0,none,none
+gn:6295550,Zürich (Kreis 6),Zurich,29951,town,0,0,50,0,none,none
+gn:6295551,Elsau-Räterschen,Zurich,1395,village,0,0,50,0,none,none
+gn:6295645,Thalwil / See,Zurich,1893,village,0,0,50,0,none,none
+gn:6424338,Ittigen,Bern,11546,town,0,0,50,0,none,none
+gn:6559506,Crans-Montana,Valais,10218,town,0,0,50,0,none,none
+gn:6613214,Rottenschwil,Aargau,0,village,0,0,50,0,none,none
+gn:6620245,Thal,Saint Gallen,6433,village,0,0,50,0,none,none
+gn:6639664,Préverenges,Vaud,4695,village,0,0,50,0,none,none
+gn:6640317,Langnau am Albis,Zurich,7000,village,0,0,50,0,none,none
+gn:6691324,Langendorf,Solothurn,3518,village,0,0,50,0,none,none
+gn:6691631,Troinex,Geneva,2192,village,0,0,50,0,none,none
+gn:6691640,Lancy,Geneva,27291,town,0,0,50,0,none,none
+gn:6692334,Merlischachen,Schwyz,1219,village,0,0,50,0,none,none
+gn:6692335,Muralto,Ticino,2818,village,0,0,50,0,none,none
+gn:6692367,Münchenwiler,Bern,0,village,0,0,50,0,none,none
+gn:6695938,Stetten,Schaffhausen,1065,village,0,0,50,0,none,none
+gn:6695944,Löhningen,Schaffhausen,1124,village,0,0,50,0,none,none
+gn:6697288,Lauffohr (Brugg),Aargau,2000,village,0,0,50,0,none,none
+gn:6697711,Jongny,Vaud,1423,village,0,0,50,0,none,none
+gn:6698588,Reinach,Basel-Landschaft,19216,town,0,0,50,0,none,none
+gn:6940549,Haag (Rheintal),Saint Gallen,1180,village,0,0,50,0,none,none
+gn:6941590,Givisiez,Fribourg,3010,village,0,0,50,0,none,none
+gn:6946577,Aire-la-Ville,Geneva,1100,village,0,0,50,0,none,none
+gn:6956026,Hausen,Aargau,2881,village,0,0,50,0,none,none
+gn:7288522,Veyras,Valais,0,village,0,0,50,0,none,none
+gn:7290028,Känerkinden,Basel-Landschaft,0,village,0,0,50,0,none,none
+gn:7302536,Oberurnen,Glarus,1932,village,0,0,50,0,none,none
+gn:7303237,Saint Saphorin,Vaud,0,village,0,0,50,0,none,none
+gn:7667389,Cuarnens,Vaud,0,village,0,0,50,0,none,none
+gn:7669888,Rütihof,Aargau,2400,village,0,0,50,0,none,none
+gn:7779000,Les Avanchets,Geneva,5730,village,0,0,50,0,none,none
+gn:7910920,Bünzen,Aargau,0,village,0,0,50,0,none,none
+gn:8334613,Biberstein,Aargau,0,village,0,0,50,0,none,none
+gn:8334626,Braggio,Grisons,0,village,0,0,50,0,none,none
+gn:8379126,Saint-George,Vaud,0,village,0,0,50,0,none,none
+gn:8379136,Saubraz,Vaud,354,village,0,0,50,0,none,none
+gn:8379137,Berolle,Vaud,0,village,0,0,50,0,none,none
+gn:8379138,Mauraz,Vaud,0,village,0,0,50,0,none,none
+gn:8379139,Chavannes-le-Veyron,Vaud,0,village,0,0,50,0,none,none
+gn:8379141,La Chaux,Vaud,0,village,0,0,50,0,none,none
+gn:8379142,Chevilly,Vaud,0,village,0,0,50,0,none,none
+gn:8379143,Moiry,Vaud,0,village,0,0,50,0,none,none
+gn:8379144,Ferreyres,Vaud,0,village,0,0,50,0,none,none
+gn:8379145,Orny,Vaud,0,village,0,0,50,0,none,none
+gn:8379146,Pompaples,Vaud,0,village,0,0,50,0,none,none
+gn:8379147,Penthéréaz,Vaud,0,village,0,0,50,0,none,none
+gn:8379148,Vuarrens,Vaud,0,village,0,0,50,0,none,none
+gn:8379149,Rueyres,Vaud,0,village,0,0,50,0,none,none
+gn:8436414,Bas-Vully,Fribourg,1963,village,0,0,50,0,none,none
+gn:8468977,Marin-Epagnier,Neuchâtel,4087,village,0,0,50,0,none,none
+gn:8469000,Tägertschi,Bern,0,village,0,0,50,0,none,none
+gn:8469026,Bruderholz,Basel-City,9397,village,0,0,50,0,none,none
+gn:8469173,Oberrohrdorf,Aargau,4001,village,0,0,50,0,none,none
+gn:8521664,Kirchleerau,Aargau,0,village,0,0,50,0,none,none
+gn:8521665,Matran,Fribourg,0,village,0,0,50,0,none,none
+gn:8521688,Blécherette,Vaud,6516,village,0,0,50,0,none,none
+gn:8533211,Oberhof,Aargau,0,village,0,0,50,0,none,none
+gn:8533238,Besenbüren,Aargau,0,village,0,0,50,0,none,none
+gn:8533292,Avully,Geneva,1755,village,0,0,50,0,none,none
+gn:8533293,Choulex,Geneva,1182,village,0,0,50,0,none,none
+gn:8693092,Tenniken,Basel-Landschaft,0,village,0,0,50,0,none,none
+gn:10295648,Gansingen,Aargau,0,village,0,0,50,0,none,none
+gn:11048363,Vuisternens-devant-Romont,Fribourg,0,village,0,0,50,0,none,none
+gn:11113438,Riviera,Ticino,4262,village,0,0,50,0,none,none
+gn:11789318,Wettswil,Zurich,0,village,0,0,50,0,none,none
+gn:11789322,Oberkulm,Aargau,0,village,0,0,50,0,none,none
+gn:11789352,Savosa,Ticino,0,village,0,0,50,0,none,none
+gn:11789668,Aeugst am Albis,Zurich,0,village,0,0,50,0,none,none
+gn:11789669,Pont-la-Ville,Fribourg,0,village,0,0,50,0,none,none
+gn:11790338,Servion,Vaud,0,village,0,0,50,0,none,none
+gn:11790339,Chéserex,Vaud,0,village,0,0,50,0,none,none
+gn:11790499,Hohentannen,Thurgau,0,village,0,0,50,0,none,none
+gn:11790500,Valeyres-sous-Montagny,Vaud,0,village,0,0,50,0,none,none
+gn:11790501,Bedigliora,Ticino,0,village,0,0,50,0,none,none
+gn:11790502,Uebeschi,Bern,0,village,0,0,50,0,none,none
+gn:11790503,Kleinbösingen,Fribourg,0,village,0,0,50,0,none,none
+gn:11790504,Niedermuhlern,Bern,0,village,0,0,50,0,none,none
+gn:11790563,Cheseaux-Noréaz,Vaud,0,village,0,0,50,0,none,none
+gn:11790564,Rochefort,Neuchâtel,0,village,0,0,50,0,none,none
+gn:11790566,Corcelles-le-Jorat,Vaud,0,village,0,0,50,0,none,none
+gn:11790567,Rüegsau,Bern,0,village,0,0,50,0,none,none
+gn:11790569,Auswil,Bern,0,village,0,0,50,0,none,none
+gn:11790571,Rümligen,Bern,0,village,0,0,50,0,none,none
+gn:11790572,Donat,Grisons,0,village,0,0,50,0,none,none
+gn:11790576,Surpierre,Fribourg,0,village,0,0,50,0,none,none
+gn:11790577,Oberhünigen,Bern,0,village,0,0,50,0,none,none
+gn:11791265,Les Clées,Vaud,0,village,0,0,50,0,none,none
+gn:11791556,Busswil bei Melchnau,Bern,0,village,0,0,50,0,none,none
+gn:11791557,Walliswil bei Niederbipp,Bern,0,village,0,0,50,0,none,none
+gn:11791558,Rüti bei Lyssach,Bern,0,village,0,0,50,0,none,none

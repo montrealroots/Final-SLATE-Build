@@ -1,0 +1,22 @@
+place_id,name,region,population,market,verified_homes,dated_listings,shortfall_to_50,recorded_sales,rent_source,price_source
+gn:3575940,Willikies,Saint Philip Parish,1270,village,0,0,50,0,none,none
+gn:3575975,Swetes,Saint Paul Parish,1837,village,0,0,50,0,none,none
+gn:3576022,Saint John’s,Saint John Parish,51737,town,0,0,50,0,none,none
+gn:3576050,Potters Village,Saint John Parish,1433,village,0,0,50,0,none,none
+gn:3576057,Piggotts,Saint George Parish,1878,village,0,0,50,0,none,none
+gn:3576074,Parham,Saint Peter Parish,969,village,0,0,50,0,none,none
+gn:3576094,New Winthorpes,Saint George Parish,1266,village,0,0,50,0,none,none
+gn:3576144,Liberta,Saint Paul Parish,2560,village,0,0,50,0,none,none
+gn:3576236,Freetown,Saint Philip Parish,623,village,0,0,50,0,none,none
+gn:3576260,Falmouth,Saint Paul Parish,619,village,0,0,50,0,none,none
+gn:3576311,Codrington,Barbuda,1325,village,0,0,50,0,none,none
+gn:3576361,Bolands,Saint Mary Parish,1657,village,0,0,50,0,none,none
+gn:3576397,All Saints,Saint Peter Parish,2526,village,0,0,50,0,none,none
+gn:13561025,Sugar Factory,Saint John Parish,1051,village,0,0,50,0,none,none
+gn:13561026,Jacks Hill,Saint John Parish,1151,village,0,0,50,0,none,none
+gn:13590582,St. Paul Parish,Saint Paul Parish,8128,village,0,0,50,0,none,none
+gn:13590583,Barbuda Parish,Barbuda,1634,village,0,0,50,0,none,none
+gn:13590584,St. George Parish,Saint George Parish,8055,village,0,0,50,0,none,none
+gn:13590585,St. Peter Parish,Saint Philip Parish,5325,village,0,0,50,0,none,none
+gn:13590586,St. Mary Parish,Saint Mary Parish,7341,village,0,0,50,0,none,none
+gn:13590587,St. Philip Parish,Saint Philip Parish,3347,village,0,0,50,0,none,none

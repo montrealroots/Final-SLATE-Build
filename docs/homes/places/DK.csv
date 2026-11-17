@@ -1,0 +1,440 @@
+place_id,name,region,population,market,verified_homes,dated_listings,shortfall_to_50,recorded_sales,rent_source,price_source
+gn:2609990,Vrå,North Denmark,2662,village,0,0,50,0,none,none
+gn:2610020,Vordingborg,Zealand,17868,town,0,0,50,0,none,none
+gn:2610025,Vorbasse,South Denmark,1275,village,0,0,50,0,none,none
+gn:2610075,Vojens,South Denmark,7475,village,0,0,50,0,none,none
+gn:2610095,Vodskov,North Denmark,4822,village,0,0,50,0,none,none
+gn:2610140,Vissenbjerg,South Denmark,3265,village,0,0,50,0,none,none
+gn:2610155,Virum,Capital Region,15200,town,0,0,50,0,none,none
+gn:2610159,Virklund,Central Jutland,3113,village,0,0,50,0,none,none
+gn:2610162,Vipperød,Zealand,2345,village,0,0,50,0,none,none
+gn:2610189,Vindinge,Zealand,3219,village,0,0,50,0,none,none
+gn:2610196,Vinderup,Central Jutland,3103,village,0,0,50,0,none,none
+gn:2610207,Vindeby,South Denmark,2355,village,0,0,50,0,none,none
+gn:2610259,Vildbjerg,Central Jutland,3773,village,0,0,50,0,none,none
+gn:2610279,Vigerslev,Capital Region,7526,village,0,0,50,0,none,none
+gn:2610307,Videbæk,Central Jutland,4299,village,0,0,50,0,none,none
+gn:2610310,Viby,Central Jutland,31756,town,0,0,50,0,none,none
+gn:2610311,Viby,Zealand,5227,village,0,0,50,0,none,none
+gn:2610319,Viborg,Central Jutland,41239,town,0,0,50,0,none,none
+gn:2610328,Væggerløse,Zealand,1292,village,0,0,50,0,none,none
+gn:2610380,Vester-Skerninge,South Denmark,1315,village,0,0,50,0,none,none
+gn:2610437,Vester Hassing,North Denmark,2608,village,0,0,50,0,none,none
+gn:2610499,Vestbjerg,North Denmark,3091,village,0,0,50,0,none,none
+gn:2610543,Vemb,Central Jutland,1224,village,0,0,50,0,none,none
+gn:2610566,Veksø,Capital Region,1786,village,0,0,50,0,none,none
+gn:2610613,Vejle,South Denmark,60231,town,0,0,50,0,none,none
+gn:2610634,Vejen,South Denmark,8525,village,0,0,50,0,none,none
+gn:2610726,Varde,South Denmark,14039,town,0,0,50,0,none,none
+gn:2610734,Vanløse,Capital Region,37115,town,0,0,50,0,none,none
+gn:2610760,Vamdrup,South Denmark,4943,village,0,0,50,0,none,none
+gn:2610789,Vallensbæk,Capital Region,16515,town,0,0,50,0,none,none
+gn:2610802,Valby,Capital Region,46161,town,0,0,50,0,none,none
+gn:2610823,Vadum,North Denmark,1978,village,0,0,50,0,none,none
+gn:2610884,Undløse,Zealand,1105,village,0,0,50,0,none,none
+gn:2610908,Ulstrup,Central Jutland,1963,village,0,0,50,0,none,none
+gn:2610942,Ullerslev,South Denmark,2735,village,0,0,50,0,none,none
+gn:2610959,Ulfborg,Central Jutland,1994,village,0,0,50,0,none,none
+gn:2610960,Uldum,Central Jutland,1364,village,0,0,50,0,none,none
+gn:2611041,Tylstrup,North Denmark,1258,village,0,0,50,0,none,none
+gn:2611132,Tune,Zealand,5681,village,0,0,50,0,none,none
+gn:2611189,Trørød,Capital Region,8576,village,0,0,50,0,none,none
+gn:2611227,Troense,South Denmark,1442,village,0,0,50,0,none,none
+gn:2611256,Trige,Central Jutland,3476,village,0,0,50,0,none,none
+gn:2611307,Tranekær,South Denmark,11841,town,0,0,50,0,none,none
+gn:2611311,Tranebjerg,Central Jutland,839,village,0,0,50,0,none,none
+gn:2611316,Tranbjerg,Central Jutland,7307,village,0,0,50,0,none,none
+gn:2611486,Tørring,Central Jutland,2370,village,0,0,50,0,none,none
+gn:2611497,Tønder,South Denmark,16401,town,0,0,50,0,none,none
+gn:2611509,Tølløse,Zealand,4028,village,0,0,50,0,none,none
+gn:2611518,Tommerup Stationsby,South Denmark,2518,village,0,0,50,0,none,none
+gn:2611520,Tommerup,South Denmark,1545,village,0,0,50,0,none,none
+gn:2611565,Toftlund,South Denmark,3438,village,0,0,50,0,none,none
+gn:2611610,Tjæreborg,South Denmark,2959,village,0,0,50,0,none,none
+gn:2611651,Tisvilde,Capital Region,1341,village,0,0,50,0,none,none
+gn:2611653,Tistrup,South Denmark,1437,village,0,0,50,0,none,none
+gn:2611684,Tinglev,South Denmark,2761,village,0,0,50,0,none,none
+gn:2611720,Tilst,Central Jutland,15617,town,0,0,50,0,none,none
+gn:2611738,Thyborøn,Central Jutland,1719,village,0,0,50,0,none,none
+gn:2611742,Thurø By,South Denmark,3350,village,0,0,50,0,none,none
+gn:2611747,Thorsø,Central Jutland,1753,village,0,0,50,0,none,none
+gn:2611755,Thisted,North Denmark,13461,town,0,0,50,0,none,none
+gn:2611761,Them,Central Jutland,2477,village,0,0,50,0,none,none
+gn:2611817,Taulov,South Denmark,3593,village,0,0,50,0,none,none
+gn:2611828,Taastrup,Capital Region,35238,town,0,0,50,0,none,none
+gn:2611852,Tårs,North Denmark,1825,village,0,0,50,0,none,none
+gn:2611862,Tårnby,Capital Region,10000,town,0,0,50,0,none,none
+gn:2611865,Tarm,Central Jutland,4113,village,0,0,50,0,none,none
+gn:2611982,Svogerslev,Zealand,4316,village,0,0,50,0,none,none
+gn:2611998,Svinninge,Zealand,2891,village,0,0,50,0,none,none
+gn:2611999,Svinninge,Zealand,6588,village,0,0,50,0,none,none
+gn:2612021,Svenstrup,North Denmark,8002,village,0,0,50,0,none,none
+gn:2612022,Svenstrup,North Denmark,8002,village,0,0,50,0,none,none
+gn:2612045,Svendborg,South Denmark,27300,town,0,0,50,0,none,none
+gn:2612053,Svejbæk,Central Jutland,3743,village,0,0,50,0,none,none
+gn:2612057,Svebølle,Zealand,2186,village,0,0,50,0,none,none
+gn:2612078,Svaneke,Capital Region,1079,village,0,0,50,0,none,none
+gn:2612107,Sunds,Central Jutland,3525,village,0,0,50,0,none,none
+gn:2612130,Sulsted,North Denmark,1461,village,0,0,50,0,none,none
+gn:2612192,Stubbekøbing,Zealand,2204,village,0,0,50,0,none,none
+gn:2612204,Struer,Central Jutland,11317,town,0,0,50,0,none,none
+gn:2612211,Strøby Egede,Zealand,2700,village,0,0,50,0,none,none
+gn:2612224,Strib,South Denmark,5285,village,0,0,50,0,none,none
+gn:2612274,Strandby,North Denmark,2518,village,0,0,50,0,none,none
+gn:2612301,Storvorde,North Denmark,3491,village,0,0,50,0,none,none
+gn:2612381,Store Merløse,Zealand,1188,village,0,0,50,0,none,none
+gn:2612411,Store Heddinge,Zealand,3668,village,0,0,50,0,none,none
+gn:2612500,Støvring,North Denmark,9089,village,0,0,50,0,none,none
+gn:2612529,Stoholm,Central Jutland,2544,village,0,0,50,0,none,none
+gn:2612541,Stilling,Central Jutland,3655,village,0,0,50,0,none,none
+gn:2612552,Stige,South Denmark,2182,village,0,0,50,0,none,none
+gn:2612588,Stensved,Zealand,1504,village,0,0,50,0,none,none
+gn:2612629,Stenløse,Capital Region,19998,town,0,0,50,0,none,none
+gn:2612633,Stenlille,Zealand,1905,village,0,0,50,0,none,none
+gn:2612689,Stege,Zealand,3811,village,0,0,50,0,none,none
+gn:2612695,Stavtrup,Central Jutland,3519,village,0,0,50,0,none,none
+gn:2612710,Stavnsholt,Capital Region,5658,village,0,0,50,0,none,none
+gn:2612730,Starup,South Denmark,2091,village,0,0,50,0,none,none
+gn:2612823,Spentrup,Central Jutland,2155,village,0,0,50,0,none,none
+gn:2612862,Sorø,Zealand,7999,village,0,0,50,0,none,none
+gn:2612876,Søvang,Capital Region,1772,village,0,0,50,0,none,none
+gn:2612955,Søndersø,South Denmark,3360,village,0,0,50,0,none,none
+gn:2613102,Sønderborg,South Denmark,27766,town,0,0,50,0,none,none
+gn:2613106,Sønder Bjert,South Denmark,2324,village,0,0,50,0,none,none
+gn:2613136,Søllested,Zealand,1347,village,0,0,50,0,none,none
+gn:2613172,Søften,Central Jutland,3169,village,0,0,50,0,none,none
+gn:2613233,Solrød Strand,Zealand,17337,town,0,0,50,0,none,none
+gn:2613234,Solrød,Zealand,2000,village,0,0,50,0,none,none
+gn:2613254,Solbjerg,Central Jutland,4832,village,0,0,50,0,none,none
+gn:2613293,Snoghøj,South Denmark,3000,village,0,0,50,0,none,none
+gn:2613322,Snejbjerg,Central Jutland,3513,village,0,0,50,0,none,none
+gn:2613345,Smørumnedre,Capital Region,9507,village,0,0,50,0,none,none
+gn:2613451,Slangerup,Capital Region,6953,village,0,0,50,0,none,none
+gn:2613460,Slagelse,Zealand,31896,town,0,0,50,0,none,none
+gn:2613471,Skævinge,Capital Region,2964,village,0,0,50,0,none,none
+gn:2613539,Skaerbaek,South Denmark,3062,village,0,0,50,0,none,none
+gn:2613588,Skovlunde,Capital Region,14757,town,0,0,50,0,none,none
+gn:2613621,Skovby,Central Jutland,2489,village,0,0,50,0,none,none
+gn:2613672,Skørping,North Denmark,2971,village,0,0,50,0,none,none
+gn:2613674,Skødstrup,Central Jutland,10000,town,0,0,50,0,none,none
+gn:2613685,Skodsborg,Capital Region,1229,village,0,0,50,0,none,none
+gn:2613694,Skælskør,Zealand,6334,village,0,0,50,0,none,none
+gn:2613715,Skjern,Central Jutland,7145,village,0,0,50,0,none,none
+gn:2613731,Skive,Central Jutland,20190,town,0,0,50,0,none,none
+gn:2613766,Skibby,Capital Region,3217,village,0,0,50,0,none,none
+gn:2613845,Skårup,South Denmark,1924,village,0,0,50,0,none,none
+gn:2613887,Skanderborg,Central Jutland,13543,town,0,0,50,0,none,none
+gn:2613896,Skals,Central Jutland,1759,village,0,0,50,0,none,none
+gn:2613939,Skagen,North Denmark,7250,village,0,0,50,0,none,none
+gn:2614010,Sindal,North Denmark,3032,village,0,0,50,0,none,none
+gn:2614030,Silkeborg,Central Jutland,49747,town,0,0,50,0,none,none
+gn:2614135,Seden,South Denmark,3743,village,0,0,50,0,none,none
+gn:2614172,Sæby,North Denmark,9012,village,0,0,50,0,none,none
+gn:2614328,Sakskøbing,Zealand,4580,village,0,0,50,0,none,none
+gn:2614343,Sabro,Central Jutland,3562,village,0,0,50,0,none,none
+gn:2614349,Ryslinge,South Denmark,2009,village,0,0,50,0,none,none
+gn:2614353,Ryomgård,Central Jutland,2779,village,0,0,50,0,none,none
+gn:2614387,Ry,Central Jutland,7151,village,0,0,50,0,none,none
+gn:2614427,Ruds-Vedby,Zealand,1661,village,0,0,50,0,none,none
+gn:2614432,Rudkøbing,South Denmark,4521,village,0,0,50,0,none,none
+gn:2614481,Roskilde,Zealand,51916,town,0,0,50,0,none,none
+gn:2614547,Rønnede,Zealand,2746,village,0,0,50,0,none,none
+gn:2614553,Rønne,Capital Region,13807,town,0,0,50,0,none,none
+gn:2614565,Rønde,Central Jutland,3191,village,0,0,50,0,none,none
+gn:2614595,Rødvig,Zealand,1783,village,0,0,50,0,none,none
+gn:2614600,Rødovre,Capital Region,40652,town,0,0,50,0,none,none
+gn:2614611,Rødekro,South Denmark,6182,village,0,0,50,0,none,none
+gn:2614623,Rødding,South Denmark,2739,village,0,0,50,0,none,none
+gn:2614624,Rødbyhavn,Zealand,1445,village,0,0,50,0,none,none
+gn:2614626,Rødby,Zealand,1927,village,0,0,50,0,none,none
+gn:2614764,Ringsted,Zealand,23086,town,0,0,50,0,none,none
+gn:2614776,Ringkøbing,Central Jutland,9894,village,0,0,50,0,none,none
+gn:2614790,Ringe,South Denmark,6474,village,0,0,50,0,none,none
+gn:2614813,Ribe,South Denmark,8403,village,0,0,50,0,none,none
+gn:2615006,Randers,Central Jutland,62802,town,0,0,50,0,none,none
+gn:2615023,Ramløse,Capital Region,1551,village,0,0,50,0,none,none
+gn:2615089,Præstø,Zealand,4028,village,0,0,50,0,none,none
+gn:2615222,Pandrup,North Denmark,2849,village,0,0,50,0,none,none
+gn:2615242,Padborg,South Denmark,4263,village,0,0,50,0,none,none
+gn:2615267,Outrup,South Denmark,1003,village,0,0,50,0,none,none
+gn:2615304,Over Holluf,South Denmark,1502,village,0,0,50,0,none,none
+gn:2615351,Otterup,South Denmark,5264,village,0,0,50,0,none,none
+gn:2615359,Osted,Zealand,2349,village,0,0,50,0,none,none
+gn:2615626,Østbirk,Central Jutland,2644,village,0,0,50,0,none,none
+gn:2615644,Ørum,Central Jutland,1511,village,0,0,50,0,none,none
+gn:2615666,Ørslev,Zealand,1801,village,0,0,50,0,none,none
+gn:2615718,Ørbæk,South Denmark,1747,village,0,0,50,0,none,none
+gn:2615730,Ølstykke,Capital Region,5348,village,0,0,50,0,none,none
+gn:2615736,Ølsted,Capital Region,1946,village,0,0,50,0,none,none
+gn:2615749,Ølgod,South Denmark,3714,village,0,0,50,0,none,none
+gn:2615859,Oksbøl,South Denmark,2815,village,0,0,50,0,none,none
+gn:2615876,Odense,South Denmark,180863,city,0,0,50,0,none,none
+gn:2615886,Odder,Central Jutland,12454,town,0,0,50,0,none,none
+gn:2615911,Nysted,Zealand,1237,village,0,0,50,0,none,none
+gn:2615932,Nyråd,Zealand,2224,village,0,0,50,0,none,none
+gn:2615961,Nykøbing Falster,Zealand,19976,town,0,0,50,0,none,none
+gn:2615962,Nykøbing Sjælland,Zealand,5002,village,0,0,50,0,none,none
+gn:2615964,Nykøbing Mors,North Denmark,9033,village,0,0,50,0,none,none
+gn:2616015,Nyborg,South Denmark,17525,town,0,0,50,0,none,none
+gn:2616038,Næstved,Zealand,44331,town,0,0,50,0,none,none
+gn:2616172,Nordby,South Denmark,2736,village,0,0,50,0,none,none
+gn:2616176,Nordborg,South Denmark,5661,village,0,0,50,0,none,none
+gn:2616235,Nørresundby,North Denmark,24831,town,0,0,50,0,none,none
+gn:2616279,Nørre Nebel,South Denmark,1348,village,0,0,50,0,none,none
+gn:2616349,Nørre Broby,South Denmark,1442,village,0,0,50,0,none,none
+gn:2616365,Nørre Alslev,Zealand,2324,village,0,0,50,0,none,none
+gn:2616368,Nørre Åby,South Denmark,3129,village,0,0,50,0,none,none
+gn:2616412,Nørager,North Denmark,1178,village,0,0,50,0,none,none
+gn:2616423,Nødebo,Capital Region,2057,village,0,0,50,0,none,none
+gn:2616450,Nivå,Capital Region,7997,village,0,0,50,0,none,none
+gn:2616483,Nibe,North Denmark,5703,village,0,0,50,0,none,none
+gn:2616504,Nexø,Capital Region,3645,village,0,0,50,0,none,none
+gn:2616518,Neder Vindinge,Zealand,1900,village,0,0,50,0,none,none
+gn:2616540,Neder Holluf,South Denmark,5612,village,0,0,50,0,none,none
+gn:2616599,Nakskov,Zealand,11969,town,0,0,50,0,none,none
+gn:2616672,Munkebo,South Denmark,5538,village,0,0,50,0,none,none
+gn:2616752,Morud,South Denmark,1972,village,0,0,50,0,none,none
+gn:2616767,Mørkøv,Zealand,1862,village,0,0,50,0,none,none
+gn:2616768,Mørkhøj,Capital Region,10000,town,0,0,50,0,none,none
+gn:2616933,Middelfart,South Denmark,16277,town,0,0,50,0,none,none
+gn:2617030,Marstal,South Denmark,1989,village,0,0,50,0,none,none
+gn:2617034,Mårslet,Central Jutland,5176,village,0,0,50,0,none,none
+gn:2617072,Maribo,Zealand,5722,village,0,0,50,0,none,none
+gn:2617076,Mariager,North Denmark,2651,village,0,0,50,0,none,none
+gn:2617112,Måløv,Capital Region,8663,village,0,0,50,0,none,none
+gn:2617114,Malling,Central Jutland,6194,village,0,0,50,0,none,none
+gn:2617175,Lystrup,Central Jutland,10116,town,0,0,50,0,none,none
+gn:2617176,Lystrup,Central Jutland,10116,town,0,0,50,0,none,none
+gn:2617220,Lynge,Capital Region,4425,village,0,0,50,0,none,none
+gn:2617312,Lunderskov,South Denmark,2687,village,0,0,50,0,none,none
+gn:2617423,Løsning,Central Jutland,12220,town,0,0,50,0,none,none
+gn:2617443,Løkken,North Denmark,8828,village,0,0,50,0,none,none
+gn:2617450,Løjt Kirkeby,South Denmark,1975,village,0,0,50,0,none,none
+gn:2617457,Løgumkloster,South Denmark,3458,village,0,0,50,0,none,none
+gn:2617463,Løgten,Central Jutland,8623,village,0,0,50,0,none,none
+gn:2617464,Løgstrup,Central Jutland,1881,village,0,0,50,0,none,none
+gn:2617467,Løgstør,North Denmark,3929,village,0,0,50,0,none,none
+gn:2617538,Liseleje,Capital Region,2390,village,0,0,50,0,none,none
+gn:2617543,Lisbjerg,Central Jutland,2102,village,0,0,50,0,none,none
+gn:2617619,Lind,Central Jutland,3777,village,0,0,50,0,none,none
+gn:2617626,Værløse,Capital Region,13197,town,0,0,50,0,none,none
+gn:2617648,Lille Skensved,Zealand,1696,village,0,0,50,0,none,none
+gn:2617658,Lillerød,Capital Region,16741,town,0,0,50,0,none,none
+gn:2617812,Lemvig,Central Jutland,7330,village,0,0,50,0,none,none
+gn:2617832,Lejre,Zealand,3429,village,0,0,50,0,none,none
+gn:2617879,Låsby,Central Jutland,2059,village,0,0,50,0,none,none
+gn:2617936,Langeskov,South Denmark,4458,village,0,0,50,0,none,none
+gn:2617981,Langå,Central Jutland,2901,village,0,0,50,0,none,none
+gn:2618070,Kværndrup,South Denmark,1673,village,0,0,50,0,none,none
+gn:2618091,Kvistgård,Capital Region,1235,village,0,0,50,0,none,none
+gn:2618148,Kruså,South Denmark,1528,village,0,0,50,0,none,none
+gn:2618361,Korsør,Zealand,14290,town,0,0,50,0,none,none
+gn:2618415,Køge,Zealand,38304,town,0,0,50,0,none,none
+dk-copenhagen,Copenhagen,Capital Region,1153615,large-city,0,0,50,0,none,none
+gn:2618468,Kongens Lyngby,Capital Region,10600,town,0,0,50,0,none,none
+gn:2618489,Kolt,Central Jutland,5061,village,0,0,50,0,none,none
+gn:2618528,Kolding,South Denmark,61638,town,0,0,50,0,none,none
+gn:2618545,Kokkedal,Capital Region,0,village,0,0,50,0,none,none
+gn:2618660,Knabstrup,Zealand,1105,village,0,0,50,0,none,none
+gn:2618718,Klitmøller,North Denmark,1298,village,0,0,50,0,none,none
+gn:2618741,Klinteby Frihed,Zealand,53443,town,0,0,50,0,none,none
+gn:2618787,Klarup,North Denmark,5745,village,0,0,50,0,none,none
+gn:2618814,Kjellerup,Central Jutland,4514,village,0,0,50,0,none,none
+gn:2618872,Kirke Hvalsø,Zealand,4294,village,0,0,50,0,none,none
+gn:2618888,Kirke-Esbønderup,Capital Region,1190,village,0,0,50,0,none,none
+gn:2618931,Kibæk,Central Jutland,2667,village,0,0,50,0,none,none
+gn:2618944,Kerteminde,South Denmark,5748,village,0,0,50,0,none,none
+gn:2619061,Kås,North Denmark,1990,village,0,0,50,0,none,none
+gn:2619068,Karup,Central Jutland,2176,village,0,0,50,0,none,none
+gn:2619097,Karlebo,Capital Region,19163,town,0,0,50,0,none,none
+gn:2619102,Karise,Zealand,2431,village,0,0,50,0,none,none
+gn:2619154,Kalundborg,Zealand,16211,town,0,0,50,0,none,none
+gn:2619216,Jyllinge,Zealand,10920,town,0,0,50,0,none,none
+gn:2619220,Jyderup,Zealand,4207,village,0,0,50,0,none,none
+gn:2619221,Jyderup,Zealand,4207,village,0,0,50,0,none,none
+gn:2619251,Juelsminde,Central Jutland,3667,village,0,0,50,0,none,none
+gn:2619287,Jægerspris,Capital Region,4131,village,0,0,50,0,none,none
+gn:2619340,Jelling,South Denmark,4038,village,0,0,50,0,none,none
+gn:2619377,Ishøj,Capital Region,19453,town,0,0,50,0,none,none
+gn:2619426,Ikast,Central Jutland,14692,town,0,0,50,0,none,none
+gn:2619439,Idestrup,Zealand,1106,village,0,0,50,0,none,none
+gn:2619528,Hvidovre,Capital Region,53527,town,0,0,50,0,none,none
+gn:2619537,Hvide Sande,Central Jutland,2874,village,0,0,50,0,none,none
+gn:2619624,Hurup,North Denmark,2769,village,0,0,50,0,none,none
+gn:2619650,Hundested,Capital Region,8609,village,0,0,50,0,none,none
+gn:2619669,Humlebæk,Capital Region,8965,village,0,0,50,0,none,none
+gn:2619771,Horsens,Central Jutland,61074,town,0,0,50,0,none,none
+gn:2619782,Hornsyld,Central Jutland,1634,village,0,0,50,0,none,none
+gn:2619787,Hornslet,Central Jutland,6446,village,0,0,50,0,none,none
+gn:2619807,Hornbæk,Capital Region,3605,village,0,0,50,0,none,none
+gn:2619844,Hørve,Zealand,2382,village,0,0,50,0,none,none
+gn:2619845,Høruphav,South Denmark,2740,village,0,0,50,0,none,none
+gn:2619856,Hørsholm,Capital Region,47680,town,0,0,50,0,none,none
+gn:2619859,Hørning,Central Jutland,8395,village,0,0,50,0,none,none
+gn:2619860,Hørning,Central Jutland,8572,village,0,0,50,0,none,none
+gn:2619882,Høng,Zealand,4355,village,0,0,50,0,none,none
+gn:2619951,Højer,South Denmark,1034,village,0,0,50,0,none,none
+gn:2619965,Højby,Zealand,1422,village,0,0,50,0,none,none
+gn:2619967,Højby,South Denmark,4406,village,0,0,50,0,none,none
+gn:2620030,Holte,Capital Region,0,village,0,0,50,0,none,none
+gn:2620042,Holsted,South Denmark,3034,village,0,0,50,0,none,none
+gn:2620046,Holstebro,Central Jutland,32072,town,0,0,50,0,none,none
+gn:2620134,Holeby,Zealand,1352,village,0,0,50,0,none,none
+gn:2620147,Holbæk,Zealand,29608,town,0,0,50,0,none,none
+gn:2620167,Hobro,North Denmark,12071,town,0,0,50,0,none,none
+gn:2620186,Hjortshøj,Central Jutland,3579,village,0,0,50,0,none,none
+gn:2620210,Hjordkær,South Denmark,1607,village,0,0,50,0,none,none
+gn:2620214,Hjørring,North Denmark,25644,town,0,0,50,0,none,none
+gn:2620275,Hjallerup,North Denmark,4498,village,0,0,50,0,none,none
+gn:2620279,Hirtshals,North Denmark,5265,village,0,0,50,0,none,none
+gn:2620287,Hinnerup,Central Jutland,8628,village,0,0,50,0,none,none
+gn:2620288,Hinnerup,Central Jutland,8164,village,0,0,50,0,none,none
+gn:2620320,Hillerød,Capital Region,35357,town,0,0,50,0,none,none
+gn:2620425,Herning,Central Jutland,50565,town,0,0,50,0,none,none
+gn:2620431,Herlev,Capital Region,0,village,0,0,50,0,none,none
+gn:2620473,Helsingør,Capital Region,35048,town,0,0,50,0,none,none
+gn:2620476,Helsinge,Capital Region,8616,village,0,0,50,0,none,none
+gn:2620528,Hellebæk,Capital Region,5790,village,0,0,50,0,none,none
+gn:2620583,Hedensted,Central Jutland,47099,town,0,0,50,0,none,none
+gn:2620587,Hedehusene,Capital Region,17953,town,0,0,50,0,none,none
+gn:2620664,Havdrup,Zealand,4599,village,0,0,50,0,none,none
+gn:2620676,Hatting,Central Jutland,2132,village,0,0,50,0,none,none
+gn:2620704,Hasselager,Central Jutland,7437,village,0,0,50,0,none,none
+gn:2620712,Haslev,Zealand,12119,town,0,0,50,0,none,none
+gn:2620716,Hasle,Capital Region,1627,village,0,0,50,0,none,none
+gn:2620750,Harlev,Central Jutland,3990,village,0,0,50,0,none,none
+gn:2620751,Hårlev,Zealand,2957,village,0,0,50,0,none,none
+gn:2620765,Haarby,South Denmark,2400,village,0,0,50,0,none,none
+gn:2620767,Harboøre,Central Jutland,1745,village,0,0,50,0,none,none
+gn:2620786,Hanstholm,North Denmark,2104,village,0,0,50,0,none,none
+gn:2620814,Hammerum,Central Jutland,3025,village,0,0,50,0,none,none
+gn:2620835,Hammel,Central Jutland,7373,village,0,0,50,0,none,none
+gn:2620871,Hals,North Denmark,2388,village,0,0,50,0,none,none
+gn:2620952,Hadsund,North Denmark,5066,village,0,0,50,0,none,none
+gn:2620956,Hadsten,Central Jutland,8254,village,0,0,50,0,none,none
+gn:2620964,Haderslev,South Denmark,22011,town,0,0,50,0,none,none
+gn:2620997,Gundsømagle,Zealand,2877,village,0,0,50,0,none,none
+gn:2621072,Guderup,South Denmark,2406,village,0,0,50,0,none,none
+gn:2621101,Græsted,Capital Region,3596,village,0,0,50,0,none,none
+gn:2621193,Grindsted,South Denmark,9750,village,0,0,50,0,none,none
+gn:2621215,Greve,Zealand,47671,town,0,0,50,0,none,none
+gn:2621230,Grenaa,Central Jutland,14176,town,0,0,50,0,none,none
+gn:2621236,Gredstedbro,South Denmark,1071,village,0,0,50,0,none,none
+gn:2621258,Gråsten,South Denmark,4291,village,0,0,50,0,none,none
+gn:2621279,Gram,South Denmark,2457,village,0,0,50,0,none,none
+gn:2621304,Gørlev,Zealand,2405,village,0,0,50,0,none,none
+gn:2621307,Gørding,South Denmark,1782,village,0,0,50,0,none,none
+gn:2621348,Glumsø,Zealand,2269,village,0,0,50,0,none,none
+gn:2621356,Glostrup,Capital Region,23128,town,0,0,50,0,none,none
+gn:2621393,Glamsbjerg,South Denmark,3308,village,0,0,50,0,none,none
+gn:2621431,Gjern,Central Jutland,1553,village,0,0,50,0,none,none
+gn:2621435,Gjellerup,Central Jutland,11406,town,0,0,50,0,none,none
+gn:2621436,Gjellerup,Central Jutland,3731,village,0,0,50,0,none,none
+gn:2621448,Give,South Denmark,5215,village,0,0,50,0,none,none
+gn:2621449,Gistrup,North Denmark,3679,village,0,0,50,0,none,none
+gn:2621471,Gilleleje,Capital Region,6598,village,0,0,50,0,none,none
+gn:2621478,Gevninge,Zealand,1636,village,0,0,50,0,none,none
+gn:2621522,Gelsted,South Denmark,1676,village,0,0,50,0,none,none
+gn:2621546,Gedved,Central Jutland,2475,village,0,0,50,0,none,none
+gn:2621614,Ganløse,Capital Region,2843,village,0,0,50,0,none,none
+gn:2621618,Gandrup,North Denmark,1573,village,0,0,50,0,none,none
+gn:2621710,Galten,Central Jutland,4895,village,0,0,50,0,none,none
+gn:2621727,Gadstrup,Zealand,2019,village,0,0,50,0,none,none
+gn:2621805,Fuglebjerg,Zealand,2321,village,0,0,50,0,none,none
+gn:2621896,Frejlev,North Denmark,3056,village,0,0,50,0,none,none
+gn:2621910,Frederiksværk,Capital Region,12718,town,0,0,50,0,none,none
+gn:2621912,Frederikssund,Capital Region,16850,town,0,0,50,0,none,none
+gn:2621927,Frederikshavn,North Denmark,22672,town,0,0,50,0,none,none
+gn:2621942,Frederiksberg,Capital Region,95029,town,0,0,50,0,none,none
+gn:2621945,Frederiksberg,Zealand,3142,village,0,0,50,0,none,none
+gn:2621951,Fredericia,South Denmark,40886,town,0,0,50,0,none,none
+gn:2621956,Fredensborg,Capital Region,8941,village,0,0,50,0,none,none
+gn:2621967,Framlev,Central Jutland,3067,village,0,0,50,0,none,none
+gn:2622002,Forlev,Zealand,2058,village,0,0,50,0,none,none
+gn:2622061,Fløng,Capital Region,11108,town,0,0,50,0,none,none
+gn:2622139,Fjerritslev,North Denmark,3300,village,0,0,50,0,none,none
+gn:2622226,Fensmark,Zealand,4203,village,0,0,50,0,none,none
+gn:2622306,Farum,Capital Region,20312,town,0,0,50,0,none,none
+gn:2622310,Farsø,North Denmark,3324,village,0,0,50,0,none,none
+gn:2622369,Faxe Ladeplads,Zealand,2496,village,0,0,50,0,none,none
+gn:2622372,Faxe,Zealand,4204,village,0,0,50,0,none,none
+gn:2622383,Faaborg,South Denmark,6822,village,0,0,50,0,none,none
+gn:2622418,Espergærde,Capital Region,11524,town,0,0,50,0,none,none
+gn:2622431,Eskilstrup,Zealand,1066,village,0,0,50,0,none,none
+gn:2622447,Esbjerg,South Denmark,71698,town,0,0,50,0,none,none
+gn:2622587,Elling,North Denmark,1081,village,0,0,50,0,none,none
+gn:2622664,Ejby,Zealand,1978,village,0,0,50,0,none,none
+gn:2622665,Ejby,Zealand,3131,village,0,0,50,0,none,none
+gn:2622666,Ejby,South Denmark,1996,village,0,0,50,0,none,none
+gn:2622686,Egtved,South Denmark,2408,village,0,0,50,0,none,none
+gn:2622793,Ebeltoft,Central Jutland,7437,village,0,0,50,0,none,none
+gn:2622854,Dybbøl,South Denmark,2272,village,0,0,50,0,none,none
+gn:2622884,Dronningmølle,Capital Region,1460,village,0,0,50,0,none,none
+gn:2622888,Dronninglund,North Denmark,3769,village,0,0,50,0,none,none
+gn:2622937,Dragør,Capital Region,12401,town,0,0,50,0,none,none
+gn:2623028,Dianalund,Zealand,3605,village,0,0,50,0,none,none
+gn:2623181,Christianshavn,Capital Region,10140,town,0,0,50,0,none,none
+gn:2623183,Christiansfeld,South Denmark,2977,village,0,0,50,0,none,none
+gn:2623188,Charlottenlund,Capital Region,40000,town,0,0,50,0,none,none
+gn:2623199,Byrum,North Denmark,444,village,0,0,50,0,none,none
+gn:2623247,Bullerup,South Denmark,2982,village,0,0,50,0,none,none
+gn:2623267,Buddinge,Capital Region,0,village,0,0,50,0,none,none
+gn:2623306,Brovst,North Denmark,2665,village,0,0,50,0,none,none
+gn:2623321,Brørup,South Denmark,4596,village,0,0,50,0,none,none
+gn:2623337,Brønderslev,North Denmark,12549,town,0,0,50,0,none,none
+gn:2623340,Brøndbyvester,Capital Region,20000,town,0,0,50,0,none,none
+gn:2623341,Brøndby Strand,Capital Region,11915,town,0,0,50,0,none,none
+gn:2623394,Broager,South Denmark,3202,village,0,0,50,0,none,none
+gn:2623432,Brenderup,South Denmark,1366,village,0,0,50,0,none,none
+gn:2623441,Brejning,South Denmark,2220,village,0,0,50,0,none,none
+gn:2623486,Bredsten,South Denmark,1881,village,0,0,50,0,none,none
+gn:2623505,Bredebro,South Denmark,1428,village,0,0,50,0,none,none
+gn:2623516,Brædstrup,Central Jutland,3917,village,0,0,50,0,none,none
+gn:2623554,Brande,Central Jutland,7289,village,0,0,50,0,none,none
+gn:2623570,Bramming,South Denmark,7111,village,0,0,50,0,none,none
+gn:2623627,Borup,Zealand,5063,village,0,0,50,0,none,none
+gn:2623628,Borup,Zealand,5063,village,0,0,50,0,none,none
+gn:2623694,Bording Kirkeby,Central Jutland,2104,village,0,0,50,0,none,none
+gn:2623736,Børkop,South Denmark,3561,village,0,0,50,0,none,none
+gn:2623857,Bogense,South Denmark,4059,village,0,0,50,0,none,none
+gn:2623905,Blovstrød,Capital Region,3019,village,0,0,50,0,none,none
+gn:2623973,Bække,South Denmark,1042,village,0,0,50,0,none,none
+gn:2623978,Bjæverskov,Zealand,3279,village,0,0,50,0,none,none
+gn:2624019,Bjerringbro,Central Jutland,7407,village,0,0,50,0,none,none
+gn:2624112,Birkerød,Capital Region,21242,town,0,0,50,0,none,none
+gn:2624144,Billund,South Denmark,7446,village,0,0,50,0,none,none
+gn:2624193,Bellinge,South Denmark,5881,village,0,0,50,0,none,none
+gn:2624212,Beder,Central Jutland,9430,village,0,0,50,0,none,none
+gn:2624341,Ballerup,Capital Region,40000,town,0,0,50,0,none,none
+gn:2624419,Avlum,Central Jutland,3232,village,0,0,50,0,none,none
+gn:2624427,Avedøre,Capital Region,53443,town,0,0,50,0,none,none
+gn:2624435,Auning,Central Jutland,3383,village,0,0,50,0,none,none
+gn:2624439,Augustenborg,South Denmark,3164,village,0,0,50,0,none,none
+gn:2624499,Assentoft,Central Jutland,3985,village,0,0,50,0,none,none
+gn:2624501,Assens,North Denmark,1422,village,0,0,50,0,none,none
+gn:2624502,Assens,South Denmark,6050,village,0,0,50,0,none,none
+gn:2624521,Asnæs,Zealand,3048,village,0,0,50,0,none,none
+gn:2624587,Årup,South Denmark,3254,village,0,0,50,0,none,none
+gn:2624595,Årslev,South Denmark,4427,village,0,0,50,0,none,none
+gn:2624602,Aars,North Denmark,8474,village,0,0,50,0,none,none
+gn:2624652,Århus,Central Jutland,285273,city,0,0,50,0,none,none
+gn:2624660,Arden,North Denmark,2516,village,0,0,50,0,none,none
+gn:2624679,Ans,Central Jutland,1912,village,0,0,50,0,none,none
+gn:2624784,Ålsgårde,Capital Region,5765,village,0,0,50,0,none,none
+gn:2624817,Allinge,Capital Region,1446,village,0,0,50,0,none,none
+gn:2624819,Allingåbro,Central Jutland,1842,village,0,0,50,0,none,none
+gn:2624843,Allerød,Capital Region,25867,town,0,0,50,0,none,none
+gn:2624853,Alholm,Zealand,9848,village,0,0,50,0,none,none
+gn:2624864,Ålestrup,North Denmark,2755,village,0,0,50,0,none,none
+gn:2624886,Aalborg,North Denmark,142937,city,0,0,50,0,none,none
+gn:2624896,Ålbæk,North Denmark,1379,village,0,0,50,0,none,none
+gn:2624900,Ålbæk,South Denmark,1419,village,0,0,50,0,none,none
+gn:2624906,Albertslund,Capital Region,30000,town,0,0,50,0,none,none
+gn:2624929,Åkirkeby,Capital Region,2109,village,0,0,50,0,none,none
+gn:2625001,Ærøskøbing,South Denmark,935,village,0,0,50,0,none,none
+gn:2625037,Åbybro,North Denmark,6318,village,0,0,50,0,none,none
+gn:2625070,Aabenraa,South Denmark,16401,town,0,0,50,0,none,none
+gn:3229248,Sundby,Zealand,3236,village,0,0,50,0,none,none
+gn:6949461,Indre By,Capital Region,26223,town,0,0,50,0,none,none
+gn:8198686,Christiansø,Capital Region,90,village,0,0,50,0,none,none
+gn:13696931,Gammel Virum,Capital Region,15000,town,0,0,50,0,none,none

@@ -1,0 +1,381 @@
+place_id,name,region,population,market,verified_homes,dated_listings,shortfall_to_50,recorded_sales,rent_source,price_source
+gn:363200,Xarrë,Vlorë County,4263,village,0,0,50,0,none,none
+gn:363243,Sarandë,Vlorë County,22613,town,0,0,50,0,none,none
+gn:363285,Mesopotam,Vlorë County,2786,village,0,0,50,0,none,none
+gn:363288,Markat,Vlorë County,1859,village,0,0,50,0,none,none
+gn:363298,Livadhja,Vlorë County,0,village,0,0,50,0,none,none
+gn:363320,Konispol,Vlorë County,1349,village,0,0,50,0,none,none
+gn:363341,Kakavijë,Gjirokastër County,0,village,0,0,50,0,none,none
+gn:363363,Finiq,Vlorë County,1333,village,0,0,50,0,none,none
+gn:363380,Dhivër,Vlorë County,0,village,0,0,50,0,none,none
+gn:363383,Delvinë,Vlorë County,6166,village,0,0,50,0,none,none
+gn:363409,Aliko,Vlorë County,0,village,0,0,50,0,none,none
+gn:781061,Buçimas,Korçë County,0,village,0,0,50,0,none,none
+gn:781110,Zerqan,Dibër County,4111,village,0,0,50,0,none,none
+gn:781127,Zavalinë,Elbasan County,0,village,0,0,50,0,none,none
+gn:781132,Zapod,Kukës County,0,village,0,0,50,0,none,none
+gn:781139,Zall-Reç,Dibër County,681,village,0,0,50,0,none,none
+gn:781144,Zall-Dardhë,Dibër County,1051,village,0,0,50,0,none,none
+gn:781158,Xibër-Murrizë,Dibër County,0,village,0,0,50,0,none,none
+gn:781176,Vreshtas,Korçë County,0,village,0,0,50,0,none,none
+gn:781182,Voskopojë,Korçë County,0,village,0,0,50,0,none,none
+gn:781185,Voskop,Korçë County,0,village,0,0,50,0,none,none
+gn:781212,Vithkuq,Korçë County,0,village,0,0,50,0,none,none
+gn:781213,Vithkuq,Gjirokastër County,0,village,0,0,50,0,none,none
+gn:781250,Vërtop,Berat County,4919,village,0,0,50,0,none,none
+gn:781260,Vergo,Vlorë County,0,village,0,0,50,0,none,none
+gn:781269,Vendresha e Vogël,Berat County,118,village,0,0,50,0,none,none
+gn:781280,Velçan,Korçë County,0,village,0,0,50,0,none,none
+gn:781326,Ujmisht,Kukës County,1136,village,0,0,50,0,none,none
+gn:781335,Udënisht,Korçë County,0,village,0,0,50,0,none,none
+gn:781343,Tunjë,Elbasan County,0,village,0,0,50,0,none,none
+gn:781376,Tregan,Elbasan County,0,village,0,0,50,0,none,none
+gn:781379,Trebisht-Muçinë,Dibër County,0,village,0,0,50,0,none,none
+gn:781382,Trebinjë,Korçë County,0,village,0,0,50,0,none,none
+gn:781405,Topojan,Gjirokastër County,0,village,0,0,50,0,none,none
+gn:781415,Tomin,Dibër County,0,village,0,0,50,0,none,none
+gn:781443,Tepelenë,Gjirokastër County,11955,town,0,0,50,0,none,none
+gn:781468,Surroj,Kukës County,0,village,0,0,50,0,none,none
+gn:781472,Sult,Elbasan County,0,village,0,0,50,0,none,none
+gn:781481,Sukë,Gjirokastër County,0,village,0,0,50,0,none,none
+gn:781487,Suç,Dibër County,0,village,0,0,50,0,none,none
+gn:781506,Stravaj,Elbasan County,2427,village,0,0,50,0,none,none
+gn:781521,Steblevë,Elbasan County,0,village,0,0,50,0,none,none
+gn:781563,Sllovë,Dibër County,0,village,0,0,50,0,none,none
+gn:781578,Skore,Gjirokastër County,0,village,0,0,50,0,none,none
+gn:781580,Skënderbegas,Elbasan County,0,village,0,0,50,0,none,none
+gn:781599,Shushicë,Elbasan County,8731,village,0,0,50,0,none,none
+gn:781601,Shupenzë,Dibër County,5503,village,0,0,50,0,none,none
+gn:781621,Shtiqën,Kukës County,0,village,0,0,50,0,none,none
+gn:781664,Shishtavec,Kukës County,0,village,0,0,50,0,none,none
+gn:781667,Shirgjan,Elbasan County,0,village,0,0,50,0,none,none
+gn:781690,Shëngjin,Lezhë County,0,village,0,0,50,0,none,none
+gn:781699,Shënmëri,Kukës County,0,village,0,0,50,0,none,none
+gn:781740,Selishtë,Dibër County,0,village,0,0,50,0,none,none
+gn:781763,Saraqinishtë,Gjirokastër County,0,village,0,0,50,0,none,none
+gn:781778,Rukaj,Dibër County,0,village,0,0,50,0,none,none
+gn:781795,Rajcë,Elbasan County,8421,village,0,0,50,0,none,none
+gn:781798,Roshnik Qender,Berat County,2513,village,0,0,50,0,none,none
+gn:781862,Qukës-Skënderbe,Elbasan County,0,village,0,0,50,0,none,none
+gn:781877,Qestorat,Gjirokastër County,0,village,0,0,50,0,none,none
+gn:781886,Qereshnik,Berat County,1105,village,0,0,50,0,none,none
+gn:781903,Qafëmal,Shkodër County,1548,village,0,0,50,0,none,none
+gn:781919,Përrenjas-Fshat,Elbasan County,4015,village,0,0,50,0,none,none
+gn:781920,Përrenjas,Elbasan County,5847,village,0,0,50,0,none,none
+gn:781924,Proptisht,Korçë County,0,village,0,0,50,0,none,none
+gn:781927,Progër,Korçë County,0,village,0,0,50,0,none,none
+gn:781951,Potom,Berat County,897,village,0,0,50,0,none,none
+gn:781962,Poroçan,Elbasan County,0,village,0,0,50,0,none,none
+gn:781974,Polis-Gostimë,Elbasan County,0,village,0,0,50,0,none,none
+gn:781979,Poliçan,Berat County,4318,village,0,0,50,0,none,none
+gn:781986,Pojan,Korçë County,0,village,0,0,50,0,none,none
+gn:781988,Pogradec,Korçë County,46070,town,0,0,50,0,none,none
+gn:782035,Pishaj,Elbasan County,4906,village,0,0,50,0,none,none
+gn:782037,Pirg,Korçë County,0,village,0,0,50,0,none,none
+gn:782048,Gjinkar,Gjirokastër County,3243,village,0,0,50,0,none,none
+gn:782049,Petran,Gjirokastër County,0,village,0,0,50,0,none,none
+gn:782061,Peshkopi,Dibër County,14710,town,0,0,50,0,none,none
+gn:782070,Përmet,Gjirokastër County,7980,village,0,0,50,0,none,none
+gn:782117,Ostreni i Math,Dibër County,0,village,0,0,50,0,none,none
+gn:782131,Orosh,Lezhë County,0,village,0,0,50,0,none,none
+gn:782140,Orenjë,Elbasan County,0,village,0,0,50,0,none,none
+gn:782155,Odrie,Gjirokastër County,0,village,0,0,50,0,none,none
+gn:782163,Novoselë,Korçë County,0,village,0,0,50,0,none,none
+gn:782169,Picar,Gjirokastër County,0,village,0,0,50,0,none,none
+gn:782248,Mollas,Elbasan County,0,village,0,0,50,0,none,none
+gn:782250,Mollas,Korçë County,0,village,0,0,50,0,none,none
+gn:782253,Mollaj,Korçë County,0,village,0,0,50,0,none,none
+gn:782270,Miras,Korçë County,0,village,0,0,50,0,none,none
+gn:782321,Melan,Dibër County,0,village,0,0,50,0,none,none
+gn:782337,Mborje,Korçë County,3850,village,0,0,50,0,none,none
+gn:782355,Martanesh,Dibër County,0,village,0,0,50,0,none,none
+gn:782372,Maqellarë,Dibër County,0,village,0,0,50,0,none,none
+gn:782393,Maliq,Korçë County,3735,village,0,0,50,0,none,none
+gn:782423,Macukull,Dibër County,0,village,0,0,50,0,none,none
+gn:782443,Lunik,Elbasan County,0,village,0,0,50,0,none,none
+gn:782464,Llugaj,Kukës County,0,village,0,0,50,0,none,none
+gn:782498,Lis,Dibër County,0,village,0,0,50,0,none,none
+gn:782500,Liqenas,Korçë County,0,village,0,0,50,0,none,none
+gn:782519,Librazhd,Elbasan County,23312,town,0,0,50,0,none,none
+gn:782522,Libonik,Korçë County,0,village,0,0,50,0,none,none
+gn:782523,Libohovë,Gjirokastër County,3651,village,0,0,50,0,none,none
+gn:782535,Leskovik,Korçë County,939,village,0,0,50,0,none,none
+gn:782544,Leshnjë,Berat County,496,village,0,0,50,0,none,none
+gn:782560,Lenias,Elbasan County,0,village,0,0,50,0,none,none
+gn:782576,Lekas,Korçë County,0,village,0,0,50,0,none,none
+gn:782582,Lazarat,Gjirokastër County,0,village,0,0,50,0,none,none
+gn:782611,Labinot-Mal,Elbasan County,0,village,0,0,50,0,none,none
+gn:782612,Labinot-Fushë,Elbasan County,0,village,0,0,50,0,none,none
+gn:782622,Kushovë,Elbasan County,0,village,0,0,50,0,none,none
+gn:782632,Kurbnesh,Lezhë County,1429,village,0,0,50,0,none,none
+gn:782658,Kukur,Elbasan County,0,village,0,0,50,0,none,none
+gn:782661,Kukës,Kukës County,36125,town,0,0,50,0,none,none
+gn:782672,Kthella e Epërme,Lezhë County,0,village,0,0,50,0,none,none
+gn:782685,Krumë,Kukës County,4814,village,0,0,50,0,none,none
+gn:782707,Krastë,Dibër County,1540,village,0,0,50,0,none,none
+gn:782756,Korçë,Korçë County,58259,town,0,0,50,0,none,none
+gn:782771,Kolsh,Kukës County,0,village,0,0,50,0,none,none
+gn:782791,Kodovjat,Elbasan County,0,village,0,0,50,0,none,none
+gn:782806,Klos,Dibër County,7873,village,0,0,50,0,none,none
+gn:782807,Klos,Elbasan County,3262,village,0,0,50,0,none,none
+gn:782843,Këlcyrë,Gjirokastër County,4900,village,0,0,50,0,none,none
+gn:782856,Kastriot,Dibër County,0,village,0,0,50,0,none,none
+gn:782868,Kardhiq,Gjirokastër County,0,village,0,0,50,0,none,none
+gn:782906,Kalis,Kukës County,0,village,0,0,50,0,none,none
+gn:782953,Iballë,Shkodër County,1129,village,0,0,50,0,none,none
+gn:782963,Hotolisht,Elbasan County,5706,village,0,0,50,0,none,none
+gn:782980,Hoçisht,Korçë County,4461,village,0,0,50,0,none,none
+gn:783059,Gramsh,Elbasan County,11556,town,0,0,50,0,none,none
+gn:783086,Gostimë,Elbasan County,0,village,0,0,50,0,none,none
+gn:783111,Golaj,Kukës County,0,village,0,0,50,0,none,none
+gn:783135,Gjorica e Sipërme,Dibër County,0,village,0,0,50,0,none,none
+gn:783148,Gjirokastër,Gjirokastër County,23437,town,0,0,50,0,none,none
+gn:783156,Gjinar,Elbasan County,0,village,0,0,50,0,none,none
+gn:783158,Gjinaj,Kukës County,0,village,0,0,50,0,none,none
+gn:783163,Gjergjan,Elbasan County,0,village,0,0,50,0,none,none
+gn:783170,Gjegjan,Shkodër County,0,village,0,0,50,0,none,none
+gn:783205,Fushë-Muhurr,Dibër County,0,village,0,0,50,0,none,none
+gn:783207,Fushë-Lurë,Dibër County,0,village,0,0,50,0,none,none
+gn:783210,Fushë-Çidhnë,Dibër County,0,village,0,0,50,0,none,none
+gn:783212,Fushë-Bulqizë,Dibër County,0,village,0,0,50,0,none,none
+gn:783214,Fushë-Arrëz,Shkodër County,2438,village,0,0,50,0,none,none
+gn:783231,Frashër,Gjirokastër County,0,village,0,0,50,0,none,none
+gn:783247,Fierzë,Shkodër County,0,village,0,0,50,0,none,none
+gn:783254,Fajzë,Kukës County,0,village,0,0,50,0,none,none
+gn:783259,Ersekë,Korçë County,7890,village,0,0,50,0,none,none
+gn:783263,Elbasan,Elbasan County,100903,city,0,0,50,0,none,none
+gn:783300,Drenovë,Korçë County,0,village,0,0,50,0,none,none
+gn:783343,Dishnicë,Korçë County,0,village,0,0,50,0,none,none
+gn:783370,Derjan,Dibër County,0,village,0,0,50,0,none,none
+gn:783384,Gjerbës,Berat County,813,village,0,0,50,0,none,none
+gn:783408,Çorovodë,Berat County,3918,village,0,0,50,0,none,none
+gn:783412,Çlirim,Korçë County,0,village,0,0,50,0,none,none
+gn:783446,Cerava,Korçë County,0,village,0,0,50,0,none,none
+gn:783450,Çepan,Berat County,0,village,0,0,50,0,none,none
+gn:783461,Çarshovë,Gjirokastër County,0,village,0,0,50,0,none,none
+gn:783469,Kokaj,Kukës County,0,village,0,0,50,0,none,none
+gn:783479,Buz,Gjirokastër County,0,village,0,0,50,0,none,none
+gn:783489,Bushtricë,Kukës County,0,village,0,0,50,0,none,none
+gn:783493,Burrel,Dibër County,7928,village,0,0,50,0,none,none
+gn:783508,Bulqizë,Dibër County,26826,town,0,0,50,0,none,none
+gn:783519,Bujan,Kukës County,2550,village,0,0,50,0,none,none
+gn:783560,Bradashesh,Elbasan County,0,village,0,0,50,0,none,none
+gn:783590,Blinisht,Lezhë County,0,village,0,0,50,0,none,none
+gn:783593,Blerim,Shkodër County,0,village,0,0,50,0,none,none
+gn:783606,Bilisht,Korçë County,7287,village,0,0,50,0,none,none
+gn:783611,Bicaj,Kukës County,0,village,0,0,50,0,none,none
+gn:783629,Dardhas,Korçë County,0,village,0,0,50,0,none,none
+gn:783669,Barmash,Korçë County,0,village,0,0,50,0,none,none
+gn:783695,Ballaban,Gjirokastër County,0,village,0,0,50,0,none,none
+gn:783734,Arrën,Kukës County,0,village,0,0,50,0,none,none
+gn:783739,Arras,Dibër County,3055,village,0,0,50,0,none,none
+gn:829569,Bytyç,Kukës County,0,village,0,0,50,0,none,none
+gn:832209,Librazhd-Qendër,Elbasan County,12691,town,0,0,50,0,none,none
+gn:834294,Funarë,Elbasan County,0,village,0,0,50,0,none,none
+gn:865079,Moglicë,Korçë County,0,village,0,0,50,0,none,none
+gn:865098,Bogovë,Berat County,1098,village,0,0,50,0,none,none
+gn:865202,Piskovë,Gjirokastër County,0,village,0,0,50,0,none,none
+gn:2525810,Lukovë,Vlorë County,0,village,0,0,50,0,none,none
+gn:2595331,Ksamil,Vlorë County,2994,village,0,0,50,0,none,none
+gn:3183625,Zharrëz,Fier County,5236,village,0,0,50,0,none,none
+gn:3183646,Zejmen,Lezhë County,0,village,0,0,50,0,none,none
+gn:3183653,Zall-Herr,Tirana,9389,village,0,0,50,0,none,none
+gn:3183658,Zall-Bastar,Tirana,3380,village,0,0,50,0,none,none
+gn:3183684,Xhafzotaj,Durrës County,12381,town,0,0,50,0,none,none
+gn:3183691,Vukatanë,Shkodër County,1113,village,0,0,50,0,none,none
+gn:3183698,Vrap,Tirana,3000,village,0,0,50,0,none,none
+gn:3183700,Vranisht,Vlorë County,0,village,0,0,50,0,none,none
+gn:3183708,Vorë,Tirana,4973,village,0,0,50,0,none,none
+gn:3183719,Vlorë,Vlorë County,115261,city,0,0,50,0,none,none
+gn:3183765,Velipojë,Shkodër County,0,village,0,0,50,0,none,none
+gn:3183780,Velabisht,Berat County,8453,village,0,0,50,0,none,none
+gn:3183791,Vaqarr,Tirana,0,village,0,0,50,0,none,none
+gn:3183809,Uznovë,Berat County,2569,village,0,0,50,0,none,none
+gn:3183814,Ura Vajgurore,Berat County,7232,village,0,0,50,0,none,none
+gn:3183820,Ungrej,Lezhë County,0,village,0,0,50,0,none,none
+gn:3183824,Ulëz,Dibër County,1229,village,0,0,50,0,none,none
+gn:3183865,Topojë,Fier County,0,village,0,0,50,0,none,none
+gn:3183875,Tirana,Tirana,418495,city,0,0,50,0,none,none
+gn:3183881,Thumanë,Durrës County,10719,town,0,0,50,0,none,none
+gn:3183907,Tërbuf,Fier County,0,village,0,0,50,0,none,none
+gn:3183928,Tapi,Berat County,1780,village,0,0,50,0,none,none
+gn:3183936,Synej,Tirana,0,village,0,0,50,0,none,none
+gn:3183945,Sukth,Durrës County,13395,town,0,0,50,0,none,none
+gn:3183959,Strum,Fier County,0,village,0,0,50,0,none,none
+gn:3183966,Starovë,Berat County,1043,village,0,0,50,0,none,none
+gn:3184013,Sinjë,Berat County,3351,village,0,0,50,0,none,none
+gn:3184021,Sinaballaj,Tirana,0,village,0,0,50,0,none,none
+gn:3184081,Shkodër,Shkodër County,95553,town,0,0,50,0,none,none
+gn:3184099,Shijak,Durrës County,14138,town,0,0,50,0,none,none
+gn:3184101,Shezë,Elbasan County,0,village,0,0,50,0,none,none
+gn:3184129,Shënkoll,Lezhë County,0,village,0,0,50,0,none,none
+gn:3184136,Shëngjin,Lezhë County,6963,village,0,0,50,0,none,none
+gn:3184143,Shëngjergj,Tirana,0,village,0,0,50,0,none,none
+gn:3184167,Shalës,Elbasan County,0,village,0,0,50,0,none,none
+gn:3184172,Nicaj-Shalë,Shkodër County,0,village,0,0,50,0,none,none
+gn:3184177,Sevaster,Vlorë County,0,village,0,0,50,0,none,none
+gn:3184191,Selitë,Lezhë County,0,village,0,0,50,0,none,none
+gn:3184193,Valbonë,Kukës County,0,village,0,0,50,0,none,none
+gn:3184197,Selenicë,Vlorë County,6912,village,0,0,50,0,none,none
+gn:3184220,Samaticë,Berat County,1249,village,0,0,50,0,none,none
+gn:3184230,Ruzhdie,Fier County,0,village,0,0,50,0,none,none
+gn:3184238,Rubik,Lezhë County,2332,village,0,0,50,0,none,none
+gn:3184252,Rrogozhinë,Tirana,7049,village,0,0,50,0,none,none
+gn:3184264,Rrëshen,Lezhë County,6773,village,0,0,50,0,none,none
+gn:3184271,Rrashbull,Durrës County,20099,town,0,0,50,0,none,none
+gn:3184276,Rrasa e Sipërme,Elbasan County,0,village,0,0,50,0,none,none
+gn:3184283,Rrapë,Shkodër County,0,village,0,0,50,0,none,none
+gn:3184290,Roskovec,Fier County,6657,village,0,0,50,0,none,none
+gn:3184316,Remas,Fier County,0,village,0,0,50,0,none,none
+gn:3184362,Qerret,Shkodër County,0,village,0,0,50,0,none,none
+gn:3184374,Qelëz,Shkodër County,0,village,0,0,50,0,none,none
+gn:3184388,Pukë,Shkodër County,6495,village,0,0,50,0,none,none
+gn:3184397,Progonat,Gjirokastër County,0,village,0,0,50,0,none,none
+gn:3184408,Prezë,Tirana,0,village,0,0,50,0,none,none
+gn:3184417,Poshnjë,Berat County,7375,village,0,0,50,0,none,none
+gn:3184420,Portëz,Fier County,0,village,0,0,50,0,none,none
+gn:3184429,Pobrat,Berat County,1518,village,0,0,50,0,none,none
+gn:3184471,Peza e Madhe,Tirana,0,village,0,0,50,0,none,none
+gn:3184474,Petrelë,Tirana,5542,village,0,0,50,0,none,none
+gn:3184484,Përparim,Elbasan County,0,village,0,0,50,0,none,none
+gn:3184487,Perondi,Berat County,9005,village,0,0,50,0,none,none
+gn:3184497,Peqin,Elbasan County,16580,town,0,0,50,0,none,none
+gn:3184517,Patos Fshat,Fier County,22679,town,0,0,50,0,none,none
+gn:3184518,Patos,Fier County,16000,town,0,0,50,0,none,none
+gn:3184528,Paskuqan,Tirana,0,village,0,0,50,0,none,none
+gn:3184538,Papër,Elbasan County,6348,village,0,0,50,0,none,none
+gn:3184562,Pajovë,Elbasan County,0,village,0,0,50,0,none,none
+gn:3184568,Otllak,Berat County,9218,village,0,0,50,0,none,none
+gn:3184575,Orikum,Vlorë County,2604,village,0,0,50,0,none,none
+gn:3184588,Novoselë,Vlorë County,8209,village,0,0,50,0,none,none
+gn:3184594,Nikël,Durrës County,9518,village,0,0,50,0,none,none
+gn:3184600,Nicaj-Shosh,Shkodër County,0,village,0,0,50,0,none,none
+gn:3184606,Ngraçan,Fier County,588,village,0,0,50,0,none,none
+gn:3184611,Ndroq,Tirana,5035,village,0,0,50,0,none,none
+gn:3184676,Moravë,Berat County,1459,village,0,0,50,0,none,none
+gn:3184702,Milot,Lezhë County,2157,village,0,0,50,0,none,none
+gn:3184743,Memaliaj,Gjirokastër County,4951,village,0,0,50,0,none,none
+gn:3184755,Mbrostar-Urë,Fier County,0,village,0,0,50,0,none,none
+gn:3184801,Manzë,Durrës County,7185,village,0,0,50,0,none,none
+gn:3184806,Mamurras,Lezhë County,8282,village,0,0,50,0,none,none
+gn:3184808,Maminas,Durrës County,0,village,0,0,50,0,none,none
+gn:3184841,Magjatë,Berat County,1637,village,0,0,50,0,none,none
+gn:3184855,Luzi i Vogël,Tirana,0,village,0,0,50,0,none,none
+gn:3184862,Lushnjë,Fier County,63135,town,0,0,50,0,none,none
+gn:3184887,Luftinjë,Gjirokastër County,0,village,0,0,50,0,none,none
+gn:3184930,Libofshë,Fier County,0,village,0,0,50,0,none,none
+gn:3184935,Lezhë,Lezhë County,18695,town,0,0,50,0,none,none
+gn:3184945,Levan,Fier County,0,village,0,0,50,0,none,none
+gn:3184969,Lekbibaj,Kukës County,0,village,0,0,50,0,none,none
+gn:3184973,Lekaj,Tirana,0,village,0,0,50,0,none,none
+gn:3184985,Lapardha Një,Berat County,1724,village,0,0,50,0,none,none
+gn:3185012,Laç,Lezhë County,12854,town,0,0,50,0,none,none
+gn:3185015,Kutë,Fier County,0,village,0,0,50,0,none,none
+gn:3185017,Kutalli,Berat County,9643,village,0,0,50,0,none,none
+gn:3185031,Kurjan,Fier County,0,village,0,0,50,0,none,none
+gn:3185044,Kuman,Fier County,0,village,0,0,50,0,none,none
+gn:3185060,Kuçovë,Berat County,31077,town,0,0,50,0,none,none
+gn:3185063,Kuç,Shkodër County,0,village,0,0,50,0,none,none
+gn:3185069,Kryevidh,Tirana,0,village,0,0,50,0,none,none
+gn:3185077,Krutja e Poshtme,Fier County,0,village,0,0,50,0,none,none
+gn:3185082,Krujë,Durrës County,51191,town,0,0,50,0,none,none
+gn:3185087,Krrabë,Tirana,1177,village,0,0,50,0,none,none
+gn:3185102,Krahës,Gjirokastër County,0,village,0,0,50,0,none,none
+gn:3185107,Kozarë,Berat County,5622,village,0,0,50,0,none,none
+gn:3185113,Kotë,Vlorë County,0,village,0,0,50,0,none,none
+gn:3185131,Kopliku i Siperm,Shkodër County,1259,village,0,0,50,0,none,none
+gn:3185133,Koplik,Shkodër County,4078,village,0,0,50,0,none,none
+gn:3185140,Kombësi,Dibër County,0,village,0,0,50,0,none,none
+gn:3185144,Kolonjë,Fier County,0,village,0,0,50,0,none,none
+gn:3185148,Kolç,Lezhë County,0,village,0,0,50,0,none,none
+gn:3185211,Kavajë,Tirana,30012,town,0,0,50,0,none,none
+gn:3185218,Katundi i Ri,Durrës County,0,village,0,0,50,0,none,none
+gn:3185223,Kastrat,Shkodër County,0,village,0,0,50,0,none,none
+gn:3185234,Kashar,Tirana,0,village,0,0,50,0,none,none
+gn:3185246,Karinë,Elbasan County,0,village,0,0,50,0,none,none
+gn:3185251,Karbunara e Vogël,Fier County,0,village,0,0,50,0,none,none
+gn:3185270,Kamëz,Tirana,11026,town,0,0,50,0,none,none
+gn:3185289,Kallmeti i Madh,Lezhë County,0,village,0,0,50,0,none,none
+gn:3185290,Kallmet,Tirana,0,village,0,0,50,0,none,none
+gn:3185302,Kalenjë,Fier County,0,village,0,0,50,0,none,none
+gn:3185315,Kajan,Elbasan County,0,village,0,0,50,0,none,none
+gn:3185320,Kaçinar,Lezhë County,0,village,0,0,50,0,none,none
+gn:3185351,Ishëm,Durrës County,5001,village,0,0,50,0,none,none
+gn:3185363,Hysgjokaj,Fier County,0,village,0,0,50,0,none,none
+gn:3185370,Hot,Shkodër County,1473,village,0,0,50,0,none,none
+gn:3185377,Himarë,Vlorë County,4596,village,0,0,50,0,none,none
+gn:3185381,Helmas,Tirana,0,village,0,0,50,0,none,none
+gn:3185386,Hekal,Fier County,0,village,0,0,50,0,none,none
+gn:3185389,Havaleas,Berat County,1214,village,0,0,50,0,none,none
+gn:3185398,Hasan,Durrës County,0,village,0,0,50,0,none,none
+gn:3185412,Hajmel,Shkodër County,0,village,0,0,50,0,none,none
+gn:3185426,Gurra e Vogël,Dibër County,0,village,0,0,50,0,none,none
+gn:3185431,Guri i Zi,Shkodër County,0,village,0,0,50,0,none,none
+gn:3185449,Gruemirë,Shkodër County,0,village,0,0,50,0,none,none
+gn:3185465,Greshicë,Fier County,0,village,0,0,50,0,none,none
+gn:3185469,Grekan,Elbasan County,0,village,0,0,50,0,none,none
+gn:3185487,Gradishtë,Fier County,0,village,0,0,50,0,none,none
+gn:3185491,Gracen,Elbasan County,0,village,0,0,50,0,none,none
+gn:3185494,Grabjan,Fier County,0,village,0,0,50,0,none,none
+gn:3185497,Gosë e Madhe,Tirana,0,village,0,0,50,0,none,none
+gn:3185507,Çlirim,Berat County,1097,village,0,0,50,0,none,none
+gn:3185514,Goraj,Berat County,1714,village,0,0,50,0,none,none
+gn:3185527,Golem,Fier County,6994,village,0,0,50,0,none,none
+gn:3185567,Gjoçaj,Elbasan County,0,village,0,0,50,0,none,none
+gn:3185580,Gjepalaj,Durrës County,0,village,0,0,50,0,none,none
+gn:3185598,"Gjadër, Dajc",Lezhë County,2000,village,0,0,50,0,none,none
+gn:3185614,Gegë,Berat County,1571,village,0,0,50,0,none,none
+gn:3185637,Fushëkuqe,Lezhë County,0,village,0,0,50,0,none,none
+gn:3185638,Fushë-Krujë,Durrës County,17877,town,0,0,50,0,none,none
+gn:3185648,Fratar,Fier County,0,village,0,0,50,0,none,none
+gn:3185652,Frakulla e Madhe,Fier County,0,village,0,0,50,0,none,none
+gn:3185664,Fier-Shegan,Fier County,0,village,0,0,50,0,none,none
+gn:3185670,Fier-Çifçi,Fier County,60995,town,0,0,50,0,none,none
+gn:3185672,Fier,Fier County,56297,town,0,0,50,0,none,none
+gn:3185689,Farka e Madhe,Tirana,0,village,0,0,50,0,none,none
+gn:3185707,Dushnik,Berat County,1282,village,0,0,50,0,none,none
+gn:3185728,Durrës,Durrës County,195920,city,0,0,50,0,none,none
+gn:3185746,Duhanas,Berat County,1274,village,0,0,50,0,none,none
+gn:3185766,Drenovicë,Berat County,1907,village,0,0,50,0,none,none
+gn:3185767,Drenovë,Fier County,0,village,0,0,50,0,none,none
+gn:3185797,Divjakë,Fier County,6713,village,0,0,50,0,none,none
+gn:3185803,Dhërmi,Vlorë County,1800,village,0,0,50,0,none,none
+gn:3185815,Dërmënas,Fier County,0,village,0,0,50,0,none,none
+gn:3185823,Vau i Dejës,Shkodër County,0,village,0,0,50,0,none,none
+gn:3185843,Dajt,Tirana,0,village,0,0,50,0,none,none
+gn:3185846,Dajç,Shkodër County,0,village,0,0,50,0,none,none
+gn:3185847,Dajç,Lezhë County,0,village,0,0,50,0,none,none
+gn:3185860,Cukalat,Berat County,3045,village,0,0,50,0,none,none
+gn:3185862,Cudhi Zall,Durrës County,0,village,0,0,50,0,none,none
+gn:3185897,Cërrik,Elbasan County,14269,town,0,0,50,0,none,none
+gn:3185925,Cakran,Fier County,0,village,0,0,50,0,none,none
+gn:3185937,Bushat,Shkodër County,0,village,0,0,50,0,none,none
+gn:3185961,Bubullimë,Fier County,0,village,0,0,50,0,none,none
+gn:3185963,Bubq,Durrës County,4374,village,0,0,50,0,none,none
+gn:3185989,Brataj,Vlorë County,2849,village,0,0,50,0,none,none
+gn:3186068,Bërzhitë,Tirana,0,village,0,0,50,0,none,none
+gn:3186071,Bërxull,Tirana,0,village,0,0,50,0,none,none
+gn:3186082,Bërdica e Madhe,Shkodër County,0,village,0,0,50,0,none,none
+gn:3186084,Berat,Berat County,62232,town,0,0,50,0,none,none
+gn:3186093,Belsh,Elbasan County,0,village,0,0,50,0,none,none
+gn:3186103,Baz,Dibër County,0,village,0,0,50,0,none,none
+gn:3186145,Ballsh,Fier County,4944,village,0,0,50,0,none,none
+gn:3186153,Ballagat,Fier County,0,village,0,0,50,0,none,none
+gn:3186155,Baldushk,Tirana,0,village,0,0,50,0,none,none
+gn:3186184,Armen,Vlorë County,0,village,0,0,50,0,none,none
+gn:3186196,Aranitas,Fier County,0,village,0,0,50,0,none,none
+gn:3186208,Allkaj,Fier County,0,village,0,0,50,0,none,none
+gn:3186211,Allambres,Berat County,1079,village,0,0,50,0,none,none
+gn:3315380,Golem,Tirana,0,village,0,0,50,0,none,none
+gn:3315384,Balldreni i Ri,Lezhë County,0,village,0,0,50,0,none,none
+gn:3316577,Aliaj,Shkodër County,1033,village,0,0,50,0,none,none
+gn:3343340,Grudë-Fushë,Shkodër County,0,village,0,0,50,0,none,none
+gn:3343668,Kodër-Vorë,Tirana,1568,village,0,0,50,0,none,none
+gn:3343744,Fierzë,Elbasan County,0,village,0,0,50,0,none,none
+gn:3343819,Lapardha Dy,Berat County,1628,village,0,0,50,0,none,none
+gn:3343829,Dushk,Fier County,0,village,0,0,50,0,none,none
+gn:3343997,Selitë,Fier County,0,village,0,0,50,0,none,none
+gn:3344005,Vllahinë,Vlorë County,0,village,0,0,50,0,none,none
+gn:7932375,Bajram Curri,Kukës County,4113,village,0,0,50,0,none,none
+gn:13264709,Lumas,Berat County,3981,village,0,0,50,0,none,none
+gn:13264710,Qendër Skrapar,Berat County,2545,village,0,0,50,0,none,none

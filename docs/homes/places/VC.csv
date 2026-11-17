@@ -1,0 +1,21 @@
+place_id,name,region,population,market,verified_homes,dated_listings,shortfall_to_50,recorded_sales,rent_source,price_source
+gn:3577839,Questelles,Saint Andrew Parish,1163,village,0,0,50,0,none,none
+gn:3577844,Port Elizabeth,Grenadines Parish,839,village,0,0,50,0,none,none
+gn:3577855,Peruvian Vale,Charlotte Parish,1060,village,0,0,50,0,none,none
+gn:3577869,New Montrose,Saint Andrew Parish,1598,village,0,0,50,0,none,none
+gn:3577879,Layou,Saint Andrew Parish,140,village,0,0,50,0,none,none
+gn:3577887,Kingstown,Saint George Parish,24518,town,0,0,50,0,none,none
+gn:3577893,Greiggs,Charlotte Parish,1476,village,0,0,50,0,none,none
+gn:3577900,Georgetown,Charlotte Parish,1680,village,0,0,50,0,none,none
+gn:3577933,Chateaubelair,Saint David Parish,735,village,0,0,50,0,none,none
+gn:3577944,Byera Village,Charlotte Parish,1365,village,0,0,50,0,none,none
+gn:3577955,Biabou,Charlotte Parish,1050,village,0,0,50,0,none,none
+gn:3577962,Barrouallie,Saint Patrick Parish,1000,village,0,0,50,0,none,none
+gn:3748724,Redemption,Saint Andrew Parish,1875,village,0,0,50,0,none,none
+gn:3748746,Calliaqua,Saint George Parish,24205,town,0,0,50,0,none,none
+gn:12535728,Petit Bordel,Saint David Parish,1084,village,0,0,50,0,none,none
+gn:13526715,Sion Hill,Saint George Parish,1387,village,0,0,50,0,none,none
+gn:13526716,Old Montrose,Saint George Parish,1146,village,0,0,50,0,none,none
+gn:13526719,Diamond,Saint George Parish,1971,village,0,0,50,0,none,none
+gn:13526721,Friendly Village,Charlotte Parish,1074,village,0,0,50,0,none,none
+gn:13526724,Bottle and Glass,Saint Patrick Parish,1666,village,0,0,50,0,none,none

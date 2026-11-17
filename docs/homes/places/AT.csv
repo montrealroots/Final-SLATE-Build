@@ -1,0 +1,2267 @@
+place_id,name,region,population,market,verified_homes,dated_listings,shortfall_to_50,recorded_sales,rent_source,price_source
+gn:2600996,Döbling,Vienna,75418,town,0,0,50,0,none,none
+gn:2601384,Neu-Guntramsdorf,Lower Austria,9071,village,0,0,50,0,none,none
+gn:2606026,Kleinarl,Salzburg,792,village,0,0,50,0,none,none
+gn:2607522,Edelstauden,Styria,440,village,0,0,50,0,none,none
+gn:2608246,Neuhaus am Klausenbach,Burgenland,489,village,0,0,50,0,none,none
+gn:2760380,Millstatt,Carinthia,889,village,0,0,50,0,none,none
+gn:2760388,Zwölfaxing,Lower Austria,1744,village,0,0,50,0,none,none
+gn:2760416,Zwettl Stadt,Lower Austria,3900,village,0,0,50,0,none,none
+gn:2760420,Zwettl an der Rodl,Upper Austria,870,village,0,0,50,0,none,none
+gn:2760430,Zwentendorf,Lower Austria,1039,village,0,0,50,0,none,none
+gn:2760449,Zurndorf,Burgenland,2247,village,0,0,50,0,none,none
+gn:2760485,Zöblen,Tyrol,231,village,0,0,50,0,none,none
+gn:2760489,Zöbern,Lower Austria,729,village,0,0,50,0,none,none
+gn:2760510,Zistersdorf,Lower Austria,2792,village,0,0,50,0,none,none
+gn:2760523,Zirl,Tyrol,8162,village,0,0,50,0,none,none
+gn:2760563,Zillingtal,Burgenland,933,village,0,0,50,0,none,none
+gn:2760564,Zillingdorf,Lower Austria,1239,village,0,0,50,0,none,none
+gn:2760575,Ziersdorf,Lower Austria,1653,village,0,0,50,0,none,none
+gn:2760590,Zeutschach,Styria,213,village,0,0,50,0,none,none
+gn:2760592,Zettling,Styria,444,village,0,0,50,0,none,none
+gn:2760597,Zerlach,Styria,361,village,0,0,50,0,none,none
+gn:2760610,Zeltweg,Styria,4463,village,0,0,50,0,none,none
+gn:2760622,Zellerndorf,Lower Austria,1144,village,0,0,50,0,none,none
+gn:2760627,Zellberg,Tyrol,383,village,0,0,50,0,none,none
+gn:2760631,Zell an der Pram,Upper Austria,1228,village,0,0,50,0,none,none
+gn:2760632,Zell am Ziller,Tyrol,1758,village,0,0,50,0,none,none
+gn:2760634,Zell am See,Salzburg,7619,village,0,0,50,0,none,none
+gn:2760635,Zell am Pettenfirst,Upper Austria,193,village,0,0,50,0,none,none
+gn:2760636,Zell am Moos,Upper Austria,631,village,0,0,50,0,none,none
+gn:2760640,Zell,Tyrol,2551,village,0,0,50,0,none,none
+gn:2760652,Zeiselmauer,Lower Austria,1376,village,0,0,50,0,none,none
+gn:2760669,Zeillern,Lower Austria,1865,village,0,0,50,0,none,none
+gn:2760704,Zederhaus,Salzburg,583,village,0,0,50,0,none,none
+gn:2760749,Zams,Tyrol,3148,village,0,0,50,0,none,none
+gn:2760762,Zagersdorf,Burgenland,1027,village,0,0,50,0,none,none
+gn:2760770,Ybbsitz,Lower Austria,1721,village,0,0,50,0,none,none
+gn:2760772,Ybbs an der Donau,Lower Austria,4310,village,0,0,50,0,none,none
+gn:2760797,Würmla,Lower Austria,669,village,0,0,50,0,none,none
+gn:2760806,Würflach,Lower Austria,1009,village,0,0,50,0,none,none
+gn:2760814,Wundschuh,Styria,777,village,0,0,50,0,none,none
+gn:2760824,Wullersdorf,Lower Austria,737,village,0,0,50,0,none,none
+gn:2760825,Wulkaprodersdorf,Burgenland,1944,village,0,0,50,0,none,none
+gn:2760839,Wörth an der Lafnitz,Styria,381,village,0,0,50,0,none,none
+gn:2760846,Wörterberg,Burgenland,488,village,0,0,50,0,none,none
+gn:2760847,Wörschach,Styria,717,village,0,0,50,0,none,none
+gn:2760854,Wörgl,Tyrol,13811,town,0,0,50,0,none,none
+gn:2760855,Wördern,Lower Austria,3509,village,0,0,50,0,none,none
+gn:2760877,Wöllersdorf,Lower Austria,2567,village,0,0,50,0,none,none
+gn:2760887,Wolkersdorf im Weinviertel,Lower Austria,4115,village,0,0,50,0,none,none
+gn:2760894,Wolfurt,Vorarlberg,8446,village,0,0,50,0,none,none
+gn:2760895,Wolfsthal,Lower Austria,1032,village,0,0,50,0,none,none
+gn:2760902,Wolfsgraben,Lower Austria,1700,village,0,0,50,0,none,none
+gn:2760903,Wolfsegg am Hausruck,Upper Austria,995,village,0,0,50,0,none,none
+gn:2760906,Wolfsberg im Schwarzautal,Styria,551,village,0,0,50,0,none,none
+gn:2760910,Wolfsberg,Carinthia,25035,town,0,0,50,0,none,none
+gn:2760915,Wolfsbach,Lower Austria,2011,village,0,0,50,0,none,none
+gn:2760920,Wolfpassing,Lower Austria,493,village,0,0,50,0,none,none
+gn:2760924,Wölfnitz,Carinthia,5316,village,0,0,50,0,none,none
+gn:2760943,Wolfau,Burgenland,1436,village,0,0,50,0,none,none
+gn:2760996,Wippenham,Upper Austria,162,village,0,0,50,0,none,none
+gn:2761003,Winzendorf,Lower Austria,1282,village,0,0,50,0,none,none
+gn:2761037,Winklern bei Oberwölz,Styria,314,village,0,0,50,0,none,none
+gn:2761039,Winklern,Carinthia,690,village,0,0,50,0,none,none
+gn:2761049,Winklarn,Lower Austria,1323,village,0,0,50,0,none,none
+gn:2761096,Windischgarsten,Upper Austria,2392,village,0,0,50,0,none,none
+gn:2761105,Windigsteig,Lower Austria,302,village,0,0,50,0,none,none
+gn:2761111,Windhag,Lower Austria,1748,village,0,0,50,0,none,none
+gn:2761116,Windhaag bei Perg,Upper Austria,642,village,0,0,50,0,none,none
+gn:2761117,Windhaag bei Freistadt,Upper Austria,477,village,0,0,50,0,none,none
+gn:2761123,Winden am See,Burgenland,1315,village,0,0,50,0,none,none
+gn:2761147,Wimpassing an der Leitha,Burgenland,1549,village,0,0,50,0,none,none
+gn:2761148,Wimpassing,Upper Austria,5748,village,0,0,50,0,none,none
+gn:2761149,Wimpassing im Schwarzatale,Lower Austria,1616,village,0,0,50,0,none,none
+gn:2761164,Wilten,Tyrol,18142,town,0,0,50,0,none,none
+gn:2761178,Willendorf am Steinfelde,Lower Austria,684,village,0,0,50,0,none,none
+gn:2761186,Wilhelmsburg,Lower Austria,6557,village,0,0,50,0,none,none
+gn:2761192,Wilfleinsdorf,Lower Austria,1106,village,0,0,50,0,none,none
+gn:2761194,Wilfersdorf,Lower Austria,1168,village,0,0,50,0,none,none
+gn:2761208,Wildon,Styria,2652,village,0,0,50,0,none,none
+gn:2761229,Wildermieming,Tyrol,935,village,0,0,50,0,none,none
+gn:2761261,Wildalpen,Styria,464,village,0,0,50,0,none,none
+gn:2761272,Wiesmath,Lower Austria,1509,village,0,0,50,0,none,none
+gn:2761278,Wiesing,Tyrol,947,village,0,0,50,0,none,none
+gn:2761281,Wiesfleck,Burgenland,794,village,0,0,50,0,none,none
+gn:2761306,Wiesen,Burgenland,2691,village,0,0,50,0,none,none
+gn:2761314,Wieselburg,Lower Austria,4143,village,0,0,50,0,none,none
+gn:2761326,Wies,Styria,409,village,0,0,50,0,none,none
+gn:2761348,Wienersdorf,Lower Austria,2971,village,0,0,50,0,none,none
+gn:2761353,Wiener Neustadt,Lower Austria,44820,town,0,0,50,0,none,none
+gn:2761354,Wiener Neudorf,Lower Austria,9405,village,0,0,50,0,none,none
+gn:2761369,Vienna,Vienna,1691468,large-city,0,0,50,0,none,none
+gn:2761416,Weyregg,Upper Austria,799,village,0,0,50,0,none,none
+gn:2761419,Weyer,Upper Austria,3296,village,0,0,50,0,none,none
+gn:2761436,Wetzelsdorf,Styria,15687,town,0,0,50,0,none,none
+gn:2761442,Wettmannstätten,Styria,599,village,0,0,50,0,none,none
+gn:2761457,Westendorf,Tyrol,3652,village,0,0,50,0,none,none
+gn:2761467,Wernstein am Inn,Upper Austria,645,village,0,0,50,0,none,none
+gn:2761473,Wernersdorf,Styria,161,village,0,0,50,0,none,none
+gn:2761474,Werndorf,Styria,2365,village,0,0,50,0,none,none
+gn:2761475,Wernberg,Carinthia,584,village,0,0,50,0,none,none
+gn:2761476,Werfenweng,Salzburg,694,village,0,0,50,0,none,none
+gn:2761479,Werfen,Salzburg,1570,village,0,0,50,0,none,none
+gn:2761482,Weppersdorf,Burgenland,976,village,0,0,50,0,none,none
+gn:2761488,Wenns,Tyrol,2044,village,0,0,50,0,none,none
+gn:2761498,Weng im Innkreis,Upper Austria,664,village,0,0,50,0,none,none
+gn:2761508,Wendling,Upper Austria,372,village,0,0,50,0,none,none
+gn:2761524,Wels,Upper Austria,16857,town,0,0,50,0,none,none
+gn:2761531,Weiz,Styria,9221,village,0,0,50,0,none,none
+gn:2761538,Weitra,Lower Austria,1599,village,0,0,50,0,none,none
+gn:2761541,Weitersfelden,Upper Austria,342,village,0,0,50,0,none,none
+gn:2761543,Weitersfeld,Lower Austria,630,village,0,0,50,0,none,none
+gn:2761547,Weitensfeld,Carinthia,565,village,0,0,50,0,none,none
+gn:2761557,Weiten,Lower Austria,368,village,0,0,50,0,none,none
+gn:2761558,Weistrach,Lower Austria,2216,village,0,0,50,0,none,none
+gn:2761571,Weißkirchen in Steiermark,Styria,1279,village,0,0,50,0,none,none
+gn:2761572,Weisskirchen an der Traun,Upper Austria,1081,village,0,0,50,0,none,none
+gn:2761593,Weißenkirchen in der Wachau,Lower Austria,939,village,0,0,50,0,none,none
+gn:2761614,Weißenbach bei Liezen,Styria,1144,village,0,0,50,0,none,none
+gn:2761615,Weissenbach an der Triesting,Lower Austria,941,village,0,0,50,0,none,none
+gn:2761617,Weissenbach am Lech,Tyrol,1231,village,0,0,50,0,none,none
+gn:2761660,Weissach,Tyrol,2047,village,0,0,50,0,none,none
+gn:2761670,Weinzierl am Walde,Lower Austria,239,village,0,0,50,0,none,none
+gn:2761689,Weingraben,Burgenland,363,village,0,0,50,0,none,none
+gn:2761697,Weinburg am Saßbach,Styria,364,village,0,0,50,0,none,none
+gn:2761698,Weinburg,Lower Austria,708,village,0,0,50,0,none,none
+gn:2761712,Weiler,Vorarlberg,2075,village,0,0,50,0,none,none
+gn:2761714,Weilbach,Upper Austria,176,village,0,0,50,0,none,none
+gn:2761720,Weikersdorf am Steinfelde,Lower Austria,1066,village,0,0,50,0,none,none
+gn:2761723,Weikendorf,Lower Austria,1132,village,0,0,50,0,none,none
+gn:2761734,Weigelsdorf,Lower Austria,2680,village,0,0,50,0,none,none
+gn:2761741,Weidling,Lower Austria,3212,village,0,0,50,0,none,none
+gn:2761754,Weiden bei Rechnitz,Burgenland,123,village,0,0,50,0,none,none
+gn:2761758,Weiden am See,Burgenland,2426,village,0,0,50,0,none,none
+gn:2761772,Weichselbaum,Burgenland,133,village,0,0,50,0,none,none
+gn:2761779,Weibern,Upper Austria,711,village,0,0,50,0,none,none
+gn:2761796,Weer,Tyrol,1539,village,0,0,50,0,none,none
+gn:2761834,Wattens,Tyrol,7881,village,0,0,50,0,none,none
+gn:2761835,Wattenberg,Tyrol,739,village,0,0,50,0,none,none
+gn:2761865,Wartmannstetten,Lower Austria,566,village,0,0,50,0,none,none
+gn:2761869,Warth,Lower Austria,553,village,0,0,50,0,none,none
+gn:2761870,Warth,Vorarlberg,148,village,0,0,50,0,none,none
+gn:2761877,Wartberg ob der Aist,Upper Austria,1206,village,0,0,50,0,none,none
+gn:2761878,Wartberg an der Krems,Upper Austria,1382,village,0,0,50,0,none,none
+gn:2761880,Wartberg,Styria,1958,village,0,0,50,0,none,none
+gn:2761907,Wängle,Tyrol,552,village,0,0,50,0,none,none
+gn:2761914,Wang,Lower Austria,588,village,0,0,50,0,none,none
+gn:2761936,Waltendorf,Styria,11960,town,0,0,50,0,none,none
+gn:2761941,Wals,Salzburg,3626,village,0,0,50,0,none,none
+gn:2761944,Walpersbach,Lower Austria,766,village,0,0,50,0,none,none
+gn:2761945,Wallsee,Lower Austria,2006,village,0,0,50,0,none,none
+gn:2761964,Wallern im Burgenland,Burgenland,1702,village,0,0,50,0,none,none
+gn:2761965,Wallern an der Trattnach,Upper Austria,1965,village,0,0,50,0,none,none
+gn:2761976,Waldzell,Upper Austria,687,village,0,0,50,0,none,none
+gn:2761987,Waldprechting,Salzburg,1474,village,0,0,50,0,none,none
+gn:2761989,Waldneukirchen,Upper Austria,1154,village,0,0,50,0,none,none
+gn:2761995,Waldkirchen an der Thaya,Lower Austria,170,village,0,0,50,0,none,none
+gn:2761996,Waldkirchen am Wesen,Upper Austria,174,village,0,0,50,0,none,none
+gn:2761999,Walding,Upper Austria,4095,village,0,0,50,0,none,none
+gn:2762000,Wald im Pinzgau,Salzburg,373,village,0,0,50,0,none,none
+gn:2762013,Waldhausen,Lower Austria,208,village,0,0,50,0,none,none
+gn:2762021,Waldenstein,Lower Austria,370,village,0,0,50,0,none,none
+gn:2762024,Waldegg,Lower Austria,408,village,0,0,50,0,none,none
+gn:2762039,Wald am Schoberpaß,Styria,565,village,0,0,50,0,none,none
+gn:2762045,Walchsee,Tyrol,717,village,0,0,50,0,none,none
+gn:2762053,Walchen,Salzburg,1003,village,0,0,50,0,none,none
+gn:2762059,Walbersdorf,Burgenland,7514,village,0,0,50,0,none,none
+gn:2762060,Waizenkirchen,Upper Austria,1298,village,0,0,50,0,none,none
+gn:2762069,Waiern,Carinthia,1028,village,0,0,50,0,none,none
+gn:2762070,Waidring,Tyrol,2019,village,0,0,50,0,none,none
+gn:2762071,Waidmannsfeld,Lower Austria,390,village,0,0,50,0,none,none
+gn:2762077,Waidhofen an der Ybbs,Lower Austria,3811,village,0,0,50,0,none,none
+gn:2762079,Waidhofen an der Thaya,Lower Austria,4280,village,0,0,50,0,none,none
+gn:2762097,Wagram,Upper Austria,1054,village,0,0,50,0,none,none
+gn:2762102,Wagrain,Salzburg,372,village,0,0,50,0,none,none
+gn:2762104,Wagnitz,Styria,2286,village,0,0,50,0,none,none
+gn:2762109,Wagna,Styria,2277,village,0,0,50,0,none,none
+gn:2762150,Vösendorf,Lower Austria,6990,village,0,0,50,0,none,none
+gn:2762157,Murau,Styria,3534,village,0,0,50,0,none,none
+gn:2762180,Vorderthiersee,Tyrol,1262,village,0,0,50,0,none,none
+gn:2762207,Vordernberg,Styria,1045,village,0,0,50,0,none,none
+gn:2762223,Vorderhornbach,Tyrol,245,village,0,0,50,0,none,none
+gn:2762290,Vorchdorf,Upper Austria,7475,village,0,0,50,0,none,none
+gn:2762299,Vorau,Styria,1321,village,0,0,50,0,none,none
+gn:2762303,Vomp,Tyrol,5283,village,0,0,50,0,none,none
+gn:2762304,Völs,Tyrol,6738,village,0,0,50,0,none,none
+gn:2762315,Völkermarkt,Carinthia,4653,village,0,0,50,0,none,none
+gn:2762316,Völkendorf,Carinthia,5474,village,0,0,50,0,none,none
+gn:2762318,Voldöpp,Tyrol,3386,village,0,0,50,0,none,none
+gn:2762320,Volders,Tyrol,3754,village,0,0,50,0,none,none
+gn:2762327,Voitsberg,Styria,9403,village,0,0,50,0,none,none
+gn:2762341,Vöcklamarkt,Upper Austria,2112,village,0,0,50,0,none,none
+gn:2762343,Vöcklabruck,Upper Austria,3789,village,0,0,50,0,none,none
+gn:2762348,Vitis,Lower Austria,1244,village,0,0,50,0,none,none
+gn:2762352,Virgen,Tyrol,1117,village,0,0,50,0,none,none
+gn:2762358,Vils,Tyrol,1535,village,0,0,50,0,none,none
+gn:2762372,Villach,Carinthia,58882,town,0,0,50,0,none,none
+gn:2762375,Viktring,Carinthia,9407,village,0,0,50,0,none,none
+gn:2762376,Viktorsberg,Vorarlberg,411,village,0,0,50,0,none,none
+gn:2762378,Bad Vigaun,Salzburg,2089,village,0,0,50,0,none,none
+gn:2762391,Viehofen,Lower Austria,4507,village,0,0,50,0,none,none
+gn:2762392,Viehhofen,Salzburg,603,village,0,0,50,0,none,none
+gn:2762403,Viehhausen,Salzburg,2136,village,0,0,50,0,none,none
+gn:2762404,Viechtwang,Upper Austria,1349,village,0,0,50,0,none,none
+gn:2762445,Velm,Lower Austria,1295,village,0,0,50,0,none,none
+gn:2762453,Velden am Wörther See,Carinthia,2325,village,0,0,50,0,none,none
+gn:2762458,Veitsch,Styria,360,village,0,0,50,0,none,none
+gn:2762486,Utzenaich,Upper Austria,631,village,0,0,50,0,none,none
+gn:2762492,Uttendorf,Upper Austria,1361,village,0,0,50,0,none,none
+gn:2762493,Uttendorf,Salzburg,1789,village,0,0,50,0,none,none
+gn:2762494,Utschtal,Styria,1202,village,0,0,50,0,none,none
+gn:2762572,Unterwart,Burgenland,700,village,0,0,50,0,none,none
+gn:2762575,Unterwaltersdorf,Lower Austria,2829,village,0,0,50,0,none,none
+gn:2762583,Unterwagram,Lower Austria,2283,village,0,0,50,0,none,none
+gn:2762619,Untertauern,Salzburg,257,village,0,0,50,0,none,none
+gn:2762632,Unterstinkenbrunn,Lower Austria,560,village,0,0,50,0,none,none
+gn:2762647,Untersiebenbrunn,Lower Austria,1736,village,0,0,50,0,none,none
+gn:2762678,Rohrbach an der Gölsen,Lower Austria,1199,village,0,0,50,0,none,none
+gn:2762714,Unterpremstätten,Styria,2196,village,0,0,50,0,none,none
+gn:2762732,Unterperfuss,Tyrol,224,village,0,0,50,0,none,none
+gn:2762822,Unterlangkampfen,Tyrol,1965,village,0,0,50,0,none,none
+gn:2762827,Unterlamm,Styria,647,village,0,0,50,0,none,none
+gn:2762843,Unterkohlstätten,Burgenland,228,village,0,0,50,0,none,none
+gn:2762908,Grünburg,Upper Austria,3824,village,0,0,50,0,none,none
+gn:2762952,Unterfrauenhaid,Burgenland,681,village,0,0,50,0,none,none
+gn:2762953,Unterfladnitz,Styria,312,village,0,0,50,0,none,none
+gn:2763037,Untere Fellach,Carinthia,3307,village,0,0,50,0,none,none
+gn:2763099,Unterbergla,Styria,272,village,0,0,50,0,none,none
+gn:2763118,Unterauersbach,Styria,218,village,0,0,50,0,none,none
+gn:2763150,Unken,Salzburg,426,village,0,0,50,0,none,none
+gn:2763154,Ungerdorf,Styria,900,village,0,0,50,0,none,none
+gn:2763160,Ungenach,Upper Austria,194,village,0,0,50,0,none,none
+gn:2763164,Umhausen,Tyrol,1840,village,0,0,50,0,none,none
+gn:2763170,Ulrichskirchen,Lower Austria,1137,village,0,0,50,0,none,none
+gn:2763176,Ulrichsberg,Upper Austria,1121,village,0,0,50,0,none,none
+gn:2763199,Uderns,Tyrol,848,village,0,0,50,0,none,none
+gn:2763201,Übersbach,Styria,668,village,0,0,50,0,none,none
+gn:2763202,Übersaxen,Vorarlberg,629,village,0,0,50,0,none,none
+gn:2763209,Übelbach,Styria,1078,village,0,0,50,0,none,none
+gn:2763215,Tweng,Salzburg,276,village,0,0,50,0,none,none
+gn:2763235,Türnitz,Lower Austria,1439,village,0,0,50,0,none,none
+gn:2763242,Turnau,Styria,916,village,0,0,50,0,none,none
+gn:2763266,Tulln,Lower Austria,12421,town,0,0,50,0,none,none
+gn:2763267,Tulfes,Tyrol,1089,village,0,0,50,0,none,none
+gn:2763270,Tulbing,Lower Austria,807,village,0,0,50,0,none,none
+gn:2763300,Tschanigraben,Burgenland,62,village,0,0,50,0,none,none
+gn:2763302,Tschagguns,Vorarlberg,2195,village,0,0,50,0,none,none
+gn:2763308,Trumau,Lower Austria,3640,village,0,0,50,0,none,none
+gn:2763313,Trössing,Styria,257,village,0,0,50,0,none,none
+gn:2763332,Trofaiach,Styria,7728,village,0,0,50,0,none,none
+gn:2763343,Tristach,Tyrol,1437,village,0,0,50,0,none,none
+gn:2763348,Trins,Tyrol,1277,village,0,0,50,0,none,none
+gn:2763360,Triebendorf,Styria,2,village,0,0,50,0,none,none
+gn:2763362,Trieben,Styria,2408,village,0,0,50,0,none,none
+gn:2763364,Tribuswinkel,Lower Austria,4295,village,0,0,50,0,none,none
+gn:2763381,Treibach,Carinthia,1093,village,0,0,50,0,none,none
+gn:2763382,Treglwang,Styria,342,village,0,0,50,0,none,none
+gn:2763395,Trebesing,Carinthia,174,village,0,0,50,0,none,none
+gn:2763400,Trautmannsdorf in Oststeiermark,Styria,759,village,0,0,50,0,none,none
+gn:2763401,Trautmannsdorf an der Leitha,Lower Austria,966,village,0,0,50,0,none,none
+gn:2763406,Trausdorf an der Wulka,Burgenland,2064,village,0,0,50,0,none,none
+gn:2763410,Bad Traunstein,Lower Austria,315,village,0,0,50,0,none,none
+gn:2763414,Traunkirchen,Upper Austria,1624,village,0,0,50,0,none,none
+gn:2763423,Traun,Upper Austria,25345,town,0,0,50,0,none,none
+gn:2763439,Trattenbach,Lower Austria,545,village,0,0,50,0,none,none
+gn:2763459,Traismauer,Lower Austria,2750,village,0,0,50,0,none,none
+gn:2763460,Traiskirchen,Lower Austria,6608,village,0,0,50,0,none,none
+gn:2763466,Traisen,Lower Austria,3453,village,0,0,50,0,none,none
+gn:2763476,Trahütten,Styria,173,village,0,0,50,0,none,none
+gn:2763477,Tragwein,Upper Austria,1534,village,0,0,50,0,none,none
+gn:2763488,Traboch,Styria,478,village,0,0,50,0,none,none
+gn:2763574,Tobaj,Burgenland,285,village,0,0,50,0,none,none
+gn:2763575,Tobadill,Tyrol,516,village,0,0,50,0,none,none
+gn:2763595,Timelkam,Upper Austria,3061,village,0,0,50,0,none,none
+gn:2763609,Tieschen,Styria,333,village,0,0,50,0,none,none
+gn:2763614,Tiefgraben,Upper Austria,1585,village,0,0,50,0,none,none
+gn:2763658,Thüringen,Vorarlberg,2222,village,0,0,50,0,none,none
+gn:2763663,Thumersbach,Salzburg,1010,village,0,0,50,0,none,none
+gn:2763672,Thörl,Styria,235,village,0,0,50,0,none,none
+gn:2763677,Thomatal,Salzburg,298,village,0,0,50,0,none,none
+gn:2763683,Thomasberg,Lower Austria,442,village,0,0,50,0,none,none
+gn:2763700,Theresienfeld,Lower Austria,3485,village,0,0,50,0,none,none
+gn:2763711,Thaya,Lower Austria,611,village,0,0,50,0,none,none
+gn:2763715,Thaur,Tyrol,3979,village,0,0,50,0,none,none
+gn:2763742,Thalheim bei Wels,Upper Austria,4294,village,0,0,50,0,none,none
+gn:2763749,Thalgau,Salzburg,2424,village,0,0,50,0,none,none
+gn:2763773,Teufenbach,Styria,786,village,0,0,50,0,none,none
+gn:2763795,Ternitz,Lower Austria,7378,village,0,0,50,0,none,none
+gn:2763797,Ternberg,Upper Austria,3367,village,0,0,50,0,none,none
+gn:2763800,Terfens,Tyrol,417,village,0,0,50,0,none,none
+gn:2763810,Telfs,Tyrol,15229,town,0,0,50,0,none,none
+gn:2763811,Telfes im Stubai,Tyrol,891,village,0,0,50,0,none,none
+gn:2763826,Teesdorf,Lower Austria,1822,village,0,0,50,0,none,none
+gn:2763837,Taxenbach,Salzburg,907,village,0,0,50,0,none,none
+gn:2763841,Taxach,Salzburg,3724,village,0,0,50,0,none,none
+gn:2763855,Tauplitz,Styria,615,village,0,0,50,0,none,none
+gn:2763861,Taufkirchen an der Trattnach,Upper Austria,394,village,0,0,50,0,none,none
+gn:2763888,Tattendorf,Lower Austria,1439,village,0,0,50,0,none,none
+gn:2763901,Tarrenz,Tyrol,1894,village,0,0,50,0,none,none
+gn:2763915,Tannheim,Tyrol,1067,village,0,0,50,0,none,none
+gn:2763929,Tamsweg,Salzburg,3509,village,0,0,50,0,none,none
+gn:2763945,Taiskirchen im Innkreis,Upper Austria,772,village,0,0,50,0,none,none
+gn:2763960,Tadten,Burgenland,1186,village,0,0,50,0,none,none
+gn:2764010,Sulzberg,Vorarlberg,1450,village,0,0,50,0,none,none
+gn:2764026,Sulz,Vorarlberg,2527,village,0,0,50,0,none,none
+gn:2764029,Sulztal an der Weinstraße,Styria,114,village,0,0,50,0,none,none
+gn:2764053,Stummerberg,Tyrol,556,village,0,0,50,0,none,none
+gn:2764055,Stumm,Tyrol,1885,village,0,0,50,0,none,none
+gn:2764063,Stuhlfelden,Salzburg,1143,village,0,0,50,0,none,none
+gn:2764067,Studenzen,Styria,449,village,0,0,50,0,none,none
+gn:2764082,Stubenberg,Styria,695,village,0,0,50,0,none,none
+gn:2764109,Stronsdorf,Lower Austria,671,village,0,0,50,0,none,none
+gn:2764121,Strobl,Salzburg,1393,village,0,0,50,0,none,none
+gn:2764137,Strengen,Tyrol,1213,village,0,0,50,0,none,none
+gn:2764138,Strengberg,Lower Austria,520,village,0,0,50,0,none,none
+gn:2764140,Strem,Burgenland,599,village,0,0,50,0,none,none
+gn:2764168,Stratzing,Lower Austria,827,village,0,0,50,0,none,none
+gn:2764172,Strasswalchen,Salzburg,3765,village,0,0,50,0,none,none
+gn:2764173,Straß in Steiermark,Styria,1552,village,0,0,50,0,none,none
+gn:2764175,Strasshof an der Nordbahn,Lower Austria,10009,town,0,0,50,0,none,none
+gn:2764177,Strassham,Upper Austria,1877,village,0,0,50,0,none,none
+gn:2764178,Straßgang,Styria,16268,town,0,0,50,0,none,none
+gn:2764182,Strassengel,Styria,2822,village,0,0,50,0,none,none
+gn:2764183,Strassen,Tyrol,808,village,0,0,50,0,none,none
+gn:2764186,Straßburg-Stadt,Carinthia,1255,village,0,0,50,0,none,none
+gn:2764189,Strass im Zillertal,Tyrol,836,village,0,0,50,0,none,none
+gn:2764190,Strass,Lower Austria,1678,village,0,0,50,0,none,none
+gn:2764217,Strallegg,Styria,911,village,0,0,50,0,none,none
+gn:2764222,Straden,Styria,283,village,0,0,50,0,none,none
+gn:2764225,Stotzing,Burgenland,840,village,0,0,50,0,none,none
+gn:2764230,Stössing,Lower Austria,256,village,0,0,50,0,none,none
+gn:2764238,Stoob,Burgenland,1386,village,0,0,50,0,none,none
+gn:2764246,Stollhofen,Lower Austria,1022,village,0,0,50,0,none,none
+gn:2764279,Stockerau,Lower Austria,16292,town,0,0,50,0,none,none
+gn:2764284,Stockenboi,Carinthia,253,village,0,0,50,0,none,none
+gn:2764293,Stiwoll,Styria,722,village,0,0,50,0,none,none
+gn:2764296,Steinbrunn,Burgenland,2614,village,0,0,50,0,none,none
+gn:2764297,Stinatz,Burgenland,1263,village,0,0,50,0,none,none
+gn:2764354,Steyregg,Upper Austria,4889,village,0,0,50,0,none,none
+gn:2764359,Steyr,Upper Austria,38331,town,0,0,50,0,none,none
+gn:2764364,Steuerberg,Carinthia,144,village,0,0,50,0,none,none
+gn:2764366,Stetten,Lower Austria,1357,village,0,0,50,0,none,none
+gn:2764368,Stetteldorf am Wagram,Lower Austria,542,village,0,0,50,0,none,none
+gn:2764381,Stephanshart,Lower Austria,1034,village,0,0,50,0,none,none
+gn:2764382,Stenzengreith,Styria,212,village,0,0,50,0,none,none
+gn:2764443,Steinhaus,Upper Austria,990,village,0,0,50,0,none,none
+gn:2764453,Steinfeld,Carinthia,1337,village,0,0,50,0,none,none
+gn:2764463,Steinerkirchen an der Traun,Upper Austria,803,village,0,0,50,0,none,none
+gn:2764480,Steindorf am Ossiacher See,Carinthia,507,village,0,0,50,0,none,none
+gn:2764527,Steinbach am Attersee,Upper Austria,155,village,0,0,50,0,none,none
+gn:2764553,Stein an der Donau,Lower Austria,2024,village,0,0,50,0,none,none
+gn:2764556,Steinakirchen am Forst,Lower Austria,945,village,0,0,50,0,none,none
+gn:2764557,Steinach am Brenner,Tyrol,2716,village,0,0,50,0,none,none
+gn:2764561,Steinabrückl,Lower Austria,1906,village,0,0,50,0,none,none
+gn:2764569,Stein,Styria,458,village,0,0,50,0,none,none
+gn:2764587,Stegersbach,Burgenland,2658,village,0,0,50,0,none,none
+gn:2764605,Steeg,Tyrol,254,village,0,0,50,0,none,none
+gn:2764621,Statzendorf,Lower Austria,299,village,0,0,50,0,none,none
+gn:2764624,Stattersdorf,Lower Austria,1963,village,0,0,50,0,none,none
+gn:2764625,Stattegg,Styria,0,village,0,0,50,0,none,none
+gn:2764645,Stanz bei Landeck,Tyrol,577,village,0,0,50,0,none,none
+gn:2764648,Stanzach,Tyrol,455,village,0,0,50,0,none,none
+gn:2764651,Stans,Tyrol,1928,village,0,0,50,0,none,none
+gn:2764669,Stams,Tyrol,1495,village,0,0,50,0,none,none
+gn:2764682,Stambach,Styria,274,village,0,0,50,0,none,none
+gn:2764687,Stallhofen,Styria,1231,village,0,0,50,0,none,none
+gn:2764692,Stallhof,Styria,534,village,0,0,50,0,none,none
+gn:2764699,Stallehr,Vorarlberg,289,village,0,0,50,0,none,none
+gn:2764702,Stall,Carinthia,505,village,0,0,50,0,none,none
+gn:2764704,Stainz bei Straden,Styria,275,village,0,0,50,0,none,none
+gn:2764706,Stainz,Styria,1677,village,0,0,50,0,none,none
+gn:2764708,Stainach,Styria,1893,village,0,0,50,0,none,none
+gn:2764717,Stadtschlaining,Burgenland,668,village,0,0,50,0,none,none
+gn:2764720,Stadl-Traun,Upper Austria,3643,village,0,0,50,0,none,none
+gn:2764721,Stadl-Paura,Upper Austria,0,village,0,0,50,0,none,none
+gn:2764728,Stadl-Hausruck,Upper Austria,1284,village,0,0,50,0,none,none
+gn:2764736,Stadl an der Mur,Styria,433,village,0,0,50,0,none,none
+gn:2764746,Staatz,Lower Austria,0,village,0,0,50,0,none,none
+gn:2764759,Spratzern,Lower Austria,6376,village,0,0,50,0,none,none
+gn:2764783,Spitz,Lower Austria,1270,village,0,0,50,0,none,none
+gn:2764786,Spittal an der Drau,Carinthia,12880,town,0,0,50,0,none,none
+gn:2764788,Spital am Semmering,Styria,906,village,0,0,50,0,none,none
+gn:2764789,Spital am Pyhrn,Upper Austria,1435,village,0,0,50,0,none,none
+gn:2764797,Spillern,Lower Austria,2222,village,0,0,50,0,none,none
+gn:2764806,Spielfeld,Styria,698,village,0,0,50,0,none,none
+gn:2764812,Spielberg bei Knittelfeld,Styria,4228,village,0,0,50,0,none,none
+gn:2764846,Spatenhof,Styria,1021,village,0,0,50,0,none,none
+gn:2764858,Spannberg,Lower Austria,1010,village,0,0,50,0,none,none
+gn:2764870,Sooss,Lower Austria,1050,village,0,0,50,0,none,none
+gn:2764881,Sonntagberg,Lower Austria,488,village,0,0,50,0,none,none
+gn:2764937,Sommerein,Lower Austria,1947,village,0,0,50,0,none,none
+gn:2764951,Sollenau,Lower Austria,5038,village,0,0,50,0,none,none
+gn:2764953,Söll,Tyrol,3631,village,0,0,50,0,none,none
+gn:2764957,Sölden,Tyrol,2205,village,0,0,50,0,none,none
+gn:2764958,Hall in Tirol,Tyrol,13334,town,0,0,50,0,none,none
+gn:2764964,Södingberg,Styria,774,village,0,0,50,0,none,none
+gn:2764970,Söchau,Styria,724,village,0,0,50,0,none,none
+gn:2764972,Soboth,Styria,291,village,0,0,50,0,none,none
+gn:2764981,Sitzendorf an der Schmida,Lower Austria,622,village,0,0,50,0,none,none
+gn:2764988,Sittersdorf,Carinthia,173,village,0,0,50,0,none,none
+gn:2764993,Sistrans,Tyrol,2255,village,0,0,50,0,none,none
+gn:2765019,Sinabelkirchen,Styria,981,village,0,0,50,0,none,none
+gn:2765028,Simmering,Vienna,101420,city,0,0,50,0,none,none
+gn:2765036,Silz,Tyrol,2536,village,0,0,50,0,none,none
+gn:2765044,Sillian,Tyrol,1604,village,0,0,50,0,none,none
+gn:2765050,Silbertal,Vorarlberg,834,village,0,0,50,0,none,none
+gn:2765065,Sigmundsherberg,Lower Austria,635,village,0,0,50,0,none,none
+gn:2765070,Sigless,Burgenland,1183,village,0,0,50,0,none,none
+gn:2765077,Siezenheim,Salzburg,2951,village,0,0,50,0,none,none
+gn:2765080,Sierning,Upper Austria,4025,village,0,0,50,0,none,none
+gn:2765083,Sierndorf,Lower Austria,1502,village,0,0,50,0,none,none
+gn:2765091,Sieghartskirchen,Lower Austria,2042,village,0,0,50,0,none,none
+gn:2765092,Sieggraben,Burgenland,1248,village,0,0,50,0,none,none
+gn:2765095,Siegersdorf bei Herberstein,Styria,298,village,0,0,50,0,none,none
+gn:2765102,Siegendorf im Burgenland,Burgenland,2963,village,0,0,50,0,none,none
+gn:2765139,Sibratsgfäll,Vorarlberg,401,village,0,0,50,0,none,none
+gn:2765140,Seyring,Lower Austria,1713,village,0,0,50,0,none,none
+gn:2765150,Serfaus,Tyrol,1134,village,0,0,50,0,none,none
+gn:2765162,Senftenberg,Lower Austria,1015,village,0,0,50,0,none,none
+gn:2765168,Semriach,Styria,1392,village,0,0,50,0,none,none
+gn:2765170,Semmering,Lower Austria,544,village,0,0,50,0,none,none
+gn:2765174,Selzthal,Styria,1023,village,0,0,50,0,none,none
+gn:2765196,Seitenstetten Markt,Lower Austria,3394,village,0,0,50,0,none,none
+gn:2765207,Seiersberg,Styria,7728,village,0,0,50,0,none,none
+gn:2765221,Seibersdorf,Lower Austria,533,village,0,0,50,0,none,none
+gn:2765224,Seggauberg,Styria,525,village,0,0,50,0,none,none
+gn:2765231,Seewalchen,Upper Austria,2780,village,0,0,50,0,none,none
+gn:2765232,Seewalchen,Salzburg,1054,village,0,0,50,0,none,none
+gn:2765257,Seekirchen am Wallersee,Salzburg,3579,village,0,0,50,0,none,none
+gn:2765275,Seeham,Salzburg,1354,village,0,0,50,0,none,none
+gn:2765278,Seefeld in Tirol,Tyrol,3440,village,0,0,50,0,none,none
+gn:2765286,Seeboden,Carinthia,3123,village,0,0,50,0,none,none
+gn:2765292,Seebenstein,Lower Austria,924,village,0,0,50,0,none,none
+gn:2765323,Seebach,Carinthia,3938,village,0,0,50,0,none,none
+gn:2765331,See,Tyrol,1265,village,0,0,50,0,none,none
+gn:2765335,Seckau,Styria,601,village,0,0,50,0,none,none
+gn:2765338,Sebersdorf,Styria,750,village,0,0,50,0,none,none
+gn:2765342,Schwoich,Tyrol,2515,village,0,0,50,0,none,none
+gn:2765347,Schwertberg,Upper Austria,3895,village,0,0,50,0,none,none
+gn:2765354,Schwendt,Tyrol,823,village,0,0,50,0,none,none
+gn:2765360,Schwendau,Tyrol,1725,village,0,0,50,0,none,none
+gn:2765376,Schweinbach,Upper Austria,1454,village,0,0,50,0,none,none
+gn:2765383,Schweiggers,Lower Austria,746,village,0,0,50,0,none,none
+gn:2765388,Schwechat,Lower Austria,12351,town,0,0,50,0,none,none
+gn:2765390,Schwaz,Tyrol,13728,town,0,0,50,0,none,none
+gn:2765464,Schwarzenbach an der Pielach,Lower Austria,0,village,0,0,50,0,none,none
+gn:2765472,Schwarzenbach,Lower Austria,941,village,0,0,50,0,none,none
+gn:2765478,Schwarzenau,Lower Austria,858,village,0,0,50,0,none,none
+gn:2765487,Schwarzau im Schwarzautal,Styria,259,village,0,0,50,0,none,none
+gn:2765488,Schwarzau im Gebirge,Lower Austria,169,village,0,0,50,0,none,none
+gn:2765489,Schwarzau am Steinfeld,Lower Austria,1345,village,0,0,50,0,none,none
+gn:2765495,Schwarzach im Pongau,Salzburg,3515,village,0,0,50,0,none,none
+gn:2765499,Schwarzach,Vorarlberg,3949,village,0,0,50,0,none,none
+gn:2765508,Schwanenstadt,Upper Austria,4264,village,0,0,50,0,none,none
+gn:2765515,Schwanberg,Styria,1363,village,0,0,50,0,none,none
+gn:2765538,Schwadorf,Lower Austria,2180,village,0,0,50,0,none,none
+gn:2765558,Schützen am Gebirge,Burgenland,1392,village,0,0,50,0,none,none
+gn:2765581,Schruns,Vorarlberg,3818,village,0,0,50,0,none,none
+gn:2765601,Schrems bei Frohnleiten,Styria,299,village,0,0,50,0,none,none
+gn:2765602,Schrems,Lower Austria,3248,village,0,0,50,0,none,none
+gn:2765614,Schrattenthal,Lower Austria,293,village,0,0,50,0,none,none
+gn:2765619,Schrattenberg,Lower Austria,810,village,0,0,50,0,none,none
+gn:2765621,Schrattenbach,Lower Austria,45,village,0,0,50,0,none,none
+gn:2765637,Schottwien,Lower Austria,462,village,0,0,50,0,none,none
+gn:2765649,Schörfling,Upper Austria,1680,village,0,0,50,0,none,none
+gn:2765650,Schoppernau,Vorarlberg,950,village,0,0,50,0,none,none
+gn:2765656,Schönwies,Tyrol,1697,village,0,0,50,0,none,none
+gn:2765689,Schönering,Upper Austria,1013,village,0,0,50,0,none,none
+gn:2765702,Schöndorf,Upper Austria,1654,village,0,0,50,0,none,none
+gn:2765715,Schönberg im Stubaital,Tyrol,1101,village,0,0,50,0,none,none
+gn:2765725,Schönbach,Lower Austria,278,village,0,0,50,0,none,none
+gn:2765730,Schönau an der Triesting,Lower Austria,1467,village,0,0,50,0,none,none
+gn:2765766,Schöder,Styria,433,village,0,0,50,0,none,none
+gn:2765796,Schnifis,Vorarlberg,798,village,0,0,50,0,none,none
+gn:2765798,Schnepfau,Vorarlberg,272,village,0,0,50,0,none,none
+gn:2765837,Schmirn,Tyrol,0,village,0,0,50,0,none,none
+gn:2765875,Schlüsslberg,Upper Austria,898,village,0,0,50,0,none,none
+gn:2765888,Schlitters,Tyrol,1481,village,0,0,50,0,none,none
+gn:2765890,Schlins,Vorarlberg,2404,village,0,0,50,0,none,none
+gn:2765894,Schlierbach,Upper Austria,1773,village,0,0,50,0,none,none
+gn:2765909,Schleinbach,Lower Austria,1031,village,0,0,50,0,none,none
+gn:2765917,Schleedorf,Salzburg,1069,village,0,0,50,0,none,none
+gn:2765928,Schlatt,Upper Austria,167,village,0,0,50,0,none,none
+gn:2765961,Schladming,Styria,3452,village,0,0,50,0,none,none
+gn:2765991,Schildorn,Upper Austria,463,village,0,0,50,0,none,none
+gn:2766010,Schiefling am See,Carinthia,864,village,0,0,50,0,none,none
+gn:2766036,Schenkenfelden,Upper Austria,1129,village,0,0,50,0,none,none
+gn:2766047,Scheifling,Styria,978,village,0,0,50,0,none,none
+gn:2766080,Scheibbs,Lower Austria,4196,village,0,0,50,0,none,none
+gn:2766084,Scheffau am Wilden Kaiser,Tyrol,1449,village,0,0,50,0,none,none
+gn:2766085,Scheffau am Tennengebirge,Salzburg,1119,village,0,0,50,0,none,none
+gn:2766115,Schattwald,Tyrol,106,village,0,0,50,0,none,none
+gn:2766121,Schattendorf,Burgenland,2379,village,0,0,50,0,none,none
+gn:2766136,Scharnstein,Upper Austria,1287,village,0,0,50,0,none,none
+gn:2766140,Scharnitz,Tyrol,1403,village,0,0,50,0,none,none
+gn:2766143,Scharndorf,Lower Austria,408,village,0,0,50,0,none,none
+gn:2766155,Schärding,Upper Austria,5253,village,0,0,50,0,none,none
+gn:2766156,Schardenberg,Upper Austria,882,village,0,0,50,0,none,none
+gn:2766162,Schandorf,Burgenland,276,village,0,0,50,0,none,none
+gn:2766182,Schalchham,Upper Austria,1448,village,0,0,50,0,none,none
+gn:2766184,Schalchen,Upper Austria,1618,village,0,0,50,0,none,none
+gn:2766189,Schafwiesen,Upper Austria,2200,village,0,0,50,0,none,none
+gn:2766210,Schäffern,Styria,432,village,0,0,50,0,none,none
+gn:2766233,Schachendorf,Burgenland,440,village,0,0,50,0,none,none
+gn:2766252,Sautens,Tyrol,1601,village,0,0,50,0,none,none
+gn:2766294,Bad Sauerbrunn,Burgenland,2219,village,0,0,50,0,none,none
+gn:2766309,Sattledt,Upper Austria,1255,village,0,0,50,0,none,none
+gn:2766322,Satteins,Vorarlberg,2703,village,0,0,50,0,none,none
+gn:2766334,Sarleinsbach,Upper Austria,1115,village,0,0,50,0,none,none
+gn:2766340,Sankt Wolfgang im Salzkammergut,Upper Austria,2770,village,0,0,50,0,none,none
+gn:2766350,Sankt Veit in Defereggen,Tyrol,0,village,0,0,50,0,none,none
+gn:2766351,Sankt Veit im Pongau,Salzburg,3788,village,0,0,50,0,none,none
+gn:2766357,Sankt Veit an der Gölsen,Lower Austria,725,village,0,0,50,0,none,none
+gn:2766359,Sankt Veit an der Glan,Carinthia,10841,town,0,0,50,0,none,none
+gn:2766361,Sankt Veit am Vogau,Styria,636,village,0,0,50,0,none,none
+gn:2766365,Sankt Valentin,Lower Austria,9340,village,0,0,50,0,none,none
+gn:2766372,Sankt Ulrich bei Steyr,Upper Austria,1379,village,0,0,50,0,none,none
+gn:2766373,Sankt Ulrich am Waasen,Styria,785,village,0,0,50,0,none,none
+gn:2766374,Sankt Ulrich am Pillersee,Tyrol,1819,village,0,0,50,0,none,none
+gn:2766390,Sankt Stefan ob Stainz,Styria,807,village,0,0,50,0,none,none
+gn:2766391,Sankt Stefan ob Leoben,Styria,1022,village,0,0,50,0,none,none
+gn:2766392,Sankt Stefan im Rosental,Styria,3929,village,0,0,50,0,none,none
+gn:2766399,Sankt Stefan,Carinthia,1743,village,0,0,50,0,none,none
+gn:2766410,Sankt Ruprecht an der Raab,Styria,1231,village,0,0,50,0,none,none
+gn:2766412,Sankt Ruprecht,Carinthia,7442,village,0,0,50,0,none,none
+gn:2766419,Sankt Roman,Upper Austria,0,village,0,0,50,0,none,none
+gn:2766420,Sankt Radegund bei Graz,Styria,814,village,0,0,50,0,none,none
+gn:2766429,Sankt Pölten,Lower Austria,21911,town,0,0,50,0,none,none
+gn:2766432,Sankt Peter ob Judenburg,Styria,377,village,0,0,50,0,none,none
+gn:2766435,Sankt Peter in der Au Markt,Lower Austria,2040,village,0,0,50,0,none,none
+gn:2766437,Sankt Peter im Sulmtal,Styria,465,village,0,0,50,0,none,none
+gn:2766439,Sankt Peter-Freienstein,Styria,1086,village,0,0,50,0,none,none
+gn:2766443,Sankt Peter am Ottersbach,Styria,740,village,0,0,50,0,none,none
+gn:2766444,Sankt Peter am Kammersberg,Styria,661,village,0,0,50,0,none,none
+gn:2766446,Sankt Peter,Styria,15187,town,0,0,50,0,none,none
+gn:2766447,Sankt Peter,Carinthia,20320,town,0,0,50,0,none,none
+gn:2766449,Sankt Peter am Hart,Upper Austria,412,village,0,0,50,0,none,none
+gn:2766459,Sankt Paul im Lavanttal,Carinthia,3303,village,0,0,50,0,none,none
+gn:2766462,Sankt Pantaleon,Lower Austria,1745,village,0,0,50,0,none,none
+gn:2766470,Sankt Oswald bei Plankenwarth,Styria,716,village,0,0,50,0,none,none
+gn:2766472,Sankt Oswald bei Freistadt,Upper Austria,1454,village,0,0,50,0,none,none
+gn:2766483,Sankt Nikolai ob Draßling,Styria,738,village,0,0,50,0,none,none
+gn:2766484,Sankt Nikolai im Sölktal,Styria,470,village,0,0,50,0,none,none
+gn:2766485,Sankt Nikolai im Sausal,Styria,294,village,0,0,50,0,none,none
+gn:2766495,Sankt Michael in Obersteiermark,Styria,972,village,0,0,50,0,none,none
+gn:2766496,Sankt Michael im Lungau,Salzburg,2059,village,0,0,50,0,none,none
+gn:2766497,Sankt Michael im Burgenland,Burgenland,720,village,0,0,50,0,none,none
+gn:2766508,Sankt Martin im Sulmtal,Styria,0,village,0,0,50,0,none,none
+gn:2766509,Sankt Martin im Mühlkreis,Upper Austria,1111,village,0,0,50,0,none,none
+gn:2766510,Sankt Martin im Innkreis,Upper Austria,0,village,0,0,50,0,none,none
+gn:2766511,Sankt Martin bei Lofer,Salzburg,832,village,0,0,50,0,none,none
+gn:2766513,Sankt Martin an der Raab,Burgenland,564,village,0,0,50,0,none,none
+gn:2766514,Sankt Martin am Ybbsfelde,Lower Austria,1025,village,0,0,50,0,none,none
+gn:2766520,Sankt Martin am Grimming,Styria,211,village,0,0,50,0,none,none
+gn:2766522,Sankt Martin,Carinthia,20000,town,0,0,50,0,none,none
+gn:2766523,Sankt Martin,Carinthia,2416,village,0,0,50,0,none,none
+gn:2766525,Sankt Martin,Upper Austria,6984,village,0,0,50,0,none,none
+gn:2766526,Sankt Martin,Styria,2417,village,0,0,50,0,none,none
+gn:2766542,Sankt Marien,Upper Austria,1481,village,0,0,50,0,none,none
+gn:2766546,Sankt Margareten im Rosental,Carinthia,268,village,0,0,50,0,none,none
+gn:2766547,Sankt Margarethen im Lungau,Salzburg,725,village,0,0,50,0,none,none
+gn:2766549,Sankt Margarethen im Burgenland,Burgenland,2636,village,0,0,50,0,none,none
+gn:2766551,Sankt Margarethen bei Knittelfeld,Styria,830,village,0,0,50,0,none,none
+gn:2766552,Sankt Margarethen an der Sierning,Lower Austria,550,village,0,0,50,0,none,none
+gn:2766553,Sankt Margarethen an der Raab,Styria,1114,village,0,0,50,0,none,none
+gn:2766562,Sankt Marein im Mürztal,Styria,1436,village,0,0,50,0,none,none
+gn:2766563,Sankt Marein bei Neumarkt,Styria,401,village,0,0,50,0,none,none
+gn:2766564,Sankt Marein bei Knittelfeld,Styria,303,village,0,0,50,0,none,none
+gn:2766565,Sankt Marein bei Graz,Styria,0,village,0,0,50,0,none,none
+gn:2766572,Sankt Magdalen,Carinthia,1358,village,0,0,50,0,none,none
+gn:2766576,Sankt Lorenzen im Mürztal,Styria,2457,village,0,0,50,0,none,none
+gn:2766579,Sankt Lorenzen bei Scheifling,Styria,328,village,0,0,50,0,none,none
+gn:2766580,Sankt Lorenzen bei Knittelfeld,Styria,510,village,0,0,50,0,none,none
+gn:2766581,Sankt Lorenzen am Wechsel,Styria,514,village,0,0,50,0,none,none
+gn:2766591,Sankt Lorenz,Upper Austria,1554,village,0,0,50,0,none,none
+gn:2766598,Sankt Leonhard am Hornerwald,Lower Austria,316,village,0,0,50,0,none,none
+gn:2766599,Sankt Leonhard am Forst,Lower Austria,1438,village,0,0,50,0,none,none
+gn:2766602,Sankt Leonhard,Salzburg,1081,village,0,0,50,0,none,none
+gn:2766608,Sankt Leonhard,Carinthia,1789,village,0,0,50,0,none,none
+gn:2766615,Sankt Lambrecht,Styria,1316,village,0,0,50,0,none,none
+gn:2766625,Sankt Kathrein am Offenegg,Styria,1086,village,0,0,50,0,none,none
+gn:2766626,Sankt Kathrein am Hauenstein,Styria,525,village,0,0,50,0,none,none
+gn:2766629,Sankt Katharein an der Laming,Styria,274,village,0,0,50,0,none,none
+gn:2766632,Sankt Josef (Weststeiermark),Styria,727,village,0,0,50,0,none,none
+gn:2766636,Sankt Johann in Tirol,Tyrol,9428,village,0,0,50,0,none,none
+gn:2766638,Sankt Johann in der Haide,Styria,862,village,0,0,50,0,none,none
+gn:2766640,Sankt Johann im Saggautal,Styria,380,village,0,0,50,0,none,none
+gn:2766643,Sankt Johann im Pongau,Salzburg,4690,village,0,0,50,0,none,none
+gn:2766645,Sankt Johann bei Herberstein,Styria,395,village,0,0,50,0,none,none
+gn:2766648,Sankt Johann am Tauern,Styria,0,village,0,0,50,0,none,none
+gn:2766661,Sankt Jakob im Walde,Styria,0,village,0,0,50,0,none,none
+gn:2766668,Sankt Jakob-Breitenau,Styria,1127,village,0,0,50,0,none,none
+gn:2766677,Sankt Ilgen,Styria,269,village,0,0,50,0,none,none
+gn:2766680,Sankt Gotthard im Mühlkreis,Upper Austria,317,village,0,0,50,0,none,none
+gn:2766683,Sankt Gilgen,Salzburg,1113,village,0,0,50,0,none,none
+gn:2766687,Sankt Georgen ob Murau,Styria,339,village,0,0,50,0,none,none
+gn:2766688,Sankt Georgen ob Judenburg,Styria,366,village,0,0,50,0,none,none
+gn:2766692,Sankt Georgen im Attergau,Upper Austria,2986,village,0,0,50,0,none,none
+gn:2766694,Sankt Georgen bei Salzburg,Salzburg,2954,village,0,0,50,0,none,none
+gn:2766695,Sankt Georgen bei Obernberg am Inn,Upper Austria,140,village,0,0,50,0,none,none
+gn:2766699,Sankt Georgen an der Stiefing,Styria,540,village,0,0,50,0,none,none
+gn:2766700,Sankt Georgen an der Leys,Lower Austria,463,village,0,0,50,0,none,none
+gn:2766701,Sankt Georgen an der Gusen,Upper Austria,3779,village,0,0,50,0,none,none
+gn:2766702,Sankt Georgen am Ybbsfelde,Lower Austria,1338,village,0,0,50,0,none,none
+gn:2766708,Sankt Georgen am Leithagebirge,Burgenland,2391,village,0,0,50,0,none,none
+gn:2766710,Sankt Georgen am Fillmannsbach,Upper Austria,96,village,0,0,50,0,none,none
+gn:2766724,Sankt Gallenkirch,Vorarlberg,1465,village,0,0,50,0,none,none
+gn:2766725,Sankt Gallen,Styria,792,village,0,0,50,0,none,none
+gn:2766736,Sankt Dionysen,Upper Austria,3012,village,0,0,50,0,none,none
+gn:2766739,Sankt Corona am Wechsel,Lower Austria,390,village,0,0,50,0,none,none
+gn:2766747,Sankt Blasen,Styria,525,village,0,0,50,0,none,none
+gn:2766751,Sankt Bartholomä,Styria,522,village,0,0,50,0,none,none
+gn:2766753,Sankt Anton im Montafon,Vorarlberg,715,village,0,0,50,0,none,none
+gn:2766757,St Anton am Arlberg,Tyrol,1763,village,0,0,50,0,none,none
+gn:2766758,Sankt Anna am Aigen,Styria,0,village,0,0,50,0,none,none
+gn:2766765,Sankt Andrä vor dem Hagenthale,Lower Austria,1692,village,0,0,50,0,none,none
+gn:2766767,Sankt Andrä im Lungau,Salzburg,761,village,0,0,50,0,none,none
+gn:2766769,Sankt Andrä am Zicksee,Burgenland,1371,village,0,0,50,0,none,none
+gn:2766772,Sankt Andrä,Carinthia,1271,village,0,0,50,0,none,none
+gn:2766778,Sankt Aegyd am Neuwalde,Lower Austria,1901,village,0,0,50,0,none,none
+gn:2766779,Sankt Aegidi,Upper Austria,263,village,0,0,50,0,none,none
+gn:2766805,Sammersdorf,Upper Austria,1005,village,0,0,50,0,none,none
+gn:2766824,Salzburg,Salzburg,157245,city,0,0,50,0,none,none
+gn:2766845,Sallingberg,Lower Austria,387,village,0,0,50,0,none,none
+gn:2766856,Salla,Styria,258,village,0,0,50,0,none,none
+gn:2766905,Sachsenburg,Carinthia,1026,village,0,0,50,0,none,none
+gn:2766922,Saalfelden am Steinernen Meer,Salzburg,16790,town,0,0,50,0,none,none
+gn:2766924,Saalbach,Salzburg,1755,village,0,0,50,0,none,none
+gn:2766932,Rutzenham,Upper Austria,36,village,0,0,50,0,none,none
+gn:2766936,Rüstorf,Upper Austria,498,village,0,0,50,0,none,none
+gn:2766939,Rust,Burgenland,1921,village,0,0,50,0,none,none
+gn:2766951,Ruprechtshofen,Lower Austria,1089,village,0,0,50,0,none,none
+gn:2766971,Rum,Tyrol,9190,village,0,0,50,0,none,none
+gn:2766983,Rufling,Upper Austria,1359,village,0,0,50,0,none,none
+gn:2767001,Rudersdorf,Burgenland,1688,village,0,0,50,0,none,none
+gn:2767005,Ruden,Carinthia,189,village,0,0,50,0,none,none
+gn:2767034,Rottenmann,Styria,2209,village,0,0,50,0,none,none
+gn:2767074,Röthis,Vorarlberg,1942,village,0,0,50,0,none,none
+gn:2767088,Röthelstein,Styria,201,village,0,0,50,0,none,none
+gn:2767111,Rotenturm an der Pinka,Burgenland,954,village,0,0,50,0,none,none
+gn:2767214,Rosenau am Sonntagberg,Lower Austria,1213,village,0,0,50,0,none,none
+gn:2767220,Rosegg,Carinthia,468,village,0,0,50,0,none,none
+gn:2767221,Röschitz,Lower Austria,675,village,0,0,50,0,none,none
+gn:2767227,Roppen,Tyrol,1800,village,0,0,50,0,none,none
+gn:2767231,Röns,Vorarlberg,352,village,0,0,50,0,none,none
+gn:2767249,Roitham,Upper Austria,1017,village,0,0,50,0,none,none
+gn:2767264,Rohr im Gebirge,Lower Austria,476,village,0,0,50,0,none,none
+gn:2767265,Rohr im Burgenland,Burgenland,380,village,0,0,50,0,none,none
+gn:2767273,Röhrenbach,Lower Austria,152,village,0,0,50,0,none,none
+gn:2767280,Rohrbach in Oberösterreich,Upper Austria,2432,village,0,0,50,0,none,none
+gn:2767283,Rohrbach bei Mattersburg,Burgenland,2707,village,0,0,50,0,none,none
+gn:2767285,Rohrbach an der Lafnitz,Styria,994,village,0,0,50,0,none,none
+gn:2767301,Rohrau,Lower Austria,451,village,0,0,50,0,none,none
+gn:2767346,Ritzing,Burgenland,902,village,0,0,50,0,none,none
+gn:2767382,Rinn,Tyrol,1877,village,0,0,50,0,none,none
+gn:2767414,Riezlern,Vorarlberg,2043,village,0,0,50,0,none,none
+gn:2767418,Rietz,Tyrol,2313,village,0,0,50,0,none,none
+gn:2767426,Ries,Styria,5819,village,0,0,50,0,none,none
+gn:2767443,Riegersburg,Styria,646,village,0,0,50,0,none,none
+gn:2767452,Riefensberg,Vorarlberg,1086,village,0,0,50,0,none,none
+gn:2767458,Riedlingsdorf,Burgenland,1619,village,0,0,50,0,none,none
+gn:2767466,Ried in der Riedmark,Upper Austria,1306,village,0,0,50,0,none,none
+gn:2767468,Ried im Traunkreis,Upper Austria,1368,village,0,0,50,0,none,none
+gn:2767469,Ried im Oberinntal,Tyrol,1261,village,0,0,50,0,none,none
+gn:2767471,Ried im Innkreis,Upper Austria,11903,town,0,0,50,0,none,none
+gn:2767511,Reutte,Tyrol,6704,village,0,0,50,0,none,none
+gn:2767514,Reuthe,Vorarlberg,658,village,0,0,50,0,none,none
+gn:2767518,Retznei,Styria,365,village,0,0,50,0,none,none
+gn:2767521,Retz,Lower Austria,2493,village,0,0,50,0,none,none
+gn:2767526,Rettenschöss,Tyrol,513,village,0,0,50,0,none,none
+gn:2767529,Rettenegg,Styria,575,village,0,0,50,0,none,none
+gn:2767565,Rennweg am Katschberg,Carinthia,353,village,0,0,50,0,none,none
+gn:2767605,Reith bei Seefeld,Tyrol,1370,village,0,0,50,0,none,none
+gn:2767606,Reith bei Kitzbühel,Tyrol,1662,village,0,0,50,0,none,none
+gn:2767607,Reith im Alpbachtal,Tyrol,2181,village,0,0,50,0,none,none
+gn:2767632,Reiterndorf,Upper Austria,2481,village,0,0,50,0,none,none
+gn:2767681,Reisenberg,Lower Austria,1689,village,0,0,50,0,none,none
+gn:2767696,Reinsberg,Lower Austria,477,village,0,0,50,0,none,none
+gn:2767707,Reingers,Lower Austria,194,village,0,0,50,0,none,none
+gn:2767734,Reifling,Styria,60,village,0,0,50,0,none,none
+gn:2767743,Reichraming,Upper Austria,1103,village,0,0,50,0,none,none
+gn:2767759,Reichenthal,Upper Austria,915,village,0,0,50,0,none,none
+gn:2767768,Reichenfels,Carinthia,1060,village,0,0,50,0,none,none
+gn:2767769,Reichendorf,Styria,614,village,0,0,50,0,none,none
+gn:2767773,Reichenau im Mühlkreis,Upper Austria,838,village,0,0,50,0,none,none
+gn:2767777,Reichenau an der Rax,Lower Austria,1276,village,0,0,50,0,none,none
+gn:2767793,Rehberg,Lower Austria,1766,village,0,0,50,0,none,none
+gn:2767807,Redlham,Upper Austria,389,village,0,0,50,0,none,none
+gn:2767813,Reding,Carinthia,2914,village,0,0,50,0,none,none
+gn:2767815,Rechnitz,Burgenland,3054,village,0,0,50,0,none,none
+gn:2767827,Raxendorf,Lower Austria,319,village,0,0,50,0,none,none
+gn:2767834,Ravelsbach,Lower Austria,657,village,0,0,50,0,none,none
+gn:2767852,Rauris,Salzburg,1146,village,0,0,50,0,none,none
+gn:2767878,Rauchenwarth,Lower Austria,742,village,0,0,50,0,none,none
+gn:2767902,Rattenberg,Tyrol,411,village,0,0,50,0,none,none
+gn:2767904,Ratten,Styria,0,village,0,0,50,0,none,none
+gn:2767907,Ratschendorf,Styria,601,village,0,0,50,0,none,none
+gn:2767909,Ratsch an der Weinstraße,Styria,334,village,0,0,50,0,none,none
+gn:2767915,Rastenfeld,Lower Austria,503,village,0,0,50,0,none,none
+gn:2767928,Rassach,Styria,333,village,0,0,50,0,none,none
+gn:2767936,Rappottenstein,Lower Austria,307,village,0,0,50,0,none,none
+gn:2767960,Ranten,Styria,621,village,0,0,50,0,none,none
+gn:2767961,Ranshofen,Upper Austria,2319,village,0,0,50,0,none,none
+gn:2767966,Rannersdorf,Lower Austria,3144,village,0,0,50,0,none,none
+gn:2767974,Rankweil,Vorarlberg,11855,town,0,0,50,0,none,none
+gn:2767977,Raning,Styria,510,village,0,0,50,0,none,none
+gn:2767979,Ranggen,Tyrol,1072,village,0,0,50,0,none,none
+gn:2767980,Rangersdorf,Carinthia,387,village,0,0,50,0,none,none
+gn:2767987,Randegg,Lower Austria,326,village,0,0,50,0,none,none
+gn:2767998,Ramsau,Lower Austria,635,village,0,0,50,0,none,none
+gn:2768006,Ramsau am Dachstein,Styria,2812,village,0,0,50,0,none,none
+gn:2768007,Ramsau im Zillertal,Tyrol,1617,village,0,0,50,0,none,none
+gn:2768021,Ramingstein,Salzburg,553,village,0,0,50,0,none,none
+gn:2768053,Rainbach im Mühlkreis,Upper Austria,989,village,0,0,50,0,none,none
+gn:2768071,Raiding,Burgenland,865,village,0,0,50,0,none,none
+gn:2768076,Ragnitz,Styria,335,village,0,0,50,0,none,none
+gn:2768081,Raggal,Vorarlberg,673,village,0,0,50,0,none,none
+gn:2768089,Raffelstetten,Upper Austria,1013,village,0,0,50,0,none,none
+gn:2768098,Radstadt,Salzburg,2410,village,0,0,50,0,none,none
+gn:2768119,Bad Radkersburg,Styria,1368,village,0,0,50,0,none,none
+gn:2768125,Radfeld,Tyrol,2495,village,0,0,50,0,none,none
+gn:2768130,Radenthein,Carinthia,1846,village,0,0,50,0,none,none
+gn:2768139,Rachau,Styria,299,village,0,0,50,0,none,none
+gn:2768148,Rabenwald,Styria,600,village,0,0,50,0,none,none
+gn:2768153,Rabenstein an der Pielach,Lower Austria,841,village,0,0,50,0,none,none
+gn:2768159,Rabensburg,Lower Austria,1100,village,0,0,50,0,none,none
+gn:2768171,Raasdorf,Lower Austria,633,village,0,0,50,0,none,none
+gn:2768175,Raach am Hochgebirge,Lower Austria,151,village,0,0,50,0,none,none
+gn:2768177,Raabs an der Thaya,Lower Austria,807,village,0,0,50,0,none,none
+gn:2768178,Raabau,Styria,602,village,0,0,50,0,none,none
+gn:2768179,Raaba,Styria,2194,village,0,0,50,0,none,none
+gn:2768180,Raab,Upper Austria,1429,village,0,0,50,0,none,none
+gn:2768201,Pyhra,Lower Austria,1179,village,0,0,50,0,none,none
+gn:2768213,Pusterwald,Styria,450,village,0,0,50,0,none,none
+gn:2768232,Purkersdorf,Lower Austria,9701,village,0,0,50,0,none,none
+gn:2768236,Purgstall,Lower Austria,2605,village,0,0,50,0,none,none
+gn:2768242,Purbach am Neusiedler See,Burgenland,2901,village,0,0,50,0,none,none
+gn:2768247,Puntigam,Styria,8647,village,0,0,50,0,none,none
+gn:2768255,Pulkau,Lower Austria,1017,village,0,0,50,0,none,none
+gn:2768263,Pühret,Upper Austria,49,village,0,0,50,0,none,none
+gn:2768265,Pucking,Upper Austria,1751,village,0,0,50,0,none,none
+gn:2768271,Puchheim,Upper Austria,2904,village,0,0,50,0,none,none
+gn:2768274,Puchenstuben,Lower Austria,195,village,0,0,50,0,none,none
+gn:2768275,Puchenau,Upper Austria,2663,village,0,0,50,0,none,none
+gn:2768279,Puchberg am Schneeberg,Lower Austria,2683,village,0,0,50,0,none,none
+gn:2768281,Puch bei Weiz,Styria,589,village,0,0,50,0,none,none
+gn:2768282,Puch bei Hallein,Salzburg,4065,village,0,0,50,0,none,none
+gn:2768291,Prutz,Tyrol,1825,village,0,0,50,0,none,none
+gn:2768295,Pruggern,Styria,754,village,0,0,50,0,none,none
+gn:2768305,Proleb,Styria,1146,village,0,0,50,0,none,none
+gn:2768316,Prinzersdorf,Lower Austria,1554,village,0,0,50,0,none,none
+gn:2768320,Prigglitz,Lower Austria,264,village,0,0,50,0,none,none
+gn:2768325,Hofamt Priel,Lower Austria,475,village,0,0,50,0,none,none
+gn:2768348,Pressbaum,Lower Austria,6237,village,0,0,50,0,none,none
+gn:2768357,Prellenkirchen,Lower Austria,1036,village,0,0,50,0,none,none
+gn:2768359,Preitenegg,Carinthia,271,village,0,0,50,0,none,none
+gn:2768386,Pregarten,Upper Austria,2846,village,0,0,50,0,none,none
+gn:2768393,Preding,Styria,860,village,0,0,50,0,none,none
+gn:2768426,Pramet,Upper Austria,410,village,0,0,50,0,none,none
+gn:2768429,Prambachkirchen,Upper Austria,1164,village,0,0,50,0,none,none
+gn:2768432,Pram,Upper Austria,660,village,0,0,50,0,none,none
+gn:2768437,Prägraten,Tyrol,0,village,0,0,50,0,none,none
+gn:2768442,Pradl,Tyrol,32588,town,0,0,50,0,none,none
+gn:2768450,Poysdorf,Lower Austria,2620,village,0,0,50,0,none,none
+gn:2768459,Potzneusiedl,Burgenland,602,village,0,0,50,0,none,none
+gn:2768464,Pöttsching,Burgenland,2950,village,0,0,50,0,none,none
+gn:2768465,Pottschach,Lower Austria,4826,village,0,0,50,0,none,none
+gn:2768466,Pötting,Upper Austria,243,village,0,0,50,0,none,none
+gn:2768468,Pottenstein,Lower Austria,2495,village,0,0,50,0,none,none
+gn:2768472,Pottendorf,Lower Austria,4508,village,0,0,50,0,none,none
+gn:2768473,Pottenbrunn,Lower Austria,2390,village,0,0,50,0,none,none
+gn:2768475,Pöttelsdorf,Burgenland,735,village,0,0,50,0,none,none
+gn:2768497,Pörtschach am Wörthersee,Carinthia,2751,village,0,0,50,0,none,none
+gn:2768512,Poppendorf,Styria,281,village,0,0,50,0,none,none
+gn:2768546,Pöls,Styria,1485,village,0,0,50,0,none,none
+gn:2768561,Polling in Tirol,Tyrol,945,village,0,0,50,0,none,none
+gn:2768578,Pöllauberg,Styria,0,village,0,0,50,0,none,none
+gn:2768582,Pöllau,Styria,6014,village,0,0,50,0,none,none
+gn:2768616,Pöggstall,Lower Austria,929,village,0,0,50,0,none,none
+gn:2768618,Poggersdorf,Carinthia,829,village,0,0,50,0,none,none
+gn:2768622,Podersdorf am See,Burgenland,2135,village,0,0,50,0,none,none
+gn:2768627,Pöchlarn,Lower Austria,3515,village,0,0,50,0,none,none
+gn:2768664,Plesching,Upper Austria,1016,village,0,0,50,0,none,none
+gn:2768717,Plankenau,Salzburg,1722,village,0,0,50,0,none,none
+gn:2768728,Plainfeld,Salzburg,1237,village,0,0,50,0,none,none
+gn:2768738,Pitzenberg,Upper Austria,118,village,0,0,50,0,none,none
+gn:2768746,Pitten,Lower Austria,1956,village,0,0,50,0,none,none
+gn:2768748,Pitschgau,Styria,171,village,0,0,50,0,none,none
+gn:2768752,Pistorf,Styria,611,village,0,0,50,0,none,none
+gn:2768758,Pischelsdorf in der Steiermark,Styria,1545,village,0,0,50,0,none,none
+gn:2768782,Pirka,Styria,2213,village,0,0,50,0,none,none
+gn:2768787,Piringsdorf,Burgenland,847,village,0,0,50,0,none,none
+gn:2768791,Pirching am Traubenberg,Styria,614,village,0,0,50,0,none,none
+gn:2768804,Pinsdorf,Upper Austria,3849,village,0,0,50,0,none,none
+gn:2768811,Pinkafeld,Burgenland,5438,village,0,0,50,0,none,none
+gn:2768813,Pinggau,Styria,1338,village,0,0,50,0,none,none
+gn:2768819,Pillichsdorf,Lower Austria,1157,village,0,0,50,0,none,none
+gn:2768827,Pill,Tyrol,1174,village,0,0,50,0,none,none
+gn:2768829,Pilgersdorf,Burgenland,594,village,0,0,50,0,none,none
+gn:2768837,Piesendorf,Salzburg,2062,village,0,0,50,0,none,none
+gn:2768839,Pierbach,Upper Austria,274,village,0,0,50,0,none,none
+gn:2768855,Pichling bei Köflach,Styria,3562,village,0,0,50,0,none,none
+gn:2768867,Pichl bei Wels,Upper Austria,707,village,0,0,50,0,none,none
+gn:2768885,Pichl,Salzburg,1230,village,0,0,50,0,none,none
+gn:2768897,Piberegg,Styria,174,village,0,0,50,0,none,none
+gn:2768902,Pians,Tyrol,609,village,0,0,50,0,none,none
+gn:2768905,Pfunds,Tyrol,2602,village,0,0,50,0,none,none
+gn:2768913,Pfons,Tyrol,602,village,0,0,50,0,none,none
+gn:2768921,Pflach,Tyrol,888,village,0,0,50,0,none,none
+gn:2768935,Pfarrkirchen bei Bad Hall,Upper Austria,801,village,0,0,50,0,none,none
+gn:2768953,Pfaffstätten,Lower Austria,3458,village,0,0,50,0,none,none
+gn:2768961,Pfaffing,Upper Austria,150,village,0,0,50,0,none,none
+gn:2768976,Pfaffenhofen,Tyrol,1102,village,0,0,50,0,none,none
+gn:2768996,Peuerbach,Upper Austria,1475,village,0,0,50,0,none,none
+gn:2768998,Petzenkirchen,Lower Austria,1311,village,0,0,50,0,none,none
+gn:2769004,Pettneu,Tyrol,1141,village,0,0,50,0,none,none
+gn:2769009,Pettenbach,Upper Austria,1506,village,0,0,50,0,none,none
+gn:2769013,Petronell-Carnuntum,Lower Austria,1245,village,0,0,50,0,none,none
+gn:2769053,Perwang am Grabensee,Upper Austria,381,village,0,0,50,0,none,none
+gn:2769055,Pertlstein,Styria,801,village,0,0,50,0,none,none
+gn:2769059,Persenbeug,Lower Austria,1303,village,0,0,50,0,none,none
+gn:2769068,Pernitz,Lower Austria,2356,village,0,0,50,0,none,none
+gn:2769074,Pernersdorf,Lower Austria,348,village,0,0,50,0,none,none
+gn:2769077,Pernegg an der Mur,Styria,706,village,0,0,50,0,none,none
+gn:2769078,Pernegg,Lower Austria,207,village,0,0,50,0,none,none
+gn:2769096,Perlsdorf,Styria,337,village,0,0,50,0,none,none
+gn:2769105,Perg,Upper Austria,5812,village,0,0,50,0,none,none
+gn:2769110,Perchtoldsdorf,Lower Austria,15047,town,0,0,50,0,none,none
+gn:2769113,Perchau am Sattel,Styria,304,village,0,0,50,0,none,none
+gn:2769129,Penz,Lower Austria,1905,village,0,0,50,0,none,none
+gn:2769131,Pennewang,Upper Austria,107,village,0,0,50,0,none,none
+gn:2769171,Peggau,Styria,1949,village,0,0,50,0,none,none
+gn:2769182,Payerbach,Lower Austria,1093,village,0,0,50,0,none,none
+gn:2769194,Paudorf,Lower Austria,895,village,0,0,50,0,none,none
+gn:2769199,Pattigham,Upper Austria,427,village,0,0,50,0,none,none
+gn:2769211,Patsch,Tyrol,1014,village,0,0,50,0,none,none
+gn:2769212,Paternion,Carinthia,676,village,0,0,50,0,none,none
+gn:2769224,Passail,Styria,1488,village,0,0,50,0,none,none
+gn:2769225,Pasching,Upper Austria,2409,village,0,0,50,0,none,none
+gn:2769236,Parschlug,Styria,1104,village,0,0,50,0,none,none
+gn:2769242,Parndorf,Burgenland,4689,village,0,0,50,0,none,none
+gn:2769246,Parbasdorf,Lower Austria,169,village,0,0,50,0,none,none
+gn:2769258,Pamhagen,Burgenland,1623,village,0,0,50,0,none,none
+gn:2769259,Pama,Burgenland,1204,village,0,0,50,0,none,none
+gn:2769263,Palting,Upper Austria,87,village,0,0,50,0,none,none
+gn:2769283,Palfau,Styria,369,village,0,0,50,0,none,none
+gn:2769285,Paldau,Styria,897,village,0,0,50,0,none,none
+gn:2769300,Pack,Styria,410,village,0,0,50,0,none,none
+gn:2769307,Pabneukirchen,Upper Austria,497,village,0,0,50,0,none,none
+gn:2769315,Oeynhausen,Lower Austria,1159,village,0,0,50,0,none,none
+gn:2769324,Oetz,Tyrol,2402,village,0,0,50,0,none,none
+gn:2769333,Otterthal,Lower Austria,592,village,0,0,50,0,none,none
+gn:2769339,Ottenthal,Lower Austria,428,village,0,0,50,0,none,none
+gn:2769342,Ottensheim,Upper Austria,3228,village,0,0,50,0,none,none
+gn:2769344,Ottenschlag im Mühlkreis,Upper Austria,164,village,0,0,50,0,none,none
+gn:2769347,Ottenschlag,Lower Austria,785,village,0,0,50,0,none,none
+gn:2769359,Ottakring,Vienna,104627,city,0,0,50,0,none,none
+gn:2769378,Osterwitz,Styria,135,village,0,0,50,0,none,none
+gn:2769384,Ostermiething,Upper Austria,2154,village,0,0,50,0,none,none
+gn:2769391,Ossiach,Carinthia,116,village,0,0,50,0,none,none
+gn:2769396,Oslip,Burgenland,1243,village,0,0,50,0,none,none
+gn:2769407,Ort im Innkreis,Upper Austria,781,village,0,0,50,0,none,none
+gn:2769409,Orth an der Donau,Lower Austria,2086,village,0,0,50,0,none,none
+gn:2769411,Ortgraben,Styria,1236,village,0,0,50,0,none,none
+gn:2769423,Opponitz,Lower Austria,0,village,0,0,50,0,none,none
+gn:2769424,Oppenberg,Styria,232,village,0,0,50,0,none,none
+gn:2769437,Ollersdorf im Burgenland,Burgenland,933,village,0,0,50,0,none,none
+gn:2769445,Olbendorf,Burgenland,1449,village,0,0,50,0,none,none
+gn:2769458,Ohlsdorf,Upper Austria,1093,village,0,0,50,0,none,none
+gn:2769461,Oggau,Burgenland,1739,village,0,0,50,0,none,none
+gn:2769473,Offenhausen,Upper Austria,1010,village,0,0,50,0,none,none
+gn:2769484,Oepping,Upper Austria,299,village,0,0,50,0,none,none
+gn:2769488,Oehling,Lower Austria,1200,village,0,0,50,0,none,none
+gn:2769494,Oedt,Upper Austria,3046,village,0,0,50,0,none,none
+gn:2769562,Öblarn,Styria,1059,village,0,0,50,0,none,none
+gn:2769573,Oberzeiring,Styria,611,village,0,0,50,0,none,none
+gn:2769580,Oberwölz Stadt,Styria,396,village,0,0,50,0,none,none
+gn:2769588,Oberwölbling,Lower Austria,1151,village,0,0,50,0,none,none
+gn:2769614,Oberweg,Styria,513,village,0,0,50,0,none,none
+gn:2769623,Oberwart,Burgenland,7288,village,0,0,50,0,none,none
+gn:2769624,Oberwang,Upper Austria,608,village,0,0,50,0,none,none
+gn:2769625,Oberwaltersdorf,Lower Austria,4618,village,0,0,50,0,none,none
+gn:2769631,Oberwagram,Lower Austria,4135,village,0,0,50,0,none,none
+gn:2769633,Obervogau,Styria,871,village,0,0,50,0,none,none
+gn:2769637,Obervellach,Carinthia,654,village,0,0,50,0,none,none
+gn:2769648,Obertrum am See,Salzburg,3966,village,0,0,50,0,none,none
+gn:2769662,Obertilliach,Tyrol,443,village,0,0,50,0,none,none
+gn:2769697,Oberstorcha,Styria,146,village,0,0,50,0,none,none
+gn:2769721,Obersiebenbrunn,Lower Austria,1708,village,0,0,50,0,none,none
+gn:2769731,Obersdorf,Lower Austria,1702,village,0,0,50,0,none,none
+gn:2769738,Oberschützen,Burgenland,1110,village,0,0,50,0,none,none
+gn:2769782,Oberrettenbach,Styria,273,village,0,0,50,0,none,none
+gn:2769812,Oberpullendorf,Burgenland,2019,village,0,0,50,0,none,none
+gn:2769817,Oberpremstätten,Styria,1243,village,0,0,50,0,none,none
+gn:2769836,Pettnau,Tyrol,1047,village,0,0,50,0,none,none
+gn:2769865,Oberneukirchen,Upper Austria,1134,village,0,0,50,0,none,none
+gn:2769872,Oberndorf in Tirol,Tyrol,2194,village,0,0,50,0,none,none
+gn:2769873,Oberndorf bei Schwanenstadt,Upper Austria,667,village,0,0,50,0,none,none
+gn:2769874,Oberndorf bei Salzburg,Salzburg,5794,village,0,0,50,0,none,none
+gn:2769876,Oberndorf an der Melk,Lower Austria,644,village,0,0,50,0,none,none
+gn:2769877,Oberndorf in der Ebene,Lower Austria,2151,village,0,0,50,0,none,none
+gn:2769900,Obernberg am Inn,Upper Austria,1633,village,0,0,50,0,none,none
+gn:2769926,Obermieming,Tyrol,1458,village,0,0,50,0,none,none
+gn:2769945,Oberloisdorf,Burgenland,806,village,0,0,50,0,none,none
+gn:2769952,Oberlienz,Tyrol,889,village,0,0,50,0,none,none
+gn:2769994,Oberkurzheim,Styria,118,village,0,0,50,0,none,none
+gn:2770041,Oberhofen im Inntal,Tyrol,1857,village,0,0,50,0,none,none
+gn:2770042,Oberhofen am Irrsee,Upper Austria,173,village,0,0,50,0,none,none
+gn:2770061,Oberhausen,Lower Austria,2007,village,0,0,50,0,none,none
+gn:2770071,Oberhart,Upper Austria,1059,village,0,0,50,0,none,none
+gn:2770086,Oberhaag,Styria,716,village,0,0,50,0,none,none
+gn:2770113,Ober-Grafendorf,Lower Austria,3228,village,0,0,50,0,none,none
+gn:2770264,Oberdrauburg,Carinthia,331,village,0,0,50,0,none,none
+gn:2770269,Oberdorf im Burgenland,Burgenland,996,village,0,0,50,0,none,none
+gn:2770271,Oberdorf am Hochegg,Styria,446,village,0,0,50,0,none,none
+gn:2770344,Aurach,Tyrol,1130,village,0,0,50,0,none,none
+gn:2770350,Oberau,Tyrol,2054,village,0,0,50,0,none,none
+gn:2770369,Oberalm,Salzburg,4117,village,0,0,50,0,none,none
+gn:2770377,Oberaich,Styria,523,village,0,0,50,0,none,none
+gn:2770390,Obdach,Styria,1537,village,0,0,50,0,none,none
+gn:2770391,Nüziders,Vorarlberg,4962,village,0,0,50,0,none,none
+gn:2770397,Nußdorf am Haunsberg,Salzburg,970,village,0,0,50,0,none,none
+gn:2770472,Nöchling,Lower Austria,699,village,0,0,50,0,none,none
+gn:2770477,Nitscha,Styria,750,village,0,0,50,0,none,none
+gn:2770479,Nikolsdorf,Tyrol,598,village,0,0,50,0,none,none
+gn:2770482,Niklasdorf,Styria,2515,village,0,0,50,0,none,none
+gn:2770487,Nikitsch,Burgenland,687,village,0,0,50,0,none,none
+gn:2770496,Niederwölz,Styria,596,village,0,0,50,0,none,none
+gn:2770514,Niederthalheim,Upper Austria,478,village,0,0,50,0,none,none
+gn:2770543,Niederöblarn,Styria,459,village,0,0,50,0,none,none
+gn:2770544,Niedernsill,Salzburg,835,village,0,0,50,0,none,none
+gn:2770548,Niederneukirchen,Upper Austria,1083,village,0,0,50,0,none,none
+gn:2770555,Niederndorf,Tyrol,2736,village,0,0,50,0,none,none
+gn:2770560,Niederleis,Lower Austria,619,village,0,0,50,0,none,none
+gn:2770576,Niederhollabrunn,Lower Austria,641,village,0,0,50,0,none,none
+gn:2770610,Niederdorf,Carinthia,1006,village,0,0,50,0,none,none
+gn:2770614,Niederbreitenbach,Tyrol,1132,village,0,0,50,0,none,none
+gn:2770619,Niederau,Tyrol,1043,village,0,0,50,0,none,none
+gn:2770624,Niederalm,Salzburg,1575,village,0,0,50,0,none,none
+gn:2770630,Nickelsdorf,Burgenland,1772,village,0,0,50,0,none,none
+gn:2770634,Neuzeug,Upper Austria,5346,village,0,0,50,0,none,none
+gn:2770646,Neutillmitsch,Styria,1277,village,0,0,50,0,none,none
+gn:2770649,Neutal,Burgenland,1094,village,0,0,50,0,none,none
+gn:2770651,Neustift im Stubaital,Tyrol,4747,village,0,0,50,0,none,none
+gn:2770656,Neustift bei Güssing,Burgenland,474,village,0,0,50,0,none,none
+gn:2770659,Neustift an der Lafnitz,Burgenland,793,village,0,0,50,0,none,none
+gn:2770679,Neusiedl an der Zaya,Lower Austria,1119,village,0,0,50,0,none,none
+gn:2770684,Neusiedl am See,Burgenland,8235,village,0,0,50,0,none,none
+gn:2770689,Neusiedl,Lower Austria,1103,village,0,0,50,0,none,none
+gn:2770699,Neurisshof,Lower Austria,1934,village,0,0,50,0,none,none
+gn:2770711,Neunkirchen,Lower Austria,11461,town,0,0,50,0,none,none
+gn:2770720,Neumarkt in Steiermark,Styria,1678,village,0,0,50,0,none,none
+gn:2770722,Neumarkt im Mühlkreis,Upper Austria,1167,village,0,0,50,0,none,none
+gn:2770723,Neumarkt im Hausruckkreis,Upper Austria,1377,village,0,0,50,0,none,none
+gn:2770725,Neumarkt an der Ybbs,Lower Austria,1207,village,0,0,50,0,none,none
+gn:2770727,Neumarkt am Wallersee,Salzburg,4456,village,0,0,50,0,none,none
+gn:2770730,Neulengbach,Lower Austria,1601,village,0,0,50,0,none,none
+gn:2770734,Neukirchen bei Lambach,Upper Austria,186,village,0,0,50,0,none,none
+gn:2770736,Neukirchen an der Vöckla,Upper Austria,333,village,0,0,50,0,none,none
+gn:2770738,Neukirchen am Walde,Upper Austria,754,village,0,0,50,0,none,none
+gn:2770740,Neukirchen am Großvenediger,Salzburg,1400,village,0,0,50,0,none,none
+gn:2770741,Neukirchen,Upper Austria,2555,village,0,0,50,0,none,none
+gn:2770749,Neuhofen an der Ybbs,Lower Austria,1054,village,0,0,50,0,none,none
+gn:2770750,Neuhofen an der Krems,Upper Austria,6269,village,0,0,50,0,none,none
+gn:2770780,Neuhaus,Carinthia,101,village,0,0,50,0,none,none
+gn:2770788,Neufeld an der Leitha,Burgenland,3418,village,0,0,50,0,none,none
+gn:2770803,Neudörfl,Burgenland,4564,village,0,0,50,0,none,none
+gn:2770815,Neudorf im Weinviertel,Lower Austria,1082,village,0,0,50,0,none,none
+gn:2770838,Neudau,Styria,1246,village,0,0,50,0,none,none
+gn:2770844,Neuberg an der Mürz,Styria,0,village,0,0,50,0,none,none
+gn:2770873,Nestelbach im Ilztal,Styria,543,village,0,0,50,0,none,none
+gn:2770874,Nestelbach bei Graz,Styria,858,village,0,0,50,0,none,none
+gn:2770879,Nesselwängle,Tyrol,381,village,0,0,50,0,none,none
+gn:2770885,Nenzing,Vorarlberg,4357,village,0,0,50,0,none,none
+gn:2770889,Neidling,Lower Austria,122,village,0,0,50,0,none,none
+gn:2770897,Neckenmarkt,Burgenland,1528,village,0,0,50,0,none,none
+gn:2770910,Nauders,Tyrol,1542,village,0,0,50,0,none,none
+gn:2770913,Natters,Tyrol,2020,village,0,0,50,0,none,none
+gn:2770916,Natternbach,Upper Austria,1027,village,0,0,50,0,none,none
+gn:2770927,Nassereith,Tyrol,2119,village,0,0,50,0,none,none
+gn:2770941,Namlos,Tyrol,45,village,0,0,50,0,none,none
+gn:2770966,Naas,Styria,257,village,0,0,50,0,none,none
+gn:2770967,Naarn im Machlande,Upper Austria,1563,village,0,0,50,0,none,none
+gn:2770974,Mutters,Tyrol,1587,village,0,0,50,0,none,none
+gn:2770991,Musau,Tyrol,391,village,0,0,50,0,none,none
+gn:2770993,Mürzzuschlag,Styria,5975,village,0,0,50,0,none,none
+gn:2770995,Mürzsteg,Styria,173,village,0,0,50,0,none,none
+gn:2770996,Mürzhofen,Styria,921,village,0,0,50,0,none,none
+gn:2771010,Mureck,Styria,1529,village,0,0,50,0,none,none
+gn:2771020,Münzkirchen,Upper Austria,1865,village,0,0,50,0,none,none
+gn:2771023,Münzbach,Upper Austria,1041,village,0,0,50,0,none,none
+gn:2771024,Muntlix,Vorarlberg,1615,village,0,0,50,0,none,none
+gn:2771028,Münster,Tyrol,3317,village,0,0,50,0,none,none
+gn:2771039,Munderfing,Upper Austria,1423,village,0,0,50,0,none,none
+gn:2771042,Münchendorf,Lower Austria,2992,village,0,0,50,0,none,none
+gn:2771049,Müllendorf,Burgenland,1397,village,0,0,50,0,none,none
+gn:2771053,Muhr,Salzburg,0,village,0,0,50,0,none,none
+gn:2771078,Mühlgraben,Burgenland,396,village,0,0,50,0,none,none
+gn:2771083,Mühlen,Styria,295,village,0,0,50,0,none,none
+gn:2771089,Mühldorf bei Feldbach,Styria,2026,village,0,0,50,0,none,none
+gn:2771090,Mühldorf,Lower Austria,346,village,0,0,50,0,none,none
+gn:2771092,Mühldorf,Upper Austria,1505,village,0,0,50,0,none,none
+gn:2771095,Mühldorf,Carinthia,911,village,0,0,50,0,none,none
+gn:2771109,Mühlbach am Hochkönig,Salzburg,1318,village,0,0,50,0,none,none
+gn:2771133,Mühlau,Tyrol,5435,village,0,0,50,0,none,none
+gn:2771139,Muggendorf,Lower Austria,365,village,0,0,50,0,none,none
+gn:2771146,Muckendorf an der Donau,Lower Austria,1178,village,0,0,50,0,none,none
+gn:2771148,Mötz,Tyrol,1219,village,0,0,50,0,none,none
+gn:2771194,Moschendorf,Burgenland,400,village,0,0,50,0,none,none
+gn:2771200,Mörtschach,Carinthia,249,village,0,0,50,0,none,none
+gn:2771207,Mortantsch,Styria,191,village,0,0,50,0,none,none
+gn:2771219,Mörbisch am See,Burgenland,2261,village,0,0,50,0,none,none
+gn:2771228,Mooskirchen,Styria,614,village,0,0,50,0,none,none
+gn:2771243,Moosdorf,Upper Austria,445,village,0,0,50,0,none,none
+gn:2771244,Moosburg,Carinthia,1030,village,0,0,50,0,none,none
+gn:2771245,Moosbrunn,Lower Austria,1777,village,0,0,50,0,none,none
+gn:2771271,Mönichwald,Styria,0,village,0,0,50,0,none,none
+gn:2771273,Mönichkirchen,Lower Austria,606,village,0,0,50,0,none,none
+gn:2771277,Mondsee,Upper Austria,3734,village,0,0,50,0,none,none
+gn:2771284,Mönchhof,Burgenland,2236,village,0,0,50,0,none,none
+gn:2771299,Molln,Upper Austria,2434,village,0,0,50,0,none,none
+gn:2771305,Möllersdorf,Lower Austria,4587,village,0,0,50,0,none,none
+gn:2771307,Möllbrücke,Carinthia,1176,village,0,0,50,0,none,none
+gn:2771313,Mölbling,Carinthia,199,village,0,0,50,0,none,none
+gn:2771321,Möggers,Vorarlberg,534,village,0,0,50,0,none,none
+gn:2771322,Mogersdorf,Burgenland,650,village,0,0,50,0,none,none
+gn:2771330,Modriach,Styria,202,village,0,0,50,0,none,none
+gn:2771335,Mödling,Lower Austria,20555,town,0,0,50,0,none,none
+gn:2771377,Mittertreffling,Upper Austria,1293,village,0,0,50,0,none,none
+gn:2771385,Mittersill,Salzburg,1888,village,0,0,50,0,none,none
+gn:2771400,Mitterpullendorf,Burgenland,1169,village,0,0,50,0,none,none
+gn:2771408,Mitterndorf im Steirischen Salzkammergut,Styria,1043,village,0,0,50,0,none,none
+gn:2771409,Mitterndorf an der Fischa,Lower Austria,2685,village,0,0,50,0,none,none
+gn:2771432,Mitterlabill,Styria,227,village,0,0,50,0,none,none
+gn:2771436,Mitterkirchen im Machland,Upper Austria,179,village,0,0,50,0,none,none
+gn:2771444,Mitterhofen,Salzburg,1118,village,0,0,50,0,none,none
+gn:2771472,Mitterdorf im Mürztal,Styria,1935,village,0,0,50,0,none,none
+gn:2771473,Mitterdorf an der Raab,Styria,176,village,0,0,50,0,none,none
+gn:2771485,Mitterberghütten,Salzburg,1368,village,0,0,50,0,none,none
+gn:2771507,Mitterbach am Erlaufsee,Lower Austria,0,village,0,0,50,0,none,none
+gn:2771533,Mittelberg,Vorarlberg,1610,village,0,0,50,0,none,none
+gn:2771557,Mistelbach,Lower Austria,6463,village,0,0,50,0,none,none
+gn:2771567,Mischendorf,Burgenland,551,village,0,0,50,0,none,none
+gn:2771581,Mils bei Solbad Hall,Tyrol,4377,village,0,0,50,0,none,none
+gn:2771582,Mils bei Imst,Tyrol,559,village,0,0,50,0,none,none
+gn:2771600,Miesenbach,Lower Austria,703,village,0,0,50,0,none,none
+gn:2771601,Miesenbach bei Birkfeld,Styria,0,village,0,0,50,0,none,none
+gn:2771606,Mieming,Tyrol,0,village,0,0,50,0,none,none
+gn:2771609,Mieders,Tyrol,1861,village,0,0,50,0,none,none
+gn:2771618,Michelhausen,Lower Austria,1107,village,0,0,50,0,none,none
+gn:2771619,Micheldorf in Oberösterreich,Upper Austria,5854,village,0,0,50,0,none,none
+gn:2771621,Micheldorf,Carinthia,678,village,0,0,50,0,none,none
+gn:2771629,Michaelnbach,Upper Austria,383,village,0,0,50,0,none,none
+gn:2771631,Michaelerberg,Styria,434,village,0,0,50,0,none,none
+gn:2771638,Mettersdorf am Saßbach,Styria,487,village,0,0,50,0,none,none
+gn:2771643,Metnitz,Carinthia,515,village,0,0,50,0,none,none
+gn:2771660,Merkendorf,Styria,393,village,0,0,50,0,none,none
+gn:2771677,Mellach,Styria,589,village,0,0,50,0,none,none
+gn:2771682,Melk,Lower Austria,3788,village,0,0,50,0,none,none
+gn:2771698,Meiningen,Vorarlberg,2245,village,0,0,50,0,none,none
+gn:2771706,Meidling,Vienna,97624,town,0,0,50,0,none,none
+gn:2771708,Mehrnbach,Upper Austria,2363,village,0,0,50,0,none,none
+gn:2771716,Meggenhofen,Upper Austria,313,village,0,0,50,0,none,none
+gn:2771718,Medraz,Tyrol,1340,village,0,0,50,0,none,none
+gn:2771725,Mayrhofen,Tyrol,3720,village,0,0,50,0,none,none
+gn:2771761,Mautern in Steiermark,Styria,1184,village,0,0,50,0,none,none
+gn:2771764,Mauterndorf,Salzburg,1261,village,0,0,50,0,none,none
+gn:2771766,Mautern,Lower Austria,2917,village,0,0,50,0,none,none
+gn:2771779,Mauerkirchen,Upper Austria,2384,village,0,0,50,0,none,none
+gn:2771783,Mauer bei Amstetten,Lower Austria,2278,village,0,0,50,0,none,none
+gn:2771785,Mauerbach,Lower Austria,3339,village,0,0,50,0,none,none
+gn:2771800,Matzendorf,Lower Austria,1734,village,0,0,50,0,none,none
+gn:2771801,Matzen,Lower Austria,1796,village,0,0,50,0,none,none
+gn:2771811,Mattsee,Salzburg,3263,village,0,0,50,0,none,none
+gn:2771814,Mattighofen,Upper Austria,6524,village,0,0,50,0,none,none
+gn:2771817,Mattersburg,Burgenland,7349,village,0,0,50,0,none,none
+gn:2771828,Matrei in Osttirol,Tyrol,2482,village,0,0,50,0,none,none
+gn:2771830,Matrei am Brenner,Tyrol,959,village,0,0,50,0,none,none
+gn:2771847,Marz,Burgenland,2073,village,0,0,50,0,none,none
+gn:2771854,Martinsberg,Lower Austria,483,village,0,0,50,0,none,none
+gn:2771866,Markt Sankt Martin,Burgenland,727,village,0,0,50,0,none,none
+gn:2771867,Sankt Florian,Upper Austria,3209,village,0,0,50,0,none,none
+gn:2771868,Bad Pirawarth,Lower Austria,1238,village,0,0,50,0,none,none
+gn:2771869,Markt Piesting,Lower Austria,2294,village,0,0,50,0,none,none
+gn:2771870,Markt Neuhodis,Burgenland,526,village,0,0,50,0,none,none
+gn:2771876,Markt Allhau,Burgenland,1287,village,0,0,50,0,none,none
+gn:2771881,Markgrafneusiedl,Lower Austria,832,village,0,0,50,0,none,none
+gn:2771882,Markersdorf an der Pielach,Lower Austria,1444,village,0,0,50,0,none,none
+gn:2771893,Mariazell,Styria,1254,village,0,0,50,0,none,none
+gn:2771894,Maria Wörth,Carinthia,151,village,0,0,50,0,none,none
+gn:2771896,Mariatrost,Styria,9631,village,0,0,50,0,none,none
+gn:2771898,Mariatal,Tyrol,1505,village,0,0,50,0,none,none
+gn:2771900,Maria Taferl,Lower Austria,264,village,0,0,50,0,none,none
+gn:2771902,Mariastein,Tyrol,362,village,0,0,50,0,none,none
+gn:2771903,Mariasdorf,Burgenland,434,village,0,0,50,0,none,none
+gn:2771908,Maria Schmolln,Upper Austria,323,village,0,0,50,0,none,none
+gn:2771910,Maria Saal,Carinthia,1094,village,0,0,50,0,none,none
+gn:2771914,Maria Rain,Carinthia,1002,village,0,0,50,0,none,none
+gn:2771917,Mariapfarr,Salzburg,1612,village,0,0,50,0,none,none
+gn:2771918,Maria Neustift,Upper Austria,1592,village,0,0,50,0,none,none
+gn:2771921,Maria Lanzendorf,Lower Austria,2129,village,0,0,50,0,none,none
+gn:2771922,Maria Lankowitz,Styria,1740,village,0,0,50,0,none,none
+gn:2771925,Maria Laach am Jauerling,Lower Austria,256,village,0,0,50,0,none,none
+gn:2771930,Mariahof,Styria,1188,village,0,0,50,0,none,none
+gn:2771940,Maria Enzersdorf,Lower Austria,8829,village,0,0,50,0,none,none
+gn:2771941,Maria Ellend,Lower Austria,1030,village,0,0,50,0,none,none
+gn:2771949,Maria-Anzbach,Lower Austria,1424,village,0,0,50,0,none,none
+gn:2771951,Maria Alm am Steinernen Meer,Salzburg,1032,village,0,0,50,0,none,none
+gn:2771955,Margarethen am Moos,Lower Austria,1145,village,0,0,50,0,none,none
+gn:2771962,Marchtrenk,Upper Austria,8394,village,0,0,50,0,none,none
+gn:2771970,Marchegg,Lower Austria,2199,village,0,0,50,0,none,none
+gn:2771978,Marbach an der Donau,Lower Austria,280,village,0,0,50,0,none,none
+gn:2771991,Mannswörth,Lower Austria,1948,village,0,0,50,0,none,none
+gn:2771994,Mannsdorf an der Donau,Lower Austria,342,village,0,0,50,0,none,none
+gn:2771998,Manning,Upper Austria,122,village,0,0,50,0,none,none
+gn:2772001,Mannersdorf an der Rabnitz,Burgenland,568,village,0,0,50,0,none,none
+gn:2772003,Mannersdorf am Leithagebirge,Lower Austria,3328,village,0,0,50,0,none,none
+gn:2772012,Mank,Lower Austria,2021,village,0,0,50,0,none,none
+gn:2772041,Mallnitz,Carinthia,441,village,0,0,50,0,none,none
+gn:2772058,Maissau,Lower Austria,915,village,0,0,50,0,none,none
+gn:2772060,Maishofen,Salzburg,1909,village,0,0,50,0,none,none
+gn:2772083,Mailberg,Lower Austria,558,village,0,0,50,0,none,none
+gn:2772105,Maierdorf,Styria,139,village,0,0,50,0,none,none
+gn:2772154,Mäder,Vorarlberg,4031,village,0,0,50,0,none,none
+gn:2772168,Lutzmannsburg,Burgenland,614,village,0,0,50,0,none,none
+gn:2772173,Lustenau,Vorarlberg,22821,town,0,0,50,0,none,none
+gn:2772186,Lunz am See,Lower Austria,1806,village,0,0,50,0,none,none
+gn:2772213,Luftenberg an der Donau,Upper Austria,1556,village,0,0,50,0,none,none
+gn:2772226,Ludmannsdorf,Carinthia,179,village,0,0,50,0,none,none
+gn:2772228,Ludesch,Vorarlberg,3371,village,0,0,50,0,none,none
+gn:2772247,Losenstein,Upper Austria,1604,village,0,0,50,0,none,none
+gn:2772254,Lorüns,Vorarlberg,294,village,0,0,50,0,none,none
+gn:2772255,Loretto,Burgenland,475,village,0,0,50,0,none,none
+gn:2772264,Loosdorf,Lower Austria,3064,village,0,0,50,0,none,none
+gn:2772290,Loipersdorf bei Fürstenfeld,Styria,779,village,0,0,50,0,none,none
+gn:2772294,Loipersbach im Burgenland,Burgenland,1229,village,0,0,50,0,none,none
+gn:2772302,Loich,Lower Austria,216,village,0,0,50,0,none,none
+gn:2772330,Lofer,Salzburg,1185,village,0,0,50,0,none,none
+gn:2772333,Lödersdorf,Styria,0,village,0,0,50,0,none,none
+gn:2772345,Lochau,Vorarlberg,5747,village,0,0,50,0,none,none
+gn:2772380,Litzelsdorf,Burgenland,1181,village,0,0,50,0,none,none
+gn:2772385,Litschau,Lower Austria,1421,village,0,0,50,0,none,none
+gn:2772400,Linz,Upper Austria,204846,city,0,0,50,0,none,none
+gn:2772470,Lilienfeld,Lower Austria,447,village,0,0,50,0,none,none
+gn:2772476,Ligist,Styria,708,village,0,0,50,0,none,none
+gn:2772480,Liezen,Styria,6587,village,0,0,50,0,none,none
+gn:2772481,Liesingtal,Styria,1824,village,0,0,50,0,none,none
+gn:2772505,Lienz,Tyrol,11572,town,0,0,50,0,none,none
+gn:2772514,Lieboch,Styria,3175,village,0,0,50,0,none,none
+gn:2772522,Liebenau,Styria,14447,town,0,0,50,0,none,none
+gn:2772531,Lichtenwörth,Lower Austria,2727,village,0,0,50,0,none,none
+gn:2772537,Lichtenegg,Upper Austria,6163,village,0,0,50,0,none,none
+gn:2772538,Lichtenegg,Lower Austria,271,village,0,0,50,0,none,none
+gn:2772564,Leutschach,Styria,557,village,0,0,50,0,none,none
+gn:2772592,Lermoos,Tyrol,1075,village,0,0,50,0,none,none
+gn:2772618,Leopoldsdorf im Marchfelde,Lower Austria,2391,village,0,0,50,0,none,none
+gn:2772620,Leopoldsdorf,Lower Austria,5078,village,0,0,50,0,none,none
+gn:2772631,Leonstein,Upper Austria,1751,village,0,0,50,0,none,none
+gn:2772635,Leonding,Upper Austria,4657,village,0,0,50,0,none,none
+gn:2772641,Leogang,Salzburg,377,village,0,0,50,0,none,none
+gn:2772645,Leobersdorf,Lower Austria,4915,village,0,0,50,0,none,none
+gn:2772646,Leobendorf,Lower Austria,2802,village,0,0,50,0,none,none
+gn:2772649,Leoben,Styria,8264,village,0,0,50,0,none,none
+gn:2772653,Lenzing,Upper Austria,2981,village,0,0,50,0,none,none
+gn:2772659,Lengfelden,Salzburg,1463,village,0,0,50,0,none,none
+gn:2772662,Lengenfeld,Lower Austria,1412,village,0,0,50,0,none,none
+gn:2772672,Lendorf,Carinthia,920,village,0,0,50,0,none,none
+gn:2772675,Lend,Salzburg,603,village,0,0,50,0,none,none
+gn:2772680,Lembach im Mühlkreis,Upper Austria,1354,village,0,0,50,0,none,none
+gn:2772689,Leitzersdorf,Lower Austria,648,village,0,0,50,0,none,none
+gn:2772694,Leitring,Styria,3132,village,0,0,50,0,none,none
+gn:2772709,Leithaprodersdorf,Burgenland,1193,village,0,0,50,0,none,none
+gn:2772713,Leitersdorf im Raabtal,Styria,699,village,0,0,50,0,none,none
+gn:2772719,Leitendorf,Styria,2568,village,0,0,50,0,none,none
+gn:2772736,Leisach,Tyrol,557,village,0,0,50,0,none,none
+gn:2772753,Leibnitz,Styria,8533,village,0,0,50,0,none,none
+gn:2772757,Leiben,Lower Austria,749,village,0,0,50,0,none,none
+gn:2772786,Ledenitzen,Carinthia,1118,village,0,0,50,0,none,none
+gn:2772796,Lechaschau,Tyrol,2108,village,0,0,50,0,none,none
+gn:2772798,Lech,Vorarlberg,1568,village,0,0,50,0,none,none
+gn:2772810,Laxenburg,Lower Austria,2828,village,0,0,50,0,none,none
+gn:2772812,Tullnerbach-Lawies,Lower Austria,1625,village,0,0,50,0,none,none
+gn:2772820,Lavant,Tyrol,320,village,0,0,50,0,none,none
+gn:2772821,Lavamünd,Carinthia,328,village,0,0,50,0,none,none
+gn:2772827,Lauterach,Vorarlberg,10267,town,0,0,50,0,none,none
+gn:2772833,Laussa,Upper Austria,1227,village,0,0,50,0,none,none
+gn:2772836,Launsdorf,Carinthia,1207,village,0,0,50,0,none,none
+gn:2772879,Lassnitzhöhe,Styria,2817,village,0,0,50,0,none,none
+gn:2772891,Lassing,Styria,0,village,0,0,50,0,none,none
+gn:2772902,Lassee,Lower Austria,2379,village,0,0,50,0,none,none
+gn:2772942,Lanzenkirchen,Lower Austria,837,village,0,0,50,0,none,none
+gn:2772960,Lans,Tyrol,1096,village,0,0,50,0,none,none
+gn:2772961,Lannach,Styria,1334,village,0,0,50,0,none,none
+gn:2772977,Langschlag,Lower Austria,631,village,0,0,50,0,none,none
+gn:2772998,Langenzersdorf,Lower Austria,8137,village,0,0,50,0,none,none
+gn:2773000,Langenwang,Styria,3119,village,0,0,50,0,none,none
+gn:2773004,Langenstein,Upper Austria,2534,village,0,0,50,0,none,none
+gn:2773007,Langenrohr,Lower Austria,1320,village,0,0,50,0,none,none
+gn:2773010,Langenlois,Lower Austria,4777,village,0,0,50,0,none,none
+gn:2773016,Langen,Vorarlberg,1405,village,0,0,50,0,none,none
+gn:2773020,Langegg bei Graz,Styria,0,village,0,0,50,0,none,none
+gn:2773032,Langau,Lower Austria,627,village,0,0,50,0,none,none
+gn:2773038,Lang,Styria,183,village,0,0,50,0,none,none
+gn:2773045,Landskron,Carinthia,4304,village,0,0,50,0,none,none
+gn:2773056,Landl,Styria,0,village,0,0,50,0,none,none
+gn:2773066,Landegg,Lower Austria,1085,village,0,0,50,0,none,none
+gn:2773070,Landeck,Tyrol,7725,village,0,0,50,0,none,none
+gn:2773077,Lamprechtshausen,Salzburg,1866,village,0,0,50,0,none,none
+gn:2773110,Lambach,Upper Austria,3279,village,0,0,50,0,none,none
+gn:2773159,Lafnitz,Styria,967,village,0,0,50,0,none,none
+gn:2773165,Ladis,Tyrol,531,village,0,0,50,0,none,none
+gn:2773172,Ladendorf,Lower Austria,1339,village,0,0,50,0,none,none
+gn:2773181,Lackendorf,Burgenland,604,village,0,0,50,0,none,none
+gn:2773184,Lackenbach,Burgenland,1167,village,0,0,50,0,none,none
+gn:2773197,Labuch,Styria,346,village,0,0,50,0,none,none
+gn:2773215,Laakirchen,Upper Austria,9861,village,0,0,50,0,none,none
+gn:2773223,Laab im Walde,Lower Austria,1137,village,0,0,50,0,none,none
+gn:2773229,Laa an der Thaya,Lower Austria,6206,village,0,0,50,0,none,none
+gn:2773250,Kundl,Tyrol,3771,village,0,0,50,0,none,none
+gn:2773253,Kumberg,Styria,1707,village,0,0,50,0,none,none
+gn:2773264,Kulm am Zirbitz,Styria,299,village,0,0,50,0,none,none
+gn:2773271,Kukmirn,Burgenland,718,village,0,0,50,0,none,none
+gn:2773278,Kühnsdorf,Carinthia,1521,village,0,0,50,0,none,none
+gn:2773300,Kufstein,Tyrol,9848,village,0,0,50,0,none,none
+gn:2773304,Kuchl,Salzburg,1883,village,0,0,50,0,none,none
+gn:2773317,Krusdorf,Styria,256,village,0,0,50,0,none,none
+gn:2773321,Krumpendorf,Carinthia,3497,village,0,0,50,0,none,none
+gn:2773324,Krumnussbaum,Lower Austria,1135,village,0,0,50,0,none,none
+gn:2773335,Krumegg,Styria,1156,village,0,0,50,0,none,none
+gn:2773336,Krumbach Markt,Lower Austria,2316,village,0,0,50,0,none,none
+gn:2773341,Krumbach,Vorarlberg,1042,village,0,0,50,0,none,none
+gn:2773343,Krumau am Kamp,Lower Austria,256,village,0,0,50,0,none,none
+gn:2773359,Krottendorf bei Ligist,Styria,1211,village,0,0,50,0,none,none
+gn:2773366,Krottendorf,Styria,871,village,0,0,50,0,none,none
+gn:2773379,Kronstorf,Upper Austria,1617,village,0,0,50,0,none,none
+gn:2773420,Kritzendorf,Lower Austria,2457,village,0,0,50,0,none,none
+gn:2773426,Krispl,Salzburg,110,village,0,0,50,0,none,none
+gn:2773447,Krieglach,Styria,3062,village,0,0,50,0,none,none
+gn:2773493,Bad Kreuzen,Upper Austria,684,village,0,0,50,0,none,none
+gn:2773528,Krensdorf,Burgenland,642,village,0,0,50,0,none,none
+gn:2773538,Kremsmünster,Upper Austria,6585,village,0,0,50,0,none,none
+gn:2773541,Kremsdorf,Upper Austria,1364,village,0,0,50,0,none,none
+gn:2773549,Krems an der Donau,Lower Austria,14473,town,0,0,50,0,none,none
+gn:2773577,Kraubath an der Mur,Styria,995,village,0,0,50,0,none,none
+gn:2773605,Kramsach,Tyrol,0,village,0,0,50,0,none,none
+gn:2773613,Krakauschatten,Styria,293,village,0,0,50,0,none,none
+gn:2773614,Krakauhintermühlen,Styria,517,village,0,0,50,0,none,none
+gn:2773616,Krakaudorf,Styria,609,village,0,0,50,0,none,none
+gn:2773646,Köttmannsdorf,Carinthia,743,village,0,0,50,0,none,none
+gn:2773653,Kottingbrunn,Lower Austria,7417,village,0,0,50,0,none,none
+gn:2773665,Kötschach,Carinthia,1498,village,0,0,50,0,none,none
+gn:2773680,Köstendorf,Salzburg,1055,village,0,0,50,0,none,none
+gn:2773691,Kössen,Tyrol,4346,village,0,0,50,0,none,none
+gn:2773698,Korneuburg,Lower Austria,12986,town,0,0,50,0,none,none
+gn:2773713,Koppl,Salzburg,453,village,0,0,50,0,none,none
+gn:2773722,Kopfing im Innkreis,Upper Austria,600,village,0,0,50,0,none,none
+gn:2773733,Königswiesen,Upper Austria,1271,village,0,0,50,0,none,none
+gn:2773736,Königstetten,Lower Austria,2406,village,0,0,50,0,none,none
+gn:2773746,Königsdorf,Burgenland,720,village,0,0,50,0,none,none
+gn:2773773,Kolsassberg,Tyrol,817,village,0,0,50,0,none,none
+gn:2773804,Kohlschwarz,Styria,253,village,0,0,50,0,none,none
+gn:2773818,Kohlberg,Styria,298,village,0,0,50,0,none,none
+gn:2773823,Kohfidisch,Burgenland,919,village,0,0,50,0,none,none
+gn:2773848,Köflach,Styria,4375,village,0,0,50,0,none,none
+gn:2773863,Koblach,Vorarlberg,4577,village,0,0,50,0,none,none
+gn:2773866,Kobersdorf,Burgenland,1074,village,0,0,50,0,none,none
+gn:2773873,Kobenz,Styria,651,village,0,0,50,0,none,none
+gn:2773887,Knittelfeld,Styria,11521,town,0,0,50,0,none,none
+gn:2773913,Klosterneuburg,Lower Austria,15614,town,0,0,50,0,none,none
+gn:2773915,Klösterle,Vorarlberg,596,village,0,0,50,0,none,none
+gn:2773921,Kloster,Styria,108,village,0,0,50,0,none,none
+gn:2773929,Klöch,Styria,396,village,0,0,50,0,none,none
+gn:2773938,Klingenbach,Burgenland,1172,village,0,0,50,0,none,none
+gn:2773966,Kleinzell,Lower Austria,624,village,0,0,50,0,none,none
+gn:2774015,Kleinsölk,Styria,562,village,0,0,50,0,none,none
+gn:2774016,Kleinsöding,Styria,1035,village,0,0,50,0,none,none
+gn:2774035,Klein Sankt Paul,Carinthia,1030,village,0,0,50,0,none,none
+gn:2774062,Klein-Pöchlarn,Lower Austria,991,village,0,0,50,0,none,none
+gn:2774076,Kleinmürbisch,Burgenland,226,village,0,0,50,0,none,none
+gn:2774087,Kleinlobming,Styria,366,village,0,0,50,0,none,none
+gn:2774105,Kleinhöflein im Burgenland,Burgenland,2868,village,0,0,50,0,none,none
+gn:2774279,Klausen-Leopoldsdorf,Lower Austria,1681,village,0,0,50,0,none,none
+gn:2774294,Klaus,Vorarlberg,3118,village,0,0,50,0,none,none
+gn:2774295,Klaus,Vorarlberg,3118,village,0,0,50,0,none,none
+gn:2774326,Klagenfurt am Wörthersee,Carinthia,100316,city,0,0,50,0,none,none
+gn:2774329,Klaffer am Hochficht,Upper Austria,408,village,0,0,50,0,none,none
+gn:2774341,Kitzeck im Sausal,Styria,0,village,0,0,50,0,none,none
+gn:2774347,Kitzbühel,Tyrol,8272,village,0,0,50,0,none,none
+gn:2774348,Kittsee,Burgenland,3162,village,0,0,50,0,none,none
+gn:2774357,Kirnberg an der Mank,Lower Austria,551,village,0,0,50,0,none,none
+gn:2774362,Kirchstetten,Lower Austria,769,village,0,0,50,0,none,none
+gn:2774368,Kirchschlag in der Buckligen Welt,Lower Austria,1554,village,0,0,50,0,none,none
+gn:2774369,Kirchschlag bei Linz,Upper Austria,726,village,0,0,50,0,none,none
+gn:2774370,Kirchschlag,Lower Austria,240,village,0,0,50,0,none,none
+gn:2774387,Kirchdorf in Tirol,Tyrol,2795,village,0,0,50,0,none,none
+gn:2774390,Kirchdorf an der Krems,Upper Austria,4502,village,0,0,50,0,none,none
+gn:2774398,Kirchberg ob der Donau,Upper Austria,351,village,0,0,50,0,none,none
+gn:2774399,Kirchberg in Tirol,Tyrol,5245,village,0,0,50,0,none,none
+gn:2774403,Kirchberg an der Raab,Styria,982,village,0,0,50,0,none,none
+gn:2774404,Kirchberg an der Pielach,Lower Austria,1271,village,0,0,50,0,none,none
+gn:2774405,Kirchberg am Wechsel,Lower Austria,1821,village,0,0,50,0,none,none
+gn:2774406,Kirchberg am Walde,Lower Austria,520,village,0,0,50,0,none,none
+gn:2774408,Kirchberg am Wagram,Lower Austria,1277,village,0,0,50,0,none,none
+gn:2774423,Kirchbach in Steiermark,Styria,858,village,0,0,50,0,none,none
+gn:2774427,Kirchbach,Carinthia,487,village,0,0,50,0,none,none
+gn:2774437,Kindberg,Styria,5197,village,0,0,50,0,none,none
+gn:2774443,Kilb,Lower Austria,1229,village,0,0,50,0,none,none
+gn:2774449,Kierling,Lower Austria,3243,village,0,0,50,0,none,none
+gn:2774482,Keutschach am See,Carinthia,434,village,0,0,50,0,none,none
+gn:2774534,Kennelbach,Vorarlberg,1944,village,0,0,50,0,none,none
+gn:2774541,Kemeten,Burgenland,1493,village,0,0,50,0,none,none
+gn:2774547,Kematen in Tirol,Tyrol,2822,village,0,0,50,0,none,none
+gn:2774548,Kematen an der Krems,Upper Austria,1613,village,0,0,50,0,none,none
+gn:2774550,Kematen an der Ybbs,Lower Austria,2625,village,0,0,50,0,none,none
+gn:2774589,Kautzen,Lower Austria,589,village,0,0,50,0,none,none
+gn:2774593,Kauns,Tyrol,502,village,0,0,50,0,none,none
+gn:2774597,Kaumberg,Lower Austria,619,village,0,0,50,0,none,none
+gn:2774610,Katzelsdorf,Lower Austria,1008,village,0,0,50,0,none,none
+gn:2774612,Katzelsdorf,Lower Austria,3112,village,0,0,50,0,none,none
+gn:2774621,Katsdorf,Upper Austria,1289,village,0,0,50,0,none,none
+gn:2774641,Kasten bei Böheimkirchen,Lower Austria,457,village,0,0,50,0,none,none
+gn:2774673,Kartitsch,Tyrol,756,village,0,0,50,0,none,none
+gn:2774681,Karrösten,Tyrol,676,village,0,0,50,0,none,none
+gn:2774683,Karres,Tyrol,609,village,0,0,50,0,none,none
+gn:2774703,Karlstetten,Lower Austria,1353,village,0,0,50,0,none,none
+gn:2774758,Kaprun,Salzburg,3177,village,0,0,50,0,none,none
+gn:2774761,Kappl,Tyrol,2102,village,0,0,50,0,none,none
+gn:2774767,Kappel am Krappfeld,Carinthia,391,village,0,0,50,0,none,none
+gn:2774770,Kapfing,Tyrol,1006,village,0,0,50,0,none,none
+gn:2774772,Kapfenstein,Styria,437,village,0,0,50,0,none,none
+gn:2774773,Kapfenberg,Styria,3296,village,0,0,50,0,none,none
+gn:2774776,Kapelln,Lower Austria,296,village,0,0,50,0,none,none
+gn:2774782,Kapellen,Styria,428,village,0,0,50,0,none,none
+gn:2774823,Kammern im Liesingtal,Styria,885,village,0,0,50,0,none,none
+gn:2774839,Kalwang,Styria,772,village,0,0,50,0,none,none
+gn:2774851,Kaltenleutgeben,Lower Austria,3276,village,0,0,50,0,none,none
+gn:2774875,Kaltenbach,Upper Austria,1516,village,0,0,50,0,none,none
+gn:2774876,Kaltenbach,Tyrol,1313,village,0,0,50,0,none,none
+gn:2774894,Kalsdorf bei Graz,Styria,5171,village,0,0,50,0,none,none
+gn:2774932,Kaisersdorf,Burgenland,620,village,0,0,50,0,none,none
+gn:2774967,Kaindorf an der Sulm,Styria,2432,village,0,0,50,0,none,none
+gn:2774970,Kaindorf,Styria,1149,village,0,0,50,0,none,none
+gn:2774975,Kainbach,Styria,1551,village,0,0,50,0,none,none
+gn:2774977,Kainach bei Voitsberg,Styria,460,village,0,0,50,0,none,none
+gn:2774981,Kaibing,Styria,388,village,0,0,50,0,none,none
+gn:2775000,Jungholz,Tyrol,301,village,0,0,50,0,none,none
+gn:2775013,Judendorf,Styria,5475,village,0,0,50,0,none,none
+gn:2775014,Warmbad-Judendorf,Carinthia,2302,village,0,0,50,0,none,none
+gn:2775018,Judendorf,Styria,1592,village,0,0,50,0,none,none
+gn:2775020,Judenburg,Styria,8481,village,0,0,50,0,none,none
+gn:2775040,Jois,Burgenland,1612,village,0,0,50,0,none,none
+gn:2775043,Johnsbach,Styria,154,village,0,0,50,0,none,none
+gn:2775068,Jochberg,Tyrol,1577,village,0,0,50,0,none,none
+gn:2775086,Jerzens,Tyrol,975,village,0,0,50,0,none,none
+gn:2775089,Jennersdorf,Burgenland,2358,village,0,0,50,0,none,none
+gn:2775093,Jenbach,Tyrol,7120,village,0,0,50,0,none,none
+gn:2775102,Jedenspeigen,Lower Austria,653,village,0,0,50,0,none,none
+gn:2775125,Japons,Lower Austria,234,village,0,0,50,0,none,none
+gn:2775138,Jaidhof,Lower Austria,385,village,0,0,50,0,none,none
+gn:2775155,Jagerberg,Styria,355,village,0,0,50,0,none,none
+gn:2775163,Jabing,Burgenland,734,village,0,0,50,0,none,none
+gn:2775177,Ysper,Lower Austria,1149,village,0,0,50,0,none,none
+gn:2775183,Ischgl,Tyrol,1233,village,0,0,50,0,none,none
+gn:2775185,Irschen,Carinthia,430,village,0,0,50,0,none,none
+gn:2775187,Irrsdorf,Salzburg,1062,village,0,0,50,0,none,none
+gn:2775197,Irdning,Styria,794,village,0,0,50,0,none,none
+gn:2775200,Inzing,Tyrol,3566,village,0,0,50,0,none,none
+gn:2775203,Inzersdorf im Kremstal,Upper Austria,1111,village,0,0,50,0,none,none
+gn:2775207,Inzenhof,Burgenland,334,village,0,0,50,0,none,none
+gn:2775220,Innsbruck,Tyrol,132493,city,0,0,50,0,none,none
+gn:2775224,Weerberg,Tyrol,2482,village,0,0,50,0,none,none
+gn:2775228,Innervillgraten,Tyrol,938,village,0,0,50,0,none,none
+gn:2775235,Innerschwand,Upper Austria,985,village,0,0,50,0,none,none
+gn:2775260,Innere Stadt,Vienna,16450,town,0,0,50,0,none,none
+gn:2775270,Innerbraz,Vorarlberg,994,village,0,0,50,0,none,none
+gn:2775304,Imsterberg,Tyrol,777,village,0,0,50,0,none,none
+gn:2775307,Imst,Tyrol,10504,town,0,0,50,0,none,none
+gn:2775324,Ilz,Styria,1192,village,0,0,50,0,none,none
+gn:2775327,Illmitz,Burgenland,2385,village,0,0,50,0,none,none
+gn:2775352,Hüttschlag,Salzburg,605,village,0,0,50,0,none,none
+gn:2775365,Hüttenberg,Carinthia,338,village,0,0,50,0,none,none
+gn:2775366,Hutten,Lower Austria,1428,village,0,0,50,0,none,none
+gn:2775371,Penzing,Vienna,98176,town,0,0,50,0,none,none
+gn:2775375,Hüttau,Salzburg,410,village,0,0,50,0,none,none
+gn:2775386,Hürm,Lower Austria,664,village,0,0,50,0,none,none
+gn:2775399,Hundsheim,Lower Austria,590,village,0,0,50,0,none,none
+gn:2775479,Hötting,Tyrol,35043,town,0,0,50,0,none,none
+gn:2775492,Hörtendorf,Carinthia,2437,village,0,0,50,0,none,none
+gn:2775497,Hörsching,Upper Austria,2155,village,0,0,50,0,none,none
+gn:2775499,Hornstein,Burgenland,3012,village,0,0,50,0,none,none
+gn:2775516,Horn,Lower Austria,5494,village,0,0,50,0,none,none
+gn:2775525,Horitschon,Burgenland,1385,village,0,0,50,0,none,none
+gn:2775531,Hörbranz,Vorarlberg,6346,village,0,0,50,0,none,none
+gn:2775541,Hopfgarten im Brixental,Tyrol,5630,village,0,0,50,0,none,none
+gn:2775542,Hopfgarten in Defereggen,Tyrol,249,village,0,0,50,0,none,none
+gn:2775549,Hönigsberg,Styria,1789,village,0,0,50,0,none,none
+gn:2775571,Holzhausen,Upper Austria,661,village,0,0,50,0,none,none
+gn:2775600,Hollersbach im Pinzgau,Salzburg,415,village,0,0,50,0,none,none
+gn:2775611,Hollenthon,Lower Austria,422,village,0,0,50,0,none,none
+gn:2775613,Hollenstein an der Ybbs,Lower Austria,554,village,0,0,50,0,none,none
+gn:2775619,Hollenegg,Styria,201,village,0,0,50,0,none,none
+gn:2775636,Hollabrunn,Lower Austria,6882,village,0,0,50,0,none,none
+gn:2775712,Hohenweiler,Vorarlberg,1271,village,0,0,50,0,none,none
+gn:2775721,Hohenthurn,Carinthia,209,village,0,0,50,0,none,none
+gn:2775722,Hohentauern,Styria,327,village,0,0,50,0,none,none
+gn:2775733,Hohenruppersdorf,Lower Austria,910,village,0,0,50,0,none,none
+gn:2775742,Hohenems,Vorarlberg,16317,town,0,0,50,0,none,none
+gn:2775743,Hoheneich,Lower Austria,1035,village,0,0,50,0,none,none
+gn:2775756,Hohenberg,Lower Austria,850,village,0,0,50,0,none,none
+gn:2775763,Hohenau an der Raab,Styria,492,village,0,0,50,0,none,none
+gn:2775768,Hohenau an der March,Lower Austria,2738,village,0,0,50,0,none,none
+gn:2775794,Hofstetten,Lower Austria,1141,village,0,0,50,0,none,none
+gn:2775796,Hofstätten an der Raab,Styria,574,village,0,0,50,0,none,none
+gn:2775808,Höflein,Lower Austria,1234,village,0,0,50,0,none,none
+gn:2775818,Hofkirchen im Traunkreis,Upper Austria,1266,village,0,0,50,0,none,none
+gn:2775843,Höfen,Tyrol,1200,village,0,0,50,0,none,none
+gn:2775847,Hof bei Straden,Styria,380,village,0,0,50,0,none,none
+gn:2775848,Hof bei Salzburg,Salzburg,3562,village,0,0,50,0,none,none
+gn:2775856,Hof am Leithaberge,Lower Austria,1549,village,0,0,50,0,none,none
+gn:2775862,Hof,Upper Austria,1187,village,0,0,50,0,none,none
+gn:2775868,Hof,Salzburg,1295,village,0,0,50,0,none,none
+gn:2775887,Hochwolkersdorf,Lower Austria,865,village,0,0,50,0,none,none
+gn:2775921,Hochtregist,Styria,1129,village,0,0,50,0,none,none
+gn:2775950,Höchst,Vorarlberg,7995,village,0,0,50,0,none,none
+gn:2776069,Hochfilzen,Tyrol,1196,village,0,0,50,0,none,none
+gn:2776106,Hochburg-Ach,Upper Austria,0,village,0,0,50,0,none,none
+gn:2776153,Hitzendorf,Styria,1129,village,0,0,50,0,none,none
+gn:2776161,Hirtenberg,Lower Austria,2586,village,0,0,50,0,none,none
+gn:2776181,Hirschegg,Vorarlberg,1354,village,0,0,50,0,none,none
+gn:2776190,Hirschbach,Lower Austria,514,village,0,0,50,0,none,none
+gn:2776194,Hirnsdorf,Styria,667,village,0,0,50,0,none,none
+gn:2776197,Hirm,Burgenland,1009,village,0,0,50,0,none,none
+gn:2776204,Hippach,Tyrol,1371,village,0,0,50,0,none,none
+gn:2776240,Hintersee,Salzburg,252,village,0,0,50,0,none,none
+gn:2776358,Hinterbrühl,Lower Austria,3466,village,0,0,50,0,none,none
+gn:2776391,Himmelreich,Salzburg,1186,village,0,0,50,0,none,none
+gn:2776395,Himmelberg,Carinthia,563,village,0,0,50,0,none,none
+gn:2776401,Himberg,Lower Austria,5331,village,0,0,50,0,none,none
+gn:2776421,Hietzing,Vienna,54265,town,0,0,50,0,none,none
+gn:2776433,Hieflau,Styria,580,village,0,0,50,0,none,none
+gn:2776441,Heugraben,Burgenland,216,village,0,0,50,0,none,none
+gn:2776461,Hetzendorf,Styria,1035,village,0,0,50,0,none,none
+gn:2776467,Herzogsdorf,Upper Austria,509,village,0,0,50,0,none,none
+gn:2776470,Herzogenburg,Lower Austria,2951,village,0,0,50,0,none,none
+gn:2776479,Herrnbaumgarten,Lower Austria,943,village,0,0,50,0,none,none
+gn:2776485,Hernstein,Lower Austria,473,village,0,0,50,0,none,none
+gn:2776488,Hernals,Vienna,57546,town,0,0,50,0,none,none
+gn:2776497,Hermagor,Carinthia,1535,village,0,0,50,0,none,none
+gn:2776507,Hennersdorf,Lower Austria,1541,village,0,0,50,0,none,none
+gn:2776513,Henndorf am Wallersee,Salzburg,4947,village,0,0,50,0,none,none
+gn:2776523,Hengsberg,Styria,196,village,0,0,50,0,none,none
+gn:2776531,Hellmonsödt,Upper Austria,1551,village,0,0,50,0,none,none
+gn:2776546,Heiterwang,Tyrol,532,village,0,0,50,0,none,none
+gn:2776582,Heiligenkreuz im Lafnitztal,Burgenland,814,village,0,0,50,0,none,none
+gn:2776583,Heiligenkreuz am Waasen,Styria,1462,village,0,0,50,0,none,none
+gn:2776586,Heiligenkreuz,Lower Austria,509,village,0,0,50,0,none,none
+gn:2776593,Heiligeneich,Lower Austria,1066,village,0,0,50,0,none,none
+gn:2776594,Heiligenbrunn,Burgenland,244,village,0,0,50,0,none,none
+gn:2776595,Heiligenblut,Carinthia,1069,village,0,0,50,0,none,none
+gn:2776603,Heidenreichstein,Lower Austria,2593,village,0,0,50,0,none,none
+gn:2776631,Hausmening,Lower Austria,2043,village,0,0,50,0,none,none
+gn:2776632,Hausmannstätten,Styria,2934,village,0,0,50,0,none,none
+gn:2776641,Hausleiten,Lower Austria,1488,village,0,0,50,0,none,none
+gn:2776648,Hauskirchen,Lower Austria,597,village,0,0,50,0,none,none
+gn:2776660,Hausbrunn,Lower Austria,857,village,0,0,50,0,none,none
+gn:2776670,Haus,Styria,875,village,0,0,50,0,none,none
+gn:2776676,Haunoldstein,Lower Austria,302,village,0,0,50,0,none,none
+gn:2776681,Haugsdorf,Lower Austria,801,village,0,0,50,0,none,none
+gn:2776682,Haugschlag,Lower Austria,239,village,0,0,50,0,none,none
+gn:2776690,Hatzendorf,Styria,762,village,0,0,50,0,none,none
+gn:2776693,Hatting,Tyrol,1368,village,0,0,50,0,none,none
+gn:2776721,Haslach an der Mühl,Upper Austria,1688,village,0,0,50,0,none,none
+gn:2776748,Häselgehr,Tyrol,537,village,0,0,50,0,none,none
+gn:2776761,Haselbach,Upper Austria,2862,village,0,0,50,0,none,none
+gn:2776778,Hartmannsdorf,Styria,1519,village,0,0,50,0,none,none
+gn:2776783,Hartl,Styria,796,village,0,0,50,0,none,none
+gn:2776787,Hartkirchen,Upper Austria,1120,village,0,0,50,0,none,none
+gn:2776791,Hart im Zillertal,Tyrol,789,village,0,0,50,0,none,none
+gn:2776792,Hartheim,Upper Austria,1131,village,0,0,50,0,none,none
+gn:2776801,Hartberg,Styria,4170,village,0,0,50,0,none,none
+gn:2776815,Hart,Upper Austria,5610,village,0,0,50,0,none,none
+gn:2776855,Harmannsdorf,Lower Austria,541,village,0,0,50,0,none,none
+gn:2776860,Harland,Lower Austria,1537,village,0,0,50,0,none,none
+gn:2776864,Haringsee,Lower Austria,673,village,0,0,50,0,none,none
+gn:2776866,Bad Häring,Tyrol,2777,village,0,0,50,0,none,none
+gn:2776872,Hardegg,Lower Austria,82,village,0,0,50,0,none,none
+gn:2776874,Hard,Vorarlberg,13495,town,0,0,50,0,none,none
+gn:2776891,Hannersdorf,Burgenland,407,village,0,0,50,0,none,none
+gn:2776906,Handenberg,Upper Austria,273,village,0,0,50,0,none,none
+gn:2776938,Hallwang,Salzburg,1348,village,0,0,50,0,none,none
+gn:2776951,Hallein,Salzburg,7208,village,0,0,50,0,none,none
+gn:2776957,Halbturn,Burgenland,1901,village,0,0,50,0,none,none
+gn:2776959,Halbenrain,Styria,598,village,0,0,50,0,none,none
+gn:2776970,Hainzenberg,Tyrol,731,village,0,0,50,0,none,none
+gn:2776975,Hainsdorf im Schwarzautal,Styria,134,village,0,0,50,0,none,none
+gn:2776981,Hainfeld,Lower Austria,1926,village,0,0,50,0,none,none
+gn:2776982,Hainersdorf,Styria,304,village,0,0,50,0,none,none
+gn:2776988,Hainburg an der Donau,Lower Austria,6570,village,0,0,50,0,none,none
+gn:2777001,Haiming,Tyrol,2428,village,0,0,50,0,none,none
+gn:2777015,Haidershofen,Lower Austria,3670,village,0,0,50,0,none,none
+gn:2777022,Haiden,Upper Austria,1556,village,0,0,50,0,none,none
+gn:2777038,Haid,Upper Austria,7424,village,0,0,50,0,none,none
+gn:2777041,Haibach im Mühlkreis,Upper Austria,80,village,0,0,50,0,none,none
+gn:2777065,Hagenbrunn,Lower Austria,1875,village,0,0,50,0,none,none
+gn:2777066,Hagenberg im Mühlkreis,Upper Austria,1686,village,0,0,50,0,none,none
+gn:2777082,Hafnerbach,Lower Austria,452,village,0,0,50,0,none,none
+gn:2777087,Hafendorf,Styria,6506,village,0,0,50,0,none,none
+gn:2777090,Hadres,Lower Austria,700,village,0,0,50,0,none,none
+gn:2777093,Hadersdorf am Kamp,Lower Austria,1653,village,0,0,50,0,none,none
+gn:2777111,Hackerberg,Burgenland,357,village,0,0,50,0,none,none
+gn:2777148,Habach,Salzburg,1092,village,0,0,50,0,none,none
+gn:2777154,Haag am Hausruck,Upper Austria,1144,village,0,0,50,0,none,none
+gn:2777158,Haag,Upper Austria,5273,village,0,0,50,0,none,none
+gn:2777159,Haag,Lower Austria,1005,village,0,0,50,0,none,none
+gn:2777164,Haag,Lower Austria,2777,village,0,0,50,0,none,none
+gn:2777185,Güttenbach,Burgenland,898,village,0,0,50,0,none,none
+gn:2777189,Guttaring,Carinthia,878,village,0,0,50,0,none,none
+gn:2777196,Gutenstein,Lower Austria,355,village,0,0,50,0,none,none
+gn:2777205,Gutenbrunn,Lower Austria,452,village,0,0,50,0,none,none
+gn:2777210,Gutau,Upper Austria,1097,village,0,0,50,0,none,none
+gn:2777216,Güssing,Burgenland,2719,village,0,0,50,0,none,none
+gn:2777237,Gurk,Carinthia,857,village,0,0,50,0,none,none
+gn:2777250,Guntramsdorf,Lower Austria,9179,village,0,0,50,0,none,none
+gn:2777252,Guntersdorf,Lower Austria,806,village,0,0,50,0,none,none
+gn:2777258,Gunskirchen,Upper Austria,3778,village,0,0,50,0,none,none
+gn:2777259,Günselsdorf,Lower Austria,1707,village,0,0,50,0,none,none
+gn:2777272,Gundersdorf,Styria,296,village,0,0,50,0,none,none
+gn:2777279,Gumpoldskirchen,Lower Austria,3899,village,0,0,50,0,none,none
+gn:2777297,Gugging,Lower Austria,1173,village,0,0,50,0,none,none
+gn:2777367,Gschwandt,Upper Austria,1782,village,0,0,50,0,none,none
+gn:2777454,Grünbach am Schneeberg,Lower Austria,1480,village,0,0,50,0,none,none
+gn:2777459,Grünau im Almtal,Upper Austria,2064,village,0,0,50,0,none,none
+gn:2777547,Großweikersdorf,Lower Austria,1814,village,0,0,50,0,none,none
+gn:2777575,Grosssulz,Styria,1176,village,0,0,50,0,none,none
+gn:2777587,Großsölk,Styria,462,village,0,0,50,0,none,none
+gn:2777590,Groß-Siegharts,Lower Austria,1992,village,0,0,50,0,none,none
+gn:2777593,Groß-Schweinbarth,Lower Austria,1245,village,0,0,50,0,none,none
+gn:2777603,Groß Sankt Florian,Styria,911,village,0,0,50,0,none,none
+gn:2777605,Großrußbach,Lower Austria,895,village,0,0,50,0,none,none
+gn:2777607,Großriedenthal,Lower Austria,423,village,0,0,50,0,none,none
+gn:2777616,Grossraming,Upper Austria,1097,village,0,0,50,0,none,none
+gn:2777627,Grosspetersdorf,Burgenland,3531,village,0,0,50,0,none,none
+gn:2777641,Großmugl,Lower Austria,543,village,0,0,50,0,none,none
+gn:2777649,Großlobming,Styria,1228,village,0,0,50,0,none,none
+gn:2777655,Großkrut,Lower Austria,901,village,0,0,50,0,none,none
+gn:2777662,Großklein,Styria,639,village,0,0,50,0,none,none
+gn:2777673,Grosshöflein,Burgenland,2048,village,0,0,50,0,none,none
+gn:2777674,Großhofen,Lower Austria,98,village,0,0,50,0,none,none
+gn:2777677,Heimschuh,Styria,1025,village,0,0,50,0,none,none
+gn:2777685,Großharras,Lower Austria,482,village,0,0,50,0,none,none
+gn:2777696,Grossgmain,Salzburg,2615,village,0,0,50,0,none,none
+gn:2777701,Groß-Gerungs,Lower Austria,1121,village,0,0,50,0,none,none
+gn:2777836,Groß-Enzersdorf,Lower Austria,6616,village,0,0,50,0,none,none
+gn:2777839,Groß-Engersdorf,Lower Austria,1478,village,0,0,50,0,none,none
+gn:2777871,Großebersdorf,Lower Austria,1108,village,0,0,50,0,none,none
+gn:2777879,Großdorf,Vorarlberg,1125,village,0,0,50,0,none,none
+gn:2777905,Grossarl,Salzburg,3825,village,0,0,50,0,none,none
+gn:2777921,Grödig,Salzburg,3751,village,0,0,50,0,none,none
+gn:2777927,Gröbming,Styria,3013,village,0,0,50,0,none,none
+gn:2777939,Grins,Tyrol,1398,village,0,0,50,0,none,none
+gn:2777942,Grimmenstein,Lower Austria,953,village,0,0,50,0,none,none
+gn:2777954,Griffen,Carinthia,823,village,0,0,50,0,none,none
+gn:2777972,Grieskirchen,Upper Austria,4515,village,0,0,50,0,none,none
+gn:2777974,Gries im Sellrain,Tyrol,610,village,0,0,50,0,none,none
+gn:2777992,Gries am Brenner,Tyrol,1361,village,0,0,50,0,none,none
+gn:2778011,Gresten,Lower Austria,1695,village,0,0,50,0,none,none
+gn:2778013,Gressenberg,Styria,286,village,0,0,50,0,none,none
+gn:2778035,Greisdorf,Styria,445,village,0,0,50,0,none,none
+gn:2778036,Greinsfurth,Lower Austria,1185,village,0,0,50,0,none,none
+gn:2778039,Grein,Upper Austria,2068,village,0,0,50,0,none,none
+gn:2778048,Greifenburg,Carinthia,1012,village,0,0,50,0,none,none
+gn:2778067,Graz,Styria,303270,city,0,0,50,0,none,none
+gn:2778079,Gratwein,Styria,3729,village,0,0,50,0,none,none
+gn:2778085,Gratkorn,Styria,6806,village,0,0,50,0,none,none
+gn:2778127,Grän,Tyrol,345,village,0,0,50,0,none,none
+gn:2778130,Grambach,Styria,1778,village,0,0,50,0,none,none
+gn:2778131,Gramatneusiedl,Lower Austria,3461,village,0,0,50,0,none,none
+gn:2778133,Gramastetten,Upper Austria,1592,village,0,0,50,0,none,none
+gn:2778135,Gramais,Tyrol,45,village,0,0,50,0,none,none
+gn:2778141,Grafenwörth,Lower Austria,1312,village,0,0,50,0,none,none
+gn:2778145,Grafenstein,Carinthia,989,village,0,0,50,0,none,none
+gn:2778148,Grafenschlag,Lower Austria,389,village,0,0,50,0,none,none
+gn:2778149,Grafenschachen,Burgenland,968,village,0,0,50,0,none,none
+gn:2778152,Grafenegg,Lower Austria,45,village,0,0,50,0,none,none
+gn:2778154,Grafendorf bei Hartberg,Styria,1047,village,0,0,50,0,none,none
+gn:2778191,Grabersdorf,Styria,330,village,0,0,50,0,none,none
+gn:2778218,Götzis,Vorarlberg,11473,town,0,0,50,0,none,none
+gn:2778220,Götzens,Tyrol,4062,village,0,0,50,0,none,none
+gn:2778224,Götzendorf an der Leitha,Lower Austria,1520,village,0,0,50,0,none,none
+gn:2778245,Göttelsberg,Styria,1177,village,0,0,50,0,none,none
+gn:2778252,Göstling an der Ybbs,Lower Austria,556,village,0,0,50,0,none,none
+gn:2778255,Gösting,Styria,11255,town,0,0,50,0,none,none
+gn:2778270,Gössendorf,Styria,2539,village,0,0,50,0,none,none
+gn:2778271,Gossendorf,Styria,630,village,0,0,50,0,none,none
+gn:2778272,Gössenberg,Styria,0,village,0,0,50,0,none,none
+gn:2778284,Göss,Styria,3752,village,0,0,50,0,none,none
+gn:2778290,Gosdorf,Styria,587,village,0,0,50,0,none,none
+gn:2778302,Gosau,Upper Austria,1792,village,0,0,50,0,none,none
+gn:2778340,Göpfritz an der Wild,Lower Austria,770,village,0,0,50,0,none,none
+gn:2778355,Gols,Burgenland,3835,village,0,0,50,0,none,none
+gn:2778361,Golling an der Salzach,Salzburg,2014,village,0,0,50,0,none,none
+gn:2778368,Göllersdorf,Lower Austria,1391,village,0,0,50,0,none,none
+gn:2778376,Goldwörth,Upper Austria,792,village,0,0,50,0,none,none
+gn:2778385,Goldegg,Salzburg,0,village,0,0,50,0,none,none
+gn:2778396,Going,Tyrol,358,village,0,0,50,0,none,none
+gn:2778404,Göfis,Vorarlberg,3312,village,0,0,50,0,none,none
+gn:2778422,Gniebing,Styria,1095,village,0,0,50,0,none,none
+gn:2778424,Gnesau,Carinthia,353,village,0,0,50,0,none,none
+gn:2778425,Gneixendorf,Lower Austria,1150,village,0,0,50,0,none,none
+gn:2778427,Gnas,Styria,818,village,0,0,50,0,none,none
+gn:2778431,Gnadendorf,Lower Austria,258,village,0,0,50,0,none,none
+gn:2778436,Gmunden,Upper Austria,13191,town,0,0,50,0,none,none
+gn:2778439,Gmünd,Lower Austria,4674,village,0,0,50,0,none,none
+gn:2778441,Gmünd,Carinthia,2550,village,0,0,50,0,none,none
+gn:2778454,Glojach,Styria,18,village,0,0,50,0,none,none
+gn:2778455,Gloggnitz,Lower Austria,4730,village,0,0,50,0,none,none
+gn:2778456,Glödnitz,Carinthia,321,village,0,0,50,0,none,none
+gn:2778467,Globasnitz,Carinthia,293,village,0,0,50,0,none,none
+gn:2778470,Glinzendorf,Lower Austria,295,village,0,0,50,0,none,none
+gn:2778478,Gleisdorf,Styria,6418,village,0,0,50,0,none,none
+gn:2778483,Gleinstätten,Styria,1010,village,0,0,50,0,none,none
+gn:2778514,Glasenbach,Salzburg,1605,village,0,0,50,0,none,none
+gn:2778532,Glanegg,Salzburg,2154,village,0,0,50,0,none,none
+gn:2778533,Glanegg,Carinthia,245,village,0,0,50,0,none,none
+gn:2778573,Gießhübl,Lower Austria,2335,village,0,0,50,0,none,none
+gn:2778599,Gföhl,Lower Austria,2125,village,0,0,50,0,none,none
+gn:2778601,Gfangen,Burgenland,5779,village,0,0,50,0,none,none
+gn:2778636,Gersdorf an der Feistritz,Styria,583,village,0,0,50,0,none,none
+gn:2778642,Gerolding,Lower Austria,246,village,0,0,50,0,none,none
+gn:2778682,Gerersdorf,Lower Austria,584,village,0,0,50,0,none,none
+gn:2778690,Gerasdorf bei Wien,Lower Austria,9442,village,0,0,50,0,none,none
+gn:2778691,Geras,Lower Austria,473,village,0,0,50,0,none,none
+gn:2778701,Georgenberg,Salzburg,1809,village,0,0,50,0,none,none
+gn:2778718,Geistthal,Styria,233,village,0,0,50,0,none,none
+gn:2778763,Gedersdorf,Lower Austria,471,village,0,0,50,0,none,none
+gn:2778766,Geboltskirchen,Upper Austria,407,village,0,0,50,0,none,none
+gn:2778772,Gaweinstal,Lower Austria,1660,village,0,0,50,0,none,none
+gn:2778785,Gaubitsch,Lower Austria,375,village,0,0,50,0,none,none
+gn:2778794,Gattendorf,Burgenland,1332,village,0,0,50,0,none,none
+gn:2778805,Gastern,Lower Austria,347,village,0,0,50,0,none,none
+gn:2778830,Gaspoltshofen,Upper Austria,1313,village,0,0,50,0,none,none
+gn:2778832,Gasen,Styria,125,village,0,0,50,0,none,none
+gn:2778834,Gaschurn,Vorarlberg,1091,village,0,0,50,0,none,none
+gn:2778843,Garsten,Upper Austria,2284,village,0,0,50,0,none,none
+gn:2778845,Gars am Kamp,Lower Austria,1907,village,0,0,50,0,none,none
+gn:2778864,Garanas,Styria,182,village,0,0,50,0,none,none
+gn:2778871,Ganz,Styria,134,village,0,0,50,0,none,none
+gn:2778877,Gänserndorf,Lower Austria,11404,town,0,0,50,0,none,none
+gn:2778897,Bad Gams,Styria,573,village,0,0,50,0,none,none
+gn:2778926,Gams bei Hieflau,Styria,517,village,0,0,50,0,none,none
+gn:2778929,Gampern,Upper Austria,718,village,0,0,50,0,none,none
+gn:2778945,Gamlitz,Styria,1572,village,0,0,50,0,none,none
+gn:2778949,Gaming,Lower Austria,2082,village,0,0,50,0,none,none
+gn:2778953,Galtür,Tyrol,765,village,0,0,50,0,none,none
+gn:2778961,Gallzein,Tyrol,668,village,0,0,50,0,none,none
+gn:2778963,Gallspach,Upper Austria,1885,village,0,0,50,0,none,none
+gn:2778966,Gallneukirchen,Upper Austria,6492,village,0,0,50,0,none,none
+gn:2778967,Gallmannsegg,Styria,200,village,0,0,50,0,none,none
+gn:2778968,Gallizien,Carinthia,283,village,0,0,50,0,none,none
+gn:2778996,Gaißau,Vorarlberg,1827,village,0,0,50,0,none,none
+gn:2779029,Gainfarn,Lower Austria,3926,village,0,0,50,0,none,none
+gn:2779033,Gailitz,Carinthia,1072,village,0,0,50,0,none,none
+gn:2779048,Gaflenz,Upper Austria,758,village,0,0,50,0,none,none
+gn:2779061,Gablitz,Lower Austria,4968,village,0,0,50,0,none,none
+gn:2779064,Gabersdorf,Styria,353,village,0,0,50,0,none,none
+gn:2779073,Gaal,Styria,119,village,0,0,50,0,none,none
+gn:2779074,Gaaden,Lower Austria,1624,village,0,0,50,0,none,none
+gn:2779082,Fußach,Vorarlberg,3871,village,0,0,50,0,none,none
+gn:2779084,Fuschl am See,Salzburg,1520,village,0,0,50,0,none,none
+gn:2779094,Furth an der Triesting,Lower Austria,276,village,0,0,50,0,none,none
+gn:2779097,Furth bei Göttweig,Lower Austria,1604,village,0,0,50,0,none,none
+gn:2779115,Fürstenfeld,Styria,6327,village,0,0,50,0,none,none
+gn:2779120,Fürnitz,Carinthia,1520,village,0,0,50,0,none,none
+gn:2779139,Fünfhaus,Vienna,76396,town,0,0,50,0,none,none
+gn:2779143,Fulpmes,Tyrol,3038,village,0,0,50,0,none,none
+gn:2779153,Fügenberg,Tyrol,717,village,0,0,50,0,none,none
+gn:2779154,Fügen,Tyrol,2617,village,0,0,50,0,none,none
+gn:2779200,Frohsdorf,Lower Austria,1163,village,0,0,50,0,none,none
+gn:2779202,Frohnleiten,Styria,3106,village,0,0,50,0,none,none
+gn:2779214,Fritzens,Tyrol,2148,village,0,0,50,0,none,none
+gn:2779229,Friesach,Carinthia,1950,village,0,0,50,0,none,none
+gn:2779243,Friedberg,Styria,308,village,0,0,50,0,none,none
+gn:2779271,Fresach,Carinthia,560,village,0,0,50,0,none,none
+gn:2779275,Freistadt,Upper Austria,7909,village,0,0,50,0,none,none
+gn:2779280,Freindorf,Upper Austria,2320,village,0,0,50,0,none,none
+gn:2779288,Freiland bei Deutschlandsberg,Styria,150,village,0,0,50,0,none,none
+gn:2779296,Freidorf an der Laßnitz,Styria,1087,village,0,0,50,0,none,none
+gn:2779308,Fraxern,Vorarlberg,701,village,0,0,50,0,none,none
+gn:2779324,Frauenkirchen,Burgenland,2862,village,0,0,50,0,none,none
+gn:2779339,Frauenberg,Styria,69,village,0,0,50,0,none,none
+gn:2779372,Frannach,Styria,209,village,0,0,50,0,none,none
+gn:2779378,Frankenmarkt,Upper Austria,2185,village,0,0,50,0,none,none
+gn:2779379,Frankenfels,Lower Austria,439,village,0,0,50,0,none,none
+gn:2779380,Frankenburg,Upper Austria,2122,village,0,0,50,0,none,none
+gn:2779414,Forstau,Salzburg,540,village,0,0,50,0,none,none
+gn:2779424,Fornach,Upper Austria,223,village,0,0,50,0,none,none
+gn:2779430,Forchtenstein,Burgenland,2796,village,0,0,50,0,none,none
+gn:2779433,Forchach,Tyrol,259,village,0,0,50,0,none,none
+gn:2779450,Fohnsdorf,Styria,2947,village,0,0,50,0,none,none
+gn:2779469,Floridsdorf,Vienna,162779,city,0,0,50,0,none,none
+gn:2779477,Floing,Styria,463,village,0,0,50,0,none,none
+gn:2779480,Flirsch,Tyrol,990,village,0,0,50,0,none,none
+gn:2779485,Fliess,Tyrol,3019,village,0,0,50,0,none,none
+gn:2779499,Flaurling,Tyrol,1285,village,0,0,50,0,none,none
+gn:2779504,Flattach,Carinthia,396,village,0,0,50,0,none,none
+gn:2779506,Flatschach,Styria,180,village,0,0,50,0,none,none
+gn:2779514,Fladnitz im Raabtal,Styria,765,village,0,0,50,0,none,none
+gn:2779522,Flachau,Salzburg,827,village,0,0,50,0,none,none
+gn:2779525,Fiss,Tyrol,1009,village,0,0,50,0,none,none
+gn:2779529,Fisching,Upper Austria,2033,village,0,0,50,0,none,none
+gn:2779545,Fischbach,Styria,873,village,0,0,50,0,none,none
+gn:2779548,Fischamend-Markt,Lower Austria,4688,village,0,0,50,0,none,none
+gn:2779549,Fischamend,Lower Austria,5708,village,0,0,50,0,none,none
+gn:2779569,Finkenstein,Carinthia,1402,village,0,0,50,0,none,none
+gn:2779570,Finkenberg,Tyrol,1413,village,0,0,50,0,none,none
+gn:2779579,Filzmoos,Salzburg,761,village,0,0,50,0,none,none
+gn:2779594,Fiecht,Tyrol,1076,village,0,0,50,0,none,none
+gn:2779595,Fieberbrunn,Tyrol,4287,village,0,0,50,0,none,none
+gn:2779622,Ferschnitz,Lower Austria,1770,village,0,0,50,0,none,none
+gn:2779631,Fernitz,Styria,3119,village,0,0,50,0,none,none
+gn:2779634,Ferndorf,Carinthia,651,village,0,0,50,0,none,none
+gn:2779640,Ferlach,Carinthia,4342,village,0,0,50,0,none,none
+gn:2779648,Fendels,Tyrol,259,village,0,0,50,0,none,none
+gn:2779651,Fels am Wagram,Lower Austria,1571,village,0,0,50,0,none,none
+gn:2779663,Felixdorf,Lower Austria,4292,village,0,0,50,0,none,none
+gn:2779669,Feldkirchen in Kärnten,Carinthia,2831,village,0,0,50,0,none,none
+gn:2779671,Feldkirchen bei Graz,Styria,1625,village,0,0,50,0,none,none
+gn:2779672,Feldkirchen an der Donau,Upper Austria,903,village,0,0,50,0,none,none
+gn:2779674,Feldkirch,Vorarlberg,33420,town,0,0,50,0,none,none
+gn:2779685,Feldbach,Styria,4829,village,0,0,50,0,none,none
+gn:2779686,Feld am See,Carinthia,667,village,0,0,50,0,none,none
+gn:2779703,Feistritz ob Bleiburg,Carinthia,287,village,0,0,50,0,none,none
+gn:2779704,Feistritz im Rosental,Carinthia,1015,village,0,0,50,0,none,none
+gn:2779710,Feistritz bei Knittelfeld,Styria,614,village,0,0,50,0,none,none
+gn:2779718,Feistritz an der Gail,Carinthia,627,village,0,0,50,0,none,none
+gn:2779719,Feistritz an der Drau,Carinthia,1720,village,0,0,50,0,none,none
+gn:2779720,Feistritz am Wechsel,Lower Austria,863,village,0,0,50,0,none,none
+gn:2779767,Fehring,Styria,1675,village,0,0,50,0,none,none
+gn:2779789,Farrach,Styria,1145,village,0,0,50,0,none,none
+gn:2779814,Fallbach,Lower Austria,180,village,0,0,50,0,none,none
+gn:2779819,Falkenstein,Lower Austria,457,village,0,0,50,0,none,none
+gn:2779827,St. Ruprecht-Falkendorf,Styria,0,village,0,0,50,0,none,none
+gn:2779828,Falkenburg,Styria,1063,village,0,0,50,0,none,none
+gn:2779838,Faistenau,Salzburg,559,village,0,0,50,0,none,none
+gn:2779868,Faak am See,Carinthia,1049,village,0,0,50,0,none,none
+gn:2779879,Euratsfeld,Lower Austria,2639,village,0,0,50,0,none,none
+gn:2779883,Eugendorf,Salzburg,2544,village,0,0,50,0,none,none
+gn:2779912,Essling,Vienna,21200,town,0,0,50,0,none,none
+gn:2779922,Eschenau,Lower Austria,572,village,0,0,50,0,none,none
+gn:2779941,Erpfendorf,Tyrol,1141,village,0,0,50,0,none,none
+gn:2779942,Erpersdorf,Lower Austria,1531,village,0,0,50,0,none,none
+gn:2779944,Ernsthofen,Lower Austria,2230,village,0,0,50,0,none,none
+gn:2779947,Ernstbrunn,Lower Austria,1536,village,0,0,50,0,none,none
+gn:2779968,Erlauf,Lower Austria,716,village,0,0,50,0,none,none
+gn:2779973,Bad Erlach,Lower Austria,2651,village,0,0,50,0,none,none
+gn:2779982,Erl,Tyrol,528,village,0,0,50,0,none,none
+gn:2780014,Enzersfeld,Lower Austria,1089,village,0,0,50,0,none,none
+gn:2780017,Enzersdorf an der Fischa,Lower Austria,2018,village,0,0,50,0,none,none
+gn:2780021,Enzenreith,Lower Austria,760,village,0,0,50,0,none,none
+gn:2780043,Ennsdorf,Lower Austria,3031,village,0,0,50,0,none,none
+gn:2780048,Enns,Upper Austria,9812,village,0,0,50,0,none,none
+gn:2780057,Engerwitzdorf,Upper Austria,727,village,0,0,50,0,none,none
+gn:2780073,Engelhartstetten,Lower Austria,907,village,0,0,50,0,none,none
+gn:2780085,Endach,Tyrol,2415,village,0,0,50,0,none,none
+gn:2780089,Empersdorf,Styria,499,village,0,0,50,0,none,none
+gn:2780092,Emmersdorf an der Donau,Lower Austria,720,village,0,0,50,0,none,none
+gn:2780109,Eltendorf,Burgenland,579,village,0,0,50,0,none,none
+gn:2780113,Elsbethen,Salzburg,2587,village,0,0,50,0,none,none
+gn:2780123,Elmen,Tyrol,323,village,0,0,50,0,none,none
+gn:2780135,Ellmau,Tyrol,2828,village,0,0,50,0,none,none
+gn:2780147,Elixhausen,Salzburg,2963,village,0,0,50,0,none,none
+gn:2780153,Elbigenalp,Tyrol,401,village,0,0,50,0,none,none
+gn:2780176,Eisgarn,Lower Austria,359,village,0,0,50,0,none,none
+gn:2780180,Eisenzicken,Burgenland,54353,town,0,0,50,0,none,none
+gn:2780190,Eisenstadt,Burgenland,9217,village,0,0,50,0,none,none
+gn:2780207,Eisenerz,Styria,4048,village,0,0,50,0,none,none
+gn:2780218,Eisbach,Styria,993,village,0,0,50,0,none,none
+gn:2780250,Eidenberg,Upper Austria,901,village,0,0,50,0,none,none
+gn:2780259,Eichgraben,Lower Austria,251,village,0,0,50,0,none,none
+gn:2780260,Eichfeld,Styria,347,village,0,0,50,0,none,none
+gn:2780264,Eichenberg,Vorarlberg,427,village,0,0,50,0,none,none
+gn:2780274,Eichberg,Styria,380,village,0,0,50,0,none,none
+gn:2780283,Eibiswald,Styria,1423,village,0,0,50,0,none,none
+gn:2780316,Ehrenhausen,Styria,1115,village,0,0,50,0,none,none
+gn:2780323,Ehenbichl,Tyrol,660,village,0,0,50,0,none,none
+gn:2780331,Eggersdorf bei Graz,Styria,1808,village,0,0,50,0,none,none
+gn:2780335,Eggern,Lower Austria,477,village,0,0,50,0,none,none
+gn:2780360,Eggenburg,Lower Austria,3096,village,0,0,50,0,none,none
+gn:2780361,Eggenberg,Styria,20511,town,0,0,50,0,none,none
+gn:2780380,Egg,Vorarlberg,2422,village,0,0,50,0,none,none
+gn:2780394,Eferding,Upper Austria,4100,village,0,0,50,0,none,none
+gn:2780397,Edt bei Lambach,Upper Austria,24,village,0,0,50,0,none,none
+gn:2780409,Edlitz,Lower Austria,934,village,0,0,50,0,none,none
+gn:2780448,Edelstal,Burgenland,747,village,0,0,50,0,none,none
+gn:2780450,Edelsgrub,Styria,692,village,0,0,50,0,none,none
+gn:2780452,Edelschrott,Styria,1077,village,0,0,50,0,none,none
+gn:2780454,Edelsbach bei Feldbach,Styria,702,village,0,0,50,0,none,none
+gn:2780490,Eckartsau,Lower Austria,478,village,0,0,50,0,none,none
+gn:2780497,Echsenbach,Lower Austria,777,village,0,0,50,0,none,none
+gn:2780501,Ebreichsdorf,Lower Austria,5236,village,0,0,50,0,none,none
+gn:2780512,Eberstein,Carinthia,694,village,0,0,50,0,none,none
+gn:2780514,Eberstalzell,Upper Austria,1065,village,0,0,50,0,none,none
+gn:2780522,Ebersdorf,Styria,825,village,0,0,50,0,none,none
+gn:2780527,Eberschwang,Upper Austria,497,village,0,0,50,0,none,none
+gn:2780531,Eberndorf,Carinthia,1124,village,0,0,50,0,none,none
+gn:2780536,Ebergassing,Lower Austria,3090,village,0,0,50,0,none,none
+gn:2780539,Eberau,Burgenland,366,village,0,0,50,0,none,none
+gn:2780543,Ebenthal,Lower Austria,923,village,0,0,50,0,none,none
+gn:2780544,Ebenthal,Carinthia,7851,village,0,0,50,0,none,none
+gn:2780547,Ebensee,Upper Austria,4125,village,0,0,50,0,none,none
+gn:2780551,Eben im Pongau,Salzburg,1768,village,0,0,50,0,none,none
+gn:2780553,Ebenfurth,Lower Austria,2564,village,0,0,50,0,none,none
+gn:2780563,Ebenau,Salzburg,198,village,0,0,50,0,none,none
+gn:2780570,Eben am Achensee,Tyrol,0,village,0,0,50,0,none,none
+gn:2780579,Ebbs,Tyrol,3050,village,0,0,50,0,none,none
+gn:2780603,Dürnstein in der Steiermark,Styria,242,village,0,0,50,0,none,none
+gn:2780604,Dürnstein,Lower Austria,322,village,0,0,50,0,none,none
+gn:2780607,Dürnkrut,Lower Austria,1750,village,0,0,50,0,none,none
+gn:2780641,Düns,Vorarlberg,411,village,0,0,50,0,none,none
+gn:2780664,Droß,Lower Austria,959,village,0,0,50,0,none,none
+gn:2780665,Drösing,Lower Austria,882,village,0,0,50,0,none,none
+gn:2780713,Drassburg,Burgenland,1199,village,0,0,50,0,none,none
+gn:2780715,Drasenhofen,Lower Austria,537,village,0,0,50,0,none,none
+gn:2780741,Dornbirn,Vorarlberg,49278,town,0,0,50,0,none,none
+gn:2780760,Dorfstetten,Lower Austria,0,village,0,0,50,0,none,none
+gn:2780798,Dorfgastein,Salzburg,966,village,0,0,50,0,none,none
+gn:2780811,Dorfbeuern,Salzburg,304,village,0,0,50,0,none,none
+gn:2780832,Doren,Vorarlberg,1029,village,0,0,50,0,none,none
+gn:2780836,Doppl,Upper Austria,3136,village,0,0,50,0,none,none
+gn:2780842,Donnerskirchen,Burgenland,1810,village,0,0,50,0,none,none
+gn:2780846,Donnersbach,Styria,289,village,0,0,50,0,none,none
+gn:2780850,Donawitz,Styria,3536,village,0,0,50,0,none,none
+gn:2780859,Dölsach,Tyrol,1090,village,0,0,50,0,none,none
+gn:2780886,Döbriach,Carinthia,1285,village,0,0,50,0,none,none
+gn:2780901,Dobersberg,Lower Austria,772,village,0,0,50,0,none,none
+gn:2780936,Diex,Carinthia,427,village,0,0,50,0,none,none
+gn:2780964,Dietersdorf am Gnasbach,Styria,365,village,0,0,50,0,none,none
+gn:2780967,Dietersdorf,Styria,2240,village,0,0,50,0,none,none
+gn:2780970,Dietachdorf,Upper Austria,1280,village,0,0,50,0,none,none
+gn:2780972,Dietach,Upper Austria,1389,village,0,0,50,0,none,none
+gn:2780988,Dienten am Hochkönig,Salzburg,761,village,0,0,50,0,none,none
+gn:2780991,Dienersdorf,Styria,698,village,0,0,50,0,none,none
+gn:2781003,Diemlach,Styria,1976,village,0,0,50,0,none,none
+gn:2781017,Deutsch-Wagram,Lower Austria,4632,village,0,0,50,0,none,none
+gn:2781019,Deutsch Schützen-Eisenberg,Burgenland,1126,village,0,0,50,0,none,none
+gn:2781023,Deutschlandsberg,Styria,8429,village,0,0,50,0,none,none
+gn:2781024,Deutschkreutz,Burgenland,2791,village,0,0,50,0,none,none
+gn:2781025,Deutsch Kaltenbrunn,Burgenland,1203,village,0,0,50,0,none,none
+gn:2781026,Deutsch Jahrndorf,Burgenland,611,village,0,0,50,0,none,none
+gn:2781031,Deutsch Griffen,Carinthia,364,village,0,0,50,0,none,none
+gn:2781033,Deutsch Goritz,Styria,382,village,0,0,50,0,none,none
+gn:2781035,Deutschfeistritz,Styria,2297,village,0,0,50,0,none,none
+gn:2781046,Deuchendorf,Styria,5507,village,0,0,50,0,none,none
+gn:2781049,Desselbrunn,Upper Austria,384,village,0,0,50,0,none,none
+gn:2781054,Dellach im Drautal,Carinthia,677,village,0,0,50,0,none,none
+gn:2781061,Dellach,Carinthia,619,village,0,0,50,0,none,none
+gn:2781079,Dechantskirchen,Styria,647,village,0,0,50,0,none,none
+gn:2781085,Debant,Tyrol,2441,village,0,0,50,0,none,none
+gn:2781119,Dalaas,Vorarlberg,981,village,0,0,50,0,none,none
+gn:2781161,Bürs,Vorarlberg,3275,village,0,0,50,0,none,none
+gn:2781162,Bürmoos,Salzburg,4899,village,0,0,50,0,none,none
+gn:2781183,Burgfried,Upper Austria,2075,village,0,0,50,0,none,none
+gn:2781184,Burgfried,Salzburg,3358,village,0,0,50,0,none,none
+gn:2781196,Burgau,Styria,1040,village,0,0,50,0,none,none
+gn:2781224,Buchkirchen,Upper Austria,700,village,0,0,50,0,none,none
+gn:2781269,Buch in Tirol,Tyrol,2548,village,0,0,50,0,none,none
+gn:2781273,Buchbach,Lower Austria,226,village,0,0,50,0,none,none
+gn:2781317,Brunn an der Wild,Lower Austria,302,village,0,0,50,0,none,none
+gn:2781318,Brunn an der Schneebergbahn,Lower Austria,1324,village,0,0,50,0,none,none
+gn:2781321,Brunn am Gebirge,Lower Austria,11864,town,0,0,50,0,none,none
+gn:2781331,Brunn,Styria,1056,village,0,0,50,0,none,none
+gn:2781361,Bruckneudorf,Burgenland,2721,village,0,0,50,0,none,none
+gn:2781364,Brückl,Carinthia,1519,village,0,0,50,0,none,none
+gn:2781371,Bruck an der Mur,Styria,9093,village,0,0,50,0,none,none
+gn:2781373,Bruck an der Leitha,Lower Austria,6882,village,0,0,50,0,none,none
+gn:2781374,Bruck an der Großglocknerstraße,Salzburg,739,village,0,0,50,0,none,none
+gn:2781376,Bruck am Ziller,Tyrol,590,village,0,0,50,0,none,none
+gn:2781387,Bromberg,Lower Austria,301,village,0,0,50,0,none,none
+gn:2781391,Brixlegg,Tyrol,1892,village,0,0,50,0,none,none
+gn:2781394,Brixen im Thale,Tyrol,2639,village,0,0,50,0,none,none
+gn:2781411,Bretstein,Styria,298,village,0,0,50,0,none,none
+gn:2781449,Breitenwang,Tyrol,1423,village,0,0,50,0,none,none
+gn:2781463,Breitenfurt bei Wien,Lower Austria,5853,village,0,0,50,0,none,none
+gn:2781465,Breitenfeld an der Rittschein,Styria,380,village,0,0,50,0,none,none
+gn:2781466,Breitenfeld am Tannenriegel,Styria,183,village,0,0,50,0,none,none
+gn:2781472,Breitenbrunn,Burgenland,1938,village,0,0,50,0,none,none
+gn:2781480,Breitenbach am Inn,Tyrol,2143,village,0,0,50,0,none,none
+gn:2781487,Breitenau,Lower Austria,1576,village,0,0,50,0,none,none
+gn:2781503,Bregenz,Vorarlberg,29806,town,0,0,50,0,none,none
+gn:2781520,Braunau am Inn,Upper Austria,4194,village,0,0,50,0,none,none
+gn:2781567,Brandenberg,Tyrol,1158,village,0,0,50,0,none,none
+gn:2781587,Bramberg am Wildkogel,Salzburg,2096,village,0,0,50,0,none,none
+gn:2781612,Böheimkirchen,Lower Austria,2617,village,0,0,50,0,none,none
+gn:2781629,Bodensdorf,Carinthia,1109,village,0,0,50,0,none,none
+gn:2781653,Bocksdorf,Burgenland,813,village,0,0,50,0,none,none
+gn:2781658,Bockfließ,Lower Austria,1348,village,0,0,50,0,none,none
+gn:2781668,Bad Blumau,Styria,459,village,0,0,50,0,none,none
+gn:2781672,Blumau,Lower Austria,1934,village,0,0,50,0,none,none
+gn:2781678,Bludesch,Vorarlberg,2386,village,0,0,50,0,none,none
+gn:2781680,Bludenz,Vorarlberg,15102,town,0,0,50,0,none,none
+gn:2781683,Blons,Vorarlberg,349,village,0,0,50,0,none,none
+gn:2781692,Blindenmarkt,Lower Austria,2712,village,0,0,50,0,none,none
+gn:2781703,Bleiburg/Pliberk,Carinthia,4072,village,0,0,50,0,none,none
+gn:2781727,Blaindorf,Styria,297,village,0,0,50,0,none,none
+gn:2781730,Bizau,Vorarlberg,1107,village,0,0,50,0,none,none
+gn:2781734,Bischofstetten,Lower Austria,644,village,0,0,50,0,none,none
+gn:2781735,Bischofshofen,Salzburg,7457,village,0,0,50,0,none,none
+gn:2781742,Bisamberg,Lower Austria,4110,village,0,0,50,0,none,none
+gn:2781748,Birkfeld,Styria,1634,village,0,0,50,0,none,none
+gn:2781753,Birgitz,Tyrol,1419,village,0,0,50,0,none,none
+gn:2781764,Bildstein,Vorarlberg,766,village,0,0,50,0,none,none
+gn:2781773,Bierbaum am Auersbach,Styria,451,village,0,0,50,0,none,none
+gn:2781780,Biedermannsdorf,Lower Austria,2988,village,0,0,50,0,none,none
+gn:2781790,Bichlbach,Tyrol,542,village,0,0,50,0,none,none
+gn:2781800,Biberwier,Tyrol,628,village,0,0,50,0,none,none
+gn:2781804,Biberbach,Lower Austria,2270,village,0,0,50,0,none,none
+gn:2781806,Bezau,Vorarlberg,2003,village,0,0,50,0,none,none
+gn:2781814,Berwang,Tyrol,353,village,0,0,50,0,none,none
+gn:2781820,Bernstein,Burgenland,956,village,0,0,50,0,none,none
+gn:2781827,Bernhardsthal,Lower Austria,830,village,0,0,50,0,none,none
+gn:2781833,Berndorf bei Salzburg,Salzburg,1284,village,0,0,50,0,none,none
+gn:2781837,Berndorf,Lower Austria,9064,village,0,0,50,0,none,none
+gn:2781838,Berndorf,Styria,2522,village,0,0,50,0,none,none
+gn:2781859,Bergheim,Salzburg,2777,village,0,0,50,0,none,none
+gn:2781861,Bergham,Upper Austria,1171,village,0,0,50,0,none,none
+gn:2781897,Berg,Lower Austria,861,village,0,0,50,0,none,none
+gn:2781924,Behamberg,Lower Austria,0,village,0,0,50,0,none,none
+gn:2781935,Baumkirchen,Tyrol,1284,village,0,0,50,0,none,none
+gn:2781941,Baumgarten bei Gnas,Styria,191,village,0,0,50,0,none,none
+gn:2781967,Batschuns,Vorarlberg,1181,village,0,0,50,0,none,none
+gn:2781972,Barwies,Tyrol,1107,village,0,0,50,0,none,none
+gn:2781975,Bartholomäberg,Vorarlberg,2341,village,0,0,50,0,none,none
+gn:2781982,Bärnkopf,Lower Austria,355,village,0,0,50,0,none,none
+gn:2782023,Baldramsdorf,Carinthia,657,village,0,0,50,0,none,none
+gn:2782027,Bairisch Kölldorf,Styria,1014,village,0,0,50,0,none,none
+gn:2782042,Wimsbach,Upper Austria,1164,village,0,0,50,0,none,none
+gn:2782043,Bad Vöslau,Lower Austria,7469,village,0,0,50,0,none,none
+gn:2782045,Bad Tatzmannsdorf,Burgenland,697,village,0,0,50,0,none,none
+gn:2782047,Bad Schönau,Lower Austria,481,village,0,0,50,0,none,none
+gn:2782048,Bad Schallerbach,Upper Austria,4028,village,0,0,50,0,none,none
+gn:2782049,Bad Sankt Leonhard im Lavanttal,Carinthia,4375,village,0,0,50,0,none,none
+gn:2782052,Bad Ischl,Upper Austria,1914,village,0,0,50,0,none,none
+gn:2782053,Bad Hofgastein,Salzburg,2951,village,0,0,50,0,none,none
+gn:2782054,Bad Hall,Upper Austria,5296,village,0,0,50,0,none,none
+gn:2782055,Bad Goisern,Upper Austria,1987,village,0,0,50,0,none,none
+gn:2782056,Bad Gleichenberg,Styria,1516,village,0,0,50,0,none,none
+gn:2782058,Bad Gastein,Salzburg,3980,village,0,0,50,0,none,none
+gn:2782060,Bad Fischau,Lower Austria,2116,village,0,0,50,0,none,none
+gn:2782061,Badersdorf,Burgenland,287,village,0,0,50,0,none,none
+gn:2782067,Baden,Lower Austria,26286,town,0,0,50,0,none,none
+gn:2782068,Bad Deutsch-Altenburg,Lower Austria,1765,village,0,0,50,0,none,none
+gn:2782070,Bad Aussee,Styria,1012,village,0,0,50,0,none,none
+gn:2782079,Bachmanning,Upper Austria,460,village,0,0,50,0,none,none
+gn:2782106,Axams,Tyrol,5130,village,0,0,50,0,none,none
+gn:2782118,Außervillgraten,Tyrol,760,village,0,0,50,0,none,none
+gn:2782156,Ausserbraz,Vorarlberg,1005,village,0,0,50,0,none,none
+gn:2782159,Aurolzmünster,Upper Austria,1137,village,0,0,50,0,none,none
+gn:2782163,Aurach am Hongar,Upper Austria,422,village,0,0,50,0,none,none
+gn:2782204,Auersthal,Lower Austria,1932,village,0,0,50,0,none,none
+gn:2782206,Auersbach,Styria,370,village,0,0,50,0,none,none
+gn:2782233,Audorf,Upper Austria,1064,village,0,0,50,0,none,none
+gn:2782241,Au an der Traun,Upper Austria,1864,village,0,0,50,0,none,none
+gn:2782242,Au am Leithaberge,Lower Austria,934,village,0,0,50,0,none,none
+gn:2782254,Au,Salzburg,1334,village,0,0,50,0,none,none
+gn:2782259,Au,Vorarlberg,1070,village,0,0,50,0,none,none
+gn:2782274,Atzesberg,Upper Austria,57,village,0,0,50,0,none,none
+gn:2782278,Atzenbrugg,Lower Austria,637,village,0,0,50,0,none,none
+gn:2782283,Atzbach,Upper Austria,457,village,0,0,50,0,none,none
+gn:2782285,Attnang,Upper Austria,3339,village,0,0,50,0,none,none
+gn:2782287,Attersee,Upper Austria,401,village,0,0,50,0,none,none
+gn:2782292,Attendorf,Styria,362,village,0,0,50,0,none,none
+gn:2782302,Asten,Upper Austria,3214,village,0,0,50,0,none,none
+gn:2782315,Aspern,Vienna,50687,town,0,0,50,0,none,none
+gn:2782317,Asperhofen,Lower Austria,617,village,0,0,50,0,none,none
+gn:2782319,Asparn an der Zaya,Lower Austria,1048,village,0,0,50,0,none,none
+gn:2782321,Aspang Markt,Lower Austria,1816,village,0,0,50,0,none,none
+gn:2782347,Aschbach Markt,Lower Austria,1703,village,0,0,50,0,none,none
+gn:2782364,Aschau,Tyrol,1634,village,0,0,50,0,none,none
+gn:2782370,Aschach an der Steyr,Upper Austria,1678,village,0,0,50,0,none,none
+gn:2782371,Aschach an der Donau,Upper Austria,1933,village,0,0,50,0,none,none
+gn:2782382,Arzl im Pitztal,Tyrol,1896,village,0,0,50,0,none,none
+gn:2782383,Arzl,Tyrol,11082,town,0,0,50,0,none,none
+gn:2782389,Arzberg,Styria,503,village,0,0,50,0,none,none
+gn:2782402,Arriach,Carinthia,329,village,0,0,50,0,none,none
+gn:2782406,Arnreit,Upper Austria,141,village,0,0,50,0,none,none
+gn:2782408,Arnoldstein,Carinthia,2080,village,0,0,50,0,none,none
+gn:2782410,Arnfels,Styria,837,village,0,0,50,0,none,none
+gn:2782434,Ardning,Styria,797,village,0,0,50,0,none,none
+gn:2782435,Ardagger Stift,Lower Austria,1061,village,0,0,50,0,none,none
+gn:2782443,Arbesbach,Lower Austria,669,village,0,0,50,0,none,none
+gn:2782453,Apfelberg,Styria,214,village,0,0,50,0,none,none
+gn:2782454,Apetlon,Burgenland,1760,village,0,0,50,0,none,none
+gn:2782475,Anthering,Salzburg,1599,village,0,0,50,0,none,none
+gn:2782479,Antau,Burgenland,758,village,0,0,50,0,none,none
+gn:2782480,Ansfelden,Upper Austria,18251,town,0,0,50,0,none,none
+gn:2782482,Anras,Tyrol,327,village,0,0,50,0,none,none
+gn:2782492,Annabichl,Carinthia,11374,town,0,0,50,0,none,none
+gn:2782496,Annaberg,Lower Austria,0,village,0,0,50,0,none,none
+gn:2782504,Anif,Salzburg,1814,village,0,0,50,0,none,none
+gn:2782511,Angern an der March,Lower Austria,1418,village,0,0,50,0,none,none
+gn:2782528,Anger,Styria,854,village,0,0,50,0,none,none
+gn:2782534,Angath,Tyrol,1008,village,0,0,50,0,none,none
+gn:2782542,Andorf,Upper Austria,2851,village,0,0,50,0,none,none
+gn:2782544,Andlersdorf,Lower Austria,137,village,0,0,50,0,none,none
+gn:2782551,Andelsbuch,Vorarlberg,2565,village,0,0,50,0,none,none
+gn:2782552,Andau,Burgenland,2285,village,0,0,50,0,none,none
+gn:2782555,Amstetten,Lower Austria,15559,town,0,0,50,0,none,none
+gn:2782560,Amras,Tyrol,5771,village,0,0,50,0,none,none
+gn:2782564,Ampflwang,Upper Austria,1187,village,0,0,50,0,none,none
+gn:2782566,Ampass,Tyrol,1827,village,0,0,50,0,none,none
+gn:2782572,Amlach,Tyrol,489,village,0,0,50,0,none,none
+gn:2782627,Altmünster,Upper Austria,4496,village,0,0,50,0,none,none
+gn:2782628,Altmelon,Lower Austria,302,village,0,0,50,0,none,none
+gn:2782633,Altlichtenwarth,Lower Austria,769,village,0,0,50,0,none,none
+gn:2782634,Altlichtenberg,Upper Austria,1174,village,0,0,50,0,none,none
+gn:2782635,Altlengbach,Lower Austria,976,village,0,0,50,0,none,none
+gn:2782645,Althofen,Carinthia,3531,village,0,0,50,0,none,none
+gn:2782649,Altheim,Upper Austria,4195,village,0,0,50,0,none,none
+gn:2782673,Altenmarkt im Pongau,Salzburg,4218,village,0,0,50,0,none,none
+gn:2782676,Altenmarkt bei Sankt Gallen,Styria,767,village,0,0,50,0,none,none
+gn:2782678,Altenmarkt bei Fürstenfeld,Styria,631,village,0,0,50,0,none,none
+gn:2782679,Altenmarkt an der Triesting,Lower Austria,559,village,0,0,50,0,none,none
+gn:2782691,Altenfelden,Upper Austria,1163,village,0,0,50,0,none,none
+gn:2782693,Altendorf,Lower Austria,194,village,0,0,50,0,none,none
+gn:2782697,Altenburg,Lower Austria,439,village,0,0,50,0,none,none
+gn:2782700,Altenberg bei Linz,Upper Austria,1054,village,0,0,50,0,none,none
+gn:2782724,Altaussee,Styria,309,village,0,0,50,0,none,none
+gn:2782728,Altach,Vorarlberg,6624,village,0,0,50,0,none,none
+gn:2782782,Allhartsberg,Lower Austria,999,village,0,0,50,0,none,none
+gn:2782784,Allhaming,Upper Austria,710,village,0,0,50,0,none,none
+gn:2782795,Allerheiligen im Mürztal,Styria,268,village,0,0,50,0,none,none
+gn:2782796,Allerheiligen im Mühlkreis,Upper Austria,371,village,0,0,50,0,none,none
+gn:2782797,Allerheiligen bei Wildon,Styria,972,village,0,0,50,0,none,none
+gn:2782800,Allentsteig,Lower Austria,1383,village,0,0,50,0,none,none
+gn:2782802,Alland,Lower Austria,1470,village,0,0,50,0,none,none
+gn:2782806,Alkoven,Upper Austria,1385,village,0,0,50,0,none,none
+gn:2782813,Aldrans,Tyrol,2684,village,0,0,50,0,none,none
+gn:2782827,Albersdorf,Styria,1172,village,0,0,50,0,none,none
+gn:2782830,Alberndorf in der Riedmark,Upper Austria,736,village,0,0,50,0,none,none
+gn:2782848,Aistersheim,Upper Austria,407,village,0,0,50,0,none,none
+gn:2782852,Ainet,Tyrol,784,village,0,0,50,0,none,none
+gn:2782860,Aigen im Mühlkreis,Upper Austria,1778,village,0,0,50,0,none,none
+gn:2782861,Aigen im Ennstal,Styria,425,village,0,0,50,0,none,none
+gn:2782878,Bad Kleinkirchheim,Carinthia,0,village,0,0,50,0,none,none
+gn:2782887,Aichkirchen,Upper Austria,148,village,0,0,50,0,none,none
+gn:2782915,Aich,Styria,0,village,0,0,50,0,none,none
+gn:2782926,Aibl,Styria,466,village,0,0,50,0,none,none
+gn:2782942,Ahorn,Upper Austria,141,village,0,0,50,0,none,none
+gn:2782955,Aggsbach,Lower Austria,391,village,0,0,50,0,none,none
+gn:2782967,Aflenz Kurort,Styria,1017,village,0,0,50,0,none,none
+gn:2782976,Adnet,Salzburg,1464,village,0,0,50,0,none,none
+gn:2782979,Admont,Styria,2136,village,0,0,50,0,none,none
+gn:2782980,Adlwang,Upper Austria,1806,village,0,0,50,0,none,none
+gn:2782991,Aderklaa,Lower Austria,207,village,0,0,50,0,none,none
+gn:2783035,Achenkirch,Tyrol,2185,village,0,0,50,0,none,none
+gn:2783040,Achau,Lower Austria,1415,village,0,0,50,0,none,none
+gn:2783047,Abwinden,Upper Austria,1158,village,0,0,50,0,none,none
+gn:2783049,Abtissendorf,Styria,1433,village,0,0,50,0,none,none
+gn:2783050,Abtenau,Salzburg,1188,village,0,0,50,0,none,none
+gn:2783058,Absam,Tyrol,7112,village,0,0,50,0,none,none
+gn:2783062,Abfaltersbach,Tyrol,630,village,0,0,50,0,none,none
+gn:3217367,Schlaiten,Tyrol,474,village,0,0,50,0,none,none
+gn:3217418,Thurn,Tyrol,270,village,0,0,50,0,none,none
+gn:3217911,Untertilliach,Tyrol,237,village,0,0,50,0,none,none
+gn:3218464,Finkenstein am Faaker See,Carinthia,8406,village,0,0,50,0,none,none
+gn:3221665,Sankt Jakob in Defereggen,Tyrol,0,village,0,0,50,0,none,none
+gn:3233832,Attnang-Puchheim,Upper Austria,8908,village,0,0,50,0,none,none
+gn:3319486,Obernberg am Brenner,Tyrol,363,village,0,0,50,0,none,none
+gn:3319503,Mühlbachl,Tyrol,60,village,0,0,50,0,none,none
+gn:3319527,Ötztal-Bahnhof,Tyrol,1534,village,0,0,50,0,none,none
+gn:3319549,Leutasch,Tyrol,2380,village,0,0,50,0,none,none
+gn:3319560,Maurach,Tyrol,2458,village,0,0,50,0,none,none
+gn:3319569,Gschnitz,Tyrol,434,village,0,0,50,0,none,none
+gn:3319571,Navis,Tyrol,0,village,0,0,50,0,none,none
+gn:3319572,Ellbögen,Tyrol,1109,village,0,0,50,0,none,none
+gn:3319573,Sellrain,Tyrol,1333,village,0,0,50,0,none,none
+gn:3319575,Oberperfuss,Tyrol,3043,village,0,0,50,0,none,none
+gn:3319577,Igls,Tyrol,2444,village,0,0,50,0,none,none
+gn:3319578,Obsteig,Tyrol,1316,village,0,0,50,0,none,none
+gn:3319579,Kolsass,Tyrol,1626,village,0,0,50,0,none,none
+gn:3319580,Gnadenwald,Tyrol,826,village,0,0,50,0,none,none
+gn:3319581,Ehrwald,Tyrol,2593,village,0,0,50,0,none,none
+gn:3321838,Neue Heimat,Upper Austria,1037,village,0,0,50,0,none,none
+gn:3321857,Gaumberg,Upper Austria,1628,village,0,0,50,0,none,none
+gn:3321863,Berg,Upper Austria,1491,village,0,0,50,0,none,none
+gn:3322673,Lanzendorf,Lower Austria,1886,village,0,0,50,0,none,none
+gn:3322815,Walserfeld,Salzburg,1050,village,0,0,50,0,none,none
+gn:3322885,Lehen,Salzburg,1046,village,0,0,50,0,none,none
+gn:3323819,Heinfels,Tyrol,0,village,0,0,50,0,none,none
+gn:3323885,Kals am Großglockner,Tyrol,0,village,0,0,50,0,none,none
+gn:3323920,Gerlosberg,Tyrol,465,village,0,0,50,0,none,none
+gn:3323921,Gerlos,Tyrol,790,village,0,0,50,0,none,none
+gn:3323923,Krimml,Salzburg,876,village,0,0,50,0,none,none
+gn:3323924,Rohrberg,Tyrol,574,village,0,0,50,0,none,none
+gn:3323944,Ried im Zillertal,Tyrol,1280,village,0,0,50,0,none,none
+gn:3323971,Hinterglemm,Salzburg,1104,village,0,0,50,0,none,none
+gn:3323982,Alpbach,Tyrol,2561,village,0,0,50,0,none,none
+gn:3324013,Itter,Tyrol,1150,village,0,0,50,0,none,none
+gn:3324292,Brand,Vorarlberg,719,village,0,0,50,0,none,none
+gn:3324597,Rain,Carinthia,1081,village,0,0,50,0,none,none
+gn:3324619,Kleinedling,Carinthia,1840,village,0,0,50,0,none,none
+gn:3324633,Liebenfels,Carinthia,750,village,0,0,50,0,none,none
+gn:3324645,Frauenstein,Carinthia,7,village,0,0,50,0,none,none
+gn:3324790,Eppenstein,Styria,308,village,0,0,50,0,none,none
+gn:3333673,Hochleithen,Lower Austria,0,village,0,0,50,0,none,none
+gn:3335088,Höf,Styria,1027,village,0,0,50,0,none,none
+gn:3335137,Niederschöckl,Styria,1237,village,0,0,50,0,none,none
+gn:3339261,Sankt Oswald ob Eibiswald,Styria,292,village,0,0,50,0,none,none
+gn:6355129,Wildschönau,Tyrol,0,village,0,0,50,0,none,none
+gn:6559656,Langkampfen,Tyrol,0,village,0,0,50,0,none,none
+gn:6619861,Hart bei Graz,Styria,4972,village,0,0,50,0,none,none
+gn:6692402,Berg im Drautal,Carinthia,0,village,0,0,50,0,none,none
+gn:6692403,Lockenhaus,Burgenland,1058,village,0,0,50,0,none,none
+gn:6692405,St. Georgen am Längsee,Carinthia,167,village,0,0,50,0,none,none
+gn:6692414,St. Martin of Tennengebirge,Salzburg,1083,village,0,0,50,0,none,none
+gn:6697276,Afiesl,Upper Austria,0,village,0,0,50,0,none,none
+gn:6942812,Großkirchheim,Carinthia,0,village,0,0,50,0,none,none
+gn:6949508,Damüls,Vorarlberg,313,village,0,0,50,0,none,none
+gn:6950966,Bad Waltersdorf,Styria,1045,village,0,0,50,0,none,none
+gn:6951114,Bad Zell,Upper Austria,1378,village,0,0,50,0,none,none
+gn:6956545,Auen,Carinthia,6563,village,0,0,50,0,none,none
+gn:7279898,Bad Leonfelden,Upper Austria,288,village,0,0,50,0,none,none
+gn:7290052,Pfarrwerfen,Salzburg,0,village,0,0,50,0,none,none
+gn:7304078,Thal,Styria,2261,village,0,0,50,0,none,none
+gn:7580215,Bürserberg,Vorarlberg,572,village,0,0,50,0,none,none
+gn:7581189,Holzgau,Tyrol,412,village,0,0,50,0,none,none
+gn:7667386,Schröcken,Vorarlberg,224,village,0,0,50,0,none,none
+gn:7909799,Nebelberg,Upper Austria,144,village,0,0,50,0,none,none
+gn:8015328,Ottnang am Hausruck,Upper Austria,1003,village,0,0,50,0,none,none
+gn:8030180,Prottes,Lower Austria,1445,village,0,0,50,0,none,none
+gn:8063098,Favoriten,Vienna,201882,city,0,0,50,0,none,none
+gn:8126035,Sonnberg im Mühlkreis,Upper Austria,0,village,0,0,50,0,none,none
+gn:8261469,Unternberg,Salzburg,1035,village,0,0,50,0,none,none
+gn:8299680,Alberschwende,Vorarlberg,3247,village,0,0,50,0,none,none
+gn:8411026,Mellau,Vorarlberg,1301,village,0,0,50,0,none,none
+gn:8411059,Frastanz,Vorarlberg,6434,village,0,0,50,0,none,none
+gn:8436496,Kirchbichl,Tyrol,5855,village,0,0,50,0,none,none
+gn:8468746,Baierdorf-Umgebung,Styria,903,village,0,0,50,0,none,none
+gn:8520921,Sonntag,Vorarlberg,0,village,0,0,50,0,none,none
+gn:8521704,Bärnbach,Styria,4178,village,0,0,50,0,none,none
+gn:8740442,Längenfeld,Tyrol,4611,village,0,0,50,0,none,none
+gn:8987070,Haus im Ennstal,Styria,2429,village,0,0,50,0,none,none
+gn:9613493,Hall bei Admont,Styria,1736,village,0,0,50,0,none,none
+gn:10629658,Vandans,Vorarlberg,2636,village,0,0,50,0,none,none
+gn:11002415,Ertl,Lower Austria,1252,village,0,0,50,0,none,none
+gn:11238451,Schwarzenberg,Vorarlberg,1850,village,0,0,50,0,none,none
+gn:11239662,Hittisau,Vorarlberg,2032,village,0,0,50,0,none,none
+gn:11524771,Micheldorf in Kärnten,Carinthia,0,village,0,0,50,0,none,none
+gn:11551033,Schärding Vorstadt,Upper Austria,3246,village,0,0,50,0,none,none
+gn:11551051,Neuberg im Burgenland,Burgenland,978,village,0,0,50,0,none,none
+gn:11591764,Schönkirchen-Reyersdorf,Lower Austria,1963,village,0,0,50,0,none,none
+gn:11591765,Klein-Neusiedl,Lower Austria,907,village,0,0,50,0,none,none
+gn:11591766,Eggendorf,Lower Austria,4794,village,0,0,50,0,none,none
+gn:11591941,Seitenberg,Carinthia,73,village,0,0,50,0,none,none
+gn:11592075,Dünserberg,Vorarlberg,84,village,0,0,50,0,none,none
+gn:11592193,Aschau im Zillertal,Tyrol,1840,village,0,0,50,0,none,none
+gn:11592306,Assling,Tyrol,0,village,0,0,50,0,none,none
+gn:11592321,Thiersee,Tyrol,0,village,0,0,50,0,none,none
+gn:11592334,Mitterndorf,Tyrol,1938,village,0,0,50,0,none,none
+gn:11592371,Grinzens,Tyrol,1399,village,0,0,50,0,none,none
+gn:11592461,Mauer,Carinthia,0,village,0,0,50,0,none,none
+gn:11592464,Mautbrücken,Carinthia,62,village,0,0,50,0,none,none
+gn:11592518,Fresen,Carinthia,7,village,0,0,50,0,none,none
+gn:11592519,Draschen,Carinthia,10,village,0,0,50,0,none,none
+gn:11593207,Hinterberg,Styria,1050,village,0,0,50,0,none,none
+gn:11593214,Tillmitsch Links der Laßnitz,Styria,1026,village,0,0,50,0,none,none
+gn:11593866,Kirchenviertel,Styria,5791,village,0,0,50,0,none,none
+gn:11594281,Taugl,Salzburg,1196,village,0,0,50,0,none,none
+gn:11594516,Anger,Salzburg,1380,village,0,0,50,0,none,none
+gn:11594660,Sticklberg,Styria,0,village,0,0,50,0,none,none
+gn:11594661,Klaffenegg,Styria,0,village,0,0,50,0,none,none
+gn:11609343,Wagrain,Upper Austria,1429,village,0,0,50,0,none,none
+gn:11609705,Weißenkirchen im Attergau,Upper Austria,31,village,0,0,50,0,none,none
+gn:11609957,Nöstlbach,Upper Austria,1499,village,0,0,50,0,none,none
+gn:11610092,Klausner,Styria,0,village,0,0,50,0,none,none
+gn:11612285,Puchkirchen am Trattberg,Upper Austria,1036,village,0,0,50,0,none,none
+gn:11612324,Wagnergraben,Salzburg,21,village,0,0,50,0,none,none
+gn:11668522,Illitsch,Carinthia,0,village,0,0,50,0,none,none
+gn:11668944,Diesseits,Upper Austria,1176,village,0,0,50,0,none,none
+gn:11694166,Wasserburg,Upper Austria,0,village,0,0,50,0,none,none
+gn:11694167,Loitzenberg,Upper Austria,0,village,0,0,50,0,none,none
+gn:11694168,Unterjosefstal,Upper Austria,8,village,0,0,50,0,none,none
+gn:11694169,Doppl,Upper Austria,129,village,0,0,50,0,none,none
+gn:11694350,Wolfern,Upper Austria,2374,village,0,0,50,0,none,none
+gn:11694593,Eggendorf,Lower Austria,1191,village,0,0,50,0,none,none
+gn:11694598,Hart,Lower Austria,1194,village,0,0,50,0,none,none
+gn:11694603,Ratzersdorf an der Traisen,Lower Austria,1645,village,0,0,50,0,none,none
+gn:11694944,Regau,Upper Austria,702,village,0,0,50,0,none,none
+gn:11694974,Bernardin,Upper Austria,4300,village,0,0,50,0,none,none
+gn:11694975,Brandln,Upper Austria,2964,village,0,0,50,0,none,none
+gn:11694976,Dickerldorf,Upper Austria,1003,village,0,0,50,0,none,none
+gn:11694980,Laahen,Upper Austria,4836,village,0,0,50,0,none,none
+gn:11694981,Oberhaid,Upper Austria,5100,village,0,0,50,0,none,none
+gn:11695063,Gralla,Styria,2390,village,0,0,50,0,none,none
+gn:11695064,Wispl,Upper Austria,1967,village,0,0,50,0,none,none
+gn:11695065,Haidl,Upper Austria,1931,village,0,0,50,0,none,none
+gn:11695224,Tiefenbach,Lower Austria,25,village,0,0,50,0,none,none
+gn:11695613,Gries,Carinthia,1203,village,0,0,50,0,none,none
+gn:11695614,Priel,Carinthia,3034,village,0,0,50,0,none,none
+gn:11703834,Kreuzstetten,Lower Austria,0,village,0,0,50,0,none,none
+gn:11704362,Langholzfeld,Upper Austria,3622,village,0,0,50,0,none,none
+gn:11704363,Neufurth,Lower Austria,1667,village,0,0,50,0,none,none
+gn:11704364,Villacher Vorstadt,Carinthia,8421,village,0,0,50,0,none,none
+gn:11704365,Völkermarkter Vorstadt,Carinthia,4511,village,0,0,50,0,none,none
+gn:11704366,St. Veiter Vorstadt,Carinthia,3674,village,0,0,50,0,none,none
+gn:11745977,Lerchenfeld,Lower Austria,2080,village,0,0,50,0,none,none
+gn:11745978,Reinbach,Salzburg,2253,village,0,0,50,0,none,none
+gn:11746208,Niederstraß,Upper Austria,1363,village,0,0,50,0,none,none
+gn:11746283,Langenlebarn-Oberaigen,Lower Austria,1418,village,0,0,50,0,none,none
+gn:11746590,Lind,Carinthia,5252,village,0,0,50,0,none,none
+gn:11746591,Zell-Arzberg,Lower Austria,1536,village,0,0,50,0,none,none
+gn:11746592,Zell-Markt,Lower Austria,1119,village,0,0,50,0,none,none
+gn:11746593,Esch,Salzburg,1721,village,0,0,50,0,none,none
+gn:11746594,Innere Stadt,Styria,3818,village,0,0,50,0,none,none
+gn:11746595,Villach-Innere Stadt,Carinthia,8189,village,0,0,50,0,none,none
+gn:11746606,Schachen bei Vorau,Styria,1190,village,0,0,50,0,none,none
+gn:11746699,Obergäu,Salzburg,1292,village,0,0,50,0,none,none
+gn:11746700,Eching,Salzburg,1300,village,0,0,50,0,none,none
+gn:11746751,Untereisenfeld,Upper Austria,1021,village,0,0,50,0,none,none
+gn:11746753,Hochpoint,Upper Austria,1545,village,0,0,50,0,none,none
+gn:11748016,Dörfl,Upper Austria,1195,village,0,0,50,0,none,none
+gn:11748017,Dürnau,Upper Austria,2747,village,0,0,50,0,none,none
+gn:11819471,Neualm,Salzburg,3602,village,0,0,50,0,none,none
+gn:11819586,Neu-Feffernitz,Carinthia,1178,village,0,0,50,0,none,none
+gn:11820103,Braunau Neustadt,Upper Austria,1823,village,0,0,50,0,none,none
+gn:11862776,Schleben,Carinthia,27,village,0,0,50,0,none,none
+gn:11862778,Wudmath,Carinthia,60,village,0,0,50,0,none,none
+gn:11862794,Bergern,Upper Austria,1214,village,0,0,50,0,none,none
+gn:11862809,Höfling,Lower Austria,11,village,0,0,50,0,none,none
+gn:11903598,Vasoldsberg,Styria,4572,village,0,0,50,0,none,none
+gn:11903599,St. Agathen und Perau,Carinthia,3230,village,0,0,50,0,none,none
+gn:11903600,Laab,Upper Austria,3150,village,0,0,50,0,none,none
+gn:11903601,Absdorf,Lower Austria,2087,village,0,0,50,0,none,none
+gn:11903602,Rohrendorf bei Krems,Lower Austria,2091,village,0,0,50,0,none,none
+gn:11903603,Tux,Tyrol,1941,village,0,0,50,0,none,none
+gn:11903604,Bergland,Lower Austria,1909,village,0,0,50,0,none,none
+gn:11903605,Rosental an der Kainach,Styria,1678,village,0,0,50,0,none,none
+gn:11903606,Ufer,Upper Austria,1566,village,0,0,50,0,none,none
+gn:11903607,Lingenau,Vorarlberg,1466,village,0,0,50,0,none,none
+gn:11903631,Tillmitsch,Styria,1426,village,0,0,50,0,none,none
+gn:11903636,Donaustadt,Vienna,187007,city,0,0,50,0,none,none
+gn:11903637,Jakomini,Styria,32912,town,0,0,50,0,none,none
+gn:11903638,Lend,Styria,31147,town,0,0,50,0,none,none
+gn:11903639,Geidorf,Styria,24767,town,0,0,50,0,none,none
+gn:11903640,Sankt Leonhard,Styria,15853,town,0,0,50,0,none,none
+gn:11903641,Andritz,Styria,19020,town,0,0,50,0,none,none
+gn:11903642,Gries,Styria,29363,town,0,0,50,0,none,none
+gn:11903643,Viktringer Vorstadt,Carinthia,3436,village,0,0,50,0,none,none
+gn:11903646,Angerberg,Tyrol,1225,village,0,0,50,0,none,none
+gn:11903654,Rohr im Kremstal,Upper Austria,1142,village,0,0,50,0,none,none
+gn:11903655,Langenegg,Vorarlberg,1133,village,0,0,50,0,none,none
+gn:11903656,Vogau,Styria,1133,village,0,0,50,0,none,none
+gn:11903657,Reitberg,Salzburg,1156,village,0,0,50,0,none,none
+gn:11903671,Föderlach I,Carinthia,1012,village,0,0,50,0,none,none
+gn:11903709,Vals,Tyrol,532,village,0,0,50,0,none,none
+gn:11903842,Hinterleiten,Lower Austria,1323,village,0,0,50,0,none,none
+gn:11903843,Neubau,Upper Austria,1182,village,0,0,50,0,none,none
+gn:11903844,Steinfeld,Upper Austria,1033,village,0,0,50,0,none,none
+gn:12196319,Währing,Vienna,51402,town,0,0,50,0,none,none
+gn:12214069,Landstraße,Vienna,98389,town,0,0,50,0,none,none
+gn:12214070,Margareten,Vienna,54412,town,0,0,50,0,none,none
+gn:12214071,Mariahilf,Vienna,31381,town,0,0,50,0,none,none
+gn:12214072,Neubau,Vienna,31521,town,0,0,50,0,none,none
+gn:12214073,Josefstadt,Vienna,24499,town,0,0,50,0,none,none
+gn:12214080,Alsergrund,Vienna,41645,town,0,0,50,0,none,none
+gn:12214081,Brigittenau,Vienna,86967,town,0,0,50,0,none,none
+gn:12954394,WÖS,Upper Austria,5000,village,0,0,50,0,none,none

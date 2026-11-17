@@ -1,0 +1,907 @@
+place_id,name,region,population,market,verified_homes,dated_listings,shortfall_to_50,recorded_sales,rent_source,price_source
+gn:1560037,Yên Vinh,Nghệ An Province,107082,city,0,0,50,0,none,none
+gn:1560038,Khánh Vĩnh Yên,Hà Tĩnh Province,10244,town,0,0,50,0,none,none
+gn:1560040,Yên Viên,Hanoi,14482,town,0,0,50,0,none,none
+gn:1560065,Yên Thượng,Nghệ An Province,1264,village,0,0,50,0,none,none
+gn:1560078,Yên Thành,Nghệ An Province,0,village,0,0,50,0,none,none
+gn:1560121,Yên Phụ,Hanoi,23942,town,0,0,50,0,none,none
+gn:1560143,Yên Ninh,Ninh Binh,0,village,0,0,50,0,none,none
+gn:1560166,Thị Trấn Yên Minh,Tuyen Quang,8085,village,0,0,50,0,none,none
+gn:1560227,Yến Lạc,Thai Nguyen,0,village,0,0,50,0,none,none
+gn:1560229,Yên Lạc,Phu Tho,0,village,0,0,50,0,none,none
+gn:1560336,Yên Châu,Sơn La Province,0,village,0,0,50,0,none,none
+gn:1560344,Thị Trấn Yên Bình,Lao Cai,12282,town,0,0,50,0,none,none
+gn:1560349,Yên Bái,Lao Cai,100631,city,0,0,50,0,none,none
+gn:1560452,Xuyên Mộc,Ho Chi Minh City (HCMC),9804,village,0,0,50,0,none,none
+gn:1560525,Xuân Sơn,Quang Tri,5802,village,0,0,50,0,none,none
+gn:1560551,Xuân Mai,Hanoi,25100,town,0,0,50,0,none,none
+gn:1560565,Xuân Lộc,Dong Nai,253140,city,0,0,50,0,none,none
+gn:1560578,Xuân Lạc,Nghệ An Province,3764,village,0,0,50,0,none,none
+gn:1560781,Nguyễn Du,Hanoi,10078,town,0,0,50,0,none,none
+gn:1560830,Trại Khoai,Hanoi,11833,town,0,0,50,0,none,none
+gn:1561127,Ông Do,Ca Mau,9253,village,0,0,50,0,none,none
+gn:1561210,Xóm Mỹ Xuân,Ho Chi Minh City (HCMC),32345,town,0,0,50,0,none,none
+gn:1561907,Xóm Cái Nước,An Giang,54397,town,0,0,50,0,none,none
+gn:1561914,Cái Đôi Vàm,Ca Mau,36444,town,0,0,50,0,none,none
+gn:1561993,Xóm Bến Củi,Tay Ninh,5150,village,0,0,50,0,none,none
+gn:1562176,Trảng Bom,Dong Nai,57560,town,0,0,50,0,none,none
+gn:1562278,Xã Long Hải,Ho Chi Minh City (HCMC),35167,town,0,0,50,0,none,none
+gn:1562279,Long Diền,Ho Chi Minh City (HCMC),18093,town,0,0,50,0,none,none
+gn:1562308,Gia Ray,Dong Nai,0,village,0,0,50,0,none,none
+gn:1562346,Xã Bình Giả,Ho Chi Minh City (HCMC),9780,village,0,0,50,0,none,none
+gn:1562357,Xã An Ngãi,Ho Chi Minh City (HCMC),5740,village,0,0,50,0,none,none
+gn:1562414,Vũng Tàu,Ho Chi Minh City (HCMC),464860,city,0,0,50,0,none,none
+gn:1562418,Vũng Liêm,Vinh Long,0,village,0,0,50,0,none,none
+gn:1562456,Vụ Bản,Phu Tho,9497,village,0,0,50,0,none,none
+gn:1562464,Võ Xu,Lam Dong,0,village,0,0,50,0,none,none
+gn:1562538,Vị Thanh,Can Tho City,24477,town,0,0,50,0,none,none
+gn:1562548,Vĩnh Yên,Phu Tho,119128,city,0,0,50,0,none,none
+gn:1562568,Thị Trấn Vĩnh Tuy,Tuyen Quang,5560,village,0,0,50,0,none,none
+gn:1562570,Vĩnh Tuy,Hanoi,86618,town,0,0,50,0,none,none
+gn:1562578,Tú Trưng,Phu Tho,7530,village,0,0,50,0,none,none
+gn:1562592,Vĩnh Thuận,An Giang,0,village,0,0,50,0,none,none
+gn:1562611,Vĩnh Thạnh,Gia Lai,0,village,0,0,50,0,none,none
+gn:1562693,Vĩnh Long,Vinh Long,137870,city,0,0,50,0,none,none
+gn:1562697,Vĩnh Lộc,Thanh Hóa Province,0,village,0,0,50,0,none,none
+gn:1562773,Vĩnh Châu,Can Tho City,183918,city,0,0,50,0,none,none
+gn:1562782,Vĩnh Bình,Dong Thap,0,village,0,0,50,0,none,none
+gn:1562798,Vinh,Nghệ An Province,790000,large-city,0,0,50,0,none,none
+gn:1562818,Việt Yên,Bac Ninh,205900,city,0,0,50,0,none,none
+gn:1562820,Việt Trì,Phu Tho,415280,city,0,0,50,0,none,none
+gn:1562984,Văn Quan,Lạng Sơn Province,0,village,0,0,50,0,none,none
+gn:1563006,Vạn Giã,Khanh Hoa,0,village,0,0,50,0,none,none
+gn:1563139,Vân Đình,Hanoi,0,village,0,0,50,0,none,none
+gn:1563141,Văn Điển,Hanoi,0,village,0,0,50,0,none,none
+gn:1563169,Vân Canh,Gia Lai,0,village,0,0,50,0,none,none
+gn:1563241,Thành Phố Uông Bí,Quảng Ninh,63829,town,0,0,50,0,none,none
+gn:1563265,Tuy Phước,Gia Lai,0,village,0,0,50,0,none,none
+gn:1563281,Tuy Hòa,Dak Lak,155921,city,0,0,50,0,none,none
+gn:1563287,Tuyên Quang,Tuyen Quang,104645,city,0,0,50,0,none,none
+gn:1563359,Hòa Bình,Nghệ An Province,0,village,0,0,50,0,none,none
+gn:1563370,Tư Nghĩa,Quang Ngai,0,village,0,0,50,0,none,none
+gn:1563490,Tu Bông,Khanh Hoa,29751,town,0,0,50,0,none,none
+gn:1563509,Tuần Giáo,Điện Biên Province,8512,village,0,0,50,0,none,none
+gn:1563559,Trường Sơn,Hà Tĩnh Province,8757,village,0,0,50,0,none,none
+gn:1563663,Trung Phụng,Hanoi,16998,town,0,0,50,0,none,none
+gn:1563683,Hồng Lĩnh,Hà Tĩnh Province,36940,town,0,0,50,0,none,none
+gn:1563704,Thị Trấn Trùng Khánh,Cao Bằng Province,17849,town,0,0,50,0,none,none
+gn:1563823,Tri Tôn,An Giang,0,village,0,0,50,0,none,none
+gn:1563875,Triều Khúc,Hanoi,12000,town,0,0,50,0,none,none
+gn:1563926,Trà Vinh,Vinh Long,160310,city,0,0,50,0,none,none
+gn:1563977,Trà Ôn,Vinh Long,0,village,0,0,50,0,none,none
+gn:1564046,Trảng Bàng,Tay Ninh,161831,city,0,0,50,0,none,none
+gn:1564064,Long Bien,Hanoi,347829,city,0,0,50,0,none,none
+gn:1564065,Thị Trấn Trạm Tấu,Lao Cai,2926,village,0,0,50,0,none,none
+gn:1564070,Trà My,Da Nang City,6559,village,0,0,50,0,none,none
+gn:1564075,Tràm Chim,Dong Thap,22725,town,0,0,50,0,none,none
+gn:1564238,Trà Cú,Vinh Long,0,village,0,0,50,0,none,none
+gn:1564257,Trà Bồng,Quang Ngai,0,village,0,0,50,0,none,none
+gn:1564528,Thị Trấn Tĩnh Túc,Cao Bằng Province,5850,village,0,0,50,0,none,none
+gn:1564548,Tĩnh Gia,Thanh Hóa Province,0,village,0,0,50,0,none,none
+gn:1564555,Tịnh Biên,An Giang,143098,city,0,0,50,0,none,none
+gn:1564576,Tiểu Cần,Vinh Long,0,village,0,0,50,0,none,none
+gn:1564589,Thị Trấn Tiên Yên,Quảng Ninh,22164,town,0,0,50,0,none,none
+gn:1564629,Tiên Phước,Da Nang City,0,village,0,0,50,0,none,none
+gn:1564780,Thụy Phương,Hanoi,13676,town,0,0,50,0,none,none
+gn:1564818,Thủ Thừa,Tay Ninh,0,village,0,0,50,0,none,none
+gn:1564835,Thường Xuân,Thanh Hóa Province,0,village,0,0,50,0,none,none
+gn:1564896,Thường Nga,Hà Tĩnh Province,4814,village,0,0,50,0,none,none
+gn:1564928,Vượng Lộc,Hà Tĩnh Province,8866,village,0,0,50,0,none,none
+gn:1564956,Thượng Cát,Hanoi,87406,town,0,0,50,0,none,none
+gn:1565019,Thủ Đức,Ho Chi Minh City (HCMC),524670,large-city,0,0,50,0,none,none
+gn:1565022,Thủ Dầu Một,Ho Chi Minh City (HCMC),373105,city,0,0,50,0,none,none
+gn:1565047,Thuận Thanh,Bac Ninh,199577,city,0,0,50,0,none,none
+gn:1565115,Thọ Xuân,Thanh Hóa Province,0,village,0,0,50,0,none,none
+gn:1565136,Thốt Nốt,Can Tho City,158225,city,0,0,50,0,none,none
+gn:1565140,Thổ Tăng,Phu Tho,14049,town,0,0,50,0,none,none
+gn:1565157,Thới Lai,Can Tho City,109684,city,0,0,50,0,none,none
+gn:1565164,Thới Bình,Ca Mau,38116,town,0,0,50,0,none,none
+gn:1565495,Thôn La Vang Chinh,Quang Tri,4000,village,0,0,50,0,none,none
+gn:1565760,Ái Tử,Quang Tri,0,village,0,0,50,0,none,none
+gn:1565969,Thị Trấn Thất Khê,Lạng Sơn Province,20153,town,0,0,50,0,none,none
+gn:1565992,Than Uyên,Lai Châu Province,5482,village,0,0,50,0,none,none
+gn:1566029,Phú Lộc,Can Tho City,15099,town,0,0,50,0,none,none
+gn:1566053,Thanh Sơn,Phu Tho,0,village,0,0,50,0,none,none
+gn:1566078,Thạnh Phú,Vinh Long,10311,town,0,0,50,0,none,none
+gn:1566083,Ho Chi Minh City,Ho Chi Minh City (HCMC),14002598,large-city,0,0,50,0,none,none
+gn:1566093,Thanh Nê,Hưng Yên Province,0,village,0,0,50,0,none,none
+gn:1566126,Thanh Liệt,Hanoi,76238,town,0,0,50,0,none,none
+gn:1566166,Thanh Hóa,Thanh Hóa Province,850000,large-city,0,0,50,0,none,none
+gn:1566206,Thanh Chương,Nghệ An Province,0,village,0,0,50,0,none,none
+gn:1566226,Thanh Bình,Dong Thap,0,village,0,0,50,0,none,none
+gn:1566319,Thái Nguyên,Thai Nguyen,420000,city,0,0,50,0,none,none
+gn:1566346,Thái Bình,Hưng Yên Province,53071,town,0,0,50,0,none,none
+gn:1566378,Kim Tân,Thanh Hóa Province,0,village,0,0,50,0,none,none
+gn:1566411,Thạch Hà,Hà Tĩnh Province,13647,town,0,0,50,0,none,none
+gn:1566545,Tây Tựu,Hanoi,39436,town,0,0,50,0,none,none
+gn:1566559,Tây Ninh,Tay Ninh,135254,city,0,0,50,0,none,none
+gn:1566566,Tây Hồ,Hanoi,168300,city,0,0,50,0,none,none
+gn:1566570,Tây Đằng,Hanoi,12877,town,0,0,50,0,none,none
+gn:1566863,Đại Tân,Da Nang City,5881,village,0,0,50,0,none,none
+gn:1566889,Đầm Dơi,Ca Mau,0,village,0,0,50,0,none,none
+gn:1566912,Tân Kỳ,Nghệ An Province,0,village,0,0,50,0,none,none
+gn:1566958,Tánh Linh,Lam Dong,0,village,0,0,50,0,none,none
+gn:1566960,Tân Hiệp,,2091,village,0,0,50,0,none,none
+gn:1566962,Tân Hiệp,Dong Thap,0,village,0,0,50,0,none,none
+gn:1566963,Tân Hiệp,An Giang,0,village,0,0,50,0,none,none
+gn:1567032,Tân Châu,An Giang,175211,city,0,0,50,0,none,none
+gn:1567043,Tân Bình,Ho Chi Minh City (HCMC),89373,town,0,0,50,0,none,none
+gn:1567069,Tân An,Tay Ninh,215250,city,0,0,50,0,none,none
+gn:1567148,Tam Kỳ,Da Nang City,165240,city,0,0,50,0,none,none
+gn:1567167,Tam Giang,Ca Mau,23277,town,0,0,50,0,none,none
+gn:1567178,Tam Đảo,Phu Tho,734,village,0,0,50,0,none,none
+gn:1567201,Tam Bình,Vinh Long,0,village,0,0,50,0,none,none
+gn:1567221,Thị Trấn Tà Lùng,Cao Bằng Province,0,village,0,0,50,0,none,none
+gn:1567523,Nha Bích,Dong Nai,23938,town,0,0,50,0,none,none
+gn:1567617,Sơn Tịnh,Quang Ngai,0,village,0,0,50,0,none,none
+gn:1567621,Sơn Tây,Hanoi,230577,city,0,0,50,0,none,none
+gn:1567646,Sơn Hà,Quang Ngai,0,village,0,0,50,0,none,none
+gn:1567649,Sơn Dương,Tuyen Quang,0,village,0,0,50,0,none,none
+gn:1567681,Sơn La,Sơn La Province,106052,city,0,0,50,0,none,none
+gn:1567701,Sông Mã,Sơn La Province,0,village,0,0,50,0,none,none
+gn:1567723,Sông Cầu,Dak Lak,94066,town,0,0,50,0,none,none
+gn:1567788,Sóc Trăng,Can Tho City,221430,city,0,0,50,0,none,none
+gn:1567878,Thị Trấn Sìn Hồ,Lai Châu Province,5621,village,0,0,50,0,none,none
+gn:1567902,Si Ma Cai,Lao Cai,5652,village,0,0,50,0,none,none
+gn:1568039,Sà Phìn,Tuyen Quang,2264,village,0,0,50,0,none,none
+gn:1568043,Sa Pa,Lao Cai,10554,town,0,0,50,0,none,none
+gn:1568098,Sằng Uỷ,Cao Bằng Province,2000,village,0,0,50,0,none,none
+gn:1568142,Sầm Sơn,Thanh Hóa Province,129801,city,0,0,50,0,none,none
+gn:1568212,Sa Dec,Dong Thap,214610,city,0,0,50,0,none,none
+gn:1568506,Rạch Gốc,Ca Mau,13144,town,0,0,50,0,none,none
+gn:1568510,Rạch Giá,An Giang,459860,city,0,0,50,0,none,none
+gn:1568526,Mường Chiên,Sơn La Province,0,village,0,0,50,0,none,none
+gn:1568530,Quỳnh Lôi,Hanoi,14970,town,0,0,50,0,none,none
+gn:1568540,Quỳnh Côi,Hưng Yên Province,0,village,0,0,50,0,none,none
+gn:1568574,Qui Nhon,Gia Lai,519208,large-city,0,0,50,0,none,none
+gn:1568593,Quỳ Hợp,Nghệ An Province,0,village,0,0,50,0,none,none
+gn:1568605,Quy Đạt,Quang Tri,0,village,0,0,50,0,none,none
+gn:1568608,Quỳ Châu,Nghệ An Province,0,village,0,0,50,0,none,none
+gn:1568616,Đông Phú,Da Nang City,34122,town,0,0,50,0,none,none
+gn:1568619,Kim Sơn,Nghệ An Province,0,village,0,0,50,0,none,none
+gn:1568706,Quan Hóa,Thanh Hóa Province,0,village,0,0,50,0,none,none
+gn:1568717,Quảng Yên,Quảng Ninh,0,village,0,0,50,0,none,none
+gn:1568728,Thị Trấn Quảng Uyên,Cao Bằng Province,0,village,0,0,50,0,none,none
+gn:1568737,Ba Đồn,Quang Tri,106413,city,0,0,50,0,none,none
+gn:1568759,Quán Hàu,Quang Tri,36210,town,0,0,50,0,none,none
+gn:1568770,Quảng Ngãi,Quang Ngai,278496,city,0,0,50,0,none,none
+gn:1569620,Plei Kần,Quang Ngai,0,village,0,0,50,0,none,none
+gn:1569684,Pleiku,Gia Lai,114225,city,0,0,50,0,none,none
+gn:1569806,Phù Yên,Sơn La Province,0,village,0,0,50,0,none,none
+gn:1569850,Phú Vang,Thừa Thiên Huế Province,0,village,0,0,50,0,none,none
+gn:1569856,Từ Sơn,Bac Ninh,65697,town,0,0,50,0,none,none
+gn:1569857,Phú Túc,Gia Lai,12000,town,0,0,50,0,none,none
+gn:1569898,Phủ Thông,Thai Nguyen,0,village,0,0,50,0,none,none
+gn:1569901,Phú Thọ,Phu Tho,91650,town,0,0,50,0,none,none
+gn:1569973,Dương Đông,An Giang,15000,town,0,0,50,0,none,none
+gn:1569991,Phú Phong,Gia Lai,0,village,0,0,50,0,none,none
+gn:1570043,Phương Linh,Phu Tho,3679,village,0,0,50,0,none,none
+gn:1570178,Đại Đồng,Da Nang City,10659,town,0,0,50,0,none,none
+gn:1570209,Phước Hòa,Dong Nai,15418,town,0,0,50,0,none,none
+gn:1570243,Phước An,Dak Lak,25120,town,0,0,50,0,none,none
+gn:1570263,Phù Ninh,Hanoi,4000,village,0,0,50,0,none,none
+gn:1570310,Phụng Nghia,Hanoi,11500,town,0,0,50,0,none,none
+gn:1570319,Phụng Hiệp,Can Tho City,0,village,0,0,50,0,none,none
+gn:1570352,Phù Mỹ,Gia Lai,0,village,0,0,50,0,none,none
+gn:1570357,Phú Mỹ,Ho Chi Minh City (HCMC),287055,city,0,0,50,0,none,none
+gn:1570449,Phủ Lý,Ninh Binh,136654,city,0,0,50,0,none,none
+gn:1570549,Phú Khương,Tay Ninh,47966,town,0,0,50,0,none,none
+gn:1570643,Phú Đô,Hanoi,15983,town,0,0,50,0,none,none
+gn:1570656,Phúc Yên,Phu Tho,180000,city,0,0,50,0,none,none
+gn:1570668,Phúc Trạch,Hà Tĩnh Province,5550,village,0,0,50,0,none,none
+gn:1570686,Phúc Sơn,Nghệ An Province,7746,village,0,0,50,0,none,none
+gn:1570752,Phù Cát,Gia Lai,0,village,0,0,50,0,none,none
+gn:1570762,Đại Cường,Da Nang City,8436,village,0,0,50,0,none,none
+gn:1570815,Phong Thổ,Lai Châu Province,0,village,0,0,50,0,none,none
+gn:1570819,Phong Thạnh,Ca Mau,53912,town,0,0,50,0,none,none
+gn:1570863,Phong Điền,Thừa Thiên Huế Province,114820,city,0,0,50,0,none,none
+gn:1570864,Phong Điền,Can Tho City,98424,town,0,0,50,0,none,none
+gn:1570880,Thị Trấn Phố Lu,Lao Cai,32800,town,0,0,50,0,none,none
+gn:1570901,Phố Châu,Hà Tĩnh Province,8481,village,0,0,50,0,none,none
+gn:1570906,Bến Sung,Thanh Hóa Province,0,village,0,0,50,0,none,none
+gn:1570907,Thị Trấn Phố Bảng,Tuyen Quang,2811,village,0,0,50,0,none,none
+gn:1570909,Thị Trấn Ba Chẽ,Quảng Ninh,17504,town,0,0,50,0,none,none
+gn:1571029,Phát Diệm,Ninh Binh,0,village,0,0,50,0,none,none
+gn:1571058,Phan Thiết,Lam Dong,228536,city,0,0,50,0,none,none
+gn:1571067,Phan Rang-Tháp Chàm,Khanh Hoa,207998,city,0,0,50,0,none,none
+gn:1571644,Ô Môn,Can Tho City,129683,city,0,0,50,0,none,none
+gn:1571725,Thị Trấn Nước Hai,Cao Bằng Province,20309,town,0,0,50,0,none,none
+gn:1571768,Núi Đèo,Hai Phong,0,village,0,0,50,0,none,none
+gn:1571825,Đại Quang,Da Nang City,10666,town,0,0,50,0,none,none
+gn:1571833,Nong Hạ,Thai Nguyen,4062,village,0,0,50,0,none,none
+gn:1571951,Ninh Hòa,Khanh Hoa,230566,city,0,0,50,0,none,none
+gn:1571954,Ninh Giang,Hai Phong,0,village,0,0,50,0,none,none
+gn:1571968,Hoa Lư,Ninh Binh,319125,city,0,0,50,0,none,none
+gn:1572018,Như Quỳnh,Hưng Yên Province,0,village,0,0,50,0,none,none
+gn:1572071,Nho Quan,Ninh Binh,0,village,0,0,50,0,none,none
+gn:1572074,Nhơn Trạch,Dong Nai,0,village,0,0,50,0,none,none
+gn:1572151,Nha Trang,Khanh Hoa,579000,large-city,0,0,50,0,none,none
+gn:1572221,Nhã Nam,Bac Ninh,8461,village,0,0,50,0,none,none
+gn:1572249,Nhà Bè,Ho Chi Minh City (HCMC),17264,town,0,0,50,0,none,none
+gn:1572251,Nhà Bàng,An Giang,12343,town,0,0,50,0,none,none
+gn:1572274,Thị Trấn Nguyên Bình,Cao Bằng Province,6586,village,0,0,50,0,none,none
+gn:1572368,Ngô Đồng,Ninh Binh,0,village,0,0,50,0,none,none
+gn:1572446,Ngọc Lặc,Thanh Hóa Province,0,village,0,0,50,0,none,none
+gn:1572458,Ngọc Hồi,Hanoi,13453,town,0,0,50,0,none,none
+gn:1572508,Tiền Hải,Hưng Yên Province,0,village,0,0,50,0,none,none
+gn:1572526,Nghi Xuân,Hà Tĩnh Province,2590,village,0,0,50,0,none,none
+gn:1572532,Nghi Sơn,Thanh Hóa Province,302210,city,0,0,50,0,none,none
+gn:1572536,Quán Hành,Nghệ An Province,5114,village,0,0,50,0,none,none
+gn:1572565,Nghĩa Lộ,Lao Cai,68206,town,0,0,50,0,none,none
+gn:1572575,Nghĩa Hành,Quang Ngai,0,village,0,0,50,0,none,none
+gn:1572585,Nghĩa Đô,Hanoi,96418,town,0,0,50,0,none,none
+gn:1572588,Nghĩa Đàn,Nghệ An Province,5037,village,0,0,50,0,none,none
+gn:1572614,Nga Sơn,Thanh Hóa Province,47176,town,0,0,50,0,none,none
+gn:1572628,Vân Tùng,Thai Nguyen,8260,village,0,0,50,0,none,none
+gn:1572696,Thị Trấn Ngải Giao,Ho Chi Minh City (HCMC),49065,town,0,0,50,0,none,none
+gn:1572898,Thị Trấn Na Sầm,Lạng Sơn Province,14117,town,0,0,50,0,none,none
+gn:1573111,Nằm Vi,Điện Biên Province,4163,village,0,0,50,0,none,none
+gn:1573517,Nam Định,Ninh Binh,448225,city,0,0,50,0,none,none
+gn:1573524,Nam Đàn,Nghệ An Province,0,village,0,0,50,0,none,none
+gn:1573570,Năm Căn,Ca Mau,30135,town,0,0,50,0,none,none
+gn:1573844,Thị Trấn Na Dương,Lạng Sơn Province,24369,town,0,0,50,0,none,none
+gn:1573993,Mỹ Xuyên,Can Tho City,0,village,0,0,50,0,none,none
+gn:1574023,Mỹ Tho,Dong Thap,270700,city,0,0,50,0,none,none
+gn:1574024,Mỹ Thọ,Dong Thap,0,village,0,0,50,0,none,none
+gn:1574093,Mỹ Lộc,Ninh Binh,0,village,0,0,50,0,none,none
+gn:1574109,Mỹ Lại,Quang Ngai,23978,town,0,0,50,0,none,none
+gn:1574113,Mỹ Khê,Quang Ngai,23978,town,0,0,50,0,none,none
+gn:1574148,Thạnh Mỹ,Da Nang City,0,village,0,0,50,0,none,none
+gn:1574155,Mỹ Hào,Hưng Yên Province,115608,city,0,0,50,0,none,none
+gn:1574250,Mường Nhé,Điện Biên Province,11671,town,0,0,50,0,none,none
+gn:1574257,Mường Lay,Điện Biên Province,20450,town,0,0,50,0,none,none
+gn:1574263,Thị Trấn Mường Khương,Lao Cai,9680,village,0,0,50,0,none,none
+gn:1574307,Mường Lát,Thanh Hóa Province,0,village,0,0,50,0,none,none
+gn:1574362,Mù Cang Chải,Lao Cai,0,village,0,0,50,0,none,none
+gn:1574507,Móng Cái,Quảng Ninh,108553,city,0,0,50,0,none,none
+gn:1574546,Mộ Đức,Quang Ngai,0,village,0,0,50,0,none,none
+gn:1574561,Mộc Châu,Sơn La Province,0,village,0,0,50,0,none,none
+gn:1574568,Mỏ Cày,Vinh Long,0,village,0,0,50,0,none,none
+gn:1574638,Minh Lương,An Giang,0,village,0,0,50,0,none,none
+gn:1574654,Minh Long,Quang Ngai,0,village,0,0,50,0,none,none
+gn:1574706,Thị Trấn Mèo Vạc,Tuyen Quang,6850,village,0,0,50,0,none,none
+gn:1574873,Thị Trấn Mạo Khê,Quảng Ninh,72012,town,0,0,50,0,none,none
+gn:1575057,Mai Dịch,Hanoi,40527,town,0,0,50,0,none,none
+gn:1575080,Ma Đa Gui,Lam Dong,0,village,0,0,50,0,none,none
+gn:1575247,Lương Bằng,Phu Tho,1937,village,0,0,50,0,none,none
+gn:1575552,Lũng Cú,Tuyen Quang,4885,village,0,0,50,0,none,none
+gn:1575627,Long Xuyên,An Giang,286140,city,0,0,50,0,none,none
+gn:1575655,Long Thành,Dong Nai,27084,town,0,0,50,0,none,none
+gn:1575689,Long Phú,Can Tho City,0,village,0,0,50,0,none,none
+gn:1575703,Long Mỹ,Can Tho City,61781,town,0,0,50,0,none,none
+gn:1575864,Lộc Ninh,Dong Nai,10504,town,0,0,50,0,none,none
+gn:1575896,Lộc Bình,Lạng Sơn Province,9427,village,0,0,50,0,none,none
+gn:1575963,Liễu Giai,Hanoi,20546,town,0,0,50,0,none,none
+gn:1575965,Liễu Đề,Ninh Binh,0,village,0,0,50,0,none,none
+gn:1575993,Liên Hương,Lam Dong,0,village,0,0,50,0,none,none
+gn:1576073,Kiến Giang,Quang Tri,0,village,0,0,50,0,none,none
+gn:1576233,Lấp Vò,Dong Thap,0,village,0,0,50,0,none,none
+gn:1576275,Lao Chải,Lao Cai,2324,village,0,0,50,0,none,none
+gn:1576303,Lào Cai,Lao Cai,130671,city,0,0,50,0,none,none
+gn:1576304,Lao Bảo,Quang Tri,12862,town,0,0,50,0,none,none
+gn:1576633,Lạng Sơn,Lạng Sơn Province,200108,city,0,0,50,0,none,none
+gn:1576757,Thị Trấn Phước Bửu,Ho Chi Minh City (HCMC),51895,town,0,0,50,0,none,none
+gn:1577262,Phú Lộc,Hà Tĩnh Province,5425,village,0,0,50,0,none,none
+gn:1577285,Lũng Hồ,Tuyen Quang,0,village,0,0,50,0,none,none
+gn:1577635,Lang Chánh,Thanh Hóa Province,0,village,0,0,50,0,none,none
+gn:1577859,Thị Trấn Lam Sơn,Thanh Hóa Province,33117,town,0,0,50,0,none,none
+gn:1577929,Lái Thiêu,Ho Chi Minh City (HCMC),0,village,0,0,50,0,none,none
+gn:1577958,Lai Cách,Hai Phong,0,village,0,0,50,0,none,none
+gn:1577995,La Gi,Lam Dong,160652,city,0,0,50,0,none,none
+gn:1578015,Liên Sơn,Dak Lak,5425,village,0,0,50,0,none,none
+gn:1578066,Lạc Dương,Lam Dong,0,village,0,0,50,0,none,none
+gn:1578127,Mường Xén,Nghệ An Province,0,village,0,0,50,0,none,none
+gn:1578163,Kỳ Anh,Hà Tĩnh Province,150226,city,0,0,50,0,none,none
+gn:1578500,Kon Tum,Quang Ngai,205762,city,0,0,50,0,none,none
+gn:1578828,Kinh Môn,Hai Phong,0,village,0,0,50,0,none,none
+gn:1578904,Kim Liên,Nghệ An Province,24489,town,0,0,50,0,none,none
+gn:1578947,Kim Bài,Hanoi,0,village,0,0,50,0,none,none
+gn:1578998,Kiên Lương,An Giang,0,village,0,0,50,0,none,none
+gn:1579018,Kiến An,Hai Phong,118047,city,0,0,50,0,none,none
+gn:1579019,Kiến An,An Giang,28333,town,0,0,50,0,none,none
+gn:1579363,Khe Sanh,Quang Tri,13927,town,0,0,50,0,none,none
+gn:1579615,Thị Trấn Khánh Yên,Lao Cai,6609,village,0,0,50,0,none,none
+gn:1579635,Khánh Hòa,An Giang,25320,town,0,0,50,0,none,none
+gn:1579739,Kẻ Sặt,Hai Phong,0,village,0,0,50,0,none,none
+gn:1579743,Kế Sách,Can Tho City,0,village,0,0,50,0,none,none
+gn:1579752,Kép,Bac Ninh,11832,town,0,0,50,0,none,none
+gn:1580001,Ich Hau,Hà Tĩnh Province,7538,village,0,0,50,0,none,none
+gn:1580019,Huyền Tụng,Hai Phong,4876,village,0,0,50,0,none,none
+gn:1580054,Hữu Lũng,Lạng Sơn Province,0,village,0,0,50,0,none,none
+gn:1580092,Hương Trà,Thừa Thiên Huế Province,72677,town,0,0,50,0,none,none
+gn:1580093,Hương Thủy,Thừa Thiên Huế Province,95299,town,0,0,50,0,none,none
+gn:1580123,Hương Khê,Hà Tĩnh Province,10768,town,0,0,50,0,none,none
+gn:1580136,Hương Canh,Phu Tho,0,village,0,0,50,0,none,none
+gn:1580142,Hưng Yên,Hưng Yên Province,118646,city,0,0,50,0,none,none
+gn:1580160,Hưng Mỹ,Ca Mau,38687,town,0,0,50,0,none,none
+gn:1580240,Huế,Thừa Thiên Huế Province,1380000,large-city,0,0,50,0,none,none
+gn:1580262,Hồ Xá,Quang Tri,13000,town,0,0,50,0,none,none
+gn:1580349,Bình Long,Dong Nai,15000,town,0,0,50,0,none,none
+gn:1580400,Hồng Ngự,Dong Thap,101155,city,0,0,50,0,none,none
+gn:1580410,Hạ Long,Quảng Ninh,270054,city,0,0,50,0,none,none
+gn:1580421,Hòn Đất,An Giang,0,village,0,0,50,0,none,none
+gn:1580541,Hoi An,Da Nang City,32757,town,0,0,50,0,none,none
+gn:1580572,Hóc Môn,Ho Chi Minh City (HCMC),0,village,0,0,50,0,none,none
+gn:1580593,Hòa Vang,Da Nang City,0,village,0,0,50,0,none,none
+gn:1580730,Hoang Cau,Hanoi,18500,town,0,0,50,0,none,none
+gn:1580754,Hòa Mạc,Ninh Binh,0,village,0,0,50,0,none,none
+gn:1580793,Hoài Ân,Gia Lai,0,village,0,0,50,0,none,none
+gn:1580830,Hòa Bình,Phu Tho,105260,city,0,0,50,0,none,none
+gn:1580914,Hiệp Đức,Da Nang City,14931,town,0,0,50,0,none,none
+gn:1581047,Hà Tĩnh,Hà Tĩnh Province,266321,city,0,0,50,0,none,none
+gn:1581052,Hà Tiên,An Giang,100560,city,0,0,50,0,none,none
+gn:1581130,Hanoi,Hanoi,8053663,large-city,0,0,50,0,none,none
+gn:1581225,Hàm Ninh,An Giang,33503,town,0,0,50,0,none,none
+gn:1581268,Thị Trấn Thanh Nhật,Cao Bằng Province,0,village,0,0,50,0,none,none
+gn:1581274,Hà Lam,Da Nang City,0,village,0,0,50,0,none,none
+gn:1581298,Haiphong,Hai Phong,2625200,large-city,0,0,50,0,none,none
+gn:1581317,Hải Lăng,Quang Tri,0,village,0,0,50,0,none,none
+gn:1581326,Hải Dương,Hai Phong,241373,city,0,0,50,0,none,none
+gn:1581331,Hải Châu,Da Nang City,131427,city,0,0,50,0,none,none
+gn:1581339,Hạ Hòa,Phu Tho,0,village,0,0,50,0,none,none
+gn:1581341,Hạ Hiệu,Thai Nguyen,2739,village,0,0,50,0,none,none
+gn:1581349,Hà Giang,Tuyen Quang,55559,town,0,0,50,0,none,none
+gn:1581364,Hà Đông,Hanoi,50877,town,0,0,50,0,none,none
+gn:1581461,Gò Vấp,Ho Chi Minh City (HCMC),110850,city,0,0,50,0,none,none
+gn:1581483,Gò Quao,An Giang,0,village,0,0,50,0,none,none
+gn:1581529,Gò Công,Dong Thap,97709,town,0,0,50,0,none,none
+gn:1581613,Giồng Riềng,An Giang,0,village,0,0,50,0,none,none
+gn:1581673,Gio Linh,Quang Tri,7002,village,0,0,50,0,none,none
+gn:1581755,Giá Rai,Ca Mau,145340,city,0,0,50,0,none,none
+gn:1581800,Giáo Liêm,Quang Tri,2871,village,0,0,50,0,none,none
+gn:1581834,Gia Nghĩa,Lam Dong,85082,town,0,0,50,0,none,none
+gn:1582062,Duy Xuyên,Da Nang City,0,village,0,0,50,0,none,none
+gn:1582173,Đưc Trọng,Lam Dong,161232,city,0,0,50,0,none,none
+gn:1582175,Đức Thọ,Hà Tĩnh Province,11728,town,0,0,50,0,none,none
+gn:1582187,Đức Phong,Dong Nai,0,village,0,0,50,0,none,none
+gn:1582190,Đức Phổ,Quang Ngai,155743,city,0,0,50,0,none,none
+gn:1582203,Đắk Mil,Lam Dong,0,village,0,0,50,0,none,none
+gn:1582367,Đố Sơn,Hai Phong,51417,town,0,0,50,0,none,none
+gn:1582431,Đồng Xuân,Dak Lak,0,village,0,0,50,0,none,none
+gn:1582436,Đồng Xoài,Dong Nai,168000,city,0,0,50,0,none,none
+gn:1582467,Thị Trấn Đồng Văn,Tuyen Quang,7912,village,0,0,50,0,none,none
+gn:1582497,Thị Trấn Đông Triều,Quảng Ninh,248896,city,0,0,50,0,none,none
+gn:1582743,Đồng Mỏ,Lạng Sơn Province,0,village,0,0,50,0,none,none
+gn:1582863,Thị Trấn Đông Khê,Cao Bằng Province,9099,village,0,0,50,0,none,none
+gn:1582886,Đồng Hới,Quang Tri,133672,city,0,0,50,0,none,none
+gn:1582926,Ðông Hà,Quang Tri,164228,city,0,0,50,0,none,none
+gn:1582998,Thị Trấn Đồng Đăng,Lạng Sơn Province,8922,village,0,0,50,0,none,none
+gn:1583168,Anh Son,Nghệ An Province,0,village,0,0,50,0,none,none
+gn:1583240,Đoan Hùng,Phu Tho,0,village,0,0,50,0,none,none
+gn:1583342,Đình Lập,Lạng Sơn Province,0,village,0,0,50,0,none,none
+gn:1583393,Thị Trấn Đình Cả,Thai Nguyen,3810,village,0,0,50,0,none,none
+gn:1583432,Di Linh,Lam Dong,0,village,0,0,50,0,none,none
+gn:1583468,Diên Khánh,Khanh Hoa,0,village,0,0,50,0,none,none
+gn:1583475,Diễn Thành,Nghệ An Province,21605,town,0,0,50,0,none,none
+gn:1583477,Dien Bien Phu,Điện Biên Province,84672,town,0,0,50,0,none,none
+gn:1583478,Điện Bàn,Da Nang City,226564,city,0,0,50,0,none,none
+gn:1583497,Diêm Điền,Hưng Yên Province,0,village,0,0,50,0,none,none
+gn:1583503,Dịch Vọng,Hanoi,27979,town,0,0,50,0,none,none
+gn:1583518,Dĩ An,Ho Chi Minh City (HCMC),463023,city,0,0,50,0,none,none
+gn:1583699,Dầu Tiếng,Ho Chi Minh City (HCMC),0,village,0,0,50,0,none,none
+gn:1583752,Thị Trấn Đất Đỏ,Ho Chi Minh City (HCMC),20187,town,0,0,50,0,none,none
+gn:1583882,Đan Phượng,Hanoi,39917,town,0,0,50,0,none,none
+gn:1583992,Da Nang,Da Nang City,1276000,large-city,0,0,50,0,none,none
+gn:1584023,Thị Trấn Đầm Hà,Quảng Ninh,47060,town,0,0,50,0,none,none
+gn:1584071,Ðà Lạt,Lam Dong,258014,city,0,0,50,0,none,none
+gn:1584099,Đắk Song,Lam Dong,0,village,0,0,50,0,none,none
+gn:1584242,Thị Trấn Đại Từ,Thai Nguyen,179192,city,0,0,50,0,none,none
+gn:1584287,Dại Mỗ,Hanoi,59980,town,0,0,50,0,none,none
+gn:1584301,Đại Lộc,Da Nang City,16215,town,0,0,50,0,none,none
+gn:1584427,Đắk Tô,Quang Ngai,0,village,0,0,50,0,none,none
+gn:1584601,Cửa Lô,Nghệ An Province,11884,town,0,0,50,0,none,none
+gn:1584613,Củng Sơn,Dak Lak,0,village,0,0,50,0,none,none
+gn:1584661,Củ Chi,Ho Chi Minh City (HCMC),75000,town,0,0,50,0,none,none
+gn:1584725,Cô Tô,An Giang,31278,town,0,0,50,0,none,none
+gn:1584784,Cờ Đỏ,Can Tho City,116576,city,0,0,50,0,none,none
+gn:1584807,Côn Sơn,Ho Chi Minh City (HCMC),6800,village,0,0,50,0,none,none
+gn:1584909,Con Cuông,Nghệ An Province,0,village,0,0,50,0,none,none
+gn:1584955,Cổ Lóa,Hanoi,16514,town,0,0,50,0,none,none
+gn:1585011,Cổ Đô,Hanoi,70706,town,0,0,50,0,none,none
+gn:1585243,Chúc Sơn,Hanoi,0,village,0,0,50,0,none,none
+gn:1585281,Chũ,Bac Ninh,127881,city,0,0,50,0,none,none
+gn:1585312,Chợ Rã,Thai Nguyen,3672,village,0,0,50,0,none,none
+gn:1585317,Chơn Thành,Dong Nai,121083,city,0,0,50,0,none,none
+gn:1585324,Chợ Mới,Thai Nguyen,2383,village,0,0,50,0,none,none
+gn:1585327,Chợ Mới,An Giang,12530,town,0,0,50,0,none,none
+gn:1585330,Chợ Lớn,Ho Chi Minh City (HCMC),561000,large-city,0,0,50,0,none,none
+gn:1585332,Chợ Lách,Vinh Long,0,village,0,0,50,0,none,none
+gn:1585343,Giồng Trôm,Vinh Long,0,village,0,0,50,0,none,none
+gn:1585346,Chợ Gạo,Dong Thap,0,village,0,0,50,0,none,none
+gn:1585356,Chợ Chu,Thai Nguyen,0,village,0,0,50,0,none,none
+gn:1585457,Chí Thạnh,Dak Lak,0,village,0,0,50,0,none,none
+gn:1585478,Chi Nê,Phu Tho,0,village,0,0,50,0,none,none
+gn:1585489,Chí Linh,Hai Phong,220421,city,0,0,50,0,none,none
+gn:1585531,Chiềng Cơi,Sơn La Province,22624,town,0,0,50,0,none,none
+gn:1585639,Châu Phong,An Giang,56322,town,0,0,50,0,none,none
+gn:1585660,Châu Đốc,An Giang,70239,town,0,0,50,0,none,none
+gn:1585975,Cầu Kè,Vinh Long,0,village,0,0,50,0,none,none
+gn:1585982,Cầu Giát,Nghệ An Province,0,village,0,0,50,0,none,none
+gn:1586052,Cát Bà,Hai Phong,30000,town,0,0,50,0,none,none
+gn:1586112,Cao Thượng,Bac Ninh,6115,village,0,0,50,0,none,none
+gn:1586151,Cao Lãnh,Dong Thap,211912,city,0,0,50,0,none,none
+gn:1586153,Cao Ký,Thai Nguyen,2754,village,0,0,50,0,none,none
+gn:1586185,Cao Bằng,Cao Bằng Province,73549,town,0,0,50,0,none,none
+gn:1586203,Cần Thơ,Can Tho City,1507187,large-city,0,0,50,0,none,none
+gn:1586288,Cần Giờ,Ho Chi Minh City (HCMC),55137,town,0,0,50,0,none,none
+gn:1586295,Cần Đước,Tay Ninh,50473,town,0,0,50,0,none,none
+gn:1586296,Cần Giuộc,Tay Ninh,152200,city,0,0,50,0,none,none
+gn:1586316,Cẩm Xuyên,Hà Tĩnh Province,12857,town,0,0,50,0,none,none
+gn:1586330,Cẩm Thủy,Thanh Hóa Province,0,village,0,0,50,0,none,none
+gn:1586350,Cam Ranh,Khanh Hoa,146771,city,0,0,50,0,none,none
+gn:1586357,Cẩm Phả Mines,Quảng Ninh,135477,city,0,0,50,0,none,none
+gn:1586360,Cẩm Phả,Quảng Ninh,190232,city,0,0,50,0,none,none
+gn:1586384,Cam Lộ,Quang Tri,30111,town,0,0,50,0,none,none
+gn:1586443,Cà Mau,Ca Mau,226372,city,0,0,50,0,none,none
+gn:1586502,Cái Tàu Hạ,Dong Thap,0,village,0,0,50,0,none,none
+gn:1586517,Thị Trấn Cái Rồng,Quảng Ninh,6583,village,0,0,50,0,none,none
+gn:1586519,Cái Răng,Can Tho City,86278,town,0,0,50,0,none,none
+gn:1586524,Cái Nước,Ca Mau,0,village,0,0,50,0,none,none
+gn:1586530,Cái Nhum,Vinh Long,0,village,0,0,50,0,none,none
+gn:1586551,Cai Lậy,Dong Thap,143050,city,0,0,50,0,none,none
+gn:1586781,Buôn Tur,Dak Lak,7500,village,0,0,50,0,none,none
+gn:1586798,Buôn Trấp,Dak Lak,23683,town,0,0,50,0,none,none
+gn:1586896,Buôn Ma Thuột,Dak Lak,434256,city,0,0,50,0,none,none
+gn:1586989,Buôn Hồ,Dak Lak,127920,city,0,0,50,0,none,none
+gn:1587026,Ea Pốc,Dak Lak,16033,town,0,0,50,0,none,none
+gn:1587027,Ea Pô,Lam Dong,11575,town,0,0,50,0,none,none
+gn:1587048,Ea Na,Dak Lak,12780,town,0,0,50,0,none,none
+gn:1587254,Bùi Xá,Hà Tĩnh Province,6634,village,0,0,50,0,none,none
+gn:1587406,Hoàn Lão,Quang Tri,43554,town,0,0,50,0,none,none
+gn:1587488,Bồng Sơn,Gia Lai,0,village,0,0,50,0,none,none
+gn:1587613,Bù Đốp,Dong Nai,0,village,0,0,50,0,none,none
+gn:1587759,Bình Thủy,Can Tho City,113565,city,0,0,50,0,none,none
+gn:1587791,Bình Sơn,Quang Ngai,0,village,0,0,50,0,none,none
+gn:1587826,Thị Trấn Bình Liêu,Quảng Ninh,13330,town,0,0,50,0,none,none
+gn:1587866,Bình Gia,Lạng Sơn Province,0,village,0,0,50,0,none,none
+gn:1587883,Bình Đại,Vinh Long,0,village,0,0,50,0,none,none
+gn:1587888,Tân Túc,Ho Chi Minh City (HCMC),0,village,0,0,50,0,none,none
+gn:1587919,Bỉm Sơn,Thanh Hóa Province,53754,town,0,0,50,0,none,none
+gn:1587923,Biên Hòa,Dong Nai,1272235,large-city,0,0,50,0,none,none
+gn:1587950,Bích Chu,Phu Tho,6500,village,0,0,50,0,none,none
+gn:1587976,Bến Tre,Vinh Long,124449,city,0,0,50,0,none,none
+gn:1587985,Bến Thủy,Nghệ An Province,17000,town,0,0,50,0,none,none
+gn:1588057,Bến Cầu,Tay Ninh,0,village,0,0,50,0,none,none
+gn:1588060,Bến Cát,Ho Chi Minh City (HCMC),364578,city,0,0,50,0,none,none
+gn:1588129,Ba Vì,Hanoi,282600,city,0,0,50,0,none,none
+gn:1588178,Ba Tri,Vinh Long,0,village,0,0,50,0,none,none
+gn:1588182,Ba Tơ,Quang Ngai,0,village,0,0,50,0,none,none
+gn:1588242,Thị Trấn Phố Ràng,Lao Cai,8886,village,0,0,50,0,none,none
+gn:1588275,Bảo Lộc,Lam Dong,170920,city,0,0,50,0,none,none
+gn:1588278,Thị Trấn Bảo Lạc,Cao Bằng Province,4771,village,0,0,50,0,none,none
+gn:1588316,Bẩn Yên Nhân,Hưng Yên Province,0,village,0,0,50,0,none,none
+gn:1589412,Nà Tấu,Điện Biên Province,6333,village,0,0,50,0,none,none
+gn:1590225,Ít Ong,Sơn La Province,16153,town,0,0,50,0,none,none
+gn:1590428,Ea Hiao,Dak Lak,12259,town,0,0,50,0,none,none
+gn:1590900,Thị Trấn Thuận Châu,Sơn La Province,153000,city,0,0,50,0,none,none
+gn:1591236,Bà Nà,Da Nang City,15276,town,0,0,50,0,none,none
+gn:1591422,Bắc Yên,Sơn La Province,0,village,0,0,50,0,none,none
+gn:1591435,Bắc Sơn,Lạng Sơn Province,0,village,0,0,50,0,none,none
+gn:1591440,Bắc Quang,Tuyen Quang,118690,city,0,0,50,0,none,none
+gn:1591449,Bắc Ninh,Bac Ninh,287658,city,0,0,50,0,none,none
+gn:1591468,Bắc Lũng,Bac Ninh,6618,village,0,0,50,0,none,none
+gn:1591474,Bạc Liêu,Ca Mau,156110,city,0,0,50,0,none,none
+gn:1591493,Bạch Mai,Hanoi,91308,town,0,0,50,0,none,none
+gn:1591522,Bắc Hà,Lao Cai,0,village,0,0,50,0,none,none
+gn:1591527,Bắc Giang,Bac Ninh,450000,city,0,0,50,0,none,none
+gn:1591538,Bắc Kạn,Thai Nguyen,45036,town,0,0,50,0,none,none
+gn:1591661,Ấp Xuân Sơn,Ho Chi Minh City (HCMC),9117,village,0,0,50,0,none,none
+gn:1592152,Tân Trụ,Tay Ninh,0,village,0,0,50,0,none,none
+gn:1592214,Ấp Tân Ngãi,Vinh Long,8887,village,0,0,50,0,none,none
+gn:1592218,Ấp Tân Mỹ,Dong Thap,8923,village,0,0,50,0,none,none
+gn:1592307,An Hòa,Dong Thap,10700,town,0,0,50,0,none,none
+gn:1592500,Ấp Phước Tĩnh,Ho Chi Minh City (HCMC),22106,town,0,0,50,0,none,none
+gn:1592626,Ấp Phú Hòa,An Giang,12098,town,0,0,50,0,none,none
+gn:1592676,Ông Yến,Ca Mau,14141,town,0,0,50,0,none,none
+gn:1592832,Lai Vung,Dong Thap,80649,town,0,0,50,0,none,none
+gn:1593039,Ấp Long Thọ,Vinh Long,3126,village,0,0,50,0,none,none
+gn:1593041,Ấp Long Thạnh,An Giang,34198,town,0,0,50,0,none,none
+gn:1593289,Ấp Hô Phòng,Ca Mau,22317,town,0,0,50,0,none,none
+gn:1593306,Ấp Hòa Thanh,Lam Dong,1474,village,0,0,50,0,none,none
+gn:1593889,Ấp Bình Châu,Ho Chi Minh City (HCMC),15344,town,0,0,50,0,none,none
+gn:1593890,Ấp Bình Chánh,An Giang,10000,town,0,0,50,0,none,none
+gn:1594005,Ba Chúc,An Giang,13122,town,0,0,50,0,none,none
+gn:1594188,An Trạch,Ca Mau,28412,town,0,0,50,0,none,none
+gn:1594211,An Thới,An Giang,1957,village,0,0,50,0,none,none
+gn:1594308,An Nhơn,Gia Lai,308396,city,0,0,50,0,none,none
+gn:1594371,An Lão,Gia Lai,0,village,0,0,50,0,none,none
+gn:1594402,An Khê,Gia Lai,81600,town,0,0,50,0,none,none
+gn:1594436,An Hải,Da Nang City,82635,town,0,0,50,0,none,none
+gn:1594437,An Hà,Da Nang City,8245,village,0,0,50,0,none,none
+gn:1594454,An Dương,Hai Phong,0,village,0,0,50,0,none,none
+gn:1594496,An Châu,Bac Ninh,0,village,0,0,50,0,none,none
+gn:1594518,An Biên,An Giang,0,village,0,0,50,0,none,none
+gn:1594525,An Bá,Quang Ngai,3333,village,0,0,50,0,none,none
+gn:1594548,A Lưới,Thừa Thiên Huế Province,5019,village,0,0,50,0,none,none
+gn:1904560,Quận Bảy,Ho Chi Minh City (HCMC),0,village,0,0,50,0,none,none
+gn:1904564,Bình Thạnh,Ho Chi Minh City (HCMC),552164,large-city,0,0,50,0,none,none
+gn:1941427,Tam Điệp,Ninh Binh,0,village,0,0,50,0,none,none
+gn:1941661,Thị Trấn Ba Hàng,Thai Nguyen,13023,town,0,0,50,0,none,none
+gn:1942015,Châu Thành,Vinh Long,0,village,0,0,50,0,none,none
+gn:7289846,Ba Dinh,Hanoi,221893,city,0,0,50,0,none,none
+gn:7304197,Mui Ne,Lam Dong,50166,town,0,0,50,0,none,none
+gn:7910088,Tân Uyên,Ho Chi Minh City (HCMC),52873,town,0,0,50,0,none,none
+gn:8200099,Yên Lập,Phu Tho,0,village,0,0,50,0,none,none
+gn:8200205,Thanh Ba,Phu Tho,0,village,0,0,50,0,none,none
+gn:8200212,Sông Thao,Phu Tho,0,village,0,0,50,0,none,none
+gn:8200721,Xuân Trùng,Phu Tho,11506,town,0,0,50,0,none,none
+gn:8200783,Hưng Hóa,Phu Tho,0,village,0,0,50,0,none,none
+gn:8200836,Phong Châu,Phu Tho,0,village,0,0,50,0,none,none
+gn:8201690,Phong Châu,Hanoi,7346,village,0,0,50,0,none,none
+gn:8232480,Pú Hồng,Điện Biên Province,3443,village,0,0,50,0,none,none
+gn:8260314,Ea H'Leo,Dak Lak,10942,town,0,0,50,0,none,none
+gn:8309330,Thị Trấn Tân Yên,Tuyen Quang,8800,village,0,0,50,0,none,none
+gn:8309683,Tân Việt,Cao Bằng Province,0,village,0,0,50,0,none,none
+gn:8309686,Pác Miầu,Cao Bằng Province,4793,village,0,0,50,0,none,none
+gn:8310244,Lập Thạch,Phu Tho,0,village,0,0,50,0,none,none
+gn:8336866,An Châu,An Giang,0,village,0,0,50,0,none,none
+gn:8336885,Núi Sập,An Giang,25633,town,0,0,50,0,none,none
+gn:8337787,Tân Ninh,Dong Thap,8000,village,0,0,50,0,none,none
+gn:8337809,Tầm Vu,Tay Ninh,0,village,0,0,50,0,none,none
+gn:8340623,Gia Bình,Bac Ninh,0,village,0,0,50,0,none,none
+gn:8340640,Thứa,Bac Ninh,0,village,0,0,50,0,none,none
+gn:8340649,Chờ,Bac Ninh,0,village,0,0,50,0,none,none
+gn:8340703,Hồ,Bac Ninh,0,village,0,0,50,0,none,none
+gn:8340720,Lim,Bac Ninh,9923,village,0,0,50,0,none,none
+gn:8340760,Cung Kiệm,Bac Ninh,80000,town,0,0,50,0,none,none
+gn:8341023,Thị Trấn Gành Hào,Ca Mau,0,village,0,0,50,0,none,none
+gn:8341032,Thị Trấn Ngan Dừa,Ca Mau,0,village,0,0,50,0,none,none
+gn:8341039,Thị Trấn Phước Long,Ca Mau,0,village,0,0,50,0,none,none
+gn:8341049,Thị Trấn Giá Rai,Ca Mau,0,village,0,0,50,0,none,none
+gn:8341067,Thị Trấn Hòa Bình,Ca Mau,0,village,0,0,50,0,none,none
+gn:8375952,Cái Dầu,An Giang,0,village,0,0,50,0,none,none
+gn:8376452,Cầu Gồ,Bac Ninh,0,village,0,0,50,0,none,none
+gn:8376497,Đồi Ngô,Bac Ninh,0,village,0,0,50,0,none,none
+gn:8376580,Neo,Bac Ninh,0,village,0,0,50,0,none,none
+gn:8376599,Bích Động,Bac Ninh,0,village,0,0,50,0,none,none
+gn:8376620,Thắng,Bac Ninh,0,village,0,0,50,0,none,none
+gn:8381808,Bộc Bố,Thai Nguyen,3748,village,0,0,50,0,none,none
+gn:8381874,Bằng Lũng,Thai Nguyen,0,village,0,0,50,0,none,none
+gn:8421407,Thị Trấn Long Điền,Ho Chi Minh City (HCMC),0,village,0,0,50,0,none,none
+gn:8421418,Suối Nghệ,Ho Chi Minh City (HCMC),11894,town,0,0,50,0,none,none
+gn:8425634,Mường Chà,Điện Biên Province,13884,town,0,0,50,0,none,none
+gn:8425650,Thị Trấn Tủa Chùa,Điện Biên Province,0,village,0,0,50,0,none,none
+gn:8425679,Điện Biên Đông,Điện Biên Province,0,village,0,0,50,0,none,none
+gn:8425689,Thị Trấn Điện Biên,Điện Biên Province,0,village,0,0,50,0,none,none
+gn:8456727,Tam Đường,Lai Châu Province,0,village,0,0,50,0,none,none
+gn:8456741,Lai Châu,Lai Châu Province,42973,town,0,0,50,0,none,none
+gn:8456777,Thị Trấn Mường Tè,Lai Châu Province,0,village,0,0,50,0,none,none
+gn:8473973,Thị Trấn Tam Sơn,Tuyen Quang,0,village,0,0,50,0,none,none
+gn:8473987,Thị Trấn Vị Xuyên,Tuyen Quang,0,village,0,0,50,0,none,none
+gn:8473988,Thị Trấn Việt Lâm,Tuyen Quang,0,village,0,0,50,0,none,none
+gn:8473997,Thị Trấn Việt Quang,Tuyen Quang,16072,town,0,0,50,0,none,none
+gn:8474004,Yên Phú,Tuyen Quang,0,village,0,0,50,0,none,none
+gn:8474041,Thị Trấn Vinh Quang,Tuyen Quang,0,village,0,0,50,0,none,none
+gn:8474046,Yên Bình,Tuyen Quang,0,village,0,0,50,0,none,none
+gn:8476780,Thị Trấn Thông Nông,Cao Bằng Province,0,village,0,0,50,0,none,none
+gn:8476806,Thị Trấn Xuân Hoà,Cao Bằng Province,4541,village,0,0,50,0,none,none
+gn:8476898,Thị Trấn Hùng Quốc,Cao Bằng Province,0,village,0,0,50,0,none,none
+gn:8522260,Thị Trấn Cao Lộc,Lạng Sơn Province,8653,village,0,0,50,0,none,none
+gn:8522285,Chi Lăng,Lạng Sơn Province,7213,village,0,0,50,0,none,none
+gn:8523103,Thị Trấn Vĩnh Lộc,Tuyen Quang,0,village,0,0,50,0,none,none
+gn:8526353,Sơn Thịnh,Lao Cai,0,village,0,0,50,0,none,none
+gn:8526370,Nông Trường Trần Phú,Lao Cai,5132,village,0,0,50,0,none,none
+gn:8526401,Cổ Phúc,Lao Cai,0,village,0,0,50,0,none,none
+gn:8526448,Thị Trấn Yên Thế,Lao Cai,0,village,0,0,50,0,none,none
+gn:8531735,Phu Quoc,An Giang,294419,city,0,0,50,0,none,none
+gn:8538202,Thị Trấn Na Hang,Tuyen Quang,10921,town,0,0,50,0,none,none
+gn:8539621,Bình Minh,Vinh Long,94862,town,0,0,50,0,none,none
+gn:8540986,An Phú,An Giang,0,village,0,0,50,0,none,none
+gn:8540990,Phú Mỹ,An Giang,0,village,0,0,50,0,none,none
+gn:8541545,Thị Trấn Phú Mỹ,Ho Chi Minh City (HCMC),0,village,0,0,50,0,none,none
+gn:8541991,Bát Xát,Lao Cai,6933,village,0,0,50,0,none,none
+gn:8545216,Hát Lót,Sơn La Province,0,village,0,0,50,0,none,none
+gn:8549745,Thị Trấn Vân Du,Thanh Hóa Province,24146,town,0,0,50,0,none,none
+gn:8549842,Quảng Xương,Thanh Hóa Province,0,village,0,0,50,0,none,none
+gn:8549844,Nông Cống,Thanh Hóa Province,0,village,0,0,50,0,none,none
+gn:8549876,Quan Sơn,Thanh Hóa Province,0,village,0,0,50,0,none,none
+gn:8549965,Yên Cát,Thanh Hóa Province,0,village,0,0,50,0,none,none
+gn:8550048,Bút Sơn,Thanh Hóa Province,0,village,0,0,50,0,none,none
+gn:8550086,Cành Nàng,Thanh Hóa Province,0,village,0,0,50,0,none,none
+gn:8550102,Hậu Lộc,Thanh Hóa Province,0,village,0,0,50,0,none,none
+gn:8550248,Triệu Sơn,Thanh Hóa Province,0,village,0,0,50,0,none,none
+gn:8550302,Thị Trấn Sao Vàng,Thanh Hóa Province,44643,town,0,0,50,0,none,none
+gn:8550330,Quán Lào,Thanh Hóa Province,0,village,0,0,50,0,none,none
+gn:8550371,Hà Trung,Thanh Hóa Province,0,village,0,0,50,0,none,none
+gn:8550774,Rừng Thông,Thanh Hóa Province,0,village,0,0,50,0,none,none
+gn:8550778,Vạn Hà,Thanh Hóa Province,0,village,0,0,50,0,none,none
+gn:8551344,Đà Bắc,Phu Tho,0,village,0,0,50,0,none,none
+gn:8551391,Mường Khến,Phu Tho,0,village,0,0,50,0,none,none
+gn:8551433,Hàng Trạm,Phu Tho,11503,town,0,0,50,0,none,none
+gn:8551451,Thị Trấn Thanh Hà,Phu Tho,7190,village,0,0,50,0,none,none
+gn:8551473,Bo,Phu Tho,15408,town,0,0,50,0,none,none
+gn:8551496,Lương Sơn,Phu Tho,0,village,0,0,50,0,none,none
+gn:8551505,Kỳ Sơn,Phu Tho,0,village,0,0,50,0,none,none
+gn:8551531,Cao Phong,Phu Tho,0,village,0,0,50,0,none,none
+gn:8553243,Me,Ninh Binh,0,village,0,0,50,0,none,none
+gn:8553249,Thiên Tồn,Ninh Binh,0,village,0,0,50,0,none,none
+gn:8553308,Thị Trấn Bình Minh,Ninh Binh,9040,village,0,0,50,0,none,none
+gn:8553328,Yên Thịnh,Ninh Binh,0,village,0,0,50,0,none,none
+gn:8554356,Xuân Trường,Ninh Binh,0,village,0,0,50,0,none,none
+gn:8554357,Yên Định,Ninh Binh,0,village,0,0,50,0,none,none
+gn:8554466,Hanoi,Hanoi,0,village,0,0,50,0,none,none
+gn:8554483,Gôi,Ninh Binh,6339,village,0,0,50,0,none,none
+gn:8554539,Nam Giang,Ninh Binh,0,village,0,0,50,0,none,none
+gn:8554560,Cổ Lễ,Ninh Binh,0,village,0,0,50,0,none,none
+gn:8555963,Côn Đảo,Ho Chi Minh City (HCMC),13112,town,0,0,50,0,none,none
+gn:8564034,Quế,Ninh Binh,0,village,0,0,50,0,none,none
+gn:8564068,Vĩnh Trụ,Ninh Binh,0,village,0,0,50,0,none,none
+gn:8564079,Bình Mỹ,Ninh Binh,0,village,0,0,50,0,none,none
+gn:8564088,Thanh Lưu,Ninh Binh,0,village,0,0,50,0,none,none
+gn:8569519,Hưng Hà,Hưng Yên Province,0,village,0,0,50,0,none,none
+gn:8569541,Vũ Thư,Hưng Yên Province,0,village,0,0,50,0,none,none
+gn:8569646,Đông Hưng,Hưng Yên Province,0,village,0,0,50,0,none,none
+gn:8594709,Thành Phố Bà Rịa,Ho Chi Minh City (HCMC),235192,city,0,0,50,0,none,none
+gn:8594715,Thị Trấn Tuần Giáo,Điện Biên Province,0,village,0,0,50,0,none,none
+gn:8594716,Mường Ảng,Điện Biên Province,0,village,0,0,50,0,none,none
+gn:8595083,An Lão,Hai Phong,0,village,0,0,50,0,none,none
+gn:8595111,Tiên Lãng,Hai Phong,0,village,0,0,50,0,none,none
+gn:8595146,Núi Đối,Hai Phong,0,village,0,0,50,0,none,none
+gn:8595948,Quảng Hà,Quảng Ninh,0,village,0,0,50,0,none,none
+gn:8596004,Trới,Quảng Ninh,0,village,0,0,50,0,none,none
+gn:8596063,Cô Tô,Quảng Ninh,6778,village,0,0,50,0,none,none
+gn:8607120,Thanh Miện,Hai Phong,0,village,0,0,50,0,none,none
+gn:8607137,Nam Sách,Hai Phong,0,village,0,0,50,0,none,none
+gn:8607197,Gia Lộc,Hai Phong,0,village,0,0,50,0,none,none
+gn:8607207,Tứ Kỳ,Hai Phong,0,village,0,0,50,0,none,none
+gn:8607221,Thanh Hà,Hai Phong,0,village,0,0,50,0,none,none
+gn:8607234,Phú Thái,Hai Phong,0,village,0,0,50,0,none,none
+gn:8607797,Đu,Thai Nguyen,0,village,0,0,50,0,none,none
+gn:8607905,Hương Sơn,Thai Nguyen,0,village,0,0,50,0,none,none
+gn:8607921,Chùa Hang,Thai Nguyen,0,village,0,0,50,0,none,none
+gn:8608557,Thanh Thủy,Phu Tho,0,village,0,0,50,0,none,none
+gn:8608578,Lâm Thao,Phu Tho,0,village,0,0,50,0,none,none
+gn:8609125,Mê Linh,Hanoi,0,village,0,0,50,0,none,none
+gn:8609151,Vĩnh Tường,Phu Tho,6000,village,0,0,50,0,none,none
+gn:8609160,Hợp Hòa,Phu Tho,0,village,0,0,50,0,none,none
+gn:8612735,Văn Giang,Hưng Yên Province,0,village,0,0,50,0,none,none
+gn:8612761,Yên Mỹ,Hưng Yên Province,0,village,0,0,50,0,none,none
+gn:8612781,Khoái Châu,Hưng Yên Province,0,village,0,0,50,0,none,none
+gn:8612792,Lương Bằng,Hưng Yên Province,39420,town,0,0,50,0,none,none
+gn:8612808,Ân Thi,Hưng Yên Province,0,village,0,0,50,0,none,none
+gn:8612817,Trần Cao,Hưng Yên Province,0,village,0,0,50,0,none,none
+gn:8612829,Vương,Hưng Yên Province,0,village,0,0,50,0,none,none
+gn:8615817,Liên Quan,Hanoi,8997,village,0,0,50,0,none,none
+gn:8615841,Phúc Thọ,Hanoi,0,village,0,0,50,0,none,none
+gn:8615856,Phùng,Hanoi,0,village,0,0,50,0,none,none
+gn:8615873,Trôi,Hanoi,0,village,0,0,50,0,none,none
+gn:8615881,Quốc Oai,Hanoi,0,village,0,0,50,0,none,none
+gn:8615957,Thường Tín,Hanoi,0,village,0,0,50,0,none,none
+gn:8615973,Phú Xuyên,Hanoi,0,village,0,0,50,0,none,none
+gn:8616004,Đại Nghĩa,Hanoi,0,village,0,0,50,0,none,none
+gn:8616016,Sóc Sơn,Hanoi,85431,town,0,0,50,0,none,none
+gn:8616040,Đông Anh,Hanoi,0,village,0,0,50,0,none,none
+gn:8616055,Cầu Diễn,Hanoi,27017,town,0,0,50,0,none,none
+gn:8616067,Trâu Quỳ,Hanoi,30051,town,0,0,50,0,none,none
+gn:8616113,Cầu Giấy,Hanoi,292536,city,0,0,50,0,none,none
+gn:8616118,Thanh Xuân,Hanoi,293292,city,0,0,50,0,none,none
+gn:8616121,Đống Đa,Hanoi,371606,city,0,0,50,0,none,none
+gn:8616124,Hoàn Kiếm,Hanoi,135618,city,0,0,50,0,none,none
+gn:8616127,Hai Bà Trưng,Hanoi,303586,city,0,0,50,0,none,none
+gn:8616216,Tây Mỗ,Hanoi,46469,town,0,0,50,0,none,none
+gn:8627929,Hưng Nguyên,Nghệ An Province,0,village,0,0,50,0,none,none
+gn:8628018,Bản Na Hỷ,Nghệ An Province,16710,town,0,0,50,0,none,none
+gn:8628059,Thái Hòa,Nghệ An Province,66127,town,0,0,50,0,none,none
+gn:8637745,Vũ Quang,Hà Tĩnh Province,2449,village,0,0,50,0,none,none
+gn:8637813,Nghèn,Hà Tĩnh Province,18965,town,0,0,50,0,none,none
+gn:8646553,Đồng Lê,Quang Tri,0,village,0,0,50,0,none,none
+gn:8650753,Krông Klang,Quang Tri,4732,village,0,0,50,0,none,none
+gn:8656112,Khe Tre,Thừa Thiên Huế Province,0,village,0,0,50,0,none,none
+gn:8656203,Sịa,Thừa Thiên Huế Province,0,village,0,0,50,0,none,none
+gn:8656223,A Roàng Hai,Thừa Thiên Huế Province,1976,village,0,0,50,0,none,none
+gn:8656249,Lăng Cô,Thừa Thiên Huế Province,10810,town,0,0,50,0,none,none
+gn:8656376,Thanh Khê,Da Nang City,201240,city,0,0,50,0,none,none
+gn:8656395,Cẩm Lệ,Da Nang City,78837,town,0,0,50,0,none,none
+gn:8656396,Sơn Trà,Da Nang City,86890,town,0,0,50,0,none,none
+gn:8656409,Liên Chiểu,Da Nang City,0,village,0,0,50,0,none,none
+gn:8656412,Ngũ Hành Sơn,Da Nang City,0,village,0,0,50,0,none,none
+gn:8657105,Hòa Cường,Da Nang City,119363,city,0,0,50,0,none,none
+gn:8668502,Prao,Da Nang City,4075,village,0,0,50,0,none,none
+gn:8668521,Khâm Đức,Da Nang City,0,village,0,0,50,0,none,none
+gn:8668557,Núi Thành,Da Nang City,69406,town,0,0,50,0,none,none
+gn:8668697,Phú Ninh,Da Nang City,0,village,0,0,50,0,none,none
+gn:8673079,Tây Trà,Quang Ngai,0,village,0,0,50,0,none,none
+gn:8673396,Lý Sơn,Quang Ngai,22174,town,0,0,50,0,none,none
+gn:8675891,Đắk Glei,Quang Ngai,0,village,0,0,50,0,none,none
+gn:8675937,Sa Thầy,Quang Ngai,0,village,0,0,50,0,none,none
+gn:8675967,Đắk Hà,Quang Ngai,0,village,0,0,50,0,none,none
+gn:8675975,Đắk Rve,Quang Ngai,0,village,0,0,50,0,none,none
+gn:8675985,Măng Đen,Quang Ngai,6913,village,0,0,50,0,none,none
+gn:8695369,Đăk Đoa,Gia Lai,0,village,0,0,50,0,none,none
+gn:8701187,K Bang,Gia Lai,0,village,0,0,50,0,none,none
+gn:8701220,Kông Chro,Gia Lai,0,village,0,0,50,0,none,none
+gn:8701230,Ia Pa,Gia Lai,0,village,0,0,50,0,none,none
+gn:8701253,A Yun Pa,Gia Lai,35058,town,0,0,50,0,none,none
+gn:8701288,Chư Sê,Gia Lai,0,village,0,0,50,0,none,none
+gn:8701301,Chư Prông,Gia Lai,0,village,0,0,50,0,none,none
+gn:8701320,Chư Ty,Gia Lai,0,village,0,0,50,0,none,none
+gn:8701330,Ia Kha,Gia Lai,0,village,0,0,50,0,none,none
+gn:8701345,Phú Hòa,Gia Lai,0,village,0,0,50,0,none,none
+gn:8701374,Kon Dơng,Gia Lai,0,village,0,0,50,0,none,none
+gn:8719315,Hai Riêng,Dak Lak,0,village,0,0,50,0,none,none
+gn:8724967,Ea Súp,Dak Lak,7484,village,0,0,50,0,none,none
+gn:8724987,Ea Drăng,Dak Lak,20600,town,0,0,50,0,none,none
+gn:8725000,Krông Năng,Dak Lak,0,village,0,0,50,0,none,none
+gn:8725037,Quảng Phú,Dak Lak,26733,town,0,0,50,0,none,none
+gn:8725054,Ea Kar,Dak Lak,12446,town,0,0,50,0,none,none
+gn:8725113,Krông Kmar,Dak Lak,0,village,0,0,50,0,none,none
+gn:8725127,M’Đrăk,Dak Lak,0,village,0,0,50,0,none,none
+gn:8743021,Khánh Vĩnh,Khanh Hoa,0,village,0,0,50,0,none,none
+gn:8743031,Tô Hạp,Khanh Hoa,0,village,0,0,50,0,none,none
+gn:8743057,Cam Lâm,Khanh Hoa,0,village,0,0,50,0,none,none
+gn:8746448,Ea T’ling,Lam Dong,15342,town,0,0,50,0,none,none
+gn:8746533,Đắk Mâm,Lam Dong,0,village,0,0,50,0,none,none
+gn:8991407,Đinh Văn,Lam Dong,16036,town,0,0,50,0,none,none
+gn:8991425,Thạnh Mỹ,Lam Dong,0,village,0,0,50,0,none,none
+gn:8991482,Lộc Thắng,Lam Dong,0,village,0,0,50,0,none,none
+gn:8991503,Đồng Nai,Lam Dong,0,village,0,0,50,0,none,none
+gn:8991515,Đạ Tẻh,Lam Dong,0,village,0,0,50,0,none,none
+gn:8993912,Bác Ái,Khanh Hoa,0,village,0,0,50,0,none,none
+gn:8993916,Tân Sơn,Khanh Hoa,0,village,0,0,50,0,none,none
+gn:8993931,Phước Dân,Khanh Hoa,0,village,0,0,50,0,none,none
+gn:8993961,Khánh Hải,Khanh Hoa,15585,town,0,0,50,0,none,none
+gn:8998414,Chợ Lầu,Lam Dong,0,village,0,0,50,0,none,none
+gn:8998439,Ma Lâm,Lam Dong,0,village,0,0,50,0,none,none
+gn:8998450,Thuận Nam,Lam Dong,0,village,0,0,50,0,none,none
+gn:9000266,Phú Quý,Lam Dong,25267,town,0,0,50,0,none,none
+gn:9075694,Tân Phú,Dong Nai,0,village,0,0,50,0,none,none
+gn:9075713,Vĩnh An,Dong Nai,0,village,0,0,50,0,none,none
+gn:9075749,Thống Nhất,Dong Nai,0,village,0,0,50,0,none,none
+gn:9075789,Long Khánh,Dong Nai,171276,city,0,0,50,0,none,none
+gn:9078184,Tân Phú,Dong Nai,0,village,0,0,50,0,none,none
+gn:9081295,Tân Châu,Tay Ninh,0,village,0,0,50,0,none,none
+gn:9081304,Tân Biên,Tay Ninh,0,village,0,0,50,0,none,none
+gn:9081315,Châu Thành,Tay Ninh,0,village,0,0,50,0,none,none
+gn:9081327,Hòa Thành,Tay Ninh,147666,city,0,0,50,0,none,none
+gn:9081340,Gò Dầu,Tay Ninh,0,village,0,0,50,0,none,none
+gn:9081358,Dương Minh Châu,Tay Ninh,35878,town,0,0,50,0,none,none
+gn:9101346,Tân Hưng,Tay Ninh,0,village,0,0,50,0,none,none
+gn:9101373,Vĩnh Hưng,Tay Ninh,0,village,0,0,50,0,none,none
+gn:9101389,Tân Thạnh,Tay Ninh,0,village,0,0,50,0,none,none
+gn:9101395,Thạnh Hóa,Tay Ninh,0,village,0,0,50,0,none,none
+gn:9101404,Đông Thành,Tay Ninh,0,village,0,0,50,0,none,none
+gn:9101411,Hậu Nghĩa,Tay Ninh,0,village,0,0,50,0,none,none
+gn:9113556,Mỹ Phước,Dong Thap,0,village,0,0,50,0,none,none
+gn:9113580,Tân Hòa,Dong Thap,0,village,0,0,50,0,none,none
+gn:9280687,Thứ Mười Một,An Giang,0,village,0,0,50,0,none,none
+gn:9289561,Sa Rài,Dong Thap,9003,village,0,0,50,0,none,none
+gn:9290486,Long Hồ,Vinh Long,0,village,0,0,50,0,none,none
+gn:9292220,Duyên Hải,Vinh Long,69961,town,0,0,50,0,none,none
+gn:9531891,Châu Thành,Vinh Long,0,village,0,0,50,0,none,none
+gn:9533392,Vĩnh Thạnh,Can Tho City,98399,town,0,0,50,0,none,none
+gn:9534523,Nàng Mau,Can Tho City,0,village,0,0,50,0,none,none
+gn:9534547,Ngã Bảy,Can Tho City,101192,city,0,0,50,0,none,none
+gn:9534553,Ngã Sáu,Can Tho City,0,village,0,0,50,0,none,none
+gn:9534559,Một Ngàn,Can Tho City,0,village,0,0,50,0,none,none
+gn:9534593,Ấp Một,Can Tho City,42766,town,0,0,50,0,none,none
+gn:9534807,Cù Lao Dung,Can Tho City,0,village,0,0,50,0,none,none
+gn:9534824,Châu Thành,Can Tho City,0,village,0,0,50,0,none,none
+gn:9534829,Huỳnh Hữu Nghĩa,Can Tho City,0,village,0,0,50,0,none,none
+gn:9643200,U Minh,Ca Mau,8696,village,0,0,50,0,none,none
+gn:9643221,Trần Văn Thời,Ca Mau,55897,town,0,0,50,0,none,none
+gn:9643257,Ngọc Hiển,Ca Mau,0,village,0,0,50,0,none,none
+gn:9645048,Quận Hai,Ho Chi Minh City (HCMC),0,village,0,0,50,0,none,none
+gn:9645059,Quận Chín,Ho Chi Minh City (HCMC),0,village,0,0,50,0,none,none
+gn:9645071,Quận Bốn,Ho Chi Minh City (HCMC),199329,city,0,0,50,0,none,none
+gn:9645072,Quận Sáu,Ho Chi Minh City (HCMC),271050,city,0,0,50,0,none,none
+gn:9645073,Quận Năm,Ho Chi Minh City (HCMC),187510,city,0,0,50,0,none,none
+gn:9645074,Quận Một,Ho Chi Minh City (HCMC),0,village,0,0,50,0,none,none
+gn:9645075,Quận Phú Nhuận,Ho Chi Minh City (HCMC),0,village,0,0,50,0,none,none
+gn:9645083,Quận Tân Phú,Ho Chi Minh City (HCMC),0,village,0,0,50,0,none,none
+gn:9645084,Quận Mười Một,Ho Chi Minh City (HCMC),332536,city,0,0,50,0,none,none
+gn:9645085,Quận Mười,Ho Chi Minh City (HCMC),399000,city,0,0,50,0,none,none
+gn:9645086,Quận Ba,Ho Chi Minh City (HCMC),220375,city,0,0,50,0,none,none
+gn:9645087,Quận Bình Thạnh,Ho Chi Minh City (HCMC),0,village,0,0,50,0,none,none
+gn:9871722,Gia Lâm,Hanoi,309353,city,0,0,50,0,none,none
+gn:10126715,Gành Hào,Ca Mau,31552,town,0,0,50,0,none,none
+gn:10178260,Xóm Mười Lăm,Nghệ An Province,2855,village,0,0,50,0,none,none
+gn:10182229,Cửa Nam,Hanoi,52750,town,0,0,50,0,none,none
+gn:10275082,Thuần Thiện,Hà Tĩnh Province,7949,village,0,0,50,0,none,none
+gn:10275425,Hòa Hợp,Hà Tĩnh Province,3560,village,0,0,50,0,none,none
+gn:11496088,Kiên Hải,An Giang,23179,town,0,0,50,0,none,none
+gn:11496092,Hoàng Sa,Da Nang City,1443,village,0,0,50,0,none,none
+gn:11790693,Tra Que Vegetable Village,Da Nang City,10000,town,0,0,50,0,none,none
+gn:12166273,Quận Đức Thịnh,,132000,city,0,0,50,0,none,none
+gn:12166276,Quận Lấp Vò,Dong Thap,0,village,0,0,50,0,none,none
+gn:12166277,Hoàng Sa,Da Nang City,0,village,0,0,50,0,none,none
+gn:12217184,Huyện Lâm Hà,Lam Dong,144707,city,0,0,50,0,none,none
+gn:12217190,Huyện Bảo Lâm,Lam Dong,0,village,0,0,50,0,none,none
+gn:12217192,Xã Phúc Thọ,Lam Dong,0,village,0,0,50,0,none,none
+gn:12217196,Xã Tân Hà,Lam Dong,0,village,0,0,50,0,none,none
+gn:12217197,Xã Tân Văn,Lam Dong,0,village,0,0,50,0,none,none
+gn:12217198,Xã Hoài Đức,Lam Dong,0,village,0,0,50,0,none,none
+gn:12217199,Xã Tân Thanh,Lam Dong,0,village,0,0,50,0,none,none
+gn:12217200,Xã Đạ K'Nàng,Lam Dong,0,village,0,0,50,0,none,none
+gn:12253704,Phú Quốc,An Giang,179480,city,0,0,50,0,none,none
+gn:12261368,thị xã Quảng Trị,Quang Tri,23356,town,0,0,50,0,none,none
+gn:12382295,Quang Minh,Hanoi,25000,town,0,0,50,0,none,none
+gn:12382296,Thuận An,Ho Chi Minh City (HCMC),588616,large-city,0,0,50,0,none,none
+gn:12489739,Đại Nghĩa,Da Nang City,10808,town,0,0,50,0,none,none
+gn:12808881,Ô Chợ Dừa,Hanoi,36318,town,0,0,50,0,none,none
+gn:12808882,Láng Thượng,Hanoi,31279,town,0,0,50,0,none,none
+gn:13405688,Óc Eo,An Giang,39481,town,0,0,50,0,none,none
+gn:13405933,Bắc Từ Liêm,Hanoi,340605,city,0,0,50,0,none,none
+gn:13494162,Đường Lâm,Hanoi,8329,village,0,0,50,0,none,none
+gn:13494190,Vinhomes Ocean Park,Hanoi,60000,town,0,0,50,0,none,none
+gn:13494192,Ecopark,Hưng Yên Province,25000,town,0,0,50,0,none,none
+gn:13494193,Vinhomes Smart City,Hanoi,50000,town,0,0,50,0,none,none
+gn:13494194,Vinhomes Times City,Hanoi,50000,town,0,0,50,0,none,none
+gn:13494195,Vinhomes Royal City,Hanoi,20000,town,0,0,50,0,none,none
+gn:13494293,Long Cốc,Phu Tho,2658,village,0,0,50,0,none,none
+gn:13494381,Lay Nưa,Điện Biên Province,5376,village,0,0,50,0,none,none
+gn:13512656,Kim Song Trường,Hà Tĩnh Province,8905,village,0,0,50,0,none,none
+gn:13512681,A Ngo,Thừa Thiên Huế Province,2404,village,0,0,50,0,none,none
+gn:13512682,Đông Sơn,Thừa Thiên Huế Province,1081,village,0,0,50,0,none,none
+gn:13512683,Hồng Bắc,Thừa Thiên Huế Province,1513,village,0,0,50,0,none,none
+gn:13512684,Hồng Hạ,Thừa Thiên Huế Province,1153,village,0,0,50,0,none,none
+gn:13512685,Hồng Kim,Thừa Thiên Huế Province,1451,village,0,0,50,0,none,none
+gn:13512686,Hồng Thái,Thừa Thiên Huế Province,1070,village,0,0,50,0,none,none
+gn:13512687,Hồng Thượng,Thừa Thiên Huế Province,1669,village,0,0,50,0,none,none
+gn:13512688,Hồng Vân,Thừa Thiên Huế Province,2136,village,0,0,50,0,none,none
+gn:13512690,Lâm Đớt,Thừa Thiên Huế Province,4611,village,0,0,50,0,none,none
+gn:13512691,Quảng Nhâm,Thừa Thiên Huế Province,4527,village,0,0,50,0,none,none
+gn:13512692,Sơn Thủy,Thừa Thiên Huế Province,2437,village,0,0,50,0,none,none
+gn:13512694,Trung Sơn,Thừa Thiên Huế Province,3295,village,0,0,50,0,none,none
+gn:13512695,Thổ Châu,,1829,village,0,0,50,0,none,none
+gn:13513035,Si Pa Phìn,Điện Biên Province,6090,village,0,0,50,0,none,none
+gn:13513036,Phổng Lăng,Sơn La Province,3792,village,0,0,50,0,none,none
+gn:13513037,Thành phố Sông Công,Thai Nguyen,128357,city,0,0,50,0,none,none
+gn:13526660,Na Lay,Điện Biên Province,6556,village,0,0,50,0,none,none
+gn:13526847,Đồng Lộc,Hà Tĩnh Province,6076,village,0,0,50,0,none,none
+gn:13535606,Ngã Năm,Can Tho City,58588,town,0,0,50,0,none,none
+gn:13535707,Yên Hòa,Hanoi,77029,town,0,0,50,0,none,none
+gn:13546124,Vạn Thạnh,Khanh Hoa,4476,village,0,0,50,0,none,none
+gn:13546524,Linh Đàm,Hanoi,70000,town,0,0,50,0,none,none
+gn:13546525,Bồ Đề,Hanoi,120028,city,0,0,50,0,none,none
+gn:13562438,Hoàng Mai,Nghệ An Province,113360,city,0,0,50,0,none,none
+gn:13589184,Yên Lộc,Hà Tĩnh Province,3862,village,0,0,50,0,none,none
+gn:13589185,Thanh Lộc,Hà Tĩnh Province,4663,village,0,0,50,0,none,none
+gn:13589186,Vĩnh Lộc,Hà Tĩnh Province,3008,village,0,0,50,0,none,none
+gn:13589187,Gia Hanh,Hà Tĩnh Province,5825,village,0,0,50,0,none,none
+gn:13589188,Khánh Lộc,Hà Tĩnh Province,3929,village,0,0,50,0,none,none
+gn:13589189,Kim Lộc,Hà Tĩnh Province,3519,village,0,0,50,0,none,none
+gn:13589190,Mỹ Lộc,Hà Tĩnh Province,7061,village,0,0,50,0,none,none
+gn:13589191,Quang Lộc,Hà Tĩnh Province,6084,village,0,0,50,0,none,none
+gn:13589192,Song Lộc,Hà Tĩnh Province,3704,village,0,0,50,0,none,none
+gn:13589193,Sơn Lộc,Hà Tĩnh Province,6263,village,0,0,50,0,none,none
+gn:13589194,Thiên Lộc,Hà Tĩnh Province,6571,village,0,0,50,0,none,none
+gn:13589195,Thượng Lộc,Hà Tĩnh Province,4997,village,0,0,50,0,none,none
+gn:13589196,Tiến Lộc,Hà Tĩnh Province,3732,village,0,0,50,0,none,none
+gn:13589197,Trung Lộc,Hà Tĩnh Province,4318,village,0,0,50,0,none,none
+gn:13589198,Trường Lộc,Hà Tĩnh Province,2493,village,0,0,50,0,none,none
+gn:13589199,Tùng Lộc,Hà Tĩnh Province,8388,village,0,0,50,0,none,none
+gn:13589200,Xuân Lộc,Hà Tĩnh Province,7354,village,0,0,50,0,none,none
+gn:13589354,Phổ Yên,Thai Nguyen,231363,city,0,0,50,0,none,none
+gn:13607800,Thanh Nguyên,Ninh Binh,6300,village,0,0,50,0,none,none
+gn:13631655,Na Mèo,Thanh Hóa Province,4174,village,0,0,50,0,none,none
+gn:13645257,Thiên Cầm,Hà Tĩnh Province,4755,village,0,0,50,0,none,none
+gn:13645258,A Rooi,Da Nang City,1119,village,0,0,50,0,none,none
+gn:13645259,A Ting,Da Nang City,2243,village,0,0,50,0,none,none
+gn:13645260,Ba,Da Nang City,4656,village,0,0,50,0,none,none
+gn:13645261,Ka Dăng,Da Nang City,1569,village,0,0,50,0,none,none
+gn:13645262,Jơ Ngây,Da Nang City,2130,village,0,0,50,0,none,none
+gn:13645263,Mà Cooi,Da Nang City,2145,village,0,0,50,0,none,none
+gn:13645264,Sông Kôn,Da Nang City,2207,village,0,0,50,0,none,none
+gn:13645266,Tư,Da Nang City,1349,village,0,0,50,0,none,none
+gn:13645267,Za Hung,Da Nang City,1048,village,0,0,50,0,none,none
+gn:13645269,A Tiêng,Da Nang City,2587,village,0,0,50,0,none,none
+gn:13645270,A Vương,Da Nang City,1806,village,0,0,50,0,none,none
+gn:13645271,A Xan,Da Nang City,1815,village,0,0,50,0,none,none
+gn:13645272,Bha Lê,Da Nang City,2289,village,0,0,50,0,none,none
+gn:13645273,Ch’ Ơm,Da Nang City,1395,village,0,0,50,0,none,none
+gn:13645274,Dang,Da Nang City,1525,village,0,0,50,0,none,none
+gn:13645275,Ga Ri,Da Nang City,1355,village,0,0,50,0,none,none
+gn:13645276,Lăng,Da Nang City,1945,village,0,0,50,0,none,none
+gn:13645277,Tr'Hy,Da Nang City,1074,village,0,0,50,0,none,none
+gn:13680012,Yên Nghĩa,Hanoi,49643,town,0,0,50,0,none,none
+gn:13680013,Dương Nội,Hanoi,56091,town,0,0,50,0,none,none
+gn:13680014,Định Công,Hanoi,85502,town,0,0,50,0,none,none
+gn:13680015,Đông Ngạc,Hanoi,83544,town,0,0,50,0,none,none
+gn:13680016,Giảng Võ,Hanoi,76658,town,0,0,50,0,none,none
+gn:13680017,Hoàng Liệt,Hanoi,55820,town,0,0,50,0,none,none
+gn:13680018,Khương Đình,Hanoi,93780,town,0,0,50,0,none,none
+gn:13680019,Kiến Hưng,Hanoi,70833,town,0,0,50,0,none,none
+gn:13680020,Lĩnh Nam,Hanoi,20706,town,0,0,50,0,none,none
+gn:13680021,Phúc Lợi,Hanoi,66790,town,0,0,50,0,none,none
+gn:13680022,Phú Thương,Hanoi,39322,town,0,0,50,0,none,none
+gn:13680023,Tương Mai,Hanoi,136292,city,0,0,50,0,none,none

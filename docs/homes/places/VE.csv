@@ -1,0 +1,415 @@
+place_id,name,region,population,market,verified_homes,dated_listings,shortfall_to_50,recorded_sales,rent_source,price_source
+gn:3480899,La Guardia,Nueva Esparta,34700,town,0,0,50,0,none,none
+gn:3480908,La Asunción,Nueva Esparta,35084,town,0,0,50,0,none,none
+gn:3481364,Caricuao,Distrito Federal,0,village,0,0,50,0,none,none
+gn:3481456,Tocuyito,Carabobo,0,village,0,0,50,0,none,none
+gn:3485791,El Chaparro,Anzoátegui,0,village,0,0,50,0,none,none
+gn:3486246,Aragüita,Anzoátegui,4463,village,0,0,50,0,none,none
+gn:3486270,Anaco,Anzoátegui,139397,city,0,0,50,0,none,none
+gn:3486577,Santa Cruz de Guacas,Barinas,0,village,0,0,50,0,none,none
+gn:3486692,El Real,Barinas,0,village,0,0,50,0,none,none
+gn:3486718,Puerto Vivas,Barinas,0,village,0,0,50,0,none,none
+gn:3486930,La Mula,Barinas,0,village,0,0,50,0,none,none
+gn:3487261,Los Guasimitos,Barinas,0,village,0,0,50,0,none,none
+gn:3487903,Alto Barinas,Barinas,284289,city,0,0,50,0,none,none
+gn:3625051,Zea,Mérida,8713,village,0,0,50,0,none,none
+gn:3625066,Zaraza,Guárico,74017,town,0,0,50,0,none,none
+gn:3625155,Yumare,Yaracuy,15661,town,0,0,50,0,none,none
+gn:3625207,Yaritagua,Yaracuy,113343,city,0,0,50,0,none,none
+gn:3625214,Yaracal,Falcón,0,village,0,0,50,0,none,none
+gn:3625239,Yaguaraparo,Sucre,13610,town,0,0,50,0,none,none
+gn:3625341,Villa de Cura,Aragua,99669,town,0,0,50,0,none,none
+gn:3625346,Villa Bruzual,Portuguesa,55244,town,0,0,50,0,none,none
+gn:3625469,Las Casitas del Vegon de Nutrias,Barinas,0,village,0,0,50,0,none,none
+gn:3625515,Valle de La Pascua,Guárico,153136,city,0,0,50,0,none,none
+gn:3625519,Valle de Guanape,Anzoátegui,14983,town,0,0,50,0,none,none
+gn:3625542,Valera,Trujillo,244708,city,0,0,50,0,none,none
+gn:3625549,Valencia,Carabobo,1619470,large-city,0,0,50,0,none,none
+gn:3625613,Urumaco,Falcón,0,village,0,0,50,0,none,none
+gn:3625644,Urica,Anzoátegui,4517,village,0,0,50,0,none,none
+gn:3625655,Ureña,Táchira,56509,town,0,0,50,0,none,none
+gn:3625693,Uracoa,Monagas,0,village,0,0,50,0,none,none
+gn:3625696,Urachiche,Yaracuy,26755,town,0,0,50,0,none,none
+gn:3625710,Upata,Bolívar,112617,city,0,0,50,0,none,none
+gn:3625732,Umuquena,Táchira,0,village,0,0,50,0,none,none
+gn:3625829,Turmero,Aragua,344700,city,0,0,50,0,none,none
+gn:3625878,Tunapuy,Sucre,0,village,0,0,50,0,none,none
+gn:3625892,Tumeremo,Bolívar,37614,town,0,0,50,0,none,none
+gn:3625929,Tucupita,Delta Amacuro,99778,town,0,0,50,0,none,none
+gn:3625944,Tucupido,Guárico,42633,town,0,0,50,0,none,none
+gn:3625963,Tucaní,Mérida,24034,town,0,0,50,0,none,none
+gn:3625965,Tucacas,Falcón,34407,town,0,0,50,0,none,none
+gn:3625979,Trujillo,Trujillo,71362,town,0,0,50,0,none,none
+gn:3626047,Tovar,Mérida,48395,town,0,0,50,0,none,none
+gn:3626074,Torunos,Barinas,0,village,0,0,50,0,none,none
+gn:3626094,Torondoy,Mérida,0,village,0,0,50,0,none,none
+gn:3626150,Tocuyo de La Costa,Falcón,9504,village,0,0,50,0,none,none
+gn:3626168,Tocópero,Falcón,0,village,0,0,50,0,none,none
+gn:3626219,Tinaquillo,Cojedes,115937,city,0,0,50,0,none,none
+gn:3626235,Tinaco,Cojedes,38172,town,0,0,50,0,none,none
+gn:3626237,Timotes,Mérida,20098,town,0,0,50,0,none,none
+gn:3626302,Tía Juana,Zulia,23714,town,0,0,50,0,none,none
+gn:3626352,Temblador,Monagas,36447,town,0,0,50,0,none,none
+gn:3626402,Táriba,Táchira,138402,city,0,0,50,0,none,none
+gn:3626595,Tabay,Mérida,23539,town,0,0,50,0,none,none
+gn:3626741,Soledad,Anzoátegui,29763,town,0,0,50,0,none,none
+gn:3626764,Socopó,Barinas,72352,town,0,0,50,0,none,none
+gn:3626785,Siquisique,Lara,0,village,0,0,50,0,none,none
+gn:3626809,Sinamaica,Zulia,0,village,0,0,50,0,none,none
+gn:3626921,Seboruco,Táchira,0,village,0,0,50,0,none,none
+gn:3626960,Sarare,Lara,0,village,0,0,50,0,none,none
+gn:3627021,Santo Domingo,Mérida,0,village,0,0,50,0,none,none
+gn:3627034,San Timoteo,Zulia,81017,town,0,0,50,0,none,none
+gn:3627047,Santa Teresa del Tuy,Miranda,278890,city,0,0,50,0,none,none
+gn:3627148,Santa Rosa,Barinas,0,village,0,0,50,0,none,none
+gn:3627186,Santa Rita,Zulia,31810,town,0,0,50,0,none,none
+gn:3627237,Santa María de Ipire,Guárico,0,village,0,0,50,0,none,none
+gn:3627240,Santa María de Caparo,Mérida,0,village,0,0,50,0,none,none
+gn:3627296,Santa Lucía,Miranda,0,village,0,0,50,0,none,none
+gn:3627304,Santa Lucía,Barinas,0,village,0,0,50,0,none,none
+gn:3627334,Santa Isabel,Trujillo,0,village,0,0,50,0,none,none
+gn:3627360,Santa Inés,Barinas,0,village,0,0,50,0,none,none
+gn:3627382,Santa Elena de Uairén,Bolívar,29795,town,0,0,50,0,none,none
+gn:3627384,Santa Elena de Arenales,Mérida,0,village,0,0,50,0,none,none
+gn:3627418,Santa Cruz de Mora,Mérida,21209,town,0,0,50,0,none,none
+gn:3627420,Santa Cruz de Mara,Zulia,69781,town,0,0,50,0,none,none
+gn:3627423,Santa Cruz de Bucaral,Falcón,0,village,0,0,50,0,none,none
+gn:3627457,Santa Cruz,Aragua,0,village,0,0,50,0,none,none
+gn:3627510,Santa Catalina,Barinas,0,village,0,0,50,0,none,none
+gn:3627549,Santa Bárbara,Monagas,0,village,0,0,50,0,none,none
+gn:3627561,Santa Bárbara,Barinas,45808,town,0,0,50,0,none,none
+gn:3627576,Santa Apolonia,Trujillo,0,village,0,0,50,0,none,none
+gn:3627593,Santa Ana,Nueva Esparta,19215,town,0,0,50,0,none,none
+gn:3627609,Santa Ana,Anzoátegui,0,village,0,0,50,0,none,none
+gn:3627611,Santa Ana,Táchira,0,village,0,0,50,0,none,none
+gn:3627614,Santa Ana,Táchira,35452,town,0,0,50,0,none,none
+gn:3627633,San Simón,Táchira,2085,village,0,0,50,0,none,none
+gn:3627635,San Silvestre,Barinas,0,village,0,0,50,0,none,none
+gn:3627680,San Rafael de Onoto,Portuguesa,17402,town,0,0,50,0,none,none
+gn:3627683,Carvajal,Trujillo,0,village,0,0,50,0,none,none
+gn:3627685,San Rafael de Canaguá,Barinas,0,village,0,0,50,0,none,none
+gn:3627713,San Rafael,Zulia,55810,town,0,0,50,0,none,none
+gn:3627798,San Pedro de Coche,Nueva Esparta,6704,village,0,0,50,0,none,none
+gn:3627874,San Pablo,Yaracuy,0,village,0,0,50,0,none,none
+gn:3627968,San Mateo,Aragua,50401,town,0,0,50,0,none,none
+gn:3627969,San Mateo,Anzoátegui,11670,town,0,0,50,0,none,none
+gn:3627997,San Luis,Falcón,0,village,0,0,50,0,none,none
+gn:3628025,San Lorenzo,Sucre,8343,village,0,0,50,0,none,none
+gn:3628052,San Juan de Manapiare,Amazonas,0,village,0,0,50,0,none,none
+gn:3628053,San Juan de los Morros,Guárico,160868,city,0,0,50,0,none,none
+gn:3628055,San Juan de los Cayos,Falcón,0,village,0,0,50,0,none,none
+gn:3628060,Colón,Táchira,62513,town,0,0,50,0,none,none
+gn:3628066,San Juan Bautista,Nueva Esparta,90387,town,0,0,50,0,none,none
+gn:3628129,San José de Barlovento,Miranda,22352,town,0,0,50,0,none,none
+gn:3628142,San José de Guanipa,Anzoátegui,83092,town,0,0,50,0,none,none
+gn:3628148,San José de Aerocuar,Sucre,0,village,0,0,50,0,none,none
+gn:3628267,San Joaquín,Carabobo,69894,town,0,0,50,0,none,none
+gn:3628350,San Francisco de Yare,Miranda,0,village,0,0,50,0,none,none
+gn:3628374,San Francisco,Zulia,0,village,0,0,50,0,none,none
+gn:3628394,San Fernando de Atabapo,Amazonas,11929,town,0,0,50,0,none,none
+gn:3628423,San Felipe,Yaracuy,206270,city,0,0,50,0,none,none
+gn:3628462,San Diego,Carabobo,0,village,0,0,50,0,none,none
+gn:3628473,San Cristóbal,Táchira,289852,city,0,0,50,0,none,none
+gn:3628487,San Casimiro,Aragua,0,village,0,0,50,0,none,none
+gn:3628488,San Carlos de Río Negro,Amazonas,0,village,0,0,50,0,none,none
+gn:3628489,San Carlos del Zulia,Zulia,126353,city,0,0,50,0,none,none
+gn:3628503,San Carlos,Cojedes,120375,city,0,0,50,0,none,none
+gn:3628545,Sanare,Lara,35850,town,0,0,50,0,none,none
+gn:3628549,San Antonio del Táchira,Táchira,66392,town,0,0,50,0,none,none
+gn:3628550,San Antonio de Los Altos,Miranda,63873,town,0,0,50,0,none,none
+gn:3628552,San Antonio del Golfo,Sucre,0,village,0,0,50,0,none,none
+gn:3628619,San Antonio,Monagas,12522,town,0,0,50,0,none,none
+gn:3628657,San Antonio,Barinas,0,village,0,0,50,0,none,none
+gn:3628853,Sabaneta,Barinas,39493,town,0,0,50,0,none,none
+gn:3628904,Sabana Grande,Trujillo,0,village,0,0,50,0,none,none
+gn:3628918,Sabana de Parra,Yaracuy,24262,town,0,0,50,0,none,none
+gn:3628921,Sabana de Mendoza,Trujillo,34869,town,0,0,50,0,none,none
+gn:3628952,Rubio,Táchira,93197,town,0,0,50,0,none,none
+gn:3628966,La Villa del Rosario,Zulia,82766,town,0,0,50,0,none,none
+gn:3629102,Río Chico,Miranda,22830,town,0,0,50,0,none,none
+gn:3629107,Río Caribe,Sucre,0,village,0,0,50,0,none,none
+gn:3629385,Quiriquire,Monagas,0,village,0,0,50,0,none,none
+gn:3629419,Quíbor,Lara,51377,town,0,0,50,0,none,none
+gn:3629459,Queniquea,Táchira,0,village,0,0,50,0,none,none
+gn:3629490,Quebrada Seca,Barinas,0,village,0,0,50,0,none,none
+gn:3629576,Punto Fijo,Falcón,141729,city,0,0,50,0,none,none
+gn:3629593,Punta Gorda,Zulia,14855,town,0,0,50,0,none,none
+gn:3629601,Punta de Piedras,Nueva Esparta,31886,town,0,0,50,0,none,none
+gn:3629604,Punta de Piedra,Barinas,0,village,0,0,50,0,none,none
+gn:3629606,Punta de Mata,Monagas,61080,town,0,0,50,0,none,none
+gn:3629614,Punta Cardón,Falcón,113999,city,0,0,50,0,none,none
+gn:3629653,Puerto Píritu,Anzoátegui,37745,town,0,0,50,0,none,none
+gn:3629672,Puerto La Cruz,Anzoátegui,370000,city,0,0,50,0,none,none
+gn:3629693,Puerto de Nutrias,Barinas,0,village,0,0,50,0,none,none
+gn:3629696,Puerto Cumarebo,Falcón,31644,town,0,0,50,0,none,none
+gn:3629706,Puerto Cabello,Carabobo,174000,city,0,0,50,0,none,none
+gn:3629710,Puerto Ayacucho,Amazonas,125840,city,0,0,50,0,none,none
+gn:3629768,Pueblo Nuevo,Falcón,18525,town,0,0,50,0,none,none
+gn:3629790,Pueblo Nuevo El Chivo,Zulia,41740,town,0,0,50,0,none,none
+gn:3629800,Pueblo Llano,Mérida,0,village,0,0,50,0,none,none
+gn:3629844,Pregonero,Táchira,0,village,0,0,50,0,none,none
+gn:3629965,Porlamar,Nueva Esparta,216234,city,0,0,50,0,none,none
+gn:3630086,Píritu,Falcón,0,village,0,0,50,0,none,none
+gn:3630087,Píritu,Anzoátegui,0,village,0,0,50,0,none,none
+gn:3630089,Píritu,Portuguesa,43746,town,0,0,50,0,none,none
+gn:3630297,Petare,Miranda,364684,city,0,0,50,0,none,none
+gn:3630473,Pedregal,Falcón,0,village,0,0,50,0,none,none
+gn:3630480,Pedraza La Vieja,Barinas,0,village,0,0,50,0,none,none
+gn:3630490,Pedernales,Delta Amacuro,0,village,0,0,50,0,none,none
+gn:3630687,Pariaguán,Anzoátegui,40751,town,0,0,50,0,none,none
+gn:3630761,Paraíso de Chabasquén,Portuguesa,0,village,0,0,50,0,none,none
+gn:3630778,La Plaza Paraguachi,Nueva Esparta,0,village,0,0,50,0,none,none
+gn:3630826,Papelón,Portuguesa,0,village,0,0,50,0,none,none
+gn:3630893,Pampatar,Nueva Esparta,64983,town,0,0,50,0,none,none
+gn:3630894,Pampanito,Trujillo,35847,town,0,0,50,0,none,none
+gn:3630896,Pampán,Trujillo,59657,town,0,0,50,0,none,none
+gn:3630932,Palo Negro,Aragua,128875,city,0,0,50,0,none,none
+gn:3630982,Palmira,Táchira,48087,town,0,0,50,0,none,none
+gn:3630999,Palmasola,Guárico,0,village,0,0,50,0,none,none
+gn:3631208,Ospino,Portuguesa,33547,town,0,0,50,0,none,none
+gn:3631247,Ortiz,Guárico,0,village,0,0,50,0,none,none
+gn:3631333,Onoto,Anzoátegui,0,village,0,0,50,0,none,none
+gn:3631412,Ocumare del Tuy,Miranda,166072,city,0,0,50,0,none,none
+gn:3631413,Ocumare de la Costa,Aragua,0,village,0,0,50,0,none,none
+gn:3631431,Obispos,Barinas,17440,town,0,0,50,0,none,none
+gn:3631465,Nueva Bolivia,Mérida,19885,town,0,0,50,0,none,none
+gn:3631507,Nirgua,Yaracuy,54080,town,0,0,50,0,none,none
+gn:3631612,Naiguatá,Vargas,0,village,0,0,50,0,none,none
+gn:3631614,Naguanagua,Carabobo,0,village,0,0,50,0,none,none
+gn:3631752,Mucuchíes,Mérida,8880,village,0,0,50,0,none,none
+gn:3631791,Motatán,Trujillo,25437,town,0,0,50,0,none,none
+gn:3631878,Morón,Carabobo,68084,town,0,0,50,0,none,none
+gn:3632051,Monte Carmelo,Trujillo,0,village,0,0,50,0,none,none
+gn:3632072,Montalbán,Carabobo,29451,town,0,0,50,0,none,none
+gn:3632186,Mirimire,Falcón,0,village,0,0,50,0,none,none
+gn:3632198,Miranda,Carabobo,32907,town,0,0,50,0,none,none
+gn:3632260,Michelena,Táchira,20539,town,0,0,50,0,none,none
+gn:3632308,Mérida,Mérida,300000,city,0,0,50,0,none,none
+gn:3632399,Mene Grande,Zulia,60580,town,0,0,50,0,none,none
+gn:3632401,Mene de Mauroa,Falcón,19174,town,0,0,50,0,none,none
+gn:3632836,Masparrito,Barinas,0,village,0,0,50,0,none,none
+gn:3632867,Maroa,Amazonas,0,village,0,0,50,0,none,none
+gn:3632890,Maripa,Bolívar,0,village,0,0,50,0,none,none
+gn:3632910,Marigüitar,Sucre,0,village,0,0,50,0,none,none
+gn:3632929,Mariara,Carabobo,116142,city,0,0,50,0,none,none
+gn:3632998,Maracay,Aragua,464700,city,0,0,50,0,none,none
+gn:3633009,Maracaibo,Zulia,1752602,large-city,0,0,50,0,none,none
+gn:3633063,Maporal,Barinas,0,village,0,0,50,0,none,none
+gn:3633075,Mapire,Anzoátegui,0,village,0,0,50,0,none,none
+gn:3633248,Mamporal,Miranda,30918,town,0,0,50,0,none,none
+gn:3633341,Maiquetía,Vargas,52564,town,0,0,50,0,none,none
+gn:3633412,Macuto,Vargas,0,village,0,0,50,0,none,none
+gn:3633444,Machiques,Zulia,132734,city,0,0,50,0,none,none
+gn:3633622,Los Teques,Miranda,252242,city,0,0,50,0,none,none
+gn:3633677,Los Rastrojos,Lara,100497,city,0,0,50,0,none,none
+gn:3634116,Los Guayos,Carabobo,0,village,0,0,50,0,none,none
+gn:3634184,Los Dos Caminos,Miranda,58168,town,0,0,50,0,none,none
+gn:3634696,Lobatera,Táchira,14041,town,0,0,50,0,none,none
+gn:3634760,Libertad,Cojedes,0,village,0,0,50,0,none,none
+gn:3634761,Libertad,Barinas,13251,town,0,0,50,0,none,none
+gn:3634762,Canaguá,Mérida,0,village,0,0,50,0,none,none
+gn:3634763,Capacho Viejo,Táchira,0,village,0,0,50,0,none,none
+gn:3634816,La Yuca,Barinas,0,village,0,0,50,0,none,none
+gn:3634922,La Victoria,Aragua,126721,city,0,0,50,0,none,none
+gn:3634965,La Vela de Coro,Falcón,34680,town,0,0,50,0,none,none
+gn:3634973,Veguitas,Barinas,0,village,0,0,50,0,none,none
+gn:3635064,La Unión,Barinas,0,village,0,0,50,0,none,none
+gn:3635260,Las Vegas,Cojedes,20172,town,0,0,50,0,none,none
+gn:3635325,Las Tejerías,Aragua,43445,town,0,0,50,0,none,none
+gn:3635714,Las Mercedes,Guárico,0,village,0,0,50,0,none,none
+gn:3636372,La Sabana,Vargas,0,village,0,0,50,0,none,none
+gn:3636565,La Quebrada,Trujillo,0,village,0,0,50,0,none,none
+gn:3636682,La Plata,Zulia,0,village,0,0,50,0,none,none
+gn:3636861,La Paragua,Bolívar,18591,town,0,0,50,0,none,none
+gn:3637012,Lander,Miranda,176346,city,0,0,50,0,none,none
+gn:3637311,La Luz,Barinas,0,village,0,0,50,0,none,none
+gn:3637623,Lagunillas,Zulia,44257,town,0,0,50,0,none,none
+gn:3637624,Lagunillas,Mérida,28176,town,0,0,50,0,none,none
+gn:3637721,La Guaira,Vargas,25259,town,0,0,50,0,none,none
+gn:3638075,La Esmeralda,Amazonas,0,village,0,0,50,0,none,none
+gn:3638264,La Cruz de Taratara,Falcón,0,village,0,0,50,0,none,none
+gn:3638371,La Concepción,Zulia,120478,city,0,0,50,0,none,none
+gn:3638374,Concepción,Zulia,92463,town,0,0,50,0,none,none
+gn:3638497,Chameta,Barinas,0,village,0,0,50,0,none,none
+gn:3638655,Caramuca,Barinas,0,village,0,0,50,0,none,none
+gn:3638904,La Azulita,Mérida,17111,town,0,0,50,0,none,none
+gn:3639049,Kanavayén,Bolívar,1500,village,0,0,50,0,none,none
+gn:3639086,Judibana,Falcón,23182,town,0,0,50,0,none,none
+gn:3639107,Juan Griego,Nueva Esparta,28256,town,0,0,50,0,none,none
+gn:3639282,Jacura,Falcón,0,village,0,0,50,0,none,none
+gn:3639350,Irapa,Sucre,0,village,0,0,50,0,none,none
+gn:3639526,Higuerote,Miranda,41364,town,0,0,50,0,none,none
+gn:3639725,Güiria,Sucre,40000,town,0,0,50,0,none,none
+gn:3639747,Güigüe,Carabobo,80627,town,0,0,50,0,none,none
+gn:3639880,Guayabal,Guárico,0,village,0,0,50,0,none,none
+gn:3639898,Guatire,Miranda,227666,city,0,0,50,0,none,none
+gn:3639922,Guasipati,Bolívar,27988,town,0,0,50,0,none,none
+gn:3640049,Guarenas,Miranda,248588,city,0,0,50,0,none,none
+gn:3640100,Guaraque,Mérida,0,village,0,0,50,0,none,none
+gn:3640179,Guanta,Anzoátegui,0,village,0,0,50,0,none,none
+gn:3640215,Guanarito,Portuguesa,37219,town,0,0,50,0,none,none
+gn:3640226,Guanare,Portuguesa,112286,city,0,0,50,0,none,none
+gn:3640324,Guama,Yaracuy,24570,town,0,0,50,0,none,none
+gn:3640407,Guadarrama,Barinas,0,village,0,0,50,0,none,none
+gn:3640465,Guacara,Carabobo,198883,city,0,0,50,0,none,none
+gn:3640853,Farriar,Yaracuy,0,village,0,0,50,0,none,none
+gn:3640956,Escuque,Trujillo,18128,town,0,0,50,0,none,none
+gn:3641008,Encontrados,Zulia,26121,town,0,0,50,0,none,none
+gn:3641099,El Vigía,Mérida,162289,city,0,0,50,0,none,none
+gn:3641154,El Valle del Espíritu Santo,Nueva Esparta,0,village,0,0,50,0,none,none
+gn:3641251,El Toro,Zulia,0,village,0,0,50,0,none,none
+gn:3641275,El Tocuyo,Lara,74829,town,0,0,50,0,none,none
+gn:3641351,El Tigre,Anzoátegui,222450,city,0,0,50,0,none,none
+gn:3641440,El Sombrero,Guárico,31788,town,0,0,50,0,none,none
+gn:3641460,El Socorro,Guárico,0,village,0,0,50,0,none,none
+gn:3641622,Los Roques,Dependencias Federales,1471,village,0,0,50,0,none,none
+gn:3641775,El Regalo,Barinas,0,village,0,0,50,0,none,none
+gn:3642031,San Rafael del Piñal,Táchira,0,village,0,0,50,0,none,none
+gn:3642042,El Pilar,Sucre,0,village,0,0,50,0,none,none
+gn:3642243,El Paradero,Trujillo,0,village,0,0,50,0,none,none
+gn:3642260,El Pao,Cojedes,18520,town,0,0,50,0,none,none
+gn:3642292,El Palmer,Bolívar,0,village,0,0,50,0,none,none
+gn:3642332,El Palmar,Bolívar,0,village,0,0,50,0,none,none
+gn:3642390,Elorza,Apure,27795,town,0,0,50,0,none,none
+gn:3642497,Lecherías,Anzoátegui,47778,town,0,0,50,0,none,none
+gn:3642833,El Limón,Aragua,148247,city,0,0,50,0,none,none
+gn:3643031,El Hatillo,Miranda,57591,town,0,0,50,0,none,none
+gn:3643353,El Dorado,Bolívar,16100,town,0,0,50,0,none,none
+gn:3643361,El Dividive,Trujillo,19243,town,0,0,50,0,none,none
+gn:3643516,El Corozo,Zulia,0,village,0,0,50,0,none,none
+gn:3643531,El Corozo,Barinas,0,village,0,0,50,0,none,none
+gn:3643568,El Consejo,Aragua,0,village,0,0,50,0,none,none
+gn:3643620,El Cobre,Táchira,0,village,0,0,50,0,none,none
+gn:3643962,El Cantón,Barinas,0,village,0,0,50,0,none,none
+gn:3644022,El Callao,Bolívar,0,village,0,0,50,0,none,none
+gn:3644163,El Baúl,Cojedes,10760,town,0,0,50,0,none,none
+gn:3644417,Ejido,Mérida,120978,city,0,0,50,0,none,none
+gn:3644440,Duaca,Lara,39653,town,0,0,50,0,none,none
+gn:3644478,Dolores,Barinas,0,village,0,0,50,0,none,none
+gn:3644571,Dabajuro,Falcón,28117,town,0,0,50,0,none,none
+gn:3644646,Curiapo,Delta Amacuro,0,village,0,0,50,0,none,none
+gn:3644656,Curbatí,Barinas,0,village,0,0,50,0,none,none
+gn:3644701,Cúpira,Miranda,0,village,0,0,50,0,none,none
+gn:3644767,Cumanacoa,Sucre,25858,town,0,0,50,0,none,none
+gn:3644768,Cumaná,Sucre,405626,city,0,0,50,0,none,none
+gn:3644918,Cúa,Miranda,182558,city,0,0,50,0,none,none
+gn:3645213,Coro,Falcón,246657,city,0,0,50,0,none,none
+gn:3645304,Concepción,Zulia,0,village,0,0,50,0,none,none
+gn:3645360,Coloncito,Táchira,25352,town,0,0,50,0,none,none
+gn:3645387,Cojedes,Cojedes,0,village,0,0,50,0,none,none
+gn:3645469,Cocorote,Yaracuy,52803,town,0,0,50,0,none,none
+gn:3645522,Clarines,Anzoátegui,21582,town,0,0,50,0,none,none
+gn:3645525,Ciudad Piar,Bolívar,51967,town,0,0,50,0,none,none
+gn:3645527,Ciudad Ojeda,Zulia,240283,city,0,0,50,0,none,none
+gn:3645528,Ciudad Guayana,Bolívar,978202,large-city,0,0,50,0,none,none
+gn:3645529,Ciudad De Nutrias,Barinas,0,village,0,0,50,0,none,none
+gn:3645531,Ciudad Bolivia,Barinas,52476,town,0,0,50,0,none,none
+gn:3645532,Ciudad Bolívar,Bolívar,412619,city,0,0,50,0,none,none
+gn:3645586,Churuguara,Falcón,0,village,0,0,50,0,none,none
+gn:3645671,Chivacoa,Yaracuy,70298,town,0,0,50,0,none,none
+gn:3645727,Chiquinquirá,Zulia,17271,town,0,0,50,0,none,none
+gn:3645806,Chichiriviche,Falcón,12500,town,0,0,50,0,none,none
+gn:3645827,Chejendé,Trujillo,0,village,0,0,50,0,none,none
+gn:3645854,Charallave,Miranda,129182,city,0,0,50,0,none,none
+gn:3645944,Chaguaramas,Guárico,17728,town,0,0,50,0,none,none
+gn:3645981,Chacao,Miranda,64609,town,0,0,50,0,none,none
+gn:3646062,Tacarigua,Carabobo,69636,town,0,0,50,0,none,none
+gn:3646169,Caucagüito,Miranda,52556,town,0,0,50,0,none,none
+gn:3646175,Caucagua,Miranda,31788,town,0,0,50,0,none,none
+gn:3646190,Catia La Mar,Vargas,106822,city,0,0,50,0,none,none
+gn:3646296,Casigua El Cubo,Zulia,24592,town,0,0,50,0,none,none
+gn:3646316,Casanay,Sucre,20609,town,0,0,50,0,none,none
+gn:3646382,Carúpano,Sucre,167187,city,0,0,50,0,none,none
+gn:3646451,Carrizal,Miranda,40618,town,0,0,50,0,none,none
+gn:3646487,Carora,Lara,121741,city,0,0,50,0,none,none
+gn:3646534,Caripito,Monagas,43448,town,0,0,50,0,none,none
+gn:3646537,Caripe,Monagas,0,village,0,0,50,0,none,none
+gn:3646581,Cariaco,Sucre,41589,town,0,0,50,0,none,none
+gn:3646731,Carache,Trujillo,0,village,0,0,50,0,none,none
+gn:3646738,Caracas,Distrito Federal,3000000,large-city,0,0,50,0,none,none
+gn:3646767,Caraballeda,Vargas,37824,town,0,0,50,0,none,none
+gn:3646796,Capitanejo,Barinas,0,village,0,0,50,0,none,none
+gn:3646829,Canape Capatárida,Falcón,0,village,0,0,50,0,none,none
+gn:3646869,Cantaura,Anzoátegui,68885,town,0,0,50,0,none,none
+gn:3647197,Campo Elías,Trujillo,0,village,0,0,50,0,none,none
+gn:3647382,Camatagua,Aragua,0,village,0,0,50,0,none,none
+gn:3647400,Camaguán,Guárico,20791,town,0,0,50,0,none,none
+gn:3647435,Calderas,Barinas,0,village,0,0,50,0,none,none
+gn:3647444,Calabozo,Guárico,168605,city,0,0,50,0,none,none
+gn:3647462,Caja Seca,Zulia,34165,town,0,0,50,0,none,none
+gn:3647535,Caicara,Monagas,23625,town,0,0,50,0,none,none
+gn:3647537,Caicara del Orinoco,Bolívar,67277,town,0,0,50,0,none,none
+gn:3647549,Cagua,Aragua,119033,city,0,0,50,0,none,none
+gn:3647636,Cabure,Falcón,0,village,0,0,50,0,none,none
+gn:3647637,Cabudare,Lara,102686,city,0,0,50,0,none,none
+gn:3647651,Cabimas,Zulia,351736,city,0,0,50,0,none,none
+gn:3647729,Bum Bum,Barinas,0,village,0,0,50,0,none,none
+gn:3647931,Bruzual,Apure,0,village,0,0,50,0,none,none
+gn:3648042,Boraure,Yaracuy,21588,town,0,0,50,0,none,none
+gn:3648127,Boconoito,Portuguesa,18086,town,0,0,50,0,none,none
+gn:3648132,Boconó,Trujillo,68990,town,0,0,50,0,none,none
+gn:3648163,Boca de Uchire,Anzoátegui,10904,town,0,0,50,0,none,none
+gn:3648187,Boca de Río,Nueva Esparta,0,village,0,0,50,0,none,none
+gn:3648215,Boca de Aroa,Falcón,10033,town,0,0,50,0,none,none
+gn:3648231,Bobures,Zulia,8012,village,0,0,50,0,none,none
+gn:3648274,Biscucuy,Portuguesa,0,village,0,0,50,0,none,none
+gn:3648279,Biruaca,Apure,76553,town,0,0,50,0,none,none
+gn:3648290,Betijoque,Trujillo,0,village,0,0,50,0,none,none
+gn:3648386,Bejuma,Carabobo,34618,town,0,0,50,0,none,none
+gn:3648439,Baruta,Miranda,244216,city,0,0,50,0,none,none
+gn:3648506,Barrancas,Barinas,24354,town,0,0,50,0,none,none
+gn:3648507,Barrancas,Monagas,19474,town,0,0,50,0,none,none
+gn:3648522,Barquisimeto,Lara,1240714,large-city,0,0,50,0,none,none
+gn:3648540,Barinitas,Barinas,51556,town,0,0,50,0,none,none
+gn:3648546,Barinas,Barinas,397279,city,0,0,50,0,none,none
+gn:3648559,Barcelona,Anzoátegui,815141,large-city,0,0,50,0,none,none
+gn:3648580,Barbacoas,Aragua,0,village,0,0,50,0,none,none
+gn:3648685,Bailadores,Mérida,20113,town,0,0,50,0,none,none
+gn:3648698,Bachaquero,Zulia,0,village,0,0,50,0,none,none
+gn:3648873,Aroa,Yaracuy,35508,town,0,0,50,0,none,none
+gn:3648885,Arismendi,Barinas,0,village,0,0,50,0,none,none
+gn:3648915,Aricagua,Sucre,9272,village,0,0,50,0,none,none
+gn:3648916,Aricagua,Mérida,0,village,0,0,50,0,none,none
+gn:3648972,Arenas,Sucre,6312,village,0,0,50,0,none,none
+gn:3649005,Araya,Sucre,23693,town,0,0,50,0,none,none
+gn:3649017,Araure,Portuguesa,181820,city,0,0,50,0,none,none
+gn:3649018,Arauquita,Barinas,0,village,0,0,50,0,none,none
+gn:3649099,Aragua,Monagas,0,village,0,0,50,0,none,none
+gn:3649100,Aragua de Barcelona,Anzoátegui,34048,town,0,0,50,0,none,none
+gn:3649403,Altamira,Barinas,0,village,0,0,50,0,none,none
+gn:3649408,Altagracia de Orituco,Guárico,68207,town,0,0,50,0,none,none
+gn:3649417,Los Puertos de Altagracia,Zulia,101527,city,0,0,50,0,none,none
+gn:3649576,Aguasay,Monagas,0,village,0,0,50,0,none,none
+gn:3649810,Achaguas,Apure,45311,town,0,0,50,0,none,none
+gn:3649833,Acarigua,Portuguesa,188278,city,0,0,50,0,none,none
+gn:3649859,Abejales,Táchira,0,village,0,0,50,0,none,none
+gn:3738787,Las Mesas,Táchira,0,village,0,0,50,0,none,none
+gn:3739076,San José de Bolívar,Táchira,0,village,0,0,50,0,none,none
+gn:3753107,Santa Rita,Aragua,0,village,0,0,50,0,none,none
+gn:3755947,Isla Ratón,Amazonas,0,village,0,0,50,0,none,none
+gn:3758764,San Josecito,Táchira,54669,town,0,0,50,0,none,none
+gn:3759212,Cordero,Táchira,0,village,0,0,50,0,none,none
+gn:3762895,Sierra Imataca,Delta Amacuro,0,village,0,0,50,0,none,none
+gn:3774127,San José de Guaribe,Guárico,0,village,0,0,50,0,none,none
+gn:3778045,Maturín,Monagas,647459,large-city,0,0,50,0,none,none
+gn:3784154,Palmasola,Falcón,0,village,0,0,50,0,none,none
+gn:3785489,La Aguada,Falcón,7261,village,0,0,50,0,none,none
+gn:3795119,Delicias,Táchira,0,village,0,0,50,0,none,none
+gn:3795152,La Fría,Táchira,61568,town,0,0,50,0,none,none
+gn:3795170,La Grita,Táchira,37545,town,0,0,50,0,none,none
+gn:3795218,Capacho Nuevo,Táchira,40169,town,0,0,50,0,none,none
+gn:3795620,La Tendida,Táchira,0,village,0,0,50,0,none,none
+gn:3797773,Agua Blanca,Portuguesa,0,village,0,0,50,0,none,none
+gn:3798450,El Playón,Portuguesa,0,village,0,0,50,0,none,none
+gn:3798818,Arapuey,Mérida,0,village,0,0,50,0,none,none
+gn:3799319,Macapo,Cojedes,0,village,0,0,50,0,none,none
+gn:3803449,El Cafetal,Miranda,80029,town,0,0,50,0,none,none
+gn:3803651,La Dolorita,Miranda,56846,town,0,0,50,0,none,none
+gn:3804949,Guasdualito,Apure,64608,town,0,0,50,0,none,none
+gn:3805673,San Fernando de Apure,Apure,229197,city,0,0,50,0,none,none
+gn:3805700,San Juan de Payara,Apure,0,village,0,0,50,0,none,none
+gn:3806799,San Sebastián,Aragua,0,village,0,0,50,0,none,none
+gn:7909705,Santa Cruz de los Taques,Falcón,25047,town,0,0,50,0,none,none
+gn:8131509,Independencia,Yaracuy,0,village,0,0,50,0,none,none
+gn:11915291,El Junko,Vargas,0,village,0,0,50,0,none,none
+gn:13156290,Garcia de Hevia Municipality,Táchira,0,village,0,0,50,0,none,none

@@ -42,7 +42,8 @@ test('Renting in London: costs, apply, sign, move in, furnish, rent, a repair, n
   await tab(page, 'Find A Home');
   await expect(card(page, /To Rent$/)).toBeVisible();
   // England's rent is ONS's, said as a benchmark, and the homes say they aren't real listings.
-  await expect(page.locator('main')).toContainText("These are the game's homes, not real listings, and none is at a real address.");
+  await expect(page.getByRole('note', { name: 'Housing Records For London' })).toContainText("Verified homes at real addresses: 0 of the 50 the game aims for (50 short). Real listings: 0.");
+  await expect(page.getByRole('note', { name: 'Housing Records For London' })).toContainText("none is a real listing or at a real address");
   const offer = card(page, /To Rent$/).getByRole('listitem').first();
   const offerTitle = (await offer.locator('strong').first().innerText()).trim();
   await offer.getByRole('button', { name: /^Details: / }).click();
@@ -372,7 +373,7 @@ test('A lapsed approval, a refused permission, a stale favourite, a withdrawn pu
   await until(page, 'week', 4, async () => { await onTab(page, 'Your Home'); return (await card(page, `Renting: ${a}`).innerText()).includes('Approval lapsed'); });
   await expect(card(page, `Renting: ${a}`).getByRole('button', { name: 'Sign The Lease And Pay' })).toHaveCount(0);
   // The favourite stays listed after its month; once its offer has lapsed it can't be applied for.
-  await until(page, 'week', 8, async () => {
+  await until(page, 'week', 16, async () => { // a listing runs to the end of its three-month window
     await onTab(page, 'Find A Home');
     await page.getByLabel('Favourites Only').check();
     const it = card(page, /To Rent$/).getByRole('listitem').filter({ hasText: b });

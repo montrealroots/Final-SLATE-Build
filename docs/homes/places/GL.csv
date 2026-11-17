@@ -1,0 +1,14 @@
+place_id,name,region,population,market,verified_homes,dated_listings,shortfall_to_50,recorded_sales,rent_source,price_source
+gn:3418910,Upernavik,Avannaata,1129,village,0,0,50,0,none,none
+gn:3419842,Sisimiut,Qeqqata,5227,village,0,0,50,0,none,none
+gn:3420768,Qasigiannguit,Qeqertalik,1081,village,0,0,50,0,none,none
+gn:3420846,Qaqortoq,Kujalleq,3224,village,0,0,50,0,none,none
+gn:3421193,Paamiut,Sermersooq,1308,village,0,0,50,0,none,none
+gn:3421319,Nuuk,Sermersooq,14798,town,0,0,50,0,none,none
+gn:3421719,Narsaq,Kujalleq,1346,village,0,0,50,0,none,none
+gn:3421765,Nanortalik,Kujalleq,1185,village,0,0,50,0,none,none
+gn:3421982,Maniitsoq,Qeqqata,2534,village,0,0,50,0,none,none
+gn:3423146,Ilulissat,Avannaata,4413,village,0,0,50,0,none,none
+gn:3424607,Tasiilaq,Sermersooq,1985,village,0,0,50,0,none,none
+gn:3424901,Aasiaat,Qeqertalik,3005,village,0,0,50,0,none,none
+gn:3426193,Uummannaq,Avannaata,1407,village,0,0,50,0,none,none

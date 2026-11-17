@@ -1,0 +1,61 @@
+place_id,name,region,population,market,verified_homes,dated_listings,shortfall_to_50,recorded_sales,rent_source,price_source
+gn:2137644,Yaté-Barrage,South Province,1871,village,0,0,50,0,none,none
+gn:2137690,Wé,Loyalty Islands,10375,town,0,0,50,0,none,none
+gn:2137713,Wala,North Province,890,village,0,0,50,0,none,none
+gn:2137748,Voh,North Province,2272,village,0,0,50,0,none,none
+gn:2137773,Vao,South Province,1862,village,0,0,50,0,none,none
+gn:2137776,Vallée du Tir,South Province,2190,village,0,0,50,0,none,none
+gn:2137873,Touho,North Province,2283,village,0,0,50,0,none,none
+gn:2138103,Thio,South Province,2748,village,0,0,50,0,none,none
+gn:2138285,Tadine,Loyalty Islands,7492,village,0,0,50,0,none,none
+gn:2138522,Poya,North Province,2617,village,0,0,50,0,none,none
+gn:2138555,Poum,North Province,1405,village,0,0,50,0,none,none
+gn:2138592,Pouembout,North Province,1511,village,0,0,50,0,none,none
+gn:2138607,Pouébo,North Province,2391,village,0,0,50,0,none,none
+gn:2138687,Ponérihouen,North Province,2739,village,0,0,50,0,none,none
+gn:2138717,Poindimié,North Province,5006,village,0,0,50,0,none,none
+gn:2138981,Païta,South Province,12617,town,0,0,50,0,none,none
+gn:2139259,Ouégoa,North Province,2127,village,0,0,50,0,none,none
+gn:2139508,Nouville,South Province,3481,village,0,0,50,0,none,none
+gn:2139521,Nouméa,South Province,93060,town,0,0,50,0,none,none
+gn:2139544,Normandie,South Province,3316,village,0,0,50,0,none,none
+gn:2140066,Mont-Dore,South Province,24680,town,0,0,50,0,none,none
+gn:2140466,La Foa,South Province,2947,village,0,0,50,0,none,none
+gn:2140558,Koumac,North Province,3060,village,0,0,50,0,none,none
+gn:2140691,Koné,North Province,4572,village,0,0,50,0,none,none
+gn:2140915,Kaala-Gomén,North Province,1897,village,0,0,50,0,none,none
+gn:2141006,Houaïlou,North Province,4562,village,0,0,50,0,none,none
+gn:2141050,Hienghène,North Province,2668,village,0,0,50,0,none,none
+gn:2141305,Ouvéa,Loyalty Islands,3401,village,0,0,50,0,none,none
+gn:2141394,Dumbéa,South Province,19346,town,0,0,50,0,none,none
+gn:2141658,Canala,North Province,3538,village,0,0,50,0,none,none
+gn:2141714,Bourail,South Province,5531,village,0,0,50,0,none,none
+gn:2141722,Bouloupari,South Province,2146,village,0,0,50,0,none,none
+gn:2141894,Faubourg Blanchot,South Province,2730,village,0,0,50,0,none,none
+gn:10227143,Receiving,South Province,2604,village,0,0,50,0,none,none
+gn:10227145,Baie Des Citrons,,2097,village,0,0,50,0,none,none
+gn:10861676,Anse-Vata,South Province,3729,village,0,0,50,0,none,none
+gn:10861677,N'Géa,South Province,3624,village,0,0,50,0,none,none
+gn:10861871,Artillerie,South Province,1398,village,0,0,50,0,none,none
+gn:11103495,Tindu,South Province,1391,village,0,0,50,0,none,none
+gn:11103499,Logicoop,South Province,1208,village,0,0,50,0,none,none
+gn:11185983,Montravel,South Province,1858,village,0,0,50,0,none,none
+gn:11185984,Portes de Fer,South Province,4093,village,0,0,50,0,none,none
+gn:11185986,Kaméré,South Province,3127,village,0,0,50,0,none,none
+gn:11956101,Rivière-Salée,South Province,6873,village,0,0,50,0,none,none
+gn:11956105,Ouémo,South Province,1636,village,0,0,50,0,none,none
+gn:11956106,Magenta,South Province,7169,village,0,0,50,0,none,none
+gn:11956109,Val Plaisance,South Province,3631,village,0,0,50,0,none,none
+gn:11956110,Trianon,South Province,2944,village,0,0,50,0,none,none
+gn:11956111,Orphelinat,South Province,1414,village,0,0,50,0,none,none
+gn:11956113,Quartier Latin,South Province,2267,village,0,0,50,0,none,none
+gn:11956114,Vallée du Génie,South Province,2699,village,0,0,50,0,none,none
+gn:11956119,Tina,South Province,1586,village,0,0,50,0,none,none
+gn:11956193,Quatrième Kilomètre,South Province,2267,village,0,0,50,0,none,none
+gn:11956194,Sixième Kilomètre,South Province,2949,village,0,0,50,0,none,none
+gn:11956196,Septième Kilomètre,South Province,3944,village,0,0,50,0,none,none
+gn:11956197,Vallée des Colons,South Province,8866,village,0,0,50,0,none,none
+gn:13526991,Haut-Magenta,South Province,2010,village,0,0,50,0,none,none
+gn:13526992,Aérodrome,South Province,3951,village,0,0,50,0,none,none
+gn:13526993,Zone industriel Ducos,South Province,1151,village,0,0,50,0,none,none
+gn:13526994,Ducos,South Province,2082,village,0,0,50,0,none,none

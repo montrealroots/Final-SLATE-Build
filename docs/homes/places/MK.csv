@@ -1,0 +1,203 @@
+place_id,name,region,population,market,verified_homes,dated_listings,shortfall_to_50,recorded_sales,rent_source,price_source
+gn:783809,Zrnovci,Zrnovci,3236,village,0,0,50,0,none,none
+gn:783845,Zletovo,Probishtip,3340,village,0,0,50,0,none,none
+gn:783877,Žitoše,Dolneni,2131,village,0,0,50,0,none,none
+gn:783926,Zelino,Zhelino,25422,town,0,0,50,0,none,none
+gn:783938,Zelenikovo,Zelenikovo,4020,village,0,0,50,0,none,none
+gn:784027,Zajas,Kichevo,12218,town,0,0,50,0,none,none
+gn:784114,Vrutok,Gostivar,5999,village,0,0,50,0,none,none
+gn:784205,Vratnica,Jegunovce,3678,village,0,0,50,0,none,none
+gn:784212,Vrapčište,Vrapchishte,8652,village,0,0,50,0,none,none
+gn:784239,Vraneštica,Kichevo,1265,village,0,0,50,0,none,none
+gn:784351,Vladimirovo,Berovo,1290,village,0,0,50,0,none,none
+gn:784424,Vinica,Vinica,18218,town,0,0,50,0,none,none
+gn:784462,Vevčani,Vevchani,2429,village,0,0,50,0,none,none
+gn:784505,Veljusa,Strumica,1720,village,0,0,50,0,none,none
+gn:784679,Velesta,Struga,8646,village,0,0,50,0,none,none
+gn:784692,Vataša,Kavadarci,2802,village,0,0,50,0,none,none
+gn:784700,Vasilevo,Vasilevo,12382,town,0,0,50,0,none,none
+gn:784711,Markov Grad,Prilep,3175,village,0,0,50,0,none,none
+gn:784733,Valandovo,Valandovo,3798,village,0,0,50,0,none,none
+gn:784737,Vaksince,Lipkovo,2095,village,0,0,50,0,none,none
+gn:784747,Usje,Grad Skopje,1054,village,0,0,50,0,none,none
+gn:784854,Tuin,Kichevo,1346,village,0,0,50,0,none,none
+gn:785011,Topolčani,Prilep,2773,village,0,0,50,0,none,none
+gn:785058,Veles,Veles,57873,town,0,0,50,0,none,none
+gn:785082,Tetovo,Tetovo,63176,town,0,0,50,0,none,none
+gn:785113,Tearce,Tearce,23096,town,0,0,50,0,none,none
+gn:785201,Sveti Nikole,Sveti Nikole,13292,town,0,0,50,0,none,none
+gn:785270,Sušica,Novo Selo,1941,village,0,0,50,0,none,none
+gn:785345,Studeničani,Studenichani,18219,town,0,0,50,0,none,none
+gn:785380,Strumica,Strumica,33825,town,0,0,50,0,none,none
+gn:785387,Struga,Struga,37387,town,0,0,50,0,none,none
+gn:785427,Strelci,Kichevo,1563,village,0,0,50,0,none,none
+gn:785466,Stojakovo,Bogdanci,2125,village,0,0,50,0,none,none
+gn:785482,Shtip,Shtip,48279,town,0,0,50,0,none,none
+gn:785515,Старо Нагоричане,Staro Nagorichane,4112,village,0,0,50,0,none,none
+gn:785537,Star Dojran,Dojran,3348,village,0,0,50,0,none,none
+gn:785604,Dolno Srpci,Mogila,1433,village,0,0,50,0,none,none
+gn:785620,Sredno Konjari,Petrovec,1089,village,0,0,50,0,none,none
+gn:785639,Srbinovo,Gostivar,3629,village,0,0,50,0,none,none
+gn:785643,Srbica,Kichevo,1533,village,0,0,50,0,none,none
+gn:785669,Sopotnica,Demir Hisar,2110,village,0,0,50,0,none,none
+gn:785679,Sopište,Sopište,9460,village,0,0,50,0,none,none
+gn:785759,Слупчане,Lipkovo,2658,village,0,0,50,0,none,none
+gn:785792,Slepče,Demir Hisar,1031,village,0,0,50,0,none,none
+gn:785802,Slatino,Tearce,3422,village,0,0,50,0,none,none
+gn:785842,Skopje,Grad Skopje,474889,city,0,0,50,0,none,none
+gn:785881,Šipkovica,Tetovo,8228,village,0,0,50,0,none,none
+gn:786005,Selce,Tetovo,1991,village,0,0,50,0,none,none
+gn:786014,Sekirnik,Bosilovo,1222,village,0,0,50,0,none,none
+gn:786026,Sedlarevo,Zhelino,1269,village,0,0,50,0,none,none
+gn:786093,Saraj,Grad Skopje,25379,town,0,0,50,0,none,none
+gn:786113,Samokov,Makedonski Brod,1429,village,0,0,50,0,none,none
+gn:786171,Rusinovo,Berovo,2173,village,0,0,50,0,none,none
+gn:786238,Rostusa,Mavrovo and Rostuša,9147,village,0,0,50,0,none,none
+gn:786239,Rosoman,Rosoman,4106,village,0,0,50,0,none,none
+gn:786251,Romanovci,Kumanovo,2492,village,0,0,50,0,none,none
+gn:786341,Resen,Resen,16539,town,0,0,50,0,none,none
+gn:786477,Rankovce,Rankovce,4071,village,0,0,50,0,none,none
+gn:786565,Radovis,Radovish,24984,town,0,0,50,0,none,none
+gn:786582,Radolista,Struga,2814,village,0,0,50,0,none,none
+gn:786595,Radishani,Grad Skopje,9123,village,0,0,50,0,none,none
+gn:786674,Pršovce,Tearce,1999,village,0,0,50,0,none,none
+gn:786700,Probishtip,Probishtip,12702,town,0,0,50,0,none,none
+gn:786735,Prilep,Prilep,73814,town,0,0,50,0,none,none
+gn:786969,Podareš,Radovish,3774,village,0,0,50,0,none,none
+gn:787016,Plasnica,Plasnica,4574,village,0,0,50,0,none,none
+gn:787052,Pirok,Tetovo,3801,village,0,0,50,0,none,none
+gn:787054,Pirava,Valandovo,1633,village,0,0,50,0,none,none
+gn:787072,Петровец,Petrovec,8298,village,0,0,50,0,none,none
+gn:787147,Pehčevo,Pehchevo,2440,village,0,0,50,0,none,none
+gn:787301,Otlja,Lipkovo,2326,village,0,0,50,0,none,none
+gn:787416,Orizari,Grad Skopje,4292,village,0,0,50,0,none,none
+gn:787444,Orashac,,1179,village,0,0,50,0,none,none
+gn:787448,Oraovica,Radovish,3776,village,0,0,50,0,none,none
+gn:787475,Oktisi,Struga,2692,village,0,0,50,0,none,none
+gn:787487,Ohrid,Ohrid,42033,town,0,0,50,0,none,none
+gn:787495,Ognjaci,,1145,village,0,0,50,0,none,none
+gn:787512,Obršani,Krivogashtani,1138,village,0,0,50,0,none,none
+gn:787526,Oblesevo,Češinovo-Obleševo,4972,village,0,0,50,0,none,none
+gn:787574,Novo Selo,Novo Selo,11818,town,0,0,50,0,none,none
+gn:787624,Novaci,Novaci,2357,village,0,0,50,0,none,none
+gn:787692,Nerašte,Tearce,2901,village,0,0,50,0,none,none
+gn:787715,Negotino,Vrapchishte,17518,town,0,0,50,0,none,none
+gn:787716,Negotino,Negotino,19515,town,0,0,50,0,none,none
+gn:787772,Murtino,Strumica,2202,village,0,0,50,0,none,none
+gn:787778,Demir Hisar,Demir Hisar,2283,village,0,0,50,0,none,none
+gn:787853,Morani,Studenichani,1099,village,0,0,50,0,none,none
+gn:787877,Mogila,Mogila,4392,village,0,0,50,0,none,none
+gn:787902,Mislesevo,Struga,1988,village,0,0,50,0,none,none
+gn:787928,Miravci,Gevgelija,2573,village,0,0,50,0,none,none
+gn:787971,Miletino,Brvenica,1820,village,0,0,50,0,none,none
+gn:787985,Miladinovci,Ilinden,1315,village,0,0,50,0,none,none
+gn:788021,Mešeišta,Debarca,2452,village,0,0,50,0,none,none
+gn:788105,Matejce,Lipkovo,2781,village,0,0,50,0,none,none
+gn:788145,Marino,Ilinden,2503,village,0,0,50,0,none,none
+gn:788415,Lukovo,Struga,1424,village,0,0,50,0,none,none
+gn:788516,Lojane,Lipkovo,2234,village,0,0,50,0,none,none
+gn:788517,Logovardi,Bitola,1272,village,0,0,50,0,none,none
+gn:788564,Ljubin,Grad Skopje,1230,village,0,0,50,0,none,none
+gn:788610,Lisičani,Plasnica,1188,village,0,0,50,0,none,none
+gn:788654,Lipkovo,Lipkovo,28102,town,0,0,50,0,none,none
+gn:788774,Lažani,Dolneni,1954,village,0,0,50,0,none,none
+gn:788790,Larce,Zhelino,1489,village,0,0,50,0,none,none
+gn:788819,Labunista,Struga,8805,village,0,0,50,0,none,none
+gn:788886,Kumanovo,Kumanovo,75051,town,0,0,50,0,none,none
+gn:788906,Kukurečani,Bitola,2395,village,0,0,50,0,none,none
+gn:788915,Kuklis,Strumica,4368,village,0,0,50,0,none,none
+gn:788950,Krušopek,Grad Skopje,1277,village,0,0,50,0,none,none
+gn:788961,Krusevo,Krushevo,5211,village,0,0,50,0,none,none
+gn:789028,Krivogashtani,Krivogashtani,5899,village,0,0,50,0,none,none
+gn:789045,Kriva Palanka,Kriva Palanka,20820,town,0,0,50,0,none,none
+gn:789091,Kratovo,Kratovo,10288,town,0,0,50,0,none,none
+gn:789101,Krani,Resen,1087,village,0,0,50,0,none,none
+gn:789247,Kosel,Ohrid,1281,village,0,0,50,0,none,none
+gn:789339,Kondovo,Grad Skopje,11656,town,0,0,50,0,none,none
+gn:789342,Konče,Konche,3475,village,0,0,50,0,none,none
+gn:789403,Kochani,Kochani,34258,town,0,0,50,0,none,none
+gn:789527,Kičevo,Kichevo,31123,town,0,0,50,0,none,none
+gn:789541,Kavadarci,Kavadarci,38799,town,0,0,50,0,none,none
+gn:789563,Karbinci,Karbinci,3900,village,0,0,50,0,none,none
+gn:789603,Kanatlarci,Prilep,1041,village,0,0,50,0,none,none
+gn:789611,Kamenjane,Bogovinje,15376,town,0,0,50,0,none,none
+gn:789629,Makedonska Kamenica,Makedonska Kamenica,8114,village,0,0,50,0,none,none
+gn:789703,Kadino,Ilinden,1466,village,0,0,50,0,none,none
+gn:789734,Јурумлери,Grad Skopje,2061,village,0,0,50,0,none,none
+gn:789822,Jegunovce,Jegunovce,7313,village,0,0,50,0,none,none
+gn:789893,Jankovec,Resen,1291,village,0,0,50,0,none,none
+gn:789916,Jakimovo,Vinica,1101,village,0,0,50,0,none,none
+gn:789962,Izvor,Lipkovo,1014,village,0,0,50,0,none,none
+gn:789985,Ivankovci,Veles,1009,village,0,0,50,0,none,none
+gn:790018,Ilovica,Bosilovo,2042,village,0,0,50,0,none,none
+gn:790034,Идризово,Grad Skopje,2292,village,0,0,50,0,none,none
+gn:790084,Gurgurnica,Brvenica,1159,village,0,0,50,0,none,none
+gn:790137,Grnčari,Resen,1205,village,0,0,50,0,none,none
+gn:790183,Grčec,Grad Skopje,1315,village,0,0,50,0,none,none
+gn:790217,Gradsko,Gradsko,3737,village,0,0,50,0,none,none
+gn:790248,Gradec,Vrapchishte,3751,village,0,0,50,0,none,none
+gn:790249,Gradec,Vinica,1244,village,0,0,50,0,none,none
+gn:790295,Gostivar,Gostivar,50974,town,0,0,50,0,none,none
+gn:790305,Gorobinci,Sveti Nikole,1061,village,0,0,50,0,none,none
+gn:790319,Gorno Orizari,Veles,1999,village,0,0,50,0,none,none
+gn:790320,Gorno Orizari,Bitola,2066,village,0,0,50,0,none,none
+gn:790634,Golema Rečica,Tetovo,3050,village,0,0,50,0,none,none
+gn:790744,Gevgelija,Gevgelija,20664,town,0,0,50,0,none,none
+gn:790812,Forino,Gostivar,3637,village,0,0,50,0,none,none
+gn:790848,Lozovo,Lozovo,2836,village,0,0,50,0,none,none
+gn:790857,Džepčište,Tetovo,8166,village,0,0,50,0,none,none
+gn:791009,Drugovo,Kichevo,3149,village,0,0,50,0,none,none
+gn:791131,Dračevo,Grad Skopje,10605,town,0,0,50,0,none,none
+gn:791149,Gjorče Petro,Grad Skopje,41000,town,0,0,50,0,none,none
+gn:791332,Dolno Palčište,Bogovinje,2414,village,0,0,50,0,none,none
+gn:791334,Dolno Orizari,Bitola,1236,village,0,0,50,0,none,none
+gn:791343,Dolno Količani,Studenichani,1276,village,0,0,50,0,none,none
+gn:791363,Dolneni,Dolneni,11534,town,0,0,50,0,none,none
+gn:791371,Dolna Banjica,Gostivar,10147,town,0,0,50,0,none,none
+gn:791407,Dobruševo,Mogila,2103,village,0,0,50,0,none,none
+gn:791419,Dobrošte,Tetovo,3339,village,0,0,50,0,none,none
+gn:791443,Dobri Dol,Vrapchishte,4124,village,0,0,50,0,none,none
+gn:791517,Desovo,Dolneni,1317,village,0,0,50,0,none,none
+gn:791542,Demir Kapija,Demir Kapija,4451,village,0,0,50,0,none,none
+gn:791548,Delogožda,Struga,8413,village,0,0,50,0,none,none
+gn:791559,Delcevo,Delchevo,17415,town,0,0,50,0,none,none
+gn:791606,Debar,Debar,18074,town,0,0,50,0,none,none
+gn:791720,Chucher-Sandevo,Chucher Sandevo,8646,village,0,0,50,0,none,none
+gn:791819,Crnilište,Dolneni,1303,village,0,0,50,0,none,none
+gn:791885,Cresevo,Grad Skopje,1479,village,0,0,50,0,none,none
+gn:791954,Češinovo,Češinovo-Obleševo,2377,village,0,0,50,0,none,none
+gn:792007,Čelopek,Brvenica,4731,village,0,0,50,0,none,none
+gn:792019,Cegrane,Gostivar,12523,town,0,0,50,0,none,none
+gn:792034,Čaška,Chashka,2878,village,0,0,50,0,none,none
+gn:792055,Capari,Bitola,1311,village,0,0,50,0,none,none
+gn:792129,Bulacani,Grad Skopje,1033,village,0,0,50,0,none,none
+gn:792150,Bukovik,Grad Skopje,1256,village,0,0,50,0,none,none
+gn:792197,Bučin,Krushevo,1243,village,0,0,50,0,none,none
+gn:792227,Brvenica,Brvenica,16267,town,0,0,50,0,none,none
+gn:792257,Makedonski Brod,Makedonski Brod,5607,village,0,0,50,0,none,none
+gn:792419,Bosilovo,Bosilovo,12447,town,0,0,50,0,none,none
+gn:792489,Bojane,Grad Skopje,1579,village,0,0,50,0,none,none
+gn:792501,Bogovinje,Bogovinje,15166,town,0,0,50,0,none,none
+gn:792509,Bogomila,Chashka,1223,village,0,0,50,0,none,none
+gn:792523,Bogdanci,Bogdanci,8636,village,0,0,50,0,none,none
+gn:792553,Blatec,Vinica,2024,village,0,0,50,0,none,none
+gn:792578,Bitola,Bitola,69287,town,0,0,50,0,none,none
+gn:792592,Bistrica,Bitola,4798,village,0,0,50,0,none,none
+gn:792656,Berovo,Berovo,13847,town,0,0,50,0,none,none
+gn:792676,Beranci,Mogila,1264,village,0,0,50,0,none,none
+gn:792767,Belčišta,Debarca,2804,village,0,0,50,0,none,none
+gn:792809,Bedinje,Kumanovo,2256,village,0,0,50,0,none,none
+gn:792835,Batinci,Studenichani,3239,village,0,0,50,0,none,none
+gn:792895,Bansko,Strumica,2414,village,0,0,50,0,none,none
+gn:793113,Арачиново,Arachinovo,12800,town,0,0,50,0,none,none
+gn:795062,Poroj,Tetovo,2370,village,0,0,50,0,none,none
+gn:796095,Strimnica,Zhelino,1831,village,0,0,50,0,none,none
+gn:796096,Dobarce,Zhelino,1306,village,0,0,50,0,none,none
+gn:798465,Monospitovo,Bosilovo,1324,village,0,0,50,0,none,none
+gn:829616,Zelenikovo,Zelenikovo,1005,village,0,0,50,0,none,none
+gn:833258,Šuto Orizare,Grad Skopje,20800,town,0,0,50,0,none,none
+gn:833260,Butel,Grad Skopje,36154,town,0,0,50,0,none,none
+gn:833262,Čair,Grad Skopje,64773,town,0,0,50,0,none,none
+gn:833357,Ilinden,Ilinden,16406,town,0,0,50,0,none,none
+gn:863675,Kisela Voda,Grad Skopje,58216,town,0,0,50,0,none,none
+gn:7886881,Centar Župa,Centar Zhupa,45412,town,0,0,50,0,none,none

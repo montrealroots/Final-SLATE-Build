@@ -1,8 +1,11 @@
-// The county of each US place in the world catalog (from November 17, 2026), so a town is priced from its own county's
-// HUD Fair Market Rent and never matched by name alone. Until then Lancaster, Texas matched no HUD area and fell back
-// to the game's placeholder, though it is in Dallas County. The county is GeoNames' admin2 code (the county FIPS code
-// in the US), read from GeoNames' cities500 dump (CC BY 4.0), the same source as the gazetteer, by GeoNames id.
-//   node tools/homes/counties.mjs <cities500.txt>
+// The official code of each place's own housing market (from November 17, 2026), so a place is priced from its own
+// records and never from a same-named place elsewhere:
+// - src/data/homes/hud/counties.json: a US place's county FIPS code (GeoNames admin2), for HUD's county rents. Until
+//   then Lancaster, Texas matched no HUD area by name and fell back to the placeholder, though it is in Dallas County.
+// - src/data/homes/fr/communes.json: a French place's INSEE commune code (GeoNames admin4), for its DVF sales. Until
+//   then a commune was matched by name across all of France.
+// Read from GeoNames' cities500 dump (CC BY 4.0), the gazetteer's own source, by GeoNames id.
+//   node tools/homes/place-codes.mjs <cities500.txt>
 import { readFileSync, readdirSync, writeFileSync } from 'node:fs';
 
 const STATE_FIPS = {
@@ -12,11 +15,13 @@ const STATE_FIPS = {
   WV: '54', WI: '55', WY: '56', PR: '72',
 };
 const src = process.argv[2];
-if (!src) { console.error('usage: node tools/homes/counties.mjs <cities500.txt>'); process.exit(1); }
+if (!src) { console.error('usage: node tools/homes/place-codes.mjs <cities500.txt>'); process.exit(1); }
 const admin2 = new Map();
+const insee = new Map();
 for (const line of readFileSync(src, 'utf8').split('\n')) {
   const c = line.split('\t');
   if (c[8] === 'US' && c[11]) admin2.set(c[0], [c[10], c[11]]);
+  if (c[8] === 'FR' && /^\d[\dAB]\d{3}$/.test(c[13] ?? '')) insee.set(c[0], c[13]);
 }
 const out = {};
 let places = 0, missing = 0;
@@ -36,3 +41,16 @@ const CATALOG = { 'us-los-angeles': '06037', 'us-new-york': '36061', 'us-atlanta
 Object.assign(out, CATALOG);
 writeFileSync('src/data/homes/hud/counties.json', JSON.stringify(out) + '\n');
 console.log(`US places ${places}; with a county ${places - missing}; without ${missing}; catalog cities ${Object.keys(CATALOG).length}`);
+
+const fr = {};
+let frPlaces = 0;
+for (const line of readFileSync('src/world/gazetteer/places/FR.tsv', 'utf8').split('\n')) {
+  const c = line.split('\t');
+  if (!c[0]) continue;
+  frPlaces++;
+  if (insee.has(c[0])) fr[c[0]] = insee.get(c[0]);
+}
+// The catalog's French cities: Paris, Lyon and Marseille are recorded by arrondissement (DVF), so their city code stands for them all.
+Object.assign(fr, { 'fr-paris': '75056', 'fr-cannes': '06029', 'fr-annecy': '74010', 'fr-clermont-ferrand': '63113', 'fr-lille': '59350' });
+writeFileSync('src/data/homes/fr/communes.json', JSON.stringify(fr) + '\n');
+console.log(`French places ${frPlaces}; with a commune code ${Object.keys(fr).length - 5}`);

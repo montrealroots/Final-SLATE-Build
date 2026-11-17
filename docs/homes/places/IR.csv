@@ -1,0 +1,2152 @@
+place_id,name,region,population,market,verified_homes,dated_listings,shortfall_to_50,recorded_sales,rent_source,price_source
+gn:12,Takht-e Qeyşar,Khuzestan,1266,village,0,0,50,0,none,none
+gn:38,Seyyed Nūr,Khuzestan,1342,village,0,0,50,0,none,none
+gn:285,Boneh-ye ‘Alvān,Khuzestan,6860,village,0,0,50,0,none,none
+gn:362,Shahrak-e Qods,Tehran,29774,town,0,0,50,0,none,none
+gn:380,Sar Gol,Tehran,1563,village,0,0,50,0,none,none
+gn:490,Lavāsān,Tehran,18146,town,0,0,50,0,none,none
+gn:902,Sang-e Vāres̄,Māzandarān,1034,village,0,0,50,0,none,none
+gn:992,‘Abdollāhābād,Māzandarān,1365,village,0,0,50,0,none,none
+gn:1006,Tāshkūh-e Soflá,Māzandarān,1086,village,0,0,50,0,none,none
+gn:1077,Latīngān,Māzandarān,1508,village,0,0,50,0,none,none
+gn:1225,Kordlar,East Azerbaijan,2818,village,0,0,50,0,none,none
+gn:1253,Tāzeh Kand-e Khūsheh Mehr,East Azerbaijan,1358,village,0,0,50,0,none,none
+gn:1594,Qoroq,Māzandarān,10704,town,0,0,50,0,none,none
+gn:2192,Laskū Kalāyeh,Gilan Province,1555,village,0,0,50,0,none,none
+gn:3291,Aḩmadābād,West Azerbaijan,1639,village,0,0,50,0,none,none
+gn:3315,Mīrābād,West Azerbaijan,6000,village,0,0,50,0,none,none
+gn:3366,Mīrābād,West Azerbaijan,1052,village,0,0,50,0,none,none
+gn:3576,Gol Soleymānābād,West Azerbaijan,3436,village,0,0,50,0,none,none
+gn:3594,Tūrchī,West Azerbaijan,1556,village,0,0,50,0,none,none
+gn:3766,Āsāvleh,Kurdistan Province,8009,village,0,0,50,0,none,none
+gn:3894,Būrīdar,Kurdistan Province,1182,village,0,0,50,0,none,none
+gn:5435,Gāmīshlī Yelqī,Golestan,1490,village,0,0,50,0,none,none
+gn:5523,Bāghū Kenāreh,Golestan,1242,village,0,0,50,0,none,none
+gn:6209,Sarāb,Ilam Province,1413,village,0,0,50,0,none,none
+gn:6243,Haft Cheshmeh,Ilam Province,3497,village,0,0,50,0,none,none
+gn:7298,Bahrāmīyeh,Razavi Khorasan,1028,village,0,0,50,0,none,none
+gn:7762,‘Abbāsābād-e ‘Arab,Razavi Khorasan,1876,village,0,0,50,0,none,none
+gn:7787,Tork Kolā,Māzandarān,1312,village,0,0,50,0,none,none
+gn:7792,Tāzehābād,Māzandarān,1425,village,0,0,50,0,none,none
+gn:7795,Tarsīāb,Māzandarān,1773,village,0,0,50,0,none,none
+gn:7882,Neyrang,Māzandarān,2972,village,0,0,50,0,none,none
+gn:7898,Molkār,Māzandarān,1223,village,0,0,50,0,none,none
+gn:7934,Khoshk-e Sarā,Māzandarān,4157,village,0,0,50,0,none,none
+gn:7944,Kolāksar,Māzandarān,8843,village,0,0,50,0,none,none
+gn:7987,Kīā Kolā,Māzandarān,8040,village,0,0,50,0,none,none
+gn:7995,Hendū Kolā,Māzandarān,1416,village,0,0,50,0,none,none
+gn:8008,Geleyerd,Māzandarān,1174,village,0,0,50,0,none,none
+gn:8016,Gālesh Pol,Māzandarān,1368,village,0,0,50,0,none,none
+gn:8024,Faqīhābād,Māzandarān,1110,village,0,0,50,0,none,none
+gn:8041,Ejbār Kolā,Māzandarān,4499,village,0,0,50,0,none,none
+gn:8058,Dānyāl Peyghambar,Māzandarān,1192,village,0,0,50,0,none,none
+gn:8089,Bandpey,Māzandarān,1436,village,0,0,50,0,none,none
+gn:8571,Tāzehābād,Māzandarān,5029,village,0,0,50,0,none,none
+gn:8598,Shahr Kolā,Māzandarān,1367,village,0,0,50,0,none,none
+gn:8600,Shīr Maḩalleh,Māzandarān,2073,village,0,0,50,0,none,none
+gn:8601,Shīr Kolā,Māzandarān,1342,village,0,0,50,0,none,none
+gn:8617,Sang-e Tajan,Māzandarān,2148,village,0,0,50,0,none,none
+gn:8729,Latīngān,Māzandarān,1508,village,0,0,50,0,none,none
+gn:8778,Kamāngar Kolā,Māzandarān,1615,village,0,0,50,0,none,none
+gn:8781,Kalārdasht,Māzandarān,13401,town,0,0,50,0,none,none
+gn:8816,Ezbārān,Māzandarān,2719,village,0,0,50,0,none,none
+gn:8819,Eshkārdasht,Māzandarān,1561,village,0,0,50,0,none,none
+gn:8839,Chamestān,Māzandarān,11194,town,0,0,50,0,none,none
+gn:9279,Qamşar,Isfahan,3877,village,0,0,50,0,none,none
+gn:9624,Şūfīān,Golestan,1608,village,0,0,50,0,none,none
+gn:9807,Bāvaras,Qazvin Province,2147,village,0,0,50,0,none,none
+gn:9904,Ţāleqān,Alborz Province,3211,village,0,0,50,0,none,none
+gn:10065,Noşratābād,Qazvin Province,13090,town,0,0,50,0,none,none
+gn:10109,Māzūbon-e Soflá,Māzandarān,1095,village,0,0,50,0,none,none
+gn:10191,Kūrāneh,Qazvin Province,1709,village,0,0,50,0,none,none
+gn:10570,Alvand,Qazvin Province,90000,town,0,0,50,0,none,none
+gn:10937,Yekeh Tūt,Māzandarān,1578,village,0,0,50,0,none,none
+gn:10964,Sārū Kolā,Māzandarān,2402,village,0,0,50,0,none,none
+gn:11069,Edmolā,Māzandarān,1239,village,0,0,50,0,none,none
+gn:11096,Ābelū,Māzandarān,1392,village,0,0,50,0,none,none
+gn:11288,Serāj Kolā,Māzandarān,1845,village,0,0,50,0,none,none
+gn:11351,Pol-e Gardan,Māzandarān,2819,village,0,0,50,0,none,none
+gn:11453,Marmat,Māzandarān,1954,village,0,0,50,0,none,none
+gn:11515,Khūsh Rūdpey,Māzandarān,5742,village,0,0,50,0,none,none
+gn:11595,Gorjīābād,Māzandarān,2174,village,0,0,50,0,none,none
+gn:11601,Gol Chīnī,Māzandarān,1038,village,0,0,50,0,none,none
+gn:11706,Boneh Kenār,Māzandarān,1305,village,0,0,50,0,none,none
+gn:11717,Bāqer Tangeh,Māzandarān,6213,village,0,0,50,0,none,none
+gn:11725,Zīr Āb,Māzandarān,16191,town,0,0,50,0,none,none
+gn:11732,Bālā Marznāk,Māzandarān,1052,village,0,0,50,0,none,none
+gn:11754,Bālā Aḩmad Kolā,Māzandarān,1277,village,0,0,50,0,none,none
+gn:11790,Āhī Dasht,Māzandarān,4092,village,0,0,50,0,none,none
+gn:13219,Lāhrūd,Ardabil Province,2149,village,0,0,50,0,none,none
+gn:14203,Oshtorīnān,Lorestan Province,5520,village,0,0,50,0,none,none
+gn:14276,Sāmen,Hamadan Province,3873,village,0,0,50,0,none,none
+gn:14298,Khāneqāh-e ‘Olyā,Markazi,1031,village,0,0,50,0,none,none
+gn:14311,Eslāmābād,Hamadan Province,4031,village,0,0,50,0,none,none
+gn:14505,Deh-e Nowmīlās-e Soflá,Chaharmahal and Bakhtiari,4131,village,0,0,50,0,none,none
+gn:15202,Bāgh Anār-e Mīlās,Chaharmahal and Bakhtiari,3132,village,0,0,50,0,none,none
+gn:15269,Nīr,Ardabil Province,5873,village,0,0,50,0,none,none
+gn:15315,Sar Ḩowẕak,Razavi Khorasan,1438,village,0,0,50,0,none,none
+gn:15335,Naşrābād,Razavi Khorasan,2182,village,0,0,50,0,none,none
+gn:15346,Mazdeh,Razavi Khorasan,2648,village,0,0,50,0,none,none
+gn:15418,Bezanjerd,Razavi Khorasan,1245,village,0,0,50,0,none,none
+gn:15650,Deh Now,Razavi Khorasan,4279,village,0,0,50,0,none,none
+gn:15727,Zendeh Jān,Razavi Khorasan,1786,village,0,0,50,0,none,none
+gn:16977,Angut,Ardabil Province,2645,village,0,0,50,0,none,none
+gn:17156,Qayah Bāshī,East Azerbaijan,1456,village,0,0,50,0,none,none
+gn:17428,Jānān Lū,East Azerbaijan,1742,village,0,0,50,0,none,none
+gn:17475,Owltān,Ardabil Province,3622,village,0,0,50,0,none,none
+gn:17511,Ajīrlū,Ardabil Province,4259,village,0,0,50,0,none,none
+gn:17539,Yengī Kand,East Azerbaijan,1061,village,0,0,50,0,none,none
+gn:17540,Banājūy-e Shomālī,East Azerbaijan,1366,village,0,0,50,0,none,none
+gn:17571,Ūch Tappeh-ye Kord,West Azerbaijan,1433,village,0,0,50,0,none,none
+gn:17582,Tappeh-ye Esmā‘īlābād,East Azerbaijan,1720,village,0,0,50,0,none,none
+gn:17591,Zavāraq,East Azerbaijan,2539,village,0,0,50,0,none,none
+gn:17603,Tāzeh Kand,East Azerbaijan,1980,village,0,0,50,0,none,none
+gn:17608,Ţāleb Khān,East Azerbaijan,2848,village,0,0,50,0,none,none
+gn:17632,Shalīvand,East Azerbaijan,1114,village,0,0,50,0,none,none
+gn:17636,Shabīlū-ye Soflá,West Azerbaijan,1533,village,0,0,50,0,none,none
+gn:17637,Shabīlū-ye ‘Olyā,West Azerbaijan,1494,village,0,0,50,0,none,none
+gn:17641,Shādbād-e ‘Olyā,East Azerbaijan,2229,village,0,0,50,0,none,none
+gn:17649,Serej,East Azerbaijan,1363,village,0,0,50,0,none,none
+gn:17651,Sengān,West Azerbaijan,1198,village,0,0,50,0,none,none
+gn:17656,Sargezeh,East Azerbaijan,1271,village,0,0,50,0,none,none
+gn:17685,Reyḩānābād,West Azerbaijan,10536,town,0,0,50,0,none,none
+gn:17686,Ravesht-e Kūchak,East Azerbaijan,1524,village,0,0,50,0,none,none
+gn:17704,Qūrūjān,East Azerbaijan,2371,village,0,0,50,0,none,none
+gn:17719,Qeshlāq-e Chelqā’ī,East Azerbaijan,3412,village,0,0,50,0,none,none
+gn:17736,Qareh Kheẕer,East Azerbaijan,1813,village,0,0,50,0,none,none
+gn:17749,Qareh Chāl,East Azerbaijan,2391,village,0,0,50,0,none,none
+gn:17753,Qarātlū,East Azerbaijan,1157,village,0,0,50,0,none,none
+gn:17760,Qandhār,East Azerbaijan,1436,village,0,0,50,0,none,none
+gn:17767,Qal‘eh Jīq,East Azerbaijan,1863,village,0,0,50,0,none,none
+gn:17805,Narjābād,East Azerbaijan,1553,village,0,0,50,0,none,none
+gn:17820,Moz̧affarābād,West Azerbaijan,1994,village,0,0,50,0,none,none
+gn:17832,Meydān Jīq,East Azerbaijan,2087,village,0,0,50,0,none,none
+gn:17842,Mamehdal,West Azerbaijan,3821,village,0,0,50,0,none,none
+gn:17861,Lāhījān,East Azerbaijan,5430,village,0,0,50,0,none,none
+gn:17878,Kordeh Deh,East Azerbaijan,1691,village,0,0,50,0,none,none
+gn:17898,Khāşābād,East Azerbaijan,1370,village,0,0,50,0,none,none
+gn:17901,Khāneh-ye Barq-e Mojarlū,East Azerbaijan,2426,village,0,0,50,0,none,none
+gn:17902,Khān Amīr,East Azerbaijan,2381,village,0,0,50,0,none,none
+gn:17913,Karajābād,East Azerbaijan,2325,village,0,0,50,0,none,none
+gn:17921,Kalajāh,East Azerbaijan,1593,village,0,0,50,0,none,none
+gn:17934,Javān Qal‘eh,East Azerbaijan,700,village,0,0,50,0,none,none
+gn:17980,Ḩājjī Behzād,West Azerbaijan,1597,village,0,0,50,0,none,none
+gn:17995,Gūg Tappeh,West Azerbaijan,2548,village,0,0,50,0,none,none
+gn:18000,Gowravān,East Azerbaijan,1172,village,0,0,50,0,none,none
+gn:18041,Fīrūz Sālār,East Azerbaijan,2582,village,0,0,50,0,none,none
+gn:18052,Dūsh,East Azerbaijan,1003,village,0,0,50,0,none,none
+gn:18061,Dastjerd,East Azerbaijan,1608,village,0,0,50,0,none,none
+gn:18107,Chavān-e Soflá,East Azerbaijan,1354,village,0,0,50,0,none,none
+gn:18108,Chavān-e ‘Olyā,East Azerbaijan,1134,village,0,0,50,0,none,none
+gn:18111,Chavān,East Azerbaijan,2457,village,0,0,50,0,none,none
+gn:18141,Bāyrām,East Azerbaijan,2982,village,0,0,50,0,none,none
+gn:18142,Bāyqūt,East Azerbaijan,3920,village,0,0,50,0,none,none
+gn:18179,Ākhī Jahān,East Azerbaijan,2424,village,0,0,50,0,none,none
+gn:18665,‘Alīābād-e Qeshlāq,East Azerbaijan,1118,village,0,0,50,0,none,none
+gn:20824,Gerdevān,West Azerbaijan,1342,village,0,0,50,0,none,none
+gn:20834,Berāsb,West Azerbaijan,1031,village,0,0,50,0,none,none
+gn:20859,Rāzhān,West Azerbaijan,3783,village,0,0,50,0,none,none
+gn:21098,Band,West Azerbaijan,4769,village,0,0,50,0,none,none
+gn:21173,Nūshīn,West Azerbaijan,8380,village,0,0,50,0,none,none
+gn:21177,Qūlonjī,West Azerbaijan,5192,village,0,0,50,0,none,none
+gn:22335,Shīrvāneh Deh,East Azerbaijan,1573,village,0,0,50,0,none,none
+gn:22451,Qarah Āghāj,East Azerbaijan,0,village,0,0,50,0,none,none
+gn:22790,Charzeh Khūn,East Azerbaijan,1679,village,0,0,50,0,none,none
+gn:22867,Asfestān,East Azerbaijan,1146,village,0,0,50,0,none,none
+gn:22893,Andarāb,East Azerbaijan,2296,village,0,0,50,0,none,none
+gn:22932,Ābrīz,East Azerbaijan,1463,village,0,0,50,0,none,none
+gn:22963,‘Eyn od Dīn,East Azerbaijan,2423,village,0,0,50,0,none,none
+gn:23290,Bostānābād,East Azerbaijan,21734,town,0,0,50,0,none,none
+gn:23334,Varmahang,Kurdistan Province,1125,village,0,0,50,0,none,none
+gn:23677,Lown-e Sādāt,Kurdistan Province,1316,village,0,0,50,0,none,none
+gn:23814,Kahrīz,Kermanshah Province,6457,village,0,0,50,0,none,none
+gn:24466,Qal‘eh-ye Shīān,Kermanshah Province,1923,village,0,0,50,0,none,none
+gn:24851,Nūrābād,Lorestan Province,65547,town,0,0,50,0,none,none
+gn:25883,Javānrūd,Kermanshah Province,54354,town,0,0,50,0,none,none
+gn:26018,Fīrūzeh,Razavi Khorasan,5884,village,0,0,50,0,none,none
+gn:26652,Maḩmūdābād,West Azerbaijan,6866,village,0,0,50,0,none,none
+gn:27301,Kūhnānī,Lorestan Province,7768,village,0,0,50,0,none,none
+gn:27437,Pahleh,Ilam Province,3870,village,0,0,50,0,none,none
+gn:28304,Gandāb,Ilam Province,1116,village,0,0,50,0,none,none
+gn:28365,Darb-e Gonbad,Lorestan Province,2131,village,0,0,50,0,none,none
+gn:28611,Sarāvān,Gilan Province,5542,village,0,0,50,0,none,none
+gn:28615,Qāsemābād-e Soflá,Gilan Province,2850,village,0,0,50,0,none,none
+gn:28655,Dahaneh Sar-e Shījān,Gilan Province,1004,village,0,0,50,0,none,none
+gn:28748,Morīdān,Gilan Province,1129,village,0,0,50,0,none,none
+gn:28750,Marz Dasht,Gilan Province,1049,village,0,0,50,0,none,none
+gn:28769,Līchāh,Gilan Province,1648,village,0,0,50,0,none,none
+gn:28776,Lūlamān,Gilan Province,7426,village,0,0,50,0,none,none
+gn:28889,Dāfchāh,Gilan Province,1325,village,0,0,50,0,none,none
+gn:28899,Fashtakeh,Gilan Province,1901,village,0,0,50,0,none,none
+gn:28920,Tālesh Maḩalleh,Gilan Province,1061,village,0,0,50,0,none,none
+gn:29177,Teseyeh,Gilan Province,1688,village,0,0,50,0,none,none
+gn:29203,Pahmadān,Gilan Province,1682,village,0,0,50,0,none,none
+gn:29283,Bālā Maḩalleh-ye Gafsheh,Gilan Province,1533,village,0,0,50,0,none,none
+gn:29549,Khalīlābād,Razavi Khorasan,1080,village,0,0,50,0,none,none
+gn:29557,Aḩmadābād,Razavi Khorasan,1876,village,0,0,50,0,none,none
+gn:30400,Eslāmīyeh,South Khorasan Province,7108,village,0,0,50,0,none,none
+gn:31020,Fīrūzeh,Razavi Khorasan,0,village,0,0,50,0,none,none
+gn:31110,Deheshk,Razavi Khorasan,1223,village,0,0,50,0,none,none
+gn:31113,Kharābeh Amīn,Razavi Khorasan,1447,village,0,0,50,0,none,none
+gn:31193,Shotorak,Razavi Khorasan,3315,village,0,0,50,0,none,none
+gn:31213,Kashaf,Razavi Khorasan,11459,town,0,0,50,0,none,none
+gn:31218,Kūshk-e Mehdī,Razavi Khorasan,4807,village,0,0,50,0,none,none
+gn:31224,Chehel Ḩojreh,Razavi Khorasan,4399,village,0,0,50,0,none,none
+gn:31234,Gonbad-e Vāz,Razavi Khorasan,1036,village,0,0,50,0,none,none
+gn:31239,Shahīd Kāmjū,Razavi Khorasan,1171,village,0,0,50,0,none,none
+gn:31240,Kāz̧emābād,Razavi Khorasan,3102,village,0,0,50,0,none,none
+gn:31241,Gorjī-ye 'Olyā,Razavi Khorasan,2394,village,0,0,50,0,none,none
+gn:31242,Zarkī,Razavi Khorasan,1107,village,0,0,50,0,none,none
+gn:31246,Borzeshābād,Razavi Khorasan,1288,village,0,0,50,0,none,none
+gn:31265,Kalāt-e Nāderī,Razavi Khorasan,0,village,0,0,50,0,none,none
+gn:31269,Sīāsak,Razavi Khorasan,4311,village,0,0,50,0,none,none
+gn:31321,Dehrūd,Razavi Khorasan,11869,town,0,0,50,0,none,none
+gn:31394,Chahār Borj,Razavi Khorasan,4524,village,0,0,50,0,none,none
+gn:31448,Pā’īn Deh,Razavi Khorasan,1664,village,0,0,50,0,none,none
+gn:31479,Amīnābād,Razavi Khorasan,1342,village,0,0,50,0,none,none
+gn:31526,Hemmatābād,Razavi Khorasan,1612,village,0,0,50,0,none,none
+gn:31542,Now Bahār,Razavi Khorasan,2367,village,0,0,50,0,none,none
+gn:31557,Nāz̧erīyeh,Razavi Khorasan,2827,village,0,0,50,0,none,none
+gn:31618,Gajvān,Razavi Khorasan,1222,village,0,0,50,0,none,none
+gn:31719,Faraḩābād,Razavi Khorasan,2385,village,0,0,50,0,none,none
+gn:31988,Shahrak-e Almahdī,Lorestan Province,4261,village,0,0,50,0,none,none
+gn:32600,Shotor Khār,Tehran,5360,village,0,0,50,0,none,none
+gn:32723,Īstgāh-e Rāh Āhan-e Garmsār,Semnan,49491,town,0,0,50,0,none,none
+gn:32733,Golzār,Tehran,5897,village,0,0,50,0,none,none
+gn:32761,Reyḩānābād,Tehran,4439,village,0,0,50,0,none,none
+gn:32766,Qeshlāq-e Jītū,Tehran,7909,village,0,0,50,0,none,none
+gn:32767,Qarchak,Tehran,251834,city,0,0,50,0,none,none
+gn:32778,Moḩammadābād-e A‘lā,Tehran,5306,village,0,0,50,0,none,none
+gn:32843,Ṣāleḥīeh,Tehran,58683,town,0,0,50,0,none,none
+gn:32860,Yūsef Reẕā,Tehran,1453,village,0,0,50,0,none,none
+gn:32895,Khāvar Shahr,Tehran,13203,town,0,0,50,0,none,none
+gn:32900,Golestān,Tehran,240000,city,0,0,50,0,none,none
+gn:32904,Shahrak-e Emām Ḩasan,Tehran,5394,village,0,0,50,0,none,none
+gn:32909,Shahre Jadide Andisheh,Tehran,116062,city,0,0,50,0,none,none
+gn:32918,Sefīdār,Tehran,6529,village,0,0,50,0,none,none
+gn:32948,Qeshlāq-e Pā’īn,Tehran,6177,village,0,0,50,0,none,none
+gn:32973,Parandak,Tehran,5038,village,0,0,50,0,none,none
+gn:32996,Morteẕá Gerd,Tehran,15506,town,0,0,50,0,none,none
+gn:33047,Ja‘farābād-e Akhavān,Tehran,1786,village,0,0,50,0,none,none
+gn:33054,Hamadānak,Tehran,11216,town,0,0,50,0,none,none
+gn:33061,Gol ‘Abbās,Tehran,1391,village,0,0,50,0,none,none
+gn:33069,Ferdowsīyeh,Tehran,34221,town,0,0,50,0,none,none
+gn:33113,Alvard,Tehran,1475,village,0,0,50,0,none,none
+gn:33144,Ḩasanābād-e Vosţá,Isfahan,1421,village,0,0,50,0,none,none
+gn:33311,Şamşāmī,Chaharmahal and Bakhtiari,1203,village,0,0,50,0,none,none
+gn:33956,Ḩājjī Yār,Razavi Khorasan,1117,village,0,0,50,0,none,none
+gn:34233,Federd,Razavi Khorasan,1470,village,0,0,50,0,none,none
+gn:35017,Hādīshahr,East Azerbaijan,34346,town,0,0,50,0,none,none
+gn:35057,Oghlū,East Azerbaijan,2651,village,0,0,50,0,none,none
+gn:35099,Markīd,East Azerbaijan,3104,village,0,0,50,0,none,none
+gn:35153,Bābelābād,West Azerbaijan,1200,village,0,0,50,0,none,none
+gn:35705,Ḩīq,Ardabil Province,1188,village,0,0,50,0,none,none
+gn:35953,Nez̧āmābād,Hamadan Province,1408,village,0,0,50,0,none,none
+gn:36042,Gonbadān,Hamadan Province,1233,village,0,0,50,0,none,none
+gn:36170,‘Ommān,Hamadan Province,2305,village,0,0,50,0,none,none
+gn:36274,Shahrak-e Towḩīd,Khuzestan,2451,village,0,0,50,0,none,none
+gn:36278,Sharāfat,Khuzestan,11757,town,0,0,50,0,none,none
+gn:36281,Ṣāleḥ Shahr,Khuzestan,7309,village,0,0,50,0,none,none
+gn:36286,Shahrak-e Salmān Fārsī,Khuzestan,6418,village,0,0,50,0,none,none
+gn:36288,Shahrak-e Shahīd Moḩammad Nūrī,Khuzestan,4256,village,0,0,50,0,none,none
+gn:36290,Shahrak-e Mohājerīn,Khuzestan,3774,village,0,0,50,0,none,none
+gn:36293,Shahrak-e Kheybar,Khuzestan,2301,village,0,0,50,0,none,none
+gn:36299,Āzādī,Khuzestan,4957,village,0,0,50,0,none,none
+gn:36300,Montazeran,Khuzestan,3804,village,0,0,50,0,none,none
+gn:36573,Gāvmīshābād-e Sharqī,Khuzestan,2569,village,0,0,50,0,none,none
+gn:36574,Gāvmīshābād,Khuzestan,5722,village,0,0,50,0,none,none
+gn:36607,Eslāmābād,Khuzestan,5298,village,0,0,50,0,none,none
+gn:36652,Choghāmīsh,Khuzestan,2013,village,0,0,50,0,none,none
+gn:37170,Dāvān,Gilan Province,1064,village,0,0,50,0,none,none
+gn:37184,Līsār,Gilan Province,3647,village,0,0,50,0,none,none
+gn:37193,Qorūq,Gilan Province,1223,village,0,0,50,0,none,none
+gn:37382,Aḩmad Sar Gūrāb,Gilan Province,2128,village,0,0,50,0,none,none
+gn:37648,Vīznah,Gilan Province,3022,village,0,0,50,0,none,none
+gn:37767,Omīdcheh,Ardabil Province,1710,village,0,0,50,0,none,none
+gn:37816,Lalakah Maḩalleh,Gilan Province,2713,village,0,0,50,0,none,none
+gn:37822,Kordeh Deh,Ardabil Province,1077,village,0,0,50,0,none,none
+gn:37852,Kerīq,Ardabil Province,1278,village,0,0,50,0,none,none
+gn:37957,Berīs,Ardabil Province,1322,village,0,0,50,0,none,none
+gn:38003,Ḩavīq,Gilan Province,4261,village,0,0,50,0,none,none
+gn:38007,Ārāllū,Ardabil Province,2650,village,0,0,50,0,none,none
+gn:38035,Ālādīzgeh,Ardabil Province,1850,village,0,0,50,0,none,none
+gn:38075,Ḩūr,Ardabil Province,3248,village,0,0,50,0,none,none
+gn:38274,Yūnakī,Chaharmahal and Bakhtiari,1449,village,0,0,50,0,none,none
+gn:39140,Yesāqī,Golestan,4093,village,0,0,50,0,none,none
+gn:39156,Marzan Kalāteh,Golestan,1384,village,0,0,50,0,none,none
+gn:39189,Qarah Qāshlī,Golestan,2731,village,0,0,50,0,none,none
+gn:39203,‘Alīābād-e Kenār Shahr,Golestan,1163,village,0,0,50,0,none,none
+gn:39206,‘Aţāābād,Golestan,5333,village,0,0,50,0,none,none
+gn:39227,Sarkhonkalāteh,Golestan,7589,village,0,0,50,0,none,none
+gn:39542,Sālī Kandeh,Golestan,1623,village,0,0,50,0,none,none
+gn:39571,Ālū Kalāteh,Golestan,2572,village,0,0,50,0,none,none
+gn:39572,Chahār Chenār,Golestan,1055,village,0,0,50,0,none,none
+gn:39590,Jelīn,Golestan,7417,village,0,0,50,0,none,none
+gn:39607,Vāleshābād,Golestan,1199,village,0,0,50,0,none,none
+gn:39608,Toqor Tappeh,Golestan,1009,village,0,0,50,0,none,none
+gn:39770,Moghān,Semnan,1631,village,0,0,50,0,none,none
+gn:39874,Āq Qāyeh,Golestan,8148,village,0,0,50,0,none,none
+gn:39875,Sārlī Makhtūm,Golestan,1695,village,0,0,50,0,none,none
+gn:39881,Īgder-e Pā’īn,Golestan,2825,village,0,0,50,0,none,none
+gn:39915,Tamer-e Qarah Qūzī,Golestan,4535,village,0,0,50,0,none,none
+gn:40000,Ḩālī Ākhūnd,Golestan,2209,village,0,0,50,0,none,none
+gn:40008,Tūtlī-ye Kūchak,Golestan,1311,village,0,0,50,0,none,none
+gn:40017,Polī Ḩājjī,Golestan,3055,village,0,0,50,0,none,none
+gn:40030,Moḩammad Qolī Ākhūnd,Golestan,1158,village,0,0,50,0,none,none
+gn:40047,Gomīshān,Golestan,19191,town,0,0,50,0,none,none
+gn:40078,Shahrak-e Beheshtī,Golestan,1778,village,0,0,50,0,none,none
+gn:40089,Khīvalī,Golestan,1234,village,0,0,50,0,none,none
+gn:40091,Kord,Golestan,2234,village,0,0,50,0,none,none
+gn:40182,Gadamābād,Golestan,8250,village,0,0,50,0,none,none
+gn:40344,Zāvīyeh-e Ḩasan Khān,West Azerbaijan,1311,village,0,0,50,0,none,none
+gn:40358,Yazdekān,West Azerbaijan,2437,village,0,0,50,0,none,none
+gn:40373,Solţān Aḩmad,West Azerbaijan,1165,village,0,0,50,0,none,none
+gn:40520,Kalashān,West Azerbaijan,1337,village,0,0,50,0,none,none
+gn:40537,Haftvān,West Azerbaijan,8203,village,0,0,50,0,none,none
+gn:40672,‘Ezzatābād,West Azerbaijan,1912,village,0,0,50,0,none,none
+gn:40680,‘Az̄āb,West Azerbaijan,1575,village,0,0,50,0,none,none
+gn:41097,Pīr Saqqā,Zanjan,1878,village,0,0,50,0,none,none
+gn:41151,Pā’īn-e Bāzār-e Rūdbār,Gilan Province,0,village,0,0,50,0,none,none
+gn:41210,Khorramdarreh,Zanjan,50528,town,0,0,50,0,none,none
+gn:41211,Qal‘eh-ye Ḩoseynīyeh,Zanjan,2534,village,0,0,50,0,none,none
+gn:41264,Jūben,Gilan Province,1478,village,0,0,50,0,none,none
+gn:41428,Pādegān-e Manjīl,Gilan Province,17396,town,0,0,50,0,none,none
+gn:41466,Malekābād,Alborz Province,15296,town,0,0,50,0,none,none
+gn:41548,Kamālshahr,Alborz Province,141669,city,0,0,50,0,none,none
+gn:41551,Qebchāq,Tehran,2117,village,0,0,50,0,none,none
+gn:41556,Qāsemābād-e Kūchak,Alborz Province,1901,village,0,0,50,0,none,none
+gn:41589,Shahrak-e Mohandesī-ye Zerā‘ī,Alborz Province,16104,town,0,0,50,0,none,none
+gn:41626,Sorkhāb,Alborz Province,2615,village,0,0,50,0,none,none
+gn:41642,Dangīzak,Alborz Province,1583,village,0,0,50,0,none,none
+gn:41672,Chahārbāgh,Alborz Province,48828,town,0,0,50,0,none,none
+gn:41845,Ārāsanj-e Pā’īn,Qazvin Province,1117,village,0,0,50,0,none,none
+gn:41880,Sonqorābād,Alborz Province,1777,village,0,0,50,0,none,none
+gn:41979,Qeshlāq-e Malārd,Tehran,5110,village,0,0,50,0,none,none
+gn:41981,Esfandābād,Tehran,3311,village,0,0,50,0,none,none
+gn:41984,Yūsefābād-e Qavām,Tehran,4895,village,0,0,50,0,none,none
+gn:41995,Amīrābād,Tehran,5221,village,0,0,50,0,none,none
+gn:42018,Yabārak,Tehran,2478,village,0,0,50,0,none,none
+gn:42098,Māzhīn,Ilam Province,1512,village,0,0,50,0,none,none
+gn:42203,Seyyed Raḩmān,Khuzestan,1138,village,0,0,50,0,none,none
+gn:42281,Nezeheh,Khuzestan,2947,village,0,0,50,0,none,none
+gn:42517,‘Eyn-e Do,Khuzestan,17653,town,0,0,50,0,none,none
+gn:43630,‘Ezzatābād,Kerman,2085,village,0,0,50,0,none,none
+gn:43960,Samal-e Jonūbī,Bushehr,1172,village,0,0,50,0,none,none
+gn:44026,Kūrūnī,Fars,5689,village,0,0,50,0,none,none
+gn:44035,Kheyrābād,Fars,1589,village,0,0,50,0,none,none
+gn:44100,Shabānkāreh,Bushehr,7900,village,0,0,50,0,none,none
+gn:44172,Āb Pakhsh,Bushehr,18913,town,0,0,50,0,none,none
+gn:44360,Valī‘aşr,Fars,1344,village,0,0,50,0,none,none
+gn:44439,Kavār,Fars,31711,town,0,0,50,0,none,none
+gn:44471,Forūd,Fars,2043,village,0,0,50,0,none,none
+gn:45041,Mīnūshahr,Khuzestan,2231,village,0,0,50,0,none,none
+gn:45628,Shahrak-e Ţāleqānī,Khuzestan,25808,town,0,0,50,0,none,none
+gn:46554,Mehrīān,Kohgiluyeh and Boyer-Ahmad,9421,village,0,0,50,0,none,none
+gn:46663,Sarāb-e Tāveh,Kohgiluyeh and Boyer-Ahmad,11195,town,0,0,50,0,none,none
+gn:47097,Ḩājjīābād,Fars,1121,village,0,0,50,0,none,none
+gn:47723,Āb Bārīk,Fars,1521,village,0,0,50,0,none,none
+gn:48240,Sarmast,Hormozgan,1454,village,0,0,50,0,none,none
+gn:48464,Nowdezh,Kerman,5562,village,0,0,50,0,none,none
+gn:48783,Chāh Kūr,Fars,1180,village,0,0,50,0,none,none
+gn:48822,Emām Shahr,Fars,5803,village,0,0,50,0,none,none
+gn:48918,Ābādeh,Fars,59116,town,0,0,50,0,none,none
+gn:48931,‘Alavīyeh,Fars,2208,village,0,0,50,0,none,none
+gn:66093,Yasuj,Kohgiluyeh and Boyer-Ahmad,96786,town,0,0,50,0,none,none
+gn:66250,Ashkez̄ar,Yazd Province,19123,town,0,0,50,0,none,none
+gn:66479,Tall Khosrow,Kohgiluyeh and Boyer-Ahmad,4534,village,0,0,50,0,none,none
+gn:67431,Mobārakābād,Fars,1204,village,0,0,50,0,none,none
+gn:68168,Ḩoseynābād,Isfahan,1743,village,0,0,50,0,none,none
+gn:69018,Bāzār Jom‘eh-ye Shānderman,Gilan Province,5729,village,0,0,50,0,none,none
+gn:69085,Balahzār,Kohgiluyeh and Boyer-Ahmad,3478,village,0,0,50,0,none,none
+gn:110790,Tall Būmeh,Khuzestan,1206,village,0,0,50,0,none,none
+gn:110829,Ţāqānak,Chaharmahal and Bakhtiari,6170,village,0,0,50,0,none,none
+gn:110831,Āzādshahr,Golestan,47590,town,0,0,50,0,none,none
+gn:110920,Zonūz,East Azerbaijan,2465,village,0,0,50,0,none,none
+gn:111027,Zīārat ‘Alī,Hormozgan,2679,village,0,0,50,0,none,none
+gn:111038,Zīārat,Bushehr,2758,village,0,0,50,0,none,none
+gn:111052,Zīārān,Qazvin Province,3749,village,0,0,50,0,none,none
+gn:111058,Zeyābar,Gilan Province,3603,village,0,0,50,0,none,none
+gn:111060,Ẕīā’ābād,Qazvin Province,8262,village,0,0,50,0,none,none
+gn:111095,Zeynabī,Hormozgan,1207,village,0,0,50,0,none,none
+gn:111130,Zeydābād,Kerman,9112,village,0,0,50,0,none,none
+gn:111171,Zehkalūt,Kerman,6835,village,0,0,50,0,none,none
+gn:111192,Zāviyeh,Markazi,6027,village,0,0,50,0,none,none
+gn:111202,Z̄avāt-e Sharq,Māzandarān,1276,village,0,0,50,0,none,none
+gn:111246,Zarrīnābād,Zanjan,2374,village,0,0,50,0,none,none
+gn:111275,Zarnaq,East Azerbaijan,5343,village,0,0,50,0,none,none
+gn:111289,Zarkesh,Razavi Khorasan,5780,village,0,0,50,0,none,none
+gn:111299,Zarjān,Fars,1400,village,0,0,50,0,none,none
+gn:111325,Zargān-e Karāneh,Khuzestan,7744,village,0,0,50,0,none,none
+gn:111327,Zarqān,Fars,32261,town,0,0,50,0,none,none
+gn:111407,Zārach,Yazd Province,11691,town,0,0,50,0,none,none
+gn:111421,Zarand,Kerman,58983,town,0,0,50,0,none,none
+gn:111446,Zanjīreh-ye ‘Olyā,Ilam Province,2724,village,0,0,50,0,none,none
+gn:111453,Zanjan,Zanjan,357471,city,0,0,50,0,none,none
+gn:111475,Zangīābād,Kerman,8568,village,0,0,50,0,none,none
+gn:111476,Zangīābād,Fars,4273,village,0,0,50,0,none,none
+gn:111539,Zamānābād,Tehran,4000,village,0,0,50,0,none,none
+gn:111576,Zakīābād,Alborz Province,1306,village,0,0,50,0,none,none
+gn:111613,Zāhed Shahr,Fars,9719,village,0,0,50,0,none,none
+gn:111729,Yolmeh Khandān,Golestan,1313,village,0,0,50,0,none,none
+gn:111745,Yengī Kand-e Seyyedlar,Zanjan,1168,village,0,0,50,0,none,none
+gn:111760,Yengījeh,East Azerbaijan,2119,village,0,0,50,0,none,none
+gn:111808,Yazdel,Isfahan,2391,village,0,0,50,0,none,none
+gn:111822,Yazd,Yazd Province,477905,city,0,0,50,0,none,none
+gn:111887,Yengī Emām,Alborz Province,4999,village,0,0,50,0,none,none
+gn:111895,Yān Cheshmeh,Chaharmahal and Bakhtiari,2190,village,0,0,50,0,none,none
+gn:111904,Yāmchī,East Azerbaijan,10392,town,0,0,50,0,none,none
+gn:111911,Payām,East Azerbaijan,1135,village,0,0,50,0,none,none
+gn:111914,Yālqūz Āghāj,East Azerbaijan,3537,village,0,0,50,0,none,none
+gn:111927,Yalābād,Markazi,3761,village,0,0,50,0,none,none
+gn:111987,Veyar,Zanjan,3548,village,0,0,50,0,none,none
+gn:112025,Vasīān,Lorestan Province,1817,village,0,0,50,0,none,none
+gn:112029,Veys,Khuzestan,15312,town,0,0,50,0,none,none
+gn:112047,Vanūsh,Māzandarān,2669,village,0,0,50,0,none,none
+gn:112057,Velāyat Rūd,Alborz Province,1382,village,0,0,50,0,none,none
+gn:112085,Vāyqān,East Azerbaijan,4678,village,0,0,50,0,none,none
+gn:112121,Varazqān,East Azerbaijan,5348,village,0,0,50,0,none,none
+gn:112123,Varzeqān,East Azerbaijan,1015,village,0,0,50,0,none,none
+gn:112124,Varzaneh,Isfahan,12714,town,0,0,50,0,none,none
+gn:112160,Varjavī,East Azerbaijan,2989,village,0,0,50,0,none,none
+gn:112179,Fardīs,Alborz Province,0,village,0,0,50,0,none,none
+gn:112191,Vardanjān,Chaharmahal and Bakhtiari,4456,village,0,0,50,0,none,none
+gn:112205,Varāyneh,Hamadan Province,1719,village,0,0,50,0,none,none
+gn:112207,Varāvī,Fars,4622,village,0,0,50,0,none,none
+gn:112214,Varāmīn,Tehran,225628,city,0,0,50,0,none,none
+gn:112226,Vār,West Azerbaijan,4808,village,0,0,50,0,none,none
+gn:112255,Vānān,Chaharmahal and Bakhtiari,2750,village,0,0,50,0,none,none
+gn:112261,Vanak,Isfahan,1665,village,0,0,50,0,none,none
+gn:112272,Valūjā,Māzandarān,1882,village,0,0,50,0,none,none
+gn:112283,Bīneh,Alborz Province,1420,village,0,0,50,0,none,none
+gn:112286,Valīābād,Māzandarān,3548,village,0,0,50,0,none,none
+gn:112339,Vājārgāh,Gilan Province,4537,village,0,0,50,0,none,none
+gn:112351,Vafs,Markazi,1607,village,0,0,50,0,none,none
+gn:112356,Vādān,Tehran,1305,village,0,0,50,0,none,none
+gn:112365,Ozūndarreh,Hamadan Province,2245,village,0,0,50,0,none,none
+gn:112422,Tūyserkān,Hamadan Province,50455,town,0,0,50,0,none,none
+gn:112435,Tūt-e Nadeh,Kohgiluyeh and Boyer-Ahmad,1510,village,0,0,50,0,none,none
+gn:112439,Tūtkābon,Gilan Province,1510,village,0,0,50,0,none,none
+gn:112465,Tūs-e Soflá,Razavi Khorasan,3114,village,0,0,50,0,none,none
+gn:112475,Tūrān,Hormozgan,2339,village,0,0,50,0,none,none
+gn:112478,Tūreh,Markazi,2302,village,0,0,50,0,none,none
+gn:112578,Ţowlash,Ardabil Province,1770,village,0,0,50,0,none,none
+gn:112579,Ţūlā,Hormozgan,5874,village,0,0,50,0,none,none
+gn:112601,Torūd,Semnan,1813,village,0,0,50,0,none,none
+gn:112616,Ţorqabeh,Razavi Khorasan,20998,town,0,0,50,0,none,none
+gn:112634,Torkamān,East Azerbaijan,7443,village,0,0,50,0,none,none
+gn:112637,Torkābād,Yazd Province,3714,village,0,0,50,0,none,none
+gn:112646,Torbat-e Ḩeydarīyeh,Razavi Khorasan,140019,city,0,0,50,0,none,none
+gn:112656,Tonekābon,Māzandarān,37501,town,0,0,50,0,none,none
+gn:112676,Tombān,Hormozgan,1199,village,0,0,50,0,none,none
+gn:112777,Tīrūr,Hormozgan,4871,village,0,0,50,0,none,none
+gn:112782,Tīr Tāsh,Māzandarān,2551,village,0,0,50,0,none,none
+gn:112835,Tīl,East Azerbaijan,3303,village,0,0,50,0,none,none
+gn:112896,Teshnīz,Chaharmahal and Bakhtiari,1538,village,0,0,50,0,none,none
+gn:112931,Tehran,Tehran,7153309,large-city,0,0,50,0,none,none
+gn:113072,Tasūj,East Azerbaijan,7522,village,0,0,50,0,none,none
+gn:113074,Ţasūj,Fars,4555,village,0,0,50,0,none,none
+gn:113090,Ābādeh Ţashk,Fars,7379,village,0,0,50,0,none,none
+gn:113116,Ţarvīzak,Qazvin Province,1019,village,0,0,50,0,none,none
+gn:113151,Torkālakī,Khuzestan,5688,village,0,0,50,0,none,none
+gn:113293,Tankamān,Alborz Province,4654,village,0,0,50,0,none,none
+gn:113343,Hashtpar,Gilan Province,45305,town,0,0,50,0,none,none
+gn:113349,Ţālem Seh Shanbeh,Gilan Province,2687,village,0,0,50,0,none,none
+gn:113361,Ţālebābād,Gilan Province,2362,village,0,0,50,0,none,none
+gn:113363,Ţāleb ābād,Tehran,4850,village,0,0,50,0,none,none
+gn:113486,Takht,Hormozgan,3082,village,0,0,50,0,none,none
+gn:113491,Tākestān,Qazvin Province,71499,town,0,0,50,0,none,none
+gn:113508,Takāb,West Azerbaijan,51541,town,0,0,50,0,none,none
+gn:113514,Tajrīsh,Tehran,86000,town,0,0,50,0,none,none
+gn:113552,Rasūlābād-e Soflá,Hamadan Province,1901,village,0,0,50,0,none,none
+gn:113556,Herāt,Yazd Province,13032,town,0,0,50,0,none,none
+gn:113596,Bandar-e Sīraf,Bushehr,6992,village,0,0,50,0,none,none
+gn:113597,Ţāher Gūrāb,Gilan Province,1168,village,0,0,50,0,none,none
+gn:113604,Ţāherābād,Isfahan,2674,village,0,0,50,0,none,none
+gn:113632,Taft,Yazd Province,18464,town,0,0,50,0,none,none
+gn:113636,Tafresh,Markazi,16493,town,0,0,50,0,none,none
+gn:113637,Tafīhān,Fars,6170,village,0,0,50,0,none,none
+gn:113646,Tabriz,East Azerbaijan,1424641,large-city,0,0,50,0,none,none
+gn:113650,Ţabl,Hormozgan,4069,village,0,0,50,0,none,none
+gn:113659,Tabas,Yazd Province,49993,town,0,0,50,0,none,none
+gn:113660,Tabarteh,Markazi,1064,village,0,0,50,0,none,none
+gn:113676,Tabādakān,Razavi Khorasan,1596,village,0,0,50,0,none,none
+gn:113684,Sūzā,Hormozgan,5707,village,0,0,50,0,none,none
+gn:113723,Surian,Fars,20000,town,0,0,50,0,none,none
+gn:113732,Sūreshjān,Chaharmahal and Bakhtiari,12308,town,0,0,50,0,none,none
+gn:113738,Sūrā Posht,Gilan Province,1535,village,0,0,50,0,none,none
+gn:113760,Sūrak,Māzandarān,9208,village,0,0,50,0,none,none
+gn:113791,Sūleqān,Tehran,5013,village,0,0,50,0,none,none
+gn:113797,Nūr,Māzandarān,26947,town,0,0,50,0,none,none
+gn:113816,Sū Kahrīz,Zanjan,2560,village,0,0,50,0,none,none
+gn:113818,Sūhā,Ardabil Province,1958,village,0,0,50,0,none,none
+gn:113839,Sūd Jān,Chaharmahal and Bakhtiari,5581,village,0,0,50,0,none,none
+gn:113844,Sūbāshī,Hamadan Province,1384,village,0,0,50,0,none,none
+gn:113848,Sīs,East Azerbaijan,6106,village,0,0,50,0,none,none
+gn:113860,Şowme‘eh Sarā,Gilan Province,47083,town,0,0,50,0,none,none
+gn:113902,Sorkhrūd-e Gharbī,Māzandarān,6699,village,0,0,50,0,none,none
+gn:113952,Sorkheh,Semnan,9951,village,0,0,50,0,none,none
+gn:114049,Sonqor,Kermanshah Province,44256,town,0,0,50,0,none,none
+gn:114073,Shelū Gerd,Razavi Khorasan,1337,village,0,0,50,0,none,none
+gn:114105,Solţānābād,Razavi Khorasan,0,village,0,0,50,0,none,none
+gn:114106,Eqbālīyeh,Qazvin Province,55066,town,0,0,50,0,none,none
+gn:114110,Solţānābād,Razavi Khorasan,2078,village,0,0,50,0,none,none
+gn:114131,Solţānābād,Fars,8734,village,0,0,50,0,none,none
+gn:114163,Sojās,Zanjan,7037,village,0,0,50,0,none,none
+gn:114196,Şoghād,Fars,12582,town,0,0,50,0,none,none
+gn:114242,Shīrūd,Māzandarān,11377,town,0,0,50,0,none,none
+gn:114259,Sirjan,Kerman,199704,city,0,0,50,0,none,none
+gn:114323,Sīlvānā,West Azerbaijan,1614,village,0,0,50,0,none,none
+gn:114489,Sīāhkal,Gilan Province,19924,town,0,0,50,0,none,none
+gn:114521,Sīah Bāz,West Azerbaijan,2045,village,0,0,50,0,none,none
+gn:114584,Shūshtar,Khuzestan,101878,city,0,0,50,0,none,none
+gn:114593,Shūsh,Khuzestan,77148,town,0,0,50,0,none,none
+gn:114650,Shūr Daraq,East Azerbaijan,1021,village,0,0,50,0,none,none
+gn:114670,Shūrekī,Bushehr,1415,village,0,0,50,0,none,none
+gn:114805,Shūmīā,Māzandarān,1049,village,0,0,50,0,none,none
+gn:114894,Shojā‘,East Azerbaijan,2538,village,0,0,50,0,none,none
+gn:114911,Shīveh,Zanjan,1439,village,0,0,50,0,none,none
+gn:114921,Shīshavān,East Azerbaijan,3737,village,0,0,50,0,none,none
+gn:114927,Shīrvāneh,Kurdistan Province,2092,village,0,0,50,0,none,none
+gn:114930,Shīrvān,North Khorasan,82790,town,0,0,50,0,none,none
+gn:114966,Bandar-e Shīrīnū,Bushehr,9976,village,0,0,50,0,none,none
+gn:115001,Shīr Gāh,Māzandarān,0,village,0,0,50,0,none,none
+gn:115018,Shīrāz,East Azerbaijan,1995,village,0,0,50,0,none,none
+gn:115019,Shiraz,Fars,1249942,large-city,0,0,50,0,none,none
+gn:115028,Shīrāmīn,East Azerbaijan,3282,village,0,0,50,0,none,none
+gn:115095,Sheykh Shabān,Chaharmahal and Bakhtiari,2683,village,0,0,50,0,none,none
+gn:115223,Shūrīn,Hamadan Province,4473,village,0,0,50,0,none,none
+gn:115226,Sheshtamad,Razavi Khorasan,3108,village,0,0,50,0,none,none
+gn:115236,Shesh Bahreh-ye Bālā,Chaharmahal and Bakhtiari,1435,village,0,0,50,0,none,none
+gn:115247,Shendābād,East Azerbaijan,8489,village,0,0,50,0,none,none
+gn:115317,Shevīr,Zanjan,1850,village,0,0,50,0,none,none
+gn:115382,Sharīfābād,Qazvin Province,20347,town,0,0,50,0,none,none
+gn:115388,Sharīfābād,Tehran,8870,village,0,0,50,0,none,none
+gn:115447,Sharabīān,East Azerbaijan,4877,village,0,0,50,0,none,none
+gn:115456,Shāpūr Jān,Fars,10280,town,0,0,50,0,none,none
+gn:115491,Mīānrūd,Khuzestan,10110,town,0,0,50,0,none,none
+gn:115497,Shamsī,Yazd Province,1267,village,0,0,50,0,none,none
+gn:115532,Shamsābād,Khuzestan,10858,town,0,0,50,0,none,none
+gn:115533,Shamsābād,Chaharmahal and Bakhtiari,2609,village,0,0,50,0,none,none
+gn:115558,Shamīl-e Bālā,Hormozgan,3028,village,0,0,50,0,none,none
+gn:115580,Shalmān,Gilan Province,5102,village,0,0,50,0,none,none
+gn:115607,Shalamzār,Chaharmahal and Bakhtiari,6899,village,0,0,50,0,none,none
+gn:115615,Shāl,Qazvin Province,15290,town,0,0,50,0,none,none
+gn:115680,Ma‘şūmīyeh,Markazi,1959,village,0,0,50,0,none,none
+gn:115757,Shahrestān,Gilan Province,2385,village,0,0,50,0,none,none
+gn:115765,Shahr-e Pīr,Fars,8927,village,0,0,50,0,none,none
+gn:115770,Shahr-e Kord,Chaharmahal and Bakhtiari,129153,city,0,0,50,0,none,none
+gn:115781,Shahr-e Bābak,Kerman,51620,town,0,0,50,0,none,none
+gn:115802,Kīān,Chaharmahal and Bakhtiari,12948,town,0,0,50,0,none,none
+gn:115876,Anbār Ālūm,Golestan,7003,village,0,0,50,0,none,none
+gn:115912,Shāhīnī,Kurdistan Province,1663,village,0,0,50,0,none,none
+gn:115960,Shahdād,Kerman,5217,village,0,0,50,0,none,none
+gn:116028,Ja‘farābād,Ardabil Province,7226,village,0,0,50,0,none,none
+gn:116076,Shaft,Gilan Province,8184,village,0,0,50,0,none,none
+gn:116102,Shādegān,Khuzestan,41733,town,0,0,50,0,none,none
+gn:116105,Shādbād-e Mashāyekh,East Azerbaijan,5524,village,0,0,50,0,none,none
+gn:116124,Sha‘abjereh,Kerman,1883,village,0,0,50,0,none,none
+gn:116126,Shabestar,East Azerbaijan,22181,town,0,0,50,0,none,none
+gn:116137,Shabāb,Ilam Province,4088,village,0,0,50,0,none,none
+gn:116201,Seyyed Tāj od Dīn,West Azerbaijan,2612,village,0,0,50,0,none,none
+gn:116243,Seyyedābād,Razavi Khorasan,5312,village,0,0,50,0,none,none
+gn:116319,Seyyedān,Fars,8574,village,0,0,50,0,none,none
+gn:116326,Seyah Cheshmeh,West Azerbaijan,17804,town,0,0,50,0,none,none
+gn:116337,Sarūk,Kohgiluyeh and Boyer-Ahmad,5130,village,0,0,50,0,none,none
+gn:116374,Sen Sen,Isfahan,1576,village,0,0,50,0,none,none
+gn:116375,Şenowbar,Razavi Khorasan,2646,village,0,0,50,0,none,none
+gn:116388,Senjān,Markazi,12249,town,0,0,50,0,none,none
+gn:116402,Semnan,Semnan,124826,city,0,0,50,0,none,none
+gn:116406,Semīrom,Isfahan,26942,town,0,0,50,0,none,none
+gn:116431,Seh Gel,Hormozgan,2187,village,0,0,50,0,none,none
+gn:116434,Seh Talvan,Khuzestan,1182,village,0,0,50,0,none,none
+gn:116499,Seftejān,Isfahan,1474,village,0,0,50,0,none,none
+gn:116518,Sefīdeh Khān,East Azerbaijan,1929,village,0,0,50,0,none,none
+gn:116550,Sepīdār,Kohgiluyeh and Boyer-Ahmad,1503,village,0,0,50,0,none,none
+gn:116626,sedeyen-e Yek,Khuzestan,1082,village,0,0,50,0,none,none
+gn:116628,Sedeh,Razavi Khorasan,4258,village,0,0,50,0,none,none
+gn:116667,Sāveh,Markazi,220762,city,0,0,50,0,none,none
+gn:116669,Savād Jān,Chaharmahal and Bakhtiari,1316,village,0,0,50,0,none,none
+gn:116692,Sātlū,East Azerbaijan,1470,village,0,0,50,0,none,none
+gn:116696,Setaq,Hamadan Province,1046,village,0,0,50,0,none,none
+gn:116709,Sarzeh,Hormozgan,1165,village,0,0,50,0,none,none
+gn:116725,Sarvestān,Fars,18187,town,0,0,50,0,none,none
+gn:116739,Sarvābād,Kurdistan Province,5121,village,0,0,50,0,none,none
+gn:116745,Sārūq,Markazi,1345,village,0,0,50,0,none,none
+gn:116757,Sarteshnīz,Chaharmahal and Bakhtiari,2919,village,0,0,50,0,none,none
+gn:116884,Sar Mashhad,Fars,2818,village,0,0,50,0,none,none
+gn:116900,Sar Korreh,Bushehr,2062,village,0,0,50,0,none,none
+gn:116949,Sarjū’īyeh,Hormozgan,3938,village,0,0,50,0,none,none
+gn:116996,Sari,Māzandarān,255396,city,0,0,50,0,none,none
+gn:117048,Sara'eyn,East Azerbaijan,5459,village,0,0,50,0,none,none
+gn:117096,Sardrūd,East Azerbaijan,29739,town,0,0,50,0,none,none
+gn:117111,Sardasht,West Azerbaijan,46412,town,0,0,50,0,none,none
+gn:117115,Sardasht,Khuzestan,6912,village,0,0,50,0,none,none
+gn:117116,Sardasht,Hormozgan,1725,village,0,0,50,0,none,none
+gn:117135,Sardārān,Khuzestan,5240,village,0,0,50,0,none,none
+gn:117196,Sar Chāh,Chaharmahal and Bakhtiari,1664,village,0,0,50,0,none,none
+gn:117204,Sarbīsheh,South Khorasan Province,8715,village,0,0,50,0,none,none
+gn:117218,Sarbandān,Tehran,3352,village,0,0,50,0,none,none
+gn:117232,Sarāyān,South Khorasan Province,13795,town,0,0,50,0,none,none
+gn:117234,Sarāy,East Azerbaijan,1484,village,0,0,50,0,none,none
+gn:117249,Sar Āsīab-e Shesh,Kerman,1968,village,0,0,50,0,none,none
+gn:117287,Salafchegān,Qom Province,1390,village,0,0,50,0,none,none
+gn:117304,Sarābleh,Ilam Province,12393,town,0,0,50,0,none,none
+gn:117338,Sarāb Ḩammām,Lorestan Province,4054,village,0,0,50,0,none,none
+gn:117345,Sarāb-e Dūreh,Lorestan Province,1713,village,0,0,50,0,none,none
+gn:117362,Sarāb Bāgh,Ilam Province,2659,village,0,0,50,0,none,none
+gn:117368,Sarāb,East Azerbaijan,45031,town,0,0,50,0,none,none
+gn:117389,Sāghravan,Razavi Khorasan,4455,village,0,0,50,0,none,none
+gn:117392,Saqqez,Kurdistan Province,165258,city,0,0,50,0,none,none
+gn:117410,Seqānlīq,Markazi,1036,village,0,0,50,0,none,none
+gn:117414,Sāq,Razavi Khorasan,5851,village,0,0,50,0,none,none
+gn:117422,Sankhvāst,North Khorasan,2077,village,0,0,50,0,none,none
+gn:117447,Sang Tarāshān,Māzandarān,1712,village,0,0,50,0,none,none
+gn:117461,Sangar,Gilan Province,12583,town,0,0,50,0,none,none
+gn:117552,Sangāchīn,Gilan Province,2305,village,0,0,50,0,none,none
+gn:117574,Sanandaj,Kurdistan Province,349176,city,0,0,50,0,none,none
+gn:117627,Sāmān,Chaharmahal and Bakhtiari,14192,town,0,0,50,0,none,none
+gn:117629,Samal-e Shomālī,Bushehr,1044,village,0,0,50,0,none,none
+gn:117656,Salmās,West Azerbaijan,81606,town,0,0,50,0,none,none
+gn:117698,Soleh Bon,Tehran,1500,village,0,0,50,0,none,none
+gn:117708,Şāleḩābād,Hamadan Province,7899,village,0,0,50,0,none,none
+gn:117741,Salāmī,Razavi Khorasan,7555,village,0,0,50,0,none,none
+gn:117773,Rāmsar,Māzandarān,35997,town,0,0,50,0,none,none
+gn:117793,Shāhīn Dezh,West Azerbaijan,41442,town,0,0,50,0,none,none
+gn:117799,Solţānīyeh,Zanjan,7638,village,0,0,50,0,none,none
+gn:117808,Sa‘īdābād,West Azerbaijan,3255,village,0,0,50,0,none,none
+gn:117814,Sa‘īdābād,Tehran,16212,town,0,0,50,0,none,none
+gn:117835,Şaḩneh,Kermanshah Province,35508,town,0,0,50,0,none,none
+gn:117869,Şāḩeb,Kurdistan Province,3101,village,0,0,50,0,none,none
+gn:117879,Saggez Ābād,Qazvin Province,5492,village,0,0,50,0,none,none
+gn:117959,Şadrābād,Yazd Province,1475,village,0,0,50,0,none,none
+gn:118013,Seyyed Shāvūr,Khuzestan,1114,village,0,0,50,0,none,none
+gn:118024,Katālem va Sādāt Shahr,Māzandarān,20716,town,0,0,50,0,none,none
+gn:118048,Sa‘dābād,Bushehr,8248,village,0,0,50,0,none,none
+gn:118063,Sabzevar,Razavi Khorasan,243700,city,0,0,50,0,none,none
+gn:118123,Sa‘ādat Shahr,Fars,17131,town,0,0,50,0,none,none
+gn:118139,Rūyān,Semnan,3770,village,0,0,50,0,none,none
+gn:118152,Rūnīz-e Soflá,Fars,1880,village,0,0,50,0,none,none
+gn:118153,Rūnīz,Fars,5760,village,0,0,50,0,none,none
+gn:118191,Rūdsar,Gilan Province,47502,town,0,0,50,0,none,none
+gn:118196,Rūd Pīsh,Gilan Province,2140,village,0,0,50,0,none,none
+gn:118223,Rūdehen,Tehran,28533,town,0,0,50,0,none,none
+gn:118232,Rūdboneh,Gilan Province,3441,village,0,0,50,0,none,none
+gn:118238,Rūd Bardeh,Gilan Province,1120,village,0,0,50,0,none,none
+gn:118244,Khalīlābād,Gilan Province,10504,town,0,0,50,0,none,none
+gn:118250,Rūdbāl,Fars,1222,village,0,0,50,0,none,none
+gn:118260,Rūdak,Qazvin Province,1270,village,0,0,50,0,none,none
+gn:118272,Rezveh,Isfahan,4332,village,0,0,50,0,none,none
+gn:118279,Rūshnāvand,Razavi Khorasan,3272,village,0,0,50,0,none,none
+gn:118302,Rostam Kolā,Māzandarān,11686,town,0,0,50,0,none,none
+gn:118307,Bandar-e Rostamī,Bushehr,1671,village,0,0,50,0,none,none
+gn:118314,Rostamābād,Gilan Province,13746,town,0,0,50,0,none,none
+gn:118319,Rostamābād,Chaharmahal and Bakhtiari,1037,village,0,0,50,0,none,none
+gn:118323,Narmāshīr,Kerman,5222,village,0,0,50,0,none,none
+gn:118328,Roshtkhvār,Razavi Khorasan,7514,village,0,0,50,0,none,none
+gn:118346,Roknābād,Yazd Province,2324,village,0,0,50,0,none,none
+gn:118367,Robāţ Karīm,Tehran,105393,city,0,0,50,0,none,none
+gn:118452,Rīz,Bushehr,3282,village,0,0,50,0,none,none
+gn:118532,Reẕvānshahr,Gilan Province,19519,town,0,0,50,0,none,none
+gn:118538,Reẕvān,Hormozgan,5066,village,0,0,50,0,none,none
+gn:118596,Reshtaqūn,Qazvin Province,1608,village,0,0,50,0,none,none
+gn:118639,Razīnī,Hamadan Province,3118,village,0,0,50,0,none,none
+gn:118643,Rāzīāneh,Fars,1052,village,0,0,50,0,none,none
+gn:118653,Raẕī,Ardabil Province,1581,village,0,0,50,0,none,none
+gn:118681,Razan,Hamadan Province,14275,town,0,0,50,0,none,none
+gn:118696,Rāyen,Kerman,10286,town,0,0,50,0,none,none
+gn:118704,Rāvar,Kerman,40167,town,0,0,50,0,none,none
+gn:118705,Ravānsar,Kermanshah Province,24527,town,0,0,50,0,none,none
+gn:118728,Rāstāb,Chaharmahal and Bakhtiari,1582,village,0,0,50,0,none,none
+gn:118742,Rashtābād,Gilan Province,1628,village,0,0,50,0,none,none
+gn:118743,Rasht,Gilan Province,594590,large-city,0,0,50,0,none,none
+gn:118756,Rasht Kolā,Māzandarān,2669,village,0,0,50,0,none,none
+gn:118805,Rāmshīr,Khuzestan,25009,town,0,0,50,0,none,none
+gn:118806,Rāmsheh,Isfahan,3131,village,0,0,50,0,none,none
+gn:118824,Rāmīān,Golestan,12426,town,0,0,50,0,none,none
+gn:118826,Rāmhormoz,Khuzestan,74285,town,0,0,50,0,none,none
+gn:118838,Ramchāh,Hormozgan,3004,village,0,0,50,0,none,none
+gn:118847,Ramkān,Hormozgan,4473,village,0,0,50,0,none,none
+gn:118929,Raḩmatābād,Kerman,5055,village,0,0,50,0,none,none
+gn:118958,Raḩīmābād,Gilan Province,10571,town,0,0,50,0,none,none
+gn:118967,Raḩīmābād,Kerman,3365,village,0,0,50,0,none,none
+gn:118975,Rāhdār,Bushehr,1574,village,0,0,50,0,none,none
+gn:118994,Rafsanjān,Kerman,147680,city,0,0,50,0,none,none
+gn:119001,Rādekān,Qazvin Province,2306,village,0,0,50,0,none,none
+gn:119010,Rābor,Kerman,13263,town,0,0,50,0,none,none
+gn:119044,Qūrūq,West Azerbaijan,1471,village,0,0,50,0,none,none
+gn:119076,Qūrchī Bāshī,Markazi,1374,village,0,0,50,0,none,none
+gn:119102,Qūdejān,Isfahan,1472,village,0,0,50,0,none,none
+gn:119115,Qūchān,Razavi Khorasan,111752,city,0,0,50,0,none,none
+gn:119149,Qoţbābād,Fars,7476,village,0,0,50,0,none,none
+gn:119160,Qorveh-ye Dargazīn,Hamadan Province,9540,village,0,0,50,0,none,none
+gn:119161,Qorveh,Kurdistan Province,87953,town,0,0,50,0,none,none
+gn:119171,Qoroq,Golestan,6701,village,0,0,50,0,none,none
+gn:119208,Qom,Qom Province,900000,large-city,0,0,50,0,none,none
+gn:119264,Qīr,Fars,20010,town,0,0,50,0,none,none
+gn:119353,Qey‘araq,East Azerbaijan,2155,village,0,0,50,0,none,none
+gn:119369,Qīdar,Zanjan,34921,town,0,0,50,0,none,none
+gn:119374,Qeshm,Hormozgan,25000,town,0,0,50,0,none,none
+gn:119422,Qeshlāq-e Charkhlū,Qazvin Province,1360,village,0,0,50,0,none,none
+gn:119453,Qeshlāq,Fars,1072,village,0,0,50,0,none,none
+gn:119505,Qazvin,Qazvin Province,333635,city,0,0,50,0,none,none
+gn:119521,Qāẕī Jahān,East Azerbaijan,3359,village,0,0,50,0,none,none
+gn:119524,Qāẕīān Bālā Maḩalleh,Gilan Province,2836,village,0,0,50,0,none,none
+gn:119537,Qazānchī,Kermanshah Province,2755,village,0,0,50,0,none,none
+gn:119560,Qānqarmeh,Golestan,2197,village,0,0,50,0,none,none
+gn:119586,Qaşr-e Shīrīn,Kermanshah Province,18473,town,0,0,50,0,none,none
+gn:119632,Kāz̧emābād,Razavi Khorasan,1501,village,0,0,50,0,none,none
+gn:119714,Qarnābād,Golestan,1961,village,0,0,50,0,none,none
+gn:119730,Qarah Ẕīā’ od Dīn,West Azerbaijan,26767,town,0,0,50,0,none,none
+gn:119803,Qarah Moşallá,North Khorasan,1311,village,0,0,50,0,none,none
+gn:119860,Qarah Chopoq,East Azerbaijan,5456,village,0,0,50,0,none,none
+gn:119902,Qarah Bābā,East Azerbaijan,3085,village,0,0,50,0,none,none
+gn:120199,Qal‘eh Now,Fars,1530,village,0,0,50,0,none,none
+gn:120292,Qods,Tehran,309605,city,0,0,50,0,none,none
+gn:120323,Qal‘eh Ganj,Kerman,0,village,0,0,50,0,none,none
+gn:120351,Rūdān,Hormozgan,36121,town,0,0,50,0,none,none
+gn:120474,Qal‘eh-ye Nāz̧er,Isfahan,1241,village,0,0,50,0,none,none
+gn:120499,Qal‘eh-ye Khvājeh,Khuzestan,0,village,0,0,50,0,none,none
+gn:120539,Arkavaz,Ilam Province,11977,town,0,0,50,0,none,none
+gn:120554,Qal‘eh Bīn,Gilan Province,1436,village,0,0,50,0,none,none
+gn:120577,Dībāj,Semnan,5647,village,0,0,50,0,none,none
+gn:120618,Qalāt,Fars,3953,village,0,0,50,0,none,none
+gn:120620,Qalāt,Fars,3959,village,0,0,50,0,none,none
+gn:120673,Qahrīzjān,Isfahan,1779,village,0,0,50,0,none,none
+gn:120678,Farrokh Shahr,Chaharmahal and Bakhtiari,32391,town,0,0,50,0,none,none
+gn:120694,Qā’en,South Khorasan Province,42323,town,0,0,50,0,none,none
+gn:120695,Qā’em Shahr,Māzandarān,204953,city,0,0,50,0,none,none
+gn:120709,Qadīmābād,Qazvin Province,1469,village,0,0,50,0,none,none
+gn:120724,Qāderābād,Fars,14973,town,0,0,50,0,none,none
+gn:120814,Pūl,Māzandarān,3150,village,0,0,50,0,none,none
+gn:120869,Posht-e Pīān,Khuzestan,2325,village,0,0,50,0,none,none
+gn:120931,Sarpol-e Z̄ahāb,Kermanshah Province,45481,town,0,0,50,0,none,none
+gn:120934,Pol-e Sharqī,Hormozgan,5943,village,0,0,50,0,none,none
+gn:120936,Pol-e Sefīd,Māzandarān,8294,village,0,0,50,0,none,none
+gn:120949,Poldokhtar,Lorestan Province,26352,town,0,0,50,0,none,none
+gn:120954,Poldasht,West Azerbaijan,42170,town,0,0,50,0,none,none
+gn:120972,Pīshvā,Tehran,53856,town,0,0,50,0,none,none
+gn:120978,Pīshkamar,Golestan,5777,village,0,0,50,0,none,none
+gn:120997,Pīr Yūsefīān,Qazvin Province,4071,village,0,0,50,0,none,none
+gn:121000,Telkheh Chār,Kerman,3000,village,0,0,50,0,none,none
+gn:121048,Pīr Kandī,West Azerbaijan,1220,village,0,0,50,0,none,none
+gn:121100,Pīr Bāzār,Gilan Province,5373,village,0,0,50,0,none,none
+gn:121105,Pīr Balūţ,Chaharmahal and Bakhtiari,1916,village,0,0,50,0,none,none
+gn:121110,Piranshahr,West Azerbaijan,168393,city,0,0,50,0,none,none
+gn:121157,Pey Posht,Hormozgan,1766,village,0,0,50,0,none,none
+gn:121240,Pāveh,Kermanshah Province,25771,town,0,0,50,0,none,none
+gn:121263,Pātāveh,Kohgiluyeh and Boyer-Ahmad,2284,village,0,0,50,0,none,none
+gn:121289,Pāskhan,Fars,1545,village,0,0,50,0,none,none
+gn:121290,Paskūhān,Zanjan,1184,village,0,0,50,0,none,none
+gn:121380,Pārsābād,Ardabil Province,102996,city,0,0,50,0,none,none
+gn:121411,Pārīz,Kerman,8005,village,0,0,50,0,none,none
+gn:121457,Pardanjān,Chaharmahal and Bakhtiari,8699,village,0,0,50,0,none,none
+gn:121481,Parak,Bushehr,3582,village,0,0,50,0,none,none
+gn:121492,Pā Qalāt,Fars,1007,village,0,0,50,0,none,none
+gn:121509,Panj Peykar,Golestan,2528,village,0,0,50,0,none,none
+gn:121604,Palangābād,Alborz Province,1012,village,0,0,50,0,none,none
+gn:121636,Gatāb,Māzandarān,7374,village,0,0,50,0,none,none
+gn:121668,Pahlavān Koshī,Bushehr,1296,village,0,0,50,0,none,none
+gn:121774,Oţāqvar,Gilan Province,1938,village,0,0,50,0,none,none
+gn:121780,Emāmzādeh ‘Abdollāh,Māzandarān,5768,village,0,0,50,0,none,none
+gn:121781,Oskū,East Azerbaijan,18459,town,0,0,50,0,none,none
+gn:121795,Oshnavīyeh,West Azerbaijan,50661,town,0,0,50,0,none,none
+gn:121801,Orūmīyeh,West Azerbaijan,577307,large-city,0,0,50,0,none,none
+gn:121816,Ordaklū,East Azerbaijan,5985,village,0,0,50,0,none,none
+gn:121826,Ām Ālṭamīr,Khuzestan,5004,village,0,0,50,0,none,none
+gn:121856,Ommatlar,Hamadan Province,2126,village,0,0,50,0,none,none
+gn:121861,Omīdīyeh,Khuzestan,67427,town,0,0,50,0,none,none
+gn:121890,Nūshābād,Isfahan,11838,town,0,0,50,0,none,none
+gn:121904,Nūr ‘Alī Beyg,Markazi,1769,village,0,0,50,0,none,none
+gn:121925,Nūrābād,Fars,57058,town,0,0,50,0,none,none
+gn:121929,Nūrābād,Fars,1187,village,0,0,50,0,none,none
+gn:121934,Nūkān,Kermanshah Province,10377,town,0,0,50,0,none,none
+gn:121950,Nowz̄arābād,Māzandarān,1892,village,0,0,50,0,none,none
+gn:121955,Nowsūd,Kermanshah Province,1949,village,0,0,50,0,none,none
+gn:121958,Now Shahr,Ardabil Province,1695,village,0,0,50,0,none,none
+gn:121959,Nowshahr,Māzandarān,40000,town,0,0,50,0,none,none
+gn:121966,Nowrūzān,Fars,2607,village,0,0,50,0,none,none
+gn:121993,Now Kandeh,Golestan,6650,village,0,0,50,0,none,none
+gn:121999,Nowjeyn,Fars,3769,village,0,0,50,0,none,none
+gn:122003,Nowjeh Deh-e Sādāt,East Azerbaijan,1527,village,0,0,50,0,none,none
+gn:122026,Kahak,Qom Province,4837,village,0,0,50,0,none,none
+gn:122071,Nowbarān,Markazi,3334,village,0,0,50,0,none,none
+gn:122095,Noşratābād,Sistan and Baluchestan,5238,village,0,0,50,0,none,none
+gn:122111,Noşratābād,Sistan and Baluchestan,4182,village,0,0,50,0,none,none
+gn:122123,Noqreh Deh,Gilan Province,1162,village,0,0,50,0,none,none
+gn:122166,Nīvān Nār,Isfahan,1010,village,0,0,50,0,none,none
+gn:122183,Nīmvar,Markazi,7507,village,0,0,50,0,none,none
+gn:122213,Nīknāmdeh,Tehran,3441,village,0,0,50,0,none,none
+gn:122232,Neyāsar,Isfahan,2319,village,0,0,50,0,none,none
+gn:122234,Nīāraq,Ardabil Province,1873,village,0,0,50,0,none,none
+gn:122255,Nez̧āmābād,Qazvin Province,3857,village,0,0,50,0,none,none
+gn:122260,Nez̧āmābād,Fars,1275,village,0,0,50,0,none,none
+gn:122285,Neyshābūr,Razavi Khorasan,220929,city,0,0,50,0,none,none
+gn:122289,Neyrīz,Fars,45506,town,0,0,50,0,none,none
+gn:122319,Ney,Kurdistan Province,2691,village,0,0,50,0,none,none
+gn:122324,Neshlaj,Isfahan,3024,village,0,0,50,0,none,none
+gn:122369,Narjeh,Qazvin Province,5604,village,0,0,50,0,none,none
+gn:122375,Neqāb,Razavi Khorasan,14783,town,0,0,50,0,none,none
+gn:122397,Nekā,Māzandarān,60991,town,0,0,50,0,none,none
+gn:122428,Naz̧arlū,East Azerbaijan,3773,village,0,0,50,0,none,none
+gn:122436,Naz̧ar Āqā,Bushehr,2649,village,0,0,50,0,none,none
+gn:122438,Naz̧arābād,Alborz Province,213388,city,0,0,50,0,none,none
+gn:122481,Navār,Hamadan Province,1574,village,0,0,50,0,none,none
+gn:122491,Naţanz,Isfahan,43977,town,0,0,50,0,none,none
+gn:122513,Naşrābād,Razavi Khorasan,1739,village,0,0,50,0,none,none
+gn:122515,Sefidshahr,Isfahan,5804,village,0,0,50,0,none,none
+gn:122544,Nasirshahr,Tehran,28644,town,0,0,50,0,none,none
+gn:122560,Nashtārūd,Māzandarān,5837,village,0,0,50,0,none,none
+gn:122569,Nāşer od Dīn,Lorestan Province,9148,village,0,0,50,0,none,none
+gn:122653,Anārestān,Bushehr,3400,village,0,0,50,0,none,none
+gn:122667,Narāq,Markazi,2592,village,0,0,50,0,none,none
+gn:122687,Naqneh,Chaharmahal and Bakhtiari,9923,village,0,0,50,0,none,none
+gn:122698,Naqadeh,West Azerbaijan,81598,town,0,0,50,0,none,none
+gn:122713,Namrūr,East Azerbaijan,1424,village,0,0,50,0,none,none
+gn:122721,Namīn,Ardabil Province,13659,town,0,0,50,0,none,none
+gn:122722,Nāmīleh,Hamadan Province,2998,village,0,0,50,0,none,none
+gn:122771,Nālūs,West Azerbaijan,2973,village,0,0,50,0,none,none
+gn:122776,Nalīvān,West Azerbaijan,1186,village,0,0,50,0,none,none
+gn:122787,Nakhl-e Taqī,Bushehr,18837,town,0,0,50,0,none,none
+gn:122794,Nakhl-e Ebrāhīmī,Hormozgan,2094,village,0,0,50,0,none,none
+gn:122829,Najaf,North Khorasan,1279,village,0,0,50,0,none,none
+gn:122860,Maḩalleh-ye Najafābād,Kohgiluyeh and Boyer-Ahmad,10742,town,0,0,50,0,none,none
+gn:122864,Najafshahr,Kerman,20164,town,0,0,50,0,none,none
+gn:122869,Nā’īn,Isfahan,27379,town,0,0,50,0,none,none
+gn:122881,Nahr-e Mīān,Markazi,1634,village,0,0,50,0,none,none
+gn:122914,Khoramdasht,Qazvin Province,6554,village,0,0,50,0,none,none
+gn:122915,Nahāvand,Hamadan Province,76250,town,0,0,50,0,none,none
+gn:122919,Nahand,East Azerbaijan,1061,village,0,0,50,0,none,none
+gn:122925,Nāghān-e Soflá,Chaharmahal and Bakhtiari,1792,village,0,0,50,0,none,none
+gn:122926,Nāghān,Chaharmahal and Bakhtiari,6125,village,0,0,50,0,none,none
+gn:122939,Nāfech,Chaharmahal and Bakhtiari,4059,village,0,0,50,0,none,none
+gn:122959,Naddāfīyeh,Khuzestan,2429,village,0,0,50,0,none,none
+gn:122989,Mūsáābād,Isfahan,5437,village,0,0,50,0,none,none
+gn:123014,Mūsáābād,Māzandarān,1817,village,0,0,50,0,none,none
+gn:123036,Mūrmūrī,Ilam Province,3768,village,0,0,50,0,none,none
+gn:123106,Mūchesh,Kurdistan Province,3370,village,0,0,50,0,none,none
+gn:123117,Mūd,South Khorasan Province,3477,village,0,0,50,0,none,none
+gn:123129,Moz̧affarīyeh-ye Yek,Khuzestan,1005,village,0,0,50,0,none,none
+gn:123138,Moz̧affarābād,Fars,1097,village,0,0,50,0,none,none
+gn:123179,Salmānshahr,Māzandarān,9656,village,0,0,50,0,none,none
+gn:123195,Moşţafáābād,Chaharmahal and Bakhtiari,2379,village,0,0,50,0,none,none
+gn:123203,Moshrāgeh,Khuzestan,2095,village,0,0,50,0,none,none
+gn:123205,Meshkīn Dasht,Tehran,62005,town,0,0,50,0,none,none
+gn:123215,Moshkān,Fars,1063,village,0,0,50,0,none,none
+gn:123266,Morghān,Fars,5660,village,0,0,50,0,none,none
+gn:123295,Marāveh Tappeh,Golestan,0,village,0,0,50,0,none,none
+gn:123389,Mollās̄ānī,Khuzestan,0,village,0,0,50,0,none,none
+gn:123405,Mollā Ḩasan,North Khorasan,1734,village,0,0,50,0,none,none
+gn:123485,Mohr,Fars,7784,village,0,0,50,0,none,none
+gn:123490,Moḩīābād,Kerman,3930,village,0,0,50,0,none,none
+gn:123494,Moḩammad Yār,West Azerbaijan,9313,village,0,0,50,0,none,none
+gn:123500,Moḩammad Şāleḩī,Bushehr,1515,village,0,0,50,0,none,none
+gn:123674,Moḩammadābād,Kerman,0,village,0,0,50,0,none,none
+gn:123706,Moghānjūq,West Azerbaijan,5209,village,0,0,50,0,none,none
+gn:123718,Mo‘ezzābād-e Jāberī,Fars,5785,village,0,0,50,0,none,none
+gn:123735,Mobārakeh-ye Karvan,Isfahan,1504,village,0,0,50,0,none,none
+gn:123738,Mobārakeh,Yazd Province,3301,village,0,0,50,0,none,none
+gn:123752,Mobārak Shahr,East Azerbaijan,4456,village,0,0,50,0,none,none
+gn:123927,Mīnūdasht,Golestan,30085,town,0,0,50,0,none,none
+gn:123941,Mīnāb,Hormozgan,97986,town,0,0,50,0,none,none
+gn:123942,Mīnābād,Ardabil Province,1139,village,0,0,50,0,none,none
+gn:123986,Mīlājerd,Markazi,9288,village,0,0,50,0,none,none
+gn:124082,Mīāneh,East Azerbaijan,106291,city,0,0,50,0,none,none
+gn:124085,Mīāndoāb,West Azerbaijan,134425,city,0,0,50,0,none,none
+gn:124094,Miyanshahr,Fars,5912,village,0,0,50,0,none,none
+gn:124099,Nīmbelūk,South Khorasan Province,4762,village,0,0,50,0,none,none
+gn:124101,Mīāndasht,Isfahan,0,village,0,0,50,0,none,none
+gn:124146,Meymand,Fars,10120,town,0,0,50,0,none,none
+gn:124193,Meybod,Yazd Province,51874,town,0,0,50,0,none,none
+gn:124210,Meshgīn Shahr,Ardabil Province,90987,town,0,0,50,0,none,none
+gn:124274,Mahrīz,Yazd Province,34237,town,0,0,50,0,none,none
+gn:124291,Mehrān,Ilam Province,11831,town,0,0,50,0,none,none
+gn:124298,Mehrabān,East Azerbaijan,12937,town,0,0,50,0,none,none
+gn:124331,Mehmāndār-e Soflá,East Azerbaijan,1008,village,0,0,50,0,none,none
+gn:124338,Mehdī Rajeh,Māzandarān,1954,village,0,0,50,0,none,none
+gn:124347,Mehdīābād,Qazvin Province,1494,village,0,0,50,0,none,none
+gn:124491,Mazīnān,Razavi Khorasan,1661,village,0,0,50,0,none,none
+gn:124517,Mazāyjān,Fars,2655,village,0,0,50,0,none,none
+gn:124569,Mavarz,Chaharmahal and Bakhtiari,1201,village,0,0,50,0,none,none
+gn:124597,Mast-e Soflá,Markazi,2128,village,0,0,50,0,none,none
+gn:124619,Masjed-e ‘Olyā,Hamadan Province,1873,village,0,0,50,0,none,none
+gn:124620,Masjed Soleymān,Khuzestan,100497,city,0,0,50,0,none,none
+gn:124622,Maşīrī,Fars,0,village,0,0,50,0,none,none
+gn:124637,Mashtān,Fars,3093,village,0,0,50,0,none,none
+gn:124647,Bardsīr,Kerman,25152,town,0,0,50,0,none,none
+gn:124662,Mashhad-e Elkūbeh,Markazi,1386,village,0,0,50,0,none,none
+gn:124665,Mashhad,Razavi Khorasan,2307177,large-city,0,0,50,0,none,none
+gn:124667,Mashkat,Isfahan,5357,village,0,0,50,0,none,none
+gn:124690,Mesen,Hormozgan,2162,village,0,0,50,0,none,none
+gn:124698,Marzījarān,Markazi,4143,village,0,0,50,0,none,none
+gn:124709,Marzanābād,Māzandarān,6698,village,0,0,50,0,none,none
+gn:124715,Maryānaj,Hamadan Province,10848,town,0,0,50,0,none,none
+gn:124721,Marvdasht,Fars,148858,city,0,0,50,0,none,none
+gn:124724,Marvast,Yazd Province,9379,village,0,0,50,0,none,none
+gn:124767,Mārkdeh,Chaharmahal and Bakhtiari,1601,village,0,0,50,0,none,none
+gn:124771,Mārgown,Kohgiluyeh and Boyer-Ahmad,3135,village,0,0,50,0,none,none
+gn:124775,Marjaghal,Gilan Province,6735,village,0,0,50,0,none,none
+gn:124778,Marīvān,Kurdistan Province,136654,city,0,0,50,0,none,none
+gn:124838,Māhdāsht,Tehran,62910,town,0,0,50,0,none,none
+gn:124862,Marand,East Azerbaijan,124191,city,0,0,50,0,none,none
+gn:124863,Efzar,Fars,2657,village,0,0,50,0,none,none
+gn:124877,Marāgheh,East Azerbaijan,262604,city,0,0,50,0,none,none
+gn:124878,Marāgheh,Razavi Khorasan,262604,city,0,0,50,0,none,none
+gn:124885,Mārāb,Kurdistan Province,1185,village,0,0,50,0,none,none
+gn:124914,Manūjān,Kerman,15634,town,0,0,50,0,none,none
+gn:124925,Manşūrīyeh,Khuzestan,5441,village,0,0,50,0,none,none
+gn:124956,Manşūrābād,Fars,2412,village,0,0,50,0,none,none
+gn:124966,Manjīlābād,Tehran,2648,village,0,0,50,0,none,none
+gn:124967,Manjīl,Gilan Province,15630,town,0,0,50,0,none,none
+gn:125000,Mand-e Bālā,Sistan and Baluchestan,1119,village,0,0,50,0,none,none
+gn:125016,Ma‘mūlān,Lorestan Province,7656,village,0,0,50,0,none,none
+gn:125035,Mamqān,East Azerbaijan,11892,town,0,0,50,0,none,none
+gn:125077,Māl Khalīfeh,Chaharmahal and Bakhtiari,4024,village,0,0,50,0,none,none
+gn:125112,Malekān,East Azerbaijan,27431,town,0,0,50,0,none,none
+gn:125126,Māl-e Khalīfeh,Bushehr,2463,village,0,0,50,0,none,none
+gn:125140,Malekābād,Razavi Khorasan,1569,village,0,0,50,0,none,none
+gn:125142,Mālekābād,Markazi,2536,village,0,0,50,0,none,none
+gn:125185,Malāyer,Hamadan Province,170237,city,0,0,50,0,none,none
+gn:125188,Malārd,Tehran,56745,town,0,0,50,0,none,none
+gn:125205,Maku,West Azerbaijan,46581,town,0,0,50,0,none,none
+gn:125206,Makū,Bushehr,46581,town,0,0,50,0,none,none
+gn:125212,Mākalvān,Gilan Province,1635,village,0,0,50,0,none,none
+gn:125227,Mākrān,Māzandarān,1498,village,0,0,50,0,none,none
+gn:125236,Reẕvānshahr,Yazd Province,3606,village,0,0,50,0,none,none
+gn:125290,Māhneshān,Zanjan,5487,village,0,0,50,0,none,none
+gn:125328,Maḩmūdābād,Māzandarān,31844,town,0,0,50,0,none,none
+gn:125330,Maḩmūdābād Nemūneh,Qazvin Province,21982,town,0,0,50,0,none,none
+gn:125393,Bahmanābād,Fars,2112,village,0,0,50,0,none,none
+gn:125427,Māhān,Kerman,19423,town,0,0,50,0,none,none
+gn:125438,Maḩallāt,Markazi,43245,town,0,0,50,0,none,none
+gn:125443,Mohājerān,Hamadan Province,7331,village,0,0,50,0,none,none
+gn:125446,Mahābād,West Azerbaijan,168393,city,0,0,50,0,none,none
+gn:125489,Mādavān,Kohgiluyeh and Boyer-Ahmad,18078,town,0,0,50,0,none,none
+gn:125511,Mādar Soleymān,Fars,1546,village,0,0,50,0,none,none
+gn:125556,Lūshkān,Qazvin Province,3028,village,0,0,50,0,none,none
+gn:125585,Lowshān,Gilan Province,13032,town,0,0,50,0,none,none
+gn:125599,Loţfābād,Razavi Khorasan,1865,village,0,0,50,0,none,none
+gn:125609,Lordegān,Chaharmahal and Bakhtiari,40528,town,0,0,50,0,none,none
+gn:125646,Līvār-e Bālā,East Azerbaijan,1178,village,0,0,50,0,none,none
+gn:125671,Līqvān,East Azerbaijan,5122,village,0,0,50,0,none,none
+gn:125688,Līkak,Kohgiluyeh and Boyer-Ahmad,19857,town,0,0,50,0,none,none
+gn:125710,Leylān,East Azerbaijan,6356,village,0,0,50,0,none,none
+gn:125726,Landeh,Kohgiluyeh and Boyer-Ahmad,12772,town,0,0,50,0,none,none
+gn:125741,Lazūr,Tehran,1288,village,0,0,50,0,none,none
+gn:125744,Laz,Hormozgan,1101,village,0,0,50,0,none,none
+gn:125766,Lāy Bīd,Isfahan,1832,village,0,0,50,0,none,none
+gn:125790,Lavandevīl,Gilan Province,11235,town,0,0,50,0,none,none
+gn:125798,Laţīfī,Fars,7300,village,0,0,50,0,none,none
+gn:125805,Les̄gā’,Hamadan Province,1973,village,0,0,50,0,none,none
+gn:125820,Lāsjerd,Semnan,1024,village,0,0,50,0,none,none
+gn:125826,Lasht-e Neshā,Gilan Province,10539,town,0,0,50,0,none,none
+gn:125834,Lashkarābād,Alborz Province,7198,village,0,0,50,0,none,none
+gn:125853,Lārīm,Māzandarān,5300,village,0,0,50,0,none,none
+gn:125877,Lār,Fars,62045,town,0,0,50,0,none,none
+gn:125881,Lapū’ī,Fars,8985,village,0,0,50,0,none,none
+gn:125897,Langarūd,Gilan Province,79445,town,0,0,50,0,none,none
+gn:125906,Langar,Kerman,1818,village,0,0,50,0,none,none
+gn:125926,Lamerd,Fars,29380,town,0,0,50,0,none,none
+gn:125938,Lālī,Khuzestan,18473,town,0,0,50,0,none,none
+gn:125945,Lālehzār,Kerman,4429,village,0,0,50,0,none,none
+gn:125958,Lālān,Tehran,1135,village,0,0,50,0,none,none
+gn:125960,Lalaklū,West Azerbaijan,1640,village,0,0,50,0,none,none
+gn:125961,Lālejīn,Hamadan Province,14916,town,0,0,50,0,none,none
+gn:125972,Laklār,East Azerbaijan,4767,village,0,0,50,0,none,none
+gn:126015,Lāhījān,Gilan Province,101073,city,0,0,50,0,none,none
+gn:126035,Bandar-e Lāft,Hormozgan,4668,village,0,0,50,0,none,none
+gn:126056,Kūzeh Kanān,East Azerbaijan,4730,village,0,0,50,0,none,none
+gn:126069,Şafīābād,Khuzestan,9879,village,0,0,50,0,none,none
+gn:126082,Kūt-e ‘Abdollāh,Khuzestan,56252,town,0,0,50,0,none,none
+gn:126089,Kūshk-e Nār,Hormozgan,3260,village,0,0,50,0,none,none
+gn:126148,Rāmjerd,Fars,2550,village,0,0,50,0,none,none
+gn:126227,Kūrdeh,Fars,3595,village,0,0,50,0,none,none
+gn:126258,Kotīj,Sistan and Baluchestan,3016,village,0,0,50,0,none,none
+gn:126267,Kūmeleh,Gilan Province,6457,village,0,0,50,0,none,none
+gn:126314,Kūjanaq,Ardabil Province,1920,village,0,0,50,0,none,none
+gn:126351,Kūhīn,Qazvin Province,1411,village,0,0,50,0,none,none
+gn:126362,Kūhestak,Hormozgan,3060,village,0,0,50,0,none,none
+gn:126382,Kūhanjān,Fars,3281,village,0,0,50,0,none,none
+gn:126409,Kūhdasht,Lorestan Province,89091,town,0,0,50,0,none,none
+gn:126411,Kūhbanān,Kerman,10761,town,0,0,50,0,none,none
+gn:126430,Kūdīān,Fars,1005,village,0,0,50,0,none,none
+gn:126435,Kūcheşfahān,Gilan Province,10026,town,0,0,50,0,none,none
+gn:126501,Koshksarāy,East Azerbaijan,12250,town,0,0,50,0,none,none
+gn:126553,Koreyt-e Borūmī,Khuzestan,1622,village,0,0,50,0,none,none
+gn:126572,Kord Kūy,Golestan,39881,town,0,0,50,0,none,none
+gn:126578,Kord Kandī,East Azerbaijan,4439,village,0,0,50,0,none,none
+gn:126580,Kordīchāl,Māzandarān,1566,village,0,0,50,0,none,none
+gn:126600,Kordān,Alborz Province,3795,village,0,0,50,0,none,none
+gn:126613,Korang,Semnan,1094,village,0,0,50,0,none,none
+gn:126615,Korand,Golestan,5616,village,0,0,50,0,none,none
+gn:126628,Kapūr Chāl,Gilan Province,1542,village,0,0,50,0,none,none
+gn:126640,Golshahr,Isfahan,9904,village,0,0,50,0,none,none
+gn:126654,Kondor,Qazvin Province,1383,village,0,0,50,0,none,none
+gn:126656,Kondor,Razavi Khorasan,6460,village,0,0,50,0,none,none
+gn:126712,Sardang-e Komīz,Hormozgan,1383,village,0,0,50,0,none,none
+gn:126715,Komījān,Markazi,7358,village,0,0,50,0,none,none
+gn:126720,Kommeh,Isfahan,2184,village,0,0,50,0,none,none
+gn:126734,Kolvānaq,East Azerbaijan,7465,village,0,0,50,0,none,none
+gn:126743,Kolūr,Ardabil Province,2347,village,0,0,50,0,none,none
+gn:126771,Kolkā Sarā,Gilan Province,1118,village,0,0,50,0,none,none
+gn:126838,Kolāhī,Hormozgan,5686,village,0,0,50,0,none,none
+gn:126884,Kohanābād,Semnan,1192,village,0,0,50,0,none,none
+gn:126914,Kīsh,Hormozgan,39853,town,0,0,50,0,none,none
+gn:126931,Kīnak,Chaharmahal and Bakhtiari,1262,village,0,0,50,0,none,none
+gn:126942,Kīlān,Tehran,2882,village,0,0,50,0,none,none
+gn:126952,Kīāshahr,Gilan Province,14022,town,0,0,50,0,none,none
+gn:126959,Kīānābād,Fars,5039,village,0,0,50,0,none,none
+gn:126962,Kīā Kolā,Māzandarān,8040,village,0,0,50,0,none,none
+gn:126972,Khūy,West Azerbaijan,198845,city,0,0,50,0,none,none
+gn:126973,Khowy,Chaharmahal and Bakhtiari,2772,village,0,0,50,0,none,none
+gn:127014,Khūrmūj,Bushehr,40722,town,0,0,50,0,none,none
+gn:127029,Khūr,Isfahan,6765,village,0,0,50,0,none,none
+gn:127033,Khānsār,Isfahan,21883,town,0,0,50,0,none,none
+gn:127046,Khvāchekīn,Gilan Province,1216,village,0,0,50,0,none,none
+gn:127051,Khājeh Nafas,Golestan,5129,village,0,0,50,0,none,none
+gn:127081,Khūzī,Fars,3245,village,0,0,50,0,none,none
+gn:127095,Khūsheh Mehr-e Khūjeh Mīr,East Azerbaijan,3528,village,0,0,50,0,none,none
+gn:127098,Khūsf,South Khorasan Province,5716,village,0,0,50,0,none,none
+gn:127109,Khūrīn,Tehran,7223,village,0,0,50,0,none,none
+gn:127127,Khūr,Alborz Province,4409,village,0,0,50,0,none,none
+gn:127131,Khūr,Fars,7338,village,0,0,50,0,none,none
+gn:127160,Khūndāb,Isfahan,1652,village,0,0,50,0,none,none
+gn:127162,Khūnān,Qazvin Province,2423,village,0,0,50,0,none,none
+gn:127166,Khūmeh Zār,Fars,6220,village,0,0,50,0,none,none
+gn:127186,Khozāq,Isfahan,1326,village,0,0,50,0,none,none
+gn:127211,Khūjīn,Ardabil Province,2633,village,0,0,50,0,none,none
+gn:127215,Khosūyeh,Fars,2856,village,0,0,50,0,none,none
+gn:127217,Khosrow Shīrīn,Fars,1969,village,0,0,50,0,none,none
+gn:127219,Khosrowshahr,East Azerbaijan,21972,town,0,0,50,0,none,none
+gn:127243,Shahr-e Emām,Khuzestan,11393,town,0,0,50,0,none,none
+gn:127269,Khoshkrūd,Markazi,5246,village,0,0,50,0,none,none
+gn:127279,Khoshk Esţalkh,Gilan Province,1072,village,0,0,50,0,none,none
+gn:127289,Khoshk Bījār,Gilan Province,7245,village,0,0,50,0,none,none
+gn:127319,Khorramshahr,Khuzestan,330606,city,0,0,50,0,none,none
+gn:127342,Khorramābād,Māzandarān,11542,town,0,0,50,0,none,none
+gn:127343,Khorramābād,Razavi Khorasan,1482,village,0,0,50,0,none,none
+gn:127349,Khorramabad,Lorestan Province,329825,city,0,0,50,0,none,none
+gn:127382,Khonj,Fars,19217,town,0,0,50,0,none,none
+gn:127384,Khonjesht,Fars,2487,village,0,0,50,0,none,none
+gn:127389,Khondāb,Markazi,7810,village,0,0,50,0,none,none
+gn:127394,Khenejīn,Markazi,3235,village,0,0,50,0,none,none
+gn:127403,Khomeyn,Markazi,77425,town,0,0,50,0,none,none
+gn:127409,Khomārlū,East Azerbaijan,1902,village,0,0,50,0,none,none
+gn:127415,Khomām,Gilan Province,20897,town,0,0,50,0,none,none
+gn:127466,Kheẕerlū,East Azerbaijan,3505,village,0,0,50,0,none,none
+gn:127488,Kheyr Rūd Kenār,Māzandarān,1996,village,0,0,50,0,none,none
+gn:127531,Kheyrābād,Markazi,2280,village,0,0,50,0,none,none
+gn:127585,Khesht Sar,Māzandarān,2656,village,0,0,50,0,none,none
+gn:127593,Khasht,Fars,9599,village,0,0,50,0,none,none
+gn:127613,Kherāmeh,Fars,18477,town,0,0,50,0,none,none
+gn:127651,Khovīs,Khuzestan,3520,village,0,0,50,0,none,none
+gn:127653,Khāveh,Tehran,1012,village,0,0,50,0,none,none
+gn:127668,Khātūnābād,Kerman,5471,village,0,0,50,0,none,none
+gn:127758,Pardeh Gūsheh,Gilan Province,2801,village,0,0,50,0,none,none
+gn:127833,Kharājī,Chaharmahal and Bakhtiari,2880,village,0,0,50,0,none,none
+gn:127834,Kharājī,Hormozgan,4712,village,0,0,50,0,none,none
+gn:127855,Khān Laq,North Khorasan,6518,village,0,0,50,0,none,none
+gn:127858,Khānkūk,South Khorasan Province,1099,village,0,0,50,0,none,none
+gn:127882,Khānīman,Fars,3020,village,0,0,50,0,none,none
+gn:127886,Khānīān,East Azerbaijan,1014,village,0,0,50,0,none,none
+gn:127917,Khāneh Zenyān,Fars,4027,village,0,0,50,0,none,none
+gn:127949,Khondāb,Zanjan,1646,village,0,0,50,0,none,none
+gn:127955,Khān Bebīn,Golestan,10878,town,0,0,50,0,none,none
+gn:127960,Khāneqāh,East Azerbaijan,1060,village,0,0,50,0,none,none
+gn:127986,Kham Pīch,Isfahan,1414,village,0,0,50,0,none,none
+gn:127992,Bandar-e Khamīr,Hormozgan,15320,town,0,0,50,0,none,none
+gn:127995,Barf Anbār,Isfahan,5382,village,0,0,50,0,none,none
+gn:127996,Khāmesān,Kurdistan Province,1405,village,0,0,50,0,none,none
+gn:128008,Khalkhāl,Ardabil Province,51024,town,0,0,50,0,none,none
+gn:128025,Khalīlābād,Razavi Khorasan,12751,town,0,0,50,0,none,none
+gn:128081,Khāledābād,Isfahan,3023,village,0,0,50,0,none,none
+gn:128101,Khalaf Ţāḩūneh,Fars,1303,village,0,0,50,0,none,none
+gn:128103,Khalaf-e Mosallam,Khuzestan,1999,village,0,0,50,0,none,none
+gn:128112,Khākrīz,Hamadan Province,1253,village,0,0,50,0,none,none
+gn:128135,Khafr,Isfahan,1034,village,0,0,50,0,none,none
+gn:128226,Kermanshah,Kermanshah Province,621100,large-city,0,0,50,0,none,none
+gn:128234,Kerman,Kerman,577514,large-city,0,0,50,0,none,none
+gn:128241,Kerīk,North Khorasan,1122,village,0,0,50,0,none,none
+gn:128252,Kerend-e Gharb,Kermanshah Province,0,village,0,0,50,0,none,none
+gn:128270,Kenār Sar-e Bozorg,Gilan Province,1369,village,0,0,50,0,none,none
+gn:128299,Kelestān,Fars,1673,village,0,0,50,0,none,none
+gn:128315,Kazzāz-e Bālā,Markazi,1908,village,0,0,50,0,none,none
+gn:128321,Kāzerūn,Fars,112360,city,0,0,50,0,none,none
+gn:128338,Kāz̧emābād,Kerman,4060,village,0,0,50,0,none,none
+gn:128392,Sīmīn Shahr,Golestan,17205,town,0,0,50,0,none,none
+gn:128394,Katrā,Māzandarān,1832,village,0,0,50,0,none,none
+gn:128404,Kateh Gonbad,Fars,1086,village,0,0,50,0,none,none
+gn:128424,Kasrīneh,Razavi Khorasan,2105,village,0,0,50,0,none,none
+gn:128447,Kāshmar,Razavi Khorasan,131517,city,0,0,50,0,none,none
+gn:128469,Keshāvarz,West Azerbaijan,4138,village,0,0,50,0,none,none
+gn:128476,Kashan,Isfahan,304487,city,0,0,50,0,none,none
+gn:128566,Karkān,Markazi,1437,village,0,0,50,0,none,none
+gn:128582,Kārīzak-e Nāgahānī,Razavi Khorasan,2920,village,0,0,50,0,none,none
+gn:128612,Karīmābād,Hamadan Province,1452,village,0,0,50,0,none,none
+gn:128653,Karīān,Hormozgan,5000,village,0,0,50,0,none,none
+gn:128664,Kargān,Hormozgan,5282,village,0,0,50,0,none,none
+gn:128665,Karkaj,East Azerbaijan,8496,village,0,0,50,0,none,none
+gn:128697,Kardar,Hormozgan,1592,village,0,0,50,0,none,none
+gn:128703,Kārchān,Markazi,3743,village,0,0,50,0,none,none
+gn:128747,Karaj,Alborz Province,1448075,large-city,0,0,50,0,none,none
+gn:128748,Karahrūd,Markazi,29721,town,0,0,50,0,none,none
+gn:128752,Karf-e ‘Olyā,Chaharmahal and Bakhtiari,1198,village,0,0,50,0,none,none
+gn:128831,Kangāvar,Kermanshah Province,51352,town,0,0,50,0,none,none
+gn:128847,Bandar-e Kangān,Bushehr,60187,town,0,0,50,0,none,none
+gn:128858,Kandor,Hamadan Province,1289,village,0,0,50,0,none,none
+gn:128862,Kandolūs,Māzandarān,1092,village,0,0,50,0,none,none
+gn:128890,Kenevīst,Razavi Khorasan,3695,village,0,0,50,0,none,none
+gn:128898,Konarak-e ‘Olyā,Chaharmahal and Bakhtiari,1058,village,0,0,50,0,none,none
+gn:128905,Kāmyārān,Kurdistan Province,57077,town,0,0,50,0,none,none
+gn:129054,Kamālī,Fars,1312,village,0,0,50,0,none,none
+gn:129062,Kamālābād,Qazvin Province,2802,village,0,0,50,0,none,none
+gn:129124,Kalameh,Bushehr,2463,village,0,0,50,0,none,none
+gn:129201,Kaleybar,East Azerbaijan,9324,village,0,0,50,0,none,none
+gn:129415,Kalāteh-ye ‘Arab,Razavi Khorasan,1449,village,0,0,50,0,none,none
+gn:129479,Kelārābād,Māzandarān,6267,village,0,0,50,0,none,none
+gn:129512,Kalāleh,Golestan,33700,town,0,0,50,0,none,none
+gn:129514,Kolā Kūb,Razavi Khorasan,1272,village,0,0,50,0,none,none
+gn:129543,Kalā Chāy,Gilan Province,12379,town,0,0,50,0,none,none
+gn:129569,Kākī,Bushehr,12119,town,0,0,50,0,none,none
+gn:129574,Kākhk,Razavi Khorasan,4625,village,0,0,50,0,none,none
+gn:129610,Kujuvar,East Azerbaijan,6001,village,0,0,50,0,none,none
+gn:129618,Kāj,Chaharmahal and Bakhtiari,4227,village,0,0,50,0,none,none
+gn:129664,Kahrīzak,Tehran,37527,town,0,0,50,0,none,none
+gn:129666,Kahrīzak,Alborz Province,1072,village,0,0,50,0,none,none
+gn:129775,Kohyān,Chaharmahal and Bakhtiari,2015,village,0,0,50,0,none,none
+gn:129811,Kaftarak,Fars,1732,village,0,0,50,0,none,none
+gn:129819,Kafrī,Fars,1636,village,0,0,50,0,none,none
+gn:129821,Kafrāsh,Hamadan Province,1670,village,0,0,50,0,none,none
+gn:129826,Maḩalleh-ye Kāfī ol Malek,East Azerbaijan,1251,village,0,0,50,0,none,none
+gn:129904,Kabūdarāhang,Hamadan Province,19216,town,0,0,50,0,none,none
+gn:129929,Eyvān,Ilam Province,31299,town,0,0,50,0,none,none
+gn:129931,Jūyom,Fars,8010,village,0,0,50,0,none,none
+gn:129933,Jūybār,Māzandarān,32924,town,0,0,50,0,none,none
+gn:129945,Jūraqān,Hamadan Province,9234,village,0,0,50,0,none,none
+gn:129950,Jūqīn,Zanjan,3129,village,0,0,50,0,none,none
+gn:129956,Jūnqān,Chaharmahal and Bakhtiari,14433,town,0,0,50,0,none,none
+gn:130013,Jūsheqān-e Estark,Isfahan,2035,village,0,0,50,0,none,none
+gn:130029,Jowkār,Hamadan Province,2258,village,0,0,50,0,none,none
+gn:130069,Jenāḩ,Hormozgan,6910,village,0,0,50,0,none,none
+gn:130081,Julfa,East Azerbaijan,8810,village,0,0,50,0,none,none
+gn:130091,Joghtāy,Razavi Khorasan,9268,village,0,0,50,0,none,none
+gn:130116,Jīrandeh,Gilan Province,2320,village,0,0,50,0,none,none
+gn:130141,Jīān,Fars,1905,village,0,0,50,0,none,none
+gn:130165,Jereh,Fars,1589,village,0,0,50,0,none,none
+gn:130175,Jenāqerd,Ardabil Province,2348,village,0,0,50,0,none,none
+gn:130216,Khārk,Bushehr,8193,village,0,0,50,0,none,none
+gn:130223,Jezzeh,Fars,1620,village,0,0,50,0,none,none
+gn:130226,Jazan,Semnan,1818,village,0,0,50,0,none,none
+gn:130242,Jāvarsīān,Markazi,4993,village,0,0,50,0,none,none
+gn:130246,Javānmardī,Chaharmahal and Bakhtiari,2385,village,0,0,50,0,none,none
+gn:130265,Javādīyeh,Tehran,4844,village,0,0,50,0,none,none
+gn:130268,Jetūţ,Bushehr,1143,village,0,0,50,0,none,none
+gn:130269,Jāteh,Khuzestan,1227,village,0,0,50,0,none,none
+gn:130271,Jāsk-e Kohneh,Hormozgan,1202,village,0,0,50,0,none,none
+gn:130276,Jask,Hormozgan,16680,town,0,0,50,0,none,none
+gn:130327,Jānqūr,East Azerbaijan,2221,village,0,0,50,0,none,none
+gn:130366,Jongīyeh,Khuzestan,4183,village,0,0,50,0,none,none
+gn:130399,Jām Khāneh,Māzandarān,5173,village,0,0,50,0,none,none
+gn:130406,Jamkarān,Qom Province,8368,village,0,0,50,0,none,none
+gn:130451,Jam,Bushehr,31436,town,0,0,50,0,none,none
+gn:130452,Jannat Makān,Khuzestan,5360,village,0,0,50,0,none,none
+gn:130479,Jalāyer,Markazi,1359,village,0,0,50,0,none,none
+gn:130524,Jājarm,North Khorasan,19580,town,0,0,50,0,none,none
+gn:130527,Jā’īnak,Bushehr,2387,village,0,0,50,0,none,none
+gn:130531,Jahrom,Fars,141634,city,0,0,50,0,none,none
+gn:130565,Jahānābād,Qazvin Province,1032,village,0,0,50,0,none,none
+gn:130668,Jadval-e Torkī,Fars,1471,village,0,0,50,0,none,none
+gn:130676,Jāydasht,Fars,5524,village,0,0,50,0,none,none
+gn:130677,Jābūz,Razavi Khorasan,3639,village,0,0,50,0,none,none
+gn:130690,Jābān,Tehran,2500,village,0,0,50,0,none,none
+gn:130697,Īẕeh,Khuzestan,119399,city,0,0,50,0,none,none
+gn:130702,Īzad Khvāst,Fars,5910,village,0,0,50,0,none,none
+gn:130715,Eyvaq,East Azerbaijan,1157,village,0,0,50,0,none,none
+gn:130718,Īvand,East Azerbaijan,1043,village,0,0,50,0,none,none
+gn:130748,Īrīn,Tehran,1822,village,0,0,50,0,none,none
+gn:130757,Īrānābād,Ardabil Province,2051,village,0,0,50,0,none,none
+gn:130760,Īraj,North Khorasan,1421,village,0,0,50,0,none,none
+gn:130802,Īlām,Ilam Province,140940,city,0,0,50,0,none,none
+gn:130807,Īch,Zanjan,2086,village,0,0,50,0,none,none
+gn:130809,Īj,Fars,6246,village,0,0,50,0,none,none
+gn:130819,Īdahlū,Hamadan Province,1580,village,0,0,50,0,none,none
+gn:130821,Hoveyzeh,Khuzestan,19481,town,0,0,50,0,none,none
+gn:130825,Hūtak,Kerman,3415,village,0,0,50,0,none,none
+gn:130852,Hūreh,Chaharmahal and Bakhtiari,2548,village,0,0,50,0,none,none
+gn:131034,Ḩoseynābād,North Khorasan,2909,village,0,0,50,0,none,none
+gn:131037,Ḩoseynābād,East Azerbaijan,2258,village,0,0,50,0,none,none
+gn:131231,Hormoz,Hormozgan,5891,village,0,0,50,0,none,none
+gn:131272,Halor,Hormozgan,5828,village,0,0,50,0,none,none
+gn:131278,Ḩokmābād,Razavi Khorasan,3824,village,0,0,50,0,none,none
+gn:131314,Hīv,Alborz Province,8697,village,0,0,50,0,none,none
+gn:131343,Hīdaj,Zanjan,13840,town,0,0,50,0,none,none
+gn:131428,Ḩey,Zanjan,1318,village,0,0,50,0,none,none
+gn:131441,Hashatjīn,Ardabil Province,5725,village,0,0,50,0,none,none
+gn:131454,Ḩeşār Kharvān,Qazvin Province,3949,village,0,0,50,0,none,none
+gn:131511,Ḩesāmābād,Hamadan Province,2045,village,0,0,50,0,none,none
+gn:131528,Herīs,East Azerbaijan,10515,town,0,0,50,0,none,none
+gn:131536,Beyẕā,Fars,7252,village,0,0,50,0,none,none
+gn:131551,Hendūdar,Markazi,1918,village,0,0,50,0,none,none
+gn:131559,Hendījān,Khuzestan,29015,town,0,0,50,0,none,none
+gn:131574,Hemmatābād,Razavi Khorasan,1274,village,0,0,50,0,none,none
+gn:131596,Halpah’ī,Bushehr,1427,village,0,0,50,0,none,none
+gn:131621,Hachīrūd,Māzandarān,10398,town,0,0,50,0,none,none
+gn:131691,Hashtgerd,Alborz Province,55640,town,0,0,50,0,none,none
+gn:131703,Ḩorr,Khuzestan,9177,village,0,0,50,0,none,none
+gn:131705,Ḩāshīyeh Rūd,West Azerbaijan,1381,village,0,0,50,0,none,none
+gn:131713,Hāshemābād,Isfahan,1029,village,0,0,50,0,none,none
+gn:131743,Ḩasan Rūd,Gilan Province,1466,village,0,0,50,0,none,none
+gn:131782,Yāsūkand,Kurdistan Province,3490,village,0,0,50,0,none,none
+gn:131831,Ḩasanābād,Tehran,43922,town,0,0,50,0,none,none
+gn:131946,Hārūnī,Chaharmahal and Bakhtiari,3601,village,0,0,50,0,none,none
+gn:131962,Harsīn,Kermanshah Province,57647,town,0,0,50,0,none,none
+gn:131994,Harchegān,Chaharmahal and Bakhtiari,1996,village,0,0,50,0,none,none
+gn:132027,Hanzā,Kerman,1452,village,0,0,50,0,none,none
+gn:132030,Ḩannā,Isfahan,4922,village,0,0,50,0,none,none
+gn:132105,Ḥamīdiyeh,Khuzestan,22057,town,0,0,50,0,none,none
+gn:132119,Hamgīn,Isfahan,1171,village,0,0,50,0,none,none
+gn:132144,Hamadān,Hamadan Province,528256,large-city,0,0,50,0,none,none
+gn:132214,Ḩājjī Qūshān,Golestan,4546,village,0,0,50,0,none,none
+gn:132233,Ḩājjīlār,West Azerbaijan,1394,village,0,0,50,0,none,none
+gn:132237,Ḩājjī Khādemī,Hormozgan,2955,village,0,0,50,0,none,none
+gn:132371,Ḩājjīābād,Fars,1777,village,0,0,50,0,none,none
+gn:132380,Ḩājjīābād,Fars,21675,town,0,0,50,0,none,none
+gn:132382,Ḩājjīābād,Hormozgan,23309,town,0,0,50,0,none,none
+gn:132423,Haft Jūy,Tehran,3137,village,0,0,50,0,none,none
+gn:132428,Haftkel,Khuzestan,15802,town,0,0,50,0,none,none
+gn:132430,Hafteh,Markazi,2681,village,0,0,50,0,none,none
+gn:132458,Hafshejān,Chaharmahal and Bakhtiari,21352,town,0,0,50,0,none,none
+gn:132513,Gūyom,Fars,7297,village,0,0,50,0,none,none
+gn:132572,Gūrzang,Hormozgan,3089,village,0,0,50,0,none,none
+gn:132629,Gūrband,Hormozgan,2692,village,0,0,50,0,none,none
+gn:132645,Gūrak Sādāt,Bushehr,1066,village,0,0,50,0,none,none
+gn:132647,Gūrāb Zarmīkh,Gilan Province,4840,village,0,0,50,0,none,none
+gn:132650,Gūrābjīr-e Şaḩrā,Gilan Province,1507,village,0,0,50,0,none,none
+gn:132680,Gūkjeh,Golestan,1381,village,0,0,50,0,none,none
+gn:132687,Gūjān,Chaharmahal and Bakhtiari,6179,village,0,0,50,0,none,none
+gn:132697,Gūged,Isfahan,6012,village,0,0,50,0,none,none
+gn:132743,Gowharān,West Azerbaijan,2557,village,0,0,50,0,none,none
+gn:132747,Gūk Tappeh,Ardabil Province,1335,village,0,0,50,0,none,none
+gn:132841,Gerzeh,Hormozgan,1170,village,0,0,50,0,none,none
+gn:132857,Gorjī Maḩalleh,Māzandarān,6129,village,0,0,50,0,none,none
+gn:132892,Gorgān,Golestan,244937,city,0,0,50,0,none,none
+gn:132919,Gonjān,Kerman,1428,village,0,0,50,0,none,none
+gn:132938,Gonbad-e Kāvūs,Golestan,151910,city,0,0,50,0,none,none
+gn:132961,Gonābād,Razavi Khorasan,43465,town,0,0,50,0,none,none
+gn:133020,Gol Tappeh Kabīr,Tehran,10850,town,0,0,50,0,none,none
+gn:133021,Gol Tappeh,Hamadan Province,2237,village,0,0,50,0,none,none
+gn:133037,Golpāyegān,Isfahan,58936,town,0,0,50,0,none,none
+gn:133051,Golmakān,Razavi Khorasan,8373,village,0,0,50,0,none,none
+gn:133133,Golestānak,Alborz Province,1827,village,0,0,50,0,none,none
+gn:133166,Shahrak-e Goldasteh,Tehran,7602,village,0,0,50,0,none,none
+gn:133345,Gīlān-e Gharb,Kermanshah Province,0,village,0,0,50,0,none,none
+gn:133416,Gheyzānīyeh,Khuzestan,2794,village,0,0,50,0,none,none
+gn:133439,Gharqābād,Markazi,5375,village,0,0,50,0,none,none
+gn:133528,Garū,Razavi Khorasan,1724,village,0,0,50,0,none,none
+gn:133538,Gerī Dowjī,Golestan,2826,village,0,0,50,0,none,none
+gn:133555,Gerdū,Hormozgan,1878,village,0,0,50,0,none,none
+gn:133595,Gerāsh,Fars,34469,town,0,0,50,0,none,none
+gn:133677,Ja‘farīyeh,Qom Province,9387,village,0,0,50,0,none,none
+gn:133752,Gazanak,Māzandarān,319,village,0,0,50,0,none,none
+gn:133767,Gaz-e Gharbī,Golestan,1883,village,0,0,50,0,none,none
+gn:133819,Gāv Khāneh,Markazi,3296,village,0,0,50,0,none,none
+gn:133831,Gūgān,East Azerbaijan,11742,town,0,0,50,0,none,none
+gn:133852,Pārsiān,Hormozgan,18045,town,0,0,50,0,none,none
+gn:133860,Govāreshk,Razavi Khorasan,1043,village,0,0,50,0,none,none
+gn:133884,Gotvand,Khuzestan,24216,town,0,0,50,0,none,none
+gn:133900,Gasht,Gilan Province,1840,village,0,0,50,0,none,none
+gn:133930,Garūk,Hormozgan,4008,village,0,0,50,0,none,none
+gn:133964,Garmsār,Semnan,48672,town,0,0,50,0,none,none
+gn:133972,Germī,Ardabil Province,28967,town,0,0,50,0,none,none
+gn:133978,Garmeh,North Khorasan,0,village,0,0,50,0,none,none
+gn:133984,Garm Darreh,Chaharmahal and Bakhtiari,1315,village,0,0,50,0,none,none
+gn:134034,Gargūr,Bushehr,1002,village,0,0,50,0,none,none
+gn:134102,Garāb,Lorestan Province,3295,village,0,0,50,0,none,none
+gn:134167,Gandomīneh,Lorestan Province,1407,village,0,0,50,0,none,none
+gn:134173,Gandomān,Chaharmahal and Bakhtiari,6291,village,0,0,50,0,none,none
+gn:134217,Bandar-e Genāveh,Bushehr,52750,town,0,0,50,0,none,none
+gn:134255,Galūgāh,Māzandarān,21352,town,0,0,50,0,none,none
+gn:134256,Galūgāh,Māzandarān,6908,village,0,0,50,0,none,none
+gn:134282,Gālīkesh,Golestan,23394,town,0,0,50,0,none,none
+gn:134296,Galehdār,Fars,13448,town,0,0,50,0,none,none
+gn:134334,Kahaq,East Azerbaijan,1489,village,0,0,50,0,none,none
+gn:134377,Gachī,Fars,2226,village,0,0,50,0,none,none
+gn:134441,Fūman,Gilan Province,35841,town,0,0,50,0,none,none
+gn:134459,Fīshvar,Fars,5395,village,0,0,50,0,none,none
+gn:134462,Fīrūzkūh,Tehran,17453,town,0,0,50,0,none,none
+gn:134469,Fīrūzī,Fars,2639,village,0,0,50,0,none,none
+gn:134480,Fīrūzān,Hamadan Province,5173,village,0,0,50,0,none,none
+gn:134495,Fīrūzābād,Tehran,8756,village,0,0,50,0,none,none
+gn:134518,Fīrūzābād,Fars,65417,town,0,0,50,0,none,none
+gn:134520,Fīrūraq,West Azerbaijan,9190,village,0,0,50,0,none,none
+gn:134534,Fīlestān,Tehran,4431,village,0,0,50,0,none,none
+gn:134540,Fīlābād,Chaharmahal and Bakhtiari,4656,village,0,0,50,0,none,none
+gn:134563,Feyẕābād,Razavi Khorasan,0,village,0,0,50,0,none,none
+gn:134597,Fesendūz,West Azerbaijan,2461,village,0,0,50,0,none,none
+gn:134598,Ferūnābād,Tehran,21682,town,0,0,50,0,none,none
+gn:134601,Fereydūnshahr,Isfahan,13603,town,0,0,50,0,none,none
+gn:134602,Fereydūn Kenār,Māzandarān,34097,town,0,0,50,0,none,none
+gn:134613,Ferdows,South Khorasan Province,28965,town,0,0,50,0,none,none
+gn:134636,Fāẕelābād,Golestan,19461,town,0,0,50,0,none,none
+gn:134691,Fatḩābād,Fars,3804,village,0,0,50,0,none,none
+gn:134695,Kārzīn,Fars,8841,village,0,0,50,0,none,none
+gn:134714,Fashand,Alborz Province,2334,village,0,0,50,0,none,none
+gn:134715,Fasham,Tehran,6945,village,0,0,50,0,none,none
+gn:134721,Fasā,Fars,98061,town,0,0,50,0,none,none
+gn:134734,Fāryāb,Bushehr,2221,village,0,0,50,0,none,none
+gn:134735,Fāryāb,Kerman,4863,village,0,0,50,0,none,none
+gn:134743,Fārūq,Fars,5860,village,0,0,50,0,none,none
+gn:134745,Fārūj,North Khorasan,12061,town,0,0,50,0,none,none
+gn:134756,Fārsīyān,Qazvin Province,3473,village,0,0,50,0,none,none
+gn:134762,Fārsān,Chaharmahal and Bakhtiari,30504,town,0,0,50,0,none,none
+gn:134764,Fārsījīn,Qazvin Province,1860,village,0,0,50,0,none,none
+gn:134765,Farsafaj,Hamadan Province,1526,village,0,0,50,0,none,none
+gn:134775,Farrokhābād,Tehran,5407,village,0,0,50,0,none,none
+gn:134781,Farrāshband,Fars,20320,town,0,0,50,0,none,none
+gn:134788,Farmahīn,Markazi,5756,village,0,0,50,0,none,none
+gn:134793,Farkhad,Razavi Khorasan,3977,village,0,0,50,0,none,none
+gn:134809,Farīmān,Razavi Khorasan,0,village,0,0,50,0,none,none
+gn:134832,Fāreghān,Hormozgan,1773,village,0,0,50,0,none,none
+gn:134846,‘Abbāsābād-e Farāmūshān,Razavi Khorasan,2965,village,0,0,50,0,none,none
+gn:134867,Faraḩābād,Māzandarān,2217,village,0,0,50,0,none,none
+gn:134877,Farāgheh,Yazd Province,1040,village,0,0,50,0,none,none
+gn:134894,Fannūj,Sistan and Baluchestan,13000,town,0,0,50,0,none,none
+gn:134902,Famī,Isfahan,1142,village,0,0,50,0,none,none
+gn:134905,Gamasb,Hamadan Province,1081,village,0,0,50,0,none,none
+gn:134906,Fāmenīn,Hamadan Province,14208,town,0,0,50,0,none,none
+gn:134920,Fāl,Fars,3757,village,0,0,50,0,none,none
+gn:134936,Fakhrābād,Gilan Province,1077,village,0,0,50,0,none,none
+gn:134961,Fahraj,Yazd Province,2963,village,0,0,50,0,none,none
+gn:134962,Fahraj,Kerman,0,village,0,0,50,0,none,none
+gn:134988,Aznāv,Hamadan Province,5411,village,0,0,50,0,none,none
+gn:135015,Ā’īneh Varzān,Tehran,1156,village,0,0,50,0,none,none
+gn:135045,Ayjān,Markazi,1161,village,0,0,50,0,none,none
+gn:135047,Īvāowghlī,West Azerbaijan,3320,village,0,0,50,0,none,none
+gn:135053,Evaz,Fars,19987,town,0,0,50,0,none,none
+gn:135059,Ostūh,Markazi,2363,village,0,0,50,0,none,none
+gn:135075,Estark,Isfahan,1800,village,0,0,50,0,none,none
+gn:135094,Estahbān,Fars,36410,town,0,0,50,0,none,none
+gn:135121,‘Eşmatābād,Qazvin Province,2986,village,0,0,50,0,none,none
+gn:135175,Eslāmābād-e Gharb,Kermanshah Province,90559,town,0,0,50,0,none,none
+gn:135205,Eshtehārd,Alborz Province,29993,town,0,0,50,0,none,none
+gn:135244,Eshkanān,Fars,9115,village,0,0,50,0,none,none
+gn:135295,Esfeden,South Khorasan Province,3598,village,0,0,50,0,none,none
+gn:135296,Esfeshād,South Khorasan Province,2900,village,0,0,50,0,none,none
+gn:135298,Esfarāyen,North Khorasan,59490,town,0,0,50,0,none,none
+gn:135301,Esfarjān,Isfahan,1904,village,0,0,50,0,none,none
+gn:135303,Esfanjān,East Azerbaijan,3544,village,0,0,50,0,none,none
+gn:135326,Esfahlān,East Azerbaijan,4939,village,0,0,50,0,none,none
+gn:135355,Eqlīd,Fars,44341,town,0,0,50,0,none,none
+gn:135405,Dastgerd-e Emāmzādeh,Chaharmahal and Bakhtiari,2810,village,0,0,50,0,none,none
+gn:135423,Shahrud,Semnan,165000,city,0,0,50,0,none,none
+gn:135434,Emām Qeys,Chaharmahal and Bakhtiari,2758,village,0,0,50,0,none,none
+gn:135446,Emām Ḩasan,Bushehr,2731,village,0,0,50,0,none,none
+gn:135474,Ekhtīārābād,Kerman,9840,village,0,0,50,0,none,none
+gn:135484,Ebrāhīm Samī‘,East Azerbaijan,2721,village,0,0,50,0,none,none
+gn:135511,Ebrāhīmābād,Kurdistan Province,2682,village,0,0,50,0,none,none
+gn:135515,Ebrāhīmābād,Markazi,1593,village,0,0,50,0,none,none
+gn:135518,Ebrāhīmābād,Yazd Province,1509,village,0,0,50,0,none,none
+gn:135554,Dūzeh,Fars,1348,village,0,0,50,0,none,none
+gn:135555,Dūzdūzān,East Azerbaijan,3627,village,0,0,50,0,none,none
+gn:135576,Do Shakhkharāţ,Isfahan,1526,village,0,0,50,0,none,none
+gn:135658,Dūdej,Fars,2774,village,0,0,50,0,none,none
+gn:135659,Dowdej,Fars,1143,village,0,0,50,0,none,none
+gn:135695,Dowzeyn,Golestan,5737,village,0,0,50,0,none,none
+gn:135730,Dowlatābād,East Azerbaijan,3868,village,0,0,50,0,none,none
+gn:135743,Dowlatābād,Razavi Khorasan,0,village,0,0,50,0,none,none
+gn:135760,Dowlatābād,Isfahan,1772,village,0,0,50,0,none,none
+gn:135795,Dowlatābād-e Anşārī,Kerman,2820,village,0,0,50,0,none,none
+gn:135800,Dowlatābād-e Esfandaqeh,Kerman,4930,village,0,0,50,0,none,none
+gn:135806,Dowlatābād,Kerman,3111,village,0,0,50,0,none,none
+gn:135828,Doveyreh,Bushehr,4096,village,0,0,50,0,none,none
+gn:135860,Dūst-e Īrān,Fars,2424,village,0,0,50,0,none,none
+gn:135870,Dorūneh,Razavi Khorasan,1603,village,0,0,50,0,none,none
+gn:135875,Dorūdgāh,Bushehr,2820,village,0,0,50,0,none,none
+gn:135878,Dorūd,Lorestan Province,121638,city,0,0,50,0,none,none
+gn:135928,Dom Shahr,Hormozgan,1806,village,0,0,50,0,none,none
+gn:135930,Domrūstān,Lorestan Province,1113,village,0,0,50,0,none,none
+gn:135968,Bahārestān,Bushehr,5989,village,0,0,50,0,none,none
+gn:135977,Do Kūhak,Fars,4453,village,0,0,50,0,none,none
+gn:136014,Dogonbadan,Kohgiluyeh and Boyer-Ahmad,96728,town,0,0,50,0,none,none
+gn:136050,Do Borjī,Fars,2907,village,0,0,50,0,none,none
+gn:136053,Do Boneh,Kerman,3217,village,0,0,50,0,none,none
+gn:136073,Do Asb,Zanjan,2726,village,0,0,50,0,none,none
+gn:136125,Sharafkhāneh,East Azerbaijan,4244,village,0,0,50,0,none,none
+gn:136127,Dīzaj Khalīl,East Azerbaijan,3137,village,0,0,50,0,none,none
+gn:136128,Dīzaj Ḩoseyn Beyg,East Azerbaijan,4060,village,0,0,50,0,none,none
+gn:136129,Dīzaj-e ‘Olyā,East Azerbaijan,2925,village,0,0,50,0,none,none
+gn:136132,Dīzaj Dīz,West Azerbaijan,8282,village,0,0,50,0,none,none
+gn:136133,Dīzajābād,Zanjan,4157,village,0,0,50,0,none,none
+gn:136135,Dīzaj,West Azerbaijan,4907,village,0,0,50,0,none,none
+gn:136156,Dīvāndarreh,Kurdistan Province,34007,town,0,0,50,0,none,none
+gn:136159,Dīvān,Hormozgan,1931,village,0,0,50,0,none,none
+gn:136164,Dīshmūk,Kohgiluyeh and Boyer-Ahmad,5791,village,0,0,50,0,none,none
+gn:136187,Dīnārābād,Hamadan Province,2300,village,0,0,50,0,none,none
+gn:136254,Dezhkord,Fars,3924,village,0,0,50,0,none,none
+gn:136256,Dezful,Khuzestan,264709,city,0,0,50,0,none,none
+gn:136280,Bandar-e Deyr,Bushehr,24083,town,0,0,50,0,none,none
+gn:136296,Deylamān,Gilan Province,1729,village,0,0,50,0,none,none
+gn:136301,Deyhūk,South Khorasan Province,2959,village,0,0,50,0,none,none
+gn:136379,Delvār,Bushehr,4442,village,0,0,50,0,none,none
+gn:136399,Delījān,Markazi,33508,town,0,0,50,0,none,none
+gn:136508,Deh Shādābād-e Bālā,Tehran,3651,village,0,0,50,0,none,none
+gn:136524,Deh Şaḩrā,Chaharmahal and Bakhtiari,2697,village,0,0,50,0,none,none
+gn:136538,Dehram,Fars,3468,village,0,0,50,0,none,none
+gn:136547,Deh Qā’ed,Bushehr,7509,village,0,0,50,0,none,none
+gn:136556,Deh Pahn,Kermanshah Province,6548,village,0,0,50,0,none,none
+gn:136660,Deh Now,Fars,1271,village,0,0,50,0,none,none
+gn:136661,Dehnow,Bushehr,1930,village,0,0,50,0,none,none
+gn:136672,Deh-e Namak,Markazi,1846,village,0,0,50,0,none,none
+gn:136682,Deh-e Moḩsen,Lorestan Province,5216,village,0,0,50,0,none,none
+gn:136702,Dehlorān,Ilam Province,46002,town,0,0,50,0,none,none
+gn:136704,Dehlor,Kermanshah Province,1023,village,0,0,50,0,none,none
+gn:136716,Dehlaq,Hamadan Province,1586,village,0,0,50,0,none,none
+gn:136721,Dehkūyeh,Fars,4523,village,0,0,50,0,none,none
+gn:136757,Dehkadeh,Khuzestan,2951,village,0,0,50,0,none,none
+gn:136773,Dehgolān,Kurdistan Province,0,village,0,0,50,0,none,none
+gn:136823,Deheshk,South Khorasan Province,1597,village,0,0,50,0,none,none
+gn:136902,Dehmollā,Semnan,1090,village,0,0,50,0,none,none
+gn:136983,Dehdez,Khuzestan,5490,village,0,0,50,0,none,none
+gn:136987,Dehdasht,Kohgiluyeh and Boyer-Ahmad,57036,town,0,0,50,0,none,none
+gn:137000,Deh Cheshmeh,Chaharmahal and Bakhtiari,4510,village,0,0,50,0,none,none
+gn:137013,Sīsakht,Kohgiluyeh and Boyer-Ahmad,7855,village,0,0,50,0,none,none
+gn:137025,Şafāshahr,Fars,26933,town,0,0,50,0,none,none
+gn:137057,Dehāqān,Isfahan,17945,town,0,0,50,0,none,none
+gn:137063,Dehaq,Isfahan,8272,village,0,0,50,0,none,none
+gn:137109,Dāvūdābād,Tehran,6399,village,0,0,50,0,none,none
+gn:137110,Dāvūdābād,Markazi,5491,village,0,0,50,0,none,none
+gn:137125,Dāvarzan,Razavi Khorasan,0,village,0,0,50,0,none,none
+gn:137164,Dastjerd,Hamadan Province,2955,village,0,0,50,0,none,none
+gn:137202,Dastnā’,Chaharmahal and Bakhtiari,5143,village,0,0,50,0,none,none
+gn:137204,Dastak,Gilan Province,2122,village,0,0,50,0,none,none
+gn:137219,Dashtī,Hormozgan,4495,village,0,0,50,0,none,none
+gn:137268,Sūsangerd,Khuzestan,51431,town,0,0,50,0,none,none
+gn:137292,Dashtak,Chaharmahal and Bakhtiari,4016,village,0,0,50,0,none,none
+gn:137302,Dasht,North Khorasan,1393,village,0,0,50,0,none,none
+gn:137345,Daryā Kenār,Māzandarān,2150,village,0,0,50,0,none,none
+gn:137432,Darreh Shūr,Fars,1761,village,0,0,50,0,none,none
+gn:137436,Darreh Shahr,Ilam Province,24961,town,0,0,50,0,none,none
+gn:137585,Dargaz,Razavi Khorasan,36762,town,0,0,50,0,none,none
+gn:137640,Darreh Bīd,Isfahan,2329,village,0,0,50,0,none,none
+gn:137641,Darreh Bīd,Isfahan,1497,village,0,0,50,0,none,none
+gn:137724,Dārkhovīn,Khuzestan,5655,village,0,0,50,0,none,none
+gn:137741,Darjazīn,Hamadan Province,1331,village,0,0,50,0,none,none
+gn:137756,Daryān,East Azerbaijan,4138,village,0,0,50,0,none,none
+gn:137758,Dārīūn,Fars,10037,town,0,0,50,0,none,none
+gn:137782,Dargahān,Hormozgan,14525,town,0,0,50,0,none,none
+gn:137850,Darb-e Behesht,Kerman,10670,town,0,0,50,0,none,none
+gn:137887,Darband,Lorestan Province,1903,village,0,0,50,0,none,none
+gn:137929,Dārān,Isfahan,20078,town,0,0,50,0,none,none
+gn:137946,Dārāb Kolā,Māzandarān,5262,village,0,0,50,0,none,none
+gn:137956,Dārāb,Fars,70232,town,0,0,50,0,none,none
+gn:137964,Dāqdāqābād,Hamadan Province,4208,village,0,0,50,0,none,none
+gn:137985,Dānesfahān,Qazvin Province,9434,village,0,0,50,0,none,none
+gn:138025,Dāmghān,Semnan,67694,town,0,0,50,0,none,none
+gn:138042,Damāvand,Tehran,29144,town,0,0,50,0,none,none
+gn:138046,Dāman Jān,East Azerbaijan,1847,village,0,0,50,0,none,none
+gn:138050,Dāmaneh,Isfahan,4766,village,0,0,50,0,none,none
+gn:138098,Dālakī,Bushehr,6436,village,0,0,50,0,none,none
+gn:138132,Dahnejerd,Hamadan Province,1019,village,0,0,50,0,none,none
+gn:138226,Dabīrān,Fars,13809,town,0,0,50,0,none,none
+gn:138236,Chūzūk,Zanjan,1787,village,0,0,50,0,none,none
+gn:138255,Chūpānān,Isfahan,1826,village,0,0,50,0,none,none
+gn:138295,Chūbīn Dar,Qazvin Province,8083,village,0,0,50,0,none,none
+gn:138309,Chūbar,Gilan Province,5554,village,0,0,50,0,none,none
+gn:138315,Chūrs,West Azerbaijan,2081,village,0,0,50,0,none,none
+gn:138316,Chowplū,West Azerbaijan,1788,village,0,0,50,0,none,none
+gn:138331,Chūbar,Gilan Province,1069,village,0,0,50,0,none,none
+gn:138381,Choghādak,Bushehr,18702,town,0,0,50,0,none,none
+gn:138393,Chītāb,Kohgiluyeh and Boyer-Ahmad,1164,village,0,0,50,0,none,none
+gn:138404,Chīnī Jān,Gilan Province,1311,village,0,0,50,0,none,none
+gn:138443,Cheshām,Razavi Khorasan,1395,village,0,0,50,0,none,none
+gn:138444,Cheshmīdar,Kurdistan Province,1273,village,0,0,50,0,none,none
+gn:138618,Chīshīn,Hamadan Province,1447,village,0,0,50,0,none,none
+gn:138691,Chenār-e Soflá,Hamadan Province,3628,village,0,0,50,0,none,none
+gn:138742,Chenārān,Razavi Khorasan,53879,town,0,0,50,0,none,none
+gn:138796,Cholīcheh,Chaharmahal and Bakhtiari,4945,village,0,0,50,0,none,none
+gn:138799,Chelgard,Chaharmahal and Bakhtiari,2989,village,0,0,50,0,none,none
+gn:138901,Chū’ebdeh-ye Yek,Khuzestan,7906,village,0,0,50,0,none,none
+gn:138905,Chavār,Ilam Province,5831,village,0,0,50,0,none,none
+gn:138911,Chatrūd,Kerman,5860,village,0,0,50,0,none,none
+gn:138989,Charām,Kohgiluyeh and Boyer-Ahmad,15218,town,0,0,50,0,none,none
+gn:139015,Chaqābol,Lorestan Province,0,village,0,0,50,0,none,none
+gn:139027,Chāpeshlū,Razavi Khorasan,2374,village,0,0,50,0,none,none
+gn:139116,Chamkhāleh,Gilan Province,8840,village,0,0,50,0,none,none
+gn:139131,Cham Golak,Khuzestan,5446,village,0,0,50,0,none,none
+gn:139194,Chamāz Kotī,Māzandarān,5436,village,0,0,50,0,none,none
+gn:139211,Chamanābād,Razavi Khorasan,1804,village,0,0,50,0,none,none
+gn:139223,Chālūs,Māzandarān,107490,city,0,0,50,0,none,none
+gn:139228,Chāleshtar,Chaharmahal and Bakhtiari,6720,village,0,0,50,0,none,none
+gn:139307,Chalandar,Māzandarān,1383,village,0,0,50,0,none,none
+gn:139656,Chahār Rūstā’ī,Bushehr,2365,village,0,0,50,0,none,none
+gn:139706,Chahār Dangeh,Tehran,49950,town,0,0,50,0,none,none
+gn:139719,Chahār Borj,West Azerbaijan,9406,village,0,0,50,0,none,none
+gn:139780,Chādegān,Isfahan,9924,village,0,0,50,0,none,none
+gn:139784,Chāboksar,Gilan Province,8224,village,0,0,50,0,none,none
+gn:139815,Būshkān,Bushehr,2135,village,0,0,50,0,none,none
+gn:139817,Bushehr,Bushehr,165377,city,0,0,50,0,none,none
+gn:139862,Bū ol Kheyr,Bushehr,2252,village,0,0,50,0,none,none
+gn:139879,Būmahen,Tehran,79034,town,0,0,50,0,none,none
+gn:139889,Būkān,West Azerbaijan,193501,city,0,0,50,0,none,none
+gn:139902,Bū’īn,Zanjan,1358,village,0,0,50,0,none,none
+gn:139903,Bū’īn Zahrā,Qazvin Province,20823,town,0,0,50,0,none,none
+gn:139926,Būbūkābād,Hamadan Province,1027,village,0,0,50,0,none,none
+gn:139981,Bozbāz,Bushehr,2286,village,0,0,50,0,none,none
+gn:140023,Bostān,Khuzestan,8476,village,0,0,50,0,none,none
+gn:140044,Borūjerd,Lorestan Province,251958,city,0,0,50,0,none,none
+gn:140046,Borūjen,Chaharmahal and Bakhtiari,57071,town,0,0,50,0,none,none
+gn:140097,Borāzjān,Bushehr,110567,city,0,0,50,0,none,none
+gn:140216,Shahrak-e Kūlūrī,Khuzestan,1941,village,0,0,50,0,none,none
+gn:140225,Boneh Gaz,Bushehr,3254,village,0,0,50,0,none,none
+gn:140295,Bondārūz,Bushehr,3724,village,0,0,50,0,none,none
+gn:140346,Boldājī,Chaharmahal and Bakhtiari,11980,town,0,0,50,0,none,none
+gn:140380,Bojnūrd,North Khorasan,192041,city,0,0,50,0,none,none
+gn:140418,Bīzakī,Māzandarān,1768,village,0,0,50,0,none,none
+gn:140463,Bīrjand,South Khorasan Province,196982,city,0,0,50,0,none,none
+gn:140489,Bīlverdī,East Azerbaijan,1215,village,0,0,50,0,none,none
+gn:140490,Bīland,Razavi Khorasan,5004,village,0,0,50,0,none,none
+gn:140494,Bīleh Savār,Ardabil Province,14000,town,0,0,50,0,none,none
+gn:140511,Bī Kāh,Hormozgan,7190,village,0,0,50,0,none,none
+gn:140521,Bījār,Kurdistan Province,50014,town,0,0,50,0,none,none
+gn:140525,Bīhūd,South Khorasan Province,1577,village,0,0,50,0,none,none
+gn:140570,Bīdokht,Razavi Khorasan,5501,village,0,0,50,0,none,none
+gn:140586,Bīdkhūn,Bushehr,8886,village,0,0,50,0,none,none
+gn:140664,Bīdak,North Khorasan,3482,village,0,0,50,0,none,none
+gn:140762,Beyram,Fars,7300,village,0,0,50,0,none,none
+gn:140838,Bereshneh,Fars,3196,village,0,0,50,0,none,none
+gn:140839,Berenţīn,Hormozgan,5799,village,0,0,50,0,none,none
+gn:140851,Barāk,Fars,2882,village,0,0,50,0,none,none
+gn:140888,Benab-e Marand,East Azerbaijan,4311,village,0,0,50,0,none,none
+gn:140889,Bonāb,East Azerbaijan,85274,town,0,0,50,0,none,none
+gn:140891,Ben,Chaharmahal and Bakhtiari,12971,town,0,0,50,0,none,none
+gn:140918,Behshahr,Māzandarān,94702,town,0,0,50,0,none,none
+gn:140926,Bahnemīr,Māzandarān,7906,village,0,0,50,0,none,none
+gn:140951,Behbahān,Khuzestan,122604,city,0,0,50,0,none,none
+gn:140956,Bahābād,Razavi Khorasan,1423,village,0,0,50,0,none,none
+gn:140958,Bahābād,Yazd Province,9232,village,0,0,50,0,none,none
+gn:140982,Shahbāz,Markazi,7536,village,0,0,50,0,none,none
+gn:140993,Bāz Kīā Gūrāb,Gilan Province,4166,village,0,0,50,0,none,none
+gn:141011,Bāzargān,West Azerbaijan,9979,village,0,0,50,0,none,none
+gn:141015,Māsāl,Gilan Province,17901,town,0,0,50,0,none,none
+gn:141029,Bānūj,Fars,2676,village,0,0,50,0,none,none
+gn:141034,Bāyegān,Fars,2481,village,0,0,50,0,none,none
+gn:141068,Bāverd,Hormozgan,1077,village,0,0,50,0,none,none
+gn:141079,Bāvaleh,Kermanshah Province,1080,village,0,0,50,0,none,none
+gn:141100,Basţām,Semnan,8609,village,0,0,50,0,none,none
+gn:141104,Bastak,Hormozgan,9959,village,0,0,50,0,none,none
+gn:141111,Bāsmenj,East Azerbaijan,12692,town,0,0,50,0,none,none
+gn:141124,Bāsht,Kohgiluyeh and Boyer-Ahmad,10764,town,0,0,50,0,none,none
+gn:141132,Bashman,Gilan Province,2320,village,0,0,50,0,none,none
+gn:141154,Bāsfar,Razavi Khorasan,3917,village,0,0,50,0,none,none
+gn:141160,Besātīn,Bushehr,1244,village,0,0,50,0,none,none
+gn:141190,Bārūq,West Azerbaijan,4225,village,0,0,50,0,none,none
+gn:141191,Bārūj,East Azerbaijan,2481,village,0,0,50,0,none,none
+gn:141282,Bahreghān,Fars,3167,village,0,0,50,0,none,none
+gn:141285,Bargeh,Māzandarān,1447,village,0,0,50,0,none,none
+gn:141348,Bardestān,Bushehr,7112,village,0,0,50,0,none,none
+gn:141349,Bardaskan,Razavi Khorasan,28233,town,0,0,50,0,none,none
+gn:141375,Bārdeh,Chaharmahal and Bakhtiari,2356,village,0,0,50,0,none,none
+gn:141407,Baravāt,Kerman,22761,town,0,0,50,0,none,none
+gn:141441,Bar Āftāb-e Mīlās,Chaharmahal and Bakhtiari,1223,village,0,0,50,0,none,none
+gn:141533,Band-e Zarak,Hormozgan,4796,village,0,0,50,0,none,none
+gn:141542,Sīyah Banū’īyeh,Kerman,2060,village,0,0,50,0,none,none
+gn:141584,Bāneh,Kurdistan Province,110218,city,0,0,50,0,none,none
+gn:141613,Bandar-e Mo‘allem,Hormozgan,1086,village,0,0,50,0,none,none
+gn:141653,Bandar-e Torkaman,Golestan,53970,town,0,0,50,0,none,none
+gn:141656,Bandar-e Shenās,Hormozgan,2998,village,0,0,50,0,none,none
+gn:141657,Bandar-e Rīg,Bushehr,6252,village,0,0,50,0,none,none
+gn:141659,Moghūyeh,Hormozgan,1125,village,0,0,50,0,none,none
+gn:141663,Bandar-e Māhshahr,Khuzestan,162797,city,0,0,50,0,none,none
+gn:141665,Bandar-e Lengeh,Hormozgan,30435,town,0,0,50,0,none,none
+gn:141666,Bandar-e Kong,Hormozgan,19213,town,0,0,50,0,none,none
+gn:141673,Bandar-e Gaz,Golestan,20742,town,0,0,50,0,none,none
+gn:141675,Dūlāb,Hormozgan,1453,village,0,0,50,0,none,none
+gn:141676,Bandar-e Deylam,Bushehr,25730,town,0,0,50,0,none,none
+gn:141678,Bandar-e Chārak,Hormozgan,4066,village,0,0,50,0,none,none
+gn:141679,Bandar-e Anzalī,Gilan Province,118564,city,0,0,50,0,none,none
+gn:141681,Bandar Abbas,Hormozgan,352173,city,0,0,50,0,none,none
+gn:141702,Banak,Bushehr,14126,town,0,0,50,0,none,none
+gn:141734,Bām,North Khorasan,1368,village,0,0,50,0,none,none
+gn:141736,Bam,Kerman,99268,town,0,0,50,0,none,none
+gn:141738,Balvard,Kerman,3534,village,0,0,50,0,none,none
+gn:141758,Bolţāq,Isfahan,1462,village,0,0,50,0,none,none
+gn:141806,Bālānej,West Azerbaijan,3023,village,0,0,50,0,none,none
+gn:141821,Bālā Jāddeh,Golestan,3604,village,0,0,50,0,none,none
+gn:141833,Vālāshāhr,Fars,5972,village,0,0,50,0,none,none
+gn:141834,Bālā Deh,Fars,6162,village,0,0,50,0,none,none
+gn:141843,Bagtāsh,West Azerbaijan,3523,village,0,0,50,0,none,none
+gn:141852,Bakhtīār,Alborz Province,3520,village,0,0,50,0,none,none
+gn:141857,Bakhshāyesh,East Azerbaijan,6102,village,0,0,50,0,none,none
+gn:141858,Nānvā,Razavi Khorasan,1030,village,0,0,50,0,none,none
+gn:141891,Bajestān,Razavi Khorasan,0,village,0,0,50,0,none,none
+gn:141944,Bahrām,East Azerbaijan,1322,village,0,0,50,0,none,none
+gn:141971,Bahman,Fars,7568,village,0,0,50,0,none,none
+gn:141999,Bahār,Razavi Khorasan,1218,village,0,0,50,0,none,none
+gn:142000,Bahār,Hamadan Province,28645,town,0,0,50,0,none,none
+gn:142010,Bahādor Bayk,Hamadan Province,2672,village,0,0,50,0,none,none
+gn:142043,Bāghkomīsh,Tehran,2566,village,0,0,50,0,none,none
+gn:142049,Bāghīn,Kerman,10407,town,0,0,50,0,none,none
+gn:142112,Bāgh-e Ma‘rūf,East Azerbaijan,12068,town,0,0,50,0,none,none
+gn:142114,Bāgh-e Malek,Khuzestan,26343,town,0,0,50,0,none,none
+gn:142149,Bāgh-e Behzād,Chaharmahal and Bakhtiari,2454,village,0,0,50,0,none,none
+gn:142177,Baghdādeh,South Khorasan Province,1808,village,0,0,50,0,none,none
+gn:142209,Bāghān,Fars,2744,village,0,0,50,0,none,none
+gn:142211,Bāghān,Bushehr,1574,village,0,0,50,0,none,none
+gn:142223,Bāgh-e Abar,Kerman,2263,village,0,0,50,0,none,none
+gn:142247,Bāft,Kerman,34517,town,0,0,50,0,none,none
+gn:142251,Bāfrān,Isfahan,1978,village,0,0,50,0,none,none
+gn:142255,Bāfq,Yazd Province,45453,town,0,0,50,0,none,none
+gn:142277,Bād Khowreh,Hamadan Province,2019,village,0,0,50,0,none,none
+gn:142350,Bād Rūd,Isfahan,14723,town,0,0,50,0,none,none
+gn:142358,Bābolsar,Māzandarān,48051,town,0,0,50,0,none,none
+gn:142363,Bābol,Māzandarān,202796,city,0,0,50,0,none,none
+gn:142386,Bāb Anār,Fars,7061,village,0,0,50,0,none,none
+gn:142423,Bābān,Hamadan Province,3026,village,0,0,50,0,none,none
+gn:142453,Bābā Ḩeydar,Chaharmahal and Bakhtiari,11202,town,0,0,50,0,none,none
+gn:142496,Aznā,Lorestan Province,47482,town,0,0,50,0,none,none
+gn:142497,Aznā,Lorestan Province,47489,town,0,0,50,0,none,none
+gn:142541,Ozgoleh,Kermanshah Province,1502,village,0,0,50,0,none,none
+gn:142554,Hashtrūd,East Azerbaijan,20572,town,0,0,50,0,none,none
+gn:142567,Shāzand,Markazi,21181,town,0,0,50,0,none,none
+gn:142587,Āyask,South Khorasan Province,5143,village,0,0,50,0,none,none
+gn:142623,Āveh,Markazi,3906,village,0,0,50,0,none,none
+gn:142628,Āvarzamān,Hamadan Province,1621,village,0,0,50,0,none,none
+gn:142642,Āvaj,Qazvin Province,0,village,0,0,50,0,none,none
+gn:142676,Āstārā,Gilan Province,39065,town,0,0,50,0,none,none
+gn:142679,Āstāneh-ye Ashrafīyeh,Gilan Province,44941,town,0,0,50,0,none,none
+gn:142681,Āstāneh,Markazi,7166,village,0,0,50,0,none,none
+gn:142690,Āsopās,Fars,2016,village,0,0,50,0,none,none
+gn:142703,Aşlān Dūz,Ardabil Province,6348,village,0,0,50,0,none,none
+gn:142716,Asīr,Fars,3042,village,0,0,50,0,none,none
+gn:142744,Āshtīān,Markazi,8763,village,0,0,50,0,none,none
+gn:142757,Āshnestān,Qazvin Province,1068,village,0,0,50,0,none,none
+gn:142768,Āshkhāneh,North Khorasan,25104,town,0,0,50,0,none,none
+gn:142800,Āshān,East Azerbaijan,1279,village,0,0,50,0,none,none
+gn:142813,‘Asgarān,Isfahan,4858,village,0,0,50,0,none,none
+gn:142824,Asfarvarīn,Qazvin Province,12371,town,0,0,50,0,none,none
+gn:142829,Asenjān,East Azerbaijan,1745,village,0,0,50,0,none,none
+gn:142852,Āsārā,Alborz Province,1339,village,0,0,50,0,none,none
+gn:142857,Bandar-e ‘Asalūyah,Bushehr,13557,town,0,0,50,0,none,none
+gn:142859,Asālem,Gilan Province,10720,town,0,0,50,0,none,none
+gn:142862,Asadīyeh,South Khorasan Province,0,village,0,0,50,0,none,none
+gn:142872,Asadābād,Hamadan Province,55703,town,0,0,50,0,none,none
+gn:142902,Orzū’īyeh,Kerman,6868,village,0,0,50,0,none,none
+gn:142913,Arzanaq,East Azerbaijan,1139,village,0,0,50,0,none,none
+gn:142932,Ārūq,East Azerbaijan,4462,village,0,0,50,0,none,none
+gn:142958,Arsanjān,Fars,17706,town,0,0,50,0,none,none
+gn:142975,Ārmardeh,Kurdistan Province,2305,village,0,0,50,0,none,none
+gn:142996,Arjomand,Tehran,1124,village,0,0,50,0,none,none
+gn:143027,Arghā,Razavi Khorasan,2620,village,0,0,50,0,none,none
+gn:143052,Ardestān,Isfahan,16058,town,0,0,50,0,none,none
+gn:143064,Ardāq,Qazvin Province,5043,village,0,0,50,0,none,none
+gn:143070,Ardal,Chaharmahal and Bakhtiari,10113,town,0,0,50,0,none,none
+gn:143073,Ardakān,Yazd Province,58834,town,0,0,50,0,none,none
+gn:143083,Ardabīl,Ardabil Province,410753,city,0,0,50,0,none,none
+gn:143090,Arbaţān,East Azerbaijan,1563,village,0,0,50,0,none,none
+gn:143110,Ārāsanj-e Bālā,Qazvin Province,3740,village,0,0,50,0,none,none
+gn:143122,Ārān Bīdgol,Isfahan,65404,town,0,0,50,0,none,none
+gn:143127,Arāk,Markazi,503647,large-city,0,0,50,0,none,none
+gn:143129,Ārādān,Semnan,6252,village,0,0,50,0,none,none
+gn:143132,Ard,Fars,5094,village,0,0,50,0,none,none
+gn:143181,Āq Kahrīzak,Razavi Khorasan,1106,village,0,0,50,0,none,none
+gn:143213,Āqdāsh,Markazi,2763,village,0,0,50,0,none,none
+gn:143227,Aqda,Yazd Province,1754,village,0,0,50,0,none,none
+gn:143245,Āq Bolāgh-e Āqdāgh,Hamadan Province,1400,village,0,0,50,0,none,none
+gn:143305,Āqābād,Golestan,5534,village,0,0,50,0,none,none
+gn:143306,Āqā Bābā,Qazvin Province,2343,village,0,0,50,0,none,none
+gn:143320,Anūch,Hamadan Province,1833,village,0,0,50,0,none,none
+gn:143407,Gūharān,Hormozgan,1170,village,0,0,50,0,none,none
+gn:143420,Andīmeshk,Khuzestan,135116,city,0,0,50,0,none,none
+gn:143435,Andarvar,Māzandarān,1611,village,0,0,50,0,none,none
+gn:143449,Andabīl,Ardabil Province,1302,village,0,0,50,0,none,none
+gn:143454,Anbī,West Azerbaijan,1254,village,0,0,50,0,none,none
+gn:143469,‘Anbarān,Ardabil Province,5757,village,0,0,50,0,none,none
+gn:143471,‘Anbarābād,Kerman,18185,town,0,0,50,0,none,none
+gn:143492,Anārak,Isfahan,1903,village,0,0,50,0,none,none
+gn:143499,Anār,Kerman,15532,town,0,0,50,0,none,none
+gn:143505,Ānā Khātūn,East Azerbaijan,8288,village,0,0,50,0,none,none
+gn:143534,Āmol,Māzandarān,237528,city,0,0,50,0,none,none
+gn:143539,Amlash,Gilan Province,15444,town,0,0,50,0,none,none
+gn:143550,Amīr Rūd,Māzandarān,1150,village,0,0,50,0,none,none
+gn:143561,Amīr Kolā,Māzandarān,30478,town,0,0,50,0,none,none
+gn:143574,Jangīyeh,Khuzestan,4644,village,0,0,50,0,none,none
+gn:143604,Amīrābād,Māzandarān,2222,village,0,0,50,0,none,none
+gn:143615,Amīrābād,Qazvin Province,1766,village,0,0,50,0,none,none
+gn:143648,Kāftar,Fars,1368,village,0,0,50,0,none,none
+gn:143700,‘Āmerī,Bushehr,2581,village,0,0,50,0,none,none
+gn:143726,Amānābād,Markazi,2135,village,0,0,50,0,none,none
+gn:143739,Alvār-e Pā’īn,East Azerbaijan,6916,village,0,0,50,0,none,none
+gn:143755,Olūsjerd,Markazi,1594,village,0,0,50,0,none,none
+gn:143758,Ālūnī,Chaharmahal and Bakhtiari,5248,village,0,0,50,0,none,none
+gn:143765,Ālū’ak,Tehran,1681,village,0,0,50,0,none,none
+gn:143769,Ālqū,East Azerbaijan,1564,village,0,0,50,0,none,none
+gn:143788,Ālanī,Ardabil Province,3739,village,0,0,50,0,none,none
+gn:143860,Shahrīār,Tehran,309607,city,0,0,50,0,none,none
+gn:143901,Ālīkūh,Chaharmahal and Bakhtiari,2206,village,0,0,50,0,none,none
+gn:143921,Alīgūdarz,Lorestan Province,89268,town,0,0,50,0,none,none
+gn:143939,‘Alī Beyglū,East Azerbaijan,1828,village,0,0,50,0,none,none
+gn:143950,‘Alī ‘Arab,Isfahan,1248,village,0,0,50,0,none,none
+gn:144035,Zībā Kenār,Gilan Province,1522,village,0,0,50,0,none,none
+gn:144038,'Alī Ābād-e Katūl,Golestan,52838,town,0,0,50,0,none,none
+gn:144046,‘Alīābād,Razavi Khorasan,3404,village,0,0,50,0,none,none
+gn:144077,‘Alīābād,Isfahan,1375,village,0,0,50,0,none,none
+gn:144222,Elhāyī,Khuzestan,7651,village,0,0,50,0,none,none
+gn:144238,Alek,Kurdistan Province,1303,village,0,0,50,0,none,none
+gn:144263,Alavijeh,Isfahan,14550,town,0,0,50,0,none,none
+gn:144269,Aleshtar,Lorestan Province,27701,town,0,0,50,0,none,none
+gn:144270,Ālāsht,Māzandarān,1193,village,0,0,50,0,none,none
+gn:144273,Ālārd,Tehran,11616,town,0,0,50,0,none,none
+gn:144275,Alanjeq,East Azerbaijan,1086,village,0,0,50,0,none,none
+gn:144290,Rūyān,Māzandarān,7731,village,0,0,50,0,none,none
+gn:144305,‘Alāmardasht,Fars,4068,village,0,0,50,0,none,none
+gn:144348,Qeshlāq Ākhūnd,East Azerbaijan,4611,village,0,0,50,0,none,none
+gn:144364,Akhand,Bushehr,6775,village,0,0,50,0,none,none
+gn:144403,Akbarābād,Fars,1886,village,0,0,50,0,none,none
+gn:144410,Akbarābād,Fars,5817,village,0,0,50,0,none,none
+gn:144422,Ākand,Māzandarān,1416,village,0,0,50,0,none,none
+gn:144443,Ajab Shīr,East Azerbaijan,29675,town,0,0,50,0,none,none
+gn:144448,Ahvaz,Khuzestan,841145,large-city,0,0,50,0,none,none
+gn:144462,Āhū Dasht,Māzandarān,1594,village,0,0,50,0,none,none
+gn:144484,Ahram,Bushehr,15198,town,0,0,50,0,none,none
+gn:144545,Aḩmadābād,Razavi Khorasan,2929,village,0,0,50,0,none,none
+gn:144612,Āhī Maḩalleh,Māzandarān,1204,village,0,0,50,0,none,none
+gn:144616,Ahar,East Azerbaijan,100641,city,0,0,50,0,none,none
+gn:144618,Āhaq,East Azerbaijan,1095,village,0,0,50,0,none,none
+gn:144657,Āqkand,East Azerbaijan,2902,village,0,0,50,0,none,none
+gn:144696,Aghajari,Khuzestan,21785,town,0,0,50,0,none,none
+gn:144713,Afūs,Isfahan,3696,village,0,0,50,0,none,none
+gn:144737,Afjān,Isfahan,1491,village,0,0,50,0,none,none
+gn:144794,Ābyek,Markazi,55128,town,0,0,50,0,none,none
+gn:144795,Ābyek,Qazvin Province,60107,town,0,0,50,0,none,none
+gn:144807,Āb Ţavīl,Bushehr,1507,village,0,0,50,0,none,none
+gn:144826,Abū ol Verdī,Fars,2601,village,0,0,50,0,none,none
+gn:144853,Abū Ḩomeyz̧eh,Khuzestan,5506,village,0,0,50,0,none,none
+gn:144861,Abū Dabos,Khuzestan,1404,village,0,0,50,0,none,none
+gn:144895,Ābshīneh,Hamadan Province,1429,village,0,0,50,0,none,none
+gn:144916,Āb Sard,Tehran,10648,town,0,0,50,0,none,none
+gn:144920,Ābsard,Fars,1210,village,0,0,50,0,none,none
+gn:145005,Ābkenār,Gilan Province,1926,village,0,0,50,0,none,none
+gn:145025,Ābī-ye Soflá,Zanjan,1875,village,0,0,50,0,none,none
+gn:145034,Abhar,Zanjan,69889,town,0,0,50,0,none,none
+gn:145125,Ābī Beyglū,Ardabil Province,6515,village,0,0,50,0,none,none
+gn:145154,‘Abd ol Mow’men,Hamadan Province,1008,village,0,0,50,0,none,none
+gn:145195,‘Abdol Khān-e Pā'īn,Khuzestan,3061,village,0,0,50,0,none,none
+gn:145204,‘Abdolābād,Razavi Khorasan,5618,village,0,0,50,0,none,none
+gn:145233,Ābdānān,Ilam Province,23946,town,0,0,50,0,none,none
+gn:145234,Ābdān,Bushehr,6827,village,0,0,50,0,none,none
+gn:145303,'Abās Ābād,Māzandarān,13482,town,0,0,50,0,none,none
+gn:145372,‘Abbāsābād-e Sardār,Kerman,5125,village,0,0,50,0,none,none
+gn:145381,‘Abbāsā,Māzandarān,2685,village,0,0,50,0,none,none
+gn:145392,Āb Bārīkī,Lorestan Province,1648,village,0,0,50,0,none,none
+gn:145407,Ābbar,Zanjan,8091,village,0,0,50,0,none,none
+gn:145424,Abarsenj,Semnan,1004,village,0,0,50,0,none,none
+gn:145427,Abarkūh,Yazd Province,27524,town,0,0,50,0,none,none
+gn:145449,Abadeh,Fars,59116,town,0,0,50,0,none,none
+gn:145453,Ābādeh Ābgarm,Fars,1643,village,0,0,50,0,none,none
+gn:145459,Abadan,Khuzestan,231476,city,0,0,50,0,none,none
+gn:145461,Shahrabad,Bushehr,3787,village,0,0,50,0,none,none
+gn:381511,Kārūn,Fars,1109,village,0,0,50,0,none,none
+gn:381546,Zehūkī,Hormozgan,4451,village,0,0,50,0,none,none
+gn:385044,Ojāksar,Māzandarān,3511,village,0,0,50,0,none,none
+gn:385045,Pā’īn Maḩalleh-ye ‘Alīābād,Māzandarān,1539,village,0,0,50,0,none,none
+gn:385047,Mīāndasht,Māzandarān,2132,village,0,0,50,0,none,none
+gn:385048,Kalleh Bast,Māzandarān,7889,village,0,0,50,0,none,none
+gn:385061,Dūnchāl,Māzandarān,1393,village,0,0,50,0,none,none
+gn:385068,Kūhī Kheyl,Māzandarān,2242,village,0,0,50,0,none,none
+gn:385069,Anār Marz,Māzandarān,1428,village,0,0,50,0,none,none
+gn:385085,Ramnet,Māzandarān,2265,village,0,0,50,0,none,none
+gn:385189,Araţeh,Māzandarān,10327,town,0,0,50,0,none,none
+gn:385215,Tāzehābād Kolā,Māzandarān,1807,village,0,0,50,0,none,none
+gn:385216,Ţabaqdeh,Māzandarān,2023,village,0,0,50,0,none,none
+gn:385236,Āb Bandān Sar,Māzandarān,2040,village,0,0,50,0,none,none
+gn:385238,Bādeleh,Māzandarān,1890,village,0,0,50,0,none,none
+gn:385242,Aţrab,Māzandarān,1558,village,0,0,50,0,none,none
+gn:385253,Zenīvand,Māzandarān,1484,village,0,0,50,0,none,none
+gn:385261,Talūr,Golestan,1067,village,0,0,50,0,none,none
+gn:385311,Bālā Dezā,Māzandarān,3632,village,0,0,50,0,none,none
+gn:385312,Pā’īn Dezā,Māzandarān,1945,village,0,0,50,0,none,none
+gn:385398,Behzād Kolā,Māzandarān,1046,village,0,0,50,0,none,none
+gn:385399,Ţūs Kolā,Māzandarān,1671,village,0,0,50,0,none,none
+gn:385401,Dang Sarak,Māzandarān,1049,village,0,0,50,0,none,none
+gn:385443,Kīāsar,Māzandarān,3384,village,0,0,50,0,none,none
+gn:385486,Mehlebān,Māzandarān,1780,village,0,0,50,0,none,none
+gn:385569,Asram,Māzandarān,4712,village,0,0,50,0,none,none
+gn:385570,Owmāl,Māzandarān,1198,village,0,0,50,0,none,none
+gn:386346,Zāgh Marz,Māzandarān,5932,village,0,0,50,0,none,none
+gn:386755,Ya‘qūb Lengeh,Māzandarān,1246,village,0,0,50,0,none,none
+gn:388425,Dowlatābād,Kerman,4196,village,0,0,50,0,none,none
+gn:388502,Bīlevār,West Azerbaijan,1139,village,0,0,50,0,none,none
+gn:388513,Saroleh,Khuzestan,1027,village,0,0,50,0,none,none
+gn:388550,Malekzādeh,East Azerbaijan,1122,village,0,0,50,0,none,none
+gn:388567,Vānlūjeq,East Azerbaijan,1302,village,0,0,50,0,none,none
+gn:388568,Qarājeh-ye Feyẕollāh,East Azerbaijan,1842,village,0,0,50,0,none,none
+gn:388686,Şūfīān,East Azerbaijan,9963,village,0,0,50,0,none,none
+gn:389530,Abīsh Aḩmad,East Azerbaijan,2715,village,0,0,50,0,none,none
+gn:389871,Şāleḩābād,Ilam Province,1751,village,0,0,50,0,none,none
+gn:389875,Āsmānābād,Ilam Province,6280,village,0,0,50,0,none,none
+gn:390054,Kūh Sefīd,Kerman,2850,village,0,0,50,0,none,none
+gn:390093,Bezenjān,Kerman,4517,village,0,0,50,0,none,none
+gn:390197,Shamsābād-e Borzū,Fars,1281,village,0,0,50,0,none,none
+gn:390234,Tarbor-e Lāy Bīsheh,Fars,1491,village,0,0,50,0,none,none
+gn:390236,Jaresqān,Fars,1539,village,0,0,50,0,none,none
+gn:390238,Vazīrābād,Fars,2977,village,0,0,50,0,none,none
+gn:390245,Naşrābād,Fars,4293,village,0,0,50,0,none,none
+gn:391557,Tīzāb,Fars,1609,village,0,0,50,0,none,none
+gn:400389,Deh Pīsh-e Soflá,Kerman,1719,village,0,0,50,0,none,none
+gn:400751,Pareh Sar,Gilan Province,8016,village,0,0,50,0,none,none
+gn:400756,Parandak,Markazi,6886,village,0,0,50,0,none,none
+gn:400762,Gīlovā,Gilan Province,1706,village,0,0,50,0,none,none
+gn:400771,Moḩammad Shahr,Alborz Province,119418,city,0,0,50,0,none,none
+gn:400773,Garmdarreh,Alborz Province,22726,town,0,0,50,0,none,none
+gn:400791,Aḥmad Ābād Mostūfī,Tehran,14077,town,0,0,50,0,none,none
+gn:400806,Karan,Chaharmahal and Bakhtiari,4049,village,0,0,50,0,none,none
+gn:400809,Bāqershahr,Tehran,65388,town,0,0,50,0,none,none
+gn:400817,Yolmeh Sālīān,Golestan,4103,village,0,0,50,0,none,none
+gn:400833,Qīāmdasht,Tehran,36446,town,0,0,50,0,none,none
+gn:401107,Āvājīq,West Azerbaijan,1663,village,0,0,50,0,none,none
+gn:401118,Showţ,West Azerbaijan,25381,town,0,0,50,0,none,none
+gn:401124,Keshmesh Tappeh,West Azerbaijan,4046,village,0,0,50,0,none,none
+gn:401177,Pasak-e Soflá,West Azerbaijan,2126,village,0,0,50,0,none,none
+gn:401182,Rahāl,West Azerbaijan,1056,village,0,0,50,0,none,none
+gn:401202,Pāsārgād,Fars,29825,town,0,0,50,0,none,none
+gn:401208,Tāzeh Shahr,West Azerbaijan,8629,village,0,0,50,0,none,none
+gn:401247,Haq,West Azerbaijan,1017,village,0,0,50,0,none,none
+gn:401299,Forūtaqeh,Razavi Khorasan,1515,village,0,0,50,0,none,none
+gn:401344,Moḩammadābād,Isfahan,2125,village,0,0,50,0,none,none
+gn:401555,Lūmār,Ilam Province,2696,village,0,0,50,0,none,none
+gn:401675,Tāzeh Qal‘eh,East Azerbaijan,4058,village,0,0,50,0,none,none
+gn:401698,Ravesht-e Bozorg,East Azerbaijan,2231,village,0,0,50,0,none,none
+gn:401701,Zāvosht,East Azerbaijan,4539,village,0,0,50,0,none,none
+gn:402306,Reyeh,Tehran,1532,village,0,0,50,0,none,none
+gn:403126,Shahrak-e Pābedānā,Kerman,6503,village,0,0,50,0,none,none
+gn:403529,Golbāf,Kerman,9205,village,0,0,50,0,none,none
+gn:403541,Dowrāhak,Bushehr,4852,village,0,0,50,0,none,none
+gn:403656,Ārdaḵān,Fars,14633,town,0,0,50,0,none,none
+gn:403707,Arvand Kenār,Khuzestan,11173,town,0,0,50,0,none,none
+gn:404424,Najmābād,Tehran,2249,village,0,0,50,0,none,none
+gn:404426,Deh Kheyr,Tehran,2249,village,0,0,50,0,none,none
+gn:404434,Shahrak-e Qamşar,Tehran,5717,village,0,0,50,0,none,none
+gn:404437,Qal‘eh Sheykh,Tehran,3078,village,0,0,50,0,none,none
+gn:404444,Tabāzīn,Tehran,1182,village,0,0,50,0,none,none
+gn:404452,Ţūrqūzābād,Tehran,2278,village,0,0,50,0,none,none
+gn:404499,Valīābād,Tehran,3694,village,0,0,50,0,none,none
+gn:404506,Bahrāmābād,Tehran,1889,village,0,0,50,0,none,none
+gn:404509,Shahrak-e Shāţarreh,Tehran,7150,village,0,0,50,0,none,none
+gn:404517,Khalāzīr,Tehran,2356,village,0,0,50,0,none,none
+gn:404552,Eslāmābād,Tehran,4820,village,0,0,50,0,none,none
+gn:404592,Vaḩīdīyeh,Tehran,33249,town,0,0,50,0,none,none
+gn:404743,Khosrowābād,Tehran,1083,village,0,0,50,0,none,none
+gn:404840,Mehrābād,Tehran,5278,village,0,0,50,0,none,none
+gn:405222,Deh-e Torkaman,Tehran,1127,village,0,0,50,0,none,none
+gn:405225,Sa‘īdābād,Tehran,7200,village,0,0,50,0,none,none
+gn:405254,Eslāmābād,Tehran,9999,village,0,0,50,0,none,none
+gn:405256,Maḩmūdābād,Tehran,1917,village,0,0,50,0,none,none
+gn:405265,Qal‘eh Now Khāleseh,Tehran,5352,village,0,0,50,0,none,none
+gn:406163,Dezak,Chaharmahal and Bakhtiari,2942,village,0,0,50,0,none,none
+gn:406165,Gahrū,Chaharmahal and Bakhtiari,6263,village,0,0,50,0,none,none
+gn:406418,Malūrān,Sistan and Baluchestan,1142,village,0,0,50,0,none,none
+gn:406425,Bent,Sistan and Baluchestan,5822,village,0,0,50,0,none,none
+gn:406447,Raẕīābād-e Bālā,Tehran,5111,village,0,0,50,0,none,none
+gn:406451,Shahrak-e Bābā Salmān,Tehran,4859,village,0,0,50,0,none,none
+gn:406460,Razkān,Tehran,5460,village,0,0,50,0,none,none
+gn:406461,Eskamān,Tehran,2143,village,0,0,50,0,none,none
+gn:406462,Nasir Abaad,Tehran,28644,town,0,0,50,0,none,none
+gn:406463,Fīrūzbahrām,Tehran,1103,village,0,0,50,0,none,none
+gn:406472,Shāhedshahr,Tehran,25544,town,0,0,50,0,none,none
+gn:406475,Farārat,Tehran,4856,village,0,0,50,0,none,none
+gn:406476,Yūsefābād,Tehran,5308,village,0,0,50,0,none,none
+gn:406483,Peyghambar,Tehran,1980,village,0,0,50,0,none,none
+gn:406487,Ovrīn,Tehran,17577,town,0,0,50,0,none,none
+gn:406488,Deh Ḩasan,Tehran,1312,village,0,0,50,0,none,none
+gn:406491,Meymanatābād,Tehran,5821,village,0,0,50,0,none,none
+gn:406993,Eqbālīyeh,Tehran,36709,town,0,0,50,0,none,none
+gn:415694,Badreh,Ilam Province,0,village,0,0,50,0,none,none
+gn:417469,Zafreh,Isfahan,4000,village,0,0,50,0,none,none
+gn:417472,Shāhīn Shahr,Isfahan,173329,city,0,0,50,0,none,none
+gn:417616,Bejgerd,Isfahan,1511,village,0,0,50,0,none,none
+gn:417666,Ozvār,Isfahan,1553,village,0,0,50,0,none,none
+gn:417698,Zūdān,Isfahan,1063,village,0,0,50,0,none,none
+gn:417807,Jowlarestān,Isfahan,2473,village,0,0,50,0,none,none
+gn:418145,Esfahrān,Isfahan,1026,village,0,0,50,0,none,none
+gn:418152,Dashtchī,Isfahan,1965,village,0,0,50,0,none,none
+gn:418310,Korūj,Isfahan,1654,village,0,0,50,0,none,none
+gn:418359,Mehdīābād,Isfahan,1028,village,0,0,50,0,none,none
+gn:418412,Tonderān,Isfahan,1109,village,0,0,50,0,none,none
+gn:418415,Zefreh,Isfahan,1750,village,0,0,50,0,none,none
+gn:418416,Zāzerān,Isfahan,7962,village,0,0,50,0,none,none
+gn:418418,Zarrīn Shahr,Isfahan,55817,town,0,0,50,0,none,none
+gn:418444,Varnāmkhvāst,Isfahan,18700,town,0,0,50,0,none,none
+gn:418445,Tīrānchī,Isfahan,3122,village,0,0,50,0,none,none
+gn:418446,Tīrān,Isfahan,21703,town,0,0,50,0,none,none
+gn:418452,Ţād,Isfahan,3740,village,0,0,50,0,none,none
+gn:418463,Sīn,Isfahan,5495,village,0,0,50,0,none,none
+gn:418480,Shorūdān,Isfahan,3114,village,0,0,50,0,none,none
+gn:418484,Shāhpūrābād,Isfahan,5915,village,0,0,50,0,none,none
+gn:418500,Sefīd Dasht,Chaharmahal and Bakhtiari,5471,village,0,0,50,0,none,none
+gn:418503,Sedeh Lanjān,Isfahan,19101,town,0,0,50,0,none,none
+gn:418512,Bahārān Shahr,Isfahan,11284,town,0,0,50,0,none,none
+gn:418513,Sagzī,Isfahan,5063,village,0,0,50,0,none,none
+gn:418521,Rehnān,Isfahan,49143,town,0,0,50,0,none,none
+gn:418533,Shahreẕā,Isfahan,134952,city,0,0,50,0,none,none
+gn:418556,Goldasht,Isfahan,25235,town,0,0,50,0,none,none
+gn:418569,Qahjāvarestān,Isfahan,9712,village,0,0,50,0,none,none
+gn:418571,Qahderījān,Isfahan,29392,town,0,0,50,0,none,none
+gn:418575,Pīr Bakrān,Isfahan,13469,town,0,0,50,0,none,none
+gn:418580,Pelārat,Isfahan,1289,village,0,0,50,0,none,none
+gn:418593,Imanshahr,Isfahan,14633,town,0,0,50,0,none,none
+gn:418603,Naşrābād,Isfahan,6425,village,0,0,50,0,none,none
+gn:418606,Najafābād,Isfahan,235281,city,0,0,50,0,none,none
+gn:418620,Moḩammadīyeh,Isfahan,1358,village,0,0,50,0,none,none
+gn:418625,Mobārakeh,Isfahan,69449,town,0,0,50,0,none,none
+gn:418628,Mīrābād,Isfahan,2758,village,0,0,50,0,none,none
+gn:418658,Madīseh,Isfahan,1395,village,0,0,50,0,none,none
+gn:418671,Lārgān,Isfahan,2259,village,0,0,50,0,none,none
+gn:418678,Kūshk,Isfahan,13248,town,0,0,50,0,none,none
+gn:418681,Kūhpāyeh,Isfahan,5518,village,0,0,50,0,none,none
+gn:418689,Komeshcheh,Isfahan,5100,village,0,0,50,0,none,none
+gn:418699,Khowrzūq,Isfahan,29154,town,0,0,50,0,none,none
+gn:418710,Khomeynī Shahr,Isfahan,277334,city,0,0,50,0,none,none
+gn:418711,Khātūnābād,Isfahan,2039,village,0,0,50,0,none,none
+gn:418723,Kelīshād va Sūdarjān,Isfahan,25635,town,0,0,50,0,none,none
+gn:418727,Kārūyeh,Isfahan,1031,village,0,0,50,0,none,none
+gn:418737,Kahrīz Sang,Isfahan,10442,town,0,0,50,0,none,none
+gn:418739,Kāfoshān,Isfahan,1655,village,0,0,50,0,none,none
+gn:418744,Jūjīl,Isfahan,6327,village,0,0,50,0,none,none
+gn:418748,Jowzdān,Isfahan,6998,village,0,0,50,0,none,none
+gn:418760,Jalālābād,Isfahan,4056,village,0,0,50,0,none,none
+gn:418775,Hūyeh,Isfahan,2698,village,0,0,50,0,none,none
+gn:418805,Harātom,Isfahan,1335,village,0,0,50,0,none,none
+gn:418819,Haftshūyeh,Isfahan,1248,village,0,0,50,0,none,none
+gn:418820,Ḩabībābād,Isfahan,9491,village,0,0,50,0,none,none
+gn:418824,Gorgāb,Isfahan,9690,village,0,0,50,0,none,none
+gn:418830,Gaz-e Borkhar,Isfahan,24433,town,0,0,50,0,none,none
+gn:418831,Kāvīān,Isfahan,1550,village,0,0,50,0,none,none
+gn:418832,Gavart,Isfahan,4810,village,0,0,50,0,none,none
+gn:418834,Karkevand,Isfahan,7058,village,0,0,50,0,none,none
+gn:418838,Fūlād Shahr,Isfahan,88426,town,0,0,50,0,none,none
+gn:418850,Farādonbeh,Chaharmahal and Bakhtiari,13317,town,0,0,50,0,none,none
+gn:418851,Falāvarjān,Isfahan,37704,town,0,0,50,0,none,none
+gn:418852,Fakhrābād,Isfahan,1862,village,0,0,50,0,none,none
+gn:418857,Eshkāvand,Isfahan,2557,village,0,0,50,0,none,none
+gn:418861,Eşfahānak,Isfahan,4414,village,0,0,50,0,none,none
+gn:418863,Isfahan,Isfahan,1547164,large-city,0,0,50,0,none,none
+gn:418868,Dowlatābād,Isfahan,33607,town,0,0,50,0,none,none
+gn:418875,Dīzīcheh,Isfahan,18935,town,0,0,50,0,none,none
+gn:418879,Deh-e Sorkh,Isfahan,3713,village,0,0,50,0,none,none
+gn:418886,Dastgerd,Isfahan,17775,town,0,0,50,0,none,none
+gn:418888,Dastgerd-e Mehr Āvarān,Isfahan,1004,village,0,0,50,0,none,none
+gn:418892,Dārgān,Isfahan,2409,village,0,0,50,0,none,none
+gn:418896,Dorcheh Pīāz,Isfahan,37462,town,0,0,50,0,none,none
+gn:418905,Charmahīn,Isfahan,13732,town,0,0,50,0,none,none
+gn:418911,Chamgordān,Isfahan,15574,town,0,0,50,0,none,none
+gn:418943,Bahārestān,Isfahan,106433,city,0,0,50,0,none,none
+gn:418944,Bāgh Malek,Isfahan,1901,village,0,0,50,0,none,none
+gn:418949,Bāgh-e Bahādorān,Isfahan,10279,town,0,0,50,0,none,none
+gn:418950,Abrīsham,Isfahan,20000,town,0,0,50,0,none,none
+gn:418957,Aşgharābād,Isfahan,6876,village,0,0,50,0,none,none
+gn:418982,Aḩmadābād,Isfahan,1325,village,0,0,50,0,none,none
+gn:433425,Chāh Kabkān,Fars,2150,village,0,0,50,0,none,none
+gn:434104,Dehshīr,Yazd Province,1320,village,0,0,50,0,none,none
+gn:443190,Badalābād,West Azerbaijan,9256,village,0,0,50,0,none,none
+gn:448138,Lomābād,Tehran,3227,village,0,0,50,0,none,none
+gn:449504,Eslamshahr,Tehran,450000,city,0,0,50,0,none,none
+gn:1112446,Shahrak-e Bākharz,Razavi Khorasan,0,village,0,0,50,0,none,none
+gn:1113217,Zābol,Sistan and Baluchestan,121989,city,0,0,50,0,none,none
+gn:1113341,Ramīn,Sistan and Baluchestan,3821,village,0,0,50,0,none,none
+gn:1114078,Gosht,Sistan and Baluchestan,4992,village,0,0,50,0,none,none
+gn:1114091,Moḩammadī,Sistan and Baluchestan,5606,village,0,0,50,0,none,none
+gn:1114538,Sīrkān,Sistan and Baluchestan,2196,village,0,0,50,0,none,none
+gn:1159293,Zangīyān,Sistan and Baluchestan,4159,village,0,0,50,0,none,none
+gn:1159301,Zahedan,Sistan and Baluchestan,551980,large-city,0,0,50,0,none,none
+gn:1159302,Zehak,Sistan and Baluchestan,14324,town,0,0,50,0,none,none
+gn:1159306,Mehrestān,Sistan and Baluchestan,12245,town,0,0,50,0,none,none
+gn:1159346,Ţūrdān,Sistan and Baluchestan,2008,village,0,0,50,0,none,none
+gn:1159362,Torbat-e Jām,Razavi Khorasan,100449,city,0,0,50,0,none,none
+gn:1159368,Ţīs,Sistan and Baluchestan,6348,village,0,0,50,0,none,none
+gn:1159384,Tāybād,Razavi Khorasan,37513,town,0,0,50,0,none,none
+gn:1159431,Sūrān,Sistan and Baluchestan,0,village,0,0,50,0,none,none
+gn:1159522,Shūrak-e Malekī,Razavi Khorasan,1151,village,0,0,50,0,none,none
+gn:1159584,Shamsābād,Sistan and Baluchestan,1774,village,0,0,50,0,none,none
+gn:1159605,Shahr Derāz,Sistan and Baluchestan,4618,village,0,0,50,0,none,none
+gn:1159672,Sarzeh,Sistan and Baluchestan,2282,village,0,0,50,0,none,none
+gn:1159691,Sar Kahūrān,Sistan and Baluchestan,1450,village,0,0,50,0,none,none
+gn:1159709,Sarbāz,Sistan and Baluchestan,2020,village,0,0,50,0,none,none
+gn:1159713,Sarāvān,Sistan and Baluchestan,60014,town,0,0,50,0,none,none
+gn:1159716,Sarakhs,Razavi Khorasan,46499,town,0,0,50,0,none,none
+gn:1159729,Sangān,Razavi Khorasan,12443,town,0,0,50,0,none,none
+gn:1159836,Rāsak,Sistan and Baluchestan,10115,town,0,0,50,0,none,none
+gn:1159877,Qaşr-e Qand,Sistan and Baluchestan,37722,town,0,0,50,0,none,none
+gn:1159884,Qaşr-e Qand,Sistan and Baluchestan,0,village,0,0,50,0,none,none
+gn:1159886,Qorqorī,Sistan and Baluchestan,1329,village,0,0,50,0,none,none
+gn:1159975,Pīshīn,Sistan and Baluchestan,16011,town,0,0,50,0,none,none
+gn:1159981,Pīr Sohrāb,Sistan and Baluchestan,1081,village,0,0,50,0,none,none
+gn:1160024,Pasābandar,Sistan and Baluchestan,1093,village,0,0,50,0,none,none
+gn:1160029,Pārūd,Sistan and Baluchestan,2997,village,0,0,50,0,none,none
+gn:1160088,Nūkābād,Sistan and Baluchestan,5261,village,0,0,50,0,none,none
+gn:1160110,Nīkshahr,Sistan and Baluchestan,17000,town,0,0,50,0,none,none
+gn:1160120,Nehbandān,South Khorasan Province,18304,town,0,0,50,0,none,none
+gn:1160121,Negūr,Sistan and Baluchestan,5670,village,0,0,50,0,none,none
+gn:1160133,Naşrābād,Razavi Khorasan,7460,village,0,0,50,0,none,none
+gn:1160190,Mokht,Sistan and Baluchestan,1647,village,0,0,50,0,none,none
+gn:1160239,Moḩammadābād,Sistan and Baluchestan,0,village,0,0,50,0,none,none
+gn:1160245,Mohammadān,Sistan and Baluchestan,10302,town,0,0,50,0,none,none
+gn:1160258,Mīrjāveh,Sistan and Baluchestan,9359,village,0,0,50,0,none,none
+gn:1160301,Mashhad Rīzeh,Razavi Khorasan,10105,town,0,0,50,0,none,none
+gn:1160402,Lāj,Razavi Khorasan,3038,village,0,0,50,0,none,none
+gn:1160463,Kohak,Sistan and Baluchestan,3201,village,0,0,50,0,none,none
+gn:1160500,Konārak,Sistan and Baluchestan,43258,town,0,0,50,0,none,none
+gn:1160544,Khvāf,Razavi Khorasan,33189,town,0,0,50,0,none,none
+gn:1160571,Khāsh,Sistan and Baluchestan,69603,town,0,0,50,0,none,none
+gn:1160672,Kandaklī,Razavi Khorasan,1518,village,0,0,50,0,none,none
+gn:1160818,Kahīr,Sistan and Baluchestan,2213,village,0,0,50,0,none,none
+gn:1160907,Jālq,Sistan and Baluchestan,18098,town,0,0,50,0,none,none
+gn:1160939,Iranshahr,Sistan and Baluchestan,131232,city,0,0,50,0,none,none
+gn:1160945,Hīdūj,Sistan and Baluchestan,1674,village,0,0,50,0,none,none
+gn:1160967,Ḩoseynābād,Sistan and Baluchestan,1166,village,0,0,50,0,none,none
+gn:1160984,Hīchān,Sistan and Baluchestan,2905,village,0,0,50,0,none,none
+gn:1161030,Āzmanābād,Sistan and Baluchestan,1959,village,0,0,50,0,none,none
+gn:1161048,Ḩājjīābād,South Khorasan Province,0,village,0,0,50,0,none,none
+gn:1161107,Gonbadlī,Razavi Khorasan,1877,village,0,0,50,0,none,none
+gn:1161265,Āspīch,Sistan and Baluchestan,2819,village,0,0,50,0,none,none
+gn:1161269,Espakeh,Sistan and Baluchestan,4719,village,0,0,50,0,none,none
+gn:1161297,Dūst Moḩammad Khān,Sistan and Baluchestan,6621,village,0,0,50,0,none,none
+gn:1161369,Deh Mīr,Sistan and Baluchestan,2803,village,0,0,50,0,none,none
+gn:1161567,Chāh-e Jamāl,Sistan and Baluchestan,8144,village,0,0,50,0,none,none
+gn:1161633,Bonjār,Sistan and Baluchestan,3760,village,0,0,50,0,none,none
+gn:1161664,Berīs,Sistan and Baluchestan,4488,village,0,0,50,0,none,none
+gn:1161681,Bazmān,Sistan and Baluchestan,5192,village,0,0,50,0,none,none
+gn:1161711,Bānsont,Sistan and Baluchestan,1824,village,0,0,50,0,none,none
+gn:1161724,Chabahar,Sistan and Baluchestan,47287,town,0,0,50,0,none,none
+gn:1161735,Bampūr,Sistan and Baluchestan,12217,town,0,0,50,0,none,none
+gn:1161800,Āshār,Sistan and Baluchestan,3786,village,0,0,50,0,none,none
+gn:1161877,Aḩmadābād,Sistan and Baluchestan,1084,village,0,0,50,0,none,none
+gn:1161885,Afshān,Sistan and Baluchestan,1459,village,0,0,50,0,none,none
+gn:1161887,Adīmī,Sistan and Baluchestan,0,village,0,0,50,0,none,none
+gn:1161888,Abtar,Sistan and Baluchestan,3089,village,0,0,50,0,none,none
+gn:6640345,Daghāgheleh,Khuzestan,5116,village,0,0,50,0,none,none
+gn:6648094,Shahrak-e Madanī,Khuzestan,6089,village,0,0,50,0,none,none
+gn:6648117,Chamrān,Khuzestan,33505,town,0,0,50,0,none,none
+gn:6648621,Sheybān,Khuzestan,36374,town,0,0,50,0,none,none
+gn:6649516,Dayrestān,Hormozgan,1764,village,0,0,50,0,none,none
+gn:6649570,Shahrak-e Nāmjū,Hormozgan,1438,village,0,0,50,0,none,none
+gn:6650424,Now Band,Hormozgan,1436,village,0,0,50,0,none,none
+gn:6650432,Eslāmābād,Hormozgan,5618,village,0,0,50,0,none,none
+gn:6650725,Pozm-e Tīāb,Sistan and Baluchestan,2912,village,0,0,50,0,none,none
+gn:6651758,Vaḩdattīyeh,Bushehr,11222,town,0,0,50,0,none,none
+gn:6653042,Maḩmūdābād-e Do Dāng,Fars,1353,village,0,0,50,0,none,none
+gn:6653052,Shahr-e Ṣadrā,Fars,122226,city,0,0,50,0,none,none
+gn:6654157,Bostānū,Hormozgan,1753,village,0,0,50,0,none,none
+gn:6654309,Tāzīān,Hormozgan,4263,village,0,0,50,0,none,none
+gn:6654581,Sarzeh,Hormozgan,1633,village,0,0,50,0,none,none
+gn:6656879,Jahādābād,Isfahan,1347,village,0,0,50,0,none,none
+gn:6657069,Rāmjīn,Alborz Province,1999,village,0,0,50,0,none,none
+gn:6657077,‘Alīābād Gūneh,Alborz Province,3256,village,0,0,50,0,none,none
+gn:6657192,Shahrak-e Nahāl Va Baz̄r,Alborz Province,2001,village,0,0,50,0,none,none
+gn:6657205,Fardīs,Tehran,181174,city,0,0,50,0,none,none
+gn:6657410,Qāsemābād-e Gorjī,Alborz Province,1928,village,0,0,50,0,none,none
+gn:6657461,Māmūnīyeh,Markazi,21814,town,0,0,50,0,none,none
+gn:6659672,Parand,Tehran,97464,town,0,0,50,0,none,none
+gn:6659743,Majlesī,Isfahan,9363,village,0,0,50,0,none,none
+gn:6659958,Bīdestān,Qazvin Province,18060,town,0,0,50,0,none,none
+gn:6659981,Moḩammadīyeh,Qazvin Province,90513,town,0,0,50,0,none,none
+gn:6660031,Shenqar,Qazvin Province,1823,village,0,0,50,0,none,none
+gn:6663569,Shahrak-e Pardīsān,Qom Province,100000,city,0,0,50,0,none,none
+gn:6666958,Ḩājjīābād,Isfahan,3448,village,0,0,50,0,none,none
+gn:6672361,Reẕvānshahr,Isfahan,3606,village,0,0,50,0,none,none
+gn:6672372,Nehẕatābād,Isfahan,3016,village,0,0,50,0,none,none
+gn:6672633,Şabbāshahr,Tehran,53971,town,0,0,50,0,none,none
+gn:6672634,Nasīm Shahr,Tehran,200393,city,0,0,50,0,none,none
+gn:6678741,Kholqābād,Razavi Khorasan,2857,village,0,0,50,0,none,none
+gn:6680620,Karūnī,Fars,5689,village,0,0,50,0,none,none
+gn:6681051,Pardīs,Tehran,114249,city,0,0,50,0,none,none
+gn:6683619,Bast-e Malakhī,Bushehr,1058,village,0,0,50,0,none,none
+gn:6686961,Īlkhchī,East Azerbaijan,16574,town,0,0,50,0,none,none
+gn:6686970,Āz̄arshahr,East Azerbaijan,44887,town,0,0,50,0,none,none
+gn:6687174,Mehr,Ilam Province,1060,village,0,0,50,0,none,none
+gn:6687190,Bān Raḩmān,Ilam Province,1070,village,0,0,50,0,none,none
+gn:6689571,Owghān,East Azerbaijan,1554,village,0,0,50,0,none,none
+gn:6689616,Ālān,East Azerbaijan,1759,village,0,0,50,0,none,none
+gn:6703845,Zarnaq,East Azerbaijan,2415,village,0,0,50,0,none,none
+gn:6708497,Sarţāf,Ilam Province,1413,village,0,0,50,0,none,none
+gn:6709138,Tāzehābād,Kermanshah Province,0,village,0,0,50,0,none,none
+gn:6711003,Yūzbāsh Kandī,East Azerbaijan,1693,village,0,0,50,0,none,none
+gn:6711214,Delgoshā,Ilam Province,1819,village,0,0,50,0,none,none
+gn:6719944,‘Abbāsābād,Ilam Province,1695,village,0,0,50,0,none,none
+gn:6743601,Poshteh,Gilan Province,1226,village,0,0,50,0,none,none
+gn:6746932,Mahājerān,Markazi,20346,town,0,0,50,0,none,none
+gn:6746969,Jāverseyān,Markazi,4993,village,0,0,50,0,none,none
+gn:6861211,Kāshān,Isfahan,304487,city,0,0,50,0,none,none
+gn:6869240,Jahādābād,Fars,1159,village,0,0,50,0,none,none
+gn:6925362,Jīroft,Kerman,130429,city,0,0,50,0,none,none
+gn:6928551,Rūdbār,Kerman,0,village,0,0,50,0,none,none
+gn:6929734,Jakdān,Hormozgan,1239,village,0,0,50,0,none,none
+gn:6949363,Famast,Hamadan Province,1081,village,0,0,50,0,none,none
+gn:6959772,Shamsābād,Kerman,1151,village,0,0,50,0,none,none
+gn:6959900,Sarrās,Kerman,2350,village,0,0,50,0,none,none
+gn:6961608,Kahnūj,Kerman,52624,town,0,0,50,0,none,none
+gn:6976849,Jannat Shahr,Fars,13598,town,0,0,50,0,none,none
+gn:6980566,Shahrak-e Emam,Fars,3840,village,0,0,50,0,none,none
+gn:6981494,Sar Chāhān-e Janūbī,Hormozgan,2250,village,0,0,50,0,none,none
+gn:7028258,Ābādān,Sistan and Baluchestan,2763,village,0,0,50,0,none,none
+gn:7028291,‘Alīābād,Sistan and Baluchestan,2616,village,0,0,50,0,none,none
+gn:7052881,Hūshak,Sistan and Baluchestan,3578,village,0,0,50,0,none,none
+gn:7082152,Golbahār,Razavi Khorasan,36877,town,0,0,50,0,none,none
+gn:7100777,Mahdishahr,Semnan,21000,town,0,0,50,0,none,none
+gn:7102155,Galmūrtī,Sistan and Baluchestan,10292,town,0,0,50,0,none,none
+gn:7108455,Shālāsh,Māzandarān,7384,village,0,0,50,0,none,none
+gn:7108588,Zīārat,Golestan,2280,village,0,0,50,0,none,none
+gn:7329764,Moḩammadābād,Golestan,5192,village,0,0,50,0,none,none
+gn:7329809,Āq Qalā,Golestan,35116,town,0,0,50,0,none,none
+gn:7416827,Kūy-e Montaz̧erī,Khuzestan,1860,village,0,0,50,0,none,none
+gn:7416833,Kūt-e Navāşer,Khuzestan,5560,village,0,0,50,0,none,none
+gn:7431227,Barehsar,Gilan Province,1612,village,0,0,50,0,none,none
+gn:7451195,Qā’emīyeh,Fars,26918,town,0,0,50,0,none,none
+gn:7465130,Mojtame‘-e Maskūnī-ye Nāmjū,Tehran,22990,town,0,0,50,0,none,none
+gn:7492424,Manz̧arīyeh,Isfahan,7164,village,0,0,50,0,none,none
+gn:7521152,Kharmanān,Isfahan,1674,village,0,0,50,0,none,none
+gn:7625520,Līmāk,Māzandarān,1183,village,0,0,50,0,none,none
+gn:7626066,Rūḩābād,Kerman,5708,village,0,0,50,0,none,none
+gn:7637486,Īzad Shahr,Māzandarān,7439,village,0,0,50,0,none,none
+gn:8080737,Shahrak-e ‘Alā’īn,Tehran,21594,town,0,0,50,0,none,none
+gn:8384992,Darvīsheh,Khuzestan,11820,town,0,0,50,0,none,none
+gn:8420881,Vaḩīdīyeh,Tehran,33249,town,0,0,50,0,none,none
+gn:8421803,Khabarābād,Tehran,17267,town,0,0,50,0,none,none
+gn:8521444,Bandar-e Emam Khomeyni,Khuzestan,78353,town,0,0,50,0,none,none
+gn:8522943,‘Ālī Shahr,Bushehr,23178,town,0,0,50,0,none,none
+gn:8535197,Mehestan,Alborz Province,85200,town,0,0,50,0,none,none
+gn:8595861,Āb‘alī,Tehran,2758,village,0,0,50,0,none,none
+gn:8717127,Komb-e Morādābād,Sistan and Baluchestan,12906,town,0,0,50,0,none,none
+gn:8729946,Ne‘matābād,Māzandarān,2597,village,0,0,50,0,none,none
+gn:8730059,Gīlāndeh,Gilan Province,4273,village,0,0,50,0,none,none
+gn:9260882,Qā’em Shahr,Māzandarān,0,village,0,0,50,0,none,none
+gn:9478811,Pākdasht,Tehran,236319,city,0,0,50,0,none,none
+gn:9480732,Boshrūyeh,South Khorasan Province,16426,town,0,0,50,0,none,none
+gn:9514746,Gīvī,Ardabil Province,7101,village,0,0,50,0,none,none
+gn:9533872,Rey,Tehran,0,village,0,0,50,0,none,none
+gn:10865375,Andīsheh,Tehran,116062,city,0,0,50,0,none,none
+gn:10944777,Shahrak-e Ja‘farīyeh,Tehran,9452,village,0,0,50,0,none,none
+gn:11469996,Mazgā,Māzandarān,1319,village,0,0,50,0,none,none
+gn:11980175,Kahrīzak,Tehran,37527,town,0,0,50,0,none,none
+gn:12153294,Ḩoseynābād-e Qorqī,Razavi Khorasan,13644,town,0,0,50,0,none,none
+gn:12153299,Qorqī-ye Soflá,Razavi Khorasan,11952,town,0,0,50,0,none,none
+gn:13405749,Nasimshahr,Tehran,200393,city,0,0,50,0,none,none
+gn:13408069,Zūrābād,Razavi Khorasan,1946,village,0,0,50,0,none,none
+gn:13535724,Dabudasht,Māzandarān,1758,village,0,0,50,0,none,none
+gn:13562246,Bāghestān,Tehran,83934,town,0,0,50,0,none,none
+gn:13590366,Zibashahr,Isfahan,10200,town,0,0,50,0,none,none
+gn:13590593,Khalīl Shahr,Māzandarān,11032,town,0,0,50,0,none,none
+gn:13631338,Sahand,East Azerbaijan,82494,town,0,0,50,0,none,none
+gn:13631356,Kuhsar,Tehran,10940,town,0,0,50,0,none,none
+gn:13631698,Bavanat,Fars,9776,village,0,0,50,0,none,none
+gn:13645281,Mahdasht,Māzandarān,4220,village,0,0,50,0,none,none
+gn:13645355,Sīyāhū,Hormozgan,1015,village,0,0,50,0,none,none
+gn:13645631,Jazīreh-ye Shīf,Bushehr,3969,village,0,0,50,0,none,none
+gn:13645712,Kāfeh Bālūchī,Sistan and Baluchestan,1975,village,0,0,50,0,none,none
+gn:13645766,Ṣafādasht,Tehran,32476,town,0,0,50,0,none,none
+gn:13664979,Gorjī-ye Soflá,Razavi Khorasan,15163,town,0,0,50,0,none,none
+gn:13665053,Golsār,Tehran,13745,town,0,0,50,0,none,none
+gn:13665079,Qanavāt,Qom Province,11667,town,0,0,50,0,none,none
+gn:13680008,Moḩammadābād,Razavi Khorasan,4548,village,0,0,50,0,none,none
+gn:13715518,Eslāmābād,Ardabil Province,3068,village,0,0,50,0,none,none
+gn:13715519,Ajab Shir Military Garrison,East Azerbaijan,5423,village,0,0,50,0,none,none
+gn:13715521,Kāl Zarkesh,Razavi Khorasan,6134,village,0,0,50,0,none,none
+gn:13715548,Chāh Akramī,Yazd Province,10311,town,0,0,50,0,none,none

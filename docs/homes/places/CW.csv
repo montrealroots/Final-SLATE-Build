@@ -1,0 +1,13 @@
+place_id,name,region,population,market,verified_homes,dated_listings,shortfall_to_50,recorded_sales,rent_source,price_source
+gn:3513090,Willemstad,,125000,city,0,0,50,0,none,none
+gn:3513221,Sint Michiel Liber,,5138,village,0,0,50,0,none,none
+gn:3513264,Santa Rosa,,5198,village,0,0,50,0,none,none
+gn:3513301,Saliña,,2538,village,0,0,50,0,none,none
+gn:3513422,Otrabanda,,1369,village,0,0,50,0,none,none
+gn:3513761,Dorp Soto,,2233,village,0,0,50,0,none,none
+gn:3513861,Brievengat,,4695,village,0,0,50,0,none,none
+gn:3513936,Barber,,2424,village,0,0,50,0,none,none
+gn:6692389,St. Michiel,,5732,village,0,0,50,0,none,none
+gn:13308487,Bandariba,,20838,town,0,0,50,0,none,none
+gn:13308488,Bandabou,,13125,town,0,0,50,0,none,none
+gn:13632006,Tera Kora,,4388,village,0,0,50,0,none,none

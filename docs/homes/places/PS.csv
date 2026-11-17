@@ -1,0 +1,379 @@
+place_id,name,region,population,market,verified_homes,dated_listings,shortfall_to_50,recorded_sales,rent_source,price_source
+gn:281093,Shūkat aş Şūfī,Gaza Strip,10566,town,0,0,50,0,none,none
+gn:281102,Rafaḩ,Gaza Strip,126305,city,0,0,50,0,none,none
+gn:281109,An Nuşayrāt,Gaza Strip,36123,town,0,0,50,0,none,none
+gn:281119,Khuzā‘ah,Gaza Strip,9023,village,0,0,50,0,none,none
+gn:281124,Khān Yūnis,Gaza Strip,173183,city,0,0,50,0,none,none
+gn:281129,Jabālyā,Gaza Strip,168568,city,0,0,50,0,none,none
+gn:281133,Gaza,Gaza Strip,410000,city,0,0,50,0,none,none
+gn:281141,Dayr al Balaḩ,Gaza Strip,59504,town,0,0,50,0,none,none
+gn:281145,Bayt Lāhyā,Gaza Strip,56919,town,0,0,50,0,none,none
+gn:281146,Bayt Ḩānūn,Gaza Strip,37392,town,0,0,50,0,none,none
+gn:281148,Banī Suhaylā,Gaza Strip,31272,town,0,0,50,0,none,none
+gn:281152,An Nazlah,Gaza Strip,2284,village,0,0,50,0,none,none
+gn:281160,Al Fukhkhārī,Gaza Strip,5464,village,0,0,50,0,none,none
+gn:281161,Al Burayj,Gaza Strip,34951,town,0,0,50,0,none,none
+gn:281165,‘Abasān al Kabīrah,Gaza Strip,18163,town,0,0,50,0,none,none
+gn:281207,Zubūbah,West Bank,2063,village,0,0,50,0,none,none
+gn:281226,Zaytā,West Bank,3052,village,0,0,50,0,none,none
+gn:281227,Zaytā Jammā‘īn,West Bank,2092,village,0,0,50,0,none,none
+gn:281236,Zawātā,West Bank,1855,village,0,0,50,0,none,none
+gn:281240,Za‘tarah,West Bank,6210,village,0,0,50,0,none,none
+gn:281285,Alei Zahav,West Bank,4280,village,0,0,50,0,none,none
+gn:281286,Yiẕhar,West Bank,1635,village,0,0,50,0,none,none
+gn:281292,Yaţţā,West Bank,41425,town,0,0,50,0,none,none
+gn:281293,Yatmā,West Bank,2897,village,0,0,50,0,none,none
+gn:281295,Yāsūf,West Bank,1604,village,0,0,50,0,none,none
+gn:281297,Yāşīd,West Bank,2226,village,0,0,50,0,none,none
+gn:281303,Yaqqir,West Bank,2183,village,0,0,50,0,none,none
+gn:281318,Ya‘bad,West Bank,13477,town,0,0,50,0,none,none
+gn:281356,Wādī Fūkīn,West Bank,1153,village,0,0,50,0,none,none
+gn:281408,‘Ūrīf,West Bank,2890,village,0,0,50,0,none,none
+gn:281548,Ūdalah,West Bank,1123,village,0,0,50,0,none,none
+gn:281560,Turmus‘ayyā,West Bank,3686,village,0,0,50,0,none,none
+gn:281577,Ţūlkarm,West Bank,44169,town,0,0,50,0,none,none
+gn:281581,Ţūbās,West Bank,15591,town,0,0,50,0,none,none
+gn:281623,Tayāsīr,West Bank,2323,village,0,0,50,0,none,none
+gn:281637,Tarqūmyā,West Bank,14202,town,0,0,50,0,none,none
+gn:281657,Ţammūn,West Bank,10119,town,0,0,50,0,none,none
+gn:281662,Ţallūzah,West Bank,2604,village,0,0,50,0,none,none
+gn:281674,Till,West Bank,4605,village,0,0,50,0,none,none
+gn:281675,Talfīt,West Bank,2906,village,0,0,50,0,none,none
+gn:281690,Taffūḩ,West Bank,9480,village,0,0,50,0,none,none
+gn:281711,Suseya,West Bank,1301,village,0,0,50,0,none,none
+gn:281715,Surif City,West Bank,25242,town,0,0,50,0,none,none
+gn:281716,Surdā,West Bank,1017,village,0,0,50,0,none,none
+gn:281717,Şūr Bāhir,West Bank,15000,town,0,0,50,0,none,none
+gn:281764,Sīrīs,West Bank,4898,village,0,0,50,0,none,none
+gn:281778,Sinjil,West Bank,5371,village,0,0,50,0,none,none
+gn:281789,Silwād,West Bank,7006,village,0,0,50,0,none,none
+gn:281790,Sīlat az̧ Z̧ahr,West Bank,6079,village,0,0,50,0,none,none
+gn:281791,Sīlat al Ḩārithīyah,West Bank,9557,village,0,0,50,0,none,none
+gn:281793,Sa‘īr,West Bank,17775,town,0,0,50,0,none,none
+gn:281808,Shuqbā,West Bank,4188,village,0,0,50,0,none,none
+gn:281818,Shu‘fāţ,West Bank,35000,town,0,0,50,0,none,none
+gn:281819,Shūfah,West Bank,2174,village,0,0,50,0,none,none
+gn:281965,Şaydā,West Bank,2988,village,0,0,50,0,none,none
+gn:281979,Şarţah,West Bank,2528,village,0,0,50,0,none,none
+gn:281982,Şarrah,West Bank,2810,village,0,0,50,0,none,none
+gn:281997,Şānūr,West Bank,4141,village,0,0,50,0,none,none
+gn:281998,Sannīryā,West Bank,2887,village,0,0,50,0,none,none
+gn:282027,Sal‘it,West Bank,1190,village,0,0,50,0,none,none
+gn:282034,Sālim,West Bank,4940,village,0,0,50,0,none,none
+gn:282039,Salfīt,West Bank,11000,town,0,0,50,0,none,none
+gn:282069,Şaffā,West Bank,3904,village,0,0,50,0,none,none
+gn:282108,Sabasţīyah,West Bank,2823,village,0,0,50,0,none,none
+gn:282119,Rummanah,West Bank,3275,village,0,0,50,0,none,none
+gn:282140,Rūjayb,West Bank,3805,village,0,0,50,0,none,none
+gn:282154,Rosh Ẕurim,West Bank,1115,village,0,0,50,0,none,none
+gn:282185,Rās Karkar,West Bank,1641,village,0,0,50,0,none,none
+gn:282230,Rantīs,West Bank,2795,village,0,0,50,0,none,none
+gn:282234,Rammūn,West Bank,3101,village,0,0,50,0,none,none
+gn:282237,Rāmīn,West Bank,2040,village,0,0,50,0,none,none
+gn:282239,Ramallah,West Bank,43880,town,0,0,50,0,none,none
+gn:282264,Rāfāt,West Bank,1952,village,0,0,50,0,none,none
+gn:282265,Rāfāt,West Bank,2061,village,0,0,50,0,none,none
+gn:282278,Rābā,West Bank,2951,village,0,0,50,0,none,none
+gn:282283,Quşrah,West Bank,4316,village,0,0,50,0,none,none
+gn:282284,Qūşīn,West Bank,1691,village,0,0,50,0,none,none
+gn:282342,Qīrah,West Bank,1131,village,0,0,50,0,none,none
+gn:282348,Qibyah,West Bank,4761,village,0,0,50,0,none,none
+gn:282353,Qedumim,West Bank,4596,village,0,0,50,0,none,none
+gn:282354,Qedar,West Bank,1565,village,0,0,50,0,none,none
+gn:282376,Qaţanah,West Bank,7274,village,0,0,50,0,none,none
+gn:282423,Qaryūt,West Bank,2399,village,0,0,50,0,none,none
+gn:282431,Qarne Shomeron,West Bank,7713,village,0,0,50,0,none,none
+gn:282438,Qarāwat Banī Zayd,West Bank,2673,village,0,0,50,0,none,none
+gn:282439,Qarāwat Banī Ḩasan,West Bank,3761,village,0,0,50,0,none,none
+gn:282457,Qalqīlyah,West Bank,43212,town,0,0,50,0,none,none
+gn:282461,Qalandiyā,West Bank,1169,village,0,0,50,0,none,none
+gn:282463,Qaffīn,West Bank,8489,village,0,0,50,0,none,none
+gn:282476,Qabāţīyah,West Bank,19127,town,0,0,50,0,none,none
+gn:282477,Qabalān,West Bank,7043,village,0,0,50,0,none,none
+gn:282482,Pesagot,West Bank,1903,village,0,0,50,0,none,none
+gn:282485,Pedu’el,West Bank,1910,village,0,0,50,0,none,none
+gn:282489,Ofra,West Bank,3039,village,0,0,50,0,none,none
+gn:282510,Nūbā,West Bank,4328,village,0,0,50,0,none,none
+gn:282529,Ni‘līn,West Bank,4512,village,0,0,50,0,none,none
+gn:282536,Neve Daniel,West Bank,2315,village,0,0,50,0,none,none
+gn:282540,Nazlat ‘Īsá,West Bank,2313,village,0,0,50,0,none,none
+gn:282593,Naḩḩālīn,West Bank,6215,village,0,0,50,0,none,none
+gn:282595,Bat A'in,West Bank,1545,village,0,0,50,0,none,none
+gn:282615,Nablus,West Bank,130326,city,0,0,50,0,none,none
+gn:282687,Mikhmās,West Bank,1461,village,0,0,50,0,none,none
+gn:282740,Mislīyah,West Bank,2187,village,0,0,50,0,none,none
+gn:282746,Mirkah,West Bank,1592,village,0,0,50,0,none,none
+gn:282772,Mevo H̱oron,West Bank,2669,village,0,0,50,0,none,none
+gn:282783,Banī Zayd ash Shārqīyah,West Bank,5015,village,0,0,50,0,none,none
+gn:282793,Maythalūn,West Bank,6804,village,0,0,50,0,none,none
+gn:282837,Masḩah,West Bank,1982,village,0,0,50,0,none,none
+gn:282872,Mardā,West Bank,2142,village,0,0,50,0,none,none
+gn:282941,Majdal Banī Fāḑil,West Bank,2122,village,0,0,50,0,none,none
+gn:282980,Mādamā,West Bank,1735,village,0,0,50,0,none,none
+gn:282988,Ma‘ale Mikhmas,West Bank,1463,village,0,0,50,0,none,none
+gn:282991,Ma‘ale Efrayim,West Bank,1241,village,0,0,50,0,none,none
+gn:282993,Ma‘ale Adummim,West Bank,38193,town,0,0,50,0,none,none
+gn:282997,Al Lubban ash Sharqīyah,West Bank,2439,village,0,0,50,0,none,none
+gn:283040,Kufayrit,West Bank,2376,village,0,0,50,0,none,none
+gn:283046,Kokhav Ya‘aqov,West Bank,8194,village,0,0,50,0,none,none
+gn:283055,Kifil Ḩāris,West Bank,3132,village,0,0,50,0,none,none
+gn:283077,Ar Ramāḑīn,West Bank,3232,village,0,0,50,0,none,none
+gn:283092,Rās ‘Aţīyah,West Bank,2129,village,0,0,50,0,none,none
+gn:283096,Qalqas,West Bank,1132,village,0,0,50,0,none,none
+gn:283099,Imrīsh,West Bank,1640,village,0,0,50,0,none,none
+gn:283101,Marāḩ Rabbāḩ,West Bank,1303,village,0,0,50,0,none,none
+gn:283120,Dayr al ‘Asal al Fawqā,West Bank,1859,village,0,0,50,0,none,none
+gn:283123,Bayt Ta‘mar,West Bank,1214,village,0,0,50,0,none,none
+gn:283128,Bayt Ḩasan,West Bank,1109,village,0,0,50,0,none,none
+gn:283129,Bayt ‘Awwā,West Bank,7943,village,0,0,50,0,none,none
+gn:283133,Jannātah,West Bank,5348,village,0,0,50,0,none,none
+gn:283142,Ash Shaykh Sa‘d,West Bank,1932,village,0,0,50,0,none,none
+gn:283155,An Naşşārīyah,West Bank,1568,village,0,0,50,0,none,none
+gn:283157,Kharbathā al Mişbāḩ,West Bank,5141,village,0,0,50,0,none,none
+gn:283159,Al Majd,West Bank,1896,village,0,0,50,0,none,none
+gn:283165,Karmah,West Bank,1365,village,0,0,50,0,none,none
+gn:283176,Al Burj,West Bank,2381,village,0,0,50,0,none,none
+gn:283180,Shuyūkh al ‘Arrūb,West Bank,1527,village,0,0,50,0,none,none
+gn:283189,Khirbat Abū Falāḩ,West Bank,3961,village,0,0,50,0,none,none
+gn:283245,Kharbathā Banī Ḩārith,West Bank,2808,village,0,0,50,0,none,none
+gn:283246,Khārās,West Bank,6885,village,0,0,50,0,none,none
+gn:283286,Khallat al Mayyah,West Bank,1391,village,0,0,50,0,none,none
+gn:283313,Kefar ‘Eẕyon,West Bank,1152,village,0,0,50,0,none,none
+gn:283314,Kefar Adummim,West Bank,4513,village,0,0,50,0,none,none
+gn:283316,Kūbar,West Bank,3546,village,0,0,50,0,none,none
+gn:283324,Karme Ẕur,West Bank,1021,village,0,0,50,0,none,none
+gn:283348,Kafr Zībād,West Bank,1068,village,0,0,50,0,none,none
+gn:283351,Kafr Thulth,West Bank,4218,village,0,0,50,0,none,none
+gn:283353,Kafr Şūr,West Bank,1107,village,0,0,50,0,none,none
+gn:283361,Kafr Rā‘ī,West Bank,7276,village,0,0,50,0,none,none
+gn:283362,Kafr Qūd,West Bank,1129,village,0,0,50,0,none,none
+gn:283365,Kafr Qallīl,West Bank,2421,village,0,0,50,0,none,none
+gn:283366,Kafr Qaddūm,West Bank,3376,village,0,0,50,0,none,none
+gn:283370,Kafr Mālik,West Bank,2903,village,0,0,50,0,none,none
+gn:283373,Kafr Jammāl,West Bank,2481,village,0,0,50,0,none,none
+gn:283378,Kafr Dān,West Bank,4967,village,0,0,50,0,none,none
+gn:283379,Kafr ‘Ayn,West Bank,1720,village,0,0,50,0,none,none
+gn:283384,Kafr al Labad,West Bank,3915,village,0,0,50,0,none,none
+gn:283385,Kafr ad Dīk,West Bank,4986,village,0,0,50,0,none,none
+gn:283386,Kafr ‘Abbūsh,West Bank,1444,village,0,0,50,0,none,none
+gn:283408,Jūrīsh,West Bank,1385,village,0,0,50,0,none,none
+gn:283419,Jūrat ash Sham‘ah,West Bank,1472,village,0,0,50,0,none,none
+gn:283444,Al Judayyidah,West Bank,4681,village,0,0,50,0,none,none
+gn:283449,Jīt,West Bank,2243,village,0,0,50,0,none,none
+gn:283464,Jifnā,West Bank,1693,village,0,0,50,0,none,none
+gn:283469,Jayyūs,West Bank,3196,village,0,0,50,0,none,none
+gn:283506,Janīn,West Bank,34730,town,0,0,50,0,none,none
+gn:283520,Jammālah,West Bank,1664,village,0,0,50,0,none,none
+gn:283521,Jammā‘īn,West Bank,6158,village,0,0,50,0,none,none
+gn:283536,Jalqamūs,West Bank,1968,village,0,0,50,0,none,none
+gn:283540,Jalbūn,West Bank,2421,village,0,0,50,0,none,none
+gn:283547,Al Jalamah,West Bank,2035,village,0,0,50,0,none,none
+gn:283570,Jaba‘,West Bank,8391,village,0,0,50,0,none,none
+gn:283571,Jaba‘,West Bank,3214,village,0,0,50,0,none,none
+gn:283609,Immātīn,West Bank,2368,village,0,0,50,0,none,none
+gn:283610,‘Immanu‘el,West Bank,3693,village,0,0,50,0,none,none
+gn:283612,‘Illār,West Bank,6681,village,0,0,50,0,none,none
+gn:283614,Iktābah,West Bank,1919,village,0,0,50,0,none,none
+gn:283621,Idhnā,West Bank,18727,town,0,0,50,0,none,none
+gn:283636,Ḩuwwārah,West Bank,5633,village,0,0,50,0,none,none
+gn:283643,Ḩūsān,West Bank,5535,village,0,0,50,0,none,none
+gn:283676,Ḩizmā,West Bank,5916,village,0,0,50,0,none,none
+gn:283681,H̱innanit,West Bank,1323,village,0,0,50,0,none,none
+gn:283735,Ḩāris,West Bank,2967,village,0,0,50,0,none,none
+gn:283743,Har Gillo,West Bank,1590,village,0,0,50,0,none,none
+gn:283805,H̱allamish,West Bank,1478,village,0,0,50,0,none,none
+gn:283806,Ḩalḩūl,West Bank,21076,town,0,0,50,0,none,none
+gn:283812,Ḩajjah,West Bank,2444,village,0,0,50,0,none,none
+gn:283843,Ḩablah,West Bank,5945,village,0,0,50,0,none,none
+gn:283918,Far‘ūn,West Bank,3072,village,0,0,50,0,none,none
+gn:283955,Farkhah,West Bank,1351,village,0,0,50,0,none,none
+gn:283971,Faqqū‘ah,West Bank,3426,village,0,0,50,0,none,none
+gn:283976,Faḩmah,West Bank,2369,village,0,0,50,0,none,none
+gn:283978,‘Ez Efrayim,West Bank,2292,village,0,0,50,0,none,none
+gn:283986,Elqana,West Bank,3812,village,0,0,50,0,none,none
+gn:283991,Efrata,West Bank,10088,town,0,0,50,0,none,none
+gn:284010,Dūrā al Qar‘,West Bank,2858,village,0,0,50,0,none,none
+gn:284011,Dūrā,West Bank,20835,town,0,0,50,0,none,none
+gn:284013,Dūmā,West Bank,2157,village,0,0,50,0,none,none
+gn:284046,Dhannābah,West Bank,8193,village,0,0,50,0,none,none
+gn:284054,Dayr Sharaf,West Bank,2681,village,0,0,50,0,none,none
+gn:284065,Dayr Qiddīs,West Bank,1916,village,0,0,50,0,none,none
+gn:284069,Dayr Jarīr,West Bank,4156,village,0,0,50,0,none,none
+gn:284071,Dayr Istiyā,West Bank,3730,village,0,0,50,0,none,none
+gn:284072,Dayr Ibzī‘,West Bank,2041,village,0,0,50,0,none,none
+gn:284078,Dayr Dibwān,West Bank,6692,village,0,0,50,0,none,none
+gn:284081,Dayr Ballūţ,West Bank,3566,village,0,0,50,0,none,none
+gn:284085,Dayr as Sūdān,West Bank,2104,village,0,0,50,0,none,none
+gn:284099,Dayr al Ḩaţab,West Bank,2194,village,0,0,50,0,none,none
+gn:284100,Dayr al Ghuşūn,West Bank,9187,village,0,0,50,0,none,none
+gn:284104,Dayr Abū Mash‘al,West Bank,3475,village,0,0,50,0,none,none
+gn:284105,Dayr Abū Ḑa‘īf,West Bank,5506,village,0,0,50,0,none,none
+gn:284187,Brūqīn,West Bank,3538,village,0,0,50,0,none,none
+gn:284194,Birqīn,West Bank,5730,village,0,0,50,0,none,none
+gn:284196,Burqah,West Bank,3631,village,0,0,50,0,none,none
+gn:284197,Burqah,West Bank,2238,village,0,0,50,0,none,none
+gn:284214,Būrīn,West Bank,2500,village,0,0,50,0,none,none
+gn:284228,Budrus,West Bank,1380,village,0,0,50,0,none,none
+gn:284237,Bīr Zayt,West Bank,6398,village,0,0,50,0,none,none
+gn:284238,Bīr Nabālā,West Bank,4776,village,0,0,50,0,none,none
+gn:284269,Bil‘īn,West Bank,1678,village,0,0,50,0,none,none
+gn:284270,Biddū,West Bank,6180,village,0,0,50,0,none,none
+gn:284271,Bidyā,West Bank,8065,village,0,0,50,0,none,none
+gn:284279,Bet Arye,West Bank,5139,village,0,0,50,0,none,none
+gn:284284,Bazzāryah,West Bank,2091,village,0,0,50,0,none,none
+gn:284291,Bayt Wazan,West Bank,1046,village,0,0,50,0,none,none
+gn:284292,Bayt ‘Ūr at Taḩtā,West Bank,4313,village,0,0,50,0,none,none
+gn:284294,Baytūnyā,West Bank,12822,town,0,0,50,0,none,none
+gn:284295,Bayt Imrīn,West Bank,2794,village,0,0,50,0,none,none
+gn:284297,Bayt Sūrīk,West Bank,3705,village,0,0,50,0,none,none
+gn:284298,Bayt Sīrā,West Bank,2744,village,0,0,50,0,none,none
+gn:284304,Bayt Sāḩūr,West Bank,14921,town,0,0,50,0,none,none
+gn:284308,Bayt Qād,West Bank,1430,village,0,0,50,0,none,none
+gn:284312,Bayt Liqyā,West Bank,7795,village,0,0,50,0,none,none
+gn:284313,Bayt Līd,West Bank,5740,village,0,0,50,0,none,none
+gn:284315,Bethlehem,West Bank,29019,town,0,0,50,0,none,none
+gn:284320,Bayt Kāḩil,West Bank,5663,village,0,0,50,0,none,none
+gn:284324,Bayt Jālā,West Bank,16183,town,0,0,50,0,none,none
+gn:284326,Bayt ‘Anān,West Bank,3946,village,0,0,50,0,none,none
+gn:284328,Baytīn,West Bank,2948,village,0,0,50,0,none,none
+gn:284329,Bayt Ūmmar,West Bank,12238,town,0,0,50,0,none,none
+gn:284330,Al Ittiḩād,West Bank,2978,village,0,0,50,0,none,none
+gn:284331,Bayt Iksā,West Bank,1734,village,0,0,50,0,none,none
+gn:284334,Bayt Ībā,West Bank,3175,village,0,0,50,0,none,none
+gn:284335,Bayt Ḩanīnā,West Bank,27000,town,0,0,50,0,none,none
+gn:284339,Bayt Fūrīk,West Bank,10108,town,0,0,50,0,none,none
+gn:284341,Bayt Fajjār,West Bank,10579,town,0,0,50,0,none,none
+gn:284342,Bayt Duqqū,West Bank,1637,village,0,0,50,0,none,none
+gn:284343,Bayt Dajan,West Bank,3487,village,0,0,50,0,none,none
+gn:284347,Bayt Ūlā,West Bank,9159,village,0,0,50,0,none,none
+gn:284362,Baytā al Fawqā,West Bank,8535,village,0,0,50,0,none,none
+gn:284375,Battir,West Bank,56746,town,0,0,50,0,none,none
+gn:284376,Battīr,West Bank,4092,village,0,0,50,0,none,none
+gn:284405,Barţa‘ah ash Sharqīyah,West Bank,4126,village,0,0,50,0,none,none
+gn:284408,Barqan,West Bank,1833,village,0,0,50,0,none,none
+gn:284415,Bardalah,West Bank,1612,village,0,0,50,0,none,none
+gn:284426,Bāqah ash Sharqīyah,West Bank,4165,village,0,0,50,0,none,none
+gn:284427,Bāqat al Ḩaţab,West Bank,1624,village,0,0,50,0,none,none
+gn:284431,Banī Na‘īm,West Bank,19783,town,0,0,50,0,none,none
+gn:284446,Balāţah,West Bank,17146,town,0,0,50,0,none,none
+gn:284461,Bal‘ā,West Bank,6545,village,0,0,50,0,none,none
+gn:284480,‘Azzūn,West Bank,7727,village,0,0,50,0,none,none
+gn:284485,Az Zāwiyah,West Bank,4917,village,0,0,50,0,none,none
+gn:284486,Az̧ Z̧āhirīyah,West Bank,27616,town,0,0,50,0,none,none
+gn:284487,Az Zabābidah,West Bank,3751,village,0,0,50,0,none,none
+gn:284489,‘Azmūţ,West Bank,2622,village,0,0,50,0,none,none
+gn:284495,‘Ayn Yabrūd,West Bank,2959,village,0,0,50,0,none,none
+gn:284515,‘Ayn ‘Arīk,West Bank,1546,village,0,0,50,0,none,none
+gn:284524,‘Aynabūs,West Bank,2315,village,0,0,50,0,none,none
+gn:284540,Ūşarīn,West Bank,1595,village,0,0,50,0,none,none
+gn:284547,‘Awartā,West Bank,5563,village,0,0,50,0,none,none
+gn:284556,Aţ Ţīrah,West Bank,1340,village,0,0,50,0,none,none
+gn:284557,‘Attīl,West Bank,10100,town,0,0,50,0,none,none
+gn:284558,Aţ Ţaybah,West Bank,2129,village,0,0,50,0,none,none
+gn:284559,Aţ Ţaybah,West Bank,1433,village,0,0,50,0,none,none
+gn:284563,‘Aţārah,West Bank,2240,village,0,0,50,0,none,none
+gn:284572,‘Aţārūt,West Bank,25595,town,0,0,50,0,none,none
+gn:284581,As Sāwiyah,West Bank,2236,village,0,0,50,0,none,none
+gn:284583,As Samū‘,West Bank,19355,town,0,0,50,0,none,none
+gn:284593,‘Aşīrah ash Shamālīyah,West Bank,7475,village,0,0,50,0,none,none
+gn:284594,‘Aşīrah al Qiblīyah,West Bank,2341,village,0,0,50,0,none,none
+gn:284597,Ash Shuyūkh,West Bank,8151,village,0,0,50,0,none,none
+gn:284598,Ash Shuhadā’,West Bank,1727,village,0,0,50,0,none,none
+gn:284868,Arţās,West Bank,3552,village,0,0,50,0,none,none
+gn:284881,Ar Rīḩīyah,West Bank,3369,village,0,0,50,0,none,none
+gn:284888,‘Arrānah,West Bank,1972,village,0,0,50,0,none,none
+gn:284890,Ar Rām wa Ḑāḩiyat al Barīd,West Bank,24838,town,0,0,50,0,none,none
+gn:284893,‘Arrābah,West Bank,9703,village,0,0,50,0,none,none
+gn:284899,Jericho,West Bank,19783,town,0,0,50,0,none,none
+gn:284904,Al ‘Araqa,West Bank,2135,village,0,0,50,0,none,none
+gn:284922,‘Aqrabā,West Bank,7707,village,0,0,50,0,none,none
+gn:284933,‘Anzah,West Bank,1851,village,0,0,50,0,none,none
+gn:284935,An Nuway‘imah,West Bank,1229,village,0,0,50,0,none,none
+gn:284936,An Nazlah ash Sharqīyah,West Bank,1500,village,0,0,50,0,none,none
+gn:284939,An Nāqūrah,West Bank,1528,village,0,0,50,0,none,none
+gn:284962,An Nabī Ilyās,West Bank,1157,village,0,0,50,0,none,none
+gn:284972,‘Anīn,West Bank,3647,village,0,0,50,0,none,none
+gn:284973,‘Anātā,West Bank,11946,town,0,0,50,0,none,none
+gn:284976,‘Anabtā,West Bank,7106,village,0,0,50,0,none,none
+gn:284999,Al Yāmūn,West Bank,16164,town,0,0,50,0,none,none
+gn:285009,Al Qubaybah,West Bank,2008,village,0,0,50,0,none,none
+gn:285023,Al Mughayyir,West Bank,2175,village,0,0,50,0,none,none
+gn:285024,Al Mughayyir,West Bank,2328,village,0,0,50,0,none,none
+gn:285026,‘Almon,West Bank,1378,village,0,0,50,0,none,none
+gn:285032,Al Midyah,West Bank,1284,village,0,0,50,0,none,none
+gn:285033,Al Mazra‘ah ash Sharqīyah,West Bank,4435,village,0,0,50,0,none,none
+gn:285034,Az Zaytūnīyah,West Bank,6107,village,0,0,50,0,none,none
+gn:285049,Al Lubban al Gharbī,West Bank,1456,village,0,0,50,0,none,none
+gn:285061,Al Khaḑir,West Bank,9003,village,0,0,50,0,none,none
+gn:285066,Hebron,West Bank,160470,city,0,0,50,0,none,none
+gn:285069,Al Judayrah,West Bank,2059,village,0,0,50,0,none,none
+gn:285070,Al Jīb,West Bank,4505,village,0,0,50,0,none,none
+gn:285071,Al Jāniyah,West Bank,1147,village,0,0,50,0,none,none
+gn:285091,Al Hāshimīyah,West Bank,1038,village,0,0,50,0,none,none
+gn:285101,Alfei Menasheh,West Bank,8000,village,0,0,50,0,none,none
+gn:285102,Al Faşāyil,West Bank,1064,village,0,0,50,0,none,none
+gn:285103,Al Fandaqūmīyah,West Bank,3266,village,0,0,50,0,none,none
+gn:285108,Al Bīrah,West Bank,38192,town,0,0,50,0,none,none
+gn:285111,Al ‘Ayzarīyah,West Bank,17455,town,0,0,50,0,none,none
+gn:285112,Al ‘Awjā,West Bank,4067,village,0,0,50,0,none,none
+gn:285113,Al ‘Aţţārah,West Bank,1145,village,0,0,50,0,none,none
+gn:285126,‘Ajjūl,West Bank,1220,village,0,0,50,0,none,none
+gn:285127,‘Ajjah,West Bank,4995,village,0,0,50,0,none,none
+gn:285161,‘Ibwayn,West Bank,3077,village,0,0,50,0,none,none
+gn:285220,Abū Qashsh,West Bank,1385,village,0,0,50,0,none,none
+gn:285279,Abū Dīs,West Bank,11753,town,0,0,50,0,none,none
+gn:285285,‘Ābūd,West Bank,2056,village,0,0,50,0,none,none
+gn:6945291,Old City,West Bank,36000,town,0,0,50,0,none,none
+gn:6967857,An Naşr,Gaza Strip,6211,village,0,0,50,0,none,none
+gn:6967863,‘Abasān al Jadīdah,Gaza Strip,5984,village,0,0,50,0,none,none
+gn:6967865,Al Qarārah,Gaza Strip,19500,town,0,0,50,0,none,none
+gn:6967877,Umm an Naşr,Gaza Strip,2763,village,0,0,50,0,none,none
+gn:6967895,Juḩr ad Dīk,Gaza Strip,2880,village,0,0,50,0,none,none
+gn:6967990,Az Zuwāydah,Gaza Strip,16688,town,0,0,50,0,none,none
+gn:6968050,Al Muşaddar,Gaza Strip,1845,village,0,0,50,0,none,none
+gn:6968055,Wādī as Salqā,Gaza Strip,4552,village,0,0,50,0,none,none
+gn:6968063,Al Mughrāqah,Gaza Strip,6448,village,0,0,50,0,none,none
+gn:7303419,East Jerusalem,West Bank,428304,city,0,0,50,0,none,none
+gn:7535657,Karney Shomron,West Bank,0,village,0,0,50,0,none,none
+gn:7870319,Huwara,West Bank,5570,village,0,0,50,0,none,none
+gn:7870523,Shokat as-Sufi,Gaza Strip,15000,town,0,0,50,0,none,none
+gn:7870669,al-Kum,West Bank,2568,village,0,0,50,0,none,none
+gn:7870676,Al Rashaydeh,West Bank,2060,village,0,0,50,0,none,none
+gn:7871005,Azun Atme,West Bank,1746,village,0,0,50,0,none,none
+gn:7889501,Jinşāfūţ,West Bank,2089,village,0,0,50,0,none,none
+gn:7889665,Banī Zayd,West Bank,5441,village,0,0,50,0,none,none
+gn:7890119,Az Za‘ayyim,West Bank,3373,village,0,0,50,0,none,none
+gn:7890300,Wadi al-Joz,West Bank,13000,town,0,0,50,0,none,none
+gn:7890350,Al ‘Ubaydīyah,West Bank,10618,town,0,0,50,0,none,none
+gn:7890353,Khallat an Nu‘mān,West Bank,1397,village,0,0,50,0,none,none
+gn:7890366,Khallat Ḩamāmah,West Bank,1397,village,0,0,50,0,none,none
+gn:7890368,Ad Dawḩah,West Bank,9631,village,0,0,50,0,none,none
+gn:7890385,Wādī Raḩḩāl,West Bank,1401,village,0,0,50,0,none,none
+gn:7890393,‘Arab ar Rashāydah,West Bank,1435,village,0,0,50,0,none,none
+gn:7890813,Bayt ‘Īnūn,West Bank,1782,village,0,0,50,0,none,none
+gn:7890843,Bayt Maqdum,West Bank,2568,village,0,0,50,0,none,none
+gn:7890844,Al Buq‘ah,West Bank,1200,village,0,0,50,0,none,none
+gn:7890846,Khallat ad Dār,West Bank,2153,village,0,0,50,0,none,none
+gn:7890847,Dayr Sāmit,West Bank,6144,village,0,0,50,0,none,none
+gn:7891142,Al Ḩīlah,West Bank,1258,village,0,0,50,0,none,none
+gn:7891144,Aş Şūrrah,West Bank,1896,village,0,0,50,0,none,none
+gn:7891283,Bayt ‘Amrah,West Bank,2133,village,0,0,50,0,none,none
+gn:7891506,Rābūd,West Bank,2228,village,0,0,50,0,none,none
+gn:7891511,Al Karmil,West Bank,3685,village,0,0,50,0,none,none
+gn:7891512,Khallat Şāliḩ,West Bank,1077,village,0,0,50,0,none,none
+gn:7895292,Bīr al Bāshā,West Bank,1291,village,0,0,50,0,none,none
+gn:7895641,Al Bādhān,West Bank,2458,village,0,0,50,0,none,none
+gn:7896869,‘Ayn al Bayḑā,West Bank,1145,village,0,0,50,0,none,none
+gn:7897890,Az Zubaydāt,West Bank,1403,village,0,0,50,0,none,none
+gn:7898046,Al Jiftlik,West Bank,3666,village,0,0,50,0,none,none
+gn:7915400,Khursā,West Bank,3388,village,0,0,50,0,none,none
+gn:8199386,Givat Zeev,West Bank,11764,town,0,0,50,0,none,none
+gn:8199420,Oranit,West Bank,8955,village,0,0,50,0,none,none
+gn:9204036,Nayot,West Bank,2223,village,0,0,50,0,none,none
+gn:11778032,Itamar,West Bank,1238,village,0,0,50,0,none,none
+gn:11979628,Alon shvut,West Bank,3151,village,0,0,50,0,none,none
+gn:11979645,Bruchin,West Bank,1093,village,0,0,50,0,none,none
+gn:11979646,Geva Binyamin,West Bank,5525,village,0,0,50,0,none,none
+gn:11979770,Otniel,West Bank,1037,village,0,0,50,0,none,none
+gn:12156437,Beit El,West Bank,6042,village,0,0,50,0,none,none
+gn:12156577,Ganei Modi'in,West Bank,2488,village,0,0,50,0,none,none

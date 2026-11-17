@@ -1,0 +1,17 @@
+place_id,name,region,population,market,verified_homes,dated_listings,shortfall_to_50,recorded_sales,rent_source,price_source
+gn:3575115,Trinity,Trinity Palmetto Point,1692,village,0,0,50,0,none,none
+gn:3575156,Sandy Point Town,Saint Anne Sandy Point,3140,village,0,0,50,0,none,none
+gn:3575170,Saint Paul’s,Saint Paul Capesterre,2460,village,0,0,50,0,none,none
+gn:3575186,Sadlers,Saint John Capesterre,1205,village,0,0,50,0,none,none
+gn:3575240,Old Road Town,Middle Island,1647,village,0,0,50,0,none,none
+gn:3575251,Nicola Town,Christ Church Nichola Town,2059,village,0,0,50,0,none,none
+gn:3575261,Newcastle,Saint James Windwa,493,village,0,0,50,0,none,none
+gn:3575284,Monkey Hill,Saint Peter Basseterre,592,village,0,0,50,0,none,none
+gn:3575292,Middle Island,Middle Island,2332,village,0,0,50,0,none,none
+gn:3575296,Market Shop,Saint George Gingerland,2568,village,0,0,50,0,none,none
+gn:3575423,Fig Tree,Saint John Figtree,2922,village,0,0,50,0,none,none
+gn:3575441,Dieppe Bay Town,Saint John Capesterre,592,village,0,0,50,0,none,none
+gn:3575458,Cotton Ground,Saint Thomas Lowland,381,village,0,0,50,0,none,none
+gn:3575479,Charlestown,Saint Paul Charlestown,1538,village,0,0,50,0,none,none
+gn:3575487,Cayon,Saint Mary Cayon,788,village,0,0,50,0,none,none
+gn:3575551,Basseterre,Saint George Basseterre,12920,town,0,0,50,0,none,none

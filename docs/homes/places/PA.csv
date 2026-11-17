@@ -1,0 +1,644 @@
+place_id,name,region,population,market,verified_homes,dated_listings,shortfall_to_50,recorded_sales,rent_source,price_source
+gn:3699915,Zapotillo,Veraguas Province,375,village,0,0,50,0,none,none
+gn:3699946,Las Zangüengas,Panamá Oeste Province,0,village,0,0,50,0,none,none
+gn:3699980,Yaviza,Darién,1700,village,0,0,50,0,none,none
+gn:3699984,Yape,Embera,170,village,0,0,50,0,none,none
+gn:3700017,Volcán,Chiriquí Province,10286,town,0,0,50,0,none,none
+gn:3700033,Vista Hermosa,Coclé,3063,village,0,0,50,0,none,none
+gn:3700038,Vista Alegre,Panamá Oeste Province,8673,village,0,0,50,0,none,none
+gn:3700070,Villa Rosario,Panamá Oeste Province,3843,village,0,0,50,0,none,none
+gn:3700080,Villa Carmen,Panamá Oeste Province,1043,village,0,0,50,0,none,none
+gn:3700085,Viguí,Veraguas Province,110,village,0,0,50,0,none,none
+gn:3700103,Viento Frío,Colón,387,village,0,0,50,0,none,none
+gn:3700164,Veracruz,Panamá Oeste Province,17144,town,0,0,50,0,none,none
+gn:3700199,Veladero,Chiriquí Province,885,village,0,0,50,0,none,none
+gn:3700218,Vallerriquito,Los Santos Province,196,village,0,0,50,0,none,none
+gn:3700221,Valle Rico,Los Santos Province,178,village,0,0,50,0,none,none
+gn:3700261,Utirá,Veraguas Province,312,village,0,0,50,0,none,none
+gn:3700269,Ustupo,Guna Yala,2514,village,0,0,50,0,none,none
+gn:3700381,Tucutí,Darién,0,village,0,0,50,0,none,none
+gn:3700393,Tubualá,Guna Yala,1061,village,0,0,50,0,none,none
+gn:3700433,Tres Quebradas,Los Santos Province,715,village,0,0,50,0,none,none
+gn:3700486,Toza,Coclé,253,village,0,0,50,0,none,none
+gn:3700538,Tonosí,Los Santos Province,1478,village,0,0,50,0,none,none
+gn:3700559,Tolé,Chiriquí Province,2794,village,0,0,50,0,none,none
+gn:3700563,Tocumen,Panamá,50844,town,0,0,50,0,none,none
+gn:3700572,Tobobe,Ngöbe-Buglé Comarca,607,village,0,0,50,0,none,none
+gn:3700579,Toabré,Coclé,603,village,0,0,50,0,none,none
+gn:3700609,Tinajas,Chiriquí Province,905,village,0,0,50,0,none,none
+gn:3700620,Tijeras,Chiriquí Province,1148,village,0,0,50,0,none,none
+gn:3700740,Tebario,Veraguas Province,190,village,0,0,50,0,none,none
+gn:3700788,Pueblo Nuevo,Darién,0,village,0,0,50,0,none,none
+gn:3700871,Sortová,Chiriquí Province,1706,village,0,0,50,0,none,none
+gn:3700878,Sorá,Panamá Oeste Province,598,village,0,0,50,0,none,none
+gn:3700888,Soná,Veraguas Province,7669,village,0,0,50,0,none,none
+gn:3700892,Soloy,Ngöbe-Buglé Comarca,0,village,0,0,50,0,none,none
+gn:3700921,Sitio Prado,Ngöbe-Buglé Comarca,248,village,0,0,50,0,none,none
+gn:3700931,Sioguí Arriba,Chiriquí Province,1112,village,0,0,50,0,none,none
+gn:3700933,Sioguí Abajo,Chiriquí Province,2675,village,0,0,50,0,none,none
+gn:3700992,Setegantí,Darién,0,village,0,0,50,0,none,none
+gn:3701058,Sardinilla,Colón,0,village,0,0,50,0,none,none
+gn:3701088,San Vicente de Bique,Panamá Oeste Province,1784,village,0,0,50,0,none,none
+gn:3701090,San Vicente,Panamá,14109,town,0,0,50,0,none,none
+gn:3701093,Santo Tomás,Chiriquí Province,653,village,0,0,50,0,none,none
+gn:3701101,Santo Domingo,Chiriquí Province,1216,village,0,0,50,0,none,none
+gn:3701103,Santo Domingo,Los Santos Province,1772,village,0,0,50,0,none,none
+gn:3701117,Santiago de Veraguas,Veraguas Province,45355,town,0,0,50,0,none,none
+gn:3701131,Santa Rosa Número Uno,Panamá Oeste Province,0,village,0,0,50,0,none,none
+gn:3701132,Santa Rosa,Chiriquí Province,207,village,0,0,50,0,none,none
+gn:3701148,Santa Rita,Panamá Oeste Province,987,village,0,0,50,0,none,none
+gn:3701150,Santa Rita,Coclé,0,village,0,0,50,0,none,none
+gn:3701163,Santa Marta,Chiriquí Province,1952,village,0,0,50,0,none,none
+gn:3701174,Santa María,Herrera Province,1679,village,0,0,50,0,none,none
+gn:3701186,Santa Isabel,Colón,256,village,0,0,50,0,none,none
+gn:3701195,Santa Fé,Darién,1499,village,0,0,50,0,none,none
+gn:3701196,Santa Fe,Veraguas Province,968,village,0,0,50,0,none,none
+gn:3701227,Santa Cruz,Chiriquí Province,274,village,0,0,50,0,none,none
+gn:3701231,Santa Cruz,Chiriquí Province,386,village,0,0,50,0,none,none
+gn:3701239,Santa Clara,Panamá Oeste Province,1410,village,0,0,50,0,none,none
+gn:3701240,Santa Clara,Chiriquí Province,1360,village,0,0,50,0,none,none
+gn:3701256,Santa Catalina,Ngöbe-Buglé Comarca,0,village,0,0,50,0,none,none
+gn:3701264,Santa Ana Arriba,Los Santos Province,1025,village,0,0,50,0,none,none
+gn:3701290,San Pedro del Espino,Veraguas Province,554,village,0,0,50,0,none,none
+gn:3701313,San Pablo Viejo Abajo,Chiriquí Province,5992,village,0,0,50,0,none,none
+gn:3701317,San Pablo Nuevo,Chiriquí Province,435,village,0,0,50,0,none,none
+gn:3701329,San Miguelito,Panamá,321501,city,0,0,50,0,none,none
+gn:3701345,San Miguel,Panamá,967,village,0,0,50,0,none,none
+gn:3701356,San Marcelo,Veraguas Province,66,village,0,0,50,0,none,none
+gn:3701371,San Lorenzo,Chiriquí Province,1025,village,0,0,50,0,none,none
+gn:3701424,San Juan,Veraguas Province,193,village,0,0,50,0,none,none
+gn:3701426,San Juan,Chiriquí Province,0,village,0,0,50,0,none,none
+gn:3701449,San José,Panamá Oeste Province,3982,village,0,0,50,0,none,none
+gn:3701451,San José,Panamá Oeste Province,1444,village,0,0,50,0,none,none
+gn:3701454,San José,Veraguas Province,84,village,0,0,50,0,none,none
+gn:3701455,San José,Veraguas Province,0,village,0,0,50,0,none,none
+gn:3701459,San José,Los Santos Province,523,village,0,0,50,0,none,none
+gn:3701466,San Ignacio de Tupile,Guna Yala,1429,village,0,0,50,0,none,none
+gn:3701469,San Francisco,Panamá,0,village,0,0,50,0,none,none
+gn:3701483,San Francisco,Veraguas Province,1785,village,0,0,50,0,none,none
+gn:3701484,San Francisco,Veraguas Province,1898,village,0,0,50,0,none,none
+gn:3701491,San Félix,Chiriquí Province,1051,village,0,0,50,0,none,none
+gn:3701493,San Felipe,Panamá,3262,village,0,0,50,0,none,none
+gn:3701526,San Carlos,Chiriquí Province,392,village,0,0,50,0,none,none
+gn:3701527,San Carlos,Panamá Oeste Province,857,village,0,0,50,0,none,none
+gn:3701544,San Bartolo,Veraguas Province,158,village,0,0,50,0,none,none
+gn:3701565,San Antonio,Veraguas Province,0,village,0,0,50,0,none,none
+gn:3701578,San Andrés,Chiriquí Province,1152,village,0,0,50,0,none,none
+gn:3701603,Salud,Colón,0,village,0,0,50,0,none,none
+gn:3701682,Sabanitas,Colón,15577,town,0,0,50,0,none,none
+gn:3701703,Sabana Grande,Herrera Province,574,village,0,0,50,0,none,none
+gn:3701704,Sabana Grande,Los Santos Province,521,village,0,0,50,0,none,none
+gn:3701727,Rovira Arriba,Chiriquí Province,403,village,0,0,50,0,none,none
+gn:3701766,Rodeo Viejo,Veraguas Province,140,village,0,0,50,0,none,none
+gn:3701784,Valle de Riscó,Bocas del Toro Province,1171,village,0,0,50,0,none,none
+gn:3701810,Río Sereno,Chiriquí Province,1368,village,0,0,50,0,none,none
+gn:3701816,Río Rita,Colón,1222,village,0,0,50,0,none,none
+gn:3701856,Río Hondo,Los Santos Province,76,village,0,0,50,0,none,none
+gn:3701861,Río Hato,Coclé,5615,village,0,0,50,0,none,none
+gn:3701867,Río Grande,Ngöbe-Buglé Comarca,0,village,0,0,50,0,none,none
+gn:3701868,Río Grande,Coclé,1070,village,0,0,50,0,none,none
+gn:3701869,Río Grande,Veraguas Province,71,village,0,0,50,0,none,none
+gn:3701870,Gatún,Colón,1553,village,0,0,50,0,none,none
+gn:3701874,Río Duque,Colón,1374,village,0,0,50,0,none,none
+gn:3701882,Río de Jesús,Veraguas Province,1060,village,0,0,50,0,none,none
+gn:3701889,Río Congo,Panamá Oeste Province,898,village,0,0,50,0,none,none
+gn:3701914,Río Alejandro,Colón,3084,village,0,0,50,0,none,none
+gn:3701917,Río Abajo,Panamá,26607,town,0,0,50,0,none,none
+gn:3701934,Rincón Hondo,Herrera Province,359,village,0,0,50,0,none,none
+gn:3701951,Rincón,Chiriquí Province,692,village,0,0,50,0,none,none
+gn:3701994,Remedios,Chiriquí Province,829,village,0,0,50,0,none,none
+gn:3702057,Arco Iris,Colón,0,village,0,0,50,0,none,none
+gn:3702098,Querévalo,Chiriquí Province,882,village,0,0,50,0,none,none
+gn:3702232,Quebrada de Piedra,Chiriquí Province,455,village,0,0,50,0,none,none
+gn:3702238,Quebrada de Oro,Veraguas Province,73,village,0,0,50,0,none,none
+gn:3702240,Quebrada del Rosario Arriba,Herrera Province,0,village,0,0,50,0,none,none
+gn:3702245,Quebrada de Loro,Ngöbe-Buglé Comarca,0,village,0,0,50,0,none,none
+gn:3702269,Canoa,Ngöbe-Buglé Comarca,3061,village,0,0,50,0,none,none
+gn:3702276,Quebrada Bonita Adentro,Colón,2229,village,0,0,50,0,none,none
+gn:3702313,Punta Róbalo,Bocas del Toro Province,149,village,0,0,50,0,none,none
+gn:3702321,Punta Laurel,Bocas del Toro Province,69,village,0,0,50,0,none,none
+gn:3702332,Punta Peña,Bocas del Toro Province,1187,village,0,0,50,0,none,none
+gn:3702342,Burica,Chiriquí Province,1360,village,0,0,50,0,none,none
+gn:3702371,Puerto Vidal,Veraguas Province,506,village,0,0,50,0,none,none
+gn:3702384,Puerto Pilón,Colón,8754,village,0,0,50,0,none,none
+gn:3702390,Puerto Obaldía,Guna Yala,533,village,0,0,50,0,none,none
+gn:3702412,Puerto Escondido,Colón,12371,town,0,0,50,0,none,none
+gn:3702427,Puerto Caimito,Panamá Oeste Province,4174,village,0,0,50,0,none,none
+gn:3702431,Puerto Armuelles,Chiriquí Province,11743,town,0,0,50,0,none,none
+gn:3702448,Pueblo Viejo,Chiriquí Province,1042,village,0,0,50,0,none,none
+gn:3702498,Púcuro,Darién,355,village,0,0,50,0,none,none
+gn:3702509,Progreso,Chiriquí Province,2211,village,0,0,50,0,none,none
+gn:3702534,Potuga,Herrera Province,795,village,0,0,50,0,none,none
+gn:3702538,Potrero Grande,Panamá Oeste Province,4044,village,0,0,50,0,none,none
+gn:3702542,Potrero de Caña,Ngöbe-Buglé Comarca,0,village,0,0,50,0,none,none
+gn:3702548,Potrerillos Arriba,Chiriquí Province,1074,village,0,0,50,0,none,none
+gn:3702550,Potrerillos Abajo,Chiriquí Province,1182,village,0,0,50,0,none,none
+gn:3702577,Portobelo,Colón,1393,village,0,0,50,0,none,none
+gn:3702579,Portobelillo,Herrera Province,497,village,0,0,50,0,none,none
+gn:3702601,Ponuga,Veraguas Province,509,village,0,0,50,0,none,none
+gn:3702631,Pocrí,Coclé,12304,town,0,0,50,0,none,none
+gn:3702632,Pocrí,Los Santos Province,494,village,0,0,50,0,none,none
+gn:3702637,Plaza de Caisán,Chiriquí Province,1363,village,0,0,50,0,none,none
+gn:3702647,Playón Chico,Guna Yala,2042,village,0,0,50,0,none,none
+gn:3702661,Playa Leona,Panamá Oeste Province,556,village,0,0,50,0,none,none
+gn:3702688,Playa Chiquita,Colón,105,village,0,0,50,0,none,none
+gn:3702748,Plan de Chorcha,Ngöbe-Buglé Comarca,490,village,0,0,50,0,none,none
+gn:3702818,Pinogana,Darién,0,village,0,0,50,0,none,none
+gn:3702882,Piedras Gordas,Coclé,510,village,0,0,50,0,none,none
+gn:3702883,Piedras Gordas,Veraguas Province,94,village,0,0,50,0,none,none
+gn:3702901,Piedra Roja,Ngöbe-Buglé Comarca,0,village,0,0,50,0,none,none
+gn:3703011,Pesé,Herrera Province,2565,village,0,0,50,0,none,none
+gn:3703059,Perales,Los Santos Province,230,village,0,0,50,0,none,none
+gn:3703068,Penonomé,Coclé,16250,town,0,0,50,0,none,none
+gn:3703093,Peñas Chatas,Herrera Province,358,village,0,0,50,0,none,none
+gn:3703125,Peña Blanca,Ngöbe-Buglé Comarca,0,village,0,0,50,0,none,none
+gn:3703126,Peña Blanca,Los Santos Province,804,village,0,0,50,0,none,none
+gn:3703227,Pedregal,Panamá,51641,town,0,0,50,0,none,none
+gn:3703229,Pedregal,Chiriquí Province,17427,town,0,0,50,0,none,none
+gn:3703239,Pedasí,Los Santos Province,1920,village,0,0,50,0,none,none
+gn:3703250,Paya,Darién,0,village,0,0,50,0,none,none
+gn:3703346,Parque Lefevre,Panamá,36997,town,0,0,50,0,none,none
+gn:3703349,Paritilla,Los Santos Province,608,village,0,0,50,0,none,none
+gn:3703354,Parita,Herrera Province,2864,village,0,0,50,0,none,none
+gn:3703358,París,Herrera Province,894,village,0,0,50,0,none,none
+gn:3703374,Paraíso,Chiriquí Province,242,village,0,0,50,0,none,none
+gn:3703375,Paraíso,Los Santos Province,234,village,0,0,50,0,none,none
+gn:3703443,Panama City,Panamá,408168,city,0,0,50,0,none,none
+gn:3703478,Palo Grande,Chiriquí Province,0,village,0,0,50,0,none,none
+gn:3703497,Palmira Centro,Chiriquí Province,920,village,0,0,50,0,none,none
+gn:3703503,Palmira,Colón,254,village,0,0,50,0,none,none
+gn:3703505,Palmira,Chiriquí Province,1144,village,0,0,50,0,none,none
+gn:3703507,Palmira,Los Santos Province,93,village,0,0,50,0,none,none
+gn:3703523,Palmas Bellas,Colón,1337,village,0,0,50,0,none,none
+gn:3703573,Palenque,Colón,355,village,0,0,50,0,none,none
+gn:3703616,Paja de Sombrero,Chiriquí Province,157,village,0,0,50,0,none,none
+gn:3703647,Pacora,Panamá,6856,village,0,0,50,0,none,none
+gn:3703745,Olá,Coclé,384,village,0,0,50,0,none,none
+gn:3703786,Ocú,Herrera Province,3939,village,0,0,50,0,none,none
+gn:3703818,Nuevo Vigía,Colón,2163,village,0,0,50,0,none,none
+gn:3703820,Nuevo San Juan,Colón,1494,village,0,0,50,0,none,none
+gn:3703828,Nuevo Emperador,Panamá Oeste Province,2003,village,0,0,50,0,none,none
+gn:3703831,Nuevo Chagres,Colón,410,village,0,0,50,0,none,none
+gn:3703833,Nuevo Arraiján,Panamá Oeste Province,14920,town,0,0,50,0,none,none
+gn:3703837,Nueva Providencia,Colón,0,village,0,0,50,0,none,none
+gn:3703839,Nueva Gorgona,Panamá Oeste Province,3530,village,0,0,50,0,none,none
+gn:3703843,Nueva Arenosa,Panamá Oeste Province,283,village,0,0,50,0,none,none
+gn:3703847,Nuestro Amo,Coclé,235,village,0,0,50,0,none,none
+gn:3703854,Nuario,Los Santos Province,92,village,0,0,50,0,none,none
+gn:3703876,Nombre de Dios,Colón,872,village,0,0,50,0,none,none
+gn:3703938,Natá,Coclé,5470,village,0,0,50,0,none,none
+gn:3703946,Narganá,Guna Yala,1090,village,0,0,50,0,none,none
+gn:3704029,Mulatupo,Guna Yala,1303,village,0,0,50,0,none,none
+gn:3704073,Mortí,Darién,567,village,0,0,50,0,none,none
+gn:3704123,Montijo,Veraguas Province,1932,village,0,0,50,0,none,none
+gn:3704138,Monte Lirio,Chiriquí Province,715,village,0,0,50,0,none,none
+gn:3704154,La Montañuela,Veraguas Province,251,village,0,0,50,0,none,none
+gn:3704174,Monjarás,Veraguas Province,146,village,0,0,50,0,none,none
+gn:3704187,Monagrillo,Herrera Province,10821,town,0,0,50,0,none,none
+gn:3704231,Mogollón,Los Santos Province,79,village,0,0,50,0,none,none
+gn:3704255,Miramar,Colón,154,village,0,0,50,0,none,none
+gn:3704256,Miramar,Bocas del Toro Province,346,village,0,0,50,0,none,none
+gn:3704308,Miguel de La Borda,Colón,0,village,0,0,50,0,none,none
+gn:3704327,Metetí,Darién,2298,village,0,0,50,0,none,none
+gn:3704348,Mendoza,Panamá Oeste Province,729,village,0,0,50,0,none,none
+gn:3704460,Mata del Nance,Chiriquí Province,1051,village,0,0,50,0,none,none
+gn:3704547,María Chiquita,Colón,1146,village,0,0,50,0,none,none
+gn:3704550,Mariabé,Los Santos Province,0,village,0,0,50,0,none,none
+gn:3704571,Margarita,Colón,3302,village,0,0,50,0,none,none
+gn:3704612,Maraca,Ngöbe-Buglé Comarca,0,village,0,0,50,0,none,none
+gn:3704874,Macaracas,Los Santos Province,2224,village,0,0,50,0,none,none
+gn:3704929,Los Valles,Veraguas Province,0,village,0,0,50,0,none,none
+gn:3704964,Los Santos,Los Santos Province,5970,village,0,0,50,0,none,none
+gn:3705024,Los Pozos,Herrera Province,508,village,0,0,50,0,none,none
+gn:3705131,Los Olivos,Los Santos Province,618,village,0,0,50,0,none,none
+gn:3705156,Los Naranjos,Chiriquí Province,452,village,0,0,50,0,none,none
+gn:3705229,Los Lotes,Panamá,1323,village,0,0,50,0,none,none
+gn:3705238,Los Llanitos,Panamá Oeste Province,146,village,0,0,50,0,none,none
+gn:3705280,Los Higos,Veraguas Province,127,village,0,0,50,0,none,none
+gn:3705371,Los Corotúes,Veraguas Province,0,village,0,0,50,0,none,none
+gn:3705403,Los Cerros de Paja,Herrera Province,61,village,0,0,50,0,none,none
+gn:3705417,Los Cerritos,Herrera Province,531,village,0,0,50,0,none,none
+gn:3705445,Los Castillos,Veraguas Province,510,village,0,0,50,0,none,none
+gn:3705446,Los Castillos,Herrera Province,400,village,0,0,50,0,none,none
+gn:3705464,Los Canelos,Herrera Province,965,village,0,0,50,0,none,none
+gn:3705533,Los Asientos,Los Santos Province,430,village,0,0,50,0,none,none
+gn:3705542,Los Ángeles,Chiriquí Province,250,village,0,0,50,0,none,none
+gn:3705544,Los Ángeles,Los Santos Province,342,village,0,0,50,0,none,none
+gn:3705549,Los Anastacios,Chiriquí Province,1110,village,0,0,50,0,none,none
+gn:3705562,Los Algarrobos,Chiriquí Province,4160,village,0,0,50,0,none,none
+gn:3705563,Los Algarrobos,Veraguas Province,1977,village,0,0,50,0,none,none
+gn:3705666,Lolá,Veraguas Province,364,village,0,0,50,0,none,none
+gn:3705678,Llano Tugrí,Ngöbe-Buglé Comarca,0,village,0,0,50,0,none,none
+gn:3705688,Llano Ñopo,Ngöbe-Buglé Comarca,289,village,0,0,50,0,none,none
+gn:3705691,Llano Marín,Coclé,1757,village,0,0,50,0,none,none
+gn:3705702,Llano Largo,Panamá Oeste Province,1295,village,0,0,50,0,none,none
+gn:3705710,Llano Largo,Los Santos Province,1013,village,0,0,50,0,none,none
+gn:3705720,Llano Grande,Coclé,438,village,0,0,50,0,none,none
+gn:3705725,Llano Grande,Coclé,0,village,0,0,50,0,none,none
+gn:3705735,Llano Grande,Veraguas Province,328,village,0,0,50,0,none,none
+gn:3705737,Llano Grande,Herrera Province,203,village,0,0,50,0,none,none
+gn:3705743,Llano de Piedra,Los Santos Province,1054,village,0,0,50,0,none,none
+gn:3705768,Llano de La Cruz,Herrera Province,188,village,0,0,50,0,none,none
+gn:3705779,Llano Bonito,Herrera Province,9716,village,0,0,50,0,none,none
+gn:3705800,Llano Abajo,Los Santos Province,304,village,0,0,50,0,none,none
+gn:3705836,Limones,Chiriquí Province,315,village,0,0,50,0,none,none
+gn:3705840,Limón de Tijeras,Herrera Province,56,village,0,0,50,0,none,none
+gn:3705894,Lídice,Panamá,4245,village,0,0,50,0,none,none
+gn:3705906,Leones Arriba,Herrera Province,71,village,0,0,50,0,none,none
+gn:3705907,Leones Arriba,Veraguas Province,69,village,0,0,50,0,none,none
+gn:3705969,La Yeguada,Veraguas Province,122,village,0,0,50,0,none,none
+gn:3706043,La Tronosa,Los Santos Province,79,village,0,0,50,0,none,none
+gn:3706052,La Trinidad,Herrera Province,123,village,0,0,50,0,none,none
+gn:3706091,La Tiza,Los Santos Province,1150,village,0,0,50,0,none,none
+gn:3706155,Las Uvas,Panamá Oeste Province,482,village,0,0,50,0,none,none
+gn:3706185,Las Trancas,Los Santos Province,153,village,0,0,50,0,none,none
+gn:3706208,Las Tablas,Los Santos Province,8939,village,0,0,50,0,none,none
+gn:3706214,Las Sabanas,Coclé,88,village,0,0,50,0,none,none
+gn:3706278,Las Palmitas,Los Santos Province,821,village,0,0,50,0,none,none
+gn:3706292,Las Palmas,Veraguas Province,1291,village,0,0,50,0,none,none
+gn:3706294,Las Palmas,Los Santos Province,13,village,0,0,50,0,none,none
+gn:3706305,Las Ollas Arriba,Panamá Oeste Province,0,village,0,0,50,0,none,none
+gn:3706313,La Soledad,Veraguas Province,0,village,0,0,50,0,none,none
+gn:3706346,Las Minas,Coclé,548,village,0,0,50,0,none,none
+gn:3706347,Las Minas,Herrera Province,889,village,0,0,50,0,none,none
+gn:3706386,Las Marias,Coclé,71,village,0,0,50,0,none,none
+gn:3706396,Las Margaritas,Panamá,4165,village,0,0,50,0,none,none
+gn:3706410,Las Lomas,Chiriquí Province,11726,town,0,0,50,0,none,none
+gn:3706431,Lajas de Tolé,Chiriquí Province,235,village,0,0,50,0,none,none
+gn:3706455,Las Lajas,Panamá Oeste Province,3291,village,0,0,50,0,none,none
+gn:3706459,Las Lajas,Chiriquí Province,1012,village,0,0,50,0,none,none
+gn:3706482,Las Huacas del Quije,Coclé,451,village,0,0,50,0,none,none
+gn:3706493,Las Huacas,Veraguas Province,180,village,0,0,50,0,none,none
+gn:3706520,Las Guabas,Herrera Province,165,village,0,0,50,0,none,none
+gn:3706521,Las Guabas,Los Santos Province,192,village,0,0,50,0,none,none
+gn:3706567,Las Cumbres,Panamá,69102,town,0,0,50,0,none,none
+gn:3706575,Altos de San Francisco,Panamá Oeste Province,8189,village,0,0,50,0,none,none
+gn:3706584,Las Cruces,Los Santos Province,823,village,0,0,50,0,none,none
+gn:3706590,Las Colinas,Panamá Oeste Province,1447,village,0,0,50,0,none,none
+gn:3706614,Las Cabras,Herrera Province,0,village,0,0,50,0,none,none
+gn:3706724,La Raya de Santa María,Veraguas Province,757,village,0,0,50,0,none,none
+gn:3706727,La Raya de Calobre,Veraguas Province,233,village,0,0,50,0,none,none
+gn:3706765,Gobernadora,Veraguas Province,0,village,0,0,50,0,none,none
+gn:3706845,Pitaloza Arriba,Herrera Province,188,village,0,0,50,0,none,none
+gn:3706931,La Pintada,Coclé,1917,village,0,0,50,0,none,none
+gn:3706974,La Peña,Veraguas Province,2223,village,0,0,50,0,none,none
+gn:3707006,La Pasera,Los Santos Province,563,village,0,0,50,0,none,none
+gn:3707058,La Palma,Darién,1728,village,0,0,50,0,none,none
+gn:3707063,La Palma,Los Santos Province,1283,village,0,0,50,0,none,none
+gn:3707064,La Palma,Los Santos Province,1144,village,0,0,50,0,none,none
+gn:3707150,La Mitra,Panamá Oeste Province,5699,village,0,0,50,0,none,none
+gn:3707198,La Miel,Los Santos Province,102,village,0,0,50,0,none,none
+gn:3707220,La Mesa,Panamá,1448,village,0,0,50,0,none,none
+gn:3707227,La Mesa,Veraguas Province,2090,village,0,0,50,0,none,none
+gn:3707228,La Mesa,Los Santos Province,392,village,0,0,50,0,none,none
+gn:3707311,La Loma,Coclé,1542,village,0,0,50,0,none,none
+gn:3707318,Quebro,Veraguas Province,111,village,0,0,50,0,none,none
+gn:3707380,La Laja,Los Santos Province,383,village,0,0,50,0,none,none
+gn:3707392,La Laguna,Panamá Oeste Province,312,village,0,0,50,0,none,none
+gn:3707393,La Laguna,Panamá Oeste Province,253,village,0,0,50,0,none,none
+gn:3707398,La Laguna,Veraguas Province,52,village,0,0,50,0,none,none
+gn:3707461,Lajas Adentro,Chiriquí Province,342,village,0,0,50,0,none,none
+gn:3707467,Lajamina,Los Santos Province,330,village,0,0,50,0,none,none
+gn:3707568,La Herradura,Panamá Oeste Province,6271,village,0,0,50,0,none,none
+gn:3707590,La Guinea,Panamá,83,village,0,0,50,0,none,none
+gn:3707659,Lagarterita,Panamá Oeste Province,0,village,0,0,50,0,none,none
+gn:3707674,La Garceana,Veraguas Province,85,village,0,0,50,0,none,none
+gn:3707736,La Estrella,Chiriquí Province,885,village,0,0,50,0,none,none
+gn:3707752,La Espigadilla,Los Santos Province,1172,village,0,0,50,0,none,none
+gn:3707758,La Esperanza,Chiriquí Province,1890,village,0,0,50,0,none,none
+gn:3707762,La Esmeralda,Panamá,524,village,0,0,50,0,none,none
+gn:3707770,La Ermita,Panamá Oeste Province,426,village,0,0,50,0,none,none
+gn:3707778,La Ensenada,Panamá,94,village,0,0,50,0,none,none
+gn:3707784,La Enea,Los Santos Province,1105,village,0,0,50,0,none,none
+gn:3707794,La Encantada,Colón,0,village,0,0,50,0,none,none
+gn:3707899,La Concepción,Chiriquí Province,17698,town,0,0,50,0,none,none
+gn:3707921,La Colorada,Veraguas Province,1214,village,0,0,50,0,none,none
+gn:3707924,La Colorada,Los Santos Province,158,village,0,0,50,0,none,none
+gn:3707961,La Chorrera,Panamá Oeste Province,61232,town,0,0,50,0,none,none
+gn:3707999,La Carrillo,Veraguas Province,0,village,0,0,50,0,none,none
+gn:3708062,La Cabuya,Herrera Province,0,village,0,0,50,0,none,none
+gn:3708066,La Cabima,Panamá,17975,town,0,0,50,0,none,none
+gn:3708107,La Boca del Guásimo,Colón,0,village,0,0,50,0,none,none
+gn:3708171,La Arena,Herrera Province,7175,village,0,0,50,0,none,none
+gn:3708175,La Arena,Herrera Province,194,village,0,0,50,0,none,none
+gn:3708267,Juay,Chiriquí Province,0,village,0,0,50,0,none,none
+gn:3708306,Juan Díaz,Panamá,100636,city,0,0,50,0,none,none
+gn:3708307,Juan Díaz,Coclé,1935,village,0,0,50,0,none,none
+gn:3708425,Jaramillo Arriba,Chiriquí Province,0,village,0,0,50,0,none,none
+gn:3708432,Jaqué,Darién,1466,village,0,0,50,0,none,none
+gn:3708616,Horconcitos,Chiriquí Province,877,village,0,0,50,0,none,none
+gn:3708728,Hato Pilón,Ngöbe-Buglé Comarca,0,village,0,0,50,0,none,none
+gn:3708731,Hato Montaña,Panamá Oeste Province,1239,village,0,0,50,0,none,none
+gn:3708735,Hato Julí,Ngöbe-Buglé Comarca,0,village,0,0,50,0,none,none
+gn:3708737,Hato Jobo,Ngöbe-Buglé Comarca,0,village,0,0,50,0,none,none
+gn:3708742,Hato Culantro,Ngöbe-Buglé Comarca,0,village,0,0,50,0,none,none
+gn:3708745,Hato Corotú,Ngöbe-Buglé Comarca,303,village,0,0,50,0,none,none
+gn:3708747,Hato Chamí,Ngöbe-Buglé Comarca,641,village,0,0,50,0,none,none
+gn:3708772,Guzmán,Coclé,228,village,0,0,50,0,none,none
+gn:3708796,Las Guías Abajo,Veraguas Province,416,village,0,0,50,0,none,none
+gn:3708844,Guayabito,Panamá Oeste Province,89,village,0,0,50,0,none,none
+gn:3708853,Guayabal,Chiriquí Province,220,village,0,0,50,0,none,none
+gn:3708892,Guarumal,Chiriquí Province,1575,village,0,0,50,0,none,none
+gn:3708894,Guarumal,Veraguas Province,477,village,0,0,50,0,none,none
+gn:3708904,Guararé Arriba,Los Santos Province,350,village,0,0,50,0,none,none
+gn:3708911,Guararé,Los Santos Province,3243,village,0,0,50,0,none,none
+gn:3708948,Gualaca,Chiriquí Province,3453,village,0,0,50,0,none,none
+gn:3708954,Guadalupe,Panamá Oeste Province,6561,village,0,0,50,0,none,none
+gn:3708974,Guacá Arriba,Chiriquí Province,834,village,0,0,50,0,none,none
+gn:3708989,Guabito,Bocas del Toro Province,1978,village,0,0,50,0,none,none
+gn:3709011,Guabal,Chiriquí Province,147,village,0,0,50,0,none,none
+gn:3709218,Gonzalo Vásquez,Panamá,0,village,0,0,50,0,none,none
+gn:3709228,Gómez,Chiriquí Province,1257,village,0,0,50,0,none,none
+gn:3709242,Gobea,Colón,0,village,0,0,50,0,none,none
+gn:3709285,Gatuncillo,Colón,4605,village,0,0,50,0,none,none
+gn:3709296,Gatú,Veraguas Province,0,village,0,0,50,0,none,none
+gn:3709332,Puerto Lindo,Colón,0,village,0,0,50,0,none,none
+gn:3709361,Garachiné,Darién,1188,village,0,0,50,0,none,none
+gn:3709509,Flores,Los Santos Province,440,village,0,0,50,0,none,none
+gn:3709569,Finca Blanco,Chiriquí Province,1063,village,0,0,50,0,none,none
+gn:3709703,Espavé,Panamá Oeste Province,1236,village,0,0,50,0,none,none
+gn:3709742,Escobal,Colón,1790,village,0,0,50,0,none,none
+gn:3709823,El Valle de La Unión,Colón,1081,village,0,0,50,0,none,none
+gn:3709830,El Uvito,Veraguas Province,1037,village,0,0,50,0,none,none
+gn:3709853,El Toro,Herrera Province,176,village,0,0,50,0,none,none
+gn:3709902,El Tejar,Chiriquí Province,267,village,0,0,50,0,none,none
+gn:3709939,El Silencio,Bocas del Toro Province,2017,village,0,0,50,0,none,none
+gn:3709945,El Sesteadero,Los Santos Province,771,village,0,0,50,0,none,none
+gn:3710026,El Roble,Coclé,1648,village,0,0,50,0,none,none
+gn:3710038,El Rincón,Veraguas Province,300,village,0,0,50,0,none,none
+gn:3710040,El Rincón,Herrera Province,1341,village,0,0,50,0,none,none
+gn:3710045,El Retiro,Coclé,450,village,0,0,50,0,none,none
+gn:3710066,El Quiteño,Chiriquí Province,1324,village,0,0,50,0,none,none
+gn:3710087,El Progreso,Panamá,4292,village,0,0,50,0,none,none
+gn:3710089,El Prado,Veraguas Province,0,village,0,0,50,0,none,none
+gn:3710107,El Potrero,Coclé,550,village,0,0,50,0,none,none
+gn:3710108,El Potrero,Veraguas Province,168,village,0,0,50,0,none,none
+gn:3710114,El Porvenir,Guna Yala,10,village,0,0,50,0,none,none
+gn:3710152,El Piro,Ngöbe-Buglé Comarca,0,village,0,0,50,0,none,none
+gn:3710171,Pilón,Veraguas Province,0,village,0,0,50,0,none,none
+gn:3710177,El Picador,Veraguas Province,163,village,0,0,50,0,none,none
+gn:3710211,El Peñón,Veraguas Province,254,village,0,0,50,0,none,none
+gn:3710225,El Pedregoso,Herrera Province,452,village,0,0,50,0,none,none
+gn:3710226,El Pedregoso,Los Santos Province,279,village,0,0,50,0,none,none
+gn:3710277,El Pantano,Veraguas Province,92,village,0,0,50,0,none,none
+gn:3710304,El Pájaro,Veraguas Province,112,village,0,0,50,0,none,none
+gn:3710305,El Pájaro,Herrera Province,0,village,0,0,50,0,none,none
+gn:3710367,El Nancito,Chiriquí Province,288,village,0,0,50,0,none,none
+gn:3710377,El Muñoz,Los Santos Province,161,village,0,0,50,0,none,none
+gn:3710417,El María,Veraguas Province,87,village,0,0,50,0,none,none
+gn:3710424,El Marañón,Veraguas Province,205,village,0,0,50,0,none,none
+gn:3710439,El Manantial,Los Santos Province,363,village,0,0,50,0,none,none
+gn:3710470,Salto Dupí,Ngöbe-Buglé Comarca,0,village,0,0,50,0,none,none
+gn:3710481,El Macano,Los Santos Province,34,village,0,0,50,0,none,none
+gn:3710534,El Limón,Herrera Province,0,village,0,0,50,0,none,none
+gn:3710540,Líbano,Panamá Oeste Province,183,village,0,0,50,0,none,none
+gn:3710668,El Higo,Panamá Oeste Province,566,village,0,0,50,0,none,none
+gn:3710694,El Hato,Los Santos Province,204,village,0,0,50,0,none,none
+gn:3710761,El Guásimo,Los Santos Province,179,village,0,0,50,0,none,none
+gn:3710785,El Guabo,Colón,359,village,0,0,50,0,none,none
+gn:3710808,El Giral,Colón,1522,village,0,0,50,0,none,none
+gn:3710855,Farallón,Coclé,1967,village,0,0,50,0,none,none
+gn:3710864,El Espino de Santa Rosa,Veraguas Province,1113,village,0,0,50,0,none,none
+gn:3710867,El Espino Amarillo,Los Santos Province,0,village,0,0,50,0,none,none
+gn:3710875,El Espino,Panamá Oeste Province,2422,village,0,0,50,0,none,none
+gn:3710877,El Espino,Panamá Oeste Province,0,village,0,0,50,0,none,none
+gn:3710887,El Espinal,Los Santos Province,0,village,0,0,50,0,none,none
+gn:3710910,Entradero,Coclé,1049,village,0,0,50,0,none,none
+gn:3710920,El Empalme,Bocas del Toro Province,11035,town,0,0,50,0,none,none
+gn:3710923,El Ejido,Los Santos Province,1120,village,0,0,50,0,none,none
+gn:3710961,El Cristo,Coclé,989,village,0,0,50,0,none,none
+gn:3710978,El Cortezo,Coclé,1157,village,0,0,50,0,none,none
+gn:3710981,El Cortezo,Los Santos Province,239,village,0,0,50,0,none,none
+gn:3711009,El Copé,Coclé,1176,village,0,0,50,0,none,none
+gn:3711011,El Copé,Coclé,190,village,0,0,50,0,none,none
+gn:3711056,El Coco,Panamá Oeste Province,11935,town,0,0,50,0,none,none
+gn:3711059,El Coco,Coclé,1017,village,0,0,50,0,none,none
+gn:3711068,El Cocla,Veraguas Province,32,village,0,0,50,0,none,none
+gn:3711073,El Cocal,Los Santos Province,926,village,0,0,50,0,none,none
+gn:3711125,El Chorrillo,Panamá,18302,town,0,0,50,0,none,none
+gn:3711133,El Chirú,Coclé,531,village,0,0,50,0,none,none
+gn:3711182,El Cedro,Herrera Province,170,village,0,0,50,0,none,none
+gn:3711211,El Carate,Los Santos Province,345,village,0,0,50,0,none,none
+gn:3711223,El Capurí,Herrera Province,124,village,0,0,50,0,none,none
+gn:3711240,El Caño,Coclé,1129,village,0,0,50,0,none,none
+gn:3711249,El Cañafístulo,Los Santos Province,141,village,0,0,50,0,none,none
+gn:3711272,El Calabacito,Herrera Province,134,village,0,0,50,0,none,none
+gn:3711302,Cacao,Panamá Oeste Province,636,village,0,0,50,0,none,none
+gn:3711308,El Cacao,Los Santos Province,261,village,0,0,50,0,none,none
+gn:3711371,El Bebedero,Los Santos Province,0,village,0,0,50,0,none,none
+gn:3711381,El Barrito,Veraguas Province,212,village,0,0,50,0,none,none
+gn:3711416,El Barrero,Herrera Province,0,village,0,0,50,0,none,none
+gn:3711438,Cerro Banco,Ngöbe-Buglé Comarca,487,village,0,0,50,0,none,none
+gn:3711454,El Bale,Ngöbe-Buglé Comarca,0,village,0,0,50,0,none,none
+gn:3711514,El Alto,Veraguas Province,85,village,0,0,50,0,none,none
+gn:3711572,Dos Ríos,Chiriquí Province,0,village,0,0,50,0,none,none
+gn:3711618,Dolega District,Chiriquí Province,1653,village,0,0,50,0,none,none
+gn:3711631,Divalá,Chiriquí Province,2506,village,0,0,50,0,none,none
+gn:3711668,David,Chiriquí Province,82907,town,0,0,50,0,none,none
+gn:3711694,Kusapín,Ngöbe-Buglé Comarca,1408,village,0,0,50,0,none,none
+gn:3711699,Curundú,Panamá,16361,town,0,0,50,0,none,none
+gn:3711723,Llano Culebra,Chiriquí Province,0,village,0,0,50,0,none,none
+gn:3711738,Cuipo,Colón,0,village,0,0,50,0,none,none
+gn:3711749,Cucunatí,Darién,537,village,0,0,50,0,none,none
+gn:3711796,Cuango,Colón,0,village,0,0,50,0,none,none
+gn:3711828,Cristóbal,Colón,2366,village,0,0,50,0,none,none
+gn:3711923,Corozal,Veraguas Province,189,village,0,0,50,0,none,none
+gn:3711968,Cordillera,Chiriquí Province,444,village,0,0,50,0,none,none
+gn:3712076,Colón,Colón,78000,town,0,0,50,0,none,none
+gn:3712158,Coclé del Norte,Colón,388,village,0,0,50,0,none,none
+gn:3712161,Coclecito,Colón,0,village,0,0,50,0,none,none
+gn:3712164,Coclé,Coclé,1298,village,0,0,50,0,none,none
+gn:3712169,Cochea Abajo,Chiriquí Province,435,village,0,0,50,0,none,none
+gn:3712225,Ciricito de Los Sotos,Panamá Oeste Province,250,village,0,0,50,0,none,none
+gn:3712280,Churuquita Grande,Coclé,1518,village,0,0,50,0,none,none
+gn:3712281,Churuquita Chiquita,Coclé,1142,village,0,0,50,0,none,none
+gn:3712291,Chupampa,Herrera Province,637,village,0,0,50,0,none,none
+gn:3712296,Chupá,Los Santos Province,0,village,0,0,50,0,none,none
+gn:3712319,Chumical,Herrera Province,433,village,0,0,50,0,none,none
+gn:3712320,Barrio Guadalupe,Chiriquí Province,1019,village,0,0,50,0,none,none
+gn:3712384,Chitré,Herrera Province,8969,village,0,0,50,0,none,none
+gn:3712401,Chiriquí Grande,Bocas del Toro Province,1525,village,0,0,50,0,none,none
+gn:3712419,Chiriquí,Chiriquí Province,2429,village,0,0,50,0,none,none
+gn:3712448,Chimán,Panamá,786,village,0,0,50,0,none,none
+gn:3712455,Chilibre,Panamá,33536,town,0,0,50,0,none,none
+gn:3712459,Chiguirí Arriba,Coclé,509,village,0,0,50,0,none,none
+gn:3712462,Chigoré,Coclé,2899,village,0,0,50,0,none,none
+gn:3712481,Chichica,Ngöbe-Buglé Comarca,1026,village,0,0,50,0,none,none
+gn:3712505,Chepo,Panamá,12912,town,0,0,50,0,none,none
+gn:3712510,Chepillo,Panamá,255,village,0,0,50,0,none,none
+gn:3712514,Chepigana,Darién,0,village,0,0,50,0,none,none
+gn:3712560,Changuinola,Bocas del Toro Province,17997,town,0,0,50,0,none,none
+gn:3712579,Chame,Panamá Oeste Province,2362,village,0,0,50,0,none,none
+gn:3712602,Chacarero,Chiriquí Province,0,village,0,0,50,0,none,none
+gn:3712614,Cerro Viejo,Chiriquí Province,253,village,0,0,50,0,none,none
+gn:3712616,Cerro Venado,Ngöbe-Buglé Comarca,0,village,0,0,50,0,none,none
+gn:3712628,Cerro Silvestre,Panamá Oeste Province,0,village,0,0,50,0,none,none
+gn:3712636,Cerro Punta,Chiriquí Province,1568,village,0,0,50,0,none,none
+gn:3712643,Cerro Plata,Ngöbe-Buglé Comarca,162,village,0,0,50,0,none,none
+gn:3712644,Cerro Plata,Veraguas Province,0,village,0,0,50,0,none,none
+gn:3712692,Cerro Largo,Herrera Province,170,village,0,0,50,0,none,none
+gn:3712698,Cerro Iglesia,Ngöbe-Buglé Comarca,0,village,0,0,50,0,none,none
+gn:3712699,Cerro Iglesia,Chiriquí Province,0,village,0,0,50,0,none,none
+gn:3712761,Cerro Caña,Ngöbe-Buglé Comarca,319,village,0,0,50,0,none,none
+gn:3712765,Cerro Cama,Panamá Oeste Province,1274,village,0,0,50,0,none,none
+gn:3712786,Cerro Azul,Panamá,1287,village,0,0,50,0,none,none
+gn:3712809,Cermeño,Panamá Oeste Province,928,village,0,0,50,0,none,none
+gn:3712828,Celmira,Chiriquí Province,1087,village,0,0,50,0,none,none
+gn:3712862,Cauchero,Bocas del Toro Province,40,village,0,0,50,0,none,none
+gn:3712884,Cativá,Colón,29607,town,0,0,50,0,none,none
+gn:3712938,Cascabel,Ngöbe-Buglé Comarca,0,village,0,0,50,0,none,none
+gn:3712951,Cartí Sugtupu,Guna Yala,1050,village,0,0,50,0,none,none
+gn:3713047,Capira,Panamá Oeste Province,3432,village,0,0,50,0,none,none
+gn:3713051,Capellanía,Coclé,2252,village,0,0,50,0,none,none
+gn:3713058,San Isidro,Chiriquí Province,1648,village,0,0,50,0,none,none
+gn:3713065,Canto del Llano,Veraguas Province,7854,village,0,0,50,0,none,none
+gn:3713077,Kankintú,Ngöbe-Buglé Comarca,1218,village,0,0,50,0,none,none
+gn:3713131,Cañita,Panamá,629,village,0,0,50,0,none,none
+gn:3713196,Cañazas,Veraguas Province,3219,village,0,0,50,0,none,none
+gn:3713208,Cañaveral,Coclé,827,village,0,0,50,0,none,none
+gn:3713212,Cañas Gordas,Chiriquí Province,374,village,0,0,50,0,none,none
+gn:3713224,Cañas,Los Santos Province,318,village,0,0,50,0,none,none
+gn:3713339,Cambutal,Los Santos Province,370,village,0,0,50,0,none,none
+gn:3713349,Camarón Arriba,Ngöbe-Buglé Comarca,515,village,0,0,50,0,none,none
+gn:3713381,Calzada Larga,Panamá,1656,village,0,0,50,0,none,none
+gn:3713390,Calovébora,Veraguas Province,117,village,0,0,50,0,none,none
+gn:3713396,Calobre,Veraguas Province,795,village,0,0,50,0,none,none
+gn:3713415,Calidonia,Panamá,0,village,0,0,50,0,none,none
+gn:3713416,Calidonia,Veraguas Province,228,village,0,0,50,0,none,none
+gn:3713430,Caldera,Chiriquí Province,355,village,0,0,50,0,none,none
+gn:3713465,Calabacito,Veraguas Province,100,village,0,0,50,0,none,none
+gn:3713489,Caimito,Panamá Oeste Province,836,village,0,0,50,0,none,none
+gn:3713490,Caimito,Coclé,1032,village,0,0,50,0,none,none
+gn:3713491,Caimito,Chiriquí Province,1066,village,0,0,50,0,none,none
+gn:3713499,Caimitillo,Panamá,1345,village,0,0,50,0,none,none
+gn:3713523,Cacique,Colón,0,village,0,0,50,0,none,none
+gn:3713571,Cabuya,Panamá Oeste Province,699,village,0,0,50,0,none,none
+gn:3713573,Cabuya,Coclé,93,village,0,0,50,0,none,none
+gn:3713575,Cabuya,Herrera Province,417,village,0,0,50,0,none,none
+gn:3713588,Cabra Número Uno,Panamá,1415,village,0,0,50,0,none,none
+gn:3713637,Caballero,Coclé,114,village,0,0,50,0,none,none
+gn:3713648,Burunga,Panamá Oeste Province,0,village,0,0,50,0,none,none
+gn:3713664,Bugabita Arriba,Chiriquí Province,1076,village,0,0,50,0,none,none
+gn:3713667,Bugaba,Chiriquí Province,3263,village,0,0,50,0,none,none
+gn:3713678,Buenos Aires,Panamá Oeste Province,496,village,0,0,50,0,none,none
+gn:3713682,Buenos Aires,Ngöbe-Buglé Comarca,400,village,0,0,50,0,none,none
+gn:3713715,Buena Vista,Colón,4077,village,0,0,50,0,none,none
+gn:3713768,Brujas,Panamá,239,village,0,0,50,0,none,none
+gn:3713783,Breñón,Chiriquí Province,230,village,0,0,50,0,none,none
+gn:3713843,Boró,Veraguas Province,326,village,0,0,50,0,none,none
+gn:3713860,Boquete,Chiriquí Province,6123,village,0,0,50,0,none,none
+gn:3713873,Boquerón,Chiriquí Province,1658,village,0,0,50,0,none,none
+gn:3713875,Boquerón,Veraguas Province,38,village,0,0,50,0,none,none
+gn:3713959,Bocas del Toro,Bocas del Toro Province,5380,village,0,0,50,0,none,none
+gn:3714000,Boca de Parita,Herrera Province,1381,village,0,0,50,0,none,none
+gn:3714013,Boca de Río Indio,Colón,0,village,0,0,50,0,none,none
+gn:3714014,Boca de Río Chiriquí,Ngöbe-Buglé Comarca,0,village,0,0,50,0,none,none
+gn:3714021,Boca del Monte,Chiriquí Province,355,village,0,0,50,0,none,none
+gn:3714043,Boca de Cupe,Darién,877,village,0,0,50,0,none,none
+gn:3714063,Boca Chica,Chiriquí Province,215,village,0,0,50,0,none,none
+gn:3714098,Bisvalles,Veraguas Province,141,village,0,0,50,0,none,none
+gn:3714101,Bisira,Ngöbe-Buglé Comarca,1383,village,0,0,50,0,none,none
+gn:3714123,Bijagual,Chiriquí Province,257,village,0,0,50,0,none,none
+gn:3714134,Betania,Panamá,0,village,0,0,50,0,none,none
+gn:3714166,Bella Vista,Panamá,0,village,0,0,50,0,none,none
+gn:3714176,Bella Vista,Los Santos Province,1104,village,0,0,50,0,none,none
+gn:3714201,Bejuco,Panamá Oeste Province,3897,village,0,0,50,0,none,none
+gn:3714231,Bayano,Los Santos Province,224,village,0,0,50,0,none,none
+gn:3714260,Isla Bastimentos,Bocas del Toro Province,1500,village,0,0,50,0,none,none
+gn:3714263,Bastimentos,Bocas del Toro Province,738,village,0,0,50,0,none,none
+gn:3714334,Barranco Colorado,Coclé,52,village,0,0,50,0,none,none
+gn:3714336,Barranco,Bocas del Toro Province,1398,village,0,0,50,0,none,none
+gn:3714347,Barnizal,Veraguas Province,74,village,0,0,50,0,none,none
+gn:3714439,Bajos de Güera,Los Santos Province,0,village,0,0,50,0,none,none
+gn:3714504,Bajo Corral,Los Santos Province,192,village,0,0,50,0,none,none
+gn:3714513,Bajo Boquete,Chiriquí Province,2257,village,0,0,50,0,none,none
+gn:3714536,Bahía Honda,Los Santos Province,131,village,0,0,50,0,none,none
+gn:3714538,Bahía Azul,Ngöbe-Buglé Comarca,379,village,0,0,50,0,none,none
+gn:3714543,Bágala,Chiriquí Province,910,village,0,0,50,0,none,none
+gn:3714579,Ave María,Los Santos Province,120,village,0,0,50,0,none,none
+gn:3714598,Atalaya,Veraguas Province,2686,village,0,0,50,0,none,none
+gn:3714611,Aserrío de Gariché,Chiriquí Province,1804,village,0,0,50,0,none,none
+gn:3714637,Arraiján,Panamá Oeste Province,76815,town,0,0,50,0,none,none
+gn:3714641,Arosemena,Panamá Oeste Province,127,village,0,0,50,0,none,none
+gn:3714658,La Arenosa,Panamá Oeste Province,319,village,0,0,50,0,none,none
+gn:3714672,Arenas,Veraguas Province,97,village,0,0,50,0,none,none
+gn:3714710,Antón,Coclé,6851,village,0,0,50,0,none,none
+gn:3714734,Ancón,Panamá,20706,town,0,0,50,0,none,none
+gn:3714771,Altos de Güera,Los Santos Province,0,village,0,0,50,0,none,none
+gn:3714830,Alto del Espino,Panamá Oeste Province,3672,village,0,0,50,0,none,none
+gn:3714849,Alto de La Estancia,Coclé,1081,village,0,0,50,0,none,none
+gn:3714873,Alto Caballero,Ngöbe-Buglé Comarca,0,village,0,0,50,0,none,none
+gn:3714875,Alto Boquete,Chiriquí Province,4746,village,0,0,50,0,none,none
+gn:3714896,Almirante,Bocas del Toro Province,8744,village,0,0,50,0,none,none
+gn:3714932,Alcalde Díaz,Panamá,20285,town,0,0,50,0,none,none
+gn:3714939,Alanje,Chiriquí Province,1373,village,0,0,50,0,none,none
+gn:3714956,Ailigandí,Guna Yala,1652,village,0,0,50,0,none,none
+gn:3715008,Aguas Blancas,Coclé,1053,village,0,0,50,0,none,none
+gn:3715042,Aguadulce,Coclé,8501,village,0,0,50,0,none,none
+gn:3715049,Agua de Salud,Ngöbe-Buglé Comarca,0,village,0,0,50,0,none,none
+gn:3715111,Agua Buena,Los Santos Province,1012,village,0,0,50,0,none,none
+gn:3715156,Achutupo,Guna Yala,1753,village,0,0,50,0,none,none
+gn:3715161,Achiote,Colón,0,village,0,0,50,0,none,none
+gn:3764110,Pásiga,Panamá,77,village,0,0,50,0,none,none
+gn:3764191,Jingurudo,Embera,0,village,0,0,50,0,none,none
+gn:3764343,Santa Rita Arriba,Colón,1960,village,0,0,50,0,none,none
+gn:7543540,Lajas Blancas,Embera,0,village,0,0,50,0,none,none
+gn:8581466,Unión Chocó,Embera,9497,village,0,0,50,0,none,none
+gn:9409143,Howard,Panamá,1222,village,0,0,50,0,none,none
+gn:10179291,Villa Lourdes,Los Santos Province,410,village,0,0,50,0,none,none
+gn:10179292,Cedro Arriba,Los Santos Province,93,village,0,0,50,0,none,none
+gn:10179345,San Juan Bautista,Herrera Province,11798,town,0,0,50,0,none,none
+gn:10179348,Oria Arriba,Los Santos Province,118,village,0,0,50,0,none,none
+gn:10180007,Villa Unida,Panamá,14854,town,0,0,50,0,none,none
+gn:10180024,San Antonio,Panamá,1435,village,0,0,50,0,none,none
+gn:10180075,Gonzalillo,Panamá,7793,village,0,0,50,0,none,none
+gn:10180082,Nuevo Belén,Panamá,24056,town,0,0,50,0,none,none
+gn:10180086,La Colorada,Panamá,1076,village,0,0,50,0,none,none
+gn:10181512,Vista Hermosa,Panamá,4742,village,0,0,50,0,none,none
+gn:10181534,Nueva Esperanza,Panamá,9342,village,0,0,50,0,none,none
+gn:10181567,Unión de Azuero,Panamá,1004,village,0,0,50,0,none,none
+gn:10194186,Tortí,Panamá,1611,village,0,0,50,0,none,none
+gn:10194271,Barriales,Darién,0,village,0,0,50,0,none,none
+gn:10194273,Platanillo,Darién,0,village,0,0,50,0,none,none
+gn:10194748,Camogantí,Darién,179,village,0,0,50,0,none,none
+gn:10194758,Corozal,Embera,309,village,0,0,50,0,none,none
+gn:10194898,Agua Fría Número Uno,Darién,0,village,0,0,50,0,none,none
+gn:10202392,Bayamón,Embera,457,village,0,0,50,0,none,none
+gn:10206727,Unión Santeña,Panamá,413,village,0,0,50,0,none,none
+gn:10206733,Contadora,Panamá,253,village,0,0,50,0,none,none
+gn:10211093,Norteño,Ngöbe-Buglé Comarca,0,village,0,0,50,0,none,none
+gn:10211200,Barranco Adentro,Bocas del Toro Province,1349,village,0,0,50,0,none,none
+gn:10211213,La Mesa,Bocas del Toro Province,1235,village,0,0,50,0,none,none
+gn:10346879,Quebrada del Rosario,Herrera Province,123,village,0,0,50,0,none,none
+gn:10347255,Paso Canoas Arriba,Chiriquí Province,1090,village,0,0,50,0,none,none
+gn:10347282,El Palmar,Chiriquí Province,4536,village,0,0,50,0,none,none
+gn:10347303,Manaca Norte,Chiriquí Province,1294,village,0,0,50,0,none,none
+gn:10347304,Manaca Civil,Chiriquí Province,1220,village,0,0,50,0,none,none
+gn:10347320,Los Algarrobos Arriba,Chiriquí Province,3727,village,0,0,50,0,none,none
+gn:10347321,Nuevo San Carlitos,Chiriquí Province,1724,village,0,0,50,0,none,none
+gn:10347337,Rambala,Bocas del Toro Province,0,village,0,0,50,0,none,none
+gn:10347339,Pueblo Nuevo,Ngöbe-Buglé Comarca,1109,village,0,0,50,0,none,none
+gn:10347348,Valle de Las Minas,Chiriquí Province,0,village,0,0,50,0,none,none
+gn:10347377,Quebrada Tula,Ngöbe-Buglé Comarca,283,village,0,0,50,0,none,none
+gn:10347390,Boca de Balsa,Ngöbe-Buglé Comarca,304,village,0,0,50,0,none,none
+gn:10347421,Coronte,Ngöbe-Buglé Comarca,0,village,0,0,50,0,none,none
+gn:10347473,Oma,Ngöbe-Buglé Comarca,535,village,0,0,50,0,none,none
+gn:10347484,Cabecera de Cerro Puerco,Ngöbe-Buglé Comarca,0,village,0,0,50,0,none,none
+gn:10347489,El Porvenir,Chiriquí Province,659,village,0,0,50,0,none,none
+gn:10347490,Santa Lucía,Chiriquí Province,0,village,0,0,50,0,none,none
+gn:10347491,El Puerto,Chiriquí Province,0,village,0,0,50,0,none,none
+gn:10347496,Mirones,Ngöbe-Buglé Comarca,0,village,0,0,50,0,none,none
+gn:10347864,Bajo Solís,Chiriquí Province,0,village,0,0,50,0,none,none
+gn:10347868,Bella Vista,Chiriquí Province,0,village,0,0,50,0,none,none
+gn:10348000,Cerro Pelado,Ngöbe-Buglé Comarca,0,village,0,0,50,0,none,none
+gn:10348109,Lajero,Ngöbe-Buglé Comarca,617,village,0,0,50,0,none,none
+gn:10348333,Loma Yuca,Ngöbe-Buglé Comarca,17,village,0,0,50,0,none,none
+gn:10348468,Los Pollos,Coclé,1419,village,0,0,50,0,none,none
+gn:10348488,San Juan de Dios,Coclé,400,village,0,0,50,0,none,none
+gn:10348600,Río Luís,Veraguas Province,0,village,0,0,50,0,none,none
+gn:10348668,Güibale,Ngöbe-Buglé Comarca,0,village,0,0,50,0,none,none
+gn:10348671,Paredón Arriba,Ngöbe-Buglé Comarca,207,village,0,0,50,0,none,none
+gn:10348681,Guayabito,Ngöbe-Buglé Comarca,420,village,0,0,50,0,none,none
+gn:10348753,Alto de Jesús,Veraguas Province,361,village,0,0,50,0,none,none
+gn:11398367,La Pesa,Panamá Oeste Province,7773,village,0,0,50,0,none,none
+gn:11398385,Ciricito Abajo,Panamá Oeste Province,0,village,0,0,50,0,none,none

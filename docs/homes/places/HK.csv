@@ -1,0 +1,326 @@
+place_id,name,region,population,market,verified_homes,dated_listings,shortfall_to_50,recorded_sales,rent_source,price_source
+gn:1818209,Tsuen Wan,Tsuen Wan,318916,city,0,0,50,0,none,none
+gn:1818211,Yung Shue Wan,Islands,6000,village,0,0,50,0,none,none
+gn:1818222,Yuen Long San Hui,Yuen Long,200000,city,0,0,50,0,none,none
+gn:1818223,Yuen Long Kau Hui,Yuen Long,169600,city,0,0,50,0,none,none
+gn:1818225,Yuen Long,Yuen Long,200000,city,0,0,50,0,none,none
+gn:1818236,Yue Kwong Chuen,Southern District,2679,village,0,0,50,0,none,none
+gn:1818259,Yeung Uk Tsuen,Tsuen Wan,16236,town,0,0,50,0,none,none
+gn:1818264,Yau Yat Chuen,Sham Shui Po District,14059,town,0,0,50,0,none,none
+gn:1818266,Yau Tong,Kwun Tong District,34755,town,0,0,50,0,none,none
+gn:1818268,Yau Ma Tei,Yau Tsim Mong District,29644,town,0,0,50,0,none,none
+gn:1818304,Wong Tai Sin,Wong Tai Sin District,425235,city,0,0,50,0,none,none
+gn:1818349,Wo Che,Sha Tin,17572,town,0,0,50,0,none,none
+gn:1818365,Wang Tau Hom,Kowloon City,16936,town,0,0,50,0,none,none
+gn:1818379,Wan Chai,Wan Chai,166695,city,0,0,50,0,none,none
+gn:1818385,Wah Fu,Southern District,26275,town,0,0,50,0,none,none
+gn:1818413,Tung Tau Tsuen,Yuen Long,13928,town,0,0,50,0,none,none
+gn:1818428,Causeway Bay,Eastern District,12777,town,0,0,50,0,none,none
+gn:1818444,Tuen Mun San Hui,Tuen Mun,19398,town,0,0,50,0,none,none
+gn:1818446,Tuen Mun,Tuen Mun,507900,large-city,0,0,50,0,none,none
+gn:1818447,Tsz Wan Shan,Wong Tai Sin District,37242,town,0,0,50,0,none,none
+gn:1818483,Tsing Yi Town,Kwai Tsing District,182100,city,0,0,50,0,none,none
+gn:1818501,Tsim Sha Tsui,Kowloon City,24557,town,0,0,50,0,none,none
+gn:1818506,Tseung Kwan O,Sai Kung District,412900,city,0,0,50,0,none,none
+gn:1818544,To Kwa Wan,Kowloon City,15646,town,0,0,50,0,none,none
+gn:1818550,Tiu Keng Leng,Kwun Tong District,51751,town,0,0,50,0,none,none
+gn:1818557,Tin Wan,Southern District,16811,town,0,0,50,0,none,none
+gn:1818558,Tin Shui Wai,Yuen Long,286232,city,0,0,50,0,none,none
+gn:1818573,Ting Kok,Tai Po,2000,village,0,0,50,0,none,none
+gn:1818574,Ting Kau,Tsuen Wan,17009,town,0,0,50,0,none,none
+gn:1818614,Tai Wo Hau,Kwai Tsing District,20848,town,0,0,50,0,none,none
+gn:1818616,Tai Wo,Tai Po,12752,town,0,0,50,0,none,none
+gn:1818628,Tai Wai,Sha Tin,19924,town,0,0,50,0,none,none
+gn:1818654,Tai Shui Hang,Sha Tin,17647,town,0,0,50,0,none,none
+gn:1818673,Tai Po,Tai Po,274100,city,0,0,50,0,none,none
+gn:1818684,Tai O,Islands,3300,village,0,0,50,0,none,none
+gn:1818692,Tai Mong Tsai,Sai Kung District,11526,town,0,0,50,0,none,none
+gn:1818695,Tai Mei Tuk,Tai Po,17544,town,0,0,50,0,none,none
+gn:1818721,Tai Kok Tsui,Yau Tsim Mong District,33801,town,0,0,50,0,none,none
+gn:1818734,Tai Hang,Eastern District,11425,town,0,0,50,0,none,none
+gn:1818770,So Kwun Wat Tsuen,Tuen Mun,5172,village,0,0,50,0,none,none
+gn:1818771,So Kwun Wat,Tuen Mun,14475,town,0,0,50,0,none,none
+gn:1818775,Sok Kwu Wan,Islands,5100,village,0,0,50,0,none,none
+gn:1818781,Siu Lek Yuen,Sha Tin,57349,town,0,0,50,0,none,none
+gn:1818789,Siu Chik Sha,Sai Kung District,6005,village,0,0,50,0,none,none
+gn:1818817,Shuen Wan,Tai Po,22465,town,0,0,50,0,none,none
+gn:1818818,Shouson Hill,Southern District,1737,village,0,0,50,0,none,none
+gn:1818845,Sheung Shui,North District,20514,town,0,0,50,0,none,none
+gn:1818868,Shek Wai Kok,Tsuen Wan,12198,town,0,0,50,0,none,none
+gn:1818880,Shek Pai Wan Estate,Southern District,14927,town,0,0,50,0,none,none
+gn:1818883,Shek O,Southern District,20683,town,0,0,50,0,none,none
+gn:1818892,Shek Lei,Kwai Tsing District,31788,town,0,0,50,0,none,none
+gn:1818905,Shek Kip Mei,Sham Shui Po District,18078,town,0,0,50,0,none,none
+gn:1818911,Shau Kei Wan,Eastern District,13442,town,0,0,50,0,none,none
+gn:1818916,Sha Tin Wai,Sha Tin,80000,town,0,0,50,0,none,none
+gn:1818920,Sha Tin,Sha Tin,495200,city,0,0,50,0,none,none
+gn:1818923,Sha Tau Kok,North District,5001,village,0,0,50,0,none,none
+gn:1818950,Sham Tseng,Tsuen Wan,25893,town,0,0,50,0,none,none
+gn:1818953,Sham Shui Po,Sham Shui Po District,431090,city,0,0,50,0,none,none
+gn:1818972,Sau Mau Ping,Kwun Tong District,54218,town,0,0,50,0,none,none
+gn:1818992,San Tin,Sha Tin,16628,town,0,0,50,0,none,none
+gn:1818996,San Tin,Yuen Long,19617,town,0,0,50,0,none,none
+gn:1819003,San Po Kong,Wong Tai Sin District,18199,town,0,0,50,0,none,none
+gn:1819026,Sai Ying Pun,Central and Western,13600,town,0,0,50,0,none,none
+gn:1819029,Sai Wan Ho,Eastern District,18771,town,0,0,50,0,none,none
+gn:1819031,Sai Wan,Central and Western,14650,town,0,0,50,0,none,none
+gn:1819050,Sai Kung,Sai Kung District,35800,town,0,0,50,0,none,none
+gn:1819064,Quarry Bay,Eastern District,11198,town,0,0,50,0,none,none
+gn:1819072,Pui O,Islands,5001,village,0,0,50,0,none,none
+gn:1819091,Pok Fu Lam,Southern District,77100,town,0,0,50,0,none,none
+gn:1819101,Ping Shan,Yuen Long,45400,town,0,0,50,0,none,none
+gn:1819112,Peng Chau,Islands,7821,village,0,0,50,0,none,none
+gn:1819142,Pak Shek Kok,Sha Tin,12000,town,0,0,50,0,none,none
+gn:1819230,Ngong Ping,Islands,5001,village,0,0,50,0,none,none
+gn:1819283,San Tung Chung Hang,Islands,116000,city,0,0,50,0,none,none
+gn:1819326,Nai Chung,Sha Tin,5001,village,0,0,50,0,none,none
+gn:1819333,Mui Wo Kau Tsuen,Islands,5485,village,0,0,50,0,none,none
+gn:1819339,Mount Davis,Central and Western,16030,town,0,0,50,0,none,none
+gn:1819353,Mong Kok,Yau Tsim Mong District,62967,town,0,0,50,0,none,none
+gn:1819361,Mid Levels,Central and Western,15464,town,0,0,50,0,none,none
+gn:1819374,Ma Wan,Islands,14409,town,0,0,50,0,none,none
+gn:1819394,Ma Tau Wai,Kowloon City,20185,town,0,0,50,0,none,none
+gn:1819395,Ma Tau Kok,Kowloon City,14397,town,0,0,50,0,none,none
+gn:1819400,Ma On Shan,Sha Tin,215200,city,0,0,50,0,none,none
+gn:1819529,Leighton Hill,Wan Chai,29160,town,0,0,50,0,none,none
+gn:1819535,Lau Fau Shan,Islands,2230,village,0,0,50,0,none,none
+gn:1819554,Lam Tin,Kwun Tong District,18666,town,0,0,50,0,none,none
+gn:1819577,Kwun Tong,Kwun Tong District,16766,town,0,0,50,0,none,none
+gn:1819595,Kwai Chung,Kwai Tsing District,331600,city,0,0,50,0,none,none
+gn:1819602,Kowloon Tong,Kowloon City,18849,town,0,0,50,0,none,none
+gn:1819607,Kowloon City,Kowloon City,418732,city,0,0,50,0,none,none
+gn:1819609,Kowloon,,2232339,large-city,0,0,50,0,none,none
+gn:1819638,Kennedy Town,Central and Western,38000,town,0,0,50,0,none,none
+gn:1819652,Kau Wa Keng,Kwai Tsing District,14283,town,0,0,50,0,none,none
+gn:1819685,Kam Tin,Yuen Long,21876,town,0,0,50,0,none,none
+gn:1819706,Jardine's Lookout,Wan Chai,14459,town,0,0,50,0,none,none
+gn:1819718,Hung Hom,Kowloon City,13762,town,0,0,50,0,none,none
+gn:1819726,Hong Lok Yuen,Tai Po,20389,town,0,0,50,0,none,none
+gn:1819729,Hong Kong,,7396076,large-city,0,0,50,0,none,none
+gn:1819731,Ho Man Tin,Kowloon City,19830,town,0,0,50,0,none,none
+gn:1819757,Aberdeen,Southern District,157400,city,0,0,50,0,none,none
+gn:1819775,Ha Tsuen,Yuen Long,21060,town,0,0,50,0,none,none
+gn:1819783,Happy Valley,Wan Chai,13248,town,0,0,50,0,none,none
+gn:1819791,Hang Hau,Sai Kung District,36529,town,0,0,50,0,none,none
+gn:1819855,Fo Tan,Sha Tin,22127,town,0,0,50,0,none,none
+gn:1819873,Fanling,North District,263200,city,0,0,50,0,none,none
+gn:1819894,Discovery Bay,Islands,19336,town,0,0,50,0,none,none
+gn:1819923,Chuk Yuen,Wong Tai Sin District,28645,town,0,0,50,0,none,none
+gn:1819932,Choi Hung,Wong Tai Sin District,14773,town,0,0,50,0,none,none
+gn:1819952,Cheung Sha Wan,Sham Shui Po District,14966,town,0,0,50,0,none,none
+gn:1819968,Cheung Chau,Islands,19769,town,0,0,50,0,none,none
+gn:1819980,Chek Chue,Southern District,20683,town,0,0,50,0,none,none
+gn:1819983,Che Ha,Tai Po,14753,town,0,0,50,0,none,none
+gn:1931681,Victoria,Central and Western,956800,large-city,0,0,50,0,none,none
+gn:6691573,Tai Yuen Estate,Tai Po,13614,town,0,0,50,0,none,none
+gn:7778986,Fortress Hill,Eastern District,15464,town,0,0,50,0,none,none
+gn:8223931,Admiralty,Central and Western,5031,village,0,0,50,0,none,none
+gn:8223932,Central,Central and Western,11077,town,0,0,50,0,none,none
+gn:8224045,Jordan,Yau Tsim Mong District,41537,town,0,0,50,0,none,none
+gn:8504415,Kowloon Bay,Kwun Tong District,13200,town,0,0,50,0,none,none
+gn:9172583,Wong Chuk Hang,Southern District,16316,town,0,0,50,0,none,none
+gn:10170102,Tai Koo,Eastern District,35373,town,0,0,50,0,none,none
+gn:11101593,Tung Chung,Islands,114100,city,0,0,50,0,none,none
+gn:12640671,Sung Wong Toi,Kowloon City,19078,town,0,0,50,0,none,none
+gn:12640674,So Uk,Sham Shui Po District,18956,town,0,0,50,0,none,none
+gn:12640679,City One,Sha Tin,15407,town,0,0,50,0,none,none
+gn:12640681,Mei Foo,Sham Shui Po District,45990,town,0,0,50,0,none,none
+gn:12640682,Kadoorie,Kowloon City,17422,town,0,0,50,0,none,none
+gn:12640684,Kai Tak,Kowloon City,42552,town,0,0,50,0,none,none
+gn:12640687,The Peak,Central and Western,19202,town,0,0,50,0,none,none
+gn:12640693,Lei Tung,Southern District,26350,town,0,0,50,0,none,none
+gn:12640694,Hung Shui Kiu,Yuen Long,11851,town,0,0,50,0,none,none
+gn:12687141,Pok Hong,Sha Tin,15817,town,0,0,50,0,none,none
+gn:12687143,Shui Chuen O,Sha Tin,19719,town,0,0,50,0,none,none
+gn:12687144,Prince Edward,Kowloon City,15481,town,0,0,50,0,none,none
+gn:12689050,Luk Yeung,Tsuen Wan,14154,town,0,0,50,0,none,none
+gn:12689053,Fuk Loi,Tsuen Wan,13490,town,0,0,50,0,none,none
+gn:12689054,Discovery Park,Tsuen Wan,17325,town,0,0,50,0,none,none
+gn:12689055,Nam Cheong,Sham Shui Po District,74780,town,0,0,50,0,none,none
+gn:12689056,Olympic,Yau Tsim Mong District,19373,town,0,0,50,0,none,none
+gn:12689057,Whampoa,Kowloon City,39134,town,0,0,50,0,none,none
+gn:12689059,Laguna City,Kwun Tong District,22718,town,0,0,50,0,none,none
+gn:12689060,Choi Wan,Wong Tai Sin District,38405,town,0,0,50,0,none,none
+gn:12689062,Sun Tin Wai,Sha Tin,16628,town,0,0,50,0,none,none
+gn:12689063,Pat Heung,Yuen Long,40357,town,0,0,50,0,none,none
+gn:12689065,Butterfly,Tuen Mun,15488,town,0,0,50,0,none,none
+gn:12689066,Wu King,Tuen Mun,13070,town,0,0,50,0,none,none
+gn:12689067,Siu Hei,Tuen Mun,12206,town,0,0,50,0,none,none
+gn:12689068,Yuet Wu,Tuen Mun,12513,town,0,0,50,0,none,none
+gn:12689069,Fairview Park,Yuen Long,20268,town,0,0,50,0,none,none
+gn:12719429,Lok Fu,Wong Tai Sin District,14170,town,0,0,50,0,none,none
+gn:12719430,Shap Pat Heung,Yuen Long,77775,town,0,0,50,0,none,none
+gn:12719431,Ap Lei Chau Estate,Southern District,11960,town,0,0,50,0,none,none
+gn:12719432,South Horizons,Southern District,29391,town,0,0,50,0,none,none
+gn:12719433,LOHAS Park,Sai Kung District,50000,town,0,0,50,0,none,none
+gn:12719437,Mount Parker,Eastern District,12348,town,0,0,50,0,none,none
+gn:12719438,Braemar Hill,Eastern District,16171,town,0,0,50,0,none,none
+gn:12719439,Hok Yuen,Kowloon City,18091,town,0,0,50,0,none,none
+gn:12719440,Laguna Verde,Kowloon City,18091,town,0,0,50,0,none,none
+gn:12719441,Kwong Yuen,Sha Tin,11716,town,0,0,50,0,none,none
+gn:12719442,Yu Chui,Sha Tin,14944,town,0,0,50,0,none,none
+gn:12719443,Wu Kai Sha,Sha Tin,23511,town,0,0,50,0,none,none
+gn:12719444,Lee On,Sha Tin,15621,town,0,0,50,0,none,none
+gn:12719445,Kam Ying,Sha Tin,16691,town,0,0,50,0,none,none
+gn:12719540,Sam Shing,Tuen Mun,16423,town,0,0,50,0,none,none
+gn:12719541,Wah Kwai,Southern District,13309,town,0,0,50,0,none,none
+gn:12719542,Aldrich Bay,Eastern District,17925,town,0,0,50,0,none,none
+gn:12719543,Kornhill,Eastern District,13083,town,0,0,50,0,none,none
+gn:12719544,City Garden,Eastern District,15212,town,0,0,50,0,none,none
+gn:12719545,Victoria Park,Eastern District,13521,town,0,0,50,0,none,none
+gn:12719546,Tin Hau,Eastern District,13521,town,0,0,50,0,none,none
+gn:12719547,Keng Hau,Sha Tin,18707,town,0,0,50,0,none,none
+gn:12719548,Jat Min Chuen,Sha Tin,9424,village,0,0,50,0,none,none
+gn:12719549,Parc Oasis,Sham Shui Po District,5005,village,0,0,50,0,none,none
+gn:12719550,Cosmopolitan Estate,Yau Tsim Mong District,5035,village,0,0,50,0,none,none
+gn:12719551,Tai Hang Estate (East & West),Sham Shui Po District,7263,village,0,0,50,0,none,none
+gn:12719552,Un Chau Estate,Sham Shui Po District,18670,town,0,0,50,0,none,none
+gn:12719553,Pak Tin Estate,Sham Shui Po District,16843,town,0,0,50,0,none,none
+gn:12719555,Shek Kip Mei Estate,Sham Shui Po District,25561,town,0,0,50,0,none,none
+gn:12719556,The Pacifica,Sham Shui Po District,5604,village,0,0,50,0,none,none
+gn:12719557,Lei Cheng Uk Estate,Sham Shui Po District,11259,town,0,0,50,0,none,none
+gn:12719558,Fortune Estate,Sham Shui Po District,4587,village,0,0,50,0,none,none
+gn:12719560,Liberte,Sham Shui Po District,6009,village,0,0,50,0,none,none
+gn:12719561,Banyan Garden,Sham Shui Po District,6515,village,0,0,50,0,none,none
+gn:12719563,Cheung Sha Wan Estate,Sham Shui Po District,3209,village,0,0,50,0,none,none
+gn:12719564,Nam Shan Estate,Sham Shui Po District,6208,village,0,0,50,0,none,none
+gn:12719565,Nam Cheong Estate,Sham Shui Po District,4684,village,0,0,50,0,none,none
+gn:12719566,Mei Foo Sun Chuen,Sham Shui Po District,37299,town,0,0,50,0,none,none
+gn:12719567,Hoi Ying Estate,Sham Shui Po District,3444,village,0,0,50,0,none,none
+gn:12719568,Hoi Tat Estate,Sham Shui Po District,3415,village,0,0,50,0,none,none
+gn:12719569,Hoi Lai Estate,Sham Shui Po District,16071,town,0,0,50,0,none,none
+gn:12719570,Manhattan Hill,Sham Shui Po District,3140,village,0,0,50,0,none,none
+gn:12719571,Hoi Lok Court,Sham Shui Po District,7247,village,0,0,50,0,none,none
+gn:12719572,Fu Cheong Estate,Sham Shui Po District,15655,town,0,0,50,0,none,none
+gn:12719574,Cullinan West,Sham Shui Po District,5276,village,0,0,50,0,none,none
+gn:12719575,Wing Cheong Estate,Sham Shui Po District,3620,village,0,0,50,0,none,none
+gn:12719576,Aqua Marine,Sham Shui Po District,4367,village,0,0,50,0,none,none
+gn:12719577,Chak On Estate,Sham Shui Po District,3913,village,0,0,50,0,none,none
+gn:12719578,Lai On Estate,Sham Shui Po District,3534,village,0,0,50,0,none,none
+gn:12719579,Lai Tsui Court,Sham Shui Po District,10438,town,0,0,50,0,none,none
+gn:12719580,Lai Kok Estate,Sham Shui Po District,6200,village,0,0,50,0,none,none
+gn:12719581,So Uk Estate,Sham Shui Po District,18748,town,0,0,50,0,none,none
+gn:12719582,The Merton,Central and Western,2474,village,0,0,50,0,none,none
+gn:12719583,Queen's Terrace,Central and Western,2573,village,0,0,50,0,none,none
+gn:12719584,The Belcher's,Central and Western,7265,village,0,0,50,0,none,none
+gn:12719585,Kwun Lung Lau,Central and Western,6156,village,0,0,50,0,none,none
+gn:12719586,Lai Tak Tsuen,Eastern District,6211,village,0,0,50,0,none,none
+gn:12719587,Siu Sai Wan Estate,Eastern District,18803,town,0,0,50,0,none,none
+gn:12719589,Taikoo Shing,Eastern District,34799,town,0,0,50,0,none,none
+gn:12719590,Tai On Lau,Eastern District,4561,village,0,0,50,0,none,none
+gn:12719591,Bedford Garden,Eastern District,3950,village,0,0,50,0,none,none
+gn:12719592,Heng Fa Chuen,Eastern District,17963,town,0,0,50,0,none,none
+gn:12719594,Kai Tsui Court,Eastern District,3379,village,0,0,50,0,none,none
+gn:12719595,Provident Centre,Eastern District,4873,village,0,0,50,0,none,none
+gn:12719596,Ming Wah Dai Ha,Eastern District,5299,village,0,0,50,0,none,none
+gn:12719598,Tung Yuk Court,Eastern District,5052,village,0,0,50,0,none,none
+gn:12719599,Tung Hei Court,Eastern District,6262,village,0,0,50,0,none,none
+gn:12719601,Tung Tao Court,Eastern District,3506,village,0,0,50,0,none,none
+gn:12719602,Tung Chun Court,Eastern District,3242,village,0,0,50,0,none,none
+gn:12719603,Nam Fung Sun Chuen,Eastern District,6877,village,0,0,50,0,none,none
+gn:12719604,Fung Wah Estate,Eastern District,3303,village,0,0,50,0,none,none
+gn:12719606,Chai Wan Estate,Eastern District,3578,village,0,0,50,0,none,none
+gn:12719607,Healthy Gardens,Eastern District,2532,village,0,0,50,0,none,none
+gn:12719608,Healthy Village,Eastern District,5278,village,0,0,50,0,none,none
+gn:12719609,Kornhill Garden,Eastern District,5619,village,0,0,50,0,none,none
+gn:12719610,Greenwood Terrace,Eastern District,6061,village,0,0,50,0,none,none
+gn:12719612,Cheerful Garden,Eastern District,5367,village,0,0,50,0,none,none
+gn:12719613,Harmony Garden,Eastern District,6697,village,0,0,50,0,none,none
+gn:12719614,Fullview Garden,Eastern District,9175,village,0,0,50,0,none,none
+gn:12719615,Fortress Garden,Eastern District,3860,village,0,0,50,0,none,none
+gn:12719616,Oi Tung Estate,Eastern District,9128,village,0,0,50,0,none,none
+gn:12719617,Aldrich Garden,Eastern District,8644,village,0,0,50,0,none,none
+gn:12719619,Metropole Building,Eastern District,2980,village,0,0,50,0,none,none
+gn:12719621,New Jade Garden,Eastern District,4440,village,0,0,50,0,none,none
+gn:12719622,Grand Promenade,Eastern District,4801,village,0,0,50,0,none,none
+gn:12719623,Yue Wan Estate,Eastern District,7998,village,0,0,50,0,none,none
+gn:12719624,Tsui Wan Estate,Eastern District,6288,village,0,0,50,0,none,none
+gn:12719626,Lok Hin Terrace,Eastern District,4425,village,0,0,50,0,none,none
+gn:12719627,Hing Man Estate,Eastern District,5990,village,0,0,50,0,none,none
+gn:12719628,Hing Tung Estate,Eastern District,6076,village,0,0,50,0,none,none
+gn:12719629,Hing Wah Estate (I & II),Eastern District,14339,town,0,0,50,0,none,none
+gn:12719630,Wan Tsui Estate,Eastern District,9532,village,0,0,50,0,none,none
+gn:12719631,Braemar Hill Mansions,Eastern District,3045,village,0,0,50,0,none,none
+gn:12719632,Island Resort,Eastern District,9025,village,0,0,50,0,none,none
+gn:12719634,Lei King Wan,Eastern District,6389,village,0,0,50,0,none,none
+gn:12719635,Yiu Tung Estate,Eastern District,15061,town,0,0,50,0,none,none
+gn:12719785,Tin Wan Estate,Southern District,8491,village,0,0,50,0,none,none
+gn:12719787,Lei Tung Estate,Southern District,18575,town,0,0,50,0,none,none
+gn:12719788,Residence Bel-air,Southern District,8795,village,0,0,50,0,none,none
+gn:12719789,South Wave Court,Southern District,2939,village,0,0,50,0,none,none
+gn:12719790,Aberdeen Centre,Southern District,8353,village,0,0,50,0,none,none
+gn:12719791,South Horizons (Estate),Southern District,29180,town,0,0,50,0,none,none
+gn:12719793,Wah Kwai Estate,Southern District,9321,village,0,0,50,0,none,none
+gn:12719794,Broadview Court,Southern District,4087,village,0,0,50,0,none,none
+gn:12719795,Chi Fu Fa Yuen,Southern District,9813,village,0,0,50,0,none,none
+gn:12719796,Ka Lung Court,Southern District,3906,village,0,0,50,0,none,none
+gn:12719798,Yue On Court,Southern District,5175,village,0,0,50,0,none,none
+gn:12719799,Yue Fai Court,Southern District,3025,village,0,0,50,0,none,none
+gn:12719800,Baguio Villa,Southern District,5339,village,0,0,50,0,none,none
+gn:12719802,Pokfulam Gardens,Southern District,3005,village,0,0,50,0,none,none
+gn:12719803,Harbour Green,Yau Tsim Mong District,3329,village,0,0,50,0,none,none
+gn:12719804,The Central Park,Yau Tsim Mong District,3873,village,0,0,50,0,none,none
+gn:12719805,Park Avenue,Yau Tsim Mong District,4651,village,0,0,50,0,none,none
+gn:12719806,The Long Beach,Yau Tsim Mong District,4472,village,0,0,50,0,none,none
+gn:12719808,Hoi Fu Court,Yau Tsim Mong District,9540,village,0,0,50,0,none,none
+gn:12719809,Charming Garden,Yau Tsim Mong District,11335,town,0,0,50,0,none,none
+gn:12719810,Metro Harbour,Yau Tsim Mong District,7887,village,0,0,50,0,none,none
+gn:12719811,The Waterfront,Yau Tsim Mong District,4002,village,0,0,50,0,none,none
+gn:12719813,Island Harbourview,Yau Tsim Mong District,6236,village,0,0,50,0,none,none
+gn:12719814,Sorrento,Yau Tsim Mong District,5802,village,0,0,50,0,none,none
+gn:12719815,Prosperous Garden,Yau Tsim Mong District,4090,village,0,0,50,0,none,none
+gn:12719818,Celestial Heights,Kowloon City,3265,village,0,0,50,0,none,none
+gn:12719819,Royal Peninsula,Kowloon City,4396,village,0,0,50,0,none,none
+gn:12719820,On Wo Yuen,Kowloon City,2781,village,0,0,50,0,none,none
+gn:12719822,Ho Man Tin Estate,Kowloon City,12329,town,0,0,50,0,none,none
+gn:12719824,Chun Man Court,Kowloon City,4929,village,0,0,50,0,none,none
+gn:12719825,Hung Hom Estate,Kowloon City,6744,village,0,0,50,0,none,none
+gn:12719827,Mei King Mansion,Kowloon City,3421,village,0,0,50,0,none,none
+gn:12719828,Ka Wai Chuen,Kowloon City,6634,village,0,0,50,0,none,none
+gn:12719830,Laguna Verde (Estate),Kowloon City,12664,town,0,0,50,0,none,none
+gn:12719831,Harbour Place,Kowloon City,6704,village,0,0,50,0,none,none
+gn:12719835,Ma Tau Wai Estate,Kowloon City,4942,village,0,0,50,0,none,none
+gn:12719836,Chong Chien Court - Wyler Gardens,Kowloon City,6746,village,0,0,50,0,none,none
+gn:12719838,Kai Ching Estate,Kowloon City,11876,town,0,0,50,0,none,none
+gn:12719839,One Kai Tak,Kowloon City,2777,village,0,0,50,0,none,none
+gn:12719841,Mantin Heights,Kowloon City,3189,village,0,0,50,0,none,none
+gn:12719842,Grand Waterfront,Kowloon City,4400,village,0,0,50,0,none,none
+gn:12719843,Whampoa Garden,Kowloon City,30038,town,0,0,50,0,none,none
+gn:12719844,Whampoa Estate,Kowloon City,6647,village,0,0,50,0,none,none
+gn:12719846,Sky Tower,Kowloon City,5678,village,0,0,50,0,none,none
+gn:12719847,Oi Man Estate,Kowloon City,17407,town,0,0,50,0,none,none
+gn:12719848,Tak Long Estate,Kowloon City,18720,town,0,0,50,0,none,none
+gn:12719849,Lok Man Sun Chuen,Kowloon City,8696,village,0,0,50,0,none,none
+gn:12746516,Tin Ma Court,Wong Tai Sin District,6034,village,0,0,50,0,none,none
+gn:12746517,Chuk Yuen North Estate,Wong Tai Sin District,16989,town,0,0,50,0,none,none
+gn:12746518,Chuk Yuen South Estate,Wong Tai Sin District,14147,town,0,0,50,0,none,none
+gn:12746519,Grand View Garden,Wong Tai Sin District,6615,village,0,0,50,0,none,none
+gn:12746522,Sha Tin Pass Estate,Wong Tai Sin District,3063,village,0,0,50,0,none,none
+gn:12746523,Tung Wui Estate,Wong Tai Sin District,5280,village,0,0,50,0,none,none
+gn:12746524,Tung Tau Estate,Wong Tai Sin District,15440,town,0,0,50,0,none,none
+gn:12746526,Rhythm Garden,Wong Tai Sin District,8980,village,0,0,50,0,none,none
+gn:12746528,Galaxia,Wong Tai Sin District,5964,village,0,0,50,0,none,none
+gn:12746530,Mei Tung Estate,Wong Tai Sin District,4411,village,0,0,50,0,none,none
+gn:12746531,Choi Hung Estate,Wong Tai Sin District,17817,town,0,0,50,0,none,none
+gn:12746532,Choi Wan Estate (I & II),Wong Tai Sin District,25241,town,0,0,50,0,none,none
+gn:12746533,Choi Fai Estate,Wong Tai Sin District,3923,village,0,0,50,0,none,none
+gn:12746534,Kai Tak Garden,Wong Tai Sin District,3928,village,0,0,50,0,none,none
+gn:12746536,Fu Shan Estate,Wong Tai Sin District,5572,village,0,0,50,0,none,none
+gn:12746537,Fu Keung Court,Wong Tai Sin District,3557,village,0,0,50,0,none,none
+gn:12746538,Upper Wong Tai Sin Estate,Wong Tai Sin District,12176,town,0,0,50,0,none,none
+gn:12746539,Lower Wong Tai Sin Estate (I & II),Wong Tai Sin District,29542,town,0,0,50,0,none,none
+gn:12746540,Kingsford Terrace,Wong Tai Sin District,5698,village,0,0,50,0,none,none
+gn:12746541,Tsz Ching Estate,Wong Tai Sin District,21845,town,0,0,50,0,none,none
+gn:12746542,Tsz Man Estate,Wong Tai Sin District,5936,village,0,0,50,0,none,none
+gn:12746543,Tsz Hong Estate,Wong Tai Sin District,7079,village,0,0,50,0,none,none
+gn:12746544,Tsui Chuk Garden,Wong Tai Sin District,10071,town,0,0,50,0,none,none
+gn:12746545,Fung Tak Estate,Wong Tai Sin District,12066,town,0,0,50,0,none,none
+gn:12746546,Lok Fu Estate,Wong Tai Sin District,9944,village,0,0,50,0,none,none
+gn:12746547,Wang Tau Hom Estate,Wong Tai Sin District,16794,town,0,0,50,0,none,none
+gn:12746548,Lung Poon Court,Wong Tai Sin District,6550,village,0,0,50,0,none,none
+gn:12746549,King Shan Court,Wong Tai Sin District,3999,village,0,0,50,0,none,none
+gn:12746550,The Latitude,Wong Tai Sin District,3264,village,0,0,50,0,none,none
+gn:12747063,New Territories,,3984077,large-city,0,0,50,0,none,none
+gn:12747064,Hong Kong Island,,1195529,large-city,0,0,50,0,none,none
+gn:13308632,Kowloon City Centre,Kowloon City,194290,city,0,0,50,0,none,none
+gn:13308633,Kowloon West End,Kowloon City,74710,town,0,0,50,0,none,none

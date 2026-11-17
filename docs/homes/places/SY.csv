@@ -1,0 +1,310 @@
+place_id,name,region,population,market,verified_homes,dated_listings,shortfall_to_50,recorded_sales,rent_source,price_source
+gn:2960,Ayn Halaqim,Hama,0,village,0,0,50,0,none,none
+gn:4273,Al Karāmah,Raqqa,0,village,0,0,50,0,none,none
+gn:5174,‘Arīqah,Suwayda,0,village,0,0,50,0,none,none
+gn:12795,Aş Şūrah aş Şaghīrah,Suwayda,0,village,0,0,50,0,none,none
+gn:162284,Mūḩ Ḩasan,Deir ez-Zor,0,village,0,0,50,0,none,none
+gn:162560,Zākīyah,Rif-dimashq,18553,town,0,0,50,0,none,none
+gn:162627,Yabrūd,Rif-dimashq,40502,town,0,0,50,0,none,none
+gn:162706,Wādī al ‘Uyūn,Hama,0,village,0,0,50,0,none,none
+gn:162803,‘Uqayribāt,Hama,0,village,0,0,50,0,none,none
+gn:163270,Ţayyibat al Imām,Hama,29259,town,0,0,50,0,none,none
+gn:163330,Tasīl,Daraa,0,village,0,0,50,0,none,none
+gn:163345,Ţarţūs,Tartus,458327,city,0,0,50,0,none,none
+gn:163434,Tall Tamr,Al-Hasakah,0,village,0,0,50,0,none,none
+gn:163470,Tall Salḩab,Hama,0,village,0,0,50,0,none,none
+gn:163476,Tall Rif‘at,Aleppo,25658,town,0,0,50,0,none,none
+gn:163533,Tallkalakh,Homs,29754,town,0,0,50,0,none,none
+gn:163568,Tall Ḩamīs,Al-Hasakah,0,village,0,0,50,0,none,none
+gn:163596,Talldaww,Homs,0,village,0,0,50,0,none,none
+gn:163747,Tall aḑ Ḑamān,Aleppo,0,village,0,0,50,0,none,none
+gn:163750,Tall Abyaḑ,Raqqa,0,village,0,0,50,0,none,none
+gn:163774,Tālīn,Tartus,0,village,0,0,50,0,none,none
+gn:163779,Tallbīsah,Homs,38491,town,0,0,50,0,none,none
+gn:163799,Taftanāz,Idlib,0,village,0,0,50,0,none,none
+gn:163806,Ţafas,Daraa,31249,town,0,0,50,0,none,none
+gn:163808,Tadmur,Homs,51015,town,0,0,50,0,none,none
+gn:163811,Tādif,Aleppo,34670,town,0,0,50,0,none,none
+gn:163913,Şūrān,Aleppo,0,village,0,0,50,0,none,none
+gn:163915,Şūrān,Hama,30716,town,0,0,50,0,none,none
+gn:163921,As Suqaylibīyah,Hama,0,village,0,0,50,0,none,none
+gn:164025,Subaykhān,Deir ez-Zor,25514,town,0,0,50,0,none,none
+gn:164052,Şlinfah,Latakia,0,village,0,0,50,0,none,none
+gn:164071,Şirrīn ash Shamālīyah,Aleppo,0,village,0,0,50,0,none,none
+gn:164083,Sirghāyā,Rif-dimashq,0,village,0,0,50,0,none,none
+gn:164094,Sinjār,Idlib,0,village,0,0,50,0,none,none
+gn:164159,Shuyūkh Taḩtānī,Aleppo,0,village,0,0,50,0,none,none
+gn:164261,Shīn,Homs,0,village,0,0,50,0,none,none
+gn:164328,Shaykh Miskīn,Daraa,25920,town,0,0,50,0,none,none
+gn:164354,Shaykh al Ḩadīd,Aleppo,0,village,0,0,50,0,none,none
+gn:164398,Shaţḩah,Hama,8076,village,0,0,50,0,none,none
+gn:164451,Sharān,Aleppo,0,village,0,0,50,0,none,none
+gn:164479,Shaqqā,Suwayda,5116,village,0,0,50,0,none,none
+gn:164626,Shahbā,Suwayda,14784,town,0,0,50,0,none,none
+gn:164717,Şaydnāyā,Rif-dimashq,0,village,0,0,50,0,none,none
+gn:164773,Sa‘sa‘,Rif-dimashq,0,village,0,0,50,0,none,none
+gn:164782,Sarmīn,Idlib,0,village,0,0,50,0,none,none
+gn:164816,Saraqib,Idlib,34231,town,0,0,50,0,none,none
+gn:164889,Şamād,Daraa,3098,village,0,0,50,0,none,none
+gn:164895,Sulūk,Raqqa,0,village,0,0,50,0,none,none
+gn:164898,Salqīn,Idlib,31608,town,0,0,50,0,none,none
+gn:164917,Şalkhad,Suwayda,9155,village,0,0,50,0,none,none
+gn:164947,As Salamīyah,Hama,94887,town,0,0,50,0,none,none
+gn:164952,Şalākhid,Suwayda,12842,town,0,0,50,0,none,none
+gn:164994,Şaḩnāyā,Rif-dimashq,30519,town,0,0,50,0,none,none
+gn:165060,Şāfītā,Tartus,27815,town,0,0,50,0,none,none
+gn:165109,Şadad,Homs,0,village,0,0,50,0,none,none
+gn:165143,Şabbūrah,Hama,0,village,0,0,50,0,none,none
+gn:165158,As Sab‘ Biyār,Rif-dimashq,0,village,0,0,50,0,none,none
+gn:165303,Ar Riqāmā,Homs,0,village,0,0,50,0,none,none
+gn:165428,Rasm al Ḩarmal,Aleppo,0,village,0,0,50,0,none,none
+gn:165509,Ra’s al ‘Ayn,Al-Hasakah,0,village,0,0,50,0,none,none
+gn:165533,Rankūs,Rif-dimashq,0,village,0,0,50,0,none,none
+gn:165571,Rājū,Aleppo,0,village,0,0,50,0,none,none
+gn:165637,Al Quţaylibīyah,Latakia,0,village,0,0,50,0,none,none
+gn:165672,Qūrqīnā,Idlib,0,village,0,0,50,0,none,none
+gn:165757,Al Qaḩţānīyah,Al-Hasakah,0,village,0,0,50,0,none,none
+gn:165929,Qaţanā,Rif-dimashq,18511,town,0,0,50,0,none,none
+gn:165940,Qasţal Ma‘āf,Latakia,0,village,0,0,50,0,none,none
+gn:165997,Jāsim,Daraa,30283,town,0,0,50,0,none,none
+gn:166111,Qārah,Rif-dimashq,20656,town,0,0,50,0,none,none
+gn:166141,Qanawāt,Suwayda,8324,village,0,0,50,0,none,none
+gn:166158,Al Qamşīyah,Tartus,0,village,0,0,50,0,none,none
+gn:166227,Qal‘at al Maḑīq,Hama,0,village,0,0,50,0,none,none
+gn:166251,Qadsayyā,Rif-dimashq,0,village,0,0,50,0,none,none
+gn:166285,Kabbasin,Aleppo,51230,town,0,0,50,0,none,none
+gn:166331,Nubl,Aleppo,25546,town,0,0,50,0,none,none
+gn:166365,Nawá,Daraa,47066,town,0,0,50,0,none,none
+gn:166503,Al Muzayrīb,Daraa,0,village,0,0,50,0,none,none
+gn:166507,Al Muzayri‘ah,Latakia,0,village,0,0,50,0,none,none
+gn:166597,Al Jalā’,Deir ez-Zor,0,village,0,0,50,0,none,none
+gn:166640,Mūrak,Hama,14307,town,0,0,50,0,none,none
+gn:166716,al-Yarmūk,Damascus Governorate,99999,town,0,0,50,0,none,none
+gn:166719,Mukharram al Fawqānī,Homs,9112,village,0,0,50,0,none,none
+gn:166742,Maharda,Hama,17578,town,0,0,50,0,none,none
+gn:166757,Muḩambal,Idlib,0,village,0,0,50,0,none,none
+gn:166833,Muadamiyat al-Sham,Rif-dimashq,52738,town,0,0,50,0,none,none
+gn:166946,Mazra‘at Bayt Jinn,Rif-dimashq,0,village,0,0,50,0,none,none
+gn:167046,Maşyāf,Hama,32262,town,0,0,50,0,none,none
+gn:167080,Maskanah,Aleppo,0,village,0,0,50,0,none,none
+gn:167100,Mashtá al Ḩulw,Tartus,0,village,0,0,50,0,none,none
+gn:167167,Mas‘adah,Quneitra,0,village,0,0,50,0,none,none
+gn:167208,Markadah,Al-Hasakah,0,village,0,0,50,0,none,none
+gn:167245,Māri‘,Aleppo,0,village,0,0,50,0,none,none
+gn:167357,Manbij,Aleppo,99497,town,0,0,50,0,none,none
+gn:167375,Ma‘lūlā,Rif-dimashq,5000,village,0,0,50,0,none,none
+gn:167408,Malaḩ,Suwayda,0,village,0,0,50,0,none,none
+gn:167444,Majdal Shams,Quneitra,11180,town,0,0,50,0,none,none
+gn:167488,Mahīn,Homs,0,village,0,0,50,0,none,none
+gn:167538,Ma‘dān,Raqqa,0,village,0,0,50,0,none,none
+gn:167558,Maḑāyā,Rif-dimashq,0,village,0,0,50,0,none,none
+gn:167577,Al Ma‘baţlī,Aleppo,0,village,0,0,50,0,none,none
+gn:167605,Ma‘arratmişrīn,Idlib,32163,town,0,0,50,0,none,none
+gn:167611,Ma‘arrat an Nu‘mān,Idlib,0,village,0,0,50,0,none,none
+gn:167713,Kuwayris Sharqī,Aleppo,0,village,0,0,50,0,none,none
+gn:167739,Kurnāz,Hama,0,village,0,0,50,0,none,none
+gn:167863,Kinnsibbā,Latakia,0,village,0,0,50,0,none,none
+gn:167880,Rabī‘ah,Latakia,0,village,0,0,50,0,none,none
+gn:167899,Khushām,Deir ez-Zor,0,village,0,0,50,0,none,none
+gn:168052,Khirbat Tīn Nūr,Homs,0,village,0,0,50,0,none,none
+gn:168061,Qabbāsīn,Aleppo,12000,town,0,0,50,0,none,none
+gn:168098,Al Qabw,Homs,0,village,0,0,50,0,none,none
+gn:168102,Khirbat al Ma‘azzah,Tartus,0,village,0,0,50,0,none,none
+gn:168120,Khirbat Ghazālah,Daraa,0,village,0,0,50,0,none,none
+gn:168325,Khān Shaykhūn,Idlib,48975,town,0,0,50,0,none,none
+gn:168351,Khanāşir,Aleppo,0,village,0,0,50,0,none,none
+gn:168355,Khān Arnabah,Quneitra,0,village,0,0,50,0,none,none
+gn:168422,Al Khafsah,Aleppo,0,village,0,0,50,0,none,none
+gn:168478,Al Ghandūrah,Aleppo,0,village,0,0,50,0,none,none
+gn:168519,Kassab,Latakia,0,village,0,0,50,0,none,none
+gn:168538,Ra’s al Khashūfah,Tartus,0,village,0,0,50,0,none,none
+gn:168541,Al Karīmah,Tartus,0,village,0,0,50,0,none,none
+gn:168579,Kanākir,Rif-dimashq,13950,town,0,0,50,0,none,none
+gn:168620,Kafr Zaytā,Hama,21845,town,0,0,50,0,none,none
+gn:168629,Kafr Takhārīm,Idlib,22436,town,0,0,50,0,none,none
+gn:168634,Kafr Shams,Daraa,12435,town,0,0,50,0,none,none
+gn:168653,Kafr Nāsij,Daraa,2381,village,0,0,50,0,none,none
+gn:168661,Kafranbel,Idlib,45652,town,0,0,50,0,none,none
+gn:168668,Kafr Lāhā,Homs,21819,town,0,0,50,0,none,none
+gn:168708,Kafr Buhum,Hama,12194,town,0,0,50,0,none,none
+gn:168713,Kafr Baţnā,Rif-dimashq,0,village,0,0,50,0,none,none
+gn:168724,Kafr Şaghīr,Aleppo,3130,village,0,0,50,0,none,none
+gn:168852,Junaynat Raslān,Tartus,0,village,0,0,50,0,none,none
+gn:168917,Jubb Ramlah,Hama,0,village,0,0,50,0,none,none
+gn:168972,Jubb al Jarrāḩ,Homs,0,village,0,0,50,0,none,none
+gn:169017,Al Jīzah,Daraa,0,village,0,0,50,0,none,none
+gn:169023,Jisr ash Shughūr,Idlib,39311,town,0,0,50,0,none,none
+gn:169041,Jinnīyah,Raqqa,5000,village,0,0,50,0,none,none
+gn:169113,Jayrūd,Rif-dimashq,32352,town,0,0,50,0,none,none
+gn:169135,Jawbat Burghāl,Latakia,0,village,0,0,50,0,none,none
+gn:169138,Ar Rā‘ī,Aleppo,0,village,0,0,50,0,none,none
+gn:169162,Al Jarnīyah,Raqqa,0,village,0,0,50,0,none,none
+gn:169174,Jaramānā,Rif-dimashq,99999,town,0,0,50,0,none,none
+gn:169179,Jarābulus,Aleppo,24997,town,0,0,50,0,none,none
+gn:169190,Jindayris,Aleppo,13661,town,0,0,50,0,none,none
+gn:169304,Jablah,Latakia,65915,town,0,0,50,0,none,none
+gn:169334,Jabā,Quneitra,5281,village,0,0,50,0,none,none
+gn:169341,Izra‘,Daraa,13882,town,0,0,50,0,none,none
+gn:169358,Lislāmīn,Idlib,1022,village,0,0,50,0,none,none
+gn:169372,‘Irbīn,Rif-dimashq,42474,town,0,0,50,0,none,none
+gn:169375,Inkhil,Daraa,29076,town,0,0,50,0,none,none
+gn:169389,Idlib,Idlib,128840,city,0,0,50,0,none,none
+gn:169557,Ḩisyā’,Homs,0,village,0,0,50,0,none,none
+gn:169563,Ḩīsh,Idlib,0,village,0,0,50,0,none,none
+gn:169577,Homs,Homs,775404,large-city,0,0,50,0,none,none
+gn:169579,Ḩimmīn,Tartus,0,village,0,0,50,0,none,none
+gn:169843,Ḩarrān al ‘Awāmīd,Rif-dimashq,0,village,0,0,50,0,none,none
+gn:169858,Ḩuraytān,Aleppo,0,village,0,0,50,0,none,none
+gn:169866,Ḩārim,Idlib,0,village,0,0,50,0,none,none
+gn:169873,Ḩarf al Musaytirah,Latakia,0,village,0,0,50,0,none,none
+gn:169886,Ḩarbinafsah,Hama,0,village,0,0,50,0,none,none
+gn:169897,Ḩarastā,Rif-dimashq,37348,town,0,0,50,0,none,none
+gn:169966,Ḩammām Wāşil,Tartus,0,village,0,0,50,0,none,none
+gn:170017,Ḩamāh,Hama,460602,city,0,0,50,0,none,none
+gn:170044,Ḩalfāyā,Hama,23403,town,0,0,50,0,none,none
+gn:170063,Aleppo,Aleppo,2098210,large-city,0,0,50,0,none,none
+gn:170136,Ḩadīdah,Homs,0,village,0,0,50,0,none,none
+gn:170137,Al Ḩāḑir,Aleppo,0,village,0,0,50,0,none,none
+gn:170245,Ghaşam,Daraa,3666,village,0,0,50,0,none,none
+gn:170325,Ghabāghib,Daraa,0,village,0,0,50,0,none,none
+gn:170340,Al Furqlus,Homs,0,village,0,0,50,0,none,none
+gn:170483,Al Fākhūrah,Latakia,0,village,0,0,50,0,none,none
+gn:170517,Duwayr Raslān,Tartus,0,village,0,0,50,0,none,none
+gn:170572,Ad Duraykīsh,Tartus,11918,town,0,0,50,0,none,none
+gn:170589,Aḑ Ḑumayr,Rif-dimashq,0,village,0,0,50,0,none,none
+gn:170592,Dūmā,Rif-dimashq,111864,city,0,0,50,0,none,none
+gn:170654,Damascus,Damascus Governorate,1569394,large-city,0,0,50,0,none,none
+gn:170689,Dhībbīn,Suwayda,0,village,0,0,50,0,none,none
+gn:170691,Dhībān,Deir ez-Zor,0,village,0,0,50,0,none,none
+gn:170777,Dayr Mākir,Rif-dimashq,3228,village,0,0,50,0,none,none
+gn:170785,Dayr Ḩāfir,Aleppo,28905,town,0,0,50,0,none,none
+gn:170794,Deir ez-Zor,Deir ez-Zor,271800,city,0,0,50,0,none,none
+gn:170797,Dayr ‘Aţīyah,Rif-dimashq,0,village,0,0,50,0,none,none
+gn:170817,Dayr al ‘Aşāfīr,Rif-dimashq,6209,village,0,0,50,0,none,none
+gn:170857,Dārat ‘Izzah,Aleppo,0,village,0,0,50,0,none,none
+gn:170865,Darkūsh,Idlib,0,village,0,0,50,0,none,none
+gn:170887,Ad Darbāsīyah,Al-Hasakah,21481,town,0,0,50,0,none,none
+gn:170892,Dārayyā,Rif-dimashq,71596,town,0,0,50,0,none,none
+gn:170905,Dar‘ā,Daraa,97969,town,0,0,50,0,none,none
+gn:170959,Dā‘il,Daraa,29408,town,0,0,50,0,none,none
+gn:171126,Buşrá ash Shām,Daraa,1000,village,0,0,50,0,none,none
+gn:171147,Burj Islām,Latakia,30000,town,0,0,50,0,none,none
+gn:171200,Buq‘ātā,Quneitra,6528,village,0,0,50,0,none,none
+gn:171212,Bulbul,Aleppo,0,village,0,0,50,0,none,none
+gn:171295,Brummānat al Mashāyikh,Tartus,0,village,0,0,50,0,none,none
+gn:171410,Bi’r al Ḩulw al Wardīyah,Al-Hasakah,0,village,0,0,50,0,none,none
+gn:171451,Binnish,Idlib,30354,town,0,0,50,0,none,none
+gn:171494,Bdāmā,Idlib,0,village,0,0,50,0,none,none
+gn:171501,Ar Rawḑah,Tartus,0,village,0,0,50,0,none,none
+gn:171694,Batabo,Aleppo,25560,town,0,0,50,0,none,none
+gn:171706,Başīr,Daraa,1442,village,0,0,50,0,none,none
+gn:171757,Barrī ash Sharqī,Hama,0,village,0,0,50,0,none,none
+gn:171830,Bāniyās,Tartus,39066,town,0,0,50,0,none,none
+gn:171851,Banān,Aleppo,0,village,0,0,50,0,none,none
+gn:171998,Babīlā,Rif-dimashq,50880,town,0,0,50,0,none,none
+gn:172027,Az Ziyārah,Hama,0,village,0,0,50,0,none,none
+gn:172045,Az Zarbah,Aleppo,0,village,0,0,50,0,none,none
+gn:172059,Az Zabadānī,Rif-dimashq,29549,town,0,0,50,0,none,none
+gn:172082,I‘zāz,Aleppo,66138,town,0,0,50,0,none,none
+gn:172093,Ayyūbīyah,Hama,1980,village,0,0,50,0,none,none
+gn:172134,‘Ayn ‘Īsá,Raqqa,0,village,0,0,50,0,none,none
+gn:172157,‘Ayn at Tīnah,Latakia,0,village,0,0,50,0,none,none
+gn:172159,Sabbah,Tartus,0,village,0,0,50,0,none,none
+gn:172172,‘Ayn Shiqāq,Latakia,0,village,0,0,50,0,none,none
+gn:172173,‘Ayn ash Sharqīyah,Latakia,0,village,0,0,50,0,none,none
+gn:172232,‘Ayn al Fījah,Rif-dimashq,0,village,0,0,50,0,none,none
+gn:172243,‘Ayn al Bayḑā,Latakia,0,village,0,0,50,0,none,none
+gn:172256,‘Ayn al ‘Arab,Aleppo,50000,town,0,0,50,0,none,none
+gn:172308,‘Awaj,Hama,0,village,0,0,50,0,none,none
+gn:172327,At Tibnī,Deir ez-Zor,0,village,0,0,50,0,none,none
+gn:172339,Aţ Ţawāḩīn,Tartus,0,village,0,0,50,0,none,none
+gn:172347,At Tamāni‘ah,Idlib,0,village,0,0,50,0,none,none
+gn:172349,At Tall,Rif-dimashq,55561,town,0,0,50,0,none,none
+gn:172374,Al-Tabqa,Raqqa,87880,town,0,0,50,0,none,none
+gn:172408,As-Suwayda,Suwayda,59052,town,0,0,50,0,none,none
+gn:172415,As Sūsah,Deir ez-Zor,8797,village,0,0,50,0,none,none
+gn:172425,As Sukhnah,Homs,0,village,0,0,50,0,none,none
+gn:172432,As Sīsnīyah,Tartus,0,village,0,0,50,0,none,none
+gn:172441,Al Mazra‘ah,Suwayda,0,village,0,0,50,0,none,none
+gn:172454,As Sawdā,Tartus,0,village,0,0,50,0,none,none
+gn:172469,Aş Şanamayn,Daraa,25702,town,0,0,50,0,none,none
+gn:172487,‘Assāl al Ward,Rif-dimashq,0,village,0,0,50,0,none,none
+gn:172497,Aş Şafşāfah,Tartus,0,village,0,0,50,0,none,none
+gn:172503,As Safīrah,Aleppo,63708,town,0,0,50,0,none,none
+gn:172511,As Sabkhah,Raqqa,0,village,0,0,50,0,none,none
+gn:172515,As Si‘in,Hama,0,village,0,0,50,0,none,none
+gn:172743,Ash Shaykh Badr,Tartus,0,village,0,0,50,0,none,none
+gn:172829,Ash Shajarah,Daraa,0,village,0,0,50,0,none,none
+gn:172837,Ash Shaddādah,Al-Hasakah,0,village,0,0,50,0,none,none
+gn:172880,Arwād,Tartus,0,village,0,0,50,0,none,none
+gn:172922,Ar Ruḩaybah,Rif-dimashq,0,village,0,0,50,0,none,none
+gn:172946,Ar Rastan,Homs,53152,town,0,0,50,0,none,none
+gn:172955,Ar Raqqah,Raqqa,531952,large-city,0,0,50,0,none,none
+gn:172988,Armanāz,Idlib,0,village,0,0,50,0,none,none
+gn:172994,Arīḩā,Idlib,0,village,0,0,50,0,none,none
+gn:173126,‘Aqrabā,Daraa,4413,village,0,0,50,0,none,none
+gn:173178,An Nashābīyah,Rif-dimashq,0,village,0,0,50,0,none,none
+gn:173193,An Nabk,Rif-dimashq,49372,town,0,0,50,0,none,none
+gn:173230,‘Āmūdā,Al-Hasakah,26821,town,0,0,50,0,none,none
+gn:173311,Al Ghanţū,Homs,9412,village,0,0,50,0,none,none
+gn:173312,Al Quţayfah,Rif-dimashq,16118,town,0,0,50,0,none,none
+gn:173322,Al Quşayr,Homs,41062,town,0,0,50,0,none,none
+gn:173331,Al Qurayyā,Suwayda,6789,village,0,0,50,0,none,none
+gn:173334,Al Qunayţirah,Quneitra,36143,town,0,0,50,0,none,none
+gn:173361,Al Qaryatayn,Homs,31748,town,0,0,50,0,none,none
+gn:173364,Al Qardāḩah,Latakia,0,village,0,0,50,0,none,none
+gn:173377,Al Qāmishlī,Al-Hasakah,184231,city,0,0,50,0,none,none
+gn:173389,Al Qadmūs,Tartus,0,village,0,0,50,0,none,none
+gn:173414,Al Mushannaf,Suwayda,0,village,0,0,50,0,none,none
+gn:173416,Al Musayfirah,Daraa,10466,town,0,0,50,0,none,none
+gn:173434,Al Mulayḩah,Rif-dimashq,0,village,0,0,50,0,none,none
+gn:173462,Mismīyah,Daraa,0,village,0,0,50,0,none,none
+gn:173480,Al Mayādīn,Deir ez-Zor,54534,town,0,0,50,0,none,none
+gn:173530,Al Mālikīyah,Al-Hasakah,26311,town,0,0,50,0,none,none
+gn:173576,Latakia,Latakia,709000,large-city,0,0,50,0,none,none
+gn:173598,Al Kiswah,Rif-dimashq,23526,town,0,0,50,0,none,none
+gn:173606,An Nāşirah,Homs,0,village,0,0,50,0,none,none
+gn:173711,Al Jawādīyah,Al-Hasakah,0,village,0,0,50,0,none,none
+gn:173715,Al Jānūdīyah,Idlib,0,village,0,0,50,0,none,none
+gn:173777,Al Hinādī,Latakia,0,village,0,0,50,0,none,none
+gn:173797,Al Ḩawl,Al-Hasakah,0,village,0,0,50,0,none,none
+gn:173802,Al Ḩawāsh,Homs,0,village,0,0,50,0,none,none
+gn:173811,Al Ḩasakah,Al-Hasakah,422445,city,0,0,50,0,none,none
+gn:173819,Al Ḩirāk,Daraa,23784,town,0,0,50,0,none,none
+gn:173830,Al Ḩamrā’,Hama,0,village,0,0,50,0,none,none
+gn:173842,Al Ḩamīdīyah,Tartus,0,village,0,0,50,0,none,none
+gn:173852,Al Ḩājib,Aleppo,0,village,0,0,50,0,none,none
+gn:173856,Al Ḩaffah,Latakia,0,village,0,0,50,0,none,none
+gn:173869,Al Ghizlānīyah,Rif-dimashq,0,village,0,0,50,0,none,none
+gn:173880,Al Ghāriyah,Suwayda,0,village,0,0,50,0,none,none
+gn:173927,Al Buşayrah,Deir ez-Zor,0,village,0,0,50,0,none,none
+gn:173991,Al Bāriqīyah,Tartus,0,village,0,0,50,0,none,none
+gn:174012,Al Bahlūlīyah,Latakia,0,village,0,0,50,0,none,none
+gn:174018,Al Bāb,Aleppo,130745,city,0,0,50,0,none,none
+gn:174030,Al Atārib,Aleppo,0,village,0,0,50,0,none,none
+gn:174036,Al ‘Ashārah,Deir ez-Zor,0,village,0,0,50,0,none,none
+gn:174043,Al ‘Arīmah,Aleppo,0,village,0,0,50,0,none,none
+gn:174057,Al ‘Annāzah,Tartus,0,village,0,0,50,0,none,none
+gn:174115,Akhtarīn,Aleppo,0,village,0,0,50,0,none,none
+gn:174144,Iḩsim,Idlib,0,village,0,0,50,0,none,none
+gn:174186,‘Afrīn,Aleppo,48693,town,0,0,50,0,none,none
+gn:174191,Afis,Idlib,6338,village,0,0,50,0,none,none
+gn:174239,Ad Dīmās,Rif-dimashq,0,village,0,0,50,0,none,none
+gn:174259,Ad Dānā,Idlib,21987,town,0,0,50,0,none,none
+gn:174262,Ad Dālīyah,Latakia,0,village,0,0,50,0,none,none
+gn:174407,Abū Qalqal,Aleppo,0,village,0,0,50,0,none,none
+gn:174448,Ālbū Kamāl,Deir ez-Zor,57572,town,0,0,50,0,none,none
+gn:174506,Hajīn,Deir ez-Zor,29237,town,0,0,50,0,none,none
+gn:174611,Abū az̧ Z̧uhūr,Idlib,0,village,0,0,50,0,none,none
+gn:383661,Al Ya‘rubīyah,Al-Hasakah,0,village,0,0,50,0,none,none
+gn:421015,‘Arīshah,Al-Hasakah,0,village,0,0,50,0,none,none
+gn:6943439,Kaff al-Jaa,Tartus,3500,village,0,0,50,0,none,none
+gn:7891616,‘Ayn an Nasr,Homs,0,village,0,0,50,0,none,none
+gn:7905767,Nāḩiyat as Sab‘ Biyār,Rif-dimashq,0,village,0,0,50,0,none,none
+gn:8308210,Al Kasrah,Deir ez-Zor,0,village,0,0,50,0,none,none
+gn:8419677,Al Ḩajar al Aswad,Rif-dimashq,0,village,0,0,50,0,none,none
+gn:8559276,Al Manşūrah,Raqqa,0,village,0,0,50,0,none,none
+gn:8609252,Bayt Yāshūţ,Latakia,0,village,0,0,50,0,none,none
+gn:9847679,Tremseh,Hama,6927,village,0,0,50,0,none,none
+gn:11257949,Qenterê,Aleppo,0,village,0,0,50,0,none,none
+gn:11431916,Kafr Mūsá Al-Hmidiya,Homs,3000,village,0,0,50,0,none,none

@@ -1,0 +1,23 @@
+place_id,name,region,population,market,verified_homes,dated_listings,shortfall_to_50,recorded_sales,rent_source,price_source
+gn:1559350,Ngermid Hamlet,Koror,1045,village,0,0,50,0,none,none
+gn:1559400,Ngerbeched Hamlet,Koror,1404,village,0,0,50,0,none,none
+gn:1559446,Koror,Koror,14000,town,0,0,50,0,none,none
+gn:1559513,Ngerchemai Hamlet,Koror,1376,village,0,0,50,0,none,none
+gn:1559543,Ulimang,Ngaraard,581,village,0,0,50,0,none,none
+gn:1559804,Melekeok Village,Melekeok,271,village,0,0,50,0,none,none
+gn:1559814,Medalaii Hamlet,Koror,2284,village,0,0,50,0,none,none
+gn:1559820,Ngereklmadel,Ngatpang,0,village,0,0,50,0,none,none
+gn:1559864,Imeong Hamlet,Ngeremlengui,132,village,0,0,50,0,none,none
+gn:4036778,Ngchesar Hamlet,Ngchesar,300,village,0,0,50,0,none,none
+gn:4038014,Ngerkeai,Ngiwal,223,village,0,0,50,0,none,none
+gn:4038170,Mengellang,Ngarchelong,488,village,0,0,50,0,none,none
+gn:4038282,Angaur State,Angaur,188,village,0,0,50,0,none,none
+gn:7670730,Tobi Village,Hatohobei,44,village,0,0,50,0,none,none
+gn:7670816,Sonsorol Village,Sonsorol,30,village,0,0,50,0,none,none
+gn:7670994,Kayangel,Kayangel,188,village,0,0,50,0,none,none
+gn:7671223,Kloulklubed,Peleliu,702,village,0,0,50,0,none,none
+gn:7701549,Ngetkib,Airai,62,village,0,0,50,0,none,none
+gn:7732276,Ngchemiangel,Aimeliik,270,village,0,0,50,0,none,none
+gn:7732297,Ngardmau,Ngardmau,221,village,0,0,50,0,none,none
+gn:7732415,Koror Town,Koror,12676,town,0,0,50,0,none,none
+gn:8063361,Ngerulmud,Melekeok,0,village,0,0,50,0,none,none

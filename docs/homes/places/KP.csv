@@ -1,0 +1,128 @@
+place_id,name,region,population,market,verified_homes,dated_listings,shortfall_to_50,recorded_sales,rent_source,price_source
+gn:1866362,Ryonggang-ŭp,Nampo,13440,town,0,0,50,0,none,none
+gn:1866453,Yŏngbyŏn,P'yŏngan-bukto,9584,village,0,0,50,0,none,none
+gn:1866569,Yŏnan-ŭp,South Hwanghae,22665,town,0,0,50,0,none,none
+gn:1866587,Yŏmju,P'yŏngan-bukto,9437,village,0,0,50,0,none,none
+gn:1866923,Wŏnsan,Kangwŏn-do,329207,city,0,0,50,0,none,none
+gn:1867377,Ŭnch’ŏn-ŭp,South Hwanghae,95597,town,0,0,50,0,none,none
+gn:1867429,Ŭllyul,South Hwanghae,107997,city,0,0,50,0,none,none
+gn:1867927,T’ongch’ŏn-ŭp,Kangwŏn-do,20575,town,0,0,50,0,none,none
+gn:1868144,Tŏkch’ŏn,South Pyongan,237133,city,0,0,50,0,none,none
+gn:1868578,T’aet’an-ŭp,South Hwanghae,64258,town,0,0,50,0,none,none
+gn:1868998,Sŭngho 1-tong,Pyongyang,39841,town,0,0,50,0,none,none
+gn:1869012,Sunch’ŏn,South Pyongan,437000,city,0,0,50,0,none,none
+gn:1869021,Sunan,Pyongyang,36671,town,0,0,50,0,none,none
+gn:1869446,Songnim-ni,North Hwanghae,152425,city,0,0,50,0,none,none
+gn:1869577,Songhwa,South Hwanghae,44274,town,0,0,50,0,none,none
+gn:1870277,Sinwŏn-ŭp,South Hwanghae,83161,town,0,0,50,0,none,none
+gn:1870413,Sil-li,South Pyongan,19463,town,0,0,50,0,none,none
+gn:1870434,Sinmak,North Hwanghae,18669,town,0,0,50,0,none,none
+gn:1870586,Sindo,P'yŏngan-bukto,11810,town,0,0,50,0,none,none
+gn:1870648,Sinch’ŏn-ŭp,South Hwanghae,141407,city,0,0,50,0,none,none
+gn:1870742,Sinanju,South Pyongan,15693,town,0,0,50,0,none,none
+gn:1870883,Sariwŏn-si,North Hwanghae,310100,city,0,0,50,0,none,none
+gn:1871028,Sangsŏng-ni,South Pyongan,9888,village,0,0,50,0,none,none
+gn:1871484,Samho-rodongjagu,South Hamgyong,19025,town,0,0,50,0,none,none
+gn:1871537,Samch’ŏn,South Hwanghae,86042,town,0,0,50,0,none,none
+gn:1871859,Pyongyang,Pyongyang,3222000,large-city,0,0,50,0,none,none
+gn:1871871,P’yŏngsŏng,South Pyongan,100000,city,0,0,50,0,none,none
+gn:1871932,Pongch’ŏn-ŭp,South Hwanghae,79740,town,0,0,50,0,none,none
+gn:1871967,Pyŏksŏng-ŭp,South Hwanghae,12937,town,0,0,50,0,none,none
+gn:1872726,Panghyŏn-dong,P'yŏngan-bukto,11026,town,0,0,50,0,none,none
+gn:1873014,Paech’ŏn-ŭp,South Hwanghae,159825,city,0,0,50,0,none,none
+gn:1873172,Ongjin,South Hwanghae,64247,town,0,0,50,0,none,none
+gn:1873757,Namp’o,Nampo,455000,city,0,0,50,0,none,none
+gn:1874533,Man’gyŏngdae-ri,Pyongyang,321690,city,0,0,50,0,none,none
+gn:1875054,Kwaksan,P'yŏngan-bukto,10478,town,0,0,50,0,none,none
+gn:1875060,Kwail-ŭp,South Hwanghae,89895,town,0,0,50,0,none,none
+gn:1875107,Kusŏng-si,P'yŏngan-bukto,30902,town,0,0,50,0,none,none
+gn:1875506,Kujang-ŭp,P'yŏngan-bukto,19522,town,0,0,50,0,none,none
+gn:1875588,Kowŏn-ŭp,South Hamgyong,21490,town,0,0,50,0,none,none
+gn:1875632,Kosan,Kangwŏn-do,24822,town,0,0,50,0,none,none
+gn:1875790,Koksan-ŭp,North Hwanghae,12923,town,0,0,50,0,none,none
+gn:1876105,Kangsŏn,South Pyongan,102436,city,0,0,50,0,none,none
+gn:1876124,Kangnyŏng,South Hwanghae,106827,city,0,0,50,0,none,none
+gn:1876153,Kangdong-ŭp,Pyongyang,28922,town,0,0,50,0,none,none
+gn:1876373,Kaesŏng,Kaesong,338155,city,0,0,50,0,none,none
+gn:1876401,Kaech’ŏn,South Pyongan,319554,city,0,0,50,0,none,none
+gn:1876873,Hwangju-ŭp,North Hwanghae,35641,town,0,0,50,0,none,none
+gn:1876976,Twimoraet’ŏ,Pyongyang,13050,town,0,0,50,0,none,none
+gn:1877030,Hŭngnam,South Hamgyong,346082,city,0,0,50,0,none,none
+gn:1877046,Hŭkkyo-ri,North Hwanghae,25437,town,0,0,50,0,none,none
+gn:1877148,Hoeyang,Kangwŏn-do,21111,town,0,0,50,0,none,none
+gn:1877449,Hamhŭng,South Hamgyong,559056,large-city,0,0,50,0,none,none
+gn:1877615,Haeju,South Hwanghae,222396,city,0,0,50,0,none,none
+gn:1877872,Chunghwa,Pyongyang,19346,town,0,0,50,0,none,none
+gn:1878389,Chŏngju-si,P'yŏngan-bukto,29065,town,0,0,50,0,none,none
+gn:1878458,Ch’ŏngdan-ŭp,South Hwanghae,142607,city,0,0,50,0,none,none
+gn:1879029,Changyŏn,South Hwanghae,39368,town,0,0,50,0,none,none
+gn:1879487,Chaeryŏng-ŭp,South Hwanghae,53330,town,0,0,50,0,none,none
+gn:1879490,Chaeryŏng-ni,South Pyongan,125631,city,0,0,50,0,none,none
+gn:1879544,Ayang-ni,South Hwanghae,16104,town,0,0,50,0,none,none
+gn:1879613,Anju,South Pyongan,50196,town,0,0,50,0,none,none
+gn:1879672,Anbyŏn-ŭp,Kangwŏn-do,31845,town,0,0,50,0,none,none
+gn:1879682,Anak,North Hwanghae,19995,town,0,0,50,0,none,none
+gn:1889792,Ch’ŏsal-li,South Pyongan,43614,town,0,0,50,0,none,none
+gn:1932058,Sinsang-ni,South Hamgyong,14960,town,0,0,50,0,none,none
+gn:1950953,Paek'ak,South Pyongan,125924,city,0,0,50,0,none,none
+gn:2038854,Yuktae-dong,South Hamgyong,76427,town,0,0,50,0,none,none
+gn:2038902,Yŏnsa-ŭp,North Hamgyong,37876,town,0,0,50,0,none,none
+gn:2039557,Ungsang-nodongjagu,Rason,8410,village,0,0,50,0,none,none
+gn:2039589,Ŭndŏk,North Hamgyong,89244,town,0,0,50,0,none,none
+gn:2039623,Uiju,P'yŏngan-bukto,50081,town,0,0,50,0,none,none
+gn:2039625,Ŭijin-dong,Chagang,0,village,0,0,50,0,none,none
+gn:2040316,Sŭngam-nodongjagu,North Hamgyong,11406,town,0,0,50,0,none,none
+gn:2040480,Songwŏn,Chagang,38051,town,0,0,50,0,none,none
+gn:2040674,Sŏnbong,Rason,27331,town,0,0,50,0,none,none
+gn:2040893,Sinŭiju,P'yŏngan-bukto,288112,city,0,0,50,0,none,none
+gn:2040959,Sinp’o,South Hamgyong,152759,city,0,0,50,0,none,none
+gn:2041137,Sijung,Chagang,41842,town,0,0,50,0,none,none
+gn:2041164,Satan,North Hamgyong,5961,village,0,0,50,0,none,none
+gn:2041442,Samjiyŏn-ŭp,Yanggang-do,31471,town,0,0,50,0,none,none
+gn:2041533,Sakchu-ŭp,P'yŏngan-bukto,18001,town,0,0,50,0,none,none
+gn:2041702,Puryŏng-ŭp,North Hamgyong,48958,town,0,0,50,0,none,none
+gn:2041817,Pukchin-rodongjagu,P'yŏngan-bukto,14129,town,0,0,50,0,none,none
+gn:2042249,Yŏnggwang-ŭp,South Hamgyong,21882,town,0,0,50,0,none,none
+gn:2042255,Ŏrang,North Hamgyong,87757,town,0,0,50,0,none,none
+gn:2042267,Onsŏng,North Hamgyong,19806,town,0,0,50,0,none,none
+gn:2042498,Ranam,North Hamgyong,34055,town,0,0,50,0,none,none
+gn:2042500,Namyang-nodongjagu,North Hamgyong,65956,town,0,0,50,0,none,none
+gn:2042503,Namyang,North Hamgyong,22218,town,0,0,50,0,none,none
+gn:2042645,Rajin,Rason,66224,town,0,0,50,0,none,none
+gn:2042704,Songwŏn-ŭp,Chagang,38051,town,0,0,50,0,none,none
+gn:2042709,Hwasŏng,North Hamgyong,99557,town,0,0,50,0,none,none
+gn:2042718,Myŏngch’ŏn,North Hamgyong,65797,town,0,0,50,0,none,none
+gn:2042738,Musan-ŭp,North Hamgyong,21739,town,0,0,50,0,none,none
+gn:2042893,Manp’o,Chagang,116760,city,0,0,50,0,none,none
+gn:2042985,Sŏngnae-ri,North Hamgyong,12650,town,0,0,50,0,none,none
+gn:2042987,Kyŏngsŏng,North Hamgyong,35604,town,0,0,50,0,none,none
+gn:2043335,Kop’ung,Chagang,31572,town,0,0,50,0,none,none
+gn:2043484,Kilju,North Hamgyong,63652,town,0,0,50,0,none,none
+gn:2043531,Kapsan-ŭp,Yanggang-do,20406,town,0,0,50,0,none,none
+gn:2043572,Kanggye,Chagang,209530,city,0,0,50,0,none,none
+gn:2043677,Iwŏn-ŭp,South Hamgyong,26364,town,0,0,50,0,none,none
+gn:2043835,Hyesan-dong,Yanggang-do,97794,town,0,0,50,0,none,none
+gn:2043837,Hyesan,Yanggang-do,192680,city,0,0,50,0,none,none
+gn:2043962,Hwadae,North Hamgyong,67677,town,0,0,50,0,none,none
+gn:2043983,Hŭngju-dong,Chagang,0,village,0,0,50,0,none,none
+gn:2044050,Hongwŏn,South Hamgyong,70923,town,0,0,50,0,none,none
+gn:2044091,Hoeryŏng,North Hamgyong,43831,town,0,0,50,0,none,none
+gn:2044104,Hoemul-li,North Hamgyong,11681,town,0,0,50,0,none,none
+gn:2044149,Hau-ri,North Hamgyong,13581,town,0,0,50,0,none,none
+gn:2044489,Chunggang,Chagang,41022,town,0,0,50,0,none,none
+gn:2044757,Chongjin,North Hamgyong,327000,city,0,0,50,0,none,none
+gn:2045005,Chasŏng,Chagang,12736,town,0,0,50,0,none,none
+gn:2045220,Changam-ch’on,South Hamgyong,207299,city,0,0,50,0,none,none
+gn:2045311,Aoji-ri,North Hamgyong,34248,town,0,0,50,0,none,none
+gn:2049653,Sŭngjibaegam,Yanggang-do,11786,town,0,0,50,0,none,none
+gn:2050500,Komusan Il-tong,North Hamgyong,12242,town,0,0,50,0,none,none
+gn:2055401,Myŏnggan-dong,North Hamgyong,99557,town,0,0,50,0,none,none
+gn:2055638,Yŏch’im-dong,Chagang,47460,town,0,0,50,0,none,none
+gn:12083759,Hahoe-dong,North Hamgyong,0,village,0,0,50,0,none,none
+gn:12083797,Kogŏnwon,North Hamgyong,0,village,0,0,50,0,none,none
+gn:12083895,Sambong,North Hamgyong,0,village,0,0,50,0,none,none
+gn:12084874,Kwirak,North Hamgyong,0,village,0,0,50,0,none,none
+gn:12084881,Ungsang,Rason,0,village,0,0,50,0,none,none
+gn:12088116,Namsan,North Hamgyong,0,village,0,0,50,0,none,none
+gn:12090378,P’ungin,North Hamgyong,0,village,0,0,50,0,none,none
+gn:13446724,Unggi,Rason,27331,town,0,0,50,0,none,none

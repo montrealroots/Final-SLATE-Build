@@ -1,0 +1,220 @@
+place_id,name,region,population,market,verified_homes,dated_listings,shortfall_to_50,recorded_sales,rent_source,price_source
+gn:601278,Shumanay,Karakalpakstan,14000,town,0,0,50,0,none,none
+gn:601294,Nukus,Karakalpakstan,332500,city,0,0,50,0,none,none
+gn:601299,Mŭynoq,Karakalpakstan,13500,town,0,0,50,0,none,none
+gn:601306,Qanliko‘l,Karakalpakstan,0,village,0,0,50,0,none,none
+gn:601323,Qŭnghirot,Karakalpakstan,80090,town,0,0,50,0,none,none
+gn:601339,Xo‘jayli Shahri,Karakalpakstan,67800,town,0,0,50,0,none,none
+gn:601349,Kegeyli Shahar,Karakalpakstan,12400,town,0,0,50,0,none,none
+gn:601351,Qozonketkan,Karakalpakstan,0,village,0,0,50,0,none,none
+gn:601358,Karakalpakiya,Karakalpakstan,3013,village,0,0,50,0,none,none
+gn:601417,Oltinko‘l,Karakalpakstan,59122,town,0,0,50,0,none,none
+gn:601423,Oqmang‘it,Karakalpakstan,0,village,0,0,50,0,none,none
+gn:829955,Qo‘ng‘irot Shahri,Karakalpakstan,0,village,0,0,50,0,none,none
+gn:829960,Chimboy Shahri,Karakalpakstan,0,village,0,0,50,0,none,none
+gn:829962,Mo‘ynoq Shahri,Karakalpakstan,0,village,0,0,50,0,none,none
+gn:829964,Shumanay Shahri,Karakalpakstan,0,village,0,0,50,0,none,none
+gn:1215663,Jondor Shaharchasi,Bukhara,0,village,0,0,50,0,none,none
+gn:1215694,Zomin Shaharchasi,Jizzakh Region,27077,town,0,0,50,0,none,none
+gn:1215736,Nishon Tumani,Qashqadaryo,10558,town,0,0,50,0,none,none
+gn:1215810,Usmat Shaharchasi,Jizzakh Region,0,village,0,0,50,0,none,none
+gn:1215839,Urgut Shahri,Samarqand Region,65300,town,0,0,50,0,none,none
+gn:1215856,Mug‘lon Shahar,Qashqadaryo,0,village,0,0,50,0,none,none
+gn:1215957,Tirmiz,Surxondaryo Region,182800,city,0,0,50,0,none,none
+gn:1215975,Toyloq Qishlog’i,Samarqand Region,0,village,0,0,50,0,none,none
+gn:1216080,Nurobod Shahri,Samarqand Region,0,village,0,0,50,0,none,none
+gn:1216115,Sho‘rchi,Surxondaryo Region,25000,town,0,0,50,0,none,none
+gn:1216187,Shahrisabz,Qashqadaryo,142700,city,0,0,50,0,none,none
+gn:1216189,Shohimardon,Fergana,5100,village,0,0,50,0,none,none
+gn:1216265,Samarkand,Samarqand Region,595200,large-city,0,0,50,0,none,none
+gn:1216290,Romitan Shahri,Bukhara,12927,town,0,0,50,0,none,none
+gn:1216311,Qarshi,Qashqadaryo,278300,city,0,0,50,0,none,none
+gn:1216318,Po‘loti,Qashqadaryo,7282,village,0,0,50,0,none,none
+gn:1216430,Payariq Shahri,Samarqand Region,12345,town,0,0,50,0,none,none
+gn:1216475,Muborak,Qashqadaryo,30100,town,0,0,50,0,none,none
+gn:1216490,Yangi Mirishkor,Qashqadaryo,0,village,0,0,50,0,none,none
+gn:1216577,Loyish Shaharchasi,Samarqand Region,0,village,0,0,50,0,none,none
+gn:1216787,Kitob,Qashqadaryo,40800,town,0,0,50,0,none,none
+gn:1216982,Kattaqo’rg’on Shahri,Samarqand Region,90600,town,0,0,50,0,none,none
+gn:1217007,Koson,Qashqadaryo,68900,town,0,0,50,0,none,none
+gn:1217035,Qorovulbozor,Bukhara,9200,village,0,0,50,0,none,none
+gn:1217084,Karakul’,Bukhara,22487,town,0,0,50,0,none,none
+gn:1217085,Qorako‘l Shahri,Bukhara,0,village,0,0,50,0,none,none
+gn:1217180,Kogon Shahri,Bukhara,62300,town,0,0,50,0,none,none
+gn:1217215,Ishtixon Shahri,Samarqand Region,13024,town,0,0,50,0,none,none
+gn:1217262,G‘uzor,Qashqadaryo,24500,town,0,0,50,0,none,none
+gn:1217340,Galaosiyo Shahri,Bukhara,12600,town,0,0,50,0,none,none
+gn:1217362,Juma Shahri,Samarqand Region,21500,town,0,0,50,0,none,none
+gn:1217414,Jomboy Shahri,Samarqand Region,14429,town,0,0,50,0,none,none
+gn:1217474,Denov,Surxondaryo Region,78300,town,0,0,50,0,none,none
+gn:1217512,Dahbed,Samarqand Region,8044,village,0,0,50,0,none,none
+gn:1217540,Chiroqchi,Qashqadaryo,19356,town,0,0,50,0,none,none
+gn:1217569,Chelak,Samarqand Region,16727,town,0,0,50,0,none,none
+gn:1217595,Charxin,Samarqand Region,13791,town,0,0,50,0,none,none
+gn:1217658,Bulung’ur Shahri,Samarqand Region,29200,town,0,0,50,0,none,none
+gn:1217662,Bukhara,Bukhara,280187,city,0,0,50,0,none,none
+gn:1217703,Beshkent,Qashqadaryo,18900,town,0,0,50,0,none,none
+gn:1217734,Boysun,Surxondaryo Region,26934,town,0,0,50,0,none,none
+gn:1217907,Olot Shahri,Bukhara,13200,town,0,0,50,0,none,none
+gn:1217925,Oqtosh Shahri,Samarqand Region,0,village,0,0,50,0,none,none
+gn:1217926,Oqtosh,Samarqand Region,38307,town,0,0,50,0,none,none
+gn:1346442,Qorovulbozor Shahri,Bukhara,0,village,0,0,50,0,none,none
+gn:1346480,Qorashina,Qashqadaryo,0,village,0,0,50,0,none,none
+gn:1346482,Shahrisabz Shahri,Qashqadaryo,0,village,0,0,50,0,none,none
+gn:1346483,Koson Shahri,Qashqadaryo,0,village,0,0,50,0,none,none
+gn:1346485,Kitob Shahri,Qashqadaryo,0,village,0,0,50,0,none,none
+gn:1346486,Muborak Shahri,Qashqadaryo,0,village,0,0,50,0,none,none
+gn:1346487,Beshkent Shahri,Qashqadaryo,0,village,0,0,50,0,none,none
+gn:1346488,G‘uzor Shahri,Qashqadaryo,0,village,0,0,50,0,none,none
+gn:1346489,Qamashi Shahri,Qashqadaryo,0,village,0,0,50,0,none,none
+gn:1346491,Chiroqchi Shahri,Qashqadaryo,0,village,0,0,50,0,none,none
+gn:1346492,Yakkabog‘ Shahri,Qashqadaryo,0,village,0,0,50,0,none,none
+gn:1346493,Yangi-Nishon Shahri,Qashqadaryo,0,village,0,0,50,0,none,none
+gn:1346571,Ravon,Fergana,0,village,0,0,50,0,none,none
+gn:1512260,Ziyodin Shaharchasi,Samarqand Region,0,village,0,0,50,0,none,none
+gn:1512278,Zarbdor Shaharchasi,Jizzakh Region,0,village,0,0,50,0,none,none
+gn:1512286,Zafarobod Shaharchasi,Jizzakh Region,0,village,0,0,50,0,none,none
+gn:1512287,Zafar,Tashkent Region,24781,town,0,0,50,0,none,none
+gn:1512296,Yunusobod,Tashkent,352000,city,0,0,50,0,none,none
+gn:1512298,G’oliblar Qishlog’i,Jizzakh Region,12300,town,0,0,50,0,none,none
+gn:1512319,Yozyovon,Fergana,0,village,0,0,50,0,none,none
+gn:1512320,Yaypan,Fergana,24900,town,0,0,50,0,none,none
+gn:1512339,Yangiyŭl,Tashkent Region,61700,town,0,0,50,0,none,none
+gn:1512342,Yangiyer,Sirdaryo Region,44200,town,0,0,50,0,none,none
+gn:1512348,Yangirabot,Navoiy Region,17000,town,0,0,50,0,none,none
+gn:1512350,Yangiqo‘rg‘on,Namangan,28422,town,0,0,50,0,none,none
+gn:1512351,Ibrat,Fergana,0,village,0,0,50,0,none,none
+gn:1512355,Bog'don,Jizzakh Region,0,village,0,0,50,0,none,none
+gn:1512361,Yangibozor,Xorazm Region,0,village,0,0,50,0,none,none
+gn:1512364,Yangibozor Qishlog’i,Bukhara,0,village,0,0,50,0,none,none
+gn:1512368,Yangiariq,Xorazm Region,0,village,0,0,50,0,none,none
+gn:1512372,Yangiobod,Tashkent Region,24900,town,0,0,50,0,none,none
+gn:1512403,Vodil,Fergana,0,village,0,0,50,0,none,none
+gn:1512423,Vobkent Shahri,Bukhara,17800,town,0,0,50,0,none,none
+gn:1512449,Uychi,Namangan,29683,town,0,0,50,0,none,none
+gn:1512464,Ŭrtaowul,Tashkent Region,14047,town,0,0,50,0,none,none
+gn:1512473,Urganch,Xorazm Region,145000,city,0,0,50,0,none,none
+gn:1512480,Dashtobod,Jizzakh Region,36500,town,0,0,50,0,none,none
+gn:1512493,Uchtepa Qishlog’i,Jizzakh Region,0,village,0,0,50,0,none,none
+gn:1512501,Uchqŭrghon Shahri,Namangan,40000,town,0,0,50,0,none,none
+gn:1512502,Uchko‘prik,Fergana,0,village,0,0,50,0,none,none
+gn:1512506,Uchkuduk,Bukhara,26800,town,0,0,50,0,none,none
+gn:1512524,Tŭytepa,Tashkent Region,51400,town,0,0,50,0,none,none
+gn:1512549,To‘rqao‘rg‘on,Namangan,30300,town,0,0,50,0,none,none
+gn:1512568,Toshloq,Fergana,18600,town,0,0,50,0,none,none
+gn:1512569,Tashkent,Tashkent,1978028,large-city,0,0,50,0,none,none
+gn:1512658,Toshbuloq,Namangan,28562,town,0,0,50,0,none,none
+gn:1512675,Tomdibuloq,Navoiy Region,0,village,0,0,50,0,none,none
+gn:1512699,Taxtako‘pir,Karakalpakstan,0,village,0,0,50,0,none,none
+gn:1512770,Sirdaryo,Sirdaryo Region,28800,town,0,0,50,0,none,none
+gn:1512790,Shovot,Xorazm Region,26950,town,0,0,50,0,none,none
+gn:1512792,Sho‘rsuv,Fergana,2400,village,0,0,50,0,none,none
+gn:1512832,Shahrixon,Andijan Region,71400,town,0,0,50,0,none,none
+gn:1512838,Shofirkon Shahri,Bukhara,26527,town,0,0,50,0,none,none
+gn:1512934,Salor,Tashkent Region,26494,town,0,0,50,0,none,none
+gn:1512955,Rishton,Fergana,34800,town,0,0,50,0,none,none
+gn:1512978,Qo’shko’pir,Xorazm Region,17800,town,0,0,50,0,none,none
+gn:1512979,Qo‘qon,Fergana,259700,city,0,0,50,0,none,none
+gn:1512986,Piskent,Tashkent Region,34900,town,0,0,50,0,none,none
+gn:1513010,Poytug‘,Andijan Region,26000,town,0,0,50,0,none,none
+gn:1513011,Payshamba Shahri,Samarqand Region,24772,town,0,0,50,0,none,none
+gn:1513017,Parkent,Tashkent Region,60200,town,0,0,50,0,none,none
+gn:1513023,Pop,Namangan,28000,town,0,0,50,0,none,none
+gn:1513038,Paxtakor Shahri,Jizzakh Region,21384,town,0,0,50,0,none,none
+gn:1513040,Paxtaobod,Andijan Region,34400,town,0,0,50,0,none,none
+gn:1513064,Olmaliq,Tashkent Region,133400,city,0,0,50,0,none,none
+gn:1513072,Ohangaron,Tashkent Region,37784,town,0,0,50,0,none,none
+gn:1513087,Nurota,Navoiy Region,32300,town,0,0,50,0,none,none
+gn:1513092,Novyy Turtkul’,Karakalpakstan,48908,town,0,0,50,0,none,none
+gn:1513131,Navoiy,Navoiy Region,144158,city,0,0,50,0,none,none
+gn:1513132,Navbahor,Fergana,4500,village,0,0,50,0,none,none
+gn:1513157,Namangan,Namangan,713220,large-city,0,0,50,0,none,none
+gn:1513241,Marhamat,Andijan Region,12345,town,0,0,50,0,none,none
+gn:1513242,Marhamat,Andijan Region,14646,town,0,0,50,0,none,none
+gn:1513243,Marg‘ilon,Fergana,253500,city,0,0,50,0,none,none
+gn:1513245,Manghit,Karakalpakstan,33200,town,0,0,50,0,none,none
+gn:1513271,Asaka,Andijan Region,62200,town,0,0,50,0,none,none
+gn:1513288,Qiziltepa,Navoiy Region,12200,town,0,0,50,0,none,none
+gn:1513327,Kuyganyor,Andijan Region,0,village,0,0,50,0,none,none
+gn:1513331,Quvasoy,Fergana,96900,town,0,0,50,0,none,none
+gn:1513364,Qo‘rg‘ontepa,Andijan Region,25861,town,0,0,50,0,none,none
+gn:1513491,Yangi Marg‘ilon,Fergana,14114,town,0,0,50,0,none,none
+gn:1513555,Kirguli,Fergana,20459,town,0,0,50,0,none,none
+gn:1513567,Qibray,Tashkent Region,27750,town,0,0,50,0,none,none
+gn:1513577,Xonqa,Xorazm Region,0,village,0,0,50,0,none,none
+gn:1513578,Xonobod,Andijan Region,44000,town,0,0,50,0,none,none
+gn:1513600,Xo‘jaobod,Andijan Region,20200,town,0,0,50,0,none,none
+gn:1513604,Xiva,Xorazm Region,115000,city,0,0,50,0,none,none
+gn:1513609,Hazratishoh,Namangan,5900,village,0,0,50,0,none,none
+gn:1513650,Hamza,Fergana,13470,town,0,0,50,0,none,none
+gn:1513655,Haqqulobod,Namangan,26257,town,0,0,50,0,none,none
+gn:1513714,Kosonsoy,Namangan,50900,town,0,0,50,0,none,none
+gn:1513733,Qorao‘zak,Karakalpakstan,0,village,0,0,50,0,none,none
+gn:1513831,Konimex,Navoiy Region,0,village,0,0,50,0,none,none
+gn:1513886,Jizzax,Jizzakh Region,179200,city,0,0,50,0,none,none
+gn:1513889,Izboskan,Andijan Region,6800,village,0,0,50,0,none,none
+gn:1513900,Iskandar,Tashkent Region,27636,town,0,0,50,0,none,none
+gn:1513953,Qorasuv,Andijan Region,33000,town,0,0,50,0,none,none
+gn:1513957,Hazorasp,Xorazm Region,17643,town,0,0,50,0,none,none
+gn:1513962,Gurlan,Xorazm Region,50900,town,0,0,50,0,none,none
+gn:1513966,Guliston,Sirdaryo Region,90398,town,0,0,50,0,none,none
+gn:1513983,G’ijduvon Shahri,Bukhara,43400,town,0,0,50,0,none,none
+gn:1513990,Gazli,Bukhara,8100,village,0,0,50,0,none,none
+gn:1513992,G‘ozg‘on,Navoiy Region,8800,village,0,0,50,0,none,none
+gn:1513996,G‘azalkent,Tashkent Region,21600,town,0,0,50,0,none,none
+gn:1514008,G’allaorol Shahri,Jizzakh Region,24700,town,0,0,50,0,none,none
+gn:1514011,Gagarin Shahri,Jizzakh Region,24856,town,0,0,50,0,none,none
+gn:1514019,Fergana,Fergana,299200,city,0,0,50,0,none,none
+gn:1514027,Amir Timur,Tashkent Region,0,village,0,0,50,0,none,none
+gn:1514109,Jalolquduq,Andijan Region,24000,town,0,0,50,0,none,none
+gn:1514125,Do’stlik Shahri,Jizzakh Region,18300,town,0,0,50,0,none,none
+gn:1514140,Druzhba,Xorazm Region,16800,town,0,0,50,0,none,none
+gn:1514174,Dardoq,Andijan Region,26055,town,0,0,50,0,none,none
+gn:1514178,Dang‘ara,Fergana,0,village,0,0,50,0,none,none
+gn:1514192,Chust,Namangan,100200,city,0,0,50,0,none,none
+gn:1514210,Chirchiq,Tashkent Region,162800,city,0,0,50,0,none,none
+gn:1514215,Chinoz,Tashkent Region,23700,town,0,0,50,0,none,none
+gn:1514219,Chinobod,Andijan Region,24000,town,0,0,50,0,none,none
+gn:1514225,Kyzyldzhar,Tashkent Region,3000,village,0,0,50,0,none,none
+gn:1514230,Chilanzar,Tashkent,260700,city,0,0,50,0,none,none
+gn:1514257,Sergeli,Tashkent,105700,city,0,0,50,0,none,none
+gn:1514258,Chortoq,Namangan,53400,town,0,0,50,0,none,none
+gn:1514315,Burchmulla,Tashkent Region,4000,village,0,0,50,0,none,none
+gn:1514325,Buloqboshi,Andijan Region,0,village,0,0,50,0,none,none
+gn:1514330,Bo‘ka,Tashkent Region,19642,town,0,0,50,0,none,none
+gn:1514369,Beshrabot,Navoiy Region,0,village,0,0,50,0,none,none
+gn:1514382,Beshariq,Fergana,96900,town,0,0,50,0,none,none
+gn:1514387,Beruniy,Karakalpakstan,66090,town,0,0,50,0,none,none
+gn:1514396,Bektemir,Tashkent,31400,town,0,0,50,0,none,none
+gn:1514402,Bekobod,Tashkent Region,96900,town,0,0,50,0,none,none
+gn:1514454,Baliqchi,Andijan Region,0,village,0,0,50,0,none,none
+gn:1514483,Bag‘dod,Fergana,0,village,0,0,50,0,none,none
+gn:1514486,Bog’ot,Xorazm Region,0,village,0,0,50,0,none,none
+gn:1514581,Angren,Tashkent Region,191300,city,0,0,50,0,none,none
+gn:1514588,Andijon,Andijan Region,747800,large-city,0,0,50,0,none,none
+gn:1514608,Oltinko‘l,Andijan Region,0,village,0,0,50,0,none,none
+gn:1514615,Oltiariq,Fergana,25543,town,0,0,50,0,none,none
+gn:1514668,Oqqo‘rg‘on,Tashkent Region,11900,town,0,0,50,0,none,none
+gn:1514683,Oxunboboyev,Andijan Region,0,village,0,0,50,0,none,none
+gn:1514707,Oqoltin,Andijan Region,0,village,0,0,50,0,none,none
+gn:1514716,Oyim,Andijan Region,32750,town,0,0,50,0,none,none
+gn:1526979,Quva,Fergana,46400,town,0,0,50,0,none,none
+gn:1532845,Qizilcha,Navoiy Region,3400,village,0,0,50,0,none,none
+gn:1538221,Beruniy Shahri,Karakalpakstan,0,village,0,0,50,0,none,none
+gn:1538222,To‘rtko‘l Shahri,Karakalpakstan,0,village,0,0,50,0,none,none
+gn:1538223,Bo‘ston Shahri,Karakalpakstan,0,village,0,0,50,0,none,none
+gn:1538224,Mang‘it Shahri,Karakalpakstan,0,village,0,0,50,0,none,none
+gn:1538225,Qorovul,Xorazm Region,0,village,0,0,50,0,none,none
+gn:1538231,Uchquduq Shahri,Navoiy Region,0,village,0,0,50,0,none,none
+gn:1538232,Karmana Shahri,Navoiy Region,0,village,0,0,50,0,none,none
+gn:1538233,Qiziltepa Shahri,Navoiy Region,0,village,0,0,50,0,none,none
+gn:1538234,Nurota Shahri,Navoiy Region,0,village,0,0,50,0,none,none
+gn:1538274,Kosonsoy Shahri,Namangan,0,village,0,0,50,0,none,none
+gn:1538276,Chortoq Shahri,Namangan,0,village,0,0,50,0,none,none
+gn:1538279,Pop Shahri,Namangan,0,village,0,0,50,0,none,none
+gn:1538280,Tŭragŭrghon Shahri,Namangan,0,village,0,0,50,0,none,none
+gn:1538293,Langar,Fergana,0,village,0,0,50,0,none,none
+gn:1538533,Sultonobod,Andijan Region,20000,town,0,0,50,0,none,none
+gn:1538551,Eskiarab,Fergana,8781,village,0,0,50,0,none,none
+gn:10974665,Tinchlik,Fergana,13470,town,0,0,50,0,none,none
+gn:12127991,Qo’shrabod,Samarqand Region,0,village,0,0,50,0,none,none

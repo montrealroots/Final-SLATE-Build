@@ -1,0 +1,1180 @@
+place_id,name,region,population,market,verified_homes,dated_listings,shortfall_to_50,recorded_sales,rent_source,price_source
+gn:3427213,Zárate,Buenos Aires,99061,town,0,0,50,0,none,none
+gn:3427273,Yatayti Calle,Corrientes,2114,village,0,0,50,0,none,none
+gn:3427279,Yapeyú,Corrientes,2124,village,0,0,50,0,none,none
+gn:3427327,Colonia Wanda,Misiones,15529,town,0,0,50,0,none,none
+gn:3427386,Villa Paranacito,Entre Rios,3988,village,0,0,50,0,none,none
+gn:3427387,Villa Ortúzar,Buenos Aires F.D.,22500,town,0,0,50,0,none,none
+gn:3427388,Villa Ocampo,Santa Fe,19101,town,0,0,50,0,none,none
+gn:3427399,María Grande,Entre Rios,7101,village,0,0,50,0,none,none
+gn:3427404,Villa Mantero,Entre Rios,1526,village,0,0,50,0,none,none
+gn:3427408,Villa Lugano,Buenos Aires F.D.,114000,city,0,0,50,0,none,none
+gn:3427420,Villa Hernandarias,Entre Rios,5375,village,0,0,50,0,none,none
+gn:3427428,Villaguay,Entre Rios,32027,town,0,0,50,0,none,none
+gn:3427431,Villa Gesell,Buenos Aires,23257,town,0,0,50,0,none,none
+gn:3427439,Villa Escolar,Formosa,1261,village,0,0,50,0,none,none
+gn:3427443,Villa Elisa,Entre Rios,9334,village,0,0,50,0,none,none
+gn:3427453,Villa de Mayo,Buenos Aires,43405,town,0,0,50,0,none,none
+gn:3427454,Villa del Rosario,Entre Rios,3488,village,0,0,50,0,none,none
+gn:3427474,Valentín Alsina,Buenos Aires,41155,town,0,0,50,0,none,none
+gn:3427511,Verónica,Buenos Aires,0,village,0,0,50,0,none,none
+gn:3427537,Veinticinco de Mayo,Misiones,5467,village,0,0,50,0,none,none
+gn:3427581,Uribelarrea,Buenos Aires,1660,village,0,0,50,0,none,none
+gn:3427582,Urdinarrain,Entre Rios,7992,village,0,0,50,0,none,none
+gn:3427593,Ubajay,Entre Rios,2334,village,0,0,50,0,none,none
+gn:3427626,Tristán Suárez,Buenos Aires,27746,town,0,0,50,0,none,none
+gn:3427659,Tres Capones,Misiones,1234,village,0,0,50,0,none,none
+gn:3427687,Tortuguitas,Buenos Aires,41390,town,0,0,50,0,none,none
+gn:3427761,Tigre,Buenos Aires,31106,town,0,0,50,0,none,none
+gn:3427833,Tandil,Buenos Aires,115877,city,0,0,50,0,none,none
+gn:3427877,Tacuarendí,Santa Fe,3067,village,0,0,50,0,none,none
+gn:3427885,Tabossi,Entre Rios,1333,village,0,0,50,0,none,none
+gn:3427897,Suipacha,Buenos Aires,9609,village,0,0,50,0,none,none
+gn:3427994,Sauce de Luna,Entre Rios,2901,village,0,0,50,0,none,none
+gn:3428023,Sauce,Corrientes,0,village,0,0,50,0,none,none
+gn:3428050,Sarandí,Buenos Aires,60752,town,0,0,50,0,none,none
+gn:3428067,San Vicente,Buenos Aires,90021,town,0,0,50,0,none,none
+gn:3428068,San Vicente,Misiones,38247,town,0,0,50,0,none,none
+gn:3428071,Santo Tomé,Corrientes,22634,town,0,0,50,0,none,none
+gn:3428075,Santos Lugares,Buenos Aires,37267,town,0,0,50,0,none,none
+gn:3428079,Santo Pipó,Misiones,5447,village,0,0,50,0,none,none
+gn:3428123,Santa Teresita,Buenos Aires,15213,town,0,0,50,0,none,none
+gn:3428182,Santa Rosa,Corrientes,8330,village,0,0,50,0,none,none
+gn:3428198,Santa Rita,Misiones,2273,village,0,0,50,0,none,none
+gn:3428264,Santa María,Misiones,1687,village,0,0,50,0,none,none
+gn:3428287,Santa Lucía,Corrientes,14056,town,0,0,50,0,none,none
+gn:3428359,Santa Elena,Entre Rios,18410,town,0,0,50,0,none,none
+gn:3428373,Santa Clara del Mar,Buenos Aires,16629,town,0,0,50,0,none,none
+gn:3428424,Santa Anita,Entre Rios,1254,village,0,0,50,0,none,none
+gn:3428453,Santa Ana,Entre Rios,2059,village,0,0,50,0,none,none
+gn:3428455,Santa Ana,Misiones,7127,village,0,0,50,0,none,none
+gn:3428481,San Salvador,Entre Rios,11626,town,0,0,50,0,none,none
+gn:3428492,San Roque,Corrientes,0,village,0,0,50,0,none,none
+gn:3428576,San Pedro,Buenos Aires,47452,town,0,0,50,0,none,none
+gn:3428577,San Pedro,Misiones,23736,town,0,0,50,0,none,none
+gn:3428609,San Miguel del Monte,Buenos Aires,21794,town,0,0,50,0,none,none
+gn:3428644,San Miguel,Corrientes,7396,village,0,0,50,0,none,none
+gn:3428708,San Luis del Palmar,Corrientes,15347,town,0,0,50,0,none,none
+gn:3428759,San Lorenzo,Corrientes,47626,town,0,0,50,0,none,none
+gn:3428775,San Justo,Buenos Aires,105274,city,0,0,50,0,none,none
+gn:3428776,Villa San Justo,Entre Rios,1473,village,0,0,50,0,none,none
+gn:3428858,San José de Feliciano,Entre Rios,11137,town,0,0,50,0,none,none
+gn:3428928,San José,Misiones,6452,village,0,0,50,0,none,none
+gn:3428975,San Javier,Santa Fe,15606,town,0,0,50,0,none,none
+gn:3428976,San Javier,Misiones,12859,town,0,0,50,0,none,none
+gn:3428992,San Isidro,Buenos Aires,45190,town,0,0,50,0,none,none
+gn:3429016,San Ignacio,Misiones,11378,town,0,0,50,0,none,none
+gn:3429024,San Gustavo,Entre Rios,1307,village,0,0,50,0,none,none
+gn:3429054,San Francisco de Laishi,Formosa,4384,village,0,0,50,0,none,none
+gn:3429157,San Cosme,Corrientes,4429,village,0,0,50,0,none,none
+gn:3429160,San Clemente del Tuyú,Buenos Aires,11174,town,0,0,50,0,none,none
+gn:3429171,San Cayetano,Buenos Aires,0,village,0,0,50,0,none,none
+gn:3429210,San Carlos,Corrientes,3350,village,0,0,50,0,none,none
+gn:3429228,San Bernardo del Tuyú,Buenos Aires,6966,village,0,0,50,0,none,none
+gn:3429244,San Antonio de Padua,Buenos Aires,37745,town,0,0,50,0,none,none
+gn:3429248,San Antonio de Areco,Buenos Aires,22909,town,0,0,50,0,none,none
+gn:3429302,San Antonio,Misiones,3700,village,0,0,50,0,none,none
+gn:3429309,San Andrés de Giles,Buenos Aires,13941,town,0,0,50,0,none,none
+gn:3429399,Saladillo,Buenos Aires,30378,town,0,0,50,0,none,none
+gn:3429403,Saladas,Corrientes,18349,town,0,0,50,0,none,none
+gn:3429426,Ruiz de Montoya,Misiones,3374,village,0,0,50,0,none,none
+gn:3429439,Rosario del Tala,Entre Rios,13807,town,0,0,50,0,none,none
+gn:3429450,Roque Pérez,Buenos Aires,12273,town,0,0,50,0,none,none
+gn:3429560,Riachuelo,Corrientes,3668,village,0,0,50,0,none,none
+gn:3429567,Riacho He-He,Formosa,3566,village,0,0,50,0,none,none
+gn:3429576,Retiro,Buenos Aires F.D.,38635,town,0,0,50,0,none,none
+gn:3429577,Resistencia,Chaco,290793,city,0,0,50,0,none,none
+gn:3429582,Remedios de Escalada de San Martín,Buenos Aires,81465,town,0,0,50,0,none,none
+gn:3429594,Reconquista,Santa Fe,90184,town,0,0,50,0,none,none
+gn:3429602,Rauch,Buenos Aires,14793,town,0,0,50,0,none,none
+gn:3429610,Ranchos,Buenos Aires,0,village,0,0,50,0,none,none
+gn:3429652,Quilmes,Buenos Aires,262379,city,0,0,50,0,none,none
+gn:3429710,Puerto Yeruá,Entre Rios,1541,village,0,0,50,0,none,none
+gn:3429713,Puerto Vilelas,Chaco,8455,village,0,0,50,0,none,none
+gn:3429721,Puerto Tirol,Chaco,9767,village,0,0,50,0,none,none
+gn:3429732,Puerto Rico,Misiones,17491,town,0,0,50,0,none,none
+gn:3429738,Puerto Piray,Misiones,8557,village,0,0,50,0,none,none
+gn:3429762,Puerto Pinares,Misiones,2714,village,0,0,50,0,none,none
+gn:3429764,Puerto Libertad,Misiones,6143,village,0,0,50,0,none,none
+gn:3429765,Puerto Leoni,Misiones,1294,village,0,0,50,0,none,none
+gn:3429777,Puerto Iguazú,Misiones,32038,town,0,0,50,0,none,none
+gn:3429778,Puerto Ibicuy,Entre Rios,4477,village,0,0,50,0,none,none
+gn:3429786,Puerto Esperanza,Misiones,15579,town,0,0,50,0,none,none
+gn:3429792,Puerto Delicia,Misiones,1217,village,0,0,50,0,none,none
+gn:3429801,Puerto Bermejo,Chaco,1832,village,0,0,50,0,none,none
+gn:3429820,Pueblo Libertador,Corrientes,3973,village,0,0,50,0,none,none
+gn:3429843,Pronunciamiento,Entre Rios,1301,village,0,0,50,0,none,none
+gn:3429864,Presidencia Roca,Chaco,4987,village,0,0,50,0,none,none
+gn:3429866,Presidencia de la Plaza,Chaco,12231,town,0,0,50,0,none,none
+gn:3429886,Posadas,Misiones,305874,city,0,0,50,0,none,none
+gn:3429902,Pontevedra,Buenos Aires,33515,town,0,0,50,0,none,none
+gn:3429949,Pirané,Formosa,19124,town,0,0,50,0,none,none
+gn:3429971,Pinamar,Buenos Aires,39218,town,0,0,50,0,none,none
+gn:3429980,Pilar,Buenos Aires,81120,town,0,0,50,0,none,none
+gn:3429989,Pila,Buenos Aires,3594,village,0,0,50,0,none,none
+gn:3429996,Piedras Blancas,Entre Rios,1714,village,0,0,50,0,none,none
+gn:3430015,Gobernador López,Misiones,2256,village,0,0,50,0,none,none
+gn:3430029,Perugorría,Corrientes,5685,village,0,0,50,0,none,none
+gn:3430064,Pedro R. Fernández,Corrientes,2058,village,0,0,50,0,none,none
+gn:3430104,Paso de los Libres,Corrientes,43805,town,0,0,50,0,none,none
+gn:3430105,Paso de la Patria,Corrientes,5818,village,0,0,50,0,none,none
+gn:3430178,Panambí,Misiones,5970,village,0,0,50,0,none,none
+gn:3430180,Pampa del Indio,Chaco,11588,town,0,0,50,0,none,none
+gn:3430182,Pampa Almirón,Chaco,1747,village,0,0,50,0,none,none
+gn:3430186,Palo Santo,Formosa,5324,village,0,0,50,0,none,none
+gn:3430219,Palmar Grande,Corrientes,1672,village,0,0,50,0,none,none
+gn:3430234,Palermo,Buenos Aires F.D.,249016,city,0,0,50,0,none,none
+gn:3430287,Open Door,Buenos Aires,5014,village,0,0,50,0,none,none
+gn:3430310,Olivos,Buenos Aires,0,village,0,0,50,0,none,none
+gn:3430340,Oberá,Misiones,56528,town,0,0,50,0,none,none
+gn:3430383,Nueve de Julio,Corrientes,2671,village,0,0,50,0,none,none
+gn:3430402,Nuestra Señora del Rosario de Caá Catí,Corrientes,7573,village,0,0,50,0,none,none
+gn:3430409,Norberto de la Riestra,Buenos Aires,5206,village,0,0,50,0,none,none
+gn:3430415,Nogoyá,Entre Rios,43195,town,0,0,50,0,none,none
+gn:3430443,Necochea,Buenos Aires,73557,town,0,0,50,0,none,none
+gn:3430457,Navarro,Buenos Aires,16649,town,0,0,50,0,none,none
+gn:3430513,Muñiz,Buenos Aires,26844,town,0,0,50,0,none,none
+gn:3430545,Morón,Buenos Aires,99066,town,0,0,50,0,none,none
+gn:3430595,Monte Chingolo,Buenos Aires,85060,town,0,0,50,0,none,none
+gn:3430598,Monte Caseros,Corrientes,24671,town,0,0,50,0,none,none
+gn:3430601,Montecarlo,Misiones,22229,town,0,0,50,0,none,none
+gn:3430631,Mojón Grande,Misiones,2233,village,0,0,50,0,none,none
+gn:3430648,Mocoretá,Corrientes,6088,village,0,0,50,0,none,none
+gn:3430668,Miramar,Buenos Aires,34380,town,0,0,50,0,none,none
+gn:3430697,Merlo,Buenos Aires,268961,city,0,0,50,0,none,none
+gn:3430708,Mercedes,Buenos Aires,63284,town,0,0,50,0,none,none
+gn:3430709,Mercedes,Corrientes,30649,town,0,0,50,0,none,none
+gn:3430760,Mburucuyá,Corrientes,9012,village,0,0,50,0,none,none
+gn:3430780,Máximo Paz,Buenos Aires,14278,town,0,0,50,0,none,none
+gn:3430798,Mártires,Misiones,1135,village,0,0,50,0,none,none
+gn:3430835,Haedo,Buenos Aires,37745,town,0,0,50,0,none,none
+gn:3430836,Mariano I. Loza,Corrientes,2015,village,0,0,50,0,none,none
+gn:3430857,Margarita Belén,Chaco,5547,village,0,0,50,0,none,none
+gn:3430861,Mar del Tuyú,Buenos Aires,83016,town,0,0,50,0,none,none
+ar-mar-del-plata,Mar del Plata,Buenos Aires Province,593337,large-city,0,0,50,0,none,none
+gn:3430866,Mar de Ajó,Buenos Aires,25520,town,0,0,50,0,none,none
+gn:3430868,Marcos Paz,Buenos Aires,0,village,0,0,50,0,none,none
+gn:3430880,Manuel J. Cobo,Buenos Aires,5515,village,0,0,50,0,none,none
+gn:3430940,Malabrigo,Santa Fe,7026,village,0,0,50,0,none,none
+gn:3430943,Makallé,Chaco,4994,village,0,0,50,0,none,none
+gn:3430946,Maipú,Buenos Aires,0,village,0,0,50,0,none,none
+gn:3430957,Magdalena,Buenos Aires,15338,town,0,0,50,0,none,none
+gn:3430968,Maciá,Entre Rios,5806,village,0,0,50,0,none,none
+gn:3430988,Luján,Buenos Aires,97363,town,0,0,50,0,none,none
+gn:3431005,Lucas González,Entre Rios,4466,village,0,0,50,0,none,none
+gn:3431057,Los Polvorines,Buenos Aires,53354,town,0,0,50,0,none,none
+gn:3431161,Los Helechos,Misiones,3616,village,0,0,50,0,none,none
+gn:3431184,Los Conquistadores,Entre Rios,1214,village,0,0,50,0,none,none
+gn:3431188,Los Charrúas,Entre Rios,3414,village,0,0,50,0,none,none
+gn:3431223,Los Amores,Santa Fe,1021,village,0,0,50,0,none,none
+gn:3431244,Loreto,Corrientes,2856,village,0,0,50,0,none,none
+gn:3431245,Loreto,Misiones,1201,village,0,0,50,0,none,none
+gn:3431271,Lomas de Zamora,Buenos Aires,111897,city,0,0,50,0,none,none
+gn:3431272,Lomas de Vallejos,Corrientes,1415,village,0,0,50,0,none,none
+gn:3431313,Lobos,Buenos Aires,35719,town,0,0,50,0,none,none
+gn:3431321,Lobería,Buenos Aires,14215,town,0,0,50,0,none,none
+gn:3431350,Lima,Buenos Aires,13871,town,0,0,50,0,none,none
+gn:3431367,Colonia Libertad,Corrientes,1438,village,0,0,50,0,none,none
+gn:3431391,Leandro N. Alem,Misiones,27287,town,0,0,50,0,none,none
+gn:3431460,La Verde,Chaco,2995,village,0,0,50,0,none,none
+gn:3431606,Las Toscas,Santa Fe,11811,town,0,0,50,0,none,none
+gn:3431608,Las Toninas,Buenos Aires,3550,village,0,0,50,0,none,none
+gn:3431777,Las Garcitas,Chaco,4244,village,0,0,50,0,none,none
+gn:3431788,Las Flores,Buenos Aires,25075,town,0,0,50,0,none,none
+gn:3431916,Larroque,Entre Rios,6200,village,0,0,50,0,none,none
+gn:3432043,La Plata,Buenos Aires,195443,city,0,0,50,0,none,none
+gn:3432079,La Paz,Entre Rios,24716,town,0,0,50,0,none,none
+gn:3432122,Lapachito,Chaco,1448,village,0,0,50,0,none,none
+gn:3432135,Lanús,Buenos Aires,212252,city,0,0,50,0,none,none
+gn:3432355,La Leonesa,Chaco,10067,town,0,0,50,0,none,none
+gn:3432463,Laguna Naick-Neck,Formosa,2115,village,0,0,50,0,none,none
+gn:3432466,Laguna Limpia,Chaco,1594,village,0,0,50,0,none,none
+gn:3432555,Laferrere,Buenos Aires,248362,city,0,0,50,0,none,none
+gn:3432653,La Escondida,Chaco,3948,village,0,0,50,0,none,none
+gn:3432707,La Eduvigis,Chaco,3816,village,0,0,50,0,none,none
+gn:3432760,La Cruz,Corrientes,8591,village,0,0,50,0,none,none
+gn:3432768,La Criolla,Entre Rios,1852,village,0,0,50,0,none,none
+gn:3433291,Juan Pujol,Corrientes,1487,village,0,0,50,0,none,none
+gn:3433349,Jardín América,Misiones,24905,town,0,0,50,0,none,none
+gn:3433359,Ituzaingó,Buenos Aires,0,village,0,0,50,0,none,none
+gn:3433360,Ituzaingó,Corrientes,168419,city,0,0,50,0,none,none
+gn:3433363,Itatí,Corrientes,7902,village,0,0,50,0,none,none
+gn:3433373,Itá Ibaté,Corrientes,4115,village,0,0,50,0,none,none
+gn:3433424,Isidro Casanova,Buenos Aires,131981,city,0,0,50,0,none,none
+gn:3433513,Ibarreta,Formosa,8687,village,0,0,50,0,none,none
+gn:3433522,Hurlingham,Buenos Aires,60000,town,0,0,50,0,none,none
+gn:3433545,Hipólito Yrigoyen,Misiones,1638,village,0,0,50,0,none,none
+gn:3433564,Herrera,Entre Rios,1587,village,0,0,50,0,none,none
+gn:3433567,Herradura,Formosa,2333,village,0,0,50,0,none,none
+gn:3433575,Herlitzka,Corrientes,1166,village,0,0,50,0,none,none
+gn:3433580,Hasenkamp,Entre Rios,4413,village,0,0,50,0,none,none
+gn:3433648,Guaraní,Misiones,4530,village,0,0,50,0,none,none
+gn:3433658,Gualeguaychú,Entre Rios,78676,town,0,0,50,0,none,none
+gn:3433663,Gualeguay,Entre Rios,33120,town,0,0,50,0,none,none
+gn:3433715,Goya,Corrientes,70245,town,0,0,50,0,none,none
+gn:3433743,Gobernador Roca,Misiones,6315,village,0,0,50,0,none,none
+gn:3433747,Gobernador Mansilla,Entre Rios,2264,village,0,0,50,0,none,none
+gn:3433751,Gobernador Juan E. Martínez,Corrientes,3529,village,0,0,50,0,none,none
+gn:3433753,Gobernador Virasora,Corrientes,28756,town,0,0,50,0,none,none
+gn:3433773,General Vedia,Chaco,3513,village,0,0,50,0,none,none
+gn:3433779,Ciudad del Libertador General San Martín,Buenos Aires,0,village,0,0,50,0,none,none
+gn:3433781,General Rodríguez,Buenos Aires,0,village,0,0,50,0,none,none
+gn:3433787,General Pacheco,Buenos Aires,43287,town,0,0,50,0,none,none
+gn:3433796,General Lavalle,Buenos Aires,2445,village,0,0,50,0,none,none
+gn:3433799,General Las Heras,Buenos Aires,0,village,0,0,50,0,none,none
+gn:3433801,General Juan Madariaga,Buenos Aires,21461,town,0,0,50,0,none,none
+gn:3433803,General José de San Martín,Chaco,31758,town,0,0,50,0,none,none
+gn:3433806,General Guido,Buenos Aires,1647,village,0,0,50,0,none,none
+gn:3433809,General Galarza,Entre Rios,4150,village,0,0,50,0,none,none
+gn:3433813,General Conesa,Buenos Aires,2190,village,0,0,50,0,none,none
+gn:3433815,General Campos,Entre Rios,2982,village,0,0,50,0,none,none
+gn:3433817,General Belgrano,Buenos Aires,19056,town,0,0,50,0,none,none
+gn:3433820,General Alvear,Misiones,1431,village,0,0,50,0,none,none
+gn:3433823,Colonia Alberdi,Misiones,1065,village,0,0,50,0,none,none
+gn:3433836,Garupá,Misiones,28814,town,0,0,50,0,none,none
+gn:3433839,Garuhapé,Misiones,8259,village,0,0,50,0,none,none
+gn:3433842,Garruchos,Corrientes,1152,village,0,0,50,0,none,none
+gn:3433899,Formosa,Formosa,222226,city,0,0,50,0,none,none
+gn:3433901,Fontana,Chaco,26745,town,0,0,50,0,none,none
+gn:3433919,Florentino Ameghino,Misiones,1979,village,0,0,50,0,none,none
+gn:3433923,San Juan Bautista,Buenos Aires,0,village,0,0,50,0,none,none
+gn:3433944,Felipe Yofré,Corrientes,1947,village,0,0,50,0,none,none
+gn:3433956,Federal,Entre Rios,16333,town,0,0,50,0,none,none
+gn:3433959,Federación,Entre Rios,13789,town,0,0,50,0,none,none
+gn:3433975,Ezeiza,Buenos Aires,115021,city,0,0,50,0,none,none
+gn:3434084,Estación Apóstoles,Misiones,2819,village,0,0,50,0,none,none
+gn:3434095,Esquina,Corrientes,26399,town,0,0,50,0,none,none
+gn:3434108,El Espinillo,Formosa,0,village,0,0,50,0,none,none
+gn:3434141,Ensenada,Buenos Aires,63978,town,0,0,50,0,none,none
+gn:3434154,Empedrado,Corrientes,0,village,0,0,50,0,none,none
+gn:3434291,El Soberbio,Misiones,19571,town,0,0,50,0,none,none
+gn:3434509,El Palomar,Buenos Aires,59031,town,0,0,50,0,none,none
+gn:3434674,Eldorado,Misiones,54189,town,0,0,50,0,none,none
+gn:3434731,El Colorado,Formosa,12780,town,0,0,50,0,none,none
+gn:3434932,El Alcázar,Misiones,3285,village,0,0,50,0,none,none
+gn:3434995,Dos de Mayo,Misiones,14544,town,0,0,50,0,none,none
+gn:3434997,Dos Arroyos,Misiones,3079,village,0,0,50,0,none,none
+gn:3435010,Don Torcuato,Buenos Aires,71356,town,0,0,50,0,none,none
+gn:3435029,Domselaar,Buenos Aires,4814,village,0,0,50,0,none,none
+gn:3435030,Villa Domínguez,Entre Rios,1925,village,0,0,50,0,none,none
+gn:3435038,Dolores,Buenos Aires,30372,town,0,0,50,0,none,none
+gn:3435103,Curuzú Cuatiá,Corrientes,36390,town,0,0,50,0,none,none
+gn:3435178,Cruz de los Milagros,Corrientes,1768,village,0,0,50,0,none,none
+gn:3435196,Cote Lai,Chaco,1650,village,0,0,50,0,none,none
+gn:3435217,Corrientes,Corrientes,346334,city,0,0,50,0,none,none
+gn:3435234,Coronel Vidal,Buenos Aires,7575,village,0,0,50,0,none,none
+gn:3435258,Conscripto Bernardi,Entre Rios,1464,village,0,0,50,0,none,none
+gn:3435261,Concordia,Entre Rios,145210,city,0,0,50,0,none,none
+gn:3435264,Concepción del Uruguay,Entre Rios,67895,town,0,0,50,0,none,none
+gn:3435266,Concepción de la Sierra,Misiones,6933,village,0,0,50,0,none,none
+gn:3435273,Concepción,Corrientes,4800,village,0,0,50,0,none,none
+gn:3435280,Comandante Nicanor Otamendi,Buenos Aires,6991,village,0,0,50,0,none,none
+gn:3435283,Comandante Fontana,Formosa,5655,village,0,0,50,0,none,none
+gn:3435295,Colonias Unidas,Chaco,4093,village,0,0,50,0,none,none
+gn:3435315,María Magdalena,Misiones,3202,village,0,0,50,0,none,none
+gn:3435330,Colonia Elisa,Chaco,4570,village,0,0,50,0,none,none
+gn:3435331,Colonia Elía,Entre Rios,1620,village,0,0,50,0,none,none
+gn:3435340,Colonia Benítez,Chaco,3584,village,0,0,50,0,none,none
+gn:3435344,Colonia Aurora,Misiones,8407,village,0,0,50,0,none,none
+gn:3435352,Colón,Entre Rios,58219,town,0,0,50,0,none,none
+gn:3435356,Colegiales,Buenos Aires F.D.,57000,town,0,0,50,0,none,none
+gn:3435364,Clorinda,Formosa,15000,town,0,0,50,0,none,none
+gn:3435399,Ciervo Petiso,Chaco,1055,village,0,0,50,0,none,none
+gn:3435417,Chillar,Buenos Aires,3453,village,0,0,50,0,none,none
+gn:3435444,Chavarría,Corrientes,2337,village,0,0,50,0,none,none
+gn:3435448,Chascomús,Buenos Aires,39947,town,0,0,50,0,none,none
+gn:3435453,Charadai,Chaco,2538,village,0,0,50,0,none,none
+gn:3435486,Chajarí,Entre Rios,30655,town,0,0,50,0,none,none
+gn:3435525,Cerro Corá,Misiones,1153,village,0,0,50,0,none,none
+gn:3435532,Cerro Azul,Misiones,5323,village,0,0,50,0,none,none
+gn:3435570,Ceibas,Entre Rios,1405,village,0,0,50,0,none,none
+gn:3435605,Castelli,Buenos Aires,7935,village,0,0,50,0,none,none
+gn:3435607,Castelar,Buenos Aires,107786,city,0,0,50,0,none,none
+gn:3435611,Caseros,Buenos Aires,0,village,0,0,50,0,none,none
+gn:3435612,Caseros,Entre Rios,2109,village,0,0,50,0,none,none
+gn:3435644,Carmen de Areco,Buenos Aires,15900,town,0,0,50,0,none,none
+gn:3435679,Caraguatay,Misiones,3287,village,0,0,50,0,none,none
+gn:3435688,Capitán Solari,Chaco,2123,village,0,0,50,0,none,none
+gn:3435690,Capitán Sarmiento,Buenos Aires,14887,town,0,0,50,0,none,none
+gn:3435701,Capioví,Misiones,5860,village,0,0,50,0,none,none
+gn:3435704,Capilla del Señor,Buenos Aires,11191,town,0,0,50,0,none,none
+gn:3435713,Cañuelas,Buenos Aires,41801,town,0,0,50,0,none,none
+gn:3435719,Canning,Buenos Aires,14323,town,0,0,50,0,none,none
+gn:3435734,Candelaria,Misiones,11039,town,0,0,50,0,none,none
+gn:3435750,Campo Viera,Misiones,9228,village,0,0,50,0,none,none
+gn:3435765,Campo Ramón,Misiones,10088,town,0,0,50,0,none,none
+gn:3435789,Campo Grande,Misiones,9245,village,0,0,50,0,none,none
+gn:3435810,Campana,Buenos Aires,86860,town,0,0,50,0,none,none
+gn:3435813,Estación Camet,Buenos Aires,5241,village,0,0,50,0,none,none
+gn:3435857,Cacharí,Buenos Aires,3903,village,0,0,50,0,none,none
+gn:3435894,Burzaco,Buenos Aires,98859,town,0,0,50,0,none,none
+ar-buenos-aires,Buenos Aires,Buenos Aires,2891082,large-city,0,0,50,0,none,none
+gn:3435963,Coronel Brandsen,Buenos Aires,24487,town,0,0,50,0,none,none
+gn:3435966,Bovril,Entre Rios,7977,village,0,0,50,0,none,none
+gn:3435988,Bonpland,Corrientes,1063,village,0,0,50,0,none,none
+gn:3435989,Bonpland,Misiones,2173,village,0,0,50,0,none,none
+gn:3436003,Boedo,Buenos Aires F.D.,48231,town,0,0,50,0,none,none
+gn:3436029,Berón de Astrada,Corrientes,0,village,0,0,50,0,none,none
+gn:3436030,Bernardo de Irigoyen,Misiones,10889,town,0,0,50,0,none,none
+gn:3436040,Berisso,Buenos Aires,88470,town,0,0,50,0,none,none
+gn:3436043,Berazategui,Buenos Aires,180523,city,0,0,50,0,none,none
+gn:3436047,Benito Juárez,Buenos Aires,15777,town,0,0,50,0,none,none
+gn:3436061,Bella Vista,Buenos Aires,79737,town,0,0,50,0,none,none
+gn:3436062,Bella Vista,Corrientes,0,village,0,0,50,0,none,none
+gn:3436077,Belgrano,Buenos Aires F.D.,138942,city,0,0,50,0,none,none
+gn:3436079,Belén de Escobar,Buenos Aires,0,village,0,0,50,0,none,none
+gn:3436099,Basavilbaso,Entre Rios,10597,town,0,0,50,0,none,none
+gn:3436100,Basail,Chaco,3652,village,0,0,50,0,none,none
+gn:3436124,Barranqueras,Chaco,50823,town,0,0,50,0,none,none
+gn:3436134,Barracas,Buenos Aires F.D.,77474,town,0,0,50,0,none,none
+gn:3436150,Baradero,Buenos Aires,35389,town,0,0,50,0,none,none
+gn:3436152,Banfield,Buenos Aires,61072,town,0,0,50,0,none,none
+gn:3436177,Balcarce,Buenos Aires,44409,town,0,0,50,0,none,none
+gn:3436199,Azul,Buenos Aires,64884,town,0,0,50,0,none,none
+gn:3436205,Azara,Misiones,4382,village,0,0,50,0,none,none
+gn:3436221,Ayacucho,Buenos Aires,18916,town,0,0,50,0,none,none
+gn:3436230,Avellaneda,Santa Fe,23341,town,0,0,50,0,none,none
+gn:3436267,Arroyo del Medio,Misiones,2142,village,0,0,50,0,none,none
+gn:3436287,Aristóbulo del Valle,Misiones,14608,town,0,0,50,0,none,none
+gn:3436311,Apóstoles,Misiones,30278,town,0,0,50,0,none,none
+gn:3436370,Alvear,Corrientes,7917,village,0,0,50,0,none,none
+gn:3436398,Almafuerte,Misiones,1022,village,0,0,50,0,none,none
+gn:3436433,Aldea San Antonio,Entre Rios,1127,village,0,0,50,0,none,none
+gn:3436448,Alba Posse,Misiones,6652,village,0,0,50,0,none,none
+gn:3480740,Guernica,Buenos Aires,0,village,0,0,50,0,none,none
+gn:3832080,Villa Basilio Nievas,San Juan,4038,village,0,0,50,0,none,none
+gn:3832132,Zapala,Neuquen,31534,town,0,0,50,0,none,none
+gn:3832189,Yuto,Jujuy,7732,village,0,0,50,0,none,none
+gn:3832260,Yerba Buena,Tucuman,50783,town,0,0,50,0,none,none
+gn:3832376,Yacimientos Río Turbio,Santa Cruz,6650,village,0,0,50,0,none,none
+gn:3832388,Winifreda,La Pampa,2902,village,0,0,50,0,none,none
+gn:3832398,Wenceslao Escalante,Cordoba,1549,village,0,0,50,0,none,none
+gn:3832518,Vista Alegre Norte,Neuquen,2857,village,0,0,50,0,none,none
+gn:3832560,Vinchina,La Rioja,2834,village,0,0,50,0,none,none
+gn:3832602,Villa Valeria,Cordoba,2525,village,0,0,50,0,none,none
+gn:3832603,Villa Urquiza,Entre Rios,1566,village,0,0,50,0,none,none
+gn:3832605,Villa Unión,Santiago del Estero,0,village,0,0,50,0,none,none
+gn:3832606,Villa Unión,La Rioja,0,village,0,0,50,0,none,none
+gn:3832607,Villa Tulumba,Cordoba,1161,village,0,0,50,0,none,none
+gn:3832608,Villa Trinidad,Santa Fe,2945,village,0,0,50,0,none,none
+gn:3832622,Villa Santa Rosa,San Juan,6332,village,0,0,50,0,none,none
+gn:3832631,Villa Rumipal,Cordoba,1922,village,0,0,50,0,none,none
+gn:3832647,Villa Regina,Rio Negro,31209,town,0,0,50,0,none,none
+gn:3832648,Villa Reducción,Cordoba,1467,village,0,0,50,0,none,none
+gn:3832653,Villa Paula de Sarmiento,San Juan,19092,town,0,0,50,0,none,none
+gn:3832658,Villa Ojo de Agua,Santiago del Estero,5832,village,0,0,50,0,none,none
+gn:3832661,Villa Nueva,Mendoza,11104,town,0,0,50,0,none,none
+gn:3832662,Villa Nueva,Cordoba,25961,town,0,0,50,0,none,none
+gn:3832669,Villa Mugueta,Santa Fe,2789,village,0,0,50,0,none,none
+gn:3832676,Villa Minetti,Santa Fe,6022,village,0,0,50,0,none,none
+gn:3832679,Villa Mercedes,San Juan,1580,village,0,0,50,0,none,none
+gn:3832681,Villa Media Agua,San Juan,11187,town,0,0,50,0,none,none
+gn:3832694,Villa María,Cordoba,92453,town,0,0,50,0,none,none
+gn:3832702,Villalonga,Buenos Aires,5987,village,0,0,50,0,none,none
+gn:3832705,Villa de las Rosas,Cordoba,2535,village,0,0,50,0,none,none
+gn:3832711,Villa La Angostura,Neuquen,7526,village,0,0,50,0,none,none
+gn:3832712,Villa Krause,San Juan,0,village,0,0,50,0,none,none
+gn:3832715,Villa Iris,Buenos Aires,1824,village,0,0,50,0,none,none
+gn:3832716,Villa Independencia,San Juan,1938,village,0,0,50,0,none,none
+gn:3832719,Villa Huidobro,Cordoba,5155,village,0,0,50,0,none,none
+gn:3832729,Villa Giardino,Cordoba,4679,village,0,0,50,0,none,none
+gn:3832731,Villa General Roca,San Luis,196,village,0,0,50,0,none,none
+gn:3832733,Villa General Mitre,Santiago del Estero,3605,village,0,0,50,0,none,none
+gn:3832734,Villa General Belgrano,Cordoba,5888,village,0,0,50,0,none,none
+gn:3832756,Villa Dolores,Cordoba,28009,town,0,0,50,0,none,none
+gn:3832759,Villa de Soto,Cordoba,7303,village,0,0,50,0,none,none
+gn:3832761,Villa de María,Cordoba,6035,village,0,0,50,0,none,none
+gn:3832763,Villa del Totoral,Cordoba,7110,village,0,0,50,0,none,none
+gn:3832764,Villa El Salvador,San Juan,6103,village,0,0,50,0,none,none
+gn:3832765,Villa del Rosario,Cordoba,17496,town,0,0,50,0,none,none
+gn:3832769,Villa del Dique,Cordoba,2829,village,0,0,50,0,none,none
+gn:3832773,Villa Cura Brochero,Cordoba,4707,village,0,0,50,0,none,none
+gn:3832778,Villa Constitución,Santa Fe,44271,town,0,0,50,0,none,none
+gn:3832779,Villa Concepción del Tío,Cordoba,1585,village,0,0,50,0,none,none
+gn:3832783,Chañar Ladeado,Santa Fe,5639,village,0,0,50,0,none,none
+gn:3832785,Villa Castelli,La Rioja,0,village,0,0,50,0,none,none
+gn:3832791,Villa Carlos Paz,Cordoba,69451,town,0,0,50,0,none,none
+gn:3832793,Villa Cañás,Santa Fe,9328,village,0,0,50,0,none,none
+gn:3832795,Villa Bustos,La Rioja,2165,village,0,0,50,0,none,none
+gn:3832797,Villa Berthet,Chaco,12029,town,0,0,50,0,none,none
+gn:3832803,Villa Atuel,Mendoza,3531,village,0,0,50,0,none,none
+gn:3832805,Villa Atamisqui,Santiago del Estero,2683,village,0,0,50,0,none,none
+gn:3832806,Villa Ascasubi,Cordoba,2081,village,0,0,50,0,none,none
+gn:3832811,Villa Ángela,Chaco,43511,town,0,0,50,0,none,none
+gn:3832815,Villa Allende,Cordoba,21683,town,0,0,50,0,none,none
+gn:3832822,Villa Aberastain,San Juan,0,village,0,0,50,0,none,none
+gn:3832899,Viedma,Rio Negro,48940,town,0,0,50,0,none,none
+gn:3832917,Vicuña Mackenna,Cordoba,8994,village,0,0,50,0,none,none
+gn:3832923,Victorica,La Pampa,6565,village,0,0,50,0,none,none
+gn:3832934,Victoria,Entre Rios,25139,town,0,0,50,0,none,none
+gn:3832957,Viamonte,Cordoba,1598,village,0,0,50,0,none,none
+gn:3832959,Viale,Entre Rios,8939,village,0,0,50,0,none,none
+gn:3833027,Vera,Santa Fe,19797,town,0,0,50,0,none,none
+gn:3833062,Venado Tuerto,Santa Fe,72340,town,0,0,50,0,none,none
+gn:3833094,28 de Noviembre,Santa Cruz,4686,village,0,0,50,0,none,none
+gn:3833111,Veinticinco de Mayo,La Pampa,10215,town,0,0,50,0,none,none
+gn:3833112,Veinticinco de Mayo,Buenos Aires,23814,town,0,0,50,0,none,none
+gn:3833113,Veinticinco de Mayo,Mendoza,2087,village,0,0,50,0,none,none
+gn:3833140,Vedia,Buenos Aires,9595,village,0,0,50,0,none,none
+gn:3833182,Vaqueros,Salta,7324,village,0,0,50,0,none,none
+gn:3833211,Valle Hermoso,Cordoba,5486,village,0,0,50,0,none,none
+gn:3833219,Valle Grande,Jujuy,0,village,0,0,50,0,none,none
+gn:3833283,Valcheta,Rio Negro,3596,village,0,0,50,0,none,none
+ar-ushuaia,Ushuaia,Tierra del Fuego,56825,town,0,0,50,0,none,none
+gn:3833370,Urundel,Salta,3588,village,0,0,50,0,none,none
+gn:3833391,Uriburu,La Pampa,1200,village,0,0,50,0,none,none
+gn:3833412,Unquillo,Cordoba,15369,town,0,0,50,0,none,none
+gn:3833424,Unión,San Luis,2341,village,0,0,50,0,none,none
+gn:3833435,Umberto I,Santa Fe,5379,village,0,0,50,0,none,none
+gn:3833451,Ulapes,La Rioja,0,village,0,0,50,0,none,none
+gn:3833463,Ucacha,Cordoba,4747,village,0,0,50,0,none,none
+gn:3833512,Tupungato,Mendoza,16893,town,0,0,50,0,none,none
+gn:3833520,Tunuyán,Mendoza,38367,town,0,0,50,0,none,none
+gn:3833549,Tumbaya,Jujuy,0,village,0,0,50,0,none,none
+gn:3833675,Trevelin,Chubut,6395,village,0,0,50,0,none,none
+gn:3833773,Tres Lomas,Buenos Aires,8405,village,0,0,50,0,none,none
+gn:3833794,Tres Isletas,Chaco,24747,town,0,0,50,0,none,none
+gn:3833859,Tres Arroyos,Buenos Aires,52199,town,0,0,50,0,none,none
+gn:3833871,Tres Algarrobos,Buenos Aires,2993,village,0,0,50,0,none,none
+gn:3833875,Trenque Lauquen,Buenos Aires,39975,town,0,0,50,0,none,none
+gn:3833880,Trenel,La Pampa,3426,village,0,0,50,0,none,none
+gn:3833883,Trelew,Chubut,97915,town,0,0,50,0,none,none
+gn:3833947,Trancas,Tucuman,6658,village,0,0,50,0,none,none
+gn:3833995,Totoras,Santa Fe,9587,village,0,0,50,0,none,none
+gn:3834048,Tostado,Santa Fe,16448,town,0,0,50,0,none,none
+gn:3834184,Tornquist,Buenos Aires,7508,village,0,0,50,0,none,none
+gn:3834251,Toledo,Cordoba,3046,village,0,0,50,0,none,none
+gn:3834259,Los Toldos,Salta,1096,village,0,0,50,0,none,none
+gn:3834310,Toay,La Pampa,17151,town,0,0,50,0,none,none
+gn:3834339,Tío Pujio,Cordoba,2383,village,0,0,50,0,none,none
+gn:3834352,Tintina,Santiago del Estero,3868,village,0,0,50,0,none,none
+gn:3834361,Tinogasta,Catamarca,13617,town,0,0,50,0,none,none
+gn:3834397,Tilisarao,San Luis,5478,village,0,0,50,0,none,none
+gn:3834403,Tilcara,Jujuy,5640,village,0,0,50,0,none,none
+gn:3834459,Ticino,Cordoba,1895,village,0,0,50,0,none,none
+gn:3834502,Termas de Río Hondo,Santiago del Estero,27838,town,0,0,50,0,none,none
+gn:3834537,Telsen,Chubut,0,village,0,0,50,0,none,none
+gn:3834542,Telén,La Pampa,1549,village,0,0,50,0,none,none
+gn:3834571,Tecka,Chubut,0,village,0,0,50,0,none,none
+gn:3834601,Tartagal,Salta,60819,town,0,0,50,0,none,none
+gn:3834647,Tapalqué,Buenos Aires,9408,village,0,0,50,0,none,none
+gn:3834665,Tancacha,Cordoba,5184,village,0,0,50,0,none,none
+gn:3834704,Tamberías,San Juan,0,village,0,0,50,0,none,none
+gn:3834718,Tama,La Rioja,0,village,0,0,50,0,none,none
+gn:3834813,Tafí Viejo,Tucuman,48459,town,0,0,50,0,none,none
+gn:3834814,Tafí del Valle,Tucuman,4028,village,0,0,50,0,none,none
+gn:3834843,Taco Pozo,Chaco,8470,village,0,0,50,0,none,none
+gn:3834893,Susques,Jujuy,1140,village,0,0,50,0,none,none
+gn:3834961,Suncho Corral,Santiago del Estero,6087,village,0,0,50,0,none,none
+gn:3834971,Sunchales,Santa Fe,18757,town,0,0,50,0,none,none
+gn:3834985,Sumampa,Santiago del Estero,4812,village,0,0,50,0,none,none
+gn:3835021,Suardi,Santa Fe,7172,village,0,0,50,0,none,none
+gn:3835024,Stroeder,Buenos Aires,2117,village,0,0,50,0,none,none
+gn:3835238,Simoca,Tucuman,7939,village,0,0,50,0,none,none
+gn:3835278,Siján,Catamarca,1241,village,0,0,50,0,none,none
+gn:3835297,Sierra Grande,Rio Negro,6978,village,0,0,50,0,none,none
+gn:3835300,Sierra de la Ventana,Buenos Aires,1819,village,0,0,50,0,none,none
+gn:3835304,Sierra Colorada,Rio Negro,1690,village,0,0,50,0,none,none
+gn:3835348,Serrezuela,Cordoba,2291,village,0,0,50,0,none,none
+gn:3835351,Serrano,Cordoba,2670,village,0,0,50,0,none,none
+gn:3835372,Senillosa,Neuquen,9534,village,0,0,50,0,none,none
+gn:3835388,Selva,Santiago del Estero,0,village,0,0,50,0,none,none
+gn:3835402,Seguí,Entre Rios,3646,village,0,0,50,0,none,none
+gn:3835582,Sebastián Elcano,Cordoba,2042,village,0,0,50,0,none,none
+gn:3835611,Saujil,Catamarca,2946,village,0,0,50,0,none,none
+gn:3835691,Saturnino María Laspiur,Cordoba,2316,village,0,0,50,0,none,none
+gn:3835695,Sastre,Santa Fe,5521,village,0,0,50,0,none,none
+gn:3835710,Sarmiento,Chubut,8292,village,0,0,50,0,none,none
+gn:3835793,Santo Tomé,Santa Fe,59072,town,0,0,50,0,none,none
+gn:3835866,Santiago Temple,Cordoba,2358,village,0,0,50,0,none,none
+gn:3835869,Santiago del Estero,Santiago del Estero,252192,city,0,0,50,0,none,none
+gn:3835880,Santa Victoria,Salta,1288,village,0,0,50,0,none,none
+gn:3835921,Santa Sylvina,Chaco,9040,village,0,0,50,0,none,none
+gn:3835937,Santa Rosa de Tastil,Salta,2000,village,0,0,50,0,none,none
+gn:3835938,Santa Rosa de Río Primero,Cordoba,6788,village,0,0,50,0,none,none
+gn:3835941,Santa Rosa del Conlara,San Luis,4489,village,0,0,50,0,none,none
+gn:3835943,Santa Rosa de Calamuchita,Cordoba,9504,village,0,0,50,0,none,none
+gn:3835994,Santa Rosa,La Pampa,102860,city,0,0,50,0,none,none
+gn:3835995,Santa Rosa,Mendoza,0,village,0,0,50,0,none,none
+gn:3835998,Santa Rosa de Calchines,Santa Fe,5693,village,0,0,50,0,none,none
+gn:3836011,Santa Rosa,Salta,17785,town,0,0,50,0,none,none
+gn:3836142,Santa María,Catamarca,16545,town,0,0,50,0,none,none
+gn:3836144,Santa María,Salta,1475,village,0,0,50,0,none,none
+gn:3836170,Jovita,Cordoba,4059,village,0,0,50,0,none,none
+gn:3836194,Santa Lucía,San Juan,62697,town,0,0,50,0,none,none
+gn:3836238,Santa Isabel,La Pampa,2493,village,0,0,50,0,none,none
+gn:3836277,Santa Fe,Santa Fe,391164,city,0,0,50,0,none,none
+gn:3836284,Santa Eufemia,Cordoba,2179,village,0,0,50,0,none,none
+gn:3836407,Santa Clara,Jujuy,4883,village,0,0,50,0,none,none
+gn:3836450,Santa Catalina,Jujuy,0,village,0,0,50,0,none,none
+gn:3836564,San Salvador de Jujuy,Jujuy,257970,city,0,0,50,0,none,none
+gn:3836586,San Roque,Mendoza,10199,town,0,0,50,0,none,none
+gn:3836620,San Ramón de la Nueva Orán,Salta,86867,town,0,0,50,0,none,none
+gn:3836669,San Rafael,Mendoza,118009,city,0,0,50,0,none,none
+gn:3836769,San Pedro de Guasayán,Santiago del Estero,1715,village,0,0,50,0,none,none
+gn:3836772,San Pedro de Jujuy,Jujuy,58430,town,0,0,50,0,none,none
+gn:3836845,Sañogasta,La Rioja,0,village,0,0,50,0,none,none
+gn:3836846,San Nicolás de los Arroyos,Buenos Aires,134217,city,0,0,50,0,none,none
+gn:3836873,San Miguel de Tucumán,Tucuman,548866,large-city,0,0,50,0,none,none
+gn:3836951,San Martín de los Andes,Neuquen,23519,town,0,0,50,0,none,none
+gn:3836992,San Martín,Mendoza,82549,town,0,0,50,0,none,none
+gn:3836993,Villa General San Martín,San Juan,29789,town,0,0,50,0,none,none
+gn:3837008,San Marcos Sierra,Cordoba,3355,village,0,0,50,0,none,none
+gn:3837056,San Luis,San Luis,169947,city,0,0,50,0,none,none
+gn:3837097,San Lorenzo,Santa Fe,0,village,0,0,50,0,none,none
+gn:3837102,San Lorenzo,Salta,31589,town,0,0,50,0,none,none
+gn:3837124,San Justo,Santa Fe,21809,town,0,0,50,0,none,none
+gn:3837213,San Juan,San Juan,109123,city,0,0,50,0,none,none
+gn:3837232,San José del Rincón,Santa Fe,13996,town,0,0,50,0,none,none
+gn:3837239,San José de la Dormida,Cordoba,5727,village,0,0,50,0,none,none
+gn:3837240,San José de Jáchal,San Juan,13810,town,0,0,50,0,none,none
+gn:3837373,San José,Catamarca,12700,town,0,0,50,0,none,none
+gn:3837377,San José,Catamarca,3923,village,0,0,50,0,none,none
+gn:3837441,San Jorge,Santa Fe,16873,town,0,0,50,0,none,none
+gn:3837506,San Isidro,Catamarca,31972,town,0,0,50,0,none,none
+gn:3837576,San Guillermo,Santa Fe,8691,village,0,0,50,0,none,none
+gn:3837624,San Francisco del Monte de Oro,San Luis,3295,village,0,0,50,0,none,none
+gn:3837625,San Francisco del Chañar,Cordoba,2067,village,0,0,50,0,none,none
+gn:3837675,San Francisco,Cordoba,59062,town,0,0,50,0,none,none
+gn:3837702,Catamarca,Catamarca,159139,city,0,0,50,0,none,none
+gn:3837823,San Cristóbal,Santa Fe,14286,town,0,0,50,0,none,none
+gn:3837855,San Carlos de Bolívar,Buenos Aires,31618,town,0,0,50,0,none,none
+gn:3837857,San Carlos Centro,Santa Fe,10465,town,0,0,50,0,none,none
+gn:3837892,San Carlos,Mendoza,13678,town,0,0,50,0,none,none
+gn:3837893,San Carlos Minas,Cordoba,1215,village,0,0,50,0,none,none
+gn:3837899,San Carlos,Salta,3051,village,0,0,50,0,none,none
+gn:3837919,San Blas,La Rioja,0,village,0,0,50,0,none,none
+gn:3837943,San Bernardo,Chaco,11101,town,0,0,50,0,none,none
+gn:3837956,San Benito,Entre Rios,6771,village,0,0,50,0,none,none
+gn:3837960,San Basilio,Cordoba,2882,village,0,0,50,0,none,none
+gn:3837980,San Antonio Oeste,Rio Negro,16966,town,0,0,50,0,none,none
+gn:3837985,San Antonio de los Cobres,Salta,4000,village,0,0,50,0,none,none
+gn:3837987,San Antonio de Litín,Cordoba,1240,village,0,0,50,0,none,none
+gn:3838057,San Antonio,Catamarca,4290,village,0,0,50,0,none,none
+gn:3838064,San Antonio,Jujuy,0,village,0,0,50,0,none,none
+gn:3838158,Villa San Agustín,San Juan,5682,village,0,0,50,0,none,none
+gn:3838174,San Agustín,Cordoba,2870,village,0,0,50,0,none,none
+gn:3838194,Samuhú,Chaco,2223,village,0,0,50,0,none,none
+gn:3838201,Sampacho,Cordoba,7238,village,0,0,50,0,none,none
+gn:3838214,Salto de las Rosas,Mendoza,4505,village,0,0,50,0,none,none
+gn:3838227,Salto,Buenos Aires,34034,town,0,0,50,0,none,none
+gn:3838233,Salta,Salta,520683,large-city,0,0,50,0,none,none
+gn:3838235,Salsipuedes,Cordoba,6411,village,0,0,50,0,none,none
+gn:3838237,Salsacate,Cordoba,1205,village,0,0,50,0,none,none
+gn:3838241,Salliqueló,Buenos Aires,8456,village,0,0,50,0,none,none
+gn:3838294,Saldán,Cordoba,2099,village,0,0,50,0,none,none
+gn:3838456,Sachayoj,Santiago del Estero,2777,village,0,0,50,0,none,none
+gn:3838460,Sacanta,Cordoba,2791,village,0,0,50,0,none,none
+gn:3838506,Rufino,Santa Fe,18361,town,0,0,50,0,none,none
+gn:3838561,Rosario de Lerma,Salta,26086,town,0,0,50,0,none,none
+gn:3838564,Rosario de la Frontera,Salta,29336,town,0,0,50,0,none,none
+gn:3838583,Rosario,Santa Fe,948312,large-city,0,0,50,0,none,none
+gn:3838638,Roldán,Santa Fe,12468,town,0,0,50,0,none,none
+gn:3838650,Rojas,Buenos Aires,22106,town,0,0,50,0,none,none
+gn:3838653,Rodríguez Peña,Mendoza,1735,village,0,0,50,0,none,none
+gn:3838684,Rodeo del Medio,Mendoza,18574,town,0,0,50,0,none,none
+gn:3838703,Rodeo,San Juan,3958,village,0,0,50,0,none,none
+gn:3838759,Rivadavia,Mendoza,34830,town,0,0,50,0,none,none
+gn:3838760,Rivadavia,San Juan,0,village,0,0,50,0,none,none
+gn:3838762,Rivadavia,Salta,0,village,0,0,50,0,none,none
+gn:3838793,Río Tercero,Cordoba,53389,town,0,0,50,0,none,none
+gn:3838797,Río Segundo,Cordoba,22171,town,0,0,50,0,none,none
+gn:3838823,Río Primero,Cordoba,11574,town,0,0,50,0,none,none
+gn:3838825,Río Piedras,Salta,1900,village,0,0,50,0,none,none
+gn:3838826,Río Pico,Chubut,1386,village,0,0,50,0,none,none
+gn:3838840,Río Mayo,Chubut,2939,village,0,0,50,0,none,none
+gn:3838854,Río Grande,Tierra del Fuego,52681,town,0,0,50,0,none,none
+gn:3838859,Río Gallegos,Santa Cruz,95796,town,0,0,50,0,none,none
+gn:3838874,Río Cuarto,Cordoba,157010,city,0,0,50,0,none,none
+gn:3838879,Río Colorado,Rio Negro,16132,town,0,0,50,0,none,none
+gn:3838902,Río Ceballos,Cordoba,16632,town,0,0,50,0,none,none
+gn:3838954,Tupelí,San Juan,1512,village,0,0,50,0,none,none
+gn:3839023,Rinconada,Jujuy,0,village,0,0,50,0,none,none
+gn:3839262,Recreo,Santa Fe,12798,town,0,0,50,0,none,none
+gn:3839263,Recreo,Catamarca,14204,town,0,0,50,0,none,none
+gn:3839282,Realicó,La Pampa,8172,village,0,0,50,0,none,none
+gn:3839288,Real del Padre,Mendoza,4004,village,0,0,50,0,none,none
+gn:3839307,Rawson,Chubut,26335,town,0,0,50,0,none,none
+gn:3839381,Rancul,La Pampa,3699,village,0,0,50,0,none,none
+gn:3839444,Ramallo,Buenos Aires,29964,town,0,0,50,0,none,none
+gn:3839479,Rafaela,Santa Fe,88713,town,0,0,50,0,none,none
+gn:3839482,Rada Tilly,Chubut,6208,village,0,0,50,0,none,none
+gn:3839490,Quitilipi,Chaco,32083,town,0,0,50,0,none,none
+gn:3839509,Quirós,Catamarca,1275,village,0,0,50,0,none,none
+gn:3839516,Alfredo Demarchi,Buenos Aires,1853,village,0,0,50,0,none,none
+gn:3839565,Quimilí,Santiago del Estero,10959,town,0,0,50,0,none,none
+gn:3839588,Quilino,Cordoba,4534,village,0,0,50,0,none,none
+gn:3839668,Quemú Quemú,La Pampa,4075,village,0,0,50,0,none,none
+gn:3839982,Punta Alta,Buenos Aires,64244,town,0,0,50,0,none,none
+gn:3840076,Puerto Santa Cruz,Santa Cruz,5390,village,0,0,50,0,none,none
+gn:3840082,Puerto San Julián,Santa Cruz,6143,village,0,0,50,0,none,none
+gn:3840092,Puerto Madryn,Chubut,64555,town,0,0,50,0,none,none
+gn:3840104,Puerto Deseado,Santa Cruz,16747,town,0,0,50,0,none,none
+gn:3840159,Puerta de Corral Quemado,Catamarca,1158,village,0,0,50,0,none,none
+gn:3840191,Puelches,La Pampa,0,village,0,0,50,0,none,none
+gn:3840253,Puán,Buenos Aires,5383,village,0,0,50,0,none,none
+gn:3840259,Profesor Salvador Mazza,Salta,25328,town,0,0,50,0,none,none
+gn:3840300,Presidencia Roque Sáenz Peña,Chaco,81879,town,0,0,50,0,none,none
+gn:3840395,Pozo Hondo,Santiago del Estero,0,village,0,0,50,0,none,none
+gn:3840432,Pozo del Tigre,Formosa,3948,village,0,0,50,0,none,none
+gn:3840470,Pozo del Molle,Cordoba,5429,village,0,0,50,0,none,none
+gn:3840762,Porteña,Cordoba,4624,village,0,0,50,0,none,none
+gn:3840809,Pomán,Catamarca,3200,village,0,0,50,0,none,none
+gn:3840860,Pocito,San Juan,40969,town,0,0,50,0,none,none
+gn:3840885,Plottier,Neuquen,52291,town,0,0,50,0,none,none
+gn:3840896,Plaza Huincul,Neuquen,12273,town,0,0,50,0,none,none
+gn:3841035,Piquillín,Cordoba,1170,village,0,0,50,0,none,none
+gn:3841143,Pilcaniyeu,Rio Negro,1467,village,0,0,50,0,none,none
+gn:3841149,Pilar,Cordoba,18455,town,0,0,50,0,none,none
+gn:3841159,Pigüé,Buenos Aires,15905,town,0,0,50,0,none,none
+gn:3841232,Piedra del Águila,Neuquen,3372,village,0,0,50,0,none,none
+gn:3841301,Picún Leufú,Neuquen,3222,village,0,0,50,0,none,none
+gn:3841309,Pico Truncado,Santa Cruz,25194,town,0,0,50,0,none,none
+gn:3841390,Pichanal,Salta,28017,town,0,0,50,0,none,none
+gn:3841475,Perito Moreno,Santa Cruz,7812,village,0,0,50,0,none,none
+gn:3841490,Pergamino,Buenos Aires,91399,town,0,0,50,0,none,none
+gn:3841493,Pérez Millán,Buenos Aires,5137,village,0,0,50,0,none,none
+gn:3841500,Pérez,Santa Fe,24436,town,0,0,50,0,none,none
+gn:3841504,Perdriel,Mendoza,19321,town,0,0,50,0,none,none
+gn:3841614,Pellegrini,Buenos Aires,6213,village,0,0,50,0,none,none
+gn:3841679,Pehuajó,Buenos Aires,36507,town,0,0,50,0,none,none
+gn:3841684,Pedro Luro,Buenos Aires,11114,town,0,0,50,0,none,none
+gn:3841769,Patquía,La Rioja,0,village,0,0,50,0,none,none
+gn:3841894,Paso de Indios,Chubut,1087,village,0,0,50,0,none,none
+gn:3841908,Pasco,Cordoba,1072,village,0,0,50,0,none,none
+gn:3841912,Pascanas,Cordoba,2567,village,0,0,50,0,none,none
+gn:3841937,Parera,La Pampa,3675,village,0,0,50,0,none,none
+gn:3841956,Paraná,Entre Rios,247139,city,0,0,50,0,none,none
+gn:3842140,Pampa de los Guanacos,Santiago del Estero,4393,village,0,0,50,0,none,none
+gn:3842142,Pampa del Infierno,Chaco,8176,village,0,0,50,0,none,none
+gn:3842190,Palpalá,Jujuy,48199,town,0,0,50,0,none,none
+gn:3842247,Palo Blanco,Catamarca,1077,village,0,0,50,0,none,none
+gn:3842268,Palma Sola,Jujuy,5318,village,0,0,50,0,none,none
+gn:3842559,Oro Verde,Entre Rios,2548,village,0,0,50,0,none,none
+gn:3842593,Ordoñez,Cordoba,2328,village,0,0,50,0,none,none
+gn:3842621,Oncativo,Cordoba,14551,town,0,0,50,0,none,none
+gn:3842632,Olta,La Rioja,0,village,0,0,50,0,none,none
+gn:3842662,Oliva,Cordoba,12890,town,0,0,50,0,none,none
+gn:3842670,Olavarría,Buenos Aires,89721,town,0,0,50,0,none,none
+gn:3842796,Obispo Trejo,Cordoba,1911,village,0,0,50,0,none,none
+gn:3842881,Nueve de Julio,Buenos Aires,42098,town,0,0,50,0,none,none
+gn:3842882,Nueve de Julio,San Juan,5444,village,0,0,50,0,none,none
+gn:3842907,Nueva Esperanza,Santiago del Estero,0,village,0,0,50,0,none,none
+gn:3842934,Nuestra Señora de Talavera,Salta,1406,village,0,0,50,0,none,none
+gn:3842990,Ñorquincó,Rio Negro,565,village,0,0,50,0,none,none
+gn:3843007,Nono,Cordoba,2408,village,0,0,50,0,none,none
+gn:3843026,Noetinger,Cordoba,4508,village,0,0,50,0,none,none
+gn:3843123,Neuquén,Neuquen,231198,city,0,0,50,0,none,none
+gn:3843377,Nazareno,Salta,1142,village,0,0,50,0,none,none
+gn:3843407,Naschel,San Luis,3157,village,0,0,50,0,none,none
+gn:3843436,Napenay,Chaco,3056,village,0,0,50,0,none,none
+gn:3843504,Mutquin,Catamarca,1116,village,0,0,50,0,none,none
+gn:3843619,Morteros,Cordoba,20558,town,0,0,50,0,none,none
+gn:3843647,Morrison,Cordoba,3245,village,0,0,50,0,none,none
+gn:3843788,Monte Vera,Santa Fe,6737,village,0,0,50,0,none,none
+gn:3843803,Monteros,Tucuman,23771,town,0,0,50,0,none,none
+gn:3843819,Monte Quemado,Santiago del Estero,0,village,0,0,50,0,none,none
+gn:3843830,Monte Maíz,Cordoba,6920,village,0,0,50,0,none,none
+gn:3843843,Monte Hermoso,Buenos Aires,7844,village,0,0,50,0,none,none
+gn:3843871,Montecristo,Cordoba,13458,town,0,0,50,0,none,none
+gn:3843875,Monte Comán,Mendoza,3617,village,0,0,50,0,none,none
+gn:3843881,Monte Buey,Cordoba,5497,village,0,0,50,0,none,none
+gn:3843994,Molinos,Salta,1262,village,0,0,50,0,none,none
+gn:3844131,Misión Chaqueña,Salta,1410,village,0,0,50,0,none,none
+gn:3844159,Miramar,Cordoba,1979,village,0,0,50,0,none,none
+gn:3844166,Miraflores,Catamarca,1763,village,0,0,50,0,none,none
+gn:3844186,Ministro Ramos Mexía,Rio Negro,1101,village,0,0,50,0,none,none
+gn:3844229,Mina Clavero,Cordoba,6855,village,0,0,50,0,none,none
+gn:3844263,Milagro,La Rioja,0,village,0,0,50,0,none,none
+gn:3844267,Miguel Riglos,La Pampa,2385,village,0,0,50,0,none,none
+gn:3844298,San José de Metán,Salta,34601,town,0,0,50,0,none,none
+gn:3844377,Merlo,San Luis,11159,town,0,0,50,0,none,none
+gn:3844421,Mendoza,Mendoza,114893,city,0,0,50,0,none,none
+gn:3844424,Mendiolaza,Cordoba,4204,village,0,0,50,0,none,none
+gn:3844459,Melincué,Santa Fe,0,village,0,0,50,0,none,none
+gn:3844581,Médanos,Buenos Aires,5998,village,0,0,50,0,none,none
+gn:3844602,Medanitos,Catamarca,1019,village,0,0,50,0,none,none
+gn:3844609,Mechita,Buenos Aires,1461,village,0,0,50,0,none,none
+gn:3844644,Mayor Buratovich,Buenos Aires,6162,village,0,0,50,0,none,none
+gn:3844679,Mattaldi,Cordoba,1714,village,0,0,50,0,none,none
+gn:3844759,Marull,Cordoba,1765,village,0,0,50,0,none,none
+gn:3844818,María Teresa,Santa Fe,3767,village,0,0,50,0,none,none
+gn:3844832,Mariano Moreno,Neuquen,2225,village,0,0,50,0,none,none
+gn:3844899,Marcos Juárez,Cordoba,24226,town,0,0,50,0,none,none
+gn:3844933,Maquinchao,Rio Negro,2926,village,0,0,50,0,none,none
+gn:3845073,Malvinas Argentinas,Cordoba,8628,village,0,0,50,0,none,none
+gn:3845181,Malargüe,Mendoza,27355,town,0,0,50,0,none,none
+gn:3845185,Malanzán,La Rioja,0,village,0,0,50,0,none,none
+gn:3845202,Malagueño,Cordoba,9364,village,0,0,50,0,none,none
+gn:3845247,Maipú,Mendoza,0,village,0,0,50,0,none,none
+gn:3845251,Mainqué,Rio Negro,2658,village,0,0,50,0,none,none
+gn:3845254,Maimará,Jujuy,2470,village,0,0,50,0,none,none
+gn:3845330,Machagai,Chaco,28070,town,0,0,50,0,none,none
+gn:3845344,Macachín,La Pampa,5493,village,0,0,50,0,none,none
+gn:3845365,Luque,Cordoba,7034,village,0,0,50,0,none,none
+gn:3845391,Lules,Tucuman,0,village,0,0,50,0,none,none
+gn:3845393,Luján de Cuyo,Mendoza,25728,town,0,0,50,0,none,none
+gn:3845398,Luján,San Luis,1896,village,0,0,50,0,none,none
+gn:3845490,Los Varela,Catamarca,1908,village,0,0,50,0,none,none
+gn:3845549,Los Telares,Santiago del Estero,2032,village,0,0,50,0,none,none
+gn:3845575,Los Surgentes,Cordoba,2804,village,0,0,50,0,none,none
+gn:3845977,Los Menucos,Rio Negro,4214,village,0,0,50,0,none,none
+gn:3846080,Los Juríes,Santiago del Estero,3212,village,0,0,50,0,none,none
+gn:3846175,Los Frentones,Chaco,6610,village,0,0,50,0,none,none
+gn:3846236,Los Cóndores,Cordoba,2720,village,0,0,50,0,none,none
+gn:3846258,Los Cocos,Cordoba,1035,village,0,0,50,0,none,none
+gn:3846411,Los Blancos,Salta,1385,village,0,0,50,0,none,none
+gn:3846414,Los Berros,San Juan,5674,village,0,0,50,0,none,none
+gn:3846484,Los Antiguos,Santa Cruz,4655,village,0,0,50,0,none,none
+gn:3846514,Los Altos,Catamarca,5609,village,0,0,50,0,none,none
+gn:3846610,Lonquimay,La Pampa,1672,village,0,0,50,0,none,none
+gn:3846616,Londres,Catamarca,3004,village,0,0,50,0,none,none
+gn:3846634,Loncopué,Neuquen,4323,village,0,0,50,0,none,none
+gn:3846864,Lincoln,Buenos Aires,32773,town,0,0,50,0,none,none
+gn:3846880,Limay Mahuida,La Pampa,0,village,0,0,50,0,none,none
+gn:3846914,San Martín,San Luis,0,village,0,0,50,0,none,none
+gn:3846915,Libertador General San Martín,Jujuy,49267,town,0,0,50,0,none,none
+gn:3846991,Leones,Cordoba,9971,village,0,0,50,0,none,none
+gn:3847073,Leleque,Chubut,0,village,0,0,50,0,none,none
+gn:3847195,La Viña,Salta,2172,village,0,0,50,0,none,none
+gn:3847482,La Toma,San Luis,6663,village,0,0,50,0,none,none
+gn:3847516,La Tigra,Chaco,4505,village,0,0,50,0,none,none
+gn:3847613,Las Varillas,Cordoba,18631,town,0,0,50,0,none,none
+gn:3847617,Las Varas,Cordoba,1017,village,0,0,50,0,none,none
+gn:3847836,Las Rosas,Santa Fe,12793,town,0,0,50,0,none,none
+gn:3847865,Las Plumas,Chubut,0,village,0,0,50,0,none,none
+gn:3847911,Las Perdices,Cordoba,4615,village,0,0,50,0,none,none
+gn:3847933,Las Parejas,Santa Fe,11317,town,0,0,50,0,none,none
+gn:3847971,Las Ovejas,Neuquen,1312,village,0,0,50,0,none,none
+gn:3848054,Las Mojarras,Catamarca,1256,village,0,0,50,0,none,none
+gn:3848164,Las Lomitas,Formosa,10354,town,0,0,50,0,none,none
+gn:3848209,Las Lajitas,Salta,13322,town,0,0,50,0,none,none
+gn:3848216,Las Lajas,Neuquen,4673,village,0,0,50,0,none,none
+gn:3848242,Las Junturas,Cordoba,1541,village,0,0,50,0,none,none
+gn:3848343,Las Higueras,Cordoba,5282,village,0,0,50,0,none,none
+gn:3848353,Las Heras,Santa Cruz,24728,town,0,0,50,0,none,none
+gn:3848354,Las Heras,Mendoza,0,village,0,0,50,0,none,none
+gn:3848394,Las Flores,San Juan,1242,village,0,0,50,0,none,none
+gn:3848538,Las Coloradas,Neuquen,0,village,0,0,50,0,none,none
+gn:3848687,Las Breñas,Chaco,26955,town,0,0,50,0,none,none
+gn:3848863,Las Acequias,Cordoba,2116,village,0,0,50,0,none,none
+gn:3848950,La Rioja,La Rioja,178872,city,0,0,50,0,none,none
+gn:3849140,La Quiaca,Jujuy,14751,town,0,0,50,0,none,none
+gn:3849196,Puerta de San José,Catamarca,1073,village,0,0,50,0,none,none
+gn:3849205,La Puerta,Cordoba,2770,village,0,0,50,0,none,none
+gn:3849206,La Puerta,Catamarca,0,village,0,0,50,0,none,none
+gn:3849300,Laprida,Buenos Aires,9320,village,0,0,50,0,none,none
+gn:3849375,La Poma,Salta,0,village,0,0,50,0,none,none
+gn:3849388,La Playosa,Cordoba,2376,village,0,0,50,0,none,none
+gn:3849516,La Paz,Mendoza,9559,village,0,0,50,0,none,none
+gn:3849557,La Para,Cordoba,3021,village,0,0,50,0,none,none
+gn:3849916,La Merced,Catamarca,2088,village,0,0,50,0,none,none
+gn:3849918,La Merced,Salta,10704,town,0,0,50,0,none,none
+gn:3849924,La Mendieta,Jujuy,3812,village,0,0,50,0,none,none
+gn:3849980,La Maruja,La Pampa,1389,village,0,0,50,0,none,none
+gn:3850005,Lamarque,Rio Negro,9282,village,0,0,50,0,none,none
+gn:3850888,Laguna Yema,Formosa,2744,village,0,0,50,0,none,none
+gn:3850920,Laguna Paiva,Santa Fe,12250,town,0,0,50,0,none,none
+gn:3850929,Laguna Larga,Cordoba,7854,village,0,0,50,0,none,none
+gn:3851072,La Granja,Cordoba,2406,village,0,0,50,0,none,none
+gn:3851100,Lago Puelo,Chubut,4046,village,0,0,50,0,none,none
+gn:3851181,La Francia,Cordoba,3503,village,0,0,50,0,none,none
+gn:3851331,La Falda,Cordoba,15112,town,0,0,50,0,none,none
+gn:3851712,La Dormida,Mendoza,3533,village,0,0,50,0,none,none
+gn:3851798,La Cumbre,Cordoba,7235,village,0,0,50,0,none,none
+gn:3851913,La Consulta,Mendoza,9563,village,0,0,50,0,none,none
+gn:3851985,La Cocha,Tucuman,7066,village,0,0,50,0,none,none
+gn:3851993,La Clotilde,Chaco,3625,village,0,0,50,0,none,none
+gn:3852125,La Cesira,Cordoba,1140,village,0,0,50,0,none,none
+gn:3852279,La Carlota,Cordoba,11490,town,0,0,50,0,none,none
+gn:3852317,La Candelaria,Salta,0,village,0,0,50,0,none,none
+gn:3852341,La Cañada,Santiago del Estero,0,village,0,0,50,0,none,none
+gn:3852374,La Calera,Cordoba,24796,town,0,0,50,0,none,none
+gn:3852393,La Caldera,Salta,3572,village,0,0,50,0,none,none
+gn:3852468,Laboulaye,Cordoba,19908,town,0,0,50,0,none,none
+gn:3852480,Laborde,Cordoba,5492,village,0,0,50,0,none,none
+gn:3852629,La Banda,Santiago del Estero,0,village,0,0,50,0,none,none
+gn:3853330,Justo Daract,San Luis,9680,village,0,0,50,0,none,none
+gn:3853331,Justiniano Posse,Cordoba,7406,village,0,0,50,0,none,none
+gn:3853350,Junín de los Andes,Neuquen,10592,town,0,0,50,0,none,none
+gn:3853354,Junín,Buenos Aires,87509,town,0,0,50,0,none,none
+gn:3853355,Junín,Mendoza,10442,town,0,0,50,0,none,none
+gn:3853447,Juan Bautista Alberdi,Buenos Aires,3491,village,0,0,50,0,none,none
+gn:3853450,Juan A. Pradere,Buenos Aires,1042,village,0,0,50,0,none,none
+gn:3853479,José de San Martín,Chubut,1453,village,0,0,50,0,none,none
+gn:3853490,Jocolí,Mendoza,1640,village,0,0,50,0,none,none
+gn:3853491,Joaquín V. González,Salta,19185,town,0,0,50,0,none,none
+gn:3853510,Jesús María,Cordoba,36343,town,0,0,50,0,none,none
+gn:3853562,James Craik,Cordoba,4560,village,0,0,50,0,none,none
+gn:3853592,Jacinto Aráuz,La Pampa,2773,village,0,0,50,0,none,none
+gn:3853616,Italó,Cordoba,1139,village,0,0,50,0,none,none
+gn:3853643,Isla Verde,Cordoba,4245,village,0,0,50,0,none,none
+gn:3853699,Iruya,Salta,2009,village,0,0,50,0,none,none
+gn:3853745,Intendente Alvear,La Pampa,8295,village,0,0,50,0,none,none
+gn:3853748,Inriville,Cordoba,3778,village,0,0,50,0,none,none
+gn:3853767,La Esperanza,Jujuy,5002,village,0,0,50,0,none,none
+gn:3853782,Ingeniero Luis A. Huergo,Rio Negro,6483,village,0,0,50,0,none,none
+gn:3853783,Ingeniero Luiggi,La Pampa,4671,village,0,0,50,0,none,none
+gn:3853786,Ingeniero Jacobacci,Rio Negro,8088,village,0,0,50,0,none,none
+gn:3853788,Ingeniero Guillermo N. Juárez,Formosa,10357,town,0,0,50,0,none,none
+gn:3853789,Ingeniero Giagnoni,Mendoza,1283,village,0,0,50,0,none,none
+gn:3853918,Iglesia,San Juan,1485,village,0,0,50,0,none,none
+gn:3853923,Idiazabal,Cordoba,1567,village,0,0,50,0,none,none
+gn:3853935,Icaño,Catamarca,3223,village,0,0,50,0,none,none
+gn:3853967,Humahuaca,Jujuy,11369,town,0,0,50,0,none,none
+gn:3853974,Huinca Renancó,Cordoba,8637,village,0,0,50,0,none,none
+gn:3853981,Huillapima,Catamarca,2829,village,0,0,50,0,none,none
+gn:3854008,Huerta Grande,Cordoba,5630,village,0,0,50,0,none,none
+gn:3854093,Huanchillas,Cordoba,1020,village,0,0,50,0,none,none
+gn:3854102,Hualfín,Catamarca,1095,village,0,0,50,0,none,none
+gn:3854153,El Hoyo,Chubut,2498,village,0,0,50,0,none,none
+gn:3854294,Hilario Ascasubi,Buenos Aires,4204,village,0,0,50,0,none,none
+gn:3854314,Hickmann,Salta,1110,village,0,0,50,0,none,none
+gn:3854318,Hersilia,Santa Fe,3000,village,0,0,50,0,none,none
+gn:3854325,Herrera,Santiago del Estero,0,village,0,0,50,0,none,none
+gn:3854331,Hernando,Cordoba,10486,town,0,0,50,0,none,none
+gn:3854334,Hernández,Entre Rios,1801,village,0,0,50,0,none,none
+gn:3854336,Hermoso Campo,Chaco,7435,village,0,0,50,0,none,none
+gn:3854359,Henderson,Buenos Aires,9781,village,0,0,50,0,none,none
+gn:3854360,Helvecia,Santa Fe,0,village,0,0,50,0,none,none
+gn:3854493,Guatraché,La Pampa,5271,village,0,0,50,0,none,none
+gn:3854494,Guatimozín,Cordoba,2524,village,0,0,50,0,none,none
+gn:3854604,Guaminí,Buenos Aires,3001,village,0,0,50,0,none,none
+gn:3854677,Guachipas,Salta,2576,village,0,0,50,0,none,none
+gn:3854704,Gregoria Pérez de Denis,Santa Fe,1560,village,0,0,50,0,none,none
+gn:3854724,Graneros,Tucuman,5263,village,0,0,50,0,none,none
+gn:3854895,Granadero Baigorria,Santa Fe,32427,town,0,0,50,0,none,none
+gn:3854964,Godoy Cruz,Mendoza,0,village,0,0,50,0,none,none
+gn:3854981,Gobernador Gregores,Santa Cruz,5343,village,0,0,50,0,none,none
+gn:3854985,Gobernador Gálvez,Santa Fe,74650,town,0,0,50,0,none,none
+gn:3854988,Gobernador Costa,Chubut,2185,village,0,0,50,0,none,none
+gn:3854990,Candioti,Santa Fe,1018,village,0,0,50,0,none,none
+gn:3855031,Germania,Buenos Aires,1554,village,0,0,50,0,none,none
+gn:3855041,General Villegas,Buenos Aires,22474,town,0,0,50,0,none,none
+gn:3855043,Los Toldos,Buenos Aires,17752,town,0,0,50,0,none,none
+gn:3855056,General San Martín,La Pampa,2846,village,0,0,50,0,none,none
+gn:3855065,General Roca,Rio Negro,73212,town,0,0,50,0,none,none
+gn:3855066,General Roca,Cordoba,2597,village,0,0,50,0,none,none
+gn:3855067,General Ramírez,Entre Rios,8614,village,0,0,50,0,none,none
+gn:3855070,General Pizarro,Salta,3905,village,0,0,50,0,none,none
+gn:3855072,General Pinto,Buenos Aires,0,village,0,0,50,0,none,none
+gn:3855074,General Pinedo,Chaco,15741,town,0,0,50,0,none,none
+gn:3855075,General Pico,La Pampa,66805,town,0,0,50,0,none,none
+gn:3855090,General Güemes,Salta,38048,town,0,0,50,0,none,none
+gn:3855092,General Manuel J. Campos,La Pampa,1016,village,0,0,50,0,none,none
+gn:3855098,General Levalle,Cordoba,5492,village,0,0,50,0,none,none
+gn:3855100,Villa Tulumaya,Mendoza,12373,town,0,0,50,0,none,none
+gn:3855104,General La Madrid,Buenos Aires,9400,village,0,0,50,0,none,none
+gn:3855114,General Fernández Oro,Rio Negro,14675,town,0,0,50,0,none,none
+gn:3855115,General Mosconi,Formosa,1279,village,0,0,50,0,none,none
+gn:3855116,General Mosconi,Salta,19811,town,0,0,50,0,none,none
+gn:3855117,General Enrique Godoy,Rio Negro,3823,village,0,0,50,0,none,none
+gn:3855120,General Daniel Cerri,Buenos Aires,7704,village,0,0,50,0,none,none
+gn:3855121,General Conesa,Rio Negro,6432,village,0,0,50,0,none,none
+gn:3855124,General Cabrera,Cordoba,10351,town,0,0,50,0,none,none
+gn:3855131,General Baldissera,Cordoba,2133,village,0,0,50,0,none,none
+gn:3855133,General Arenales,Buenos Aires,0,village,0,0,50,0,none,none
+gn:3855138,General Alvear,Buenos Aires,9209,village,0,0,50,0,none,none
+gn:3855139,General Alvear,Mendoza,35626,town,0,0,50,0,none,none
+gn:3855143,General Acha,La Pampa,15101,town,0,0,50,0,none,none
+gn:3855187,Gastre,Chubut,0,village,0,0,50,0,none,none
+gn:3855199,Garza,Santiago del Estero,0,village,0,0,50,0,none,none
+gn:3855226,Gaona,Salta,2171,village,0,0,50,0,none,none
+gn:3855237,Gancedo,Chaco,3737,village,0,0,50,0,none,none
+gn:3855244,Gálvez,Santa Fe,18374,town,0,0,50,0,none,none
+gn:3855284,Gaiman,Chubut,5753,village,0,0,50,0,none,none
+gn:3855302,Funes,Santa Fe,14750,town,0,0,50,0,none,none
+gn:3855353,Frías,Santiago del Estero,0,village,0,0,50,0,none,none
+gn:3855357,Freyre,Cordoba,7630,village,0,0,50,0,none,none
+gn:3855368,Fray Luis Beltrán,Rio Negro,6313,village,0,0,50,0,none,none
+gn:3855369,Fray Luis Beltrán,Mendoza,7813,village,0,0,50,0,none,none
+gn:3855370,Fray Luis A. Beltrán,Santa Fe,14390,town,0,0,50,0,none,none
+gn:3855377,Franck,Santa Fe,6292,village,0,0,50,0,none,none
+gn:3855394,Fraile Pintado,Jujuy,13682,town,0,0,50,0,none,none
+gn:3855433,Fortín Olavarría,Buenos Aires,1386,village,0,0,50,0,none,none
+gn:3855554,Firmat,Santa Fe,18294,town,0,0,50,0,none,none
+gn:3855588,Fiambalá,Catamarca,5510,village,0,0,50,0,none,none
+gn:3855594,Ferri,Rio Negro,1884,village,0,0,50,0,none,none
+gn:3855607,Fernández,Santiago del Estero,0,village,0,0,50,0,none,none
+gn:3855661,Famatina,La Rioja,0,village,0,0,50,0,none,none
+gn:3855666,Famaillá,Tucuman,30951,town,0,0,50,0,none,none
+gn:3855719,Etruria,Cordoba,3788,village,0,0,50,0,none,none
+gn:3855763,Estanislao del Campo,Formosa,4055,village,0,0,50,0,none,none
+gn:3855974,Esquel,Chubut,28486,town,0,0,50,0,none,none
+gn:3856022,Esperanza,Santa Fe,35885,town,0,0,50,0,none,none
+gn:3856231,Embarcación,Salta,23961,town,0,0,50,0,none,none
+gn:3856235,Embalse,Cordoba,15900,town,0,0,50,0,none,none
+gn:3856236,Embajador Martini,La Pampa,1298,village,0,0,50,0,none,none
+gn:3856436,El Trébol,Santa Fe,10871,town,0,0,50,0,none,none
+gn:3856496,El Tío,Cordoba,1510,village,0,0,50,0,none,none
+gn:3856618,El Simbolar,Santiago del Estero,0,village,0,0,50,0,none,none
+gn:3856776,El Rodeo,Catamarca,1083,village,0,0,50,0,none,none
+gn:3857012,El Quebrachal,Salta,10243,town,0,0,50,0,none,none
+gn:3857497,El Nihuil,Mendoza,1327,village,0,0,50,0,none,none
+gn:3857756,El Maitén,Chubut,3782,village,0,0,50,0,none,none
+gn:3857879,El Huecú,Neuquen,1399,village,0,0,50,0,none,none
+gn:3857887,El Hoyo,Santiago del Estero,2162,village,0,0,50,0,none,none
+gn:3857974,El Galpón,Salta,8357,village,0,0,50,0,none,none
+gn:3858088,Elena,Cordoba,2815,village,0,0,50,0,none,none
+gn:3858242,El Cuy,Rio Negro,510,village,0,0,50,0,none,none
+gn:3858553,El Carril,Salta,13124,town,0,0,50,0,none,none
+gn:3858590,El Carmen,Jujuy,0,village,0,0,50,0,none,none
+gn:3858677,El Calafate,Santa Cruz,22844,town,0,0,50,0,none,none
+gn:3858765,El Bolsón,Rio Negro,21287,town,0,0,50,0,none,none
+gn:3858909,El Arañado,Cordoba,1395,village,0,0,50,0,none,none
+gn:3858935,El Alto,Catamarca,0,village,0,0,50,0,none,none
+gn:3859000,El Aguilar,Jujuy,3655,village,0,0,50,0,none,none
+gn:3859036,Eduardo Castex,La Pampa,10125,town,0,0,50,0,none,none
+gn:3859108,Dragones,Salta,2330,village,0,0,50,0,none,none
+gn:3859278,Dolavón,Chubut,2929,village,0,0,50,0,none,none
+gn:3859296,Doblas,La Pampa,1860,village,0,0,50,0,none,none
+gn:3859384,Diamante,Entre Rios,19545,town,0,0,50,0,none,none
+gn:3859409,Devoto,Cordoba,5597,village,0,0,50,0,none,none
+gn:3859429,Despeñaderos,Cordoba,5645,village,0,0,50,0,none,none
+gn:3859500,Del Campillo,Cordoba,3155,village,0,0,50,0,none,none
+gn:3859512,Deán Funes,Cordoba,20164,town,0,0,50,0,none,none
+gn:3859521,Darwin,Rio Negro,1052,village,0,0,50,0,none,none
+gn:3859522,Darregueira,Buenos Aires,6221,village,0,0,50,0,none,none
+gn:3859535,Dalmacio Vélez,Cordoba,1344,village,0,0,50,0,none,none
+gn:3859538,Daireaux,Buenos Aires,13914,town,0,0,50,0,none,none
+gn:3859552,Cutral-Có,Neuquen,47380,town,0,0,50,0,none,none
+gn:3859741,Cuchillo Có,La Pampa,0,village,0,0,50,0,none,none
+gn:3859828,Cruz del Eje,Cordoba,28166,town,0,0,50,0,none,none
+gn:3859839,Cruz Alta,Cordoba,6862,village,0,0,50,0,none,none
+gn:3859904,Crespo,Entre Rios,18296,town,0,0,50,0,none,none
+gn:3859951,Costasacate,Cordoba,1288,village,0,0,50,0,none,none
+gn:3859956,Costa de Araujo,Mendoza,5306,village,0,0,50,0,none,none
+gn:3859965,Cosquín,Cordoba,19070,town,0,0,50,0,none,none
+gn:3859974,Corzuela,Chaco,10470,town,0,0,50,0,none,none
+gn:3860072,Los Corralitos,Mendoza,6928,village,0,0,50,0,none,none
+gn:3860079,Corralito,Cordoba,1873,village,0,0,50,0,none,none
+gn:3860129,Corral de Bustos,Cordoba,9882,village,0,0,50,0,none,none
+gn:3860164,Coronel Suárez,Buenos Aires,32525,town,0,0,50,0,none,none
+gn:3860174,Coronel Pringles,Buenos Aires,21555,town,0,0,50,0,none,none
+gn:3860177,Coronel Mollinedo,Salta,1228,village,0,0,50,0,none,none
+gn:3860178,Coronel Moldes,Cordoba,8104,village,0,0,50,0,none,none
+gn:3860179,Coronel Moldes,Salta,5177,village,0,0,50,0,none,none
+gn:3860184,Coronel Juan Solá,Salta,5876,village,0,0,50,0,none,none
+gn:3860197,Coronel Du Graty,Chaco,9140,village,0,0,50,0,none,none
+gn:3860199,Coronel Dorrego,Buenos Aires,11850,town,0,0,50,0,none,none
+gn:3860206,Coronel Belisle,Rio Negro,1841,village,0,0,50,0,none,none
+gn:3860208,Coronel Baigorria,Cordoba,1334,village,0,0,50,0,none,none
+gn:3860217,Coronda,Santa Fe,16975,town,0,0,50,0,none,none
+gn:3860259,Córdoba,Cordoba,2106734,large-city,0,0,50,0,none,none
+gn:3860319,Contralmirante Cordero,Rio Negro,2782,village,0,0,50,0,none,none
+gn:3860419,Concepción del Bermejo,Chaco,5830,village,0,0,50,0,none,none
+gn:3860427,Concepción,Tucuman,0,village,0,0,50,0,none,none
+gn:3860431,Concarán,San Luis,4530,village,0,0,50,0,none,none
+gn:3860443,Comodoro Rivadavia,Chubut,140850,city,0,0,50,0,none,none
+gn:3860466,Comandante Luis Piedrabuena,Santa Cruz,9278,village,0,0,50,0,none,none
+gn:3860475,Comallo,Rio Negro,1635,village,0,0,50,0,none,none
+gn:3860704,Tres de Mayo,Mendoza,1384,village,0,0,50,0,none,none
+gn:3860730,Colonia San Bartolomé,Cordoba,1104,village,0,0,50,0,none,none
+gn:3860757,La Tordilla,Cordoba,1138,village,0,0,50,0,none,none
+gn:3860791,Colonia Dora,Santiago del Estero,2406,village,0,0,50,0,none,none
+gn:3860801,Colonia Caroya,Cordoba,24197,town,0,0,50,0,none,none
+gn:3860811,Colonia Barón,La Pampa,3317,village,0,0,50,0,none,none
+gn:3860828,Colón,Buenos Aires,26067,town,0,0,50,0,none,none
+gn:3861002,Clodomira,Santiago del Estero,9043,village,0,0,50,0,none,none
+gn:3861056,Cipolletti,Rio Negro,95524,town,0,0,50,0,none,none
+gn:3861059,Cintra,Cordoba,1054,village,0,0,50,0,none,none
+gn:3861061,Cinco Saltos,Rio Negro,26399,town,0,0,50,0,none,none
+gn:3861217,Chumbicha,Catamarca,5600,village,0,0,50,0,none,none
+gn:3861262,Chos Malal,Neuquen,11721,town,0,0,50,0,none,none
+gn:3861297,Chorotis,Chaco,1445,village,0,0,50,0,none,none
+gn:3861329,Choele Choel,Rio Negro,13013,town,0,0,50,0,none,none
+gn:3861344,Chivilcoy,Buenos Aires,65575,town,0,0,50,0,none,none
+gn:3861405,Chimpay,Rio Negro,3905,village,0,0,50,0,none,none
+gn:3861416,Chimbas,San Juan,73829,town,0,0,50,0,none,none
+gn:3861445,Chilecito,La Rioja,42248,town,0,0,50,0,none,none
+gn:3861494,Chicoana,Salta,5420,village,0,0,50,0,none,none
+gn:3861528,Chichinales,Rio Negro,4060,village,0,0,50,0,none,none
+gn:3861570,Chepes,La Rioja,0,village,0,0,50,0,none,none
+gn:3861595,Chazón,Cordoba,1010,village,0,0,50,0,none,none
+gn:3861666,Charras,Cordoba,1001,village,0,0,50,0,none,none
+gn:3861678,Charata,Chaco,27813,town,0,0,50,0,none,none
+gn:3861713,Chapanay,Mendoza,1771,village,0,0,50,0,none,none
+gn:3861824,Chamical,La Rioja,13383,town,0,0,50,0,none,none
+gn:3861953,Chacabuco,Buenos Aires,46440,town,0,0,50,0,none,none
+gn:3861966,Cervantes,Rio Negro,5173,village,0,0,50,0,none,none
+gn:3862086,San José de los Cerrillos,Salta,37950,town,0,0,50,0,none,none
+gn:3862100,Ceres,Santa Fe,13063,town,0,0,50,0,none,none
+gn:3862144,Centenario,Neuquen,48101,town,0,0,50,0,none,none
+gn:3862222,Cavanagh,Cordoba,1150,village,0,0,50,0,none,none
+gn:3862240,Caucete,San Juan,32454,town,0,0,50,0,none,none
+gn:3862251,Catriló,La Pampa,3743,village,0,0,50,0,none,none
+gn:3862254,Catriel,Rio Negro,15169,town,0,0,50,0,none,none
+gn:3862293,Castro Barros,La Rioja,4322,village,0,0,50,0,none,none
+gn:3862320,Juan José Castelli,Chaco,36588,town,0,0,50,0,none,none
+gn:3862351,Casilda,Santa Fe,32002,town,0,0,50,0,none,none
+gn:3862515,Carrilobo,Cordoba,1522,village,0,0,50,0,none,none
+gn:3862575,Carnerillo,Cordoba,1575,village,0,0,50,0,none,none
+gn:3862579,Carmensa,Mendoza,1307,village,0,0,50,0,none,none
+gn:3862583,Carmen de Patagones,Buenos Aires,25982,town,0,0,50,0,none,none
+gn:3862600,Carlos Tejedor,Buenos Aires,6671,village,0,0,50,0,none,none
+gn:3862607,Carlos Casares,Buenos Aires,19397,town,0,0,50,0,none,none
+gn:3862634,Carhué,Buenos Aires,0,village,0,0,50,0,none,none
+gn:3862655,Carcarañá,Santa Fe,15619,town,0,0,50,0,none,none
+gn:3862738,Capitán Bermúdez,Santa Fe,27060,town,0,0,50,0,none,none
+gn:3862761,Capilla del Monte,Cordoba,9085,village,0,0,50,0,none,none
+gn:3862772,Capayán,Catamarca,6358,village,0,0,50,0,none,none
+gn:3862832,Candelaria,San Luis,2269,village,0,0,50,0,none,none
+gn:3862883,Canals,Cordoba,8343,village,0,0,50,0,none,none
+gn:3862971,Cañada de Luque,Cordoba,1054,village,0,0,50,0,none,none
+gn:3862981,Cañada de Gómez,Santa Fe,36000,town,0,0,50,0,none,none
+gn:3863050,Campo Quijano,Salta,13370,town,0,0,50,0,none,none
+gn:3863095,Campo Largo,Chaco,10743,town,0,0,50,0,none,none
+gn:3863136,Campo Gallo,Santiago del Estero,5455,village,0,0,50,0,none,none
+gn:3863314,Camilo Aldao,Cordoba,4895,village,0,0,50,0,none,none
+gn:3863327,Camarones,Chubut,1079,village,0,0,50,0,none,none
+gn:3863362,Calingasta,San Juan,2722,village,0,0,50,0,none,none
+gn:3863366,Calilegua,Jujuy,5174,village,0,0,50,0,none,none
+gn:3863377,Caleufú,La Pampa,2184,village,0,0,50,0,none,none
+gn:3863379,Caleta Olivia,Santa Cruz,56310,town,0,0,50,0,none,none
+gn:3863419,Calchaquí,Santa Fe,10221,town,0,0,50,0,none,none
+gn:3863491,Caimancito,Jujuy,5403,village,0,0,50,0,none,none
+gn:3863503,Cafayate,Salta,16836,town,0,0,50,0,none,none
+gn:3863557,Cachi,Salta,2189,village,0,0,50,0,none,none
+gn:3863663,Buta Ranquil,Neuquen,2221,village,0,0,50,0,none,none
+gn:3863701,Villa Burruyacú,Tucuman,2037,village,0,0,50,0,none,none
+gn:3863814,Buena Esperanza,San Luis,2531,village,0,0,50,0,none,none
+gn:3863821,Hipólito Bouchard,Cordoba,1756,village,0,0,50,0,none,none
+gn:3863833,Brinkmann,Cordoba,11241,town,0,0,50,0,none,none
+gn:3863841,Brea Pozo,Santiago del Estero,0,village,0,0,50,0,none,none
+gn:3863882,Bragado,Buenos Aires,38794,town,0,0,50,0,none,none
+gn:3863887,Bowen,Mendoza,6005,village,0,0,50,0,none,none
+gn:3864274,Berrotarán,Cordoba,6446,village,0,0,50,0,none,none
+gn:3864283,Bernasconi,La Pampa,1781,village,0,0,50,0,none,none
+gn:3864285,Bernardo Larroudé,La Pampa,1619,village,0,0,50,0,none,none
+gn:3864299,Bermejo,Mendoza,13428,town,0,0,50,0,none,none
+gn:3864328,Beltrán,Santiago del Estero,5321,village,0,0,50,0,none,none
+gn:3864331,Bell Ville,Cordoba,35105,town,0,0,50,0,none,none
+gn:3864375,Bella Vista,Tucuman,15126,town,0,0,50,0,none,none
+gn:3864430,Belén,Catamarca,15172,town,0,0,50,0,none,none
+gn:3864688,Barreal,San Juan,5062,village,0,0,50,0,none,none
+gn:3864729,Barrancas,Neuquen,1098,village,0,0,50,0,none,none
+gn:3864776,Barda del Medio,Rio Negro,1627,village,0,0,50,0,none,none
+gn:3864830,Banderaló,Buenos Aires,1424,village,0,0,50,0,none,none
+gn:3864847,Bandera,Santiago del Estero,0,village,0,0,50,0,none,none
+gn:3864851,Banda del Río Salí,Tucuman,0,village,0,0,50,0,none,none
+gn:3864862,Bañado de Ovanta,Catamarca,1300,village,0,0,50,0,none,none
+gn:3864887,Claromecó,Buenos Aires,2442,village,0,0,50,0,none,none
+gn:3864888,Balnearia,Cordoba,6747,village,0,0,50,0,none,none
+gn:3865086,Bahía Blanca,Buenos Aires,299101,city,0,0,50,0,none,none
+gn:3865186,Avia Terai,Chaco,6821,village,0,0,50,0,none,none
+gn:3865375,Arrufo,Santa Fe,2190,village,0,0,50,0,none,none
+gn:3865385,Arroyo Seco,Santa Fe,20620,town,0,0,50,0,none,none
+gn:3865413,Arroyo Cabral,Cordoba,2727,village,0,0,50,0,none,none
+gn:3865424,Arroyito,Cordoba,19577,town,0,0,50,0,none,none
+gn:3865436,Arrecifes,Buenos Aires,30397,town,0,0,50,0,none,none
+gn:3865443,Árraga,Santiago del Estero,0,village,0,0,50,0,none,none
+gn:3865449,Armstrong,Santa Fe,11181,town,0,0,50,0,none,none
+gn:3865474,Arias,Cordoba,6928,village,0,0,50,0,none,none
+gn:3865579,Arauco,La Rioja,13720,town,0,0,50,0,none,none
+gn:3865580,Arata,La Pampa,1202,village,0,0,50,0,none,none
+gn:3865585,Aranguren,Entre Rios,1581,village,0,0,50,0,none,none
+gn:3865605,Apolinario Saravia,Salta,9480,village,0,0,50,0,none,none
+gn:3865662,Antofagasta de la Sierra,Catamarca,1185,village,0,0,50,0,none,none
+gn:3865730,Animaná,Salta,1622,village,0,0,50,0,none,none
+gn:3865742,Anguil,La Pampa,2099,village,0,0,50,0,none,none
+gn:3865776,Añelo,Neuquen,6304,village,0,0,50,0,none,none
+gn:3865802,Andalgalá,Catamarca,14311,town,0,0,50,0,none,none
+gn:3865803,Andacollo,Neuquen,2627,village,0,0,50,0,none,none
+gn:3865830,Ancasti,Catamarca,3082,village,0,0,50,0,none,none
+gn:3865840,Añatuya,Santiago del Estero,20261,town,0,0,50,0,none,none
+gn:3865876,Aminga,La Rioja,0,village,0,0,50,0,none,none
+gn:3865888,Florentino Ameghino,Buenos Aires,9099,village,0,0,50,0,none,none
+gn:3866000,Aluminé,Neuquen,3720,village,0,0,50,0,none,none
+gn:3866028,Altos de Chipión,Cordoba,2032,village,0,0,50,0,none,none
+gn:3866035,Alto Río Senguer,Chubut,1700,village,0,0,50,0,none,none
+gn:3866080,Alto de la Sierra,Salta,2263,village,0,0,50,0,none,none
+gn:3866102,Alto Alegre,Cordoba,1021,village,0,0,50,0,none,none
+gn:3866161,Alta Italia,La Pampa,1481,village,0,0,50,0,none,none
+gn:3866163,Alta Gracia,Cordoba,40384,town,0,0,50,0,none,none
+gn:3866214,Alpachiri,La Pampa,2138,village,0,0,50,0,none,none
+gn:3866237,Almafuerte,Cordoba,10534,town,0,0,50,0,none,none
+gn:3866242,Allen,Rio Negro,27707,town,0,0,50,0,none,none
+gn:3866257,Alijilán,Catamarca,1435,village,0,0,50,0,none,none
+gn:3866268,Alicia,Cordoba,3307,village,0,0,50,0,none,none
+gn:3866297,Algarrobo del Águila,La Pampa,486,village,0,0,50,0,none,none
+gn:3866308,Juan Cousté,Buenos Aires,2014,village,0,0,50,0,none,none
+gn:3866353,Alejo Ledesma,Cordoba,3310,village,0,0,50,0,none,none
+gn:3866356,Alejandro Roca,Cordoba,4724,village,0,0,50,0,none,none
+gn:3866367,Alderetes,Tucuman,38466,town,0,0,50,0,none,none
+gn:3866385,La Primavera,Mendoza,2134,village,0,0,50,0,none,none
+gn:3866415,Alberti,Buenos Aires,9254,village,0,0,50,0,none,none
+gn:3866425,Albardón,San Juan,20413,town,0,0,50,0,none,none
+gn:3866465,Aimogasta,La Rioja,16625,town,0,0,50,0,none,none
+gn:3866496,Aguilares,Tucuman,32494,town,0,0,50,0,none,none
+gn:3866561,Aguas Blancas,Salta,3361,village,0,0,50,0,none,none
+gn:3866572,Aguaray,Salta,11887,town,0,0,50,0,none,none
+gn:3866667,Agua de Oro,Cordoba,1553,village,0,0,50,0,none,none
+gn:3866923,Adolfo Gonzáles Chaves,Buenos Aires,0,village,0,0,50,0,none,none
+gn:3866935,Adelia María,Cordoba,6434,village,0,0,50,0,none,none
+gn:3866959,Achiras,Cordoba,2173,village,0,0,50,0,none,none
+gn:3867009,Abra Pampa,Jujuy,9425,village,0,0,50,0,none,none
+gn:6690180,El Chaltén,Santa Cruz,1861,village,0,0,50,0,none,none
+gn:6693228,Balvanera,Buenos Aires F.D.,152198,city,0,0,50,0,none,none
+gn:6693230,Villa Santa Rita,Buenos Aires F.D.,34000,town,0,0,50,0,none,none
+gn:6942538,Costa del Este,Buenos Aires,6916,village,0,0,50,0,none,none
+gn:6942842,Bella Italia,Santa Fe,1100,village,0,0,50,0,none,none
+gn:7116865,Cariló,Buenos Aires,1553,village,0,0,50,0,none,none
+gn:7116866,Villa Mercedes,San Luis,96781,town,0,0,50,0,none,none
+gn:7284819,La Punta,San Luis,15000,town,0,0,50,0,none,none
+gn:7304381,Villa Berna,Cordoba,5000,village,0,0,50,0,none,none
+gn:7304383,Cuesta Blanca,Cordoba,3200,village,0,0,50,0,none,none
+gn:7535637,Avellaneda,Buenos Aires,367554,city,0,0,50,0,none,none
+gn:7645166,San Miguel,Buenos Aires,168762,city,0,0,50,0,none,none
+gn:7646431,Andresito,Misiones,14097,town,0,0,50,0,none,none
+gn:7647007,San Carlos de Bariloche,Rio Negro,95394,town,0,0,50,0,none,none
+gn:7778796,Moreno,Buenos Aires,148290,city,0,0,50,0,none,none
+gn:8015350,Santa Catalina - Dique Lujan,Buenos Aires,1600,village,0,0,50,0,none,none
+gn:8521759,Río Turbio,Santa Cruz,6650,village,0,0,50,0,none,none
+gn:10172104,Adrogué,Buenos Aires,28265,town,0,0,50,0,none,none
+gn:11102123,Los Laureles,Santa Fe,1519,village,0,0,50,0,none,none
+gn:11102223,Gato Colorado,Santa Fe,1412,village,0,0,50,0,none,none
+gn:11126081,Tolhuin,Tierra del Fuego,3000,village,0,0,50,0,none,none
+gn:11126157,Villa General Guemes,Formosa,4000,village,0,0,50,0,none,none
+gn:11146328,La Unión,Buenos Aires,24293,town,0,0,50,0,none,none
+gn:11147723,Ingeniero Pablo Nogués,Buenos Aires,38470,town,0,0,50,0,none,none
+gn:11148100,Villa Sarmiento,Buenos Aires,17481,town,0,0,50,0,none,none
+gn:11496722,Rincón de Los Sauces,Neuquen,0,village,0,0,50,0,none,none
+gn:11748567,La Adela,La Pampa,2395,village,0,0,50,0,none,none
+gn:12035853,Dina Huapi,Rio Negro,5491,village,0,0,50,0,none,none
+gn:12035894,Pavón,Buenos Aires,1637,village,0,0,50,0,none,none
+gn:12035897,Las Perlas,Rio Negro,4184,village,0,0,50,0,none,none
+gn:12035900,Hipólito Yrigoyen,Salta,12134,town,0,0,50,0,none,none
+gn:12035901,El Quebachal,Salta,8445,village,0,0,50,0,none,none
+gn:12035902,San Vicente,Misiones,29231,town,0,0,50,0,none,none
+gn:12035905,América,Buenos Aires,13619,town,0,0,50,0,none,none
+gn:12035906,Puente de Hierro,Mendoza,11683,town,0,0,50,0,none,none
+gn:12035921,Santa Victoria Este,Salta,3101,village,0,0,50,0,none,none
+gn:12035955,El Bordo,Salta,7213,village,0,0,50,0,none,none
+gn:12076997,José C. Paz,Buenos Aires,230208,city,0,0,50,0,none,none
+gn:12549943,Vista Alegre Sur,Neuquen,1958,village,0,0,50,0,none,none
+gn:12553377,Nueve de Julio Kilómetro 20,Misiones,2333,village,0,0,50,0,none,none
+gn:12553462,Pozo Azul,Misiones,3548,village,0,0,50,0,none,none
+gn:12553483,Dos Hermanas,Misiones,2883,village,0,0,50,0,none,none
+gn:12553522,Villa Roulet,Misiones,1064,village,0,0,50,0,none,none
+gn:12553591,Salto Encantado,Misiones,4466,village,0,0,50,0,none,none
+gn:12553633,Colonia Victoria,Misiones,2198,village,0,0,50,0,none,none
+gn:12556738,Villa Manzano,Rio Negro,2150,village,0,0,50,0,none,none
+gn:12556753,Barrio Chacra Monte,Rio Negro,3657,village,0,0,50,0,none,none
+gn:12556762,Barrio Costa Oeste,Rio Negro,1141,village,0,0,50,0,none,none
+gn:12560947,Villa Don Bosco,San Juan,3571,village,0,0,50,0,none,none
+gn:12561022,Villa Borjas,San Juan,6850,village,0,0,50,0,none,none
+gn:12561023,Barrio Sadop,San Juan,1239,village,0,0,50,0,none,none
+gn:12577413,Chañar Punco,Catamarca,1966,village,0,0,50,0,none,none
+gn:12577426,Colonia Nueva Coneta,Catamarca,2797,village,0,0,50,0,none,none
+gn:12577451,Villa Las Pirquitas,Catamarca,1179,village,0,0,50,0,none,none
+gn:12591449,La Merced,Salta,2430,village,0,0,50,0,none,none
+gn:12593440,Barrio La Rotonda,Salta,1899,village,0,0,50,0,none,none
+gn:12594159,Isla de Cañas,Salta,1548,village,0,0,50,0,none,none
+gn:12594526,Los Barriales,Mendoza,6517,village,0,0,50,0,none,none
+gn:12594567,La Colonia,Mendoza,11245,town,0,0,50,0,none,none
+gn:12594578,Ciudad de Las Heras,Mendoza,189067,city,0,0,50,0,none,none
+gn:12594662,Colonia Segovia,Mendoza,8885,village,0,0,50,0,none,none
+gn:12626388,Capitán Montoya,Mendoza,1734,village,0,0,50,0,none,none
+gn:13452524,Rawson,San Juan,130258,city,0,0,50,0,none,none
+gn:13508503,Arroyo Leyes,Santa Fe,4257,village,0,0,50,0,none,none
+gn:13665262,Ángel Gallardo,Santa Fe,1597,village,0,0,50,0,none,none

@@ -1,0 +1,33 @@
+place_id,name,region,population,market,verified_homes,dated_listings,shortfall_to_50,recorded_sales,rent_source,price_source
+gn:421722,Mabanda,Makamba,5027,village,0,0,50,0,none,none
+gn:421930,Vyanda,Bururi,29685,town,0,0,50,0,none,none
+gn:422232,Makamba,Makamba,14539,town,0,0,50,0,none,none
+gn:422357,Kayogoro,Makamba,5474,village,0,0,50,0,none,none
+gn:423038,Matana,Bururi,3178,village,0,0,50,0,none,none
+gn:423328,Bururi,Bururi,6929,village,0,0,50,0,none,none
+gn:423549,Rumonge,Rumonge,55599,town,0,0,50,0,none,none
+gn:423794,Mwaro,Gitega,3718,village,0,0,50,0,none,none
+gn:425236,Muzinda,Bubanza,0,village,0,0,50,0,none,none
+gn:425309,Gatumba,Bujumbura Rural,18104,town,0,0,50,0,none,none
+gn:425336,Isale,Bujumbura Rural,7701,village,0,0,50,0,none,none
+gn:425378,Bujumbura,Bujumbura Mairie,769317,large-city,0,0,50,0,none,none
+gn:425418,Kanyosha,Bujumbura Rural,6610,village,0,0,50,0,none,none
+gn:425551,Muramvya,Gitega,8445,village,0,0,50,0,none,none
+gn:425897,Mugongomanga,Bujumbura Rural,3227,village,0,0,50,0,none,none
+gn:426272,Gitega,Gitega,64904,town,0,0,50,0,none,none
+gn:426423,Zanandore,Gitega,27867,town,0,0,50,0,none,none
+gn:426700,Ruyigi,Ruyigi,11046,town,0,0,50,0,none,none
+gn:427204,Cendajuru,Cankuzo,32458,town,0,0,50,0,none,none
+gn:427701,Cankuzo,Cankuzo,5607,village,0,0,50,0,none,none
+gn:428219,Karusi,Gitega,15964,town,0,0,50,0,none,none
+gn:428515,Bubanza,Bubanza,30996,town,0,0,50,0,none,none
+gn:428632,Mpanda,Bubanza,58913,town,0,0,50,0,none,none
+gn:430021,Cibitoke,Cibitoke,36959,town,0,0,50,0,none,none
+gn:430086,Buganda,Cibitoke,0,village,0,0,50,0,none,none
+gn:430569,Ngozi,Ngozi,61716,town,0,0,50,0,none,none
+gn:430952,Kayanza,Kayanza,33682,town,0,0,50,0,none,none
+gn:431417,Bwambarangwe,Kirundo,6257,village,0,0,50,0,none,none
+gn:431748,Muyinga,Muyinga,14869,town,0,0,50,0,none,none
+gn:432456,Kirundo,Kirundo,15511,town,0,0,50,0,none,none
+gn:433635,Rutana,Rutana,9075,village,0,0,50,0,none,none
+gn:447830,Giteranyi,Muyinga,3320,village,0,0,50,0,none,none

@@ -1,0 +1,66 @@
+place_id,name,region,population,market,verified_homes,dated_listings,shortfall_to_50,recorded_sales,rent_source,price_source
+gn:783770,Zvečan,Mitrovica,17000,town,0,0,50,0,none,none
+gn:783802,Zubin Potok,Mitrovica,14900,town,0,0,50,0,none,none
+gn:784097,Vushtrri,Mitrovica,30651,town,0,0,50,0,none,none
+gn:784372,Vitina,Gjilan,46959,town,0,0,50,0,none,none
+gn:784759,Ferizaj,Ferizaj,59504,town,0,0,50,0,none,none
+gn:785238,Suva Reka,Prizren,72229,town,0,0,50,0,none,none
+gn:785388,Štrpce,Ferizaj,6913,village,0,0,50,0,none,none
+gn:785485,Shtime,Ferizaj,35000,town,0,0,50,0,none,none
+gn:785642,Srbica,Mitrovica,5089,village,0,0,50,0,none,none
+gn:785879,Shipol,Mitrovica,4195,village,0,0,50,0,none,none
+gn:786156,Irzniq,Gjakova,2200,village,0,0,50,0,none,none
+gn:786478,Ranilug,Gjilan,3785,village,0,0,50,0,none,none
+gn:786712,Prizren,Prizren,171464,city,0,0,50,0,none,none
+gn:786714,Pristina,Pristina,550000,large-city,0,0,50,0,none,none
+gn:786734,Prilep,Gjakova,2500,village,0,0,50,0,none,none
+gn:786950,Podujeva,Pristina,35000,town,0,0,50,0,none,none
+gn:787155,Peqan,Prizren,1883,village,0,0,50,0,none,none
+gn:787157,Pejë,Pec,48962,town,0,0,50,0,none,none
+gn:787197,Partesh,Gjilan,1787,village,0,0,50,0,none,none
+gn:787268,Pagaruša,Prizren,1374,village,0,0,50,0,none,none
+gn:787456,Orahovac,Gjakova,22049,town,0,0,50,0,none,none
+gn:787534,Obiliq,Pristina,11612,town,0,0,50,0,none,none
+gn:787589,Novo Brdo,Pristina,6720,village,0,0,50,0,none,none
+gn:787650,Nishor,Prizren,1154,village,0,0,50,0,none,none
+gn:788187,Mamuša,Prizren,5507,village,0,0,50,0,none,none
+gn:788239,Mališevo,Prizren,2300,village,0,0,50,0,none,none
+gn:788470,Llazicë,Prizren,19863,town,0,0,50,0,none,none
+gn:788536,Lumbardhi,Gjakova,1500,village,0,0,50,0,none,none
+gn:788543,Lëbushë,Gjakova,1250,village,0,0,50,0,none,none
+gn:788652,Lipljan,Pristina,9047,village,0,0,50,0,none,none
+gn:788726,Leshan,Prizren,1575,village,0,0,50,0,none,none
+gn:788731,Leposaviq,Mitrovica,19000,town,0,0,50,0,none,none
+gn:788794,Laplje Selo,Pristina,1387,village,0,0,50,0,none,none
+gn:789199,Kosuriq,Pec,1200,village,0,0,50,0,none,none
+gn:789225,Mitrovicë,Mitrovica,107045,city,0,0,50,0,none,none
+gn:789227,Kamenica,Gjilan,9312,village,0,0,50,0,none,none
+gn:789228,Kosovo Polje,Pristina,16154,town,0,0,50,0,none,none
+gn:789427,Klokot,Gjilan,2551,village,0,0,50,0,none,none
+gn:789455,Klina,Pec,8050,village,0,0,50,0,none,none
+gn:789721,Kačanik,Ferizaj,9800,village,0,0,50,0,none,none
+gn:789739,Junik,Gjakova,4,village,0,0,50,0,none,none
+gn:789996,Istok,Pec,40000,town,0,0,50,0,none,none
+gn:790002,Isniq,Gjakova,5500,village,0,0,50,0,none,none
+gn:790354,Strellc i Epërm,Gjakova,6100,village,0,0,50,0,none,none
+gn:790486,Lluka e Eperme,Gjakova,1500,village,0,0,50,0,none,none
+gn:790674,Gjilan,Gjilan,51912,town,0,0,50,0,none,none
+gn:790701,Glogovac,Pristina,58579,town,0,0,50,0,none,none
+gn:790704,Gllogjan,Gjakova,2000,village,0,0,50,0,none,none
+gn:790977,Dubova (Driloni),Pec,1050,village,0,0,50,0,none,none
+gn:791043,Dranoc,Gjakova,2000,village,0,0,50,0,none,none
+gn:791122,Dragash,Prizren,35000,town,0,0,50,0,none,none
+gn:791161,Strellc i Ulët,Gjakova,2850,village,0,0,50,0,none,none
+gn:791207,Zhabari i Ultë,Mitrovica,6470,village,0,0,50,0,none,none
+gn:791483,Gjinoc,Prizren,1571,village,0,0,50,0,none,none
+gn:791539,Hani i Elezit,Ferizaj,9389,village,0,0,50,0,none,none
+gn:791580,Deçan,Gjakova,50500,town,0,0,50,0,none,none
+gn:791646,Gjakovë,Gjakova,94158,town,0,0,50,0,none,none
+gn:791836,Cerrcë,Pec,1032,village,0,0,50,0,none,none
+gn:792079,Čabra,Mitrovica,1300,village,0,0,50,0,none,none
+gn:792185,Budakovo,Prizren,1576,village,0,0,50,0,none,none
+gn:792375,Bradash,Pristina,2567,village,0,0,50,0,none,none
+gn:793226,Papraqan,Gjakova,1288,village,0,0,50,0,none,none
+gn:830005,Glanica,Pristina,243,village,0,0,50,0,none,none
+gn:830410,Lloqan,Gjakova,1050,village,0,0,50,0,none,none
+gn:13680108,Gropa e Erenikut,,3952,village,0,0,50,0,none,none

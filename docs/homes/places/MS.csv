@@ -1,0 +1,4 @@
+place_id,name,region,population,market,verified_homes,dated_listings,shortfall_to_50,recorded_sales,rent_source,price_source
+gn:3578038,Saint Peters,Saint Peter,0,village,0,0,50,0,none,none
+gn:3578069,Plymouth,Saint Anthony,0,village,0,0,50,0,none,none
+gn:7266440,Brades,Saint Peter,1000,village,0,0,50,0,none,none

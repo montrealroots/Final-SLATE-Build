@@ -1,0 +1,302 @@
+place_id,name,region,population,market,verified_homes,dated_listings,shortfall_to_50,recorded_sales,rent_source,price_source
+gn:3186270,Žužemberk,Municipality of Žužemberk,1053,village,0,0,50,0,none,none
+gn:3186450,Žiri,Municipality of Žiri,3588,village,0,0,50,0,none,none
+gn:3186494,Zgornji Duplek,Municipality of Duplek,1824,village,0,0,50,0,none,none
+gn:3186506,Zgornje Pirniče,Municipality of Medvode,1267,village,0,0,50,0,none,none
+gn:3186509,Zgornje Jezersko,Municipality of Jezersko,568,village,0,0,50,0,none,none
+gn:3186514,Zgornje Gorje,Gorje,500,village,0,0,50,0,none,none
+gn:3186520,Zgornje Bitnje,Urban Municipality of Kranj,1480,village,0,0,50,0,none,none
+gn:3186533,Zgornja Polskava,Municipality of Slovenska Bistrica,1208,village,0,0,50,0,none,none
+gn:3186538,Zgornja Kungota,Municipality of Kungota,535,village,0,0,50,0,none,none
+gn:3186543,Zgornja Hajdina,Hajdina,858,village,0,0,50,0,none,none
+gn:3186557,Žetale,Municipality of Žetale,392,village,0,0,50,0,none,none
+gn:3186607,Železniki,Municipality of Železniki,3075,village,0,0,50,0,none,none
+gn:3186705,Zavrč,Municipality of Zavrč,73,village,0,0,50,0,none,none
+gn:3186844,Žalec,Municipality of Žalec,4943,village,0,0,50,0,none,none
+gn:3186906,Zagorje ob Savi,Municipality of Zagorje ob Savi,6439,village,0,0,50,0,none,none
+gn:3186959,Zabukovica,Municipality of Žalec,1009,village,0,0,50,0,none,none
+gn:3187020,Vuzenica,Municipality of Vuzenica,1580,village,0,0,50,0,none,none
+gn:3187125,Vrtojba,Municipality of Šempeter–Vrtojba,2591,village,0,0,50,0,none,none
+gn:3187214,Vrhnika,Municipality of Vrhnika,8413,village,0,0,50,0,none,none
+gn:3187336,Vransko,Municipality of Vransko,808,village,0,0,50,0,none,none
+gn:3187448,Vojnik,Municipality of Vojnik,2292,village,0,0,50,0,none,none
+gn:3187485,Vodice,Municipality of Vodice,1589,village,0,0,50,0,none,none
+gn:3187505,Vnanje Gorice,Municipality of Brezovica,2195,village,0,0,50,0,none,none
+gn:3187575,Vitomarci,Municipality of Sveti Andraž v Slovenskih Goricah,329,village,0,0,50,0,none,none
+gn:3187598,Vitanje,Municipality of Vitanje,859,village,0,0,50,0,none,none
+gn:3187706,Vipava,Municipality of Vipava,1771,village,0,0,50,0,none,none
+gn:3187813,Videm,Municipality of Dobrepolje,590,village,0,0,50,0,none,none
+gn:3187840,Veržej,Municipality of Veržej,903,village,0,0,50,0,none,none
+gn:3187855,Verd,Municipality of Vrhnika,1891,village,0,0,50,0,none,none
+gn:3188128,Velike Lašče,Municipality of Velike Lašče,729,village,0,0,50,0,none,none
+gn:3188181,Velika Polana,Municipality of Velika Polana,870,village,0,0,50,0,none,none
+gn:3188606,Turnišče,Municipality of Turnišče,1509,village,0,0,50,0,none,none
+gn:3188684,Trzin,Municipality of Trzin,3925,village,0,0,50,0,none,none
+gn:3188688,Tržič,Municipality of Tržič,3670,village,0,0,50,0,none,none
+gn:3188767,Trnovska Vas,Municipality of Trnovska Vas,367,village,0,0,50,0,none,none
+gn:3188775,Trnovlje pri Celju,Urban Municipality of Celje,1234,village,0,0,50,0,none,none
+gn:3188886,Trebnje,Trebnje,3477,village,0,0,50,0,none,none
+gn:3188915,Trbovlje,Municipality of Trbovlje,15163,town,0,0,50,0,none,none
+gn:3188971,Topolšica,Municipality of Šoštanj,1294,village,0,0,50,0,none,none
+gn:3189014,Sveti Tomaž,Municipality of Sveti Tomaž,284,village,0,0,50,0,none,none
+gn:3189038,Tolmin,Municipality of Tolmin,3534,village,0,0,50,0,none,none
+gn:3189075,Velenje,Urban Municipality of Velenje,24327,town,0,0,50,0,none,none
+gn:3189098,Tišina,Municipality of Tišina,412,village,0,0,50,0,none,none
+gn:3189227,Tabor,Municipality of Tabor,406,village,0,0,50,0,none,none
+gn:3189357,Sveti Duh,Škofja Loka,1066,village,0,0,50,0,none,none
+gn:3189368,Sveti Anton,Urban Municipality of Koper,1736,village,0,0,50,0,none,none
+gn:3189403,Sv. Ana v Slov. Goricah,Municipality of Sveta Ana,155,village,0,0,50,0,none,none
+gn:3189798,Štore,Municipality of Štore,2257,village,0,0,50,0,none,none
+gn:3189917,Starše,Municipality of Starše,803,village,0,0,50,0,none,none
+gn:3190150,Središče ob Dravi,Municipality of Središče ob Dravi,984,village,0,0,50,0,none,none
+gn:3190199,Spodnji Duplek,Municipality of Duplek,1689,village,0,0,50,0,none,none
+gn:3190219,Spodnje Hoče,Municipality of Hoče–Slivnica,2555,village,0,0,50,0,none,none
+gn:3190247,Spodnja Idrija,Municipality of Idrija,1501,village,0,0,50,0,none,none
+gn:3190311,Šoštanj,Municipality of Šoštanj,2880,village,0,0,50,0,none,none
+gn:3190360,Solčava,Municipality of Solčava,214,village,0,0,50,0,none,none
+gn:3190391,Sodražica,Municipality of Sodražica,832,village,0,0,50,0,none,none
+gn:3190494,Šmartno pri Slovenj Gradcu,Urban Municipality of Slovenj Gradec,1250,village,0,0,50,0,none,none
+gn:3190495,Šmartno pri Litiji,Municipality of Šmartno pri Litiji,1444,village,0,0,50,0,none,none
+gn:3190498,Šmartno ob Paki,Municipality of Šmartno ob Paki,642,village,0,0,50,0,none,none
+gn:3190506,Šmarjeta,Municipality of Šmarješke Toplice,326,village,0,0,50,0,none,none
+gn:3190510,Šmarje pri Jelšah,Municipality of Šmarje pri Jelšah,1755,village,0,0,50,0,none,none
+gn:3190512,Šmarje–Sap,Municipality of Grosuplje,1492,village,0,0,50,0,none,none
+gn:3190516,Šmarca,Municipality of Kamnik,1441,village,0,0,50,0,none,none
+gn:3190530,Slovenske Konjice,Municipality of Slovenske Konjice,4869,village,0,0,50,0,none,none
+gn:3190534,Slovenska Bistrica,Municipality of Slovenska Bistrica,7454,village,0,0,50,0,none,none
+gn:3190536,Slovenj Gradec,Urban Municipality of Slovenj Gradec,7249,village,0,0,50,0,none,none
+gn:3190712,Škofljica,Municipality of Škofljica,2209,village,0,0,50,0,none,none
+gn:3190717,Škofja Loka,Škofja Loka,11619,town,0,0,50,0,none,none
+gn:3190722,Škocjan,Municipality of Škocjan,246,village,0,0,50,0,none,none
+gn:3190945,Sežana,Municipality of Sežana,6037,village,0,0,50,0,none,none
+gn:3190950,Sevnica,Municipality of Sevnica,4660,village,0,0,50,0,none,none
+gn:3191019,Šentvid pri Stični,Municipality of Ivančna Gorica,1002,village,0,0,50,0,none,none
+gn:3191024,Šentrupert na Dolenjskem,Municipality of Šentrupert,329,village,0,0,50,0,none,none
+gn:3191029,Šentjur,Sentjur,4940,village,0,0,50,0,none,none
+gn:3191033,Šentjernej,Municipality of Šentjernej,1434,village,0,0,50,0,none,none
+gn:3191039,Šentilj v Slov. Goricah,Municipality of Šentilj,8452,village,0,0,50,0,none,none
+gn:3191044,Senovo,Urban Municipality of Krško,2343,village,0,0,50,0,none,none
+gn:3191059,Šenčur,Municipality of Šenčur,3152,village,0,0,50,0,none,none
+gn:3191062,Šempeter v Savinjski Dolini,Municipality of Žalec,2021,village,0,0,50,0,none,none
+gn:3191063,Šempeter pri Gorici,Municipality of Šempeter–Vrtojba,3694,village,0,0,50,0,none,none
+gn:3191064,Šempas,Urban Municipality of Nova Gorica,1146,village,0,0,50,0,none,none
+gn:3191072,Semič,Municipality of Semič,2000,village,0,0,50,0,none,none
+gn:3191094,Selnica ob Muri,Municipality of Šentilj,1078,village,0,0,50,0,none,none
+gn:3191329,Šalovci,Municipality of Šalovci,426,village,0,0,50,0,none,none
+gn:3191401,Ruše,Municipality of Ruše,4503,village,0,0,50,0,none,none
+gn:3191563,Rogoza,Municipality of Hoče–Slivnica,1390,village,0,0,50,0,none,none
+gn:3191578,Rogatec,Municipality of Rogatec,1558,village,0,0,50,0,none,none
+gn:3191579,Rogašovci,Municipality of Rogašovci,254,village,0,0,50,0,none,none
+gn:3191580,Rogaška Slatina,Municipality of Rogaška Slatina,5111,village,0,0,50,0,none,none
+gn:3191678,Ribnica na Pohorju,Municipality of Ribnica na Pohorju,404,village,0,0,50,0,none,none
+gn:3191685,Ribnica,Municipality of Ribnica,3604,village,0,0,50,0,none,none
+gn:3191737,Renče,Municipality of Renče–Vogrsko,1937,village,0,0,50,0,none,none
+gn:3191756,Rečica ob Savinji,Municipality of Rečica ob Savinji,516,village,0,0,50,0,none,none
+gn:3191774,Razvanje,Urban Municipality of Maribor,1357,village,0,0,50,0,none,none
+gn:3191839,Ravne na Koroškem,Municipality of Ravne na Koroškem,6979,village,0,0,50,0,none,none
+gn:3191844,Ravne,Municipality of Šoštanj,1092,village,0,0,50,0,none,none
+gn:3192019,Rakičan,Urban Municipality of Murska Sobota,1560,village,0,0,50,0,none,none
+gn:3192021,Rakek,Municipality of Cerknica,2152,village,0,0,50,0,none,none
+gn:3192063,Radovljica,Radovljica,5940,village,0,0,50,0,none,none
+gn:3192098,Radomlje,Municipality of Domžale,1674,village,0,0,50,0,none,none
+gn:3192121,Radlje ob Dravi,Municipality of Radlje ob Dravi,2811,village,0,0,50,0,none,none
+gn:3192139,Radenci,Municipality of Radenci,2201,village,0,0,50,0,none,none
+gn:3192144,Radeče,Municipality of Radeče,2168,village,0,0,50,0,none,none
+gn:3192165,Rače,Municipality of Rače–Fram,2693,village,0,0,50,0,none,none
+gn:3192230,Puconci,Municipality of Puconci,633,village,0,0,50,0,none,none
+gn:3192241,Ptuj,Urban Municipality of Ptuj,17984,town,0,0,50,0,none,none
+gn:3192262,Prvačina,Urban Municipality of Nova Gorica,1268,village,0,0,50,0,none,none
+gn:3192484,Prevalje,Municipality of Prevalje,4643,village,0,0,50,0,none,none
+gn:3192502,Preserje pri Radomljah,Municipality of Mengeš,1531,village,0,0,50,0,none,none
+gn:3192560,Preddvor,Municipality of Preddvor,3659,village,0,0,50,0,none,none
+gn:3192570,Prebold,Prebold,1709,village,0,0,50,0,none,none
+gn:3192603,Pragersko,Municipality of Slovenska Bistrica,1150,village,0,0,50,0,none,none
+gn:3192673,Postojna,Municipality of Postojna,9605,village,0,0,50,0,none,none
+gn:3192682,Portorož,Municipality of Piran,2947,village,0,0,50,0,none,none
+gn:3192762,Polzela,Municipality of Polzela,2351,village,0,0,50,0,none,none
+gn:3192802,Poljčane,Municipality of Poljčane,1153,village,0,0,50,0,none,none
+gn:3192899,Podvelka,Municipality of Podvelka,343,village,0,0,50,0,none,none
+gn:3192986,Podlehnik,Municipality of Podlehnik,378,village,0,0,50,0,none,none
+gn:3193075,Podčetrtek,Municipality of Podčetrtek,578,village,0,0,50,0,none,none
+gn:3193299,Pivka,Pivka,2088,village,0,0,50,0,none,none
+gn:3193341,Piran,Municipality of Piran,4192,village,0,0,50,0,none,none
+gn:3193463,Pesnica,Pesnica,913,village,0,0,50,0,none,none
+gn:3193521,Pekre,Urban Municipality of Maribor,1517,village,0,0,50,0,none,none
+gn:3193659,Pameče,Urban Municipality of Slovenj Gradec,1333,village,0,0,50,0,none,none
+gn:3193930,Osilnica,Municipality of Osilnica,87,village,0,0,50,0,none,none
+gn:3193965,Ormož,Municipality of Ormož,2174,village,0,0,50,0,none,none
+gn:3194086,Oplotnica,Municipality of Oplotnica,1352,village,0,0,50,0,none,none
+gn:3194213,Odranci,Municipality of Odranci,1641,village,0,0,50,0,none,none
+gn:3194351,Novo Mesto,Urban Municipality of Novo Mesto,24446,town,0,0,50,0,none,none
+gn:3194403,Nova Vas,Municipality of Bloke,293,village,0,0,50,0,none,none
+gn:3194452,Nova Gorica,Urban Municipality of Nova Gorica,13031,town,0,0,50,0,none,none
+gn:3194462,Notranje Gorice,Municipality of Brezovica,1950,village,0,0,50,0,none,none
+gn:3194595,Naklo,Municipality of Naklo,1716,village,0,0,50,0,none,none
+gn:3194622,Muta,Municipality of Muta,2300,village,0,0,50,0,none,none
+gn:3194648,Murska Sobota,Urban Municipality of Murska Sobota,11107,town,0,0,50,0,none,none
+gn:3194792,Mozirje,Municipality of Mozirje,2052,village,0,0,50,0,none,none
+gn:3194825,Moste,Komenda,1234,village,0,0,50,0,none,none
+gn:3194864,Morje,Municipality of Rače–Fram,1032,village,0,0,50,0,none,none
+gn:3194871,Moravske Toplice,Municipality of Moravske Toplice,735,village,0,0,50,0,none,none
+gn:3194873,Moravče,Municipality of Moravče,957,village,0,0,50,0,none,none
+gn:3194904,Mokronog,Municipality of Mokronog–Trebelno,637,village,0,0,50,0,none,none
+gn:3194922,Mojstrana,Municipality of Kranjska Gora,1175,village,0,0,50,0,none,none
+gn:3194977,Mlaka pri Kranju,Urban Municipality of Kranj,1566,village,0,0,50,0,none,none
+gn:3195011,Mislinja,Municipality of Mislinja,1862,village,0,0,50,0,none,none
+gn:3195036,Mirna Peč,Municipality of Mirna Peč,990,village,0,0,50,0,none,none
+gn:3195041,Mirna,Municipality of Mirna,1398,village,0,0,50,0,none,none
+gn:3195054,Miren,Municipality of Miren–Kostanjevica,1460,village,0,0,50,0,none,none
+gn:3195162,Miklavž na Dravskem Polju,Municipality of Miklavž na Dravskem Polju,3854,village,0,0,50,0,none,none
+gn:3195202,Mežica,Municipality of Mežica,3254,village,0,0,50,0,none,none
+gn:3195214,Metlika,Municipality of Metlika,3206,village,0,0,50,0,none,none
+gn:3195250,Mengeš,Municipality of Mengeš,6112,village,0,0,50,0,none,none
+gn:3195271,Mekinje,Municipality of Kamnik,1582,village,0,0,50,0,none,none
+gn:3195281,Medvode,Municipality of Medvode,5380,village,0,0,50,0,none,none
+gn:3195460,Markovci,Municipality of Markovci,495,village,0,0,50,0,none,none
+gn:3195506,Maribor,Urban Municipality of Maribor,96209,town,0,0,50,0,none,none
+gn:3195883,Makole,Municipality of Makole,221,village,0,0,50,0,none,none
+gn:3195898,Majšperk,Municipality of Majšperk,606,village,0,0,50,0,none,none
+gn:3196049,Lukovica pri Domžalah,Lukovica,419,village,0,0,50,0,none,none
+gn:3196133,Luče,Municipality of Luče,413,village,0,0,50,0,none,none
+gn:3196165,Lovrenc na Pohorju,Municipality of Lovrenc na Pohorju,1977,village,0,0,50,0,none,none
+gn:3196268,Lokavec,Municipality of Ajdovščina,1119,village,0,0,50,0,none,none
+gn:3196281,Log pri Brezovici,Log–Dragomer,1634,village,0,0,50,0,none,none
+gn:3196307,Ljutomer,Ljutomer,3460,village,0,0,50,0,none,none
+gn:3196338,Ljubno ob Savinji,Municipality of Ljubno,1104,village,0,0,50,0,none,none
+gn:3196359,Ljubljana,Ljubljana,272220,city,0,0,50,0,none,none
+gn:3196377,Ljubečna,Urban Municipality of Celje,1071,village,0,0,50,0,none,none
+gn:3196425,Litija,Municipality of Litija,6505,village,0,0,50,0,none,none
+gn:3196496,Lipovci,Municipality of Beltinci,1097,village,0,0,50,0,none,none
+gn:3196560,Limbuš,Urban Municipality of Maribor,2040,village,0,0,50,0,none,none
+gn:3196642,Leskovec pri Krškem,Urban Municipality of Krško,1021,village,0,0,50,0,none,none
+gn:3196652,Lesce,Radovljica,2835,village,0,0,50,0,none,none
+gn:3196681,Lendava,Municipality of Lendava,3129,village,0,0,50,0,none,none
+gn:3196682,Lenart v Slovenskih Goricah,Municipality of Lenart,3285,village,0,0,50,0,none,none
+gn:3196760,Laško,Municipality of Laško,3456,village,0,0,50,0,none,none
+gn:3196842,Kuzma,Municipality of Kuzma,375,village,0,0,50,0,none,none
+gn:3197147,Krško,Urban Municipality of Krško,6852,village,0,0,50,0,none,none
+gn:3197163,Kromberk,Urban Municipality of Nova Gorica,2081,village,0,0,50,0,none,none
+gn:3197164,Krog,Urban Municipality of Murska Sobota,1132,village,0,0,50,0,none,none
+gn:3197226,Križevci pri Ljutomeru,Municipality of Križevci,490,village,0,0,50,0,none,none
+gn:3197373,Kranjska Gora,Municipality of Kranjska Gora,1439,village,0,0,50,0,none,none
+gn:3197378,Kranj,Urban Municipality of Kranj,37966,town,0,0,50,0,none,none
+gn:3197442,Kozje,Municipality of Kozje,634,village,0,0,50,0,none,none
+gn:3197539,Kotlje,Municipality of Ravne na Koroškem,1026,village,0,0,50,0,none,none
+gn:3197581,Kostanjevica na Krki,Municipality of Kostanjevica na Krki,695,village,0,0,50,0,none,none
+gn:3197753,Koper,Urban Municipality of Koper,25753,town,0,0,50,0,none,none
+gn:3197842,Komen,Municipality of Komen,650,village,0,0,50,0,none,none
+gn:3197904,Kokrica,Urban Municipality of Kranj,1646,village,0,0,50,0,none,none
+gn:3197943,Kočevje,Municipality of Kočevje,8113,village,0,0,50,0,none,none
+gn:3197959,Kobilje,Municipality of Kobilje,542,village,0,0,50,0,none,none
+gn:3197983,Kobarid,Municipality of Kobarid,1121,village,0,0,50,0,none,none
+gn:3198165,Kidričevo,Municipality of Kidričevo,1253,village,0,0,50,0,none,none
+gn:3198354,Kanal,Municipality of Kanal ob Soči,1269,village,0,0,50,0,none,none
+gn:3198365,Kamnik,Municipality of Kamnik,13644,town,0,0,50,0,none,none
+gn:3198366,Kamnica,Urban Municipality of Maribor,1638,village,0,0,50,0,none,none
+gn:3198531,Juršinci,Municipality of Juršinci,381,village,0,0,50,0,none,none
+gn:3198533,Jurovski Dol,Municipality of Sveti Jurij v Slovenskih Goricah,385,village,0,0,50,0,none,none
+gn:3198549,Sveti Jurij,Municipality of Sveti Jurij ob Ščavnici,209,village,0,0,50,0,none,none
+gn:3198647,Jesenice,Municipality of Jesenice,13255,town,0,0,50,0,none,none
+gn:3199017,Izola,Municipality of Izola,11223,town,0,0,50,0,none,none
+gn:3199020,Izlake,Municipality of Zagorje ob Savi,1181,village,0,0,50,0,none,none
+gn:3199078,Ivančna Gorica,Municipality of Ivančna Gorica,2205,village,0,0,50,0,none,none
+gn:3199131,Ilirska Bistrica,Municipality of Ilirska Bistrica,4553,village,0,0,50,0,none,none
+gn:3199162,Ig,Municipality of Ig,2262,village,0,0,50,0,none,none
+gn:3199171,Idrija,Municipality of Idrija,5955,village,0,0,50,0,none,none
+gn:3199232,Hrvatini,Urban Municipality of Koper,1232,village,0,0,50,0,none,none
+gn:3199243,Hrušica,Municipality of Jesenice,1722,village,0,0,50,0,none,none
+gn:3199256,Hrpelje,Municipality of Hrpelje–Kozina,792,village,0,0,50,0,none,none
+gn:3199268,Hrib-Loški Potok,Municipality of Loški Potok,373,village,0,0,50,0,none,none
+gn:3199297,Hrastnik,Municipality of Hrastnik,5621,village,0,0,50,0,none,none
+gn:3199303,Hrastje,Municipality of Šenčur,1051,village,0,0,50,0,none,none
+gn:3199333,Hotinja Vas,Municipality of Hoče–Slivnica,1344,village,0,0,50,0,none,none
+gn:3199347,Horjul,Municipality of Horjul,1329,village,0,0,50,0,none,none
+gn:3199361,Hodoš,Municipality of Hodoš,228,village,0,0,50,0,none,none
+gn:3199523,Grosuplje,Municipality of Grosuplje,7098,village,0,0,50,0,none,none
+gn:3199685,Sv. Trojica v Slov. Goricah,Municipality of Sveta Trojica v Slovenskih Goricah,754,village,0,0,50,0,none,none
+gn:3199765,Grad,Grad,686,village,0,0,50,0,none,none
+gn:3199856,Gotovlje,Municipality of Žalec,1216,village,0,0,50,0,none,none
+gn:3199948,Gornji Petrovci,Municipality of Gornji Petrovci,419,village,0,0,50,0,none,none
+gn:3200016,Gornji Grad,Municipality of Gornji Grad,1048,village,0,0,50,0,none,none
+gn:3200197,Gornja Radgona,Municipality of Gornja Radgona,3159,village,0,0,50,0,none,none
+gn:3200307,Gorišnica,Municipality of Gorišnica,788,village,0,0,50,0,none,none
+gn:3200379,Gorenja Vas,Municipality of Gorenja Vas–Poljane,1192,village,0,0,50,0,none,none
+gn:3200385,Straža,Municipality of Straža,1996,village,0,0,50,0,none,none
+gn:3200450,Golnik,Urban Municipality of Kranj,1063,village,0,0,50,0,none,none
+gn:3200721,Gančani,Municipality of Beltinci,1027,village,0,0,50,0,none,none
+gn:3200819,Fram,Municipality of Rače–Fram,1024,village,0,0,50,0,none,none
+gn:3201253,Dravograd,Municipality of Dravograd,3289,village,0,0,50,0,none,none
+gn:3201294,Dragomer,Log–Dragomer,1446,village,0,0,50,0,none,none
+gn:3201355,Dornava,Municipality of Dornava,1267,village,0,0,50,0,none,none
+gn:3201730,Domžale,Municipality of Domžale,13204,town,0,0,50,0,none,none
+gn:3201748,Dol pri Ljubljani,Dol pri Ljubljani,241,village,0,0,50,0,none,none
+gn:3201750,Dol pri Hrastniku,Municipality of Hrastnik,1491,village,0,0,50,0,none,none
+gn:3201817,Dolenjske Toplice,Dolenjske Toplice,882,village,0,0,50,0,none,none
+gn:3201896,Dobrovo,Municipality of Brda,334,village,0,0,50,0,none,none
+gn:3201897,Dobrovnik,Municipality of Dobrovnik,972,village,0,0,50,0,none,none
+gn:3201901,Dobrova,Municipality of Dobrova–Polhov Gradec,921,village,0,0,50,0,none,none
+gn:3201927,Dobrna,Dobrna,548,village,0,0,50,0,none,none
+gn:3201988,Dobje pri Planini,Municipality of Dobje,114,village,0,0,50,0,none,none
+gn:3201994,Dob,Municipality of Domžale,1563,village,0,0,50,0,none,none
+gn:3202019,Divača,Municipality of Divača,1357,village,0,0,50,0,none,none
+gn:3202058,Destrnik,Destrnik,172,village,0,0,50,0,none,none
+gn:3202070,Deskle,Municipality of Kanal ob Soči,1279,village,0,0,50,0,none,none
+gn:3202111,Dekani,Urban Municipality of Koper,1586,village,0,0,50,0,none,none
+gn:3202333,Črnomelj,Municipality of Črnomelj,5496,village,0,0,50,0,none,none
+gn:3202459,Črna na Koroškem,Municipality of Črna na Koroškem,2409,village,0,0,50,0,none,none
+gn:3202524,Črenšovci,Municipality of Črenšovci,1178,village,0,0,50,0,none,none
+gn:3202700,Černelavci,Urban Municipality of Murska Sobota,1272,village,0,0,50,0,none,none
+gn:3202704,Cerkvenjak,Municipality of Cerkvenjak,135,village,0,0,50,0,none,none
+gn:3202709,Cerknica,Municipality of Cerknica,4018,village,0,0,50,0,none,none
+gn:3202711,Cerklje na Gorenjskem,Municipality of Cerklje na Gorenjskem,1710,village,0,0,50,0,none,none
+gn:3202781,Celje,Urban Municipality of Celje,38059,town,0,0,50,0,none,none
+gn:3202877,Cankova,Municipality of Cankova,446,village,0,0,50,0,none,none
+gn:3203057,Bukovica,Municipality of Renče–Vogrsko,475,village,0,0,50,0,none,none
+gn:3203168,Buč,Municipality of Kamnik,1118,village,0,0,50,0,none,none
+gn:3203286,Britof,Urban Municipality of Kranj,1908,village,0,0,50,0,none,none
+gn:3203338,Brezovica pri Ljubljani,Municipality of Brezovica,3221,village,0,0,50,0,none,none
+gn:3203377,Breznica,Municipality of Žirovnica,470,village,0,0,50,0,none,none
+gn:3203412,Brežice,Municipality of Brežice,6843,village,0,0,50,0,none,none
+gn:3203443,Bresternica,Urban Municipality of Maribor,1377,village,0,0,50,0,none,none
+gn:3203550,Braslovče,Municipality of Braslovče,383,village,0,0,50,0,none,none
+gn:3203611,Bovec,Municipality of Bovec,1631,village,0,0,50,0,none,none
+gn:3203677,Borovnica,Municipality of Borovnica,2162,village,0,0,50,0,none,none
+gn:3203808,Bohinjska Bistrica,Municipality of Bohinj,1767,village,0,0,50,0,none,none
+gn:3203925,Bled,Municipality of Bled,5181,village,0,0,50,0,none,none
+gn:3204040,Bistrica pri Tržiču,Municipality of Tržič,2996,village,0,0,50,0,none,none
+gn:3204044,Bistrica ob Sotli,Municipality of Bistrica ob Sotli,235,village,0,0,50,0,none,none
+gn:3204144,Bilje,Municipality of Miren–Kostanjevica,1191,village,0,0,50,0,none,none
+gn:3204296,Benedikt,Municipality of Benedikt,955,village,0,0,50,0,none,none
+gn:3204303,Beltinci,Municipality of Beltinci,2394,village,0,0,50,0,none,none
+gn:3204598,Bakovci,Urban Municipality of Murska Sobota,1491,village,0,0,50,0,none,none
+gn:3204796,Apače,Municipality of Apače,543,village,0,0,50,0,none,none
+gn:3204854,Ajdovščina,Municipality of Ajdovščina,6843,village,0,0,50,0,none,none
+gn:3215453,Razkrižje,Municipality of Razkrižje,252,village,0,0,50,0,none,none
+gn:3216508,Solkan,Urban Municipality of Nova Gorica,3227,village,0,0,50,0,none,none
+gn:3217860,Slovenski Javornik,Municipality of Jesenice,2002,village,0,0,50,0,none,none
+gn:3217862,Koroška Bela,Municipality of Jesenice,2160,village,0,0,50,0,none,none
+gn:3218364,Cerkno,Municipality of Cerkno,1596,village,0,0,50,0,none,none
+gn:3218745,Leskova Dolina,Municipality of Loška Dolina,539,village,0,0,50,0,none,none
+gn:3218907,Logatec,Logatec,8942,village,0,0,50,0,none,none
+gn:3220262,Ankaran,Municipality of Ankaran,3278,village,0,0,50,0,none,none
+gn:3339111,Videm pri Ptuju,Municipality of Videm,471,village,0,0,50,0,none,none
+gn:3339118,Legen,Urban Municipality of Slovenj Gradec,1026,village,0,0,50,0,none,none
+gn:3339120,Zreče,Municipality of Zreče,2935,village,0,0,50,0,none,none
+gn:3339124,Radizel,Municipality of Hoče–Slivnica,1698,village,0,0,50,0,none,none
+gn:3339128,Selnica ob Dravi,Municipality of Selnica ob Dravi,1348,village,0,0,50,0,none,none
+gn:3343512,Lucija,Municipality of Piran,6057,village,0,0,50,0,none,none
+gn:3343518,Jagodje,Municipality of Izola,2225,village,0,0,50,0,none,none
+gn:3343527,Pobegi,Urban Municipality of Koper,1228,village,0,0,50,0,none,none
+gn:3343529,Spodnje Škofije,Urban Municipality of Koper,1402,village,0,0,50,0,none,none
+gn:3343551,Rožna Dolina,Municipality of Šempeter–Vrtojba,1118,village,0,0,50,0,none,none
+gn:6956383,Kisovec,Municipality of Zagorje ob Savi,1838,village,0,0,50,0,none,none
+gn:6956384,Cirkulane,Municipality of Cirkulane,434,village,0,0,50,0,none,none
+gn:6956393,Komenda,Komenda,881,village,0,0,50,0,none,none
+gn:8358612,Nazarje,Municipality of Nazarje,872,village,0,0,50,0,none,none
+gn:8358613,Kostel,Municipality of Kostel,637,village,0,0,50,0,none,none
+gn:8986856,Vir,Municipality of Domžale,3415,village,0,0,50,0,none,none
+gn:8986857,Lavrica,Municipality of Škofljica,2438,village,0,0,50,0,none,none
+gn:8986862,Seča,Municipality of Piran,1210,village,0,0,50,0,none,none
+gn:8986863,Prade,Urban Municipality of Koper,1129,village,0,0,50,0,none,none
+gn:8986864,Zasip,Municipality of Bled,1019,village,0,0,50,0,none,none
+gn:8989727,Bistrica ob Dravi,Municipality of Ruše,1368,village,0,0,50,0,none,none

@@ -1,0 +1,51 @@
+place_id,name,region,population,market,verified_homes,dated_listings,shortfall_to_50,recorded_sales,rent_source,price_source
+gn:265846,Zghartā,North Lebanon,0,village,0,0,50,0,none,none
+gn:266045,Zahlé,Bekaa,78145,town,0,0,50,0,none,none
+gn:266826,Tripoli,North Lebanon,229398,city,0,0,50,0,none,none
+gn:267008,Tyre,South Governorate,135204,city,0,0,50,0,none,none
+gn:267099,Srîfa,South Governorate,4750,village,0,0,50,0,none,none
+gn:267156,Sîr ed Danniyé,North Lebanon,0,village,0,0,50,0,none,none
+gn:267305,Chmistâr,Baalbek-Hermel Governorate,30000,town,0,0,50,0,none,none
+gn:267553,Chaat,Baalbek-Hermel Governorate,6322,village,0,0,50,0,none,none
+gn:268064,Sidon,South Governorate,163554,city,0,0,50,0,none,none
+gn:268743,Ra’s Bayrūt,Beirut,1251739,large-city,0,0,50,0,none,none
+gn:269355,Qâna,South Governorate,10000,town,0,0,50,0,none,none
+gn:271226,Marjayoun,Nabatieh,0,village,0,0,50,0,none,none
+gn:272849,Kfar Kila,Nabatieh,5878,village,0,0,50,0,none,none
+gn:273140,Jounieh,Mount Lebanon,96315,town,0,0,50,0,none,none
+gn:273185,Joubb Jannîne,Bekaa,0,village,0,0,50,0,none,none
+gn:273203,Byblos,Mount Lebanon,20784,town,0,0,50,0,none,none
+gn:273360,Jezzine,South Governorate,0,village,0,0,50,0,none,none
+gn:273675,Aarsâl,Baalbek-Hermel Governorate,50000,town,0,0,50,0,none,none
+gn:274313,Hasbaya,Nabatieh,0,village,0,0,50,0,none,none
+gn:274499,Hrajel,Mount Lebanon,8000,village,0,0,50,0,none,none
+gn:274723,Halba,Akkar,4500,village,0,0,50,0,none,none
+gn:274874,Habboûch,Nabatieh,98433,town,0,0,50,0,none,none
+gn:275666,Deïr el Ahmar,Baalbek-Hermel Governorate,5947,village,0,0,50,0,none,none
+gn:276294,Boudaï,Baalbek-Hermel Governorate,8000,village,0,0,50,0,none,none
+gn:276359,Bsharri,North Lebanon,20000,town,0,0,50,0,none,none
+gn:276380,Brîtel,Baalbek-Hermel Governorate,4224,village,0,0,50,0,none,none
+gn:276592,Bent Jbaïl,Nabatieh,0,village,0,0,50,0,none,none
+gn:276632,Bhamdoûn el Mhatta,Mount Lebanon,5000,village,0,0,50,0,none,none
+gn:276633,Bhamdoun,Mount Lebanon,1500,village,0,0,50,0,none,none
+gn:276771,Beït ed Dîne,Mount Lebanon,0,village,0,0,50,0,none,none
+gn:276781,Beirut,Beirut,1916100,large-city,0,0,50,0,none,none
+gn:277130,Baalbek,Baalbek-Hermel Governorate,30916,town,0,0,50,0,none,none
+gn:277226,Baabda,Mount Lebanon,9000,village,0,0,50,0,none,none
+gn:277367,Aaïtanît,Bekaa,6800,village,0,0,50,0,none,none
+gn:277467,Ain Ebel,Nabatieh,2000,village,0,0,50,0,none,none
+gn:277534,Aïnâta,Baalbek-Hermel Governorate,3000,village,0,0,50,0,none,none
+gn:278040,Sarafand,South Governorate,10965,town,0,0,50,0,none,none
+gn:278832,En Nâqoûra,South Governorate,24910,town,0,0,50,0,none,none
+gn:278913,Nabatîyé et Tahta,Nabatieh,120000,city,0,0,50,0,none,none
+gn:278925,Aanjar,Bekaa,2400,village,0,0,50,0,none,none
+gn:278936,Amioûn,North Lebanon,0,village,0,0,50,0,none,none
+gn:279633,Aalma ech Chaab,South Governorate,1080,village,0,0,50,0,none,none
+gn:279854,Jdaidet el Matn,Mount Lebanon,0,village,0,0,50,0,none,none
+gn:279997,El Hermel,Baalbek-Hermel Governorate,22250,town,0,0,50,0,none,none
+gn:280155,Ghazieh,South Governorate,50000,town,0,0,50,0,none,none
+gn:280328,Batroûn,North Lebanon,10852,town,0,0,50,0,none,none
+gn:280425,Aley,Mount Lebanon,130000,city,0,0,50,0,none,none
+gn:280602,Aajaltoûn,Mount Lebanon,10000,town,0,0,50,0,none,none
+gn:6253857,Râchaïya el Ouadi,Bekaa,0,village,0,0,50,0,none,none
+gn:7869857,Tebnine,Nabatieh,5000,village,0,0,50,0,none,none

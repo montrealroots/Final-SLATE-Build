@@ -1,0 +1,257 @@
+place_id,name,region,population,market,verified_homes,dated_listings,shortfall_to_50,recorded_sales,rent_source,price_source
+gn:53904,Waal,Somali,24000,town,0,0,50,0,none,none
+gn:62780,Fadhigaradle,Somali,34000,town,0,0,50,0,none,none
+gn:325579,Ziway,Oromiya,90500,town,0,0,50,0,none,none
+gn:325779,Yirga Ch’efē,South Ethiopia Regional State,40600,town,0,0,50,0,none,none
+gn:325780,Yirga ‘Alem,Sidama Region,81600,town,0,0,50,0,none,none
+gn:326036,Yabēlo,Oromiya,36300,town,0,0,50,0,none,none
+gn:326116,Wik’ro,Tigray,64000,town,0,0,50,0,none,none
+gn:326206,Werota,Amhara,47800,town,0,0,50,0,none,none
+gn:326259,Were Īlu,Amhara,20600,town,0,0,50,0,none,none
+gn:326282,Warder,Somali,450400,city,0,0,50,0,none,none
+gn:326308,Wenjī,Oromiya,17120,town,0,0,50,0,none,none
+gn:326321,Wendo,Sidama Region,59300,town,0,0,50,0,none,none
+gn:326333,Wenago,South Ethiopia Regional State,22800,town,0,0,50,0,none,none
+gn:326355,Welk’īt’ē,Central Ethiopia Regional State,77500,town,0,0,50,0,none,none
+gn:326383,Welench’ītī,Oromiya,31500,town,0,0,50,0,none,none
+gn:326406,Weldiya,Amhara,104000,city,0,0,50,0,none,none
+gn:326669,Waka,South West Ethiopia Peoples' Region,26500,town,0,0,50,0,none,none
+gn:327162,Turmi,South Ethiopia Regional State,1087,village,0,0,50,0,none,none
+gn:327234,Tulu Bolo,Oromiya,30000,town,0,0,50,0,none,none
+gn:327472,T’īs Isat,Amhara,39200,town,0,0,50,0,none,none
+gn:327544,Tīlīlī,Amhara,20400,town,0,0,50,0,none,none
+gn:327567,Tikil Dingay,Amhara,28200,town,0,0,50,0,none,none
+gn:327694,Tēpī,South West Ethiopia Peoples' Region,66700,town,0,0,50,0,none,none
+gn:327913,Tarch’a Sodo,South West Ethiopia Peoples' Region,24300,town,0,0,50,0,none,none
+gn:328069,Suntu,Oromiya,20700,town,0,0,50,0,none,none
+gn:328316,Sīrē,Oromiya,21300,town,0,0,50,0,none,none
+gn:328492,Shonē,Central Ethiopia Regional State,41900,town,0,0,50,0,none,none
+gn:328592,Sheraro,Tigray,36100,town,0,0,50,0,none,none
+gn:328598,Sheno,Oromiya,22900,town,0,0,50,0,none,none
+gn:328689,Shashamane,Oromiya,208400,city,0,0,50,0,none,none
+gn:328709,Shambu,Oromiya,31100,town,0,0,50,0,none,none
+gn:328716,Shakiso,Oromiya,47500,town,0,0,50,0,none,none
+gn:328880,Sendafa,Oromiya,25500,town,0,0,50,0,none,none
+gn:328962,Sek’ot’a,Amhara,50300,town,0,0,50,0,none,none
+gn:329114,Sebeta,Oromiya,102300,city,0,0,50,0,none,none
+gn:329432,Sagurē,Oromiya,24900,town,0,0,50,0,none,none
+gn:329586,Robīt,Amhara,20679,town,0,0,50,0,none,none
+gn:329592,Robit,Amhara,39600,town,0,0,50,0,none,none
+gn:329607,Bale Robe,Oromiya,31400,town,0,0,50,0,none,none
+gn:330118,Nek’emtē,Oromiya,156000,city,0,0,50,0,none,none
+gn:330120,Nejo,Oromiya,39400,town,0,0,50,0,none,none
+gn:330134,Negēlē,Oromiya,73100,town,0,0,50,0,none,none
+gn:330158,Nefas Mewch’a,Amhara,44200,town,0,0,50,0,none,none
+gn:330186,Nazrēt,Oromiya,456900,city,0,0,50,0,none,none
+gn:330425,Mot’a,Amhara,59000,town,0,0,50,0,none,none
+gn:330491,Mojo,Oromiya,61300,town,0,0,50,0,none,none
+gn:330534,Mīzan Teferī,South West Ethiopia Peoples' Region,62000,town,0,0,50,0,none,none
+gn:330652,Mīlē,Āfar,21700,town,0,0,50,0,none,none
+gn:330691,Mī’ēso,Oromiya,27700,town,0,0,50,0,none,none
+gn:330764,Metu,Oromiya,59700,town,0,0,50,0,none,none
+gn:330789,Metemma,Amhara,25600,town,0,0,50,0,none,none
+gn:330811,Metahāra,Oromiya,23403,town,0,0,50,0,none,none
+gn:330874,Mertule Maryam,Amhara,27600,town,0,0,50,0,none,none
+gn:330888,Mersa,Amhara,36300,town,0,0,50,0,none,none
+gn:330945,Mer’āwī,Amhara,42200,town,0,0,50,0,none,none
+gn:331038,Mendī,Oromiya,29100,town,0,0,50,0,none,none
+gn:331064,Mena,Oromiya,22100,town,0,0,50,0,none,none
+gn:331163,Mek’ī,Oromiya,75200,town,0,0,50,0,none,none
+gn:331180,Mek'ele,Tigray,457900,city,0,0,50,0,none,none
+gn:331226,Mehal Mēda,Amhara,24900,town,0,0,50,0,none,none
+gn:331259,Mēga,Oromiya,6884,village,0,0,50,0,none,none
+gn:331416,Maych’ew,Tigray,49600,town,0,0,50,0,none,none
+gn:331630,Mambuk,Bīnshangul Gumuz,24100,town,0,0,50,0,none,none
+gn:331671,Maksenyit,Amhara,25800,town,0,0,50,0,none,none
+gn:331872,Lumamē,Amhara,20900,town,0,0,50,0,none,none
+gn:331958,Logīya,Āfar,34500,town,0,0,50,0,none,none
+gn:331968,Lobuni,South Ethiopia Regional State,3363,village,0,0,50,0,none,none
+gn:332129,Leku,Sidama Region,31700,town,0,0,50,0,none,none
+gn:332288,Lalibela,Amhara,39100,town,0,0,50,0,none,none
+gn:332372,Kuyera,Oromiya,21100,town,0,0,50,0,none,none
+gn:332746,Korem,Tigray,35600,town,0,0,50,0,none,none
+gn:332817,Konso,South Ethiopia Regional State,4593,village,0,0,50,0,none,none
+gn:332880,K’olīto,Central Ethiopia Regional State,72200,town,0,0,50,0,none,none
+gn:332896,K’ola Diba,Amhara,27300,town,0,0,50,0,none,none
+gn:332938,Kofelē,Oromiya,27900,town,0,0,50,0,none,none
+gn:333103,Kibre Mengist,Oromiya,47600,town,0,0,50,0,none,none
+gn:333356,Kemisē,Amhara,43800,town,0,0,50,0,none,none
+gn:333373,Kombolcha,Amhara,132100,city,0,0,50,0,none,none
+gn:333421,Kele,Oromiya,23100,town,0,0,50,0,none,none
+gn:333516,Kebri Dahar,Somali,45900,town,0,0,50,0,none,none
+gn:333598,Kara K’orē,Amhara,7487,village,0,0,50,0,none,none
+gn:333680,Kachīsī,Oromiya,22900,town,0,0,50,0,none,none
+gn:333750,Jinka,South Ethiopia Regional State,54400,town,0,0,50,0,none,none
+gn:333772,Jimma,Oromiya,250900,city,0,0,50,0,none,none
+gn:333795,Jijiga,Somali,483000,city,0,0,50,0,none,none
+gn:334043,Īteya,Oromiya,31100,town,0,0,50,0,none,none
+gn:334124,Intich’o,Tigray,21800,town,0,0,50,0,none,none
+gn:334137,Insēno,Central Ethiopia Regional State,30500,town,0,0,50,0,none,none
+gn:334152,Injibara,Amhara,47500,town,0,0,50,0,none,none
+gn:334227,Inda Silasē,Tigray,100100,city,0,0,50,0,none,none
+gn:334252,Indabaguna,Tigray,21400,town,0,0,50,0,none,none
+gn:334419,Ījajī,Oromiya,12533,town,0,0,50,0,none,none
+gn:334478,Idaga Hamus,Tigray,25400,town,0,0,50,0,none,none
+gn:334495,Ibnat,Amhara,27000,town,0,0,50,0,none,none
+gn:334529,Huruta,Oromiya,27500,town,0,0,50,0,none,none
+gn:334609,Hosa’ina,Central Ethiopia Regional State,188200,city,0,0,50,0,none,none
+gn:334700,Hīrna,Oromiya,24200,town,0,0,50,0,none,none
+gn:334826,Hāyk’,Amhara,28500,town,0,0,50,0,none,none
+gn:334898,Hartīshēk,Somali,22000,town,0,0,50,0,none,none
+gn:335035,Harar,Harari,157000,city,0,0,50,0,none,none
+gn:335063,Harbu,Amhara,24500,town,0,0,50,0,none,none
+gn:335286,Hāgere Selam,Sidama Region,5169,village,0,0,50,0,none,none
+gn:335288,Hāgere Hiywet,Oromiya,99900,town,0,0,50,0,none,none
+gn:335324,Hadero,Central Ethiopia Regional State,48000,town,0,0,50,0,none,none
+gn:335425,El Bahay,Somali,23000,town,0,0,50,0,none,none
+gn:335478,Gurbetē,Amhara,26500,town,0,0,50,0,none,none
+gn:335808,Komtikas,South West Ethiopia Peoples' Region,29400,town,0,0,50,0,none,none
+gn:335943,Gorē,Oromiya,12708,town,0,0,50,0,none,none
+gn:336014,Gonder,Amhara,466000,city,0,0,50,0,none,none
+gn:336259,Gode,Somali,67900,town,0,0,50,0,none,none
+gn:336317,Gobēsa,Oromiya,23200,town,0,0,50,0,none,none
+gn:336350,Goba,Oromiya,66500,town,0,0,50,0,none,none
+gn:336372,Waliso,Oromiya,78600,town,0,0,50,0,none,none
+gn:336454,Ghinnir,Oromiya,35500,town,0,0,50,0,none,none
+gn:336475,Gīnch’ī,Oromiya,37600,town,0,0,50,0,none,none
+gn:336481,Gimja Bēt Maryam,Amhara,24800,town,0,0,50,0,none,none
+gn:336491,Gīmbīcho,Central Ethiopia Regional State,22900,town,0,0,50,0,none,none
+gn:336496,Gimbi,Oromiya,64300,town,0,0,50,0,none,none
+gn:336511,Raqo,Somali,25090,town,0,0,50,0,none,none
+gn:336526,Gīdolē,South Ethiopia Regional State,35500,town,0,0,50,0,none,none
+gn:336745,Gawanē,Āfar,11279,town,0,0,50,0,none,none
+gn:336760,Gasuba,South Ethiopia Regional State,27789,town,0,0,50,0,none,none
+gn:336931,Genet,Oromiya,48300,town,0,0,50,0,none,none
+gn:337010,Gelemso,Oromiya,34200,town,0,0,50,0,none,none
+gn:337083,Gēdo,Oromiya,23300,town,0,0,50,0,none,none
+gn:337114,Gedeb,Somali,24000,town,0,0,50,0,none,none
+gn:337152,Gebre Guracha,Oromiya,41200,town,0,0,50,0,none,none
+gn:337405,Gambēla,Gambela,97600,town,0,0,50,0,none,none
+gn:337614,Funyan Bīra,Oromiya,25000,town,0,0,50,0,none,none
+gn:337712,Finote Selam,Amhara,58400,town,0,0,50,0,none,none
+gn:337748,Filakit,Amhara,26500,town,0,0,50,0,none,none
+gn:337771,Fichē,Oromiya,57100,town,0,0,50,0,none,none
+gn:337853,Felege Neway,South Ethiopia Regional State,61000,town,0,0,50,0,none,none
+gn:337864,Felana,Oromiya,26200,town,0,0,50,0,none,none
+gn:338123,Golwayn,Somali,20000,town,0,0,50,0,none,none
+gn:338404,Duramē,Central Ethiopia Regional State,65900,town,0,0,50,0,none,none
+gn:338554,Dubti,Āfar,36100,town,0,0,50,0,none,none
+gn:338670,Dolo,Tigray,41400,town,0,0,50,0,none,none
+gn:338726,Dodola,Oromiya,43200,town,0,0,50,0,none,none
+gn:338832,Dire Dawa,Dire Dawa,343000,city,0,0,50,0,none,none
+gn:338998,Dīla,South Ethiopia Regional State,158800,city,0,0,50,0,none,none
+gn:339159,Dibate,Bīnshangul Gumuz,21300,town,0,0,50,0,none,none
+gn:339191,Dewelē,Somali,3357,village,0,0,50,0,none,none
+gn:339219,Dessie,Amhara,270400,city,0,0,50,0,none,none
+gn:339319,Dēra,Oromiya,30700,town,0,0,50,0,none,none
+gn:339448,Dembī Dolo,Oromiya,61100,town,0,0,50,0,none,none
+gn:339473,Dembech’a,Amhara,29800,town,0,0,50,0,none,none
+gn:339551,Dejen,Amhara,11739,town,0,0,50,0,none,none
+gn:339594,Degeh Bur,Somali,47200,town,0,0,50,0,none,none
+gn:339629,Deder,Oromiya,26900,town,0,0,50,0,none,none
+gn:339666,Bishoftu,Oromiya,207400,city,0,0,50,0,none,none
+gn:339671,Debre Werk’,Amhara,10579,town,0,0,50,0,none,none
+gn:339686,Debre Tabor,Amhara,125300,city,0,0,50,0,none,none
+gn:339692,Debre Sīna,Amhara,9409,village,0,0,50,0,none,none
+gn:339708,Debre Mark’os,Amhara,140700,city,0,0,50,0,none,none
+gn:339734,Debre Birhan,Amhara,146900,city,0,0,50,0,none,none
+gn:339823,Debark’,Amhara,46800,town,0,0,50,0,none,none
+gn:339846,Dayē,Oromiya,31000,town,0,0,50,0,none,none
+gn:340008,Dangila,Amhara,56000,town,0,0,50,0,none,none
+gn:340358,Dabat,Amhara,28300,town,0,0,50,0,none,none
+gn:340573,Ciro,Central Ethiopia Regional State,69800,town,0,0,50,0,none,none
+gn:340754,Chinahsen,Somali,25400,town,0,0,50,0,none,none
+gn:340787,Ch’iko,Sidama Region,49500,town,0,0,50,0,none,none
+gn:340799,Sifra,Āfar,22400,town,0,0,50,0,none,none
+gn:340897,Ch’ench’a,South Ethiopia Regional State,27500,town,0,0,50,0,none,none
+gn:340938,Chelenko,Oromiya,20900,town,0,0,50,0,none,none
+gn:341297,Butajīra,Central Ethiopia Regional State,89800,town,0,0,50,0,none,none
+gn:341397,Burē,Amhara,46000,town,0,0,50,0,none,none
+gn:341742,Bonga,South West Ethiopia Peoples' Region,56000,town,0,0,50,0,none,none
+gn:341877,Bodītī,South Ethiopia Regional State,64900,town,0,0,50,0,none,none
+gn:342190,Bichena,Amhara,36500,town,0,0,50,0,none,none
+gn:342445,Bale Hawassa,South Ethiopia Regional State,31765,town,0,0,50,0,none,none
+gn:342478,Bek’ojī,Oromiya,36800,town,0,0,50,0,none,none
+gn:342558,Bedēsa,South Ethiopia Regional State,24600,town,0,0,50,0,none,none
+gn:342559,Bedēsa,Oromiya,37700,town,0,0,50,0,none,none
+gn:342567,Bedelē,Oromiya,40500,town,0,0,50,0,none,none
+gn:342641,Batī,Amhara,37600,town,0,0,50,0,none,none
+gn:342788,Bambesi,Bīnshangul Gumuz,26300,town,0,0,50,0,none,none
+gn:342856,Bako,South Ethiopia Regional State,34100,town,0,0,50,0,none,none
+gn:342884,Bahir Dar,Amhara,350000,city,0,0,50,0,none,none
+gn:342965,Babīlē,Oromiya,36700,town,0,0,50,0,none,none
+gn:343050,Āykel,Amhara,34000,town,0,0,50,0,none,none
+gn:343081,Āyana,Oromiya,21800,town,0,0,50,0,none,none
+gn:343134,Āwash,Āfar,36500,town,0,0,50,0,none,none
+gn:343137,Awasa,Sidama Region,422200,city,0,0,50,0,none,none
+gn:343244,Āt’aye,Amhara,26300,town,0,0,50,0,none,none
+gn:343292,Āsosa,Bīnshangul Gumuz,69700,town,0,0,50,0,none,none
+gn:343370,Āsela,Oromiya,139500,city,0,0,50,0,none,none
+gn:343402,Āsbe Teferī,Oromiya,30772,town,0,0,50,0,none,none
+gn:343409,Asaita,Āfar,39400,town,0,0,50,0,none,none
+gn:343413,Āsasa,Oromiya,42900,town,0,0,50,0,none,none
+gn:343562,Arerti,Āfar,23000,town,0,0,50,0,none,none
+gn:343593,Āreka,South Ethiopia Regional State,84500,town,0,0,50,0,none,none
+gn:343663,Arba Minch,South Ethiopia Regional State,201000,city,0,0,50,0,none,none
+gn:343749,Ārabī,Somali,148933,city,0,0,50,0,none,none
+gn:343759,Ara Ali,Oromiya,23000,town,0,0,50,0,none,none
+gn:344102,Amba Giorgis,Amhara,27300,town,0,0,50,0,none,none
+gn:344267,‘Alem T’ēna,Oromiya,23700,town,0,0,50,0,none,none
+gn:344272,‘Alem Ketema,Amhara,23500,town,0,0,50,0,none,none
+gn:344282,‘Alemaya,Oromiya,63700,town,0,0,50,0,none,none
+gn:344357,Alamata,Tigray,70400,town,0,0,50,0,none,none
+gn:344420,Aksum,Tigray,94500,town,0,0,50,0,none,none
+gn:344620,Hagere Maryam,Oromiya,57700,town,0,0,50,0,none,none
+gn:344661,Āgaro,Oromiya,52800,town,0,0,50,0,none,none
+gn:344797,Adwa,Tigray,85600,town,0,0,50,0,none,none
+gn:344923,Ādīs Zemen,Amhara,36300,town,0,0,50,0,none,none
+gn:344928,Ādīs K’idamē,Amhara,20100,town,0,0,50,0,none,none
+gn:344976,Ādīs ‘Alem,Oromiya,20900,town,0,0,50,0,none,none
+gn:344979,Addis Ababa,Addis Ababa,3860000,large-city,0,0,50,0,none,none
+gn:345149,Ādīgrat,Tigray,121800,city,0,0,50,0,none,none
+gn:345353,Ādēt,Amhara,43200,town,0,0,50,0,none,none
+gn:345704,Abomsa,Amhara,30400,town,0,0,50,0,none,none
+gn:345731,Ābīy Ādī,Tigray,34200,town,0,0,50,0,none,none
+gn:345818,Ābderafī,Amhara,24500,town,0,0,50,0,none,none
+gn:345902,Abala,Tigray,25300,town,0,0,50,0,none,none
+gn:444998,Qorof,Somali,37080,town,0,0,50,0,none,none
+gn:6311119,Kahandhale,Somali,18000,town,0,0,50,0,none,none
+gn:6311120,Lasoano,Somali,38000,town,0,0,50,0,none,none
+gn:6311121,Neefkuceliye,Somali,34000,town,0,0,50,0,none,none
+gn:6311122,Yamarugley,Somali,36000,town,0,0,50,0,none,none
+gn:6641073,Duuban,Somali,15000,town,0,0,50,0,none,none
+gn:6913519,Samara,Āfar,50000,town,0,0,50,0,none,none
+gn:7910079,Sodo,South Ethiopia Regional State,204100,city,0,0,50,0,none,none
+gn:8620932,Kobo,Amhara,56100,town,0,0,50,0,none,none
+gn:8643798,Arsi Negele,Oromiya,98100,town,0,0,50,0,none,none
+gn:10239401,Digih Habar Es,Somali,22000,town,0,0,50,0,none,none
+gn:11048860,Chagni,,52300,town,0,0,50,0,none,none
+gn:11048861,Shendi,,23900,town,0,0,50,0,none,none
+gn:12640444,Burayu,Oromiya,101400,city,0,0,50,0,none,none
+gn:12640445,Guder,Oromiya,30600,town,0,0,50,0,none,none
+gn:12640446,May Cadera,Tigray,27300,town,0,0,50,0,none,none
+gn:12640447,Mehoni,Āfar,29200,town,0,0,50,0,none,none
+gn:12640449,Shinshicho,Central Ethiopia Regional State,38400,town,0,0,50,0,none,none
+gn:12640451,Wonji,Oromiya,29200,town,0,0,50,0,none,none
+gn:12640452,Worabe,Central Ethiopia Regional State,25400,town,0,0,50,0,none,none
+gn:12640453,Adebaye,Tigray,21800,town,0,0,50,0,none,none
+gn:12640454,Damboya,Central Ethiopia Regional State,21800,town,0,0,50,0,none,none
+gn:12640455,Ginja Bet,Amhara,24800,town,0,0,50,0,none,none
+gn:12640456,Gutin,Oromiya,28300,town,0,0,50,0,none,none
+gn:12640458,Kercha,Oromiya,20500,town,0,0,50,0,none,none
+gn:12640459,Wacha,South West Ethiopia Peoples' Region,28300,town,0,0,50,0,none,none
+gn:12640460,Wegeda,Amhara,23200,town,0,0,50,0,none,none
+gn:13308373,Dimtu,South Ethiopia Regional State,25294,town,0,0,50,0,none,none
+gn:13308374,Badessa,South Ethiopia Regional State,35294,town,0,0,50,0,none,none
+gn:13308375,Bombe,South Ethiopia Regional State,11969,town,0,0,50,0,none,none
+gn:13308376,Gununo,South Ethiopia Regional State,84510,town,0,0,50,0,none,none
+gn:13308378,Halale,South Ethiopia Regional State,0,village,0,0,50,0,none,none
+gn:13308380,Baqulo Sanyo,South Ethiopia Regional State,0,village,0,0,50,0,none,none
+gn:13308381,Lasho,South Ethiopia Regional State,0,village,0,0,50,0,none,none
+gn:13308383,Tebela,South Ethiopia Regional State,17538,town,0,0,50,0,none,none
+gn:13308384,Paracho,South Ethiopia Regional State,0,village,0,0,50,0,none,none
+gn:13308386,Hobicha Bada,South Ethiopia Regional State,0,village,0,0,50,0,none,none
+gn:13308387,Shanto,South Ethiopia Regional State,15020,town,0,0,50,0,none,none
+gn:13308391,Bitana,South Ethiopia Regional State,0,village,0,0,50,0,none,none
+gn:13512920,Selamber,South Ethiopia Regional State,0,village,0,0,50,0,none,none
+gn:13712885,Dedebit,Tigray,6376,village,0,0,50,0,none,none

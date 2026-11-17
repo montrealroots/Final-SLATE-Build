@@ -1,0 +1,335 @@
+place_id,name,region,population,market,verified_homes,dated_listings,shortfall_to_50,recorded_sales,rent_source,price_source
+gn:178040,Yala,Siaya County,3237,village,0,0,50,0,none,none
+gn:178073,Wundanyi,Taita Taveta,12501,town,0,0,50,0,none,none
+gn:178077,Wote,Makueni County,19725,town,0,0,50,0,none,none
+gn:178093,Witu,Lamu,5380,village,0,0,50,0,none,none
+gn:178202,Webuye,Bungoma County,42642,town,0,0,50,0,none,none
+gn:178245,Watamu,Kilifi County,27857,town,0,0,50,0,none,none
+gn:178323,Wanguru,Kirinyaga County,51722,town,0,0,50,0,none,none
+gn:178366,Wamunyu,Machakos County,2190,village,0,0,50,0,none,none
+gn:178389,Wamba,Samburu County,4580,village,0,0,50,0,none,none
+gn:178443,Wajir,Wajir County,90116,town,0,0,50,0,none,none
+gn:178522,Voi,Taita Taveta,53353,town,0,0,50,0,none,none
+gn:178543,Vipingo,Kilifi County,12183,town,0,0,50,0,none,none
+gn:178792,Ukunda,Kwale County,77686,town,0,0,50,0,none,none
+gn:178814,Ogunja,Siaya County,7060,village,0,0,50,0,none,none
+gn:178922,Turbo,Uasin Gishu County,2559,village,0,0,50,0,none,none
+gn:179181,Tinganga,Kiambu County,6059,village,0,0,50,0,none,none
+gn:179204,Timau,Meru County,10571,town,0,0,50,0,none,none
+gn:179330,Thika,Nairobi County,251407,city,0,0,50,0,none,none
+gn:179438,Tetu,Nyeri County,39293,town,0,0,50,0,none,none
+gn:179525,Taveta,Taita Taveta,22018,town,0,0,50,0,none,none
+gn:179543,Tarbaj,Wajir County,3146,village,0,0,50,0,none,none
+gn:179625,Tala,Machakos County,11446,town,0,0,50,0,none,none
+gn:179634,Takaungu,Kilifi County,10760,town,0,0,50,0,none,none
+gn:179659,Tabaka,Kisii County,2910,village,0,0,50,0,none,none
+gn:179750,Sultan Hamud,Makueni County,8718,village,0,0,50,0,none,none
+gn:179796,Subukia,Nakuru County,10344,town,0,0,50,0,none,none
+gn:179865,South Kinangop,Nyandarua County,3929,village,0,0,50,0,none,none
+gn:179888,Sotik,Bomet County,4194,village,0,0,50,0,none,none
+gn:179949,Sondu,Kericho County,6869,village,0,0,50,0,none,none
+gn:179965,Sololo,,7683,village,0,0,50,0,none,none
+gn:180085,Sirisia,Bungoma County,2096,village,0,0,50,0,none,none
+gn:180165,Sindo,Homa Bay County,10286,town,0,0,50,0,none,none
+gn:180210,Simba,Kajiado County,2504,village,0,0,50,0,none,none
+gn:180337,Siakago,Embu County,4315,village,0,0,50,0,none,none
+gn:180389,Shimoni,Kwale County,2374,village,0,0,50,0,none,none
+gn:180436,Shianda,Kakamega County,7502,village,0,0,50,0,none,none
+gn:180556,Serem,Vihiga County,3984,village,0,0,50,0,none,none
+gn:180635,Sega,Siaya County,4179,village,0,0,50,0,none,none
+gn:180646,Sawa Sawa,Kwale County,12975,town,0,0,50,0,none,none
+gn:180868,Sagana,Kirinyaga County,13000,town,0,0,50,0,none,none
+gn:180914,Saba Saba,Murang'A,2438,village,0,0,50,0,none,none
+gn:180981,Runyenjes,Embu County,4943,village,0,0,50,0,none,none
+gn:180992,Rumuruti,Laikipia,13056,town,0,0,50,0,none,none
+gn:181032,Ruiru,Kiambu County,490120,city,0,0,50,0,none,none
+gn:181122,Rongo,Migori County,20688,town,0,0,50,0,none,none
+gn:181135,Rongai,Nakuru County,30471,town,0,0,50,0,none,none
+gn:181142,Rombo,Kajiado County,3854,village,0,0,50,0,none,none
+gn:181197,Rironi,Kiambu County,5544,village,0,0,50,0,none,none
+gn:181374,Ramu,Mandera County,35644,town,0,0,50,0,none,none
+gn:181463,Rabuor,Kisumu County,2942,village,0,0,50,0,none,none
+gn:181501,Pumwani,Nairobi County,29616,town,0,0,50,0,none,none
+gn:181702,Oyugis,Homa Bay County,19947,town,0,0,50,0,none,none
+gn:181735,Othaya,Nyeri County,6650,village,0,0,50,0,none,none
+gn:181802,Ortum,West Pokot County,3372,village,0,0,50,0,none,none
+gn:182095,Olulung’a,Narok County,5609,village,0,0,50,0,none,none
+gn:182130,Oloitokitok,Kajiado County,10568,town,0,0,50,0,none,none
+gn:182250,Ol Joro Orok,Nyandarua County,2116,village,0,0,50,0,none,none
+gn:182298,Olenguruone,Nakuru County,2787,village,0,0,50,0,none,none
+gn:182498,Ogembo,Kisii County,20000,town,0,0,50,0,none,none
+gn:182701,Nyeri,Nyeri County,80081,town,0,0,50,0,none,none
+gn:182791,Nyangusu,Kisii County,3590,village,0,0,50,0,none,none
+gn:182844,Nyandiwa,Homa Bay County,4033,village,0,0,50,0,none,none
+gn:182880,Nyamira,Nyamira county,24483,town,0,0,50,0,none,none
+gn:182894,Nyambunwa,Kisii County,13405,town,0,0,50,0,none,none
+gn:183027,Nyahururu,Laikipia,37650,town,0,0,50,0,none,none
+gn:183119,Nunguni,Makueni County,2266,village,0,0,50,0,none,none
+gn:183231,North Horr,Marsabit County,5177,village,0,0,50,0,none,none
+gn:183296,Nkubu,Meru County,7675,village,0,0,50,0,none,none
+gn:183334,Njoro,Nakuru County,42173,town,0,0,50,0,none,none
+gn:183595,Ngong,Kajiado County,102323,city,0,0,50,0,none,none
+gn:183718,Ngewa,Kiambu County,2452,village,0,0,50,0,none,none
+gn:184011,Ntulelei,Narok County,3390,village,0,0,50,0,none,none
+gn:184041,Ndori,Siaya County,3770,village,0,0,50,0,none,none
+gn:184143,Ndhiwa,Homa Bay County,4762,village,0,0,50,0,none,none
+gn:184367,Naro Moru,Nyeri County,9018,village,0,0,50,0,none,none
+gn:184379,Narok,Narok County,65430,town,0,0,50,0,none,none
+gn:184433,Nanyuki,Laikipia,72813,town,0,0,50,0,none,none
+gn:184471,Nandi Hills,Nandi,8032,village,0,0,50,0,none,none
+gn:184546,Nambare,Busia County,3993,village,0,0,50,0,none,none
+gn:184622,Nakuru,Nakuru County,570674,large-city,0,0,50,0,none,none
+gn:184707,Naivasha,Nakuru County,198444,city,0,0,50,0,none,none
+ke-nairobi,Nairobi,Nairobi,4397073,large-city,0,0,50,0,none,none
+gn:184749,Nairagi Enkare,Narok County,4954,village,0,0,50,0,none,none
+gn:184921,Mwingi,Kitui County,17025,town,0,0,50,0,none,none
+gn:184983,Mweiga,Nyeri County,3609,village,0,0,50,0,none,none
+gn:185014,Mwatate,Taita Taveta,9572,village,0,0,50,0,none,none
+gn:185131,Mwala,Machakos County,181896,city,0,0,50,0,none,none
+gn:185579,Murang’a,Murang'A,43314,town,0,0,50,0,none,none
+gn:185702,Mumias,Kakamega County,45485,town,0,0,50,0,none,none
+gn:185745,Mulot,Bomet County,3149,village,0,0,50,0,none,none
+gn:185939,Muhoroni,Kisumu County,15217,town,0,0,50,0,none,none
+gn:186101,Mtito Andei,Makueni County,5626,village,0,0,50,0,none,none
+gn:186139,Msambweni,Kwale County,14951,town,0,0,50,0,none,none
+gn:186180,Moyale,Marsabit County,47850,town,0,0,50,0,none,none
+gn:186216,Mosoriot,Nandi,4916,village,0,0,50,0,none,none
+gn:186226,Mosocho,Kisii County,3824,village,0,0,50,0,none,none
+gn:186301,Mombasa,Mombasa County,1208333,large-city,0,0,50,0,none,none
+gn:186315,Molo,Nakuru County,48356,town,0,0,50,0,none,none
+gn:186325,Mokowe,Lamu,4249,village,0,0,50,0,none,none
+gn:186367,Mogonga,Kisii County,3628,village,0,0,50,0,none,none
+gn:186369,Mogotio,Baringo,13366,town,0,0,50,0,none,none
+gn:186445,Keringet,Nakuru County,4774,village,0,0,50,0,none,none
+gn:186520,Mitunguu,Meru County,3293,village,0,0,50,0,none,none
+gn:186731,Migori,Migori County,71668,town,0,0,50,0,none,none
+gn:186827,Meru,Meru County,80191,town,0,0,50,0,none,none
+gn:186831,Merti,Isiolo County,10990,town,0,0,50,0,none,none
+gn:187028,Mbita,Homa Bay County,14916,town,0,0,50,0,none,none
+gn:187113,Mbale,Vihiga County,60000,town,0,0,50,0,none,none
+gn:187150,Mazeras,Kwale County,16254,town,0,0,50,0,none,none
+gn:187221,Mau Narok,Nakuru County,11806,town,0,0,50,0,none,none
+gn:187231,Maua,Meru County,22121,town,0,0,50,0,none,none
+gn:187238,Matuu,Machakos County,12073,town,0,0,50,0,none,none
+gn:187257,Matunda,Uasin Gishu County,10807,town,0,0,50,0,none,none
+gn:187269,Matuga,Kwale County,194252,city,0,0,50,0,none,none
+gn:187483,Masii,Machakos County,3653,village,0,0,50,0,none,none
+gn:187506,Maseno,Kisumu County,6771,village,0,0,50,0,none,none
+gn:187532,Masalani,Tana River County,43642,town,0,0,50,0,none,none
+gn:187585,Marsabit,Marsabit County,36289,town,0,0,50,0,none,none
+gn:187641,Marigat,Baringo,9395,village,0,0,50,0,none,none
+gn:187661,Mariakani,Kilifi County,31715,town,0,0,50,0,none,none
+gn:187671,Marereni,Kilifi County,7085,village,0,0,50,0,none,none
+gn:187725,Maralal,Samburu County,31350,town,0,0,50,0,none,none
+gn:187733,Maragua,Murang'A,8597,village,0,0,50,0,none,none
+gn:187896,Mandera,Mandera County,114718,city,0,0,50,0,none,none
+gn:187968,Malindi,Kilifi County,119859,city,0,0,50,0,none,none
+gn:187977,Malikisi,Bungoma County,4319,village,0,0,50,0,none,none
+gn:188005,Malava,Kakamega County,5131,village,0,0,50,0,none,none
+gn:188025,Malaba,Busia County,15581,town,0,0,50,0,none,none
+gn:188045,Makutano,West Pokot County,28469,town,0,0,50,0,none,none
+gn:188047,Makutano,Machakos County,12396,town,0,0,50,0,none,none
+gn:188080,Makueni Boma,Makueni County,20681,town,0,0,50,0,none,none
+gn:188123,Makindu,Makueni County,15038,town,0,0,50,0,none,none
+gn:188220,Majengo,Vihiga County,11913,town,0,0,50,0,none,none
+gn:188380,Magena Marabu,Kisii County,3505,village,0,0,50,0,none,none
+gn:188408,Magadi,Kajiado County,14529,town,0,0,50,0,none,none
+gn:188442,Mado Gashi,Garissa County,11814,town,0,0,50,0,none,none
+gn:188469,Mackinnon Road,Kwale County,3901,village,0,0,50,0,none,none
+gn:188492,Machakos,Machakos County,63767,town,0,0,50,0,none,none
+gn:188610,Lunga-Lunga,Kwale County,2536,village,0,0,50,0,none,none
+gn:188617,Kipkelion,Kericho County,2952,village,0,0,50,0,none,none
+gn:188657,Lugulu,Busia County,40894,town,0,0,50,0,none,none
+gn:188714,Luanda,Busia County,10053,town,0,0,50,0,none,none
+gn:188715,Luanda,Vihiga County,13319,town,0,0,50,0,none,none
+gn:188981,Londiani,Kericho County,4758,village,0,0,50,0,none,none
+gn:189092,Lolgorien,Narok County,6053,village,0,0,50,0,none,none
+gn:189189,Lokichokio,Turkana County,11626,town,0,0,50,0,none,none
+gn:189190,Lokichar,Turkana County,12676,town,0,0,50,0,none,none
+gn:189280,Lodwar,Turkana County,82970,town,0,0,50,0,none,none
+gn:189367,Litein,Kericho County,13403,town,0,0,50,0,none,none
+gn:189386,Limuru,Kiambu County,159314,city,0,0,50,0,none,none
+gn:189702,Lare,Meru County,5358,village,0,0,50,0,none,none
+gn:189723,Ongata Rongai,Kajiado County,172569,city,0,0,50,0,none,none
+gn:189741,Lamu,Lamu,25385,town,0,0,50,0,none,none
+gn:189783,Laisamis,Marsabit County,5047,village,0,0,50,0,none,none
+gn:190108,Kwale,Kwale County,10063,town,0,0,50,0,none,none
+gn:190179,Kutus,Kirinyaga County,9143,village,0,0,50,0,none,none
+gn:190544,Konza,Machakos County,2004,village,0,0,50,0,none,none
+gn:191038,Kitui,Kitui County,29062,town,0,0,50,0,none,none
+gn:191129,Kithimani,Machakos County,2923,village,0,0,50,0,none,none
+gn:191131,Kithii,Machakos County,4304,village,0,0,50,0,none,none
+gn:191220,Kitale,Trans Nzoia,162174,city,0,0,50,0,none,none
+gn:191245,Kisumu,Kisumu County,397957,city,0,0,50,0,none,none
+gn:191299,Kisii,Kisii County,112417,city,0,0,50,0,none,none
+gn:191318,Kiserian,Kajiado County,76903,town,0,0,50,0,none,none
+gn:191482,Kiriaini,Murang'A,3779,village,0,0,50,0,none,none
+gn:191675,Kipini,Tana River County,4114,village,0,0,50,0,none,none
+gn:191797,Kinoi,Machakos County,44086,town,0,0,50,0,none,none
+gn:191800,Kinna,Isiolo County,11175,town,0,0,50,0,none,none
+gn:191833,Kinango,Kwale County,8070,village,0,0,50,0,none,none
+gn:191837,Kihancha,Migori County,22194,town,0,0,50,0,none,none
+gn:191908,Kiminini,Trans Nzoia,16560,town,0,0,50,0,none,none
+gn:191919,Kimilili,Bungoma County,56050,town,0,0,50,0,none,none
+gn:191924,Kimende,Kiambu County,4356,village,0,0,50,0,none,none
+gn:191932,Kimbimbi,Kirinyaga County,6826,village,0,0,50,0,none,none
+gn:191963,Kimana,Kajiado County,10116,town,0,0,50,0,none,none
+gn:192067,Kilifi,Kilifi County,74270,town,0,0,50,0,none,none
+gn:192079,Kilgoris,Narok County,10845,town,0,0,50,0,none,none
+gn:192126,Kikuyu,Kiambu County,323881,city,0,0,50,0,none,none
+gn:192170,Kikima,Makueni County,3269,village,0,0,50,0,none,none
+gn:192202,Kijabe,Nakuru County,4679,village,0,0,50,0,none,none
+gn:192207,Kiirua,Meru County,2158,village,0,0,50,0,none,none
+gn:192295,Kiganjo,Nyeri County,4009,village,0,0,50,0,none,none
+gn:192372,Kibwezi,Makueni County,8143,village,0,0,50,0,none,none
+gn:192586,Kianyaga,Kirinyaga County,2974,village,0,0,50,0,none,none
+gn:192710,Kiambu,Kiambu County,147870,city,0,0,50,0,none,none
+gn:192785,Khwisero,Kakamega County,113294,city,0,0,50,0,none,none
+gn:192859,Kerugoya,Kirinyaga County,30045,town,0,0,50,0,none,none
+gn:192869,Keroka,Nyamira county,10881,town,0,0,50,0,none,none
+gn:192900,Kericho,Kericho County,53804,town,0,0,50,0,none,none
+gn:192942,Kenyenya,Kisii County,2698,village,0,0,50,0,none,none
+gn:192967,Kendu Bay,Homa Bay County,6064,village,0,0,50,0,none,none
+gn:193056,Kebirigo,Nyamira county,4711,village,0,0,50,0,none,none
+gn:193624,Karuri,Kiambu County,194342,city,0,0,50,0,none,none
+gn:193627,Karuri,Murang'A,194342,city,0,0,50,0,none,none
+gn:193827,Karatina,Nyeri County,23552,town,0,0,50,0,none,none
+gn:193985,Kapsowar,Elegeyo-Marakwet,9152,village,0,0,50,0,none,none
+gn:193994,Kapsoit,Kericho County,3545,village,0,0,50,0,none,none
+gn:194038,Kapsabet,Nandi,41997,town,0,0,50,0,none,none
+gn:194126,Kapkatet,Kericho County,2484,village,0,0,50,0,none,none
+gn:194160,Kapenguria,West Pokot County,56000,town,0,0,50,0,none,none
+gn:194184,Kapcherop,Trans Nzoia,3240,village,0,0,50,0,none,none
+gn:194406,Kangundo,Machakos County,10258,town,0,0,50,0,none,none
+gn:194451,Kangema,Murang'A,6424,village,0,0,50,0,none,none
+gn:194464,Kangare,Murang'A,4096,village,0,0,50,0,none,none
+gn:194966,Kaloleni,Kilifi County,7016,village,0,0,50,0,none,none
+gn:195197,Kakuma,Turkana County,22984,town,0,0,50,0,none,none
+gn:195272,Kakamega,Kakamega County,1867579,large-city,0,0,50,0,none,none
+gn:195298,Kajiado,Kajiado County,24678,town,0,0,50,0,none,none
+gn:195514,Kagumo,Kirinyaga County,3673,village,0,0,50,0,none,none
+gn:195539,Kagio,Kirinyaga County,13961,town,0,0,50,0,none,none
+gn:195808,Kavati,Kitui County,2420,village,0,0,50,0,none,none
+gn:195821,Kabarnet,Baringo,24661,town,0,0,50,0,none,none
+gn:195915,Jomvu,Mombasa County,163415,city,0,0,50,0,none,none
+gn:195977,Jebilat,Nyamira county,5373,village,0,0,50,0,none,none
+gn:196185,Iten,Elegeyo-Marakwet,42000,town,0,0,50,0,none,none
+gn:196231,Isiolo,Isiolo County,78650,town,0,0,50,0,none,none
+gn:196234,Isinya,Kajiado County,14429,town,0,0,50,0,none,none
+gn:196251,Isebania,Migori County,23891,town,0,0,50,0,none,none
+gn:196582,Ikinu,Kiambu County,2532,village,0,0,50,0,none,none
+gn:196612,Ijara,Garissa County,11792,town,0,0,50,0,none,none
+gn:196742,Homa Bay,Homa Bay County,44949,town,0,0,50,0,none,none
+gn:196752,Hola,Tana River County,20912,town,0,0,50,0,none,none
+gn:196761,Moi‘s Bridge,Uasin Gishu County,16355,town,0,0,50,0,none,none
+gn:196936,Habaswein,Wajir County,49599,town,0,0,50,0,none,none
+gn:197083,Gongoni,Kilifi County,10993,town,0,0,50,0,none,none
+gn:197226,Githunguri,Kiambu County,63319,town,0,0,50,0,none,none
+gn:197264,Githiga A,Kiambu County,5565,village,0,0,50,0,none,none
+gn:197311,Giriftu,Wajir County,7935,village,0,0,50,0,none,none
+gn:197334,Gilgil,Nakuru County,60711,town,0,0,50,0,none,none
+gn:197335,Upper Gilgil,Nyandarua County,60711,town,0,0,50,0,none,none
+gn:197514,Gazi,Kwale County,5222,village,0,0,50,0,none,none
+gn:197557,Gatundu,Kiambu County,7947,village,0,0,50,0,none,none
+gn:197729,Garsen,Tana River County,7176,village,0,0,50,0,none,none
+gn:197745,Garissa,Garissa County,163399,city,0,0,50,0,none,none
+gn:197768,Garba Tula,Isiolo County,17443,town,0,0,50,0,none,none
+gn:198002,Funzi,Kwale County,1066,village,0,0,50,0,none,none
+gn:198054,Faza,Lamu,2855,village,0,0,50,0,none,none
+gn:198476,Embu,Embu County,64979,town,0,0,50,0,none,none
+gn:198537,Emali,Makueni County,18325,town,0,0,50,0,none,none
+gn:198547,El Wak,Mandera County,60732,town,0,0,50,0,none,none
+gn:198629,Eldoret,Uasin Gishu County,475716,city,0,0,50,0,none,none
+gn:198636,Eldama Ravine,Baringo,21385,town,0,0,50,0,none,none
+gn:198644,Elburgon,Nakuru County,28359,town,0,0,50,0,none,none
+gn:198817,Dundori,Nakuru County,5392,village,0,0,50,0,none,none
+gn:199209,Dadaab,Garissa County,11525,town,0,0,50,0,none,none
+gn:199263,Chwele,Bungoma County,9797,village,0,0,50,0,none,none
+gn:199284,Chuka,Tharaka - Nithi,22388,town,0,0,50,0,none,none
+gn:199334,Chogoria,Tharaka - Nithi,7603,village,0,0,50,0,none,none
+gn:199515,Cheptai,Bungoma County,4419,village,0,0,50,0,none,none
+gn:199604,Chepareria,West Pokot County,1073,village,0,0,50,0,none,none
+gn:199796,Chavakali,Vihiga County,12674,town,0,0,50,0,none,none
+gn:199971,Butere,Kakamega County,11205,town,0,0,50,0,none,none
+gn:199989,Busia,Busia County,71886,town,0,0,50,0,none,none
+gn:200013,Burnt Forest,Uasin Gishu County,4739,village,0,0,50,0,none,none
+gn:200049,Bura,Garissa County,6496,village,0,0,50,0,none,none
+gn:200061,Port Victoria,Busia County,12194,town,0,0,50,0,none,none
+gn:200067,Bungoma,Bungoma County,68031,town,0,0,50,0,none,none
+gn:200304,Bondo,Siaya County,8683,village,0,0,50,0,none,none
+gn:200305,Bondo,Siaya County,22712,town,0,0,50,0,none,none
+gn:200308,Bomet,Bomet County,11765,town,0,0,50,0,none,none
+gn:200575,Baringo,Baringo,7656,village,0,0,50,0,none,none
+gn:200604,Baraton,Nandi,2043,village,0,0,50,0,none,none
+gn:200619,Baragoi,Samburu County,4254,village,0,0,50,0,none,none
+gn:200666,Bamba,Kilifi County,2015,village,0,0,50,0,none,none
+gn:200711,Bahati,Nakuru County,3180,village,0,0,50,0,none,none
+gn:200755,Awendo,Migori County,16815,town,0,0,50,0,none,none
+gn:200758,Awasi,Kisumu County,5052,village,0,0,50,0,none,none
+gn:200787,Athi River,Machakos County,81302,town,0,0,50,0,none,none
+gn:200891,Archers Post,Samburu County,4620,village,0,0,50,0,none,none
+gn:201044,Amagoru,Busia County,4182,village,0,0,50,0,none,none
+gn:201229,Ahero,Kisumu County,11801,town,0,0,50,0,none,none
+gn:383388,Siaya,Siaya County,33153,town,0,0,50,0,none,none
+gn:444987,Takaba,Mandera County,21517,town,0,0,50,0,none,none
+gn:7646410,Maji Mazuri,Baringo,5138,village,0,0,50,0,none,none
+gn:7729812,Timboroa,,4744,village,0,0,50,0,none,none
+gn:7732029,Mukurwe-ini,Nyeri County,6508,village,0,0,50,0,none,none
+gn:7931933,Ol Kalou,Nyandarua County,47795,town,0,0,50,0,none,none
+gn:7931934,Kitengela,Kajiado County,154436,city,0,0,50,0,none,none
+gn:8299780,Juja,Kiambu County,156041,city,0,0,50,0,none,none
+gn:8449763,Lang'ata,Nairobi County,172569,city,0,0,50,0,none,none
+gn:8477754,Imara Daima Estate,Nairobi County,52837,town,0,0,50,0,none,none
+gn:8605149,Usenge,Siaya County,7976,village,0,0,50,0,none,none
+gn:8605151,Endarasha,Nyeri County,2743,village,0,0,50,0,none,none
+gn:8605153,Ndunyu Njeru,Nyandarua County,4354,village,0,0,50,0,none,none
+gn:8629608,Bungoma,Bungoma County,0,village,0,0,50,0,none,none
+gn:9166066,Mlolongo,Machakos County,136351,city,0,0,50,0,none,none
+gn:9406963,Lafey,Mandera County,22882,town,0,0,50,0,none,none
+gn:10230091,Banissa,Mandera County,14974,town,0,0,50,0,none,none
+gn:10303666,Loiyangalani,Marsabit County,5193,village,0,0,50,0,none,none
+gn:10340477,Mpeketoni,Lamu,5957,village,0,0,50,0,none,none
+gn:10377832,Funyula,Busia County,3645,village,0,0,50,0,none,none
+gn:10400158,Marimanti,Tharaka - Nithi,2752,village,0,0,50,0,none,none
+gn:10400164,Kapsokwony,Bungoma County,7077,village,0,0,50,0,none,none
+gn:11002530,Mtwapa,Kilifi County,90677,town,0,0,50,0,none,none
+gn:11003038,Awendo,Homa Bay County,16815,town,0,0,50,0,none,none
+gn:11427417,Sori,Migori County,7020,village,0,0,50,0,none,none
+gn:11428093,Kawaida,Kiambu County,14038,town,0,0,50,0,none,none
+gn:11593572,Kesses,Uasin Gishu County,2293,village,0,0,50,0,none,none
+gn:11764747,Kathwana,Tharaka - Nithi,0,village,0,0,50,0,none,none
+gn:11829943,Ol Kalau South Settlement,Nyandarua County,13234,town,0,0,50,0,none,none
+gn:11834214,Maai Mahiu,Nakuru County,20823,town,0,0,50,0,none,none
+gn:11886080,Kiboko,Makueni County,2708,village,0,0,50,0,none,none
+gn:11886567,Maungu,Taita Taveta,4713,village,0,0,50,0,none,none
+gn:11947712,Kiambur,Laikipia,4890,village,0,0,50,0,none,none
+gn:11964378,Katito,Kisumu County,5098,village,0,0,50,0,none,none
+gn:11964544,Kampi Ya Moto,Nakuru County,2775,village,0,0,50,0,none,none
+gn:12687281,Mairo Inya,Nyandarua County,30527,town,0,0,50,0,none,none
+gn:12718623,Kasuku,Nyandarua County,2209,village,0,0,50,0,none,none
+gn:12718624,Engineer,Nyandarua County,5324,village,0,0,50,0,none,none
+gn:12718625,Chaka,Nyeri County,5970,village,0,0,50,0,none,none
+gn:12718626,Kenol,Murang'A,44086,town,0,0,50,0,none,none
+gn:12718627,Samburu,Kwale County,4454,village,0,0,50,0,none,none
+gn:12718628,Bura Tana,Tana River County,13650,town,0,0,50,0,none,none
+gn:12718629,Ol Donyo,Machakos County,3353,village,0,0,50,0,none,none
+gn:12718630,Githunguri,Machakos County,63319,town,0,0,50,0,none,none
+gn:12718631,Eldas,Wajir County,12270,town,0,0,50,0,none,none
+gn:12718632,Bute,Wajir County,14108,town,0,0,50,0,none,none
+gn:12718633,Muhuru,Migori County,4924,village,0,0,50,0,none,none
+gn:12718634,Nyansiongo,Nyamira county,5993,village,0,0,50,0,none,none
+gn:12718635,Rodi,Homa Bay County,8122,village,0,0,50,0,none,none
+gn:12718636,Ewuaso,Kajiado County,2144,village,0,0,50,0,none,none
+gn:12718637,Muchorwi,Nakuru County,2162,village,0,0,50,0,none,none
+gn:12718638,Karuga,Laikipia,2301,village,0,0,50,0,none,none
+gn:12718639,Suguta,Samburu County,2328,village,0,0,50,0,none,none
+gn:12718640,Wiyumiririe,Laikipia,2449,village,0,0,50,0,none,none
+gn:12718641,Kinungi,Nakuru County,2573,village,0,0,50,0,none,none
+gn:12718642,Isineti,Kajiado County,4437,village,0,0,50,0,none,none
+gn:12718643,Illasit,Kajiado County,4631,village,0,0,50,0,none,none
+gn:12718644,Il,Kajiado County,7812,village,0,0,50,0,none,none
+gn:12718645,Brooke,Kericho County,7896,village,0,0,50,0,none,none
+gn:12718646,Kainuk,Turkana County,10535,town,0,0,50,0,none,none
+gn:12718647,Mai,Nakuru County,20823,town,0,0,50,0,none,none
+gn:12718648,Khayega,Kakamega County,3892,village,0,0,50,0,none,none
+gn:13631342,Thomas Magena home,Kisii County,0,village,0,0,50,0,none,none

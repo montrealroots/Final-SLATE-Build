@@ -1,0 +1,136 @@
+place_id,name,region,population,market,verified_homes,dated_listings,shortfall_to_50,recorded_sales,rent_source,price_source
+gn:3439525,Young,Río Negro Department,16756,town,0,0,50,0,none,none
+gn:3439590,Villa Sara,Treinta y Tres Department,1199,village,0,0,50,0,none,none
+gn:3439598,Villa del Carmen,Durazno Department,2703,village,0,0,50,0,none,none
+gn:3439619,Vichadero,Rivera Department,3698,village,0,0,50,0,none,none
+gn:3439622,Vergara,Treinta y Tres Department,3810,village,0,0,50,0,none,none
+gn:3439652,Velázquez,Rocha Department,1022,village,0,0,50,0,none,none
+gn:3439659,25 de Mayo,Florida,1852,village,0,0,50,0,none,none
+gn:3439661,25 de Agosto,Florida,1849,village,0,0,50,0,none,none
+gn:3439696,Colonia Valdense,Colonia,3235,village,0,0,50,0,none,none
+gn:3439725,Tupambaé,Cerro Largo,1122,village,0,0,50,0,none,none
+gn:3439748,Trinidad,Flores Department,22897,town,0,0,50,0,none,none
+gn:3439781,Treinta y Tres,Treinta y Tres Department,25890,town,0,0,50,0,none,none
+gn:3439787,Tranqueras,Rivera Department,7235,village,0,0,50,0,none,none
+gn:3439831,Tomás Gomensoro,Artigas,2872,village,0,0,50,0,none,none
+gn:3439838,Toledo,Canelones,4397,village,0,0,50,0,none,none
+gn:3439902,Tarariras,Colonia,6632,village,0,0,50,0,none,none
+gn:3439925,Tambores,Tacuarembó Department,1561,village,0,0,50,0,none,none
+gn:3440021,Tala,Canelones,4949,village,0,0,50,0,none,none
+gn:3440034,Tacuarembó,Tacuarembó Department,60586,town,0,0,50,0,none,none
+gn:3440055,Villa Soriano,Soriano,1124,village,0,0,50,0,none,none
+gn:3440063,Solís de Mataojo,Lavalleja,2825,village,0,0,50,0,none,none
+gn:3440076,Soca,Canelones,1742,village,0,0,50,0,none,none
+gn:3440092,Pueblo Sequeira,Artigas,1149,village,0,0,50,0,none,none
+gn:3440379,Sauce,Canelones,5910,village,0,0,50,0,none,none
+gn:3440394,Sarandí Grande,Florida,6130,village,0,0,50,0,none,none
+gn:3440400,Sarandí del Yi,Durazno Department,7176,village,0,0,50,0,none,none
+gn:3440541,Santiago Vázquez,Montevideo Department,1468,village,0,0,50,0,none,none
+gn:3440549,Santa Teresa,Colonia,2657,village,0,0,50,0,none,none
+gn:3440554,Santa Rosa,Canelones,3727,village,0,0,50,0,none,none
+gn:3440571,Santa Lucía,Canelones,16438,town,0,0,50,0,none,none
+gn:3440577,Santa Clara de Olimar,Treinta y Tres Department,2341,village,0,0,50,0,none,none
+gn:3440580,Santa Catalina,Soriano,1067,village,0,0,50,0,none,none
+gn:3440581,Santa Bernardina,Durazno Department,1094,village,0,0,50,0,none,none
+gn:3440596,San Ramón,Canelones,7133,village,0,0,50,0,none,none
+gn:3440639,San José de Mayo,San José Department,35883,town,0,0,50,0,none,none
+gn:3440653,San Javier,Río Negro Department,1781,village,0,0,50,0,none,none
+gn:3440654,San Jacinto,Canelones,3954,village,0,0,50,0,none,none
+gn:3440656,San Gregorio de Polanco,Tacuarembó Department,3415,village,0,0,50,0,none,none
+gn:3440684,San Félix,Paysandú Department,1718,village,0,0,50,0,none,none
+gn:3440696,San Carlos,Maldonado,27471,town,0,0,50,0,none,none
+gn:3440698,San Bautista,Canelones,1905,village,0,0,50,0,none,none
+gn:3440705,San Antonio,Canelones,1453,village,0,0,50,0,none,none
+gn:3440714,Salto,Salto Department,114084,city,0,0,50,0,none,none
+gn:3440722,Salinas,Canelones,8626,village,0,0,50,0,none,none
+gn:3440747,Rosario,Colonia,10085,town,0,0,50,0,none,none
+gn:3440762,Rodríguez,San José Department,2604,village,0,0,50,0,none,none
+gn:3440777,Rocha,Rocha Department,26784,town,0,0,50,0,none,none
+gn:3440781,Rivera,Rivera Department,84775,town,0,0,50,0,none,none
+gn:3440791,Río Branco,Cerro Largo,14604,town,0,0,50,0,none,none
+gn:3440879,Rafael Perazza,San José Department,1274,village,0,0,50,0,none,none
+gn:3440925,Quebracho,Paysandú Department,2853,village,0,0,50,0,none,none
+gn:3440939,Punta del Este,Maldonado,9277,village,0,0,50,0,none,none
+gn:3440959,Pueblo Centenario,Durazno Department,1136,village,0,0,50,0,none,none
+gn:3440963,Progreso,Canelones,16244,town,0,0,50,0,none,none
+gn:3440984,Porvenir,Paysandú Department,1159,village,0,0,50,0,none,none
+gn:3440985,Estación Porvenir,Paysandú Department,1055,village,0,0,50,0,none,none
+gn:3441074,Piriápolis,Maldonado,7968,village,0,0,50,0,none,none
+gn:3441114,Piedras Coloradas,Paysandú Department,1094,village,0,0,50,0,none,none
+gn:3441243,Paysandú,Paysandú Department,81550,town,0,0,50,0,none,none
+gn:3441273,Paso de los Toros,Tacuarembó Department,12985,town,0,0,50,0,none,none
+gn:3441292,Paso de Carrasco,Canelones,15393,town,0,0,50,0,none,none
+gn:3441354,Pando,Canelones,24047,town,0,0,50,0,none,none
+gn:3441358,Pan de Azúcar,Maldonado,6597,village,0,0,50,0,none,none
+gn:3441377,Palmitas,Soriano,2123,village,0,0,50,0,none,none
+gn:3441442,Ombúes de Lavalle,Colonia,3390,village,0,0,50,0,none,none
+gn:3441476,Nuevo Berlín,Río Negro Department,2450,village,0,0,50,0,none,none
+gn:3441481,Nueva Palmira,Colonia,9857,village,0,0,50,0,none,none
+gn:3441483,Nueva Helvecia,Colonia,10054,town,0,0,50,0,none,none
+gn:3441575,Montevideo,Montevideo Department,1270737,large-city,0,0,50,0,none,none
+gn:3441577,Montes,Canelones,1760,village,0,0,50,0,none,none
+gn:3441659,Minas de Corrales,Rivera Department,3788,village,0,0,50,0,none,none
+gn:3441665,Minas,Lavalleja,38645,town,0,0,50,0,none,none
+gn:3441674,Migues,Canelones,2109,village,0,0,50,0,none,none
+gn:3441684,Mercedes,Soriano,43543,town,0,0,50,0,none,none
+gn:3441702,Melo,Cerro Largo,56013,town,0,0,50,0,none,none
+gn:3441803,Mariscala,Lavalleja,1626,village,0,0,50,0,none,none
+gn:3441894,Maldonado,Maldonado,102000,city,0,0,50,0,none,none
+gn:3441954,Los Cerrillos,Canelones,2508,village,0,0,50,0,none,none
+gn:3441988,Libertad,San José Department,10166,town,0,0,50,0,none,none
+gn:3442050,Las Toscas,Canelones,3146,village,0,0,50,0,none,none
+gn:3442057,Las Piedras,Canelones,69682,town,0,0,50,0,none,none
+gn:3442058,Las Piedras,Artigas,2185,village,0,0,50,0,none,none
+gn:3442071,Lascano,Rocha Department,6976,village,0,0,50,0,none,none
+gn:3442098,La Paz,Canelones,19913,town,0,0,50,0,none,none
+gn:3442105,La Paloma,Rocha Department,3495,village,0,0,50,0,none,none
+gn:3442106,La Paloma,Durazno Department,1567,village,0,0,50,0,none,none
+gn:3442138,La Floresta,Canelones,1107,village,0,0,50,0,none,none
+gn:3442206,Juan L. Lacaze,Colonia,12816,town,0,0,50,0,none,none
+gn:3442221,José Pedro Varela,Lavalleja,5118,village,0,0,50,0,none,none
+gn:3442231,José Enrique Rodó,Soriano,2120,village,0,0,50,0,none,none
+gn:3442233,José Batlle y Ordóñez,Lavalleja,2203,village,0,0,50,0,none,none
+gn:3442236,Joaquín Suárez,Canelones,6570,village,0,0,50,0,none,none
+gn:3442238,Juanicó,Canelones,1305,village,0,0,50,0,none,none
+gn:3442299,Isidoro Noblía,Cerro Largo,2331,village,0,0,50,0,none,none
+gn:3442398,Guichón,Paysandú Department,5051,village,0,0,50,0,none,none
+gn:3442528,General Enrique Martínez,Rocha Department,1430,village,0,0,50,0,none,none
+gn:3442568,Fray Bentos,Río Negro Department,26297,town,0,0,50,0,none,none
+gn:3442582,Fraile Muerto,Cerro Largo,3168,village,0,0,50,0,none,none
+gn:3442585,Florida,Florida,36471,town,0,0,50,0,none,none
+gn:3442597,Florencio Sánchez,Colonia,3716,village,0,0,50,0,none,none
+gn:3442683,Empalme Olmos,Canelones,4199,village,0,0,50,0,none,none
+gn:3442716,Ecilda Paullier,San José Department,2585,village,0,0,50,0,none,none
+gn:3442727,Durazno,Durazno Department,40279,town,0,0,50,0,none,none
+gn:3442750,Dolores,Soriano,17174,town,0,0,50,0,none,none
+gn:3442778,Delta del Tigre,San José Department,17973,town,0,0,50,0,none,none
+gn:3442803,Curtina,Tacuarembó Department,1037,village,0,0,50,0,none,none
+gn:3442939,Villa Constitución,Salto Department,2846,village,0,0,50,0,none,none
+gn:3443013,Colonia del Sacramento,Colonia,32164,town,0,0,50,0,none,none
+gn:3443061,Chui,Rocha Department,9675,village,0,0,50,0,none,none
+gn:3443183,Alejandro Gallinal,Florida,1357,village,0,0,50,0,none,none
+gn:3443256,Cebollatí,Rocha Department,1609,village,0,0,50,0,none,none
+gn:3443280,Casupá,Florida,2402,village,0,0,50,0,none,none
+gn:3443289,Castillos,Rocha Department,7541,village,0,0,50,0,none,none
+gn:3443341,Carmelo,Colonia,18041,town,0,0,50,0,none,none
+gn:3443352,Cardona,Soriano,4600,village,0,0,50,0,none,none
+gn:3443356,Cardal,Florida,1291,village,0,0,50,0,none,none
+gn:3443413,Canelones,Canelones,24185,town,0,0,50,0,none,none
+gn:3443588,Blanquillo,Durazno Department,1084,village,0,0,50,0,none,none
+gn:3443631,Bella Unión,Artigas,12200,town,0,0,50,0,none,none
+gn:3443644,Belén,Salto Department,2033,village,0,0,50,0,none,none
+gn:3443697,Baltasar Brum,Artigas,2531,village,0,0,50,0,none,none
+gn:3443737,Atlántida,Canelones,5562,village,0,0,50,0,none,none
+gn:3443758,Artigas,Artigas,43897,town,0,0,50,0,none,none
+gn:3443909,Aiguá,Maldonado,2465,village,0,0,50,0,none,none
+gn:3443928,Aguas Corrientes,Canelones,1047,village,0,0,50,0,none,none
+gn:3443952,Aceguá,Cerro Largo,1511,village,0,0,50,0,none,none
+gn:3480812,Puntas de Valdéz,San José Department,1491,village,0,0,50,0,none,none
+gn:3480820,Colonia Nicolich,Canelones,8902,village,0,0,50,0,none,none
+gn:3480822,Barra de Carrasco,Canelones,5410,village,0,0,50,0,none,none
+gn:3480825,Pajas Blancas,Montevideo Department,2000,village,0,0,50,0,none,none
+gn:7645440,Costa Azul,Rocha Department,1090,village,0,0,50,0,none,none
+gn:8358381,Cuareim,Artigas,1025,village,0,0,50,0,none,none
+gn:10098279,Barros Blancos,Canelones,31650,town,0,0,50,0,none,none
+gn:10636508,Puimayen,Lavalleja,1346,village,0,0,50,0,none,none
+gn:10861467,Marindia,Canelones,3543,village,0,0,50,0,none,none

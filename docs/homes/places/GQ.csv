@@ -1,0 +1,27 @@
+place_id,name,region,population,market,verified_homes,dated_listings,shortfall_to_50,recorded_sales,rent_source,price_source
+gn:2306722,Santiago de Baney,Bioko Norte,2365,village,0,0,50,0,none,none
+gn:2306737,Aual,Annobon,6335,village,0,0,50,0,none,none
+gn:2306774,San Antonio de Palé,Annobon,4433,village,0,0,50,0,none,none
+gn:2306819,Río Campo,Litoral,1105,village,0,0,50,0,none,none
+gn:2306824,Rebola,Bioko Norte,8259,village,0,0,50,0,none,none
+gn:2307145,Nsok,Wele-Nzas,3769,village,0,0,50,0,none,none
+gn:2307197,Nsang,Kié-Ntem,2122,village,0,0,50,0,none,none
+gn:2307502,Ncue,Kié-Ntem,1683,village,0,0,50,0,none,none
+gn:2307795,Mongomo,Wele-Nzas,6393,village,0,0,50,0,none,none
+gn:2307970,Mikomeseng,Kié-Ntem,5813,village,0,0,50,0,none,none
+gn:2308278,Mbini,Litoral,4062,village,0,0,50,0,none,none
+gn:2308626,Machinda,Litoral,2897,village,0,0,50,0,none,none
+gn:2308994,Evinayong,Centro Sur,8462,village,0,0,50,0,none,none
+gn:2309332,Ebebiyin,Kié-Ntem,24831,town,0,0,50,0,none,none
+gn:2309516,Cogo,Litoral,4607,village,0,0,50,0,none,none
+gn:2309527,Malabo,Bioko Norte,155963,city,0,0,50,0,none,none
+gn:2309528,Luba,Bioko Sur,8655,village,0,0,50,0,none,none
+gn:2309744,Bitica,Litoral,1464,village,0,0,50,0,none,none
+gn:2309890,Bicurga,Centro Sur,2318,village,0,0,50,0,none,none
+gn:2310046,Bata,Litoral,173046,city,0,0,50,0,none,none
+gn:2310134,Ayene,Wele-Nzas,3482,village,0,0,50,0,none,none
+gn:2310309,Añisoc,Wele-Nzas,16626,town,0,0,50,0,none,none
+gn:2310533,Acurenam,Centro Sur,2714,village,0,0,50,0,none,none
+gn:2310547,Aconibe,Wele-Nzas,16543,town,0,0,50,0,none,none
+gn:2310745,Abaamang,Wele-Nzas,7729,village,0,0,50,0,none,none
+gn:12226438,Ciudad de la Paz,Djibloho,2000,village,0,0,50,0,none,none

@@ -1,0 +1,480 @@
+place_id,name,region,population,market,verified_homes,dated_listings,shortfall_to_50,recorded_sales,rent_source,price_source
+gn:2461874,Smara,Laayoune-Sakia El Hamra,42056,town,0,0,50,0,none,none
+gn:2463161,Aousserd,Dakhla-Oued Ed-Dahab,5832,village,0,0,50,0,none,none
+gn:2525874,Zoumi,Tanger-Tetouan-Al Hoceima,4846,village,0,0,50,0,none,none
+gn:2525973,Zinat,Tanger-Tetouan-Al Hoceima,0,village,0,0,50,0,none,none
+gn:2526092,Boubker,Oriental,2068,village,0,0,50,0,none,none
+gn:2526104,Zayda,Drâa-Tafilalet,7831,village,0,0,50,0,none,none
+gn:2526159,Saddina,Tanger-Tetouan-Al Hoceima,0,village,0,0,50,0,none,none
+gn:2526230,Talmest,Marrakesh-Safi,4726,village,0,0,50,0,none,none
+gn:2526239,Setti Fatma,Marrakesh-Safi,22283,town,0,0,50,0,none,none
+gn:2526359,Zawyat ech Cheïkh,Beni Mellal-Khenifra,27723,town,0,0,50,0,none,none
+gn:2526371,Za Bougrine,Fes-Meknes,4490,village,0,0,50,0,none,none
+gn:2526389,Zaouïa Aït Ishak,Beni Mellal-Khenifra,13299,town,0,0,50,0,none,none
+gn:2526435,Zaïo,Oriental,39099,town,0,0,50,0,none,none
+gn:2526452,Zagora,Drâa-Tafilalet,43752,town,0,0,50,0,none,none
+gn:2526459,Zag,Guelmim-Oued Noun,13936,town,0,0,50,0,none,none
+gn:2526488,Youssoufia,Marrakesh-Safi,73848,town,0,0,50,0,none,none
+gn:2526710,Tounfit,Drâa-Tafilalet,8920,village,0,0,50,0,none,none
+gn:2526780,Touissite,Oriental,3425,village,0,0,50,0,none,none
+gn:2526924,Touama,Marrakesh-Safi,0,village,0,0,50,0,none,none
+gn:2526968,Tnine Sidi Lyamani,Tanger-Tetouan-Al Hoceima,1155,village,0,0,50,0,none,none
+gn:2526981,Tmourghout,Fes-Meknes,1250,village,0,0,50,0,none,none
+gn:2526999,Tlet Sidi Bouguedra,Marrakesh-Safi,2127,village,0,0,50,0,none,none
+gn:2527002,Tlet Ighoud,Marrakesh-Safi,1993,village,0,0,50,0,none,none
+gn:2527055,Tiztoutine,Oriental,5224,village,0,0,50,0,none,none
+gn:2527089,Tiznit,Souss-Massa,81569,town,0,0,50,0,none,none
+gn:2527100,Tizi Ouzli,Fes-Meknes,1831,village,0,0,50,0,none,none
+gn:2527184,Tizguine,Marrakesh-Safi,0,village,0,0,50,0,none,none
+gn:2527271,Tit Mellil,Casablanca-Settat,35797,town,0,0,50,0,none,none
+gn:2527366,Tissa,Fes-Meknes,12224,town,0,0,50,0,none,none
+gn:2527641,Tirhassaline,Beni Mellal-Khenifra,9620,village,0,0,50,0,none,none
+gn:2527645,Tirhanimîne,Tanger-Tetouan-Al Hoceima,55827,town,0,0,50,0,none,none
+gn:2527695,Tiout,Souss-Massa,0,village,0,0,50,0,none,none
+gn:2527749,Tiouli,Oriental,0,village,0,0,50,0,none,none
+gn:2527915,Tinghir,Drâa-Tafilalet,45911,town,0,0,50,0,none,none
+gn:2527925,Tinajdad,Drâa-Tafilalet,9764,village,0,0,50,0,none,none
+gn:2528013,Timoulilt,Beni Mellal-Khenifra,0,village,0,0,50,0,none,none
+gn:2528103,Timahdit,Fes-Meknes,3895,village,0,0,50,0,none,none
+gn:2528129,Timezgana,Fes-Meknes,0,village,0,0,50,0,none,none
+gn:2528130,Timezgadiouine,Marrakesh-Safi,0,village,0,0,50,0,none,none
+gn:2528258,Tilmi,Drâa-Tafilalet,0,village,0,0,50,0,none,none
+gn:2528650,Tifni,Beni Mellal-Khenifra,0,village,0,0,50,0,none,none
+gn:2528659,Tiflet,Rabat-Salé-Kénitra,94684,town,0,0,50,0,none,none
+gn:2528910,Tétouan,Tanger-Tetouan-Al Hoceima,415810,city,0,0,50,0,none,none
+gn:2528981,Tendrara,Oriental,9289,village,0,0,50,0,none,none
+gn:2529013,Temara,Rabat-Salé-Kénitra,342345,city,0,0,50,0,none,none
+gn:2529019,Telouet,Drâa-Tafilalet,0,village,0,0,50,0,none,none
+gn:2529069,Tiddas,Rabat-Salé-Kénitra,3843,village,0,0,50,0,none,none
+gn:2529133,Tazouta,Fes-Meknes,0,village,0,0,50,0,none,none
+gn:2529245,Taznakht,Drâa-Tafilalet,7950,village,0,0,50,0,none,none
+gn:2529251,Tazemmourt,Souss-Massa,0,village,0,0,50,0,none,none
+gn:2529286,Tazarine,Fes-Meknes,0,village,0,0,50,0,none,none
+gn:2529317,Taza,Fes-Meknes,162110,city,0,0,50,0,none,none
+gn:2529362,Tata,Souss-Massa,20322,town,0,0,50,0,none,none
+gn:2529411,Tassila,Souss-Massa,11419,town,0,0,50,0,none,none
+gn:2529621,Tarsouat,Souss-Massa,0,village,0,0,50,0,none,none
+gn:2529649,Taroudant,Souss-Massa,87520,town,0,0,50,0,none,none
+gn:2529656,Teroual,Rabat-Salé-Kénitra,0,village,0,0,50,0,none,none
+gn:2529777,Tarhjicht,Guelmim-Oued Noun,7316,village,0,0,50,0,none,none
+gn:2529872,Targuist,Tanger-Tetouan-Al Hoceima,14621,town,0,0,50,0,none,none
+gn:2529923,Tarfaya,Laayoune-Sakia El Hamra,5615,village,0,0,50,0,none,none
+gn:2530048,Taourirt,Oriental,112908,city,0,0,50,0,none,none
+gn:2530148,Taounza,Beni Mellal-Khenifra,0,village,0,0,50,0,none,none
+gn:2530155,Taounate,Fes-Meknes,41075,town,0,0,50,0,none,none
+gn:2530160,Taouloukoult,Marrakesh-Safi,0,village,0,0,50,0,none,none
+gn:2530188,Taouima,Oriental,0,village,0,0,50,0,none,none
+gn:2530241,Tan-Tan,Guelmim-Oued Noun,79942,town,0,0,50,0,none,none
+gn:2530335,Tangier,Tanger-Tetouan-Al Hoceima,1035141,large-city,0,0,50,0,none,none
+gn:2530395,Tanalt,Souss-Massa,0,village,0,0,50,0,none,none
+gn:2530516,Tamorot,Tanger-Tetouan-Al Hoceima,0,village,0,0,50,0,none,none
+gn:2530641,Tameslouht,Marrakesh-Safi,9929,village,0,0,50,0,none,none
+gn:2530704,Tamallalt,Marrakesh-Safi,18060,town,0,0,50,0,none,none
+gn:2530814,Tamassint,Tanger-Tetouan-Al Hoceima,1999,village,0,0,50,0,none,none
+gn:2530843,Tamanar,Marrakesh-Safi,11557,town,0,0,50,0,none,none
+gn:2530906,Talzemt,Fes-Meknes,0,village,0,0,50,0,none,none
+gn:2530923,Talsint,Oriental,9914,village,0,0,50,0,none,none
+gn:2531014,Taliouine,Souss-Massa,7345,village,0,0,50,0,none,none
+gn:2531171,Talat-n-Ya’qoub,Marrakesh-Safi,7702,village,0,0,50,0,none,none
+gn:2531366,Taïneste,Fes-Meknes,1850,village,0,0,50,0,none,none
+gn:2531432,Tahannout,Marrakesh-Safi,13215,town,0,0,50,0,none,none
+gn:2531453,Dhar Souk,Fes-Meknes,5658,village,0,0,50,0,none,none
+gn:2531480,Tahla,Fes-Meknes,30279,town,0,0,50,0,none,none
+gn:2531877,Tafraout,Souss-Massa,6928,village,0,0,50,0,none,none
+gn:2531927,Tafersit,Oriental,3425,village,0,0,50,0,none,none
+gn:2531994,Tadrart,Souss-Massa,0,village,0,0,50,0,none,none
+gn:2532171,Tabount,Drâa-Tafilalet,33929,town,0,0,50,0,none,none
+gn:2532195,Tabouda,Fes-Meknes,0,village,0,0,50,0,none,none
+gn:2532214,Tabia,Beni Mellal-Khenifra,0,village,0,0,50,0,none,none
+gn:2532230,Tabia,Souss-Massa,0,village,0,0,50,0,none,none
+gn:2532270,Tabant,Beni Mellal-Khenifra,0,village,0,0,50,0,none,none
+gn:2532394,Souq Larb’a al Gharb,Rabat-Salé-Kénitra,44059,town,0,0,50,0,none,none
+gn:2532405,Souq at Tlata des Loulad,Casablanca-Settat,6614,village,0,0,50,0,none,none
+gn:2532410,Tafetachte,Marrakesh-Safi,1387,village,0,0,50,0,none,none
+gn:2532412,Souq Sebt Oulad Nemma,Beni Mellal-Khenifra,65601,town,0,0,50,0,none,none
+gn:2532420,Jem’at Oulad ’Abbou,Casablanca-Settat,12338,town,0,0,50,0,none,none
+gn:2532421,Souk et Tnine Jorf el Mellah,Rabat-Salé-Kénitra,31318,town,0,0,50,0,none,none
+gn:2532434,Souq Al Had Bradya,Beni Mellal-Khenifra,9080,village,0,0,50,0,none,none
+gn:2532440,Foum Jam’a,Beni Mellal-Khenifra,6359,village,0,0,50,0,none,none
+gn:2532542,Senada,Tanger-Tetouan-Al Hoceima,0,village,0,0,50,0,none,none
+gn:2532626,Skoura,Fes-Meknes,2479,village,0,0,50,0,none,none
+gn:2532628,Skoura,Drâa-Tafilalet,4730,village,0,0,50,0,none,none
+gn:2532646,Skhour Rehamna,Marrakesh-Safi,5835,village,0,0,50,0,none,none
+gn:2532707,Sidi Zouine,Marrakesh-Safi,14017,town,0,0,50,0,none,none
+gn:2532797,Sidi Yahya Ou Saad,Beni Mellal-Khenifra,0,village,0,0,50,0,none,none
+gn:2532821,Sidi Yahya Zaer,Rabat-Salé-Kénitra,10926,town,0,0,50,0,none,none
+gn:2532822,Sidi Yahia El Gharb,Rabat-Salé-Kénitra,41472,town,0,0,50,0,none,none
+gn:2532918,Sidi Smai’il,Casablanca-Settat,6076,village,0,0,50,0,none,none
+gn:2532945,Sidi Slimane,Rabat-Salé-Kénitra,101541,city,0,0,50,0,none,none
+gn:2533158,Sidi Redouane,Rabat-Salé-Kénitra,0,village,0,0,50,0,none,none
+gn:2533178,Sidi Rahhal,Marrakesh-Safi,10817,town,0,0,50,0,none,none
+gn:2533182,Sidi Rahal,Casablanca-Settat,22525,town,0,0,50,0,none,none
+gn:2533191,Sidi Kacem,Rabat-Salé-Kénitra,82632,town,0,0,50,0,none,none
+gn:2533339,Sidi Moussa,Marrakesh-Safi,0,village,0,0,50,0,none,none
+gn:2533481,Sidi Lmokhtar,Marrakesh-Safi,14803,town,0,0,50,0,none,none
+gn:2534315,Sidi Lamine,Beni Mellal-Khenifra,0,village,0,0,50,0,none,none
+gn:2534496,Sidi Jaber,Beni Mellal-Khenifra,5100,village,0,0,50,0,none,none
+gn:2534515,Sidi Ifni,Souss-Massa,23606,town,0,0,50,0,none,none
+gn:2534572,Sidi Harazem,Fes-Meknes,0,village,0,0,50,0,none,none
+gn:2535477,Sidi Bousber,Rabat-Salé-Kénitra,0,village,0,0,50,0,none,none
+gn:2535530,Bouknadel,Rabat-Salé-Kénitra,27577,town,0,0,50,0,none,none
+gn:2535534,Sidi Bou Othmane,Marrakesh-Safi,10025,town,0,0,50,0,none,none
+gn:2535619,Sidi Bou Lanouar,Beni Mellal-Khenifra,13929,town,0,0,50,0,none,none
+gn:2536047,Sidi Bibi,Souss-Massa,6728,village,0,0,50,0,none,none
+gn:2536074,Sidi Bennour,Casablanca-Settat,60948,town,0,0,50,0,none,none
+gn:2536370,Sidi Amar,Beni Mellal-Khenifra,0,village,0,0,50,0,none,none
+gn:2536383,Sidi Allal Tazi,Rabat-Salé-Kénitra,5317,village,0,0,50,0,none,none
+gn:2536392,Sidi Allal El Bahraoui,Rabat-Salé-Kénitra,17325,town,0,0,50,0,none,none
+gn:2537320,Sidi Abdallah,Marrakesh-Safi,0,village,0,0,50,0,none,none
+gn:2537368,Gueznaia,Tanger-Tetouan-Al Hoceima,25771,town,0,0,50,0,none,none
+gn:2537406,Settat,Casablanca-Settat,155333,city,0,0,50,0,none,none
+gn:2537469,Selouane,Oriental,23553,town,0,0,50,0,none,none
+gn:2537538,Zeghanghane,Oriental,37154,town,0,0,50,0,none,none
+gn:2537545,Sefrou,Fes-Meknes,87234,town,0,0,50,0,none,none
+gn:2537610,Sebt Gzoula,Marrakesh-Safi,20248,town,0,0,50,0,none,none
+gn:2537611,Sebt Bni Garfett,Tanger-Tetouan-Al Hoceima,11311,town,0,0,50,0,none,none
+gn:2537763,Salé,Rabat-Salé-Kénitra,972299,large-city,0,0,50,0,none,none
+gn:2537802,Saidia,Oriental,9587,village,0,0,50,0,none,none
+gn:2537824,Aç-çahrij,Marrakesh-Safi,2195,village,0,0,50,0,none,none
+gn:2537881,Safi,Marrakesh-Safi,336883,city,0,0,50,0,none,none
+gn:2537965,Rouadi,Tanger-Tetouan-Al Hoceima,0,village,0,0,50,0,none,none
+gn:2538027,Reçani,Drâa-Tafilalet,20469,town,0,0,50,0,none,none
+gn:2538028,Rislane,Oriental,0,village,0,0,50,0,none,none
+gn:2538059,Rich,Drâa-Tafilalet,28382,town,0,0,50,0,none,none
+gn:2538099,Ghouazi,Fes-Meknes,0,village,0,0,50,0,none,none
+gn:2538332,Reggada,Souss-Massa,0,village,0,0,50,0,none,none
+gn:2538385,Ratba,Fes-Meknes,0,village,0,0,50,0,none,none
+gn:2538392,Ras Kebdana,Oriental,8277,village,0,0,50,0,none,none
+gn:2538401,Ras el Ma,Fes-Meknes,22345,town,0,0,50,0,none,none
+gn:2538475,Rabat,Rabat-Salé-Kénitra,1655753,large-city,0,0,50,0,none,none
+gn:2538573,Outat Oulad Al Haj,Fes-Meknes,17895,town,0,0,50,0,none,none
+gn:2538652,Ourtzagh,Fes-Meknes,0,village,0,0,50,0,none,none
+gn:2538755,Ounagha,Marrakesh-Safi,1347,village,0,0,50,0,none,none
+gn:2538898,Oulmes,Rabat-Salé-Kénitra,19014,town,0,0,50,0,none,none
+gn:2539114,Oulad Yaïch,Beni Mellal-Khenifra,10560,town,0,0,50,0,none,none
+gn:2539134,Oulad Teïma,Souss-Massa,97608,town,0,0,50,0,none,none
+gn:2539139,Oulad Tayeb,Fes-Meknes,15491,town,0,0,50,0,none,none
+gn:2539320,Oulad Saïd,Casablanca-Settat,2407,village,0,0,50,0,none,none
+gn:2539829,Oulad Embarek,Beni Mellal-Khenifra,11840,town,0,0,50,0,none,none
+gn:2539936,Oulad Daoud,Fes-Meknes,0,village,0,0,50,0,none,none
+gn:2540180,Oulad Barhil,Souss-Massa,26521,town,0,0,50,0,none,none
+gn:2540207,Oulad Ayad,Beni Mellal-Khenifra,26008,town,0,0,50,0,none,none
+gn:2540468,Oukaïmedene,Marrakesh-Safi,4440,village,0,0,50,0,none,none
+gn:2540483,Oujda,Oriental,539711,large-city,0,0,50,0,none,none
+gn:2540554,Ouijjane,Souss-Massa,0,village,0,0,50,0,none,none
+gn:2540689,Oued Zem,Beni Mellal-Khenifra,104029,city,0,0,50,0,none,none
+gn:2540698,Oued Laou,Tanger-Tetouan-Al Hoceima,10553,town,0,0,50,0,none,none
+gn:2540704,Oued el Himer,Oriental,1399,village,0,0,50,0,none,none
+gn:2540716,Oued Amlil,Fes-Meknes,11362,town,0,0,50,0,none,none
+gn:2540810,Ouezzane,Tanger-Tetouan-Al Hoceima,65088,town,0,0,50,0,none,none
+gn:2540850,Ouarzazate,Drâa-Tafilalet,77603,town,0,0,50,0,none,none
+gn:2540953,Aït Ouaoumana,Beni Mellal-Khenifra,6001,village,0,0,50,0,none,none
+gn:2541068,Oualidia,Casablanca-Settat,8484,village,0,0,50,0,none,none
+gn:2541210,Zawyat an Nwaçer,Casablanca-Settat,25991,town,0,0,50,0,none,none
+gn:2541460,Naima,Oriental,1188,village,0,0,50,0,none,none
+gn:2541479,Nador,Oriental,176600,city,0,0,50,0,none,none
+gn:2541779,Moulay Yacoub,Fes-Meknes,5036,village,0,0,50,0,none,none
+gn:2541805,Moulay Driss Zerhoun,Fes-Meknes,12683,town,0,0,50,0,none,none
+gn:2541830,Moulay Brahim,Marrakesh-Safi,3401,village,0,0,50,0,none,none
+gn:2541833,Moulay Bousselham,Rabat-Salé-Kénitra,8050,village,0,0,50,0,none,none
+gn:2541840,Moulay Bouchta,Fes-Meknes,0,village,0,0,50,0,none,none
+gn:2541843,Moulay Bou ’azza,Beni Mellal-Khenifra,5753,village,0,0,50,0,none,none
+gn:2541906,Moulay Abdallah,Casablanca-Settat,13601,town,0,0,50,0,none,none
+gn:2542013,Al Aaroui,Oriental,51976,town,0,0,50,0,none,none
+gn:2542024,Mokrisset,Tanger-Tetouan-Al Hoceima,1784,village,0,0,50,0,none,none
+gn:2542051,Mohammedia,Casablanca-Settat,227799,city,0,0,50,0,none,none
+gn:2542147,Missour,Fes-Meknes,27937,town,0,0,50,0,none,none
+gn:2542167,Mirleft,Guelmim-Oued Noun,5092,village,0,0,50,0,none,none
+gn:2542227,Midelt,Beni Mellal-Khenifra,60390,town,0,0,50,0,none,none
+gn:2542230,Midar,Oriental,16402,town,0,0,50,0,none,none
+gn:2542380,Messeïed,Guelmim-Oued Noun,1501,village,0,0,50,0,none,none
+gn:2542616,Melqa el Ouidane,Oriental,8009,village,0,0,50,0,none,none
+gn:2542715,Meknes,Fes-Meknes,568295,large-city,0,0,50,0,none,none
+gn:2542768,Mehdya,Rabat-Salé-Kénitra,31269,town,0,0,50,0,none,none
+gn:2542826,Mediouna,Casablanca-Settat,24506,town,0,0,50,0,none,none
+gn:2542866,Mechraa Bel Ksiri,Rabat-Salé-Kénitra,34393,town,0,0,50,0,none,none
+gn:2542898,Mdiq,Tanger-Tetouan-Al Hoceima,61398,town,0,0,50,0,none,none
+gn:2542957,Matmata,Fes-Meknes,2620,village,0,0,50,0,none,none
+gn:2542987,Martil,Tanger-Tetouan-Al Hoceima,70274,town,0,0,50,0,none,none
+ma-marrakech,Marrakesh,Marrakesh-Safi,995871,large-city,0,0,50,0,none,none
+gn:2543231,Madagh,Oriental,2677,village,0,0,50,0,none,none
+gn:2543394,Ifrane,Beni Mellal-Khenifra,13000,town,0,0,50,0,none,none
+gn:2543549,Larache,Tanger-Tetouan-Al Hoceima,136505,city,0,0,50,0,none,none
+gn:2543602,Lake Lalla Takerkoust,Marrakesh-Safi,4455,village,0,0,50,0,none,none
+gn:2543667,Lalla Mimouna,Rabat-Salé-Kénitra,17217,town,0,0,50,0,none,none
+gn:2544001,Ksar El Kebir,Tanger-Tetouan-Al Hoceima,138262,city,0,0,50,0,none,none
+gn:2544248,Khouribga,Beni Mellal-Khenifra,214241,city,0,0,50,0,none,none
+gn:2544333,Khenifra,Beni Mellal-Khenifra,128318,city,0,0,50,0,none,none
+gn:2544334,Khenichet-sur Ouerrha,Rabat-Salé-Kénitra,11241,town,0,0,50,0,none,none
+gn:2544367,Khemis Sahel,Tanger-Tetouan-Al Hoceima,6816,village,0,0,50,0,none,none
+gn:2544510,Kerrouchen,Beni Mellal-Khenifra,2241,village,0,0,50,0,none,none
+gn:2544571,Kenitra,Rabat-Salé-Kénitra,470949,city,0,0,50,0,none,none
+gn:2544656,Dar Kebdani,Oriental,3939,village,0,0,50,0,none,none
+gn:2544720,Kasba Tadla,Beni Mellal-Khenifra,51697,town,0,0,50,0,none,none
+gn:2544815,Kariat Arkmane,Oriental,5882,village,0,0,50,0,none,none
+gn:2544821,Karia Ba Mohamed,Fes-Meknes,20487,town,0,0,50,0,none,none
+gn:2544968,Jorf,Drâa-Tafilalet,13433,town,0,0,50,0,none,none
+gn:2545017,Jerada,Oriental,47507,town,0,0,50,0,none,none
+gn:2545051,Jamaat Shaim,Marrakesh-Safi,12285,town,0,0,50,0,none,none
+gn:2545069,Mrirt,Beni Mellal-Khenifra,46660,town,0,0,50,0,none,none
+gn:2545346,Itzer,Beni Mellal-Khenifra,6438,village,0,0,50,0,none,none
+gn:2545436,Isseksi,Beni Mellal-Khenifra,0,village,0,0,50,0,none,none
+gn:2545797,Ighram,Souss-Massa,4485,village,0,0,50,0,none,none
+gn:2545957,Inezgane,Souss-Massa,142320,city,0,0,50,0,none,none
+gn:2546028,Imouzzer Kandar,Fes-Meknes,20884,town,0,0,50,0,none,none
+gn:2546029,Imouzzer des Marmoucha,Fes-Meknes,4600,village,0,0,50,0,none,none
+gn:2546081,Imider,Drâa-Tafilalet,0,village,0,0,50,0,none,none
+gn:2546128,Imi-n-Tanout,Marrakesh-Safi,22753,town,0,0,50,0,none,none
+gn:2546187,Imilchil,Drâa-Tafilalet,0,village,0,0,50,0,none,none
+gn:2546627,Iguidi,Souss-Massa,0,village,0,0,50,0,none,none
+gn:2546917,Ifrane,Fes-Meknes,73782,town,0,0,50,0,none,none
+gn:2547782,Hassi Berkane,Oriental,0,village,0,0,50,0,none,none
+gn:2548196,Haj Kaddour,Fes-Meknes,7106,village,0,0,50,0,none,none
+gn:2548313,Zerkten,Marrakesh-Safi,0,village,0,0,50,0,none,none
+gn:2548320,Had Kourt,Rabat-Salé-Kénitra,8564,village,0,0,50,0,none,none
+gn:2548343,Oulad Frej,Casablanca-Settat,14492,town,0,0,50,0,none,none
+gn:2548363,Had Abdallah Rhiat,Marrakesh-Safi,1857,village,0,0,50,0,none,none
+gn:2548420,Guisser,Casablanca-Settat,2698,village,0,0,50,0,none,none
+gn:2548489,Guercif,Fes-Meknes,99238,town,0,0,50,0,none,none
+gn:2548503,Guenfouda,Oriental,0,village,0,0,50,0,none,none
+gn:2548526,Guelmim,Guelmim-Oued Noun,129200,city,0,0,50,0,none,none
+gn:2548601,Gourrama,Drâa-Tafilalet,6129,village,0,0,50,0,none,none
+gn:2548623,Goulmima,Drâa-Tafilalet,17929,town,0,0,50,0,none,none
+gn:2548676,Ghafsaï,Fes-Meknes,6946,village,0,0,50,0,none,none
+gn:2548713,Galaz,Fes-Meknes,0,village,0,0,50,0,none,none
+gn:2548769,Foum Zguid,Souss-Massa,9812,village,0,0,50,0,none,none
+gn:2548818,Fnidek,Tanger-Tetouan-Al Hoceima,84558,town,0,0,50,0,none,none
+gn:2548830,Al Fqih Ben Çalah,Beni Mellal-Khenifra,111402,city,0,0,50,0,none,none
+gn:2548851,Figuig,Oriental,12516,town,0,0,50,0,none,none
+gn:2548855,Fifi,Tanger-Tetouan-Al Hoceima,0,village,0,0,50,0,none,none
+gn:2548869,Fezna,Drâa-Tafilalet,0,village,0,0,50,0,none,none
+gn:2548878,New Fes,Fes-Meknes,22451,town,0,0,50,0,none,none
+gn:2548880,Fès al Bali,Fes-Meknes,156000,city,0,0,50,0,none,none
+gn:2548885,Fes,Fes-Meknes,1191905,large-city,0,0,50,0,none,none
+gn:2549076,Ezzhiliga,Rabat-Salé-Kénitra,4211,village,0,0,50,0,none,none
+gn:2549102,Bni Hadifa,Tanger-Tetouan-Al Hoceima,2370,village,0,0,50,0,none,none
+gn:2549150,Tlet El Hanchane,Marrakesh-Safi,5421,village,0,0,50,0,none,none
+gn:2549224,Essekhinat,Fes-Meknes,3831,village,0,0,50,0,none,none
+gn:2549263,Essaouira,Marrakesh-Safi,85137,town,0,0,50,0,none,none
+gn:2549356,Arfoud,Drâa-Tafilalet,31971,town,0,0,50,0,none,none
+gn:2549623,El Menzel,Fes-Meknes,13803,town,0,0,50,0,none,none
+gn:2549750,El Ksiba,Beni Mellal-Khenifra,21840,town,0,0,50,0,none,none
+gn:2549888,Zemamra,Casablanca-Settat,14500,town,0,0,50,0,none,none
+gn:2549979,El Kelaa des Srarhna,Marrakesh-Safi,103982,city,0,0,50,0,none,none
+gn:2549981,Kelaat Mgouna,Drâa-Tafilalet,18515,town,0,0,50,0,none,none
+gn:2550016,Al Qbab,Beni Mellal-Khenifra,9112,village,0,0,50,0,none,none
+gn:2550078,El Jadida,Casablanca-Settat,212863,city,0,0,50,0,none,none
+gn:2550079,Jebha,Tanger-Tetouan-Al Hoceima,4102,village,0,0,50,0,none,none
+gn:2550162,El Harhoura,Rabat-Salé-Kénitra,16773,town,0,0,50,0,none,none
+gn:2550252,El Hajeb,Fes-Meknes,38527,town,0,0,50,0,none,none
+gn:2550278,Had Hrara,Marrakesh-Safi,1387,village,0,0,50,0,none,none
+gn:2550419,El Gara,Casablanca-Settat,22773,town,0,0,50,0,none,none
+gn:2550547,Al Brouj,Casablanca-Settat,21004,town,0,0,50,0,none,none
+gn:2550681,Arbaa Laaounate,Casablanca-Settat,5661,village,0,0,50,0,none,none
+gn:2550684,Ouaoula,Beni Mellal-Khenifra,0,village,0,0,50,0,none,none
+gn:2550749,Laouamra,Tanger-Tetouan-Al Hoceima,8509,village,0,0,50,0,none,none
+gn:2550800,El Akarta,Marrakesh-Safi,4770,village,0,0,50,0,none,none
+gn:2550806,El Aïoun,Oriental,45679,town,0,0,50,0,none,none
+gn:2550898,Imzouren,Tanger-Tetouan-Al Hoceima,40000,town,0,0,50,0,none,none
+gn:2550985,Driouch,Oriental,16096,town,0,0,50,0,none,none
+gn:2551147,Douar Toulal,Fes-Meknes,20831,town,0,0,50,0,none,none
+gn:2551836,Douar el Caïd el Gueddari,Rabat-Salé-Kénitra,7254,village,0,0,50,0,none,none
+gn:2552292,Ad Darwa,Casablanca-Settat,52108,town,0,0,50,0,none,none
+gn:2552306,Derdara,Tanger-Tetouan-Al Hoceima,0,village,0,0,50,0,none,none
+gn:2552317,Demnate,Beni Mellal-Khenifra,32217,town,0,0,50,0,none,none
+gn:2552407,Debdou,Oriental,5416,village,0,0,50,0,none,none
+gn:2552531,Riah,Casablanca-Settat,0,village,0,0,50,0,none,none
+gn:2552545,Dar Ould Zidouh,Beni Mellal-Khenifra,12547,town,0,0,50,0,none,none
+gn:2552615,Dar Bouazza,Casablanca-Settat,165295,city,0,0,50,0,none,none
+gn:2552886,Dar Chaoui,Tanger-Tetouan-Al Hoceima,1401,village,0,0,50,0,none,none
+gn:2552975,Ben Qarrich,Tanger-Tetouan-Al Hoceima,7021,village,0,0,50,0,none,none
+gn:2553303,Chichaoua,Marrakesh-Safi,30432,town,0,0,50,0,none,none
+gn:2553382,Echemmaia Est,Marrakesh-Safi,26538,town,0,0,50,0,none,none
+gn:2553455,Chefchaouen,Tanger-Tetouan-Al Hoceima,46721,town,0,0,50,0,none,none
+gn:2553604,Casablanca,Casablanca-Settat,3665954,large-city,0,0,50,0,none,none
+gn:2553654,Bzou,Beni Mellal-Khenifra,4588,village,0,0,50,0,none,none
+gn:2553694,Brikcha,Tanger-Tetouan-Al Hoceima,1274,village,0,0,50,0,none,none
+gn:2553751,Bouznika,Casablanca-Settat,40663,town,0,0,50,0,none,none
+gn:2554006,Bouskoura,Casablanca-Settat,112501,city,0,0,50,0,none,none
+gn:2554130,Boureït,Tanger-Tetouan-Al Hoceima,5434,village,0,0,50,0,none,none
+gn:2554281,Boumia,Beni Mellal-Khenifra,17091,town,0,0,50,0,none,none
+gn:2554322,Boumalne Dades,Drâa-Tafilalet,13461,town,0,0,50,0,none,none
+gn:2554389,Boulemane,Fes-Meknes,7757,village,0,0,50,0,none,none
+gn:2554409,Boulaouane,Casablanca-Settat,0,village,0,0,50,0,none,none
+gn:2554594,Bou Izakarn,Guelmim-Oued Noun,15536,town,0,0,50,0,none,none
+gn:2554943,Bou Fekrane,Fes-Meknes,14131,town,0,0,50,0,none,none
+gn:2554997,Boudinar,Oriental,0,village,0,0,50,0,none,none
+gn:2555009,Boudenib,Drâa-Tafilalet,12419,town,0,0,50,0,none,none
+gn:2555157,Bouarfa,Oriental,31499,town,0,0,50,0,none,none
+gn:2555182,Bou’nane,Oriental,3635,village,0,0,50,0,none,none
+gn:2555262,Bouabout,Marrakesh-Safi,0,village,0,0,50,0,none,none
+gn:2555342,Bir Jdid,Casablanca-Settat,26355,town,0,0,50,0,none,none
+gn:2555372,Bigoudine,Souss-Massa,0,village,0,0,50,0,none,none
+gn:2555395,Bhalil,Fes-Meknes,14192,town,0,0,50,0,none,none
+gn:2555467,Berkane,Oriental,119284,city,0,0,50,0,none,none
+gn:2555504,Ben Taieb,Oriental,15568,town,0,0,50,0,none,none
+gn:2555519,Benslimane,Casablanca-Settat,62352,town,0,0,50,0,none,none
+gn:2555567,Ben Jerrar,Souss-Massa,53026,town,0,0,50,0,none,none
+gn:2555610,Bni Tajjit,Oriental,9269,village,0,0,50,0,none,none
+gn:2555745,Beni Mellal,Beni Mellal-Khenifra,210397,city,0,0,50,0,none,none
+gn:2555882,Beni Enzar,Oriental,61786,town,0,0,50,0,none,none
+gn:2555885,Bni Drar,Oriental,11939,town,0,0,50,0,none,none
+gn:2556018,Ben Guerir,Marrakesh-Safi,96777,town,0,0,50,0,none,none
+gn:2556076,Ben Ahmed,Casablanca-Settat,36149,town,0,0,50,0,none,none
+gn:2556272,Berrechid,Casablanca-Settat,149201,city,0,0,50,0,none,none
+gn:2556377,Bab Taza,Tanger-Tetouan-Al Hoceima,6448,village,0,0,50,0,none,none
+gn:2556464,Azrou,Fes-Meknes,59348,town,0,0,50,0,none,none
+gn:2556570,Azilal,Beni Mellal-Khenifra,42062,town,0,0,50,0,none,none
+gn:2556629,Azgour,Marrakesh-Safi,0,village,0,0,50,0,none,none
+gn:2556657,Azemmour,Casablanca-Settat,44683,town,0,0,50,0,none,none
+gn:2556835,Assoul,Drâa-Tafilalet,0,village,0,0,50,0,none,none
+gn:2556991,Assads,Souss-Massa,0,village,0,0,50,0,none,none
+gn:2556996,Assa,Guelmim-Oued Noun,15910,town,0,0,50,0,none,none
+gn:2557019,Asni,Marrakesh-Safi,18674,town,0,0,50,0,none,none
+gn:2557055,Asilah,Tanger-Tetouan-Al Hoceima,34011,town,0,0,50,0,none,none
+gn:2557134,Ar Rommani,Rabat-Salé-Kénitra,13428,town,0,0,50,0,none,none
+gn:2557290,Aghbalou N Sardane,Drâa-Tafilalet,2511,village,0,0,50,0,none,none
+gn:2557310,Aghbala,Beni Mellal-Khenifra,7365,village,0,0,50,0,none,none
+gn:2557347,Argana,Souss-Massa,0,village,0,0,50,0,none,none
+gn:2557391,Arbaoua,Rabat-Salé-Kénitra,3330,village,0,0,50,0,none,none
+gn:2557415,Arazane,Souss-Massa,0,village,0,0,50,0,none,none
+gn:2557500,Aourir,Souss-Massa,38617,town,0,0,50,0,none,none
+gn:2557533,Aoulouz,Souss-Massa,19010,town,0,0,50,0,none,none
+gn:2557595,Aoufous,Drâa-Tafilalet,1295,village,0,0,50,0,none,none
+gn:2557995,Amouguer,Drâa-Tafilalet,0,village,0,0,50,0,none,none
+gn:2558052,Amizmiz,Marrakesh-Safi,15685,town,0,0,50,0,none,none
+gn:2558118,Amerzgane,Drâa-Tafilalet,0,village,0,0,50,0,none,none
+gn:2558122,Amersid,Beni Mellal-Khenifra,0,village,0,0,50,0,none,none
+gn:2558337,Amalou,Souss-Massa,0,village,0,0,50,0,none,none
+gn:2558398,Alnif,Drâa-Tafilalet,5162,village,0,0,50,0,none,none
+gn:2558414,Almis du Guigou,Fes-Meknes,11060,town,0,0,50,0,none,none
+gn:2558415,Almis Marmoucha,Fes-Meknes,0,village,0,0,50,0,none,none
+gn:2558424,Al M’aziz,Rabat-Salé-Kénitra,9719,village,0,0,50,0,none,none
+gn:2558428,El Mansouria,Casablanca-Settat,21679,town,0,0,50,0,none,none
+gn:2558436,Beni Yakhlef,Casablanca-Settat,19622,town,0,0,50,0,none,none
+gn:2558470,Khemisset,Rabat-Salé-Kénitra,143640,city,0,0,50,0,none,none
+gn:2558545,Al Hoceïma,Tanger-Tetouan-Al Hoceima,395644,city,0,0,50,0,none,none
+gn:2558633,Aknoul,Fes-Meknes,4807,village,0,0,50,0,none,none
+gn:2558667,Akka,Souss-Massa,7501,village,0,0,50,0,none,none
+gn:2558766,Ajdir,Tanger-Tetouan-Al Hoceima,5802,village,0,0,50,0,none,none
+gn:2558768,Ajdir,Fes-Meknes,1577,village,0,0,50,0,none,none
+gn:2558844,Ait Yazza,Souss-Massa,15570,town,0,0,50,0,none,none
+gn:2559217,Ait Ourir,Marrakesh-Safi,42705,town,0,0,50,0,none,none
+gn:2559366,Anergui,Beni Mellal-Khenifra,0,village,0,0,50,0,none,none
+gn:2560774,Aïn Taoujdat,Fes-Meknes,30889,town,0,0,50,0,none,none
+gn:2560792,Ain Erreggada,Oriental,2941,village,0,0,50,0,none,none
+gn:2560813,Aïn Leuh,Fes-Meknes,5426,village,0,0,50,0,none,none
+gn:2560841,Aïn Harrouda,Casablanca-Settat,68161,town,0,0,50,0,none,none
+gn:2560891,Aïn Jemaa,Fes-Meknes,2717,village,0,0,50,0,none,none
+gn:2560894,Ain Dourij,Tanger-Tetouan-Al Hoceima,3706,village,0,0,50,0,none,none
+gn:2560905,Aïn Cheggag,Fes-Meknes,11055,town,0,0,50,0,none,none
+gn:2560922,Aïn Beni Mathar,Oriental,17787,town,0,0,50,0,none,none
+gn:2560939,Ain El Aouda,Rabat-Salé-Kénitra,54397,town,0,0,50,0,none,none
+gn:2560940,Ain Aicha,Fes-Meknes,7759,village,0,0,50,0,none,none
+gn:2561124,Ahfir,Oriental,21435,town,0,0,50,0,none,none
+gn:2561290,Aguelmous,Beni Mellal-Khenifra,15480,town,0,0,50,0,none,none
+gn:2561358,Agouraï,Fes-Meknes,18182,town,0,0,50,0,none,none
+gn:2561539,Agdz,Drâa-Tafilalet,11663,town,0,0,50,0,none,none
+gn:2561614,Agadir Melloul,Souss-Massa,0,village,0,0,50,0,none,none
+gn:2561668,Agadir,Souss-Massa,698310,large-city,0,0,50,0,none,none
+gn:2561737,Afourer,Beni Mellal-Khenifra,14397,town,0,0,50,0,none,none
+gn:2561957,Adassil,Marrakesh-Safi,0,village,0,0,50,0,none,none
+gn:2561978,Adar,Souss-Massa,0,village,0,0,50,0,none,none
+gn:2562055,Skhirate,Rabat-Salé-Kénitra,65272,town,0,0,50,0,none,none
+gn:2562202,Abadou,Marrakesh-Safi,0,village,0,0,50,0,none,none
+gn:2563695,Had Beni Chiker,Oriental,4852,village,0,0,50,0,none,none
+gn:2564788,Aklim,Oriental,10586,town,0,0,50,0,none,none
+gn:2565241,Mellila,Casablanca-Settat,0,village,0,0,50,0,none,none
+gn:2565258,Tidili Mesfioua,Marrakesh-Safi,0,village,0,0,50,0,none,none
+gn:2565267,Mhamid,Drâa-Tafilalet,10000,town,0,0,50,0,none,none
+gn:2568012,Taghazout,Souss-Massa,5233,village,0,0,50,0,none,none
+gn:2568400,Tamri,Souss-Massa,0,village,0,0,50,0,none,none
+gn:2569052,Smimou,Marrakesh-Safi,3505,village,0,0,50,0,none,none
+gn:2571059,Tizgane,Tanger-Tetouan-Al Hoceima,0,village,0,0,50,0,none,none
+gn:2571909,Bouarouss,Fes-Meknes,0,village,0,0,50,0,none,none
+gn:2571932,Azla,Tanger-Tetouan-Al Hoceima,22985,town,0,0,50,0,none,none
+gn:2572146,Boukhalef,Tanger-Tetouan-Al Hoceima,0,village,0,0,50,0,none,none
+gn:2596325,Jebel Tiskaouine,Drâa-Tafilalet,1197,village,0,0,50,0,none,none
+gn:2596457,Zerarda,Fes-Meknes,4573,village,0,0,50,0,none,none
+gn:2596460,Ribat Al Khayr,Fes-Meknes,18278,town,0,0,50,0,none,none
+gn:6546693,Boujniba,Beni Mellal-Khenifra,17504,town,0,0,50,0,none,none
+gn:7280528,Errachidia,Drâa-Tafilalet,100870,city,0,0,50,0,none,none
+gn:8299790,Tamesna,Rabat-Salé-Kénitra,30705,town,0,0,50,0,none,none
+gn:8431703,Touarga,Rabat-Salé-Kénitra,4293,village,0,0,50,0,none,none
+gn:8504942,Sidi Abdallah Ghiat,Marrakesh-Safi,0,village,0,0,50,0,none,none
+gn:8504943,Tamansourt,Marrakesh-Safi,27383,town,0,0,50,0,none,none
+gn:8542188,Dakhla,Souss-Massa,55618,town,0,0,50,0,none,none
+gn:8556210,Aghmat,Marrakesh-Safi,1319,village,0,0,50,0,none,none
+gn:8556357,Sidi Bouzid,Casablanca-Settat,6741,village,0,0,50,0,none,none
+gn:8559176,Douar Sidi Bouafif,Tanger-Tetouan-Al Hoceima,3658,village,0,0,50,0,none,none
+gn:8739768,Mosquée,Oriental,3150,village,0,0,50,0,none,none
+gn:9645312,Akhfennir,Laayoune-Sakia El Hamra,1583,village,0,0,50,0,none,none
+gn:9645313,Gueltat Zemmour,Laayoune-Sakia El Hamra,6740,village,0,0,50,0,none,none
+gn:10374906,Dchira El Jihadia,Souss-Massa,109564,city,0,0,50,0,none,none
+gn:10374934,Ait Melloul,Souss-Massa,187652,city,0,0,50,0,none,none
+gn:10374981,Tine Biougra,Souss-Massa,41421,town,0,0,50,0,none,none
+gn:10375044,Lqoliaa,Souss-Massa,90890,town,0,0,50,0,none,none
+gn:10375138,Oadar Temsia,Souss-Massa,30526,town,0,0,50,0,none,none
+gn:10375207,My Drarga,Souss-Massa,55631,town,0,0,50,0,none,none
+gn:10640347,Sidi Ahmed,Marrakesh-Safi,7781,village,0,0,50,0,none,none
+gn:10795660,Sebt El Maarif,Casablanca-Settat,2002,village,0,0,50,0,none,none
+gn:10797349,Sidi Taibi,Rabat-Salé-Kénitra,51050,town,0,0,50,0,none,none
+gn:10869575,Bellaa,Souss-Massa,5186,village,0,0,50,0,none,none
+gn:10904142,Loudaya,Marrakesh-Safi,13775,town,0,0,50,0,none,none
+gn:10916940,Zawit Al Bour,Souss-Massa,0,village,0,0,50,0,none,none
+gn:10920963,Salé Al Jadida,Rabat-Salé-Kénitra,200000,city,0,0,50,0,none,none
+gn:10933159,Had Oulad Zbair,Fes-Meknes,6099,village,0,0,50,0,none,none
+gn:10955770,Cap Negro II,Tanger-Tetouan-Al Hoceima,10000,town,0,0,50,0,none,none
+gn:10958491,Bni Bouayach,Tanger-Tetouan-Al Hoceima,19951,town,0,0,50,0,none,none
+gn:10965229,Souq Khmis Aït Yadine,Rabat-Salé-Kénitra,7908,village,0,0,50,0,none,none
+gn:10970845,Sebt Jahjouh,Fes-Meknes,4094,village,0,0,50,0,none,none
+gn:10984425,Ain Karma,Fes-Meknes,5372,village,0,0,50,0,none,none
+gn:11024543,Bouderbala,Fes-Meknes,8634,village,0,0,50,0,none,none
+gn:11025160,Lemhaya,Fes-Meknes,6354,village,0,0,50,0,none,none
+gn:11025266,Sabaa Aiyoun,Fes-Meknes,28693,town,0,0,50,0,none,none
+gn:11071896,Imlili,Dakhla-Oued Ed-Dahab,2269,village,0,0,50,0,none,none
+gn:11092343,Korouna,Oriental,2822,village,0,0,50,0,none,none
+gn:11131249,Souk El Arba Des Aït Baha,Souss-Massa,6189,village,0,0,50,0,none,none
+gn:11471726,Oulad El Rhadabne,Casablanca-Settat,6717,village,0,0,50,0,none,none
+gn:11707723,Tighza,Beni Mellal-Khenifra,1950,village,0,0,50,0,none,none
+gn:11708554,Sidi ’Addi,Fes-Meknes,4604,village,0,0,50,0,none,none
+gn:11708832,Souq al Had,Fes-Meknes,2973,village,0,0,50,0,none,none
+gn:11734596,Aït Lous,Marrakesh-Safi,3228,village,0,0,50,0,none,none
+gn:12534572,Ait Khallouf,Marrakesh-Safi,2109,village,0,0,50,0,none,none
+gn:12718658,Had Bouhssoussen,Beni Mellal-Khenifra,3329,village,0,0,50,0,none,none
+gn:12718659,Kahf Nssar,Beni Mellal-Khenifra,7821,village,0,0,50,0,none,none
+gn:12718660,Ighram Laalam,Beni Mellal-Khenifra,9467,village,0,0,50,0,none,none
+gn:12718661,Ouaouizeght,Beni Mellal-Khenifra,10318,town,0,0,50,0,none,none
+gn:12718662,Hattane,Beni Mellal-Khenifra,11594,town,0,0,50,0,none,none
+gn:12718663,Bejaâd,Beni Mellal-Khenifra,51206,town,0,0,50,0,none,none
+gn:12718664,Moulay Ali Cherif,Drâa-Tafilalet,24251,town,0,0,50,0,none,none
+gn:12718665,N'zalat,Fes-Meknes,1249,village,0,0,50,0,none,none
+gn:12718666,Kantina,Fes-Meknes,3976,village,0,0,50,0,none,none
+gn:12718667,Al Machouar - Stinia,Fes-Meknes,5092,village,0,0,50,0,none,none
+gn:12718668,Zoualet,Fes-Meknes,10985,town,0,0,50,0,none,none
+gn:12718669,Ouislane,Fes-Meknes,95995,town,0,0,50,0,none,none
+gn:12718670,Oulad Amrane,Casablanca-Settat,1964,village,0,0,50,0,none,none
+gn:12718671,Méchouar de Casablanca,Casablanca-Settat,2888,village,0,0,50,0,none,none
+gn:12718672,Ras El Aïn,Casablanca-Settat,3946,village,0,0,50,0,none,none
+gn:12718673,Sidi Ali Ben Hamdouche,Casablanca-Settat,9463,village,0,0,50,0,none,none
+gn:12718674,Oulad M'Rah,Casablanca-Settat,9496,village,0,0,50,0,none,none
+gn:12718675,Had Soualem,Casablanca-Settat,40146,town,0,0,50,0,none,none
+gn:12718676,Lahraouyine,Casablanca-Settat,70783,town,0,0,50,0,none,none
+gn:12718677,Lakhsas,Guelmim-Oued Noun,5163,village,0,0,50,0,none,none
+gn:12718678,El Ouatia,Guelmim-Oued Noun,10149,town,0,0,50,0,none,none
+gn:12718679,M'Nabha,Marrakesh-Safi,1276,village,0,0,50,0,none,none
+gn:12718680,Méchouar-Kasba,Marrakesh-Safi,18410,town,0,0,50,0,none,none
+gn:12718681,Laâttaouia,Marrakesh-Safi,33103,town,0,0,50,0,none,none
+gn:12718682,Kassita,Oriental,2921,village,0,0,50,0,none,none
+gn:12718683,Bouizazarene Ihaddadene,Oriental,14326,town,0,0,50,0,none,none
+gn:12718684,Sidi Slimane Echcharaa,Oriental,32979,town,0,0,50,0,none,none
+gn:12718685,Zirara,Rabat-Salé-Kénitra,8735,village,0,0,50,0,none,none
+gn:12718686,Mers El Kheir,Rabat-Salé-Kénitra,17352,town,0,0,50,0,none,none
+gn:12718687,Aïn Attig,Rabat-Salé-Kénitra,27384,town,0,0,50,0,none,none
+gn:12718688,Souk El Arbaa,Rabat-Salé-Kénitra,75635,town,0,0,50,0,none,none
+gn:12718689,Fam El Hisn,Souss-Massa,6937,village,0,0,50,0,none,none
+gn:12718690,El Guerdane,Souss-Massa,13445,town,0,0,50,0,none,none
+gn:12718691,Karia,Tanger-Tetouan-Al Hoceima,1191,village,0,0,50,0,none,none
+gn:12718692,Issaguen,Tanger-Tetouan-Al Hoceima,2701,village,0,0,50,0,none,none
+gn:12747061,Idmine,Souss-Massa,4279,village,0,0,50,0,none,none
+gn:13608358,Tah,,1516,village,0,0,50,0,none,none

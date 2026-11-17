@@ -1,0 +1,40 @@
+place_id,name,region,population,market,verified_homes,dated_listings,shortfall_to_50,recorded_sales,rent_source,price_source
+gn:235715,Karonga,Northern Region,69486,town,0,0,50,0,none,none
+gn:235751,Chitipa,Northern Region,20011,town,0,0,50,0,none,none
+gn:923295,Zomba,Southern Region,118440,city,0,0,50,0,none,none
+gn:923652,Thyolo,Southern Region,8845,village,0,0,50,0,none,none
+gn:924055,Salima,Central Region,41492,town,0,0,50,0,none,none
+gn:924102,Rumphi,Northern Region,25216,town,0,0,50,0,none,none
+gn:924206,Phalombe,Southern Region,7040,village,0,0,50,0,none,none
+gn:924491,Ntchisi,Central Region,7918,village,0,0,50,0,none,none
+gn:924492,Ntcheu,Central Region,23956,town,0,0,50,0,none,none
+gn:924572,Nsanje,Southern Region,30276,town,0,0,50,0,none,none
+gn:924705,Nkhotakota,Central Region,31974,town,0,0,50,0,none,none
+gn:924732,Nkhata Bay,Northern Region,16099,town,0,0,50,0,none,none
+gn:924944,Likoma,Northern Region,7683,village,0,0,50,0,none,none
+gn:924959,Ngabu,Southern Region,7931,village,0,0,50,0,none,none
+gn:924963,Neno,Southern Region,0,village,0,0,50,0,none,none
+gn:925475,Mzuzu,Northern Region,249564,city,0,0,50,0,none,none
+gn:925498,Mzimba,Northern Region,29432,town,0,0,50,0,none,none
+gn:925596,Mwanza,Southern Region,20345,town,0,0,50,0,none,none
+gn:925789,Mulanje,Southern Region,16672,town,0,0,50,0,none,none
+gn:926087,Mponela,Central Region,27681,town,0,0,50,0,none,none
+gn:926308,Monkey Bay,Southern Region,16867,town,0,0,50,0,none,none
+gn:926747,Mchinji,Central Region,31592,town,0,0,50,0,none,none
+gn:927246,Mangochi,Southern Region,60338,town,0,0,50,0,none,none
+gn:927643,Machinga,Southern Region,1418,village,0,0,50,0,none,none
+gn:927792,Luchenza,Southern Region,14211,town,0,0,50,0,none,none
+gn:927834,Liwonde,Southern Region,41077,town,0,0,50,0,none,none
+gn:927856,Livingstonia,Northern Region,5552,village,0,0,50,0,none,none
+gn:927967,Lilongwe,Central Region,1115815,large-city,0,0,50,0,none,none
+gn:928534,Kasungu,Central Region,66152,town,0,0,50,0,none,none
+gn:929977,Dowa,Central Region,8047,village,0,0,50,0,none,none
+gn:930025,Dedza,Central Region,34882,town,0,0,50,0,none,none
+gn:930475,Chisumulu,Northern Region,4000,village,0,0,50,0,none,none
+gn:930580,Chiradzulu,Southern Region,1580,village,0,0,50,0,none,none
+gn:930629,Chipoka,Central Region,7212,village,0,0,50,0,none,none
+gn:931070,Chikwawa,Southern Region,6987,village,0,0,50,0,none,none
+gn:931755,Blantyre,Southern Region,902588,large-city,0,0,50,0,none,none
+gn:931865,Balaka,Southern Region,40950,town,0,0,50,0,none,none
+gn:7839184,Makata,Southern Region,0,village,0,0,50,0,none,none
+gn:12183605,Chipeni,Central Region,10553,town,0,0,50,0,none,none

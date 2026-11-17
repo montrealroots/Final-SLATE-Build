@@ -1,0 +1,929 @@
+place_id,name,region,population,market,verified_homes,dated_listings,shortfall_to_50,recorded_sales,rent_source,price_source
+gn:2317548,Zuru,Kebbi,24338,town,0,0,50,0,none,none
+gn:2317551,Zurmi,Zamfara State,0,village,0,0,50,0,none,none
+gn:2317569,Zungeru,Niger State,24447,town,0,0,50,0,none,none
+gn:2317630,Zonkwa,Kaduna State,0,village,0,0,50,0,none,none
+gn:2317675,Zing,Taraba State,0,village,0,0,50,0,none,none
+gn:2317765,Zaria,Kaduna State,980000,large-city,0,0,50,0,none,none
+gn:2317818,Zango,Katsina State,12371,town,0,0,50,0,none,none
+gn:2317887,Zalanga,Bauchi,12070,town,0,0,50,0,none,none
+gn:2317897,Zakirai,Kano State,0,village,0,0,50,0,none,none
+gn:2317899,Zaki Biam,Benue State,10470,town,0,0,50,0,none,none
+gn:2317936,Zadawa,Bauchi,7495,village,0,0,50,0,none,none
+gn:2317982,Yuli,Bauchi,9549,village,0,0,50,0,none,none
+gn:2318044,Yola,Adamawa,460000,city,0,0,50,0,none,none
+gn:2318123,Yenagoa,Bayelsa State,365000,city,0,0,50,0,none,none
+gn:2318152,Yelwa,Kebbi,0,village,0,0,50,0,none,none
+gn:2318166,Yelwa,Plateau State,13234,town,0,0,50,0,none,none
+gn:2318238,Yashikira,Kwara State,14454,town,0,0,50,0,none,none
+gn:2318374,Yandev,Benue State,7750,village,0,0,50,0,none,none
+gn:2318383,Yanda Bayo,Bauchi,5927,village,0,0,50,0,none,none
+gn:2318399,Yamrat,Bauchi,7098,village,0,0,50,0,none,none
+gn:2318480,Yajiwa,Borno State,6880,village,0,0,50,0,none,none
+gn:2318514,Yabo,Sokoto,0,village,0,0,50,0,none,none
+gn:2318534,Wuyo,Borno State,9189,village,0,0,50,0,none,none
+gn:2318554,Wushishi,Niger State,0,village,0,0,50,0,none,none
+gn:2318858,Wurno,Sokoto,13087,town,0,0,50,0,none,none
+gn:2318921,Wukari,Taraba State,92933,town,0,0,50,0,none,none
+gn:2318933,Wudil,Kano State,23066,town,0,0,50,0,none,none
+gn:2319078,Wawa,Niger State,10200,town,0,0,50,0,none,none
+gn:2319115,Wase,Plateau State,0,village,0,0,50,0,none,none
+gn:2319123,Wasagu,Kebbi,8157,village,0,0,50,0,none,none
+gn:2319133,Warri,Delta,910000,large-city,0,0,50,0,none,none
+gn:2319189,Wannune,Benue State,0,village,0,0,50,0,none,none
+gn:2319257,Wamba,Nasarawa State,27137,town,0,0,50,0,none,none
+gn:2319258,Wamako,Sokoto,0,village,0,0,50,0,none,none
+gn:2319345,Wagini,Katsina State,9986,village,0,0,50,0,none,none
+gn:2319407,Vom,Plateau State,12000,town,0,0,50,0,none,none
+gn:2319450,Vandeikya,Benue State,0,village,0,0,50,0,none,none
+gn:2319480,Uyo,Akwa Ibom State,436606,city,0,0,50,0,none,none
+gn:2319522,Utu Etim Ekpo,Akwa Ibom State,0,village,0,0,50,0,none,none
+gn:2319597,Ozoro,Delta,0,village,0,0,50,0,none,none
+gn:2319624,Uselu,Edo State,0,village,0,0,50,0,none,none
+gn:2319642,Uruobo-Okija,Anambra,13898,town,0,0,50,0,none,none
+gn:2319659,Urualla,Imo State,0,village,0,0,50,0,none,none
+gn:2319668,Uromi,Edo State,108608,city,0,0,50,0,none,none
+gn:2319695,Uquo,Akwa Ibom State,0,village,0,0,50,0,none,none
+gn:2319701,Ukpor,Anambra,0,village,0,0,50,0,none,none
+gn:2320298,Ungogo,Kano State,0,village,0,0,50,0,none,none
+gn:2320416,Umuneke-Ngor,Imo State,0,village,0,0,50,0,none,none
+gn:2320417,Umunede,Delta,8331,village,0,0,50,0,none,none
+gn:2320435,Umulona,Enugu State,0,village,0,0,50,0,none,none
+gn:2320495,Umuelemai,Imo State,0,village,0,0,50,0,none,none
+gn:2320576,Umuahia,Abia State,370000,city,0,0,50,0,none,none
+gn:2320693,Ukpo,Anambra,0,village,0,0,50,0,none,none
+gn:2320746,Ukata,Niger State,6188,village,0,0,50,0,none,none
+gn:2320829,Ughelli,Delta,79986,town,0,0,50,0,none,none
+gn:2320831,Ugep,Cross River State,200276,city,0,0,50,0,none,none
+gn:2320906,Ugba,Benue State,0,village,0,0,50,0,none,none
+gn:2320920,Uga,Anambra,64179,town,0,0,50,0,none,none
+gn:2320966,Udi,Enugu State,14998,town,0,0,50,0,none,none
+gn:2321031,Ubiaja,Edo State,21782,town,0,0,50,0,none,none
+gn:2321057,Uba,Borno State,11648,town,0,0,50,0,none,none
+gn:2321176,Tureta,Sokoto,0,village,0,0,50,0,none,none
+gn:2321636,Tudun Wada,Kano State,0,village,0,0,50,0,none,none
+gn:2321688,Tube,Ogun State,3088,village,0,0,50,0,none,none
+gn:2321859,Tsanyawa,Kano State,0,village,0,0,50,0,none,none
+gn:2321926,Toungo,Adamawa,11759,town,0,0,50,0,none,none
+gn:2321930,Toto,Nasarawa State,0,village,0,0,50,0,none,none
+gn:2321951,Toro,Bauchi,0,village,0,0,50,0,none,none
+gn:2322021,Tokombere,Borno State,7092,village,0,0,50,0,none,none
+gn:2322040,Tofa,Kano State,0,village,0,0,50,0,none,none
+gn:2322263,Tegina,Niger State,24037,town,0,0,50,0,none,none
+gn:2322269,Tede,Oyo State,0,village,0,0,50,0,none,none
+gn:2322305,Taura,Jigawa State,0,village,0,0,50,0,none,none
+gn:2322495,Tambuwal,Sokoto,20932,town,0,0,50,0,none,none
+gn:2322529,Talata Mafara,Zamfara State,39045,town,0,0,50,0,none,none
+gn:2322531,Talasse,Gombe State,0,village,0,0,50,0,none,none
+gn:2322552,Takum,Benue State,24822,town,0,0,50,0,none,none
+gn:2322587,Bunza,Kebbi,0,village,0,0,50,0,none,none
+gn:2322592,Takai,Kano State,10748,town,0,0,50,0,none,none
+gn:2322651,Tafawa Balewa,Bauchi,0,village,0,0,50,0,none,none
+gn:2322722,Suya,Kwara State,7936,village,0,0,50,0,none,none
+gn:2322733,Surulere,Lagos,191920,city,0,0,50,0,none,none
+gn:2322784,Sumaila,Kano State,0,village,0,0,50,0,none,none
+gn:2322793,Sule Tankarkar,Jigawa State,0,village,0,0,50,0,none,none
+gn:2322794,Suleja,Niger State,162135,city,0,0,50,0,none,none
+gn:2322880,Song,Adamawa,0,village,0,0,50,0,none,none
+gn:2322911,Sokoto,Sokoto,1040000,large-city,0,0,50,0,none,none
+gn:2322957,Soba,Kaduna State,15715,town,0,0,50,0,none,none
+gn:2323011,Siluko,Edo State,7920,village,0,0,50,0,none,none
+gn:2323013,Silame,Sokoto,0,village,0,0,50,0,none,none
+gn:2323090,Shomolu,Lagos,154390,city,0,0,50,0,none,none
+gn:2323146,Shinkafi,Zamfara State,9324,village,0,0,50,0,none,none
+gn:2323244,Shendam,Plateau State,0,village,0,0,50,0,none,none
+gn:2323264,Shelleng,Adamawa,0,village,0,0,50,0,none,none
+gn:2323324,Share,Kwara State,0,village,0,0,50,0,none,none
+gn:2323338,Shanono,Kano State,0,village,0,0,50,0,none,none
+gn:2323344,Shani,Borno State,14305,town,0,0,50,0,none,none
+gn:2323349,Shanga,Kebbi,7471,village,0,0,50,0,none,none
+gn:2323390,Saki,Oyo State,178677,city,0,0,50,0,none,none
+gn:2323409,Shagari,Sokoto,0,village,0,0,50,0,none,none
+gn:2323411,Shagamu,Ogun State,214558,city,0,0,50,0,none,none
+gn:2323418,Shaffa,Borno State,6508,village,0,0,50,0,none,none
+gn:2323466,Serti,Taraba State,0,village,0,0,50,0,none,none
+gn:2323579,Sauri,Zamfara State,13445,town,0,0,50,0,none,none
+gn:2323622,Sarkin Pawa,Niger State,0,village,0,0,50,0,none,none
+gn:2323675,Sapele,Delta,305000,city,0,0,50,0,none,none
+gn:2323709,Sankwala,Cross River State,0,village,0,0,50,0,none,none
+gn:2323715,Sankera,Benue State,0,village,0,0,50,0,none,none
+gn:2323795,Sandamu,Katsina State,0,village,0,0,50,0,none,none
+gn:2323858,Samamiya,Jigawa State,8087,village,0,0,50,0,none,none
+gn:2323955,Sakaba,Kebbi,0,village,0,0,50,0,none,none
+gn:2323997,Sagbama,Bayelsa State,0,village,0,0,50,0,none,none
+gn:2324011,Safana,Katsina State,0,village,0,0,50,0,none,none
+gn:2324024,Sade,Bauchi,8223,village,0,0,50,0,none,none
+gn:2324038,Sabuwa,Katsina State,0,village,0,0,50,0,none,none
+gn:2324081,Sabongida-Ora,Edo State,0,village,0,0,50,0,none,none
+gn:2324178,Sabon Birni,Sokoto,0,village,0,0,50,0,none,none
+gn:2324281,Runka,Katsina State,12665,town,0,0,50,0,none,none
+gn:2324325,Ruma,Katsina State,8857,village,0,0,50,0,none,none
+gn:2324401,Roni,Jigawa State,0,village,0,0,50,0,none,none
+gn:2324417,Rogo,Kano State,0,village,0,0,50,0,none,none
+gn:2324430,Riyom,Plateau State,0,village,0,0,50,0,none,none
+gn:2324439,Riti,Taraba State,6875,village,0,0,50,0,none,none
+gn:2324446,Ririwai,Kano State,0,village,0,0,50,0,none,none
+gn:2324460,Ringim,Jigawa State,14463,town,0,0,50,0,none,none
+gn:2324473,Rimin Gado,Kano State,0,village,0,0,50,0,none,none
+gn:2324477,Rimi,Katsina State,0,village,0,0,50,0,none,none
+gn:2324504,Rijau,Niger State,16613,town,0,0,50,0,none,none
+gn:2324534,Ribah,Kebbi,0,village,0,0,50,0,none,none
+gn:2324575,Rano,Kano State,17972,town,0,0,50,0,none,none
+gn:2324576,Rann,Borno State,0,village,0,0,50,0,none,none
+gn:2324623,Saminaka,Kaduna State,0,village,0,0,50,0,none,none
+gn:2324706,Rabah,Sokoto,8707,village,0,0,50,0,none,none
+gn:2324767,Potiskum,Yobe State,86002,town,0,0,50,0,none,none
+gn:2324774,Port Harcourt,Rivers State,2120000,large-city,0,0,50,0,none,none
+gn:2324857,Pindiga,Gombe State,106322,city,0,0,50,0,none,none
+gn:2324960,Patigi,Kwara State,28285,town,0,0,50,0,none,none
+gn:2324962,Patani,Delta,7327,village,0,0,50,0,none,none
+gn:2325032,Panyam,Plateau State,10715,town,0,0,50,0,none,none
+gn:2325042,Pantisawa,Taraba State,0,village,0,0,50,0,none,none
+gn:2325060,Pankshin,Plateau State,31516,town,0,0,50,0,none,none
+gn:2325132,Paiko,Niger State,0,village,0,0,50,0,none,none
+gn:2325161,Ozubulu,Anambra,73812,town,0,0,50,0,none,none
+gn:2325200,Oyo,Oyo State,736072,large-city,0,0,50,0,none,none
+gn:2325238,Oye-Ekiti,Ekiti State,0,village,0,0,50,0,none,none
+gn:2325249,Oyan,Osun State,73622,town,0,0,50,0,none,none
+gn:2325266,Owu-Isin,Kwara State,0,village,0,0,50,0,none,none
+gn:2325307,Owode,Ogun State,8513,village,0,0,50,0,none,none
+gn:2325314,Owo,Ondo State,276574,city,0,0,50,0,none,none
+gn:2325330,Owerri,Imo State,545000,large-city,0,0,50,0,none,none
+gn:2325349,Owa-Oyibu,Delta,0,village,0,0,50,0,none,none
+gn:2325415,Otuocha,Anambra,0,village,0,0,50,0,none,none
+gn:2325422,Otun-Ekiti,Ekiti State,0,village,0,0,50,0,none,none
+gn:2325437,Otukpa,Benue State,21686,town,0,0,50,0,none,none
+gn:2325438,Otu-Jeremi,Delta,0,village,0,0,50,0,none,none
+gn:2325442,Otor-Udu,Delta,0,village,0,0,50,0,none,none
+gn:2325450,Otu,Oyo State,0,village,0,0,50,0,none,none
+gn:2325457,Ota,Ogun State,251546,city,0,0,50,0,none,none
+gn:2325506,Otan Ayegbaju,Osun State,37783,town,0,0,50,0,none,none
+gn:2325535,Osu,Osun State,0,village,0,0,50,0,none,none
+gn:2325590,Osogbo,Osun State,645000,large-city,0,0,50,0,none,none
+gn:2325592,Oshodi,Lagos,170870,city,0,0,50,0,none,none
+gn:2325659,Afor-Oru,Imo State,0,village,0,0,50,0,none,none
+gn:2325688,Oron,Akwa Ibom State,0,village,0,0,50,0,none,none
+gn:2325713,Orodo,Imo State,8527,village,0,0,50,0,none,none
+gn:2325725,Orlu,Imo State,9351,village,0,0,50,0,none,none
+gn:2325733,Orita-Eruwa,Oyo State,71027,town,0,0,50,0,none,none
+gn:2325803,Orerokpe,Delta,5893,village,0,0,50,0,none,none
+gn:2325821,Ore,Ondo State,13905,town,0,0,50,0,none,none
+gn:2325878,Oporoma,Bayelsa State,0,village,0,0,50,0,none,none
+gn:2325891,Opobo,Rivers State,0,village,0,0,50,0,none,none
+gn:2325894,Ikot Abasi,Akwa Ibom State,0,village,0,0,50,0,none,none
+gn:2325902,Opi,Enugu State,11237,town,0,0,50,0,none,none
+gn:2325948,Onyedega,Kogi State,0,village,0,0,50,0,none,none
+gn:2326016,Onitsha,Anambra,1553000,large-city,0,0,50,0,none,none
+gn:2326171,Ondo,Ondo State,375000,city,0,0,50,0,none,none
+gn:2326188,Omuo-Ekiti,Ekiti State,6317,village,0,0,50,0,none,none
+gn:2326200,Omu-Aran,Kwara State,14477,town,0,0,50,0,none,none
+gn:2326221,Omoku,Rivers State,11625,town,0,0,50,0,none,none
+gn:2326302,Olupona,Osun State,95002,town,0,0,50,0,none,none
+gn:2326727,Oleh,Delta,0,village,0,0,50,0,none,none
+gn:2326784,Okpoga,Benue State,0,village,0,0,50,0,none,none
+gn:2326790,Okwe,Imo State,0,village,0,0,50,0,none,none
+gn:2326811,Okuta,Kwara State,26589,town,0,0,50,0,none,none
+gn:2326899,Okrika,Rivers State,133271,city,0,0,50,0,none,none
+gn:2326935,Okpoma,Cross River State,0,village,0,0,50,0,none,none
+gn:2326959,Okpo,Kogi State,0,village,0,0,50,0,none,none
+gn:2327025,Okoroete,Akwa Ibom State,0,village,0,0,50,0,none,none
+gn:2327043,Okopedi,Akwa Ibom State,0,village,0,0,50,0,none,none
+gn:2327089,Oko Ita,Akwa Ibom State,0,village,0,0,50,0,none,none
+gn:2327143,Okigwe,Imo State,115499,city,0,0,50,0,none,none
+gn:2327180,Oke-Oyi,Kwara State,0,village,0,0,50,0,none,none
+gn:2327220,Okene,Kogi State,479178,city,0,0,50,0,none,none
+gn:2327223,Oke Mesi,Osun State,79563,town,0,0,50,0,none,none
+gn:2327233,Oke Ila,Ekiti State,35000,town,0,0,50,0,none,none
+gn:2327236,Okeho,Oyo State,12964,town,0,0,50,0,none,none
+gn:2327245,Okehi,Rivers State,0,village,0,0,50,0,none,none
+gn:2327283,Oke-Agbe,Ondo State,0,village,0,0,50,0,none,none
+gn:2327326,Okada,Edo State,0,village,0,0,50,0,none,none
+gn:2327332,Oka,Ondo State,0,village,0,0,50,0,none,none
+gn:2327354,Oju,Benue State,0,village,0,0,50,0,none,none
+gn:2327356,Ojoto,Anambra,0,village,0,0,50,0,none,none
+gn:2327388,Oji River,Enugu State,0,village,0,0,50,0,none,none
+gn:2327494,Ohafia-Ifigh,Abia State,73355,town,0,0,50,0,none,none
+gn:2327513,Ogwashi-Uku,Delta,26137,town,0,0,50,0,none,none
+gn:2327521,Oguta,Imo State,21639,town,0,0,50,0,none,none
+gn:2327523,Ogurugu,Kogi State,9135,village,0,0,50,0,none,none
+gn:2327607,Oguma,Kogi State,0,village,0,0,50,0,none,none
+gn:2327623,Ogu,Rivers State,0,village,0,0,50,0,none,none
+gn:2327650,Ogoja,Cross River State,37466,town,0,0,50,0,none,none
+gn:2327689,Ogidi,Anambra,0,village,0,0,50,0,none,none
+gn:2327735,Ogbomoso,Oyo State,433030,city,0,0,50,0,none,none
+gn:2327775,Ogbere,Ogun State,0,village,0,0,50,0,none,none
+gn:2327788,Ogbede,Enugu State,0,village,0,0,50,0,none,none
+gn:2327827,Ogaminana,Kogi State,84373,town,0,0,50,0,none,none
+gn:2327879,Offa,Kwara State,113830,city,0,0,50,0,none,none
+gn:2327921,Odukpani,Cross River State,0,village,0,0,50,0,none,none
+gn:2327943,Odot,Akwa Ibom State,0,village,0,0,50,0,none,none
+gn:2327949,Odoro Ikpe,Akwa Ibom State,0,village,0,0,50,0,none,none
+gn:2327992,Odogbolu,Ogun State,0,village,0,0,50,0,none,none
+gn:2328007,Odo-Ere,Kogi State,0,village,0,0,50,0,none,none
+gn:2328081,Odeda,Ogun State,0,village,0,0,50,0,none,none
+gn:2328090,Ode,Ondo State,75463,town,0,0,50,0,none,none
+gn:2328091,Ode-Ekiti,Ekiti State,0,village,0,0,50,0,none,none
+gn:2328113,Ochobo,Benue State,8567,village,0,0,50,0,none,none
+gn:2328151,Obudu,Cross River State,19668,town,0,0,50,0,none,none
+gn:2328153,Obubra,Cross River State,12885,town,0,0,50,0,none,none
+gn:2328185,Obonoma,Rivers State,68584,town,0,0,50,0,none,none
+gn:2328192,Obolo-Eke (1),Enugu State,5842,village,0,0,50,0,none,none
+gn:2328194,Obollo-Afor,Enugu State,0,village,0,0,50,0,none,none
+gn:2328276,Obiaruku,Delta,11936,town,0,0,50,0,none,none
+gn:2328290,Obi,Nasarawa State,0,village,0,0,50,0,none,none
+gn:2328409,Nzam,Anambra,0,village,0,0,50,0,none,none
+gn:2328583,Nung Udoe,Akwa Ibom State,0,village,0,0,50,0,none,none
+gn:2328617,Numan,Adamawa,77617,town,0,0,50,0,none,none
+gn:2328655,Nto Edino,Akwa Ibom State,0,village,0,0,50,0,none,none
+gn:2328664,Nteje,Anambra,0,village,0,0,50,0,none,none
+gn:2328684,Nsukka,Enugu State,111017,city,0,0,50,0,none,none
+gn:2328691,Isiokpo,Rivers State,0,village,0,0,50,0,none,none
+gn:2328765,Nnewi,Anambra,193987,city,0,0,50,0,none,none
+gn:2328790,Nkwerre,Imo State,62973,town,0,0,50,0,none,none
+gn:2328811,Nkpor,Anambra,103733,city,0,0,50,0,none,none
+gn:2328814,Mkpat Enin,Akwa Ibom State,0,village,0,0,50,0,none,none
+gn:2328904,Ningi,Bauchi,0,village,0,0,50,0,none,none
+gn:2328948,Nguzu Edda,Ebonyi State,0,village,0,0,50,0,none,none
+gn:2328952,Nguru,Yobe State,111014,city,0,0,50,0,none,none
+gn:2328960,Ngurore,Adamawa,8139,village,0,0,50,0,none,none
+gn:2329007,Ngo,Rivers State,0,village,0,0,50,0,none,none
+gn:2329087,Ngala,Borno State,14031,town,0,0,50,0,none,none
+gn:2329110,Wara,Kebbi,0,village,0,0,50,0,none,none
+gn:2329114,New Shagunnu,Niger State,7349,village,0,0,50,0,none,none
+gn:2329132,New Bussa,Niger State,0,village,0,0,50,0,none,none
+gn:2329140,Neni,Anambra,0,village,0,0,50,0,none,none
+gn:2329150,Nembe,Bayelsa State,0,village,0,0,50,0,none,none
+gn:2329336,Ndeaboh,Enugu State,0,village,0,0,50,0,none,none
+gn:2329419,Nasarawa Egon,Nasarawa State,0,village,0,0,50,0,none,none
+gn:2329451,Nasarawa,Nasarawa State,30949,town,0,0,50,0,none,none
+gn:2329562,Nafada,Gombe State,22920,town,0,0,50,0,none,none
+gn:2329639,Mutum Biyu,Taraba State,11702,town,0,0,50,0,none,none
+gn:2329660,Mushin,Lagos,199000,city,0,0,50,0,none,none
+gn:2329664,Musawa,Katsina State,8904,village,0,0,50,0,none,none
+gn:2329821,Mubi,Adamawa,225705,city,0,0,50,0,none,none
+gn:2329920,Moriki,Zamfara State,28735,town,0,0,50,0,none,none
+gn:2329932,Mopa,Kogi State,0,village,0,0,50,0,none,none
+gn:2329943,Moniya,Oyo State,0,village,0,0,50,0,none,none
+gn:2329946,Monguno,Borno State,20297,town,0,0,50,0,none,none
+gn:2329951,Mangu,Plateau State,0,village,0,0,50,0,none,none
+gn:2329981,Mokwa,Niger State,21128,town,0,0,50,0,none,none
+gn:2330028,Modakeke,Osun State,119529,city,0,0,50,0,none,none
+gn:2330032,Bolorunduro,Ondo State,0,village,0,0,50,0,none,none
+gn:2330082,Misau,Bauchi,13957,town,0,0,50,0,none,none
+gn:2330087,Miringa,Borno State,12117,town,0,0,50,0,none,none
+gn:2330100,Minna,Niger State,425000,city,0,0,50,0,none,none
+gn:2330102,Minjibir,Kano State,0,village,0,0,50,0,none,none
+gn:2330146,Miga,Jigawa State,0,village,0,0,50,0,none,none
+gn:2330157,Michika,Adamawa,0,village,0,0,50,0,none,none
+gn:2330241,Imeko,Ogun State,8627,village,0,0,50,0,none,none
+gn:2330336,Mgbidi,Imo State,0,village,0,0,50,0,none,none
+gn:2330369,Mberubu,Enugu State,8904,village,0,0,50,0,none,none
+gn:2330429,Mbalano,Abia State,0,village,0,0,50,0,none,none
+gn:2330543,Mayo-Belwa,Adamawa,6304,village,0,0,50,0,none,none
+gn:2330589,Machina,Yobe State,11707,town,0,0,50,0,none,none
+gn:2330600,Matazu,Katsina State,0,village,0,0,50,0,none,none
+gn:2330664,Mashi,Katsina State,7845,village,0,0,50,0,none,none
+gn:2330717,Maru,Zamfara State,11496,town,0,0,50,0,none,none
+gn:2330719,Marte,Borno State,15707,town,0,0,50,0,none,none
+gn:2330839,Maradun,Zamfara State,0,village,0,0,50,0,none,none
+gn:2330910,Mani,Katsina State,0,village,0,0,50,0,none,none
+gn:2330937,Mando,Kaduna State,7500,village,0,0,50,0,none,none
+gn:2331005,Malumfashi,Katsina State,70709,town,0,0,50,0,none,none
+gn:2331030,Mallam Sidi,Gombe State,0,village,0,0,50,0,none,none
+gn:2331037,Mallammaduri,Jigawa State,11156,town,0,0,50,0,none,none
+gn:2331140,Makurdi,Benue State,390000,city,0,0,50,0,none,none
+gn:2331158,Makoko,Lagos,85840,town,0,0,50,0,none,none
+gn:2331189,Makera,Kaduna State,0,village,0,0,50,0,none,none
+gn:2331203,Makarfi,Kaduna State,0,village,0,0,50,0,none,none
+gn:2331267,Maiyama,Kebbi,10014,town,0,0,50,0,none,none
+gn:2331375,Maikunkele,Niger State,0,village,0,0,50,0,none,none
+gn:2331408,Maiha,Adamawa,0,village,0,0,50,0,none,none
+gn:2331421,Maigatari,Jigawa State,0,village,0,0,50,0,none,none
+gn:2331432,Maigana,Kaduna State,0,village,0,0,50,0,none,none
+gn:2331447,Maiduguri,Borno State,1110000,large-city,0,0,50,0,none,none
+gn:2331485,Mai’Adua,Katsina State,0,village,0,0,50,0,none,none
+gn:2331493,Mahuta,Kebbi,9047,village,0,0,50,0,none,none
+gn:2331528,Magumeri,Borno State,19363,town,0,0,50,0,none,none
+gn:2331628,Mafa,Borno State,0,village,0,0,50,0,none,none
+gn:2331648,Madobi,Kano State,0,village,0,0,50,0,none,none
+gn:2331686,Madara,Bauchi,10015,town,0,0,50,0,none,none
+gn:2331694,Madala,FCT,11771,town,0,0,50,0,none,none
+gn:2331715,Madagali,Adamawa,12919,town,0,0,50,0,none,none
+gn:2331939,Lokoja,Kogi State,60579,town,0,0,50,0,none,none
+gn:2332079,Lere,Kaduna State,93290,town,0,0,50,0,none,none
+gn:2332080,Lere,Bauchi,14620,town,0,0,50,0,none,none
+gn:2332092,Lemu,Niger State,0,village,0,0,50,0,none,none
+gn:2332197,Lau,Taraba State,12657,town,0,0,50,0,none,none
+gn:2332249,Lapai,Niger State,16442,town,0,0,50,0,none,none
+gn:2332280,Langtang,Plateau State,13172,town,0,0,50,0,none,none
+gn:2332316,Lamurde,Adamawa,0,village,0,0,50,0,none,none
+gn:2332337,Lame,Bauchi,6705,village,0,0,50,0,none,none
+gn:2332357,Lalupon,Oyo State,81130,town,0,0,50,0,none,none
+ng-lagos,Lagos,Lagos,15388000,large-city,0,0,50,0,none,none
+gn:2332504,Lafiagi,Kwara State,102779,city,0,0,50,0,none,none
+gn:2332515,Lafia,Nasarawa State,127236,city,0,0,50,0,none,none
+gn:2332662,Kwolla,Plateau State,8200,village,0,0,50,0,none,none
+gn:2332670,Kwoi,Kaduna State,0,village,0,0,50,0,none,none
+gn:2332718,Kwaya Kusar,Borno State,0,village,0,0,50,0,none,none
+gn:2332733,Kwatarkwashi,Zamfara State,9084,village,0,0,50,0,none,none
+gn:2332780,Kware,Sokoto,0,village,0,0,50,0,none,none
+gn:2332865,Kwali,FCT,6229,village,0,0,50,0,none,none
+gn:2332871,Kwale,Delta,20226,town,0,0,50,0,none,none
+gn:2333045,Kutigi,Niger State,0,village,0,0,50,0,none,none
+gn:2333064,Kuta,Niger State,7528,village,0,0,50,0,none,none
+gn:2333096,Kusheriki,Niger State,6941,village,0,0,50,0,none,none
+gn:2333111,Kusada,Katsina State,0,village,0,0,50,0,none,none
+gn:2333238,Kurfi,Katsina State,0,village,0,0,50,0,none,none
+gn:2333312,Kura,Kano State,9537,village,0,0,50,0,none,none
+gn:2333399,Kunchi,Kano State,0,village,0,0,50,0,none,none
+gn:2333451,Kumo,Gombe State,35712,town,0,0,50,0,none,none
+gn:2333470,Kumbotso,Kano State,0,village,0,0,50,0,none,none
+gn:2333490,Kumagunnam,Yobe State,16557,town,0,0,50,0,none,none
+gn:2333563,Kukawa,Borno State,16077,town,0,0,50,0,none,none
+gn:2333604,Kuje,FCT,97367,town,0,0,50,0,none,none
+gn:2333606,Kujama,Kaduna State,12967,town,0,0,50,0,none,none
+gn:2333794,Kpor,Rivers State,0,village,0,0,50,0,none,none
+gn:2333884,Koton-Karfe,Kogi State,10709,town,0,0,50,0,none,none
+gn:2333893,Kosubosu,Kwara State,0,village,0,0,50,0,none,none
+gn:2334008,Kontagora,Niger State,98754,town,0,0,50,0,none,none
+gn:2334018,Konkwesso,Niger State,7687,village,0,0,50,0,none,none
+gn:2334044,Konduga,Borno State,13400,town,0,0,50,0,none,none
+gn:2334153,Koko,Ogun State,1560,village,0,0,50,0,none,none
+gn:2334154,Koko,Delta,0,village,0,0,50,0,none,none
+gn:2334306,Kiyawa,Jigawa State,17704,town,0,0,50,0,none,none
+gn:2334327,Kisi,Oyo State,155510,city,0,0,50,0,none,none
+gn:2334334,Kiru,Kano State,0,village,0,0,50,0,none,none
+gn:2334340,Karkarna,Jigawa State,0,village,0,0,50,0,none,none
+gn:2334350,Kiri Kasamma,Jigawa State,0,village,0,0,50,0,none,none
+gn:2334369,Kirfi,Bauchi,0,village,0,0,50,0,none,none
+gn:2334485,Auyo,Jigawa State,0,village,0,0,50,0,none,none
+gn:2334502,Kibiya,Kano State,8500,village,0,0,50,0,none,none
+gn:2334592,Kende,Kebbi,7395,village,0,0,50,0,none,none
+gn:2334649,Kafin Hausa,Jigawa State,12609,town,0,0,50,0,none,none
+gn:2334652,Keffi,Nasarawa State,85911,town,0,0,50,0,none,none
+gn:2334663,Kebbe,Sokoto,0,village,0,0,50,0,none,none
+gn:2334664,Keana,Nasarawa State,0,village,0,0,50,0,none,none
+gn:2334674,Kazaure,Jigawa State,13169,town,0,0,50,0,none,none
+gn:2334747,Kauru,Kaduna State,0,village,0,0,50,0,none,none
+gn:2334756,Kaura Namoda,Zamfara State,69725,town,0,0,50,0,none,none
+gn:2334775,Kaugama,Jigawa State,0,village,0,0,50,0,none,none
+gn:2334801,Katsina-Ala,Benue State,36722,town,0,0,50,0,none,none
+gn:2334802,Katsina,Katsina State,670000,large-city,0,0,50,0,none,none
+gn:2334829,Katcha,Niger State,0,village,0,0,50,0,none,none
+gn:2334835,Warji,Bauchi,0,village,0,0,50,0,none,none
+gn:2334861,Katagum,Bauchi,10602,town,0,0,50,0,none,none
+gn:2335003,Karim Lamido,Taraba State,0,village,0,0,50,0,none,none
+gn:2335015,Kari,Bauchi,18812,town,0,0,50,0,none,none
+gn:2335067,Karaye,Kano State,0,village,0,0,50,0,none,none
+gn:2335204,Kano,Kano State,4910000,large-city,0,0,50,0,none,none
+gn:2335216,Kankia,Katsina State,0,village,0,0,50,0,none,none
+gn:2335219,Kankara,Katsina State,9609,village,0,0,50,0,none,none
+gn:2335333,Kamba,Kebbi,25568,town,0,0,50,0,none,none
+gn:2335369,Kaltungo,Gombe State,12357,town,0,0,50,0,none,none
+gn:2335402,Kalgo,Kebbi,0,village,0,0,50,0,none,none
+gn:2335500,Kajuru,Kaduna State,14389,town,0,0,50,0,none,none
+gn:2335556,Kaita,Katsina State,0,village,0,0,50,0,none,none
+gn:2335568,Kangiwa,Kebbi,11701,town,0,0,50,0,none,none
+gn:2335596,Kaiama,Kwara State,21897,town,0,0,50,0,none,none
+gn:2335597,Kaiama,Bayelsa State,0,village,0,0,50,0,none,none
+gn:2335614,Kagoro,Kaduna State,77008,town,0,0,50,0,none,none
+gn:2335628,Kagarko,Kaduna State,0,village,0,0,50,0,none,none
+gn:2335637,Kagara,Niger State,0,village,0,0,50,0,none,none
+gn:2335648,Kafur,Katsina State,0,village,0,0,50,0,none,none
+gn:2335665,Kafin Madaki,Bauchi,0,village,0,0,50,0,none,none
+gn:2335709,Kafarati,Gombe State,11535,town,0,0,50,0,none,none
+gn:2335713,Kafanchan,Kaduna State,79522,town,0,0,50,0,none,none
+gn:2335723,Lissam,Taraba State,0,village,0,0,50,0,none,none
+gn:2335727,Kaduna,Kaduna State,1850000,large-city,0,0,50,0,none,none
+gn:2335798,Kachia,Kaduna State,30893,town,0,0,50,0,none,none
+gn:2335830,Kabo,Kano State,0,village,0,0,50,0,none,none
+gn:2335843,Kabba,Kogi State,49869,town,0,0,50,0,none,none
+gn:2335953,Jos,Plateau State,1040000,large-city,0,0,50,0,none,none
+gn:2335996,Jobele,Oyo State,0,village,0,0,50,0,none,none
+gn:2336056,Jimeta,Adamawa,248148,city,0,0,50,0,none,none
+gn:2336092,Jikamshi,Katsina State,6923,village,0,0,50,0,none,none
+gn:2336137,Jibia,Katsina State,14424,town,0,0,50,0,none,none
+gn:2336237,Jega,Kebbi,73495,town,0,0,50,0,none,none
+gn:2336251,Jebba,Kwara State,21488,town,0,0,50,0,none,none
+gn:2336427,Angware,Plateau State,0,village,0,0,50,0,none,none
+gn:2336553,Jama’are,Bauchi,0,village,0,0,50,0,none,none
+gn:2336589,Jalingo,Taraba State,117757,city,0,0,50,0,none,none
+gn:2336600,Jakusko,Yobe State,0,village,0,0,50,0,none,none
+gn:2336621,Jajimaji,Yobe State,0,village,0,0,50,0,none,none
+gn:2336624,Lajere,Yobe State,7356,village,0,0,50,0,none,none
+gn:2336641,Jahun,Jigawa State,0,village,0,0,50,0,none,none
+gn:2336696,Jada,Adamawa,0,village,0,0,50,0,none,none
+gn:2336798,Iyesi,Ogun State,17220,town,0,0,50,0,none,none
+gn:2336813,Iye-Ekiti,Ekiti State,0,village,0,0,50,0,none,none
+gn:2336825,Iyara,Kogi State,0,village,0,0,50,0,none,none
+gn:2336905,Iwo,Osun State,250443,city,0,0,50,0,none,none
+gn:2336926,Iwere-Ile,Oyo State,0,village,0,0,50,0,none,none
+gn:2336984,Itu,Imo State,0,village,0,0,50,0,none,none
+gn:2336985,Itu,Akwa Ibom State,36358,town,0,0,50,0,none,none
+gn:2336992,Itori,Ogun State,0,village,0,0,50,0,none,none
+gn:2337014,Obarike-Ito,Benue State,0,village,0,0,50,0,none,none
+gn:2337020,Itigidi,Cross River State,0,village,0,0,50,0,none,none
+gn:2337046,Itas,Bauchi,0,village,0,0,50,0,none,none
+gn:2337057,Ita-Ogbolu,Ondo State,0,village,0,0,50,0,none,none
+gn:2337101,Isu,Ebonyi State,0,village,0,0,50,0,none,none
+gn:2337104,Issele-Uku,Delta,0,village,0,0,50,0,none,none
+gn:2337132,Isiokolo,Delta,0,village,0,0,50,0,none,none
+gn:2337148,Isieke,Ebonyi State,89990,town,0,0,50,0,none,none
+gn:2337160,Isua,Ondo State,0,village,0,0,50,0,none,none
+gn:2337181,Iseyin,Oyo State,365300,city,0,0,50,0,none,none
+gn:2337207,Ise-Ekiti,Ekiti State,190063,city,0,0,50,0,none,none
+gn:2337227,Isara,Ogun State,8205,village,0,0,50,0,none,none
+gn:2337235,Isanlu-Itedoijowa,Kogi State,15087,town,0,0,50,0,none,none
+gn:2337236,Isanlu,Kogi State,0,village,0,0,50,0,none,none
+gn:2337275,Isa,Sokoto,0,village,0,0,50,0,none,none
+gn:2337313,Irewe,Lagos,139494,city,0,0,50,0,none,none
+gn:2337319,Iresa-Adu,Oyo State,0,village,0,0,50,0,none,none
+gn:2337324,Ode-Irele,Ondo State,0,village,0,0,50,0,none,none
+gn:2337343,Iragbiji,Osun State,0,village,0,0,50,0,none,none
+gn:2337352,Ipoti,Ekiti State,82113,town,0,0,50,0,none,none
+gn:2337365,Ipokia,Ogun State,0,village,0,0,50,0,none,none
+gn:2337372,Ipetumodu,Osun State,0,village,0,0,50,0,none,none
+gn:2337379,Iperu,Ogun State,15935,town,0,0,50,0,none,none
+gn:2337380,Iperindo,Osun State,0,village,0,0,50,0,none,none
+gn:2337490,Inisa,Osun State,164161,city,0,0,50,0,none,none
+gn:2337500,Ingawa,Katsina State,0,village,0,0,50,0,none,none
+gn:2337540,Imota,Lagos,5240,village,0,0,50,0,none,none
+gn:2337639,Ilorin,Kwara State,1080000,large-city,0,0,50,0,none,none
+gn:2337652,Ilogbo,Ogun State,3996,village,0,0,50,0,none,none
+gn:2337655,Iloffa,Kwara State,0,village,0,0,50,0,none,none
+gn:2337659,Ilobu,Osun State,118089,city,0,0,50,0,none,none
+gn:2337666,Illushi,Edo State,7340,village,0,0,50,0,none,none
+gn:2337680,Illela,Sokoto,17461,town,0,0,50,0,none,none
+gn:2337704,Ilesa,Osun State,325000,city,0,0,50,0,none,none
+gn:2337713,Ile-Oluji,Ondo State,0,village,0,0,50,0,none,none
+gn:2337722,Ilemona,Kwara State,0,village,0,0,50,0,none,none
+gn:2337735,Ile-Ogbo,Osun State,0,village,0,0,50,0,none,none
+gn:2337749,Ilawe-Ekiti,Ekiti State,0,village,0,0,50,0,none,none
+gn:2337759,Ilaro,Ogun State,46999,town,0,0,50,0,none,none
+gn:2337762,Ilare,Ondo State,7685,village,0,0,50,0,none,none
+gn:2337765,Ila Orangun,Osun State,179192,city,0,0,50,0,none,none
+gn:2337886,Ikoyi-Ile,Oyo State,0,village,0,0,50,0,none,none
+gn:2337889,Ikoyi,Lagos,0,village,0,0,50,0,none,none
+gn:2337902,Ikotun,Lagos,0,village,0,0,50,0,none,none
+gn:2338018,Ikot Nakanda,Cross River State,0,village,0,0,50,0,none,none
+gn:2338057,Ikot Ibritam,Akwa Ibom State,0,village,0,0,50,0,none,none
+gn:2338106,Ikot Ekpene,Akwa Ibom State,254806,city,0,0,50,0,none,none
+gn:2338140,Afaha Ikot Ebak,Akwa Ibom State,0,village,0,0,50,0,none,none
+gn:2338229,Ikorodu,Lagos,0,village,0,0,50,0,none,none
+gn:2338242,Ikom,Cross River State,79103,town,0,0,50,0,none,none
+gn:2338246,Ikole-Ekiti,Ekiti State,0,village,0,0,50,0,none,none
+gn:2338269,Ikirun,Osun State,134240,city,0,0,50,0,none,none
+gn:2338273,Ikire,Osun State,222160,city,0,0,50,0,none,none
+gn:2338287,Ikere-Ekiti,Ekiti State,103054,city,0,0,50,0,none,none
+gn:2338300,Ikenne,Ogun State,0,village,0,0,50,0,none,none
+gn:2338305,Ikem,Enugu State,7282,village,0,0,50,0,none,none
+gn:2338313,Ikeja,Lagos,313196,city,0,0,50,0,none,none
+gn:2338325,Ikare,Ondo State,465000,city,0,0,50,0,none,none
+gn:2338328,Ikara,Kaduna State,0,village,0,0,50,0,none,none
+gn:2338334,Ikang,Cross River State,13305,town,0,0,50,0,none,none
+gn:2338356,River Atuwara,Ogun State,15937,town,0,0,50,0,none,none
+gn:2338371,Ijoko,Ogun State,16529,town,0,0,50,0,none,none
+gn:2338385,Ijero-Ekiti,Ekiti State,167632,city,0,0,50,0,none,none
+gn:2338393,Ijiegwu maa clan,Cross River State,7000,village,0,0,50,0,none,none
+gn:2338400,Ijebu Ode,Ogun State,360000,city,0,0,50,0,none,none
+gn:2338401,Ijebu-Jesa,Osun State,51730,town,0,0,50,0,none,none
+gn:2338403,Ijebu-Igbo,Ogun State,109261,city,0,0,50,0,none,none
+gn:2338404,Ijebu-Ife,Ogun State,5733,village,0,0,50,0,none,none
+gn:2338469,Iho,Imo State,7776,village,0,0,50,0,none,none
+gn:2338497,Ihiala,Anambra,83265,town,0,0,50,0,none,none
+gn:2338548,Iguobazuwa,Edo State,0,village,0,0,50,0,none,none
+gn:2338553,Igumale,Benue State,0,village,0,0,50,0,none,none
+gn:2338630,Igede-Ekiti,Ekiti State,87282,town,0,0,50,0,none,none
+gn:2338640,Igbo-Ukwu,Anambra,75224,town,0,0,50,0,none,none
+gn:2338660,Igbor,Benue State,17666,town,0,0,50,0,none,none
+gn:2338669,Igbo-Ora,Oyo State,92719,town,0,0,50,0,none,none
+gn:2338701,Igbokoda,Ondo State,0,village,0,0,50,0,none,none
+gn:2338711,Igboho,Oyo State,136764,city,0,0,50,0,none,none
+gn:2338772,Igbeti,Oyo State,24690,town,0,0,50,0,none,none
+gn:2338775,Igbessa,Ogun State,5619,village,0,0,50,0,none,none
+gn:2338789,Igbekebo,Ondo State,0,village,0,0,50,0,none,none
+gn:2338809,Igbara-Oke,Ondo State,0,village,0,0,50,0,none,none
+gn:2338810,Igbara-Odo,Ekiti State,74121,town,0,0,50,0,none,none
+gn:2338840,Igarra,Edo State,14647,town,0,0,50,0,none,none
+gn:2338855,Igangan,Oyo State,36447,town,0,0,50,0,none,none
+gn:2338863,Igabi,Kaduna State,8840,village,0,0,50,0,none,none
+gn:2338872,Ifon,Osun State,0,village,0,0,50,0,none,none
+gn:2338873,Ifon,Ondo State,7623,village,0,0,50,0,none,none
+gn:2338876,Ifo,Ogun State,88272,town,0,0,50,0,none,none
+gn:2338891,Ifetedo,Osun State,0,village,0,0,50,0,none,none
+gn:2338900,Ile-Ife,Osun State,560000,large-city,0,0,50,0,none,none
+gn:2338908,Ifaki,Ekiti State,9185,village,0,0,50,0,none,none
+gn:2338945,Idu,Akwa Ibom State,0,village,0,0,50,0,none,none
+gn:2338981,Idogbo,Edo State,0,village,0,0,50,0,none,none
+gn:2339065,Idiroko,Ogun State,7487,village,0,0,50,0,none,none
+gn:2339082,Idi-Ayunre,Oyo State,0,village,0,0,50,0,none,none
+gn:2339139,Ido-Ekiti,Ekiti State,0,village,0,0,50,0,none,none
+gn:2339142,Ido,Oyo State,0,village,0,0,50,0,none,none
+gn:2339150,Idanre,Ondo State,86468,town,0,0,50,0,none,none
+gn:2339156,Idah,Kogi State,68703,town,0,0,50,0,none,none
+gn:2339170,Icheu,Kogi State,14704,town,0,0,50,0,none,none
+gn:2339220,Ibokun,Osun State,0,village,0,0,50,0,none,none
+gn:2339224,Iboko,Ebonyi State,0,village,0,0,50,0,none,none
+gn:2339287,Ibi,Taraba State,22757,town,0,0,50,0,none,none
+gn:2339293,Ibeto,Niger State,15565,town,0,0,50,0,none,none
+gn:2339318,Ibagwa-Aka,Enugu State,0,village,0,0,50,0,none,none
+gn:2339354,Ibadan,Oyo State,3649000,large-city,0,0,50,0,none,none
+gn:2339403,Hunkuyi,Kaduna State,8465,village,0,0,50,0,none,none
+gn:2339460,Hong,Adamawa,0,village,0,0,50,0,none,none
+gn:2339468,Holma,Adamawa,9199,village,0,0,50,0,none,none
+gn:2339483,Hinna,Gombe State,7826,village,0,0,50,0,none,none
+gn:2339631,Hadejia,Jigawa State,110753,city,0,0,50,0,none,none
+gn:2339665,Gwoza,Borno State,15176,town,0,0,50,0,none,none
+gn:2339686,Ugwolawo,Kogi State,0,village,0,0,50,0,none,none
+gn:2339704,Gwiwa,Jigawa State,0,village,0,0,50,0,none,none
+gn:2339706,Gwio Kura,Yobe State,7091,village,0,0,50,0,none,none
+gn:2339753,Gwasoro,Kwara State,7263,village,0,0,50,0,none,none
+gn:2339756,Gwarzo,Kano State,16303,town,0,0,50,0,none,none
+gn:2339786,Gwaram,Jigawa State,15806,town,0,0,50,0,none,none
+gn:2339789,Gwaram,Bauchi,6700,village,0,0,50,0,none,none
+gn:2339797,Gwantu,Kaduna State,0,village,0,0,50,0,none,none
+gn:2339811,Gwandu,Kebbi,10018,town,0,0,50,0,none,none
+gn:2339863,Gwagwalada,FCT,0,village,0,0,50,0,none,none
+gn:2339892,Gwadabawa,Sokoto,17486,town,0,0,50,0,none,none
+gn:2339914,Guyuk,Adamawa,0,village,0,0,50,0,none,none
+gn:2339937,Gusau,Zamfara State,226857,city,0,0,50,0,none,none
+gn:2339964,Guri,Jigawa State,0,village,0,0,50,0,none,none
+gn:2340086,Gummi,Zamfara State,38744,town,0,0,50,0,none,none
+gn:2340091,Gumel,Jigawa State,42742,town,0,0,50,0,none,none
+gn:2340132,Gulma,Kebbi,6719,village,0,0,50,0,none,none
+gn:2340151,Gulak,Adamawa,0,village,0,0,50,0,none,none
+gn:2340170,Gujba,Yobe State,11359,town,0,0,50,0,none,none
+gn:2340207,Gudumbali,Borno State,0,village,0,0,50,0,none,none
+gn:2340249,Gubio,Borno State,0,village,0,0,50,0,none,none
+gn:2340323,Goronyo,Sokoto,10460,town,0,0,50,0,none,none
+gn:2340350,Gorgoram,Yobe State,12470,town,0,0,50,0,none,none
+gn:2340389,Gora,Katsina State,5867,village,0,0,50,0,none,none
+gn:2340404,Goniri,Yobe State,11673,town,0,0,50,0,none,none
+gn:2340446,Gombi,Adamawa,19616,town,0,0,50,0,none,none
+gn:2340451,Gombe,Gombe State,560000,large-city,0,0,50,0,none,none
+gn:2340576,Giwa,Kaduna State,0,village,0,0,50,0,none,none
+gn:2340618,Girei,Adamawa,0,village,0,0,50,0,none,none
+gn:2340908,Gidan Madi,Sokoto,0,village,0,0,50,0,none,none
+gn:2341212,Giade,Bauchi,0,village,0,0,50,0,none,none
+gn:2341218,Gezawa,Kano State,0,village,0,0,50,0,none,none
+gn:2341275,Gembu,Taraba State,19881,town,0,0,50,0,none,none
+gn:2341282,Gella,Adamawa,0,village,0,0,50,0,none,none
+gn:2341294,Geidam,Yobe State,41367,town,0,0,50,0,none,none
+gn:2341326,Buruku,Benue State,0,village,0,0,50,0,none,none
+gn:2341355,Gbongan,Osun State,139485,city,0,0,50,0,none,none
+gn:2341374,Gboko,Benue State,365000,city,0,0,50,0,none,none
+gn:2341506,Gbajimba,Benue State,0,village,0,0,50,0,none,none
+gn:2341580,Gaya,Kano State,20959,town,0,0,50,0,none,none
+gn:2341641,Gassol,Taraba State,14326,town,0,0,50,0,none,none
+gn:2341656,Gashua,Yobe State,125817,city,0,0,50,0,none,none
+gn:2341695,Garun Malam,Kano State,0,village,0,0,50,0,none,none
+gn:2341756,Garko,Kano State,0,village,0,0,50,0,none,none
+gn:2341758,Garko,Gombe State,21141,town,0,0,50,0,none,none
+gn:2341765,Garki,Jigawa State,0,village,0,0,50,0,none,none
+gn:2341926,Garaku,Nasarawa State,0,village,0,0,50,0,none,none
+gn:2341955,Ganye,Adamawa,15178,town,0,0,50,0,none,none
+gn:2341969,Gantsa,Jigawa State,0,village,0,0,50,0,none,none
+gn:2342125,Gandi,Sokoto,13940,town,0,0,50,0,none,none
+gn:2342192,Gamboru,Borno State,84672,town,0,0,50,0,none,none
+gn:2342199,Gamawa,Bauchi,13549,town,0,0,50,0,none,none
+gn:2342291,Gakem,Cross River State,5865,village,0,0,50,0,none,none
+gn:2342294,Gajiram,Borno State,0,village,0,0,50,0,none,none
+gn:2342340,Gagarawa,Jigawa State,11450,town,0,0,50,0,none,none
+gn:2342406,Gada,Sokoto,0,village,0,0,50,0,none,none
+gn:2342439,Gabarin,Bauchi,10160,town,0,0,50,0,none,none
+gn:2342490,Funtua,Katsina State,136811,city,0,0,50,0,none,none
+gn:2342512,Fugar,Edo State,0,village,0,0,50,0,none,none
+gn:2342513,Fufu,Kwara State,0,village,0,0,50,0,none,none
+gn:2342515,Fufore,Adamawa,0,village,0,0,50,0,none,none
+gn:2342622,Fika,Yobe State,0,village,0,0,50,0,none,none
+gn:2342628,Fiditi,Oyo State,71461,town,0,0,50,0,none,none
+gn:2342687,Faskari,Katsina State,0,village,0,0,50,0,none,none
+gn:2342883,Ezza-Ohu,Ebonyi State,67414,town,0,0,50,0,none,none
+gn:2342933,Ezzamgbo,Ebonyi State,0,village,0,0,50,0,none,none
+gn:2343057,Etinan,Akwa Ibom State,10318,town,0,0,50,0,none,none
+gn:2343073,Ete,Enugu State,9805,village,0,0,50,0,none,none
+gn:2343093,Esuk Oron,Akwa Ibom State,112033,city,0,0,50,0,none,none
+gn:2343144,Eruwa,Oyo State,34802,town,0,0,50,0,none,none
+gn:2343252,Epe,Lagos,84711,town,0,0,50,0,none,none
+gn:2343267,Enwang,Akwa Ibom State,0,village,0,0,50,0,none,none
+gn:2343269,Umunze,Anambra,0,village,0,0,50,0,none,none
+gn:2343270,Enugu-Ukwu,Anambra,68785,town,0,0,50,0,none,none
+gn:2343273,Enugu-Ezike,Enugu State,18989,town,0,0,50,0,none,none
+gn:2343279,Enugu,Enugu State,950000,large-city,0,0,50,0,none,none
+gn:2343294,Enagi,Niger State,0,village,0,0,50,0,none,none
+gn:2343299,Emure-Ekiti,Ekiti State,90645,town,0,0,50,0,none,none
+gn:2343308,Emuoha,Rivers State,0,village,0,0,50,0,none,none
+gn:2343512,Elele,Rivers State,20620,town,0,0,50,0,none,none
+gn:2343641,Ekpoma,Edo State,59618,town,0,0,50,0,none,none
+gn:2343720,Eket,Akwa Ibom State,25569,town,0,0,50,0,none,none
+gn:2343725,Ekeremor,Bayelsa State,0,village,0,0,50,0,none,none
+gn:2343776,Ejirin,Lagos,9204,village,0,0,50,0,none,none
+gn:2343784,Ejigbo,Osun State,138357,city,0,0,50,0,none,none
+gn:2343815,Ehor,Edo State,0,village,0,0,50,0,none,none
+gn:2343822,Eha Amufu,Enugu State,70779,town,0,0,50,0,none,none
+gn:2343939,Egbeda,Oyo State,0,village,0,0,50,0,none,none
+gn:2343943,Egbe,Kogi State,17612,town,0,0,50,0,none,none
+gn:2343982,Effurun,Delta,0,village,0,0,50,0,none,none
+gn:2343983,Efon-Alaaye,Ekiti State,279319,city,0,0,50,0,none,none
+gn:2343985,Effium,Ebonyi State,86945,town,0,0,50,0,none,none
+gn:2343986,Effraya,Cross River State,0,village,0,0,50,0,none,none
+gn:2344053,Ede,Osun State,159866,city,0,0,50,0,none,none
+gn:2344078,Ebute-Metta,Lagos,0,village,0,0,50,0,none,none
+gn:2344082,Ebute Ikorodu,Lagos,535619,large-city,0,0,50,0,none,none
+gn:2344128,Eberi,Rivers State,0,village,0,0,50,0,none,none
+gn:2344131,Ebem Ohafia,Abia State,0,village,0,0,50,0,none,none
+gn:2344217,Dutsin-Ma,Katsina State,12595,town,0,0,50,0,none,none
+gn:2344227,Dutsi,Katsina State,0,village,0,0,50,0,none,none
+gn:2344229,Dutsen Wai,Kaduna State,22062,town,0,0,50,0,none,none
+gn:2344245,Dutse,Jigawa State,17129,town,0,0,50,0,none,none
+gn:2344337,Malam Madori,Jigawa State,0,village,0,0,50,0,none,none
+gn:2344415,Duku,Niger State,8014,village,0,0,50,0,none,none
+gn:2344418,Dukku,Gombe State,16961,town,0,0,50,0,none,none
+gn:2344582,Donga,Taraba State,0,village,0,0,50,0,none,none
+gn:2344600,Doma,Nasarawa State,15097,town,0,0,50,0,none,none
+gn:2344760,Disina,Bauchi,5833,village,0,0,50,0,none,none
+gn:2344804,Dindima,Bauchi,13356,town,0,0,50,0,none,none
+gn:2344854,Dikwa,Borno State,29026,town,0,0,50,0,none,none
+gn:2344861,Dikenafai,Imo State,0,village,0,0,50,0,none,none
+gn:2344941,Dengi,Plateau State,6276,village,0,0,50,0,none,none
+gn:2344956,Demsa,Adamawa,0,village,0,0,50,0,none,none
+gn:2344981,Dekina,Kogi State,11067,town,0,0,50,0,none,none
+gn:2345003,Degema,Rivers State,0,village,0,0,50,0,none,none
+gn:2345029,Deba,Gombe State,17671,town,0,0,50,0,none,none
+gn:2345074,Dawakin Tofa,Kano State,0,village,0,0,50,0,none,none
+gn:2345077,Dawakin Kudu,Kano State,0,village,0,0,50,0,none,none
+gn:2345094,Daura,Katsina State,25289,town,0,0,50,0,none,none
+gn:2345096,Daura,Yobe State,78277,town,0,0,50,0,none,none
+gn:2345152,Darazo,Bauchi,18415,town,0,0,50,0,none,none
+gn:2345172,Dapchi,Yobe State,14077,town,0,0,50,0,none,none
+gn:2345213,Dan Sadau,Zamfara State,7568,village,0,0,50,0,none,none
+gn:2345219,Dan Musa,Katsina State,0,village,0,0,50,0,none,none
+gn:2345282,Dankama,Katsina State,6531,village,0,0,50,0,none,none
+gn:2345283,Dankalwa,Yobe State,5730,village,0,0,50,0,none,none
+gn:2345306,Danja,Katsina State,9736,village,0,0,50,0,none,none
+gn:2345336,Dan Gora,Kano State,7907,village,0,0,50,0,none,none
+gn:2345349,Dange,Sokoto,12369,town,0,0,50,0,none,none
+gn:2345381,Dandume,Katsina State,0,village,0,0,50,0,none,none
+gn:2345498,Damboa,Borno State,21571,town,0,0,50,0,none,none
+gn:2345505,Dambatta,Kano State,8940,village,0,0,50,0,none,none
+gn:2345509,Dambam,Bauchi,0,village,0,0,50,0,none,none
+gn:2345521,Damaturu,Yobe State,46000,town,0,0,50,0,none,none
+gn:2345526,Damasak,Borno State,13874,town,0,0,50,0,none,none
+gn:2345550,Damagum,Yobe State,0,village,0,0,50,0,none,none
+gn:2345643,Dakingari,Kebbi,12558,town,0,0,50,0,none,none
+gn:2345785,Dadiya,Gombe State,7152,village,0,0,50,0,none,none
+gn:2345872,Dabai,Kebbi,6012,village,0,0,50,0,none,none
+gn:2346076,Chibok,Borno State,0,village,0,0,50,0,none,none
+gn:2346098,Charanchi,Katsina State,0,village,0,0,50,0,none,none
+gn:2346199,Tsafe,Zamfara State,9367,village,0,0,50,0,none,none
+gn:2346229,Calabar,Cross River State,540000,large-city,0,0,50,0,none,none
+gn:2346245,Bwari,FCT,0,village,0,0,50,0,none,none
+gn:2346317,Burutu,Delta,16410,town,0,0,50,0,none,none
+gn:2346322,Burumburum,Kaduna State,11689,town,0,0,50,0,none,none
+gn:2346399,Bununu,Bauchi,6123,village,0,0,50,0,none,none
+gn:2346401,Dass,Bauchi,7417,village,0,0,50,0,none,none
+gn:2346412,Bunkure,Kano State,0,village,0,0,50,0,none,none
+gn:2346416,Bungudu,Zamfara State,0,village,0,0,50,0,none,none
+gn:2346561,Bukuru,Plateau State,15540,town,0,0,50,0,none,none
+gn:2346575,Bukkuyum,Zamfara State,0,village,0,0,50,0,none,none
+gn:2346615,Buguma,Rivers State,135404,city,0,0,50,0,none,none
+gn:2346632,Buga,Nasarawa State,9913,village,0,0,50,0,none,none
+gn:2346719,Briyel,Borno State,0,village,0,0,50,0,none,none
+gn:2346734,Twon-Brass,Bayelsa State,11122,town,0,0,50,0,none,none
+gn:2346788,Bornu Yassu,Borno State,5811,village,0,0,50,0,none,none
+gn:2346800,Bori,Rivers State,11693,town,0,0,50,0,none,none
+gn:2346805,Ugbokpo,Benue State,14218,town,0,0,50,0,none,none
+gn:2346812,Bonny,Rivers State,16868,town,0,0,50,0,none,none
+gn:2346843,Bomadi,Delta,8402,village,0,0,50,0,none,none
+gn:2346887,Bokkos,Plateau State,12538,town,0,0,50,0,none,none
+gn:2346893,Bokani,Niger State,8624,village,0,0,50,0,none,none
+gn:2346896,Boju,Benue State,12814,town,0,0,50,0,none,none
+gn:2346902,Boje,Cross River State,0,village,0,0,50,0,none,none
+gn:2346906,Boi,Bauchi,6033,village,0,0,50,0,none,none
+gn:2346918,Bogoro,Bauchi,0,village,0,0,50,0,none,none
+gn:2346945,Bodinga,Sokoto,0,village,0,0,50,0,none,none
+gn:2346951,Bode Saadu,Kwara State,16619,town,0,0,50,0,none,none
+gn:2346954,Bode Osi,Osun State,0,village,0,0,50,0,none,none
+gn:2346995,Biu,Borno State,95005,town,0,0,50,0,none,none
+gn:2347033,Mallam Fatori,Borno State,0,village,0,0,50,0,none,none
+gn:2347041,Birniwa,Jigawa State,9334,village,0,0,50,0,none,none
+gn:2347057,Birnin Kudu,Jigawa State,26565,town,0,0,50,0,none,none
+gn:2347059,Birnin Kebbi,Kebbi,108164,city,0,0,50,0,none,none
+gn:2347061,Sofo-Birnin-Gwari,Kaduna State,22380,town,0,0,50,0,none,none
+gn:2347062,Birnin Gwari,Kaduna State,0,village,0,0,50,0,none,none
+gn:2347109,Bin Yauri,Kebbi,11501,town,0,0,50,0,none,none
+gn:2347116,Binji,Sokoto,6717,village,0,0,50,0,none,none
+gn:2347132,Bindawa,Katsina State,0,village,0,0,50,0,none,none
+gn:2347154,Billiri,Gombe State,0,village,0,0,50,0,none,none
+gn:2347155,Biliri,Gombe State,15976,town,0,0,50,0,none,none
+gn:2347209,Bida,Niger State,400000,city,0,0,50,0,none,none
+gn:2347210,Bichi,Kano State,0,village,0,0,50,0,none,none
+gn:2347238,Besse,Kebbi,0,village,0,0,50,0,none,none
+gn:2347279,Benisheikh,Borno State,9825,village,0,0,50,0,none,none
+gn:2347283,Benin City,Edo State,1782000,large-city,0,0,50,0,none,none
+gn:2347303,Bende,Abia State,79618,town,0,0,50,0,none,none
+gn:2347304,Bena,Kebbi,8361,village,0,0,50,0,none,none
+gn:2347330,Beli,Taraba State,17467,town,0,0,50,0,none,none
+gn:2347383,Bebeji,Kano State,10987,town,0,0,50,0,none,none
+gn:2347456,Baure,Katsina State,0,village,0,0,50,0,none,none
+gn:2347470,Bauchi,Bauchi,693700,large-city,0,0,50,0,none,none
+gn:2347483,Batsari,Katsina State,7445,village,0,0,50,0,none,none
+gn:2347511,Batagarawa,Katsina State,0,village,0,0,50,0,none,none
+gn:2347528,Bassa,Plateau State,0,village,0,0,50,0,none,none
+gn:2347592,Baro,Niger State,26821,town,0,0,50,0,none,none
+gn:2347712,Barkin Ladi,Plateau State,0,village,0,0,50,0,none,none
+gn:2347757,Bara,Yobe State,0,village,0,0,50,0,none,none
+gn:2347758,Bara,Gombe State,11673,town,0,0,50,0,none,none
+gn:2347954,Bama,Borno State,118121,city,0,0,50,0,none,none
+gn:2348013,Balle,Sokoto,0,village,0,0,50,0,none,none
+gn:2348106,Bakura,Zamfara State,0,village,0,0,50,0,none,none
+gn:2348118,Bakori,Katsina State,12604,town,0,0,50,0,none,none
+gn:2348203,Bajoga,Gombe State,0,village,0,0,50,0,none,none
+gn:2348228,Baissa,Taraba State,8911,village,0,0,50,0,none,none
+gn:2348253,Bagwai,Kano State,0,village,0,0,50,0,none,none
+gn:2348259,Bagudo,Kebbi,6924,village,0,0,50,0,none,none
+gn:2348298,Bugana,Kogi State,9737,village,0,0,50,0,none,none
+gn:2348308,Obagaji,Benue State,0,village,0,0,50,0,none,none
+gn:2348365,Badeggi,Niger State,8283,village,0,0,50,0,none,none
+gn:2348395,Badagry,Lagos,26383,town,0,0,50,0,none,none
+gn:2348419,Babura,Jigawa State,7267,village,0,0,50,0,none,none
+gn:2348455,Babban Gida,Yobe State,0,village,0,0,50,0,none,none
+gn:2348507,Babana,Niger State,17617,town,0,0,50,0,none,none
+gn:2348595,Azare,Bauchi,105687,city,0,0,50,0,none,none
+gn:2348755,Awo-Idemili,Imo State,0,village,0,0,50,0,none,none
+gn:2348761,Awo,Osun State,0,village,0,0,50,0,none,none
+gn:2348773,Awka,Anambra,167738,city,0,0,50,0,none,none
+gn:2348783,Awgu,Enugu State,23175,town,0,0,50,0,none,none
+gn:2348792,Awe,Nasarawa State,0,village,0,0,50,0,none,none
+gn:2348874,Auna,Niger State,8590,village,0,0,50,0,none,none
+gn:2348881,Augie,Kebbi,0,village,0,0,50,0,none,none
+gn:2348892,Auchi,Edo State,62907,town,0,0,50,0,none,none
+gn:2349019,Atani,Anambra,230000,city,0,0,50,0,none,none
+gn:2349030,Atan,Ogun State,3907,village,0,0,50,0,none,none
+gn:2349114,Askira,Borno State,0,village,0,0,50,0,none,none
+gn:2349213,Azare,Borno State,0,village,0,0,50,0,none,none
+gn:2349276,Asaba,Delta,73374,town,0,0,50,0,none,none
+gn:2349360,Arochukwu,Abia State,10776,town,0,0,50,0,none,none
+gn:2349431,Argungu,Kebbi,45584,town,0,0,50,0,none,none
+gn:2349473,Araromi-Opin,Kwara State,0,village,0,0,50,0,none,none
+gn:2349529,Aramoko-Ekiti,Ekiti State,74491,town,0,0,50,0,none,none
+gn:2349558,Apomu,Osun State,71656,town,0,0,50,0,none,none
+gn:2349656,Apapa,Lagos,0,village,0,0,50,0,none,none
+gn:2349788,Ankpa,Kogi State,14630,town,0,0,50,0,none,none
+gn:2349797,Anka,Zamfara State,11641,town,0,0,50,0,none,none
+gn:2349951,Anchau,Kaduna State,15538,town,0,0,50,0,none,none
+gn:2349964,Anaku,Anambra,0,village,0,0,50,0,none,none
+gn:2350027,Amper,Plateau State,12212,town,0,0,50,0,none,none
+gn:2350090,Amaigbo,Imo State,0,village,0,0,50,0,none,none
+gn:2350172,Amassoma,Bayelsa State,6970,village,0,0,50,0,none,none
+gn:2350222,Umundugba,Imo State,0,village,0,0,50,0,none,none
+gn:2350249,Amaigbo,Abia State,127300,city,0,0,50,0,none,none
+gn:2350259,Amagunze,Enugu State,9598,village,0,0,50,0,none,none
+gn:2350394,Alkaleri,Bauchi,0,village,0,0,50,0,none,none
+gn:2350428,Aliero,Kebbi,0,village,0,0,50,0,none,none
+gn:2350434,Aliayabiagba,Lagos,228000,city,0,0,50,0,none,none
+gn:2350436,Aliade,Benue State,10292,town,0,0,50,0,none,none
+gn:2350476,Albasu,Kano State,0,village,0,0,50,0,none,none
+gn:2350523,Alasia,Lagos,100000,city,0,0,50,0,none,none
+gn:2350592,Alapa,Oyo State,9584,village,0,0,50,0,none,none
+gn:2350785,Akwukwu-Igbo,Delta,0,village,0,0,50,0,none,none
+gn:2350792,Akwete,Abia State,0,village,0,0,50,0,none,none
+gn:2350806,Akwanga,Nasarawa State,15985,town,0,0,50,0,none,none
+gn:2350841,Akure,Ondo State,730000,large-city,0,0,50,0,none,none
+gn:2350886,Aku,Enugu State,73742,town,0,0,50,0,none,none
+gn:2351020,Akodo,Lagos,0,village,0,0,50,0,none,none
+gn:2351027,Akko,Gombe State,6129,village,0,0,50,0,none,none
+gn:2351156,Ake-Eze,Enugu State,6537,village,0,0,50,0,none,none
+gn:2351204,Akanran,Oyo State,0,village,0,0,50,0,none,none
+gn:2351208,Akamkpa,Cross River State,0,village,0,0,50,0,none,none
+gn:2351209,Akankpa,Cross River State,7000,village,0,0,50,0,none,none
+gn:2351329,Ajingi,Kano State,0,village,0,0,50,0,none,none
+gn:2351449,Ajaawa,Oyo State,0,village,0,0,50,0,none,none
+gn:2351461,Ajasse Ipo,Kwara State,12718,town,0,0,50,0,none,none
+gn:2351470,Ajaokuta,Kogi State,15144,town,0,0,50,0,none,none
+gn:2351494,Ajalli,Anambra,0,village,0,0,50,0,none,none
+gn:2351504,Ajaka,Kogi State,0,village,0,0,50,0,none,none
+gn:2351541,Ayetoro,Ogun State,0,village,0,0,50,0,none,none
+gn:2351549,Ayete,Oyo State,0,village,0,0,50,0,none,none
+gn:2351657,Ahoada,Rivers State,12848,town,0,0,50,0,none,none
+gn:2351695,Agwara,Niger State,0,village,0,0,50,0,none,none
+gn:2351740,Agulu,Anambra,79021,town,0,0,50,0,none,none
+gn:2351762,Aguata,Anambra,0,village,0,0,50,0,none,none
+gn:2351810,Akpet Central,Cross River State,0,village,0,0,50,0,none,none
+gn:2351850,Ago-Are,Oyo State,13919,town,0,0,50,0,none,none
+gn:2351851,Ago-Amodu,Oyo State,0,village,0,0,50,0,none,none
+gn:2351927,Agenebode,Edo State,12730,town,0,0,50,0,none,none
+gn:2351943,Agege,Lagos,683600,large-city,0,0,50,0,none,none
+gn:2351979,Agbor,Delta,67610,town,0,0,50,0,none,none
+gn:2352040,Tse-Agberagba,Benue State,0,village,0,0,50,0,none,none
+gn:2352075,Agbani,Enugu State,0,village,0,0,50,0,none,none
+gn:2352110,Agbabu,Ondo State,8611,village,0,0,50,0,none,none
+gn:2352175,Agaie,Niger State,11742,town,0,0,50,0,none,none
+gn:2352206,Afuze,Edo State,0,village,0,0,50,0,none,none
+gn:2352230,Afon,Kwara State,0,village,0,0,50,0,none,none
+gn:2352250,Afikpo,Ebonyi State,71866,town,0,0,50,0,none,none
+gn:2352281,Afam,Rivers State,0,village,0,0,50,0,none,none
+gn:2352288,Afaha Offiong,Akwa Ibom State,0,village,0,0,50,0,none,none
+gn:2352352,Adoru,Kogi State,8203,village,0,0,50,0,none,none
+gn:2352356,Ado-Odo,Ogun State,15442,town,0,0,50,0,none,none
+gn:2352375,Adogo,Kogi State,0,village,0,0,50,0,none,none
+gn:2352379,Ado-Ekiti,Ekiti State,435000,city,0,0,50,0,none,none
+gn:2352408,Adikpo,Benue State,0,village,0,0,50,0,none,none
+gn:2352589,Adani,Enugu State,6161,village,0,0,50,0,none,none
+gn:2352698,Achalla,Anambra,0,village,0,0,50,0,none,none
+gn:2352730,Abuochiche,Cross River State,0,village,0,0,50,0,none,none
+gn:2352778,Abuja,FCT,2690000,large-city,0,0,50,0,none,none
+gn:2352789,Abudu,Edo State,0,village,0,0,50,0,none,none
+gn:2352797,Abua,Rivers State,0,village,0,0,50,0,none,none
+gn:2352804,Abraka,Delta,6940,village,0,0,50,0,none,none
+gn:2352824,Abonnema,Rivers State,0,village,0,0,50,0,none,none
+gn:2352848,Aboh,Delta,0,village,0,0,50,0,none,none
+gn:2352857,Abocho,Kogi State,6801,village,0,0,50,0,none,none
+gn:2352897,Abigi,Ogun State,0,village,0,0,50,0,none,none
+gn:2352947,Abeokuta,Ogun State,735000,large-city,0,0,50,0,none,none
+gn:2352958,Abejukolo,Kogi State,0,village,0,0,50,0,none,none
+gn:2353099,Abakaliki,Ebonyi State,134102,city,0,0,50,0,none,none
+gn:2353100,Abak,Akwa Ibom State,12562,town,0,0,50,0,none,none
+gn:2353104,Abaji,FCT,0,village,0,0,50,0,none,none
+gn:2353122,Abagana,Anambra,0,village,0,0,50,0,none,none
+gn:2353151,Aba,Abia State,1160000,large-city,0,0,50,0,none,none
+gn:2566633,Obalende,Lagos,342000,city,0,0,50,0,none,none
+gn:2566636,Ajegunle,Lagos,550000,large-city,0,0,50,0,none,none
+gn:2566637,Aiyetoro,Lagos,5430,village,0,0,50,0,none,none
+gn:2566676,Alimosho,Lagos,308290,city,0,0,50,0,none,none
+gn:2566680,Ojota,Lagos,0,village,0,0,50,0,none,none
+gn:2566695,Ifako,Lagos,0,village,0,0,50,0,none,none
+gn:2566696,Akowonjo,Lagos,308900,city,0,0,50,0,none,none
+gn:2591159,Degema Hulk,Rivers State,19223,town,0,0,50,0,none,none
+gn:2596820,Yana,Bauchi,0,village,0,0,50,0,none,none
+gn:2596833,Buni Yadi,Yobe State,0,village,0,0,50,0,none,none
+gn:6776134,Banki,Borno State,5000,village,0,0,50,0,none,none
+gn:6834204,Obangede,Kogi State,0,village,0,0,50,0,none,none
+gn:6852642,Naka,Benue State,0,village,0,0,50,0,none,none
+gn:6856235,Ezillo,Ebonyi State,0,village,0,0,50,0,none,none
+gn:6974495,Koguna,Kano State,0,village,0,0,50,0,none,none
+gn:7014620,Nasko,Niger State,0,village,0,0,50,0,none,none
+gn:7027846,Oghara,Delta,0,village,0,0,50,0,none,none
+gn:7054616,Abat,Akwa Ibom State,0,village,0,0,50,0,none,none
+gn:7073463,Urua Inyang,Akwa Ibom State,0,village,0,0,50,0,none,none
+gn:7073908,Ibiaku Ntok Okpo,Akwa Ibom State,0,village,0,0,50,0,none,none
+gn:7081180,Irrua,Edo State,0,village,0,0,50,0,none,none
+gn:7081212,Igueben,Edo State,0,village,0,0,50,0,none,none
+gn:7098609,Umumma,Imo State,0,village,0,0,50,0,none,none
+gn:7101202,Akinima,Rivers State,0,village,0,0,50,0,none,none
+gn:7101308,Umuguma,Imo State,0,village,0,0,50,0,none,none
+gn:7732748,Lekki,Lagos,401272,city,0,0,50,0,none,none
+gn:8996492,Sabon Garin Nangere,Yobe State,0,village,0,0,50,0,none,none
+gn:9181895,Aguobu-Owa,Enugu State,0,village,0,0,50,0,none,none
+gn:9269455,Ugbodo,Ebonyi State,0,village,0,0,50,0,none,none
+gn:9274242,Onueke,Ebonyi State,0,village,0,0,50,0,none,none
+gn:9637936,Lessel,Benue State,0,village,0,0,50,0,none,none
+gn:10009882,Festac Town,Lagos,0,village,0,0,50,0,none,none
+gn:10026295,Atan,Ogun State,0,village,0,0,50,0,none,none
+gn:10033048,Okuku,Osun State,0,village,0,0,50,0,none,none
+gn:10149516,Iyana-Ofa,Oyo State,0,village,0,0,50,0,none,none
+gn:10182317,Mashegu,Niger State,0,village,0,0,50,0,none,none
+gn:10182318,Bangi,Niger State,0,village,0,0,50,0,none,none
+gn:10182351,Gawu Babangida,Niger State,0,village,0,0,50,0,none,none
+gn:10182387,Sabon Wuse,Niger State,0,village,0,0,50,0,none,none
+gn:10194293,Birnin Magaji,Zamfara State,0,village,0,0,50,0,none,none
+gn:10201931,Kaura,Kaduna State,0,village,0,0,50,0,none,none
+gn:10215205,Karu,Nasarawa State,0,village,0,0,50,0,none,none
+gn:10259699,Akpafa,Kogi State,0,village,0,0,50,0,none,none
+gn:10270356,Nkwo Nike,Enugu State,0,village,0,0,50,0,none,none
+gn:10273507,Isiaka,Ebonyi State,0,village,0,0,50,0,none,none
+gn:10273508,Obiozara,Ebonyi State,0,village,0,0,50,0,none,none
+gn:10273509,Onuebonyi Echara,Ebonyi State,0,village,0,0,50,0,none,none
+gn:10275556,Nwaorieubi,Imo State,0,village,0,0,50,0,none,none
+gn:10275569,Aboh,Imo State,0,village,0,0,50,0,none,none
+gn:10275590,Egbema,Imo State,0,village,0,0,50,0,none,none
+gn:10275683,Isinweke,Imo State,0,village,0,0,50,0,none,none
+gn:10275720,Nnenasa,Imo State,0,village,0,0,50,0,none,none
+gn:10275755,Oke-Ikpe,Abia State,0,village,0,0,50,0,none,none
+gn:10275756,Osisioma,Abia State,0,village,0,0,50,0,none,none
+gn:10275804,Omoba,Abia State,0,village,0,0,50,0,none,none
+gn:10275805,Okpuala-Ngwa,Abia State,0,village,0,0,50,0,none,none
+gn:10276482,Nkwoagu Isuochi,Abia State,0,village,0,0,50,0,none,none
+gn:10276484,Isiala Oboro,Abia State,0,village,0,0,50,0,none,none
+gn:10276592,Ogbia,Bayelsa State,549774,large-city,0,0,50,0,none,none
+gn:10316974,Upenekang,Akwa Ibom State,0,village,0,0,50,0,none,none
+gn:10317152,Ikot Edibon,Akwa Ibom State,0,village,0,0,50,0,none,none
+gn:10317153,Ikot Akpa Nkuk,Akwa Ibom State,0,village,0,0,50,0,none,none
+gn:10317589,Eyofin,Akwa Ibom State,0,village,0,0,50,0,none,none
+gn:10317749,Urue Offong,Akwa Ibom State,0,village,0,0,50,0,none,none
+gn:10322703,Mabudi,Plateau State,0,village,0,0,50,0,none,none
+gn:10322706,Tunkus,Plateau State,0,village,0,0,50,0,none,none
+gn:10322714,Baap,Plateau State,0,village,0,0,50,0,none,none
+gn:10323499,Kwal,Plateau State,0,village,0,0,50,0,none,none
+gn:10337122,Boh,Gombe State,0,village,0,0,50,0,none,none
+gn:10337567,Kanamma,Yobe State,0,village,0,0,50,0,none,none
+gn:10364493,Khaddamari,Borno State,0,village,0,0,50,0,none,none
+gn:10370397,Sunkani,Taraba State,0,village,0,0,50,0,none,none
+gn:10370805,Saakpenwa,Rivers State,0,village,0,0,50,0,none,none
+gn:10371102,Nchia,Rivers State,0,village,0,0,50,0,none,none
+gn:10371104,Rumuodomaya,Rivers State,0,village,0,0,50,0,none,none
+gn:12102562,Alari-Isadan,Ogun State,2853,village,0,0,50,0,none,none
+gn:12129605,Chakwama,Jigawa State,200000,city,0,0,50,0,none,none
+gn:12359321,Lagos Island,Lagos,0,village,0,0,50,0,none,none
+gn:12359322,Eti-Osa,Lagos,0,village,0,0,50,0,none,none
+gn:13118710,Apumiri,Abia State,0,village,0,0,50,0,none,none

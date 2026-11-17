@@ -1,0 +1,95 @@
+place_id,name,region,population,market,verified_homes,dated_listings,shortfall_to_50,recorded_sales,rent_source,price_source
+gn:1024552,Xai-Xai,Gaza Province,154356,city,0,0,50,0,none,none
+gn:1024680,Gorongosa,Sofala,21792,town,0,0,50,0,none,none
+gn:1024683,Vilankulo,Inhambane Province,43183,town,0,0,50,0,none,none
+gn:1024685,Moatize,Tete,45213,town,0,0,50,0,none,none
+gn:1024687,Nhamatanda,Sofala,30087,town,0,0,50,0,none,none
+gn:1024688,Marracuene,Maputo Province,13051,town,0,0,50,0,none,none
+gn:1024692,Caia,Sofala,21179,town,0,0,50,0,none,none
+gn:1024694,Mocuba,Zambezia Province,196001,city,0,0,50,0,none,none
+gn:1024695,Ibo,Cabo Delgado Province,5701,village,0,0,50,0,none,none
+gn:1024696,Dondo,Sofala,82260,town,0,0,50,0,none,none
+gn:1024697,Chinde,Zambezia Province,17558,town,0,0,50,0,none,none
+gn:1024699,Mocímboa da Praia,Cabo Delgado Province,45313,town,0,0,50,0,none,none
+gn:1024701,Macia,Gaza Province,32286,town,0,0,50,0,none,none
+gn:1024703,Maganja,Zambezia Province,17900,town,0,0,50,0,none,none
+gn:1025104,Ulongué,Tete,15820,town,0,0,50,0,none,none
+gn:1026014,Tete,Tete,357000,city,0,0,50,0,none,none
+gn:1026755,Songo,Tete,31101,town,0,0,50,0,none,none
+gn:1028079,Ressano Garcia,Maputo Province,110000,city,0,0,50,0,none,none
+gn:1028307,Quissico,Inhambane Province,12070,town,0,0,50,0,none,none
+gn:1028434,Quelimane,Zambezia Province,349842,city,0,0,50,0,none,none
+gn:1028576,Bilene,Gaza Province,9235,village,0,0,50,0,none,none
+gn:1028918,Pemba,Cabo Delgado Province,232932,city,0,0,50,0,none,none
+gn:1028970,Pebane,Zambezia Province,17167,town,0,0,50,0,none,none
+gn:1029537,Nova Mambone,Inhambane Province,2482,village,0,0,50,0,none,none
+gn:1033356,Nampula,Nampula,770379,large-city,0,0,50,0,none,none
+gn:1033797,Namialo,Nampula,37226,town,0,0,50,0,none,none
+gn:1033827,Nametil,Nampula,52457,town,0,0,50,0,none,none
+gn:1034311,Namacurra,Zambezia Province,22647,town,0,0,50,0,none,none
+gn:1034421,Namaacha,Maputo Province,14781,town,0,0,50,0,none,none
+gn:1035025,Nacala,Nampula,239808,city,0,0,50,0,none,none
+gn:1035471,Murrupula,Nampula,19504,town,0,0,50,0,none,none
+gn:1036263,Mueda,Cabo Delgado Province,27274,town,0,0,50,0,none,none
+gn:1037021,Mossuril,Nampula,24079,town,0,0,50,0,none,none
+gn:1037042,Morrumbene,Inhambane Province,12532,town,0,0,50,0,none,none
+gn:1037044,Morrumbala,Zambezia Province,24076,town,0,0,50,0,none,none
+gn:1037125,Montepuez,Cabo Delgado Province,88442,town,0,0,50,0,none,none
+gn:1037180,Monapo,Nampula,50134,town,0,0,50,0,none,none
+gn:1037370,Mocímboa,Cabo Delgado Province,27909,town,0,0,50,0,none,none
+gn:1037390,Mozambique,Nampula,55829,town,0,0,50,0,none,none
+gn:1037408,Moamba,Maputo Province,14940,town,0,0,50,0,none,none
+gn:1037721,Milange,Zambezia Province,35146,town,0,0,50,0,none,none
+gn:1037792,Micolene,Nampula,29686,town,0,0,50,0,none,none
+gn:1039536,Maxixe,Inhambane Province,126408,city,0,0,50,0,none,none
+gn:1039854,Matola,Maputo Province,1198988,large-city,0,0,50,0,none,none
+gn:1040201,Massinga,Inhambane Province,24312,town,0,0,50,0,none,none
+gn:1040370,Marrupa,Niassa Province,9565,village,0,0,50,0,none,none
+gn:1040397,Marromeu,Sofala,45777,town,0,0,50,0,none,none
+gn:1040652,Maputo,Maputo City,1254837,large-city,0,0,50,0,none,none
+gn:1040937,Manjacaze,Gaza Province,11984,town,0,0,50,0,none,none
+gn:1040950,Manica,Manica,41961,town,0,0,50,0,none,none
+gn:1040989,Manhiça,Maputo Province,65240,town,0,0,50,0,none,none
+gn:1041190,Mandimba,Niassa Province,118922,city,0,0,50,0,none,none
+gn:1041867,Magude,Maputo Province,12419,town,0,0,50,0,none,none
+gn:1042456,Macomia,Cabo Delgado Province,23228,town,0,0,50,0,none,none
+gn:1043458,Luabo,Zambezia Province,7099,village,0,0,50,0,none,none
+gn:1043893,Lichinga,Niassa Province,281341,city,0,0,50,0,none,none
+gn:1044995,Inhassoro,Inhambane Province,13122,town,0,0,50,0,none,none
+gn:1045007,Inharrime,Inhambane Province,9415,village,0,0,50,0,none,none
+gn:1045088,Inhaminga,Sofala,11564,town,0,0,50,0,none,none
+gn:1045114,Inhambane,Inhambane Province,95388,town,0,0,50,0,none,none
+gn:1045449,Homoíne,Inhambane Province,8447,village,0,0,50,0,none,none
+gn:1045512,Gurúè,Zambezia Province,168971,city,0,0,50,0,none,none
+gn:1045826,Gondola,Manica,39351,town,0,0,50,0,none,none
+gn:1046919,Nhamayabué,Tete,10088,town,0,0,50,0,none,none
+gn:1047660,Cuamba,Niassa Province,91780,town,0,0,50,0,none,none
+gn:1048364,Chokwé,Gaza Province,63695,town,0,0,50,0,none,none
+gn:1048468,Chiúre,Cabo Delgado Province,37871,town,0,0,50,0,none,none
+gn:1049261,Chimoio,Manica,422046,city,0,0,50,0,none,none
+gn:1049629,Vila Eduardo Mondlane,Gaza Province,9665,village,0,0,50,0,none,none
+gn:1049861,Chibuto,Gaza Province,73393,town,0,0,50,0,none,none
+gn:1050871,Catandica,Manica,25869,town,0,0,50,0,none,none
+gn:1052191,Boane,Maputo Province,27325,town,0,0,50,0,none,none
+gn:1052365,Bela Vista,Maputo Province,3006,village,0,0,50,0,none,none
+gn:1052373,Beira,Sofala,687764,large-city,0,0,50,0,none,none
+gn:1052702,Metangula,Niassa Province,14835,town,0,0,50,0,none,none
+gn:1052944,Angoche,Nampula,104540,city,0,0,50,0,none,none
+gn:1053143,Alto Molocue,Zambezia Province,49019,town,0,0,50,0,none,none
+gn:1088155,Mutuáli,Nampula,32921,town,0,0,50,0,none,none
+gn:1088746,Meconta,Nampula,10891,town,0,0,50,0,none,none
+gn:1091197,Iapala,Nampula,20146,town,0,0,50,0,none,none
+gn:1095961,Machipanda,Manica,15962,town,0,0,50,0,none,none
+gn:1106292,Bairro 25 de Junho A,Maputo City,0,village,0,0,50,0,none,none
+gn:1106294,Bairro 25 de Junho B,Maputo City,0,village,0,0,50,0,none,none
+gn:6942241,Ponta d'Ouro,Maputo Province,2738,village,0,0,50,0,none,none
+gn:11205324,Namapa-erati,Nampula,26383,town,0,0,50,0,none,none
+gn:12718693,Búzi,Sofala,16369,town,0,0,50,0,none,none
+gn:12718694,Caniçado,Gaza Province,6608,village,0,0,50,0,none,none
+gn:12718695,Insaca,Niassa Province,6668,village,0,0,50,0,none,none
+gn:12718696,Malema,Nampula,23553,town,0,0,50,0,none,none
+gn:12718697,Messica,Manica,15907,town,0,0,50,0,none,none
+gn:12718698,Ribáuè,Nampula,30241,town,0,0,50,0,none,none
+gn:12718699,Sanga,Niassa Province,4184,village,0,0,50,0,none,none
+gn:12718700,Xilembene,Gaza Province,23742,town,0,0,50,0,none,none
+gn:12718701,Xinavane,Maputo Province,11534,town,0,0,50,0,none,none

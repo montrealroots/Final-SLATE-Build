@@ -1,0 +1,32 @@
+place_id,name,region,population,market,verified_homes,dated_listings,shortfall_to_50,recorded_sales,rent_source,price_source
+gn:3382783,Wageningen,Nickerie District,2937,village,0,0,50,0,none,none
+gn:3382867,Totness,Coronie District,2150,village,0,0,50,0,none,none
+gn:3382978,Tamanredjo,Commewijne District,6601,village,0,0,50,0,none,none
+gn:3383188,Rainville,Paramaribo District,22747,town,0,0,50,0,none,none
+gn:3383209,Powakka,Para District,1920,village,0,0,50,0,none,none
+gn:3383330,Paramaribo,Paramaribo District,223757,city,0,0,50,0,none,none
+gn:3383384,Onverwacht,Para District,2105,village,0,0,50,0,none,none
+gn:3383427,Nieuw Nickerie,Nickerie District,12818,town,0,0,50,0,none,none
+gn:3383434,Nieuw Amsterdam,Commewijne District,4935,village,0,0,50,0,none,none
+gn:3383494,Moengo,Marowijne District,10834,town,0,0,50,0,none,none
+gn:3383527,Meerzorg,Commewijne District,12405,town,0,0,50,0,none,none
+gn:3383570,Mariënburg,Commewijne District,4427,village,0,0,50,0,none,none
+gn:3383694,Livorno,Paramaribo District,8209,village,0,0,50,0,none,none
+gn:3383714,Lelydorp,Wanica District,18223,town,0,0,50,0,none,none
+gn:3383943,Kampong Baroe,Saramacca District,2248,village,0,0,50,0,none,none
+gn:3384125,Groningen,Saramacca District,3216,village,0,0,50,0,none,none
+gn:3384242,Flora,Paramaribo District,19538,town,0,0,50,0,none,none
+gn:3384461,Calcutta,Saramacca District,1647,village,0,0,50,0,none,none
+gn:3384475,Brownsweg,Brokopondo District,4793,village,0,0,50,0,none,none
+gn:3384482,Brokopondo,Brokopondo District,14662,town,0,0,50,0,none,none
+gn:3384562,Blauwgrond,Paramaribo District,31483,town,0,0,50,0,none,none
+gn:3384788,Alkmaar,Commewijne District,5561,village,0,0,50,0,none,none
+gn:3384792,Albina,Marowijne District,3985,village,0,0,50,0,none,none
+gn:8220838,Munder Buiten,Paramaribo District,17234,town,0,0,50,0,none,none
+gn:8220851,Tammenga,Paramaribo District,15819,town,0,0,50,0,none,none
+gn:8220924,Welgelegen,Paramaribo District,19304,town,0,0,50,0,none,none
+gn:8220949,Beekhuizen,Paramaribo District,17185,town,0,0,50,0,none,none
+gn:13607830,Pontbuiten,Wanica District,23211,town,0,0,50,0,none,none
+gn:13607831,Latour,Paramaribo District,29526,town,0,0,50,0,none,none
+gn:13607832,Weg naar Zee,Paramaribo District,16037,town,0,0,50,0,none,none
+gn:13607834,Jarikaba,Saramacca District,5963,village,0,0,50,0,none,none

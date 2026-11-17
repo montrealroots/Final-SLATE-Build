@@ -1,0 +1,613 @@
+place_id,name,region,population,market,verified_homes,dated_listings,shortfall_to_50,recorded_sales,rent_source,price_source
+gn:723049,Župčany,Prešov Region,1799,village,0,0,50,0,none,none
+gn:723077,Žehra,Košice Region,2707,village,0,0,50,0,none,none
+gn:723082,Ždiar,Prešov Region,1368,village,0,0,50,0,none,none
+gn:723090,Zborov,Prešov Region,3599,village,0,0,50,0,none,none
+gn:723104,Zámutov,Prešov Region,3337,village,0,0,50,0,none,none
+gn:723107,Zálesie,Prešov Region,2243,village,0,0,50,0,none,none
+gn:723119,Vysoké Tatry,Prešov Region,3810,village,0,0,50,0,none,none
+gn:723143,Vyšné Ružbachy,Prešov Region,1419,village,0,0,50,0,none,none
+gn:723186,Výborná,Prešov Region,1469,village,0,0,50,0,none,none
+gn:723191,Vrbov,Prešov Region,1525,village,0,0,50,0,none,none
+gn:723195,Vranov nad Topľou,Prešov Region,20595,town,0,0,50,0,none,none
+gn:723224,Vinné,Košice Region,1608,village,0,0,50,0,none,none
+gn:723246,Veľký Šariš,Prešov Region,6976,village,0,0,50,0,none,none
+gn:723265,Veľké Kapušany,Košice Region,8527,village,0,0,50,0,none,none
+gn:723271,Gemerská Poloma,Košice Region,1893,village,0,0,50,0,none,none
+gn:723274,Veľká Lomnica,Prešov Region,5612,village,0,0,50,0,none,none
+gn:723279,Veľká Ida,Košice Region,3917,village,0,0,50,0,none,none
+gn:723292,Vechec,Prešov Region,3046,village,0,0,50,0,none,none
+gn:723307,Valaliky,Košice Region,4605,village,0,0,50,0,none,none
+gn:723324,Udavské,Prešov Region,1221,village,0,0,50,0,none,none
+gn:723334,Turňa nad Bodvou,Košice Region,3682,village,0,0,50,0,none,none
+gn:723353,Trhovište,Košice Region,2133,village,0,0,50,0,none,none
+gn:723358,Trebišov,Košice Region,22851,town,0,0,50,0,none,none
+gn:723365,Tornaľa,Banská Bystrica Region,6766,village,0,0,50,0,none,none
+gn:723393,Telgárt,Banská Bystrica Region,1506,village,0,0,50,0,none,none
+gn:723411,Svit,Prešov Region,7700,village,0,0,50,0,none,none
+gn:723417,Svidník,Prešov Region,9839,village,0,0,50,0,none,none
+gn:723455,Stropkov,Prešov Region,9835,village,0,0,50,0,none,none
+gn:723468,Štrba,Prešov Region,3600,village,0,0,50,0,none,none
+gn:723470,Strážske,Košice Region,4201,village,0,0,50,0,none,none
+gn:723505,Stará Ľubovňa,Prešov Region,15667,town,0,0,50,0,none,none
+gn:723510,Stakčín,Prešov Region,2330,village,0,0,50,0,none,none
+gn:723514,Spišský Štiavnik,Prešov Region,2949,village,0,0,50,0,none,none
+gn:723517,Spišské Vlachy,Košice Region,3313,village,0,0,50,0,none,none
+gn:723519,Spišské Podhradie,Prešov Region,3769,village,0,0,50,0,none,none
+gn:723523,Spišská Stará Ves,Prešov Region,2187,village,0,0,50,0,none,none
+gn:723526,Spišská Nová Ves,Košice Region,34855,town,0,0,50,0,none,none
+gn:723529,Spišská Belá,Prešov Region,6663,village,0,0,50,0,none,none
+gn:723554,Sobrance,Košice Region,5848,village,0,0,50,0,none,none
+gn:723559,Snina,Prešov Region,22221,town,0,0,50,0,none,none
+gn:723566,Smižany,Košice Region,9023,village,0,0,50,0,none,none
+gn:723575,Slovenské Nové Mesto,Košice Region,1074,village,0,0,50,0,none,none
+gn:723578,Slovenská Ves,Prešov Region,1859,village,0,0,50,0,none,none
+gn:723637,Sečovce,Košice Region,8531,village,0,0,50,0,none,none
+gn:723674,Sabinov,Prešov Region,12290,town,0,0,50,0,none,none
+gn:723705,Rudňany,Košice Region,4838,village,0,0,50,0,none,none
+gn:723713,Rožňava,Košice Region,17122,town,0,0,50,0,none,none
+gn:723736,Rimavská Sobota,Banská Bystrica Region,21434,town,0,0,50,0,none,none
+gn:723744,Richnava,Košice Region,3174,village,0,0,50,0,none,none
+gn:723747,Revúca,Banská Bystrica Region,11033,town,0,0,50,0,none,none
+gn:723775,Rakúsy,Prešov Region,3398,village,0,0,50,0,none,none
+gn:723819,Prešov,Prešov Region,82927,town,0,0,50,0,none,none
+gn:723823,Prakovce,Košice Region,3344,village,0,0,50,0,none,none
+gn:723840,Poproč,Košice Region,2644,village,0,0,50,0,none,none
+gn:723846,Poprad,Prešov Region,49091,town,0,0,50,0,none,none
+gn:723866,Podolínec,Prešov Region,3053,village,0,0,50,0,none,none
+gn:723872,Podhorany,Prešov Region,3102,village,0,0,50,0,none,none
+gn:723879,Plešivec,Košice Region,2138,village,0,0,50,0,none,none
+gn:723915,Pavlovce nad Uhom,Košice Region,4701,village,0,0,50,0,none,none
+gn:724025,Nová ľubovňa,Prešov Region,2986,village,0,0,50,0,none,none
+gn:724026,Nová Lesná,Prešov Region,1520,village,0,0,50,0,none,none
+gn:724080,Nálepkovo,Košice Region,3583,village,0,0,50,0,none,none
+gn:724111,Moldava nad Bodvou,Košice Region,10266,town,0,0,50,0,none,none
+gn:724122,Mníšek nad Hnilcom,Košice Region,1842,village,0,0,50,0,none,none
+gn:724144,Michalovce,Košice Region,35874,town,0,0,50,0,none,none
+gn:724156,Medzilaborce,Prešov Region,5776,village,0,0,50,0,none,none
+gn:724159,Medzev,Košice Region,4111,village,0,0,50,0,none,none
+gn:724177,Markušovce,Košice Region,4658,village,0,0,50,0,none,none
+gn:724182,Margecany,Košice Region,1833,village,0,0,50,0,none,none
+gn:724204,Malcov,Prešov Region,1635,village,0,0,50,0,none,none
+gn:724261,Ľubotice,Prešov Region,3684,village,0,0,50,0,none,none
+gn:724265,Ľubica,Prešov Region,4610,village,0,0,50,0,none,none
+gn:724272,Lomnička,Prešov Region,3839,village,0,0,50,0,none,none
+gn:724286,Lipany,Prešov Region,6450,village,0,0,50,0,none,none
+gn:724294,Levoča,Prešov Region,13979,town,0,0,50,0,none,none
+gn:724301,Lendak,Prešov Region,5689,village,0,0,50,0,none,none
+gn:724303,Lenartov,Prešov Region,1182,village,0,0,50,0,none,none
+gn:724353,Kurima,Prešov Region,1129,village,0,0,50,0,none,none
+gn:724375,Kružlov,Prešov Region,1008,village,0,0,50,0,none,none
+gn:724377,Krompachy,Košice Region,8615,village,0,0,50,0,none,none
+gn:724381,Krížová Ves,Prešov Region,2468,village,0,0,50,0,none,none
+gn:724407,Krásnohorské Podhradie,Košice Region,2785,village,0,0,50,0,none,none
+gn:724411,Kráľovský Chlmec,Košice Region,7391,village,0,0,50,0,none,none
+gn:724443,Košice,Košice Region,225044,city,0,0,50,0,none,none
+gn:724490,Kľušov,Prešov Region,1119,village,0,0,50,0,none,none
+gn:724493,Klokočov,Košice Region,2287,village,0,0,50,0,none,none
+gn:724503,Kežmarok,Prešov Region,15271,town,0,0,50,0,none,none
+gn:724516,Kavečany,Košice Region,1310,village,0,0,50,0,none,none
+gn:724535,Kamenica nad Cirochou,Prešov Region,2318,village,0,0,50,0,none,none
+gn:724550,Jurské,Prešov Region,1545,village,0,0,50,0,none,none
+gn:724561,Jelšava,Banská Bystrica Region,3168,village,0,0,50,0,none,none
+gn:724574,Jasov,Košice Region,3718,village,0,0,50,0,none,none
+gn:724579,Jarovnice,Prešov Region,7247,village,0,0,50,0,none,none
+gn:724623,Huncovce,Prešov Region,3277,village,0,0,50,0,none,none
+gn:724627,Humenné,Prešov Region,30450,town,0,0,50,0,none,none
+gn:724649,Hranovnica,Prešov Region,3204,village,0,0,50,0,none,none
+gn:724714,Hertník,Prešov Region,1035,village,0,0,50,0,none,none
+gn:724729,Hažlín,Prešov Region,1093,village,0,0,50,0,none,none
+gn:724740,Harichovce,Košice Region,1888,village,0,0,50,0,none,none
+gn:724743,Hanušovce nad Topľou,Prešov Region,3782,village,0,0,50,0,none,none
+gn:724784,Giraltovce,Prešov Region,3994,village,0,0,50,0,none,none
+gn:724787,Gerlachov,Prešov Region,1060,village,0,0,50,0,none,none
+gn:724796,Gemerská Hôrka,Košice Region,1251,village,0,0,50,0,none,none
+gn:724800,Gelnica,Košice Region,5829,village,0,0,50,0,none,none
+gn:724801,Geča,Košice Region,1897,village,0,0,50,0,none,none
+gn:724802,Gánovce,Prešov Region,1416,village,0,0,50,0,none,none
+gn:724808,Fričovce,Prešov Region,1117,village,0,0,50,0,none,none
+gn:724862,Družstevná pri Hornáde,Košice Region,2902,village,0,0,50,0,none,none
+gn:724893,Dobšiná,Košice Region,5143,village,0,0,50,0,none,none
+gn:724963,Chminianska Nová Ves,Prešov Region,1299,village,0,0,50,0,none,none
+gn:725010,Čečejovce,Košice Region,2119,village,0,0,50,0,none,none
+gn:725017,Čaňa,Košice Region,6109,village,0,0,50,0,none,none
+gn:725028,Bystrany,Košice Region,3729,village,0,0,50,0,none,none
+gn:725081,Brekov,Prešov Region,1323,village,0,0,50,0,none,none
+gn:725154,Belá nad Cirochou,Prešov Region,3402,village,0,0,50,0,none,none
+gn:725168,Bardejov,Prešov Region,30267,town,0,0,50,0,none,none
+gn:3056455,Zvončín,Trnava Region,1039,village,0,0,50,0,none,none
+gn:3056456,Nemce,Banská Bystrica Region,1171,village,0,0,50,0,none,none
+gn:3056459,Zvolen,Banská Bystrica Region,39844,town,0,0,50,0,none,none
+gn:3056464,Zubrohlava,Žilina Region,2354,village,0,0,50,0,none,none
+gn:3056467,Zuberec,Žilina Region,1928,village,0,0,50,0,none,none
+gn:3056495,Zlaté Moravce,Nitra Region,11803,town,0,0,50,0,none,none
+gn:3056504,Žirany,Nitra Region,1349,village,0,0,50,0,none,none
+gn:3056508,Žilina,Žilina Region,81219,town,0,0,50,0,none,none
+gn:3056511,Žihárec,Nitra Region,1727,village,0,0,50,0,none,none
+gn:3056523,Žiar nad Hronom,Banská Bystrica Region,16955,town,0,0,50,0,none,none
+gn:3056529,Zemné,Nitra Region,2136,village,0,0,50,0,none,none
+gn:3056537,Zemianske Kostoľany,Trenčín Region,1725,village,0,0,50,0,none,none
+gn:3056539,Zemianska Olča,Nitra Region,2281,village,0,0,50,0,none,none
+gn:3056547,Želiezovce,Nitra Region,6588,village,0,0,50,0,none,none
+gn:3056552,Zeleneč,Trnava Region,2559,village,0,0,50,0,none,none
+gn:3056560,Zborov nad Bystricou,Žilina Region,2191,village,0,0,50,0,none,none
+gn:3056563,Zbehy,Nitra Region,2238,village,0,0,50,0,none,none
+gn:3056570,Závod,Bratislava Region,2931,village,0,0,50,0,none,none
+gn:3056589,Žarnovica,Banská Bystrica Region,5699,village,0,0,50,0,none,none
+gn:3056600,Zamarovce,Trenčín Region,1182,village,0,0,50,0,none,none
+gn:3056607,Zákopčie,Žilina Region,1710,village,0,0,50,0,none,none
+gn:3056610,Zákamenné,Žilina Region,5738,village,0,0,50,0,none,none
+gn:3056642,Vysoká nad Kysucou,Žilina Region,2984,village,0,0,50,0,none,none
+gn:3056674,Vydrany,Trnava Region,1816,village,0,0,50,0,none,none
+gn:3056677,Výčapy-Opatovce,Nitra Region,2200,village,0,0,50,0,none,none
+gn:3056683,Vrútky,Žilina Region,7424,village,0,0,50,0,none,none
+gn:3056697,Vrbové,Trnava Region,5637,village,0,0,50,0,none,none
+gn:3056699,Vrbovce,Trenčín Region,1401,village,0,0,50,0,none,none
+gn:3056708,Vrakuňa,Bratislava Region,20711,town,0,0,50,0,none,none
+gn:3056709,Vrakúň,Trnava Region,2835,village,0,0,50,0,none,none
+gn:3056711,Vráble,Nitra Region,8432,village,0,0,50,0,none,none
+gn:3056713,Vozokany,Nitra Region,1114,village,0,0,50,0,none,none
+gn:3056725,Bátorove Kosihy,Nitra Region,3296,village,0,0,50,0,none,none
+gn:3056728,Voderady,Trnava Region,1661,village,0,0,50,0,none,none
+gn:3056733,Vlkanová,Banská Bystrica Region,1319,village,0,0,50,0,none,none
+gn:3056740,Vlčany,Nitra Region,3193,village,0,0,50,0,none,none
+gn:3056751,Vištuk,Bratislava Region,1353,village,0,0,50,0,none,none
+gn:3056754,Višňové,Žilina Region,2951,village,0,0,50,0,none,none
+gn:3056763,Viničné,Bratislava Region,2816,village,0,0,50,0,none,none
+gn:3056795,Veselé,Trnava Region,1234,village,0,0,50,0,none,none
+gn:3056816,Veľký Meder,Trnava Region,8301,village,0,0,50,0,none,none
+gn:3056822,Veľký Lapáš,Nitra Region,1840,village,0,0,50,0,none,none
+gn:3056823,Veľký Kýr,Nitra Region,2975,village,0,0,50,0,none,none
+gn:3056825,Veľký Krtíš,Banská Bystrica Region,10552,town,0,0,50,0,none,none
+gn:3056841,Veľký Cetín,Nitra Region,1524,village,0,0,50,0,none,none
+gn:3056845,Veľký Biel,Bratislava Region,3074,village,0,0,50,0,none,none
+gn:3056848,Veľké Zálužie,Nitra Region,4315,village,0,0,50,0,none,none
+gn:3056853,Veľké Úľany,Trnava Region,5094,village,0,0,50,0,none,none
+gn:3056862,Veľké Rovné,Žilina Region,3740,village,0,0,50,0,none,none
+gn:3056866,Veľké Orvište,Trnava Region,1073,village,0,0,50,0,none,none
+gn:3056868,Veľké Ludince,Nitra Region,1470,village,0,0,50,0,none,none
+gn:3056870,Veľké Leváre,Bratislava Region,3767,village,0,0,50,0,none,none
+gn:3056875,Veľké Kostoľany,Trnava Region,2847,village,0,0,50,0,none,none
+gn:3056879,Veľké Janíkovce,Nitra Region,1672,village,0,0,50,0,none,none
+gn:3056881,Veľké Dvorníky,Trnava Region,1364,village,0,0,50,0,none,none
+gn:3056889,Šenkvice,Bratislava Region,5325,village,0,0,50,0,none,none
+gn:3056893,Veľké Blahovo,Trnava Region,1593,village,0,0,50,0,none,none
+gn:3056917,Lehota pod Vtáčnikom,Trenčín Region,3751,village,0,0,50,0,none,none
+gn:3056933,Chocholná-Velčice,Trenčín Region,1648,village,0,0,50,0,none,none
+gn:3056959,Varín,Žilina Region,3853,village,0,0,50,0,none,none
+gn:3056980,Valaská,Banská Bystrica Region,3583,village,0,0,50,0,none,none
+gn:3057023,Unín,Trnava Region,1149,village,0,0,50,0,none,none
+gn:3057062,Tvrdošovce,Nitra Region,5075,village,0,0,50,0,none,none
+gn:3057063,Tvrdošín,Žilina Region,8786,village,0,0,50,0,none,none
+gn:3057068,Tužina,Trenčín Region,1207,village,0,0,50,0,none,none
+gn:3057069,Turzovka,Žilina Region,7043,village,0,0,50,0,none,none
+gn:3057082,Tureň,Bratislava Region,1303,village,0,0,50,0,none,none
+gn:3057086,Turčianske Teplice,Žilina Region,6213,village,0,0,50,0,none,none
+gn:3057087,Turčianske Kľačany,Žilina Region,1050,village,0,0,50,0,none,none
+gn:3057089,Turany,Žilina Region,4123,village,0,0,50,0,none,none
+gn:3057102,Trstín,Trnava Region,1395,village,0,0,50,0,none,none
+gn:3057105,Trstice,Trnava Region,3876,village,0,0,50,0,none,none
+gn:3057108,Trstená,Žilina Region,7019,village,0,0,50,0,none,none
+gn:3057113,Trnovec nad Váhom,Nitra Region,2692,village,0,0,50,0,none,none
+gn:3057124,Trnava,Trnava Region,62806,town,0,0,50,0,none,none
+gn:3057137,Trhová Hradská,Trnava Region,2198,village,0,0,50,0,none,none
+gn:3057140,Trenčín,Trenčín Region,58278,town,0,0,50,0,none,none
+gn:3057141,Trenčianske Teplice,Trenčín Region,3931,village,0,0,50,0,none,none
+gn:3057142,Trenčianske Jastrabie,Trenčín Region,1242,village,0,0,50,0,none,none
+gn:3057145,Trenčianska Turná,Trenčín Region,3519,village,0,0,50,0,none,none
+gn:3057157,Trebatice,Trnava Region,1331,village,0,0,50,0,none,none
+gn:3057170,Topoľníky,Trnava Region,3135,village,0,0,50,0,none,none
+gn:3057172,Topoľčianky,Nitra Region,2617,village,0,0,50,0,none,none
+gn:3057174,Topoľčany,Nitra Region,24086,town,0,0,50,0,none,none
+gn:3057182,Tomášov,Bratislava Region,2851,village,0,0,50,0,none,none
+gn:3057191,Tlmače,Nitra Region,3542,village,0,0,50,0,none,none
+gn:3057197,Tisovec,Banská Bystrica Region,3648,village,0,0,50,0,none,none
+gn:3057205,Tešedíkovo,Nitra Region,3656,village,0,0,50,0,none,none
+gn:3057212,Terchová,Žilina Region,4073,village,0,0,50,0,none,none
+gn:3057217,Teplička nad Váhom,Žilina Region,4296,village,0,0,50,0,none,none
+gn:3057232,Tekovské Nemce,Nitra Region,1093,village,0,0,50,0,none,none
+gn:3057234,Tekovské Lužany,Nitra Region,2810,village,0,0,50,0,none,none
+gn:3057269,Svrčinovec,Žilina Region,3358,village,0,0,50,0,none,none
+gn:3057273,Svodín,Nitra Region,2372,village,0,0,50,0,none,none
+gn:3057278,Svinná,Trenčín Region,1596,village,0,0,50,0,none,none
+gn:3057286,Svederník,Žilina Region,1733,village,0,0,50,0,none,none
+gn:3057294,Svätý Peter,Nitra Region,2712,village,0,0,50,0,none,none
+gn:3057298,Michal na Ostrove,Trnava Region,1062,village,0,0,50,0,none,none
+gn:3057304,Svätý Jur,Bratislava Region,5983,village,0,0,50,0,none,none
+gn:3057311,Svätý Anton,Banská Bystrica Region,1278,village,0,0,50,0,none,none
+gn:3057314,Svätoplukovo,Nitra Region,1363,village,0,0,50,0,none,none
+gn:3057339,Šurany,Nitra Region,9326,village,0,0,50,0,none,none
+gn:3057365,Suchá nad Parnou,Trnava Region,2324,village,0,0,50,0,none,none
+gn:3057374,Sučany,Žilina Region,4722,village,0,0,50,0,none,none
+gn:3057376,Štvrtok na Ostrove,Trnava Region,1757,village,0,0,50,0,none,none
+gn:3057379,Štúrovo,Nitra Region,9361,village,0,0,50,0,none,none
+gn:3057384,Stupava,Bratislava Region,12744,town,0,0,50,0,none,none
+gn:3057387,Studienka,Bratislava Region,1754,village,0,0,50,0,none,none
+gn:3057400,Streženice,Trenčín Region,1075,village,0,0,50,0,none,none
+gn:3057403,Strekov,Nitra Region,1926,village,0,0,50,0,none,none
+gn:3057441,Štiavnik,Žilina Region,4034,village,0,0,50,0,none,none
+gn:3057458,Štefanov,Trnava Region,1566,village,0,0,50,0,none,none
+gn:3057465,Staškov,Žilina Region,2748,village,0,0,50,0,none,none
+gn:3057478,Staré Mesto,Bratislava Region,46080,town,0,0,50,0,none,none
+gn:3057480,Stará Turá,Trenčín Region,8432,village,0,0,50,0,none,none
+gn:3057492,Stará Bystrica,Žilina Region,2740,village,0,0,50,0,none,none
+gn:3057514,Šoporňa,Trnava Region,4143,village,0,0,50,0,none,none
+gn:3057518,Sološnica,Bratislava Region,1658,village,0,0,50,0,none,none
+gn:3057525,Sokolníky,Nitra Region,1069,village,0,0,50,0,none,none
+gn:3057529,Sokolce,Nitra Region,1215,village,0,0,50,0,none,none
+gn:3057534,Sobotište,Trnava Region,1492,village,0,0,50,0,none,none
+gn:3057535,Soblahov,Trenčín Region,2391,village,0,0,50,0,none,none
+gn:3057539,Snežnica,Žilina Region,1079,village,0,0,50,0,none,none
+gn:3057552,Smolenice,Trnava Region,3240,village,0,0,50,0,none,none
+gn:3057559,Slovenský Grob,Bratislava Region,6290,village,0,0,50,0,none,none
+gn:3057565,Slovenská Ľupča,Banská Bystrica Region,3260,village,0,0,50,0,none,none
+gn:3057574,Liptovské Sliače,Žilina Region,3707,village,0,0,50,0,none,none
+gn:3057576,Sliač,Banská Bystrica Region,4786,village,0,0,50,0,none,none
+gn:3057602,Sládkovičovo,Trnava Region,5415,village,0,0,50,0,none,none
+gn:3057622,Skalka nad Váhom,Trenčín Region,1177,village,0,0,50,0,none,none
+gn:3057627,Skalité,Žilina Region,5231,village,0,0,50,0,none,none
+gn:3057630,Skalica,Trnava Region,15466,town,0,0,50,0,none,none
+gn:3057685,Sereď,Trnava Region,15228,town,0,0,50,0,none,none
+gn:3057691,Senica,Trnava Region,19355,town,0,0,50,0,none,none
+gn:3057692,Senec,Bratislava Region,20115,town,0,0,50,0,none,none
+gn:3057698,Selice,Nitra Region,2826,village,0,0,50,0,none,none
+gn:3057699,Selec,Trenčín Region,1010,village,0,0,50,0,none,none
+gn:3057700,Selce,Banská Bystrica Region,2140,village,0,0,50,0,none,none
+gn:3057707,Sekule,Trnava Region,1745,village,0,0,50,0,none,none
+gn:3057723,Sebedražie,Trenčín Region,1663,village,0,0,50,0,none,none
+gn:3057757,Šamorín,Trnava Region,13566,town,0,0,50,0,none,none
+gn:3057769,Šaľa,Nitra Region,20239,town,0,0,50,0,none,none
+gn:3057770,Šajdíkove Humence,Trnava Region,1077,village,0,0,50,0,none,none
+gn:3057772,Šahy,Nitra Region,6992,village,0,0,50,0,none,none
+gn:3057789,Ružomberok,Žilina Region,26671,town,0,0,50,0,none,none
+gn:3057790,Ružindol,Trnava Region,1749,village,0,0,50,0,none,none
+gn:3057792,Rusovce,Bratislava Region,4388,village,0,0,50,0,none,none
+gn:3057805,Rudinská,Žilina Region,1022,village,0,0,50,0,none,none
+gn:3057807,Rudina,Žilina Region,1850,village,0,0,50,0,none,none
+gn:3057831,Rovinka,Bratislava Region,6528,village,0,0,50,0,none,none
+gn:3057837,Rosina,Žilina Region,3283,village,0,0,50,0,none,none
+gn:3057841,Rohožník,Bratislava Region,3516,village,0,0,50,0,none,none
+gn:3057845,Rohovce,Trnava Region,1114,village,0,0,50,0,none,none
+gn:3057848,Rišňovce,Nitra Region,2039,village,0,0,50,0,none,none
+gn:3057877,Reca,Bratislava Region,1727,village,0,0,50,0,none,none
+gn:3057884,Ráztočno,Trenčín Region,1273,village,0,0,50,0,none,none
+gn:3057889,Zlaté Klasy,Trnava Region,3580,village,0,0,50,0,none,none
+gn:3057890,Maršová-Rašov,Žilina Region,1020,village,0,0,50,0,none,none
+gn:3057903,Raková,Žilina Region,5626,village,0,0,50,0,none,none
+gn:3057908,Rajecké Teplice,Žilina Region,3023,village,0,0,50,0,none,none
+gn:3057910,Rajec,Žilina Region,5818,village,0,0,50,0,none,none
+gn:3057919,Radošovce,Trnava Region,1711,village,0,0,50,0,none,none
+gn:3057924,Radoľa,Žilina Region,1522,village,0,0,50,0,none,none
+gn:3057934,Rabča,Žilina Region,5160,village,0,0,50,0,none,none
+gn:3057937,Pusté Úľany,Trnava Region,1819,village,0,0,50,0,none,none
+gn:3057963,Púchov,Trenčín Region,16995,town,0,0,50,0,none,none
+gn:3057969,Pružina,Trenčín Region,2113,village,0,0,50,0,none,none
+gn:3057971,Pruské,Trenčín Region,2295,village,0,0,50,0,none,none
+gn:3058000,Prievidza,Trenčín Region,43645,town,0,0,50,0,none,none
+gn:3058012,Pribylina,Žilina Region,1323,village,0,0,50,0,none,none
+gn:3058018,Pribeta,Nitra Region,2671,village,0,0,50,0,none,none
+gn:3058031,Predmier,Žilina Region,1352,village,0,0,50,0,none,none
+gn:3058040,Pravenec,Trenčín Region,1298,village,0,0,50,0,none,none
+gn:3058054,Povina,Žilina Region,1143,village,0,0,50,0,none,none
+gn:3058060,Považská Bystrica,Trenčín Region,37483,town,0,0,50,0,none,none
+gn:3058071,Poruba,Trenčín Region,1370,village,0,0,50,0,none,none
+gn:3058076,Poniky,Banská Bystrica Region,1573,village,0,0,50,0,none,none
+gn:3058083,Poltár,Banská Bystrica Region,5178,village,0,0,50,0,none,none
+gn:3058085,Polomka,Banská Bystrica Region,2959,village,0,0,50,0,none,none
+gn:3058106,Pohronský Ruskov,Nitra Region,1185,village,0,0,50,0,none,none
+gn:3058109,Pohranice,Nitra Region,1099,village,0,0,50,0,none,none
+gn:3058114,Podvysoká,Žilina Region,1210,village,0,0,50,0,none,none
+gn:3058117,Podunajské Biskupice,Bratislava Region,23464,town,0,0,50,0,none,none
+gn:3058155,Podbrezová,Banská Bystrica Region,3795,village,0,0,50,0,none,none
+gn:3058166,Pobedim,Trenčín Region,1129,village,0,0,50,0,none,none
+gn:3058182,Plavecký Štvrtok,Bratislava Region,2598,village,0,0,50,0,none,none
+gn:3058202,Piešťany,Trnava Region,26862,town,0,0,50,0,none,none
+gn:3058210,Pezinok,Bratislava Region,24443,town,0,0,50,0,none,none
+gn:3058213,Petržalka,Bratislava Region,112380,city,0,0,50,0,none,none
+gn:3058217,Petrovice,Žilina Region,1620,village,0,0,50,0,none,none
+gn:3058218,Petrova Ves,Trnava Region,1081,village,0,0,50,0,none,none
+gn:3058262,Pata,Trnava Region,3241,village,0,0,50,0,none,none
+gn:3058268,Partizánske,Trenčín Region,20739,town,0,0,50,0,none,none
+gn:3058278,Papradno,Trenčín Region,2373,village,0,0,50,0,none,none
+gn:3058300,Palárikovo,Nitra Region,4176,village,0,0,50,0,none,none
+gn:3058328,Ostrov,Trnava Region,1217,village,0,0,50,0,none,none
+gn:3058354,Oščadnica,Žilina Region,5745,village,0,0,50,0,none,none
+gn:3058367,Orechová Potôň,Trnava Region,1725,village,0,0,50,0,none,none
+gn:3058368,Oravský Podzámok,Žilina Region,1367,village,0,0,50,0,none,none
+gn:3058370,Oravské Veselé,Žilina Region,2991,village,0,0,50,0,none,none
+gn:3058372,Oravská Polhora,Žilina Region,4025,village,0,0,50,0,none,none
+gn:3058374,Oravská Lesná,Žilina Region,3461,village,0,0,50,0,none,none
+gn:3058390,Opatovce nad Nitrou,Trenčín Region,1517,village,0,0,50,0,none,none
+gn:3058399,Omšenie,Trenčín Region,1907,village,0,0,50,0,none,none
+gn:3058407,Olešná,Žilina Region,1929,village,0,0,50,0,none,none
+gn:3058413,Okoličná na Ostrove,Nitra Region,1462,village,0,0,50,0,none,none
+gn:3058414,Okoč,Trnava Region,3710,village,0,0,50,0,none,none
+gn:3058416,Ohrady,Trnava Region,1359,village,0,0,50,0,none,none
+gn:3058421,Ochodnica,Žilina Region,1912,village,0,0,50,0,none,none
+gn:3058424,Obyce,Nitra Region,1521,village,0,0,50,0,none,none
+gn:3058429,Obid,Nitra Region,1141,village,0,0,50,0,none,none
+gn:3058468,Novoť,Žilina Region,3692,village,0,0,50,0,none,none
+gn:3058472,Nové Zámky,Nitra Region,36781,town,0,0,50,0,none,none
+gn:3058473,Nové Sady,Nitra Region,1263,village,0,0,50,0,none,none
+gn:3058477,Nové Mesto nad Váhom,Trenčín Region,19325,town,0,0,50,0,none,none
+gn:3058482,Nová Dedinka,Bratislava Region,3679,village,0,0,50,0,none,none
+gn:3058483,Nová Ves nad Žitavou,Nitra Region,1356,village,0,0,50,0,none,none
+gn:3058493,Nováky,Trenčín Region,4140,village,0,0,50,0,none,none
+gn:3058496,Nová Dubnica,Trenčín Region,10425,town,0,0,50,0,none,none
+gn:3058497,Nová Bystrica,Žilina Region,2631,village,0,0,50,0,none,none
+gn:3058498,Nová Baňa,Banská Bystrica Region,6881,village,0,0,50,0,none,none
+gn:3058515,Nižná,Žilina Region,3948,village,0,0,50,0,none,none
+gn:3058524,Nitrianske Pravno,Trenčín Region,3116,village,0,0,50,0,none,none
+gn:3058525,Nitrianske Hrnčiarovce,Nitra Region,2412,village,0,0,50,0,none,none
+gn:3058531,Nitra,Nitra Region,86329,town,0,0,50,0,none,none
+gn:3058540,Nesvady,Nitra Region,5037,village,0,0,50,0,none,none
+gn:3058542,Nesluša,Žilina Region,3178,village,0,0,50,0,none,none
+gn:3058546,Nemšová,Trenčín Region,6266,village,0,0,50,0,none,none
+gn:3058561,Nedožery-Brezany,Trenčín Region,2112,village,0,0,50,0,none,none
+gn:3058564,Neded,Nitra Region,3203,village,0,0,50,0,none,none
+gn:3058578,Nána,Nitra Region,1198,village,0,0,50,0,none,none
+gn:3058579,Námestovo,Žilina Region,7502,village,0,0,50,0,none,none
+gn:3058611,Myjava,Trenčín Region,10626,town,0,0,50,0,none,none
+gn:3058613,Mužla,Nitra Region,1912,village,0,0,50,0,none,none
+gn:3058615,Mútne,Žilina Region,3092,village,0,0,50,0,none,none
+gn:3058632,Most pri Bratislave,Bratislava Region,4608,village,0,0,50,0,none,none
+gn:3058637,Mošovce,Žilina Region,1353,village,0,0,50,0,none,none
+gn:3058641,Moravský Svätý Ján,Trnava Region,2136,village,0,0,50,0,none,none
+gn:3058642,Moravské Lieskové,Trenčín Region,2520,village,0,0,50,0,none,none
+gn:3058653,Mojmírovce,Nitra Region,2963,village,0,0,50,0,none,none
+gn:3058657,Modrý Kameň,Banská Bystrica Region,1664,village,0,0,50,0,none,none
+gn:3058661,Modrany,Nitra Region,1281,village,0,0,50,0,none,none
+gn:3058663,Modra,Bratislava Region,9237,village,0,0,50,0,none,none
+gn:3058674,Močenok,Nitra Region,4316,village,0,0,50,0,none,none
+gn:3058676,Moča,Nitra Region,1136,village,0,0,50,0,none,none
+gn:3058678,Mnichova Lehota,Trenčín Region,1230,village,0,0,50,0,none,none
+gn:3058684,Tesárske Mlyňany,Nitra Region,1766,village,0,0,50,0,none,none
+gn:3058703,Miloslavov,Bratislava Region,7005,village,0,0,50,0,none,none
+gn:3058706,Mikušovce,Trenčín Region,1048,village,0,0,50,0,none,none
+gn:3058746,Medzibrod,Banská Bystrica Region,1388,village,0,0,50,0,none,none
+gn:3058753,Medné,Trenčín Region,4007,village,0,0,50,0,none,none
+gn:3058780,Martin,Žilina Region,51139,town,0,0,50,0,none,none
+gn:3058786,Marianka,Bratislava Region,2314,village,0,0,50,0,none,none
+gn:3058792,Marcelová,Nitra Region,3778,village,0,0,50,0,none,none
+gn:3058804,Malý Lapáš,Nitra Region,1203,village,0,0,50,0,none,none
+gn:3058826,Malinovo,Bratislava Region,4201,village,0,0,50,0,none,none
+gn:3058853,Košecké Podhradie,Trenčín Region,1060,village,0,0,50,0,none,none
+gn:3058884,Malá Maňa,Nitra Region,2004,village,0,0,50,0,none,none
+gn:3058897,Malacky,Bratislava Region,18804,town,0,0,50,0,none,none
+gn:3058900,Malachov,Banská Bystrica Region,1115,village,0,0,50,0,none,none
+gn:3058909,Makov,Žilina Region,1710,village,0,0,50,0,none,none
+gn:3058916,Majcichov,Trnava Region,2213,village,0,0,50,0,none,none
+gn:3058941,Machulince,Nitra Region,1101,village,0,0,50,0,none,none
+gn:3058950,Lysá pod Makytou,Trenčín Region,2939,village,0,0,50,0,none,none
+gn:3058952,Lužianky,Nitra Region,3338,village,0,0,50,0,none,none
+gn:3058973,Lukáčovce,Nitra Region,1157,village,0,0,50,0,none,none
+gn:3058981,Lúčky,Žilina Region,1635,village,0,0,50,0,none,none
+gn:3058986,Lučenec,Banská Bystrica Region,25191,town,0,0,50,0,none,none
+gn:3058999,Lubina,Trenčín Region,1523,village,0,0,50,0,none,none
+gn:3059000,Ľubietová,Banská Bystrica Region,1251,village,0,0,50,0,none,none
+gn:3059005,Lozorno,Bratislava Region,3165,village,0,0,50,0,none,none
+gn:3059050,Liptovský Mikuláš,Žilina Region,30162,town,0,0,50,0,none,none
+gn:3059053,Liptovský Hrádok,Žilina Region,7038,village,0,0,50,0,none,none
+gn:3059080,Likavka,Žilina Region,3031,village,0,0,50,0,none,none
+gn:3059086,Lietava,Žilina Region,1728,village,0,0,50,0,none,none
+gn:3059096,Liesek,Žilina Region,3002,village,0,0,50,0,none,none
+gn:3059101,Levice,Nitra Region,30556,town,0,0,50,0,none,none
+gn:3059111,Leopoldov,Trnava Region,3946,village,0,0,50,0,none,none
+gn:3059125,Lehota,Nitra Region,2212,village,0,0,50,0,none,none
+gn:3059127,Lehnice,Trnava Region,3075,village,0,0,50,0,none,none
+gn:3059129,Lednické Rovne,Trenčín Region,3844,village,0,0,50,0,none,none
+gn:3059134,Lazy pod Makytou,Trenčín Region,1211,village,0,0,50,0,none,none
+gn:3059144,Lazany,Trenčín Region,1769,village,0,0,50,0,none,none
+gn:3059163,Lamač,Bratislava Region,7878,village,0,0,50,0,none,none
+gn:3059165,Lakšárska Nová Ves,Trnava Region,1090,village,0,0,50,0,none,none
+gn:3059172,Ladce,Trenčín Region,2462,village,0,0,50,0,none,none
+gn:3059177,Kysucký Lieskovec,Žilina Region,2361,village,0,0,50,0,none,none
+gn:3059179,Kysucké Nové Mesto,Žilina Region,14350,town,0,0,50,0,none,none
+gn:3059197,Kvetoslavov,Trnava Region,2216,village,0,0,50,0,none,none
+gn:3059204,Kúty,Trnava Region,3979,village,0,0,50,0,none,none
+gn:3059206,Kútniky,Trnava Region,1469,village,0,0,50,0,none,none
+gn:3059224,Kuchyňa,Bratislava Region,1793,village,0,0,50,0,none,none
+gn:3059244,Krupina,Banská Bystrica Region,7520,village,0,0,50,0,none,none
+gn:3059258,Krížovany nad Dudváhom,Trnava Region,1797,village,0,0,50,0,none,none
+gn:3059282,Kremnica,Banská Bystrica Region,4783,village,0,0,50,0,none,none
+gn:3059289,Krásno nad Kysucou,Žilina Region,6563,village,0,0,50,0,none,none
+gn:3059292,Krasňany,Žilina Region,1231,village,0,0,50,0,none,none
+gn:3059300,Kráľovičove Kračany,Trnava Region,1107,village,0,0,50,0,none,none
+gn:3059305,Kráľová nad Váhom,Nitra Region,1824,village,0,0,50,0,none,none
+gn:3059315,Krakovany,Trnava Region,1454,village,0,0,50,0,none,none
+gn:3059340,Kováčová,Banská Bystrica Region,1626,village,0,0,50,0,none,none
+gn:3059346,Kotešová,Žilina Region,2112,village,0,0,50,0,none,none
+gn:3059356,Kostolné Kračany,Trnava Region,1429,village,0,0,50,0,none,none
+gn:3059376,Košeca,Trenčín Region,2766,village,0,0,50,0,none,none
+gn:3059381,Koš,Trenčín Region,1005,village,0,0,50,0,none,none
+gn:3059400,Kopčany,Trnava Region,2537,village,0,0,50,0,none,none
+gn:3059429,Komjatná,Žilina Region,2000,village,0,0,50,0,none,none
+gn:3059430,Komjatice,Nitra Region,4223,village,0,0,50,0,none,none
+gn:3059435,Komárno,Nitra Region,32287,town,0,0,50,0,none,none
+gn:3059436,Komárno,Nitra Region,32287,town,0,0,50,0,none,none
+gn:3059438,Kolta,Nitra Region,1257,village,0,0,50,0,none,none
+gn:3059442,Kolíňany,Nitra Region,1532,village,0,0,50,0,none,none
+gn:3059448,Kolárovo,Nitra Region,10470,town,0,0,50,0,none,none
+gn:3059449,Kolárovice,Žilina Region,1817,village,0,0,50,0,none,none
+gn:3059503,Klenovec,Banská Bystrica Region,3129,village,0,0,50,0,none,none
+gn:3059511,Klasov,Nitra Region,1383,village,0,0,50,0,none,none
+gn:3059519,Kľačno,Trenčín Region,1057,village,0,0,50,0,none,none
+gn:3059552,Kátlovce,Trnava Region,1119,village,0,0,50,0,none,none
+gn:3059564,Karlova Ves,Bratislava Region,35644,town,0,0,50,0,none,none
+gn:3059573,Kanianka,Trenčín Region,3878,village,0,0,50,0,none,none
+gn:3059575,Kamenný Most,Nitra Region,1030,village,0,0,50,0,none,none
+gn:3059582,Kamenín,Nitra Region,1479,village,0,0,50,0,none,none
+gn:3059583,Kameničná,Nitra Region,1894,village,0,0,50,0,none,none
+gn:3059600,Kálna,Nitra Region,2057,village,0,0,50,0,none,none
+gn:3059605,Kalinkovo,Bratislava Region,1574,village,0,0,50,0,none,none
+gn:3059646,Jelka,Trnava Region,3998,village,0,0,50,0,none,none
+gn:3059652,Jelenec,Nitra Region,2116,village,0,0,50,0,none,none
+gn:3059687,Jaslovské Bohunice,Trnava Region,2458,village,0,0,50,0,none,none
+gn:3059704,Jarovce,Bratislava Region,3147,village,0,0,50,0,none,none
+gn:3059706,Jarok,Nitra Region,2046,village,0,0,50,0,none,none
+gn:3059751,Jablonové,Bratislava Region,1349,village,0,0,50,0,none,none
+gn:3059754,Jablonica,Trnava Region,2215,village,0,0,50,0,none,none
+gn:3059755,Jablonec,Bratislava Region,1060,village,0,0,50,0,none,none
+gn:3059760,Iža,Nitra Region,1802,village,0,0,50,0,none,none
+gn:3059764,Ivanovce,Trenčín Region,1080,village,0,0,50,0,none,none
+gn:3059766,Ivanka pri Nitre,Nitra Region,2818,village,0,0,50,0,none,none
+gn:3059767,Ivanka pri Dunaji,Bratislava Region,7175,village,0,0,50,0,none,none
+gn:3059787,Imeľ,Nitra Region,1972,village,0,0,50,0,none,none
+gn:3059796,Ilava,Trenčín Region,5411,village,0,0,50,0,none,none
+gn:3059803,Hybe,Žilina Region,1548,village,0,0,50,0,none,none
+gn:3059806,Hviezdoslavov,Trnava Region,4028,village,0,0,50,0,none,none
+gn:3059821,Hurbanovo,Nitra Region,7472,village,0,0,50,0,none,none
+gn:3059835,Hruštín,Žilina Region,3133,village,0,0,50,0,none,none
+gn:3059844,Hrubý Šúr,Bratislava Region,1130,village,0,0,50,0,none,none
+gn:3059848,Hrubá Borša,Bratislava Region,1792,village,0,0,50,0,none,none
+gn:3059865,Hrochoť,Banská Bystrica Region,1433,village,0,0,50,0,none,none
+gn:3059867,Hrnčiarovce nad Parnou,Trnava Region,2196,village,0,0,50,0,none,none
+gn:3059870,Hriňová,Banská Bystrica Region,7045,village,0,0,50,0,none,none
+gn:3059911,Hostie,Nitra Region,1186,village,0,0,50,0,none,none
+gn:3059921,Horný Vadičov,Žilina Region,1729,village,0,0,50,0,none,none
+gn:3059952,Horný Bar,Trnava Region,1263,village,0,0,50,0,none,none
+gn:3059968,Horné Srnie,Trenčín Region,2648,village,0,0,50,0,none,none
+gn:3059969,Sl’ažany,Nitra Region,1706,village,0,0,50,0,none,none
+gn:3059972,Horné Saliby,Trnava Region,3262,village,0,0,50,0,none,none
+gn:3059981,Horné Orešany,Trnava Region,1934,village,0,0,50,0,none,none
+gn:3060016,Horná Súča,Trenčín Region,3274,village,0,0,50,0,none,none
+gn:3060028,Horná Potôň,Trnava Region,2111,village,0,0,50,0,none,none
+gn:3060029,Horná Poruba,Trenčín Region,3361,village,0,0,50,0,none,none
+gn:3060041,Horná Kráľová,Nitra Region,1879,village,0,0,50,0,none,none
+gn:3060074,Holice,Trnava Region,2159,village,0,0,50,0,none,none
+gn:3060077,Holíč,Trnava Region,11024,town,0,0,50,0,none,none
+gn:3060089,Hnúšťa,Banská Bystrica Region,6616,village,0,0,50,0,none,none
+gn:3060095,Hlohovec,Trnava Region,19883,town,0,0,50,0,none,none
+gn:3060101,Limbach,Bratislava Region,2423,village,0,0,50,0,none,none
+gn:3060139,Handlová,Trenčín Region,15694,town,0,0,50,0,none,none
+gn:3060142,Hamuliakovo,Bratislava Region,3080,village,0,0,50,0,none,none
+gn:3060193,Golianovo,Nitra Region,2031,village,0,0,50,0,none,none
+gn:3060201,Zálesie,Bratislava Region,2297,village,0,0,50,0,none,none
+gn:3060208,Gbely,Trnava Region,4885,village,0,0,50,0,none,none
+gn:3060209,Gbelce,Nitra Region,2036,village,0,0,50,0,none,none
+gn:3060210,Gbelany,Žilina Region,1586,village,0,0,50,0,none,none
+gn:3060219,Galanta,Trnava Region,15277,town,0,0,50,0,none,none
+gn:3060224,Gabčíkovo,Trnava Region,5265,village,0,0,50,0,none,none
+gn:3060242,Fiľakovo,Banská Bystrica Region,9726,village,0,0,50,0,none,none
+gn:3060250,Farná,Nitra Region,1317,village,0,0,50,0,none,none
+gn:3060267,Dvory nad Žitavou,Nitra Region,5015,village,0,0,50,0,none,none
+gn:3060280,Bratislava - Vajnory,Bratislava Region,5484,village,0,0,50,0,none,none
+gn:3060291,Chorvátsky Grob - Čierna Voda,Bratislava Region,7885,village,0,0,50,0,none,none
+gn:3060295,Hájske,Nitra Region,1337,village,0,0,50,0,none,none
+gn:3060308,Dunajská Streda,Trnava Region,22730,town,0,0,50,0,none,none
+gn:3060313,Dulovce,Nitra Region,1623,village,0,0,50,0,none,none
+gn:3060317,Dudince,Banská Bystrica Region,1369,village,0,0,50,0,none,none
+gn:3060322,Dúbravka,Bratislava Region,35518,town,0,0,50,0,none,none
+gn:3060336,Dubovany,Trnava Region,1095,village,0,0,50,0,none,none
+gn:3060339,Dubová,Bratislava Region,1207,village,0,0,50,0,none,none
+gn:3060346,Dubnica nad Váhom,Trenčín Region,21914,town,0,0,50,0,none,none
+gn:3060356,Drietoma,Trenčín Region,2165,village,0,0,50,0,none,none
+gn:3060359,Plevník-Drienové,Trenčín Region,1638,village,0,0,50,0,none,none
+gn:3060381,Domaša,Nitra Region,1446,village,0,0,50,0,none,none
+gn:3060394,Dolný Štál,Trnava Region,1911,village,0,0,50,0,none,none
+gn:3060405,Dolný Kubín,Žilina Region,17660,town,0,0,50,0,none,none
+gn:3060408,Kamenec pod Vtáčnikom,Trenčín Region,1751,village,0,0,50,0,none,none
+gn:3060430,Dolné Vestenice,Trenčín Region,2346,village,0,0,50,0,none,none
+gn:3060435,Štitáre,Nitra Region,1042,village,0,0,50,0,none,none
+gn:3060453,Dolné Orešany,Trnava Region,1441,village,0,0,50,0,none,none
+gn:3060455,Dolné Obdokovce,Nitra Region,1175,village,0,0,50,0,none,none
+gn:3060467,Dolné Kočkovce,Trenčín Region,1214,village,0,0,50,0,none,none
+gn:3060485,Dolná Súča,Trenčín Region,3024,village,0,0,50,0,none,none
+gn:3060489,Dolná Streda,Trnava Region,1410,village,0,0,50,0,none,none
+gn:3060506,Dolná Krupá,Trnava Region,2430,village,0,0,50,0,none,none
+gn:3060512,Dolná Breznica,Trenčín Region,1011,village,0,0,50,0,none,none
+gn:3060525,Doľany,Bratislava Region,1071,village,0,0,50,0,none,none
+gn:3060527,Dojč,Trnava Region,1383,village,0,0,50,0,none,none
+gn:3060530,Dohňany,Trenčín Region,1858,village,0,0,50,0,none,none
+gn:3060579,Diakovce,Nitra Region,2380,village,0,0,50,0,none,none
+gn:3060589,Detva,Banská Bystrica Region,13666,town,0,0,50,0,none,none
+gn:3060603,Dedinka pri Dunaji,Bratislava Region,3309,village,0,0,50,0,none,none
+gn:3060606,Dechtice,Trnava Region,1707,village,0,0,50,0,none,none
+gn:3060646,Čilizská Radvaň,Trnava Region,1277,village,0,0,50,0,none,none
+gn:3060653,Cigeľ,Trenčín Region,1287,village,0,0,50,0,none,none
+gn:3060654,Cífer,Trnava Region,4901,village,0,0,50,0,none,none
+gn:3060665,Čierny Balog,Banská Bystrica Region,4963,village,0,0,50,0,none,none
+gn:3060670,Čierne,Žilina Region,4419,village,0,0,50,0,none,none
+gn:3060674,Čierna Voda,Trnava Region,1417,village,0,0,50,0,none,none
+gn:3060679,Číčov,Nitra Region,1202,village,0,0,50,0,none,none
+gn:3060694,Chtelnica,Trnava Region,2523,village,0,0,50,0,none,none
+gn:3060702,Chrenovec-Brusno,Trenčín Region,1420,village,0,0,50,0,none,none
+gn:3060715,Chorvátsky Grob,Bratislava Region,8047,village,0,0,50,0,none,none
+gn:3060773,Cerová,Trnava Region,1085,village,0,0,50,0,none,none
+gn:3060774,Cerová,Trenčín Region,1065,village,0,0,50,0,none,none
+gn:3060783,Čereňany,Trenčín Region,1757,village,0,0,50,0,none,none
+gn:3060786,Čenkovce,Trnava Region,1099,village,0,0,50,0,none,none
+gn:3060796,Čeľadice,Nitra Region,1051,village,0,0,50,0,none,none
+gn:3060801,Čechynce,Nitra Region,1254,village,0,0,50,0,none,none
+gn:3060808,Čataj,Bratislava Region,1177,village,0,0,50,0,none,none
+gn:3060809,Čata,Nitra Region,1035,village,0,0,50,0,none,none
+gn:3060812,Častá,Bratislava Region,2400,village,0,0,50,0,none,none
+gn:3060813,Čáry,Trnava Region,1277,village,0,0,50,0,none,none
+gn:3060822,Čalovec,Nitra Region,1111,village,0,0,50,0,none,none
+gn:3060826,Čakajovce,Nitra Region,1140,village,0,0,50,0,none,none
+gn:3060835,Čadca,Žilina Region,22655,town,0,0,50,0,none,none
+gn:3060839,Čachtice,Trenčín Region,3636,village,0,0,50,0,none,none
+gn:3060842,Cabaj-Čápor,Nitra Region,4318,village,0,0,50,0,none,none
+gn:3060847,Bzince pod Javorinou,Trenčín Region,1998,village,0,0,50,0,none,none
+gn:3060852,Bytča,Žilina Region,11491,town,0,0,50,0,none,none
+gn:3060861,Bystričany,Trenčín Region,1724,village,0,0,50,0,none,none
+gn:3060893,Budmerice,Bratislava Region,2497,village,0,0,50,0,none,none
+gn:3060917,Brusno,Banská Bystrica Region,2188,village,0,0,50,0,none,none
+gn:3060918,Brusno,Trenčín Region,2105,village,0,0,50,0,none,none
+gn:3060928,Brodské,Trnava Region,2244,village,0,0,50,0,none,none
+gn:3060942,Brezová pod Bradlom,Trenčín Region,4632,village,0,0,50,0,none,none
+gn:3060950,Brezno,Banská Bystrica Region,19866,town,0,0,50,0,none,none
+gn:3060959,Breza,Žilina Region,1617,village,0,0,50,0,none,none
+gn:3060972,Bratislava,Bratislava Region,423737,city,0,0,50,0,none,none
+gn:3060976,Branč,Nitra Region,2204,village,0,0,50,0,none,none
+gn:3060986,Bošany,Trenčín Region,4094,village,0,0,50,0,none,none
+gn:3060988,Bošáca,Trenčín Region,1299,village,0,0,50,0,none,none
+gn:3060991,Borský Mikuláš,Trnava Region,3942,village,0,0,50,0,none,none
+gn:3060992,Borský Svätý Jur,Trnava Region,1598,village,0,0,50,0,none,none
+gn:3060996,Borovce,Trnava Region,1230,village,0,0,50,0,none,none
+gn:3061010,Bolešov,Trenčín Region,1618,village,0,0,50,0,none,none
+gn:3061011,Boleráz,Trnava Region,2393,village,0,0,50,0,none,none
+gn:3061015,Bojnice,Trenčín Region,5024,village,0,0,50,0,none,none
+gn:3061022,Bohdanovce nad Trnavou,Trnava Region,1537,village,0,0,50,0,none,none
+gn:3061059,Blatné,Bratislava Region,1788,village,0,0,50,0,none,none
+gn:3061071,Bíňa,Nitra Region,1433,village,0,0,50,0,none,none
+gn:3061082,Biely Kostol,Trnava Region,2477,village,0,0,50,0,none,none
+gn:3061107,Bernolákovo,Bratislava Region,10296,town,0,0,50,0,none,none
+gn:3061130,Beluša,Trenčín Region,6022,village,0,0,50,0,none,none
+gn:3061144,Beladice,Nitra Region,1723,village,0,0,50,0,none,none
+gn:3061184,Banská Štiavnica,Banská Bystrica Region,9426,village,0,0,50,0,none,none
+gn:3061186,Banská Bystrica,Banská Bystrica Region,74590,town,0,0,50,0,none,none
+gn:3061187,Banská Belá,Banská Bystrica Region,1194,village,0,0,50,0,none,none
+gn:3061188,Bánovce nad Bebravou,Trenčín Region,16486,town,0,0,50,0,none,none
+gn:3061192,Bánov,Nitra Region,3672,village,0,0,50,0,none,none
+gn:3061208,Bajč,Nitra Region,1227,village,0,0,50,0,none,none
+gn:3061209,Báhoň,Bratislava Region,1816,village,0,0,50,0,none,none
+gn:3061212,Badín,Banská Bystrica Region,2045,village,0,0,50,0,none,none
+gn:3061241,Báb,Nitra Region,1133,village,0,0,50,0,none,none
+gn:3061255,Andovce,Nitra Region,1792,village,0,0,50,0,none,none
+gn:3061265,Alekšince,Nitra Region,1692,village,0,0,50,0,none,none
+gn:3061277,Abraham,Banská Bystrica Region,1112,village,0,0,50,0,none,none
+gn:3061278,Abrahám,Trnava Region,1131,village,0,0,50,0,none,none
+gn:3061339,Zohor,Bratislava Region,3846,village,0,0,50,0,none,none
+gn:3062010,Záhorská Ves,Bratislava Region,1858,village,0,0,50,0,none,none
+gn:3062226,Vysoká pri Morave,Bratislava Region,2212,village,0,0,50,0,none,none
+gn:3071173,Malé Leváre,Bratislava Region,1875,village,0,0,50,0,none,none
+gn:3072376,Láb,Bratislava Region,2221,village,0,0,50,0,none,none
+gn:3073127,Kostolište,Bratislava Region,2379,village,0,0,50,0,none,none
+gn:3074571,Jakubov,Bratislava Region,1867,village,0,0,50,0,none,none
+gn:3076110,Gajary,Bratislava Region,3221,village,0,0,50,0,none,none
+gn:3077170,Devínska Nová Ves,Bratislava Region,17153,town,0,0,50,0,none,none
+gn:3077172,Devín,Bratislava Region,2124,village,0,0,50,0,none,none
+gn:6640415,Kráľová pri Senci,Bratislava Region,2279,village,0,0,50,0,none,none
+gn:7645843,Spisska Sobota,Prešov Region,2909,village,0,0,50,0,none,none
+gn:8436244,Dunajská Lužná,Bratislava Region,7955,village,0,0,50,0,none,none
+gn:11054693,Šaštín-Stráže,Trnava Region,4851,village,0,0,50,0,none,none
+gn:11903690,Vinosady,Bratislava Region,1645,village,0,0,50,0,none,none
+gn:13118651,Dlhé diely,Bratislava Region,30000,town,0,0,50,0,none,none
+gn:13535633,Čierne Kľačany,Nitra Region,1164,village,0,0,50,0,none,none
+gn:13562498,Trenčianske Stankovce,Trenčín Region,3402,village,0,0,50,0,none,none
+gn:13580293,Kecerovce,Košice Region,3736,village,0,0,50,0,none,none
+gn:13645448,Zemplínska Široká,Košice Region,1043,village,0,0,50,0,none,none
+gn:13680779,Nový Život,Trnava Region,2298,village,0,0,50,0,none,none
+gn:13697043,Melčice-Lieskové,Trenčín Region,1730,village,0,0,50,0,none,none
+gn:13697053,Ihľany,Prešov Region,1589,village,0,0,50,0,none,none

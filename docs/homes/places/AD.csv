@@ -1,0 +1,16 @@
+place_id,name,region,population,market,verified_homes,dated_listings,shortfall_to_50,recorded_sales,rent_source,price_source
+gn:3038832,Vila,Encamp,1418,village,0,0,50,0,none,none
+gn:3039154,El Tarter,Canillo,1003,village,0,0,50,0,none,none
+gn:3039163,Sant Julià de Lòria,Sant Julià de Loria,8022,village,0,0,50,0,none,none
+gn:3039181,Santa Coloma,Andorra la Vella,3236,village,0,0,50,0,none,none
+gn:3039604,Pas de la Casa,Encamp,2996,village,0,0,50,0,none,none
+gn:3039678,Ordino,Ordino,3066,village,0,0,50,0,none,none
+gn:3040051,les Escaldes,Escaldes-Engordany,15853,town,0,0,50,0,none,none
+gn:3040067,Les Bons,Encamp,1171,village,0,0,50,0,none,none
+gn:3040132,la Massana,La Massana,7211,village,0,0,50,0,none,none
+gn:3040686,Encamp,Encamp,11223,town,0,0,50,0,none,none
+gn:3041204,Canillo,Canillo,3292,village,0,0,50,0,none,none
+gn:3041519,Arinsal,La Massana,1419,village,0,0,50,0,none,none
+gn:3041543,Anyós,La Massana,1006,village,0,0,50,0,none,none
+gn:3041563,Andorra la Vella,Andorra la Vella,20430,town,0,0,50,0,none,none
+gn:3041604,Aixirivall,Sant Julià de Loria,1041,village,0,0,50,0,none,none

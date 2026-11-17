@@ -1,0 +1,1133 @@
+place_id,name,region,population,market,verified_homes,dated_listings,shortfall_to_50,recorded_sales,rent_source,price_source
+gn:251187,Zonianá,Crete,1206,village,0,0,50,0,none,none
+gn:251220,Zevgolateió,Peloponnese,4363,village,0,0,50,0,none,none
+gn:251250,Zarós,Crete,2565,village,0,0,50,0,none,none
+gn:251280,Zakynthos,Ionian Islands,11541,town,0,0,50,0,none,none
+gn:251283,Zacháro,West Greece,5894,village,0,0,50,0,none,none
+gn:251292,Zagorá,Thessaly,2385,village,0,0,50,0,none,none
+gn:251297,Gýtheio,Peloponnese,4279,village,0,0,50,0,none,none
+gn:251317,Yimnón,Central Greece,2008,village,0,0,50,0,none,none
+gn:251332,Giánnouli,Thessaly,12277,town,0,0,50,0,none,none
+gn:251366,Gérgeri,Crete,1345,village,0,0,50,0,none,none
+gn:251398,Geráni,Crete,0,village,0,0,50,0,none,none
+gn:251411,Geráki,Peloponnese,1323,village,0,0,50,0,none,none
+gn:251448,Gennadi,South Aegean,1224,village,0,0,50,0,none,none
+gn:251465,Géfyra,Peloponnese,1299,village,0,0,50,0,none,none
+gn:251513,Xiniás,Central Greece,2264,village,0,0,50,0,none,none
+gn:251525,Xylókastro,Peloponnese,5500,village,0,0,50,0,none,none
+gn:251606,Vrontádos,North Aegean,5270,village,0,0,50,0,none,none
+gn:251647,Vrýses,Crete,740,village,0,0,50,0,none,none
+gn:251671,Vraná,Attica,1082,village,0,0,50,0,none,none
+gn:251681,Vrachnaíika,West Greece,2571,village,0,0,50,0,none,none
+gn:251682,Vrachnaíika,West Greece,4834,village,0,0,50,0,none,none
+gn:251685,Vrakháti,Peloponnese,3603,village,0,0,50,0,none,none
+gn:251749,Vounoplagiá,Epirus,1404,village,0,0,50,0,none,none
+gn:251773,Vouliagméni,Attica,4332,village,0,0,50,0,none,none
+gn:251780,Voúla,Attica,28364,town,0,0,50,0,none,none
+gn:251823,Vónitsa,West Greece,4703,village,0,0,50,0,none,none
+gn:251833,Volos,Thessaly,86048,town,0,0,50,0,none,none
+gn:251849,Vokhaïkó,Peloponnese,1020,village,0,0,50,0,none,none
+gn:251896,Vlachiótis,Peloponnese,2404,village,0,0,50,0,none,none
+gn:251948,Výronas,Attica,61308,town,0,0,50,0,none,none
+gn:251959,Vília,Attica,2514,village,0,0,50,0,none,none
+gn:252019,Aktaío,West Greece,1494,village,0,0,50,0,none,none
+gn:252030,Verdikoússa,Thessaly,1350,village,0,0,50,0,none,none
+gn:252062,Vélo,Peloponnese,3096,village,0,0,50,0,none,none
+gn:252074,Velestíno,Thessaly,3044,village,0,0,50,0,none,none
+gn:252101,Vágia,Central Greece,4535,village,0,0,50,0,none,none
+gn:252164,Vathí,Central Greece,5029,village,0,0,50,0,none,none
+gn:252165,Vathý,Attica,1495,village,0,0,50,0,none,none
+gn:252166,Vathý,North Aegean,1888,village,0,0,50,0,none,none
+gn:252190,Vasilikón,Central Greece,6571,village,0,0,50,0,none,none
+gn:252200,Vasilikí,Thessaly,1388,village,0,0,50,0,none,none
+gn:252213,Vassilies,Crete,1662,village,0,0,50,0,none,none
+gn:252232,Varvásaina,West Greece,1032,village,0,0,50,0,none,none
+gn:252239,Vartholomió,West Greece,6145,village,0,0,50,0,none,none
+gn:252244,Varnávas,Attica,1771,village,0,0,50,0,none,none
+gn:252267,Vareiá,North Aegean,1133,village,0,0,50,0,none,none
+gn:252270,Vári,Attica,16717,town,0,0,50,0,none,none
+gn:252271,Vári,South Aegean,1266,village,0,0,50,0,none,none
+gn:252291,Várda,West Greece,3687,village,0,0,50,0,none,none
+gn:252300,Vanáton,Ionian Islands,1191,village,0,0,50,0,none,none
+gn:252303,Vamvakoú,Thessaly,1104,village,0,0,50,0,none,none
+gn:252486,Tsikalariá,Crete,1545,village,0,0,50,0,none,none
+gn:252523,Tsarítsani,Thessaly,1519,village,0,0,50,0,none,none
+gn:252569,Trópaia,Peloponnese,2217,village,0,0,50,0,none,none
+gn:252573,Troizína,Attica,4668,village,0,0,50,0,none,none
+gn:252601,Trípoli,Peloponnese,26561,town,0,0,50,0,none,none
+gn:252664,Tríkala,Thessaly,61653,town,0,0,50,0,none,none
+gn:252680,Triandaíika,West Greece,1484,village,0,0,50,0,none,none
+gn:252685,Ialysós,South Aegean,12717,town,0,0,50,0,none,none
+gn:252747,Traganón,Peloponnese,4276,village,0,0,50,0,none,none
+gn:252833,Tolón,Peloponnese,1460,village,0,0,50,0,none,none
+gn:252848,Týrnavos,Thessaly,10796,town,0,0,50,0,none,none
+gn:252854,Tínos,South Aegean,4573,village,0,0,50,0,none,none
+gn:252862,Tympáki,Crete,5285,village,0,0,50,0,none,none
+gn:252864,Tílisos,Crete,2252,village,0,0,50,0,none,none
+gn:252889,Thrapsanón,Crete,1588,village,0,0,50,0,none,none
+gn:252891,Thouría,Peloponnese,2688,village,0,0,50,0,none,none
+gn:252910,Thívai,Central Greece,32410,town,0,0,50,0,none,none
+gn:252920,Firá,South Aegean,2376,village,0,0,50,0,none,none
+gn:252927,Thymianá,North Aegean,1566,village,0,0,50,0,none,none
+gn:252939,Thesprotikó,Epirus,3341,village,0,0,50,0,none,none
+gn:252942,Thespiés,Central Greece,1437,village,0,0,50,0,none,none
+gn:252946,Thérmo,West Greece,1957,village,0,0,50,0,none,none
+gn:252989,Terpsithéa,Thessaly,1992,village,0,0,50,0,none,none
+gn:253003,Témeni,West Greece,1213,village,0,0,50,0,none,none
+gn:253025,Távros,Attica,14972,town,0,0,50,0,none,none
+gn:253130,Strátos,West Greece,4369,village,0,0,50,0,none,none
+gn:253158,Steíri,Central Greece,1056,village,0,0,50,0,none,none
+gn:253164,Stýpsi,North Aegean,1020,village,0,0,50,0,none,none
+gn:253166,Stymfalía,Peloponnese,1898,village,0,0,50,0,none,none
+gn:253170,Stylída,Central Greece,4892,village,0,0,50,0,none,none
+gn:253218,Stefanovíkeio,Thessaly,1970,village,0,0,50,0,none,none
+gn:253242,Stavrós,Central Greece,2489,village,0,0,50,0,none,none
+gn:253272,Stavráki,Epirus,1563,village,0,0,50,0,none,none
+gn:253286,Stános,West Greece,1132,village,0,0,50,0,none,none
+gn:253302,Stamáta,Attica,2901,village,0,0,50,0,none,none
+gn:253305,Stalís,Crete,1092,village,0,0,50,0,none,none
+gn:253356,Spétses,Attica,4001,village,0,0,50,0,none,none
+gn:253357,Sperchógeia,Peloponnese,1004,village,0,0,50,0,none,none
+gn:253360,Spercheiáda,Central Greece,2691,village,0,0,50,0,none,none
+gn:253376,Spáta,Attica,9198,village,0,0,50,0,none,none
+gn:253394,Sparta,Peloponnese,16239,town,0,0,50,0,none,none
+gn:253419,Soúrpi,Thessaly,2485,village,0,0,50,0,none,none
+gn:253456,Soúda,Crete,6729,village,0,0,50,0,none,none
+gn:253494,Sofikón,Peloponnese,1679,village,0,0,50,0,none,none
+gn:253499,Sofádes,Thessaly,0,village,0,0,50,0,none,none
+gn:253581,Skópelos,Thessaly,2886,village,0,0,50,0,none,none
+gn:253582,Skópelos,North Aegean,1530,village,0,0,50,0,none,none
+gn:253614,Skýros,Central Greece,1732,village,0,0,50,0,none,none
+gn:253643,Skiáthos,Thessaly,4897,village,0,0,50,0,none,none
+gn:253666,Schísma Eloúndas,Crete,1730,village,0,0,50,0,none,none
+gn:253673,Schimatári,Central Greece,4035,village,0,0,50,0,none,none
+gn:253688,Skarmagkás,Attica,1255,village,0,0,50,0,none,none
+gn:253716,Skála Oropoú,Attica,1430,village,0,0,50,0,none,none
+gn:253717,Skalánion,Crete,1012,village,0,0,50,0,none,none
+gn:253737,Skála,South Aegean,1747,village,0,0,50,0,none,none
+gn:253739,Skála,Peloponnese,2817,village,0,0,50,0,none,none
+gn:253759,Sitia,Crete,8707,village,0,0,50,0,none,none
+gn:253770,Sísion,Crete,1003,village,0,0,50,0,none,none
+gn:253817,Synoikismós Chavaríou,West Greece,1466,village,0,0,50,0,none,none
+gn:253858,Sými,South Aegean,2354,village,0,0,50,0,none,none
+gn:253871,Sykoúrio,Thessaly,2318,village,0,0,50,0,none,none
+gn:253878,Sikyón,Peloponnese,1185,village,0,0,50,0,none,none
+gn:253880,Síkinos,South Aegean,0,village,0,0,50,0,none,none
+gn:253996,Sérifos,South Aegean,364,village,0,0,50,0,none,none
+gn:254030,Selínia,Attica,2509,village,0,0,50,0,none,none
+gn:254045,Savália,West Greece,1101,village,0,0,50,0,none,none
+gn:254064,Sardínia,West Greece,1064,village,0,0,50,0,none,none
+gn:254067,Saraváli,West Greece,4618,village,0,0,50,0,none,none
+gn:254115,Samos,North Aegean,1885,village,0,0,50,0,none,none
+gn:254123,Sámi,Ionian Islands,1347,village,0,0,50,0,none,none
+gn:254144,Salamína,Attica,25370,town,0,0,50,0,none,none
+gn:254165,Royítika,West Greece,1288,village,0,0,50,0,none,none
+gn:254170,Roviés,Central Greece,1206,village,0,0,50,0,none,none
+gn:254188,Neápolis,West Greece,1442,village,0,0,50,0,none,none
+gn:254253,Rodotópi,Epirus,1140,village,0,0,50,0,none,none
+gn:254257,Rododáfni,West Greece,2776,village,0,0,50,0,none,none
+gn:254258,Rodhítsa,Central Greece,3509,village,0,0,50,0,none,none
+gn:254283,Rizómylos,Thessaly,1482,village,0,0,50,0,none,none
+gn:254315,Río,West Greece,14219,town,0,0,50,0,none,none
+gn:254352,Rethymno,Crete,32468,town,0,0,50,0,none,none
+gn:254425,Rafína,Attica,12168,town,0,0,50,0,none,none
+gn:254442,Pteleós,Thessaly,1990,village,0,0,50,0,none,none
+gn:254505,Psychikó,Attica,9529,village,0,0,50,0,none,none
+gn:254546,Psachná,Central Greece,5828,village,0,0,50,0,none,none
+gn:254584,Prokópi,Central Greece,1108,village,0,0,50,0,none,none
+gn:254599,Profítis Ilías,Crete,1482,village,0,0,50,0,none,none
+gn:254698,Préveza,Epirus,17283,town,0,0,50,0,none,none
+gn:254746,Prámanta,Epirus,1137,village,0,0,50,0,none,none
+gn:254842,Pórto Chéli,Peloponnese,2603,village,0,0,50,0,none,none
+gn:254849,Portariá,Thessaly,1849,village,0,0,50,0,none,none
+gn:254864,Póros,Ionian Islands,1131,village,0,0,50,0,none,none
+gn:254865,Póros,Attica,3651,village,0,0,50,0,none,none
+gn:254898,Politiká,Central Greece,1498,village,0,0,50,0,none,none
+gn:254917,Polichnítos,North Aegean,3438,village,0,0,50,0,none,none
+gn:254919,Polídhrosos,Central Greece,1027,village,0,0,50,0,none,none
+gn:254924,Polydéndri,Attica,1221,village,0,0,50,0,none,none
+gn:254949,Plomári,North Aegean,4852,village,0,0,50,0,none,none
+gn:254990,Platýkampos,Thessaly,7207,village,0,0,50,0,none,none
+gn:255030,Plátanos,West Greece,1764,village,0,0,50,0,none,none
+gn:255093,Plataiés,Central Greece,3602,village,0,0,50,0,none,none
+gn:255096,Plános,Ionian Islands,1011,village,0,0,50,0,none,none
+gn:255138,Pigí,Thessaly,1158,village,0,0,50,0,none,none
+gn:255161,Pithári,Crete,1302,village,0,0,50,0,none,none
+gn:255163,Pythagóreio,North Aegean,7515,village,0,0,50,0,none,none
+gn:255188,Pyrgíon,North Aegean,1063,village,0,0,50,0,none,none
+gn:255195,Pyrgetós,Thessaly,1373,village,0,0,50,0,none,none
+gn:255196,Pyrgetós,Thessaly,1179,village,0,0,50,0,none,none
+gn:255229,Pýrgos,West Greece,22399,town,0,0,50,0,none,none
+gn:255242,Pýrgos,Crete,1134,village,0,0,50,0,none,none
+gn:255274,Piraeus,Attica,163688,city,0,0,50,0,none,none
+gn:255293,Pýlos,Peloponnese,2345,village,0,0,50,0,none,none
+gn:255301,Pylí,South Aegean,2430,village,0,0,50,0,none,none
+gn:255305,Pýli,Thessaly,1790,village,0,0,50,0,none,none
+gn:255319,Pikérmi,Attica,7707,village,0,0,50,0,none,none
+gn:255346,Piáleia,Thessaly,2897,village,0,0,50,0,none,none
+gn:255377,Petroúpolis,Attica,58979,town,0,0,50,0,none,none
+gn:255409,Petrítsi,Peloponnese,3900,village,0,0,50,0,none,none
+gn:255439,Pétra,North Aegean,3029,village,0,0,50,0,none,none
+gn:255458,Péta,Epirus,1952,village,0,0,50,0,none,none
+gn:255470,Petalídi,Peloponnese,2555,village,0,0,50,0,none,none
+gn:255495,Periyiáli,Peloponnese,1474,village,0,0,50,0,none,none
+gn:255498,Perivóli,Ionian Islands,1297,village,0,0,50,0,none,none
+gn:255507,Perivólia,Crete,3320,village,0,0,50,0,none,none
+gn:255524,Peristéri,Attica,139981,city,0,0,50,0,none,none
+gn:255562,Pérdika,Epirus,1543,village,0,0,50,0,none,none
+gn:255585,Pérama,Epirus,1841,village,0,0,50,0,none,none
+gn:255588,Pérama,Attica,25389,town,0,0,50,0,none,none
+gn:255589,Pérama,Crete,1655,village,0,0,50,0,none,none
+gn:255594,Perachóra,Peloponnese,1141,village,0,0,50,0,none,none
+gn:255610,Pentéli,Attica,4851,village,0,0,50,0,none,none
+gn:255621,Pelópi,West Greece,1073,village,0,0,50,0,none,none
+gn:255624,Pellána,Peloponnese,1931,village,0,0,50,0,none,none
+gn:255638,Pelasgía,Central Greece,2383,village,0,0,50,0,none,none
+gn:255646,Pediní,Epirus,2871,village,0,0,50,0,none,none
+gn:255654,Gáïos,Ionian Islands,487,village,0,0,50,0,none,none
+gn:255683,Pátra,West Greece,168034,city,0,0,50,0,none,none
+gn:255688,Pátmos,South Aegean,541,village,0,0,50,0,none,none
+gn:255689,Patitírion,Thessaly,1628,village,0,0,50,0,none,none
+gn:255709,Pásion,Peloponnese,1298,village,0,0,50,0,none,none
+gn:255721,Páros,South Aegean,5289,village,0,0,50,0,none,none
+gn:255736,Párga,Epirus,10762,town,0,0,50,0,none,none
+gn:255739,Paravóla,West Greece,3105,village,0,0,50,0,none,none
+gn:255750,Proástio,Thessaly,1434,village,0,0,50,0,none,none
+gn:255753,Parapótamos,Epirus,1126,village,0,0,50,0,none,none
+gn:255760,Paramythiá,Epirus,2568,village,0,0,50,0,none,none
+gn:255764,Parálio Ástros,Peloponnese,1059,village,0,0,50,0,none,none
+gn:255773,Paralía Avlídhos,Central Greece,3115,village,0,0,50,0,none,none
+gn:255777,Paralía,West Greece,8903,village,0,0,50,0,none,none
+gn:255788,Paradeísi,South Aegean,2623,village,0,0,50,0,none,none
+gn:255798,Pappádos,North Aegean,1534,village,0,0,50,0,none,none
+gn:255807,Pappadátes,Epirus,1313,village,0,0,50,0,none,none
+gn:255849,Pánormos,Crete,1157,village,0,0,50,0,none,none
+gn:255945,Panaitólion,West Greece,2935,village,0,0,50,0,none,none
+gn:255959,Pámfila,North Aegean,1251,village,0,0,50,0,none,none
+gn:255971,Pallíni,Attica,14808,town,0,0,50,0,none,none
+gn:256047,Palamás,Thessaly,5719,village,0,0,50,0,none,none
+gn:256054,Pálairos,West Greece,3799,village,0,0,50,0,none,none
+gn:256066,Palaiópyrgos,Thessaly,1035,village,0,0,50,0,none,none
+gn:256075,Palaió Fáliro,Attica,64021,town,0,0,50,0,none,none
+gn:256079,Palaiomonástiro,Thessaly,1182,village,0,0,50,0,none,none
+gn:256093,Palaiókipos,North Aegean,1184,village,0,0,50,0,none,none
+gn:256131,Palaióchora,Crete,2372,village,0,0,50,0,none,none
+gn:256155,Palekastro,Crete,1254,village,0,0,50,0,none,none
+gn:256163,Psará,North Aegean,454,village,0,0,50,0,none,none
+gn:256173,Palaiá Fókaia,Attica,1254,village,0,0,50,0,none,none
+gn:256175,Palaiá Epídavros,Peloponnese,1713,village,0,0,50,0,none,none
+gn:256197,Paianía,Attica,14595,town,0,0,50,0,none,none
+gn:256210,Oxílithos,Central Greece,1061,village,0,0,50,0,none,none
+gn:256223,Ovriá,West Greece,6424,village,0,0,50,0,none,none
+gn:256257,Oropós,Attica,1111,village,0,0,50,0,none,none
+gn:256268,Orchomenós,Central Greece,9381,village,0,0,50,0,none,none
+gn:256284,Oreoí,Central Greece,2827,village,0,0,50,0,none,none
+gn:256296,Omvriakí,Central Greece,1210,village,0,0,50,0,none,none
+gn:256327,Oítilon,Peloponnese,3643,village,0,0,50,0,none,none
+gn:256329,Oinoússes,North Aegean,792,village,0,0,50,0,none,none
+gn:256339,Oinófyta,Central Greece,4314,village,0,0,50,0,none,none
+gn:256342,Papágou,Attica,13962,town,0,0,50,0,none,none
+gn:256344,Oía,South Aegean,1087,village,0,0,50,0,none,none
+gn:256428,Níkaia,Thessaly,3274,village,0,0,50,0,none,none
+gn:256429,Níkaia,Attica,89380,town,0,0,50,0,none,none
+gn:256432,Nidhríon,Ionian Islands,1402,village,0,0,50,0,none,none
+gn:256449,Nerokoúros,Crete,5593,village,0,0,50,0,none,none
+gn:256492,Néon Karlovásion,North Aegean,10220,town,0,0,50,0,none,none
+gn:256499,Neochorópoulo,Epirus,1326,village,0,0,50,0,none,none
+gn:256504,Oichalía,Thessaly,3271,village,0,0,50,0,none,none
+gn:256509,Neochóri,Epirus,1372,village,0,0,50,0,none,none
+gn:256520,Neochórion,West Greece,2827,village,0,0,50,0,none,none
+gn:256527,Neochóri,West Greece,1105,village,0,0,50,0,none,none
+gn:256558,Neméa,Peloponnese,3853,village,0,0,50,0,none,none
+gn:256571,Néa Tírins,Peloponnese,3207,village,0,0,50,0,none,none
+gn:256572,Néa Stíra,Central Greece,1031,village,0,0,50,0,none,none
+gn:256575,Néa Smýrni,Attica,73076,town,0,0,50,0,none,none
+gn:256580,Néa Seléfkeia,Epirus,1213,village,0,0,50,0,none,none
+gn:256588,Neápoli,Peloponnese,7235,village,0,0,50,0,none,none
+gn:256589,Neápoli,Crete,4320,village,0,0,50,0,none,none
+gn:256592,Néa Péramos,Attica,7260,village,0,0,50,0,none,none
+gn:256593,Néa Palátia,Attica,3656,village,0,0,50,0,none,none
+gn:256596,Néa Manoláda,West Greece,3696,village,0,0,50,0,none,none
+gn:256598,Néa Mákri,Attica,18114,town,0,0,50,0,none,none
+gn:256601,Ílion,Attica,84793,town,0,0,50,0,none,none
+gn:256603,Néa Lámpsakos,Central Greece,2196,village,0,0,50,0,none,none
+gn:256606,Néa Kíos,Peloponnese,2778,village,0,0,50,0,none,none
+gn:256614,Néa Ionía,Attica,67134,town,0,0,50,0,none,none
+gn:256621,Néa Filadélfeia,Attica,25734,town,0,0,50,0,none,none
+gn:256622,Néa Erythraía,Attica,18604,town,0,0,50,0,none,none
+gn:256626,Néa Artáki,Central Greece,10302,town,0,0,50,0,none,none
+gn:256627,Néa Anchiálos,Thessaly,5881,village,0,0,50,0,none,none
+gn:256629,Néa Alikarnassós,Crete,14624,town,0,0,50,0,none,none
+gn:256632,Náxos,South Aegean,7070,village,0,0,50,0,none,none
+gn:256637,Náfplio,Peloponnese,14582,town,0,0,50,0,none,none
+gn:256639,Náfpaktos,West Greece,13415,town,0,0,50,0,none,none
+gn:256653,Náousa,South Aegean,3134,village,0,0,50,0,none,none
+gn:256660,Mouzourás,Crete,1462,village,0,0,50,0,none,none
+gn:256662,Mouzáki,Thessaly,2127,village,0,0,50,0,none,none
+gn:256664,Mouzaki,Ionian Islands,1702,village,0,0,50,0,none,none
+gn:256696,Mourniés,Crete,5318,village,0,0,50,0,none,none
+gn:256708,Mouríki,West Greece,3416,village,0,0,50,0,none,none
+gn:256716,Mouresi,Thessaly,1787,village,0,0,50,0,none,none
+gn:256728,Moúlki,Peloponnese,1316,village,0,0,50,0,none,none
+gn:256738,Moúdhros,North Aegean,3398,village,0,0,50,0,none,none
+gn:256750,Moskháton,Attica,25441,town,0,0,50,0,none,none
+gn:256757,Mória,North Aegean,1176,village,0,0,50,0,none,none
+gn:256759,Morfovoúni,Thessaly,485,village,0,0,50,0,none,none
+gn:256808,Monastiráki,West Greece,1299,village,0,0,50,0,none,none
+gn:256824,Mólos,Central Greece,1974,village,0,0,50,0,none,none
+gn:256833,Moláoi,Peloponnese,3018,village,0,0,50,0,none,none
+gn:256838,Mokhós,Crete,1132,village,0,0,50,0,none,none
+gn:256842,Moíres,Crete,6379,village,0,0,50,0,none,none
+gn:256860,Mitrópoli,Thessaly,1572,village,0,0,50,0,none,none
+gn:256865,Mytilinioí,North Aegean,1982,village,0,0,50,0,none,none
+gn:256866,Mytilene,North Aegean,28322,town,0,0,50,0,none,none
+gn:256872,Mytikas,Central Greece,1808,village,0,0,50,0,none,none
+gn:256879,Míthymna,North Aegean,1933,village,0,0,50,0,none,none
+gn:256886,Mystrás,Peloponnese,4238,village,0,0,50,0,none,none
+gn:256914,Myrsíni,West Greece,1213,village,0,0,50,0,none,none
+gn:256930,Mýrina,North Aegean,5406,village,0,0,50,0,none,none
+gn:256944,Mindilóglion,West Greece,2331,village,0,0,50,0,none,none
+gn:256952,Mílos,South Aegean,819,village,0,0,50,0,none,none
+gn:257056,Mykonos,South Aegean,10704,town,0,0,50,0,none,none
+gn:257059,Mikínai,Peloponnese,2885,village,0,0,50,0,none,none
+gn:257080,Megísti,South Aegean,0,village,0,0,50,0,none,none
+gn:257083,Metsovo,Epirus,2503,village,0,0,50,0,none,none
+gn:257122,Methóni,Peloponnese,2157,village,0,0,50,0,none,none
+gn:257152,Messíni,Peloponnese,6773,village,0,0,50,0,none,none
+gn:257173,Mesopótamos,Peloponnese,2786,village,0,0,50,0,none,none
+gn:257186,Mesolóngi,West Greece,12785,town,0,0,50,0,none,none
+gn:257224,Mesariá,South Aegean,1233,village,0,0,50,0,none,none
+gn:257258,Agía Triáda,Thessaly,1030,village,0,0,50,0,none,none
+gn:257268,Menídi,West Greece,1858,village,0,0,50,0,none,none
+gn:257302,Melíssia,Attica,22741,town,0,0,50,0,none,none
+gn:257322,Meligalás,Peloponnese,1431,village,0,0,50,0,none,none
+gn:257365,Mégara,Attica,23456,town,0,0,50,0,none,none
+gn:257395,Megalópoli,Peloponnese,5283,village,0,0,50,0,none,none
+gn:257400,Megálo Chorió,South Aegean,0,village,0,0,50,0,none,none
+gn:257406,Megalochóri,Thessaly,1564,village,0,0,50,0,none,none
+gn:257434,Megáli Khóra,West Greece,1408,village,0,0,50,0,none,none
+gn:257448,Megála Kalývia,Thessaly,2345,village,0,0,50,0,none,none
+gn:257535,Mavrommáti,Thessaly,1426,village,0,0,50,0,none,none
+gn:257593,Mataránga,West Greece,1344,village,0,0,50,0,none,none
+gn:257621,Martínon,Central Greece,1722,village,0,0,50,0,none,none
+gn:257643,Marmárion,Central Greece,1972,village,0,0,50,0,none,none
+gn:257669,Markópoulo Oropoú,Attica,2308,village,0,0,50,0,none,none
+gn:257671,Markópoulo,Attica,9513,village,0,0,50,0,none,none
+gn:257695,Margaríti,Epirus,1931,village,0,0,50,0,none,none
+gn:257717,Marathónas,Attica,7170,village,0,0,50,0,none,none
+gn:257721,Marathókampos,North Aegean,2401,village,0,0,50,0,none,none
+gn:257762,Manoláda,West Greece,1448,village,0,0,50,0,none,none
+gn:257804,Mandráki,South Aegean,682,village,0,0,50,0,none,none
+gn:257811,Mándra,Attica,11327,town,0,0,50,0,none,none
+gn:257814,Mantoúdi,Central Greece,2245,village,0,0,50,0,none,none
+gn:257827,Mantamádos,North Aegean,2070,village,0,0,50,0,none,none
+gn:257859,Mália,Crete,4343,village,0,0,50,0,none,none
+gn:257868,Malesína,Central Greece,4200,village,0,0,50,0,none,none
+gn:257884,Malakónta,Central Greece,1097,village,0,0,50,0,none,none
+gn:257886,Malakása,Attica,1851,village,0,0,50,0,none,none
+gn:257923,Makrísia,West Greece,1584,village,0,0,50,0,none,none
+gn:257948,Makrychóri,Thessaly,1835,village,0,0,50,0,none,none
+gn:257949,Makrychóri,Thessaly,1188,village,0,0,50,0,none,none
+gn:257975,Makrakómi,Central Greece,13500,town,0,0,50,0,none,none
+gn:258004,Magoúla,Central Greece,1063,village,0,0,50,0,none,none
+gn:258007,Magoúla,Attica,4735,village,0,0,50,0,none,none
+gn:258011,Magoúla,Peloponnese,1566,village,0,0,50,0,none,none
+gn:258038,Artémida,Attica,21924,town,0,0,50,0,none,none
+gn:258045,Loutrópoli Thermís,North Aegean,2772,village,0,0,50,0,none,none
+gn:258052,Loutró,West Greece,1002,village,0,0,50,0,none,none
+gn:258066,Loutráki,Peloponnese,11564,town,0,0,50,0,none,none
+gn:258075,Loutrá Aidhipsoú,Central Greece,2560,village,0,0,50,0,none,none
+gn:258076,Loutrá,North Aegean,1116,village,0,0,50,0,none,none
+gn:258091,Loúros,Epirus,3987,village,0,0,50,0,none,none
+gn:258108,Loukísia,Central Greece,1161,village,0,0,50,0,none,none
+gn:258175,Lixoúri,Ionian Islands,6989,village,0,0,50,0,none,none
+gn:258182,Livanátes,Central Greece,2333,village,0,0,50,0,none,none
+gn:258241,Lithakiá,Ionian Islands,1307,village,0,0,50,0,none,none
+gn:258254,Lyrkeía,Peloponnese,1450,village,0,0,50,0,none,none
+gn:258261,Leipsoí,South Aegean,0,village,0,0,50,0,none,none
+gn:258294,Limnokhórion,West Greece,1213,village,0,0,50,0,none,none
+gn:258306,Límni,Central Greece,2072,village,0,0,50,0,none,none
+gn:258314,Limín Mesoyaías,Attica,10526,town,0,0,50,0,none,none
+gn:258315,Limín Khersonísou,Crete,2968,village,0,0,50,0,none,none
+gn:258332,Lykóvrysi,Attica,9705,village,0,0,50,0,none,none
+gn:258377,Ligourión,Peloponnese,2500,village,0,0,50,0,none,none
+gn:258385,Lidoríki,Central Greece,840,village,0,0,50,0,none,none
+gn:258399,Lianokládhion,Central Greece,1085,village,0,0,50,0,none,none
+gn:258427,Lefkímmi,Ionian Islands,5647,village,0,0,50,0,none,none
+gn:258438,Lefkáda,Ionian Islands,8673,village,0,0,50,0,none,none
+gn:258458,Levídion,Peloponnese,1025,village,0,0,50,0,none,none
+gn:258463,Livadeiá,Central Greece,21492,town,0,0,50,0,none,none
+gn:258497,Lepenoú,West Greece,2090,village,0,0,50,0,none,none
+gn:258500,Leonídio,Peloponnese,3020,village,0,0,50,0,none,none
+gn:258508,Leondárion,Attica,5929,village,0,0,50,0,none,none
+gn:258521,Lékhaio,Peloponnese,2672,village,0,0,50,0,none,none
+gn:258522,Lechainá,West Greece,3714,village,0,0,50,0,none,none
+gn:258543,Lávrio,Attica,7078,village,0,0,50,0,none,none
+gn:258576,Lárisa,Thessaly,146926,city,0,0,50,0,none,none
+gn:258577,Lárimna,Central Greece,1201,village,0,0,50,0,none,none
+gn:258584,Lápas,West Greece,1377,village,0,0,50,0,none,none
+gn:258620,Lamía,Central Greece,52006,town,0,0,50,0,none,none
+gn:258655,Lálas,West Greece,1168,village,0,0,50,0,none,none
+gn:258672,Lakkí,South Aegean,2093,village,0,0,50,0,none,none
+gn:258744,Krousón,Crete,2564,village,0,0,50,0,none,none
+gn:258754,Krokeés,Peloponnese,2138,village,0,0,50,0,none,none
+gn:258757,Taxiárches,Thessaly,1157,village,0,0,50,0,none,none
+gn:258759,Kritsá,Crete,2630,village,0,0,50,0,none,none
+gn:258793,Kryonéri,Attica,5318,village,0,0,50,0,none,none
+gn:258819,Kríkellos,West Greece,1312,village,0,0,50,0,none,none
+gn:258842,Kréstena,West Greece,1864,village,0,0,50,0,none,none
+gn:258873,Kranídi,Peloponnese,4006,village,0,0,50,0,none,none
+gn:258882,Kraniá Elassónas,Thessaly,1346,village,0,0,50,0,none,none
+gn:258912,Kouvarás,Attica,1932,village,0,0,50,0,none,none
+gn:258933,Koutsopódi,Peloponnese,3254,village,0,0,50,0,none,none
+gn:258949,Koutselió,Epirus,1118,village,0,0,50,0,none,none
+gn:259128,Metamórfosi,Attica,29891,town,0,0,50,0,none,none
+gn:259229,Kostakioí,Epirus,2078,village,0,0,50,0,none,none
+gn:259245,Kos,South Aegean,19244,town,0,0,50,0,none,none
+gn:259251,Koropí,Attica,19164,town,0,0,50,0,none,none
+gn:259265,Koróni,Peloponnese,3600,village,0,0,50,0,none,none
+gn:259289,Kórinthos,Peloponnese,30176,town,0,0,50,0,none,none
+gn:259292,Domvraína,Central Greece,1138,village,0,0,50,0,none,none
+gn:259452,Kompóti,Epirus,2150,village,0,0,50,0,none,none
+gn:259508,Kolympári,Crete,4139,village,0,0,50,0,none,none
+gn:259537,Kokkónion,Peloponnese,1056,village,0,0,50,0,none,none
+gn:259578,Kokkíni Cháni,Crete,1755,village,0,0,50,0,none,none
+gn:259617,Koiláda,Thessaly,3256,village,0,0,50,0,none,none
+gn:259618,Koilás,Peloponnese,1165,village,0,0,50,0,none,none
+gn:259707,Kýthnos,South Aegean,0,village,0,0,50,0,none,none
+gn:259710,Kýthira,Attica,281,village,0,0,50,0,none,none
+gn:259718,Kíssamos,Crete,4236,village,0,0,50,0,none,none
+gn:259720,Kírra,Central Greece,1392,village,0,0,50,0,none,none
+gn:259730,Kyriáki,Central Greece,1804,village,0,0,50,0,none,none
+gn:259734,Kyrás Vrýsi,Peloponnese,1128,village,0,0,50,0,none,none
+gn:259745,Kipséli,Attica,2096,village,0,0,50,0,none,none
+gn:259750,Kypséli,Attica,2124,village,0,0,50,0,none,none
+gn:259782,Kyparissía,Peloponnese,5033,village,0,0,50,0,none,none
+gn:259796,Kinéta,Attica,1651,village,0,0,50,0,none,none
+gn:259802,Kímolos,South Aegean,837,village,0,0,50,0,none,none
+gn:259806,Kými,Central Greece,6706,village,0,0,50,0,none,none
+gn:259813,Kyllíni,West Greece,1079,village,0,0,50,0,none,none
+gn:259824,Kifisiá,Attica,47332,town,0,0,50,0,none,none
+gn:259830,Kiáto,Peloponnese,9812,village,0,0,50,0,none,none
+gn:259912,Chóra Sfakíon,Crete,243,village,0,0,50,0,none,none
+gn:259917,Chóra,North Aegean,1218,village,0,0,50,0,none,none
+gn:259919,Chóra,Peloponnese,2609,village,0,0,50,0,none,none
+gn:259949,Cholargós,Attica,30840,town,0,0,50,0,none,none
+gn:259973,Chios,North Aegean,23953,town,0,0,50,0,none,none
+gn:259993,Khiliomódhi,Peloponnese,1510,village,0,0,50,0,none,none
+gn:260037,Chávari,West Greece,1012,village,0,0,50,0,none,none
+gn:260114,Chaniá,Crete,53910,town,0,0,50,0,none,none
+gn:260128,Khalkoútsion,Attica,2094,village,0,0,50,0,none,none
+gn:260133,Chalkída,Central Greece,59125,town,0,0,50,0,none,none
+gn:260142,Chalkiádes,Epirus,1284,village,0,0,50,0,none,none
+gn:260144,Chálki,Thessaly,1837,village,0,0,50,0,none,none
+gn:260145,Chálki,South Aegean,0,village,0,0,50,0,none,none
+gn:260171,Chalandrítsa,West Greece,949,village,0,0,50,0,none,none
+gn:260172,Khalándrion,Attica,74192,town,0,0,50,0,none,none
+gn:260183,Chaïdári,Attica,45642,town,0,0,50,0,none,none
+gn:260204,Keratsíni,Attica,77077,town,0,0,50,0,none,none
+gn:260210,Keratéa,Attica,14483,town,0,0,50,0,none,none
+gn:260220,Kerasochóri,Central Greece,274,village,0,0,50,0,none,none
+gn:260264,Kentrí,Crete,1021,village,0,0,50,0,none,none
+gn:260308,Kéfalos,South Aegean,2713,village,0,0,50,0,none,none
+gn:260348,Kéa,South Aegean,0,village,0,0,50,0,none,none
+gn:260379,Kavásila,West Greece,1231,village,0,0,50,0,none,none
+gn:260420,Katsikás,Epirus,5180,village,0,0,50,0,none,none
+gn:260468,Katoúna,West Greece,1634,village,0,0,50,0,none,none
+gn:260473,Káto Tithoréa,Central Greece,2753,village,0,0,50,0,none,none
+gn:260478,Káto Soúlion,Attica,2142,village,0,0,50,0,none,none
+gn:260531,Káto Mazaráki,West Greece,1005,village,0,0,50,0,none,none
+gn:260542,Káto Lekhónia,Thessaly,1751,village,0,0,50,0,none,none
+gn:260557,Kleitoría,West Greece,2038,village,0,0,50,0,none,none
+gn:260572,Katochí,West Greece,2829,village,0,0,50,0,none,none
+gn:260604,Káto Glykóvrysi,Peloponnese,1753,village,0,0,50,0,none,none
+gn:260618,Káto Dhiminió,Peloponnese,1201,village,0,0,50,0,none,none
+gn:260630,Káto Asítai,Crete,1264,village,0,0,50,0,none,none
+gn:260644,Káto Achaḯa,West Greece,5752,village,0,0,50,0,none,none
+gn:260674,Katastárion,Ionian Islands,1331,village,0,0,50,0,none,none
+gn:260764,Kastrí,Crete,37,village,0,0,50,0,none,none
+gn:260780,Kastráki,Thessaly,1172,village,0,0,50,0,none,none
+gn:260804,Kastélli,Crete,1828,village,0,0,50,0,none,none
+gn:260811,Kastélla,Central Greece,1370,village,0,0,50,0,none,none
+gn:260886,Karpochóri,Thessaly,1059,village,0,0,50,0,none,none
+gn:260891,Karpenísi,Central Greece,6888,village,0,0,50,0,none,none
+gn:260895,Karpathos,South Aegean,7790,village,0,0,50,0,none,none
+gn:260935,Kárystos,Central Greece,5091,village,0,0,50,0,none,none
+gn:260987,Karditsomagoúla,Thessaly,1950,village,0,0,50,0,none,none
+gn:260989,Kardítsa,Thessaly,32789,town,0,0,50,0,none,none
+gn:260999,Kardamýli,Peloponnese,300,village,0,0,50,0,none,none
+gn:261000,Kardámyla,North Aegean,1897,village,0,0,50,0,none,none
+gn:261003,Kardámaina,South Aegean,2132,village,0,0,50,0,none,none
+gn:261080,Pefkochóri,Central Macedonia,2228,village,0,0,50,0,none,none
+gn:261132,Kaparéllion,Central Greece,1478,village,0,0,50,0,none,none
+gn:261133,Kapandríti,Attica,3534,village,0,0,50,0,none,none
+gn:261167,Kanaláki,Epirus,2446,village,0,0,50,0,none,none
+gn:261211,Kaména Voúrla,Central Greece,2761,village,0,0,50,0,none,none
+gn:261249,Kamaterón,Attica,29179,town,0,0,50,0,none,none
+gn:261283,Kamárai,West Greece,1200,village,0,0,50,0,none,none
+gn:261298,Kalpáki,Epirus,625,village,0,0,50,0,none,none
+gn:261368,Kaló Chorió,Crete,1197,village,0,0,50,0,none,none
+gn:261396,Kalloní,North Aegean,7762,village,0,0,50,0,none,none
+gn:261401,Kallíthiro,Thessaly,1098,village,0,0,50,0,none,none
+gn:261414,Kallithéa,Attica,100641,city,0,0,50,0,none,none
+gn:261431,Kallifóni,Thessaly,1991,village,0,0,50,0,none,none
+gn:261445,Kalývia Thorikoú,Attica,14424,town,0,0,50,0,none,none
+gn:261497,Kalýves,Crete,1457,village,0,0,50,0,none,none
+gn:261507,Kálymnos,South Aegean,12324,town,0,0,50,0,none,none
+gn:261537,Kalávryta,West Greece,1629,village,0,0,50,0,none,none
+gn:261571,Kálamos,Attica,4941,village,0,0,50,0,none,none
+gn:261596,Kalamiá,Epirus,1018,village,0,0,50,0,none,none
+gn:261601,Kalampáka,Thessaly,8138,village,0,0,50,0,none,none
+gn:261604,Kalamata,Peloponnese,54100,town,0,0,50,0,none,none
+gn:261614,Álimos,Attica,41720,town,0,0,50,0,none,none
+gn:261615,Kalamákion,Ionian Islands,1226,village,0,0,50,0,none,none
+gn:261678,Kaisarianí,Attica,26370,town,0,0,50,0,none,none
+gn:261680,Kainoúryion,Central Greece,1138,village,0,0,50,0,none,none
+gn:261681,Kainoúryion,West Greece,2790,village,0,0,50,0,none,none
+gn:261708,Itháki,Ionian Islands,1843,village,0,0,50,0,none,none
+gn:261714,Itéa,Thessaly,1301,village,0,0,50,0,none,none
+gn:261715,Itéa,Central Greece,6050,village,0,0,50,0,none,none
+gn:261720,Istiaía,Central Greece,4339,village,0,0,50,0,none,none
+gn:261721,Isthmía,Peloponnese,2709,village,0,0,50,0,none,none
+gn:261743,Irákleio,Attica,49642,town,0,0,50,0,none,none
+gn:261745,Irákleion,Crete,137154,city,0,0,50,0,none,none
+gn:261772,Íos,South Aegean,2024,village,0,0,50,0,none,none
+gn:261779,Ioánnina,Epirus,65574,town,0,0,50,0,none,none
+gn:261807,Igoumenítsa,Epirus,9496,village,0,0,50,0,none,none
+gn:261814,Ierápetra,Crete,12355,town,0,0,50,0,none,none
+gn:261822,Ýdra,Attica,1900,village,0,0,50,0,none,none
+gn:261842,Grizáno,Thessaly,1192,village,0,0,50,0,none,none
+gn:261871,Graviá,Central Greece,1811,village,0,0,50,0,none,none
+gn:261895,Grammenítsa,Epirus,1258,village,0,0,50,0,none,none
+gn:261903,Grammatikó,Attica,1383,village,0,0,50,0,none,none
+gn:261910,Gra Liyiá,Crete,1528,village,0,0,50,0,none,none
+gn:261913,Graikochóri,Epirus,1263,village,0,0,50,0,none,none
+gn:261935,Goúrnes,Crete,1628,village,0,0,50,0,none,none
+gn:261996,Gónnoi,Thessaly,2110,village,0,0,50,0,none,none
+gn:262007,Gómfoi,Thessaly,4097,village,0,0,50,0,none,none
+gn:262036,Glyfáda,Attica,87305,town,0,0,50,0,none,none
+gn:262067,Gázi,Crete,12606,town,0,0,50,0,none,none
+gn:262091,Gavaloú,West Greece,1018,village,0,0,50,0,none,none
+gn:262098,Gastoúni,West Greece,8114,village,0,0,50,0,none,none
+gn:262104,Gargaliánoi,Peloponnese,6864,village,0,0,50,0,none,none
+gn:262133,Galaxídhion,Central Greece,2597,village,0,0,50,0,none,none
+gn:262135,Galátsi,Attica,59345,town,0,0,50,0,none,none
+gn:262140,Galatás,West Greece,1057,village,0,0,50,0,none,none
+gn:262143,Galatás,Attica,2195,village,0,0,50,0,none,none
+gn:262144,Galatás,Crete,3166,village,0,0,50,0,none,none
+gn:262159,Gaïtánion,Ionian Islands,1899,village,0,0,50,0,none,none
+gn:262217,Fry,South Aegean,357,village,0,0,50,0,none,none
+gn:262317,Folói,West Greece,2293,village,0,0,50,0,none,none
+gn:262319,Folégandros,South Aegean,667,village,0,0,50,0,none,none
+gn:262383,Fyteíes,West Greece,1812,village,0,0,50,0,none,none
+gn:262397,Filótion,South Aegean,1617,village,0,0,50,0,none,none
+gn:262398,Filothéi,Attica,7370,village,0,0,50,0,none,none
+gn:262400,Fýllo,Thessaly,2446,village,0,0,50,0,none,none
+gn:262402,Fílla,Central Greece,1459,village,0,0,50,0,none,none
+gn:262411,Filippiáda,Epirus,4619,village,0,0,50,0,none,none
+gn:262418,Filiatrá,Peloponnese,5359,village,0,0,50,0,none,none
+gn:262420,Filiátes,Epirus,2129,village,0,0,50,0,none,none
+gn:262426,Fylí,Attica,48157,town,0,0,50,0,none,none
+gn:262433,Fíki,Thessaly,1098,village,0,0,50,0,none,none
+gn:262462,Fársala,Thessaly,10380,town,0,0,50,0,none,none
+gn:262465,Fáros,Central Greece,1171,village,0,0,50,0,none,none
+gn:262472,Farkadóna,Thessaly,0,village,0,0,50,0,none,none
+gn:262485,Farakláta,Ionian Islands,1123,village,0,0,50,0,none,none
+gn:262503,Magoúla,Thessaly,1036,village,0,0,50,0,none,none
+gn:262525,Fálanna,Thessaly,3987,village,0,0,50,0,none,none
+gn:262526,Falaisía,Peloponnese,1455,village,0,0,50,0,none,none
+gn:262558,Examília,Peloponnese,2670,village,0,0,50,0,none,none
+gn:262563,Evxinoúpolis,Thessaly,2078,village,0,0,50,0,none,none
+gn:262568,Evrostína,Peloponnese,3468,village,0,0,50,0,none,none
+gn:262576,Efpálio,Central Greece,5508,village,0,0,50,0,none,none
+gn:262603,Ermoúpolis,South Aegean,11351,town,0,0,50,0,none,none
+gn:262607,Ermióni,Peloponnese,3936,village,0,0,50,0,none,none
+gn:262609,Erythrés,Attica,2567,village,0,0,50,0,none,none
+gn:262628,Erétria,Central Greece,4166,village,0,0,50,0,none,none
+gn:262629,Eresós,North Aegean,1337,village,0,0,50,0,none,none
+gn:262636,Epitálio,West Greece,1291,village,0,0,50,0,none,none
+gn:262683,Ano Arhanes,Crete,3913,village,0,0,50,0,none,none
+gn:262693,Emporeiós,North Aegean,3704,village,0,0,50,0,none,none
+gn:262696,Emporeío,South Aegean,3704,village,0,0,50,0,none,none
+gn:262698,Émponas,South Aegean,1167,village,0,0,50,0,none,none
+gn:262701,Eloúnda,Crete,2193,village,0,0,50,0,none,none
+gn:262719,Ellinikó,Attica,16715,town,0,0,50,0,none,none
+gn:262735,Elikístra,West Greece,1710,village,0,0,50,0,none,none
+gn:262752,Elefsína,Attica,24910,town,0,0,50,0,none,none
+gn:262757,Eleoúsa,Epirus,3484,village,0,0,50,0,none,none
+gn:262758,Eleoúsa,Epirus,1093,village,0,0,50,0,none,none
+gn:262776,Eláteia,Central Greece,2804,village,0,0,50,0,none,none
+gn:262784,Elassóna,Thessaly,7060,village,0,0,50,0,none,none
+gn:262833,Ekáli,Attica,5574,village,0,0,50,0,none,none
+gn:262862,Voulgaréli,Epirus,590,village,0,0,50,0,none,none
+gn:262869,Dhrosiá,Central Greece,5020,village,0,0,50,0,none,none
+gn:262871,Drosiá,Attica,7837,village,0,0,50,0,none,none
+gn:262920,Drépanon,Peloponnese,1272,village,0,0,50,0,none,none
+gn:262969,Dhráfi,Attica,2976,village,0,0,50,0,none,none
+gn:262993,Dório,Peloponnese,1839,village,0,0,50,0,none,none
+gn:263000,Domokós,Central Greece,1531,village,0,0,50,0,none,none
+gn:263015,Dhokímion,West Greece,1664,village,0,0,50,0,none,none
+gn:263020,Dodóni,Epirus,7199,village,0,0,50,0,none,none
+gn:263034,Dístomo,Central Greece,0,village,0,0,50,0,none,none
+gn:263064,Diónysos,Attica,5651,village,0,0,50,0,none,none
+gn:263075,Dimitsána,Peloponnese,739,village,0,0,50,0,none,none
+gn:263098,Dílesi,Central Greece,1976,village,0,0,50,0,none,none
+gn:263115,Dídyma,Peloponnese,1047,village,0,0,50,0,none,none
+gn:263148,Diakoptó,West Greece,5603,village,0,0,50,0,none,none
+gn:263166,Deskáti,West Macedonia,3856,village,0,0,50,0,none,none
+gn:263171,Desfína,Central Greece,1748,village,0,0,50,0,none,none
+gn:263173,Dervíziana,Epirus,1897,village,0,0,50,0,none,none
+gn:263214,Delvináki,Epirus,1609,village,0,0,50,0,none,none
+gn:263219,Delphi,Central Greece,2373,village,0,0,50,0,none,none
+gn:263257,Darátsos,Crete,4732,village,0,0,50,0,none,none
+gn:263312,Dhafní,Attica,22913,town,0,0,50,0,none,none
+gn:263482,Batsíon,South Aegean,1010,village,0,0,50,0,none,none
+gn:263535,Rodópoli,Attica,2110,village,0,0,50,0,none,none
+gn:263646,Ágios Geórgios,Central Greece,2045,village,0,0,50,0,none,none
+gn:263696,Ágios Vasíleios,West Greece,2889,village,0,0,50,0,none,none
+gn:263698,Áyios Vasílios,Peloponnese,1025,village,0,0,50,0,none,none
+gn:263714,Áyios Thomás,Central Greece,1131,village,0,0,50,0,none,none
+gn:263725,Ágios Stéfanos,Attica,9892,village,0,0,50,0,none,none
+gn:263805,Áyios Nikólaos,Central Greece,3426,village,0,0,50,0,none,none
+gn:263809,Arkoúdi,West Greece,1305,village,0,0,50,0,none,none
+gn:263824,Ágios Nikólaos,Crete,11421,town,0,0,50,0,none,none
+gn:263853,Áyios Konstandínos,Central Greece,2952,village,0,0,50,0,none,none
+gn:263854,Áyios Konstandínos,West Greece,6534,village,0,0,50,0,none,none
+gn:263870,Agios Kirykos,North Aegean,1908,village,0,0,50,0,none,none
+gn:263960,Ágios Efstrátios,North Aegean,0,village,0,0,50,0,none,none
+gn:263986,Agios Dimitrios,Attica,71294,town,0,0,50,0,none,none
+gn:264022,Ágios Andréas,Peloponnese,1033,village,0,0,50,0,none,none
+gn:264040,Áyios Adhrianós,Peloponnese,1080,village,0,0,50,0,none,none
+gn:264068,Ágioi Theódoroi,Peloponnese,4934,village,0,0,50,0,none,none
+gn:264083,Ágioi Déka,Crete,0,village,0,0,50,0,none,none
+gn:264094,Áyioi Apóstoloi,Attica,1904,village,0,0,50,0,none,none
+gn:264111,Agía Varvára,Attica,26550,town,0,0,50,0,none,none
+gn:264114,Agía Varvára,Crete,4241,village,0,0,50,0,none,none
+gn:264128,Agía Triáda,Central Greece,1098,village,0,0,50,0,none,none
+gn:264131,Ayía Triás,Peloponnese,1151,village,0,0,50,0,none,none
+gn:264146,Agiásos,North Aegean,2001,village,0,0,50,0,none,none
+gn:264181,Agía Paraskeví,North Aegean,2230,village,0,0,50,0,none,none
+gn:264194,Agía Paraskeví,Attica,59704,town,0,0,50,0,none,none
+gn:264221,Agía Marína,South Aegean,2743,village,0,0,50,0,none,none
+gn:264223,Agía Marína,Crete,1679,village,0,0,50,0,none,none
+gn:264283,Agiá,Thessaly,2827,village,0,0,50,0,none,none
+gn:264308,Avlonárion,Central Greece,1273,village,0,0,50,0,none,none
+gn:264310,Avlónas,Attica,3244,village,0,0,50,0,none,none
+gn:264311,Avlón,Peloponnese,1325,village,0,0,50,0,none,none
+gn:264329,Avía,Peloponnese,1915,village,0,0,50,0,none,none
+gn:264359,Atsipópoulo,Crete,5417,village,0,0,50,0,none,none
+gn:264364,Atsikí,North Aegean,2246,village,0,0,50,0,none,none
+gn:264371,Athens,Attica,664046,large-city,0,0,50,0,none,none
+gn:264374,Athíkia,Peloponnese,1942,village,0,0,50,0,none,none
+gn:264390,Atalánti,Central Greece,4978,village,0,0,50,0,none,none
+gn:264396,Ástros,Peloponnese,2474,village,0,0,50,0,none,none
+gn:264408,Astypálaia,South Aegean,1129,village,0,0,50,0,none,none
+gn:264416,Astakós,West Greece,5719,village,0,0,50,0,none,none
+gn:264421,Ássos,Peloponnese,1916,village,0,0,50,0,none,none
+gn:264445,Asprópyrgos,Attica,30251,town,0,0,50,0,none,none
+gn:264459,Asprókhoma,Peloponnese,1244,village,0,0,50,0,none,none
+gn:264472,Asprángeloi,Epirus,165,village,0,0,50,0,none,none
+gn:264481,Asopós,Peloponnese,4164,village,0,0,50,0,none,none
+gn:264482,Asopía,Central Greece,1375,village,0,0,50,0,none,none
+gn:264496,Asíni,Peloponnese,5077,village,0,0,50,0,none,none
+gn:264501,Asímion,Crete,1259,village,0,0,50,0,none,none
+gn:264516,Argyroúpoli,Attica,34097,town,0,0,50,0,none,none
+gn:264519,Argyropoúli,Thessaly,1311,village,0,0,50,0,none,none
+gn:264547,Artesianó,Thessaly,1412,village,0,0,50,0,none,none
+gn:264551,Artemísio,Central Greece,3410,village,0,0,50,0,none,none
+gn:264559,Árta,Epirus,21895,town,0,0,50,0,none,none
+gn:264571,Aroanía,West Greece,1259,village,0,0,50,0,none,none
+gn:264587,Arménoi,Crete,3159,village,0,0,50,0,none,none
+gn:264594,Arméni,Thessaly,1701,village,0,0,50,0,none,none
+gn:264604,Árma,Central Greece,1078,village,0,0,50,0,none,none
+gn:264618,Archontochóri,West Greece,1194,village,0,0,50,0,none,none
+gn:264637,Archaía Olympía,West Greece,11153,town,0,0,50,0,none,none
+gn:264638,Arkhaía Kórinthos,Peloponnese,1939,village,0,0,50,0,none,none
+gn:264642,Arkalochóri,Crete,8547,village,0,0,50,0,none,none
+gn:264647,Aristoménis,Peloponnese,1696,village,0,0,50,0,none,none
+gn:264650,Áris,Peloponnese,1036,village,0,0,50,0,none,none
+gn:264661,Aría,Peloponnese,3529,village,0,0,50,0,none,none
+gn:264662,Aria,Peloponnese,2080,village,0,0,50,0,none,none
+gn:264668,Argostólion,Ionian Islands,9820,village,0,0,50,0,none,none
+gn:264670,Árgos,Peloponnese,22209,town,0,0,50,0,none,none
+gn:264675,Argási,Ionian Islands,1379,village,0,0,50,0,none,none
+gn:264677,Argalastí,Thessaly,1285,village,0,0,50,0,none,none
+gn:264679,Arfará,Peloponnese,1285,village,0,0,50,0,none,none
+gn:264714,Aráchova,Central Greece,2439,village,0,0,50,0,none,none
+gn:264792,Anthiró,Thessaly,270,village,0,0,50,0,none,none
+gn:264793,Anthíli,Central Greece,1693,village,0,0,50,0,none,none
+gn:264806,Anógeia,Crete,2545,village,0,0,50,0,none,none
+gn:264839,Áno Sýros,South Aegean,1138,village,0,0,50,0,none,none
+gn:264878,Áno Merá,South Aegean,1459,village,0,0,50,0,none,none
+gn:264888,Áno Liósia,Attica,33565,town,0,0,50,0,none,none
+gn:264890,Áno Lekhónia,Thessaly,1214,village,0,0,50,0,none,none
+gn:264928,Áno Kalentíni,Epirus,172,village,0,0,50,0,none,none
+gn:264929,Anoixi,Attica,6592,village,0,0,50,0,none,none
+gn:265001,Megalochóri,Attica,566,village,0,0,50,0,none,none
+gn:265013,Angelókastro,West Greece,1661,village,0,0,50,0,none,none
+gn:265028,Anéza,Epirus,1111,village,0,0,50,0,none,none
+gn:265038,Androúsa,Peloponnese,1800,village,0,0,50,0,none,none
+gn:265040,Andros,South Aegean,3918,village,0,0,50,0,none,none
+gn:265056,Andravída,West Greece,3753,village,0,0,50,0,none,none
+gn:265067,Antirrio,West Greece,2603,village,0,0,50,0,none,none
+gn:265075,Antíparos,South Aegean,0,village,0,0,50,0,none,none
+gn:265078,Antimácheia,South Aegean,2251,village,0,0,50,0,none,none
+gn:265082,Antikyra,Central Greece,1529,village,0,0,50,0,none,none
+gn:265088,Andanía,Peloponnese,1820,village,0,0,50,0,none,none
+gn:265095,Anávra,Thessaly,1145,village,0,0,50,0,none,none
+gn:265100,Anávyssos,Attica,6180,village,0,0,50,0,none,none
+gn:265107,Anatolí,Epirus,12119,town,0,0,50,0,none,none
+gn:265133,Anáfi,South Aegean,0,village,0,0,50,0,none,none
+gn:265142,Amorgós,South Aegean,397,village,0,0,50,0,none,none
+gn:265187,Ámfissa,Central Greece,6854,village,0,0,50,0,none,none
+gn:265189,Amfilochía,West Greece,4022,village,0,0,50,0,none,none
+gn:265191,Amfíkleia,Central Greece,2996,village,0,0,50,0,none,none
+gn:265206,Ampelóna,Thessaly,7257,village,0,0,50,0,none,none
+gn:265210,Ambelókipoi,Ionian Islands,2082,village,0,0,50,0,none,none
+gn:265240,Ampelákia,Attica,6985,village,0,0,50,0,none,none
+gn:265243,Maroúsi,Attica,72333,town,0,0,50,0,none,none
+gn:265245,Amárynthos,Central Greece,6085,village,0,0,50,0,none,none
+gn:265252,Amaliáda,West Greece,16763,town,0,0,50,0,none,none
+gn:265292,Almyrós,Thessaly,7955,village,0,0,50,0,none,none
+gn:265300,Álli Meriá,Thessaly,1188,village,0,0,50,0,none,none
+gn:265309,Alivéri,Central Greece,5184,village,0,0,50,0,none,none
+gn:265340,Alífeira,West Greece,1189,village,0,0,50,0,none,none
+gn:265342,Alíartos,Central Greece,4275,village,0,0,50,0,none,none
+gn:265368,Aléa,Peloponnese,2959,village,0,0,50,0,none,none
+gn:265417,Akráta,West Greece,4247,village,0,0,50,0,none,none
+gn:265420,Akraifnía,Central Greece,2276,village,0,0,50,0,none,none
+gn:265488,Acharnés,Attica,99346,town,0,0,50,0,none,none
+gn:265498,Aíyira,West Greece,2293,village,0,0,50,0,none,none
+gn:265500,Aígio,West Greece,20422,town,0,0,50,0,none,none
+gn:265502,Aegina,Attica,6867,village,0,0,50,0,none,none
+gn:265507,Aitolikó,West Greece,6215,village,0,0,50,0,none,none
+gn:265531,Aigáni,Thessaly,1021,village,0,0,50,0,none,none
+gn:265533,Aigáleo,Attica,69946,town,0,0,50,0,none,none
+gn:265544,Aidipsós,Central Greece,1249,village,0,0,50,0,none,none
+gn:265546,Aiánteio,Attica,4860,village,0,0,50,0,none,none
+gn:265560,Agrínio,West Greece,46899,town,0,0,50,0,none,none
+gn:265601,Agriá,Thessaly,5519,village,0,0,50,0,none,none
+gn:265627,Agnanteró,Thessaly,1859,village,0,0,50,0,none,none
+gn:265650,Afrátion,Central Greece,1405,village,0,0,50,0,none,none
+gn:265658,Afidnés,Attica,3739,village,0,0,50,0,none,none
+gn:265673,Aetós,Peloponnese,1540,village,0,0,50,0,none,none
+gn:265711,Adámas,South Aegean,1268,village,0,0,50,0,none,none
+gn:400666,Rhodes,South Aegean,56128,town,0,0,50,0,none,none
+gn:408684,Kremastí,South Aegean,4700,village,0,0,50,0,none,none
+gn:408685,Afántou,South Aegean,5562,village,0,0,50,0,none,none
+gn:408686,Archángelos,South Aegean,7786,village,0,0,50,0,none,none
+gn:408687,Líndos,South Aegean,4496,village,0,0,50,0,none,none
+gn:408689,Lárdos,South Aegean,1348,village,0,0,50,0,none,none
+gn:444350,Zipári,South Aegean,2706,village,0,0,50,0,none,none
+gn:445298,Néos Oropós,Epirus,1375,village,0,0,50,0,none,none
+gn:733749,Zygós,East Macedonia and Thrace,1574,village,0,0,50,0,none,none
+gn:733759,Zagkliveri,Central Macedonia,2169,village,0,0,50,0,none,none
+gn:733768,Akrolímni,Central Macedonia,1398,village,0,0,50,0,none,none
+gn:733776,Giannitsá,Central Macedonia,27817,town,0,0,50,0,none,none
+gn:733791,Gerakaroú,Central Macedonia,1080,village,0,0,50,0,none,none
+gn:733798,Genisséa,East Macedonia and Thrace,1935,village,0,0,50,0,none,none
+gn:733802,Géfyra,Central Macedonia,2782,village,0,0,50,0,none,none
+gn:733818,Xiropótamos,East Macedonia and Thrace,2670,village,0,0,50,0,none,none
+gn:733831,Xylaganí,East Macedonia and Thrace,1445,village,0,0,50,0,none,none
+gn:733840,Xánthi,East Macedonia and Thrace,48221,town,0,0,50,0,none,none
+gn:733842,Vrontoú,Central Macedonia,1762,village,0,0,50,0,none,none
+gn:733877,Vólakas,East Macedonia and Thrace,2378,village,0,0,50,0,none,none
+gn:733901,Vergína,Central Macedonia,2034,village,0,0,50,0,none,none
+gn:733905,Véroia,Central Macedonia,44464,town,0,0,50,0,none,none
+gn:733911,Velventós,West Macedonia,3448,village,0,0,50,0,none,none
+gn:733933,Vathýlakkos,Central Macedonia,2002,village,0,0,50,0,none,none
+gn:733941,Vasiliká,Central Macedonia,9578,village,0,0,50,0,none,none
+gn:733965,Valteró,Central Macedonia,1102,village,0,0,50,0,none,none
+gn:733986,Tsotíli,West Macedonia,2619,village,0,0,50,0,none,none
+gn:734014,Trílofos,Central Macedonia,6727,village,0,0,50,0,none,none
+gn:734018,Tríkala,Central Macedonia,1124,village,0,0,50,0,none,none
+gn:734061,Tycheró,East Macedonia and Thrace,2029,village,0,0,50,0,none,none
+gn:734077,Thessaloníki,Central Macedonia,317778,city,0,0,50,0,none,none
+gn:734080,Thérmi,Central Macedonia,14373,town,0,0,50,0,none,none
+gn:734094,Thásos,East Macedonia and Thrace,3234,village,0,0,50,0,none,none
+gn:734102,Terpní,Central Macedonia,1593,village,0,0,50,0,none,none
+gn:734119,Tagarádes,Central Macedonia,2122,village,0,0,50,0,none,none
+gn:734120,Svorónos,Central Macedonia,2066,village,0,0,50,0,none,none
+gn:734128,Strymonikó,Central Macedonia,2519,village,0,0,50,0,none,none
+gn:734150,Stavroúpoli,Central Macedonia,46008,town,0,0,50,0,none,none
+gn:734154,Stavrós,Central Macedonia,3672,village,0,0,50,0,none,none
+gn:734155,Stavrós,Central Macedonia,1529,village,0,0,50,0,none,none
+gn:734183,Sourotí,Central Macedonia,1560,village,0,0,50,0,none,none
+gn:734187,Souflí,East Macedonia and Thrace,4149,village,0,0,50,0,none,none
+gn:734195,Sosándra,Central Macedonia,1008,village,0,0,50,0,none,none
+gn:734198,Sochós,Central Macedonia,3987,village,0,0,50,0,none,none
+gn:734205,Smínthi,East Macedonia and Thrace,0,village,0,0,50,0,none,none
+gn:734213,Skoútari,Central Macedonia,4666,village,0,0,50,0,none,none
+gn:734216,Skotoússa,Central Macedonia,3248,village,0,0,50,0,none,none
+gn:734235,Skýdra,Central Macedonia,4562,village,0,0,50,0,none,none
+gn:734256,Leptokaryá,Central Macedonia,3612,village,0,0,50,0,none,none
+gn:734268,Sitagroí,East Macedonia and Thrace,3240,village,0,0,50,0,none,none
+gn:734284,Síndos,Central Macedonia,9289,village,0,0,50,0,none,none
+gn:734299,Sykiá,Central Macedonia,2276,village,0,0,50,0,none,none
+gn:734301,Sykiés,Central Macedonia,44955,town,0,0,50,0,none,none
+gn:734310,Sidirókastro,Central Macedonia,5177,village,0,0,50,0,none,none
+gn:734315,Siátista,West Macedonia,5612,village,0,0,50,0,none,none
+gn:734324,Sevastianá,Central Macedonia,1561,village,0,0,50,0,none,none
+gn:734328,Sérvia,West Macedonia,3390,village,0,0,50,0,none,none
+gn:734330,Sérres,Central Macedonia,58287,town,0,0,50,0,none,none
+gn:734336,Sélero,East Macedonia and Thrace,2059,village,0,0,50,0,none,none
+gn:734339,Sárti,Central Macedonia,1054,village,0,0,50,0,none,none
+gn:734347,Sarantáporo,Thessaly,1866,village,0,0,50,0,none,none
+gn:734355,Sápes,East Macedonia and Thrace,4506,village,0,0,50,0,none,none
+gn:734359,Samothráki,East Macedonia and Thrace,719,village,0,0,50,0,none,none
+gn:734377,Rodolívos,Central Macedonia,2072,village,0,0,50,0,none,none
+gn:734385,Rizó,Central Macedonia,1106,village,0,0,50,0,none,none
+gn:734386,Rizómata,Central Macedonia,1157,village,0,0,50,0,none,none
+gn:734405,Péfka,Central Macedonia,13435,town,0,0,50,0,none,none
+gn:734426,Ptolemaḯda,West Macedonia,30045,town,0,0,50,0,none,none
+gn:734443,Próti,Central Macedonia,1176,village,0,0,50,0,none,none
+gn:734447,Prosotsáni,East Macedonia and Thrace,4021,village,0,0,50,0,none,none
+gn:734454,Prómachoi,Central Macedonia,1654,village,0,0,50,0,none,none
+gn:734455,Próchoma,Central Macedonia,1940,village,0,0,50,0,none,none
+gn:734461,Profítis Ilías,Central Macedonia,1225,village,0,0,50,0,none,none
+gn:734496,Potamiá,East Macedonia and Thrace,1274,village,0,0,50,0,none,none
+gn:734499,Portariá,Central Macedonia,1202,village,0,0,50,0,none,none
+gn:734513,Pontisméno,Central Macedonia,1666,village,0,0,50,0,none,none
+gn:734517,Polýgyros,Central Macedonia,10000,town,0,0,50,0,none,none
+gn:734537,Políkhronon,Central Macedonia,1239,village,0,0,50,0,none,none
+gn:734538,Políchni,Central Macedonia,38887,town,0,0,50,0,none,none
+gn:734540,Polýkastro,Central Macedonia,7064,village,0,0,50,0,none,none
+gn:734543,Polykárpi,Central Macedonia,1049,village,0,0,50,0,none,none
+gn:734564,Plagiári,Central Macedonia,5091,village,0,0,50,0,none,none
+gn:734575,Platý,Central Macedonia,7978,village,0,0,50,0,none,none
+gn:734622,Chalástra,Central Macedonia,9066,village,0,0,50,0,none,none
+gn:734643,Pylaía,Central Macedonia,36843,town,0,0,50,0,none,none
+gn:734664,Petroússa,East Macedonia and Thrace,1985,village,0,0,50,0,none,none
+gn:734672,Petrochóri,East Macedonia and Thrace,2709,village,0,0,50,0,none,none
+gn:734683,Peteinós,East Macedonia and Thrace,1014,village,0,0,50,0,none,none
+gn:734688,Perivolákion,Central Macedonia,1331,village,0,0,50,0,none,none
+gn:734698,Perístasi,Central Macedonia,2367,village,0,0,50,0,none,none
+gn:734705,Perdíkkas,West Macedonia,1372,village,0,0,50,0,none,none
+gn:734709,Pérasma,West Macedonia,3478,village,0,0,50,0,none,none
+gn:734712,Peraía,Central Macedonia,18326,town,0,0,50,0,none,none
+gn:734715,Péplos,East Macedonia and Thrace,1037,village,0,0,50,0,none,none
+gn:734720,Pentaplátano,Central Macedonia,1015,village,0,0,50,0,none,none
+gn:734722,Pentálofos,Central Macedonia,1871,village,0,0,50,0,none,none
+gn:734726,Pélla,Central Macedonia,2476,village,0,0,50,0,none,none
+gn:734733,Patrída,Central Macedonia,1330,village,0,0,50,0,none,none
+gn:734753,Paranésti,East Macedonia and Thrace,0,village,0,0,50,0,none,none
+gn:734757,Paralía,Central Macedonia,6228,village,0,0,50,0,none,none
+gn:734771,Panórama,Central Macedonia,17444,town,0,0,50,0,none,none
+gn:734791,Palaió Tsiflíki,East Macedonia and Thrace,2195,village,0,0,50,0,none,none
+gn:734819,Axós,Central Macedonia,1336,village,0,0,50,0,none,none
+gn:734820,Palaiokómi,Central Macedonia,1195,village,0,0,50,0,none,none
+gn:734821,Palaiochóri,East Macedonia and Thrace,1404,village,0,0,50,0,none,none
+gn:734823,Palaiochóri,Central Macedonia,1262,village,0,0,50,0,none,none
+gn:734832,Palaífyto,Central Macedonia,1475,village,0,0,50,0,none,none
+gn:734843,Páchni,East Macedonia and Thrace,1110,village,0,0,50,0,none,none
+gn:734868,Ormýlia,Central Macedonia,4227,village,0,0,50,0,none,none
+gn:734880,Orestiáda,East Macedonia and Thrace,16221,town,0,0,50,0,none,none
+gn:734883,Oraiókastro,Central Macedonia,20852,town,0,0,50,0,none,none
+gn:734898,Ofrínion,East Macedonia and Thrace,1958,village,0,0,50,0,none,none
+gn:734906,Nisí,Central Macedonia,1473,village,0,0,50,0,none,none
+gn:734916,Níkiti,Central Macedonia,2711,village,0,0,50,0,none,none
+gn:734919,Nikísiani,East Macedonia and Thrace,2236,village,0,0,50,0,none,none
+gn:734924,Nigríta,Central Macedonia,4947,village,0,0,50,0,none,none
+gn:734927,Nestório,West Macedonia,865,village,0,0,50,0,none,none
+gn:734935,Néos Skopós,Central Macedonia,1934,village,0,0,50,0,none,none
+gn:734938,Néos Mylótopos,Central Macedonia,2835,village,0,0,50,0,none,none
+gn:734939,Néos Marmarás,Central Macedonia,3038,village,0,0,50,0,none,none
+gn:734943,Néo Soúli,Central Macedonia,2051,village,0,0,50,0,none,none
+gn:734946,Néo Rýsi,Central Macedonia,2845,village,0,0,50,0,none,none
+gn:734947,Néo Petrítsi,Central Macedonia,1932,village,0,0,50,0,none,none
+gn:734957,Néo Agionéri,Central Macedonia,1176,village,0,0,50,0,none,none
+gn:734958,Neochoroúda,Central Macedonia,2844,village,0,0,50,0,none,none
+gn:734963,Neochóri,Central Macedonia,1227,village,0,0,50,0,none,none
+gn:734973,Néoi Epivátes,Central Macedonia,5882,village,0,0,50,0,none,none
+gn:734977,Néa Zíchni,Central Macedonia,2530,village,0,0,50,0,none,none
+gn:734978,Néa Výssa,East Macedonia and Thrace,1679,village,0,0,50,0,none,none
+gn:734979,Néa Tríglia,Central Macedonia,3071,village,0,0,50,0,none,none
+gn:734987,Néa Sánta,Central Macedonia,1582,village,0,0,50,0,none,none
+gn:734988,Néa Róda,Central Macedonia,1192,village,0,0,50,0,none,none
+gn:734989,Néa Raidestós,Central Macedonia,4061,village,0,0,50,0,none,none
+gn:734990,Néa Poteídaia,Central Macedonia,1543,village,0,0,50,0,none,none
+gn:734991,Neápoli,West Macedonia,3246,village,0,0,50,0,none,none
+gn:734992,Néa Plágia,Central Macedonia,1127,village,0,0,50,0,none,none
+gn:734994,Néa Péramos,East Macedonia and Thrace,3516,village,0,0,50,0,none,none
+gn:734995,Néa Pélla,Central Macedonia,1595,village,0,0,50,0,none,none
+gn:734996,Ólynthos,Central Macedonia,1111,village,0,0,50,0,none,none
+gn:734999,Néa Moudhaniá,Central Macedonia,10042,town,0,0,50,0,none,none
+gn:735001,Néa Michanióna,Central Macedonia,10784,town,0,0,50,0,none,none
+gn:735002,Néa Mesimvría,Central Macedonia,2303,village,0,0,50,0,none,none
+gn:735003,Néa Málgara,Central Macedonia,2218,village,0,0,50,0,none,none
+gn:735004,Néa Magnisía,Central Macedonia,4088,village,0,0,50,0,none,none
+gn:735005,Néa Mádytos,Central Macedonia,1369,village,0,0,50,0,none,none
+gn:735014,Néa Karváli,East Macedonia and Thrace,2003,village,0,0,50,0,none,none
+gn:735015,Néa Karyá,East Macedonia and Thrace,1426,village,0,0,50,0,none,none
+gn:735016,Néa Kallikráteia,Central Macedonia,10144,town,0,0,50,0,none,none
+gn:735017,Néa Iraklítsa,East Macedonia and Thrace,1560,village,0,0,50,0,none,none
+gn:735021,Néa Fókaia,Central Macedonia,1944,village,0,0,50,0,none,none
+gn:735023,Néa Éfesos,Central Macedonia,1328,village,0,0,50,0,none,none
+gn:735025,Néa Apollonía,Central Macedonia,1652,village,0,0,50,0,none,none
+gn:735030,Náousa,Central Macedonia,19887,town,0,0,50,0,none,none
+gn:735038,Mouriés,Central Macedonia,1846,village,0,0,50,0,none,none
+gn:735111,Mikrópolis,East Macedonia and Thrace,1094,village,0,0,50,0,none,none
+gn:735115,Mikró Monastíri,Central Macedonia,1779,village,0,0,50,0,none,none
+gn:735119,Mikró Déreio,East Macedonia and Thrace,1836,village,0,0,50,0,none,none
+gn:735146,Mýki,East Macedonia and Thrace,1130,village,0,0,50,0,none,none
+gn:735178,Mesopotamía,West Macedonia,3855,village,0,0,50,0,none,none
+gn:735196,Mesiméri,Central Macedonia,1533,village,0,0,50,0,none,none
+gn:735215,Meneméni,Central Macedonia,14297,town,0,0,50,0,none,none
+gn:735220,Melíti,West Macedonia,1212,village,0,0,50,0,none,none
+gn:735231,Melissochóri,Central Macedonia,3437,village,0,0,50,0,none,none
+gn:735235,Melíki,Central Macedonia,6350,village,0,0,50,0,none,none
+gn:735264,Megáli Panagía,Central Macedonia,3126,village,0,0,50,0,none,none
+gn:735277,Mavrovoúni,Central Macedonia,1067,village,0,0,50,0,none,none
+gn:735282,Mavrothálassa,Central Macedonia,1572,village,0,0,50,0,none,none
+gn:735299,Mavrochóri,West Macedonia,1379,village,0,0,50,0,none,none
+gn:735318,Marína,Central Macedonia,1091,village,0,0,50,0,none,none
+gn:735327,Maniákoi,West Macedonia,2612,village,0,0,50,0,none,none
+gn:735338,Mándalo,Central Macedonia,1204,village,0,0,50,0,none,none
+gn:735342,Díon,Central Macedonia,9067,village,0,0,50,0,none,none
+gn:735347,Makrochóri,Central Macedonia,4870,village,0,0,50,0,none,none
+gn:735348,Makrýgialos,Central Macedonia,1495,village,0,0,50,0,none,none
+gn:735365,Loutrós,Central Macedonia,1296,village,0,0,50,0,none,none
+gn:735375,Lófos,Central Macedonia,1694,village,0,0,50,0,none,none
+gn:735390,Livádi,Thessaly,2655,village,0,0,50,0,none,none
+gn:735399,Litóchoro,Central Macedonia,6709,village,0,0,50,0,none,none
+gn:735400,Lití,Central Macedonia,3302,village,0,0,50,0,none,none
+gn:735418,Limenária,East Macedonia and Thrace,2428,village,0,0,50,0,none,none
+gn:735430,Lýkeio,East Macedonia and Thrace,1081,village,0,0,50,0,none,none
+gn:735434,Lianovérgi,Central Macedonia,1345,village,0,0,50,0,none,none
+gn:735444,Lefkónas,Central Macedonia,3534,village,0,0,50,0,none,none
+gn:735472,Lagyná,Central Macedonia,3552,village,0,0,50,0,none,none
+gn:735481,Lagkadás,Central Macedonia,37022,town,0,0,50,0,none,none
+gn:735490,Lákkoma,Central Macedonia,1171,village,0,0,50,0,none,none
+gn:735496,Laimós,West Macedonia,185,village,0,0,50,0,none,none
+gn:735521,Krókos,West Macedonia,2687,village,0,0,50,0,none,none
+gn:735523,Krithiá,Central Macedonia,1253,village,0,0,50,0,none,none
+gn:735540,Krinídes,East Macedonia and Thrace,2925,village,0,0,50,0,none,none
+gn:735546,Krýa Vrýsi,Central Macedonia,7255,village,0,0,50,0,none,none
+gn:735563,Kozáni,West Macedonia,36481,town,0,0,50,0,none,none
+gn:735581,Kouloúra,Central Macedonia,1156,village,0,0,50,0,none,none
+gn:735588,Koufália,Central Macedonia,7850,village,0,0,50,0,none,none
+gn:735612,Kormísta,Central Macedonia,1450,village,0,0,50,0,none,none
+gn:735615,Korinós,Central Macedonia,4488,village,0,0,50,0,none,none
+gn:735620,Koryfí,Central Macedonia,1552,village,0,0,50,0,none,none
+gn:735630,Kopanós,Central Macedonia,2202,village,0,0,50,0,none,none
+gn:735636,Kónitsa,Epirus,2942,village,0,0,50,0,none,none
+gn:735638,Kontariótissa,Central Macedonia,1489,village,0,0,50,0,none,none
+gn:735640,Komotiní,East Macedonia and Thrace,45631,town,0,0,50,0,none,none
+gn:735651,Kolchikón,Central Macedonia,1768,village,0,0,50,0,none,none
+gn:735654,Kolindrós,Central Macedonia,2914,village,0,0,50,0,none,none
+gn:735661,Kokkinóchoma,East Macedonia and Thrace,1472,village,0,0,50,0,none,none
+gn:735674,Koímisi,Central Macedonia,1414,village,0,0,50,0,none,none
+gn:735679,Koíla,West Macedonia,1360,village,0,0,50,0,none,none
+gn:735695,Kleidí,Central Macedonia,1412,village,0,0,50,0,none,none
+gn:735702,Kítros,Central Macedonia,1061,village,0,0,50,0,none,none
+gn:735714,Kýria,East Macedonia and Thrace,1535,village,0,0,50,0,none,none
+gn:735720,Kyprínos,East Macedonia and Thrace,1095,village,0,0,50,0,none,none
+gn:735731,Kimméria,East Macedonia and Thrace,3424,village,0,0,50,0,none,none
+gn:735732,Kýmina,Central Macedonia,3210,village,0,0,50,0,none,none
+gn:735736,Kilkís,Central Macedonia,22914,town,0,0,50,0,none,none
+gn:735747,Chrysoúpolis,East Macedonia and Thrace,8885,village,0,0,50,0,none,none
+gn:735749,Chrysó,Central Macedonia,1571,village,0,0,50,0,none,none
+gn:735750,Chrysochóri,East Macedonia and Thrace,1818,village,0,0,50,0,none,none
+gn:735751,Chrysochórafa,Central Macedonia,1023,village,0,0,50,0,none,none
+gn:735757,Chrysavgí,Central Macedonia,1017,village,0,0,50,0,none,none
+gn:735764,Chortiátis,Central Macedonia,17862,town,0,0,50,0,none,none
+gn:735769,Choristí,East Macedonia and Thrace,2512,village,0,0,50,0,none,none
+gn:735788,Chérso,Central Macedonia,2078,village,0,0,50,0,none,none
+gn:735794,Charopó,Central Macedonia,1042,village,0,0,50,0,none,none
+gn:735803,Chalkidóna,Central Macedonia,30030,town,0,0,50,0,none,none
+gn:735821,Keramotí,East Macedonia and Thrace,4381,village,0,0,50,0,none,none
+gn:735856,Kavallári,Central Macedonia,1575,village,0,0,50,0,none,none
+gn:735861,Kavála,East Macedonia and Thrace,54027,town,0,0,50,0,none,none
+gn:735872,Káto Scholári,Central Macedonia,1963,village,0,0,50,0,none,none
+gn:735879,Káto Nevrokópi,East Macedonia and Thrace,0,village,0,0,50,0,none,none
+gn:735880,Káto Mitroúsi,Central Macedonia,4125,village,0,0,50,0,none,none
+gn:735886,Loutráki,Central Macedonia,1146,village,0,0,50,0,none,none
+gn:735888,Káto Lipochóri,Central Macedonia,1074,village,0,0,50,0,none,none
+gn:735895,Káto Kleinés,West Macedonia,2132,village,0,0,50,0,none,none
+gn:735902,Káto Kamíla,Central Macedonia,1127,village,0,0,50,0,none,none
+gn:735914,Kateríni,Central Macedonia,53293,town,0,0,50,0,none,none
+gn:735927,Kastoria,West Macedonia,13387,town,0,0,50,0,none,none
+gn:735948,Kassándreia,Central Macedonia,2775,village,0,0,50,0,none,none
+gn:735959,Símantra,Central Macedonia,2421,village,0,0,50,0,none,none
+gn:735960,Karítsa,Central Macedonia,1843,village,0,0,50,0,none,none
+gn:735961,Karyótissa,Central Macedonia,1965,village,0,0,50,0,none,none
+gn:735972,Karyes,Mount Athos,237,village,0,0,50,0,none,none
+gn:735975,Kardía,Central Macedonia,3369,village,0,0,50,0,none,none
+gn:736017,Kamariótissa,East Macedonia and Thrace,1022,village,0,0,50,0,none,none
+gn:736024,Kalós Agrós,East Macedonia and Thrace,1275,village,0,0,50,0,none,none
+gn:736029,Kalochóri,Central Macedonia,4626,village,0,0,50,0,none,none
+gn:736039,Kallithéa,Central Macedonia,2933,village,0,0,50,0,none,none
+gn:736040,Kallithéa,Central Macedonia,1236,village,0,0,50,0,none,none
+gn:736049,Kallífytos,East Macedonia and Thrace,1098,village,0,0,50,0,none,none
+gn:736051,Kalí Vrýsi,East Macedonia and Thrace,1163,village,0,0,50,0,none,none
+gn:736056,Kalýves Polygýrou,Central Macedonia,1286,village,0,0,50,0,none,none
+gn:736058,Ágios Spyrídon,Central Macedonia,1337,village,0,0,50,0,none,none
+gn:736065,Kalývia,Central Macedonia,1130,village,0,0,50,0,none,none
+gn:736067,Prínos,East Macedonia and Thrace,1330,village,0,0,50,0,none,none
+gn:736071,Kalí,Central Macedonia,1773,village,0,0,50,0,none,none
+gn:736082,Kalampáki,East Macedonia and Thrace,3514,village,0,0,50,0,none,none
+gn:736083,Kalamariá,Central Macedonia,91518,town,0,0,50,0,none,none
+gn:736084,Kalá Déndra,Central Macedonia,1131,village,0,0,50,0,none,none
+gn:736107,Iráklion,Central Macedonia,1278,village,0,0,50,0,none,none
+gn:736108,Irákleia,Central Macedonia,3786,village,0,0,50,0,none,none
+gn:736130,Ierissós,Central Macedonia,3266,village,0,0,50,0,none,none
+gn:736137,Íasmos,East Macedonia and Thrace,2586,village,0,0,50,0,none,none
+gn:736151,Grevená,West Macedonia,10563,town,0,0,50,0,none,none
+gn:736166,Gouménissa,Central Macedonia,5157,village,0,0,50,0,none,none
+gn:736207,Galátista,Central Macedonia,2537,village,0,0,50,0,none,none
+gn:736208,Galatiní,West Macedonia,2085,village,0,0,50,0,none,none
+gn:736210,Galatádes,Central Macedonia,2459,village,0,0,50,0,none,none
+gn:736222,Fotolívos,East Macedonia and Thrace,1844,village,0,0,50,0,none,none
+gn:736226,Néa Flogitá,Central Macedonia,1595,village,0,0,50,0,none,none
+gn:736229,Flórina,West Macedonia,17686,town,0,0,50,0,none,none
+gn:736243,Filótas,West Macedonia,1772,village,0,0,50,0,none,none
+gn:736244,Fillýra,East Macedonia and Thrace,1041,village,0,0,50,0,none,none
+gn:736245,Fíliro,Central Macedonia,5495,village,0,0,50,0,none,none
+gn:736261,Féres,East Macedonia and Thrace,6500,village,0,0,50,0,none,none
+gn:736283,Exaplátanos,Central Macedonia,6105,village,0,0,50,0,none,none
+gn:736288,Evropós,Central Macedonia,3757,village,0,0,50,0,none,none
+gn:736291,Évosmos,Central Macedonia,74686,town,0,0,50,0,none,none
+gn:736293,Évlalo,East Macedonia and Thrace,0,village,0,0,50,0,none,none
+gn:736296,Efkarpía,Central Macedonia,15416,town,0,0,50,0,none,none
+gn:736316,Episkopí,Central Macedonia,1990,village,0,0,50,0,none,none
+gn:736319,Epanomí,Central Macedonia,9910,village,0,0,50,0,none,none
+gn:736322,Néa Kerasiá,Central Macedonia,1948,village,0,0,50,0,none,none
+gn:736330,Eleftheroúpolis,East Macedonia and Thrace,4360,village,0,0,50,0,none,none
+gn:736336,Elefthério - Kordelió,Central Macedonia,27067,town,0,0,50,0,none,none
+gn:736337,Eleftherés,East Macedonia and Thrace,8647,village,0,0,50,0,none,none
+gn:736354,Echínos,East Macedonia and Thrace,2780,village,0,0,50,0,none,none
+gn:736357,Édessa,Central Macedonia,18669,town,0,0,50,0,none,none
+gn:736364,Dráma,East Macedonia and Thrace,44823,town,0,0,50,0,none,none
+gn:736386,Drymós,Central Macedonia,3659,village,0,0,50,0,none,none
+gn:736396,Dravískos,Central Macedonia,1488,village,0,0,50,0,none,none
+gn:736447,Didymóteicho,East Macedonia and Thrace,8336,village,0,0,50,0,none,none
+gn:736449,Diavatós,Central Macedonia,1294,village,0,0,50,0,none,none
+gn:736450,Diavatá,Central Macedonia,11876,town,0,0,50,0,none,none
+gn:736581,Ágios Geórgios,Central Macedonia,1767,village,0,0,50,0,none,none
+gn:736586,Ágios Vasíleios,Central Macedonia,1180,village,0,0,50,0,none,none
+gn:736592,Ágios Pétros,Central Macedonia,1505,village,0,0,50,0,none,none
+gn:736598,Ágios Nikólaos,Central Macedonia,1965,village,0,0,50,0,none,none
+gn:736601,Ágios Mámas,Central Macedonia,1093,village,0,0,50,0,none,none
+gn:736602,Ágios Loukás,Central Macedonia,1665,village,0,0,50,0,none,none
+gn:736618,Ágios Athanásios,East Macedonia and Thrace,3419,village,0,0,50,0,none,none
+gn:736621,Ágios Athanásios,Central Macedonia,13026,town,0,0,50,0,none,none
+gn:736628,Ágio Pnévma,Central Macedonia,1353,village,0,0,50,0,none,none
+gn:736638,Agía Triáda,Central Macedonia,1990,village,0,0,50,0,none,none
+gn:736650,Agía Paraskeví,Central Macedonia,2152,village,0,0,50,0,none,none
+gn:736661,Axioúpoli,Central Macedonia,4794,village,0,0,50,0,none,none
+gn:736682,Áthyra,Central Macedonia,1722,village,0,0,50,0,none,none
+gn:736687,Asvestochóri,Central Macedonia,6551,village,0,0,50,0,none,none
+gn:736692,Ássiros,Central Macedonia,3290,village,0,0,50,0,none,none
+gn:736694,Asproválta,Central Macedonia,2405,village,0,0,50,0,none,none
+gn:736716,Askós,Central Macedonia,1014,village,0,0,50,0,none,none
+gn:736725,Arsénio,Central Macedonia,1389,village,0,0,50,0,none,none
+gn:736727,Arrianá,East Macedonia and Thrace,14905,town,0,0,50,0,none,none
+gn:736732,Árnissa,Central Macedonia,1370,village,0,0,50,0,none,none
+gn:736733,Arnaía,Central Macedonia,2300,village,0,0,50,0,none,none
+gn:736751,Arísvi,East Macedonia and Thrace,1068,village,0,0,50,0,none,none
+gn:736753,Aridaía,Central Macedonia,6561,village,0,0,50,0,none,none
+gn:736754,Argos Orestiko,West Macedonia,7473,village,0,0,50,0,none,none
+gn:736762,Aravissós,Central Macedonia,1513,village,0,0,50,0,none,none
+gn:736767,Ápsalos,Central Macedonia,1121,village,0,0,50,0,none,none
+gn:736795,Mitroúsi,Central Macedonia,1479,village,0,0,50,0,none,none
+gn:736810,Áno Kómi,West Macedonia,1263,village,0,0,50,0,none,none
+gn:736843,Angelochóri,Central Macedonia,1526,village,0,0,50,0,none,none
+gn:736845,Angelochóri,Central Macedonia,1178,village,0,0,50,0,none,none
+gn:736847,Agkathiá,Central Macedonia,1459,village,0,0,50,0,none,none
+gn:736859,Anatolikó,Central Macedonia,2589,village,0,0,50,0,none,none
+gn:736878,Ammochóri,West Macedonia,1077,village,0,0,50,0,none,none
+gn:736882,Amýntaio,West Macedonia,3671,village,0,0,50,0,none,none
+gn:736886,Amygdaleónas,East Macedonia and Thrace,2724,village,0,0,50,0,none,none
+gn:736902,Ampeleíes,Central Macedonia,1070,village,0,0,50,0,none,none
+gn:736921,Alistráti,Central Macedonia,2312,village,0,0,50,0,none,none
+gn:736928,Alexandroupoli,East Macedonia and Thrace,52979,town,0,0,50,0,none,none
+gn:736929,Alexándreia,Central Macedonia,13665,town,0,0,50,0,none,none
+gn:736944,Akriní,West Macedonia,1113,village,0,0,50,0,none,none
+gn:736958,Achinós,Central Macedonia,1751,village,0,0,50,0,none,none
+gn:736964,Aigínio,Central Macedonia,4275,village,0,0,50,0,none,none
+gn:736971,Aianí,West Macedonia,2826,village,0,0,50,0,none,none
+gn:736987,Áfytos,Central Macedonia,1178,village,0,0,50,0,none,none
+gn:737002,Ádendro,Central Macedonia,1889,village,0,0,50,0,none,none
+gn:862595,Doïráni,Central Macedonia,1022,village,0,0,50,0,none,none
+gn:865238,Eirinoúpoli,Central Macedonia,3484,village,0,0,50,0,none,none
+gn:865290,Ágios Pávlos,Central Macedonia,6852,village,0,0,50,0,none,none
+gn:865291,Triandría,Central Macedonia,9986,village,0,0,50,0,none,none
+gn:865331,Melíssi,Central Macedonia,1024,village,0,0,50,0,none,none
+gn:2463549,Virós,Ionian Islands,1201,village,0,0,50,0,none,none
+gn:2463594,Potamós,Ionian Islands,3840,village,0,0,50,0,none,none
+gn:2463621,Nýmfes,Ionian Islands,1033,village,0,0,50,0,none,none
+gn:2463662,Kontokáli,Ionian Islands,1660,village,0,0,50,0,none,none
+gn:2463670,Kynopiástes,Ionian Islands,1054,village,0,0,50,0,none,none
+gn:2463679,Corfu,Ionian Islands,40047,town,0,0,50,0,none,none
+gn:2463705,Kanáli,Ionian Islands,4086,village,0,0,50,0,none,none
+gn:2463763,Ágios Matthaíos,Ionian Islands,1088,village,0,0,50,0,none,none
+gn:2463800,Alepoú,Ionian Islands,3149,village,0,0,50,0,none,none
+gn:6324534,Vrilissia,Attica,30741,town,0,0,50,0,none,none
+gn:6354951,Faliraki,South Aegean,6000,village,0,0,50,0,none,none
+gn:6621621,Koskinoù,South Aegean,4948,village,0,0,50,0,none,none
+gn:6692637,Acharávi,Ionian Islands,1100,village,0,0,50,0,none,none
+gn:6692641,Agios Georgis,Ionian Islands,4958,village,0,0,50,0,none,none
+gn:6692697,Georgioupolis,Crete,2708,village,0,0,50,0,none,none
+gn:6692717,Ornós,South Aegean,1025,village,0,0,50,0,none,none
+gn:6950985,Agkístri,Peloponnese,1131,village,0,0,50,0,none,none
+gn:6951006,Pánormos,South Aegean,2069,village,0,0,50,0,none,none
+gn:7303252,Káto Goúves,Crete,2153,village,0,0,50,0,none,none
+gn:7324476,Saronída,Attica,3424,village,0,0,50,0,none,none
+gn:7522499,Zagorochória,Epirus,3374,village,0,0,50,0,none,none
+gn:7646358,Exochi,Central Macedonia,1265,village,0,0,50,0,none,none
+gn:7667930,Ymittos,Attica,11000,town,0,0,50,0,none,none
+gn:7668056,Makry-Gialos,Crete,2589,village,0,0,50,0,none,none
+gn:8145316,Soroní,South Aegean,1265,village,0,0,50,0,none,none
+gn:8145343,Maritsá,South Aegean,1841,village,0,0,50,0,none,none
+gn:8201845,Gérakas,Attica,29939,town,0,0,50,0,none,none
+gn:8202413,Megálo Chorió,South Aegean,168,village,0,0,50,0,none,none
+gn:8261472,Paralía Ofryníou,East Macedonia and Thrace,1146,village,0,0,50,0,none,none
+gn:8261760,Agía Kyriakí,Epirus,83,village,0,0,50,0,none,none
+gn:8262246,Agía Foteiní,Crete,0,village,0,0,50,0,none,none
+gn:8310138,Ilioúpoli,Attica,78153,town,0,0,50,0,none,none
+gn:8310183,Korydallós,Attica,63445,town,0,0,50,0,none,none
+gn:8358544,Zográfos,Attica,71026,town,0,0,50,0,none,none
+gn:8358562,Péfki,Attica,21352,town,0,0,50,0,none,none
+gn:8358563,Ágioi Anárgyroi,Attica,34168,town,0,0,50,0,none,none
+gn:8358616,Ampelókipoi,Central Macedonia,0,village,0,0,50,0,none,none
+gn:8359411,Foúrnoi,North Aegean,0,village,0,0,50,0,none,none
+gn:8411066,Néa Potídhaia,Central Macedonia,1559,village,0,0,50,0,none,none
+gn:8478257,Agios Ioannis Rentis,Attica,15411,town,0,0,50,0,none,none
+gn:8527512,Violí Charáki,Crete,2785,village,0,0,50,0,none,none
+gn:8608506,Néa Anatolí,Crete,1002,village,0,0,50,0,none,none
+gn:8644195,Drapetsóna,Attica,13815,town,0,0,50,0,none,none
+gn:8657513,Néo Psychikó,Attica,10671,town,0,0,50,0,none,none
+gn:8718077,Chlói,West Macedonia,3079,village,0,0,50,0,none,none
+gn:8740252,Varybóbi,Attica,1950,village,0,0,50,0,none,none
+gn:8740257,Aghios Panteleímon,Attica,1591,village,0,0,50,0,none,none
+gn:8740260,Anthoúsa,Attica,2132,village,0,0,50,0,none,none
+gn:8989471,Néa Vrasná,Central Macedonia,1841,village,0,0,50,0,none,none
+gn:9034728,Néa Ionía,Thessaly,31884,town,0,0,50,0,none,none
+gn:9035858,Zefyri,Attica,9901,village,0,0,50,0,none,none
+gn:9035859,Thrakomakedónes,Attica,7312,village,0,0,50,0,none,none
+gn:9035866,Néa Pentéli,Attica,6916,village,0,0,50,0,none,none
+gn:9035867,Néa Chalkidóna,Attica,9760,village,0,0,50,0,none,none
+gn:9036675,Kítsi,Attica,4788,village,0,0,50,0,none,none
+gn:9036676,Agía Marína,Attica,3765,village,0,0,50,0,none,none
+gn:9036677,Agios Dimítrios Kropiás,Attica,1011,village,0,0,50,0,none,none
+gn:9036678,Karellás,Attica,1579,village,0,0,50,0,none,none
+gn:9036767,Neos Voutzás,Attica,1116,village,0,0,50,0,none,none
+gn:9036773,Argithéa,Attica,1024,village,0,0,50,0,none,none
+gn:9036774,Dióni,Attica,2111,village,0,0,50,0,none,none
+gn:9036830,Vlycháda,Attica,1462,village,0,0,50,0,none,none
+gn:9165903,Perama,Ionian Islands,1021,village,0,0,50,0,none,none
+gn:9408790,Loutrá Oraías Elénis,Peloponnese,1005,village,0,0,50,0,none,none
+gn:9960216,Paralía Vérgas,Peloponnese,1966,village,0,0,50,0,none,none
+gn:10175086,Kardamítsia,Epirus,3172,village,0,0,50,0,none,none
+gn:10175091,Tsiflikópoulo,Epirus,1571,village,0,0,50,0,none,none
+gn:10175092,Eksochí,Epirus,2975,village,0,0,50,0,none,none
+gn:10235571,Pláka Dílesi,Central Greece,2696,village,0,0,50,0,none,none
+gn:10792347,Anakasiá,Thessaly,1012,village,0,0,50,0,none,none
+gn:11609622,Tragano,West Greece,4276,village,0,0,50,0,none,none
+gn:11612310,Iliokentima,East Macedonia and Thrace,1405,village,0,0,50,0,none,none
+gn:11747175,Neapoli,Central Macedonia,25822,town,0,0,50,0,none,none
+gn:11837808,Nea Lava,West Macedonia,0,village,0,0,50,0,none,none
+gn:12022148,Stathmós Mourión,Central Macedonia,1040,village,0,0,50,0,none,none
+gn:12088903,"Mosynopolis, Maximianopolis, Μαξιμιανούπολις",East Macedonia and Thrace,0,village,0,0,50,0,none,none
+gn:12165967,Xinos,Peloponnese,0,village,0,0,50,0,none,none
+gn:12492010,Kallikomo,West Greece,1008,village,0,0,50,0,none,none

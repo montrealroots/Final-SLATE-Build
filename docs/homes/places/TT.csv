@@ -1,0 +1,28 @@
+place_id,name,region,population,market,verified_homes,dated_listings,shortfall_to_50,recorded_sales,rent_source,price_source
+gn:3573576,Tunapuna,Tunapuna/Piarco,17758,town,0,0,50,0,none,none
+gn:3573638,Talparo,Couva-Tabaquite-Talparo,1661,village,0,0,50,0,none,none
+gn:3573650,Tabaquite,Couva-Tabaquite-Talparo,3314,village,0,0,50,0,none,none
+gn:3573681,Siparia,Siparia Regional Corporation,8568,village,0,0,50,0,none,none
+gn:3573703,Scarborough,Tobago,17000,town,0,0,50,0,none,none
+gn:3573732,Sangre Grande,Sangre Grande Regional Corporation,15968,town,0,0,50,0,none,none
+gn:3573738,San Fernando,San Fernando,55419,town,0,0,50,0,none,none
+gn:3573840,Rio Claro,Mayaro,35650,town,0,0,50,0,none,none
+gn:3573882,Princes Town,Princes Town,10000,town,0,0,50,0,none,none
+gn:3573890,Port of Spain,Port of Spain,49031,town,0,0,50,0,none,none
+gn:3573899,Point Fortin,Point Fortin,19056,town,0,0,50,0,none,none
+gn:3573935,Petit Valley,Diego Martin Regional Corporation,8140,village,0,0,50,0,none,none
+gn:3573965,Peñal,Penal/Debe,12281,town,0,0,50,0,none,none
+gn:3573989,Paradise,Tunapuna/Piarco,15067,town,0,0,50,0,none,none
+gn:3574069,Mucurapo,Port of Spain,4342,village,0,0,50,0,none,none
+gn:3574116,Mon Repos,San Fernando,56380,town,0,0,50,0,none,none
+gn:3574194,Marabella,San Fernando,26700,town,0,0,50,0,none,none
+gn:3574309,Laventille,San Juan/Laventille,21000,town,0,0,50,0,none,none
+gn:3574524,Gasparillo,Couva-Tabaquite-Talparo,9925,village,0,0,50,0,none,none
+gn:3574636,Diego Martin,Diego Martin Regional Corporation,25370,town,0,0,50,0,none,none
+gn:3574659,Debe,Penal/Debe,3127,village,0,0,50,0,none,none
+gn:3574724,Couva,Couva-Tabaquite-Talparo,5178,village,0,0,50,0,none,none
+gn:3574773,Claxton Bay,Couva-Tabaquite-Talparo,5679,village,0,0,50,0,none,none
+gn:3574810,Chaguanas,Chaguanas,67433,town,0,0,50,0,none,none
+gn:3574895,California,Couva-Tabaquite-Talparo,3012,village,0,0,50,0,none,none
+gn:3575039,Arouca,Tunapuna/Piarco,12054,town,0,0,50,0,none,none
+gn:3575051,Arima,Borough of Arima,35000,town,0,0,50,0,none,none

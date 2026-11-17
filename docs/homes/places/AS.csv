@@ -1,0 +1,18 @@
+place_id,name,region,population,market,verified_homes,dated_listings,shortfall_to_50,recorded_sales,rent_source,price_source
+gn:5880828,Aūa,Eastern District,2124,village,0,0,50,0,none,none
+gn:5880891,Vaitogi,Western District,1436,village,0,0,50,0,none,none
+gn:5880944,Vailoatai,Western District,1144,village,0,0,50,0,none,none
+gn:5881150,Taulaga,Swains Island,37,village,0,0,50,0,none,none
+gn:5881165,Ta`ū,Manu'a,873,village,0,0,50,0,none,none
+gn:5881192,Tāfuna,Western District,7988,village,0,0,50,0,none,none
+gn:5881224,Faleniu,Western District,3200,village,0,0,50,0,none,none
+gn:5881241,Fagatogo,Eastern District,1868,village,0,0,50,0,none,none
+gn:5881254,Faleāsao,Manu'a,0,village,0,0,50,0,none,none
+gn:5881287,Ili‘ili,Western District,3073,village,0,0,50,0,none,none
+gn:5881347,Leone,Western District,4050,village,0,0,50,0,none,none
+gn:5881410,Malaeimi,Western District,1261,village,0,0,50,0,none,none
+gn:5881433,Mapusaga,Western District,1772,village,0,0,50,0,none,none
+gn:5881442,Mapusagafou,Western District,2052,village,0,0,50,0,none,none
+gn:5881535,Nu‘uuli,Eastern District,5000,village,0,0,50,0,none,none
+gn:5881544,Ofu,Manu'a,254,village,0,0,50,0,none,none
+gn:5881576,Pago Pago,Eastern District,11500,town,0,0,50,0,none,none

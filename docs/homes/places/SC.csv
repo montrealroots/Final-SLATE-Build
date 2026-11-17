@@ -1,0 +1,27 @@
+place_id,name,region,population,market,verified_homes,dated_listings,shortfall_to_50,recorded_sales,rent_source,price_source
+gn:241131,Victoria,La Rivière Anglaise,22881,town,0,0,50,0,none,none
+gn:241150,Takamaka,Takamaka,2580,village,0,0,50,0,none,none
+gn:241214,Port Glaud,Port Glaud,3243,village,0,0,50,0,none,none
+gn:241257,Grand'Anse,Grand Anse Mahe,4140,village,0,0,50,0,none,none
+gn:241303,La Digue,La Digue and Inner Islands,3934,village,0,0,50,0,none,none
+gn:241395,Cascade,Cascade,7263,village,0,0,50,0,none,none
+gn:241423,Bel Ombre,Bel Ombre,4163,village,0,0,50,0,none,none
+gn:241427,Beau Vallon,Beau Vallon,4142,village,0,0,50,0,none,none
+gn:241443,Anse Royale,Anse Royale,3818,village,0,0,50,0,none,none
+gn:241448,Anse Boileau,Anse Boileau,4183,village,0,0,50,0,none,none
+gn:6691843,Baie Sainte Anne,Baie Sainte Anne,5063,village,0,0,50,0,none,none
+gn:8629285,Grand'Anse,Grand Anse Praslin,4344,village,0,0,50,0,none,none
+gn:10792304,Anse aux Pins,Anse-aux-Pins,4685,village,0,0,50,0,none,none
+gn:10793687,Pointe La Rue,Pointe La Rue,3750,village,0,0,50,0,none,none
+gn:10793745,Baie Lazare,Baie Lazare,4795,village,0,0,50,0,none,none
+gn:11103219,La Passe,La Digue and Inner Islands,0,village,0,0,50,0,none,none
+gn:11395546,Glacis,Glacis,4496,village,0,0,50,0,none,none
+gn:11694889,Bel Air,Bel Air,3129,village,0,0,50,0,none,none
+gn:11694891,Mont Buxton,Mont Buxton,3383,village,0,0,50,0,none,none
+gn:11694895,Saint Louis,Saint Louis,3692,village,0,0,50,0,none,none
+gn:11694896,Roche Caïman,Roche Caiman,3828,village,0,0,50,0,none,none
+gn:12718739,Perseverance,,6209,village,0,0,50,0,none,none
+gn:13527028,English River,La Rivière Anglaise,4236,village,0,0,50,0,none,none
+gn:13527029,Mont Fleuri,Bel Air,4055,village,0,0,50,0,none,none
+gn:13527030,Plaisance,Mont Fleuri,4622,village,0,0,50,0,none,none
+gn:13527031,Les Mamelles,Les Mamelles,2719,village,0,0,50,0,none,none

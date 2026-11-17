@@ -1,0 +1,168 @@
+place_id,name,region,population,market,verified_homes,dated_listings,shortfall_to_50,recorded_sales,rent_source,price_source
+gn:3615669,Yalagüina,Madriz Department,2265,village,0,0,50,0,none,none
+gn:3615683,Wiwilí,Nueva Segovia Department,6955,village,0,0,50,0,none,none
+gn:3615730,Waspán,North Caribbean Coast,6403,village,0,0,50,0,none,none
+gn:3615745,Waslala,North Caribbean Coast,6498,village,0,0,50,0,none,none
+gn:3615813,Villa Sandino,Chontales Department,7799,village,0,0,50,0,none,none
+gn:3615817,Villanueva,Chinandega Department,0,village,0,0,50,0,none,none
+gn:3615865,Valle San Francisco,Managua Department,2219,village,0,0,50,0,none,none
+gn:3615899,LLano de La Cruz,Jinotega Department,1643,village,0,0,50,0,none,none
+gn:3615998,Totogalpa,Madriz Department,2265,village,0,0,50,0,none,none
+gn:3616010,Tonalá,Chinandega Department,0,village,0,0,50,0,none,none
+gn:3616019,Tola,Rivas Department,2638,village,0,0,50,0,none,none
+gn:3616028,Tisma,Masaya Department,5182,village,0,0,50,0,none,none
+gn:3616035,Tipitapa,Managua Department,50000,town,0,0,50,0,none,none
+gn:3616064,Ticuantepe,Managua Department,13209,town,0,0,50,0,none,none
+gn:3616070,Teustepe,Boaco Department,4287,village,0,0,50,0,none,none
+gn:3616076,Terrabona,Matagalpa Department,1902,village,0,0,50,0,none,none
+gn:3616088,Telpaneca,Madriz Department,2037,village,0,0,50,0,none,none
+gn:3616092,Telica,León Department,8776,village,0,0,50,0,none,none
+gn:3616232,Somoto,Madriz Department,20316,town,0,0,50,0,none,none
+gn:3616234,Somotillo,Chinandega Department,15385,town,0,0,50,0,none,none
+gn:3616253,Siuna,North Caribbean Coast,16056,town,0,0,50,0,none,none
+gn:3616311,Sébaco,Matagalpa Department,0,village,0,0,50,0,none,none
+gn:3616346,Santo Tomás del Norte,Chinandega Department,608,village,0,0,50,0,none,none
+gn:3616349,Santo Tomás,Chontales Department,14809,town,0,0,50,0,none,none
+gn:3616356,Santo Domingo,Chontales Department,5827,village,0,0,50,0,none,none
+gn:3616380,Santa Teresa,Carazo Department,0,village,0,0,50,0,none,none
+gn:3616387,Santa Rosa del Peñón,León Department,2913,village,0,0,50,0,none,none
+gn:3616441,Santa María,Nueva Segovia Department,720,village,0,0,50,0,none,none
+gn:3616459,Santa Lucía,Boaco Department,1869,village,0,0,50,0,none,none
+gn:3616572,San Sebastián de Yalí,Jinotega Department,4514,village,0,0,50,0,none,none
+gn:3616584,San Ramón,Matagalpa Department,2827,village,0,0,50,0,none,none
+gn:3616594,San Rafael del Sur,Managua Department,29836,town,0,0,50,0,none,none
+gn:3616597,San Rafael del Norte,Jinotega Department,5458,village,0,0,50,0,none,none
+gn:3616609,San Pedro de Lóvago,Chontales Department,0,village,0,0,50,0,none,none
+gn:3616611,San Pedro del Norte,Chinandega Department,0,village,0,0,50,0,none,none
+gn:3616649,San Nicolás,Estelí Department,0,village,0,0,50,0,none,none
+gn:3616659,San Miguelito,Río San Juan Department,4181,village,0,0,50,0,none,none
+gn:3616682,San Marcos,Carazo Department,23347,town,0,0,50,0,none,none
+gn:3616700,San Lucas,Madriz Department,910,village,0,0,50,0,none,none
+gn:3616708,San Lorenzo,Boaco Department,8694,village,0,0,50,0,none,none
+gn:3616721,San Juan de Río Coco,Madriz Department,3820,village,0,0,50,0,none,none
+gn:3616723,San Juan de Oriente,Masaya Department,2111,village,0,0,50,0,none,none
+gn:3616726,San Juan del Sur,Rivas Department,7790,village,0,0,50,0,none,none
+gn:3616730,Grey Town,Río San Juan Department,642,village,0,0,50,0,none,none
+gn:3616732,San Juan de Limay,Estelí Department,4997,village,0,0,50,0,none,none
+gn:3616753,San José de los Remates,Boaco Department,2115,village,0,0,50,0,none,none
+gn:3616757,San José de Cusmapa,Madriz Department,1419,village,0,0,50,0,none,none
+gn:3616759,San José de Bocay,Jinotega Department,2367,village,0,0,50,0,none,none
+gn:3616794,San Jorge,Rivas Department,7158,village,0,0,50,0,none,none
+gn:3616818,San Isidro,Matagalpa Department,0,village,0,0,50,0,none,none
+gn:3616848,San Francisco Libre,Managua Department,0,village,0,0,50,0,none,none
+gn:3616852,San Francisco del Norte,Chinandega Department,0,village,0,0,50,0,none,none
+gn:3616871,San Fernando,Nueva Segovia Department,3899,village,0,0,50,0,none,none
+gn:3616888,San Dionisio,Matagalpa Department,3910,village,0,0,50,0,none,none
+gn:3616911,San Carlos,Río San Juan Department,13451,town,0,0,50,0,none,none
+gn:3617052,Rivas,Rivas Department,30000,town,0,0,50,0,none,none
+gn:3617069,Río Blanco,Matagalpa Department,17018,town,0,0,50,0,none,none
+gn:3617095,Rama,South Caribbean Coast,20456,town,0,0,50,0,none,none
+gn:3617109,Quilalí,Nueva Segovia Department,13590,town,0,0,50,0,none,none
+gn:3617115,Quezalguaque,León Department,1974,village,0,0,50,0,none,none
+gn:3617143,Puerto Sandino,León Department,4371,village,0,0,50,0,none,none
+gn:3617146,Puerto Morazán,Chinandega Department,7671,village,0,0,50,0,none,none
+gn:3617147,Momotombo,León Department,3103,village,0,0,50,0,none,none
+gn:3617154,Puerto Cabezas,North Caribbean Coast,33635,town,0,0,50,0,none,none
+gn:3617162,Pueblo Nuevo,Estelí Department,4608,village,0,0,50,0,none,none
+gn:3617169,Prinzapolka,North Caribbean Coast,394,village,0,0,50,0,none,none
+gn:3617187,Potosí,Rivas Department,5222,village,0,0,50,0,none,none
+gn:3617191,Posoltega,Chinandega Department,6403,village,0,0,50,0,none,none
+gn:3617204,Poneloya,León Department,4232,village,0,0,50,0,none,none
+gn:3617311,El Cuá,Jinotega Department,0,village,0,0,50,0,none,none
+gn:3617388,Palacagüina,Madriz Department,3678,village,0,0,50,0,none,none
+gn:3617448,Ocotal,Nueva Segovia Department,33928,town,0,0,50,0,none,none
+gn:3617457,El Tortuguero,South Caribbean Coast,1292,village,0,0,50,0,none,none
+gn:3617459,Nueva Guinea,South Caribbean Coast,52929,town,0,0,50,0,none,none
+gn:3617470,Niquinohomo,Masaya Department,7732,village,0,0,50,0,none,none
+gn:3617473,Nindirí,Masaya Department,7073,village,0,0,50,0,none,none
+gn:3617510,Nandasmo,Masaya Department,6934,village,0,0,50,0,none,none
+gn:3617513,Nandaime,Granada Department,20810,town,0,0,50,0,none,none
+gn:3617522,Nagarote,León Department,26270,town,0,0,50,0,none,none
+gn:3617532,Muy Muy,Matagalpa Department,4839,village,0,0,50,0,none,none
+gn:3617543,Murra,Nueva Segovia Department,1179,village,0,0,50,0,none,none
+gn:3617551,Mulukukú,North Caribbean Coast,0,village,0,0,50,0,none,none
+gn:3617562,Muelle de los Bueyes,South Caribbean Coast,3587,village,0,0,50,0,none,none
+gn:3617565,Mozonte,Nueva Segovia Department,2338,village,0,0,50,0,none,none
+gn:3617569,Moyogalpa,Rivas Department,3940,village,0,0,50,0,none,none
+gn:3617575,Morrito,Río San Juan Department,1360,village,0,0,50,0,none,none
+gn:3617694,Matiguás,Matagalpa Department,10523,town,0,0,50,0,none,none
+gn:3617697,Mateare,Managua Department,61234,town,0,0,50,0,none,none
+gn:3617708,Matagalpa,Matagalpa Department,109089,city,0,0,50,0,none,none
+gn:3617723,Masaya,Masaya Department,130113,city,0,0,50,0,none,none
+gn:3617725,Masatepe,Masaya Department,21452,town,0,0,50,0,none,none
+gn:3617730,Masachapa,Managua Department,5000,village,0,0,50,0,none,none
+gn:3617763,Managua,Managua Department,973087,large-city,0,0,50,0,none,none
+gn:3617766,Malpaisillo,León Department,0,village,0,0,50,0,none,none
+gn:3617804,Macuelizo,Nueva Segovia Department,374,village,0,0,50,0,none,none
+gn:3617833,Nuevo Renacer,León Department,1024,village,0,0,50,0,none,none
+gn:3618030,León,León Department,144538,city,0,0,50,0,none,none
+gn:3618087,La Trinidad,Estelí Department,0,village,0,0,50,0,none,none
+gn:3618124,Las Sabanas,Madriz Department,1257,village,0,0,50,0,none,none
+gn:3618336,Larreynaga,León Department,7703,village,0,0,50,0,none,none
+gn:3618410,La Paz de Carazo,Carazo Department,2454,village,0,0,50,0,none,none
+gn:3618411,La Paz Centro,León Department,23481,town,0,0,50,0,none,none
+gn:3618482,La Libertad,Chontales Department,3127,village,0,0,50,0,none,none
+gn:3618522,Pearl City,South Caribbean Coast,6809,village,0,0,50,0,none,none
+gn:3618618,La Cruz de Río Grande,South Caribbean Coast,1669,village,0,0,50,0,none,none
+gn:3618635,La Conquista,Carazo Department,919,village,0,0,50,0,none,none
+gn:3618637,La Concordia,Jinotega Department,2249,village,0,0,50,0,none,none
+gn:3618648,La Concepción,Masaya Department,6946,village,0,0,50,0,none,none
+gn:3618791,Kukra Hill,South Caribbean Coast,0,village,0,0,50,0,none,none
+gn:3618878,Karawala,South Caribbean Coast,0,village,0,0,50,0,none,none
+gn:3618908,Juigalpa,Chontales Department,50000,town,0,0,50,0,none,none
+gn:3618924,Jiquilillo,Chinandega Department,4142,village,0,0,50,0,none,none
+gn:3618926,Jinotepe,Carazo Department,29507,town,0,0,50,0,none,none
+gn:3618929,Jinotega,Jinotega Department,55000,town,0,0,50,0,none,none
+gn:3618954,Jalapa,Nueva Segovia Department,24037,town,0,0,50,0,none,none
+gn:3619136,Granada,Granada Department,89409,town,0,0,50,0,none,none
+gn:3619194,Estelí,Estelí Department,96422,town,0,0,50,0,none,none
+gn:3619204,Esquipulas,Matagalpa Department,0,village,0,0,50,0,none,none
+gn:3619267,El Viejo,Chinandega Department,53504,town,0,0,50,0,none,none
+gn:3619382,El Sauce,León Department,11898,town,0,0,50,0,none,none
+gn:3619419,El Rosario,Carazo Department,0,village,0,0,50,0,none,none
+gn:3619420,El Rosario,Carazo Department,2991,village,0,0,50,0,none,none
+gn:3619451,El Realejo,Chinandega Department,6208,village,0,0,50,0,none,none
+gn:3619695,El Jicaral,León Department,1446,village,0,0,50,0,none,none
+gn:3619853,El Crucero,Managua Department,16469,town,0,0,50,0,none,none
+gn:3620084,Los Copeles,Chontales Department,5406,village,0,0,50,0,none,none
+gn:3620106,El Almendro,Río San Juan Department,2681,village,0,0,50,0,none,none
+gn:3620163,Dolores,Carazo Department,7065,village,0,0,50,0,none,none
+gn:3620168,Diriomo,Granada Department,10113,town,0,0,50,0,none,none
+gn:3620170,Diriamba,Carazo Department,35008,town,0,0,50,0,none,none
+gn:3620172,Diriá,Granada Department,3903,village,0,0,50,0,none,none
+gn:3620177,Dipilto,Nueva Segovia Department,467,village,0,0,50,0,none,none
+gn:3620243,San Francisco de Cuapa,Chontales Department,2400,village,0,0,50,0,none,none
+gn:3620266,South End,South Caribbean Coast,8011,village,0,0,50,0,none,none
+gn:3620269,Corinto,Chinandega Department,19183,town,0,0,50,0,none,none
+gn:3620298,Condega,Estelí Department,11000,town,0,0,50,0,none,none
+gn:3620318,Comalapa,Chontales Department,1272,village,0,0,50,0,none,none
+gn:3620348,El Jícaro,Nueva Segovia Department,0,village,0,0,50,0,none,none
+gn:3620350,Ciudad Darío,Matagalpa Department,13318,town,0,0,50,0,none,none
+gn:3620353,Ciudad Antigua,Nueva Segovia Department,1787,village,0,0,50,0,none,none
+gn:3620358,Cinco Pinos,Chinandega Department,784,village,0,0,50,0,none,none
+gn:3620381,Chinandega,Chinandega Department,126387,city,0,0,50,0,none,none
+gn:3620390,Chichigalpa,Chinandega Department,33137,town,0,0,50,0,none,none
+gn:3620441,Catarina,Masaya Department,2327,village,0,0,50,0,none,none
+gn:3620473,Villa El Carmen,Managua Department,5219,village,0,0,50,0,none,none
+gn:3620479,Cárdenas,Rivas Department,1204,village,0,0,50,0,none,none
+gn:3620544,Camoapa,Boaco Department,16653,town,0,0,50,0,none,none
+gn:3620603,Buenos Aires,Rivas Department,1692,village,0,0,50,0,none,none
+gn:3620645,Bonanza,North Caribbean Coast,6315,village,0,0,50,0,none,none
+gn:3620661,Bocana de Paiwas,South Caribbean Coast,7872,village,0,0,50,0,none,none
+gn:3620663,Boca de Sábalos,Río San Juan Department,0,village,0,0,50,0,none,none
+gn:3620674,Boaco,Boaco Department,29046,town,0,0,50,0,none,none
+gn:3620680,Bluefields,South Caribbean Coast,44373,town,0,0,50,0,none,none
+gn:3620734,Belén,Rivas Department,5415,village,0,0,50,0,none,none
+gn:3620930,Altagracia,Rivas Department,2771,village,0,0,50,0,none,none
+gn:3620942,Alamikambang,North Caribbean Coast,0,village,0,0,50,0,none,none
+gn:3620978,Acoyapa,Chontales Department,10563,town,0,0,50,0,none,none
+gn:3620982,Achuapa,León Department,3299,village,0,0,50,0,none,none
+gn:3828262,Ciudad Sandino,Managua Department,50000,town,0,0,50,0,none,none
+gn:7701408,Las Praderas,Jinotega Department,7836,village,0,0,50,0,none,none
+gn:9613285,Santa Maía de Pantasma,Jinotega Department,0,village,0,0,50,0,none,none
+gn:11279237,Wiwilí de Jinotega,Jinotega Department,0,village,0,0,50,0,none,none
+gn:11911379,El Coral,Chontales Department,0,village,0,0,50,0,none,none
+gn:11911820,El Ayote,South Caribbean Coast,0,village,0,0,50,0,none,none
+gn:11911831,La Dalia,Matagalpa Department,0,village,0,0,50,0,none,none
+gn:11911832,Rancho Grande,Matagalpa Department,0,village,0,0,50,0,none,none
+gn:13442541,Pantasma,Jinotega Department,0,village,0,0,50,0,none,none

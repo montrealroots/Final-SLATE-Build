@@ -1,0 +1,38 @@
+place_id,name,region,population,market,verified_homes,dated_listings,shortfall_to_50,recorded_sales,rent_source,price_source
+gn:3576414,Vieux Fort,Vieux-Fort,4574,village,0,0,50,0,none,none
+gn:3576442,Soufrière,Soufrière,2918,village,0,0,50,0,none,none
+gn:3576508,Praslin,Micoud,1906,village,0,0,50,0,none,none
+gn:3576551,Morne Doudon,Castries,1176,village,0,0,50,0,none,none
+gn:3576555,Mon Repos,Micoud,1212,village,0,0,50,0,none,none
+gn:3576562,Monchy,Gros-Islet,1011,village,0,0,50,0,none,none
+gn:3576569,Micoud,Micoud,3406,village,0,0,50,0,none,none
+gn:3576637,La Resource,Vieux-Fort,1521,village,0,0,50,0,none,none
+gn:3576639,La Pointe,Micoud,1274,village,0,0,50,0,none,none
+gn:3576663,Laborie,Laborie,6701,village,0,0,50,0,none,none
+gn:3576664,L’Abbayée,Castries,1355,village,0,0,50,0,none,none
+gn:3576686,Gros Islet,Gros-Islet,25210,town,0,0,50,0,none,none
+gn:3576719,Forestière,Castries,1003,village,0,0,50,0,none,none
+gn:3576765,Dennery,Dennery,12589,town,0,0,50,0,none,none
+gn:3576781,Corinthe,Gros-Islet,1576,village,0,0,50,0,none,none
+gn:3576791,Ciceron,Castries,2471,village,0,0,50,0,none,none
+gn:3576795,Choiseul,Choiseul,6098,village,0,0,50,0,none,none
+gn:3576812,Castries,Castries,20000,town,0,0,50,0,none,none
+gn:3576821,Cantonement,Vieux-Fort,1105,village,0,0,50,0,none,none
+gn:3576830,Canaries,Anse-la-Raye,1862,village,0,0,50,0,none,none
+gn:3576836,Cabiche,Castries,1169,village,0,0,50,0,none,none
+gn:3576854,Bisee,Castries,12980,town,0,0,50,0,none,none
+gn:3576856,Bexon,Castries,1049,village,0,0,50,0,none,none
+gn:3576885,Balata,Castries,1812,village,0,0,50,0,none,none
+gn:3576888,Augier,Vieux-Fort,1850,village,0,0,50,0,none,none
+gn:3576894,Anse La Raye,Anse-la-Raye,1256,village,0,0,50,0,none,none
+gn:3576895,Anse Ger,Micoud,1471,village,0,0,50,0,none,none
+gn:9072631,Bocage,Castries,1420,village,0,0,50,0,none,none
+gn:11954745,Beauséjour,Gros-Islet,1685,village,0,0,50,0,none,none
+gn:11954768,Grande Rivière,Gros-Islet,1121,village,0,0,50,0,none,none
+gn:11954817,La Clery,Castries,1242,village,0,0,50,0,none,none
+gn:11954822,Entrepôt,Castries,1048,village,0,0,50,0,none,none
+gn:11954823,Bagatelle,Castries,1084,village,0,0,50,0,none,none
+gn:11954828,Pavée,Castries,1028,village,0,0,50,0,none,none
+gn:11955884,Pierrot,Vieux-Fort,1457,village,0,0,50,0,none,none
+gn:11955912,Ti Rocher,Micoud,1371,village,0,0,50,0,none,none
+gn:11955981,Au Leon,Dennery,1393,village,0,0,50,0,none,none

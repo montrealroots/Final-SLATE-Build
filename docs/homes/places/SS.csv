@@ -1,0 +1,24 @@
+place_id,name,region,population,market,verified_homes,dated_listings,shortfall_to_50,recorded_sales,rent_source,price_source
+gn:363594,Yirol,Lakes,11650,town,0,0,50,0,none,none
+gn:363619,Yei,Central Equatoria,260720,city,0,0,50,0,none,none
+gn:363656,Yambio,Western Equatoria,40382,town,0,0,50,0,none,none
+gn:363807,Winejok,Northern Bahr al Ghazal,300000,city,0,0,50,0,none,none
+gn:363885,Wau,Western Bahr al Ghazal,127384,city,0,0,50,0,none,none
+gn:364367,Aweil,Northern Bahr al Ghazal,38745,town,0,0,50,0,none,none
+gn:365742,Torit,Eastern Equatoria,20048,town,0,0,50,0,none,none
+gn:365763,Tonj,Warrap,17338,town,0,0,50,0,none,none
+gn:366444,Tambura,Western Equatoria,9500,village,0,0,50,0,none,none
+gn:367927,Rumbek,Lakes,32083,town,0,0,50,0,none,none
+gn:368246,Raja,Western Bahr al Ghazal,3700,village,0,0,50,0,none,none
+gn:370457,Maridi,Western Equatoria,14224,town,0,0,50,0,none,none
+gn:370737,Malakal,Upper Nile,160765,city,0,0,50,0,none,none
+gn:371466,Leer,Unity,17827,town,0,0,50,0,none,none
+gn:371712,Kuacjok,Warrap,78000,town,0,0,50,0,none,none
+gn:372299,Kodok,Upper Nile,7709,village,0,0,50,0,none,none
+gn:372884,Kapoeta,Eastern Equatoria,7042,village,0,0,50,0,none,none
+gn:373130,Kafia Kingi,Western Bahr al Ghazal,16000,town,0,0,50,0,none,none
+gn:373303,Juba,Central Equatoria,450000,city,0,0,50,0,none,none
+gn:374739,Gogrial,Warrap,44600,town,0,0,50,0,none,none
+gn:375495,Pajok,Eastern Equatoria,49000,town,0,0,50,0,none,none
+gn:377241,Bor,Jonglei,26782,town,0,0,50,0,none,none
+gn:377472,Bentiu,Unity,7653,village,0,0,50,0,none,none

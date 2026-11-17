@@ -6,10 +6,10 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 import { store, useClock, useGame } from './store';
 import { Check, NumberField, PageHead, Panel, SelectField, TextField } from './components';
 import { TabBar } from './bankworld/ui/components/TabBar';
-import { PLACES, findPlace, getPlace } from '../data/places';
+import { PLACES, findPlace, getPlace, type Place } from '../data/places';
 import type { GameState } from '../engine/types';
 import { COMPONENT_WORDS, DESIGN_CHOICES, DESIGN_COLORS, FORM_WORDS, ROOM_WORDS, WORK, gardenOf, inBuilding, permissionFor, roomCheck, type Design, type Evidence, type Home, type RoomKind, type WorkKind } from '../engine/homes/model';
-import { HOME_RULES, applianceCatalog, marketEvidence, offersIn, type MarketEvidence } from '../engine/homes/market';
+import { HOME_RULES, VERIFIED_TARGET, applianceCatalog, coverageOf, marketEvidence, offersIn, type MarketEvidence } from '../engine/homes/market';
 import { engaged, formatDateKey, homesOf, money, todayAt, type Build, type Tenancy } from '../engine/homes/core';
 import { applyRefusal, applyToRent, askPermission, disputeDeductions, giveNotice, leaseTerms, moveIn, moveInRefusal, payArrears, rentQuote, reportRepair, approveRepair, signLease, signRefusal } from '../engine/homes/renting';
 import { acceptCounter, acceptSaleOffer, acceptSaleRefusal, declineSaleOffer, listForSale, makeOffer, offerRefusal, purchaseQuote, saleRefusal, valuation, withdrawPurchase, type Plan } from '../engine/homes/buying';
@@ -317,6 +317,21 @@ function History({ g }: { g: GameState }) {
 // ---------------- Finding a home ----------------
 
 type Want = 'rent' | 'sale' | 'land';
+const PAGE = 12;
+
+/** What the game holds for this place's housing, kind by kind: verified homes, listings, recorded sales, statistics, simulated. */
+function CoverageNote({ place, ev }: { place: Place; ev: MarketEvidence }) {
+  const c = coverageOf(place, ev);
+  return (
+    <div className="xs dim home-coverage" role="note" aria-label={`Housing Records For ${place.name}`}>
+      <p style={{ margin: 0 }}>
+        <strong>{place.name}'s housing records.</strong> Verified homes at real addresses: {c.verifiedHomes} of the {VERIFIED_TARGET} the game aims for ({c.shortfall} short). Real listings: {c.datedListings}.
+        {c.recordedSales ? ` Recorded past sales here: ${c.recordedSales.count.toLocaleString('en-US')}.` : ''} Rents: {c.rentEvidence}. Prices: {c.saleEvidence}.
+      </p>
+      <p style={{ margin: 'var(--s1) 0 0' }}>The {c.simulatedHomes} homes in this market are the game's own, fitted to {c.market}: none is a real listing or at a real address.</p>
+    </div>
+  );
+}
 type Sort = 'price' | 'area' | 'per-m2';
 
 function FindHome({ g }: { g: GameState }) {
@@ -328,6 +343,7 @@ function FindHome({ g }: { g: GameState }) {
   const [minBeds, setMinBeds] = useState(0);
   const [sort, setSort] = useState<Sort>('price');
   const [onlyFav, setOnlyFav] = useState(false);
+  const [page, setPage] = useState(1);
   const [compare, setCompare] = useState<string[]>([]);
   const [open, setOpen] = useState<string | null>(null);
   const [ev, setEv] = useState<MarketEvidence | null>(null);
@@ -361,8 +377,8 @@ function FindHome({ g }: { g: GameState }) {
     <>
       <Panel title="Search">
         <div className="grid grid-3 form">
-          <SelectField label="Place" value={placeId} options={places.map((p) => ({ value: p.id, label: `${p.name}, ${p.countryName}` }))} onChange={(v) => { setPlaceId(v); setOpen(null); setCompare([]); }} />
-          <SelectField label="Looking To" value={want} options={[{ value: 'rent', label: 'Rent' }, { value: 'sale', label: 'Buy A Home' }, { value: 'land', label: 'Buy Land To Build On' }]} onChange={(v) => { setWant(v); setOpen(null); }} />
+          <SelectField label="Place" value={placeId} options={places.map((p) => ({ value: p.id, label: `${p.name}, ${p.countryName}` }))} onChange={(v) => { setPlaceId(v); setOpen(null); setCompare([]); setPage(1); }} />
+          <SelectField label="Looking To" value={want} options={[{ value: 'rent', label: 'Rent' }, { value: 'sale', label: 'Buy A Home' }, { value: 'land', label: 'Buy Land To Build On' }]} onChange={(v) => { setWant(v); setOpen(null); setPage(1); }} />
           <NumberField label={`Most You'll Pay${ev ? ` (${ev.currency})` : ''}`} value={maxPrice} min={0} step={want === 'rent' ? 100 : 10000} onChange={setMaxPrice} hint="0 for any price" />
           {want !== 'land' && <NumberField label="Bedrooms At Least" value={minBeds} min={0} max={6} onChange={setMinBeds} />}
           <SelectField label="Sort By" value={sort} options={[{ value: 'price', label: 'Price, Lowest First' }, { value: 'area', label: 'Size, Largest First' }, { value: 'per-m2', label: 'Price A Square Metre' }]} onChange={setSort} />
@@ -370,17 +386,12 @@ function FindHome({ g }: { g: GameState }) {
         </div>
         {loadErr && <p className="error" role="alert">{loadErr}</p>}
         {!ev && !loadErr && <p className="muted small">Reading the housing records for {getPlace(placeId).name}…</p>}
-        {ev && (
-          <p className="xs dim" style={{ marginBottom: 0 }}>
-            {ev.rent || ev.sale || ev.hdb ? 'Prices here are drawn from the evidence each home lists. ' : `No housing records cover ${getPlace(placeId).name} yet: every price here is the game's placeholder estimate, not a market figure. `}
-            These are the game's homes, not real listings, and none is at a real address.
-          </p>
-        )}
+        {ev && <CoverageNote place={getPlace(placeId)} ev={ev} />}
       </Panel>
       {compared.length >= 2 && <Compare g={g} homes={compared} onClear={() => setCompare([])} />}
       <Panel title={`${shown.length} ${want === 'rent' ? 'To Rent' : want === 'land' ? 'Plots For Sale' : 'For Sale'}`}>
         <ul className="list home-offers">
-          {shown.map((o) => (
+          {shown.slice(0, page * PAGE).map((o) => (
             <li key={o.id} className="list-item list-static">
               <span className="grow">
                 <strong>{o.title}</strong>
@@ -393,8 +404,9 @@ function FindHome({ g }: { g: GameState }) {
               </span>
             </li>
           ))}
-          {!shown.length && ev && <li className="list-item list-static muted small">Nothing matches. Widen the search.</li>}
+          {!shown.length && ev && <li className="list-item list-static muted small">Nothing matches. Widen the search, or look again next month: homes come onto the market and leave it.</li>}
         </ul>
+        {shown.length > page * PAGE && <button className="btn btn-sm" onClick={() => setPage(page + 1)}>Show {Math.min(PAGE, shown.length - page * PAGE)} More</button>}
       </Panel>
       {opened && ev && <OfferDetail g={g} home={opened} ev={ev} />}
     </>

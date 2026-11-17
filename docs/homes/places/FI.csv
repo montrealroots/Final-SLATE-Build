@@ -1,0 +1,885 @@
+place_id,name,region,population,market,verified_homes,dated_listings,shortfall_to_50,recorded_sales,rent_source,price_source
+gn:450015,Herukka,North Ostrobothnia,3568,village,0,0,50,0,none,none
+gn:450023,Linnanmaa,North Ostrobothnia,4278,village,0,0,50,0,none,none
+gn:630704,Ytteresse,Ostrobothnia,1758,village,0,0,50,0,none,none
+gn:630736,Ypäjä,Kanta-Häme,2185,village,0,0,50,0,none,none
+gn:630752,Ylöjärvi,Pirkanmaa,33731,town,0,0,50,0,none,none
+gn:630768,Ylivieska,North Ostrobothnia,15375,town,0,0,50,0,none,none
+gn:630779,Ylitornio,Lapland,3697,village,0,0,50,0,none,none
+gn:630918,Ylikiiminki,North Ostrobothnia,3386,village,0,0,50,0,none,none
+gn:630952,Yli-Ii,North Ostrobothnia,2235,village,0,0,50,0,none,none
+gn:630956,Ylihärmä,South Ostrobothnia,2836,village,0,0,50,0,none,none
+gn:630975,Myllytulli,North Ostrobothnia,3067,village,0,0,50,0,none,none
+gn:630998,Yläne,Southwest Finland,2148,village,0,0,50,0,none,none
+gn:631003,Ylämaa,South Karelia,1415,village,0,0,50,0,none,none
+gn:631077,Vuosaari,Uusimaa,38961,town,0,0,50,0,none,none
+gn:631191,Vuolijoki,Kainuu,2557,village,0,0,50,0,none,none
+gn:631204,Vuokatti,Kainuu,6183,village,0,0,50,0,none,none
+gn:631254,Vörå,Ostrobothnia,6264,village,0,0,50,0,none,none
+gn:631274,Voisalmi,South Karelia,2472,village,0,0,50,0,none,none
+gn:631358,Virtasalmi,South Savo,1123,village,0,0,50,0,none,none
+gn:631376,Virrat,Pirkanmaa,6165,village,0,0,50,0,none,none
+gn:631388,Virolahti,Kymenlaakso,2796,village,0,0,50,0,none,none
+gn:631393,Virojoki,Kymenlaakso,1328,village,0,0,50,0,none,none
+gn:631441,Vinkkilä,Southwest Finland,0,village,0,0,50,0,none,none
+gn:631448,Vimpeli,South Ostrobothnia,2603,village,0,0,50,0,none,none
+gn:631459,Vilppula,Pirkanmaa,5422,village,0,0,50,0,none,none
+gn:631511,Viljakkala,Pirkanmaa,2125,village,0,0,50,0,none,none
+gn:631560,Viitasaari,Central Finland,5787,village,0,0,50,0,none,none
+gn:631693,Viiala,Pirkanmaa,5472,village,0,0,50,0,none,none
+gn:631707,Vihti,Uusimaa,28864,town,0,0,50,0,none,none
+gn:631758,Vihanti,North Ostrobothnia,3270,village,0,0,50,0,none,none
+gn:631778,Vieremä,North Savo,3353,village,0,0,50,0,none,none
+gn:631825,Veteli,Central Ostrobothnia,2931,village,0,0,50,0,none,none
+gn:631856,Vesilahti,Pirkanmaa,4550,village,0,0,50,0,none,none
+gn:631873,Vesanto,North Savo,1828,village,0,0,50,0,none,none
+gn:631994,Velkua,Southwest Finland,217,village,0,0,50,0,none,none
+gn:632041,Vehmersalmi,North Savo,1889,village,0,0,50,0,none,none
+gn:632056,Vehmainen,Pirkanmaa,2095,village,0,0,50,0,none,none
+gn:632062,Vehmaa,Southwest Finland,2262,village,0,0,50,0,none,none
+gn:632225,Västanfjärd,Southwest Finland,783,village,0,0,50,0,none,none
+gn:632361,Varpaisjärvi,North Savo,3007,village,0,0,50,0,none,none
+gn:632370,Varkaus,North Savo,19603,town,0,0,50,0,none,none
+gn:632453,Vantaa,Uusimaa,252724,city,0,0,50,0,none,none
+gn:632539,Vampula,Satakunta,1743,village,0,0,50,0,none,none
+gn:632542,Vammala,Pirkanmaa,16635,town,0,0,50,0,none,none
+gn:632552,Valtimo,North Karelia,2140,village,0,0,50,0,none,none
+gn:632672,Valkeakoski,Pirkanmaa,20859,town,0,0,50,0,none,none
+gn:632860,Vahto,Southwest Finland,1916,village,0,0,50,0,none,none
+gn:632923,Vähäkyrö,Ostrobothnia,4638,village,0,0,50,0,none,none
+gn:632978,Vaasa,Ostrobothnia,69819,town,0,0,50,0,none,none
+gn:633016,Vaarala,Uusimaa,3089,village,0,0,50,0,none,none
+gn:633096,Vaala,Kainuu,2567,village,0,0,50,0,none,none
+gn:633207,Uus-Lavola,South Karelia,2453,village,0,0,50,0,none,none
+gn:633212,Ruotula,Pirkanmaa,1421,village,0,0,50,0,none,none
+gn:633221,Uusikaupunki,Southwest Finland,14750,town,0,0,50,0,none,none
+gn:633242,Uurainen,Central Finland,3652,village,0,0,50,0,none,none
+gn:633268,Utsjoki,Lapland,1127,village,0,0,50,0,none,none
+gn:633295,Utajärvi,North Ostrobothnia,2447,village,0,0,50,0,none,none
+gn:633332,Urjala,Pirkanmaa,4495,village,0,0,50,0,none,none
+gn:633395,Ulvila,Satakunta,12345,town,0,0,50,0,none,none
+gn:633413,Ullava,Central Ostrobothnia,1048,village,0,0,50,0,none,none
+gn:633541,Tyrnävä,North Ostrobothnia,6538,village,0,0,50,0,none,none
+gn:633591,Tuusula,Uusimaa,42624,town,0,0,50,0,none,none
+gn:633593,Tuusniemi,North Savo,2312,village,0,0,50,0,none,none
+gn:633611,Tuupovaara,North Karelia,2059,village,0,0,50,0,none,none
+gn:633619,Tuulos,Kanta-Häme,1466,village,0,0,50,0,none,none
+gn:633679,Turku,Southwest Finland,206655,city,0,0,50,0,none,none
+gn:633700,Turenki,Kanta-Häme,0,village,0,0,50,0,none,none
+gn:633768,Tuomarinkylä,Uusimaa,8623,village,0,0,50,0,none,none
+gn:633874,Tuira,North Ostrobothnia,7805,village,0,0,50,0,none,none
+gn:634000,Järvenperä,Uusimaa,4726,village,0,0,50,0,none,none
+gn:634008,Töysä,South Ostrobothnia,3144,village,0,0,50,0,none,none
+gn:634020,Toukola,Uusimaa,8750,village,0,0,50,0,none,none
+gn:634093,Tornio,Lapland,20932,town,0,0,50,0,none,none
+gn:634181,Toppila,North Ostrobothnia,7656,village,0,0,50,0,none,none
+gn:634297,Toivakka,Central Finland,2333,village,0,0,50,0,none,none
+gn:634317,Akaa,Pirkanmaa,8258,village,0,0,50,0,none,none
+gn:634324,Toholampi,Central Ostrobothnia,2787,village,0,0,50,0,none,none
+gn:634331,Tohmajärvi,North Karelia,3925,village,0,0,50,0,none,none
+gn:634389,Tirilä,South Karelia,1994,village,0,0,50,0,none,none
+gn:634433,Tikkurila,Uusimaa,8815,village,0,0,50,0,none,none
+gn:634561,Teuva,South Ostrobothnia,4628,village,0,0,50,0,none,none
+gn:634592,Tervola,Lapland,2820,village,0,0,50,0,none,none
+gn:634604,Tervo,North Savo,1398,village,0,0,50,0,none,none
+gn:634651,Tervakoski,Kanta-Häme,4753,village,0,0,50,0,none,none
+gn:634851,Tarvasjoki,Southwest Finland,1961,village,0,0,50,0,none,none
+gn:634907,Tapiola,Uusimaa,13617,town,0,0,50,0,none,none
+gn:634928,Tapanila,Uusimaa,6193,village,0,0,50,0,none,none
+gn:634963,Tampere,Pirkanmaa,260646,city,0,0,50,0,none,none
+gn:634965,Tampella,Pirkanmaa,5590,village,0,0,50,0,none,none
+gn:634973,Tammisalo,Uusimaa,2223,village,0,0,50,0,none,none
+gn:634992,Tammela,Kanta-Häme,5810,village,0,0,50,0,none,none
+gn:635080,Taka-Töölö,Uusimaa,15343,town,0,0,50,0,none,none
+gn:635130,Taivassalo,Southwest Finland,1722,village,0,0,50,0,none,none
+gn:635141,Taivalkoski,North Ostrobothnia,3624,village,0,0,50,0,none,none
+gn:635150,Taipalsaari,South Karelia,4591,village,0,0,50,0,none,none
+gn:635243,Taavetti,South Karelia,0,village,0,0,50,0,none,none
+gn:635336,Sysmä,Paijat-Hame,3393,village,0,0,50,0,none,none
+gn:635692,Suonenjoki,North Savo,6615,village,0,0,50,0,none,none
+gn:635696,Suomussalmi,Kainuu,7001,village,0,0,50,0,none,none
+gn:635698,Suomusjärvi,Southwest Finland,1310,village,0,0,50,0,none,none
+gn:635745,Suolahti,Central Finland,5399,village,0,0,50,0,none,none
+gn:635780,Suodenniemi,Pirkanmaa,1274,village,0,0,50,0,none,none
+gn:635826,Sumiainen,Central Finland,1251,village,0,0,50,0,none,none
+gn:635844,Sulkava,South Savo,2328,village,0,0,50,0,none,none
+gn:636091,Kivenlahti,Uusimaa,8397,village,0,0,50,0,none,none
+gn:636173,Sotkamo,Kainuu,10164,town,0,0,50,0,none,none
+gn:636242,Sörnäinen,Uusimaa,14999,town,0,0,50,0,none,none
+gn:636301,Sonkajärvi,North Savo,3551,village,0,0,50,0,none,none
+gn:636345,Somero,Southwest Finland,8423,village,0,0,50,0,none,none
+gn:636375,Soukka,Uusimaa,8069,village,0,0,50,0,none,none
+gn:636393,Soini,South Ostrobothnia,1793,village,0,0,50,0,none,none
+gn:636464,Sodankylä,Lapland,8067,village,0,0,50,0,none,none
+gn:636493,Smedsby,Ostrobothnia,0,village,0,0,50,0,none,none
+gn:636608,Siuntio,Uusimaa,6251,village,0,0,50,0,none,none
+gn:636777,Simpele,South Karelia,0,village,0,0,50,0,none,none
+gn:636802,Simo,Lapland,2753,village,0,0,50,0,none,none
+gn:636835,Broby,Kymenlaakso,0,village,0,0,50,0,none,none
+gn:636947,Siilinjärvi,North Savo,21383,town,0,0,50,0,none,none
+gn:637002,Siikajoki,North Ostrobothnia,1293,village,0,0,50,0,none,none
+gn:637020,Siikainen,Satakunta,1248,village,0,0,50,0,none,none
+gn:637035,Sievi,North Ostrobothnia,4654,village,0,0,50,0,none,none
+gn:637067,Sibbo,Uusimaa,22903,town,0,0,50,0,none,none
+gn:637219,Seinäjoki,South Ostrobothnia,66848,town,0,0,50,0,none,none
+gn:637247,Säynätsalo,Central Finland,3322,village,0,0,50,0,none,none
+gn:637284,Savukoski,Lapland,983,village,0,0,50,0,none,none
+gn:637288,Savonranta,South Savo,1255,village,0,0,50,0,none,none
+gn:637292,Savonlinna,South Savo,31283,town,0,0,50,0,none,none
+gn:637312,Savitaipale,South Karelia,3151,village,0,0,50,0,none,none
+gn:637400,Sauvo,Southwest Finland,2968,village,0,0,50,0,none,none
+gn:637462,Saukkola,Uusimaa,0,village,0,0,50,0,none,none
+gn:637586,Särkisalo,Southwest Finland,0,village,0,0,50,0,none,none
+gn:637782,Sandsund,Ostrobothnia,1998,village,0,0,50,0,none,none
+gn:637835,Sammatti,Uusimaa,1171,village,0,0,50,0,none,none
+gn:637948,Salo,Southwest Finland,50794,town,0,0,50,0,none,none
+gn:638074,Salla,Lapland,3235,village,0,0,50,0,none,none
+gn:638104,Säkylä,Satakunta,6237,village,0,0,50,0,none,none
+gn:638210,Sahalahti,Pirkanmaa,2141,village,0,0,50,0,none,none
+gn:638321,Saarijärvi,Central Finland,8831,village,0,0,50,0,none,none
+gn:638398,Saarenkylä,South Karelia,1326,village,0,0,50,0,none,none
+gn:638436,Saarenkylä,Lapland,9000,village,0,0,50,0,none,none
+gn:638582,Rymättylä,Southwest Finland,1987,village,0,0,50,0,none,none
+gn:638622,Ruukki,North Ostrobothnia,4386,village,0,0,50,0,none,none
+gn:638670,Rusko,Southwest Finland,6397,village,0,0,50,0,none,none
+gn:638675,Ruskeasuo,Uusimaa,6922,village,0,0,50,0,none,none
+gn:638676,Ruskeasanta,Uusimaa,4251,village,0,0,50,0,none,none
+gn:638691,Ruovesi,Pirkanmaa,4002,village,0,0,50,0,none,none
+gn:638711,Ruotsinpyhtää,Uusimaa,2836,village,0,0,50,0,none,none
+gn:638803,Ruokolahti,South Karelia,4721,village,0,0,50,0,none,none
+gn:638915,Röykkä,Uusimaa,1614,village,0,0,50,0,none,none
+gn:638936,Rovaniemi,Lapland,65670,town,0,0,50,0,none,none
+gn:639234,Ristijärvi,Kainuu,1162,village,0,0,50,0,none,none
+gn:639248,Ristiina,South Savo,5171,village,0,0,50,0,none,none
+gn:639406,Riihimäki,Kanta-Häme,28610,town,0,0,50,0,none,none
+gn:639522,Replot,Ostrobothnia,2100,village,0,0,50,0,none,none
+gn:639534,Renko,Kanta-Häme,2376,village,0,0,50,0,none,none
+gn:639547,Rekola,Uusimaa,2969,village,0,0,50,0,none,none
+gn:639576,Reisjärvi,North Ostrobothnia,2534,village,0,0,50,0,none,none
+gn:639666,Rautjärvi,South Karelia,4316,village,0,0,50,0,none,none
+gn:639700,Rautavaara,North Savo,1403,village,0,0,50,0,none,none
+gn:639709,Rautalampi,North Savo,2953,village,0,0,50,0,none,none
+gn:639734,Rauma,Satakunta,38909,town,0,0,50,0,none,none
+gn:639853,Raseborg,Uusimaa,26982,town,0,0,50,0,none,none
+gn:639888,Ranua,Lapland,3563,village,0,0,50,0,none,none
+gn:639895,Rantsila,North Ostrobothnia,2048,village,0,0,50,0,none,none
+gn:639906,Rantasalmi,South Savo,3247,village,0,0,50,0,none,none
+gn:640080,Rajakylä,Uusimaa,4128,village,0,0,50,0,none,none
+gn:640124,Raisio,Southwest Finland,25846,town,0,0,50,0,none,none
+gn:640159,Rahola,Pirkanmaa,3912,village,0,0,50,0,none,none
+gn:640271,Rääkkylä,North Karelia,1858,village,0,0,50,0,none,none
+gn:640276,Raahe,North Ostrobothnia,23566,town,0,0,50,0,none,none
+gn:640372,Pylkönmäki,Central Finland,981,village,0,0,50,0,none,none
+gn:640384,Pyhtää,Kymenlaakso,4964,village,0,0,50,0,none,none
+gn:640398,Pyhäselkä,North Karelia,7210,village,0,0,50,0,none,none
+gn:640403,Pyhäsalmi,North Ostrobothnia,0,village,0,0,50,0,none,none
+gn:640405,Pyhäranta,Southwest Finland,1910,village,0,0,50,0,none,none
+gn:640409,Pyhäntä,North Ostrobothnia,1674,village,0,0,50,0,none,none
+gn:640437,Pyhäjoki,North Ostrobothnia,2970,village,0,0,50,0,none,none
+gn:640440,Pyhäjärvi,Lapland,6094,village,0,0,50,0,none,none
+gn:640441,Pyhäjärvi,North Ostrobothnia,4639,village,0,0,50,0,none,none
+gn:640504,Puumala,South Savo,2693,village,0,0,50,0,none,none
+gn:640658,Puolanka,Kainuu,2348,village,0,0,50,0,none,none
+gn:640689,Punkalaidun,Pirkanmaa,2595,village,0,0,50,0,none,none
+gn:640693,Punkaharju,South Savo,3984,village,0,0,50,0,none,none
+gn:640718,Pulkkila,North Ostrobothnia,1661,village,0,0,50,0,none,none
+gn:640749,Pukkila,Uusimaa,1737,village,0,0,50,0,none,none
+gn:640758,Pukinmäki,Uusimaa,8573,village,0,0,50,0,none,none
+gn:640773,Puistola,Uusimaa,6718,village,0,0,50,0,none,none
+gn:640803,Pudasjärvi,North Ostrobothnia,7226,village,0,0,50,0,none,none
+gn:640828,Pöytyä,Southwest Finland,8000,village,0,0,50,0,none,none
+gn:640893,Posio,Lapland,2872,village,0,0,50,0,none,none
+gn:640973,Pornainen,Uusimaa,4964,village,0,0,50,0,none,none
+gn:640999,Pori,Satakunta,83157,town,0,0,50,0,none,none
+gn:641044,Pomarkku,Satakunta,1921,village,0,0,50,0,none,none
+gn:641055,Polvijärvi,North Karelia,3957,village,0,0,50,0,none,none
+gn:641124,Pojo,Uusimaa,5257,village,0,0,50,0,none,none
+gn:641374,Pitäjänmäki,Uusimaa,18016,town,0,0,50,0,none,none
+gn:641382,Pispala,Pirkanmaa,2752,village,0,0,50,0,none,none
+gn:641489,Pirkkala,Pirkanmaa,21204,town,0,0,50,0,none,none
+gn:641612,Piippola,North Ostrobothnia,550,village,0,0,50,0,none,none
+gn:641651,Piikkiö,Southwest Finland,6553,village,0,0,50,0,none,none
+gn:641660,Pihtipudas,Central Finland,3697,village,0,0,50,0,none,none
+gn:641861,Pielavesi,North Savo,3944,village,0,0,50,0,none,none
+gn:641869,Pieksämäki,South Savo,17243,town,0,0,50,0,none,none
+gn:641945,Petsamo,Pirkanmaa,3543,village,0,0,50,0,none,none
+gn:641974,Petäjävesi,Central Finland,3548,village,0,0,50,0,none,none
+gn:642077,Pertunmaa,South Savo,2089,village,0,0,50,0,none,none
+gn:642093,Pertteli,Southwest Finland,3740,village,0,0,50,0,none,none
+gn:642113,Perniö,Southwest Finland,5809,village,0,0,50,0,none,none
+gn:642118,Pernå,Uusimaa,3938,village,0,0,50,0,none,none
+gn:642139,Perho,Central Ostrobothnia,2572,village,0,0,50,0,none,none
+gn:642367,Pello,Lapland,3182,village,0,0,50,0,none,none
+gn:642377,Pelkosenniemi,Lapland,922,village,0,0,50,0,none,none
+gn:642455,Pedersöre,Ostrobothnia,11330,town,0,0,50,0,none,none
+gn:642514,Pateniemi,North Ostrobothnia,4472,village,0,0,50,0,none,none
+gn:642554,Pasila,Uusimaa,12921,town,0,0,50,0,none,none
+gn:642622,Parola,Kanta-Häme,0,village,0,0,50,0,none,none
+gn:642657,Parkano,Pirkanmaa,6092,village,0,0,50,0,none,none
+gn:642666,Parikkala,South Karelia,4274,village,0,0,50,0,none,none
+gn:642673,Pargas,Southwest Finland,11962,town,0,0,50,0,none,none
+gn:642709,Pansio,Southwest Finland,2809,village,0,0,50,0,none,none
+gn:642750,Paltamo,Kainuu,2972,village,0,0,50,0,none,none
+gn:642976,Pälkäne,Pirkanmaa,6203,village,0,0,50,0,none,none
+gn:643032,Pakila,Uusimaa,10730,town,0,0,50,0,none,none
+gn:643153,Paimio,Southwest Finland,11241,town,0,0,50,0,none,none
+gn:643260,Padasjoki,Paijat-Hame,2670,village,0,0,50,0,none,none
+gn:643308,Paattinen,Southwest Finland,2430,village,0,0,50,0,none,none
+gn:643453,Outokumpu,North Karelia,6404,village,0,0,50,0,none,none
+gn:643480,Oulunsuu,North Ostrobothnia,4292,village,0,0,50,0,none,none
+gn:643481,Oulunsalo,North Ostrobothnia,9556,village,0,0,50,0,none,none
+gn:643487,Oulunkylä,Uusimaa,23854,town,0,0,50,0,none,none
+gn:643492,Oulu,North Ostrobothnia,216066,city,0,0,50,0,none,none
+gn:643497,Oulainen,North Ostrobothnia,6887,village,0,0,50,0,none,none
+gn:643522,Otaniemi,Uusimaa,4574,village,0,0,50,0,none,none
+gn:643629,Orivesi,Pirkanmaa,8846,village,0,0,50,0,none,none
+gn:643640,Oripää,Southwest Finland,1297,village,0,0,50,0,none,none
+gn:643644,Orimattila,Paijat-Hame,15628,town,0,0,50,0,none,none
+gn:643681,Oravais,Ostrobothnia,2141,village,0,0,50,0,none,none
+gn:644002,Oitti,Kanta-Häme,1963,village,0,0,50,0,none,none
+gn:644100,Nykarleby,Ostrobothnia,7462,village,0,0,50,0,none,none
+gn:644171,Nurmijärvi,Uusimaa,45356,town,0,0,50,0,none,none
+gn:644187,Nurmes,North Karelia,8924,village,0,0,50,0,none,none
+gn:644307,Nuijamaa,South Karelia,1199,village,0,0,50,0,none,none
+gn:644315,Nöykkiö,Uusimaa,11063,town,0,0,50,0,none,none
+gn:644326,Nousiainen,Southwest Finland,4685,village,0,0,50,0,none,none
+gn:644436,Noormarkku,Satakunta,6076,village,0,0,50,0,none,none
+gn:644450,Nokia,Pirkanmaa,36486,town,0,0,50,0,none,none
+gn:644499,Nivala,North Ostrobothnia,10397,town,0,0,50,0,none,none
+gn:644632,Nilsiä,North Savo,6474,village,0,0,50,0,none,none
+gn:644930,Nickby,Uusimaa,0,village,0,0,50,0,none,none
+gn:645035,Nastola,Paijat-Hame,14911,town,0,0,50,0,none,none
+gn:645081,Närpes,Ostrobothnia,9559,village,0,0,50,0,none,none
+gn:645148,Nakkila,Satakunta,4905,village,0,0,50,0,none,none
+gn:645165,Nagu,Southwest Finland,1410,village,0,0,50,0,none,none
+gn:645211,Naantali,Southwest Finland,20312,town,0,0,50,0,none,none
+gn:645233,Myrskylä,Uusimaa,1706,village,0,0,50,0,none,none
+gn:645243,Mynämäki,Southwest Finland,6271,village,0,0,50,0,none,none
+gn:645296,Nivavaara,Lapland,1194,village,0,0,50,0,none,none
+gn:645370,Muurla,Southwest Finland,1486,village,0,0,50,0,none,none
+gn:645385,Muurame,Central Finland,10662,town,0,0,50,0,none,none
+gn:645672,Muonio,Lapland,2321,village,0,0,50,0,none,none
+gn:645690,Munkkisaari,Uusimaa,1181,village,0,0,50,0,none,none
+gn:645691,Munkkiniemi,Uusimaa,17334,town,0,0,50,0,none,none
+gn:645710,Multia,Central Finland,1384,village,0,0,50,0,none,none
+gn:645765,Muhos,North Ostrobothnia,8232,village,0,0,50,0,none,none
+gn:645766,Muhos,North Ostrobothnia,0,village,0,0,50,0,none,none
+gn:645800,Mouhijärvi,Pirkanmaa,2961,village,0,0,50,0,none,none
+gn:645861,Monninkylä,Uusimaa,1443,village,0,0,50,0,none,none
+gn:646005,Mikkeli,South Savo,51661,town,0,0,50,0,none,none
+gn:646031,Mietoinen,Southwest Finland,1785,village,0,0,50,0,none,none
+gn:646079,Miehikkälä,Kymenlaakso,1697,village,0,0,50,0,none,none
+gn:646179,Merimasku,Southwest Finland,1538,village,0,0,50,0,none,none
+gn:646192,Merikarvia,Satakunta,2882,village,0,0,50,0,none,none
+gn:646195,Merijärvi,North Ostrobothnia,1032,village,0,0,50,0,none,none
+gn:646218,Mellunkylä,Uusimaa,36360,town,0,0,50,0,none,none
+gn:646220,Mellilä,Southwest Finland,1141,village,0,0,50,0,none,none
+gn:646253,Meilahti,Uusimaa,5223,village,0,0,50,0,none,none
+gn:646293,Maunula,Uusimaa,7618,village,0,0,50,0,none,none
+gn:646421,Matinkylä,Uusimaa,22688,town,0,0,50,0,none,none
+gn:646486,Masku,Southwest Finland,9628,village,0,0,50,0,none,none
+gn:646511,Marttila,Southwest Finland,2125,village,0,0,50,0,none,none
+gn:646533,Martinniemi,North Ostrobothnia,2654,village,0,0,50,0,none,none
+gn:646610,Marjaniemi,Uusimaa,1989,village,0,0,50,0,none,none
+gn:646699,Mäntyharju,South Savo,7076,village,0,0,50,0,none,none
+gn:646705,Mänttä,Pirkanmaa,6459,village,0,0,50,0,none,none
+gn:646723,Mäntsälä,Uusimaa,20966,town,0,0,50,0,none,none
+gn:646798,Mankkaa,Uusimaa,8468,village,0,0,50,0,none,none
+gn:646875,Malax,Ostrobothnia,5517,village,0,0,50,0,none,none
+gn:647202,Maaninka,North Savo,3638,village,0,0,50,0,none,none
+gn:647260,Luvia,Satakunta,3260,village,0,0,50,0,none,none
+gn:647288,Luumäki,South Karelia,4327,village,0,0,50,0,none,none
+gn:647383,Luopioinen,Pirkanmaa,2381,village,0,0,50,0,none,none
+gn:647471,Lumijoki,North Ostrobothnia,2016,village,0,0,50,0,none,none
+gn:647522,Luhanka,Central Finland,688,village,0,0,50,0,none,none
+gn:647571,Lovisa,Uusimaa,14362,town,0,0,50,0,none,none
+gn:647660,Loppi,Kanta-Häme,7622,village,0,0,50,0,none,none
+gn:647731,Loimaa,Southwest Finland,15248,town,0,0,50,0,none,none
+gn:647741,Lohtaja,Central Ostrobothnia,3043,village,0,0,50,0,none,none
+gn:647751,Lohja,Uusimaa,45686,town,0,0,50,0,none,none
+gn:647851,Liperi,North Karelia,11927,town,0,0,50,0,none,none
+gn:647930,Liminka,North Ostrobothnia,10166,town,0,0,50,0,none,none
+gn:647978,Liljendal,Uusimaa,1455,village,0,0,50,0,none,none
+gn:648056,Lieto,Southwest Finland,20694,town,0,0,50,0,none,none
+gn:648090,Lieksa,North Karelia,10002,town,0,0,50,0,none,none
+gn:648178,Lestijärvi,Central Ostrobothnia,653,village,0,0,50,0,none,none
+gn:648227,Leppävirta,North Savo,8974,village,0,0,50,0,none,none
+gn:648232,Leppävaara,Uusimaa,28409,town,0,0,50,0,none,none
+gn:648350,Lemu,Southwest Finland,1738,village,0,0,50,0,none,none
+gn:648366,Lempäälä,Pirkanmaa,25036,town,0,0,50,0,none,none
+gn:648387,Lemi,South Karelia,2885,village,0,0,50,0,none,none
+gn:648397,Leivonmäki,Central Finland,1138,village,0,0,50,0,none,none
+gn:648539,Lehtisaari,Uusimaa,1243,village,0,0,50,0,none,none
+gn:648613,Lavia,Satakunta,2109,village,0,0,50,0,none,none
+gn:648635,Lauttasaari,Uusimaa,20000,town,0,0,50,0,none,none
+gn:648653,Lautiosaari,Lapland,1700,village,0,0,50,0,none,none
+gn:648673,Lauritsala,South Karelia,2036,village,0,0,50,0,none,none
+gn:648738,Laukaa,Central Finland,18876,town,0,0,50,0,none,none
+gn:648847,Larsmo,Ostrobothnia,5934,village,0,0,50,0,none,none
+gn:648855,Lapua,South Ostrobothnia,14016,town,0,0,50,0,none,none
+gn:648886,Lappi,Satakunta,3212,village,0,0,50,0,none,none
+gn:648900,Lappeenranta,South Karelia,72909,town,0,0,50,0,none,none
+gn:648919,Lappajärvi,South Ostrobothnia,2710,village,0,0,50,0,none,none
+gn:648953,Lapinlahti,North Savo,8856,village,0,0,50,0,none,none
+gn:648965,Lapinjärvi,Uusimaa,2937,village,0,0,50,0,none,none
+gn:649121,Längelmäki,Satakunta,1636,village,0,0,50,0,none,none
+gn:649197,Lamminpää,Pirkanmaa,2775,village,0,0,50,0,none,none
+gn:649223,Lammi,Kanta-Häme,5634,village,0,0,50,0,none,none
+gn:649302,Laitila,Southwest Finland,8492,village,0,0,50,0,none,none
+gn:649348,Laihia,Ostrobothnia,8020,village,0,0,50,0,none,none
+gn:649360,Lahti,Paijat-Hame,121622,city,0,0,50,0,none,none
+gn:649510,Laanila,North Ostrobothnia,1503,village,0,0,50,0,none,none
+gn:649523,Laaksolahti,Uusimaa,11320,town,0,0,50,0,none,none
+gn:649549,Laajalahti,Uusimaa,3567,village,0,0,50,0,none,none
+gn:649582,Kyyjärvi,Central Finland,1138,village,0,0,50,0,none,none
+gn:649625,Kyrö,Southwest Finland,0,village,0,0,50,0,none,none
+gn:649630,Kirkkonummi,Uusimaa,41821,town,0,0,50,0,none,none
+gn:649728,Kylmäkoski,Pirkanmaa,2647,village,0,0,50,0,none,none
+gn:649825,Kuusjoki,Southwest Finland,1775,village,0,0,50,0,none,none
+gn:649861,Kuusimäki,South Karelia,1515,village,0,0,50,0,none,none
+gn:649924,Kuusamo,North Ostrobothnia,14784,town,0,0,50,0,none,none
+gn:649998,Kustavi,Southwest Finland,965,village,0,0,50,0,none,none
+gn:650014,Kuru,Pirkanmaa,2701,village,0,0,50,0,none,none
+gn:650095,Kurikka,South Ostrobothnia,19474,town,0,0,50,0,none,none
+gn:650166,Kuortane,South Ostrobothnia,3328,village,0,0,50,0,none,none
+gn:650224,Kuopio,North Savo,125462,city,0,0,50,0,none,none
+gn:650315,Kuninkaala,Uusimaa,2969,village,0,0,50,0,none,none
+gn:650445,Kulosaari,Uusimaa,3977,village,0,0,50,0,none,none
+gn:650469,Kullaa,Satakunta,1494,village,0,0,50,0,none,none
+gn:650542,Pohtola,Pirkanmaa,1407,village,0,0,50,0,none,none
+gn:650628,Kuivaniemi,North Ostrobothnia,1979,village,0,0,50,0,none,none
+gn:650703,Kuhmoinen,Pirkanmaa,2020,village,0,0,50,0,none,none
+gn:650705,Kuhmo,Kainuu,7413,village,0,0,50,0,none,none
+gn:650707,Kuhmalahden Kirkonkylä,Pirkanmaa,1143,village,0,0,50,0,none,none
+gn:650744,Kruununhaka,Uusimaa,7222,village,0,0,50,0,none,none
+gn:650754,Kronoby,Ostrobothnia,6318,village,0,0,50,0,none,none
+gn:650769,Kristinestad,Ostrobothnia,6131,village,0,0,50,0,none,none
+gn:650805,Köyliö,Satakunta,2901,village,0,0,50,0,none,none
+gn:650859,Kouvola,Kymenlaakso,78094,town,0,0,50,0,none,none
+gn:650946,Kotka,Kymenlaakso,50157,town,0,0,50,0,none,none
+gn:651073,Hämeenkoski,Paijat-Hame,2149,village,0,0,50,0,none,none
+gn:651077,Koski Tl,Southwest Finland,2182,village,0,0,50,0,none,none
+gn:651137,Koskela,Uusimaa,3351,village,0,0,50,0,none,none
+gn:651140,Koskela,North Ostrobothnia,3407,village,0,0,50,0,none,none
+gn:651187,Korvensuora,North Ostrobothnia,3571,village,0,0,50,0,none,none
+gn:651245,Kortesjärvi,South Ostrobothnia,2400,village,0,0,50,0,none,none
+gn:651289,Korso,Uusimaa,7368,village,0,0,50,0,none,none
+gn:651294,Korsnäs,Ostrobothnia,1985,village,0,0,50,0,none,none
+gn:651299,Korsholm,Ostrobothnia,17176,town,0,0,50,0,none,none
+gn:651350,Korpilahti,Central Finland,5050,village,0,0,50,0,none,none
+gn:651514,Koria,Kymenlaakso,3948,village,0,0,50,0,none,none
+gn:651659,Kontiolahti,North Karelia,15092,town,0,0,50,0,none,none
+gn:651696,Konnevesi,Central Finland,2429,village,0,0,50,0,none,none
+gn:651889,Kolari,Lapland,3952,village,0,0,50,0,none,none
+gn:651943,Kokkola,Central Ostrobothnia,48361,town,0,0,50,0,none,none
+gn:651980,Kokemäki,Satakunta,6662,village,0,0,50,0,none,none
+gn:652132,Koivistonkylä,Pirkanmaa,3548,village,0,0,50,0,none,none
+gn:652305,Klaukkala,Uusimaa,21019,town,0,0,50,0,none,none
+gn:652432,Kivijärvi,Central Finland,1010,village,0,0,50,0,none,none
+gn:652559,Kiuruvesi,North Savo,7338,village,0,0,50,0,none,none
+gn:652578,Kiukainen,Satakunta,3358,village,0,0,50,0,none,none
+gn:652590,Kittilä,Lapland,6658,village,0,0,50,0,none,none
+gn:652615,Kitee,North Karelia,9483,village,0,0,50,0,none,none
+gn:652629,Kisko,Southwest Finland,1958,village,0,0,50,0,none,none
+gn:652736,Kinnula,Central Finland,1492,village,0,0,50,0,none,none
+gn:652737,Kinnula,Central Finland,0,village,0,0,50,0,none,none
+gn:652776,Kimito,Southwest Finland,3287,village,0,0,50,0,none,none
+gn:652858,Kiiminki,North Ostrobothnia,12069,town,0,0,50,0,none,none
+gn:652878,Kiikoinen,Pirkanmaa,1248,village,0,0,50,0,none,none
+gn:652888,Kiikala,Southwest Finland,1771,village,0,0,50,0,none,none
+gn:652891,Kiihtelysvaara,North Karelia,2723,village,0,0,50,0,none,none
+gn:652896,Kihniö,Pirkanmaa,1697,village,0,0,50,0,none,none
+gn:652977,Keuruu,Central Finland,9088,village,0,0,50,0,none,none
+gn:653039,Kestilä,North Ostrobothnia,1576,village,0,0,50,0,none,none
+gn:653129,Kesälahti,North Karelia,2665,village,0,0,50,0,none,none
+gn:653180,Kerimäki,South Savo,5841,village,0,0,50,0,none,none
+gn:653185,Kerava,Uusimaa,38535,town,0,0,50,0,none,none
+gn:653252,Kempele,North Ostrobothnia,14293,town,0,0,50,0,none,none
+gn:653272,Kemijärvi,Lapland,6918,village,0,0,50,0,none,none
+gn:653280,Keminmaa,Lapland,7591,village,0,0,50,0,none,none
+gn:653281,Kemi,Lapland,19332,town,0,0,50,0,none,none
+gn:653333,Kellokoski,Uusimaa,4300,village,0,0,50,0,none,none
+gn:653342,Kello,North Ostrobothnia,6030,village,0,0,50,0,none,none
+gn:653387,Keitele,North Savo,1964,village,0,0,50,0,none,none
+gn:653409,Keimola,Uusimaa,2418,village,0,0,50,0,none,none
+gn:653482,Kaustinen,Central Ostrobothnia,4098,village,0,0,50,0,none,none
+gn:653559,Kauniainen,Uusimaa,10200,town,0,0,50,0,none,none
+gn:653598,Kauklahti,Uusimaa,6119,village,0,0,50,0,none,none
+gn:653616,Kauhava,South Ostrobothnia,15066,town,0,0,50,0,none,none
+gn:653627,Kauhajoki,South Ostrobothnia,12500,town,0,0,50,0,none,none
+gn:653708,Katajanokka,Uusimaa,4994,village,0,0,50,0,none,none
+gn:653758,Kaskinen,Ostrobothnia,1278,village,0,0,50,0,none,none
+gn:653812,Karvia,Satakunta,0,village,0,0,50,0,none,none
+gn:653813,Karvia,Satakunta,2162,village,0,0,50,0,none,none
+gn:653841,Karttula,North Savo,3383,village,0,0,50,0,none,none
+gn:653852,Karstula,Central Finland,3541,village,0,0,50,0,none,none
+gn:653880,Kärsämäki,North Ostrobothnia,2350,village,0,0,50,0,none,none
+gn:653951,Kärkölä,Paijat-Hame,0,village,0,0,50,0,none,none
+gn:653952,Kärkölä,Uusimaa,4853,village,0,0,50,0,none,none
+gn:653960,Karkkila,Uusimaa,8391,village,0,0,50,0,none,none
+gn:654008,Karjasilta,North Ostrobothnia,3838,village,0,0,50,0,none,none
+gn:654012,Karjalohja,Uusimaa,1657,village,0,0,50,0,none,none
+gn:654047,Karis,Uusimaa,8853,village,0,0,50,0,none,none
+gn:654059,Karinaisten Kirkonkylä,Southwest Finland,2497,village,0,0,50,0,none,none
+gn:654075,Karijoki,South Ostrobothnia,1136,village,0,0,50,0,none,none
+gn:654137,Karhula,Kymenlaakso,22867,town,0,0,50,0,none,none
+gn:654207,Käpylä,Uusimaa,8099,village,0,0,50,0,none,none
+gn:654314,Kannus,Central Ostrobothnia,5255,village,0,0,50,0,none,none
+gn:654318,Kannonkoski,Central Finland,1173,village,0,0,50,0,none,none
+gn:654363,Kankaanpää,Satakunta,12571,town,0,0,50,0,none,none
+gn:654405,Kangasniemi,South Savo,5057,village,0,0,50,0,none,none
+gn:654413,Kangaslampi,North Savo,1596,village,0,0,50,0,none,none
+gn:654440,Kangasala,Pirkanmaa,34315,town,0,0,50,0,none,none
+gn:654498,Kamppi,Uusimaa,12098,town,0,0,50,0,none,none
+gn:654509,Kämmenniemi,Pirkanmaa,1958,village,0,0,50,0,none,none
+gn:654521,Kalvola,Kanta-Häme,3406,village,0,0,50,0,none,none
+gn:654533,Kälviä,Central Ostrobothnia,4449,village,0,0,50,0,none,none
+gn:654706,Kallio,Uusimaa,27051,town,0,0,50,0,none,none
+gn:654738,Kållby,Ostrobothnia,1083,village,0,0,50,0,none,none
+gn:654837,Kalajoki,North Ostrobothnia,12231,town,0,0,50,0,none,none
+gn:654899,Kajaani,Kainuu,36458,town,0,0,50,0,none,none
+gn:655069,Kaavi,North Savo,2578,village,0,0,50,0,none,none
+gn:655130,Kaarina,Southwest Finland,36631,town,0,0,50,0,none,none
+gn:655143,Kaarela,Uusimaa,26414,town,0,0,50,0,none,none
+gn:655194,Jyväskylä,Central Finland,148744,city,0,0,50,0,none,none
+gn:655253,Juva,South Savo,5628,village,0,0,50,0,none,none
+gn:655307,Juupajoki,Pirkanmaa,1657,village,0,0,50,0,none,none
+gn:655312,Juuka,North Karelia,4118,village,0,0,50,0,none,none
+gn:655363,Jurva,South Ostrobothnia,4450,village,0,0,50,0,none,none
+gn:655533,Juankoski,North Savo,5514,village,0,0,50,0,none,none
+gn:655563,Joutseno,South Karelia,10603,town,0,0,50,0,none,none
+gn:655581,Joutsa,Central Finland,4060,village,0,0,50,0,none,none
+gn:655626,Joroinen,North Savo,4543,village,0,0,50,0,none,none
+gn:655661,Jollas,Uusimaa,3098,village,0,0,50,0,none,none
+gn:655692,Jokioinen,Kanta-Häme,4828,village,0,0,50,0,none,none
+gn:655697,Jokiniemi,Uusimaa,6363,village,0,0,50,0,none,none
+gn:655758,Jokela,Uusimaa,6500,village,0,0,50,0,none,none
+gn:655808,Joensuu,North Karelia,78398,town,0,0,50,0,none,none
+gn:655958,Järvenpää,Uusimaa,46942,town,0,0,50,0,none,none
+gn:655988,Järvelä,Paijat-Hame,0,village,0,0,50,0,none,none
+gn:656015,Jäppilä,South Savo,1501,village,0,0,50,0,none,none
+gn:656073,Janakkala,Kanta-Häme,15995,town,0,0,50,0,none,none
+gn:656076,Jämsänkoski,Central Finland,7442,village,0,0,50,0,none,none
+gn:656083,Jämsä,Central Finland,19209,town,0,0,50,0,none,none
+gn:656090,Jämijärvi,Satakunta,1659,village,0,0,50,0,none,none
+gn:656117,Jalasjärvi,South Ostrobothnia,8662,village,0,0,50,0,none,none
+gn:656130,Jakobstad,Ostrobothnia,19668,town,0,0,50,0,none,none
+gn:656176,Jääli,North Ostrobothnia,5022,village,0,0,50,0,none,none
+gn:656183,Jaala,Kymenlaakso,1893,village,0,0,50,0,none,none
+gn:656220,Ivalo,Lapland,3998,village,0,0,50,0,none,none
+gn:656456,Isokyrö,South Ostrobothnia,4296,village,0,0,50,0,none,none
+gn:656517,Isojoki,South Ostrobothnia,1771,village,0,0,50,0,none,none
+gn:656636,Iniö,Southwest Finland,279,village,0,0,50,0,none,none
+gn:656652,Ingå,Uusimaa,5416,village,0,0,50,0,none,none
+gn:656657,Inari,Lapland,7049,village,0,0,50,0,none,none
+gn:656688,Imatra,South Karelia,24581,town,0,0,50,0,none,none
+gn:656702,Ilpoinen,Southwest Finland,2889,village,0,0,50,0,none,none
+gn:656709,Ilomantsi,North Karelia,4327,village,0,0,50,0,none,none
+gn:656736,Haukiluoma,Pirkanmaa,2054,village,0,0,50,0,none,none
+gn:656739,Ilmajoki,South Ostrobothnia,12473,town,0,0,50,0,none,none
+gn:656766,Ikuri,Pirkanmaa,4332,village,0,0,50,0,none,none
+gn:656789,Ikaalinen,Pirkanmaa,6713,village,0,0,50,0,none,none
+gn:656807,Iitti,Paijat-Hame,6410,village,0,0,50,0,none,none
+gn:656820,Iisalmi,North Savo,20330,town,0,0,50,0,none,none
+gn:656851,Ii,North Ostrobothnia,9800,village,0,0,50,0,none,none
+gn:656913,Hyvinge,Uusimaa,43515,town,0,0,50,0,none,none
+gn:656949,Hyrynsalmi,Kainuu,1998,village,0,0,50,0,none,none
+gn:657112,Humppila,Kanta-Häme,2084,village,0,0,50,0,none,none
+gn:657180,Huittinen,Satakunta,9618,village,0,0,50,0,none,none
+gn:657305,Houtskär,Southwest Finland,626,village,0,0,50,0,none,none
+gn:657479,Honkajoki,Satakunta,1595,village,0,0,50,0,none,none
+gn:657531,Hollola,Paijat-Hame,22843,town,0,0,50,0,none,none
+gn:657730,Hirvensalmi,South Savo,2046,village,0,0,50,0,none,none
+gn:657838,Himanka,North Ostrobothnia,3136,village,0,0,50,0,none,none
+gn:658076,Hiekkaharju,Uusimaa,5333,village,0,0,50,0,none,none
+gn:658120,Hervanta,Pirkanmaa,25231,town,0,0,50,0,none,none
+gn:658132,Herttoniemi,Uusimaa,26047,town,0,0,50,0,none,none
+gn:658225,Helsinki,Uusimaa,658864,large-city,0,0,50,0,none,none
+gn:658288,Heinola,Paijat-Hame,17746,town,0,0,50,0,none,none
+gn:658318,Heinävesi,North Karelia,2909,village,0,0,50,0,none,none
+gn:658581,Hausjärvi,Kanta-Häme,7923,village,0,0,50,0,none,none
+gn:658617,Haukivuori,South Savo,2256,village,0,0,50,0,none,none
+gn:658629,Haukipudas,North Ostrobothnia,17298,town,0,0,50,0,none,none
+gn:658670,Hauho,Kanta-Häme,3755,village,0,0,50,0,none,none
+gn:658757,Hartola,Paijat-Hame,2463,village,0,0,50,0,none,none
+gn:658921,Harjavalta,Satakunta,6605,village,0,0,50,0,none,none
+gn:659024,Hankasalmi,Central Finland,4468,village,0,0,50,0,none,none
+gn:659101,Hanko,Uusimaa,9962,village,0,0,50,0,none,none
+gn:659169,Hamina,Kymenlaakso,19305,town,0,0,50,0,none,none
+gn:659180,Hämeenlinna,Kanta-Häme,68473,town,0,0,50,0,none,none
+gn:659184,Hämeenkyrö,Pirkanmaa,10351,town,0,0,50,0,none,none
+gn:659188,Hämeenkylä,Uusimaa,8437,village,0,0,50,0,none,none
+gn:659231,Halsua,Central Ostrobothnia,993,village,0,0,50,0,none,none
+gn:659350,Halikko,Southwest Finland,9344,village,0,0,50,0,none,none
+gn:659386,Hakkila,Uusimaa,1306,village,0,0,50,0,none,none
+gn:659406,Hakunila,Uusimaa,12435,town,0,0,50,0,none,none
+gn:659431,Hailuoto,North Ostrobothnia,928,village,0,0,50,0,none,none
+gn:659554,Haapavesi,North Ostrobothnia,6347,village,0,0,50,0,none,none
+gn:659681,Haapajärvi,North Ostrobothnia,6482,village,0,0,50,0,none,none
+gn:659717,Haaga,Uusimaa,27761,town,0,0,50,0,none,none
+gn:659735,Gumböle,Uusimaa,1237,village,0,0,50,0,none,none
+gn:659919,Vapaala,Uusimaa,3987,village,0,0,50,0,none,none
+gn:659935,Forssa,Kanta-Häme,16368,town,0,0,50,0,none,none
+gn:660065,Evijärvi,South Ostrobothnia,2262,village,0,0,50,0,none,none
+gn:660073,Eurajoki,Satakunta,9000,village,0,0,50,0,none,none
+gn:660077,Eura,Satakunta,11093,town,0,0,50,0,none,none
+gn:660083,Etu-Töölö,Uusimaa,14728,town,0,0,50,0,none,none
+gn:660158,Espoo,Uusimaa,323910,city,0,0,50,0,none,none
+gn:660216,Epilä,Pirkanmaa,1436,village,0,0,50,0,none,none
+gn:660229,Enontekiö,Lapland,1765,village,0,0,50,0,none,none
+gn:660235,Enonkoski,South Savo,1285,village,0,0,50,0,none,none
+gn:660242,Eno,North Karelia,6891,village,0,0,50,0,none,none
+gn:660294,Elimäki,Kymenlaakso,8751,village,0,0,50,0,none,none
+gn:660325,Ekenäs,Uusimaa,14377,town,0,0,50,0,none,none
+gn:660374,Dragsfjärd,Southwest Finland,3309,village,0,0,50,0,none,none
+gn:660407,Laajasalo,Uusimaa,22419,town,0,0,50,0,none,none
+gn:660537,Box,Uusimaa,1011,village,0,0,50,0,none,none
+gn:660561,Porvoo,Uusimaa,51853,town,0,0,50,0,none,none
+gn:660735,Bennäs,Ostrobothnia,0,village,0,0,50,0,none,none
+gn:660838,Auttoinen,Paijat-Hame,1300,village,0,0,50,0,none,none
+gn:660873,Aura,Southwest Finland,3965,village,0,0,50,0,none,none
+gn:660927,Askola,Uusimaa,4515,village,0,0,50,0,none,none
+gn:660940,Askainen,Southwest Finland,1004,village,0,0,50,0,none,none
+gn:660949,Asikkala,Paijat-Hame,7870,village,0,0,50,0,none,none
+gn:660974,Artjärvi,Paijat-Hame,1412,village,0,0,50,0,none,none
+gn:661164,Anjala,Kymenlaakso,16779,town,0,0,50,0,none,none
+gn:661226,Amuri,Pirkanmaa,5353,village,0,0,50,0,none,none
+gn:661286,Alppikylä,Uusimaa,1478,village,0,0,50,0,none,none
+gn:661352,Alavus,South Ostrobothnia,10722,town,0,0,50,0,none,none
+gn:661363,Alavieska,North Ostrobothnia,2407,village,0,0,50,0,none,none
+gn:661410,Alastaro,Southwest Finland,0,village,0,0,50,0,none,none
+gn:661576,Alajärvi,South Ostrobothnia,8793,village,0,0,50,0,none,none
+gn:661601,Alahärmä,South Ostrobothnia,4915,village,0,0,50,0,none,none
+gn:661896,Ähtäri,South Ostrobothnia,5180,village,0,0,50,0,none,none
+gn:662095,Äänekoski,Central Finland,17614,town,0,0,50,0,none,none
+gn:798197,Westend,Uusimaa,3323,village,0,0,50,0,none,none
+gn:798210,Haukilahti,Uusimaa,5873,village,0,0,50,0,none,none
+gn:798763,Viikki,Uusimaa,15177,town,0,0,50,0,none,none
+gn:798819,Kivikko,Uusimaa,5035,village,0,0,50,0,none,none
+gn:798842,Rastila,Uusimaa,4745,village,0,0,50,0,none,none
+gn:840724,Kaitaa,Uusimaa,6911,village,0,0,50,0,none,none
+gn:840741,Latokaski,Uusimaa,4927,village,0,0,50,0,none,none
+gn:840762,Kurttila,Uusimaa,3917,village,0,0,50,0,none,none
+gn:840782,Muurala,Uusimaa,3052,village,0,0,50,0,none,none
+gn:840783,Kaupunginkallio,Uusimaa,1651,village,0,0,50,0,none,none
+gn:840799,Lapinkylä,Uusimaa,1383,village,0,0,50,0,none,none
+gn:840809,Karhusuo,Uusimaa,2717,village,0,0,50,0,none,none
+gn:841797,Haarla,Southwest Finland,1316,village,0,0,50,0,none,none
+gn:841883,Pihlajaniemi,Southwest Finland,1139,village,0,0,50,0,none,none
+gn:841884,Moikoinen,Southwest Finland,1880,village,0,0,50,0,none,none
+gn:841887,Vähäheikkilä,Southwest Finland,1153,village,0,0,50,0,none,none
+gn:841888,Luolavuori,Southwest Finland,4477,village,0,0,50,0,none,none
+gn:841889,Mäntymäki,Southwest Finland,1489,village,0,0,50,0,none,none
+gn:841890,Vasaramäki,Southwest Finland,3949,village,0,0,50,0,none,none
+gn:841891,Katariina,Southwest Finland,1282,village,0,0,50,0,none,none
+gn:841893,Harittu,Southwest Finland,3870,village,0,0,50,0,none,none
+gn:841894,Koivula,Southwest Finland,1761,village,0,0,50,0,none,none
+gn:841958,Pahaniemi,Southwest Finland,4397,village,0,0,50,0,none,none
+gn:841960,Raunistula,Southwest Finland,1442,village,0,0,50,0,none,none
+gn:841962,Itäharju,Southwest Finland,2940,village,0,0,50,0,none,none
+gn:841963,Nummi,Southwest Finland,7011,village,0,0,50,0,none,none
+gn:841964,Kurala,Southwest Finland,2956,village,0,0,50,0,none,none
+gn:841965,Pääskyvuori,Southwest Finland,4482,village,0,0,50,0,none,none
+gn:841966,Kohmo,Southwest Finland,1223,village,0,0,50,0,none,none
+gn:841968,Varissuo,Southwest Finland,8760,village,0,0,50,0,none,none
+gn:841971,Lauste,Southwest Finland,3405,village,0,0,50,0,none,none
+gn:841984,Mälikkälä,Southwest Finland,1608,village,0,0,50,0,none,none
+gn:842048,Runosmäki,Southwest Finland,10296,town,0,0,50,0,none,none
+gn:842049,Ruohonpää,Southwest Finland,2375,village,0,0,50,0,none,none
+gn:842050,Teräsrautela,Southwest Finland,3554,village,0,0,50,0,none,none
+gn:842051,Vätti,Southwest Finland,2990,village,0,0,50,0,none,none
+gn:842052,Kastu,Southwest Finland,2002,village,0,0,50,0,none,none
+gn:842053,Kaerla,Southwest Finland,2182,village,0,0,50,0,none,none
+gn:842054,Kärsämäki,Southwest Finland,2021,village,0,0,50,0,none,none
+gn:842056,Räntämäki,Southwest Finland,1924,village,0,0,50,0,none,none
+gn:842058,Halinen,Southwest Finland,3501,village,0,0,50,0,none,none
+gn:843403,Niittykumpu,Uusimaa,8934,village,0,0,50,0,none,none
+gn:843404,Olari,Uusimaa,16929,town,0,0,50,0,none,none
+gn:843405,Henttaa,Uusimaa,7759,village,0,0,50,0,none,none
+gn:843406,Sepänkylä,Uusimaa,1665,village,0,0,50,0,none,none
+gn:843411,Munkkivuori,Uusimaa,5048,village,0,0,50,0,none,none
+gn:843419,Pohjois-Haaga,Uusimaa,9691,village,0,0,50,0,none,none
+gn:843420,Etelä-Haaga,Uusimaa,12555,town,0,0,50,0,none,none
+gn:843421,Metsälä,Uusimaa,1075,village,0,0,50,0,none,none
+gn:843424,Länsi-Pasila,Uusimaa,5413,village,0,0,50,0,none,none
+gn:843425,Laakso,Uusimaa,2157,village,0,0,50,0,none,none
+gn:843429,Kumpula,Uusimaa,4305,village,0,0,50,0,none,none
+gn:843430,Vallila,Uusimaa,10375,town,0,0,50,0,none,none
+gn:843438,Länsi-Herttoniemi,Uusimaa,8626,village,0,0,50,0,none,none
+gn:843440,Tullisaari,Uusimaa,1421,village,0,0,50,0,none,none
+gn:843441,Yliskylä,Uusimaa,13563,town,0,0,50,0,none,none
+gn:843444,Roihuvuori,Uusimaa,7869,village,0,0,50,0,none,none
+gn:843446,Puotinharju,Uusimaa,4045,village,0,0,50,0,none,none
+gn:843447,Vartioharju,Uusimaa,6015,village,0,0,50,0,none,none
+gn:843448,Puotila,Uusimaa,4930,village,0,0,50,0,none,none
+gn:843449,Itäkeskus,Uusimaa,4730,village,0,0,50,0,none,none
+gn:843938,Höyhtyä,North Ostrobothnia,2426,village,0,0,50,0,none,none
+gn:843947,Alppila,North Ostrobothnia,2587,village,0,0,50,0,none,none
+gn:843948,Puolivälinkangas,North Ostrobothnia,2480,village,0,0,50,0,none,none
+gn:843949,Välivainio,North Ostrobothnia,3053,village,0,0,50,0,none,none
+gn:843954,Taskila,North Ostrobothnia,1165,village,0,0,50,0,none,none
+gn:843959,Rajakylä,North Ostrobothnia,3890,village,0,0,50,0,none,none
+gn:843960,Kuivasjärvi,North Ostrobothnia,4452,village,0,0,50,0,none,none
+gn:843961,Kaijonharju,North Ostrobothnia,3916,village,0,0,50,0,none,none
+gn:846664,Äetsä,Pirkanmaa,4929,village,0,0,50,0,none,none
+gn:847341,Viherlaakso,Uusimaa,5206,village,0,0,50,0,none,none
+gn:847348,Hämevaara,Uusimaa,1713,village,0,0,50,0,none,none
+gn:847351,Vanhakartano,Uusimaa,1345,village,0,0,50,0,none,none
+gn:847355,Askisto,Uusimaa,1849,village,0,0,50,0,none,none
+gn:847356,Niipperi,Uusimaa,3231,village,0,0,50,0,none,none
+gn:847357,Grundbacka,Uusimaa,2685,village,0,0,50,0,none,none
+gn:847359,Kalajärvi,Uusimaa,2615,village,0,0,50,0,none,none
+gn:847408,Kivistö,Uusimaa,11125,town,0,0,50,0,none,none
+gn:847417,Martinlaakso,Uusimaa,13992,town,0,0,50,0,none,none
+gn:847421,Kaivoksela,Uusimaa,5963,village,0,0,50,0,none,none
+gn:847422,Myyrmäki,Uusimaa,18393,town,0,0,50,0,none,none
+gn:847423,Varisto,Uusimaa,2298,village,0,0,50,0,none,none
+gn:847426,Malminkartano,Uusimaa,8495,village,0,0,50,0,none,none
+gn:847427,Hakuninmaa,Uusimaa,2708,village,0,0,50,0,none,none
+gn:847428,Kannelmäki,Uusimaa,13272,town,0,0,50,0,none,none
+gn:847429,Lassila,Uusimaa,4644,village,0,0,50,0,none,none
+gn:847430,Konala,Uusimaa,6438,village,0,0,50,0,none,none
+gn:847432,Lintuvaara,Uusimaa,10554,town,0,0,50,0,none,none
+gn:847434,Veräjämäki,Uusimaa,2958,village,0,0,50,0,none,none
+gn:847435,Patola,Uusimaa,10352,town,0,0,50,0,none,none
+gn:847436,Pihlajisto,Uusimaa,2411,village,0,0,50,0,none,none
+gn:847437,Länsi-Pakila,Uusimaa,7001,village,0,0,50,0,none,none
+gn:847439,Paloheinä,Uusimaa,5905,village,0,0,50,0,none,none
+gn:847441,Torpparinmäki,Uusimaa,2728,village,0,0,50,0,none,none
+gn:847443,Tammisto,Uusimaa,3473,village,0,0,50,0,none,none
+gn:847444,Siltamäki,Uusimaa,8241,village,0,0,50,0,none,none
+gn:847446,Ylästö,Uusimaa,5509,village,0,0,50,0,none,none
+gn:847495,Vierumäki,Uusimaa,1401,village,0,0,50,0,none,none
+gn:847498,Asola,Uusimaa,5522,village,0,0,50,0,none,none
+gn:847499,Ilola,Uusimaa,4923,village,0,0,50,0,none,none
+gn:847500,Koivukylä,Uusimaa,5702,village,0,0,50,0,none,none
+gn:847501,Havukoski,Uusimaa,8581,village,0,0,50,0,none,none
+gn:847504,Simonkylä,Uusimaa,8191,village,0,0,50,0,none,none
+gn:847505,Viertola,Uusimaa,7974,village,0,0,50,0,none,none
+gn:847506,Suutarila,Uusimaa,19690,town,0,0,50,0,none,none
+gn:847507,Suurmetsä,Uusimaa,16452,town,0,0,50,0,none,none
+gn:847508,Heikinlaakso,Uusimaa,2990,village,0,0,50,0,none,none
+gn:847509,Tapaninkylä,Uusimaa,14313,town,0,0,50,0,none,none
+gn:847510,Ylä-Malmi,Uusimaa,6623,village,0,0,50,0,none,none
+gn:847512,Ala-Malmi,Uusimaa,5678,village,0,0,50,0,none,none
+gn:847513,Kontula,Uusimaa,14108,town,0,0,50,0,none,none
+gn:847514,Pihlajamäki,Uusimaa,7406,village,0,0,50,0,none,none
+gn:847515,Kurkimäki,Uusimaa,2731,village,0,0,50,0,none,none
+gn:847516,Vesala,Uusimaa,7531,village,0,0,50,0,none,none
+gn:847517,Mellunmäki,Uusimaa,9297,village,0,0,50,0,none,none
+gn:847518,Länsimäki,Uusimaa,5865,village,0,0,50,0,none,none
+gn:847519,Jakomäki,Uusimaa,5625,village,0,0,50,0,none,none
+gn:847521,Itä-Hakkila,Uusimaa,2721,village,0,0,50,0,none,none
+gn:847523,Päiväkumpu,Uusimaa,3856,village,0,0,50,0,none,none
+gn:847525,Matari,Uusimaa,2349,village,0,0,50,0,none,none
+gn:847526,Mikkola,Uusimaa,3071,village,0,0,50,0,none,none
+gn:847527,Nikinmäki,Uusimaa,4308,village,0,0,50,0,none,none
+gn:847530,Metsola,Uusimaa,6144,village,0,0,50,0,none,none
+gn:847531,Leppäkorpi,Uusimaa,2440,village,0,0,50,0,none,none
+gn:6252046,Kivisalmi,South Karelia,1866,village,0,0,50,0,none,none
+gn:6252047,Skinnarila,South Karelia,4873,village,0,0,50,0,none,none
+gn:6252048,Sammonlahti,South Karelia,1921,village,0,0,50,0,none,none
+gn:6252053,Pallo,South Karelia,2104,village,0,0,50,0,none,none
+gn:6295613,Kilo,Uusimaa,10554,town,0,0,50,0,none,none
+gn:6545253,Kaartinkaupunki,Uusimaa,1309,village,0,0,50,0,none,none
+gn:6545254,Alppiharju,Uusimaa,11481,town,0,0,50,0,none,none
+gn:6545255,Herttoniemenranta,Uusimaa,9414,village,0,0,50,0,none,none
+gn:6545258,Punavuori,Uusimaa,9258,village,0,0,50,0,none,none
+gn:6545259,Ullanlinna,Uusimaa,10774,town,0,0,50,0,none,none
+gn:6545341,Alppila,Uusimaa,4478,village,0,0,50,0,none,none
+gn:6559359,Ruoholahti,Uusimaa,2863,village,0,0,50,0,none,none
+gn:6615307,Peltola,North Ostrobothnia,1679,village,0,0,50,0,none,none
+gn:6615438,Raksila,North Ostrobothnia,1770,village,0,0,50,0,none,none
+gn:6690942,Aurinkolahti,Uusimaa,8033,village,0,0,50,0,none,none
+gn:6690947,Eira,Uusimaa,1050,village,0,0,50,0,none,none
+gn:6930892,Tammela,Pirkanmaa,5955,village,0,0,50,0,none,none
+gn:6930893,Kaleva,Pirkanmaa,5117,village,0,0,50,0,none,none
+gn:6930894,Kissanmaa,Pirkanmaa,2729,village,0,0,50,0,none,none
+gn:6930895,Lukonmäki,Pirkanmaa,2838,village,0,0,50,0,none,none
+gn:6930896,Hallila,Pirkanmaa,2537,village,0,0,50,0,none,none
+gn:6930897,Kaukajärvi,Pirkanmaa,12779,town,0,0,50,0,none,none
+gn:6930898,Viiala,Pirkanmaa,1530,village,0,0,50,0,none,none
+gn:6930899,Nekala,Pirkanmaa,1016,village,0,0,50,0,none,none
+gn:6930902,Hatanpää,Pirkanmaa,2894,village,0,0,50,0,none,none
+gn:6930905,Veisu,Pirkanmaa,1484,village,0,0,50,0,none,none
+gn:6930906,Korkinmäki,Pirkanmaa,1093,village,0,0,50,0,none,none
+gn:6930909,Hyhky,Pirkanmaa,3700,village,0,0,50,0,none,none
+gn:6930910,Kyttälä,Pirkanmaa,3399,village,0,0,50,0,none,none
+gn:6930914,Takahuhti,Pirkanmaa,2344,village,0,0,50,0,none,none
+gn:6930915,Ristinarkku,Pirkanmaa,3275,village,0,0,50,0,none,none
+gn:6930916,Linnainmaa,Pirkanmaa,6453,village,0,0,50,0,none,none
+gn:6930917,Pappila,Pirkanmaa,3764,village,0,0,50,0,none,none
+gn:6930918,Atala,Pirkanmaa,4679,village,0,0,50,0,none,none
+gn:6930919,Muotiala,Pirkanmaa,1780,village,0,0,50,0,none,none
+gn:6930920,Peltolammi,Pirkanmaa,3429,village,0,0,50,0,none,none
+gn:6930922,Holvasti,Pirkanmaa,2336,village,0,0,50,0,none,none
+gn:6930932,Järvensivu,Pirkanmaa,1368,village,0,0,50,0,none,none
+gn:6930943,Lentävänniemi,Pirkanmaa,5433,village,0,0,50,0,none,none
+gn:6930944,Viinikka,Pirkanmaa,1290,village,0,0,50,0,none,none
+gn:6930945,Tesomajärvi,Pirkanmaa,1448,village,0,0,50,0,none,none
+gn:6930946,Kalkku,Pirkanmaa,3301,village,0,0,50,0,none,none
+gn:6930964,Multisilta,Pirkanmaa,2367,village,0,0,50,0,none,none
+gn:6930966,Rantaperkiö,Pirkanmaa,2664,village,0,0,50,0,none,none
+gn:6931107,Juhannuskylä,Pirkanmaa,1178,village,0,0,50,0,none,none
+gn:6931108,Ratina,Pirkanmaa,1309,village,0,0,50,0,none,none
+gn:6931109,Tasanne,Pirkanmaa,1395,village,0,0,50,0,none,none
+gn:6931110,Olkahinen,Pirkanmaa,1853,village,0,0,50,0,none,none
+gn:6940573,Pohjois-Hervanta,Pirkanmaa,16053,town,0,0,50,0,none,none
+gn:6940574,Etelä-Hervanta,Pirkanmaa,9178,village,0,0,50,0,none,none
+gn:6945596,Itä-Pakila,Uusimaa,3382,village,0,0,50,0,none,none
+gn:6945597,Tapaninvainio,Uusimaa,7945,village,0,0,50,0,none,none
+gn:6945602,Koivuhaka,Uusimaa,3581,village,0,0,50,0,none,none
+gn:6945603,Pakkala,Uusimaa,10160,town,0,0,50,0,none,none
+gn:6945612,Maununneva,Uusimaa,2601,village,0,0,50,0,none,none
+gn:6945759,Karakallio,Uusimaa,5668,village,0,0,50,0,none,none
+gn:6945762,Pikku-Huopalahti,Uusimaa,6706,village,0,0,50,0,none,none
+gn:6945765,Arabianranta,Uusimaa,7278,village,0,0,50,0,none,none
+gn:6945999,Pohjola,Southwest Finland,1569,village,0,0,50,0,none,none
+gn:6946000,Iso-Heikkilä,Southwest Finland,1905,village,0,0,50,0,none,none
+gn:6947059,Myllypuro,Uusimaa,12821,town,0,0,50,0,none,none
+gn:7521615,Espoon Keskus,Uusimaa,2057,village,0,0,50,0,none,none
+gn:7521623,Vanttila,Uusimaa,2314,village,0,0,50,0,none,none
+gn:7521635,Saunalahti,Uusimaa,11114,town,0,0,50,0,none,none
+gn:7521636,Espoonlahti,Uusimaa,17697,town,0,0,50,0,none,none
+gn:7521637,Laurinlahti,Uusimaa,3941,village,0,0,50,0,none,none
+gn:7521638,Pohjois-Tapiola,Uusimaa,7029,village,0,0,50,0,none,none
+gn:7521639,Kuurinniitty,Uusimaa,2057,village,0,0,50,0,none,none
+gn:7521652,Lippajärvi,Uusimaa,4525,village,0,0,50,0,none,none
+gn:7521684,Vantaanlaakso,Uusimaa,2888,village,0,0,50,0,none,none
+gn:7521685,Itä-Pasila,Uusimaa,3656,village,0,0,50,0,none,none
+gn:7521686,Hermanni,Uusimaa,6547,village,0,0,50,0,none,none
+gn:7521690,Veromies,Uusimaa,1990,village,0,0,50,0,none,none
+gn:7521693,Meri-Rastila,Uusimaa,5327,village,0,0,50,0,none,none
+gn:7576665,Pyykösjärvi,North Ostrobothnia,1426,village,0,0,50,0,none,none
+gn:7627400,Port Arthur,Southwest Finland,6423,village,0,0,50,0,none,none
+gn:7627403,Pitkämäki,Southwest Finland,2886,village,0,0,50,0,none,none
+gn:7644875,Lintulampi,Pirkanmaa,2415,village,0,0,50,0,none,none
+gn:7644878,Niemi,Pirkanmaa,1210,village,0,0,50,0,none,none
+gn:7644908,Tohloppi,Pirkanmaa,2202,village,0,0,50,0,none,none
+gn:7644909,Ryydynpohja,Pirkanmaa,1370,village,0,0,50,0,none,none
+gn:7645533,Talvikangas,North Ostrobothnia,3860,village,0,0,50,0,none,none
+gn:7645535,Kynsilehto,North Ostrobothnia,1683,village,0,0,50,0,none,none
+gn:7645536,Värttö,North Ostrobothnia,1354,village,0,0,50,0,none,none
+gn:7645538,Kiviniemi,North Ostrobothnia,1550,village,0,0,50,0,none,none
+gn:7645542,Kaakkuri,North Ostrobothnia,6559,village,0,0,50,0,none,none
+gn:7645575,Villilä,Pirkanmaa,1040,village,0,0,50,0,none,none
+gn:7645614,Korvenkylä,South Karelia,1536,village,0,0,50,0,none,none
+gn:7645628,Heikkilänkangas,North Ostrobothnia,1395,village,0,0,50,0,none,none
+gn:7645633,Maikkula,North Ostrobothnia,3478,village,0,0,50,0,none,none
+gn:7645638,Kaukovainio,North Ostrobothnia,4809,village,0,0,50,0,none,none
+gn:7645640,Hiukkavaara,North Ostrobothnia,3097,village,0,0,50,0,none,none
+gn:7645809,Kimpinen,South Karelia,1248,village,0,0,50,0,none,none
+gn:7645811,Harapainen,South Karelia,1048,village,0,0,50,0,none,none
+gn:7645813,Hakali,South Karelia,2162,village,0,0,50,0,none,none
+gn:7645819,Kaarila,Pirkanmaa,1478,village,0,0,50,0,none,none
+gn:7645944,Uittamo,Southwest Finland,3635,village,0,0,50,0,none,none
+gn:7646339,Tapulikaupunki,Uusimaa,8741,village,0,0,50,0,none,none
+gn:7646340,Jokiniemi,Uusimaa,1357,village,0,0,50,0,none,none
+gn:7647230,Koukkuniemi,Uusimaa,1038,village,0,0,50,0,none,none
+gn:7647233,Turun satama,Southwest Finland,1565,village,0,0,50,0,none,none
+gn:7647245,Samppalinna,Southwest Finland,2361,village,0,0,50,0,none,none
+gn:7647247,Vartiovuori,Southwest Finland,3104,village,0,0,50,0,none,none
+gn:7647248,Martti,Southwest Finland,4506,village,0,0,50,0,none,none
+gn:7647249,Itäranta,Southwest Finland,3677,village,0,0,50,0,none,none
+gn:7647250,Länsiranta,Southwest Finland,2319,village,0,0,50,0,none,none
+gn:7647405,Jätkäsaari,Uusimaa,14718,town,0,0,50,0,none,none
+gn:7732150,Leinola,Pirkanmaa,2095,village,0,0,50,0,none,none
+gn:7732160,Huikas,Pirkanmaa,1162,village,0,0,50,0,none,none
+gn:7732288,Linnoitus,South Karelia,1392,village,0,0,50,0,none,none
+gn:7732290,Leiri,South Karelia,2260,village,0,0,50,0,none,none
+gn:7732294,Kourula,South Karelia,2010,village,0,0,50,0,none,none
+gn:7732324,Ristimäki,Pirkanmaa,2545,village,0,0,50,0,none,none
+gn:7732761,Hiironen,North Ostrobothnia,2056,village,0,0,50,0,none,none
+gn:7732762,Myllyoja,North Ostrobothnia,2345,village,0,0,50,0,none,none
+gn:7733369,Niemenmäki,Uusimaa,1346,village,0,0,50,0,none,none
+gn:7778907,Pajamäki,Uusimaa,1884,village,0,0,50,0,none,none
+gn:7779093,Ristinummi,Ostrobothnia,1500,village,0,0,50,0,none,none
+gn:7779094,Teeriniemi,Ostrobothnia,1500,village,0,0,50,0,none,none
+gn:7779096,Hietalahti,Ostrobothnia,4700,village,0,0,50,0,none,none
+gn:7910855,Toijala,Pirkanmaa,8300,village,0,0,50,0,none,none
+gn:7911309,Väståboland,Southwest Finland,15498,town,0,0,50,0,none,none
+gn:7932261,Kukola,Southwest Finland,1486,village,0,0,50,0,none,none
+gn:8198723,Sastamala,Pirkanmaa,24495,town,0,0,50,0,none,none
+gn:9295658,Reimarla,Uusimaa,4826,village,0,0,50,0,none,none
+gn:11054626,Ojakkala,Uusimaa,1426,village,0,0,50,0,none,none
+gn:11593510,Älajärvi,South Ostrobothnia,10308,town,0,0,50,0,none,none
+gn:11962456,Vartiokylä,Uusimaa,30244,town,0,0,50,0,none,none
+gn:11962457,Länsisatama,Uusimaa,14542,town,0,0,50,0,none,none
+gn:12122452,Kalasatama,Uusimaa,5671,village,0,0,50,0,none,none
+gn:12238466,Vuores,Pirkanmaa,7449,village,0,0,50,0,none,none
+gn:12276940,Latokartano,Uusimaa,9606,village,0,0,50,0,none,none
+gn:12494038,Veikkari,Uusimaa,3784,village,0,0,50,0,none,none
+gn:12541545,Nurmijärven kirkonkylä,Uusimaa,7841,village,0,0,50,0,none,none
+gn:12588898,Lidmalmen,Uusimaa,3406,village,0,0,50,0,none,none
+gn:12599593,Hevossalmi,Uusimaa,1690,village,0,0,50,0,none,none
+gn:12599598,Viikin Tiedepuisto,Uusimaa,1292,village,0,0,50,0,none,none
+gn:12599638,Kallahti,Uusimaa,6854,village,0,0,50,0,none,none
+gn:12599682,Kruunuvuorenranta,Uusimaa,2894,village,0,0,50,0,none,none
+gn:12668896,Vallinoja,Uusimaa,1643,village,0,0,50,0,none,none
+gn:12670127,Viikinranta,Uusimaa,1303,village,0,0,50,0,none,none
+gn:12670130,Grinddal,Uusimaa,1372,village,0,0,50,0,none,none
+gn:12670299,Talinranta,Uusimaa,1115,village,0,0,50,0,none,none
+gn:12698798,Peltola,South Karelia,2165,village,0,0,50,0,none,none
+gn:12698815,Kylpylä,South Karelia,1140,village,0,0,50,0,none,none
+gn:12698996,Karhuvuori,South Karelia,2049,village,0,0,50,0,none,none
+gn:12699171,Tykki,South Karelia,2780,village,0,0,50,0,none,none
+gn:12699408,Alakylä,South Karelia,1769,village,0,0,50,0,none,none
+gn:12704079,Myllymäki,South Karelia,1269,village,0,0,50,0,none,none
+gn:12720771,Laihia,South Karelia,1204,village,0,0,50,0,none,none
+gn:12747032,East Helsinki,Uusimaa,170557,city,0,0,50,0,none,none
+gn:12750227,Kuninkaantammi,Uusimaa,2867,village,0,0,50,0,none,none
+gn:12819626,Kaakinmaa,Pirkanmaa,2911,village,0,0,50,0,none,none
+gn:12820105,Jokipohja,Pirkanmaa,2165,village,0,0,50,0,none,none
+gn:12820118,Nalkala,Pirkanmaa,3542,village,0,0,50,0,none,none
+gn:12820329,Hervantajärvi,Pirkanmaa,1841,village,0,0,50,0,none,none
+gn:12898455,Niemenranta,Pirkanmaa,3345,village,0,0,50,0,none,none
+gn:12898516,Ylä-Pispala,Pirkanmaa,1693,village,0,0,50,0,none,none
+gn:12898521,Santalahti,Pirkanmaa,1529,village,0,0,50,0,none,none
+gn:12898708,Finlayson,Pirkanmaa,1561,village,0,0,50,0,none,none
+gn:12898731,Lapinniemi,Pirkanmaa,1482,village,0,0,50,0,none,none
+gn:13118924,Konepaja,Uusimaa,2500,village,0,0,50,0,none,none
+gn:13118925,Linjat,Uusimaa,9562,village,0,0,50,0,none,none
+gn:13118926,Vattuniemi,Uusimaa,8509,village,0,0,50,0,none,none
+gn:13131989,Kotkavuori,Uusimaa,7695,village,0,0,50,0,none,none
+gn:13131992,Malmin lentokenttä,Uusimaa,2152,village,0,0,50,0,none,none
+gn:13131995,Herttoniemen yritysalue,Uusimaa,1712,village,0,0,50,0,none,none
+gn:13131997,Vanha munkkiniemi,Uusimaa,9280,village,0,0,50,0,none,none
+gn:13131998,Vanha Ruskeasuo,Uusimaa,2798,village,0,0,50,0,none,none
+gn:13132001,Pitäjänmäen yritysalue,Uusimaa,3916,village,0,0,50,0,none,none
+gn:13132007,Espoonlahden keskus,Uusimaa,5359,village,0,0,50,0,none,none
+gn:13132009,Vanha-Nuuksio-Nupuri,Uusimaa,1266,village,0,0,50,0,none,none
+gn:13132010,Vanha-Mankkaa,Uusimaa,4680,village,0,0,50,0,none,none
+gn:13132011,VII kaupunginosa,Southwest Finland,4372,village,0,0,50,0,none,none
+gn:13132012,VI kaupunginosa,Southwest Finland,7475,village,0,0,50,0,none,none
+gn:13132013,I kaupunginosa,Southwest Finland,8101,village,0,0,50,0,none,none
+gn:13132014,III kaupunginosa,Southwest Finland,3492,village,0,0,50,0,none,none
+gn:13132015,Urheilupuisto,Southwest Finland,1131,village,0,0,50,0,none,none
+gn:13132016,Yli-maaria,Southwest Finland,3023,village,0,0,50,0,none,none
+gn:13132020,Tammerkoski,Pirkanmaa,2009,village,0,0,50,0,none,none
+gn:13132021,Amuri A,Pirkanmaa,3073,village,0,0,50,0,none,none
+gn:13132022,Amuri B,Pirkanmaa,2280,village,0,0,50,0,none,none
+gn:13132024,Pyynikinrinne,Pirkanmaa,1767,village,0,0,50,0,none,none
+gn:13132025,Pohjois-Kyttälä,Pirkanmaa,1670,village,0,0,50,0,none,none
+gn:13132026,Etelä-Kyttälä,Pirkanmaa,1729,village,0,0,50,0,none,none
+gn:13132027,Osmonmäki,Pirkanmaa,2086,village,0,0,50,0,none,none
+gn:13132028,Tammela A,Pirkanmaa,3395,village,0,0,50,0,none,none
+gn:13132029,Tammela B,Pirkanmaa,2560,village,0,0,50,0,none,none
+gn:13132030,Tulli,Pirkanmaa,1261,village,0,0,50,0,none,none
+gn:13132031,Ala-Pispala,Pirkanmaa,1059,village,0,0,50,0,none,none
+gn:13132032,Kalevanrinne,Pirkanmaa,3734,village,0,0,50,0,none,none
+gn:13132033,Liisankallio,Pirkanmaa,3393,village,0,0,50,0,none,none
+gn:13132034,Kalevanharju,Pirkanmaa,2282,village,0,0,50,0,none,none
+gn:13132035,Uusikylä,Pirkanmaa,1261,village,0,0,50,0,none,none
+gn:13132038,Hervanta luode,Pirkanmaa,11451,town,0,0,50,0,none,none
+gn:13132039,Hervanta koillinen,Pirkanmaa,4602,village,0,0,50,0,none,none
+gn:13132040,Hervanta lounas,Pirkanmaa,7288,village,0,0,50,0,none,none
+gn:13132041,Hervanta kaakko,Pirkanmaa,1890,village,0,0,50,0,none,none
+gn:13132044,Pokkinen,North Ostrobothnia,2484,village,0,0,50,0,none,none
+gn:13132045,Vaara,North Ostrobothnia,2980,village,0,0,50,0,none,none
+gn:13132049,Vanhatulli,North Ostrobothnia,5095,village,0,0,50,0,none,none
+gn:13132050,Hollihaka,North Ostrobothnia,2716,village,0,0,50,0,none,none
+gn:13132051,Leveri,North Ostrobothnia,2711,village,0,0,50,0,none,none
+gn:13132052,Intiö,North Ostrobothnia,2485,village,0,0,50,0,none,none
+gn:13132053,Mäntylä,North Ostrobothnia,1951,village,0,0,50,0,none,none
+gn:13132055,Limingantulli,North Ostrobothnia,1939,village,0,0,50,0,none,none
+gn:13218250,Siikajoki,North Ostrobothnia,0,village,0,0,50,0,none,none

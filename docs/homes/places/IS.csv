@@ -1,0 +1,36 @@
+place_id,name,region,population,market,verified_homes,dated_listings,shortfall_to_50,recorded_sales,rent_source,price_source
+gn:2627130,Siglufjörður,Northeast,1164,village,0,0,50,0,none,none
+gn:2627309,Sauðárkrókur,Northwest,2614,village,0,0,50,0,none,none
+gn:2628020,Neskaupstaður,East,1481,village,0,0,50,0,none,none
+gn:2629833,Norðurþing,Northeast,3234,village,0,0,50,0,none,none
+gn:2630299,Höfn,East,1690,village,0,0,50,0,none,none
+gn:2632028,Eskifjörður,East,1043,village,0,0,50,0,none,none
+gn:2632132,Egilsstaðir,East,2572,village,0,0,50,0,none,none
+gn:2632287,Dalvík,Northeast,1359,village,0,0,50,0,none,none
+gn:2632428,Reyðarfjörður,East,1368,village,0,0,50,0,none,none
+gn:2633274,Akureyri,Northeast,19219,town,0,0,50,0,none,none
+gn:3412011,Vogar,Southern Peninsula,1029,village,0,0,50,0,none,none
+gn:3412093,Vestmannaeyjar,South,4639,village,0,0,50,0,none,none
+gn:3412589,Þorlákshöfn,South,2037,village,0,0,50,0,none,none
+gn:3412888,Stykkishólmur,West,1200,village,0,0,50,0,none,none
+gn:3413604,Selfoss,South,9000,village,0,0,50,0,none,none
+gn:3413727,Sandgerði,Southern Peninsula,1609,village,0,0,50,0,none,none
+gn:3413829,Reykjavík,Capital Region,118918,city,0,0,50,0,none,none
+gn:3414079,Ólafsvík,West,1010,village,0,0,50,0,none,none
+gn:3414979,Seltjarnarnes,Capital Region,4726,village,0,0,50,0,none,none
+gn:3415021,Mosfellsbær,Capital Region,13715,town,0,0,50,0,none,none
+gn:3415212,Kópavogur,Capital Region,40040,town,0,0,50,0,none,none
+gn:3415496,Keflavík,Southern Peninsula,15930,town,0,0,50,0,none,none
+gn:3415667,Ísafjörður,Westfjords,2736,village,0,0,50,0,none,none
+gn:3415720,Hvolsvöllur,South,1108,village,0,0,50,0,none,none
+gn:3415761,Hveragerði,South,2657,village,0,0,50,0,none,none
+gn:3416706,Hafnarfjörður,Capital Region,31525,town,0,0,50,0,none,none
+gn:3416888,Grindavík,Southern Peninsula,2856,village,0,0,50,0,none,none
+gn:3417079,Garður,Southern Peninsula,1409,village,0,0,50,0,none,none
+gn:3417195,Garðabær,Capital Region,11421,town,0,0,50,0,none,none
+gn:3417972,Álftanes,Capital Region,2484,village,0,0,50,0,none,none
+gn:3418076,Borgarnes,West,1875,village,0,0,50,0,none,none
+gn:3418653,Akranes,West,7411,village,0,0,50,0,none,none
+gn:8643948,Laugar,Northeast,1001,village,0,0,50,0,none,none
+gn:8644037,Reykjanesbær,Southern Peninsula,19724,town,0,0,50,0,none,none
+gn:11258566,Borgarnes,West,1875,village,0,0,50,0,none,none

@@ -1,0 +1,12 @@
+place_id,name,region,population,market,verified_homes,dated_listings,shortfall_to_50,recorded_sales,rent_source,price_source
+gn:3573061,Saint George,Saint George,1896,village,0,0,50,0,none,none
+gn:3573197,Hamilton,Hamilton city,902,village,0,0,50,0,none,none
+gn:8533871,Pembroke Parish,Pembroke,11160,town,0,0,50,0,none,none
+gn:13353864,Devonshire Parish,Devonshire,7330,village,0,0,50,0,none,none
+gn:13353865,Smith's Parish,Smithʼs,5406,village,0,0,50,0,none,none
+gn:13353866,Hamilton Parish,Hamilton,5862,village,0,0,50,0,none,none
+gn:13353867,St George's Parish,Saint Georgeʼs,5659,village,0,0,50,0,none,none
+gn:13353868,Paget Parish,Paget,5702,village,0,0,50,0,none,none
+gn:13353869,Warwick Parish,Warwick,8615,village,0,0,50,0,none,none
+gn:13353870,Southampton Parish,Southampton,6633,village,0,0,50,0,none,none
+gn:13353871,Sandys Parish,Sandys,7653,village,0,0,50,0,none,none

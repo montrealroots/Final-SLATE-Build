@@ -1,0 +1,120 @@
+place_id,name,region,population,market,verified_homes,dated_listings,shortfall_to_50,recorded_sales,rent_source,price_source
+gn:80509,Al Bardīyah,Al Butnan,9149,village,0,0,50,0,none,none
+gn:80635,Mukhaylá,Darnah,1764,village,0,0,50,0,none,none
+gn:81071,Umm ar Rizam,Darnah,8742,village,0,0,50,0,none,none
+gn:81302,Tobruk,Al Butnan,141499,city,0,0,50,0,none,none
+gn:81584,Sūsah,Al Jabal al Akhdar,7285,village,0,0,50,0,none,none
+gn:81604,Qaryat Sulūq,Banghazi,19918,town,0,0,50,0,none,none
+gn:81615,Sulţān,Banghazi,3672,village,0,0,50,0,none,none
+gn:83726,Qirnādah,Al Jabal al Akhdar,4206,village,0,0,50,0,none,none
+gn:83861,Qaşr Lībiyā,Al Jabal al Akhdar,5975,village,0,0,50,0,none,none
+gn:84130,Qaryat ‘Umar al Mukhtār,Al Jabal al Akhdar,8031,village,0,0,50,0,none,none
+gn:84244,Qandūlah,Al Jabal al Akhdar,7760,village,0,0,50,0,none,none
+gn:84257,Qamīnis,Banghazi,8688,village,0,0,50,0,none,none
+gn:85026,Massah,Al Jabal al Akhdar,7831,village,0,0,50,0,none,none
+gn:85074,Martūbah,Darnah,9357,village,0,0,50,0,none,none
+gn:85819,Kambūt,Al Butnan,6973,village,0,0,50,0,none,none
+gn:86002,Jardas al ‘Abīd,Al Marj,6744,village,0,0,50,0,none,none
+gn:86049,Jālū,Al Wahat,13401,town,0,0,50,0,none,none
+gn:87192,Daryānah,Banghazi,7558,village,0,0,50,0,none,none
+gn:87205,Darnah,Darnah,102581,city,0,0,50,0,none,none
+gn:88319,Benghazi,Banghazi,757490,large-city,0,0,50,0,none,none
+gn:88380,Az Zuwaytīnah,Al Wahat,21015,town,0,0,50,0,none,none
+gn:88533,Awjilah,Al Wahat,5125,village,0,0,50,0,none,none
+gn:88562,At Tāj,Al Kufrah,46050,town,0,0,50,0,none,none
+gn:88834,Tūkrah,Al Marj,12593,town,0,0,50,0,none,none
+gn:88835,Al Qubbah,Darnah,24631,town,0,0,50,0,none,none
+gn:88903,Al Marj,Al Marj,85315,town,0,0,50,0,none,none
+gn:88962,Al Jawf,Al Kufrah,42079,town,0,0,50,0,none,none
+gn:88967,Al Jaghbūb,Al Butnan,2768,village,0,0,50,0,none,none
+gn:89053,Qaryat al Bayyāḑah,Al Marj,5538,village,0,0,50,0,none,none
+gn:89055,Al Bayḑā’,Al Jabal al Akhdar,129439,city,0,0,50,0,none,none
+gn:89087,Al Abyār,Al Marj,32563,town,0,0,50,0,none,none
+gn:89090,Al Abraq,Al Jabal al Akhdar,8276,village,0,0,50,0,none,none
+gn:89113,Ajdabiya,Al Wahat,131773,city,0,0,50,0,none,none
+gn:2208425,Zuwarah,An Nuqat al Khams,33887,town,0,0,50,0,none,none
+gn:2208485,Zliten,Misratah,203790,city,0,0,50,0,none,none
+gn:2208518,Zillah,Al Jufrah,10030,town,0,0,50,0,none,none
+gn:2208566,Zawīlah,Murzuq District,4434,village,0,0,50,0,none,none
+gn:2208655,Zalţan,An Nuqat al Khams,14131,town,0,0,50,0,none,none
+gn:2208791,Yafran,Jabal al Gharbi,22680,town,0,0,50,0,none,none
+gn:2208848,Wāzin,Nalut,4715,village,0,0,50,0,none,none
+gn:2209055,Waddān,Al Jufrah,10150,town,0,0,50,0,none,none
+gn:2209662,Umm al Arānib,Murzuq District,10493,town,0,0,50,0,none,none
+gn:2209970,Tījī,Nalut,6905,village,0,0,50,0,none,none
+gn:2210221,Tarhuna,Al Marqab,52420,town,0,0,50,0,none,none
+gn:2210242,Tarāghin,Murzuq District,8167,village,0,0,50,0,none,none
+gn:2210247,Tripoli,Tripoli,1302947,large-city,0,0,50,0,none,none
+gn:2210300,Tamzāwah,Wadi ash Shati',7410,village,0,0,50,0,none,none
+gn:2210394,Tājūrā’,Tripoli,100000,city,0,0,50,0,none,none
+gn:2210554,Sirte,Surt,106705,city,0,0,50,0,none,none
+gn:2210560,Şurmān,Az Zawiyah,77114,town,0,0,50,0,none,none
+gn:2210627,Sūknah,Al Jufrah,12077,town,0,0,50,0,none,none
+gn:2210688,Sīnāwin,Nalut,4059,village,0,0,50,0,none,none
+gn:2211464,Sīdī aş Şayd,Tripoli,9821,village,0,0,50,0,none,none
+gn:2212610,Samnū,Sabha District,4492,village,0,0,50,0,none,none
+gn:2212771,Şabrātah,Az Zawiyah,83398,town,0,0,50,0,none,none
+gn:2212775,Sabha,Sabha District,149329,city,0,0,50,0,none,none
+gn:2212882,Sīdī Bin Zīnah,An Nuqat al Khams,31607,town,0,0,50,0,none,none
+gn:2213371,Qīrah,Wadi ash Shati',6997,village,0,0,50,0,none,none
+gn:2213570,Qaşr Khiyār,Tripoli,16708,town,0,0,50,0,none,none
+gn:2213618,Qaşr Bin Ghashīr,Tripoli,100069,city,0,0,50,0,none,none
+gn:2213695,Qaşr al Qarabūllī,Tripoli,49610,town,0,0,50,0,none,none
+gn:2214433,Nālūt,Nalut,28431,town,0,0,50,0,none,none
+gn:2214603,Murzuk,Murzuq District,30491,town,0,0,50,0,none,none
+gn:2214827,Mizdah,Jabal al Gharbi,16735,town,0,0,50,0,none,none
+gn:2214846,Misratah,Misratah,355657,city,0,0,50,0,none,none
+gn:2215210,Al Burayqah,Al Wahat,31300,town,0,0,50,0,none,none
+gn:2215282,Marādah,Al Wahat,2229,village,0,0,50,0,none,none
+gn:2215758,Kiklah,Jabal al Gharbi,11776,town,0,0,50,0,none,none
+gn:2216155,Kābāw,Nalut,7686,village,0,0,50,0,none,none
+gn:2216349,Janzūr,Al Jafarah,154389,city,0,0,50,0,none,none
+gn:2216432,Jādū,Jabal al Gharbi,12507,town,0,0,50,0,none,none
+gn:2216645,Hūn,Al Jufrah,24431,town,0,0,50,0,none,none
+gn:2216885,Zawiya,Az Zawiyah,186123,city,0,0,50,0,none,none
+gn:2217351,Ghat,Ghat,14630,town,0,0,50,0,none,none
+gn:2217362,Gharyan,Jabal al Gharbi,36110,town,0,0,50,0,none,none
+gn:2217440,Ghadames,Nalut,12096,town,0,0,50,0,none,none
+gn:2217774,Daraj,Nalut,6051,village,0,0,50,0,none,none
+gn:2218475,Bi’r al Ghanam,Az Zawiyah,4182,village,0,0,50,0,none,none
+gn:2218478,Brak,Wadi ash Shati',16200,town,0,0,50,0,none,none
+gn:2218562,Bin Jawwād,Surt,15509,town,0,0,50,0,none,none
+gn:2218761,Barqin,Wadi ash Shati',5902,village,0,0,50,0,none,none
+gn:2218840,Bani Walid,Misratah,45734,town,0,0,50,0,none,none
+gn:2218924,Qaryat al Qī‘ān,Nalut,3797,village,0,0,50,0,none,none
+gn:2218963,Zintan,Jabal al Gharbi,33000,town,0,0,50,0,none,none
+gn:2218970,Az Zāwīyah,Az Zawiyah,200000,city,0,0,50,0,none,none
+gn:2218983,Az Zahrā’,Al Jafarah,25684,town,0,0,50,0,none,none
+gn:2219235,Ubari,Wadi al Hayat,33569,town,0,0,50,0,none,none
+gn:2219356,As Sawānī,Al Jafarah,57069,town,0,0,50,0,none,none
+gn:2219463,Ar Rujbān,Jabal al Gharbi,6419,village,0,0,50,0,none,none
+gn:2219471,Ar Rayāyinah,Jabal al Gharbi,15031,town,0,0,50,0,none,none
+gn:2219563,Āqār,Wadi ash Shati',4832,village,0,0,50,0,none,none
+gn:2219591,An Nāşirīyah,Al Jafarah,20687,town,0,0,50,0,none,none
+gn:2219689,Al ‘Awinat,Ghat,3881,village,0,0,50,0,none,none
+gn:2219701,Al Ajaylat,An Nuqat al Khams,130546,city,0,0,50,0,none,none
+gn:2219736,Al Qawāsim,Jabal al Gharbi,15134,town,0,0,50,0,none,none
+gn:2219739,Al Qaţrūn,Murzuq District,7243,village,0,0,50,0,none,none
+gn:2219812,Al Māyah,Al Jafarah,14203,town,0,0,50,0,none,none
+gn:2219905,Al Khums,Al Marqab,201943,city,0,0,50,0,none,none
+gn:2219918,Al Khaḑrā’,Al Marqab,9521,village,0,0,50,0,none,none
+gn:2219936,Al Jumayl,An Nuqat al Khams,102000,city,0,0,50,0,none,none
+gn:2219960,Al Jadīd,Sabha District,126386,city,0,0,50,0,none,none
+gn:2219994,Al Ḩurshah,Az Zawiyah,81119,town,0,0,50,0,none,none
+gn:2220013,Al Ḩawāmid,Nalut,4558,village,0,0,50,0,none,none
+gn:2220061,Al Ghurayfah,Wadi al Hayat,23449,town,0,0,50,0,none,none
+gn:2220109,Al Barakāt,Ghat,9908,village,0,0,50,0,none,none
+gn:2220139,Al ‘Azīzīyah,Al Jafarah,52404,town,0,0,50,0,none,none
+gn:2220153,Al Aşābi‘ah,Jabal al Gharbi,27713,town,0,0,50,0,none,none
+gn:2220309,Idrī,Wadi ash Shati',4696,village,0,0,50,0,none,none
+gn:2220368,Abū Zayyān,Jabal al Gharbi,14332,town,0,0,50,0,none,none
+gn:7602388,Shahhat,Al Jabal al Akhdar,29206,town,0,0,50,0,none,none
+gn:8354477,Qasr Abu Hadi,Surt,4890,village,0,0,50,0,none,none
+gn:12687304,Al-'Alūaṣ,Al Marqab,17122,town,0,0,50,0,none,none
+gn:12687305,Qarqūzah,Az Zawiyah,17350,town,0,0,50,0,none,none
+gn:12687306,Tāzirbū,Al Kufrah,8085,village,0,0,50,0,none,none
+gn:12687307,Umm Sā'ad,Al Butnan,8614,village,0,0,50,0,none,none
+gn:12687308,Wādī 'Utbah,Murzuq District,16746,town,0,0,50,0,none,none
+gn:12687309,Wardāmah,Al Jabal al Akhdar,11058,town,0,0,50,0,none,none
+gn:12687312,Ar-Raḥaībāt,Jabal al Gharbi,9989,village,0,0,50,0,none,none
+gn:12687313,Msalātah,Al Marqab,73907,town,0,0,50,0,none,none

@@ -1,0 +1,7 @@
+place_id,name,region,population,market,verified_homes,dated_listings,shortfall_to_50,recorded_sales,rent_source,price_source
+gn:7267949,San Jose Village,Tinian,15000,town,0,0,50,0,none,none
+gn:7828758,Saipan,Saipan,48220,town,0,0,50,0,none,none
+gn:13527050,Garapan,Saipan,3096,village,0,0,50,0,none,none
+gn:13645573,Chalan Laulau Village,Saipan,1087,village,0,0,50,0,none,none
+gn:13645574,Chalan Piao village,Saipan,1338,village,0,0,50,0,none,none
+gn:13645575,Fananganan village,Saipan,1129,village,0,0,50,0,none,none

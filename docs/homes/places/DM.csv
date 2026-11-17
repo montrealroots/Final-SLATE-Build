@@ -1,0 +1,19 @@
+place_id,name,region,population,market,verified_homes,dated_listings,shortfall_to_50,recorded_sales,rent_source,price_source
+gn:3575565,Woodford Hill,Saint Andrew Parish,1063,village,0,0,50,0,none,none
+gn:3575568,Wesley,Saint Andrew Parish,1933,village,0,0,50,0,none,none
+gn:3575602,Soufrière,Saint Mark Parish,1416,village,0,0,50,0,none,none
+gn:3575612,Salisbury,Saint Joseph Parish,1413,village,0,0,50,0,none,none
+gn:3575624,Saint Joseph,Saint Joseph Parish,2184,village,0,0,50,0,none,none
+gn:3575635,Roseau,Saint George Parish,16571,town,0,0,50,0,none,none
+gn:3575639,Rosalie,Saint David Parish,802,village,0,0,50,0,none,none
+gn:3575654,Portsmouth,Saint John Parish,3633,village,0,0,50,0,none,none
+gn:3575656,Pont Cassé,Saint Paul Parish,702,village,0,0,50,0,none,none
+gn:3575660,Pointe Michel,Saint Luke Parish,1202,village,0,0,50,0,none,none
+gn:3575717,Massacre,Saint Paul Parish,1552,village,0,0,50,0,none,none
+gn:3575721,Marigot,Saint Andrew Parish,2669,village,0,0,50,0,none,none
+gn:3575733,Mahaut,Saint Paul Parish,2369,village,0,0,50,0,none,none
+gn:3575755,La Plaine,Saint Patrick Parish,1332,village,0,0,50,0,none,none
+gn:3575857,Colihaut,Saint Peter Parish,890,village,0,0,50,0,none,none
+gn:3575870,Castle Bruce,Saint David Parish,1387,village,0,0,50,0,none,none
+gn:3575882,Calibishie,Saint Andrew Parish,1020,village,0,0,50,0,none,none
+gn:3575899,Berekua,Saint Patrick Parish,2608,village,0,0,50,0,none,none

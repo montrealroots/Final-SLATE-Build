@@ -1,0 +1,75 @@
+place_id,name,region,population,market,verified_homes,dated_listings,shortfall_to_50,recorded_sales,rent_source,price_source
+gn:2437731,Birnin Gaouré,Dosso Region,19529,town,0,0,50,0,none,none
+gn:2437732,Birni N Konni,Tahoua Region,85494,town,0,0,50,0,none,none
+gn:2437798,Zinder,Zinder Region,318874,city,0,0,50,0,none,none
+gn:2437934,Youri Kourtéré,Tillabéri Region,31598,town,0,0,50,0,none,none
+gn:2438409,Torodi,Tillabéri Region,15988,town,0,0,50,0,none,none
+gn:2438675,Tillia,Tahoua Region,4598,village,0,0,50,0,none,none
+gn:2438678,Tillabéri,Tillabéri Region,30822,town,0,0,50,0,none,none
+gn:2438774,Tibiri,Maradi Region,34529,town,0,0,50,0,none,none
+gn:2438775,Tibiri,Dosso Region,8702,village,0,0,50,0,none,none
+gn:2438823,Tessaoua,Maradi Region,58750,town,0,0,50,0,none,none
+gn:2438855,Téra,Tillabéri Region,39410,town,0,0,50,0,none,none
+gn:2438974,Tchin Tabaradèn,Tahoua Region,20704,town,0,0,50,0,none,none
+gn:2439078,Tassara,Tahoua Region,2659,village,0,0,50,0,none,none
+gn:2439085,Tasker,Zinder Region,1587,village,0,0,50,0,none,none
+gn:2439155,Tanout,Zinder Region,27527,town,0,0,50,0,none,none
+gn:2439310,Takiéta,Zinder Region,11577,town,0,0,50,0,none,none
+gn:2439376,Tahoua,Tahoua Region,159468,city,0,0,50,0,none,none
+gn:2439812,Say,Tillabéri Region,18333,town,0,0,50,0,none,none
+gn:2440371,Ouallam,Tillabéri Region,14338,town,0,0,50,0,none,none
+gn:2440485,Niamey,Niamey,1323691,large-city,0,0,50,0,none,none
+gn:2440495,Nguigmi,Diffa,32035,town,0,0,50,0,none,none
+gn:2440699,Ngourti,Diffa,2202,village,0,0,50,0,none,none
+gn:2440921,Mirriah,Zinder Region,38446,town,0,0,50,0,none,none
+gn:2440977,Méhana,Tillabéri Region,40593,town,0,0,50,0,none,none
+gn:2441194,Mayahi,Maradi Region,22183,town,0,0,50,0,none,none
+gn:2441217,Matamey,Zinder Region,37374,town,0,0,50,0,none,none
+gn:2441291,Maradi,Maradi Region,361702,city,0,0,50,0,none,none
+gn:2441375,Malbaza,Tahoua Region,12711,town,0,0,50,0,none,none
+gn:2441447,Maïné Soroa,Diffa,17778,town,0,0,50,0,none,none
+gn:2441482,Magaria,Zinder Region,35091,town,0,0,50,0,none,none
+gn:2441526,Madarounfa,Maradi Region,16538,town,0,0,50,0,none,none
+gn:2441530,Madaoua,Tahoua Region,37858,town,0,0,50,0,none,none
+gn:2441632,Loga,Dosso Region,9164,village,0,0,50,0,none,none
+gn:2442248,Kollo,Tillabéri Region,19957,town,0,0,50,0,none,none
+gn:2442478,Keïta,Tahoua Region,14022,town,0,0,50,0,none,none
+gn:2442705,Kantché,Zinder Region,0,village,0,0,50,0,none,none
+gn:2443192,I-n-Gall,Agadez,10609,town,0,0,50,0,none,none
+gn:2443304,Illéla,Tahoua Region,30439,town,0,0,50,0,none,none
+gn:2443346,Iferouâne,Agadez,3364,village,0,0,50,0,none,none
+gn:2443623,Guidan Roumdji,Maradi Region,23718,town,0,0,50,0,none,none
+gn:2444219,Gouré,Zinder Region,24752,town,0,0,50,0,none,none
+gn:2444298,Goudoumaria,Diffa,6289,village,0,0,50,0,none,none
+gn:2444329,Gothèye,Tillabéri Region,10166,town,0,0,50,0,none,none
+gn:2444479,Gazaoua,Maradi Region,19860,town,0,0,50,0,none,none
+gn:2444489,Gaya,Dosso Region,61533,town,0,0,50,0,none,none
+gn:2444995,Filingué,Tillabéri Region,16544,town,0,0,50,0,none,none
+gn:2445148,Falmey,Dosso Region,8653,village,0,0,50,0,none,none
+gn:2445190,Fachi,Agadez,2215,village,0,0,50,0,none,none
+gn:2445399,Dungas,Zinder Region,13351,town,0,0,50,0,none,none
+gn:2445488,Dosso,Dosso Region,79406,town,0,0,50,0,none,none
+gn:2445553,Dogondoutchi,Dosso Region,50037,town,0,0,50,0,none,none
+gn:2445645,Dioundiou,Dosso Region,8193,village,0,0,50,0,none,none
+gn:2445704,Diffa,Diffa,54082,town,0,0,50,0,none,none
+gn:2446267,Dakoro,Maradi Region,39645,town,0,0,50,0,none,none
+gn:2446466,Bouza,Tahoua Region,14032,town,0,0,50,0,none,none
+gn:2446613,Bosso,Diffa,6451,village,0,0,50,0,none,none
+gn:2446796,Bilma,Agadez,5435,village,0,0,50,0,none,none
+gn:2446878,Bélbéji,Zinder Region,8540,village,0,0,50,0,none,none
+gn:2447078,Bankilaré,Tillabéri Region,5347,village,0,0,50,0,none,none
+gn:2447132,Bani Bangou,Tillabéri Region,9187,village,0,0,50,0,none,none
+gn:2447223,Baléyara,Tillabéri Region,21740,town,0,0,50,0,none,none
+gn:2447291,Bagaroua,Tahoua Region,12853,town,0,0,50,0,none,none
+gn:2447416,Ayorou,Tillabéri Region,26290,town,0,0,50,0,none,none
+gn:2447513,Arlit,Agadez,106448,city,0,0,50,0,none,none
+gn:2447938,Alaghsas,Agadez,88561,town,0,0,50,0,none,none
+gn:2448024,Aguié,Maradi Region,23545,town,0,0,50,0,none,none
+gn:2448085,Agadez,Agadez,149549,city,0,0,50,0,none,none
+gn:2448150,Adérbissinat,Agadez,6323,village,0,0,50,0,none,none
+gn:2448245,Abalak,Tahoua Region,29561,town,0,0,50,0,none,none
+gn:2448246,Abala,Tillabéri Region,14979,town,0,0,50,0,none,none
+gn:2596789,Damagaram Takèr,Zinder Region,4592,village,0,0,50,0,none,none
+gn:6679036,I-n-Ouagar,Tahoua Region,4000,village,0,0,50,0,none,none
+gn:8624379,Tchirozérine,Agadez,12953,town,0,0,50,0,none,none
+gn:12189069,Bermo,Maradi Region,2702,village,0,0,50,0,none,none

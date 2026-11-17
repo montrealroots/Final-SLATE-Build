@@ -1,0 +1,1113 @@
+place_id,name,region,population,market,verified_homes,dated_listings,shortfall_to_50,recorded_sales,rent_source,price_source
+gn:713929,Záhony,Szabolcs-Szatmár-Bereg,4807,village,0,0,50,0,none,none
+gn:713932,Zagyvarékas,Jász-Nagykun-Szolnok,3700,village,0,0,50,0,none,none
+gn:714073,Vésztő,Bekes County,7494,village,0,0,50,0,none,none
+gn:714081,Verpelét,Heves County,4016,village,0,0,50,0,none,none
+gn:714188,Vásárosnamény,Szabolcs-Szatmár-Bereg,9310,village,0,0,50,0,none,none
+gn:714253,Varbó,Borsod-Abaúj-Zemplén,1013,village,0,0,50,0,none,none
+gn:714265,Vámospércs,Hajdú-Bihar,5451,village,0,0,50,0,none,none
+gn:714296,Vaja,Szabolcs-Szatmár-Bereg,3774,village,0,0,50,0,none,none
+gn:714416,Újszentiván,Csongrád,1578,village,0,0,50,0,none,none
+gn:714419,Újszeged,,25300,town,0,0,50,0,none,none
+gn:714421,Újszász,Jász-Nagykun-Szolnok,6855,village,0,0,50,0,none,none
+gn:714449,Újkígyós,Bekes County,5602,village,0,0,50,0,none,none
+gn:714464,Újfehértó,Szabolcs-Szatmár-Bereg,13542,town,0,0,50,0,none,none
+gn:714488,Tyukod,Szabolcs-Szatmár-Bereg,2188,village,0,0,50,0,none,none
+gn:714490,Tuzsér,Szabolcs-Szatmár-Bereg,3332,village,0,0,50,0,none,none
+gn:714504,Túrkeve,Jász-Nagykun-Szolnok,10016,town,0,0,50,0,none,none
+gn:714518,Tunyogmatolcs,Szabolcs-Szatmár-Bereg,2629,village,0,0,50,0,none,none
+gn:714548,Tótkomlós,Bekes County,6497,village,0,0,50,0,none,none
+gn:714570,Tószeg,Jász-Nagykun-Szolnok,4621,village,0,0,50,0,none,none
+gn:714581,Törökszentmiklós,Jász-Nagykun-Szolnok,22770,town,0,0,50,0,none,none
+gn:714593,Tornyospálca,Szabolcs-Szatmár-Bereg,2725,village,0,0,50,0,none,none
+gn:714623,Tömörkény,Csongrád,1944,village,0,0,50,0,none,none
+gn:714642,Tolcsva,Borsod-Abaúj-Zemplén,1860,village,0,0,50,0,none,none
+gn:714659,Tokaj,Borsod-Abaúj-Zemplén,4155,village,0,0,50,0,none,none
+gn:714692,Tiszavasvári,Szabolcs-Szatmár-Bereg,13631,town,0,0,50,0,none,none
+gn:714697,Tiszaújváros,Borsod-Abaúj-Zemplén,17295,town,0,0,50,0,none,none
+gn:714714,Tiszaszentimre,Jász-Nagykun-Szolnok,2340,village,0,0,50,0,none,none
+gn:714718,Tiszasüly,Jász-Nagykun-Szolnok,1737,village,0,0,50,0,none,none
+gn:714721,Tiszaroff,Jász-Nagykun-Szolnok,1874,village,0,0,50,0,none,none
+gn:714724,Tiszapüspöki,Jász-Nagykun-Szolnok,2096,village,0,0,50,0,none,none
+gn:714734,Tiszanána,Heves County,2607,village,0,0,50,0,none,none
+gn:714736,Tiszanagyfalu,Szabolcs-Szatmár-Bereg,2010,village,0,0,50,0,none,none
+gn:714739,Tiszalúc,Borsod-Abaúj-Zemplén,5551,village,0,0,50,0,none,none
+gn:714742,Tiszalök,Szabolcs-Szatmár-Bereg,6122,village,0,0,50,0,none,none
+gn:714751,Tiszakeszi,Borsod-Abaúj-Zemplén,2692,village,0,0,50,0,none,none
+gn:714754,Tiszakécske,Bács-Kiskun,11745,town,0,0,50,0,none,none
+gn:714756,Tiszakarád,Borsod-Abaúj-Zemplén,2522,village,0,0,50,0,none,none
+gn:714772,Tiszafüred,Jász-Nagykun-Szolnok,10872,town,0,0,50,0,none,none
+gn:714774,Tiszaföldvár,Jász-Nagykun-Szolnok,11873,town,0,0,50,0,none,none
+gn:714776,Tiszaeszlár,Szabolcs-Szatmár-Bereg,2857,village,0,0,50,0,none,none
+gn:714779,Tiszadob,Szabolcs-Szatmár-Bereg,3311,village,0,0,50,0,none,none
+gn:714782,Tiszadada,Szabolcs-Szatmár-Bereg,2505,village,0,0,50,0,none,none
+gn:714785,Tiszacsege,Hajdú-Bihar,4961,village,0,0,50,0,none,none
+gn:714787,Tiszabura,Jász-Nagykun-Szolnok,2730,village,0,0,50,0,none,none
+gn:714789,Tiszabő,Jász-Nagykun-Szolnok,2000,village,0,0,50,0,none,none
+gn:714791,Tiszabezdéd,Szabolcs-Szatmár-Bereg,2054,village,0,0,50,0,none,none
+gn:714793,Tiszabercel,Szabolcs-Szatmár-Bereg,2047,village,0,0,50,0,none,none
+gn:714794,Tiszabecs,Szabolcs-Szatmár-Bereg,1055,village,0,0,50,0,none,none
+gn:714914,Téglás,Hajdú-Bihar,6285,village,0,0,50,0,none,none
+gn:714938,Tarpa,Szabolcs-Szatmár-Bereg,2331,village,0,0,50,0,none,none
+gn:714948,Tarnaörs,Heves County,1840,village,0,0,50,0,none,none
+gn:714951,Tarnalelesz,Heves County,1805,village,0,0,50,0,none,none
+gn:714969,Tard,Borsod-Abaúj-Zemplén,1008,village,0,0,50,0,none,none
+gn:714973,Tarcal,Borsod-Abaúj-Zemplén,3283,village,0,0,50,0,none,none
+gn:715001,Tállya,Borsod-Abaúj-Zemplén,2169,village,0,0,50,0,none,none
+gn:715005,Taktaszada,Borsod-Abaúj-Zemplén,2067,village,0,0,50,0,none,none
+gn:715009,Taktaharkány,Borsod-Abaúj-Zemplén,4076,village,0,0,50,0,none,none
+gn:715126,Szolnok,Jász-Nagykun-Szolnok,71285,town,0,0,50,0,none,none
+gn:715199,Szirmabesenyő,Borsod-Abaúj-Zemplén,4697,village,0,0,50,0,none,none
+gn:715200,Szirma,Borsod-Abaúj-Zemplén,4235,village,0,0,50,0,none,none
+gn:715217,Szilvásvárad,Heves County,1885,village,0,0,50,0,none,none
+gn:715259,Szikszó,Borsod-Abaúj-Zemplén,5963,village,0,0,50,0,none,none
+gn:715272,Szihalom,Heves County,2120,village,0,0,50,0,none,none
+gn:715302,Szerencs,Borsod-Abaúj-Zemplén,10046,town,0,0,50,0,none,none
+gn:715332,Szentistván,Borsod-Abaúj-Zemplén,2629,village,0,0,50,0,none,none
+gn:715337,Szentes,Csongrád,27898,town,0,0,50,0,none,none
+gn:715355,Szendrő,Borsod-Abaúj-Zemplén,4284,village,0,0,50,0,none,none
+gn:715393,Székkutas,Csongrád,2586,village,0,0,50,0,none,none
+gn:715415,Szegvár,Csongrád,4385,village,0,0,50,0,none,none
+gn:715422,Szeghalom,Bekes County,9985,village,0,0,50,0,none,none
+gn:715429,Szeged,Csongrád,160766,city,0,0,50,0,none,none
+gn:715449,Szatymaz,Csongrád,4187,village,0,0,50,0,none,none
+gn:715466,Szarvas,Bekes County,18170,town,0,0,50,0,none,none
+gn:715518,Szamosszeg,Szabolcs-Szatmár-Bereg,2084,village,0,0,50,0,none,none
+gn:715558,Szakoly,Szabolcs-Szatmár-Bereg,2925,village,0,0,50,0,none,none
+gn:715570,Szajol,Jász-Nagykun-Szolnok,3991,village,0,0,50,0,none,none
+gn:715614,Szabadkígyós,Bekes County,2959,village,0,0,50,0,none,none
+gn:715681,Sóstóhegy,Szabolcs-Szatmár-Bereg,4097,village,0,0,50,0,none,none
+gn:715684,Sóstófürdő,Szabolcs-Szatmár-Bereg,1760,village,0,0,50,0,none,none
+gn:715763,Sirok,Heves County,2068,village,0,0,50,0,none,none
+gn:715839,Sátoraljaújhely,Borsod-Abaúj-Zemplén,18052,town,0,0,50,0,none,none
+gn:715842,Sáta,Borsod-Abaúj-Zemplén,1013,village,0,0,50,0,none,none
+gn:715862,Sárrétudvari,Hajdú-Bihar,3023,village,0,0,50,0,none,none
+gn:715867,Sárospatak,Borsod-Abaúj-Zemplén,11886,town,0,0,50,0,none,none
+gn:715888,Sarkad,Bekes County,10698,town,0,0,50,0,none,none
+gn:715904,Sáránd,Hajdú-Bihar,2322,village,0,0,50,0,none,none
+gn:715911,Sáp,Hajdú-Bihar,1046,village,0,0,50,0,none,none
+gn:715924,Sándorfalva,Csongrád,7738,village,0,0,50,0,none,none
+gn:715930,Sály,Borsod-Abaúj-Zemplén,2174,village,0,0,50,0,none,none
+gn:715939,Sajóvámos,Borsod-Abaúj-Zemplén,2206,village,0,0,50,0,none,none
+gn:715941,Sajószöged,Borsod-Abaúj-Zemplén,2289,village,0,0,50,0,none,none
+gn:715945,Sajószentpéter,Borsod-Abaúj-Zemplén,11679,town,0,0,50,0,none,none
+gn:715949,Sajópetri,Borsod-Abaúj-Zemplén,1439,village,0,0,50,0,none,none
+gn:715951,Sajóörös,Borsod-Abaúj-Zemplén,1180,village,0,0,50,0,none,none
+gn:715958,Sajólád,Borsod-Abaúj-Zemplén,3001,village,0,0,50,0,none,none
+gn:715962,Sajókaza,Borsod-Abaúj-Zemplén,3494,village,0,0,50,0,none,none
+gn:715970,Sajóbábony,Borsod-Abaúj-Zemplén,3113,village,0,0,50,0,none,none
+gn:715989,Rudabánya,Borsod-Abaúj-Zemplén,2941,village,0,0,50,0,none,none
+gn:715990,Rozsrétszőlő,Szabolcs-Szatmár-Bereg,1234,village,0,0,50,0,none,none
+gn:716028,Röszke,Csongrád,3241,village,0,0,50,0,none,none
+gn:716081,Ricse,Borsod-Abaúj-Zemplén,1907,village,0,0,50,0,none,none
+gn:716151,Recsk,Heves County,2992,village,0,0,50,0,none,none
+gn:716186,Rákócziújfalu,Jász-Nagykun-Szolnok,2012,village,0,0,50,0,none,none
+gn:716197,Rákóczifalva,Jász-Nagykun-Szolnok,5481,village,0,0,50,0,none,none
+gn:716204,Rakamaz,Szabolcs-Szatmár-Bereg,5197,village,0,0,50,0,none,none
+gn:716247,Putnok,Borsod-Abaúj-Zemplén,7501,village,0,0,50,0,none,none
+gn:716282,Pusztaföldvár,Bekes County,1887,village,0,0,50,0,none,none
+gn:716301,Püspökladány,Hajdú-Bihar,15990,town,0,0,50,0,none,none
+gn:716317,Prügy,Borsod-Abaúj-Zemplén,2568,village,0,0,50,0,none,none
+gn:716339,Poroszló,Heves County,3030,village,0,0,50,0,none,none
+gn:716343,Porcsalma,Szabolcs-Szatmár-Bereg,2770,village,0,0,50,0,none,none
+gn:716356,Polgár,Hajdú-Bihar,8347,village,0,0,50,0,none,none
+gn:716372,Pocsaj,Hajdú-Bihar,2709,village,0,0,50,0,none,none
+gn:716437,Petneháza,Szabolcs-Szatmár-Bereg,1993,village,0,0,50,0,none,none
+gn:716439,Pétervására,Heves County,2568,village,0,0,50,0,none,none
+gn:716501,Pély,Heves County,1359,village,0,0,50,0,none,none
+gn:716526,Pátroha,Szabolcs-Szatmár-Bereg,2976,village,0,0,50,0,none,none
+gn:716542,Paszab,Szabolcs-Szatmár-Bereg,1177,village,0,0,50,0,none,none
+gn:716553,Parasznya,Borsod-Abaúj-Zemplén,1086,village,0,0,50,0,none,none
+gn:716559,Parád,Heves County,2111,village,0,0,50,0,none,none
+gn:716605,Pap,Szabolcs-Szatmár-Bereg,1705,village,0,0,50,0,none,none
+gn:716656,Pácin,Borsod-Abaúj-Zemplén,1398,village,0,0,50,0,none,none
+gn:716671,Ózd,Borsod-Abaúj-Zemplén,30056,town,0,0,50,0,none,none
+gn:716706,Ostoros,Heves County,2362,village,0,0,50,0,none,none
+gn:716736,Orosháza,Bekes County,31373,town,0,0,50,0,none,none
+gn:716746,Ormosbánya,Borsod-Abaúj-Zemplén,1463,village,0,0,50,0,none,none
+gn:716790,Őr,Szabolcs-Szatmár-Bereg,1380,village,0,0,50,0,none,none
+gn:716791,Ópusztaszer,Csongrád,2260,village,0,0,50,0,none,none
+gn:716793,Ópályi,Szabolcs-Szatmár-Bereg,3035,village,0,0,50,0,none,none
+gn:716796,Ónod,Borsod-Abaúj-Zemplén,2461,village,0,0,50,0,none,none
+gn:716799,Onga,Borsod-Abaúj-Zemplén,4697,village,0,0,50,0,none,none
+gn:716828,Olaszliszka,Borsod-Abaúj-Zemplén,1799,village,0,0,50,0,none,none
+gn:716844,Ököritófülpös,Szabolcs-Szatmár-Bereg,2034,village,0,0,50,0,none,none
+gn:716853,Okány,Bekes County,2930,village,0,0,50,0,none,none
+gn:716860,Ófehértó,Szabolcs-Szatmár-Bereg,2727,village,0,0,50,0,none,none
+gn:716864,Öcsöd,Jász-Nagykun-Szolnok,3730,village,0,0,50,0,none,none
+gn:716889,Nyírvasvári,Szabolcs-Szatmár-Bereg,1971,village,0,0,50,0,none,none
+gn:716893,Nyírtelek,Szabolcs-Szatmár-Bereg,7138,village,0,0,50,0,none,none
+gn:716894,Nyírtass,Szabolcs-Szatmár-Bereg,2194,village,0,0,50,0,none,none
+gn:716899,Nyírpazony,Szabolcs-Szatmár-Bereg,3162,village,0,0,50,0,none,none
+gn:716903,Nyírmihálydi,Szabolcs-Szatmár-Bereg,1997,village,0,0,50,0,none,none
+gn:716905,Nyírmeggyes,Szabolcs-Szatmár-Bereg,2757,village,0,0,50,0,none,none
+gn:716906,Nyírmártonfalva,Hajdú-Bihar,2130,village,0,0,50,0,none,none
+gn:716908,Nyírmada,Szabolcs-Szatmár-Bereg,4743,village,0,0,50,0,none,none
+gn:716909,Nyírlugos,Szabolcs-Szatmár-Bereg,3004,village,0,0,50,0,none,none
+gn:716913,Nyírkarász,Szabolcs-Szatmár-Bereg,2395,village,0,0,50,0,none,none
+gn:716924,Nyírgyulaj,Szabolcs-Szatmár-Bereg,2130,village,0,0,50,0,none,none
+gn:716935,Nyíregyháza,Szabolcs-Szatmár-Bereg,117689,city,0,0,50,0,none,none
+gn:716941,Nyírcsaholy,Szabolcs-Szatmár-Bereg,2251,village,0,0,50,0,none,none
+gn:716943,Nyírbogdány,Szabolcs-Szatmár-Bereg,3039,village,0,0,50,0,none,none
+gn:716945,Nyírbogát,Szabolcs-Szatmár-Bereg,3336,village,0,0,50,0,none,none
+gn:716946,Nyírbéltek,Szabolcs-Szatmár-Bereg,3021,village,0,0,50,0,none,none
+gn:716948,Nyírbátor,Szabolcs-Szatmár-Bereg,13434,town,0,0,50,0,none,none
+gn:716951,Nyíradony,Hajdú-Bihar,7827,village,0,0,50,0,none,none
+gn:716952,Nyíracsád,Hajdú-Bihar,4047,village,0,0,50,0,none,none
+gn:716954,Nyírábrány,Hajdú-Bihar,3940,village,0,0,50,0,none,none
+gn:716968,Nyékládháza,Borsod-Abaúj-Zemplén,4939,village,0,0,50,0,none,none
+gn:717042,Napkor,Szabolcs-Szatmár-Bereg,3786,village,0,0,50,0,none,none
+gn:717130,Nagyszénás,Bekes County,5617,village,0,0,50,0,none,none
+gn:717172,Nagyrábé,Hajdú-Bihar,2380,village,0,0,50,0,none,none
+gn:717281,Nagykálló,Szabolcs-Szatmár-Bereg,10796,town,0,0,50,0,none,none
+gn:717345,Nagyhalász,Szabolcs-Szatmár-Bereg,5924,village,0,0,50,0,none,none
+gn:717359,Nagyfüged,Heves County,1615,village,0,0,50,0,none,none
+gn:717397,Nagyecsed,Szabolcs-Szatmár-Bereg,6919,village,0,0,50,0,none,none
+gn:717400,Nagydobos,Szabolcs-Szatmár-Bereg,2282,village,0,0,50,0,none,none
+gn:717406,Nagycserkesz,Szabolcs-Szatmár-Bereg,1907,village,0,0,50,0,none,none
+gn:717449,Nádudvar,Hajdú-Bihar,9135,village,0,0,50,0,none,none
+gn:717497,Múcsony,Borsod-Abaúj-Zemplén,2631,village,0,0,50,0,none,none
+gn:717521,Monostorpályi,Hajdú-Bihar,2221,village,0,0,50,0,none,none
+gn:717530,Monok,Borsod-Abaúj-Zemplén,1786,village,0,0,50,0,none,none
+gn:717582,Miskolc,Borsod-Abaúj-Zemplén,154521,city,0,0,50,0,none,none
+gn:717591,Mindszent,Csongrád,7243,village,0,0,50,0,none,none
+gn:717616,Mikepércs,Hajdú-Bihar,3430,village,0,0,50,0,none,none
+gn:717632,Mezőzombor,Borsod-Abaúj-Zemplén,2549,village,0,0,50,0,none,none
+gn:717635,Mezőtúr,Jász-Nagykun-Szolnok,19168,town,0,0,50,0,none,none
+gn:717652,Mezőkövesd,Borsod-Abaúj-Zemplén,17701,town,0,0,50,0,none,none
+gn:717656,Mezőkovácsháza,Bekes County,6877,village,0,0,50,0,none,none
+gn:717658,Mezőkeresztes,Borsod-Abaúj-Zemplén,4116,village,0,0,50,0,none,none
+gn:717662,Mezőhegyes,Bekes County,6220,village,0,0,50,0,none,none
+gn:717667,Mezőcsát,Borsod-Abaúj-Zemplén,6519,village,0,0,50,0,none,none
+gn:717669,Mezőberény,Bekes County,11306,town,0,0,50,0,none,none
+gn:717693,Mérk,Szabolcs-Szatmár-Bereg,2335,village,0,0,50,0,none,none
+gn:717721,Méhkerék,Bekes County,2274,village,0,0,50,0,none,none
+gn:717726,Megyaszó,Borsod-Abaúj-Zemplén,3072,village,0,0,50,0,none,none
+gn:717741,Medgyesegyháza,Bekes County,4037,village,0,0,50,0,none,none
+gn:717758,Mátraderecske,Heves County,2232,village,0,0,50,0,none,none
+gn:717771,Mátészalka,Szabolcs-Szatmár-Bereg,18718,town,0,0,50,0,none,none
+gn:717805,Maroslele,Csongrád,2157,village,0,0,50,0,none,none
+gn:717825,Máriapócs,Szabolcs-Szatmár-Bereg,2182,village,0,0,50,0,none,none
+gn:717853,Mándok,Szabolcs-Szatmár-Bereg,4566,village,0,0,50,0,none,none
+gn:717861,Mályi,Borsod-Abaúj-Zemplén,4128,village,0,0,50,0,none,none
+gn:717902,Makó,Csongrád,25135,town,0,0,50,0,none,none
+gn:717904,Maklár,Heves County,2340,village,0,0,50,0,none,none
+gn:717943,Magyarbánhegyes,Bekes County,2634,village,0,0,50,0,none,none
+gn:717980,Mád,Borsod-Abaúj-Zemplén,2589,village,0,0,50,0,none,none
+gn:718060,Lőkösháza,Bekes County,2017,village,0,0,50,0,none,none
+gn:718108,Levelek,Szabolcs-Szatmár-Bereg,2948,village,0,0,50,0,none,none
+gn:718113,Létavértes,Hajdú-Bihar,7157,village,0,0,50,0,none,none
+gn:718292,Kurityán,Borsod-Abaúj-Zemplén,1433,village,0,0,50,0,none,none
+gn:718312,Kunszentmárton,Jász-Nagykun-Szolnok,9606,village,0,0,50,0,none,none
+gn:718315,Kunmadaras,Jász-Nagykun-Szolnok,5826,village,0,0,50,0,none,none
+gn:718321,Kunhegyes,Jász-Nagykun-Szolnok,8462,village,0,0,50,0,none,none
+gn:718334,Kunágota,Bekes County,2951,village,0,0,50,0,none,none
+gn:718480,Kótaj,Szabolcs-Szatmár-Bereg,4553,village,0,0,50,0,none,none
+gn:718516,Köröstarcsa,Bekes County,2786,village,0,0,50,0,none,none
+gn:718528,Körösladány,Bekes County,5006,village,0,0,50,0,none,none
+gn:718602,Konyár,Hajdú-Bihar,2257,village,0,0,50,0,none,none
+gn:718615,Kondoros,Bekes County,5793,village,0,0,50,0,none,none
+gn:718618,Kompolt,Heves County,2166,village,0,0,50,0,none,none
+gn:718637,Komádi,Hajdú-Bihar,6091,village,0,0,50,0,none,none
+gn:718699,Kocsord,Szabolcs-Szatmár-Bereg,3054,village,0,0,50,0,none,none
+gn:718723,Kiszombor,Csongrád,4131,village,0,0,50,0,none,none
+gn:718739,Kisvárda,Szabolcs-Szatmár-Bereg,18190,town,0,0,50,0,none,none
+gn:718744,Kisújszállás,Jász-Nagykun-Szolnok,12661,town,0,0,50,0,none,none
+gn:718754,Kistokaj,Borsod-Abaúj-Zemplén,2464,village,0,0,50,0,none,none
+gn:718897,Kisléta,Szabolcs-Szatmár-Bereg,1944,village,0,0,50,0,none,none
+gn:718911,Kisköre,Heves County,3038,village,0,0,50,0,none,none
+gn:718956,Kisgyőr,Borsod-Abaúj-Zemplén,1570,village,0,0,50,0,none,none
+gn:719093,Kevermes,Bekes County,2401,village,0,0,50,0,none,none
+gn:719126,Kétegyháza,Bekes County,4331,village,0,0,50,0,none,none
+gn:719211,Kerecsend,Heves County,2217,village,0,0,50,0,none,none
+gn:719232,Kengyel,Jász-Nagykun-Szolnok,4299,village,0,0,50,0,none,none
+gn:719252,Kenderes,Jász-Nagykun-Szolnok,5243,village,0,0,50,0,none,none
+gn:719260,Kemecse,Szabolcs-Szatmár-Bereg,5029,village,0,0,50,0,none,none
+gn:719280,Kék,Szabolcs-Szatmár-Bereg,2044,village,0,0,50,0,none,none
+gn:719311,Kazincbarcika,Borsod-Abaúj-Zemplén,32396,town,0,0,50,0,none,none
+gn:719346,Kaszaper,Bekes County,2063,village,0,0,50,0,none,none
+gn:719396,Karcsa,Borsod-Abaúj-Zemplén,1984,village,0,0,50,0,none,none
+gn:719404,Karcag,Jász-Nagykun-Szolnok,22370,town,0,0,50,0,none,none
+gn:719419,Karácsond,Heves County,3132,village,0,0,50,0,none,none
+gn:719466,Kántorjánosi,Szabolcs-Szatmár-Bereg,2244,village,0,0,50,0,none,none
+gn:719489,Kálmánháza,Szabolcs-Szatmár-Bereg,2086,village,0,0,50,0,none,none
+gn:719493,Kállósemjén,Szabolcs-Szatmár-Bereg,3968,village,0,0,50,0,none,none
+gn:719511,Kál,Heves County,3683,village,0,0,50,0,none,none
+gn:719555,Kaba,Hajdú-Bihar,6392,village,0,0,50,0,none,none
+gn:719635,Jászszentandrás,Jász-Nagykun-Szolnok,2640,village,0,0,50,0,none,none
+gn:719640,Jászladány,Jász-Nagykun-Szolnok,6215,village,0,0,50,0,none,none
+gn:719643,Jászkisér,Jász-Nagykun-Szolnok,5741,village,0,0,50,0,none,none
+gn:719644,Jászkarajenő,Pest County,3125,village,0,0,50,0,none,none
+gn:719645,Jászjákóhalma,Jász-Nagykun-Szolnok,3088,village,0,0,50,0,none,none
+gn:719649,Jászdózsa,Jász-Nagykun-Szolnok,2225,village,0,0,50,0,none,none
+gn:719655,Jászapáti,Jász-Nagykun-Szolnok,9806,village,0,0,50,0,none,none
+gn:719656,Jászalsószentgyörgy,Jász-Nagykun-Szolnok,3777,village,0,0,50,0,none,none
+gn:719668,Járdánháza,Borsod-Abaúj-Zemplén,1660,village,0,0,50,0,none,none
+gn:719678,Jánoshida,Jász-Nagykun-Szolnok,2709,village,0,0,50,0,none,none
+gn:719710,Izsófalva,Borsod-Abaúj-Zemplén,1682,village,0,0,50,0,none,none
+gn:719806,Ibrány,Szabolcs-Szatmár-Bereg,6880,village,0,0,50,0,none,none
+gn:719843,Hosszúpályi,Hajdú-Bihar,5479,village,0,0,50,0,none,none
+gn:719895,Hortobágy,Hajdú-Bihar,1745,village,0,0,50,0,none,none
+gn:719965,Hódmezővásárhely,Csongrád,44009,town,0,0,50,0,none,none
+gn:719967,Hodász,Szabolcs-Szatmár-Bereg,3489,village,0,0,50,0,none,none
+gn:720006,Heves,Heves County,11311,town,0,0,50,0,none,none
+gn:720026,Hernádnémeti,Borsod-Abaúj-Zemplén,3464,village,0,0,50,0,none,none
+gn:720028,Hernádkak,Borsod-Abaúj-Zemplén,1514,village,0,0,50,0,none,none
+gn:720061,Hejőbába,Borsod-Abaúj-Zemplén,1949,village,0,0,50,0,none,none
+gn:720149,Harsány,Borsod-Abaúj-Zemplén,2059,village,0,0,50,0,none,none
+gn:720199,Hangony,Borsod-Abaúj-Zemplén,1386,village,0,0,50,0,none,none
+gn:720228,Halmaj,Borsod-Abaúj-Zemplén,1869,village,0,0,50,0,none,none
+gn:720274,Hajdúszovát,Hajdú-Bihar,3167,village,0,0,50,0,none,none
+gn:720276,Hajdúszoboszló,Hajdú-Bihar,23781,town,0,0,50,0,none,none
+gn:720280,Hajdúsámson,Hajdú-Bihar,10854,town,0,0,50,0,none,none
+gn:720284,Hajdúnánás,Hajdú-Bihar,18032,town,0,0,50,0,none,none
+gn:720287,Hajdúhadház,Hajdú-Bihar,12892,town,0,0,50,0,none,none
+gn:720290,Hajdúdorog,Hajdú-Bihar,9514,village,0,0,50,0,none,none
+gn:720292,Hajdúböszörmény,Hajdú-Bihar,31957,town,0,0,50,0,none,none
+gn:720295,Hajdúbagos,Hajdú-Bihar,2029,village,0,0,50,0,none,none
+gn:720330,Gyulaháza,Szabolcs-Szatmár-Bereg,2059,village,0,0,50,0,none,none
+gn:720334,Gyula,Bekes County,32269,town,0,0,50,0,none,none
+gn:720364,Gyomaendrőd,Bekes County,15194,town,0,0,50,0,none,none
+gn:720450,Görömböly,Borsod-Abaúj-Zemplén,4241,village,0,0,50,0,none,none
+gn:720480,Görbeháza,Hajdú-Bihar,2626,village,0,0,50,0,none,none
+gn:720494,Gönc,Borsod-Abaúj-Zemplén,2217,village,0,0,50,0,none,none
+gn:720533,Gesztely,Borsod-Abaúj-Zemplén,2839,village,0,0,50,0,none,none
+gn:720574,Gégény,Szabolcs-Szatmár-Bereg,2093,village,0,0,50,0,none,none
+gn:720643,Gádoros,Bekes County,4008,village,0,0,50,0,none,none
+gn:720679,Füzesgyarmat,Bekes County,6426,village,0,0,50,0,none,none
+gn:720687,Füzesabony,Heves County,8182,village,0,0,50,0,none,none
+gn:720776,Földes,Hajdú-Bihar,4345,village,0,0,50,0,none,none
+gn:720780,Földeák,Csongrád,3255,village,0,0,50,0,none,none
+gn:720846,Fényeslitke,Szabolcs-Szatmár-Bereg,2425,village,0,0,50,0,none,none
+gn:720857,Felsőzsolca,Borsod-Abaúj-Zemplén,7040,village,0,0,50,0,none,none
+gn:720862,Felsőtárkány,Heves County,3223,village,0,0,50,0,none,none
+gn:720881,Felsőnyárád,Borsod-Abaúj-Zemplén,1060,village,0,0,50,0,none,none
+gn:720988,Fehérgyarmat,Szabolcs-Szatmár-Bereg,9031,village,0,0,50,0,none,none
+gn:720992,Fegyvernek,Jász-Nagykun-Szolnok,6972,village,0,0,50,0,none,none
+gn:721022,Farkaslyuk,Borsod-Abaúj-Zemplén,1890,village,0,0,50,0,none,none
+gn:721068,Fábiánsebestyén,Csongrád,1970,village,0,0,50,0,none,none
+gn:721119,Erdőtelek,Heves County,3212,village,0,0,50,0,none,none
+gn:721158,Encsencs,Szabolcs-Szatmár-Bereg,2087,village,0,0,50,0,none,none
+gn:721159,Encs,Borsod-Abaúj-Zemplén,6886,village,0,0,50,0,none,none
+gn:721161,Emőd,Borsod-Abaúj-Zemplén,5382,village,0,0,50,0,none,none
+gn:721189,Elek,Bekes County,5465,village,0,0,50,0,none,none
+gn:721208,Egyek,Hajdú-Bihar,5573,village,0,0,50,0,none,none
+gn:721225,Egerszalók,Heves County,1981,village,0,0,50,0,none,none
+gn:721239,Eger,Heves County,53876,town,0,0,50,0,none,none
+gn:721246,Edelény,Borsod-Abaúj-Zemplén,11037,town,0,0,50,0,none,none
+gn:721257,Ebes,Hajdú-Bihar,4468,village,0,0,50,0,none,none
+gn:721304,Domoszló,Heves County,1955,village,0,0,50,0,none,none
+gn:721309,Dombrád,Szabolcs-Szatmár-Bereg,4276,village,0,0,50,0,none,none
+gn:721314,Dombegyház,Bekes County,2380,village,0,0,50,0,none,none
+gn:721316,Domaszék,Csongrád,4242,village,0,0,50,0,none,none
+gn:721338,Döge,Szabolcs-Szatmár-Bereg,2181,village,0,0,50,0,none,none
+gn:721349,Doboz,Bekes County,4466,village,0,0,50,0,none,none
+gn:721378,Diósgyőr,Borsod-Abaúj-Zemplén,18065,town,0,0,50,0,none,none
+gn:721404,Dévaványa,Bekes County,8796,village,0,0,50,0,none,none
+gn:721411,Deszk,Csongrád,4048,village,0,0,50,0,none,none
+gn:721428,Derecske,Hajdú-Bihar,9207,village,0,0,50,0,none,none
+gn:721444,Demecser,Szabolcs-Szatmár-Bereg,4205,village,0,0,50,0,none,none
+gn:721453,Dédestapolcsány,Borsod-Abaúj-Zemplén,1235,village,0,0,50,0,none,none
+gn:721472,Debrecen,Hajdú-Bihar,202402,city,0,0,50,0,none,none
+gn:721559,Csorvás,Bekes County,5643,village,0,0,50,0,none,none
+gn:721592,Csongrád,Csongrád,18580,town,0,0,50,0,none,none
+gn:721611,Csökmő,Hajdú-Bihar,2170,village,0,0,50,0,none,none
+gn:721712,Cserkeszőlő,Jász-Nagykun-Szolnok,2182,village,0,0,50,0,none,none
+gn:721789,Csenger,Szabolcs-Szatmár-Bereg,5225,village,0,0,50,0,none,none
+gn:721856,Csanytelek,Csongrád,2937,village,0,0,50,0,none,none
+gn:721861,Csanádpalota,Csongrád,3224,village,0,0,50,0,none,none
+gn:721864,Csanádapáca,Bekes County,2811,village,0,0,50,0,none,none
+gn:721913,Cigánd,Borsod-Abaúj-Zemplén,3245,village,0,0,50,0,none,none
+gn:721923,Cibakháza,Jász-Nagykun-Szolnok,4565,village,0,0,50,0,none,none
+gn:721971,Bükkszentkereszt,Borsod-Abaúj-Zemplén,1151,village,0,0,50,0,none,none
+gn:721986,Buj,Szabolcs-Szatmár-Bereg,2496,village,0,0,50,0,none,none
+gn:722011,Bucsa,Bekes County,2479,village,0,0,50,0,none,none
+gn:722057,Borsodnádasd,Borsod-Abaúj-Zemplén,2767,village,0,0,50,0,none,none
+gn:722118,Boldva,Borsod-Abaúj-Zemplén,2456,village,0,0,50,0,none,none
+gn:722133,Bököny,Szabolcs-Szatmár-Bereg,3310,village,0,0,50,0,none,none
+gn:722171,Bogács,Borsod-Abaúj-Zemplén,2112,village,0,0,50,0,none,none
+gn:722223,Bőcs,Borsod-Abaúj-Zemplén,2677,village,0,0,50,0,none,none
+gn:722278,Biharnagybajom,Hajdú-Bihar,2936,village,0,0,50,0,none,none
+gn:722281,Biharkeresztes,Hajdú-Bihar,4237,village,0,0,50,0,none,none
+gn:722300,Besenyszög,Jász-Nagykun-Szolnok,3460,village,0,0,50,0,none,none
+gn:722301,Besenyőtelek,Heves County,2588,village,0,0,50,0,none,none
+gn:722305,Berzék,Borsod-Abaúj-Zemplén,1002,village,0,0,50,0,none,none
+gn:722324,Berettyóújfalu,Hajdú-Bihar,14614,town,0,0,50,0,none,none
+gn:722333,Berente,Borsod-Abaúj-Zemplén,1017,village,0,0,50,0,none,none
+gn:722424,Bélapátfalva,Heves County,3401,village,0,0,50,0,none,none
+gn:722431,Békésszentandrás,Bekes County,4103,village,0,0,50,0,none,none
+gn:722432,Békéssámson,Bekes County,2581,village,0,0,50,0,none,none
+gn:722437,Békéscsaba,Bekes County,59732,town,0,0,50,0,none,none
+gn:722439,Békés,Bekes County,21198,town,0,0,50,0,none,none
+gn:722448,Bekecs,Borsod-Abaúj-Zemplén,2446,village,0,0,50,0,none,none
+gn:722477,Battonya,Bekes County,6604,village,0,0,50,0,none,none
+gn:722555,Báránd,Hajdú-Bihar,2728,village,0,0,50,0,none,none
+gn:722599,Bánhorváti,Borsod-Abaúj-Zemplén,1252,village,0,0,50,0,none,none
+gn:722636,Balmazújváros,Hajdú-Bihar,18012,town,0,0,50,0,none,none
+gn:722650,Balkány,Szabolcs-Szatmár-Bereg,6798,village,0,0,50,0,none,none
+gn:722676,Balástya,Csongrád,3436,village,0,0,50,0,none,none
+gn:722682,Baktalórántháza,Szabolcs-Szatmár-Bereg,4265,village,0,0,50,0,none,none
+gn:722691,Baks,Csongrád,2292,village,0,0,50,0,none,none
+gn:722738,Bagamér,Hajdú-Bihar,2433,village,0,0,50,0,none,none
+gn:722766,Átány,Heves County,5044,village,0,0,50,0,none,none
+gn:722775,Aszaló,Borsod-Abaúj-Zemplén,2008,village,0,0,50,0,none,none
+gn:722797,Ároktő,Borsod-Abaúj-Zemplén,1116,village,0,0,50,0,none,none
+gn:722802,Arnót,Borsod-Abaúj-Zemplén,2493,village,0,0,50,0,none,none
+gn:722803,Arló,Borsod-Abaúj-Zemplén,3454,village,0,0,50,0,none,none
+gn:722823,Aranyosapáti,Szabolcs-Szatmár-Bereg,2142,village,0,0,50,0,none,none
+gn:722849,Apátfalva,Csongrád,2920,village,0,0,50,0,none,none
+gn:722852,Apagy,Szabolcs-Szatmár-Bereg,2348,village,0,0,50,0,none,none
+gn:722872,Andornaktálya,Heves County,2604,village,0,0,50,0,none,none
+gn:722876,Anarcs,Szabolcs-Szatmár-Bereg,2021,village,0,0,50,0,none,none
+gn:722882,Alsózsolca,Borsod-Abaúj-Zemplén,6044,village,0,0,50,0,none,none
+gn:722885,Alsóvadász,Borsod-Abaúj-Zemplén,1551,village,0,0,50,0,none,none
+gn:722941,Álmosd,Hajdú-Bihar,1673,village,0,0,50,0,none,none
+gn:722966,Aldebrő,Heves County,2178,village,0,0,50,0,none,none
+gn:722973,Alattyán,Jász-Nagykun-Szolnok,2004,village,0,0,50,0,none,none
+gn:722998,Ajak,Szabolcs-Szatmár-Bereg,3983,village,0,0,50,0,none,none
+gn:723030,Abony,Pest County,16342,town,0,0,50,0,none,none
+gn:723036,Abaújszántó,Borsod-Abaúj-Zemplén,3147,village,0,0,50,0,none,none
+gn:723041,Abasár,Heves County,3189,village,0,0,50,0,none,none
+gn:723044,Abádszalók,Jász-Nagykun-Szolnok,4180,village,0,0,50,0,none,none
+gn:3042430,Zugló,Budapest,130000,city,0,0,50,0,none,none
+gn:3042431,Zugliget,Pest County,1364,village,0,0,50,0,none,none
+gn:3042441,Zsombó,Csongrád,3268,village,0,0,50,0,none,none
+gn:3042504,Zsámbok,Pest County,2474,village,0,0,50,0,none,none
+gn:3042507,Zsámbék,Pest County,5479,village,0,0,50,0,none,none
+gn:3042516,Zomba,Tolna County,2286,village,0,0,50,0,none,none
+gn:3042536,Zirc,Veszprém,7314,village,0,0,50,0,none,none
+gn:3042557,Zebegény,Pest County,1204,village,0,0,50,0,none,none
+gn:3042569,Zánka,Veszprém,1003,village,0,0,50,0,none,none
+gn:3042575,Zámoly,Fejér,2194,village,0,0,50,0,none,none
+gn:3042580,Zamárdi,Somogy County,2211,village,0,0,50,0,none,none
+gn:3042603,Zalaszentgrót,Zala County,7796,village,0,0,50,0,none,none
+gn:3042617,Zalalövő,Zala County,3195,village,0,0,50,0,none,none
+gn:3042621,Zalakomár,Zala County,3103,village,0,0,50,0,none,none
+gn:3042623,Zalakaros,Zala County,1748,village,0,0,50,0,none,none
+gn:3042638,Zalaegerszeg,Zala County,61898,town,0,0,50,0,none,none
+gn:3042652,Zákányszék,Csongrád,2747,village,0,0,50,0,none,none
+gn:3042661,Zagyvaszántó,Heves County,2067,village,0,0,50,0,none,none
+gn:3042746,Vonyarcvashegy,Zala County,1902,village,0,0,50,0,none,none
+gn:3042824,Visegrád,Pest County,1841,village,0,0,50,0,none,none
+gn:3042871,Villány,Baranya,2738,village,0,0,50,0,none,none
+gn:3042929,Veszprém,Veszprém,56927,town,0,0,50,0,none,none
+gn:3042941,Vértesszőlős,Komárom-Esztergom,2747,village,0,0,50,0,none,none
+gn:3042956,Verőce,Pest County,3352,village,0,0,50,0,none,none
+gn:3042968,Veresegyház,Pest County,18122,town,0,0,50,0,none,none
+gn:3042977,Vép,Vas County,3460,village,0,0,50,0,none,none
+gn:3042998,Velence,Fejér,4832,village,0,0,50,0,none,none
+gn:3043019,Vecsés,Pest County,19327,town,0,0,50,0,none,none
+gn:3043033,Vasvár,Vas County,4613,village,0,0,50,0,none,none
+gn:3043048,Vaskút,Bács-Kiskun,3613,village,0,0,50,0,none,none
+gn:3043095,Várpalota,Veszprém,21299,town,0,0,50,0,none,none
+gn:3043111,Városföld,Bács-Kiskun,2248,village,0,0,50,0,none,none
+gn:3043197,Budai vár,Budapest,2518,village,0,0,50,0,none,none
+gn:3043199,Vanyarc,Nógrád,1161,village,0,0,50,0,none,none
+gn:3043210,Vámosgyörk,Heves County,2020,village,0,0,50,0,none,none
+gn:3043217,Valkó,Pest County,2461,village,0,0,50,0,none,none
+gn:3043224,Vál,Fejér,2348,village,0,0,50,0,none,none
+gn:3043233,Vajszló,Baranya,1888,village,0,0,50,0,none,none
+gn:3043278,Vácszentlászló,Pest County,2085,village,0,0,50,0,none,none
+gn:3043293,Vác,Pest County,33475,town,0,0,50,0,none,none
+gn:3043310,Uszód,Bács-Kiskun,1001,village,0,0,50,0,none,none
+gn:3043317,Üröm,Pest County,4753,village,0,0,50,0,none,none
+gn:3043318,Úrkút,Veszprém,2178,village,0,0,50,0,none,none
+gn:3043321,Úri,Pest County,2718,village,0,0,50,0,none,none
+gn:3043356,Üllő,Pest County,12185,town,0,0,50,0,none,none
+gn:3043358,Üllés,Csongrád,3145,village,0,0,50,0,none,none
+gn:3043448,Újszilvás,Pest County,2722,village,0,0,50,0,none,none
+gn:3043470,Újpest,Budapest,100694,city,0,0,50,0,none,none
+gn:3043581,Újhartyán,Pest County,2852,village,0,0,50,0,none,none
+gn:3043617,Ugod,Veszprém,1660,village,0,0,50,0,none,none
+gn:3043671,Türje,Zala County,1868,village,0,0,50,0,none,none
+gn:3043678,Tura,Pest County,8294,village,0,0,50,0,none,none
+gn:3043758,Törtel,Pest County,4733,village,0,0,50,0,none,none
+gn:3043760,Torony,Vas County,1611,village,0,0,50,0,none,none
+gn:3043778,Törökbálint,Pest County,11658,town,0,0,50,0,none,none
+gn:3043820,Tompa,Bács-Kiskun,4844,village,0,0,50,0,none,none
+gn:3043832,Töltéstava,Győr-Moson-Sopron,1902,village,0,0,50,0,none,none
+gn:3043849,Tolna,Tolna County,12011,town,0,0,50,0,none,none
+gn:3043860,Tököl,Pest County,10164,town,0,0,50,0,none,none
+gn:3043865,Tokod,Komárom-Esztergom,4271,village,0,0,50,0,none,none
+gn:3043887,Tóalmás,Pest County,3434,village,0,0,50,0,none,none
+gn:3043927,Tihany,Veszprém,1438,village,0,0,50,0,none,none
+gn:3043946,Tét,Győr-Moson-Sopron,4104,village,0,0,50,0,none,none
+gn:3043984,Tengelic,Tolna County,2445,village,0,0,50,0,none,none
+gn:3044004,Telki,Pest County,2071,village,0,0,50,0,none,none
+gn:3044062,Tázlár,Bács-Kiskun,1984,village,0,0,50,0,none,none
+gn:3044080,Tataháza,Bács-Kiskun,1151,village,0,0,50,0,none,none
+gn:3044082,Tatabánya,Komárom-Esztergom,65849,town,0,0,50,0,none,none
+gn:3044083,Tata,Komárom-Esztergom,23217,town,0,0,50,0,none,none
+gn:3044084,Tát,Komárom-Esztergom,5575,village,0,0,50,0,none,none
+gn:3044088,Taszár,Somogy County,2013,village,0,0,50,0,none,none
+gn:3044093,Tass,Bács-Kiskun,2963,village,0,0,50,0,none,none
+gn:3044103,Tárnok,Pest County,7990,village,0,0,50,0,none,none
+gn:3044119,Tarján,Komárom-Esztergom,2825,village,0,0,50,0,none,none
+gn:3044122,Tardos,Komárom-Esztergom,1625,village,0,0,50,0,none,none
+gn:3044131,Tar,Nógrád,1972,village,0,0,50,0,none,none
+gn:3044141,Tapolca,Veszprém,17598,town,0,0,50,0,none,none
+gn:3044144,Táplánszentkereszt,Vas County,2342,village,0,0,50,0,none,none
+gn:3044147,Tápiószőlős,Pest County,3155,village,0,0,50,0,none,none
+gn:3044149,Tápiószentmárton,Pest County,5596,village,0,0,50,0,none,none
+gn:3044151,Tápiószele,Pest County,6214,village,0,0,50,0,none,none
+gn:3044153,Tápiószecső,Pest County,6628,village,0,0,50,0,none,none
+gn:3044154,Sülysáp,Pest County,8258,village,0,0,50,0,none,none
+gn:3044156,Tápióság,Pest County,2760,village,0,0,50,0,none,none
+gn:3044160,Tápiógyörgye,Pest County,3817,village,0,0,50,0,none,none
+gn:3044161,Tápióbicske,Pest County,3514,village,0,0,50,0,none,none
+gn:3044171,Tamási,Tolna County,9682,village,0,0,50,0,none,none
+gn:3044181,Taksony,Pest County,6129,village,0,0,50,0,none,none
+gn:3044191,Tahitótfalu,Pest County,4677,village,0,0,50,0,none,none
+gn:3044211,Táborfalva,Pest County,3509,village,0,0,50,0,none,none
+gn:3044217,Tabdi,Bács-Kiskun,1196,village,0,0,50,0,none,none
+gn:3044221,Tab,Somogy County,4824,village,0,0,50,0,none,none
+gn:3044227,Szurdokpüspöki,Nógrád,1947,village,0,0,50,0,none,none
+gn:3044305,Szomód,Komárom-Esztergom,2020,village,0,0,50,0,none,none
+gn:3044310,Szombathely,Vas County,78025,town,0,0,50,0,none,none
+gn:3044370,Sződliget,Pest County,4350,village,0,0,50,0,none,none
+gn:3044371,Sződ,Pest County,3059,village,0,0,50,0,none,none
+gn:3044380,Szob,Pest County,3065,village,0,0,50,0,none,none
+gn:3044405,Szirák,Nógrád,1090,village,0,0,50,0,none,none
+gn:3044469,Szigetvár,Baranya,11267,town,0,0,50,0,none,none
+gn:3044470,Szigetújfalu,Pest County,2158,village,0,0,50,0,none,none
+gn:3044475,Szigetszentmiklós,Pest County,24874,town,0,0,50,0,none,none
+gn:3044487,Szigethalom,Pest County,13092,town,0,0,50,0,none,none
+gn:3044492,Szigetcsép,Pest County,2455,village,0,0,50,0,none,none
+gn:3044510,Szeremle,Bács-Kiskun,1414,village,0,0,50,0,none,none
+gn:3044567,Szentmártonkáta,Pest County,4868,village,0,0,50,0,none,none
+gn:3044574,Szentlőrinckáta,Pest County,2005,village,0,0,50,0,none,none
+gn:3044575,Szentlőrinc,Baranya,7123,village,0,0,50,0,none,none
+gn:3044600,Szentkirályszabadja,Veszprém,2042,village,0,0,50,0,none,none
+gn:3044607,Szentkirály,Bács-Kiskun,1965,village,0,0,50,0,none,none
+gn:3044669,Szentgotthárd,Vas County,8862,village,0,0,50,0,none,none
+gn:3044671,Szentgálpuszta,Tolna County,2815,village,0,0,50,0,none,none
+gn:3044681,Szentendre,Pest County,23606,town,0,0,50,0,none,none
+gn:3044760,Szekszárd,Tolna County,34174,town,0,0,50,0,none,none
+gn:3044774,Székesfehérvár,Fejér,101600,city,0,0,50,0,none,none
+gn:3044800,Szedres,Tolna County,2478,village,0,0,50,0,none,none
+gn:3044809,Szécsény,Nógrád,6446,village,0,0,50,0,none,none
+gn:3044811,Széchenyitelep,Pest County,4753,village,0,0,50,0,none,none
+gn:3044821,Százhalombatta,Pest County,17566,town,0,0,50,0,none,none
+gn:3044835,Szászvár,Baranya,2684,village,0,0,50,0,none,none
+gn:3044861,Szárliget,Fejér,2337,village,0,0,50,0,none,none
+gn:3044909,Szany,Győr-Moson-Sopron,2300,village,0,0,50,0,none,none
+gn:3044916,Szank,Bács-Kiskun,2506,village,0,0,50,0,none,none
+gn:3044941,Szalkszentmárton,Bács-Kiskun,2982,village,0,0,50,0,none,none
+gn:3044975,Szakmár,Bács-Kiskun,1194,village,0,0,50,0,none,none
+gn:3044990,Szada,Pest County,3370,village,0,0,50,0,none,none
+gn:3045017,Szabadszállás,Bács-Kiskun,6605,village,0,0,50,0,none,none
+gn:3045039,Szabadbattyán,Fejér,4492,village,0,0,50,0,none,none
+gn:3045045,Süttő,Komárom-Esztergom,1998,village,0,0,50,0,none,none
+gn:3045060,Súr,Komárom-Esztergom,1327,village,0,0,50,0,none,none
+gn:3045070,Sümeg,Veszprém,6726,village,0,0,50,0,none,none
+gn:3045076,Sükösd,Bács-Kiskun,3987,village,0,0,50,0,none,none
+gn:3045144,Sóskút,Pest County,2998,village,0,0,50,0,none,none
+gn:3045154,Soroksár,Budapest,13985,town,0,0,50,0,none,none
+gn:3045190,Sopron,Győr-Moson-Sopron,62246,town,0,0,50,0,none,none
+gn:3045192,Soponya,Fejér,1996,village,0,0,50,0,none,none
+gn:3045201,Somoskőújfalu,Nógrád,2296,village,0,0,50,0,none,none
+gn:3045212,Somogyvár,Somogy County,2023,village,0,0,50,0,none,none
+gn:3045294,Solymár,Pest County,9242,village,0,0,50,0,none,none
+gn:3045298,Soltvadkert,Bács-Kiskun,7695,village,0,0,50,0,none,none
+gn:3045300,Soltszentimre,Bács-Kiskun,1247,village,0,0,50,0,none,none
+gn:3045303,Solt,Bács-Kiskun,6984,village,0,0,50,0,none,none
+gn:3045332,Siófok,Somogy County,23028,town,0,0,50,0,none,none
+gn:3045333,Sióagárd,Tolna County,1268,village,0,0,50,0,none,none
+gn:3045341,Simontornya,Tolna County,4536,village,0,0,50,0,none,none
+gn:3045364,Siklós,Baranya,10180,town,0,0,50,0,none,none
+gn:3045386,Seregélyes,Fejér,4539,village,0,0,50,0,none,none
+gn:3045406,Sellye,Baranya,3184,village,0,0,50,0,none,none
+gn:3045411,Segesd,Somogy County,2674,village,0,0,50,0,none,none
+gn:3045420,Sé,Vas County,1156,village,0,0,50,0,none,none
+gn:3045476,Sashalom,Budapest,15288,town,0,0,50,0,none,none
+gn:3045479,Sásd,Baranya,3500,village,0,0,50,0,none,none
+gn:3045487,Sárvár,Vas County,15343,town,0,0,50,0,none,none
+gn:3045493,Sárszentmihály,Fejér,2824,village,0,0,50,0,none,none
+gn:3045512,Sárosd,Fejér,3474,village,0,0,50,0,none,none
+gn:3045520,Sármellék,Zala County,1836,village,0,0,50,0,none,none
+gn:3045530,Sárkeresztúr,Fejér,2443,village,0,0,50,0,none,none
+gn:3045542,Sárisáp,Komárom-Esztergom,2911,village,0,0,50,0,none,none
+gn:3045564,Sárbogárd,Fejér,13424,town,0,0,50,0,none,none
+gn:3045643,Salgótarján,Nógrád,34627,town,0,0,50,0,none,none
+gn:3045688,Ruzsa,Csongrád,2764,village,0,0,50,0,none,none
+gn:3045704,Rózsaszentmárton,Heves County,2028,village,0,0,50,0,none,none
+gn:3045758,Romhány,Nógrád,2421,village,0,0,50,0,none,none
+gn:3045762,Rómaifürdő,Pest County,12681,town,0,0,50,0,none,none
+gn:3045804,Rimóc,Nógrád,1874,village,0,0,50,0,none,none
+gn:3045836,Révfülöp,Veszprém,1127,village,0,0,50,0,none,none
+gn:3045846,Rétság,Nógrád,3004,village,0,0,50,0,none,none
+gn:3045884,Répcelak,Vas County,2644,village,0,0,50,0,none,none
+gn:3045898,Remetekertváros,Pest County,2771,village,0,0,50,0,none,none
+gn:3045907,Rém,Bács-Kiskun,1233,village,0,0,50,0,none,none
+gn:3045930,Réde,Komárom-Esztergom,1525,village,0,0,50,0,none,none
+gn:3045960,Rákosszentmihály,Budapest,23098,town,0,0,50,0,none,none
+gn:3045965,Rákospalota,Budapest,38530,town,0,0,50,0,none,none
+gn:3045968,Rákosliget,Budapest,3673,village,0,0,50,0,none,none
+gn:3045971,Rákoskeresztúr,Pest County,24971,town,0,0,50,0,none,none
+gn:3045974,Rákoshegy,Budapest,13614,town,0,0,50,0,none,none
+gn:3045979,Rákoscsaba,Budapest,14898,town,0,0,50,0,none,none
+gn:3045991,Rajka,Győr-Moson-Sopron,5224,village,0,0,50,0,none,none
+gn:3046026,Ráckeve,Pest County,9229,village,0,0,50,0,none,none
+gn:3046027,Ráckeresztúr,Fejér,3117,village,0,0,50,0,none,none
+gn:3046036,Rácalmás,Fejér,4148,village,0,0,50,0,none,none
+gn:3046056,Rábapatona,Győr-Moson-Sopron,2497,village,0,0,50,0,none,none
+gn:3046073,Pusztavám,Fejér,2521,village,0,0,50,0,none,none
+gn:3046076,Pusztaszer,Csongrád,1642,village,0,0,50,0,none,none
+gn:3046087,Pusztaszabolcs,Fejér,6355,village,0,0,50,0,none,none
+gn:3046106,Pusztahencse,Tolna County,1069,village,0,0,50,0,none,none
+gn:3046230,Pomáz,Pest County,14917,town,0,0,50,0,none,none
+gn:3046249,Polgárdi,Fejér,6564,village,0,0,50,0,none,none
+gn:3046336,Pincehely,Tolna County,2548,village,0,0,50,0,none,none
+gn:3046340,Pilisvörösvár,Pest County,14274,town,0,0,50,0,none,none
+gn:3046343,Pilisszentkereszt,Pest County,2224,village,0,0,50,0,none,none
+gn:3046344,Pilisszentiván,Pest County,4218,village,0,0,50,0,none,none
+gn:3046345,Pilisszántó,Pest County,2245,village,0,0,50,0,none,none
+gn:3046346,Pilismarót,Komárom-Esztergom,1952,village,0,0,50,0,none,none
+gn:3046349,Piliscsév,Komárom-Esztergom,2310,village,0,0,50,0,none,none
+gn:3046353,Piliscsaba,Pest County,6468,village,0,0,50,0,none,none
+gn:3046354,Pilisborosjenő,Pest County,3180,village,0,0,50,0,none,none
+gn:3046355,Pilis,Pest County,11102,town,0,0,50,0,none,none
+gn:3046385,Petőfiszállás,Bács-Kiskun,1453,village,0,0,50,0,none,none
+gn:3046387,Petőfibánya,Heves County,3061,village,0,0,50,0,none,none
+gn:3046396,Pétfürdő,Veszprém,4877,village,0,0,50,0,none,none
+gn:3046409,Péteri,Pest County,1970,village,0,0,50,0,none,none
+gn:3046430,Pestújhely,Budapest,10571,town,0,0,50,0,none,none
+gn:3046433,Pestlőrinc,Budapest,58722,town,0,0,50,0,none,none
+gn:3046442,Pesthidegkút,Budapest,9087,village,0,0,50,0,none,none
+gn:3046445,Pesterzsébet,Budapest,36045,town,0,0,50,0,none,none
+gn:3046446,Pest,Budapest,1001748,large-city,0,0,50,0,none,none
+gn:3046456,Perkáta,Fejér,4166,village,0,0,50,0,none,none
+gn:3046487,Perbál,Pest County,2167,village,0,0,50,0,none,none
+gn:3046488,Pér,Győr-Moson-Sopron,2372,village,0,0,50,0,none,none
+gn:3046499,Pellérd,Baranya,1881,village,0,0,50,0,none,none
+gn:3046505,Pécsvárad,Baranya,4024,village,0,0,50,0,none,none
+gn:3046526,Pécs,Baranya,145347,city,0,0,50,0,none,none
+gn:3046531,Pécel,Pest County,13193,town,0,0,50,0,none,none
+gn:3046537,Pázmánd,Fejér,1985,village,0,0,50,0,none,none
+gn:3046546,Páty,Pest County,5475,village,0,0,50,0,none,none
+gn:3046580,Pásztó,Nógrád,10119,town,0,0,50,0,none,none
+gn:3046686,Pápa,Veszprém,32990,town,0,0,50,0,none,none
+gn:3046693,Pannonhalma,Győr-Moson-Sopron,4089,village,0,0,50,0,none,none
+gn:3046700,Pánd,Pest County,2041,village,0,0,50,0,none,none
+gn:3046711,Palotás,Nógrád,1662,village,0,0,50,0,none,none
+gn:3046719,Pálmonostora,Bács-Kiskun,2052,village,0,0,50,0,none,none
+gn:3046768,Paks,Tolna County,20638,town,0,0,50,0,none,none
+gn:3046769,Pákozd,Fejér,2721,village,0,0,50,0,none,none
+gn:3046783,Páhi,Bács-Kiskun,1227,village,0,0,50,0,none,none
+gn:3046800,Pacsa,Zala County,1878,village,0,0,50,0,none,none
+gn:3046806,Ozora,Tolna County,1742,village,0,0,50,0,none,none
+gn:3046825,Öttevény,Győr-Moson-Sopron,2725,village,0,0,50,0,none,none
+gn:3046856,Ősi,Veszprém,2146,village,0,0,50,0,none,none
+gn:3046888,Oroszlány,Komárom-Esztergom,20271,town,0,0,50,0,none,none
+gn:3046916,Örkény,Pest County,5119,village,0,0,50,0,none,none
+gn:3046940,Orgovány,Bács-Kiskun,3472,village,0,0,50,0,none,none
+gn:3047127,Őrbottyán,Pest County,5495,village,0,0,50,0,none,none
+gn:3047201,Őcsény,Tolna County,2536,village,0,0,50,0,none,none
+gn:3047206,Ócsa,Pest County,9097,village,0,0,50,0,none,none
+gn:3047211,Óbuda,Budapest,33836,town,0,0,50,0,none,none
+gn:3047229,Nyúl,Győr-Moson-Sopron,3816,village,0,0,50,0,none,none
+gn:3047282,Nyergesújfalu,Komárom-Esztergom,7667,village,0,0,50,0,none,none
+gn:3047309,Nyárlőrinc,Bács-Kiskun,2384,village,0,0,50,0,none,none
+gn:3047316,Nyáregyháza,Pest County,3770,village,0,0,50,0,none,none
+gn:3047347,Nógrádmegyer,Nógrád,1571,village,0,0,50,0,none,none
+gn:3047356,Nógrád,Nógrád,1395,village,0,0,50,0,none,none
+gn:3047364,Neszmély,Komárom-Esztergom,1480,village,0,0,50,0,none,none
+gn:3047373,Németkér,Tolna County,1901,village,0,0,50,0,none,none
+gn:3047386,Nemesvámos,Veszprém,2508,village,0,0,50,0,none,none
+gn:3047399,Nemesnádudvar,Bács-Kiskun,2041,village,0,0,50,0,none,none
+gn:3047443,Naszály,Komárom-Esztergom,2239,village,0,0,50,0,none,none
+gn:3047450,Naphegy,Pest County,24728,town,0,0,50,0,none,none
+gn:3047502,Nagytétény,Pest County,12045,town,0,0,50,0,none,none
+gn:3047509,Nagytarcsa,Pest County,2846,village,0,0,50,0,none,none
+gn:3047574,Nagyréde,Heves County,3308,village,0,0,50,0,none,none
+gn:3047576,Nagyrécse,Zala County,1105,village,0,0,50,0,none,none
+gn:3047606,Nagyoroszi,Nógrád,2250,village,0,0,50,0,none,none
+gn:3047619,Nagymaros,Pest County,4629,village,0,0,50,0,none,none
+gn:3047622,Nagymányok,Tolna County,2504,village,0,0,50,0,none,none
+gn:3047646,Nagykovácsi,Pest County,8757,village,0,0,50,0,none,none
+gn:3047651,Nagykőrös,Pest County,23517,town,0,0,50,0,none,none
+gn:3047669,Nagykáta,Pest County,13322,town,0,0,50,0,none,none
+gn:3047674,Nagykarácsony,Fejér,1361,village,0,0,50,0,none,none
+gn:3047679,Nagykanizsa,Zala County,47349,town,0,0,50,0,none,none
+gn:3047689,Nagyigmánd,Komárom-Esztergom,3132,village,0,0,50,0,none,none
+gn:3047765,Nagydorog,Tolna County,2787,village,0,0,50,0,none,none
+gn:3047781,Nagycenk,Győr-Moson-Sopron,1856,village,0,0,50,0,none,none
+gn:3047804,Nagybaracska,Bács-Kiskun,2445,village,0,0,50,0,none,none
+gn:3047811,Nagybajom,Somogy County,3532,village,0,0,50,0,none,none
+gn:3047819,Nagyatád,Somogy County,10348,town,0,0,50,0,none,none
+gn:3047853,Nádasdladány,Fejér,1870,village,0,0,50,0,none,none
+gn:3047854,Nádasd,Vas County,1342,village,0,0,50,0,none,none
+gn:3047871,Murakeresztúr,Zala County,1969,village,0,0,50,0,none,none
+gn:3047896,Mosonmagyaróvár,Győr-Moson-Sopron,30359,town,0,0,50,0,none,none
+gn:3047922,Mórahalom,Csongrád,5445,village,0,0,50,0,none,none
+gn:3047927,Mór,Fejér,14690,town,0,0,50,0,none,none
+gn:3047942,Monor,Pest County,21720,town,0,0,50,0,none,none
+gn:3047967,Mohács,Baranya,18711,town,0,0,50,0,none,none
+gn:3047986,Mogyoród,Pest County,4949,village,0,0,50,0,none,none
+gn:3048005,Mocsa,Komárom-Esztergom,2265,village,0,0,50,0,none,none
+gn:3048015,Miske,Bács-Kiskun,1632,village,0,0,50,0,none,none
+gn:3048080,Mihályi,Győr-Moson-Sopron,1137,village,0,0,50,0,none,none
+gn:3048094,Mezőszilas,Fejér,2309,village,0,0,50,0,none,none
+gn:3048107,Mezőfalva,Fejér,4910,village,0,0,50,0,none,none
+gn:3048186,Mende,Pest County,4250,village,0,0,50,0,none,none
+gn:3048194,Mélykút,Bács-Kiskun,5766,village,0,0,50,0,none,none
+gn:3048250,Mecseknádasd,Baranya,1660,village,0,0,50,0,none,none
+gn:3048274,Mátyásföld,Budapest,19869,town,0,0,50,0,none,none
+gn:3048281,Mátraverebély,Nógrád,2197,village,0,0,50,0,none,none
+gn:3048282,Mátraterenye,Nógrád,1995,village,0,0,50,0,none,none
+gn:3048291,Mátranovák,Nógrád,1972,village,0,0,50,0,none,none
+gn:3048326,Martonvásár,Fejér,5166,village,0,0,50,0,none,none
+gn:3048331,Mártonhegy,Pest County,3610,village,0,0,50,0,none,none
+gn:3048456,Marcali,Somogy County,11216,town,0,0,50,0,none,none
+gn:3048464,Mány,Fejér,2294,village,0,0,50,0,none,none
+gn:3048627,Mágocs,Baranya,2652,village,0,0,50,0,none,none
+gn:3048630,Maglód,Pest County,10144,town,0,0,50,0,none,none
+gn:3048647,Madocsa,Tolna County,1935,village,0,0,50,0,none,none
+gn:3048657,Madaras,Bács-Kiskun,3246,village,0,0,50,0,none,none
+gn:3048713,Lovasberény,Fejér,2674,village,0,0,50,0,none,none
+gn:3048725,Lőrinci,Heves County,6089,village,0,0,50,0,none,none
+gn:3048762,Litér,Veszprém,2010,village,0,0,50,0,none,none
+gn:3048817,Levél,Győr-Moson-Sopron,2563,village,0,0,50,0,none,none
+gn:3048820,Letenye,Zala County,4527,village,0,0,50,0,none,none
+gn:3048835,Lepsény,Fejér,3224,village,0,0,50,0,none,none
+gn:3048847,Lenti,Zala County,8399,village,0,0,50,0,none,none
+gn:3048852,Lengyeltóti,Somogy County,3380,village,0,0,50,0,none,none
+gn:3048888,Lébény,Győr-Moson-Sopron,3221,village,0,0,50,0,none,none
+gn:3048895,Leányfalu,Pest County,2534,village,0,0,50,0,none,none
+gn:3048963,Lánycsók,Baranya,2707,village,0,0,50,0,none,none
+gn:3048984,Lakitelek,Bács-Kiskun,4435,village,0,0,50,0,none,none
+gn:3048986,Lakihegy,Pest County,3088,village,0,0,50,0,none,none
+gn:3049002,Lajosmizse,Bács-Kiskun,11034,town,0,0,50,0,none,none
+gn:3049013,Lajoskomárom,Fejér,2365,village,0,0,50,0,none,none
+gn:3049022,Lágymányos,Pest County,19741,town,0,0,50,0,none,none
+gn:3049026,Ladánybene,Bács-Kiskun,1564,village,0,0,50,0,none,none
+gn:3049033,Lábod,Somogy County,2244,village,0,0,50,0,none,none
+gn:3049036,Lábatlan,Komárom-Esztergom,5357,village,0,0,50,0,none,none
+gn:3049100,Kunszentmiklós,Bács-Kiskun,8976,village,0,0,50,0,none,none
+gn:3049104,Kunszállás,Bács-Kiskun,1691,village,0,0,50,0,none,none
+gn:3049111,Kunfehértó,Bács-Kiskun,2281,village,0,0,50,0,none,none
+gn:3049115,Kunbaja,Bács-Kiskun,1802,village,0,0,50,0,none,none
+gn:3049117,Kunadacs,Bács-Kiskun,1537,village,0,0,50,0,none,none
+gn:3049277,Kozármisleny,Baranya,4093,village,0,0,50,0,none,none
+gn:3049366,Kőszeg,Vas County,11500,town,0,0,50,0,none,none
+gn:3049377,Kosd,Pest County,2371,village,0,0,50,0,none,none
+gn:3049421,Környe,Komárom-Esztergom,4359,village,0,0,50,0,none,none
+gn:3049430,Körmend,Vas County,12368,town,0,0,50,0,none,none
+gn:3049491,Kóny,Győr-Moson-Sopron,2609,village,0,0,50,0,none,none
+gn:3049512,Komló,Baranya,26924,town,0,0,50,0,none,none
+gn:3049519,Komárom,Komárom-Esztergom,18805,town,0,0,50,0,none,none
+gn:3049574,Kóka,Pest County,4376,village,0,0,50,0,none,none
+gn:3049630,Kocsér,Pest County,2096,village,0,0,50,0,none,none
+gn:3049631,Kocs,Komárom-Esztergom,2655,village,0,0,50,0,none,none
+gn:3049646,Kőbánya,Budapest,78414,town,0,0,50,0,none,none
+gn:3049719,Kistelek,Csongrád,7430,village,0,0,50,0,none,none
+gn:3049751,Kisszállás,Bács-Kiskun,2846,village,0,0,50,0,none,none
+gn:3049795,Kispest,Budapest,61453,town,0,0,50,0,none,none
+gn:3049860,Kisláng,Fejér,2641,village,0,0,50,0,none,none
+gn:3049875,Kiskunmajsa,Bács-Kiskun,11955,town,0,0,50,0,none,none
+gn:3049878,Kiskunlacháza,Pest County,8980,village,0,0,50,0,none,none
+gn:3049880,Kiskunhalas,Bács-Kiskun,29354,town,0,0,50,0,none,none
+gn:3049885,Kiskunfélegyháza,Bács-Kiskun,31720,town,0,0,50,0,none,none
+gn:3049896,Kiskőrös,Bács-Kiskun,15091,town,0,0,50,0,none,none
+gn:3049921,Kiskanizsa,Zala County,5000,village,0,0,50,0,none,none
+gn:3050088,Kisbér,Komárom-Esztergom,5850,village,0,0,50,0,none,none
+gn:3050160,Kincsesbánya,Fejér,1506,village,0,0,50,0,none,none
+gn:3050165,Kimle,Győr-Moson-Sopron,2312,village,0,0,50,0,none,none
+gn:3050204,Kéthely,Somogy County,2408,village,0,0,50,0,none,none
+gn:3050208,Kesztölc,Komárom-Esztergom,2559,village,0,0,50,0,none,none
+gn:3050212,Keszthely,Zala County,19652,town,0,0,50,0,none,none
+gn:3050290,Kistarcsa,Pest County,12645,town,0,0,50,0,none,none
+gn:3050311,Kerekegyháza,Bács-Kiskun,5983,village,0,0,50,0,none,none
+gn:3050392,Kelenvölgy,Pest County,3447,village,0,0,50,0,none,none
+gn:3050393,Kelenföld,Budapest,53332,town,0,0,50,0,none,none
+gn:3050406,Kelebia,Bács-Kiskun,2985,village,0,0,50,0,none,none
+gn:3050434,Kecskemét,Bács-Kiskun,109847,city,0,0,50,0,none,none
+gn:3050447,Kecskéd,Komárom-Esztergom,1908,village,0,0,50,0,none,none
+gn:3050454,Kecel,Bács-Kiskun,9155,village,0,0,50,0,none,none
+gn:3050459,Kazár,Nógrád,2080,village,0,0,50,0,none,none
+gn:3050475,Katymár,Bács-Kiskun,2374,village,0,0,50,0,none,none
+gn:3050520,Kaskantyú,Bács-Kiskun,1002,village,0,0,50,0,none,none
+gn:3050526,Kartal,Pest County,6017,village,0,0,50,0,none,none
+gn:3050572,Karancslapujtő,Nógrád,2845,village,0,0,50,0,none,none
+gn:3050573,Karancskeszi,Nógrád,1924,village,0,0,50,0,none,none
+gn:3050588,Karád,Somogy County,1733,village,0,0,50,0,none,none
+gn:3050594,Kapuvár,Győr-Moson-Sopron,10661,town,0,0,50,0,none,none
+gn:3050616,Kaposvár,Somogy County,64280,town,0,0,50,0,none,none
+gn:3050627,Kaposmérő,Somogy County,2506,village,0,0,50,0,none,none
+gn:3050647,Kápolnásnyék,Fejér,3224,village,0,0,50,0,none,none
+gn:3050714,Káloz,Fejér,2527,village,0,0,50,0,none,none
+gn:3050719,Kalocsa,Bács-Kiskun,18242,town,0,0,50,0,none,none
+gn:3050750,Kakucs,Pest County,2707,village,0,0,50,0,none,none
+gn:3050785,Kadarkút,Somogy County,2740,village,0,0,50,0,none,none
+gn:3050872,Jobbágyi,Nógrád,2329,village,0,0,50,0,none,none
+gn:3050901,Jászszentlászló,Bács-Kiskun,2602,village,0,0,50,0,none,none
+gn:3050904,Jászfelsőszentgyörgy,Jász-Nagykun-Szolnok,1905,village,0,0,50,0,none,none
+gn:3050907,Jászberény,Jász-Nagykun-Szolnok,27439,town,0,0,50,0,none,none
+gn:3050909,Jászárokszállás,Jász-Nagykun-Szolnok,8107,village,0,0,50,0,none,none
+gn:3050927,Jánossomorja,Győr-Moson-Sopron,6283,village,0,0,50,0,none,none
+gn:3050964,Jánosháza,Vas County,2754,village,0,0,50,0,none,none
+gn:3050967,Jánoshalma,Bács-Kiskun,9755,village,0,0,50,0,none,none
+gn:3050997,Fülöpjakab,Bács-Kiskun,1162,village,0,0,50,0,none,none
+gn:3050999,Jakabszállás,Bács-Kiskun,2634,village,0,0,50,0,none,none
+gn:3051001,Ják,Vas County,2310,village,0,0,50,0,none,none
+gn:3051016,Izsák,Bács-Kiskun,6117,village,0,0,50,0,none,none
+gn:3051035,Iváncsa,Fejér,2807,village,0,0,50,0,none,none
+gn:3051038,Iván,Győr-Moson-Sopron,1168,village,0,0,50,0,none,none
+gn:3051077,Isaszeg,Pest County,11402,town,0,0,50,0,none,none
+gn:3051100,Iregszemcse,Tolna County,2772,village,0,0,50,0,none,none
+gn:3051133,Inárcs,Pest County,4262,village,0,0,50,0,none,none
+gn:3051187,Iklad,Pest County,2194,village,0,0,50,0,none,none
+gn:3051280,Hosszúhetény,Baranya,3299,village,0,0,50,0,none,none
+gn:3051324,Hort,Heves County,3797,village,0,0,50,0,none,none
+gn:3051361,Homokmégy,Bács-Kiskun,1544,village,0,0,50,0,none,none
+gn:3051415,Hőgyész,Tolna County,3029,village,0,0,50,0,none,none
+gn:3051473,Hidas,Baranya,2274,village,0,0,50,0,none,none
+gn:3051476,Hévízgyörk,Pest County,3101,village,0,0,50,0,none,none
+gn:3051477,Hévíz,Zala County,4438,village,0,0,50,0,none,none
+gn:3051499,Hernád,Pest County,3689,village,0,0,50,0,none,none
+gn:3051512,Herend,Veszprém,3385,village,0,0,50,0,none,none
+gn:3051516,Heréd,Heves County,2039,village,0,0,50,0,none,none
+gn:3051520,Hercegszántó,Bács-Kiskun,2308,village,0,0,50,0,none,none
+gn:3051535,Helvécia,Bács-Kiskun,3918,village,0,0,50,0,none,none
+gn:3051551,Hegykő,Győr-Moson-Sopron,1661,village,0,0,50,0,none,none
+gn:3051581,Hegyeshalom,Győr-Moson-Sopron,3750,village,0,0,50,0,none,none
+gn:3051610,Hédervár,Győr-Moson-Sopron,1127,village,0,0,50,0,none,none
+gn:3051621,Hatvan,Heves County,20228,town,0,0,50,0,none,none
+gn:3051632,Nagyvenyim,Fejér,4000,village,0,0,50,0,none,none
+gn:3051657,Harta,Bács-Kiskun,3716,village,0,0,50,0,none,none
+gn:3051718,Harkány,Baranya,3450,village,0,0,50,0,none,none
+gn:3051726,Harka,Győr-Moson-Sopron,1553,village,0,0,50,0,none,none
+gn:3051822,Halásztelek,Pest County,7245,village,0,0,50,0,none,none
+gn:3051829,Halászi,Győr-Moson-Sopron,3279,village,0,0,50,0,none,none
+gn:3051873,Hajós,Bács-Kiskun,3520,village,0,0,50,0,none,none
+gn:3051881,Hajmáskér,Veszprém,2793,village,0,0,50,0,none,none
+gn:3051965,Győrújbarát,Győr-Moson-Sopron,4603,village,0,0,50,0,none,none
+gn:3051969,Győrszemere,Győr-Moson-Sopron,2964,village,0,0,50,0,none,none
+gn:3052009,Győr,Győr-Moson-Sopron,129301,city,0,0,50,0,none,none
+gn:3052013,Gyönk,Tolna County,2148,village,0,0,50,0,none,none
+gn:3052021,Gyöngyöstarján,Heves County,2463,village,0,0,50,0,none,none
+gn:3052023,Gyöngyössolymos,Heves County,3160,village,0,0,50,0,none,none
+gn:3052026,Gyöngyöspata,Heves County,2724,village,0,0,50,0,none,none
+gn:3052035,Gyöngyöshalász,Heves County,2585,village,0,0,50,0,none,none
+gn:3052040,Gyöngyös,Heves County,32938,town,0,0,50,0,none,none
+gn:3052045,Gyömrő,Pest County,14155,town,0,0,50,0,none,none
+gn:3052069,Gyenesdiás,Zala County,2796,village,0,0,50,0,none,none
+gn:3052101,Gyál,Pest County,21937,town,0,0,50,0,none,none
+gn:3052208,Gomba,Pest County,2861,village,0,0,50,0,none,none
+gn:3052236,Gödöllő,Pest County,32374,town,0,0,50,0,none,none
+gn:3052241,Göd,Pest County,15874,town,0,0,50,0,none,none
+gn:3052330,Gencsapáti,Vas County,2580,village,0,0,50,0,none,none
+gn:3052342,Gellérthegy,Budapest,7197,village,0,0,50,0,none,none
+gn:3052381,Gárdony,Fejér,8105,village,0,0,50,0,none,none
+gn:3052391,Gara,Bács-Kiskun,2656,village,0,0,50,0,none,none
+gn:3052417,Galgamácsa,Pest County,2061,village,0,0,50,0,none,none
+gn:3052419,Galgahévíz,Pest County,2641,village,0,0,50,0,none,none
+gn:3052500,Fülöpszállás,Bács-Kiskun,2503,village,0,0,50,0,none,none
+gn:3052542,Fót,Pest County,16770,town,0,0,50,0,none,none
+gn:3052545,Forrópuszta,Pest County,2473,village,0,0,50,0,none,none
+gn:3052553,Forráskút,Csongrád,2287,village,0,0,50,0,none,none
+gn:3052574,Fonyód,Somogy County,5199,village,0,0,50,0,none,none
+gn:3052595,Foktő,Bács-Kiskun,1590,village,0,0,50,0,none,none
+gn:3052639,Fertőszentmiklós,Győr-Moson-Sopron,3877,village,0,0,50,0,none,none
+gn:3052640,Fertőrákos,Győr-Moson-Sopron,2179,village,0,0,50,0,none,none
+gn:3052645,Fertőd,Győr-Moson-Sopron,3360,village,0,0,50,0,none,none
+gn:3052655,Ferencváros,Budapest,59056,town,0,0,50,0,none,none
+gn:3052729,Felsőtag,Pest County,2399,village,0,0,50,0,none,none
+gn:3052749,Felsőszentiván,Bács-Kiskun,1998,village,0,0,50,0,none,none
+gn:3052786,Felsőpakony,Pest County,3775,village,0,0,50,0,none,none
+gn:3053033,Fehérvárcsurgó,Fejér,1886,village,0,0,50,0,none,none
+gn:3053073,Farmos,Pest County,3793,village,0,0,50,0,none,none
+gn:3053109,Farád,Győr-Moson-Sopron,1936,village,0,0,50,0,none,none
+gn:3053129,Fajsz,Bács-Kiskun,1687,village,0,0,50,0,none,none
+gn:3053132,Fadd,Tolna County,4442,village,0,0,50,0,none,none
+gn:3053147,Etyek,Fejér,3626,village,0,0,50,0,none,none
+gn:3053163,Esztergom,Komárom-Esztergom,28785,town,0,0,50,0,none,none
+gn:3053176,Erzsébetváros,Budapest,62000,town,0,0,50,0,none,none
+gn:3053199,Érsekvadkert,Nógrád,3762,village,0,0,50,0,none,none
+gn:3053203,Érsekcsanád,Bács-Kiskun,2863,village,0,0,50,0,none,none
+gn:3053253,Erdőkertes,Pest County,5996,village,0,0,50,0,none,none
+gn:3053281,Érd,Pest County,62408,town,0,0,50,0,none,none
+gn:3053283,Ercsi,Fejér,8383,village,0,0,50,0,none,none
+gn:3053297,Enying,Fejér,7171,village,0,0,50,0,none,none
+gn:3053302,Endrefalva,Nógrád,1134,village,0,0,50,0,none,none
+gn:3053321,Előszállás,Fejér,2556,village,0,0,50,0,none,none
+gn:3053402,Ecser,Pest County,3333,village,0,0,50,0,none,none
+gn:3053405,Ecseg,Nógrád,1142,village,0,0,50,0,none,none
+gn:3053406,Ecséd,Heves County,3457,village,0,0,50,0,none,none
+gn:3053423,Dusnok,Bács-Kiskun,3284,village,0,0,50,0,none,none
+gn:3053432,Dunavecse,Bács-Kiskun,4201,village,0,0,50,0,none,none
+gn:3053434,Dunavarsány,Pest County,8341,village,0,0,50,0,none,none
+gn:3053438,Dunaújváros,Fejér,50084,town,0,0,50,0,none,none
+gn:3053444,Dunasziget,Győr-Moson-Sopron,1477,village,0,0,50,0,none,none
+gn:3053450,Dunaszentgyörgy,Tolna County,2624,village,0,0,50,0,none,none
+gn:3053454,Dunaszekcső,Baranya,2151,village,0,0,50,0,none,none
+gn:3053459,Dunapataj,Bács-Kiskun,3693,village,0,0,50,0,none,none
+gn:3053472,Dunakiliti,Győr-Moson-Sopron,1862,village,0,0,50,0,none,none
+gn:3053476,Dunakeszi,Pest County,30246,town,0,0,50,0,none,none
+gn:3053485,Dunaharaszti,Pest County,16973,town,0,0,50,0,none,none
+gn:3053489,Dunaföldvár,Tolna County,9073,village,0,0,50,0,none,none
+gn:3053493,Dunaegyháza,Bács-Kiskun,1389,village,0,0,50,0,none,none
+gn:3053495,Dunabogdány,Pest County,3059,village,0,0,50,0,none,none
+gn:3053497,Dunaalmás,Komárom-Esztergom,1479,village,0,0,50,0,none,none
+gn:3053562,Dorog,Komárom-Esztergom,12658,town,0,0,50,0,none,none
+gn:3053577,Dömsöd,Pest County,5942,village,0,0,50,0,none,none
+gn:3053580,Dömös,Komárom-Esztergom,1200,village,0,0,50,0,none,none
+gn:3053583,Domony,Pest County,2031,village,0,0,50,0,none,none
+gn:3053590,Dombóvár,Tolna County,20748,town,0,0,50,0,none,none
+gn:3053623,Döbrököz,Tolna County,2120,village,0,0,50,0,none,none
+gn:3053682,Diósjenő,Nógrád,2746,village,0,0,50,0,none,none
+gn:3053684,Diósd,Pest County,6168,village,0,0,50,0,none,none
+gn:3053712,Devecser,Veszprém,5140,village,0,0,50,0,none,none
+gn:3053760,Délegyháza,Pest County,2506,village,0,0,50,0,none,none
+gn:3053764,Dég,Fejér,2354,village,0,0,50,0,none,none
+gn:3053768,Decs,Tolna County,4210,village,0,0,50,0,none,none
+gn:3053779,Dávod,Bács-Kiskun,2240,village,0,0,50,0,none,none
+gn:3053809,Dány,Pest County,4378,village,0,0,50,0,none,none
+gn:3053810,Dánszentmiklós,Pest County,2838,village,0,0,50,0,none,none
+gn:3053828,Dad,Komárom-Esztergom,1008,village,0,0,50,0,none,none
+gn:3053836,Dabas,Pest County,16590,town,0,0,50,0,none,none
+gn:3053863,Csurgó,Somogy County,5682,village,0,0,50,0,none,none
+gn:3053918,Csorna,Győr-Moson-Sopron,10825,town,0,0,50,0,none,none
+gn:3053932,Csór,Fejér,1959,village,0,0,50,0,none,none
+gn:3053938,Csopak,Veszprém,1604,village,0,0,50,0,none,none
+gn:3053971,Csömör,Pest County,7544,village,0,0,50,0,none,none
+gn:3053984,Csólyospálos,Bács-Kiskun,1728,village,0,0,50,0,none,none
+gn:3053986,Csolnok,Komárom-Esztergom,3381,village,0,0,50,0,none,none
+gn:3053991,Csokonyavisonta,Somogy County,1546,village,0,0,50,0,none,none
+gn:3054027,Csobánka,Pest County,2881,village,0,0,50,0,none,none
+gn:3054144,Csetény,Veszprém,2039,village,0,0,50,0,none,none
+gn:3054164,Cserszegtomaj,Zala County,1941,village,0,0,50,0,none,none
+gn:3054260,Csepreg,Vas County,3241,village,0,0,50,0,none,none
+gn:3054280,Csengőd,Bács-Kiskun,2291,village,0,0,50,0,none,none
+gn:3054287,Csengele,Csongrád,2004,village,0,0,50,0,none,none
+gn:3054296,Csemő,Pest County,4411,village,0,0,50,0,none,none
+gn:3054328,Csávoly,Bács-Kiskun,2080,village,0,0,50,0,none,none
+gn:3054342,Csátalja,Bács-Kiskun,1437,village,0,0,50,0,none,none
+gn:3054352,Császártöltés,Bács-Kiskun,2649,village,0,0,50,0,none,none
+gn:3054359,Császár,Komárom-Esztergom,1922,village,0,0,50,0,none,none
+gn:3054400,Csány,Heves County,2279,village,0,0,50,0,none,none
+gn:3054434,Csákvár,Fejér,5259,village,0,0,50,0,none,none
+gn:3054456,Csabrendek,Veszprém,2948,village,0,0,50,0,none,none
+gn:3054484,Cinkota,Budapest,6590,village,0,0,50,0,none,none
+gn:3054533,Celldömölk,Vas County,11421,town,0,0,50,0,none,none
+gn:3054542,Ceglédbercel,Pest County,4710,village,0,0,50,0,none,none
+gn:3054543,Cegléd,Pest County,39287,town,0,0,50,0,none,none
+gn:3054547,Cece,Fejér,2843,village,0,0,50,0,none,none
+gn:3054586,Bükkösd,Baranya,1132,village,0,0,50,0,none,none
+gn:3054597,Bük,Vas County,3174,village,0,0,50,0,none,none
+gn:3054600,Buják,Nógrád,2343,village,0,0,50,0,none,none
+gn:3054606,Bugyi,Pest County,5412,village,0,0,50,0,none,none
+gn:3054612,Bugac,Bács-Kiskun,3066,village,0,0,50,0,none,none
+gn:3054630,Budatétény,Budapest,10715,town,0,0,50,0,none,none
+gn:3054643,Budapest,Budapest,1741041,large-city,0,0,50,0,none,none
+gn:3054646,Budaörs,Pest County,25089,town,0,0,50,0,none,none
+gn:3054648,Budakeszi,Pest County,14330,town,0,0,50,0,none,none
+gn:3054651,Budakalász,Pest County,1003,village,0,0,50,0,none,none
+gn:3054652,Budajenő,Pest County,1617,village,0,0,50,0,none,none
+gn:3054663,Budafok,Budapest,26782,town,0,0,50,0,none,none
+gn:3054667,Buda,Budapest,510108,large-city,0,0,50,0,none,none
+gn:3054693,Aszód,Pest County,6186,village,0,0,50,0,none,none
+gn:3054726,Bősárkány,Győr-Moson-Sopron,2208,village,0,0,50,0,none,none
+gn:3054762,Borota,Bács-Kiskun,1309,village,0,0,50,0,none,none
+gn:3054795,Bordány,Csongrád,3097,village,0,0,50,0,none,none
+gn:3054809,Bonyhád,Tolna County,14184,town,0,0,50,0,none,none
+gn:3054811,Bőny,Győr-Moson-Sopron,2225,village,0,0,50,0,none,none
+gn:3054828,Bóly,Baranya,3642,village,0,0,50,0,none,none
+gn:3054850,Boldog,Heves County,3131,village,0,0,50,0,none,none
+gn:3054853,Bölcske,Tolna County,2946,village,0,0,50,0,none,none
+gn:3054863,Bokod,Komárom-Esztergom,2229,village,0,0,50,0,none,none
+gn:3054874,Böhönye,Somogy County,2437,village,0,0,50,0,none,none
+gn:3054878,Bogyiszló,Tolna County,2348,village,0,0,50,0,none,none
+gn:3054945,Bodajk,Fejér,4069,village,0,0,50,0,none,none
+gn:3054956,Bócsa,Bács-Kiskun,1791,village,0,0,50,0,none,none
+gn:3055030,Bicske,Fejér,11072,town,0,0,50,0,none,none
+gn:3055038,Biatorbágy,Pest County,8632,village,0,0,50,0,none,none
+gn:3055052,Bezenye,Győr-Moson-Sopron,1393,village,0,0,50,0,none,none
+gn:3055069,Berzence,Somogy County,2694,village,0,0,50,0,none,none
+gn:3055091,Berhida,Veszprém,5822,village,0,0,50,0,none,none
+gn:3055108,Beremend,Baranya,2775,village,0,0,50,0,none,none
+gn:3055130,Bercel,Nógrád,1991,village,0,0,50,0,none,none
+gn:3055182,Beloiannisz,Fejér,1100,village,0,0,50,0,none,none
+gn:3055196,Beled,Győr-Moson-Sopron,2933,village,0,0,50,0,none,none
+gn:3055234,Békásmegyer,Budapest,31914,town,0,0,50,0,none,none
+gn:3055255,Becsehely,Zala County,2255,village,0,0,50,0,none,none
+gn:3055281,Bátya,Bács-Kiskun,2190,village,0,0,50,0,none,none
+gn:3055287,Bátonyterenye,Nógrád,14214,town,0,0,50,0,none,none
+gn:3055288,Bátmonostor,Bács-Kiskun,1509,village,0,0,50,0,none,none
+gn:3055298,Bátaszék,Tolna County,6820,village,0,0,50,0,none,none
+gn:3055302,Báta,Tolna County,1891,village,0,0,50,0,none,none
+gn:3055368,Barcs,Somogy County,12116,town,0,0,50,0,none,none
+gn:3055410,Baracska,Fejér,2701,village,0,0,50,0,none,none
+gn:3055414,Baracs,Fejér,3294,village,0,0,50,0,none,none
+gn:3055484,Balotaszállás,Bács-Kiskun,1657,village,0,0,50,0,none,none
+gn:3055497,Ballószög,Bács-Kiskun,2753,village,0,0,50,0,none,none
+gn:3055519,Balatonvilágos,Somogy County,1432,village,0,0,50,0,none,none
+gn:3055533,Balatonszemes,Somogy County,1644,village,0,0,50,0,none,none
+gn:3055535,Balatonszárszó,Somogy County,1992,village,0,0,50,0,none,none
+gn:3055539,Balatonszabadi,Somogy County,2838,village,0,0,50,0,none,none
+gn:3055551,Balatonlelle,Somogy County,4910,village,0,0,50,0,none,none
+gn:3055556,Balatonkenese,Veszprém,3326,village,0,0,50,0,none,none
+gn:3055566,Balatonfüred,Veszprém,13138,town,0,0,50,0,none,none
+gn:3055568,Balatonföldvár,Somogy County,2069,village,0,0,50,0,none,none
+gn:3055575,Balatonfenyves,Somogy County,1885,village,0,0,50,0,none,none
+gn:3055584,Balatonboglár,Somogy County,5964,village,0,0,50,0,none,none
+gn:3055586,Balatonberény,Somogy County,1212,village,0,0,50,0,none,none
+gn:3055590,Balatonalmádi,Veszprém,8364,village,0,0,50,0,none,none
+gn:3055601,Balassagyarmat,Nógrád,13931,town,0,0,50,0,none,none
+gn:3055623,Bakonyszentlászló,Győr-Moson-Sopron,1913,village,0,0,50,0,none,none
+gn:3055644,Bakonycsernye,Fejér,3177,village,0,0,50,0,none,none
+gn:3055664,Bak,Zala County,1784,village,0,0,50,0,none,none
+gn:3055671,Bajót,Komárom-Esztergom,1597,village,0,0,50,0,none,none
+gn:3055674,Bajna,Komárom-Esztergom,2024,village,0,0,50,0,none,none
+gn:3055685,Baja,Bács-Kiskun,37714,town,0,0,50,0,none,none
+gn:3055686,Baj,Komárom-Esztergom,2664,village,0,0,50,0,none,none
+gn:3055721,Bag,Pest County,4071,village,0,0,50,0,none,none
+gn:3055730,Badacsonytomaj,Veszprém,2271,village,0,0,50,0,none,none
+gn:3055739,Bácsszőlős,Bács-Kiskun,1412,village,0,0,50,0,none,none
+gn:3055753,Bácsborsód,Bács-Kiskun,1245,village,0,0,50,0,none,none
+gn:3055757,Bácsbokod,Bács-Kiskun,3077,village,0,0,50,0,none,none
+gn:3055760,Bácsalmás,Bács-Kiskun,7608,village,0,0,50,0,none,none
+gn:3055765,Babót,Győr-Moson-Sopron,1168,village,0,0,50,0,none,none
+gn:3055772,Bábolna,Komárom-Esztergom,3885,village,0,0,50,0,none,none
+gn:3055776,Babócsa,Somogy County,1877,village,0,0,50,0,none,none
+gn:3055812,Atkár,Heves County,1715,village,0,0,50,0,none,none
+gn:3055827,Ásványráró,Győr-Moson-Sopron,1985,village,0,0,50,0,none,none
+gn:3055835,Ásotthalom,Csongrád,4134,village,0,0,50,0,none,none
+gn:3055896,Apostag,Bács-Kiskun,2099,village,0,0,50,0,none,none
+gn:3055899,Áporka,Pest County,1142,village,0,0,50,0,none,none
+gn:3055901,Apc,Heves County,2754,village,0,0,50,0,none,none
+gn:3055913,Aparhant,Tolna County,1154,village,0,0,50,0,none,none
+gn:3055914,Apaj,Pest County,1287,village,0,0,50,0,none,none
+gn:3055970,Angyalföld,Budapest,62006,town,0,0,50,0,none,none
+gn:3055988,Andocs,Somogy County,1193,village,0,0,50,0,none,none
+gn:3056048,Alsószentmárton,Baranya,1119,village,0,0,50,0,none,none
+gn:3056094,Alsópáhok,Zala County,1254,village,0,0,50,0,none,none
+gn:3056097,Alsóörs,Veszprém,1335,village,0,0,50,0,none,none
+gn:3056108,Alsónémedi,Pest County,4974,village,0,0,50,0,none,none
+gn:3056290,Almásfüzitő,Komárom-Esztergom,2348,village,0,0,50,0,none,none
+gn:3056321,Alcsútdoboz,Fejér,1427,village,0,0,50,0,none,none
+gn:3056326,Albertirsa,Pest County,11864,town,0,0,50,0,none,none
+gn:3056327,Albertfalva,Pest County,11845,town,0,0,50,0,none,none
+gn:3056331,Alap,Fejér,2149,village,0,0,50,0,none,none
+gn:3056347,Akasztó,Bács-Kiskun,3480,village,0,0,50,0,none,none
+gn:3056357,Ajka,Veszprém,31407,town,0,0,50,0,none,none
+gn:3056380,Ágfalva,Győr-Moson-Sopron,1971,village,0,0,50,0,none,none
+gn:3056391,Ágasegyháza,Bács-Kiskun,1898,village,0,0,50,0,none,none
+gn:3056399,Agárd,Fejér,4426,village,0,0,50,0,none,none
+gn:3056414,Adony,Fejér,3812,village,0,0,50,0,none,none
+gn:3056418,Ádánd,Somogy County,2306,village,0,0,50,0,none,none
+gn:3056424,Adács,Heves County,2890,village,0,0,50,0,none,none
+gn:3056436,Acsa,Pest County,1500,village,0,0,50,0,none,none
+gn:3056437,Ács,Komárom-Esztergom,7180,village,0,0,50,0,none,none
+gn:3056445,Abda,Győr-Moson-Sopron,2997,village,0,0,50,0,none,none
+gn:3056450,Aba,Fejér,4551,village,0,0,50,0,none,none
+gn:3338787,Tiszaalpár,Bács-Kiskun,5070,village,0,0,50,0,none,none
+gn:6282830,Ászár,Komárom-Esztergom,1610,village,0,0,50,0,none,none
+gn:6690770,Újpalota,Pest County,36259,town,0,0,50,0,none,none
+gn:7117203,Budapest V. kerület,Budapest,26284,town,0,0,50,0,none,none
+gn:7284823,Budapest XII. kerület,Budapest,56544,town,0,0,50,0,none,none
+gn:7284824,Budapest XI. kerület,Budapest,139049,city,0,0,50,0,none,none
+gn:7284826,Budapest VIII. kerület,Budapest,82222,town,0,0,50,0,none,none
+gn:7284828,Budapest VI. kerület,Budapest,42120,town,0,0,50,0,none,none
+gn:7284830,Budapest XIII. kerület,Budapest,113531,city,0,0,50,0,none,none
+gn:7284831,Budapest IV. kerület,Budapest,98374,town,0,0,50,0,none,none
+gn:7284832,Budapest XV. kerület,Budapest,80218,town,0,0,50,0,none,none
+gn:7284833,Budapest XVI. kerület,Budapest,68484,town,0,0,50,0,none,none
+gn:7284835,Budapest XIX. kerület,Budapest,61610,town,0,0,50,0,none,none
+gn:7284836,Budapest XVIII. kerület,Budapest,93225,town,0,0,50,0,none,none
+gn:7284837,Budapest XXIII. kerület,Budapest,20387,town,0,0,50,0,none,none
+gn:7284838,Budapest XXII. kerület,Budapest,50499,town,0,0,50,0,none,none
+gn:7284839,Budapest XXI. kerület,Budapest,76339,town,0,0,50,0,none,none
+gn:7284840,Budapest XX. kerület,Budapest,63371,town,0,0,50,0,none,none
+gn:7284841,Budapest XVII. kerület,Budapest,78250,town,0,0,50,0,none,none
+gn:7284842,Budapest III. kerület,Budapest,123723,city,0,0,50,0,none,none
+gn:7284843,Budapest II. kerület,Budapest,88729,town,0,0,50,0,none,none
+gn:7284844,Budapest I. kerület,Budapest,24728,town,0,0,50,0,none,none
+gn:7284899,Algyő,Csongrád,5247,village,0,0,50,0,none,none
+gn:7284900,Szelevény,Jász-Nagykun-Szolnok,1137,village,0,0,50,0,none,none
+gn:7284903,Kismaros,Pest County,1911,village,0,0,50,0,none,none
+gn:7284908,Héhalom,Nógrád,1006,village,0,0,50,0,none,none
+gn:7284910,Mosonszentmiklós,Győr-Moson-Sopron,2339,village,0,0,50,0,none,none
+gn:7284912,Kerepes,Pest County,9960,village,0,0,50,0,none,none
+gn:7288071,Miskolctapolca,Borsod-Abaúj-Zemplén,4693,village,0,0,50,0,none,none
+gn:8426243,Tiszaszőlős,Jász-Nagykun-Szolnok,1946,village,0,0,50,0,none,none
+gn:8449649,Martin Kertváros,Borsod-Abaúj-Zemplén,6077,village,0,0,50,0,none,none
+gn:11054702,Lipótváros,Budapest,12050,town,0,0,50,0,none,none
+gn:11054704,Józsefváros,Budapest,76957,town,0,0,50,0,none,none
+gn:11072199,Országút,Budapest,11740,town,0,0,50,0,none,none
+gn:12503655,Csepel-Királyerdő,Budapest,15917,town,0,0,50,0,none,none
+gn:12522574,Csillaghegy,Budapest,10748,town,0,0,50,0,none,none
+gn:12749844,Soroksár-Ujtelep,Budapest,6043,village,0,0,50,0,none,none
+gn:12749845,Csepel-Belváros,Budapest,10461,town,0,0,50,0,none,none
+gn:12749846,Csepel-Kertváros,Budapest,5745,village,0,0,50,0,none,none
+gn:12749849,Csepel-Szabótelep,Budapest,7485,village,0,0,50,0,none,none
+gn:12749850,Csepel-Királymajor,Budapest,3589,village,0,0,50,0,none,none
+gn:12749851,Csepel-Csillagtelep,Budapest,18527,town,0,0,50,0,none,none
+gn:12749852,Csepel-Erdősor,Budapest,9992,village,0,0,50,0,none,none
+gn:12749853,Csepel-Háros,Budapest,1653,village,0,0,50,0,none,none
+gn:12749854,Pacsirtatelep,Budapest,11756,town,0,0,50,0,none,none
+gn:12749855,Kossuthfalva,Budapest,3803,village,0,0,50,0,none,none
+gn:12749856,Gubacsipuszta,Budapest,10250,town,0,0,50,0,none,none
+gn:12749857,Gubacs,Budapest,1680,village,0,0,50,0,none,none
+gn:12749858,Wekerletelep,Budapest,11461,town,0,0,50,0,none,none
+gn:12749859,Külső-Ferencváros,Budapest,3838,village,0,0,50,0,none,none
+gn:12749860,Középső-Ferencváros,Budapest,34036,town,0,0,50,0,none,none
+gn:12749861,Belső-Ferencváros,Budapest,9648,village,0,0,50,0,none,none
+gn:12749862,József Attila-lakótelep,Budapest,12066,town,0,0,50,0,none,none
+gn:12749863,Gubacsidűlő,Budapest,1096,village,0,0,50,0,none,none
+gn:12749864,Almáskert,Budapest,1264,village,0,0,50,0,none,none
+gn:12749865,Belsőmajor,Budapest,2594,village,0,0,50,0,none,none
+gn:12749866,Bélatelep,Budapest,1348,village,0,0,50,0,none,none
+gn:12749867,Bókaytelep,Budapest,5113,village,0,0,50,0,none,none
+gn:12749868,Erdőskert,Budapest,2207,village,0,0,50,0,none,none
+gn:12749869,Erzsébettelep,Budapest,4335,village,0,0,50,0,none,none
+gn:12749871,Ganzkertváros,Budapest,3375,village,0,0,50,0,none,none
+gn:12749872,Ganztelep,Budapest,3812,village,0,0,50,0,none,none
+gn:12749873,Gloriett-telep,Budapest,6672,village,0,0,50,0,none,none
+gn:12749875,Havanna-lakótelep,Budapest,13357,town,0,0,50,0,none,none
+gn:12749877,Kossuth Ferenc-telep,Budapest,4522,village,0,0,50,0,none,none
+gn:12749878,Krepuska Géza-telep,Budapest,3071,village,0,0,50,0,none,none
+gn:12749879,Lakatos-lakótelep,Budapest,5370,village,0,0,50,0,none,none
+gn:12749880,Liptáktelep,Budapest,3666,village,0,0,50,0,none,none
+gn:12749881,Lónyaytelep,Budapest,2319,village,0,0,50,0,none,none
+gn:12749882,Miklóstelep,Budapest,5152,village,0,0,50,0,none,none
+gn:12749883,Rendessytelep,Budapest,1617,village,0,0,50,0,none,none
+gn:12749884,Szemeretelep,Budapest,7455,village,0,0,50,0,none,none
+gn:12749885,Szent Imre-kertváros,Budapest,7031,village,0,0,50,0,none,none
+gn:12749886,Szent Lőrinc-lakótelep,Budapest,3504,village,0,0,50,0,none,none
+gn:12749887,Újpéteritelep,Budapest,10685,town,0,0,50,0,none,none
+gn:12749889,Akadémiaújtelep,Budapest,3004,village,0,0,50,0,none,none
+gn:12749890,Madárdomb,Budapest,2817,village,0,0,50,0,none,none
+gn:12749891,Rákoscsaba-Újtelep,Pest County,11148,town,0,0,50,0,none,none
+gn:12749892,Rákoskert,Budapest,9792,village,0,0,50,0,none,none
+gn:12749893,Régiakadémiatelep,Budapest,1005,village,0,0,50,0,none,none
+gn:12749895,Felsőrákos,Budapest,8223,village,0,0,50,0,none,none
+gn:12749896,Gyárdűlő,Budapest,7486,village,0,0,50,0,none,none
+gn:12749897,Keresztúridűlő,Budapest,1788,village,0,0,50,0,none,none
+gn:12749898,Kőbánya-Kertváros,Budapest,1938,village,0,0,50,0,none,none
+gn:12749900,Laposdűlő,Budapest,5324,village,0,0,50,0,none,none
+gn:12749901,Ligettelek,Budapest,7471,village,0,0,50,0,none,none
+gn:12749902,Népliget,Budapest,1049,village,0,0,50,0,none,none
+gn:12749903,Téglagyárdűlő,Budapest,1630,village,0,0,50,0,none,none
+gn:12749904,Óhegy,Budapest,25842,town,0,0,50,0,none,none
+gn:12749905,Újhegy,Budapest,14857,town,0,0,50,0,none,none
+gn:12749906,Corvinnegyed,Budapest,8508,village,0,0,50,0,none,none
+gn:12749907,Csarnoknegyed,Budapest,9888,village,0,0,50,0,none,none
+gn:12749908,Ganznegyed,Budapest,1446,village,0,0,50,0,none,none
+gn:12749910,Losoncinegyed,Budapest,7704,village,0,0,50,0,none,none
+gn:12749911,Magdolnanegyed,Budapest,10320,town,0,0,50,0,none,none
+gn:12749912,Népszínháznegyed,Budapest,6406,village,0,0,50,0,none,none
+gn:12749913,Orczynegyed,Budapest,9223,village,0,0,50,0,none,none
+gn:12749914,Palotanegyed,Budapest,9705,village,0,0,50,0,none,none
+gn:12749915,Századosnegyed,Budapest,3774,village,0,0,50,0,none,none
+gn:12749916,Tisztviselőtelep,Budapest,2277,village,0,0,50,0,none,none
+gn:12749917,Istvánmező,Budapest,11794,town,0,0,50,0,none,none
+gn:13535559,Orbánhegy,Budapest,6074,village,0,0,50,0,none,none
+gn:13589152,Újlipótváros,Budapest,36888,town,0,0,50,0,none,none
+gn:13589153,Újlak,Budapest,7041,village,0,0,50,0,none,none
+gn:13645441,Alacskai úti lakótelep,Budapest,2083,village,0,0,50,0,none,none
+gn:13645442,Alsórákos,Budapest,29023,town,0,0,50,0,none,none
+gn:13645445,Árpádföld,Pest County,6186,village,0,0,50,0,none,none
+gn:13712801,Káposztásmegyer,Budapest,21462,town,0,0,50,0,none,none
+gn:13712802,Megyer,Budapest,4702,village,0,0,50,0,none,none
+gn:13712803,Újpest városközpont,Budapest,6887,village,0,0,50,0,none,none

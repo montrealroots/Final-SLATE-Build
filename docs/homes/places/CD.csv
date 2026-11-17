@@ -1,0 +1,119 @@
+place_id,name,region,population,market,verified_homes,dated_listings,shortfall_to_50,recorded_sales,rent_source,price_source
+gn:203717,Yangambi,Tshopo,62082,town,0,0,50,0,none,none
+gn:204283,Watsa,Haut-Uele,47278,town,0,0,50,0,none,none
+gn:204318,Wamba,Haut-Uele,17373,town,0,0,50,0,none,none
+gn:204405,Uvira,South Kivu,407092,city,0,0,50,0,none,none
+gn:204953,Tshikapa,Kasai,634529,large-city,0,0,50,0,none,none
+gn:205970,Sake,North Kivu,17151,town,0,0,50,0,none,none
+gn:206047,Rutshuru,North Kivu,82680,town,0,0,50,0,none,none
+gn:206113,Pweto,Haut-Katanga,38298,town,0,0,50,0,none,none
+gn:206289,Pepa,Tanganyika,24767,town,0,0,50,0,none,none
+gn:206847,Nyunzu,Tanganyika,62565,town,0,0,50,0,none,none
+gn:207570,Mwene-Ditu,Lomami,189177,city,0,0,50,0,none,none
+gn:207596,Mweka,Kasai,81267,town,0,0,50,0,none,none
+gn:208182,Mulongo,Haut-Lomami,89340,town,0,0,50,0,none,none
+gn:208725,Mangbwalu,Ituri,45318,town,0,0,50,0,none,none
+gn:209000,Baudhuinville,Tanganyika,81181,town,0,0,50,0,none,none
+gn:209161,Miabi,East Kasai,79929,town,0,0,50,0,none,none
+gn:209228,Mbuji-Mayi,East Kasai,2101332,large-city,0,0,50,0,none,none
+gn:209598,Manono,Tanganyika,82465,town,0,0,50,0,none,none
+gn:209856,Malemba-Nkulu,Haut-Lomami,25430,town,0,0,50,0,none,none
+gn:210379,Lusambo,Sankuru,49376,town,0,0,50,0,none,none
+gn:210399,Luputa,Lomami,54676,town,0,0,50,0,none,none
+gn:210674,Lukula,Sankuru,46534,town,0,0,50,0,none,none
+gn:210939,Luebo,Kasai,45443,town,0,0,50,0,none,none
+gn:211069,Lubero,North Kivu,41722,town,0,0,50,0,none,none
+gn:211098,Lubao,Lomami,37818,town,0,0,50,0,none,none
+gn:211647,Lodja,Sankuru,91409,town,0,0,50,0,none,none
+gn:211734,Lisala,Mongala,117464,city,0,0,50,0,none,none
+gn:212360,Kongolo,Tanganyika,86932,town,0,0,50,0,none,none
+gn:212730,Kisangani,Tshopo,1602144,large-city,0,0,50,0,none,none
+gn:212760,Kirumba,North Kivu,52041,town,0,0,50,0,none,none
+gn:212795,Kipamba,Haut-Lomami,46430,town,0,0,50,0,none,none
+gn:212902,Kindu,Maniema,234651,city,0,0,50,0,none,none
+gn:213576,Kayna,North Kivu,51103,town,0,0,50,0,none,none
+gn:213666,Katwa,North Kivu,89352,town,0,0,50,0,none,none
+gn:213851,Katanda,North Kivu,42105,town,0,0,50,0,none,none
+gn:213940,Kasongo,Maniema,81629,town,0,0,50,0,none,none
+gn:214297,Kanyobagonga,North Kivu,44146,town,0,0,50,0,none,none
+gn:214390,Kanyama,Haut-Lomami,80043,town,0,0,50,0,none,none
+gn:214481,Kananga,Kasai-Central,1271704,large-city,0,0,50,0,none,none
+gn:214575,Kampene,Maniema,37034,town,0,0,50,0,none,none
+gn:214614,Kamina,Haut-Lomami,200184,city,0,0,50,0,none,none
+gn:214925,Kalima,Tanganyika,72327,town,0,0,50,0,none,none
+gn:214974,Kalemie,Tanganyika,160961,city,0,0,50,0,none,none
+gn:215527,Kabinda,Lomami,219396,city,0,0,50,0,none,none
+gn:215558,Kabeya-Kamwanga,East Kasai,44093,town,0,0,50,0,none,none
+gn:215605,Kabare,South Kivu,37034,town,0,0,50,0,none,none
+gn:215668,Kabalo,Tanganyika,81191,town,0,0,50,0,none,none
+gn:215771,Isiro,Haut-Uele,255409,city,0,0,50,0,none,none
+gn:215814,Isamba,Kasai,8723,village,0,0,50,0,none,none
+gn:215976,Ilebo,Kasai,117245,city,0,0,50,0,none,none
+gn:216281,Goma,North Kivu,78200,town,0,0,50,0,none,none
+gn:216404,Gbadolite,Nord-Ubangi,73835,town,0,0,50,0,none,none
+gn:216449,Gandajika,Lomami,208051,city,0,0,50,0,none,none
+gn:217100,Djugu,Ituri,41409,town,0,0,50,0,none,none
+gn:217389,Demba,Kasai-Central,22263,town,0,0,50,0,none,none
+gn:217562,Butembo,North Kivu,286242,city,0,0,50,0,none,none
+gn:217570,Buta,Bas-Uele,80751,town,0,0,50,0,none,none
+gn:217637,Businga,Nord-Ubangi,48339,town,0,0,50,0,none,none
+gn:217695,Bunia,Ituri,399282,city,0,0,50,0,none,none
+gn:217745,Bumba,Mongala,154586,city,0,0,50,0,none,none
+gn:217831,Bukavu,South Kivu,816811,large-city,0,0,50,0,none,none
+gn:217834,Bukama,Haut-Lomami,105530,city,0,0,50,0,none,none
+gn:218229,Bongandanga,Mongala,4105,village,0,0,50,0,none,none
+gn:218253,Bondo,Bas-Uele,17860,town,0,0,50,0,none,none
+gn:218680,Boende,Tshuapa,50794,town,0,0,50,0,none,none
+gn:218855,Binga,Mongala,96790,town,0,0,50,0,none,none
+gn:219057,Beni,North Kivu,140731,city,0,0,50,0,none,none
+gn:219414,Basoko,Tshopo,76371,town,0,0,50,0,none,none
+gn:220075,Bakwa,Haut-Uele,100575,city,0,0,50,0,none,none
+gn:220121,Babamba,Tshopo,81740,town,0,0,50,0,none,none
+gn:220223,Aru,Ituri,45516,town,0,0,50,0,none,none
+gn:220448,Aketi,Bas-Uele,61437,town,0,0,50,0,none,none
+gn:922083,Tshilenge,Lualaba,116073,city,0,0,50,0,none,none
+gn:922559,Mokambo,Haut-Katanga,34762,town,0,0,50,0,none,none
+gn:922597,Malemba,Lualaba,44027,town,0,0,50,0,none,none
+gn:922704,Lubumbashi,Haut-Katanga,2221925,large-city,0,0,50,0,none,none
+gn:922741,Likasi,Haut-Katanga,635768,large-city,0,0,50,0,none,none
+gn:922773,Kolwezi,Lualaba,790248,large-city,0,0,50,0,none,none
+gn:922806,Kipushi,Haut-Katanga,169635,city,0,0,50,0,none,none
+gn:923058,Kambove,Haut-Katanga,99884,town,0,0,50,0,none,none
+gn:923186,Fungurume,Lualaba,50100,town,0,0,50,0,none,none
+gn:2310763,Zongo,Sud-Ubangi,48658,town,0,0,50,0,none,none
+gn:2311127,Tshela,Bas-Congo,64210,town,0,0,50,0,none,none
+gn:2311968,Nioki,Mai-Ndombe,62153,town,0,0,50,0,none,none
+gn:2312249,Mushie,Mai-Ndombe,61336,town,0,0,50,0,none,none
+gn:2312393,Moanda,Bas-Congo,128804,city,0,0,50,0,none,none
+gn:2312888,Mbanza-Ngungu,Bas-Congo,142773,city,0,0,50,0,none,none
+gn:2312895,Mbandaka,Équateur,455011,city,0,0,50,0,none,none
+gn:2313002,Matadi,Bas-Congo,425662,city,0,0,50,0,none,none
+gn:2313011,Masi-Manimba,Kwilu,45775,town,0,0,50,0,none,none
+gn:2313084,Mangai,Kwilu,63713,town,0,0,50,0,none,none
+gn:2313371,Lukolela,Équateur,15000,town,0,0,50,0,none,none
+gn:2313762,Libenge,Sud-Ubangi,37344,town,0,0,50,0,none,none
+gn:2313874,Kutu,Mai-Ndombe,56061,town,0,0,50,0,none,none
+gn:2314302,Kinshasa,Kinshasa,16000000,large-city,0,0,50,0,none,none
+gn:2314523,Kimpese,Bas-Congo,79539,town,0,0,50,0,none,none
+gn:2314705,Kikwit,Kwilu,509367,large-city,0,0,50,0,none,none
+gn:2314935,Kenge,Bas-Congo,63317,town,0,0,50,0,none,none
+gn:2315026,Kasongo-Lunda,Kwango,20060,town,0,0,50,0,none,none
+gn:2315057,Kasangulu,Bas-Congo,45400,town,0,0,50,0,none,none
+gn:2315417,Inongo,Mai-Ndombe,68852,town,0,0,50,0,none,none
+gn:2315419,Inkisi,Bas-Congo,115317,city,0,0,50,0,none,none
+gn:2315579,Idiofa,Kwilu,87882,town,0,0,50,0,none,none
+gn:2315728,Gemena,Sud-Ubangi,197159,city,0,0,50,0,none,none
+gn:2315961,Dungu,Mai-Ndombe,41076,town,0,0,50,0,none,none
+gn:2316091,Dibaya-Lubwe,Kwilu,55672,town,0,0,50,0,none,none
+gn:2316259,Bulungu,Kwilu,81393,town,0,0,50,0,none,none
+gn:2316473,Bosobolo,Nord-Ubangi,14553,town,0,0,50,0,none,none
+gn:2316702,Boma,Bas-Congo,297009,city,0,0,50,0,none,none
+gn:2316748,Bolobo,Mai-Ndombe,47032,town,0,0,50,0,none,none
+gn:2316770,Bolenge,Équateur,79648,town,0,0,50,0,none,none
+gn:2317285,Basankusu,Équateur,41141,town,0,0,50,0,none,none
+gn:2317397,Bandundu Province,Kwilu,202904,city,0,0,50,0,none,none
+gn:2593460,Masina,Kinshasa,485167,city,0,0,50,0,none,none
+gn:8329635,Hyosha,North Kivu,74502,town,0,0,50,0,none,none
+gn:8461573,Mwene,Lualaba,295683,city,0,0,50,0,none,none
+gn:9946557,Kituku,Tanganyika,66378,town,0,0,50,0,none,none
+gn:11905965,Mangina,North Kivu,55439,town,0,0,50,0,none,none

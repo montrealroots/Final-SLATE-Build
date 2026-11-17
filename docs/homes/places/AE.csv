@@ -1,0 +1,106 @@
+place_id,name,region,population,market,verified_homes,dated_listings,shortfall_to_50,recorded_sales,rent_source,price_source
+gn:290503,Warīsān,Dubai,108759,city,0,0,50,0,none,none
+gn:290581,Umm Suqaym,Dubai,16459,town,0,0,50,0,none,none
+gn:290594,Umm Al Quwain City,Umm Al Quwain,59098,town,0,0,50,0,none,none
+gn:290680,Ţarīf Kalbā,Fujairah,51000,town,0,0,50,0,none,none
+gn:291061,Ar Rāshidīyah,Dubai,38425,town,0,0,50,0,none,none
+gn:291074,Ras Al Khaimah,Ras Al Khaimah,351943,city,0,0,50,0,none,none
+gn:291279,Muzayri‘,Abu Dhabi,10000,town,0,0,50,0,none,none
+gn:291339,Murbaḩ,Sharjah,2000,village,0,0,50,0,none,none
+gn:291489,Maşfūţ,Ajman,8988,village,0,0,50,0,none,none
+gn:291580,Zayed City,Abu Dhabi,63482,town,0,0,50,0,none,none
+gn:291696,Khawr Fakkān,Sharjah,40677,town,0,0,50,0,none,none
+gn:291763,Kalbā,Sharjah,37545,town,0,0,50,0,none,none
+gn:291775,Jumayrā,Dubai,39080,town,0,0,50,0,none,none
+gn:291794,Al Jazīrah al Ḩamrā’,Ras Al Khaimah,10190,town,0,0,50,0,none,none
+ae-dubai,Dubai,Dubai,3790000,large-city,0,0,50,0,none,none
+gn:292231,Dibba Al-Fujairah,Fujairah,30000,town,0,0,50,0,none,none
+gn:292239,Dibba Al-Hisn,Fujairah,26395,town,0,0,50,0,none,none
+gn:292261,Dayrah,Dubai,400000,city,0,0,50,0,none,none
+gn:292672,Sharjah,Sharjah,1800000,large-city,0,0,50,0,none,none
+gn:292674,Ash Sha‘m,Ras Al Khaimah,1550,village,0,0,50,0,none,none
+gn:292688,Ar Ruways,Abu Dhabi,25000,town,0,0,50,0,none,none
+gn:292692,Ar Rams,Ras Al Khaimah,13000,town,0,0,50,0,none,none
+gn:292799,Al Manāmah,Ajman,5823,village,0,0,50,0,none,none
+gn:292856,Al Ḩamrīyah,Sharjah,3297,village,0,0,50,0,none,none
+gn:292862,Ḩattā,Dubai,15324,town,0,0,50,0,none,none
+gn:292878,Fujairah,Fujairah,118933,city,0,0,50,0,none,none
+gn:292913,Al Ain City,Abu Dhabi,846747,large-city,0,0,50,0,none,none
+gn:292932,Ajman,Ajman,490035,city,0,0,50,0,none,none
+gn:292953,Adh Dhayd,Sharjah,20165,town,0,0,50,0,none,none
+gn:292968,Abu Dhabi,Abu Dhabi,1807000,large-city,0,0,50,0,none,none
+gn:292991,Abū Hayl,Dubai,18043,town,0,0,50,0,none,none
+gn:385024,As Saţwah,Dubai,40997,town,0,0,50,0,none,none
+gn:394142,Margham,Dubai,1280,village,0,0,50,0,none,none
+gn:400747,Abū Mūsá,,4213,village,0,0,50,0,none,none
+gn:412567,Nadd al Ḩumr,Dubai,13589,town,0,0,50,0,none,none
+gn:412981,Al Lusaylī,Dubai,2514,village,0,0,50,0,none,none
+gn:413256,Suwayḩān,Abu Dhabi,5403,village,0,0,50,0,none,none
+gn:414901,Al Ḩamīdīyah,Ajman,27000,town,0,0,50,0,none,none
+gn:6691079,Al Waheda,Dubai,21608,town,0,0,50,0,none,none
+gn:6691083,Al Twar First,Dubai,12114,town,0,0,50,0,none,none
+gn:6691085,AL Twar Second,Dubai,5068,village,0,0,50,0,none,none
+gn:6691086,Al Qusais Second,Dubai,12851,town,0,0,50,0,none,none
+gn:6691091,Al Karama,Dubai,75560,town,0,0,50,0,none,none
+gn:6691093,Al Hudaiba,Dubai,7699,village,0,0,50,0,none,none
+gn:6691096,Al Wasl,Dubai,22153,town,0,0,50,0,none,none
+gn:6691109,Knowledge Village,Dubai,15000,town,0,0,50,0,none,none
+gn:6691113,The Palm Jumeirah,Dubai,25500,town,0,0,50,0,none,none
+gn:6691114,Za'abeel,Dubai,5283,village,0,0,50,0,none,none
+gn:6691115,Oud Metha,Dubai,8321,village,0,0,50,0,none,none
+gn:7289825,Bur Dubai,Dubai,18698,town,0,0,50,0,none,none
+gn:8057551,Khalifah A City,Abu Dhabi,85374,town,0,0,50,0,none,none
+gn:8057552,Shakhbout City,Abu Dhabi,6515,village,0,0,50,0,none,none
+gn:8200824,Mirdif,Dubai,60288,town,0,0,50,0,none,none
+gn:8201275,Hawr al ‘Anz,Dubai,84661,town,0,0,50,0,none,none
+gn:8225407,Mankhūl,Dubai,41244,town,0,0,50,0,none,none
+gn:8225949,Būr Sa‘īd,Dubai,11142,town,0,0,50,0,none,none
+gn:8226485,Nāyf,Dubai,53075,town,0,0,50,0,none,none
+gn:8226590,Al Murar al Qadīm,Dubai,19831,town,0,0,50,0,none,none
+gn:8226648,Ar Riqqah,Dubai,8222,village,0,0,50,0,none,none
+gn:8469658,Al Warqaa,Dubai,59111,town,0,0,50,0,none,none
+gn:8469668,International City,Dubai,120000,city,0,0,50,0,none,none
+gn:8469788,Dubai Marina,Dubai,120000,city,0,0,50,0,none,none
+gn:8469805,Dubai Sports City,Dubai,15000,town,0,0,50,0,none,none
+gn:8469811,Dubai Internet City,Dubai,24000,town,0,0,50,0,none,none
+gn:8469814,Al Sufouh,Dubai,3337,village,0,0,50,0,none,none
+gn:8469819,Al Safa,Dubai,15672,town,0,0,50,0,none,none
+gn:8475866,Ar Rumaylah,Ajman,86000,town,0,0,50,0,none,none
+gn:8475913,Mushayrif,Ajman,6539,village,0,0,50,0,none,none
+gn:8475923,Al Jurf,Ajman,18000,town,0,0,50,0,none,none
+gn:8476509,Al Majaz,Sharjah,116503,city,0,0,50,0,none,none
+gn:8539023,As Saţwah Sharq,Dubai,11619,town,0,0,50,0,none,none
+gn:8541937,Dubai Festival City,Dubai,77000,town,0,0,50,0,none,none
+gn:8541977,Dubai International Financial Centre,Dubai,36000,town,0,0,50,0,none,none
+gn:10172907,Downtown Dubai,Dubai,13201,town,0,0,50,0,none,none
+gn:11048853,Dubai Investments Park,Dubai,160000,city,0,0,50,0,none,none
+gn:11524601,Jebel Ali,Dubai,210000,city,0,0,50,0,none,none
+gn:12042052,Bani Yas City,Abu Dhabi,80498,town,0,0,50,0,none,none
+gn:12042053,Musaffah,Abu Dhabi,243341,city,0,0,50,0,none,none
+gn:12047416,Al Shamkhah City,Abu Dhabi,61710,town,0,0,50,0,none,none
+gn:12047417,Reef Al Fujairah City,Fujairah,82310,town,0,0,50,0,none,none
+gn:12470174,Al Wiqan,Abu Dhabi,2000,village,0,0,50,0,none,none
+gn:12748542,Al Faqaa,Abu Dhabi,2291,village,0,0,50,0,none,none
+gn:12748680,Sha'biyyat Al Hiyar,Abu Dhabi,7610,village,0,0,50,0,none,none
+gn:13117825,Sha'biyyat Milе̄hah,Sharjah,4768,village,0,0,50,0,none,none
+gn:13118419,Umm Al Sheif,Dubai,6263,village,0,0,50,0,none,none
+gn:13118420,Al Bada'a,Dubai,18816,town,0,0,50,0,none,none
+gn:13118421,Al Muteena,Dubai,48739,town,0,0,50,0,none,none
+gn:13118422,Al Mizhar First,Dubai,17498,town,0,0,50,0,none,none
+gn:13118423,Al Mizhar Second,Dubai,11967,town,0,0,50,0,none,none
+gn:13118424,Dubai Silicon Oasis,Dubai,90000,town,0,0,50,0,none,none
+gn:13118429,Dubai Motor City,Dubai,8561,village,0,0,50,0,none,none
+gn:13118430,DAMAC Hills,Dubai,8000,village,0,0,50,0,none,none
+gn:13118431,Al Furjan,Dubai,26000,town,0,0,50,0,none,none
+gn:13118432,Business Bay,Dubai,191000,city,0,0,50,0,none,none
+gn:13118433,Al Qusais 1,Dubai,48378,town,0,0,50,0,none,none
+gn:13118434,Al Twar 3,Dubai,11185,town,0,0,50,0,none,none
+gn:13118435,Al Khabaisi,Dubai,6737,village,0,0,50,0,none,none
+gn:13118436,Al Khawaneej 1,Dubai,12241,town,0,0,50,0,none,none
+gn:13118437,Halwan,Sharjah,19389,town,0,0,50,0,none,none
+gn:13118438,Al Sajaah,Sharjah,53079,town,0,0,50,0,none,none
+gn:13118439,Lahbab,Dubai,53079,town,0,0,50,0,none,none
+gn:13118445,Al Madam,Sharjah,8652,village,0,0,50,0,none,none
+gn:13118446,Al Raafah,Umm Al Quwain,2704,village,0,0,50,0,none,none
+gn:13118447,Mohammed Bin Zayed City,Abu Dhabi,85000,town,0,0,50,0,none,none
+gn:13118448,Masdar City,Abu Dhabi,15000,town,0,0,50,0,none,none

@@ -1,0 +1,23 @@
+place_id,name,region,population,market,verified_homes,dated_listings,shortfall_to_50,recorded_sales,rent_source,price_source
+gn:3375103,Windsor Forest,Essequibo Islands-West Demerara,1602,village,0,0,50,0,none,none
+gn:3375409,Vreed-en-Hoop,Essequibo Islands-West Demerara,3073,village,0,0,50,0,none,none
+gn:3375522,Tuschen,Essequibo Islands-West Demerara,8286,village,0,0,50,0,none,none
+gn:3375941,Skeldon,East Berbice-Corentyne,5859,village,0,0,50,0,none,none
+gn:3376223,Rosignol,Mahaica-Berbice,5782,village,0,0,50,0,none,none
+gn:3376227,Rose Hall,East Berbice-Corentyne,8000,village,0,0,50,0,none,none
+gn:3376228,Rose Hall,East Berbice-Corentyne,4532,village,0,0,50,0,none,none
+gn:3376520,Parika,Essequibo Islands-West Demerara,4081,village,0,0,50,0,none,none
+gn:3376538,Paradise,Demerara-Mahaica,2050,village,0,0,50,0,none,none
+gn:3376762,New Amsterdam,East Berbice-Corentyne,35039,town,0,0,50,0,none,none
+gn:3377263,Mahdia,Potaro-Siparuni,4200,village,0,0,50,0,none,none
+gn:3377265,Mahaicony Village,Mahaica-Berbice,2130,village,0,0,50,0,none,none
+gn:3377267,Mahaica Village,Demerara-Mahaica,4867,village,0,0,50,0,none,none
+gn:3377301,Mabaruma,Barima-Waini,6366,village,0,0,50,0,none,none
+gn:3377408,Linden,Upper Demerara-Berbice,44690,town,0,0,50,0,none,none
+gn:3377425,Lethem,Upper Takutu-Upper Essequibo,3893,village,0,0,50,0,none,none
+gn:3378444,Helena Number One,Demerara-Mahaica,1568,village,0,0,50,0,none,none
+gn:3378644,Georgetown,Demerara-Mahaica,235017,city,0,0,50,0,none,none
+gn:3379507,Bartica,Cuyuni-Mazaruni,11486,town,0,0,50,0,none,none
+gn:7303406,Anna Regina,Pomeroon-Supenaam,12448,town,0,0,50,0,none,none
+gn:8314122,Fort Wellington,Mahaica-Berbice,118,village,0,0,50,0,none,none
+gn:13589438,Corriverton,East Berbice-Corentyne,11488,town,0,0,50,0,none,none

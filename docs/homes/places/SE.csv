@@ -1,0 +1,833 @@
+place_id,name,region,population,market,verified_homes,dated_listings,shortfall_to_50,recorded_sales,rent_source,price_source
+gn:601972,Viken,Västerbotten,3753,village,0,0,50,0,none,none
+gn:602137,Ursviken,Västerbotten,3913,village,0,0,50,0,none,none
+gn:602150,Umeå,Västerbotten,130224,city,0,0,50,0,none,none
+gn:602261,Töre,Norrbotten,1051,village,0,0,50,0,none,none
+gn:602426,Täfteå,Västerbotten,1305,village,0,0,50,0,none,none
+gn:602566,Storvik,Västerbotten,2251,village,0,0,50,0,none,none
+gn:602804,Södra Sunderbyn,Norrbotten,3162,village,0,0,50,0,none,none
+gn:602909,Skelleftehamn,Västerbotten,3069,village,0,0,50,0,none,none
+gn:602913,Skellefteå,Västerbotten,35516,town,0,0,50,0,none,none
+gn:603035,Råneå,Norrbotten,1966,village,0,0,50,0,none,none
+gn:603037,Sävar,Västerbotten,2968,village,0,0,50,0,none,none
+gn:603261,Rosvik,Norrbotten,1848,village,0,0,50,0,none,none
+gn:603291,Rolfs,Norrbotten,1001,village,0,0,50,0,none,none
+gn:603292,Roknäs,Norrbotten,1259,village,0,0,50,0,none,none
+gn:603303,Robertsfors,Västerbotten,2030,village,0,0,50,0,none,none
+gn:603304,Röbäck,Västerbotten,2460,village,0,0,50,0,none,none
+gn:603448,Sävast,Norrbotten,3093,village,0,0,50,0,none,none
+gn:603570,Piteå,Norrbotten,23067,town,0,0,50,0,none,none
+gn:603761,Pajala,Norrbotten,2032,village,0,0,50,0,none,none
+gn:603814,Övertorneå,Norrbotten,1906,village,0,0,50,0,none,none
+gn:603823,Överkalix,Norrbotten,1036,village,0,0,50,0,none,none
+gn:603919,Obbola,Västerbotten,2173,village,0,0,50,0,none,none
+gn:604006,Norrfjärden,Norrbotten,1562,village,0,0,50,0,none,none
+gn:604419,Malmberget,Norrbotten,6017,village,0,0,50,0,none,none
+gn:604490,Luleå,Norrbotten,77832,town,0,0,50,0,none,none
+gn:604779,Långsele,Västerbotten,1620,village,0,0,50,0,none,none
+gn:605155,Kiruna,Norrbotten,17037,town,0,0,50,0,none,none
+gn:605393,Kalix,Norrbotten,7495,village,0,0,50,0,none,none
+gn:605428,Kåge,Västerbotten,2376,village,0,0,50,0,none,none
+gn:605647,Hortlax,Norrbotten,1128,village,0,0,50,0,none,none
+gn:605676,Holmsund,Västerbotten,5962,village,0,0,50,0,none,none
+gn:605859,Haparanda,Norrbotten,6679,village,0,0,50,0,none,none
+gn:606072,Gammelstad,Norrbotten,4892,village,0,0,50,0,none,none
+gn:606086,Gällivare,Norrbotten,10362,town,0,0,50,0,none,none
+gn:606141,Forsbacka,Västerbotten,1748,village,0,0,50,0,none,none
+gn:606249,Ersmark,Västerbotten,1650,village,0,0,50,0,none,none
+gn:606350,Byske,Västerbotten,1785,village,0,0,50,0,none,none
+gn:606363,Burträsk,Västerbotten,1573,village,0,0,50,0,none,none
+gn:606370,Bureå,Västerbotten,2533,village,0,0,50,0,none,none
+gn:606507,Boliden,Västerbotten,1661,village,0,0,50,0,none,none
+gn:606531,Boden,Norrbotten,16830,town,0,0,50,0,none,none
+gn:606638,Bergsviken,Norrbotten,2251,village,0,0,50,0,none,none
+gn:606649,Bergnäset,Norrbotten,3604,village,0,0,50,0,none,none
+gn:606714,Backa,Västerbotten,1516,village,0,0,50,0,none,none
+gn:606834,Älvsbyn,Norrbotten,4976,village,0,0,50,0,none,none
+gn:2599289,Alunda,Uppsala,2224,village,0,0,50,0,none,none
+gn:2599299,Anneberg,Uppsala,1398,village,0,0,50,0,none,none
+gn:2599415,Björklinge,Uppsala,3186,village,0,0,50,0,none,none
+gn:2599418,Marieberg,Uppsala,1181,village,0,0,50,0,none,none
+gn:2662149,Ystad,Skåne,18806,town,0,0,50,0,none,none
+gn:2662324,Vrigstad,Jönköping,1461,village,0,0,50,0,none,none
+gn:2662518,Vittsjö,Skåne,1787,village,0,0,50,0,none,none
+gn:2662659,Vislanda,Kronoberg,1813,village,0,0,50,0,none,none
+gn:2662666,Viskafors,Västra Götaland,3701,village,0,0,50,0,none,none
+gn:2662689,Visby,Gotland,23402,town,0,0,50,0,none,none
+gn:2662706,Virserum,Kalmar,1769,village,0,0,50,0,none,none
+gn:2662758,Vintrosa,Örebro,2285,village,0,0,50,0,none,none
+gn:2662778,Vinslöv,Skåne,3989,village,0,0,50,0,none,none
+gn:2662795,Vinninga,Västra Götaland,1033,village,0,0,50,0,none,none
+gn:2662830,Vingåker,Södermanland,4548,village,0,0,50,0,none,none
+gn:2662851,Vindeln,Västerbotten,2403,village,0,0,50,0,none,none
+gn:2662881,Vimmerby,Kalmar,8037,village,0,0,50,0,none,none
+gn:2662935,Vilhelmina,Västerbotten,3572,village,0,0,50,0,none,none
+gn:2662996,Vikingstad,Östergötland,2335,village,0,0,50,0,none,none
+gn:2663036,Viken,Skåne,5610,village,0,0,50,0,none,none
+gn:2663077,Vikarbyn,Dalarna,1193,village,0,0,50,0,none,none
+gn:2663161,Vi,Västernorrland,4757,village,0,0,50,0,none,none
+gn:2663254,Vibble,Gotland,1709,village,0,0,50,0,none,none
+gn:2663293,Vetlanda,Jönköping,13430,town,0,0,50,0,none,none
+gn:2663399,Vellinge,Skåne,6496,village,0,0,50,0,none,none
+gn:2663432,Vejbystrand,Skåne,2764,village,0,0,50,0,none,none
+gn:2663435,Veinge,Halland,1417,village,0,0,50,0,none,none
+gn:2663482,Veddige,Halland,2260,village,0,0,50,0,none,none
+gn:2663514,Veberöd,Skåne,4850,village,0,0,50,0,none,none
+gn:2663536,Växjö,Kronoberg,71282,town,0,0,50,0,none,none
+gn:2663540,Vaxholm,Stockholm,4849,village,0,0,50,0,none,none
+gn:2663585,Vattholma,Uppsala,1410,village,0,0,50,0,none,none
+gn:2664050,Västra Frölunda,Västra Götaland,15924,town,0,0,50,0,none,none
+gn:2664203,Västervik,Kalmar,21178,town,0,0,50,0,none,none
+gn:2664454,Västerås,Västmanland,127799,city,0,0,50,0,none,none
+gn:2664740,Vasastaden,Stockholm,58458,town,0,0,50,0,none,none
+gn:2664783,Vårsta,Stockholm,2470,village,0,0,50,0,none,none
+gn:2664855,Värnamo,Jönköping,19061,town,0,0,50,0,none,none
+gn:2664921,Vargön,Västra Götaland,4981,village,0,0,50,0,none,none
+gn:2664939,Vårgårda,Västra Götaland,5384,village,0,0,50,0,none,none
+gn:2664989,Vårby,Stockholm,10115,town,0,0,50,0,none,none
+gn:2664996,Varberg,Halland,34248,town,0,0,50,0,none,none
+gn:2665018,Vara,Västra Götaland,4052,village,0,0,50,0,none,none
+gn:2665063,Vansbro,Dalarna,2042,village,0,0,50,0,none,none
+gn:2665090,Vännäsby,Västerbotten,1581,village,0,0,50,0,none,none
+gn:2665093,Vännäs,Västerbotten,4373,village,0,0,50,0,none,none
+gn:2665171,Vänersborg,Västra Götaland,23119,town,0,0,50,0,none,none
+gn:2665452,Vallentuna,Stockholm,31937,town,0,0,50,0,none,none
+gn:2665487,Vallda,Halland,3929,village,0,0,50,0,none,none
+gn:2665578,Valla,Jämtland,1584,village,0,0,50,0,none,none
+gn:2665589,Valla,Södermanland,1485,village,0,0,50,0,none,none
+gn:2665627,Valje,Skåne,1067,village,0,0,50,0,none,none
+gn:2665675,Valdemarsvik,Östergötland,2685,village,0,0,50,0,none,none
+gn:2665691,Valbo,Gävleborg,7147,village,0,0,50,0,none,none
+gn:2665708,Vålberg,Värmland,2848,village,0,0,50,0,none,none
+gn:2665844,Vagnhärad,Södermanland,3397,village,0,0,50,0,none,none
+gn:2665857,Vaggeryd,Jönköping,5122,village,0,0,50,0,none,none
+gn:2665902,Vadstena,Östergötland,5674,village,0,0,50,0,none,none
+gn:2666199,Uppsala,Uppsala,177074,city,0,0,50,0,none,none
+gn:2666238,Upplands Väsby,Stockholm,36534,town,0,0,50,0,none,none
+gn:2666264,Hjärup,Skåne,4744,village,0,0,50,0,none,none
+gn:2666493,Ulricehamn,Västra Götaland,10629,town,0,0,50,0,none,none
+gn:2666670,Uddevalla,Västra Götaland,34781,town,0,0,50,0,none,none
+gn:2666772,Tyringe,Skåne,4712,village,0,0,50,0,none,none
+gn:2666823,Tygelsjö,Skåne,3420,village,0,0,50,0,none,none
+gn:2666950,Tvååker,Halland,2640,village,0,0,50,0,none,none
+gn:2667094,Tumba,Stockholm,40832,town,0,0,50,0,none,none
+gn:2667109,Tullinge,Stockholm,16000,town,0,0,50,0,none,none
+gn:2667253,Trosa,Södermanland,5836,village,0,0,50,0,none,none
+gn:2667264,Trönninge,Halland,1569,village,0,0,50,0,none,none
+gn:2667303,Trollhättan,Västra Götaland,48573,town,0,0,50,0,none,none
+gn:2667328,Gimo,Uppsala,2698,village,0,0,50,0,none,none
+gn:2667402,Trelleborg,Skåne,29316,town,0,0,50,0,none,none
+gn:2667405,Trekanten,Kalmar,1599,village,0,0,50,0,none,none
+gn:2667499,Träslövsläge,Halland,1985,village,0,0,50,0,none,none
+gn:2667569,Trångsund,Stockholm,23110,town,0,0,50,0,none,none
+gn:2667599,Tranemo,Västra Götaland,3224,village,0,0,50,0,none,none
+gn:2667628,Tranås,Jönköping,14550,town,0,0,50,0,none,none
+gn:2667757,Torup,Halland,1245,village,0,0,50,0,none,none
+gn:2667809,Torslanda,Västra Götaland,10129,town,0,0,50,0,none,none
+gn:2667847,Torshälla,Södermanland,8928,village,0,0,50,0,none,none
+gn:2667876,Torsby,Värmland,4419,village,0,0,50,0,none,none
+gn:2667904,Torsås,Kalmar,2000,village,0,0,50,0,none,none
+gn:2668180,Tormestorp,Skåne,1043,village,0,0,50,0,none,none
+gn:2668244,Torekov,Skåne,1078,village,0,0,50,0,none,none
+gn:2668247,Töreboda,Västra Götaland,4626,village,0,0,50,0,none,none
+gn:2668365,Tomelilla,Skåne,6826,village,0,0,50,0,none,none
+gn:2668429,Tollarp1,Skåne,3170,village,0,0,50,0,none,none
+gn:2668430,Tollarp,Skåne,3404,village,0,0,50,0,none,none
+gn:2668552,Töcksfors,Värmland,1221,village,0,0,50,0,none,none
+gn:2668591,Tjuvkil,Västra Götaland,1013,village,0,0,50,0,none,none
+gn:2669019,Tingsryd,Kronoberg,3087,village,0,0,50,0,none,none
+gn:2669047,Timrå,Västernorrland,10495,town,0,0,50,0,none,none
+gn:2669057,Timmernabben,Kalmar,1357,village,0,0,50,0,none,none
+gn:2669086,Tillberga,Västmanland,2151,village,0,0,50,0,none,none
+gn:2669098,Tierp,Uppsala,5826,village,0,0,50,0,none,none
+gn:2669113,Tidaholm,Västra Götaland,8175,village,0,0,50,0,none,none
+gn:2669118,Tibro,Västra Götaland,8396,village,0,0,50,0,none,none
+gn:2669193,Tenhult,Jönköping,3112,village,0,0,50,0,none,none
+gn:2669254,Teckomatorp,Skåne,1703,village,0,0,50,0,none,none
+gn:2669342,Tärnsjö,Uppsala,1174,village,0,0,50,0,none,none
+gn:2669415,Tanumshede,Västra Götaland,1774,village,0,0,50,0,none,none
+gn:2669633,Tallboda,Östergötland,3311,village,0,0,50,0,none,none
+gn:2669772,Täby,Stockholm,58123,town,0,0,50,0,none,none
+gn:2669788,Taberg,Jönköping,4486,village,0,0,50,0,none,none
+gn:2670044,Svenljunga,Västra Götaland,3592,village,0,0,50,0,none,none
+gn:2670061,Sveg,Jämtland,2543,village,0,0,50,0,none,none
+gn:2670128,Svedala,Skåne,11796,town,0,0,50,0,none,none
+gn:2670278,Svärtinge,Östergötland,3326,village,0,0,50,0,none,none
+gn:2670403,Svärdsjö,Dalarna,1335,village,0,0,50,0,none,none
+gn:2670470,Svängsta,Blekinge,1904,village,0,0,50,0,none,none
+gn:2670478,Svanesund,Västra Götaland,1946,village,0,0,50,0,none,none
+gn:2670536,Svalsta,Södermanland,1095,village,0,0,50,0,none,none
+gn:2670542,Svalöv,Skåne,3852,village,0,0,50,0,none,none
+gn:2670603,Surte,Västra Götaland,6003,village,0,0,50,0,none,none
+gn:2670613,Surahammar,Västmanland,6270,village,0,0,50,0,none,none
+gn:2670710,Sunne,Värmland,5026,village,0,0,50,0,none,none
+gn:2670781,Sundsvall,Västernorrland,57606,town,0,0,50,0,none,none
+gn:2670833,Sundsbruk,Västernorrland,2098,village,0,0,50,0,none,none
+gn:2670879,Sundbyberg,Stockholm,34529,town,0,0,50,0,none,none
+gn:2670995,Styrsö,Västra Götaland,1324,village,0,0,50,0,none,none
+gn:2671055,Sturkö,Blekinge,1325,village,0,0,50,0,none,none
+gn:2671060,Sturefors,Östergötland,2228,village,0,0,50,0,none,none
+gn:2671206,Strövelstorp,Skåne,1207,village,0,0,50,0,none,none
+gn:2671221,Strömsund,Jämtland,3690,village,0,0,50,0,none,none
+gn:2671224,Strömstad,Västra Götaland,7176,village,0,0,50,0,none,none
+gn:2671230,Strömsnäsbruk,Kronoberg,2246,village,0,0,50,0,none,none
+gn:2671292,Strömma,Stockholm,2468,village,0,0,50,0,none,none
+gn:2671392,Strängnäs,Södermanland,13693,town,0,0,50,0,none,none
+gn:2671490,Storvreta,Uppsala,6340,village,0,0,50,0,none,none
+gn:2671501,Storvik,Gävleborg,2202,village,0,0,50,0,none,none
+gn:2671530,Storuman,Västerbotten,2188,village,0,0,50,0,none,none
+gn:2672053,Storfors,Värmland,2218,village,0,0,50,0,none,none
+gn:2672122,Storebro,Kalmar,1011,village,0,0,50,0,none,none
+gn:2673076,Stora Höga,Västra Götaland,2846,village,0,0,50,0,none,none
+gn:2673621,Storå,Örebro,1967,village,0,0,50,0,none,none
+gn:2673629,Stöpen,Västra Götaland,1373,village,0,0,50,0,none,none
+gn:2673693,Stockvik,Västernorrland,2532,village,0,0,50,0,none,none
+se-stockholm,Stockholm,Stockholm County,1515017,large-city,0,0,50,0,none,none
+gn:2673758,Stockaryd,Jönköping,1019,village,0,0,50,0,none,none
+gn:2673829,Stigtomta,Södermanland,1949,village,0,0,50,0,none,none
+gn:2673875,Stenungsund,Västra Götaland,13093,town,0,0,50,0,none,none
+gn:2673952,Stenstorp,Östergötland,1630,village,0,0,50,0,none,none
+gn:2673953,Stenstorp,Västra Götaland,1823,village,0,0,50,0,none,none
+gn:2674181,Stenkullen,Västra Götaland,2000,village,0,0,50,0,none,none
+gn:2674201,Steninge,Halland,1112,village,0,0,50,0,none,none
+gn:2674209,Stenhamra,Stockholm,3588,village,0,0,50,0,none,none
+gn:2674326,Stehag,Skåne,1191,village,0,0,50,0,none,none
+gn:2674343,Stavsnäs,Stockholm,1784,village,0,0,50,0,none,none
+gn:2674512,Stångby,Skåne,1943,village,0,0,50,0,none,none
+gn:2674594,Stallarholmen,Södermanland,1671,village,0,0,50,0,none,none
+gn:2674649,Staffanstorp,Skåne,15373,town,0,0,50,0,none,none
+gn:2674672,Gamla Stan,Stockholm,3000,village,0,0,50,0,none,none
+gn:2674993,Sösdala,Skåne,1808,village,0,0,50,0,none,none
+gn:2675079,Sorsele,Västerbotten,1175,village,0,0,50,0,none,none
+gn:2675146,Sörforsa,Gävleborg,1581,village,0,0,50,0,none,none
+gn:2675280,Söråker,Västernorrland,2374,village,0,0,50,0,none,none
+gn:2675365,Sölvesborg,Blekinge,8972,village,0,0,50,0,none,none
+gn:2675397,Solna,Stockholm,66909,town,0,0,50,0,none,none
+gn:2675408,Sollentuna,Stockholm,139606,city,0,0,50,0,none,none
+gn:2675416,Sollefteå,Västernorrland,7399,village,0,0,50,0,none,none
+gn:2675418,Sollebrunn,Västra Götaland,1482,village,0,0,50,0,none,none
+gn:2675561,Södra Vi,Kalmar,1134,village,0,0,50,0,none,none
+gn:2675691,Södra Sandby,Kalmar,5941,village,0,0,50,0,none,none
+gn:2675692,Södra Sandby,Skåne,6306,village,0,0,50,0,none,none
+gn:2676176,Södertälje,Stockholm,70777,town,0,0,50,0,none,none
+gn:2676209,Södermalm,Stockholm,127323,city,0,0,50,0,none,none
+gn:2676215,Söderköping,Östergötland,7418,village,0,0,50,0,none,none
+gn:2676224,Söderhamn,Gävleborg,12259,town,0,0,50,0,none,none
+gn:2676238,Söderfors,Västerbotten,1597,village,0,0,50,0,none,none
+gn:2676240,Söderfors,Uppsala,1704,village,0,0,50,0,none,none
+gn:2676488,Smygehamn,Skåne,1297,village,0,0,50,0,none,none
+gn:2676511,Smögen,Västra Götaland,1292,village,0,0,50,0,none,none
+gn:2676586,Smedjebacken,Dalarna,5258,village,0,0,50,0,none,none
+gn:2676592,Smedby,Dalarna,3530,village,0,0,50,0,none,none
+gn:2676596,Smedby,Kalmar,3607,village,0,0,50,0,none,none
+gn:2676644,Smålandsstenar,Jönköping,4564,village,0,0,50,0,none,none
+gn:2676700,Slottsbron,Värmland,1010,village,0,0,50,0,none,none
+gn:2677019,Skutskär,Uppsala,6279,village,0,0,50,0,none,none
+gn:2677025,Skurup,Skåne,8040,village,0,0,50,0,none,none
+gn:2677062,Skultuna,Västmanland,3378,village,0,0,50,0,none,none
+gn:2677063,Skultorp,Västra Götaland,3644,village,0,0,50,0,none,none
+gn:2677149,Skrea,Halland,1846,village,0,0,50,0,none,none
+gn:2677234,Skövde,Västra Götaland,36842,town,0,0,50,0,none,none
+gn:2677239,Skottsund,Västernorrland,1052,village,0,0,50,0,none,none
+gn:2677356,Sköllersta,Örebro,1079,village,0,0,50,0,none,none
+gn:2677370,Skogstorp,Södermanland,2180,village,0,0,50,0,none,none
+gn:2677456,Skoghall,Värmland,13605,town,0,0,50,0,none,none
+gn:2677548,Skivarp,Skåne,1258,village,0,0,50,0,none,none
+gn:2677593,Skinnskatteberg,Västmanland,2383,village,0,0,50,0,none,none
+gn:2677644,Skillingaryd,Jönköping,3965,village,0,0,50,0,none,none
+gn:2677719,Skepplanda,Västra Götaland,1821,village,0,0,50,0,none,none
+gn:2677770,Skegrie,Skåne,1156,village,0,0,50,0,none,none
+gn:2677869,Skattkärr,Värmland,1979,village,0,0,50,0,none,none
+gn:2678129,Skärhamn,Västra Götaland,3495,village,0,0,50,0,none,none
+gn:2678153,Skåre,Skåne,5173,village,0,0,50,0,none,none
+gn:2678156,Skåre,Värmland,5444,village,0,0,50,0,none,none
+gn:2678173,Skärblacka,Östergötland,4023,village,0,0,50,0,none,none
+gn:2678210,Skara,Västra Götaland,11437,town,0,0,50,0,none,none
+gn:2678265,Skänninge,Stockholm,3242,village,0,0,50,0,none,none
+gn:2678266,Skänninge,Östergötland,3358,village,0,0,50,0,none,none
+gn:2678687,Sjuntorp,Västra Götaland,2213,village,0,0,50,0,none,none
+gn:2678804,Sjömarken,Västra Götaland,2596,village,0,0,50,0,none,none
+gn:2678913,Sjöbo,Skåne,7910,village,0,0,50,0,none,none
+gn:2679107,Simrishamn,Skåne,6779,village,0,0,50,0,none,none
+gn:2679226,Siljansnäs,Dalarna,1274,village,0,0,50,0,none,none
+gn:2679302,Sigtuna,Stockholm,9074,village,0,0,50,0,none,none
+gn:2679397,Sibbhult,Skåne,1431,village,0,0,50,0,none,none
+gn:2679567,Segeltorp,Stockholm,10536,town,0,0,50,0,none,none
+gn:2679698,Sävsjö,Jönköping,5374,village,0,0,50,0,none,none
+gn:2679721,Sävja,Uppsala,9723,village,0,0,50,0,none,none
+gn:2679819,Sätofta,Skåne,1160,village,0,0,50,0,none,none
+gn:2679825,Sätila,Västra Götaland,1210,village,0,0,50,0,none,none
+gn:2679855,Säter,Dalarna,4613,village,0,0,50,0,none,none
+gn:2679920,Särö,Halland,2982,village,0,0,50,0,none,none
+gn:2680075,Sandviken,Gävleborg,24724,town,0,0,50,0,none,none
+gn:2680350,Sandarne,Gävleborg,1681,village,0,0,50,0,none,none
+gn:2680352,Sandared,Västra Götaland,2993,village,0,0,50,0,none,none
+gn:2680460,Saltsjöbaden,Stockholm,9477,village,0,0,50,0,none,none
+gn:2680653,Sålanda,Västra Götaland,4240,village,0,0,50,0,none,none
+gn:2680662,Sala,Västmanland,13087,town,0,0,50,0,none,none
+gn:2680764,Säffle,Värmland,9150,village,0,0,50,0,none,none
+gn:2680959,Rydsgård,Skåne,1383,village,0,0,50,0,none,none
+gn:2680969,Rydebäck,Skåne,5904,village,0,0,50,0,none,none
+gn:2680977,Rydaholm,Jönköping,1587,village,0,0,50,0,none,none
+gn:2680985,Ryd,Östergötland,1446,village,0,0,50,0,none,none
+gn:2681007,Ryd,Kronoberg,1474,village,0,0,50,0,none,none
+gn:2681368,Rottne,Kronoberg,2395,village,0,0,50,0,none,none
+gn:2681576,Rosersberg,Stockholm,1765,village,0,0,50,0,none,none
+gn:2681803,Rönninge,Stockholm,0,village,0,0,50,0,none,none
+gn:2681825,Ronneby,Blekinge,12612,town,0,0,50,0,none,none
+gn:2681866,Rönnäng,Västra Götaland,1551,village,0,0,50,0,none,none
+gn:2681913,Romme,Dalarna,1735,village,0,0,50,0,none,none
+gn:2682155,Rödeby,Blekinge,3508,village,0,0,50,0,none,none
+gn:2682484,Rinkeby,Stockholm,19349,town,0,0,50,0,none,none
+gn:2682487,Rinkabyholm,Kalmar,1631,village,0,0,50,0,none,none
+gn:2682562,Rindö,Stockholm,1100,village,0,0,50,0,none,none
+gn:2682569,Rimforsa,Östergötland,2259,village,0,0,50,0,none,none
+gn:2682570,Rimbo,Stockholm,4882,village,0,0,50,0,none,none
+gn:2682706,Resarö,Stockholm,3249,village,0,0,50,0,none,none
+gn:2682834,Reftele,Jönköping,1289,village,0,0,50,0,none,none
+gn:2682913,Rävlanda,Västra Götaland,1522,village,0,0,50,0,none,none
+gn:2682995,Rättvik,Dalarna,5160,village,0,0,50,0,none,none
+gn:2683015,Råtorp,Värmland,3287,village,0,0,50,0,none,none
+gn:2683034,Råsunda,Stockholm,16877,town,0,0,50,0,none,none
+gn:2683436,Ramnäs,Västmanland,1333,village,0,0,50,0,none,none
+gn:2684213,Perstorp,Skåne,5847,village,0,0,50,0,none,none
+gn:2684231,Pershagen,Stockholm,2235,village,0,0,50,0,none,none
+gn:2684386,Påskallavik,Kalmar,1099,village,0,0,50,0,none,none
+gn:2684395,Partille,Västra Götaland,28648,town,0,0,50,0,none,none
+gn:2684485,Pålsboda,Örebro,1610,village,0,0,50,0,none,none
+gn:2684596,Påarp,Skåne,2932,village,0,0,50,0,none,none
+gn:2684636,Oxie,Skåne,12665,town,0,0,50,0,none,none
+gn:2684653,Oxelösund,Södermanland,11157,town,0,0,50,0,none,none
+gn:2684945,Överum,Kalmar,1166,village,0,0,50,0,none,none
+gn:2685404,Östra Ljungby,Skåne,1740,village,0,0,50,0,none,none
+gn:2685699,Östhammar,Uppsala,4726,village,0,0,50,0,none,none
+gn:2685724,Östervåla,Uppsala,1696,village,0,0,50,0,none,none
+gn:2685750,Östersund,Jämtland,49806,town,0,0,50,0,none,none
+gn:2685828,Östermalm,Stockholm,36418,town,0,0,50,0,none,none
+gn:2685900,Österbymo,Östergötland,897,village,0,0,50,0,none,none
+gn:2685903,Österbybruk,Uppsala,2331,village,0,0,50,0,none,none
+gn:2686153,Ösmo,Stockholm,3866,village,0,0,50,0,none,none
+gn:2686160,Oskarström,Halland,4172,village,0,0,50,0,none,none
+gn:2686162,Oskarshamn,Kalmar,18287,town,0,0,50,0,none,none
+gn:2686209,Osby,Skåne,7554,village,0,0,50,0,none,none
+gn:2686286,Örsundsbro,Uppsala,1302,village,0,0,50,0,none,none
+gn:2686380,Orsa,Dalarna,5349,village,0,0,50,0,none,none
+gn:2686469,Örnsköldsvik,Västernorrland,32493,town,0,0,50,0,none,none
+gn:2686493,Ornäs,Dalarna,1083,village,0,0,50,0,none,none
+gn:2686596,Örkelljunga,Skåne,5193,village,0,0,50,0,none,none
+gn:2686649,Öregrund,Uppsala,1589,village,0,0,50,0,none,none
+gn:2686657,Örebro,Örebro,155989,city,0,0,50,0,none,none
+gn:2686674,Örbyhus,Uppsala,2025,village,0,0,50,0,none,none
+gn:2686858,Önnestad,Skåne,1392,village,0,0,50,0,none,none
+gn:2686979,Olstorp,Södermanland,1017,village,0,0,50,0,none,none
+gn:2687062,Olofström,Blekinge,7526,village,0,0,50,0,none,none
+gn:2687063,Olofstorp,Västra Götaland,2783,village,0,0,50,0,none,none
+gn:2687066,Olofstorp,Västra Götaland,3746,village,0,0,50,0,none,none
+gn:2687272,Öjersjö,Västra Götaland,4394,village,0,0,50,0,none,none
+gn:2687384,Ödsmål,Västra Götaland,1414,village,0,0,50,0,none,none
+gn:2687420,Ödeshög,Östergötland,2554,village,0,0,50,0,none,none
+gn:2687444,Odensjö,Jönköping,2646,village,0,0,50,0,none,none
+gn:2687454,Odensbacken,Örebro,1378,village,0,0,50,0,none,none
+gn:2687498,Ödåkra,Skåne,5231,village,0,0,50,0,none,none
+gn:2687509,Öckerö,Västra Götaland,3568,village,0,0,50,0,none,none
+gn:2687517,Ockelbo,Gävleborg,2875,village,0,0,50,0,none,none
+gn:2687636,Nynäshamn,Stockholm,14532,town,0,0,50,0,none,none
+gn:2687690,Nykvarn,Stockholm,6032,village,0,0,50,0,none,none
+gn:2687693,Nykvarn,Stockholm,7327,village,0,0,50,0,none,none
+gn:2687700,Nyköping,Södermanland,38780,town,0,0,50,0,none,none
+gn:2687738,Nyhammar,Dalarna,1052,village,0,0,50,0,none,none
+gn:2687902,Nybro,Kalmar,13039,town,0,0,50,0,none,none
+gn:2688131,Nossebro,Västra Götaland,1884,village,0,0,50,0,none,none
+gn:2688172,Norsjö,Västerbotten,2057,village,0,0,50,0,none,none
+gn:2688250,Norrtälje,Stockholm,19365,town,0,0,50,0,none,none
+gn:2688368,Norrköping,Östergötland,93765,town,0,0,50,0,none,none
+gn:2689192,Norra Åsum,Skåne,1248,village,0,0,50,0,none,none
+gn:2689336,Nordmaling,Västerbotten,2671,village,0,0,50,0,none,none
+gn:2689452,Norberg,Västmanland,4653,village,0,0,50,0,none,none
+gn:2689471,Nora,Örebro,6597,village,0,0,50,0,none,none
+gn:2689520,Nolby,Västernorrland,1200,village,0,0,50,0,none,none
+gn:2689580,Njurundabommen,Västernorrland,1959,village,0,0,50,0,none,none
+gn:2690061,Nättraby,Blekinge,3284,village,0,0,50,0,none,none
+gn:2690101,Näsum,Skåne,1307,village,0,0,50,0,none,none
+gn:2690170,Nässjö,Jönköping,17719,town,0,0,50,0,none,none
+gn:2690467,Nåntuna,Uppsala,1500,village,0,0,50,0,none,none
+gn:2690580,Nacka,Stockholm,25170,town,0,0,50,0,none,none
+gn:2690713,Myggenäs,Västra Götaland,1460,village,0,0,50,0,none,none
+gn:2690829,Munkfors,Värmland,2834,village,0,0,50,0,none,none
+gn:2690843,Munkedal,Västra Götaland,3910,village,0,0,50,0,none,none
+gn:2690866,Munka-Ljungby,Skåne,3148,village,0,0,50,0,none,none
+gn:2690902,Mullsjö,Jönköping,5584,village,0,0,50,0,none,none
+gn:2690960,Motala,Östergötland,30944,town,0,0,50,0,none,none
+gn:2691230,Mörtnäs,Stockholm,1291,village,0,0,50,0,none,none
+gn:2691271,Mörrum,Blekinge,3903,village,0,0,50,0,none,none
+gn:2691326,Morgongåva,Uppsala,1441,village,0,0,50,0,none,none
+gn:2691348,Mörbylånga,Kalmar,1824,village,0,0,50,0,none,none
+gn:2691387,Mörarp,Skåne,1935,village,0,0,50,0,none,none
+gn:2691400,Mora,Dalarna,12602,town,0,0,50,0,none,none
+gn:2691407,Mönsterås,Kalmar,4998,village,0,0,50,0,none,none
+gn:2691440,Mölnlycke,Västra Götaland,17579,town,0,0,50,0,none,none
+gn:2691459,Mölndal,Västra Götaland,59430,town,0,0,50,0,none,none
+gn:2691462,Mölnbo,Stockholm,1089,village,0,0,50,0,none,none
+gn:2691471,Mölltorp,Västra Götaland,1047,village,0,0,50,0,none,none
+gn:2691510,Molkom,Värmland,1896,village,0,0,50,0,none,none
+gn:2691542,Moheda,Kronoberg,1880,village,0,0,50,0,none,none
+gn:2691602,Mockfjärd,Dalarna,1920,village,0,0,50,0,none,none
+gn:2691743,Mjölby,Östergötland,12858,town,0,0,50,0,none,none
+gn:2691792,Mjällby,Halland,1272,village,0,0,50,0,none,none
+gn:2691793,Mjällby,Blekinge,1319,village,0,0,50,0,none,none
+gn:2692049,Mellerud,Västra Götaland,3797,village,0,0,50,0,none,none
+gn:2692059,Mellbystrand,Halland,3412,village,0,0,50,0,none,none
+gn:2692349,Matfors,Västernorrland,3437,village,0,0,50,0,none,none
+gn:2692475,Märsta,Stockholm,27034,town,0,0,50,0,none,none
+gn:2692596,Markaryd,Kronoberg,4664,village,0,0,50,0,none,none
+gn:2692613,Mariestad,Västra Götaland,16122,town,0,0,50,0,none,none
+gn:2692624,Marieholm,Jönköping,1578,village,0,0,50,0,none,none
+gn:2692625,Marieholm,Skåne,1604,village,0,0,50,0,none,none
+gn:2692633,Mariefred,Södermanland,3911,village,0,0,50,0,none,none
+gn:2692661,Mariannelund,Jönköping,1503,village,0,0,50,0,none,none
+gn:2692748,Mantorp,Östergötland,3781,village,0,0,50,0,none,none
+gn:2692876,Malung,Dalarna,4927,village,0,0,50,0,none,none
+gn:2692943,Malmslätt,Östergötland,5074,village,0,0,50,0,none,none
+gn:2692969,Malmö,Skåne,362133,city,0,0,50,0,none,none
+gn:2692972,Malmköping,Södermanland,2106,village,0,0,50,0,none,none
+gn:2693002,Malmbäck,Jönköping,1087,village,0,0,50,0,none,none
+gn:2693049,Målilla,Kalmar,1348,village,0,0,50,0,none,none
+gn:2693152,Malå,Västerbotten,2043,village,0,0,50,0,none,none
+gn:2693301,Lysekil,Västra Götaland,7734,village,0,0,50,0,none,none
+gn:2693347,Lycksele,Västerbotten,8545,village,0,0,50,0,none,none
+gn:2693678,Lund,Skåne,87244,town,0,0,50,0,none,none
+gn:2693759,Ludvika,Dalarna,15245,town,0,0,50,0,none,none
+gn:2693812,Lövstalöt,Uppsala,1399,village,0,0,50,0,none,none
+gn:2694165,Lönsboda,Skåne,1986,village,0,0,50,0,none,none
+gn:2694264,Lomma,Skåne,12368,town,0,0,50,0,none,none
+gn:2694366,Lödöse,Västra Götaland,1540,village,0,0,50,0,none,none
+gn:2694375,Löddeköpinge,Skåne,6481,village,0,0,50,0,none,none
+gn:2694417,Löberöd,Skåne,1251,village,0,0,50,0,none,none
+gn:2694475,Ljusne,Gävleborg,1946,village,0,0,50,0,none,none
+gn:2694503,Ljusdal,Gävleborg,7259,village,0,0,50,0,none,none
+gn:2694522,Ljungskile,Västra Götaland,3689,village,0,0,50,0,none,none
+gn:2694529,Ljungsbro,Östergötland,6763,village,0,0,50,0,none,none
+gn:2694537,Ljunghusen,Skåne,2444,village,0,0,50,0,none,none
+gn:2694552,Ljungbyholm,Kalmar,1725,village,0,0,50,0,none,none
+gn:2694554,Ljungbyhed,Skåne,2127,village,0,0,50,0,none,none
+gn:2694560,Ljungby,Kronoberg,15785,town,0,0,50,0,none,none
+gn:2694631,Lit,Jämtland,1117,village,0,0,50,0,none,none
+gn:2694762,Linköping,Östergötland,166673,city,0,0,50,0,none,none
+gn:2694779,Linghem,Östergötland,2853,village,0,0,50,0,none,none
+gn:2694808,Lindsdal,Kalmar,5709,village,0,0,50,0,none,none
+gn:2694831,Lindome,Västra Götaland,10942,town,0,0,50,0,none,none
+gn:2694838,Lindö,Östergötland,4763,village,0,0,50,0,none,none
+gn:2694869,Lindholmen,Stockholm,1146,village,0,0,50,0,none,none
+gn:2694893,Lindesberg,Örebro,9571,village,0,0,50,0,none,none
+gn:2695016,Limmared,Västra Götaland,1434,village,0,0,50,0,none,none
+gn:2695019,Limhamn,Skåne,20000,town,0,0,50,0,none,none
+gn:2696059,Lilla Edet,Västra Götaland,3772,village,0,0,50,0,none,none
+gn:2696329,Lidköping,Västra Götaland,22988,town,0,0,50,0,none,none
+gn:2696334,Lidingö,Stockholm,42466,town,0,0,50,0,none,none
+gn:2696473,Lessebo,Kronoberg,2857,village,0,0,50,0,none,none
+gn:2696503,Lerum,Västra Götaland,26913,town,0,0,50,0,none,none
+gn:2696608,Lenhovda,Kronoberg,1762,village,0,0,50,0,none,none
+gn:2696650,Leksand,Dalarna,6107,village,0,0,50,0,none,none
+gn:2696804,Laxå,Örebro,3125,village,0,0,50,0,none,none
+gn:2697065,Långvik,Stockholm,1206,village,0,0,50,0,none,none
+gn:2697295,Långshyttan,Dalarna,1609,village,0,0,50,0,none,none
+gn:2697310,Långsele,Västernorrland,1642,village,0,0,50,0,none,none
+gn:2697455,Länghem,Västra Götaland,1086,village,0,0,50,0,none,none
+gn:2697703,Landvetter,Västra Götaland,8839,village,0,0,50,0,none,none
+gn:2697720,Landskrona,Skåne,32229,town,0,0,50,0,none,none
+gn:2697727,Landsbro,Jönköping,1438,village,0,0,50,0,none,none
+gn:2697766,Lammhult,Kronoberg,1694,village,0,0,50,0,none,none
+gn:2697861,Laholm,Halland,6527,village,0,0,50,0,none,none
+gn:2697944,Lagan,Kronoberg,1550,village,0,0,50,0,none,none
+gn:2698242,Kvissleby,Västernorrland,8785,village,0,0,50,0,none,none
+gn:2698293,Kvidinge,Skåne,1823,village,0,0,50,0,none,none
+gn:2698295,Kvicksund,Södermanland,2179,village,0,0,50,0,none,none
+gn:2698520,Kvänum,Västra Götaland,1278,village,0,0,50,0,none,none
+gn:2698681,Kungsör,Västmanland,5885,village,0,0,50,0,none,none
+gn:2698691,Kungsholmen,Stockholm,69363,town,0,0,50,0,none,none
+gn:2698697,Kungshamn,Västra Götaland,3657,village,0,0,50,0,none,none
+gn:2698729,Kungsbacka,Halland,18698,town,0,0,50,0,none,none
+gn:2698733,Kungsängen,Stockholm,10151,town,0,0,50,0,none,none
+gn:2698739,Kungälv,Västra Götaland,24101,town,0,0,50,0,none,none
+gn:2698745,Kummelnäs,Stockholm,3360,village,0,0,50,0,none,none
+gn:2698767,Kumla,Örebro,16663,town,0,0,50,0,none,none
+gn:2698975,Krylbo,Dalarna,4072,village,0,0,50,0,none,none
+gn:2699176,Krokom,Jämtland,1953,village,0,0,50,0,none,none
+gn:2699206,Krokek,Östergötland,5053,village,0,0,50,0,none,none
+gn:2699282,Kristinehamn,Värmland,18557,town,0,0,50,0,none,none
+gn:2699310,Kristianstad,Skåne,39762,town,0,0,50,0,none,none
+gn:2699313,Kristdala,Kalmar,1016,village,0,0,50,0,none,none
+gn:2699394,Kramfors,Västernorrland,6582,village,0,0,50,0,none,none
+gn:2699749,Kopparmora,Stockholm,2280,village,0,0,50,0,none,none
+gn:2699768,Kopparberg,Örebro,3065,village,0,0,50,0,none,none
+gn:2699777,Köpmanholmen,Västernorrland,1194,village,0,0,50,0,none,none
+gn:2699786,Köpingebro,Skåne,1254,village,0,0,50,0,none,none
+gn:2699791,Köping,Västmanland,18355,town,0,0,50,0,none,none
+gn:2699879,Kolsva,Västmanland,2440,village,0,0,50,0,none,none
+gn:2700011,Kolbäck,Västmanland,2034,village,0,0,50,0,none,none
+gn:2700079,Kode,Västra Götaland,1605,village,0,0,50,0,none,none
+gn:2700199,Knivsta,Uppsala,7977,village,0,0,50,0,none,none
+gn:2700218,Knislinge,Skåne,3144,village,0,0,50,0,none,none
+gn:2700279,Knäred,Halland,1211,village,0,0,50,0,none,none
+gn:2700487,Klippan,Skåne,8411,village,0,0,50,0,none,none
+gn:2700497,Klintehamn,Gotland,1490,village,0,0,50,0,none,none
+gn:2700694,Klågerup,Skåne,1940,village,0,0,50,0,none,none
+gn:2700791,Kista,Stockholm,10254,town,0,0,50,0,none,none
+gn:2700800,Kisa,Östergötland,3776,village,0,0,50,0,none,none
+gn:2700839,Kinna,Västra Götaland,15019,town,0,0,50,0,none,none
+gn:2700858,Kimstad,Östergötland,1469,village,0,0,50,0,none,none
+gn:2700947,Kilafors,Gävleborg,1197,village,0,0,50,0,none,none
+gn:2700960,Kil,Värmland,7627,village,0,0,50,0,none,none
+gn:2701078,Kaxholmen,Jönköping,1561,village,0,0,50,0,none,none
+gn:2701096,Kävlinge,Skåne,9320,village,0,0,50,0,none,none
+gn:2701223,Katrineholm,Södermanland,23283,town,0,0,50,0,none,none
+gn:2701680,Karlstad,Värmland,61492,town,0,0,50,0,none,none
+gn:2701713,Karlskrona,Blekinge,66675,town,0,0,50,0,none,none
+gn:2701715,Karlskoga,Örebro,27490,town,0,0,50,0,none,none
+gn:2701727,Karlshamn,Blekinge,20112,town,0,0,50,0,none,none
+gn:2701757,Karlsborg,Västra Götaland,3624,village,0,0,50,0,none,none
+gn:2701792,Karlholmsbruk,Uppsala,1193,village,0,0,50,0,none,none
+gn:2702261,Kalmar,Kalmar,38408,town,0,0,50,0,none,none
+gn:2702405,Kallinge,Blekinge,4664,village,0,0,50,0,none,none
+gn:2702449,Kållered,Västra Götaland,6784,village,0,0,50,0,none,none
+gn:2702489,Källby,Västra Götaland,1737,village,0,0,50,0,none,none
+gn:2702683,Kågeröd,Skåne,1516,village,0,0,50,0,none,none
+gn:2702776,Jursla,Östergötland,1647,village,0,0,50,0,none,none
+gn:2702892,Jörlanda,Västra Götaland,1465,village,0,0,50,0,none,none
+gn:2702908,Jordbro,Stockholm,10757,town,0,0,50,0,none,none
+gn:2702923,Jonstorp,Västra Götaland,1771,village,0,0,50,0,none,none
+gn:2702928,Jonstorp,Skåne,1972,village,0,0,50,0,none,none
+gn:2702979,Jönköping,Jönköping,112766,city,0,0,50,0,none,none
+gn:2702997,Jokkmokk,Norrbotten,2794,village,0,0,50,0,none,none
+gn:2703038,Johannedal,Västernorrland,2592,village,0,0,50,0,none,none
+gn:2703145,Järvsö,Gävleborg,1557,village,0,0,50,0,none,none
+gn:2703212,Järpen,Jämtland,1539,village,0,0,50,0,none,none
+gn:2703268,Järna,Dalarna,1725,village,0,0,50,0,none,none
+gn:2703269,Järna,Stockholm,6038,village,0,0,50,0,none,none
+gn:2703300,Järbo,Gävleborg,1813,village,0,0,50,0,none,none
+gn:2703339,Jämshög,Blekinge,1612,village,0,0,50,0,none,none
+gn:2703349,Jämjö,Blekinge,2629,village,0,0,50,0,none,none
+gn:2703396,Jakobsberg,Stockholm,24046,town,0,0,50,0,none,none
+gn:2703525,Irsta,Uppsala,2534,village,0,0,50,0,none,none
+gn:2703526,Irsta,Västmanland,2809,village,0,0,50,0,none,none
+gn:2703546,Insjön,Västerbotten,2150,village,0,0,50,0,none,none
+gn:2703547,Insjön,Dalarna,2141,village,0,0,50,0,none,none
+gn:2703686,Ingelstad,Kronoberg,1762,village,0,0,50,0,none,none
+gn:2703827,Iggesund,Gävleborg,3419,village,0,0,50,0,none,none
+gn:2704008,Hyltebruk,Halland,3992,village,0,0,50,0,none,none
+gn:2704042,Hyllinge,Skåne,2287,village,0,0,50,0,none,none
+gn:2704114,Husum,Västernorrland,1563,village,0,0,50,0,none,none
+gn:2704136,Huskvarna,Jönköping,21500,town,0,0,50,0,none,none
+gn:2704245,Hunnebostrand,Västra Götaland,2053,village,0,0,50,0,none,none
+gn:2704398,Hultsfred,Kalmar,5510,village,0,0,50,0,none,none
+gn:2704613,Hudiksvall,Gävleborg,16081,town,0,0,50,0,none,none
+gn:2704620,Huddinge,Stockholm,90182,town,0,0,50,0,none,none
+gn:2704638,Hovsta,Örebro,2831,village,0,0,50,0,none,none
+gn:2704654,Hovmantorp,Kronoberg,3082,village,0,0,50,0,none,none
+gn:2704662,Höviksnäs,Västra Götaland,1750,village,0,0,50,0,none,none
+gn:2704716,Hova,Västra Götaland,1254,village,0,0,50,0,none,none
+gn:2704885,Horred,Västra Götaland,1203,village,0,0,50,0,none,none
+gn:2704956,Hörnefors,Västerbotten,2514,village,0,0,50,0,none,none
+gn:2704962,Horndal,Dalarna,1120,village,0,0,50,0,none,none
+gn:2705049,Hörby,Skåne,7459,village,0,0,50,0,none,none
+gn:2705055,Höör,Skåne,12152,town,0,0,50,0,none,none
+gn:2705075,Hönö,Västra Götaland,5293,village,0,0,50,0,none,none
+gn:2705127,Hölö,Stockholm,1199,village,0,0,50,0,none,none
+gn:2705128,Hölö,Stockholm,1477,village,0,0,50,0,none,none
+gn:2705402,Höllviken,Skåne,14889,town,0,0,50,0,none,none
+gn:2705492,Hököpinge,Skåne,1164,village,0,0,50,0,none,none
+gn:2705562,Hökåsen,Västmanland,2986,village,0,0,50,0,none,none
+gn:2705718,Högsby,Kalmar,1923,village,0,0,50,0,none,none
+gn:2706003,Höganäs,Skåne,14778,town,0,0,50,0,none,none
+gn:2706054,Hofterup,Skåne,3814,village,0,0,50,0,none,none
+gn:2706057,Hofors,Gävleborg,6090,village,0,0,50,0,none,none
+gn:2706100,Hjuvik,Västra Götaland,3754,village,0,0,50,0,none,none
+gn:2706184,Hjo,Västra Götaland,6203,village,0,0,50,0,none,none
+gn:2706222,Hjärnarp,Skåne,1095,village,0,0,50,0,none,none
+gn:2706323,Hittarp,Skåne,3837,village,0,0,50,0,none,none
+gn:2706324,Hittarp,Skåne,4545,village,0,0,50,0,none,none
+gn:2706392,Hindås,Västra Götaland,2901,village,0,0,50,0,none,none
+gn:2706435,Hillerstorp,Jönköping,1746,village,0,0,50,0,none,none
+gn:2706483,Hestra,Jönköping,1326,village,0,0,50,0,none,none
+gn:2706486,Hestra,Jönköping,1327,village,0,0,50,0,none,none
+gn:2706523,Herrljunga,Västra Götaland,3982,village,0,0,50,0,none,none
+gn:2706543,Herrestad,Östergötland,2412,village,0,0,50,0,none,none
+gn:2706619,Henån,Västra Götaland,2243,village,0,0,50,0,none,none
+gn:2706678,Hemse,Gotland,1668,village,0,0,50,0,none,none
+gn:2706713,Hemmesta,Stockholm,4577,village,0,0,50,0,none,none
+gn:2706767,Helsingborg,Skåne,104250,city,0,0,50,0,none,none
+gn:2706914,Hedesunda,Gävleborg,1067,village,0,0,50,0,none,none
+gn:2706982,Hedemora,Dalarna,7371,village,0,0,50,0,none,none
+gn:2707057,Heby,Uppsala,2724,village,0,0,50,0,none,none
+gn:2707138,Haverdal,Halland,1681,village,0,0,50,0,none,none
+gn:2707217,Hästveda,Skåne,1693,village,0,0,50,0,none,none
+gn:2707366,Hasslö,Blekinge,1606,village,0,0,50,0,none,none
+gn:2707399,Hässleholm,Skåne,19309,town,0,0,50,0,none,none
+gn:2707462,Hässelby Villastad,Stockholm,19000,town,0,0,50,0,none,none
+gn:2707664,Harplinge,Halland,1498,village,0,0,50,0,none,none
+gn:2707684,Härnösand,Västernorrland,25012,town,0,0,50,0,none,none
+gn:2707953,Haninge,Stockholm,74968,town,0,0,50,0,none,none
+gn:2708016,Handen,Stockholm,11524,town,0,0,50,0,none,none
+gn:2708025,Hanaskog,Skåne,1385,village,0,0,50,0,none,none
+gn:2708135,Hammerdal,Jämtland,1043,village,0,0,50,0,none,none
+gn:2708152,Hammarstrand,Jämtland,1116,village,0,0,50,0,none,none
+gn:2708238,Hammar,Skåne,3311,village,0,0,50,0,none,none
+gn:2708365,Halmstad,Halland,70480,town,0,0,50,0,none,none
+gn:2708426,Hallstavik,Stockholm,4536,village,0,0,50,0,none,none
+gn:2708429,Hallstahammar,Västmanland,10787,town,0,0,50,0,none,none
+gn:2708511,Hallsberg,Örebro,8146,village,0,0,50,0,none,none
+gn:2708584,Hällevik,Blekinge,1545,village,0,0,50,0,none,none
+gn:2708663,Hälleforsnäs,Södermanland,1624,village,0,0,50,0,none,none
+gn:2708665,Hällefors,Örebro,4449,village,0,0,50,0,none,none
+gn:2708710,Hällbybrunn,Södermanland,3323,village,0,0,50,0,none,none
+gn:2708821,Hällabrottet,Örebro,1806,village,0,0,50,0,none,none
+gn:2708891,Häljarp,Skåne,3134,village,0,0,50,0,none,none
+gn:2709214,Hagfors,Värmland,4869,village,0,0,50,0,none,none
+gn:2709494,Habo,Jönköping,7740,village,0,0,50,0,none,none
+gn:2709600,Gusum,Östergötland,1149,village,0,0,50,0,none,none
+gn:2709628,Gustavsberg,Stockholm,20774,town,0,0,50,0,none,none
+gn:2709642,Gustav Adolf,Skåne,1224,village,0,0,50,0,none,none
+gn:2709761,Gunnebo,Kalmar,1022,village,0,0,50,0,none,none
+gn:2709912,Gullspång,Västra Götaland,1568,village,0,0,50,0,none,none
+gn:2709969,Gullbrandstorp,Halland,1642,village,0,0,50,0,none,none
+gn:2710205,Grycksbo,Dalarna,1870,village,0,0,50,0,none,none
+gn:2710343,Grums,Värmland,5040,village,0,0,50,0,none,none
+gn:2710731,Grillby,Uppsala,1028,village,0,0,50,0,none,none
+gn:2710796,Grebo,Östergötland,1047,village,0,0,50,0,none,none
+gn:2710797,Grebbestad,Västra Götaland,1877,village,0,0,50,0,none,none
+gn:2710885,Grästorp,Västra Götaland,2946,village,0,0,50,0,none,none
+gn:2711174,Gränna,Jönköping,2726,village,0,0,50,0,none,none
+gn:2711256,Grängesberg,Dalarna,2146,village,0,0,50,0,none,none
+gn:2711451,Gråbo,Västra Götaland,6021,village,0,0,50,0,none,none
+gn:2711526,Götene,Västra Götaland,5027,village,0,0,50,0,none,none
+gn:2711537,Gothenburg,Västra Götaland,608462,large-city,0,0,50,0,none,none
+gn:2711561,Göta,Västra Götaland,1002,village,0,0,50,0,none,none
+gn:2711790,Gnosjö,Jönköping,4528,village,0,0,50,0,none,none
+gn:2711798,Gnesta,Södermanland,5772,village,0,0,50,0,none,none
+gn:2711803,Gnarp,Gävleborg,1199,village,0,0,50,0,none,none
+gn:2711820,Glumslöv,Skåne,2093,village,0,0,50,0,none,none
+gn:2711863,Glommen,Halland,1082,village,0,0,50,0,none,none
+gn:2711896,Glimåkra,Skåne,1466,village,0,0,50,0,none,none
+gn:2712045,Gislaved,Jönköping,10180,town,0,0,50,0,none,none
+gn:2712255,Getinge,Halland,1909,village,0,0,50,0,none,none
+gn:2712373,Genarp,Skåne,2962,village,0,0,50,0,none,none
+gn:2712377,Gemla,Kronoberg,1462,village,0,0,50,0,none,none
+gn:2712414,Gävle,Gävleborg,74884,town,0,0,50,0,none,none
+gn:2712628,Gärsnäs,Skåne,1094,village,0,0,50,0,none,none
+gn:2712642,Garphyttan,Örebro,1613,village,0,0,50,0,none,none
+gn:2712859,Gantofta,Skåne,1322,village,0,0,50,0,none,none
+gn:2712887,Gånghester,Västra Götaland,2533,village,0,0,50,0,none,none
+gn:2712988,Gamleby,Kalmar,2758,village,0,0,50,0,none,none
+gn:2712993,Gamla Uppsala,Uppsala,17973,town,0,0,50,0,none,none
+gn:2713219,Gagnef,Dalarna,1199,village,0,0,50,0,none,none
+gn:2713350,Fyllinge,Halland,2830,village,0,0,50,0,none,none
+gn:2713385,Furulund,Västra Götaland,3888,village,0,0,50,0,none,none
+gn:2713386,Furulund,Skåne,4359,village,0,0,50,0,none,none
+gn:2713516,Frövi,Örebro,2480,village,0,0,50,0,none,none
+gn:2713596,Frösakull,Halland,2296,village,0,0,50,0,none,none
+gn:2713656,Fritsla,Västra Götaland,2307,village,0,0,50,0,none,none
+gn:2713661,Fristad,Västra Götaland,5409,village,0,0,50,0,none,none
+gn:2713679,Frillesås,Halland,2832,village,0,0,50,0,none,none
+gn:2713797,Fränsta,Västernorrland,2062,village,0,0,50,0,none,none
+gn:2713943,Förslöv,Skåne,2386,village,0,0,50,0,none,none
+gn:2713964,Forsheda,Jönköping,1510,village,0,0,50,0,none,none
+gn:2713971,Forshaga,Värmland,6361,village,0,0,50,0,none,none
+gn:2713975,Forserum,Jönköping,2080,village,0,0,50,0,none,none
+gn:2714009,Forsbacka,Gävleborg,1754,village,0,0,50,0,none,none
+gn:2714327,Floby,Västra Götaland,1562,village,0,0,50,0,none,none
+gn:2714401,Flen,Södermanland,6594,village,0,0,50,0,none,none
+gn:2714618,Fjugesta,Örebro,2160,village,0,0,50,0,none,none
+gn:2714678,Fjärås kyrkby,Halland,2385,village,0,0,50,0,none,none
+gn:2714765,Fjälkinge,Skåne,1832,village,0,0,50,0,none,none
+gn:2714795,Fittja,Stockholm,7500,village,0,0,50,0,none,none
+gn:2714903,Finspång,Östergötland,12807,town,0,0,50,0,none,none
+gn:2715081,Filipstad,Värmland,6119,village,0,0,50,0,none,none
+gn:2715164,Fellingsbro,Örebro,1475,village,0,0,50,0,none,none
+gn:2715313,Färlöv,Skåne,1016,village,0,0,50,0,none,none
+gn:2715324,Färjestaden,Kalmar,5645,village,0,0,50,0,none,none
+gn:2715341,Färila,Gävleborg,1398,village,0,0,50,0,none,none
+gn:2715351,Färgelanda,Västra Götaland,1986,village,0,0,50,0,none,none
+gn:2715459,Falun,Dalarna,37291,town,0,0,50,0,none,none
+gn:2715568,Falköping,Västra Götaland,17170,town,0,0,50,0,none,none
+gn:2715573,Falkenberg,Halland,24099,town,0,0,50,0,none,none
+gn:2715656,Fagersta,Västmanland,11936,town,0,0,50,0,none,none
+gn:2715946,Eslöv,Skåne,18592,town,0,0,50,0,none,none
+gn:2715953,Eskilstuna,Södermanland,67359,town,0,0,50,0,none,none
+gn:2716085,Eriksberg,Stockholm,3200,village,0,0,50,0,none,none
+gn:2716166,Enköping,Uppsala,22553,town,0,0,50,0,none,none
+gn:2716202,Enebyberg,Stockholm,5000,village,0,0,50,0,none,none
+gn:2716235,Enbacka,Dalarna,1899,village,0,0,50,0,none,none
+gn:2716281,Emmaboda,Kalmar,4818,village,0,0,50,0,none,none
+gn:2716324,Ellös,Västra Götaland,1036,village,0,0,50,0,none,none
+gn:2716437,Eksjö,Jönköping,10157,town,0,0,50,0,none,none
+gn:2716443,Ekshärad,Värmland,1020,village,0,0,50,0,none,none
+gn:2716586,Ekerö,Stockholm,11505,town,0,0,50,0,none,none
+gn:2716601,Ekenässjön,Jönköping,1563,village,0,0,50,0,none,none
+gn:2716663,Ekeby-Almby,Örebro,1531,village,0,0,50,0,none,none
+gn:2716758,Ekängen,Östergötland,2485,village,0,0,50,0,none,none
+gn:2716863,Edsbyn,Gävleborg,4179,village,0,0,50,0,none,none
+gn:2716968,Ed,Västra Götaland,2994,village,0,0,50,0,none,none
+gn:2717401,Dorotea,Västerbotten,1491,village,0,0,50,0,none,none
+gn:2717412,Donsö,Västra Götaland,1446,village,0,0,50,0,none,none
+gn:2717517,Djursholm,Stockholm,8856,village,0,0,50,0,none,none
+gn:2717532,Djurö,Stockholm,1442,village,0,0,50,0,none,none
+gn:2717558,Djurås,Dalarna,2128,village,0,0,50,0,none,none
+gn:2717720,Diseröd,Västra Götaland,1328,village,0,0,50,0,none,none
+gn:2717727,Dingtuna,Västmanland,1021,village,0,0,50,0,none,none
+gn:2717824,Delsbo,Gävleborg,2185,village,0,0,50,0,none,none
+gn:2717842,Deje,Värmland,2702,village,0,0,50,0,none,none
+gn:2717884,Degerfors,Örebro,7190,village,0,0,50,0,none,none
+gn:2717898,Degeberga,Skåne,1328,village,0,0,50,0,none,none
+gn:2718000,Danderyd,Stockholm,32425,town,0,0,50,0,none,none
+gn:2718133,Dals Långed,Västra Götaland,1407,village,0,0,50,0,none,none
+gn:2718144,Dalsjöfors,Västra Götaland,3606,village,0,0,50,0,none,none
+gn:2718248,Dalby,Skåne,6302,village,0,0,50,0,none,none
+gn:2718271,Dalarö,Stockholm,1849,village,0,0,50,0,none,none
+gn:2718393,Charlottenberg,Värmland,2368,village,0,0,50,0,none,none
+gn:2718759,Bunkeflostrand,Skåne,13048,town,0,0,50,0,none,none
+gn:2718836,Bua,Halland,1792,village,0,0,50,0,none,none
+gn:2718975,Brunna,Dalarna,3861,village,0,0,50,0,none,none
+gn:2718981,Brunna,Stockholm,3948,village,0,0,50,0,none,none
+gn:2718983,Brunn,Stockholm,1180,village,0,0,50,0,none,none
+gn:2718991,Brunflo,Jämtland,3916,village,0,0,50,0,none,none
+gn:2719106,Bromölla,Skåne,7854,village,0,0,50,0,none,none
+gn:2719111,Bromma,Stockholm,72000,town,0,0,50,0,none,none
+gn:2719212,Broby,Skåne,3104,village,0,0,50,0,none,none
+gn:2719245,Bro,Stockholm,8266,village,0,0,50,0,none,none
+gn:2719312,Brevik,Stockholm,8024,village,0,0,50,0,none,none
+gn:2719318,Brevik,Stockholm,1817,village,0,0,50,0,none,none
+gn:2719466,Bredbyn,Västernorrland,1200,village,0,0,50,0,none,none
+gn:2719485,Bredaryd,Jönköping,1549,village,0,0,50,0,none,none
+gn:2719670,Brastad,Västra Götaland,2289,village,0,0,50,0,none,none
+gn:2719961,Brålanda,Västra Götaland,1521,village,0,0,50,0,none,none
+gn:2719965,Bräkne-Hoby,Blekinge,1708,village,0,0,50,0,none,none
+gn:2720004,Bräcke,Jämtland,1559,village,0,0,50,0,none,none
+gn:2720028,Braås,Kronoberg,1692,village,0,0,50,0,none,none
+gn:2720037,Boxholm,Östergötland,3269,village,0,0,50,0,none,none
+gn:2720383,Borlänge,Dalarna,41955,town,0,0,50,0,none,none
+gn:2720437,Borgholm,Kalmar,4344,village,0,0,50,0,none,none
+gn:2720485,Borensberg,Östergötland,2942,village,0,0,50,0,none,none
+gn:2720501,Borås,Västra Götaland,71700,town,0,0,50,0,none,none
+gn:2720504,Bor,Jönköping,1263,village,0,0,50,0,none,none
+gn:2720670,Bollstabruk,Västernorrland,1883,village,0,0,50,0,none,none
+gn:2720679,Bollnäs,Gävleborg,13716,town,0,0,50,0,none,none
+gn:2720681,Bollmora,Stockholm,0,village,0,0,50,0,none,none
+gn:2720689,Bollebygd,Västra Götaland,3870,village,0,0,50,0,none,none
+gn:2721035,Bodafors,Jönköping,1957,village,0,0,50,0,none,none
+gn:2721259,Boo,Stockholm,24052,town,0,0,50,0,none,none
+gn:2721285,Blomstermåla,Kalmar,2380,village,0,0,50,0,none,none
+gn:2721335,Blidö,Stockholm,1161,village,0,0,50,0,none,none
+gn:2721348,Blentarp,Skåne,1452,village,0,0,50,0,none,none
+gn:2721534,Bjuv,Skåne,10602,town,0,0,50,0,none,none
+gn:2721581,Bjursås,Dalarna,1968,village,0,0,50,0,none,none
+gn:2721585,Bjurholm,Västerbotten,1000,village,0,0,50,0,none,none
+gn:2721828,Björneborg,Värmland,1237,village,0,0,50,0,none,none
+gn:2721946,Björlanda,Västra Götaland,23088,town,0,0,50,0,none,none
+gn:2722029,Björkö,Västra Götaland,1495,village,0,0,50,0,none,none
+gn:2722302,Björboholm,Västra Götaland,1036,village,0,0,50,0,none,none
+gn:2722320,Bjästa,Västernorrland,1845,village,0,0,50,0,none,none
+gn:2722362,Bjärred,Skåne,9844,village,0,0,50,0,none,none
+gn:2722363,Bjärnum,Skåne,2755,village,0,0,50,0,none,none
+gn:2722545,Billingsfors,Västra Götaland,1108,village,0,0,50,0,none,none
+gn:2722563,Billesholm,Skåne,2794,village,0,0,50,0,none,none
+gn:2722567,Billeberga,Skåne,1050,village,0,0,50,0,none,none
+gn:2722570,Billdal,Västra Götaland,14874,town,0,0,50,0,none,none
+gn:2722734,Bergsjö,Gävleborg,1292,village,0,0,50,0,none,none
+gn:2722742,Bergshamra,Stockholm,7300,village,0,0,50,0,none,none
+gn:2722751,Hoverberg,Jämtland,206,village,0,0,50,0,none,none
+gn:2722794,Bergkvara,Kalmar,1021,village,0,0,50,0,none,none
+gn:2722836,Bergeforsen,Västernorrland,1787,village,0,0,50,0,none,none
+gn:2722861,Bergby,Gävleborg,1549,village,0,0,50,0,none,none
+gn:2722996,Berg,Östergötland,1229,village,0,0,50,0,none,none
+gn:2723079,Bengtsfors,Västra Götaland,3125,village,0,0,50,0,none,none
+gn:2723287,Båstad,Skåne,5146,village,0,0,50,0,none,none
+gn:2723350,Bårslöv,Skåne,2753,village,0,0,50,0,none,none
+gn:2723434,Barkarö,Västmanland,1404,village,0,0,50,0,none,none
+gn:2723488,Bara,Södermanland,3270,village,0,0,50,0,none,none
+gn:2723489,Bara,Skåne,3743,village,0,0,50,0,none,none
+gn:2723503,Bankeryd,Jönköping,8506,village,0,0,50,0,none,none
+gn:2723567,Bålsta,Uppsala,13138,town,0,0,50,0,none,none
+gn:2723655,Bälinge,Uppsala,2406,village,0,0,50,0,none,none
+gn:2724134,Axvall,Västra Götaland,1164,village,0,0,50,0,none,none
+gn:2724231,Avesta,Dalarna,11949,town,0,0,50,0,none,none
+gn:2724321,Åtvidaberg,Östergötland,7014,village,0,0,50,0,none,none
+gn:2724435,Åstorp,Skåne,9215,village,0,0,50,0,none,none
+gn:2724693,Asmundtorp,Skåne,1563,village,0,0,50,0,none,none
+gn:2724778,Askersund,Örebro,3997,village,0,0,50,0,none,none
+gn:2724958,Åsele,Västerbotten,1706,village,0,0,50,0,none,none
+gn:2724962,Åseda,Kronoberg,2557,village,0,0,50,0,none,none
+gn:2725003,Åsbro,Örebro,1321,village,0,0,50,0,none,none
+gn:2725066,Åsa,Halland,6084,village,0,0,50,0,none,none
+gn:2725073,Ås,Västernorrland,1097,village,0,0,50,0,none,none
+gn:2725076,Ås,Jämtland,1572,village,0,0,50,0,none,none
+gn:2725123,Arvika,Värmland,13926,town,0,0,50,0,none,none
+gn:2725136,Arvidsjaur,Norrbotten,4655,village,0,0,50,0,none,none
+gn:2725192,Årsunda,Gävleborg,1012,village,0,0,50,0,none,none
+gn:2725201,Årsta,Stockholm,16807,town,0,0,50,0,none,none
+gn:2725271,Arnö,Stockholm,3925,village,0,0,50,0,none,none
+gn:2725277,Arnö,Södermanland,4124,village,0,0,50,0,none,none
+gn:2725336,Arlöv,Skåne,9108,village,0,0,50,0,none,none
+gn:2725348,Ärla,Södermanland,1272,village,0,0,50,0,none,none
+gn:2725372,Arjeplog,Norrbotten,1822,village,0,0,50,0,none,none
+gn:2725379,Årjäng,Värmland,3302,village,0,0,50,0,none,none
+gn:2725456,Arbrå,Gävleborg,1961,village,0,0,50,0,none,none
+gn:2725471,Arboga,Västmanland,10841,town,0,0,50,0,none,none
+gn:2725670,Annelund,Västra Götaland,1226,village,0,0,50,0,none,none
+gn:2725722,Ankarsrum,Kalmar,1234,village,0,0,50,0,none,none
+gn:2725872,Angered,Västra Götaland,1062,village,0,0,50,0,none,none
+gn:2725901,Ängelholm,Skåne,23240,town,0,0,50,0,none,none
+gn:2725924,Ånge,Västernorrland,2889,village,0,0,50,0,none,none
+gn:2726005,Aneby,Jönköping,3496,village,0,0,50,0,none,none
+gn:2726026,Anderstorp,Västra Götaland,4987,village,0,0,50,0,none,none
+gn:2726032,Anderstorp,Jönköping,5076,village,0,0,50,0,none,none
+gn:2726049,Anderslöv,Skåne,1963,village,0,0,50,0,none,none
+gn:2726163,Åmotfors,Värmland,1347,village,0,0,50,0,none,none
+gn:2726240,Åmål,Västra Götaland,9373,village,0,0,50,0,none,none
+gn:2726285,Älvkarleby,Uppsala,1517,village,0,0,50,0,none,none
+gn:2726314,Alvesta,Kronoberg,8627,village,0,0,50,0,none,none
+gn:2726332,Älvdalen,Dalarna,1863,village,0,0,50,0,none,none
+gn:2726347,Älvängen,Västra Götaland,4759,village,0,0,50,0,none,none
+gn:2726353,Alunda,Uppsala,2506,village,0,0,50,0,none,none
+gn:2726394,Älta,Stockholm,9274,village,0,0,50,0,none,none
+gn:2726470,Alsike,Uppsala,3833,village,0,0,50,0,none,none
+gn:2726544,Älmsta,Stockholm,1376,village,0,0,50,0,none,none
+gn:2726576,Älmhult,Kronoberg,9495,village,0,0,50,0,none,none
+gn:2726756,Alingsås,Västra Götaland,26329,town,0,0,50,0,none,none
+gn:2726939,Alfta,Gävleborg,2348,village,0,0,50,0,none,none
+gn:2726983,Åled,Halland,1690,village,0,0,50,0,none,none
+gn:2727130,Alafors,Västra Götaland,0,village,0,0,50,0,none,none
+gn:2727222,Åkers Styckebruk,Södermanland,2730,village,0,0,50,0,none,none
+gn:2727234,Åkersberga,Stockholm,32659,town,0,0,50,0,none,none
+gn:2727314,Åkarp,Västra Götaland,5393,village,0,0,50,0,none,none
+gn:2727320,Åkarp,Skåne,5959,village,0,0,50,0,none,none
+gn:2727363,Åhus,Skåne,9840,village,0,0,50,0,none,none
+gn:2727594,Åby,Östergötland,6917,village,0,0,50,0,none,none
+gn:2727731,Abborrberget,Dalarna,1814,village,0,0,50,0,none,none
+gn:3234968,Västra Hagen,Halland,1319,village,0,0,50,0,none,none
+gn:3326962,Enhagen-Ekbacken,Västmanland,1091,village,0,0,50,0,none,none
+gn:3331429,Saxtorpsskogen,Skåne,1174,village,0,0,50,0,none,none
+gn:3331621,Andalen,Västra Götaland,1897,village,0,0,50,0,none,none
+gn:3331674,Nolvik,Västra Götaland,1373,village,0,0,50,0,none,none
+gn:3336565,Vi,Västernorrland,5841,village,0,0,50,0,none,none
+gn:3336566,Fisksätra,Stockholm,8117,village,0,0,50,0,none,none
+gn:3336567,Ekeby,Skåne,3292,village,0,0,50,0,none,none
+gn:3336568,Skanör med Falsterbo,Skåne,7077,village,0,0,50,0,none,none
+gn:6269436,Ingared,Västra Götaland,1703,village,0,0,50,0,none,none
+gn:6619708,Majorna,Västra Götaland,29254,town,0,0,50,0,none,none
+gn:6943587,Onsala,Halland,12275,town,0,0,50,0,none,none
+gn:7283918,Olstorp,Västra Götaland,1017,village,0,0,50,0,none,none
+gn:7304423,Akalla,Stockholm,8153,village,0,0,50,0,none,none
+gn:7304427,Tensta,Stockholm,17083,town,0,0,50,0,none,none
+gn:7304434,Björkskatan,Norrbotten,4388,village,0,0,50,0,none,none
+gn:7931985,Alby,Stockholm,11400,town,0,0,50,0,none,none
+gn:8288543,Hammarkullen,Västra Götaland,7914,village,0,0,50,0,none,none
+gn:8288544,Rannebergen,Västra Götaland,4364,village,0,0,50,0,none,none
+gn:8288546,Eriksbo,Västra Götaland,2564,village,0,0,50,0,none,none
+gn:8288547,Gårdsten,Västra Götaland,8025,village,0,0,50,0,none,none
+gn:8288548,Lövgärdet,Västra Götaland,7113,village,0,0,50,0,none,none
+gn:9114206,Åre,Jämtland,3552,village,0,0,50,0,none,none
+gn:10942599,Or,Stockholm,6550,village,0,0,50,0,none,none
+gn:10942905,Marielund,Norrbotten,1726,village,0,0,50,0,none,none
+gn:13192986,Mariastaden,Skåne,7487,village,0,0,50,0,none,none
+gn:13607716,Flogsta,Uppsala,7095,village,0,0,50,0,none,none
+gn:13631348,St Lars,Skåne,0,village,0,0,50,0,none,none

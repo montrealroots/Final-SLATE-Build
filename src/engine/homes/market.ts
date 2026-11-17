@@ -13,7 +13,7 @@ import { addDaysToKey } from '../time';
 import RULES from '../../data/homes/rules.json';
 import {
   PLACEHOLDER, RUNNING_USD, inBuilding, roomsFrom, scopesOf,
-  type Condition, type Design, type Evidence, type Form, type Home, type Room, type RoomKind, type ScopedRule,
+  FORM_WORDS, type Condition, type Design, type Evidence, type Form, type Home, type Room, type RoomKind, type ScopedRule,
 } from './model';
 
 export const HOME_RULES = RULES as unknown as ScopedRule[];
@@ -23,6 +23,7 @@ const FR = import.meta.glob<string>('../../data/homes/fr/*.json', { query: '?url
 const SG = import.meta.glob<string>('../../data/homes/sg/*.json', { query: '?url', import: 'default', eager: true });
 const BENCH = import.meta.glob<string>('../../data/homes/benchmarks.json', { query: '?url', import: 'default', eager: true });
 const COUNTIES = import.meta.glob<string>('../../data/homes/hud/counties.json', { query: '?url', import: 'default', eager: true });
+const FR_CODES = import.meta.glob<string>('../../data/homes/fr/communes.json', { query: '?url', import: 'default', eager: true });
 
 /**
  * Each factual dataset's geography, dates, units, method and source (from November 17, 2026: the owner's brief, 3).
@@ -69,7 +70,7 @@ export interface MarketEvidence {
   /** Monthly rent by bedrooms 0–4, in hundredths, where a benchmark gives it. */
   rent?: { byBedrooms: number[]; evidence: Evidence; original?: number[] };
   /** Purchase price per square metre, in hundredths, by kind of home, where evidence gives it. */
-  sale?: { houseM2?: number; apartmentM2?: number; evidence: Evidence; medianAreaM2?: number };
+  sale?: { houseM2?: number; apartmentM2?: number; evidence: Evidence; medianAreaM2?: number; /** Recorded sales behind it, where it's from sales. */ records?: number };
   /** Singapore: the HDB town and its recent resales by flat type. */
   hdb?: { town: string; byType: Record<string, { price: number; area: number; storey: string; leaseFrom: number; remainingMonths: number | null }[]>; evidence: Evidence };
   /** Recorded sales nearby, for the player to read: never "available now". */
@@ -120,25 +121,31 @@ export async function marketEvidence(placeId: string, day: string): Promise<Mark
       ev.nearby.push({ label: `ONS average private rent, ${region}`, detail: `£${ons.value.toLocaleString('en-GB')} a month, ${ons.observation_period}, provisional. An average across all rented homes, not a listing.` });
     }
   } else if (place.country === 'FR') {
-    const index = await fetchJson<{ departments: Record<string, [string, string][]> }>(FR['../../data/homes/fr/index.json']);
-    const name = fold(place.name);
-    const depts = Object.entries(index?.departments ?? {}).filter(([, cs]) => cs.some(([, n]) => fold(n) === name || fold(n).startsWith(`${name} `)));
-    const communes: { name: string; house: { sales: number; medianPricePerM2Eur: number; medianFloorAreaM2: number } | null; apartment: { sales: number; medianPricePerM2Eur: number; medianFloorAreaM2: number } | null; lastObserved: string }[] = [];
-    for (const [d] of depts.slice(0, 2)) {
-      const pack = await fetchJson<{ communes: typeof communes & { name: string }[] }>(FR[`../../data/homes/fr/${d}.json`]);
-      for (const c of pack?.communes ?? []) if (fold(c.name) === name || fold(c.name).startsWith(`${name} `)) communes.push(c);
+    // The place's own commune, by its INSEE code (tools/homes/place-codes.mjs), from November 17, 2026: until then by
+    // name across all of France, so one Saint-Martin could be priced from another's sales. Paris, Lyon and Marseille
+    // are recorded by arrondissement: the city is its arrondissements together.
+    const codes = await fetchJson<Record<string, string>>(FR_CODES['../../data/homes/fr/communes.json']);
+    const code = codes?.[placeId.replace(/^gn:/, '')];
+    const ARRONDISSEMENTS: Record<string, RegExp> = { '75056': /^751\d\d$/, '69123': /^6938\d$/, '13055': /^132\d\d$/ };
+    const communes: { code: string; name: string; house: { sales: number; medianPricePerM2Eur: number; medianFloorAreaM2: number } | null; apartment: { sales: number; medianPricePerM2Eur: number; medianFloorAreaM2: number } | null }[] = [];
+    if (code) {
+      const dept = code.startsWith('97') ? code.slice(0, 3) : code.slice(0, 2);
+      const pack = await fetchJson<{ communes: typeof communes }>(FR[`../../data/homes/fr/${dept}.json`]);
+      for (const c of pack?.communes ?? []) if (c.code === code || ARRONDISSEMENTS[code]?.test(c.code)) communes.push(c);
     }
     if (communes.length) {
       const wavg = (k: 'house' | 'apartment') => { const xs = communes.filter((c) => c[k]); const n = xs.reduce((a, c) => a + c[k]!.sales, 0); return n ? Math.round(xs.reduce((a, c) => a + c[k]!.medianPricePerM2Eur * c[k]!.sales, 0) / n) : undefined; };
       const h = wavg('house'), a = wavg('apartment');
       const sales = communes.reduce((s, c) => s + (c.house?.sales ?? 0) + (c.apartment?.sales ?? 0), 0);
       const eur = (v: number | undefined) => (v === undefined ? undefined : exchange(v * 100, 'EUR', currency, day) ?? v * 100);
-      ev.sale = { houseM2: eur(h ?? a), apartmentM2: eur(a ?? h), evidence: { basis: 'historical-sales', sourceId: 'FR-DVF-2025', ...dated(`Recorded 2025 sales in ${place.name} (DVF, ${sales.toLocaleString('en-US')} single-home sales): the median price per square metre. Past sales, not homes for sale now.`, 'FR-DVF-2025', day) } };
+      ev.sale = { houseM2: eur(h ?? a), apartmentM2: eur(a ?? h), records: sales, evidence: { basis: 'historical-sales', sourceId: 'FR-DVF-2025', ...dated(`Recorded 2025 sales in ${place.name} (DVF, ${sales.toLocaleString('en-US')} single-home sales): the median price per square metre. Past sales, not homes for sale now.`, 'FR-DVF-2025', day) } };
       ev.nearby.push({ label: `Recorded 2025 sales, ${place.name}`, detail: `${sales.toLocaleString('en-US')} sales of a single house or flat (DVF). Median ${a ? `€${a.toLocaleString('en-US')}/m² for flats` : ''}${a && h ? ', ' : ''}${h ? `€${h.toLocaleString('en-US')}/m² for houses` : ''}. Historical, not available now.` });
     }
   } else if (place.country === 'SG') {
     const towns = await fetchJson<{ towns: { town: string; file: string; transactions: number; medianPriceLast12: number | null }[] }>(SG['../../data/homes/sg/towns.json']);
-    const t = towns?.towns.find((x) => fold(x.town) === fold(place.name)) ?? pick(stream(placeId, 'sg-town'), (towns?.towns ?? []).filter((x) => x.medianPriceLast12));
+    // The place's own HDB town only (from November 17, 2026: until then a place that wasn't an HDB town was given a
+    // random town's resales, a neighbour's records counted as its own).
+    const t = towns?.towns.find((x) => fold(x.town) === fold(place.name));
     if (t) {
       const pack = await fetchJson<{ dict: { month: string[]; flatType: string[]; storey: string[] }; rows: (number | string | null)[][] }>(SG[`../../data/homes/sg/${t.file}.json`]);
       const byType: NonNullable<MarketEvidence['hdb']>['byType'] = {};
@@ -208,7 +215,7 @@ const fmt = (n: number) => n.toLocaleString('en-US');
  * plots kept for good, each with its own identity, kind, size, condition and design. Each comes onto the market in its
  * own three-month windows and leaves again, so the market changes a little each month and a home seen once is the same
  * home when it returns. Until then twelve unrelated offers were drawn afresh each month.
- * They are all the game's: none is a verified home or a real listing (docs/homes/coverage has each place's shortfall).
+ * They are all the game's: none is a verified home or a real listing (docs/homes/places has each place's shortfall).
  * Asking prices are the evidence's, varied a little from listing to listing; no trend is modeled, as no source gives one.
  */
 export const MARKET_SIZE = 50;
@@ -342,5 +349,40 @@ export async function applianceCatalog(category: ApplianceCategory, query = '', 
       widthIn: num(r[c.widthIn]), depthIn: num(r[c.depthIn]), heightIn: num(r[c.heightIn]), annualKwh: num(r[c.annualTestKwh]),
       fuel: (r[c.fuel] as string | null) ?? null, venting: (r[c.venting] as string | null) ?? null,
     })),
+  };
+}
+
+// ---------------- Coverage, place by place ----------------
+
+/** The owner's target: fifty distinct homes at real, verified addresses in every place's own market. */
+export const VERIFIED_TARGET = 50;
+/**
+ * Homes at real, verified addresses, by place: none. No permitted source the game holds gives a home's verified
+ * specification, price and availability at a real address: HM Land Registry's and Overture's addresses were not
+ * imported (their terms don't permit it), DVF's sales can't be republished row by row, and HDB records a block, never
+ * a unit. docs/homes/places/ lists every place's shortfall. A source that permits it adds its count here, by place.
+ */
+export const VERIFIED_HOMES: Readonly<Record<string, number>> = {};
+export interface Coverage {
+  placeId: string; market: string;
+  verifiedHomes: number; datedListings: number; shortfall: number;
+  recordedSales: { source: string; count: number } | null;
+  rentEvidence: string; saleEvidence: string;
+  simulatedHomes: number; types: string[];
+}
+/** What the game holds for one place's housing market, kept apart by kind: verified, listed, recorded, statistics, simulated. */
+export function coverageOf(place: Place, ev: MarketEvidence): Coverage {
+  const verified = VERIFIED_HOMES[place.id] ?? 0;
+  const mix = localMix(place);
+  const hdbSales = ev.hdb ? Object.values(ev.hdb.byType).reduce((a, xs) => a + xs.length, 0) : 0;
+  const tier = (e: Evidence | undefined, what: string) => !e ? `none: ${what} are the game's estimate` : e.sourceId === 'US-HUD' ? 'HUD Fair Market Rent for its county' : e.sourceId === 'GB-ONS' ? "ONS average rent for its nation (not the city's own)" : e.sourceId === 'US-NAHB' ? "NAHB's national average (not the city's own)" : e.sourceId === 'FR-DVF-2025' ? 'DVF 2025 recorded sales in its own commune' : e.sourceId === 'SG-HDB' ? 'HDB resales in its own town' : e.sourceId;
+  return {
+    placeId: place.id, market: mix.label,
+    verifiedHomes: verified, datedListings: 0, shortfall: Math.max(0, VERIFIED_TARGET - verified),
+    recordedSales: ev.hdb ? { source: 'SG-HDB', count: hdbSales } : ev.sale?.evidence.sourceId === 'FR-DVF-2025' ? { source: 'FR-DVF-2025', count: ev.sale.records ?? 0 } : null,
+    rentEvidence: tier(ev.rent?.evidence, 'rents'),
+    saleEvidence: ev.hdb ? tier(ev.hdb.evidence, 'prices') : tier(ev.sale?.evidence, 'prices'),
+    simulatedHomes: MARKET_SIZE,
+    types: [...new Set([...(place.country === 'SG' && ev.hdb ? ['hdb-flat'] : []), ...mix.forms, 'studio', 'land'])].map((f) => FORM_WORDS[f as Form]),
   };
 }

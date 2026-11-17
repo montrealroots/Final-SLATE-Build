@@ -1,0 +1,302 @@
+place_id,name,region,population,market,verified_homes,dated_listings,shortfall_to_50,recorded_sales,rent_source,price_source
+gn:1821306,Phnom Penh,Phnom Penh,1573544,large-city,0,0,50,0,none,none
+gn:1821394,Veun Sai,Ratanakiri,464,village,0,0,50,0,none,none
+gn:1821445,Varin,Siem Reap,1684,village,0,0,50,0,none,none
+gn:1821453,Tuŏl Tumpung,Phnom Penh,7584,village,0,0,50,0,none,none
+gn:1821458,Boeng Kak Muoy,Phnom Penh,13861,town,0,0,50,0,none,none
+gn:1821625,Tœ̆k L’ák,Phnom Penh,9334,village,0,0,50,0,none,none
+gn:1821874,Tăng Krâsăng,Kampong Thom,12895,town,0,0,50,0,none,none
+gn:1821935,Ta Khmau,Kandal,52066,town,0,0,50,0,none,none
+gn:1821940,Takeo,Takeo,843931,large-city,0,0,50,0,none,none
+gn:1821993,Svay Rieng,Svay Rieng,23956,town,0,0,50,0,none,none
+gn:1822003,Svay Chek,Banteay Meanchey,0,village,0,0,50,0,none,none
+gn:1822019,Suong,Tboung Khmum,30000,town,0,0,50,0,none,none
+gn:1822029,Stung Treng,Stung Treng,25000,town,0,0,50,0,none,none
+gn:1822102,Srae Ambel,Koh Kong,0,village,0,0,50,0,none,none
+gn:1822158,Snuol,Kratie,16473,town,0,0,50,0,none,none
+gn:1822207,Sisophon,Banteay Meanchey,23218,town,0,0,50,0,none,none
+gn:1822214,Siem Reap,Siem Reap,139458,city,0,0,50,0,none,none
+gn:1822216,Siem Pang,Stung Treng,0,village,0,0,50,0,none,none
+gn:1822227,Sen Monorom,Mondolkiri,7944,village,0,0,50,0,none,none
+gn:1822373,Damrei Slab,Kampong Thom,3181,village,0,0,50,0,none,none
+gn:1822377,Andoung Tuek,Koh Kong,1658,village,0,0,50,0,none,none
+gn:1822610,Prey Veng,Prey Veng,33079,town,0,0,50,0,none,none
+gn:1822640,S’ang,Kandal,0,village,0,0,50,0,none,none
+gn:1822644,Koah Thum,Kandal,0,village,0,0,50,0,none,none
+gn:1822768,Pursat,Pursat,52476,town,0,0,50,0,none,none
+gn:1822826,Phumĭ Yoŭl Toŭng,Kratie,1426,village,0,0,50,0,none,none
+gn:1822827,Phumĭ Yoŭl Toŭng,Takeo,44395,town,0,0,50,0,none,none
+gn:1822839,Yeang Dangkum,Banteay Meanchey,7849,village,0,0,50,0,none,none
+gn:1822842,Yeang,Siem Reap,16177,town,0,0,50,0,none,none
+gn:1822895,Phumĭ Véal Tônsay,Kampong Speu Province,25168,town,0,0,50,0,none,none
+gn:1822906,Phumĭ Véal Srê,Takeo,44270,town,0,0,50,0,none,none
+gn:1823373,Phumĭ Trâpeăng Môntrei,Kampot,2000,village,0,0,50,0,none,none
+gn:1823453,Trapeang Chan,Kampong Chhnang,5931,village,0,0,50,0,none,none
+gn:1823628,Tuek Kraham,Preah Vihear,7809,village,0,0,50,0,none,none
+gn:1823673,Phumĭ Tnaôt Chŭm,Kampong Thom,7652,village,0,0,50,0,none,none
+gn:1823687,Phumĭ Tnaôt,Kampong Thom,21727,town,0,0,50,0,none,none
+gn:1823750,Bak Khlang,Koh Kong,0,village,0,0,50,0,none,none
+gn:1823887,Thma Puok,Banteay Meanchey,0,village,0,0,50,0,none,none
+gn:1823941,Kampong Thkov,Siem Reap,5766,village,0,0,50,0,none,none
+gn:1824110,Reaksmei Sameakki,Kampong Speu Province,4571,village,0,0,50,0,none,none
+gn:1824235,Ta Loas,Battambang,0,village,0,0,50,0,none,none
+gn:1824513,Stueng Chhay,Koh Kong,2649,village,0,0,50,0,none,none
+gn:1824638,Phumĭ Srê Kăn,Kampot,1430,village,0,0,50,0,none,none
+gn:1824664,Srae Chan,Kampong Chhnang,3180,village,0,0,50,0,none,none
+gn:1824888,Siem Reab,Siem Reap,5480,village,0,0,50,0,none,none
+gn:1825034,Sangkae,Preah Vihear,2006,village,0,0,50,0,none,none
+gn:1825093,Samraong,Ŏtâr Méanchey,18694,town,0,0,50,0,none,none
+gn:1825125,Samraong Kraom,Kampot,1250,village,0,0,50,0,none,none
+gn:1825200,Sala Krau,Pailin,0,village,0,0,50,0,none,none
+gn:1825275,Rumchek,Kampong Cham,3235,village,0,0,50,0,none,none
+gn:1825319,Phumĭ Rôméas,Kampong Chhnang,2468,village,0,0,50,0,none,none
+gn:1825322,Roluos,Phnom Penh,3541,village,0,0,50,0,none,none
+gn:1825390,Roka Kandal,Kratie,5010,village,0,0,50,0,none,none
+gn:1825871,Phumĭ Prey Chék,Kampot,1450,village,0,0,50,0,none,none
+gn:1825962,Preaek Saman,Kratie,8876,village,0,0,50,0,none,none
+gn:1825978,Preaek Prasab,Kratie,64466,town,0,0,50,0,none,none
+gn:1826015,Preaek Khsay Kha,Prey Veng,9668,village,0,0,50,0,none,none
+gn:1826392,Pongro,Kratie,7725,village,0,0,50,0,none,none
+gn:1826753,Ou Krasar,Kep,7400,village,0,0,50,0,none,none
+gn:1826755,Ou Kanthor,Kampong Thom,3039,village,0,0,50,0,none,none
+gn:1826789,Phumĭ Nĭpéch,Kampong Thom,3009,village,0,0,50,0,none,none
+gn:1826810,Neang Sav,Kampong Thom,2618,village,0,0,50,0,none,none
+gn:1826877,Mlu Prey Muoy,Preah Vihear,3337,village,0,0,50,0,none,none
+gn:1826926,Lvea,Siem Reap,2570,village,0,0,50,0,none,none
+gn:1827190,Krang Pongro,Phnom Penh,4333,village,0,0,50,0,none,none
+gn:1827256,Phum Krâkôr,Kratie,4182,village,0,0,50,0,none,none
+gn:1827292,Kou Loab,Kratie,4037,village,0,0,50,0,none,none
+gn:1827393,Phumĭ Koŭk Kóng,Prey Veng,6676,village,0,0,50,0,none,none
+gn:1827458,Koun Sat,Kampot,9277,village,0,0,50,0,none,none
+gn:1827473,Kong Noy,Phnom Penh,2139,village,0,0,50,0,none,none
+gn:1827499,Kokor,Kampong Cham,4156,village,0,0,50,0,none,none
+gn:1827523,Koas Krala,Battambang,0,village,0,0,50,0,none,none
+gn:1827558,Kien Chrey,Kampong Cham,3030,village,0,0,50,0,none,none
+gn:1827641,Khpob Ateav,Kandal,5383,village,0,0,50,0,none,none
+gn:1827681,Khnach Romeas,Battambang,10508,town,0,0,50,0,none,none
+gn:1827755,Phumĭ Khchau,Kampong Cham,8711,village,0,0,50,0,none,none
+gn:1827795,Kdol,Kampong Chhnang,5631,village,0,0,50,0,none,none
+gn:1827893,Phumĭ Katê Vat,Ratanakiri,2745,village,0,0,50,0,none,none
+gn:1827913,Phum Kaôh Trŭng,Kratie,1039,village,0,0,50,0,none,none
+gn:1827947,Kaoh Samraong,Tboung Khmum,2793,village,0,0,50,0,none,none
+gn:1828068,Kanhchor,Kratie,5343,village,0,0,50,0,none,none
+gn:1828090,Kandoeng,Takeo,33827,town,0,0,50,0,none,none
+gn:1828112,Roka Khnaor,Tboung Khmum,8790,village,0,0,50,0,none,none
+gn:1828227,Kampong Seila,Koh Kong,0,village,0,0,50,0,none,none
+gn:1828420,Han Chey,Kratie,6358,village,0,0,50,0,none,none
+gn:1828421,Han Chey,Kampong Cham,4891,village,0,0,50,0,none,none
+gn:1828431,Lech,Kampong Chhnang,4292,village,0,0,50,0,none,none
+gn:1828435,Doun Yay,Kampot,5773,village,0,0,50,0,none,none
+gn:1828498,Andoung Khmaer,Kampot,10514,town,0,0,50,0,none,none
+gn:1828602,Damrei Phong,Kratie,9130,village,0,0,50,0,none,none
+gn:1828611,Dang Phlet,Preah Vihear,1250,village,0,0,50,0,none,none
+gn:1828647,Damnak Khchas,Siem Reap,6381,village,0,0,50,0,none,none
+gn:1828673,Dak Por,Kampong Speu Province,2745,village,0,0,50,0,none,none
+gn:1828689,Daeum Doung,Kampot,2638,village,0,0,50,0,none,none
+gn:1828733,Sdach Kong Khang Cheung,Kampot,5228,village,0,0,50,0,none,none
+gn:1828973,Chhuk,Kampot,0,village,0,0,50,0,none,none
+gn:1828985,Chhloung,Kratie,6566,village,0,0,50,0,none,none
+gn:1829096,Chealea,Kampong Cham,6981,village,0,0,50,0,none,none
+gn:1829416,Boeng Mealea,Siem Reap,2661,village,0,0,50,0,none,none
+gn:1829514,Bavel,Battambang,0,village,0,0,50,0,none,none
+gn:1829516,Bavet,Svay Rieng,43783,town,0,0,50,0,none,none
+gn:1829521,Bet Trang,Preah Sihanouk,4065,village,0,0,50,0,none,none
+gn:1829673,Banan,Battambang,0,village,0,0,50,0,none,none
+gn:1829727,Phumĭ Âu Lœ̆k,Kampong Thom,1504,village,0,0,50,0,none,none
+gn:1829734,Areaks Tnaot,Kampong Cham,7389,village,0,0,50,0,none,none
+gn:1829745,Anlong Phe,Stung Treng,4204,village,0,0,50,0,none,none
+gn:1829773,Phum Ânlŭng Vĭl,Battambang,16479,town,0,0,50,0,none,none
+gn:1829811,Anlong Run,Battambang,4478,village,0,0,50,0,none,none
+gn:1829812,Anlong Romiet,Kandal,4999,village,0,0,50,0,none,none
+gn:1829861,Anhchanh Rung,Kampong Chhnang,5322,village,0,0,50,0,none,none
+gn:1829872,Phumĭ Ânhchaeum,Tboung Khmum,13832,town,0,0,50,0,none,none
+gn:1829914,Angkoul,Kep,8629,village,0,0,50,0,none,none
+gn:1829917,Angkor Sar,Prey Veng,9851,village,0,0,50,0,none,none
+gn:1829922,Ângkôr Chey,Kampot,4191,village,0,0,50,0,none,none
+gn:1829924,Phumĭ Ângkôr Borei,Takeo,11134,town,0,0,50,0,none,none
+gn:1829925,Angkor Angk,Prey Veng,5089,village,0,0,50,0,none,none
+gn:1829962,Andoung Trabaek,Svay Rieng,5907,village,0,0,50,0,none,none
+gn:1829970,Phumĭ Ândong Snay,Kampong Chhnang,6441,village,0,0,50,0,none,none
+gn:1829981,Andoung Pou,Kampong Thom,4112,village,0,0,50,0,none,none
+gn:1829982,Phumĭ Ândong Poŭthĭ,Svay Rieng,5012,village,0,0,50,0,none,none
+gn:1830014,Ampov Prey,Kandal,7538,village,0,0,50,0,none,none
+gn:1830038,Ampil Pram Daeum,Battambang,12822,town,0,0,50,0,none,none
+gn:1830040,Phumĭ Âmpĭl Leu,Kampong Cham,16110,town,0,0,50,0,none,none
+gn:1830049,Banteay Ampil,Ŏtâr Méanchey,4246,village,0,0,50,0,none,none
+gn:1830050,Ampil,Ŏtâr Méanchey,1247,village,0,0,50,0,none,none
+gn:1830080,Phumĭ Achén,Kratie,1527,village,0,0,50,0,none,none
+gn:1830081,Aachar Leak,Kampong Thom,5805,village,0,0,50,0,none,none
+gn:1830098,Tbeng Meanchey,Preah Vihear,24380,town,0,0,50,0,none,none
+gn:1830144,Ph’av,Kampong Cham,6967,village,0,0,50,0,none,none
+gn:1830194,Paoy Paet,Banteay Meanchey,98934,town,0,0,50,0,none,none
+gn:1830205,Pailin,Pailin,17850,town,0,0,50,0,none,none
+gn:1830221,Ou Reang,Mondolkiri,1012,village,0,0,50,0,none,none
+gn:1830231,Ŏdŏngk,Kampong Thom,8000,village,0,0,50,0,none,none
+gn:1830298,Moung Ruessei,Battambang,0,village,0,0,50,0,none,none
+gn:1830338,Mémót,Tboung Khmum,17061,town,0,0,50,0,none,none
+gn:1830377,Lumphat,Ratanakiri,19205,town,0,0,50,0,none,none
+gn:1830454,Kuleaen,Preah Vihear,0,village,0,0,50,0,none,none
+gn:1830467,Kep,Kep,35990,town,0,0,50,0,none,none
+gn:1830468,Koh Kong,Koh Kong,33134,town,0,0,50,0,none,none
+gn:1830564,Kratié,Kratie,19975,town,0,0,50,0,none,none
+gn:1830690,Veal Sbov,Phnom Penh,14481,town,0,0,50,0,none,none
+gn:1830722,Rung,Tboung Khmum,10039,town,0,0,50,0,none,none
+gn:1830756,Longveaek,Kampong Chhnang,9606,village,0,0,50,0,none,none
+gn:1830783,Dar,Tboung Khmum,22898,town,0,0,50,0,none,none
+gn:1830784,Dangkao,Phnom Penh,76421,town,0,0,50,0,none,none
+gn:1830799,Batheay,Kampong Cham,0,village,0,0,50,0,none,none
+gn:1830803,Khŭm Ânsaông,Prey Veng,7641,village,0,0,50,0,none,none
+gn:1830804,Khŭm Ângkôr Ban,Kampong Cham,7651,village,0,0,50,0,none,none
+gn:1831112,Kampot,Kampot,22691,town,0,0,50,0,none,none
+gn:1831118,Kampong Trach,Kampot,0,village,0,0,50,0,none,none
+gn:1831120,Kampong Trabaek,Prey Veng,8255,village,0,0,50,0,none,none
+gn:1831125,Kampong Thom,Kampong Thom,19951,town,0,0,50,0,none,none
+gn:1831133,Kampong Speu,Kampong Speu Province,33231,town,0,0,50,0,none,none
+gn:1831142,Sihanoukville,Preah Sihanouk,73036,town,0,0,50,0,none,none
+gn:1831167,Kampong Chhnang,Kampong Chhnang,75244,town,0,0,50,0,none,none
+gn:1831173,Kampong Cham,Kampong Cham,61750,town,0,0,50,0,none,none
+gn:1831180,Sesan,Stung Treng,0,village,0,0,50,0,none,none
+gn:1831515,Chŏng Kal,Ŏtâr Méanchey,5442,village,0,0,50,0,none,none
+gn:1831571,Chhnok Tru,Kampong Chhnang,5815,village,0,0,50,0,none,none
+gn:1831732,Banlung,Ratanakiri,17000,town,0,0,50,0,none,none
+gn:1831795,Odongk,Kampong Speu Province,0,village,0,0,50,0,none,none
+gn:1831797,Battambang,Battambang,119251,city,0,0,50,0,none,none
+gn:1831809,Baray,Kampong Thom,0,village,0,0,50,0,none,none
+gn:1831856,Bar Kaev,Ratanakiri,0,village,0,0,50,0,none,none
+gn:1831866,Pal Hal,Preah Vihear,0,village,0,0,50,0,none,none
+gn:1831898,Anlong Veaeng,Ŏtâr Méanchey,56927,town,0,0,50,0,none,none
+gn:1831940,Ângk Tasaôm,Takeo,16026,town,0,0,50,0,none,none
+gn:1831994,Âmleăng,Kampong Chhnang,3466,village,0,0,50,0,none,none
+gn:8403851,Sampov Lun,Banteay Meanchey,0,village,0,0,50,0,none,none
+gn:8740221,Smach Mean Chey,Koh Kong,29329,town,0,0,50,0,none,none
+gn:11320707,Phnum Proek,Battambang,0,village,0,0,50,0,none,none
+gn:11320731,Kamrieng,Battambang,0,village,0,0,50,0,none,none
+gn:11329561,Andaeuk Haeb,Battambang,4940,village,0,0,50,0,none,none
+gn:11336111,Samlout,Battambang,0,village,0,0,50,0,none,none
+gn:11338459,Ou Andoung,Pailin,4064,village,0,0,50,0,none,none
+gn:11338545,Ou Bei Choan,Banteay Meanchey,15351,town,0,0,50,0,none,none
+gn:11338555,Ou Chrov,Banteay Meanchey,0,village,0,0,50,0,none,none
+gn:11349490,Veal Veaeng,Pursat,0,village,0,0,50,0,none,none
+gn:11349491,Anlong Reab,Pursat,5198,village,0,0,50,0,none,none
+gn:11369355,Ou Char,Battambang,14182,town,0,0,50,0,none,none
+gn:11369422,Aek Phnum,Battambang,0,village,0,0,50,0,none,none
+gn:11374152,Bat Dambang,Battambang,0,village,0,0,50,0,none,none
+gn:11376379,Phnum Srok,Banteay Meanchey,0,village,0,0,50,0,none,none
+gn:11376380,Kralanh,Siem Reap,0,village,0,0,50,0,none,none
+gn:11407734,Mongkol Borei,Banteay Meanchey,0,village,0,0,50,0,none,none
+gn:11407738,Preah Netr Preah,Banteay Meanchey,0,village,0,0,50,0,none,none
+gn:11416658,Mondul Seima,Koh Kong,0,village,0,0,50,0,none,none
+gn:11416661,Phum Ti Muoy,Koh Kong,1167,village,0,0,50,0,none,none
+gn:11423896,Botum Sakor,Koh Kong,0,village,0,0,50,0,none,none
+gn:11424629,Kantueu Pir,Battambang,5320,village,0,0,50,0,none,none
+gn:11424654,Sangkae,Battambang,0,village,0,0,50,0,none,none
+gn:11424848,Mittakpheap,Preah Sihanouk,0,village,0,0,50,0,none,none
+gn:11440775,Ou Bak Roteh,Koh Kong,2943,village,0,0,50,0,none,none
+gn:11441372,Thma Bang,Koh Kong,0,village,0,0,50,0,none,none
+gn:11441587,Phnum Kravanh,Pursat,0,village,0,0,50,0,none,none
+gn:11448939,Srei Snam,Siem Reap,0,village,0,0,50,0,none,none
+gn:11449306,Chum Kiri,Kampot,0,village,0,0,50,0,none,none
+gn:11449343,Angkor Meas,Kampot,7108,village,0,0,50,0,none,none
+gn:11449421,Damnak Sokram,Kampot,3847,village,0,0,50,0,none,none
+gn:11449447,Kampot,Kampot,0,village,0,0,50,0,none,none
+gn:11449475,Damnak Chang’aeur,Kep,0,village,0,0,50,0,none,none
+gn:11449480,L’ang,Kampot,6772,village,0,0,50,0,none,none
+gn:11450607,Phnum Sruoch,Kampong Speu Province,0,village,0,0,50,0,none,none
+gn:11450764,Thpong,Kampong Speu Province,0,village,0,0,50,0,none,none
+gn:11450840,Anlong Thnaot,Pursat,9451,village,0,0,50,0,none,none
+gn:11456467,Soutr Nikom,Siem Reap,0,village,0,0,50,0,none,none
+gn:11458564,Trapeang Prasat,Ŏtâr Méanchey,0,village,0,0,50,0,none,none
+gn:11458611,Aekakpheap,Ŏtâr Méanchey,3162,village,0,0,50,0,none,none
+gn:11459695,Sdach Kong Khang Lech,Kampot,4634,village,0,0,50,0,none,none
+gn:11459697,Voat Angk Khang Cheung,Kampot,5306,village,0,0,50,0,none,none
+gn:11459699,Voat Angk Khang Tboung,Kampot,5393,village,0,0,50,0,none,none
+gn:11459753,Kiri Vongs,Takeo,0,village,0,0,50,0,none,none
+gn:11459763,Trapeang Sala Khang Lech,Kampot,4294,village,0,0,50,0,none,none
+gn:11459764,Trapeang Sala Khang Kaeut,Kampot,4087,village,0,0,50,0,none,none
+gn:11459773,Tuk Meas Khang Kaeut,Kampot,4285,village,0,0,50,0,none,none
+gn:11459786,Banteay Meas Khang Kaeut,Kampot,6792,village,0,0,50,0,none,none
+gn:11459805,Banteay Meas,Kampot,0,village,0,0,50,0,none,none
+gn:11459811,Sak Sampov,Phnom Penh,3439,village,0,0,50,0,none,none
+gn:11459812,Spean Thma,Phnom Penh,3649,village,0,0,50,0,none,none
+gn:11459939,Kouk Trab,Kandal,5464,village,0,0,50,0,none,none
+gn:11459958,Kandal Stueng,Kandal,0,village,0,0,50,0,none,none
+gn:11459959,Ta Khmau,Kandal,0,village,0,0,50,0,none,none
+gn:11459970,Svay Rumpea,Kampong Speu Province,9496,village,0,0,50,0,none,none
+gn:11460007,Otdam Souriya,Takeo,11295,town,0,0,50,0,none,none
+gn:11460015,Tram Kak,Takeo,0,village,0,0,50,0,none,none
+gn:11460019,Basedth,Kampong Speu Province,0,village,0,0,50,0,none,none
+gn:11475204,Mukh Kampul,Kandal,0,village,0,0,50,0,none,none
+gn:11475218,Ponhea Lueu,Phnom Penh,0,village,0,0,50,0,none,none
+gn:11475247,Chrang Chamreh Muoy,Phnom Penh,22911,town,0,0,50,0,none,none
+gn:11475248,Ruessei Kaev,Phnom Penh,0,village,0,0,50,0,none,none
+gn:11475263,Ovlaok,Phnom Penh,4919,village,0,0,50,0,none,none
+gn:11475273,Dangkao,Phnom Penh,0,village,0,0,50,0,none,none
+gn:11475280,Boeng Kak Pir,Phnom Penh,24937,town,0,0,50,0,none,none
+gn:11475282,Mean Chey,Phnom Penh,0,village,0,0,50,0,none,none
+gn:11476646,Kampong Leaeng,Kampong Chhnang,0,village,0,0,50,0,none,none
+gn:11476828,Damrei Choan Khla,Kampong Thom,6976,village,0,0,50,0,none,none
+gn:11476830,Stueng Saen,Kampong Thom,0,village,0,0,50,0,none,none
+gn:11476892,Stoung,Kampong Thom,0,village,0,0,50,0,none,none
+gn:11477924,Chey Chouk,Takeo,2012,village,0,0,50,0,none,none
+gn:11477982,Kouk Thlok,Takeo,1827,village,0,0,50,0,none,none
+gn:11477985,Bourei Cholsar,Takeo,0,village,0,0,50,0,none,none
+gn:11478031,Preah Sdach,Prey Veng,0,village,0,0,50,0,none,none
+gn:11478169,Kang Meas,Kampong Cham,0,village,0,0,50,0,none,none
+gn:11478176,Kaoh Tontuem,Kampong Cham,2561,village,0,0,50,0,none,none
+gn:11478177,Kaoh Mitt,Kampong Cham,4143,village,0,0,50,0,none,none
+gn:11478187,Kaoh Soutin,Kampong Cham,0,village,0,0,50,0,none,none
+gn:11478225,Sithor Kandal,Prey Veng,0,village,0,0,50,0,none,none
+gn:11478256,Prey Veaeng,Prey Veng,0,village,0,0,50,0,none,none
+gn:11478675,Lvea Leu,Kampong Cham,6688,village,0,0,50,0,none,none
+gn:11478677,Chamkar Leu,Kampong Cham,0,village,0,0,50,0,none,none
+gn:11478720,Cheung Prey,Kampong Cham,0,village,0,0,50,0,none,none
+gn:11478722,Prey Chhor,Kampong Cham,0,village,0,0,50,0,none,none
+gn:11481395,Sandan,Kampong Thom,0,village,0,0,50,0,none,none
+gn:11481910,Mlu Prey Pir,Preah Vihear,2546,village,0,0,50,0,none,none
+gn:11481914,Sangkae Pir,Preah Vihear,1774,village,0,0,50,0,none,none
+gn:11482105,Rumduol,Svay Rieng,0,village,0,0,50,0,none,none
+gn:11482149,Svay Teab,Svay Rieng,0,village,0,0,50,0,none,none
+gn:11482204,Me Sang,Prey Veng,0,village,0,0,50,0,none,none
+gn:11482496,Stueng Trang,Kampong Cham,0,village,0,0,50,0,none,none
+gn:11482666,Chantrea,Svay Rieng,0,village,0,0,50,0,none,none
+gn:11482840,Kampong Damrei,Kratie,6726,village,0,0,50,0,none,none
+gn:11483299,Kaev Seima,Mondolkiri,0,village,0,0,50,0,none,none
+gn:11483430,Ou Chum,Ratanakiri,733,village,0,0,50,0,none,none
+gn:11483855,Nang Khi Lik,Mondolkiri,2593,village,0,0,50,0,none,none
+gn:11483923,Andoung Meas,Ratanakiri,0,village,0,0,50,0,none,none
+gn:11484016,Ou Ya Dav,Ratanakiri,0,village,0,0,50,0,none,none
+gn:11484228,Aekapheap,Ratanakiri,1752,village,0,0,50,0,none,none
+gn:11502544,Sangkom Thmei,Preah Vihear,0,village,0,0,50,0,none,none
+gn:11503558,Peam Ro,Prey Veng,0,village,0,0,50,0,none,none
+gn:11503566,Kampong Leav,Prey Veng,0,village,0,0,50,0,none,none
+gn:11504394,Leuk Daek,Kandal,0,village,0,0,50,0,none,none
+gn:11504398,Peam Chor,Prey Veng,0,village,0,0,50,0,none,none
+gn:11506732,Lvea Sa,Kandal,1849,village,0,0,50,0,none,none
+gn:11506734,Kaoh Kaev,Kandal,1995,village,0,0,50,0,none,none
+gn:11507490,Khsach Andaet,Kratie,3309,village,0,0,50,0,none,none
+gn:11510088,Ou Ruessei,Kratie,12709,town,0,0,50,0,none,none
+gn:11518404,Ou Svay,Stung Treng,3036,village,0,0,50,0,none,none
+gn:11518574,Koun Mom,Ratanakiri,0,village,0,0,50,0,none,none
+gn:11518597,Phum Pir,Ratanakiri,1412,village,0,0,50,0,none,none
+gn:11531574,Pechreada,Mondolkiri,0,village,0,0,50,0,none,none
+gn:11533007,Andoung Thma,Preah Sihanouk,6833,village,0,0,50,0,none,none
+gn:11533018,Prey Nob,Preah Sihanouk,0,village,0,0,50,0,none,none
+gn:11538889,Bakan,Pursat,0,village,0,0,50,0,none,none
+gn:11559400,Angkor Thum,Siem Reap,0,village,0,0,50,0,none,none
+gn:11562962,Bakong,Siem Reap,0,village,0,0,50,0,none,none
+gn:11584517,Varin,Siem Reap,0,village,0,0,50,0,none,none
+gn:11584599,Chob Ta Trav,Siem Reap,4236,village,0,0,50,0,none,none
+gn:11586874,Angkor Chum,Siem Reap,0,village,0,0,50,0,none,none
+gn:11591267,Ou Smach,Ŏtâr Méanchey,9854,village,0,0,50,0,none,none
+gn:11598806,Haong Samnam,Kampong Speu Province,5320,village,0,0,50,0,none,none
+gn:11598833,Aoral,Kampong Speu Province,0,village,0,0,50,0,none,none
+gn:11598978,Baribour,Kampong Chhnang,0,village,0,0,50,0,none,none
+gn:11603215,Chi Kraeng,Siem Reap,0,village,0,0,50,0,none,none
+gn:11604958,Ou Svay,Ŏtâr Méanchey,8846,village,0,0,50,0,none,none
+gn:13353934,Chrak Khley,Kampot,1150,village,0,0,50,0,none,none
+gn:13436322,Kuttasat,Banteay Meanchey,6741,village,0,0,50,0,none,none
+gn:13436367,Ream,Preah Sihanouk,10330,town,0,0,50,0,none,none
+gn:13436750,Tien,Kandal,3085,village,0,0,50,0,none,none
+gn:13436758,Kak,Kampong Speu Province,6724,village,0,0,50,0,none,none
+gn:13437045,Dak Dam,Mondolkiri,1160,village,0,0,50,0,none,none
+gn:13438310,Nokor Pheas,Siem Reap,1300,village,0,0,50,0,none,none

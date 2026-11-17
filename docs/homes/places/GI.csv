@@ -1,0 +1,7 @@
+place_id,name,region,population,market,verified_homes,dated_listings,shortfall_to_50,recorded_sales,rent_source,price_source
+gn:2411585,Gibraltar,,26544,town,0,0,50,0,none,none
+gn:13527003,Reclamation Areas,,13690,town,0,0,50,0,none,none
+gn:13527004,Town Area,,3238,village,0,0,50,0,none,none
+gn:13527005,Upper Town,,2483,village,0,0,50,0,none,none
+gn:13527006,Sandpits,,2020,village,0,0,50,0,none,none
+gn:13527007,South District,,5380,village,0,0,50,0,none,none

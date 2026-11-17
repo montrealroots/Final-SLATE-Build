@@ -1,0 +1,142 @@
+place_id,name,region,population,market,verified_homes,dated_listings,shortfall_to_50,recorded_sales,rent_source,price_source
+gn:3374117,Nova Sintra,Brava,2225,village,0,0,50,0,none,none
+gn:3374118,Vila Nova,Praia,3504,village,0,0,50,0,none,none
+gn:3374120,Vila do Maio,Maio,4472,village,0,0,50,0,none,none
+gn:3374121,Ribeira Brava,Ribeira Brava,2851,village,0,0,50,0,none,none
+gn:3374165,Tarrafal de São Nicolau,Tarrafal de São Nicolau,4371,village,0,0,50,0,none,none
+gn:3374166,Tarrafal,Tarrafal,13483,town,0,0,50,0,none,none
+gn:3374201,São Pedro,São Vicente,1060,village,0,0,50,0,none,none
+gn:3374210,São Filipe,São Filipe,10097,town,0,0,50,0,none,none
+gn:3374211,São Domingos,São Domingos,2960,village,0,0,50,0,none,none
+gn:3374218,Santa Maria,Sal,8400,village,0,0,50,0,none,none
+gn:3374221,Santa Cruz,Santa Cruz,9488,village,0,0,50,0,none,none
+gn:3374235,Sal Rei,Boa Vista,10936,town,0,0,50,0,none,none
+gn:3374247,Salamansa,São Vicente,1172,village,0,0,50,0,none,none
+gn:3374251,Rui Vaz,Praia,1078,village,0,0,50,0,none,none
+gn:3374270,Ribeirão Chiqueiro,São Domingos,1064,village,0,0,50,0,none,none
+gn:3374275,Ribeira Grande,Ribeira Grande,3000,village,0,0,50,0,none,none
+gn:3374283,Ribeira da Prata,Tarrafal,1009,village,0,0,50,0,none,none
+gn:3374287,Ribeira da Barca,Santa Catarina,2048,village,0,0,50,0,none,none
+gn:3374291,Relva,Mosteiros,1061,village,0,0,50,0,none,none
+gn:3374301,Rabil,Boa Vista,1401,village,0,0,50,0,none,none
+gn:3374333,Praia,Praia,137868,city,0,0,50,0,none,none
+gn:3374335,Rincão,Santa Catarina,1210,village,0,0,50,0,none,none
+gn:3374336,Porto Novo,Porto Novo,11138,town,0,0,50,0,none,none
+gn:3374345,São Francisco,Praia,1166,village,0,0,50,0,none,none
+gn:3374346,Ponta do Sol,Ribeira Grande,3300,village,0,0,50,0,none,none
+gn:3374351,Pombas,Paul,1429,village,0,0,50,0,none,none
+gn:3374360,Picos,São Salvador do Mundo,2040,village,0,0,50,0,none,none
+gn:3374403,Palmeira,Sal,2320,village,0,0,50,0,none,none
+gn:3374457,Montagarro,Praia,1943,village,0,0,50,0,none,none
+gn:3374462,Mindelo,São Vicente,69013,town,0,0,50,0,none,none
+gn:3374480,Achada Monte,São Miguel,1400,village,0,0,50,0,none,none
+gn:3374542,Janela,Paul,1167,village,0,0,50,0,none,none
+gn:3374555,Igreja,Mosteiros,4084,village,0,0,50,0,none,none
+gn:3374591,Fundura,Santa Catarina,1070,village,0,0,50,0,none,none
+gn:3374633,Figueira das Naus,Santa Catarina,1157,village,0,0,50,0,none,none
+gn:3374707,Cova Figueira,Santa Catarina do Fogo,1052,village,0,0,50,0,none,none
+gn:3374725,Cidade Velha,Ribeira Grande de Santiago,3319,village,0,0,50,0,none,none
+gn:3374793,Calheta,Maio,1081,village,0,0,50,0,none,none
+gn:3374794,Calheta de São Miguel,São Miguel,6329,village,0,0,50,0,none,none
+gn:3374800,Calhau,São Vicente,1177,village,0,0,50,0,none,none
+gn:3374888,Assomada,Santa Catarina,21297,town,0,0,50,0,none,none
+gn:8441167,João Teves,São Lourenço dos Órgãos,627,village,0,0,50,0,none,none
+gn:8441169,Pedra Badejo,Santa Cruz,10038,town,0,0,50,0,none,none
+gn:8521418,Espargos,Sal,24500,town,0,0,50,0,none,none
+gn:11103073,Horta Seca,São Vicente,1278,village,0,0,50,0,none,none
+gn:11103159,Cancelo,Santa Cruz,1811,village,0,0,50,0,none,none
+gn:11103434,Ponta Verde,São Filipe,1117,village,0,0,50,0,none,none
+gn:11103473,Tira Chapeu,Praia,4678,village,0,0,50,0,none,none
+gn:11125820,Garça de Cima,Ribeira Grande,1138,village,0,0,50,0,none,none
+gn:11204611,Boa Entrada,Santa Catarina,1071,village,0,0,50,0,none,none
+gn:11204761,Ponta de Água,Praia,8656,village,0,0,50,0,none,none
+gn:11204800,Palmarejo,Praia,13416,town,0,0,50,0,none,none
+gn:11204898,Terra Branca,Praia,6970,village,0,0,50,0,none,none
+gn:11205028,Achada Eugénio Lima,Praia,6874,village,0,0,50,0,none,none
+gn:11205044,Chã de Monte Sossego,São Vicente,1608,village,0,0,50,0,none,none
+gn:11205056,Achada Grande Frente,Praia,4032,village,0,0,50,0,none,none
+gn:11205082,Achada Santo Antonio,Praia,10843,town,0,0,50,0,none,none
+gn:11205549,Veneza,São Miguel,1228,village,0,0,50,0,none,none
+gn:11205553,Fazenda,Praia,1667,village,0,0,50,0,none,none
+gn:11205741,Alto Mira,Porto Novo,1003,village,0,0,50,0,none,none
+gn:11257311,Cruz João Évora,São Vicente,2002,village,0,0,50,0,none,none
+gn:11353142,Gil Bispo,Santa Catarina,1252,village,0,0,50,0,none,none
+gn:11395777,Safende,Praia,6858,village,0,0,50,0,none,none
+gn:11395866,Fonte Inês,São Vicente,5630,village,0,0,50,0,none,none
+gn:11395952,Cha de Tanque,Santa Catarina,1164,village,0,0,50,0,none,none
+gn:11397272,Fonte Francês,São Vicente,3331,village,0,0,50,0,none,none
+gn:11428037,Ribeirao Manuel,Santa Catarina,1086,village,0,0,50,0,none,none
+gn:11428100,Ribeirinha,São Vicente,8205,village,0,0,50,0,none,none
+gn:11428149,Lem Ferreira,Praia,1214,village,0,0,50,0,none,none
+gn:11467852,Achada Leitão,São Salvador do Mundo,1025,village,0,0,50,0,none,none
+gn:11467908,Ribeira de Craquinha,São Vicente,2659,village,0,0,50,0,none,none
+gn:11468067,Nhagar,,1381,village,0,0,50,0,none,none
+gn:11496152,Achada Lem,Santa Catarina,1841,village,0,0,50,0,none,none
+gn:11497782,Vila Nova/Lombo Tanque,São Vicente,3940,village,0,0,50,0,none,none
+gn:13233304,Bela Vista,São Vicente,5099,village,0,0,50,0,none,none
+gn:13233323,Fernando Pau,São Vicente,1634,village,0,0,50,0,none,none
+gn:13233331,Madeiralzinho,São Vicente,3232,village,0,0,50,0,none,none
+gn:13233355,Chã de Alecrim,São Vicente,5875,village,0,0,50,0,none,none
+gn:13255393,Chão de Matias,Sal,4624,village,0,0,50,0,none,none
+gn:13255394,Ribeira Funda,Sal,1405,village,0,0,50,0,none,none
+gn:13307047,Chão Bom,Tarrafal,4856,village,0,0,50,0,none,none
+gn:13318929,Achada Tenda,Tarrafal,1242,village,0,0,50,0,none,none
+gn:13319066,Salinas,Santa Cruz,1604,village,0,0,50,0,none,none
+gn:13398545,Achada Fazenda,Santa Cruz,2498,village,0,0,50,0,none,none
+gn:13398722,Chã da Silva,Santa Cruz,1211,village,0,0,50,0,none,none
+gn:13398985,Cumbem,Santa Catarina,1006,village,0,0,50,0,none,none
+gn:13399000,Picos Acima,São Salvador do Mundo,1361,village,0,0,50,0,none,none
+gn:13403279,Pensamento,Praia,2322,village,0,0,50,0,none,none
+gn:13403297,Coqueiro Castelão,Praia,3497,village,0,0,50,0,none,none
+gn:13403307,Paiol,Praia,1723,village,0,0,50,0,none,none
+gn:13403317,São Martinho Pequeno,Praia,2178,village,0,0,50,0,none,none
+gn:13403338,Simão Ribeiro,Praia,1289,village,0,0,50,0,none,none
+gn:13403339,São Pedro Latada,Praia,4627,village,0,0,50,0,none,none
+gn:13403349,Palmarejo Grande,Praia,2396,village,0,0,50,0,none,none
+gn:13403356,São Filipe Praia,Praia,7698,village,0,0,50,0,none,none
+gn:13403358,Cova do Minhoto,Praia,2708,village,0,0,50,0,none,none
+gn:13403367,Salineiro,Ribeira Grande de Santiago,1022,village,0,0,50,0,none,none
+gn:13403411,Bairro Craveiro Lopes,Praia,1278,village,0,0,50,0,none,none
+gn:13403412,Calabaceira,Praia,4970,village,0,0,50,0,none,none
+gn:13403434,Achada Grande Trás,Praia,4141,village,0,0,50,0,none,none
+gn:13403447,Achada da Água Funda,Praia,2452,village,0,0,50,0,none,none
+gn:13458355,Principal,São Miguel,1193,village,0,0,50,0,none,none
+gn:13458952,Lem Cachorro,Praia,1719,village,0,0,50,0,none,none
+gn:13458955,Achadinha,Praia,7359,village,0,0,50,0,none,none
+gn:13490922,Santa Filomena,São Filipe,1423,village,0,0,50,0,none,none
+gn:13491006,Ponta Verde,São Filipe,1072,village,0,0,50,0,none,none
+gn:13631896,City Center of Mindelo,São Vicente,1158,village,0,0,50,0,none,none
+gn:13632010,Platô,Praia,1019,village,0,0,50,0,none,none
+gn:13645700,Achada Mato/Covão Mendes,Praia,3031,village,0,0,50,0,none,none
+gn:13645703,Várzea,São Domingos,5520,village,0,0,50,0,none,none
+gn:13645705,Vale Palmarejo,Praia,1743,village,0,0,50,0,none,none
+gn:13645708,Tira Chapeu Industrial,Praia,1260,village,0,0,50,0,none,none
+gn:13645709,Achada Limpo,Praia,2436,village,0,0,50,0,none,none
+gn:13645710,Bela Vista,Praia,4014,village,0,0,50,0,none,none
+gn:13645761,Fonteana,Santa Catarina,1008,village,0,0,50,0,none,none
+gn:13645772,Achada Riba,Santa Catarina,2013,village,0,0,50,0,none,none
+gn:13645778,Achada Fatima,Santa Cruz,1022,village,0,0,50,0,none,none
+gn:13645780,Cutelinho,São Miguel,1208,village,0,0,50,0,none,none
+gn:13645782,Zona Tenda,Santa Cruz,1357,village,0,0,50,0,none,none
+gn:13645783,Queimada Guincho,Mosteiros,1194,village,0,0,50,0,none,none
+gn:13645878,Centro Histórico,São Filipe,1493,village,0,0,50,0,none,none
+gn:13645895,Bom Sossego,Boa Vista,1671,village,0,0,50,0,none,none
+gn:13645896,Santa Maria Centro,Sal,1957,village,0,0,50,0,none,none
+gn:13645899,São Paulo,Sal,3198,village,0,0,50,0,none,none
+gn:13645900,Alto Santo Cruz,Sal,1600,village,0,0,50,0,none,none
+gn:13645901,África 70,Sal,1462,village,0,0,50,0,none,none
+gn:13645903,Bairro Novo I,Sal,1359,village,0,0,50,0,none,none
+gn:13645904,Hortelã de Baixo,Sal,1634,village,0,0,50,0,none,none
+gn:13645905,Hortelã de Cima,Sal,2561,village,0,0,50,0,none,none
+gn:13645906,Bairro Novo II,Sal,1268,village,0,0,50,0,none,none
+gn:13645914,Zona Militar,São Vicente,1020,village,0,0,50,0,none,none
+gn:13645918,Campinho,São Vicente,1168,village,0,0,50,0,none,none
+gn:13645920,Fonte Filipe,São Vicente,2524,village,0,0,50,0,none,none
+gn:13645922,Monte Sossego,São Vicente,4249,village,0,0,50,0,none,none
+gn:13645923,Ribeira Bote,São Vicente,3347,village,0,0,50,0,none,none
+gn:13645924,Ribeira de Julião,São Vicente,2261,village,0,0,50,0,none,none
+gn:13645969,Imobiliária Fundiária e Habitat,Sal,1288,village,0,0,50,0,none,none
+gn:13645972,Atrás do Cemitério,São Vicente,2513,village,0,0,50,0,none,none
+gn:13645973,Pedra Rolada,São Vicente,2138,village,0,0,50,0,none,none
+gn:13646000,Chã de Pedras,Ribeira Grande,1266,village,0,0,50,0,none,none
+gn:13664935,Berlim,Porto Novo,2115,village,0,0,50,0,none,none

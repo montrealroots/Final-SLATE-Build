@@ -1,0 +1,220 @@
+place_id,name,region,population,market,verified_homes,dated_listings,shortfall_to_50,recorded_sales,rent_source,price_source
+gn:146858,Sharur City,Nakhchivan,7500,village,0,0,50,0,none,none
+gn:146862,Geytepe,Jalilabad,13340,town,0,0,50,0,none,none
+gn:146901,Zangilan,Zangilan District,7483,village,0,0,50,0,none,none
+gn:146958,Yaycı,Nakhchivan,8500,village,0,0,50,0,none,none
+gn:146961,Yardımlı,Yardimli District,7623,village,0,0,50,0,none,none
+gn:146969,Khojavend,Khojavend,3700,village,0,0,50,0,none,none
+gn:146970,Khankendi,Xankǝndi,2100,village,0,0,50,0,none,none
+gn:147059,Əhmədbəyli,Saatlı,17242,town,0,0,50,0,none,none
+gn:147105,Shusha,Shusha,19400,town,0,0,50,0,none,none
+gn:147271,Salyan,Salyan District,36555,town,0,0,50,0,none,none
+gn:147278,Shahbuz,Nakhchivan,4600,village,0,0,50,0,none,none
+gn:147282,Sedarak,Nakhchivan,1853,village,0,0,50,0,none,none
+gn:147283,Sumbatan-diza,Nakhchivan,1024,village,0,0,50,0,none,none
+gn:147288,Saatlı,Saatlı,20300,town,0,0,50,0,none,none
+gn:147305,Qubadlı,Qubadlı,6890,village,0,0,50,0,none,none
+gn:147307,Qaraçala,Salyan District,4211,village,0,0,50,0,none,none
+gn:147364,Orjonikidze,Beyləqan,1557,village,0,0,50,0,none,none
+gn:147368,Ordubad,Nakhchivan,10800,town,0,0,50,0,none,none
+gn:147420,Nehram,Nakhchivan,17200,town,0,0,50,0,none,none
+gn:147425,Neftçala,Neftçala,18661,town,0,0,50,0,none,none
+gn:147429,Naxçıvan,Nakhchivan,97200,town,0,0,50,0,none,none
+gn:147504,Mincivan,Zangilan District,6353,village,0,0,50,0,none,none
+gn:147552,Masally,Masally,9604,village,0,0,50,0,none,none
+gn:147611,Lerik,Lerik District,87000,town,0,0,50,0,none,none
+gn:147622,Lankaran,Lənkəran,89300,town,0,0,50,0,none,none
+gn:147625,Laçın,Lachin Rayon,2300,village,0,0,50,0,none,none
+gn:147637,Givrag,Nakhchivan,6500,village,0,0,50,0,none,none
+gn:147727,Kizhaba,Astara,4567,village,0,0,50,0,none,none
+gn:147736,Karkijahan,Xankǝndi,2300,village,0,0,50,0,none,none
+gn:147774,Khojaly,Khojaly,5810,village,0,0,50,0,none,none
+gn:147784,Xıllı,Neftçala,3896,village,0,0,50,0,none,none
+gn:147949,Qalaqayın,Sabirabad District,7631,village,0,0,50,0,none,none
+gn:147982,Imishli,İmişli,34178,town,0,0,50,0,none,none
+gn:148003,Horadiz,Fuzuli District,7700,village,0,0,50,0,none,none
+gn:148088,Haftoni,Lənkəran,2003,village,0,0,50,0,none,none
+gn:148106,Fuzuli,Fuzuli District,25100,town,0,0,50,0,none,none
+gn:148141,Jabrayil,Jabrayil,9600,village,0,0,50,0,none,none
+gn:148177,Dünyamalılar,Beyləqan,5968,village,0,0,50,0,none,none
+gn:148225,Deste,Nakhchivan,4282,village,0,0,50,0,none,none
+gn:148251,Julfa,Nakhchivan,13700,town,0,0,50,0,none,none
+gn:148290,Jalilabad,Jalilabad,36259,town,0,0,50,0,none,none
+gn:148291,Jahri,Nakhchivan,10700,town,0,0,50,0,none,none
+gn:148323,Boradigah,Masally,5904,village,0,0,50,0,none,none
+gn:148330,Bahramtepe,İmişli,7442,village,0,0,50,0,none,none
+gn:148340,Pushkino,Bilasuvar District,18182,town,0,0,50,0,none,none
+gn:148354,Beylagan,Beyləqan,15599,town,0,0,50,0,none,none
+gn:148375,Severo-Vostotchnyi Bank,Neftçala,7075,village,0,0,50,0,none,none
+gn:148413,Babak,Nakhchivan,6000,village,0,0,50,0,none,none
+gn:148445,Astara,Astara,15190,town,0,0,50,0,none,none
+gn:148450,Askyaran,Khojaly,1639,village,0,0,50,0,none,none
+gn:148565,Şirvan,Shirvan,70220,town,0,0,50,0,none,none
+gn:148619,Aghdam,Ağdam,37700,town,0,0,50,0,none,none
+gn:148640,Abrakunis,Nakhchivan,1858,village,0,0,50,0,none,none
+gn:393443,Sovetabad,Neftçala,4308,village,0,0,50,0,none,none
+gn:393927,Avşar,Ağcabǝdi,5600,village,0,0,50,0,none,none
+gn:393942,Birinci Aşıqlı,Beyləqan,1981,village,0,0,50,0,none,none
+gn:393954,Yuxarı Aran,Beyləqan,1623,village,0,0,50,0,none,none
+gn:584562,Zyrya,Baki,10099,town,0,0,50,0,none,none
+gn:584586,Zardob,Zardab,10612,town,0,0,50,0,none,none
+gn:584596,Zaqatala,Zaqatala District,32171,town,0,0,50,0,none,none
+gn:584614,Zabrat,Baki,21396,town,0,0,50,0,none,none
+gn:584626,Yuxarı Salahlı,Qazax,3406,village,0,0,50,0,none,none
+gn:584649,Yevlakh,Yevlax City,127400,city,0,0,50,0,none,none
+gn:584704,Yanıqlı,Tovuz District,2395,village,0,0,50,0,none,none
+gn:584715,Xudat,Xaçmaz,13625,town,0,0,50,0,none,none
+gn:584716,Goygol,Goygol Rayon,19800,town,0,0,50,0,none,none
+gn:584717,Xaçmaz,Xaçmaz,67600,town,0,0,50,0,none,none
+gn:584724,Yukhari Dashkasan,Daşkǝsǝn,1900,village,0,0,50,0,none,none
+gn:584747,Vank,Kalbajar,1335,village,0,0,50,0,none,none
+gn:584791,Ujar,Ucar,15741,town,0,0,50,0,none,none
+gn:584792,Türkan,Baki,9699,village,0,0,50,0,none,none
+gn:584821,Tovuz,Tovuz District,12626,town,0,0,50,0,none,none
+gn:584836,Tikanlı,Qabala District,1850,village,0,0,50,0,none,none
+gn:584871,Tartar,Tartar District,20400,town,0,0,50,0,none,none
+gn:584923,Sumgayit,Sumqayit,427000,city,0,0,50,0,none,none
+gn:584954,Siyazan,Siyǝzǝn,25900,town,0,0,50,0,none,none
+gn:584991,Shorabad,Xızı,2100,village,0,0,50,0,none,none
+gn:585103,Qaraçuxur,Baki,87349,town,0,0,50,0,none,none
+gn:585145,Saray,Abşeron,37800,town,0,0,50,0,none,none
+gn:585146,Sanqaçal,Baki,4200,village,0,0,50,0,none,none
+gn:585150,Samur,Qusar District,1760,village,0,0,50,0,none,none
+gn:585152,Shamkhir,Şǝmkir,41300,town,0,0,50,0,none,none
+gn:585156,Shamakhi,Şamaxı,40300,town,0,0,50,0,none,none
+gn:585160,Saloghlu,Ağstafa,1800,village,0,0,50,0,none,none
+gn:585170,Sheki,Shaki City,68400,town,0,0,50,0,none,none
+gn:585177,Samukh,Samux,11100,town,0,0,50,0,none,none
+gn:585184,Sabunçu,Baki,20996,town,0,0,50,0,none,none
+gn:585187,Sabirabad,Sabirabad District,30612,town,0,0,50,0,none,none
+gn:585188,Sabir,Şamaxı,4000,village,0,0,50,0,none,none
+gn:585220,Qusar,Qusar District,16022,town,0,0,50,0,none,none
+gn:585221,Quba,Quba,22405,town,0,0,50,0,none,none
+gn:585223,Qobustan,Baki,13398,town,0,0,50,0,none,none
+gn:585225,Hacıqabul,Hacıqabul,23102,town,0,0,50,0,none,none
+gn:585226,Gazakh,Qazax,20800,town,0,0,50,0,none,none
+gn:585227,Qax,Qax,11992,town,0,0,50,0,none,none
+gn:585228,Aghlavashli,Şǝmkir,1925,village,0,0,50,0,none,none
+gn:585231,Qabala,Qabala District,11867,town,0,0,50,0,none,none
+gn:585236,Puta,Baki,1018,village,0,0,50,0,none,none
+gn:585243,Poylu,Ağstafa,1800,village,0,0,50,0,none,none
+gn:585333,Oğuz,Oğuz,6600,village,0,0,50,0,none,none
+gn:585346,Novosaratovka,Gadabay District,2328,village,0,0,50,0,none,none
+gn:585351,Novxanı,Abşeron,4468,village,0,0,50,0,none,none
+gn:585379,Haji Zeynalabdin,Sumqayit,29900,town,0,0,50,0,none,none
+gn:585388,Nardaran,Baki,7700,village,0,0,50,0,none,none
+gn:585400,Naftalan,Naftalan,8600,village,0,0,50,0,none,none
+gn:585407,Nadil,Goygol Rayon,1032,village,0,0,50,0,none,none
+gn:585451,Muxtariyyat,Şǝmkir,3088,village,0,0,50,0,none,none
+gn:585514,Mingachevir,Mingacevir City,106048,city,0,0,50,0,none,none
+gn:585556,Madrasa,Agsu District,2400,village,0,0,50,0,none,none
+gn:585557,Maştağa,Baki,40092,town,0,0,50,0,none,none
+gn:585568,Mardakan,Baki,15267,town,0,0,50,0,none,none
+gn:585570,Gobustan,Qobustan,10100,town,0,0,50,0,none,none
+gn:585583,Mamrux,Zaqatala District,2150,village,0,0,50,0,none,none
+gn:585630,Lokbatan,Baki,30694,town,0,0,50,0,none,none
+gn:585642,Chinarli,Şǝmkir,7300,village,0,0,50,0,none,none
+gn:585666,Gizilhajili,Goranboy District,7500,village,0,0,50,0,none,none
+gn:585688,Kyurdakhany,Baki,6600,village,0,0,50,0,none,none
+gn:585694,Kur,Şǝmkir,9700,village,0,0,50,0,none,none
+gn:585736,Guzanli,Ağdam,3200,village,0,0,50,0,none,none
+gn:585763,Kyurdarmir,Kurdamir District,19088,town,0,0,50,0,none,none
+gn:585802,Govlar,Tovuz District,15600,town,0,0,50,0,none,none
+gn:585838,Gobu,Abşeron,17600,town,0,0,50,0,none,none
+gn:585892,Gilazi,Xızı,3400,village,0,0,50,0,none,none
+gn:585909,Khizi,Xızı,1600,village,0,0,50,0,none,none
+gn:585915,Khirdalan,Abşeron,196200,city,0,0,50,0,none,none
+gn:585923,Alabashli,Samux,1400,village,0,0,50,0,none,none
+gn:585940,Khojasan,Baki,5089,village,0,0,50,0,none,none
+gn:586031,Korgöz,Baki,2036,village,0,0,50,0,none,none
+gn:586135,Garayeri,Samux,6300,village,0,0,50,0,none,none
+gn:586162,Qaramanlı,Yevlax,2230,village,0,0,50,0,none,none
+gn:586179,Qaraxanlı,Tovuz District,3166,village,0,0,50,0,none,none
+gn:586255,Qandax,Zaqatala District,1654,village,0,0,50,0,none,none
+gn:586265,Vurghun,Ağstafa,3200,village,0,0,50,0,none,none
+gn:586268,Kalbajar,Kalbajar,8400,village,0,0,50,0,none,none
+gn:586289,Qala,Baki,2709,village,0,0,50,0,none,none
+gn:586294,Qax İngiloy,Qax,2747,village,0,0,50,0,none,none
+gn:586295,Qaxbaş,Qax,2983,village,0,0,50,0,none,none
+gn:586318,Ismayilli,Ismayilli District,27500,town,0,0,50,0,none,none
+gn:586340,Yeni Suraxanı,Baki,16127,town,0,0,50,0,none,none
+gn:586368,Guzdak,Abşeron,3400,village,0,0,50,0,none,none
+gn:586427,Göyçay,Göyçay,42500,town,0,0,50,0,none,none
+gn:586429,Hövsan,Baki,36293,town,0,0,50,0,none,none
+gn:586430,Goranboy,Goranboy District,9200,village,0,0,50,0,none,none
+gn:586432,Goradil,Abşeron,2000,village,0,0,50,0,none,none
+gn:586442,Hindarkh,Ağcabǝdi,9800,village,0,0,50,0,none,none
+gn:586447,Gilgilçay,Siyǝzǝn,1147,village,0,0,50,0,none,none
+gn:586481,Hokmali,Abşeron,17300,town,0,0,50,0,none,none
+gn:586523,Ganja,Gǝncǝ,330663,city,0,0,50,0,none,none
+gn:586526,Gamzali,Qabala District,1367,village,0,0,50,0,none,none
+gn:586573,Gadabay,Gadabay District,14500,town,0,0,50,0,none,none
+gn:586581,Fatmayı,Abşeron,1816,village,0,0,50,0,none,none
+gn:586586,Faldarlı,Zaqatala District,1767,village,0,0,50,0,none,none
+gn:586631,Jorat,Sumqayit,18500,town,0,0,50,0,none,none
+gn:586652,Jeyranbatan,Abşeron,9600,village,0,0,50,0,none,none
+gn:586692,Zayam,Şǝmkir,8300,village,0,0,50,0,none,none
+gn:586717,Dondar Quşçu,Tovuz District,3482,village,0,0,50,0,none,none
+gn:586736,Digah,Abşeron,9800,village,0,0,50,0,none,none
+gn:586763,Divichibazar,Shabran,23248,town,0,0,50,0,none,none
+gn:586765,Dashkasan,Daşkǝsǝn,10600,town,0,0,50,0,none,none
+gn:586792,Dallar,Şǝmkir,5400,village,0,0,50,0,none,none
+gn:586794,Dalimammadli,Goranboy District,5300,village,0,0,50,0,none,none
+gn:586795,Dollyar-Dzhagir,Şǝmkir,5038,village,0,0,50,0,none,none
+gn:586832,Çobansığnaq,Tovuz District,1589,village,0,0,50,0,none,none
+gn:586845,Çinarlı,Qax,6508,village,0,0,50,0,none,none
+gn:586880,Çatax,Tovuz District,3189,village,0,0,50,0,none,none
+gn:586925,Buzovna,Baki,24795,town,0,0,50,0,none,none
+gn:586935,Bum,Qabala District,5095,village,0,0,50,0,none,none
+gn:586940,Bucaq,Oğuz,1350,village,0,0,50,0,none,none
+gn:586967,Binagadi,Baki,14012,town,0,0,50,0,none,none
+gn:586968,Biny Selo,Baki,24596,town,0,0,50,0,none,none
+gn:586971,Bilajer,Baki,8983,village,0,0,50,0,none,none
+gn:587033,Basgal,Ismayilli District,1500,village,0,0,50,0,none,none
+gn:587045,Baş Göynük,Shaki,1658,village,0,0,50,0,none,none
+gn:587057,Barda,Barda,41600,town,0,0,50,0,none,none
+gn:587070,Belokany,Balakan District,14800,town,0,0,50,0,none,none
+gn:587071,Balakhani,Baki,10863,town,0,0,50,0,none,none
+gn:587078,Bilajari,Baki,42194,town,0,0,50,0,none,none
+gn:587084,Baku,Baki,2351300,large-city,0,0,50,0,none,none
+gn:587114,Hajimalik,Goygol Rayon,3600,village,0,0,50,0,none,none
+gn:587172,Aşağı Küngüt,Shaki,1298,village,0,0,50,0,none,none
+gn:587201,Ashaghi Aghjakand,Goranboy District,1100,village,0,0,50,0,none,none
+gn:587204,Arıqıran,Gadabay District,2659,village,0,0,50,0,none,none
+gn:587205,Arıqdam,Gadabay District,2200,village,0,0,50,0,none,none
+gn:587207,Pirallahı,Baki,13435,town,0,0,50,0,none,none
+gn:587261,Amirdzhan,Baki,28203,town,0,0,50,0,none,none
+gn:587270,Alvand,Zardab,1012,village,0,0,50,0,none,none
+gn:587272,Altiaghaj,Xızı,1700,village,0,0,50,0,none,none
+gn:587319,Aliabad,Zaqatala District,9103,village,0,0,50,0,none,none
+gn:587321,Chaikenary,Xaçmaz,1486,village,0,0,50,0,none,none
+gn:587361,Aghsu,Agsu District,22300,town,0,0,50,0,none,none
+gn:587362,Aghstafa,Ağstafa,12200,town,0,0,50,0,none,none
+gn:587378,Ağdaş,Ağdaş,23528,town,0,0,50,0,none,none
+gn:587384,Aghjabadi,Ağcabǝdi,41200,town,0,0,50,0,none,none
+gn:615469,Böyük Qaramurad,Gadabay District,2684,village,0,0,50,0,none,none
+gn:807231,Mughan,Hacıqabul,4410,village,0,0,50,0,none,none
+gn:823981,Qabaqçöl,Balakan District,1293,village,0,0,50,0,none,none
+gn:823985,Ashaghi Guzdak,Abşeron,7900,village,0,0,50,0,none,none
+gn:824002,Daşüz,Shaki,1243,village,0,0,50,0,none,none
+gn:824003,Bakıxanov,Baki,66686,town,0,0,50,0,none,none
+gn:824023,Mahmudlu,Şǝmkir,3252,village,0,0,50,0,none,none
+gn:824026,Garaaghajli,Samux,1600,village,0,0,50,0,none,none
+gn:824037,Hacıhüseynli,Quba,1731,village,0,0,50,0,none,none
+gn:824050,Aran,Yevlax,6724,village,0,0,50,0,none,none
+gn:824431,Soyugbulag,Ağstafa,1100,village,0,0,50,0,none,none
+gn:824615,Samuxlu,Barda,1637,village,0,0,50,0,none,none
+gn:863732,Ramana,Baki,8855,village,0,0,50,0,none,none
+gn:863761,Badamdar,Baki,11398,town,0,0,50,0,none,none
+gn:8326746,Heydarabad,Nakhchivan,2300,village,0,0,50,0,none,none
+gn:8433121,Bahar,Beyləqan,1129,village,0,0,50,0,none,none
+gn:8560924,Shahriyar,Şamaxı,3200,village,0,0,50,0,none,none
+gn:8572256,Mehdiabad,Abşeron,20500,town,0,0,50,0,none,none
+gn:8630549,Samad Vurghun,Şǝmkir,1100,village,0,0,50,0,none,none
+gn:8630711,Institut,Samux,2000,village,0,0,50,0,none,none
+gn:11919070,Birinji Zobujug,Fuzuli District,1500,village,0,0,50,0,none,none
+gn:11919071,Dordunju Zobujug,Fuzuli District,1600,village,0,0,50,0,none,none
+gn:11919072,Beshinji Zobujug,Fuzuli District,1300,village,0,0,50,0,none,none
+gn:11919073,Uchunju Zobujug,Fuzuli District,1700,village,0,0,50,0,none,none
+gn:11919074,Ikinji Zobujug,Fuzuli District,1900,village,0,0,50,0,none,none
+gn:12238134,28 May,Abşeron,7100,village,0,0,50,0,none,none

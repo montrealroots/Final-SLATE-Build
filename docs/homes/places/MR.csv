@@ -1,0 +1,86 @@
+place_id,name,region,population,market,verified_homes,dated_listings,shortfall_to_50,recorded_sales,rent_source,price_source
+gn:2375558,Zouérat,Tiris Zemmour,55183,town,0,0,50,0,none,none
+gn:2375689,Woumpou,Guidimaka,3746,village,0,0,50,0,none,none
+gn:2376115,Tembedgha,Hodh Ech Chargi,17465,town,0,0,50,0,none,none
+gn:2376189,Tékane,Trarza,22041,town,0,0,50,0,none,none
+gn:2376193,Tidjikja,Tagant,13479,town,0,0,50,0,none,none
+gn:2376218,Tîchît,Tagant,1580,village,0,0,50,0,none,none
+gn:2376398,Tachott Brana,Guidimaka,3735,village,0,0,50,0,none,none
+gn:2376486,Tamchekett,Hodh El Gharbi,3131,village,0,0,50,0,none,none
+gn:2376719,Sélibaby,Guidimaka,32653,town,0,0,50,0,none,none
+gn:2376859,Sagné,Gorgol,8430,village,0,0,50,0,none,none
+gn:2376898,Rosso,Trarza,15870,town,0,0,50,0,none,none
+gn:2376976,Elghabra,Assaba,15480,town,0,0,50,0,none,none
+gn:2377211,Ould Yenjé,Guidimaka,5057,village,0,0,50,0,none,none
+gn:2377262,Oujeft,Adrar,3134,village,0,0,50,0,none,none
+gn:2377327,Oualata,Hodh Ech Chargi,11779,town,0,0,50,0,none,none
+gn:2377339,Ouadane,Adrar,1638,village,0,0,50,0,none,none
+gn:2377442,Nouâmghâr,Dakhlet Nouadhibou,4151,village,0,0,50,0,none,none
+gn:2377450,Nouakchott,,1184530,large-city,0,0,50,0,none,none
+gn:2377457,Nouadhibou,Dakhlet Nouadhibou,146048,city,0,0,50,0,none,none
+gn:2377539,Néma,Hodh Ech Chargi,60000,town,0,0,50,0,none,none
+gn:2377580,Ndiago,Trarza,8440,village,0,0,50,0,none,none
+gn:2377796,Moudjeria,Tagant,1899,village,0,0,50,0,none,none
+gn:2377822,Mônguel,Gorgol,2417,village,0,0,50,0,none,none
+gn:2378000,Mederdra,Trarza,6858,village,0,0,50,0,none,none
+gn:2378025,Mboutt,Gorgol,6733,village,0,0,50,0,none,none
+gn:2378070,Mbagne,Brakna,4004,village,0,0,50,0,none,none
+gn:2378160,Magṭa‘ Laḥjar,Brakna,15446,town,0,0,50,0,none,none
+gn:2378170,Maghama,Gorgol,13898,town,0,0,50,0,none,none
+gn:2378538,Kiffa,Assaba,62051,town,0,0,50,0,none,none
+gn:2378646,KeurMassène,Trarza,2532,village,0,0,50,0,none,none
+gn:2378716,Kankossa,Assaba,8122,village,0,0,50,0,none,none
+gn:2378736,Kaédi,Gorgol,56283,town,0,0,50,0,none,none
+gn:2378792,’Elb el Jmel,Brakna,1500,village,0,0,50,0,none,none
+gn:2379072,Hassi Chegar,Guidimaka,6960,village,0,0,50,0,none,none
+gn:2379131,Hamoud,Assaba,1547,village,0,0,50,0,none,none
+gn:2379471,Ganki Un,Gorgol,11250,town,0,0,50,0,none,none
+gn:2379615,Fderîck,Tiris Zemmour,4073,village,0,0,50,0,none,none
+gn:2379619,Vassala,Hodh Ech Chargi,10982,town,0,0,50,0,none,none
+gn:2379856,El Medda,Adrar,3900,village,0,0,50,0,none,none
+gn:2379886,Lexeiba Un,Gorgol,11417,town,0,0,50,0,none,none
+gn:2380066,El ’Ayoûn,Assaba,22896,town,0,0,50,0,none,none
+gn:2380162,Djowol,Gorgol,7582,village,0,0,50,0,none,none
+gn:2380225,Djiguenni,Hodh Ech Chargi,8293,village,0,0,50,0,none,none
+gn:2380254,Diogountourou,Guidimaka,6226,village,0,0,50,0,none,none
+gn:2380306,Diaguily,Guidimaka,6278,village,0,0,50,0,none,none
+gn:2380399,Dar el Barka,Brakna,12353,town,0,0,50,0,none,none
+gn:2380519,Chingueṭṭi,Adrar,4711,village,0,0,50,0,none,none
+gn:2380670,Boutilimitt,Trarza,27170,town,0,0,50,0,none,none
+gn:2380695,Bousteila,Hodh Ech Chargi,7520,village,0,0,50,0,none,none
+gn:2380764,Bouly,Guidimaka,14906,town,0,0,50,0,none,none
+gn:2380817,Bougadoum,Hodh Ech Chargi,40341,town,0,0,50,0,none,none
+gn:2380894,Bouanzé,Guidimaka,6955,village,0,0,50,0,none,none
+gn:2380954,Bogué,Brakna,20291,town,0,0,50,0,none,none
+gn:2380975,Bîr Mogreïn,Tiris Zemmour,1613,village,0,0,50,0,none,none
+gn:2381152,Basseknou,Hodh Ech Chargi,12232,town,0,0,50,0,none,none
+gn:2381163,Barkéwol,Assaba,3622,village,0,0,50,0,none,none
+gn:2381231,Bagodine,Brakna,11263,town,0,0,50,0,none,none
+gn:2381249,Bababé,Brakna,8869,village,0,0,50,0,none,none
+gn:2381291,Ayoun El Atrous,Hodh El Gharbi,28174,town,0,0,50,0,none,none
+gn:2381334,Atar,Adrar,31133,town,0,0,50,0,none,none
+gn:2381659,Aleg,Brakna,19183,town,0,0,50,0,none,none
+gn:2381690,Akjoujt,Inchiri,15851,town,0,0,50,0,none,none
+gn:2595352,Ksar,Nouakchott West,57758,town,0,0,50,0,none,none
+gn:2597434,Boulenouar,Dakhlet Nouadhibou,1901,village,0,0,50,0,none,none
+gn:2597435,Choum,Adrar,1153,village,0,0,50,0,none,none
+gn:2597437,Kobenni,Hodh El Gharbi,8979,village,0,0,50,0,none,none
+gn:2598168,Ouâd Nâga,Trarza,4179,village,0,0,50,0,none,none
+gn:2598196,Nbeika,Tagant,4000,village,0,0,50,0,none,none
+gn:2598205,El Ghediya,Tagant,1709,village,0,0,50,0,none,none
+gn:2598228,Amourj,Hodh Ech Chargi,5509,village,0,0,50,0,none,none
+gn:6910063,Çangarâfa,Brakna,4786,village,0,0,50,0,none,none
+gn:6911696,Ṭinṭâne,Hodh El Gharbi,15684,town,0,0,50,0,none,none
+gn:9222766,Arafat,Nouakchott South,0,village,0,0,50,0,none,none
+gn:9224943,R'kiz,Trarza,10688,town,0,0,50,0,none,none
+gn:9224945,El Ghayra,Tagant,7240,village,0,0,50,0,none,none
+gn:11009418,Tevragh Zeina,Nouakchott West,48093,town,0,0,50,0,none,none
+gn:11496397,Dar Naim,Nouakchott North,61089,town,0,0,50,0,none,none
+gn:11748651,Bir Mogran,Tiris Zemmour,1993,village,0,0,50,0,none,none
+gn:12625837,Taguilalett,Trarza,2726,village,0,0,50,0,none,none
+gn:12718652,Bouhdida,Brakna,8316,village,0,0,50,0,none,none
+gn:12718653,Guerou,Assaba,27590,town,0,0,50,0,none,none
+gn:12718654,Mbera,Hodh Ech Chargi,58985,town,0,0,50,0,none,none
+gn:12718656,Ouad Naga,Trarza,5165,village,0,0,50,0,none,none
+gn:12718657,Wali Djantang,Gorgol,7716,village,0,0,50,0,none,none
+gn:13527105,Fondé Elimane,Brakna,8500,village,0,0,50,0,none,none

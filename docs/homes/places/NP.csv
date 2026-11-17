@@ -1,0 +1,75 @@
+place_id,name,region,population,market,verified_homes,dated_listings,shortfall_to_50,recorded_sales,rent_source,price_source
+gn:1282616,Wāliṅ,Gandaki Pradesh,21867,town,0,0,50,0,none,none
+gn:1282635,Tulsi̇̄pur,Lumbini Province,39058,town,0,0,50,0,none,none
+gn:1282666,Ṭikāpur,Sudurpashchim Pradesh,44758,town,0,0,50,0,none,none
+gn:1282714,Tānsen,Lumbini Province,23693,town,0,0,50,0,none,none
+gn:1282770,Siraha,Madhesh,24657,town,0,0,50,0,none,none
+gn:1282782,Silgaḍhi̇̄,Sudurpashchim Pradesh,0,village,0,0,50,0,none,none
+gn:1282826,Salyān,Karnali Pradesh,0,village,0,0,50,0,none,none
+gn:1282878,Rāmechhāp,Bagmati Province,0,village,0,0,50,0,none,none
+gn:1282884,Rājbirāj,Madhesh,69803,town,0,0,50,0,none,none
+gn:1282887,Pyūthān,Lumbini Province,0,village,0,0,50,0,none,none
+gn:1282898,Pokhara,Gandaki Pradesh,600051,large-city,0,0,50,0,none,none
+gn:1282931,Pātan,Bagmati Province,299283,city,0,0,50,0,none,none
+gn:1282950,Panauti̇̄,Bagmati Province,27602,town,0,0,50,0,none,none
+gn:1283011,Namche Bazaar,Koshi,2324,village,0,0,50,0,none,none
+gn:1283018,Nagarkot,Bagmati Province,4000,village,0,0,50,0,none,none
+gn:1283022,Mustāng,Gandaki Pradesh,1899,village,0,0,50,0,none,none
+gn:1283082,Malaṅgawā,Madhesh,20284,town,0,0,50,0,none,none
+gn:1283095,Bhimdatta,Sudurpashchim Pradesh,88381,town,0,0,50,0,none,none
+gn:1283119,Lobuche,Koshi,8767,village,0,0,50,0,none,none
+gn:1283150,Lamjung,Gandaki Pradesh,0,village,0,0,50,0,none,none
+gn:1283161,Lahān,Madhesh,102955,city,0,0,50,0,none,none
+gn:1283168,Kusma,Gandaki Pradesh,6758,village,0,0,50,0,none,none
+gn:1283189,Kodāri̇̄,Bagmati Province,1600,village,0,0,50,0,none,none
+gn:1283190,Ki̇̄rtipur,Bagmati Province,44632,town,0,0,50,0,none,none
+gn:1283217,Khā̃dbāri̇̄,Koshi,22903,town,0,0,50,0,none,none
+gn:1283240,Kathmandu,Bagmati Province,1442271,large-city,0,0,50,0,none,none
+gn:1283268,Kalikot District,Karnali Pradesh,0,village,0,0,50,0,none,none
+gn:1283285,Jumla,Karnali Pradesh,9073,village,0,0,50,0,none,none
+gn:1283318,Janakpur,Madhesh,195438,city,0,0,50,0,none,none
+gn:1283323,Jaleshwar,Madhesh,23573,town,0,0,50,0,none,none
+gn:1283329,Īṭahari̇̄,Koshi,47984,town,0,0,50,0,none,none
+gn:1283333,Ilām,Koshi,17491,town,0,0,50,0,none,none
+gn:1283339,Hetauda,Bagmati Province,195951,city,0,0,50,0,none,none
+gn:1283368,Gulariyā,Lumbini Province,53107,town,0,0,50,0,none,none
+gn:1283392,Ghorahi,Lumbini Province,0,village,0,0,50,0,none,none
+gn:1283401,Gaur,Madhesh,27325,town,0,0,50,0,none,none
+gn:1283448,Dhulikhel,Bagmati Province,16263,town,0,0,50,0,none,none
+gn:1283460,Dharān,Koshi,173096,city,0,0,50,0,none,none
+gn:1283465,Dhankutā,Koshi,22084,town,0,0,50,0,none,none
+gn:1283467,Dhangaḍhi̇̄,Sudurpashchim Pradesh,204788,city,0,0,50,0,none,none
+gn:1283484,Dārchulā,Sudurpashchim Pradesh,18317,town,0,0,50,0,none,none
+gn:1283496,Dailekh,Karnali Pradesh,20908,town,0,0,50,0,none,none
+gn:1283499,Amargaḍhi̇̄,Sudurpashchim Pradesh,19014,town,0,0,50,0,none,none
+gn:1283539,Chautārā,Bagmati Province,51347,town,0,0,50,0,none,none
+gn:1283546,Chari̇̄koṭ,Bagmati Province,40000,town,0,0,50,0,none,none
+gn:1283559,Chainpur,Sudurpashchim Pradesh,0,village,0,0,50,0,none,none
+gn:1283562,Butwāl,Lumbini Province,195054,city,0,0,50,0,none,none
+gn:1283581,Birgañj,Madhesh,268273,city,0,0,50,0,none,none
+gn:1283582,Biratnagar,Koshi,244750,city,0,0,50,0,none,none
+gn:1283599,Bhojpur,Lumbini Province,2640,village,0,0,50,0,none,none
+gn:1283600,Bhojpur,Koshi,3250,village,0,0,50,0,none,none
+gn:1283613,Bharatpur,Bagmati Province,369377,city,0,0,50,0,none,none
+gn:1283617,Bhaktapur,Bagmati Province,0,village,0,0,50,0,none,none
+gn:1283621,Siddharthanagar,Lumbini Province,63367,town,0,0,50,0,none,none
+gn:1283628,Bhadrapur,Koshi,19523,town,0,0,50,0,none,none
+gn:1283662,Bardiyā,Lumbini Province,0,village,0,0,50,0,none,none
+gn:1283679,Banepā,Bagmati Province,67629,town,0,0,50,0,none,none
+gn:1283711,Bāgluṅ,Gandaki Pradesh,23296,town,0,0,50,0,none,none
+gn:1283742,Achhām,Sudurpashchim Pradesh,0,village,0,0,50,0,none,none
+gn:6254842,Besisahar,Karnali Pradesh,5427,village,0,0,50,0,none,none
+gn:6254843,Birendranagar,Karnali Pradesh,154886,city,0,0,50,0,none,none
+gn:6254845,Dipayal,Sudurpashchim Pradesh,33968,town,0,0,50,0,none,none
+gn:6941099,Nepalgunj,Lumbini Province,166258,city,0,0,50,0,none,none
+gn:6941691,Chitre,Gandaki Pradesh,2860,village,0,0,50,0,none,none
+gn:7649119,Surkhet,Karnali Pradesh,0,village,0,0,50,0,none,none
+gn:7963596,Panauti,Bagmati Province,46595,town,0,0,50,0,none,none
+gn:7997918,Inaruwa,Koshi,70093,town,0,0,50,0,none,none
+gn:8199102,kankrabari Dovan,Bagmati Province,10000,town,0,0,50,0,none,none
+gn:8410807,Triyuga,Koshi,71405,town,0,0,50,0,none,none
+gn:8411054,Madhyapur Thimi,Bagmati Province,119955,city,0,0,50,0,none,none
+gn:10316796,Chapali̇̄ Bhaḍrakāli̇̄,Bagmati Province,10827,town,0,0,50,0,none,none
+gn:11154397,Bhattarai Danda,Gandaki Pradesh,5510,village,0,0,50,0,none,none
+gn:11523504,Dihi,Gandaki Pradesh,2210,village,0,0,50,0,none,none
+gn:13653221,Deukhurī,Lumbini Province,0,village,0,0,50,0,none,none

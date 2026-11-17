@@ -1,0 +1,15 @@
+place_id,name,region,population,market,verified_homes,dated_listings,shortfall_to_50,recorded_sales,rent_source,price_source
+gn:3042030,Vaduz,Vaduz,5197,village,0,0,50,0,none,none
+gn:3042033,Triesenberg,Triesenberg,2643,village,0,0,50,0,none,none
+gn:3042035,Triesen,Triesen,5230,village,0,0,50,0,none,none
+gn:3042037,Schellenberg,Schellenberg,1091,village,0,0,50,0,none,none
+gn:3042041,Schaan,Schaan,5998,village,0,0,50,0,none,none
+gn:3042046,Ruggell,Ruggell,2295,village,0,0,50,0,none,none
+gn:3042049,Planken,Planken,478,village,0,0,50,0,none,none
+gn:3042052,Nendeln,Eschen,1407,village,0,0,50,0,none,none
+gn:3042055,Mauren,Mauren,4404,village,0,0,50,0,none,none
+gn:3042062,Gamprin,Gamprin,1663,village,0,0,50,0,none,none
+gn:3042068,Eschen,Eschen,4459,village,0,0,50,0,none,none
+gn:3042072,Bendern,Gamprin,1664,village,0,0,50,0,none,none
+gn:3042073,Balzers,Balzers,4628,village,0,0,50,0,none,none
+gn:3315349,Mäls,Balzers,1350,village,0,0,50,0,none,none

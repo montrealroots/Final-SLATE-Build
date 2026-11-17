@@ -1,0 +1,90 @@
+place_id,name,region,population,market,verified_homes,dated_listings,shortfall_to_50,recorded_sales,rent_source,price_source
+gn:1223648,Welisara,Western Province,41306,town,0,0,50,0,none,none
+gn:1223738,Weligama,Southern Province,22179,town,0,0,50,0,none,none
+gn:1224061,Wattegama,Uva Province,8000,village,0,0,50,0,none,none
+gn:1224085,Wattala,Western Province,30725,town,0,0,50,0,none,none
+gn:1224269,Wanduruppa,Southern Province,2006,village,0,0,50,0,none,none
+gn:1225018,Vavuniya,Northern Province,60176,town,0,0,50,0,none,none
+gn:1225142,Valvedditturai,Northern Province,78205,town,0,0,50,0,none,none
+gn:1225187,Vakarai,Eastern Province,21000,town,0,0,50,0,none,none
+gn:1225514,Unawatuna,Southern Province,2000,village,0,0,50,0,none,none
+gn:1226260,Trincomalee,Eastern Province,108420,city,0,0,50,0,none,none
+gn:1227037,Tangalle,Southern Province,10497,town,0,0,50,0,none,none
+gn:1227217,Talpe,Southern Province,3000,village,0,0,50,0,none,none
+gn:1227300,Talawakele,Central Province,3545,village,0,0,50,0,none,none
+gn:1228051,Sigiriya,Central Province,1001,village,0,0,50,0,none,none
+gn:1228730,Ratnapura,Sabaragamuwa Province,47832,town,0,0,50,0,none,none
+gn:1229293,Puttalam,North Western Province,45661,town,0,0,50,0,none,none
+gn:1229724,Pottuvil,Eastern Province,45727,town,0,0,50,0,none,none
+gn:1229901,Polonnaruwa,North Central Province,13900,town,0,0,50,0,none,none
+gn:1229989,Point Pedro,Northern Province,89810,town,0,0,50,0,none,none
+gn:1230089,Pita Kotte,Western Province,118179,city,0,0,50,0,none,none
+gn:1230613,Peliyagoda,Western Province,28784,town,0,0,50,0,none,none
+gn:1231410,Panadura,Western Province,33735,town,0,0,50,0,none,none
+gn:1232783,Nuwara Eliya,Central Province,27500,town,0,0,50,0,none,none
+gn:1233369,Negombo,Western Province,137223,city,0,0,50,0,none,none
+gn:1234378,Mulleriyawa,Western Province,33540,town,0,0,50,0,none,none
+gn:1234393,Mullaittivu,Northern Province,28973,town,0,0,50,0,none,none
+gn:1234569,Dehiwala-Mount Lavinia,Western Province,219827,city,0,0,50,0,none,none
+gn:1234633,Moratuwa,Western Province,168280,city,0,0,50,0,none,none
+gn:1234808,Monaragala,Uva Province,10236,town,0,0,50,0,none,none
+gn:1235000,Minuwangoda,Western Province,7772,village,0,0,50,0,none,none
+gn:1235107,Mihintale,North Central Province,5000,village,0,0,50,0,none,none
+gn:1235746,Mawalgama,Western Province,2033,village,0,0,50,0,none,none
+gn:1235846,Matara,Southern Province,76254,town,0,0,50,0,none,none
+gn:1235855,Matale,Central Province,36462,town,0,0,50,0,none,none
+gn:1236150,Mannar,Northern Province,35817,town,0,0,50,0,none,none
+gn:1236854,Maharagama,Western Province,195355,city,0,0,50,0,none,none
+gn:1237980,Kurunegala,North Western Province,28571,town,0,0,50,0,none,none
+gn:1238427,Kuliyapitiya,North Western Province,6877,village,0,0,50,0,none,none
+gn:1238992,Sri Jayewardenepura Kotte,Western Province,115826,city,0,0,50,0,none,none
+gn:1239047,Kotikawatta,Western Province,64565,town,0,0,50,0,none,none
+gn:1239593,Kolonnawa,Western Province,64887,town,0,0,50,0,none,none
+gn:1239829,Koggala,Southern Province,3000,village,0,0,50,0,none,none
+gn:1240372,Kilinochchi,Northern Province,13006,town,0,0,50,0,none,none
+gn:1240506,Keppapularu,Northern Province,8361,village,0,0,50,0,none,none
+gn:1240622,Kelaniya,Western Province,28846,town,0,0,50,0,none,none
+gn:1240723,Kegalle,Sabaragamuwa Province,17962,town,0,0,50,0,none,none
+gn:1240935,Katunayaka,Western Province,84643,town,0,0,50,0,none,none
+gn:1241076,Kataragama,Uva Province,20935,town,0,0,50,0,none,none
+gn:1241622,Kandy,Central Province,111701,city,0,0,50,0,none,none
+gn:1241750,Kandana,Western Province,33424,town,0,0,50,0,none,none
+gn:1241964,Kalutara,Western Province,37081,town,0,0,50,0,none,none
+gn:1242110,Kalmunai,Eastern Province,100171,city,0,0,50,0,none,none
+gn:1242571,Kadugannawa,Central Province,1214,village,0,0,50,0,none,none
+gn:1242833,Jaffna,Northern Province,169102,city,0,0,50,0,none,none
+gn:1242835,Ja Ela,Western Province,32175,town,0,0,50,0,none,none
+gn:1243867,Horana South,Western Province,8982,village,0,0,50,0,none,none
+gn:1243936,Homagama,Western Province,34664,town,0,0,50,0,none,none
+gn:1244178,Hikkaduwa,Southern Province,1300,village,0,0,50,0,none,none
+gn:1244397,Hendala,Western Province,56978,town,0,0,50,0,none,none
+gn:1244596,Hatton,Central Province,15073,town,0,0,50,0,none,none
+gn:1244713,Haputale,Uva Province,4721,village,0,0,50,0,none,none
+gn:1244773,Hanwella Ihala,Western Province,22918,town,0,0,50,0,none,none
+gn:1244926,Hambantota,Southern Province,19999,town,0,0,50,0,none,none
+gn:1246000,Gampola,Central Province,24283,town,0,0,50,0,none,none
+gn:1246007,Gampaha,Western Province,9350,village,0,0,50,0,none,none
+gn:1246294,Galle,Southern Province,93118,town,0,0,50,0,none,none
+gn:1246924,Eravur Town,Eastern Province,22982,town,0,0,50,0,none,none
+gn:1247148,Ella Town,Uva Province,5000,village,0,0,50,0,none,none
+gn:1247279,Ekkassa,Southern Province,1784,village,0,0,50,0,none,none
+gn:1248158,Devinuwara,Southern Province,45000,town,0,0,50,0,none,none
+gn:1248749,Dambulla,Central Province,66716,town,0,0,50,0,none,none
+gn:1248991,Colombo,Western Province,648034,large-city,0,0,50,0,none,none
+gn:1249145,Chilaw,North Western Province,24712,town,0,0,50,0,none,none
+gn:1249808,Bogahakumbura,Uva Province,1500,village,0,0,50,0,none,none
+gn:1249931,Beruwala,Western Province,34250,town,0,0,50,0,none,none
+gn:1249978,Bentota,Southern Province,37000,town,0,0,50,0,none,none
+gn:1250066,Beliatta,Southern Province,58675,town,0,0,50,0,none,none
+gn:1250161,Batticaloa,Eastern Province,86742,town,0,0,50,0,none,none
+gn:1250164,Battaramulla South,Western Province,75633,town,0,0,50,0,none,none
+gn:1250615,Badulla,Uva Province,47587,town,0,0,50,0,none,none
+gn:1251081,Anuradhapura,North Central Province,60943,town,0,0,50,0,none,none
+gn:1251459,Ampara,Eastern Province,43720,town,0,0,50,0,none,none
+gn:1251568,Ambalantota,Southern Province,80506,town,0,0,50,0,none,none
+gn:1251574,Ambalangoda,Southern Province,56783,town,0,0,50,0,none,none
+gn:6285792,Horawala Junction,Western Province,7500,village,0,0,50,0,none,none
+gn:7420718,Urawatawangoda,Southern Province,1173,village,0,0,50,0,none,none
+gn:8714432,Padaviya Divisional Secretariat,,0,village,0,0,50,0,none,none
+gn:11126122,Wellawaya,Uva Province,10000,town,0,0,50,0,none,none
+gn:11979654,Mirissa city,Southern Province,4695,village,0,0,50,0,none,none

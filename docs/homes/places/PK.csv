@@ -1,0 +1,571 @@
+place_id,name,region,population,market,verified_homes,dated_listings,shortfall_to_50,recorded_sales,rent_source,price_source
+gn:1106880,Sharifabad,Punjab,55027,town,0,0,50,0,none,none
+gn:1107099,Inzari,Khyber Pakhtunkhwa,10000,town,0,0,50,0,none,none
+gn:1108161,Chuhar Jamali,Sindh,18721,town,0,0,50,0,none,none
+gn:1109262,Datta Khel,Khyber Pakhtunkhwa,1037,village,0,0,50,0,none,none
+gn:1111188,Timargara,Khyber Pakhtunkhwa,0,village,0,0,50,0,none,none
+gn:1111737,Batwar Salarzai,Khyber Pakhtunkhwa,5267,village,0,0,50,0,none,none
+gn:1161983,Rawalakot,Azad Kashmir,50000,town,0,0,50,0,none,none
+gn:1161991,Pir Jo Goth,Sindh,54266,town,0,0,50,0,none,none
+gn:1162004,Khairpur Mir’s,Sindh,191044,city,0,0,50,0,none,none
+gn:1162035,Adilpur,Sindh,8247,village,0,0,50,0,none,none
+gn:1162094,Ziarat,Balochistan,733,village,0,0,50,0,none,none
+gn:1162105,Zhob,Balochistan,50537,town,0,0,50,0,none,none
+gn:1162261,Zaida,Khyber Pakhtunkhwa,34200,town,0,0,50,0,none,none
+gn:1162275,Zahir Pir,Punjab,76979,town,0,0,50,0,none,none
+gn:1162285,Zafarwal,Punjab,23078,town,0,0,50,0,none,none
+gn:1162311,Yougu,Gilgit-Baltistan,6000,village,0,0,50,0,none,none
+gn:1162316,Yazman,Punjab,60738,town,0,0,50,0,none,none
+gn:1162456,Wazirabad,Punjab,152624,city,0,0,50,0,none,none
+gn:1162500,Washuk,Balochistan,41107,town,0,0,50,0,none,none
+gn:1162572,Chak Five Hundred Seventy-five,Punjab,30738,town,0,0,50,0,none,none
+gn:1162589,Warah,Sindh,18724,town,0,0,50,0,none,none
+gn:1162634,Wana,Khyber Pakhtunkhwa,2223,village,0,0,50,0,none,none
+gn:1162813,Vihari,Punjab,112840,city,0,0,50,0,none,none
+gn:1162855,Utmanzai,Khyber Pakhtunkhwa,34257,town,0,0,50,0,none,none
+gn:1162862,Uthal,Balochistan,16483,town,0,0,50,0,none,none
+gn:1162868,Usta Muhammad,Balochistan,64632,town,0,0,50,0,none,none
+gn:1162959,Umarkot,Sindh,144558,city,0,0,50,0,none,none
+gn:1163021,Ubauro,Sindh,50981,town,0,0,50,0,none,none
+gn:1163054,Turbat,Balochistan,75694,town,0,0,50,0,none,none
+gn:1163198,Tordher,Khyber Pakhtunkhwa,150000,city,0,0,50,0,none,none
+gn:1163224,Topi,Khyber Pakhtunkhwa,74867,town,0,0,50,0,none,none
+gn:1163237,Tolti,Gilgit-Baltistan,0,village,0,0,50,0,none,none
+gn:1163272,Toba Tek Singh,Punjab,123102,city,0,0,50,0,none,none
+gn:1163414,Thul,Sindh,88554,town,0,0,50,0,none,none
+gn:1163582,Thatta,Sindh,44302,town,0,0,50,0,none,none
+gn:1163595,Tharu Shah,Sindh,17698,town,0,0,50,0,none,none
+gn:1163634,Thamewali,Punjab,7300,village,0,0,50,0,none,none
+gn:1163724,Taunsa,Punjab,115704,city,0,0,50,0,none,none
+gn:1163905,Tank,Khyber Pakhtunkhwa,38488,town,0,0,50,0,none,none
+gn:1163912,Tangwani,Sindh,9255,village,0,0,50,0,none,none
+gn:1163927,Tangi,Khyber Pakhtunkhwa,35659,town,0,0,50,0,none,none
+gn:1163952,Tando Muhammad Khan,Sindh,114406,city,0,0,50,0,none,none
+gn:1163953,Tando Mitha Khan,Sindh,2723,village,0,0,50,0,none,none
+gn:1163958,Tando Jam,Sindh,71760,town,0,0,50,0,none,none
+gn:1163964,Tando Bago,Sindh,426535,city,0,0,50,0,none,none
+gn:1163965,Tando Allahyar,Sindh,421923,city,0,0,50,0,none,none
+gn:1163967,Tando Adam,Sindh,174291,city,0,0,50,0,none,none
+gn:1163968,Tandlianwala,Punjab,38285,town,0,0,50,0,none,none
+gn:1164045,Talhar,Sindh,200014,city,0,0,50,0,none,none
+gn:1164064,Talamba,Punjab,28151,town,0,0,50,0,none,none
+gn:1164069,Talagang,Punjab,79431,town,0,0,50,0,none,none
+gn:1164076,Thal,Khyber Pakhtunkhwa,29331,town,0,0,50,0,none,none
+gn:1164216,Swabi,Khyber Pakhtunkhwa,97363,town,0,0,50,0,none,none
+gn:1164245,Surkhpur,Punjab,20000,town,0,0,50,0,none,none
+gn:1164306,Surab,Balochistan,13104,town,0,0,50,0,none,none
+gn:1164408,Sukkur,Sindh,563851,large-city,0,0,50,0,none,none
+gn:1164419,Sukheke Mandi,Punjab,42626,town,0,0,50,0,none,none
+gn:1164660,Sohbatpur,Balochistan,8940,village,0,0,50,0,none,none
+gn:1164679,Sodhri,Punjab,15977,town,0,0,50,0,none,none
+gn:1164698,Sobhodero,Sindh,14623,town,0,0,50,0,none,none
+gn:1164709,Skardu,Gilgit-Baltistan,260000,city,0,0,50,0,none,none
+gn:1164716,Sita Road,Sindh,27587,town,0,0,50,0,none,none
+gn:1164776,Sinjhoro,Sindh,354709,city,0,0,50,0,none,none
+gn:1164825,Sillanwali,Punjab,49311,town,0,0,50,0,none,none
+gn:1164896,Sibi,Balochistan,64069,town,0,0,50,0,none,none
+gn:1164909,Sialkot,Punjab,911817,large-city,0,0,50,0,none,none
+gn:1164970,Shujaabad,Punjab,151115,city,0,0,50,0,none,none
+gn:1164987,Shorkot,Khyber Pakhtunkhwa,67439,town,0,0,50,0,none,none
+gn:1165057,Shinpokh,Khyber Pakhtunkhwa,1111,village,0,0,50,0,none,none
+gn:1165108,Shikarpur,Sindh,204938,city,0,0,50,0,none,none
+gn:1165119,Shigar,Gilgit-Baltistan,0,village,0,0,50,0,none,none
+gn:1165221,Shekhupura,Punjab,591424,large-city,0,0,50,0,none,none
+gn:1165260,Sharqpur Sharif,Punjab,31855,town,0,0,50,0,none,none
+gn:1165322,Goth Shams Pir,Sindh,5001,village,0,0,50,0,none,none
+gn:1165388,Shakargarh,Punjab,126742,city,0,0,50,0,none,none
+gn:1165486,Shahr Sultan,Punjab,16166,town,0,0,50,0,none,none
+gn:1165507,Shahpur Chakar,Sindh,21446,town,0,0,50,0,none,none
+gn:1165518,Shahpur,Punjab,14153,town,0,0,50,0,none,none
+gn:1165569,Shahkot,Punjab,244868,city,0,0,50,0,none,none
+gn:1165635,Shahdadpur,Sindh,113342,city,0,0,50,0,none,none
+gn:1165638,Shahdad Kot,Sindh,120687,city,0,0,50,0,none,none
+gn:1165744,Shabqadar,Khyber Pakhtunkhwa,102340,city,0,0,50,0,none,none
+gn:1165778,Sehnsa,Azad Kashmir,10568,town,0,0,50,0,none,none
+gn:1165789,Sehwan,Sindh,41150,town,0,0,50,0,none,none
+gn:1166000,Sargodha,Punjab,975886,large-city,0,0,50,0,none,none
+gn:1166062,Sarai Sidhu,Punjab,15632,town,0,0,50,0,none,none
+gn:1166066,Sarai Naurang,Khyber Pakhtunkhwa,19694,town,0,0,50,0,none,none
+gn:1166073,Sarai Alamgir,Punjab,73967,town,0,0,50,0,none,none
+gn:1166115,Sann,Sindh,8834,village,0,0,50,0,none,none
+gn:1166118,Sanjwal,Punjab,10657,town,0,0,50,0,none,none
+gn:1166146,Sangla Hill,Punjab,103709,city,0,0,50,0,none,none
+gn:1166164,Sanghar,Sindh,62033,town,0,0,50,0,none,none
+gn:1166265,Sambrial,Punjab,119571,city,0,0,50,0,none,none
+gn:1166275,Samaro,Sindh,8784,village,0,0,50,0,none,none
+gn:1166381,Sakrand,Sindh,72040,town,0,0,50,0,none,none
+gn:1166475,Saidu Sharif,Khyber Pakhtunkhwa,0,village,0,0,50,0,none,none
+gn:1166480,Saidpur,Islamabad,15000,town,0,0,50,0,none,none
+gn:1166547,Sahiwal,Punjab,538344,large-city,0,0,50,0,none,none
+gn:1166548,Sahiwal,Punjab,538344,large-city,0,0,50,0,none,none
+gn:1166652,Saddiqabad,Punjab,274210,city,0,0,50,0,none,none
+gn:1166720,Rustam,Sindh,9048,village,0,0,50,0,none,none
+gn:1166735,Chak One Hundred Forty-one Nine Left,Punjab,5087,village,0,0,50,0,none,none
+gn:1166819,Rojhan,Punjab,14494,town,0,0,50,0,none,none
+gn:1166827,Rohri,Sindh,92135,town,0,0,50,0,none,none
+gn:1166933,Renala Khurd,Punjab,100054,city,0,0,50,0,none,none
+gn:1166993,Rawalpindi,Punjab,3357612,large-city,0,0,50,0,none,none
+gn:1167031,Ratodero,Sindh,81935,town,0,0,50,0,none,none
+gn:1167064,Rasulnagar,Punjab,14392,town,0,0,50,0,none,none
+gn:1167142,Ranipur,Sindh,34337,town,0,0,50,0,none,none
+gn:1167342,Rajo Khanani,Sindh,7683,village,0,0,50,0,none,none
+gn:1167380,Rajanpur,Punjab,50682,town,0,0,50,0,none,none
+gn:1167386,Raja Jang,Punjab,100000,city,0,0,50,0,none,none
+gn:1167398,Raiwind,Punjab,31592,town,0,0,50,0,none,none
+gn:1167460,Rahim Yar Khan,Punjab,517000,large-city,0,0,50,0,none,none
+gn:1167501,Goth Radhan,Sindh,16786,town,0,0,50,0,none,none
+gn:1167507,Rabwah,Punjab,70000,town,0,0,50,0,none,none
+gn:1167528,Quetta,Balochistan,1565546,large-city,0,0,50,0,none,none
+gn:1167534,Qubo Saeed Khan,Sindh,99308,town,0,0,50,0,none,none
+gn:1167550,Qila Saifullah,Balochistan,0,village,0,0,50,0,none,none
+gn:1167579,Qila Abdullah,Balochistan,0,village,0,0,50,0,none,none
+gn:1167622,Kambar,Sindh,77481,town,0,0,50,0,none,none
+gn:1167648,Qadirpur Ran,Punjab,200000,city,0,0,50,0,none,none
+gn:1167669,Qabula,Punjab,52495,town,0,0,50,0,none,none
+gn:1167747,Chak One Hundred Eighty-six Nine Left,Punjab,7942,village,0,0,50,0,none,none
+gn:1167798,Pithoro,Sindh,6440,village,0,0,50,0,none,none
+gn:1167821,Pishin,Balochistan,24239,town,0,0,50,0,none,none
+gn:1167873,Pir Mahal,Punjab,52476,town,0,0,50,0,none,none
+gn:1168015,Pindi Gheb,Punjab,63810,town,0,0,50,0,none,none
+gn:1168021,Pindi Bhattian,Punjab,493222,city,0,0,50,0,none,none
+gn:1168036,Pind Dadan Khan,Punjab,29935,town,0,0,50,0,none,none
+gn:1168087,Phulra,Khyber Pakhtunkhwa,3544,village,0,0,50,0,none,none
+gn:1168101,Goth Phulji,Sindh,7877,village,0,0,50,0,none,none
+gn:1168166,Phalia,Punjab,62453,town,0,0,50,0,none,none
+gn:1168197,Peshawar,Khyber Pakhtunkhwa,4758762,large-city,0,0,50,0,none,none
+gn:1168226,Pattoki,Punjab,113735,city,0,0,50,0,none,none
+gn:1168288,Patan,Khyber Pakhtunkhwa,0,village,0,0,50,0,none,none
+gn:1168307,Pasrur,Punjab,102717,city,0,0,50,0,none,none
+gn:1168312,Pasni,Balochistan,43494,town,0,0,50,0,none,none
+gn:1168394,Parachinar,Khyber Pakhtunkhwa,0,village,0,0,50,0,none,none
+gn:1168412,Pano Aqil,Sindh,102701,city,0,0,50,0,none,none
+gn:1168446,Panjgur,Balochistan,0,village,0,0,50,0,none,none
+gn:1168544,Pallandri,Azad Kashmir,23243,town,0,0,50,0,none,none
+gn:1168555,Pakpattan,Punjab,126706,city,0,0,50,0,none,none
+gn:1168633,Paharpur,Khyber Pakhtunkhwa,76027,town,0,0,50,0,none,none
+gn:1168643,Bhagowal,Punjab,12000,town,0,0,50,0,none,none
+gn:1168652,Pad Idan,Sindh,20919,town,0,0,50,0,none,none
+gn:1168680,Pabbi,Khyber Pakhtunkhwa,52701,town,0,0,50,0,none,none
+gn:1168700,Ormara,Balochistan,13026,town,0,0,50,0,none,none
+gn:1168718,Okara,Punjab,533693,large-city,0,0,50,0,none,none
+gn:1168749,Nushki,Balochistan,48572,town,0,0,50,0,none,none
+gn:1168864,Nowshera,Khyber Pakhtunkhwa,0,village,0,0,50,0,none,none
+gn:1168889,Nok Kundi,Balochistan,30621,town,0,0,50,0,none,none
+gn:1169027,New Mirpur City,Azad Kashmir,124352,city,0,0,50,0,none,none
+gn:1169035,Chak Eighty-eight -Six Right,Punjab,5288,village,0,0,50,0,none,none
+gn:1169116,Nawabshah,Sindh,363138,city,0,0,50,0,none,none
+gn:1169143,Naushahro Firoz,Sindh,17631,town,0,0,50,0,none,none
+gn:1169145,Naushahra Virkan,Punjab,40853,town,0,0,50,0,none,none
+gn:1169187,Naudero,Sindh,33455,town,0,0,50,0,none,none
+gn:1169254,Nasirabad,Sindh,27809,town,0,0,50,0,none,none
+gn:1169267,Narwanwala,Punjab,5951,village,0,0,50,0,none,none
+gn:1169278,Narowal,Punjab,130692,city,0,0,50,0,none,none
+gn:1169334,Narang Mandi,Punjab,34778,town,0,0,50,0,none,none
+gn:1169367,Naukot,Sindh,22081,town,0,0,50,0,none,none
+gn:1169372,Nankana Sahib,Punjab,130041,city,0,0,50,0,none,none
+gn:1169504,Chak One Hundred Forty-three Nine Left,Punjab,5190,village,0,0,50,0,none,none
+gn:1169544,Nagir,Gilgit-Baltistan,0,village,0,0,50,0,none,none
+gn:1169580,Nabisar,Sindh,6256,village,0,0,50,0,none,none
+gn:1169605,Muzaffargarh,Punjab,235541,city,0,0,50,0,none,none
+gn:1169607,Muzaffarābād,Azad Kashmir,725000,large-city,0,0,50,0,none,none
+gn:1169620,Mustafabad,Punjab,45795,town,0,0,50,0,none,none
+gn:1169663,Musa Khel Bazar,Balochistan,0,village,0,0,50,0,none,none
+gn:1169684,Murree,Punjab,25186,town,0,0,50,0,none,none
+gn:1169692,Muridke,Punjab,254291,city,0,0,50,0,none,none
+gn:1169825,Multan,Punjab,2169915,large-city,0,0,50,0,none,none
+gn:1170013,Moro,Sindh,142685,city,0,0,50,0,none,none
+gn:1170157,Model Town,Punjab,100000,city,0,0,50,0,none,none
+gn:1170219,Mithi,Sindh,52376,town,0,0,50,0,none,none
+gn:1170222,Mitha Tiwana,Punjab,26390,town,0,0,50,0,none,none
+gn:1170281,Mirwah Gorchani,Sindh,12139,town,0,0,50,0,none,none
+gn:1170290,Mirpur Sakro,Sindh,8371,village,0,0,50,0,none,none
+gn:1170294,Mirpur Mathelo,Sindh,74651,town,0,0,50,0,none,none
+gn:1170295,Mirpur Khas,Sindh,267833,city,0,0,50,0,none,none
+gn:1170299,Mirpur Bhtoro,Sindh,8866,village,0,0,50,0,none,none
+gn:1170312,Miro Khan,Sindh,10590,town,0,0,50,0,none,none
+gn:1170344,Mirdad Muafi,Punjab,9933,village,0,0,50,0,none,none
+gn:1170367,Miran Shah,Khyber Pakhtunkhwa,4131,village,0,0,50,0,none,none
+gn:1170395,Mingora,Khyber Pakhtunkhwa,361112,city,0,0,50,0,none,none
+gn:1170398,Minchinabad,Punjab,67164,town,0,0,50,0,none,none
+gn:1170425,Mianwali,Punjab,129500,city,0,0,50,0,none,none
+gn:1170436,Mian Sahib,Sindh,25000,town,0,0,50,0,none,none
+gn:1170486,Mian Channun,Punjab,140112,city,0,0,50,0,none,none
+gn:1170584,Mehar,Sindh,30429,town,0,0,50,0,none,none
+gn:1170667,Matli,Sindh,50398,town,0,0,50,0,none,none
+gn:1170677,Matiari,Sindh,18929,town,0,0,50,0,none,none
+gn:1170706,Mastung,Balochistan,29082,town,0,0,50,0,none,none
+gn:1170880,Mardan,Khyber Pakhtunkhwa,300424,city,0,0,50,0,none,none
+gn:1170951,Mansehra,Khyber Pakhtunkhwa,66486,town,0,0,50,0,none,none
+gn:1170974,Mankera,Punjab,14184,town,0,0,50,0,none,none
+gn:1170989,Manjhand,Sindh,140766,city,0,0,50,0,none,none
+gn:1171006,Manhala,Punjab,29000,town,0,0,50,0,none,none
+gn:1171050,Mangla,Punjab,16264,town,0,0,50,0,none,none
+gn:1171123,Mandi Bahauddin,Punjab,129733,city,0,0,50,0,none,none
+gn:1171165,Mananwala,Punjab,28432,town,0,0,50,0,none,none
+gn:1171198,Mamu Kanjan,Punjab,31914,town,0,0,50,0,none,none
+gn:1171305,Malir Cantonment,Sindh,300000,city,0,0,50,0,none,none
+gn:1171376,Malakwal,Punjab,34589,town,0,0,50,0,none,none
+gn:1171389,Malakand,Khyber Pakhtunkhwa,0,village,0,0,50,0,none,none
+gn:1171502,Mailsi,Punjab,125431,city,0,0,50,0,none,none
+gn:1171677,Madeji,Sindh,14802,town,0,0,50,0,none,none
+gn:1171757,Mach,Balochistan,44542,town,0,0,50,0,none,none
+gn:1171868,Loralai,Balochistan,37787,town,0,0,50,0,none,none
+gn:1171888,Lollianwala,Punjab,3000,village,0,0,50,0,none,none
+gn:1171965,Lodhran,Punjab,144512,city,0,0,50,0,none,none
+gn:1171991,Liliani,Punjab,12211,town,0,0,50,0,none,none
+gn:1172035,Layyah,Punjab,151274,city,0,0,50,0,none,none
+gn:1172059,Lawa,Punjab,20619,town,0,0,50,0,none,none
+gn:1172128,Larkana,Sindh,364033,city,0,0,50,0,none,none
+gn:1172208,Landi Kotal,Khyber Pakhtunkhwa,2223,village,0,0,50,0,none,none
+gn:1172286,Chak One Hundred Eighty-eight Nine A Left,Punjab,5163,village,0,0,50,0,none,none
+gn:1172295,Lalian,Punjab,52542,town,0,0,50,0,none,none
+gn:1172318,Lala Musa,Punjab,65197,town,0,0,50,0,none,none
+gn:1172339,Lakki,Khyber Pakhtunkhwa,36391,town,0,0,50,0,none,none
+gn:1172389,Lakhi,Sindh,13600,town,0,0,50,0,none,none
+gn:1172451,Lahore,Punjab,13004135,large-city,0,0,50,0,none,none
+gn:1172488,Ladhewala Waraich,Punjab,39757,town,0,0,50,0,none,none
+gn:1172513,Lachi,Khyber Pakhtunkhwa,18537,town,0,0,50,0,none,none
+gn:1172595,Kuri Dulal,Punjab,22000,town,0,0,50,0,none,none
+gn:1172657,Kunri,Sindh,237063,city,0,0,50,0,none,none
+gn:1172663,Kunjah,Punjab,90905,town,0,0,50,0,none,none
+gn:1172682,Kundian,Punjab,42903,town,0,0,50,0,none,none
+gn:1172779,Kulachi,Khyber Pakhtunkhwa,24481,town,0,0,50,0,none,none
+gn:1172866,Kot Sultan,Punjab,10000,town,0,0,50,0,none,none
+gn:1172888,Kot Samaba,Punjab,22953,town,0,0,50,0,none,none
+gn:1172904,Kotri,Sindh,106615,city,0,0,50,0,none,none
+gn:1172909,Kot Rajkour,Punjab,1542,village,0,0,50,0,none,none
+gn:1172915,Kot Radha Kishan,Punjab,102057,city,0,0,50,0,none,none
+gn:1172964,Kot Mumin,Punjab,51021,town,0,0,50,0,none,none
+gn:1172993,Kot Malik Barkhurdar,Balochistan,69359,town,0,0,50,0,none,none
+gn:1173025,Kotli Loharan,Punjab,21463,town,0,0,50,0,none,none
+gn:1173055,Kotli,Azad Kashmir,46907,town,0,0,50,0,none,none
+gn:1173176,Kot Khaira,Punjab,16327,town,0,0,50,0,none,none
+gn:1173272,Kot Ghulam Muhammad,Punjab,20897,town,0,0,50,0,none,none
+gn:1173302,Kot Diji,Sindh,25616,town,0,0,50,0,none,none
+gn:1173378,Kot Addu,Punjab,104217,city,0,0,50,0,none,none
+gn:1173464,Kohlu,Balochistan,11089,town,0,0,50,0,none,none
+gn:1173491,Kohat,Khyber Pakhtunkhwa,151427,city,0,0,50,0,none,none
+gn:1173664,Khuzdar,Balochistan,218112,city,0,0,50,0,none,none
+gn:1173687,Khushāb,Punjab,102793,city,0,0,50,0,none,none
+gn:1173692,Khurarianwala,Punjab,96743,town,0,0,50,0,none,none
+gn:1173744,Khuiratta,Azad Kashmir,8220,village,0,0,50,0,none,none
+gn:1173920,Khewra,Punjab,80000,town,0,0,50,0,none,none
+gn:1174042,Kharian,Punjab,103036,city,0,0,50,0,none,none
+gn:1174062,Kharan,Balochistan,30841,town,0,0,50,0,none,none
+gn:1174074,Karak,Khyber Pakhtunkhwa,13679,town,0,0,50,0,none,none
+gn:1174089,Khar,Khyber Pakhtunkhwa,10000,town,0,0,50,0,none,none
+gn:1174094,Khaplu,Gilgit-Baltistan,0,village,0,0,50,0,none,none
+gn:1174167,Khanpur,Punjab,142426,city,0,0,50,0,none,none
+gn:1174171,Khanpur Mahar,Sindh,22273,town,0,0,50,0,none,none
+gn:1174211,Khangarh,Punjab,19698,town,0,0,50,0,none,none
+gn:1174217,Khangah Dogran,Punjab,34949,town,0,0,50,0,none,none
+gn:1174220,Khanewal,Punjab,0,village,0,0,50,0,none,none
+gn:1174224,Khandowa,Punjab,1200,village,0,0,50,0,none,none
+gn:1174301,Khalabat,Khyber Pakhtunkhwa,39148,town,0,0,50,0,none,none
+gn:1174344,Khairpur Nathan Shah,Sindh,30286,town,0,0,50,0,none,none
+gn:1174355,Khairpur Tamewah,Punjab,30967,town,0,0,50,0,none,none
+gn:1174357,Khairpur,Sindh,40083,town,0,0,50,0,none,none
+gn:1174376,Garhi Khairo,Sindh,193297,city,0,0,50,0,none,none
+gn:1174408,Khadro,Sindh,9997,village,0,0,50,0,none,none
+gn:1174451,Keti Bandar,Sindh,2934,village,0,0,50,0,none,none
+gn:1174456,Keshupur,Punjab,1500,village,0,0,50,0,none,none
+gn:1174515,Kaure Shah Zerin,Punjab,8475,village,0,0,50,0,none,none
+gn:1174625,Kasur,Punjab,510875,large-city,0,0,50,0,none,none
+gn:1174653,Kashmor,Sindh,33732,town,0,0,50,0,none,none
+gn:1174720,Karor,Punjab,25634,town,0,0,50,0,none,none
+gn:1174765,Kario Ghanwar,Sindh,5685,village,0,0,50,0,none,none
+gn:1174815,Karaundi,Sindh,8604,village,0,0,50,0,none,none
+gn:1174872,Karachi,Sindh,11624219,large-city,0,0,50,0,none,none
+gn:1174984,Kanganpur,Punjab,45000,town,0,0,50,0,none,none
+gn:1175010,Kandiaro,Sindh,44382,town,0,0,50,0,none,none
+gn:1175012,Kandiari,Sindh,6861,village,0,0,50,0,none,none
+gn:1175021,Kandhkot,Sindh,99155,town,0,0,50,0,none,none
+gn:1175082,Kamra,Punjab,43779,town,0,0,50,0,none,none
+gn:1175088,Kamoke,Punjab,292023,city,0,0,50,0,none,none
+gn:1175098,Chak One Hundred Twenty Nine Left,Punjab,24053,town,0,0,50,0,none,none
+gn:1175125,Kamar Mushani,Punjab,39013,town,0,0,50,0,none,none
+gn:1175156,Kamalia,Punjab,166617,city,0,0,50,0,none,none
+gn:1175180,Kalur Kot,Punjab,29578,town,0,0,50,0,none,none
+gn:1175232,Kallar Kahar,Punjab,15800,town,0,0,50,0,none,none
+gn:1175283,Kaleke Mandi,Punjab,16361,town,0,0,50,0,none,none
+gn:1175296,Kalat,Balochistan,26701,town,0,0,50,0,none,none
+gn:1175297,Kalaswala,Punjab,12576,town,0,0,50,0,none,none
+gn:1175365,Kalabagh,Punjab,15976,town,0,0,50,0,none,none
+gn:1175436,Kahuta,Punjab,22551,town,0,0,50,0,none,none
+gn:1175446,Kahror Pakka,Punjab,69743,town,0,0,50,0,none,none
+gn:1175453,Kahna Nau,Punjab,79301,town,0,0,50,0,none,none
+gn:1175506,Kadhan,Sindh,6854,village,0,0,50,0,none,none
+gn:1175560,Kabirwala,Punjab,91932,town,0,0,50,0,none,none
+gn:1175678,Johi,Sindh,16311,town,0,0,50,0,none,none
+gn:1175712,Jiwani,Balochistan,25332,town,0,0,50,0,none,none
+gn:1175748,Chak Jhumra,Punjab,385169,city,0,0,50,0,none,none
+gn:1175762,Jhol,Sindh,19363,town,0,0,50,0,none,none
+gn:1175864,Jhelum,Punjab,190425,city,0,0,50,0,none,none
+gn:1175870,Jhawarian,Punjab,27893,town,0,0,50,0,none,none
+gn:1175873,Dera Allahyar,Balochistan,0,village,0,0,50,0,none,none
+gn:1175892,Jhang Sadr,Punjab,606533,large-city,0,0,50,0,none,none
+gn:1176022,Jauharabad,Punjab,113188,city,0,0,50,0,none,none
+gn:1176035,Jatoi Shimali,Punjab,47144,town,0,0,50,0,none,none
+gn:1176048,Jati,Sindh,9152,village,0,0,50,0,none,none
+gn:1176106,Jaranwala,Punjab,150380,city,0,0,50,0,none,none
+gn:1176206,Jandiala Sher Khan,Punjab,10985,town,0,0,50,0,none,none
+gn:1176218,Jand,Punjab,18170,town,0,0,50,0,none,none
+gn:1176229,Jamshoro,Sindh,0,village,0,0,50,0,none,none
+gn:1176233,Jamrud,Khyber Pakhtunkhwa,56642,town,0,0,50,0,none,none
+gn:1176241,Jampur,Punjab,155243,city,0,0,50,0,none,none
+gn:1176261,Jamgah,Punjab,10044,town,0,0,50,0,none,none
+gn:1176358,Jalalpur Pirwala,Punjab,500000,large-city,0,0,50,0,none,none
+gn:1176368,Jalalpur Jattan,Punjab,146743,city,0,0,50,0,none,none
+gn:1176444,Jahanian Shah,Punjab,29095,town,0,0,50,0,none,none
+gn:1176445,Jahanian,Punjab,50318,town,0,0,50,0,none,none
+gn:1176452,Jahangira,Khyber Pakhtunkhwa,57011,town,0,0,50,0,none,none
+gn:1176470,Jaglot,Gilgit-Baltistan,27000,town,0,0,50,0,none,none
+gn:1176515,Jacobabad,Sindh,219315,city,0,0,50,0,none,none
+gn:1176606,Chak One Hundred Fifty-three -Nine Left,Punjab,5348,village,0,0,50,0,none,none
+gn:1176608,Islamkot,Sindh,12426,town,0,0,50,0,none,none
+gn:1176615,Islamabad,Islamabad,601600,large-city,0,0,50,0,none,none
+gn:1176734,Hyderabad,Sindh,1921275,large-city,0,0,50,0,none,none
+gn:1176800,Hujra Shah Muqim,Punjab,76462,town,0,0,50,0,none,none
+gn:1176889,Hingorja,Sindh,22263,town,0,0,50,0,none,none
+gn:1176948,Hazro City,Punjab,26309,town,0,0,50,0,none,none
+gn:1176995,Havelian,Khyber Pakhtunkhwa,37509,town,0,0,50,0,none,none
+gn:1176997,Haveli Lakha,Punjab,122389,city,0,0,50,0,none,none
+gn:1177009,Hattiān Bāla,Azad Kashmir,11880,town,0,0,50,0,none,none
+gn:1177042,Hasilpur,Punjab,168146,city,0,0,50,0,none,none
+gn:1177064,Chak Thirty-one -Eleven Left,Punjab,45665,town,0,0,50,0,none,none
+gn:1177073,Harunabad,Punjab,149679,city,0,0,50,0,none,none
+gn:1177089,Harnoli,Punjab,15669,town,0,0,50,0,none,none
+gn:1177098,Harnai,Balochistan,14277,town,0,0,50,0,none,none
+gn:1177107,Haripur,Khyber Pakhtunkhwa,56977,town,0,0,50,0,none,none
+gn:1177116,Chak One Hundred Forty Nine Left,Punjab,5630,village,0,0,50,0,none,none
+gn:1177169,Harappa,Punjab,23500,town,0,0,50,0,none,none
+gn:1177203,Hangu,Khyber Pakhtunkhwa,36150,town,0,0,50,0,none,none
+gn:1177257,Chak One Hundred Twelve -Nine Left,Punjab,9498,village,0,0,50,0,none,none
+gn:1177278,Hala,Sindh,71094,town,0,0,50,0,none,none
+gn:1177303,Haji Shah,Punjab,18586,town,0,0,50,0,none,none
+gn:1177308,Hajira,Azad Kashmir,28953,town,0,0,50,0,none,none
+gn:1177384,Hafizabad,Punjab,318621,city,0,0,50,0,none,none
+gn:1177397,Hadali,Punjab,49663,town,0,0,50,0,none,none
+gn:1177446,Gwadar,Balochistan,70852,town,0,0,50,0,none,none
+gn:1177494,Chak Sixty-eight-Four Right,Punjab,5589,village,0,0,50,0,none,none
+gn:1177498,Chak One Hundred Thirty-nine Nine Left,Punjab,6354,village,0,0,50,0,none,none
+gn:1177654,Gujrat,Punjab,574240,large-city,0,0,50,0,none,none
+gn:1177662,Gujranwala,Punjab,2511118,large-city,0,0,50,0,none,none
+gn:1177682,Gujar Khan,Punjab,69374,town,0,0,50,0,none,none
+gn:1178231,Gojra,Punjab,214000,city,0,0,50,0,none,none
+gn:1178338,Gilgit,Gilgit-Baltistan,216760,city,0,0,50,0,none,none
+gn:1178456,Ghotki,Sindh,119879,city,0,0,50,0,none,none
+gn:1178560,Ghauspur,Sindh,29767,town,0,0,50,0,none,none
+gn:1178587,Gharo,Sindh,19524,town,0,0,50,0,none,none
+gn:1178841,Garh Maharaja,Punjab,29153,town,0,0,50,0,none,none
+gn:1178843,Garhiyasin,Sindh,14810,town,0,0,50,0,none,none
+gn:1178902,Goth Garelo,Sindh,6853,village,0,0,50,0,none,none
+gn:1179030,Gandava,Balochistan,0,village,0,0,50,0,none,none
+gn:1179038,Gandakha,Balochistan,81190,town,0,0,50,0,none,none
+gn:1179061,Gambat,Sindh,93884,town,0,0,50,0,none,none
+gn:1179082,Gahkuch,Gilgit-Baltistan,10000,town,0,0,50,0,none,none
+gn:1179185,Gadani,Balochistan,17540,town,0,0,50,0,none,none
+gn:1179223,Fort Abbas,Punjab,83192,town,0,0,50,0,none,none
+gn:1179255,Fazilpur,Punjab,28213,town,0,0,50,0,none,none
+gn:1179305,Fatehpur,Punjab,44084,town,0,0,50,0,none,none
+gn:1179331,Fatehjang,Punjab,81321,town,0,0,50,0,none,none
+gn:1179346,Faruka,Punjab,60000,town,0,0,50,0,none,none
+gn:1179370,Goth Faridabad,Sindh,5000,village,0,0,50,0,none,none
+gn:1179377,Faqirwali,Punjab,61586,town,0,0,50,0,none,none
+gn:1179400,Faisalabad,Punjab,3800193,large-city,0,0,50,0,none,none
+gn:1179406,Eminabad,Punjab,150646,city,0,0,50,0,none,none
+gn:1179423,Dursh Khela,Khyber Pakhtunkhwa,31732,town,0,0,50,0,none,none
+gn:1179450,Dunyapur,Punjab,41575,town,0,0,50,0,none,none
+gn:1179463,Dunga Bunga,Punjab,25893,town,0,0,50,0,none,none
+gn:1179496,Dullewala,Punjab,54277,town,0,0,50,0,none,none
+gn:1179515,Duki,Balochistan,6384,village,0,0,50,0,none,none
+gn:1179660,Dokri,Sindh,125000,city,0,0,50,0,none,none
+gn:1179724,Doaba,Khyber Pakhtunkhwa,8893,village,0,0,50,0,none,none
+gn:1179737,Dittewal,Punjab,2500,village,0,0,50,0,none,none
+gn:1179757,Upper Dir,Khyber Pakhtunkhwa,29869,town,0,0,50,0,none,none
+gn:1179758,Diplo,Sindh,11575,town,0,0,50,0,none,none
+gn:1179760,Dipalpur,Punjab,99858,town,0,0,50,0,none,none
+gn:1179762,Dinan Bashnoian Wala,Punjab,7500,village,0,0,50,0,none,none
+gn:1179769,Chak Three Ten Left,Punjab,5596,village,0,0,50,0,none,none
+gn:1179790,Dinga,Punjab,89922,town,0,0,50,0,none,none
+gn:1179834,Dijkot,Punjab,96934,town,0,0,50,0,none,none
+gn:1179837,Digri,Sindh,234578,city,0,0,50,0,none,none
+gn:1179902,Dhoro Naro,Sindh,19907,town,0,0,50,0,none,none
+gn:1180071,Dhaunkal,Punjab,19871,town,0,0,50,0,none,none
+gn:1180133,Dhanot,Punjab,15672,town,0,0,50,0,none,none
+gn:1180281,Dera Ismail Khan,Khyber Pakhtunkhwa,763195,large-city,0,0,50,0,none,none
+gn:1180289,Dera Ghazi Khan,Punjab,494464,city,0,0,50,0,none,none
+gn:1180295,Dera Bugti,Balochistan,18120,town,0,0,50,0,none,none
+gn:1180359,Chak One Hundred Eighty-seven Nine Left,Punjab,7224,village,0,0,50,0,none,none
+gn:1180374,Daur,Sindh,128958,city,0,0,50,0,none,none
+gn:1180379,Daultala,Punjab,11814,town,0,0,50,0,none,none
+gn:1180397,Daulatpur,Sindh,14574,town,0,0,50,0,none,none
+gn:1180419,Daud Khel,Punjab,26395,town,0,0,50,0,none,none
+gn:1180436,Daska Kalan,Punjab,126924,city,0,0,50,0,none,none
+gn:1180453,Darya Khan Marri,Sindh,8973,village,0,0,50,0,none,none
+gn:1180454,Darya Khan,Punjab,68622,town,0,0,50,0,none,none
+gn:1180491,Daromehar,Sindh,10869,town,0,0,50,0,none,none
+gn:1180729,Dalbandin,Balochistan,14621,town,0,0,50,0,none,none
+gn:1180752,Dajal,Punjab,200000,city,0,0,50,0,none,none
+gn:1180757,Daira Din Panah,Punjab,14878,town,0,0,50,0,none,none
+gn:1180787,Daggar,Khyber Pakhtunkhwa,0,village,0,0,50,0,none,none
+gn:1180809,Dadu,Sindh,201017,city,0,0,50,0,none,none
+gn:1180825,Dadhar,Balochistan,17276,town,0,0,50,0,none,none
+gn:1180942,Chunian,Punjab,634236,large-city,0,0,50,0,none,none
+gn:1180983,Chuhar Kana,Punjab,69321,town,0,0,50,0,none,none
+gn:1181022,Chhor,Sindh,21178,town,0,0,50,0,none,none
+gn:1181053,Choa Saidan Shah,Punjab,40000,town,0,0,50,0,none,none
+gn:1181065,Chitral,Khyber Pakhtunkhwa,57157,town,0,0,50,0,none,none
+gn:1181073,Chishtian,Punjab,149939,city,0,0,50,0,none,none
+gn:1181096,Chiniot,Punjab,318165,city,0,0,50,0,none,none
+gn:1181138,Chilas,Gilgit-Baltistan,0,village,0,0,50,0,none,none
+gn:1181163,Chichawatni,Punjab,112191,city,0,0,50,0,none,none
+gn:1181327,Cherat Cantonement,Khyber Pakhtunkhwa,2986,village,0,0,50,0,none,none
+gn:1181352,Chawinda,Punjab,26906,town,0,0,50,0,none,none
+gn:1181439,Charsadda,Khyber Pakhtunkhwa,120170,city,0,0,50,0,none,none
+gn:1181600,Chamber,Sindh,12746,town,0,0,50,0,none,none
+gn:1181611,Chaman,Balochistan,130139,city,0,0,50,0,none,none
+gn:1181636,Chakwal,Punjab,101200,city,0,0,50,0,none,none
+gn:1181887,Chak Azam Sahu,Punjab,38216,town,0,0,50,0,none,none
+gn:1181910,Chak,Sindh,40000,town,0,0,50,0,none,none
+gn:1182092,Burewala,Punjab,361664,city,0,0,50,0,none,none
+gn:1182122,Buni,Khyber Pakhtunkhwa,50000,town,0,0,50,0,none,none
+gn:1182159,Bulri,Sindh,4997,village,0,0,50,0,none,none
+gn:1182295,Bozdar Wada,Sindh,9175,village,0,0,50,0,none,none
+gn:1182577,Bhopalwala,Punjab,17341,town,0,0,50,0,none,none
+gn:1182607,Bhit Shah,Sindh,19325,town,0,0,50,0,none,none
+gn:1182622,Bhiria,Sindh,14370,town,0,0,50,0,none,none
+gn:1182637,Bhimber,Azad Kashmir,27636,town,0,0,50,0,none,none
+gn:1182665,Bhera,Punjab,31781,town,0,0,50,0,none,none
+gn:1182682,Bhawana,Punjab,373841,city,0,0,50,0,none,none
+gn:1182688,Bhaun,Punjab,21711,town,0,0,50,0,none,none
+gn:1182717,Bhata,Punjab,4202,village,0,0,50,0,none,none
+gn:1182775,Bhan,Sindh,16961,town,0,0,50,0,none,none
+gn:1182787,Bhalwal,Punjab,74744,town,0,0,50,0,none,none
+gn:1182815,Bhakkar,Punjab,131658,city,0,0,50,0,none,none
+gn:1182829,Phool Nagar,Punjab,114530,city,0,0,50,0,none,none
+gn:1182872,Bhag,Balochistan,14555,town,0,0,50,0,none,none
+gn:1182953,Berani,Sindh,9975,village,0,0,50,0,none,none
+gn:1182998,Bela,Balochistan,29380,town,0,0,50,0,none,none
+gn:1183018,Begowala,Punjab,9259,village,0,0,50,0,none,none
+gn:1183090,Bat Khela,Khyber Pakhtunkhwa,73525,town,0,0,50,0,none,none
+gn:1183105,Battagram,Khyber Pakhtunkhwa,700000,large-city,0,0,50,0,none,none
+gn:1183212,Basra,Punjab,1029,village,0,0,50,0,none,none
+gn:1183224,Basirpur,Punjab,65541,town,0,0,50,0,none,none
+gn:1183307,Barkhan,Balochistan,8760,village,0,0,50,0,none,none
+gn:1183460,Bannu,Khyber Pakhtunkhwa,1357890,large-city,0,0,50,0,none,none
+gn:1183465,Banian,Punjab,2000,village,0,0,50,0,none,none
+gn:1183511,Bandhi,Sindh,8608,village,0,0,50,0,none,none
+gn:1183592,Chak One Hundred Three Seven Right,Punjab,6540,village,0,0,50,0,none,none
+gn:1183614,Karimabad,Gilgit-Baltistan,16000,town,0,0,50,0,none,none
+gn:1183749,Bakhri Ahmad Khan,Punjab,2000,village,0,0,50,0,none,none
+gn:1183880,Bahawalpur,Punjab,903795,large-city,0,0,50,0,none,none
+gn:1183883,Bahawalnagar,Punjab,241873,city,0,0,50,0,none,none
+gn:1183992,Bāgh,Azad Kashmir,33548,town,0,0,50,0,none,none
+gn:1183994,Bagh,Punjab,16560,town,0,0,50,0,none,none
+gn:1184008,Bagarji,Sindh,8005,village,0,0,50,0,none,none
+gn:1184020,Baffa,Khyber Pakhtunkhwa,17556,town,0,0,50,0,none,none
+gn:1184055,Badin,Sindh,117455,city,0,0,50,0,none,none
+gn:1184075,Baddomalhi,Punjab,19351,town,0,0,50,0,none,none
+gn:1184205,Awaran,Balochistan,0,village,0,0,50,0,none,none
+gn:1184249,Attock City,Punjab,141945,city,0,0,50,0,none,none
+gn:1184370,Arifwala,Punjab,854462,large-city,0,0,50,0,none,none
+gn:1184569,Amangarh,Khyber Pakhtunkhwa,42123,town,0,0,50,0,none,none
+gn:1184626,Alizai,Khyber Pakhtunkhwa,3334,village,0,0,50,0,none,none
+gn:1184644,Alipur,Islamabad,17566,town,0,0,50,0,none,none
+gn:1184655,Alipur,Punjab,33601,town,0,0,50,0,none,none
+gn:1184701,Aliabad,Gilgit-Baltistan,0,village,0,0,50,0,none,none
+gn:1184752,Akora Khattak,Khyber Pakhtunkhwa,29750,town,0,0,50,0,none,none
+gn:1184845,Ahmadpur East,Punjab,196718,city,0,0,50,0,none,none
+gn:1185056,Abbottabad,Khyber Pakhtunkhwa,275890,city,0,0,50,0,none,none
+gn:1330335,Jhang City,Punjab,0,village,0,0,50,0,none,none
+gn:1332083,Bahawalnagar,Punjab,241873,city,0,0,50,0,none,none
+gn:1332174,Chak Seventy-five - Five Right,Punjab,2081,village,0,0,50,0,none,none
+gn:1336754,Shooli Bazar,Balochistan,2219,village,0,0,50,0,none,none
+gn:1339742,Gulishah Kach,Khyber Pakhtunkhwa,1261,village,0,0,50,0,none,none
+gn:1340606,Abdul Khel,Khyber Pakhtunkhwa,12000,town,0,0,50,0,none,none
+gn:1340665,Kamra,Punjab,45738,town,0,0,50,0,none,none
+gn:1341204,Nowshera Cantonment,Khyber Pakhtunkhwa,30599,town,0,0,50,0,none,none
+gn:1346926,Pakistan Employees Cooperative Housing Society,Sindh,19500,town,0,0,50,0,none,none
+gn:1347134,Alik Ghund,Balochistan,7630,village,0,0,50,0,none,none
+gn:1347927,Khadan Khak,Balochistan,6622,village,0,0,50,0,none,none
+gn:1356491,Ahmadpur Sial,Punjab,24889,town,0,0,50,0,none,none
+gn:1357699,New Badah,Sindh,38855,town,0,0,50,0,none,none
+gn:1359673,Kurkali Sindh Pakistan,Sindh,59387,town,0,0,50,0,none,none
+gn:1370858,Dandot RS,Punjab,2000,village,0,0,50,0,none,none
+gn:1380401,Chak Pindi,Punjab,5000,village,0,0,50,0,none,none
+gn:1385128,Musa Banda/Musa khan kallay,Khyber Pakhtunkhwa,18000,town,0,0,50,0,none,none
+gn:1385319,Dregun,Khyber Pakhtunkhwa,1050,village,0,0,50,0,none,none
+gn:1386114,Khai Gala,Azad Kashmir,19119,town,0,0,50,0,none,none
+gn:1386292,Charhoi,Azad Kashmir,7535,village,0,0,50,0,none,none
+gn:1386329,Islamgarh,Azad Kashmir,16651,town,0,0,50,0,none,none
+gn:1387786,Chak Hundred One,Punjab,5469,village,0,0,50,0,none,none
+gn:1387846,Chak One Hundred Thirty-eight Nine Left,Punjab,13089,town,0,0,50,0,none,none
+gn:1387847,Chak One Hundred Forty-two Nine Left,Punjab,6465,village,0,0,50,0,none,none
+gn:1390088,Sarni,Khyber Pakhtunkhwa,1485,village,0,0,50,0,none,none
+gn:1390288,Arbora,Khyber Pakhtunkhwa,8715,village,0,0,50,0,none,none
+gn:1396860,Nao Mian Sahib,Sindh,5000,village,0,0,50,0,none,none
+gn:1397479,Dera Murad Jamali,Balochistan,106952,city,0,0,50,0,none,none
+gn:1403734,Jām Sāhib,Sindh,6869,village,0,0,50,0,none,none
+gn:1410428,Basti Imam Din Nagar,Punjab,2000,village,0,0,50,0,none,none
+gn:1410796,Chowki Jamali,Balochistan,2000,village,0,0,50,0,none,none
+gn:1412008,Setharja Old,Sindh,32651,town,0,0,50,0,none,none
+gn:1412851,Sook Kalan,Punjab,20000,town,0,0,50,0,none,none
+gn:1448637,Risalpur Cantonment,Khyber Pakhtunkhwa,36074,town,0,0,50,0,none,none
+gn:1453226,Noorabad,Khyber Pakhtunkhwa,1100,village,0,0,50,0,none,none
+gn:1482305,Alpurai,Khyber Pakhtunkhwa,0,village,0,0,50,0,none,none
+gn:1482375,Shingli Bala,Khyber Pakhtunkhwa,4000,village,0,0,50,0,none,none
+gn:6457378,Malakwal City,Punjab,35000,town,0,0,50,0,none,none
+gn:6940901,Mehmand Chak,Punjab,5000,village,0,0,50,0,none,none
+gn:6949083,Basti Dosa,Punjab,2000,village,0,0,50,0,none,none
+gn:6949140,Moza Shahwala,Punjab,1200,village,0,0,50,0,none,none
+gn:7046010,Karachi University Employees Co-operative Housing Society,Sindh,41000,town,0,0,50,0,none,none
+gn:7091688,Oghi,Khyber Pakhtunkhwa,21129,town,0,0,50,0,none,none
+gn:7101024,Dayal,Azad Kashmir,19290,town,0,0,50,0,none,none
+gn:7375860,Muhammad Moryal Sahito Jo Goth,Sindh,1500,village,0,0,50,0,none,none
+gn:7419667,Dambudas,Gilgit-Baltistan,0,village,0,0,50,0,none,none
+gn:7423730,Eidghah,Gilgit-Baltistan,0,village,0,0,50,0,none,none
+gn:7427390,Dasu,Khyber Pakhtunkhwa,0,village,0,0,50,0,none,none
+gn:7427939,Barishal,Gilgit-Baltistan,2005,village,0,0,50,0,none,none
+gn:7536245,Athmuqam,Azad Kashmir,0,village,0,0,50,0,none,none
+gn:7649128,Nazir Town,Punjab,6750,village,0,0,50,0,none,none
+gn:8224628,Amirabad,Khyber Pakhtunkhwa,3000,village,0,0,50,0,none,none
+gn:8426446,Kakad Wari Dir Upper,Khyber Pakhtunkhwa,3000,village,0,0,50,0,none,none
+gn:8740226,Chak Eighty Three Twelve L,Punjab,2197,village,0,0,50,0,none,none
+gn:8986037,Dhirkot,Azad Kashmir,195000,city,0,0,50,0,none,none
+gn:8990172,Garhi Dupatta,Azad Kashmir,7931,village,0,0,50,0,none,none
+gn:9030991,Hattian Bala,Azad Kashmir,0,village,0,0,50,0,none,none
+gn:9969716,Taftan,Balochistan,18510,town,0,0,50,0,none,none
+gn:10867126,Fatehpur,Azad Kashmir,6188,village,0,0,50,0,none,none
+gn:10941911,Ashanagro Koto,Khyber Pakhtunkhwa,1275,village,0,0,50,0,none,none
+gn:10944629,Athhmuqam,Azad Kashmir,8000,village,0,0,50,0,none,none
+gn:11027195,Noorabad,Sindh,1100,village,0,0,50,0,none,none
+gn:11124382,Nowshera Kalan,Khyber Pakhtunkhwa,88003,town,0,0,50,0,none,none
+gn:11179544,Daharki,Sindh,90177,town,0,0,50,0,none,none
+gn:11250625,Arif Wala,Balochistan,157063,city,0,0,50,0,none,none
+gn:11467709,Chaksawari,Azad Kashmir,21475,town,0,0,50,0,none,none
+gn:11535259,Alahabad,Punjab,80084,town,0,0,50,0,none,none
+gn:11538943,Chak Sixty-five A Gugera Distributary,Punjab,9401,village,0,0,50,0,none,none
+gn:11539306,Chak One Hundred Thirty-two -Nine Left,Punjab,5167,village,0,0,50,0,none,none
+gn:11539312,Chak One Hundred Four -Nine Left,Punjab,5429,village,0,0,50,0,none,none
+gn:11539315,Chak One Hundred Six -Nine Left,Punjab,5044,village,0,0,50,0,none,none
+gn:11539316,Chak One Hundred Twenty-nine -Nine Left,Punjab,7180,village,0,0,50,0,none,none
+gn:11539345,Chak One Hundred Eight -Nine Left,Punjab,6690,village,0,0,50,0,none,none
+gn:11539348,Chak Ninety-eight -Nine Left,Punjab,9500,village,0,0,50,0,none,none
+gn:11539361,Chak Ninety-nine -Nine Left,Punjab,8105,village,0,0,50,0,none,none
+gn:11539368,Chak One Hundred -Nine Left,Punjab,6081,village,0,0,50,0,none,none
+gn:11539407,Chak Fifty-six -Four Right,Punjab,5480,village,0,0,50,0,none,none
+gn:11539438,Chak One Hundred Ten -Nine Left,Punjab,5706,village,0,0,50,0,none,none
+gn:11539500,Chak Ninety-nine -Six Right,Punjab,5076,village,0,0,50,0,none,none
+gn:11539513,Chak One Hundred Eighteen Nine Left,Punjab,6314,village,0,0,50,0,none,none
+gn:11539519,Chak One Hundred Twenty-one Nine Left,Punjab,5383,village,0,0,50,0,none,none
+gn:11539605,Chak One Hundred Seventeen Nine Left,Punjab,5198,village,0,0,50,0,none,none
+gn:11650784,Chak One Hundred Four Seven Right,Punjab,4765,village,0,0,50,0,none,none
+gn:11650805,Chak One Hundred Eighty-five A Nine Left,Punjab,7743,village,0,0,50,0,none,none
+gn:11650814,Chak One Hundred Ninety Nine A Left,Punjab,8296,village,0,0,50,0,none,none
+gn:11785389,Wah Cantt,Punjab,400733,city,0,0,50,0,none,none
+gn:12225026,Mughalabad,Punjab,5000,village,0,0,50,0,none,none
+gn:12524485,Hub,Balochistan,195661,city,0,0,50,0,none,none
+gn:12747019,Muhammad Pur,Punjab,14018,town,0,0,50,0,none,none
+gn:12747020,Tibbi Jay Singh,Punjab,9559,village,0,0,50,0,none,none
+gn:13607780,Dil Sher Brohi,Sindh,1400,village,0,0,50,0,none,none

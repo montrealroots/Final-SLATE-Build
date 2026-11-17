@@ -1,0 +1,102 @@
+place_id,name,region,population,market,verified_homes,dated_listings,shortfall_to_50,recorded_sales,rent_source,price_source
+gn:3487943,Sherwood Content,Trelawny Parish,1499,village,0,0,50,0,none,none
+gn:3487963,Yallahs,Saint Thomas Parish,7644,village,0,0,50,0,none,none
+gn:3488020,Williamsfield,Manchester,3255,village,0,0,50,0,none,none
+gn:3488037,Whithorn,Westmoreland,4284,village,0,0,50,0,none,none
+gn:3488056,Whitehouse,Westmoreland,3233,village,0,0,50,0,none,none
+gn:3488133,Wakefield,Trelawny Parish,2763,village,0,0,50,0,none,none
+gn:3488180,Ulster Spring,Trelawny Parish,1411,village,0,0,50,0,none,none
+gn:3488217,Trinity Ville,Saint Thomas Parish,2895,village,0,0,50,0,none,none
+gn:3488236,Tower Hill,Saint Andrew Parish,12184,town,0,0,50,0,none,none
+gn:3488380,Stony Hill,Saint Andrew Parish,8551,village,0,0,50,0,none,none
+gn:3488465,Spanish Town,Saint Catherine Parish,145018,city,0,0,50,0,none,none
+gn:3488479,Southfield,St. Elizabeth,2695,village,0,0,50,0,none,none
+gn:3488540,Siloah,St. Elizabeth,2725,village,0,0,50,0,none,none
+gn:3488597,Seaforth,Saint Thomas Parish,4550,village,0,0,50,0,none,none
+gn:3488613,Savanna-la-Mar,Westmoreland,16553,town,0,0,50,0,none,none
+gn:3488620,Santa Cruz,St. Elizabeth,8217,village,0,0,50,0,none,none
+gn:3488635,Sandy Bay,Hanover,4520,village,0,0,50,0,none,none
+gn:3488713,Saint Ann’s Bay,Saint Ann Parish,13671,town,0,0,50,0,none,none
+gn:3488726,Runaway Bay,Saint Ann Parish,12358,town,0,0,50,0,none,none
+gn:3488777,Rocky Point,Clarendon,3152,village,0,0,50,0,none,none
+gn:3488809,Riversdale,Saint Catherine Parish,4085,village,0,0,50,0,none,none
+gn:3488834,Richmond,Saint Mary Parish,2046,village,0,0,50,0,none,none
+gn:3488914,Race Course,Clarendon,2974,village,0,0,50,0,none,none
+gn:3488977,Porus,Manchester,5923,village,0,0,50,0,none,none
+gn:3488980,Port Royal,Kingston,3327,village,0,0,50,0,none,none
+gn:3488981,Portmore,Saint Catherine Parish,102861,city,0,0,50,0,none,none
+gn:3488985,Port Maria,Saint Mary Parish,7906,village,0,0,50,0,none,none
+gn:3489005,Port Antonio,Portland Parish,14400,town,0,0,50,0,none,none
+gn:3489011,Point Hill,Saint Catherine Parish,5344,village,0,0,50,0,none,none
+gn:3489062,Petersfield,Westmoreland,3454,village,0,0,50,0,none,none
+gn:3489193,Orange Bay,Hanover,2546,village,0,0,50,0,none,none
+gn:3489200,Oracabessa,Saint Mary Parish,4100,village,0,0,50,0,none,none
+gn:3489225,Old Harbour Bay,Saint Catherine Parish,7912,village,0,0,50,0,none,none
+gn:3489227,Old Harbour,Saint Catherine Parish,26024,town,0,0,50,0,none,none
+gn:3489239,Ocho Rios,Saint Ann Parish,26503,town,0,0,50,0,none,none
+gn:3489297,New Kingston,Saint Andrew Parish,583958,large-city,0,0,50,0,none,none
+gn:3489331,Negril,Westmoreland,13779,town,0,0,50,0,none,none
+gn:3489344,Nain,St. Elizabeth,2394,village,0,0,50,0,none,none
+gn:3489411,Mountain View Gardens,Saint Andrew Parish,10285,town,0,0,50,0,none,none
+gn:3489440,Morant Bay,Saint Thomas Parish,9368,village,0,0,50,0,none,none
+gn:3489445,Moore Town,Portland Parish,1119,village,0,0,50,0,none,none
+gn:3489460,Montego Bay,Saint James Parish,82867,town,0,0,50,0,none,none
+gn:3489464,Moneague,Saint Ann Parish,3319,village,0,0,50,0,none,none
+gn:3489467,Mona Heights,Saint Andrew Parish,2887,village,0,0,50,0,none,none
+gn:3489523,May Pen,Clarendon,44755,town,0,0,50,0,none,none
+gn:3489531,Mavis Bank,Saint Andrew Parish,1821,village,0,0,50,0,none,none
+gn:3489555,Maroon Town,Saint James Parish,3085,village,0,0,50,0,none,none
+gn:3489577,Mandeville,Manchester,47115,town,0,0,50,0,none,none
+gn:3489582,Manchioneal,Portland Parish,2321,village,0,0,50,0,none,none
+gn:3489603,Malvern,St. Elizabeth,3291,village,0,0,50,0,none,none
+gn:3489633,Maggotty,St. Elizabeth,1371,village,0,0,50,0,none,none
+gn:3489657,Lucea,Hanover,7377,village,0,0,50,0,none,none
+gn:3489714,Lluidas Vale,Saint Catherine Parish,3163,village,0,0,50,0,none,none
+gn:3489741,Little London,Westmoreland,4954,village,0,0,50,0,none,none
+gn:3489758,Lionel Town,Clarendon,5362,village,0,0,50,0,none,none
+gn:3489760,Linstead,Saint Catherine Parish,20660,town,0,0,50,0,none,none
+gn:3489829,Lacovia,St. Elizabeth,2760,village,0,0,50,0,none,none
+gn:3489854,Kingston,Kingston,937700,large-city,0,0,50,0,none,none
+gn:3489888,Kellits,Clarendon,2631,village,0,0,50,0,none,none
+gn:3489962,Islington,Saint Mary Parish,2958,village,0,0,50,0,none,none
+gn:3490031,Hope Bay,Portland Parish,1666,village,0,0,50,0,none,none
+gn:3490106,Hayes,Clarendon,9701,village,0,0,50,0,none,none
+gn:3490165,Half Way Tree,Saint Andrew Parish,18552,town,0,0,50,0,none,none
+gn:3490273,Grange Hill,Westmoreland,10429,town,0,0,50,0,none,none
+gn:3490293,Gordon Town,Saint Andrew Parish,1088,village,0,0,50,0,none,none
+gn:3490318,Golden Grove,Saint Thomas Parish,3058,village,0,0,50,0,none,none
+gn:3490368,Gayle,Saint Mary Parish,3305,village,0,0,50,0,none,none
+gn:3490520,Falmouth,Trelawny Parish,7779,village,0,0,50,0,none,none
+gn:3490539,Ewarton,Saint Catherine Parish,12797,town,0,0,50,0,none,none
+gn:3490616,Easington,Saint Thomas Parish,2634,village,0,0,50,0,none,none
+gn:3490633,Duncans,Trelawny Parish,5153,village,0,0,50,0,none,none
+gn:3490716,Discovery Bay,Saint Ann Parish,8257,village,0,0,50,0,none,none
+gn:3490758,Darliston,Westmoreland,2076,village,0,0,50,0,none,none
+gn:3490768,Dalvey,Saint Thomas Parish,3037,village,0,0,50,0,none,none
+gn:3490880,Constant Spring,Saint Andrew Parish,12830,town,0,0,50,0,none,none
+gn:3490899,Coleyville,Manchester,3860,village,0,0,50,0,none,none
+gn:3490944,Clarks Town,Trelawny Parish,2606,village,0,0,50,0,none,none
+gn:3491007,Chapelton,Clarendon,4514,village,0,0,50,0,none,none
+gn:3491055,Cascade,Hanover,1232,village,0,0,50,0,none,none
+gn:3491102,Cambridge,Saint James Parish,3119,village,0,0,50,0,none,none
+gn:3491161,Bull Savannah,St. Elizabeth,6962,village,0,0,50,0,none,none
+gn:3491175,Buff Bay,Portland Parish,2757,village,0,0,50,0,none,none
+gn:3491293,Bog Walk,Saint Catherine Parish,12873,town,0,0,50,0,none,none
+gn:3491327,Bluefields,Westmoreland,2828,village,0,0,50,0,none,none
+gn:3491355,Black River,St. Elizabeth,4229,village,0,0,50,0,none,none
+gn:3491381,Bethel Town,Westmoreland,2416,village,0,0,50,0,none,none
+gn:3491448,Bath,Saint Thomas Parish,2382,village,0,0,50,0,none,none
+gn:3491465,Barbican,Hanover,10337,town,0,0,50,0,none,none
+gn:3491487,Bamboo,Saint Ann Parish,4264,village,0,0,50,0,none,none
+gn:3491501,Balaclava,St. Elizabeth,2862,village,0,0,50,0,none,none
+gn:3491556,Annotto Bay,Saint Mary Parish,5504,village,0,0,50,0,none,none
+gn:3491570,Anchovy,Saint James Parish,4161,village,0,0,50,0,none,none
+gn:3491586,Alligator Pond,Manchester,1793,village,0,0,50,0,none,none
+gn:3491593,Alexandria,Saint Ann Parish,1927,village,0,0,50,0,none,none
+gn:3491602,Albert Town,Trelawny Parish,3449,village,0,0,50,0,none,none
+gn:6690257,Above Rocks,Saint Catherine Parish,5261,village,0,0,50,0,none,none
+gn:8062858,Limit,Clarendon,2321,village,0,0,50,0,none,none
+gn:9308152,Quickstep,Trelawny Parish,0,village,0,0,50,0,none,none
+gn:10400280,Barrett Town,Saint James Parish,17169,town,0,0,50,0,none,none
+gn:12625467,Penwood,Saint Andrew Parish,11563,town,0,0,50,0,none,none
+gn:12625903,Torrington Park,Saint Andrew Parish,11905,town,0,0,50,0,none,none

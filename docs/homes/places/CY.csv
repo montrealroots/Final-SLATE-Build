@@ -1,0 +1,103 @@
+place_id,name,region,population,market,verified_homes,dated_listings,shortfall_to_50,recorded_sales,rent_source,price_source
+gn:18918,Protaras,Ammochostos,20230,town,0,0,50,0,none,none
+gn:145952,Ýpsonas,Limassol,7348,village,0,0,50,0,none,none
+gn:145955,Aigialoúsa,Ammochostos,1774,village,0,0,50,0,none,none
+gn:145959,Geroskípou (quarter),Pafos,0,village,0,0,50,0,none,none
+gn:145963,Germasógeia,Limassol,17325,town,0,0,50,0,none,none
+gn:145964,Géri,Nicosia,9651,village,0,0,50,0,none,none
+gn:145971,Xylotymbou,Larnaka,3593,village,0,0,50,0,none,none
+gn:145972,Xylofágou,Larnaka,6000,village,0,0,50,0,none,none
+gn:145981,Tséri,Nicosia,5498,village,0,0,50,0,none,none
+gn:145987,Voróklini,Larnaka,3446,village,0,0,50,0,none,none
+gn:146012,Tsáda,Pafos,1043,village,0,0,50,0,none,none
+gn:146015,Troúlloi,Larnaka,1078,village,0,0,50,0,none,none
+gn:146018,Tróodos,Limassol,0,village,0,0,50,0,none,none
+gn:146027,Tríkomo,Ammochostos,4490,village,0,0,50,0,none,none
+gn:146033,Trachóni,,4113,village,0,0,50,0,none,none
+gn:146040,Tersefánou,Larnaka,1018,village,0,0,50,0,none,none
+gn:146045,Tála,Pafos,1655,village,0,0,50,0,none,none
+gn:146054,Stróvolos,Nicosia,67904,town,0,0,50,0,none,none
+gn:146069,Sotíra,Limassol,4444,village,0,0,50,0,none,none
+gn:146105,Rizokárpaso,Ammochostos,5215,village,0,0,50,0,none,none
+gn:146107,Pyrgos,Limassol,1407,village,0,0,50,0,none,none
+gn:146110,Pýla,Larnaka,1434,village,0,0,50,0,none,none
+gn:146112,Psimolofou,Nicosia,1686,village,0,0,50,0,none,none
+gn:146114,Psevdás,Larnaka,1070,village,0,0,50,0,none,none
+gn:146137,Pólis,Pafos,1975,village,0,0,50,0,none,none
+gn:146138,Polémi,Pafos,848,village,0,0,50,0,none,none
+gn:146150,Pissoúri,Limassol,1078,village,0,0,50,0,none,none
+gn:146154,Frénaros,Ammochostos,3450,village,0,0,50,0,none,none
+gn:146175,Pégeia,Pafos,2462,village,0,0,50,0,none,none
+gn:146183,Perivólia,Larnaka,1876,village,0,0,50,0,none,none
+gn:146187,Peristeróna,Nicosia,2190,village,0,0,50,0,none,none
+gn:146189,Pérgamos,Larnaka,15000,town,0,0,50,0,none,none
+gn:146192,Péra,Nicosia,1060,village,0,0,50,0,none,none
+gn:146198,Peléndri,Limassol,1237,village,0,0,50,0,none,none
+gn:146204,Parekklisha,Limassol,1382,village,0,0,50,0,none,none
+gn:146209,Paralímni,Ammochostos,11836,town,0,0,50,0,none,none
+gn:146214,Paphos,Pafos,35961,town,0,0,50,0,none,none
+gn:146216,Páno Polemídia,Limassol,3781,village,0,0,50,0,none,none
+gn:146225,Páno Defterá,Nicosia,1983,village,0,0,50,0,none,none
+gn:146245,Páchna,Limassol,1008,village,0,0,50,0,none,none
+gn:146252,Ormidhia,Larnaka,4189,village,0,0,50,0,none,none
+gn:146268,Nicosia,Nicosia,200452,city,0,0,50,0,none,none
+gn:146278,Mouttagiáka,Limassol,2818,village,0,0,50,0,none,none
+gn:146283,Mosfilotí,Larnaka,1158,village,0,0,50,0,none,none
+gn:146286,Mórfou,Nicosia,24070,town,0,0,50,0,none,none
+gn:146303,Mesógi,Pafos,1689,village,0,0,50,0,none,none
+gn:146311,Meneou,Larnaka,1248,village,0,0,50,0,none,none
+gn:146318,Meládeia,Pafos,20,village,0,0,50,0,none,none
+gn:146347,Mámmari,Nicosia,1122,village,0,0,50,0,none,none
+gn:146358,Lythrodóntas,Nicosia,2736,village,0,0,50,0,none,none
+gn:146362,Lýmpia,Nicosia,2262,village,0,0,50,0,none,none
+gn:146371,Livádia,Larnaka,5329,village,0,0,50,0,none,none
+gn:146375,Liopétri,Ammochostos,4005,village,0,0,50,0,none,none
+gn:146384,Limassol,Limassol,154000,city,0,0,50,0,none,none
+gn:146386,Leonárisso,Ammochostos,1593,village,0,0,50,0,none,none
+gn:146391,Lefkónoiko,Ammochostos,3187,village,0,0,50,0,none,none
+gn:146392,Léfka,Nicosia,7835,village,0,0,50,0,none,none
+gn:146400,Larnaca,Larnaka,72000,town,0,0,50,0,none,none
+gn:146403,Lápithos,Keryneia,5215,village,0,0,50,0,none,none
+gn:146412,Kyrenia,Keryneia,26701,town,0,0,50,0,none,none
+gn:146414,Kyperoúnta,Limassol,1560,village,0,0,50,0,none,none
+gn:146438,Kórnos,Larnaka,1943,village,0,0,50,0,none,none
+gn:146445,Kofínou,Larnaka,1372,village,0,0,50,0,none,none
+gn:146446,Konia,Pafos,2209,village,0,0,50,0,none,none
+gn:146451,Kolossi,Larnaka,6478,village,0,0,50,0,none,none
+gn:146452,Koloni,Pafos,264,village,0,0,50,0,none,none
+gn:146455,Kokkinotrimithiá,Nicosia,4817,village,0,0,50,0,none,none
+gn:146461,Klírou,Nicosia,1623,village,0,0,50,0,none,none
+gn:146469,Kíti,Larnaka,5136,village,0,0,50,0,none,none
+gn:146472,Kissonerga,Pafos,2004,village,0,0,50,0,none,none
+gn:146490,Chlórakas,Pafos,6421,village,0,0,50,0,none,none
+gn:146515,Káto Pýrgos,Nicosia,1170,village,0,0,50,0,none,none
+gn:146516,Káto Polemídia,Limassol,23231,town,0,0,50,0,none,none
+gn:146523,Káto Lakatámeia,Nicosia,40000,town,0,0,50,0,none,none
+gn:146529,Káto Defterá,Nicosia,1706,village,0,0,50,0,none,none
+gn:146573,Kálo Chorió,Larnaka,1534,village,0,0,50,0,none,none
+gn:146582,Kakopetriá,Nicosia,1255,village,0,0,50,0,none,none
+gn:146617,Famagusta,Ammochostos,42526,town,0,0,50,0,none,none
+gn:146619,Aglantziá,Nicosia,21543,town,0,0,50,0,none,none
+gn:146628,Erími,Limassol,1493,village,0,0,50,0,none,none
+gn:146638,Égkomi,Ammochostos,20502,town,0,0,50,0,none,none
+gn:146639,Emba,Pafos,5505,village,0,0,50,0,none,none
+gn:146654,Dhromolaxia,Larnaka,6866,village,0,0,50,0,none,none
+gn:146661,Derýneia,Ammochostos,6229,village,0,0,50,0,none,none
+gn:146666,Dáli,Nicosia,12350,town,0,0,50,0,none,none
+gn:146692,Ágios Týchon,Larnaka,2204,village,0,0,50,0,none,none
+gn:146732,Ágios Dométios,Nicosia,12904,town,0,0,50,0,none,none
+gn:146748,Ayia Napa,Ammochostos,4717,village,0,0,50,0,none,none
+gn:146761,Avgórou,Ammochostos,4921,village,0,0,50,0,none,none
+gn:146767,Áchna,Ammochostos,2043,village,0,0,50,0,none,none
+gn:146768,Athíenou,Larnaka,5202,village,0,0,50,0,none,none
+gn:146770,Astromerítis,Nicosia,2463,village,0,0,50,0,none,none
+gn:146791,Ergátes,Nicosia,1656,village,0,0,50,0,none,none
+gn:146793,Argáka,Pafos,1078,village,0,0,50,0,none,none
+gn:146796,Aradíppou,Larnaka,22934,town,0,0,50,0,none,none
+gn:146797,Aredioú,Nicosia,1129,village,0,0,50,0,none,none
+gn:146834,Alámpra,Nicosia,1192,village,0,0,50,0,none,none
+gn:146842,Acherítou,Ammochostos,1721,village,0,0,50,0,none,none
+gn:146850,Akáki,Nicosia,2769,village,0,0,50,0,none,none
+gn:414384,Méniko,Nicosia,1023,village,0,0,50,0,none,none
+gn:11919534,Geroskipou,Pafos,8355,village,0,0,50,0,none,none
+gn:12060431,Tsada - Tremithousa - Tala (Borders),Pafos,0,village,0,0,50,0,none,none

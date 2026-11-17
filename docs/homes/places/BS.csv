@@ -1,0 +1,38 @@
+place_id,name,region,population,market,verified_homes,dated_listings,shortfall_to_50,recorded_sales,rent_source,price_source
+gn:3571224,West End,West Grand Bahama,12724,town,0,0,50,0,none,none
+gn:3571275,Upper Bogue,North Eleuthera,190,village,0,0,50,0,none,none
+gn:3571375,Spanish Wells,Spanish Wells,1500,village,0,0,50,0,none,none
+gn:3571500,Sandy Point,South Abaco,547,village,0,0,50,0,none,none
+gn:3571523,San Andros,North Andros,7800,village,0,0,50,0,none,none
+gn:3571650,Port Nelson,Rum Cay,91,village,0,0,50,0,none,none
+gn:3571824,Nassau,New Providence,227940,city,0,0,50,0,none,none
+gn:3571898,Matthew Town,Inagua,452,village,0,0,50,0,none,none
+gn:3571908,Masons Bay,Acklins,0,village,0,0,50,0,none,none
+gn:3571913,Marsh Harbour,Central Abaco,5314,village,0,0,50,0,none,none
+gn:3571944,Mangrove Cay,Mangrove Cay,0,village,0,0,50,0,none,none
+gn:3571971,Lucaya,Freeport,46525,town,0,0,50,0,none,none
+gn:3572106,Killarney,New Providence,17679,town,0,0,50,0,none,none
+gn:3572110,Kemps Bay,South Andros,273,village,0,0,50,0,none,none
+gn:3572165,Hope Town,Hope Town,458,village,0,0,50,0,none,none
+gn:3572189,High Rock,East Grand Bahama,3744,village,0,0,50,0,none,none
+gn:3572233,Hard Bargain,Moore’s Island,0,village,0,0,50,0,none,none
+gn:3572313,Governor’s Harbour,Central Eleuthera,0,village,0,0,50,0,none,none
+gn:3572349,George Town,Exuma,7314,village,0,0,50,0,none,none
+gn:3572375,Freeport,Freeport,26910,town,0,0,50,0,none,none
+gn:3572443,Eight Mile Rock,West Grand Bahama,9640,village,0,0,50,0,none,none
+gn:3572462,Dunmore Town,Harbour Island,1726,village,0,0,50,0,none,none
+gn:3572467,Duncan Town,Ragged Island,70,village,0,0,50,0,none,none
+gn:3572601,Cooper’s Town,North Abaco,8413,village,0,0,50,0,none,none
+gn:3572620,Colonel Hill,Crooked Island and Long Cay,240,village,0,0,50,0,none,none
+gn:3572627,Cockburn Town,San Salvador,831,village,0,0,50,0,none,none
+gn:3572640,Clarence Town,Long Island,1752,village,0,0,50,0,none,none
+gn:3572716,Bullocks Harbour,Berry Islands,342,village,0,0,50,0,none,none
+gn:3572796,Black Point,Black Point,414,village,0,0,50,0,none,none
+gn:3572897,Arthur’s Town,Cat Island,1175,village,0,0,50,0,none,none
+gn:3572906,Andros Town,North Andros,2455,village,0,0,50,0,none,none
+gn:3572924,Alice Town,Bimini,949,village,0,0,50,0,none,none
+gn:3572940,Abraham’s Bay,Mayaguana,235,village,0,0,50,0,none,none
+gn:7535668,Treasure Cay,North Abaco,1187,village,0,0,50,0,none,none
+gn:10793775,Freetown,South Eleuthera,3137,village,0,0,50,0,none,none
+gn:11694815,Grand Cay,Grand Cay,383,village,0,0,50,0,none,none
+gn:13713125,Rock Sound,South Eleuthera,961,village,0,0,50,0,none,none

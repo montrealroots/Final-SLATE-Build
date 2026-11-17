@@ -1,0 +1,132 @@
+place_id,name,region,population,market,verified_homes,dated_listings,shortfall_to_50,recorded_sales,rent_source,price_source
+gn:453754,Valmiera,Valmiera,22812,town,0,0,50,0,none,none
+gn:453850,Zilupe,Ludza Municipality,1897,village,0,0,50,0,none,none
+gn:453922,Zelmeņi,Dobele Municipality,0,village,0,0,50,0,none,none
+gn:454130,Viļaka,Balvi Municipality,1139,village,0,0,50,0,none,none
+gn:454173,Vilce,Jelgava Municipality,1455,village,0,0,50,0,none,none
+gn:454178,Viļāni,Rēzekne Municipality,2696,village,0,0,50,0,none,none
+gn:454216,Viesīte,Jēkabpils Municipality,1473,village,0,0,50,0,none,none
+gn:454273,Vecumnieki,Bauska Municipality,2103,village,0,0,50,0,none,none
+gn:454310,Ventspils,Ventspils,32723,town,0,0,50,0,none,none
+gn:454408,Vecpiebalga,Cēsis Municipality,596,village,0,0,50,0,none,none
+gn:454530,Varakļāni,Varakļāni Municipality,1619,village,0,0,50,0,none,none
+gn:454537,Vangaži,Ropaži Municipality,3192,village,0,0,50,0,none,none
+gn:454572,Valka,Valka,4615,village,0,0,50,0,none,none
+gn:454584,Valdemārpils,Talsu novads,1135,village,0,0,50,0,none,none
+gn:454602,Vaiņode,South Kurzeme Municipality,0,village,0,0,50,0,none,none
+gn:454714,Ulbroka,Ropaži Municipality,5893,village,0,0,50,0,none,none
+gn:454722,Ugāle,Ventspils Municipality,1500,village,0,0,50,0,none,none
+gn:454768,Tukums,Tukums Municipality,16182,town,0,0,50,0,none,none
+gn:454848,Tīreļi,Jelgava Municipality,2103,village,0,0,50,0,none,none
+gn:454910,Tērvete,Dobele Municipality,3273,village,0,0,50,0,none,none
+gn:454970,Talsi,Talsu novads,8673,village,0,0,50,0,none,none
+gn:455166,Strenči,Valmiera,973,village,0,0,50,0,none,none
+gn:455260,Stende,Talsu novads,1532,village,0,0,50,0,none,none
+gn:455293,Stalbe,Cēsis Municipality,0,village,0,0,50,0,none,none
+gn:455406,Smiltene,Smiltene Municipality,5073,village,0,0,50,0,none,none
+gn:455427,Smārde,Tukums Municipality,734,village,0,0,50,0,none,none
+gn:455520,Skrunda,Kuldīga Municipality,1767,village,0,0,50,0,none,none
+gn:455523,Skrīveri,Aizkraukle Municipality,2424,village,0,0,50,0,none,none
+gn:455718,Sigulda,Sigulda Municipality,14757,town,0,0,50,0,none,none
+gn:455786,Seda,Valmiera,1092,village,0,0,50,0,none,none
+gn:455812,Saulkrasti,Saulkrasti Municipality,3124,village,0,0,50,0,none,none
+gn:455890,Saldus,Saldus Rajons,9553,village,0,0,50,0,none,none
+gn:455898,Salaspils,Salaspils Municipality,17826,town,0,0,50,0,none,none
+gn:455910,Salacgrīva,Limbaži Municipality,2480,village,0,0,50,0,none,none
+gn:455915,Sala,Jēkabpils Municipality,0,village,0,0,50,0,none,none
+gn:455937,Sabile,Talsu novads,1369,village,0,0,50,0,none,none
+gn:456008,Rūjiena,Valmiera,2633,village,0,0,50,0,none,none
+gn:456050,Rucava,South Kurzeme Municipality,495,village,0,0,50,0,none,none
+gn:456089,Garkalne,Ropaži Municipality,0,village,0,0,50,0,none,none
+gn:456107,Roja,Talsu novads,1800,village,0,0,50,0,none,none
+gn:456172,Riga,Riga,742572,large-city,0,0,50,0,none,none
+gn:456185,Riebiņi,Preiļu novads,0,village,0,0,50,0,none,none
+gn:456202,Rēzekne,Rēzekne,26429,town,0,0,50,0,none,none
+gn:456272,Rauna,Smiltene Municipality,0,village,0,0,50,0,none,none
+gn:456341,Ragana,Sigulda Municipality,0,village,0,0,50,0,none,none
+gn:456503,Priekuļi,Cēsis Municipality,2136,village,0,0,50,0,none,none
+gn:456506,Priekule,South Kurzeme Municipality,1843,village,0,0,50,0,none,none
+gn:456530,Preiļi,Preiļu novads,9553,village,0,0,50,0,none,none
+gn:456635,Pļaviņas,Aizkraukle Municipality,2864,village,0,0,50,0,none,none
+gn:456685,Piņķi,Mārupe,3033,village,0,0,50,0,none,none
+gn:456827,Pāvilosta,South Kurzeme Municipality,858,village,0,0,50,0,none,none
+gn:456954,Ozolnieki,Jelgava Municipality,3400,village,0,0,50,0,none,none
+gn:457052,Olaine,Olaine,9654,village,0,0,50,0,none,none
+gn:457065,Ogre,Ogre,22767,town,0,0,50,0,none,none
+gn:457142,Nīca,South Kurzeme Municipality,3113,village,0,0,50,0,none,none
+gn:457148,Nereta,Aizkraukle Municipality,1282,village,0,0,50,0,none,none
+gn:457161,Naukšēni,Valmiera,0,village,0,0,50,0,none,none
+gn:457211,Mūrmuiža,Valmiera,0,village,0,0,50,0,none,none
+gn:457388,Mežaparks,Riga,4457,village,0,0,50,0,none,none
+gn:457408,Mērsrags,Talsu novads,1860,village,0,0,50,0,none,none
+gn:457533,Mazsalaca,Valmiera,1092,village,0,0,50,0,none,none
+gn:457615,Matīši,Valmiera,0,village,0,0,50,0,none,none
+gn:457714,Madona,Madonas novads,6575,village,0,0,50,0,none,none
+gn:457776,Ludza,Ludza Municipality,7332,village,0,0,50,0,none,none
+gn:457799,Lubāna,Madonas novads,1918,village,0,0,50,0,none,none
+gn:457860,Līvāni,Līvāni,6790,village,0,0,50,0,none,none
+gn:457890,Limbaži,Limbaži Municipality,6517,village,0,0,50,0,none,none
+gn:457912,Līgatne,Cēsis Municipality,1017,village,0,0,50,0,none,none
+gn:457915,Liezēre,Madonas novads,1041,village,0,0,50,0,none,none
+gn:457954,Liepāja,Liepaja,67421,town,0,0,50,0,none,none
+gn:457965,Lielvārde,Ogre,5873,village,0,0,50,0,none,none
+gn:458065,Lieģi,South Kurzeme Municipality,0,village,0,0,50,0,none,none
+gn:458460,Kuldīga,Kuldīga Municipality,9863,village,0,0,50,0,none,none
+gn:458511,Krustpils,Jēkabpils Municipality,6680,village,0,0,50,0,none,none
+gn:458623,Krāslava,Krāslava Municipality,6797,village,0,0,50,0,none,none
+gn:458687,Koknese,Aizkraukle Municipality,2906,village,0,0,50,0,none,none
+gn:458695,Kocēni,Valmiera,0,village,0,0,50,0,none,none
+gn:458880,Ķekava,Ķekava,5446,village,0,0,50,0,none,none
+gn:458892,Ķegums,Ogre,2065,village,0,0,50,0,none,none
+gn:458972,Kārsava,Ludza Municipality,5127,village,0,0,50,0,none,none
+gn:458995,Karosta,Liepaja,7500,village,0,0,50,0,none,none
+gn:459031,Kandava,Tukums Municipality,3232,village,0,0,50,0,none,none
+gn:459102,Kalnciems,Jelgava Municipality,2548,village,0,0,50,0,none,none
+gn:459201,Jūrmala,Jūrmala,52001,town,0,0,50,0,none,none
+gn:459220,Jumprava,Ogre,2177,village,0,0,50,0,none,none
+gn:459279,Jelgava,Jelgava,54834,town,0,0,50,0,none,none
+gn:459283,Jēkabpils,Jēkabpils Municipality,21014,town,0,0,50,0,none,none
+gn:459357,Jaunpils,Tukums Municipality,1029,village,0,0,50,0,none,none
+gn:459379,Jaunmārupe,Mārupe,3419,village,0,0,50,0,none,none
+gn:459402,Jaunjelgava,Aizkraukle Municipality,1938,village,0,0,50,0,none,none
+gn:459419,Jaunciems,Riga,2339,village,0,0,50,0,none,none
+gn:459448,Jaunaglona,Preiļu novads,1053,village,0,0,50,0,none,none
+gn:459563,Inčukalns,Sigulda Municipality,2028,village,0,0,50,0,none,none
+gn:459586,Ilūkste,Augšdaugava Municipality,2036,village,0,0,50,0,none,none
+gn:459598,Ikšķile,Ogre,7448,village,0,0,50,0,none,none
+gn:459624,Iecava,Bauska Municipality,4000,village,0,0,50,0,none,none
+gn:459668,Gulbene,Gulbene Municipality,6722,village,0,0,50,0,none,none
+gn:459692,Grobiņa,South Kurzeme Municipality,3674,village,0,0,50,0,none,none
+gn:459908,Mežciems,Riga,14409,town,0,0,50,0,none,none
+gn:460001,Ērgļi,Madonas novads,2186,village,0,0,50,0,none,none
+gn:460019,Engure,Tukums Municipality,1600,village,0,0,50,0,none,none
+gn:460187,Dundaga,Talsu novads,1682,village,0,0,50,0,none,none
+gn:460274,Dreiliņi,Riga,7125,village,0,0,50,0,none,none
+gn:460285,Drabeši,Cēsis Municipality,2323,village,0,0,50,0,none,none
+gn:460312,Dobele,Dobele Municipality,8536,village,0,0,50,0,none,none
+gn:460413,Daugavpils,Daugavpils,78126,town,0,0,50,0,none,none
+gn:460416,Daugavgrīva,Riga,9952,village,0,0,50,0,none,none
+gn:460474,Dagda,Krāslava Municipality,1773,village,0,0,50,0,none,none
+gn:460557,Čiekurkalns,Riga,7764,village,0,0,50,0,none,none
+gn:460568,Cesvaine,Madonas novads,1210,village,0,0,50,0,none,none
+gn:460570,Cēsis,Cēsis Municipality,15020,town,0,0,50,0,none,none
+gn:460786,Brocēni,Saldus Rajons,2834,village,0,0,50,0,none,none
+gn:460885,Bolderaja,Riga,14771,town,0,0,50,0,none,none
+gn:461064,Berģi,Riga,2950,village,0,0,50,0,none,none
+gn:461114,Bauska,Bauska Municipality,9709,village,0,0,50,0,none,none
+gn:461163,Balvi,Balvi Municipality,5652,village,0,0,50,0,none,none
+gn:461224,Baldone,Ķekava,3664,village,0,0,50,0,none,none
+gn:461336,Auce,Dobele Municipality,2154,village,0,0,50,0,none,none
+gn:461442,Ape,Smiltene Municipality,773,village,0,0,50,0,none,none
+gn:461528,Alūksne,Alūksne Municipality,6188,village,0,0,50,0,none,none
+gn:461534,Alsunga,Kuldīga Municipality,940,village,0,0,50,0,none,none
+gn:461539,Aloja,Limbaži Municipality,4520,village,0,0,50,0,none,none
+gn:461566,Aknīste,Jēkabpils Municipality,2546,village,0,0,50,0,none,none
+gn:461602,Aizpute,South Kurzeme Municipality,8083,village,0,0,50,0,none,none
+gn:461615,Aizkraukle,Aizkraukle Municipality,6689,village,0,0,50,0,none,none
+gn:461628,Ainaži,Limbaži Municipality,1278,village,0,0,50,0,none,none
+gn:461650,Ādaži,Ādaži,6734,village,0,0,50,0,none,none
+gn:864721,Baloži,Ķekava,6780,village,0,0,50,0,none,none
+gn:864723,Mārupe,Mārupe,19096,town,0,0,50,0,none,none
+gn:6615326,Vecrīga,Riga,2140,village,0,0,50,0,none,none
+gn:13192644,Dārzciems,Riga,17599,town,0,0,50,0,none,none

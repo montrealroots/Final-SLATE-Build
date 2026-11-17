@@ -1,0 +1,110 @@
+place_id,name,region,population,market,verified_homes,dated_listings,shortfall_to_50,recorded_sales,rent_source,price_source
+gn:3716044,Verrettes,Artibonite,48724,town,0,0,50,0,none,none
+gn:3716224,Trou du Nord,Nord-Est,10569,town,0,0,50,0,none,none
+gn:3716403,Torbeck,Sud,1918,village,0,0,50,0,none,none
+gn:3716619,Tiburon,Sud,3054,village,0,0,50,0,none,none
+gn:3716663,Thomonde,Centre,3696,village,0,0,50,0,none,none
+gn:3716667,Thomazeau,Ouest,52017,town,0,0,50,0,none,none
+gn:3716669,Thomassique,Centre,4857,village,0,0,50,0,none,none
+gn:3716679,Thiotte,Sud-Est,2461,village,0,0,50,0,none,none
+gn:3716737,Terrier Rouge,Nord-Est,21328,town,0,0,50,0,none,none
+gn:3716980,Sources Chaudes,Grand'Anse,5544,village,0,0,50,0,none,none
+gn:3717546,Saint-Raphaël,Nord,37739,town,0,0,50,0,none,none
+gn:3717560,Saint-Michel de l'Atalaye,Artibonite,95216,town,0,0,50,0,none,none
+gn:3717588,Saint-Marc,Artibonite,266642,city,0,0,50,0,none,none
+gn:3717596,Saint-Louis du Sud,Sud,1528,village,0,0,50,0,none,none
+gn:3717600,Saint-Louis du Nord,Nord-Ouest,11849,town,0,0,50,0,none,none
+gn:3717916,Roche-à-Bateau,Sud,1662,village,0,0,50,0,none,none
+gn:3718199,Ranquitte,Nord,1391,village,0,0,50,0,none,none
+gn:3718278,Quartier Morin,Nord,1299,village,0,0,50,0,none,none
+gn:3718411,Port-Margot,Nord,3070,village,0,0,50,0,none,none
+gn:3718420,Port-de-Paix,Nord-Ouest,306217,city,0,0,50,0,none,none
+gn:3718426,Port-au-Prince,Ouest,1234742,large-city,0,0,50,0,none,none
+gn:3718431,Port-à-Piment,Sud,3819,village,0,0,50,0,none,none
+gn:3718666,Plaisance,Nord,4152,village,0,0,50,0,none,none
+gn:3718707,Plaine du Nord,Nord,2492,village,0,0,50,0,none,none
+gn:3718826,Pilate,Nord,4227,village,0,0,50,0,none,none
+gn:3718834,Pignon,Nord,6731,village,0,0,50,0,none,none
+gn:3718924,Phaëton,Nord-Est,2297,village,0,0,50,0,none,none
+gn:3718938,Petit Trou de Nippes,Nippes,2130,village,0,0,50,0,none,none
+gn:3718962,Tigwav,Ouest,117504,city,0,0,50,0,none,none
+gn:3718975,Petite Rivière de Nippes,Nippes,1794,village,0,0,50,0,none,none
+gn:3719008,Petite Anse,Nord-Ouest,1539,village,0,0,50,0,none,none
+gn:3719028,Pétionville,Ouest,376834,city,0,0,50,0,none,none
+gn:3719099,Perches,Nord-Est,1889,village,0,0,50,0,none,none
+gn:3719436,Ouanaminthe,Nord-Est,10118,town,0,0,50,0,none,none
+gn:3720455,Moron,Grand'Anse,1830,village,0,0,50,0,none,none
+gn:3720667,Montòrganize,Nord-Est,2104,village,0,0,50,0,none,none
+gn:3720765,Môle Saint-Nicolas,Nord-Ouest,3224,village,0,0,50,0,none,none
+gn:3720811,Mirebalais,Centre,9082,village,0,0,50,0,none,none
+gn:3720824,Miragoâne,Nippes,89202,town,0,0,50,0,none,none
+gn:3720854,Milot,Nord,5534,village,0,0,50,0,none,none
+gn:3721280,Marmelade,Artibonite,2184,village,0,0,50,0,none,none
+gn:3721313,Marigot,Sud-Est,1698,village,0,0,50,0,none,none
+gn:3721711,Mayisad,Centre,5204,village,0,0,50,0,none,none
+gn:3722110,Limonade,Nord,3810,village,0,0,50,0,none,none
+gn:3722124,Lenbe,Nord,32645,town,0,0,50,0,none,none
+gn:3722239,Les Irois,Grand'Anse,2265,village,0,0,50,0,none,none
+gn:3722253,Les Anglais,Sud,8247,village,0,0,50,0,none,none
+gn:3722286,Léogâne,Ouest,134190,city,0,0,50,0,none,none
+gn:3722339,Borgne,Nord,4288,village,0,0,50,0,none,none
+gn:3722579,Lascahobas,Centre,7574,village,0,0,50,0,none,none
+gn:3723440,Kenscoff,Ouest,42175,town,0,0,50,0,none,none
+gn:3723593,Jérémie,Grand'Anse,97503,town,0,0,50,0,none,none
+gn:3723618,Jean-Rabel,Nord-Ouest,5419,village,0,0,50,0,none,none
+gn:3723779,Jacmel,Sud-Est,137966,city,0,0,50,0,none,none
+gn:3723841,Hinche,Centre,18590,town,0,0,50,0,none,none
+gn:3724145,Gros Morne,Artibonite,7294,village,0,0,50,0,none,none
+gn:3724233,Gressier,Ouest,25947,town,0,0,50,0,none,none
+gn:3724331,Grand Gosier,Sud-Est,17059,town,0,0,50,0,none,none
+gn:3724337,Grangwav,Ouest,49288,town,0,0,50,0,none,none
+gn:3724432,Grande Saline,Artibonite,1787,village,0,0,50,0,none,none
+gn:3724439,Grande Rivière du Nord,Nord,8836,village,0,0,50,0,none,none
+gn:3724696,Gonaïves,Artibonite,84961,town,0,0,50,0,none,none
+gn:3725170,Fort Liberté,Nord-Est,11465,town,0,0,50,0,none,none
+gn:3725222,Fonds Verrettes,Ouest,2789,village,0,0,50,0,none,none
+gn:3725276,Fond Parisien,Ouest,18256,town,0,0,50,0,none,none
+gn:3725364,Fond des Blancs,Sud,2653,village,0,0,50,0,none,none
+gn:3725416,Fond Bassin Bleu,Nord-Ouest,1184,village,0,0,50,0,none,none
+gn:3725519,Ferrier,Nord-Est,3804,village,0,0,50,0,none,none
+gn:3725663,Ennery,Artibonite,1511,village,0,0,50,0,none,none
+gn:3726263,Dondon,Nord,5029,village,0,0,50,0,none,none
+gn:3726540,Dessalines,Artibonite,181903,city,0,0,50,0,none,none
+gn:3726674,Désarmes,Artibonite,15594,town,0,0,50,0,none,none
+gn:3726728,Dérac,Nord-Est,1855,village,0,0,50,0,none,none
+gn:3726786,Delmas,Ouest,395260,city,0,0,50,0,none,none
+gn:3727055,Dame-Marie,Grand'Anse,6036,village,0,0,50,0,none,none
+gn:3727135,Croix-des-Bouquets,Ouest,229127,city,0,0,50,0,none,none
+gn:3727287,Kotdefè,Sud-Est,2393,village,0,0,50,0,none,none
+gn:3727297,Koto,Sud,2065,village,0,0,50,0,none,none
+gn:3727327,Cornillon,Ouest,7572,village,0,0,50,0,none,none
+gn:3727398,Corail,Grand'Anse,2782,village,0,0,50,0,none,none
+gn:3727902,Chardonnière,Sud,3930,village,0,0,50,0,none,none
+gn:3727944,Chantal,Sud,1848,village,0,0,50,0,none,none
+gn:3727984,Chambellan,Grand'Anse,1397,village,0,0,50,0,none,none
+gn:3728054,Cerca la Source,Centre,2792,village,0,0,50,0,none,none
+gn:3728093,Cayes-Jacmel,Sud-Est,1609,village,0,0,50,0,none,none
+gn:3728097,Les Cayes,Sud,125799,city,0,0,50,0,none,none
+gn:3728122,Cavaillon,Sud,1023,village,0,0,50,0,none,none
+gn:3728386,Carice,Nord-Est,2104,village,0,0,50,0,none,none
+gn:3728428,Caracol,Nord-Est,1549,village,0,0,50,0,none,none
+gn:3728474,Cap-Haïtien,Nord,134815,city,0,0,50,0,none,none
+gn:3728964,Cabaret,Ouest,3951,village,0,0,50,0,none,none
+gn:3729548,Bombardopolis,Nord-Ouest,1974,village,0,0,50,0,none,none
+gn:3730363,Belle-Anse,Sud-Est,2611,village,0,0,50,0,none,none
+gn:3730800,Baradères,Nippes,1666,village,0,0,50,0,none,none
+gn:3730932,Baie de Henne,Nord-Ouest,1660,village,0,0,50,0,none,none
+gn:3730937,Bahon,Nord,1618,village,0,0,50,0,none,none
+gn:3731087,Arcahaie,Nord-Ouest,4119,village,0,0,50,0,none,none
+gn:3731088,Arcahaie,Ouest,130306,city,0,0,50,0,none,none
+gn:3731095,Aquin,Sud,5246,village,0,0,50,0,none,none
+gn:3731105,Anse Rouge,Artibonite,4437,village,0,0,50,0,none,none
+gn:3731123,Anse-à-Veau,Grand'Anse,1731,village,0,0,50,0,none,none
+gn:3731126,Anse-à-Pitre,Sud-Est,1736,village,0,0,50,0,none,none
+gn:3731132,Anse à Galets,Ouest,7178,village,0,0,50,0,none,none
+gn:3731233,Acul du Nord,Nord,3454,village,0,0,50,0,none,none
+gn:3731257,Les Abricots,Grand'Anse,1245,village,0,0,50,0,none,none
+gn:3740007,Cité Soleil,Ouest,265072,city,0,0,50,0,none,none
+gn:3740016,Ti Port-de-Paix,Nord-Ouest,34657,town,0,0,50,0,none,none
+gn:6201369,Carrefour,Ouest,511345,large-city,0,0,50,0,none,none
+gn:12558105,Sassier,Grand'Anse,10000,town,0,0,50,0,none,none

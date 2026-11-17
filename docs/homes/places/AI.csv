@@ -1,0 +1,15 @@
+place_id,name,region,population,market,verified_homes,dated_listings,shortfall_to_50,recorded_sales,rent_source,price_source
+gn:3573364,West End Village,West End,0,village,0,0,50,0,none,none
+gn:3573374,The Valley,The Valley,2035,village,0,0,50,0,none,none
+gn:3573375,The Quarter,The Quarter,0,village,0,0,50,0,none,none
+gn:3573378,Farrington,The Farrington,0,village,0,0,50,0,none,none
+gn:3573380,Stoney Ground,Stoney Ground,0,village,0,0,50,0,none,none
+gn:3573385,South Hill Village,South Hill,0,village,0,0,50,0,none,none
+gn:3573407,Sandy Ground Village,Sandy Ground,274,village,0,0,50,0,none,none
+gn:3573418,North Side,North Side,0,village,0,0,50,0,none,none
+gn:3573420,North Hill Village,North Hill,0,village,0,0,50,0,none,none
+gn:3573456,Island Harbour,Island Harbour,0,village,0,0,50,0,none,none
+gn:3573466,George Hill,George Hill,0,village,0,0,50,0,none,none
+gn:3573473,East End Village,East End,671,village,0,0,50,0,none,none
+gn:3573496,Blowing Point Village,Blowing Point,942,village,0,0,50,0,none,none
+gn:11205445,Sandy Hill,Sandy Hill,636,village,0,0,50,0,none,none

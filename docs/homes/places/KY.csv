@@ -1,0 +1,68 @@
+place_id,name,region,population,market,verified_homes,dated_listings,shortfall_to_50,recorded_sales,rent_source,price_source
+gn:3580471,Whitehall Estates,,10768,town,0,0,50,0,none,none
+gn:3580477,West Bay,West Bay,15335,town,0,0,50,0,none,none
+gn:3580483,Watering Place,,1222,village,0,0,50,0,none,none
+gn:3580484,Water Ground,,3920,village,0,0,50,0,none,none
+gn:3580488,Vicksville,,3831,village,0,0,50,0,none,none
+gn:3580489,Upper Land,,5195,village,0,0,50,0,none,none
+gn:3580490,Tropical Gardens,,7534,village,0,0,50,0,none,none
+gn:3580491,Town Hall Crescent,,3479,village,0,0,50,0,none,none
+gn:3580494,Tibbetts Turn,,1306,village,0,0,50,0,none,none
+gn:3580495,The Mountain,,12028,town,0,0,50,0,none,none
+gn:3580497,The Moorings,Sister Island,1306,village,0,0,50,0,none,none
+gn:3580498,The Common,,3920,village,0,0,50,0,none,none
+gn:3580506,Spotts,,7609,village,0,0,50,0,none,none
+gn:3580528,Savannah Acres,,9409,village,0,0,50,0,none,none
+gn:3580529,Savannah,,8735,village,0,0,50,0,none,none
+gn:3580533,Sand Bluff,,4446,village,0,0,50,0,none,none
+gn:3580540,Saint James,,8735,village,0,0,50,0,none,none
+gn:3580545,Rock Hole,,6763,village,0,0,50,0,none,none
+gn:3580547,Red Bay Estate,,7534,village,0,0,50,0,none,none
+gn:3580551,Prospect Park,,7933,village,0,0,50,0,none,none
+gn:3580553,Prospect,,6912,village,0,0,50,0,none,none
+gn:3580556,Pedro,,10394,town,0,0,50,0,none,none
+gn:3580557,Pease Bay,,8558,village,0,0,50,0,none,none
+gn:3580562,Omega Gardens,,8589,village,0,0,50,0,none,none
+gn:3580563,Old Stores,,3008,village,0,0,50,0,none,none
+gn:3580566,Old Man Bay,,9682,village,0,0,50,0,none,none
+gn:3580571,North Ward,,10394,town,0,0,50,0,none,none
+gn:3580572,North Sound Estates,,11249,town,0,0,50,0,none,none
+gn:3580575,North Side,North Side,1902,village,0,0,50,0,none,none
+gn:3580580,Newlands,,9409,village,0,0,50,0,none,none
+gn:3580583,Mount Pleasant,,3920,village,0,0,50,0,none,none
+gn:3580587,Molusca Heights,,1306,village,0,0,50,0,none,none
+gn:3580590,Midland Acres,,12410,town,0,0,50,0,none,none
+gn:3580601,Lower Valley,,10125,town,0,0,50,0,none,none
+gn:3580633,Hutland,,9959,village,0,0,50,0,none,none
+gn:3580636,High Rock Estates,,5500,village,0,0,50,0,none,none
+gn:3580637,High Rock,,5500,village,0,0,50,0,none,none
+gn:3580639,Hell,,2068,village,0,0,50,0,none,none
+gn:3580645,Half Way Pond,,5927,village,0,0,50,0,none,none
+gn:3580646,Half Way Ground,,1153,village,0,0,50,0,none,none
+gn:3580647,Half Moon Bay,,6408,village,0,0,50,0,none,none
+gn:3580650,Gun Bay,,6483,village,0,0,50,0,none,none
+gn:3580661,George Town,George Town,29370,town,0,0,50,0,none,none
+gn:3580662,Further Ground,,12028,town,0,0,50,0,none,none
+gn:3580666,Frank Sound,,11007,town,0,0,50,0,none,none
+gn:3580678,East End,East End,1846,village,0,0,50,0,none,none
+gn:3580679,Dusty Place,,3920,village,0,0,50,0,none,none
+gn:3580682,Driftwood Village,,9987,village,0,0,50,0,none,none
+gn:3580686,Dog City,,6273,village,0,0,50,0,none,none
+gn:3580692,Creek,,1125,village,0,0,50,0,none,none
+gn:3580701,Coral Gables,,3831,village,0,0,50,0,none,none
+gn:3580709,Colliers,,4426,village,0,0,50,0,none,none
+gn:3580713,Channel Land,,12623,town,0,0,50,0,none,none
+gn:3580717,Cayman Palms,,9043,village,0,0,50,0,none,none
+gn:3580723,Brinkleys,,9987,village,0,0,50,0,none,none
+gn:3580724,Breezy Castle,,6763,village,0,0,50,0,none,none
+gn:3580725,Breakers,,11247,town,0,0,50,0,none,none
+gn:3580729,Botabano,,3975,village,0,0,50,0,none,none
+gn:3580733,Bodden Town,Bodden Town,14845,town,0,0,50,0,none,none
+gn:3580742,Blakes,,5900,village,0,0,50,0,none,none
+gn:3580743,Birch Tree Hill,,3920,village,0,0,50,0,none,none
+gn:3580751,Belford Estates,,8558,village,0,0,50,0,none,none
+gn:3580754,Battle Ground,,3920,village,0,0,50,0,none,none
+gn:3580762,Ally Land,,9140,village,0,0,50,0,none,none
+gn:9241039,Rum Point,,1079,village,0,0,50,0,none,none
+gn:9294258,Little Cayman,Sister Island,0,village,0,0,50,0,none,none
+gn:11205015,Seven Miles,,2691,village,0,0,50,0,none,none

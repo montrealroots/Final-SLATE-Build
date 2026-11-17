@@ -1,0 +1,102 @@
+place_id,name,region,population,market,verified_homes,dated_listings,shortfall_to_50,recorded_sales,rent_source,price_source
+gn:3582790,Zaragoza,La Libertad Department,11749,town,0,0,50,0,none,none
+gn:3582805,Zacatecoluca,La Paz Department,39613,town,0,0,50,0,none,none
+gn:3582835,Victoria,Cabanas,2023,village,0,0,50,0,none,none
+gn:3582883,Usulután,Usulutan,51910,town,0,0,50,0,none,none
+gn:3582896,Turín,Ahuachapan,11829,town,0,0,50,0,none,none
+gn:3582918,Tonacatepeque,San Salvador Department,6245,village,0,0,50,0,none,none
+gn:3582954,Texistepeque,Santa Ana Department,2401,village,0,0,50,0,none,none
+gn:3582987,Tenancingo,Cuscatlan,1011,village,0,0,50,0,none,none
+gn:3583009,Tecoluca,Cuscatlan,2781,village,0,0,50,0,none,none
+gn:3583065,Tacuba,Ahuachapan,5055,village,0,0,50,0,none,none
+gn:3583090,Suchitoto,Cuscatlan,5735,village,0,0,50,0,none,none
+gn:3583096,Soyapango,San Salvador Department,329708,city,0,0,50,0,none,none
+gn:3583098,Sonzacate,Sonsonate Department,15446,town,0,0,50,0,none,none
+gn:3583102,Sonsonate,Sonsonate Department,59468,town,0,0,50,0,none,none
+gn:3583111,Sociedad,Morazan,1770,village,0,0,50,0,none,none
+gn:3583155,Sesori,San Miguel Department,1390,village,0,0,50,0,none,none
+gn:3583158,Sensuntepeque,Cabanas,20386,town,0,0,50,0,none,none
+gn:3583178,San Vicente,San Vicente Department,41504,town,0,0,50,0,none,none
+gn:3583183,Santo Tomás,San Salvador Department,14581,town,0,0,50,0,none,none
+gn:3583196,Santiago Nonualco,La Paz Department,9490,village,0,0,50,0,none,none
+gn:3583199,Santiago de María,Usulutan,15032,town,0,0,50,0,none,none
+gn:3583214,Santa Rosa de Lima,La Union,13249,town,0,0,50,0,none,none
+gn:3583278,Santa Elena,Usulutan,5887,village,0,0,50,0,none,none
+gn:3583334,Santa Ana,Santa Ana Department,176661,city,0,0,50,0,none,none
+gn:3583352,San Sebastián,San Vicente Department,7333,village,0,0,50,0,none,none
+gn:3583361,San Salvador,San Salvador Department,525990,large-city,0,0,50,0,none,none
+gn:3583379,San Rafael Oriente,San Miguel Department,19095,town,0,0,50,0,none,none
+gn:3583407,San Pedro Masahuat,La Paz Department,2654,village,0,0,50,0,none,none
+gn:3583429,San Pablo Tacachico,La Libertad Department,3033,village,0,0,50,0,none,none
+gn:3583446,San Miguel,San Miguel Department,247126,city,0,0,50,0,none,none
+gn:3583471,San Martín,Cuscatlan,39361,town,0,0,50,0,none,none
+gn:3583480,San Marcos,San Salvador Department,54615,town,0,0,50,0,none,none
+gn:3583531,San Juan Opico,La Libertad Department,7127,village,0,0,50,0,none,none
+gn:3583716,San Francisco Menéndez,Ahuachapan,1264,village,0,0,50,0,none,none
+gn:3583747,San Francisco,Morazan,16152,town,0,0,50,0,none,none
+gn:3583851,San Antonio del Monte,Sonsonate Department,9135,village,0,0,50,0,none,none
+gn:3583905,San Alejo,La Union,5149,village,0,0,50,0,none,none
+gn:3583910,San Agustín,Usulutan,2149,village,0,0,50,0,none,none
+gn:3583937,Rosario de Mora,San Salvador Department,5178,village,0,0,50,0,none,none
+gn:3583981,Quezaltepeque,La Libertad Department,28886,town,0,0,50,0,none,none
+gn:3584003,Puerto El Triunfo,Usulutan,19074,town,0,0,50,0,none,none
+gn:3584140,Pasaquina,La Union,2149,village,0,0,50,0,none,none
+gn:3584156,Panchimalco,San Salvador Department,6764,village,0,0,50,0,none,none
+gn:3584190,Ozatlán,Usulutan,4171,village,0,0,50,0,none,none
+gn:3584212,Olocuilta,La Paz Department,6324,village,0,0,50,0,none,none
+gn:3584251,Nuevo Cuscatlán,La Libertad Department,6469,village,0,0,50,0,none,none
+gn:3584257,Santa Tecla,La Libertad Department,124694,city,0,0,50,0,none,none
+gn:3584260,Nueva Guadalupe,San Miguel Department,5798,village,0,0,50,0,none,none
+gn:3584264,Nueva Esparta,La Union,2528,village,0,0,50,0,none,none
+gn:3584266,Nueva Concepción,Chalatenango Department,9990,village,0,0,50,0,none,none
+gn:3584297,Nahuizalco,Sonsonate Department,7358,village,0,0,50,0,none,none
+gn:3584348,Moncagua,San Miguel Department,2148,village,0,0,50,0,none,none
+gn:3584384,Metapán,Santa Ana Department,19143,town,0,0,50,0,none,none
+gn:3584399,Mejicanos,San Salvador Department,160317,city,0,0,50,0,none,none
+gn:3584714,Lolotique,San Miguel Department,2654,village,0,0,50,0,none,none
+gn:3584772,La Unión,La Union,26807,town,0,0,50,0,none,none
+gn:3585157,La Libertad,La Libertad Department,16855,town,0,0,50,0,none,none
+gn:3585392,Jujutla,Ahuachapan,2022,village,0,0,50,0,none,none
+gn:3585395,Jucuarán,Usulutan,1643,village,0,0,50,0,none,none
+gn:3585398,Jucuapa,Usulutan,10601,town,0,0,50,0,none,none
+gn:3585401,Juayúa,Sonsonate Department,9936,village,0,0,50,0,none,none
+gn:3585427,Jocoro,Morazan,4298,village,0,0,50,0,none,none
+gn:3585438,Jiquilisco,Usulutan,9129,village,0,0,50,0,none,none
+gn:3585473,Izalco,Sonsonate Department,19197,town,0,0,50,0,none,none
+gn:3585480,Intipucá,La Union,3540,village,0,0,50,0,none,none
+gn:3585484,Ilopango,San Salvador Department,38890,town,0,0,50,0,none,none
+gn:3585636,Guazapa,San Salvador Department,10995,town,0,0,50,0,none,none
+gn:3585640,Guaymango,Ahuachapan,1517,village,0,0,50,0,none,none
+gn:3585653,Guatajiagua,Morazan,5273,village,0,0,50,0,none,none
+gn:3585856,El Tránsito,San Miguel Department,9485,village,0,0,50,0,none,none
+gn:3586021,El Rosario,La Paz Department,5620,village,0,0,50,0,none,none
+gn:3586204,El Paisnal,San Salvador Department,1641,village,0,0,50,0,none,none
+gn:3586550,El Congo,Santa Ana Department,8905,village,0,0,50,0,none,none
+gn:3586814,Delgado,San Salvador Department,71594,town,0,0,50,0,none,none
+gn:3586833,Cuscatancingo,San Salvador Department,44369,town,0,0,50,0,none,none
+gn:3586884,Corinto,Morazan,3160,village,0,0,50,0,none,none
+gn:3586917,Conchagua,La Union,3034,village,0,0,50,0,none,none
+gn:3586926,Concepción de Ataco,Ahuachapan,7797,village,0,0,50,0,none,none
+gn:3586930,Concepción Batres,Usulutan,3286,village,0,0,50,0,none,none
+gn:3586977,Cojutepeque,Cuscatlan,48411,town,0,0,50,0,none,none
+gn:3586981,Coatepeque,Santa Ana Department,5773,village,0,0,50,0,none,none
+gn:3586983,Ciudad Barrios,San Miguel Department,8491,village,0,0,50,0,none,none
+gn:3586985,Ciudad Arce,La Libertad Department,10095,town,0,0,50,0,none,none
+gn:3587018,Chirilagua,San Miguel Department,6393,village,0,0,50,0,none,none
+gn:3587037,Chinameca,San Miguel Department,8646,village,0,0,50,0,none,none
+gn:3587064,Chapeltique,San Miguel Department,3159,village,0,0,50,0,none,none
+gn:3587086,Chalchuapa,Santa Ana Department,32282,town,0,0,50,0,none,none
+gn:3587091,Chalatenango,Chalatenango Department,19364,town,0,0,50,0,none,none
+gn:3587157,Candelaria de La Frontera,Santa Ana Department,6301,village,0,0,50,0,none,none
+gn:3587208,Cacaopera,Morazan,2528,village,0,0,50,0,none,none
+gn:3587266,Berlín,Usulutan,11313,town,0,0,50,0,none,none
+gn:3587308,Ayutuxtepeque,San Salvador Department,25426,town,0,0,50,0,none,none
+gn:3587317,Atiquizaya,Ahuachapan,9476,village,0,0,50,0,none,none
+gn:3587333,Armenia,Sonsonate Department,14997,town,0,0,50,0,none,none
+gn:3587345,Apopa,San Salvador Department,112158,city,0,0,50,0,none,none
+gn:3587349,Apastepeque,San Vicente Department,5785,village,0,0,50,0,none,none
+gn:3587362,Antiguo Cuscatlán,La Libertad Department,33767,town,0,0,50,0,none,none
+gn:3587372,Anamorós,La Union,2655,village,0,0,50,0,none,none
+gn:3587426,Ahuachapán,Ahuachapan,34102,town,0,0,50,0,none,none
+gn:3587428,Aguilares,San Salvador Department,21445,town,0,0,50,0,none,none
+gn:3587498,Acajutla,Sonsonate Department,22763,town,0,0,50,0,none,none

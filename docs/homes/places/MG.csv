@@ -1,0 +1,153 @@
+place_id,name,region,population,market,verified_homes,dated_listings,shortfall_to_50,recorded_sales,rent_source,price_source
+gn:1053384,Toamasina,Atsinanana,345107,city,0,0,50,0,none,none
+gn:1053507,Vondrozo,Atsimo-Atsinanana,19949,town,0,0,50,0,none,none
+gn:1053765,Vohipeno,Fitovinany Region,15622,town,0,0,50,0,none,none
+gn:1053778,Vohipaho,Atsimo-Atsinanana,27000,town,0,0,50,0,none,none
+gn:1053900,Vohimanitra,Fitovinany Region,6000,village,0,0,50,0,none,none
+gn:1054035,Vohibinany,Atsinanana,25311,town,0,0,50,0,none,none
+gn:1054192,Vavatenina,Analanjirofo,37861,town,0,0,50,0,none,none
+gn:1054257,Vatomandry,Atsinanana,16771,town,0,0,50,0,none,none
+gn:1054329,Vangaindrano,Atsimo-Atsinanana,40813,town,0,0,50,0,none,none
+gn:1054463,Tsiroanomandidy,Bongolava,47087,town,0,0,50,0,none,none
+gn:1054500,Tsiombe,Androy,29825,town,0,0,50,0,none,none
+gn:1055059,Tsaratanana,Betsiboka,26446,town,0,0,50,0,none,none
+gn:1055317,Tranovaho,Androy,13000,town,0,0,50,0,none,none
+gn:1055429,Toliara,Atsimo-Andrefana,178725,city,0,0,50,0,none,none
+gn:1055433,Tôlanaro,Anosy,71258,town,0,0,50,0,none,none
+gn:1056151,Soavinandriana,Itasy,42410,town,0,0,50,0,none,none
+gn:1056381,Soanindrariny,Vakinankaratra,21000,town,0,0,50,0,none,none
+gn:1056386,Soanierana Ivongo,Analanjirofo,39271,town,0,0,50,0,none,none
+gn:1056487,Soalala,Boeny,15174,town,0,0,50,0,none,none
+gn:1056531,Sitampiky,Boeny,21000,town,0,0,50,0,none,none
+gn:1056629,Savana,Fitovinany Region,4000,village,0,0,50,0,none,none
+gn:1056899,Sambava,Sava,89003,town,0,0,50,0,none,none
+gn:1056922,Sambaina,Analamanga,7000,village,0,0,50,0,none,none
+gn:1057095,Sakaraha,Atsimo-Andrefana,21826,town,0,0,50,0,none,none
+gn:1057277,Sahavato,Vatovavy Region,28000,town,0,0,50,0,none,none
+gn:1057330,Sahatavy,Analanjirofo,10000,town,0,0,50,0,none,none
+gn:1057681,Sadjoavato,Diana,7600,village,0,0,50,0,none,none
+gn:1057688,Sadabe,Analamanga,17000,town,0,0,50,0,none,none
+gn:1057922,Ranohira,Ihorombe,6000,village,0,0,50,0,none,none
+gn:1057996,Boriziny,Sofia,23906,town,0,0,50,0,none,none
+gn:1058080,Nosy Varika,Vatovavy Region,37152,town,0,0,50,0,none,none
+gn:1058242,Nandihizana,Analamanga,5000,village,0,0,50,0,none,none
+gn:1058381,Morondava,Menabe,56671,town,0,0,50,0,none,none
+gn:1058390,Morombe,Atsimo-Andrefana,23961,town,0,0,50,0,none,none
+gn:1058532,Moramanga,Alaotra Mangoro,60456,town,0,0,50,0,none,none
+gn:1059011,Miarinarivo,Itasy,13883,town,0,0,50,0,none,none
+gn:1059051,Miandrivazo,Menabe,21627,town,0,0,50,0,none,none
+gn:1059059,Miandrarivo,Vakinankaratra,27000,town,0,0,50,0,none,none
+gn:1059098,Miadanandriana,Analamanga,10000,town,0,0,50,0,none,none
+gn:1059136,Merikanjaka,Analamanga,8000,village,0,0,50,0,none,none
+gn:1059507,Marovoay,Boeny,41611,town,0,0,50,0,none,none
+gn:1059556,Marovatolena,Sofia,8769,village,0,0,50,0,none,none
+gn:1059628,Marovantaza,Sofia,10504,town,0,0,50,0,none,none
+gn:1059949,Maromandia,Sofia,33596,town,0,0,50,0,none,none
+gn:1060007,Marolambo,Atsinanana,26160,town,0,0,50,0,none,none
+gn:1060283,Maroantsetra,Analanjirofo,45041,town,0,0,50,0,none,none
+gn:1060527,Mantasoa,Analamanga,10000,town,0,0,50,0,none,none
+gn:1060673,Manjakandriana,Analamanga,23498,town,0,0,50,0,none,none
+gn:1060682,Manja,Menabe,0,village,0,0,50,0,none,none
+gn:1061028,Mandritsara,Sofia,0,village,0,0,50,0,none,none
+gn:1061216,Manato,Atsimo-Atsinanana,7000,village,0,0,50,0,none,none
+gn:1061335,Mananjary,Vatovavy Region,26712,town,0,0,50,0,none,none
+gn:1061412,Mananara,Analanjirofo,37224,town,0,0,50,0,none,none
+gn:1061605,Manakara,Fitovinany Region,46850,town,0,0,50,0,none,none
+gn:1061700,Mampikony,Sofia,30282,town,0,0,50,0,none,none
+gn:1061912,Maintirano,Melaky,23609,town,0,0,50,0,none,none
+gn:1062146,Mahavelona,Atsinanana,7987,village,0,0,50,0,none,none
+gn:1062553,Mahanoro,Atsinanana,40033,town,0,0,50,0,none,none
+gn:1062626,Mahalina,Diana,2217,village,0,0,50,0,none,none
+gn:1062663,Mahajanga,Boeny,260556,city,0,0,50,0,none,none
+gn:1062818,Mahabe,Melaky,10000,town,0,0,50,0,none,none
+gn:1062842,Maevatanana,Betsiboka,27459,town,0,0,50,0,none,none
+gn:1063368,Kopoky,Androy,15000,town,0,0,50,0,none,none
+gn:1063782,Jafaro,Androy,22000,town,0,0,50,0,none,none
+gn:1063835,Ivohibe,Ihorombe,22290,town,0,0,50,0,none,none
+gn:1063852,Ivato,Atsimo-Atsinanana,8000,village,0,0,50,0,none,none
+gn:1063858,Ivato,Analamanga,52376,town,0,0,50,0,none,none
+gn:1063930,Itampolo,Atsimo-Andrefana,32000,town,0,0,50,0,none,none
+gn:1064121,Imerintsiatosika,Itasy,74085,town,0,0,50,0,none,none
+gn:1064131,Imerimandroso,Alaotra Mangoro,15095,town,0,0,50,0,none,none
+gn:1064234,Ikongo,Fitovinany Region,38851,town,0,0,50,0,none,none
+gn:1064258,Ikalamavony,Upper Matsiatra,15601,town,0,0,50,0,none,none
+gn:1064275,Ihosy,Ihorombe,41892,town,0,0,50,0,none,none
+gn:1064311,Iharan̈a,Sava,23349,town,0,0,50,0,none,none
+gn:1064334,Ifatsy,Fitovinany Region,15000,town,0,0,50,0,none,none
+gn:1064366,Ifanadiana,Vatovavy Region,16607,town,0,0,50,0,none,none
+gn:1064890,Fianarantsoa,Upper Matsiatra,203105,city,0,0,50,0,none,none
+gn:1064978,Fenoarivo Be,Bongolava,19605,town,0,0,50,0,none,none
+gn:1064980,Fenoarivo Atsinanana,Analanjirofo,44199,town,0,0,50,0,none,none
+gn:1065140,Faratsiho,Vakinankaratra,37563,town,0,0,50,0,none,none
+gn:1065158,Farafangana,Atsimo-Atsinanana,36724,town,0,0,50,0,none,none
+gn:1065222,Fandriana,Amoron'i Mania,30958,town,0,0,50,0,none,none
+gn:1065230,Fandrandava,Upper Matsiatra,9000,village,0,0,50,0,none,none
+gn:1065531,Didy,Alaotra Mangoro,33039,town,0,0,50,0,none,none
+gn:1066248,Betroka,Anosy,18350,town,0,0,50,0,none,none
+gn:1066310,Betioky,Atsimo-Andrefana,27125,town,0,0,50,0,none,none
+gn:1066317,Beteza,Androy,7000,village,0,0,50,0,none,none
+gn:1066514,Betafo,Vakinankaratra,36364,town,0,0,50,0,none,none
+gn:1066702,Besalampy,Melaky,12000,town,0,0,50,0,none,none
+gn:1066831,Beroroha,Atsimo-Andrefana,18632,town,0,0,50,0,none,none
+gn:1067487,Bemaitso,Alaotra Mangoro,8000,village,0,0,50,0,none,none
+gn:1067531,Belo sur Tsiribihina,Menabe,23900,town,0,0,50,0,none,none
+gn:1067565,Beloha,Androy,23021,town,0,0,50,0,none,none
+gn:1067982,Bekily,Androy,20915,town,0,0,50,0,none,none
+gn:1068130,Behompy,Atsimo-Andrefana,7000,village,0,0,50,0,none,none
+gn:1068387,Befandriana,Sofia,18596,town,0,0,50,0,none,none
+gn:1068670,Bealanana,Sofia,32764,town,0,0,50,0,none,none
+gn:1068865,Arivonimamo,Itasy,29997,town,0,0,50,0,none,none
+gn:1068955,Antsohimbondrona,Diana,32080,town,0,0,50,0,none,none
+gn:1068971,Antsohihy,Sofia,40512,town,0,0,50,0,none,none
+gn:1069129,Antsiranana,Diana,136959,city,0,0,50,0,none,none
+gn:1069164,Antsirabe Afovoany,Sofia,13000,town,0,0,50,0,none,none
+gn:1069166,Antsirabe,Vakinankaratra,260907,city,0,0,50,0,none,none
+gn:1069579,Antsalova,Melaky,58280,town,0,0,50,0,none,none
+gn:1070523,Antanimena,Atsimo-Andrefana,4000,village,0,0,50,0,none,none
+gn:1070661,Antanifotsy,Vakinankaratra,70626,town,0,0,50,0,none,none
+gn:1070895,Antanandava,Alaotra Mangoro,12755,town,0,0,50,0,none,none
+gn:1070940,Antananarivo,Analamanga,1349501,large-city,0,0,50,0,none,none
+gn:1071296,Antalaha,Sava,71898,town,0,0,50,0,none,none
+gn:1071299,Antakotako,Analanjirofo,11000,town,0,0,50,0,none,none
+gn:1072711,Ankazondandy,Analamanga,16000,town,0,0,50,0,none,none
+gn:1072849,Ankazobe,Analamanga,28430,town,0,0,50,0,none,none
+gn:1072879,Ankazoabo,Atsimo-Andrefana,25961,town,0,0,50,0,none,none
+gn:1073482,Anjozorobe,Analamanga,25541,town,0,0,50,0,none,none
+gn:1073665,Anjepy,Analamanga,6000,village,0,0,50,0,none,none
+gn:1075592,Andramasina,Analamanga,0,village,0,0,50,0,none,none
+gn:1076105,Hell-Ville,Diana,53219,town,0,0,50,0,none,none
+gn:1076194,Andilamena,Alaotra Mangoro,39428,town,0,0,50,0,none,none
+gn:1076227,Andovoranto,Atsinanana,10429,town,0,0,50,0,none,none
+gn:1076454,Andapa,Sava,36660,town,0,0,50,0,none,none
+gn:1076833,Anandravy,Upper Matsiatra,4000,village,0,0,50,0,none,none
+gn:1077222,Analalava,Sofia,10349,town,0,0,50,0,none,none
+gn:1077349,Anakao,Atsimo-Andrefana,3000,village,0,0,50,0,none,none
+gn:1078171,Ampasimanolotra,Atsinanana,21000,town,0,0,50,0,none,none
+gn:1078446,Amparafaravola,Alaotra Mangoro,35266,town,0,0,50,0,none,none
+gn:1078553,Ampanihy,Atsimo-Andrefana,40244,town,0,0,50,0,none,none
+gn:1078966,Ampahana,Sava,25000,town,0,0,50,0,none,none
+gn:1079048,Ambovombe,Androy,69265,town,0,0,50,0,none,none
+gn:1079088,Ambositra,Amoron'i Mania,43504,town,0,0,50,0,none,none
+gn:1079681,Ambohitseheno,Analamanga,6000,village,0,0,50,0,none,none
+gn:1079777,Ambohitrolomahitsy,Analamanga,17000,town,0,0,50,0,none,none
+gn:1079846,Ambohitrandriamanitra,Analamanga,8000,village,0,0,50,0,none,none
+gn:1080438,Ambohimahasoa,Upper Matsiatra,12291,town,0,0,50,0,none,none
+gn:1080522,Ambohidratrimo,Analamanga,25163,town,0,0,50,0,none,none
+gn:1080809,Ambodivoara,Sava,10000,town,0,0,50,0,none,none
+gn:1081199,Ambodimanga II,Analanjirofo,33000,town,0,0,50,0,none,none
+gn:1081530,Ambodifotatra,Analanjirofo,28406,town,0,0,50,0,none,none
+gn:1081790,Amboasary,Anosy,48705,town,0,0,50,0,none,none
+gn:1081798,Amboasary,Anosy,0,village,0,0,50,0,none,none
+gn:1081863,Amboanjo,Fitovinany Region,17000,town,0,0,50,0,none,none
+gn:1082243,Ambilobe,Diana,66029,town,0,0,50,0,none,none
+gn:1082639,Ambatondrazaka,Alaotra Mangoro,50463,town,0,0,50,0,none,none
+gn:1082973,Ambatolaona,Analamanga,5000,village,0,0,50,0,none,none
+gn:1082992,Ambatolampy,Vakinankaratra,34198,town,0,0,50,0,none,none
+gn:1083239,Ambatofinandrahana,Amoron'i Mania,39618,town,0,0,50,0,none,none
+gn:1083257,Ambato Boeny,Boeny,35432,town,0,0,50,0,none,none
+gn:1083676,Ambarakaraka,Diana,16114,town,0,0,50,0,none,none
+gn:1083724,Ambanja,Diana,63884,town,0,0,50,0,none,none
+gn:1083968,Ambalavao,Upper Matsiatra,45784,town,0,0,50,0,none,none
+gn:1084071,Ambalasoa,Anosy,4000,village,0,0,50,0,none,none
+gn:1084740,Alarobia,Analamanga,16000,town,0,0,50,0,none,none
+gn:11887900,Antsampanimahazo,Vakinankaratra,0,village,0,0,50,0,none,none

@@ -1,0 +1,10 @@
+place_id,name,region,population,market,verified_homes,dated_listings,shortfall_to_50,recorded_sales,rent_source,price_source
+gn:2134814,Sola,Torba,1171,village,0,0,50,0,none,none
+gn:2135171,Port-Vila,Shefa,35901,town,0,0,50,0,none,none
+gn:2135175,Port-Olry,Sanma,1300,village,0,0,50,0,none,none
+gn:2135349,Pango,Shefa,2485,village,0,0,50,0,none,none
+gn:2135517,Norsup,Malampa,2998,village,0,0,50,0,none,none
+gn:2136150,Luganville,Sanma,13397,town,0,0,50,0,none,none
+gn:2136697,Lakatoro,Malampa,705,village,0,0,50,0,none,none
+gn:2136825,Isangel,Tafea,1437,village,0,0,50,0,none,none
+gn:8581458,Saratamata,Penama,0,village,0,0,50,0,none,none

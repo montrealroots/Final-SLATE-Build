@@ -1,0 +1,306 @@
+place_id,name,region,population,market,verified_homes,dated_listings,shortfall_to_50,recorded_sales,rent_source,price_source
+gn:725213,Beloslav,Varna,7989,village,0,0,50,0,none,none
+gn:725271,Zlatograd,Smolyan,7331,village,0,0,50,0,none,none
+gn:725283,Zlatitsa,Sofia,5786,village,0,0,50,0,none,none
+gn:725295,Zlataritsa,Veliko Tarnovo,2468,village,0,0,50,0,none,none
+gn:725402,Zemen,Pernik,2107,village,0,0,50,0,none,none
+gn:725404,Zelenikovo,Plovdiv,0,village,0,0,50,0,none,none
+gn:725435,Zavet,Razgrad,3589,village,0,0,50,0,none,none
+gn:725578,Yambol,Yambol,63656,town,0,0,50,0,none,none
+gn:725586,Yakoruda,Blagoevgrad,6008,village,0,0,50,0,none,none
+gn:725588,Yakimovo,Montana,2665,village,0,0,50,0,none,none
+gn:725611,Yablanitsa,Lovech,3237,village,0,0,50,0,none,none
+gn:725623,Varshets,Montana,7512,village,0,0,50,0,none,none
+gn:725649,Varbitsa,Shumen,3803,village,0,0,50,0,none,none
+gn:725679,Valchidol,Varna,3697,village,0,0,50,0,none,none
+gn:725683,Valchedram,Montana,5207,village,0,0,50,0,none,none
+gn:725712,Vratsa,Vratsa,49569,town,0,0,50,0,none,none
+gn:725816,Sveti Vlas,Burgas,3875,village,0,0,50,0,none,none
+gn:725905,Vidin,Vidin,34797,town,0,0,50,0,none,none
+gn:725924,Vetrino,Varna,1368,village,0,0,50,0,none,none
+gn:725935,Vetovo,Ruse,5175,village,0,0,50,0,none,none
+gn:725967,Venets,Shumen,1450,village,0,0,50,0,none,none
+gn:725988,Velingrad,Pazardzhik,20286,town,0,0,50,0,none,none
+gn:725993,Veliko Tŭrnovo,Veliko Tarnovo,59166,town,0,0,50,0,none,none
+gn:726050,Varna,Varna,318737,city,0,0,50,0,none,none
+gn:726114,Ugarchin,Lovech,2965,village,0,0,50,0,none,none
+gn:726130,Tvarditsa,Sliven,6519,village,0,0,50,0,none,none
+gn:726141,Tutrakan,Silistra,9214,village,0,0,50,0,none,none
+gn:726174,Targovishte,Targovishte,34793,town,0,0,50,0,none,none
+gn:726245,Tsenovo,Ruse,2229,village,0,0,50,0,none,none
+gn:726287,Tryavna,Gabrovo,13818,town,0,0,50,0,none,none
+gn:726307,Tran,Pernik,3102,village,0,0,50,0,none,none
+gn:726320,Troyan,Lovech,21162,town,0,0,50,0,none,none
+gn:726381,Topolovo,Plovdiv,2600,village,0,0,50,0,none,none
+gn:726384,Topolovgrad,Haskovo,6464,village,0,0,50,0,none,none
+gn:726418,Dobrich,Dobrich,69434,town,0,0,50,0,none,none
+gn:726434,Tochilari,Razgrad,0,village,0,0,50,0,none,none
+gn:726464,Teteven,Lovech,10790,town,0,0,50,0,none,none
+gn:726474,Tervel,Dobrich,6808,village,0,0,50,0,none,none
+gn:726489,Batanovtsi,Pernik,2519,village,0,0,50,0,none,none
+gn:726524,Svoge,Sofia,8964,village,0,0,50,0,none,none
+gn:726534,Svishtov,Veliko Tarnovo,30157,town,0,0,50,0,none,none
+gn:726546,Svilengrad,Haskovo,16959,town,0,0,50,0,none,none
+gn:726550,Svetovrachane,Sofia-Capital,2172,village,0,0,50,0,none,none
+gn:726591,Suvorovo,Varna,4563,village,0,0,50,0,none,none
+gn:726612,Sarnitsa,Pazardzhik,3511,village,0,0,50,0,none,none
+gn:726629,Sungurlare,Burgas,3834,village,0,0,50,0,none,none
+gn:726643,Suhindol,Veliko Tarnovo,2364,village,0,0,50,0,none,none
+gn:726657,Saedinenie,Plovdiv,6427,village,0,0,50,0,none,none
+gn:726693,Strumyani,Blagoevgrad,1058,village,0,0,50,0,none,none
+gn:726723,Strelcha,Pazardzhik,4545,village,0,0,50,0,none,none
+gn:726727,Strazhitsa,Veliko Tarnovo,5728,village,0,0,50,0,none,none
+gn:726748,Straldzha,Yambol,5817,village,0,0,50,0,none,none
+gn:726848,Stara Zagora,Stara Zagora,121582,city,0,0,50,0,none,none
+gn:726863,Stara Kresna,Blagoevgrad,3586,village,0,0,50,0,none,none
+gn:726872,Dupnitsa,Kyustendil,34764,town,0,0,50,0,none,none
+gn:726890,Stamboliyski,Plovdiv,12070,town,0,0,50,0,none,none
+gn:726954,Spasovo,Dobrich,0,village,0,0,50,0,none,none
+gn:726963,Sozopol,Burgas,4500,village,0,0,50,0,none,none
+gn:727011,Sofia,Sofia-Capital,1152556,large-city,0,0,50,0,none,none
+gn:727025,Smyadovo,Shumen,4231,village,0,0,50,0,none,none
+gn:727030,Smolyan,Smolyan,30689,town,0,0,50,0,none,none
+gn:727067,Slivo Pole,Ruse,3252,village,0,0,50,0,none,none
+gn:727069,Slivnitsa,Sofia,7545,village,0,0,50,0,none,none
+gn:727079,Sliven,Sliven,83740,town,0,0,50,0,none,none
+gn:727087,Slavyanovo,Pleven,4793,village,0,0,50,0,none,none
+gn:727175,Sitovo,Silistra,1140,village,0,0,50,0,none,none
+gn:727212,Simitli,Blagoevgrad,6729,village,0,0,50,0,none,none
+gn:727217,Simeonovgrad,Haskovo,7388,village,0,0,50,0,none,none
+gn:727221,Silistra,Silistra,29498,town,0,0,50,0,none,none
+gn:727233,Shumen,Shumen,72342,town,0,0,50,0,none,none
+gn:727291,Shipka,Stara Zagora,1604,village,0,0,50,0,none,none
+gn:727301,Sheynovo,Stara Zagora,1461,village,0,0,50,0,none,none
+gn:727329,Shabla,Dobrich,3901,village,0,0,50,0,none,none
+gn:727337,Sevlievo,Gabrovo,24582,town,0,0,50,0,none,none
+gn:727346,Seslavtsi,Sofia-Capital,1066,village,0,0,50,0,none,none
+gn:727354,Septemvri,Pazardzhik,8071,village,0,0,50,0,none,none
+gn:727358,Senovo,Ruse,1459,village,0,0,50,0,none,none
+gn:727391,Seliminovo,Sliven,1466,village,0,0,50,0,none,none
+gn:727423,Satovcha,Blagoevgrad,2382,village,0,0,50,0,none,none
+gn:727434,Sarafovo,Burgas,3290,village,0,0,50,0,none,none
+gn:727441,Sapareva Banya,Kyustendil,4610,village,0,0,50,0,none,none
+gn:727447,Sandanski,Blagoevgrad,28510,town,0,0,50,0,none,none
+gn:727455,Samuil,Razgrad,2283,village,0,0,50,0,none,none
+gn:727462,Samokov,Sofia,26765,town,0,0,50,0,none,none
+gn:727479,Sadovo,Plovdiv,2656,village,0,0,50,0,none,none
+gn:727495,Ruzhintsi,Vidin,1269,village,0,0,50,0,none,none
+gn:727523,Ruse,Ruse,121168,city,0,0,50,0,none,none
+gn:727547,Ruen,Burgas,2339,village,0,0,50,0,none,none
+gn:727552,Rudozem,Smolyan,3783,village,0,0,50,0,none,none
+gn:727598,Roman,Vratsa,3571,village,0,0,50,0,none,none
+gn:727628,Rila,Kyustendil,3002,village,0,0,50,0,none,none
+gn:727689,Razlog,Blagoevgrad,12486,town,0,0,50,0,none,none
+gn:727696,Razgrad,Razgrad,28931,town,0,0,50,0,none,none
+gn:727759,Ravda,Burgas,2556,village,0,0,50,0,none,none
+gn:727791,Rakovski,Plovdiv,15782,town,0,0,50,0,none,none
+gn:727801,Rakitovo,Pazardzhik,8376,village,0,0,50,0,none,none
+gn:727832,Radomir,Pernik,14494,town,0,0,50,0,none,none
+gn:727838,Radnevo,Stara Zagora,14667,town,0,0,50,0,none,none
+gn:727884,Parvomaytsi,Veliko Tarnovo,2867,village,0,0,50,0,none,none
+gn:727886,Parvomay,Plovdiv,17000,town,0,0,50,0,none,none
+gn:727921,Provadia,Varna,13755,town,0,0,50,0,none,none
+gn:727964,Primorsko,Burgas,3531,village,0,0,50,0,none,none
+gn:727987,Veliki Preslav,Shumen,9425,village,0,0,50,0,none,none
+gn:728011,Pravets,Sofia,4400,village,0,0,50,0,none,none
+gn:728056,Pordim,Pleven,2230,village,0,0,50,0,none,none
+gn:728075,Popovo,Targovishte,16571,town,0,0,50,0,none,none
+gn:728108,Pomorie,Burgas,13714,town,0,0,50,0,none,none
+gn:728124,Polski Trambesh,Veliko Tarnovo,5663,village,0,0,50,0,none,none
+gn:728146,Polenitsa,Blagoevgrad,1293,village,0,0,50,0,none,none
+gn:728193,Plovdiv,Plovdiv,329489,city,0,0,50,0,none,none
+gn:728199,Pliska,Shumen,1263,village,0,0,50,0,none,none
+gn:728203,Pleven,Pleven,90209,town,0,0,50,0,none,none
+gn:728251,Pirdop,Sofia,8136,village,0,0,50,0,none,none
+gn:728288,Petrich,Blagoevgrad,30722,town,0,0,50,0,none,none
+gn:728317,Peshtera,Pazardzhik,18676,town,0,0,50,0,none,none
+gn:728321,Perushtitsa,Plovdiv,5350,village,0,0,50,0,none,none
+gn:728330,Pernik,Pernik,82467,town,0,0,50,0,none,none
+gn:728348,Iskar,Pleven,4329,village,0,0,50,0,none,none
+gn:728378,Pazardzhik,Pazardzhik,55220,town,0,0,50,0,none,none
+gn:728385,Pavlikeni,Veliko Tarnovo,11151,town,0,0,50,0,none,none
+gn:728389,Pavel Banya,Stara Zagora,3212,village,0,0,50,0,none,none
+gn:728448,Panagyurishte,Pazardzhik,19389,town,0,0,50,0,none,none
+gn:728565,Oryahovo,Vratsa,5007,village,0,0,50,0,none,none
+gn:728631,Opaka,Targovishte,3002,village,0,0,50,0,none,none
+gn:728634,Omurtag,Targovishte,9070,village,0,0,50,0,none,none
+gn:728674,Obzor,Burgas,2002,village,0,0,50,0,none,none
+gn:728709,Novo Selo,Vidin,1574,village,0,0,50,0,none,none
+gn:728734,Novi Pazar,Shumen,13276,town,0,0,50,0,none,none
+gn:728742,Nova Zagora,Sliven,23625,town,0,0,50,0,none,none
+gn:728782,Nikopol,Pleven,3629,village,0,0,50,0,none,none
+gn:728795,Nikolaevo,Stara Zagora,3160,village,0,0,50,0,none,none
+gn:728818,Nevestino,Kyustendil,779,village,0,0,50,0,none,none
+gn:728825,Nesebar,Burgas,13347,town,0,0,50,0,none,none
+gn:728836,Negovan,Sofia-Capital,1737,village,0,0,50,0,none,none
+gn:728851,Nedelino,Smolyan,5017,village,0,0,50,0,none,none
+gn:728923,Rupite,Blagoevgrad,1037,village,0,0,50,0,none,none
+gn:728928,Maglizh,Stara Zagora,3643,village,0,0,50,0,none,none
+gn:729040,Mizia,Vratsa,3712,village,0,0,50,0,none,none
+gn:729064,Mirkovo,Sofia,1882,village,0,0,50,0,none,none
+gn:729073,Mineralni Bani,Haskovo,1367,village,0,0,50,0,none,none
+gn:729114,Montana,Montana,47445,town,0,0,50,0,none,none
+gn:729125,Tsarevo,Burgas,6085,village,0,0,50,0,none,none
+gn:729134,Mezdra,Vratsa,11975,town,0,0,50,0,none,none
+gn:729170,Medovene,Razgrad,0,village,0,0,50,0,none,none
+gn:729174,Medkovets,Montana,2690,village,0,0,50,0,none,none
+gn:729322,Malko Tarnovo,Burgas,3336,village,0,0,50,0,none,none
+gn:729401,Makresh,Vidin,660,village,0,0,50,0,none,none
+gn:729428,Madzharovo,Haskovo,1319,village,0,0,50,0,none,none
+gn:729439,Madan,Smolyan,5661,village,0,0,50,0,none,none
+gn:729466,Lyubimets,Haskovo,8065,village,0,0,50,0,none,none
+gn:729489,Lyaskovets,Veliko Tarnovo,8488,village,0,0,50,0,none,none
+gn:729507,Lukovit,Lovech,9792,village,0,0,50,0,none,none
+gn:729509,Laki,Plovdiv,3258,village,0,0,50,0,none,none
+gn:729530,Loznitsa,Razgrad,2971,village,0,0,50,0,none,none
+gn:729543,Lozen,Sofia-Capital,6312,village,0,0,50,0,none,none
+gn:729559,Lovech,Lovech,27910,town,0,0,50,0,none,none
+gn:729581,Lom,Montana,18593,town,0,0,50,0,none,none
+gn:729636,Levski,Pleven,11467,town,0,0,50,0,none,none
+gn:729646,Letnitsa,Lovech,3528,village,0,0,50,0,none,none
+gn:729667,Lesichovo,Pazardzhik,1206,village,0,0,50,0,none,none
+gn:729722,Lakatnik,Sofia,0,village,0,0,50,0,none,none
+gn:729730,Kyustendil,Kyustendil,46856,town,0,0,50,0,none,none
+gn:729794,Kardzhali,Kardzhali,44071,town,0,0,50,0,none,none
+gn:729825,Kula,Vidin,3738,village,0,0,50,0,none,none
+gn:729839,Kubrat,Razgrad,8980,village,0,0,50,0,none,none
+gn:729880,Krushari,Dobrich,1722,village,0,0,50,0,none,none
+gn:729888,Kran,Stara Zagora,2826,village,0,0,50,0,none,none
+gn:729896,Krumovgrad,Kardzhali,5271,village,0,0,50,0,none,none
+gn:729909,Krivodol,Vratsa,3651,village,0,0,50,0,none,none
+gn:729936,Krichim,Plovdiv,8580,village,0,0,50,0,none,none
+gn:729942,Kresna,Blagoevgrad,4117,village,0,0,50,0,none,none
+gn:729947,Kremikovtsi,Sofia-Capital,3208,village,0,0,50,0,none,none
+gn:730013,Kozloduy,Vratsa,11331,town,0,0,50,0,none,none
+gn:730040,Koynare,Pleven,2926,village,0,0,50,0,none,none
+gn:730073,Kotel,Sliven,6421,village,0,0,50,0,none,none
+gn:730084,Kostinbrod,Sofia,12175,town,0,0,50,0,none,none
+gn:730159,Koprivshtitsa,Sofia,2885,village,0,0,50,0,none,none
+gn:730165,Koprinka,Stara Zagora,2264,village,0,0,50,0,none,none
+gn:730205,Komuniga,Kardzhali,1154,village,0,0,50,0,none,none
+gn:730241,Kolarovo,Blagoevgrad,1697,village,0,0,50,0,none,none
+gn:730268,Kocherinovo,Kyustendil,2872,village,0,0,50,0,none,none
+gn:730287,Knezha,Pleven,6889,village,0,0,50,0,none,none
+gn:730301,Klisura,Plovdiv,1485,village,0,0,50,0,none,none
+gn:730337,Kiten,Varna,1115,village,0,0,50,0,none,none
+gn:730338,Kiten,Burgas,1115,village,0,0,50,0,none,none
+gn:730355,Kirkovo,Kardzhali,700,village,0,0,50,0,none,none
+gn:730367,Kilifarevo,Veliko Tarnovo,2497,village,0,0,50,0,none,none
+gn:730415,Tsar Kaloyan,Razgrad,3994,village,0,0,50,0,none,none
+gn:730419,Hisarya,Plovdiv,7903,village,0,0,50,0,none,none
+gn:730425,Hayredin,Vratsa,2228,village,0,0,50,0,none,none
+gn:730435,Haskovo,Haskovo,64564,town,0,0,50,0,none,none
+gn:730442,Harmanli,Haskovo,18931,town,0,0,50,0,none,none
+gn:730464,Hadzhidimovo,Blagoevgrad,3167,village,0,0,50,0,none,none
+gn:730469,Hadzhidimitrovo,Stara Zagora,1472,village,0,0,50,0,none,none
+gn:730478,Kermen,Sliven,2222,village,0,0,50,0,none,none
+gn:730496,Kazanlak,Stara Zagora,47918,town,0,0,50,0,none,none
+gn:730504,Kaynardzha,Silistra,1107,village,0,0,50,0,none,none
+gn:730518,Kavarna,Dobrich,11205,town,0,0,50,0,none,none
+gn:730542,Kaspichan,Shumen,3635,village,0,0,50,0,none,none
+gn:730559,Karnobat,Burgas,19709,town,0,0,50,0,none,none
+gn:730565,Karlovo,Plovdiv,30340,town,0,0,50,0,none,none
+gn:730651,Kaolinovo,Shumen,1537,village,0,0,50,0,none,none
+gn:730680,Kameno,Burgas,4952,village,0,0,50,0,none,none
+gn:730733,Kaloyanovo,Plovdiv,2782,village,0,0,50,0,none,none
+gn:730744,Kalofer,Plovdiv,3248,village,0,0,50,0,none,none
+gn:730837,Ivaylovgrad,Haskovo,3969,village,0,0,50,0,none,none
+gn:730852,Ivanovo,Ruse,1031,village,0,0,50,0,none,none
+gn:730866,Isperih,Razgrad,9735,village,0,0,50,0,none,none
+gn:730873,Iskar,Pleven,0,village,0,0,50,0,none,none
+gn:730919,Ihtiman,Sofia,14154,town,0,0,50,0,none,none
+gn:730960,Garmen,Blagoevgrad,1838,village,0,0,50,0,none,none
+gn:730969,Gurkovo,Stara Zagora,2889,village,0,0,50,0,none,none
+gn:730982,Gulyantsi,Pleven,3589,village,0,0,50,0,none,none
+gn:730987,Gŭlŭbovo,Stara Zagora,8400,village,0,0,50,0,none,none
+gn:731016,Sredets,Burgas,9573,village,0,0,50,0,none,none
+gn:731056,Gramada,Vidin,1872,village,0,0,50,0,none,none
+gn:731100,Gyovren,Smolyan,1040,village,0,0,50,0,none,none
+gn:731108,Gotse Delchev,Blagoevgrad,20522,town,0,0,50,0,none,none
+gn:731233,Gorna Oryahovitsa,Veliko Tarnovo,32792,town,0,0,50,0,none,none
+gn:731239,Gorna Malina,Sofia,1501,village,0,0,50,0,none,none
+gn:731268,Gorichevo,Razgrad,0,village,0,0,50,0,none,none
+gn:731384,Godech,Sofia,5154,village,0,0,50,0,none,none
+gn:731415,Glavinitsa,Silistra,2220,village,0,0,50,0,none,none
+gn:731453,Dolni Chiflik,Varna,7169,village,0,0,50,0,none,none
+gn:731464,General Toshevo,Dobrich,7758,village,0,0,50,0,none,none
+gn:731520,Gara Hitrino,Shumen,1302,village,0,0,50,0,none,none
+gn:731549,Gabrovo,Gabrovo,48133,town,0,0,50,0,none,none
+gn:731551,Gabrovo,Kardzhali,0,village,0,0,50,0,none,none
+gn:731626,Etropole,Sofia,11031,town,0,0,50,0,none,none
+gn:731646,Enina,Stara Zagora,2283,village,0,0,50,0,none,none
+gn:731669,Elkhovo,Stara Zagora,0,village,0,0,50,0,none,none
+gn:731670,Elhovo,Yambol,10424,town,0,0,50,0,none,none
+gn:731675,Elin Pelin,Sofia,7373,village,0,0,50,0,none,none
+gn:731696,Elena,Veliko Tarnovo,6042,village,0,0,50,0,none,none
+gn:731741,Dzhebel,Kardzhali,3329,village,0,0,50,0,none,none
+gn:731771,Dve Mogili,Ruse,4526,village,0,0,50,0,none,none
+gn:731809,Dunavtsi,Vidin,3371,village,0,0,50,0,none,none
+gn:731818,Dulovo,Silistra,6788,village,0,0,50,0,none,none
+gn:731822,Dalgopol,Varna,5272,village,0,0,50,0,none,none
+gn:731882,Dryanovo,Gabrovo,8346,village,0,0,50,0,none,none
+gn:731961,Dragoman,Sofia,3814,village,0,0,50,0,none,none
+gn:732015,Dospat,Smolyan,2802,village,0,0,50,0,none,none
+gn:732099,Dolni Dabnik,Pleven,5259,village,0,0,50,0,none,none
+gn:732122,Dolna Mitropolia,Pleven,3479,village,0,0,50,0,none,none
+gn:732145,Dolna Banya,Sofia,4990,village,0,0,50,0,none,none
+gn:732253,Dimovo,Vidin,1461,village,0,0,50,0,none,none
+gn:732263,Dimitrovgrad,Haskovo,38015,town,0,0,50,0,none,none
+gn:732280,Devnya,Varna,8171,village,0,0,50,0,none,none
+gn:732285,Devin,Smolyan,7393,village,0,0,50,0,none,none
+gn:732359,Debelets,Veliko Tarnovo,4418,village,0,0,50,0,none,none
+gn:732400,Chuprene,Vidin,842,village,0,0,50,0,none,none
+gn:732452,Chirpan,Stara Zagora,15109,town,0,0,50,0,none,none
+gn:732456,Chiprovtsi,Montana,1941,village,0,0,50,0,none,none
+gn:732491,Cherven Bryag,Pleven,13000,town,0,0,50,0,none,none
+gn:732519,Chernomorets,Burgas,2194,village,0,0,50,0,none,none
+gn:732618,Chepintsi,Sofia-Capital,2532,village,0,0,50,0,none,none
+gn:732627,Chepelare,Smolyan,5478,village,0,0,50,0,none,none
+gn:732634,Chelopechene,Sofia-Capital,3100,village,0,0,50,0,none,none
+gn:732636,Chelopech,Sofia,1760,village,0,0,50,0,none,none
+gn:732655,Chavdar,Sofia,1398,village,0,0,50,0,none,none
+gn:732704,Byala Slatina,Vratsa,10282,town,0,0,50,0,none,none
+gn:732717,Byala Cherkva,Veliko Tarnovo,3010,village,0,0,50,0,none,none
+gn:732721,Byala,Varna,2327,village,0,0,50,0,none,none
+gn:732770,Burgas,Burgas,210646,city,0,0,50,0,none,none
+gn:732825,Buhovo,Sofia-Capital,3283,village,0,0,50,0,none,none
+gn:732862,Brusartsi,Montana,1734,village,0,0,50,0,none,none
+gn:732874,Brezovo,Plovdiv,1947,village,0,0,50,0,none,none
+gn:732883,Breznik,Pernik,4020,village,0,0,50,0,none,none
+gn:732915,Bregovo,Vidin,2892,village,0,0,50,0,none,none
+gn:732924,Bratsigovo,Pazardzhik,4577,village,0,0,50,0,none,none
+gn:732954,Bozhurishte,Sofia,4360,village,0,0,50,0,none,none
+gn:732973,Boynitsa,Vidin,884,village,0,0,50,0,none,none
+gn:732986,Boychinovtsi,Montana,2181,village,0,0,50,0,none,none
+gn:733001,Bov,Sofia,0,village,0,0,50,0,none,none
+gn:733014,Botevgrad,Sofia,20909,town,0,0,50,0,none,none
+gn:733043,Borovo,Ruse,2232,village,0,0,50,0,none,none
+gn:733058,Borovan,Vratsa,2941,village,0,0,50,0,none,none
+gn:733067,Borino,Smolyan,3084,village,0,0,50,0,none,none
+gn:733092,Bolyarovo,Yambol,1368,village,0,0,50,0,none,none
+gn:733151,Bobov Dol,Kyustendil,6184,village,0,0,50,0,none,none
+gn:733153,Boboshevo,Kyustendil,1784,village,0,0,50,0,none,none
+gn:733191,Blagoevgrad,Blagoevgrad,67810,town,0,0,50,0,none,none
+gn:733264,Berkovitsa,Montana,15027,town,0,0,50,0,none,none
+gn:733286,Belovo,Pazardzhik,4155,village,0,0,50,0,none,none
+gn:733309,Belogradchik,Vidin,5688,village,0,0,50,0,none,none
+gn:733322,Belitsa,Blagoevgrad,3166,village,0,0,50,0,none,none
+gn:733359,Belene,Pleven,7487,village,0,0,50,0,none,none
+gn:733433,Batak,Pazardzhik,3917,village,0,0,50,0,none,none
+gn:733434,Bata,Burgas,1235,village,0,0,50,0,none,none
+gn:733462,Bansko,Blagoevgrad,9232,village,0,0,50,0,none,none
+gn:733474,Banite,Smolyan,1279,village,0,0,50,0,none,none
+gn:733515,Balchik,Dobrich,13000,town,0,0,50,0,none,none
+gn:733579,Aytos,Burgas,20986,town,0,0,50,0,none,none
+gn:733606,Asparuhovo,Varna,27000,town,0,0,50,0,none,none
+gn:733618,Asenovgrad,Plovdiv,54778,town,0,0,50,0,none,none
+gn:733638,Ardino,Kardzhali,3531,village,0,0,50,0,none,none
+gn:733649,Apriltsi,Lovech,3851,village,0,0,50,0,none,none
+gn:733657,Antonovo,Targovishte,1543,village,0,0,50,0,none,none
+gn:733660,Anton,Sofia,1697,village,0,0,50,0,none,none
+gn:733679,Alfatar,Silistra,1916,village,0,0,50,0,none,none
+gn:733716,Aksakovo,Varna,7132,village,0,0,50,0,none,none
+gn:733722,Ahtopol,Burgas,1107,village,0,0,50,0,none,none
+gn:6355004,Zlatni Pyasatsi,Varna,9760,village,0,0,50,0,none,none
+gn:7874334,Aheloy,Burgas,2112,village,0,0,50,0,none,none
+gn:8604898,Balgarevo,Varna,1375,village,0,0,50,0,none,none

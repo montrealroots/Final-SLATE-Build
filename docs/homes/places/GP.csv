@@ -1,0 +1,26 @@
+place_id,name,region,population,market,verified_homes,dated_listings,shortfall_to_50,recorded_sales,rent_source,price_source
+gn:3578278,Vieux-Habitants,Guadeloupe,7728,village,0,0,50,0,none,none
+gn:3578324,Trois-Rivières,Guadeloupe,8812,village,0,0,50,0,none,none
+gn:3578351,Petites Anses,Guadeloupe,1314,village,0,0,50,0,none,none
+gn:3578441,Saint-François,Guadeloupe,12732,town,0,0,50,0,none,none
+gn:3578447,Sainte-Rose,Guadeloupe,20192,town,0,0,50,0,none,none
+gn:3578466,Sainte-Anne,Guadeloupe,22859,town,0,0,50,0,none,none
+gn:3578467,Saint-Claude,Guadeloupe,10134,town,0,0,50,0,none,none
+gn:3578575,Port-Louis,Guadeloupe,5515,village,0,0,50,0,none,none
+gn:3578594,Pointe-Noire,Guadeloupe,7749,village,0,0,50,0,none,none
+gn:3578599,Pointe-à-Pitre,Guadeloupe,15181,town,0,0,50,0,none,none
+gn:3578681,Petit-Canal,Guadeloupe,8554,village,0,0,50,0,none,none
+gn:3578682,Petit-Bourg,Guadeloupe,24994,town,0,0,50,0,none,none
+gn:3578959,Les Abymes,Guadeloupe,53514,town,0,0,50,0,none,none
+gn:3578967,Le Moule,Guadeloupe,22692,town,0,0,50,0,none,none
+gn:3578978,Le Gosier,Guadeloupe,28698,town,0,0,50,0,none,none
+gn:3579023,Lamentin,Guadeloupe,14891,town,0,0,50,0,none,none
+gn:3579232,Beauséjour,Guadeloupe,1716,village,0,0,50,0,none,none
+gn:3579250,Grand-Bourg,Guadeloupe,5867,village,0,0,50,0,none,none
+gn:3579267,Gourbeyre,Guadeloupe,8571,village,0,0,50,0,none,none
+gn:3579429,Deshaies,Guadeloupe,3792,village,0,0,50,0,none,none
+gn:3579585,Capesterre-Belle-Eau,Guadeloupe,19821,town,0,0,50,0,none,none
+gn:3579732,Basse-Terre,Guadeloupe,11472,town,0,0,50,0,none,none
+gn:3579761,Baillif,Guadeloupe,5705,village,0,0,50,0,none,none
+gn:3579767,Baie-Mahault,Guadeloupe,30837,town,0,0,50,0,none,none
+gn:3579789,Anse-Bertrand,Guadeloupe,5146,village,0,0,50,0,none,none

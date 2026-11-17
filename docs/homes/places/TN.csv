@@ -1,0 +1,286 @@
+place_id,name,region,population,market,verified_homes,dated_listings,shortfall_to_50,recorded_sales,rent_source,price_source
+gn:2463810,Matmata,Gabès Governorate,2406,village,0,0,50,0,none,none
+gn:2463941,Zaouiet Sousse,Sousse Governorate,20992,town,0,0,50,0,none,none
+gn:2463945,Zaouiet Kountech,Monastir Governorate,6713,village,0,0,50,0,none,none
+gn:2463946,Zaouiet Medien,Béja Governorate,5356,village,0,0,50,0,none,none
+gn:2463948,Zaouiet Azmour,Nabeul Governorate,5057,village,0,0,50,0,none,none
+gn:2463951,Zaouiat Djedidi,Nabeul Governorate,7886,village,0,0,50,0,none,none
+gn:2463988,Zriba-Village,Zaghouan Governorate,11849,town,0,0,50,0,none,none
+gn:2464020,Souassi,Mahdia Governorate,5381,village,0,0,50,0,none,none
+gn:2464037,Zahānah,Bizerte Governorate,3765,village,0,0,50,0,none,none
+gn:2464041,Zaghouan,Zaghouan Governorate,20798,town,0,0,50,0,none,none
+gn:2464050,Zaafrane,Kebili Governorate,1094,village,0,0,50,0,none,none
+gn:2464157,Wadi Maliz,Jendouba Governorate,2417,village,0,0,50,0,none,none
+gn:2464168,Oued Lill,Manouba,66100,town,0,0,50,0,none,none
+gn:2464179,Wadhraf,Gabès Governorate,9932,village,0,0,50,0,none,none
+gn:2464378,Moularès,Gafsa,21431,town,0,0,50,0,none,none
+gn:2464427,Touza,Monastir Governorate,7236,village,0,0,50,0,none,none
+gn:2464470,Tunis,Tunis Governorate,693210,large-city,0,0,50,0,none,none
+gn:2464522,Tinja,Bizerte Governorate,21167,town,0,0,50,0,none,none
+gn:2464569,Thelepte,Kasserine Governorate,6932,village,0,0,50,0,none,none
+gn:2464637,Tazarka,Nabeul Governorate,9388,village,0,0,50,0,none,none
+gn:2464648,Tozeur,Tozeur Governorate,37370,town,0,0,50,0,none,none
+gn:2464701,Tataouine,Tataouine,66924,town,0,0,50,0,none,none
+gn:2464704,Testour,Béja Governorate,13397,town,0,0,50,0,none,none
+gn:2464770,Tamaghzah,Tozeur Governorate,2750,village,0,0,50,0,none,none
+gn:2464795,Thala,Kasserine Governorate,18230,town,0,0,50,0,none,none
+gn:2464804,Takelsa,Nabeul Governorate,24109,town,0,0,50,0,none,none
+gn:2464809,Tajerouine,Kef Governorate,19362,town,0,0,50,0,none,none
+gn:2464855,Tabursuq,Béja Governorate,21022,town,0,0,50,0,none,none
+gn:2464858,Tebourba,Manouba,29948,town,0,0,50,0,none,none
+gn:2464860,Teboulbou,Gabès Governorate,16931,town,0,0,50,0,none,none
+gn:2464861,Teboulba,Monastir Governorate,41731,town,0,0,50,0,none,none
+gn:2464871,Tabarka,Jendouba Governorate,19770,town,0,0,50,0,none,none
+gn:2464915,Sousse,Sousse Governorate,221715,city,0,0,50,0,none,none
+gn:2464953,Soliman,Nabeul Governorate,45053,town,0,0,50,0,none,none
+gn:2464960,Sukrah,Ariana Governorate,159862,city,0,0,50,0,none,none
+gn:2464979,Sbeitla,Kasserine Governorate,23764,town,0,0,50,0,none,none
+gn:2465030,Siliana,Siliana Governorate,31251,town,0,0,50,0,none,none
+gn:2465108,Sidi Amor Bou Hajela,Kairouan,7828,village,0,0,50,0,none,none
+gn:2465138,Sidi Alouane,Mahdia Governorate,7610,village,0,0,50,0,none,none
+gn:2465146,Sidi Tabet,Ariana Governorate,11351,town,0,0,50,0,none,none
+gn:2465840,Sidi Bouzid,Sidi Bouzid Governorate,47595,town,0,0,50,0,none,none
+gn:2465879,Sidi Bou Rouis,Siliana Governorate,3265,village,0,0,50,0,none,none
+gn:2466034,Sidi Bou Ali,Sousse Governorate,10282,town,0,0,50,0,none,none
+gn:2466075,Sidi Ben Nour,Monastir Governorate,4520,village,0,0,50,0,none,none
+gn:2466294,Sidi Ameur,Monastir Governorate,8453,village,0,0,50,0,none,none
+gn:2466499,Sidi el Hani,Sousse Governorate,2820,village,0,0,50,0,none,none
+gn:2466688,Sidi Bou Said,Tunis Governorate,4988,village,0,0,50,0,none,none
+gn:2466698,Sidi Abid,Sfax Governorate,33419,town,0,0,50,0,none,none
+gn:2466897,Chorbane,Mahdia Governorate,5710,village,0,0,50,0,none,none
+gn:2466936,Cheylus,Zaghouan Governorate,5325,village,0,0,50,0,none,none
+gn:2467077,Chebika,Tozeur Governorate,1820,village,0,0,50,0,none,none
+gn:2467239,Sakiet Sidi Youssef,Kef Governorate,6442,village,0,0,50,0,none,none
+gn:2467242,Sakiet ez Zit,Sfax Governorate,100000,city,0,0,50,0,none,none
+gn:2467243,Sakiet ed Daier,Sfax Governorate,125204,city,0,0,50,0,none,none
+gn:2467246,Skanes,Monastir Governorate,64222,town,0,0,50,0,none,none
+gn:2467341,Salakta,Mahdia Governorate,3477,village,0,0,50,0,none,none
+gn:2467368,Sejenane,Bizerte Governorate,5718,village,0,0,50,0,none,none
+gn:2467454,Sfax,Sfax Governorate,280566,city,0,0,50,0,none,none
+gn:2467506,Sbiba,Kasserine Governorate,6504,village,0,0,50,0,none,none
+gn:2467521,La Sebala du Mornag,Ben Arous Governorate,33421,town,0,0,50,0,none,none
+gn:2467732,Rass el Djebel,Bizerte Governorate,31574,town,0,0,50,0,none,none
+gn:2467783,Remada,Tataouine,6289,village,0,0,50,0,none,none
+gn:2467813,Rafrāf,Bizerte Governorate,9850,village,0,0,50,0,none,none
+gn:2467815,Radès,Ben Arous Governorate,72209,town,0,0,50,0,none,none
+gn:2467820,Robâa Ouled Yahia,Siliana Governorate,4916,village,0,0,50,0,none,none
+gn:2467856,Ksour Essaf,Mahdia Governorate,37683,town,0,0,50,0,none,none
+gn:2467889,Ksiba,Sousse Governorate,11312,town,0,0,50,0,none,none
+gn:2467890,Ksibet el Mediouni,Monastir Governorate,14490,town,0,0,50,0,none,none
+gn:2467898,Grombalia,Nabeul Governorate,27236,town,0,0,50,0,none,none
+gn:2467914,Korbous,Nabeul Governorate,3532,village,0,0,50,0,none,none
+gn:2467920,Korba,Nabeul Governorate,65542,town,0,0,50,0,none,none
+gn:2467959,Kélibia,Nabeul Governorate,62993,town,0,0,50,0,none,none
+gn:2467980,Goubellat,Béja Governorate,4128,village,0,0,50,0,none,none
+gn:2468018,Kebili,Kebili Governorate,26310,town,0,0,50,0,none,none
+gn:2468106,Ksar Hellal,Monastir Governorate,55415,town,0,0,50,0,none,none
+gn:2468187,Bir Lahmar,Tataouine,7955,village,0,0,50,0,none,none
+gn:2468245,Carthage,Tunis Governorate,24216,town,0,0,50,0,none,none
+gn:2468285,El Fahs,Zaghouan Governorate,25100,town,0,0,50,0,none,none
+gn:2468328,Kalaat es Senam,Kef Governorate,8145,village,0,0,50,0,none,none
+gn:2468329,Galaat el Andeless,Ariana Governorate,18225,town,0,0,50,0,none,none
+gn:2468349,Gafour,Siliana Governorate,10272,town,0,0,50,0,none,none
+gn:2468353,Gafsa,Gafsa,95242,town,0,0,50,0,none,none
+gn:2468369,Gabès,Gabès Governorate,110075,city,0,0,50,0,none,none
+gn:2468459,Nibbar,Kef Governorate,3557,village,0,0,50,0,none,none
+gn:2468561,Nefta,Tozeur Governorate,22745,town,0,0,50,0,none,none
+gn:2468579,Nabeul,Nabeul Governorate,70437,town,0,0,50,0,none,none
+gn:2468925,Midoun,Medenine Governorate,32000,town,0,0,50,0,none,none
+gn:2469081,Maatmeur,Monastir Governorate,18996,town,0,0,50,0,none,none
+gn:2469088,Mateur,Bizerte Governorate,32492,town,0,0,50,0,none,none
+gn:2469140,Msaken,Sousse Governorate,89745,town,0,0,50,0,none,none
+gn:2469174,Mareth,Gabès Governorate,17385,town,0,0,50,0,none,none
+gn:2469230,Mégrine,Tunis Governorate,25863,town,0,0,50,0,none,none
+gn:2469250,Menzel Temime,Nabeul Governorate,38908,town,0,0,50,0,none,none
+gn:2469251,Menzel Chaker,Sfax Governorate,2278,village,0,0,50,0,none,none
+gn:2469252,Menzel Salem,Kef Governorate,2856,village,0,0,50,0,none,none
+gn:2469255,Menzel Kamel,Monastir Governorate,8432,village,0,0,50,0,none,none
+gn:2469256,Menzel Jemil,Bizerte Governorate,22231,town,0,0,50,0,none,none
+gn:2469258,Menzel Heurr,Nabeul Governorate,5473,village,0,0,50,0,none,none
+gn:2469262,Mennzel Bou Zelfa,Nabeul Governorate,18551,town,0,0,50,0,none,none
+gn:2469264,Menzel Bourguiba,Bizerte Governorate,58800,town,0,0,50,0,none,none
+gn:2469268,Menzel Abderhaman,Bizerte Governorate,19078,town,0,0,50,0,none,none
+gn:2469274,Manouba,Manouba,32005,town,0,0,50,0,none,none
+gn:2469321,Melloulèche,Mahdia Governorate,6948,village,0,0,50,0,none,none
+gn:2469341,Maktar,Siliana Governorate,13576,town,0,0,50,0,none,none
+gn:2469386,Medjez el Bab,Béja Governorate,24100,town,0,0,50,0,none,none
+gn:2469473,Medenine,Medenine Governorate,71406,town,0,0,50,0,none,none
+gn:2469571,Lemta,Monastir Governorate,5790,village,0,0,50,0,none,none
+gn:2469744,Kesra,Siliana Governorate,2729,village,0,0,50,0,none,none
+gn:2469766,Khunays,Monastir Governorate,12892,town,0,0,50,0,none,none
+gn:2470028,Kalaat Khasba,Kef Governorate,2558,village,0,0,50,0,none,none
+gn:2470088,Jendouba,Jendouba Governorate,51408,town,0,0,50,0,none,none
+gn:2470120,Jilma,Sidi Bouzid Governorate,5887,village,0,0,50,0,none,none
+gn:2470146,Jerissa,Kef Governorate,9807,village,0,0,50,0,none,none
+gn:2470173,Zarzis,Medenine Governorate,79316,town,0,0,50,0,none,none
+gn:2470189,Jemna,Kebili Governorate,7209,village,0,0,50,0,none,none
+gn:2470191,Djemmal,Monastir Governorate,55285,town,0,0,50,0,none,none
+gn:2470260,Djebeniana,Sfax Governorate,7190,village,0,0,50,0,none,none
+gn:2470384,Houmt Souk,Medenine Governorate,89228,town,0,0,50,0,none,none
+gn:2470483,Harqalah,Sousse Governorate,7423,village,0,0,50,0,none,none
+gn:2470506,Hennchir Ksar Rhaleb,Nabeul Governorate,4547,village,0,0,50,0,none,none
+gn:2470578,El-Hamma-Djerid,Tozeur Governorate,6467,village,0,0,50,0,none,none
+gn:2470579,Hammam Sousse,Sousse Governorate,42691,town,0,0,50,0,none,none
+gn:2470586,Hammam el Rhezez,Nabeul Governorate,9087,village,0,0,50,0,none,none
+gn:2470588,Hammam-Lif,Ben Arous Governorate,44207,town,0,0,50,0,none,none
+gn:2470649,Hamadet el Kebalou,Monastir Governorate,4406,village,0,0,50,0,none,none
+gn:2470656,La Goulette,Tunis Governorate,45711,town,0,0,50,0,none,none
+gn:2470789,Haïdra,Kasserine Governorate,3451,village,0,0,50,0,none,none
+gn:2470800,Haffouz,Kairouan,8472,village,0,0,50,0,none,none
+gn:2470927,Ghomrassen,Tataouine,9568,village,0,0,50,0,none,none
+gn:2470996,Rhar el Melah,Bizerte Governorate,10530,town,0,0,50,0,none,none
+gn:2471003,Ghardimaou,Jendouba Governorate,19574,town,0,0,50,0,none,none
+gn:2471012,Rhennouch,Gabès Governorate,28051,town,0,0,50,0,none,none
+gn:2471055,Fouchana,Ben Arous Governorate,45107,town,0,0,50,0,none,none
+gn:2471059,Feriana,Kasserine Governorate,75000,town,0,0,50,0,none,none
+gn:2471287,Douz,Kebili Governorate,34221,town,0,0,50,0,none,none
+gn:2471454,Degache,Tozeur Governorate,8134,village,0,0,50,0,none,none
+gn:2471475,Douar Tindja,Bizerte Governorate,18551,town,0,0,50,0,none,none
+gn:2471637,Dar Chabanne,Nabeul Governorate,42140,town,0,0,50,0,none,none
+gn:2471700,Dar Ouled Khalifa,Kasserine Governorate,7703,village,0,0,50,0,none,none
+gn:2471726,Dar Ali Ben Hassene,Monastir Governorate,5068,village,0,0,50,0,none,none
+gn:2471788,Dahmani,Kef Governorate,30720,town,0,0,50,0,none,none
+gn:2471915,Bou Arkoub,Nabeul Governorate,12312,town,0,0,50,0,none,none
+gn:2471944,Bou Chemma,Gabès Governorate,12182,town,0,0,50,0,none,none
+gn:2471956,Bou Salem,Jendouba Governorate,14571,town,0,0,50,0,none,none
+gn:2471992,Borj Mejen Bel Abbès,Kasserine Governorate,6471,village,0,0,50,0,none,none
+gn:2472119,Bou Merdès,Mahdia Governorate,4327,village,0,0,50,0,none,none
+gn:2472196,Bou Hadjar,Monastir Governorate,6137,village,0,0,50,0,none,none
+gn:2472213,Bou Ficha,Sousse Governorate,9931,village,0,0,50,0,none,none
+gn:2472247,Bou Attouche,Gabès Governorate,2700,village,0,0,50,0,none,none
+gn:2472261,Bou Arada,Siliana Governorate,13170,town,0,0,50,0,none,none
+gn:2472375,Bir M’cherga,Zaghouan Governorate,8329,village,0,0,50,0,none,none
+gn:2472379,Bir Ali Ben Khalifa,Sfax Governorate,4905,village,0,0,50,0,none,none
+gn:2472380,Bir el Hafey,Sidi Bouzid Governorate,6498,village,0,0,50,0,none,none
+gn:2472431,Ben Gardane,Medenine Governorate,87404,town,0,0,50,0,none,none
+gn:2472439,Ben Metir,Jendouba Governorate,1064,village,0,0,50,0,none,none
+gn:2472479,Ben Arous,Ben Arous Governorate,88322,town,0,0,50,0,none,none
+gn:2472675,Le Bardo,Tunis Governorate,71961,town,0,0,50,0,none,none
+gn:2472706,Bizerte,Bizerte Governorate,138430,city,0,0,50,0,none,none
+gn:2472722,Beni Khiar,Nabeul Governorate,21624,town,0,0,50,0,none,none
+gn:2472724,Beni Khalled,Nabeul Governorate,15439,town,0,0,50,0,none,none
+gn:2472726,Beni Kheddache,Medenine Governorate,2968,village,0,0,50,0,none,none
+gn:2472732,Beni Hassane,Monastir Governorate,8801,village,0,0,50,0,none,none
+gn:2472744,Banbalah,Monastir Governorate,12367,town,0,0,50,0,none,none
+gn:2472774,Béja,Béja Governorate,61568,town,0,0,50,0,none,none
+gn:2472833,Zouila,Mahdia Governorate,44349,town,0,0,50,0,none,none
+gn:2472837,Zarat,Gabès Governorate,5661,village,0,0,50,0,none,none
+gn:2472838,Zeramedine,Monastir Governorate,16806,town,0,0,50,0,none,none
+gn:2472888,Ain Jaloulah,Kairouan,1757,village,0,0,50,0,none,none
+gn:2472913,Aïne Draham,Jendouba Governorate,9659,village,0,0,50,0,none,none
+gn:2473161,Skhira,Sfax Governorate,11944,town,0,0,50,0,none,none
+gn:2473163,Sbikha,Kairouan,8036,village,0,0,50,0,none,none
+gn:2473164,Sīdī Ḥusayn,Tunis Governorate,130255,city,0,0,50,0,none,none
+gn:2473169,Seïada,Monastir Governorate,13711,town,0,0,50,0,none,none
+gn:2473172,Es Somaa,Nabeul Governorate,7019,village,0,0,50,0,none,none
+gn:2473177,As Sars,Kef Governorate,12137,town,0,0,50,0,none,none
+gn:2473183,As Sanad,Gafsa,9533,village,0,0,50,0,none,none
+gn:2473190,Sahline,Monastir Governorate,21533,town,0,0,50,0,none,none
+gn:2473229,Chebba,Mahdia Governorate,22227,town,0,0,50,0,none,none
+gn:2473247,Aryanah,Ariana Governorate,114486,city,0,0,50,0,none,none
+gn:2473257,Ar Rudayyif,Gafsa,26976,town,0,0,50,0,none,none
+gn:2473258,Er Regueb,Sidi Bouzid Governorate,11420,town,0,0,50,0,none,none
+gn:2473264,Rohia,Kasserine Governorate,4231,village,0,0,50,0,none,none
+gn:2473274,Rejiche,Mahdia Governorate,11410,town,0,0,50,0,none,none
+gn:2473358,Enfidha,Sousse Governorate,11138,town,0,0,50,0,none,none
+gn:2473417,Ousseltia,Kairouan,9006,village,0,0,50,0,none,none
+gn:2473420,Ouardenine,Monastir Governorate,18287,town,0,0,50,0,none,none
+gn:2473439,El Ksour,Kef Governorate,5576,village,0,0,50,0,none,none
+gn:2473449,Kairouan,Kairouan,139070,city,0,0,50,0,none,none
+gn:2473454,El Guetar,Gafsa,14088,town,0,0,50,0,none,none
+gn:2473457,Kasserine,Kasserine Governorate,84365,town,0,0,50,0,none,none
+gn:2473466,El Ksar,Gafsa,33729,town,0,0,50,0,none,none
+gn:2473470,Gremda,Sfax Governorate,40862,town,0,0,50,0,none,none
+gn:2473481,Kalaa Srira,Sousse Governorate,44220,town,0,0,50,0,none,none
+gn:2473483,Kelaa Kebira,Sousse Governorate,63264,town,0,0,50,0,none,none
+gn:2473486,El Golaa,Kebili Governorate,7912,village,0,0,50,0,none,none
+gn:2473489,La Mornaghia,Manouba,23100,town,0,0,50,0,none,none
+gn:2473493,Monastir,Monastir Governorate,93306,town,0,0,50,0,none,none
+gn:2473496,Moknine,Monastir Governorate,62802,town,0,0,50,0,none,none
+gn:2473499,La Mohammedia,Tunis Governorate,66593,town,0,0,50,0,none,none
+gn:2473513,El Maknassi,Sidi Bouzid Governorate,14773,town,0,0,50,0,none,none
+gn:2473514,El Mida,Nabeul Governorate,4176,village,0,0,50,0,none,none
+gn:2473517,Metlaoui,Gafsa,39021,town,0,0,50,0,none,none
+gn:2473525,Mezzouna,Sidi Bouzid Governorate,7390,village,0,0,50,0,none,none
+gn:2473531,Métouia,Gabès Governorate,20648,town,0,0,50,0,none,none
+gn:2473533,Al Matlīn,Bizerte Governorate,9904,village,0,0,50,0,none,none
+gn:2473537,El Masdour,Monastir Governorate,4705,village,0,0,50,0,none,none
+gn:2473538,Messadine,Sousse Governorate,13766,town,0,0,50,0,none,none
+gn:2473540,La Marsa,Tunis Governorate,92987,town,0,0,50,0,none,none
+gn:2473551,El Mgarsa,Medenine Governorate,63528,town,0,0,50,0,none,none
+gn:2473558,El Maamoura,Nabeul Governorate,8039,village,0,0,50,0,none,none
+gn:2473570,Mahires,Sfax Governorate,15878,town,0,0,50,0,none,none
+gn:2473572,Mahdia,Mahdia Governorate,51803,town,0,0,50,0,none,none
+gn:2473578,M’dhilla,Gafsa,12814,town,0,0,50,0,none,none
+gn:2473608,Khledia,Ben Arous Governorate,8470,village,0,0,50,0,none,none
+gn:2473626,Le Kram,Tunis Governorate,88302,town,0,0,50,0,none,none
+gn:2473628,Le Krib,Siliana Governorate,7841,village,0,0,50,0,none,none
+gn:2473633,Kellabine,Sfax Governorate,15501,town,0,0,50,0,none,none
+gn:2473634,El Kef,Kef Governorate,53596,town,0,0,50,0,none,none
+gn:2473639,Jedeïda,Manouba,45000,town,0,0,50,0,none,none
+gn:2473643,Djebibina,Zaghouan Governorate,7567,village,0,0,50,0,none,none
+gn:2473654,El Jem,Mahdia Governorate,21544,town,0,0,50,0,none,none
+gn:2473662,Djebel Abiod,Béja Governorate,7302,village,0,0,50,0,none,none
+gn:2473716,El Haouaria,Nabeul Governorate,9508,village,0,0,50,0,none,none
+gn:2473738,Erriadh,Medenine Governorate,14426,town,0,0,50,0,none,none
+gn:2473742,Hencha,Sfax Governorate,7575,village,0,0,50,0,none,none
+gn:2473744,Hammamet,Nabeul Governorate,106326,city,0,0,50,0,none,none
+gn:2473747,El Hamma,Gabès Governorate,47000,town,0,0,50,0,none,none
+gn:2473776,Ghraiba,Sfax Governorate,3251,village,0,0,50,0,none,none
+gn:2473788,Fernana,Jendouba Governorate,4681,village,0,0,50,0,none,none
+gn:2473803,El Borma,Tataouine,3250,village,0,0,50,0,none,none
+gn:2473811,El Bahira,Mahdia Governorate,7412,village,0,0,50,0,none,none
+gn:2473823,El Battan,Manouba,6458,village,0,0,50,0,none,none
+gn:2473826,Bekalta,Monastir Governorate,20506,town,0,0,50,0,none,none
+gn:2473835,El Ain,Sfax Governorate,43333,town,0,0,50,0,none,none
+gn:2473851,El Aroussa,Siliana Governorate,2905,village,0,0,50,0,none,none
+gn:2473859,Agareb,Sfax Governorate,11513,town,0,0,50,0,none,none
+gn:2473876,El Alia,Bizerte Governorate,18410,town,0,0,50,0,none,none
+gn:2473883,El Ala,Kairouan,3276,village,0,0,50,0,none,none
+gn:2473900,El Abadlia,Sidi Bouzid Governorate,2494,village,0,0,50,0,none,none
+gn:2473913,Akouda,Sousse Governorate,27200,town,0,0,50,0,none,none
+gn:2473937,Ajim,Medenine Governorate,24294,town,0,0,50,0,none,none
+gn:2474031,Dehiba,Tataouine,4295,village,0,0,50,0,none,none
+gn:2571434,Dar Haj Ahmed Ben Ameur,Kairouan,2921,village,0,0,50,0,none,none
+gn:2581754,Douane,Nabeul Governorate,60192,town,0,0,50,0,none,none
+gn:2584420,Dar el Haj Taïeb,Sfax Governorate,26304,town,0,0,50,0,none,none
+gn:2584860,Borj el Amri,Manouba,6519,village,0,0,50,0,none,none
+gn:2585234,Hajeb el Aïoun,Kairouan,10631,town,0,0,50,0,none,none
+gn:2586370,Ez Zahra,Ben Arous Governorate,34962,town,0,0,50,0,none,none
+gn:2586938,Ailet Jridani,Kairouan,1705,village,0,0,50,0,none,none
+gn:2587782,Menzel M’heri,Kairouan,3870,village,0,0,50,0,none,none
+gn:6355180,Port el Kantaoui,Sousse Governorate,6000,village,0,0,50,0,none,none
+gn:6692494,Borj Cedria,Ben Arous Governorate,31858,town,0,0,50,0,none,none
+gn:7870034,Jedelienne,Kasserine Governorate,4352,village,0,0,50,0,none,none
+gn:7870035,Rouhia,Siliana Governorate,4688,village,0,0,50,0,none,none
+gn:7870038,Nasrallah,Kairouan,5012,village,0,0,50,0,none,none
+gn:7870039,Ouerdanine,Monastir Governorate,23707,town,0,0,50,0,none,none
+gn:7870240,Rawad,Ariana Governorate,94961,town,0,0,50,0,none,none
+gn:8335221,Aousja,Bizerte Governorate,5126,village,0,0,50,0,none,none
+gn:11204409,Chehimet Nord,Mahdia Governorate,5120,village,0,0,50,0,none,none
+gn:11204413,El Mourouj,Ben Arous Governorate,120732,city,0,0,50,0,none,none
+gn:11204573,Ezzouhour,Sousse Governorate,17348,town,0,0,50,0,none,none
+gn:11239116,Nouvelle Matmata,Gabès Governorate,7526,village,0,0,50,0,none,none
+gn:11778224,Maagoula,Béja Governorate,8392,village,0,0,50,0,none,none
+gn:11821621,Kondhar,Sousse Governorate,3816,village,0,0,50,0,none,none
+gn:11862748,Ben Aoun,Sidi Bouzid Governorate,9297,village,0,0,50,0,none,none
+gn:11862814,El Amra,Sidi Bouzid Governorate,3361,village,0,0,50,0,none,none
+gn:11862824,Souk Lahad,Kebili Governorate,13218,town,0,0,50,0,none,none
+gn:12037388,Den Den,Manouba,26787,town,0,0,50,0,none,none
+gn:12037507,Boumhel El Bassatine,Ben Arous Governorate,40101,town,0,0,50,0,none,none
+gn:13132694,Touiref,Kef Governorate,1920,village,0,0,50,0,none,none
+gn:13132695,Hebira,Mahdia Governorate,3248,village,0,0,50,0,none,none
+gn:13132696,Menzel Fersi,Monastir Governorate,3603,village,0,0,50,0,none,none
+gn:13132698,Amiret El Fhoul,Monastir Governorate,5255,village,0,0,50,0,none,none
+gn:13132700,Amiret Touazra,Monastir Governorate,6261,village,0,0,50,0,none,none
+gn:13132701,Menzel Bouzaiane,Sidi Bouzid Governorate,7113,village,0,0,50,0,none,none
+gn:13132702,Kerker,Mahdia Governorate,7478,village,0,0,50,0,none,none
+gn:13132703,Amiret Hajjaj,Monastir Governorate,8121,village,0,0,50,0,none,none
+gn:13132705,Menzel Ennour,Monastir Governorate,11772,town,0,0,50,0,none,none
+gn:13132706,Menzel Hayet,Monastir Governorate,12952,town,0,0,50,0,none,none
+gn:13132707,Bennane Bodheur,Monastir Governorate,14258,town,0,0,50,0,none,none
+gn:13132708,Bembla et Mnara,Monastir Governorate,16078,town,0,0,50,0,none,none
+gn:13132709,Chenini Nahal,Gabès Governorate,17248,town,0,0,50,0,none,none
+gn:13132710,Mnihla,Ariana Governorate,58641,town,0,0,50,0,none,none
+gn:13132711,Douar Hicher,Manouba,82532,town,0,0,50,0,none,none
+gn:13132712,Ettadhamen,Ariana Governorate,84312,town,0,0,50,0,none,none

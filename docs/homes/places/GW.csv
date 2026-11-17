@@ -1,0 +1,51 @@
+place_id,name,region,population,market,verified_homes,dated_listings,shortfall_to_50,recorded_sales,rent_source,price_source
+gn:2368657,Xitole,Bafatá,19424,town,0,0,50,0,none,none
+gn:2368962,Tite,,1109,village,0,0,50,0,none,none
+gn:2369196,Sonaco,Gabú,2753,village,0,0,50,0,none,none
+gn:2370045,São Domingos,Cacheu,6004,village,0,0,50,0,none,none
+gn:2370263,Safim,Biombo,3193,village,0,0,50,0,none,none
+gn:2370317,Reino de Bandim,Bissau,44718,town,0,0,50,0,none,none
+gn:2370318,Reino de Antula,Bissau,30778,town,0,0,50,0,none,none
+gn:2370358,Quinhámel,Biombo,6602,village,0,0,50,0,none,none
+gn:2370458,Quelele,Bissau,28898,town,0,0,50,0,none,none
+gn:2370473,Quebo,Tombali,7072,village,0,0,50,0,none,none
+gn:2370525,Prábis,Biombo,3223,village,0,0,50,0,none,none
+gn:2370740,Plaque,Bissau,27633,town,0,0,50,0,none,none
+gn:2370751,Pirada,Gabú,2980,village,0,0,50,0,none,none
+gn:2370776,Pitche,Gabú,5655,village,0,0,50,0,none,none
+gn:2370839,Pefiné,,14808,town,0,0,50,0,none,none
+gn:2371224,Nhacra,Oio,1966,village,0,0,50,0,none,none
+gn:2371467,Mansôa,Oio,9422,village,0,0,50,0,none,none
+gn:2371491,Mansabá,Oio,5964,village,0,0,50,0,none,none
+gn:2371663,Madina do Boé,Gabú,11750,town,0,0,50,0,none,none
+gn:2372015,Jabicunda,,12395,town,0,0,50,0,none,none
+gn:2372095,Ingoré,Cacheu,9189,village,0,0,50,0,none,none
+gn:2372532,Gabú,Gabú,49371,town,0,0,50,0,none,none
+gn:2372559,Fulacunda,Quinara,1804,village,0,0,50,0,none,none
+gn:2372647,Farim,Oio,10207,town,0,0,50,0,none,none
+gn:2372770,Empada,,2680,village,0,0,50,0,none,none
+gn:2373235,Contumo,Bissau,45482,town,0,0,50,0,none,none
+gn:2373237,Contuboel,Bafatá,4871,village,0,0,50,0,none,none
+gn:2373526,Catió,Tombali,9898,village,0,0,50,0,none,none
+gn:2373950,Canchungo,Cacheu,13652,town,0,0,50,0,none,none
+gn:2373951,Canchungo,Cacheu,6853,village,0,0,50,0,none,none
+gn:2374218,Caió,Cacheu,1398,village,0,0,50,0,none,none
+gn:2374294,Cacine,Tombali,1151,village,0,0,50,0,none,none
+gn:2374311,Cacheu,Cacheu,10490,town,0,0,50,0,none,none
+gn:2374519,Bula,Cacheu,10213,town,0,0,50,0,none,none
+gn:2374583,Bubaque,Bolama,9244,village,0,0,50,0,none,none
+gn:2374588,Buba,Quinara,8952,village,0,0,50,0,none,none
+gn:2374688,Bolama,Bolama,10769,town,0,0,50,0,none,none
+gn:2374759,Bissorã,Oio,12688,town,0,0,50,0,none,none
+gn:2374760,Bissorã,Oio,11964,town,0,0,50,0,none,none
+gn:2374775,Bissau,Bissau,439704,city,0,0,50,0,none,none
+gn:2375181,Bambadinca,Bafatá,7620,village,0,0,50,0,none,none
+gn:2375254,Bafatá,Bafatá,33502,town,0,0,50,0,none,none
+gn:13645740,Ajuda,Bissau,10429,town,0,0,50,0,none,none
+gn:13645741,Bairro Militar,Bissau,65274,town,0,0,50,0,none,none
+gn:13645742,Belem,Bissau,17263,town,0,0,50,0,none,none
+gn:13645743,CIM,Bissau,14985,town,0,0,50,0,none,none
+gn:13645744,Luanda,Bissau,25236,town,0,0,50,0,none,none
+gn:13645745,Missira,Bissau,38838,town,0,0,50,0,none,none
+gn:13645746,Sintra-Nema,Bissau,21451,town,0,0,50,0,none,none
+gn:13645747,Santa-Luzia,Bissau,17204,town,0,0,50,0,none,none

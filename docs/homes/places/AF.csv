@@ -1,0 +1,320 @@
+place_id,name,region,population,market,verified_homes,dated_listings,shortfall_to_50,recorded_sales,rent_source,price_source
+gn:1120471,Zōr Kōṯ,Khowst,0,village,0,0,50,0,none,none
+gn:1120473,Wulêswālī Bihsūd,Maidan Wardak Province,0,village,0,0,50,0,none,none
+gn:1120483,Kuhsān,Herat,12087,town,0,0,50,0,none,none
+gn:1120484,Lāsh,Faryab,0,village,0,0,50,0,none,none
+gn:1120487,Tukzār,Sar-e Pol Province,12021,town,0,0,50,0,none,none
+gn:1120497,Bati,Nangarhar,0,village,0,0,50,0,none,none
+gn:1120500,Mīray,Ghazni,0,village,0,0,50,0,none,none
+gn:1120501,Āq Kupruk,Balkh,0,village,0,0,50,0,none,none
+gn:1120543,Zurmat,Paktia,0,village,0,0,50,0,none,none
+gn:1120616,Zaybāk,Badakhshan,0,village,0,0,50,0,none,none
+gn:1120627,Zīārat-e Shāh Maqşūd,Kandahar,0,village,0,0,50,0,none,none
+gn:1120711,Zindah Jān,Herat,10418,town,0,0,50,0,none,none
+gn:1120863,Zarghūn Shahr,Paktika,13737,town,0,0,50,0,none,none
+gn:1120879,Zaṟah Sharan,Paktika,7366,village,0,0,50,0,none,none
+gn:1120985,Zaranj,Nimroz,49851,town,0,0,50,0,none,none
+gn:1121045,Zamtō Kêlay,Kandahar,0,village,0,0,50,0,none,none
+gn:1121271,Yangī Qal‘ah,Takhar,11100,town,0,0,50,0,none,none
+gn:1121381,Bāzār-e Yakāwlang,Bamyan,65000,town,0,0,50,0,none,none
+gn:1121418,Yaḩyá Khēl,Paktika,0,village,0,0,50,0,none,none
+gn:1121855,Wāshēr,Helmand,0,village,0,0,50,0,none,none
+gn:1122068,Tōrmay,Ghazni,0,village,0,0,50,0,none,none
+gn:1122189,Tūlak,Ghowr,0,village,0,0,50,0,none,none
+gn:1122402,Tītān,Ghowr,0,village,0,0,50,0,none,none
+gn:1122408,Tīr Pul,Herat,6979,village,0,0,50,0,none,none
+gn:1122464,Taywarah,Ghowr,0,village,0,0,50,0,none,none
+gn:1122705,Bāzār-e Tashkān,Badakhshan,0,village,0,0,50,0,none,none
+gn:1122747,Tarinkot,Oruzgan,10000,town,0,0,50,0,none,none
+gn:1123004,Taloqan,Takhar,64256,town,0,0,50,0,none,none
+gn:1123343,Tagāw-Bāy,Sar-e Pol Province,9096,village,0,0,50,0,none,none
+gn:1123424,Tagāb,Kapisa,6400,village,0,0,50,0,none,none
+gn:1123666,Markaz-e Ḩukūmat-e Sulţān-e Bakwāh,Farah,0,village,0,0,50,0,none,none
+gn:1123906,Spīn Bōldak,Kandahar,0,village,0,0,50,0,none,none
+gn:1123935,Spērah,Khowst,0,village,0,0,50,0,none,none
+gn:1123963,Sōzmah Qal‘ah,Sar-e Pol Province,0,village,0,0,50,0,none,none
+gn:1124621,Siyāhgird,Parwan,0,village,0,0,50,0,none,none
+gn:1124973,S̲h̲ēwah,Nangarhar,0,village,0,0,50,0,none,none
+gn:1125155,Shīnḏanḏ,Herat,29264,town,0,0,50,0,none,none
+gn:1125267,Shaykh Amīr Kêlay,Khowst,0,village,0,0,50,0,none,none
+gn:1125362,Qāshqāl,Parwan,0,village,0,0,50,0,none,none
+gn:1125444,Shibirghān,Jowzjan,55641,town,0,0,50,0,none,none
+gn:1125497,Shwāk,Paktia,0,village,0,0,50,0,none,none
+gn:1125866,Shahr-e Şafā,Zabul,0,village,0,0,50,0,none,none
+gn:1125890,Shahrān,Badakhshan,0,village,0,0,50,0,none,none
+gn:1125896,Shahrak,Ghowr,15967,town,0,0,50,0,none,none
+gn:1125962,‘Alāqahdārī Shāh Jōy,Zabul,0,village,0,0,50,0,none,none
+gn:1126216,Wulêswālī Sayyid Karam,Paktia,0,village,0,0,50,0,none,none
+gn:1126263,Markaz-e Sayyidābād,Maidan Wardak Province,7301,village,0,0,50,0,none,none
+gn:1126266,Şayād,Sar-e Pol Province,0,village,0,0,50,0,none,none
+gn:1126606,Sidqābād,Kapisa,7407,village,0,0,50,0,none,none
+gn:1126710,Sāyagaz,Zabul,0,village,0,0,50,0,none,none
+gn:1126796,Sar-e Tayghān,Daykundi,0,village,0,0,50,0,none,none
+gn:1126884,Sarōbī,Kabul,0,village,0,0,50,0,none,none
+gn:1126935,Sar Kāṉī,Kunar,0,village,0,0,50,0,none,none
+gn:1127001,Sarfirāz Kalā,Ghazni,0,village,0,0,50,0,none,none
+gn:1127110,Sar-e Pul,Sar-e Pol Province,52121,town,0,0,50,0,none,none
+gn:1127451,Sar Chakān,Faryab,0,village,0,0,50,0,none,none
+gn:1127547,Sangīn,Helmand,13579,town,0,0,50,0,none,none
+gn:1127604,Sang-e Māshah,Ghazni,0,village,0,0,50,0,none,none
+gn:1127628,Sang-e Chārak,Sar-e Pol Province,15377,town,0,0,50,0,none,none
+gn:1127664,Sang Atesh,Badghis,0,village,0,0,50,0,none,none
+gn:1127667,Sangar Sarāy,Nangarhar,0,village,0,0,50,0,none,none
+gn:1127768,Aībak,Samangan,47823,town,0,0,50,0,none,none
+gn:1128186,Rū-ye Sang,Bamyan,0,village,0,0,50,0,none,none
+gn:1128239,Rūdbār,Nimroz,11034,town,0,0,50,0,none,none
+gn:1128265,Rustāq,Takhar,25636,town,0,0,50,0,none,none
+gn:1128310,Rabāţ-e Sangī-ye Pā’īn,Herat,0,village,0,0,50,0,none,none
+gn:1128565,Rāmak,Ghazni,0,village,0,0,50,0,none,none
+gn:1128954,Qurghān,Faryab,0,village,0,0,50,0,none,none
+gn:1129013,Quchanghī,Daykundi,0,village,0,0,50,0,none,none
+gn:1129077,Qaīşār,Faryab,0,village,0,0,50,0,none,none
+gn:1129516,Qarqīn,Jowzjan,15018,town,0,0,50,0,none,none
+gn:1129555,Qarghah’ī,Laghman,0,village,0,0,50,0,none,none
+gn:1129636,Qarchī Gak,Balkh,8942,village,0,0,50,0,none,none
+gn:1129648,Qarāwul,Kunduz,24544,town,0,0,50,0,none,none
+gn:1129678,Qarah Bāgh,Herat,12412,town,0,0,50,0,none,none
+gn:1129680,Qarah Bāgh,Ghazni,0,village,0,0,50,0,none,none
+gn:1129867,Qala i Naw,Badghis,9000,village,0,0,50,0,none,none
+gn:1129928,Qal‘ah-ye Kūf,Badakhshan,0,village,0,0,50,0,none,none
+gn:1129932,Qal‘ah-ye Kuhnah,Farah,0,village,0,0,50,0,none,none
+gn:1130065,Qal‘ah-ye Shahr,Sar-e Pol Province,7756,village,0,0,50,0,none,none
+gn:1130131,Qalāt,Zabul,12191,town,0,0,50,0,none,none
+gn:1130132,Qal‘ah-ye Shāhī,Nangarhar,0,village,0,0,50,0,none,none
+gn:1130233,Qādis,Badghis,0,village,0,0,50,0,none,none
+gn:1130469,Pārūn,Nuristan,1000,village,0,0,50,0,none,none
+gn:1130490,Pul-e Khumrī,Baghlan,56369,town,0,0,50,0,none,none
+gn:1130497,Pul-e ‘Alam,Logar,13247,town,0,0,50,0,none,none
+gn:1130981,Pasnay,Sar-e Pol Province,0,village,0,0,50,0,none,none
+gn:1130997,Pāshmūl,Kandahar,0,village,0,0,50,0,none,none
+gn:1131045,Pasāband,Ghowr,0,village,0,0,50,0,none,none
+gn:1131162,Panjāb,Bamyan,13471,town,0,0,50,0,none,none
+gn:1131316,Paghmān,Kabul,49157,town,0,0,50,0,none,none
+gn:1131389,Ōmnah,Paktika,0,village,0,0,50,0,none,none
+gn:1131406,Ōbêh,Herat,0,village,0,0,50,0,none,none
+gn:1131462,Uruzgān,Oruzgan,13388,town,0,0,50,0,none,none
+gn:1131479,Urgun,Paktika,0,village,0,0,50,0,none,none
+gn:1131591,Nūsay,Badakhshan,0,village,0,0,50,0,none,none
+gn:1131625,Nūrgal,Kunar,0,village,0,0,50,0,none,none
+gn:1131649,Now Zād,Helmand,0,village,0,0,50,0,none,none
+gn:1131833,Nīlī,Daykundi,30058,town,0,0,50,0,none,none
+gn:1132034,Nayak,Bamyan,0,village,0,0,50,0,none,none
+gn:1132046,Nāyak,Zabul,0,village,0,0,50,0,none,none
+gn:1132127,Now Dahānak,Panjshir,0,village,0,0,50,0,none,none
+gn:1132172,Ōkak,Ghazni,0,village,0,0,50,0,none,none
+gn:1132336,Nāṟay,Kunar,0,village,0,0,50,0,none,none
+gn:1132344,Narang,Kunar,0,village,0,0,50,0,none,none
+gn:1132465,Nīkêh,Paktika,0,village,0,0,50,0,none,none
+gn:1132495,Nahrīn,Baghlan,22363,town,0,0,50,0,none,none
+gn:1132550,Ḩukūmat-e Nād ‘Alī,Helmand,0,village,0,0,50,0,none,none
+gn:1132604,Mūsá Qal‘ah,Helmand,0,village,0,0,50,0,none,none
+gn:1132770,Bala Murghab,Badghis,0,village,0,0,50,0,none,none
+gn:1132807,Muqêr,Ghazni,0,village,0,0,50,0,none,none
+gn:1133105,Muḩammad Āghah Wuluswālī,Logar,0,village,0,0,50,0,none,none
+gn:1133154,Mīzān ‘Alāqahdārī,Zabul,0,village,0,0,50,0,none,none
+gn:1133270,Mīr Bachah Kōṯ,Kabul,5405,village,0,0,50,0,none,none
+gn:1133279,Mīrān,Maidan Wardak Province,0,village,0,0,50,0,none,none
+gn:1133310,Mīrābād,Nimroz,14160,town,0,0,50,0,none,none
+gn:1133453,Maymana,Faryab,75900,town,0,0,50,0,none,none
+gn:1133456,Maīdān Khūlah,Paktia,0,village,0,0,50,0,none,none
+gn:1133544,Mingajik,Jowzjan,0,village,0,0,50,0,none,none
+gn:1133574,Mehtar Lām,Laghman,17345,town,0,0,50,0,none,none
+gn:1133616,Mazār-e Sharīf,Balkh,523300,large-city,0,0,50,0,none,none
+gn:1133657,Māymay,Badakhshan,0,village,0,0,50,0,none,none
+gn:1133689,Mutā Khān,Paktika,0,village,0,0,50,0,none,none
+gn:1133749,Mashhad,Badakhshan,0,village,0,0,50,0,none,none
+gn:1133856,Mardīān,Jowzjan,0,village,0,0,50,0,none,none
+gn:1133987,Mandōl,Nuristan,0,village,0,0,50,0,none,none
+gn:1134074,Māmā Khēl,Nangarhar,0,village,0,0,50,0,none,none
+gn:1134720,Lashkar Gāh,Helmand,43934,town,0,0,50,0,none,none
+gn:1134724,Lāsh-e Juwayn,Farah,0,village,0,0,50,0,none,none
+gn:1134762,Larkird,Sar-e Pol Province,11635,town,0,0,50,0,none,none
+gn:1134887,La‘l,Ghowr,0,village,0,0,50,0,none,none
+gn:1135158,Kushk,Herat,16952,town,0,0,50,0,none,none
+gn:1135427,Rāẕay Balochi,Nimroz,2000,village,0,0,50,0,none,none
+gn:1135514,Kōṯowāl,Nangarhar,0,village,0,0,50,0,none,none
+gn:1135625,Kushk-e Kuhnah,Herat,0,village,0,0,50,0,none,none
+gn:1135656,Kuran wa Munjan,Badakhshan,0,village,0,0,50,0,none,none
+gn:1135689,Kunduz,Kunduz,161902,city,0,0,50,0,none,none
+gn:1135960,Khōshī,Logar,0,village,0,0,50,0,none,none
+gn:1135980,Khōshāmand,Paktika,0,village,0,0,50,0,none,none
+gn:1136235,Khwājah Ghār,Takhar,0,village,0,0,50,0,none,none
+gn:1136250,Khwājah Dū Kōh,Jowzjan,0,village,0,0,50,0,none,none
+gn:1136354,Deh Khwāhān,Badakhshan,0,village,0,0,50,0,none,none
+gn:1136414,Khulbisāt,Khowst,0,village,0,0,50,0,none,none
+gn:1136442,Khūgyāṉī,Kandahar,0,village,0,0,50,0,none,none
+gn:1136469,Khōst,Khowst,96123,town,0,0,50,0,none,none
+gn:1136575,Khulm,Balkh,64933,town,0,0,50,0,none,none
+gn:1136604,Khudāydād Khēl,Bamyan,0,village,0,0,50,0,none,none
+gn:1136723,Khinjān,Baghlan,0,village,0,0,50,0,none,none
+gn:1136737,Khinj,Panjshir,0,village,0,0,50,0,none,none
+gn:1136863,Khāsh,Nimroz,15133,town,0,0,50,0,none,none
+gn:1137079,Khān Neshīn,Helmand,25600,town,0,0,50,0,none,none
+gn:1137121,Khānaqāh,Takhar,0,village,0,0,50,0,none,none
+gn:1137147,Chahār Bāgh,Faryab,0,village,0,0,50,0,none,none
+gn:1137148,Khandūd,Badakhshan,5521,village,0,0,50,0,none,none
+gn:1137160,Khānaqāh,Jowzjan,0,village,0,0,50,0,none,none
+gn:1137168,Khanabad,Kunduz,71531,town,0,0,50,0,none,none
+gn:1137247,Khamyāb,Jowzjan,0,village,0,0,50,0,none,none
+gn:1137359,Khākirān,Zabul,0,village,0,0,50,0,none,none
+gn:1137548,Kaz̲h̲ah,Nangarhar,0,village,0,0,50,0,none,none
+gn:1137745,Kishk-e Nakhūd,Kandahar,0,village,0,0,50,0,none,none
+gn:1137807,Karukh,Herat,17484,town,0,0,50,0,none,none
+gn:1138321,Kanḏay,Kunar,0,village,0,0,50,0,none,none
+gn:1138336,Kandahār,Kandahar,523300,large-city,0,0,50,0,none,none
+gn:1138590,Kalān Deh,Maidan Wardak Province,0,village,0,0,50,0,none,none
+gn:1138636,Kalakān,Kabul,0,village,0,0,50,0,none,none
+gn:1138657,Kalafgān,Takhar,0,village,0,0,50,0,none,none
+gn:1138714,Kajrān,Daykundi,0,village,0,0,50,0,none,none
+gn:1138801,Kā’ī,Nangarhar,0,village,0,0,50,0,none,none
+gn:1138958,Kabul,Kabul,4434550,large-city,0,0,50,0,none,none
+gn:1139085,Jurm,Badakhshan,23064,town,0,0,50,0,none,none
+gn:1139335,Jawand,Badghis,0,village,0,0,50,0,none,none
+gn:1139500,Jānī Khēl,Paktika,0,village,0,0,50,0,none,none
+gn:1139683,Jalrēz,Maidan Wardak Province,0,village,0,0,50,0,none,none
+gn:1139715,Jalālābād,Nangarhar,271900,city,0,0,50,0,none,none
+gn:1139807,Jabal os Saraj,Parwan,15032,town,0,0,50,0,none,none
+gn:1139967,Ḩukūmat-e Shīnkaī,Zabul,0,village,0,0,50,0,none,none
+gn:1140026,Herāt,Herat,574300,large-city,0,0,50,0,none,none
+gn:1140341,Ḩājī Khēl,Kapisa,0,village,0,0,50,0,none,none
+gn:1140433,Ḩāfiz̧ Moghul,Badakhshan,0,village,0,0,50,0,none,none
+gn:1140435,Ḩāfiz̧ān,Nangarhar,0,village,0,0,50,0,none,none
+gn:1140605,Guz̄arah,Herat,0,village,0,0,50,0,none,none
+gn:1140614,Gōshtah,Nangarhar,0,village,0,0,50,0,none,none
+gn:1140623,Gōmal Kêlay,Paktika,0,village,0,0,50,0,none,none
+gn:1140919,‘Alāqahdārī Gēlān,Ghazni,0,village,0,0,50,0,none,none
+gn:1140970,Ghōriyān,Herat,0,village,0,0,50,0,none,none
+gn:1141089,Ghormach,Badghis,30000,town,0,0,50,0,none,none
+gn:1141098,Ghurayd Gharamē,Badakhshan,0,village,0,0,50,0,none,none
+gn:1141269,Ghazni,Ghazni,141000,city,0,0,50,0,none,none
+gn:1141540,Gereshk,Helmand,43588,town,0,0,50,0,none,none
+gn:1141857,Gardez,Paktia,103601,city,0,0,50,0,none,none
+gn:1142170,Fayzabad,Badakhshan,44421,town,0,0,50,0,none,none
+gn:1142171,Faīẕābād,Jowzjan,0,village,0,0,50,0,none,none
+gn:1142172,Fayẕābād,Faryab,0,village,0,0,50,0,none,none
+gn:1142234,Qal‘ah-ye Fārsī,Herat,0,village,0,0,50,0,none,none
+gn:1142239,Farkhār,Takhar,10480,town,0,0,50,0,none,none
+gn:1142264,Farah,Farah,43561,town,0,0,50,0,none,none
+gn:1142330,Istālif,Kabul,41413,town,0,0,50,0,none,none
+gn:1142404,Eslam Qaleh,Herat,18086,town,0,0,50,0,none,none
+gn:1142409,Islām Chumgar,Balkh,5000,village,0,0,50,0,none,none
+gn:1142517,Injīl,Herat,0,village,0,0,50,0,none,none
+gn:1142545,Imām Şāḩib,Kunduz,9659,village,0,0,50,0,none,none
+gn:1142738,Dōshī,Baghlan,0,village,0,0,50,0,none,none
+gn:1142758,Dowlatyār,Ghowr,0,village,0,0,50,0,none,none
+gn:1142761,Dowlat Shāh,Laghman,0,village,0,0,50,0,none,none
+gn:1142776,Dowlatābād,Balkh,0,village,0,0,50,0,none,none
+gn:1142777,Dowlatābād,Faryab,0,village,0,0,50,0,none,none
+gn:1142852,Dū Qal‘ah,Farah,0,village,0,0,50,0,none,none
+gn:1142964,Dūāb,Samangan,0,village,0,0,50,0,none,none
+gn:1143255,Dê Nārkhēl Kêlay,Kandahar,0,village,0,0,50,0,none,none
+gn:1143477,Dehī,Samangan,0,village,0,0,50,0,none,none
+gn:1143529,Deh-e Şalāḩ,Baghlan,0,village,0,0,50,0,none,none
+gn:1143548,Deh-e Now,Kabul,0,village,0,0,50,0,none,none
+gn:1143630,Dehdādī,Balkh,0,village,0,0,50,0,none,none
+gn:1143782,Dwah Manḏay,Khowst,0,village,0,0,50,0,none,none
+gn:1143814,Dasht-e Qal‘ah,Takhar,41659,town,0,0,50,0,none,none
+gn:1143816,Dasht-e Qal‘ah,Farah,0,village,0,0,50,0,none,none
+gn:1143838,Dasht-e Archī,Kunduz,8263,village,0,0,50,0,none,none
+gn:1143874,Darzāb,Jowzjan,9642,village,0,0,50,0,none,none
+gn:1143901,Markaz-e Ḩukūmat-e Darwēshān,Helmand,9012,village,0,0,50,0,none,none
+gn:1144040,Darqad,Takhar,0,village,0,0,50,0,none,none
+gn:1144121,Darāyim,Badakhshan,0,village,0,0,50,0,none,none
+gn:1144166,Dāngām,Kunar,0,village,0,0,50,0,none,none
+gn:1144185,Ḏanḏar,Parwan,0,village,0,0,50,0,none,none
+gn:1144559,Ḩukūmatī Dahanah-ye Ghōrī,Baghlan,3307,village,0,0,50,0,none,none
+gn:1144905,Tsowkêy,Kunar,0,village,0,0,50,0,none,none
+gn:1144942,Chīras,Sar-e Pol Province,12779,town,0,0,50,0,none,none
+gn:1145001,Chīchkah,Kunduz,8792,village,0,0,50,0,none,none
+gn:1145007,Chisht-e Sharīf,Herat,0,village,0,0,50,0,none,none
+gn:1145124,Chinār,Kandahar,0,village,0,0,50,0,none,none
+gn:1145128,Chimtāl,Balkh,0,village,0,0,50,0,none,none
+gn:1145348,Charkh,Logar,0,village,0,0,50,0,none,none
+gn:1145352,Charikar,Parwan,53676,town,0,0,50,0,none,none
+gn:1145364,Dowr-e Rabāţ,Kunduz,0,village,0,0,50,0,none,none
+gn:1145417,Tsapêraī,Paktia,0,village,0,0,50,0,none,none
+gn:1145511,Tsamkanī,Paktia,0,village,0,0,50,0,none,none
+gn:1145605,Chakaray,Kabul,0,village,0,0,50,0,none,none
+gn:1145607,Chākarān,Badakhshan,0,village,0,0,50,0,none,none
+gn:1145799,Chahār Qal‘ah,Ghazni,0,village,0,0,50,0,none,none
+gn:1145866,Chahār Burj,Herat,11935,town,0,0,50,0,none,none
+gn:1145897,Chāh Āb,Takhar,0,village,0,0,50,0,none,none
+gn:1145904,Fayrōz Kōh,Ghowr,15000,town,0,0,50,0,none,none
+gn:1146336,Bulōlah,Bamyan,0,village,0,0,50,0,none,none
+gn:1146576,Bal Chirāgh,Faryab,0,village,0,0,50,0,none,none
+gn:1146694,Bāzār-e Tālah,Baghlan,0,village,0,0,50,0,none,none
+gn:1146822,Muhmand Dara,Nangarhar,6835,village,0,0,50,0,none,none
+gn:1146911,Būrkah,Baghlan,0,village,0,0,50,0,none,none
+gn:1146979,Barg-e Matāl,Nuristan,0,village,0,0,50,0,none,none
+gn:1147065,Barakī,Logar,15000,town,0,0,50,0,none,none
+gn:1147066,Baraki Barak,Logar,22305,town,0,0,50,0,none,none
+gn:1147118,Banū,Baghlan,0,village,0,0,50,0,none,none
+gn:1147242,Bāmyān,Bamyan,61863,town,0,0,50,0,none,none
+gn:1147290,Balkh,Balkh,114883,city,0,0,50,0,none,none
+gn:1147489,Bahārak,Badakhshan,32551,town,0,0,50,0,none,none
+gn:1147511,Bagrāmī,Kabul,0,village,0,0,50,0,none,none
+gn:1147513,Bagrām,Parwan,113173,city,0,0,50,0,none,none
+gn:1147540,Baghlān,Baghlan,108449,city,0,0,50,0,none,none
+gn:1147851,Ḩukūmatī Azrah,Logar,12526,town,0,0,50,0,none,none
+gn:1148106,Ārt Khwājah,Takhar,18623,town,0,0,50,0,none,none
+gn:1148114,‘Alāqahdārī Aṯghar,Zabul,0,village,0,0,50,0,none,none
+gn:1148205,Āsmār,Kunar,15708,town,0,0,50,0,none,none
+gn:1148268,Ashkāsham,Badakhshan,12120,town,0,0,50,0,none,none
+gn:1148311,Asadābād,Kunar,48400,town,0,0,50,0,none,none
+gn:1148560,Aqcha,Jowzjan,0,village,0,0,50,0,none,none
+gn:1148658,Andkhoy,Faryab,37900,town,0,0,50,0,none,none
+gn:1148695,’Unābah,Panjshir,0,village,0,0,50,0,none,none
+gn:1148709,Anār Darah,Farah,10023,town,0,0,50,0,none,none
+gn:1148792,Amānzī,Kandahar,0,village,0,0,50,0,none,none
+gn:1148863,‘Alāqahdārī-ye Almār,Faryab,0,village,0,0,50,0,none,none
+gn:1148893,‘Alī Shēr ‘Alāqahdārī,Khowst,0,village,0,0,50,0,none,none
+gn:1148911,Wuluswālī ‘Alīngār,Laghman,0,village,0,0,50,0,none,none
+gn:1148939,‘Alī Khēl,Paktia,0,village,0,0,50,0,none,none
+gn:1149049,‘Alāqahdārī Yōsuf Khēl,Paktika,0,village,0,0,50,0,none,none
+gn:1149052,‘Alāqahdārī Dīshū,Helmand,9196,village,0,0,50,0,none,none
+gn:1149107,Alah Sāy,Kapisa,0,village,0,0,50,0,none,none
+gn:1149348,Pachīr wa Āgām,Nangarhar,0,village,0,0,50,0,none,none
+gn:1149371,Āfāqī,Takhar,0,village,0,0,50,0,none,none
+gn:1149379,Adraskan,Herat,0,village,0,0,50,0,none,none
+gn:1149550,Āb-e Kamarī,Badghis,0,village,0,0,50,0,none,none
+gn:1348242,Khadīr,Daykundi,0,village,0,0,50,0,none,none
+gn:1349513,Ghulām ‘Alī,Parwan,0,village,0,0,50,0,none,none
+gn:1349709,Qarah Bāgh Bāzār,Kabul,0,village,0,0,50,0,none,none
+gn:1349845,Zargarān,Kabul,0,village,0,0,50,0,none,none
+gn:1349934,Surkh Bilandī,Kabul,0,village,0,0,50,0,none,none
+gn:1349969,Pul-e Sangī,Kabul,0,village,0,0,50,0,none,none
+gn:1422873,Langar,Samangan,0,village,0,0,50,0,none,none
+gn:1423264,Bāgh-e Maīdān,Parwan,0,village,0,0,50,0,none,none
+gn:1423451,Ibrāhīm Khān,Parwan,0,village,0,0,50,0,none,none
+gn:1427089,Qaranghū Tōghaī,Balkh,0,village,0,0,50,0,none,none
+gn:1429434,Bāzārak,Panjshir,65000,town,0,0,50,0,none,none
+gn:1429499,Shērwānī-ye Bālā,Kapisa,0,village,0,0,50,0,none,none
+gn:1429521,Kirāmān,Panjshir,0,village,0,0,50,0,none,none
+gn:1434016,‘Alāqahdārī Saṟōbī,Paktika,0,village,0,0,50,0,none,none
+gn:1435007,Zīṟūk ‘Alāqahdārī,Paktika,0,village,0,0,50,0,none,none
+gn:1437312,Kushkak,Farah,0,village,0,0,50,0,none,none
+gn:1437517,Khayr Kōṯ,Paktika,0,village,0,0,50,0,none,none
+gn:1448087,Chowṉêy,Daykundi,0,village,0,0,50,0,none,none
+gn:1451863,Wuṯahpūr,Kunar,0,village,0,0,50,0,none,none
+gn:1452109,Karbōṟī,Kunar,0,village,0,0,50,0,none,none
+gn:1453103,Sulţānpūr-e ‘Ulyā,Nangarhar,0,village,0,0,50,0,none,none
+gn:1453777,Bābā Şāḩib,Kandahar,0,village,0,0,50,0,none,none
+gn:1454590,Chandal Bā’ī,Kabul,0,village,0,0,50,0,none,none
+gn:1455430,Dahan-e Jarf,Parwan,0,village,0,0,50,0,none,none
+gn:1456960,Maydanshakhr,Maidan Wardak Province,1600,village,0,0,50,0,none,none
+gn:1459933,Dū Laīnah,Ghowr,0,village,0,0,50,0,none,none
+gn:1464552,Qaram Qōl,Faryab,0,village,0,0,50,0,none,none
+gn:1464922,Pul-e Ḩişār,Baghlan,0,village,0,0,50,0,none,none
+gn:1465349,Lab-Sar,Balkh,1068,village,0,0,50,0,none,none
+gn:1467349,Ţāqchah Khānah,Takhar,0,village,0,0,50,0,none,none
+gn:1467433,March,Badakhshan,0,village,0,0,50,0,none,none
+gn:1467505,Zīrakī,Badakhshan,0,village,0,0,50,0,none,none
+gn:1467976,‘Alīābād,Kunduz,0,village,0,0,50,0,none,none
+gn:1468514,Pas Pul,Badakhshan,0,village,0,0,50,0,none,none
+gn:1469237,Qal‘ah-ye Na‘īm,Kabul,0,village,0,0,50,0,none,none
+gn:1469706,Markaz-e Woluswalī-ye Āchīn,Nangarhar,15098,town,0,0,50,0,none,none
+gn:1474140,Māṉōgay,Kunar,0,village,0,0,50,0,none,none
+gn:1476203,Stêr Giyān,Paktika,0,village,0,0,50,0,none,none
+gn:8534261,Sharan,Paktika,2200,village,0,0,50,0,none,none
+gn:8534687,Salām Khēl,Paktia,0,village,0,0,50,0,none,none
+gn:12572007,Mazad,Nimroz,4000,village,0,0,50,0,none,none
