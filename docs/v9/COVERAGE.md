@@ -26,17 +26,17 @@ the screen says so.
 | passport application | not applicable | 6 |
 | visiting rules | inherited-unverified | 246 |
 | visiting rules | not applicable | 6 |
-| visitor visa application | verified | 74 |
+| visitor visa application | verified | 96 |
 | visitor visa application | implemented/tested | 1 |
 | visitor visa application | inherited-unverified | 2 |
-| visitor visa application | modeled | 169 |
+| visitor visa application | modeled | 147 |
 | visitor visa application | not applicable | 6 |
 | work rules | inherited-unverified | 232 |
 | work rules | modeled | 14 |
 | work rules | not applicable | 6 |
-| work permit application | verified | 60 |
+| work permit application | verified | 64 |
 | work permit application | implemented/tested | 1 |
-| work permit application | modeled | 185 |
+| work permit application | modeled | 181 |
 | work permit application | not applicable | 6 |
 
 ## What This Says
@@ -67,6 +67,13 @@ the screen says so.
     the fee but no decision time, the fee is researched and the time is the game's estimate, said as one: those rows
     count as modeled (permits of Norway, Iceland, Mexico, South Korea, Argentina, Indonesia, Barbados; visas of the
     French overseas territories, Nepal and Jordan);
+  - the same day (batch 3), 9 more work permits (Vietnam, Nepal, Taiwan, and Indonesia's decision time; Ghana's,
+    Bahrain's, the Philippines', Ecuador's and Serbia's fees) and 33 more visitor visas (Benin, Madagascar, Gabon,
+    Belize, Bangladesh, Ireland, Timor-Leste, Palau, Costa Rica, Panama, Russia, Albania, North Macedonia, Kenya, Cuba,
+    South Sudan, Israel, Somalia, the Seychelles, Nicaragua, Bhutan, Singapore; and the fees of Namibia, Papua New
+    Guinea, Vanuatu, Kazakhstan, Moldova, Bosnia and Herzegovina, Mauritania, Tajikistan, Sierra Leone, Cameroon and
+    Angola, whose times stay estimated). What was found but conflicts is listed in
+    `docs/v10/papers-research/fees-without-times.md`;
   - the banks of Nauru and Niue (`banks-world.ts`).
 - **Implemented/tested** means a test that runs counts for that country. A test that only looks a bank up by name, or one
   that's switched off, doesn't count (from November 14, 2026, when the owner asked what "run by a test" meant: until

@@ -127,8 +127,9 @@ describe('A16: a passport lets you travel; it doesn\'t let you work', () => {
 
   it('a visa no record gives a fee or time for is taken on the game\'s estimate, and says so', () => {
     const s = startLife('papers-novisa');
-    // Bangladesh's visa: no researched fee or time yet. India's was the example until November 17, 2026.
-    const c = visaCheck(s, 'BD');
+    // Pakistan's visa: its fee is by nationality, so no record gives one. India's was the example until November 17,
+    // 2026, and Bangladesh's until its visa was researched the same day.
+    const c = visaCheck(s, 'PK');
     expect(c.ok).toBe(true);
     expect((c as { terms: { estimate: unknown; basis: string } }).terms.basis).toMatch(/^The game's estimate/);
   });

@@ -350,10 +350,21 @@ and the rest) with real grades filling the hiring lists.
     passed on desktop and phone (11 passed, 1 skipped as desktop-only).
   - The stop-motion and creature materials stay the game's own: what's published is a $74 kit to a $5,000 custom
     armature, and a creature from a home-made suit to a $1 million animatronic; a range that wide checks nothing.
-  - **Next:** the rest of Africa's, Latin America's and Central Asia's permits and visas; Oceania; the conflicting
-    ones above. Batch 3's research so far (33 visas, 9 permits, Indonesia's permit gaining its decision time) is in
-    `docs/v10/papers-research/next-*.json`, not yet in the game; when it merges, `tests/v8-papers.test.ts`'s estimated
-    visa example ('BD') must move to a country still estimated.
+- That checkpoint went up as #115. Batch 3, the same day:
+  - 9 permits (4 full: Vietnam, Nepal, Taiwan, and Indonesia's decision time; 5 fee only: Ghana, Bahrain, the
+    Philippines' Special Work Permit, Ecuador, Serbia) and 33 visas (22 full, 11 fee only), listed in
+    `docs/v9/COVERAGE.md`. Saudi Arabia, Ethiopia and Egypt were researched again and left out: their sources still
+    conflict (a newer SAR 395, a reported $62 cut, $25 or $30).
+  - Queue: permits 178 -> 170 estimated (11 fee only), visas 155 -> 122 (25 fee only). Coverage: visas verified 96,
+    modeled 147; permits verified 64, modeled 181.
+  - `tests/v8-papers.test.ts`'s estimated visa example moved from Bangladesh (now researched) to Pakistan (fees by
+    nationality, so no record).
+  - The five papers proofs reran proven, byte for byte the committed ones. `npm run check` passed (1,738 tests,
+    build, budget); the papers and destinations journeys passed on desktop and phone (7 passed, 1 skipped).
+  - **Next:** what's left is mostly where sources conflict or only aggregators give a figure
+    (`docs/v10/papers-research/fees-without-times.md` lists each); the rest of Africa's, Latin America's and
+    Oceania's permits, whose fees are rarely published; China and Brazil, whose fees are each post's or nationality's.
+    Recording a figure only one aggregator gives would be inventing precision: those stay the game's estimate, said as one.
 Still the game's own figures: the stop-motion and creature materials and the broadcast edit (no published per-item price
 found).
 
