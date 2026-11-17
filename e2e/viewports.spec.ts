@@ -1,5 +1,6 @@
 import { expect, test, type Page } from './test';
 import { advance, nav, openStart, pressSaveAndExit, section, secureStartingBacking } from './helpers';
+import { HOMES_SHOWN } from '../src/ui/routes';
 
 // The package's required widths (360, 390, 393, 414, 430, 768, 1024, 1440, 1920), plus 440, 1280 and a phone landscape.
 const VIEWPORTS: [number, number][] = [[360, 800], [390, 844], [393, 852], [414, 896], [430, 932], [440, 956], [768, 1024], [1024, 768], [1280, 720], [1440, 900], [1920, 1080], [844, 390]];
@@ -250,8 +251,11 @@ test('in-game Saved Games and Settings come from the same navigation', async ({ 
   const credits = page.getByRole('list', { name: "Where The Game's Facts Come From" });
   await expect(credits).toContainText('Data from GeoNames, CC BY 4.0.');
   await expect(credits).toContainText('This product uses the TMDB API but is not endorsed or certified by TMDB.');
-  await expect(credits).toContainText('HDB resales in Singapore: Housing & Development Board resale flat prices (data.gov.sg).');
-  await expect(credits).toContainText('Kept only as medians by commune: no address or single sale is in the game');
+  // The housing sources are listed while Homes And Property is in the game (set aside November 17, 2026: HOMES_SHOWN).
+  if (HOMES_SHOWN) {
+    await expect(credits).toContainText('HDB resales in Singapore: Housing & Development Board resale flat prices (data.gov.sg).');
+    await expect(credits).toContainText('Kept only as medians by commune: no address or single sale is in the game');
+  } else await expect(credits).not.toContainText('HDB resales');
   await expect(credits).toContainText(/Prices are from Glazer's Camera, a US retailer's public product listings, read on [A-Z][a-z]+ \d{1,2}, \d{4}/);
   // Phones never get entry fields under 16px (they would zoom the page).
   if (info.project.name === 'phone') {
