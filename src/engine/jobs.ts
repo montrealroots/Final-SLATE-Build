@@ -18,6 +18,7 @@ import { money } from './budget';
 import { getPlace } from '../data/places';
 import { KILL_FEE_DAYS, PRODUCTION_KIND_LABELS, daysUntil, industryStanding, shootingDays, slateHere, type Production } from './productions';
 import { workRight, type Activity } from './papers';
+import { activeOverall } from './first-look';
 import type { GameState } from './types';
 
 export type JobRole = 'acting' | 'writing' | 'directing';
@@ -217,6 +218,9 @@ export function acceptRefusal(state: GameState, id: string): string | null {
   if (!j || j.status !== 'offered') return 'That offer is no longer open.';
   if (j.counter && !j.counter.outcome) return `${j.company} is answering the rate you asked for.`;
   if (state.now > j.answerBy) return 'That offer has lapsed.';
+  // An overall deal has your services exclusively (from November 17, 2026): work for any other company is refused.
+  const overall = activeOverall(state);
+  if (overall && overall.name !== j.company) return `Your overall deal with ${overall.name} has your services alone until ${formatDateKey(new Date(overall.endsAt!).toISOString().slice(0, 10))}.`;
   const right = jobRight(state, j);
   if (!right.can) return right.why;
   return jobClash(state, j);

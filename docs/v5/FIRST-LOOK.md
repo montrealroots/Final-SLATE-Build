@@ -25,7 +25,7 @@ These sources are explainers and encyclopedia entries. No contract was copied, a
 | First look | A studio pays the producer's overhead, and sometimes a development fund. In return it gets the first chance to consider the projects the deal covers, for a set number of days each. | `first-look.ts`: one deal at a time, with its own Profile card. |
 | Option | The right to buy the rights to one property, paid for, for a period. | A studio's option on one film (`finance.ts`, verdict `option`): development money and a release, not the whole budget. |
 | Distribution deal | One finished picture released in territories, for a period. | Distribution offers after delivery (`finish.ts`). |
-| Overall deal | The producer's services exclusively, usually for a larger fee. | Not modelled. Nothing in the game claims it is. |
+| Overall deal | The producer's services exclusively, usually for a larger fee. | Modelled from November 17, 2026 (`first-look.ts overallTerms`; the owner's v8 package, 04 and A14): from a studio of eight films a year or more, for a record past its start, a guaranteed yearly sum by tier (`deal-model.json`, game calibration) paid a twelfth a month as your pay; your services its alone, so work for other companies is refused; films and series both go to it first. Until then not modelled. |
 | First refusal | The right to match an offer someone else has already made. | Not modelled. A first look is not a match right, and the game never treats it as one. |
 
 ## What The Game Models
@@ -66,9 +66,10 @@ These are left out, and the game says nowhere that it models them:
 
 - turnaround periods after which rights revert;
 - any interest charged on development money;
-- overall deals and first-refusal rights;
-- a studio's real terms;
-- deals for series.
+- first-refusal rights (overall deals were modelled from November 17, 2026, above);
+- a studio's real terms.
+
+Deals for series were modelled from November 13, 2026 (a television first look), and overall deals cover both.
 
 ## Evidence
 

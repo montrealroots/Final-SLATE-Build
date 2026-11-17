@@ -17,7 +17,7 @@ import { stream } from './rng';
 import { FORMAT_LABELS } from './projects';
 import { ANIMATION_HOUSE, MONTHS, familyKey, pitchRead, reachTerritories, slateRoom, strategyOf, type PitchRead, type StudioStrategy } from './strategy';
 import { asTelevision } from './studios';
-import { bindingFor, commissionerHold, considerDaysFor, firstLookHold, noteSubmission, repayTurnaround, scopeOf } from './first-look';
+import { bindingFor, commissionerHold, considerDaysFor, coversSeries, firstLookHold, noteSubmission, repayTurnaround, submissionStanding } from './first-look';
 import { addLog, newId, registerHandler, schedule } from './state';
 import { DAY, dateKey } from './time';
 import type { FinanceDeal, FinanceDealKind, GameState, Obligation, Project } from './types';
@@ -570,8 +570,9 @@ export function studioOptions(state: GameState, p: Project): StudioOption[] {
  */
 export function submitSeries(state: GameState, p: Project): FinanceDeal {
   const fl = bindingFor(state, p);
-  if (!fl || fl.status !== 'active' || scopeOf(fl.terms) !== 'television') throw new Error('No television first-look deal covers this project.');
-  if (commissionerHold(state, p) !== `Your first-look deal gives ${fl.name} the first chance at ${p.title}: submit it to them first.`) throw new Error(commissionerHold(state, p) || `${fl.name} has already answered for ${p.title}.`);
+  if (!fl || fl.status !== 'active' || !coversSeries(fl.terms)) throw new Error('No deal that covers series covers this project.');
+  // Read from where the project stands, not from the hold's words (until November 17, 2026 its exact sentence).
+  if (submissionStanding(state, p)?.stage !== 'not-submitted') throw new Error(commissionerHold(state, p) || `${fl.name} has already answered for ${p.title}.`);
   if (p.delivered) throw new Error('This project is delivered.');
   if (!scriptApproved(p)) throw new Error('Approve a script first.');
   const missing = documentsNeeded(p, BACKER_DOCUMENTS.commissioner, isNonfiction(p.axes.format), SUBMISSION.commissioner);
