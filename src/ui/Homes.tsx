@@ -121,7 +121,7 @@ function Facts({ home }: { home: Home }) {
 function EvidenceList({ home }: { home: Home }) {
   return (
     <ul className="list small" aria-label="Where The Price Comes From">
-      {home.evidence.map((e, i) => <li key={i} className="list-item list-static"><span className="chip">{BASIS[e.basis]}</span><span className="grow">{e.says}</span></li>)}
+      {home.evidence.map((e, i) => <li key={i} className="list-item list-static"><span className="chip">{BASIS[e.basis]}</span>{e.retrospective && <span className="chip chip-warning">Retrospective</span>}<span className="grow">{e.says}</span></li>)}
     </ul>
   );
 }

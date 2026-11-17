@@ -154,3 +154,29 @@ describe('a design changed while its approval is pending', () => {
     expect(b2.design.wallColor).toBe('sage');
   });
 });
+
+describe('local and dated evidence', () => {
+  it("prices a town from its own county's HUD rents, not a placeholder: Lancaster, Texas, in Dallas County", async () => {
+    const { registerPlace, getPlace } = await import('../src/data/places');
+    // The world catalog's Lancaster, Texas (GeoNames 4705191), as the game registers it when it's chosen.
+    registerPlace({ ...getPlace('us-austin'), id: 'gn:4705191', name: 'Lancaster', region: 'Texas', regionKey: 'US.TX', lat: 32.59208, lon: -96.75611, geonameId: '4705191' } as never);
+    const ev = await marketEvidence('gn:4705191', '2026-03-02');
+    // HUD FY2026 for Dallas County, revised: studio to four bedrooms (src/data/homes/hud/TX.json).
+    expect(ev.rent?.byBedrooms).toEqual([158200, 164800, 193100, 243100, 309100]);
+    expect(ev.rent?.evidence.says).toContain('Dallas County');
+    expect(ev.rent?.evidence.retrospective).toBeUndefined(); // FY2026 was in force from October 1, 2025
+  });
+
+  it('says a figure is retrospective when the game date is before it was published, and uses it as a reconstruction', async () => {
+    // ONS's September 2026 rents were published on October 21, 2026; EIA's 2025 prices on October 21, 2026.
+    const before = await marketEvidence('gb-london', '2026-03-02');
+    const after = await marketEvidence('gb-london', '2026-11-01');
+    expect(before.rent?.evidence.retrospective).toBe(true);
+    expect(before.rent?.evidence.says).toContain('only available from 2026-10-21');
+    expect(after.rent?.evidence.retrospective).toBeUndefined();
+    expect(after.rent?.byBedrooms).toEqual(before.rent?.byBedrooms); // the same figures, only labelled differently
+    const la = await marketEvidence('us-los-angeles', '2026-03-02');
+    expect(la.electricity?.evidence.retrospective).toBe(true);
+    expect(la.sale?.evidence.retrospective).toBeUndefined(); // NAHB's 2024 survey, published January 2025
+  });
+});

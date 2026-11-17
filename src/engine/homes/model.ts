@@ -19,6 +19,8 @@ export interface Evidence {
   sourceId: string;
   /** In plain words, for the player: what the figure is and isn't. */
   says: string;
+  /** Used for a date before the figure was available to anyone: the game's reconstruction, not what was known then. */
+  retrospective?: true;
 }
 
 export type Form = 'studio' | 'apartment' | 'condo' | 'townhouse' | 'detached' | 'hdb-flat' | 'land';
