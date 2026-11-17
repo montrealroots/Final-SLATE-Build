@@ -230,7 +230,9 @@ test('Land in Austin: a plot, its survey, a design revised, approval, building s
   const title = await firstOffer(page, 'Buy Land To Build On');
   const detail = page.locator('#home-detail');
   await expect(detail).toContainText('Known Of The Land');
-  await detail.getByLabel('Paying With').selectOption({ label: 'Cash' });
+  // A plot offers no mortgage: the choice isn't shown, and the screen says why.
+  await expect(detail.getByLabel('Paying With')).toHaveCount(0);
+  await expect(detail).toContainText('the game offers no mortgage on land');
   await detail.getByRole('button', { name: `Make The Offer: ${title}` }).click();
   await until(page, 'week', 8, async () => { await onTab(page, 'Land And Building'); return (await page.locator('main').innerText()).includes('Your plot of'); });
   const plot = card(page, title);

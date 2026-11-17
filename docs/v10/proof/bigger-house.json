@@ -22,8 +22,8 @@
   "gross": 87650,
   "revenue": 129198.875,
   "distributed": 1.675,
-  "money": 24361177.101,
-  "moneyChange": -638822.899,
+  "money": 24364649.979,
+  "moneyChange": -635350.021,
   "jobsTaken": 0.925,
   "jobsOffered": 0.925,
   "jobPay": 4572.2,
@@ -66,7 +66,7 @@
   "repairSpend": 0,
   "repairsFixed": 0,
   "homesOwned": 1,
-  "pricePaid": 470636.6,
+  "pricePaid": 466401.2,
   "mortgageLoan": 0,
   "mortgagePayment": 0,
   "mortgageOwed": 0,
@@ -86,8 +86,8 @@
   "staySpend": 0,
   "buildsDone": 1,
   "buildStagesDone": 8,
-  "buildQuote": 335047,
-  "buildSpend": 335047,
+  "buildQuote": 332297,
+  "buildSpend": 332297,
   "letRents": 0,
   "letIncome": 0,
   "letCosts": 0,
@@ -97,7 +97,7 @@
   "bankFees": 20773.37,
   "owed": 0,
   "accounts": 1,
-  "worth": 18319605.18,
+  "worth": 18322216.785,
   "rewards": 0,
   "fired": 0
  },
@@ -109,8 +109,8 @@
   "gross": 87650,
   "revenue": 129198.875,
   "distributed": 1.675,
-  "money": 24277831.596,
-  "moneyChange": -722168.404,
+  "money": 24281304.475,
+  "moneyChange": -718695.525,
   "jobsTaken": 0.925,
   "jobsOffered": 0.925,
   "jobPay": 4572.2,
@@ -153,7 +153,7 @@
   "repairSpend": 0,
   "repairsFixed": 0,
   "homesOwned": 1,
-  "pricePaid": 553872.6,
+  "pricePaid": 549637.2,
   "mortgageLoan": 0,
   "mortgagePayment": 0,
   "mortgageOwed": 0,
@@ -173,8 +173,8 @@
   "staySpend": 0,
   "buildsDone": 1,
   "buildStagesDone": 8,
-  "buildQuote": 418283,
-  "buildSpend": 418282,
+  "buildQuote": 415533,
+  "buildSpend": 415532,
   "letRents": 0,
   "letIncome": 0,
   "letCosts": 0,
@@ -184,7 +184,7 @@
   "bankFees": 26039.66,
   "owed": 0,
   "accounts": 1,
-  "worth": 18256929.36,
+  "worth": 18259540.965,
   "rewards": 0,
   "fired": 0
  },
@@ -239,15 +239,15 @@
    "n": 40
   },
   "money": {
-   "mean": -83345.505,
-   "lo": -83345.507,
+   "mean": -83345.504,
+   "lo": -83345.506,
    "hi": -83345.503,
    "changed": 40,
    "n": 40
   },
   "moneyChange": {
-   "mean": -83345.505,
-   "lo": -83345.507,
+   "mean": -83345.504,
+   "lo": -83345.506,
    "hi": -83345.503,
    "changed": 40,
    "n": 40
@@ -811,7 +811,7 @@
  ],
  "verdict": "proven",
  "hashes": {
-  "src/engine/homes/building.ts": "8c4309d933c62b06",
+  "src/engine/homes/building.ts": "3b318ad421aa4468",
   "tests/proof/career.ts": "50bea06f19a02c5b"
  }
 }

@@ -440,6 +440,7 @@ function OfferDetail({ g, home, ev }: { g: GameState; home: Home; ev: MarketEvid
   const e = useErr();
   const [day, setDay] = useState(todayAt(g, home) < home.availableFrom ? home.availableFrom : todayAt(g, home));
   const [plan, setPlan] = useState<Plan>({ finance: 'mortgage', depositShare: 0.2, years: 25, inspect: true });
+  const buyPlan: Plan = home.form === 'land' ? { ...plan, finance: 'cash' } : plan;
   const [offerUnits, setOfferUnits] = useState(Math.round(home.priceMinor / 100));
   const hs = homesOf(g);
   const viewed = hs.viewings.find((v) => v.homeId === home.id);
@@ -457,8 +458,8 @@ function OfferDetail({ g, home, ev }: { g: GameState; home: Home; ev: MarketEvid
       <h4>Where The Price Comes From</h4>
       <EvidenceList home={home} />
       {ev.nearby.length > 0 && (
-        <details className="small"><summary>Recorded Sales Nearby ({ev.nearby.length})</summary>
-          <p className="xs dim">Past sales on record, not homes for sale now.</p>
+        <details className="small"><summary>Records For This Place ({ev.nearby.length})</summary>
+          <p className="xs dim">Official figures and past sales on record: none is a home for sale now.</p>
           <ul>{ev.nearby.map((n, i) => <li key={i}>{n.label}: {n.detail}</li>)}</ul>
         </details>
       )}
@@ -474,15 +475,16 @@ function OfferDetail({ g, home, ev }: { g: GameState; home: Home; ev: MarketEvid
           <h4>Buy It</h4>
           <div className="grid grid-3 form">
             <NumberField label={`Your Offer (${home.currency})`} value={offerUnits} min={0} step={1000} onChange={setOfferUnits} />
-            <SelectField label="Paying With" value={plan.finance} options={[{ value: 'mortgage', label: 'A Mortgage' }, { value: 'cash', label: 'Cash' }]} onChange={(v) => setPlan({ ...plan, finance: v })} />
-            {plan.finance === 'mortgage' && <>
+            {/* A plot is bought with the player's own money (purchaseQuote lends nothing on land), so it offers no mortgage to choose. */}
+            {home.form === 'land' ? <p className="xs dim">A building plot is bought with your own money: the game offers no mortgage on land.</p> : <SelectField label="Paying With" value={plan.finance} options={[{ value: 'mortgage', label: 'A Mortgage' }, { value: 'cash', label: 'Cash' }]} onChange={(v) => setPlan({ ...plan, finance: v })} />}
+            {buyPlan.finance === 'mortgage' && <>
               <NumberField label="Your Deposit (%)" value={Math.round((plan.depositShare ?? 0.2) * 100)} min={20} max={100} onChange={(v) => setPlan({ ...plan, depositShare: v / 100 })} hint="The game's lender lends up to 80%." />
               <SelectField label="Mortgage Term" value={String(plan.years ?? 25)} options={['15', '20', '25', '30'].map((y) => ({ value: y, label: `${y} Years` }))} onChange={(v) => setPlan({ ...plan, years: Number(v) })} />
             </>}
             <Check label="Have It Inspected" checked={plan.inspect} onChange={(v) => setPlan({ ...plan, inspect: v })} hint="An inspection finds what a viewing can't." />
           </div>
-          <BuyCosts g={g} home={home} plan={plan} offerMinor={offerMinor} />
-          <Act label="Make The Offer" primary why={offerRefusal(g, home, offerMinor, plan)} onClick={() => e.act((s) => void makeOffer(s, home, offerMinor, plan))} aria={`Make The Offer: ${home.title}`} />
+          <BuyCosts g={g} home={home} plan={buyPlan} offerMinor={offerMinor} />
+          <Act label="Make The Offer" primary why={offerRefusal(g, home, offerMinor, buyPlan)} onClick={() => e.act((s) => void makeOffer(s, home, offerMinor, buyPlan))} aria={`Make The Offer: ${home.title}`} />
         </>
       )}
       {e.show}
