@@ -375,16 +375,28 @@ test('A lapsed approval, a refused permission, a stale favourite, a withdrawn pu
   await until(page, 'next-day', 5, async () => { await onTab(page, 'Your Home'); return (await card(page, `Renting: ${a}`).innerText()).includes('Approved'); });
   await until(page, 'week', 4, async () => { await onTab(page, 'Your Home'); return (await card(page, `Renting: ${a}`).innerText()).includes('Approval lapsed'); });
   await expect(card(page, `Renting: ${a}`).getByRole('button', { name: 'Sign The Lease And Pay' })).toHaveCount(0);
-  // The favourite stays listed after its month; once its offer has lapsed it can't be applied for.
+  // The favourite stays listed after its listing ends. Then either its offer has lapsed and it can't be applied for, or
+  // the same home came back on the market in its next window (market.ts marketPool) and the favourite shows the new
+  // listing, which can be. Until November 17, 2026 this waited for a lapse only, and failed when the home came back.
+  const favourite = (await readSavedState(page)).homes as { favorites: string[]; homes: Record<string, { validUntil: string }> };
+  const favId = favourite.favorites[0];
+  const firstUntil = favourite.homes[favId].validUntil;
+  let relisted = false;
   await until(page, 'week', 16, async () => { // a listing runs to the end of its three-month window
     await onTab(page, 'Find A Home');
     await page.getByLabel('Favourites Only').check();
     const it = card(page, /To Rent$/).getByRole('listitem').filter({ hasText: b });
     if (!(await it.count())) return false;
     await it.getByRole('button', { name: /^Details: / }).click();
-    return (await page.locator('#home-detail').innerText()).includes('This offer has lapsed');
+    if ((await page.locator('#home-detail').innerText()).includes('This offer has lapsed')) return true;
+    relisted = (await readSavedState(page)).homes.homes[favId].validUntil > firstUntil;
+    return relisted;
   });
-  await expect(page.locator('#home-detail').getByRole('button', { name: `Apply To Rent: ${b}` })).toBeDisabled();
+  const applyB = page.locator('#home-detail').getByRole('button', { name: `Apply To Rent: ${b}` });
+  if (relisted) {
+    await expect(page.locator('#home-detail')).not.toContainText('This offer has lapsed');
+    await expect(applyB).toBeEnabled();
+  } else await expect(applyB).toBeDisabled();
   // A fresh home, rented; a wall the landlord won't let a tenant take out.
   await page.getByLabel('Favourites Only').uncheck();
   const c = card(page, /To Rent$/).getByRole('listitem').filter({ hasNotText: a }).filter({ hasNotText: b }).first();

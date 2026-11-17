@@ -810,7 +810,7 @@
  ],
  "verdict": "proven",
  "hashes": {
-  "src/engine/homes/living.ts": "ad78939a5e52c0c1",
+  "src/engine/homes/living.ts": "09a1d2da0f81afce",
   "tests/proof/career.ts": "50bea06f19a02c5b"
  }
 }

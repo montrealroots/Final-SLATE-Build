@@ -6,8 +6,7 @@
  "decision": "Repaint the outside of the home you own sage, rather than leave it",
  "reads": [
   "src/engine/homes/living.ts#startWork",
-  "src/engine/homes/living.ts#workDone",
-  "src/engine/homes/illustration.ts#exteriorFor"
+  "src/engine/homes/living.ts#workDone"
  ],
  "seeds": 40,
  "base": {
@@ -811,8 +810,7 @@
  ],
  "verdict": "proven",
  "hashes": {
-  "src/engine/homes/living.ts": "ad78939a5e52c0c1",
-  "src/engine/homes/illustration.ts": "1d94fcf36a3e1f13",
+  "src/engine/homes/living.ts": "09a1d2da0f81afce",
   "tests/proof/career.ts": "50bea06f19a02c5b"
  }
 }
