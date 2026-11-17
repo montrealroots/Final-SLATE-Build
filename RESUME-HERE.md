@@ -420,7 +420,8 @@ and the rest) with real grades filling the hiring lists.
   - Journeys: 18 Covered, 4 Partly. What's left there isn't code: J01 and J21 need box office observations and a recorded
     correction or late report, which no dataset has; J02's real work and real people run in their own journeys rather
     than its one game; J20 would run every journey on WebKit, a CI cost.
-  - Proofs: 37 rerun (36 stale and the new `final-season`, at 100 seeds), all proven.
+  - Proofs: 37 rerun (36 stale and the new `final-season`, at 100 seeds), all proven; the new checkbox is proven by
+    `final-season` (`tests/proof/field-proofs.ts`). The matrix: 416 results, none stale, open 0.
   - Still open: the physical-phone and pacing tests (need the owner's device and a human player); more papers research
     where sources now conflict.
 Still the game's own figures: the stop-motion and creature materials and the broadcast edit (no published per-item price

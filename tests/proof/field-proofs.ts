@@ -22,6 +22,7 @@ export const FIELD_PROOFS: Record<string, string[]> = {
   'own-money-or-backer': ["field:YourMoney.tsx#\"Put In From Your Own Money\"#1"],
   'package-approval': ["field:Equipment.tsx#{`Hire The Rental House's Package On A Day The Kit Can't Serve (${money(housePackageFee(p))} A Day)`}#1"],
   'plan-budget': ["field:Projects.tsx#\"Planned Budget (US Dollars)\"#1"],
+  'final-season': ["field:Projects.tsx#\"Plan This Season As The Last\"#1"],
   'plan-later': ["field:PlanViews.tsx#\"Production Start\"#1"],
   'plan-over-call': ["field:Places.tsx#\"Start Time\"#1", "field:Places.tsx#\"Length In Minutes\"#1"],
   'record-screen-time': ["field:WorkViews.tsx#{`${c.name} On Screen (Minutes)`}#1"],

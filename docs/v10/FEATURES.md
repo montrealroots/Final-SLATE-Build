@@ -8,11 +8,11 @@ journey that shows it there.
 
 | Kind | proven | carried | does not bite | no downstream effect | stale | not a feature | not yet proven | All |
 |---|---|---|---|---|---|---|---|---|
-| action | 147 | 0 | 0 | 0 | 0 | 13 | 0 | 160 |
+| action | 148 | 0 | 0 | 0 | 0 | 13 | 0 | 161 |
 | bank | 54 | 0 | 0 | 0 | 0 | 0 | 0 | 54 |
 | scheduled | 56 | 0 | 0 | 0 | 0 | 11 | 0 | 67 |
-| field | 248 | 97 | 0 | 0 | 0 | 9 | 0 | 354 |
-| all | 505 | 97 | 0 | 0 | 0 | 33 | 0 | 635 |
+| field | 249 | 97 | 0 | 0 | 0 | 9 | 0 | 355 |
+| all | 507 | 97 | 0 | 0 | 0 | 33 | 0 | 637 |
 
 ## Rows
 
@@ -32,6 +32,7 @@ journey that shows it there.
 | shortlistAdvice | action | src/engine/casting-director.ts | proven | shortlist-advice (40 seeds) | callbacksSeen +10.05; castCapability +1.606; performance +1.6; overall +0.65 |
 | startSearch | action | src/engine/casting-director.ts | proven | casting-search (40 seeds) | searches +3.85; readsSeen +20.325; castCapability +17.444; performance +14.125; castRates +1166.5; spent +11402.25 |
 | setBanner | action | src/engine/company.ts | not a feature |  | Names your banner, shown on your credits as "A … Production" (YourMoney.tsx); a name, read only where it is shown. |
+| planFinalSeason | action | src/engine/continuation.ts | proven | final-season (100 seeds) | ended +0.93; firstRenewed -0.46; slateRaised -0.21; laterRenewed +0.1 |
 | applyBrief | action | src/engine/cues.ts | proven | music-brief (40 seeds) | cues +4; spent +2915.5; daysToDeliver +2.188; overall -0.15 |
 | approveThemes | action | src/engine/cues.ts | proven | approve-themes (40 seeds) | themesApproved +2; delivered +2; released +2; quality.music +59.725 |
 | editCue | action | src/engine/cues.ts | proven | edit-cue (40 seeds) | cues -4; spent -5996.5; daysToDeliver -1.962; quality.music -14.575 |
@@ -417,6 +418,7 @@ journey that shows it there.
 | "Story Setting Place" | field | projects.ts deriveRequirements; production/tasks.ts | proven | setting-abroad (40 seeds) | spent +2208; hired +2; ownIn +3475 |
 | "Production Base" | field | production/schedule.ts isWorkingDay; weather.ts | proven | base-los-angeles (40 seeds) | lostDays -1.275; daysToDeliver -2.325; money -11951.166 |
 | "Planned Budget (US Dollars)" | field | project-budget.ts setPlannedBudget, budgetPicture, plannedText; finance.ts financeSummary | proven | plan-budget (40 seeds) | target +81525; ownIn +5100; backerIn +76425; revenue -25776.85; money -25843.978 |
+| "Plan This Season As The Last" | field | continuation.ts season-decision, canContinue | proven | final-season (100 seeds) | ended +0.93; firstRenewed -0.46; slateRaised -0.21; laterRenewed +0.1 |
 | "Years That Pass In The Story" | field | sequel.ts continueProject | proven | story-years (40 seeds) | hired -2.025; daysToDeliver -3.7 |
 | {PLAN_ROUTES[r].label} | field | release-plan.ts setReleasePlan, proposalRefusal, selfRefusal; finish.ts festivalHold | proven | self-release-stores (40 seeds) | revenue +39280.5; money +36680.5; spent +2600 |
 | "Plan Territories" | field | release-plan.ts buyerValue, proposeLicence, selfCosts, releaseYourself | proven | plan-territories (40 seeds) | revenue +27776; money +27776 |
