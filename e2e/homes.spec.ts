@@ -176,8 +176,10 @@ test('Buying in Los Angeles: a mortgage, an inspection, completion, a new exteri
   // A house: a flat's outside is its building's, and the association decides it (the failure journey shows a refusal).
   const title = await firstOffer(page, 'Buy A Home', /House|Townhouse/);
   const detail = page.locator('#home-detail');
-  // US sale prices are NAHB's national benchmark, said as such; the costs before buying are listed.
-  await expect(detail).toContainText("NAHB's 2024 national survey");
+  // US sale prices are the city's own Census median value, moved by FHFA's index (NAHB's national average until
+  // November 17, 2026), said as such; the costs before buying are listed.
+  await expect(detail).toContainText("The Census Bureau's median value of owner-occupied homes in Los Angeles city, California");
+  await expect(detail).toContainText("FHFA's house price index");
   await expect(detail.getByLabel('Paying With')).toHaveValue('mortgage');
   await expect(detail.getByLabel('Have It Inspected')).toBeChecked();
   const costs = detail.getByRole('list', { name: 'Costs To Buy' });

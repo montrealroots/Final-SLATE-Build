@@ -27,6 +27,7 @@ in a save). Its counts are in `docs/homes/IMPORT-REPORT.json`; it reported no pr
 | HDB resale transactions (Singapore) | 244,773 in 26 towns | `sg/<town>.json`: month, flat type, block and street, storey band, area, model, lease, price | Singapore flats and nearby sales, only sales up to the game's month |
 | DVF 2025 sales (France) | 242,378 single-home sales | `fr/<department>.json`: median price a square metre by commune for flats and houses, counts, centre point. **No address and no single sale** (19,797 communes in 97 departments) | Sale prices in French places |
 | ENERGY STAR (EPA) | refrigerators 4,942; washers 421; dryers 706; dishwashers 753; room air conditioners 608 | `appliances/<category>.json`: brand, model, markets, date on market, sizes, certified test energy and water | Appliance catalog, fit checks, bills |
+| Census and FHFA (US, from November 17, 2026) | 14,079 places and 3,188 counties with a figure precise enough (a margin of error at most 30%), ACS 2019-2023 and 2020-2024; FHFA's index for 461 metro areas, divisions and states, to 2026 Q2 | `census/<state>.json`, `fhfa.json` (`tools/homes/census.py`) | US home values, rents where precise, and how prices move |
 | Benchmarks | ONS private rents (UK, Sept 2026, provisional); NAHB 2024 new-home costs; EIA 2025 state electricity prices; the package's worked examples | `benchmarks.json` | UK rents, US sale prices and land, build cost plans, US electricity |
 | Scoped rules | 19 | `rules.json` with each rule's scope and source | Deposits, permissions, ownership routes |
 | Sources | 46 | `sources.json` | Evidence wording; Settings, Credits And Data Sources |
@@ -40,7 +41,7 @@ price, stock or clearance; a rule applies only in its own scope (England's depos
 
 | Place | Rents | Prices to buy | Land and building | Electricity |
 |---|---|---|---|---|
-| United States | HUD Fair Market Rent for the area, by bedrooms (a 40th-percentile gross rent, not an asking rent) | NAHB's national new-home average a square foot: **national, not local**, said with each home | NAHB lot cost spread over 900 m² (an assumption, said); NAHB cost shares for the build | EIA's 2025 state average |
+| United States | The place's own Census median gross rent by bedrooms where every bedroom count's figure is precise enough (1,858 places); otherwise HUD's Fair Market Rent for its county, by bedrooms (a 40th-percentile gross rent, not an asking rent) | The place's own Census median home value (13,580 places), or its county's (3,698), a square metre at the American Housing Survey's 1,800 sq ft home, moved by FHFA's index for its metro area to the latest quarter published; NAHB's national average where neither has one (65) | NAHB lot cost spread over 900 m² (an assumption, said); NAHB cost shares for the build | EIA's 2025 state average |
 | United Kingdom | ONS average private rent for the nation (England 1,466 GBP), spread by size by the game | The game's placeholder | Placeholder | Placeholder |
 | France | The game's placeholder | DVF 2025 median for the commune (Paris flats: 13,109 EUR a square metre) | Placeholder | Placeholder |
 | Singapore | Placeholder | HDB resales in the town in the year to the game's month | Placeholder | Placeholder |

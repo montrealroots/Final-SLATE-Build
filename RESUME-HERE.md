@@ -24,6 +24,15 @@ finished, and they come back only when the owner says so:
 
 Item by item in `docs/homes/BRIEF-2026-11-17.md`; every place's coverage in `docs/homes/places/`.
 
+**US prices and rents from Census figures, moved by FHFA (November 17, 2026, the owner's request).** A US home's
+value is its own place's Census median (ACS 5-year, B25077; the 2019-2023 release before January 29, 2026, the
+2020-2024 after), or its county's, priced by the square metre at the American Housing Survey's 1,800 sq ft home and
+moved by FHFA's all-transactions index for its metro area (or state) to the latest quarter published by the game's day
+(`market.ts priceTrend`). Rents are the place's own Census medians by bedrooms (B25031) where all four are precise
+enough, otherwise HUD's county figures. `python3 -I tools/homes/census.py <acs dir> <fhfa csv> <omb xlsx>` rebuilds
+`src/data/homes/census/` and `fhfa.json` from the public downloads it names (the Census API needs a key; the summary
+files don't). Tests: `tests/homes-census.test.ts`. Rents and land don't move with time yet.
+
 **The house pictures are gone, at the owner's request (November 17, 2026).** The owner asked for the pictures made in
 Homes And Property to be deleted, as they won't be needed again: the game's drawing of each home (`illustration.ts`),
 its Design Preview, the drawings kept in the save (an older save drops them on load, `save.ts migrate`) and the
@@ -47,7 +56,7 @@ with staggered listings, fitted to its size and climate; Find A Home shows the p
 4. Building systems in the property record: age, heating, cooling, water, drainage, connectivity, accessibility;
    insulation, accessibility, security and energy work.
 5. A forecast view of housing money (committed, upcoming) in Homes And Property.
-6. Price trends: only where a dated series supports them.
+6. Price trends beyond US sale prices (done for those, November 17, 2026: FHFA by metro area): only where a dated series supports them.
 
 ## The Owner's Homes & Property Package (November 17, 2026)
 
