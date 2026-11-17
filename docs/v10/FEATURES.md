@@ -8,11 +8,11 @@ journey that shows it there.
 
 | Kind | proven | carried | does not bite | no downstream effect | stale | not a feature | not yet proven | All |
 |---|---|---|---|---|---|---|---|---|
-| action | 185 | 0 | 0 | 0 | 0 | 16 | 0 | 201 |
+| action | 185 | 0 | 0 | 0 | 0 | 15 | 0 | 200 |
 | bank | 54 | 0 | 0 | 0 | 0 | 0 | 0 | 54 |
 | scheduled | 57 | 0 | 0 | 0 | 0 | 11 | 0 | 68 |
 | field | 273 | 102 | 0 | 0 | 0 | 9 | 0 | 384 |
-| all | 569 | 102 | 0 | 0 | 0 | 36 | 0 | 707 |
+| all | 569 | 102 | 0 | 0 | 0 | 35 | 0 | 706 |
 
 ## Rows
 
@@ -89,46 +89,45 @@ journey that shows it there.
 | sendStaffingOffers | action | src/engine/hiring.ts | proven | send-staffing (40 seeds) | crewRates -3541.5; crewExperience -2.367; spent -17377.5; quality.craft -18.1; overall -4.862 |
 | uncastPlayer | action | src/engine/hiring.ts | proven | uncast-yourself (40 seeds) | playerParts -2; castRates +1637; spent +5737.5; standing.acting -4.475; overall +0.438 |
 | withdrawOffer | action | src/engine/hiring.ts | proven | withdraw-offer (40 seeds) | withdrawn +2; offersMade +2; castRates +86; spent +418 |
-| applyForApproval | action | src/engine/homes/building.ts | proven | build-a-house (40 seeds) | buildStagesDone +8; buildSpend +332297; money -335669.015; moneyChange -335669.015; worth -252423.099 |
-| investigate | action | src/engine/homes/building.ts | proven | build-a-house (40 seeds) | buildStagesDone +8; buildSpend +332297; money -335669.015; moneyChange -335669.015; worth -252423.099 |
+| applyForApproval | action | src/engine/homes/building.ts | proven | build-a-house (40 seeds) | buildStagesDone +8; buildSpend +336047; money -339374.135; moneyChange -339374.135; worth -255209.349 |
+| investigate | action | src/engine/homes/building.ts | proven | build-a-house (40 seeds) | buildStagesDone +8; buildSpend +336047; money -339374.135; moneyChange -339374.135; worth -255209.349 |
 | resumeBuild | action | src/engine/homes/building.ts | proven | resume-building (40 seeds) | buildStagesDone +7; money -260238.63; moneyChange -260238.63; worth -195699.45 |
-| saveDesign | action | src/engine/homes/building.ts | proven | double-garage (40 seeds) | buildQuote +18700; money -18799.468; moneyChange -18799.468; worth -14137.2 |
-| signBuild | action | src/engine/homes/building.ts | proven | build-a-house (40 seeds) | buildStagesDone +8; buildSpend +332297; money -335669.015; moneyChange -335669.015; worth -252423.099 |
-| startDesign | action | src/engine/homes/building.ts | proven | build-a-house (40 seeds) | buildStagesDone +8; buildSpend +332297; money -335669.015; moneyChange -335669.015; worth -252423.099 |
-| acceptCounter | action | src/engine/homes/buying.ts | proven | offer-below-asking (40 seeds) | pricePaid -10524; money +10709.97; moneyChange +10709.97; worth +8053.898 |
-| acceptSaleOffer | action | src/engine/homes/buying.ts | proven | sell-the-home (40 seeds) | sold +1; homesOwned -1; money +256767.248; moneyChange +256767.248; worth +193088.972 |
-| declineSaleOffer | action | src/engine/homes/buying.ts | proven | decline-first-offer (40 seeds) | soldAtDay +22; money -175.453; moneyChange -175.453; worth -131.941 |
-| listForSale | action | src/engine/homes/buying.ts | proven | sell-the-home (40 seeds) | sold +1; homesOwned -1; money +256767.248; moneyChange +256767.248; worth +193088.972 |
-| makeOffer | action | src/engine/homes/buying.ts | proven | buy-a-home (40 seeds) | homesOwned +1; pricePaid +297275; money -306011.713; moneyChange -306011.713; worth -230120.808 |
-| withdrawPurchase | action | src/engine/homes/buying.ts | proven | withdraw-purchase (40 seeds) | homesOwned -1; purchasesEnded +1; money +233739.719; moneyChange +233739.719; worth +175772.269 |
-| keepExterior | action | src/engine/homes/illustration.ts | not a feature |  | The picture's cache (from November 17, 2026): it keeps the accepted exterior picture of a home in the save for its design revision so it isn't redrawn each time; the design record it draws from decides everything. tests/homes.test.ts shows it kept per revision and redrawn when the outside changes. |
+| saveDesign | action | src/engine/homes/building.ts | proven | double-garage (40 seeds) | buildQuote +18232.5; money -18329.481; moneyChange -18329.481; worth -13783.77 |
+| signBuild | action | src/engine/homes/building.ts | proven | build-a-house (40 seeds) | buildStagesDone +8; buildSpend +336047; money -339374.135; moneyChange -339374.135; worth -255209.349 |
+| startDesign | action | src/engine/homes/building.ts | proven | build-a-house (40 seeds) | buildStagesDone +8; buildSpend +336047; money -339374.135; moneyChange -339374.135; worth -255209.349 |
+| acceptCounter | action | src/engine/homes/buying.ts | proven | offer-below-asking (40 seeds) | pricePaid -11652; money +11857.939; moneyChange +11857.939; worth +8917.171 |
+| acceptSaleOffer | action | src/engine/homes/buying.ts | proven | sell-the-home (40 seeds) | sold +1; homesOwned -1; money +253282.424; moneyChange +253282.424; worth +190468.382 |
+| declineSaleOffer | action | src/engine/homes/buying.ts | proven | decline-first-offer (40 seeds) | soldAtDay +22; money -217.577; moneyChange -217.577; worth -163.618 |
+| listForSale | action | src/engine/homes/buying.ts | proven | sell-the-home (40 seeds) | sold +1; homesOwned -1; money +253282.424; moneyChange +253282.424; worth +190468.382 |
+| makeOffer | action | src/engine/homes/buying.ts | proven | buy-a-home (40 seeds) | homesOwned +1; pricePaid +277150; money -286881.413; moneyChange -286881.413; worth -215734.822 |
+| withdrawPurchase | action | src/engine/homes/buying.ts | proven | withdraw-purchase (40 seeds) | homesOwned -1; purchasesEnded +1; money +245534.027; moneyChange +245534.027; worth +184641.588 |
 | arrangeViewing | action | src/engine/homes/index.ts | not a feature |  | Information, not a decision (from November 17, 2026): a viewing on its day says what can be seen of a home, its floors and walls, roof and heating, and what is shared; no engine function reads that it happened, and the price and terms are the same either way. tests/homes.test.ts shows it comes on its day, once. |
 | toggleFavorite | action | src/engine/homes/index.ts | not a feature |  | A bookmark (from November 17, 2026): it keeps a home in Find A Home's list after its month so you can find it again; it changes no price, term or outcome. e2e/homes.spec.ts shows a saved home kept and lapsing on its own date. |
-| advertise | action | src/engine/homes/letting.ts | proven | let-the-home (40 seeds) | letRents +23; letIncome +26927.7; money +28772.826; moneyChange +28772.826; worth +21637.166 |
+| advertise | action | src/engine/homes/letting.ts | proven | let-the-home (40 seeds) | letRents +23; letIncome +23668.9; money +25419.091; moneyChange +25419.091; worth +19115.157 |
 | approveLandlordRepair | action | src/engine/homes/letting.ts | proven | approve-tenant-repair (80 seeds) | letCosts +2378.975; money -2381.933; moneyChange -2381.933; worth -1791.214 |
-| changeRent | action | src/engine/homes/letting.ts | proven | cheaper-rent (40 seeds) | letIncome -4856.825; money -5047.632; moneyChange -5047.632; worth -3795.82 |
-| chooseTenant | action | src/engine/homes/letting.ts | proven | let-the-home (40 seeds) | letRents +23; letIncome +26927.7; money +28772.826; moneyChange +28772.826; worth +21637.166 |
-| endLetting | action | src/engine/homes/letting.ts | proven | end-the-letting (40 seeds) | letRents -16; lettingsEnded +1; money -17378.02; moneyChange -17378.02; worth -13068.271 |
+| changeRent | action | src/engine/homes/letting.ts | proven | cheaper-rent (40 seeds) | letIncome -5327.025; money -5541.976; moneyChange -5541.976; worth -4167.565 |
+| chooseTenant | action | src/engine/homes/letting.ts | proven | let-the-home (40 seeds) | letRents +23; letIncome +23668.9; money +25419.091; moneyChange +25419.091; worth +19115.157 |
+| endLetting | action | src/engine/homes/letting.ts | proven | end-the-letting (40 seeds) | letRents -16; lettingsEnded +1; money -20771.84; moneyChange -20771.84; worth -15620.423 |
 | bookStay | action | src/engine/homes/living.ts | proven | stay-longer (40 seeds) | staySpend +560; money -553.299; moneyChange -553.299; worth -416.08 |
-| buyInsurance | action | src/engine/homes/living.ts | proven | insure-belongings (40 seeds) | policies +1; money -414.894; moneyChange -414.894; worth -312 |
+| buyInsurance | action | src/engine/homes/living.ts | proven | insure-belongings (40 seeds) | policies +1; money -414.893; moneyChange -414.893; worth -312 |
 | buyItem | action | src/engine/homes/living.ts | proven | buy-furniture (40 seeds) | itemSpend +513; itemsInstalled +0.8; money -682.181; moneyChange -682.181; worth -513 |
-| cancelWork | action | src/engine/homes/living.ts | proven | cancel-work (40 seeds) | jobsDone -1; workPaid -22400; money +22131.913; moneyChange +22131.913; worth +16643.2 |
-| claimRepair | action | src/engine/homes/living.ts | proven | claim-on-insurance (40 seeds) | claimsPaid +380; money +375.452; moneyChange +375.452; worth +282.34 |
+| cancelWork | action | src/engine/homes/living.ts | proven | cancel-work (40 seeds) | jobsDone -1; workPaid -22400; money +22131.916; moneyChange +22131.916; worth +16643.2 |
+| claimRepair | action | src/engine/homes/living.ts | proven | claim-on-insurance (40 seeds) | claimsPaid +370; money +365.572; moneyChange +365.572; worth +274.91 |
 | disposeItem | action | src/engine/homes/living.ts | proven | dispose-item (40 seeds) | itemsGone +1; money -89.096; moneyChange -89.096; worth -67 |
-| installItem | action | src/engine/homes/living.ts | proven | install-appliance (40 seeds) | itemsInstalled +0.8; money -148.205; moneyChange -148.205; worth -111.45 |
-| measureForInstall | action | src/engine/homes/living.ts | proven | measure-for-install (40 seeds) | itemsInstalled +0.8; money -192.659; moneyChange -192.659; worth -144.88 |
-| restoreChange | action | src/engine/homes/living.ts | proven | undo-the-paint (40 seeds) | depositKept -376; money +308.144; moneyChange +308.144; worth +231.725 |
-| returnItem | action | src/engine/homes/living.ts | proven | return-item (40 seeds) | itemSpend -446; itemsGone +1; money +593.085; moneyChange +593.085; worth +446 |
-| startWork | action | src/engine/homes/living.ts | proven | ask-to-paint (40 seeds) | jobsDone +1; workPaid +1597.725; money -2124.634; moneyChange -2124.634; worth -1597.725 |
-| applyToRent | action | src/engine/homes/renting.ts | proven | rent-a-home (40 seeds) | rentsPaid +24; money -50574.107; moneyChange -50574.107; worth -38031.728 |
+| installItem | action | src/engine/homes/living.ts | proven | install-appliance (40 seeds) | itemsInstalled +0.75; money -140.795; moneyChange -140.795; worth -105.877 |
+| measureForInstall | action | src/engine/homes/living.ts | proven | measure-for-install (40 seeds) | itemsInstalled +0.775; money -187.843; moneyChange -187.843; worth -141.258 |
+| restoreChange | action | src/engine/homes/living.ts | proven | undo-the-paint (40 seeds) | depositKept -376; money +290.126; moneyChange +290.126; worth +218.175 |
+| returnItem | action | src/engine/homes/living.ts | proven | return-item (40 seeds) | itemSpend -446; itemsGone +1; money +593.086; moneyChange +593.086; worth +446 |
+| startWork | action | src/engine/homes/living.ts | proven | ask-to-paint (40 seeds) | jobsDone +1; workPaid +1523.85; money -2026.397; moneyChange -2026.397; worth -1523.85 |
+| applyToRent | action | src/engine/homes/renting.ts | proven | rent-a-home (40 seeds) | rentsPaid +24; money -51602.442; moneyChange -51602.442; worth -38805.036 |
 | approveRepair | action | src/engine/homes/renting.ts | proven | report-your-repair (40 seeds) | repairSpend +186; money -247.34; moneyChange -247.34; worth -186 |
-| askPermission | action | src/engine/homes/renting.ts | proven | ask-to-paint (40 seeds) | jobsDone +1; workPaid +1597.725; money -2124.634; moneyChange -2124.634; worth -1597.725 |
-| disputeDeductions | action | src/engine/homes/renting.ts | proven | dispute-deductions (120 seeds) | depositKept -24.483; money +32.558; moneyChange +32.558; worth +24.483 |
-| giveNotice | action | src/engine/homes/renting.ts | proven | give-notice (40 seeds) | rentsPaid -12; depositBack +1752.485; money +28862.188; moneyChange +28862.188; worth +21704.365 |
-| moveIn | action | src/engine/homes/renting.ts | proven | rent-a-home (40 seeds) | rentsPaid +24; money -50574.107; moneyChange -50574.107; worth -38031.728 |
-| payArrears | action | src/engine/homes/renting.ts | proven | pay-rent-owed (60 seeds) | arrears -1392.95; money -1852.326; moneyChange -1852.326; worth -1392.95 |
+| askPermission | action | src/engine/homes/renting.ts | proven | ask-to-paint (40 seeds) | jobsDone +1; workPaid +1523.85; money -2026.397; moneyChange -2026.397; worth -1523.85 |
+| disputeDeductions | action | src/engine/homes/renting.ts | proven | dispute-deductions (120 seeds) | depositKept -23.542; money +31.306; moneyChange +31.306; worth +23.542 |
+| giveNotice | action | src/engine/homes/renting.ts | proven | give-notice (40 seeds) | rentsPaid -12; depositBack +1523.12; money +25221.657; moneyChange +25221.657; worth +18966.686 |
+| moveIn | action | src/engine/homes/renting.ts | proven | rent-a-home (40 seeds) | rentsPaid +24; money -51602.442; moneyChange -51602.442; worth -38805.036 |
+| payArrears | action | src/engine/homes/renting.ts | proven | pay-rent-owed (60 seeds) | arrears -1422.217; money -1891.246; moneyChange -1891.246; worth -1422.217 |
 | reportRepair | action | src/engine/homes/renting.ts | proven | report-your-repair (40 seeds) | repairSpend +186; money -247.34; moneyChange -247.34; worth -186 |
-| signLease | action | src/engine/homes/renting.ts | proven | rent-a-home (40 seeds) | rentsPaid +24; money -50574.107; moneyChange -50574.107; worth -38031.728 |
+| signLease | action | src/engine/homes/renting.ts | proven | rent-a-home (40 seeds) | rentsPaid +24; money -51602.442; moneyChange -51602.442; worth -38805.036 |
 | acceptJob | action | src/engine/jobs.ts | proven | outside-work (40 seeds) | jobsDone -0.725; jobPay -3428.45; money -3435.565 |
 | askBetterRate | action | src/engine/jobs.ts | proven | ask-better-rate (60 seeds) | ratesAgreed +7.417; jobPay +5348.317; money +4632.203 |
 | declineJob | action | src/engine/jobs.ts | proven | decline-job (40 seeds) | jobsDeclined +1.025; jobsDone -0.975; jobPay -6482.5; money -6532.204 |
@@ -308,7 +307,7 @@ journey that shows it there.
 | first-look-lapse | scheduled | src/engine/first-look.ts | proven | off-first-look-lapse (40 seeds) | firstLookActive -0.975; money -2294626.55 |
 | first-look-overhead | scheduled | src/engine/first-look.ts | proven | first-look-accept (40 seeds) | firstLookActive +1.5; money +619571.828 |
 | guide-me | scheduled | src/engine/mandates.ts | proven | off-guide-me (40 seeds) | writingPasses -3.375; quality.script -2.537; spent -4258.5 |
-| home | scheduled | src/engine/homes/index.ts | proven | housing-clock (40 seeds) | rentsPaid -24; money +54178.973; moneyChange +54178.973; worth +40742.588 |
+| home | scheduled | src/engine/homes/index.ts | proven | housing-clock (40 seeds) | rentsPaid -24; money +46545.941; moneyChange +46545.941; worth +35002.548 |
 | industry-decision | scheduled | src/engine/industry.ts | not a feature |  | Renews or ends the real series the world follows, as the catalog's world pages show them (catalog/world.ts, simseason.ts); nothing in a player's career reads those outcomes. |
 | job-counter | scheduled | src/engine/jobs.ts | proven | ask-better-rate (60 seeds) | ratesAgreed +7.417; jobPay +5348.317; money +4632.203 |
 | job-day | scheduled | src/engine/jobs.ts | proven | off-job-day (40 seeds) | jobsDone -0.8; jobPay -4990.65; money -5003.086 |
@@ -386,33 +385,33 @@ journey that shows it there.
 | {`Version In ${r.territories.map(countryName).join(', ')}`} | field | finish.ts setReleaseVersion, the release handler; distribution.ts territoriesReached, reportedGross | proven | release-dubbed (60 seeds) | dubbed +0.85; spent +4083.333; gross +6406.667; revenue +13511.333 |
 | "Development Money From The Deal" | field | first-look.ts drawDevelopment, developmentRefusal, repayTurnaround | proven | draw-development (40 seeds) | developmentIn +47550; ownIn -47550; money +37486.843 |
 | "Something Broken" | field | renting.ts reportRepair (who repairs: the landlord, or you for your things and damage you caused) | proven | report-your-repair (40 seeds) | repairSpend +186; money -247.34; moneyChange -247.34; worth -186 |
-| "Ask Permission For" | field | renting.ts askPermission, decidePermission | proven | ask-to-paint (40 seeds) | jobsDone +1; workPaid +1597.725; money -2124.634; moneyChange -2124.634; worth -1597.725 |
+| "Ask Permission For" | field | renting.ts askPermission, decidePermission | proven | ask-to-paint (40 seeds) | jobsDone +1; workPaid +1523.85; money -2026.397; moneyChange -2026.397; worth -1523.85 |
 | "Viewing Day" | field | shown in Viewings: index.ts arrangeViewing, view | carried | tests/homes.test.ts::a viewing comes on its day | A name or a record, carried to shown in Viewings: index.ts arrangeViewing, view: it decides nothing by its nature. |
-| {`Your Offer (${home.currency})`} | field | buying.ts makeOffer, answerOffer, acceptCounter | proven | offer-below-asking (40 seeds) | pricePaid -10524; money +10709.97; moneyChange +10709.97; worth +8053.898 |
-| "Paying With" | field | buying.ts purchaseQuote, decideFinance, complete, mortgageDue | proven | mortgage-not-cash (40 seeds) | mortgageLoan +228540; mortgageOwed +218315.808; money +191825.325; moneyChange +191825.325; worth -19920.843 |
-| "Your Deposit (%)" | field | buying.ts purchaseQuote | proven | bigger-deposit (40 seeds) | mortgageLoan -81292.5; mortgagePayment -548.893; money -68233; moneyChange -68233; worth +7085.92 |
-| "Mortgage Term" | field | buying.ts purchaseQuote, mortgageDue | proven | shorter-mortgage (40 seeds) | mortgagePayment +537.219; mortgageOwed -12527.561; money -11829.527; moneyChange -11829.527; worth +524.923 |
-| "Have It Inspected" | field | buying.ts makeOffer, inspect | proven | inspect-first (40 seeds) | inspections +1; money -592.818; moneyChange -592.818; worth -445.8 |
-| {label} | field | building.ts saveDesign, buildQuote; illustration.ts GAME_DRAWING | proven | double-garage (40 seeds) | buildQuote +18700; money -18799.468; moneyChange -18799.468; worth -14137.2 |
-| {label} | field | shown in the exterior picture: illustration.ts GAME_DRAWING, validate | carried | tests/homes.test.ts::is drawn from the design record | A name or a record, carried to shown in the exterior picture: illustration.ts GAME_DRAWING, validate: it decides nothing by its nature. |
-| "Floors" | field | building.ts designProblems, buildQuote | proven | bigger-house (40 seeds) | buildQuote +83236; money -83345.505; moneyChange -83345.505; worth -62675.82 |
-| "Width (m)" | field | building.ts designProblems | proven | bigger-house (40 seeds) | buildQuote +83236; money -83345.505; moneyChange -83345.505; worth -62675.82 |
-| "Depth (m)" | field | building.ts designProblems | proven | bigger-house (40 seeds) | buildQuote +83236; money -83345.505; moneyChange -83345.505; worth -62675.82 |
-| "Floor Area (m²)" | field | building.ts buildQuote, designProblems | proven | bigger-house (40 seeds) | buildQuote +83236; money -83345.505; moneyChange -83345.505; worth -62675.82 |
-| "Windows Across Each Floor" | field | shown in the exterior picture: illustration.ts GAME_DRAWING, validate | carried | tests/homes.test.ts::draws every offered home exactly | A name or a record, carried to shown in the exterior picture: illustration.ts GAME_DRAWING, validate: it decides nothing by its nature. |
-| "Balconies" | field | building.ts buildQuote, designProblems | proven | balconies (40 seeds) | buildQuote +13200; money -13270.212; moneyChange -13270.212; worth -9979.2 |
-| {title(o)} | field | building.ts buildQuote, designProblems | proven | a-porch (40 seeds) | buildQuote +22000; money -22117.022; moneyChange -22117.022; worth -16632 |
-| {`${ROOM_WORDS[r.kind]} ${i + 1} (m²)`} | field | building.ts designProblems (model.ts roomCheck) | proven | bigger-house (40 seeds) | buildQuote +83236; money -83345.505; moneyChange -83345.505; worth -62675.82 |
-| "Work" | field | living.ts workQuote, workRefusal, startWork, workDone; model.ts permissionFor | proven | ask-to-paint (40 seeds) | jobsDone +1; workPaid +1597.725; money -2124.634; moneyChange -2124.634; worth -1597.725 |
-| "New Colour" | field | shown in the exterior picture: living.ts workDone; illustration.ts | carried | tests/homes.test.ts::redrawn only when the outside changes | A name or a record, carried to shown in the exterior picture: living.ts workDone; illustration.ts: it decides nothing by its nature. |
-| "Roof Material" | field | shown in the exterior picture: living.ts workDone; illustration.ts | carried | tests/homes-choices.test.ts::the work chosen sets its cost | A name or a record, carried to shown in the exterior picture: living.ts workDone; illustration.ts: it decides nothing by its nature. |
-| "For The Room" | field | living.ts itemCheck, buyItem, installRefusal | proven | washer-in-the-laundry (40 seeds) | itemSpend +1130; money -1116.475; moneyChange -1116.475; worth -839.59 |
+| {`Your Offer (${home.currency})`} | field | buying.ts makeOffer, answerOffer, acceptCounter | proven | offer-below-asking (40 seeds) | pricePaid -11652; money +11857.939; moneyChange +11857.939; worth +8917.171 |
+| "Paying With" | field | buying.ts purchaseQuote, decideFinance, complete, mortgageDue | proven | mortgage-not-cash (40 seeds) | mortgageLoan +219740; mortgageOwed +209909.488; money +184439.032; moneyChange +184439.032; worth -19153.782 |
+| "Your Deposit (%)" | field | buying.ts purchaseQuote | proven | bigger-deposit (40 seeds) | mortgageLoan -72315; mortgagePayment -488.275; money -60697.72; moneyChange -60697.72; worth +6303.398 |
+| "Mortgage Term" | field | buying.ts purchaseQuote, mortgageDue | proven | shorter-mortgage (40 seeds) | mortgagePayment +531.002; mortgageOwed -12382.571; money -11692.626; moneyChange -11692.626; worth +518.84 |
+| "Have It Inspected" | field | buying.ts makeOffer, inspect | proven | inspect-first (40 seeds) | inspections +1; money -592.819; moneyChange -592.819; worth -445.8 |
+| {label} | field | building.ts saveDesign, buildQuote | proven | double-garage (40 seeds) | buildQuote +18232.5; money -18329.481; moneyChange -18329.481; worth -13783.77 |
+| {label} | field | shown in words on the home: Homes.tsx outsideWords | carried | tests/homes.test.ts::changes with the work done to it | A name or a record, carried to shown in words on the home: Homes.tsx outsideWords: it decides nothing by its nature. |
+| "Floors" | field | building.ts designProblems, buildQuote | proven | bigger-house (40 seeds) | buildQuote +83236; money -83345.504; moneyChange -83345.504; worth -62675.82 |
+| "Width (m)" | field | building.ts designProblems | proven | bigger-house (40 seeds) | buildQuote +83236; money -83345.504; moneyChange -83345.504; worth -62675.82 |
+| "Depth (m)" | field | building.ts designProblems | proven | bigger-house (40 seeds) | buildQuote +83236; money -83345.504; moneyChange -83345.504; worth -62675.82 |
+| "Floor Area (m²)" | field | building.ts buildQuote, designProblems | proven | bigger-house (40 seeds) | buildQuote +83236; money -83345.504; moneyChange -83345.504; worth -62675.82 |
+| "Windows Across Each Floor" | field | shown in words on the home: Homes.tsx outsideWords | carried | tests/homes.test.ts::changes with the work done to it | A name or a record, carried to shown in words on the home: Homes.tsx outsideWords: it decides nothing by its nature. |
+| "Balconies" | field | building.ts buildQuote, designProblems | proven | balconies (40 seeds) | buildQuote +13200; money -13270.213; moneyChange -13270.213; worth -9979.2 |
+| {title(o)} | field | building.ts buildQuote, designProblems | proven | a-porch (40 seeds) | buildQuote +22000; money -22117.021; moneyChange -22117.021; worth -16632 |
+| {`${ROOM_WORDS[r.kind]} ${i + 1} (m²)`} | field | building.ts designProblems (model.ts roomCheck) | proven | bigger-house (40 seeds) | buildQuote +83236; money -83345.504; moneyChange -83345.504; worth -62675.82 |
+| "Work" | field | living.ts workQuote, workRefusal, startWork, workDone; model.ts permissionFor | proven | ask-to-paint (40 seeds) | jobsDone +1; workPaid +1523.85; money -2026.397; moneyChange -2026.397; worth -1523.85 |
+| "New Colour" | field | shown in words on the home: living.ts workDone; Homes.tsx outsideWords | carried | tests/homes.test.ts::changes with the work done to it | A name or a record, carried to shown in words on the home: living.ts workDone; Homes.tsx outsideWords: it decides nothing by its nature. |
+| "Roof Material" | field | shown in words on the home: living.ts workDone; Homes.tsx outsideWords | carried | tests/homes-choices.test.ts::the work chosen sets its cost | A name or a record, carried to shown in words on the home: living.ts workDone; Homes.tsx outsideWords: it decides nothing by its nature. |
+| "For The Room" | field | living.ts itemCheck, buyItem, installRefusal | proven | washer-in-the-laundry (40 seeds) | itemSpend +988.75; money -976.917; moneyChange -976.917; worth -734.641 |
 | "Nights" | field | living.ts bookStay | proven | stay-longer (40 seeds) | staySpend +560; money -553.299; moneyChange -553.299; worth -416.08 |
-| "Something Broken" | field | renting.ts reportRepair, approveRepair | proven | owner-repairs-roof (40 seeds) | repairSpend +1400; repairsFixed +1; money -1383.245; moneyChange -1383.245; worth -1040.2 |
-| {`Asking Price (${cur})`} | field | buying.ts listForSale, buyerOffer | proven | ask-more (40 seeds) | saleOffer +11955.275; soldAtDay +5; money +10792.379; moneyChange +10792.379; worth +8115.868 |
-| {`New Rent (${cur})`} | field | letting.ts changeRent, chooseTenant, receiveRent | proven | cheaper-rent (40 seeds) | letIncome -4856.825; money -5047.632; moneyChange -5047.632; worth -3795.82 |
-| {`Rent A Month (${cur})`} | field | letting.ts advertise, applicantsArrive, receiveRent | proven | let-the-home (40 seeds) | letRents +23; letIncome +26927.7; money +28772.826; moneyChange +28772.826; worth +21637.166 |
-| "Have An Agent Manage It" | field | letting.ts receiveRent | proven | agent-manages (40 seeds) | letCosts +2769.525; money -2770.543; moneyChange -2770.543; worth -2083.448 |
+| "Something Broken" | field | renting.ts reportRepair, approveRepair | proven | owner-repairs-roof (40 seeds) | repairSpend +1295; repairsFixed +0.925; money -1279.502; moneyChange -1279.502; worth -962.185 |
+| {`Asking Price (${cur})`} | field | buying.ts listForSale, buyerOffer | proven | ask-more (40 seeds) | saleOffer +12051.95; soldAtDay +5; money +10879.663; moneyChange +10879.663; worth +8181.506 |
+| {`New Rent (${cur})`} | field | letting.ts changeRent, chooseTenant, receiveRent | proven | cheaper-rent (40 seeds) | letIncome -5327.025; money -5541.976; moneyChange -5541.976; worth -4167.565 |
+| {`Rent A Month (${cur})`} | field | letting.ts advertise, applicantsArrive, receiveRent | proven | let-the-home (40 seeds) | letRents +23; letIncome +23668.9; money +25419.091; moneyChange +25419.091; worth +19115.157 |
+| "Have An Agent Manage It" | field | letting.ts receiveRent | proven | agent-manages (40 seeds) | letCosts +2420.15; money -2421.063; moneyChange -2421.063; worth -1820.639 |
 | {`Repair Limit (${cur})`} | field | letting.ts receiveRent | proven | repair-limit (80 seeds) | letCosts +2021.913; money -2023.99; moneyChange -2023.99; worth -1522.04 |
 | {s.label} | field | shown in the idea's words: brief.ts fill | carried | tests/brief.test.ts::writes the player's names where the idea has slots, and its suggestions where they left them blank | A name or a record, carried to shown in the idea's words: brief.ts fill: it decides nothing by its nature. |
 | {c.name} | field | brief.ts applyIdea | proven | idea-characters (40 seeds) | ownIn +9350; daysToDeliver +6.125; spent +8982.5 |
