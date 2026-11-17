@@ -151,10 +151,31 @@ test('J13: a first-look deal for television covers series, not films; a covered 
   await expect(commissioner(page)).toContainText('Already approached for this project.'); // its submission is the approach
   const commission = card(page, 'Backers').locator('li', { hasText: new RegExp(`^${NIGHT.replace(/[()]/g, '\\$&')}`) }).first();
   await commission.getByRole('button', { name: 'Accept Offer' }).click();
-  await page.getByRole('dialog', { name: 'Accept These Terms?' }).getByRole('button', { name: /^Accept \$/ }).click();
+  // The season it commissions is owed by a date (from November 17, 2026): undelivered by then, what it paid in is repaid.
+  const confirm = page.getByRole('dialog', { name: 'Accept These Terms?' });
+  await expect(confirm).toContainText(/Deliver by \d{4}-\d{2}-\d{2}, or what they paid in must be repaid\./);
+  await confirm.getByRole('button', { name: /^Accept \$/ }).click();
   await expect(look).toContainText(`${NIGHT} commissioned it.`);
   await expect(commissioner(page).getByRole('button', { name: 'Approach Commissioner' })).toBeDisabled();
   await nav(page, 'Profile');
   await expect(running.getByRole('list', { name: 'Submitted To It' })).toContainText('Night Watch, submitted');
   await expect(running.getByRole('list', { name: 'Submitted To It' })).toContainText('Taken');
+
+  // The deal's renewal is judged on the series it commissioned (from November 17, 2026). Labelled fixture: Night Watch
+  // delivered and renewed by its commissioner, and the deal's term ending tomorrow (as acceptFirstLook schedules it).
+  await rewrite(page, (state) => {
+    const p = state.projects.find((x: { title: string }) => x.title === 'Night Watch');
+    p.delivered = { at: state.now, runtimeMin: 20 };
+    p.renewal = { decidedAt: state.now, outcome: 'renewed', reason: 'The commissioner renewed Night Watch: they will offer to fund another season.' };
+    state.firstLooks[0].endsAt = state.now + DAY;
+    const end = state.events.find((e: { kind: string }) => e.kind === 'first-look-end');
+    end.at = state.now + DAY;
+    state.events.sort((a: { at: number }, b: { at: number }) => a.at - b.at);
+  });
+  await advance(page, 'next-day');
+  await advance(page, 'next-day');
+  await nav(page, 'Home');
+  await expect(page.locator('section.card', { has: page.getByRole('heading', { name: 'Recent Updates' }) })).toContainText('Night Watch, a series it commissioned under the deal, was renewed.');
+  await nav(page, 'Profile');
+  await expect(fl.getByRole('region', { name: 'First-Look Offer' })).toContainText(', renewing the last one');
 });

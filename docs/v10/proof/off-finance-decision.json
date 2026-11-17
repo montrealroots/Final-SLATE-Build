@@ -689,7 +689,7 @@
  ],
  "verdict": "proven",
  "hashes": {
-  "src/engine/finance.ts": "2bd95e24a7cb1a0f",
+  "src/engine/finance.ts": "c22014175a99a797",
   "tests/proof/career.ts": "50bea06f19a02c5b"
  }
 }

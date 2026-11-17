@@ -3,14 +3,14 @@
 // a record, with and without a deal, a pass and a take.
 import { describe, expect, it } from 'vitest';
 import { DAY, acceptDeal, createProject, deserialize, processUntil, serialize, setFinanceTarget } from './engine-api';
-import { backerOptions, pitchToStudio, studioOption, submitSeries } from '../src/engine/finance';
+import { backerOptions, dealTerms, pitchToStudio, studioOption, submitSeries } from '../src/engine/finance';
 import { acceptJob, acceptRefusal, moveJob } from '../src/engine/jobs';
 import { companyBalance } from '../src/engine/company';
 import { personalBalance, personalStatement, postPersonal } from '../src/engine/personal';
 import {
   dealTier,
   FIRST_LOOK_NOTICE_DAYS, acceptFirstLook, activeFirstLook, askMoreOverhead, declineFirstLook, developmentRefusal, drawDevelopment, endFirstLook,
-  covers, firstLookCandidate, firstLookTerms, firstLookWords, fundLeft, offerFirstLook, scheduleFirstLookCheck, scopeOf, submissionStanding,
+  covers, firstLookCandidate, firstLookTerms, firstLooks, seriesJudgement, firstLookWords, fundLeft, offerFirstLook, scheduleFirstLookCheck, scopeOf, submissionStanding,
 } from '../src/engine/first-look';
 import { slateRoom, strategyOf } from '../src/engine/strategy';
 import type { StudioProfile } from '../src/engine/studios';
@@ -306,6 +306,50 @@ describe('a television first-look deal (the v6 package, J13; the v7 package, DEA
       if (a.verdict === 'offer' || a.verdict === 'option') expect(a.status).toBe('offered');
       else { expect(a.status).toBe('declined'); expect(a.hold).not.toMatch(/first-look/); }
     }
+  });
+
+  // J13 (from November 17, 2026): what the deal holds a commissioned season to, and its renewal judged on how the series did.
+  it("a season it commissions is owed by a date, or what it paid in is repaid", () => {
+    // Labelled search: worlds until one whose company commissions the series (its read is the same on the same facts).
+    for (let k = 0; k < 12; k++) {
+      const s = tvWorld(`fl-tv-owed-${k}`);
+      acceptFirstLook(s, offerFirstLook(s, undefined, 'television')!.id);
+      const p = series(s, 'Night Watch');
+      const d = submitSeries(s, p);
+      wait(s, activeFirstLook(s)!.terms.considerDays + 1);
+      if (d.status !== 'offered') continue;
+      expect(Math.round((d.terms.deliverBy! - s.now) / DAY)).toBeGreaterThan(600);
+      expect(dealTerms(d).join(' ')).toMatch(/Deliver by \d{4}-\d{2}-\d{2}, or what they paid in must be repaid\./);
+      return;
+    }
+    throw new Error('No world in twelve where the company commissioned the series.');
+  });
+
+  it("is renewed at its term if a series it commissioned was renewed, and not if they were all cancelled", () => {
+    const run = (outcome: 'renewed' | 'cancelled' | 'ended') => {
+      const s = tvWorld(`fl-tv-judged-${outcome}`);
+      const fl = offerFirstLook(s, undefined, 'television')!;
+      acceptFirstLook(s, fl.id);
+      // Labelled fixture: a series it commissioned under the deal, delivered and decided by its commissioner.
+      const p = series(s, 'Night Watch');
+      p.finance!.deals.push({ id: 'fd-fixture-tv', kind: 'commissioner', backer: fl.name, amount: 400_000, status: 'accepted', askedAt: s.now, reason: '', received: 400_000, repaid: 0, firstLook: fl.id, terms: { recoup: 0, incomeShare: 0.85, approvalRights: [], credit: 'Commissioned By', onDelivery: 0, deliverBy: null } } as never);
+      fl.submissions.push({ projectId: p.id, dealId: 'fd-fixture-tv', at: s.now });
+      p.delivered = { at: s.now, runtimeMin: 90 };
+      p.renewal = { decidedAt: s.now, outcome, reason: 'Fixture.' };
+      const judged = seriesJudgement(s, fl);
+      wait(s, Math.ceil((fl.endsAt! - s.now) / DAY) + 1);
+      return { judged, again: firstLooks(s).some((x) => x.renews === fl.id) };
+    };
+    expect(run('renewed')).toEqual({ judged: { keep: true, why: 'Night Watch, a series it commissioned under the deal, was renewed.' }, again: true });
+    // Taken, and a record that counts: until November 17, 2026 that renewed it; a cancelled series now ends it.
+    expect(run('cancelled')).toEqual({ judged: { keep: false, why: "Night Watch, which it commissioned under the deal, wasn't renewed." }, again: false });
+    // A season you ended as planned says nothing either way: the deal is judged as before, on the series taken.
+    expect(run('ended')).toEqual({ judged: null, again: true });
+  });
+
+  it('a film deal is never judged on series', () => {
+    const s = signed('fl-film-judged');
+    expect(seriesJudgement(s, activeFirstLook(s)!)).toBeNull();
   });
 });
 

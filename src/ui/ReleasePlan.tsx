@@ -5,7 +5,7 @@ import { useState } from 'react';
 import { money } from '../engine/budget';
 import { isEpisodic } from '../engine/projects';
 import {
-  AGENT_SHARE, BUYERS, BUYER_BAR, PLAN_ORDER, PLAN_ROUTES, SALES_AGENT, alternatives, buyerValue, planOf, planRefusal, planWords, proposalRefusal, proposeLicence,
+  AGENT_SHARE, BUYERS, BUYER_NOTE, BUYER_BAR, PLAN_ORDER, PLAN_ROUTES, SALES_AGENT, alternatives, buyerValue, planOf, planRefusal, planWords, proposalRefusal, proposeLicence,
   releaseYourself, selfCosts, selfRefusal, setReleasePlan, type SelfRoute,
 } from '../engine/release-plan';
 import { dateKey, formatDateKey } from '../engine/time';
@@ -106,7 +106,7 @@ function Proposals({ p, route }: { p: Project; route: BuyerRoute }) {
   return (
     <div role="region" aria-label={`${label} Proposals`} className="spaced">
       <h3>{label}</h3>
-      <p className="dim small">{route === 'streaming-licence' ? `${SALES_AGENT}, a sales agent, sends it and takes ${Math.round(AGENT_SHARE * 100)}% of the fee. ` : ''}Buyers of this kind take work received at {BUYER_BAR[route]} or better. Rights like these, for {plan.territories.map(countryName).join(', ')}, sell for about {money(comparable)}. A buyer answers in three or four weeks.</p>
+      <p className="dim small">{route === 'streaming-licence' ? `${SALES_AGENT}, a sales agent, sends it and takes ${Math.round(AGENT_SHARE * 100)}% of the fee. ` : ''}Buyers of this kind take work received at {BUYER_BAR[route]} or better. Rights like these, for {plan.territories.map(countryName).join(', ')}, sell for about {money(comparable)}. A buyer answers in three or four weeks. {BUYER_NOTE}</p>
       <div className="inline-form">
         <SelectField label={`${label}: Buyer`} value={buyer} options={BUYERS[route].map((b) => ({ value: b, label: b }))} onChange={setBuyer} />
         <NumberField label={`${label}: Your Ask`} value={ask} min={0} max={100_000_000} onChange={setAsk} />

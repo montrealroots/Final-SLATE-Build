@@ -1215,7 +1215,9 @@ export interface Project {
   continues?: { from: string; number: number; previousArc?: string; returning: { characterId: string; personId: string; method: PerformanceMethod; rate: number }[] };
   continuedBy?: string;
   /** A commissioner's decision on another season (continuation.ts). */
-  renewal?: { decidedAt: number; outcome: 'renewed' | 'cancelled'; reason: string };
+  renewal?: { decidedAt: number; outcome: 'renewed' | 'cancelled' | 'ended'; reason: string };
+  /** The player planned this season as the series' last (continuation.ts planFinalSeason; from November 17, 2026). */
+  finalSeason?: true;
   /** Real people from the film catalog the player is considering for a part or a job here (guests.ts). */
   considered?: import('./guests').Considered[];
   /** Ideas applied from the picker, by ID and version, and ideas marked to come back to (brief.ts). Never their text. */

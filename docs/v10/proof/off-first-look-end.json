@@ -455,7 +455,7 @@
  ],
  "verdict": "proven",
  "hashes": {
-  "src/engine/first-look.ts": "d0c8e03fdf1ccbee",
+  "src/engine/first-look.ts": "29363b61868a1a82",
   "tests/proof/career.ts": "50bea06f19a02c5b"
  }
 }

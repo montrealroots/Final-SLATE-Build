@@ -15,7 +15,8 @@
 import { cancel, closeSettled, ledgerTotals, money, reserve, settle } from './budget';
 import { heldTerritories } from './distribution';
 import { RENTAL_SHARE } from './box-office';
-import { DELIVERY_MATERIALS, DISTRIBUTORS, EXCLUSIVE_DAYS, festivalHold, planRelease, setReleaseVersion, subtitlingCost, versionRefusal } from './finish';
+import { COMPANIES } from '../catalog/registry';
+import { DELIVERY_MATERIALS, EXCLUSIVE_DAYS, festivalHold, planRelease, setReleaseVersion, subtitlingCost, versionRefusal } from './finish';
 import { isEpisodic, isNonfiction } from './projects';
 import { contentLevel, documentsNeeded } from './script-effects';
 import { getPlace } from '../data/places';
@@ -35,12 +36,26 @@ export const PLAN_ROUTES: Record<PlanRoute, { label: string; kind: 'festival' | 
 };
 export const PLAN_ORDER: PlanRoute[] = ['festival-first', 'partner-theatrical', 'distributor-sales', 'broadcast-licence', 'streaming-licence', 'transactional', 'direct'];
 
-/** The buyers each licence route can be proposed to. Fictional, as the game's distributors are. */
-export const BUYERS: Record<BuyerRoute, string[]> = {
-  'distributor-sales': DISTRIBUTORS,
-  'broadcast-licence': ['Channel Meridian', 'Northern Broadcasting', 'Harbour Television', 'Public Screen Network'],
-  'streaming-licence': ['Streamline Plus', 'Cobalt Stream', 'Night Owl Streaming', 'Open Field Online'],
+/**
+ * The buyers each licence route can be proposed to: real companies, by the names the catalog's registry records them
+ * under (src/catalog/registry.ts; the v6 package, J14: "a real buyer by name"; from November 17, 2026). The film
+ * distributors, and the general-entertainment broadcasters and streaming services; the children's, news, music and
+ * single-language channels and the anime service are left out, as a licence proposal for any film wouldn't go to them.
+ * How each answers (its bar, its price, its days) is the game's calibration for the route, not the company's real terms.
+ * Until November 17, 2026 the buyers were fictional (Channel Meridian, Cobalt Stream, the game's distributors).
+ */
+const BUYER_NAMES: Record<BuyerRoute, string[]> = {
+  'distributor-sales': ['Focus Features', 'Universal Pictures', 'Paramount Pictures', 'Warner Bros. Pictures', 'Columbia Pictures', 'The Walt Disney Studios'],
+  'broadcast-licence': ['FX', 'HBO (The Channel)', 'Bravo', 'NBC', 'CBS', 'ABC'],
+  'streaming-licence': ['Hulu', 'Peacock', 'Paramount+', 'HBO Max', 'Disney+', 'Pluto TV'],
 };
+const BUYER_ROLE: Record<BuyerRoute, string> = { 'distributor-sales': 'distribution', 'broadcast-licence': 'network', 'streaming-licence': 'streaming' };
+export const BUYERS: Record<BuyerRoute, string[]> = Object.fromEntries((Object.keys(BUYER_NAMES) as BuyerRoute[]).map((r) => [r,
+  BUYER_NAMES[r].filter((n) => COMPANIES.some((c) => c.name === n && c.roles.includes(BUYER_ROLE[r] as never)))])) as Record<BuyerRoute, string[]>;
+/** Every real buyer, so an offer from one isn't called fictional. */
+export const REAL_BUYERS = new Set(Object.values(BUYERS).flat());
+/** The buyers' answers are the game's, said where a buyer is chosen. */
+export const BUYER_NOTE = "The buyers are real companies; how each answers is the game's calibration for its route, not the company's real terms.";
 export const SALES_AGENT = 'Wayfarer Sales';
 export const AGENT_SHARE = 0.2;
 /** The reception each kind of buyer works to, and how long it takes to answer. Game calibration. */

@@ -470,7 +470,7 @@
  "verdict": "proven",
  "hashes": {
   "src/engine/opportunities.ts": "a8ab5841edc4d8a4",
-  "src/engine/finance.ts": "2bd95e24a7cb1a0f",
+  "src/engine/finance.ts": "c22014175a99a797",
   "tests/proof/career.ts": "50bea06f19a02c5b"
  }
 }

@@ -456,6 +456,9 @@ function decide(state: GameState, p: Project, deal: FinanceDeal): void {
           t.incomeShare = 0.85;
           t.approvalRights = ['Casting Approval', 'Picture Approval'];
           t.credit = 'Commissioned By';
+          // The season is owed by a date (from November 17, 2026; the v6 package, J13: "season obligations"): undelivered
+          // by then, what the company paid in is repaid, as a studio's is. Until then nothing held a covered series to a date.
+          t.deliverBy = state.now + STUDIO_DELIVERY_DAYS * DAY;
           deal.reason = `It commissions the series under your first-look deal. ${read.for.join(' ')}`.trim();
         } else refusal = `${read.verdict === 'notes' ? 'Not this one.' : 'It passed.'} ${read.against.join(' ')} You may take it to a commissioner.`.trim();
         break;
@@ -629,7 +632,7 @@ export function dealTerms(d: FinanceDeal): string[] {
   if (t.incomeShare) out.push(`${t.recoup ? 'After that, they' : 'They'} take ${Math.round(t.incomeShare * 100)}% of the project's income${d.kind === 'commissioner' ? ' (they own the project)' : ''}.`);
   if (d.studio?.territories.length) out.push(studioReleaseWords(d));
   for (const r of t.approvalRights) out.push(r === 'Casting Approval' ? 'They approve who plays the leads, which adds a couple of days to lead casting offers.' : 'They approve the final cut before you can lock picture.');
-  if (t.deliverBy) out.push(`Deliver by ${new Date(t.deliverBy).toISOString().slice(0, 10)}, or ${d.kind === 'studio' ? 'what they paid in' : 'the grant'} must be repaid.`);
+  if (t.deliverBy) out.push(`Deliver by ${new Date(t.deliverBy).toISOString().slice(0, 10)}, or ${d.kind === 'grant' ? 'the grant' : 'what they paid in'} must be repaid.`);
   if (t.credit) out.push(`They are credited: "${t.credit} ${d.backer}".`);
   if (t.unspent === 'yours') out.push('What the project doesn\'t spend of it is yours again once the project is delivered.');
   else if (t.unspent === 'stays') out.push('What the project doesn\'t spend of it stays with the project.');
@@ -754,7 +757,7 @@ registerHandler('finance-deadline', (state, ev) => {
   d.status = 'breached';
   // The repayment is owed whatever the budget holds: it is recorded as agreed, even if that leaves the budget short.
   p.obligations.push({ id: newId(state, 'o'), label: `Repay The ${d.backer}`, category: 'finance', amount: d.received, state: 'committed', settled: 0, ref: `finance:${d.id}`, postings: [{ at: state.now, kind: 'commit', amount: d.received, key: `finance:${d.id}:breach` }] });
-  const text = `${p.title} wasn't delivered by ${theBacker(d)}'s deadline, so ${d.kind === 'studio' ? `the ${money(d.received)} it paid in` : `its ${money(d.received)} grant`} must be repaid.`;
+  const text = `${p.title} wasn't delivered by ${theBacker(d)}'s deadline, so ${d.kind === 'grant' ? `its ${money(d.received)} grant` : `the ${money(d.received)} it paid in`} must be repaid.`;
   addLog(state, text, 'warning', { projectId: p.id, route: { view: 'project', projectId: p.id, tab: 'budget' } });
   return { message: text };
 });

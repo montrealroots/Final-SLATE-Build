@@ -61,7 +61,7 @@ test('a Release Plan: festivals first, a licence turned down and then signed, an
   // Asking far too much: turned down for the price, with what remains.
   const broadcast = plan.getByRole('region', { name: 'Broadcast Licence Proposals' });
   const fair = Number((await broadcast.innerText()).match(/sell for about \$([\d,]+)/)![1].replace(/,/g, ''));
-  await broadcast.getByLabel('Broadcast Licence: Buyer').selectOption('Channel Meridian');
+  await broadcast.getByLabel('Broadcast Licence: Buyer').selectOption('FX');
   await broadcast.getByLabel('Broadcast Licence: Your Ask').fill(String(Math.max(10_000, fair * 3)));
   await broadcast.getByRole('button', { name: 'Send The Proposal' }).click();
   await expect(broadcast.getByRole('list', { name: 'Broadcast Licence: Sent' })).toContainText('Waiting For An Answer');
@@ -69,7 +69,7 @@ test('a Release Plan: festivals first, a licence turned down and then signed, an
   await section(page, 'Release');
   const sent = broadcast.getByRole('list', { name: 'Broadcast Licence: Sent' });
   await expect(sent).toContainText('Turned Down');
-  await expect(sent.getByRole('list', { name: 'What Remains' })).toContainText('Ask Channel Meridian again for less');
+  await expect(sent.getByRole('list', { name: 'What Remains' })).toContainText('Ask FX again for less');
   await expect(sent.getByRole('list', { name: 'What Remains' })).toContainText('Release it yourself: Transactional Digital');
 
   // At what rights like these sell for: an offer, signed by the player on the Release page.
@@ -80,9 +80,9 @@ test('a Release Plan: festivals first, a licence turned down and then signed, an
   await expect(sent).toContainText(/Accepted|Countered/);
   const offers = card(page, 'Distribution Offers');
   const row = offers.getByRole('listitem').filter({ hasText: 'From your Release Plan' }).first();
-  await expect(row).toContainText('Channel Meridian');
+  await expect(row).toContainText('FX');
   await row.getByRole('button', { name: /^Accept (Offer|The Late Slot)$/ }).click();
-  await expect.poll(async () => (await project(page)).offers.find((o: { proposalId?: string; status: string }) => o.proposalId && o.status === 'accepted')?.distributor ?? null, { timeout: 30_000 }).toBe('Channel Meridian');
+  await expect.poll(async () => (await project(page)).offers.find((o: { proposalId?: string; status: string }) => o.proposalId && o.status === 'accepted')?.distributor ?? null, { timeout: 30_000 }).toBe('FX');
 
   // The stores: every cost named, then booked on the plan's date, with nobody to accept it.
   const stores = plan.getByRole('region', { name: 'Transactional Digital' });
