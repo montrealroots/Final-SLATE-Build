@@ -1,4 +1,4 @@
-import { lazy, Suspense, useEffect } from 'react';
+import { Component, lazy, Suspense, useEffect, type ReactNode } from 'react';
 import { loadFile } from '../catalog/load';
 import type { WorldSeed } from '../catalog/world';
 import type { RecordedPerson } from '../engine/guests';
@@ -119,18 +119,43 @@ export async function expirePeople(): Promise<void> {
   store.act((g) => void expireRecords(g, now, (id) => fresh.get(id)));
 }
 
+/**
+ * A page whose code couldn't be loaded (offline, or the game was updated on the server and the old page's file is gone)
+ * says so, and the rest of the game stays: the frame, its navigation and any page already loaded. Until November 17,
+ * 2026 the failure blanked the whole screen (found opening Your Bank offline: e2e/v10-offline.spec.ts). React keeps a
+ * failed lazy page failed, and a browser keeps a failed import failed, so trying again in place can't work: the way back
+ * is another page, or the game reloaded, which saves first.
+ */
+class PageBoundary extends Component<{ children: ReactNode }, { failed: boolean; unsaved?: boolean }> {
+  state: { failed: boolean; unsaved?: boolean } = { failed: false };
+  static getDerivedStateFromError() { return { failed: true }; }
+  render() {
+    if (!this.state.failed) return this.props.children;
+    return (
+      <section className="card" role="alert">
+        <h2>This Page Couldn't Be Loaded</h2>
+        <p>Its part of the game didn't arrive. Check your connection, then reload the game: it saves first. Pages you have already opened still work.</p>
+        {/* Reloaded only once saved: a reload after a failed save would lose what wasn't saved. */}
+        <button className="btn btn-primary" onClick={() => void store.saveNow().then((ok) => (ok || !store.state ? location.reload() : this.setState({ unsaved: true })))}>Reload The Game</button>
+        {this.state.unsaved && <p>Your game couldn't be saved, so it wasn't reloaded. Keep this window open and try again.</p>}
+      </section>
+    );
+  }
+}
+
 export function App() {
   const s = useStore();
   // The engine and the game's frame (store.warm) load once the start screen has drawn, so Continue and New Game rarely
   // wait for them.
   useEffect(() => { void store.warm().catch(() => undefined); }, []);
   useLivingWorld(s.screen === 'game' && s.state ? `${s.state.createdAtReal}` : null);
-  if (s.screen === 'creation' && s.draft) return <Suspense fallback={<p role="status">Loading…</p>}><Creation /></Suspense>;
+  if (s.screen === 'creation' && s.draft) return <PageBoundary><Suspense fallback={<p role="status">Loading…</p>}><Creation /></Suspense></PageBoundary>;
   if (s.screen !== 'game' || !s.state || !store.frame) return <Startup />;
   const { Shell, Home } = store.frame;
   const v = s.route.view;
   return (
     <Shell>
+      <PageBoundary key={v}>
       <Suspense fallback={<p role="status">Loading…</p>}>
       {v === 'home' && <Home />}
       {v === 'calendar' && <CalendarView />}
@@ -147,6 +172,7 @@ export function App() {
       {v === 'settings' && <><SettingsPage /><TmdbCredit /></>}
       {CATALOG_VIEWS.includes(v) && <CatalogView route={s.route} />}
       </Suspense>
+      </PageBoundary>
     </Shell>
   );
 }
