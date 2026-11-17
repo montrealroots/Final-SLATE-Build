@@ -83,7 +83,6 @@ export interface Letting {
   tenant?: string; start?: string; anchorDay?: number; depositMinor?: number; rentsReceived: number; arrearsMinor: number;
   manager?: { feeShare: number; capMinor: number }; repairs: { what: string; minor: number; stage: 'asked' | 'done' | 'awaiting-you' }[]; endsOn?: string; vacantSince?: number; payments: Payment[];
 }
-export interface Illustration { homeId: string; revision: number; hash: string; provider: string; label: string; acceptedAt: number; checklist: { feature: string; ok: boolean }[]; svg: string; attempts: number }
 export interface HomesState {
   homes: Record<string, Home>;
   favorites: string[];
@@ -95,11 +94,10 @@ export interface HomesState {
   residence?: string;
   history: { at: number; homeId?: string; text: string }[];
   documents: { id: string; at: number; homeId: string; title: string; lines: string[] }[];
-  images: Record<string, Illustration>;
 }
 
 export function homesOf(state: GameState): HomesState {
-  return (state.homes ??= { homes: {}, favorites: [], viewings: [], tenancies: [], repairs: [], permissions: [], purchases: [], owned: [], sales: [], items: [], jobs: [], stays: [], policies: [], bills: [], builds: [], lettings: [], history: [], documents: [], images: {} });
+  return (state.homes ??= { homes: {}, favorites: [], viewings: [], tenancies: [], repairs: [], permissions: [], purchases: [], owned: [], sales: [], items: [], jobs: [], stays: [], policies: [], bills: [], builds: [], lettings: [], history: [], documents: [] });
 }
 export const homeOf = (state: GameState, id: string): Home => {
   const h = homesOf(state).homes[id];

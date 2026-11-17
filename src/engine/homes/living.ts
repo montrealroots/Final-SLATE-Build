@@ -288,7 +288,7 @@ export function workDone(state: GameState, j: Job): void {
   const t = hs.tenancies.find((x) => x.homeId === home.id && x.stage === 'active');
   if (t) t.changes.push({ work: j.work, restore: WORK[j.work].reversible, restored: false });
   document(state, home.id, `Completed Work: ${WORK[j.work].label}`, [`Finished on ${formatDateKey(todayAt(state, home))}.`, `Cost ${money(home.currency, j.quoteMinor)}.`, ...j.check.steps.map((s) => `${s.step}: ${s.says}`)]);
-  note(state, home.id, `${WORK[j.work].label} at ${home.title} is finished.${WORK[j.work].exterior ? ' Its exterior picture shows the change.' : ''}`);
+  note(state, home.id, `${WORK[j.work].label} at ${home.title} is finished.`);
 }
 export function cancelWork(state: GameState, id: string): void {
   const j = homesOf(state).jobs.find((x) => x.id === id);

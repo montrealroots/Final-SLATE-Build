@@ -1,5 +1,5 @@
 // Homes & Property: the records (from November 17, 2026; the owner's Homes & Property package, research v2 with the
-// foundation-v1 specification). One record drives a home's facts, its eligibility, its costs and its exterior picture.
+// foundation-v1 specification). One record drives a home's facts, its eligibility and its costs (it drove an exterior picture too, until the owner had the pictures removed on November 17, 2026).
 //
 // Kept apart, as the package requires: a place, a home on offer, a home you rent or own, and the evidence each figure
 // came from. Every home the game offers is simulated: the package holds no current listing anywhere, so no home here is
@@ -42,9 +42,9 @@ const SERVICES_OF: Record<RoomKind, Service[]> = {
 };
 
 /**
- * The exterior and the spatial plan: the one design record gameplay and the exterior picture both read (the package's
- * image contract: "Build prompts from a structured versioned design snapshot"). Every visible feature is a field here,
- * so the picture can be checked against it. A change of revision is the only thing that changes the picture.
+ * The exterior and the spatial plan: the one design record gameplay reads. Every visible feature is a field here and is
+ * said in words on the home's facts. Until November 17, 2026 the game also drew an exterior picture from it and checked
+ * the picture against it; the owner had the pictures removed that day.
  */
 export interface Design {
   revision: number;
@@ -70,8 +70,6 @@ export interface Design {
   landscaping: 'none' | 'lawn' | 'garden' | 'trees';
   /** Visible outdoor features of this home's own land. A building's shared pool is not one: it's a shared amenity. */
   outdoor: ('pool' | 'terrace' | 'porch' | 'fence')[];
-  /** Under construction: how far the picture shows it built. Absent once complete. */
-  stage?: string;
 }
 
 export interface Condition { roof: Grade; structure: Grade; plumbing: Grade; electrical: Grade; heating: Grade; finishes: Grade }

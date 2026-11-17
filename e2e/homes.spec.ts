@@ -193,7 +193,7 @@ test('Buying in Los Angeles: a mortgage, an inspection, completion, a new exteri
   expect(start - afterBuy).toBeGreaterThan(0); // the deposit, the inspection and closing, never the whole price
   await onTab(page, 'Your Home');
   await expect(page.locator('main')).toContainText('Inspection Report');
-  // A new exterior: sage walls, paid as the work goes, and the picture is redrawn as revision 2.
+  // A new exterior: sage walls, paid as the work goes, and the outside is revision 2 of the design.
   await onTab(page, 'Improvements And Furnishings');
   await page.getByLabel('Work', { exact: true }).selectOption({ label: 'Repaint The Exterior' });
   await page.getByLabel('New Colour').selectOption({ label: 'Sage' });
@@ -202,8 +202,8 @@ test('Buying in Los Angeles: a mortgage, an inspection, completion, a new exteri
   await expect(card(page, 'Work On The Home').getByRole('list', { name: 'Work' })).toContainText('Repaint The Exterior');
   await until(page, 'week', 6, async () => { await onTab(page, 'Improvements And Furnishings'); return (await card(page, 'Work On The Home').getByRole('list', { name: 'Work' }).innerText()).includes('Repaint The Exterior: done'); });
   await onTab(page, 'Your Properties');
-  await expect(card(page, title).locator('figcaption')).toContainText('Design revision 2.');
-  await expect(card(page, title).locator('figcaption')).toContainText('every feature matches');
+  await expect(card(page, title)).toContainText(/walls in sage, .*\(design revision 2\)/);
+  await expect(card(page, title).locator('figure')).toHaveCount(0); // no picture: the owner had them removed
   await expect(card(page, title).locator('svg [data-feature^="walls:"]')).toHaveAttribute('data-feature', /:sage$/);
   // Sold at what it's worth; the offer comes, is accepted, and completes: the mortgage repaid first, the rest yours.
   await card(page, title).getByRole('button', { name: 'Put It Up For Sale' }).click();

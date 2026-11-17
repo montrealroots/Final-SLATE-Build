@@ -345,7 +345,7 @@ export const PROBES: Probe[] = [
     id: 'paint-the-outside',
     features: [F('"New Colour"')],
     decision: 'Repaint the outside of the home you own sage, rather than leave it',
-    reads: [`${L}#startWork`, `${L}#workDone`, 'src/engine/homes/illustration.ts#exteriorFor'],
+    reads: [`${L}#startWork`, `${L}#workDone`],
     base: { daily: (s, d) => void buy(s, d, CASH, HOUSE) },
     variant: { daily: (s, d) => { buy(s, d, CASH, HOUSE); const o = owned(s); if (o && !homesOf(s).jobs.length) tryIt(() => void startWork(s, o.homeId, 'exterior-paint', { color: 'sage' })); } },
     measure, bites: ['designRevisions', 'workPaid'], downstream: money,

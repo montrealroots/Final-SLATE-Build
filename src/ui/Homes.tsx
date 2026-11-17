@@ -2,7 +2,7 @@
 // you owe for it, finding a home to rent or buy, building on your own land, improving and furnishing, the household's
 // costs, and the homes you own and let. Every action is the engine's (engine/homes), refused in words where it can't
 // happen yet; money moves only through the bank, and the clock carries everything that takes time.
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { store, useClock, useGame } from './store';
 import { Check, NumberField, PageHead, Panel, SelectField, TextField } from './components';
 import { TabBar } from './bankworld/ui/components/TabBar';
@@ -17,7 +17,6 @@ import { GENERIC_FURNITURE, billLines, bookStay, buyInsurance, buyItem, cancelWo
 import { INVESTIGATIONS, applyForApproval, buildQuote, designProblems, investigate, resumeBuild, saveDesign, signBuild, startDesign, type Investigation } from '../engine/homes/building';
 import { advertise, approveLandlordRepair, changeRent, chooseTenant, endLetting, fairRent, letRefusal } from '../engine/homes/letting';
 import { arrangeViewing, toggleFavorite } from '../engine/homes';
-import { exteriorFor, keepExterior } from '../engine/homes/illustration';
 import { mortgageOwed } from '../engine/bank';
 
 type Tab = 'yours' | 'find' | 'build' | 'improve' | 'costs' | 'properties';
@@ -71,33 +70,10 @@ export function HomesPage() {
   );
 }
 
-// ---------------- The picture ----------------
+// ---------------- The outside, in words ----------------
 
-/**
- * The exterior picture, from the design record and nothing else. A home in the save keeps its accepted picture until its
- * design changes; an offer's is drawn when shown. A picture that fails its checklist isn't shown at all.
- */
-export function HomePicture({ g, home }: { g: GameState; home: Home }) {
-  const pinned = homesOf(g).homes[home.id] === home;
-  const kept = pinned ? homesOf(g).images[home.id] : undefined;
-  const fresh = kept && kept.revision === home.design.revision;
-  const tried = useRef('');
-  useEffect(() => {
-    const key = `${home.id}:${home.design.revision}`;
-    if (!pinned || fresh || tried.current === key) return;
-    tried.current = key;
-    store.act((s) => keepExterior(s, home.id));
-  }, [pinned, fresh, home.id, home.design.revision]);
-  const shown = useMemo(() => (pinned ? (fresh ? { svg: kept!.svg, label: kept!.label, checklist: kept!.checklist } : exteriorFor(null, home)) : exteriorFor(null, home)), [pinned, fresh, kept, home]);
-  const missing = shown.checklist.filter((c) => !c.ok);
-  return (
-    <figure className="home-picture">
-      {shown.svg ? <div className="home-picture-art" role="img" aria-label={`Exterior illustration of ${home.title}, design revision ${home.design.revision}`} dangerouslySetInnerHTML={{ __html: shown.svg }} />
-        : <p className="muted small">{'refused' in shown && shown.refused ? shown.refused : 'No picture yet.'}</p>}
-      <figcaption className="xs dim">{shown.label} Design revision {home.design.revision}.{missing.length ? ` Didn't match: ${missing.map((m) => m.feature).join('; ')}.` : ' Checked against the design: every feature matches.'}</figcaption>
-    </figure>
-  );
-}
+/** The outside in words, from the design record: what the game's drawing showed until the owner had the pictures removed (November 17, 2026). */
+const outsideWords = (d: Design) => `${title(d.style)}, ${d.floors} ${d.floors === 1 ? 'floor' : 'floors'}, ${d.walls} walls in ${d.wallColor}, ${d.roof} roof in ${d.roofColor} ${d.roofMaterial}; ${d.windowsPerFloor} ${d.windowStyle} ${d.windowsPerFloor === 1 ? 'window' : 'windows'} across each floor, ${d.frameColor} frames; a ${d.doorColor} ${d.door} front door`;
 
 function Facts({ home }: { home: Home }) {
   const d = home.design;
@@ -109,7 +85,7 @@ function Facts({ home }: { home: Home }) {
       {home.plotAreaM2 !== null && <><dt>Plot</dt><dd>{home.plotAreaM2} m²</dd></>}
       {home.form !== 'land' && <><dt>Bedrooms</dt><dd>{home.bedrooms ?? 'Not recorded'}</dd><dt>Bathrooms</dt><dd>{home.bathrooms ?? 'Not recorded'}</dd></>}
       {home.storeyBand && <><dt>Storeys</dt><dd>Between {home.storeyBand.toLowerCase()}</dd></>}
-      {home.form !== 'land' && <><dt>Outside</dt><dd>{title(d.style)}, {d.floors} {d.floors === 1 ? 'floor' : 'floors'}, {d.walls} walls in {d.wallColor}, {d.roof} roof in {d.roofColor} {d.roofMaterial}</dd></>}
+      {home.form !== 'land' && <><dt>Outside</dt><dd>{outsideWords(d)}</dd></>}
       <dt>Its Own</dt><dd>{home.privateAmenities.length ? home.privateAmenities.join(', ') : 'Nothing outside'}</dd>
       <dt>Shared</dt><dd>{home.sharedAmenities.length ? `${home.sharedAmenities.join(', ')} (the building's, shared with other residents)` : 'Nothing shared'}</dd>
       {home.market === 'rent' && <><dt>Furnished</dt><dd>{home.furnished ? 'Yes' : 'No'}</dd><dt>Included</dt><dd>{home.included.length ? home.included.join(', ') : 'Nothing: bills are yours'}</dd></>}
@@ -144,7 +120,6 @@ function YourHome({ g }: { g: GameState }) {
               <p style={{ marginTop: 0 }}><strong>{res.title}</strong>, {getPlace(res.placeId).name}</p>
               <Facts home={res} />
             </div>
-            <HomePicture g={g} home={res} />
           </div>
         ) : <p className="muted small" style={{ margin: 0 }}>You haven't made a home your residence in the game yet. Find one to rent or buy under Find A Home.</p>}
       </Panel>
@@ -453,7 +428,6 @@ function OfferDetail({ g, home, ev }: { g: GameState; home: Home; ev: MarketEvid
           {home.rooms.length > 0 && <p className="small"><strong>Rooms:</strong> {home.rooms.map((r) => `${ROOM_WORDS[r.kind]} ${r.areaM2} m²`).join(', ')}</p>}
           {home.land && <p className="small"><strong>Known Of The Land:</strong> access {home.land.access}, services {home.land.services}, buildable area {home.land.buildableM2 === null ? 'not known until surveyed' : `${home.land.buildableM2} m²`}.</p>}
         </div>
-        {home.form !== 'land' && <HomePicture g={g} home={home} />}
       </div>
       <h4>Where The Price Comes From</h4>
       <EvidenceList home={home} />
@@ -568,7 +542,6 @@ function BuildPanel({ g, b }: { g: GameState; b: Build }) {
   const problems = designProblems(g, { ...draft, landId: b.landId });
   const q = buildQuote(g, { ...draft, landId: b.landId });
   const rc = roomCheck(draft.rooms, draft.floorAreaM2);
-  const preview: Home = { ...land, id: `${b.id}:preview`, form: 'detached', design: { ...d, ...(b.stage === 'building' || b.stage === 'paused' ? { stage: b.stages[b.current]?.name } : {}) }, title: `Your design for ${land.title}` };
   const editable = b.stage !== 'complete';
   const changed = JSON.stringify(draft) !== JSON.stringify({ design: b.design, floorAreaM2: b.floorAreaM2, rooms: b.rooms });
   const home = b.homeId ? hs.homes[b.homeId] : undefined;
@@ -641,7 +614,6 @@ function BuildPanel({ g, b }: { g: GameState; b: Build }) {
           <Payments list={b.payments} cur={cur} />
           {e.show}
         </div>
-        {home ? <HomePicture g={g} home={home} /> : <div><h4>Design Preview</h4><HomePicture g={g} home={preview} /></div>}
       </div>
     </Panel>
   );
@@ -899,6 +871,7 @@ function PropertyPanel({ g, homeId }: { g: GameState; homeId: string }) {
             <dt>Worth Now</dt><dd>About {money(cur, worth)} (the game's valuation)</dd>
             {o.mortgage && <><dt>Mortgage</dt><dd>{money(cur, o.mortgage.paymentMinor)} a month; {o.mortgage.paidMonths} of {o.mortgage.months} paid; about ${owedUsd.toLocaleString('en-US', { maximumFractionDigits: 0 })} owed{o.mortgage.arrearsMinor ? `; ${money(cur, o.mortgage.arrearsMinor)} overdue` : ''}</dd></>}
             {home.form !== 'land' && hs.residence !== homeId && <><dt>Costs A Month</dt><dd>{(() => { const lines = billLines(g, home); return lines.length ? `${money(cur, lines.reduce((a, x) => a + x.minor, 0))}: ${lines.map((x) => x.what.toLowerCase()).join(', ')}` : 'Nothing while it is let'; })()}</dd></>}
+            {home.form !== 'land' && <><dt>Outside</dt><dd>{outsideWords(home.design)} (design revision {home.design.revision})</dd></>}
             {home.form !== 'land' && <><dt>Condition</dt><dd>{poor.length ? poor.map((k) => `${COMPONENT_WORDS[k]} ${home.condition[k]}`).join(', ') : 'Everything good'}</dd></>}
           </dl>
           {home.form !== 'land' && (
@@ -921,7 +894,6 @@ function PropertyPanel({ g, homeId }: { g: GameState; homeId: string }) {
             </>
           )}
         </div>
-        {home.form !== 'land' && <HomePicture g={g} home={home} />}
       </div>
       <h4>Sell It</h4>
       {sale && sale.stage !== 'completed' && sale.stage !== 'withdrawn' ? (

@@ -130,7 +130,7 @@ export function buildQuote(state: GameState, b: Pick<Build, 'design' | 'floorAre
   return { total, lines, stages, basis: us ? "NAHB's 2024 national survey: average construction cost per square foot and its split by stage. A national calibration, not a builder's quote here." : `The game's placeholder rate (US$${PLACEHOLDER_BUILD_PER_M2_USD.toLocaleString('en-US')}/m²): no construction costs for ${getPlace(land.placeId).countryName} have been researched.` };
 }
 
-/** Change the design: every field the picture and the plan read. A new revision, its changes and its new cost kept. */
+/** Change the design: every field the plan and the home's facts read. A new revision, its changes and its new cost kept. */
 export function saveDesign(state: GameState, buildId: string, patch: { design?: Partial<Design>; floorAreaM2?: number; rooms?: { kind: RoomKind; areaM2: number }[] }): Build {
   const b = homesOf(state).builds.find((x) => x.id === buildId);
   if (!b) throw new Error('That design is no longer on record.');
