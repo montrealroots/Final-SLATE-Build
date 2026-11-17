@@ -72,13 +72,16 @@ describe('A16: a passport lets you travel; it doesn\'t let you work', () => {
   it('a permit no research covers is taken on the game\'s estimate, from the continent\'s researched routes, and says so', () => {
     const s = startLife('papers-estimate');
     sponsorIn(s, 'kr-seoul');
-    // South Korea's E-6-1: no researched fee yet. Asia has none researched either, so all researched routes are its basis.
+    // South Korea's E-6-1: its fee is researched (from November 17, 2026: the $60 visa), its decision time isn't, so the
+    // time is the middle of Asia's researched routes, and the basis says so. Until then both were estimated, from every
+    // researched route, as Asia had none.
     const c = permitCheck(s, 'KR');
     expect(c.ok).toBe(true);
-    const t = (c as { terms: { estimate: { where: string } | null; fee: { currency: string }; basis: string } }).terms;
-    expect(t.estimate?.where).toBe('all researched routes');
-    expect(t.fee.currency).toBe('USD');
-    expect(t.basis).toMatch(/^The game's estimate/);
+    const t = (c as { terms: { estimate: { where: string; only?: string } | null; fee: { amount: number; currency: string }; basis: string; sources: unknown[] } }).terms;
+    expect(t.estimate).toMatchObject({ where: 'researched routes in Asia', only: 'days' });
+    expect(t.fee).toEqual({ amount: 60, currency: 'USD' });
+    expect(t.sources.length).toBeGreaterThan(0);
+    expect(t.basis).toMatch(/How long it takes to decide is the game's estimate: no source found gives it/);
     // In Europe the estimate is the middle of Europe's researched routes. Italy was the example until November 17, 2026,
     // when its permit was researched; Norway's still isn't (no source gave its decision time). Norway lets a performer
     // work 14 days a year without one, so its terms are read directly, and the application is South Korea's.
@@ -124,7 +127,8 @@ describe('A16: a passport lets you travel; it doesn\'t let you work', () => {
 
   it('a visa no record gives a fee or time for is taken on the game\'s estimate, and says so', () => {
     const s = startLife('papers-novisa');
-    const c = visaCheck(s, 'IN'); // India asks a Japanese or French visitor for an e-Visa: no researched fee or time yet
+    // Bangladesh's visa: no researched fee or time yet. India's was the example until November 17, 2026.
+    const c = visaCheck(s, 'BD');
     expect(c.ok).toBe(true);
     expect((c as { terms: { estimate: unknown; basis: string } }).terms.basis).toMatch(/^The game's estimate/);
   });

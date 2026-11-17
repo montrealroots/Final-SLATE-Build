@@ -26,17 +26,17 @@ the screen says so.
 | passport application | not applicable | 6 |
 | visiting rules | inherited-unverified | 246 |
 | visiting rules | not applicable | 6 |
-| visitor visa application | verified | 43 |
+| visitor visa application | verified | 74 |
 | visitor visa application | implemented/tested | 1 |
 | visitor visa application | inherited-unverified | 2 |
-| visitor visa application | modeled | 200 |
+| visitor visa application | modeled | 169 |
 | visitor visa application | not applicable | 6 |
 | work rules | inherited-unverified | 232 |
 | work rules | modeled | 14 |
 | work rules | not applicable | 6 |
-| work permit application | verified | 45 |
+| work permit application | verified | 60 |
 | work permit application | implemented/tested | 1 |
-| work permit application | modeled | 200 |
+| work permit application | modeled | 185 |
 | work permit application | not applicable | 6 |
 
 ## What This Says
@@ -58,6 +58,15 @@ the screen says so.
     the same four with the United States, the same three with Australia, Jersey, Guernsey and the Isle of Man with the
     United Kingdom, Monaco with France). Norway, Iceland, Switzerland and Liechtenstein stay estimated: no source found
     gave both a fee and a decision time (Switzerland's fees are each canton's);
+  - later on November 17, 2026 (batch 2), 15 more work permits (Japan, India, South Africa, Hong Kong, Singapore,
+    Turkey, Thailand, Kenya, Jersey, Guernsey, the Isle of Man, Bermuda, Gibraltar, the Bahamas, Trinidad and Tobago) and
+    22 more visitor visas (Japan, India, South Korea, Vietnam, Thailand, Cambodia, Laos, Myanmar, Nepal's fee, the
+    Maldives, Georgia, Armenia, Azerbaijan, Uzbekistan, Oman, Bahrain, Kuwait, Qatar, Tanzania, Uganda, Rwanda, Zambia,
+    Zimbabwe, the Dutch Caribbean), and 18 more territories on their sovereign's or a shared visa (the French overseas
+    territories, the Dutch Caribbean islands, Andorra, San Marino, the Vatican, Åland, Svalbard). Where a source gives
+    the fee but no decision time, the fee is researched and the time is the game's estimate, said as one: those rows
+    count as modeled (permits of Norway, Iceland, Mexico, South Korea, Argentina, Indonesia, Barbados; visas of the
+    French overseas territories, Nepal and Jordan);
   - the banks of Nauru and Niue (`banks-world.ts`).
 - **Implemented/tested** means a test that runs counts for that country. A test that only looks a bank up by name, or one
   that's switched off, doesn't count (from November 14, 2026, when the owner asked what "run by a test" meant: until

@@ -12,6 +12,7 @@ import { bankById } from '../src/engine/bankworld/content/banks';
 import { LAST_OBSERVATION, exchange, referenceRate } from '../src/engine/bankworld/content/currency';
 import { abroadQuote, quoteWords, sendAbroad } from '../src/engine/bankworld/systems/abroad';
 import { deserialise, serialise } from '../src/engine/bankworld/persistence/adapter';
+import { openOne } from '../src/engine/bankworld/systems/banking';
 
 const SERIES = (RATES as { currencies: Record<string, { rates: { from: string; perUSD: string }[] }> }).currencies;
 const NY = 'America/New_York';
@@ -58,6 +59,24 @@ describe('the records', () => {
     expect(exchange(10_000, 'USD', 'GBP', '2026-03-30')).toBe(7_430);
     expect(exchange(10_000, 'USD', 'ZZZ', '2026-04-01')).toBeUndefined();
     expect(exchange(10_000, 'USD', 'GBP', '2025-06-01')).toBeUndefined();
+  });
+});
+
+describe('an account at a bank in another currency', () => {
+  // From November 17, 2026: until then every account opened after a life's first was kept in the save's money, so a
+  // London life's Chase account held pounds, and a payment into it from Barclays was quoted and received in pounds
+  // (found by e2e/v9-abroad.spec.ts).
+  it('opens in its bank\'s money, and a payment abroad into it is quoted and received in that money', () => {
+    // A life in London banks in pounds; an account it opens at Chase keeps dollars, one at Barclays doesn't need to.
+    const sim = quickSave({ startLocationId: 'uk-eng-london', homeRegionId: 'uk-eng-london', wealth: 'comfortable', startYear: 2026, startMonth: 4, startDay: 6 }, 'fx-open-abroad');
+    const home = sim.universe.accounts[sim.player.primaryAccountId!]!;
+    expect(home.currency).toBeUndefined();
+    const chase = openOne(sim, sim.player, bankById('us-chase')!, 'checking', 0);
+    expect(chase).toMatchObject({ currency: 'USD', held: 0 });
+    expect(openOne(sim, sim.player, bankById(home.bankId!)!, 'savings', 0).currency).toBeUndefined();
+    expect(() => openOne(sim, sim.player, bankById('us-chase')!, 'savings', 100)).toThrow(/opens in USD/);
+    const q = abroadQuote(sim, sim.player, home, chase, 100_000);
+    expect('refused' in q ? q.refused : q.receivedIn).toBe('USD');
   });
 });
 

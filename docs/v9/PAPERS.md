@@ -88,6 +88,9 @@ estimate" (`src/engine/papers-terms.ts`, `src/data/papers/terms.json`):
   `visaAuthorities`, from November 17, 2026): Puerto Rico, the US Virgin Islands, Guam and the Northern Mariana Islands
   the United States'; Christmas Island, the Cocos Islands and Norfolk Island Australia's; Jersey, Guernsey and the Isle
   of Man the United Kingdom's; Monaco the Schengen visa France issues.
+- **A fee without a time** (from November 17, 2026): where a source gives a route's fee but not its decision time,
+  the fee is researched and shown with its sources, and the time is the game's estimate from the fully researched
+  routes on the same continent, said as one.
 - **Passports**: whatever SLATE-REBUILD's record lacks, the fee, the time or the validity, is estimated.
 - **The estimate** is the middle of the researched figures on the same continent (all of them, where none is on it), in
   dollars at the day's rate. The screen says it is the game's estimate and what it was made from. Every estimate is
