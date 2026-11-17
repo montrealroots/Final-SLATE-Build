@@ -20,8 +20,8 @@
   "gross": 54910,
   "revenue": 154004.5,
   "distributed": 1.7,
-  "money": 24526320.378,
-  "moneyChange": -473679.622,
+  "money": 24495543.869,
+  "moneyChange": -504456.131,
   "jobsTaken": 1.05,
   "jobsOffered": 1.05,
   "jobPay": 4740.5,
@@ -64,7 +64,7 @@
   "repairSpend": 0,
   "repairsFixed": 0,
   "homesOwned": 1,
-  "pricePaid": 263100,
+  "pricePaid": 291300,
   "mortgageLoan": 0,
   "mortgagePayment": 0,
   "mortgageOwed": 0,
@@ -95,7 +95,7 @@
   "bankFees": 0,
   "owed": 0,
   "accounts": 1,
-  "worth": 18443792.925,
+  "worth": 18420648.989,
   "rewards": 0,
   "fired": 0
  },
@@ -107,8 +107,8 @@
   "gross": 54910,
   "revenue": 154004.5,
   "distributed": 1.7,
-  "money": 24537030.349,
-  "moneyChange": -462969.651,
+  "money": 24507401.808,
+  "moneyChange": -492598.192,
   "jobsTaken": 1.05,
   "jobsOffered": 1.05,
   "jobPay": 4740.5,
@@ -151,7 +151,7 @@
   "repairSpend": 0,
   "repairsFixed": 0,
   "homesOwned": 1,
-  "pricePaid": 252576,
+  "pricePaid": 279648,
   "mortgageLoan": 0,
   "mortgagePayment": 0,
   "mortgageOwed": 0,
@@ -182,7 +182,7 @@
   "bankFees": 0,
   "owed": 0,
   "accounts": 1,
-  "worth": 18451846.823,
+  "worth": 18429566.16,
   "rewards": 0,
   "fired": 0
  },
@@ -237,16 +237,16 @@
    "n": 40
   },
   "money": {
-   "mean": 10709.97,
-   "lo": 9286.552,
-   "hi": 12133.389,
+   "mean": 11857.939,
+   "lo": 10217.019,
+   "hi": 13498.859,
    "changed": 40,
    "n": 40
   },
   "moneyChange": {
-   "mean": 10709.97,
-   "lo": 9286.552,
-   "hi": 12133.389,
+   "mean": 11857.939,
+   "lo": 10217.019,
+   "hi": 13498.859,
    "changed": 40,
    "n": 40
   },
@@ -545,9 +545,9 @@
    "n": 40
   },
   "pricePaid": {
-   "mean": -10524,
-   "lo": -11922.709,
-   "hi": -9125.291,
+   "mean": -11652,
+   "lo": -13264.418,
+   "hi": -10039.582,
    "changed": 40,
    "n": 40
   },
@@ -762,9 +762,9 @@
    "n": 40
   },
   "worth": {
-   "mean": 8053.898,
-   "lo": 6983.487,
-   "hi": 9124.309,
+   "mean": 8917.171,
+   "lo": 7683.199,
+   "hi": 10151.143,
    "changed": 40,
    "n": 40
   },

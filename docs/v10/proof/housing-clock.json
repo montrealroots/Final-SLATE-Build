@@ -18,8 +18,8 @@
   "gross": 55215,
   "revenue": 158338.375,
   "distributed": 1.775,
-  "money": 24746725.31,
-  "moneyChange": -253274.69,
+  "money": 24754358.342,
+  "moneyChange": -245641.658,
   "jobsTaken": 1,
   "jobsOffered": 1,
   "jobPay": 4028.5,
@@ -93,7 +93,7 @@
   "bankFees": 0,
   "owed": 0,
   "accounts": 1,
-  "worth": 18609537.432,
+  "worth": 18615277.473,
   "rewards": 0,
   "fired": 48
  },
@@ -235,16 +235,16 @@
    "n": 40
   },
   "money": {
-   "mean": 54178.973,
-   "lo": 50246.261,
-   "hi": 58111.686,
+   "mean": 46545.941,
+   "lo": 42872.639,
+   "hi": 50219.243,
    "changed": 40,
    "n": 40
   },
   "moneyChange": {
-   "mean": 54178.973,
-   "lo": 50246.261,
-   "hi": 58111.686,
+   "mean": 46545.941,
+   "lo": 42872.639,
+   "hi": 50219.243,
    "changed": 40,
    "n": 40
   },
@@ -334,8 +334,8 @@
   },
   "logLines": {
    "mean": -26.85,
-   "lo": -27.051,
-   "hi": -26.649,
+   "lo": -27.023,
+   "hi": -26.677,
    "changed": 40,
    "n": 40
   },
@@ -760,9 +760,9 @@
    "n": 40
   },
   "worth": {
-   "mean": 40742.588,
-   "lo": 37785.188,
-   "hi": 43699.988,
+   "mean": 35002.548,
+   "lo": 32240.225,
+   "hi": 37764.87,
    "changed": 40,
    "n": 40
   },
@@ -808,7 +808,7 @@
  "verdict": "proven",
  "hashes": {
   "src/engine/homes/index.ts": "c2210618df6cf176",
-  "src/engine/homes/renting.ts": "7cfd10cb71f96a26",
+  "src/engine/homes/renting.ts": "c577f53dd878c359",
   "tests/proof/career.ts": "50bea06f19a02c5b"
  }
 }
