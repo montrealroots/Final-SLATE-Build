@@ -24,6 +24,12 @@ finished, and they come back only when the owner says so:
 
 Item by item in `docs/homes/BRIEF-2026-11-17.md`; every place's coverage in `docs/homes/places/`.
 
+**Screenshots deleted at the owner's request (November 17, 2026).** Every capture made in the working sessions
+(3,331 images in the session scratchpad, the Homes And Property, Lancaster and Fort Worth captures among them) and
+the generated `.playwright-mcp/` and `test-results/` folders were deleted; the owner said they won't be needed again.
+Don't make new ones unless the owner asks. The committed `docs/v3/ui-shots/` (25 images, `QA-REPORT.md`'s evidence)
+was kept.
+
 **Done in this pass:** the three money and approval bugs from main at 20563b1, reproduced and fixed
 (`tests/homes-regressions.test.ts`); a coverage entry for each of the catalog's 171,750 places, with its verified
 count (0), shortfall (50) and where its prices come from; each place priced only from its own records (US county
