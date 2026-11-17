@@ -50,7 +50,9 @@ test('Renting in London: costs, apply, sign, move in, furnish, rent, a repair, n
   const detail = page.locator('#home-detail');
   await expect(detail).toContainText('Where The Price Comes From');
   await expect(detail).toContainText("ONS's average private rent in England");
-  await expect(detail.locator('figcaption')).toContainText('Not a photograph, not an AI image, and not a depiction of any real address.');
+  // No picture (the owner had them removed, November 17, 2026): the outside is said in words.
+  await expect(detail.locator('figure')).toHaveCount(0);
+  await expect(detail).toContainText(/Outside.*front door/);
   const costs = detail.getByRole('list', { name: 'Costs To Move In' });
   const rent = pounds(await costs.getByRole('listitem').filter({ hasText: "First month's rent" }).locator('span').last().innerText());
   const deposit = pounds(await costs.getByRole('listitem').filter({ hasText: /^Deposit/ }).locator('span').last().innerText());
@@ -95,7 +97,7 @@ test('Renting in London: costs, apply, sign, move in, furnish, rent, a repair, n
   await tenancy().getByRole('button', { name: `Move In: ${offerTitle}` }).click();
   await expect(tenancy()).toContainText('You live here');
   await expect(card(page, 'Where You Live')).toContainText(offerTitle);
-  await expect(card(page, 'Where You Live').locator('figcaption')).toContainText('Checked against the design: every feature matches.');
+  await expect(card(page, 'Where You Live')).toContainText(/Outside.*front door/);
 
   // A desk: bought, paid for, delivered and put in the room chosen (furniture needs no fitter).
   await tab(page, 'Improvements And Furnishings');
@@ -204,7 +206,6 @@ test('Buying in Los Angeles: a mortgage, an inspection, completion, a new exteri
   await onTab(page, 'Your Properties');
   await expect(card(page, title)).toContainText(/walls in sage, .*\(design revision 2\)/);
   await expect(card(page, title).locator('figure')).toHaveCount(0); // no picture: the owner had them removed
-  await expect(card(page, title).locator('svg [data-feature^="walls:"]')).toHaveAttribute('data-feature', /:sage$/);
   // Sold at what it's worth; the offer comes, is accepted, and completes: the mortgage repaid first, the rest yours.
   await card(page, title).getByRole('button', { name: 'Put It Up For Sale' }).click();
   await expect(card(page, title)).toContainText('Waiting for a buyer.');
@@ -252,7 +253,6 @@ test('Land in Austin: a plot, its survey, a design revised, approval, building s
   await expect(design).toContainText('Design revision 2');
   const after = dollars((await design.getByRole('list', { name: 'Cost Plan' }).getByRole('listitem').last().innerText()).match(/\$[\d,]+/)![0]);
   expect(after).toBeGreaterThan(before);
-  await expect(design.locator('svg [data-feature="garage:double"]')).toHaveCount(1);
   await design.getByRole('button', { name: 'Apply For Building Approval' }).click();
   await expect(design).toContainText('Waiting for the building approval');
   await until(page, 'week', 6, async () => { await onTab(page, 'Land And Building'); return (await card(page, `House Design For ${title}`).innerText()).includes('Approved: sign the contract'); });
@@ -266,10 +266,11 @@ test('Land in Austin: a plot, its survey, a design revised, approval, building s
   const house = page.locator('section.card').filter({ has: page.getByRole('list', { name: 'Building Stages' }) }).first();
   await expect(house.getByRole('list', { name: 'Building Stages' }).getByRole('listitem')).toHaveCount(8);
   await expect(house.getByRole('list', { name: 'Building Stages' })).not.toContainText('to come');
-  await expect(house.locator('figcaption').first()).toContainText('every feature matches');
   await house.getByRole('button', { name: /^Move In: / }).click();
   await onTab(page, 'Your Home');
-  await expect(card(page, 'Where You Live').locator('svg [data-feature^="walls:"]')).toHaveAttribute('data-feature', /:sage$/);
+  // The house as built from revision 2: sage walls and the double garage the design added.
+  await expect(card(page, 'Where You Live')).toContainText('walls in sage');
+  await expect(card(page, 'Where You Live')).toContainText('Double Garage');
   const saved = await readSavedState(page);
   expect(saved.homes.builds[0].payments.filter((p: { key: string }) => p.key.includes(':stage:')).length).toBe(8);
 });
