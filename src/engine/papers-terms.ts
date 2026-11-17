@@ -17,7 +17,8 @@ import { countryName } from '../world/gazetteer/gazetteer';
 export interface Source { kind: 'official' | 'secondary'; url: string; what: string }
 interface Recorded {
   route?: string; name?: string; fee: number; currency: string; feeBasis: string;
-  days: number | [number, number]; daysBasis: string; stayDays?: number; stayBasis?: string; sources: Source[];
+  /** Left out where research found the fee but no decision time (from November 17, 2026): the time is then estimated. */
+  days?: number | [number, number]; daysBasis?: string; stayDays?: number; stayBasis?: string; sources: Source[];
 }
 /** An authorization's record, and the passports whose authorization there differs (Australia's free eVisitor for Europeans). */
 interface Authority extends Recorded { passports?: (Partial<Recorded> & { codes: string[] })[] }
@@ -37,8 +38,11 @@ export interface Terms {
   stayDays: number | null;
   basis: string;
   sources: Source[];
-  /** Set when no research gives this route's figures: what the estimate was made from. */
-  estimate: null | { from: string[]; where: string };
+  /**
+   * Set when research doesn't give this route's figures: what the estimate was made from, and, where the fee is
+   * researched and only the decision time is estimated, `only: 'days'`.
+   */
+  estimate: null | { from: string[]; where: string; only?: 'days' };
 }
 
 export const continentOf = (iso: string) => WORLD_COUNTRIES.find((c) => c.iso2 === iso)?.continent ?? '';
@@ -47,7 +51,17 @@ const words = (d: number | [number, number]) => (Array.isArray(d) ? `between ${d
 const median = (xs: number[]) => { const s = [...xs].sort((a, b) => a - b); const m = s.length >> 1; return s.length % 2 ? s[m] : Math.round((s[m - 1] + s[m]) / 2); };
 const usd = (amount: number, currency: string) => (exchange(Math.round(amount * 100), currency, 'USD') ?? NaN) / 100;
 
-function researched(r: Recorded, route: string): Terms {
+function researched(r: Recorded, route: string, country = '', pool: [string, Recorded][] = []): Terms {
+  if (r.days === undefined) {
+    // The fee is researched; the decision time is the middle of the researched ones near it, said as the game's estimate.
+    const e = estimated(country, route, pool);
+    return {
+      route: r.route ?? r.name ?? route, fee: { amount: r.fee, currency: r.currency }, days: e.days, daysText: e.daysText,
+      stayDays: r.stayDays ?? null,
+      basis: [r.feeBasis, r.stayBasis, `How long it takes to decide is the game's estimate: no source found gives it, so it takes the middle of the ${e.estimate!.where} (${e.estimate!.from.join(', ')}).`].filter(Boolean).join(' '),
+      sources: r.sources, estimate: { ...e.estimate!, only: 'days' },
+    };
+  }
   return {
     route: r.route ?? r.name ?? route, fee: { amount: r.fee, currency: r.currency }, days: middle(r.days), daysText: words(r.days),
     stayDays: r.stayDays ?? null, basis: [r.feeBasis, r.daysBasis, r.stayBasis].filter(Boolean).join(' '), sources: r.sources, estimate: null,
@@ -57,10 +71,12 @@ function researched(r: Recorded, route: string): Terms {
 /** The game's estimate for `country` from researched routes: the same continent's, or all of them. */
 function estimated(country: string, route: string, pool: [string, Recorded][]): Terms {
   const cont = continentOf(country);
-  const near = pool.filter(([c]) => continentOf(c) === cont);
-  const use = (near.length ? near : pool).filter(([, r]) => Number.isFinite(usd(r.fee, r.currency)));
+  // Only routes researched in full: a route whose time is itself estimated doesn't feed another's estimate.
+  const full = pool.filter(([, r]) => r.days !== undefined);
+  const near = full.filter(([c]) => continentOf(c) === cont);
+  const use = (near.length ? near : full).filter(([, r]) => Number.isFinite(usd(r.fee, r.currency)));
   const fee = Math.round(median(use.map(([, r]) => usd(r.fee, r.currency))));
-  const days = median(use.map(([, r]) => middle(r.days)));
+  const days = median(use.map(([, r]) => middle(r.days!)));
   const stays = use.map(([, r]) => r.stayDays).filter((x): x is number => !!x);
   const where = near.length ? `researched routes in ${CONTINENT_NAMES[cont] ?? cont}` : 'all researched routes';
   return {
@@ -79,7 +95,7 @@ function estimated(country: string, route: string, pool: [string, Recorded][]): 
  */
 export function permitTerms(country: string, route: string): Terms {
   const r = TERMS.permits[country];
-  if (r) return researched(r, route);
+  if (r) return researched(r, route, country, Object.entries(TERMS.permits));
   const by = TERMS.permitAuthorities?.[country];
   if (by) {
     const t = researched(TERMS.permits[by], route);
@@ -103,7 +119,7 @@ function visaPool(): [string, Recorded][] {
  */
 export function visaTerms(country: string): Terms {
   const r = TERMS.visas?.[country] ?? visaPool().find(([c]) => c === country)?.[1];
-  if (r) return researched(r, r.name ?? 'Visitor visa');
+  if (r) return researched(r, r.name ?? 'Visitor visa', country, visaPool());
   const by = TERMS.visaAuthorities?.[country];
   if (by) {
     const t = visaTerms(by.authority);

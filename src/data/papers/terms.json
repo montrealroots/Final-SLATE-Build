@@ -1,5 +1,5 @@
 {
- "about": "Fees and decision times for the work permit routes in work.json, and for visitor visas by destination, researched on November 14, 2026 (the owner's command of that day: research, then estimate); and for electronic travel authorizations by destination (authorizations; passports lists the passports whose authorization differs), researched on November 16, 2026 (Morocco, Russia and Saudi Arabia later that day). Each entry names its source and whether it is the government's own page (official) or another publication (secondary). days is calendar days, or [shortest, longest] where the source gives a range; stayDays is how long the permission lasts at most, where the source says. On November 17, 2026 the work permits of 24 European states were researched (Austria to Sweden, and Åland on Finland's law); permitAuthorities lists the territories whose work permit route is their sovereign's, which take the sovereign's terms; and visaAuthorities lists the territories whose visitors hold their sovereign's visa, with the law or page that says so.",
+ "about": "Fees and decision times for the work permit routes in work.json, and for visitor visas by destination, researched on November 14, 2026 (the owner's command of that day: research, then estimate); and for electronic travel authorizations by destination (authorizations; passports lists the passports whose authorization differs), researched on November 16, 2026 (Morocco, Russia and Saudi Arabia later that day). Each entry names its source and whether it is the government's own page (official) or another publication (secondary). days is calendar days, or [shortest, longest] where the source gives a range; stayDays is how long the permission lasts at most, where the source says. On November 17, 2026 the work permits of 24 European states were researched (Austria to Sweden, and Åland on Finland's law); permitAuthorities lists the territories whose work permit route is their sovereign's, which take the sovereign's terms; and visaAuthorities lists the territories whose visitors hold their sovereign's visa, with the law or page that says so. On November 17, 2026 (later), batch 2: work permits and visitor visas across Asia, Africa, the Middle East and the Caribbean, each with its sources; a record may leave out the decision time where no source gives it, and the time is then the game's estimate, said as one; and the French overseas territories, the Dutch Caribbean, Andorra, San Marino, the Vatican, Åland and Svalbard join visaAuthorities. Batch 3, the same day: work permits and visitor visas across Africa, Latin America, Central Asia and the Pacific, Indonesia's permit gaining its decision time.",
  "permits": {
   "US": {
    "route": "O-1 (extraordinary ability in the arts, or extraordinary achievement in motion pictures or television)",
@@ -693,6 +693,621 @@
      "what": "EU Immigration Portal, employed worker in Finland: normally granted for a year"
     }
    ]
+  },
+  "JP": {
+   "fee": 15000,
+   "currency": "JPY",
+   "feeBasis": "The Certificate of Eligibility for Entertainer status is free; the single-entry visa that follows costs about ¥15,000 from July 1, 2026 (¥3,000 until then).",
+   "days": 18,
+   "daysBasis": "New Certificates of Eligibility for Entertainer status took 18 days on average over 31 months to July 2026, by the Immigration Services Agency's statistics.",
+   "sources": [
+    {
+     "kind": "secondary",
+     "url": "https://japan-visa.com/coe/time",
+     "what": "Japan COE processing times from the Ministry of Justice's statistics: Entertainer, new, 18.0 days (to July 2026)"
+    },
+    {
+     "kind": "official",
+     "url": "https://www.mofa.go.jp/j_info/visit/visa/procedure/pagewe_000001_00391.html",
+     "what": "Ministry of Foreign Affairs of Japan: visa fees from July 1, 2026, about ¥15,000 single entry, ¥30,000 multiple"
+    }
+   ]
+  },
+  "IN": {
+   "fee": 200,
+   "currency": "USD",
+   "feeBasis": "An employment visa valid for a year, multiple entries, at the Embassy of India in Argentina's chart from July 1, 2026 ($120 for six months); fees differ by nationality.",
+   "days": 7,
+   "daysBasis": "Usually five working days from submission of a complete application.",
+   "stayDays": 365,
+   "stayBasis": "The employment visa charged is valid for a year.",
+   "sources": [
+    {
+     "kind": "official",
+     "url": "https://www.indembarg.gov.in/content/Fee-chart-w.e.f.1-July-2026.pdf",
+     "what": "Embassy of India in Argentina, fees from July 1, 2026: employment visa, one year, USD 200"
+    },
+    {
+     "kind": "official",
+     "url": "https://indianembassydublin.gov.in/page/employment-visa2",
+     "what": "Embassy of India in Dublin, employment visa: usually five working days"
+    }
+   ]
+  },
+  "ZA": {
+   "fee": 55,
+   "currency": "USD",
+   "feeBasis": "The non-refundable application fee for a visitor's visa with section 11(2) work authorisation at the South African Embassy in Washington (April 2026); fees differ by mission.",
+   "days": [
+    10,
+    14
+   ],
+   "daysBasis": "Seven to ten business days.",
+   "stayDays": 90,
+   "stayBasis": "A section 11(2) visa does not exceed 90 days, and the work is limited to 180 days a calendar year.",
+   "sources": [
+    {
+     "kind": "official",
+     "url": "https://www.saembassy.org/wp-content/uploads/2026/04/sec-112.pdf",
+     "what": "South African Embassy in Washington, section 11(2) visitor's visa for short-term work (April 2026): $55, seven to ten business days"
+    },
+    {
+     "kind": "secondary",
+     "url": "https://www.bal.com/immigration-news/south-africa-short-term-work-authorization-restricted-to-180-days-per-year/",
+     "what": "BAL: a section 11(2) visa shall not exceed 90 days; 180 days a calendar year"
+    }
+   ]
+  },
+  "HK": {
+   "fee": 1900,
+   "currency": "HKD",
+   "feeBasis": "The application fee for a specified admission scheme such as the General Employment Policy, HK$600, and the visa for a stay of 181 days or more, HK$1,300 (HK$600 for 180 days or less), from February 26, 2025.",
+   "days": 28,
+   "daysBasis": "Normally four weeks once the Immigration Department has every document and the fee.",
+   "stayDays": 1095,
+   "stayBasis": "An initial stay of 36 months on employment, or the contract's length if shorter.",
+   "sources": [
+    {
+     "kind": "official",
+     "url": "https://www.info.gov.hk/gia/general/202502/26/P2025022600221p.htm",
+     "what": "Hong Kong government, February 26, 2025: a $600 application fee for the specified schemes, the General Employment Policy among them, and a visa fee of $600 or $1,300 by the limit of stay"
+    },
+    {
+     "kind": "official",
+     "url": "https://www.immd.gov.hk/eng/services/visas/GEP.html",
+     "what": "Immigration Department, General Employment Policy: normally four weeks; an initial stay of 36 months"
+    }
+   ]
+  },
+  "SG": {
+   "fee": 330,
+   "currency": "SGD",
+   "feeBasis": "The Ministry of Manpower's Employment Pass application fee, S$105, and issuance fee, S$225.",
+   "days": 14,
+   "daysBasis": "Online applications are processed within ten business days.",
+   "stayDays": 730,
+   "stayBasis": "A first-time Employment Pass runs up to two years.",
+   "sources": [
+    {
+     "kind": "official",
+     "url": "https://www.mom.gov.sg/passes-and-permits/employment-pass/key-facts",
+     "what": "Ministry of Manpower, Employment Pass key facts: first-time candidates up to two years"
+    },
+    {
+     "kind": "secondary",
+     "url": "https://visaatlas.org/processing-times/singapore/employment-pass",
+     "what": "Visa Atlas, Singapore Employment Pass: S$105 application, S$225 issuance; online applications within ten business days, as MOM states"
+    }
+   ]
+  },
+  "TR": {
+   "fee": 13538.9,
+   "currency": "TRY",
+   "feeBasis": "The 2026 fee for a work permit of up to a year, 12,574.90 lira, and the permit card, 964 lira (25,149.80 lira in fee for up to two years).",
+   "days": 30,
+   "daysBasis": "A complete application is decided within 30 days (Law No. 6735).",
+   "stayDays": 365,
+   "stayBasis": "The fee charged is for a permit of up to a year.",
+   "sources": [
+    {
+     "kind": "official",
+     "url": "https://www.csgb.gov.tr/uigm/genel-bilgi/harc-ve-degerli-kagit-bedelinin-odenmesi/",
+     "what": "Ministry of Labour and Social Security, fees and card charge: 2026 work permit fees"
+    },
+    {
+     "kind": "official",
+     "url": "https://www.csgb.gov.tr/sikca-sorulan-sorular/uluslararasi-%C4%B1sgucu-genel-mudurlugu/calisma-%C4%B1zni",
+     "what": "Ministry of Labour and Social Security, work permit FAQ: a complete application is concluded within 30 days"
+    }
+   ]
+  },
+  "TH": {
+   "fee": 3000,
+   "currency": "THB",
+   "feeBasis": "The Department of Employment's fee for a work permit of up to a year (750 baht up to three months, 1,500 up to six).",
+   "days": [
+    7,
+    14
+   ],
+   "daysBasis": "About seven to ten working days, by employers' guides.",
+   "stayDays": 365,
+   "stayBasis": "The fee charged is for a permit of up to a year.",
+   "sources": [
+    {
+     "kind": "official",
+     "url": "https://www.thailand.go.th/issue-focus-detail/001_03_376",
+     "what": "Royal Thai Government portal, work permits: fees by length, 750 baht for three months, 1,500 for six"
+    },
+    {
+     "kind": "secondary",
+     "url": "https://thethaiger.com/visas/work-permit",
+     "what": "The Thaiger, Thailand work permit: 3,000 baht for a year"
+    },
+    {
+     "kind": "secondary",
+     "url": "https://www.commenda.io/thailand/work-permit-for-foreign-companies",
+     "what": "Commenda, Thailand work permit: seven to ten business days"
+    }
+   ]
+  },
+  "NO": {
+   "fee": 6300,
+   "currency": "NOK",
+   "feeBasis": "UDI's fee for an adult's residence permit for work, as two fee guides give it.",
+   "sources": [
+    {
+     "kind": "secondary",
+     "url": "https://dofmar.com/norwegian-residence-permit-cost/",
+     "what": "Dofmar, Norwegian residence permit cost 2026: adults NOK 6,300, as UDI lists"
+    },
+    {
+     "kind": "secondary",
+     "url": "https://visaatlas.org/fees/norway/skilled-worker-permit",
+     "what": "Visa Atlas, Norway: NOK 6,300 for an adult's work permit"
+    }
+   ]
+  },
+  "IS": {
+   "fee": 80000,
+   "currency": "ISK",
+   "feeBasis": "The Directorate of Immigration's fee for a first work-based residence permit from January 1, 2026; work permits are decided by the Directorate from July 8, 2026.",
+   "sources": [
+    {
+     "kind": "secondary",
+     "url": "https://eiglaw.com/iceland-raises-fees-for-residence-and-citizenship-applications-in-2026/",
+     "what": "EIG Law: Iceland's 2026 fees, a first work-based residence permit ISK 80,000"
+    },
+    {
+     "kind": "official",
+     "url": "https://island.is/s/utlendingastofnun/frett/breytingar-a-medferd-umsokna-um-atvinnuleyfi",
+     "what": "Directorate of Immigration: work permit applications decided by the Directorate from July 8, 2026"
+    }
+   ]
+  },
+  "MX": {
+   "fee": 321,
+   "currency": "USD",
+   "feeBasis": "The consular fee for a visitor visa with permission for paid activities (Ley Federal de Derechos 2026); the employer's request to the INM is studied for a further MXN 4,182.",
+   "stayDays": 180,
+   "stayBasis": "The visitor's stay with permission for paid activities is at most 180 days.",
+   "sources": [
+    {
+     "kind": "official",
+     "url": "https://consulmex.sre.gob.mx/sanjose/images/PDFs/2026/LFD_2026.pdf",
+     "what": "Consulate of Mexico in San José, Ley Federal de Derechos 2026: visitor with permission for paid activities, USD 321"
+    },
+    {
+     "kind": "secondary",
+     "url": "https://www2.deloitte.com/content/dam/Deloitte/mx/Documents/legal/2025/Flash-Legal01-2025_ES.pdf",
+     "what": "Deloitte Mexico, 2025: the INM's study of the request, MXN 4,182"
+    }
+   ]
+  },
+  "KR": {
+   "fee": 60,
+   "currency": "USD",
+   "feeBasis": "A single-entry visa for 91 days or more, the E-6-1's; fees differ by nationality and post.",
+   "sources": [
+    {
+     "kind": "official",
+     "url": "https://overseas.mofa.go.kr/us-en/brd/m_4502/view.do?seq=715889",
+     "what": "Embassy of Korea in the US, visa fees: single entry, 91 days or longer, USD 60"
+    }
+   ]
+  },
+  "KE": {
+   "fee": 15000,
+   "currency": "KES",
+   "feeBasis": "The Special Pass's issuance fee for a month, in the 2023 schedule (a newer schedule in dollars is also reported).",
+   "days": [
+    2,
+    3
+   ],
+   "daysBasis": "Usually one to two working days once the documents are uploaded, by one guide's account.",
+   "stayDays": 30,
+   "stayBasis": "The fee charged is a month's; a Special Pass is issued for one to six months.",
+   "sources": [
+    {
+     "kind": "secondary",
+     "url": "https://www.clydeco.com/en/insights/2023/11/review-of-charges-and-fees-with-respect-to-immigra",
+     "what": "Clyde & Co, Kenya's 2023 fee review: Special Pass KES 15,000 a month"
+    },
+    {
+     "kind": "secondary",
+     "url": "https://www.ibn.co.za/kenya/short-term-work/",
+     "what": "IBN, Kenyan short-term work permit: issued in one to two working days after upload"
+    }
+   ]
+  },
+  "AR": {
+   "fee": 200000,
+   "currency": "ARS",
+   "feeBasis": "The entry permit, 100 UMSM, and the temporary residence, 100 UMSM, for a non-MERCOSUR applicant (50 and 50 within MERCOSUR), at 1 UMSM = ARS 1,000 (Decreto 584/2024).",
+   "sources": [
+    {
+     "kind": "official",
+     "url": "https://www.argentina.gob.ar/migraciones/cuadro-tasas-migratorias",
+     "what": "Dirección Nacional de Migraciones, migration fee table: entry permit and temporary residence, 100 UMSM each outside MERCOSUR; 1 UMSM = $1,000"
+    }
+   ]
+  },
+  "ID": {
+   "fee": 1500000,
+   "currency": "IDR",
+   "feeBasis": "The non-tax state revenue fee for a C7 visit visa for arts and culture, 30 days (PP No. 45/2024).",
+   "days": 7,
+   "daysBasis": "Five working days once the visa fee is paid, by the Directorate General's page for the visa.",
+   "stayDays": 30,
+   "stayBasis": "A stay of up to 30 days, not extendable.",
+   "sources": [
+    {
+     "kind": "official",
+     "url": "https://imigrasi.go.id/wna/daftar-visa-indonesia/C7",
+     "what": "Directorate General of Immigration, C7 visit visa for arts and cultural performance: 30 days, Rp 1,500,000, five working days after payment"
+    }
+   ]
+  },
+  "JE": {
+   "fee": 85,
+   "currency": "GBP",
+   "feeBasis": "The Government of Jersey's work permit fee for one to six months (£58 for less than a month).",
+   "days": 21,
+   "daysBasis": "Work permits take three weeks to process; the visa takes its own time after.",
+   "sources": [
+    {
+     "kind": "official",
+     "url": "https://www.gov.je/Government/Departments/JusticeHomeAffairs/Departments/CustomsImmigration/pages/immigrationnationalityfees.aspx",
+     "what": "Government of Jersey, immigration and nationality fees: work permit by length of stay"
+    },
+    {
+     "kind": "official",
+     "url": "https://www.gov.je/Working/WorkPermits/pages/workpermitpolicy.aspx",
+     "what": "Government of Jersey, work permit policy: processing time three weeks"
+    }
+   ]
+  },
+  "GG": {
+   "fee": 244,
+   "currency": "GBP",
+   "feeBasis": "The States of Guernsey's fee for a short-term employment permit, up to twelve months (£610 medium or long term), before Population Management fees.",
+   "days": [
+    14,
+    42
+   ],
+   "daysBasis": "About two to six weeks once every document is in, by employers' guides; the States publish no time.",
+   "stayDays": 365,
+   "stayBasis": "A short-term permit runs up to twelve months.",
+   "sources": [
+    {
+     "kind": "official",
+     "url": "https://gov.gg/euemployer",
+     "what": "States of Guernsey, employing staff from outside the Common Travel Area: short-term employment permit £244"
+    },
+    {
+     "kind": "secondary",
+     "url": "https://playroll.com/work-permit-visas/guernsey",
+     "what": "Playroll, Guernsey work permits: short and medium term permits in about two to six weeks"
+    }
+   ]
+  },
+  "IM": {
+   "fee": 340,
+   "currency": "GBP",
+   "feeBasis": "The UK's Temporary Work – Creative Worker visa fee, which the Home Office lists as applying to the Isle of Man.",
+   "days": 21,
+   "daysBasis": "The UK route's decision, usually within three weeks from outside the UK.",
+   "stayDays": 365,
+   "stayBasis": "Up to twelve months.",
+   "sources": [
+    {
+     "kind": "official",
+     "url": "https://visa-fees.homeoffice.gov.uk/y/nigeria/usd/work/temporary-work-also-applicable-to-isle-of-man/temporary-work---creative-worker---main-applicant-and-any-dependents",
+     "what": "Home Office visa fees: Temporary Work – Creative Worker, also applicable to the Isle of Man"
+    },
+    {
+     "kind": "official",
+     "url": "https://www.gov.uk/creative-worker-visa",
+     "what": "GOV.UK, Creative Worker visa: £340, usually three weeks from outside the UK"
+    }
+   ]
+  },
+  "BM": {
+   "fee": 705,
+   "currency": "BMD",
+   "feeBasis": "The government's fee for a short-term work permit of up to three months (BMD 1,070 for six), paid by the employer.",
+   "days": 28,
+   "daysBasis": "Twenty working days for a complete application; an emergency short-term permit in four.",
+   "stayDays": 90,
+   "stayBasis": "The fee charged is for up to three months.",
+   "sources": [
+    {
+     "kind": "official",
+     "url": "https://www.gov.bm/articles/bermuda-work-permit-policy-2026-what-you-need-to-know",
+     "what": "Government of Bermuda, work permit policy 2026: twenty working days, emergency short-term permits in four"
+    },
+    {
+     "kind": "secondary",
+     "url": "https://visaatlas.org/visas/bermuda/short-term-and-periodic-work-permits",
+     "what": "Visa Atlas, Bermuda short-term work permits: BMD 705 up to three months, BMD 1,070 for six, from the government's fee schedule"
+    }
+   ]
+  },
+  "GI": {
+   "fee": 68.5,
+   "currency": "GBP",
+   "feeBasis": "The Department of Employment's fee for a work permit application (£35 to renew), which the employer makes.",
+   "days": [
+    14,
+    56
+   ],
+   "daysBasis": "Two to three weeks typically, four to eight where the application is complex, by employers' guides.",
+   "stayDays": 365,
+   "stayBasis": "A work permit is valid for up to twelve months.",
+   "sources": [
+    {
+     "kind": "official",
+     "url": "https://www.gibraltar.gov.gi/department-employment/fees",
+     "what": "Government of Gibraltar, Department of Employment fees"
+    },
+    {
+     "kind": "secondary",
+     "url": "https://visaatlas.org/visas/gibraltar/work-permit",
+     "what": "Visa Atlas, Gibraltar work permit: £68.50 to apply, £35 to renew, from the Department's fee column"
+    },
+    {
+     "kind": "secondary",
+     "url": "https://www.expatfocus.com/gibraltar/guide/gibraltar-visas",
+     "what": "Expat Focus, Gibraltar visas: two to three weeks typically, four to eight where complex"
+    }
+   ]
+  },
+  "BS": {
+   "fee": 200,
+   "currency": "BSD",
+   "feeBasis": "The Department of Immigration's non-refundable processing fee for a short-term work permit of one to 30 days; the permit's own fee is set case by case. Entertainers also need the Musicians and Entertainers Union's letter.",
+   "days": 30,
+   "daysBasis": "From December 31, 2025, entertainers' short-term permits must be applied for at least 30 days before the work starts.",
+   "stayDays": 30,
+   "stayBasis": "The fee charged covers one to 30 days.",
+   "sources": [
+    {
+     "kind": "official",
+     "url": "https://www.immigration.gov.bs/residence/short-term-work-permit/",
+     "what": "Bahamas Department of Immigration, short-term work permit: $200 processing fee for one to 30 days"
+    },
+    {
+     "kind": "official",
+     "url": "https://www.immigration.gov.bs/public-notice-short-term-work-permit-applications-submission/",
+     "what": "Bahamas Department of Immigration, public notice: entertainers' applications at least 30 days before the start, from December 31, 2025"
+    }
+   ]
+  },
+  "BB": {
+   "fee": 300,
+   "currency": "BBD",
+   "feeBasis": "The application fee for a short-term work permit, which the employer makes; an approval fee follows at the Immigration Department's discretion.",
+   "stayDays": 335,
+   "stayBasis": "Short-term work permits are valid for up to eleven months.",
+   "sources": [
+    {
+     "kind": "official",
+     "url": "https://immigration.gov.bb/pages/STWP.aspx",
+     "what": "Barbados Immigration Department, short-term work permits: up to eleven months; the employer applies"
+    },
+    {
+     "kind": "secondary",
+     "url": "https://www.expatfocus.com/barbados/guide/barbados-work-permits-and-working-legally",
+     "what": "Expat Focus, Barbados work permits: BBD 300 application fee, then an approval fee"
+    }
+   ]
+  },
+  "TT": {
+   "fee": 3900,
+   "currency": "TTD",
+   "feeBasis": "The fee on applying for a work permit, TT$1,200, and the permit's duration fee at TT$900 a month, at least TT$2,700 (Immigration (Amendment) (No. 2) Regulations, 2025).",
+   "days": [
+    30,
+    60
+   ],
+   "daysBasis": "About 30 to 60 days on average, by one guide's account; no official time is published.",
+   "stayDays": 90,
+   "stayBasis": "The fee charged covers the minimum duration, three months.",
+   "sources": [
+    {
+     "kind": "official",
+     "url": "https://www.printery.gov.tt/e-gazette/2025/Legal%20Notices/Legal_Notice_No._493_of_2025.pdf",
+     "what": "Legal Notice No. 493 of 2025, Immigration (Amendment) (No. 2) Regulations: work permit TT$1,200 on applying, TT$900 a month, minimum TT$2,700"
+    },
+    {
+     "kind": "secondary",
+     "url": "https://hellopebl.com/resources/blog/trinidad-and-tobago-work-visa-legal-authorization/",
+     "what": "Pebl, Trinidad and Tobago work visas: approximately 30 to 60 days on average"
+    }
+   ]
+  },
+  "VN": {
+   "fee": 600000,
+   "currency": "VND",
+   "feeBasis": "A new work permit's provincial fee, about 600,000 to 1,000,000 dong by locality (Circular 85/2019/TT-BTC); the low end is charged.",
+   "days": 14,
+   "daysBasis": "Ten working days under Decree 219/2025/ND-CP, issued by the province since August 7, 2025.",
+   "stayDays": 730,
+   "stayBasis": "A work permit runs at most two years.",
+   "sources": [
+    {
+     "kind": "secondary",
+     "url": "https://vietanlaw.com/state-fee-for-work-permit-in-vietnam/",
+     "what": "Viet An Law, state fee for a work permit: 600,000 to 1,000,000 VND for a new permit, by province"
+    },
+    {
+     "kind": "secondary",
+     "url": "https://www.vietnam-briefing.com/news/vietnam-work-permit-regulations-for-foreign-workers-from-august-2025.html",
+     "what": "Vietnam Briefing, work permits from August 2025 (Decree 219/2025/ND-CP): ten working days, provincial issuance"
+    }
+   ]
+  },
+  "NP": {
+   "fee": 15000,
+   "currency": "NPR",
+   "feeBasis": "The Department of Labour's fee for a work permit of up to six months (NPR 20,000 beyond); the non-tourist visa follows separately.",
+   "days": [
+    30,
+    45
+   ],
+   "daysBasis": "Issued within 30 days of paying the fee; 30 to 45 days in all, by law firms' guides.",
+   "stayDays": 182,
+   "stayBasis": "The fee charged covers up to six months.",
+   "sources": [
+    {
+     "kind": "secondary",
+     "url": "https://lawbhandari.com/publication/process-of-obtaining-a-work-permit-in-nepal",
+     "what": "Bhandari & Associates, work permit in Nepal: NPR 15,000 up to six months, NPR 20,000 beyond; issued within 30 days of the fee"
+    },
+    {
+     "kind": "secondary",
+     "url": "https://nepallaws.com/?p=31833",
+     "what": "Nepal Laws, hiring foreign employees: 30 to 45 days"
+    }
+   ]
+  },
+  "GH": {
+   "fee": 1000,
+   "currency": "USD",
+   "feeBasis": "The Ghana Immigration Service's one-year work permit for a non-ECOWAS national (raised from USD 500), before the residence permit.",
+   "stayDays": 365,
+   "stayBasis": "A one-year permit.",
+   "sources": [
+    {
+     "kind": "secondary",
+     "url": "https://www.fragomen.com/insights/significant-increases-in-immigration-filing-fees-and-penalties-rotator-work-permit-introduced.html",
+     "what": "Fragomen, Ghana: the work permit for other nationalities rose from USD 500 to USD 1,000"
+    },
+    {
+     "kind": "secondary",
+     "url": "https://www.mondaq.com/investment-immigration/1672870/ghana-work-and-residence-permit-guide-2025-requirements-cost-and-application-process",
+     "what": "Mondaq, Ghana work and residence permit guide: non-ECOWAS one year $1,000"
+    }
+   ]
+  },
+  "BH": {
+   "fee": 111,
+   "currency": "BHD",
+   "feeBasis": "The LMRA's annual work permit issuance fee for 2026 under Edict (79) of 2025, rising in stages to BD 125 by 2029; monthly fees follow.",
+   "stayDays": 365,
+   "stayBasis": "A year's permit.",
+   "sources": [
+    {
+     "kind": "secondary",
+     "url": "https://localbh.com/lifestyle/news/update-bahrain-announces-gradual-increase-in-work-permit-fees-for-expats-starting-2026",
+     "what": "LocalBH, Edict (79) of 2025: the annual work permit fee BD 111 in 2026, BD 125 by 2029"
+    },
+    {
+     "kind": "secondary",
+     "url": "https://taxnews.ey.com/news/2026-0212-bahrain-hikes-visa-issuance-fees-health-care-fees-and-monthly-contributions-for-work-permits-effective-1-january-2026",
+     "what": "EY, Bahrain raises work permit fees from January 1, 2026"
+    }
+   ]
+  },
+  "PH": {
+   "fee": 6440,
+   "currency": "PHP",
+   "feeBasis": "The Bureau of Immigration's Special Work Permit for work of under six months, which covers performers and film crews: about ₱6,440 (₱6,400 by the Senate's 2019 account).",
+   "stayDays": 90,
+   "stayBasis": "Granted for three months, extendable once for three more.",
+   "sources": [
+    {
+     "kind": "secondary",
+     "url": "https://translayte.com/blog/work-permits-in-the-philippines",
+     "what": "Translayte, Work permits in the Philippines: the Special Work Permit costs PHP 6,440"
+    },
+    {
+     "kind": "secondary",
+     "url": "https://newsinfo.inquirer.net/1074451/for-p5000-fee-foreigners-easily-get-philippine-work-permit-villanueva",
+     "what": "Inquirer, 2019: the regular fee for a special work permit is P6,400"
+    },
+    {
+     "kind": "secondary",
+     "url": "https://www.fragomen.com/insights/special-work-permits-and-provisional-work-permit-restrictions-implemented.html",
+     "what": "Fragomen: SWP granted for three months initially, extendable once for three months"
+    }
+   ]
+  },
+  "TW": {
+   "fee": 500,
+   "currency": "TWD",
+   "feeBasis": "The Ministry of Labor's review fee for a work permit for artistic and performing work, NT$500 a case.",
+   "days": 9,
+   "daysBasis": "Reviewed in seven working days from the day after it's received when filed online (twelve on paper), about nine calendar days.",
+   "sources": [
+    {
+     "kind": "official",
+     "url": "https://www.laws.taipei.gov.tw/lawatt/Law/A040290021009400-20180208-1000-001.pdf",
+     "what": "Taipei City Government, artistic and performing work permit application (2018): review fee NT$500 a case, twelve working days"
+    },
+    {
+     "kind": "secondary",
+     "url": "https://go.104.com.tw/expats/article/resources-for-working-in-taiwan/",
+     "what": "104, Resources for working in Taiwan: the Ministry of Labor completes the review within 7 working days"
+    },
+    {
+     "kind": "secondary",
+     "url": "https://www.taiwannews.com.tw/news/4766351",
+     "what": "Taiwan News: applying online for a work permit shortens review to seven working days, artists included"
+    }
+   ]
+  },
+  "EC": {
+   "fee": 320,
+   "currency": "USD",
+   "feeBasis": "The Foreign Ministry's fees for the temporary residence visa for an athlete, artist or cultural manager: $50 to apply and $270 when it's granted (January 2026).",
+   "stayDays": 730,
+   "stayBasis": "A two-year temporary residence.",
+   "sources": [
+    {
+     "kind": "official",
+     "url": "https://www.gob.ec/mremh/tramites/concesion-visa-residencia-temporal-deportista-artista-gestor-cultural",
+     "what": "Ministerio de Relaciones Exteriores y Movilidad Humana, temporary residence visa for an athlete, artist or cultural manager: application USD 50, grant USD 270; two years"
+    }
+   ]
+  },
+  "RS": {
+   "fee": 23120,
+   "currency": "RSD",
+   "feeBasis": "The single residence and work permit's RSD 420 to submit and RSD 22,700 for the permit, by the government's Welcome to Serbia portal.",
+   "stayDays": 365,
+   "stayBasis": "A single permit for up to a year.",
+   "sources": [
+    {
+     "kind": "official",
+     "url": "https://welcometoserbia.gov.rs/help",
+     "what": "Welcome to Serbia, user manuals: submission fee RSD 420; temporary residence and single permit fee RSD 22,700"
+    },
+    {
+     "kind": "secondary",
+     "url": "https://www.globalcitizensolutions.com/serbia-residence-permit/",
+     "what": "Global Citizen Solutions, Serbia residence permit 2026: application and approval fees of about the same amount"
+    }
+   ]
   }
  },
  "permitAuthorities": {
@@ -1269,6 +1884,1294 @@
      "kind": "secondary",
      "url": "https://thinkhigher.com.au/visitor-visa-subclass-600/",
      "what": "Visitor visa subclass 600: costs (2025-26)"
+    }
+   ]
+  },
+  "JP": {
+   "name": "Temporary visitor visa (single entry)",
+   "fee": 15000,
+   "currency": "JPY",
+   "feeBasis": "About ¥15,000 for a single-entry visa from July 1, 2026, collected in local currency (¥3,000 until then).",
+   "days": 5,
+   "daysBasis": "Normally five working days from the embassy's acceptance; longer where the case is referred to Tokyo.",
+   "sources": [
+    {
+     "kind": "official",
+     "url": "https://www.mofa.go.jp/j_info/visit/visa/procedure/pagewe_000001_00391.html",
+     "what": "Ministry of Foreign Affairs of Japan: visa fees from July 1, 2026, about ¥15,000 single entry"
+    },
+    {
+     "kind": "official",
+     "url": "https://www.sg.emb-japan.go.jp/itpr_en/visa_processingtime.html",
+     "what": "Embassy of Japan in Singapore: a visa can normally be issued in five working days"
+    }
+   ]
+  },
+  "IN": {
+   "name": "e-Tourist Visa (30 days)",
+   "fee": 25,
+   "currency": "USD",
+   "feeBasis": "The 30-day e-Tourist Visa from July to March ($10 from April to June).",
+   "days": 4,
+   "daysBasis": "Applied for online at least four days before arrival.",
+   "stayDays": 30,
+   "stayBasis": "The e-Tourist Visa charged allows 30 days.",
+   "sources": [
+    {
+     "kind": "official",
+     "url": "https://hcisingapore.gov.in/eTourist",
+     "what": "High Commission of India in Singapore, e-Tourist Visa: apply at least four days ahead; 30-day eTV US$25 July to March, US$10 April to June"
+    }
+   ]
+  },
+  "KR": {
+   "name": "Short-term visitor visa (C-3, single entry)",
+   "fee": 40,
+   "currency": "USD",
+   "feeBasis": "A single-entry visa for 90 days or less; fees differ by nationality and post.",
+   "days": [
+    7,
+    21
+   ],
+   "daysBasis": "Seven calendar days at the consulate in Dubai; at least ten to fifteen working days at Los Angeles.",
+   "stayDays": 90,
+   "stayBasis": "A single-entry visa for 90 days or less.",
+   "sources": [
+    {
+     "kind": "official",
+     "url": "https://overseas.mofa.go.kr/us-en/brd/m_4502/view.do?seq=715889",
+     "what": "Embassy of Korea in the US, visa fees: single entry, 90 days or less, USD 40"
+    },
+    {
+     "kind": "official",
+     "url": "https://dubai.mofa.go.kr/ae-dubai-en/wpge/m_10738/contents.do",
+     "what": "Consulate General of Korea in Dubai: visa processing takes 7 calendar days"
+    },
+    {
+     "kind": "official",
+     "url": "https://overseas.mofa.go.kr/us-losangeles-en/wpge/m_4397/contents.do",
+     "what": "Consulate General of Korea in Los Angeles: at least 10 to 15 business days"
+    }
+   ]
+  },
+  "VN": {
+   "name": "E-visa (single entry)",
+   "fee": 25,
+   "currency": "USD",
+   "feeBasis": "The single-entry e-visa ($50 for multiple entries), not refunded if refused.",
+   "days": 5,
+   "daysBasis": "About three working days.",
+   "stayDays": 90,
+   "stayBasis": "Valid for up to 90 days.",
+   "sources": [
+    {
+     "kind": "official",
+     "url": "https://en.vneconomy.vn/more-detailed-information-about-vietnams-e-visa.htm",
+     "what": "Vietnam Economic Times (Ministry of Planning and Investment), Vietnam's e-visa: $25 single entry, $50 multiple, up to 90 days"
+    },
+    {
+     "kind": "secondary",
+     "url": "https://www.issacompass.com/insights/vietnam-tourist-e-visa-2026-fees-entry-window-and-how-issa-compass-files-it",
+     "what": "Issa Compass, Vietnam tourist e-visa 2026: about three working days"
+    }
+   ]
+  },
+  "TH": {
+   "name": "Tourist visa (single entry)",
+   "fee": 40,
+   "currency": "USD",
+   "feeBasis": "A single-entry tourist visa at the Royal Thai Embassies in Washington and Ho Chi Minh City; other posts charge their own currency.",
+   "days": [
+    7,
+    21
+   ],
+   "daysBasis": "Five working days at Ho Chi Minh City; up to fifteen business days at Washington.",
+   "stayDays": 60,
+   "stayBasis": "A single-entry visitor may stay up to 60 days from entry.",
+   "sources": [
+    {
+     "kind": "official",
+     "url": "https://washingtondc.thaiembassy.org/en/page/trsingle-entry",
+     "what": "Royal Thai Embassy, Washington: single entry USD 40, up to 15 business days"
+    },
+    {
+     "kind": "official",
+     "url": "https://hochiminh.thaiembassy.org/en/publicservice/tourist-visa-th%E1%BB%8B-th%E1%BB%B1c-du-l%E1%BB%8Bch",
+     "what": "Royal Thai Consulate-General, Ho Chi Minh City: USD 40, five working days"
+    },
+    {
+     "kind": "official",
+     "url": "https://thaiconsulatela.thaiembassy.org/en/page/visa-information",
+     "what": "Royal Thai Consulate-General, Los Angeles: up to 60 days from entry"
+    }
+   ]
+  },
+  "GP": {
+   "name": "Visa for the French overseas departments (short stay)",
+   "fee": 60,
+   "currency": "EUR",
+   "feeBasis": "The short-stay visa fee for Guadeloupe, Martinique, French Guiana, Réunion, Saint Martin and Saint Barthélemy (€35 for children of 6 to 12).",
+   "stayDays": 90,
+   "stayBasis": "A stay of up to 90 days.",
+   "sources": [
+    {
+     "kind": "official",
+     "url": "https://www.france-visas.gouv.fr/documents/d/france-visas/frais-de-visa-anglais",
+     "what": "France-Visas, visa fees: €60 for the overseas departments, Saint Martin and Saint Barthélemy"
+    },
+    {
+     "kind": "secondary",
+     "url": "https://en.wikipedia.org/wiki/Visa_policies_of_Overseas_France",
+     "what": "Wikipedia, visa policies of Overseas France: the fee table, after France-Visas"
+    }
+   ]
+  },
+  "PF": {
+   "name": "Visa for the French overseas collectivities (short stay)",
+   "fee": 9,
+   "currency": "EUR",
+   "feeBasis": "The short-stay visa fee for Saint Pierre and Miquelon, Mayotte, New Caledonia, Wallis and Futuna, French Polynesia and the French Southern Lands.",
+   "stayDays": 90,
+   "stayBasis": "A stay of up to 90 days.",
+   "sources": [
+    {
+     "kind": "official",
+     "url": "https://www.france-visas.gouv.fr/documents/d/france-visas/frais-de-visa-anglais",
+     "what": "France-Visas, visa fees: €9 for the overseas collectivities and Mayotte"
+    },
+    {
+     "kind": "secondary",
+     "url": "https://en.wikipedia.org/wiki/Visa_policies_of_Overseas_France",
+     "what": "Wikipedia, visa policies of Overseas France: the fee table, after France-Visas"
+    }
+   ]
+  },
+  "AW": {
+   "name": "Caribbean visa (short stay)",
+   "fee": 80,
+   "currency": "EUR",
+   "feeBasis": "The visa for the Caribbean parts of the Kingdom of the Netherlands, before the visa centre's service fee.",
+   "days": 15,
+   "daysBasis": "In most cases you're told within 15 calendar days.",
+   "stayDays": 90,
+   "stayBasis": "Up to 90 days, across Aruba, Curaçao, Sint Maarten, Bonaire, Sint Eustatius and Saba.",
+   "sources": [
+    {
+     "kind": "official",
+     "url": "https://netherlandsworldwide.nl/caribbean-visa/short-stay/apply-philippines",
+     "what": "NetherlandsWorldwide, short-stay Caribbean visa: told within 15 calendar days in most cases; up to 90 days"
+    },
+    {
+     "kind": "secondary",
+     "url": "https://visa.vfsglobal.com/one-pager/netherlands/Jamaica/english/",
+     "what": "VFS Global, Netherlands visas (Jamaica): Caribbean visa €80 plus the service fee"
+    }
+   ]
+  },
+  "KH": {
+   "name": "e-Visa (tourist)",
+   "fee": 36,
+   "currency": "USD",
+   "feeBasis": "The tourist e-visa's $30 and the portal's $6 processing fee, not refunded.",
+   "days": 5,
+   "daysBasis": "About three business days.",
+   "stayDays": 30,
+   "stayBasis": "A single entry, staying up to 30 days.",
+   "sources": [
+    {
+     "kind": "secondary",
+     "url": "https://www.issacompass.com/insights/cambodia-tourist-and-business-e-visa-2026-fees-border-closures-and-who-travels-v",
+     "what": "Issa Compass, Cambodia e-visa 2026: $30 visa and $6 processing, three business days, 30 days"
+    },
+    {
+     "kind": "secondary",
+     "url": "https://www.visatraveler.com/visa/cambodia/evisa/",
+     "what": "Visa Traveler, Cambodia e-visa: $36 in all on evisa.gov.kh"
+    }
+   ]
+  },
+  "AZ": {
+   "name": "ASAN e-visa",
+   "fee": 20,
+   "currency": "USD",
+   "feeBasis": "The standard e-visa's state fee (urgent, in three hours: $50).",
+   "days": 5,
+   "daysBasis": "Issued within three working days.",
+   "stayDays": 30,
+   "stayBasis": "Valid 90 days, with 30 days' stay, single entry.",
+   "sources": [
+    {
+     "kind": "official",
+     "url": "https://thehague.mfa.gov.az/en/category/asan-visa-e-visa",
+     "what": "Embassy of Azerbaijan in the Netherlands, ASAN Visa: standard within three working days, $20; urgent within three hours, $50"
+    },
+    {
+     "kind": "official",
+     "url": "https://washington.mfa.gov.az/en/content/203/e-visa",
+     "what": "Embassy of Azerbaijan in Washington, e-visa: single entry, valid 90 days with 30 days' stay"
+    }
+   ]
+  },
+  "LA": {
+   "name": "eVisa (tourist)",
+   "fee": 50,
+   "currency": "USD",
+   "feeBasis": "The eVisa's fee and service charge together, about $50; it varies by nationality.",
+   "days": 5,
+   "daysBasis": "Usually three working days after applying and paying.",
+   "stayDays": 30,
+   "stayBasis": "A single entry, staying up to 30 days.",
+   "sources": [
+    {
+     "kind": "official",
+     "url": "https://laoevisa.gov.la/faq",
+     "what": "Lao eVisa, FAQ: usually three working days"
+    },
+    {
+     "kind": "secondary",
+     "url": "https://www.visatraveler.com/visa/laos/evisa/",
+     "what": "Visa Traveler, Laos eVisa: $50 (1,000,000 kip), single entry, 30 days"
+    }
+   ]
+  },
+  "NP": {
+   "name": "Tourist visa (15 days)",
+   "fee": 30,
+   "currency": "USD",
+   "feeBasis": "The 15-day tourist visa, paid on arrival ($50 for 30 days, $125 for 90).",
+   "stayDays": 15,
+   "stayBasis": "The visa charged allows 15 days.",
+   "sources": [
+    {
+     "kind": "secondary",
+     "url": "https://www.windhorsetours.com/nepal/nepal-visa/",
+     "what": "Windhorse Tours, Nepal visa: 15 days USD 30, 30 days USD 50, 90 days USD 125"
+    }
+   ]
+  },
+  "GE": {
+   "name": "e-Visa",
+   "fee": 20,
+   "currency": "USD",
+   "feeBasis": "The consular fee for an e-visa, with a 2% service charge on top.",
+   "days": 7,
+   "daysBasis": "A decision takes at least five working days.",
+   "stayDays": 90,
+   "stayBasis": "The e-visa portal is for short visits, less than 90 days.",
+   "sources": [
+    {
+     "kind": "official",
+     "url": "https://evisa.gov.ge/GeoVisa/en/Home/FAQ",
+     "what": "Georgia e-Visa portal, FAQ: not less than five working days to decide"
+    },
+    {
+     "kind": "secondary",
+     "url": "https://www.visatraveler.com/blog/georgia-e-visa/",
+     "what": "Visa Traveler, Georgia e-visa: US$20 plus a 2% service charge"
+    }
+   ]
+  },
+  "AM": {
+   "name": "e-Visa (21 days)",
+   "fee": 3000,
+   "currency": "AMD",
+   "feeBasis": "The state duty for a 21-day visitor visa (15,000 dram for 120 days), under the Law on State Duties.",
+   "days": 4,
+   "daysBasis": "Usually up to three business days.",
+   "stayDays": 21,
+   "stayBasis": "The visa charged allows 21 days.",
+   "sources": [
+    {
+     "kind": "official",
+     "url": "https://georgia.mfa.am/en/fees",
+     "what": "Embassy of Armenia in Georgia, consular fees: 21-day visitor visa 3,000 dram, 120 days 15,000 dram"
+    },
+    {
+     "kind": "secondary",
+     "url": "https://armenian-lawyer.com/armenia-visa/the-electronic-visa-system-in-armenia-overview-for-tourists-and-business-travelers/",
+     "what": "Armenian Lawyer, Armenia e-visa 2026: usually up to three business days"
+    }
+   ]
+  },
+  "UZ": {
+   "name": "E-visa (tourist)",
+   "fee": 20,
+   "currency": "USD",
+   "feeBasis": "The tourist e-visa's fee, not refunded.",
+   "days": 3,
+   "daysBasis": "Two to three working days.",
+   "stayDays": 30,
+   "stayBasis": "A single entry, staying up to 30 days.",
+   "sources": [
+    {
+     "kind": "secondary",
+     "url": "https://oravisa.com/blog/uzbekistan-visa-requirements-fees-dubai/",
+     "what": "Oravisa, Uzbekistan visa: e-visa USD 20, two to three working days, single entry for 30 days"
+    },
+    {
+     "kind": "secondary",
+     "url": "https://eurasia.travel/uzbekistan/visa/evisa-information/evisa_faq/",
+     "what": "Eurasia Travel, Uzbek e-visa FAQ: two working days"
+    }
+   ]
+  },
+  "OM": {
+   "name": "Tourist e-visa (30 days, 26B)",
+   "fee": 20,
+   "currency": "OMR",
+   "feeBasis": "The Royal Oman Police's single-entry tourist e-visa for 30 days (OMR 5 for ten days).",
+   "days": [
+    2,
+    5
+   ],
+   "daysBasis": "Two to five business days, by travel guides.",
+   "stayDays": 30,
+   "stayBasis": "Valid up to 30 days, extendable once.",
+   "sources": [
+    {
+     "kind": "secondary",
+     "url": "https://www.omanobserver.om/ampArticle/37516",
+     "what": "Oman Observer, ROP: the single-entry tourist visit visa (26B), RO 20, up to 30 days"
+    },
+    {
+     "kind": "secondary",
+     "url": "https://blog.wego.com/oman-e-visa/",
+     "what": "Wego, Oman eVisa 2026: 10-day OMR 5, 30-day OMR 20; processing in days"
+    }
+   ]
+  },
+  "JO": {
+   "name": "Tourist visa (single entry)",
+   "fee": 40,
+   "currency": "JOD",
+   "feeBasis": "The single-entry tourist visa; the Jordan Pass waives it for a stay of at least three nights.",
+   "stayDays": 30,
+   "stayBasis": "A single-entry tourist visit.",
+   "sources": [
+    {
+     "kind": "secondary",
+     "url": "https://blog.wego.com/jordan-tourist-visa/",
+     "what": "Wego, Jordan tourist visa: single entry 40 JOD"
+    },
+    {
+     "kind": "official",
+     "url": "https://mfa.gov.jo/documents/180222Jordan%20Pass.pdf",
+     "what": "Jordanian Ministry of Foreign Affairs, Jordan Pass: the pass waives the single-entry visa fee"
+    }
+   ]
+  },
+  "BH": {
+   "name": "eVisa (two weeks, single entry)",
+   "fee": 9,
+   "currency": "BHD",
+   "feeBasis": "The government's fees for the two-week single-entry visit eVisa, about BD 9 with the application fee.",
+   "days": [
+    4,
+    7
+   ],
+   "daysBasis": "Three to five working days.",
+   "stayDays": 14,
+   "stayBasis": "A two-week stay.",
+   "sources": [
+    {
+     "kind": "official",
+     "url": "https://www.bahrain.bh/wps/portal/en/BNP/ServicesCatalogue/GSX-UI-PServiceDetails?psID=1871",
+     "what": "Bahrain government service directory, visit eVisa: about BD 9 with the application fee; three to five working days"
+    }
+   ]
+  },
+  "KW": {
+   "name": "Tourist e-visa",
+   "fee": 18,
+   "currency": "KWD",
+   "feeBasis": "The tourist e-visa's KWD 3, the mandatory health insurance's KWD 5 and KWD 10 for a month's stay, from December 23, 2025.",
+   "days": 2,
+   "daysBasis": "Up to two days, usually minutes.",
+   "stayDays": 30,
+   "stayBasis": "The fee charged is a month's stay.",
+   "sources": [
+    {
+     "kind": "secondary",
+     "url": "https://blog.wego.com/kuwait-e-visa/",
+     "what": "Wego, Kuwait e-Visa 2026: KWD 3 base, KWD 5 insurance, KWD 10 a month of stay"
+    },
+    {
+     "kind": "secondary",
+     "url": "https://www.visaverge.com/visa/kuwait-relaunches-online-e-visa-system-a-simple-guide-for-travelers/",
+     "what": "VisaVerge, Kuwait e-visa: up to two days, usually minutes"
+    }
+   ]
+  },
+  "QA": {
+   "name": "Hayya tourist e-visa",
+   "fee": 100,
+   "currency": "QAR",
+   "feeBasis": "The tourist e-visa through Hayya, where a passport needs one.",
+   "days": [
+    3,
+    7
+   ],
+   "daysBasis": "About three to five working days, by visa guides.",
+   "stayDays": 30,
+   "stayBasis": "A stay of up to 30 days.",
+   "sources": [
+    {
+     "kind": "secondary",
+     "url": "https://btwvisas.com/blog/qatar-tourist-visa",
+     "what": "BTW Visas, Qatar tourist visa: Hayya e-visa QAR 100, up to 30 days"
+    },
+    {
+     "kind": "secondary",
+     "url": "https://oravisa.com/blog/qatar-visa-requirements-fees-dubai/",
+     "what": "Oravisa, Qatar visa: three to five working days"
+    }
+   ]
+  },
+  "TZ": {
+   "name": "Ordinary visa (single entry)",
+   "fee": 50,
+   "currency": "USD",
+   "feeBasis": "The single-entry ordinary visa ($100 multiple entry), applied for online.",
+   "days": 14,
+   "daysBasis": "About ten business days, by travel guides; the immigration service publishes none.",
+   "stayDays": 90,
+   "stayBasis": "An ordinary visa allows up to 90 days.",
+   "sources": [
+    {
+     "kind": "official",
+     "url": "https://www.my.tzembassy.go.tz/services/visa-fee",
+     "what": "Embassy of Tanzania in Malaysia, visa fees: ordinary single entry USD 50, multiple USD 100"
+    },
+    {
+     "kind": "secondary",
+     "url": "https://cheetahsafaris.com/visas/apply-for-tanzania-evisa-online/",
+     "what": "Cheetah Safaris, Tanzania eVisa: about ten business days"
+    }
+   ]
+  },
+  "UG": {
+   "name": "Tourist visa (single entry)",
+   "fee": 50,
+   "currency": "USD",
+   "feeBasis": "The single-entry tourist visa, not refunded, with a bank charge on top.",
+   "days": [
+    3,
+    7
+   ],
+   "daysBasis": "Two to five working days, by travel guides.",
+   "stayDays": 90,
+   "stayBasis": "Valid up to 90 days.",
+   "sources": [
+    {
+     "kind": "official",
+     "url": "https://www.immigration.go.ug/services/tourist-visa",
+     "what": "Uganda Directorate of Citizenship and Immigration Control, tourist visa: single entry USD 50, not refundable"
+    },
+    {
+     "kind": "secondary",
+     "url": "https://cheetahsafaris.com/visas/how-to-apply-for-uganda-evisa/",
+     "what": "Cheetah Safaris, Uganda eVisa: two to five working days"
+    }
+   ]
+  },
+  "RW": {
+   "name": "Tourist visa (single entry)",
+   "fee": 50,
+   "currency": "USD",
+   "feeBasis": "The 30-day single-entry tourist visa, on arrival or online through Irembo.",
+   "days": 5,
+   "daysBasis": "An online application is typically decided in three working days.",
+   "stayDays": 30,
+   "stayBasis": "Valid for 30 days.",
+   "sources": [
+    {
+     "kind": "official",
+     "url": "https://www.rwandainsingapore.gov.rw/services/singapore-tourist-and-business-visa",
+     "what": "High Commission of Rwanda in Singapore, tourist visa: single entry US$50, 30 days"
+    },
+    {
+     "kind": "secondary",
+     "url": "https://safarifind.com/blog/rwanda-visa-for-american-citizens-2026-requirements-how-to-apply",
+     "what": "Safari Find, Rwanda visa 2026: the e-visa typically in three working days"
+    }
+   ]
+  },
+  "ZM": {
+   "name": "e-Visa (single entry)",
+   "fee": 25,
+   "currency": "USD",
+   "feeBasis": "The single-entry visa, paid with the approval letter on arrival; halved in 2022.",
+   "days": [
+    5,
+    10
+   ],
+   "daysBasis": "About five to ten days, by visa agents; the department publishes none.",
+   "stayDays": 90,
+   "stayBasis": "Valid 90 days from issue to enter.",
+   "sources": [
+    {
+     "kind": "official",
+     "url": "https://www.zambiaembassy.org.tr/embassy/18/consular-services/types-of-visas",
+     "what": "Embassy of Zambia in Türkiye, types of visas: single entry US $25"
+    },
+    {
+     "kind": "secondary",
+     "url": "https://www.raynatours.com/visas/zambia-visa",
+     "what": "Rayna Tours, Zambia visa: standard processing five to ten days"
+    }
+   ]
+  },
+  "ZW": {
+   "name": "e-Visa (single entry)",
+   "fee": 30,
+   "currency": "USD",
+   "feeBasis": "The single-entry e-visa for a month.",
+   "days": 9,
+   "daysBasis": "On average seven working days, by the e-visa portal's own FAQ.",
+   "stayDays": 30,
+   "stayBasis": "A single-entry e-visa is valid for one month.",
+   "sources": [
+    {
+     "kind": "official",
+     "url": "https://www.evisa.gov.zw/faq.html",
+     "what": "Zimbabwe eVisa FAQ: on average seven working days; single entry valid one month"
+    },
+    {
+     "kind": "secondary",
+     "url": "https://visasnews.com/en/zimbabwe-electronic-visa-on-arrival-again-available/",
+     "what": "Visas News, Zimbabwe e-visa: single entry, one month, US$30"
+    }
+   ]
+  },
+  "MM": {
+   "name": "Tourist e-visa",
+   "fee": 50,
+   "currency": "USD",
+   "feeBasis": "The tourist e-visa, the same for every nationality and not refunded.",
+   "days": [
+    5,
+    7
+   ],
+   "daysBasis": "Three to five working days.",
+   "stayDays": 28,
+   "stayBasis": "A stay of 28 days.",
+   "sources": [
+    {
+     "kind": "secondary",
+     "url": "https://en.wikipedia.org/wiki/Visa_policy_of_Myanmar",
+     "what": "Wikipedia, visa policy of Myanmar: tourist eVisa US$50"
+    },
+    {
+     "kind": "secondary",
+     "url": "https://12go.asia/en/myanmar/visa",
+     "what": "12Go, Myanmar visa: three to five working days; 28 days' stay"
+    }
+   ]
+  },
+  "MV": {
+   "name": "Tourist visa on arrival",
+   "fee": 0,
+   "currency": "USD",
+   "feeBasis": "Free: every nationality but Israel's is given a tourist visa on arrival.",
+   "days": 1,
+   "daysBasis": "Granted at the border on arrival, at the officer's discretion.",
+   "stayDays": 30,
+   "stayBasis": "Up to 30 days.",
+   "sources": [
+    {
+     "kind": "official",
+     "url": "https://maldivesmission.sg/?p=67",
+     "what": "Maldives High Commission in Singapore: a free 30-day visa on arrival for all nationalities"
+    },
+    {
+     "kind": "official",
+     "url": "https://be.mdvmission.gov.mv/index.php/en/consular/for-foreigners/entry-to-maldives",
+     "what": "Embassy of the Maldives in Brussels, entry to the Maldives: up to 30 days at the officer's discretion; not on Israeli passports from April 15, 2025"
+    }
+   ]
+  },
+  "NA": {
+   "name": "Visa (e-Visa or on arrival)",
+   "fee": 1600,
+   "currency": "NAD",
+   "feeBasis": "The e-Visa's N$1,600; the counter visa on arrival rose to N$2,000 from September 2025.",
+   "stayDays": 90,
+   "stayBasis": "Up to 90 days.",
+   "sources": [
+    {
+     "kind": "official",
+     "url": "https://namembassy.fi/index.php/consular-matters/do-i-need-visa/implementation-of-new-visa-requirements",
+     "what": "Embassy of Namibia in Finland, new visa requirements and visa on arrival"
+    },
+    {
+     "kind": "secondary",
+     "url": "https://namibian.org/blog/visa-on-arrival-additional-fee-for-applying-at-immigration-counter",
+     "what": "Namibian.org: e-Visa N$1,600; the counter fee N$2,000 after the September 2025 Cabinet decision"
+    }
+   ]
+  },
+  "BJ": {
+   "name": "e-Visa (30 days, single entry)",
+   "fee": 50,
+   "currency": "EUR",
+   "feeBasis": "The single-entry e-visa for 30 days.",
+   "days": 5,
+   "daysBasis": "Three working days, by the Embassy of Benin in Japan.",
+   "stayDays": 30,
+   "stayBasis": "A single entry for 30 days.",
+   "sources": [
+    {
+     "kind": "official",
+     "url": "https://www.beninembassy.jp/consular-services/visas-and-travel/",
+     "what": "Embassy of Benin in Japan, visa information: three working days"
+    },
+    {
+     "kind": "secondary",
+     "url": "https://www.saigatours.com/article/benin-evisa-guide",
+     "what": "Saiga Tours, Benin e-Visa guide 2026: single entry 30 days, about €50"
+    }
+   ]
+  },
+  "MG": {
+   "name": "e-Visa (16 to 30 days)",
+   "fee": 35,
+   "currency": "EUR",
+   "feeBasis": "The e-visa for 16 to 30 days, unchanged when the 15-day e-visa rose from €10 to €30 on February 16, 2026.",
+   "days": [
+    3,
+    7
+   ],
+   "daysBasis": "Two to five working days, by travel guides.",
+   "stayDays": 30,
+   "stayBasis": "Up to 30 days.",
+   "sources": [
+    {
+     "kind": "secondary",
+     "url": "https://visasnews.com/en/madagascar-triples-its-15-day-e-visa-fee/",
+     "what": "Visas News, Madagascar: the 15-day e-visa €10 to €30 from February 16, 2026; 16 to 30 days €35, unchanged"
+    },
+    {
+     "kind": "secondary",
+     "url": "https://www.worldtravelguide.net/guides/africa/madagascar/passport-visa",
+     "what": "World Travel Guide, Madagascar: 30-day e-visa €35"
+    }
+   ]
+  },
+  "GA": {
+   "name": "e-Visa (single entry, up to three months)",
+   "fee": 70,
+   "currency": "EUR",
+   "feeBasis": "The single-entry e-visa for one to three months (XAF 45,000); some sources add a €15 file fee.",
+   "days": 3,
+   "daysBasis": "About 72 hours.",
+   "stayDays": 90,
+   "stayBasis": "One to three months.",
+   "sources": [
+    {
+     "kind": "secondary",
+     "url": "https://visaatlas.org/visas/gabon/tourism-evisa",
+     "what": "Visa Atlas, Gabon tourism e-visa: single entry one to three months, EUR 70; 72 hours"
+    },
+    {
+     "kind": "secondary",
+     "url": "https://smartphone-id.com/en/gabon-evisa",
+     "what": "Smartphone ID, Gabon e-visa: 70 EUR or 45,000 XAF for one to three months"
+    }
+   ]
+  },
+  "BZ": {
+   "name": "Visa (single entry)",
+   "fee": 50,
+   "currency": "USD",
+   "feeBasis": "The single-entry visa for 90 days at the Embassy of Belize in Washington (plus $30 to post it back).",
+   "days": 42,
+   "daysBasis": "About 30 business days, by the Consulate in Chicago.",
+   "stayDays": 90,
+   "stayBasis": "A single entry for 90 days.",
+   "sources": [
+    {
+     "kind": "official",
+     "url": "https://belizeembassyusa.mfa.gov.bz/visa-application-requirements",
+     "what": "Embassy of Belize in the US, visa requirements: single entry, 90 days, USD 50"
+    },
+    {
+     "kind": "official",
+     "url": "https://chicagoconsulate.mfa.gov.bz/?p=82",
+     "what": "Consulate of Belize in Chicago, visa requirements: approximately 30 business days"
+    }
+   ]
+  },
+  "BD": {
+   "name": "Tourist visa (on arrival or e-visa, 30 days)",
+   "fee": 51,
+   "currency": "USD",
+   "feeBasis": "The 30-day tourist visa on arrival at Dhaka, or as an e-visa, for eligible nationalities.",
+   "days": [
+    3,
+    7
+   ],
+   "daysBasis": "Three to five business days for the e-visa; on arrival at the counter.",
+   "stayDays": 30,
+   "stayBasis": "Up to 30 days, extendable by 30.",
+   "sources": [
+    {
+     "kind": "secondary",
+     "url": "https://oravisa.com/blog/bangladesh-visa-from-dubai-guide/",
+     "what": "Oravisa, Bangladesh visa 2026: visa on arrival USD 51 at Dhaka; e-visa three to five business days"
+    },
+    {
+     "kind": "secondary",
+     "url": "https://visaatlas.org/visas/bangladesh/visa-on-arrival",
+     "what": "Visa Atlas, Bangladesh visa on arrival: up to 30 days"
+    }
+   ]
+  },
+  "IE": {
+   "name": "Short stay 'C' visit visa (single entry)",
+   "fee": 60,
+   "currency": "EUR",
+   "feeBasis": "The single-entry visa (€100 multiple); some applicants are exempt.",
+   "days": 56,
+   "daysBasis": "A minimum of eight weeks from receipt of every document.",
+   "stayDays": 90,
+   "stayBasis": "A short stay, up to 90 days.",
+   "sources": [
+    {
+     "kind": "official",
+     "url": "https://www.ireland.ie/en/greatbritain/london/services/visas/visas-for-ireland/",
+     "what": "Embassy of Ireland, London, visas for Ireland: single entry €60, multiple €100"
+    },
+    {
+     "kind": "official",
+     "url": "https://api.ireland.ie/en/spain/madrid/news-and-events/news-archive/visa-faqs/",
+     "what": "Embassy of Ireland, Madrid, visa FAQs: a minimum of eight weeks"
+    }
+   ]
+  },
+  "PG": {
+   "name": "Tourist eVisa",
+   "fee": 50,
+   "currency": "USD",
+   "feeBasis": "The eVisa, paid online in kina at the equivalent.",
+   "stayDays": 60,
+   "stayBasis": "A stay of 30 or 60 days by nationality.",
+   "sources": [
+    {
+     "kind": "secondary",
+     "url": "https://www.visatraveler.com/visa/papua-new-guinea/evisa/",
+     "what": "Visa Traveler, Papua New Guinea eVisa: $50 for every application; 30 or 60 days by nationality"
+    }
+   ]
+  },
+  "TL": {
+   "name": "Visa on arrival",
+   "fee": 30,
+   "currency": "USD",
+   "feeBasis": "The visa on arrival at Dili's airport or seaport.",
+   "days": 1,
+   "daysBasis": "Granted on arrival.",
+   "stayDays": 30,
+   "stayBasis": "Up to 30 days, single entry.",
+   "sources": [
+    {
+     "kind": "official",
+     "url": "https://migracao.gov.tl/zip/html/sub0301.php",
+     "what": "Immigration Service of Timor-Leste, visa on arrival: up to 30 days, single entry, US$30"
+    }
+   ]
+  },
+  "VU": {
+   "name": "Visitor visa",
+   "fee": 7420,
+   "currency": "VUV",
+   "feeBasis": "The Department of Immigration's visa application charge for a visitor visa (transit 1,855 vatu).",
+   "stayDays": 30,
+   "stayBasis": "A visitor visa is valid for at most 30 days.",
+   "sources": [
+    {
+     "kind": "official",
+     "url": "https://immigration.gov.vu/visit/",
+     "what": "Vanuatu Department of Immigration and Passport Services, visit: visitor visa application charge 7,420 VUV, up to 30 days"
+    }
+   ]
+  },
+  "PW": {
+   "name": "Visa on arrival",
+   "fee": 100,
+   "currency": "USD",
+   "feeBasis": "No fee for the visa itself; every visitor pays the $100 Pristine Paradise Environmental Fee, included in the air ticket.",
+   "days": 1,
+   "daysBasis": "A 30-day visa granted on arrival.",
+   "stayDays": 30,
+   "stayBasis": "Thirty days, extendable to 90 at $50 each time.",
+   "sources": [
+    {
+     "kind": "official",
+     "url": "https://travel.state.gov/content/passports/en/country/palau.html",
+     "what": "US Department of State, Palau: every visitor pays a $100 environmental fee in the ticket; others generally receive 30 days on arrival"
+    },
+    {
+     "kind": "official",
+     "url": "https://pristineparadisepalau.com/travelers-tips/",
+     "what": "Palau Visitors Authority, travellers' tips: the environmental fee, and a 30-day visa on arrival, extensions $50"
+    }
+   ]
+  },
+  "CR": {
+   "name": "Consular visa",
+   "fee": 52,
+   "currency": "USD",
+   "feeBasis": "The consular visa for nationals of the third group, paid after approval and not refunded (USD 50 at the embassy in Colombia).",
+   "days": [
+    30,
+    90
+   ],
+   "daysBasis": "About 30 days, up to 90 by the embassy in Canada.",
+   "stayDays": 30,
+   "stayBasis": "A tourist stay.",
+   "sources": [
+    {
+     "kind": "official",
+     "url": "https://costaricaembassy.com/?p=216845",
+     "what": "Embassy of Costa Rica in Canada, consular visa: US$52 with legalization; may take up to 90 days"
+    },
+    {
+     "kind": "secondary",
+     "url": "https://visaguide.world/north-america-caribbean/costa-rica-visa",
+     "what": "Visa Guide, Costa Rica: US$52 after approval; about 30 calendar days"
+    }
+   ]
+  },
+  "PA": {
+   "name": "Stamped tourist visa",
+   "fee": 50,
+   "currency": "PAB",
+   "feeBasis": "The National Migration Service's charge on presenting the application, B/.50.",
+   "days": [
+    5,
+    21
+   ],
+   "daysBasis": "Five business days to three weeks by the consulate's workload, by one immigration firm's account.",
+   "stayDays": 90,
+   "stayBasis": "A tourist stay.",
+   "sources": [
+    {
+     "kind": "official",
+     "url": "https://migracion.gob.pa/wp-content/uploads/01.REQUISITOS-PARA-SOLICITAR-VISA-TURISTA.pdf",
+     "what": "Servicio Nacional de Migración, requirements for a tourist visa: B/.50.00 on presenting the application"
+    },
+    {
+     "kind": "secondary",
+     "url": "https://visaverge.com/visa/guide-to-getting-a-panama-visa-everything-you-need-to-know-2",
+     "what": "VisaVerge, Panama visa 2026: five business days to three weeks"
+    }
+   ]
+  },
+  "RU": {
+   "name": "Unified electronic visa",
+   "fee": 52,
+   "currency": "USD",
+   "feeBasis": "The consular fee with the bank's and payment system's charges and the documents' check, about $52 in all.",
+   "days": 4,
+   "daysBasis": "Up to four calendar days, not counting the day of applying.",
+   "stayDays": 16,
+   "stayBasis": "A single entry, staying up to 16 days within 60.",
+   "sources": [
+    {
+     "kind": "official",
+     "url": "https://washington.mid.ru/en/consular-services/citizens-usa/visa-to-russia/e_visas/",
+     "what": "Embassy of Russia in the US, e-visas: about 52 USD in all; up to four calendar days; a single entry for up to 16 days"
+    }
+   ]
+  },
+  "KZ": {
+   "name": "e-Visa (tourist, single entry)",
+   "fee": 60,
+   "currency": "USD",
+   "feeBasis": "The single-entry tourist e-visa ($80 for business or medical).",
+   "stayDays": 30,
+   "stayBasis": "A tourist stay.",
+   "sources": [
+    {
+     "kind": "official",
+     "url": "https://www.gov.kz/memleket/entities/mfa/activities/34748?lang=en",
+     "what": "Ministry of Foreign Affairs of Kazakhstan, e-visa: single-entry tourist USD 60"
+    },
+    {
+     "kind": "secondary",
+     "url": "https://new.wpk.kz/evisa_eng",
+     "what": "WPK, Kazakhstan e-visa: tourist single entry 60 USD, business and medical 80 USD"
+    }
+   ]
+  },
+  "MD": {
+   "name": "e-Visa (short stay, type C)",
+   "fee": 60,
+   "currency": "EUR",
+   "feeBasis": "The type C visa's fee for an adult, children to six free, as the government's fee page gives it.",
+   "stayDays": 90,
+   "stayBasis": "A short stay.",
+   "sources": [
+    {
+     "kind": "official",
+     "url": "https://www.evisa.gov.md/Info/ThingsYouShouldKnow?c=en-US",
+     "what": "Moldova e-Visa portal: only short-stay type C visas online"
+    },
+    {
+     "kind": "secondary",
+     "url": "https://pickyourtrail.com/blog/?p=78730",
+     "what": "Pickyourtrail, Moldova visa: type C adult €60 from the government's fee page (evisa.gov.md/Info/TaxeViza)"
+    }
+   ]
+  },
+  "AL": {
+   "name": "e-Visa (type C)",
+   "fee": 15,
+   "currency": "EUR",
+   "feeBasis": "The type C e-visa fee under Council of Ministers Decision No. 329 of May 29, 2024, not refunded if refused (a €20 service fee is also reported).",
+   "days": [
+    21,
+    42
+   ],
+   "daysBasis": "About 15 working days after payment, 30 in exceptional cases.",
+   "stayDays": 90,
+   "stayBasis": "A short stay.",
+   "sources": [
+    {
+     "kind": "secondary",
+     "url": "https://www.migrantiq.com/visas/albania/type-c-short-stay",
+     "what": "MigrantIQ, Albania type C: €15 under DCM No. 329 of 2024; 15 working days, up to 30"
+    },
+    {
+     "kind": "secondary",
+     "url": "https://blog.wego.com/albania-e-visa/",
+     "what": "Wego, Albania e-visa: 15 working days after payment"
+    }
+   ]
+  },
+  "MK": {
+   "name": "Short-stay visa (type C)",
+   "fee": 60,
+   "currency": "EUR",
+   "feeBasis": "The short-stay and transit visa under the Law on Administrative Fees, tariff no. 135 (€35 for children of 6 to 12).",
+   "days": [
+    14,
+    21
+   ],
+   "daysBasis": "Ten to fifteen working days, by visa guides.",
+   "stayDays": 90,
+   "stayBasis": "A short stay.",
+   "sources": [
+    {
+     "kind": "secondary",
+     "url": "https://oravisa.com/blog/north-macedonia-visa-requirements-fees-dubai/",
+     "what": "Oravisa, North Macedonia visa: tariff no. 135, €60 (€35 children); ten to fifteen working days"
+    }
+   ]
+  },
+  "BA": {
+   "name": "Visa (type C)",
+   "fee": 60,
+   "currency": "EUR",
+   "feeBasis": "The consular fee for a type C visa at the Embassy of Bosnia and Herzegovina in Qatar.",
+   "stayDays": 90,
+   "stayBasis": "A short stay.",
+   "sources": [
+    {
+     "kind": "official",
+     "url": "https://en.bhembassyqatar.com/vize-za-bosnu-i-hercegovinu",
+     "what": "Embassy of Bosnia and Herzegovina in Qatar, visas: type C consular fee 60 EUR"
+    }
+   ]
+  },
+  "MR": {
+   "name": "e-Visa (30 days)",
+   "fee": 55,
+   "currency": "EUR",
+   "feeBasis": "The 30-day visa as the government's portal lists it (MRU 2,000, €55 or $60), paid at the border in euros, since the e-visa began on January 5, 2025.",
+   "stayDays": 30,
+   "stayBasis": "A 30-day visa.",
+   "sources": [
+    {
+     "kind": "secondary",
+     "url": "https://mindofahitchhiker.com/how-to-get-the-mauritanian-evisa-introduced-in-2025/",
+     "what": "Mind of a Hitchhiker, Mauritanian eVisa 2025: the portal lists 2,000 MRU, €55 or $60 for 30 days"
+    },
+    {
+     "kind": "secondary",
+     "url": "https://visasnews.com/en/mauritania-launches-electronic-visa-system/",
+     "what": "Visas News, Mauritania launches its electronic visa system from January 5, 2025"
+    }
+   ]
+  },
+  "KE": {
+   "name": "Electronic Travel Authorisation",
+   "fee": 30,
+   "currency": "USD",
+   "feeBasis": "The eTA's normal processing, from $30 on the government's portal ($100 more to expedite).",
+   "days": 3,
+   "daysBasis": "Processing may take up to 72 hours, by the portal's own answers.",
+   "stayDays": 90,
+   "stayBasis": "A visitor's pass of up to 90 days; the eTA must be used within 90 days of issue.",
+   "sources": [
+    {
+     "kind": "official",
+     "url": "https://www.etakenya.go.ke/faqs",
+     "what": "eTA Kenya FAQ: normal processing starting at $30, up to 72 hours; expedited $100 more"
+    },
+    {
+     "kind": "official",
+     "url": "https://kenyaembassybangkok.mfa.go.ke/node/21",
+     "what": "Embassy of Kenya, Bangkok: the eTA must be used within 90 days of issue"
+    }
+   ]
+  },
+  "CU": {
+   "name": "e-Visa (tourist)",
+   "fee": 50,
+   "currency": "USD",
+   "feeBasis": "The tourist e-visa on evisacuba.cu, which replaced the paper tourist card on July 1, 2025: $50 whatever the nationality, by travel guides.",
+   "days": 5,
+   "daysBasis": "Allow up to 72 business hours.",
+   "stayDays": 90,
+   "stayBasis": "A single entry, staying up to 90 days, extendable once in Cuba for 90 more.",
+   "sources": [
+    {
+     "kind": "secondary",
+     "url": "https://www.immiassist.com/blog/cuba/cuba-evisa",
+     "what": "ImmiAssist, The Cuba eVisa: $50 regardless of nationality; allow up to 72 business hours; 90 days plus one 90-day extension"
+    },
+    {
+     "kind": "secondary",
+     "url": "https://visasnews.com/en/cuba-makes-electronic-visas-mandatory-from-july-1-2025/",
+     "what": "Visas News, Cuba makes electronic visas mandatory from July 1, 2025"
+    }
+   ]
+  },
+  "SS": {
+   "name": "e-Visa (30 days, single entry)",
+   "fee": 100,
+   "currency": "USD",
+   "feeBasis": "The 30-day single-entry e-visa, USD 100 (USD 200 for 90 days' multiple entry, 350 for 180), unchanged since the e-visa opened in 2020.",
+   "days": 7,
+   "daysBasis": "About five working days, with no rush service.",
+   "stayDays": 30,
+   "stayBasis": "A single entry, staying up to 30 days.",
+   "sources": [
+    {
+     "kind": "secondary",
+     "url": "https://www.tourmag.com/Soudan-du-Sud-le-pays-lance-un-systeme-de-visa-electronique_a105468.html",
+     "what": "TourMag, 2020: South Sudan's e-visa on evisa.gov.ss, USD 100 single entry, 200 multiple for 3 months, 350 for 6"
+    },
+    {
+     "kind": "secondary",
+     "url": "https://www.ixigo.com/visa-for-indians/south-sudan-ss",
+     "what": "ixigo, South Sudan visa (verified April 2026): 30 days single entry USD 100, five working days"
+    }
+   ]
+  },
+  "IL": {
+   "name": "ETA-IL",
+   "fee": 25,
+   "currency": "ILS",
+   "feeBasis": "The Electronic Travel Authorization's NIS 25, paid by card and not refunded, required of visa-exempt visitors from January 1, 2025.",
+   "days": 3,
+   "daysBasis": "Answered by email within 72 hours of the request.",
+   "stayDays": 90,
+   "stayBasis": "Up to 90 days a visit.",
+   "sources": [
+    {
+     "kind": "official",
+     "url": "https://new.embassies.gov.il/usa/en/node/6875",
+     "what": "Embassy of Israel, Washington: ETA-IL, NIS 25 by credit card, non-refundable; up to 90 days a visit"
+    },
+    {
+     "kind": "official",
+     "url": "https://embassies.gov.il/buenos-aires/NewsAndEvents/Documents/ETA-IL-PIBA%20official%20notice-argentinaisrael.pdf",
+     "what": "Population and Immigration Authority notice: the answer is sent by email within 72 hours"
+    },
+    {
+     "kind": "secondary",
+     "url": "https://www.bal.com/immigration-news/israel-eta-il-requirement-now-in-effect/",
+     "what": "BAL, Israel ETA-IL requirement in effect from January 1, 2025"
+    }
+   ]
+  },
+  "TJ": {
+   "name": "e-Visa (single entry)",
+   "fee": 30,
+   "currency": "USD",
+   "feeBasis": "The single-entry e-visa on evisa.tj, $30 ($50 for multiple entry; a Gorno-Badakhshan permit $20 more), by the Embassy of Tajikistan in Malaysia (March 2026).",
+   "sources": [
+    {
+     "kind": "official",
+     "url": "https://tajemb-my.org/consular-section/visa-information/",
+     "what": "Embassy of Tajikistan in Malaysia, visa information (March 2026): e-visa single entry USD 30, multiple USD 50, GBAO permit USD 20"
+    }
+   ]
+  },
+  "SO": {
+   "name": "e-Visa (ETAS)",
+   "fee": 64,
+   "currency": "USD",
+   "feeBasis": "The electronic travel authorization on etas.gov.so, required from September 1, 2025: $64.",
+   "days": 7,
+   "daysBasis": "About seven days, by the Czech Foreign Ministry's travel page.",
+   "sources": [
+    {
+     "kind": "official",
+     "url": "https://mzv.gov.cz/jnp/cz/encyklopedie_statu/afrika/somalsko/cestovani/visa.html",
+     "what": "Ministry of Foreign Affairs of the Czech Republic, Somalia visas: fee USD 64, about seven days"
+    },
+    {
+     "kind": "official",
+     "url": "https://immigration.gov.so/news/somalia-launches-e-visa-etas-system",
+     "what": "Immigration and Citizenship Agency of Somalia: the e-visa (ETAS) through etas.gov.so from September 1, 2025"
+    }
+   ]
+  },
+  "SC": {
+   "name": "Travel Authorisation",
+   "fee": 12,
+   "currency": "EUR",
+   "feeBasis": "The Travel Authorisation's €10 enrolment, with about €2 of government and bank charges at checkout (January 2026); the visitor's permit itself is free on arrival.",
+   "days": 1,
+   "daysBasis": "Standard applications are answered within a day (12 hours by Air Seychelles).",
+   "sources": [
+    {
+     "kind": "secondary",
+     "url": "https://www.insideseychelles.com/?p=21338",
+     "what": "Inside Seychelles, January 2026: €12.06 a traveller (€10 enrolment, €1.57 government charges, €0.49 bank processing)"
+    },
+    {
+     "kind": "secondary",
+     "url": "https://airseychelles.com/en/node/5647",
+     "what": "Air Seychelles: Travel Authorisation application fee €10 (standard), processing 12 hours"
+    }
+   ]
+  },
+  "SL": {
+   "name": "e-Visa (single entry)",
+   "fee": 80,
+   "currency": "USD",
+   "feeBasis": "The single-entry e-visa, $80 by card ($150 for multiple entry), by travel guides.",
+   "stayDays": 30,
+   "stayBasis": "A single entry, staying up to 30 days, extendable once in the country.",
+   "sources": [
+    {
+     "kind": "secondary",
+     "url": "https://www.visaverge.com/visa/a-guide-to-obtaining-a-sierra-leone-visa-everything-you-need-to-know-5",
+     "what": "VisaVerge, Sierra Leone visa guide 2026: single-entry e-visa for 30 days, extendable once"
+    },
+    {
+     "kind": "secondary",
+     "url": "https://www.passportsandvisas.com/visas/sierra-leone/us-citizens/",
+     "what": "Passports and Visas, Sierra Leone: $80 single entry, $150 multiple, paid by credit card"
+    }
+   ]
+  },
+  "CM": {
+   "name": "e-Visa (tourist, 30 days)",
+   "fee": 50000,
+   "currency": "XAF",
+   "feeBasis": "The single-entry tourist e-visa on evisacam.cm, FCFA 50,000 (about $85) by travel guides; some passports pay €70.",
+   "stayDays": 30,
+   "stayBasis": "Up to 30 days, extendable by 30.",
+   "sources": [
+    {
+     "kind": "secondary",
+     "url": "https://evisaguides.pages.dev/en/destination/cameroon",
+     "what": "eVisa Guides, Cameroon: single-entry tourist e-visa FCFA 50,000 (~$85), 30 days, extendable 30"
+    },
+    {
+     "kind": "official",
+     "url": "https://cameroonhighcommission.co.uk/faq-e-visa.html",
+     "what": "Cameroon High Commission, London: e-visa FAQ, applied for through evisacam.cm"
+    }
+   ]
+  },
+  "AO": {
+   "name": "e-Visa (tourist)",
+   "fee": 120,
+   "currency": "USD",
+   "feeBasis": "The single-entry tourist e-visa through the Migration and Foreigners Service's portal, about $120 by travel guides (the portal moved to a new platform in August 2026).",
+   "stayDays": 30,
+   "stayBasis": "Thirty days from entry, extendable once for 30 more at the Service's offices.",
+   "sources": [
+    {
+     "kind": "secondary",
+     "url": "https://angolatourism.pages.dev/guides/angola-visa-requirements/",
+     "what": "Angola visa requirements: tourist visa approximately USD 120, single entry, 30 days, extendable once"
+    },
+    {
+     "kind": "secondary",
+     "url": "https://atta.travel/resource/angola-launches-new-e-visa-portal-as-part-of-immigration-digitalisation-drive.html",
+     "what": "ATTA, September 2, 2026: Angola launches a new e-visa portal"
+    }
+   ]
+  },
+  "NI": {
+   "name": "Tourist card",
+   "fee": 10,
+   "currency": "USD",
+   "feeBasis": "The tourist card bought on arrival for $10 in cash, which visitors who need no visa pay as well.",
+   "days": 1,
+   "daysBasis": "Issued at the border on arrival.",
+   "stayDays": 90,
+   "stayBasis": "Ninety days, counted from the first entry anywhere in Guatemala, El Salvador, Honduras and Nicaragua (CA-4), not reset at their borders.",
+   "sources": [
+    {
+     "kind": "secondary",
+     "url": "https://worldtravelguide.net/guides/north-america/nicaragua/passport-visa",
+     "what": "World Travel Guide, Nicaragua: tourist card issued on arrival for US$10 in cash, normally valid for 90 days"
+    },
+    {
+     "kind": "secondary",
+     "url": "https://www.bizlatinhub.com/nicaragua-visa/",
+     "what": "Biz Latin Hub, Nicaragua visa: the 90 days begin at first entry into any CA-4 country and don't reset at their borders"
+    }
+   ]
+  },
+  "BT": {
+   "name": "Tourist visa",
+   "fee": 40,
+   "currency": "USD",
+   "feeBasis": "The Department of Immigration's $40 tourist visa, not refunded; a Sustainable Development Fee of $100 a night is paid on top, for every night, from September 1, 2023.",
+   "days": 7,
+   "daysBasis": "Up to five working days.",
+   "sources": [
+    {
+     "kind": "secondary",
+     "url": "https://www.drukasia.com/bhutan-visa/bhutan-visa-tariff/",
+     "what": "Druk Asia, Bhutan visa tariff: USD 40 visa fee, processing up to 5 working days"
+    },
+    {
+     "kind": "secondary",
+     "url": "https://www.bhutantravelbureau.com/getting-to-bhutan/bhutan-tourism-policy/",
+     "what": "Bhutan Travel Bureau: from September 1, 2023, the SDF is USD 100 a person a night"
+    }
+   ]
+  },
+  "SG": {
+   "name": "Entry visa",
+   "fee": 30,
+   "currency": "SGD",
+   "feeBasis": "The Immigration and Checkpoints Authority's S$30 processing fee, not refunded.",
+   "days": [
+    5,
+    7
+   ],
+   "daysBasis": "Three to five working days, not counting the day it's submitted.",
+   "sources": [
+    {
+     "kind": "official",
+     "url": "https://www.ica.gov.sg/visitor/visitor_entryvisa/visa-detail-page/ukraine",
+     "what": "ICA, entry visa: a S$30 non-refundable processing fee, paid online"
+    },
+    {
+     "kind": "official",
+     "url": "https://new-delhi.mfa.gov.sg/consular-services/visa-information/",
+     "what": "High Commission of Singapore, New Delhi: 3 to 5 working days, excluding the date of submission, weekends and public holidays"
     }
    ]
   }
@@ -2020,6 +3923,204 @@
      "kind": "official",
      "url": "https://embassy-to-uk.gouv.mc/en/information-and-services/visiting-monaco",
      "what": "Embassy of Monaco in the UK, visiting Monaco: a visa for the Schengen area, after which a visit needs no further formality"
+    }
+   ]
+  },
+  "AD": {
+   "authority": "FR",
+   "basis": "Entered through France or Spain on a Schengen visa: Andorra has no visa of its own.",
+   "sources": [
+    {
+     "kind": "official",
+     "url": "https://www.gov.uk/foreign-travel-advice/andorra/entry-requirements",
+     "what": "UK Foreign Office, Andorra entry requirements: you must travel through France or Spain and meet the Schengen area's requirements"
+    }
+   ]
+  },
+  "SM": {
+   "authority": "IT",
+   "basis": "Entered through Italy on a Schengen visa, with no border control.",
+   "sources": [
+    {
+     "kind": "official",
+     "url": "https://www.mfa.gov.sg/travelling-overseas/travel-advisories-notices-and-visa-information/san-marino/",
+     "what": "Singapore Ministry of Foreign Affairs, San Marino: reached through Italy with no border control; meet Italy's and the Schengen area's requirements"
+    }
+   ]
+  },
+  "VA": {
+   "authority": "IT",
+   "basis": "Entered through Italy on a Schengen visa: the Vatican issues none of its own.",
+   "sources": [
+    {
+     "kind": "secondary",
+     "url": "https://en.wikipedia.org/wiki/Visa_policy_of_Vatican_City",
+     "what": "Wikipedia, visa policy of Vatican City: an open border with Italy; no entry without entering the Schengen area"
+    }
+   ]
+  },
+  "AX": {
+   "authority": "FI",
+   "basis": "Part of Finland's Schengen territory: a Finnish Schengen visa covers it.",
+   "sources": [
+    {
+     "kind": "official",
+     "url": "https://www.norden.org/en/info-norden/passport-requirements-travel-aland",
+     "what": "Nordic Council, passport requirements for travel to Åland: visas for Finland and Åland from Finland's foreign ministry"
+    }
+   ]
+  },
+  "SJ": {
+   "authority": "NO",
+   "basis": "Svalbard needs no visa, but the way there is through mainland Norway, which needs a Schengen visa (with two entries).",
+   "sources": [
+    {
+     "kind": "official",
+     "url": "https://www.sysselmesteren.no/en/visas-and-immigration/",
+     "what": "Governor of Svalbard, visas and immigration: no visa for Svalbard; a Schengen visa with two or more entries through mainland Norway"
+    }
+   ]
+  },
+  "MQ": {
+   "authority": "GP",
+   "basis": "The same visa as Guadeloupe's: France's short-stay visa for its overseas departments, Saint Martin and Saint Barthélemy.",
+   "sources": [
+    {
+     "kind": "official",
+     "url": "https://www.france-visas.gouv.fr/documents/d/france-visas/frais-de-visa-anglais",
+     "what": "France-Visas, visa fees for the overseas territories"
+    }
+   ]
+  },
+  "GF": {
+   "authority": "GP",
+   "basis": "The same visa as Guadeloupe's: France's short-stay visa for its overseas departments, Saint Martin and Saint Barthélemy.",
+   "sources": [
+    {
+     "kind": "official",
+     "url": "https://www.france-visas.gouv.fr/documents/d/france-visas/frais-de-visa-anglais",
+     "what": "France-Visas, visa fees for the overseas territories"
+    }
+   ]
+  },
+  "RE": {
+   "authority": "GP",
+   "basis": "The same visa as Guadeloupe's: France's short-stay visa for its overseas departments, Saint Martin and Saint Barthélemy.",
+   "sources": [
+    {
+     "kind": "official",
+     "url": "https://www.france-visas.gouv.fr/documents/d/france-visas/frais-de-visa-anglais",
+     "what": "France-Visas, visa fees for the overseas territories"
+    }
+   ]
+  },
+  "BL": {
+   "authority": "GP",
+   "basis": "The same visa as Guadeloupe's: France's short-stay visa for its overseas departments, Saint Martin and Saint Barthélemy.",
+   "sources": [
+    {
+     "kind": "official",
+     "url": "https://www.france-visas.gouv.fr/documents/d/france-visas/frais-de-visa-anglais",
+     "what": "France-Visas, visa fees for the overseas territories"
+    }
+   ]
+  },
+  "MF": {
+   "authority": "GP",
+   "basis": "The same visa as Guadeloupe's: France's short-stay visa for its overseas departments, Saint Martin and Saint Barthélemy.",
+   "sources": [
+    {
+     "kind": "official",
+     "url": "https://www.france-visas.gouv.fr/documents/d/france-visas/frais-de-visa-anglais",
+     "what": "France-Visas, visa fees for the overseas territories"
+    }
+   ]
+  },
+  "PM": {
+   "authority": "PF",
+   "basis": "The same visa as French Polynesia's: France's short-stay visa for its overseas collectivities and Mayotte.",
+   "sources": [
+    {
+     "kind": "official",
+     "url": "https://www.france-visas.gouv.fr/documents/d/france-visas/frais-de-visa-anglais",
+     "what": "France-Visas, visa fees for the overseas territories"
+    }
+   ]
+  },
+  "YT": {
+   "authority": "PF",
+   "basis": "The same visa as French Polynesia's: France's short-stay visa for its overseas collectivities and Mayotte.",
+   "sources": [
+    {
+     "kind": "official",
+     "url": "https://www.france-visas.gouv.fr/documents/d/france-visas/frais-de-visa-anglais",
+     "what": "France-Visas, visa fees for the overseas territories"
+    }
+   ]
+  },
+  "NC": {
+   "authority": "PF",
+   "basis": "The same visa as French Polynesia's: France's short-stay visa for its overseas collectivities and Mayotte.",
+   "sources": [
+    {
+     "kind": "official",
+     "url": "https://www.france-visas.gouv.fr/documents/d/france-visas/frais-de-visa-anglais",
+     "what": "France-Visas, visa fees for the overseas territories"
+    }
+   ]
+  },
+  "WF": {
+   "authority": "PF",
+   "basis": "The same visa as French Polynesia's: France's short-stay visa for its overseas collectivities and Mayotte.",
+   "sources": [
+    {
+     "kind": "official",
+     "url": "https://www.france-visas.gouv.fr/documents/d/france-visas/frais-de-visa-anglais",
+     "what": "France-Visas, visa fees for the overseas territories"
+    }
+   ]
+  },
+  "TF": {
+   "authority": "PF",
+   "basis": "The same visa as French Polynesia's: France's short-stay visa for its overseas collectivities and Mayotte.",
+   "sources": [
+    {
+     "kind": "official",
+     "url": "https://www.france-visas.gouv.fr/documents/d/france-visas/frais-de-visa-anglais",
+     "what": "France-Visas, visa fees for the overseas territories"
+    }
+   ]
+  },
+  "CW": {
+   "authority": "AW",
+   "basis": "The same visa as Aruba's: the Kingdom of the Netherlands' Caribbean visa, for all six islands.",
+   "sources": [
+    {
+     "kind": "official",
+     "url": "https://netherlandsworldwide.nl/caribbean-visa/short-stay/apply-philippines",
+     "what": "NetherlandsWorldwide: one Caribbean visa for Aruba, Curaçao, Sint Maarten, Bonaire, Sint Eustatius and Saba"
+    }
+   ]
+  },
+  "SX": {
+   "authority": "AW",
+   "basis": "The same visa as Aruba's: the Kingdom of the Netherlands' Caribbean visa, for all six islands.",
+   "sources": [
+    {
+     "kind": "official",
+     "url": "https://netherlandsworldwide.nl/caribbean-visa/short-stay/apply-philippines",
+     "what": "NetherlandsWorldwide: one Caribbean visa for Aruba, Curaçao, Sint Maarten, Bonaire, Sint Eustatius and Saba"
+    }
+   ]
+  },
+  "BQ": {
+   "authority": "AW",
+   "basis": "The same visa as Aruba's: the Kingdom of the Netherlands' Caribbean visa, for all six islands.",
+   "sources": [
+    {
+     "kind": "official",
+     "url": "https://netherlandsworldwide.nl/caribbean-visa/short-stay/apply-philippines",
+     "what": "NetherlandsWorldwide: one Caribbean visa for Aruba, Curaçao, Sint Maarten, Bonaire, Sint Eustatius and Saba"
     }
    ]
   }

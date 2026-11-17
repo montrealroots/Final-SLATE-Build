@@ -113,7 +113,7 @@ journey that shows it there.
 | applyForPermit | action | src/engine/papers.ts | proven | work-permit (100 seeds) | permits +0.99; lateDays -3.53; spent +4725.5; quality.direction +4.25; overall +1.81 |
 | applyForRecordedPassport | action | src/engine/papers.ts | proven | recorded-passport (40 seeds) | passports +1; papersPaid +36.64; worth -36.64 |
 | applyForVisa | action | src/engine/papers.ts | proven | visitor-visa (30 seeds) | visas +1.133; attended +0.933; offers +1.4 |
-| moveTo | action | src/engine/papers.ts | proven | move-home (40 seeds) | livesInLondon -1; frenchAccounts +2; bankFees +31.19; overall -0.587; quality.direction -1.287; money -686084.44 |
+| moveTo | action | src/engine/papers.ts | proven | move-home (40 seeds) | livesInLondon -1; frenchAccounts +2; bankFees +31.19; overall -0.587; quality.direction -1.287; money -686082.579 |
 | addStage | action | src/engine/parts.ts | proven | add-stage (40 seeds) | stages +2; stageCast +2; performersCast +2; castRates +1578.75 |
 | removeStage | action | src/engine/parts.ts | proven | remove-stage (40 seeds) | stages -2; stageCast -2; performersCast -2; castRates -1590.75 |
 | putInOwnMoney | action | src/engine/personal.ts | proven | own-money-or-backer (40 seeds) | ownIn -74025; backerDeals +2; money -14617.441; moneyChange -14617.441; revenue -71334.575 |

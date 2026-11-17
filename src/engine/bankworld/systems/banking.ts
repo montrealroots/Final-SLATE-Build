@@ -114,7 +114,14 @@ export function openAt(sim: Simulation, person: Person, bank: Bank, balances: { 
 export function openOne(sim: Simulation, person: Person, bank: Bank, kind: 'checking' | 'savings', balance: Money): Account {
   const product = kind === 'checking' ? bank.current : bank.savings;
   const number = accountNumber(sim, person, bank, kind);
+  // An account at a bank whose money isn't the save's keeps the bank's (from November 17, 2026: until then every account
+  // opened after the first was kept in the save's, so a London life's Chase account held pounds, and a payment abroad
+  // into it was quoted and received in pounds). Only a new life's first accounts open with money in them, and those are
+  // at a bank in the save's currency.
+  const foreign = bank.currency !== saveCurrency(sim.universe);
+  if (foreign && balance !== 0) throw new Error(`An account at ${bank.name} opens in ${bank.currency} and can't open holding save money.`);
   return sim.openAccount({
+    ...(foreign ? { currency: bank.currency, held: 0 } : {}),
     id: sim.nextId('account'),
     kind,
     name: product.name,

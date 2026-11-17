@@ -27,7 +27,8 @@ describe('papers terms', () => {
     expect(permitTerms('GU', WORK.countries.GU.others!.route!).basis).toMatch(/^The same permit the United States issues, under the same law\. /);
     for (const [c, v] of Object.entries(t.visaAuthorities)) {
       expect(v.sources.length, c).toBeGreaterThan(0);
-      expect(visaTerms(c)).toMatchObject({ fee: visaTerms(v.authority).fee, estimate: null });
+      expect(visaTerms(c)).toMatchObject({ fee: visaTerms(v.authority).fee, estimate: visaTerms(v.authority).estimate });
+      expect(visaTerms(v.authority).estimate === null || visaTerms(v.authority).estimate?.only === 'days', c).toBe(true);
     }
     expect(visaTerms('JE').route).toBe(visaTerms('GB').route);
   });
@@ -37,7 +38,8 @@ describe('papers terms', () => {
       // A researched fee may be nothing: Belgium's short-term permit is free (from November 17, 2026).
       expect(r.fee, c).toBeGreaterThanOrEqual(0);
       expect(r.currency, c).toMatch(/^[A-Z]{3}$/);
-      for (const d of [r.days].flat()) expect(d, c).toBeGreaterThan(0);
+      // A record may leave out the decision time where no source gives it (from November 17, 2026): it's then estimated.
+      for (const d of [r.days ?? []].flat()) expect(d, c).toBeGreaterThan(0);
       expect(r.sources.length, c).toBeGreaterThan(0);
       for (const s of r.sources) {
         expect(['official', 'secondary'], c).toContain(s.kind);
@@ -48,7 +50,8 @@ describe('papers terms', () => {
   });
 
   it('gives every country a permit and a visa with a finite fee and time, and lets the estimates fall and never rise', () => {
-    const estimates: Record<string, string[]> = { permits: [], visas: [] };
+    // Fully estimated routes, and routes whose fee is researched but whose decision time is still estimated.
+    const estimates: Record<string, string[]> = { permits: [], visas: [], permitTimes: [], visaTimes: [] };
     for (const { code } of COUNTRIES) {
       if (!WORK.countries[code]) continue; // a place no one lives
       const p = permitTerms(code, WORK.countries[code].others?.route ?? 'Work permit');
@@ -56,17 +59,23 @@ describe('papers terms', () => {
       for (const t of [p, v]) {
         expect(Number.isFinite(t.fee.amount) && (t.fee.amount > 0 || (!t.estimate && t.fee.amount === 0)), `${code} ${t.route}`).toBe(true);
         expect(t.days, `${code} ${t.route}`).toBeGreaterThan(0);
-        if (t.estimate) expect(t.basis, code).toMatch(/^The game's estimate/);
+        if (t.estimate && !t.estimate.only) expect(t.basis, code).toMatch(/^The game's estimate/);
+        if (t.estimate?.only) expect(t.basis, code).toMatch(/How long it takes to decide is the game's estimate/);
       }
-      if (p.estimate) estimates.permits.push(code);
-      if (v.estimate) estimates.visas.push(code);
+      if (p.estimate) estimates[p.estimate.only ? 'permitTimes' : 'permits'].push(code);
+      if (v.estimate) estimates[v.estimate.only ? 'visaTimes' : 'visas'].push(code);
+      if (p.estimate?.only) expect(p.sources.length, code).toBeGreaterThan(0);
     }
     const file = 'docs/v10/papers-estimates.json';
-    const text = JSON.stringify({ counts: { permits: estimates.permits.length, visas: estimates.visas.length }, ...estimates }, null, 1) + '\n';
-    const before = JSON.parse(readFileSync(file, 'utf8')) as { counts: { permits: number; visas: number } };
+    const counts = Object.fromEntries(Object.entries(estimates).map(([k, v]) => [k, v.length]));
+    const text = JSON.stringify({ counts, ...estimates }, null, 1) + '\n';
+    const before = JSON.parse(readFileSync(file, 'utf8')) as { counts: Record<string, number> };
     if (process.env.SLATE_WRITE_AUDIT) writeFileSync(file, text);
+    // Neither the fully estimated routes nor every route with anything estimated may grow.
     expect(estimates.permits.length, 'more permits are estimated than before').toBeLessThanOrEqual(before.counts.permits);
     expect(estimates.visas.length, 'more visas are estimated than before').toBeLessThanOrEqual(before.counts.visas);
+    expect(estimates.permits.length + estimates.permitTimes.length, 'more permit times are estimated than before').toBeLessThanOrEqual(before.counts.permits + (before.counts.permitTimes ?? 0));
+    expect(estimates.visas.length + estimates.visaTimes.length, 'more visa times are estimated than before').toBeLessThanOrEqual(before.counts.visas + (before.counts.visaTimes ?? 0));
     expect(readFileSync(file, 'utf8'), `${file} is out of date: run with SLATE_WRITE_AUDIT=1`).toBe(text);
   });
 });

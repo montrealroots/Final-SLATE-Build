@@ -328,13 +328,43 @@ and the rest) with real grades filling the hiring lists.
     were rerun; they hash papers.ts, not the terms, so none read stale. All five reran proven, their results byte for
     byte the committed ones (they travel where no figure changed). `npm run check` passed (1,737 tests, build,
     budget); the papers and destinations journeys passed on desktop and phone (7 passed, 1 skipped as desktop-only).
-  - **Next batch (researched, not yet in the game: `docs/v10/papers-research/next-*.json`):** permits for Japan (¥15,000 visa from July 1, 2026, COE 18 days),
-    India ($200, 5 working days), South Africa ($55 at Washington, 7-10 business days), Hong Kong (HK$1,900, four
-    weeks), Singapore (S$330, ten business days), Turkey (13,538.90 lira, 30 days), Thailand (3,000 baht, 7-10 working
-    days); visas for Japan, India (e-Tourist $25), South Korea ($40), Vietnam ($25 e-visa), Thailand ($40). Found
-    without a decision time: Mexico's paid-activity visitor visa ($321 consular, LFD 2026), Korea's E-6 ($60),
-    Norway (NOK 6,300), Iceland (ISK 80,000), Kenya's Special Pass (KSh 15,000 a month). Hard: China (fees by
-    nationality), the Philippines (fees by post), Malaysia, Indonesia, Egypt (sources conflict).
+- That checkpoint merged as #114. Then (the owner: "Get to working on everything until it's perfectly completed"),
+  batch 2:
+  - A record may leave out the decision time where a source gives the fee but no time (`papers-terms.ts researched`):
+    the fee and its sources are shown, and the time is the middle of the fully researched routes near it, said as the
+    game's estimate (`estimate.only === 'days'`). Only fully researched routes feed an estimate. The queue counts these
+    apart (`permitTimes`, `visaTimes`), and neither total may rise.
+  - 22 permits and 27 visas researched (`docs/v9/COVERAGE.md` lists them), and 18 more territories on a shared or
+    sovereign's visa (the French overseas territories on France's two overseas visas, the Dutch Caribbean on Aruba's,
+    Andorra, San Marino, the Vatican, Åland, Svalbard).
+  - Queue: permits 200 -> 178 estimated (+7 fee only), visas 200 -> 155 (+14 fee only).
+  - Conflicting sources not yet recorded are listed in `docs/v10/papers-research/fees-without-times.md`.
+  - The international payment's quote is shown in a journey (`e2e/v9-abroad.spec.ts`): a British and American life
+    in London makes New York home, which opens a Chase account there and leaves Barclays holding the London one; the
+    money form quotes £1,000 from Barclays to Chase before Move It. Writing it found a bug: every account opened after
+    a life's first was kept in the save's money (`banking.ts openOne`), so that Chase account held pounds and the quote
+    said "Chase receives £957.50"; it now opens in its bank's money, and says "Chase receives $1,271.38 after its $15.00
+    fee". `tests/v9-fx.test.ts` holds it (mutation-checked). The proofs it made stale (savings, closing savings, both
+    move-money fields, switching bank, with move-home beside them) were rerun: all six proven, the feature ratchet at 0
+    unproven. `npm run check` passed (1,738 tests, build, budget); the papers, destinations, bank and abroad journeys
+    passed on desktop and phone (11 passed, 1 skipped as desktop-only).
+  - The stop-motion and creature materials stay the game's own: what's published is a $74 kit to a $5,000 custom
+    armature, and a creature from a home-made suit to a $1 million animatronic; a range that wide checks nothing.
+- That checkpoint went up as #115. Batch 3, the same day:
+  - 9 permits (4 full: Vietnam, Nepal, Taiwan, and Indonesia's decision time; 5 fee only: Ghana, Bahrain, the
+    Philippines' Special Work Permit, Ecuador, Serbia) and 33 visas (22 full, 11 fee only), listed in
+    `docs/v9/COVERAGE.md`. Saudi Arabia, Ethiopia and Egypt were researched again and left out: their sources still
+    conflict (a newer SAR 395, a reported $62 cut, $25 or $30).
+  - Queue: permits 178 -> 170 estimated (11 fee only), visas 155 -> 122 (25 fee only). Coverage: visas verified 96,
+    modeled 147; permits verified 64, modeled 181.
+  - `tests/v8-papers.test.ts`'s estimated visa example moved from Bangladesh (now researched) to Pakistan (fees by
+    nationality, so no record).
+  - The five papers proofs reran proven, byte for byte the committed ones. `npm run check` passed (1,738 tests,
+    build, budget); the papers and destinations journeys passed on desktop and phone (7 passed, 1 skipped).
+  - **Next:** what's left is mostly where sources conflict or only aggregators give a figure
+    (`docs/v10/papers-research/fees-without-times.md` lists each); the rest of Africa's, Latin America's and
+    Oceania's permits, whose fees are rarely published; China and Brazil, whose fees are each post's or nationality's.
+    Recording a figure only one aggregator gives would be inventing precision: those stay the game's estimate, said as one.
 Still the game's own figures: the stop-motion and creature materials and the broadcast edit (no published per-item price
 found).
 

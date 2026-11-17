@@ -506,7 +506,7 @@
  "verdict": "proven",
  "hashes": {
   "src/engine/bankworld/systems/bankmoves.ts": "fe1a9e4ce09d4b9c",
-  "src/engine/bankworld/systems/banking.ts": "7862b6922c3ce34a",
+  "src/engine/bankworld/systems/banking.ts": "f48fb62012eacaf4",
   "tests/proof/career.ts": "50bea06f19a02c5b"
  }
 }
