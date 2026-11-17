@@ -1,0 +1,5 @@
+place_id,name,region,population,market,verified_homes,dated_listings,shortfall_to_50,recorded_sales,rent_source,price_source
+gn:2411397,Georgetown,Ascension,5012,village,0,0,50,0,none,none
+gn:3370726,Edinburgh of the Seven Seas,Tristan da Cunha,2860,village,0,0,50,0,none,none
+gn:3370903,Jamestown,Saint Helena,637,village,0,0,50,0,none,none
+gn:3370936,Half Tree Hollow,Saint Helena,1034,village,0,0,50,0,none,none

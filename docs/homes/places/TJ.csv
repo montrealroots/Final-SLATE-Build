@@ -1,0 +1,103 @@
+place_id,name,region,population,market,verified_homes,dated_listings,shortfall_to_50,recorded_sales,rent_source,price_source
+gn:1220112,Yovon,Khatlon Province,17471,town,0,0,50,0,none,none
+gn:1220163,Hulbuk,Khatlon Province,21736,town,0,0,50,0,none,none
+gn:1220164,Vorukh,Sughd,3836,village,0,0,50,0,none,none
+gn:1220197,Varzob,Republican Subordination,2154,village,0,0,50,0,none,none
+gn:1220210,Vanj,Gorno-Badakhshan,2636,village,0,0,50,0,none,none
+gn:1220219,Vakhsh,Khatlon Province,15215,town,0,0,50,0,none,none
+gn:1220253,Istaravshan,Sughd,273500,city,0,0,50,0,none,none
+gn:1220324,Tavildara,Republican Subordination,6071,village,0,0,50,0,none,none
+gn:1220380,Tartiki,Khatlon Province,2342,village,0,0,50,0,none,none
+gn:1220401,Tagob,Republican Subordination,2565,village,0,0,50,0,none,none
+gn:1220416,Tajikobod,Republican Subordination,0,village,0,0,50,0,none,none
+gn:1220446,Sovet,Khatlon Province,8695,village,0,0,50,0,none,none
+gn:1220479,Shŭrobod,Khatlon Province,0,village,0,0,50,0,none,none
+gn:1220566,Shahrinav,Republican Subordination,5385,village,0,0,50,0,none,none
+gn:1220571,Shahriston,Sughd,22903,town,0,0,50,0,none,none
+gn:1220576,Shahritus,Khatlon Province,13042,town,0,0,50,0,none,none
+gn:1220628,Sarikhosor,Khatlon Province,5894,village,0,0,50,0,none,none
+gn:1220685,Rŭshon,Gorno-Badakhshan,4031,village,0,0,50,0,none,none
+gn:1220694,Roshtqal’a,Gorno-Badakhshan,0,village,0,0,50,0,none,none
+gn:1220701,Roghun,Republican Subordination,7731,village,0,0,50,0,none,none
+gn:1220747,Bokhtar,Khatlon Province,110800,city,0,0,50,0,none,none
+gn:1220750,Panj,Khatlon Province,8019,village,0,0,50,0,none,none
+gn:1220798,Panjakent,Sughd,35085,town,0,0,50,0,none,none
+gn:1220826,Farkhor,Khatlon Province,21736,town,0,0,50,0,none,none
+gn:1220853,Orzu,Khatlon Province,5988,village,0,0,50,0,none,none
+gn:1220855,Vahdat,Republican Subordination,45693,town,0,0,50,0,none,none
+gn:1220862,Ismoili Somoní,Khatlon Province,0,village,0,0,50,0,none,none
+gn:1220883,Obikiik,Khatlon Province,0,village,0,0,50,0,none,none
+gn:1220888,Obigarm,Republican Subordination,7400,village,0,0,50,0,none,none
+gn:1220905,Norak,Khatlon Province,18122,town,0,0,50,0,none,none
+gn:1220910,Panji Poyon,Khatlon Province,5303,village,0,0,50,0,none,none
+gn:1220920,Nijoní,Sughd,10350,town,0,0,50,0,none,none
+gn:1220936,Novobod,Republican Subordination,5352,village,0,0,50,0,none,none
+gn:1220962,Murghob,Gorno-Badakhshan,10815,town,0,0,50,0,none,none
+gn:1220981,Muchun,Sughd,27835,town,0,0,50,0,none,none
+gn:1220988,Moskva,Khatlon Province,0,village,0,0,50,0,none,none
+gn:1221089,Somoniyon,Republican Subordination,0,village,0,0,50,0,none,none
+gn:1221091,Mŭ’minobod,Khatlon Province,11955,town,0,0,50,0,none,none
+gn:1221135,Bokhtariyon,Khatlon Province,7900,village,0,0,50,0,none,none
+gn:1221136,Abdurahmoni Jomí,Khatlon Province,9943,village,0,0,50,0,none,none
+gn:1221194,Kŭlob,Khatlon Province,214700,city,0,0,50,0,none,none
+gn:1221250,Darband,Republican Subordination,1115,village,0,0,50,0,none,none
+gn:1221259,Kolkhozobod,Khatlon Province,18476,town,0,0,50,0,none,none
+gn:1221297,Kirov,Khatlon Province,7696,village,0,0,50,0,none,none
+gn:1221321,Khovaling,Khatlon Province,0,village,0,0,50,0,none,none
+gn:1221328,Khorugh,Gorno-Badakhshan,30500,town,0,0,50,0,none,none
+gn:1221344,Khodzha-Maston,Republican Subordination,9781,village,0,0,50,0,none,none
+gn:1221494,Karakenja,Republican Subordination,2899,village,0,0,50,0,none,none
+gn:1221549,Levakant,Khatlon Province,0,village,0,0,50,0,none,none
+gn:1221559,Qalaikhumb,Gorno-Badakhshan,1611,village,0,0,50,0,none,none
+gn:1221583,Qubodiyon,Khatlon Province,0,village,0,0,50,0,none,none
+gn:1221614,Ishqoshim,Gorno-Badakhshan,26000,town,0,0,50,0,none,none
+gn:1221714,Hisor,Republican Subordination,23978,town,0,0,50,0,none,none
+gn:1221740,Rasht,Republican Subordination,10771,town,0,0,50,0,none,none
+gn:1221748,Gharavŭtí,Khatlon Province,8474,village,0,0,50,0,none,none
+gn:1221758,Ghonchí,Sughd,0,village,0,0,50,0,none,none
+gn:1221774,Fayzobod,Republican Subordination,0,village,0,0,50,0,none,none
+gn:1221802,Vahdat,Republican Subordination,6400,village,0,0,50,0,none,none
+gn:1221808,Jilikŭl,Khatlon Province,5434,village,0,0,50,0,none,none
+gn:1221871,Dŭstí,Khatlon Province,8700,village,0,0,50,0,none,none
+gn:1221874,Dushanbe,Dushanbe,679400,large-city,0,0,50,0,none,none
+gn:1221965,Danghara,Khatlon Province,22824,town,0,0,50,0,none,none
+gn:1221970,Dalyoni Bolo,Sughd,23670,town,0,0,50,0,none,none
+gn:1221997,Chubek,Khatlon Province,19563,town,0,0,50,0,none,none
+gn:1222007,Chorbogh,Sughd,6357,village,0,0,50,0,none,none
+gn:1222009,Boshchorbogh,Khatlon Province,4237,village,0,0,50,0,none,none
+gn:1222085,Bŭstonqal’a,Khatlon Province,4900,village,0,0,50,0,none,none
+gn:1222107,Boshkengash,Dushanbe,23696,town,0,0,50,0,none,none
+gn:1222175,Zarhalol,Khatlon Province,30689,town,0,0,50,0,none,none
+gn:1222192,Baljuvon,Khatlon Province,0,village,0,0,50,0,none,none
+gn:1222222,Ayní,Sughd,2128,village,0,0,50,0,none,none
+gn:1222286,Amondara,Sughd,13380,town,0,0,50,0,none,none
+gn:1282601,Tursunzoda,Republican Subordination,37000,town,0,0,50,0,none,none
+gn:1346374,Roghun,Republican Subordination,0,village,0,0,50,0,none,none
+gn:1475483,Bahorí,Khatlon Province,0,village,0,0,50,0,none,none
+gn:1475852,Avzikent,Khatlon Province,10373,town,0,0,50,0,none,none
+gn:1514814,Zarxoq,Sughd,2216,village,0,0,50,0,none,none
+gn:1514815,Zafarobod,Sughd,0,village,0,0,50,0,none,none
+gn:1514829,Istiqlol,Sughd,17600,town,0,0,50,0,none,none
+gn:1514831,Shŭrob,Sughd,2900,village,0,0,50,0,none,none
+gn:1514839,Proletar,Sughd,16441,town,0,0,50,0,none,none
+gn:1514843,Palos,Sughd,3288,village,0,0,50,0,none,none
+gn:1514844,Pakhtakoron,Sughd,8220,village,0,0,50,0,none,none
+gn:1514852,Neftobod,Sughd,4603,village,0,0,50,0,none,none
+gn:1514856,Nov,Sughd,13833,town,0,0,50,0,none,none
+gn:1514870,Quruqsoy,Sughd,3400,village,0,0,50,0,none,none
+gn:1514877,Kim,Sughd,1600,village,0,0,50,0,none,none
+gn:1514879,Khujand,Sughd,191000,city,0,0,50,0,none,none
+gn:1514883,Qayroqqum,Sughd,49200,town,0,0,50,0,none,none
+gn:1514889,Konsoy,Sughd,6000,village,0,0,50,0,none,none
+gn:1514891,Konibodom,Sughd,211100,city,0,0,50,0,none,none
+gn:1514896,Isfara,Sughd,274000,city,0,0,50,0,none,none
+gn:1514900,Ghafurov,Sughd,0,village,0,0,50,0,none,none
+gn:1514913,Bŭston,Sughd,13043,town,0,0,50,0,none,none
+gn:1514921,Shaydon,Sughd,11705,town,0,0,50,0,none,none
+gn:1514925,Oltintopkan,Sughd,4823,village,0,0,50,0,none,none
+gn:1514929,Adrasmon,Sughd,13372,town,0,0,50,0,none,none
+gn:1538311,Buston,Sughd,36900,town,0,0,50,0,none,none
+gn:8217253,Mehron,Sughd,0,village,0,0,50,0,none,none
+gn:8416817,Moskovskiy,Khatlon Province,22100,town,0,0,50,0,none,none
+gn:13513025,Shhriston,Republican Subordination,4029,village,0,0,50,0,none,none
+gn:13580001,20-solagii Istiḳlolijati Toçikiston,Khatlon Province,8000,village,0,0,50,0,none,none

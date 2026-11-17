@@ -1,0 +1,227 @@
+place_id,name,region,population,market,verified_homes,dated_listings,shortfall_to_50,recorded_sales,rent_source,price_source
+gn:1185092,Thākurgaon,Rangpur Division,100442,city,0,0,50,0,none,none
+gn:1185095,Teknāf,Chittagong,30140,town,0,0,50,0,none,none
+gn:1185098,Tungi,Dhaka Division,337579,city,0,0,50,0,none,none
+gn:1185099,Sylhet,Sylhet Division,237000,city,0,0,50,0,none,none
+gn:1185100,Dohār,Dhaka Division,45543,town,0,0,50,0,none,none
+gn:1185105,Sunāmganj,Sylhet Division,74570,town,0,0,50,0,none,none
+gn:1185106,Jamālpur,Mymensingh Division,167900,city,0,0,50,0,none,none
+gn:1185107,Shibganj,Rajshahi Division,378701,city,0,0,50,0,none,none
+gn:1185108,Shibganj,Rajshahi Division,35961,town,0,0,50,0,none,none
+gn:1185111,Sātkhira,Khulna Division,128918,city,0,0,50,0,none,none
+gn:1185115,Sirajganj,Rajshahi Division,127481,city,0,0,50,0,none,none
+gn:1185116,Netrakona,Mymensingh Division,79016,town,0,0,50,0,none,none
+gn:1185117,Narsingdi,Dhaka Division,281080,city,0,0,50,0,none,none
+gn:1185120,Sandwīp,Chittagong,52152,town,0,0,50,0,none,none
+gn:1185121,Shāhzādpur,Rajshahi Division,102420,city,0,0,50,0,none,none
+gn:1185127,Rāmganj,Chittagong,55241,town,0,0,50,0,none,none
+gn:1185128,Rajshahi,Rajshahi Division,763580,large-city,0,0,50,0,none,none
+gn:1185133,Purbadhala,Mymensingh Division,0,village,0,0,50,0,none,none
+gn:1185138,Pirojpur,Barisal Division,54418,town,0,0,50,0,none,none
+gn:1185141,Panchagarh,Rangpur Division,48531,town,0,0,50,0,none,none
+gn:1185148,Patiya,Chittagong,51360,town,0,0,50,0,none,none
+gn:1185149,Parbatipur,Rangpur Division,48020,town,0,0,50,0,none,none
+gn:1185155,Narayanganj,Dhaka Division,223622,city,0,0,50,0,none,none
+gn:1185156,Nālchiti,Barisal Division,38703,town,0,0,50,0,none,none
+gn:1185159,Nāgarpur,Dhaka Division,238422,city,0,0,50,0,none,none
+gn:1185160,Nageswari,Rangpur Division,49425,town,0,0,50,0,none,none
+gn:1185162,Mymensingh,Mymensingh Division,225126,city,0,0,50,0,none,none
+gn:1185164,Muktāgācha,Mymensingh Division,24684,town,0,0,50,0,none,none
+gn:1185165,Mirzāpur,Dhaka Division,41137,town,0,0,50,0,none,none
+gn:1185166,Maulavi Bāzār,Sylhet Division,57441,town,0,0,50,0,none,none
+gn:1185167,Morrelgonj,Khulna Division,31647,town,0,0,50,0,none,none
+gn:1185171,Mehendiganj,Barisal Division,39424,town,0,0,50,0,none,none
+gn:1185173,Mathba,Barisal Division,29760,town,0,0,50,0,none,none
+gn:1185181,Lalmonirhat,Rangpur Division,65127,town,0,0,50,0,none,none
+gn:1185183,Lākshām,Chittagong,82290,town,0,0,50,0,none,none
+gn:1185186,Comilla,Chittagong,634654,large-city,0,0,50,0,none,none
+gn:1185188,Rangpur,Rangpur Division,1031388,large-city,0,0,50,0,none,none
+gn:1185191,Kushtia,Khulna Division,135724,city,0,0,50,0,none,none
+gn:1185199,Kālīganj,Khulna Division,45631,town,0,0,50,0,none,none
+gn:1185204,Jhingergācha,Khulna Division,41957,town,0,0,50,0,none,none
+gn:1185206,Joypur Hāt,Rajshahi Division,73068,town,0,0,50,0,none,none
+gn:1185207,Ishwardi,Rajshahi Division,81995,town,0,0,50,0,none,none
+gn:1185209,Habiganj,Sylhet Division,88760,town,0,0,50,0,none,none
+gn:1185210,Gaurnadi,Barisal Division,40519,town,0,0,50,0,none,none
+gn:1185218,Gafargaon,Mymensingh Division,34177,town,0,0,50,0,none,none
+gn:1185224,Feni,Chittagong,84028,town,0,0,50,0,none,none
+gn:1185236,Rāipur,Chittagong,64652,town,0,0,50,0,none,none
+gn:1185239,Sarankhola,Khulna Division,36470,town,0,0,50,0,none,none
+gn:1185240,Ramna Maidan,Dhaka Division,143677,city,0,0,50,0,none,none
+gn:1185241,Dhaka,Dhaka Division,10356500,large-city,0,0,50,0,none,none
+gn:1185247,Chilmāri,Rangpur Division,49736,town,0,0,50,0,none,none
+gn:1185249,Chhāgalnāiya,Chittagong,39335,town,0,0,50,0,none,none
+gn:1185251,Lālmohan,Barisal Division,42220,town,0,0,50,0,none,none
+gn:1185252,Khagrachhari,Chittagong,50364,town,0,0,50,0,none,none
+gn:1185254,Chhātak,Sylhet Division,39218,town,0,0,50,0,none,none
+gn:1185260,Bhātpāra Abhaynagar,Khulna Division,42653,town,0,0,50,0,none,none
+gn:1185262,Bherāmāra,Khulna Division,38159,town,0,0,50,0,none,none
+gn:1185263,Bhairab Bāzār,Dhaka Division,105457,city,0,0,50,0,none,none
+gn:1185270,Bāndarban,Chittagong,54450,town,0,0,50,0,none,none
+gn:1185272,Kālia,Khulna Division,40492,town,0,0,50,0,none,none
+gn:1185274,Baniachang,Sylhet Division,37807,town,0,0,50,0,none,none
+gn:1185276,Bājitpur,Dhaka Division,34560,town,0,0,50,0,none,none
+gn:1185281,Bagerhat,Khulna Division,266388,city,0,0,50,0,none,none
+gn:1185283,Badarganj,Rangpur Division,32600,town,0,0,50,0,none,none
+gn:1185287,Ajmiriganj,Sylhet Division,13487,town,0,0,50,0,none,none
+gn:1185293,Narail,Khulna Division,55112,town,0,0,50,0,none,none
+gn:1185920,Tungipara,Dhaka Division,114482,city,0,0,50,0,none,none
+gn:1185999,Tola Nurpur,Khulna Division,5783,village,0,0,50,0,none,none
+gn:1186765,Shyāmnagar,Khulna Division,1709,village,0,0,50,0,none,none
+gn:1186869,Surjya Narayanpur,Dhaka Division,4537,village,0,0,50,0,none,none
+gn:1187530,Sonārgaon,Dhaka Division,130000,city,0,0,50,0,none,none
+gn:1187805,Singārbīl,Chittagong,12917,town,0,0,50,0,none,none
+gn:1188204,Shāhbāzpur Town,Chittagong,29757,town,0,0,50,0,none,none
+gn:1188215,Shāhānpur,Khulna Division,1106,village,0,0,50,0,none,none
+gn:1188569,Sarishābāri,Mymensingh Division,81325,town,0,0,50,0,none,none
+gn:1188692,Sāphāisri,Dhaka Division,3472,village,0,0,50,0,none,none
+gn:1188741,Sāntala,Khulna Division,2487,village,0,0,50,0,none,none
+gn:1188852,Samonta Bazar,Khulna Division,10000,town,0,0,50,0,none,none
+gn:1189056,Sakhipur,Dhaka Division,40869,town,0,0,50,0,none,none
+gn:1189607,Rāynanda,Dhaka Division,1273,village,0,0,50,0,none,none
+gn:1189638,Raojān,Chittagong,25708,town,0,0,50,0,none,none
+gn:1189640,Rāutkona,Dhaka Division,2592,village,0,0,50,0,none,none
+gn:1190038,Rāmkrishnapur,Khulna Division,1756,village,0,0,50,0,none,none
+gn:1190121,Rāmdāsdi,Chittagong,10895,town,0,0,50,0,none,none
+gn:1190458,Rahelāpur,Khulna Division,1427,village,0,0,50,0,none,none
+gn:1191139,Phultala,Khulna Division,37985,town,0,0,50,0,none,none
+gn:1191152,Phuljhuri,Barisal Division,13205,town,0,0,50,0,none,none
+gn:1191368,Pālang,Dhaka Division,67652,town,0,0,50,0,none,none
+gn:1191658,Pābur,Dhaka Division,4684,village,0,0,50,0,none,none
+gn:1192366,Pār Naogaon,Rajshahi Division,192464,city,0,0,50,0,none,none
+gn:1193058,Nawāb Char,Dhaka Division,11609,town,0,0,50,0,none,none
+gn:1193247,Narayanpur,Chittagong,1086,village,0,0,50,0,none,none
+gn:1193534,Nalua,Khulna Division,9270,village,0,0,50,0,none,none
+gn:1193745,Nagar Naluākot,Dhaka Division,273000,city,0,0,50,0,none,none
+gn:1193823,Nabīnagar,Chittagong,31671,town,0,0,50,0,none,none
+gn:1193946,Ramnagar,Dhaka Division,3000,village,0,0,50,0,none,none
+gn:1194041,Mohammadpur,Rajshahi Division,527571,large-city,0,0,50,0,none,none
+gn:1194575,Mātuail,Dhaka Division,34310,town,0,0,50,0,none,none
+gn:1195434,Maijdi,Chittagong,132185,city,0,0,50,0,none,none
+gn:1196287,Lakshmipur,Chittagong,7334,village,0,0,50,0,none,none
+gn:1196292,Lakshmīpur,Chittagong,61703,town,0,0,50,0,none,none
+gn:1196868,Krishnapur,Mymensingh Division,3155,village,0,0,50,0,none,none
+gn:1196961,Kotrabad,Chittagong,2216,village,0,0,50,0,none,none
+gn:1197137,Kismat Rājāpur,Khulna Division,1993,village,0,0,50,0,none,none
+gn:1197342,Khojārhāt,Khulna Division,2099,village,0,0,50,0,none,none
+gn:1197352,Khudādia,Dhaka Division,4111,village,0,0,50,0,none,none
+gn:1197895,Kesabpur,Khulna Division,30926,town,0,0,50,0,none,none
+gn:1198030,Kāyetkhāli,Khulna Division,1023,village,0,0,50,0,none,none
+gn:1198268,Kashimpur,Khulna Division,5054,village,0,0,50,0,none,none
+gn:1198689,Kardania,Dhaka Division,1966,village,0,0,50,0,none,none
+gn:1199503,Kafrul,Dhaka Division,339734,city,0,0,50,0,none,none
+gn:1199691,Junia,Dhaka Division,2182,village,0,0,50,0,none,none
+gn:1200109,Gazipur,Dhaka Division,2674697,large-city,0,0,50,0,none,none
+gn:1200303,Jāmirdia,Mymensingh Division,78893,town,0,0,50,0,none,none
+gn:1200474,Jahedpur,Sylhet Division,3000,village,0,0,50,0,none,none
+gn:1200738,Indurkani,Barisal Division,1350,village,0,0,50,0,none,none
+gn:1200863,Ichhāli,Khulna Division,1912,village,0,0,50,0,none,none
+gn:1201082,Hatalia,Barisal Division,3542,village,0,0,50,0,none,none
+gn:1201285,Hashimpur,Khulna Division,3175,village,0,0,50,0,none,none
+gn:1201753,Hājīganj,Chittagong,44343,town,0,0,50,0,none,none
+gn:1201792,Habirbāri,Mymensingh Division,64720,town,0,0,50,0,none,none
+gn:1202120,Gopālganj,Dhaka Division,51346,town,0,0,50,0,none,none
+gn:1202570,Ghona,Khulna Division,1282,village,0,0,50,0,none,none
+gn:1203344,Farīdpur,Dhaka Division,112187,city,0,0,50,0,none,none
+gn:1203605,Dasyu Nārāyanpur,Dhaka Division,2524,village,0,0,50,0,none,none
+gn:1203762,Dukuria,Dhaka Division,37894,town,0,0,50,0,none,none
+gn:1203878,Dohazāri,Chittagong,40147,town,0,0,50,0,none,none
+gn:1203891,Dinajpur,Rangpur Division,206234,city,0,0,50,0,none,none
+gn:1203914,Dihi Kanejpur,Khulna Division,1066,village,0,0,50,0,none,none
+gn:1204868,Daulatdihi,Khulna Division,3986,village,0,0,50,0,none,none
+gn:1205399,Dakshin Māgura,Khulna Division,1522,village,0,0,50,0,none,none
+gn:1205481,Uttar Char Fasson,Khulna Division,48305,town,0,0,50,0,none,none
+gn:1205540,Dakshinpāra,Chittagong,4128,village,0,0,50,0,none,none
+gn:1205566,Dākātia,Khulna Division,3535,village,0,0,50,0,none,none
+gn:1205599,Dahārpāra,Khulna Division,2738,village,0,0,50,0,none,none
+gn:1205733,Chattogram,Chittagong,3920222,large-city,0,0,50,0,none,none
+gn:1206720,Uttar Char Lakshmi,Barisal Division,1420,village,0,0,50,0,none,none
+gn:1207047,Char Bhadrāsan,Dhaka Division,34423,town,0,0,50,0,none,none
+gn:1207144,Charāmaddi,Barisal Division,18122,town,0,0,50,0,none,none
+gn:1207337,Chāndpur,Chittagong,212203,city,0,0,50,0,none,none
+gn:1208011,Burirchar,Barisal Division,29542,town,0,0,50,0,none,none
+gn:1208731,Bijaynagar,Khulna Division,3120,village,0,0,50,0,none,none
+gn:1209106,Bhatara,Dhaka Division,324300,city,0,0,50,0,none,none
+gn:1209562,Bera,Rajshahi Division,39604,town,0,0,50,0,none,none
+gn:1210038,Bārun,Dhaka Division,5045,village,0,0,50,0,none,none
+gn:1210324,Nachnapāra,Khulna Division,12484,town,0,0,50,0,none,none
+gn:1210426,Barajona,Dhaka Division,1636,village,0,0,50,0,none,none
+gn:1210565,Burhānuddin,Barisal Division,45670,town,0,0,50,0,none,none
+gn:1211115,Bānār Hāola,Dhaka Division,7675,village,0,0,50,0,none,none
+gn:1211255,Ballabhpur,Mymensingh Division,1050,village,0,0,50,0,none,none
+gn:1212221,Ayla Patakata,Barisal Division,19782,town,0,0,50,0,none,none
+gn:1212324,Ātgāon,Rangpur Division,4654,village,0,0,50,0,none,none
+gn:1212405,Ashuganj City,Chittagong,210356,city,0,0,50,0,none,none
+gn:1212445,Āsānnagar,Khulna Division,2774,village,0,0,50,0,none,none
+gn:1212479,Arpāra,Khulna Division,1825,village,0,0,50,0,none,none
+gn:1336133,Sātkania,Chittagong,52005,town,0,0,50,0,none,none
+gn:1336134,Cox’s Bāzār,Chittagong,253788,city,0,0,50,0,none,none
+gn:1336135,Khulna,Khulna Division,1500689,large-city,0,0,50,0,none,none
+gn:1336136,Bhola,Barisal Division,99079,town,0,0,50,0,none,none
+gn:1336137,Barishal,Barisal Division,202242,city,0,0,50,0,none,none
+gn:1336139,Rangamati,Chittagong,106069,city,0,0,50,0,none,none
+gn:1336140,Jessore,Khulna Division,243987,city,0,0,50,0,none,none
+gn:1336142,Brāhmanbāria,Chittagong,279485,city,0,0,50,0,none,none
+gn:1336143,Pābna,Rajshahi Division,186781,city,0,0,50,0,none,none
+gn:1336144,Tangail,Dhaka Division,180144,city,0,0,50,0,none,none
+gn:1337233,Bogura,Rajshahi Division,421858,city,0,0,50,0,none,none
+gn:1337239,Pīrgaaj,Rangpur Division,34606,town,0,0,50,0,none,none
+gn:1337240,Nawābganj,Rajshahi Division,201030,city,0,0,50,0,none,none
+gn:1337245,Madaripur,Dhaka Division,84789,town,0,0,50,0,none,none
+gn:1337248,Sherpur,Mymensingh Division,107419,city,0,0,50,0,none,none
+gn:1337249,Kishorganj,Dhaka Division,90690,town,0,0,50,0,none,none
+gn:1348441,Mānikganj,Dhaka Division,71698,town,0,0,50,0,none,none
+gn:1349452,Savar,Dhaka Division,379115,city,0,0,50,0,none,none
+gn:1462674,Hāthazāri,Chittagong,498179,city,0,0,50,0,none,none
+gn:1462681,Manikchari,Chittagong,24813,town,0,0,50,0,none,none
+gn:1477498,Bhāndāria,Barisal Division,30219,town,0,0,50,0,none,none
+gn:6414184,Bibir Hat,Chittagong,89030,town,0,0,50,0,none,none
+gn:6415294,Lāma,Chittagong,22648,town,0,0,50,0,none,none
+gn:6545349,Saidpur,Rangpur Division,199422,city,0,0,50,0,none,none
+gn:7475837,Natun Pallānpāra,Chittagong,7142,village,0,0,50,0,none,none
+gn:7475865,Mahishkhālipāra,Chittagong,7063,village,0,0,50,0,none,none
+gn:7475871,Godārbīl,Chittagong,5819,village,0,0,50,0,none,none
+gn:7475889,Taluker Char Doani,Khulna Division,24563,town,0,0,50,0,none,none
+gn:7476154,Mathapanichara,Chittagong,4624,village,0,0,50,0,none,none
+gn:7476228,Nāzirpāra,Chittagong,3900,village,0,0,50,0,none,none
+gn:7476237,Natona,Barisal Division,19705,town,0,0,50,0,none,none
+gn:7476411,Acharbania,Chittagong,1659,village,0,0,50,0,none,none
+gn:7476446,Dailpāra,Chittagong,1493,village,0,0,50,0,none,none
+gn:7478839,Manoharpur,Khulna Division,1218,village,0,0,50,0,none,none
+gn:7483743,Puthia,Rajshahi Division,159406,city,0,0,50,0,none,none
+gn:7483813,Natore,Rajshahi Division,369138,city,0,0,50,0,none,none
+gn:7484099,Ujalpur,Khulna Division,4548,village,0,0,50,0,none,none
+gn:7484878,Nowlamary,Khulna Division,3500,village,0,0,50,0,none,none
+gn:7485692,Char Para,Khulna Division,1471,village,0,0,50,0,none,none
+gn:7487966,Baragaon,Rangpur Division,1229,village,0,0,50,0,none,none
+gn:7488270,Biral,Rangpur Division,13848,town,0,0,50,0,none,none
+gn:7646709,Srimangal,Sylhet Division,23332,town,0,0,50,0,none,none
+gn:7646711,Patuakhali,Barisal Division,65000,town,0,0,50,0,none,none
+gn:7646714,Nilphamari,Rangpur Division,0,village,0,0,50,0,none,none
+gn:7649230,Magura,Khulna Division,0,village,0,0,50,0,none,none
+gn:7683974,Dhanmondi,Dhaka Division,54210,town,0,0,50,0,none,none
+gn:7696679,Pallabi,Dhaka Division,597574,large-city,0,0,50,0,none,none
+gn:7701354,Azimpur,Dhaka Division,96641,town,0,0,50,0,none,none
+gn:7733115,Demra,Dhaka Division,278000,city,0,0,50,0,none,none
+gn:7921384,Gaibandha,Rangpur Division,0,village,0,0,50,0,none,none
+gn:7926419,Paotana Hat,Rangpur Division,45911,town,0,0,50,0,none,none
+gn:8299875,Karnaphuli,Chittagong,203697,city,0,0,50,0,none,none
+gn:8355758,Lakshmipur,Khulna Division,4457,village,0,0,50,0,none,none
+gn:8430421,Kapasia,Dhaka Division,4137,village,0,0,50,0,none,none
+gn:8740356,Bhanga,Dhaka Division,43202,town,0,0,50,0,none,none
+gn:9171969,Kaliakair,Dhaka Division,245121,city,0,0,50,0,none,none
+gn:9283213,Mahasthangarh,Rajshahi Division,2200,village,0,0,50,0,none,none
+gn:9794295,Green Model Town,Dhaka Division,10337,town,0,0,50,0,none,none
+gn:9827976,Paltan,Dhaka Division,184492,city,0,0,50,0,none,none
+gn:11395976,Mirpur Model Thana,Dhaka Division,546503,large-city,0,0,50,0,none,none
+gn:11609634,Singair,Dhaka Division,6000,village,0,0,50,0,none,none
+gn:11609980,Khanbaniara,Dhaka Division,5000,village,0,0,50,0,none,none
+gn:11745960,Sayani,Dhaka Division,1500,village,0,0,50,0,none,none
+gn:11876505,Gulshan,Dhaka Division,110213,city,0,0,50,0,none,none
+gn:13589478,Motijheel,Dhaka Division,202308,city,0,0,50,0,none,none
+gn:13715450,Jessore Cantonment,Khulna Division,18872,town,0,0,50,0,none,none
+gn:13731759,Kutubpur,Mymensingh Division,2107,village,0,0,50,0,none,none
+gn:13731760,Kalyanpur,Mymensingh Division,1950,village,0,0,50,0,none,none
+gn:13731761,Muslimpur,Mymensingh Division,1409,village,0,0,50,0,none,none
+gn:13731762,Zaherpur,Mymensingh Division,1186,village,0,0,50,0,none,none
+gn:13731763,Nazirpur,Mymensingh Division,1029,village,0,0,50,0,none,none

@@ -1,0 +1,221 @@
+place_id,name,region,population,market,verified_homes,dated_listings,shortfall_to_50,recorded_sales,rent_source,price_source
+gn:4562483,Aceitunas,Moca,1688,village,0,0,50,0,none,none
+gn:4562485,Adjuntas,Adjuntas,5080,village,0,0,50,0,none,none
+gn:4562502,Aguada,Aguada,4040,village,0,0,50,0,none,none
+gn:4562506,Aguadilla,Aguadilla,16073,town,0,0,50,0,none,none
+gn:4562513,Aguas Buenas,Aguas Buenas,4576,village,0,0,50,0,none,none
+gn:4562517,Aguas Claras,Ceiba,3499,village,0,0,50,0,none,none
+gn:4562524,Aguilita,Juana Díaz,4922,village,0,0,50,0,none,none
+gn:4562529,Aibonito,Aibonito,8947,village,0,0,50,0,none,none
+gn:4562600,Añasco,Añasco,6136,village,0,0,50,0,none,none
+gn:4562615,Animas,Arecibo,1450,village,0,0,50,0,none,none
+gn:4562623,Antón Ruiz,Humacao,1764,village,0,0,50,0,none,none
+gn:4562635,Arecibo,Arecibo,87754,town,0,0,50,0,none,none
+gn:4562681,Arroyo,Arroyo,7520,village,0,0,50,0,none,none
+gn:4562705,Bairoa,Caguas,2365,village,0,0,50,0,none,none
+gn:4562709,Bajadero,Arecibo,3877,village,0,0,50,0,none,none
+gn:4562710,Bajandas,Humacao,1418,village,0,0,50,0,none,none
+gn:4562765,Barahona,Morovis,2632,village,0,0,50,0,none,none
+gn:4562768,Barceloneta,Barceloneta,22322,town,0,0,50,0,none,none
+gn:4562778,Barranquitas,Barranquitas,3021,village,0,0,50,0,none,none
+gn:4562812,Bartolo,Río Grande,1260,village,0,0,50,0,none,none
+gn:4562831,Bayamón,Bayamón,203499,city,0,0,50,0,none,none
+gn:4562832,Bayamon,Cidra,1699,village,0,0,50,0,none,none
+gn:4562860,Benitez,Canóvanas,1334,village,0,0,50,0,none,none
+gn:4562903,Boquerón,Cabo Rojo,2017,village,0,0,50,0,none,none
+gn:4562905,Boqueron,Las Piedras,1218,village,0,0,50,0,none,none
+gn:4562955,Brenas,Vega Alta,2104,village,0,0,50,0,none,none
+gn:4562972,Buena Vista,Arroyo,2026,village,0,0,50,0,none,none
+gn:4562983,Bufalo,Barceloneta,1108,village,0,0,50,0,none,none
+gn:4562989,Caban,Aguadilla,3959,village,0,0,50,0,none,none
+gn:4562996,Cabo Rojo,Cabo Rojo,10839,town,0,0,50,0,none,none
+gn:4563003,Cacao,Quebradillas,2068,village,0,0,50,0,none,none
+gn:4563008,Caguas,Caguas,86804,town,0,0,50,0,none,none
+gn:4563053,Campanilla,Toa Baja,7757,village,0,0,50,0,none,none
+gn:4563059,Campo Rico,Canóvanas,3218,village,0,0,50,0,none,none
+gn:4563064,Camuy,Camuy,4240,village,0,0,50,0,none,none
+gn:4563122,Candelaria,Toa Baja,17631,town,0,0,50,0,none,none
+gn:4563123,Candelaria Arenas,Toa Baja,5854,village,0,0,50,0,none,none
+gn:4563124,Candelero Arriba,Humacao,1346,village,0,0,50,0,none,none
+gn:4563168,Canovanas,Canóvanas,8437,village,0,0,50,0,none,none
+gn:4563220,Capitanejo,Juana Díaz,3209,village,0,0,50,0,none,none
+gn:4563243,Carolina,Carolina,170404,city,0,0,50,0,none,none
+gn:4563249,Carrizales,Hatillo,2556,village,0,0,50,0,none,none
+gn:4563298,Cataño,Cataño,28093,town,0,0,50,0,none,none
+gn:4563308,Cayey,Cayey,18494,town,0,0,50,0,none,none
+gn:4563376,Cayuco,Utuado,1284,village,0,0,50,0,none,none
+gn:4563378,Ceiba,Ceiba,6277,village,0,0,50,0,none,none
+gn:4563379,Ceiba,Vega Alta,6576,village,0,0,50,0,none,none
+gn:4563382,Celada,Gurabo,4435,village,0,0,50,0,none,none
+gn:4563411,Central Aguirre,Salinas,1588,village,0,0,50,0,none,none
+gn:4563773,Ciales,Ciales,3256,village,0,0,50,0,none,none
+gn:4563777,Cidra,Cidra,5067,village,0,0,50,0,none,none
+gn:4563811,Coamo,Coamo,11940,town,0,0,50,0,none,none
+gn:4563816,Coco,Salinas,5803,village,0,0,50,0,none,none
+gn:4563919,Comerío,Comerío,4649,village,0,0,50,0,none,none
+gn:4563939,Comunas,Yabucoa,2027,village,0,0,50,0,none,none
+gn:4563988,Coquí,Salinas,3590,village,0,0,50,0,none,none
+gn:4563990,Corazón,Guayama,2925,village,0,0,50,0,none,none
+gn:4563994,Corcovado,Hatillo,1527,village,0,0,50,0,none,none
+gn:4564003,Corozal,Corozal,11297,town,0,0,50,0,none,none
+gn:4564026,Coto Laurel,Ponce,3606,village,0,0,50,0,none,none
+gn:4564028,Coto Norte,Vega Baja,1381,village,0,0,50,0,none,none
+gn:4564070,Culebra,Culebra,1486,village,0,0,50,0,none,none
+gn:4564085,Daguao,Naguabo,1488,village,0,0,50,0,none,none
+gn:4564133,Dorado,Dorado,13117,town,0,0,50,0,none,none
+gn:4564149,Duque,Naguabo,1529,village,0,0,50,0,none,none
+gn:4564206,El Mangó,Juncos,1979,village,0,0,50,0,none,none
+gn:4564214,El Negro,Yabucoa,1656,village,0,0,50,0,none,none
+gn:4564216,El Ojo,Santa Isabel,1713,village,0,0,50,0,none,none
+gn:4564253,Eleanor Roosevelt,San Juan,5075,village,0,0,50,0,none,none
+gn:4564256,Emajagua,Maunabo,3099,village,0,0,50,0,none,none
+gn:4564861,Esperanza,Vieques,1092,village,0,0,50,0,none,none
+gn:4564862,Espino,Añasco,1422,village,0,0,50,0,none,none
+gn:4564901,Estancias de Florida,Florida,5972,village,0,0,50,0,none,none
+gn:4564946,Fajardo,Fajardo,32124,town,0,0,50,0,none,none
+gn:4564991,Florida,Florida,5652,village,0,0,50,0,none,none
+gn:4565018,Franquez,Morovis,2021,village,0,0,50,0,none,none
+gn:4565031,Fuig,Guánica,1204,village,0,0,50,0,none,none
+gn:4565032,G. L. Garcia,Cayey,1798,village,0,0,50,0,none,none
+gn:4565033,Galateo,Toa Alta,2705,village,0,0,50,0,none,none
+gn:4565049,Garrochales,Barceloneta,1208,village,0,0,50,0,none,none
+gn:4565090,Guánica,Guánica,9224,village,0,0,50,0,none,none
+gn:4565101,Guayabal,Juana Díaz,2377,village,0,0,50,0,none,none
+gn:4565105,Guayama,Guayama,21575,town,0,0,50,0,none,none
+gn:4565111,Guayanilla,Guayanilla,5213,village,0,0,50,0,none,none
+gn:4565119,Guaynabo,Guaynabo,81360,town,0,0,50,0,none,none
+gn:4565125,Gurabo,Gurabo,8973,village,0,0,50,0,none,none
+gn:4565130,H. Rivera Colon,Toa Alta,2379,village,0,0,50,0,none,none
+gn:4565346,Hatillo,Hatillo,5622,village,0,0,50,0,none,none
+gn:4565353,Hato Candal,Río Grande,2453,village,0,0,50,0,none,none
+gn:4565380,Hormigueros,Hormigueros,11934,town,0,0,50,0,none,none
+gn:4565540,Imbery,Barceloneta,3021,village,0,0,50,0,none,none
+gn:4565544,Indios,Guayanilla,1739,village,0,0,50,0,none,none
+gn:4565551,Ingenio,Toa Baja,5664,village,0,0,50,0,none,none
+gn:4565564,Humacao,Humacao,20387,town,0,0,50,0,none,none
+gn:4565575,Isabel Segunda,Vieques,9301,village,0,0,50,0,none,none
+gn:4565577,Isabela,Isabela,12505,town,0,0,50,0,none,none
+gn:4565621,Jagual,San Lorenzo,1402,village,0,0,50,0,none,none
+gn:4565676,Jauca,Santa Isabel,1838,village,0,0,50,0,none,none
+gn:4565679,Jayuya,Jayuya,3587,village,0,0,50,0,none,none
+gn:4565689,Jobos,Guayama,3475,village,0,0,50,0,none,none
+gn:4565712,Juana Díaz,Juana Díaz,9427,village,0,0,50,0,none,none
+gn:4565717,Juncal,San Sebastián,1155,village,0,0,50,0,none,none
+gn:4565718,Juncos,Juncos,8905,village,0,0,50,0,none,none
+gn:4565731,La Alianza,Arecibo,2139,village,0,0,50,0,none,none
+gn:4565755,La Dolores,Río Grande,3534,village,0,0,50,0,none,none
+gn:4565760,La Fermina,Las Piedras,3177,village,0,0,50,0,none,none
+gn:4565780,La Luisa,Manatí,2887,village,0,0,50,0,none,none
+gn:4565796,La Parguera,Lajas,1141,village,0,0,50,0,none,none
+gn:4565804,La Playa,Añasco,2139,village,0,0,50,0,none,none
+gn:4565807,La Plena,Salinas,1036,village,0,0,50,0,none,none
+gn:4565898,Lajas,Lajas,5255,village,0,0,50,0,none,none
+gn:4565904,Lamboglia,Patillas,1121,village,0,0,50,0,none,none
+gn:4565908,Lares,Lares,7184,village,0,0,50,0,none,none
+gn:4565956,Las Marias,Añasco,1823,village,0,0,50,0,none,none
+gn:4565958,Las Marías,Las Marías,1031,village,0,0,50,0,none,none
+gn:4565972,Las Ochenta,Salinas,1199,village,0,0,50,0,none,none
+gn:4565973,Las Ollas,Santa Isabel,1949,village,0,0,50,0,none,none
+gn:4565980,Las Piedras,Las Piedras,6655,village,0,0,50,0,none,none
+gn:4566002,Levittown,Toa Baja,29785,town,0,0,50,0,none,none
+gn:4566004,Liborio Negron Torres,Sabana Grande,1303,village,0,0,50,0,none,none
+gn:4566021,Lluveras,Sabana Grande,2005,village,0,0,50,0,none,none
+gn:4566022,Loíza,Loíza,4311,village,0,0,50,0,none,none
+gn:4566068,Los Llanos,Coamo,2301,village,0,0,50,0,none,none
+gn:4566096,Luis Llorens Torres,Juana Díaz,3328,village,0,0,50,0,none,none
+gn:4566098,Luis M. Cintron,Fajardo,2634,village,0,0,50,0,none,none
+gn:4566103,Luquillo,Luquillo,8326,village,0,0,50,0,none,none
+gn:4566110,Luyando,Aguada,3553,village,0,0,50,0,none,none
+gn:4566119,Magas Arriba,Guayanilla,1063,village,0,0,50,0,none,none
+gn:4566137,Manatí,Manatí,16092,town,0,0,50,0,none,none
+gn:4566171,Maria Antonia,Guánica,1479,village,0,0,50,0,none,none
+gn:4566177,Mariano Colón,Coamo,2387,village,0,0,50,0,none,none
+gn:4566178,Maricao,Maricao,1172,village,0,0,50,0,none,none
+gn:4566198,Martorell,Yabucoa,2884,village,0,0,50,0,none,none
+gn:4566208,Maunabo,Maunabo,2154,village,0,0,50,0,none,none
+gn:4566267,Miranda,Vega Baja,2057,village,0,0,50,0,none,none
+gn:4566270,Moca,Moca,4964,village,0,0,50,0,none,none
+gn:4566285,Monserrate,Vega Baja,2756,village,0,0,50,0,none,none
+gn:4566305,Monte Grande,Cabo Rojo,1817,village,0,0,50,0,none,none
+gn:4566330,Mora,Isabela,1857,village,0,0,50,0,none,none
+gn:4566333,Morovis,Morovis,2414,village,0,0,50,0,none,none
+gn:4566346,Mucarabones,Toa Alta,1690,village,0,0,50,0,none,none
+gn:4566385,Mayagüez,Mayagüez,73077,town,0,0,50,0,none,none
+gn:4566396,Naguabo,Naguabo,4643,village,0,0,50,0,none,none
+gn:4566402,Naranjito,Naranjito,2005,village,0,0,50,0,none,none
+gn:4566447,Olimpo,Guayama,2493,village,0,0,50,0,none,none
+gn:4566454,Orocovis,Orocovis,944,village,0,0,50,0,none,none
+gn:4566470,Pájaros,Toa Alta,9466,village,0,0,50,0,none,none
+gn:4566475,Palmarejo,Coamo,1087,village,0,0,50,0,none,none
+gn:4566477,Palmarejo,Lajas,1169,village,0,0,50,0,none,none
+gn:4566481,Palmas,Arroyo,2829,village,0,0,50,0,none,none
+gn:4566485,Palmer,Río Grande,1205,village,0,0,50,0,none,none
+gn:4566492,Palo Seco,Maunabo,1152,village,0,0,50,0,none,none
+gn:4566497,Palomas,Comerío,1742,village,0,0,50,0,none,none
+gn:4566498,Palomas,Yauco,2321,village,0,0,50,0,none,none
+gn:4566509,Parcelas La Milagrosa,Cidra,1344,village,0,0,50,0,none,none
+gn:4566512,Parcelas Nuevas,Cidra,1628,village,0,0,50,0,none,none
+gn:4566513,Parcelas Peñuelas,Santa Isabel,1132,village,0,0,50,0,none,none
+gn:4566650,Pastos,Aibonito,1528,village,0,0,50,0,none,none
+gn:4566652,Patillas,Patillas,4247,village,0,0,50,0,none,none
+gn:4566674,Peña Pobre,Naguabo,1024,village,0,0,50,0,none,none
+gn:4566687,Peñuelas,Peñuelas,6847,village,0,0,50,0,none,none
+gn:4566723,Piedra Gorda,Camuy,1927,village,0,0,50,0,none,none
+gn:4566767,Playa Fortuna,Luquillo,2037,village,0,0,50,0,none,none
+gn:4566813,Playita,Yabucoa,2192,village,0,0,50,0,none,none
+gn:4566814,Playita Cortada,Santa Isabel,1677,village,0,0,50,0,none,none
+gn:4566877,Pole Ojea,Cabo Rojo,1829,village,0,0,50,0,none,none
+gn:4566880,Ponce,Ponce,137491,city,0,0,50,0,none,none
+gn:4566900,Potala Pastillo,Juana Díaz,3819,village,0,0,50,0,none,none
+gn:4566913,Pueblito del Rio,Las Piedras,1481,village,0,0,50,0,none,none
+gn:4566955,Puerto Real,Cabo Rojo,6166,village,0,0,50,0,none,none
+gn:4566992,Punta Santiago,Humacao,5803,village,0,0,50,0,none,none
+gn:4566997,Quebrada,Camuy,1130,village,0,0,50,0,none,none
+gn:4567552,Quebradillas,Quebradillas,5620,village,0,0,50,0,none,none
+gn:4567573,Rafael Capo,Hatillo,1863,village,0,0,50,0,none,none
+gn:4567574,Rafael Gonzalez,Hatillo,2325,village,0,0,50,0,none,none
+gn:4567575,Rafael Hernandez,Aguadilla,1516,village,0,0,50,0,none,none
+gn:4567586,Ramos,Luquillo,2004,village,0,0,50,0,none,none
+gn:4567723,Rincón,Rincón,1499,village,0,0,50,0,none,none
+gn:4567745,Río Blanco,Naguabo,1406,village,0,0,50,0,none,none
+gn:4567769,Río Cañas Abajo,Juana Díaz,1185,village,0,0,50,0,none,none
+gn:4567817,Río Grande,Río Grande,13467,town,0,0,50,0,none,none
+gn:4567865,Río Lajas,Dorado,2349,village,0,0,50,0,none,none
+gn:4567995,Rosa Sanchez,Yabucoa,1221,village,0,0,50,0,none,none
+gn:4568009,Sabana,Vega Baja,1946,village,0,0,50,0,none,none
+gn:4568012,Sabana Eneas,San Germán,1847,village,0,0,50,0,none,none
+gn:4568014,Sabana Grande,Sabana Grande,8961,village,0,0,50,0,none,none
+gn:4568017,Sabana Hoyos,Arecibo,1823,village,0,0,50,0,none,none
+gn:4568023,Sabana Seca,Toa Baja,6247,village,0,0,50,0,none,none
+gn:4568040,Salinas,Salinas,6375,village,0,0,50,0,none,none
+gn:4568069,San Antonio,Aguadilla,2300,village,0,0,50,0,none,none
+gn:4568074,San Antonio,Dorado,6456,village,0,0,50,0,none,none
+gn:4568077,San Antonio,Quebradillas,1203,village,0,0,50,0,none,none
+gn:4568104,San Germán,San Germán,12055,town,0,0,50,0,none,none
+gn:4568109,San Isidro,Canóvanas,8071,village,0,0,50,0,none,none
+gn:4568122,San José,Toa Baja,3278,village,0,0,50,0,none,none
+gn:4568127,San Juan,San Juan,418140,city,0,0,50,0,none,none
+gn:4568149,San Lorenzo,San Lorenzo,9373,village,0,0,50,0,none,none
+gn:4568175,San Sebastián,San Sebastián,11590,town,0,0,50,0,none,none
+gn:4568194,Santa Barbara,Canóvanas,5168,village,0,0,50,0,none,none
+gn:4568200,Santa Clara,Aguas Buenas,1138,village,0,0,50,0,none,none
+gn:4568212,Santa Isabel,Santa Isabel,7260,village,0,0,50,0,none,none
+gn:4568253,Santo Domingo,Peñuelas,3633,village,0,0,50,0,none,none
+gn:4568347,Stella,Rincón,1293,village,0,0,50,0,none,none
+gn:4568350,Suárez,Loíza,2276,village,0,0,50,0,none,none
+gn:4568353,Sumidero,Aguas Buenas,1145,village,0,0,50,0,none,none
+gn:4568367,Tallaboa,Peñuelas,1150,village,0,0,50,0,none,none
+gn:4568368,Tallaboa Alta,Peñuelas,2243,village,0,0,50,0,none,none
+gn:4568399,Tierras Nuevas Poniente,Manatí,2366,village,0,0,50,0,none,none
+gn:4568403,Toa Alta,Toa Alta,4483,village,0,0,50,0,none,none
+gn:4568407,Toa Baja,Toa Baja,1889,village,0,0,50,0,none,none
+gn:4568451,Trujillo Alto,Trujillo Alto,75243,town,0,0,50,0,none,none
+gn:4568490,Utuado,Utuado,9844,village,0,0,50,0,none,none
+gn:4568527,Vázquez,Salinas,2297,village,0,0,50,0,none,none
+gn:4568528,Vega Alta,Vega Alta,12036,town,0,0,50,0,none,none
+gn:4568533,Vega Baja,Vega Baja,29325,town,0,0,50,0,none,none
+gn:4568570,Vieques,Loíza,4325,village,0,0,50,0,none,none
+gn:4568683,Villalba,Villalba,4555,village,0,0,50,0,none,none
+gn:4568908,Yabucoa,Yabucoa,6952,village,0,0,50,0,none,none
+gn:4568917,Yauco,Yauco,20295,town,0,0,50,0,none,none
+gn:4568957,Yaurel,Arroyo,1468,village,0,0,50,0,none,none

@@ -1,0 +1,4 @@
+place_id,name,region,population,market,verified_homes,dated_listings,shortfall_to_50,recorded_sales,rent_source,price_source
+gn:4034778,Leava,Sigave,480,village,0,0,50,0,none,none
+gn:4034821,Mata-Utu,Uvea,1200,village,0,0,50,0,none,none
+gn:4034885,Alo,Alo,239,village,0,0,50,0,none,none

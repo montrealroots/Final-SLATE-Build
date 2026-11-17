@@ -1,0 +1,261 @@
+place_id,name,region,population,market,verified_homes,dated_listings,shortfall_to_50,recorded_sales,rent_source,price_source
+gn:346030,Zefta,Gharbia,111700,city,0,0,50,0,none,none
+gn:346067,Zāwyat Umm ar Rakham,Matruh,2643,village,0,0,50,0,none,none
+gn:346201,Zaafarana,Red Sea,46993,town,0,0,50,0,none,none
+gn:347196,Tūnis,Sohag,19495,town,0,0,50,0,none,none
+gn:347236,Ţūkh,Qalyubia,52593,town,0,0,50,0,none,none
+gn:347289,Timayy al Imdīd,Dakahlia,20389,town,0,0,50,0,none,none
+gn:347296,Ţimā,Sohag,101130,city,0,0,50,0,none,none
+gn:347422,Ţūd,Luxor,30780,town,0,0,50,0,none,none
+gn:347497,Tanta,Gharbia,576648,large-city,0,0,50,0,none,none
+gn:347542,Ţāmiyah,Faiyum,73070,town,0,0,50,0,none,none
+gn:347591,Ţalkhā,Dakahlia,112851,city,0,0,50,0,none,none
+gn:347612,Talā,Monufia,72536,town,0,0,50,0,none,none
+gn:347634,Ţahţā,Sohag,134314,city,0,0,50,0,none,none
+gn:347749,Sumusţā as Sulţānī,Beni Suweif,37260,town,0,0,50,0,none,none
+gn:347751,Sumusţā al Waqf,Beni Suweif,64965,town,0,0,50,0,none,none
+gn:347796,Sohag,Sohag,266944,city,0,0,50,0,none,none
+gn:347863,Sīwah,Matruh,25031,town,0,0,50,0,none,none
+gn:347883,Sirs al Layyānah,Monufia,78168,town,0,0,50,0,none,none
+gn:347907,Sinnūris,Faiyum,133532,city,0,0,50,0,none,none
+gn:348112,Sīdī Sālim,Kafr el-Sheikh,44709,town,0,0,50,0,none,none
+gn:348507,Sīdī Ghāzī,Kafr el-Sheikh,28136,town,0,0,50,0,none,none
+gn:348548,Sīdī Barānī,Matruh,38253,town,0,0,50,0,none,none
+gn:348962,Şidfā,Asyut,30228,town,0,0,50,0,none,none
+gn:349058,Shubrākhīt,Beheira,41233,town,0,0,50,0,none,none
+gn:349076,Shubrā al Khaymah,Qalyubia,1240289,large-city,0,0,50,0,none,none
+gn:349114,Shirbīn,Dakahlia,76081,town,0,0,50,0,none,none
+gn:349156,Shibīn al Qanāţir,Qalyubia,73711,town,0,0,50,0,none,none
+gn:349158,Shibīn al Kawm,Monufia,267945,city,0,0,50,0,none,none
+gn:349340,Sharm el-Sheikh,South Sinai,38478,town,0,0,50,0,none,none
+gn:349600,Sāqultah,Sohag,34273,town,0,0,50,0,none,none
+gn:349653,Şān al Ḩajar al Qiblīyah,Sharqia,30969,town,0,0,50,0,none,none
+gn:349715,Samannūd,Gharbia,87921,town,0,0,50,0,none,none
+gn:349717,Samālūţ,Minya,142009,city,0,0,50,0,none,none
+gn:350203,Rosetta,Beheira,301795,city,0,0,50,0,none,none
+gn:350207,Ras Gharib,Red Sea,44852,town,0,0,50,0,none,none
+gn:350211,Râs el-Barr,Dakahlia,10213,town,0,0,50,0,none,none
+gn:350350,Rafaḩ,North Sinai,44215,town,0,0,50,0,none,none
+gn:350370,Quwaysinā,Monufia,65690,town,0,0,50,0,none,none
+gn:350376,Quţūr,Gharbia,32043,town,0,0,50,0,none,none
+gn:350422,Qūş,Qena,84386,town,0,0,50,0,none,none
+gn:350550,Qina,Qena,252883,city,0,0,50,0,none,none
+gn:350560,Qifţ,Qena,24010,town,0,0,50,0,none,none
+gn:350661,Qaşr al Farāfirah,New Valley,5000,village,0,0,50,0,none,none
+gn:350789,Qalyub,Qalyubia,156363,city,0,0,50,0,none,none
+gn:350797,Qillīn,Kafr el-Sheikh,48233,town,0,0,50,0,none,none
+gn:350831,Qahā,Qalyubia,36225,town,0,0,50,0,none,none
+gn:350893,Nuwaybi‘a,South Sinai,5000,village,0,0,50,0,none,none
+gn:351356,Naqādah,Qena,26774,town,0,0,50,0,none,none
+gn:351434,Nag Hammâdi,Qena,59601,town,0,0,50,0,none,none
+gn:351708,Nabarūh,Dakahlia,59202,town,0,0,50,0,none,none
+gn:351748,Muţūbas,Kafr el-Sheikh,43899,town,0,0,50,0,none,none
+gn:351766,Mūţ,New Valley,26820,town,0,0,50,0,none,none
+gn:352124,Mīt Salsīl,Dakahlia,48166,town,0,0,50,0,none,none
+gn:352181,Mīt Ghamr,Dakahlia,153754,city,0,0,50,0,none,none
+gn:352250,Mīt Abū Ghālib,Damietta,20470,town,0,0,50,0,none,none
+gn:352344,Minyat an Naşr,Dakahlia,82429,town,0,0,50,0,none,none
+gn:352352,Minyā al Qamḩ,Sharqia,99284,town,0,0,50,0,none,none
+gn:352354,Munūf,Monufia,125707,city,0,0,50,0,none,none
+gn:352440,Munsha‘at Abū ‘Umar,Sharqia,22543,town,0,0,50,0,none,none
+gn:352628,Maţāy,Minya,82328,town,0,0,50,0,none,none
+gn:352679,Mashtūl as Sūq,Sharqia,75837,town,0,0,50,0,none,none
+gn:352733,Marsá Maţrūḩ,Matruh,176498,city,0,0,50,0,none,none
+gn:352736,Marsa Alam,Red Sea,10000,town,0,0,50,0,none,none
+gn:352878,Manshīyat al Qanāţir,Giza,19185,town,0,0,50,0,none,none
+gn:352913,Manfalūţ,Asyut,117925,city,0,0,50,0,none,none
+gn:352951,Mallawī,Minya,212628,city,0,0,50,0,none,none
+gn:353136,Maḩallat Damanah,Dakahlia,31921,town,0,0,50,0,none,none
+gn:353183,Maghāghah,Minya,118223,city,0,0,50,0,none,none
+gn:353219,6th of October City,Giza,368650,city,0,0,50,0,none,none
+gn:353223,Madīnat as Sādāt,Beheira,71501,town,0,0,50,0,none,none
+gn:353225,Madīnat an Naşr,Cairo,668413,large-city,0,0,50,0,none,none
+gn:353229,Al ‘Āshir min Ramaḑān,Sharqia,246148,city,0,0,50,0,none,none
+gn:353471,Ash Shaykh Zuwayd,North Sinai,26713,town,0,0,50,0,none,none
+gn:353492,Kirdāsah,Giza,137588,city,0,0,50,0,none,none
+gn:353802,Kom Ombo,Aswan,409311,city,0,0,50,0,none,none
+gn:353828,Kawm Ḩamādah,Beheira,55652,town,0,0,50,0,none,none
+gn:354076,Kafr Shukr,Monufia,30948,town,0,0,50,0,none,none
+gn:354105,Kafr Şaqr,Sharqia,44529,town,0,0,50,0,none,none
+gn:354123,Kafr Sa‘d,Damietta,18120,town,0,0,50,0,none,none
+gn:354365,Kafr az Zayyāt,Gharbia,83348,town,0,0,50,0,none,none
+gn:354440,Aş Şalāḩāt,Dakahlia,45557,town,0,0,50,0,none,none
+gn:354502,Kafr ash Shaykh,Kafr el-Sheikh,194569,city,0,0,50,0,none,none
+gn:354605,Kafr al Kurdī,Dakahlia,44905,town,0,0,50,0,none,none
+gn:354699,Kafr al Baţţīkh,Damietta,47198,town,0,0,50,0,none,none
+gn:354775,Kafr ad Dawwār,Beheira,128539,city,0,0,50,0,none,none
+gn:354981,Juhaynah,Sohag,76555,town,0,0,50,0,none,none
+gn:355026,Girga,Sohag,151256,city,0,0,50,0,none,none
+gn:355174,Jarājūs,Qena,20427,town,0,0,50,0,none,none
+gn:355392,‘Izbat al Burj,Dakahlia,37953,town,0,0,50,0,none,none
+gn:355417,Ītāy al Bārūd,Beheira,77606,town,0,0,50,0,none,none
+gn:355420,Iţsā,Faiyum,74357,town,0,0,50,0,none,none
+gn:355449,Esna,Qena,462787,city,0,0,50,0,none,none
+gn:355595,Ihnāsyā al Madīnah,Beni Suweif,68976,town,0,0,50,0,none,none
+gn:355596,Ihnāsīyah,Beni Suweif,64058,town,0,0,50,0,none,none
+gn:355628,Idkū,Beheira,177152,city,0,0,50,0,none,none
+gn:355635,Edfu,Aswan,79510,town,0,0,50,0,none,none
+gn:355648,Ibshawāy,Faiyum,86186,town,0,0,50,0,none,none
+gn:355795,Ḩalwān,Cairo,230000,city,0,0,50,0,none,none
+gn:355939,Hihyā,Sharqia,74823,town,0,0,50,0,none,none
+gn:356000,Ḩawsh ‘Īsá,Beheira,82999,town,0,0,50,0,none,none
+gn:356436,Ḩadā’iq al Qubbah,Cairo,339612,city,0,0,50,0,none,none
+gn:356806,Fuwwah,Kafr el-Sheikh,93392,town,0,0,50,0,none,none
+gn:356933,Farshūţ,Qena,71013,town,0,0,50,0,none,none
+gn:356945,Fāraskūr,Damietta,43400,town,0,0,50,0,none,none
+gn:356989,Fāqūs,Sharqia,116945,city,0,0,50,0,none,none
+gn:357039,Fāyīd,Ismailia,35066,town,0,0,50,0,none,none
+gn:358048,Damietta,Damietta,305920,city,0,0,50,0,none,none
+gn:358095,Diyarb Najm,Sharqia,80954,town,0,0,50,0,none,none
+gn:358108,Disūq,Kafr el-Sheikh,149291,city,0,0,50,0,none,none
+gn:358115,Dishnā,Qena,64744,town,0,0,50,0,none,none
+gn:358172,Dikirnis,Dakahlia,101082,city,0,0,50,0,none,none
+gn:358245,Dahab,South Sinai,8000,village,0,0,50,0,none,none
+gn:358269,Dayrūţ,Asyut,102570,city,0,0,50,0,none,none
+gn:358274,Dayr Mawās,Minya,60835,town,0,0,50,0,none,none
+gn:358388,Darāw,Aswan,61790,town,0,0,50,0,none,none
+gn:358448,Damanhur,Beheira,318207,city,0,0,50,0,none,none
+gn:358600,Būsh,Beni Suweif,136441,city,0,0,50,0,none,none
+gn:358619,Port Said,Port Said,780515,large-city,0,0,50,0,none,none
+gn:358620,Safaga,Red Sea,53639,town,0,0,50,0,none,none
+gn:358631,Burj al ‘Arab,Alexandria,22444,town,0,0,50,0,none,none
+gn:358683,Būlāq Abū al ‘Ilā,Cairo,51741,town,0,0,50,0,none,none
+gn:358726,Biyalā,Kafr el-Sheikh,89068,town,0,0,50,0,none,none
+gn:358769,Birkat as Sab‘,Monufia,50924,town,0,0,50,0,none,none
+gn:358821,Bilqās,Dakahlia,137080,city,0,0,50,0,none,none
+gn:358840,Bilbeis,Sharqia,185237,city,0,0,50,0,none,none
+gn:358870,Bibā,Beni Suweif,94677,town,0,0,50,0,none,none
+gn:358970,Basyūn,Gharbia,75084,town,0,0,50,0,none,none
+gn:359169,Banī ‘Ubayd,Minya,46060,town,0,0,50,0,none,none
+gn:359173,Banī Suwayf,Beni Suweif,273151,city,0,0,50,0,none,none
+gn:359212,Banī Mazār,Minya,115759,city,0,0,50,0,none,none
+gn:359280,Banhā,Qalyubia,182254,city,0,0,50,0,none,none
+gn:359304,Balţīm,Kafr el-Sheikh,51280,town,0,0,50,0,none,none
+gn:359480,Az Zaynīyah Qiblī,Luxor,20000,town,0,0,50,0,none,none
+gn:359493,Zagazig,Sharqia,430445,city,0,0,50,0,none,none
+gn:359541,Al ‘Ayn as Sukhnah,Suez,45552,town,0,0,50,0,none,none
+gn:359576,Awsīm,Giza,94174,town,0,0,50,0,none,none
+gn:359678,El-Tor,South Sinai,38285,town,0,0,50,0,none,none
+gn:359710,At Tall al Kabīr,Sharqia,46962,town,0,0,50,0,none,none
+gn:359749,Aţfīḩ,Giza,26943,town,0,0,50,0,none,none
+gn:359783,Assiut,Asyut,528669,large-city,0,0,50,0,none,none
+gn:359792,Aswān,Aswan,379774,city,0,0,50,0,none,none
+gn:359796,Suez,Suez,699541,large-city,0,0,50,0,none,none
+gn:359815,As Sinbillāwayn,Dakahlia,124020,city,0,0,50,0,none,none
+gn:359823,As Sibā‘īyah,Aswan,21610,town,0,0,50,0,none,none
+gn:359841,As Sarw,Damietta,29286,town,0,0,50,0,none,none
+gn:359849,As Sanţah,Gharbia,45813,town,0,0,50,0,none,none
+gn:359867,As Sallūm,Matruh,16545,town,0,0,50,0,none,none
+gn:359892,As Sāḩil,Asyut,54094,town,0,0,50,0,none,none
+gn:359900,Aş Şaff,Giza,61531,town,0,0,50,0,none,none
+gn:359953,Ash Shuhadā’,Monufia,76071,town,0,0,50,0,none,none
+gn:360048,Ashmūn,Monufia,124483,city,0,0,50,0,none,none
+gn:360150,Ar Raḩmānīyah,Beheira,44482,town,0,0,50,0,none,none
+gn:360159,Ar Radīsīyah Qiblī,Red Sea,16190,town,0,0,50,0,none,none
+gn:360170,Armant,Qena,78695,town,0,0,50,0,none,none
+gn:360456,Al Yāsīnīyah,Beheira,6886,village,0,0,50,0,none,none
+gn:360464,Al Wāsiţah,Faiyum,57870,town,0,0,50,0,none,none
+gn:360471,Al Waqf,Qena,34723,town,0,0,50,0,none,none
+gn:360502,Luxor,Luxor,422407,city,0,0,50,0,none,none
+gn:360526,Al Qūşīyah,Asyut,99598,town,0,0,50,0,none,none
+gn:360531,Al Quşayr,Red Sea,24653,town,0,0,50,0,none,none
+gn:360542,Al Qurayn,Sharqia,94632,town,0,0,50,0,none,none
+gn:360577,Al Qaşşāşīn,Sharqia,24364,town,0,0,50,0,none,none
+gn:360610,Al Qanţarah,Ismailia,31808,town,0,0,50,0,none,none
+gn:360612,Al Qanāyāt,Sharqia,70687,town,0,0,50,0,none,none
+gn:360615,Al Qanāţir al Khayrīyah,Qalyubia,83568,town,0,0,50,0,none,none
+eg-cairo,Cairo,Cairo,9606916,large-city,0,0,50,0,none,none
+gn:360686,Minya,Minya,283605,city,0,0,50,0,none,none
+gn:360716,Al Maţarīyah,Dakahlia,162045,city,0,0,50,0,none,none
+gn:360748,Al Marāghah,Sohag,53643,town,0,0,50,0,none,none
+gn:360754,Al Manzalah,Dakahlia,127394,city,0,0,50,0,none,none
+gn:360761,Al Mansurah,Dakahlia,621953,large-city,0,0,50,0,none,none
+gn:360773,Al Minshāh,Sohag,91149,town,0,0,50,0,none,none
+gn:360819,Al Maḩmūdīyah,Beheira,34660,town,0,0,50,0,none,none
+gn:360829,Al Maḩallah al Kubrá,Gharbia,592573,large-city,0,0,50,0,none,none
+gn:360890,Al Khuşūş,Qalyubia,488904,city,0,0,50,0,none,none
+gn:360923,Al Khārjah,New Valley,83108,town,0,0,50,0,none,none
+gn:360928,Al Khānkah,Qalyubia,81646,town,0,0,50,0,none,none
+gn:360995,Giza,Giza,4367343,large-city,0,0,50,0,none,none
+gn:361029,Al Jammālīyah,Dakahlia,99641,town,0,0,50,0,none,none
+gn:361055,Ismailia,Ismailia,429465,city,0,0,50,0,none,none
+gn:361058,Alexandria,Alexandria,5263542,large-city,0,0,50,0,none,none
+gn:361098,Al ‘Idwah,Minya,26092,town,0,0,50,0,none,none
+gn:361103,Al Ibrāhīmīyah,Sharqia,53791,town,0,0,50,0,none,none
+gn:361119,‘Izbat ‘Alī as Sayyid,Beheira,53079,town,0,0,50,0,none,none
+gn:361125,Al Ḩusaynīyah,Sharqia,50651,town,0,0,50,0,none,none
+gn:361179,Al Ḩawāmidīyah,Giza,155055,city,0,0,50,0,none,none
+gn:361213,Al Ḩāmūl,Kafr el-Sheikh,58430,town,0,0,50,0,none,none
+gn:361219,Al Ḩammām,Matruh,18407,town,0,0,50,0,none,none
+gn:361291,Hurghada,Red Sea,207132,city,0,0,50,0,none,none
+gn:361301,Al Ghanāyim,Asyut,70884,town,0,0,50,0,none,none
+gn:361320,Al Fayyum,Faiyum,519047,large-city,0,0,50,0,none,none
+gn:361329,Al Fashn,Beni Suweif,112999,city,0,0,50,0,none,none
+gn:361360,Al Burj,Kafr el-Sheikh,60320,town,0,0,50,0,none,none
+gn:361391,Al Bayāḑīyah,Luxor,23550,town,0,0,50,0,none,none
+gn:361394,Al Bawīţī,Giza,15653,town,0,0,50,0,none,none
+gn:361405,Al Başalīyah Baḩrī,Aswan,32920,town,0,0,50,0,none,none
+gn:361435,Al Balyanā,Sohag,68413,town,0,0,50,0,none,none
+gn:361457,Al Bājūr,Monufia,62961,town,0,0,50,0,none,none
+gn:361473,Al Badrashayn,Giza,90833,town,0,0,50,0,none,none
+gn:361478,Al Badārī,Asyut,56033,town,0,0,50,0,none,none
+gn:361495,Al ‘Ayyāţ,Giza,45793,town,0,0,50,0,none,none
+gn:361546,Arīsh,North Sinai,199243,city,0,0,50,0,none,none
+gn:361612,Al ‘Alamayn,Matruh,7400,village,0,0,50,0,none,none
+gn:361661,Akhmīm,Sohag,151430,city,0,0,50,0,none,none
+gn:361702,Aga,Dakahlia,47013,town,0,0,50,0,none,none
+gn:361827,Ad Dilinjāt,Beheira,68901,town,0,0,50,0,none,none
+gn:361871,El Dabaa,Matruh,27697,town,0,0,50,0,none,none
+gn:361995,Abū Ţisht,Qena,18194,town,0,0,50,0,none,none
+gn:362004,Abū Tīj,Asyut,105418,city,0,0,50,0,none,none
+gn:362028,Abu Suweir-el-Mahatta,Sharqia,32763,town,0,0,50,0,none,none
+gn:362041,Abu Simbel,Aswan,5000,village,0,0,50,0,none,none
+gn:362277,Abū Qurqāş,Minya,90266,town,0,0,50,0,none,none
+gn:362288,Abū Qīr,Alexandria,37997,town,0,0,50,0,none,none
+gn:362485,Abū Kabīr,Sharqia,154466,city,0,0,50,0,none,none
+gn:362552,Abū Ḩummuş,Beheira,61388,town,0,0,50,0,none,none
+gn:362615,Abū Ḩammād,Sharqia,43001,town,0,0,50,0,none,none
+gn:362865,Abū an Numrus,Giza,86601,town,0,0,50,0,none,none
+gn:362882,Abū al Maţāmīr,Beheira,66946,town,0,0,50,0,none,none
+gn:362973,Abnūb,Asyut,111785,city,0,0,50,0,none,none
+gn:374290,Hala'ib,Red Sea,27000,town,0,0,50,0,none,none
+gn:408919,An Nūbārīyah,Beheira,23282,town,0,0,50,0,none,none
+gn:409361,Awlād Şaqr,Sharqia,32840,town,0,0,50,0,none,none
+gn:410142,Bi’r al ‘Abd,North Sinai,26330,town,0,0,50,0,none,none
+gn:410366,Al-Manākh,Port Said,84679,town,0,0,50,0,none,none
+gn:415561,Badr,Cairo,32940,town,0,0,50,0,none,none
+gn:416047,Ar Riyāḑ,Kafr el-Sheikh,24254,town,0,0,50,0,none,none
+gn:419435,Az Zarqā,Damietta,26955,town,0,0,50,0,none,none
+gn:421251,Dumyāţ al Jadīdah,Damietta,54508,town,0,0,50,0,none,none
+gn:421600,Badr,Beheira,28091,town,0,0,50,0,none,none
+gn:433441,Banī Suwayf al Jadīdah,Red Sea,32278,town,0,0,50,0,none,none
+gn:433774,Aş Şāliḩīyah al Jadīdah,Sharqia,59320,town,0,0,50,0,none,none
+gn:434129,Burj al ‘Arab al Jadīdah,Alexandria,45865,town,0,0,50,0,none,none
+gn:434170,Madīnat Wādī an Naţrūn,Beheira,41186,town,0,0,50,0,none,none
+gn:434418,An Nāşirīyah,Asyut,22435,town,0,0,50,0,none,none
+gn:444473,Dār as Salām,Sohag,38008,town,0,0,50,0,none,none
+gn:6692512,El Gouna,Red Sea,15000,town,0,0,50,0,none,none
+gn:6692518,Makadi Bay,Red Sea,4000,village,0,0,50,0,none,none
+gn:7521348,Ain Sukhna,Suez,45552,town,0,0,50,0,none,none
+gn:7799991,New Cairo,Cairo,313139,city,0,0,50,0,none,none
+gn:7799998,El Shorouk,Cairo,91899,town,0,0,50,0,none,none
+gn:7911550,Masākin Shirkat Abū al Wafā lil Muqāwalāt wa al Istithmār al ‘Aqārī,Cairo,2560,village,0,0,50,0,none,none
+gn:8134081,Al Qāhirah al Jadīdah,,313139,city,0,0,50,0,none,none
+gn:8134082,Jam‘īyat Iskān aḑ Ḑubbāţ bi Akādīmīyat ash Shurţah,,1228,village,0,0,50,0,none,none
+gn:8521413,Saint Catherine,South Sinai,4603,village,0,0,50,0,none,none
+gn:8555994,Shalateen,Red Sea,12443,town,0,0,50,0,none,none
+gn:9073431,Aţ Ţārif,New Valley,38871,town,0,0,50,0,none,none
+gn:9075170,Būr Fu’ād,Port Said,81591,town,0,0,50,0,none,none
+gn:11608775,Munshāt ‘Alī Āghā,Kafr el-Sheikh,3847,village,0,0,50,0,none,none
+gn:12056179,Shalātīn,Red Sea,12421,town,0,0,50,0,none,none
+gn:12451089,Al-'Ubūr,Qalyubia,138987,city,0,0,50,0,none,none
+gn:12536488,Sānt Kātrīnā,South Sinai,0,village,0,0,50,0,none,none
+gn:12640357,Al-Khārijah,New Valley,83108,town,0,0,50,0,none,none
+gn:12640359,Al-Minyā al-Jadīdah,Minya,17470,town,0,0,50,0,none,none
+gn:12640361,An-Najaylah,Matruh,19768,town,0,0,50,0,none,none
+gn:12640363,Ar-Rawḍah,Damietta,31240,town,0,0,50,0,none,none
+gn:12640364,Ash-Shaykh Zāyid,Giza,95854,town,0,0,50,0,none,none
+gn:12640381,Yūsuf aṣ-Ṣiddīq,Faiyum,23965,town,0,0,50,0,none,none
+gn:13118928,New Bani Sewif City,Beni Suweif,29117,town,0,0,50,0,none,none
+gn:13680148,Aḍ-Ḍawāḥy,Port Said,148624,city,0,0,50,0,none,none
+gn:13680149,Az-Zuhūr,Port Said,266381,city,0,0,50,0,none,none

@@ -1,0 +1,53 @@
+place_id,name,region,population,market,verified_homes,dated_listings,shortfall_to_50,recorded_sales,rent_source,price_source
+gn:2081114,Weno,Chuuk,13856,town,0,0,50,0,none,none
+gn:2081342,Tofol,Kosrae,9686,village,0,0,50,0,none,none
+gn:2081986,Palikir,Pohnpei State,6942,village,0,0,50,0,none,none
+gn:2082038,Kolonia Town,Pohnpei State,5681,village,0,0,50,0,none,none
+gn:4036933,Rumung,Yap State,0,village,0,0,50,0,none,none
+gn:4043034,Kolonia,Pohnpei State,6074,village,0,0,50,0,none,none
+gn:7627032,Kapingamarangi,Pohnpei State,0,village,0,0,50,0,none,none
+gn:7627037,Nukuoro,Pohnpei State,0,village,0,0,50,0,none,none
+gn:7627088,Ngatik,Pohnpei State,640,village,0,0,50,0,none,none
+gn:7627186,Pingelap,Pohnpei State,0,village,0,0,50,0,none,none
+gn:7627586,Namoluk,Chuuk,0,village,0,0,50,0,none,none
+gn:7627628,Houk,Chuuk,0,village,0,0,50,0,none,none
+gn:7628103,Polowat,Chuuk,0,village,0,0,50,0,none,none
+gn:7628250,Pulap,Chuuk,0,village,0,0,50,0,none,none
+gn:7628253,Tamatam,Chuuk,0,village,0,0,50,0,none,none
+gn:7628259,Onoun,Chuuk,0,village,0,0,50,0,none,none
+gn:7628274,Pisaras,Chuuk,0,village,0,0,50,0,none,none
+gn:7628277,Onou,Chuuk,0,village,0,0,50,0,none,none
+gn:7628280,Unanu,Chuuk,0,village,0,0,50,0,none,none
+gn:7628283,Makur,Chuuk,0,village,0,0,50,0,none,none
+gn:7628452,Mokil,Pohnpei State,0,village,0,0,50,0,none,none
+gn:7644931,Nomwin,Chuuk,0,village,0,0,50,0,none,none
+gn:7645169,Fananu,Chuuk,0,village,0,0,50,0,none,none
+gn:7645191,Murilo,Chuuk,607,village,0,0,50,0,none,none
+gn:7645195,Ruo,Chuuk,0,village,0,0,50,0,none,none
+gn:7645215,Nema,Chuuk,995,village,0,0,50,0,none,none
+gn:7645217,Losap,Chuuk,0,village,0,0,50,0,none,none
+gn:7645221,Piis,Chuuk,0,village,0,0,50,0,none,none
+gn:7645270,Ettal,Chuuk,0,village,0,0,50,0,none,none
+gn:7645369,Lukunor,Chuuk,0,village,0,0,50,0,none,none
+gn:7645372,Oneop,Chuuk,0,village,0,0,50,0,none,none
+gn:7645375,Moch,Chuuk,0,village,0,0,50,0,none,none
+gn:7645378,Kuttu,Chuuk,0,village,0,0,50,0,none,none
+gn:7645381,Ta,Chuuk,0,village,0,0,50,0,none,none
+gn:7645384,Satowan,Chuuk,0,village,0,0,50,0,none,none
+gn:7645723,Satawal,Yap State,0,village,0,0,50,0,none,none
+gn:7645726,Lamotrek,Yap State,0,village,0,0,50,0,none,none
+gn:7645731,Elato,Yap State,0,village,0,0,50,0,none,none
+gn:7645749,Faraulep,Yap State,0,village,0,0,50,0,none,none
+gn:7645754,Ifalik,Yap State,0,village,0,0,50,0,none,none
+gn:7645763,Eauripik,Yap State,0,village,0,0,50,0,none,none
+gn:7645768,Sorol,Yap State,0,village,0,0,50,0,none,none
+gn:7645769,Fais,Yap State,215,village,0,0,50,0,none,none
+gn:7645772,Ngulu,Yap State,0,village,0,0,50,0,none,none
+gn:7648112,Colonia,Yap State,7371,village,0,0,50,0,none,none
+gn:7648249,Lelu,Kosrae,1509,village,0,0,50,0,none,none
+gn:7648250,Tafunsak,Kosrae,0,village,0,0,50,0,none,none
+gn:7648440,Malem,Kosrae,1039,village,0,0,50,0,none,none
+gn:7648441,Utwe,Kosrae,781,village,0,0,50,0,none,none
+gn:7667608,Madolenihm Municipality Government,Pohnpei State,0,village,0,0,50,0,none,none
+gn:7668874,Tonoas Municipal Building,Chuuk,0,village,0,0,50,0,none,none
+gn:13697223,Eauripik Village,Yap State,92,village,0,0,50,0,none,none

@@ -13,13 +13,13 @@ import { buyItem, installItem, itemCheck, startWork, type CatalogItem } from '..
 import { applyForApproval, investigate, saveDesign, signBuild, startDesign } from '../src/engine/homes/building';
 import { advertise, chooseTenant, endLetting } from '../src/engine/homes/letting';
 import { arrangeViewing } from '../src/engine/homes';
-import { exteriorFor } from '../src/engine/homes/illustration';
 import { depositFor, permissionFor, scopesOf, gardenOf, type Home } from '../src/engine/homes/model';
 import { HOME_RULES } from '../src/engine/homes/market';
 import { getPlace } from '../src/data/places';
 import { processUntil } from '../src/engine/state';
 import { deserialize, serialize } from '../src/engine/save';
 import { DAY } from '../src/engine/time';
+import { hashString } from '../src/engine/rng';
 import type { GameState } from '../src/engine/types';
 import { startLife } from './helpers';
 
@@ -27,6 +27,16 @@ const advance = (s: GameState, days: number) => processUntil(s, s.now + days * D
 async function offers(s: GameState, placeId: string) {
   const day = new Date(s.now).toISOString().slice(0, 10);
   return offersIn(s.seed, await marketEvidence(placeId, day), day);
+}
+
+/** The first home a pick finds on the market, waiting a month at a time, as a player would, when none is listed now. */
+async function listed(s: GameState, placeId: string, pickIt: (h: Home) => boolean): Promise<Home> {
+  for (let i = 0; i < 12; i++) {
+    const h = (await offers(s, placeId)).find(pickIt);
+    if (h) return h;
+    processUntil(s, s.now + 30 * DAY, 'advance', 100000);
+  }
+  throw new Error(`Nothing listed in ${placeId} in a year`);
 }
 const nominal = (s: GameState, name: string) => Object.values(s.bank!.accounts).find((a) => a.nominal && a.name === name)?.balance ?? 0;
 const incomeTotal = (s: GameState) => Object.values(s.bank!.accounts).filter((a) => a.nominal && a.kind === 'income').reduce((a, x) => a + x.balance, 0);
@@ -102,7 +112,9 @@ describe('renting in London, from application to the deposit back', () => {
     // Labelled fixture: the rent set beyond what the $25m inheritance could pay.
     const dear: Home = { ...home, id: `${home.id}:dear`, priceMinor: 9e12 };
     expect(applyRefusal(s, dear)).toMatch(/^You need .+ available to move in/);
-    advance(s, 40);
+    expect(applyRefusal(s, home)).toBeNull();
+    // The day after the listing's own last day (each listing runs to the end of its three-month window).
+    advance(s, (Date.parse(`${home.validUntil}T23:59:00Z`) - s.now) / DAY + 1);
     expect(applyRefusal(s, home)).toMatch(/lapsed/);
   });
 });
@@ -211,7 +223,7 @@ describe('an appliance in a rented flat, in Chicago', () => {
 describe('land, a design and a house built on the clock, in Austin', () => {
   it('investigate, a design refused then fixed, approval, stages paid as they start, and a house to move into', async () => {
     const s = startLife('homes-build', 'us-austin', { startDate: '2026-03-02' });
-    const land = (await offers(s, 'us-austin')).find((h) => h.form === 'land')!;
+    const land = await listed(s, 'us-austin', (h) => h.form === 'land');
     const p = makeOffer(s, land, land.priceMinor, { finance: 'cash', inspect: false });
     advance(s, 35);
     expect(p.stage).toBe('completed');
@@ -300,50 +312,27 @@ describe('the clock and the save', () => {
   });
 });
 
-describe('the exterior picture', () => {
-  it('is drawn from the design record, checked feature by feature, kept per revision, and redrawn only when the outside changes', async () => {
-    const { exteriorFor, validate, GAME_DRAWING, briefOf } = await import('../src/engine/homes/illustration');
+describe("a home's outside", () => {
+  // The game drew each home's exterior from this record until the owner had the pictures removed on November 17, 2026.
+  it('changes with the work done to it, and a save from before the pictures were removed drops the ones it kept', async () => {
     const s = startLife('homes-pic', 'us-los-angeles', { startDate: '2026-03-02' });
-    const all = await offers(s, 'us-los-angeles');
-    const home = all.find((h) => h.market === 'sale' && h.form === 'detached' && !Object.values(h.condition).includes('poor'))!;
+    const home = (await offers(s, 'us-los-angeles')).find((h) => h.market === 'sale' && h.form === 'detached' && !Object.values(h.condition).includes('poor'))!;
     makeOffer(s, home, home.priceMinor, { finance: 'cash', inspect: false });
     advance(s, 35);
     const mine = homesOf(s).homes[home.id];
-    const first = exteriorFor(s, mine);
-    expect(first.checklist.every((c) => c.ok)).toBe(true);
-    expect(first.fromCache).toBe(false);
-    expect(first.label).toMatch(/Not a photograph, not an AI image/);
-    expect(exteriorFor(s, mine).fromCache).toBe(true); // opened again: the kept picture
-    // Validation catches a drawing without a pool the record has (a fixture: the record given one, the drawing not).
-    const withPool = { ...mine.design, outdoor: ['pool' as const] };
-    const r = GAME_DRAWING.draw({ ...briefOf(mine), design: { ...mine.design, outdoor: [] } });
-    expect(validate(withPool, r.drawn, r.svg).find((c) => c.feature === 'A pool')!.ok).toBe(false);
-    // An exterior repaint, finished, is a new revision and a new picture showing it.
+    // An exterior repaint, finished, is a new revision of the design, in the new colour.
     startWork(s, home.id, 'exterior-paint', { color: 'sage' });
     advance(s, 12);
     expect(mine.design.revision).toBe(2);
-    const second = exteriorFor(s, mine);
-    expect(second.fromCache).toBe(false);
-    expect(second.svg).toContain('walls:' + mine.design.walls + ':sage');
-  });
-
-  it('draws every offered home exactly as its record says, in every place and month the packs cover', async () => {
-    // The checklist is exact (from November 17, 2026): every window on every floor, every balcony, every floor. Until
-    // then a building's ground floor lost windows to its door, and a London flat's picture was refused in play.
-    const s = startLife('homes-every-picture', 'gb-london', { startDate: '2026-03-02' });
-    let n = 0;
-    for (const place of ['gb-london', 'us-los-angeles', 'us-new-york', 'fr-paris', 'us-austin', 'ca-toronto', 'za-cape-town']) {
-      for (const day of ['2026-03-02', '2026-07-15', '2027-01-10']) {
-        for (const h of offersIn(s.seed, await marketEvidence(place, day), day)) {
-          if (h.form === 'land') continue;
-          const r = exteriorFor(null, h);
-          expect(r.refused, `${h.id}: ${r.checklist.filter((c) => !c.ok).map((c) => c.feature).join('; ')}`).toBeUndefined();
-          expect(r.svg).toContain(`data-revision="${h.design.revision}"`);
-          n++;
-        }
-      }
-    }
-    expect(n).toBeGreaterThan(150);
+    expect(mine.design.wallColor).toBe('sage');
+    // An older save kept a drawing per home; it goes on load, and nothing else in the housing record changes.
+    const old = JSON.parse(serialize(s)) as { data: string };
+    const data = JSON.parse(old.data);
+    data.homes.images = { [home.id]: { homeId: home.id, revision: 2, svg: '<svg/>' } };
+    const text = JSON.stringify(data);
+    const back = deserialize(JSON.stringify({ ...old, data: text, checksum: hashString(text) }));
+    expect('images' in back.homes!).toBe(false);
+    expect(JSON.stringify(homesOf(back))).toBe(JSON.stringify(homesOf(s)));
   });
 
   it('wears a lived-in home: a year of wear is never charged; an accident is yours, kept from the deposit, halved on dispute', async () => {
@@ -391,17 +380,5 @@ describe('the exterior picture', () => {
       }
     }
     expect(seen).toEqual({ clean: true, damaged: true });
-  });
-
-  it('shows no picture when the provider is unavailable, and the home is unchanged', async () => {
-    const s = startLife('homes-no-provider', 'gb-london', { startDate: '2026-03-02' });
-    const home = (await offers(s, 'gb-london')).find((h) => h.form !== 'land')!;
-    const { GAME_DRAWING } = await import('../src/engine/homes/illustration');
-    const before = JSON.stringify(home);
-    const r = exteriorFor(s, home, { ...GAME_DRAWING, available: () => false });
-    expect(r.svg).toBeNull();
-    expect(r.label).toMatch(/provider is unavailable/);
-    expect(JSON.stringify(home)).toBe(before);
-    expect(applyRefusal(s, home)).toBeNull(); // the home can still be rented
   });
 });

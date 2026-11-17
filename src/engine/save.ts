@@ -114,6 +114,8 @@ export function migrate(raw: unknown): GameState {
   grantArrivalPapers(s, false);
   // A story from before stays were kept: the one it's on is counted from today (papers.ts `startStays`).
   startStays(s);
+  // The house drawings were removed at the owner's request on November 17, 2026: a save from before drops the ones it kept.
+  if (s.homes) delete (s.homes as { images?: unknown }).images;
   return s;
 }
 

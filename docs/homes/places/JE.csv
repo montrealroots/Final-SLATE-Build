@@ -1,0 +1,7 @@
+place_id,name,region,population,market,verified_homes,dated_listings,shortfall_to_50,recorded_sales,rent_source,price_source
+gn:3042089,Saint John,St John,3051,village,0,0,50,0,none,none
+gn:3042091,Saint Helier,St Helier,28000,town,0,0,50,0,none,none
+gn:6947753,Trinity,Trinity,3355,village,0,0,50,0,none,none
+gn:6950957,St Lawrence,,5561,village,0,0,50,0,none,none
+gn:8199130,St Martin,St Martîn,3948,village,0,0,50,0,none,none
+gn:10942508,Le Hocq,St Clement,0,village,0,0,50,0,none,none

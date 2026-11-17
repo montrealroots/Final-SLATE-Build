@@ -1,0 +1,438 @@
+place_id,name,region,population,market,verified_homes,dated_listings,shortfall_to_50,recorded_sales,rent_source,price_source
+gn:783768,Zvečka,Central Serbia,5321,village,0,0,50,0,none,none
+gn:783793,Žujince,Central Serbia,1284,village,0,0,50,0,none,none
+gn:783796,Zuce,Central Serbia,2001,village,0,0,50,0,none,none
+gn:783814,Zrenjanin,Vojvodina,79773,town,0,0,50,0,none,none
+gn:783880,Žitorađa,Central Serbia,0,village,0,0,50,0,none,none
+gn:783887,Žitište,Vojvodina,3060,village,0,0,50,0,none,none
+gn:783920,Zemun,Central Serbia,155591,city,0,0,50,0,none,none
+gn:784024,Zaječar,Central Serbia,49800,town,0,0,50,0,none,none
+gn:784031,Žagubica,Central Serbia,0,village,0,0,50,0,none,none
+gn:784064,Žabari,Central Serbia,0,village,0,0,50,0,none,none
+gn:784068,Žabalj,Vojvodina,8503,village,0,0,50,0,none,none
+gn:784136,Vršac,Vojvodina,36300,town,0,0,50,0,none,none
+gn:784141,Vrnjačka Banja,Central Serbia,10207,town,0,0,50,0,none,none
+gn:784170,Vrčin,Central Serbia,9088,village,0,0,50,0,none,none
+gn:784222,Vranjska Banja,Central Serbia,0,village,0,0,50,0,none,none
+gn:784227,Vranje,Central Serbia,56199,town,0,0,50,0,none,none
+gn:784236,Vranić,Central Serbia,3044,village,0,0,50,0,none,none
+gn:784252,Vračar,Central Serbia,0,village,0,0,50,0,none,none
+gn:784274,Vojvoda Stepa,Vojvodina,2032,village,0,0,50,0,none,none
+gn:784288,Vojka,Vojvodina,4343,village,0,0,50,0,none,none
+gn:784318,Vlasotince,Central Serbia,0,village,0,0,50,0,none,none
+gn:784344,Vlajkovac,Vojvodina,1356,village,0,0,50,0,none,none
+gn:784352,Vladimirovac,Vojvodina,5106,village,0,0,50,0,none,none
+gn:784355,Vladičin Han,Central Serbia,0,village,0,0,50,0,none,none
+gn:784427,Vinča,Central Serbia,6580,village,0,0,50,0,none,none
+gn:784434,Vilovo,Vojvodina,1089,village,0,0,50,0,none,none
+gn:784519,Veliko Središte,Vojvodina,1698,village,0,0,50,0,none,none
+gn:784535,Veliko Gradište,Central Serbia,0,village,0,0,50,0,none,none
+gn:784588,Veliki Gaj,Vojvodina,1039,village,0,0,50,0,none,none
+gn:784604,Aleksandrovo,Vojvodina,3061,village,0,0,50,0,none,none
+gn:784630,Velika Plana,Central Serbia,0,village,0,0,50,0,none,none
+gn:784635,Velika Moštanica,Central Serbia,2751,village,0,0,50,0,none,none
+gn:784653,Velika Ivanča,Central Serbia,1585,village,0,0,50,0,none,none
+gn:784661,Velika Greda,Vojvodina,1585,village,0,0,50,0,none,none
+gn:784704,Varvarin,Central Serbia,0,village,0,0,50,0,none,none
+gn:784745,Uzdin,Vojvodina,3885,village,0,0,50,0,none,none
+gn:784764,Umka,Central Serbia,5618,village,0,0,50,0,none,none
+gn:784771,Uljma,Vojvodina,4115,village,0,0,50,0,none,none
+gn:784779,Ugrinovci,Central Serbia,3278,village,0,0,50,0,none,none
+gn:784795,Ub,Central Serbia,0,village,0,0,50,0,none,none
+gn:784800,Tutin,Central Serbia,4,village,0,0,50,0,none,none
+gn:784820,Turija,Central Serbia,1039,village,0,0,50,0,none,none
+gn:784873,Trstenik,Central Serbia,49043,town,0,0,50,0,none,none
+gn:784946,Trgovište,Central Serbia,0,village,0,0,50,0,none,none
+gn:784991,Torda,Vojvodina,2697,village,0,0,50,0,none,none
+gn:785013,Topola,Central Serbia,0,village,0,0,50,0,none,none
+gn:785041,Tomaševac,Vojvodina,2149,village,0,0,50,0,none,none
+gn:785053,Toba,Vojvodina,1099,village,0,0,50,0,none,none
+gn:785062,Titel,Vojvodina,6227,village,0,0,50,0,none,none
+gn:785125,Taraš,Vojvodina,1328,village,0,0,50,0,none,none
+gn:785164,Svrljig,Central Serbia,0,village,0,0,50,0,none,none
+gn:785184,Svilajnac,Central Serbia,0,village,0,0,50,0,none,none
+gn:785252,Sutjeska,Vojvodina,2145,village,0,0,50,0,none,none
+gn:785285,Surdulica,Central Serbia,0,village,0,0,50,0,none,none
+gn:785287,Surduk,Vojvodina,1332,village,0,0,50,0,none,none
+gn:785288,Surčin,Central Serbia,12575,town,0,0,50,0,none,none
+gn:785358,Stubline,Central Serbia,2898,village,0,0,50,0,none,none
+gn:785489,Stepojevac,Central Serbia,2773,village,0,0,50,0,none,none
+gn:785530,Stari Lec,Vojvodina,1341,village,0,0,50,0,none,none
+gn:785541,Stari Banovci,Vojvodina,3393,village,0,0,50,0,none,none
+gn:785544,Starčevo,Vojvodina,6661,village,0,0,50,0,none,none
+gn:785559,Stara Pazova,Vojvodina,16217,town,0,0,50,0,none,none
+gn:785598,Stajićevo,Vojvodina,1993,village,0,0,50,0,none,none
+gn:785600,Srpski Itebej,Vojvodina,3281,village,0,0,50,0,none,none
+gn:785603,Srpska Crnja,Vojvodina,5467,village,0,0,50,0,none,none
+gn:785615,Sremčica,Central Serbia,23000,town,0,0,50,0,none,none
+gn:785671,Sopot,Central Serbia,0,village,0,0,50,0,none,none
+gn:785704,Soko Banja,Central Serbia,0,village,0,0,50,0,none,none
+gn:785753,Smederevska Palanka,Central Serbia,27000,town,0,0,50,0,none,none
+gn:785756,Smederevo,Central Serbia,62000,town,0,0,50,0,none,none
+gn:785903,Šimanovci,Vojvodina,2376,village,0,0,50,0,none,none
+gn:785941,Ševica,Central Serbia,1249,village,0,0,50,0,none,none
+gn:785965,Senta,Vojvodina,20302,town,0,0,50,0,none,none
+gn:786001,Seleuš,Vojvodina,1765,village,0,0,50,0,none,none
+gn:786021,Sefkerin,Vojvodina,2836,village,0,0,50,0,none,none
+gn:786035,Sečanj,Vojvodina,2718,village,0,0,50,0,none,none
+gn:786106,Sanad,Vojvodina,1584,village,0,0,50,0,none,none
+gn:786109,Samoš,Vojvodina,1658,village,0,0,50,0,none,none
+gn:786111,Samoljica,Central Serbia,2852,village,0,0,50,0,none,none
+gn:786137,Sakule,Vojvodina,2280,village,0,0,50,0,none,none
+gn:786142,Šajkaš,Vojvodina,3541,village,0,0,50,0,none,none
+gn:786146,Sajan,Vojvodina,1655,village,0,0,50,0,none,none
+gn:786175,Rušanj,Central Serbia,4769,village,0,0,50,0,none,none
+gn:786203,Rudnik,Central Serbia,1201,village,0,0,50,0,none,none
+gn:786283,Ritopek,Central Serbia,2613,village,0,0,50,0,none,none
+gn:786287,Ripanj,Central Serbia,11000,town,0,0,50,0,none,none
+gn:786358,Rekovac,Central Serbia,0,village,0,0,50,0,none,none
+gn:786390,Ražanj,Central Serbia,0,village,0,0,50,0,none,none
+gn:786395,Ravni Topolovac,Vojvodina,1656,village,0,0,50,0,none,none
+gn:786498,Ralja,Central Serbia,2933,village,0,0,50,0,none,none
+gn:786500,Rakovica,Central Serbia,0,village,0,0,50,0,none,none
+gn:786532,Rajince,Central Serbia,2020,village,0,0,50,0,none,none
+gn:786562,Radovnica,Central Serbia,1062,village,0,0,50,0,none,none
+gn:786583,Radojevo,Vojvodina,1872,village,0,0,50,0,none,none
+gn:786615,Radenka,Central Serbia,1541,village,0,0,50,0,none,none
+gn:786624,Rača,Central Serbia,0,village,0,0,50,0,none,none
+gn:786690,Prokuplje,Central Serbia,27673,town,0,0,50,0,none,none
+gn:786697,Progar,Central Serbia,1428,village,0,0,50,0,none,none
+gn:786772,Preševo,Central Serbia,0,village,0,0,50,0,none,none
+gn:786824,Požega,Central Serbia,0,village,0,0,50,0,none,none
+gn:786827,Požarevac,Central Serbia,41736,town,0,0,50,0,none,none
+gn:787032,Plandište,Vojvodina,4122,village,0,0,50,0,none,none
+gn:787050,Pirot,Central Serbia,40678,town,0,0,50,0,none,none
+gn:787078,Petrovac,Central Serbia,0,village,0,0,50,0,none,none
+gn:787123,Perlez,Vojvodina,4283,village,0,0,50,0,none,none
+gn:787164,Pavliš,Vojvodina,2137,village,0,0,50,0,none,none
+gn:787215,Paraćin,Central Serbia,6000,village,0,0,50,0,none,none
+gn:787237,Pančevo,Vojvodina,76654,town,0,0,50,0,none,none
+gn:787271,Padina,Vojvodina,6367,village,0,0,50,0,none,none
+gn:787274,Padej,Vojvodina,3465,village,0,0,50,0,none,none
+gn:787296,Ovča,Central Serbia,2567,village,0,0,50,0,none,none
+gn:787306,Ostružnica,Central Serbia,4060,village,0,0,50,0,none,none
+gn:787341,Ostojićevo,Vojvodina,3395,village,0,0,50,0,none,none
+gn:787391,Orlovat,Vojvodina,2159,village,0,0,50,0,none,none
+gn:787461,Opovo,Vojvodina,4769,village,0,0,50,0,none,none
+gn:787516,Obrenovac,Central Serbia,16821,town,0,0,50,0,none,none
+gn:787584,Novo Miloševo,Vojvodina,7805,village,0,0,50,0,none,none
+gn:787592,Novi Slankamen,Vojvodina,3210,village,0,0,50,0,none,none
+gn:787595,Novi Pazar,Central Serbia,85996,town,0,0,50,0,none,none
+gn:787597,Kozjak,Vojvodina,1170,village,0,0,50,0,none,none
+gn:787598,Novi Kozarci,Vojvodina,2668,village,0,0,50,0,none,none
+gn:787600,Novi Kneževac,Vojvodina,8166,village,0,0,50,0,none,none
+gn:787601,Novi Karlovci,Vojvodina,3050,village,0,0,50,0,none,none
+gn:787602,Novi Itebej,Vojvodina,1553,village,0,0,50,0,none,none
+gn:787607,Novi Beograd,Central Serbia,209763,city,0,0,50,0,none,none
+gn:787610,Novi Bečej,Vojvodina,0,village,0,0,50,0,none,none
+gn:787612,Novi Banovci,Vojvodina,4007,village,0,0,50,0,none,none
+gn:787615,Nova Pazova,Vojvodina,15488,town,0,0,50,0,none,none
+gn:787621,Nova Crnja,Vojvodina,2739,village,0,0,50,0,none,none
+gn:787657,Niš,Central Serbia,250000,city,0,0,50,0,none,none
+gn:787663,Nikolinci,Vojvodina,1905,village,0,0,50,0,none,none
+gn:787682,Neuzina,Vojvodina,1657,village,0,0,50,0,none,none
+gn:787718,Negotin,Central Serbia,17612,town,0,0,50,0,none,none
+gn:787743,Nakovo,Vojvodina,2604,village,0,0,50,0,none,none
+gn:787747,Adorjan,Vojvodina,1203,village,0,0,50,0,none,none
+gn:787837,Mošorin,Vojvodina,2483,village,0,0,50,0,none,none
+gn:787855,Mol,Vojvodina,7950,village,0,0,50,0,none,none
+gn:787857,Mokrin,Vojvodina,6567,village,0,0,50,0,none,none
+gn:787893,Mladenovac,Central Serbia,0,village,0,0,50,0,none,none
+gn:787929,Miratovac,Central Serbia,2872,village,0,0,50,0,none,none
+gn:787935,Mionica,Central Serbia,0,village,0,0,50,0,none,none
+gn:787998,Mihajlovo,Vojvodina,1318,village,0,0,50,0,none,none
+gn:788026,Merošina,Central Serbia,0,village,0,0,50,0,none,none
+gn:788040,Melenci,Vojvodina,7685,village,0,0,50,0,none,none
+gn:788057,Medveđa,Central Serbia,0,village,0,0,50,0,none,none
+gn:788073,Međa,Vojvodina,1636,village,0,0,50,0,none,none
+gn:788153,Margita,Vojvodina,1550,village,0,0,50,0,none,none
+gn:788218,Malo Crniće,Central Serbia,0,village,0,0,50,0,none,none
+gn:788243,Mali Požarevac,Central Serbia,1391,village,0,0,50,0,none,none
+gn:788315,Mala Moštanica,Central Serbia,1125,village,0,0,50,0,none,none
+gn:788329,Mala Ivanča,Central Serbia,1222,village,0,0,50,0,none,none
+gn:788357,Majdanpek,Central Serbia,10071,town,0,0,50,0,none,none
+gn:788421,Lukićevo,Vojvodina,2186,village,0,0,50,0,none,none
+gn:788439,Lugavčina,Central Serbia,3300,village,0,0,50,0,none,none
+gn:788452,Lučani,Central Serbia,0,village,0,0,50,0,none,none
+gn:788507,Lokve,Vojvodina,3511,village,0,0,50,0,none,none
+gn:788515,Lok,Vojvodina,1509,village,0,0,50,0,none,none
+gn:788539,Ljukovo,Vojvodina,1191,village,0,0,50,0,none,none
+gn:788584,Ljig,Central Serbia,2979,village,0,0,50,0,none,none
+gn:788709,Leskovac,Central Serbia,94758,town,0,0,50,0,none,none
+gn:788762,Lebane,Central Serbia,0,village,0,0,50,0,none,none
+gn:788763,Laznica,Central Serbia,1180,village,0,0,50,0,none,none
+gn:788768,Lazarevo,Vojvodina,3480,village,0,0,50,0,none,none
+gn:788771,Lazarevac,Central Serbia,23551,town,0,0,50,0,none,none
+gn:788792,Lapovo,Central Serbia,7422,village,0,0,50,0,none,none
+gn:788812,Lajkovac,Central Serbia,0,village,0,0,50,0,none,none
+gn:788838,Kuštilj,Vojvodina,1189,village,0,0,50,0,none,none
+gn:788852,Kuršumlija,Central Serbia,0,village,0,0,50,0,none,none
+gn:788868,Kupinovo,Vojvodina,2002,village,0,0,50,0,none,none
+gn:788890,Kumane,Vojvodina,4321,village,0,0,50,0,none,none
+gn:788937,Kučevo,Central Serbia,0,village,0,0,50,0,none,none
+gn:788975,Kruševac,Central Serbia,75256,town,0,0,50,0,none,none
+gn:789076,Krčedin,Vojvodina,2877,village,0,0,50,0,none,none
+gn:789107,Kraljevo,Central Serbia,82846,town,0,0,50,0,none,none
+gn:789124,Krajišnik,Vojvodina,2495,village,0,0,50,0,none,none
+gn:789128,Kragujevac,Central Serbia,147473,city,0,0,50,0,none,none
+gn:789168,Kovin,Vojvodina,14250,town,0,0,50,0,none,none
+gn:789170,Kovilj,Vojvodina,5279,village,0,0,50,0,none,none
+gn:789178,Kovačica,Vojvodina,7357,village,0,0,50,0,none,none
+gn:789346,Konak,Vojvodina,1211,village,0,0,50,0,none,none
+gn:789415,Knićanin,Vojvodina,2226,village,0,0,50,0,none,none
+gn:789471,Klek,Vojvodina,2344,village,0,0,50,0,none,none
+gn:789485,Kladovo,Central Serbia,0,village,0,0,50,0,none,none
+gn:789518,Kikinda,Vojvodina,41935,town,0,0,50,0,none,none
+gn:789600,Kanjiža,Vojvodina,10200,town,0,0,50,0,none,none
+gn:789787,Jermenovci,Vojvodina,1454,village,0,0,50,0,none,none
+gn:789828,Jazovo,Vojvodina,1261,village,0,0,50,0,none,none
+gn:789875,Jaša Tomić,Vojvodina,3625,village,0,0,50,0,none,none
+gn:789880,Jarkovac,Vojvodina,2291,village,0,0,50,0,none,none
+gn:789888,Janošik,Vojvodina,1372,village,0,0,50,0,none,none
+gn:789912,Jakovo,Central Serbia,4656,village,0,0,50,0,none,none
+gn:789918,Jajinci,Central Serbia,1105,village,0,0,50,0,none,none
+gn:789923,Jagodina,Central Serbia,35589,town,0,0,50,0,none,none
+gn:789972,Izbište,Vojvodina,2094,village,0,0,50,0,none,none
+gn:789988,Ivanjica,Central Serbia,0,village,0,0,50,0,none,none
+gn:790015,Inđija,Vojvodina,24450,town,0,0,50,0,none,none
+gn:790028,Ilandža,Vojvodina,2426,village,0,0,50,0,none,none
+gn:790033,Idvor,Vojvodina,1442,village,0,0,50,0,none,none
+gn:790035,Iđoš,Vojvodina,2338,village,0,0,50,0,none,none
+gn:790053,Hetin,Vojvodina,1139,village,0,0,50,0,none,none
+gn:790063,Hajdučica,Vojvodina,1519,village,0,0,50,0,none,none
+gn:790104,Gudurica,Vojvodina,1448,village,0,0,50,0,none,none
+gn:790132,Grocka,Central Serbia,0,village,0,0,50,0,none,none
+gn:790277,Grabovac,Central Serbia,3072,village,0,0,50,0,none,none
+gn:790367,Gornji Milanovac,Central Serbia,23982,town,0,0,50,0,none,none
+gn:790394,Gornji Breg,Vojvodina,2536,village,0,0,50,0,none,none
+gn:790557,Golubinci,Vojvodina,4510,village,0,0,50,0,none,none
+gn:790560,Golubac,Central Serbia,1655,village,0,0,50,0,none,none
+gn:790772,Gardinovci,Vojvodina,1515,village,0,0,50,0,none,none
+gn:790795,Gadžin Han,Central Serbia,0,village,0,0,50,0,none,none
+gn:790823,Farkaždin,Vojvodina,1662,village,0,0,50,0,none,none
+gn:790842,Elemir,Vojvodina,4998,village,0,0,50,0,none,none
+gn:790847,Ečka,Vojvodina,5293,village,0,0,50,0,none,none
+gn:790898,Ðurđevo,Vojvodina,4668,village,0,0,50,0,none,none
+gn:790983,Duboka,Central Serbia,1804,village,0,0,50,0,none,none
+gn:791175,Donji Milanovac,Central Serbia,2410,village,0,0,50,0,none,none
+gn:791373,Doljevac,Central Serbia,0,village,0,0,50,0,none,none
+gn:791452,Dobrica,Vojvodina,2006,village,0,0,50,0,none,none
+gn:791471,Dobanovci,Central Serbia,7592,village,0,0,50,0,none,none
+gn:791487,Dimitrovgrad,Central Serbia,0,village,0,0,50,0,none,none
+gn:791516,Despotovac,Central Serbia,0,village,0,0,50,0,none,none
+gn:791589,Debeljača,Vojvodina,6413,village,0,0,50,0,none,none
+gn:791672,Čurug,Vojvodina,9231,village,0,0,50,0,none,none
+gn:791678,Ćuprija,Central Serbia,20585,town,0,0,50,0,none,none
+gn:791704,Čukarica,Central Serbia,0,village,0,0,50,0,none,none
+gn:791840,Crna Trava,Central Serbia,0,village,0,0,50,0,none,none
+gn:791887,Crepaja,Vojvodina,5369,village,0,0,50,0,none,none
+gn:791890,Čortanovci,Vojvodina,1853,village,0,0,50,0,none,none
+gn:791900,Čoka,Vojvodina,5414,village,0,0,50,0,none,none
+gn:791936,Ćićevac,Central Serbia,4,village,0,0,50,0,none,none
+gn:791948,Čestereg,Vojvodina,1581,village,0,0,50,0,none,none
+gn:791998,Čenta,Vojvodina,3192,village,0,0,50,0,none,none
+gn:792078,Čačak,Central Serbia,117072,city,0,0,50,0,none,none
+gn:792173,Bujanovac,Central Serbia,0,village,0,0,50,0,none,none
+gn:792404,Botoš,Vojvodina,2569,village,0,0,50,0,none,none
+gn:792421,Bosilegrad,Central Serbia,0,village,0,0,50,0,none,none
+gn:792453,Borča,Central Serbia,1246,village,0,0,50,0,none,none
+gn:792456,Bor,Central Serbia,39387,town,0,0,50,0,none,none
+gn:792467,Boljevci,Central Serbia,3990,village,0,0,50,0,none,none
+gn:792470,Boljevac,Central Serbia,0,village,0,0,50,0,none,none
+gn:792479,Boka,Vojvodina,2246,village,0,0,50,0,none,none
+gn:792481,Bojnik,Central Serbia,0,village,0,0,50,0,none,none
+gn:792530,Bočar,Vojvodina,2095,village,0,0,50,0,none,none
+gn:792564,Blace,Central Serbia,0,village,0,0,50,0,none,none
+gn:792623,Biljača,Central Serbia,2349,village,0,0,50,0,none,none
+gn:792651,Beška,Vojvodina,6377,village,0,0,50,0,none,none
+gn:792680,Belgrade,Central Serbia,1273651,large-city,0,0,50,0,none,none
+gn:792718,Belo Blato,Vojvodina,1746,village,0,0,50,0,none,none
+gn:792764,Belegiš,Vojvodina,2430,village,0,0,50,0,none,none
+gn:792784,Bela Palanka,Central Serbia,0,village,0,0,50,0,none,none
+gn:792794,Bela Crkva,Vojvodina,10675,town,0,0,50,0,none,none
+gn:792807,Torak,Vojvodina,4289,village,0,0,50,0,none,none
+gn:792811,Bečmen,Central Serbia,2494,village,0,0,50,0,none,none
+gn:792814,Bečej,Vojvodina,25774,town,0,0,50,0,none,none
+gn:792819,Bavanište,Vojvodina,5082,village,0,0,50,0,none,none
+gn:792830,Batočina,Central Serbia,0,village,0,0,50,0,none,none
+gn:792851,Bašaid,Vojvodina,3864,village,0,0,50,0,none,none
+gn:792864,Barice,Vojvodina,1044,village,0,0,50,0,none,none
+gn:792866,Barič,Central Serbia,5033,village,0,0,50,0,none,none
+gn:792888,Baranda,Vojvodina,1656,village,0,0,50,0,none,none
+gn:792892,Barajevo,Central Serbia,0,village,0,0,50,0,none,none
+gn:792937,Banatsko Veliko Selo,Vojvodina,3332,village,0,0,50,0,none,none
+gn:792940,Banatsko Karađorđevo,Vojvodina,2855,village,0,0,50,0,none,none
+gn:792945,Banatski Karlovac,Vojvodina,6319,village,0,0,50,0,none,none
+gn:792946,Banatski Dvor,Vojvodina,1374,village,0,0,50,0,none,none
+gn:792948,Banatski Despotovac,Vojvodina,1993,village,0,0,50,0,none,none
+gn:792950,Banatska Topola,Vojvodina,1463,village,0,0,50,0,none,none
+gn:793014,Bačko Petrovo Selo,Vojvodina,8959,village,0,0,50,0,none,none
+gn:793015,Bačko Gradište,Vojvodina,5764,village,0,0,50,0,none,none
+gn:793093,Arilje,Central Serbia,6762,village,0,0,50,0,none,none
+gn:793111,Aranđelovac,Central Serbia,24309,town,0,0,50,0,none,none
+gn:793112,Aradac,Vojvodina,3825,village,0,0,50,0,none,none
+gn:793134,Alibunar,Vojvodina,3803,village,0,0,50,0,none,none
+gn:793138,Aleksinac,Central Serbia,14593,town,0,0,50,0,none,none
+gn:793142,Aleksandrovac,Central Serbia,0,village,0,0,50,0,none,none
+gn:793171,Ada,Vojvodina,0,village,0,0,50,0,none,none
+gn:793790,Raška,Central Serbia,4,village,0,0,50,0,none,none
+gn:834855,Niška Banja,Central Serbia,0,village,0,0,50,0,none,none
+gn:836063,Sokolovica,Central Serbia,1022,village,0,0,50,0,none,none
+gn:836698,Rusko Selo,Vojvodina,3657,village,0,0,50,0,none,none
+gn:837364,Padinska Skela,Central Serbia,8519,village,0,0,50,0,none,none
+gn:845271,Voždovac,Central Serbia,0,village,0,0,50,0,none,none
+gn:845274,Filmski Grad,Central Serbia,6000,village,0,0,50,0,none,none
+gn:845667,Zvezdara,Central Serbia,0,village,0,0,50,0,none,none
+gn:862735,Preljina,Central Serbia,1840,village,0,0,50,0,none,none
+gn:862740,Prislonica,Central Serbia,1735,village,0,0,50,0,none,none
+gn:862831,Knić,Central Serbia,0,village,0,0,50,0,none,none
+gn:865958,Savski Venac,Central Serbia,0,village,0,0,50,0,none,none
+gn:865964,Palilula,Central Serbia,0,village,0,0,50,0,none,none
+gn:865971,Stari Grad,Central Serbia,0,village,0,0,50,0,none,none
+gn:3186366,Zminjak,Central Serbia,1536,village,0,0,50,0,none,none
+gn:3186376,Zmajevo,Vojvodina,4547,village,0,0,50,0,none,none
+gn:3186633,Novi Žednik,Vojvodina,2381,village,0,0,50,0,none,none
+gn:3187252,Vrdnik,Vojvodina,3704,village,0,0,50,0,none,none
+gn:3187297,Vrbas,Vojvodina,25907,town,0,0,50,0,none,none
+gn:3187548,Vladimirci,Central Serbia,1857,village,0,0,50,0,none,none
+gn:3187641,Višnjićevo,Vojvodina,2030,village,0,0,50,0,none,none
+gn:3187829,Veternik,Vojvodina,10226,town,0,0,50,0,none,none
+gn:3188361,Varna,Central Serbia,1549,village,0,0,50,0,none,none
+gn:3188402,Valjevo,Central Serbia,61035,town,0,0,50,0,none,none
+gn:3188429,Uzveće,Central Serbia,1263,village,0,0,50,0,none,none
+gn:3188434,Užice,Central Serbia,63577,town,0,0,50,0,none,none
+gn:3188725,Tršić,Central Serbia,1214,village,0,0,50,0,none,none
+gn:3189166,Temerin,Vojvodina,0,village,0,0,50,0,none,none
+gn:3189229,Tabanović,Central Serbia,1286,village,0,0,50,0,none,none
+gn:3189595,Subotica,Vojvodina,100000,city,0,0,50,0,none,none
+gn:3189859,Štitar,Central Serbia,2183,village,0,0,50,0,none,none
+gn:3189891,Stepanovićevo,Vojvodina,1999,village,0,0,50,0,none,none
+gn:3190042,Stanišić,Vojvodina,5476,village,0,0,50,0,none,none
+gn:3190101,Sremski Karlovci,Vojvodina,8839,village,0,0,50,0,none,none
+gn:3190103,Sremska Mitrovica,Vojvodina,39084,town,0,0,50,0,none,none
+gn:3190104,Sremska Kamenica,Vojvodina,14205,town,0,0,50,0,none,none
+gn:3190169,Srbobran,Vojvodina,0,village,0,0,50,0,none,none
+gn:3190335,Sonta,Vojvodina,5991,village,0,0,50,0,none,none
+gn:3190342,Sombor,Vojvodina,48454,town,0,0,50,0,none,none
+gn:3190776,Sjenica,Central Serbia,0,village,0,0,50,0,none,none
+gn:3190789,Sivac,Vojvodina,6950,village,0,0,50,0,none,none
+gn:3190855,Sinošević,Central Serbia,1246,village,0,0,50,0,none,none
+gn:3190922,Šid,Vojvodina,0,village,0,0,50,0,none,none
+gn:3190958,Ševarice,Central Serbia,1458,village,0,0,50,0,none,none
+gn:3191256,Šašinci,Vojvodina,1983,village,0,0,50,0,none,none
+gn:3191339,Salaš Noćajski,Vojvodina,1876,village,0,0,50,0,none,none
+gn:3191340,Salaš Crnobarski,Central Serbia,1538,village,0,0,50,0,none,none
+gn:3191376,Šabac,Central Serbia,55114,town,0,0,50,0,none,none
+gn:3191397,Ruski Krstur,Vojvodina,4585,village,0,0,50,0,none,none
+gn:3191425,Rumenka,Vojvodina,4367,village,0,0,50,0,none,none
+gn:3191429,Ruma,Vojvodina,32229,town,0,0,50,0,none,none
+gn:3191660,Riđica,Vojvodina,3186,village,0,0,50,0,none,none
+gn:3191699,Ribari,Central Serbia,2206,village,0,0,50,0,none,none
+gn:3191802,Ravno Selo,Vojvodina,3574,village,0,0,50,0,none,none
+gn:3191810,Ravnje,Vojvodina,1692,village,0,0,50,0,none,none
+gn:3191877,Ratkovo,Vojvodina,3411,village,0,0,50,0,none,none
+gn:3192138,Radenković,Vojvodina,1040,village,0,0,50,0,none,none
+gn:3192185,Putinci,Vojvodina,3075,village,0,0,50,0,none,none
+gn:3192328,Prnjavor,Central Serbia,4892,village,0,0,50,0,none,none
+gn:3192404,Prijepolje,Central Serbia,3,village,0,0,50,0,none,none
+gn:3192420,Prigrevica,Vojvodina,5026,village,0,0,50,0,none,none
+gn:3192450,Priboj,Central Serbia,3,village,0,0,50,0,none,none
+gn:3193230,Platičevo,Vojvodina,2812,village,0,0,50,0,none,none
+gn:3193406,Petrovaradin,Vojvodina,13917,town,0,0,50,0,none,none
+gn:3193437,Petkovica,Central Serbia,1227,village,0,0,50,0,none,none
+gn:3193540,Pećinci,Vojvodina,2232,village,0,0,50,0,none,none
+gn:3193678,Palić,Vojvodina,5476,village,0,0,50,0,none,none
+gn:3193944,Osečina,Central Serbia,3422,village,0,0,50,0,none,none
+gn:3194209,Odžaci,Vojvodina,0,village,0,0,50,0,none,none
+gn:3194243,Obrovac,Vojvodina,3177,village,0,0,50,0,none,none
+gn:3194334,Novo Selo,Central Serbia,1452,village,0,0,50,0,none,none
+gn:3194360,Novi Sad,Vojvodina,215400,city,0,0,50,0,none,none
+gn:3194407,Nova Varoš,Central Serbia,0,village,0,0,50,0,none,none
+gn:3194498,Nikinci,Vojvodina,2425,village,0,0,50,0,none,none
+gn:3195220,Metković,Central Serbia,1419,village,0,0,50,0,none,none
+gn:3195591,Mali Zvornik,Central Serbia,4,village,0,0,50,0,none,none
+gn:3195707,Mali Iđoš,Vojvodina,0,village,0,0,50,0,none,none
+gn:3195895,Majur,Central Serbia,5000,village,0,0,50,0,none,none
+gn:3195939,Maglić,Vojvodina,2733,village,0,0,50,0,none,none
+gn:3195962,Mačvanska Mitrovica,Vojvodina,3661,village,0,0,50,0,none,none
+gn:3196153,Loznica,Central Serbia,19515,town,0,0,50,0,none,none
+gn:3196185,Lovćenac,Vojvodina,3161,village,0,0,50,0,none,none
+gn:3196331,Ljubovija,Central Serbia,2717,village,0,0,50,0,none,none
+gn:3196511,Lipolist,Central Serbia,3212,village,0,0,50,0,none,none
+gn:3196517,Lipnički Šor,Central Serbia,2240,village,0,0,50,0,none,none
+gn:3196638,Lešnica,Central Serbia,4678,village,0,0,50,0,none,none
+gn:3196704,Ledinci,Vojvodina,1912,village,0,0,50,0,none,none
+gn:3196910,Kupusina,Vojvodina,2694,village,0,0,50,0,none,none
+gn:3196959,Kulpin,Vojvodina,3207,village,0,0,50,0,none,none
+gn:3196973,Kula,Vojvodina,0,village,0,0,50,0,none,none
+gn:3197111,Krupanj,Central Serbia,3779,village,0,0,50,0,none,none
+gn:3197266,Krivaja,Central Serbia,1296,village,0,0,50,0,none,none
+gn:3197451,Kozjak,Central Serbia,1201,village,0,0,50,0,none,none
+gn:3197622,Kosjerić,Central Serbia,0,village,0,0,50,0,none,none
+gn:3197862,Kolut,Vojvodina,1886,village,0,0,50,0,none,none
+gn:3197946,Koceljeva,Central Serbia,0,village,0,0,50,0,none,none
+gn:3198080,Klenje,Central Serbia,3653,village,0,0,50,0,none,none
+gn:3198082,Klenak,Vojvodina,3388,village,0,0,50,0,none,none
+gn:3198140,Kisač,Vojvodina,1545,village,0,0,50,0,none,none
+gn:3198410,Kamenica,Central Serbia,1371,village,0,0,50,0,none,none
+gn:3198513,Kać,Vojvodina,11067,town,0,0,50,0,none,none
+gn:3198582,Joševa,Central Serbia,1228,village,0,0,50,0,none,none
+gn:3198637,Jevremovac,Central Serbia,1940,village,0,0,50,0,none,none
+gn:3198711,Jelenča,Central Serbia,1950,village,0,0,50,0,none,none
+gn:3198859,Jarebice,Central Serbia,1549,village,0,0,50,0,none,none
+gn:3198868,Jarak,Vojvodina,2092,village,0,0,50,0,none,none
+gn:3198963,Jadranska Lešnica,Central Serbia,2355,village,0,0,50,0,none,none
+gn:3199103,Irig,Vojvodina,0,village,0,0,50,0,none,none
+gn:3199251,Hrtkovci,Vojvodina,2855,village,0,0,50,0,none,none
+gn:3199813,Grabovci,Vojvodina,1480,village,0,0,50,0,none,none
+gn:3200272,Gornja Bukovica,Central Serbia,1541,village,0,0,50,0,none,none
+gn:3200547,Glušci,Central Serbia,2512,village,0,0,50,0,none,none
+gn:3200560,Gložan,Vojvodina,2487,village,0,0,50,0,none,none
+gn:3200746,Gakovo,Vojvodina,2122,village,0,0,50,0,none,none
+gn:3200802,Futog,Vojvodina,18018,town,0,0,50,0,none,none
+gn:3200859,Feketić,Vojvodina,3980,village,0,0,50,0,none,none
+gn:3200886,Erdevik,Vojvodina,2736,village,0,0,50,0,none,none
+gn:3201108,Dublje,Central Serbia,3558,village,0,0,50,0,none,none
+gn:3201216,Drenovac,Central Serbia,2629,village,0,0,50,0,none,none
+gn:3201307,Draginje,Central Serbia,1888,village,0,0,50,0,none,none
+gn:3201353,Doroslovo,Vojvodina,2131,village,0,0,50,0,none,none
+gn:3201487,Donji Dobrić,Central Serbia,1695,village,0,0,50,0,none,none
+gn:3201946,Dobrić,Central Serbia,1375,village,0,0,50,0,none,none
+gn:3202059,Despotovo,Vojvodina,2077,village,0,0,50,0,none,none
+gn:3202318,Crvenka,Vojvodina,8532,village,0,0,50,0,none,none
+gn:3202477,Crna Bara,Central Serbia,2606,village,0,0,50,0,none,none
+gn:3202545,Čokešina,Central Serbia,1262,village,0,0,50,0,none,none
+gn:3202757,Čenej,Vojvodina,2125,village,0,0,50,0,none,none
+gn:3202798,Čelarevo,Vojvodina,5017,village,0,0,50,0,none,none
+gn:3202900,Čajetina,Central Serbia,3162,village,0,0,50,0,none,none
+gn:3203083,Bukor,Central Serbia,1167,village,0,0,50,0,none,none
+gn:3203139,Buđanovci,Vojvodina,1999,village,0,0,50,0,none,none
+gn:3203497,Brdarica,Central Serbia,1690,village,0,0,50,0,none,none
+gn:3203551,Brasina,Central Serbia,1479,village,0,0,50,0,none,none
+gn:3203628,Bosut,Vojvodina,1311,village,0,0,50,0,none,none
+gn:3203817,Bogosavac,Central Serbia,1191,village,0,0,50,0,none,none
+gn:3203822,Bogojevo,Vojvodina,2312,village,0,0,50,0,none,none
+gn:3203840,Bogatić,Central Serbia,7225,village,0,0,50,0,none,none
+gn:3204289,Beočin,Vojvodina,0,village,0,0,50,0,none,none
+gn:3204307,Belotić,Central Serbia,1801,village,0,0,50,0,none,none
+gn:3204517,Banovo Polje,Central Serbia,1732,village,0,0,50,0,none,none
+gn:3204623,Bajina Bašta,Central Serbia,8533,village,0,0,50,0,none,none
+gn:3204635,Badovinci,Central Serbia,5879,village,0,0,50,0,none,none
+gn:3204665,Bački Petrovac,Vojvodina,7229,village,0,0,50,0,none,none
+gn:3204670,Bački Breg,Vojvodina,1770,village,0,0,50,0,none,none
+gn:3204672,Bačka Topola,Vojvodina,16154,town,0,0,50,0,none,none
+gn:3204674,Bačka Palanka,Vojvodina,29449,town,0,0,50,0,none,none
+gn:3204692,Bač,Vojvodina,0,village,0,0,50,0,none,none
+gn:3204793,Apatin,Vojvodina,18320,town,0,0,50,0,none,none
+gn:3215933,Stari Žednik,Vojvodina,1947,village,0,0,50,0,none,none
+gn:3217047,Pocerski Pričinović,Central Serbia,4018,village,0,0,50,0,none,none
+gn:3300709,Ðurići,Central Serbia,1081,village,0,0,50,0,none,none
+gn:3302765,Zlatibor,Central Serbia,2344,village,0,0,50,0,none,none
+gn:3318618,Sokolovo Brdo,Central Serbia,1261,village,0,0,50,0,none,none
+gn:3318643,Osječenik,Central Serbia,1430,village,0,0,50,0,none,none
+gn:3318985,Rumska,Central Serbia,1208,village,0,0,50,0,none,none
+gn:6619277,Knjazevac,Central Serbia,25000,town,0,0,50,0,none,none
+gn:7577033,Sumulicë,Central Serbia,2350,village,0,0,50,0,none,none
+gn:8394219,Lagja e Poshtme,Central Serbia,1200,village,0,0,50,0,none,none
+gn:10346045,Irig,Vojvodina,4848,village,0,0,50,0,none,none
+gn:12750082,Pirot Centralni Trg,Central Serbia,0,village,0,0,50,0,none,none

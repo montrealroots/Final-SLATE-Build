@@ -1,0 +1,7 @@
+place_id,name,region,population,market,verified_homes,dated_listings,shortfall_to_50,recorded_sales,rent_source,price_source
+gn:4795186,Altona,Saint Thomas Island,1316,village,0,0,50,0,none,none
+gn:4795467,Charlotte Amalie,Saint Thomas Island,20000,town,0,0,50,0,none,none
+gn:4795479,Christiansted,Saint Croix Island,1866,village,0,0,50,0,none,none
+gn:4795577,Cruz Bay,Saint John Island,2743,village,0,0,50,0,none,none
+gn:4796512,Saint Croix,Saint Croix Island,50601,town,0,0,50,0,none,none
+gn:4796736,Tutu,Saint Thomas Island,5519,village,0,0,50,0,none,none

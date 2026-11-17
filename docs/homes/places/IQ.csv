@@ -1,0 +1,174 @@
+place_id,name,region,population,market,verified_homes,dated_listings,shortfall_to_50,recorded_sales,rent_source,price_source
+gn:89482,Zāwītah,Duhok,0,village,0,0,50,0,none,none
+gn:89570,Zaxo,Duhok,95052,town,0,0,50,0,none,none
+gn:89824,Umm Qaşr,Basra,107620,city,0,0,50,0,none,none
+gn:90026,Ţūz Khūrmātū,Salah ad Din,120712,city,0,0,50,0,none,none
+gn:90150,Tikrīt,Salah ad Din,42477,town,0,0,50,0,none,none
+gn:90199,Tāzah Khūrmātū,Kirkuk,21788,town,0,0,50,0,none,none
+gn:90220,Dāqūq,Kirkuk,0,village,0,0,50,0,none,none
+gn:90353,Tallkayf,Nineveh,23524,town,0,0,50,0,none,none
+gn:90393,Tall ‘Afar,Nineveh,0,village,0,0,50,0,none,none
+gn:90510,Sūq ash Shuyūkh,Dhi Qar,0,village,0,0,50,0,none,none
+gn:90532,Sumayl,Duhok,152512,city,0,0,50,0,none,none
+gn:90708,Sīnah,Duhok,128776,city,0,0,50,0,none,none
+gn:90831,‘Ayn Tamr,Karbala,0,village,0,0,50,0,none,none
+gn:91057,Ash Sharqāt,Salah ad Din,160000,city,0,0,50,0,none,none
+gn:91083,Shaqlāwah,Erbil,32599,town,0,0,50,0,none,none
+gn:91283,Seyid Sadiq,Sulaymaniyah,0,village,0,0,50,0,none,none
+gn:91411,Taxa Cheya,Duhok,2790,village,0,0,50,0,none,none
+gn:91546,Sarājīq,Diyala,10000,town,0,0,50,0,none,none
+gn:91597,Sāmarrā’,Salah ad Din,158508,city,0,0,50,0,none,none
+gn:91696,Pīrmām,Erbil,38686,town,0,0,50,0,none,none
+gn:91772,Şafwān,Basra,22929,town,0,0,50,0,none,none
+gn:91812,Saddat al Hindīyah,Babil,35720,town,0,0,50,0,none,none
+gn:92002,Ṟuwandiz,Erbil,22943,town,0,0,50,0,none,none
+gn:92004,Rāwah,Anbar,13000,town,0,0,50,0,none,none
+gn:92052,Rānyah,Sulaymaniyah,114173,city,0,0,50,0,none,none
+gn:92138,Al Qā’im,Anbar,74100,town,0,0,50,0,none,none
+gn:92362,Habhab,Diyala,21373,town,0,0,50,0,none,none
+gn:92430,Al-Hamdaniya,Nineveh,50000,town,0,0,50,0,none,none
+gn:92436,Qeredagh,Sulaymaniyah,0,village,0,0,50,0,none,none
+gn:92511,Qal‘at Sukkar,Dhi Qar,110000,city,0,0,50,0,none,none
+gn:92537,Qal‘at Şāliḩ,Maysan,39698,town,0,0,50,0,none,none
+gn:92615,Qeładizê,Sulaymaniyah,140688,city,0,0,50,0,none,none
+gn:93455,Mêrgasur,Erbil,0,village,0,0,50,0,none,none
+gn:93562,Mawet,Sulaymaniyah,1464,village,0,0,50,0,none,none
+gn:93706,Mangêsh,Duhok,1285,village,0,0,50,0,none,none
+gn:93709,Mandalī,Diyala,29785,town,0,0,50,0,none,none
+gn:93726,Qaryat Manārat Shabak,Nineveh,7745,village,0,0,50,0,none,none
+gn:93818,Mexmur,Erbil,0,village,0,0,50,0,none,none
+gn:94220,Koysinceq,Erbil,44987,town,0,0,50,0,none,none
+gn:94298,Kifrī,Diyala,30143,town,0,0,50,0,none,none
+gn:94591,Khānaqīn,Diyala,175000,city,0,0,50,0,none,none
+gn:94787,Kirkuk,Kirkuk,1031000,large-city,0,0,50,0,none,none
+gn:94824,Karbala,Karbala,1218732,large-city,0,0,50,0,none,none
+gn:94911,Kānī Māsī,Duhok,0,village,0,0,50,0,none,none
+gn:95005,Kelar,Sulaymaniyah,250000,city,0,0,50,0,none,none
+gn:95224,Al ‘Abbāsī,Kirkuk,0,village,0,0,50,0,none,none
+gn:95446,Erbil,Erbil,1612700,large-city,0,0,50,0,none,none
+gn:95788,Hīt,Anbar,31901,town,0,0,50,0,none,none
+gn:95804,Hīrān,Erbil,0,village,0,0,50,0,none,none
+gn:95886,Al Ḩaqlānīyah,Anbar,0,village,0,0,50,0,none,none
+gn:96046,Ḩarir,Erbil,32171,town,0,0,50,0,none,none
+gn:96205,Halabja,Halabja,57333,town,0,0,50,0,none,none
+gn:96309,Ḩadīthah,Anbar,30925,town,0,0,50,0,none,none
+gn:96833,Xebat,Erbil,148047,city,0,0,50,0,none,none
+gn:96953,Dukan,Sulaymaniyah,0,village,0,0,50,0,none,none
+gn:96961,Soran,Erbil,91589,town,0,0,50,0,none,none
+gn:96994,Dihok,Duhok,340900,city,0,0,50,0,none,none
+gn:97001,Dibis,Kirkuk,0,village,0,0,50,0,none,none
+gn:97145,Derkar,Duhok,0,village,0,0,50,0,none,none
+gn:97329,Chwarta,Sulaymaniyah,0,village,0,0,50,0,none,none
+gn:97417,Jamjamāl,Sulaymaniyah,42593,town,0,0,50,0,none,none
+gn:97478,Al Jabāyish,Dhi Qar,0,village,0,0,50,0,none,none
+gn:97783,Bayjī,Salah ad Din,173677,city,0,0,50,0,none,none
+gn:97788,Begova,Duhok,15000,town,0,0,50,0,none,none
+gn:97825,Batifa,Duhok,28000,town,0,0,50,0,none,none
+gn:97890,Barţalah,Nineveh,15000,town,0,0,50,0,none,none
+gn:97990,Baqubah,Diyala,152550,city,0,0,50,0,none,none
+gn:98012,Baynjiwayn,Sulaymaniyah,27116,town,0,0,50,0,none,none
+gn:98069,Bāmarnī,Duhok,0,village,0,0,50,0,none,none
+gn:98109,Baladrūz,Diyala,0,village,0,0,50,0,none,none
+gn:98112,Balad,Salah ad Din,42088,town,0,0,50,0,none,none
+gn:98156,Baḥarkah,Erbil,130518,city,0,0,50,0,none,none
+gn:98182,Baghdad,Baghdad,7216000,large-city,0,0,50,0,none,none
+gn:98198,Badrah,Wasit,0,village,0,0,50,0,none,none
+gn:98245,Az Zubayr,Basra,122676,city,0,0,50,0,none,none
+gn:98293,Ash Shaykhān,Nineveh,0,village,0,0,50,0,none,none
+gn:98304,‘Aynkāwah,Erbil,0,village,0,0,50,0,none,none
+gn:98403,Aţ Ţārmīyah,Baghdad,0,village,0,0,50,0,none,none
+gn:98459,Aş Şuwayrah,Wasit,77200,town,0,0,50,0,none,none
+gn:98463,Sulaymaniyah,Sulaymaniyah,878146,large-city,0,0,50,0,none,none
+gn:98530,As Samawah,Muthanna,152890,city,0,0,50,0,none,none
+gn:98533,As Salmān,Muthanna,0,village,0,0,50,0,none,none
+gn:98589,Nāḩiyat ash Shināfīyah,Al-Qadisiyah,22643,town,0,0,50,0,none,none
+gn:98622,Ash Shaţrah,Dhi Qar,182175,city,0,0,50,0,none,none
+gn:98629,Ash Shāmīyah,Al-Qadisiyah,57661,town,0,0,50,0,none,none
+gn:98677,Ar Ruţbah,Anbar,22370,town,0,0,50,0,none,none
+gn:98685,Ar Rumaythah,Muthanna,47248,town,0,0,50,0,none,none
+gn:98697,Ar Riyāḑ,Kirkuk,0,village,0,0,50,0,none,none
+gn:98699,Ar Rifā‘ī,Dhi Qar,0,village,0,0,50,0,none,none
+gn:98717,Ramadi,Anbar,223500,city,0,0,50,0,none,none
+gn:98822,‘Aqrah,Nineveh,23000,town,0,0,50,0,none,none
+gn:98846,An Nu‘mānīyah,Wasit,110000,city,0,0,50,0,none,none
+gn:98854,Nasiriyah,Dhi Qar,558400,large-city,0,0,50,0,none,none
+gn:98860,Najaf,Najaf,482576,city,0,0,50,0,none,none
+gn:98885,‘Anat al Qadīmah,Anbar,19719,town,0,0,50,0,none,none
+gn:98993,Al Qurnah,Basra,134174,city,0,0,50,0,none,none
+gn:99003,Al Qayyārah,Nineveh,0,village,0,0,50,0,none,none
+gn:99010,Al-Qāsim,Babil,93546,town,0,0,50,0,none,none
+gn:99039,Al-Musayab,Babil,101873,city,0,0,50,0,none,none
+gn:99060,Al Mishkhāb,Najaf,23189,town,0,0,50,0,none,none
+gn:99062,Al Miqdādīyah,Diyala,155968,city,0,0,50,0,none,none
+gn:99070,Al Maymūnah,Maysan,0,village,0,0,50,0,none,none
+gn:99071,Al Mawşil al Jadīdah,Nineveh,2065597,large-city,0,0,50,0,none,none
+gn:99072,Mosul,Nineveh,1683000,large-city,0,0,50,0,none,none
+gn:99100,Al Maḩmūdīyah,Baghdad,350000,city,0,0,50,0,none,none
+gn:99103,Al Maḩāwīl,Babil,31200,town,0,0,50,0,none,none
+gn:99106,Al Madīnah,Basra,255000,city,0,0,50,0,none,none
+gn:99131,Al-Kut,Wasit,315162,city,0,0,50,0,none,none
+gn:99135,Kufa,Najaf,110000,city,0,0,50,0,none,none
+gn:99168,Al Khāliş,Diyala,0,village,0,0,50,0,none,none
+gn:99169,Khāliş,Diyala,70046,town,0,0,50,0,none,none
+gn:99182,Al Kaḩlā’,Maysan,0,village,0,0,50,0,none,none
+gn:99226,Nāḩiyat al Iskandarīyah,Babil,100600,city,0,0,50,0,none,none
+gn:99306,‘Alī al Gharbī,Maysan,19711,town,0,0,50,0,none,none
+gn:99344,Al Hindīyah,Karbala,139578,city,0,0,50,0,none,none
+gn:99347,Al Hillah,Babil,455700,city,0,0,50,0,none,none
+gn:99350,Al Ḩayy,Wasit,78272,town,0,0,50,0,none,none
+gn:99357,Al Hāshimīyah,Babil,0,village,0,0,50,0,none,none
+gn:99369,Al Hārithah,Basra,92395,town,0,0,50,0,none,none
+gn:99375,Al Ḩamzah,Al-Qadisiyah,0,village,0,0,50,0,none,none
+gn:99413,Al Ḩaḑar,Nineveh,0,village,0,0,50,0,none,none
+gn:99434,Nahiyat Ghammas,Al-Qadisiyah,30909,town,0,0,50,0,none,none
+gn:99439,Nāḩiyat al Fuhūd,Dhi Qar,21551,town,0,0,50,0,none,none
+gn:99446,Al Fāw,Basra,104569,city,0,0,50,0,none,none
+gn:99454,Al Fallūjah,Anbar,190159,city,0,0,50,0,none,none
+gn:99524,Al Ba‘āj,Nineveh,0,village,0,0,50,0,none,none
+gn:99532,Basrah,Basra,1326564,large-city,0,0,50,0,none,none
+gn:99548,Al ‘Azīzīyah,Wasit,44751,town,0,0,50,0,none,none
+gn:99560,Al ‘Awjah,Salah ad Din,0,village,0,0,50,0,none,none
+gn:99608,Al ‘Amārah,Maysan,323302,city,0,0,50,0,none,none
+gn:99611,Al ‘Amādīyah,Duhok,0,village,0,0,50,0,none,none
+gn:99738,‘Afak,Al-Qadisiyah,35536,town,0,0,50,0,none,none
+gn:99759,Ad Dujayl,Salah ad Din,26362,town,0,0,50,0,none,none
+gn:99762,Al Diwaniyah,Al-Qadisiyah,318801,city,0,0,50,0,none,none
+gn:99768,Ad Dawr,Salah ad Din,0,village,0,0,50,0,none,none
+gn:99834,Al Manādhirah,Najaf,0,village,0,0,50,0,none,none
+gn:100050,Abī al Khaşīb,Basra,0,village,0,0,50,0,none,none
+gn:100077,Abū Ghurayb,Baghdad,900000,large-city,0,0,50,0,none,none
+gn:384945,Derbendîxan,Sulaymaniyah,54896,town,0,0,50,0,none,none
+gn:387345,Abu Gharaq,Babil,108212,city,0,0,50,0,none,none
+gn:390188,Al Ḩawījah,Kirkuk,0,village,0,0,50,0,none,none
+gn:445592,Khaznah Tabah,Nineveh,14075,town,0,0,50,0,none,none
+gn:445694,'Ākra,Nineveh,105370,city,0,0,50,0,none,none
+gn:446174,Qushtepe,Erbil,0,village,0,0,50,0,none,none
+gn:446185,Dare Tû,Erbil,0,village,0,0,50,0,none,none
+gn:446208,Khasnahzān,Erbil,146639,city,0,0,50,0,none,none
+gn:446732,Khalīfān,Erbil,19891,town,0,0,50,0,none,none
+gn:447022,Hajiawa,Sulaymaniyah,80000,town,0,0,50,0,none,none
+gn:447741,Choman,Erbil,0,village,0,0,50,0,none,none
+gn:448149,Sinjār,Nineveh,38294,town,0,0,50,0,none,none
+gn:6676920,Halshaw,Sulaymaniyah,0,village,0,0,50,0,none,none
+gn:6765385,‘Anah,Anbar,27000,town,0,0,50,0,none,none
+gn:6860784,Qaryat al Lakk,Nineveh,1889,village,0,0,50,0,none,none
+gn:6871926,Al-'Alam,Salah ad Din,25662,town,0,0,50,0,none,none
+gn:6998238,Ibrāhīm al Khalīl,Duhok,0,village,0,0,50,0,none,none
+gn:6999619,Kays Qal‘ah,Nineveh,10000,town,0,0,50,0,none,none
+gn:7097617,Nāḩiyat Hīrān,Erbil,0,village,0,0,50,0,none,none
+gn:7326104,Nāḩiyat Baḩār,Basra,0,village,0,0,50,0,none,none
+gn:7326105,Nāḩiyat ‘Atbah,Basra,0,village,0,0,50,0,none,none
+gn:7374646,Nāḩiyat Alī ash Sharqī,Maysan,0,village,0,0,50,0,none,none
+gn:7377819,Hayraw,Sulaymaniyah,0,village,0,0,50,0,none,none
+gn:7802746,Sadr City,Baghdad,1211849,large-city,0,0,50,0,none,none
+gn:9072952,Taxe Cheya Azadiye,Duhok,2643,village,0,0,50,0,none,none
+gn:9253107,Dêrelûk Devera Nihêliya,Duhok,44448,town,0,0,50,0,none,none
+gn:10303650,Simele,Duhok,152512,city,0,0,50,0,none,none
+gn:12494059,AlZwya,Salah ad Din,15000,town,0,0,50,0,none,none
+gn:12494060,Hawe Ben Alean,Salah ad Din,1500,village,0,0,50,0,none,none
+gn:12902756,Hetit,Duhok,2700,village,0,0,50,0,none,none
+gn:12902769,Kuchka,Erbil,2700,village,0,0,50,0,none,none
+gn:13631406,Shūrash,Sulaymaniyah,29960,town,0,0,50,0,none,none
+gn:13631407,Abū al-Kahṣīb,Basra,357771,city,0,0,50,0,none,none
+gn:13680586,Shelādiz,Duhok,50000,town,0,0,50,0,none,none
+gn:13731884,Al-Mūwaffaqiyah,Nineveh,10896,town,0,0,50,0,none,none

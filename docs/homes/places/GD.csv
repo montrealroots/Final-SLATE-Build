@@ -1,0 +1,10 @@
+place_id,name,region,population,market,verified_homes,dated_listings,shortfall_to_50,recorded_sales,rent_source,price_source
+gn:3579833,Victoria,Saint Mark Parish,2256,village,0,0,50,0,none,none
+gn:3579837,Upper La Taste,Saint Patrick Parish,1300,village,0,0,50,0,none,none
+gn:3579891,Sauteurs,Saint Patrick Parish,1320,village,0,0,50,0,none,none
+gn:3579925,Saint George's,Saint George Parish,7500,village,0,0,50,0,none,none
+gn:3579931,Saint David’s,Saint David Parish,1321,village,0,0,50,0,none,none
+gn:3580215,Hillsborough,Carriacou and Petite Martinique,1000,village,0,0,50,0,none,none
+gn:3580236,Grenville,Saint Andrew Parish,2476,village,0,0,50,0,none,none
+gn:3580257,Grand Roy,Saint John Parish,2400,village,0,0,50,0,none,none
+gn:3580279,Gouyave,Saint John Parish,3378,village,0,0,50,0,none,none

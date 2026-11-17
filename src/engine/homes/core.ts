@@ -83,7 +83,6 @@ export interface Letting {
   tenant?: string; start?: string; anchorDay?: number; depositMinor?: number; rentsReceived: number; arrearsMinor: number;
   manager?: { feeShare: number; capMinor: number }; repairs: { what: string; minor: number; stage: 'asked' | 'done' | 'awaiting-you' }[]; endsOn?: string; vacantSince?: number; payments: Payment[];
 }
-export interface Illustration { homeId: string; revision: number; hash: string; provider: string; label: string; acceptedAt: number; checklist: { feature: string; ok: boolean }[]; svg: string; attempts: number }
 export interface HomesState {
   homes: Record<string, Home>;
   favorites: string[];
@@ -95,11 +94,10 @@ export interface HomesState {
   residence?: string;
   history: { at: number; homeId?: string; text: string }[];
   documents: { id: string; at: number; homeId: string; title: string; lines: string[] }[];
-  images: Record<string, Illustration>;
 }
 
 export function homesOf(state: GameState): HomesState {
-  return (state.homes ??= { homes: {}, favorites: [], viewings: [], tenancies: [], repairs: [], permissions: [], purchases: [], owned: [], sales: [], items: [], jobs: [], stays: [], policies: [], bills: [], builds: [], lettings: [], history: [], documents: [], images: {} });
+  return (state.homes ??= { homes: {}, favorites: [], viewings: [], tenancies: [], repairs: [], permissions: [], purchases: [], owned: [], sales: [], items: [], jobs: [], stays: [], policies: [], bills: [], builds: [], lettings: [], history: [], documents: [] });
 }
 export const homeOf = (state: GameState, id: string): Home => {
   const h = homesOf(state).homes[id];
@@ -109,7 +107,18 @@ export const homeOf = (state: GameState, id: string): Home => {
 /** A home acted on is kept as it was offered: later market packs can't rewrite it. */
 export function pin(state: GameState, home: Home): Home {
   const hs = homesOf(state);
-  return (hs.homes[home.id] ??= structuredClone(home));
+  const kept = hs.homes[home.id];
+  if (!kept) return (hs.homes[home.id] = structuredClone(home));
+  // A home back on the market comes with its new listing: its asking price and dates, and the evidence they're from.
+  // What you've done there (a tenancy, a purchase, ownership) keeps the record as it was agreed.
+  if (!engaged(hs, home.id) && kept.validUntil !== home.validUntil) Object.assign(kept, { priceMinor: home.priceMinor, availableFrom: home.availableFrom, validUntil: home.validUntil, evidence: structuredClone(home.evidence), market: home.market });
+  return kept;
+}
+/** Whether the player is renting, buying, owns or is selling or letting this home: its agreed terms are then fixed. */
+export function engaged(hs: HomesState, id: string): boolean {
+  return hs.tenancies.some((t) => t.homeId === id && ['applied', 'approved', 'signed', 'active', 'notice'].includes(t.stage))
+    || hs.purchases.some((p) => p.homeId === id && !['completed', 'failed', 'rejected', 'withdrawn'].includes(p.stage))
+    || hs.owned.some((o) => o.homeId === id && !o.soldAt);
 }
 
 export const zoneOf = (h: Pick<Home, 'placeId'>) => getPlace(h.placeId).zone;

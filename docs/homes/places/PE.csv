@@ -1,0 +1,1774 @@
+place_id,name,region,population,market,verified_homes,dated_listings,shortfall_to_50,recorded_sales,rent_source,price_source
+gn:3690608,Zorritos,Tumbes,12261,town,0,0,50,0,none,none
+gn:3690654,Yurimaguas,Loreto,41827,town,0,0,50,0,none,none
+gn:3690656,Yuracmarca,Ancash,0,village,0,0,50,0,none,none
+gn:3690660,Yuracyacu,San Martín Department,0,village,0,0,50,0,none,none
+gn:3690668,Yupán,Ancash,689,village,0,0,50,0,none,none
+gn:3690673,Yungay,Ancash,5269,village,0,0,50,0,none,none
+gn:3690674,Yungar,Ancash,595,village,0,0,50,0,none,none
+gn:3690694,Yorongos,San Martín Department,0,village,0,0,50,0,none,none
+gn:3690732,Yauyucán,Cajamarca Department,802,village,0,0,50,0,none,none
+gn:3690733,Yauya,Ancash,9092,village,0,0,50,0,none,none
+gn:3690735,Yaután,Ancash,0,village,0,0,50,0,none,none
+gn:3690743,Yarumayo,Huánuco Department,0,village,0,0,50,0,none,none
+gn:3690771,Yantaló,San Martín Department,0,village,0,0,50,0,none,none
+gn:3690807,Yanas,Huánuco Department,894,village,0,0,50,0,none,none
+gn:3690812,Yanama,Ancash,556,village,0,0,50,0,none,none
+gn:3690818,Yanac,Ancash,311,village,0,0,50,0,none,none
+gn:3690826,Yambrasbamba,Amazonas,661,village,0,0,50,0,none,none
+gn:3690828,Yamango,Piura,973,village,0,0,50,0,none,none
+gn:3690838,Yacus,Huánuco Department,0,village,0,0,50,0,none,none
+gn:3690862,Vista Alegre,Amazonas,291,village,0,0,50,0,none,none
+gn:3690875,Virú,La Libertad,20774,town,0,0,50,0,none,none
+gn:3690935,Vice,Piura,12915,town,0,0,50,0,none,none
+gn:3691021,Uticyacu,Cajamarca Department,201,village,0,0,50,0,none,none
+gn:3691028,Usquil,La Libertad,961,village,0,0,50,0,none,none
+gn:3691067,Umbe,Ancash,303,village,0,0,50,0,none,none
+gn:3691082,Ucuncha,La Libertad,0,village,0,0,50,0,none,none
+gn:3691087,Uco,Ancash,833,village,0,0,50,0,none,none
+gn:3691092,Uchumarca,La Libertad,0,village,0,0,50,0,none,none
+gn:3691094,Uchiza,San Martín Department,17742,town,0,0,50,0,none,none
+gn:3691136,Tunal,Piura,568,village,0,0,50,0,none,none
+gn:3691148,Tumbes,Tumbes,96946,town,0,0,50,0,none,none
+gn:3691161,Túcume,Lambayeque,7043,village,0,0,50,0,none,none
+gn:3691175,Trujillo,La Libertad,1067700,large-city,0,0,50,0,none,none
+gn:3691185,Trompeteros,Loreto,0,village,0,0,50,0,none,none
+gn:3691192,Trinidad,Cajamarca Department,233,village,0,0,50,0,none,none
+gn:3691202,Tres Unidos,San Martín Department,0,village,0,0,50,0,none,none
+gn:3691248,Tournavista,Huánuco Department,903,village,0,0,50,0,none,none
+gn:3691266,Totora,Amazonas,133,village,0,0,50,0,none,none
+gn:3691322,Tocmoche,Cajamarca Department,219,village,0,0,50,0,none,none
+gn:3691324,Tocache,San Martín Department,29029,town,0,0,50,0,none,none
+gn:3691348,Tingo María,Huánuco Department,53177,town,0,0,50,0,none,none
+gn:3691349,Tingo de Saposoa,San Martín Department,675,village,0,0,50,0,none,none
+gn:3691355,Tingo,Amazonas,162,village,0,0,50,0,none,none
+gn:3691359,Tinco,Ancash,560,village,0,0,50,0,none,none
+gn:3691405,Ticapampa,Ancash,0,village,0,0,50,0,none,none
+gn:3691428,Tembladera,Cajamarca Department,0,village,0,0,50,0,none,none
+gn:3691452,Tayabamba,La Libertad,0,village,0,0,50,0,none,none
+gn:3691454,Taurija,La Libertad,0,village,0,0,50,0,none,none
+gn:3691459,Tauca,Ancash,0,village,0,0,50,0,none,none
+gn:3691469,Tarica,Ancash,0,village,0,0,50,0,none,none
+gn:3691474,Tarapoto,San Martín Department,0,village,0,0,50,0,none,none
+gn:3691487,Tantamayo,Huánuco Department,319,village,0,0,50,0,none,none
+gn:3691530,Tambo Grande,Piura,30033,town,0,0,50,0,none,none
+gn:3691569,Tamarindo,Piura,0,village,0,0,50,0,none,none
+gn:3691573,Tamanco,Loreto,0,village,0,0,50,0,none,none
+gn:3691582,Talara,Piura,99074,town,0,0,50,0,none,none
+gn:3691619,Tacabamba,Cajamarca Department,0,village,0,0,50,0,none,none
+gn:3691631,Tablazo Norte,Piura,4303,village,0,0,50,0,none,none
+gn:3691638,Tabalosos,San Martín Department,14744,town,0,0,50,0,none,none
+gn:3691640,Tabaconas,Cajamarca Department,443,village,0,0,50,0,none,none
+gn:3691647,Suyo,Piura,985,village,0,0,50,0,none,none
+gn:3691674,Sullana,Piura,160789,city,0,0,50,0,none,none
+gn:3691682,Sucre,Ancash,626,village,0,0,50,0,none,none
+gn:3691683,Sucre,Cajamarca Department,0,village,0,0,50,0,none,none
+gn:3691696,Succha,Ancash,372,village,0,0,50,0,none,none
+gn:3691711,Sorochuco,Cajamarca Department,713,village,0,0,50,0,none,none
+gn:3691712,Soritor,San Martín Department,10858,town,0,0,50,0,none,none
+gn:3691721,Sondorillo,Piura,311,village,0,0,50,0,none,none
+gn:3691724,Sondor,Piura,987,village,0,0,50,0,none,none
+gn:3691736,Soloco,Amazonas,298,village,0,0,50,0,none,none
+gn:3691763,Sojo,Piura,0,village,0,0,50,0,none,none
+gn:3691766,Socota,Cajamarca Department,0,village,0,0,50,0,none,none
+gn:3691780,Sitabamba,La Libertad,867,village,0,0,50,0,none,none
+gn:3691795,Sinsicap,La Libertad,327,village,0,0,50,0,none,none
+gn:3691804,Singa,Huánuco Department,0,village,0,0,50,0,none,none
+gn:3691808,Sinchao,Piura,0,village,0,0,50,0,none,none
+gn:3691818,Simbal,La Libertad,805,village,0,0,50,0,none,none
+gn:3691822,Sillapata,Huánuco Department,504,village,0,0,50,0,none,none
+gn:3691836,Sihuas,Ancash,0,village,0,0,50,0,none,none
+gn:3691854,Shupluy,Ancash,173,village,0,0,50,0,none,none
+gn:3691855,Shunqui,Huánuco Department,570,village,0,0,50,0,none,none
+gn:3691862,Shucushuyacu,Loreto,0,village,0,0,50,0,none,none
+gn:3691879,Shirac,Cajamarca Department,626,village,0,0,50,0,none,none
+gn:3691886,Shilla,Ancash,943,village,0,0,50,0,none,none
+gn:3691902,Shapaja,San Martín Department,0,village,0,0,50,0,none,none
+gn:3691905,Shanao,San Martín Department,0,village,0,0,50,0,none,none
+gn:3691907,Shamboyacu,San Martín Department,0,village,0,0,50,0,none,none
+gn:3691920,Sexi,Cajamarca Department,279,village,0,0,50,0,none,none
+gn:3691954,Sechura,Piura,23020,town,0,0,50,0,none,none
+gn:3691969,Sayapullo,La Libertad,764,village,0,0,50,0,none,none
+gn:3691995,Sauce,San Martín Department,0,village,0,0,50,0,none,none
+gn:3692005,Sartimbamba,La Libertad,600,village,0,0,50,0,none,none
+gn:3692020,Saquena,Loreto,4362,village,0,0,50,0,none,none
+gn:3692029,Saposoa,San Martín Department,14894,town,0,0,50,0,none,none
+gn:3692030,Sapillica,Piura,821,village,0,0,50,0,none,none
+gn:3692036,Sapalache,Piura,487,village,0,0,50,0,none,none
+gn:3692049,Santo Tomás,Cajamarca Department,0,village,0,0,50,0,none,none
+gn:3692058,Santo Domingo de Capilla,Cajamarca Department,0,village,0,0,50,0,none,none
+gn:3692066,Santo Domingo,Piura,0,village,0,0,50,0,none,none
+gn:3692072,Santiago de Chuco,La Libertad,6759,village,0,0,50,0,none,none
+gn:3692073,Santiago de Cao,La Libertad,21982,town,0,0,50,0,none,none
+gn:3692094,Santa Rosa,Amazonas,0,village,0,0,50,0,none,none
+gn:3692109,Santa Rosa,Ancash,380,village,0,0,50,0,none,none
+gn:3692115,Santa Rosa,Lambayeque,0,village,0,0,50,0,none,none
+gn:3692116,Santa Rosa,Lambayeque,10625,town,0,0,50,0,none,none
+gn:3692118,Santa Rosa,San Martín Department,0,village,0,0,50,0,none,none
+gn:3692150,Santa María del Valle,Huánuco Department,0,village,0,0,50,0,none,none
+gn:3692183,Santa Isabel,Loreto,0,village,0,0,50,0,none,none
+gn:3692202,Santa Elena,Loreto,785,village,0,0,50,0,none,none
+gn:3692219,Santa Cruz De Succhabamba,Cajamarca Department,4660,village,0,0,50,0,none,none
+gn:3692221,Santa Cruz,Loreto,0,village,0,0,50,0,none,none
+gn:3692241,Santa Catalina de Pulán,Cajamarca Department,0,village,0,0,50,0,none,none
+gn:3692282,Santa,Ancash,0,village,0,0,50,0,none,none
+gn:3692304,San Rafael,San Martín Department,0,village,0,0,50,0,none,none
+gn:3692310,San Pedro de Lloc,La Libertad,16250,town,0,0,50,0,none,none
+gn:3692311,San Pedro de Chonta,Huánuco Department,577,village,0,0,50,0,none,none
+gn:3692349,San Pablo,Cajamarca Department,0,village,0,0,50,0,none,none
+gn:3692350,San Pablo,San Martín Department,979,village,0,0,50,0,none,none
+gn:3692361,San Miguel de Pallaques,Cajamarca Department,0,village,0,0,50,0,none,none
+gn:3692388,San Martín,San Martín Department,0,village,0,0,50,0,none,none
+gn:3692396,San Marcos,Ancash,0,village,0,0,50,0,none,none
+gn:3692397,San Marcos,Cajamarca Department,0,village,0,0,50,0,none,none
+gn:3692405,San Luis,Ancash,0,village,0,0,50,0,none,none
+gn:3692414,San Lucas ( Pueblo Nuevo de Colan),Piura,9874,village,0,0,50,0,none,none
+gn:3692426,San Lorenzo,Loreto,10500,town,0,0,50,0,none,none
+gn:3692433,San Juan de la Virgen,Tumbes,1559,village,0,0,50,0,none,none
+gn:3692449,San Juan,Cajamarca Department,908,village,0,0,50,0,none,none
+gn:3692462,San Juan,Loreto,78153,town,0,0,50,0,none,none
+gn:3692464,Sisa,San Martín Department,9477,village,0,0,50,0,none,none
+gn:3692467,San José de Lourdes,Cajamarca Department,0,village,0,0,50,0,none,none
+gn:3692468,San José del Alto,Cajamarca Department,0,village,0,0,50,0,none,none
+gn:3692482,San José,Lambayeque,7434,village,0,0,50,0,none,none
+gn:3692509,San Jacinto,Piura,0,village,0,0,50,0,none,none
+gn:3692511,San Jacinto,Tumbes,0,village,0,0,50,0,none,none
+gn:3692529,San Ignacio,Cajamarca Department,7912,village,0,0,50,0,none,none
+gn:3692532,San Gregorio,Cajamarca Department,189,village,0,0,50,0,none,none
+gn:3692567,San Felipe,Cajamarca Department,382,village,0,0,50,0,none,none
+gn:3692611,San Carlos,Amazonas,295,village,0,0,50,0,none,none
+gn:3692614,San Bernardino,Cajamarca Department,179,village,0,0,50,0,none,none
+gn:3692616,San Benito,Cajamarca Department,546,village,0,0,50,0,none,none
+gn:3692640,San Antonio,San Martín Department,0,village,0,0,50,0,none,none
+gn:3692660,San Andrés de Cutervo,Cajamarca Department,0,village,0,0,50,0,none,none
+gn:3692667,Saña,Lambayeque,39200,town,0,0,50,0,none,none
+gn:3692686,Samanco,Ancash,0,village,0,0,50,0,none,none
+gn:3692714,Salpo,La Libertad,709,village,0,0,50,0,none,none
+gn:3692716,Sallique,Cajamarca Department,894,village,0,0,50,0,none,none
+gn:3692727,Salitral,Piura,5385,village,0,0,50,0,none,none
+gn:3692729,Salinera Colán,Piura,14210,town,0,0,50,0,none,none
+gn:3692736,Guadalupito,La Libertad,0,village,0,0,50,0,none,none
+gn:3692747,Salaverry,La Libertad,10066,town,0,0,50,0,none,none
+gn:3692750,Salas,Lambayeque,0,village,0,0,50,0,none,none
+gn:3692787,Sacanche,San Martín Department,0,village,0,0,50,0,none,none
+gn:3692806,Rumisapa,San Martín Department,0,village,0,0,50,0,none,none
+gn:3692828,Roque,San Martín Department,0,village,0,0,50,0,none,none
+gn:3692829,Rondos,Huánuco Department,709,village,0,0,50,0,none,none
+gn:3692863,Rioja,San Martín Department,25057,town,0,0,50,0,none,none
+gn:3692895,Requena,Loreto,25300,town,0,0,50,0,none,none
+gn:3692900,Reque,Lambayeque,9808,village,0,0,50,0,none,none
+gn:3692928,Recuay,Ancash,0,village,0,0,50,0,none,none
+gn:3692940,Ranrahirca,Ancash,936,village,0,0,50,0,none,none
+gn:3692953,Ramón Castilla,Loreto,5495,village,0,0,50,0,none,none
+gn:3692972,Rahuapampa,Ancash,0,village,0,0,50,0,none,none
+gn:3692979,Quivilla,Huánuco Department,0,village,0,0,50,0,none,none
+gn:3692994,Quiruvilca,La Libertad,9226,village,0,0,50,0,none,none
+gn:3693012,Quinuabamba,Ancash,0,village,0,0,50,0,none,none
+gn:3693014,Quinjalca,Amazonas,143,village,0,0,50,0,none,none
+gn:3693028,Quillo,Ancash,596,village,0,0,50,0,none,none
+gn:3693042,Quiches,Ancash,627,village,0,0,50,0,none,none
+gn:3693051,Querocoto,Cajamarca Department,417,village,0,0,50,0,none,none
+gn:3693052,Querocotillo,Cajamarca Department,901,village,0,0,50,0,none,none
+gn:3693057,Querecotillo,Piura,25396,town,0,0,50,0,none,none
+gn:3693129,Puños,Huánuco Department,0,village,0,0,50,0,none,none
+gn:3693133,Punchao,Huánuco Department,0,village,0,0,50,0,none,none
+gn:3693191,Puerto Santa,Ancash,14066,town,0,0,50,0,none,none
+gn:3693196,Puerto Rico,San Martín Department,0,village,0,0,50,0,none,none
+gn:3693227,Puerto Inca,Huánuco Department,0,village,0,0,50,0,none,none
+gn:3693231,Puerto Galilea,Amazonas,0,village,0,0,50,0,none,none
+gn:3693253,Puerto Casma,Ancash,384,village,0,0,50,0,none,none
+gn:3693292,Chao,La Libertad,0,village,0,0,50,0,none,none
+gn:3693302,Pueblo Nuevo,La Libertad,5766,village,0,0,50,0,none,none
+gn:3693305,Pueblo Nuevo,Lambayeque,12471,town,0,0,50,0,none,none
+gn:3693320,Pueblo Libre,Ancash,0,village,0,0,50,0,none,none
+gn:3693343,Pucará,Cajamarca Department,0,village,0,0,50,0,none,none
+gn:3693345,Pucallpa,Ucayali,326040,city,0,0,50,0,none,none
+gn:3693347,Hacienda Pucala,Lambayeque,6277,village,0,0,50,0,none,none
+gn:3693353,Pucacaca,San Martín Department,0,village,0,0,50,0,none,none
+gn:3693420,Posic,San Martín Department,0,village,0,0,50,0,none,none
+gn:3693441,Poroto,La Libertad,753,village,0,0,50,0,none,none
+gn:3693445,Ponto,Ancash,0,village,0,0,50,0,none,none
+gn:3693461,Pomalca,Lambayeque,0,village,0,0,50,0,none,none
+gn:3693464,Pomahuaca,Cajamarca Department,0,village,0,0,50,0,none,none
+gn:3693468,Pomabamba,Ancash,4453,village,0,0,50,0,none,none
+gn:3693528,Piura,Piura,630000,large-city,0,0,50,0,none,none
+gn:3693544,Piscoyacu,San Martín Department,0,village,0,0,50,0,none,none
+gn:3693555,Pira,Ancash,510,village,0,0,50,0,none,none
+gn:3693561,Pión,Cajamarca Department,471,village,0,0,50,0,none,none
+gn:3693570,Pinra,Huánuco Department,0,village,0,0,50,0,none,none
+gn:3693584,Pimentel,Lambayeque,15552,town,0,0,50,0,none,none
+gn:3693587,Pilluana,San Martín Department,486,village,0,0,50,0,none,none
+gn:3693645,Picsi,Lambayeque,43610,town,0,0,50,0,none,none
+gn:3693646,Picota,San Martín Department,6697,village,0,0,50,0,none,none
+gn:3693666,Pías,La Libertad,544,village,0,0,50,0,none,none
+gn:3693752,Pelejo,San Martín Department,0,village,0,0,50,0,none,none
+gn:3693782,Pebas,Loreto,0,village,0,0,50,0,none,none
+gn:3693804,Paucas,Ancash,868,village,0,0,50,0,none,none
+gn:3693807,Paltashaco,Piura,301,village,0,0,50,0,none,none
+gn:3693826,Pátapo,Lambayeque,15270,town,0,0,50,0,none,none
+gn:3693856,Parobamba,Ancash,543,village,0,0,50,0,none,none
+gn:3693863,Parinari,Loreto,0,village,0,0,50,0,none,none
+gn:3693868,Pariacoto,Ancash,0,village,0,0,50,0,none,none
+gn:3693917,Papayal,Tumbes,0,village,0,0,50,0,none,none
+gn:3693928,Pantoja,Loreto,564,village,0,0,50,0,none,none
+gn:3693962,Panao,Huánuco Department,0,village,0,0,50,0,none,none
+gn:3693979,Pampas,Ancash,412,village,0,0,50,0,none,none
+gn:3693980,Pampas,Ancash,0,village,0,0,50,0,none,none
+gn:3693981,Pamparomas,Ancash,411,village,0,0,50,0,none,none
+gn:3693992,Pampa Hermosa,Loreto,0,village,0,0,50,0,none,none
+gn:3694075,Pallasca,Ancash,0,village,0,0,50,0,none,none
+gn:3694112,Paita,Piura,56151,town,0,0,50,0,none,none
+gn:3694115,Paimas,Piura,0,village,0,0,50,0,none,none
+gn:3694119,Paiján,La Libertad,21128,town,0,0,50,0,none,none
+gn:3694132,Pacora,Lambayeque,0,village,0,0,50,0,none,none
+gn:3694136,Paclas,Amazonas,365,village,0,0,50,0,none,none
+gn:3694142,Pachiza,San Martín Department,0,village,0,0,50,0,none,none
+gn:3694151,Pachas,Huánuco Department,0,village,0,0,50,0,none,none
+gn:3694163,Paccha,Cajamarca Department,0,village,0,0,50,0,none,none
+gn:3694178,Pacasmayo,La Libertad,29165,town,0,0,50,0,none,none
+gn:3694183,Pacanga,La Libertad,8750,village,0,0,50,0,none,none
+gn:3694184,Pacaipampa,Piura,0,village,0,0,50,0,none,none
+gn:3694197,Oyotún,Lambayeque,6330,village,0,0,50,0,none,none
+gn:3694202,Oxamarca,Cajamarca Department,449,village,0,0,50,0,none,none
+gn:3694212,Otuzco,La Libertad,10134,town,0,0,50,0,none,none
+gn:3694233,Orellana,Loreto,0,village,0,0,50,0,none,none
+gn:3694249,Omia,Amazonas,604,village,0,0,50,0,none,none
+gn:3694252,Olto,Amazonas,498,village,0,0,50,0,none,none
+gn:3694256,Olmos,Lambayeque,9800,village,0,0,50,0,none,none
+gn:3694262,Olleros,Ancash,0,village,0,0,50,0,none,none
+gn:3694263,Olleros,Amazonas,104,village,0,0,50,0,none,none
+gn:3694297,Obas,Huánuco Department,0,village,0,0,50,0,none,none
+gn:3694316,Nuevo Lima,San Martín Department,0,village,0,0,50,0,none,none
+gn:3694321,Nueva Arica,Lambayeque,0,village,0,0,50,0,none,none
+gn:3694369,Niepos,Cajamarca Department,638,village,0,0,50,0,none,none
+gn:3694379,Nepeña,Ancash,0,village,0,0,50,0,none,none
+gn:3694414,Negritos,Piura,0,village,0,0,50,0,none,none
+gn:3694434,Navarro,San Martín Department,498,village,0,0,50,0,none,none
+gn:3694436,Nauta,Loreto,14646,town,0,0,50,0,none,none
+gn:3694465,Naranjillo,Huánuco Department,0,village,0,0,50,0,none,none
+gn:3694485,Nanchoc,Cajamarca Department,264,village,0,0,50,0,none,none
+gn:3694494,Namora,Cajamarca Department,0,village,0,0,50,0,none,none
+gn:3694495,Namballe,Cajamarca Department,0,village,0,0,50,0,none,none
+gn:3694564,Moyobamba,San Martín Department,50073,town,0,0,50,0,none,none
+gn:3694569,Motupe,Lambayeque,13681,town,0,0,50,0,none,none
+gn:3694582,Morropón,Piura,12307,town,0,0,50,0,none,none
+gn:3694586,Mórrope,Lambayeque,6662,village,0,0,50,0,none,none
+gn:3694594,Moro,Ancash,0,village,0,0,50,0,none,none
+gn:3694603,Morales,San Martín Department,0,village,0,0,50,0,none,none
+gn:3694609,Montevideo,Amazonas,619,village,0,0,50,0,none,none
+gn:3694629,Montero,Piura,0,village,0,0,50,0,none,none
+gn:3694666,Monsefú,Lambayeque,25707,town,0,0,50,0,none,none
+gn:3694688,Mollepata,La Libertad,179,village,0,0,50,0,none,none
+gn:3694697,Molino,Huánuco Department,0,village,0,0,50,0,none,none
+gn:3694716,Mocupe,Lambayeque,0,village,0,0,50,0,none,none
+gn:3694720,Mochumí,Lambayeque,7460,village,0,0,50,0,none,none
+gn:3694725,Moche,La Libertad,22581,town,0,0,50,0,none,none
+gn:3694745,Mirgas,Ancash,654,village,0,0,50,0,none,none
+gn:3694753,Miraflores,Huánuco Department,0,village,0,0,50,0,none,none
+gn:3694781,Miracosta,Cajamarca Department,180,village,0,0,50,0,none,none
+gn:3694798,Ninabamba,Cajamarca Department,0,village,0,0,50,0,none,none
+gn:3694804,Milpuc,Amazonas,386,village,0,0,50,0,none,none
+gn:3694838,Mendoza,Amazonas,0,village,0,0,50,0,none,none
+gn:3694887,Matará,Cajamarca Department,763,village,0,0,50,0,none,none
+gn:3694891,Matapalo,Tumbes,343,village,0,0,50,0,none,none
+gn:3694895,La Matanza,Piura,5828,village,0,0,50,0,none,none
+gn:3694903,Masisea,Ucayali,0,village,0,0,50,0,none,none
+gn:3694939,Marcavelica,Piura,25645,town,0,0,50,0,none,none
+gn:3694941,Marcará,Ancash,0,village,0,0,50,0,none,none
+gn:3694944,Marcabal,La Libertad,447,village,0,0,50,0,none,none
+gn:3694999,Mancos,Ancash,0,village,0,0,50,0,none,none
+gn:3695000,Máncora,Piura,9101,village,0,0,50,0,none,none
+gn:3695019,Malvas,Ancash,362,village,0,0,50,0,none,none
+gn:3695063,Maino,Amazonas,473,village,0,0,50,0,none,none
+gn:3695072,Magdalena,Cajamarca Department,0,village,0,0,50,0,none,none
+gn:3695073,Magdalena,Amazonas,694,village,0,0,50,0,none,none
+gn:3695093,Mache,La Libertad,708,village,0,0,50,0,none,none
+gn:3695102,Macate,Ancash,321,village,0,0,50,0,none,none
+gn:3695115,Luya,Amazonas,0,village,0,0,50,0,none,none
+gn:3695135,Lucmapampa,Cajamarca Department,214,village,0,0,50,0,none,none
+gn:3695137,Lucma,Ancash,146,village,0,0,50,0,none,none
+gn:3695138,Lucma,La Libertad,652,village,0,0,50,0,none,none
+gn:3695161,Los Organos,Piura,0,village,0,0,50,0,none,none
+gn:3695223,Los Baños del Inca,Cajamarca Department,0,village,0,0,50,0,none,none
+gn:3695242,Lonya Grande,Amazonas,0,village,0,0,50,0,none,none
+gn:3695243,Lonya Chico,Amazonas,345,village,0,0,50,0,none,none
+gn:3695246,Longuita,Amazonas,198,village,0,0,50,0,none,none
+gn:3695247,Longotea,La Libertad,0,village,0,0,50,0,none,none
+gn:3695248,Longar,Amazonas,957,village,0,0,50,0,none,none
+gn:3695300,Lobitos,Piura,0,village,0,0,50,0,none,none
+gn:3695306,Lluchubamba,Cajamarca Department,0,village,0,0,50,0,none,none
+gn:3695320,Llata,Huánuco Department,4585,village,0,0,50,0,none,none
+gn:3695321,Llapo,Ancash,679,village,0,0,50,0,none,none
+gn:3695323,Llapa,Cajamarca Department,732,village,0,0,50,0,none,none
+gn:3695334,Llama,Ancash,175,village,0,0,50,0,none,none
+gn:3695335,Llama,Cajamarca Department,968,village,0,0,50,0,none,none
+gn:3695339,Llacanora,Cajamarca Department,648,village,0,0,50,0,none,none
+gn:3695386,Licupis,Cajamarca Department,193,village,0,0,50,0,none,none
+gn:3695398,Levanto,Amazonas,485,village,0,0,50,0,none,none
+gn:3695465,La Unión,Huánuco Department,4788,village,0,0,50,0,none,none
+gn:3695466,La Unión,Piura,34834,town,0,0,50,0,none,none
+gn:3695533,Las Palmas,Huánuco Department,0,village,0,0,50,0,none,none
+gn:3695552,Las Lomas,Piura,9450,village,0,0,50,0,none,none
+gn:3695617,Laredo,La Libertad,24691,town,0,0,50,0,none,none
+gn:3695675,La Peca,Amazonas,27045,town,0,0,50,0,none,none
+gn:3695685,La Pampa,Ancash,857,village,0,0,50,0,none,none
+gn:3695724,Lamud,Amazonas,0,village,0,0,50,0,none,none
+gn:3695747,La Merced,Ancash,307,village,0,0,50,0,none,none
+gn:3695754,Lambayeque,Lambayeque,43710,town,0,0,50,0,none,none
+gn:3695757,Lamas,San Martín Department,13693,town,0,0,50,0,none,none
+gn:3695788,La Legua - San Jacinto,Piura,7548,village,0,0,50,0,none,none
+gn:3695804,Lajas,Cajamarca Department,0,village,0,0,50,0,none,none
+gn:3695806,La Jalca,Amazonas,0,village,0,0,50,0,none,none
+gn:3695819,Huangala,Piura,3739,village,0,0,50,0,none,none
+gn:3695829,La Huaca,Piura,8468,village,0,0,50,0,none,none
+gn:3695844,Lagunas,Loreto,9197,village,0,0,50,0,none,none
+gn:3695846,Lagunas,Piura,246,village,0,0,50,0,none,none
+gn:3695860,La Grama,Cajamarca Department,535,village,0,0,50,0,none,none
+gn:3695886,La Esperanza,La Libertad,0,village,0,0,50,0,none,none
+gn:3695887,La Esperanza,Cajamarca Department,179,village,0,0,50,0,none,none
+gn:3695904,La Cuesta,La Libertad,75,village,0,0,50,0,none,none
+gn:3695996,Lacabamba,Ancash,378,village,0,0,50,0,none,none
+gn:3696027,La Arena,Piura,0,village,0,0,50,0,none,none
+gn:3696057,Juanjuí,San Martín Department,37715,town,0,0,50,0,none,none
+gn:3696059,Juan Guerra,San Martín Department,0,village,0,0,50,0,none,none
+gn:3696075,Jircan,Huánuco Department,282,village,0,0,50,0,none,none
+gn:3696080,Jimbe,Ancash,0,village,0,0,50,0,none,none
+gn:3696082,Jilili,Piura,351,village,0,0,50,0,none,none
+gn:3696088,Jesús,Cajamarca Department,0,village,0,0,50,0,none,none
+gn:3696096,Jepelacio,San Martín Department,7150,village,0,0,50,0,none,none
+gn:3696100,Jeberos,Loreto,0,village,0,0,50,0,none,none
+gn:3696104,Jayanca,Lambayeque,6126,village,0,0,50,0,none,none
+gn:3696120,Jangas,Ancash,0,village,0,0,50,0,none,none
+gn:3696127,Jamalca,Amazonas,0,village,0,0,50,0,none,none
+gn:3696150,Jaén,Cajamarca Department,52493,town,0,0,50,0,none,none
+gn:3696183,Iquitos,Loreto,377609,city,0,0,50,0,none,none
+gn:3696187,Iparia,Ucayali,0,village,0,0,50,0,none,none
+gn:3696199,Inguilpata,Amazonas,410,village,0,0,50,0,none,none
+gn:3696227,Incahuasi,Lambayeque,644,village,0,0,50,0,none,none
+gn:3696229,Inahuaya,Loreto,0,village,0,0,50,0,none,none
+gn:3696237,Ichocán,Cajamarca Department,616,village,0,0,50,0,none,none
+gn:3696240,Iberia,Loreto,0,village,0,0,50,0,none,none
+gn:3696267,Huicungo,San Martín Department,6757,village,0,0,50,0,none,none
+gn:3696295,Huaylillas,La Libertad,598,village,0,0,50,0,none,none
+gn:3696299,Huaylas,Ancash,576,village,0,0,50,0,none,none
+gn:3696305,Huayán,Ancash,428,village,0,0,50,0,none,none
+gn:3696322,Huata,Ancash,228,village,0,0,50,0,none,none
+gn:3696325,Huasmín,Cajamarca Department,216,village,0,0,50,0,none,none
+gn:3696363,Huarmaca,Piura,0,village,0,0,50,0,none,none
+gn:3696366,Huaripampa,Ancash,331,village,0,0,50,0,none,none
+gn:3696372,Huari,Ancash,4406,village,0,0,50,0,none,none
+gn:3696378,Huaraz,Ancash,118836,city,0,0,50,0,none,none
+gn:3696384,Huaranchal,La Libertad,0,village,0,0,50,0,none,none
+gn:3696417,Huánuco,Huánuco Department,196627,city,0,0,50,0,none,none
+gn:3696420,Huántar,Ancash,859,village,0,0,50,0,none,none
+gn:3696435,Huandoval,Ancash,709,village,0,0,50,0,none,none
+gn:3696441,Huanchay,Ancash,398,village,0,0,50,0,none,none
+gn:3696448,Huanchaco,La Libertad,0,village,0,0,50,0,none,none
+gn:3696454,Huancas,Amazonas,803,village,0,0,50,0,none,none
+gn:3696466,Huancabamba,Piura,8553,village,0,0,50,0,none,none
+gn:3696483,Huambos,Cajamarca Department,0,village,0,0,50,0,none,none
+gn:3696509,Huamachuco,La Libertad,21768,town,0,0,50,0,none,none
+gn:3696528,Huayllabamba,Ancash,0,village,0,0,50,0,none,none
+gn:3696530,Huallanca,Ancash,0,village,0,0,50,0,none,none
+gn:3696531,Huallanca,Ancash,400,village,0,0,50,0,none,none
+gn:3696538,Hualgayoc,Cajamarca Department,0,village,0,0,50,0,none,none
+gn:3696557,Huacrachuco,Huánuco Department,0,village,0,0,50,0,none,none
+gn:3696561,Huacllán,Ancash,332,village,0,0,50,0,none,none
+gn:3696564,Huachis,Ancash,734,village,0,0,50,0,none,none
+gn:3696565,Huacchis,Ancash,485,village,0,0,50,0,none,none
+gn:3696570,Huacaybamba,Huánuco Department,0,village,0,0,50,0,none,none
+gn:3696574,Huacaschuque,Ancash,242,village,0,0,50,0,none,none
+gn:3696591,Huacapampa,Cajamarca Department,891,village,0,0,50,0,none,none
+gn:3696605,Huacachi,Ancash,829,village,0,0,50,0,none,none
+gn:3696629,Honoria,Huánuco Department,787,village,0,0,50,0,none,none
+gn:3696763,Habana,San Martín Department,0,village,0,0,50,0,none,none
+gn:3696764,Guzmango,Cajamarca Department,222,village,0,0,50,0,none,none
+gn:3696847,Guadalupe,La Libertad,25376,town,0,0,50,0,none,none
+gn:3696893,Granada,Amazonas,143,village,0,0,50,0,none,none
+gn:3696986,Frias,Piura,0,village,0,0,50,0,none,none
+gn:3697007,La Florida,Cajamarca Department,592,village,0,0,50,0,none,none
+gn:3697009,Florida ( Pomacochas),Amazonas,3570,village,0,0,50,0,none,none
+gn:3697033,Ferreñafe,Lambayeque,34357,town,0,0,50,0,none,none
+gn:3697083,Eten,Lambayeque,13693,town,0,0,50,0,none,none
+gn:3697085,San Antonio del Estrecho,Loreto,8000,village,0,0,50,0,none,none
+gn:3697148,Encañada,Cajamarca Department,0,village,0,0,50,0,none,none
+gn:3697221,El Prado,Cajamarca Department,259,village,0,0,50,0,none,none
+gn:3697233,El Porvenir,La Libertad,0,village,0,0,50,0,none,none
+gn:3697250,El Parco District,Amazonas,0,village,0,0,50,0,none,none
+gn:3697441,El Alto,Piura,9303,village,0,0,50,0,none,none
+gn:3697458,Dos Pueblos,Piura,0,village,0,0,50,0,none,none
+gn:3697540,Cutervo,Cajamarca Department,0,village,0,0,50,0,none,none
+gn:3697554,Cusco,San Martín Department,0,village,0,0,50,0,none,none
+gn:3697555,Cusca,Ancash,494,village,0,0,50,0,none,none
+gn:3697569,Curgos,La Libertad,0,village,0,0,50,0,none,none
+gn:3697611,Cumba,Amazonas,0,village,0,0,50,0,none,none
+gn:3697633,La Caleta Culebras,Ancash,0,village,0,0,50,0,none,none
+gn:3697644,Cujillo,Cajamarca Department,0,village,0,0,50,0,none,none
+gn:3697646,Cuispes,Amazonas,364,village,0,0,50,0,none,none
+gn:3697742,Cospán,Cajamarca Department,665,village,0,0,50,0,none,none
+gn:3697794,Corongo,Ancash,0,village,0,0,50,0,none,none
+gn:3697805,Coris,Ancash,453,village,0,0,50,0,none,none
+gn:3697833,Contumazá,Cajamarca Department,0,village,0,0,50,0,none,none
+gn:3697838,Contamana,Loreto,20900,town,0,0,50,0,none,none
+gn:3697881,Concordia,Loreto,0,village,0,0,50,0,none,none
+gn:3697888,Conchucos,Ancash,0,village,0,0,50,0,none,none
+gn:3697891,Conchán,Cajamarca Department,419,village,0,0,50,0,none,none
+gn:3697969,Colcamar,Amazonas,0,village,0,0,50,0,none,none
+gn:3697970,Colcabamba,Ancash,359,village,0,0,50,0,none,none
+gn:3697973,Colasay,Cajamarca Department,975,village,0,0,50,0,none,none
+gn:3697990,Coishco,Ancash,15083,town,0,0,50,0,none,none
+gn:3698006,Cochapetí,Ancash,255,village,0,0,50,0,none,none
+gn:3698013,Cochabamba,Ancash,470,village,0,0,50,0,none,none
+gn:3698015,Cochabamba,Cajamarca Department,0,village,0,0,50,0,none,none
+gn:3698017,Cocabamba,Amazonas,0,village,0,0,50,0,none,none
+gn:3698056,Churuja,Amazonas,248,village,0,0,50,0,none,none
+gn:3698060,Churubamba,Huánuco Department,323,village,0,0,50,0,none,none
+gn:3698064,Chuquis,Huánuco Department,840,village,0,0,50,0,none,none
+gn:3698073,Chuquibamba,Amazonas,623,village,0,0,50,0,none,none
+gn:3698079,Chupán,Huánuco Department,0,village,0,0,50,0,none,none
+gn:3698095,Chumuch,Cajamarca Department,237,village,0,0,50,0,none,none
+gn:3698105,Chulucanas,Piura,68835,town,0,0,50,0,none,none
+gn:3698121,Chugur,Cajamarca Department,234,village,0,0,50,0,none,none
+gn:3698122,Chugay,La Libertad,0,village,0,0,50,0,none,none
+gn:3698141,Chota,Cajamarca Department,14240,town,0,0,50,0,none,none
+gn:3698156,Choros,Cajamarca Department,367,village,0,0,50,0,none,none
+gn:3698164,Chontalí,Cajamarca Department,0,village,0,0,50,0,none,none
+gn:3698176,Chongoyape,Lambayeque,16061,town,0,0,50,0,none,none
+gn:3698194,Chocope,La Libertad,32370,town,0,0,50,0,none,none
+gn:3698218,Chisquilla,Amazonas,0,village,0,0,50,0,none,none
+gn:3698222,Chirinos,Cajamarca Department,0,village,0,0,50,0,none,none
+gn:3698236,Chiriaco,Amazonas,0,village,0,0,50,0,none,none
+gn:3698272,Chingas,Ancash,729,village,0,0,50,0,none,none
+gn:3698281,Chingalpa,Ancash,0,village,0,0,50,0,none,none
+gn:3698294,Chimuch,Cajamarca Department,0,village,0,0,50,0,none,none
+gn:3698304,Chimbote,Ancash,316966,city,0,0,50,0,none,none
+gn:3698310,Chimbán,Cajamarca Department,727,village,0,0,50,0,none,none
+gn:3698314,Chillia,La Libertad,0,village,0,0,50,0,none,none
+gn:3698325,Chilete,Cajamarca Department,0,village,0,0,50,0,none,none
+gn:3698337,Chiguirip,Cajamarca Department,403,village,0,0,50,0,none,none
+gn:3698350,Chiclayo,Lambayeque,609400,large-city,0,0,50,0,none,none
+gn:3698359,Chicama,La Libertad,14915,town,0,0,50,0,none,none
+gn:3698371,Chetilla,Cajamarca Department,405,village,0,0,50,0,none,none
+gn:3698390,Chepén,La Libertad,41992,town,0,0,50,0,none,none
+gn:3698402,Chavinillo,Huánuco Department,0,village,0,0,50,0,none,none
+gn:3698403,Chavin de Pariarca,Huánuco Department,977,village,0,0,50,0,none,none
+gn:3698414,Chazuta,San Martín Department,8029,village,0,0,50,0,none,none
+gn:3698416,Charat,La Libertad,189,village,0,0,50,0,none,none
+gn:3698509,Chalán,Cajamarca Department,538,village,0,0,50,0,none,none
+gn:3698515,Chalaco,Piura,0,village,0,0,50,0,none,none
+gn:3698523,Chaglla,Huánuco Department,0,village,0,0,50,0,none,none
+gn:3698526,Chadín,Cajamarca Department,424,village,0,0,50,0,none,none
+gn:3698540,Chachapoyas,Amazonas,32026,town,0,0,50,0,none,none
+gn:3698545,Chacas,Ancash,0,village,0,0,50,0,none,none
+gn:3698608,Celendín,Cajamarca Department,14660,town,0,0,50,0,none,none
+gn:3698641,Cauday,Cajamarca Department,637,village,0,0,50,0,none,none
+gn:3698649,Catán,Cajamarca Department,316,village,0,0,50,0,none,none
+gn:3698657,Catache,Cajamarca Department,717,village,0,0,50,0,none,none
+gn:3698658,Catacaos,Piura,57304,town,0,0,50,0,none,none
+gn:3698660,Catac,Ancash,0,village,0,0,50,0,none,none
+gn:3698675,Caspisapa,San Martín Department,0,village,0,0,50,0,none,none
+gn:3698680,Casma,Ancash,0,village,0,0,50,0,none,none
+gn:3698705,Cascas,La Libertad,4299,village,0,0,50,0,none,none
+gn:3698706,Cascapara,Ancash,158,village,0,0,50,0,none,none
+gn:3698718,Casca,Ancash,212,village,0,0,50,0,none,none
+gn:3698727,Casa Grande,La Libertad,0,village,0,0,50,0,none,none
+gn:3698814,Carhuaz,Ancash,5044,village,0,0,50,0,none,none
+gn:3698841,Caraz,Ancash,10926,town,0,0,50,0,none,none
+gn:3698862,Carabamba,La Libertad,0,village,0,0,50,0,none,none
+gn:3698931,Canchaque,Piura,871,village,0,0,50,0,none,none
+gn:3698933,Cancas,Tumbes,0,village,0,0,50,0,none,none
+gn:3698936,Cañaveral,Tumbes,351,village,0,0,50,0,none,none
+gn:3698941,Cañaris,Lambayeque,323,village,0,0,50,0,none,none
+gn:3699001,Calzada,San Martín Department,0,village,0,0,50,0,none,none
+gn:3699022,Callayuc,Cajamarca Department,525,village,0,0,50,0,none,none
+gn:3699039,Caleta Cruz,Tumbes,0,village,0,0,50,0,none,none
+gn:3699058,Calamarca,La Libertad,364,village,0,0,50,0,none,none
+gn:3699078,Cajaruro,Amazonas,7281,village,0,0,50,0,none,none
+gn:3699083,Cajamarquilla,Ancash,340,village,0,0,50,0,none,none
+gn:3699088,Cajamarca,Cajamarca Department,201329,city,0,0,50,0,none,none
+gn:3699095,Cajabamba,Cajamarca Department,13486,town,0,0,50,0,none,none
+gn:3699109,Cahuac,Huánuco Department,0,village,0,0,50,0,none,none
+gn:3699133,Cachachi,Cajamarca Department,355,village,0,0,50,0,none,none
+gn:3699138,Cacatachi,San Martín Department,0,village,0,0,50,0,none,none
+gn:3699185,Cabana,Ancash,0,village,0,0,50,0,none,none
+gn:3699188,Caballococha,Loreto,11100,town,0,0,50,0,none,none
+gn:3699217,Buenos Aires,La Libertad,0,village,0,0,50,0,none,none
+gn:3699223,Buenos Aires,Piura,7932,village,0,0,50,0,none,none
+gn:3699226,Buena Vista Alta,Ancash,0,village,0,0,50,0,none,none
+gn:3699245,Breu,Ucayali,0,village,0,0,50,0,none,none
+gn:3699246,Bretaña,Loreto,0,village,0,0,50,0,none,none
+gn:3699280,Bolognesi,Ancash,470,village,0,0,50,0,none,none
+gn:3699350,Bernal,Piura,5916,village,0,0,50,0,none,none
+gn:3699364,Bellavista,San Martín Department,15231,town,0,0,50,0,none,none
+gn:3699366,Bellavista,Cajamarca Department,6320,village,0,0,50,0,none,none
+gn:3699368,Bellavista,Piura,0,village,0,0,50,0,none,none
+gn:3699419,Barranquita,San Martín Department,0,village,0,0,50,0,none,none
+gn:3699427,Barranca,Loreto,5779,village,0,0,50,0,none,none
+gn:3699452,Bambas,Ancash,159,village,0,0,50,0,none,none
+gn:3699456,Bambamarca,Cajamarca Department,13351,town,0,0,50,0,none,none
+gn:3699461,Balsas,Amazonas,259,village,0,0,50,0,none,none
+gn:3699484,Bagua Grande,Amazonas,20382,town,0,0,50,0,none,none
+gn:3699486,Bagua,Amazonas,0,village,0,0,50,0,none,none
+gn:3699502,Ayabaca,Piura,5270,village,0,0,50,0,none,none
+gn:3699516,Aucayacu,Huánuco Department,0,village,0,0,50,0,none,none
+gn:3699534,Asunción,Cajamarca Department,940,village,0,0,50,0,none,none
+gn:3699544,Ascope,La Libertad,14015,town,0,0,50,0,none,none
+gn:3699557,Aricapampa,La Libertad,734,village,0,0,50,0,none,none
+gn:3699572,Arenal,Piura,0,village,0,0,50,0,none,none
+gn:3699590,Arancay,Huánuco Department,394,village,0,0,50,0,none,none
+gn:3699592,Aramango,Amazonas,0,village,0,0,50,0,none,none
+gn:3699617,Anta,Ancash,614,village,0,0,50,0,none,none
+gn:3699632,Anguía,Cajamarca Department,339,village,0,0,50,0,none,none
+gn:3699652,Angasmarca,La Libertad,0,village,0,0,50,0,none,none
+gn:3699691,Amotape,Piura,0,village,0,0,50,0,none,none
+gn:3699701,Amashca,Ancash,730,village,0,0,50,0,none,none
+gn:3699821,Aija,Ancash,843,village,0,0,50,0,none,none
+gn:3699831,Aguaytía,Ucayali,18318,town,0,0,50,0,none,none
+gn:3699832,Aguas Verdes,Tumbes,9106,village,0,0,50,0,none,none
+gn:3699854,Agua Blanca,Cajamarca Department,466,village,0,0,50,0,none,none
+gn:3699855,Agua Blanca,San Martín Department,0,village,0,0,50,0,none,none
+gn:3699861,Agallpampa,La Libertad,580,village,0,0,50,0,none,none
+gn:3699867,Aczo,Ancash,464,village,0,0,50,0,none,none
+gn:3699870,Acopampa,Ancash,865,village,0,0,50,0,none,none
+gn:3699871,Acomayo,Huánuco Department,0,village,0,0,50,0,none,none
+gn:3699873,Aco,Ancash,284,village,0,0,50,0,none,none
+gn:3733377,Puerto Callao,Ucayali,0,village,0,0,50,0,none,none
+gn:3733380,Campo Verde,Ucayali,8945,village,0,0,50,0,none,none
+gn:3733381,Nueva Requena,Ucayali,0,village,0,0,50,0,none,none
+gn:3734331,Pólvora,San Martín Department,776,village,0,0,50,0,none,none
+gn:3736479,La Coipa,Cajamarca Department,0,village,0,0,50,0,none,none
+gn:3736518,La Sacilia,Cajamarca Department,0,village,0,0,50,0,none,none
+gn:3740179,Pueblo Nuevo,Huánuco Department,0,village,0,0,50,0,none,none
+gn:3742740,Bolívar,Cajamarca Department,571,village,0,0,50,0,none,none
+gn:3752538,La Libertad de Pallán,Cajamarca Department,0,village,0,0,50,0,none,none
+gn:3752737,Alianza Cristiana,Loreto,471,village,0,0,50,0,none,none
+gn:3753846,Utco,Cajamarca Department,80,village,0,0,50,0,none,none
+gn:3762315,Las Pirias,Cajamarca Department,778,village,0,0,50,0,none,none
+gn:3763237,Zapatero,San Martín Department,766,village,0,0,50,0,none,none
+gn:3763255,Cuñumbuqui,San Martín Department,0,village,0,0,50,0,none,none
+gn:3763282,Utcurarca,San Martín Department,443,village,0,0,50,0,none,none
+gn:3763294,Buenos Aires,San Martín Department,780,village,0,0,50,0,none,none
+gn:3810792,Manuel Antonio Mesones Muro,Lambayeque,0,village,0,0,50,0,none,none
+gn:3814568,La Breita,Piura,17693,town,0,0,50,0,none,none
+gn:3814639,Papayal,Tumbes,5484,village,0,0,50,0,none,none
+gn:3818398,Zarumilla,Tumbes,16907,town,0,0,50,0,none,none
+gn:3827811,Belen,Loreto,57824,town,0,0,50,0,none,none
+gn:3925319,Zurite,Cuzco Department,0,village,0,0,50,0,none,none
+gn:3925327,Zepita,Puno,0,village,0,0,50,0,none,none
+gn:3925467,Yura,Arequipa,5686,village,0,0,50,0,none,none
+gn:3925476,Yunguyo,Puno,11946,town,0,0,50,0,none,none
+gn:3925480,Yunga,Moquegua Department,0,village,0,0,50,0,none,none
+gn:3925498,Yucay,Cuzco Department,0,village,0,0,50,0,none,none
+gn:3925568,Yauyos,Lima region,0,village,0,0,50,0,none,none
+gn:3925576,Yaurisque,Cuzco Department,492,village,0,0,50,0,none,none
+gn:3925590,Yauri,Cuzco Department,23867,town,0,0,50,0,none,none
+gn:3925599,Yauli,Junin,843,village,0,0,50,0,none,none
+gn:3925600,Yauli,Junin,0,village,0,0,50,0,none,none
+gn:3925607,Yauca,Arequipa,0,village,0,0,50,0,none,none
+gn:3925641,Yarabamba,Arequipa,323,village,0,0,50,0,none,none
+gn:3925665,Yanque,Arequipa,0,village,0,0,50,0,none,none
+gn:3925669,Yangas,Lima region,568,village,0,0,50,0,none,none
+gn:3925703,Yanaquihua,Arequipa,554,village,0,0,50,0,none,none
+gn:3925749,Yanaoca,Cuzco Department,3913,village,0,0,50,0,none,none
+gn:3925799,Yanahuaya,Puno,0,village,0,0,50,0,none,none
+gn:3925804,Yanahuara,Arequipa,0,village,0,0,50,0,none,none
+gn:3925809,Yanahuanca,Pasco,5992,village,0,0,50,0,none,none
+gn:3925862,Yanacancha,Junin,586,village,0,0,50,0,none,none
+gn:3925863,Yanacancha,Huánuco Department,23175,town,0,0,50,0,none,none
+gn:3925868,Yanaca,Apurímac Department,648,village,0,0,50,0,none,none
+gn:3925955,Vizcachane,Arequipa,4407,village,0,0,50,0,none,none
+gn:3925973,Vítor,Arequipa,0,village,0,0,50,0,none,none
+gn:3925977,Vitis,Lima region,503,village,0,0,50,0,none,none
+gn:3925979,Vitarte,Lima region,0,village,0,0,50,0,none,none
+gn:3926003,Vischongo,Ayacucho,736,village,0,0,50,0,none,none
+gn:3926066,Viraco,Arequipa,0,village,0,0,50,0,none,none
+gn:3926067,Viques,Junin,0,village,0,0,50,0,none,none
+gn:3926083,Vinchos,Ayacucho,669,village,0,0,50,0,none,none
+gn:3926097,Viñac,Lima region,266,village,0,0,50,0,none,none
+gn:3926109,Vilque Chico,Puno,511,village,0,0,50,0,none,none
+gn:3926113,Vilque,Puno,731,village,0,0,50,0,none,none
+gn:3926119,Tupac Amaru,Ica,11159,town,0,0,50,0,none,none
+gn:3926120,Villa Rica,Pasco,7448,village,0,0,50,0,none,none
+gn:3926152,Vilcanchos,Ayacucho,388,village,0,0,50,0,none,none
+gn:3926166,Vilcabamba,Apurímac Department,991,village,0,0,50,0,none,none
+gn:3926170,Vilcabamba,Pasco,0,village,0,0,50,0,none,none
+gn:3926174,Vilca,Huancavelica,293,village,0,0,50,0,none,none
+gn:3926181,Vilavila,Puno,990,village,0,0,50,0,none,none
+gn:3926282,Ventanilla,Callao,0,village,0,0,50,0,none,none
+gn:3926308,Velinga,Arequipa,59,village,0,0,50,0,none,none
+gn:3926310,Velille,Cuzco Department,0,village,0,0,50,0,none,none
+gn:3926328,Végueta,Lima region,6219,village,0,0,50,0,none,none
+gn:3926405,Usicayos,Puno,0,village,0,0,50,0,none,none
+gn:3926438,Urubamba,Cuzco Department,7540,village,0,0,50,0,none,none
+gn:3926453,Uripa,Apurímac Department,0,village,0,0,50,0,none,none
+gn:3926462,Urcos,Cuzco Department,5479,village,0,0,50,0,none,none
+gn:3926474,Urasqui,Arequipa,223,village,0,0,50,0,none,none
+gn:3926499,Upahuacho,Ayacucho,191,village,0,0,50,0,none,none
+gn:3926507,Uñón,Arequipa,263,village,0,0,50,0,none,none
+gn:3926575,Umachiri,Puno,780,village,0,0,50,0,none,none
+gn:3926596,Ulcumayo,Junin,0,village,0,0,50,0,none,none
+gn:3926651,Uchumayo,Arequipa,0,village,0,0,50,0,none,none
+gn:3926698,Ubinas,Moquegua Department,498,village,0,0,50,0,none,none
+gn:3926718,Tuti,Arequipa,747,village,0,0,50,0,none,none
+gn:3926734,Turpo,Apurímac Department,739,village,0,0,50,0,none,none
+gn:3926737,Turpay,Apurímac Department,603,village,0,0,50,0,none,none
+gn:3926749,Tupicocha,Lima region,0,village,0,0,50,0,none,none
+gn:3926751,Tupe,Lima region,300,village,0,0,50,0,none,none
+gn:3926776,Tungasuca,Cuzco Department,3791,village,0,0,50,0,none,none
+gn:3926980,Totos,Ayacucho,0,village,0,0,50,0,none,none
+gn:3927023,Totorales,Tacna,1976,village,0,0,50,0,none,none
+gn:3927145,Toro,Arequipa,364,village,0,0,50,0,none,none
+gn:3927155,Toraya,Apurímac Department,550,village,0,0,50,0,none,none
+gn:3927158,Torata,Moquegua Department,7054,village,0,0,50,0,none,none
+gn:3927199,Tomepampa,Arequipa,357,village,0,0,50,0,none,none
+gn:3927202,Tomay Kichwa,Huánuco Department,0,village,0,0,50,0,none,none
+gn:3927208,Tomas,Lima region,358,village,0,0,50,0,none,none
+gn:3927301,Tocota,Arequipa,91,village,0,0,50,0,none,none
+gn:3927344,Tibillo,Ica,178,village,0,0,50,0,none,none
+gn:3927376,Tisco,Arequipa,199,village,0,0,50,0,none,none
+gn:3927384,Tirapata,Puno,691,village,0,0,50,0,none,none
+gn:3927400,Tiquillaca,Puno,261,village,0,0,50,0,none,none
+gn:3927411,Tipán,Arequipa,151,village,0,0,50,0,none,none
+gn:3927420,Tinyahuarco,Pasco,5066,village,0,0,50,0,none,none
+gn:3927436,Tintay,Apurímac Department,740,village,0,0,50,0,none,none
+gn:3927437,Tintay,Huancavelica,0,village,0,0,50,0,none,none
+gn:3927441,Tinta,Cuzco Department,3466,village,0,0,50,0,none,none
+gn:3927537,Titili,Puno,154,village,0,0,50,0,none,none
+gn:3927557,Ticrapo,Huancavelica,0,village,0,0,50,0,none,none
+gn:3927563,Ticllos,Ancash,612,village,0,0,50,0,none,none
+gn:3927564,Ticllas,Ayacucho,169,village,0,0,50,0,none,none
+gn:3927587,Ticaco,Tacna,741,village,0,0,50,0,none,none
+gn:3927596,Tiabaya,Arequipa,0,village,0,0,50,0,none,none
+gn:3927678,Taurisma,Arequipa,247,village,0,0,50,0,none,none
+gn:3927680,Tauripampa,Lima region,0,village,0,0,50,0,none,none
+gn:3927683,Tauria,Arequipa,182,village,0,0,50,0,none,none
+gn:3927694,Tate de La Capilla,Ica,392,village,0,0,50,0,none,none
+gn:3927739,Tarucani,Arequipa,296,village,0,0,50,0,none,none
+gn:3927744,Tarucachi,Tacna,416,village,0,0,50,0,none,none
+gn:3927758,Tarma,Junin,51350,town,0,0,50,0,none,none
+gn:3927774,Tarata,Tacna,3052,village,0,0,50,0,none,none
+gn:3927791,Taraco,Puno,1862,village,0,0,50,0,none,none
+gn:3927803,Taquile,Puno,2000,village,0,0,50,0,none,none
+gn:3927814,Tápuc,Pasco,0,village,0,0,50,0,none,none
+gn:3927818,Tapo,Junin,0,village,0,0,50,0,none,none
+gn:3927822,Tapay,Arequipa,121,village,0,0,50,0,none,none
+gn:3927827,Tapairihua,Apurímac Department,278,village,0,0,50,0,none,none
+gn:3927829,Tapacocha,Ancash,312,village,0,0,50,0,none,none
+gn:3927850,Tantara,Huancavelica,406,village,0,0,50,0,none,none
+gn:3927857,Tanta,Lima region,449,village,0,0,50,0,none,none
+gn:3927916,Tamburco,Apurímac Department,0,village,0,0,50,0,none,none
+gn:3927934,Tambo Quemado,Ayacucho,338,village,0,0,50,0,none,none
+gn:3927942,Tambopata,Madre de Dios,38966,town,0,0,50,0,none,none
+gn:3927979,Tambobamba,Apurímac Department,0,village,0,0,50,0,none,none
+gn:3927995,Tambo,Ayacucho,5032,village,0,0,50,0,none,none
+gn:3928002,Tambo,Ayacucho,0,village,0,0,50,0,none,none
+gn:3928017,Tambillo,Ayacucho,192,village,0,0,50,0,none,none
+gn:3928043,Talavera,Apurímac Department,7381,village,0,0,50,0,none,none
+gn:3928128,Tacna,Tacna,286240,city,0,0,50,0,none,none
+gn:3928223,Susapaya,Tacna,420,village,0,0,50,0,none,none
+gn:3928243,Surcubamba,Huancavelica,0,village,0,0,50,0,none,none
+gn:3928245,Santiago de Surco,Lima region,251648,city,0,0,50,0,none,none
+gn:3928246,Surco,Lima region,969,village,0,0,50,0,none,none
+gn:3928274,Supe,Lima region,13719,town,0,0,50,0,none,none
+gn:3928294,Sunampe,Ica,0,village,0,0,50,0,none,none
+gn:3928298,Sumbilca,Lima region,442,village,0,0,50,0,none,none
+gn:3928336,Suitucancha,Junin,538,village,0,0,50,0,none,none
+gn:3928365,Subtanjalla,Ica,9096,village,0,0,50,0,none,none
+gn:3928394,Soraya,Apurímac Department,147,village,0,0,50,0,none,none
+gn:3928401,Soras,Ayacucho,0,village,0,0,50,0,none,none
+gn:3928527,Socos,Ayacucho,758,village,0,0,50,0,none,none
+gn:3928547,Socabaya,Arequipa,0,village,0,0,50,0,none,none
+gn:3928561,Sitajara,Tacna,451,village,0,0,50,0,none,none
+gn:3928594,Sincos,Junin,0,village,0,0,50,0,none,none
+gn:3928601,Sina,Puno,363,village,0,0,50,0,none,none
+gn:3928679,Sicuani,Cuzco Department,33575,town,0,0,50,0,none,none
+gn:3928691,Sicaya,Junin,6842,village,0,0,50,0,none,none
+gn:3928695,Sibayo,Arequipa,527,village,0,0,50,0,none,none
+gn:3928732,Sepahua,Ucayali,0,village,0,0,50,0,none,none
+gn:3928842,Saysa,Ayacucho,0,village,0,0,50,0,none,none
+gn:3928843,Saylla,Cuzco Department,0,village,0,0,50,0,none,none
+gn:3928867,Sayán,Lima region,6196,village,0,0,50,0,none,none
+gn:3928920,Saurama,Ayacucho,326,village,0,0,50,0,none,none
+gn:3928924,Satipo,Junin,15532,town,0,0,50,0,none,none
+gn:3928941,Sarhua,Ayacucho,0,village,0,0,50,0,none,none
+gn:3928989,Sapallanga,Junin,0,village,0,0,50,0,none,none
+gn:3928993,San Vicente de Cañete,Lima region,25517,town,0,0,50,0,none,none
+gn:3929007,Santo Tomás de Pata,Huancavelica,556,village,0,0,50,0,none,none
+gn:3929013,Santo Domingo de Los Olleros,Lima region,91,village,0,0,50,0,none,none
+gn:3929035,Santiago de Tuna,Lima region,533,village,0,0,50,0,none,none
+gn:3929036,Santiago de Quirehuara,Huancavelica,0,village,0,0,50,0,none,none
+gn:3929037,Santiago de Pupuja,Puno,210,village,0,0,50,0,none,none
+gn:3929039,Santiago de Paucaray,Ayacucho,275,village,0,0,50,0,none,none
+gn:3929041,Santiago de Chocorvos,Huancavelica,507,village,0,0,50,0,none,none
+gn:3929042,Santiago de Chilcas,Ancash,350,village,0,0,50,0,none,none
+gn:3929051,Santiago,Ica,10449,town,0,0,50,0,none,none
+gn:3929053,Santiago,Lima region,0,village,0,0,50,0,none,none
+gn:3929061,Santa Teresa,Cuzco Department,0,village,0,0,50,0,none,none
+gn:3929111,Santa Rosa,Puno,0,village,0,0,50,0,none,none
+gn:3929114,Santa Rosa,Apurímac Department,331,village,0,0,50,0,none,none
+gn:3929137,Santa Rosa de Ocopa,Junin,0,village,0,0,50,0,none,none
+gn:3929139,Santa Rosa,Lima region,0,village,0,0,50,0,none,none
+gn:3929147,Santa Rita de Siguas,Arequipa,4014,village,0,0,50,0,none,none
+gn:3929162,Santa Maria de Chicmo,Apurímac Department,618,village,0,0,50,0,none,none
+gn:3929172,Santa María,Lima region,14853,town,0,0,50,0,none,none
+gn:3929188,Santa Lucía,Puno,4320,village,0,0,50,0,none,none
+gn:3929189,Santa Lucía,Ayacucho,200,village,0,0,50,0,none,none
+gn:3929196,Santa Isabel de Sihuas,Arequipa,0,village,0,0,50,0,none,none
+gn:3929212,Santa Eulalia,Lima region,0,village,0,0,50,0,none,none
+gn:3929225,Santa Cruz de Andamarca,Lima region,430,village,0,0,50,0,none,none
+gn:3929243,Santa Cruz,Lima region,187,village,0,0,50,0,none,none
+gn:3929280,Santa Ana de Tusi,Pasco,0,village,0,0,50,0,none,none
+gn:3929294,Santa Ana,Huancavelica,78,village,0,0,50,0,none,none
+gn:3929295,Santa Ana,Cuzco Department,25145,town,0,0,50,0,none,none
+gn:3929306,San Sebastián,Cuzco Department,0,village,0,0,50,0,none,none
+gn:3929307,San Salvador de Quije,Ayacucho,355,village,0,0,50,0,none,none
+gn:3929309,San Salvador,Cuzco Department,0,village,0,0,50,0,none,none
+gn:3929314,San Ramón,Junin,14708,town,0,0,50,0,none,none
+gn:3929315,San Rafael,Huánuco Department,0,village,0,0,50,0,none,none
+gn:3929330,San Pedro de Pillao,Pasco,0,village,0,0,50,0,none,none
+gn:3929335,San Pedro de Cajas,Junin,5758,village,0,0,50,0,none,none
+gn:3929336,San Pedro de Cachi,Ayacucho,138,village,0,0,50,0,none,none
+gn:3929353,San Pedro,Ayacucho,517,village,0,0,50,0,none,none
+gn:3929355,San Pedro,Cuzco Department,0,village,0,0,50,0,none,none
+gn:3929358,San Pedro,Ica,0,village,0,0,50,0,none,none
+gn:3929360,San Pedro,Ica,0,village,0,0,50,0,none,none
+gn:3929364,San Pedro,Lima region,243,village,0,0,50,0,none,none
+gn:3929375,San Pablo,Cuzco Department,3486,village,0,0,50,0,none,none
+gn:3929389,San Miguel de Cauri,Huánuco Department,5326,village,0,0,50,0,none,none
+gn:3929403,San Miguel,Ayacucho,8400,village,0,0,50,0,none,none
+gn:3929407,San Miguel,Junin,0,village,0,0,50,0,none,none
+gn:3929417,San Mateo,Lima region,0,village,0,0,50,0,none,none
+gn:3929436,San Luis de Shuaro,Junin,948,village,0,0,50,0,none,none
+gn:3929438,San Luis,Lima region,8862,village,0,0,50,0,none,none
+gn:3929445,San Lorenzo de Quinti,Lima region,0,village,0,0,50,0,none,none
+gn:3929459,San Lorenzo,Junin,0,village,0,0,50,0,none,none
+gn:3929461,San Lorenzo,Madre de Dios,263,village,0,0,50,0,none,none
+gn:3929470,Yanac,Ica,0,village,0,0,50,0,none,none
+gn:3929473,San Juan de Tantaranche,Lima region,319,village,0,0,50,0,none,none
+gn:3929475,San Juan de Salinas,Puno,181,village,0,0,50,0,none,none
+gn:3929478,San Juan del Oro,Puno,0,village,0,0,50,0,none,none
+gn:3929479,San Juan de Lanca,Lima region,114,village,0,0,50,0,none,none
+gn:3929480,San Juan de Iris,Lima region,998,village,0,0,50,0,none,none
+gn:3929490,Capillas,Huancavelica,0,village,0,0,50,0,none,none
+gn:3929493,San Juan Bautista,Ica,6871,village,0,0,50,0,none,none
+gn:3929494,San Juan Bautista,Ayacucho,0,village,0,0,50,0,none,none
+gn:3929520,San Juan,Ica,12795,town,0,0,50,0,none,none
+gn:3929523,San Juan,Ayacucho,712,village,0,0,50,0,none,none
+gn:3929530,San Juan,Huancavelica,146,village,0,0,50,0,none,none
+gn:3929540,San José de Ushua,Ayacucho,127,village,0,0,50,0,none,none
+gn:3929543,San José de Quero,Junin,383,village,0,0,50,0,none,none
+gn:3929569,San José,Arequipa,0,village,0,0,50,0,none,none
+gn:3929578,San José,Puno,0,village,0,0,50,0,none,none
+gn:3929601,San Joaquín,Lima region,260,village,0,0,50,0,none,none
+gn:3929607,San Jerónimo,Apurímac Department,5609,village,0,0,50,0,none,none
+gn:3929611,San Jeronimo De Tunan,Junin,8772,village,0,0,50,0,none,none
+gn:3929631,San Isidro,Lima region,68309,town,0,0,50,0,none,none
+gn:3929656,San Gregorio,Arequipa,0,village,0,0,50,0,none,none
+gn:3929668,Sangarará,Cuzco Department,0,village,0,0,50,0,none,none
+gn:3929670,Sangallaya,Lima region,0,village,0,0,50,0,none,none
+gn:3929675,San Francisco de Sangayaico,Huancavelica,0,village,0,0,50,0,none,none
+gn:3929710,San Francisco,Ayacucho,0,village,0,0,50,0,none,none
+gn:3929740,Sandia,Puno,3675,village,0,0,50,0,none,none
+gn:3929755,San Cristóbal,Ayacucho,0,village,0,0,50,0,none,none
+gn:3929765,Sancos,Ayacucho,526,village,0,0,50,0,none,none
+gn:3929768,San Clemente,Ica,15815,town,0,0,50,0,none,none
+gn:3929790,San Buenaventura,Lima region,134,village,0,0,50,0,none,none
+gn:3929805,San Bartolo,Lima region,5733,village,0,0,50,0,none,none
+gn:3929806,Sañayca,Apurímac Department,550,village,0,0,50,0,none,none
+gn:3929811,San Antonio de Rancas,Pasco,0,village,0,0,50,0,none,none
+gn:3929814,San Antonio de Ocopa,Junin,174,village,0,0,50,0,none,none
+gn:3929816,San Antonio de Esquilache,Puno,17,village,0,0,50,0,none,none
+gn:3929817,San Antonio de Cusicancha,Huancavelica,0,village,0,0,50,0,none,none
+gn:3929874,San Andrés,Ica,0,village,0,0,50,0,none,none
+gn:3929888,San Agustin,Junin,5998,village,0,0,50,0,none,none
+gn:3929896,Samegua,Moquegua Department,0,village,0,0,50,0,none,none
+gn:3929908,Samán,Puno,407,village,0,0,50,0,none,none
+gn:3929909,Sama Grande,Tacna,826,village,0,0,50,0,none,none
+gn:3930008,Salcabamba,Huancavelica,208,village,0,0,50,0,none,none
+gn:3930039,Sayla,Arequipa,0,village,0,0,50,0,none,none
+gn:3930087,Sacsamarca,Ayacucho,977,village,0,0,50,0,none,none
+gn:3930110,Sachaca,Arequipa,0,village,0,0,50,0,none,none
+gn:3930146,Sabandia,Arequipa,0,village,0,0,50,0,none,none
+gn:3930244,Rosaspata,Puno,478,village,0,0,50,0,none,none
+gn:3930271,Rondocán,Cuzco Department,289,village,0,0,50,0,none,none
+gn:3930311,Rocchacc,Apurímac Department,0,village,0,0,50,0,none,none
+gn:3930348,Río Grande,Ica,4689,village,0,0,50,0,none,none
+gn:3930382,Ricardo Palma,Lima region,4842,village,0,0,50,0,none,none
+gn:3930520,Raquía,Ancash,332,village,0,0,50,0,none,none
+gn:3930550,Ranracancha,Apurímac Department,0,village,0,0,50,0,none,none
+gn:3930585,Raján,Ancash,449,village,0,0,50,0,none,none
+gn:3930612,Quito-Arma,Huancavelica,0,village,0,0,50,0,none,none
+gn:3930714,Quiquijana,Cuzco Department,0,village,0,0,50,0,none,none
+gn:3930736,Quinua,Ayacucho,0,village,0,0,50,0,none,none
+gn:3930758,Quiñota,Cuzco Department,726,village,0,0,50,0,none,none
+gn:3930761,Quinocay,Lima region,227,village,0,0,50,0,none,none
+gn:3930764,Quinistaquillas,Moquegua Department,524,village,0,0,50,0,none,none
+gn:3930769,Quince Mil,Cuzco Department,0,village,0,0,50,0,none,none
+gn:3930817,Quilmaná,Lima region,6442,village,0,0,50,0,none,none
+gn:3930835,Quillabamba,Cuzco Department,25300,town,0,0,50,0,none,none
+gn:3930853,Quilcata,Ayacucho,662,village,0,0,50,0,none,none
+gn:3930867,Quilca,Arequipa,207,village,0,0,50,0,none,none
+gn:3930871,Quilahuani,Tacna,3176,village,0,0,50,0,none,none
+gn:3930897,Quicacha,Arequipa,312,village,0,0,50,0,none,none
+gn:3930902,Quiaca,Puno,369,village,0,0,50,0,none,none
+gn:3930944,Queropalca,Huánuco Department,863,village,0,0,50,0,none,none
+gn:3930946,Querobamba,Ayacucho,0,village,0,0,50,0,none,none
+gn:3930956,Querco,Huancavelica,505,village,0,0,50,0,none,none
+gn:3930971,Quequeña,Arequipa,924,village,0,0,50,0,none,none
+gn:3931025,Quellouno,Cuzco Department,0,village,0,0,50,0,none,none
+gn:3931062,Quehue,Cuzco Department,257,village,0,0,50,0,none,none
+gn:3931084,Quebrada Honda,Cuzco Department,0,village,0,0,50,0,none,none
+gn:3931137,Putina,Puno,8118,village,0,0,50,0,none,none
+gn:3931138,Putina,Puno,10750,town,0,0,50,0,none,none
+gn:3931158,Pusi,Puno,909,village,0,0,50,0,none,none
+gn:3931223,Puquio,Ayacucho,10491,town,0,0,50,0,none,none
+gn:3931228,Puquina,Moquegua Department,910,village,0,0,50,0,none,none
+gn:3931251,Punta Hermosa,Lima region,0,village,0,0,50,0,none,none
+gn:3931255,Punta de Bombón,Arequipa,6336,village,0,0,50,0,none,none
+gn:3931276,Puno,Puno,128637,city,0,0,50,0,none,none
+gn:3931408,Pullo,Ayacucho,567,village,0,0,50,0,none,none
+gn:3931427,Pujocucho,Tacna,4120,village,0,0,50,0,none,none
+gn:3931437,Puyca,Arequipa,676,village,0,0,50,0,none,none
+gn:3931453,Supe Puerto,Lima region,11450,town,0,0,50,0,none,none
+gn:3931465,Puerto Ocopa,Junin,915,village,0,0,50,0,none,none
+gn:3931470,Puerto Maldonado,Madre de Dios,85024,town,0,0,50,0,none,none
+gn:3931483,Puerto de Lomas,Arequipa,0,village,0,0,50,0,none,none
+gn:3931538,Pueblo Nuevo,Ica,0,village,0,0,50,0,none,none
+gn:3931546,Pucyura,Cuzco Department,0,village,0,0,50,0,none,none
+gn:3931554,Pucusana,Lima region,0,village,0,0,50,0,none,none
+gn:3931656,Pucara,Arequipa,4335,village,0,0,50,0,none,none
+gn:3931659,Pucará,Puno,0,village,0,0,50,0,none,none
+gn:3931665,Pucará,Junin,0,village,0,0,50,0,none,none
+gn:3931820,Pozuzo,Pasco,0,village,0,0,50,0,none,none
+gn:3931847,Potoni,Puno,420,village,0,0,50,0,none,none
+gn:3931906,Poroy,Cuzco Department,961,village,0,0,50,0,none,none
+gn:3931959,Pomata,Puno,0,village,0,0,50,0,none,none
+gn:3931968,Pomacocha,Apurímac Department,691,village,0,0,50,0,none,none
+gn:3931969,Pomacocha,Huancavelica,408,village,0,0,50,0,none,none
+gn:3931978,Pomacanchi,Cuzco Department,0,village,0,0,50,0,none,none
+gn:3931979,Pomacancha,Junin,63,village,0,0,50,0,none,none
+gn:3931981,Pomabamba,Ayacucho,437,village,0,0,50,0,none,none
+gn:3931988,Polobaya,Arequipa,0,village,0,0,50,0,none,none
+gn:3932001,Pocsi,Arequipa,203,village,0,0,50,0,none,none
+gn:3932015,Pocollay,Tacna,0,village,0,0,50,0,none,none
+gn:3932017,Pocohuanca,Apurímac Department,332,village,0,0,50,0,none,none
+gn:3932054,Platería,Puno,554,village,0,0,50,0,none,none
+gn:3932069,Pizacoma,Puno,0,village,0,0,50,0,none,none
+gn:3932087,Pitumarca,Cuzco Department,0,village,0,0,50,0,none,none
+gn:3932145,Pisco,Ica,61869,town,0,0,50,0,none,none
+gn:3932166,Pisac,Cuzco Department,2000,village,0,0,50,0,none,none
+gn:3932195,Pirca,Lima region,489,village,0,0,50,0,none,none
+gn:3932254,Pilpichaca,Huancavelica,673,village,0,0,50,0,none,none
+gn:3932263,Pillpinto,Cuzco Department,587,village,0,0,50,0,none,none
+gn:3932276,Pillcopata,Cuzco Department,0,village,0,0,50,0,none,none
+gn:3932280,Pilcuyo,Puno,769,village,0,0,50,0,none,none
+gn:3932282,Pilcomayo,Junin,8169,village,0,0,50,0,none,none
+gn:3932285,Pilchaca,Huancavelica,413,village,0,0,50,0,none,none
+gn:3932399,Pichirhua,Apurímac Department,128,village,0,0,50,0,none,none
+gn:3932400,Pichihua,Apurímac Department,0,village,0,0,50,0,none,none
+gn:3932409,Pichigua,Cuzco Department,266,village,0,0,50,0,none,none
+gn:3932418,Pichari,Cuzco Department,10655,town,0,0,50,0,none,none
+gn:3932454,Phara,Puno,0,village,0,0,50,0,none,none
+gn:3932502,Perené,Junin,6844,village,0,0,50,0,none,none
+gn:3932600,Pazos,Huancavelica,0,village,0,0,50,0,none,none
+gn:3932625,Pausa,Ayacucho,0,village,0,0,50,0,none,none
+gn:3932650,Paucartambo,Cuzco Department,0,village,0,0,50,0,none,none
+gn:3932652,Paucarpata,Arequipa,0,village,0,0,50,0,none,none
+gn:3932654,Paucarcolla,Puno,616,village,0,0,50,0,none,none
+gn:3932656,Paucarbambilla,Huancavelica,0,village,0,0,50,0,none,none
+gn:3932657,Paucarbamba,Huancavelica,786,village,0,0,50,0,none,none
+gn:3932666,Paucar,Pasco,702,village,0,0,50,0,none,none
+gn:3932687,Pativilca,Lima region,13583,town,0,0,50,0,none,none
+gn:3932710,Pataypampa,Apurímac Department,243,village,0,0,50,0,none,none
+gn:3932759,Patambuco,Puno,455,village,0,0,50,0,none,none
+gn:3932864,Paruro,Cuzco Department,0,village,0,0,50,0,none,none
+gn:3932957,Parcona,Ica,0,village,0,0,50,0,none,none
+gn:3932971,Parco,Junin,535,village,0,0,50,0,none,none
+gn:3932994,Paratia,Puno,0,village,0,0,50,0,none,none
+gn:3932997,Paras,Ayacucho,638,village,0,0,50,0,none,none
+gn:3933002,Pararín,Ancash,366,village,0,0,50,0,none,none
+gn:3933024,Paramonga,Lima region,27631,town,0,0,50,0,none,none
+gn:3933058,Paracas,Ica,1196,village,0,0,50,0,none,none
+gn:3933104,Pangoa,Cuzco Department,6638,village,0,0,50,0,none,none
+gn:3933138,Pancan,Junin,704,village,0,0,50,0,none,none
+gn:3933179,Pampas Chico,Ancash,248,village,0,0,50,0,none,none
+gn:3933184,Pampas,Ayacucho,127,village,0,0,50,0,none,none
+gn:3933185,Pampas,Huancavelica,5521,village,0,0,50,0,none,none
+gn:3933218,Pampamarca,Cuzco Department,3811,village,0,0,50,0,none,none
+gn:3933247,Pampahuasi,Ica,120,village,0,0,50,0,none,none
+gn:3933266,Pampa de Tate,Ica,5180,village,0,0,50,0,none,none
+gn:3933284,Pampacolca,Arequipa,0,village,0,0,50,0,none,none
+gn:3933286,Pampachiri,Apurímac Department,690,village,0,0,50,0,none,none
+gn:3933296,Pampa Cangallo,Ayacucho,0,village,0,0,50,0,none,none
+gn:3933342,Palpacachi,Apurímac Department,423,village,0,0,50,0,none,none
+gn:3933345,Palpa,Ica,5883,village,0,0,50,0,none,none
+gn:3933349,Los Palos,Tacna,0,village,0,0,50,0,none,none
+gn:3933451,Pallca,Huancavelica,0,village,0,0,50,0,none,none
+gn:3933462,Pallanchacra,Pasco,0,village,0,0,50,0,none,none
+gn:3933486,Palco,Ayacucho,0,village,0,0,50,0,none,none
+gn:3933498,Palcamayo,Junin,0,village,0,0,50,0,none,none
+gn:3933519,Palca,Tacna,189,village,0,0,50,0,none,none
+gn:3933529,Palca,Puno,969,village,0,0,50,0,none,none
+gn:3933538,Palca,Junin,0,village,0,0,50,0,none,none
+gn:3933584,Paico,Ayacucho,472,village,0,0,50,0,none,none
+gn:3933616,Pacucha,Apurímac Department,0,village,0,0,50,0,none,none
+gn:3933659,Pacocha,Moquegua Department,7588,village,0,0,50,0,none,none
+gn:3933664,Pacobamba,Apurímac Department,373,village,0,0,50,0,none,none
+gn:3933678,Pachía,Tacna,380,village,0,0,50,0,none,none
+gn:3933720,Pachaconas,Apurímac Department,723,village,0,0,50,0,none,none
+gn:3933745,Paccho,Lima region,393,village,0,0,50,0,none,none
+gn:3933786,Paccha,Junin,665,village,0,0,50,0,none,none
+gn:3933788,Paccha,Junin,0,village,0,0,50,0,none,none
+gn:3933792,Paccaritambo,Cuzco Department,734,village,0,0,50,0,none,none
+gn:3933804,Pacaycasa,Ayacucho,466,village,0,0,50,0,none,none
+gn:3933824,Pacaraos,Lima region,404,village,0,0,50,0,none,none
+gn:3933831,Pacapausa,Ayacucho,520,village,0,0,50,0,none,none
+gn:3933850,Paca,Junin,769,village,0,0,50,0,none,none
+gn:3933867,Oyón,Lima region,6276,village,0,0,50,0,none,none
+gn:3933869,Oyolo,Ayacucho,622,village,0,0,50,0,none,none
+gn:3933874,Oxapampa,Pasco,12000,town,0,0,50,0,none,none
+gn:3933900,Otoca,Ayacucho,923,village,0,0,50,0,none,none
+gn:3933939,Orurillo,Puno,0,village,0,0,50,0,none,none
+gn:3933955,Oropesa,Apurímac Department,0,village,0,0,50,0,none,none
+gn:3933956,Oropesa,Cuzco Department,4022,village,0,0,50,0,none,none
+gn:3933981,Orcotuna,Junin,4199,village,0,0,50,0,none,none
+gn:3933986,Orcopampa,Arequipa,5643,village,0,0,50,0,none,none
+gn:3934030,Ongoy,Apurímac Department,230,village,0,0,50,0,none,none
+gn:3934034,Ondores,Junin,872,village,0,0,50,0,none,none
+gn:3934039,Omate,Moquegua Department,0,village,0,0,50,0,none,none
+gn:3934042,Omas,Lima region,249,village,0,0,50,0,none,none
+gn:3934044,Omacha,Cuzco Department,398,village,0,0,50,0,none,none
+gn:3934055,Ollantaytambo,Cuzco Department,2000,village,0,0,50,0,none,none
+gn:3934058,Ollachea,Puno,0,village,0,0,50,0,none,none
+gn:3934095,Ocuviri,Puno,823,village,0,0,50,0,none,none
+gn:3934103,Ocucaje,Ica,0,village,0,0,50,0,none,none
+gn:3934108,Ocros,Ayacucho,592,village,0,0,50,0,none,none
+gn:3934109,Ocros,Ancash,840,village,0,0,50,0,none,none
+gn:3934119,Ocoyo,Huancavelica,212,village,0,0,50,0,none,none
+gn:3934131,Ocoruro,Cuzco Department,158,village,0,0,50,0,none,none
+gn:3934148,Ocongate,Cuzco Department,0,village,0,0,50,0,none,none
+gn:3934153,Ocoña,Arequipa,0,village,0,0,50,0,none,none
+gn:3934165,Ocobamba,Apurímac Department,772,village,0,0,50,0,none,none
+gn:3934166,Ocobamba,Cuzco Department,168,village,0,0,50,0,none,none
+gn:3934205,Ocaña,Ayacucho,572,village,0,0,50,0,none,none
+gn:3934233,Nuñoa,Puno,4271,village,0,0,50,0,none,none
+gn:3934238,Nuevo Occoro,Huancavelica,0,village,0,0,50,0,none,none
+gn:3934239,Nuevo Imperial,Lima region,32344,town,0,0,50,0,none,none
+gn:3934280,Ninacaca,Pasco,0,village,0,0,50,0,none,none
+gn:3934290,Asentamiento Humano Nicolas de Pierola,Lima region,5800,village,0,0,50,0,none,none
+gn:3934291,Nicasio,Puno,433,village,0,0,50,0,none,none
+gn:3934356,Nazca,Ica,23556,town,0,0,50,0,none,none
+gn:3934365,Naván,Lima region,362,village,0,0,50,0,none,none
+gn:3934410,Ñahuimpuquio,Huancavelica,0,village,0,0,50,0,none,none
+gn:3934462,Muquiyauyo,Junin,0,village,0,0,50,0,none,none
+gn:3934464,Muqui,Junin,0,village,0,0,50,0,none,none
+gn:3934470,Mungui,Arequipa,219,village,0,0,50,0,none,none
+gn:3934479,Muñani,Puno,0,village,0,0,50,0,none,none
+gn:3934538,Moya,Huancavelica,693,village,0,0,50,0,none,none
+gn:3934554,Mosca,Huánuco Department,775,village,0,0,50,0,none,none
+gn:3934586,Morococha,Junin,7890,village,0,0,50,0,none,none
+gn:3934599,Morcolla,Ayacucho,511,village,0,0,50,0,none,none
+gn:3934608,Moquegua,Moquegua Department,69882,town,0,0,50,0,none,none
+gn:3934649,Monobamba,Junin,344,village,0,0,50,0,none,none
+gn:3934694,Mollepata,Cuzco Department,0,village,0,0,50,0,none,none
+gn:3934701,Mollepampa,Huancavelica,141,village,0,0,50,0,none,none
+gn:3934707,Mollendo,Arequipa,28953,town,0,0,50,0,none,none
+gn:3934734,Mollebaya,Arequipa,426,village,0,0,50,0,none,none
+gn:3934737,Mollebamba,Apurímac Department,560,village,0,0,50,0,none,none
+gn:3934761,Molinos,Junin,754,village,0,0,50,0,none,none
+gn:3934791,Moho,Puno,0,village,0,0,50,0,none,none
+gn:3934876,Miraflores,Lima region,187401,city,0,0,50,0,none,none
+gn:3934879,Miraflores,Arequipa,0,village,0,0,50,0,none,none
+gn:3934887,Miraflores,Lima region,322,village,0,0,50,0,none,none
+gn:3935061,Mejía,Arequipa,683,village,0,0,50,0,none,none
+gn:3935098,Mazo Cruz,Puno,829,village,0,0,50,0,none,none
+gn:3935102,Mazamari,Junin,6826,village,0,0,50,0,none,none
+gn:3935116,Mayocc,Huancavelica,711,village,0,0,50,0,none,none
+gn:3935155,Matucana,Lima region,4517,village,0,0,50,0,none,none
+gn:3935210,Matalaque,Moquegua Department,349,village,0,0,50,0,none,none
+gn:3935259,Mariscal Cáceres,Huancavelica,760,village,0,0,50,0,none,none
+gn:3935261,Mariposa,Junin,510,village,0,0,50,0,none,none
+gn:3935270,Mariatana,Lima region,268,village,0,0,50,0,none,none
+gn:3935280,Margos,Huánuco Department,0,village,0,0,50,0,none,none
+gn:3935288,Minas de Marcona,Ica,15478,town,0,0,50,0,none,none
+gn:3935297,Marco,Junin,0,village,0,0,50,0,none,none
+gn:3935315,Marcas,Huancavelica,680,village,0,0,50,0,none,none
+gn:3935318,Marcapomacocha,Junin,358,village,0,0,50,0,none,none
+gn:3935321,Marcapata,Cuzco Department,0,village,0,0,50,0,none,none
+gn:3935345,Marcabamba,Ayacucho,442,village,0,0,50,0,none,none
+gn:3935353,Marca,Ancash,635,village,0,0,50,0,none,none
+gn:3935371,Maray,Lima region,240,village,0,0,50,0,none,none
+gn:3935375,Maras,Cuzco Department,0,village,0,0,50,0,none,none
+gn:3935376,Maranura,Cuzco Department,730,village,0,0,50,0,none,none
+gn:3935379,Maranganí,Cuzco Department,3709,village,0,0,50,0,none,none
+gn:3935397,Mara,Apurímac Department,0,village,0,0,50,0,none,none
+gn:3935431,Manta,Huancavelica,362,village,0,0,50,0,none,none
+gn:3935446,Mangas,Ancash,454,village,0,0,50,0,none,none
+gn:3935476,Mañazo,Puno,0,village,0,0,50,0,none,none
+gn:3935494,Mamara,Apurímac Department,663,village,0,0,50,0,none,none
+gn:3935572,Mala,Lima region,17260,town,0,0,50,0,none,none
+gn:3935618,Madrigal,Arequipa,690,village,0,0,50,0,none,none
+gn:3935623,Madean,Lima region,258,village,0,0,50,0,none,none
+gn:3935624,Macusani,Puno,11242,town,0,0,50,0,none,none
+gn:3935636,Machupicchu,Cuzco Department,4446,village,0,0,50,0,none,none
+gn:3935675,Machaguay,Arequipa,370,village,0,0,50,0,none,none
+gn:3935694,Macari,Puno,0,village,0,0,50,0,none,none
+gn:3935705,Macachacra,Ayacucho,466,village,0,0,50,0,none,none
+gn:3935707,Maca,Arequipa,908,village,0,0,50,0,none,none
+gn:3935725,Luricocha,Ayacucho,0,village,0,0,50,0,none,none
+gn:3935784,Lucre,Apurímac Department,119,village,0,0,50,0,none,none
+gn:3935785,Lucre,Cuzco Department,0,village,0,0,50,0,none,none
+gn:3935807,Lucma,Cuzco Department,395,village,0,0,50,0,none,none
+gn:3935836,Lucanas,Ayacucho,0,village,0,0,50,0,none,none
+gn:3935969,Los Aquijes,Ica,7848,village,0,0,50,0,none,none
+gn:3936057,Locumba,Tacna,993,village,0,0,50,0,none,none
+gn:3936058,Locroja,Huancavelica,0,village,0,0,50,0,none,none
+gn:3936088,Lluta,Arequipa,5998,village,0,0,50,0,none,none
+gn:3936095,Llusco,Cuzco Department,967,village,0,0,50,0,none,none
+gn:3936139,Lloque,Moquegua Department,466,village,0,0,50,0,none,none
+gn:3936163,Llocllapampa,Junin,643,village,0,0,50,0,none,none
+gn:3936180,Llipata,Ica,336,village,0,0,50,0,none,none
+gn:3936184,Llipa,Ancash,627,village,0,0,50,0,none,none
+gn:3936207,Llauta,Ayacucho,267,village,0,0,50,0,none,none
+gn:3936297,Llalli,Puno,0,village,0,0,50,0,none,none
+gn:3936346,Llacllin,Ancash,723,village,0,0,50,0,none,none
+gn:3936349,Llaclla,Ancash,487,village,0,0,50,0,none,none
+gn:3936367,Livitaca,Cuzco Department,948,village,0,0,50,0,none,none
+gn:3936391,Lircay,Huancavelica,0,village,0,0,50,0,none,none
+gn:3936427,Lincha,Lima region,198,village,0,0,50,0,none,none
+gn:3936434,Limbani,Puno,0,village,0,0,50,0,none,none
+gn:3936437,Limatambo,Cuzco Department,0,village,0,0,50,0,none,none
+gn:3936456,Lima,Lima Province,7737002,large-city,0,0,50,0,none,none
+gn:3936477,Leticia,Junin,0,village,0,0,50,0,none,none
+gn:3936541,Layo,Cuzco Department,3978,village,0,0,50,0,none,none
+gn:3936650,La Tinguiña,Ica,0,village,0,0,50,0,none,none
+gn:3936668,Las Yaras,Tacna,585,village,0,0,50,0,none,none
+gn:3936829,Laria,Huancavelica,496,village,0,0,50,0,none,none
+gn:3936830,Lari,Arequipa,0,village,0,0,50,0,none,none
+gn:3936841,Lares,Cuzco Department,522,village,0,0,50,0,none,none
+gn:3936854,Laraqueri,Puno,0,village,0,0,50,0,none,none
+gn:3936857,Laraos,Lima region,530,village,0,0,50,0,none,none
+gn:3936858,Laraos,Lima region,0,village,0,0,50,0,none,none
+gn:3936862,Alto Larán,Ica,0,village,0,0,50,0,none,none
+gn:3936870,Laramate,Ayacucho,0,village,0,0,50,0,none,none
+gn:3936873,Laramarca,Huancavelica,796,village,0,0,50,0,none,none
+gn:3936935,La Pampa,Arequipa,0,village,0,0,50,0,none,none
+gn:3936952,La Oroya,Junin,33345,town,0,0,50,0,none,none
+gn:3936956,Lanlacuni Bajo,Puno,0,village,0,0,50,0,none,none
+gn:3936963,Langui,Cuzco Department,3969,village,0,0,50,0,none,none
+gn:3936967,Langa,Lima region,548,village,0,0,50,0,none,none
+gn:3936982,Lampian,Lima region,329,village,0,0,50,0,none,none
+gn:3936996,Lampa,Puno,4780,village,0,0,50,0,none,none
+gn:3936997,Lampa,Ayacucho,353,village,0,0,50,0,none,none
+gn:3937001,La Molina,Lima region,0,village,0,0,50,0,none,none
+gn:3937020,La Merced,Junin,0,village,0,0,50,0,none,none
+gn:3937030,Lambrama,Apurímac Department,650,village,0,0,50,0,none,none
+gn:3937036,Lamay,Cuzco Department,0,village,0,0,50,0,none,none
+gn:3937055,La Libertad,Arequipa,0,village,0,0,50,0,none,none
+gn:3937103,Lahuaytambo,Lima region,383,village,0,0,50,0,none,none
+gn:3937197,La Esmeralda,Huancavelica,0,village,0,0,50,0,none,none
+gn:3937211,La Curva,Arequipa,0,village,0,0,50,0,none,none
+gn:3937282,Lachaqui,Lima region,766,village,0,0,50,0,none,none
+gn:3937303,La Capilla,Moquegua Department,214,village,0,0,50,0,none,none
+gn:3937363,Bella Unión,Arequipa,0,village,0,0,50,0,none,none
+gn:3937408,Kishuara,Apurímac Department,857,village,0,0,50,0,none,none
+gn:3937486,Junín,Junin,15320,town,0,0,50,0,none,none
+gn:3937513,Juliaca,Puno,245675,city,0,0,50,0,none,none
+gn:3937516,Juli,Puno,8566,village,0,0,50,0,none,none
+gn:3937518,Julcan,Junin,845,village,0,0,50,0,none,none
+gn:3937520,Julcamarca,Huancavelica,816,village,0,0,50,0,none,none
+gn:3937547,Villa Poeta José Gálvez Barrenechea,Lima region,61000,town,0,0,50,0,none,none
+gn:3937612,Jivia,Huánuco Department,405,village,0,0,50,0,none,none
+gn:3937733,Jauja,Junin,21057,town,0,0,50,0,none,none
+gn:3937765,Jatun Orcochiri,Arequipa,4358,village,0,0,50,0,none,none
+gn:3937836,Jarpa,Junin,0,village,0,0,50,0,none,none
+gn:3937871,Jaquí,Arequipa,0,village,0,0,50,0,none,none
+gn:3938056,Jucul,Lima region,235,village,0,0,50,0,none,none
+gn:3938101,Izcuchaca,Huancavelica,580,village,0,0,50,0,none,none
+gn:3938147,Islay (Matarani),Arequipa,4823,village,0,0,50,0,none,none
+gn:3938176,Iscos,Junin,695,village,0,0,50,0,none,none
+gn:3938232,Iray,Arequipa,305,village,0,0,50,0,none,none
+gn:3938236,Iquipi,Arequipa,362,village,0,0,50,0,none,none
+gn:3938291,Ingenio,Junin,963,village,0,0,50,0,none,none
+gn:3938323,Independencia,Ica,0,village,0,0,50,0,none,none
+gn:3938324,Independencia,Lima region,3987,village,0,0,50,0,none,none
+gn:3938326,Incuyo,Ayacucho,776,village,0,0,50,0,none,none
+gn:3938333,Inchupalla,Puno,267,village,0,0,50,0,none,none
+gn:3938385,Iñapari,Madre de Dios,959,village,0,0,50,0,none,none
+gn:3938396,Imperial,Lima region,32344,town,0,0,50,0,none,none
+gn:3938415,Ilo,Moquegua Department,53476,town,0,0,50,0,none,none
+gn:3938451,Ilave,Puno,22200,town,0,0,50,0,none,none
+gn:3938455,Ilabaya,Tacna,9492,village,0,0,50,0,none,none
+gn:3938457,Ihuari,Lima region,426,village,0,0,50,0,none,none
+gn:3938485,Ichupampa,Arequipa,710,village,0,0,50,0,none,none
+gn:3938495,Ichuña,Moquegua Department,0,village,0,0,50,0,none,none
+gn:3938527,Ica,Ica,282407,city,0,0,50,0,none,none
+gn:3938531,Iberia,Madre de Dios,4386,village,0,0,50,0,none,none
+gn:3938555,Uranmarca,Apurímac Department,0,village,0,0,50,0,none,none
+gn:3938571,Humay,Ica,662,village,0,0,50,0,none,none
+gn:3938586,Umamarca,Apurímac Department,730,village,0,0,50,0,none,none
+gn:3938647,San Juan de Huirpacancha,Huancavelica,583,village,0,0,50,0,none,none
+gn:3938819,Huayucachi,Junin,5827,village,0,0,50,0,none,none
+gn:3938847,Huayrapata,Puno,0,village,0,0,50,0,none,none
+gn:3938861,Huyro,Cuzco Department,0,village,0,0,50,0,none,none
+gn:3938862,San Agustin de Huayopampa,Lima region,590,village,0,0,50,0,none,none
+gn:3938886,Huayllay,Pasco,0,village,0,0,50,0,none,none
+gn:3938907,Huayllapampa,Ancash,679,village,0,0,50,0,none,none
+gn:3938928,Huayllahuara,Huancavelica,581,village,0,0,50,0,none,none
+gn:3938932,Huayllabamba,Cuzco Department,0,village,0,0,50,0,none,none
+gn:3938959,Huayhuay,Junin,0,village,0,0,50,0,none,none
+gn:3939012,Huayana,Apurímac Department,539,village,0,0,50,0,none,none
+gn:3939015,Huayacundo Arma,Huancavelica,250,village,0,0,50,0,none,none
+gn:3939023,Huaura,Lima region,20723,town,0,0,50,0,none,none
+gn:3939046,Huatasani,Puno,1412,village,0,0,50,0,none,none
+gn:3939062,Huata,Puno,823,village,0,0,50,0,none,none
+gn:3939068,Huasta,Ancash,681,village,0,0,50,0,none,none
+gn:3939085,Huasicancha,Junin,691,village,0,0,50,0,none,none
+gn:3939123,Huasahuasi,Junin,5146,village,0,0,50,0,none,none
+gn:3939143,Huaros,Lima region,341,village,0,0,50,0,none,none
+gn:3939152,Huarocondo,Cuzco Department,0,village,0,0,50,0,none,none
+gn:3939156,Huaro,Cuzco Department,0,village,0,0,50,0,none,none
+gn:3939168,Huarmey,Ancash,16172,town,0,0,50,0,none,none
+gn:3939174,Huaripampa,Junin,0,village,0,0,50,0,none,none
+gn:3939195,Huaribamba,Huancavelica,787,village,0,0,50,0,none,none
+gn:3939198,Huariaca,Pasco,0,village,0,0,50,0,none,none
+gn:3939285,Huaral,Lima region,62174,town,0,0,50,0,none,none
+gn:3939340,Huaquirca,Apurímac Department,962,village,0,0,50,0,none,none
+gn:3939355,Huanza,Lima region,0,village,0,0,50,0,none,none
+gn:3939377,Huanuara,Tacna,750,village,0,0,50,0,none,none
+gn:3939384,Huantán,Lima region,549,village,0,0,50,0,none,none
+gn:3939386,Huanta,Ayacucho,18627,town,0,0,50,0,none,none
+gn:3939395,Huanoquite,Cuzco Department,0,village,0,0,50,0,none,none
+gn:3939408,Huanipaca,Apurímac Department,910,village,0,0,50,0,none,none
+gn:3939414,Huangascar,Lima region,309,village,0,0,50,0,none,none
+gn:3939420,Huando,Huancavelica,0,village,0,0,50,0,none,none
+gn:3939450,Huanchay,Ancash,64,village,0,0,50,0,none,none
+gn:3939459,Huancayo,Junin,456250,city,0,0,50,0,none,none
+gn:3939463,Huancaya,Lima region,629,village,0,0,50,0,none,none
+gn:3939470,Huancavelica,Huancavelica,49570,town,0,0,50,0,none,none
+gn:3939480,Huancarqui,Arequipa,0,village,0,0,50,0,none,none
+gn:3939486,Huancaraylla,Ayacucho,573,village,0,0,50,0,none,none
+gn:3939494,Huancaray,Apurímac Department,409,village,0,0,50,0,none,none
+gn:3939498,Huancarane,Cuzco Department,0,village,0,0,50,0,none,none
+gn:3939505,Huancarama,Apurímac Department,0,village,0,0,50,0,none,none
+gn:3939515,Huancapi,Ayacucho,0,village,0,0,50,0,none,none
+gn:3939525,Huancano,Ica,355,village,0,0,50,0,none,none
+gn:3939529,Huancaní,Junin,0,village,0,0,50,0,none,none
+gn:3939531,Hacienda Huancane,Puno,7831,village,0,0,50,0,none,none
+gn:3939541,Huancané,Puno,7544,village,0,0,50,0,none,none
+gn:3939549,Huancán,Junin,0,village,0,0,50,0,none,none
+gn:3939576,Huancabamba,Apurímac Department,0,village,0,0,50,0,none,none
+gn:3939578,Huancabamba,Pasco,0,village,0,0,50,0,none,none
+gn:3939585,Huanca,Arequipa,929,village,0,0,50,0,none,none
+gn:3939653,Huampara,Lima region,241,village,0,0,50,0,none,none
+gn:3939659,San Pedro Huamburque,Apurímac Department,0,village,0,0,50,0,none,none
+gn:3939675,Huambo,Arequipa,530,village,0,0,50,0,none,none
+gn:3939683,Huambalpa,Ayacucho,433,village,0,0,50,0,none,none
+gn:3939684,Huamatambo,Huancavelica,174,village,0,0,50,0,none,none
+gn:3939693,Huamantanga,Lima region,595,village,0,0,50,0,none,none
+gn:3939705,Huamanquiquia,Ayacucho,518,village,0,0,50,0,none,none
+gn:3939739,Huamanguilla,Ayacucho,0,village,0,0,50,0,none,none
+gn:3939749,Huamali,Junin,0,village,0,0,50,0,none,none
+gn:3939761,Hualmay,Lima region,26658,town,0,0,50,0,none,none
+gn:3939791,Huayllay Grande,Huancavelica,0,village,0,0,50,0,none,none
+gn:3939892,Huayllacayán,Ancash,258,village,0,0,50,0,none,none
+gn:3939937,Huancullani,Puno,2469,village,0,0,50,0,none,none
+gn:3939949,Huacrapuquio,Junin,0,village,0,0,50,0,none,none
+gn:3939977,San Lorenzo de Huachupama,Lima region,0,village,0,0,50,0,none,none
+gn:3939978,Huac Huas,Ayacucho,0,village,0,0,50,0,none,none
+gn:3939986,Huachos,Huancavelica,754,village,0,0,50,0,none,none
+gn:3939989,Huachón,Pasco,0,village,0,0,50,0,none,none
+gn:3939993,Huachocolpa,Huancavelica,892,village,0,0,50,0,none,none
+gn:3940002,Huacho,Lima region,54545,town,0,0,50,0,none,none
+gn:3940025,Huachac,Junin,0,village,0,0,50,0,none,none
+gn:3940057,Huacar,Huánuco Department,0,village,0,0,50,0,none,none
+gn:3940069,Huacaña,Ayacucho,395,village,0,0,50,0,none,none
+gn:3940150,Hongos,Lima region,371,village,0,0,50,0,none,none
+gn:3940259,Haquira,Apurímac Department,0,village,0,0,50,0,none,none
+gn:3940632,Guadalupe,Ica,0,village,0,0,50,0,none,none
+gn:3940712,Goyllarisquizga,Pasco,0,village,0,0,50,0,none,none
+gn:3940714,Gorgorillo,Ancash,500,village,0,0,50,0,none,none
+gn:3940716,Gorgor,Lima region,0,village,0,0,50,0,none,none
+gn:3940991,Estique Pampa,Tacna,402,village,0,0,50,0,none,none
+gn:3940992,Estique,Tacna,262,village,0,0,50,0,none,none
+gn:3941202,El Tambo,Junin,0,village,0,0,50,0,none,none
+gn:3941224,Progreso,Apurímac Department,708,village,0,0,50,0,none,none
+gn:3941300,El Ingenio,Ica,427,village,0,0,50,0,none,none
+gn:3941339,El Descanso,Cuzco Department,0,village,0,0,50,0,none,none
+gn:3941377,El Carmen,Ica,0,village,0,0,50,0,none,none
+gn:3941379,El Cardo,Arequipa,744,village,0,0,50,0,none,none
+gn:3941475,Deustua,Puno,0,village,0,0,50,0,none,none
+gn:3941492,Desaguadero,Puno,5329,village,0,0,50,0,none,none
+gn:3941524,Cuyocuyo,Puno,0,village,0,0,50,0,none,none
+gn:3941565,Cusipata,Cuzco Department,0,village,0,0,50,0,none,none
+gn:3941584,Cusco,Cuzco Department,428450,city,0,0,50,0,none,none
+gn:3941620,Curibaya,Tacna,135,village,0,0,50,0,none,none
+gn:3941633,Curasco,Apurímac Department,0,village,0,0,50,0,none,none
+gn:3941639,Curahuasi,Apurímac Department,0,village,0,0,50,0,none,none
+gn:3941656,Cupi,Puno,317,village,0,0,50,0,none,none
+gn:3941749,Cullhuas,Junin,559,village,0,0,50,0,none,none
+gn:3941817,Cuenca,Huancavelica,422,village,0,0,50,0,none,none
+gn:3941835,Cuchumbaya,Moquegua Department,683,village,0,0,50,0,none,none
+gn:3941968,Cruz Blanca,Lima region,0,village,0,0,50,0,none,none
+gn:3941995,Crucero,Puno,7413,village,0,0,50,0,none,none
+gn:3942014,Coyllurqui,Apurímac Department,0,village,0,0,50,0,none,none
+gn:3942022,Coya,Cuzco Department,0,village,0,0,50,0,none,none
+gn:3942057,Cotaruse,Apurímac Department,539,village,0,0,50,0,none,none
+gn:3942061,Cotaparaco,Ancash,395,village,0,0,50,0,none,none
+gn:3942077,Cotahuasi,Arequipa,0,village,0,0,50,0,none,none
+gn:3942084,Cotabambas,Apurímac Department,0,village,0,0,50,0,none,none
+gn:3942101,Santa Clara de Cosme,Huancavelica,0,village,0,0,50,0,none,none
+gn:3942171,Corpanqui,Ancash,597,village,0,0,50,0,none,none
+gn:3942198,Corire,Arequipa,0,village,0,0,50,0,none,none
+gn:3942222,Córdova,Huancavelica,379,village,0,0,50,0,none,none
+gn:3942233,Corculla,Ayacucho,303,village,0,0,50,0,none,none
+gn:3942245,Corani,Puno,340,village,0,0,50,0,none,none
+gn:3942259,Coracora,Ayacucho,7420,village,0,0,50,0,none,none
+gn:3942266,Coporaque,Arequipa,0,village,0,0,50,0,none,none
+gn:3942267,Coporaque,Cuzco Department,265,village,0,0,50,0,none,none
+gn:3942289,Copa,Lima region,481,village,0,0,50,0,none,none
+gn:3942290,Copa,Ancash,491,village,0,0,50,0,none,none
+gn:3942351,Conima,Puno,803,village,0,0,50,0,none,none
+gn:3942377,Congas,Ancash,607,village,0,0,50,0,none,none
+gn:3942378,Congalla,Huancavelica,675,village,0,0,50,0,none,none
+gn:3942426,Condoroma,Cuzco Department,0,village,0,0,50,0,none,none
+gn:3942533,Concho,Junin,0,village,0,0,50,0,none,none
+gn:3942538,Conchamarca,Huánuco Department,358,village,0,0,50,0,none,none
+gn:3942547,Concepción,Ayacucho,365,village,0,0,50,0,none,none
+gn:3942548,Concepción,Junin,11330,town,0,0,50,0,none,none
+gn:3942565,Conayca,Huancavelica,0,village,0,0,50,0,none,none
+gn:3942593,Combapata,Cuzco Department,3472,village,0,0,50,0,none,none
+gn:3942598,Comas,Junin,967,village,0,0,50,0,none,none
+gn:3942602,Colta,Ayacucho,324,village,0,0,50,0,none,none
+gn:3942611,Colquepata,Cuzco Department,559,village,0,0,50,0,none,none
+gn:3942612,Colquemarca,Cuzco Department,0,village,0,0,50,0,none,none
+gn:3942618,Colpas,Huánuco Department,361,village,0,0,50,0,none,none
+gn:3942688,Colonia,Lima region,190,village,0,0,50,0,none,none
+gn:3942802,Colcha,Cuzco Department,194,village,0,0,50,0,none,none
+gn:3942811,Colcabamba,Apurímac Department,532,village,0,0,50,0,none,none
+gn:3942813,Colcabamba,Huancavelica,0,village,0,0,50,0,none,none
+gn:3942822,Colca,Ayacucho,714,village,0,0,50,0,none,none
+gn:3942826,Colca,Junin,0,village,0,0,50,0,none,none
+gn:3942835,Cojata,Puno,1490,village,0,0,50,0,none,none
+gn:3942872,Cochas,Lima region,262,village,0,0,50,0,none,none
+gn:3942875,Cochas,Junin,488,village,0,0,50,0,none,none
+gn:3942881,Cocharcas,Apurímac Department,529,village,0,0,50,0,none,none
+gn:3942909,Cochamarca,Lima region,424,village,0,0,50,0,none,none
+gn:3942940,Cocas,Huancavelica,158,village,0,0,50,0,none,none
+gn:3942957,Cocachacra,Arequipa,8799,village,0,0,50,0,none,none
+gn:3942959,Cocachacra,Lima region,763,village,0,0,50,0,none,none
+gn:3942965,Coayllo,Lima region,363,village,0,0,50,0,none,none
+gn:3942969,Coata,Puno,460,village,0,0,50,0,none,none
+gn:3942971,Coasa,Puno,0,village,0,0,50,0,none,none
+gn:3942980,Coalaque,Moquegua Department,365,village,0,0,50,0,none,none
+gn:3943006,Circa,Apurímac Department,243,village,0,0,50,0,none,none
+gn:3943036,Cieneguilla,Lima region,0,village,0,0,50,0,none,none
+gn:3943084,Chuschi,Ayacucho,0,village,0,0,50,0,none,none
+gn:3943132,Churcampa,Huancavelica,0,village,0,0,50,0,none,none
+gn:3943156,Chuquibambilla,Apurímac Department,0,village,0,0,50,0,none,none
+gn:3943157,Chuquibamba,Arequipa,0,village,0,0,50,0,none,none
+gn:3943176,Chupamarca,Huancavelica,274,village,0,0,50,0,none,none
+gn:3943186,Chupaca,Junin,9877,village,0,0,50,0,none,none
+gn:3943189,Chupa,Puno,0,village,0,0,50,0,none,none
+gn:3943224,Chungui,Ayacucho,551,village,0,0,50,0,none,none
+gn:3943254,San Pedro de Chunan,Junin,558,village,0,0,50,0,none,none
+gn:3943259,Chumpi,Ayacucho,0,village,0,0,50,0,none,none
+gn:3943365,Chucuito,Puno,0,village,0,0,50,0,none,none
+gn:3943397,Chucatamani,Tacna,261,village,0,0,50,0,none,none
+gn:3943423,Chosica,Lima region,88606,town,0,0,50,0,none,none
+gn:3943504,Chontabamba,Pasco,0,village,0,0,50,0,none,none
+gn:3943519,Chongos Bajo,Junin,0,village,0,0,50,0,none,none
+gn:3943520,Chongos Alto,Junin,828,village,0,0,50,0,none,none
+gn:3943547,Chojata,Moquegua Department,727,village,0,0,50,0,none,none
+gn:3943565,Chocos,Lima region,328,village,0,0,50,0,none,none
+gn:3943580,Choco,Arequipa,219,village,0,0,50,0,none,none
+gn:3943626,Chivay,Arequipa,4543,village,0,0,50,0,none,none
+gn:3943682,Chiquintirca,Ayacucho,530,village,0,0,50,0,none,none
+gn:3943699,Chipispaya,Tacna,1932,village,0,0,50,0,none,none
+gn:3943711,Chipao,Ayacucho,0,village,0,0,50,0,none,none
+gn:3943751,Chincho,Huancavelica,83,village,0,0,50,0,none,none
+gn:3943769,Chincheros,Apurímac Department,0,village,0,0,50,0,none,none
+gn:3943770,Chinchero,Cuzco Department,0,village,0,0,50,0,none,none
+gn:3943778,Chinchaypujio,Cuzco Department,943,village,0,0,50,0,none,none
+gn:3943788,Chincha Baja,Ica,0,village,0,0,50,0,none,none
+gn:3943789,Chincha Alta,Ica,153076,city,0,0,50,0,none,none
+gn:3943918,Chílcayoc,Ayacucho,310,village,0,0,50,0,none,none
+gn:3943923,Chilcas,Ayacucho,252,village,0,0,50,0,none,none
+gn:3943939,Chilcaymarca,Arequipa,0,village,0,0,50,0,none,none
+gn:3943957,Chilca,Lima region,12884,town,0,0,50,0,none,none
+gn:3944008,Chiguata,Arequipa,464,village,0,0,50,0,none,none
+gn:3944039,Chicla,Lima region,0,village,0,0,50,0,none,none
+gn:3944050,Chichas,Arequipa,185,village,0,0,50,0,none,none
+gn:3944068,Chicche,Junin,250,village,0,0,50,0,none,none
+gn:3944092,Chiara,Apurímac Department,566,village,0,0,50,0,none,none
+gn:3944093,Chiara,Ayacucho,328,village,0,0,50,0,none,none
+gn:3944134,Checca,Cuzco Department,3810,village,0,0,50,0,none,none
+gn:3944138,Checacupe,Cuzco Department,3440,village,0,0,50,0,none,none
+gn:3944157,Chaviña,Ayacucho,0,village,0,0,50,0,none,none
+gn:3944159,Chavín,Ica,502,village,0,0,50,0,none,none
+gn:3944179,Chaupimarca,Pasco,28666,town,0,0,50,0,none,none
+gn:3944207,Chaulán,Huánuco Department,0,village,0,0,50,0,none,none
+gn:3944237,Chasquitambo,Ancash,0,village,0,0,50,0,none,none
+gn:3944274,Charcana,Arequipa,367,village,0,0,50,0,none,none
+gn:3944294,Characato,Arequipa,0,village,0,0,50,0,none,none
+gn:3944343,Chapimarca,Apurímac Department,343,village,0,0,50,0,none,none
+gn:3944375,Changuillo,Ica,247,village,0,0,50,0,none,none
+gn:3944399,Chancay,Lima region,26958,town,0,0,50,0,none,none
+gn:3944440,Chambara,Junin,688,village,0,0,50,0,none,none
+gn:3944465,Chamaca,Cuzco Department,689,village,0,0,50,0,none,none
+gn:3944488,Challhuahuacho,Apurímac Department,0,village,0,0,50,0,none,none
+gn:3944529,Challabamba,Cuzco Department,875,village,0,0,50,0,none,none
+gn:3944545,Chalhuanca,Apurímac Department,0,village,0,0,50,0,none,none
+gn:3944553,Chalcos,Ayacucho,253,village,0,0,50,0,none,none
+gn:3944567,Chala,Arequipa,0,village,0,0,50,0,none,none
+gn:3944602,San Juan de Chacña,Apurímac Department,593,village,0,0,50,0,none,none
+gn:3944649,Chacoche,Apurímac Department,0,village,0,0,50,0,none,none
+gn:3944659,Chaclla,Lima region,0,village,0,0,50,0,none,none
+gn:3944665,Chaclacayo,Lima region,0,village,0,0,50,0,none,none
+gn:3944670,Chachas,Arequipa,563,village,0,0,50,0,none,none
+gn:3944688,Chaccrampa,Apurímac Department,693,village,0,0,50,0,none,none
+gn:3944733,Chacapampa,Junin,303,village,0,0,50,0,none,none
+gn:3944739,Chacapalpa,Junin,376,village,0,0,50,0,none,none
+gn:3944797,Cerro de Pasco,Pasco,58899,town,0,0,50,0,none,none
+gn:3944917,Ccorca,Cuzco Department,0,village,0,0,50,0,none,none
+gn:3945068,Ccapi,Cuzco Department,862,village,0,0,50,0,none,none
+gn:3945133,Cayna,Huánuco Department,976,village,0,0,50,0,none,none
+gn:3945144,Cayarani,Arequipa,457,village,0,0,50,0,none,none
+gn:3945149,Cayara,Ayacucho,919,village,0,0,50,0,none,none
+gn:3945168,Cauri,Huánuco Department,0,village,0,0,50,0,none,none
+gn:3945196,Ccatca,Cuzco Department,538,village,0,0,50,0,none,none
+gn:3945223,Catahuasi,Lima region,386,village,0,0,50,0,none,none
+gn:3945233,Castrovirreyna,Huancavelica,0,village,0,0,50,0,none,none
+gn:3945358,Carumas,Moquegua Department,923,village,0,0,50,0,none,none
+gn:3945425,Carmen Alto,Ayacucho,0,village,0,0,50,0,none,none
+gn:3945462,Carhuanca,Ayacucho,500,village,0,0,50,0,none,none
+gn:3945466,Carhuamayo,Junin,9122,village,0,0,50,0,none,none
+gn:3945480,Santa Barbara de Carhuacayan,Junin,647,village,0,0,50,0,none,none
+gn:3945481,Carhuacallanga,Junin,828,village,0,0,50,0,none,none
+gn:3945551,Carapo,Ayacucho,560,village,0,0,50,0,none,none
+gn:3945554,Carania,Lima region,233,village,0,0,50,0,none,none
+gn:3945563,Carampoma,Lima region,0,village,0,0,50,0,none,none
+gn:3945573,Caraybamba,Apurímac Department,630,village,0,0,50,0,none,none
+gn:3945578,Caracoto,Puno,782,village,0,0,50,0,none,none
+gn:3945610,Carac,Lima region,375,village,0,0,50,0,none,none
+gn:3945612,Carabayllo,Lima region,0,village,0,0,50,0,none,none
+gn:3945654,Santo Domingo de Capillas,Huancavelica,219,village,0,0,50,0,none,none
+gn:3945676,Capaya,Apurímac Department,276,village,0,0,50,0,none,none
+gn:3945694,Capacmarca,Cuzco Department,624,village,0,0,50,0,none,none
+gn:3945697,Capachica,Puno,961,village,0,0,50,0,none,none
+gn:3945750,Canta,Lima region,0,village,0,0,50,0,none,none
+gn:3945779,Canis,Ancash,662,village,0,0,50,0,none,none
+gn:3945793,Cangallo,Ayacucho,0,village,0,0,50,0,none,none
+gn:3945808,Candarave,Tacna,3415,village,0,0,50,0,none,none
+gn:3945829,Canchayllo,Junin,746,village,0,0,50,0,none,none
+gn:3945878,Canaria,Ayacucho,0,village,0,0,50,0,none,none
+gn:3945952,Caminaca,Puno,113,village,0,0,50,0,none,none
+gn:3945956,Camilaca,Tacna,274,village,0,0,50,0,none,none
+gn:3945985,Camaná,Arequipa,16434,town,0,0,50,0,none,none
+gn:3946083,Callao,Callao,1226200,large-city,0,0,50,0,none,none
+gn:3946084,Callanmarca,Huancavelica,652,village,0,0,50,0,none,none
+gn:3946105,Callalli,Arequipa,0,village,0,0,50,0,none,none
+gn:3946110,Callahuanca,Lima region,0,village,0,0,50,0,none,none
+gn:3946147,Caleta de Carquín,Lima region,5514,village,0,0,50,0,none,none
+gn:3946177,Calca,Cuzco Department,9179,village,0,0,50,0,none,none
+gn:3946194,Calapuja,Puno,375,village,0,0,50,0,none,none
+gn:3946203,Calango,Lima region,651,village,0,0,50,0,none,none
+gn:3946212,Calana,Tacna,875,village,0,0,50,0,none,none
+gn:3946237,Calacoa,Moquegua Department,0,village,0,0,50,0,none,none
+gn:3946274,Cajamarquilla,Ancash,421,village,0,0,50,0,none,none
+gn:3946280,Cajacay,Ancash,636,village,0,0,50,0,none,none
+gn:3946286,Caja,Huancavelica,0,village,0,0,50,0,none,none
+gn:3946292,Cairani,Tacna,604,village,0,0,50,0,none,none
+gn:3946301,Cayma,Arequipa,0,village,0,0,50,0,none,none
+gn:3946304,Caylloma,Arequipa,0,village,0,0,50,0,none,none
+gn:3946310,Caicay,Cuzco Department,333,village,0,0,50,0,none,none
+gn:3946323,Cahuacho,Arequipa,252,village,0,0,50,0,none,none
+gn:3946341,Cacra,Lima region,179,village,0,0,50,0,none,none
+gn:3946350,Cachora,Apurímac Department,805,village,0,0,50,0,none,none
+gn:3946373,Cachimayo,Cuzco Department,0,village,0,0,50,0,none,none
+gn:3946473,Cabanilla,Puno,895,village,0,0,50,0,none,none
+gn:3946475,Cabanaconde,Arequipa,0,village,0,0,50,0,none,none
+gn:3946476,Cabana,Puno,824,village,0,0,50,0,none,none
+gn:3946478,Cabana,Ayacucho,0,village,0,0,50,0,none,none
+gn:3946644,Bolognesi,Ucayali,0,village,0,0,50,0,none,none
+gn:3946781,Belén,Ayacucho,506,village,0,0,50,0,none,none
+gn:3946818,Barranco,Lima region,37525,town,0,0,50,0,none,none
+gn:3946820,Barranca,Lima region,46290,town,0,0,50,0,none,none
+gn:3946838,Baños,Huánuco Department,0,village,0,0,50,0,none,none
+gn:3946937,Azángaro,Puno,13290,town,0,0,50,0,none,none
+gn:3946938,Azángaro,Lima region,194,village,0,0,50,0,none,none
+gn:3946951,Ayrampuni,Puno,338,village,0,0,50,0,none,none
+gn:3946960,Ayo,Arequipa,262,village,0,0,50,0,none,none
+gn:3946962,Ayna,Ayacucho,4588,village,0,0,50,0,none,none
+gn:3946985,Ayaviri,Puno,22247,town,0,0,50,0,none,none
+gn:3946989,Ayavarí,Lima region,0,village,0,0,50,0,none,none
+gn:3946990,Ayauca,Lima region,283,village,0,0,50,0,none,none
+gn:3946998,Ayapata,Puno,2594,village,0,0,50,0,none,none
+gn:3947019,Ayacucho,Ayacucho,140033,city,0,0,50,0,none,none
+gn:3947048,Aurahuá,Huancavelica,492,village,0,0,50,0,none,none
+gn:3947092,Aucallama,Lima region,0,village,0,0,50,0,none,none
+gn:3947110,Atuncolla,Puno,12654,town,0,0,50,0,none,none
+gn:3947142,Atiquipa,Arequipa,137,village,0,0,50,0,none,none
+gn:3947150,Atico,Arequipa,199,village,0,0,50,0,none,none
+gn:3947157,Ataura,Junin,0,village,0,0,50,0,none,none
+gn:3947173,Atalaya,Ucayali,16700,town,0,0,50,0,none,none
+gn:3947203,Asquipata,Ayacucho,178,village,0,0,50,0,none,none
+gn:3947228,Asillo,Puno,0,village,0,0,50,0,none,none
+gn:3947240,Asia,Lima region,890,village,0,0,50,0,none,none
+gn:3947300,Arma,Huancavelica,284,village,0,0,50,0,none,none
+gn:3947322,Arequipa,Arequipa,1195700,large-city,0,0,50,0,none,none
+gn:3947385,Arapa,Puno,907,village,0,0,50,0,none,none
+gn:3947397,Arahuay,Lima region,356,village,0,0,50,0,none,none
+gn:3947409,Aquia,Ancash,809,village,0,0,50,0,none,none
+gn:3947431,Apongo,Ayacucho,898,village,0,0,50,0,none,none
+gn:3947437,Aplao,Arequipa,0,village,0,0,50,0,none,none
+gn:3947445,Apata,Junin,0,village,0,0,50,0,none,none
+gn:3947519,Antauta,Puno,0,village,0,0,50,0,none,none
+gn:3947554,Antaparco,Huancavelica,555,village,0,0,50,0,none,none
+gn:3947614,Antabamba,Apurímac Department,0,village,0,0,50,0,none,none
+gn:3947634,Anta,Cuzco Department,5859,village,0,0,50,0,none,none
+gn:3947639,Anta,Huancavelica,517,village,0,0,50,0,none,none
+gn:3947653,Aniso,Ayacucho,195,village,0,0,50,0,none,none
+gn:3947715,Andaray,Arequipa,351,village,0,0,50,0,none,none
+gn:3947718,Andarapa,Apurímac Department,427,village,0,0,50,0,none,none
+gn:3947727,Andamarca,Ayacucho,0,village,0,0,50,0,none,none
+gn:3947730,Andamarca,Junin,395,village,0,0,50,0,none,none
+gn:3947735,Andajes,Lima region,621,village,0,0,50,0,none,none
+gn:3947737,Andahuaylillas,Cuzco Department,0,village,0,0,50,0,none,none
+gn:3947740,Andahuaylas,Apurímac Department,17444,town,0,0,50,0,none,none
+gn:3947748,Andahua,Arequipa,0,village,0,0,50,0,none,none
+gn:3947817,Anchonga,Huancavelica,280,village,0,0,50,0,none,none
+gn:3947870,Ancahuasi,Cuzco Department,0,village,0,0,50,0,none,none
+gn:3947908,Ananea,Puno,0,village,0,0,50,0,none,none
+gn:3947956,Ambo,Huánuco Department,6865,village,0,0,50,0,none,none
+gn:3947959,Ambar,Lima region,462,village,0,0,50,0,none,none
+gn:3948094,San Javier de Alpabamba,Ayacucho,80,village,0,0,50,0,none,none
+gn:3948153,Alis,Lima region,198,village,0,0,50,0,none,none
+gn:3948165,El Algarrobal,Moquegua Department,38,village,0,0,50,0,none,none
+gn:3948188,Alcamenca,Ayacucho,0,village,0,0,50,0,none,none
+gn:3948198,Alca,Arequipa,481,village,0,0,50,0,none,none
+gn:3948226,Ajoyani,Puno,0,village,0,0,50,0,none,none
+gn:3948273,Ayrihuanca,Apurímac Department,537,village,0,0,50,0,none,none
+gn:3948307,Ahuac,Junin,0,village,0,0,50,0,none,none
+gn:3948413,Acosvinchos,Ayacucho,0,village,0,0,50,0,none,none
+gn:3948414,Acostambo,Huancavelica,901,village,0,0,50,0,none,none
+gn:3948418,Acos,Cuzco Department,759,village,0,0,50,0,none,none
+gn:3948419,Acos,Lima region,507,village,0,0,50,0,none,none
+gn:3948420,Acoria,Huancavelica,0,village,0,0,50,0,none,none
+gn:3948425,Acora,Puno,0,village,0,0,50,0,none,none
+gn:3948430,Acopía,Cuzco Department,0,village,0,0,50,0,none,none
+gn:3948444,Acomayo,Cuzco Department,0,village,0,0,50,0,none,none
+gn:3948448,Acolla,Junin,6805,village,0,0,50,0,none,none
+gn:3948456,Acocro,Ayacucho,543,village,0,0,50,0,none,none
+gn:3948473,Acobambilla,Huancavelica,0,village,0,0,50,0,none,none
+gn:3948484,Acobamba,Huancavelica,0,village,0,0,50,0,none,none
+gn:3948486,Acobamba,Junin,0,village,0,0,50,0,none,none
+gn:3948490,Accocunca,Cuzco Department,247,village,0,0,50,0,none,none
+gn:3948491,Aco,Junin,0,village,0,0,50,0,none,none
+gn:3948492,Aco,Ancash,418,village,0,0,50,0,none,none
+gn:3948510,Achoma,Arequipa,0,village,0,0,50,0,none,none
+gn:3948522,Achaya,Puno,117,village,0,0,50,0,none,none
+gn:3948529,Achanizo,Arequipa,352,village,0,0,50,0,none,none
+gn:3948574,Accomarca,Ayacucho,639,village,0,0,50,0,none,none
+gn:3948602,Accha,Cuzco Department,0,village,0,0,50,0,none,none
+gn:3948608,Acas,Ancash,449,village,0,0,50,0,none,none
+gn:3948613,Acarí,Arequipa,4445,village,0,0,50,0,none,none
+gn:3948642,Abancay,Apurímac Department,72277,town,0,0,50,0,none,none
+gn:3948689,Mosoc Llacta,Cuzco Department,3802,village,0,0,50,0,none,none
+gn:3948804,Ccarhuayo,Cuzco Department,0,village,0,0,50,0,none,none
+gn:3948810,Taray,Cuzco Department,489,village,0,0,50,0,none,none
+gn:3948841,Huayllati,Apurímac Department,515,village,0,0,50,0,none,none
+gn:3948866,San Juan de Virundo,Apurímac Department,0,village,0,0,50,0,none,none
+gn:3948871,Sabaino,Apurímac Department,737,village,0,0,50,0,none,none
+gn:3948873,Ayahuay,Apurímac Department,342,village,0,0,50,0,none,none
+gn:3948878,Huayllo,Apurímac Department,178,village,0,0,50,0,none,none
+gn:3948888,San Francisco de Ravacayco,Ayacucho,174,village,0,0,50,0,none,none
+gn:3948917,Santo Tomas,Cuzco Department,4134,village,0,0,50,0,none,none
+gn:3948949,San Antonio,Apurímac Department,314,village,0,0,50,0,none,none
+gn:3948950,Curpahuasi,Apurímac Department,424,village,0,0,50,0,none,none
+gn:3948965,Río Blanco,Apurímac Department,307,village,0,0,50,0,none,none
+gn:3949231,Jacobo Hunter,Arequipa,46092,town,0,0,50,0,none,none
+gn:3951506,Huarancante,Arequipa,4638,village,0,0,50,0,none,none
+gn:3951550,Ccolo,Arequipa,3857,village,0,0,50,0,none,none
+gn:3951691,Huarichancara,Arequipa,4445,village,0,0,50,0,none,none
+gn:3951757,Llongasora,Arequipa,4753,village,0,0,50,0,none,none
+gn:3951767,Jayune,Arequipa,4256,village,0,0,50,0,none,none
+gn:3952372,Chuquitira,Tacna,4220,village,0,0,50,0,none,none
+gn:3952664,Pueblo Nuevo,Moquegua Department,0,village,0,0,50,0,none,none
+gn:3952849,Callanca,Cuzco Department,4046,village,0,0,50,0,none,none
+gn:3952867,Cullcuyre,Cuzco Department,3593,village,0,0,50,0,none,none
+gn:3953301,Cahuanuyo,Cuzco Department,3935,village,0,0,50,0,none,none
+gn:3953343,Ccaquiracunca,Cuzco Department,4098,village,0,0,50,0,none,none
+gn:3953385,Chignayhua,Cuzco Department,3912,village,0,0,50,0,none,none
+gn:3953594,Ccuntuma,Cuzco Department,3511,village,0,0,50,0,none,none
+gn:3953687,Lima Pampa,Cuzco Department,3569,village,0,0,50,0,none,none
+gn:3953711,Jayobamba,Cuzco Department,3593,village,0,0,50,0,none,none
+gn:3953732,Queromarca,Cuzco Department,3496,village,0,0,50,0,none,none
+gn:3953762,Qquea,Cuzco Department,3482,village,0,0,50,0,none,none
+gn:3953918,Conchopata,Cuzco Department,3977,village,0,0,50,0,none,none
+gn:3954288,Mosoc Cancha,Cuzco Department,4450,village,0,0,50,0,none,none
+gn:3954291,Huayna Alcalde,Cuzco Department,4298,village,0,0,50,0,none,none
+gn:3955885,Salamanca,Arequipa,547,village,0,0,50,0,none,none
+gn:3959023,San Pedro de Larcay,Ayacucho,553,village,0,0,50,0,none,none
+gn:3959451,Santa Ana de Huaycahuacho,Ayacucho,730,village,0,0,50,0,none,none
+gn:3959452,Aucara,Ayacucho,0,village,0,0,50,0,none,none
+gn:3959748,Santa Cruz,Ica,39,village,0,0,50,0,none,none
+gn:3961461,Caujul,Lima region,412,village,0,0,50,0,none,none
+gn:3963675,Yarusyacán,Pasco,917,village,0,0,50,0,none,none
+gn:3963815,Bajo Pichanaqui,Junin,0,village,0,0,50,0,none,none
+gn:3964938,Huaccana,Apurímac Department,887,village,0,0,50,0,none,none
+gn:6258562,Echarate,Cuzco Department,0,village,0,0,50,0,none,none
+gn:6278857,Monte Israel,Loreto,6000,village,0,0,50,0,none,none
+gn:6279052,Genaro Herrera,Loreto,0,village,0,0,50,0,none,none
+gn:6302932,Laylla,Junin,0,village,0,0,50,0,none,none
+gn:6302989,Coviriali,Junin,175,village,0,0,50,0,none,none
+gn:6303054,Río Negro,Junin,0,village,0,0,50,0,none,none
+gn:6304827,Iscozacín,Pasco,0,village,0,0,50,0,none,none
+gn:6309391,Oronccoy,Ayacucho,0,village,0,0,50,0,none,none
+gn:6309632,La Esperanza,Tacna,0,village,0,0,50,0,none,none
+gn:6310357,Kelluyo,Puno,0,village,0,0,50,0,none,none
+gn:6368808,Ayaviri,Huancavelica,0,village,0,0,50,0,none,none
+gn:6368819,Santa Rosa de Tambo,Huancavelica,0,village,0,0,50,0,none,none
+gn:6374546,Paccha Huallhua,Ayacucho,52,village,0,0,50,0,none,none
+gn:6377798,Providencia,Amazonas,265,village,0,0,50,0,none,none
+gn:6377843,Chalamarca,Cajamarca Department,776,village,0,0,50,0,none,none
+gn:6377880,Choropampa,Cajamarca Department,320,village,0,0,50,0,none,none
+gn:6378003,Collonce,Amazonas,628,village,0,0,50,0,none,none
+gn:6378093,Santa Catalina,Amazonas,423,village,0,0,50,0,none,none
+gn:6379282,Duraznopampa,Amazonas,249,village,0,0,50,0,none,none
+gn:6380239,Matacoto,Ancash,218,village,0,0,50,0,none,none
+gn:6380271,Carhuac,Ancash,275,village,0,0,50,0,none,none
+gn:6380504,Aco,Ancash,322,village,0,0,50,0,none,none
+gn:6383401,Cheto,Amazonas,378,village,0,0,50,0,none,none
+gn:6383437,Daguas,Amazonas,50,village,0,0,50,0,none,none
+gn:6383661,Cochamal,Amazonas,104,village,0,0,50,0,none,none
+gn:6383665,Huambo,Amazonas,680,village,0,0,50,0,none,none
+gn:6384830,Parcoy,La Libertad,903,village,0,0,50,0,none,none
+gn:6385248,Urpay,La Libertad,555,village,0,0,50,0,none,none
+gn:6385311,Ullulluco,Ancash,258,village,0,0,50,0,none,none
+gn:6385368,Challas,La Libertad,986,village,0,0,50,0,none,none
+gn:6385413,Huancaspata,La Libertad,0,village,0,0,50,0,none,none
+gn:6389284,Naranjos,San Martín Department,0,village,0,0,50,0,none,none
+gn:6389292,Bajo Naranjillo,San Martín Department,0,village,0,0,50,0,none,none
+gn:6389321,Segunda Jerusalén - Azunguillo,San Martín Department,6412,village,0,0,50,0,none,none
+gn:6389334,Nueva Cajamarca,San Martín Department,0,village,0,0,50,0,none,none
+gn:6389344,San Fernano,San Martín Department,0,village,0,0,50,0,none,none
+gn:6394231,Saramiriza,Loreto,0,village,0,0,50,0,none,none
+gn:6394322,Nuevo Progreso,Huánuco Department,0,village,0,0,50,0,none,none
+gn:6395526,San Juan,Loreto,0,village,0,0,50,0,none,none
+gn:6395604,San Martín de Pangoa,Junin,16262,town,0,0,50,0,none,none
+gn:6403608,Yanahuanca,Pasco,0,village,0,0,50,0,none,none
+gn:6412929,Huabal,Cajamarca Department,732,village,0,0,50,0,none,none
+gn:6559994,Buenos Aires,Ancash,0,village,0,0,50,0,none,none
+gn:6564260,Yuyapichis,Huánuco Department,739,village,0,0,50,0,none,none
+gn:6659394,Pumahuasi,Huánuco Department,0,village,0,0,50,0,none,none
+gn:6660234,El Triunfo ( El Cruce),Arequipa,6386,village,0,0,50,0,none,none
+gn:6660270,La Joya,Arequipa,0,village,0,0,50,0,none,none
+gn:6665530,Pampamarca,Huánuco Department,544,village,0,0,50,0,none,none
+gn:6665533,Choras,Huánuco Department,0,village,0,0,50,0,none,none
+gn:6665537,Llata,Huánuco Department,0,village,0,0,50,0,none,none
+gn:6665540,Jacas Grande,Huánuco Department,478,village,0,0,50,0,none,none
+gn:6665542,Marias,Huánuco Department,0,village,0,0,50,0,none,none
+gn:6666346,San Cristobal de Jacas Chico,Huánuco Department,667,village,0,0,50,0,none,none
+gn:6670219,Cayhuayna,Huánuco Department,0,village,0,0,50,0,none,none
+gn:6670271,Tambillo,Huánuco Department,0,village,0,0,50,0,none,none
+gn:6670434,Huancapallac,Huánuco Department,0,village,0,0,50,0,none,none
+gn:6670435,Cayrán,Huánuco Department,527,village,0,0,50,0,none,none
+gn:6670443,Paucarbamba,Huánuco Department,0,village,0,0,50,0,none,none
+gn:6670931,Ricrán,Junin,735,village,0,0,50,0,none,none
+gn:6671377,Huaricolca,Junin,0,village,0,0,50,0,none,none
+gn:6671378,Yauyos,Junin,0,village,0,0,50,0,none,none
+gn:6671379,Janjaillo,Junin,91,village,0,0,50,0,none,none
+gn:6671380,El Rosario,Junin,311,village,0,0,50,0,none,none
+gn:6671381,Santa Rosa de Sacco,Junin,11257,town,0,0,50,0,none,none
+gn:6672523,Pucayacu,Huánuco Department,776,village,0,0,50,0,none,none
+gn:6672544,Santa Rosa de Alto Yanajanca,Huánuco Department,0,village,0,0,50,0,none,none
+gn:6672579,La Morada,Huánuco Department,653,village,0,0,50,0,none,none
+gn:6674549,Masma Chicche,Junin,354,village,0,0,50,0,none,none
+gn:6674551,Sausa,Junin,0,village,0,0,50,0,none,none
+gn:6674552,Huertas,Junin,681,village,0,0,50,0,none,none
+gn:6674553,Mucllo,Junin,365,village,0,0,50,0,none,none
+gn:6674612,Masma,Junin,785,village,0,0,50,0,none,none
+gn:6674613,El Mantaro,Junin,0,village,0,0,50,0,none,none
+gn:6674615,Matahuasi,Junin,0,village,0,0,50,0,none,none
+gn:6674616,Hualhuas,Junin,0,village,0,0,50,0,none,none
+gn:6674617,Saño,Junin,0,village,0,0,50,0,none,none
+gn:6674620,Quilcas,Junin,0,village,0,0,50,0,none,none
+gn:6674621,Quichuay,Junin,0,village,0,0,50,0,none,none
+gn:6674623,Santo Domingo del Prado,Junin,0,village,0,0,50,0,none,none
+gn:6675495,San Juan de Rontoy,Ancash,0,village,0,0,50,0,none,none
+gn:6675498,Rapayan,Ancash,801,village,0,0,50,0,none,none
+gn:6675503,Anra,Ancash,416,village,0,0,50,0,none,none
+gn:6675671,Cochabamba,Huánuco Department,588,village,0,0,50,0,none,none
+gn:7535952,San Pedro De Cachora,Apurímac Department,0,village,0,0,50,0,none,none
+gn:7543963,Ledoy,San Martín Department,922,village,0,0,50,0,none,none
+gn:7543964,Pajarillo,San Martín Department,912,village,0,0,50,0,none,none
+gn:7545128,Shatoja,San Martín Department,0,village,0,0,50,0,none,none
+gn:7545135,Pasaraya,San Martín Department,0,village,0,0,50,0,none,none
+gn:7545746,Tingo de Ponasa,San Martín Department,421,village,0,0,50,0,none,none
+gn:7626291,La Rinconada,Puno,29678,town,0,0,50,0,none,none
+gn:8030033,Pedro Ruiz Gallo,Amazonas,5602,village,0,0,50,0,none,none
+gn:8650066,Chaca,Ayacucho,947,village,0,0,50,0,none,none
+gn:8650304,San José de Secce,Ayacucho,625,village,0,0,50,0,none,none
+gn:8650686,La Merced,Huancavelica,647,village,0,0,50,0,none,none
+gn:8651147,San Pedro de Coris,Huancavelica,894,village,0,0,50,0,none,none
+gn:8651218,Santa Rosa,Ayacucho,4702,village,0,0,50,0,none,none
+gn:8661572,Chinchihuasi,Huancavelica,438,village,0,0,50,0,none,none
+gn:8663573,Pichos,Huancavelica,0,village,0,0,50,0,none,none
+gn:8664038,Santiago de Tucuma,Huancavelica,0,village,0,0,50,0,none,none
+gn:8664053,Ahuaycha,Huancavelica,794,village,0,0,50,0,none,none
+gn:8664082,Mariscal Cáceres,Huancavelica,0,village,0,0,50,0,none,none
+gn:8664519,Salcahuasi,Huancavelica,377,village,0,0,50,0,none,none
+gn:8664601,Quishuar,Huancavelica,854,village,0,0,50,0,none,none
+gn:8664718,Quichuas,Huancavelica,661,village,0,0,50,0,none,none
+gn:8664861,Andaymarca,Huancavelica,306,village,0,0,50,0,none,none
+gn:8689227,Palmapampa,Ayacucho,0,village,0,0,50,0,none,none
+gn:8689248,Kimbiri,Ayacucho,4369,village,0,0,50,0,none,none
+gn:8689276,Sivia,Ayacucho,0,village,0,0,50,0,none,none
+gn:8701053,Llochegua,Ayacucho,0,village,0,0,50,0,none,none
+gn:9780965,Urb. Santo Domingo,Lima region,5000,village,0,0,50,0,none,none
+gn:10343867,Camisea,Cuzco Department,0,village,0,0,50,0,none,none
+gn:10346348,Indiana,Loreto,0,village,0,0,50,0,none,none
+gn:11558313,Massiapo,Puno,0,village,0,0,50,0,none,none
+gn:12069848,Salvación,Madre de Dios,330,village,0,0,50,0,none,none
+gn:12069849,Bolívar,La Libertad,0,village,0,0,50,0,none,none
+gn:12070605,Paucartambo,Pasco,4438,village,0,0,50,0,none,none
+gn:12156997,José Leonardo Ortiz,Lambayeque,0,village,0,0,50,0,none,none
+gn:12156998,Mariano Melgar,Arequipa,0,village,0,0,50,0,none,none
+gn:12157007,Santa Anita - Los Ficus,Lima region,184614,city,0,0,50,0,none,none
+gn:12157008,San Martin,Piura,130000,city,0,0,50,0,none,none
+gn:12157013,San Francisco De Borja,Lima region,105076,city,0,0,50,0,none,none
+gn:12157025,Ciudad Satelite,Arequipa,76410,town,0,0,50,0,none,none
+gn:12157030,Chilca,Junin,73371,town,0,0,50,0,none,none
+gn:12157037,San Fernando,Ucayali,67844,town,0,0,50,0,none,none
+gn:12157038,Jesus Maria,Lima region,66171,town,0,0,50,0,none,none
+gn:12157056,Wanchaq,Cuzco Department,59134,town,0,0,50,0,none,none
+gn:12157064,Centenario,Ancash,47581,town,0,0,50,0,none,none
+gn:12157065,Cono Norte,Arequipa,47347,town,0,0,50,0,none,none
+gn:12157070,Carmen De La Legua Reynoso,Callao,41863,town,0,0,50,0,none,none
+gn:12157073,Jardin,Ayacucho,0,village,0,0,50,0,none,none
+gn:12157074,La Banda,San Martín Department,24932,town,0,0,50,0,none,none
+gn:12157091,Yanacancha,Pasco,24105,town,0,0,50,0,none,none
+gn:12157092,El Pedregal,Arequipa,20063,town,0,0,50,0,none,none
+gn:12157093,Santa Rosa,Junin,18057,town,0,0,50,0,none,none
+gn:12157094,San Antonio,Moquegua Department,15633,town,0,0,50,0,none,none
+gn:12157098,Cono Norte,Arequipa,14542,town,0,0,50,0,none,none
+gn:12157100,Las Nazarenas,Ayacucho,14316,town,0,0,50,0,none,none
+gn:12157106,Pilcomayo,Ancash,13295,town,0,0,50,0,none,none
+gn:12157107,La Rinconada Ana Maria (La Rinconada),Puno,12183,town,0,0,50,0,none,none
+gn:12157110,La Pradera,Lambayeque,10072,town,0,0,50,0,none,none
+gn:12157111,Miramar,La Libertad,9614,village,0,0,50,0,none,none
+gn:12157112,Ascencion,Huancavelica,9086,village,0,0,50,0,none,none
+gn:12157114,Puente Viru,La Libertad,8995,village,0,0,50,0,none,none
+gn:12157116,Victor Raul,La Libertad,8369,village,0,0,50,0,none,none
+gn:12157117,Horacio Zeballos Gamez,Arequipa,8365,village,0,0,50,0,none,none
+gn:12157119,Huanchaquito Alto,La Libertad,7282,village,0,0,50,0,none,none
+gn:12157128,Selva Alegre,Arequipa,72696,town,0,0,50,0,none,none
+gn:12157129,Santiago,Cuzco Department,64075,town,0,0,50,0,none,none
+gn:12157171,Tabaloslos,San Martín Department,7282,village,0,0,50,0,none,none
+gn:12157172,Fonavi,Ica,6654,village,0,0,50,0,none,none
+gn:12157173,San Jose De Sisa,San Martín Department,6546,village,0,0,50,0,none,none
+gn:12158715,Paragsha- San Andres - Jose Carlos Mariategui,Pasco,6316,village,0,0,50,0,none,none
+gn:12158744,Nuevo Sullana,Piura,5484,village,0,0,50,0,none,none
+gn:12158751,Alto Salaverry,La Libertad,5014,village,0,0,50,0,none,none
+gn:12158753,Huepetuhe,Madre de Dios,4056,village,0,0,50,0,none,none
+gn:12165682,Palianñuñas,Junin,4049,village,0,0,50,0,none,none
+gn:12165683,Huamancaca Chico,Junin,4019,village,0,0,50,0,none,none
+gn:12165686,Mazuko,Madre de Dios,3586,village,0,0,50,0,none,none
+gn:12165689,San Alejandro,Ucayali,3594,village,0,0,50,0,none,none
+gn:12165690,Cerro Verde,Arequipa,3602,village,0,0,50,0,none,none
+gn:12165691,Limoncarro,La Libertad,3758,village,0,0,50,0,none,none
+gn:12165736,Breña,Lima region,81909,town,0,0,50,0,none,none
+gn:12200073,Chupuro,Junin,0,village,0,0,50,0,none,none
+gn:12200101,Pampas Grande,Ancash,0,village,0,0,50,0,none,none
+gn:12253616,Puerto Rosario de Laberinto,Madre de Dios,3660,village,0,0,50,0,none,none
+gn:12253617,Soplín Vargas,Loreto,537,village,0,0,50,0,none,none
+gn:12281472,Canayre,Ayacucho,0,village,0,0,50,0,none,none
+gn:12954081,Ullpayacu,Loreto,0,village,0,0,50,0,none,none
+gn:12954082,Alexander von Humboldt,Ucayali,0,village,0,0,50,0,none,none
+gn:12954083,Curimaná,Ucayali,0,village,0,0,50,0,none,none
+gn:12954092,Vicco,Pasco,0,village,0,0,50,0,none,none
+gn:12954134,Yauli,Huancavelica,0,village,0,0,50,0,none,none
+gn:12954135,Islandia,Loreto,0,village,0,0,50,0,none,none
+gn:12954136,Campanilla,San Martín Department,0,village,0,0,50,0,none,none
+gn:12954137,Huipoca,Ucayali,0,village,0,0,50,0,none,none
+gn:12954138,Boquerón,Ucayali,0,village,0,0,50,0,none,none
+gn:12954139,Balsapuerto,Loreto,0,village,0,0,50,0,none,none
+gn:12954197,Remanso,Loreto,0,village,0,0,50,0,none,none
+gn:13060807,Chaccho,Ancash,0,village,0,0,50,0,none,none
+gn:13100049,Pongo de Caynarachi,San Martín Department,0,village,0,0,50,0,none,none
+gn:13100084,Acobamba,Ancash,0,village,0,0,50,0,none,none
+gn:13100085,San Luis de Lucma,Cajamarca Department,0,village,0,0,50,0,none,none
+gn:13100115,Acochaca,Ancash,0,village,0,0,50,0,none,none
+gn:13100116,San Nicolás,Ancash,0,village,0,0,50,0,none,none
+gn:13100117,Masin,Ancash,0,village,0,0,50,0,none,none
+gn:13100118,Cajay,Ancash,0,village,0,0,50,0,none,none
+gn:13100119,Chaná,Ancash,0,village,0,0,50,0,none,none
+gn:13100120,Santo Toribio,Ancash,0,village,0,0,50,0,none,none
+gn:13100121,Musga,Ancash,0,village,0,0,50,0,none,none
+gn:13100122,Pampachacra,Ancash,0,village,0,0,50,0,none,none
+gn:13100123,Sanachgan,Ancash,0,village,0,0,50,0,none,none
+gn:13100124,Huayllán,Ancash,0,village,0,0,50,0,none,none
+gn:13100157,Cashapampa,Ancash,0,village,0,0,50,0,none,none
+gn:13100165,Chullin,Ancash,0,village,0,0,50,0,none,none
+gn:13100168,Ragash,Ancash,0,village,0,0,50,0,none,none
+gn:13100192,Santa Cruz,Cajamarca Department,0,village,0,0,50,0,none,none
+gn:13100193,Pimpingos,Cajamarca Department,0,village,0,0,50,0,none,none
+gn:13100194,San Juan de Cutervo,Cajamarca Department,0,village,0,0,50,0,none,none
+gn:13100195,Huarango,Cajamarca Department,0,village,0,0,50,0,none,none
+gn:13100196,Venecia,Cajamarca Department,0,village,0,0,50,0,none,none
+gn:13100197,Paucamarca,Cajamarca Department,0,village,0,0,50,0,none,none
+gn:13100199,Chancay,Cajamarca Department,0,village,0,0,50,0,none,none
+gn:13100200,Catilluc,Cajamarca Department,0,village,0,0,50,0,none,none
+gn:13100201,San Silvestre de Cochán,Cajamarca Department,0,village,0,0,50,0,none,none
+gn:13100202,Calquis,Cajamarca Department,0,village,0,0,50,0,none,none
+gn:13100203,Tongod,Cajamarca Department,0,village,0,0,50,0,none,none
+gn:13100204,San Luis Grande,Cajamarca Department,0,village,0,0,50,0,none,none
+gn:13100205,Tumbadén,Cajamarca Department,0,village,0,0,50,0,none,none
+gn:13100206,Andabamba,Cajamarca Department,0,village,0,0,50,0,none,none
+gn:13100207,Saucepampa,Cajamarca Department,0,village,0,0,50,0,none,none
+gn:13100228,Huallhua,Ayacucho,0,village,0,0,50,0,none,none
+gn:13100278,Viracochan,Ayacucho,0,village,0,0,50,0,none,none
+gn:13100282,Anchihuay,Ayacucho,0,village,0,0,50,0,none,none
+gn:13100552,Tres de Diciembre,Junin,0,village,0,0,50,0,none,none
+gn:13100569,Virginniyoc,Cuzco Department,0,village,0,0,50,0,none,none
+gn:13100570,Villa Kintiarina,Cuzco Department,0,village,0,0,50,0,none,none
+gn:13100574,Amaybamba,Cuzco Department,0,village,0,0,50,0,none,none
+gn:13100575,Villa Virgen,Cuzco Department,0,village,0,0,50,0,none,none
+gn:13117795,Estación de Pucará,Puno,0,village,0,0,50,0,none,none
+gn:13117796,Conduriri,Puno,0,village,0,0,50,0,none,none
+gn:13117797,Capaso,Puno,0,village,0,0,50,0,none,none
+gn:13117798,Quilcapuncu,Puno,0,village,0,0,50,0,none,none
+gn:13117799,Tinicachi,Puno,0,village,0,0,50,0,none,none
+gn:13117800,Copani,Puno,0,village,0,0,50,0,none,none
+gn:13117801,San Juan de Cuturapi,Puno,0,village,0,0,50,0,none,none
+gn:13117802,Marcaja,Puno,0,village,0,0,50,0,none,none
+gn:13117803,San Miguel de Ollaraya,Puno,0,village,0,0,50,0,none,none
+gn:13117805,Anapia,Puno,0,village,0,0,50,0,none,none
+gn:13117806,Amantaní,Puno,0,village,0,0,50,0,none,none
+gn:13118854,Pachamarca,Huancavelica,0,village,0,0,50,0,none,none
+gn:13118875,Rosario,Huancavelica,0,village,0,0,50,0,none,none
+gn:13118878,Ccochaccasa,Huancavelica,0,village,0,0,50,0,none,none
+gn:13118889,Acraquia,Huancavelica,0,village,0,0,50,0,none,none
+gn:13118890,Huachocolpa,Huancavelica,0,village,0,0,50,0,none,none
+gn:13118891,San Marcos de Rocchac,Huancavelica,0,village,0,0,50,0,none,none
+gn:13118892,Puerto San Antonio,Huancavelica,0,village,0,0,50,0,none,none
+gn:13132153,Santa Rosa,Cajamarca Department,0,village,0,0,50,0,none,none
+gn:13132154,La Ramada,Cajamarca Department,0,village,0,0,50,0,none,none
+gn:13132156,Pararca,Ayacucho,0,village,0,0,50,0,none,none
+gn:13132928,Putina Punco,Puno,0,village,0,0,50,0,none,none
+gn:13132929,San Miguel,Puno,60850,town,0,0,50,0,none,none
+gn:13133582,Villa Alto Camilaca,Tacna,0,village,0,0,50,0,none,none
+gn:13286776,San José,Ucayali,1939,village,0,0,50,0,none,none
+gn:13286777,San Juan,Ucayali,1528,village,0,0,50,0,none,none
+gn:13286779,San Francisco,Ucayali,1263,village,0,0,50,0,none,none
+gn:13562027,Pinto Recodo,San Martín Department,1116,village,0,0,50,0,none,none
+gn:13562080,Papaplaya,San Martín Department,1276,village,0,0,50,0,none,none
+gn:13562092,Canchabamba,Huánuco Department,532,village,0,0,50,0,none,none
+gn:13562093,Chacabamba,Huánuco Department,238,village,0,0,50,0,none,none
+gn:13562095,San Buenaventura,Huánuco Department,420,village,0,0,50,0,none,none
+gn:13562097,Castillo Grande,Huánuco Department,12438,town,0,0,50,0,none,none
+gn:13562098,San Pablo de Pillao,Huánuco Department,1182,village,0,0,50,0,none,none
+gn:13562145,Ticlacayán,Pasco,1212,village,0,0,50,0,none,none
+gn:13562188,Huaso,La Libertad,301,village,0,0,50,0,none,none
+gn:13562189,Santa Mercedes,Loreto,269,village,0,0,50,0,none,none

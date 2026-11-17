@@ -18,8 +18,8 @@
   "gross": 63300,
   "revenue": 157407.25,
   "distributed": 1.8,
-  "money": 24507218.774,
-  "moneyChange": -492781.226,
+  "money": 24502348.375,
+  "moneyChange": -497651.625,
   "jobsTaken": 0.875,
   "jobsOffered": 0.875,
   "jobPay": 4450.25,
@@ -32,7 +32,7 @@
   "jobsWithdrawn": 0,
   "jobsDeclined": 0,
   "ratesAgreed": 0,
-  "logLines": 143.675,
+  "logLines": 141.8,
   "hired": 16,
   "castRates": 3232.75,
   "releaseDelay": 101.942,
@@ -61,8 +61,8 @@
   "tenanciesEnded": 0,
   "repairSpend": 0,
   "repairsFixed": 0,
-  "homesOwned": 1,
-  "pricePaid": 285825,
+  "homesOwned": 0.925,
+  "pricePaid": 290600,
   "mortgageLoan": 0,
   "mortgagePayment": 0,
   "mortgageOwed": 0,
@@ -93,7 +93,7 @@
   "bankFees": 0,
   "owed": 0,
   "accounts": 1,
-  "worth": 18429428.518,
+  "worth": 18425765.979,
   "rewards": 0,
   "fired": 0
  },
@@ -105,8 +105,8 @@
   "gross": 63300,
   "revenue": 157407.25,
   "distributed": 1.8,
-  "money": 24505835.529,
-  "moneyChange": -494164.471,
+  "money": 24501068.873,
+  "moneyChange": -498931.127,
   "jobsTaken": 0.875,
   "jobsOffered": 0.875,
   "jobPay": 4450.25,
@@ -119,7 +119,7 @@
   "jobsWithdrawn": 0,
   "jobsDeclined": 0,
   "ratesAgreed": 0,
-  "logLines": 146.675,
+  "logLines": 144.575,
   "hired": 16,
   "castRates": 3232.75,
   "releaseDelay": 101.942,
@@ -146,10 +146,10 @@
   "depositKept": 0,
   "depositBack": 0,
   "tenanciesEnded": 0,
-  "repairSpend": 1400,
-  "repairsFixed": 1,
-  "homesOwned": 1,
-  "pricePaid": 285825,
+  "repairSpend": 1295,
+  "repairsFixed": 0.925,
+  "homesOwned": 0.925,
+  "pricePaid": 290600,
   "mortgageLoan": 0,
   "mortgagePayment": 0,
   "mortgageOwed": 0,
@@ -180,7 +180,7 @@
   "bankFees": 0,
   "owed": 0,
   "accounts": 1,
-  "worth": 18428388.318,
+  "worth": 18424803.794,
   "rewards": 0,
   "fired": 0
  },
@@ -235,17 +235,17 @@
    "n": 40
   },
   "money": {
-   "mean": -1383.245,
-   "lo": -1383.247,
-   "hi": -1383.244,
-   "changed": 40,
+   "mean": -1279.502,
+   "lo": -1398.808,
+   "hi": -1160.196,
+   "changed": 37,
    "n": 40
   },
   "moneyChange": {
-   "mean": -1383.245,
-   "lo": -1383.247,
-   "hi": -1383.244,
-   "changed": 40,
+   "mean": -1279.502,
+   "lo": -1398.808,
+   "hi": -1160.196,
+   "changed": 37,
    "n": 40
   },
   "jobsTaken": {
@@ -333,10 +333,10 @@
    "n": 40
   },
   "logLines": {
-   "mean": 3,
-   "lo": 3,
-   "hi": 3,
-   "changed": 40,
+   "mean": 2.775,
+   "lo": 2.516,
+   "hi": 3.034,
+   "changed": 37,
    "n": 40
   },
   "hired": {
@@ -522,17 +522,17 @@
    "n": 40
   },
   "repairSpend": {
-   "mean": 1400,
-   "lo": 1400,
-   "hi": 1400,
-   "changed": 40,
+   "mean": 1295,
+   "lo": 1174.249,
+   "hi": 1415.751,
+   "changed": 37,
    "n": 40
   },
   "repairsFixed": {
-   "mean": 1,
-   "lo": 1,
-   "hi": 1,
-   "changed": 40,
+   "mean": 0.925,
+   "lo": 0.839,
+   "hi": 1.011,
+   "changed": 37,
    "n": 40
   },
   "homesOwned": {
@@ -760,10 +760,10 @@
    "n": 40
   },
   "worth": {
-   "mean": -1040.2,
-   "lo": -1040.2,
-   "hi": -1040.2,
-   "changed": 40,
+   "mean": -962.185,
+   "lo": -1051.903,
+   "hi": -872.467,
+   "changed": 37,
    "n": 40
   },
   "rewards": {
@@ -811,7 +811,7 @@
  ],
  "verdict": "proven",
  "hashes": {
-  "src/engine/homes/renting.ts": "7cfd10cb71f96a26",
+  "src/engine/homes/renting.ts": "c577f53dd878c359",
   "tests/proof/career.ts": "50bea06f19a02c5b"
  }
 }

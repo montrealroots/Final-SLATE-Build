@@ -1,0 +1,20 @@
+place_id,name,region,population,market,verified_homes,dated_listings,shortfall_to_50,recorded_sales,rent_source,price_source
+gn:2110070,Teaoraereke Village,Gilbert Islands,3939,village,0,0,50,0,none,none
+gn:2110131,Rawannawi Village,Gilbert Islands,1075,village,0,0,50,0,none,none
+gn:2110229,Buota Village,Gilbert Islands,1373,village,0,0,50,0,none,none
+gn:2110248,Betio Village,Gilbert Islands,12509,town,0,0,50,0,none,none
+gn:2110254,Banraeaba Village,Gilbert Islands,1789,village,0,0,50,0,none,none
+gn:2110257,Tarawa,Gilbert Islands,40311,town,0,0,50,0,none,none
+gn:4030926,Napari Village,Line Islands,194,village,0,0,50,0,none,none
+gn:4030939,London Village,Line Islands,1829,village,0,0,50,0,none,none
+gn:7521902,Tabwakea Village,Line Islands,1881,village,0,0,50,0,none,none
+gn:7521903,Banana Village,Line Islands,1170,village,0,0,50,0,none,none
+gn:7576909,Makin Village,Gilbert Islands,1834,village,0,0,50,0,none,none
+gn:7601762,Bairiki Village,Gilbert Islands,2766,village,0,0,50,0,none,none
+gn:7601765,Ambo Village,Gilbert Islands,1688,village,0,0,50,0,none,none
+gn:7601768,Bonriki Village,Gilbert Islands,2119,village,0,0,50,0,none,none
+gn:7601770,Temaiku Village,Gilbert Islands,2011,village,0,0,50,0,none,none
+gn:7601771,Nawerewere Village,Gilbert Islands,1780,village,0,0,50,0,none,none
+gn:7601774,Bikenibeu Village,Gilbert Islands,6170,village,0,0,50,0,none,none
+gn:7601776,Eita Village,Gilbert Islands,2299,village,0,0,50,0,none,none
+gn:11185878,Banana,Line Islands,1209,village,0,0,50,0,none,none

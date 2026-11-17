@@ -61,17 +61,12 @@ game's: twelve a place a month (six to rent, five to buy, one plot), none at a r
 - Construction: eight stages by NAHB's shares, a wet day (8 mm) delaying an outside stage, a 15% chance an inspected
   stage fails and is reworked, snags put right in a 180-day defects period.
 
-## The exterior picture
+## The exterior picture (removed)
 
-There is **no AI image provider in this environment**, and none was invented. The provider interface
-(`illustration.ts IllustrationProvider`) has one provider: the game's own drawing of the design record, labelled on
-every picture "Illustration drawn by the game from the design record. Not a photograph, not an AI image, and not a
-depiction of any real address." The same design record drives gameplay (cost plans, permissions, garden space) and the
-picture. Every visible feature (floors, roof and its material and colour, walls, every window, door, balconies, garage,
-driveway, garden, pool, porch, terrace, fence) is drawn and checked against the record; a picture that doesn't match is
-drawn once more and, failing again, not shown. Accepted pictures are kept per revision and design hash in the save and
-reused; a finished outside change makes a new revision and a new picture. No reference photos or plans are used, so
-nothing is presented as a real home. Housing works without any picture.
+Until November 17, 2026 the game drew each home's exterior from its design record (`illustration.ts`, now deleted),
+checked the drawing against the record and kept it in the save per revision. That day the owner had the pictures
+deleted, as they won't be needed again. A home's outside is said in words from the same design record (the home's
+facts and the card of a home you own), and an older save drops the drawings it kept when it's opened.
 
 ## Tests and proofs
 

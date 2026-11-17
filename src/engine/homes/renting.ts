@@ -421,8 +421,11 @@ export function settleDeposit(state: GameState, t: Tenancy): void {
     // What the landlord keeps: from the deposit book to the cost it covers (damage, unpaid rent): an expense now, once.
     moveKept(state, home, `dep:${t.id}:kept`, keep, `Deposit kept for damage or rent owed: ${home.title}`);
     record(t.payments, { key: `dep:${t.id}:kept`, label: 'Kept from your deposit', minor: keep, kind: 'paid' }, state);
-    t.arrearsMinor = 0;
   }
+  // What the deposit didn't cover, rent or damage, stays owed to the landlord and payable under Your Home (from November
+  // 17, 2026: until then a deposit kept against part of the debt wiped all of it).
+  t.arrearsMinor = owed - keep;
+  if (t.arrearsMinor === 0) t.arrearsSince = undefined;
   if (back > 0) {
     book(state, home, `dep:${t.id}:back`, back, `Deposit returned: ${home.title}`, BOOK.depositsHeld);
     record(t.payments, { key: `dep:${t.id}:back`, label: 'Deposit returned', minor: back, kind: 'released' }, state);

@@ -1,0 +1,648 @@
+place_id,name,region,population,market,verified_homes,dated_listings,shortfall_to_50,recorded_sales,rent_source,price_source
+gn:2178931,Yaldhurst,Canterbury,2250,village,0,0,50,0,none,none
+gn:2178982,Woodend,Canterbury,5430,village,0,0,50,0,none,none
+gn:2179017,Wingatui,Otago,1030,village,0,0,50,0,none,none
+gn:2179089,Wigram,Canterbury,12270,town,0,0,50,0,none,none
+gn:2179103,Whitianga,Waikato Region,6230,village,0,0,50,0,none,none
+gn:2179104,Whitford,Auckland,3015,village,0,0,50,0,none,none
+gn:2179313,Whangaparaoa,Auckland,3786,village,0,0,50,0,none,none
+gn:2179328,Whangamata,Waikato Region,4270,village,0,0,50,0,none,none
+gn:2179386,Whakarongo,Manawatu-Wanganui,1810,village,0,0,50,0,none,none
+gn:2179454,Weston,Otago,1190,village,0,0,50,0,none,none
+gn:2179460,West Melton,Canterbury,2710,village,0,0,50,0,none,none
+gn:2179474,West Eyreton,Canterbury,1620,village,0,0,50,0,none,none
+gn:2179532,Wellsford,Auckland,2110,village,0,0,50,0,none,none
+nz-wellington,Wellington,Wellington,381900,city,0,0,50,0,none,none
+gn:2179624,Washdyke,Canterbury,1200,village,0,0,50,0,none,none
+gn:2179639,Warkworth,Auckland,6960,village,0,0,50,0,none,none
+gn:2179670,Whanganui,Manawatu-Wanganui,49200,town,0,0,50,0,none,none
+gn:2179689,Wallaceville,Wellington Region,2590,village,0,0,50,0,none,none
+gn:2179702,Wakefield,Tasman District,2680,village,0,0,50,0,none,none
+gn:2179756,Waiuku,Auckland,9860,village,0,0,50,0,none,none
+gn:2179794,Waitoa,Waikato Region,1170,village,0,0,50,0,none,none
+gn:2179867,Waitakere,Auckland,1830,village,0,0,50,0,none,none
+gn:2179940,Wairau Valley,Marlborough,2230,village,0,0,50,0,none,none
+gn:2179985,Waipu,Northland,1410,village,0,0,50,0,none,none
+gn:2180118,Wainuiomata,Wellington Region,20450,town,0,0,50,0,none,none
+gn:2180127,Wainui,Gisborne,1716,village,0,0,50,0,none,none
+gn:2180167,Waimauku,Auckland,1320,village,0,0,50,0,none,none
+gn:2180173,Waimate North,Northland,2799,village,0,0,50,0,none,none
+gn:2180217,Waikuku Beach,Canterbury,1130,village,0,0,50,0,none,none
+gn:2180221,Waikowhai,West Coast,5550,village,0,0,50,0,none,none
+gn:2180255,Waikiwi,Southland,2510,village,0,0,50,0,none,none
+gn:2180286,Waikawa,Marlborough,1720,village,0,0,50,0,none,none
+gn:2180320,Waikanae,Wellington Region,13600,town,0,0,50,0,none,none
+gn:2180393,Waihi Beach,Bay of Plenty,2670,village,0,0,50,0,none,none
+gn:2180448,Waiatarua,Auckland,2360,village,0,0,50,0,none,none
+gn:2180471,Waharoa,Waikato Region,1521,village,0,0,50,0,none,none
+gn:2180482,Wadestown,Wellington Region,3740,village,0,0,50,0,none,none
+gn:2180737,Turangi,Waikato Region,3960,village,0,0,50,0,none,none
+gn:2180831,Tuakau,Waikato Region,6180,village,0,0,50,0,none,none
+gn:2180995,Tokoroa,Waikato Region,14500,town,0,0,50,0,none,none
+gn:2181073,Titahi Bay,Wellington Region,6810,village,0,0,50,0,none,none
+gn:2181108,Tinwald,Canterbury,4000,village,0,0,50,0,none,none
+gn:2181120,Tiniroto,Gisborne,1539,village,0,0,50,0,none,none
+gn:2181133,Timaru,Canterbury,29300,town,0,0,50,0,none,none
+gn:2181429,Templeton,Canterbury,1910,village,0,0,50,0,none,none
+gn:2181511,Te Kauwhata,Waikato Region,3740,village,0,0,50,0,none,none
+gn:2181625,Te Anau,Southland,2910,village,0,0,50,0,none,none
+gn:2181688,Tawa,Wellington Region,9670,village,0,0,50,0,none,none
+gn:2181742,Taupo,Waikato Region,27000,town,0,0,50,0,none,none
+gn:2181747,Taupiri,Waikato Region,2220,village,0,0,50,0,none,none
+gn:2181932,Tangiteroria,Northland,1800,village,0,0,50,0,none,none
+gn:2181951,Taneatua,Bay of Plenty,1497,village,0,0,50,0,none,none
+gn:2181997,Takaka,Tasman District,1430,village,0,0,50,0,none,none
+gn:2182010,Tairua,Waikato Region,1588,village,0,0,50,0,none,none
+gn:2182017,Taipa,Northland,1731,village,0,0,50,0,none,none
+gn:2182051,Tahunanui,Nelson Region,2970,village,0,0,50,0,none,none
+gn:2182123,Sydenham,Canterbury,6243,village,0,0,50,0,none,none
+gn:2182137,Swannanoa,Canterbury,1050,village,0,0,50,0,none,none
+gn:2182311,Stoke,Nelson Region,20260,town,0,0,50,0,none,none
+gn:2182444,Spreydon,Canterbury,9970,village,0,0,50,0,none,none
+gn:2182525,Southbridge,Canterbury,1010,village,0,0,50,0,none,none
+gn:2182715,Silverstream,Wellington Region,3570,village,0,0,50,0,none,none
+gn:2182720,Silverdale,Auckland,2370,village,0,0,50,0,none,none
+gn:2182885,Seatoun,Wellington Region,2440,village,0,0,50,0,none,none
+gn:2183023,Saint Heliers,Auckland,11760,town,0,0,50,0,none,none
+gn:2183028,Saint Clair,Otago,2390,village,0,0,50,0,none,none
+gn:2183288,Roslyn,Otago,3020,village,0,0,50,0,none,none
+gn:2183310,Rolleston,Canterbury,34100,town,0,0,50,0,none,none
+gn:2183413,Riverhead,Auckland,3700,village,0,0,50,0,none,none
+gn:2183472,Richmond,Tasman District,19950,town,0,0,50,0,none,none
+gn:2183526,Renwick,Marlborough,2550,village,0,0,50,0,none,none
+gn:2183578,Redcliffs,Canterbury,2150,village,0,0,50,0,none,none
+gn:2183601,Rawene,Northland,1236,village,0,0,50,0,none,none
+gn:2183605,Ravensbourne,Otago,1209,village,0,0,50,0,none,none
+gn:2183609,Raupunga,Hawke's Bay Region,1188,village,0,0,50,0,none,none
+gn:2183620,Raumati Beach,Wellington Region,5390,village,0,0,50,0,none,none
+gn:2183675,Rapaura,Marlborough,1212,village,0,0,50,0,none,none
+gn:2183728,Rangiriri,Waikato Region,1833,village,0,0,50,0,none,none
+gn:2183794,Ramarama,Auckland,3050,village,0,0,50,0,none,none
+gn:2183824,Rakaia,Canterbury,1680,village,0,0,50,0,none,none
+gn:2183847,Rahotu,Taranaki Region,2067,village,0,0,50,0,none,none
+gn:2183854,Raglan,Waikato Region,3840,village,0,0,50,0,none,none
+gn:2184084,Pukerua Bay,Wellington Region,1970,village,0,0,50,0,none,none
+gn:2184155,Pukekohe East,Auckland,21438,town,0,0,50,0,none,none
+gn:2184297,Prebbleton,Canterbury,5750,village,0,0,50,0,none,none
+gn:2184359,Portobello,Otago,1155,village,0,0,50,0,none,none
+gn:2184361,Motueka,Tasman District,7485,village,0,0,50,0,none,none
+gn:2184397,Porirua,Wellington Region,61500,town,0,0,50,0,none,none
+gn:2184426,Ponsonby,Auckland,5570,village,0,0,50,0,none,none
+gn:2184459,Pokeno,Waikato Region,5060,village,0,0,50,0,none,none
+gn:2184472,Point Chevalier,Auckland,9030,village,0,0,50,0,none,none
+gn:2184504,Plimmerton,Wellington Region,2130,village,0,0,50,0,none,none
+gn:2184512,Pleasant Point,Canterbury,1470,village,0,0,50,0,none,none
+gn:2184539,Pirongia,Waikato Region,1360,village,0,0,50,0,none,none
+gn:2184612,Piha,Auckland,1070,village,0,0,50,0,none,none
+gn:2184707,Wanaka,Otago,13200,town,0,0,50,0,none,none
+gn:2184763,Pauatahanui,Wellington Region,1030,village,0,0,50,0,none,none
+gn:2184766,Pauanui,Waikato Region,1070,village,0,0,50,0,none,none
+gn:2184778,Patumahoe,Auckland,1450,village,0,0,50,0,none,none
+gn:2184846,Parnell,Auckland,7720,village,0,0,50,0,none,none
+gn:2184888,Paremoremo,Auckland,3360,village,0,0,50,0,none,none
+gn:2184889,Paremata,Wellington Region,2540,village,0,0,50,0,none,none
+gn:2184904,Paraparaumu,Wellington Region,29900,town,0,0,50,0,none,none
+gn:2184927,Parakai,Auckland,1100,village,0,0,50,0,none,none
+gn:2184943,Papatowai,Otago,6593,village,0,0,50,0,none,none
+gn:2184972,Papanui,Canterbury,7900,village,0,0,50,0,none,none
+gn:2185018,Palmerston North,Manawatu-Wanganui,90500,town,0,0,50,0,none,none
+gn:2185081,Paihia,Northland,1670,village,0,0,50,0,none,none
+gn:2185134,Paekakariki,Wellington Region,1730,village,0,0,50,0,none,none
+gn:2185148,Oxford,Canterbury,2240,village,0,0,50,0,none,none
+gn:2185213,Otumoetai,Bay of Plenty,8620,village,0,0,50,0,none,none
+gn:2185245,Otorohanga,Waikato Region,3280,village,0,0,50,0,none,none
+gn:2185302,Otatara,Southland,3460,village,0,0,50,0,none,none
+gn:2185360,Otaki Beach,Wellington Region,2120,village,0,0,50,0,none,none
+gn:2185423,Oropi,Bay of Plenty,2520,village,0,0,50,0,none,none
+gn:2185445,Orewa,Auckland,12630,town,0,0,50,0,none,none
+gn:2185462,Oratia,Auckland,2180,village,0,0,50,0,none,none
+gn:2185493,Opua,Northland,1280,village,0,0,50,0,none,none
+gn:2185548,Opaheke,Auckland,3360,village,0,0,50,0,none,none
+gn:2185579,Onerahi,Northland,6580,village,0,0,50,0,none,none
+gn:2185587,Onekawa,Hawke's Bay Region,7290,village,0,0,50,0,none,none
+gn:2185613,Omokoroa,Bay of Plenty,5990,village,0,0,50,0,none,none
+gn:2185814,Ohope Beach,Bay of Plenty,3250,village,0,0,50,0,none,none
+gn:2185836,Ohinemutu,Bay of Plenty,1260,village,0,0,50,0,none,none
+gn:2185922,Oakura,Taranaki Region,1720,village,0,0,50,0,none,none
+gn:2185964,North Shore,Auckland,258697,city,0,0,50,0,none,none
+gn:2185977,Northland,Wellington Region,3740,village,0,0,50,0,none,none
+gn:2185994,North East Valley,Otago,9830,village,0,0,50,0,none,none
+gn:2186049,Normanby,Taranaki Region,1070,village,0,0,50,0,none,none
+gn:2186111,Ngunguru,Northland,1358,village,0,0,50,0,none,none
+gn:2186116,Ngongotaha,Bay of Plenty,5240,village,0,0,50,0,none,none
+gn:2186152,Ngatea,Waikato Region,1151,village,0,0,50,0,none,none
+gn:2186216,Ngaio,Wellington Region,5660,village,0,0,50,0,none,none
+gn:2186233,Newton,Auckland,1668,village,0,0,50,0,none,none
+gn:2186239,New Plymouth,Taranaki Region,90100,town,0,0,50,0,none,none
+gn:2186255,New Brighton,Canterbury,6480,village,0,0,50,0,none,none
+gn:2186280,Nelson,Nelson Region,54400,town,0,0,50,0,none,none
+gn:2186313,Napier,Hawke's Bay Region,66400,town,0,0,50,0,none,none
+gn:2186338,Murupara,Bay of Plenty,1876,village,0,0,50,0,none,none
+gn:2186363,Muriwai Beach,Auckland,1130,village,0,0,50,0,none,none
+gn:2186498,Moturoa,Taranaki Region,4580,village,0,0,50,0,none,none
+gn:2186608,Mornington,Otago,3050,village,0,0,50,0,none,none
+gn:2186722,Moerewa,Northland,1920,village,0,0,50,0,none,none
+gn:2186895,Methven,Canterbury,2130,village,0,0,50,0,none,none
+gn:2187074,Maungatapere,Northland,1007,village,0,0,50,0,none,none
+gn:2187348,Maramarua,Waikato Region,1767,village,0,0,50,0,none,none
+gn:2187356,Maraetai,Auckland,2770,village,0,0,50,0,none,none
+gn:2187365,Mapua,Tasman District,1819,village,0,0,50,0,none,none
+gn:2187404,Manukau City,Auckland,362000,city,0,0,50,0,none,none
+gn:2187441,Mangorei,Taranaki Region,2310,village,0,0,50,0,none,none
+gn:2187454,Mangere,Auckland,23310,town,0,0,50,0,none,none
+gn:2187476,Mangawhai,Northland,1370,village,0,0,50,0,none,none
+gn:2187826,Manaia,Taranaki Region,1070,village,0,0,50,0,none,none
+gn:2187908,Maketu,Bay of Plenty,1410,village,0,0,50,0,none,none
+gn:2188089,Macandrew Bay,Otago,1670,village,0,0,50,0,none,none
+gn:2188164,Lower Hutt,Wellington Region,114200,city,0,0,50,0,none,none
+gn:2188277,Loburn,Canterbury,2460,village,0,0,50,0,none,none
+gn:2188371,Lincoln,Canterbury,9180,village,0,0,50,0,none,none
+gn:2188426,Leigh,Auckland,3525,village,0,0,50,0,none,none
+gn:2188444,Leeston,Canterbury,2490,village,0,0,50,0,none,none
+gn:2188559,Ladbrooks,Canterbury,2030,village,0,0,50,0,none,none
+gn:2188591,Kumeu,Auckland,8510,village,0,0,50,0,none,none
+gn:2188666,Kopuaranga,Wellington Region,1130,village,0,0,50,0,none,none
+gn:2188796,Kirwee,Canterbury,1180,village,0,0,50,0,none,none
+gn:2188847,Kilbirnie,Wellington Region,4860,village,0,0,50,0,none,none
+gn:2188853,Kihikihi,Waikato Region,3760,village,0,0,50,0,none,none
+gn:2188858,Khandallah,Wellington Region,8640,village,0,0,50,0,none,none
+gn:2188874,Kerikeri,Northland,8380,village,0,0,50,0,none,none
+gn:2188909,Kelvin Grove,Manawatu-Wanganui,8170,village,0,0,50,0,none,none
+gn:2188922,Kelburn,Wellington Region,4890,village,0,0,50,0,none,none
+gn:2188942,Kawerau,Bay of Plenty,7670,village,0,0,50,0,none,none
+gn:2188966,Kawakawa,Northland,1500,village,0,0,50,0,none,none
+gn:2188993,Kaukapakapa,Auckland,1110,village,0,0,50,0,none,none
+gn:2189016,Katikati,Bay of Plenty,6000,village,0,0,50,0,none,none
+gn:2189028,Karori,Wellington Region,15380,town,0,0,50,0,none,none
+gn:2189338,Kaharoa,Bay of Plenty,1617,village,0,0,50,0,none,none
+gn:2189364,Judgeford,Wellington Region,1080,village,0,0,50,0,none,none
+gn:2189397,Johnsonville,Wellington Region,12150,town,0,0,50,0,none,none
+gn:2189425,Jerusalem,Manawatu-Wanganui,1155,village,0,0,50,0,none,none
+gn:2189529,Invercargill,Southland,58000,town,0,0,50,0,none,none
+gn:2189715,Howick,Auckland,12640,town,0,0,50,0,none,none
+gn:2189793,Hornby,Canterbury,8790,village,0,0,50,0,none,none
+gn:2189854,Homai,Auckland,14430,town,0,0,50,0,none,none
+gn:2189978,Hikurangi,Northland,1800,village,0,0,50,0,none,none
+gn:2190011,Hicks Bay,Gisborne,1389,village,0,0,50,0,none,none
+gn:2190034,Heretaunga,Wellington Region,2520,village,0,0,50,0,none,none
+gn:2190110,Heathcote Valley,Canterbury,2430,village,0,0,50,0,none,none
+gn:2190169,Havelock North,Hawke's Bay Region,14900,town,0,0,50,0,none,none
+gn:2190202,Haumoana,Hawke's Bay Region,1161,village,0,0,50,0,none,none
+gn:2190224,Hastings,Hawke's Bay Region,88300,town,0,0,50,0,none,none
+gn:2190227,Haruru,Northland,1230,village,0,0,50,0,none,none
+gn:2190262,Harewood,Canterbury,1386,village,0,0,50,0,none,none
+gn:2190299,Hanmer Springs,Canterbury,1180,village,0,0,50,0,none,none
+gn:2190311,Hamurana,Bay of Plenty,1130,village,0,0,50,0,none,none
+gn:2190324,Hamilton,Waikato Region,192100,city,0,0,50,0,none,none
+gn:2190329,Halswell,Canterbury,13620,town,0,0,50,0,none,none
+gn:2190343,Halfway Bush,Otago,1970,village,0,0,50,0,none,none
+gn:2190450,Greerton,Bay of Plenty,4590,village,0,0,50,0,none,none
+gn:2190715,Gleniti,Canterbury,4270,village,0,0,50,0,none,none
+gn:2190929,Frankton Junction,Waikato Region,8710,village,0,0,50,0,none,none
+gn:2190931,Frankton,Otago,3780,village,0,0,50,0,none,none
+gn:2190948,Foxton Beach,Manawatu-Wanganui,2190,village,0,0,50,0,none,none
+gn:2191091,Fitzroy,Taranaki Region,3650,village,0,0,50,0,none,none
+gn:2191167,Fendalton,Canterbury,4870,village,0,0,50,0,none,none
+gn:2191177,Favona,Auckland,11080,town,0,0,50,0,none,none
+gn:2191224,Fairfield,Otago,2710,village,0,0,50,0,none,none
+gn:2191451,Edgecumbe,Bay of Plenty,1900,village,0,0,50,0,none,none
+gn:2191470,East Taieri,Otago,2570,village,0,0,50,0,none,none
+gn:2191524,Ealing,Canterbury,1740,village,0,0,50,0,none,none
+gn:2191562,Dunedin,Otago,132800,city,0,0,50,0,none,none
+gn:2191610,Drury,Auckland,1870,village,0,0,50,0,none,none
+gn:2191911,Dargaville,Northland,5170,village,0,0,50,0,none,none
+gn:2191913,Darfield,Canterbury,3380,village,0,0,50,0,none,none
+gn:2191945,Dairy Flat,Auckland,5090,village,0,0,50,0,none,none
+gn:2192093,Coromandel,Waikato Region,1780,village,0,0,50,0,none,none
+gn:2192182,Colville,Waikato Region,1485,village,0,0,50,0,none,none
+gn:2192282,Clive,Hawke's Bay Region,2120,village,0,0,50,0,none,none
+gn:2192295,Clevedon,Auckland,1515,village,0,0,50,0,none,none
+gn:2192313,Claudelands,Waikato Region,7180,village,0,0,50,0,none,none
+gn:2192317,Clarkville,Canterbury,1550,village,0,0,50,0,none,none
+gn:2192362,Christchurch,Canterbury,419200,city,0,0,50,0,none,none
+gn:2192521,Castlepoint,Wellington Region,1686,village,0,0,50,0,none,none
+gn:2192676,Campbells Bay,Auckland,2960,village,0,0,50,0,none,none
+gn:2192779,Burwood,Canterbury,5661,village,0,0,50,0,none,none
+gn:2192797,Burnham,Canterbury,1239,village,0,0,50,0,none,none
+gn:2192828,Bulls,Manawatu-Wanganui,2150,village,0,0,50,0,none,none
+gn:2192941,Brooklyn,Wellington Region,3855,village,0,0,50,0,none,none
+gn:2192964,Brightwater,Tasman District,2390,village,0,0,50,0,none,none
+gn:2192965,Brighton,Otago,1580,village,0,0,50,0,none,none
+gn:2193370,Bethlehem,Bay of Plenty,9270,village,0,0,50,0,none,none
+gn:2193449,Bell Block,Taranaki Region,8260,village,0,0,50,0,none,none
+gn:2193452,Belfast,Canterbury,4900,village,0,0,50,0,none,none
+gn:2193497,Beachlands,Auckland,8340,village,0,0,50,0,none,none
+gn:2193500,Bay View,Hawke's Bay Region,2400,village,0,0,50,0,none,none
+gn:2193657,Awarua Plains,Southland,1020,village,0,0,50,0,none,none
+gn:2193687,Awakeri,Bay of Plenty,2289,village,0,0,50,0,none,none
+gn:2193703,Avondale,Auckland,26450,town,0,0,50,0,none,none
+nz-auckland,Auckland,Auckland,1547200,large-city,0,0,50,0,none,none
+gn:2193750,Atawhai,Nelson Region,2890,village,0,0,50,0,none,none
+gn:2193767,Ashhurst,Manawatu-Wanganui,3350,village,0,0,50,0,none,none
+gn:2193778,Arthurs Point,Otago,1280,village,0,0,50,0,none,none
+gn:2193968,Amberley,Canterbury,2780,village,0,0,50,0,none,none
+gn:2194046,Albany,Auckland,12930,town,0,0,50,0,none,none
+gn:2194098,Ahipara,Northland,1093,village,0,0,50,0,none,none
+gn:2194121,Addington,Canterbury,5346,village,0,0,50,0,none,none
+gn:2206357,Opunake,Taranaki Region,1495,village,0,0,50,0,none,none
+gn:2206358,Eltham,Taranaki Region,2150,village,0,0,50,0,none,none
+gn:2206359,Hawera,Taranaki Region,10700,town,0,0,50,0,none,none
+gn:2206361,Patea,Taranaki Region,1286,village,0,0,50,0,none,none
+gn:2206369,Foxton,Manawatu-Wanganui,4780,village,0,0,50,0,none,none
+gn:2206371,Levin,Manawatu-Wanganui,19789,town,0,0,50,0,none,none
+gn:2206372,Otaki,Wellington Region,6086,village,0,0,50,0,none,none
+gn:2206375,Eastbourne,Wellington Region,2760,village,0,0,50,0,none,none
+gn:2206808,Wairoa,Hawke's Bay Region,4260,village,0,0,50,0,none,none
+gn:2206854,Gisborne,Gisborne,38100,town,0,0,50,0,none,none
+gn:2206874,Waipawa,Wellington Region,1899,village,0,0,50,0,none,none
+gn:2206890,Masterton,Wellington Region,28900,town,0,0,50,0,none,none
+gn:2206894,Hokitika,West Coast,3350,village,0,0,50,0,none,none
+gn:2206895,Greymouth,West Coast,9419,village,0,0,50,0,none,none
+gn:2206900,Westport,West Coast,4600,village,0,0,50,0,none,none
+gn:2206939,Bluff,Southland,1938,village,0,0,50,0,none,none
+gn:2206957,Riverton,Southland,1680,village,0,0,50,0,none,none
+gn:2206968,Winton,Southland,2193,village,0,0,50,0,none,none
+gn:2207029,Clifton,Canterbury,1900,village,0,0,50,0,none,none
+gn:2207714,Mission Bay,Auckland,4590,village,0,0,50,0,none,none
+gn:2207731,Bayswater,Auckland,2840,village,0,0,50,0,none,none
+gn:2207739,Belmont,Auckland,3240,village,0,0,50,0,none,none
+gn:2207740,Takapuna,Auckland,11930,town,0,0,50,0,none,none
+gn:2208032,Tauranga,Bay of Plenty,161000,city,0,0,50,0,none,none
+gn:2208041,Mount Maunganui,Bay of Plenty,7250,village,0,0,50,0,none,none
+gn:2208091,Waitara,Taranaki Region,7730,village,0,0,50,0,none,none
+gn:2208238,Port Chalmers,Otago,1460,village,0,0,50,0,none,none
+gn:2208241,Mosgiel,Otago,14800,town,0,0,50,0,none,none
+gn:2208242,Milton,Otago,2009,village,0,0,50,0,none,none
+gn:2208248,Balclutha,Otago,4441,village,0,0,50,0,none,none
+gn:2208327,Paeroa,Waikato Region,3994,village,0,0,50,0,none,none
+gn:2208328,Waihi,Waikato Region,4619,village,0,0,50,0,none,none
+gn:2208329,Papakura,Auckland,37720,town,0,0,50,0,none,none
+gn:2208330,Whakatane,Bay of Plenty,18602,town,0,0,50,0,none,none
+gn:2208332,Opotiki,Bay of Plenty,4900,village,0,0,50,0,none,none
+gn:2208333,Thames,Waikato Region,7136,village,0,0,50,0,none,none
+gn:4032804,Waitangi,Chatham Islands,140,village,0,0,50,0,none,none
+gn:6201424,Gore,Southland,13050,town,0,0,50,0,none,none
+gn:6204696,Queenstown,Otago,10442,town,0,0,50,0,none,none
+gn:6205083,Grasmere,Southland,3250,village,0,0,50,0,none,none
+gn:6205085,Gladstone,Southland,2520,village,0,0,50,0,none,none
+gn:6205088,Avenal,Southland,1410,village,0,0,50,0,none,none
+gn:6205090,Georgetown,Southland,2220,village,0,0,50,0,none,none
+gn:6205091,Newfield,Southland,2110,village,0,0,50,0,none,none
+gn:6205092,Windsor,Southland,3410,village,0,0,50,0,none,none
+gn:6205093,Rosedale,Southland,7620,village,0,0,50,0,none,none
+gn:6205095,Hawthorndale,Southland,1900,village,0,0,50,0,none,none
+gn:6205096,Richmond,Southland,2910,village,0,0,50,0,none,none
+gn:6205098,Glengarry,Southland,3540,village,0,0,50,0,none,none
+gn:6205164,Kingswell,Southland,2240,village,0,0,50,0,none,none
+gn:6205165,Clifton,Southland,1990,village,0,0,50,0,none,none
+gn:6205166,Strathern,Southland,4190,village,0,0,50,0,none,none
+gn:6205167,Heidelberg,Southland,2350,village,0,0,50,0,none,none
+gn:6205168,Kew,Southland,2070,village,0,0,50,0,none,none
+gn:6206253,Arrowtown,Otago,2151,village,0,0,50,0,none,none
+gn:6206648,East Gore,Southland,8340,village,0,0,50,0,none,none
+gn:6206745,Mataura,Southland,1680,village,0,0,50,0,none,none
+gn:6207712,Lake Hawea,Otago,2190,village,0,0,50,0,none,none
+gn:6207775,Cromwell,Otago,5160,village,0,0,50,0,none,none
+gn:6207905,Alexandra,Otago,5830,village,0,0,50,0,none,none
+gn:6209526,Twizel,Canterbury,1780,village,0,0,50,0,none,none
+gn:6212017,Waikouaiti,Otago,1330,village,0,0,50,0,none,none
+gn:6212164,Balaclava,Otago,2470,village,0,0,50,0,none,none
+gn:6212166,Maryhill,Otago,2470,village,0,0,50,0,none,none
+gn:6212188,Kenmure,Otago,1944,village,0,0,50,0,none,none
+gn:6212198,South Dunedin,Otago,2540,village,0,0,50,0,none,none
+gn:6212200,Shiel Hill,Otago,1830,village,0,0,50,0,none,none
+gn:6212204,Andersons Bay,Otago,2530,village,0,0,50,0,none,none
+gn:6212206,Musselburgh,Otago,1590,village,0,0,50,0,none,none
+gn:6212209,Tainui,Otago,2090,village,0,0,50,0,none,none
+gn:6212210,Caversham,Otago,2230,village,0,0,50,0,none,none
+gn:6212211,Corstorphine,Otago,3890,village,0,0,50,0,none,none
+gn:6212213,Saint Kilda,Otago,5710,village,0,0,50,0,none,none
+gn:6212223,Concord,Otago,1580,village,0,0,50,0,none,none
+gn:6212226,Green Island,Otago,2440,village,0,0,50,0,none,none
+gn:6212257,Brockville,Otago,2520,village,0,0,50,0,none,none
+gn:6212260,Maori Hill,Otago,2620,village,0,0,50,0,none,none
+gn:6212264,Pine Hill,Otago,2460,village,0,0,50,0,none,none
+gn:6212268,Opoho,Otago,1310,village,0,0,50,0,none,none
+gn:6212324,Waverley,Otago,2780,village,0,0,50,0,none,none
+gn:6212403,Sawyers Bay,Otago,1095,village,0,0,50,0,none,none
+gn:6212566,Runanga,West Coast,1270,village,0,0,50,0,none,none
+gn:6212658,Karoro,West Coast,1120,village,0,0,50,0,none,none
+gn:6214317,Geraldine,Canterbury,2301,village,0,0,50,0,none,none
+gn:6214564,Kensington,Canterbury,1640,village,0,0,50,0,none,none
+gn:6214565,Parkside,Canterbury,2530,village,0,0,50,0,none,none
+gn:6214566,Watlington,Canterbury,2420,village,0,0,50,0,none,none
+gn:6214568,West End,Canterbury,2880,village,0,0,50,0,none,none
+gn:6214597,Seaview,Canterbury,2370,village,0,0,50,0,none,none
+gn:6214599,Waimataitai,Canterbury,2210,village,0,0,50,0,none,none
+gn:6214600,Marchwiel,Canterbury,3750,village,0,0,50,0,none,none
+gn:6214601,Glenwood,Canterbury,1930,village,0,0,50,0,none,none
+gn:6214808,Waimate,Canterbury,3650,village,0,0,50,0,none,none
+gn:6215045,Oamaru,Otago,13000,town,0,0,50,0,none,none
+gn:6215161,Palmerston,Otago,1050,village,0,0,50,0,none,none
+gn:6217081,Ashburton,Canterbury,21600,town,0,0,50,0,none,none
+gn:6217203,Allenton,Canterbury,6789,village,0,0,50,0,none,none
+gn:6217261,Temuka,Canterbury,4840,village,0,0,50,0,none,none
+gn:6219009,Hampstead,Canterbury,2910,village,0,0,50,0,none,none
+gn:6219010,Netherby,Canterbury,2130,village,0,0,50,0,none,none
+gn:6220340,Sockburn,Canterbury,4580,village,0,0,50,0,none,none
+gn:6220341,Hei Hei,Canterbury,3471,village,0,0,50,0,none,none
+gn:6220344,Russley,Canterbury,2493,village,0,0,50,0,none,none
+gn:6220345,Avonhead,Canterbury,10240,town,0,0,50,0,none,none
+gn:6220346,Burnside,Canterbury,9810,village,0,0,50,0,none,none
+gn:6220347,Upper Riccarton,Canterbury,7990,village,0,0,50,0,none,none
+gn:6220348,Ilam,Canterbury,10100,town,0,0,50,0,none,none
+gn:6220351,Riccarton,Canterbury,11650,town,0,0,50,0,none,none
+gn:6220354,Bryndwr,Canterbury,9760,village,0,0,50,0,none,none
+gn:6220355,Bishopdale,Canterbury,9850,village,0,0,50,0,none,none
+gn:6220356,Merivale,Canterbury,5360,village,0,0,50,0,none,none
+gn:6220358,Casebrook,Canterbury,5262,village,0,0,50,0,none,none
+gn:6220359,Redwood,Canterbury,8500,village,0,0,50,0,none,none
+gn:6220360,Mairehau,Canterbury,7120,village,0,0,50,0,none,none
+gn:6220361,Richmond,Canterbury,4620,village,0,0,50,0,none,none
+gn:6220363,Shirley,Canterbury,6990,village,0,0,50,0,none,none
+gn:6220364,Dallington,Canterbury,2560,village,0,0,50,0,none,none
+gn:6220365,Avonside,Canterbury,1770,village,0,0,50,0,none,none
+gn:6220367,Wainoni,Canterbury,2930,village,0,0,50,0,none,none
+gn:6220369,Avondale,Canterbury,2540,village,0,0,50,0,none,none
+gn:6220371,Aranui,Canterbury,4550,village,0,0,50,0,none,none
+gn:6220373,New Brighton North,Canterbury,4071,village,0,0,50,0,none,none
+gn:6220374,South New Brighton,Canterbury,3234,village,0,0,50,0,none,none
+gn:6220375,Waimairi Beach,Canterbury,1340,village,0,0,50,0,none,none
+gn:6220404,Parklands,Canterbury,10760,town,0,0,50,0,none,none
+gn:6220417,Bexley,Canterbury,2700,village,0,0,50,0,none,none
+gn:6220565,Rangiora,Canterbury,19300,town,0,0,50,0,none,none
+gn:6220587,Kaiapoi,Canterbury,13700,town,0,0,50,0,none,none
+gn:6220787,Westmorland,Canterbury,2196,village,0,0,50,0,none,none
+gn:6220794,Mount Pleasant,Canterbury,4040,village,0,0,50,0,none,none
+gn:6220796,Opawa,Canterbury,1330,village,0,0,50,0,none,none
+gn:6220836,Diamond Harbour,Canterbury,1720,village,0,0,50,0,none,none
+gn:6220859,Hillsborough,Canterbury,2570,village,0,0,50,0,none,none
+gn:6220876,Waltham,Canterbury,4330,village,0,0,50,0,none,none
+gn:6220877,Saint Martins,Canterbury,2850,village,0,0,50,0,none,none
+gn:6220884,Somerfield,Canterbury,7070,village,0,0,50,0,none,none
+gn:6220886,Huntsbury,Canterbury,2530,village,0,0,50,0,none,none
+gn:6220887,Beckenham,Canterbury,2500,village,0,0,50,0,none,none
+gn:6220896,Cashmere,Canterbury,6940,village,0,0,50,0,none,none
+gn:6220937,Hoon Hay,Canterbury,9510,village,0,0,50,0,none,none
+gn:6220972,Southshore,Canterbury,1041,village,0,0,50,0,none,none
+gn:6220981,Lyttelton,Canterbury,3220,village,0,0,50,0,none,none
+gn:6221943,Sumner,Canterbury,3519,village,0,0,50,0,none,none
+gn:6222799,Welbourn,Taranaki Region,3640,village,0,0,50,0,none,none
+gn:6222808,Frankleigh Park,Taranaki Region,3570,village,0,0,50,0,none,none
+gn:6222895,Hurdon,Taranaki Region,2590,village,0,0,50,0,none,none
+gn:6222897,Westown,Taranaki Region,4790,village,0,0,50,0,none,none
+gn:6222898,Spotswood,Taranaki Region,4060,village,0,0,50,0,none,none
+gn:6222900,Lynmouth,Taranaki Region,2750,village,0,0,50,0,none,none
+gn:6222901,Vogeltown,Taranaki Region,6140,village,0,0,50,0,none,none
+gn:6222905,Merrilands,Taranaki Region,3110,village,0,0,50,0,none,none
+gn:6223708,Inglewood,Taranaki Region,3960,village,0,0,50,0,none,none
+gn:6223846,Stratford,Taranaki Region,6430,village,0,0,50,0,none,none
+gn:6224624,Marton,Manawatu-Wanganui,5740,village,0,0,50,0,none,none
+gn:6224722,Camborne,Wellington Region,2040,village,0,0,50,0,none,none
+gn:6224738,Birchville,Wellington Region,3840,village,0,0,50,0,none,none
+gn:6225059,Raetihi,Manawatu-Wanganui,1130,village,0,0,50,0,none,none
+gn:6225082,Ohakune,Manawatu-Wanganui,1570,village,0,0,50,0,none,none
+gn:6225241,Aotea,Wellington Region,4170,village,0,0,50,0,none,none
+gn:6225521,Awapuni,Manawatu-Wanganui,9050,village,0,0,50,0,none,none
+gn:6225522,Cloverlea,Manawatu-Wanganui,1930,village,0,0,50,0,none,none
+gn:6225657,Shannon,Manawatu-Wanganui,1610,village,0,0,50,0,none,none
+gn:6225996,Greytown,Wellington Region,2940,village,0,0,50,0,none,none
+gn:6226000,Carterton,Wellington Region,10300,town,0,0,50,0,none,none
+gn:6226278,Martinborough,Wellington Region,2050,village,0,0,50,0,none,none
+gn:6226307,Featherston,Wellington Region,2760,village,0,0,50,0,none,none
+gn:6227202,Taihape,Manawatu-Wanganui,1810,village,0,0,50,0,none,none
+gn:6227686,Pahiatua,Manawatu-Wanganui,2860,village,0,0,50,0,none,none
+gn:6227728,Woodville,Manawatu-Wanganui,1680,village,0,0,50,0,none,none
+gn:6227739,Hokowhitu,Manawatu-Wanganui,11730,town,0,0,50,0,none,none
+gn:6227743,West End,Manawatu-Wanganui,5510,village,0,0,50,0,none,none
+gn:6227744,Terrace End,Manawatu-Wanganui,6740,village,0,0,50,0,none,none
+gn:6227745,Milson,Manawatu-Wanganui,6740,village,0,0,50,0,none,none
+gn:6227746,Roslyn,Manawatu-Wanganui,2650,village,0,0,50,0,none,none
+gn:6227748,Takaro,Manawatu-Wanganui,6080,village,0,0,50,0,none,none
+gn:6228827,Kaitaia,Northland,0,village,0,0,50,0,none,none
+gn:6229575,Kaikohe,Northland,4890,village,0,0,50,0,none,none
+gn:6230838,Otangarei,Northland,2290,village,0,0,50,0,none,none
+gn:6230839,Tikipunga,Northland,8440,village,0,0,50,0,none,none
+gn:6230919,Whangarei,Northland,50900,town,0,0,50,0,none,none
+gn:6230952,Raumanga,Northland,5960,village,0,0,50,0,none,none
+gn:6230953,Morningside,Northland,2600,village,0,0,50,0,none,none
+gn:6231027,Ruakaka,Northland,2910,village,0,0,50,0,none,none
+gn:6231124,Helensville,Auckland,3420,village,0,0,50,0,none,none
+gn:6231568,Takanini,Auckland,17060,town,0,0,50,0,none,none
+gn:6231571,Red Hill,Auckland,2556,village,0,0,50,0,none,none
+gn:6231794,Browns Bay,Auckland,10760,town,0,0,50,0,none,none
+gn:6231795,Rothesay Bay,Auckland,3060,village,0,0,50,0,none,none
+gn:6231804,Murrays Bay,Auckland,5000,village,0,0,50,0,none,none
+gn:6231811,Forrest Hill,Auckland,10750,town,0,0,50,0,none,none
+gn:6231822,Greenhithe,Auckland,8820,village,0,0,50,0,none,none
+gn:6231830,Milford,Auckland,5290,village,0,0,50,0,none,none
+gn:6231929,Mangere East,Auckland,28540,town,0,0,50,0,none,none
+gn:6231930,Sunnyvale,Auckland,6690,village,0,0,50,0,none,none
+gn:6231957,Wattle Downs,Auckland,9840,village,0,0,50,0,none,none
+gn:6231999,Konini,Auckland,4910,village,0,0,50,0,none,none
+gn:6232008,Papatoetoe,Auckland,56010,town,0,0,50,0,none,none
+gn:6232009,Otahuhu,Auckland,17780,town,0,0,50,0,none,none
+gn:6232059,Manurewa East,Auckland,2907,village,0,0,50,0,none,none
+gn:6232063,Wiri,Auckland,6760,village,0,0,50,0,none,none
+gn:6232064,Manurewa,Auckland,40820,town,0,0,50,0,none,none
+gn:6232065,Glendowie,Auckland,9050,village,0,0,50,0,none,none
+gn:6232067,Otara,Auckland,24420,town,0,0,50,0,none,none
+gn:6232074,Pakuranga Heights,Auckland,9930,village,0,0,50,0,none,none
+gn:6232075,Botany Downs,Auckland,5820,village,0,0,50,0,none,none
+gn:6232077,Shelly Park,Auckland,2850,village,0,0,50,0,none,none
+gn:6232078,Cockle Bay,Auckland,4170,village,0,0,50,0,none,none
+gn:6232081,Mellons Bay,Auckland,4080,village,0,0,50,0,none,none
+gn:6232082,Pakuranga,Auckland,10040,town,0,0,50,0,none,none
+gn:6232083,Highland Park,Auckland,4050,village,0,0,50,0,none,none
+gn:6232086,Farm Cove,Auckland,2230,village,0,0,50,0,none,none
+gn:6232087,Half Moon Bay,Auckland,8330,village,0,0,50,0,none,none
+gn:6232088,Eastern Beach,Auckland,2190,village,0,0,50,0,none,none
+gn:6232092,Bucklands Beach,Auckland,9460,village,0,0,50,0,none,none
+gn:6232141,Beach Haven,Auckland,11000,town,0,0,50,0,none,none
+gn:6232142,Birkdale,Auckland,9710,village,0,0,50,0,none,none
+gn:6232144,Chatswood,Auckland,3560,village,0,0,50,0,none,none
+gn:6232146,Birkenhead,Auckland,10720,town,0,0,50,0,none,none
+gn:6232152,Hillcrest,Auckland,11490,town,0,0,50,0,none,none
+gn:6232153,Hauraki,Auckland,4260,village,0,0,50,0,none,none
+gn:6232157,Narrow Neck,Auckland,4360,village,0,0,50,0,none,none
+gn:6232178,Saint Marys Bay,Auckland,2080,village,0,0,50,0,none,none
+gn:6232179,Freemans Bay,Auckland,4360,village,0,0,50,0,none,none
+gn:6232188,Waterview,Auckland,3890,village,0,0,50,0,none,none
+gn:6232191,Blockhouse Bay,Auckland,14500,town,0,0,50,0,none,none
+gn:6232192,New Lynn,Auckland,23800,town,0,0,50,0,none,none
+gn:6232196,Green Bay,Auckland,5030,village,0,0,50,0,none,none
+gn:6232200,Lynfield,Auckland,9130,village,0,0,50,0,none,none
+gn:6232206,Hillsborough,Auckland,13260,town,0,0,50,0,none,none
+gn:6232210,Te Papapa,Auckland,3510,village,0,0,50,0,none,none
+gn:6232212,Onehunga,Auckland,12910,town,0,0,50,0,none,none
+gn:6232213,Royal Oak,Auckland,6090,village,0,0,50,0,none,none
+gn:6232214,Oranga,Auckland,3520,village,0,0,50,0,none,none
+gn:6232216,Panmure,Auckland,4410,village,0,0,50,0,none,none
+gn:6232217,Tamaki,Auckland,5160,village,0,0,50,0,none,none
+gn:6232229,Ellerslie,Auckland,9820,village,0,0,50,0,none,none
+gn:6232235,Epsom,Auckland,20200,town,0,0,50,0,none,none
+gn:6232236,Balmoral,Auckland,10390,town,0,0,50,0,none,none
+gn:6232237,Mount Eden,Auckland,15650,town,0,0,50,0,none,none
+gn:6232240,Three Kings,Auckland,4210,village,0,0,50,0,none,none
+gn:6232242,Sandringham,Auckland,12930,town,0,0,50,0,none,none
+gn:6232256,New Windsor,Auckland,8730,village,0,0,50,0,none,none
+gn:6232258,Owairaka,Auckland,6000,village,0,0,50,0,none,none
+gn:6232259,Westmere,Auckland,2240,village,0,0,50,0,none,none
+gn:6232260,Grey Lynn,Auckland,11880,town,0,0,50,0,none,none
+gn:6232266,Morningside,Auckland,4100,village,0,0,50,0,none,none
+gn:6232267,Kingsland,Auckland,3540,village,0,0,50,0,none,none
+gn:6232269,Eden Terrace,Auckland,3340,village,0,0,50,0,none,none
+gn:6232275,Waima,Auckland,2730,village,0,0,50,0,none,none
+gn:6232280,Titirangi,Auckland,15490,town,0,0,50,0,none,none
+gn:6232296,Kohimarama,Auckland,4430,village,0,0,50,0,none,none
+gn:6232301,Kelston,Auckland,5750,village,0,0,50,0,none,none
+gn:6232302,Glen Innes,Auckland,9730,village,0,0,50,0,none,none
+gn:6232303,Saint Johns,Auckland,6300,village,0,0,50,0,none,none
+gn:6232304,Meadowbank,Auckland,5570,village,0,0,50,0,none,none
+gn:6232305,Remuera,Auckland,27810,town,0,0,50,0,none,none
+gn:6232313,McLaren Park,Auckland,3660,village,0,0,50,0,none,none
+gn:6232324,West Harbour,Auckland,12060,town,0,0,50,0,none,none
+gn:6232326,Massey East,Auckland,22210,town,0,0,50,0,none,none
+gn:6232329,Te Atatu Peninsula,Auckland,15200,town,0,0,50,0,none,none
+gn:6232330,Te Atatu South,Auckland,17240,town,0,0,50,0,none,none
+gn:6232336,Lincoln,Auckland,17240,town,0,0,50,0,none,none
+gn:6232338,Henderson,Auckland,18770,town,0,0,50,0,none,none
+gn:6232339,Western Heights,Auckland,9940,village,0,0,50,0,none,none
+gn:6232347,Woodlands Park,Auckland,1056,village,0,0,50,0,none,none
+gn:6232390,Massey,Auckland,22210,town,0,0,50,0,none,none
+gn:6232394,Glendene,Auckland,8350,village,0,0,50,0,none,none
+gn:6232400,Newmarket,Auckland,2750,village,0,0,50,0,none,none
+gn:6232401,Grafton,Auckland,3100,village,0,0,50,0,none,none
+gn:6233785,Oneroa,Auckland,1350,village,0,0,50,0,none,none
+gn:6233790,Ostend,Auckland,1950,village,0,0,50,0,none,none
+gn:6234244,Te Kuiti,Waikato Region,4890,village,0,0,50,0,none,none
+gn:6234582,Taumarunui,Manawatu-Wanganui,4950,village,0,0,50,0,none,none
+gn:6235636,Te Aroha,Waikato Region,4700,village,0,0,50,0,none,none
+gn:6235745,Morrinsville,Waikato Region,9710,village,0,0,50,0,none,none
+gn:6235764,Matamata,Waikato Region,6306,village,0,0,50,0,none,none
+gn:6235878,Putaruru,Waikato Region,4670,village,0,0,50,0,none,none
+gn:6236549,Acacia Bay,Waikato Region,1870,village,0,0,50,0,none,none
+gn:6240057,Mangapapa,Gisborne,5160,village,0,0,50,0,none,none
+gn:6240058,Te Hapara,Gisborne,8670,village,0,0,50,0,none,none
+gn:6240060,Whataupoko,Gisborne,4310,village,0,0,50,0,none,none
+gn:6240062,Tamarau,Gisborne,2730,village,0,0,50,0,none,none
+gn:6240088,Kaiti,Gisborne,8720,village,0,0,50,0,none,none
+gn:6240770,Cambridge,Waikato Region,15192,town,0,0,50,0,none,none
+gn:6240801,Te Awamutu,Waikato Region,14000,town,0,0,50,0,none,none
+gn:6241104,Solway,Wellington Region,7430,village,0,0,50,0,none,none
+gn:6241325,Rotorua,Bay of Plenty,65901,town,0,0,50,0,none,none
+gn:6241329,Utuhina,Bay of Plenty,1620,village,0,0,50,0,none,none
+gn:6242655,Monaco,Nelson Region,2460,village,0,0,50,0,none,none
+gn:6242981,Enner Glynn,Nelson Region,3110,village,0,0,50,0,none,none
+gn:6242982,Bishopdale,Nelson Region,2630,village,0,0,50,0,none,none
+gn:6242984,Moana,Nelson Region,3060,village,0,0,50,0,none,none
+gn:6242985,Nelson South,Nelson Region,2690,village,0,0,50,0,none,none
+gn:6242986,Washington Valley,Nelson Region,3080,village,0,0,50,0,none,none
+gn:6243006,Marybank,Nelson Region,1100,village,0,0,50,0,none,none
+gn:6243776,Picton,Marlborough,4850,village,0,0,50,0,none,none
+gn:6243926,Blenheim,Marlborough,29800,town,0,0,50,0,none,none
+gn:6243927,Springlands,Marlborough,6200,village,0,0,50,0,none,none
+gn:6243928,Mayfield,Marlborough,1870,village,0,0,50,0,none,none
+gn:6243930,Redwoodtown,Marlborough,11210,town,0,0,50,0,none,none
+gn:6243931,Witherlea,Marlborough,6060,village,0,0,50,0,none,none
+gn:6244383,Mangawhai Heads,Northland,2850,village,0,0,50,0,none,none
+gn:6244556,Snells Beach,Auckland,3760,village,0,0,50,0,none,none
+gn:6244598,Island Bay,Wellington Region,7170,village,0,0,50,0,none,none
+gn:6244608,Houghton Bay,Wellington Region,1770,village,0,0,50,0,none,none
+gn:6244689,Strathmore Park,Wellington Region,3910,village,0,0,50,0,none,none
+gn:6244783,Lyall Bay,Wellington Region,2700,village,0,0,50,0,none,none
+gn:6244784,Melrose,Wellington Region,1400,village,0,0,50,0,none,none
+gn:6244789,Newtown,Wellington Region,10130,town,0,0,50,0,none,none
+gn:6244793,Owhiro Bay,Wellington Region,2040,village,0,0,50,0,none,none
+gn:6244794,Mornington,Wellington Region,3260,village,0,0,50,0,none,none
+gn:6244801,Mount Cook,Wellington Region,7510,village,0,0,50,0,none,none
+gn:6244802,Hataitai,Wellington Region,5620,village,0,0,50,0,none,none
+gn:6244804,Maupuia,Wellington Region,1490,village,0,0,50,0,none,none
+gn:6244819,Mount Victoria,Wellington Region,4820,village,0,0,50,0,none,none
+gn:6244821,Roseneath,Wellington Region,1820,village,0,0,50,0,none,none
+gn:6244842,Homedale,Wellington Region,6270,village,0,0,50,0,none,none
+gn:6244844,Days Bay,Wellington Region,2180,village,0,0,50,0,none,none
+gn:6244850,Glendale,Wellington Region,4590,village,0,0,50,0,none,none
+gn:6244854,Parkway,Wellington Region,4020,village,0,0,50,0,none,none
+gn:6244859,Arakura,Wellington Region,3250,village,0,0,50,0,none,none
+gn:6244861,Moera,Wellington Region,1840,village,0,0,50,0,none,none
+gn:6244862,Waiwhetu,Wellington Region,4940,village,0,0,50,0,none,none
+gn:6244863,Woburn,Wellington Region,1850,village,0,0,50,0,none,none
+gn:6244864,Petone,Wellington Region,8370,village,0,0,50,0,none,none
+gn:6244866,Waterloo,Wellington Region,5950,village,0,0,50,0,none,none
+gn:6244867,Epuni,Wellington Region,6940,village,0,0,50,0,none,none
+gn:6244869,Naenae,Wellington Region,9720,village,0,0,50,0,none,none
+gn:6244870,Stokes Valley,Wellington Region,10770,town,0,0,50,0,none,none
+gn:6244873,Avalon,Wellington Region,5590,village,0,0,50,0,none,none
+gn:6244874,Taita,Wellington Region,6960,village,0,0,50,0,none,none
+gn:6244875,Kelson,Wellington Region,3110,village,0,0,50,0,none,none
+gn:6244877,Pinehaven,Wellington Region,2050,village,0,0,50,0,none,none
+gn:6244886,Brown Owl,Wellington Region,3770,village,0,0,50,0,none,none
+gn:6244889,Maoribank,Wellington Region,3640,village,0,0,50,0,none,none
+gn:6244890,Totara Park,Wellington Region,2890,village,0,0,50,0,none,none
+gn:6244895,Upper Hutt,Wellington Region,47400,town,0,0,50,0,none,none
+gn:6244896,Heretaunga,Wellington Region,2520,village,0,0,50,0,none,none
+gn:6244904,Belmont,Wellington Region,2990,village,0,0,50,0,none,none
+gn:6244909,Normandale,Wellington Region,2150,village,0,0,50,0,none,none
+gn:6244910,Maungaraki,Wellington Region,4290,village,0,0,50,0,none,none
+gn:6244913,Waitangirua,Wellington Region,4560,village,0,0,50,0,none,none
+gn:6244914,Whitby,Wellington Region,12230,town,0,0,50,0,none,none
+gn:6244917,Ascot Park,Wellington Region,2980,village,0,0,50,0,none,none
+gn:6244919,Papakowhai,Wellington Region,2300,village,0,0,50,0,none,none
+gn:6244921,Cannons Creek,Wellington Region,9250,village,0,0,50,0,none,none
+gn:6244927,Grenada North,Wellington Region,2420,village,0,0,50,0,none,none
+gn:6244928,Grenada Village,Wellington Region,1870,village,0,0,50,0,none,none
+gn:6244929,Paparangi,Wellington Region,2840,village,0,0,50,0,none,none
+gn:6244930,Newlands,Wellington Region,8880,village,0,0,50,0,none,none
+gn:6244944,Churton Park,Wellington Region,8290,village,0,0,50,0,none,none
+gn:6244956,Boulcott,Wellington Region,2830,village,0,0,50,0,none,none
+gn:6244957,Onepoto,Wellington Region,1990,village,0,0,50,0,none,none
+gn:6244970,Crofton Downs,Wellington Region,1720,village,0,0,50,0,none,none
+gn:6244981,Wilton,Wellington Region,2210,village,0,0,50,0,none,none
+gn:6245055,Te Puke,Bay of Plenty,10500,town,0,0,50,0,none,none
+gn:6245102,Gate Pa,Bay of Plenty,4200,village,0,0,50,0,none,none
+gn:6245107,Judea,Bay of Plenty,4990,village,0,0,50,0,none,none
+gn:6246205,Dannevirke,Manawatu-Wanganui,5640,village,0,0,50,0,none,none
+gn:6246563,Akina,Hawke's Bay Region,5193,village,0,0,50,0,none,none
+gn:6246565,Mahora,Hawke's Bay Region,9090,village,0,0,50,0,none,none
+gn:6246629,Maraenui,Hawke's Bay Region,4000,village,0,0,50,0,none,none
+gn:6246634,Taradale,Hawke's Bay Region,12940,town,0,0,50,0,none,none
+gn:6246706,Raureka,Hawke's Bay Region,5720,village,0,0,50,0,none,none
+gn:6246742,Flaxmere,Hawke's Bay Region,11142,town,0,0,50,0,none,none
+gn:6247603,Wairoa,Hawke's Bay Region,4940,village,0,0,50,0,none,none
+gn:6247826,Ngaruawahia,Waikato Region,8500,village,0,0,50,0,none,none
+gn:6247832,Temple View,Waikato Region,1440,village,0,0,50,0,none,none
+gn:6249030,Sunnyhills,Auckland,5880,village,0,0,50,0,none,none
+gn:6249035,Wakari,Otago,4410,village,0,0,50,0,none,none
+gn:6249340,Hamilton East,Waikato Region,15300,town,0,0,50,0,none,none
+gn:6249342,Hamilton West,Waikato Region,1390,village,0,0,50,0,none,none
+gn:6249343,Huntly,Waikato Region,8850,village,0,0,50,0,none,none
+gn:6250450,Fitzherbert,Manawatu-Wanganui,4370,village,0,0,50,0,none,none
+gn:6250787,Alicetown,Wellington Region,2960,village,0,0,50,0,none,none
+gn:6250954,Riverstone Terraces,Wellington Region,1930,village,0,0,50,0,none,none
+gn:6251532,Pegasus,Canterbury,4170,village,0,0,50,0,none,none
+gn:7931913,Cable Bay,Northland,1140,village,0,0,50,0,none,none
+gn:8298608,Rosebank,Auckland,4551,village,0,0,50,0,none,none
+gn:8469227,Unsworth Heights,Auckland,6620,village,0,0,50,0,none,none
+gn:8469228,Schnapper Rock,Auckland,4300,village,0,0,50,0,none,none
+gn:8469230,Oteha Valley,Auckland,5850,village,0,0,50,0,none,none
+gn:10173827,Te Aro,Wellington Region,14600,town,0,0,50,0,none,none
+gn:11694533,Karaka Bays,Wellington Region,1580,village,0,0,50,0,none,none
+gn:11694534,Thorndon,Wellington Region,4070,village,0,0,50,0,none,none
+gn:11694535,Vogeltown,Wellington Region,2004,village,0,0,50,0,none,none
+gn:11694536,Woodridge,Wellington Region,1980,village,0,0,50,0,none,none
+gn:11694540,Aro Valley,Wellington Region,4040,village,0,0,50,0,none,none
+gn:11694543,Oriental Bay,Wellington Region,1450,village,0,0,50,0,none,none
+gn:11694544,Wellington Central,Wellington Region,3350,village,0,0,50,0,none,none
+gn:11876516,Aidanfield,Canterbury,4170,village,0,0,50,0,none,none
+gn:11876518,Kennedys Bush,Canterbury,1090,village,0,0,50,0,none,none
+gn:11876522,Northwood,Canterbury,4266,village,0,0,50,0,none,none
+gn:11876523,Northcote,Canterbury,2622,village,0,0,50,0,none,none
+gn:11876526,Strowan,Canterbury,3620,village,0,0,50,0,none,none
+gn:12524410,Clarks Beach,Auckland,1560,village,0,0,50,0,none,none
+gn:13191994,Jack's Point,Otago,4300,village,0,0,50,0,none,none
+gn:13191995,Queenwood,Waikato Region,2610,village,0,0,50,0,none,none
+gn:13631316,Windsor Park,Auckland,4000,village,0,0,50,0,none,none
+gn:13631317,Wairau Valley,Auckland,4000,village,0,0,50,0,none,none
+gn:13631341,Rosedale,Auckland,4000,village,0,0,50,0,none,none
+gn:13631691,Victoria,Bay of Plenty,2290,village,0,0,50,0,none,none

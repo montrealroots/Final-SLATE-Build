@@ -1,0 +1,27 @@
+place_id,name,region,population,market,verified_homes,dated_listings,shortfall_to_50,recorded_sales,rent_source,price_source
+gn:220552,Yoboki,Dikhil,3147,village,0,0,50,0,none,none
+gn:220604,Ouê‘a,Djibouti,3879,village,0,0,50,0,none,none
+gn:220782,Tadjoura,Tadjourah,19533,town,0,0,50,0,none,none
+gn:221103,Randa,Tadjourah,2055,village,0,0,50,0,none,none
+gn:221527,Obock,Obock,15429,town,0,0,50,0,none,none
+gn:221708,Médého,Obock,4000,village,0,0,50,0,none,none
+gn:221915,Loyada,Djibouti,1646,village,0,0,50,0,none,none
+gn:222171,Khôr Angar,Obock,3500,village,0,0,50,0,none,none
+gn:222596,Holhol,Ali Sabieh,3875,village,0,0,50,0,none,none
+gn:223773,Dorra,Tadjourah,1873,village,0,0,50,0,none,none
+gn:223817,Djibouti,Djibouti,626512,large-city,0,0,50,0,none,none
+gn:223890,Dikhil,Dikhil,32801,town,0,0,50,0,none,none
+gn:224906,‘As ‘Êla,Dikhil,5173,village,0,0,50,0,none,none
+gn:225037,Arta,Arta,17477,town,0,0,50,0,none,none
+gn:225284,Ali Sabih,Ali Sabieh,50006,town,0,0,50,0,none,none
+gn:225310,‘Ali ‘Addé,Ali Sabieh,3700,village,0,0,50,0,none,none
+gn:225398,Airolaf,Tadjourah,1023,village,0,0,50,0,none,none
+gn:400462,Alaïli Ḏaḏḏa‘,Obock,1456,village,0,0,50,0,none,none
+gn:404197,Damêrdjôg,Djibouti,5115,village,0,0,50,0,none,none
+gn:404235,Goubétto,Ali Sabieh,1400,village,0,0,50,0,none,none
+gn:408698,Gâlâfi,Dikhil,1849,village,0,0,50,0,none,none
+gn:448210,Koûta Boûyya,Dikhil,1161,village,0,0,50,0,none,none
+gn:7648070,Balbala,Djibouti,554350,large-city,0,0,50,0,none,none
+gn:7828770,Waddi,Obock,3500,village,0,0,50,0,none,none
+gn:12041434,Egahlou,Obock,1512,village,0,0,50,0,none,none
+gn:12041437,Dasbiyo,Ali Sabieh,1750,village,0,0,50,0,none,none

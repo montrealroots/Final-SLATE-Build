@@ -1,0 +1,31 @@
+place_id,name,region,population,market,verified_homes,dated_listings,shortfall_to_50,recorded_sales,rent_source,price_source
+gn:1281980,Meedhoo,Seenu,1726,village,0,0,50,0,none,none
+gn:1282027,Male,Kaafu Atoll,103693,city,0,0,50,0,none,none
+gn:1282256,Hithadhoo,Seenu,9927,village,0,0,50,0,none,none
+gn:1337605,Mahibadhoo,Southern Ari Atoll,2156,village,0,0,50,0,none,none
+gn:1337606,Eydhafushi,Baa Atholhu,2808,village,0,0,50,0,none,none
+gn:1337607,Kudahuvadhoo,Dhaalu Atholhu,1562,village,0,0,50,0,none,none
+gn:1337609,Viligili,Gaafu Alif Atoll,2925,village,0,0,50,0,none,none
+gn:1337610,Thinadhoo,Gaafu Dhaalu Atoll,6376,village,0,0,50,0,none,none
+gn:1337611,Fuvahmulah,Gnyaviyani Atoll,11140,town,0,0,50,0,none,none
+gn:1337612,Dhihdhoo,Haa Alifu Atholhu,3039,village,0,0,50,0,none,none
+gn:1337613,Kulhudhuffushi,Haa Dhaalu Atholhu,9500,village,0,0,50,0,none,none
+gn:1337616,Naifaru,Faadhippolhu Atoll,5044,village,0,0,50,0,none,none
+gn:1337617,Muli,Meemu Atholhu,1008,village,0,0,50,0,none,none
+gn:1337618,Manadhoo,Noonu Atoll,1580,village,0,0,50,0,none,none
+gn:1337619,Un’goofaaru,Raa Atoll,1575,village,0,0,50,0,none,none
+gn:1337620,Funadhoo,Shaviyani Atholhu,2900,village,0,0,50,0,none,none
+gn:1337622,Veymandoo,Thaa Atholhu,1100,village,0,0,50,0,none,none
+gn:1337623,Felidhoo,Vaavu Atholhu,541,village,0,0,50,0,none,none
+gn:6930996,Hulhumale,Kaafu Atoll,5000,village,0,0,50,0,none,none
+gn:7874641,Fonadhoo,Laamu,1773,village,0,0,50,0,none,none
+gn:7910632,Vilufushi,Thaa Atholhu,2077,village,0,0,50,0,none,none
+gn:7911024,Madifushi,Thaa Atholhu,1110,village,0,0,50,0,none,none
+gn:7931878,Guraidhoo,Thaa Atholhu,1800,village,0,0,50,0,none,none
+gn:8410622,Open Stage,Baa Atholhu,1258,village,0,0,50,0,none,none
+gn:11103468,Guraidhoo,Kaafu Atoll,1800,village,0,0,50,0,none,none
+gn:11428107,Thulusdhoo,Kaafu Atoll,1801,village,0,0,50,0,none,none
+gn:11777962,Maafushi,Kaafu Atoll,3000,village,0,0,50,0,none,none
+gn:12128611,Gadhdhoo,Gaafu Dhaalu Atoll,0,village,0,0,50,0,none,none
+gn:12196228,Vaadhoo,Gaafu Dhaalu Atoll,1471,village,0,0,50,0,none,none
+gn:12494177,Nilandhoo,Faafu Atholhu,0,village,0,0,50,0,none,none

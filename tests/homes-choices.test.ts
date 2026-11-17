@@ -13,12 +13,23 @@ import { bankSpendable } from '../src/engine/bank';
 import { processUntil } from '../src/engine/state';
 import { DAY } from '../src/engine/time';
 import type { GameState } from '../src/engine/types';
+import type { Home } from '../src/engine/homes/model';
 import { startLife } from './helpers';
 
 const advance = (s: GameState, days: number) => processUntil(s, s.now + days * DAY, 'advance', 100000);
 async function offers(s: GameState, placeId: string) {
   const day = new Date(s.now).toISOString().slice(0, 10);
   return offersIn(s.seed, await marketEvidence(placeId, day), day);
+}
+
+/** The first home a pick finds on the market, waiting a month at a time, as a player would, when none is listed now. */
+async function listed(s: GameState, placeId: string, pickIt: (h: Home) => boolean): Promise<Home> {
+  for (let i = 0; i < 12; i++) {
+    const h = (await offers(s, placeId)).find(pickIt);
+    if (h) return h;
+    processUntil(s, s.now + 30 * DAY, 'advance', 100000);
+  }
+  throw new Error(`Nothing listed in ${placeId} in a year`);
 }
 async function ownInLA(tag: string, fit = false) {
   const s = startLife(tag, 'us-los-angeles', { startDate: '2026-03-02' });
@@ -142,7 +153,7 @@ describe('work, things and stays', () => {
 describe('building', () => {
   it("a design's garage, balconies, porch and size change the cost plan; a size that doesn't fit is refused", async () => {
     const s = startLife('choices-design', 'us-austin', { startDate: '2026-03-02' });
-    const land = (await offers(s, 'us-austin')).find((h) => h.form === 'land')!;
+    const land = await listed(s, 'us-austin', (h) => h.form === 'land');
     makeOffer(s, land, land.priceMinor, { finance: 'cash', inspect: false });
     advance(s, 35);
     investigate(s, land.id, 'survey');

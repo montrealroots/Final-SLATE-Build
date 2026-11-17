@@ -1,0 +1,15 @@
+place_id,name,region,population,market,verified_homes,dated_listings,shortfall_to_50,recorded_sales,rent_source,price_source
+gn:3373419,White Hill,Saint Andrew,5139,village,0,0,50,0,none,none
+gn:3373430,Welchman Hall,Saint Thomas,0,village,0,0,50,0,none,none
+gn:3373477,Crane,Saint Philip,935,village,0,0,50,0,none,none
+gn:3373505,Speightstown,Saint Peter,3634,village,0,0,50,0,none,none
+gn:3373515,Six Cross Roads,Christ Church,1005,village,0,0,50,0,none,none
+gn:3373652,Oistins,Christ Church,2285,village,0,0,50,0,none,none
+gn:3373689,Mile and a Quarter,Saint Peter,1382,village,0,0,50,0,none,none
+gn:3373790,Holetown,Saint James,1350,village,0,0,50,0,none,none
+gn:3373805,Hastings,Christ Church,1500,village,0,0,50,0,none,none
+gn:3373831,Greenland,Saint Andrew,623,village,0,0,50,0,none,none
+gn:3373877,Four Cross Roads,Saint John,0,village,0,0,50,0,none,none
+gn:3373993,Checker Hall,Saint Lucy,0,village,0,0,50,0,none,none
+gn:3374036,Bridgetown,Saint Michael,98511,town,0,0,50,0,none,none
+gn:3374083,Bathsheba,Saint Joseph,1765,village,0,0,50,0,none,none

@@ -1,0 +1,27 @@
+place_id,name,region,population,market,verified_homes,dated_listings,shortfall_to_50,recorded_sales,rent_source,price_source
+gn:2610294,Við Sjógv,Eysturoy,1158,village,0,0,50,0,none,none
+gn:2610302,Viðareiði,Norðoyar,0,village,0,0,50,0,none,none
+gn:2610343,Vestmanna,Streymoy,1260,village,0,0,50,0,none,none
+gn:2610806,Vágur,Suðuroy,1333,village,0,0,50,0,none,none
+gn:2611060,Tvøroyri,Suðuroy,862,village,0,0,50,0,none,none
+gn:2611396,Tórshavn,Streymoy,13200,town,0,0,50,0,none,none
+gn:2612890,Sørvágur,Vágar,1148,village,0,0,50,0,none,none
+gn:2613477,Skúvoy,Sandoy,53,village,0,0,50,0,none,none
+gn:2613660,Skopun,Sandoy,457,village,0,0,50,0,none,none
+gn:2613921,Skálavík,Sandoy,171,village,0,0,50,0,none,none
+gn:2614212,Sandur,Sandoy,608,village,0,0,50,0,none,none
+gn:2614265,Sandavágur,Vágar,779,village,0,0,50,0,none,none
+gn:2614304,Saltangará,Eysturoy,1116,village,0,0,50,0,none,none
+gn:2615132,Porkeri,Suðuroy,396,village,0,0,50,0,none,none
+gn:2616914,Miðvágur,Vágar,1040,village,0,0,50,0,none,none
+gn:2617844,Leirvík,Eysturoy,1048,village,0,0,50,0,none,none
+gn:2618119,Kunoy,Norðoyar,70,village,0,0,50,0,none,none
+gn:2618795,Klaksvík,Norðoyar,5013,village,0,0,50,0,none,none
+gn:2618855,Kirkja,Norðoyar,31,village,0,0,50,0,none,none
+gn:2619596,Hvalba,Suðuroy,673,village,0,0,50,0,none,none
+gn:2619693,Hoyvík,Streymoy,4712,village,0,0,50,0,none,none
+gn:2619734,Hov,Suðuroy,149,village,0,0,50,0,none,none
+gn:2621808,Fuglafjørður,Eysturoy,1542,village,0,0,50,0,none,none
+gn:2622676,Eiði,Eysturoy,634,village,0,0,50,0,none,none
+gn:2624653,Argir,Streymoy,2504,village,0,0,50,0,none,none
+gn:7798678,Eystur,Eysturoy,0,village,0,0,50,0,none,none

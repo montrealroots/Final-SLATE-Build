@@ -1,0 +1,29 @@
+place_id,name,region,population,market,verified_homes,dated_listings,shortfall_to_50,recorded_sales,rent_source,price_source
+gn:935126,Vincendo,Reunion,5000,village,0,0,50,0,none,none
+gn:935146,Les Trois-Bassins,Reunion,7114,village,0,0,50,0,none,none
+gn:935210,Salazie,Reunion,7696,village,0,0,50,0,none,none
+gn:935214,Saint-Pierre,Reunion,84077,town,0,0,50,0,none,none
+gn:935215,Saint-Philippe,Reunion,5441,village,0,0,50,0,none,none
+gn:935221,Saint-Paul,Reunion,105240,city,0,0,50,0,none,none
+gn:935223,Saint-Louis,Reunion,53935,town,0,0,50,0,none,none
+gn:935225,Saint-Leu,Reunion,34893,town,0,0,50,0,none,none
+gn:935227,Saint-Joseph,Reunion,38807,town,0,0,50,0,none,none
+gn:935248,Sainte-Suzanne,Reunion,24293,town,0,0,50,0,none,none
+gn:935251,Sainte-Rose,Reunion,7035,village,0,0,50,0,none,none
+gn:935255,Sainte-Marie,Reunion,34344,town,0,0,50,0,none,none
+gn:935264,Saint-Denis,Reunion,154765,city,0,0,50,0,none,none
+gn:935267,Saint-Benoît,Reunion,37023,town,0,0,50,0,none,none
+gn:935268,Saint-André,Reunion,57150,town,0,0,50,0,none,none
+gn:935416,Petite-Île,Reunion,12617,town,0,0,50,0,none,none
+gn:935582,Le Tampon,Reunion,81943,town,0,0,50,0,none,none
+gn:935608,Les Avirons,Reunion,11434,town,0,0,50,0,none,none
+gn:935616,Le Port,Reunion,33336,town,0,0,50,0,none,none
+gn:935691,La Possession,Reunion,35245,town,0,0,50,0,none,none
+gn:935694,La Plaine-des-Palmistes,Reunion,6821,village,0,0,50,0,none,none
+gn:935708,La Montagne,Reunion,12000,town,0,0,50,0,none,none
+gn:935713,La Mare,Reunion,2189,village,0,0,50,0,none,none
+gn:935902,L'Étang-Salé,Reunion,13836,town,0,0,50,0,none,none
+gn:935915,Entre-Deux,Reunion,7105,village,0,0,50,0,none,none
+gn:935975,Cilaos,Reunion,6225,village,0,0,50,0,none,none
+gn:936048,Bras-Panon,Reunion,13344,town,0,0,50,0,none,none
+gn:7932385,Piton Saint-Leu,Reunion,29278,town,0,0,50,0,none,none

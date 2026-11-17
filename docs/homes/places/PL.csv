@@ -1,0 +1,3023 @@
+place_id,name,region,population,market,verified_homes,dated_listings,shortfall_to_50,recorded_sales,rent_source,price_source
+gn:752963,Żyrzyn,Lublin,1400,village,0,0,50,0,none,none
+gn:752967,Żyrardów,Mazovia,41179,town,0,0,50,0,none,none
+gn:752968,Żyraków,Subcarpathia,1400,village,0,0,50,0,none,none
+gn:753004,Zwoleń,Mazovia,8048,village,0,0,50,0,none,none
+gn:753020,Zwierzyniec,Lublin,3297,village,0,0,50,0,none,none
+gn:753037,Żurowa,Lesser Poland,2321,village,0,0,50,0,none,none
+gn:753053,Żurawiczki,Subcarpathia,1247,village,0,0,50,0,none,none
+gn:753056,Żurawica,Subcarpathia,4702,village,0,0,50,0,none,none
+gn:753130,Żołynia,Subcarpathia,5145,village,0,0,50,0,none,none
+gn:753140,Żółkiewka,Lublin,790,village,0,0,50,0,none,none
+gn:753142,Żoliborz,Mazovia,50934,town,0,0,50,0,none,none
+gn:753188,Zmiennica,Subcarpathia,1100,village,0,0,50,0,none,none
+gn:753221,Złota,Świętokrzyskie,1200,village,0,0,50,0,none,none
+gn:753222,Złota,Lesser Poland,1368,village,0,0,50,0,none,none
+gn:753276,Zielonka,Mazovia,17518,town,0,0,50,0,none,none
+gn:753319,Zgłobień,Subcarpathia,1542,village,0,0,50,0,none,none
+gn:753394,Żelechów,Mazovia,4087,village,0,0,50,0,none,none
+gn:753395,Żelechlinek,Łódź Voivodeship,474,village,0,0,50,0,none,none
+gn:753420,Żegocina,Lesser Poland,1500,village,0,0,50,0,none,none
+gn:753531,Zbuczyn,Mazovia,1836,village,0,0,50,0,none,none
+gn:753549,Zbójna,Podlasie,1100,village,0,0,50,0,none,none
+gn:753611,Zawichost,Świętokrzyskie,1853,village,0,0,50,0,none,none
+gn:753702,Zatory,Mazovia,970,village,0,0,50,0,none,none
+gn:753760,Zarzecze,Subcarpathia,2549,village,0,0,50,0,none,none
+gn:753762,Zarzecze,Subcarpathia,1589,village,0,0,50,0,none,none
+gn:753776,Zarszyn,Subcarpathia,1101,village,0,0,50,0,none,none
+gn:753787,Żarnów,Łódź Voivodeship,870,village,0,0,50,0,none,none
+gn:753866,Zamość,Lublin,66034,town,0,0,50,0,none,none
+gn:753885,Zamch,Lublin,1500,village,0,0,50,0,none,none
+gn:753895,Zambrów,Podlasie,22857,town,0,0,50,0,none,none
+gn:753910,Załuski,Mazovia,402,village,0,0,50,0,none,none
+gn:753943,Zaleszany,Subcarpathia,1000,village,0,0,50,0,none,none
+gn:753955,Zalesie Górne,Mazovia,3099,village,0,0,50,0,none,none
+gn:753982,Zalesie,Lublin,0,village,0,0,50,0,none,none
+gn:754027,Zakrzówek,Lublin,1400,village,0,0,50,0,none,none
+gn:754029,Zakrzew,Mazovia,339,village,0,0,50,0,none,none
+gn:754066,Zakrzew,Lublin,630,village,0,0,50,0,none,none
+gn:754069,Zakroczym,Mazovia,3347,village,0,0,50,0,none,none
+gn:754090,Zaklików,Subcarpathia,3000,village,0,0,50,0,none,none
+gn:754092,Zakliczyn,Lesser Poland,1534,village,0,0,50,0,none,none
+gn:754118,Zahutyń,Subcarpathia,1267,village,0,0,50,0,none,none
+gn:754174,Zagórzyce,Subcarpathia,3182,village,0,0,50,0,none,none
+gn:754195,Zagórz,Subcarpathia,5129,village,0,0,50,0,none,none
+gn:754210,Zagnańsk,Świętokrzyskie,1726,village,0,0,50,0,none,none
+gn:754329,Żabno,Lesser Poland,4250,village,0,0,50,0,none,none
+gn:754331,Zabłudów,Podlasie,2452,village,0,0,50,0,none,none
+gn:754351,Ząbki,Mazovia,23473,town,0,0,50,0,none,none
+gn:754364,Zabierzów Bocheński,Lesser Poland,1700,village,0,0,50,0,none,none
+gn:754367,Żabieniec,Mazovia,1126,village,0,0,50,0,none,none
+gn:754386,Żabia Wola,Mazovia,1256,village,0,0,50,0,none,none
+gn:754451,Wyszogród,Mazovia,2779,village,0,0,50,0,none,none
+gn:754454,Wyszków,Mazovia,26500,town,0,0,50,0,none,none
+gn:754456,Wyszki,Podlasie,0,village,0,0,50,0,none,none
+gn:754479,Wysokie Mazowieckie,Podlasie,9203,village,0,0,50,0,none,none
+gn:754493,Wysokie,Lublin,602,village,0,0,50,0,none,none
+gn:754499,Wysoka Strzyżowska,Subcarpathia,2199,village,0,0,50,0,none,none
+gn:754508,Wysoka Głogowska,Subcarpathia,2213,village,0,0,50,0,none,none
+gn:754509,Wysoka,Subcarpathia,2400,village,0,0,50,0,none,none
+gn:754520,Wyśmierzyce,Mazovia,858,village,0,0,50,0,none,none
+gn:754652,Wydminy,Warmia-Masuria,2448,village,0,0,50,0,none,none
+gn:754800,Wołomin,Mazovia,36592,town,0,0,50,0,none,none
+gn:754847,Wólka Tanewska,Subcarpathia,1453,village,0,0,50,0,none,none
+gn:754886,Wólka Podleśna,Subcarpathia,1500,village,0,0,50,0,none,none
+gn:754897,Wólka Pełkińska,Subcarpathia,1500,village,0,0,50,0,none,none
+gn:754912,Wólka Niedźwiedzka,Subcarpathia,1800,village,0,0,50,0,none,none
+gn:755090,Wola Żarczycka,Subcarpathia,3793,village,0,0,50,0,none,none
+gn:755098,Wola Zabierzowska,Lesser Poland,1177,village,0,0,50,0,none,none
+gn:755118,Wola Uhruska,Lublin,1639,village,0,0,50,0,none,none
+gn:755143,Wola Sernicka,Lublin,1118,village,0,0,50,0,none,none
+gn:755155,Wola Rębkowska,Mazovia,1400,village,0,0,50,0,none,none
+gn:755200,Wolanów,Mazovia,701,village,0,0,50,0,none,none
+gn:755276,Wola Jachowa,Świętokrzyskie,1300,village,0,0,50,0,none,none
+gn:755303,Wola Dębińska,Lesser Poland,1602,village,0,0,50,0,none,none
+gn:755327,Wola Batorska,Lesser Poland,2520,village,0,0,50,0,none,none
+gn:755330,Wola,Mazovia,140958,city,0,0,50,0,none,none
+gn:755369,Wojsławice,Lublin,1600,village,0,0,50,0,none,none
+gn:755390,Wojnicz,Lesser Poland,3509,village,0,0,50,0,none,none
+gn:755412,Wojcieszków,Lublin,1100,village,0,0,50,0,none,none
+gn:755421,Wojciechowice,Świętokrzyskie,324,village,0,0,50,0,none,none
+gn:755427,Wojciechów,Lublin,920,village,0,0,50,0,none,none
+gn:755435,Wojaszówka,Subcarpathia,700,village,0,0,50,0,none,none
+gn:755438,Wohyń,Lublin,2000,village,0,0,50,0,none,none
+gn:755439,Wodzisław,Świętokrzyskie,1100,village,0,0,50,0,none,none
+gn:755442,Wodynie,Mazovia,630,village,0,0,50,0,none,none
+gn:755474,Włodawa,Lublin,13142,town,0,0,50,0,none,none
+gn:755475,Włochy,Mazovia,36276,town,0,0,50,0,none,none
+gn:755502,Wizna,Podlasie,1300,village,0,0,50,0,none,none
+gn:755551,Wisznice,Lublin,1559,village,0,0,50,0,none,none
+gn:755571,Wiśniowa,Subcarpathia,1826,village,0,0,50,0,none,none
+gn:755572,Wiśniowa,Lesser Poland,1900,village,0,0,50,0,none,none
+gn:755582,Wiśniew,Mazovia,870,village,0,0,50,0,none,none
+gn:755593,Wiślica,Świętokrzyskie,680,village,0,0,50,0,none,none
+gn:755594,Wiskitki,Mazovia,1420,village,0,0,50,0,none,none
+gn:755609,Winnica,Mazovia,560,village,0,0,50,0,none,none
+gn:755670,Wilków,Lublin,208,village,0,0,50,0,none,none
+gn:755675,Wilkołaz,Lublin,2493,village,0,0,50,0,none,none
+gn:755692,Wilga,Mazovia,1000,village,0,0,50,0,none,none
+gn:755697,Wilczyce,Świętokrzyskie,830,village,0,0,50,0,none,none
+gn:755726,Wilanów,Mazovia,14032,town,0,0,50,0,none,none
+gn:755754,Wietrzychowice,Lesser Poland,658,village,0,0,50,0,none,none
+gn:755775,Wierzchosławice,Lesser Poland,3000,village,0,0,50,0,none,none
+gn:755792,Wierzbno,Mazovia,358,village,0,0,50,0,none,none
+gn:755797,Wierzbna,Subcarpathia,1201,village,0,0,50,0,none,none
+gn:755810,Wierzbica,Mazovia,3956,village,0,0,50,0,none,none
+gn:755823,Wierzawice,Subcarpathia,3408,village,0,0,50,0,none,none
+gn:755848,Wieniawa,Mazovia,687,village,0,0,50,0,none,none
+gn:755855,Wielopole Skrzyńskie,Subcarpathia,3982,village,0,0,50,0,none,none
+gn:755873,Wielkie Oczy,Subcarpathia,880,village,0,0,50,0,none,none
+gn:755883,Wielka Wieś,Świętokrzyskie,1425,village,0,0,50,0,none,none
+gn:755885,Wielka Wieś,Lesser Poland,1311,village,0,0,50,0,none,none
+gn:755886,Wieliszew,Mazovia,3373,village,0,0,50,0,none,none
+gn:755889,Wieliczka,Lesser Poland,18677,town,0,0,50,0,none,none
+gn:755907,Wielbark,Warmia-Masuria,2943,village,0,0,50,0,none,none
+gn:755919,Wieczfnia Kościelna,Mazovia,337,village,0,0,50,0,none,none
+gn:755963,Wiązownica,Subcarpathia,1700,village,0,0,50,0,none,none
+gn:756004,Wesoła,Mazovia,20000,town,0,0,50,0,none,none
+gn:756010,Wesoła,Subcarpathia,2048,village,0,0,50,0,none,none
+gn:756028,Werbkowice,Lublin,3030,village,0,0,50,0,none,none
+gn:756045,Węgrzce Wielkie,Lesser Poland,1513,village,0,0,50,0,none,none
+gn:756046,Węgrów,Mazovia,12512,town,0,0,50,0,none,none
+gn:756048,Węgorzewo,Warmia-Masuria,11864,town,0,0,50,0,none,none
+gn:756053,Węglówka,Lesser Poland,1100,village,0,0,50,0,none,none
+gn:756084,Wawrzeńczyce,Lesser Poland,3000,village,0,0,50,0,none,none
+gn:756091,Wąwolnica,Lublin,1041,village,0,0,50,0,none,none
+gn:756092,Wawer,Mazovia,77205,town,0,0,50,0,none,none
+gn:756106,Wąsosz,Podlasie,1600,village,0,0,50,0,none,none
+gn:756109,Waśniów,Świętokrzyskie,460,village,0,0,50,0,none,none
+gn:756120,Wasilków,Podlasie,9440,village,0,0,50,0,none,none
+gn:756135,Warsaw,Mazovia,1702139,large-city,0,0,50,0,none,none
+gn:756151,Warka,Mazovia,11048,town,0,0,50,0,none,none
+gn:756197,Jodłówka-Wałki,Lesser Poland,1119,village,0,0,50,0,none,none
+gn:756227,Waksmund,Lesser Poland,2340,village,0,0,50,0,none,none
+gn:756246,Wadowice Górne,Subcarpathia,1100,village,0,0,50,0,none,none
+gn:756258,Wąchock,Świętokrzyskie,2747,village,0,0,50,0,none,none
+gn:756280,Ustrzyki Dolne,Subcarpathia,9610,village,0,0,50,0,none,none
+gn:756295,Uścimów Stary,Lublin,346,village,0,0,50,0,none,none
+gn:756302,Uście Gorlickie,Lesser Poland,1172,village,0,0,50,0,none,none
+gn:756313,Urzejowice,Subcarpathia,1800,village,0,0,50,0,none,none
+gn:756315,Urzędów,Lublin,898,village,0,0,50,0,none,none
+gn:756316,Urszulin,Lublin,1003,village,0,0,50,0,none,none
+gn:756320,Ursus,Mazovia,47285,town,0,0,50,0,none,none
+gn:756351,Ulhówek,Lublin,1262,village,0,0,50,0,none,none
+gn:756354,Ułęż,Lublin,1677,village,0,0,50,0,none,none
+gn:756377,Ulanów,Subcarpathia,1520,village,0,0,50,0,none,none
+gn:756406,Uherce Mineralne,Subcarpathia,1400,village,0,0,50,0,none,none
+gn:756438,Tyszowce,Lublin,2137,village,0,0,50,0,none,none
+gn:756456,Tyrawa Wołoska,Subcarpathia,900,village,0,0,50,0,none,none
+gn:756474,Tymbark,Lesser Poland,2700,village,0,0,50,0,none,none
+gn:756481,Tylicz,Lesser Poland,2000,village,0,0,50,0,none,none
+gn:756484,Tykocin,Podlasie,1907,village,0,0,50,0,none,none
+gn:756485,Tyczyn,Subcarpathia,3393,village,0,0,50,0,none,none
+gn:756532,Turze Pole,Subcarpathia,1040,village,0,0,50,0,none,none
+gn:756567,Turośń Kościelna,Podlasie,700,village,0,0,50,0,none,none
+gn:756577,Turobin,Lublin,1036,village,0,0,50,0,none,none
+gn:756627,Tuczna,Lublin,0,village,0,0,50,0,none,none
+gn:756629,Tuczępy,Świętokrzyskie,575,village,0,0,50,0,none,none
+gn:756634,Tuchów,Lesser Poland,6680,village,0,0,50,0,none,none
+gn:756648,Trzydnik Duży,Lublin,394,village,0,0,50,0,none,none
+gn:756679,Trzemeśnia,Lesser Poland,2200,village,0,0,50,0,none,none
+gn:756688,Trzebownisko,Subcarpathia,3084,village,0,0,50,0,none,none
+gn:756692,Trzebieszów,Lublin,1651,village,0,0,50,0,none,none
+gn:756709,Trzcinica,Subcarpathia,2400,village,0,0,50,0,none,none
+gn:756734,Trzciana,Subcarpathia,1300,village,0,0,50,0,none,none
+gn:756735,Trzciana,Subcarpathia,2300,village,0,0,50,0,none,none
+gn:756736,Trzciana,Lesser Poland,1462,village,0,0,50,0,none,none
+gn:756748,Tryńcza,Subcarpathia,1325,village,0,0,50,0,none,none
+gn:756769,Truskaw,Mazovia,1440,village,0,0,50,0,none,none
+gn:756771,Troszyn,Mazovia,688,village,0,0,50,0,none,none
+gn:756794,Trojanów,Mazovia,686,village,0,0,50,0,none,none
+gn:756819,Trawniki,Lublin,2893,village,0,0,50,0,none,none
+gn:756824,Trablice,Mazovia,1447,village,0,0,50,0,none,none
+gn:756825,Trąbki,Mazovia,2141,village,0,0,50,0,none,none
+gn:756826,Trąbki,Lesser Poland,1200,village,0,0,50,0,none,none
+gn:756867,Tomaszów Mazowiecki,Łódź Voivodeship,67197,town,0,0,50,0,none,none
+gn:756868,Tomaszów Lubelski,Lublin,20261,town,0,0,50,0,none,none
+gn:756919,Tłuszcz,Mazovia,7482,village,0,0,50,0,none,none
+gn:756933,Tereszpol,Lublin,1157,village,0,0,50,0,none,none
+gn:756938,Terespol,Lublin,6000,village,0,0,50,0,none,none
+gn:756939,Teresin,Mazovia,2500,village,0,0,50,0,none,none
+gn:756980,Telatyn,Lublin,603,village,0,0,50,0,none,none
+gn:756992,Tczów,Mazovia,620,village,0,0,50,0,none,none
+gn:757020,Tarnowiec,Lesser Poland,1485,village,0,0,50,0,none,none
+gn:757021,Tarnowiec,Subcarpathia,1200,village,0,0,50,0,none,none
+gn:757026,Tarnów,Lesser Poland,117799,city,0,0,50,0,none,none
+gn:757029,Tarnogród,Lublin,3396,village,0,0,50,0,none,none
+gn:757033,Tarnobrzeg,Subcarpathia,50459,town,0,0,50,0,none,none
+gn:757044,Tarnawatka,Lublin,1000,village,0,0,50,0,none,none
+gn:757050,Tarłów,Świętokrzyskie,790,village,0,0,50,0,none,none
+gn:757063,Targowisko,Lesser Poland,1670,village,0,0,50,0,none,none
+gn:757065,Targówek,Mazovia,124279,city,0,0,50,0,none,none
+gn:757071,Tarczyn,Mazovia,3904,village,0,0,50,0,none,none
+gn:757135,Szynwałd,Lesser Poland,3114,village,0,0,50,0,none,none
+gn:757174,Szydłowo,Mazovia,579,village,0,0,50,0,none,none
+gn:757178,Szydłowiec,Mazovia,12128,town,0,0,50,0,none,none
+gn:757182,Szydłów,Świętokrzyskie,1097,village,0,0,50,0,none,none
+gn:757214,Szumowo,Podlasie,1100,village,0,0,50,0,none,none
+gn:757240,Szreńsk,Mazovia,1200,village,0,0,50,0,none,none
+gn:757322,Szerzyny,Lesser Poland,2235,village,0,0,50,0,none,none
+gn:757323,Szerszenie,Podlasie,14000,town,0,0,50,0,none,none
+gn:757335,Szepietowo,Podlasie,2335,village,0,0,50,0,none,none
+gn:757343,Szelków,Mazovia,284,village,0,0,50,0,none,none
+gn:757357,Szczytno,Warmia-Masuria,26044,town,0,0,50,0,none,none
+gn:757376,Szczurowa,Lesser Poland,1722,village,0,0,50,0,none,none
+gn:757386,Szczuczyn,Podlasie,3552,village,0,0,50,0,none,none
+gn:757388,Szczucin,Lesser Poland,4166,village,0,0,50,0,none,none
+gn:757452,Szczebrzeszyn,Lublin,5255,village,0,0,50,0,none,none
+gn:757461,Szczawnica,Lesser Poland,6032,village,0,0,50,0,none,none
+gn:757472,Szastarka,Lublin,983,village,0,0,50,0,none,none
+gn:757479,Szarów,Lesser Poland,1337,village,0,0,50,0,none,none
+gn:757512,Szaflary,Lesser Poland,2200,village,0,0,50,0,none,none
+gn:757531,Sypniewo,Mazovia,480,village,0,0,50,0,none,none
+gn:757585,Świlcza,Subcarpathia,3000,village,0,0,50,0,none,none
+gn:757608,Swiętajno,Warmia-Masuria,1600,village,0,0,50,0,none,none
+gn:757610,Świętajno,Warmia-Masuria,2000,village,0,0,50,0,none,none
+gn:757692,Świdnik,Lublin,40050,town,0,0,50,0,none,none
+gn:757718,Suwałki,Podlasie,69222,town,0,0,50,0,none,none
+gn:757735,Susiec,Lublin,1300,village,0,0,50,0,none,none
+gn:757751,Suraż,Podlasie,993,village,0,0,50,0,none,none
+gn:757758,Supraśl,Podlasie,4526,village,0,0,50,0,none,none
+gn:757773,Sułów,Lublin,1115,village,0,0,50,0,none,none
+gn:757774,Sułów,Lublin,460,village,0,0,50,0,none,none
+gn:757782,Sułkowice,Mazovia,1100,village,0,0,50,0,none,none
+gn:757809,Sulejówek,Mazovia,18414,town,0,0,50,0,none,none
+gn:757848,Suchożebry,Mazovia,586,village,0,0,50,0,none,none
+gn:757850,Suchowola,Podlasie,2211,village,0,0,50,0,none,none
+gn:757886,Suchedniów,Świętokrzyskie,9184,village,0,0,50,0,none,none
+gn:757894,Sucha,Mazovia,1170,village,0,0,50,0,none,none
+gn:757912,Stupsk,Mazovia,783,village,0,0,50,0,none,none
+gn:757948,Stubno,Subcarpathia,1400,village,0,0,50,0,none,none
+gn:757953,Strzyżowice,Lublin,648,village,0,0,50,0,none,none
+gn:757957,Strzyżów,Subcarpathia,8739,village,0,0,50,0,none,none
+gn:757993,Strzegowo,Mazovia,2000,village,0,0,50,0,none,none
+gn:758071,Stromiec,Mazovia,909,village,0,0,50,0,none,none
+gn:758090,Strawczyn,Świętokrzyskie,1000,village,0,0,50,0,none,none
+gn:758091,Straszydle,Subcarpathia,2077,village,0,0,50,0,none,none
+gn:758103,Strachówka,Mazovia,390,village,0,0,50,0,none,none
+gn:758110,Strachocina,Subcarpathia,1100,village,0,0,50,0,none,none
+gn:758116,Stopnica,Świętokrzyskie,1545,village,0,0,50,0,none,none
+gn:758157,Stoczek Łukowski,Lublin,2718,village,0,0,50,0,none,none
+gn:758162,Stoczek,Mazovia,890,village,0,0,50,0,none,none
+gn:758175,Stężyca,Lublin,1900,village,0,0,50,0,none,none
+gn:758182,Sterdyń,Mazovia,814,village,0,0,50,0,none,none
+gn:758238,Stawiski,Podlasie,2417,village,0,0,50,0,none,none
+gn:758242,Stawiguda,Warmia-Masuria,1464,village,0,0,50,0,none,none
+gn:758252,Staszów,Świętokrzyskie,16137,town,0,0,50,0,none,none
+gn:758276,Stary Zamość,Lublin,637,village,0,0,50,0,none,none
+gn:758278,Stary Wiśnicz,Lesser Poland,1705,village,0,0,50,0,none,none
+gn:758282,Stary Sącz,Lesser Poland,8959,village,0,0,50,0,none,none
+gn:758327,Stare Miasto,Subcarpathia,1551,village,0,0,50,0,none,none
+gn:758332,Stare Juchy,Warmia-Masuria,1800,village,0,0,50,0,none,none
+gn:758343,Stare Babice,Mazovia,1268,village,0,0,50,0,none,none
+gn:758371,Stara Wieś,Subcarpathia,3100,village,0,0,50,0,none,none
+gn:758390,Starachowice,Świętokrzyskie,53739,town,0,0,50,0,none,none
+gn:758393,Stąporków,Świętokrzyskie,5946,village,0,0,50,0,none,none
+gn:758415,Stanisławów Pierwszy,Mazovia,1176,village,0,0,50,0,none,none
+gn:758416,Stanisławów,Mazovia,2200,village,0,0,50,0,none,none
+gn:758435,Stanisławice,Lesser Poland,1300,village,0,0,50,0,none,none
+gn:758445,Stalowa Wola,Subcarpathia,66495,town,0,0,50,0,none,none
+gn:758467,Srokowo,Warmia-Masuria,1400,village,0,0,50,0,none,none
+gn:758470,Śródmieście,Mazovia,99950,town,0,0,50,0,none,none
+gn:758517,Spiczyn,Lublin,697,village,0,0,50,0,none,none
+gn:758539,Sosnówka,Lublin,520,village,0,0,50,0,none,none
+gn:758548,Sosnowica,Lublin,678,village,0,0,50,0,none,none
+gn:758558,Sośnica,Subcarpathia,1409,village,0,0,50,0,none,none
+gn:758574,Sońsk,Mazovia,881,village,0,0,50,0,none,none
+gn:758575,Sonina,Subcarpathia,2836,village,0,0,50,0,none,none
+gn:758603,Solec-Zdrój,Świętokrzyskie,900,village,0,0,50,0,none,none
+gn:758605,Solec Nad Wisłą,Mazovia,1650,village,0,0,50,0,none,none
+gn:758624,Sokoły,Podlasie,1450,village,0,0,50,0,none,none
+gn:758626,Sokołów Podlaski,Mazovia,18241,town,0,0,50,0,none,none
+gn:758633,Sokołów Małopolski,Subcarpathia,3975,village,0,0,50,0,none,none
+gn:758646,Sokolniki,Subcarpathia,1965,village,0,0,50,0,none,none
+gn:758651,Sokółka,Podlasie,19079,town,0,0,50,0,none,none
+gn:758681,Sochocin,Mazovia,1945,village,0,0,50,0,none,none
+gn:758682,Sochaczew,Mazovia,38267,town,0,0,50,0,none,none
+gn:758697,Sobolew,Mazovia,2200,village,0,0,50,0,none,none
+gn:758704,Sobków,Świętokrzyskie,870,village,0,0,50,0,none,none
+gn:758715,Sobienie Jeziory,Mazovia,700,village,0,0,50,0,none,none
+gn:758746,Śniadowo,Podlasie,1500,village,0,0,50,0,none,none
+gn:758759,Smyków,Świętokrzyskie,290,village,0,0,50,0,none,none
+gn:758833,Smęgorzów,Lesser Poland,1305,village,0,0,50,0,none,none
+gn:758850,Słupno,Mazovia,1500,village,0,0,50,0,none,none
+gn:758853,Słupiec,Lesser Poland,1118,village,0,0,50,0,none,none
+gn:758857,Słupia,Świętokrzyskie,290,village,0,0,50,0,none,none
+gn:758883,Słotowa,Subcarpathia,1087,village,0,0,50,0,none,none
+gn:758887,Słopnice,Lesser Poland,4601,village,0,0,50,0,none,none
+gn:758905,Słomniki,Lesser Poland,4340,village,0,0,50,0,none,none
+gn:758952,Sławno,Łódź Voivodeship,384,village,0,0,50,0,none,none
+gn:758973,Sławatycze,Lublin,2647,village,0,0,50,0,none,none
+gn:759007,Skrzyszów,Lesser Poland,3656,village,0,0,50,0,none,none
+gn:759022,Skrzydlna,Lesser Poland,1100,village,0,0,50,0,none,none
+gn:759064,Skórzec,Mazovia,969,village,0,0,50,0,none,none
+gn:759092,Skołyszyn,Subcarpathia,1455,village,0,0,50,0,none,none
+gn:759123,Skierniewice,Łódź Voivodeship,49042,town,0,0,50,0,none,none
+gn:759127,Skierbieszów,Lublin,1315,village,0,0,50,0,none,none
+gn:759140,Skarżysko Kościelne,Świętokrzyskie,2700,village,0,0,50,0,none,none
+gn:759141,Skarżysko-Kamienna,Świętokrzyskie,49410,town,0,0,50,0,none,none
+gn:759151,Skaryszew,Mazovia,4135,village,0,0,50,0,none,none
+gn:759172,Skalbmierz,Świętokrzyskie,1291,village,0,0,50,0,none,none
+gn:759190,Sitno,Lublin,703,village,0,0,50,0,none,none
+gn:759194,Osiedle-Nowiny,Świętokrzyskie,2492,village,0,0,50,0,none,none
+gn:759234,Sietesz,Subcarpathia,1800,village,0,0,50,0,none,none
+gn:759266,Sieradza,Lesser Poland,1143,village,0,0,50,0,none,none
+gn:759275,Sienno,Mazovia,750,village,0,0,50,0,none,none
+gn:759282,Siennica,Mazovia,2600,village,0,0,50,0,none,none
+gn:759301,Sieniawa,Subcarpathia,2182,village,0,0,50,0,none,none
+gn:759302,Sieniawa,Subcarpathia,1078,village,0,0,50,0,none,none
+gn:759316,Siemień,Lublin,581,village,0,0,50,0,none,none
+gn:759317,Siemiechów,Lesser Poland,1890,village,0,0,50,0,none,none
+gn:759320,Siemiatycze,Podlasie,15421,town,0,0,50,0,none,none
+gn:759325,Siemiątkowo,Mazovia,432,village,0,0,50,0,none,none
+gn:759398,Siedliska,Subcarpathia,1700,village,0,0,50,0,none,none
+gn:759399,Siedliska,Lesser Poland,2351,village,0,0,50,0,none,none
+gn:759409,Siedleczka,Subcarpathia,1152,village,0,0,50,0,none,none
+gn:759412,Siedlce,Mazovia,77185,town,0,0,50,0,none,none
+gn:759466,Serokomla,Lublin,1060,village,0,0,50,0,none,none
+gn:759470,Serock,Mazovia,4023,village,0,0,50,0,none,none
+gn:759472,Serniki,Lublin,382,village,0,0,50,0,none,none
+gn:759482,Sępopol,Warmia-Masuria,2043,village,0,0,50,0,none,none
+gn:759495,Sękowa,Lesser Poland,1477,village,0,0,50,0,none,none
+gn:759503,Sejny,Podlasie,5872,village,0,0,50,0,none,none
+gn:759504,Sędziszów Małopolski,Subcarpathia,7096,village,0,0,50,0,none,none
+gn:759507,Sędziszów,Świętokrzyskie,6771,village,0,0,50,0,none,none
+gn:759534,Sawin,Lublin,2181,village,0,0,50,0,none,none
+gn:759579,Sarnaki,Mazovia,1194,village,0,0,50,0,none,none
+gn:759591,Sanok,Subcarpathia,39684,town,0,0,50,0,none,none
+gn:759603,Sandomierz,Świętokrzyskie,25087,town,0,0,50,0,none,none
+gn:759631,Samborzec,Świętokrzyskie,475,village,0,0,50,0,none,none
+gn:759678,Sadowne,Mazovia,1200,village,0,0,50,0,none,none
+gn:759680,Sadowie,Świętokrzyskie,600,village,0,0,50,0,none,none
+gn:759689,Sadkowice,Łódź Voivodeship,570,village,0,0,50,0,none,none
+gn:759704,Sabnie,Mazovia,369,village,0,0,50,0,none,none
+gn:759722,Rzezawa,Lesser Poland,2500,village,0,0,50,0,none,none
+gn:759726,Rzewnie,Mazovia,293,village,0,0,50,0,none,none
+gn:759734,Rzeszów,Subcarpathia,198317,city,0,0,50,0,none,none
+gn:759751,Rzepiennik Strzyżewski,Lesser Poland,1324,village,0,0,50,0,none,none
+gn:759754,Rzepedź,Subcarpathia,1400,village,0,0,50,0,none,none
+gn:759757,Rzekuń,Mazovia,1800,village,0,0,50,0,none,none
+gn:759778,Rzeczyca,Lublin,1500,village,0,0,50,0,none,none
+gn:759779,Rzeczyca,Łódź Voivodeship,1589,village,0,0,50,0,none,none
+gn:759786,Rzeczniów,Mazovia,673,village,0,0,50,0,none,none
+gn:759802,Rząśnik,Mazovia,1600,village,0,0,50,0,none,none
+gn:759814,Rytwiany,Świętokrzyskie,1821,village,0,0,50,0,none,none
+gn:759815,Rytro,Lesser Poland,3700,village,0,0,50,0,none,none
+gn:759839,Ryn,Warmia-Masuria,2992,village,0,0,50,0,none,none
+gn:759843,Rymanów,Subcarpathia,3583,village,0,0,50,0,none,none
+gn:759852,Ryki,Lublin,9619,village,0,0,50,0,none,none
+gn:759859,Ryglice,Lesser Poland,2802,village,0,0,50,0,none,none
+gn:759875,Ryczywół,Mazovia,1300,village,0,0,50,0,none,none
+gn:759895,Rybno,Mazovia,607,village,0,0,50,0,none,none
+gn:759915,Rybie,Mazovia,4100,village,0,0,50,0,none,none
+gn:759922,Rybczewice,Lublin,840,village,0,0,50,0,none,none
+gn:759946,Rutki,Podlasie,0,village,0,0,50,0,none,none
+gn:759981,Rusinów,Mazovia,751,village,0,0,50,0,none,none
+gn:760054,Rudnik,Lublin,543,village,0,0,50,0,none,none
+gn:760055,Rudnik nad Sanem,Subcarpathia,6770,village,0,0,50,0,none,none
+gn:760062,Rudna Wielka,Subcarpathia,1318,village,0,0,50,0,none,none
+gn:760063,Rudna Mała,Subcarpathia,1023,village,0,0,50,0,none,none
+gn:760084,Rudka,Podlasie,1400,village,0,0,50,0,none,none
+gn:760123,Ruda Maleniecka,Świętokrzyskie,610,village,0,0,50,0,none,none
+gn:760166,Ruciane-Nida,Warmia-Masuria,4722,village,0,0,50,0,none,none
+gn:760203,Rozogi,Warmia-Masuria,1418,village,0,0,50,0,none,none
+gn:760237,Rozbórz,Subcarpathia,2005,village,0,0,50,0,none,none
+gn:760254,Siennica Różana,Lublin,1000,village,0,0,50,0,none,none
+gn:760255,Różan,Mazovia,2619,village,0,0,50,0,none,none
+gn:760308,Rossosz,Lublin,0,village,0,0,50,0,none,none
+gn:760343,Ropczyce,Subcarpathia,15279,town,0,0,50,0,none,none
+gn:760347,Ropa,Lesser Poland,3959,village,0,0,50,0,none,none
+gn:760395,Rokitno,Lublin,747,village,0,0,50,0,none,none
+gn:760404,Rokietnica,Subcarpathia,2500,village,0,0,50,0,none,none
+gn:760414,Rogóźno,Lublin,1153,village,0,0,50,0,none,none
+gn:760415,Rogóźno,Subcarpathia,1200,village,0,0,50,0,none,none
+gn:760445,Rogów,Świętokrzyskie,1300,village,0,0,50,0,none,none
+gn:760488,Reszel,Warmia-Masuria,5226,village,0,0,50,0,none,none
+gn:760490,Repki,Mazovia,829,village,0,0,50,0,none,none
+gn:760503,Rembertów,Mazovia,21893,town,0,0,50,0,none,none
+gn:760516,Rejowiec Fabryczny,Lublin,4474,village,0,0,50,0,none,none
+gn:760518,Rejowiec,Lublin,2114,village,0,0,50,0,none,none
+gn:760527,Regnów,Łódź Voivodeship,340,village,0,0,50,0,none,none
+gn:760528,Regimin,Mazovia,523,village,0,0,50,0,none,none
+gn:760584,Rawa Mazowiecka,Łódź Voivodeship,17770,town,0,0,50,0,none,none
+gn:760607,Raszyn,Mazovia,7109,village,0,0,50,0,none,none
+gn:760624,Raniżów,Subcarpathia,2200,village,0,0,50,0,none,none
+gn:760632,Rakszawa,Subcarpathia,6894,village,0,0,50,0,none,none
+gn:760657,Raków,Świętokrzyskie,1174,village,0,0,50,0,none,none
+gn:760672,Rajgród,Podlasie,1732,village,0,0,50,0,none,none
+gn:760680,Radzyń Podlaski,Lublin,16071,town,0,0,50,0,none,none
+gn:760684,Radzymin,Mazovia,8818,village,0,0,50,0,none,none
+gn:760697,Radziłów,Podlasie,1400,village,0,0,50,0,none,none
+gn:760711,Radziejowice,Mazovia,546,village,0,0,50,0,none,none
+gn:760723,Radzanów,Mazovia,930,village,0,0,50,0,none,none
+gn:760724,Radzanów,Mazovia,356,village,0,0,50,0,none,none
+gn:760727,Radymno,Subcarpathia,5464,village,0,0,50,0,none,none
+gn:760745,Radoszyce,Świętokrzyskie,3400,village,0,0,50,0,none,none
+gn:760769,Radomyśl Wielki,Subcarpathia,2992,village,0,0,50,0,none,none
+gn:760771,Radomyśl,Subcarpathia,808,village,0,0,50,0,none,none
+gn:760778,Radom,Mazovia,226794,city,0,0,50,0,none,none
+gn:760783,Radłów,Lesser Poland,2793,village,0,0,50,0,none,none
+gn:760804,Radgoszcz,Lesser Poland,3700,village,0,0,50,0,none,none
+gn:760806,Radecznica,Lublin,920,village,0,0,50,0,none,none
+gn:760825,Raczki,Podlasie,2322,village,0,0,50,0,none,none
+gn:760830,Racławice,Subcarpathia,1236,village,0,0,50,0,none,none
+gn:760844,Raciąż,Mazovia,4676,village,0,0,50,0,none,none
+gn:760853,Rachanie,Lublin,990,village,0,0,50,0,none,none
+gn:760871,Pysznica,Subcarpathia,2800,village,0,0,50,0,none,none
+gn:760892,Puszcza Mariańska,Mazovia,500,village,0,0,50,0,none,none
+gn:760909,Purda,Warmia-Masuria,1140,village,0,0,50,0,none,none
+gn:760914,Puńsk,Podlasie,1210,village,0,0,50,0,none,none
+gn:760917,Pułtusk,Mazovia,19039,town,0,0,50,0,none,none
+gn:760924,Puławy,Lublin,49759,town,0,0,50,0,none,none
+gn:760951,Puchaczów,Lublin,817,village,0,0,50,0,none,none
+gn:760987,Przytyk,Mazovia,990,village,0,0,50,0,none,none
+gn:760999,Przytoczno,Lublin,1100,village,0,0,50,0,none,none
+gn:761008,Przysucha,Mazovia,6188,village,0,0,50,0,none,none
+gn:761028,Przysietnica,Subcarpathia,3953,village,0,0,50,0,none,none
+gn:761055,Przyłęk,Mazovia,559,village,0,0,50,0,none,none
+gn:761085,Przybyszówka,Subcarpathia,2000,village,0,0,50,0,none,none
+gn:761101,Przyborów,Lesser Poland,1757,village,0,0,50,0,none,none
+gn:761131,Przeworsk,Subcarpathia,15805,town,0,0,50,0,none,none
+gn:761145,Przesmyki,Mazovia,670,village,0,0,50,0,none,none
+gn:761168,Przemyśl,Subcarpathia,67013,town,0,0,50,0,none,none
+gn:761187,Przędzel,Subcarpathia,1823,village,0,0,50,0,none,none
+gn:761193,Przedmieście Dubieckie,Subcarpathia,1100,village,0,0,50,0,none,none
+gn:761210,Przecław,Subcarpathia,1599,village,0,0,50,0,none,none
+gn:761218,Przasnysz,Mazovia,16718,town,0,0,50,0,none,none
+gn:761228,Pruszków,Mazovia,55371,town,0,0,50,0,none,none
+gn:761255,Pruchnik,Subcarpathia,3694,village,0,0,50,0,none,none
+gn:761258,Proszowice,Lesser Poland,6146,village,0,0,50,0,none,none
+gn:761262,Prostki,Warmia-Masuria,2541,village,0,0,50,0,none,none
+gn:761273,Promna,Mazovia,333,village,0,0,50,0,none,none
+gn:761300,Prażmów,Mazovia,403,village,0,0,50,0,none,none
+gn:761331,Pozezdrze,Warmia-Masuria,1320,village,0,0,50,0,none,none
+gn:761350,Potworów,Mazovia,990,village,0,0,50,0,none,none
+gn:761356,Potok Wielki,Lublin,502,village,0,0,50,0,none,none
+gn:761363,Potok Górny,Lublin,1341,village,0,0,50,0,none,none
+gn:761388,Poświętne,Mazovia,290,village,0,0,50,0,none,none
+gn:761390,Poświętne,Łódź Voivodeship,412,village,0,0,50,0,none,none
+gn:761437,Poronin,Lesser Poland,3507,village,0,0,50,0,none,none
+gn:761461,Poręba Spytkowska,Lesser Poland,2500,village,0,0,50,0,none,none
+gn:761472,Poręba,Lesser Poland,1178,village,0,0,50,0,none,none
+gn:761474,Poraż,Subcarpathia,1400,village,0,0,50,0,none,none
+gn:761477,Porąbka Uszewska,Lesser Poland,1255,village,0,0,50,0,none,none
+gn:761546,Poniatowa,Lublin,10056,town,0,0,50,0,none,none
+gn:761561,Pomiechówek,Mazovia,936,village,0,0,50,0,none,none
+gn:761582,Połomia,Subcarpathia,1800,village,0,0,50,0,none,none
+gn:761607,Policzna,Mazovia,1500,village,0,0,50,0,none,none
+gn:761652,Połaniec,Świętokrzyskie,8158,village,0,0,50,0,none,none
+gn:761653,Polańczyk,Subcarpathia,830,village,0,0,50,0,none,none
+gn:761663,Pokrzywnica,Mazovia,510,village,0,0,50,0,none,none
+gn:761671,Pokrówka,Lublin,1594,village,0,0,50,0,none,none
+gn:761714,Pogórska Wola,Lesser Poland,2707,village,0,0,50,0,none,none
+gn:761812,Podłęże,Lesser Poland,1978,village,0,0,50,0,none,none
+gn:761878,Podkowa Leśna,Mazovia,3844,village,0,0,50,0,none,none
+gn:761921,Podegrodzie,Lesser Poland,1902,village,0,0,50,0,none,none
+gn:761922,Podedwórze,Lublin,493,village,0,0,50,0,none,none
+gn:761978,Pniewy,Mazovia,0,village,0,0,50,0,none,none
+gn:762021,Płońsk,Mazovia,22217,town,0,0,50,0,none,none
+gn:762032,Płoniawy-Bramura,Mazovia,359,village,0,0,50,0,none,none
+gn:762056,Pleśna,Lesser Poland,1890,village,0,0,50,0,none,none
+gn:762106,Piwniczna-Zdrój,Lesser Poland,5793,village,0,0,50,0,none,none
+gn:762118,Piszczac,Lublin,3087,village,0,0,50,0,none,none
+gn:762120,Pisz,Warmia-Masuria,19232,town,0,0,50,0,none,none
+gn:762126,Piskorowice,Subcarpathia,1116,village,0,0,50,0,none,none
+gn:762199,Pionki,Mazovia,19966,town,0,0,50,0,none,none
+gn:762201,Pińczów,Świętokrzyskie,11806,town,0,0,50,0,none,none
+gn:762203,Pilzno,Subcarpathia,4535,village,0,0,50,0,none,none
+gn:762223,Pilawa,Mazovia,4278,village,0,0,50,0,none,none
+gn:762275,Pierzchnica,Świętokrzyskie,1016,village,0,0,50,0,none,none
+gn:762311,Pieniężno,Warmia-Masuria,2845,village,0,0,50,0,none,none
+gn:762331,Piekoszów,Świętokrzyskie,2671,village,0,0,50,0,none,none
+gn:762361,Piecki,Warmia-Masuria,3320,village,0,0,50,0,none,none
+gn:762366,Piątnica,Podlasie,1800,village,0,0,50,0,none,none
+gn:762381,Piastów,Mazovia,23290,town,0,0,50,0,none,none
+gn:762390,Piaski,Lublin,2634,village,0,0,50,0,none,none
+gn:762423,Piaseczno,Mazovia,36278,town,0,0,50,0,none,none
+gn:762458,Perlejewo,Podlasie,0,village,0,0,50,0,none,none
+gn:762548,Pawłów,Świętokrzyskie,1100,village,0,0,50,0,none,none
+gn:762551,Pawłosiów,Subcarpathia,1800,village,0,0,50,0,none,none
+gn:762556,Pawlikowice,Lesser Poland,1200,village,0,0,50,0,none,none
+gn:762588,Pasym,Warmia-Masuria,2539,village,0,0,50,0,none,none
+gn:762619,Parysów,Mazovia,1100,village,0,0,50,0,none,none
+gn:762643,Parczew,Lublin,10249,town,0,0,50,0,none,none
+gn:762661,Paradyż,Łódź Voivodeship,530,village,0,0,50,0,none,none
+gn:762663,Paprotnia,Mazovia,184,village,0,0,50,0,none,none
+gn:762664,Paprotnia,Mazovia,1539,village,0,0,50,0,none,none
+gn:762684,Pantalowice,Subcarpathia,1242,village,0,0,50,0,none,none
+gn:762734,Padew Narodowa,Subcarpathia,2300,village,0,0,50,0,none,none
+gn:762753,Pacanów,Świętokrzyskie,1137,village,0,0,50,0,none,none
+gn:762769,Ożarów Mazowiecki,Mazovia,8237,village,0,0,50,0,none,none
+gn:762774,Ożarów,Świętokrzyskie,4689,village,0,0,50,0,none,none
+gn:762782,Owczarnia,Mazovia,1700,village,0,0,50,0,none,none
+gn:762788,Otwock,Mazovia,43388,town,0,0,50,0,none,none
+gn:762792,Otrębusy,Mazovia,2000,village,0,0,50,0,none,none
+gn:762841,Ostrowsko,Lesser Poland,1274,village,0,0,50,0,none,none
+gn:762850,Ostrów Mazowiecka,Mazovia,22653,town,0,0,50,0,none,none
+gn:762851,Ostrów Lubelski,Lublin,2206,village,0,0,50,0,none,none
+gn:762863,Ostrowiec Świętokrzyski,Świętokrzyskie,73989,town,0,0,50,0,none,none
+gn:762873,Ostrówek,Mazovia,1700,village,0,0,50,0,none,none
+gn:762878,Ostrówek,Lublin,276,village,0,0,50,0,none,none
+gn:762901,Ostrów,Subcarpathia,1500,village,0,0,50,0,none,none
+gn:762904,Ostrów,Subcarpathia,1800,village,0,0,50,0,none,none
+gn:762909,Ostrołęka,Mazovia,53740,town,0,0,50,0,none,none
+gn:762968,Osobnica,Subcarpathia,3536,village,0,0,50,0,none,none
+gn:763006,Osiek Jasielski,Subcarpathia,680,village,0,0,50,0,none,none
+gn:763011,Osiek,Świętokrzyskie,2031,village,0,0,50,0,none,none
+gn:763013,Osieczany,Lesser Poland,1600,village,0,0,50,0,none,none
+gn:763014,Osieck,Mazovia,954,village,0,0,50,0,none,none
+gn:763028,Orzysz,Warmia-Masuria,5998,village,0,0,50,0,none,none
+gn:763051,Orzechówka,Subcarpathia,1550,village,0,0,50,0,none,none
+gn:763063,Orońsko,Mazovia,1200,village,0,0,50,0,none,none
+gn:763066,Orneta,Warmia-Masuria,9412,village,0,0,50,0,none,none
+gn:763069,Orły,Subcarpathia,1000,village,0,0,50,0,none,none
+gn:763094,Orla,Podlasie,1100,village,0,0,50,0,none,none
+gn:763107,Opole Lubelskie,Lublin,8780,village,0,0,50,0,none,none
+gn:763111,Opoczno,Łódź Voivodeship,22592,town,0,0,50,0,none,none
+gn:763113,Opinogóra Górna,Mazovia,630,village,0,0,50,0,none,none
+gn:763120,Opatowiec,Świętokrzyskie,410,village,0,0,50,0,none,none
+gn:763121,Opatów,Świętokrzyskie,6799,village,0,0,50,0,none,none
+gn:763165,Olsztynek,Warmia-Masuria,7591,village,0,0,50,0,none,none
+gn:763166,Olsztyn,Warmia-Masuria,169793,city,0,0,50,0,none,none
+gn:763174,Olszówka,Lesser Poland,1435,village,0,0,50,0,none,none
+gn:763244,Olszanica,Subcarpathia,1100,village,0,0,50,0,none,none
+gn:763245,Olszana,Lesser Poland,1107,village,0,0,50,0,none,none
+gn:763249,Ołpiny,Lesser Poland,2447,village,0,0,50,0,none,none
+gn:763260,Oleszyce,Subcarpathia,5193,village,0,0,50,0,none,none
+gn:763263,Olesno,Lesser Poland,1708,village,0,0,50,0,none,none
+gn:763268,Oleśnica,Świętokrzyskie,1800,village,0,0,50,0,none,none
+gn:763291,Olecko,Warmia-Masuria,15923,town,0,0,50,0,none,none
+gn:763327,Oksa,Świętokrzyskie,890,village,0,0,50,0,none,none
+gn:763351,Okocim,Lesser Poland,1900,village,0,0,50,0,none,none
+gn:763361,Ojrzeń,Mazovia,750,village,0,0,50,0,none,none
+gn:763399,Odrzywół,Mazovia,2000,village,0,0,50,0,none,none
+gn:763401,Odrzykoń,Subcarpathia,2950,village,0,0,50,0,none,none
+gn:763402,Odrzechowa,Subcarpathia,1400,village,0,0,50,0,none,none
+gn:763439,Ochotnica Górna,Lesser Poland,2100,village,0,0,50,0,none,none
+gn:763440,Ochotnica Dolna,Lesser Poland,2100,village,0,0,50,0,none,none
+gn:763442,Ochota,Mazovia,82774,town,0,0,50,0,none,none
+gn:763451,Obsza,Lublin,861,village,0,0,50,0,none,none
+gn:763454,Obryte,Mazovia,930,village,0,0,50,0,none,none
+gn:763464,Obrazów,Świętokrzyskie,518,village,0,0,50,0,none,none
+gn:763510,Nurzec-Stacja,Podlasie,2000,village,0,0,50,0,none,none
+gn:763513,Nur,Mazovia,760,village,0,0,50,0,none,none
+gn:763517,Nozdrzec,Subcarpathia,1300,village,0,0,50,0,none,none
+gn:763519,Nowy Żmigród,Subcarpathia,1406,village,0,0,50,0,none,none
+gn:763521,Nowy Wiśnicz,Lesser Poland,2751,village,0,0,50,0,none,none
+gn:763523,Nowy Targ,Lesser Poland,33763,town,0,0,50,0,none,none
+gn:763534,Nowy Sącz,Lesser Poland,84376,town,0,0,50,0,none,none
+gn:763545,Nowy Korczyn,Świętokrzyskie,1032,village,0,0,50,0,none,none
+gn:763556,Nowy Dwór Mazowiecki,Mazovia,27633,town,0,0,50,0,none,none
+gn:763585,Nowosielce-Gniewosz,Subcarpathia,1200,village,0,0,50,0,none,none
+gn:763586,Nowosielce,Subcarpathia,1600,village,0,0,50,0,none,none
+gn:763600,Nowogród,Podlasie,2084,village,0,0,50,0,none,none
+gn:763608,Nowodwór,Lublin,539,village,0,0,50,0,none,none
+gn:763650,Nowe Sioło,Subcarpathia,1300,village,0,0,50,0,none,none
+gn:763659,Nowe Miasto nad Pilicą,Mazovia,3856,village,0,0,50,0,none,none
+gn:763661,Nowe Miasto,Mazovia,2000,village,0,0,50,0,none,none
+gn:763676,Nowe Brzesko,Lesser Poland,1756,village,0,0,50,0,none,none
+gn:763688,Nowa Wola,Mazovia,3552,village,0,0,50,0,none,none
+gn:763764,Nowa Słupia,Świętokrzyskie,1422,village,0,0,50,0,none,none
+gn:763765,Nowa Sarzyna,Subcarpathia,6255,village,0,0,50,0,none,none
+gn:763783,Nowa Dęba,Subcarpathia,11489,town,0,0,50,0,none,none
+gn:763823,Niwiska,Subcarpathia,1560,village,0,0,50,0,none,none
+gn:763829,Nisko,Subcarpathia,15573,town,0,0,50,0,none,none
+gn:763901,Nieporęt,Mazovia,3239,village,0,0,50,0,none,none
+gn:763903,Niepołomice,Lesser Poland,9384,village,0,0,50,0,none,none
+gn:763914,Nienadowa,Subcarpathia,2500,village,0,0,50,0,none,none
+gn:763945,Niemce,Lublin,3161,village,0,0,50,0,none,none
+gn:763946,Nielisz,Lublin,920,village,0,0,50,0,none,none
+gn:763982,Niedźwiedź,Lesser Poland,1400,village,0,0,50,0,none,none
+gn:763987,Niedźwiada,Lublin,754,village,0,0,50,0,none,none
+gn:763989,Niedźwiada,Subcarpathia,2466,village,0,0,50,0,none,none
+gn:763992,Niedzica,Lesser Poland,1600,village,0,0,50,0,none,none
+gn:764000,Niedrzwica Duża,Lublin,3900,village,0,0,50,0,none,none
+gn:764002,Niedomice,Lesser Poland,1926,village,0,0,50,0,none,none
+gn:764026,Niechobrz,Subcarpathia,2644,village,0,0,50,0,none,none
+gn:764028,Niebylec,Subcarpathia,594,village,0,0,50,0,none,none
+gn:764033,Nieborów,Łódź Voivodeship,900,village,0,0,50,0,none,none
+gn:764034,Niebocko,Subcarpathia,1479,village,0,0,50,0,none,none
+gn:764036,Niebieszczany,Subcarpathia,2500,village,0,0,50,0,none,none
+gn:764039,Nidzica,Warmia-Masuria,14720,town,0,0,50,0,none,none
+gn:764067,Nawojowa,Lesser Poland,2700,village,0,0,50,0,none,none
+gn:764100,Nasielsk,Mazovia,7445,village,0,0,50,0,none,none
+gn:764107,Naruszewo,Mazovia,222,village,0,0,50,0,none,none
+gn:764117,Narol,Subcarpathia,2098,village,0,0,50,0,none,none
+gn:764125,Narew,Podlasie,1400,village,0,0,50,0,none,none
+gn:764145,Nałęczów,Lublin,4200,village,0,0,50,0,none,none
+gn:764168,Nagłowice,Świętokrzyskie,950,village,0,0,50,0,none,none
+gn:764194,Nadarzyn,Mazovia,9881,village,0,0,50,0,none,none
+gn:764204,Myszyniec,Mazovia,2980,village,0,0,50,0,none,none
+gn:764226,Mysiadło,Mazovia,3000,village,0,0,50,0,none,none
+gn:764241,Muszyna,Lesser Poland,5018,village,0,0,50,0,none,none
+gn:764244,Murzasichle,Lesser Poland,1485,village,0,0,50,0,none,none
+gn:764269,Mszczonów,Mazovia,6267,village,0,0,50,0,none,none
+gn:764275,Mszana Górna,Lesser Poland,2589,village,0,0,50,0,none,none
+gn:764276,Mszana Dolna,Lesser Poland,7500,village,0,0,50,0,none,none
+gn:764292,Mrozy,Mazovia,3368,village,0,0,50,0,none,none
+gn:764293,Mrozy,Mazovia,1789,village,0,0,50,0,none,none
+gn:764312,Mrągowo,Warmia-Masuria,21965,town,0,0,50,0,none,none
+gn:764343,Moszczenica,Lesser Poland,3302,village,0,0,50,0,none,none
+gn:764407,Mordy,Mazovia,1843,village,0,0,50,0,none,none
+gn:764414,Morawica,Świętokrzyskie,1576,village,0,0,50,0,none,none
+gn:764421,Mońki,Podlasie,10577,town,0,0,50,0,none,none
+gn:764484,Mokotów,Mazovia,217683,city,0,0,50,0,none,none
+gn:764486,Mokobody,Mazovia,1600,village,0,0,50,0,none,none
+gn:764502,Mogielnica,Mazovia,2453,village,0,0,50,0,none,none
+gn:764531,Modliborzyce,Lublin,1904,village,0,0,50,0,none,none
+gn:764572,Mniszków,Łódź Voivodeship,525,village,0,0,50,0,none,none
+gn:764578,Mniów,Świętokrzyskie,1876,village,0,0,50,0,none,none
+gn:764602,Młynarze,Mazovia,227,village,0,0,50,0,none,none
+gn:764606,Młodzieszyn,Mazovia,1287,village,0,0,50,0,none,none
+gn:764634,Mława,Mazovia,29398,town,0,0,50,0,none,none
+gn:764659,Mirzec,Świętokrzyskie,2100,village,0,0,50,0,none,none
+gn:764664,Mirów,Mazovia,0,village,0,0,50,0,none,none
+gn:764666,Mirocin,Subcarpathia,1405,village,0,0,50,0,none,none
+gn:764670,Mircze,Lublin,1480,village,0,0,50,0,none,none
+gn:764679,Mińsk Mazowiecki,Mazovia,37027,town,0,0,50,0,none,none
+gn:764740,Milejów,Lublin,2676,village,0,0,50,0,none,none
+gn:764741,Milejczyce,Podlasie,1100,village,0,0,50,0,none,none
+gn:764749,Milanówek,Mazovia,15784,town,0,0,50,0,none,none
+gn:764751,Milanów,Lublin,1105,village,0,0,50,0,none,none
+gn:764752,Miłakowo,Warmia-Masuria,2691,village,0,0,50,0,none,none
+gn:764777,Mikołajki,Warmia-Masuria,3851,village,0,0,50,0,none,none
+gn:764791,Miętne,Mazovia,2000,village,0,0,50,0,none,none
+gn:764849,Mielec,Subcarpathia,59509,town,0,0,50,0,none,none
+gn:764860,Miejsce Piastowe,Subcarpathia,2000,village,0,0,50,0,none,none
+gn:764862,Międzyrzec Podlaski,Lublin,17158,town,0,0,50,0,none,none
+gn:764876,Miedzna,Mazovia,1400,village,0,0,50,0,none,none
+gn:764880,Miedziana Góra,Świętokrzyskie,2317,village,0,0,50,0,none,none
+gn:764917,Miechów,Lesser Poland,11735,town,0,0,50,0,none,none
+gn:764926,Michów,Lublin,1746,village,0,0,50,0,none,none
+gn:764936,Michałowo,Podlasie,3621,village,0,0,50,0,none,none
+gn:764947,Michałowice,Mazovia,2699,village,0,0,50,0,none,none
+gn:764956,Michałów-Reginów,Mazovia,1318,village,0,0,50,0,none,none
+gn:764966,Michałów,Lublin,1224,village,0,0,50,0,none,none
+gn:764968,Michałów,Lublin,1485,village,0,0,50,0,none,none
+gn:764969,Michałów,Świętokrzyskie,1133,village,0,0,50,0,none,none
+gn:764988,Miastków Kościelny,Mazovia,630,village,0,0,50,0,none,none
+gn:764999,Miączyn,Lublin,749,village,0,0,50,0,none,none
+gn:765017,Mełgiew,Lublin,990,village,0,0,50,0,none,none
+gn:765028,Medyka,Subcarpathia,2800,village,0,0,50,0,none,none
+gn:765030,Mędrzechów,Lesser Poland,1300,village,0,0,50,0,none,none
+gn:765106,Maszkienice,Lesser Poland,1401,village,0,0,50,0,none,none
+gn:765120,Masłów,Świętokrzyskie,1528,village,0,0,50,0,none,none
+gn:765177,Markuszów,Lublin,1600,village,0,0,50,0,none,none
+gn:765188,Markowa,Subcarpathia,4100,village,0,0,50,0,none,none
+gn:765191,Marki,Mazovia,23177,town,0,0,50,0,none,none
+gn:765274,Maniowy,Lesser Poland,2380,village,0,0,50,0,none,none
+gn:765279,Manasterz,Subcarpathia,1149,village,0,0,50,0,none,none
+gn:765286,Mały Płock,Podlasie,1051,village,0,0,50,0,none,none
+gn:765313,Małogoszcz,Świętokrzyskie,3890,village,0,0,50,0,none,none
+gn:765328,Małkinia Górna,Mazovia,5199,village,0,0,50,0,none,none
+gn:765430,Maków Mazowiecki,Mazovia,9978,village,0,0,50,0,none,none
+gn:765442,Maków,Łódź Voivodeship,1600,village,0,0,50,0,none,none
+gn:765514,Majdan Królewski,Subcarpathia,2671,village,0,0,50,0,none,none
+gn:765600,Maciejowice,Mazovia,2000,village,0,0,50,0,none,none
+gn:765639,Jeziorzany,Lublin,780,village,0,0,50,0,none,none
+gn:765642,Łyse,Mazovia,2350,village,0,0,50,0,none,none
+gn:765673,Łużna,Lesser Poland,3221,village,0,0,50,0,none,none
+gn:765681,Lutowiska,Subcarpathia,750,village,0,0,50,0,none,none
+gn:765683,Lutoryż,Subcarpathia,1524,village,0,0,50,0,none,none
+gn:765736,Łukowica,Lesser Poland,2220,village,0,0,50,0,none,none
+gn:765745,Łukowa,Lublin,2604,village,0,0,50,0,none,none
+gn:765747,Łukowa,Lesser Poland,1200,village,0,0,50,0,none,none
+gn:765749,Łuków,Lublin,30465,town,0,0,50,0,none,none
+gn:765804,Ludwin,Lublin,5041,village,0,0,50,0,none,none
+gn:765824,Łucka,Lublin,1700,village,0,0,50,0,none,none
+gn:765835,Lubycza Królewska,Lublin,1800,village,0,0,50,0,none,none
+gn:765854,Lubomino,Warmia-Masuria,1194,village,0,0,50,0,none,none
+gn:765857,Lubomierz,Lesser Poland,1830,village,0,0,50,0,none,none
+gn:765863,Lubochnia,Łódź Voivodeship,684,village,0,0,50,0,none,none
+gn:765871,Łubnice,Świętokrzyskie,310,village,0,0,50,0,none,none
+gn:765876,Lublin,Lublin,336339,city,0,0,50,0,none,none
+gn:765914,Lubenia,Subcarpathia,2400,village,0,0,50,0,none,none
+gn:765927,Lubartów,Lublin,22839,town,0,0,50,0,none,none
+gn:765932,Lubaczów,Subcarpathia,12595,town,0,0,50,0,none,none
+gn:765957,Łososina Dolna,Lesser Poland,3400,village,0,0,50,0,none,none
+gn:765976,Łosice,Mazovia,7207,village,0,0,50,0,none,none
+gn:765981,Łopuszno,Świętokrzyskie,1279,village,0,0,50,0,none,none
+gn:765983,Łopuszna,Lesser Poland,1508,village,0,0,50,0,none,none
+gn:765984,Łopuszka Wielka,Subcarpathia,1621,village,0,0,50,0,none,none
+gn:765995,Łopiennik Górny,Lublin,563,village,0,0,50,0,none,none
+gn:766021,Łoniów,Świętokrzyskie,450,village,0,0,50,0,none,none
+gn:766027,Łomża,Podlasie,62019,town,0,0,50,0,none,none
+gn:766042,Łomianki,Mazovia,15315,town,0,0,50,0,none,none
+gn:766044,Łomazy,Lublin,1700,village,0,0,50,0,none,none
+gn:766073,Łochów,Mazovia,6486,village,0,0,50,0,none,none
+gn:766090,Liw,Mazovia,0,village,0,0,50,0,none,none
+gn:766132,Lisia Góra,Lesser Poland,3019,village,0,0,50,0,none,none
+gn:766137,Lipsko,Mazovia,5723,village,0,0,50,0,none,none
+gn:766142,Lipsk,Podlasie,2463,village,0,0,50,0,none,none
+gn:766162,Lipowiec Kościelny,Mazovia,870,village,0,0,50,0,none,none
+gn:766191,Lipinki,Lesser Poland,2157,village,0,0,50,0,none,none
+gn:766193,Lipnik,Świętokrzyskie,400,village,0,0,50,0,none,none
+gn:766197,Lipnik,Lesser Poland,1600,village,0,0,50,0,none,none
+gn:766201,Lipnica Wielka,Lesser Poland,1938,village,0,0,50,0,none,none
+gn:766210,Lipnica,Subcarpathia,1300,village,0,0,50,0,none,none
+gn:766237,Nowe Lipiny,Mazovia,1200,village,0,0,50,0,none,none
+gn:766301,Limanowa,Lesser Poland,14738,town,0,0,50,0,none,none
+gn:766307,Lidzbark Warmiński,Warmia-Masuria,16540,town,0,0,50,0,none,none
+gn:766332,Leżajsk,Subcarpathia,13958,town,0,0,50,0,none,none
+gn:766357,Łętownia,Subcarpathia,1450,village,0,0,50,0,none,none
+gn:766369,Lesznowola,Mazovia,5374,village,0,0,50,0,none,none
+gn:766373,Leszno,Mazovia,3253,village,0,0,50,0,none,none
+gn:766435,Leśnica,Lesser Poland,1200,village,0,0,50,0,none,none
+gn:766441,Leśna Podlaska,Lublin,900,village,0,0,50,0,none,none
+gn:766452,Lesko,Subcarpathia,5700,village,0,0,50,0,none,none
+gn:766507,Lelkowo,Warmia-Masuria,1080,village,0,0,50,0,none,none
+gn:766522,Łęki Górne,Subcarpathia,1700,village,0,0,50,0,none,none
+gn:766523,Łęki Dolne,Subcarpathia,1500,village,0,0,50,0,none,none
+gn:766528,Łęki,Subcarpathia,1088,village,0,0,50,0,none,none
+gn:766555,Legionowo,Mazovia,50786,town,0,0,50,0,none,none
+gn:766583,Łęczna,Lublin,21719,town,0,0,50,0,none,none
+gn:766585,Lecka,Subcarpathia,1013,village,0,0,50,0,none,none
+gn:766615,Łazy,Mazovia,1300,village,0,0,50,0,none,none
+gn:766642,Łaziska,Lublin,519,village,0,0,50,0,none,none
+gn:766675,Latowicz,Mazovia,1401,village,0,0,50,0,none,none
+gn:766686,Laszki,Subcarpathia,1827,village,0,0,50,0,none,none
+gn:766692,Łaszczów,Lublin,2341,village,0,0,50,0,none,none
+gn:766734,Laskowa,Lesser Poland,3133,village,0,0,50,0,none,none
+gn:766757,Łaskarzew,Mazovia,4893,village,0,0,50,0,none,none
+gn:766783,Łapy,Podlasie,16434,town,0,0,50,0,none,none
+gn:766786,Łapsze Niżne,Lesser Poland,1403,village,0,0,50,0,none,none
+gn:766793,Łapczyca,Lesser Poland,1918,village,0,0,50,0,none,none
+gn:766795,Łapanów,Lesser Poland,1000,village,0,0,50,0,none,none
+gn:766810,Łańcut,Subcarpathia,18266,town,0,0,50,0,none,none
+gn:766828,Łajski,Mazovia,1300,village,0,0,50,0,none,none
+gn:766838,Łagów,Świętokrzyskie,1630,village,0,0,50,0,none,none
+gn:766867,Łączna,Świętokrzyskie,780,village,0,0,50,0,none,none
+gn:766877,Łącko,Lesser Poland,2875,village,0,0,50,0,none,none
+gn:766896,Łabunie,Lublin,1670,village,0,0,50,0,none,none
+gn:766899,Łabowa,Lesser Poland,1100,village,0,0,50,0,none,none
+gn:766927,Kuźnica,Podlasie,1740,village,0,0,50,0,none,none
+gn:766962,Kuryłówka,Subcarpathia,1674,village,0,0,50,0,none,none
+gn:766980,Kurów,Lublin,2804,village,0,0,50,0,none,none
+gn:767020,Kunów,Świętokrzyskie,3078,village,0,0,50,0,none,none
+gn:767121,Kuczbork-Osada,Mazovia,310,village,0,0,50,0,none,none
+gn:767145,Księżpol,Lublin,1145,village,0,0,50,0,none,none
+gn:767150,Księżomierz,Lublin,1153,village,0,0,50,0,none,none
+gn:767237,Krzywda,Lublin,1400,village,0,0,50,0,none,none
+gn:767241,Krzywcza,Subcarpathia,600,village,0,0,50,0,none,none
+gn:767253,Krzynowłoga Mała,Mazovia,520,village,0,0,50,0,none,none
+gn:767283,Krzeszów,Subcarpathia,734,village,0,0,50,0,none,none
+gn:767300,Krzemienica,Subcarpathia,2664,village,0,0,50,0,none,none
+gn:767310,Krzeczowice,Subcarpathia,1023,village,0,0,50,0,none,none
+gn:767311,Krzeczów,Lesser Poland,1454,village,0,0,50,0,none,none
+gn:767357,Krynki,Podlasie,2700,village,0,0,50,0,none,none
+gn:767368,Krynice,Lublin,567,village,0,0,50,0,none,none
+gn:767374,Krynica-Zdrój,Lesser Poland,12270,town,0,0,50,0,none,none
+gn:767435,Kruklanki,Warmia-Masuria,1100,village,0,0,50,0,none,none
+gn:767470,Krosno,Subcarpathia,47784,town,0,0,50,0,none,none
+gn:767474,Krośnica,Lesser Poland,1400,village,0,0,50,0,none,none
+gn:767479,Krościenko Wyżne,Subcarpathia,3700,village,0,0,50,0,none,none
+gn:767561,Krempna,Subcarpathia,500,village,0,0,50,0,none,none
+gn:767604,Krasocin,Świętokrzyskie,1123,village,0,0,50,0,none,none
+gn:767605,Krasnystaw,Lublin,19532,town,0,0,50,0,none,none
+gn:767608,Krasnosielc,Mazovia,1300,village,0,0,50,0,none,none
+gn:767610,Krasnopol,Podlasie,1300,village,0,0,50,0,none,none
+gn:767619,Krasnobród,Lublin,3075,village,0,0,50,0,none,none
+gn:767623,Kraśnik,Lublin,35834,town,0,0,50,0,none,none
+gn:767627,Kraśniczyn,Lublin,447,village,0,0,50,0,none,none
+gn:767647,Krasne,Mazovia,1000,village,0,0,50,0,none,none
+gn:767653,Krasne,Subcarpathia,3500,village,0,0,50,0,none,none
+gn:767673,Krasiczyn,Subcarpathia,440,village,0,0,50,0,none,none
+gn:767685,Kramarzówka,Subcarpathia,1500,village,0,0,50,0,none,none
+gn:767720,Kraczkowa,Subcarpathia,3200,village,0,0,50,0,none,none
+gn:767736,Kozubszczyzna,Lublin,750,village,0,0,50,0,none,none
+gn:767763,Kozłowo,Warmia-Masuria,3000,village,0,0,50,0,none,none
+gn:767781,Kozłów,Lesser Poland,1021,village,0,0,50,0,none,none
+gn:767814,Kozienice,Mazovia,17075,town,0,0,50,0,none,none
+gn:767858,Kowiesy,Łódź Voivodeship,185,village,0,0,50,0,none,none
+gn:767883,Kowale Oleckie,Warmia-Masuria,2209,village,0,0,50,0,none,none
+gn:767891,Kowala,Mazovia,1023,village,0,0,50,0,none,none
+gn:767908,Kotuń,Mazovia,2503,village,0,0,50,0,none,none
+gn:767940,Koszyce,Lesser Poland,1763,village,0,0,50,0,none,none
+gn:767982,Kostomłoty Pierwsze,Świętokrzyskie,1571,village,0,0,50,0,none,none
+gn:767983,Kostomłoty Drugie,Świętokrzyskie,1522,village,0,0,50,0,none,none
+gn:768002,Kosów Lacki,Mazovia,2090,village,0,0,50,0,none,none
+gn:768039,Kosina,Subcarpathia,3590,village,0,0,50,0,none,none
+gn:768081,Korzenna,Lesser Poland,1700,village,0,0,50,0,none,none
+gn:768097,Korytnica,Mazovia,747,village,0,0,50,0,none,none
+gn:768115,Kortowo,Warmia-Masuria,1070,village,0,0,50,0,none,none
+gn:768116,Korsze,Warmia-Masuria,4521,village,0,0,50,0,none,none
+gn:768123,Stara Kornica,Mazovia,1088,village,0,0,50,0,none,none
+gn:768136,Korczyna,Subcarpathia,6100,village,0,0,50,0,none,none
+gn:768146,Korczew,Mazovia,760,village,0,0,50,0,none,none
+gn:768163,Koprzywnica,Świętokrzyskie,2536,village,0,0,50,0,none,none
+gn:768210,Konstantynów,Lublin,1437,village,0,0,50,0,none,none
+gn:768216,Konstancin-Jeziorna,Mazovia,16548,town,0,0,50,0,none,none
+gn:768217,Końskowola,Lublin,2208,village,0,0,50,0,none,none
+gn:768218,Końskie,Świętokrzyskie,20756,town,0,0,50,0,none,none
+gn:768267,Konieczkowa,Subcarpathia,1500,village,0,0,50,0,none,none
+gn:768283,Kończyce,Subcarpathia,384,village,0,0,50,0,none,none
+gn:768315,Komorów,Mazovia,5136,village,0,0,50,0,none,none
+gn:768338,Komarówka Podlaska,Lublin,1300,village,0,0,50,0,none,none
+gn:768341,Komarów-Osada,Lublin,1044,village,0,0,50,0,none,none
+gn:768344,Komańcza,Subcarpathia,880,village,0,0,50,0,none,none
+gn:768536,Kolonia Opacz,Mazovia,1200,village,0,0,50,0,none,none
+gn:768785,Kolno,Podlasie,10659,town,0,0,50,0,none,none
+gn:768805,Kolbuszowa,Subcarpathia,10442,town,0,0,50,0,none,none
+gn:768807,Kołbiel,Mazovia,3000,village,0,0,50,0,none,none
+gn:768827,Kołaczyce,Subcarpathia,1316,village,0,0,50,0,none,none
+gn:768836,Kokotów,Lesser Poland,1367,village,0,0,50,0,none,none
+gn:768846,Kodeń,Lublin,1900,village,0,0,50,0,none,none
+gn:768861,Kock,Lublin,3484,village,0,0,50,0,none,none
+gn:768905,Kobyłka,Mazovia,17659,town,0,0,50,0,none,none
+gn:768940,Kobylanka,Lesser Poland,2443,village,0,0,50,0,none,none
+gn:768963,Knyszyn,Podlasie,2758,village,0,0,50,0,none,none
+gn:768982,Klwów,Mazovia,528,village,0,0,50,0,none,none
+gn:768987,Kluszkowce,Lesser Poland,1820,village,0,0,50,0,none,none
+gn:769046,Kłoczew,Lublin,886,village,0,0,50,0,none,none
+gn:769059,Klimontów,Świętokrzyskie,2000,village,0,0,50,0,none,none
+gn:769061,Klimontów,Lesser Poland,1397,village,0,0,50,0,none,none
+gn:769092,Kleszczele,Podlasie,1410,village,0,0,50,0,none,none
+gn:769106,Klembów,Mazovia,920,village,0,0,50,0,none,none
+gn:769135,Kłaj,Lesser Poland,3500,village,0,0,50,0,none,none
+gn:769177,Kije,Świętokrzyskie,452,village,0,0,50,0,none,none
+gn:769233,Kiełpin,Mazovia,1381,village,0,0,50,0,none,none
+gn:769250,Kielce,Świętokrzyskie,192468,city,0,0,50,0,none,none
+gn:769256,Kielanówka,Subcarpathia,1081,village,0,0,50,0,none,none
+gn:769274,Kętrzyn,Warmia-Masuria,27478,town,0,0,50,0,none,none
+gn:769285,Kępie Żaleszańskie,Subcarpathia,1334,village,0,0,50,0,none,none
+gn:769345,Kazimierz Dolny,Lublin,3485,village,0,0,50,0,none,none
+gn:769346,Kazimierza Wielka,Świętokrzyskie,5696,village,0,0,50,0,none,none
+gn:769359,Kazanów,Mazovia,460,village,0,0,50,0,none,none
+gn:769364,Kawęczyn Nowy,Łódź Voivodeship,110,village,0,0,50,0,none,none
+gn:769443,Kasina Wielka,Lesser Poland,2800,village,0,0,50,0,none,none
+gn:769514,Karniewo,Mazovia,968,village,0,0,50,0,none,none
+gn:769534,Karczmiska,Lublin,800,village,0,0,50,0,none,none
+gn:769539,Karczew,Mazovia,10319,town,0,0,50,0,none,none
+gn:769575,Kaniów,Świętokrzyskie,1257,village,0,0,50,0,none,none
+gn:769591,Kańczuga,Subcarpathia,3186,village,0,0,50,0,none,none
+gn:769600,Kampinos,Mazovia,723,village,0,0,50,0,none,none
+gn:769609,Kamionka Wielka,Lesser Poland,2925,village,0,0,50,0,none,none
+gn:769640,Kamionka,Lublin,1800,village,0,0,50,0,none,none
+gn:769697,Kamienica,Lesser Poland,3100,village,0,0,50,0,none,none
+gn:769719,Kamień,Subcarpathia,2700,village,0,0,50,0,none,none
+gn:769738,Kałuszyn,Mazovia,2955,village,0,0,50,0,none,none
+gn:769835,Kadzidło,Mazovia,4210,village,0,0,50,0,none,none
+gn:769893,Kabaty,Mazovia,30000,town,0,0,50,0,none,none
+gn:769979,Józefów,Mazovia,1766,village,0,0,50,0,none,none
+gn:769981,Józefów,Mazovia,17910,town,0,0,50,0,none,none
+gn:770001,Józefów nad Wisłą,Lublin,1029,village,0,0,50,0,none,none
+gn:770005,Józefów,Lublin,2418,village,0,0,50,0,none,none
+gn:770008,Józefosław,Mazovia,4484,village,0,0,50,0,none,none
+gn:770025,Jonkowo,Warmia-Masuria,1500,village,0,0,50,0,none,none
+gn:770028,Joniec,Mazovia,270,village,0,0,50,0,none,none
+gn:770033,Jodłówka,Lesser Poland,1400,village,0,0,50,0,none,none
+gn:770034,Jodłówka,Subcarpathia,1822,village,0,0,50,0,none,none
+gn:770036,Jodłowa,Subcarpathia,4100,village,0,0,50,0,none,none
+gn:770045,Jeżowe,Subcarpathia,5358,village,0,0,50,0,none,none
+gn:770078,Jeziorany,Warmia-Masuria,3382,village,0,0,50,0,none,none
+gn:770148,Jedwabno,Warmia-Masuria,1125,village,0,0,50,0,none,none
+gn:770149,Jedwabne,Podlasie,2204,village,0,0,50,0,none,none
+gn:770157,Jędrzejów,Świętokrzyskie,16792,town,0,0,50,0,none,none
+gn:770160,Jednorożec,Mazovia,1800,village,0,0,50,0,none,none
+gn:770162,Jedlnia-Letnisko,Mazovia,3692,village,0,0,50,0,none,none
+gn:770165,Jedlińsk,Mazovia,1700,village,0,0,50,0,none,none
+gn:770169,Jedlicze,Subcarpathia,5629,village,0,0,50,0,none,none
+gn:770221,Jawornik Polski,Subcarpathia,1122,village,0,0,50,0,none,none
+gn:770225,Jawornik,Subcarpathia,1200,village,0,0,50,0,none,none
+gn:770269,Jastrzębia,Mazovia,1011,village,0,0,50,0,none,none
+gn:770271,Jastrzębia,Lesser Poland,1557,village,0,0,50,0,none,none
+gn:770286,Jastrząb,Mazovia,891,village,0,0,50,0,none,none
+gn:770288,Jastków,Lublin,700,village,0,0,50,0,none,none
+gn:770293,Jasło,Subcarpathia,37851,town,0,0,50,0,none,none
+gn:770295,Jaśliska,Subcarpathia,480,village,0,0,50,0,none,none
+gn:770316,Jasionów,Subcarpathia,1300,village,0,0,50,0,none,none
+gn:770341,Jasieniec,Mazovia,1109,village,0,0,50,0,none,none
+gn:770346,Jasienica Rosielna,Subcarpathia,2100,village,0,0,50,0,none,none
+gn:770348,Jasienica,Mazovia,2000,village,0,0,50,0,none,none
+gn:770357,Jasień,Lesser Poland,2934,village,0,0,50,0,none,none
+gn:770380,Jarosław,Subcarpathia,35475,town,0,0,50,0,none,none
+gn:770383,Jarocin,Subcarpathia,1300,village,0,0,50,0,none,none
+gn:770395,Jarczów,Lublin,876,village,0,0,50,0,none,none
+gn:770413,Janów Podlaski,Lublin,2655,village,0,0,50,0,none,none
+gn:770425,Janów Lubelski,Lublin,11811,town,0,0,50,0,none,none
+gn:770441,Janowiec,Lublin,1000,village,0,0,50,0,none,none
+gn:770456,Janowice,Lesser Poland,1279,village,0,0,50,0,none,none
+gn:770473,Janów,Podlasie,0,village,0,0,50,0,none,none
+gn:770602,Jakubowice Murowane,Lublin,259,village,0,0,50,0,none,none
+gn:770609,Jakubów,Mazovia,551,village,0,0,50,0,none,none
+gn:770647,Jagiełła,Subcarpathia,1114,village,0,0,50,0,none,none
+gn:770659,Jadowniki Mokre,Lesser Poland,1004,village,0,0,50,0,none,none
+gn:770661,Jadowniki,Lesser Poland,4975,village,0,0,50,0,none,none
+gn:770662,Jadów,Mazovia,1200,village,0,0,50,0,none,none
+gn:770705,Jabłonna Lacka,Mazovia,1500,village,0,0,50,0,none,none
+gn:770706,Jabłonna,Mazovia,6552,village,0,0,50,0,none,none
+gn:770711,Jabłonna,Lublin,2041,village,0,0,50,0,none,none
+gn:770721,Jabłonka,Subcarpathia,1100,village,0,0,50,0,none,none
+gn:770724,Jabłonica Polska,Subcarpathia,1076,village,0,0,50,0,none,none
+gn:770730,Jabłoń Dąbrowa,Podlasie,4736,village,0,0,50,0,none,none
+gn:770731,Jabłoń,Lublin,1251,village,0,0,50,0,none,none
+gn:770751,Izbica,Lublin,1933,village,0,0,50,0,none,none
+gn:770759,Iwonicz-Zdrój,Subcarpathia,1860,village,0,0,50,0,none,none
+gn:770762,Iwkowa,Lesser Poland,2699,village,0,0,50,0,none,none
+gn:770763,Iwierzyce,Subcarpathia,940,village,0,0,50,0,none,none
+gn:770772,Iwaniska,Świętokrzyskie,1300,village,0,0,50,0,none,none
+gn:770784,Inowłódz,Łódź Voivodeship,795,village,0,0,50,0,none,none
+gn:770787,Imielno,Świętokrzyskie,300,village,0,0,50,0,none,none
+gn:770792,Iłża,Mazovia,5121,village,0,0,50,0,none,none
+gn:770798,Iłów,Mazovia,690,village,0,0,50,0,none,none
+gn:770833,Hyżne,Subcarpathia,3900,village,0,0,50,0,none,none
+gn:770911,Husów,Subcarpathia,2000,village,0,0,50,0,none,none
+gn:770918,Humniska,Subcarpathia,4300,village,0,0,50,0,none,none
+gn:770966,Hrubieszów,Lublin,18605,town,0,0,50,0,none,none
+gn:770986,Horyniec-Zdrój,Subcarpathia,2700,village,0,0,50,0,none,none
+gn:770996,Horodło,Lublin,1119,village,0,0,50,0,none,none
+gn:771001,Hornówek,Mazovia,1054,village,0,0,50,0,none,none
+gn:771134,Harasiuki,Subcarpathia,862,village,0,0,50,0,none,none
+gn:771139,Hańsk,Lublin,1017,village,0,0,50,0,none,none
+gn:771141,Handzlówka,Subcarpathia,1500,village,0,0,50,0,none,none
+gn:771150,Halinów,Mazovia,3551,village,0,0,50,0,none,none
+gn:771158,Hajnówka,Podlasie,22157,town,0,0,50,0,none,none
+gn:771165,Haczów,Subcarpathia,3370,village,0,0,50,0,none,none
+gn:771168,Gzy,Mazovia,233,village,0,0,50,0,none,none
+gn:771173,Gwoźnica Górna,Subcarpathia,1480,village,0,0,50,0,none,none
+gn:771192,Guzów,Mazovia,1108,village,0,0,50,0,none,none
+gn:771275,Grzybowa Góra,Świętokrzyskie,1052,village,0,0,50,0,none,none
+gn:771286,Grzęska,Subcarpathia,1915,village,0,0,50,0,none,none
+gn:771313,Grybów,Lesser Poland,5994,village,0,0,50,0,none,none
+gn:771317,Gruszów Wielki,Lesser Poland,1189,village,0,0,50,0,none,none
+gn:771343,Grudusk,Mazovia,1500,village,0,0,50,0,none,none
+gn:771348,Grudki,Podlasie,5822,village,0,0,50,0,none,none
+gn:771374,Gromnik,Lesser Poland,3325,village,0,0,50,0,none,none
+gn:771384,Grójec,Mazovia,14880,town,0,0,50,0,none,none
+gn:771392,Grodzisko Górne,Subcarpathia,2221,village,0,0,50,0,none,none
+gn:771394,Grodzisko Dolne,Subcarpathia,1700,village,0,0,50,0,none,none
+gn:771401,Grodzisk Mazowiecki,Mazovia,26684,town,0,0,50,0,none,none
+gn:771477,Grębów,Subcarpathia,3000,village,0,0,50,0,none,none
+gn:771478,Gręboszów,Lesser Poland,430,village,0,0,50,0,none,none
+gn:771481,Grębków,Mazovia,345,village,0,0,50,0,none,none
+gn:771497,Granica,Mazovia,1110,village,0,0,50,0,none,none
+gn:771506,Grajewo,Podlasie,22803,town,0,0,50,0,none,none
+gn:771566,Grabownica Starzeńska,Subcarpathia,3000,village,0,0,50,0,none,none
+gn:771590,Grabowiec,Lublin,922,village,0,0,50,0,none,none
+gn:771679,Gózd,Mazovia,909,village,0,0,50,0,none,none
+gn:771683,Goworowo,Mazovia,820,village,0,0,50,0,none,none
+gn:771687,Gowarczów,Świętokrzyskie,1400,village,0,0,50,0,none,none
+gn:771690,Goszczyn,Mazovia,920,village,0,0,50,0,none,none
+gn:771723,Gościeradów,Lublin,960,village,0,0,50,0,none,none
+gn:771729,Gorzyce,Subcarpathia,8009,village,0,0,50,0,none,none
+gn:771731,Gorzyce,Subcarpathia,1311,village,0,0,50,0,none,none
+gn:771733,Górzno,Mazovia,647,village,0,0,50,0,none,none
+gn:771735,Gorzków,Lublin,264,village,0,0,50,0,none,none
+gn:771779,Górowo Iławeckie,Warmia-Masuria,4900,village,0,0,50,0,none,none
+gn:771788,Górno,Świętokrzyskie,1500,village,0,0,50,0,none,none
+gn:771790,Górno,Subcarpathia,1898,village,0,0,50,0,none,none
+gn:771803,Gorliczyna,Subcarpathia,1897,village,0,0,50,0,none,none
+gn:771804,Gorlice,Lesser Poland,28609,town,0,0,50,0,none,none
+gn:771842,Górki,Subcarpathia,1800,village,0,0,50,0,none,none
+gn:771870,Góra Kalwaria,Mazovia,10777,town,0,0,50,0,none,none
+gn:771876,Goraj,Lublin,1048,village,0,0,50,0,none,none
+gn:771893,Goniądz,Podlasie,1954,village,0,0,50,0,none,none
+gn:771901,Gołymin-Ośrodek,Mazovia,700,village,0,0,50,0,none,none
+gn:771953,Gołdap,Warmia-Masuria,13769,town,0,0,50,0,none,none
+gn:771955,Golcowa,Subcarpathia,2200,village,0,0,50,0,none,none
+gn:771985,Godziszów,Lublin,2242,village,0,0,50,0,none,none
+gn:771993,Godzianów,Łódź Voivodeship,921,village,0,0,50,0,none,none
+gn:772021,Gnojno,Świętokrzyskie,721,village,0,0,50,0,none,none
+gn:772023,Gnojnik,Lesser Poland,2344,village,0,0,50,0,none,none
+gn:772066,Głuchów,Łódź Voivodeship,1000,village,0,0,50,0,none,none
+gn:772069,Głuchów,Subcarpathia,1500,village,0,0,50,0,none,none
+gn:772086,Głogów Małopolski,Subcarpathia,5451,village,0,0,50,0,none,none
+gn:772107,Glinojeck,Mazovia,3117,village,0,0,50,0,none,none
+gn:772195,Giżycko,Warmia-Masuria,29972,town,0,0,50,0,none,none
+gn:772218,Gietrzwałd,Warmia-Masuria,1070,village,0,0,50,0,none,none
+gn:772220,Gierzwałd,Warmia-Masuria,638,village,0,0,50,0,none,none
+gn:772227,Gierłoż,Warmia-Masuria,28351,town,0,0,50,0,none,none
+gn:772236,Gielniów,Mazovia,1100,village,0,0,50,0,none,none
+gn:772248,Giedlarowa,Subcarpathia,4096,village,0,0,50,0,none,none
+gn:772270,Gdów,Lesser Poland,4500,village,0,0,50,0,none,none
+gn:772313,Gąsocin,Mazovia,1238,village,0,0,50,0,none,none
+gn:772339,Garwolin,Mazovia,15912,town,0,0,50,0,none,none
+gn:772366,Garbów,Lublin,2060,village,0,0,50,0,none,none
+gn:772372,Garbatka-Letnisko,Mazovia,3295,village,0,0,50,0,none,none
+gn:772455,Gać,Subcarpathia,1550,village,0,0,50,0,none,none
+gn:772465,Frysztak,Subcarpathia,950,village,0,0,50,0,none,none
+gn:772467,Frydman,Lesser Poland,1622,village,0,0,50,0,none,none
+gn:772470,Fredropol,Subcarpathia,600,village,0,0,50,0,none,none
+gn:772492,Frampol,Lublin,1411,village,0,0,50,0,none,none
+gn:772518,Firlej,Lublin,1000,village,0,0,50,0,none,none
+gn:772528,Filipów,Podlasie,2234,village,0,0,50,0,none,none
+gn:772561,Fałków,Świętokrzyskie,1100,village,0,0,50,0,none,none
+gn:772584,Fajsławice,Lublin,1457,village,0,0,50,0,none,none
+gn:772621,Ełk,Warmia-Masuria,55769,town,0,0,50,0,none,none
+gn:772622,Elizówka,Lublin,1204,village,0,0,50,0,none,none
+gn:772641,Dzwola,Lublin,936,village,0,0,50,0,none,none
+gn:772644,Dźwierzuty,Warmia-Masuria,1380,village,0,0,50,0,none,none
+gn:772658,Dzików Stary,Subcarpathia,1320,village,0,0,50,0,none,none
+gn:772662,Dzikowiec,Subcarpathia,1400,village,0,0,50,0,none,none
+gn:772667,Dziewin,Lesser Poland,1044,village,0,0,50,0,none,none
+gn:772680,Dzierzkowice,Lublin,0,village,0,0,50,0,none,none
+gn:772687,Dzierzgowo,Mazovia,660,village,0,0,50,0,none,none
+gn:772698,Dzierzążnia,Mazovia,442,village,0,0,50,0,none,none
+gn:772722,Dziekanów Leśny,Mazovia,1466,village,0,0,50,0,none,none
+gn:772747,Działoszyce,Świętokrzyskie,1040,village,0,0,50,0,none,none
+gn:772748,Działdowo,Warmia-Masuria,21127,town,0,0,50,0,none,none
+gn:772758,Dziadkowice,Podlasie,0,village,0,0,50,0,none,none
+gn:772768,Dywity,Warmia-Masuria,2300,village,0,0,50,0,none,none
+gn:772770,Dys,Lublin,1200,village,0,0,50,0,none,none
+gn:772772,Dynów,Subcarpathia,6065,village,0,0,50,0,none,none
+gn:772793,Dydnia,Subcarpathia,1600,village,0,0,50,0,none,none
+gn:772822,Dwikozy,Świętokrzyskie,1723,village,0,0,50,0,none,none
+gn:772857,Dukla,Subcarpathia,2126,village,0,0,50,0,none,none
+gn:772873,Duczki,Mazovia,2500,village,0,0,50,0,none,none
+gn:772896,Dubienka,Lublin,1042,village,0,0,50,0,none,none
+gn:772897,Dubiecko,Subcarpathia,1150,village,0,0,50,0,none,none
+gn:772915,Drzewica,Łódź Voivodeship,3958,village,0,0,50,0,none,none
+gn:772959,Drohiczyn,Podlasie,2075,village,0,0,50,0,none,none
+gn:772982,Drelów,Lublin,900,village,0,0,50,0,none,none
+gn:773014,Dorohusk,Lublin,516,village,0,0,50,0,none,none
+gn:773033,Domaszowice,Świętokrzyskie,1003,village,0,0,50,0,none,none
+gn:773040,Domaradz,Subcarpathia,3100,village,0,0,50,0,none,none
+gn:773050,Domanice,Mazovia,304,village,0,0,50,0,none,none
+gn:773078,Dołhobyczów,Lublin,1491,village,0,0,50,0,none,none
+gn:773100,Dobrzyniewo Duże,Podlasie,1200,village,0,0,50,0,none,none
+gn:773148,Dobre Miasto,Warmia-Masuria,10514,town,0,0,50,0,none,none
+gn:773149,Dobre,Mazovia,1627,village,0,0,50,0,none,none
+gn:773165,Dobra,Lesser Poland,3100,village,0,0,50,0,none,none
+gn:773176,Dobczyce,Lesser Poland,6171,village,0,0,50,0,none,none
+gn:773217,Długosiodło,Mazovia,2020,village,0,0,50,0,none,none
+gn:773250,Długie,Subcarpathia,2600,village,0,0,50,0,none,none
+gn:773320,Dębowiec,Subcarpathia,2000,village,0,0,50,0,none,none
+gn:773326,Dębowa Kłoda,Lublin,474,village,0,0,50,0,none,none
+gn:773332,Dębów,Subcarpathia,1244,village,0,0,50,0,none,none
+gn:773340,Dębno,Subcarpathia,1500,village,0,0,50,0,none,none
+gn:773341,Dębno,Lesser Poland,1601,village,0,0,50,0,none,none
+gn:773357,Dęblin,Lublin,17775,town,0,0,50,0,none,none
+gn:773380,Dębica,Subcarpathia,47366,town,0,0,50,0,none,none
+gn:773386,Dębe Wielkie,Mazovia,2750,village,0,0,50,0,none,none
+gn:773453,Daleszyce,Świętokrzyskie,2932,village,0,0,50,0,none,none
+gn:773478,Dąbrówno,Warmia-Masuria,1400,village,0,0,50,0,none,none
+gn:773525,Dąbrówka,Mazovia,535,village,0,0,50,0,none,none
+gn:773569,Dąbrowa Tarnowska,Lesser Poland,11291,town,0,0,50,0,none,none
+gn:773593,Dąbrowa Białostocka,Podlasie,6044,village,0,0,50,0,none,none
+gn:773676,Czyżew,Podlasie,2670,village,0,0,50,0,none,none
+gn:773695,Czudec,Subcarpathia,2900,village,0,0,50,0,none,none
+gn:773735,Czerwonka,Warmia-Masuria,1090,village,0,0,50,0,none,none
+gn:773738,Czerwonka,Mazovia,150,village,0,0,50,0,none,none
+gn:773751,Czerwińsk Nad Wisłą,Mazovia,1200,village,0,0,50,0,none,none
+gn:773753,Czerwin,Mazovia,700,village,0,0,50,0,none,none
+gn:773765,Czerniewice,Łódź Voivodeship,730,village,0,0,50,0,none,none
+gn:773780,Czernice Borowe,Mazovia,480,village,0,0,50,0,none,none
+gn:773797,Czermin,Subcarpathia,1557,village,0,0,50,0,none,none
+gn:773802,Czeremcha,Podlasie,2640,village,0,0,50,0,none,none
+gn:773808,Czemierniki,Lublin,3700,village,0,0,50,0,none,none
+gn:773832,Czchów,Lesser Poland,2256,village,0,0,50,0,none,none
+gn:773833,Czaszyn,Subcarpathia,1433,village,0,0,50,0,none,none
+gn:773897,Czarnocin,Świętokrzyskie,410,village,0,0,50,0,none,none
+gn:773898,Czarnochowice,Lesser Poland,1245,village,0,0,50,0,none,none
+gn:773902,Czarnia,Mazovia,457,village,0,0,50,0,none,none
+gn:773935,Czarna Góra,Lesser Poland,1506,village,0,0,50,0,none,none
+gn:773941,Czarna Białostocka,Podlasie,9592,village,0,0,50,0,none,none
+gn:773965,Czarna,Subcarpathia,1600,village,0,0,50,0,none,none
+gn:773966,Czarna,Subcarpathia,2474,village,0,0,50,0,none,none
+gn:773968,Czarna,Subcarpathia,792,village,0,0,50,0,none,none
+gn:774030,Cyców,Lublin,1200,village,0,0,50,0,none,none
+gn:774058,Cmolas,Subcarpathia,4000,village,0,0,50,0,none,none
+gn:774069,Ćmielów,Świętokrzyskie,3194,village,0,0,50,0,none,none
+gn:774090,Cisna,Subcarpathia,460,village,0,0,50,0,none,none
+gn:774116,Ciężkowice,Lesser Poland,2395,village,0,0,50,0,none,none
+gn:774128,Cieszanów,Subcarpathia,1935,village,0,0,50,0,none,none
+gn:774158,Ciepielów,Mazovia,770,village,0,0,50,0,none,none
+gn:774186,Cielądz,Łódź Voivodeship,1000,village,0,0,50,0,none,none
+gn:774197,Ciecierzyn,Lublin,1479,village,0,0,50,0,none,none
+gn:774207,Ciechanowiec,Podlasie,4946,village,0,0,50,0,none,none
+gn:774208,Ciechanów,Mazovia,46438,town,0,0,50,0,none,none
+gn:774243,Chynów,Mazovia,400,village,0,0,50,0,none,none
+gn:774265,Chwałowice,Subcarpathia,1100,village,0,0,50,0,none,none
+gn:774304,Chrzanów,Lublin,3506,village,0,0,50,0,none,none
+gn:774387,Chorzele,Mazovia,2807,village,0,0,50,0,none,none
+gn:774393,Choroszcz,Podlasie,5449,village,0,0,50,0,none,none
+gn:774396,Chorkówka,Subcarpathia,784,village,0,0,50,0,none,none
+gn:774472,Chodel,Lublin,1500,village,0,0,50,0,none,none
+gn:774504,Chmielnik,Świętokrzyskie,3926,village,0,0,50,0,none,none
+gn:774505,Chmielnik,Subcarpathia,3466,village,0,0,50,0,none,none
+gn:774535,Chlewiska,Mazovia,1089,village,0,0,50,0,none,none
+gn:774554,Chełmiec,Lesser Poland,2657,village,0,0,50,0,none,none
+gn:774558,Chełm,Lublin,60231,town,0,0,50,0,none,none
+gn:774572,Chęciny,Świętokrzyskie,4252,village,0,0,50,0,none,none
+gn:774628,Ceranów,Mazovia,810,village,0,0,50,0,none,none
+gn:774641,Celestynów,Mazovia,4007,village,0,0,50,0,none,none
+gn:774649,Cegłów,Mazovia,2846,village,0,0,50,0,none,none
+gn:774711,Bystra,Lesser Poland,1519,village,0,0,50,0,none,none
+gn:774730,Bychawa,Lublin,5297,village,0,0,50,0,none,none
+gn:774747,Busko-Zdrój,Świętokrzyskie,17095,town,0,0,50,0,none,none
+gn:774770,Bulkowo,Mazovia,266,village,0,0,50,0,none,none
+gn:774776,Bukowsko,Subcarpathia,1700,village,0,0,50,0,none,none
+gn:774790,Bukowina Tatrzańska,Lesser Poland,2700,village,0,0,50,0,none,none
+gn:775010,Brzyska,Subcarpathia,1900,village,0,0,50,0,none,none
+gn:775086,Brzozów,Subcarpathia,7836,village,0,0,50,0,none,none
+gn:775097,Brzóza Stadnicka,Subcarpathia,1200,village,0,0,50,0,none,none
+gn:775098,Brzóza Królewska,Subcarpathia,3400,village,0,0,50,0,none,none
+gn:775110,Brzostek,Subcarpathia,2599,village,0,0,50,0,none,none
+gn:775136,Brzeźnica,Subcarpathia,2800,village,0,0,50,0,none,none
+gn:775138,Brzeźnica,Lesser Poland,1171,village,0,0,50,0,none,none
+gn:775155,Brzeziny,Świętokrzyskie,2015,village,0,0,50,0,none,none
+gn:775183,Brzesko,Lesser Poland,16866,town,0,0,50,0,none,none
+gn:775210,Brzączowice,Lesser Poland,1230,village,0,0,50,0,none,none
+gn:775224,Brwinów,Mazovia,12315,town,0,0,50,0,none,none
+gn:775304,Brok,Mazovia,1896,village,0,0,50,0,none,none
+gn:775318,Brody,Świętokrzyskie,1737,village,0,0,50,0,none,none
+gn:775334,Brochów,Mazovia,400,village,0,0,50,0,none,none
+gn:775358,Brańszczyk,Mazovia,1109,village,0,0,50,0,none,none
+gn:775359,Brańsk,Podlasie,3822,village,0,0,50,0,none,none
+gn:775423,Borzęcin,Lesser Poland,3865,village,0,0,50,0,none,none
+gn:775424,Borzechów,Lublin,390,village,0,0,50,0,none,none
+gn:775493,Borowie,Mazovia,400,village,0,0,50,0,none,none
+gn:775513,Borowa,Subcarpathia,1451,village,0,0,50,0,none,none
+gn:775533,Borkowice,Mazovia,658,village,0,0,50,0,none,none
+gn:775561,Borki,Lublin,732,village,0,0,50,0,none,none
+gn:775594,Borek,Lesser Poland,1200,village,0,0,50,0,none,none
+gn:775634,Bolimów,Łódź Voivodeship,930,village,0,0,50,0,none,none
+gn:775672,Bojanów,Subcarpathia,1200,village,0,0,50,0,none,none
+gn:775684,Boguty-Pianki,Mazovia,1690,village,0,0,50,0,none,none
+gn:775717,Boguchwała,Subcarpathia,5823,village,0,0,50,0,none,none
+gn:775720,Bogoria,Świętokrzyskie,930,village,0,0,50,0,none,none
+gn:775736,Bodzentyn,Świętokrzyskie,2228,village,0,0,50,0,none,none
+gn:775737,Bodzechów,Świętokrzyskie,0,village,0,0,50,0,none,none
+gn:775738,Bodzanów,Mazovia,1300,village,0,0,50,0,none,none
+gn:775754,Boćki,Podlasie,1500,village,0,0,50,0,none,none
+gn:775758,Bochnia,Lesser Poland,29184,town,0,0,50,0,none,none
+gn:775775,Bobrowniki,Łódź Voivodeship,1200,village,0,0,50,0,none,none
+gn:775796,Bobowa,Lesser Poland,3018,village,0,0,50,0,none,none
+gn:775810,Stara Błotnica,Mazovia,272,village,0,0,50,0,none,none
+gn:775820,Błonie,Mazovia,12195,town,0,0,50,0,none,none
+gn:775836,Bliżyn,Świętokrzyskie,2000,village,0,0,50,0,none,none
+gn:775840,Blizne,Subcarpathia,3500,village,0,0,50,0,none,none
+gn:775860,Błędów,Mazovia,1098,village,0,0,50,0,none,none
+gn:775866,Błażowa,Subcarpathia,2129,village,0,0,50,0,none,none
+gn:775886,Bisztynek,Warmia-Masuria,2462,village,0,0,50,0,none,none
+gn:775888,Biszcza,Lublin,1901,village,0,0,50,0,none,none
+gn:775890,Biskupiec,Warmia-Masuria,10340,town,0,0,50,0,none,none
+gn:775894,Biskupice Radłowskie,Lesser Poland,1091,village,0,0,50,0,none,none
+gn:775908,Bircza,Subcarpathia,1000,village,0,0,50,0,none,none
+gn:775917,Binarowa,Lesser Poland,1763,village,0,0,50,0,none,none
+gn:775922,Biłgoraj,Lublin,26987,town,0,0,50,0,none,none
+gn:775976,Bieniewice,Mazovia,1129,village,0,0,50,0,none,none
+gn:775984,Bieńczyce,Lesser Poland,42633,town,0,0,50,0,none,none
+gn:775986,Bielsk Podlaski,Podlasie,26493,town,0,0,50,0,none,none
+gn:775996,Bieliny,Świętokrzyskie,1900,village,0,0,50,0,none,none
+gn:776001,Bieliny,Subcarpathia,1061,village,0,0,50,0,none,none
+gn:776024,Bielany,Mazovia,168,village,0,0,50,0,none,none
+gn:776029,Bielany,Mazovia,131910,city,0,0,50,0,none,none
+gn:776053,Biecz,Lesser Poland,4564,village,0,0,50,0,none,none
+gn:776069,Białystok,Podlasie,295683,city,0,0,50,0,none,none
+gn:776080,Biały Dunajec,Lesser Poland,4200,village,0,0,50,0,none,none
+gn:776092,Białowieża,Podlasie,2670,village,0,0,50,0,none,none
+gn:776103,Białołeka,Mazovia,129106,city,0,0,50,0,none,none
+gn:776113,Białobrzegi,Mazovia,1208,village,0,0,50,0,none,none
+gn:776114,Białobrzegi,Mazovia,7328,village,0,0,50,0,none,none
+gn:776120,Białobrzegi,Subcarpathia,2200,village,0,0,50,0,none,none
+gn:776144,Białka Tatrzańska,Lesser Poland,2200,village,0,0,50,0,none,none
+gn:776172,Biała Rawska,Łódź Voivodeship,3231,village,0,0,50,0,none,none
+gn:776175,Biała Podlaska,Lublin,57541,town,0,0,50,0,none,none
+gn:776178,Biała Piska,Warmia-Masuria,4027,village,0,0,50,0,none,none
+gn:776184,Białaczów,Łódź Voivodeship,1500,village,0,0,50,0,none,none
+gn:776214,Besko,Subcarpathia,3700,village,0,0,50,0,none,none
+gn:776251,Bemowo,Mazovia,123932,city,0,0,50,0,none,none
+gn:776252,Bełżyce,Lublin,6958,village,0,0,50,0,none,none
+gn:776257,Belsk Duży,Mazovia,0,village,0,0,50,0,none,none
+gn:776271,Bejsce,Świętokrzyskie,878,village,0,0,50,0,none,none
+gn:776310,Batorz,Lublin,982,village,0,0,50,0,none,none
+gn:776337,Bartoszyce,Warmia-Masuria,23482,town,0,0,50,0,none,none
+gn:776384,Barczewo,Warmia-Masuria,7315,village,0,0,50,0,none,none
+gn:776393,Barciany,Warmia-Masuria,1100,village,0,0,50,0,none,none
+gn:776403,Baranów Sandomierski,Subcarpathia,1426,village,0,0,50,0,none,none
+gn:776407,Baranowo,Mazovia,1250,village,0,0,50,0,none,none
+gn:776415,Baranów,Lublin,1672,village,0,0,50,0,none,none
+gn:776440,Baniocha,Mazovia,4000,village,0,0,50,0,none,none
+gn:776441,Banie Mazurskie,Warmia-Masuria,1500,village,0,0,50,0,none,none
+gn:776454,Bałtów,Świętokrzyskie,740,village,0,0,50,0,none,none
+gn:776458,Baligród,Subcarpathia,1468,village,0,0,50,0,none,none
+gn:776531,Baćkowice,Świętokrzyskie,540,village,0,0,50,0,none,none
+gn:776553,Baboszewo,Mazovia,1800,village,0,0,50,0,none,none
+gn:776574,Babica,Subcarpathia,1200,village,0,0,50,0,none,none
+gn:776595,Augustówka,Mazovia,1011,village,0,0,50,0,none,none
+gn:776597,Augustów,Podlasie,29752,town,0,0,50,0,none,none
+gn:776677,Annopol,Lublin,2654,village,0,0,50,0,none,none
+gn:776755,Aleksandrów,Lublin,3135,village,0,0,50,0,none,none
+gn:776759,Albigowa,Subcarpathia,2923,village,0,0,50,0,none,none
+gn:776780,Adamówka,Subcarpathia,1205,village,0,0,50,0,none,none
+gn:776788,Adamów,Lublin,2100,village,0,0,50,0,none,none
+gn:776808,Abramów,Lublin,713,village,0,0,50,0,none,none
+gn:3079855,Żywiec,Silesia,32132,town,0,0,50,0,none,none
+gn:3079897,Żychlin,Łódź Voivodeship,9009,village,0,0,50,0,none,none
+gn:3079923,Zwierzyń,Lubusz,1300,village,0,0,50,0,none,none
+gn:3079942,Żuromin,Mazovia,9019,village,0,0,50,0,none,none
+gn:3079969,Żukowo,Pomerania,6494,village,0,0,50,0,none,none
+gn:3079986,Zubrzyca Górna,Lesser Poland,2987,village,0,0,50,0,none,none
+gn:3079987,Zubrzyca Dolna,Lesser Poland,1690,village,0,0,50,0,none,none
+gn:3080004,Żory,Silesia,63174,town,0,0,50,0,none,none
+gn:3080007,Żórawina,Lower Silesia,2100,village,0,0,50,0,none,none
+gn:3080030,Żołędowo,Kujawsko-Pomorskie,1963,village,0,0,50,0,none,none
+gn:3080047,Żnin,Kujawsko-Pomorskie,14008,town,0,0,50,0,none,none
+gn:3080058,Żmigród,Lower Silesia,6542,village,0,0,50,0,none,none
+gn:3080061,Złoty Stok,Lower Silesia,2758,village,0,0,50,0,none,none
+gn:3080071,Złotów,Greater Poland,18395,town,0,0,50,0,none,none
+gn:3080074,Złotoryja,Lower Silesia,15564,town,0,0,50,0,none,none
+gn:3080083,Złotniki Kujawskie,Kujawsko-Pomorskie,2400,village,0,0,50,0,none,none
+gn:3080084,Złotniki,Greater Poland,1100,village,0,0,50,0,none,none
+gn:3080101,Złoczew,Łódź Voivodeship,3439,village,0,0,50,0,none,none
+gn:3080102,Złocieniec,West Pomerania,13337,town,0,0,50,0,none,none
+gn:3080111,Zławieś Wielka,Kujawsko-Pomorskie,682,village,0,0,50,0,none,none
+gn:3080156,Zielonki,Lesser Poland,2936,village,0,0,50,0,none,none
+gn:3080165,Zielona Góra,Lubusz,118433,city,0,0,50,0,none,none
+gn:3080226,Ziębice,Lower Silesia,9328,village,0,0,50,0,none,none
+gn:3080231,Zgorzelec,Lower Silesia,33247,town,0,0,50,0,none,none
+gn:3080251,Zgierz,Łódź Voivodeship,58036,town,0,0,50,0,none,none
+gn:3080263,Żerniki Wrocławskie,Lower Silesia,1427,village,0,0,50,0,none,none
+gn:3080270,Żerniki,Lower Silesia,3961,village,0,0,50,0,none,none
+gn:3080271,Żernica,Silesia,3400,village,0,0,50,0,none,none
+gn:3080275,Żerków,Greater Poland,2127,village,0,0,50,0,none,none
+gn:3080291,Zembrzyce,Lesser Poland,2900,village,0,0,50,0,none,none
+gn:3080295,Zelów,Łódź Voivodeship,8003,village,0,0,50,0,none,none
+gn:3080302,Żelistrzewo,Pomerania,2340,village,0,0,50,0,none,none
+gn:3080345,Żelazków,Greater Poland,1250,village,0,0,50,0,none,none
+gn:3080367,Zebrzydowice,Silesia,3150,village,0,0,50,0,none,none
+gn:3080368,Zebrzydowice,Lesser Poland,1939,village,0,0,50,0,none,none
+gn:3080369,Zebrzydowice,Silesia,5046,village,0,0,50,0,none,none
+gn:3080380,Zębowice,Opole Voivodeship,1500,village,0,0,50,0,none,none
+gn:3080389,Zdzieszowice,Opole Voivodeship,13401,town,0,0,50,0,none,none
+gn:3080411,Zduny,Greater Poland,4498,village,0,0,50,0,none,none
+gn:3080414,Zduńska Wola,Łódź Voivodeship,44515,town,0,0,50,0,none,none
+gn:3080442,Zbytków,Silesia,1236,village,0,0,50,0,none,none
+gn:3080457,Zbrosławice,Silesia,2345,village,0,0,50,0,none,none
+gn:3080473,Zbójno,Kujawsko-Pomorskie,841,village,0,0,50,0,none,none
+gn:3080476,Zblewo,Pomerania,3263,village,0,0,50,0,none,none
+gn:3080494,Zbąszynek,Lubusz,5073,village,0,0,50,0,none,none
+gn:3080495,Zbąszyń,Greater Poland,7185,village,0,0,50,0,none,none
+gn:3080508,Zawoja,Lesser Poland,6200,village,0,0,50,0,none,none
+gn:3080526,Zawiercie,Silesia,53159,town,0,0,50,0,none,none
+gn:3080530,Zawidz,Mazovia,956,village,0,0,50,0,none,none
+gn:3080533,Zawidów,Silesia,4180,village,0,0,50,0,none,none
+gn:3080538,Zawadzkie,Opole Voivodeship,8439,village,0,0,50,0,none,none
+gn:3080590,Zator,Lesser Poland,4779,village,0,0,50,0,none,none
+gn:3080634,Zarzecze,Lesser Poland,1200,village,0,0,50,0,none,none
+gn:3080636,Zarzecze,Silesia,1121,village,0,0,50,0,none,none
+gn:3080644,Żary,Lubusz,38779,town,0,0,50,0,none,none
+gn:3080652,Żarów,Lower Silesia,6719,village,0,0,50,0,none,none
+gn:3080674,Żarki,Silesia,4363,village,0,0,50,0,none,none
+gn:3080675,Żarki,Lesser Poland,3793,village,0,0,50,0,none,none
+gn:3080696,Zapolice,Łódź Voivodeship,1394,village,0,0,50,0,none,none
+gn:3080705,Zaniemyśl,Greater Poland,2200,village,0,0,50,0,none,none
+gn:3080736,Zamarski,Silesia,1279,village,0,0,50,0,none,none
+gn:3080757,Zalewo,Warmia-Masuria,2112,village,0,0,50,0,none,none
+gn:3080807,Zalas,Lesser Poland,2240,village,0,0,50,0,none,none
+gn:3080823,Zakrzów,Lesser Poland,1133,village,0,0,50,0,none,none
+gn:3080830,Zakrzewo,Greater Poland,1620,village,0,0,50,0,none,none
+gn:3080866,Zakopane,Lesser Poland,27266,town,0,0,50,0,none,none
+gn:3080895,Zagrodno,Lower Silesia,1626,village,0,0,50,0,none,none
+gn:3080925,Zagórze,Lesser Poland,2963,village,0,0,50,0,none,none
+gn:3080929,Zagórów,Greater Poland,2974,village,0,0,50,0,none,none
+gn:3080931,Zagórnik,Lesser Poland,2119,village,0,0,50,0,none,none
+gn:3080944,Żagań,Lubusz,25731,town,0,0,50,0,none,none
+gn:3080951,Zadzim,Łódź Voivodeship,500,village,0,0,50,0,none,none
+gn:3080984,Zabrzeg,Silesia,3090,village,0,0,50,0,none,none
+gn:3080985,Zabrze,Silesia,192177,city,0,0,50,0,none,none
+gn:3081003,Zaborze,Lesser Poland,2489,village,0,0,50,0,none,none
+gn:3081004,Zaborze,Silesia,1005,village,0,0,50,0,none,none
+gn:3081026,Zabór,Lubusz,950,village,0,0,50,0,none,none
+gn:3081036,Żabnica,Silesia,3120,village,0,0,50,0,none,none
+gn:3081045,Zabłocie,Silesia,1316,village,0,0,50,0,none,none
+gn:3081046,Ząbkowice Śląskie,Lower Silesia,15004,town,0,0,50,0,none,none
+gn:3081060,Zabierzów,Lesser Poland,4689,village,0,0,50,0,none,none
+gn:3081128,Wysoka,Greater Poland,2728,village,0,0,50,0,none,none
+gn:3081136,Wysoka,Silesia,1246,village,0,0,50,0,none,none
+gn:3081138,Wysoka,Lesser Poland,1500,village,0,0,50,0,none,none
+gn:3081158,Wyrzysk,Greater Poland,5263,village,0,0,50,0,none,none
+gn:3081161,Wyry,Silesia,3304,village,0,0,50,0,none,none
+gn:3081206,Wymiarki,Lubusz,1300,village,0,0,50,0,none,none
+gn:3081300,Wschowa,Lubusz,14458,town,0,0,50,0,none,none
+gn:3081318,Wrzeszcz,Pomerania,65000,town,0,0,50,0,none,none
+gn:3081324,Września,Greater Poland,28703,town,0,0,50,0,none,none
+gn:3081330,Wrząsowice,Lesser Poland,1865,village,0,0,50,0,none,none
+gn:3081350,Wronki,Greater Poland,11462,town,0,0,50,0,none,none
+gn:3081368,Wrocław,Lower Silesia,672545,large-city,0,0,50,0,none,none
+gn:3081384,Wróblew,Łódź Voivodeship,340,village,0,0,50,0,none,none
+gn:3081387,Wręczyca Wielka,Silesia,2718,village,0,0,50,0,none,none
+gn:3081403,Wożniki,Silesia,4488,village,0,0,50,0,none,none
+gn:3081404,Woźniki,Lesser Poland,1213,village,0,0,50,0,none,none
+gn:3081419,Wolsztyn,Greater Poland,13689,town,0,0,50,0,none,none
+gn:3081426,Wołowice,Lesser Poland,1334,village,0,0,50,0,none,none
+gn:3081430,Wołów,Lower Silesia,12276,town,0,0,50,0,none,none
+gn:3081471,Wolin,West Pomerania,12438,town,0,0,50,0,none,none
+gn:3081488,Wołczyn,Opole Voivodeship,6221,village,0,0,50,0,none,none
+gn:3081495,Wolbrom,Lesser Poland,9146,village,0,0,50,0,none,none
+gn:3081496,Wolbórz,Łódź Voivodeship,2594,village,0,0,50,0,none,none
+gn:3081525,Wola Radziszowska,Lesser Poland,2300,village,0,0,50,0,none,none
+gn:3081560,Wola Krzysztoporska,Łódź Voivodeship,2100,village,0,0,50,0,none,none
+gn:3081583,Wola Filipowska,Lesser Poland,2751,village,0,0,50,0,none,none
+gn:3081604,Wola,Silesia,8508,village,0,0,50,0,none,none
+gn:3081636,Wojkowice,Silesia,8927,village,0,0,50,0,none,none
+gn:3081653,Wojcieszów,Lower Silesia,3933,village,0,0,50,0,none,none
+gn:3081677,Wodzisław Śląski,Silesia,49521,town,0,0,50,0,none,none
+gn:3081680,Wodzierady,Łódź Voivodeship,239,village,0,0,50,0,none,none
+gn:3081699,Włoszczowa,Świętokrzyskie,10661,town,0,0,50,0,none,none
+gn:3081701,Włoszakowice,Greater Poland,3159,village,0,0,50,0,none,none
+gn:3081711,Włosienica,Lesser Poland,1491,village,0,0,50,0,none,none
+gn:3081733,Włodowice,Silesia,1248,village,0,0,50,0,none,none
+gn:3081741,Włocławek,Kujawsko-Pomorskie,120339,city,0,0,50,0,none,none
+gn:3081748,Wleń,Lower Silesia,1888,village,0,0,50,0,none,none
+gn:3081752,Władysławowo,Pomerania,14889,town,0,0,50,0,none,none
+gn:3081760,Władysławów,Greater Poland,1625,village,0,0,50,0,none,none
+gn:3081794,Witów,Lesser Poland,1714,village,0,0,50,0,none,none
+gn:3081808,Witonia,Łódź Voivodeship,1130,village,0,0,50,0,none,none
+gn:3081818,Witnica,Lubusz,6821,village,0,0,50,0,none,none
+gn:3081826,Witkowo,Greater Poland,7825,village,0,0,50,0,none,none
+gn:3081832,Witkowice,Lesser Poland,2136,village,0,0,50,0,none,none
+gn:3081839,Witaszyce,Greater Poland,3967,village,0,0,50,0,none,none
+gn:3081844,Witanowice,Lesser Poland,1162,village,0,0,50,0,none,none
+gn:3081874,Wisła,Silesia,11379,town,0,0,50,0,none,none
+gn:3081895,Wińsko,Lower Silesia,1800,village,0,0,50,0,none,none
+gn:3081897,Winów,Opole Voivodeship,1100,village,0,0,50,0,none,none
+gn:3081940,Wilkowice,Greater Poland,1589,village,0,0,50,0,none,none
+gn:3081942,Wilkowice,Silesia,6496,village,0,0,50,0,none,none
+gn:3081946,Wilków,Opole Voivodeship,900,village,0,0,50,0,none,none
+gn:3081947,Wilków,Lower Silesia,2000,village,0,0,50,0,none,none
+gn:3081973,Wilczyn,Greater Poland,1200,village,0,0,50,0,none,none
+gn:3082012,Wilczogóra,Greater Poland,1198,village,0,0,50,0,none,none
+gn:3082016,Wilcza,Silesia,2063,village,0,0,50,0,none,none
+gn:3082025,Wilamowice,Silesia,2813,village,0,0,50,0,none,none
+gn:3082044,Wijewo,Greater Poland,1200,village,0,0,50,0,none,none
+gn:3082061,Wieszowa,Silesia,1860,village,0,0,50,0,none,none
+gn:3082101,Wierzchucino,Pomerania,1536,village,0,0,50,0,none,none
+gn:3082110,Wierzchowo,West Pomerania,1541,village,0,0,50,0,none,none
+gn:3082119,Wierzchosławice,Kujawsko-Pomorskie,1400,village,0,0,50,0,none,none
+gn:3082130,Wierzchlas,Łódź Voivodeship,2000,village,0,0,50,0,none,none
+gn:3082144,Wierzbno,Lower Silesia,1047,village,0,0,50,0,none,none
+gn:3082153,Wierzbinek,Greater Poland,380,village,0,0,50,0,none,none
+gn:3082176,Wieruszów,Łódź Voivodeship,8692,village,0,0,50,0,none,none
+gn:3082192,Wieprz,Lesser Poland,5002,village,0,0,50,0,none,none
+gn:3082193,Wieprz,Silesia,3535,village,0,0,50,0,none,none
+gn:3082197,Wieluń,Łódź Voivodeship,21624,town,0,0,50,0,none,none
+gn:3082206,Wielowieś,Silesia,1811,village,0,0,50,0,none,none
+gn:3082282,Wielka Wieś,Lesser Poland,1127,village,0,0,50,0,none,none
+gn:3082287,Wielka Nieszawka,Kujawsko-Pomorskie,460,village,0,0,50,0,none,none
+gn:3082299,Wielichowo,Greater Poland,1736,village,0,0,50,0,none,none
+gn:3082310,Wielgie,Kujawsko-Pomorskie,1081,village,0,0,50,0,none,none
+gn:3082319,Wieleń,Greater Poland,6067,village,0,0,50,0,none,none
+gn:3082333,Większyce,Opole Voivodeship,1055,village,0,0,50,0,none,none
+gn:3082364,Więcbork,Kujawsko-Pomorskie,5953,village,0,0,50,0,none,none
+gn:3082376,Widuchowa,West Pomerania,1300,village,0,0,50,0,none,none
+gn:3082390,Widawa,Łódź Voivodeship,1300,village,0,0,50,0,none,none
+gn:3082411,Wiązów,Lower Silesia,2340,village,0,0,50,0,none,none
+gn:3082473,Wejherowo,Pomerania,46820,town,0,0,50,0,none,none
+gn:3082481,Węgry,Opole Voivodeship,1010,village,0,0,50,0,none,none
+gn:3082485,Węgorzyno,West Pomerania,3009,village,0,0,50,0,none,none
+gn:3082500,Węgliniec,Lower Silesia,2992,village,0,0,50,0,none,none
+gn:3082510,Węgierska Górka,Silesia,4233,village,0,0,50,0,none,none
+gn:3082537,Wawrów,Lubusz,1200,village,0,0,50,0,none,none
+gn:3082556,Wąsosz,Lower Silesia,2789,village,0,0,50,0,none,none
+gn:3082581,Wartkowice,Łódź Voivodeship,691,village,0,0,50,0,none,none
+gn:3082587,Warta,Łódź Voivodeship,3400,village,0,0,50,0,none,none
+gn:3082607,Warnice,West Pomerania,695,village,0,0,50,0,none,none
+gn:3082611,Warlubie,Kujawsko-Pomorskie,2043,village,0,0,50,0,none,none
+gn:3082635,Wapno,Greater Poland,1700,village,0,0,50,0,none,none
+gn:3082646,Wapienica,Silesia,10514,town,0,0,50,0,none,none
+gn:3082647,Wąpielsk,Kujawsko-Pomorskie,803,village,0,0,50,0,none,none
+gn:3082678,Walim,Lower Silesia,2763,village,0,0,50,0,none,none
+gn:3082680,Walichnowy,Łódź Voivodeship,1100,village,0,0,50,0,none,none
+gn:3082704,Wałcz,West Pomerania,25971,town,0,0,50,0,none,none
+gn:3082705,Walce,Opole Voivodeship,2100,village,0,0,50,0,none,none
+gn:3082707,Wałbrzych,Lower Silesia,127431,city,0,0,50,0,none,none
+gn:3082712,Wągrowiec,Greater Poland,25648,town,0,0,50,0,none,none
+gn:3082718,Waganiec,Kujawsko-Pomorskie,1300,village,0,0,50,0,none,none
+gn:3082722,Wadowice,Lesser Poland,19238,town,0,0,50,0,none,none
+gn:3082734,Wąbrzeźno,Kujawsko-Pomorskie,13911,town,0,0,50,0,none,none
+gn:3082745,Ustronie Morskie,West Pomerania,2081,village,0,0,50,0,none,none
+gn:3082751,Ustroń,Silesia,15637,town,0,0,50,0,none,none
+gn:3082756,Ustka,Pomerania,16250,town,0,0,50,0,none,none
+gn:3082785,Unisław,Kujawsko-Pomorskie,3490,village,0,0,50,0,none,none
+gn:3082801,Uniejów,Łódź Voivodeship,2932,village,0,0,50,0,none,none
+gn:3082837,Ujsoły,Silesia,2392,village,0,0,50,0,none,none
+gn:3082838,Ujście,Greater Poland,3869,village,0,0,50,0,none,none
+gn:3082854,Ujazd,Łódź Voivodeship,1700,village,0,0,50,0,none,none
+gn:3082855,Ujazd,Opole Voivodeship,1638,village,0,0,50,0,none,none
+gn:3082866,Udanin,Lower Silesia,982,village,0,0,50,0,none,none
+gn:3082870,Uciechów,Lower Silesia,1017,village,0,0,50,0,none,none
+gn:3082887,Tyniec Mały,Lower Silesia,1622,village,0,0,50,0,none,none
+gn:3082914,Tychy,Silesia,130000,city,0,0,50,0,none,none
+gn:3082916,Tychowo,West Pomerania,2507,village,0,0,50,0,none,none
+gn:3082931,Tworóg,Silesia,3607,village,0,0,50,0,none,none
+gn:3082933,Tworków,Silesia,2800,village,0,0,50,0,none,none
+gn:3082938,Twardogóra,Lower Silesia,6840,village,0,0,50,0,none,none
+gn:3082940,Twardawa,Opole Voivodeship,1029,village,0,0,50,0,none,none
+gn:3082945,Tuszyn,Łódź Voivodeship,7124,village,0,0,50,0,none,none
+gn:3082966,Turza Śląska,Silesia,3085,village,0,0,50,0,none,none
+gn:3082998,Turek,Greater Poland,29533,town,0,0,50,0,none,none
+gn:3083004,Tuplice,Lubusz,1500,village,0,0,50,0,none,none
+gn:3083015,Tułowice,Opole Voivodeship,4290,village,0,0,50,0,none,none
+gn:3083017,Tuliszków,Greater Poland,3371,village,0,0,50,0,none,none
+gn:3083026,Tuczno,West Pomerania,1919,village,0,0,50,0,none,none
+gn:3083039,Tuchomie,Pomerania,1365,village,0,0,50,0,none,none
+gn:3083043,Tuchola,Kujawsko-Pomorskie,13686,town,0,0,50,0,none,none
+gn:3083077,Trzemeszno,Greater Poland,7840,village,0,0,50,0,none,none
+gn:3083087,Trzebunia,Lesser Poland,2059,village,0,0,50,0,none,none
+gn:3083103,Trzebnica,Lower Silesia,12212,town,0,0,50,0,none,none
+gn:3083111,Trzebinia,Lesser Poland,18828,town,0,0,50,0,none,none
+gn:3083112,Trzebinia,Silesia,1721,village,0,0,50,0,none,none
+gn:3083116,Trzebież,West Pomerania,2500,village,0,0,50,0,none,none
+gn:3083133,Trzebielino,Pomerania,744,village,0,0,50,0,none,none
+gn:3083134,Trzebiel,Lubusz,1400,village,0,0,50,0,none,none
+gn:3083140,Trzebiechów,Lubusz,920,village,0,0,50,0,none,none
+gn:3083145,Trzebiatów,West Pomerania,10322,town,0,0,50,0,none,none
+gn:3083158,Trzcińsko Zdrój,West Pomerania,2466,village,0,0,50,0,none,none
+gn:3083169,Trzcinica,Greater Poland,1158,village,0,0,50,0,none,none
+gn:3083177,Trzciel,Lubusz,2335,village,0,0,50,0,none,none
+gn:3083185,Trzcianka,Greater Poland,16914,town,0,0,50,0,none,none
+gn:3083201,Truskolasy,Silesia,2044,village,0,0,50,0,none,none
+gn:3083255,Trąbki Wielkie,Pomerania,1407,village,0,0,50,0,none,none
+gn:3083263,Toszek,Silesia,3633,village,0,0,50,0,none,none
+gn:3083264,Torzym,Lubusz,2466,village,0,0,50,0,none,none
+gn:3083271,Toruń,Kujawsko-Pomorskie,196935,city,0,0,50,0,none,none
+gn:3083275,Toporzysko,Lesser Poland,1833,village,0,0,50,0,none,none
+gn:3083288,Topólka,Kujawsko-Pomorskie,449,village,0,0,50,0,none,none
+gn:3083320,Tomice,Lesser Poland,2185,village,0,0,50,0,none,none
+gn:3083334,Tolkmicko,Warmia-Masuria,2700,village,0,0,50,0,none,none
+gn:3083349,Tokarnia,Lesser Poland,3100,village,0,0,50,0,none,none
+gn:3083365,Tłuchowo,Kujawsko-Pomorskie,1159,village,0,0,50,0,none,none
+gn:3083410,Tenczynek,Lesser Poland,3436,village,0,0,50,0,none,none
+gn:3083426,Tczew,Pomerania,60133,town,0,0,50,0,none,none
+gn:3083440,Tarnowskie Góry,Silesia,60938,town,0,0,50,0,none,none
+gn:3083441,Tarnów Opolski,Opole Voivodeship,3800,village,0,0,50,0,none,none
+gn:3083442,Tarnowo Podgórne,Greater Poland,4235,village,0,0,50,0,none,none
+gn:3083453,Tarnówka,Greater Poland,1300,village,0,0,50,0,none,none
+gn:3083474,Tarnawa Dolna,Lesser Poland,1500,village,0,0,50,0,none,none
+gn:3083492,Targanice,Lesser Poland,3860,village,0,0,50,0,none,none
+gn:3083576,Szydłowo,Greater Poland,750,village,0,0,50,0,none,none
+gn:3083611,Szubin,Kujawsko-Pomorskie,9206,village,0,0,50,0,none,none
+gn:3083616,Sztum,Pomerania,9766,village,0,0,50,0,none,none
+gn:3083632,Szprotawa,Lubusz,12786,town,0,0,50,0,none,none
+gn:3083640,Szpetal Górny,Kujawsko-Pomorskie,1856,village,0,0,50,0,none,none
+gn:3083664,Szlichtyngowa,Lubusz,1372,village,0,0,50,0,none,none
+gn:3083667,Szlachta,Pomerania,1200,village,0,0,50,0,none,none
+gn:3083677,Szklarska Poręba,Lower Silesia,6970,village,0,0,50,0,none,none
+gn:3083725,Szemud,Pomerania,1639,village,0,0,50,0,none,none
+gn:3083749,Szczytna,Lower Silesia,5234,village,0,0,50,0,none,none
+gn:3083752,Szczyrk,Silesia,5860,village,0,0,50,0,none,none
+gn:3083762,Szczutowo,Mazovia,620,village,0,0,50,0,none,none
+gn:3083788,Szczerców,Łódź Voivodeship,3300,village,0,0,50,0,none,none
+gn:3083800,Szczepanów,Lower Silesia,1700,village,0,0,50,0,none,none
+gn:3083814,Szczekociny,Silesia,3841,village,0,0,50,0,none,none
+gn:3083826,Szczecinek,West Pomerania,38496,town,0,0,50,0,none,none
+gn:3083829,Szczecin,West Pomerania,395513,city,0,0,50,0,none,none
+gn:3083835,Szczawno-Zdrój,Lower Silesia,5586,village,0,0,50,0,none,none
+gn:3083847,Szczaniec,Lubusz,1473,village,0,0,50,0,none,none
+gn:3083878,Szamotuły,Greater Poland,18588,town,0,0,50,0,none,none
+gn:3083880,Szamocin,Greater Poland,4258,village,0,0,50,0,none,none
+gn:3083904,Szadek,Łódź Voivodeship,2012,village,0,0,50,0,none,none
+gn:3083907,Syrynia,Silesia,3138,village,0,0,50,0,none,none
+gn:3083908,Sypniewo,Greater Poland,1300,village,0,0,50,0,none,none
+gn:3083909,Sypniewo,Kujawsko-Pomorskie,1300,village,0,0,50,0,none,none
+gn:3083921,Syców,Lower Silesia,10809,town,0,0,50,0,none,none
+gn:3083955,Świnoujście,West Pomerania,40919,town,0,0,50,0,none,none
+gn:3083958,Świnna,Silesia,1891,village,0,0,50,0,none,none
+gn:3083964,Świnice Warckie,Łódź Voivodeship,1500,village,0,0,50,0,none,none
+gn:3083988,Świętochłowice,Silesia,55600,town,0,0,50,0,none,none
+gn:3084005,Święta Katarzyna,Lower Silesia,2000,village,0,0,50,0,none,none
+gn:3084020,Świerzno,West Pomerania,670,village,0,0,50,0,none,none
+gn:3084024,Świerzawa,Lower Silesia,2469,village,0,0,50,0,none,none
+gn:3084029,Świerklany Górne,Silesia,3912,village,0,0,50,0,none,none
+gn:3084030,Świerklany Dolne,Silesia,3420,village,0,0,50,0,none,none
+gn:3084033,Świerklaniec,Silesia,3786,village,0,0,50,0,none,none
+gn:3084051,Świerczów,Opole Voivodeship,492,village,0,0,50,0,none,none
+gn:3084055,Świeradów-Zdrój,Lower Silesia,4492,village,0,0,50,0,none,none
+gn:3084060,Świekatowo,Kujawsko-Pomorskie,1077,village,0,0,50,0,none,none
+gn:3084061,Świedziebnia,Kujawsko-Pomorskie,958,village,0,0,50,0,none,none
+gn:3084062,Świebodzin,Lubusz,21757,town,0,0,50,0,none,none
+gn:3084069,Świecie nad Osą,Kujawsko-Pomorskie,870,village,0,0,50,0,none,none
+gn:3084071,Święciechowa,Greater Poland,2640,village,0,0,50,0,none,none
+gn:3084074,Świecie,Kujawsko-Pomorskie,25843,town,0,0,50,0,none,none
+gn:3084084,Świebodzice,Lower Silesia,23228,town,0,0,50,0,none,none
+gn:3084085,Świdwin,West Pomerania,15725,town,0,0,50,0,none,none
+gn:3084092,Świdnica,Lubusz,1400,village,0,0,50,0,none,none
+gn:3084093,Świdnica,Lower Silesia,60351,town,0,0,50,0,none,none
+gn:3084107,Świątniki Górne,Lesser Poland,2125,village,0,0,50,0,none,none
+gn:3084130,Swarzędz,Greater Poland,29010,town,0,0,50,0,none,none
+gn:3084142,Suszec,Silesia,4183,village,0,0,50,0,none,none
+gn:3084143,Susz,Warmia-Masuria,5593,village,0,0,50,0,none,none
+gn:3084177,Sułów,Lower Silesia,1405,village,0,0,50,0,none,none
+gn:3084178,Sułoszowa,Lesser Poland,4200,village,0,0,50,0,none,none
+gn:3084184,Sulmierzyce,Greater Poland,2829,village,0,0,50,0,none,none
+gn:3084185,Sulmierzyce,Łódź Voivodeship,1400,village,0,0,50,0,none,none
+gn:3084194,Sułkowice,Lesser Poland,6362,village,0,0,50,0,none,none
+gn:3084195,Sułkowice,Lesser Poland,4835,village,0,0,50,0,none,none
+gn:3084213,Borne Sulinowo,West Pomerania,4349,village,0,0,50,0,none,none
+gn:3084224,Sulików,Lower Silesia,2014,village,0,0,50,0,none,none
+gn:3084230,Sulejów,Łódź Voivodeship,6332,village,0,0,50,0,none,none
+gn:3084234,Sulęczyno,Pomerania,1500,village,0,0,50,0,none,none
+gn:3084237,Sulęcin,Lesser Poland,10090,town,0,0,50,0,none,none
+gn:3084241,Sulechów,Lubusz,18055,town,0,0,50,0,none,none
+gn:3084258,Suchy Las,Greater Poland,4367,village,0,0,50,0,none,none
+gn:3084259,Suchy Dąb,Pomerania,832,village,0,0,50,0,none,none
+gn:3084288,Suchanino,Pomerania,9587,village,0,0,50,0,none,none
+gn:3084289,Suchań,West Pomerania,1465,village,0,0,50,0,none,none
+gn:3084300,Sucha Beskidzka,Lesser Poland,9801,village,0,0,50,0,none,none
+gn:3084312,Subkowy,Pomerania,1941,village,0,0,50,0,none,none
+gn:3084324,Studzionka,Silesia,2000,village,0,0,50,0,none,none
+gn:3084334,Studzienice,Pomerania,816,village,0,0,50,0,none,none
+gn:3084353,Strzyżowice,Silesia,1783,village,0,0,50,0,none,none
+gn:3084395,Strzelno,Pomerania,1063,village,0,0,50,0,none,none
+gn:3084396,Strzelno,Kujawsko-Pomorskie,5951,village,0,0,50,0,none,none
+gn:3084404,Strzelin,Lower Silesia,12394,town,0,0,50,0,none,none
+gn:3084408,Strzeleczki,Opole Voivodeship,1700,village,0,0,50,0,none,none
+gn:3084414,Strzelce Wielkie,Łódź Voivodeship,1100,village,0,0,50,0,none,none
+gn:3084415,Strzelce Opolskie,Opole Voivodeship,20241,town,0,0,50,0,none,none
+gn:3084421,Strzelce Krajeńskie,Lubusz,9978,village,0,0,50,0,none,none
+gn:3084426,Strzelce,Łódź Voivodeship,746,village,0,0,50,0,none,none
+gn:3084440,Strzegom,Lower Silesia,16106,town,0,0,50,0,none,none
+gn:3084444,Strzebiń,Silesia,3951,village,0,0,50,0,none,none
+gn:3084449,Strzałkowo,Greater Poland,5140,village,0,0,50,0,none,none
+gn:3084457,Stryszów,Lesser Poland,2101,village,0,0,50,0,none,none
+gn:3084460,Stryszawa,Lesser Poland,5266,village,0,0,50,0,none,none
+gn:3084464,Stryków,Łódź Voivodeship,3297,village,0,0,50,0,none,none
+gn:3084483,Strumień,Silesia,3419,village,0,0,50,0,none,none
+gn:3084507,Stróża,Lesser Poland,2900,village,0,0,50,0,none,none
+gn:3084515,Stronie Śląskie,Lower Silesia,6192,village,0,0,50,0,none,none
+gn:3084516,Stronie,Lesser Poland,1200,village,0,0,50,0,none,none
+gn:3084527,Straszyn,Pomerania,2962,village,0,0,50,0,none,none
+gn:3084556,Straconka,Silesia,3336,village,0,0,50,0,none,none
+gn:3084569,Stoszowice,Lower Silesia,1100,village,0,0,50,0,none,none
+gn:3084641,Stężyca,Pomerania,2200,village,0,0,50,0,none,none
+gn:3084647,Stęszew,Greater Poland,5596,village,0,0,50,0,none,none
+gn:3084660,Stepnica,West Pomerania,2067,village,0,0,50,0,none,none
+gn:3084673,Stegna,Pomerania,1978,village,0,0,50,0,none,none
+gn:3084717,Stawiszyn,Greater Poland,1564,village,0,0,50,0,none,none
+gn:3084759,Stary Targ,Pomerania,1162,village,0,0,50,0,none,none
+gn:3084807,Staroźreby,Mazovia,2128,village,0,0,50,0,none,none
+gn:3084811,Starowa Góra,Łódź Voivodeship,1300,village,0,0,50,0,none,none
+gn:3084824,Starokrzepice,Silesia,1319,village,0,0,50,0,none,none
+gn:3084826,Starogard Gdański,Pomerania,47272,town,0,0,50,0,none,none
+gn:3084840,Stargard,West Pomerania,71224,town,0,0,50,0,none,none
+gn:3084859,Stare Pole,Pomerania,1834,village,0,0,50,0,none,none
+gn:3084870,Stare Miasto,Greater Poland,1500,village,0,0,50,0,none,none
+gn:3084876,Stare Kurowo,Lubusz,2100,village,0,0,50,0,none,none
+gn:3084890,Stare Czarnowo,West Pomerania,520,village,0,0,50,0,none,none
+gn:3084900,Stare Bogaczowice,Lower Silesia,1450,village,0,0,50,0,none,none
+gn:3084903,Stare Bielsko,Silesia,6895,village,0,0,50,0,none,none
+gn:3084912,Starcza,Silesia,1232,village,0,0,50,0,none,none
+gn:3084953,Stara Kiszewa,Pomerania,1480,village,0,0,50,0,none,none
+gn:3084954,Stara Kamienica,Lower Silesia,1253,village,0,0,50,0,none,none
+gn:3084965,Stara Dąbrowa,West Pomerania,618,village,0,0,50,0,none,none
+gn:3084977,Stanowice,Lower Silesia,1200,village,0,0,50,0,none,none
+gn:3084978,Stanowice,Silesia,2254,village,0,0,50,0,none,none
+gn:3085018,Stanisław Górny,Lesser Poland,1017,village,0,0,50,0,none,none
+gn:3085019,Stanisław Dolny,Lesser Poland,2135,village,0,0,50,0,none,none
+gn:3085045,Środa Wielkopolska,Greater Poland,21757,town,0,0,50,0,none,none
+gn:3085047,Środa Śląska,Lower Silesia,8912,village,0,0,50,0,none,none
+gn:3085056,Śrem,Greater Poland,30404,town,0,0,50,0,none,none
+gn:3085069,Spytkowice,Lesser Poland,3898,village,0,0,50,0,none,none
+gn:3085070,Spytkowice,Lesser Poland,3390,village,0,0,50,0,none,none
+gn:3085119,Sosnówka,Lower Silesia,1200,village,0,0,50,0,none,none
+gn:3085128,Sosnowiec,Silesia,227295,city,0,0,50,0,none,none
+gn:3085130,Sosnowice,Lesser Poland,1087,village,0,0,50,0,none,none
+gn:3085134,Sośno,Kujawsko-Pomorskie,980,village,0,0,50,0,none,none
+gn:3085138,Sośnie,Greater Poland,1300,village,0,0,50,0,none,none
+gn:3085141,Sośnicowice,Silesia,1691,village,0,0,50,0,none,none
+gn:3085149,Sopotnia Wielka,Silesia,1667,village,0,0,50,0,none,none
+gn:3085151,Sopot,Pomerania,35049,town,0,0,50,0,none,none
+gn:3085158,Sompolno,Greater Poland,3610,village,0,0,50,0,none,none
+gn:3085159,Somonino,Pomerania,2206,village,0,0,50,0,none,none
+gn:3085172,Solec Kujawski,Kujawsko-Pomorskie,15125,town,0,0,50,0,none,none
+gn:3085182,Szczerbice,Silesia,2142,village,0,0,50,0,none,none
+gn:3085187,Sól,Silesia,1334,village,0,0,50,0,none,none
+gn:3085219,Sokolniki,Łódź Voivodeship,1200,village,0,0,50,0,none,none
+gn:3085252,Sobótka,Lower Silesia,6906,village,0,0,50,0,none,none
+gn:3085357,Smolec,Lower Silesia,2795,village,0,0,50,0,none,none
+gn:3085360,Smołdzino,Pomerania,984,village,0,0,50,0,none,none
+gn:3085384,Śmiłowo,Greater Poland,1145,village,0,0,50,0,none,none
+gn:3085391,Śmigiel,Greater Poland,5531,village,0,0,50,0,none,none
+gn:3085414,Smętowo Graniczne,Pomerania,3000,village,0,0,50,0,none,none
+gn:3085450,Słupsk,Pomerania,98608,town,0,0,50,0,none,none
+gn:3085457,Słupno,Mazovia,790,village,0,0,50,0,none,none
+gn:3085477,Słupia,Łódź Voivodeship,812,village,0,0,50,0,none,none
+gn:3085479,Słupia pod Kępnem,Greater Poland,1436,village,0,0,50,0,none,none
+gn:3085480,Słupia,Świętokrzyskie,937,village,0,0,50,0,none,none
+gn:3085481,Słupca,Greater Poland,14476,town,0,0,50,0,none,none
+gn:3085494,Słubice,Mazovia,2110,village,0,0,50,0,none,none
+gn:3085495,Słubice,Lubusz,17567,town,0,0,50,0,none,none
+gn:3085520,Słońsk,Lubusz,3000,village,0,0,50,0,none,none
+gn:3085565,Śliwice,Kujawsko-Pomorskie,4600,village,0,0,50,0,none,none
+gn:3085577,Ślesin,Kujawsko-Pomorskie,1500,village,0,0,50,0,none,none
+gn:3085578,Ślesin,Greater Poland,3182,village,0,0,50,0,none,none
+gn:3085584,Ślemień,Silesia,1977,village,0,0,50,0,none,none
+gn:3085609,Sławoborze,West Pomerania,2009,village,0,0,50,0,none,none
+gn:3085610,Sławno,West Pomerania,13415,town,0,0,50,0,none,none
+gn:3085616,Sławków,Silesia,6901,village,0,0,50,0,none,none
+gn:3085622,Sławięcice,Opole Voivodeship,2770,village,0,0,50,0,none,none
+gn:3085637,Sława,Lubusz,4038,village,0,0,50,0,none,none
+gn:3085656,Skwierzyna,Lubusz,10051,town,0,0,50,0,none,none
+gn:3085663,Skulsk,Greater Poland,1400,village,0,0,50,0,none,none
+gn:3085668,Skrzyszów,Silesia,3429,village,0,0,50,0,none,none
+gn:3085709,Skrwilno,Kujawsko-Pomorskie,1624,village,0,0,50,0,none,none
+gn:3085757,Skoroszyce,Opole Voivodeship,1400,village,0,0,50,0,none,none
+gn:3085761,Skorogoszcz,Opole Voivodeship,1200,village,0,0,50,0,none,none
+gn:3085766,Skórcz,Pomerania,3564,village,0,0,50,0,none,none
+gn:3085771,Skomlin,Łódź Voivodeship,1656,village,0,0,50,0,none,none
+gn:3085772,Skomielna Czarna,Lesser Poland,1400,village,0,0,50,0,none,none
+gn:3085781,Skoki,Greater Poland,3972,village,0,0,50,0,none,none
+gn:3085786,Skoczów,Silesia,14810,town,0,0,50,0,none,none
+gn:3085802,Skępe,Kujawsko-Pomorskie,3539,village,0,0,50,0,none,none
+gn:3085805,Skawinki,Lesser Poland,1600,village,0,0,50,0,none,none
+gn:3085807,Skawina,Lesser Poland,23647,town,0,0,50,0,none,none
+gn:3085809,Skawica,Lesser Poland,2600,village,0,0,50,0,none,none
+gn:3085826,Skarszewy,Pomerania,6942,village,0,0,50,0,none,none
+gn:3085848,Skąpe,Lubusz,421,village,0,0,50,0,none,none
+gn:3085855,Skalmierzyce,Greater Poland,1789,village,0,0,50,0,none,none
+gn:3085867,Skała,Lesser Poland,3635,village,0,0,50,0,none,none
+gn:3085925,Siewierz,Silesia,5417,village,0,0,50,0,none,none
+gn:3085941,Sierpc,Mazovia,18866,town,0,0,50,0,none,none
+gn:3085945,Sieroszewice,Greater Poland,1014,village,0,0,50,0,none,none
+gn:3085970,Sierakowice,Pomerania,7068,village,0,0,50,0,none,none
+gn:3085974,Sieraków,Greater Poland,6090,village,0,0,50,0,none,none
+gn:3085976,Sieraków Śląski,Silesia,1704,village,0,0,50,0,none,none
+gn:3085978,Sieradz,Łódź Voivodeship,44436,town,0,0,50,0,none,none
+gn:3085980,Siepraw,Lesser Poland,4237,village,0,0,50,0,none,none
+gn:3085999,Sieniawa Żarska,Lubusz,1090,village,0,0,50,0,none,none
+gn:3086000,Sieniawa,Lubusz,1100,village,0,0,50,0,none,none
+gn:3086001,Sieniawa,Lesser Poland,1929,village,0,0,50,0,none,none
+gn:3086010,Siemkowice,Łódź Voivodeship,1100,village,0,0,50,0,none,none
+gn:3086024,Siemianowice Śląskie,Silesia,73121,town,0,0,50,0,none,none
+gn:3086045,Siekierczyn,Lower Silesia,1800,village,0,0,50,0,none,none
+gn:3086054,Siedlisko,Lubusz,1800,village,0,0,50,0,none,none
+gn:3086080,Siedlec,Greater Poland,1200,village,0,0,50,0,none,none
+gn:3086106,Siechnice,Lower Silesia,4264,village,0,0,50,0,none,none
+gn:3086109,Sidzina,Opole Voivodeship,1022,village,0,0,50,0,none,none
+gn:3086110,Sidzina,Lesser Poland,2000,village,0,0,50,0,none,none
+gn:3086111,Sidzina,Lesser Poland,3200,village,0,0,50,0,none,none
+gn:3086118,Sicienko,Kujawsko-Pomorskie,800,village,0,0,50,0,none,none
+gn:3086134,Sianów,West Pomerania,6606,village,0,0,50,0,none,none
+gn:3086148,Serby,Lower Silesia,1917,village,0,0,50,0,none,none
+gn:3086153,Sępólno Krajeńskie,Kujawsko-Pomorskie,9223,village,0,0,50,0,none,none
+gn:3086181,Sędziejowice,Łódź Voivodeship,840,village,0,0,50,0,none,none
+gn:3086192,Secemin,Świętokrzyskie,1600,village,0,0,50,0,none,none
+gn:3086206,Ścinawa,Lower Silesia,5863,village,0,0,50,0,none,none
+gn:3086253,Sarnów,Silesia,1791,village,0,0,50,0,none,none
+gn:3086278,Sąspów,Lesser Poland,1358,village,0,0,50,0,none,none
+gn:3086283,Santok,Lubusz,780,village,0,0,50,0,none,none
+gn:3086288,Sanniki,Mazovia,2000,village,0,0,50,0,none,none
+gn:3086291,Sanka,Lesser Poland,1159,village,0,0,50,0,none,none
+gn:3086371,Sadlinki,Pomerania,1987,village,0,0,50,0,none,none
+gn:3086377,Sadki,Kujawsko-Pomorskie,2000,village,0,0,50,0,none,none
+gn:3086379,Sączów,Silesia,1406,village,0,0,50,0,none,none
+gn:3086391,Rzyki,Lesser Poland,3105,village,0,0,50,0,none,none
+gn:3086398,Rzozów,Lesser Poland,1600,village,0,0,50,0,none,none
+gn:3086399,Rzgów Pierwszy,Greater Poland,627,village,0,0,50,0,none,none
+gn:3086415,Rzeszotary,Lesser Poland,2698,village,0,0,50,0,none,none
+gn:3086435,Rzepin,Lubusz,6488,village,0,0,50,0,none,none
+gn:3086469,Rzeczenica,Pomerania,1566,village,0,0,50,0,none,none
+gn:3086480,Rząska,Lesser Poland,2082,village,0,0,50,0,none,none
+gn:3086511,Rypin,Kujawsko-Pomorskie,16589,town,0,0,50,0,none,none
+gn:3086523,Rymań,West Pomerania,1110,village,0,0,50,0,none,none
+gn:3086524,Ryjewo,Pomerania,2914,village,0,0,50,0,none,none
+gn:3086527,Rydzyna,Greater Poland,2696,village,0,0,50,0,none,none
+gn:3086531,Rydułtowy,Silesia,21887,town,0,0,50,0,none,none
+gn:3086533,Ryczywół,Greater Poland,2000,village,0,0,50,0,none,none
+gn:3086536,Ryczów,Lesser Poland,2605,village,0,0,50,0,none,none
+gn:3086541,Rychwał,Greater Poland,2370,village,0,0,50,0,none,none
+gn:3086544,Rychtal,Greater Poland,1300,village,0,0,50,0,none,none
+gn:3086565,Rycerka Górna,Silesia,1602,village,0,0,50,0,none,none
+gn:3086566,Rycerka Dolna,Silesia,1475,village,0,0,50,0,none,none
+gn:3086574,Rybno,Warmia-Masuria,2558,village,0,0,50,0,none,none
+gn:3086586,Rybnik,Silesia,142510,city,0,0,50,0,none,none
+gn:3086608,Rybarzowice,Silesia,3448,village,0,0,50,0,none,none
+gn:3086638,Rusocice,Lesser Poland,1164,village,0,0,50,0,none,none
+gn:3086654,Rusiec,Łódź Voivodeship,1500,village,0,0,50,0,none,none
+gn:3086706,Rumia,Pomerania,44791,town,0,0,50,0,none,none
+gn:3086720,Rudziniec,Silesia,1633,village,0,0,50,0,none,none
+gn:3086725,Rudziczka,Silesia,1152,village,0,0,50,0,none,none
+gn:3086732,Rudy,Silesia,2768,village,0,0,50,0,none,none
+gn:3086752,Rudniki,Silesia,1726,village,0,0,50,0,none,none
+gn:3086754,Rudniki,Silesia,1338,village,0,0,50,0,none,none
+gn:3086759,Rudnik,Silesia,916,village,0,0,50,0,none,none
+gn:3086760,Rudnik,Lesser Poland,2641,village,0,0,50,0,none,none
+gn:3086775,Rudna,Lower Silesia,1619,village,0,0,50,0,none,none
+gn:3086796,Rudawa,Lesser Poland,1720,village,0,0,50,0,none,none
+gn:3086800,Ruda Śląska,Silesia,146189,city,0,0,50,0,none,none
+gn:3086848,Rozwadza,Opole Voivodeship,1100,village,0,0,50,0,none,none
+gn:3086861,Rozprza,Łódź Voivodeship,1646,village,0,0,50,0,none,none
+gn:3086903,Rozdrażew,Greater Poland,1800,village,0,0,50,0,none,none
+gn:3086992,Rościszewo,Mazovia,668,village,0,0,50,0,none,none
+gn:3087027,Rokitno Szlacheckie,Silesia,1094,village,0,0,50,0,none,none
+gn:3087045,Rokietnica,Greater Poland,1900,village,0,0,50,0,none,none
+gn:3087046,Rokiciny,Łódź Voivodeship,699,village,0,0,50,0,none,none
+gn:3087047,Rokiciny,Lesser Poland,1491,village,0,0,50,0,none,none
+gn:3087071,Rogóźno,Kujawsko-Pomorskie,960,village,0,0,50,0,none,none
+gn:3087072,Rogoźno,Greater Poland,10859,town,0,0,50,0,none,none
+gn:3087076,Rogoźnik,Silesia,2753,village,0,0,50,0,none,none
+gn:3087096,Rogowo,Kujawsko-Pomorskie,540,village,0,0,50,0,none,none
+gn:3087097,Rogowo,Kujawsko-Pomorskie,2127,village,0,0,50,0,none,none
+gn:3087109,Rogów,Łódź Voivodeship,1500,village,0,0,50,0,none,none
+gn:3087112,Rogów,Silesia,2961,village,0,0,50,0,none,none
+gn:3087126,Rogalinek,Greater Poland,1563,village,0,0,50,0,none,none
+gn:3087144,Roczyny,Lesser Poland,3728,village,0,0,50,0,none,none
+gn:3087176,Rewal,West Pomerania,959,village,0,0,50,0,none,none
+gn:3087195,Resko,West Pomerania,4354,village,0,0,50,0,none,none
+gn:3087203,Reńska Wieś,Opole Voivodeship,1800,village,0,0,50,0,none,none
+gn:3087223,Rekowo Dolne,Pomerania,1509,village,0,0,50,0,none,none
+gn:3087246,Regulice,Lesser Poland,1882,village,0,0,50,0,none,none
+gn:3087256,Rędziny,Silesia,4753,village,0,0,50,0,none,none
+gn:3087281,Reda,Pomerania,18116,town,0,0,50,0,none,none
+gn:3087285,Ręczno,Łódź Voivodeship,690,village,0,0,50,0,none,none
+gn:3087287,Recz,West Pomerania,2992,village,0,0,50,0,none,none
+gn:3087307,Rawicz,Greater Poland,21380,town,0,0,50,0,none,none
+gn:3087316,Ratowice,Lower Silesia,1100,village,0,0,50,0,none,none
+gn:3087330,Raszowa,Opole Voivodeship,1041,village,0,0,50,0,none,none
+gn:3087333,Raszków,Greater Poland,2079,village,0,0,50,0,none,none
+gn:3087339,Raszczyce,Silesia,1068,village,0,0,50,0,none,none
+gn:3087383,Rakoniewice,Greater Poland,3322,village,0,0,50,0,none,none
+gn:3087391,Rajsko,Lesser Poland,1440,village,0,0,50,0,none,none
+gn:3087401,Rajcza,Silesia,3438,village,0,0,50,0,none,none
+gn:3087410,Radzyń Chełmiński,Kujawsko-Pomorskie,1934,village,0,0,50,0,none,none
+gn:3087415,Radziszów,Lesser Poland,2800,village,0,0,50,0,none,none
+gn:3087418,Radzionków,Silesia,17167,town,0,0,50,0,none,none
+gn:3087427,Radziejów,Kujawsko-Pomorskie,5759,village,0,0,50,0,none,none
+gn:3087431,Radziechowy,Silesia,4541,village,0,0,50,0,none,none
+gn:3087440,Radzanowo,Mazovia,1186,village,0,0,50,0,none,none
+gn:3087462,Radowo Małe,West Pomerania,1200,village,0,0,50,0,none,none
+gn:3087485,Radostowice,Silesia,1559,village,0,0,50,0,none,none
+gn:3087497,Radomsko,Łódź Voivodeship,44700,town,0,0,50,0,none,none
+gn:3087499,Radomin,Kujawsko-Pomorskie,1012,village,0,0,50,0,none,none
+gn:3087520,Radocza,Lesser Poland,1997,village,0,0,50,0,none,none
+gn:3087529,Radlin,Silesia,17479,town,0,0,50,0,none,none
+gn:3087535,Radków,Lower Silesia,2410,village,0,0,50,0,none,none
+gn:3087559,Rączna,Lesser Poland,1736,village,0,0,50,0,none,none
+gn:3087573,Racławice Śląskie,Opole Voivodeship,1600,village,0,0,50,0,none,none
+gn:3087576,Racławice,Lesser Poland,1540,village,0,0,50,0,none,none
+gn:3087584,Racibórz,Silesia,58464,town,0,0,50,0,none,none
+gn:3087589,Raciążek,Kujawsko-Pomorskie,1600,village,0,0,50,0,none,none
+gn:3087601,Rabka-Zdrój,Lesser Poland,13071,town,0,0,50,0,none,none
+gn:3087603,Rąbino,West Pomerania,1100,village,0,0,50,0,none,none
+gn:3087613,Raba Wyżna,Lesser Poland,4116,village,0,0,50,0,none,none
+gn:3087617,Pyzdry,Greater Poland,3203,village,0,0,50,0,none,none
+gn:3087628,Pyskowice,Silesia,19018,town,0,0,50,0,none,none
+gn:3087630,Pyrzyce,West Pomerania,12893,town,0,0,50,0,none,none
+gn:3087640,Puszczykowo,Greater Poland,9143,village,0,0,50,0,none,none
+gn:3087675,Puńców,Silesia,1508,village,0,0,50,0,none,none
+gn:3087691,Puck,Pomerania,11415,town,0,0,50,0,none,none
+gn:3087701,Pszów,Silesia,14028,town,0,0,50,0,none,none
+gn:3087705,Pszczyna,Silesia,25288,town,0,0,50,0,none,none
+gn:3087708,Pszczółki,Pomerania,4053,village,0,0,50,0,none,none
+gn:3087710,Pszczew,Lubusz,1826,village,0,0,50,0,none,none
+gn:3087740,Psary,Lower Silesia,1018,village,0,0,50,0,none,none
+gn:3087742,Psary,Silesia,1304,village,0,0,50,0,none,none
+gn:3087743,Psary,Silesia,2717,village,0,0,50,0,none,none
+gn:3087744,Psary,Lesser Poland,1429,village,0,0,50,0,none,none
+gn:3087758,Przywidz,Pomerania,1673,village,0,0,50,0,none,none
+gn:3087769,Przytoczna,Lubusz,2400,village,0,0,50,0,none,none
+gn:3087771,Przytkowice,Lesser Poland,2560,village,0,0,50,0,none,none
+gn:3087773,Przyszowice,Silesia,3203,village,0,0,50,0,none,none
+gn:3087782,Przystajń,Silesia,2283,village,0,0,50,0,none,none
+gn:3087800,Przyrów,Silesia,1222,village,0,0,50,0,none,none
+gn:3087836,Przykona,Greater Poland,520,village,0,0,50,0,none,none
+gn:3087847,Przygodzice,Greater Poland,3000,village,0,0,50,0,none,none
+gn:3087895,Przyborów,Lubusz,1200,village,0,0,50,0,none,none
+gn:3087896,Przyborów,Silesia,1793,village,0,0,50,0,none,none
+gn:3087905,Przybiernów,West Pomerania,1700,village,0,0,50,0,none,none
+gn:3087906,Przodkowo,Pomerania,1286,village,0,0,50,0,none,none
+gn:3087917,Przewóz,Lubusz,850,village,0,0,50,0,none,none
+gn:3087920,Przeworno,Lower Silesia,1259,village,0,0,50,0,none,none
+gn:3087936,Przeróbka,Pomerania,3585,village,0,0,50,0,none,none
+gn:3087954,Przemków,Lower Silesia,6487,village,0,0,50,0,none,none
+gn:3087956,Przemęt,Greater Poland,1600,village,0,0,50,0,none,none
+gn:3087958,Przelewice,West Pomerania,770,village,0,0,50,0,none,none
+gn:3087975,Przeginia,Lesser Poland,2093,village,0,0,50,0,none,none
+gn:3087992,Przedecz,Greater Poland,1780,village,0,0,50,0,none,none
+gn:3087994,Przedbórz,Łódź Voivodeship,3765,village,0,0,50,0,none,none
+gn:3088006,Przecław,West Pomerania,3362,village,0,0,50,0,none,none
+gn:3088011,Przeciszów,Lesser Poland,3996,village,0,0,50,0,none,none
+gn:3088013,Przecieszyn,Lesser Poland,1157,village,0,0,50,0,none,none
+gn:3088017,Przechlewo,Pomerania,2826,village,0,0,50,0,none,none
+gn:3088033,Pruszcz,Kujawsko-Pomorskie,2300,village,0,0,50,0,none,none
+gn:3088034,Pruszcz Gdański,Pomerania,23618,town,0,0,50,0,none,none
+gn:3088060,Prusice,Lower Silesia,2203,village,0,0,50,0,none,none
+gn:3088065,Prudnik,Opole Voivodeship,23343,town,0,0,50,0,none,none
+gn:3088067,Pruchna,Silesia,2446,village,0,0,50,0,none,none
+gn:3088077,Prószków,Opole Voivodeship,2691,village,0,0,50,0,none,none
+gn:3088096,Prochowice,Lower Silesia,3743,village,0,0,50,0,none,none
+gn:3088135,Praszka,Opole Voivodeship,8150,village,0,0,50,0,none,none
+gn:3088161,Prabuty,Pomerania,8488,village,0,0,50,0,none,none
+gn:3088171,Poznań,Greater Poland,536151,large-city,0,0,50,0,none,none
+gn:3088192,Powidz,Greater Poland,1000,village,0,0,50,0,none,none
+gn:3088211,Potok Złoty,Silesia,1101,village,0,0,50,0,none,none
+gn:3088220,Potęgowo,Pomerania,1416,village,0,0,50,0,none,none
+gn:3088268,Poręba Wielka,Lesser Poland,1858,village,0,0,50,0,none,none
+gn:3088271,Cynków,Silesia,1198,village,0,0,50,0,none,none
+gn:3088273,Poręba,Silesia,8718,village,0,0,50,0,none,none
+gn:3088281,Poraj,Silesia,4418,village,0,0,50,0,none,none
+gn:3088290,Porąbka,Silesia,3852,village,0,0,50,0,none,none
+gn:3088315,Popów,Silesia,0,village,0,0,50,0,none,none
+gn:3088324,Popielów,Opole Voivodeship,2400,village,0,0,50,0,none,none
+gn:3088341,Ponikiew,Lesser Poland,1237,village,0,0,50,0,none,none
+gn:3088345,Poniec,Greater Poland,2849,village,0,0,50,0,none,none
+gn:3088418,Polska Cerekiew,Opole Voivodeship,1429,village,0,0,50,0,none,none
+gn:3088427,Połomia,Silesia,2497,village,0,0,50,0,none,none
+gn:3088435,Polkowice,Lower Silesia,21565,town,0,0,50,0,none,none
+gn:3088461,Police,West Pomerania,34350,town,0,0,50,0,none,none
+gn:3088477,Połczyn-Zdrój,West Pomerania,8682,village,0,0,50,0,none,none
+gn:3088492,Polanów,West Pomerania,2960,village,0,0,50,0,none,none
+gn:3088493,Polanka Wielka,Lesser Poland,3800,village,0,0,50,0,none,none
+gn:3088496,Polanica-Zdrój,Lower Silesia,6966,village,0,0,50,0,none,none
+gn:3088504,Połajewo,Greater Poland,2237,village,0,0,50,0,none,none
+gn:3088526,Pokój,Opole Voivodeship,1400,village,0,0,50,0,none,none
+gn:3088535,Pogwizdów,Silesia,3449,village,0,0,50,0,none,none
+gn:3088538,Pogrzebień,Silesia,1215,village,0,0,50,0,none,none
+gn:3088541,Pogorzyce,Lesser Poland,1400,village,0,0,50,0,none,none
+gn:3088548,Pogorzela,Greater Poland,2015,village,0,0,50,0,none,none
+gn:3088550,Pogórze,Pomerania,1123,village,0,0,50,0,none,none
+gn:3088574,Podwilk,Lesser Poland,2396,village,0,0,50,0,none,none
+gn:3088676,Podjuchy,West Pomerania,8606,village,0,0,50,0,none,none
+gn:3088685,Podgórzyn,Lower Silesia,1700,village,0,0,50,0,none,none
+gn:3088710,Poddębice,Łódź Voivodeship,7840,village,0,0,50,0,none,none
+gn:3088747,Pobierowo,West Pomerania,1084,village,0,0,50,0,none,none
+gn:3088749,Pobiedziska,Greater Poland,8677,village,0,0,50,0,none,none
+gn:3088759,Pniewy,Greater Poland,7738,village,0,0,50,0,none,none
+gn:3088774,Płużnica,Kujawsko-Pomorskie,543,village,0,0,50,0,none,none
+gn:3088788,Płoty,West Pomerania,4093,village,0,0,50,0,none,none
+gn:3088825,Płock,Mazovia,127474,city,0,0,50,0,none,none
+gn:3088846,Plewiska,Greater Poland,5861,village,0,0,50,0,none,none
+gn:3088848,Pleszew,Greater Poland,17640,town,0,0,50,0,none,none
+gn:3088866,Płaza,Lesser Poland,4000,village,0,0,50,0,none,none
+gn:3088873,Pławno,Łódź Voivodeship,1200,village,0,0,50,0,none,none
+gn:3088927,Pisarzowice,Lower Silesia,1600,village,0,0,50,0,none,none
+gn:3088931,Pisarzowice,Silesia,4673,village,0,0,50,0,none,none
+gn:3088972,Piotrków Trybunalski,Łódź Voivodeship,80128,town,0,0,50,0,none,none
+gn:3088977,Piotrków Kujawski,Kujawsko-Pomorskie,5030,village,0,0,50,0,none,none
+gn:3089010,Pilica,Silesia,1999,village,0,0,50,0,none,none
+gn:3089016,Pilchowo,West Pomerania,1284,village,0,0,50,0,none,none
+gn:3089019,Pilchowice,Silesia,2919,village,0,0,50,0,none,none
+gn:3089025,Piława Górna,Lower Silesia,6736,village,0,0,50,0,none,none
+gn:3089033,Piła,Greater Poland,75532,town,0,0,50,0,none,none
+gn:3089048,Pietrzykowice,Silesia,4339,village,0,0,50,0,none,none
+gn:3089057,Pietrowice Wielkie,Silesia,2239,village,0,0,50,0,none,none
+gn:3089065,Pieszyce,Lower Silesia,9406,village,0,0,50,0,none,none
+gn:3089093,Pierściec,Silesia,2111,village,0,0,50,0,none,none
+gn:3089098,Pieńsk,Lower Silesia,5813,village,0,0,50,0,none,none
+gn:3089114,Pielgrzymowice,Silesia,2407,village,0,0,50,0,none,none
+gn:3089123,Piekielnik,Lesser Poland,2314,village,0,0,50,0,none,none
+gn:3089125,Piekary Śląskie,Silesia,59757,town,0,0,50,0,none,none
+gn:3089134,Piekary,Lesser Poland,1200,village,0,0,50,0,none,none
+gn:3089152,Piechowice,Lower Silesia,6496,village,0,0,50,0,none,none
+gn:3089173,Piątek,Łódź Voivodeship,2130,village,0,0,50,0,none,none
+gn:3089217,Piaski,Greater Poland,3157,village,0,0,50,0,none,none
+gn:3089238,Piasek,Silesia,3342,village,0,0,50,0,none,none
+gn:3089255,Pewel Wielka,Silesia,1548,village,0,0,50,0,none,none
+gn:3089256,Pewel Ślemieńska,Silesia,1555,village,0,0,50,0,none,none
+gn:3089267,Perzów,Greater Poland,774,village,0,0,50,0,none,none
+gn:3089276,Pępowo,Greater Poland,1780,village,0,0,50,0,none,none
+gn:3089282,Pelplin,Pomerania,8320,village,0,0,50,0,none,none
+gn:3089286,Pełczyce,West Pomerania,2808,village,0,0,50,0,none,none
+gn:3089298,Pęczniew,Łódź Voivodeship,3871,village,0,0,50,0,none,none
+gn:3089301,Pecna,Greater Poland,1825,village,0,0,50,0,none,none
+gn:3089310,Pcim,Lesser Poland,4900,village,0,0,50,0,none,none
+gn:3089316,Pawonków,Silesia,1496,village,0,0,50,0,none,none
+gn:3089332,Pawłowiczki,Opole Voivodeship,1300,village,0,0,50,0,none,none
+gn:3089340,Pawłowice,Silesia,9929,village,0,0,50,0,none,none
+gn:3089372,Pątnów,Łódź Voivodeship,1400,village,0,0,50,0,none,none
+gn:3089375,Paszowice,Lower Silesia,1429,village,0,0,50,0,none,none
+gn:3089392,Pasłęk,Warmia-Masuria,12267,town,0,0,50,0,none,none
+gn:3089421,Parzęczew,Łódź Voivodeship,672,village,0,0,50,0,none,none
+gn:3089461,Parchowo,Pomerania,1019,village,0,0,50,0,none,none
+gn:3089494,Panki,Silesia,1733,village,0,0,50,0,none,none
+gn:3089496,Paniówki,Silesia,2297,village,0,0,50,0,none,none
+gn:3089507,Pamiątkowo,Greater Poland,1200,village,0,0,50,0,none,none
+gn:3089533,Palcza,Lesser Poland,1100,village,0,0,50,0,none,none
+gn:3089541,Pakosławice,Opole Voivodeship,500,village,0,0,50,0,none,none
+gn:3089543,Pakosław,Greater Poland,1061,village,0,0,50,0,none,none
+gn:3089547,Pakość,Kujawsko-Pomorskie,5762,village,0,0,50,0,none,none
+gn:3089553,Pajęczno,Łódź Voivodeship,6731,village,0,0,50,0,none,none
+gn:3089566,Paczków,Opole Voivodeship,8081,village,0,0,50,0,none,none
+gn:3089569,Pacyna,Mazovia,219,village,0,0,50,0,none,none
+gn:3089578,Pabianice,Łódź Voivodeship,70542,town,0,0,50,0,none,none
+gn:3089582,Ozorków,Łódź Voivodeship,20608,town,0,0,50,0,none,none
+gn:3089583,Ozimek,Opole Voivodeship,9963,village,0,0,50,0,none,none
+gn:3089590,Ożarowice,Silesia,1532,village,0,0,50,0,none,none
+gn:3089591,Ożarów,Łódź Voivodeship,1013,village,0,0,50,0,none,none
+gn:3089612,Otyń,Lubusz,1200,village,0,0,50,0,none,none
+gn:3089642,Otmuchów,Opole Voivodeship,5181,village,0,0,50,0,none,none
+gn:3089658,Oświęcim,Lesser Poland,34170,town,0,0,50,0,none,none
+gn:3089670,Ostrzeszów,Greater Poland,14446,town,0,0,50,0,none,none
+gn:3089680,Ostrowy,Łódź Voivodeship,1200,village,0,0,50,0,none,none
+gn:3089681,Ostrowy nad Okszą,Silesia,1935,village,0,0,50,0,none,none
+gn:3089684,Ostrów Wielkopolski,Greater Poland,72898,town,0,0,50,0,none,none
+gn:3089716,Ostrowite,Kujawsko-Pomorskie,1300,village,0,0,50,0,none,none
+gn:3089719,Ostrowite,Greater Poland,582,village,0,0,50,0,none,none
+gn:3089764,Ostroszowice,Lower Silesia,1303,village,0,0,50,0,none,none
+gn:3089767,Ostroróg,Greater Poland,1984,village,0,0,50,0,none,none
+gn:3089779,Ostróda,Warmia-Masuria,33524,town,0,0,50,0,none,none
+gn:3089781,Ostrężnica,Lesser Poland,1054,village,0,0,50,0,none,none
+gn:3089791,Ostaszewo,Pomerania,1017,village,0,0,50,0,none,none
+gn:3089823,Osowa,Pomerania,16021,town,0,0,50,0,none,none
+gn:3089832,Ośno Lubuskie,Lubusz,3730,village,0,0,50,0,none,none
+gn:3089855,Osjaków,Łódź Voivodeship,1221,village,0,0,50,0,none,none
+gn:3089876,Osina,West Pomerania,2952,village,0,0,50,0,none,none
+gn:3089881,Osielsko,Kujawsko-Pomorskie,3930,village,0,0,50,0,none,none
+gn:3089882,Osielec,Lesser Poland,3000,village,0,0,50,0,none,none
+gn:3089891,Osiek nad Notecią,Greater Poland,4000,village,0,0,50,0,none,none
+gn:3089892,Osiek Mały,Greater Poland,630,village,0,0,50,0,none,none
+gn:3089904,Osiek,Pomerania,1012,village,0,0,50,0,none,none
+gn:3089908,Osiek,Kujawsko-Pomorskie,1064,village,0,0,50,0,none,none
+gn:3089917,Osiek,Lower Silesia,1117,village,0,0,50,0,none,none
+gn:3089923,Osiek,Lesser Poland,1405,village,0,0,50,0,none,none
+gn:3089924,Osiek,Lesser Poland,8000,village,0,0,50,0,none,none
+gn:3089934,Osieczna,Greater Poland,2132,village,0,0,50,0,none,none
+gn:3089941,Osięciny,Kujawsko-Pomorskie,2845,village,0,0,50,0,none,none
+gn:3089942,Osie,Kujawsko-Pomorskie,2520,village,0,0,50,0,none,none
+gn:3089965,Orzesze,Silesia,18438,town,0,0,50,0,none,none
+gn:3089976,Orzech,Silesia,1942,village,0,0,50,0,none,none
+gn:3089987,Ornontowice,Silesia,5291,village,0,0,50,0,none,none
+gn:3090007,Orle,Pomerania,1373,village,0,0,50,0,none,none
+gn:3090022,Orchowo,Greater Poland,1210,village,0,0,50,0,none,none
+gn:3090043,Oporów,Łódź Voivodeship,280,village,0,0,50,0,none,none
+gn:3090048,Opole,Opole Voivodeship,127676,city,0,0,50,0,none,none
+gn:3090066,Opatówek,Greater Poland,3800,village,0,0,50,0,none,none
+gn:3090067,Opatów,Greater Poland,1200,village,0,0,50,0,none,none
+gn:3090068,Opatów,Silesia,1213,village,0,0,50,0,none,none
+gn:3090076,Opalenica,Greater Poland,8991,village,0,0,50,0,none,none
+gn:3090082,Olza,Silesia,1699,village,0,0,50,0,none,none
+gn:3090087,Ołtaszyn,Lower Silesia,6948,village,0,0,50,0,none,none
+gn:3090099,Olszyna,Lower Silesia,4739,village,0,0,50,0,none,none
+gn:3090104,Olsztyn,Silesia,2331,village,0,0,50,0,none,none
+gn:3090105,Olszówka,Greater Poland,440,village,0,0,50,0,none,none
+gn:3090127,Olszanka,Opole Voivodeship,447,village,0,0,50,0,none,none
+gn:3090130,Olszanica,Lower Silesia,1118,village,0,0,50,0,none,none
+gn:3090146,Olkusz,Lesser Poland,37744,town,0,0,50,0,none,none
+gn:3090147,Oliwa,Pomerania,14618,town,0,0,50,0,none,none
+gn:3090158,Olesno,Opole Voivodeship,10236,town,0,0,50,0,none,none
+gn:3090170,Oleśnica,Lower Silesia,36956,town,0,0,50,0,none,none
+gn:3090205,Oława,Lower Silesia,33029,town,0,0,50,0,none,none
+gn:3090207,Kołaczkowo,Greater Poland,753,village,0,0,50,0,none,none
+gn:3090245,Okonek,Greater Poland,3833,village,0,0,50,0,none,none
+gn:3090285,Ogrodzieniec,Silesia,4467,village,0,0,50,0,none,none
+gn:3090315,Odolanów,Greater Poland,4960,village,0,0,50,0,none,none
+gn:3090342,Ochojno,Lesser Poland,1492,village,0,0,50,0,none,none
+gn:3090357,Ochla,Lubusz,1544,village,0,0,50,0,none,none
+gn:3090360,Ochaby,Silesia,2016,village,0,0,50,0,none,none
+gn:3090364,Obrzycko,Greater Poland,2226,village,0,0,50,0,none,none
+gn:3090373,Obrowo,Kujawsko-Pomorskie,1410,village,0,0,50,0,none,none
+gn:3090401,Oborniki Śląskie,Lower Silesia,8440,village,0,0,50,0,none,none
+gn:3090403,Oborniki,Greater Poland,17915,town,0,0,50,0,none,none
+gn:3090407,Obora,Lower Silesia,1924,village,0,0,50,0,none,none
+gn:3090436,Nysa,Opole Voivodeship,47283,town,0,0,50,0,none,none
+gn:3090452,Nowy Tomyśl,Greater Poland,15179,town,0,0,50,0,none,none
+gn:3090470,Nowy Staw,Pomerania,4403,village,0,0,50,0,none,none
+gn:3090502,Nowy Dwór Gdański,Pomerania,9822,village,0,0,50,0,none,none
+gn:3090528,Nowy Duninów,Mazovia,873,village,0,0,50,0,none,none
+gn:3090551,Nowogrodziec,Lower Silesia,4031,village,0,0,50,0,none,none
+gn:3090552,Nowogródek Pomorski,West Pomerania,450,village,0,0,50,0,none,none
+gn:3090553,Nowogród Bobrzański,Lubusz,5114,village,0,0,50,0,none,none
+gn:3090558,Nowogard,West Pomerania,16703,town,0,0,50,0,none,none
+gn:3090590,Nowe Warpno,West Pomerania,1200,village,0,0,50,0,none,none
+gn:3090597,Nowe Skalmierzyce,Greater Poland,4961,village,0,0,50,0,none,none
+gn:3090612,Nowe Miasto nad Wartą,Greater Poland,1543,village,0,0,50,0,none,none
+gn:3090613,Nowe Miasto Lubawskie,Warmia-Masuria,10997,town,0,0,50,0,none,none
+gn:3090616,Nowe Miasteczko,Lubusz,2825,village,0,0,50,0,none,none
+gn:3090660,Nowe,Kujawsko-Pomorskie,6104,village,0,0,50,0,none,none
+gn:3090673,Nowa Wieś Wielka,Kujawsko-Pomorskie,2207,village,0,0,50,0,none,none
+gn:3090690,Nowa Wieś Lęborska,Pomerania,2188,village,0,0,50,0,none,none
+gn:3090759,Nowa Wieś,Lesser Poland,3648,village,0,0,50,0,none,none
+gn:3090764,Nowa Sól,Lubusz,40354,town,0,0,50,0,none,none
+gn:3090768,Nowa Ruda,Lower Silesia,24753,town,0,0,50,0,none,none
+gn:3090798,Nowa Góra,Lesser Poland,1637,village,0,0,50,0,none,none
+gn:3090907,Nieszawa,Kujawsko-Pomorskie,2002,village,0,0,50,0,none,none
+gn:3090951,Niemodlin,Opole Voivodeship,6315,village,0,0,50,0,none,none
+gn:3090967,Niemcza,Lower Silesia,3110,village,0,0,50,0,none,none
+gn:3090990,Niegowonice,Silesia,2453,village,0,0,50,0,none,none
+gn:3091031,Niedobczyce,Silesia,10846,town,0,0,50,0,none,none
+gn:3091058,Niechanowo,Greater Poland,2300,village,0,0,50,0,none,none
+gn:3091070,Nidek,Lesser Poland,1339,village,0,0,50,0,none,none
+gn:3091089,Nekla,Greater Poland,3351,village,0,0,50,0,none,none
+gn:3091095,Nędza,Silesia,3344,village,0,0,50,0,none,none
+gn:3091135,Naprawa,Lesser Poland,2100,village,0,0,50,0,none,none
+gn:3091141,Namysłów,Opole Voivodeship,16376,town,0,0,50,0,none,none
+gn:3091150,Nakło nad Notecią,Kujawsko-Pomorskie,19565,town,0,0,50,0,none,none
+gn:3091153,Nakło,Opole Voivodeship,1431,village,0,0,50,0,none,none
+gn:3091154,Nakło,Silesia,3824,village,0,0,50,0,none,none
+gn:3091217,Myszków,Silesia,33273,town,0,0,50,0,none,none
+gn:3091232,Mysłowice,Silesia,72124,town,0,0,50,0,none,none
+gn:3091253,Myślibórz,West Pomerania,12092,town,0,0,50,0,none,none
+gn:3091256,Myślenice,Lesser Poland,17686,town,0,0,50,0,none,none
+gn:3091263,Mysłakowice,Lower Silesia,5100,village,0,0,50,0,none,none
+gn:3091265,Myślachowice,Lesser Poland,2081,village,0,0,50,0,none,none
+gn:3091269,Mykanów,Silesia,1002,village,0,0,50,0,none,none
+gn:3091293,Murowana Goślina,Greater Poland,9989,village,0,0,50,0,none,none
+gn:3091294,Murów,Opole Voivodeship,1577,village,0,0,50,0,none,none
+gn:3091297,Murcki,Silesia,5796,village,0,0,50,0,none,none
+gn:3091315,Mszana,Silesia,3559,village,0,0,50,0,none,none
+gn:3091323,Mstów,Silesia,1704,village,0,0,50,0,none,none
+gn:3091331,Mrzeżyno,West Pomerania,1671,village,0,0,50,0,none,none
+gn:3091332,Mrzezino,Pomerania,2312,village,0,0,50,0,none,none
+gn:3091336,Mrozów,Lower Silesia,1100,village,0,0,50,0,none,none
+gn:3091351,Mrocza,Kujawsko-Pomorskie,4347,village,0,0,50,0,none,none
+gn:3091371,Moszczenica,Łódź Voivodeship,2571,village,0,0,50,0,none,none
+gn:3091375,Moszczanka,Opole Voivodeship,1116,village,0,0,50,0,none,none
+gn:3091377,Mosty,Pomerania,1830,village,0,0,50,0,none,none
+gn:3091378,Mosty,West Pomerania,1420,village,0,0,50,0,none,none
+gn:3091407,Mosina,Greater Poland,12318,town,0,0,50,0,none,none
+gn:3091435,Moryń,West Pomerania,1634,village,0,0,50,0,none,none
+gn:3091462,Morąg,Warmia-Masuria,14745,town,0,0,50,0,none,none
+gn:3091493,Mokrsko,Łódź Voivodeship,1500,village,0,0,50,0,none,none
+gn:3091523,Mogilno,Kujawsko-Pomorskie,12465,town,0,0,50,0,none,none
+gn:3091528,Mogilany,Lesser Poland,2605,village,0,0,50,0,none,none
+gn:3091547,Modlniczka,Lesser Poland,1149,village,0,0,50,0,none,none
+gn:3091548,Modlnica,Lesser Poland,1265,village,0,0,50,0,none,none
+gn:3091585,Mochowo,Mazovia,310,village,0,0,50,0,none,none
+gn:3091598,Mników,Lesser Poland,1212,village,0,0,50,0,none,none
+gn:3091605,Mnich,Silesia,3541,village,0,0,50,0,none,none
+gn:3091641,Młynary,Warmia-Masuria,1815,village,0,0,50,0,none,none
+gn:3091686,Mirsk,Lower Silesia,4150,village,0,0,50,0,none,none
+gn:3091700,Mirosławiec,West Pomerania,2616,village,0,0,50,0,none,none
+gn:3091743,Milówka,Silesia,4448,village,0,0,50,0,none,none
+gn:3091757,Miłosław,Greater Poland,3560,village,0,0,50,0,none,none
+gn:3091760,Miłoradz,Pomerania,1114,village,0,0,50,0,none,none
+gn:3091763,Miłomłyn,Warmia-Masuria,2336,village,0,0,50,0,none,none
+gn:3091780,Miłkowice,Lower Silesia,2000,village,0,0,50,0,none,none
+gn:3091788,Milicz,Lower Silesia,11304,town,0,0,50,0,none,none
+gn:3091811,Mikuszowice,Silesia,7075,village,0,0,50,0,none,none
+gn:3091817,Mikstat,Greater Poland,1832,village,0,0,50,0,none,none
+gn:3091831,Mikołów,Silesia,38821,town,0,0,50,0,none,none
+gn:3091838,Mikołajki Pomorskie,Pomerania,1416,village,0,0,50,0,none,none
+gn:3091861,Mieszkowice,West Pomerania,3562,village,0,0,50,0,none,none
+gn:3091874,Mieścisko,Greater Poland,2500,village,0,0,50,0,none,none
+gn:3091894,Mierzęcice,Silesia,2676,village,0,0,50,0,none,none
+gn:3091901,Mieroszów,Lower Silesia,4480,village,0,0,50,0,none,none
+gn:3091913,Mielno,West Pomerania,2184,village,0,0,50,0,none,none
+gn:3091937,Mieleszyn,Greater Poland,921,village,0,0,50,0,none,none
+gn:3091953,Miękinia,Lower Silesia,2500,village,0,0,50,0,none,none
+gn:3091954,Miękinia,Lesser Poland,1232,village,0,0,50,0,none,none
+gn:3091957,Miejska Górka,Greater Poland,3169,village,0,0,50,0,none,none
+gn:3091961,Międzyzdroje,West Pomerania,5502,village,0,0,50,0,none,none
+gn:3091964,Międzyrzecze Górne,Silesia,2257,village,0,0,50,0,none,none
+gn:3091965,Międzyrzecze Dolne,Silesia,1059,village,0,0,50,0,none,none
+gn:3091969,Międzyrzecz,Lubusz,18669,town,0,0,50,0,none,none
+gn:3091974,Międzylesie,Lubusz,1971,village,0,0,50,0,none,none
+gn:3091979,Międzylesie,Lower Silesia,2766,village,0,0,50,0,none,none
+gn:3091983,Międzychód,Greater Poland,10994,town,0,0,50,0,none,none
+gn:3091988,Międzybrodzie Bialskie,Silesia,3154,village,0,0,50,0,none,none
+gn:3091991,Międzybórz,Lower Silesia,2354,village,0,0,50,0,none,none
+gn:3091997,Miedzno,Silesia,2529,village,0,0,50,0,none,none
+gn:3091999,Miedźna,Silesia,1588,village,0,0,50,0,none,none
+gn:3092000,Miedzichowo,Greater Poland,471,village,0,0,50,0,none,none
+gn:3092024,Miechów Charsznica,Lesser Poland,1942,village,0,0,50,0,none,none
+gn:3092044,Michałowice,Lesser Poland,1600,village,0,0,50,0,none,none
+gn:3092080,Miastko,Pomerania,10954,town,0,0,50,0,none,none
+gn:3092082,Miasteczko Śląskie,Silesia,7044,village,0,0,50,0,none,none
+gn:3092083,Miasteczko Krajeńskie,Greater Poland,1163,village,0,0,50,0,none,none
+gn:3092105,Mętków,Lesser Poland,1409,village,0,0,50,0,none,none
+gn:3092109,Meszna,Silesia,1955,village,0,0,50,0,none,none
+gn:3092162,Mazańcowice,Silesia,3401,village,0,0,50,0,none,none
+gn:3092186,Matarnia,Pomerania,6052,village,0,0,50,0,none,none
+gn:3092195,Maszewo Duże,Mazovia,1332,village,0,0,50,0,none,none
+gn:3092197,Maszewo,West Pomerania,3231,village,0,0,50,0,none,none
+gn:3092199,Maszewo,Lubusz,460,village,0,0,50,0,none,none
+gn:3092212,Maślice,Lower Silesia,12793,town,0,0,50,0,none,none
+gn:3092276,Markłowice,Silesia,5173,village,0,0,50,0,none,none
+gn:3092280,Marianowo,West Pomerania,910,village,0,0,50,0,none,none
+gn:3092312,Margonin,Greater Poland,2980,village,0,0,50,0,none,none
+gn:3092322,Marciszów,Lower Silesia,1528,village,0,0,50,0,none,none
+gn:3092402,Małomice,Lubusz,3617,village,0,0,50,0,none,none
+gn:3092461,Malec,Lesser Poland,1239,village,0,0,50,0,none,none
+gn:3092467,Małdyty,Warmia-Masuria,1410,village,0,0,50,0,none,none
+gn:3092468,Malczyce,Lower Silesia,3100,village,0,0,50,0,none,none
+gn:3092472,Malbork,Pomerania,36709,town,0,0,50,0,none,none
+gn:3092490,Malanów,Greater Poland,1607,village,0,0,50,0,none,none
+gn:3092517,Maków Podhalański,Lesser Poland,5746,village,0,0,50,0,none,none
+gn:3092616,Łyszkowice,Łódź Voivodeship,1100,village,0,0,50,0,none,none
+gn:3092618,Łysomice,Kujawsko-Pomorskie,1100,village,0,0,50,0,none,none
+gn:3092622,Lyski,Silesia,1871,village,0,0,50,0,none,none
+gn:3092638,Lwówek Śląski,Lower Silesia,9657,village,0,0,50,0,none,none
+gn:3092639,Lwówek,Greater Poland,2939,village,0,0,50,0,none,none
+gn:3092643,Luzino,Pomerania,7056,village,0,0,50,0,none,none
+gn:3092646,Lututów,Łódź Voivodeship,1432,village,0,0,50,0,none,none
+gn:3092657,Lutomiersk,Łódź Voivodeship,1500,village,0,0,50,0,none,none
+gn:3092669,Lutocin,Mazovia,831,village,0,0,50,0,none,none
+gn:3092676,Luszowice,Lesser Poland,1800,village,0,0,50,0,none,none
+gn:3092742,Ludźmierz,Lesser Poland,2400,village,0,0,50,0,none,none
+gn:3092757,Ludwikowice Kłodzkie,Lower Silesia,2540,village,0,0,50,0,none,none
+gn:3092806,Lubsza,Opole Voivodeship,1375,village,0,0,50,0,none,none
+gn:3092813,Lubsko,Lubusz,14994,town,0,0,50,0,none,none
+gn:3092816,Lubrza,Lubusz,995,village,0,0,50,0,none,none
+gn:3092817,Lubrza,Opole Voivodeship,988,village,0,0,50,0,none,none
+gn:3092818,Lubraniec,Kujawsko-Pomorskie,3344,village,0,0,50,0,none,none
+gn:3092820,Łubowo,West Pomerania,1300,village,0,0,50,0,none,none
+gn:3092822,Łubowo,Greater Poland,951,village,0,0,50,0,none,none
+gn:3092828,Lubowidz,Mazovia,2000,village,0,0,50,0,none,none
+gn:3092856,Luboń,Greater Poland,26431,town,0,0,50,0,none,none
+gn:3092866,Lubomierz,Lower Silesia,1816,village,0,0,50,0,none,none
+gn:3092867,Lubomia,Silesia,3779,village,0,0,50,0,none,none
+gn:3092894,Lubniewice,Lubusz,1924,village,0,0,50,0,none,none
+gn:3092895,Łubnice,Łódź Voivodeship,1100,village,0,0,50,0,none,none
+gn:3092899,Łubniany,Opole Voivodeship,1610,village,0,0,50,0,none,none
+gn:3092906,Lubliniec,Silesia,23784,town,0,0,50,0,none,none
+gn:3092909,Lublewo Gdańskie,Pomerania,1100,village,0,0,50,0,none,none
+gn:3092913,Lubiszyn,Lubusz,800,village,0,0,50,0,none,none
+gn:3092931,Lubin,Lower Silesia,77532,town,0,0,50,0,none,none
+gn:3092938,Lubiewo,Kujawsko-Pomorskie,1012,village,0,0,50,0,none,none
+gn:3092950,Lubień Kujawski,Kujawsko-Pomorskie,1293,village,0,0,50,0,none,none
+gn:3092964,Lubień,Lesser Poland,3200,village,0,0,50,0,none,none
+gn:3092988,Lubichowo,Pomerania,2276,village,0,0,50,0,none,none
+gn:3093009,Łubianka,Kujawsko-Pomorskie,953,village,0,0,50,0,none,none
+gn:3093014,Lubiana,Pomerania,2254,village,0,0,50,0,none,none
+gn:3093027,Lubawka,Lower Silesia,6404,village,0,0,50,0,none,none
+gn:3093028,Lubawa,Warmia-Masuria,9302,village,0,0,50,0,none,none
+gn:3093029,Lubasz,Greater Poland,2861,village,0,0,50,0,none,none
+gn:3093035,Lubanie,Kujawsko-Pomorskie,810,village,0,0,50,0,none,none
+gn:3093040,Lubań,Lower Silesia,22245,town,0,0,50,0,none,none
+gn:3093066,Łowicz,Łódź Voivodeship,29809,town,0,0,50,0,none,none
+gn:3093081,Łosiów,Opole Voivodeship,1600,village,0,0,50,0,none,none
+gn:3093133,Łódź,Łódź Voivodeship,639890,large-city,0,0,50,0,none,none
+gn:3093136,Łodygowice,Silesia,6925,village,0,0,50,0,none,none
+gn:3093150,Łobżenica,Greater Poland,3211,village,0,0,50,0,none,none
+gn:3093156,Łobodno,Silesia,1810,village,0,0,50,0,none,none
+gn:3093158,Łobez,West Pomerania,10609,town,0,0,50,0,none,none
+gn:3093161,Lniano,Kujawsko-Pomorskie,1200,village,0,0,50,0,none,none
+gn:3093174,Liszki,Lesser Poland,1716,village,0,0,50,0,none,none
+gn:3093192,Lisków,Greater Poland,1858,village,0,0,50,0,none,none
+gn:3093224,Lisewo Malborskie,Pomerania,1280,village,0,0,50,0,none,none
+gn:3093226,Lisewo,Kujawsko-Pomorskie,1700,village,0,0,50,0,none,none
+gn:3093237,Lipusz,Pomerania,2069,village,0,0,50,0,none,none
+gn:3093263,Lipowa,Silesia,4357,village,0,0,50,0,none,none
+gn:3093268,Lipno,Kujawsko-Pomorskie,14821,town,0,0,50,0,none,none
+gn:3093269,Lipno,Greater Poland,1176,village,0,0,50,0,none,none
+gn:3093282,Lipnica Wielka,Lesser Poland,4100,village,0,0,50,0,none,none
+gn:3093283,Lipnica Mała,Lesser Poland,2537,village,0,0,50,0,none,none
+gn:3093285,Lipnica,Pomerania,747,village,0,0,50,0,none,none
+gn:3093298,Lipka,Greater Poland,2200,village,0,0,50,0,none,none
+gn:3093315,Lipinki Łużyckie,Lubusz,1800,village,0,0,50,0,none,none
+gn:3093343,Lipie,Silesia,1103,village,0,0,50,0,none,none
+gn:3093350,Lipiany,West Pomerania,4159,village,0,0,50,0,none,none
+gn:3093366,Lipce Reymontowskie,Łódź Voivodeship,1200,village,0,0,50,0,none,none
+gn:3093367,Lipa Piotrowska,Lower Silesia,4170,village,0,0,50,0,none,none
+gn:3093389,Liniewo,Pomerania,1052,village,0,0,50,0,none,none
+gn:3093394,Linia,Pomerania,1405,village,0,0,50,0,none,none
+gn:3093433,Ligota,Silesia,4454,village,0,0,50,0,none,none
+gn:3093439,Lidzbark,Warmia-Masuria,8177,village,0,0,50,0,none,none
+gn:3093446,Licheń Stary,Greater Poland,1100,village,0,0,50,0,none,none
+gn:3093457,Libiąż,Lesser Poland,17834,town,0,0,50,0,none,none
+gn:3093458,Libertów,Lesser Poland,1952,village,0,0,50,0,none,none
+gn:3093463,Lgota Wielka,Łódź Voivodeship,636,village,0,0,50,0,none,none
+gn:3093478,Łęczyce,Pomerania,1524,village,0,0,50,0,none,none
+gn:3093500,Lewin Kłodzki,Lower Silesia,1200,village,0,0,50,0,none,none
+gn:3093501,Lewin Brzeski,Opole Voivodeship,6000,village,0,0,50,0,none,none
+gn:3093524,Leszno,Greater Poland,63565,town,0,0,50,0,none,none
+gn:3093577,Leśnica,Opole Voivodeship,2897,village,0,0,50,0,none,none
+gn:3093589,Leśna,Lower Silesia,4648,village,0,0,50,0,none,none
+gn:3093592,Leśna,Silesia,2093,village,0,0,50,0,none,none
+gn:3093628,Leńcze,Lesser Poland,1408,village,0,0,50,0,none,none
+gn:3093636,Lelów,Silesia,2127,village,0,0,50,0,none,none
+gn:3093649,Łęknica,Lubusz,2565,village,0,0,50,0,none,none
+gn:3093651,Łęki Szlacheckie,Łódź Voivodeship,450,village,0,0,50,0,none,none
+gn:3093664,Łękawica,Silesia,2169,village,0,0,50,0,none,none
+gn:3093675,Łęka Opatowska,Greater Poland,727,village,0,0,50,0,none,none
+gn:3093681,Łęgowo,Pomerania,2850,village,0,0,50,0,none,none
+gn:3093691,Legnickie Pole,Lower Silesia,1301,village,0,0,50,0,none,none
+gn:3093692,Legnica,Lower Silesia,106033,city,0,0,50,0,none,none
+gn:3093708,Lędziny,Silesia,16305,town,0,0,50,0,none,none
+gn:3093726,Łęczyca,Łódź Voivodeship,15528,town,0,0,50,0,none,none
+gn:3093739,Lębork,Pomerania,35161,town,0,0,50,0,none,none
+gn:3093749,Łeba,Pomerania,3744,village,0,0,50,0,none,none
+gn:3093768,Łazy,Silesia,7166,village,0,0,50,0,none,none
+gn:3093785,Łaziska Górne,Silesia,21983,town,0,0,50,0,none,none
+gn:3093791,Łaziska,Silesia,1689,village,0,0,50,0,none,none
+gn:3093902,Łask,Łódź Voivodeship,18577,town,0,0,50,0,none,none
+gn:3093906,Łasin,Kujawsko-Pomorskie,3285,village,0,0,50,0,none,none
+gn:3093911,Lasek,Lesser Poland,1086,village,0,0,50,0,none,none
+gn:3093932,Łanięta,Łódź Voivodeship,634,village,0,0,50,0,none,none
+gn:3093935,Lanckorona,Lesser Poland,2100,village,0,0,50,0,none,none
+gn:3093941,Łambinowice,Opole Voivodeship,2800,village,0,0,50,0,none,none
+gn:3093943,Laliki,Silesia,1039,village,0,0,50,0,none,none
+gn:3093969,Łąka Prudnicka,Opole Voivodeship,1270,village,0,0,50,0,none,none
+gn:3093979,Łagów,Lubusz,1666,village,0,0,50,0,none,none
+gn:3093983,Łagów,Lower Silesia,1095,village,0,0,50,0,none,none
+gn:3094003,Łagiewniki,Lower Silesia,2900,village,0,0,50,0,none,none
+gn:3094007,Łąg,Pomerania,1135,village,0,0,50,0,none,none
+gn:3094016,Lądek-Zdrój,Lower Silesia,6140,village,0,0,50,0,none,none
+gn:3094017,Lądek,Greater Poland,790,village,0,0,50,0,none,none
+gn:3094035,Łączany,Lesser Poland,1589,village,0,0,50,0,none,none
+gn:3094043,Łąck,Mazovia,1350,village,0,0,50,0,none,none
+gn:3094045,Lachowice,Lesser Poland,2121,village,0,0,50,0,none,none
+gn:3094052,Łabiszyn,Kujawsko-Pomorskie,4454,village,0,0,50,0,none,none
+gn:3094072,Kwilcz,Greater Poland,2746,village,0,0,50,0,none,none
+gn:3094086,Kwidzyn,Pomerania,37601,town,0,0,50,0,none,none
+gn:3094105,Kwaczała,Lesser Poland,1857,village,0,0,50,0,none,none
+gn:3094164,Kuźnia Raciborska,Silesia,5472,village,0,0,50,0,none,none
+gn:3094170,Kutno,Łódź Voivodeship,48323,town,0,0,50,0,none,none
+gn:3094180,Kuślin,Greater Poland,558,village,0,0,50,0,none,none
+gn:3094189,Kurzętnik,Warmia-Masuria,3065,village,0,0,50,0,none,none
+gn:3094243,Kup,Opole Voivodeship,1200,village,0,0,50,0,none,none
+gn:3094258,Kunice Żarskie,Lubusz,3000,village,0,0,50,0,none,none
+gn:3094260,Kunice,Lower Silesia,1100,village,0,0,50,0,none,none
+gn:3094283,Kuków,Lesser Poland,1319,village,0,0,50,0,none,none
+gn:3094303,Kudowa-Zdrój,Lower Silesia,10176,town,0,0,50,0,none,none
+gn:3094355,Książ Wielkopolski,Greater Poland,2736,village,0,0,50,0,none,none
+gn:3094359,Książki,Kujawsko-Pomorskie,0,village,0,0,50,0,none,none
+gn:3094361,Książenice,Silesia,2459,village,0,0,50,0,none,none
+gn:3094370,Ksawerów,Łódź Voivodeship,6269,village,0,0,50,0,none,none
+gn:3094386,Krzyżowice,Silesia,1035,village,0,0,50,0,none,none
+gn:3094390,Krzyżowa,Silesia,1400,village,0,0,50,0,none,none
+gn:3094400,Krzyżanowice,Silesia,2005,village,0,0,50,0,none,none
+gn:3094402,Krzyżanów,Łódź Voivodeship,298,village,0,0,50,0,none,none
+gn:3094408,Krzyż Wielkopolski,Greater Poland,6300,village,0,0,50,0,none,none
+gn:3094423,Krzywiń,Greater Poland,1630,village,0,0,50,0,none,none
+gn:3094442,Krzywaczka,Lesser Poland,1500,village,0,0,50,0,none,none
+gn:3094449,Krzyszkowice,Lesser Poland,1900,village,0,0,50,0,none,none
+gn:3094457,Krzymów,Greater Poland,0,village,0,0,50,0,none,none
+gn:3094461,Krzykosy,Greater Poland,808,village,0,0,50,0,none,none
+gn:3094488,Krzeszyce,Lubusz,1400,village,0,0,50,0,none,none
+gn:3094490,Krzeszowice,Lesser Poland,9978,village,0,0,50,0,none,none
+gn:3094494,Krzeszów,Lower Silesia,1527,village,0,0,50,0,none,none
+gn:3094495,Krzeszów,Lesser Poland,1618,village,0,0,50,0,none,none
+gn:3094513,Krzepice,Silesia,4479,village,0,0,50,0,none,none
+gn:3094525,Krzemieniewo,Greater Poland,5000,village,0,0,50,0,none,none
+gn:3094542,Krzęcin,West Pomerania,747,village,0,0,50,0,none,none
+gn:3094543,Krzęcin,Lesser Poland,1400,village,0,0,50,0,none,none
+gn:3094547,Krzczonów,Lesser Poland,1900,village,0,0,50,0,none,none
+gn:3094549,Krzanowice,Silesia,2149,village,0,0,50,0,none,none
+gn:3094556,Kryspinów,Lesser Poland,1360,village,0,0,50,0,none,none
+gn:3094558,Kryry,Silesia,1349,village,0,0,50,0,none,none
+gn:3094562,Krynica Morska,Pomerania,1339,village,0,0,50,0,none,none
+gn:3094585,Kruszwica,Kujawsko-Pomorskie,9494,village,0,0,50,0,none,none
+gn:3094597,Krupski Młyn,Silesia,2598,village,0,0,50,0,none,none
+gn:3094625,Krotoszyn,Greater Poland,29231,town,0,0,50,0,none,none
+gn:3094633,Krosno Odrzańskie,Lubusz,12178,town,0,0,50,0,none,none
+gn:3094636,Krosno,Greater Poland,1724,village,0,0,50,0,none,none
+gn:3094638,Krośniewice,Łódź Voivodeship,4610,village,0,0,50,0,none,none
+gn:3094639,Krośnice,Lower Silesia,1800,village,0,0,50,0,none,none
+gn:3094672,Krokowa,Pomerania,782,village,0,0,50,0,none,none
+gn:3094683,Kroczyce,Silesia,1699,village,0,0,50,0,none,none
+gn:3094690,Krobia,Greater Poland,4060,village,0,0,50,0,none,none
+gn:3094746,Kraszewice,Greater Poland,1600,village,0,0,50,0,none,none
+gn:3094788,Krapkowice,Opole Voivodeship,18275,town,0,0,50,0,none,none
+gn:3094794,Kramsk,Greater Poland,1700,village,0,0,50,0,none,none
+gn:3094802,Kraków,Lesser Poland,816614,large-city,0,0,50,0,none,none
+gn:3094813,Krajenka,Greater Poland,3609,village,0,0,50,0,none,none
+gn:3094831,Kozy,Silesia,11920,town,0,0,50,0,none,none
+gn:3094832,Kożuchów,Lubusz,9679,village,0,0,50,0,none,none
+gn:3094849,Koźminek,Greater Poland,1800,village,0,0,50,0,none,none
+gn:3094852,Koźmin Wielkopolski,Greater Poland,6678,village,0,0,50,0,none,none
+gn:3094871,Koźle,Opole Voivodeship,14780,town,0,0,50,0,none,none
+gn:3094892,Kozielice,West Pomerania,0,village,0,0,50,0,none,none
+gn:3094898,Koziegłowy,Silesia,2481,village,0,0,50,0,none,none
+gn:3094934,Kowary,Lower Silesia,10869,town,0,0,50,0,none,none
+gn:3094953,Kowalewo Pomorskie,Kujawsko-Pomorskie,4081,village,0,0,50,0,none,none
+gn:3094976,Kowale,Pomerania,1972,village,0,0,50,0,none,none
+gn:3094981,Kowal,Kujawsko-Pomorskie,3490,village,0,0,50,0,none,none
+gn:3095013,Kotlin,Greater Poland,3416,village,0,0,50,0,none,none
+gn:3095015,Kotla,Lower Silesia,1400,village,0,0,50,0,none,none
+gn:3095044,Koszarawa,Silesia,2538,village,0,0,50,0,none,none
+gn:3095049,Koszalin,West Pomerania,107450,city,0,0,50,0,none,none
+gn:3095057,Kostrzyn nad Odrą,Lubusz,17778,town,0,0,50,0,none,none
+gn:3095058,Kostrzyn,Greater Poland,8965,village,0,0,50,0,none,none
+gn:3095110,Koszęcin,Silesia,4471,village,0,0,50,0,none,none
+gn:3095126,Kościerzyna,Pomerania,23327,town,0,0,50,0,none,none
+gn:3095140,Kościelisko,Lesser Poland,3900,village,0,0,50,0,none,none
+gn:3095145,Kościelec,Greater Poland,900,village,0,0,50,0,none,none
+gn:3095147,Kościelec,Silesia,1706,village,0,0,50,0,none,none
+gn:3095151,Kościan,Greater Poland,24096,town,0,0,50,0,none,none
+gn:3095153,Kosakowo,Pomerania,750,village,0,0,50,0,none,none
+gn:3095192,Koronowo,Kujawsko-Pomorskie,10965,town,0,0,50,0,none,none
+gn:3095193,Kornowac,Silesia,749,village,0,0,50,0,none,none
+gn:3095194,Kórnik,Greater Poland,7206,village,0,0,50,0,none,none
+gn:3095202,Korfantów,Opole Voivodeship,1940,village,0,0,50,0,none,none
+gn:3095209,Korbielów,Silesia,1191,village,0,0,50,0,none,none
+gn:3095277,Konstantynów Łódzki,Łódź Voivodeship,18335,town,0,0,50,0,none,none
+gn:3095307,Konotop,Lubusz,1400,village,0,0,50,0,none,none
+gn:3095311,Konopiska,Silesia,2901,village,0,0,50,0,none,none
+gn:3095321,Konin,Greater Poland,81258,town,0,0,50,0,none,none
+gn:3095330,Koniecpol,Silesia,6318,village,0,0,50,0,none,none
+gn:3095332,Koniaków,Silesia,3584,village,0,0,50,0,none,none
+gn:3095335,Kończyce Wielkie,Silesia,1844,village,0,0,50,0,none,none
+gn:3095336,Kończyce Małe,Silesia,3294,village,0,0,50,0,none,none
+gn:3095358,Konary,Greater Poland,1100,village,0,0,50,0,none,none
+gn:3095367,Komprachcice,Opole Voivodeship,2800,village,0,0,50,0,none,none
+gn:3095386,Komorowice Śląskie,Silesia,2472,village,0,0,50,0,none,none
+gn:3095396,Komorniki,Greater Poland,5144,village,0,0,50,0,none,none
+gn:3095413,Koluszki,Łódź Voivodeship,13343,town,0,0,50,0,none,none
+gn:3095417,Kolsko,Lubusz,1000,village,0,0,50,0,none,none
+gn:3095421,Kolonowskie,Opole Voivodeship,3382,village,0,0,50,0,none,none
+gn:3095795,Kołobrzeg,West Pomerania,44377,town,0,0,50,0,none,none
+gn:3095797,Koło,Greater Poland,23493,town,0,0,50,0,none,none
+gn:3095819,Koleczkowo,Pomerania,2000,village,0,0,50,0,none,none
+gn:3095827,Kołczygłowy,Pomerania,1233,village,0,0,50,0,none,none
+gn:3095833,Kolbudy,Pomerania,3012,village,0,0,50,0,none,none
+gn:3095834,Kołbaskowo,West Pomerania,410,village,0,0,50,0,none,none
+gn:3095856,Kokoszki,Pomerania,10240,town,0,0,50,0,none,none
+gn:3095874,Koczała,Pomerania,2111,village,0,0,50,0,none,none
+gn:3095910,Kochanowice,Silesia,1944,village,0,0,50,0,none,none
+gn:3095926,Kobylnica,Pomerania,4500,village,0,0,50,0,none,none
+gn:3095928,Kobylnica,Greater Poland,1480,village,0,0,50,0,none,none
+gn:3095931,Kobylin,Greater Poland,3130,village,0,0,50,0,none,none
+gn:3095947,Kobylanka,West Pomerania,710,village,0,0,50,0,none,none
+gn:3095951,Kobyla Góra,Greater Poland,2000,village,0,0,50,0,none,none
+gn:3095958,Kobiór,Silesia,4702,village,0,0,50,0,none,none
+gn:3095961,Kobierzyce,Lower Silesia,2095,village,0,0,50,0,none,none
+gn:3095964,Kobiernice,Silesia,3455,village,0,0,50,0,none,none
+gn:3095971,Knurów,Silesia,39744,town,0,0,50,0,none,none
+gn:3095989,Kluki,Łódź Voivodeship,800,village,0,0,50,0,none,none
+gn:3096002,Klucze,Lesser Poland,5926,village,0,0,50,0,none,none
+gn:3096003,Kluczbork,Opole Voivodeship,25978,town,0,0,50,0,none,none
+gn:3096039,Klonowa,Łódź Voivodeship,950,village,0,0,50,0,none,none
+gn:3096048,Kłomnice,Silesia,2802,village,0,0,50,0,none,none
+gn:3096053,Kłodzko,Lower Silesia,25717,town,0,0,50,0,none,none
+gn:3096078,Kłodawa,Lubusz,1762,village,0,0,50,0,none,none
+gn:3096079,Kłodawa,Greater Poland,6714,village,0,0,50,0,none,none
+gn:3096090,Kłobuck,Silesia,12934,town,0,0,50,0,none,none
+gn:3096106,Klikuszowa,Lesser Poland,1470,village,0,0,50,0,none,none
+gn:3096123,Kleszczów,Łódź Voivodeship,2000,village,0,0,50,0,none,none
+gn:3096130,Kleszczewo,Greater Poland,580,village,0,0,50,0,none,none
+gn:3096149,Klenica,Lubusz,1400,village,0,0,50,0,none,none
+gn:3096160,Kleczew,Greater Poland,4217,village,0,0,50,0,none,none
+gn:3096162,Klecza Dolna,Lesser Poland,2188,village,0,0,50,0,none,none
+gn:3096165,Kłecko,Greater Poland,2648,village,0,0,50,0,none,none
+gn:3096200,Kiszkowo,Greater Poland,1893,village,0,0,50,0,none,none
+gn:3096208,Kisielice,Warmia-Masuria,2234,village,0,0,50,0,none,none
+gn:3096220,Kikół,Kujawsko-Pomorskie,1500,village,0,0,50,0,none,none
+gn:3096240,Kietrz,Opole Voivodeship,6306,village,0,0,50,0,none,none
+gn:3096257,Kiernozia,Łódź Voivodeship,930,village,0,0,50,0,none,none
+gn:3096292,Kiełczów,Lower Silesia,3700,village,0,0,50,0,none,none
+gn:3096328,Kęty,Lesser Poland,19249,town,0,0,50,0,none,none
+gn:3096334,Kęsowo,Kujawsko-Pomorskie,790,village,0,0,50,0,none,none
+gn:3096338,Kępno,Greater Poland,14813,town,0,0,50,0,none,none
+gn:3096353,Kępice,Pomerania,3756,village,0,0,50,0,none,none
+gn:3096372,Kędzierzyn-Koźle,Opole Voivodeship,65636,town,0,0,50,0,none,none
+gn:3096385,Kcynia,Kujawsko-Pomorskie,4716,village,0,0,50,0,none,none
+gn:3096392,Kaźmierz,Greater Poland,3235,village,0,0,50,0,none,none
+gn:3096400,Kazimierz Biskupi,Greater Poland,4280,village,0,0,50,0,none,none
+gn:3096437,Kawęczyn,Greater Poland,417,village,0,0,50,0,none,none
+gn:3096444,Kąty Wrocławskie,Lower Silesia,5418,village,0,0,50,0,none,none
+gn:3096472,Katowice,Silesia,286960,city,0,0,50,0,none,none
+gn:3096494,Kaszów,Lesser Poland,1956,village,0,0,50,0,none,none
+gn:3096525,Kartuzy,Pomerania,15002,town,0,0,50,0,none,none
+gn:3096558,Karsin,Pomerania,2500,village,0,0,50,0,none,none
+gn:3096576,Karpacz,Lower Silesia,4979,village,0,0,50,0,none,none
+gn:3096613,Karnice,West Pomerania,771,village,0,0,50,0,none,none
+gn:3096630,Karlino,West Pomerania,5832,village,0,0,50,0,none,none
+gn:3096640,Kargowa,Lubusz,3649,village,0,0,50,0,none,none
+gn:3096687,Kaniów,Silesia,2978,village,0,0,50,0,none,none
+gn:3096701,Kamyk,Silesia,1245,village,0,0,50,0,none,none
+gn:3096763,Kamieńsk,Łódź Voivodeship,2850,village,0,0,50,0,none,none
+gn:3096765,Kamień Pomorski,West Pomerania,9036,village,0,0,50,0,none,none
+gn:3096773,Kamiennik,Opole Voivodeship,702,village,0,0,50,0,none,none
+gn:3096779,Kamienna Góra,Lower Silesia,21743,town,0,0,50,0,none,none
+gn:3096791,Kamień Krajeński,Kujawsko-Pomorskie,2342,village,0,0,50,0,none,none
+gn:3096795,Kamieniec Ząbkowicki,Lower Silesia,4200,village,0,0,50,0,none,none
+gn:3096796,Kamieniec Wrocławski,Lower Silesia,1970,village,0,0,50,0,none,none
+gn:3096797,Kamieniec,Greater Poland,1098,village,0,0,50,0,none,none
+gn:3096816,Kamienica Polska,Silesia,1456,village,0,0,50,0,none,none
+gn:3096821,Kamienica,Silesia,6975,village,0,0,50,0,none,none
+gn:3096826,Kamienica,Opole Voivodeship,1300,village,0,0,50,0,none,none
+gn:3096844,Kamień,Lesser Poland,1470,village,0,0,50,0,none,none
+gn:3096847,Kamesznica,Silesia,2806,village,0,0,50,0,none,none
+gn:3096852,Kalwaria Zebrzydowska,Lesser Poland,4429,village,0,0,50,0,none,none
+gn:3096873,Kalisz Pomorski,West Pomerania,4110,village,0,0,50,0,none,none
+gn:3096880,Kalisz,Greater Poland,108759,city,0,0,50,0,none,none
+gn:3096885,Kaliska,Pomerania,2268,village,0,0,50,0,none,none
+gn:3096911,Kalety,Silesia,8670,village,0,0,50,0,none,none
+gn:3096924,Kalej,Silesia,1668,village,0,0,50,0,none,none
+gn:3096964,Kaczyce,Silesia,3056,village,0,0,50,0,none,none
+gn:3096966,Kaczory,Greater Poland,2911,village,0,0,50,0,none,none
+gn:3096986,Wielki Kack,Pomerania,10012,town,0,0,50,0,none,none
+gn:3096999,Jutrosin,Greater Poland,1908,village,0,0,50,0,none,none
+gn:3097004,Juszczyna,Silesia,1693,village,0,0,50,0,none,none
+gn:3097006,Juszczyn,Lesser Poland,2511,village,0,0,50,0,none,none
+gn:3097043,Jugów,Lower Silesia,3700,village,0,0,50,0,none,none
+gn:3097104,Jordanów Śląski,Lower Silesia,1000,village,0,0,50,0,none,none
+gn:3097107,Jordanów,Lesser Poland,5194,village,0,0,50,0,none,none
+gn:3097130,Jeżów Sudecki,Lower Silesia,1800,village,0,0,50,0,none,none
+gn:3097137,Jeżów,Łódź Voivodeship,1400,village,0,0,50,0,none,none
+gn:3097177,Jeziora Wielkie,Kujawsko-Pomorskie,560,village,0,0,50,0,none,none
+gn:3097194,Jeżewo,Kujawsko-Pomorskie,1753,village,0,0,50,0,none,none
+gn:3097219,Jerzmanowice,Lesser Poland,2230,village,0,0,50,0,none,none
+gn:3097228,Jenin,Lubusz,1100,village,0,0,50,0,none,none
+gn:3097232,Jemielno,Lower Silesia,0,village,0,0,50,0,none,none
+gn:3097233,Jemielnica,Opole Voivodeship,3500,village,0,0,50,0,none,none
+gn:3097241,Jeleśnia,Silesia,4098,village,0,0,50,0,none,none
+gn:3097257,Jelenia Góra,Lower Silesia,77366,town,0,0,50,0,none,none
+gn:3097271,Jelcz,Lower Silesia,15308,town,0,0,50,0,none,none
+gn:3097272,Jejkowice,Silesia,3753,village,0,0,50,0,none,none
+gn:3097301,Jedlina-Zdrój,Lower Silesia,5062,village,0,0,50,0,none,none
+gn:3097327,Jaworzynka,Silesia,3109,village,0,0,50,0,none,none
+gn:3097328,Jaworzyna Śląska,Lower Silesia,5242,village,0,0,50,0,none,none
+gn:3097333,Jaworzno,Silesia,96541,town,0,0,50,0,none,none
+gn:3097339,Jaworze,Silesia,6723,village,0,0,50,0,none,none
+gn:3097355,Jawornik,Lesser Poland,2822,village,0,0,50,0,none,none
+gn:3097367,Jawor,Lower Silesia,23865,town,0,0,50,0,none,none
+gn:3097391,Jastrzębie Zdrój,Silesia,95813,town,0,0,50,0,none,none
+gn:3097409,Jastrzębia Góra,Pomerania,1068,village,0,0,50,0,none,none
+gn:3097416,Jastrząb,Silesia,1295,village,0,0,50,0,none,none
+gn:3097420,Jastrowie,Greater Poland,8452,village,0,0,50,0,none,none
+gn:3097421,Jastarnia,Pomerania,3925,village,0,0,50,0,none,none
+gn:3097467,Jasienica,West Pomerania,3000,village,0,0,50,0,none,none
+gn:3097471,Jasienica,Lesser Poland,1500,village,0,0,50,0,none,none
+gn:3097472,Jasienica,Silesia,4872,village,0,0,50,0,none,none
+gn:3097480,Jasień,Lubusz,4398,village,0,0,50,0,none,none
+gn:3097502,Jaroszowiec,Lesser Poland,1700,village,0,0,50,0,none,none
+gn:3097504,Jaroszowice,Lesser Poland,1700,village,0,0,50,0,none,none
+gn:3097528,Jarocin,Greater Poland,25582,town,0,0,50,0,none,none
+gn:3097553,Jaraczewo,Greater Poland,1392,village,0,0,50,0,none,none
+gn:3097561,Januszkowice,Opole Voivodeship,1091,village,0,0,50,0,none,none
+gn:3097594,Janowiec Wielkopolski,Kujawsko-Pomorskie,5110,village,0,0,50,0,none,none
+gn:3097599,Janowice Wielkie,Lower Silesia,2100,village,0,0,50,0,none,none
+gn:3097610,Janowice,Silesia,1708,village,0,0,50,0,none,none
+gn:3097638,Janków Przygodzki,Greater Poland,1707,village,0,0,50,0,none,none
+gn:3097651,Jankowice Rybnickie,Silesia,3895,village,0,0,50,0,none,none
+gn:3097660,Jankowice,Silesia,2840,village,0,0,50,0,none,none
+gn:3097688,Janikowo,Kujawsko-Pomorskie,9169,village,0,0,50,0,none,none
+gn:3097808,Jabłonowo Pomorskie,Kujawsko-Pomorskie,3658,village,0,0,50,0,none,none
+gn:3097813,Jabłonna,Greater Poland,1001,village,0,0,50,0,none,none
+gn:3097823,Jabłonka,Lesser Poland,4767,village,0,0,50,0,none,none
+gn:3097833,Izdebnik,Lesser Poland,2054,village,0,0,50,0,none,none
+gn:3097839,Izbicko,Opole Voivodeship,1100,village,0,0,50,0,none,none
+gn:3097841,Izbica Kujawska,Kujawsko-Pomorskie,2771,village,0,0,50,0,none,none
+gn:3097865,Istebna,Silesia,4895,village,0,0,50,0,none,none
+gn:3097869,Inwałd,Lesser Poland,3254,village,0,0,50,0,none,none
+gn:3097871,Ińsko,West Pomerania,2002,village,0,0,50,0,none,none
+gn:3097872,Inowrocław,Kujawsko-Pomorskie,77597,town,0,0,50,0,none,none
+gn:3097886,Imielin,Silesia,8057,village,0,0,50,0,none,none
+gn:3097896,Iłowa,Lubusz,3892,village,0,0,50,0,none,none
+gn:3097902,Iława,Warmia-Masuria,32557,town,0,0,50,0,none,none
+gn:3097935,Huta Stara B,Silesia,1939,village,0,0,50,0,none,none
+gn:3098007,Herby,Silesia,2421,village,0,0,50,0,none,none
+gn:3098015,Henryków,Lower Silesia,3200,village,0,0,50,0,none,none
+gn:3098030,Hel,Pomerania,4136,village,0,0,50,0,none,none
+gn:3098033,Hażlach,Silesia,2175,village,0,0,50,0,none,none
+gn:3098039,Harbutowice,Lesser Poland,1519,village,0,0,50,0,none,none
+gn:3098053,Hałcnów,Silesia,8867,village,0,0,50,0,none,none
+gn:3098130,Gubin,Lubusz,16629,town,0,0,50,0,none,none
+gn:3098163,Grzmiąca,West Pomerania,1348,village,0,0,50,0,none,none
+gn:3098171,Grzegórzki,Lesser Poland,28960,town,0,0,50,0,none,none
+gn:3098173,Grzegorzew,Greater Poland,1650,village,0,0,50,0,none,none
+gn:3098182,Grzechynia,Lesser Poland,2503,village,0,0,50,0,none,none
+gn:3098199,Gryfów Śląski,Lower Silesia,6890,village,0,0,50,0,none,none
+gn:3098200,Gryfino,West Pomerania,21270,town,0,0,50,0,none,none
+gn:3098201,Gryfice,West Pomerania,16720,town,0,0,50,0,none,none
+gn:3098204,Gruta,Kujawsko-Pomorskie,1600,village,0,0,50,0,none,none
+gn:3098218,Grudziądz,Kujawsko-Pomorskie,92552,town,0,0,50,0,none,none
+gn:3098239,Gronowo Górne,Warmia-Masuria,1270,village,0,0,50,0,none,none
+gn:3098240,Gronowo Elbląskie,Warmia-Masuria,1600,village,0,0,50,0,none,none
+gn:3098267,Gromadka,Lower Silesia,2150,village,0,0,50,0,none,none
+gn:3098276,Grojec,Lesser Poland,1259,village,0,0,50,0,none,none
+gn:3098277,Grojec,Lesser Poland,2923,village,0,0,50,0,none,none
+gn:3098288,Grodzisk Wielkopolski,Greater Poland,13826,town,0,0,50,0,none,none
+gn:3098309,Grodziec,Greater Poland,1400,village,0,0,50,0,none,none
+gn:3098314,Grodziec,Silesia,1186,village,0,0,50,0,none,none
+gn:3098333,Grodków,Opole Voivodeship,8654,village,0,0,50,0,none,none
+gn:3098335,Gródek,Kujawsko-Pomorskie,1200,village,0,0,50,0,none,none
+gn:3098380,Grębocice,Lower Silesia,1500,village,0,0,50,0,none,none
+gn:3098394,Granowo,Greater Poland,2031,village,0,0,50,0,none,none
+gn:3098453,Grabowo Kościerskie,Pomerania,1159,village,0,0,50,0,none,none
+gn:3098470,Grabów nad Prosną,Greater Poland,1967,village,0,0,50,0,none,none
+gn:3098502,Grabów,Łódź Voivodeship,1300,village,0,0,50,0,none,none
+gn:3098556,Grabica,Łódź Voivodeship,390,village,0,0,50,0,none,none
+gn:3098575,Gozdowo,Mazovia,1403,village,0,0,50,0,none,none
+gn:3098583,Gozdnica,Lubusz,3398,village,0,0,50,0,none,none
+gn:3098613,Goszczanów,Łódź Voivodeship,824,village,0,0,50,0,none,none
+gn:3098619,Gostynin,Mazovia,18976,town,0,0,50,0,none,none
+gn:3098625,Gostyń,Greater Poland,20771,town,0,0,50,0,none,none
+gn:3098626,Gostyń,Silesia,3276,village,0,0,50,0,none,none
+gn:3098629,Gostycyn,Kujawsko-Pomorskie,1800,village,0,0,50,0,none,none
+gn:3098665,Gościno,West Pomerania,2636,village,0,0,50,0,none,none
+gn:3098686,Gościcino,Pomerania,5278,village,0,0,50,0,none,none
+gn:3098699,Gorzyczki,Silesia,2088,village,0,0,50,0,none,none
+gn:3098702,Gorzyce Wielkie,Greater Poland,2076,village,0,0,50,0,none,none
+gn:3098709,Gorzyce,Silesia,2435,village,0,0,50,0,none,none
+gn:3098712,Górzyca,Lubusz,1539,village,0,0,50,0,none,none
+gn:3098722,Gorzów Wielkopolski,Lubusz,114567,city,0,0,50,0,none,none
+gn:3098723,Gorzów Śląski,Opole Voivodeship,2300,village,0,0,50,0,none,none
+gn:3098727,Górzno,Kujawsko-Pomorskie,1352,village,0,0,50,0,none,none
+gn:3098735,Gorzkowice,Łódź Voivodeship,3310,village,0,0,50,0,none,none
+gn:3098815,Górki Wielkie,Silesia,3554,village,0,0,50,0,none,none
+gn:3098854,Gorenice,Lesser Poland,1350,village,0,0,50,0,none,none
+gn:3098865,Górażdże,Opole Voivodeship,1073,village,0,0,50,0,none,none
+gn:3098871,Góra Świętej Małgorzaty,Łódź Voivodeship,357,village,0,0,50,0,none,none
+gn:3098898,Góra,Lower Silesia,12668,town,0,0,50,0,none,none
+gn:3098901,Góra,Silesia,2554,village,0,0,50,0,none,none
+gn:3098909,Gomunice,Łódź Voivodeship,1900,village,0,0,50,0,none,none
+gn:3098923,Gołuchów,Greater Poland,2000,village,0,0,50,0,none,none
+gn:3098925,Golub-Dobrzyń,Kujawsko-Pomorskie,12937,town,0,0,50,0,none,none
+gn:3098938,Gołkowice,Silesia,3582,village,0,0,50,0,none,none
+gn:3098949,Golina,Greater Poland,4387,village,0,0,50,0,none,none
+gn:3098950,Golina,Greater Poland,1909,village,0,0,50,0,none,none
+gn:3098959,Goleszów,Silesia,4045,village,0,0,50,0,none,none
+gn:3098966,Goleniów,West Pomerania,22505,town,0,0,50,0,none,none
+gn:3098991,Golczewo,West Pomerania,2714,village,0,0,50,0,none,none
+gn:3099016,Gołańcz,Greater Poland,3375,village,0,0,50,0,none,none
+gn:3099048,Gogolin,Opole Voivodeship,6077,village,0,0,50,0,none,none
+gn:3099062,Godziszka,Silesia,2222,village,0,0,50,0,none,none
+gn:3099084,Godów,Silesia,1922,village,0,0,50,0,none,none
+gn:3099095,Goczałkowice Zdrój,Silesia,6321,village,0,0,50,0,none,none
+gn:3099112,Gniezno,Greater Poland,70269,town,0,0,50,0,none,none
+gn:3099113,Gnieżdżewo,Pomerania,1113,village,0,0,50,0,none,none
+gn:3099120,Gniewkowo,Kujawsko-Pomorskie,7224,village,0,0,50,0,none,none
+gn:3099125,Gniewino,Pomerania,1940,village,0,0,50,0,none,none
+gn:3099127,Gniew,Pomerania,6759,village,0,0,50,0,none,none
+gn:3099129,Gniechowice,Lower Silesia,2000,village,0,0,50,0,none,none
+gn:3099134,Gniazdów,Silesia,1137,village,0,0,50,0,none,none
+gn:3099144,Głuszyca Górna,Lower Silesia,1278,village,0,0,50,0,none,none
+gn:3099146,Głuszyca,Lower Silesia,6897,village,0,0,50,0,none,none
+gn:3099169,Głuchołazy,Opole Voivodeship,15120,town,0,0,50,0,none,none
+gn:3099174,Głubczyce,Opole Voivodeship,13697,town,0,0,50,0,none,none
+gn:3099180,Głowno,Łódź Voivodeship,15103,town,0,0,50,0,none,none
+gn:3099192,Główczyce,Pomerania,1950,village,0,0,50,0,none,none
+gn:3099209,Głogówek,Opole Voivodeship,5755,village,0,0,50,0,none,none
+gn:3099213,Głogów,Lower Silesia,65400,town,0,0,50,0,none,none
+gn:3099214,Głogoczów,Lesser Poland,2800,village,0,0,50,0,none,none
+gn:3099230,Gliwice,Silesia,198835,city,0,0,50,0,none,none
+gn:3099343,Gizałki,Greater Poland,583,village,0,0,50,0,none,none
+gn:3099351,Gilowice,Silesia,1214,village,0,0,50,0,none,none
+gn:3099352,Gilowice,Silesia,4259,village,0,0,50,0,none,none
+gn:3099371,Gierałtowice,Silesia,3752,village,0,0,50,0,none,none
+gn:3099372,Gierałtowice,Lesser Poland,1252,village,0,0,50,0,none,none
+gn:3099378,Cielmice,Silesia,1200,village,0,0,50,0,none,none
+gn:3099388,Giebułtów,Lesser Poland,1032,village,0,0,50,0,none,none
+gn:3099391,Gidle,Łódź Voivodeship,1540,village,0,0,50,0,none,none
+gn:3099424,Gdynia,Pomerania,257000,city,0,0,50,0,none,none
+gn:3099434,Gdańsk,Pomerania,487371,city,0,0,50,0,none,none
+gn:3099445,Gaworzyce,Lower Silesia,1500,village,0,0,50,0,none,none
+gn:3099452,Gaszowice,Silesia,2861,village,0,0,50,0,none,none
+gn:3099473,Gąsawa,Kujawsko-Pomorskie,1400,village,0,0,50,0,none,none
+gn:3099492,Gardeja,Pomerania,2500,village,0,0,50,0,none,none
+gn:3099494,Gardawice,Silesia,1859,village,0,0,50,0,none,none
+gn:3099498,Garcz,Pomerania,1908,village,0,0,50,0,none,none
+gn:3099529,Gałków Mały,Łódź Voivodeship,1455,village,0,0,50,0,none,none
+gn:3099544,Galewice,Łódź Voivodeship,1200,village,0,0,50,0,none,none
+gn:3099619,Gąbin,Mazovia,4056,village,0,0,50,0,none,none
+gn:3099629,Frydrychowice,Lesser Poland,2799,village,0,0,50,0,none,none
+gn:3099630,Frydek,Silesia,1019,village,0,0,50,0,none,none
+gn:3099634,Frombork,Warmia-Masuria,2529,village,0,0,50,0,none,none
+gn:3099654,Fordon,Kujawsko-Pomorskie,70000,town,0,0,50,0,none,none
+gn:3099679,Filipowice,Lesser Poland,2090,village,0,0,50,0,none,none
+gn:3099720,Fabianki,Kujawsko-Pomorskie,660,village,0,0,50,0,none,none
+gn:3099759,Elbląg,Warmia-Masuria,127558,city,0,0,50,0,none,none
+gn:3099778,Dziećmorowice,Lower Silesia,1162,village,0,0,50,0,none,none
+gn:3099783,Dziwnów,West Pomerania,2904,village,0,0,50,0,none,none
+gn:3099828,Dzierżoniów,Lower Silesia,34168,town,0,0,50,0,none,none
+gn:3099842,Dzierzgoń,Pomerania,5518,village,0,0,50,0,none,none
+gn:3099873,Dziergowice,Opole Voivodeship,2556,village,0,0,50,0,none,none
+gn:3099878,Dziemiany,Pomerania,1762,village,0,0,50,0,none,none
+gn:3099887,Dzięgielów,Silesia,1332,village,0,0,50,0,none,none
+gn:3099923,Działoszyn,Łódź Voivodeship,6222,village,0,0,50,0,none,none
+gn:3099934,Dziadowa Kłoda,Lower Silesia,1174,village,0,0,50,0,none,none
+gn:3099966,Dygowo,West Pomerania,1549,village,0,0,50,0,none,none
+gn:3099992,Duszniki-Zdrój,Lower Silesia,4888,village,0,0,50,0,none,none
+gn:3099993,Duszniki,Greater Poland,2100,village,0,0,50,0,none,none
+gn:3100027,Drzycim,Kujawsko-Pomorskie,1200,village,0,0,50,0,none,none
+gn:3100086,Drużbice,Łódź Voivodeship,530,village,0,0,50,0,none,none
+gn:3100116,Drogomyśl,Silesia,2091,village,0,0,50,0,none,none
+gn:3100124,Drobin,Mazovia,2938,village,0,0,50,0,none,none
+gn:3100127,Drezdenko,Lubusz,10541,town,0,0,50,0,none,none
+gn:3100139,Drawsko Pomorskie,West Pomerania,11275,town,0,0,50,0,none,none
+gn:3100142,Drawsko,Greater Poland,1640,village,0,0,50,0,none,none
+gn:3100148,Drawno,West Pomerania,2423,village,0,0,50,0,none,none
+gn:3100162,Doruchów,Greater Poland,2400,village,0,0,50,0,none,none
+gn:3100171,Dopiewo,Greater Poland,2848,village,0,0,50,0,none,none
+gn:3100180,Dominowo,Greater Poland,547,village,0,0,50,0,none,none
+gn:3100190,Domecko,Opole Voivodeship,1247,village,0,0,50,0,none,none
+gn:3100193,Domaszowice,Opole Voivodeship,1100,village,0,0,50,0,none,none
+gn:3100212,Domaniewice,Łódź Voivodeship,906,village,0,0,50,0,none,none
+gn:3100231,Dolsk,Greater Poland,1527,village,0,0,50,0,none,none
+gn:3100247,Dolice,West Pomerania,2028,village,0,0,50,0,none,none
+gn:3100266,Dobrzyń nad Wisłą,Kujawsko-Pomorskie,2268,village,0,0,50,0,none,none
+gn:3100280,Dobrzyca,Greater Poland,3254,village,0,0,50,0,none,none
+gn:3100283,Dobrzeń Wielki,Opole Voivodeship,4500,village,0,0,50,0,none,none
+gn:3100297,Dobrzany,West Pomerania,2360,village,0,0,50,0,none,none
+gn:3100306,Dobroszyce,Lower Silesia,2376,village,0,0,50,0,none,none
+gn:3100327,Dobroń,Łódź Voivodeship,1210,village,0,0,50,0,none,none
+gn:3100342,Dobrodzień,Opole Voivodeship,4014,village,0,0,50,0,none,none
+gn:3100355,Dobre,Kujawsko-Pomorskie,2500,village,0,0,50,0,none,none
+gn:3100363,Dobra,West Pomerania,2336,village,0,0,50,0,none,none
+gn:3100364,Dobra,West Pomerania,950,village,0,0,50,0,none,none
+gn:3100366,Dobra,Greater Poland,1450,village,0,0,50,0,none,none
+gn:3100382,Dobieszowice,Silesia,1891,village,0,0,50,0,none,none
+gn:3100400,Dobiegniew,Lubusz,3179,village,0,0,50,0,none,none
+gn:3100403,Dmosin,Łódź Voivodeship,1500,village,0,0,50,0,none,none
+gn:3100417,Dłutów,Łódź Voivodeship,1000,village,0,0,50,0,none,none
+gn:3100421,Długołęka,Lower Silesia,2620,village,0,0,50,0,none,none
+gn:3100429,Długomiłowice,Opole Voivodeship,1600,village,0,0,50,0,none,none
+gn:3100465,Deszczno,Lubusz,1100,village,0,0,50,0,none,none
+gn:3100489,Debrzno,Pomerania,5251,village,0,0,50,0,none,none
+gn:3100515,Dębowiec,Silesia,1786,village,0,0,50,0,none,none
+gn:3100518,Dębowa Łąka,Kujawsko-Pomorskie,750,village,0,0,50,0,none,none
+gn:3100545,Dębno,West Pomerania,13804,town,0,0,50,0,none,none
+gn:3100553,Dębnica Kaszubska,Pomerania,3220,village,0,0,50,0,none,none
+gn:3100619,Daszyna,Łódź Voivodeship,600,village,0,0,50,0,none,none
+gn:3100624,Daszewice,Greater Poland,1422,village,0,0,50,0,none,none
+gn:3100637,Darłowo,West Pomerania,13324,town,0,0,50,0,none,none
+gn:3100640,Darłówko,West Pomerania,1600,village,0,0,50,0,none,none
+gn:3100671,Damnica,Pomerania,1240,village,0,0,50,0,none,none
+gn:3100677,Damasławek,Greater Poland,2500,village,0,0,50,0,none,none
+gn:3100685,Dalików,Łódź Voivodeship,410,village,0,0,50,0,none,none
+gn:3100694,Dalachów,Opole Voivodeship,1295,village,0,0,50,0,none,none
+gn:3100772,Dąbrowice,Łódź Voivodeship,1300,village,0,0,50,0,none,none
+gn:3100778,Dąbrowa Zielona,Silesia,881,village,0,0,50,0,none,none
+gn:3100796,Dąbrowa Górnicza,Silesia,116971,city,0,0,50,0,none,none
+gn:3100802,Dąbrowa Chełmińska,Kujawsko-Pomorskie,1400,village,0,0,50,0,none,none
+gn:3100820,Dąbrowa,Kujawsko-Pomorskie,1101,village,0,0,50,0,none,none
+gn:3100849,Dąbrowa,Opole Voivodeship,1100,village,0,0,50,0,none,none
+gn:3100874,Dąbie,West Pomerania,13275,town,0,0,50,0,none,none
+gn:3100880,Dąbie,Greater Poland,2003,village,0,0,50,0,none,none
+gn:3100881,Dąbie,Lubusz,417,village,0,0,50,0,none,none
+gn:3100891,Czyżowice,Silesia,3128,village,0,0,50,0,none,none
+gn:3100912,Czułów,Lesser Poland,1119,village,0,0,50,0,none,none
+gn:3100933,Człuchów,Pomerania,13350,town,0,0,50,0,none,none
+gn:3100936,Człopa,West Pomerania,2370,village,0,0,50,0,none,none
+gn:3100946,Częstochowa,Silesia,248125,city,0,0,50,0,none,none
+gn:3100971,Czerwonak,Greater Poland,5432,village,0,0,50,0,none,none
+gn:3100974,Czerwionka-Leszczyny,Silesia,28740,town,0,0,50,0,none,none
+gn:3100976,Czerwieńsk,Lubusz,4197,village,0,0,50,0,none,none
+gn:3100984,Czersk,Pomerania,9390,village,0,0,50,0,none,none
+gn:3100994,Czernikowo,Kujawsko-Pomorskie,2752,village,0,0,50,0,none,none
+gn:3101004,Czerniewice,Kujawsko-Pomorskie,1027,village,0,0,50,0,none,none
+gn:3101006,Czerniejewo,Greater Poland,2612,village,0,0,50,0,none,none
+gn:3101009,Czernichów,Lesser Poland,1707,village,0,0,50,0,none,none
+gn:3101010,Czernichów,Silesia,1021,village,0,0,50,0,none,none
+gn:3101017,Czernica,Lower Silesia,1186,village,0,0,50,0,none,none
+gn:3101019,Czernica,Silesia,2100,village,0,0,50,0,none,none
+gn:3101038,Czermin,Greater Poland,789,village,0,0,50,0,none,none
+gn:3101053,Czempiń,Greater Poland,5093,village,0,0,50,0,none,none
+gn:3101057,Czeladź,Silesia,34308,town,0,0,50,0,none,none
+gn:3101076,Czechowice-Dziedzice,Silesia,34703,town,0,0,50,0,none,none
+gn:3101089,Czastary,Łódź Voivodeship,1024,village,0,0,50,0,none,none
+gn:3101114,Czarny Dunajec,Lesser Poland,3594,village,0,0,50,0,none,none
+gn:3101117,Czarny Bór,Lower Silesia,4769,village,0,0,50,0,none,none
+gn:3101120,Czarnożyły,Łódź Voivodeship,1300,village,0,0,50,0,none,none
+gn:3101128,Czarnowąsy,Opole Voivodeship,3108,village,0,0,50,0,none,none
+gn:3101136,Czarnocin,Łódź Voivodeship,1300,village,0,0,50,0,none,none
+gn:3101145,Czarnków,Greater Poland,11562,town,0,0,50,0,none,none
+gn:3101161,Czarne,Pomerania,6035,village,0,0,50,0,none,none
+gn:3101170,Czarna Woda,Pomerania,3227,village,0,0,50,0,none,none
+gn:3101198,Czarków,Silesia,1924,village,0,0,50,0,none,none
+gn:3101201,Czapury,Greater Poland,1256,village,0,0,50,0,none,none
+gn:3101204,Czaplinek,West Pomerania,6933,village,0,0,50,0,none,none
+gn:3101220,Czaniec,Silesia,5536,village,0,0,50,0,none,none
+gn:3101224,Czajków,Greater Poland,1100,village,0,0,50,0,none,none
+gn:3101255,Cybinka,Lubusz,2655,village,0,0,50,0,none,none
+gn:3101277,Cisownica,Silesia,1705,village,0,0,50,0,none,none
+gn:3101289,Cisiec,Silesia,3296,village,0,0,50,0,none,none
+gn:3101294,Cisek,Opole Voivodeship,1485,village,0,0,50,0,none,none
+gn:3101321,Cieszyn,Silesia,35586,town,0,0,50,0,none,none
+gn:3101330,Cieszków,Lower Silesia,1800,village,0,0,50,0,none,none
+gn:3101365,Ciepłowody,Lower Silesia,1200,village,0,0,50,0,none,none
+gn:3101367,Cieplice Śląskie Zdrój,Lower Silesia,15000,town,0,0,50,0,none,none
+gn:3101415,Cięcina,Silesia,4373,village,0,0,50,0,none,none
+gn:3101420,Ciechów,Lower Silesia,1500,village,0,0,50,0,none,none
+gn:3101426,Ciechocinek,Kujawsko-Pomorskie,10832,town,0,0,50,0,none,none
+gn:3101428,Ciechocin,Kujawsko-Pomorskie,776,village,0,0,50,0,none,none
+gn:3101446,Ciasna,Silesia,1722,village,0,0,50,0,none,none
+gn:3101453,Chyżne,Lesser Poland,1069,village,0,0,50,0,none,none
+gn:3101467,Chybie,Silesia,3775,village,0,0,50,0,none,none
+gn:3101471,Chwaszczyno,Pomerania,2678,village,0,0,50,0,none,none
+gn:3101513,Chrzypsko Wielkie,Greater Poland,920,village,0,0,50,0,none,none
+gn:3101531,Chrząstowice,Opole Voivodeship,1200,village,0,0,50,0,none,none
+gn:3101547,Chrzanów,Lesser Poland,39973,town,0,0,50,0,none,none
+gn:3101553,Chruszczobród,Silesia,1648,village,0,0,50,0,none,none
+gn:3101577,Chrostkowo,Kujawsko-Pomorskie,314,village,0,0,50,0,none,none
+gn:3101587,Chrościna,Opole Voivodeship,1585,village,0,0,50,0,none,none
+gn:3101592,Chróścice,Opole Voivodeship,3000,village,0,0,50,0,none,none
+gn:3101613,Choszczno,West Pomerania,15733,town,0,0,50,0,none,none
+gn:3101619,Chorzów,Silesia,113430,city,0,0,50,0,none,none
+gn:3101635,Choroń,Silesia,1221,village,0,0,50,0,none,none
+gn:3101639,Chmielowice,Opole Voivodeship,1500,village,0,0,50,0,none,none
+gn:3101660,Chojnów,Lower Silesia,14209,town,0,0,50,0,none,none
+gn:3101672,Chojnice,Pomerania,38789,town,0,0,50,0,none,none
+gn:3101675,Chojna,West Pomerania,7398,village,0,0,50,0,none,none
+gn:3101680,Chodzież,Greater Poland,19776,town,0,0,50,0,none,none
+gn:3101684,Chodów,Greater Poland,830,village,0,0,50,0,none,none
+gn:3101689,Chodecz,Kujawsko-Pomorskie,1902,village,0,0,50,0,none,none
+gn:3101691,Chocznia,Lesser Poland,5510,village,0,0,50,0,none,none
+gn:3101693,Choczewo,Pomerania,1310,village,0,0,50,0,none,none
+gn:3101695,Chocz,Greater Poland,1700,village,0,0,50,0,none,none
+gn:3101697,Chociwel,West Pomerania,3266,village,0,0,50,0,none,none
+gn:3101722,Chocianów,Lower Silesia,8187,village,0,0,50,0,none,none
+gn:3101726,Choceń,Kujawsko-Pomorskie,980,village,0,0,50,0,none,none
+gn:3101734,Chmielno,Pomerania,1580,village,0,0,50,0,none,none
+gn:3101778,Chłapowo,Pomerania,1069,village,0,0,50,0,none,none
+gn:3101787,Chełmża,Kujawsko-Pomorskie,15403,town,0,0,50,0,none,none
+gn:3101788,Chełm Śląski,Silesia,5646,village,0,0,50,0,none,none
+gn:3101795,Chełmno,Kujawsko-Pomorskie,20576,town,0,0,50,0,none,none
+gn:3101812,Chełmek,Lesser Poland,9059,village,0,0,50,0,none,none
+gn:3101829,Chąśno,Łódź Voivodeship,287,village,0,0,50,0,none,none
+gn:3101856,Chałupki,Silesia,1697,village,0,0,50,0,none,none
+gn:3101869,Cewice,Pomerania,1687,village,0,0,50,0,none,none
+gn:3101879,Cerkwica,West Pomerania,1261,village,0,0,50,0,none,none
+gn:3101902,Cekcyn,Kujawsko-Pomorskie,1710,village,0,0,50,0,none,none
+gn:3101918,Cedynia,West Pomerania,1622,village,0,0,50,0,none,none
+gn:3101919,Cedry Wielkie,Pomerania,1007,village,0,0,50,0,none,none
+gn:3101943,Bytów,Pomerania,16724,town,0,0,50,0,none,none
+gn:3101946,Bytoń,Kujawsko-Pomorskie,436,village,0,0,50,0,none,none
+gn:3101947,Bytom Odrzański,Lubusz,4408,village,0,0,50,0,none,none
+gn:3101950,Bytom,Silesia,189186,city,0,0,50,0,none,none
+gn:3101951,Bytnica,Lubusz,1200,village,0,0,50,0,none,none
+gn:3101968,Bystrzyca Kłodzka,Lower Silesia,10375,town,0,0,50,0,none,none
+gn:3101976,Bystrzyca,Lower Silesia,2200,village,0,0,50,0,none,none
+gn:3101987,Bystra,Silesia,3887,village,0,0,50,0,none,none
+gn:3101992,Bystra,Lesser Poland,2900,village,0,0,50,0,none,none
+gn:3102014,Bydgoszcz,Kujawsko-Pomorskie,330038,city,0,0,50,0,none,none
+gn:3102019,Byczyna,Opole Voivodeship,3665,village,0,0,50,0,none,none
+gn:3102046,Burzenin,Łódź Voivodeship,1100,village,0,0,50,0,none,none
+gn:3102058,Bulowice,Lesser Poland,4700,village,0,0,50,0,none,none
+gn:3102076,Bukowno,Lesser Poland,10874,town,0,0,50,0,none,none
+gn:3102100,Bukowiec,Kujawsko-Pomorskie,1210,village,0,0,50,0,none,none
+gn:3102138,Buk,Greater Poland,6102,village,0,0,50,0,none,none
+gn:3102147,Bujaków,Silesia,2176,village,0,0,50,0,none,none
+gn:3102162,Budzyń,Greater Poland,4861,village,0,0,50,0,none,none
+gn:3102171,Budzów,Lower Silesia,1100,village,0,0,50,0,none,none
+gn:3102172,Budzów,Lesser Poland,2400,village,0,0,50,0,none,none
+gn:3102181,Budziszewice,Łódź Voivodeship,880,village,0,0,50,0,none,none
+gn:3102252,Buczkowice,Silesia,4102,village,0,0,50,0,none,none
+gn:3102261,Buczek,Łódź Voivodeship,980,village,0,0,50,0,none,none
+gn:3102283,Brzuze,Kujawsko-Pomorskie,449,village,0,0,50,0,none,none
+gn:3102316,Brzozie,Kujawsko-Pomorskie,1578,village,0,0,50,0,none,none
+gn:3102343,Brzeźno Gdańskie,Pomerania,10938,town,0,0,50,0,none,none
+gn:3102362,Brzeźnio,Łódź Voivodeship,1150,village,0,0,50,0,none,none
+gn:3102374,Brzeźnica,Lesser Poland,1281,village,0,0,50,0,none,none
+gn:3102378,Brzeziny Śląskie,Silesia,4901,village,0,0,50,0,none,none
+gn:3102390,Brzeziny,Łódź Voivodeship,12289,town,0,0,50,0,none,none
+gn:3102409,Brzezinka,Lesser Poland,2100,village,0,0,50,0,none,none
+gn:3102444,Brzeszcze,Lesser Poland,10935,town,0,0,50,0,none,none
+gn:3102447,Brześć Kujawski,Kujawsko-Pomorskie,4522,village,0,0,50,0,none,none
+gn:3102456,Brzeg Dolny,Lower Silesia,12511,town,0,0,50,0,none,none
+gn:3102459,Brzeg,Opole Voivodeship,38259,town,0,0,50,0,none,none
+gn:3102488,Brusy,Pomerania,4728,village,0,0,50,0,none,none
+gn:3102510,Brudzew,Greater Poland,1620,village,0,0,50,0,none,none
+gn:3102513,Brudzeń Duży,Mazovia,939,village,0,0,50,0,none,none
+gn:3102555,Bronów,Silesia,1012,village,0,0,50,0,none,none
+gn:3102597,Brojce,West Pomerania,1248,village,0,0,50,0,none,none
+gn:3102598,Brójce,Lubusz,1050,village,0,0,50,0,none,none
+gn:3102599,Brójce,Łódź Voivodeship,385,village,0,0,50,0,none,none
+gn:3102615,Brody,Lubusz,1070,village,0,0,50,0,none,none
+gn:3102616,Brody,Lesser Poland,2577,village,0,0,50,0,none,none
+gn:3102627,Brodnica,Kujawsko-Pomorskie,27341,town,0,0,50,0,none,none
+gn:3102628,Brodnica,Greater Poland,722,village,0,0,50,0,none,none
+gn:3102634,Brodła,Lesser Poland,1005,village,0,0,50,0,none,none
+gn:3102648,Brętowo,Pomerania,7446,village,0,0,50,0,none,none
+gn:3102650,Brenno,Greater Poland,1200,village,0,0,50,0,none,none
+gn:3102652,Brenna,Silesia,5859,village,0,0,50,0,none,none
+gn:3102658,Brdów,Greater Poland,1050,village,0,0,50,0,none,none
+gn:3102673,Brąszewice,Łódź Voivodeship,1100,village,0,0,50,0,none,none
+gn:3102677,Braniewo,Warmia-Masuria,18356,town,0,0,50,0,none,none
+gn:3102679,Branice,Opole Voivodeship,2300,village,0,0,50,0,none,none
+gn:3102686,Bralin,Greater Poland,2500,village,0,0,50,0,none,none
+gn:3102704,Bozkow,Lower Silesia,1600,village,0,0,50,0,none,none
+gn:3102728,Borzytuchom,Pomerania,902,village,0,0,50,0,none,none
+gn:3102747,Borzęta,Lesser Poland,1269,village,0,0,50,0,none,none
+gn:3102791,Borucin,Silesia,1247,village,0,0,50,0,none,none
+gn:3102819,Borowno,Silesia,1364,village,0,0,50,0,none,none
+gn:3102869,Boronów,Silesia,2793,village,0,0,50,0,none,none
+gn:3102909,Borek Wielkopolski,Greater Poland,2527,village,0,0,50,0,none,none
+gn:3102956,Boniewo,Kujawsko-Pomorskie,700,village,0,0,50,0,none,none
+gn:3102961,Bolszewo,Pomerania,7064,village,0,0,50,0,none,none
+gn:3102969,Bolków,Lower Silesia,5304,village,0,0,50,0,none,none
+gn:3102975,Boleszkowice,West Pomerania,1316,village,0,0,50,0,none,none
+gn:3102987,Bolesławiec,Lower Silesia,40682,town,0,0,50,0,none,none
+gn:3102988,Bolesławiec,Łódź Voivodeship,1500,village,0,0,50,0,none,none
+gn:3102992,Bolesław,Lesser Poland,2500,village,0,0,50,0,none,none
+gn:3102997,Bolęcin,Lesser Poland,1819,village,0,0,50,0,none,none
+gn:3102999,Bolechowice,Lesser Poland,1515,village,0,0,50,0,none,none
+gn:3103001,Bojszowy Nowe,Silesia,1192,village,0,0,50,0,none,none
+gn:3103004,Bojszowy,Silesia,3219,village,0,0,50,0,none,none
+gn:3103008,Bojanowo Stare,Greater Poland,1692,village,0,0,50,0,none,none
+gn:3103009,Bojanowo,Greater Poland,2960,village,0,0,50,0,none,none
+gn:3103015,Bojano,Pomerania,2100,village,0,0,50,0,none,none
+gn:3103016,Bojadła,Lubusz,1200,village,0,0,50,0,none,none
+gn:3103034,Boguszów-Gorce,Lower Silesia,16726,town,0,0,50,0,none,none
+gn:3103091,Bogdaniec,Lubusz,1100,village,0,0,50,0,none,none
+gn:3103096,Bogatynia,Lower Silesia,16460,town,0,0,50,0,none,none
+gn:3103142,Bobrowo,Kujawsko-Pomorskie,441,village,0,0,50,0,none,none
+gn:3103148,Bobrowniki,Kujawsko-Pomorskie,980,village,0,0,50,0,none,none
+gn:3103154,Bobrowniki,Silesia,2926,village,0,0,50,0,none,none
+gn:3103162,Bobrowice,Lubusz,884,village,0,0,50,0,none,none
+gn:3103173,Bobowo,Pomerania,1271,village,0,0,50,0,none,none
+gn:3103179,Bobolice,West Pomerania,4365,village,0,0,50,0,none,none
+gn:3103236,Blizanów,Greater Poland,483,village,0,0,50,0,none,none
+gn:3103247,Bledzew,Lubusz,1300,village,0,0,50,0,none,none
+gn:3103261,Błaszki,Łódź Voivodeship,2132,village,0,0,50,0,none,none
+gn:3103274,Blachownia,Silesia,9891,village,0,0,50,0,none,none
+gn:3103329,Bieżuń,Mazovia,1931,village,0,0,50,0,none,none
+gn:3103351,Bierzwnik,West Pomerania,1152,village,0,0,50,0,none,none
+gn:3103364,Bierutów,Lower Silesia,5065,village,0,0,50,0,none,none
+gn:3103365,Bieruń,Silesia,19659,town,0,0,50,0,none,none
+gn:3103367,Bieruń Nowy,Silesia,8000,village,0,0,50,0,none,none
+gn:3103386,Bierdzany,Opole Voivodeship,1072,village,0,0,50,0,none,none
+gn:3103388,Bierawa,Opole Voivodeship,1370,village,0,0,50,0,none,none
+gn:3103391,Bieńkówka,Lesser Poland,2300,village,0,0,50,0,none,none
+gn:3103402,Bielsko-Biala,Silesia,176515,city,0,0,50,0,none,none
+gn:3103411,Bielsk,Mazovia,2600,village,0,0,50,0,none,none
+gn:3103432,Bielice,West Pomerania,560,village,0,0,50,0,none,none
+gn:3103462,Bielawy,Łódź Voivodeship,620,village,0,0,50,0,none,none
+gn:3103476,Bielawa,Lower Silesia,29232,town,0,0,50,0,none,none
+gn:3103477,Bielany Wrocławskie,Lower Silesia,3219,village,0,0,50,0,none,none
+gn:3103531,Biały Bór,West Pomerania,2209,village,0,0,50,0,none,none
+gn:3103545,Białośliwie,Greater Poland,2600,village,0,0,50,0,none,none
+gn:3103556,Białogard,West Pomerania,24368,town,0,0,50,0,none,none
+gn:3103588,Białe Błota,Kujawsko-Pomorskie,5989,village,0,0,50,0,none,none
+gn:3103644,Biała,Opole Voivodeship,2605,village,0,0,50,0,none,none
+gn:3103645,Białka,Lesser Poland,2542,village,0,0,50,0,none,none
+gn:3103655,Bestwinka,Silesia,1541,village,0,0,50,0,none,none
+gn:3103656,Bestwina,Silesia,4409,village,0,0,50,0,none,none
+gn:3103690,Bełsznica,Silesia,1095,village,0,0,50,0,none,none
+gn:3103696,Bełk,Silesia,3353,village,0,0,50,0,none,none
+gn:3103709,Bełchatów,Łódź Voivodeship,62896,town,0,0,50,0,none,none
+gn:3103719,Będzin,Silesia,58236,town,0,0,50,0,none,none
+gn:3103736,Bedlno,Łódź Voivodeship,640,village,0,0,50,0,none,none
+gn:3103742,Będków,Łódź Voivodeship,550,village,0,0,50,0,none,none
+gn:3103751,Bęczarka,Lesser Poland,1013,village,0,0,50,0,none,none
+gn:3103756,Bębło,Lesser Poland,1092,village,0,0,50,0,none,none
+gn:3103760,Bażanowice,Silesia,1161,village,0,0,50,0,none,none
+gn:3103780,Barwice,West Pomerania,3756,village,0,0,50,0,none,none
+gn:3103781,Barwałd Średni,Lesser Poland,1360,village,0,0,50,0,none,none
+gn:3103782,Barwałd Górny,Lesser Poland,1200,village,0,0,50,0,none,none
+gn:3103785,Baruchowo,Kujawsko-Pomorskie,434,village,0,0,50,0,none,none
+gn:3103824,Barlinek,West Pomerania,14385,town,0,0,50,0,none,none
+gn:3103847,Bardo,Lower Silesia,2763,village,0,0,50,0,none,none
+gn:3103856,Barcin,Kujawsko-Pomorskie,7682,village,0,0,50,0,none,none
+gn:3103877,Baranów,Greater Poland,1500,village,0,0,50,0,none,none
+gn:3103882,Banino,Pomerania,2593,village,0,0,50,0,none,none
+gn:3103884,Banie,West Pomerania,1967,village,0,0,50,0,none,none
+gn:3103892,Balin,Lesser Poland,3400,village,0,0,50,0,none,none
+gn:3103896,Balice,Lesser Poland,1200,village,0,0,50,0,none,none
+gn:3103926,Bąków,Silesia,1517,village,0,0,50,0,none,none
+gn:3103971,Bachowice,Lesser Poland,2234,village,0,0,50,0,none,none
+gn:3103989,Baborów,Opole Voivodeship,3114,village,0,0,50,0,none,none
+gn:3104002,Babimost,Lubusz,4182,village,0,0,50,0,none,none
+gn:3104018,Babice,Lesser Poland,1369,village,0,0,50,0,none,none
+gn:3104019,Babice,Lesser Poland,1582,village,0,0,50,0,none,none
+gn:3104022,Babiak,Greater Poland,1500,village,0,0,50,0,none,none
+gn:3104115,Andrychów,Lesser Poland,21954,town,0,0,50,0,none,none
+gn:3104116,Andrespol,Łódź Voivodeship,3773,village,0,0,50,0,none,none
+gn:3104127,Alwernia,Lesser Poland,3362,village,0,0,50,0,none,none
+gn:3104132,Aleksandrów Łódzki,Łódź Voivodeship,20292,town,0,0,50,0,none,none
+gn:3104133,Aleksandrów Kujawski,Kujawsko-Pomorskie,12290,town,0,0,50,0,none,none
+gn:3104136,Aleksandrowice,Silesia,1821,village,0,0,50,0,none,none
+gn:3104146,Aleksandrów,Łódź Voivodeship,200,village,0,0,50,0,none,none
+gn:6545326,Ursynów,Mazovia,149775,city,0,0,50,0,none,none
+gn:6545347,Praga Północ,Mazovia,93192,town,0,0,50,0,none,none
+gn:6545348,Praga Południe,Mazovia,179836,city,0,0,50,0,none,none
+gn:6565267,Krościenko nad Dunajcem,Lesser Poland,3500,village,0,0,50,0,none,none
+gn:6640020,Grzybowo,West Pomerania,1347,village,0,0,50,0,none,none
+gn:6695594,Adamowizna,Mazovia,1400,village,0,0,50,0,none,none
+gn:6948091,Mikuszowice Krakowskie,Silesia,2660,village,0,0,50,0,none,none
+gn:7302565,Rzgów,Łódź Voivodeship,3370,village,0,0,50,0,none,none
+gn:7303641,Jelcz Laskowice,Lower Silesia,15340,town,0,0,50,0,none,none
+gn:7522516,Brody-Parcele,Mazovia,1600,village,0,0,50,0,none,none
+gn:7534274,Sztutowo,Pomerania,2988,village,0,0,50,0,none,none
+gn:7534282,Żarki-Letnisko,Silesia,2344,village,0,0,50,0,none,none
+gn:7534286,Ostrówek,Mazovia,1800,village,0,0,50,0,none,none
+gn:7534412,Pogórze,Silesia,1851,village,0,0,50,0,none,none
+gn:7534439,Podebłocie,Mazovia,1025,village,0,0,50,0,none,none
+gn:7534440,Sulbiny Górne,Mazovia,1014,village,0,0,50,0,none,none
+gn:7534548,Biskupiec,Warmia-Masuria,1927,village,0,0,50,0,none,none
+gn:7534559,Ruda-Huta,Lublin,1076,village,0,0,50,0,none,none
+gn:7534560,Iłowo -Osada,Warmia-Masuria,2800,village,0,0,50,0,none,none
+gn:7534583,Koszyce Wielkie,Lesser Poland,2581,village,0,0,50,0,none,none
+gn:7534656,Radwanice,Lower Silesia,2100,village,0,0,50,0,none,none
+gn:7534709,Rutki-Kossaki,Podlasie,1300,village,0,0,50,0,none,none
+gn:7534722,Zalesie,Subcarpathia,1171,village,0,0,50,0,none,none
+gn:7535367,Bartniczka,Kujawsko-Pomorskie,550,village,0,0,50,0,none,none
+gn:7535492,Lubicz Dolny,Kujawsko-Pomorskie,2700,village,0,0,50,0,none,none
+gn:7535493,Lubicz Górny,Kujawsko-Pomorskie,3520,village,0,0,50,0,none,none
+gn:7535494,Tomaszkowice,Lesser Poland,600,village,0,0,50,0,none,none
+gn:7535495,Chotcza,Mazovia,270,village,0,0,50,0,none,none
+gn:7535565,Biała,Mazovia,613,village,0,0,50,0,none,none
+gn:7535566,Mała Wieś,Mazovia,1361,village,0,0,50,0,none,none
+gn:7535568,Baranowo,Greater Poland,1331,village,0,0,50,0,none,none
+gn:7535570,Wiśniewo,Mazovia,473,village,0,0,50,0,none,none
+gn:7535582,Izabelin,Mazovia,3045,village,0,0,50,0,none,none
+gn:7535607,Świercze,Mazovia,672,village,0,0,50,0,none,none
+gn:7535672,Łętownia,Lesser Poland,2800,village,0,0,50,0,none,none
+gn:7535721,Broniszewice,Greater Poland,1102,village,0,0,50,0,none,none
+gn:7535732,Czarna Dąbrówka,Pomerania,1112,village,0,0,50,0,none,none
+gn:7535938,Skarbimierz Osiedle,Opole Voivodeship,1845,village,0,0,50,0,none,none
+gn:7535972,Wilczyce,Lower Silesia,2000,village,0,0,50,0,none,none
+gn:7536163,Krzczonów,Lublin,1462,village,0,0,50,0,none,none
+gn:7576105,Bełżec,Lublin,2723,village,0,0,50,0,none,none
+gn:7576107,Godziszów Pierwszy,Lublin,1108,village,0,0,50,0,none,none
+gn:7576141,Rokiciny-Kolonia,Łódź Voivodeship,1300,village,0,0,50,0,none,none
+gn:7576143,Nowe Ostrowy,Łódź Voivodeship,484,village,0,0,50,0,none,none
+gn:7576212,Kocierzew Południowy,Łódź Voivodeship,395,village,0,0,50,0,none,none
+gn:7576318,Zdziechowice Drugie,Subcarpathia,1091,village,0,0,50,0,none,none
+gn:7576332,Chróścina,Opole Voivodeship,1736,village,0,0,50,0,none,none
+gn:7576421,Mirków,Lower Silesia,1200,village,0,0,50,0,none,none
+gn:7576424,Radwanice,Lower Silesia,2446,village,0,0,50,0,none,none
+gn:7576449,Rotmanka,Pomerania,1782,village,0,0,50,0,none,none
+gn:7576667,Nowe Grocholice,Mazovia,1106,village,0,0,50,0,none,none
+gn:8168336,Mierzyn,West Pomerania,8494,village,0,0,50,0,none,none
+gn:8425958,Gajowice,Lower Silesia,21781,town,0,0,50,0,none,none
+gn:8425959,Gądów-Popowice Południowe,Lower Silesia,24508,town,0,0,50,0,none,none
+gn:8425960,Grabiszyn-Grabiszynek,Lower Silesia,13170,town,0,0,50,0,none,none
+gn:8425961,Jerzmanowo-Jarnołtów-Strachowice-Osiniec,Lower Silesia,2202,village,0,0,50,0,none,none
+gn:8425962,Kuźniki,Lower Silesia,5569,village,0,0,50,0,none,none
+gn:8425963,Muchobór Mały,Lower Silesia,7586,village,0,0,50,0,none,none
+gn:8425964,Muchobór Wielki,Lower Silesia,13098,town,0,0,50,0,none,none
+gn:8425965,Nowy Dwór,Lower Silesia,14832,town,0,0,50,0,none,none
+gn:8425966,Pilczyce-Kozanów-Popowice Północne,Lower Silesia,31320,town,0,0,50,0,none,none
+gn:8425968,Borek,Lower Silesia,11883,town,0,0,50,0,none,none
+gn:8425969,Gaj,Lower Silesia,19136,town,0,0,50,0,none,none
+gn:8425970,Huby,Lower Silesia,18727,town,0,0,50,0,none,none
+gn:8425971,Jagodno,Lower Silesia,9355,village,0,0,50,0,none,none
+gn:8425972,Krzyki-Partynice,Lower Silesia,21233,town,0,0,50,0,none,none
+gn:8425973,Księże,Lower Silesia,6379,village,0,0,50,0,none,none
+gn:8425974,Osiedle Powstańców Śląskich,Lower Silesia,24329,town,0,0,50,0,none,none
+gn:8425975,Przedmieście Oławskie,Lower Silesia,20316,town,0,0,50,0,none,none
+gn:8425976,Tarnogaj,Lower Silesia,9108,village,0,0,50,0,none,none
+gn:8425978,Karłowice-Różanka,Lower Silesia,31813,town,0,0,50,0,none,none
+gn:8425979,Kleczków,Lower Silesia,7418,village,0,0,50,0,none,none
+gn:8425980,Osobowice-Rędzin,Lower Silesia,2966,village,0,0,50,0,none,none
+gn:8425981,Polanowice-Poświętne-Ligota,Lower Silesia,6204,village,0,0,50,0,none,none
+gn:8425982,Psie Pole Zawidawie,Lower Silesia,29606,town,0,0,50,0,none,none
+gn:8425985,Przedmieście Świdnickie,Lower Silesia,13870,town,0,0,50,0,none,none
+gn:8425986,Szczepin,Lower Silesia,18488,town,0,0,50,0,none,none
+gn:8425987,Biskupin-Sępolno-Dąbie-Bartoszowice,Lower Silesia,19951,town,0,0,50,0,none,none
+gn:8425988,Nadodrze,Lower Silesia,23177,town,0,0,50,0,none,none
+gn:8425989,Ołbin,Lower Silesia,31216,town,0,0,50,0,none,none
+gn:8425990,Plac Grunwaldzki,Lower Silesia,13187,town,0,0,50,0,none,none
+gn:8425991,Zacisze-Zalesie-Szczytniki,Lower Silesia,4059,village,0,0,50,0,none,none
+gn:8425992,Stare Miasto,Lower Silesia,8883,village,0,0,50,0,none,none
+gn:8425993,Kowale,Lower Silesia,2653,village,0,0,50,0,none,none
+gn:8426030,Aniołki,Pomerania,4223,village,0,0,50,0,none,none
+gn:8426032,Chełm,Pomerania,30743,town,0,0,50,0,none,none
+gn:8426033,Krakowiec-Górki Zachodnie,Pomerania,1661,village,0,0,50,0,none,none
+gn:8426034,Letnica,Pomerania,2622,village,0,0,50,0,none,none
+gn:8426035,Młyniska,Pomerania,2278,village,0,0,50,0,none,none
+gn:8426036,Nowy Port,Pomerania,8465,village,0,0,50,0,none,none
+gn:8426037,Olszynka,Pomerania,3016,village,0,0,50,0,none,none
+gn:8426038,Orunia-Św. Wojciech-Lipce,Pomerania,14136,town,0,0,50,0,none,none
+gn:8426039,Piecki-Migowo,Pomerania,27173,town,0,0,50,0,none,none
+gn:8426040,Przymorze Małe,Pomerania,14912,town,0,0,50,0,none,none
+gn:8426041,Przymorze Wielkie,Pomerania,24368,town,0,0,50,0,none,none
+gn:8426043,Siedlce,Pomerania,12473,town,0,0,50,0,none,none
+gn:8426044,Strzyża,Pomerania,5086,village,0,0,50,0,none,none
+gn:8426045,Środmieście,Pomerania,23364,town,0,0,50,0,none,none
+gn:8426046,Ujeścisko-Łostowice,Pomerania,29845,town,0,0,50,0,none,none
+gn:8426047,VII Dwór,Pomerania,3808,village,0,0,50,0,none,none
+gn:8426048,Wrzeszcz Dolny,Pomerania,21648,town,0,0,50,0,none,none
+gn:8426050,Wrzeszcz Górny,Pomerania,20810,town,0,0,50,0,none,none
+gn:8426051,Wyspa Sobieszewska,Pomerania,3255,village,0,0,50,0,none,none
+gn:8426052,Wzgórze Mickiewicza,Pomerania,2375,village,0,0,50,0,none,none
+gn:8426053,Zaspa-Młyniec,Pomerania,12376,town,0,0,50,0,none,none
+gn:8426054,Zaspa-Rozstaje,Pomerania,12446,town,0,0,50,0,none,none
+gn:8426055,Żabianka-Wejhera-Jelitkowo-Tysiąclecia,Pomerania,14540,town,0,0,50,0,none,none
+gn:8426082,Drzetowo-Grabowo,West Pomerania,22655,town,0,0,50,0,none,none
+gn:8426094,Świerczewo,West Pomerania,16034,town,0,0,50,0,none,none
+gn:10173884,Zlote Lany,Silesia,12865,town,0,0,50,0,none,none
+gn:11694551,Izabelin C,Mazovia,1500,village,0,0,50,0,none,none
+gn:11694566,Łęki Dukielskie,Subcarpathia,1585,village,0,0,50,0,none,none
+gn:12047609,Rejon ulicy Klęczkowskiej,Lower Silesia,6223,village,0,0,50,0,none,none
+gn:12047610,Jarnołtów-Jerzmanowo,Lower Silesia,1357,village,0,0,50,0,none,none
+gn:12047611,Widawa-Lipa Piotrowska-Polanowice,Lower Silesia,3982,village,0,0,50,0,none,none
+gn:12047613,Rejon alei Kromera,Lower Silesia,4421,village,0,0,50,0,none,none
+gn:12047614,Strachocin-Wojnów,Lower Silesia,4861,village,0,0,50,0,none,none
+gn:12047615,Leśnica-Ratyń-Pustki,Lower Silesia,8724,village,0,0,50,0,none,none
+gn:12047617,Osiedle Kosmonautów,Lower Silesia,19048,town,0,0,50,0,none,none
+gn:12047620,Sępolno,Lower Silesia,7724,village,0,0,50,0,none,none
+gn:12047621,Rejon ulicy Saperów,Lower Silesia,1402,village,0,0,50,0,none,none
+gn:12047622,Rejon ulicy Mieleckiej,Lower Silesia,6815,village,0,0,50,0,none,none
+gn:12047623,Rejon placu Grunwaldzkiego,Lower Silesia,27030,town,0,0,50,0,none,none
+gn:12047624,Zakrzów,Lower Silesia,10737,town,0,0,50,0,none,none
+gn:12047625,Maślice Małe,Lower Silesia,6602,village,0,0,50,0,none,none
+gn:12047626,Zacisze,Lower Silesia,1773,village,0,0,50,0,none,none
+gn:12047627,Grabiszyn,Lower Silesia,2175,village,0,0,50,0,none,none
+gn:12047628,Rejon ulicy Traugutta,Lower Silesia,20617,town,0,0,50,0,none,none
+gn:12047629,Grabiszynek,Lower Silesia,11145,town,0,0,50,0,none,none
+gn:12047630,Pilczyce,Lower Silesia,5582,village,0,0,50,0,none,none
+gn:12047631,Biskupin,Lower Silesia,11292,town,0,0,50,0,none,none
+gn:12047632,Pracze Odrzańskie-Janówek,Lower Silesia,1178,village,0,0,50,0,none,none
+gn:12047634,Marszowice,Lower Silesia,1493,village,0,0,50,0,none,none
+gn:12047635,Gądów Mały,Lower Silesia,7042,village,0,0,50,0,none,none
+gn:12047636,Kozanów,Lower Silesia,15901,town,0,0,50,0,none,none
+gn:12047637,Złotniki,Lower Silesia,5373,village,0,0,50,0,none,none
+gn:12047638,Sołtysowice,Lower Silesia,4879,village,0,0,50,0,none,none
+gn:12047639,Stabłowice,Lower Silesia,14099,town,0,0,50,0,none,none
+gn:12047640,Zgorzelisko,Lower Silesia,11967,town,0,0,50,0,none,none
+gn:12047641,Zalesie i Stadion,Lower Silesia,1301,village,0,0,50,0,none,none
+gn:12047643,Maślice Wielkie,Lower Silesia,3469,village,0,0,50,0,none,none
+gn:12047644,Rejon placu Świętego Macieja,Lower Silesia,44090,town,0,0,50,0,none,none
+gn:12047645,Kowale-Popiele,Lower Silesia,2254,village,0,0,50,0,none,none
+gn:12047646,Swojczyce,Lower Silesia,1215,village,0,0,50,0,none,none
+gn:12047647,Pawłowice-Kłokoczyce,Lower Silesia,2568,village,0,0,50,0,none,none
+gn:12047648,Partynice,Lower Silesia,1991,village,0,0,50,0,none,none
+gn:12047651,Różanka-Polanka,Lower Silesia,15746,town,0,0,50,0,none,none
+gn:12047652,Dąbie,Lower Silesia,1191,village,0,0,50,0,none,none
+gn:12047653,Osiedle Henrykowskie,Lower Silesia,5384,village,0,0,50,0,none,none
+gn:12047654,Poświętne,Lower Silesia,3010,village,0,0,50,0,none,none
+gn:12047655,Powstańców Śląskich Zachód-Centrum Południow,Lower Silesia,12077,town,0,0,50,0,none,none
+gn:12047656,Psie Pole Południe-Kiełczów,Lower Silesia,5263,village,0,0,50,0,none,none
+gn:12047657,Krzyki,Lower Silesia,12993,town,0,0,50,0,none,none
+gn:12047659,Karłowice,Lower Silesia,12651,town,0,0,50,0,none,none
+gn:12047660,Księże Małe-Księże Wielkie,Lower Silesia,5541,village,0,0,50,0,none,none
+gn:12047661,Rejon ulicy Borowskiej-Południe,Lower Silesia,2663,village,0,0,50,0,none,none
+gn:12047662,Powstańców Śląskich Wschód,Lower Silesia,11456,town,0,0,50,0,none,none
+gn:12047663,Wojszyce,Lower Silesia,7285,village,0,0,50,0,none,none
+gn:12110766,Lipkowo,Warmia-Masuria,0,village,0,0,50,0,none,none
+gn:12111088,Biała Krakowska,Silesia,5821,village,0,0,50,0,none,none
+gn:12199995,Biała Róża,Łódź Voivodeship,0,village,0,0,50,0,none,none
+gn:12909198,Sadlinki,Kujawsko-Pomorskie,0,village,0,0,50,0,none,none
+gn:13100477,Orunia Górna-Gdańsk Południe,Pomerania,19807,town,0,0,50,0,none,none
+gn:13237114,Neuhof,Warmia-Masuria,0,village,0,0,50,0,none,none
+gn:13237119,Michalowo,Warmia-Masuria,0,village,0,0,50,0,none,none
+gn:13264375,Malta,Lubusz,0,village,0,0,50,0,none,none
+gn:13562332,Śródmieście,Lower Silesia,99088,town,0,0,50,0,none,none
+gn:13562335,Psie Pole,Lower Silesia,95615,town,0,0,50,0,none,none
+gn:13562336,Widawa,Lower Silesia,1764,village,0,0,50,0,none,none
+gn:13665096,Komorowice Krakowskie,Silesia,8237,village,0,0,50,0,none,none
+gn:13665097,Karpackie,Silesia,8247,village,0,0,50,0,none,none
+gn:13665098,Lipnik,Silesia,6292,village,0,0,50,0,none,none
+gn:13665099,Beskidzkie,Silesia,6291,village,0,0,50,0,none,none
+gn:13665100,Górne Przedmieście,Silesia,5768,village,0,0,50,0,none,none
+gn:13665101,Leszczyny,Silesia,5355,village,0,0,50,0,none,none
+gn:13665102,Słoneczne,Silesia,5255,village,0,0,50,0,none,none
+gn:13665103,Bielsko Południe,Silesia,4601,village,0,0,50,0,none,none
+gn:13665104,Wojska Polskiego,Silesia,4207,village,0,0,50,0,none,none
+gn:13665105,Kopernika,Silesia,4092,village,0,0,50,0,none,none
+gn:13665106,Grunwaldzkie,Silesia,3912,village,0,0,50,0,none,none
+gn:13665107,Śródmieście Bielsko,Silesia,3875,village,0,0,50,0,none,none
+gn:13665108,Dolne Przedmieście,Silesia,3506,village,0,0,50,0,none,none
+gn:13665109,Biała Wschód,Silesia,2884,village,0,0,50,0,none,none
+gn:13665110,Polskich Skrzydeł,Silesia,2760,village,0,0,50,0,none,none
+gn:13665111,Biała Północ,Silesia,2548,village,0,0,50,0,none,none
+gn:13665112,Biała Śródmieście,Silesia,2127,village,0,0,50,0,none,none
+gn:13665113,Piastowskie,Silesia,1820,village,0,0,50,0,none,none
+gn:13665114,Mieszka I,Silesia,1417,village,0,0,50,0,none,none

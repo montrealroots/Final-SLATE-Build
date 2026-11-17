@@ -1,0 +1,13 @@
+place_id,name,region,population,market,verified_homes,dated_listings,shortfall_to_50,recorded_sales,rent_source,price_source
+gn:2992741,Monte-Carlo,Municipality of Monaco,16012,town,0,0,50,0,none,none
+mc-monaco,Monaco,Monaco,32965,town,0,0,50,0,none,none
+gn:3009937,La Condamine,Municipality of Monaco,12167,town,0,0,50,0,none,none
+gn:3017814,Fontvieille,Municipality of Monaco,3602,village,0,0,50,0,none,none
+gn:3225774,Saint-Roman,Municipality of Monaco,3000,village,0,0,50,0,none,none
+gn:3319177,Moneghetti,Municipality of Monaco,3000,village,0,0,50,0,none,none
+gn:8029385,Les Révoires,Municipality of Monaco,2545,village,0,0,50,0,none,none
+gn:13527008,Monaco-Ville,Municipality of Monaco,1064,village,0,0,50,0,none,none
+gn:13527009,Jardin Exotique,Municipality of Monaco,5117,village,0,0,50,0,none,none
+gn:13527010,La Rousse,Municipality of Monaco,7087,village,0,0,50,0,none,none
+gn:13527011,Larvotto,Municipality of Monaco,2026,village,0,0,50,0,none,none
+gn:13697292,Mareterra,Municipality of Monaco,3400,village,0,0,50,0,none,none

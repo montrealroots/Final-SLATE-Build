@@ -1,0 +1,22 @@
+place_id,name,region,population,market,verified_homes,dated_listings,shortfall_to_50,recorded_sales,rent_source,price_source
+gn:3569907,Saint-Pierre,Martinique,4125,village,0,0,50,0,none,none
+gn:3569915,Saint-Joseph,Martinique,16974,town,0,0,50,0,none,none
+gn:3569926,Sainte-Marie,Martinique,20380,town,0,0,50,0,none,none
+gn:3569928,Sainte-Luce,Martinique,9196,village,0,0,50,0,none,none
+gn:3569931,Sainte-Anne,Martinique,4306,village,0,0,50,0,none,none
+gn:3569970,Rivière-Pilote,Martinique,13359,town,0,0,50,0,none,none
+gn:3570392,Le Vauclin,Martinique,7812,village,0,0,50,0,none,none
+gn:3570396,Les Trois-Îlets,Martinique,5657,village,0,0,50,0,none,none
+gn:3570410,Saint-Esprit,Martinique,8508,village,0,0,50,0,none,none
+gn:3570412,Le Robert,Martinique,23814,town,0,0,50,0,none,none
+gn:3570423,Le Morne-Rouge,Martinique,5469,village,0,0,50,0,none,none
+gn:3570426,Le Marin,Martinique,7943,village,0,0,50,0,none,none
+gn:3570427,Le Lorrain,Martinique,8341,village,0,0,50,0,none,none
+gn:3570428,Le Lamentin,Martinique,40581,town,0,0,50,0,none,none
+gn:3570429,Le François,Martinique,19682,town,0,0,50,0,none,none
+gn:3570446,La Trinité,Martinique,15040,town,0,0,50,0,none,none
+gn:3570501,L'Ajoupa-Bouillon,Martinique,1815,village,0,0,50,0,none,none
+gn:3570584,Le Gros-Morne,Martinique,11025,town,0,0,50,0,none,none
+gn:3570675,Fort-de-France,Martinique,89995,town,0,0,50,0,none,none
+gn:3570785,Ducos,Martinique,17394,town,0,0,50,0,none,none
+gn:3571097,Basse-Pointe,Martinique,4037,village,0,0,50,0,none,none

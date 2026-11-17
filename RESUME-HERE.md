@@ -20,36 +20,65 @@ finished, and they come back only when the owner says so:
   work permits are still estimates in all (`docs/v10/papers-estimates.json`).
 - **Real-phone and pacing tests:** they need the owner's own device and a person playing.
 
+## The Owner's Second Housing Brief (November 17, 2026, Later): City-By-City Coverage And The Full Vision
+
+Item by item in `docs/homes/BRIEF-2026-11-17.md`; every place's coverage in `docs/homes/places/`.
+
+**The house pictures are gone, at the owner's request (November 17, 2026).** The owner asked for the pictures made in
+Homes And Property to be deleted, as they won't be needed again: the game's drawing of each home (`illustration.ts`),
+its Design Preview, the drawings kept in the save (an older save drops them on load, `save.ts migrate`) and the
+picture checks are removed. Each home's outside is said in words instead (`Homes.tsx outsideWords`), on its facts and
+on the card of a home you own. Don't bring pictures back unless the owner asks. The same request was first misread as
+being about the session's screenshots: the 3,331 captures in the session scratchpad and the ignored
+`.playwright-mcp/` and `test-results/` folders were deleted too. Nothing in the repository was lost to that.
+
+**Done in this pass:** the three money and approval bugs from main at 20563b1, reproduced and fixed
+(`tests/homes-regressions.test.ts`); a coverage entry for each of the catalog's 171,750 places, with its verified
+count (0), shortfall (50) and where its prices come from; each place priced only from its own records (US county
+FIPS and French INSEE commune codes from GeoNames, `tools/homes/place-codes.mjs`); dated evidence (`DATASETS`, a
+figure used before it was published is labelled Retrospective); each place's own persistent market of fifty homes
+with staggered listings, fitted to its size and climate; Find A Home shows the place's coverage.
+
+**Not done, in the order to take them:**
+1. Verified homes at real addresses: **8,587,500 short** (50 in every place). Needs a source whose terms permit it;
+   none the game holds does. Never fill it with simulated homes.
+2. Lease renewal and rent review (renting and letting), contractor selection and construction loans (building).
+3. Utility tariffs and mortgage terms by country (one game rate everywhere today), with sources and dates.
+4. Building systems in the property record: age, heating, cooling, water, drainage, connectivity, accessibility;
+   insulation, accessibility, security and energy work.
+5. A forecast view of housing money (committed, upcoming) in Homes And Property.
+6. Price trends: only where a dated series supports them.
+
 ## The Owner's Homes & Property Package (November 17, 2026)
 
 The owner's SLATE-Homes-Property-Research-v2 package: import its datasets, build Homes And Property beside Your Bank and
 Your Papers, and carry each cycle (rent; buy; land, design and build; furniture and appliances; utilities, insurance and
 renovations; letting; moving and selling) through the bank and the clock, with an exterior picture drawn from the same
-design record. One agent, implementation and tests, not a plan.
+design record (removed at the owner's request on November 17, 2026). One agent, implementation and tests, not a plan.
 
-**Done, as far as `docs/homes/features.csv` says** (153 requirements: 97 implemented and tested, 6 modeled, 11
-implemented without a dedicated test, 17 partial, 20 not implemented, 2 excluded by the owner). `docs/homes/COVERAGE.md`
+**Done, as far as `docs/homes/features.csv` says** (153 requirements: 95 implemented and tested, 6 modeled, 11
+implemented without a dedicated test, 15 partial, 17 not implemented, 9 excluded by the owner, 7 of them the house
+pictures the owner had removed on November 17, 2026). `docs/homes/COVERAGE.md`
 says what the game knows, from where, what it models and what's missing.
 
 - **Data:** `node tools/homes/import.mjs <package dir>` writes the lazy packs in `src/data/homes` (25 MB, fetched when
   needed): HUD rents (4,764 areas, 51,895 ZIP rows), 244,773 HDB resales, DVF 2025 kept as commune medians (no address
   or single sale: the repository is public), 7,430 EPA appliance records, 19 scoped rules, 46 sources, coverage of 252
   jurisdictions with 0 verified listings. `docs/homes/IMPORT-REPORT.json` has the counts.
-- **Engine:** `src/engine/homes/` (model, market, core, renting, buying, living, building, letting, illustration, index);
+- **Engine:** `src/engine/homes/` (model, market, core, renting, buying, living, building, letting, index);
   one clock kind, `home`, with a step. Money only through the bank (`bank.ts postHousing`): deposits and purchase
   deposits held in their own books, a mortgage a debt, a sale's price your own property, never income; keyed so a double
   click or a reload pays once. Papers decide where you may live (`papers.ts residenceRight`, `moveTo`).
 - **Screens:** `src/ui/Homes.tsx` (six tabs), Home's Homes And Property panel (`HomeMoney.tsx YourHomesPanel`), the rail
   under You, and Settings, Credits And Data Sources.
-- **Picture:** no AI provider exists here, so none is used: the game draws the design record, labelled as its own
-  drawing, checks every feature, keeps it per revision, and shows nothing rather than a wrong picture.
+- **Picture:** none since November 17, 2026, at the owner's request; each home's outside is said in words.
 - **Tests:** `tests/homes.test.ts`, `tests/homes-choices.test.ts`, `e2e/homes.spec.ts` (6 journeys, desktop and phone),
   41 probes in `tests/proof/probes/homes.ts` (the feature matrix's housing rows).
 
 **Not done** (the checklist's `not implemented` and `partial` rows): no verified listings; no market movement over
 time; UK, French and Singapore rents and most places' prices are the game's placeholder; ONS, HUD, NAHB and EIA figures
 are used whatever the game's date; no lease renewal or rent review; no utility contracts or providers; one builder and
-no construction loan; no item resale, consumables or planned maintenance; no AI image generation.
+no construction loan; no item resale, consumables or planned maintenance.
 
 ## The Owner's Command Of November 15, 2026: Designs, Director's Fixes, Phone, Real Grades And Real Pay
 

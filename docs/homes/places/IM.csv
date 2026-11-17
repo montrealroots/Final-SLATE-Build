@@ -1,0 +1,22 @@
+place_id,name,region,population,market,verified_homes,dated_listings,shortfall_to_50,recorded_sales,rent_source,price_source
+gn:3042182,Santon,Santon,0,village,0,0,50,0,none,none
+gn:3042192,Ramsey,Ramsey,7845,village,0,0,50,0,none,none
+gn:3042195,Port Saint Mary,Port St Mary,0,village,0,0,50,0,none,none
+gn:3042196,Port Erin,Port Erin,3530,village,0,0,50,0,none,none
+gn:3042198,Peel,Peel,5374,village,0,0,50,0,none,none
+gn:3042199,Patrick,Patrick,0,village,0,0,50,0,none,none
+gn:3042201,Onchan,Onchan,0,village,0,0,50,0,none,none
+gn:3042210,Maughold,Maughold,0,village,0,0,50,0,none,none
+gn:3042213,Lezayre,Lezayre,0,village,0,0,50,0,none,none
+gn:3042217,Laxey,Laxey,1768,village,0,0,50,0,none,none
+gn:3042220,Kirkmichael,Michael,0,village,0,0,50,0,none,none
+gn:3042221,Kirk Braddan,Braddan,0,village,0,0,50,0,none,none
+gn:3042224,Jurby,Jurby,0,village,0,0,50,0,none,none
+gn:3042237,Douglas,Douglas,26218,town,0,0,50,0,none,none
+gn:3042245,Crosby,Marown,0,village,0,0,50,0,none,none
+gn:3042255,Castletown,Castletown,3100,village,0,0,50,0,none,none
+gn:3042259,Bride,Bride,0,village,0,0,50,0,none,none
+gn:3042264,Ballasalla,Malew,0,village,0,0,50,0,none,none
+gn:3042267,Ballabeg,Arbory,0,village,0,0,50,0,none,none
+gn:3042271,Andreas,Andreas,0,village,0,0,50,0,none,none
+gn:8468983,Ballaugh,Ballaugh,0,village,0,0,50,0,none,none

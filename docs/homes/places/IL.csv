@@ -1,0 +1,434 @@
+place_id,name,region,population,market,verified_homes,dated_listings,shortfall_to_50,recorded_sales,rent_source,price_source
+gn:163684,Tel Qatsir,Northern District,2878,village,0,0,50,0,none,none
+gn:170378,Fīq,Northern District,0,village,0,0,50,0,none,none
+gn:172119,‘Ein Qunīya,Northern District,2098,village,0,0,50,0,none,none
+gn:173550,Al Buţayḩah,Northern District,0,village,0,0,50,0,none,none
+gn:173601,Al Khushnīyah,Northern District,0,village,0,0,50,0,none,none
+gn:173882,Ghajar,Northern District,2607,village,0,0,50,0,none,none
+gn:281184,Jerusalem,Jerusalem,971800,large-city,0,0,50,0,none,none
+gn:281187,Giv`at H̱ananya,Jerusalem,15500,town,0,0,50,0,none,none
+gn:282582,Har Adar,Jerusalem,3300,village,0,0,50,0,none,none
+gn:282597,Naẖal Teqoa‘,Jerusalem,3882,village,0,0,50,0,none,none
+gn:282727,Miẕpé Yeriẖo,Jerusalem,2453,village,0,0,50,0,none,none
+gn:282926,Modi‘in Makkabbim Re‘ut,Central District,93277,town,0,0,50,0,none,none
+gn:283047,Kokhav HaShaẖar,Jerusalem,2122,village,0,0,50,0,none,none
+gn:283989,El‘azar,Jerusalem,2510,village,0,0,50,0,none,none
+gn:293009,Be’er Toviyya,Southern District,1289,village,0,0,50,0,none,none
+gn:293014,Tsur Moshe,Central District,3291,village,0,0,50,0,none,none
+gn:293020,Tsur Hadassa,Jerusalem,4700,village,0,0,50,0,none,none
+gn:293038,Tsofit,Central District,1287,village,0,0,50,0,none,none
+gn:293067,Zikhron Ya‘aqov,Haifa,23206,town,0,0,50,0,none,none
+gn:293078,Zetan,Central District,1064,village,0,0,50,0,none,none
+gn:293080,Tsrufa,Haifa,1097,village,0,0,50,0,none,none
+gn:293092,Tselafon,Jerusalem,1044,village,0,0,50,0,none,none
+gn:293094,Zekharya,Jerusalem,1124,village,0,0,50,0,none,none
+gn:293100,Safed,Northern District,36094,town,0,0,50,0,none,none
+gn:293126,Zalafa,Haifa,4639,village,0,0,50,0,none,none
+gn:293153,Yoqne‘am ‘Illit,Northern District,23796,town,0,0,50,0,none,none
+gn:293181,Yirkā,Northern District,17171,town,0,0,50,0,none,none
+gn:293182,Yinnon,Southern District,1197,village,0,0,50,0,none,none
+gn:293187,Yif‘at,Northern District,1208,village,0,0,50,0,none,none
+gn:293191,Yesud HaMa‘ala,Northern District,1730,village,0,0,50,0,none,none
+gn:293203,Yeroẖam,Southern District,10294,town,0,0,50,0,none,none
+gn:293207,Yehud Monosson,Central District,25600,town,0,0,50,0,none,none
+gn:293220,Yavne’el,Northern District,4460,village,0,0,50,0,none,none
+gn:293222,Yavné,Central District,47585,town,0,0,50,0,none,none
+gn:293228,Yashresh,Central District,1001,village,0,0,50,0,none,none
+gn:293231,Yarẖiv,Central District,1082,village,0,0,50,0,none,none
+gn:293248,Yagur,Haifa,1617,village,0,0,50,0,none,none
+gn:293253,Jaffa,Tel Aviv,100000,city,0,0,50,0,none,none
+gn:293254,Yāfā,Northern District,18905,town,0,0,50,0,none,none
+gn:293256,Yad Rambam,Central District,1124,village,0,0,50,0,none,none
+gn:293262,Yad Binyamin,Central District,4268,village,0,0,50,0,none,none
+gn:293273,‘Uzayr,Northern District,3276,village,0,0,50,0,none,none
+gn:293284,Umm el Quṭūf,Haifa,1117,village,0,0,50,0,none,none
+gn:293286,Umm el Faḥm,Haifa,56109,town,0,0,50,0,none,none
+gn:293291,Udim,Central District,1379,village,0,0,50,0,none,none
+gn:293298,Tūbā Zangarīya,Northern District,6776,village,0,0,50,0,none,none
+gn:293305,Tirat Yehuda,Central District,1201,village,0,0,50,0,none,none
+gn:293308,Tirat Karmel,Haifa,27822,town,0,0,50,0,none,none
+gn:293310,Timrat,Northern District,1292,village,0,0,50,0,none,none
+gn:293319,Tifraẖ,Southern District,2178,village,0,0,50,0,none,none
+gn:293322,Tiberias,Northern District,44779,town,0,0,50,0,none,none
+gn:293336,Tel Yitsẖaq,Central District,1021,village,0,0,50,0,none,none
+gn:293354,Tel Mond,Central District,13144,town,0,0,50,0,none,none
+gn:293397,Tel Aviv,Tel Aviv,432892,city,0,0,50,0,none,none
+gn:293410,Tel ‘Adashim,Northern District,1504,village,0,0,50,0,none,none
+gn:293420,maalot Tarshīhā,Northern District,21836,town,0,0,50,0,none,none
+gn:293426,Tamra,Northern District,25917,town,0,0,50,0,none,none
+gn:293431,Tal Shaẖar,Jerusalem,1369,village,0,0,50,0,none,none
+gn:293449,Sūlam,Northern District,2609,village,0,0,50,0,none,none
+gn:293455,Sitriyya,Central District,1102,village,0,0,50,0,none,none
+gn:293476,Shoresh,Jerusalem,1247,village,0,0,50,0,none,none
+gn:293508,Shtulim,Southern District,2116,village,0,0,50,0,none,none
+gn:293522,Shlomi,Northern District,6511,village,0,0,50,0,none,none
+gn:293538,Shefayim,Central District,1302,village,0,0,50,0,none,none
+gn:293539,Shefar‘am,Northern District,42137,town,0,0,50,0,none,none
+gn:293543,Shave Tsiyyon,Northern District,1205,village,0,0,50,0,none,none
+gn:293580,Bet Yitsẖaq Sha’ar H̱efer,Central District,2079,village,0,0,50,0,none,none
+gn:293585,Sha‘ar Efrayim,Central District,1907,village,0,0,50,0,none,none
+gn:293590,Sha‘alvim,Central District,1928,village,0,0,50,0,none,none
+gn:293595,Sha‘ab,Northern District,6941,village,0,0,50,0,none,none
+gn:293605,‘Atsmon Segev,Northern District,1121,village,0,0,50,0,none,none
+gn:293608,Sdot Yam,Haifa,1096,village,0,0,50,0,none,none
+gn:293615,Sde Ya‘aqov,Northern District,1103,village,0,0,50,0,none,none
+gn:293616,Sde Warburg,Central District,1478,village,0,0,50,0,none,none
+gn:293617,Sde ‘Uziyyahu,Southern District,1571,village,0,0,50,0,none,none
+gn:293619,Sderot,Southern District,27635,town,0,0,50,0,none,none
+gn:293620,Sde Neẖemya,Northern District,1235,village,0,0,50,0,none,none
+gn:293624,Sde H̱emed,Central District,1019,village,0,0,50,0,none,none
+gn:293633,Savyon,Central District,4036,village,0,0,50,0,none,none
+gn:293648,Ṣandala,Northern District,1644,village,0,0,50,0,none,none
+gn:293655,Sakhnīn,Northern District,31702,town,0,0,50,0,none,none
+gn:293657,Sājūr,Northern District,4270,village,0,0,50,0,none,none
+gn:293679,Rummāna,Northern District,1212,village,0,0,50,0,none,none
+gn:293688,Rosh Pinna,Northern District,3148,village,0,0,50,0,none,none
+gn:293690,Rosh Ha‘Ayin,Central District,72881,town,0,0,50,0,none,none
+gn:293701,Rishpon,Central District,1458,village,0,0,50,0,none,none
+gn:293703,Rishon LeTsiyyon,Central District,258535,city,0,0,50,0,none,none
+gn:293704,Rinnatya,Central District,1195,village,0,0,50,0,none,none
+gn:293706,Riẖaniya,Northern District,1195,village,0,0,50,0,none,none
+gn:293711,Revivim,Southern District,1075,village,0,0,50,0,none,none
+gn:293718,Reshafim,Northern District,1089,village,0,0,50,0,none,none
+gn:293721,Rekhasim,Haifa,12668,town,0,0,50,0,none,none
+gn:293725,Reẖovot,Central District,149392,city,0,0,50,0,none,none
+gn:293729,Regba,Northern District,1096,village,0,0,50,0,none,none
+gn:293755,Ramot Menashe,Northern District,1159,village,0,0,50,0,none,none
+gn:293768,Ramla,Central District,76246,town,0,0,50,0,none,none
+gn:293773,Ramat Yishay,Northern District,7785,village,0,0,50,0,none,none
+gn:293774,Ramat Yoẖanan,Haifa,1012,village,0,0,50,0,none,none
+gn:293781,Ramat HaShofet,Northern District,1101,village,0,0,50,0,none,none
+gn:293783,Ramat HaSharon,Tel Aviv,47245,town,0,0,50,0,none,none
+gn:293785,Ramat HaKovesh,Central District,1130,village,0,0,50,0,none,none
+gn:293788,Ramat Gan,Tel Aviv,170822,city,0,0,50,0,none,none
+gn:293793,Rama,Northern District,7728,village,0,0,50,0,none,none
+gn:293807,Ra'anana,Central District,75421,town,0,0,50,0,none,none
+gn:293821,Qiryat Ye‘arim,Jerusalem,6128,village,0,0,50,0,none,none
+gn:293822,Qiryat Yam,Haifa,39897,town,0,0,50,0,none,none
+gn:293823,Qiryat Tiv‘on,Haifa,18130,town,0,0,50,0,none,none
+gn:293825,Qiryat Shmona,Northern District,22512,town,0,0,50,0,none,none
+gn:293831,Qiryat Motsqin,Haifa,43303,town,0,0,50,0,none,none
+gn:293835,Qiryat Mal’akhi,Southern District,25362,town,0,0,50,0,none,none
+gn:293837,Qiryat HaYovel,Jerusalem,25000,town,0,0,50,0,none,none
+gn:293842,Kiryat Gat,Southern District,61817,town,0,0,50,0,none,none
+gn:293844,Qiryat Bialik,Haifa,43955,town,0,0,50,0,none,none
+gn:293845,Qiryat Ata,Haifa,59030,town,0,0,50,0,none,none
+gn:293852,Qidron,Central District,1607,village,0,0,50,0,none,none
+gn:293896,Qalansuwa,Central District,16898,town,0,0,50,0,none,none
+gn:293905,Poria Illit,Northern District,1162,village,0,0,50,0,none,none
+gn:293906,Poriyya,Northern District,1234,village,0,0,50,0,none,none
+gn:293918,Petaẖ Tiqva,Central District,253529,city,0,0,50,0,none,none
+gn:293942,Pardesiya,Central District,5930,village,0,0,50,0,none,none
+gn:293943,Pardés H̱anna Karkur,Haifa,44840,town,0,0,50,0,none,none
+gn:293962,Or Yehuda,Tel Aviv,36813,town,0,0,50,0,none,none
+gn:293969,Or Akiva,Haifa,18972,town,0,0,50,0,none,none
+gn:293976,Ora,Jerusalem,1314,village,0,0,50,0,none,none
+gn:293982,‘Omer,Southern District,7530,village,0,0,50,0,none,none
+gn:293985,‘Olesh,Central District,1131,village,0,0,50,0,none,none
+gn:293992,Ofaqim,Southern District,34666,town,0,0,50,0,none,none
+gn:294003,Nordiya,Central District,1950,village,0,0,50,0,none,none
+gn:294012,Nitsane ‘Oz,Central District,1115,village,0,0,50,0,none,none
+gn:294021,Nir Tsvi,Central District,1286,village,0,0,50,0,none,none
+gn:294029,Nir Gallim,Southern District,1396,village,0,0,50,0,none,none
+gn:294043,Neve Yaraq,Central District,1348,village,0,0,50,0,none,none
+gn:294044,Neve Yamin,Central District,1155,village,0,0,50,0,none,none
+gn:294068,Netivot,Southern District,43732,town,0,0,50,0,none,none
+gn:294071,Netanya,Central District,228204,city,0,0,50,0,none,none
+gn:294074,Ness Ziona,Central District,50351,town,0,0,50,0,none,none
+gn:294078,Nesher,Haifa,24148,town,0,0,50,0,none,none
+gn:294079,Nes Harim,Jerusalem,1414,village,0,0,50,0,none,none
+gn:294089,Nayn,Northern District,1876,village,0,0,50,0,none,none
+gn:294091,Neẖusha,Jerusalem,1484,village,0,0,50,0,none,none
+gn:294092,Nehora,Southern District,1181,village,0,0,50,0,none,none
+gn:294093,Neẖalim,Central District,1788,village,0,0,50,0,none,none
+gn:294097,Naẕerat ‘Illit,Northern District,43556,town,0,0,50,0,none,none
+gn:294098,Nazareth,Northern District,77445,town,0,0,50,0,none,none
+gn:294099,Nā‘ūra,Northern District,2324,village,0,0,50,0,none,none
+gn:294114,Naḥf,Northern District,13113,town,0,0,50,0,none,none
+gn:294117,Nahariyya,Northern District,58096,town,0,0,50,0,none,none
+gn:294135,Na‘an,Central District,1717,village,0,0,50,0,none,none
+gn:294140,Muṣmuṣ,Haifa,4215,village,0,0,50,0,none,none
+gn:294142,Muqeibila,Northern District,4081,village,0,0,50,0,none,none
+gn:294147,Motsa ‘Illit,Jerusalem,1212,village,0,0,50,0,none,none
+gn:294166,Mitzpe Ramon,Southern District,5211,village,0,0,50,0,none,none
+gn:294177,Mishmeret,Central District,1059,village,0,0,50,0,none,none
+gn:294178,Mishmarot,Haifa,1024,village,0,0,50,0,none,none
+gn:294184,Mishmar HaNegev,Southern District,1005,village,0,0,50,0,none,none
+gn:294185,Mishmar Ha‘Emeq,Northern District,1271,village,0,0,50,0,none,none
+gn:294204,Mikhmoret,Central District,1403,village,0,0,50,0,none,none
+gn:294205,Mi‘ilyā,Northern District,2700,village,0,0,50,0,none,none
+gn:294210,Migdal Ha‘Emeq,Northern District,25675,town,0,0,50,0,none,none
+gn:294214,Migdal,Northern District,1952,village,0,0,50,0,none,none
+gn:294245,Mevasseret Tsiyyon,Jerusalem,24052,town,0,0,50,0,none,none
+gn:294247,Metula,Northern District,1615,village,0,0,50,0,none,none
+gn:294252,Mesillat Tsiyyon,Jerusalem,1215,village,0,0,50,0,none,none
+gn:294273,Menaẖemya,Northern District,1033,village,0,0,50,0,none,none
+gn:294286,Megadim,Haifa,1329,village,0,0,50,0,none,none
+gn:294288,Mefallesim,Southern District,1024,village,0,0,50,0,none,none
+gn:294295,Matsuva,Northern District,1165,village,0,0,50,0,none,none
+gn:294302,Matsliaẖ,Central District,1363,village,0,0,50,0,none,none
+gn:294303,Mazkeret Batya,Central District,14837,town,0,0,50,0,none,none
+gn:294322,Mash‘én,Southern District,1064,village,0,0,50,0,none,none
+gn:294347,Ma’or,Haifa,1398,village,0,0,50,0,none,none
+gn:294373,Majd el Kurūm,Northern District,15455,town,0,0,50,0,none,none
+gn:294387,Maghār,Northern District,22957,town,0,0,50,0,none,none
+gn:294388,Maggal,Haifa,1139,village,0,0,50,0,none,none
+gn:294392,Ma‘galim,Southern District,2061,village,0,0,50,0,none,none
+gn:294395,Mabbu‘im,Southern District,1235,village,0,0,50,0,none,none
+gn:294410,Ma‘agan Mikha’el,Haifa,2039,village,0,0,50,0,none,none
+gn:294421,Lod,Central District,77223,town,0,0,50,0,none,none
+gn:294422,Li On,Jerusalem,1082,village,0,0,50,0,none,none
+gn:294435,Lahavot H̱aviva,Haifa,1021,village,0,0,50,0,none,none
+gn:294449,Kokhav Michael Sobell,Southern District,1053,village,0,0,50,0,none,none
+gn:294470,Meisir,Haifa,2017,village,0,0,50,0,none,none
+gn:294492,Kfar Yona,Central District,24778,town,0,0,50,0,none,none
+gn:294497,Kfar Warburg,Southern District,1143,village,0,0,50,0,none,none
+gn:294498,Kefar Vitqin,Central District,1973,village,0,0,50,0,none,none
+gn:294502,Kfar Tavor,Northern District,4311,village,0,0,50,0,none,none
+gn:294505,Kfar Sirkin,Central District,1502,village,0,0,50,0,none,none
+gn:294508,Kfar Shmaryahu,Tel Aviv,1938,village,0,0,50,0,none,none
+gn:294514,Kfar Saba,Central District,110456,city,0,0,50,0,none,none
+gn:294517,Kfar Rosh HaNiqra,Northern District,1363,village,0,0,50,0,none,none
+gn:294520,Kfar Pines,Haifa,1034,village,0,0,50,0,none,none
+gn:294521,Kfar Netter,Central District,1193,village,0,0,50,0,none,none
+gn:294526,Kfar Menaẖem,Southern District,1366,village,0,0,50,0,none,none
+gn:294532,Kfar H̱ittim,Northern District,1190,village,0,0,50,0,none,none
+gn:294533,Kfar Hess,Central District,1593,village,0,0,50,0,none,none
+gn:294537,Kfar HaRo’e,Central District,1460,village,0,0,50,0,none,none
+gn:294539,Niẕẕan,Southern District,2461,village,0,0,50,0,none,none
+gn:294545,Kfar H̱abad,Central District,6598,village,0,0,50,0,none,none
+gn:294552,Qiryat ‘Eqron,Central District,11001,town,0,0,50,0,none,none
+gn:294558,Kfar Bilu,Central District,1258,village,0,0,50,0,none,none
+gn:294571,Kaukab Abū el Hījā,Northern District,3589,village,0,0,50,0,none,none
+gn:294577,Karmi’el,Northern District,46252,town,0,0,50,0,none,none
+gn:294600,Kfar Yasif,Northern District,10133,town,0,0,50,0,none,none
+gn:294604,Kafr Qāsim,Central District,23823,town,0,0,50,0,none,none
+gn:294605,Kafr Qari‘,Haifa,19018,town,0,0,50,0,none,none
+gn:294607,Kafr Miṣr,Northern District,2750,village,0,0,50,0,none,none
+gn:294608,Kafr Mandā,Northern District,20188,town,0,0,50,0,none,none
+gn:294610,Kafr Kannā,Northern District,22751,town,0,0,50,0,none,none
+gn:294611,Kafr Kammā,Northern District,3373,village,0,0,50,0,none,none
+gn:294613,Kafr Barā,Central District,3678,village,0,0,50,0,none,none
+gn:294615,Kābūl,Northern District,14095,town,0,0,50,0,none,none
+gn:294616,Kabri,Northern District,1054,village,0,0,50,0,none,none
+gn:294620,Jūlis,Northern District,6465,village,0,0,50,0,none,none
+gn:294622,Judeida Makr,Northern District,21163,town,0,0,50,0,none,none
+gn:294626,Jisr ez Zarqā,Haifa,14930,town,0,0,50,0,none,none
+gn:294627,Jīsh,Northern District,3105,village,0,0,50,0,none,none
+gn:294630,Jatt,Haifa,12100,town,0,0,50,0,none,none
+gn:294634,Jaljūlya,Central District,10148,town,0,0,50,0,none,none
+gn:294642,‘Isfiyā,Haifa,12503,town,0,0,50,0,none,none
+gn:294654,‘Ilūṭ,Northern District,8356,village,0,0,50,0,none,none
+gn:294658,Iksāl,Northern District,14784,town,0,0,50,0,none,none
+gn:294661,Ibṭīn,Haifa,2835,village,0,0,50,0,none,none
+gn:294663,I‘billīn,Northern District,13305,town,0,0,50,0,none,none
+gn:294666,Ḥurfeish,Northern District,6410,village,0,0,50,0,none,none
+gn:294674,H̱ulda,Central District,1163,village,0,0,50,0,none,none
+gn:294680,H̱osen,Northern District,1135,village,0,0,50,0,none,none
+gn:294751,H̱olon,Tel Aviv,196282,city,0,0,50,0,none,none
+gn:294760,Hod HaSharon,Central District,63175,town,0,0,50,0,none,none
+gn:294778,Herzliya,Tel Aviv,97470,town,0,0,50,0,none,none
+gn:294781,H̱erut,Central District,1298,village,0,0,50,0,none,none
+gn:294785,H̱emed,Central District,1316,village,0,0,50,0,none,none
+gn:294801,Haifa,Haifa,285316,city,0,0,50,0,none,none
+gn:294805,HaZor‘im,Northern District,1060,village,0,0,50,0,none,none
+gn:294809,H̱atsor HaGlilit,Northern District,9272,village,0,0,50,0,none,none
+gn:294928,H̱agor,Central District,1162,village,0,0,50,0,none,none
+gn:294946,Hadera,Haifa,97335,town,0,0,50,0,none,none
+gn:294980,Giv‘at Ye‘arim,Jerusalem,1455,village,0,0,50,0,none,none
+gn:294981,Giv'at Shmuel,Tel Aviv,28628,town,0,0,50,0,none,none
+gn:294992,Giv‘ati,Southern District,1047,village,0,0,50,0,none,none
+gn:294995,Giv‘at H̱ayyim Iẖud,Central District,1176,village,0,0,50,0,none,none
+gn:294998,Giv‘at Brenner,Central District,2678,village,0,0,50,0,none,none
+gn:294999,Givatayim,Tel Aviv,60644,town,0,0,50,0,none,none
+gn:295007,Gimzo,Central District,1206,village,0,0,50,0,none,none
+gn:295011,Gilat,Southern District,1451,village,0,0,50,0,none,none
+gn:295037,Geva‘ Karmel,Haifa,1200,village,0,0,50,0,none,none
+gn:295042,Gesher HaZiv,Northern District,1614,village,0,0,50,0,none,none
+gn:295064,Gedera,Central District,30798,town,0,0,50,0,none,none
+gn:295080,Gan Yavne,Central District,23869,town,0,0,50,0,none,none
+gn:295089,Ganei Tikva,Central District,25093,town,0,0,50,0,none,none
+gn:295104,Fassūta,Northern District,3172,village,0,0,50,0,none,none
+gn:295122,Even Yehuda,Central District,13826,town,0,0,50,0,none,none
+gn:295123,Even Shemu’el,Southern District,1807,village,0,0,50,0,none,none
+gn:295127,Eṭ Ṭīra,Central District,26552,town,0,0,50,0,none,none
+gn:295130,Eṭ Ṭaiyiba,Central District,43957,town,0,0,50,0,none,none
+gn:295131,Taiyiba,Northern District,1843,village,0,0,50,0,none,none
+gn:295143,Eshta’ol,Jerusalem,1238,village,0,0,50,0,none,none
+gn:295157,Esh Sheikh Dannūn,Northern District,2887,village,0,0,50,0,none,none
+gn:295174,Ar Rayna,Northern District,15621,town,0,0,50,0,none,none
+gn:295181,‘En Ya‘aqov,Northern District,1137,village,0,0,50,0,none,none
+gn:295182,Ein Vered,Central District,1512,village,0,0,50,0,none,none
+gn:295185,Ein Sarid,Central District,1603,village,0,0,50,0,none,none
+gn:295212,‘En HaMifrats,Northern District,1249,village,0,0,50,0,none,none
+gn:295223,‘En Dor,Northern District,1026,village,0,0,50,0,none,none
+gn:295224,‘En Boqeq,Southern District,1400,village,0,0,50,0,none,none
+gn:295225,‘En Ayyala,Haifa,1150,village,0,0,50,0,none,none
+gn:295232,Elyakhin,Central District,3415,village,0,0,50,0,none,none
+gn:295241,Elon,Northern District,1031,village,0,0,50,0,none,none
+gn:295249,El Mazra‘a,Northern District,3900,village,0,0,50,0,none,none
+gn:295263,Elishama‘,Central District,1199,village,0,0,50,0,none,none
+gn:295269,Furaydis,Haifa,13247,town,0,0,50,0,none,none
+gn:295277,Eilat,Southern District,52299,town,0,0,50,0,none,none
+gn:295284,‘Ein Rāfa,Jerusalem,1250,village,0,0,50,0,none,none
+gn:295285,‘Ein Māhil,Northern District,13335,town,0,0,50,0,none,none
+gn:295291,‘Eilabun,Northern District,5752,village,0,0,50,0,none,none
+gn:295328,Dimona,Southern District,36192,town,0,0,50,0,none,none
+gn:295331,Dvira,Southern District,1007,village,0,0,50,0,none,none
+gn:295339,Deir Ḥannā,Northern District,10339,town,0,0,50,0,none,none
+gn:295341,Deir el Asad,Northern District,12514,town,0,0,50,0,none,none
+gn:295365,Daliyat al Karmel,Haifa,25000,town,0,0,50,0,none,none
+gn:295370,Dabbūrīya,Northern District,8305,village,0,0,50,0,none,none
+gn:295372,Bustan HaGalil,Northern District,1305,village,0,0,50,0,none,none
+gn:295375,Burgeta,Central District,1136,village,0,0,50,0,none,none
+gn:295379,Buqei‘a,Northern District,5893,village,0,0,50,0,none,none
+gn:295380,Bu‘eina,Northern District,7900,village,0,0,50,0,none,none
+gn:295395,Biẕẕaron,Southern District,1258,village,0,0,50,0,none,none
+gn:295404,Bīr el Maksūr,Northern District,7106,village,0,0,50,0,none,none
+gn:295410,Binyamina-Giv‘at ‘Ada,Haifa,15847,town,0,0,50,0,none,none
+gn:295411,Al-Bi‘na,Northern District,8381,village,0,0,50,0,none,none
+gn:295421,Bet Zayit,Jerusalem,1708,village,0,0,50,0,none,none
+gn:295424,Bet Yitsẖaq,Central District,1674,village,0,0,50,0,none,none
+gn:295425,Bet Yehoshua‘,Central District,1046,village,0,0,50,0,none,none
+gn:295432,Bet Shemesh,Jerusalem,124957,city,0,0,50,0,none,none
+gn:295435,Bet She’an,Northern District,16800,town,0,0,50,0,none,none
+gn:295437,Bet Rabban,Central District,1018,village,0,0,50,0,none,none
+gn:295439,Bet Qama,Southern District,1405,village,0,0,50,0,none,none
+gn:295455,Bet H̱ilqiyya,Central District,1248,village,0,0,50,0,none,none
+gn:295458,Bet HaShitta,Northern District,1263,village,0,0,50,0,none,none
+gn:295467,Bet Guvrin,Southern District,1016,village,0,0,50,0,none,none
+gn:295470,Bet Gamli’él,Central District,1019,village,0,0,50,0,none,none
+gn:295471,Bet ‘Ezra,Southern District,1116,village,0,0,50,0,none,none
+gn:295473,Bet El‘azari,Central District,6042,village,0,0,50,0,none,none
+gn:295475,Bet Dagan,Central District,7099,village,0,0,50,0,none,none
+gn:295480,Bet ‘Arif,Central District,1174,village,0,0,50,0,none,none
+gn:295484,Bet Alfa,Northern District,1075,village,0,0,50,0,none,none
+gn:295497,Berekhya,Southern District,1274,village,0,0,50,0,none,none
+gn:295504,Ben Zakkay,Central District,1132,village,0,0,50,0,none,none
+gn:295510,Bne Re’em,Central District,1417,village,0,0,50,0,none,none
+gn:295511,Bne Dror,Central District,1171,village,0,0,50,0,none,none
+gn:295513,Moledet,Northern District,1068,village,0,0,50,0,none,none
+gn:295514,Bnei Brak,Tel Aviv,214444,city,0,0,50,0,none,none
+gn:295515,Bnei Ayish,Central District,6978,village,0,0,50,0,none,none
+gn:295523,Beit Jann,Northern District,12001,town,0,0,50,0,none,none
+gn:295525,Be’er Ya‘aqov,Central District,27768,town,0,0,50,0,none,none
+gn:295530,Beersheba,Southern District,186600,city,0,0,50,0,none,none
+gn:295535,Be’erotayim,Central District,1143,village,0,0,50,0,none,none
+gn:295536,Be’er Ora,Southern District,1033,village,0,0,50,0,none,none
+gn:295538,Be’eri,Southern District,1049,village,0,0,50,0,none,none
+gn:295545,Batsra,Central District,1213,village,0,0,50,0,none,none
+gn:295548,Bat Yam,Tel Aviv,129012,city,0,0,50,0,none,none
+gn:295553,Basmat Ṭab‘ūn,Northern District,7916,village,0,0,50,0,none,none
+gn:295565,Bareqet,Central District,2082,village,0,0,50,0,none,none
+gn:295571,Bāqa el Gharbīya,Haifa,29950,town,0,0,50,0,none,none
+gn:295576,Baẖan,Central District,1084,village,0,0,50,0,none,none
+gn:295582,‘Azriqam,Southern District,1495,village,0,0,50,0,none,none
+gn:295584,Azor,Tel Aviv,12957,town,0,0,50,0,none,none
+gn:295587,Ayyelet HaShaẖar,Northern District,1134,village,0,0,50,0,none,none
+gn:295613,Atlit,Haifa,8875,village,0,0,50,0,none,none
+gn:295620,Ashkelon,Southern District,144073,city,0,0,50,0,none,none
+gn:295625,Ashdot Ya‘aqov Iẖud,Northern District,1003,village,0,0,50,0,none,none
+gn:295629,Ashdod,Southern District,226838,city,0,0,50,0,none,none
+gn:295635,‘Arugot,Southern District,1147,village,0,0,50,0,none,none
+gn:295655,‘Ara-‘Ar‘ara,Haifa,24904,town,0,0,50,0,none,none
+gn:295657,Arad,Southern District,27967,town,0,0,50,0,none,none
+gn:295696,‘Amminadav,Jerusalem,1086,village,0,0,50,0,none,none
+gn:295721,Acre,Northern District,51420,town,0,0,50,0,none,none
+gn:295727,Aẖituv,Central District,1093,village,0,0,50,0,none,none
+gn:295728,Aẖisamakh,Central District,1377,village,0,0,50,0,none,none
+gn:295730,Aẖi‘ezer,Central District,1906,village,0,0,50,0,none,none
+gn:295740,Afula,Northern District,44930,town,0,0,50,0,none,none
+gn:295743,Afiqim,Northern District,1511,village,0,0,50,0,none,none
+gn:295765,Abū Sinān,Northern District,14099,town,0,0,50,0,none,none
+gn:295772,Abū Ghaush,Jerusalem,7698,village,0,0,50,0,none,none
+gn:386042,Shibli,Northern District,4800,village,0,0,50,0,none,none
+gn:386169,Hosha‘ya,Northern District,2051,village,0,0,50,0,none,none
+gn:386194,Rumat al-Hayb,Northern District,2047,village,0,0,50,0,none,none
+gn:386234,Raqqefet,Northern District,1057,village,0,0,50,0,none,none
+gn:386253,Salama,Northern District,3340,village,0,0,50,0,none,none
+gn:386266,Yuvallim,Northern District,1093,village,0,0,50,0,none,none
+gn:386301,Kammon,Northern District,1402,village,0,0,50,0,none,none
+gn:386445,Kfar Vradim,Northern District,5486,village,0,0,50,0,none,none
+gn:390265,Bet H̱ashmonay,Central District,2197,village,0,0,50,0,none,none
+gn:390289,Mazor,Central District,1331,village,0,0,50,0,none,none
+gn:443090,H̱ispin,Northern District,2055,village,0,0,50,0,none,none
+gn:443093,Katzrin,,7132,village,0,0,50,0,none,none
+gn:6693244,Lehavim,Southern District,6415,village,0,0,50,0,none,none
+gn:6929924,Midreshet Ben-Gurion,Southern District,1972,village,0,0,50,0,none,none
+gn:7117228,Caesarea,Haifa,5343,village,0,0,50,0,none,none
+gn:7498240,West Jerusalem,Jerusalem,400000,city,0,0,50,0,none,none
+gn:8062538,Meitar,Southern District,8438,village,0,0,50,0,none,none
+gn:8066409,‘Aramsha,Northern District,1682,village,0,0,50,0,none,none
+gn:8072868,Merkaz Shapira,Southern District,2210,village,0,0,50,0,none,none
+gn:8139973,Aẖuzzat Baraq,Northern District,2279,village,0,0,50,0,none,none
+gn:8140105,Giv‘at Avni,Northern District,2049,village,0,0,50,0,none,none
+gn:8140106,Mitspe Netofa,Northern District,1029,village,0,0,50,0,none,none
+gn:8141161,Kokhav Ya’ir,Central District,8702,village,0,0,50,0,none,none
+gn:8141252,Bat H̱efer,Central District,5301,village,0,0,50,0,none,none
+gn:8141842,H̱arish,Haifa,7569,village,0,0,50,0,none,none
+gn:8142386,Zemer,Central District,7094,village,0,0,50,0,none,none
+gn:8183071,Karmé Yosef,Central District,1730,village,0,0,50,0,none,none
+gn:8183198,‘Ein Naqūbā,Jerusalem,3505,village,0,0,50,0,none,none
+gn:8184212,Rahat,Southern District,19586,town,0,0,50,0,none,none
+gn:8184241,Laqiyya,Southern District,14075,town,0,0,50,0,none,none
+gn:8184332,Segev Shalom,Southern District,10362,town,0,0,50,0,none,none
+gn:8199378,Modiin Ilit,Jerusalem,76374,town,0,0,50,0,none,none
+gn:8199379,Nof Ayalon,Central District,2128,village,0,0,50,0,none,none
+gn:8199382,Hashmonaim,Judea and Samaria Area,2771,village,0,0,50,0,none,none
+gn:8199383,Lapid,Central District,2497,village,0,0,50,0,none,none
+gn:8199384,Kfar NaOranim,,2657,village,0,0,50,0,none,none
+gn:8199387,Beit Horon,,1115,village,0,0,50,0,none,none
+gn:8199388,Nili,,1786,village,0,0,50,0,none,none
+gn:8199389,Na'ale,,2148,village,0,0,50,0,none,none
+gn:8199390,Giv'on HaHadasha,,1067,village,0,0,50,0,none,none
+gn:8199392,Talmon,,4575,village,0,0,50,0,none,none
+gn:8199393,Dolev,,1448,village,0,0,50,0,none,none
+gn:8199394,Ariel,Judea and Samaria Area,20540,town,0,0,50,0,none,none
+gn:8199422,Revava,,2632,village,0,0,50,0,none,none
+gn:8261862,Tal El,Northern District,1186,village,0,0,50,0,none,none
+gn:8262019,Moreshet,Northern District,1489,village,0,0,50,0,none,none
+gn:8262022,Mitspe Aviv,Northern District,1070,village,0,0,50,0,none,none
+gn:8264669,Zarzir,Northern District,7942,village,0,0,50,0,none,none
+gn:8264691,Shimshit,Northern District,2514,village,0,0,50,0,none,none
+gn:8264692,Giv‘at Ela,Northern District,1964,village,0,0,50,0,none,none
+gn:8265522,Nofit,Haifa,2380,village,0,0,50,0,none,none
+gn:8265524,Ka‘abiyya-Tabbash-H̱ajajra,Northern District,5504,village,0,0,50,0,none,none
+gn:8265537,Harduf,Northern District,1095,village,0,0,50,0,none,none
+gn:8265539,Allon HaGalil,Northern District,1118,village,0,0,50,0,none,none
+gn:8265550,‘Adi,Northern District,1910,village,0,0,50,0,none,none
+gn:8309435,Bar Yoẖay,Northern District,1072,village,0,0,50,0,none,none
+gn:8309927,H̱amam,Northern District,1473,village,0,0,50,0,none,none
+gn:8310136,Tel Sheva‘,Southern District,20204,town,0,0,50,0,none,none
+gn:8310823,Gilon,Northern District,1092,village,0,0,50,0,none,none
+gn:8340977,Gan Ner,Northern District,2670,village,0,0,50,0,none,none
+gn:8374146,Khirbat Abu Tulūl,Southern District,2023,village,0,0,50,0,none,none
+gn:8374203,‘Ar‘ara BaNegev,Southern District,17640,town,0,0,50,0,none,none
+gn:8374209,H̱ura,Southern District,21558,town,0,0,50,0,none,none
+gn:8374220,Kuseifa,Southern District,21079,town,0,0,50,0,none,none
+gn:8428283,Shoham,Central District,20740,town,0,0,50,0,none,none
+gn:8428480,El‘ad,Central District,48763,town,0,0,50,0,none,none
+gn:8428532,Matan,Central District,3600,village,0,0,50,0,none,none
+gn:8478264,Herzliya Pituah,Tel Aviv,10000,town,0,0,50,0,none,none
+gn:9618076,Kammana,Northern District,1495,village,0,0,50,0,none,none
+gn:9978429,Manshīyet Zabda,Northern District,1389,village,0,0,50,0,none,none
+gn:10227184,Yehud-Monosson,Tel Aviv,29312,town,0,0,50,0,none,none
+gn:10247989,Giv‘at H̱ayyim Me’uẖad,Central District,1006,village,0,0,50,0,none,none
+gn:10860931,Giv'ot Bar,Southern District,1230,village,0,0,50,0,none,none
+gn:11524864,Kadima Zoran,Central District,22490,town,0,0,50,0,none,none
+gn:11979636,Bu'ayna-Nujaydat,Northern District,9645,village,0,0,50,0,none,none
+gn:11979655,Yanuah Jat,Northern District,6679,village,0,0,50,0,none,none
+gn:11979661,Yoqneam,Northern District,1398,village,0,0,50,0,none,none
+gn:11979665,Kisra - Sume'a,Northern District,8818,village,0,0,50,0,none,none
+gn:11979755,Maale Iron,Northern District,14833,town,0,0,50,0,none,none
+gn:11979772,Tsur Itshak,Central District,6044,village,0,0,50,0,none,none
+gn:12031827,Be'er Ganim,Southern District,1295,village,0,0,50,0,none,none
+gn:12031840,Kiryat Ono,Tel Aviv,39986,town,0,0,50,0,none,none
+gn:12156429,Umm Batin,Southern District,4093,village,0,0,50,0,none,none
+gn:12156432,AlSayid Tribe,Southern District,5663,village,0,0,50,0,none,none
+gn:12156436,Bir Hadaj,Southern District,5735,village,0,0,50,0,none,none
+gn:12156557,Binyamina-Giv'at Ada,Haifa,15847,town,0,0,50,0,none,none
+gn:12156602,Drijat,Southern District,1199,village,0,0,50,0,none,none
+gn:12156671,Yanuh-Jat,Northern District,6614,village,0,0,50,0,none,none
+gn:12156768,Tirabin al-Sana,Southern District,1139,village,0,0,50,0,none,none
+gn:12156807,Shibli–Umm al-Ghanam,Northern District,5995,village,0,0,50,0,none,none
+gn:12156812,Basma,Haifa,9779,village,0,0,50,0,none,none

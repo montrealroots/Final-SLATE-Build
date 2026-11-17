@@ -18,8 +18,8 @@
   "gross": 67695,
   "revenue": 136838,
   "distributed": 1.725,
-  "money": 24723112.098,
-  "moneyChange": -276887.902,
+  "money": 24730102.523,
+  "moneyChange": -269897.478,
   "jobsTaken": 0.85,
   "jobsOffered": 0.85,
   "jobPay": 4488.75,
@@ -93,7 +93,7 @@
   "bankFees": 0,
   "owed": 0,
   "accounts": 1,
-  "worth": 18591780.297,
+  "worth": 18597037.097,
   "rewards": 0,
   "fired": 0
  },
@@ -105,8 +105,8 @@
   "gross": 67695,
   "revenue": 136838,
   "distributed": 1.725,
-  "money": 24751974.286,
-  "moneyChange": -248025.714,
+  "money": 24755324.179,
+  "moneyChange": -244675.821,
   "jobsTaken": 0.85,
   "jobsOffered": 0.85,
   "jobPay": 4488.75,
@@ -143,8 +143,8 @@
   "standing.producing": 53.2,
   "rentsPaid": 12,
   "arrears": 0,
-  "depositKept": 39.55,
-  "depositBack": 1752.485,
+  "depositKept": 28.25,
+  "depositBack": 1523.12,
   "tenanciesEnded": 1,
   "repairSpend": 0,
   "repairsFixed": 0,
@@ -180,7 +180,7 @@
   "bankFees": 0,
   "owed": 0,
   "accounts": 1,
-  "worth": 18613484.663,
+  "worth": 18616003.783,
   "rewards": 0,
   "fired": 0
  },
@@ -235,16 +235,16 @@
    "n": 40
   },
   "money": {
-   "mean": 28862.188,
-   "lo": 26547.375,
-   "hi": 31177.002,
+   "mean": 25221.657,
+   "lo": 22982.187,
+   "hi": 27461.126,
    "changed": 40,
    "n": 40
   },
   "moneyChange": {
-   "mean": 28862.188,
-   "lo": 26547.375,
-   "hi": 31177.002,
+   "mean": 25221.657,
+   "lo": 22982.187,
+   "hi": 27461.126,
    "changed": 40,
    "n": 40
   },
@@ -501,16 +501,16 @@
    "n": 40
   },
   "depositKept": {
-   "mean": 39.55,
-   "lo": 11.43,
-   "hi": 67.67,
-   "changed": 7,
+   "mean": 28.25,
+   "lo": 3.775,
+   "hi": 52.725,
+   "changed": 5,
    "n": 40
   },
   "depositBack": {
-   "mean": 1752.485,
-   "lo": 1591.289,
-   "hi": 1913.68,
+   "mean": 1523.12,
+   "lo": 1376.278,
+   "hi": 1669.962,
    "changed": 40,
    "n": 40
   },
@@ -760,9 +760,9 @@
    "n": 40
   },
   "worth": {
-   "mean": 21704.365,
-   "lo": 19963.626,
-   "hi": 23445.105,
+   "mean": 18966.686,
+   "lo": 17282.605,
+   "hi": 20650.767,
    "changed": 40,
    "n": 40
   },
@@ -811,7 +811,7 @@
  ],
  "verdict": "proven",
  "hashes": {
-  "src/engine/homes/renting.ts": "7cfd10cb71f96a26",
+  "src/engine/homes/renting.ts": "c577f53dd878c359",
   "tests/proof/career.ts": "50bea06f19a02c5b"
  }
 }

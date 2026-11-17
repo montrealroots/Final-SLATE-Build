@@ -1,0 +1,109 @@
+place_id,name,region,population,market,verified_homes,dated_listings,shortfall_to_50,recorded_sales,rent_source,price_source
+gn:1222554,Tayan,Batken,1693,village,0,0,50,0,none,none
+gn:1222562,Suluktu,Batken,15019,town,0,0,50,0,none,none
+gn:1222606,Kyzyl-Eshme,Osh Region,1100,village,0,0,50,0,none,none
+gn:1222618,Korgon,Batken,2204,village,0,0,50,0,none,none
+gn:1222635,Aydarken,Batken,11857,town,0,0,50,0,none,none
+gn:1222640,Katran,Batken,7149,village,0,0,50,0,none,none
+gn:1222662,Razzakov,Batken,34219,town,0,0,50,0,none,none
+gn:1222683,Daroot-Korgon,Osh Region,6421,village,0,0,50,0,none,none
+gn:1222708,Andarak,Batken,8001,village,0,0,50,0,none,none
+gn:1527004,Balykchy,Issyk-Kul,42875,town,0,0,50,0,none,none
+gn:1527030,Kojomkul,Chuy Region,20182,town,0,0,50,0,none,none
+gn:1527103,Uch-Korgon,Batken,14708,town,0,0,50,0,none,none
+gn:1527121,Tyup,Issyk-Kul,12355,town,0,0,50,0,none,none
+gn:1527176,Tortkël’,Jalal-Abad Region,4825,village,0,0,50,0,none,none
+gn:1527199,Tokmok,Chuy Region,71443,town,0,0,50,0,none,none
+gn:1527232,Ak-Suu,Issyk-Kul,14009,town,0,0,50,0,none,none
+gn:1527244,Tegizchil,Issyk-Kul,1791,village,0,0,50,0,none,none
+gn:1527260,Tash-Kumyr,Jalal-Abad Region,23594,town,0,0,50,0,none,none
+gn:1527299,Talas,Talas Region,40308,town,0,0,50,0,none,none
+gn:1527317,Suzak,Jalal-Abad Region,30534,town,0,0,50,0,none,none
+gn:1527338,Chuy,Chuy Region,0,village,0,0,50,0,none,none
+gn:1527347,Sovetskoye,Jalal-Abad Region,13178,town,0,0,50,0,none,none
+gn:1527351,Sosnovka,Chuy Region,5885,village,0,0,50,0,none,none
+gn:1527360,Sokuluk,Chuy Region,0,village,0,0,50,0,none,none
+gn:1527496,Pokrovka,Talas Region,8522,village,0,0,50,0,none,none
+gn:1527497,Kyzyl-Suu,Issyk-Kul,15075,town,0,0,50,0,none,none
+gn:1527513,Uzgen,Osh Region,49410,town,0,0,50,0,none,none
+gn:1527534,Osh,Osh Region,322164,city,0,0,50,0,none,none
+gn:1527566,Orozbekovo,Batken,3503,village,0,0,50,0,none,none
+gn:1527592,Naryn,Naryn Region,41178,town,0,0,50,0,none,none
+gn:1527688,Bakai-Ata,Talas Region,0,village,0,0,50,0,none,none
+gn:1527689,Massy,Jalal-Abad Region,19774,town,0,0,50,0,none,none
+gn:1527690,Lebedinovka,Chuy Region,21118,town,0,0,50,0,none,none
+gn:1527700,Kyzyl-Tuu,Issyk-Kul,1703,village,0,0,50,0,none,none
+gn:1527719,Kyzyl-Kyya,Batken,32000,town,0,0,50,0,none,none
+gn:1527902,Kochkor,Naryn Region,0,village,0,0,50,0,none,none
+gn:1527903,Kochkor-Ata,Jalal-Abad Region,17177,town,0,0,50,0,none,none
+gn:1527919,Kyzyl-Adyr,Talas Region,13612,town,0,0,50,0,none,none
+gn:1527951,Khalmion,Batken,6274,village,0,0,50,0,none,none
+gn:1528005,Kazarman,Jalal-Abad Region,11191,town,0,0,50,0,none,none
+gn:1528015,Kayirma,Jalal-Abad Region,2554,village,0,0,50,0,none,none
+gn:1528052,Kerben,Jalal-Abad Region,14141,town,0,0,50,0,none,none
+gn:1528053,Karavan,Batken,1100,village,0,0,50,0,none,none
+gn:1528091,Kara Suu,Osh Region,26609,town,0,0,50,0,none,none
+gn:1528121,Karakol,Issyk-Kul,84351,town,0,0,50,0,none,none
+gn:1528124,Kara-Kul’,Jalal-Abad Region,26901,town,0,0,50,0,none,none
+gn:1528161,Kara-Dzhygach,Batken,0,village,0,0,50,0,none,none
+gn:1528167,Karacha,Jalal-Abad Region,3586,village,0,0,50,0,none,none
+gn:1528182,Kara-Balta,Chuy Region,48278,town,0,0,50,0,none,none
+gn:1528190,Kanysh-Kyya,Jalal-Abad Region,4805,village,0,0,50,0,none,none
+gn:1528193,Kant,Chuy Region,22617,town,0,0,50,0,none,none
+gn:1528234,Kaindy,Chuy Region,9561,village,0,0,50,0,none,none
+gn:1528241,Kadzhi-Say,Issyk-Kul,4000,village,0,0,50,0,none,none
+gn:1528249,Manas,Jalal-Abad Region,123239,city,0,0,50,0,none,none
+gn:1528252,Ivanovka,Chuy Region,17513,town,0,0,50,0,none,none
+gn:1528253,Ivanovo-Alekseyevka,Talas Region,0,village,0,0,50,0,none,none
+gn:1528283,Iradan,Batken,26200,town,0,0,50,0,none,none
+gn:1528288,Kolkhoz Imeni Kirova,Jalal-Abad Region,5518,village,0,0,50,0,none,none
+gn:1528320,Gul’cha,Osh Region,13755,town,0,0,50,0,none,none
+gn:1528339,Nookat,Osh Region,18228,town,0,0,50,0,none,none
+gn:1528512,Cholpon-Ata,Issyk-Kul,14237,town,0,0,50,0,none,none
+gn:1528566,Chayek,Naryn Region,3762,village,0,0,50,0,none,none
+gn:1528606,Kemin,Chuy Region,10354,town,0,0,50,0,none,none
+gn:1528616,Birbash,Issyk-Kul,2535,village,0,0,50,0,none,none
+gn:1528642,Boz-Beshik,Issyk-Kul,5237,village,0,0,50,0,none,none
+gn:1528666,Bokombayevskoye,Issyk-Kul,14267,town,0,0,50,0,none,none
+gn:1528675,Bishkek,Bishkek,900000,large-city,0,0,50,0,none,none
+gn:1528691,Besh-Badam,Jalal-Abad Region,1720,village,0,0,50,0,none,none
+gn:1528702,Belovodskoye,Chuy Region,23046,town,0,0,50,0,none,none
+gn:1528717,Bazar-Korgon,Jalal-Abad Region,41011,town,0,0,50,0,none,none
+gn:1528735,Batken,Batken,27730,town,0,0,50,0,none,none
+gn:1528766,Baetovo,Naryn Region,10682,town,0,0,50,0,none,none
+gn:1528796,At-Bashi,Naryn Region,14655,town,0,0,50,0,none,none
+gn:1528831,Aravan,Osh Region,0,village,0,0,50,0,none,none
+gn:1528856,Alga,Batken,0,village,0,0,50,0,none,none
+gn:1528875,Ala-Buka,Jalal-Abad Region,15426,town,0,0,50,0,none,none
+gn:1528944,Ak-Dzhar,Naryn Region,5559,village,0,0,50,0,none,none
+gn:1528953,Akbulun,Issyk-Kul,2546,village,0,0,50,0,none,none
+gn:1528958,Ak-Bulung,Issyk-Kul,2498,village,0,0,50,0,none,none
+gn:1538310,Beshkent,Batken,0,village,0,0,50,0,none,none
+gn:1538648,Toktogul,Jalal-Abad Region,20577,town,0,0,50,0,none,none
+gn:1540656,Nizhnyaya Ala-Archa,Chuy Region,10760,town,0,0,50,0,none,none
+gn:1540657,Mayevka,Chuy Region,10535,town,0,0,50,0,none,none
+gn:7648391,Pulgon,Batken,3014,village,0,0,50,0,none,none
+gn:7649203,Talas,,0,village,0,0,50,0,none,none
+gn:8134212,Üch-Terek,Jalal-Abad Region,0,village,0,0,50,0,none,none
+gn:8138116,Kyzyl-Oktyabr’,Jalal-Abad Region,3641,village,0,0,50,0,none,none
+gn:8139689,Kara-Dëbë,Batken,0,village,0,0,50,0,none,none
+gn:8145969,Kara-Kulja,Osh Region,15616,town,0,0,50,0,none,none
+gn:8181891,Ak-Jol,Jalal-Abad Region,3046,village,0,0,50,0,none,none
+gn:8334046,Bozbulun,Issyk-Kul,1183,village,0,0,50,0,none,none
+gn:8334055,Akbulek,Issyk-Kul,2498,village,0,0,50,0,none,none
+gn:8334056,Zyndan,Issyk-Kul,1425,village,0,0,50,0,none,none
+gn:8375110,Chek,Batken,0,village,0,0,50,0,none,none
+gn:8375150,Kara-Bak,Batken,0,village,0,0,50,0,none,none
+gn:8375151,Kyzyl-Jol,Batken,6378,village,0,0,50,0,none,none
+gn:8375152,Samarkandyk,Batken,8015,village,0,0,50,0,none,none
+gn:8375168,Kyzyl-Bel’,Batken,7481,village,0,0,50,0,none,none
+gn:8376052,Kyrgyz-Kyshtak,Batken,0,village,0,0,50,0,none,none
+gn:8376054,Kyzyl-Bulak,Batken,2272,village,0,0,50,0,none,none
+gn:8376076,Boz-Adyr,Batken,0,village,0,0,50,0,none,none
+gn:8376125,Markaz,Batken,0,village,0,0,50,0,none,none
+gn:8377525,Kulundu,Batken,8250,village,0,0,50,0,none,none
+gn:8377866,Ak-Suu,Batken,0,village,0,0,50,0,none,none
+gn:8377922,Toguz-Bulak,Batken,0,village,0,0,50,0,none,none
+gn:8382860,Ak-Tatyr,Batken,0,village,0,0,50,0,none,none
+gn:8388007,Ormosh,Batken,0,village,0,0,50,0,none,none
+gn:10370337,Ak-Say,Batken,0,village,0,0,50,0,none,none

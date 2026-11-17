@@ -1,0 +1,81 @@
+place_id,name,region,population,market,verified_homes,dated_listings,shortfall_to_50,recorded_sales,rent_source,price_source
+gn:876747,Tsumkwe,Otjozondjupa Region,1664,village,0,0,50,0,none,none
+gn:876961,Ndiyona,Kavango East,20633,town,0,0,50,0,none,none
+gn:877130,Linyanti,Zambezi Region,1061,village,0,0,50,0,none,none
+gn:877178,Katima Mulilo,Zambezi Region,33615,town,0,0,50,0,none,none
+gn:877349,Bagani,Zambezi Region,2000,village,0,0,50,0,none,none
+gn:3352083,Witvlei,Omaheke Region,2095,village,0,0,50,0,none,none
+gn:3352136,Windhoek,Khomas Region,386219,city,0,0,50,0,none,none
+gn:3352263,Warmbad,Karas Region,6700,village,0,0,50,0,none,none
+gn:3352461,Usakos,Erongo Region,9147,village,0,0,50,0,none,none
+gn:3352523,Uis,Erongo Region,1771,village,0,0,50,0,none,none
+gn:3352593,Tsumeb,Oshikoto Region,22845,town,0,0,50,0,none,none
+gn:3352604,Tsintsabis,Oshikoto Region,4000,village,0,0,50,0,none,none
+gn:3352609,Tses,Karas Region,2000,village,0,0,50,0,none,none
+gn:3352636,Tsandi,Omusati Region,1056,village,0,0,50,0,none,none
+gn:3352844,Swakopmund,Erongo Region,53009,town,0,0,50,0,none,none
+gn:3352934,Stampriet,Hardap Region,2307,village,0,0,50,0,none,none
+gn:3353172,Sesfontein,Kunene Region,1088,village,0,0,50,0,none,none
+gn:3353231,Schlip,Hardap Region,1141,village,0,0,50,0,none,none
+gn:3353383,Rundu,Kavango East,75180,town,0,0,50,0,none,none
+gn:3353400,Ruacana,Kunene Region,3537,village,0,0,50,0,none,none
+gn:3353540,Rehoboth,Hardap Region,34185,town,0,0,50,0,none,none
+gn:3353715,Outjo,Kunene Region,10009,town,0,0,50,0,none,none
+gn:3353811,Otjiwarongo,Otjozondjupa Region,33481,town,0,0,50,0,none,none
+gn:3353863,Otjinene,Omaheke Region,2491,village,0,0,50,0,none,none
+gn:3353871,Otjimbingwe,Erongo Region,7677,village,0,0,50,0,none,none
+gn:3353934,Otavi,Otjozondjupa Region,6213,village,0,0,50,0,none,none
+gn:3353962,Oshivelo,Oshikoto Region,2287,village,0,0,50,0,none,none
+gn:3353989,Oshikuku,Omusati Region,3272,village,0,0,50,0,none,none
+gn:3353996,Oshikango,Ohangwena Region,2658,village,0,0,50,0,none,none
+gn:3354021,Oshakati,Oshana Region,43309,town,0,0,50,0,none,none
+gn:3354071,Oranjemund,Karas Region,8496,village,0,0,50,0,none,none
+gn:3354077,Opuwo,Kunene Region,9075,village,0,0,50,0,none,none
+gn:3354130,Oniipa,Oshikoto Region,4740,village,0,0,50,0,none,none
+gn:3354147,Ongwediva,Oshana Region,24012,town,0,0,50,0,none,none
+gn:3354178,Ongandjera,Omusati Region,2719,village,0,0,50,0,none,none
+gn:3354247,Ondangwa,Oshana Region,27049,town,0,0,50,0,none,none
+gn:3354367,Omuthiya,Oshikoto Region,5000,village,0,0,50,0,none,none
+gn:3354540,Omaruru,Erongo Region,11547,town,0,0,50,0,none,none
+gn:3354650,Ekongo,Ohangwena Region,2650,village,0,0,50,0,none,none
+gn:3354654,Okondjatu,Otjozondjupa Region,1386,village,0,0,50,0,none,none
+gn:3354676,Okombahe,Erongo Region,1295,village,0,0,50,0,none,none
+gn:3354850,Okalongo,Omusati Region,1320,village,0,0,50,0,none,none
+gn:3354876,Okakarara,Otjozondjupa Region,5581,village,0,0,50,0,none,none
+gn:3354897,Okahao,Omusati Region,7000,village,0,0,50,0,none,none
+gn:3354898,Okahandja,Otjozondjupa Region,26832,town,0,0,50,0,none,none
+gn:3355099,Noordoewer,Karas Region,2401,village,0,0,50,0,none,none
+gn:3355137,Nkurenkuru,Kavango West,732,village,0,0,50,0,none,none
+gn:3355595,Mariental,Hardap Region,14789,town,0,0,50,0,none,none
+gn:3355624,Maltahöhe,Hardap Region,2819,village,0,0,50,0,none,none
+gn:3355672,Lüderitz,Karas Region,15137,town,0,0,50,0,none,none
+gn:3355748,Leonardville,Omaheke Region,1411,village,0,0,50,0,none,none
+gn:3356049,Koës,Karas Region,1813,village,0,0,50,0,none,none
+gn:3356213,Khorixas,Kunene Region,12021,town,0,0,50,0,none,none
+gn:3356264,Keetmanshoop,Karas Region,23049,town,0,0,50,0,none,none
+gn:3356294,Katutura,Khomas Region,21243,town,0,0,50,0,none,none
+gn:3356332,Karibib,Erongo Region,6898,village,0,0,50,0,none,none
+gn:3356343,Karasburg,Karas Region,6054,village,0,0,50,0,none,none
+gn:3356469,Kamanjab,Kunene Region,2127,village,0,0,50,0,none,none
+gn:3356477,Kalkrand,Hardap Region,1467,village,0,0,50,0,none,none
+gn:3356487,Kalkfeld,Otjozondjupa Region,1656,village,0,0,50,0,none,none
+gn:3356802,Hoachanas,Hardap Region,3000,village,0,0,50,0,none,none
+gn:3356832,Henties Bay,Erongo Region,5594,village,0,0,50,0,none,none
+gn:3357114,Grootfontein,Otjozondjupa Region,24099,town,0,0,50,0,none,none
+gn:3357124,Groot Aub,Khomas Region,3452,village,0,0,50,0,none,none
+gn:3357234,Gochas,Hardap Region,1378,village,0,0,50,0,none,none
+gn:3357247,Gobabis,Omaheke Region,22639,town,0,0,50,0,none,none
+gn:3357293,Gibeon,Hardap Region,3118,village,0,0,50,0,none,none
+gn:3357804,Eenhana,Ohangwena Region,6551,village,0,0,50,0,none,none
+gn:3358416,Bethanie,Karas Region,10363,town,0,0,50,0,none,none
+gn:3358522,Aus,Karas Region,1263,village,0,0,50,0,none,none
+gn:3358610,Aroab,Karas Region,1967,village,0,0,50,0,none,none
+gn:3358666,Aranos,Hardap Region,4365,village,0,0,50,0,none,none
+gn:3358670,Arandis,Erongo Region,6127,village,0,0,50,0,none,none
+gn:3359638,Walvis Bay,Erongo Region,73598,town,0,0,50,0,none,none
+gn:3371197,Outapi,Omusati Region,7629,village,0,0,50,0,none,none
+gn:7116015,Rosh Pinah,Karas Region,6540,village,0,0,50,0,none,none
+gn:12718702,Aussenkehr,Karas Region,5359,village,0,0,50,0,none,none
+gn:12718704,Helao Nafidi,Ohangwena Region,22963,town,0,0,50,0,none,none
+gn:12718705,Ondangwa East,Oshikoto Region,5742,village,0,0,50,0,none,none
+gn:12718706,Osire,Otjozondjupa Region,5941,village,0,0,50,0,none,none

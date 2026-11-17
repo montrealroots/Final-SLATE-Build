@@ -1,0 +1,147 @@
+place_id,name,region,population,market,verified_homes,dated_listings,shortfall_to_50,recorded_sales,rent_source,price_source
+gn:245915,Zaḩar,Irbid,4150,village,0,0,50,0,none,none
+gn:245939,Yarqā,Balqa,4786,village,0,0,50,0,none,none
+gn:245989,Waqqāş,Irbid,5678,village,0,0,50,0,none,none
+gn:246008,Wādī Mūsá,Ma’an,14000,town,0,0,50,0,none,none
+gn:246013,Wādī as Sīr,Amman,181212,city,0,0,50,0,none,none
+gn:246202,Umm Qays,Irbid,4294,village,0,0,50,0,none,none
+gn:246314,Umm as Summāq,Amman,18274,town,0,0,50,0,none,none
+gn:246330,Umm ar Raşāş,Amman,0,village,0,0,50,0,none,none
+gn:246345,Umm al Qiţţayn,Mafraq,4225,village,0,0,50,0,none,none
+gn:246371,Umm al Jimāl,Mafraq,0,village,0,0,50,0,none,none
+gn:246384,Umm al Basātīn,Amman,0,village,0,0,50,0,none,none
+gn:246474,Adhruḩ,Ma’an,0,village,0,0,50,0,none,none
+gn:246522,Tibnah,Irbid,5229,village,0,0,50,0,none,none
+gn:246725,Sūf,Jerash,12942,town,0,0,50,0,none,none
+gn:246756,Şarfā,Karak,4873,village,0,0,50,0,none,none
+gn:246816,Ash Shūnah al Janūbīyah,Balqa,0,village,0,0,50,0,none,none
+gn:247014,Sammā ar Rawsān,Irbid,0,village,0,0,50,0,none,none
+gn:247015,Şammā,Irbid,8926,village,0,0,50,0,none,none
+gn:247021,Samā as Sirḩān,Mafraq,0,village,0,0,50,0,none,none
+gn:247061,Sāl,Irbid,6896,village,0,0,50,0,none,none
+gn:247068,Sakib,Jerash,11586,town,0,0,50,0,none,none
+gn:247074,Şakhrah,Ajloun,10616,town,0,0,50,0,none,none
+gn:247103,Saḩam al Kaffārāt,Irbid,6203,village,0,0,50,0,none,none
+gn:247105,Saḩāb,Amman,40241,town,0,0,50,0,none,none
+gn:247176,Şabḩā,Mafraq,5315,village,0,0,50,0,none,none
+gn:247273,Rujm ash Shāmī al Gharbī,Amman,0,village,0,0,50,0,none,none
+gn:247336,Rehab,Mafraq,10000,town,0,0,50,0,none,none
+gn:247340,Raymūn,Jerash,6082,village,0,0,50,0,none,none
+gn:247363,Rāsūn,Ajloun,2586,village,0,0,50,0,none,none
+gn:247496,Qumaym,Irbid,5111,village,0,0,50,0,none,none
+gn:247659,Qafqafā,Jerash,4402,village,0,0,50,0,none,none
+gn:247724,Nā‘ūr,Amman,0,village,0,0,50,0,none,none
+gn:247916,Mulayḩ,Madaba,0,village,0,0,50,0,none,none
+gn:247969,Al Mughayyir,Karak,0,village,0,0,50,0,none,none
+gn:248250,Malkā,Irbid,6856,village,0,0,50,0,none,none
+gn:248293,Mā‘īn,Madaba,0,village,0,0,50,0,none,none
+gn:248299,Māḩiş,Balqa,17754,town,0,0,50,0,none,none
+gn:248370,Mādabā,Madaba,82335,town,0,0,50,0,none,none
+gn:248382,Ma'an,Ma’an,50350,town,0,0,50,0,none,none
+gn:248414,Kurayyimah,Irbid,17837,town,0,0,50,0,none,none
+gn:248420,Kufrinjah,Ajloun,0,village,0,0,50,0,none,none
+gn:248424,Al Fayşalīyah,Madaba,0,village,0,0,50,0,none,none
+gn:248434,Kitim,Irbid,5292,village,0,0,50,0,none,none
+gn:248460,Khuraybat as Sūq,Amman,186158,city,0,0,50,0,none,none
+gn:248525,Bīrayn,Zarqa,0,village,0,0,50,0,none,none
+gn:248549,Al Murayghah,Ma’an,0,village,0,0,50,0,none,none
+gn:248583,Ḩayy Khildā,Amman,251000,city,0,0,50,0,none,none
+gn:248627,Kharjā,Irbid,5498,village,0,0,50,0,none,none
+gn:248719,Kafr Sawm,Irbid,7152,village,0,0,50,0,none,none
+gn:248734,Kafr Asad,Irbid,8203,village,0,0,50,0,none,none
+gn:248738,Kafr Abīl,Irbid,6333,village,0,0,50,0,none,none
+gn:248774,Juraynah,Madaba,0,village,0,0,50,0,none,none
+gn:248803,Judita,Irbid,20000,town,0,0,50,0,none,none
+gn:248843,Jāwā,Amman,10628,town,0,0,50,0,none,none
+gn:248875,Jarash,Jerash,27046,town,0,0,50,0,none,none
+gn:248923,‘Izrā,Karak,22756,town,0,0,50,0,none,none
+gn:248940,‘Irjān,Ajloun,0,village,0,0,50,0,none,none
+gn:248946,Irbid,Irbid,569068,large-city,0,0,50,0,none,none
+gn:249095,Ḩisbān,Amman,0,village,0,0,50,0,none,none
+gn:249153,Ḩawshā,Mafraq,0,village,0,0,50,0,none,none
+gn:249184,Ḩātim,Irbid,5542,village,0,0,50,0,none,none
+gn:249310,Ḩalāwah,Ajloun,5376,village,0,0,50,0,none,none
+gn:249318,Ḩakamā,Irbid,7075,village,0,0,50,0,none,none
+gn:249481,Fuqū‘,Karak,0,village,0,0,50,0,none,none
+gn:249664,Dhībān,Madaba,0,village,0,0,50,0,none,none
+gn:249676,Dayr Yūsuf,Irbid,6223,village,0,0,50,0,none,none
+gn:249693,Dayr ‘Allā,Balqa,0,village,0,0,50,0,none,none
+gn:249699,Dayr Abū Sa‘īd,Irbid,0,village,0,0,50,0,none,none
+gn:249842,Buşayrā,Tafielah,7154,village,0,0,50,0,none,none
+gn:249849,Burmā,Jerash,4735,village,0,0,50,0,none,none
+gn:249930,Bayt Yāfā,Irbid,7788,village,0,0,50,0,none,none
+gn:249933,Bayt Īdis,Irbid,4723,village,0,0,50,0,none,none
+gn:250052,Balīlā,Jerash,5206,village,0,0,50,0,none,none
+gn:250057,Bal‘amā,Mafraq,0,village,0,0,50,0,none,none
+gn:250090,Zarqa,Zarqa,792665,large-city,0,0,50,0,none,none
+gn:250094,Muthallath al Azraq,Zarqa,0,village,0,0,50,0,none,none
+gn:250095,Al Azraq ash Shamālī,Zarqa,14800,town,0,0,50,0,none,none
+gn:250106,‘Ayy,Karak,7340,village,0,0,50,0,none,none
+gn:250124,‘Ayn Jannā,Ajloun,9586,village,0,0,50,0,none,none
+gn:250142,‘Ayn al Bāshā,Balqa,0,village,0,0,50,0,none,none
+gn:250151,Ayl,Ma’an,0,village,0,0,50,0,none,none
+gn:250152,Aydūn,Irbid,18376,town,0,0,50,0,none,none
+gn:250179,Aţ Ţurrah,Irbid,14619,town,0,0,50,0,none,none
+gn:250186,Aţ Ţayyibah,Irbid,12615,town,0,0,50,0,none,none
+gn:250187,Al Khinzīrah,Karak,5231,village,0,0,50,0,none,none
+gn:250188,At-Taybeh,Ma’an,4265,village,0,0,50,0,none,none
+gn:250198,Aţ Ţafīlah,Tafielah,25429,town,0,0,50,0,none,none
+gn:250235,Aş Şubayḩī,Balqa,0,village,0,0,50,0,none,none
+gn:250258,As Salţ,Balqa,107874,city,0,0,50,0,none,none
+gn:250267,Safi,Karak,15200,town,0,0,50,0,none,none
+gn:250278,Ash Shūnah ash Shamālīyah,Irbid,0,village,0,0,50,0,none,none
+gn:250290,Ash Shawbak,Ma’an,50,village,0,0,50,0,none,none
+gn:250294,Ash Shajarah,Irbid,11243,town,0,0,50,0,none,none
+gn:250317,Ar Ruwayshid,Mafraq,0,village,0,0,50,0,none,none
+gn:250321,Ar Ruşayfah,Zarqa,0,village,0,0,50,0,none,none
+gn:250336,Ar Ramthā,Irbid,155693,city,0,0,50,0,none,none
+gn:250345,Ar Rabbah,Karak,4229,village,0,0,50,0,none,none
+gn:250420,‘Anjarah,Ajloun,17634,town,0,0,50,0,none,none
+gn:250441,Amman,Amman,1275857,large-city,0,0,50,0,none,none
+gn:250461,Ḩayy al Quwaysimah,Amman,32396,town,0,0,50,0,none,none
+gn:250462,Al Quwayrah,Ma’an,7372,village,0,0,50,0,none,none
+gn:250480,Al Qaţrānah,Karak,7070,village,0,0,50,0,none,none
+gn:250487,Al Qaşr,Karak,3840,village,0,0,50,0,none,none
+gn:250534,Ghawr al Mazra‘ah,Karak,0,village,0,0,50,0,none,none
+gn:250538,Al Mazār ash Shamālī,Irbid,0,village,0,0,50,0,none,none
+gn:250540,Al Mazār al Janūbī,Karak,9383,village,0,0,50,0,none,none
+gn:250544,Al Maşţabah,Jerash,0,village,0,0,50,0,none,none
+gn:250567,Manshīyat Banī Ḩasan,Mafraq,0,village,0,0,50,0,none,none
+gn:250582,Mafraq,Mafraq,57118,town,0,0,50,0,none,none
+gn:250596,‘Allān,Balqa,0,village,0,0,50,0,none,none
+gn:250603,Al Kittah,Jerash,5626,village,0,0,50,0,none,none
+gn:250623,Al Karāmah,Balqa,9384,village,0,0,50,0,none,none
+gn:250624,Qīr Moāv,Ma’an,22581,town,0,0,50,0,none,none
+gn:250628,Al Juwayyidah,Amman,0,village,0,0,50,0,none,none
+gn:250637,Al Jubayhah,Amman,46834,town,0,0,50,0,none,none
+gn:250639,Al Jīzah,Amman,4397,village,0,0,50,0,none,none
+gn:250649,Al Jafr,Ma’an,3557,village,0,0,50,0,none,none
+gn:250662,Al Ḩusaynīyah,Karak,0,village,0,0,50,0,none,none
+gn:250675,Al Ḩişn,Irbid,0,village,0,0,50,0,none,none
+gn:250686,Al Hāshimīyah,Zarqa,0,village,0,0,50,0,none,none
+gn:250688,Al Ḩasā,Tafielah,0,village,0,0,50,0,none,none
+gn:250697,Al Ḩamrā’,Mafraq,6211,village,0,0,50,0,none,none
+gn:250718,Al Fuḩayş,Balqa,18916,town,0,0,50,0,none,none
+gn:250738,Ḩayy al Bunayyāt,Amman,5579,village,0,0,50,0,none,none
+gn:250767,Al ‘Arīḑ,Madaba,0,village,0,0,50,0,none,none
+gn:250774,Aqaba,Aqaba,95048,town,0,0,50,0,none,none
+gn:250799,‘Ajlūn,Ajloun,125557,city,0,0,50,0,none,none
+gn:250821,Adir,Karak,4441,village,0,0,50,0,none,none
+gn:251005,Al Khālidīyah,Mafraq,0,village,0,0,50,0,none,none
+gn:385027,Ar Rīshah,Aqaba,0,village,0,0,50,0,none,none
+gn:407169,Al Muwaqqar,Amman,0,village,0,0,50,0,none,none
+gn:6946409,Karak City,Karak,21678,town,0,0,50,0,none,none
+gn:7015781,Al Ḩusaynīyah,Ma’an,0,village,0,0,50,0,none,none
+gn:7031363,Ad Dīsah,Aqaba,0,village,0,0,50,0,none,none
+gn:7838895,Russeifa,Zarqa,268237,city,0,0,50,0,none,none
+gn:10640344,Muthallath Şabḩā,Mafraq,0,village,0,0,50,0,none,none
+gn:10793675,Tala Bay,Aqaba,2000,village,0,0,50,0,none,none
+gn:10861483,Muthallath Jāmi‘at Āl al Bayt,Mafraq,0,village,0,0,50,0,none,none
+gn:10861986,Az̧ Z̧ulayl,Zarqa,50931,town,0,0,50,0,none,none
+gn:10862121,Al ‘Abdallī,Amman,0,village,0,0,50,0,none,none
+gn:10943439,Dayr al Kahf,Mafraq,0,village,0,0,50,0,none,none
+gn:11352362,Ruwaished,Mafraq,9805,village,0,0,50,0,none,none
+gn:11428685,Rukban,Mafraq,85000,town,0,0,50,0,none,none
+gn:13286467,Ṣuwayliḥ,Balqa,151016,city,0,0,50,0,none,none
+gn:13308287,Marj Al Hamam,Amman,82788,town,0,0,50,0,none,none
+gn:13353995,Ash-Shūbak,Ma’an,4275,village,0,0,50,0,none,none

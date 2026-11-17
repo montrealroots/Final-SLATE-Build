@@ -2,22 +2,21 @@
 // you owe for it, finding a home to rent or buy, building on your own land, improving and furnishing, the household's
 // costs, and the homes you own and let. Every action is the engine's (engine/homes), refused in words where it can't
 // happen yet; money moves only through the bank, and the clock carries everything that takes time.
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { store, useClock, useGame } from './store';
 import { Check, NumberField, PageHead, Panel, SelectField, TextField } from './components';
 import { TabBar } from './bankworld/ui/components/TabBar';
-import { PLACES, findPlace, getPlace } from '../data/places';
+import { PLACES, findPlace, getPlace, type Place } from '../data/places';
 import type { GameState } from '../engine/types';
 import { COMPONENT_WORDS, DESIGN_CHOICES, DESIGN_COLORS, FORM_WORDS, ROOM_WORDS, WORK, gardenOf, inBuilding, permissionFor, roomCheck, type Design, type Evidence, type Home, type RoomKind, type WorkKind } from '../engine/homes/model';
-import { HOME_RULES, applianceCatalog, marketEvidence, offersIn, type MarketEvidence } from '../engine/homes/market';
-import { formatDateKey, homesOf, money, todayAt, type Build, type Tenancy } from '../engine/homes/core';
+import { HOME_RULES, VERIFIED_TARGET, applianceCatalog, coverageOf, marketEvidence, offersIn, type MarketEvidence } from '../engine/homes/market';
+import { engaged, formatDateKey, homesOf, money, todayAt, type Build, type Tenancy } from '../engine/homes/core';
 import { applyRefusal, applyToRent, askPermission, disputeDeductions, giveNotice, leaseTerms, moveIn, moveInRefusal, payArrears, rentQuote, reportRepair, approveRepair, signLease, signRefusal } from '../engine/homes/renting';
 import { acceptCounter, acceptSaleOffer, acceptSaleRefusal, declineSaleOffer, listForSale, makeOffer, offerRefusal, purchaseQuote, saleRefusal, valuation, withdrawPurchase, type Plan } from '../engine/homes/buying';
 import { GENERIC_FURNITURE, billLines, bookStay, buyInsurance, buyItem, cancelWork, claimRepair, disposeItem, insuranceQuote, installItem, installRefusal, itemCheck, itemPrices, measureForInstall, restoreChange, returnItem, startWork, workQuote, workRefusal, type CatalogItem } from '../engine/homes/living';
 import { INVESTIGATIONS, applyForApproval, buildQuote, designProblems, investigate, resumeBuild, saveDesign, signBuild, startDesign, type Investigation } from '../engine/homes/building';
 import { advertise, approveLandlordRepair, changeRent, chooseTenant, endLetting, fairRent, letRefusal } from '../engine/homes/letting';
 import { arrangeViewing, toggleFavorite } from '../engine/homes';
-import { exteriorFor, keepExterior } from '../engine/homes/illustration';
 import { mortgageOwed } from '../engine/bank';
 
 type Tab = 'yours' | 'find' | 'build' | 'improve' | 'costs' | 'properties';
@@ -71,33 +70,10 @@ export function HomesPage() {
   );
 }
 
-// ---------------- The picture ----------------
+// ---------------- The outside, in words ----------------
 
-/**
- * The exterior picture, from the design record and nothing else. A home in the save keeps its accepted picture until its
- * design changes; an offer's is drawn when shown. A picture that fails its checklist isn't shown at all.
- */
-export function HomePicture({ g, home }: { g: GameState; home: Home }) {
-  const pinned = homesOf(g).homes[home.id] === home;
-  const kept = pinned ? homesOf(g).images[home.id] : undefined;
-  const fresh = kept && kept.revision === home.design.revision;
-  const tried = useRef('');
-  useEffect(() => {
-    const key = `${home.id}:${home.design.revision}`;
-    if (!pinned || fresh || tried.current === key) return;
-    tried.current = key;
-    store.act((s) => keepExterior(s, home.id));
-  }, [pinned, fresh, home.id, home.design.revision]);
-  const shown = useMemo(() => (pinned ? (fresh ? { svg: kept!.svg, label: kept!.label, checklist: kept!.checklist } : exteriorFor(null, home)) : exteriorFor(null, home)), [pinned, fresh, kept, home]);
-  const missing = shown.checklist.filter((c) => !c.ok);
-  return (
-    <figure className="home-picture">
-      {shown.svg ? <div className="home-picture-art" role="img" aria-label={`Exterior illustration of ${home.title}, design revision ${home.design.revision}`} dangerouslySetInnerHTML={{ __html: shown.svg }} />
-        : <p className="muted small">{'refused' in shown && shown.refused ? shown.refused : 'No picture yet.'}</p>}
-      <figcaption className="xs dim">{shown.label} Design revision {home.design.revision}.{missing.length ? ` Didn't match: ${missing.map((m) => m.feature).join('; ')}.` : ' Checked against the design: every feature matches.'}</figcaption>
-    </figure>
-  );
-}
+/** The outside in words, from the design record: what the game's drawing showed until the owner had the pictures removed (November 17, 2026). */
+const outsideWords = (d: Design) => `${title(d.style)}, ${d.floors} ${d.floors === 1 ? 'floor' : 'floors'}, ${d.walls} walls in ${d.wallColor}, ${d.roof} roof in ${d.roofColor} ${d.roofMaterial}; ${d.windowsPerFloor} ${d.windowStyle} ${d.windowsPerFloor === 1 ? 'window' : 'windows'} across each floor, ${d.frameColor} frames; a ${d.doorColor} ${d.door} front door`;
 
 function Facts({ home }: { home: Home }) {
   const d = home.design;
@@ -109,7 +85,7 @@ function Facts({ home }: { home: Home }) {
       {home.plotAreaM2 !== null && <><dt>Plot</dt><dd>{home.plotAreaM2} m²</dd></>}
       {home.form !== 'land' && <><dt>Bedrooms</dt><dd>{home.bedrooms ?? 'Not recorded'}</dd><dt>Bathrooms</dt><dd>{home.bathrooms ?? 'Not recorded'}</dd></>}
       {home.storeyBand && <><dt>Storeys</dt><dd>Between {home.storeyBand.toLowerCase()}</dd></>}
-      {home.form !== 'land' && <><dt>Outside</dt><dd>{title(d.style)}, {d.floors} {d.floors === 1 ? 'floor' : 'floors'}, {d.walls} walls in {d.wallColor}, {d.roof} roof in {d.roofColor} {d.roofMaterial}</dd></>}
+      {home.form !== 'land' && <><dt>Outside</dt><dd>{outsideWords(d)}</dd></>}
       <dt>Its Own</dt><dd>{home.privateAmenities.length ? home.privateAmenities.join(', ') : 'Nothing outside'}</dd>
       <dt>Shared</dt><dd>{home.sharedAmenities.length ? `${home.sharedAmenities.join(', ')} (the building's, shared with other residents)` : 'Nothing shared'}</dd>
       {home.market === 'rent' && <><dt>Furnished</dt><dd>{home.furnished ? 'Yes' : 'No'}</dd><dt>Included</dt><dd>{home.included.length ? home.included.join(', ') : 'Nothing: bills are yours'}</dd></>}
@@ -121,7 +97,7 @@ function Facts({ home }: { home: Home }) {
 function EvidenceList({ home }: { home: Home }) {
   return (
     <ul className="list small" aria-label="Where The Price Comes From">
-      {home.evidence.map((e, i) => <li key={i} className="list-item list-static"><span className="chip">{BASIS[e.basis]}</span><span className="grow">{e.says}</span></li>)}
+      {home.evidence.map((e, i) => <li key={i} className="list-item list-static"><span className="chip">{BASIS[e.basis]}</span>{e.retrospective && <span className="chip chip-warning">Retrospective</span>}<span className="grow">{e.says}</span></li>)}
     </ul>
   );
 }
@@ -144,7 +120,6 @@ function YourHome({ g }: { g: GameState }) {
               <p style={{ marginTop: 0 }}><strong>{res.title}</strong>, {getPlace(res.placeId).name}</p>
               <Facts home={res} />
             </div>
-            <HomePicture g={g} home={res} />
           </div>
         ) : <p className="muted small" style={{ margin: 0 }}>You haven't made a home your residence in the game yet. Find one to rent or buy under Find A Home.</p>}
       </Panel>
@@ -204,7 +179,6 @@ function TenancyPanel({ g, t }: { g: GameState; t: Tenancy }) {
       {(t.stage === 'signed' || t.stage === 'active') && hs.residence !== home.id && <Act label="Move In" primary why={moveInRefusal(g, home.id)} onClick={() => e.act((s) => moveIn(s, home.id))} aria={`Move In: ${home.title}`} />}
       {t.stage === 'active' && (
         <div className="home-stack">
-          {t.arrearsMinor > 0 && <Act label={`Pay ${money(cur, t.arrearsMinor)} Overdue`} primary onClick={() => e.act((s) => payArrears(s, t.id))} />}
           <div className="row-wrap">
             <SelectField label="Something Broken" value={component} options={[...Object.values(COMPONENT_WORDS).map((w) => ({ value: w, label: w })), ...home.landlordItems.map((i) => ({ value: i, label: `The Landlord's ${i}` }))]} onChange={setComponent} />
             <button className="btn btn-sm" onClick={() => e.act((s) => void reportRepair(s, home.id, component))}>Report It</button>
@@ -216,6 +190,8 @@ function TenancyPanel({ g, t }: { g: GameState; t: Tenancy }) {
           <Act label="Give Notice" onClick={() => e.act((s) => giveNotice(s, t.id))} />
         </div>
       )}
+      {/* Owed while you live there, or after you've left: a debt never disappears on its own. */}
+      {t.arrearsMinor > 0 && <Act label={`Pay ${money(cur, t.arrearsMinor)} Overdue`} primary onClick={() => e.act((s) => payArrears(s, t.id))} />}
       {t.changes.filter((c) => c.restore && !c.restored).map((c) => (
         <Act key={c.work} label={`Undo: ${WORK[c.work].label}`} onClick={() => e.act((s) => restoreChange(s, t.id, c.work))} />
       ))}
@@ -316,6 +292,21 @@ function History({ g }: { g: GameState }) {
 // ---------------- Finding a home ----------------
 
 type Want = 'rent' | 'sale' | 'land';
+const PAGE = 12;
+
+/** What the game holds for this place's housing, kind by kind: verified homes, listings, recorded sales, statistics, simulated. */
+function CoverageNote({ place, ev }: { place: Place; ev: MarketEvidence }) {
+  const c = coverageOf(place, ev);
+  return (
+    <div className="xs dim home-coverage" role="note" aria-label={`Housing Records For ${place.name}`}>
+      <p style={{ margin: 0 }}>
+        <strong>{place.name}'s housing records.</strong> Verified homes at real addresses: {c.verifiedHomes} of the {VERIFIED_TARGET} the game aims for ({c.shortfall} short). Real listings: {c.datedListings}.
+        {c.recordedSales ? ` Recorded past sales here: ${c.recordedSales.count.toLocaleString('en-US')}.` : ''} Rents: {c.rentEvidence}. Prices: {c.saleEvidence}.
+      </p>
+      <p style={{ margin: 'var(--s1) 0 0' }}>The {c.simulatedHomes} homes in this market are the game's own, fitted to {c.market}: none is a real listing or at a real address.</p>
+    </div>
+  );
+}
 type Sort = 'price' | 'area' | 'per-m2';
 
 function FindHome({ g }: { g: GameState }) {
@@ -327,6 +318,7 @@ function FindHome({ g }: { g: GameState }) {
   const [minBeds, setMinBeds] = useState(0);
   const [sort, setSort] = useState<Sort>('price');
   const [onlyFav, setOnlyFav] = useState(false);
+  const [page, setPage] = useState(1);
   const [compare, setCompare] = useState<string[]>([]);
   const [open, setOpen] = useState<string | null>(null);
   const [ev, setEv] = useState<MarketEvidence | null>(null);
@@ -342,7 +334,8 @@ function FindHome({ g }: { g: GameState }) {
   // A home the player acted on is the saved one from then on: its record, not a fresh draw.
   // A saved favourite from an earlier month stays listed with its own dates, though no longer on offer as new.
   const kept = hs.favorites.map((id) => hs.homes[id]).filter((h): h is Home => !!h && h.placeId === placeId && !offers.some((o) => o.id === h.id));
-  const shown = [...kept, ...offers.map((o) => hs.homes[o.id] ?? o)]
+  // A home you're renting, buying or own shows as agreed; any other is shown as it's listed now.
+  const shown = [...kept, ...offers.map((o) => (hs.homes[o.id] && engaged(hs, o.id) ? hs.homes[o.id] : o))]
     .filter((o) => (want === 'land' ? o.form === 'land' : o.market === want && o.form !== 'land'))
     .filter((o) => !maxPrice || o.priceMinor <= maxPrice * 100)
     .filter((o) => !minBeds || (o.bedrooms ?? 0) >= minBeds)
@@ -359,8 +352,8 @@ function FindHome({ g }: { g: GameState }) {
     <>
       <Panel title="Search">
         <div className="grid grid-3 form">
-          <SelectField label="Place" value={placeId} options={places.map((p) => ({ value: p.id, label: `${p.name}, ${p.countryName}` }))} onChange={(v) => { setPlaceId(v); setOpen(null); setCompare([]); }} />
-          <SelectField label="Looking To" value={want} options={[{ value: 'rent', label: 'Rent' }, { value: 'sale', label: 'Buy A Home' }, { value: 'land', label: 'Buy Land To Build On' }]} onChange={(v) => { setWant(v); setOpen(null); }} />
+          <SelectField label="Place" value={placeId} options={places.map((p) => ({ value: p.id, label: `${p.name}, ${p.countryName}` }))} onChange={(v) => { setPlaceId(v); setOpen(null); setCompare([]); setPage(1); }} />
+          <SelectField label="Looking To" value={want} options={[{ value: 'rent', label: 'Rent' }, { value: 'sale', label: 'Buy A Home' }, { value: 'land', label: 'Buy Land To Build On' }]} onChange={(v) => { setWant(v); setOpen(null); setPage(1); }} />
           <NumberField label={`Most You'll Pay${ev ? ` (${ev.currency})` : ''}`} value={maxPrice} min={0} step={want === 'rent' ? 100 : 10000} onChange={setMaxPrice} hint="0 for any price" />
           {want !== 'land' && <NumberField label="Bedrooms At Least" value={minBeds} min={0} max={6} onChange={setMinBeds} />}
           <SelectField label="Sort By" value={sort} options={[{ value: 'price', label: 'Price, Lowest First' }, { value: 'area', label: 'Size, Largest First' }, { value: 'per-m2', label: 'Price A Square Metre' }]} onChange={setSort} />
@@ -368,17 +361,12 @@ function FindHome({ g }: { g: GameState }) {
         </div>
         {loadErr && <p className="error" role="alert">{loadErr}</p>}
         {!ev && !loadErr && <p className="muted small">Reading the housing records for {getPlace(placeId).name}…</p>}
-        {ev && (
-          <p className="xs dim" style={{ marginBottom: 0 }}>
-            {ev.rent || ev.sale || ev.hdb ? 'Prices here are drawn from the evidence each home lists. ' : `No housing records cover ${getPlace(placeId).name} yet: every price here is the game's placeholder estimate, not a market figure. `}
-            These are the game's homes, not real listings, and none is at a real address.
-          </p>
-        )}
+        {ev && <CoverageNote place={getPlace(placeId)} ev={ev} />}
       </Panel>
       {compared.length >= 2 && <Compare g={g} homes={compared} onClear={() => setCompare([])} />}
       <Panel title={`${shown.length} ${want === 'rent' ? 'To Rent' : want === 'land' ? 'Plots For Sale' : 'For Sale'}`}>
         <ul className="list home-offers">
-          {shown.map((o) => (
+          {shown.slice(0, page * PAGE).map((o) => (
             <li key={o.id} className="list-item list-static">
               <span className="grow">
                 <strong>{o.title}</strong>
@@ -391,8 +379,9 @@ function FindHome({ g }: { g: GameState }) {
               </span>
             </li>
           ))}
-          {!shown.length && ev && <li className="list-item list-static muted small">Nothing matches. Widen the search.</li>}
+          {!shown.length && ev && <li className="list-item list-static muted small">Nothing matches. Widen the search, or look again next month: homes come onto the market and leave it.</li>}
         </ul>
+        {shown.length > page * PAGE && <button className="btn btn-sm" onClick={() => setPage(page + 1)}>Show {Math.min(PAGE, shown.length - page * PAGE)} More</button>}
       </Panel>
       {opened && ev && <OfferDetail g={g} home={opened} ev={ev} />}
     </>
@@ -426,6 +415,7 @@ function OfferDetail({ g, home, ev }: { g: GameState; home: Home; ev: MarketEvid
   const e = useErr();
   const [day, setDay] = useState(todayAt(g, home) < home.availableFrom ? home.availableFrom : todayAt(g, home));
   const [plan, setPlan] = useState<Plan>({ finance: 'mortgage', depositShare: 0.2, years: 25, inspect: true });
+  const buyPlan: Plan = home.form === 'land' ? { ...plan, finance: 'cash' } : plan;
   const [offerUnits, setOfferUnits] = useState(Math.round(home.priceMinor / 100));
   const hs = homesOf(g);
   const viewed = hs.viewings.find((v) => v.homeId === home.id);
@@ -438,13 +428,12 @@ function OfferDetail({ g, home, ev }: { g: GameState; home: Home; ev: MarketEvid
           {home.rooms.length > 0 && <p className="small"><strong>Rooms:</strong> {home.rooms.map((r) => `${ROOM_WORDS[r.kind]} ${r.areaM2} m²`).join(', ')}</p>}
           {home.land && <p className="small"><strong>Known Of The Land:</strong> access {home.land.access}, services {home.land.services}, buildable area {home.land.buildableM2 === null ? 'not known until surveyed' : `${home.land.buildableM2} m²`}.</p>}
         </div>
-        {home.form !== 'land' && <HomePicture g={g} home={home} />}
       </div>
       <h4>Where The Price Comes From</h4>
       <EvidenceList home={home} />
       {ev.nearby.length > 0 && (
-        <details className="small"><summary>Recorded Sales Nearby ({ev.nearby.length})</summary>
-          <p className="xs dim">Past sales on record, not homes for sale now.</p>
+        <details className="small"><summary>Records For This Place ({ev.nearby.length})</summary>
+          <p className="xs dim">Official figures and past sales on record: none is a home for sale now.</p>
           <ul>{ev.nearby.map((n, i) => <li key={i}>{n.label}: {n.detail}</li>)}</ul>
         </details>
       )}
@@ -460,15 +449,16 @@ function OfferDetail({ g, home, ev }: { g: GameState; home: Home; ev: MarketEvid
           <h4>Buy It</h4>
           <div className="grid grid-3 form">
             <NumberField label={`Your Offer (${home.currency})`} value={offerUnits} min={0} step={1000} onChange={setOfferUnits} />
-            <SelectField label="Paying With" value={plan.finance} options={[{ value: 'mortgage', label: 'A Mortgage' }, { value: 'cash', label: 'Cash' }]} onChange={(v) => setPlan({ ...plan, finance: v })} />
-            {plan.finance === 'mortgage' && <>
+            {/* A plot is bought with the player's own money (purchaseQuote lends nothing on land), so it offers no mortgage to choose. */}
+            {home.form === 'land' ? <p className="xs dim">A building plot is bought with your own money: the game offers no mortgage on land.</p> : <SelectField label="Paying With" value={plan.finance} options={[{ value: 'mortgage', label: 'A Mortgage' }, { value: 'cash', label: 'Cash' }]} onChange={(v) => setPlan({ ...plan, finance: v })} />}
+            {buyPlan.finance === 'mortgage' && <>
               <NumberField label="Your Deposit (%)" value={Math.round((plan.depositShare ?? 0.2) * 100)} min={20} max={100} onChange={(v) => setPlan({ ...plan, depositShare: v / 100 })} hint="The game's lender lends up to 80%." />
               <SelectField label="Mortgage Term" value={String(plan.years ?? 25)} options={['15', '20', '25', '30'].map((y) => ({ value: y, label: `${y} Years` }))} onChange={(v) => setPlan({ ...plan, years: Number(v) })} />
             </>}
             <Check label="Have It Inspected" checked={plan.inspect} onChange={(v) => setPlan({ ...plan, inspect: v })} hint="An inspection finds what a viewing can't." />
           </div>
-          <BuyCosts g={g} home={home} plan={plan} offerMinor={offerMinor} />
-          <Act label="Make The Offer" primary why={offerRefusal(g, home, offerMinor, plan)} onClick={() => e.act((s) => void makeOffer(s, home, offerMinor, plan))} aria={`Make The Offer: ${home.title}`} />
+          <BuyCosts g={g} home={home} plan={buyPlan} offerMinor={offerMinor} />
+          <Act label="Make The Offer" primary why={offerRefusal(g, home, offerMinor, buyPlan)} onClick={() => e.act((s) => void makeOffer(s, home, offerMinor, buyPlan))} aria={`Make The Offer: ${home.title}`} />
         </>
       )}
       {e.show}
@@ -552,7 +542,6 @@ function BuildPanel({ g, b }: { g: GameState; b: Build }) {
   const problems = designProblems(g, { ...draft, landId: b.landId });
   const q = buildQuote(g, { ...draft, landId: b.landId });
   const rc = roomCheck(draft.rooms, draft.floorAreaM2);
-  const preview: Home = { ...land, id: `${b.id}:preview`, form: 'detached', design: { ...d, ...(b.stage === 'building' || b.stage === 'paused' ? { stage: b.stages[b.current]?.name } : {}) }, title: `Your design for ${land.title}` };
   const editable = b.stage !== 'complete';
   const changed = JSON.stringify(draft) !== JSON.stringify({ design: b.design, floorAreaM2: b.floorAreaM2, rooms: b.rooms });
   const home = b.homeId ? hs.homes[b.homeId] : undefined;
@@ -625,7 +614,6 @@ function BuildPanel({ g, b }: { g: GameState; b: Build }) {
           <Payments list={b.payments} cur={cur} />
           {e.show}
         </div>
-        {home ? <HomePicture g={g} home={home} /> : <div><h4>Design Preview</h4><HomePicture g={g} home={preview} /></div>}
       </div>
     </Panel>
   );
@@ -883,6 +871,7 @@ function PropertyPanel({ g, homeId }: { g: GameState; homeId: string }) {
             <dt>Worth Now</dt><dd>About {money(cur, worth)} (the game's valuation)</dd>
             {o.mortgage && <><dt>Mortgage</dt><dd>{money(cur, o.mortgage.paymentMinor)} a month; {o.mortgage.paidMonths} of {o.mortgage.months} paid; about ${owedUsd.toLocaleString('en-US', { maximumFractionDigits: 0 })} owed{o.mortgage.arrearsMinor ? `; ${money(cur, o.mortgage.arrearsMinor)} overdue` : ''}</dd></>}
             {home.form !== 'land' && hs.residence !== homeId && <><dt>Costs A Month</dt><dd>{(() => { const lines = billLines(g, home); return lines.length ? `${money(cur, lines.reduce((a, x) => a + x.minor, 0))}: ${lines.map((x) => x.what.toLowerCase()).join(', ')}` : 'Nothing while it is let'; })()}</dd></>}
+            {home.form !== 'land' && <><dt>Outside</dt><dd>{outsideWords(home.design)} (design revision {home.design.revision})</dd></>}
             {home.form !== 'land' && <><dt>Condition</dt><dd>{poor.length ? poor.map((k) => `${COMPONENT_WORDS[k]} ${home.condition[k]}`).join(', ') : 'Everything good'}</dd></>}
           </dl>
           {home.form !== 'land' && (
@@ -905,7 +894,6 @@ function PropertyPanel({ g, homeId }: { g: GameState; homeId: string }) {
             </>
           )}
         </div>
-        {home.form !== 'land' && <HomePicture g={g} home={home} />}
       </div>
       <h4>Sell It</h4>
       {sale && sale.stage !== 'completed' && sale.stage !== 'withdrawn' ? (

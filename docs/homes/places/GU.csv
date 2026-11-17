@@ -1,0 +1,27 @@
+place_id,name,region,population,market,verified_homes,dated_listings,shortfall_to_50,recorded_sales,rent_source,price_source
+gn:4038473,Piti Village,Piti,1666,village,0,0,50,0,none,none
+gn:4038554,Santa Rita Village,Santa Rita,7500,village,0,0,50,0,none,none
+gn:4038588,Sinajana Village,Sinajana,2853,village,0,0,50,0,none,none
+gn:4038647,Talofofo Village,Talofofo,3215,village,0,0,50,0,none,none
+gn:4038659,Tamuning-Tumon-Harmon Village,Tamuning,19685,town,0,0,50,0,none,none
+gn:4038733,Umatac Village,Umatac,903,village,0,0,50,0,none,none
+gn:4038794,Yigo Village,Yigo,20539,town,0,0,50,0,none,none
+gn:4038809,Yona Village,Yona,6484,village,0,0,50,0,none,none
+gn:4043399,Merizo Village,Merizo,2152,village,0,0,50,0,none,none
+gn:4043499,Inarajan Village,Inarajan,3052,village,0,0,50,0,none,none
+gn:4043525,Agana Heights Village,Agana Heights,3940,village,0,0,50,0,none,none
+gn:4043615,Chalan Pago-Ordot Village,Chalan Pago-Ordot,6822,village,0,0,50,0,none,none
+gn:4043656,Barrigada Village,Barrigada,8875,village,0,0,50,0,none,none
+gn:4043804,Agat Village,Agat,3292,village,0,0,50,0,none,none
+gn:4043812,Asan-Maina Village,Asan,2137,village,0,0,50,0,none,none
+gn:4043909,Dededo Village,Dededo,44943,town,0,0,50,0,none,none
+gn:4044012,Hagåtña,Hagatna,1051,village,0,0,50,0,none,none
+gn:7268049,Mangilao Village,Mangilao,15191,town,0,0,50,0,none,none
+gn:7873866,Mongmong-Toto-Maite Village,Mongmong-Toto-Maite,6825,village,0,0,50,0,none,none
+gn:7874008,Hagåtña Village,Hagatna,1051,village,0,0,50,0,none,none
+gn:7874277,Apotgan,Tamuning,5224,village,0,0,50,0,none,none
+gn:7874631,Tamuning,Tamuning,19685,town,0,0,50,0,none,none
+gn:13237018,Adacao,Mangilao,3638,village,0,0,50,0,none,none
+gn:13237019,Anao,Yigo,2385,village,0,0,50,0,none,none
+gn:13237020,Apra Harbor,Santa Rita,2930,village,0,0,50,0,none,none
+gn:13237021,Chaguian,Yigo,2524,village,0,0,50,0,none,none

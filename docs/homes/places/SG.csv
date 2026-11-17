@@ -1,0 +1,117 @@
+place_id,name,region,population,market,verified_homes,dated_listings,shortfall_to_50,recorded_sales,rent_source,price_source
+gn:1880135,Yio Chu Kang,,28350,town,0,0,50,0,none,none
+gn:1880137,Yew Tee,,39100,town,0,0,50,0,none,none
+gn:1880144,West Coast Village,,6870,village,0,0,50,0,none,none
+gn:1880155,Mount Vernon,,1192,village,0,0,50,0,none,none
+gn:1880159,Ulu Bedok,,276990,city,0,0,50,0,none,none
+gn:1880176,Toa Payoh New Town,,120650,city,0,0,50,0,none,none
+gn:1880177,Tiong Bahru Estate,,15120,town,0,0,50,0,none,none
+gn:1880184,Thomson,,29390,town,0,0,50,0,none,none
+gn:1880214,Tanglin,,21810,town,0,0,50,0,none,none
+gn:1880216,Tampines Estate,,265340,city,0,0,50,0,none,none
+gn:1880219,Tai Seng,,13830,town,0,0,50,0,none,none
+gn:1880226,Sungai Simpang,,20000,town,0,0,50,0,none,none
+gn:1880243,Somapah,,1850,village,0,0,50,0,none,none
+gn:1880252,Singapore,,5638700,large-city,0,0,50,0,none,none
+gn:1880268,Serangoon Garden,,36080,town,0,0,50,0,none,none
+gn:1880271,Serangoon,,116900,city,0,0,50,415,none,hdb-town
+gn:1880274,Sennett Estate,,7190,village,0,0,50,0,none,none
+gn:1880281,Sembawang Hills Estate,,6850,village,0,0,50,0,none,none
+gn:1880283,Sembawang Estate,,110090,city,0,0,50,0,none,none
+gn:1880348,Punggol,,204150,city,0,0,50,1752,none,hdb-town
+gn:1880398,Paya Lebar,,16920,town,0,0,50,0,none,none
+gn:1880401,Pasir Panjang,,4510,village,0,0,50,0,none,none
+gn:1880463,Matilda Estate,,52200,town,0,0,50,0,none,none
+gn:1880469,Marsiling,,22000,town,0,0,50,0,none,none
+gn:1880486,Loyang,,15340,town,0,0,50,0,none,none
+gn:1880490,Leedon Park,,6440,village,0,0,50,0,none,none
+gn:1880493,Lam San Village,,3270,village,0,0,50,0,none,none
+gn:1880515,Kent Ridge,,2250,village,0,0,50,0,none,none
+gn:1880517,Keat Hong Village,,39370,town,0,0,50,0,none,none
+gn:1880530,Kampong Ulu Pandan,,11020,town,0,0,50,0,none,none
+gn:1880532,Kampong Ubi,,11800,town,0,0,50,0,none,none
+gn:1880562,Radin Mas,,2498,village,0,0,50,0,none,none
+gn:1880566,Kampong Potong Pasir,,11720,town,0,0,50,0,none,none
+gn:1880574,Kampong Pasir Ris,,144260,city,0,0,50,0,none,none
+gn:1880586,Kampong Loyang,,15340,town,0,0,50,0,none,none
+gn:1880594,Kembangan,,130252,city,0,0,50,0,none,none
+gn:1880597,Kampong Java Teban,,10530,town,0,0,50,0,none,none
+gn:1880628,Kallang,,101290,city,0,0,50,0,none,none
+gn:1880650,Hong Kah,,26150,town,0,0,50,0,none,none
+gn:1880651,Holland Village,,10840,town,0,0,50,0,none,none
+gn:1880668,Geylang,,110201,city,0,0,50,678,none,hdb-town
+gn:1880723,Changi Village,,1850,village,0,0,50,0,none,none
+gn:1880739,Bulim,,8280,village,0,0,50,0,none,none
+gn:1880744,Bukit Timah,,85900,town,0,0,50,67,none,hdb-town
+gn:1880750,Bukit Merah Estate,,151250,city,0,0,50,0,none,none
+gn:1880751,Bukit Mandai Village,,2120,village,0,0,50,0,none,none
+gn:1880756,Brickworks Estate,,19820,town,0,0,50,0,none,none
+gn:1880760,Braddell Heights Estate,,9810,village,0,0,50,0,none,none
+gn:1880761,Boon Lay,,29510,town,0,0,50,0,none,none
+gn:1880825,Alexandra Estate,,13490,town,0,0,50,0,none,none
+gn:1881919,Bishan New Town,,87320,town,0,0,50,0,none,none
+gn:1881921,Bukit Batok New Town,,158030,city,0,0,50,0,none,none
+gn:1881922,Bukit Ho Swee Estate,,14390,town,0,0,50,0,none,none
+gn:1881946,Henderson Estate,,13320,town,0,0,50,0,none,none
+gn:1881948,Hougang New Town,,227560,city,0,0,50,0,none,none
+gn:1881952,Jurong East,,72960,town,0,0,50,504,none,hdb-town
+gn:1881953,Jurong Town,,262730,city,0,0,50,0,none,none
+gn:1881955,Jurong West,,253840,city,0,0,50,1578,none,hdb-town
+gn:1881957,Kaki Bukit Estate,,37150,town,0,0,50,0,none,none
+gn:1882033,MacPherson,,26850,town,0,0,50,0,none,none
+gn:1882044,Outram Park,,18340,town,0,0,50,0,none,none
+gn:1882101,Serangoon New Town,,116900,city,0,0,50,0,none,none
+gn:1882103,Simei New Town,,39450,town,0,0,50,0,none,none
+gn:1882115,Tampines New Town,,259900,city,0,0,50,0,none,none
+gn:1882118,Tanglin Halt,,10590,town,0,0,50,0,none,none
+gn:1882155,Yishun New Town,,228730,city,0,0,50,0,none,none
+gn:1882316,Woodlands,,254440,city,0,0,50,1919,none,hdb-town
+gn:1882402,Kangkar,,32290,town,0,0,50,0,none,none
+gn:1882691,Hillcrest Park,,9470,village,0,0,50,0,none,none
+gn:1882700,Pandan Valley,,11020,town,0,0,50,0,none,none
+gn:1882703,Faber Hills,,5360,village,0,0,50,0,none,none
+gn:1882706,Ghim Moh,,13160,town,0,0,50,0,none,none
+gn:1882712,One Tree Hill,,2320,village,0,0,50,0,none,none
+gn:1882719,Mount Emily Park,,1630,village,0,0,50,0,none,none
+gn:1882774,Lucky Hills,,7240,village,0,0,50,0,none,none
+gn:1882778,Marine Parade,,47180,town,0,0,50,143,none,hdb-town
+gn:1884365,Ang Mo Kio New Town,,159340,city,0,0,50,0,none,none
+gn:1884367,Bukit Panjang New Town,,138050,city,0,0,50,0,none,none
+gn:1884382,Bedok New Town,,276990,city,0,0,50,0,none,none
+gn:1884384,Clementi Housing Estate,,92420,town,0,0,50,0,none,none
+gn:1884385,Pasir Ris New Town,,54420,town,0,0,50,0,none,none
+gn:1884386,Queenstown Estate,,101480,city,0,0,50,0,none,none
+gn:1884403,Telok Blangah,,19320,town,0,0,50,0,none,none
+gn:1884737,Choa Chu Kang New Town,,187550,city,0,0,50,0,none,none
+gn:7281987,Novena,,53160,town,0,0,50,0,none,none
+gn:7289731,Eunos,,32820,town,0,0,50,0,none,none
+gn:7289737,Bugis,,1150,village,0,0,50,0,none,none
+gn:7289739,Admiralty,,13920,town,0,0,50,0,none,none
+gn:7289745,Lavender,,9690,village,0,0,50,0,none,none
+gn:7289746,Newton,,8260,village,0,0,50,0,none,none
+gn:7289760,Sengkang New Town,,267600,city,0,0,50,0,none,none
+gn:7289766,HarbourFront,,3620,village,0,0,50,0,none,none
+gn:8354422,Marina Bay,,3034,village,0,0,50,0,none,none
+gn:10171214,Sentosa,,1940,village,0,0,50,0,none,none
+gn:11237888,River Valley,,10070,town,0,0,50,0,none,none
+gn:13100482,Fajar,,26420,town,0,0,50,0,none,none
+gn:13100483,Saujana,,25000,town,0,0,50,0,none,none
+gn:13100484,Bangkit,,21010,town,0,0,50,0,none,none
+gn:13118119,Dover,,11290,town,0,0,50,0,none,none
+gn:13118121,Holland Drive,,12010,town,0,0,50,0,none,none
+gn:13118122,Margaret Drive,,24160,town,0,0,50,0,none,none
+gn:13118124,One North,,1010,village,0,0,50,0,none,none
+gn:13118125,Institution Hill,,3760,village,0,0,50,0,none,none
+gn:13118126,Leonie Hill,,3850,village,0,0,50,0,none,none
+gn:13118127,Oxley,,1630,village,0,0,50,0,none,none
+gn:13118129,Bencoolen,,1340,village,0,0,50,0,none,none
+gn:13118130,Rochor,,12920,town,0,0,50,0,none,none
+gn:13118131,Farrer Park,,2570,village,0,0,50,0,none,none
+gn:13118134,Dairy Farm,,7860,village,0,0,50,0,none,none
+gn:13118135,Jelebu,,29960,town,0,0,50,0,none,none
+gn:13118136,Senja,,23830,town,0,0,50,0,none,none
+gn:13118137,Nature Reserve,,3980,village,0,0,50,0,none,none
+gn:13118138,Anak Bukit,,22960,town,0,0,50,0,none,none
+gn:13118139,Peng Siang,,33860,town,0,0,50,0,none,none
+gn:13118140,Teck Whye,,24560,town,0,0,50,0,none,none
+gn:13118141,Woodlands North Coast,,11430,town,0,0,50,0,none,none

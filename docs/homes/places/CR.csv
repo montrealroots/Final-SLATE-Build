@@ -1,0 +1,131 @@
+place_id,name,region,population,market,verified_homes,dated_listings,shortfall_to_50,recorded_sales,rent_source,price_source
+gn:3620994,Zarcero,Alajuela Province,3559,village,0,0,50,0,none,none
+gn:3621016,Zapotal,Guanacaste Province,0,village,0,0,50,0,none,none
+gn:3621138,Uvita,Puntarenas Province,3000,village,0,0,50,0,none,none
+gn:3621153,Upala,Alajuela Province,4185,village,0,0,50,0,none,none
+gn:3621184,Turrialba,Cartago Province,28955,town,0,0,50,0,none,none
+gn:3621200,Tucurrique,Cartago Province,2697,village,0,0,50,0,none,none
+gn:3621224,Tres Ríos,Cartago Province,10430,town,0,0,50,0,none,none
+gn:3621265,Tobosi,Cartago Province,4060,village,0,0,50,0,none,none
+gn:3621278,Tilarán,Guanacaste Province,7301,village,0,0,50,0,none,none
+gn:3621335,Tejar,San José,22433,town,0,0,50,0,none,none
+gn:3621430,Sixaola,Limón Province,1823,village,0,0,50,0,none,none
+gn:3621440,Siquirres,Limón Province,18231,town,0,0,50,0,none,none
+gn:3621490,Sardinal,Guanacaste Province,3267,village,0,0,50,0,none,none
+gn:3621495,Sarchí,Alajuela Province,0,village,0,0,50,0,none,none
+gn:3621501,San Vito,Puntarenas Province,3981,village,0,0,50,0,none,none
+gn:3621505,San Vicente,San José,34447,town,0,0,50,0,none,none
+gn:3621515,Santo Domingo,Heredia Province,5745,village,0,0,50,0,none,none
+gn:3621520,Santiago,Alajuela Province,2107,village,0,0,50,0,none,none
+gn:3621524,Santiago,San José,8292,village,0,0,50,0,none,none
+gn:3621607,Santa Cruz,Guanacaste Province,12281,town,0,0,50,0,none,none
+gn:3621630,Santa Ana,San José,8029,village,0,0,50,0,none,none
+gn:3621644,San Ramón,Alajuela Province,10765,town,0,0,50,0,none,none
+gn:3621655,San Rafael Arriba,San José,15051,town,0,0,50,0,none,none
+gn:3621659,San Rafael Abajo,San José,27419,town,0,0,50,0,none,none
+gn:3621679,San Rafael,Alajuela Province,3624,village,0,0,50,0,none,none
+gn:3621683,San Rafael,Heredia Province,8887,village,0,0,50,0,none,none
+gn:3621689,San Rafael,San José,25410,town,0,0,50,0,none,none
+gn:3621717,San Pedro,San José,27477,town,0,0,50,0,none,none
+gn:3621729,San Pablo,Heredia Province,21662,town,0,0,50,0,none,none
+gn:3621732,San Pablo,San José,0,village,0,0,50,0,none,none
+gn:3621753,San Miguel,San José,28827,town,0,0,50,0,none,none
+gn:3621762,San Marcos,San José,4255,village,0,0,50,0,none,none
+gn:3621804,San Juan de Dios,San José,15469,town,0,0,50,0,none,none
+gn:3621817,San Juan,Alajuela Province,7729,village,0,0,50,0,none,none
+gn:3621819,San Juan,San José,26047,town,0,0,50,0,none,none
+gn:3621831,San Josecito,Heredia Province,12195,town,0,0,50,0,none,none
+gn:3621841,San José,Alajuela Province,31430,town,0,0,50,0,none,none
+gn:3621849,San José,San José,335007,city,0,0,50,0,none,none
+gn:3621889,San Isidro,San José,34877,town,0,0,50,0,none,none
+gn:3621890,San Ignacio,San José,3072,village,0,0,50,0,none,none
+gn:3621911,San Francisco,Heredia Province,55923,town,0,0,50,0,none,none
+gn:3621922,San Felipe,San José,24985,town,0,0,50,0,none,none
+gn:3621926,San Diego,Cartago Province,16991,town,0,0,50,0,none,none
+gn:3621967,San Antonio,Heredia Province,10938,town,0,0,50,0,none,none
+gn:3621990,Sámara,Guanacaste Province,1071,village,0,0,50,0,none,none
+gn:3621997,Salitrillos,San José,5738,village,0,0,50,0,none,none
+gn:3622005,Salitral,San José,2833,village,0,0,50,0,none,none
+gn:3622022,Sabanilla,Alajuela Province,1015,village,0,0,50,0,none,none
+gn:3622023,Sabanilla,San José,13251,town,0,0,50,0,none,none
+gn:3622035,Sabalito,Puntarenas Province,0,village,0,0,50,0,none,none
+gn:3622036,Roxana,Limón Province,2351,village,0,0,50,0,none,none
+gn:3622074,Río Segundo,Alajuela Province,9853,village,0,0,50,0,none,none
+gn:3622190,Quesada,Alajuela Province,27310,town,0,0,50,0,none,none
+gn:3622193,Quepos,Puntarenas Province,7810,village,0,0,50,0,none,none
+gn:3622217,Purral,San José,30034,town,0,0,50,0,none,none
+gn:3622228,Puntarenas,Puntarenas Province,35650,town,0,0,50,0,none,none
+gn:3622247,Limón,Limón Province,63081,town,0,0,50,0,none,none
+gn:3622323,Poco Sol,Alajuela Province,2947,village,0,0,50,0,none,none
+gn:3622325,Pocora,Limón Province,5248,village,0,0,50,0,none,none
+gn:3622382,Pital,Alajuela Province,2046,village,0,0,50,0,none,none
+gn:3622466,Pejivalle,Cartago Province,1630,village,0,0,50,0,none,none
+gn:3622507,Patarrá,San José,23983,town,0,0,50,0,none,none
+gn:3622537,Parrita,Puntarenas Province,3734,village,0,0,50,0,none,none
+gn:3622547,Paraíso,Cartago Province,39702,town,0,0,50,0,none,none
+gn:3622561,Paquera,Puntarenas Province,1510,village,0,0,50,0,none,none
+gn:3622602,Palmichal,San José,1545,village,0,0,50,0,none,none
+gn:3622648,Pacayas,Cartago Province,1556,village,0,0,50,0,none,none
+gn:3622660,Orotina,Alajuela Province,6135,village,0,0,50,0,none,none
+gn:3622663,Orosi,Cartago Province,4350,village,0,0,50,0,none,none
+gn:3622716,Nicoya,Guanacaste Province,15313,town,0,0,50,0,none,none
+gn:3622751,Naranjo,Alajuela Province,11853,town,0,0,50,0,none,none
+gn:3622765,Nandayure,Guanacaste Province,1649,village,0,0,50,0,none,none
+gn:3622816,Monterrey,San José,0,village,0,0,50,0,none,none
+gn:3622854,Miramar,Puntarenas Province,6540,village,0,0,50,0,none,none
+gn:3622881,Mercedes Norte,Heredia Province,26007,town,0,0,50,0,none,none
+gn:3622884,Mercedes,San José,5467,village,0,0,50,0,none,none
+gn:3622895,Matina,Limón Province,2315,village,0,0,50,0,none,none
+gn:3623008,Los Chiles,Alajuela Province,3342,village,0,0,50,0,none,none
+gn:3623032,Llorente,Heredia Province,6626,village,0,0,50,0,none,none
+gn:3623076,Liberia,Guanacaste Province,45380,town,0,0,50,0,none,none
+gn:3623093,La Virgen,Heredia Province,0,village,0,0,50,0,none,none
+gn:3623112,La Suiza,Cartago Province,2434,village,0,0,50,0,none,none
+gn:3623258,La Cruz,Guanacaste Province,4319,village,0,0,50,0,none,none
+gn:3623287,La Asunción,Heredia Province,4383,village,0,0,50,0,none,none
+gn:3623307,Juntas,Guanacaste Province,4737,village,0,0,50,0,none,none
+gn:3623369,Jacó,Puntarenas Province,4085,village,0,0,50,0,none,none
+gn:3623394,Ipís,San José,26669,town,0,0,50,0,none,none
+gn:3623454,Hojancha,Guanacaste Province,1823,village,0,0,50,0,none,none
+gn:3623486,Heredia,Heredia Province,21947,town,0,0,50,0,none,none
+gn:3623580,Guápiles,Limón Province,19092,town,0,0,50,0,none,none
+gn:3623593,Guadalupe,San José,26005,town,0,0,50,0,none,none
+gn:3623601,Guácimo,Limón Province,7022,village,0,0,50,0,none,none
+gn:3623643,Granadilla,San José,12683,town,0,0,50,0,none,none
+gn:3623656,Golfito,Puntarenas Province,6777,village,0,0,50,0,none,none
+gn:3623715,La Fortuna,Guanacaste Province,1774,village,0,0,50,0,none,none
+gn:3623716,La Fortuna,Alajuela Province,3010,village,0,0,50,0,none,none
+gn:3623755,Esquipulas,Alajuela Province,1512,village,0,0,50,0,none,none
+gn:3623781,Esparza,Puntarenas Province,15575,town,0,0,50,0,none,none
+gn:3623787,Escazú,San José,12071,town,0,0,50,0,none,none
+gn:3623935,Desamparados,Alajuela Province,14448,town,0,0,50,0,none,none
+gn:3623961,Daniel Flores,San José,10028,town,0,0,50,0,none,none
+gn:3623977,Curridabat,San José,34586,town,0,0,50,0,none,none
+gn:3624057,Cot,Cartago Province,6784,village,0,0,50,0,none,none
+gn:3624066,Corredor,Puntarenas Province,7084,village,0,0,50,0,none,none
+gn:3624142,Concepción,Cartago Province,14000,town,0,0,50,0,none,none
+gn:3624171,Colón,San José,9687,village,0,0,50,0,none,none
+gn:3624174,Colima,San José,15875,town,0,0,50,0,none,none
+gn:3624198,Puerto Cortés,Puntarenas Province,3850,village,0,0,50,0,none,none
+gn:3624288,Chacarita,Puntarenas Province,26354,town,0,0,50,0,none,none
+gn:3624370,Cartago,Cartago Province,26594,town,0,0,50,0,none,none
+gn:3624379,Carrillos,Alajuela Province,4258,village,0,0,50,0,none,none
+gn:3624436,Canoas,Puntarenas Province,4573,village,0,0,50,0,none,none
+gn:3624468,Cañas,Guanacaste Province,20306,town,0,0,50,0,none,none
+gn:3624509,Calle Blancos,San José,20710,town,0,0,50,0,none,none
+gn:3624593,Buenos Aires,Puntarenas Province,11680,town,0,0,50,0,none,none
+gn:3624702,Bijagua,Alajuela Province,1090,village,0,0,50,0,none,none
+gn:3624718,Belén,Guanacaste Province,2715,village,0,0,50,0,none,none
+gn:3624725,Bejuco,Guanacaste Province,0,village,0,0,50,0,none,none
+gn:3624730,Batán,Limón Province,4584,village,0,0,50,0,none,none
+gn:3624744,Barrio Jesús,Alajuela Province,0,village,0,0,50,0,none,none
+gn:3624822,Bagaces,Guanacaste Province,4108,village,0,0,50,0,none,none
+gn:3624842,Atenas,Alajuela Province,7014,village,0,0,50,0,none,none
+gn:3624848,Aserrí,San José,25874,town,0,0,50,0,none,none
+gn:3624908,Ángeles,Heredia Province,1355,village,0,0,50,0,none,none
+gn:3624951,Alajuelita,San José,13845,town,0,0,50,0,none,none
+gn:3624955,Alajuela,Alajuela Province,47494,town,0,0,50,0,none,none
+gn:6612154,San Vicente de Moravia,San José,34447,town,0,0,50,0,none,none
+gn:6619864,Tamarindo,Guanacaste Province,6375,village,0,0,50,0,none,none
+gn:6946576,Cariari,Limón Province,0,village,0,0,50,0,none,none
+gn:9257206,Dulce Nombre de Jesus,San José,0,village,0,0,50,0,none,none

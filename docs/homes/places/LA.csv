@@ -1,0 +1,95 @@
+place_id,name,region,population,market,verified_homes,dated_listings,shortfall_to_50,recorded_sales,rent_source,price_source
+gn:1651944,Vientiane,Vientiane Prefecture,840940,large-city,0,0,50,0,none,none
+gn:1652200,Ban Xamtai,Houaphan,6244,village,0,0,50,0,none,none
+gn:1652203,Xam Nua,Houaphan,56900,town,0,0,50,0,none,none
+gn:1653316,Savannakhet,Savannakhet Province,125760,city,0,0,50,0,none,none
+gn:1653334,Salavan,Salavan Province,5521,village,0,0,50,0,none,none
+gn:1653894,Phôngsali,Phôngsali,13500,town,0,0,50,0,none,none
+gn:1654379,Pakse,Champasak Province,77900,town,0,0,50,0,none,none
+gn:1654401,Pakkading,Bolikhamsai,2176,village,0,0,50,0,none,none
+gn:1654498,Ban Lixingxô,Phôngsali,1341,village,0,0,50,0,none,none
+gn:1654757,Ban Khangviang,Xiangkhoang,1552,village,0,0,50,0,none,none
+gn:1655053,Ban Muang-Èt,Houaphan,1880,village,0,0,50,0,none,none
+gn:1655072,Muang Xon,Houaphan,4899,village,0,0,50,0,none,none
+gn:1655073,Ban Xiang-Ngeun,Luang Prabang Province,0,village,0,0,50,0,none,none
+gn:1655076,Ban Xèpôn,Savannakhet Province,1019,village,0,0,50,0,none,none
+gn:1655078,Muang Xay,Oudômxai,25000,town,0,0,50,0,none,none
+gn:1655084,Sainyabuli,Xiagnabouli,13500,town,0,0,50,0,none,none
+gn:1655087,Vang Vieng,Vientiane,25000,town,0,0,50,0,none,none
+gn:1655094,Ban Thatèng,Xékong,14021,town,0,0,50,0,none,none
+gn:1655107,Muang Sing,Loungnamtha,23500,town,0,0,50,0,none,none
+gn:1655112,Muang Sanakham,Vientiane,0,village,0,0,50,0,none,none
+gn:1655122,Phônthong,Champasak Province,0,village,0,0,50,0,none,none
+gn:1655123,Muang Phônsavan,Xiangkhoang,37507,town,0,0,50,0,none,none
+gn:1655124,Muang Phôn-Hông,Vientiane,10112,town,0,0,50,0,none,none
+gn:1655126,Muang Phin,Savannakhet Province,0,village,0,0,50,0,none,none
+gn:1655139,Pakxong,Champasak Province,5000,village,0,0,50,0,none,none
+gn:1655140,Pakxan,Bolikhamsai,21967,town,0,0,50,0,none,none
+gn:1655165,Ban Muang-Nan,Luang Prabang Province,11104,town,0,0,50,0,none,none
+gn:1655168,Muang Mok,Xiangkhoang,0,village,0,0,50,0,none,none
+gn:1655177,Muang Long,Loungnamtha,0,village,0,0,50,0,none,none
+gn:1655186,Ban Pakla,Oudômxai,0,village,0,0,50,0,none,none
+gn:1655189,Khoa,Phôngsali,0,village,0,0,50,0,none,none
+gn:1655192,Muang Không,Champasak Province,15000,town,0,0,50,0,none,none
+gn:1655199,Thakhèk,Khammouane Province,90800,town,0,0,50,0,none,none
+gn:1655201,Muang Kènthao,Xiagnabouli,0,village,0,0,50,0,none,none
+gn:1655203,Muang Kasi,Vientiane,0,village,0,0,50,0,none,none
+gn:1655210,Muang Hôngsa,Xiagnabouli,6000,village,0,0,50,0,none,none
+gn:1655212,Muang Hinboun,Khammouane Province,0,village,0,0,50,0,none,none
+gn:1655493,Ban Mahaxai,Khammouane Province,1267,village,0,0,50,0,none,none
+gn:1655559,Luang Prabang,Luang Prabang Province,55027,town,0,0,50,0,none,none
+gn:1655562,Luang Namtha,Loungnamtha,3225,village,0,0,50,0,none,none
+gn:1656547,Muang Khamkeut,Bolikhamsai,0,village,0,0,50,0,none,none
+gn:1657022,Houay Nga Na Song,Phôngsali,1192,village,0,0,50,0,none,none
+gn:1657314,Ban Hatxao,Luang Prabang Province,2045,village,0,0,50,0,none,none
+gn:1657529,Ban Dônghén,Savannakhet Province,0,village,0,0,50,0,none,none
+gn:1657819,Champasak,Champasak Province,12994,town,0,0,50,0,none,none
+gn:1657871,Ban Boun-Nua,Phôngsali,3855,village,0,0,50,0,none,none
+gn:1657897,Borikhan,Bolikhamsai,18354,town,0,0,50,0,none,none
+gn:1658073,Ban Xénô,Savannakhet Province,25135,town,0,0,50,0,none,none
+gn:1658219,Ban Vangthoum,Xiagnabouli,1270,village,0,0,50,0,none,none
+gn:1658268,Ban Vangluang,Xaisomboun,2086,village,0,0,50,0,none,none
+gn:1658723,Ban Thakham,Savannakhet Province,2281,village,0,0,50,0,none,none
+gn:1659990,Lamam,Xékong,4463,village,0,0,50,0,none,none
+gn:1660849,Ban Nongdeun,Savannakhet Province,2880,village,0,0,50,0,none,none
+gn:1661175,Ban Nasang,Savannakhet Province,1131,village,0,0,50,0,none,none
+gn:1661283,Ban Napè,Bolikhamsai,1107,village,0,0,50,0,none,none
+gn:1661607,Ban Nambak,Luang Prabang Province,3571,village,0,0,50,0,none,none
+gn:1661674,Ban Nalaotay,Savannakhet Province,3405,village,0,0,50,0,none,none
+gn:1661853,Ban Nakay-Tai,Khammouane Province,1544,village,0,0,50,0,none,none
+gn:1661950,Ban Nahin,Bolikhamsai,3466,village,0,0,50,0,none,none
+gn:1662589,Ban Laongam,Salavan Province,21304,town,0,0,50,0,none,none
+gn:1662662,Ban Lak Xao,Bolikhamsai,14117,town,0,0,50,0,none,none
+gn:1663246,Ban Kèngkok,Savannakhet Province,15658,town,0,0,50,0,none,none
+gn:1663526,Ban Houayxay,Bokeo,12500,town,0,0,50,0,none,none
+gn:1664177,Ban Hatgnao,Attapu,0,village,0,0,50,0,none,none
+gn:1664334,Ban Fangdèng,Attapu,0,village,0,0,50,0,none,none
+gn:1664870,Ban Botèn,Loungnamtha,1525,village,0,0,50,0,none,none
+gn:1665046,Attapeu,Attapu,4297,village,0,0,50,0,none,none
+gn:1665140,Ban Acholaosa,Phôngsali,1341,village,0,0,50,0,none,none
+gn:1665142,Ban Achung,Salavan Province,2044,village,0,0,50,0,none,none
+gn:1665144,Achiang (1),Salavan Province,1964,village,0,0,50,0,none,none
+gn:1904386,Ban Simuangngam,Bokeo,2428,village,0,0,50,0,none,none
+gn:1904391,Ban Houakhoua,Bokeo,15500,town,0,0,50,0,none,none
+gn:1941916,Ban Siphôm,Xiagnabouli,12479,town,0,0,50,0,none,none
+gn:1954376,Ban Vanghin,Xiagnabouli,1348,village,0,0,50,0,none,none
+gn:1955258,Ban Namnga,Phôngsali,0,village,0,0,50,0,none,none
+gn:1955334,Viangxai,Houaphan,0,village,0,0,50,0,none,none
+gn:1956309,Muang Nalè,Loungnamtha,0,village,0,0,50,0,none,none
+gn:7648072,Dak Cheung,Xékong,3625,village,0,0,50,0,none,none
+gn:7648299,Sanaxy,Attapu,0,village,0,0,50,0,none,none
+gn:7648310,Huameung,Houaphan,0,village,0,0,50,0,none,none
+gn:7648323,Viengxay,Houaphan,0,village,0,0,50,0,none,none
+gn:7648328,Xamtay,Houaphan,0,village,0,0,50,0,none,none
+gn:7648330,Viengthong,Houaphan,0,village,0,0,50,0,none,none
+gn:8739775,Xaysetha,Attapu,0,village,0,0,50,0,none,none
+gn:9948272,Sekong,Xékong,20116,town,0,0,50,0,none,none
+gn:11201982,Ban Antoum,Attapu,1420,village,0,0,50,0,none,none
+gn:11203124,Ban Bachiang,Champasak Province,12116,town,0,0,50,0,none,none
+gn:11231981,Ban Dansavan,Vientiane,1196,village,0,0,50,0,none,none
+gn:11235851,Ban Phônsavang-Nua,Savannakhet Province,3556,village,0,0,50,0,none,none
+gn:11244752,Ban Khoan,Bokeo,65348,town,0,0,50,0,none,none
+gn:13546106,Ban Dansavan,Savannakhet Province,1868,village,0,0,50,0,none,none
+gn:13631617,Donethat,Bokeo,1743,village,0,0,50,0,none,none
+gn:13631618,Homyen,Bokeo,1250,village,0,0,50,0,none,none
+gn:13631657,Oudomsouk,Khammouane Province,2783,village,0,0,50,0,none,none

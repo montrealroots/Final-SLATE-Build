@@ -22,8 +22,8 @@
   "gross": 75765,
   "revenue": 152257.625,
   "distributed": 1.875,
-  "money": 24742446.655,
-  "moneyChange": -257553.345,
+  "money": 24740980.044,
+  "moneyChange": -259019.957,
   "jobsTaken": 0.8,
   "jobsOffered": 0.8,
   "jobPay": 3059.6,
@@ -36,7 +36,7 @@
   "jobsWithdrawn": 0,
   "jobsDeclined": 0,
   "ratesAgreed": 0,
-  "logLines": 147.7,
+  "logLines": 147.775,
   "hired": 16,
   "castRates": 3219,
   "releaseDelay": 100.054,
@@ -97,7 +97,7 @@
   "bankFees": 0,
   "owed": 0,
   "accounts": 1,
-  "worth": 18606319.884,
+  "worth": 18605216.993,
   "rewards": 0,
   "fired": 0
  },
@@ -109,8 +109,8 @@
   "gross": 75765,
   "revenue": 152257.625,
   "distributed": 1.875,
-  "money": 24740322.021,
-  "moneyChange": -259677.98,
+  "money": 24738953.647,
+  "moneyChange": -261046.353,
   "jobsTaken": 0.8,
   "jobsOffered": 0.8,
   "jobPay": 3059.6,
@@ -163,7 +163,7 @@
   "saleProceeds": 0,
   "saleOffer": 0,
   "soldAtDay": 0,
-  "workPaid": 1597.725,
+  "workPaid": 1523.85,
   "designRevisions": 0,
   "itemsInstalled": 0,
   "itemsGone": 0,
@@ -184,7 +184,7 @@
   "bankFees": 0,
   "owed": 0,
   "accounts": 1,
-  "worth": 18604722.159,
+  "worth": 18603693.143,
   "rewards": 0,
   "fired": 0
  },
@@ -239,16 +239,16 @@
    "n": 40
   },
   "money": {
-   "mean": -2124.634,
-   "lo": -2421.224,
-   "hi": -1828.044,
+   "mean": -2026.397,
+   "lo": -2316.659,
+   "hi": -1736.135,
    "changed": 40,
    "n": 40
   },
   "moneyChange": {
-   "mean": -2124.634,
-   "lo": -2421.224,
-   "hi": -1828.044,
+   "mean": -2026.397,
+   "lo": -2316.659,
+   "hi": -1736.135,
    "changed": 40,
    "n": 40
   },
@@ -337,9 +337,9 @@
    "n": 40
   },
   "logLines": {
-   "mean": 5.375,
-   "lo": 5.216,
-   "hi": 5.534,
+   "mean": 5.3,
+   "lo": 5.15,
+   "hi": 5.45,
    "changed": 40,
    "n": 40
   },
@@ -617,9 +617,9 @@
    "n": 40
   },
   "workPaid": {
-   "mean": 1597.725,
-   "lo": 1374.689,
-   "hi": 1820.761,
+   "mean": 1523.85,
+   "lo": 1305.573,
+   "hi": 1742.127,
    "changed": 40,
    "n": 40
   },
@@ -764,9 +764,9 @@
    "n": 40
   },
   "worth": {
-   "mean": -1597.725,
-   "lo": -1820.761,
-   "hi": -1374.689,
+   "mean": -1523.85,
+   "lo": -1742.127,
+   "hi": -1305.573,
    "changed": 40,
    "n": 40
   },
@@ -815,8 +815,8 @@
  ],
  "verdict": "proven",
  "hashes": {
-  "src/engine/homes/renting.ts": "7cfd10cb71f96a26",
-  "src/engine/homes/living.ts": "ad78939a5e52c0c1",
+  "src/engine/homes/renting.ts": "c577f53dd878c359",
+  "src/engine/homes/living.ts": "09a1d2da0f81afce",
   "tests/proof/career.ts": "50bea06f19a02c5b"
  }
 }

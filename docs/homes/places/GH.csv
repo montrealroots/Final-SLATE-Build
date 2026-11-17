@@ -1,0 +1,121 @@
+place_id,name,region,population,market,verified_homes,dated_listings,shortfall_to_50,recorded_sales,rent_source,price_source
+gn:2293801,Yendi,Northern,64676,town,0,0,50,0,none,none
+gn:2293805,Yegyi,Bono East,30311,town,0,0,50,0,none,none
+gn:2294034,Winneba,Central,71288,town,0,0,50,0,none,none
+gn:2294056,Sefwi Wiawso,Western North,0,village,0,0,50,0,none,none
+gn:2294086,Wankyi,Bono,45877,town,0,0,50,0,none,none
+gn:2294206,Wa,Upper West,78107,town,0,0,50,0,none,none
+gn:2294308,Twifu Praso,Central,100851,city,0,0,50,0,none,none
+gn:2294665,Teshi Old Town,Greater Accra,144013,city,0,0,50,0,none,none
+gn:2294676,Tepa,Ashanti,18046,town,0,0,50,0,none,none
+gn:2294700,Tema,Greater Accra,155782,city,0,0,50,0,none,none
+gn:2294727,Techiman,Bono East,84074,town,0,0,50,0,none,none
+gn:2294768,Tarkwa,Western,49937,town,0,0,50,0,none,none
+gn:2294877,Tamale,Northern,464316,city,0,0,50,0,none,none
+gn:2294915,Takoradi,Western,389114,city,0,0,50,0,none,none
+gn:2294938,Tafo,Ashanti,50457,town,0,0,50,0,none,none
+gn:2294962,Swedru,Central,54417,town,0,0,50,0,none,none
+gn:2295021,Sunyani,Bono,92825,town,0,0,50,0,none,none
+gn:2295065,Suhum,Eastern,50610,town,0,0,50,0,none,none
+gn:2295385,Shama Junction,Western,20946,town,0,0,50,0,none,none
+gn:2295458,Sekondi-Takoradi,Western,138872,city,0,0,50,0,none,none
+gn:2295468,Sefwi,Ashanti,14206,town,0,0,50,0,none,none
+gn:2295506,Sawla,Savannah,10555,town,0,0,50,0,none,none
+gn:2295517,Savelugu,Northern,40654,town,0,0,50,0,none,none
+gn:2295663,Saman,Eastern,9000,village,0,0,50,0,none,none
+gn:2295672,Saltpond,Central,24689,town,0,0,50,0,none,none
+gn:2295684,Salaga,Savannah,25472,town,0,0,50,0,none,none
+gn:2295692,Sakumona,Greater Accra,32886,town,0,0,50,0,none,none
+gn:2295840,Prestea,Western,35611,town,0,0,50,0,none,none
+gn:2296458,Kasoa,Central,86753,town,0,0,50,0,none,none
+gn:2296564,Akim Oda,Eastern,60604,town,0,0,50,0,none,none
+gn:2296606,Obuase,Ashanti,179604,city,0,0,50,0,none,none
+gn:2296969,Nungua,Greater Accra,70483,town,0,0,50,0,none,none
+gn:2297126,Nsoatre,Bono,30862,town,0,0,50,0,none,none
+gn:2297141,Nsawam,Eastern,48885,town,0,0,50,0,none,none
+gn:2297289,Nkoranza,Bono East,35401,town,0,0,50,0,none,none
+gn:2297432,New Tafo,Ashanti,30380,town,0,0,50,0,none,none
+gn:2297505,Navrongo,Upper East,25470,town,0,0,50,0,none,none
+gn:2297661,Nalerigu,North East,17440,town,0,0,50,0,none,none
+gn:2297810,Mumford,Central,13983,town,0,0,50,0,none,none
+gn:2297834,Mpraeso,Eastern,9007,village,0,0,50,0,none,none
+gn:2298005,Mim,Ahafo,36211,town,0,0,50,0,none,none
+gn:2298205,Mankesim,Central,41541,town,0,0,50,0,none,none
+gn:2298264,Mampong,Ashanti,51745,town,0,0,50,0,none,none
+gn:2298330,Medina Estates,Greater Accra,101207,city,0,0,50,0,none,none
+gn:2298453,Larabanga,Savannah,4500,village,0,0,50,0,none,none
+gn:2298890,Kumasi,Ashanti,2544530,large-city,0,0,50,0,none,none
+gn:2299233,Kpandu,Volta,28334,town,0,0,50,0,none,none
+gn:2299236,Kpandae,Northern,8652,village,0,0,50,0,none,none
+gn:2299349,Konongo,Ashanti,43585,town,0,0,50,0,none,none
+gn:2299522,Koforidua,Eastern,151255,city,0,0,50,0,none,none
+gn:2299625,Kintampo,Bono East,53711,town,0,0,50,0,none,none
+gn:2299636,Kibi,Eastern,9399,village,0,0,50,0,none,none
+gn:2299642,Kete Krachi,Oti,11000,town,0,0,50,0,none,none
+gn:2299645,Keta,Volta,18077,town,0,0,50,0,none,none
+gn:2299945,Kade,Eastern,30233,town,0,0,50,0,none,none
+gn:2300068,Jirapa,Upper West,91279,town,0,0,50,0,none,none
+gn:2300182,Japekrom,Bono,96000,town,0,0,50,0,none,none
+gn:2300372,Hohoe,Volta,92076,town,0,0,50,0,none,none
+gn:2300379,Ho,Volta,130701,city,0,0,50,0,none,none
+gn:2300721,Gbawe,Greater Accra,86718,town,0,0,50,0,none,none
+gn:2300749,Goaso,Ahafo,21798,town,0,0,50,0,none,none
+gn:2300883,Foso,Central,20078,town,0,0,50,0,none,none
+gn:2301184,Elubo,Western,23952,town,0,0,50,0,none,none
+gn:2301190,Elmina,Central,34403,town,0,0,50,0,none,none
+gn:2301217,Ejura,Ashanti,70807,town,0,0,50,0,none,none
+gn:2301245,Ahwiaa,Ashanti,32163,town,0,0,50,0,none,none
+gn:2301367,Dzodze,Volta,30905,town,0,0,50,0,none,none
+gn:2301400,Dunkwa,Central,42737,town,0,0,50,0,none,none
+gn:2301424,Dambai,Oti,22445,town,0,0,50,0,none,none
+gn:2301464,Duayaw-Nkwanta,Ahafo,17000,town,0,0,50,0,none,none
+gn:2301529,Domaa-Ahenkro,Bono,37354,town,0,0,50,0,none,none
+gn:2301639,Dome,Greater Accra,48285,town,0,0,50,0,none,none
+gn:2301715,Dixcove,Western,7000,village,0,0,50,0,none,none
+gn:2302002,Damongo,Savannah,23544,town,0,0,50,0,none,none
+gn:2302357,Cape Coast,Central,212426,city,0,0,50,0,none,none
+gn:2302541,Buduburam,Central,63217,town,0,0,50,0,none,none
+gn:2302821,Bolgatanga,Upper East,81958,town,0,0,50,0,none,none
+gn:2303026,Bimbila,Northern,34262,town,0,0,50,0,none,none
+gn:2303060,Bibiani,Western North,36487,town,0,0,50,0,none,none
+gn:2303125,Berekum,Bono,70536,town,0,0,50,0,none,none
+gn:2303224,Bekwai,Ashanti,32082,town,0,0,50,0,none,none
+gn:2303236,Begoro,Eastern,29516,town,0,0,50,0,none,none
+gn:2303258,Bechem,Ahafo,17000,town,0,0,50,0,none,none
+gn:2303287,Bawku,Upper East,76459,town,0,0,50,0,none,none
+gn:2303611,Esim,Western,35487,town,0,0,50,0,none,none
+gn:2303789,Atronie,Bono,29748,town,0,0,50,0,none,none
+gn:2303878,Atebubu,Bono East,32641,town,0,0,50,0,none,none
+gn:2304121,Ashaiman,Greater Accra,190972,city,0,0,50,0,none,none
+gn:2304220,Asamankese,Eastern,46061,town,0,0,50,0,none,none
+gn:2304389,Apam,Central,20147,town,0,0,50,0,none,none
+gn:2304421,Anyinam,Eastern,29748,town,0,0,50,0,none,none
+gn:2304548,Anloga,Volta,34050,town,0,0,50,0,none,none
+gn:2304848,Amanfrom,Greater Accra,119467,city,0,0,50,0,none,none
+gn:2304931,Akwatia,Eastern,33784,town,0,0,50,0,none,none
+gn:2305027,Akropong,Eastern,11096,town,0,0,50,0,none,none
+gn:2305164,Akim Swedru,Eastern,10000,town,0,0,50,0,none,none
+gn:2305191,Akatsi,Volta,31981,town,0,0,50,0,none,none
+gn:2305537,Agogo,Ashanti,46089,town,0,0,50,0,none,none
+gn:2305677,Aflao,Volta,66546,town,0,0,50,0,none,none
+gn:2306079,Atsiaman,Greater Accra,202932,city,0,0,50,0,none,none
+gn:2306104,Accra,Greater Accra,1963264,large-city,0,0,50,0,none,none
+gn:2306119,Aburi,Eastern,18399,town,0,0,50,0,none,none
+gn:2306224,Aboso,Western,8790,village,0,0,50,0,none,none
+gn:7281088,Effiduase,Ashanti,30486,town,0,0,50,0,none,none
+gn:7648641,Adenta,Greater Accra,50652,town,0,0,50,0,none,none
+gn:8456972,Osu,Greater Accra,44000,town,0,0,50,0,none,none
+gn:8457205,Awoshi,Greater Accra,32426,town,0,0,50,0,none,none
+gn:8532058,Mamponteng,Ashanti,0,village,0,0,50,0,none,none
+gn:8541923,New Achimota,Greater Accra,37116,town,0,0,50,0,none,none
+gn:9159672,Wassa-Akropong,Western,0,village,0,0,50,0,none,none
+gn:11205476,Tema New Town,Greater Accra,95837,town,0,0,50,0,none,none
+gn:11205758,Odumase Krobo,Eastern,0,village,0,0,50,0,none,none
+gn:11428216,Lashibi,Greater Accra,49223,town,0,0,50,0,none,none
+gn:11467879,Assin Foso,Central,37230,town,0,0,50,0,none,none
+gn:11808941,Sekondi,Western,285506,city,0,0,50,0,none,none
+gn:12123477,Zonno,Upper East,2000,village,0,0,50,0,none,none
+gn:12640505,Mandela,Greater Accra,77371,town,0,0,50,0,none,none
+gn:12640506,Nkawkaw,Eastern,47968,town,0,0,50,0,none,none
+gn:12640508,Taifa,Greater Accra,42623,town,0,0,50,0,none,none
+gn:13275281,Ahwiaa,Ashanti,19729,town,0,0,50,0,none,none

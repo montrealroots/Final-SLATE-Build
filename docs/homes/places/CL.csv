@@ -1,0 +1,306 @@
+place_id,name,region,population,market,verified_homes,dated_listings,shortfall_to_50,recorded_sales,rent_source,price_source
+gn:3867616,Yungay,Ñuble,11177,town,0,0,50,0,none,none
+gn:3867625,Yumbel,Biobio,11111,town,0,0,50,0,none,none
+gn:3867668,Yerbas Buenas,Maule Region,3169,village,0,0,50,0,none,none
+gn:3868121,Viña del Mar,Valparaiso,334248,city,0,0,50,0,none,none
+gn:3868158,Villarrica,Araucania,49184,town,0,0,50,0,none,none
+gn:3868191,Villa Alhué,Santiago Metropolitan,4085,village,0,0,50,0,none,none
+gn:3868192,Villa Alemana,Valparaiso,97320,town,0,0,50,0,none,none
+gn:3868194,Villa Alegre,Maule Region,14695,town,0,0,50,0,none,none
+gn:3868210,Vilcún,Araucania,22499,town,0,0,50,0,none,none
+gn:3868308,Vicuña,Coquimbo Region,27771,town,0,0,50,0,none,none
+gn:3868326,Victoria,Araucania,32448,town,0,0,50,0,none,none
+gn:3868626,Valparaíso,Valparaiso,282448,city,0,0,50,0,none,none
+gn:3868633,Vallenar,Atacama,44895,town,0,0,50,0,none,none
+gn:3868707,Valdivia,Los Ríos Region,133419,city,0,0,50,0,none,none
+gn:3868988,Tucapel,Biobio,13427,town,0,0,50,0,none,none
+gn:3869381,Traiguén,Araucania,17164,town,0,0,50,0,none,none
+gn:3869657,Tomé,Biobio,53219,town,0,0,50,0,none,none
+gn:3869674,Nueva Toltén,Araucania,2482,village,0,0,50,0,none,none
+gn:3869716,Tocopilla,Antofagasta,25400,town,0,0,50,0,none,none
+gn:3869765,Tirúa,Biobio,2404,village,0,0,50,0,none,none
+gn:3869821,Tiltil,Santiago Metropolitan,5632,village,0,0,50,0,none,none
+gn:3869877,Tierra Amarilla,Atacama,12898,town,0,0,50,0,none,none
+gn:3869967,Teodoro Schmidt,Araucania,15504,town,0,0,50,0,none,none
+gn:3869979,Teno,Maule Region,6858,village,0,0,50,0,none,none
+gn:3870011,Temuco,Araucania,238129,city,0,0,50,0,none,none
+gn:3870243,Taltal,Antofagasta,11132,town,0,0,50,0,none,none
+gn:3870282,Talcahuano,Biobio,150499,city,0,0,50,0,none,none
+gn:3870294,Talca,Maule Region,197479,city,0,0,50,0,none,none
+gn:3870306,Talagante,Santiago Metropolitan,57323,town,0,0,50,0,none,none
+gn:3870907,Sierra Gorda,Antofagasta,1069,village,0,0,50,0,none,none
+gn:3871276,San Vicente de Tagua Tagua,O'Higgins Region,44046,town,0,0,50,0,none,none
+gn:3871286,San Vicente,O'Higgins Region,22572,town,0,0,50,0,none,none
+gn:3871336,Santiago,Santiago Metropolitan,4837295,large-city,0,0,50,0,none,none
+gn:3871476,Santa María,Valparaiso,7603,village,0,0,50,0,none,none
+gn:3871524,Santa Juana,Biobio,13228,town,0,0,50,0,none,none
+gn:3871616,Santa Cruz,O'Higgins Region,34914,town,0,0,50,0,none,none
+gn:3871655,Santa Bárbara,Biobio,13405,town,0,0,50,0,none,none
+gn:3871760,San Rafael,Maule Region,7964,village,0,0,50,0,none,none
+gn:3871781,San Pedro de Atacama,Antofagasta,10960,town,0,0,50,0,none,none
+gn:3871865,San Pablo,Los Lagos Region,5279,village,0,0,50,0,none,none
+gn:3871875,San Nicolás,Ñuble,2722,village,0,0,50,0,none,none
+gn:3872073,San José de Maipo,Santiago Metropolitan,5675,village,0,0,50,0,none,none
+gn:3872079,San José de la Mariquina,Los Ríos Region,9999,village,0,0,50,0,none,none
+gn:3872154,San Javier,Maule Region,40189,town,0,0,50,0,none,none
+gn:3872175,San Ignacio,Ñuble,2990,village,0,0,50,0,none,none
+gn:3872205,San Francisco de Mostazal,O'Higgins Region,12010,town,0,0,50,0,none,none
+gn:3872255,San Felipe,Valparaiso,59294,town,0,0,50,0,none,none
+gn:3872257,San Fabián de Alico,Ñuble,0,village,0,0,50,0,none,none
+gn:3872264,San Esteban,Valparaiso,17090,town,0,0,50,0,none,none
+gn:3872306,San Clemente,Maule Region,39538,town,0,0,50,0,none,none
+gn:3872326,San Carlos,Ñuble,31517,town,0,0,50,0,none,none
+gn:3872348,San Bernardo,Santiago Metropolitan,249858,city,0,0,50,0,none,none
+gn:3872395,San Antonio,Valparaiso,87675,town,0,0,50,0,none,none
+gn:3872594,Salamanca,Coquimbo Region,13265,town,0,0,50,0,none,none
+gn:3872648,Sagrada Familia,Maule Region,17569,town,0,0,50,0,none,none
+gn:3872900,Romeral,Maule Region,8295,village,0,0,50,0,none,none
+gn:3872988,Santo Domingo,Valparaiso,6696,village,0,0,50,0,none,none
+gn:3873116,Río Negro,Los Lagos Region,3779,village,0,0,50,0,none,none
+gn:3873145,Río Bueno,Los Ríos Region,31366,town,0,0,50,0,none,none
+gn:3873249,Rinconada de Los Andes,Valparaiso,8839,village,0,0,50,0,none,none
+gn:3873372,Retiro,Maule Region,5670,village,0,0,50,0,none,none
+gn:3873414,Requínoa,O'Higgins Region,11452,town,0,0,50,0,none,none
+gn:3873441,Rengo,O'Higgins Region,38100,town,0,0,50,0,none,none
+gn:3873454,Renca,Santiago Metropolitan,147151,city,0,0,50,0,none,none
+gn:3873459,Renaico,Araucania,6576,village,0,0,50,0,none,none
+gn:3873668,Rauco,Maule Region,9543,village,0,0,50,0,none,none
+gn:3873775,Rancagua,O'Higgins Region,212695,city,0,0,50,0,none,none
+gn:3873958,Quirihue,Ñuble,8000,village,0,0,50,0,none,none
+gn:3873983,Quintero,Valparaiso,22174,town,0,0,50,0,none,none
+gn:3873999,Quinta de Tilcoco,O'Higgins Region,7626,village,0,0,50,0,none,none
+gn:3874096,Quilpué,Valparaiso,130263,city,0,0,50,0,none,none
+gn:3874119,Quillota,Valparaiso,67779,town,0,0,50,0,none,none
+gn:3874122,Quillón,Ñuble,17485,town,0,0,50,0,none,none
+gn:3874141,Quilleco,Biobio,2043,village,0,0,50,0,none,none
+gn:3874212,Quilicura,Santiago Metropolitan,210410,city,0,0,50,0,none,none
+gn:3874272,Quilaco,Biobio,3850,village,0,0,50,0,none,none
+gn:3874535,Puyehue,Los Ríos Region,3932,village,0,0,50,0,none,none
+gn:3874552,Putre,Arica y Parinacota Region,2765,village,0,0,50,0,none,none
+gn:3874570,Putaendo,Valparaiso,15361,town,0,0,50,0,none,none
+gn:3874579,Purranque,Los Lagos Region,20705,town,0,0,50,0,none,none
+gn:3874612,Purén,Araucania,11815,town,0,0,50,0,none,none
+gn:3874787,Punta Arenas,Region of Magallanes,117430,city,0,0,50,0,none,none
+gn:3874815,Punitaqui,Coquimbo Region,10418,town,0,0,50,0,none,none
+gn:3874926,Puerto Williams,Region of Magallanes,2000,village,0,0,50,0,none,none
+gn:3874930,Puerto Varas,Los Lagos Region,37561,town,0,0,50,0,none,none
+gn:3874937,Saavedra,Araucania,11384,town,0,0,50,0,none,none
+gn:3874943,Quellón,Los Lagos Region,21823,town,0,0,50,0,none,none
+gn:3874958,Puerto Natales,Region of Magallanes,18505,town,0,0,50,0,none,none
+gn:3874960,Puerto Montt,Los Lagos Region,245902,city,0,0,50,0,none,none
+gn:3874982,Puerto Cisnes,Aysén,5739,village,0,0,50,0,none,none
+gn:3874997,Puerto Aysén,Aysén,16936,town,0,0,50,0,none,none
+gn:3875024,Puente Alto,Santiago Metropolitan,568106,large-city,0,0,50,0,none,none
+gn:3875070,Pucón,Araucania,26953,town,0,0,50,0,none,none
+gn:3875080,Puchuncaví,Valparaiso,5353,village,0,0,50,0,none,none
+gn:3875139,Providencia,Santiago Metropolitan,0,village,0,0,50,0,none,none
+gn:3875235,Pozo Almonte,Tarapacá,16878,town,0,0,50,0,none,none
+gn:3875367,Porvenir,Region of Magallanes,6809,village,0,0,50,0,none,none
+gn:3875595,Lago Ranco,Los Ríos Region,1984,village,0,0,50,0,none,none
+gn:3875684,Placilla,Valparaiso,39344,town,0,0,50,0,none,none
+gn:3875746,Pitrufquén,Araucania,21981,town,0,0,50,0,none,none
+gn:3875811,Pirque,Santiago Metropolitan,2157,village,0,0,50,0,none,none
+gn:3875882,Pinto,Ñuble,10673,town,0,0,50,0,none,none
+gn:3876256,Pichilemu,O'Higgins Region,13916,town,0,0,50,0,none,none
+gn:3876272,Pichidegua,O'Higgins Region,5227,village,0,0,50,0,none,none
+gn:3876353,Pica,Tarapacá,9296,village,0,0,50,0,none,none
+gn:3876383,Peumo,O'Higgins Region,8667,village,0,0,50,0,none,none
+gn:3876416,Petorca,Valparaiso,2548,village,0,0,50,0,none,none
+gn:3876480,Perquenco,Araucania,3654,village,0,0,50,0,none,none
+gn:3876556,Peralillo,O'Higgins Region,5024,village,0,0,50,0,none,none
+gn:3876601,Peor Es Nada,O'Higgins Region,1391,village,0,0,50,0,none,none
+gn:3876664,Penco,Biobio,46091,town,0,0,50,0,none,none
+gn:3876667,Pencahue,Maule Region,7924,village,0,0,50,0,none,none
+gn:3876682,Peñalolén,Santiago Metropolitan,241599,city,0,0,50,0,none,none
+gn:3876685,Peñaflor,Santiago Metropolitan,85671,town,0,0,50,0,none,none
+gn:3876729,Pemuco,Ñuble,8300,village,0,0,50,0,none,none
+gn:3876800,Pelarco,Maule Region,7632,village,0,0,50,0,none,none
+gn:3877146,Parral,Maule Region,26904,town,0,0,50,0,none,none
+gn:3877187,Paredones,O'Higgins Region,1838,village,0,0,50,0,none,none
+gn:3877251,Papudo,Valparaiso,4015,village,0,0,50,0,none,none
+gn:3877310,Panquehue,Valparaiso,6837,village,0,0,50,0,none,none
+gn:3877348,Panguipulli,Los Ríos Region,32525,town,0,0,50,0,none,none
+gn:3877599,Palmilla,O'Higgins Region,2268,village,0,0,50,0,none,none
+gn:3877644,Palena,Los Lagos Region,1773,village,0,0,50,0,none,none
+gn:3877739,Paine,Santiago Metropolitan,72759,town,0,0,50,0,none,none
+gn:3877744,Paillaco,Los Ríos Region,19088,town,0,0,50,0,none,none
+gn:3877770,Paiguano,Coquimbo Region,4256,village,0,0,50,0,none,none
+gn:3877793,Padre Las Casas,Araucania,72892,town,0,0,50,0,none,none
+gn:3877794,Padre Hurtado,Santiago Metropolitan,63250,town,0,0,50,0,none,none
+gn:3877918,Ovalle,Coquimbo Region,77138,town,0,0,50,0,none,none
+gn:3877949,Osorno,Los Lagos Region,135773,city,0,0,50,0,none,none
+gn:3878075,Olmué,Valparaiso,12499,town,0,0,50,0,none,none
+gn:3878101,Olivar,O'Higgins Region,2646,village,0,0,50,0,none,none
+gn:3878253,María Elena,Antofagasta,7530,village,0,0,50,0,none,none
+gn:3878431,Ñuñoa,Santiago Metropolitan,255823,city,0,0,50,0,none,none
+gn:3878456,Nueva Imperial,Araucania,29366,town,0,0,50,0,none,none
+gn:3878575,Nogales,Valparaiso,8547,village,0,0,50,0,none,none
+gn:3878630,Ninhue,Ñuble,5268,village,0,0,50,0,none,none
+gn:3878898,Negrete,Biobio,9394,village,0,0,50,0,none,none
+gn:3879062,Nancagua,O'Higgins Region,9007,village,0,0,50,0,none,none
+gn:3879123,Nacimiento,Biobio,26523,town,0,0,50,0,none,none
+gn:3879200,Mulchén,Biobio,27557,town,0,0,50,0,none,none
+gn:3879429,Monte Patria,Coquimbo Region,13945,town,0,0,50,0,none,none
+gn:3879627,Molina,Maule Region,40329,town,0,0,50,0,none,none
+gn:3880107,Melipilla,Santiago Metropolitan,63100,town,0,0,50,0,none,none
+gn:3880108,Melipeuco,Araucania,2733,village,0,0,50,0,none,none
+gn:3880143,Mejillones,Antofagasta,14084,town,0,0,50,0,none,none
+gn:3880302,Maullín,Los Lagos Region,15580,town,0,0,50,0,none,none
+gn:3880312,Maule,Maule Region,7366,village,0,0,50,0,none,none
+gn:3880486,María Pinto,Santiago Metropolitan,1948,village,0,0,50,0,none,none
+gn:3880534,Marchihue,O'Higgins Region,2269,village,0,0,50,0,none,none
+gn:3880827,Rinconada de Malloa,O'Higgins Region,2508,village,0,0,50,0,none,none
+gn:3880980,Maipú,Santiago Metropolitan,503635,large-city,0,0,50,0,none,none
+gn:3881102,Machalí,O'Higgins Region,42572,town,0,0,50,0,none,none
+gn:3881179,Lumaco,Araucania,11405,town,0,0,50,0,none,none
+gn:3881276,Lota,Biobio,47339,town,0,0,50,0,none,none
+gn:3881285,Los Vilos,Coquimbo Region,18275,town,0,0,50,0,none,none
+gn:3881357,Los Sauces,Araucania,7169,village,0,0,50,0,none,none
+gn:3881703,Los Muermos,Los Lagos Region,7876,village,0,0,50,0,none,none
+gn:3881976,Los Lagos,Los Ríos Region,9277,village,0,0,50,0,none,none
+gn:3882428,Los Ángeles,Biobio,125430,city,0,0,50,0,none,none
+gn:3882434,Los Andes,Valparaiso,63009,town,0,0,50,0,none,none
+gn:3882460,Los Álamos,Biobio,19494,town,0,0,50,0,none,none
+gn:3882534,Lonquimay,Araucania,3677,village,0,0,50,0,none,none
+gn:3882559,Longaví,Maule Region,28499,town,0,0,50,0,none,none
+gn:3882582,Loncoche,Araucania,21458,town,0,0,50,0,none,none
+gn:3882653,Lolol,O'Higgins Region,2419,village,0,0,50,0,none,none
+gn:3882957,Llanquihue,Los Lagos Region,16249,town,0,0,50,0,none,none
+gn:3883035,Llaillay,Valparaiso,22659,town,0,0,50,0,none,none
+gn:3883167,Linares,Maule Region,69535,town,0,0,50,0,none,none
+gn:3883214,Limache,Valparaiso,46121,town,0,0,50,0,none,none
+gn:3883457,Lebu,Biobio,22345,town,0,0,50,0,none,none
+gn:3883615,Lautaro,Araucania,34268,town,0,0,50,0,none,none
+gn:3883629,La Unión,Los Ríos Region,26298,town,0,0,50,0,none,none
+gn:3884373,La Serena,Coquimbo Region,154521,city,0,0,50,0,none,none
+gn:3884580,Las Cabras,O'Higgins Region,8374,village,0,0,50,0,none,none
+gn:3885251,Lanco,Los Ríos Region,7550,village,0,0,50,0,none,none
+gn:3885273,Lampa,Santiago Metropolitan,102234,city,0,0,50,0,none,none
+gn:3885456,La Ligua,Valparaiso,32131,town,0,0,50,0,none,none
+gn:3885509,Laja,Biobio,11113,town,0,0,50,0,none,none
+gn:3885577,La Islita,Santiago Metropolitan,13645,town,0,0,50,0,none,none
+gn:3885682,La Higuera,Coquimbo Region,4285,village,0,0,50,0,none,none
+gn:3885935,Florida,Biobio,8916,village,0,0,50,0,none,none
+gn:3886055,La Ensenada,Los Lagos Region,1300,village,0,0,50,0,none,none
+gn:3886176,La Cruz,Valparaiso,17310,town,0,0,50,0,none,none
+gn:3886405,La Calera,Valparaiso,50221,town,0,0,50,0,none,none
+gn:3886460,Labranza,Araucania,35893,town,0,0,50,0,none,none
+gn:3887072,Isla de Maipo,Santiago Metropolitan,13207,town,0,0,50,0,none,none
+gn:3887127,Iquique,Tarapacá,199587,city,0,0,50,0,none,none
+gn:3887344,Illapel,Coquimbo Region,22816,town,0,0,50,0,none,none
+gn:3887636,Huepil,Biobio,9092,village,0,0,50,0,none,none
+gn:3887650,Huentelauquén,Coquimbo Region,1290,village,0,0,50,0,none,none
+gn:3887758,Huasco,Atacama,8977,village,0,0,50,0,none,none
+gn:3887766,Huara,Tarapacá,2858,village,0,0,50,0,none,none
+gn:3887781,Hualpén,Biobio,86639,town,0,0,50,0,none,none
+gn:3887788,Hualañe,Maule Region,5594,village,0,0,50,0,none,none
+gn:3888011,Hijuelas,Valparaiso,10005,town,0,0,50,0,none,none
+gn:3888214,Hacienda La Calera,Valparaiso,49106,town,0,0,50,0,none,none
+gn:3888523,Hualqui,Biobio,24333,town,0,0,50,0,none,none
+gn:3888749,Graneros,O'Higgins Region,23301,town,0,0,50,0,none,none
+gn:3888892,Gorbea,Araucania,14414,town,0,0,50,0,none,none
+gn:3889153,Galvarino,Araucania,12469,town,0,0,50,0,none,none
+gn:3889221,Futrono,Los Ríos Region,13736,town,0,0,50,0,none,none
+gn:3889223,Futaleufú,Los Lagos Region,2297,village,0,0,50,0,none,none
+gn:3889262,Frutillar,Los Lagos Region,15034,town,0,0,50,0,none,none
+gn:3889310,Fresia,Los Lagos Region,11366,town,0,0,50,0,none,none
+gn:3889317,Freirina,Atacama,6038,village,0,0,50,0,none,none
+gn:3889322,Freire,Araucania,22390,town,0,0,50,0,none,none
+gn:3890015,Ercilla,Araucania,8466,village,0,0,50,0,none,none
+gn:3890121,Empedrado,Maule Region,4253,village,0,0,50,0,none,none
+gn:3890338,El Tabo,Valparaiso,9133,village,0,0,50,0,none,none
+gn:3890596,El Quisco,Valparaiso,16967,town,0,0,50,0,none,none
+gn:3890949,El Monte,Santiago Metropolitan,26459,town,0,0,50,0,none,none
+gn:3891707,El Carmen,Ñuble,12277,town,0,0,50,0,none,none
+gn:3892272,Doñihue,O'Higgins Region,7525,village,0,0,50,0,none,none
+gn:3892454,Diego de Almagro,Atacama,13925,town,0,0,50,0,none,none
+gn:3892470,Dichato,Biobio,4486,village,0,0,50,0,none,none
+gn:3892760,Dalcahue,Los Lagos Region,13076,town,0,0,50,0,none,none
+gn:3892797,Cuya,Arica y Parinacota Region,166,village,0,0,50,0,none,none
+gn:3892870,Curicó,Maule Region,102438,city,0,0,50,0,none,none
+gn:3892884,Curarrehue,Araucania,6624,village,0,0,50,0,none,none
+gn:3892892,Curanilahue,Biobio,32000,town,0,0,50,0,none,none
+gn:3892934,Curacaví,Santiago Metropolitan,18378,town,0,0,50,0,none,none
+gn:3892935,Curacautín,Araucania,12837,town,0,0,50,0,none,none
+gn:3892981,Cunco,Araucania,15628,town,0,0,50,0,none,none
+gn:3893338,Coya,O'Higgins Region,2493,village,0,0,50,0,none,none
+gn:3893516,Corral,Los Ríos Region,5084,village,0,0,50,0,none,none
+gn:3893532,Coronel,Biobio,107759,city,0,0,50,0,none,none
+gn:3893629,Coquimbo,Coquimbo Region,161317,city,0,0,50,0,none,none
+gn:3893656,Copiapó,Atacama,129280,city,0,0,50,0,none,none
+gn:3893690,Contulmo,Biobio,5838,village,0,0,50,0,none,none
+gn:3893726,Constitución,Maule Region,41207,town,0,0,50,0,none,none
+gn:3893865,Concón,Valparaiso,42152,town,0,0,50,0,none,none
+gn:3893894,Concepción,Biobio,223574,city,0,0,50,0,none,none
+gn:3893962,Combarbalá,Coquimbo Region,13605,town,0,0,50,0,none,none
+gn:3893999,Coltauco,O'Higgins Region,5755,village,0,0,50,0,none,none
+gn:3894177,Collipulli,Araucania,23321,town,0,0,50,0,none,none
+gn:3894242,Colina,Santiago Metropolitan,146207,city,0,0,50,0,none,none
+gn:3894309,Colchane,Tarapacá,1728,village,0,0,50,0,none,none
+gn:3894319,Colbún,Maule Region,17619,town,0,0,50,0,none,none
+gn:3894406,Coihueco,Ñuble,25159,town,0,0,50,0,none,none
+gn:3894426,Coyhaique,Aysén,45787,town,0,0,50,0,none,none
+gn:3894446,Coelemu,Ñuble,15711,town,0,0,50,0,none,none
+gn:3894464,Codegua,O'Higgins Region,7290,village,0,0,50,0,none,none
+gn:3894483,Cochrane,Aysén,2867,village,0,0,50,0,none,none
+gn:3894504,Cochamó,Los Lagos Region,3908,village,0,0,50,0,none,none
+gn:3894526,Cobquecura,Ñuble,5043,village,0,0,50,0,none,none
+gn:3894871,Chonchi,Los Lagos Region,12959,town,0,0,50,0,none,none
+gn:3894894,Cholchol,Araucania,3908,village,0,0,50,0,none,none
+gn:3895061,Chimbarongo,O'Higgins Region,33446,town,0,0,50,0,none,none
+gn:3895079,Chillán Viejo,Ñuble,28735,town,0,0,50,0,none,none
+gn:3895088,Chillán,Ñuble,150396,city,0,0,50,0,none,none
+gn:3895113,Chile Chico,Aysén,2500,village,0,0,50,0,none,none
+gn:3895138,Chiguayante,Biobio,84718,town,0,0,50,0,none,none
+gn:3895165,Chicureo,Santiago Metropolitan,16520,town,0,0,50,0,none,none
+gn:3895262,Chépica,O'Higgins Region,6237,village,0,0,50,0,none,none
+gn:3895492,Chanco,Maule Region,9003,village,0,0,50,0,none,none
+gn:3895554,Chañaral,Atacama,0,village,0,0,50,0,none,none
+gn:3895642,Chaitén,Los Lagos Region,3347,village,0,0,50,0,none,none
+gn:3896105,Cauquenes,Maule Region,38522,town,0,0,50,0,none,none
+gn:3896161,Catemu,Valparaiso,13285,town,0,0,50,0,none,none
+gn:3896218,Castro,Los Lagos Region,41667,town,0,0,50,0,none,none
+gn:3896410,Casablanca,Valparaiso,24537,town,0,0,50,0,none,none
+gn:3896433,Cartagena,Valparaiso,17978,town,0,0,50,0,none,none
+gn:3896774,Carahue,Araucania,24377,town,0,0,50,0,none,none
+gn:3896833,Capitán Pastene,Araucania,2610,village,0,0,50,0,none,none
+gn:3896924,Cañete,Biobio,20158,town,0,0,50,0,none,none
+gn:3896951,Canela,Coquimbo Region,9182,village,0,0,50,0,none,none
+gn:3897143,Camiña,Tarapacá,1335,village,0,0,50,0,none,none
+gn:3897148,Cámeron,Region of Magallanes,0,village,0,0,50,0,none,none
+gn:3897243,Calle Larga,Valparaiso,13366,town,0,0,50,0,none,none
+gn:3897301,Calera de Tango,Santiago Metropolitan,7448,village,0,0,50,0,none,none
+gn:3897322,Caldera,Atacama,16150,town,0,0,50,0,none,none
+gn:3897334,Calbuco,Los Lagos Region,32963,town,0,0,50,0,none,none
+gn:3897347,Calama,Antofagasta,166334,city,0,0,50,0,none,none
+gn:3897557,Cabrero,Biobio,27595,town,0,0,50,0,none,none
+gn:3897595,Cabildo,Valparaiso,19315,town,0,0,50,0,none,none
+gn:3897724,Bulnes,Ñuble,12715,town,0,0,50,0,none,none
+gn:3897774,Buin,Santiago Metropolitan,63419,town,0,0,50,0,none,none
+gn:3898597,Batuco,Santiago Metropolitan,16784,town,0,0,50,0,none,none
+gn:3898793,Baquedano,Antofagasta,858,village,0,0,50,0,none,none
+gn:3899361,Arica,Arica y Parinacota Region,241653,city,0,0,50,0,none,none
+gn:3899462,Arauco,Biobio,24659,town,0,0,50,0,none,none
+gn:3899525,Antuco,Biobio,3862,village,0,0,50,0,none,none
+gn:3899539,Antofagasta,Antofagasta,401096,city,0,0,50,0,none,none
+gn:3899629,Angol,Araucania,44856,town,0,0,50,0,none,none
+gn:3899680,Andacollo,Coquimbo Region,11093,town,0,0,50,0,none,none
+gn:3899695,Ancud,Los Lagos Region,40819,town,0,0,50,0,none,none
+gn:3899887,Alto Hospicio,Tarapacá,142086,city,0,0,50,0,none,none
+gn:3899924,Alto del Carmen,Atacama,5034,village,0,0,50,0,none,none
+gn:3900138,Algarrobo,Valparaiso,10217,town,0,0,50,0,none,none
+gn:3950062,Loncura,Valparaiso,6174,village,0,0,50,0,none,none
+gn:3950116,Cañete,Biobio,31805,town,0,0,50,0,none,none
+gn:3950166,Puerto Chacabuco,Aysén,1243,village,0,0,50,0,none,none
+gn:3969755,La Junta,Aysén,1200,village,0,0,50,0,none,none
+gn:4030754,Hanga Roa,Valparaiso,7322,village,0,0,50,0,none,none
+gn:6458705,Las Gaviotas,Los Ríos Region,1500,village,0,0,50,0,none,none
+gn:6458708,Las Animas,Los Ríos Region,30000,town,0,0,50,0,none,none
+gn:6693576,San Pedro de la Paz,Biobio,121631,city,0,0,50,0,none,none
+gn:7281017,La Pintana,Santiago Metropolitan,201178,city,0,0,50,0,none,none
+gn:7281020,Lo Prado,Santiago Metropolitan,104316,city,0,0,50,0,none,none
+gn:7874740,Villa Presidente Frei,Santiago Metropolitan,15000,town,0,0,50,0,none,none
+gn:8259949,Vallenar,Atacama,0,village,0,0,50,0,none,none
+gn:11945652,Los Laureles,Araucania,4010,village,0,0,50,0,none,none
+gn:11947989,Villa Mercedes,Biobio,131936,city,0,0,50,0,none,none
+gn:11965860,El Carmen,Biobio,12277,town,0,0,50,0,none,none

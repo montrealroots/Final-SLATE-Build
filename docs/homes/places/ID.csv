@@ -1,0 +1,2022 @@
+place_id,name,region,population,market,verified_homes,dated_listings,shortfall_to_50,recorded_sales,rent_source,price_source
+gn:1213401,Ujung Gading,West Sumatra,0,village,0,0,50,0,none,none
+gn:1213407,Ujungbatu,North Sumatra,0,village,0,0,50,0,none,none
+gn:1213426,Tualangcut,Aceh,0,village,0,0,50,0,none,none
+gn:1213442,Tongging,North Sumatra,16000,town,0,0,50,0,none,none
+gn:1213443,Tomok Bolon,North Sumatra,10000,town,0,0,50,0,none,none
+gn:1213459,Tiku,West Sumatra,0,village,0,0,50,0,none,none
+gn:1213493,Teluk Nibung,North Sumatra,25146,town,0,0,50,0,none,none
+gn:1213495,Teluk Dalam,North Sumatra,25780,town,0,0,50,0,none,none
+gn:1213500,Tebingtinggi,North Sumatra,117530,city,0,0,50,0,none,none
+gn:1213504,Tarutung,North Sumatra,39500,town,0,0,50,0,none,none
+gn:1213530,Tanjungtiram,North Sumatra,25118,town,0,0,50,0,none,none
+gn:1213547,Tanjungbalai,North Sumatra,190935,city,0,0,50,0,none,none
+gn:1213559,Tangse,Aceh,0,village,0,0,50,0,none,none
+gn:1213591,Talu,West Sumatra,0,village,0,0,50,0,none,none
+gn:1213593,Takengon,Aceh,0,village,0,0,50,0,none,none
+gn:1213612,Susoh,Aceh,0,village,0,0,50,0,none,none
+gn:1213614,Sunggal,North Sumatra,157914,city,0,0,50,0,none,none
+gn:1213619,Sei Rampah,North Sumatra,0,village,0,0,50,0,none,none
+gn:1213655,Stabat,North Sumatra,26862,town,0,0,50,0,none,none
+gn:1213664,Sondi,North Sumatra,0,village,0,0,50,0,none,none
+gn:1213696,Sipirok,North Sumatra,0,village,0,0,50,0,none,none
+gn:1213697,Sipiongot,North Sumatra,0,village,0,0,50,0,none,none
+gn:1213702,Sipagimbar,North Sumatra,0,village,0,0,50,0,none,none
+gn:1213713,Singkil,Aceh,46800,town,0,0,50,0,none,none
+gn:1213721,Sinabang,Aceh,15000,town,0,0,50,0,none,none
+gn:1213746,Simpang Empat,West Sumatra,0,village,0,0,50,0,none,none
+gn:1213821,Sigli,Aceh,17504,town,0,0,50,0,none,none
+gn:1213840,Sidikalang,North Sumatra,50671,town,0,0,50,0,none,none
+gn:1213847,Sibuhuan,North Sumatra,0,village,0,0,50,0,none,none
+gn:1213851,Siborong-Borong,North Sumatra,0,village,0,0,50,0,none,none
+gn:1213855,Sibolga,North Sumatra,92244,town,0,0,50,0,none,none
+gn:1213857,Sibigo,Aceh,0,village,0,0,50,0,none,none
+gn:1213889,Siabu,North Sumatra,0,village,0,0,50,0,none,none
+gn:1213906,Seulimeum,Aceh,0,village,0,0,50,0,none,none
+gn:1213918,Serawai,Aceh,0,village,0,0,50,0,none,none
+gn:1213921,Saribudolok,North Sumatra,0,village,0,0,50,0,none,none
+gn:1214007,Salak,North Sumatra,0,village,0,0,50,0,none,none
+gn:1214026,Sabang,Aceh,43527,town,0,0,50,0,none,none
+gn:1214049,Rikitgaib,Aceh,0,village,0,0,50,0,none,none
+gn:1214055,Reuleuet,Aceh,40393,town,0,0,50,0,none,none
+gn:1214073,Rantauprapat,North Sumatra,103009,city,0,0,50,0,none,none
+gn:1214135,Parapat,North Sumatra,10000,town,0,0,50,0,none,none
+gn:1214149,Pintupadang,North Sumatra,0,village,0,0,50,0,none,none
+gn:1214168,Peureulak,Aceh,0,village,0,0,50,0,none,none
+gn:1214189,Percut,North Sumatra,311063,city,0,0,50,0,none,none
+gn:1214191,Perbaungan,North Sumatra,157174,city,0,0,50,0,none,none
+gn:1214198,Penaron,Aceh,0,village,0,0,50,0,none,none
+gn:1214204,Pematangsiantar,North Sumatra,279198,city,0,0,50,0,none,none
+gn:1214205,Pematang Raya,North Sumatra,0,village,0,0,50,0,none,none
+gn:1214256,Paropo,North Sumatra,16065,town,0,0,50,0,none,none
+gn:1214257,Parmonangan,North Sumatra,13021,town,0,0,50,0,none,none
+gn:1214258,Parmonangan,North Sumatra,0,village,0,0,50,0,none,none
+gn:1214259,Parlilitan,North Sumatra,0,village,0,0,50,0,none,none
+gn:1214273,Panyambungan,North Sumatra,0,village,0,0,50,0,none,none
+gn:1214294,Pangururan,North Sumatra,34209,town,0,0,50,0,none,none
+gn:1214302,Pangkalan Brandan,North Sumatra,25542,town,0,0,50,0,none,none
+gn:1214355,Pakkat,North Sumatra,0,village,0,0,50,0,none,none
+gn:1214368,Padangtiji,Aceh,0,village,0,0,50,0,none,none
+gn:1214369,Padangsidempuan,North Sumatra,243843,city,0,0,50,0,none,none
+gn:1214413,Natal,North Sumatra,0,village,0,0,50,0,none,none
+gn:1214428,Nainggolan,North Sumatra,11849,town,0,0,50,0,none,none
+gn:1214447,Muara Soma,North Sumatra,0,village,0,0,50,0,none,none
+gn:1214448,Muara Sipongi,West Sumatra,0,village,0,0,50,0,none,none
+gn:1214449,Sikabaluan,West Sumatra,0,village,0,0,50,0,none,none
+gn:1214451,Muara Siberut,West Sumatra,0,village,0,0,50,0,none,none
+gn:1214457,Muara,North Sumatra,0,village,0,0,50,0,none,none
+gn:1214460,Montasik,Aceh,0,village,0,0,50,0,none,none
+gn:1214466,Mogang,North Sumatra,0,village,0,0,50,0,none,none
+gn:1214478,Meureubo,Aceh,0,village,0,0,50,0,none,none
+gn:1214488,Meulaboh,Aceh,64646,town,0,0,50,0,none,none
+gn:1214520,Medan,North Sumatra,2486283,large-city,0,0,50,0,none,none
+gn:1214617,Lubuk Pakam,North Sumatra,0,village,0,0,50,0,none,none
+gn:1214641,Lintongnihuta,North Sumatra,0,village,0,0,50,0,none,none
+gn:1214646,Limapuluh,North Sumatra,0,village,0,0,50,0,none,none
+gn:1214650,Lhoong,Aceh,0,village,0,0,50,0,none,none
+gn:1214658,Lhokseumawe,Aceh,200876,city,0,0,50,0,none,none
+gn:1214660,Lhoknga,Aceh,0,village,0,0,50,0,none,none
+gn:1214662,Lhokkruet,Aceh,0,village,0,0,50,0,none,none
+gn:1214701,Laweueng,Aceh,0,village,0,0,50,0,none,none
+gn:1214724,Langsa,Aceh,184016,city,0,0,50,0,none,none
+gn:1214730,Langgapayung,North Sumatra,0,village,0,0,50,0,none,none
+gn:1214743,Lampuyang,Aceh,0,village,0,0,50,0,none,none
+gn:1214751,Lamno,Aceh,0,village,0,0,50,0,none,none
+gn:1214776,Lahewa,North Sumatra,24485,town,0,0,50,0,none,none
+gn:1214800,Labuhan Deli,North Sumatra,49668,town,0,0,50,0,none,none
+gn:1214844,Kuala Bhee,Aceh,0,village,0,0,50,0,none,none
+gn:1214852,Kruengraya,Aceh,0,village,0,0,50,0,none,none
+gn:1214854,Krueng Luak,Aceh,0,village,0,0,50,0,none,none
+gn:1214882,Kisaran,North Sumatra,141915,city,0,0,50,0,none,none
+gn:1214965,Kabanjahe,North Sumatra,73581,town,0,0,50,0,none,none
+gn:1215014,Isak,Aceh,0,village,0,0,50,0,none,none
+gn:1215041,Kotanopan,North Sumatra,0,village,0,0,50,0,none,none
+gn:1215101,Gunung Tua,North Sumatra,0,village,0,0,50,0,none,none
+gn:1215102,Gunungsitoli,North Sumatra,136707,city,0,0,50,0,none,none
+gn:1215115,Gosong Telaga,Aceh,0,village,0,0,50,0,none,none
+gn:1215188,Dolok Sanggul,North Sumatra,0,village,0,0,50,0,none,none
+gn:1215199,Deli Tua,North Sumatra,27940,town,0,0,50,0,none,none
+gn:1215252,Celala,Aceh,0,village,0,0,50,0,none,none
+gn:1215262,Calang,Aceh,0,village,0,0,50,0,none,none
+gn:1215326,Blangpidie,Aceh,24085,town,0,0,50,0,none,none
+gn:1215338,Blangkejeren,Aceh,0,village,0,0,50,0,none,none
+gn:1215350,Bireun,Aceh,47670,town,0,0,50,0,none,none
+gn:1215355,Binjai,North Sumatra,279302,city,0,0,50,0,none,none
+gn:1215359,Binanga,North Sumatra,0,village,0,0,50,0,none,none
+gn:1215395,Berastagi,North Sumatra,48244,town,0,0,50,0,none,none
+gn:1215412,Belawan,North Sumatra,102707,city,0,0,50,0,none,none
+gn:1215421,Bayeuen,Aceh,0,village,0,0,50,0,none,none
+gn:1215459,Batangtoru,North Sumatra,0,village,0,0,50,0,none,none
+gn:1215468,Barus,North Sumatra,18346,town,0,0,50,0,none,none
+gn:1215498,Bandar,North Sumatra,31442,town,0,0,50,0,none,none
+gn:1215502,Banda Aceh,Aceh,267962,city,0,0,50,0,none,none
+gn:1215510,Balige,North Sumatra,0,village,0,0,50,0,none,none
+gn:1215516,Bakungan,Aceh,0,village,0,0,50,0,none,none
+gn:1215552,Asan Kumbang,Aceh,0,village,0,0,50,0,none,none
+gn:1215580,Ambarita,North Sumatra,2000,village,0,0,50,0,none,none
+gn:1215602,Air Bangis,West Sumatra,0,village,0,0,50,0,none,none
+gn:1473333,Terangun,Aceh,0,village,0,0,50,0,none,none
+gn:1473336,Kenyaran,Aceh,0,village,0,0,50,0,none,none
+gn:1473528,Pining,Aceh,0,village,0,0,50,0,none,none
+gn:1621160,Yosowilangun,East Java,0,village,0,0,50,0,none,none
+gn:1621177,Yogyakarta,Yogyakarta,375699,city,0,0,50,0,none,none
+gn:1621313,Wuluhan,East Java,0,village,0,0,50,0,none,none
+gn:1621337,Wotu,South Sulawesi,0,village,0,0,50,0,none,none
+gn:1621374,Wori,North Sulawesi,0,village,0,0,50,0,none,none
+gn:1621395,Wonosobo,Central Java,92990,town,0,0,50,0,none,none
+gn:1621399,Wonosari,Yogyakarta,87454,town,0,0,50,0,none,none
+gn:1621415,Wonorejo,South Sulawesi,0,village,0,0,50,0,none,none
+gn:1621416,Wonopringgo,Central Java,38429,town,0,0,50,0,none,none
+gn:1621431,Wonogiri,Central Java,0,village,0,0,50,0,none,none
+gn:1621439,Wongsorejo,East Java,29193,town,0,0,50,0,none,none
+gn:1621456,Wolowaru,East Nusa Tenggara,0,village,0,0,50,0,none,none
+gn:1621500,Wlingi,East Java,0,village,0,0,50,0,none,none
+gn:1621509,Witihama,East Nusa Tenggara,0,village,0,0,50,0,none,none
+gn:1621520,Wiradesa,Central Java,39407,town,0,0,50,0,none,none
+gn:1621613,Weru,West Java,139004,city,0,0,50,0,none,none
+gn:1621619,Werinama,Maluku,0,village,0,0,50,0,none,none
+gn:1621643,Windesi,West Papua,0,village,0,0,50,0,none,none
+gn:1621655,Weleri,Central Java,58448,town,0,0,50,0,none,none
+gn:1621659,Welahan,Central Java,26163,town,0,0,50,0,none,none
+gn:1621678,Wedi,Central Java,55300,town,0,0,50,0,none,none
+gn:1621680,Wedarijaksa,Central Java,0,village,0,0,50,0,none,none
+gn:1621683,Weda,North Maluku,0,village,0,0,50,0,none,none
+gn:1621867,Wates,Yogyakarta,0,village,0,0,50,0,none,none
+gn:1621878,Watansoppeng,South Sulawesi,0,village,0,0,50,0,none,none
+gn:1621884,Watampone,South Sulawesi,149336,city,0,0,50,0,none,none
+gn:1621954,Waru,East Java,0,village,0,0,50,0,none,none
+gn:1622019,Waren,Papua,0,village,0,0,50,0,none,none
+gn:1622023,Wardo,Papua,0,village,0,0,50,0,none,none
+gn:1622064,Wanurian,Southwest Papua,0,village,0,0,50,0,none,none
+gn:1622090,Wangon,Central Java,35530,town,0,0,50,0,none,none
+gn:1622124,Wanci,Southeast Sulawesi,0,village,0,0,50,0,none,none
+gn:1622136,Wanareja,Central Java,0,village,0,0,50,0,none,none
+gn:1622138,Wanaraja,West Java,26240,town,0,0,50,0,none,none
+gn:1622167,Wamena,Highland Papua,66080,town,0,0,50,0,none,none
+gn:1622272,Wajak,East Java,0,village,0,0,50,0,none,none
+gn:1622278,Waiwerang,East Nusa Tenggara,0,village,0,0,50,0,none,none
+gn:1622293,Waisai,Southwest Papua,22541,town,0,0,50,0,none,none
+gn:1622301,Waigete,East Nusa Tenggara,0,village,0,0,50,0,none,none
+gn:1622307,Waipukang,East Nusa Tenggara,0,village,0,0,50,0,none,none
+gn:1622318,Waingapu,East Nusa Tenggara,35932,town,0,0,50,0,none,none
+gn:1622333,Waimangura,East Nusa Tenggara,0,village,0,0,50,0,none,none
+gn:1622351,Waikabubak,East Nusa Tenggara,0,village,0,0,50,0,none,none
+gn:1622357,Waigama,Southwest Papua,0,village,0,0,50,0,none,none
+gn:1622382,Wahai,Maluku,0,village,0,0,50,0,none,none
+gn:1622551,Utan,West Nusa Tenggara,0,village,0,0,50,0,none,none
+gn:1622552,Utan,Jakarta,28745,town,0,0,50,0,none,none
+gn:1622556,Uta,Central Papua,0,village,0,0,50,0,none,none
+gn:1622636,Ungaran,Central Java,171378,city,0,0,50,0,none,none
+gn:1622690,Ketapang,Lampung,0,village,0,0,50,0,none,none
+gn:1622728,Kolaka,Southeast Sulawesi,0,village,0,0,50,0,none,none
+gn:1622738,Ulu,North Sulawesi,0,village,0,0,50,0,none,none
+gn:1622784,Ujungpangkah,East Java,0,village,0,0,50,0,none,none
+gn:1622786,Makassar,South Sulawesi,1474393,large-city,0,0,50,0,none,none
+gn:1622814,Ujoh Bilang,East Kalimantan,0,village,0,0,50,0,none,none
+gn:1622846,Ubud,Bali,74800,town,0,0,50,0,none,none
+gn:1622953,Turen,East Java,0,village,0,0,50,0,none,none
+gn:1622972,Tunjungan,Central Java,0,village,0,0,50,0,none,none
+gn:1623011,Tumpang,East Java,0,village,0,0,50,0,none,none
+gn:1623080,Tulungagung,East Java,65262,town,0,0,50,0,none,none
+gn:1623096,Tulangan Utara,East Java,63889,town,0,0,50,0,none,none
+gn:1623180,Tuban,East Java,76242,town,0,0,50,0,none,none
+gn:1623197,Tual,Maluku,90470,town,0,0,50,0,none,none
+gn:1623223,Trucuk,Central Java,23584,town,0,0,50,0,none,none
+gn:1623251,Trenggalek,East Java,29083,town,0,0,50,0,none,none
+gn:1623260,Terawas,South Sumatra,0,village,0,0,50,0,none,none
+gn:1623385,Tongutisungi,North Maluku,0,village,0,0,50,0,none,none
+gn:1623411,Tangga,West Nusa Tenggara,0,village,0,0,50,0,none,none
+gn:1623424,Tondano,North Sulawesi,33317,town,0,0,50,0,none,none
+gn:1623432,Tomu,West Papua,0,village,0,0,50,0,none,none
+gn:1623446,Tomohon,North Sulawesi,27624,town,0,0,50,0,none,none
+gn:1623472,Tombatu,North Sulawesi,0,village,0,0,50,0,none,none
+gn:1623502,Toli-Toli,Central Sulawesi,242783,city,0,0,50,0,none,none
+gn:1623571,Toho,West Kalimantan,0,village,0,0,50,0,none,none
+gn:1623651,Tobelo,North Maluku,34150,town,0,0,50,0,none,none
+gn:1623734,Tiris,East Java,0,village,0,0,50,0,none,none
+gn:1623772,Tiom,Highland Papua,21324,town,0,0,50,0,none,none
+gn:1623822,Tinabogan,Central Sulawesi,0,village,0,0,50,0,none,none
+gn:1623834,Timika,Central Papua,142909,city,0,0,50,0,none,none
+gn:1623856,Tembuni,West Papua,0,village,0,0,50,0,none,none
+gn:1623890,Tilamuta,Gorontalo,0,village,0,0,50,0,none,none
+gn:1623923,Tigi,Central Papua,0,village,0,0,50,0,none,none
+gn:1623954,Tideng Pale,North Kalimantan,0,village,0,0,50,0,none,none
+gn:1624041,Ternate,North Maluku,210836,city,0,0,50,0,none,none
+gn:1624058,Terbanggi Besar,Lampung,52566,town,0,0,50,0,none,none
+gn:1624085,Tepas,West Nusa Tenggara,0,village,0,0,50,0,none,none
+gn:1624095,Tentena,Central Sulawesi,0,village,0,0,50,0,none,none
+gn:1624134,Tenga,North Sulawesi,0,village,0,0,50,0,none,none
+gn:1624196,Teminabuan,Southwest Papua,19491,town,0,0,50,0,none,none
+gn:1624213,Tembuku,Bali,0,village,0,0,50,0,none,none
+gn:1624219,Tembilahan,Riau,0,village,0,0,50,0,none,none
+gn:1624238,Temanggung,Central Java,0,village,0,0,50,0,none,none
+gn:1624272,Telukpakedai,West Kalimantan,0,village,0,0,50,0,none,none
+gn:1624315,Teluk Dalam,Riau,0,village,0,0,50,0,none,none
+gn:1624415,Tekung,East Java,0,village,0,0,50,0,none,none
+gn:1624428,Tehoru,Maluku,0,village,0,0,50,0,none,none
+gn:1624490,Tegalalang,Bali,0,village,0,0,50,0,none,none
+gn:1624494,Tegal,Central Java,297173,city,0,0,50,0,none,none
+gn:1624511,Tebing Tinggi,South Sumatra,0,village,0,0,50,0,none,none
+gn:1624545,Tayu,Central Java,26413,town,0,0,50,0,none,none
+gn:1624553,Tayan,West Kalimantan,0,village,0,0,50,0,none,none
+gn:1624605,Tanusan,West Papua,0,village,0,0,50,0,none,none
+gn:1624619,Tatelu,North Sulawesi,0,village,0,0,50,0,none,none
+gn:1624647,Tasikmalaya,West Java,770839,large-city,0,0,50,0,none,none
+gn:1624668,Tarub,Central Java,75739,town,0,0,50,0,none,none
+gn:1624679,Tarogong,West Java,0,village,0,0,50,0,none,none
+gn:1624704,Tarempa,Riau Islands,0,village,0,0,50,0,none,none
+gn:1624725,Tarakan,North Kalimantan,255310,city,0,0,50,0,none,none
+gn:1624727,Taraju,West Java,0,village,0,0,50,0,none,none
+gn:1624785,Tapalang,West Sulawesi,0,village,0,0,50,0,none,none
+gn:1624827,Tanjung Selor,North Kalimantan,67837,town,0,0,50,0,none,none
+gn:1624838,Tanjungsakti,South Sumatra,0,village,0,0,50,0,none,none
+gn:1624851,Tanjungraja,South Sumatra,0,village,0,0,50,0,none,none
+gn:1624863,Tanjung Pinang,Riau Islands,227663,city,0,0,50,0,none,none
+gn:1624873,Tanjungpati,West Sumatra,0,village,0,0,50,0,none,none
+gn:1624877,Tanjung Pandan,Bangka–Belitung Islands,103062,city,0,0,50,0,none,none
+gn:1624893,Tanjung Lubuk,South Sumatra,0,village,0,0,50,0,none,none
+gn:1624917,Bandar Lampung,Lampung,1166066,large-city,0,0,50,0,none,none
+gn:1624929,Tanjunggadang,West Sumatra,0,village,0,0,50,0,none,none
+gn:1624930,Tanjunggadang,West Sumatra,0,village,0,0,50,0,none,none
+gn:1624942,Tanjungbumi,East Java,0,village,0,0,50,0,none,none
+gn:1624955,Tanjungbatu,South Kalimantan,0,village,0,0,50,0,none,none
+gn:1624959,Tanjungbatu,Riau Islands,0,village,0,0,50,0,none,none
+gn:1624974,Tanjung Balai,Riau Islands,48953,town,0,0,50,0,none,none
+gn:1624984,Tanjungampalu,West Sumatra,0,village,0,0,50,0,none,none
+gn:1624987,Tanjungagung,South Sumatra,53117,town,0,0,50,0,none,none
+gn:1624997,Tanjung,West Nusa Tenggara,0,village,0,0,50,0,none,none
+gn:1625009,Tanjung,Riau Islands,0,village,0,0,50,0,none,none
+gn:1625014,Tanjung,South Kalimantan,37291,town,0,0,50,0,none,none
+gn:1625027,Taniwel,Maluku,0,village,0,0,50,0,none,none
+gn:1625046,Tongkiling,Central Kalimantan,0,village,0,0,50,0,none,none
+gn:1625067,Tanggulangin,East Java,32866,town,0,0,50,0,none,none
+gn:1625070,Tanggul,East Java,3,village,0,0,50,0,none,none
+gn:1625073,Tanggeung,West Java,0,village,0,0,50,0,none,none
+gn:1625084,Tangerang,Banten,1927815,large-city,0,0,50,0,none,none
+gn:1625134,Tanahwangko,North Sulawesi,0,village,0,0,50,0,none,none
+gn:1625175,Tana Paser,East Kalimantan,0,village,0,0,50,0,none,none
+gn:1625236,Tamiang Layang,Central Kalimantan,0,village,0,0,50,0,none,none
+gn:1625270,Tambu,Central Sulawesi,0,village,0,0,50,0,none,none
+gn:1625282,Tamberu,East Java,0,village,0,0,50,0,none,none
+gn:1625321,Tambaksari,West Java,0,village,0,0,50,0,none,none
+gn:1625338,Tambak,East Java,0,village,0,0,50,0,none,none
+gn:1625375,Tamako,North Sulawesi,0,village,0,0,50,0,none,none
+gn:1625386,Talun,East Java,0,village,0,0,50,0,none,none
+gn:1625395,Teluk Kuantan,Riau,0,village,0,0,50,0,none,none
+gn:1625420,Taliwang,West Nusa Tenggara,55340,town,0,0,50,0,none,none
+gn:1625423,Talise,North Sulawesi,0,village,0,0,50,0,none,none
+gn:1625439,Talawi,West Sumatra,0,village,0,0,50,0,none,none
+gn:1625453,Talang Ubi,South Sumatra,0,village,0,0,50,0,none,none
+gn:1625493,Talangbetutu,South Sumatra,0,village,0,0,50,0,none,none
+gn:1625532,Takokak,West Java,0,village,0,0,50,0,none,none
+gn:1625546,Takalar,South Sulawesi,0,village,0,0,50,0,none,none
+gn:1625559,Tajinan,East Java,0,village,0,0,50,0,none,none
+gn:1625564,Tais,Bengkulu,0,village,0,0,50,0,none,none
+gn:1625585,Tahuna,North Sulawesi,35307,town,0,0,50,0,none,none
+gn:1625609,Tagolu,Central Sulawesi,0,village,0,0,50,0,none,none
+gn:1625659,Taccipi,South Sulawesi,0,village,0,0,50,0,none,none
+gn:1625693,Tabing,West Sumatra,0,village,0,0,50,0,none,none
+gn:1625708,Tabanan,Bali,33667,town,0,0,50,0,none,none
+gn:1625765,Susupu,North Maluku,0,village,0,0,50,0,none,none
+gn:1625776,Lasusua,Southeast Sulawesi,0,village,0,0,50,0,none,none
+gn:1625781,Surulangun Rawas,South Sumatra,0,village,0,0,50,0,none,none
+gn:1625797,Surian,West Sumatra,0,village,0,0,50,0,none,none
+gn:1625812,Surakarta,Central Java,526870,large-city,0,0,50,0,none,none
+gn:1625816,Surade,West Java,0,village,0,0,50,0,none,none
+gn:1625822,Surabaya,East Java,3018022,large-city,0,0,50,0,none,none
+gn:1625823,Surabaya,Lampung,0,village,0,0,50,0,none,none
+gn:1625840,Suban Jeriji,South Sumatra,0,village,0,0,50,0,none,none
+gn:1625854,Sungsang,South Sumatra,0,village,0,0,50,0,none,none
+gn:1625863,Sungguminasa,South Sulawesi,0,village,0,0,50,0,none,none
+gn:1625864,Sungaikakap,West Kalimantan,0,village,0,0,50,0,none,none
+gn:1625899,Sungai Salak,Riau,0,village,0,0,50,0,none,none
+gn:1625902,Sungairotan,South Sumatra,0,village,0,0,50,0,none,none
+gn:1625907,Sungairaya,South Kalimantan,0,village,0,0,50,0,none,none
+gn:1625908,Sungai Raya,West Kalimantan,47735,town,0,0,50,0,none,none
+gn:1625928,Sungai Pinyuh,West Kalimantan,0,village,0,0,50,0,none,none
+gn:1625929,Sungai Penuh,Jambi,102224,city,0,0,50,0,none,none
+gn:1625956,Sungailimau,West Sumatra,0,village,0,0,50,0,none,none
+gn:1625958,Sungailiat,Bangka–Belitung Islands,100750,city,0,0,50,0,none,none
+gn:1625969,Sungaikupang,South Kalimantan,0,village,0,0,50,0,none,none
+gn:1625989,Sungaigerong,South Sumatra,0,village,0,0,50,0,none,none
+gn:1625993,Sungaiduri,West Kalimantan,0,village,0,0,50,0,none,none
+gn:1626029,Sungaibali,South Kalimantan,0,village,0,0,50,0,none,none
+gn:1626059,Semurup,Jambi,0,village,0,0,50,0,none,none
+gn:1626076,Sumpur Kudus,West Sumatra,0,village,0,0,50,0,none,none
+gn:1626099,Sumenep,East Java,84656,town,0,0,50,0,none,none
+gn:1626100,Sumedang Utara,West Java,100000,city,0,0,50,0,none,none
+gn:1626103,Sumedang,West Java,200000,city,0,0,50,0,none,none
+gn:1626134,Sumberpucung,East Java,35285,town,0,0,50,0,none,none
+gn:1626142,Sumbermanjing Wetan,East Java,0,village,0,0,50,0,none,none
+gn:1626154,Sumberjati,East Java,0,village,0,0,50,0,none,none
+gn:1626155,Sumberjambe,East Java,0,village,0,0,50,0,none,none
+gn:1626173,Sumberbaru,East Java,0,village,0,0,50,0,none,none
+gn:1626175,Sumberanyar,East Java,0,village,0,0,50,0,none,none
+gn:1626182,Sumber,Central Java,0,village,0,0,50,0,none,none
+gn:1626183,Sumber,West Java,96725,town,0,0,50,0,none,none
+gn:1626185,Sumbawa Besar,West Nusa Tenggara,62753,town,0,0,50,0,none,none
+gn:1626219,Sulitair,West Sumatra,0,village,0,0,50,0,none,none
+gn:1626235,Sulang Tengah,Central Java,0,village,0,0,50,0,none,none
+gn:1626248,Sukowono,East Java,0,village,0,0,50,0,none,none
+gn:1626272,Sukoharjo,Central Java,0,village,0,0,50,0,none,none
+gn:1626280,Sukawening,West Java,0,village,0,0,50,0,none,none
+gn:1626289,Sukasari,West Java,0,village,0,0,50,0,none,none
+gn:1626294,Sukasada,Bali,7817,village,0,0,50,0,none,none
+gn:1626312,Sokaraja,Central Java,66482,town,0,0,50,0,none,none
+gn:1626313,Sukaraja,West Java,0,village,0,0,50,0,none,none
+gn:1626334,Sukanagara,West Java,0,village,0,0,50,0,none,none
+gn:1626375,Sukadana,Lampung,0,village,0,0,50,0,none,none
+gn:1626376,Sukadana,West Kalimantan,0,village,0,0,50,0,none,none
+gn:1626381,Sukabumi,West Java,365735,city,0,0,50,0,none,none
+gn:1626443,Subang,West Java,0,village,0,0,50,0,none,none
+gn:1626444,Subang,West Java,137234,city,0,0,50,0,none,none
+gn:1626448,Subaim,North Maluku,0,village,0,0,50,0,none,none
+gn:1626478,Stagen,South Kalimantan,0,village,0,0,50,0,none,none
+gn:1626486,Srono,East Java,36260,town,0,0,50,0,none,none
+gn:1626493,Srandakan,Yogyakarta,29529,town,0,0,50,0,none,none
+gn:1626498,Sragen,Central Java,71522,town,0,0,50,0,none,none
+gn:1626542,Sorong,Southwest Papua,219958,city,0,0,50,0,none,none
+gn:1626548,Insrom,Papua,3452,village,0,0,50,0,none,none
+gn:1626551,Sorendiweri,Papua,0,village,0,0,50,0,none,none
+gn:1626560,Soreang,West Java,116780,city,0,0,50,0,none,none
+gn:1626613,Sonder,North Sulawesi,0,village,0,0,50,0,none,none
+gn:1626631,Somba,West Sulawesi,0,village,0,0,50,0,none,none
+gn:1626649,Solok,West Sumatra,73438,town,0,0,50,0,none,none
+gn:1626670,Sokobanah,East Java,0,village,0,0,50,0,none,none
+gn:1626673,Soko,East Java,25494,town,0,0,50,0,none,none
+gn:1626698,Sofifi,North Maluku,27591,town,0,0,50,0,none,none
+gn:1626703,Soe,East Nusa Tenggara,40190,town,0,0,50,0,none,none
+gn:1626711,Sodong Hilir,West Java,0,village,0,0,50,0,none,none
+gn:1626746,Sluke,Central Java,0,village,0,0,50,0,none,none
+gn:1626754,Sleman,Yogyakarta,56215,town,0,0,50,0,none,none
+gn:1626758,Slawi,Central Java,61206,town,0,0,50,0,none,none
+gn:1626782,Siwa,South Sulawesi,0,village,0,0,50,0,none,none
+gn:1626801,Situbondo,East Java,685967,large-city,0,0,50,0,none,none
+gn:1626887,Sintang,West Kalimantan,85000,town,0,0,50,0,none,none
+gn:1626895,Sinjai,South Sulawesi,40797,town,0,0,50,0,none,none
+gn:1626899,Singosari,East Java,182656,city,0,0,50,0,none,none
+gn:1626903,Singojuruh,East Java,29418,town,0,0,50,0,none,none
+gn:1626916,Singkawang,West Kalimantan,253812,city,0,0,50,0,none,none
+gn:1626920,Singkarak,West Sumatra,0,village,0,0,50,0,none,none
+gn:1626921,Sengkang,South Sulawesi,59523,town,0,0,50,0,none,none
+gn:1626932,Singaraja,Bali,133784,city,0,0,50,0,none,none
+gn:1626936,Singaparna,West Java,48882,town,0,0,50,0,none,none
+gn:1626973,Sindangbarang,West Java,0,village,0,0,50,0,none,none
+gn:1626996,Simpur,South Kalimantan,0,village,0,0,50,0,none,none
+gn:1627018,Simpangempat,South Kalimantan,0,village,0,0,50,0,none,none
+gn:1627033,Simpang,South Sumatra,0,village,0,0,50,0,none,none
+gn:1627035,Simpang,Jambi,36652,town,0,0,50,0,none,none
+gn:1627148,Sila,West Nusa Tenggara,0,village,0,0,50,0,none,none
+gn:1627185,Sijunjung,West Sumatra,27786,town,0,0,50,0,none,none
+gn:1627253,Sidoarjo,East Java,139189,city,0,0,50,0,none,none
+gn:1627262,Sidemen,Bali,0,village,0,0,50,0,none,none
+gn:1627267,Sidareja,Central Java,30313,town,0,0,50,0,none,none
+gn:1627342,Siak Sri Indrapura,Riau,0,village,0,0,50,0,none,none
+gn:1627357,Sewon,Yogyakarta,73585,town,0,0,50,0,none,none
+gn:1627401,Seteluk,West Nusa Tenggara,0,village,0,0,50,0,none,none
+gn:1627434,Sesayap,North Kalimantan,0,village,0,0,50,0,none,none
+gn:1627453,Serui,Papua,13568,town,0,0,50,0,none,none
+gn:1627459,Serpong,West Java,80193,town,0,0,50,0,none,none
+gn:1627524,Serasan,Riau Islands,0,village,0,0,50,0,none,none
+gn:1627549,Serang,Banten,735651,large-city,0,0,50,0,none,none
+gn:1627610,Sepatan,West Java,118439,city,0,0,50,0,none,none
+gn:1627672,Senori,East Java,0,village,0,0,50,0,none,none
+gn:1627708,Sengeti,Jambi,0,village,0,0,50,0,none,none
+gn:1627717,Sangatta,East Kalimantan,0,village,0,0,50,0,none,none
+gn:1627732,Senduro,East Java,0,village,0,0,50,0,none,none
+gn:1627778,Semuda,Central Kalimantan,0,village,0,0,50,0,none,none
+gn:1627816,Semongkat,West Nusa Tenggara,0,village,0,0,50,0,none,none
+gn:1627831,Semilat,Central Kalimantan,0,village,0,0,50,0,none,none
+gn:1627858,Semboro Lor,East Java,0,village,0,0,50,0,none,none
+gn:1627896,Semarang,Central Java,1694740,large-city,0,0,50,0,none,none
+gn:1627915,Semamung,West Nusa Tenggara,0,village,0,0,50,0,none,none
+gn:1627953,Selorejo,East Java,0,village,0,0,50,0,none,none
+gn:1627957,Selong,West Nusa Tenggara,92464,town,0,0,50,0,none,none
+gn:1627969,Selogiri,Central Java,30180,town,0,0,50,0,none,none
+gn:1628019,Selat Panjang,Riau,0,village,0,0,50,0,none,none
+gn:1628068,Selajambe,West Java,0,village,0,0,50,0,none,none
+gn:1628094,Sekupang,Riau Islands,0,village,0,0,50,0,none,none
+gn:1628105,Sekongkang Bawah,West Nusa Tenggara,0,village,0,0,50,0,none,none
+gn:1628131,Sekayu,South Sumatra,0,village,0,0,50,0,none,none
+gn:1628144,Sekernan,Jambi,0,village,0,0,50,0,none,none
+gn:1628162,Sekampung,Lampung,0,village,0,0,50,0,none,none
+gn:1628174,Sekadau,West Kalimantan,0,village,0,0,50,0,none,none
+gn:1628212,Seget,Southwest Papua,0,village,0,0,50,0,none,none
+gn:1628252,Sedinginan,Riau,0,village,0,0,50,0,none,none
+gn:1628264,Sidayu,East Java,0,village,0,0,50,0,none,none
+gn:1628278,Sedanau,Riau Islands,0,village,0,0,50,0,none,none
+gn:1628279,Sedan,Central Java,0,village,0,0,50,0,none,none
+gn:1628302,Sebulu,East Kalimantan,0,village,0,0,50,0,none,none
+gn:1628310,Sebuku,North Kalimantan,0,village,0,0,50,0,none,none
+gn:1628453,Sawangan,West Java,197170,city,0,0,50,0,none,none
+gn:1628458,Sawang,Riau Islands,0,village,0,0,50,0,none,none
+gn:1628501,Saumlaki,Maluku,12916,town,0,0,50,0,none,none
+gn:1628508,Saukorem,Southwest Papua,0,village,0,0,50,0,none,none
+gn:1628520,Satui,South Kalimantan,0,village,0,0,50,0,none,none
+gn:1628568,Saruaso,West Sumatra,0,village,0,0,50,0,none,none
+gn:1628576,Saronggi,East Java,0,village,0,0,50,0,none,none
+gn:1628581,Sarolangun,Jambi,0,village,0,0,50,0,none,none
+gn:1628587,Sarmi,Papua,14093,town,0,0,50,0,none,none
+gn:1628596,Sarilamak,West Sumatra,0,village,0,0,50,0,none,none
+gn:1628609,Sarebe,West Papua,0,village,0,0,50,0,none,none
+gn:1628652,Sepulu,East Java,0,village,0,0,50,0,none,none
+gn:1628670,Sapeken,East Java,0,village,0,0,50,0,none,none
+gn:1628673,Sape,West Nusa Tenggara,5000,village,0,0,50,0,none,none
+gn:1628678,Sapat,Riau,0,village,0,0,50,0,none,none
+gn:1628682,Saparua,Maluku,0,village,0,0,50,0,none,none
+gn:1628696,Saonek,Southwest Papua,0,village,0,0,50,0,none,none
+gn:1628725,Sausapor,Southwest Papua,0,village,0,0,50,0,none,none
+gn:1628757,Benua Baru,East Kalimantan,0,village,0,0,50,0,none,none
+gn:1628767,Sangkapura,East Java,50612,town,0,0,50,0,none,none
+gn:1628802,Sanggau,West Kalimantan,0,village,0,0,50,0,none,none
+gn:1628813,Kore,West Nusa Tenggara,0,village,0,0,50,0,none,none
+gn:1628827,Sangasangadalam,East Kalimantan,0,village,0,0,50,0,none,none
+gn:1628858,Sanana,North Maluku,29716,town,0,0,50,0,none,none
+gn:1628884,Sampit,Central Kalimantan,166773,city,0,0,50,0,none,none
+gn:1628897,Sampang,Central Java,0,village,0,0,50,0,none,none
+gn:1628899,Sampang,East Java,53269,town,0,0,50,0,none,none
+gn:1628903,Sampalan,Bali,0,village,0,0,50,0,none,none
+gn:1628942,Samboja,East Kalimantan,0,village,0,0,50,0,none,none
+gn:1628965,Sumberbaba,Papua,0,village,0,0,50,0,none,none
+gn:1628979,Sambas,West Kalimantan,0,village,0,0,50,0,none,none
+gn:1629001,Samarinda,East Kalimantan,865306,large-city,0,0,50,0,none,none
+gn:1629012,Tanjungsamalantakan,South Kalimantan,0,village,0,0,50,0,none,none
+gn:1629056,Salopa,West Java,0,village,0,0,50,0,none,none
+gn:1629088,Salinbatu,North Kalimantan,0,village,0,0,50,0,none,none
+gn:1629104,Salem,Central Java,0,village,0,0,50,0,none,none
+gn:1629122,Sale,Central Java,0,village,0,0,50,0,none,none
+gn:1629123,Salawu,West Java,0,village,0,0,50,0,none,none
+gn:1629131,Salatiga,Central Java,198971,city,0,0,50,0,none,none
+gn:1629159,Salakan,Central Sulawesi,0,village,0,0,50,0,none,none
+gn:1629171,Kaleroang,Central Sulawesi,0,village,0,0,50,0,none,none
+gn:1629176,Sakra,West Nusa Tenggara,0,village,0,0,50,0,none,none
+gn:1629186,Saketi,Banten,0,village,0,0,50,0,none,none
+gn:1629261,Sagaranten,West Java,0,village,0,0,50,0,none,none
+gn:1629303,Sadananya,West Java,0,village,0,0,50,0,none,none
+gn:1629350,Sabang Barat,Riau Islands,0,village,0,0,50,0,none,none
+gn:1629380,Ruteng,East Nusa Tenggara,41533,town,0,0,50,0,none,none
+gn:1629435,Rumbia,Southeast Sulawesi,0,village,0,0,50,0,none,none
+gn:1629485,Rubaru,East Java,0,village,0,0,50,0,none,none
+gn:1629561,Rokan,Riau,0,village,0,0,50,0,none,none
+gn:1629581,Robatal,East Java,0,village,0,0,50,0,none,none
+gn:1629590,Riung,East Nusa Tenggara,0,village,0,0,50,0,none,none
+gn:1629708,Rengat,Riau,0,village,0,0,50,0,none,none
+gn:1629710,Rengasdengklok,West Java,201463,city,0,0,50,0,none,none
+gn:1629749,Rembangan,Central Java,44030,town,0,0,50,0,none,none
+gn:1629846,Rawalo,Central Java,0,village,0,0,50,0,none,none
+gn:1629923,Ratahan,North Sulawesi,0,village,0,0,50,0,none,none
+gn:1629930,Rasiei,West Papua,0,village,0,0,50,0,none,none
+gn:1629965,Rappang,South Sulawesi,0,village,0,0,50,0,none,none
+gn:1629974,Rantepao,South Sulawesi,40438,town,0,0,50,0,none,none
+gn:1629988,Rantaupulut,Central Kalimantan,0,village,0,0,50,0,none,none
+gn:1629992,Rantau Panjang,Jambi,0,village,0,0,50,0,none,none
+gn:1629994,Rantau Panjang,Jambi,0,village,0,0,50,0,none,none
+gn:1630033,Rantau,South Kalimantan,0,village,0,0,50,0,none,none
+gn:1630034,Ransiki,West Papua,16245,town,0,0,50,0,none,none
+gn:1630058,Rangkasbitung,Banten,137041,city,0,0,50,0,none,none
+gn:1630088,Randudongkal,Central Java,28532,town,0,0,50,0,none,none
+gn:1630090,Randuagung,East Java,0,village,0,0,50,0,none,none
+gn:1630128,Rancah,West Java,0,village,0,0,50,0,none,none
+gn:1630146,Ranai,Riau Islands,0,village,0,0,50,0,none,none
+gn:1630166,Rambipuji,East Java,0,village,0,0,50,0,none,none
+gn:1630200,Rajapolah,West Java,39840,town,0,0,50,0,none,none
+gn:1630206,Rajadesa,West Java,0,village,0,0,50,0,none,none
+gn:1630227,Rainis,North Sulawesi,0,village,0,0,50,0,none,none
+gn:1630238,Raha,Southeast Sulawesi,69980,town,0,0,50,0,none,none
+gn:1630247,Raduria,West Papua,0,village,0,0,50,0,none,none
+gn:1630262,Raba,West Nusa Tenggara,0,village,0,0,50,0,none,none
+gn:1630281,Putussibau,West Kalimantan,0,village,0,0,50,0,none,none
+gn:1630326,Purworejo,Central Java,0,village,0,0,50,0,none,none
+gn:1630328,Purwokerto,Central Java,230235,city,0,0,50,0,none,none
+gn:1630329,Purwoharjo,East Java,0,village,0,0,50,0,none,none
+gn:1630333,Purwodadi,Central Java,139387,city,0,0,50,0,none,none
+gn:1630341,Purwakarta,West Java,179233,city,0,0,50,0,none,none
+gn:1630349,Puruk Cahu,Central Kalimantan,0,village,0,0,50,0,none,none
+gn:1630366,Purbalingga,Central Java,56903,town,0,0,50,0,none,none
+gn:1630416,Pundong,Yogyakarta,24081,town,0,0,50,0,none,none
+gn:1630494,Pule,East Java,0,village,0,0,50,0,none,none
+gn:1630505,Pulaupinang,South Sumatra,0,village,0,0,50,0,none,none
+gn:1630524,Pulau Kijang,Riau,0,village,0,0,50,0,none,none
+gn:1630542,Pulauberingin,South Sumatra,0,village,0,0,50,0,none,none
+gn:1630555,Pulang Pisau,Central Kalimantan,0,village,0,0,50,0,none,none
+gn:1630579,Puger,East Java,0,village,0,0,50,0,none,none
+gn:1630634,Probolinggo,East Java,243746,city,0,0,50,0,none,none
+gn:1630639,Pringsewu,Lampung,0,village,0,0,50,0,none,none
+gn:1630649,Prigen,East Java,24164,town,0,0,50,0,none,none
+gn:1630662,Praya,West Nusa Tenggara,35183,town,0,0,50,0,none,none
+gn:1630681,Candi Prambanan,Central Java,44925,town,0,0,50,0,none,none
+gn:1630714,Pota,East Nusa Tenggara,0,village,0,0,50,0,none,none
+gn:1630723,Poso,Central Sulawesi,47477,town,0,0,50,0,none,none
+gn:1630789,Pontianak,West Kalimantan,686019,large-city,0,0,50,0,none,none
+gn:1630798,Ponorogo,East Java,79026,town,0,0,50,0,none,none
+gn:1630935,Polewali,West Sulawesi,65800,town,0,0,50,0,none,none
+gn:1630954,Poigar,North Sulawesi,0,village,0,0,50,0,none,none
+gn:1630997,Plumbon,West Java,167105,city,0,0,50,0,none,none
+gn:1631030,Plampang,West Nusa Tenggara,0,village,0,0,50,0,none,none
+gn:1631075,Piru,Maluku,0,village,0,0,50,0,none,none
+gn:1631103,Pinrang,South Sulawesi,0,village,0,0,50,0,none,none
+gn:1631122,Pineleng,North Sulawesi,0,village,0,0,50,0,none,none
+gn:1631152,Pimpi,North Sulawesi,0,village,0,0,50,0,none,none
+gn:1631262,Patimuan,Central Java,0,village,0,0,50,0,none,none
+gn:1631291,Petakbehandang,Central Kalimantan,0,village,0,0,50,0,none,none
+gn:1631385,Peranap,Riau,0,village,0,0,50,0,none,none
+gn:1631393,Prabumulih,South Sumatra,103470,city,0,0,50,0,none,none
+gn:1631455,Peninjawan,South Sumatra,0,village,0,0,50,0,none,none
+gn:1631512,Pangaron,South Kalimantan,0,village,0,0,50,0,none,none
+gn:1631524,Pengandonan,South Sumatra,0,village,0,0,50,0,none,none
+gn:1631552,Pendolo,Central Sulawesi,0,village,0,0,50,0,none,none
+gn:1631614,Pembuanghulu,Central Kalimantan,0,village,0,0,50,0,none,none
+gn:1631637,Pemangkat,West Kalimantan,54259,town,0,0,50,0,none,none
+gn:1631648,Pemalang,Central Java,184149,city,0,0,50,0,none,none
+gn:1631695,Pelau,Maluku,0,village,0,0,50,0,none,none
+gn:1631727,Pelaihari,South Kalimantan,0,village,0,0,50,0,none,none
+gn:1631733,Pelabuhanratu,West Java,109523,city,0,0,50,0,none,none
+gn:1631734,Pelabuhan Dagang,Jambi,0,village,0,0,50,0,none,none
+gn:1631761,Pekanbaru,Riau,1167599,large-city,0,0,50,0,none,none
+gn:1631766,Pekalongan,Central Java,324564,city,0,0,50,0,none,none
+gn:1631834,Pedamaran,South Sumatra,0,village,0,0,50,0,none,none
+gn:1631851,Pecangaan,Central Java,61046,town,0,0,50,0,none,none
+gn:1631875,Payunga,Gorontalo,0,village,0,0,50,0,none,none
+gn:1631905,Payakumbuh,West Sumatra,139576,city,0,0,50,0,none,none
+gn:1631921,Pemenang,West Nusa Tenggara,1000,village,0,0,50,0,none,none
+gn:1631934,Pauh,Jambi,0,village,0,0,50,0,none,none
+gn:1631962,Pototano,West Nusa Tenggara,5000,village,0,0,50,0,none,none
+gn:1631992,Pati,Central Java,107028,city,0,0,50,0,none,none
+gn:1632033,Pasuruan,East Java,213469,city,0,0,50,0,none,none
+gn:1632044,Pasongsongan,East Java,0,village,0,0,50,0,none,none
+gn:1632046,Passo,Maluku,0,village,0,0,50,0,none,none
+gn:1632081,Pasir Pengaraian,Riau,0,village,0,0,50,0,none,none
+gn:1632128,Pasirian,East Java,0,village,0,0,50,0,none,none
+gn:1632185,Pasean,East Java,0,village,0,0,50,0,none,none
+gn:1632189,Passi,North Sulawesi,0,village,0,0,50,0,none,none
+gn:1632197,Paseh,West Java,126181,city,0,0,50,0,none,none
+gn:1632206,Pasar Wajo,Southeast Sulawesi,0,village,0,0,50,0,none,none
+gn:1632226,Pasarkuok,West Sumatra,0,village,0,0,50,0,none,none
+gn:1632228,Pasarkemis,West Java,263289,city,0,0,50,0,none,none
+gn:1632237,Pasarbaru,West Sumatra,0,village,0,0,50,0,none,none
+gn:1632276,Parung,West Java,128905,city,0,0,50,0,none,none
+gn:1632306,Parit Malintang,West Sumatra,0,village,0,0,50,0,none,none
+gn:1632316,Paringin,South Kalimantan,0,village,0,0,50,0,none,none
+gn:1632325,Parigi,West Java,0,village,0,0,50,0,none,none
+gn:1632331,Parigi,Central Sulawesi,0,village,0,0,50,0,none,none
+gn:1632334,Pariaman,West Sumatra,92183,town,0,0,50,0,none,none
+gn:1632353,Parepare,South Sulawesi,160309,city,0,0,50,0,none,none
+gn:1632358,Pare,East Java,106007,city,0,0,50,0,none,none
+gn:1632532,Panti,West Sumatra,0,village,0,0,50,0,none,none
+gn:1632543,Pantaihambawang,South Kalimantan,0,village,0,0,50,0,none,none
+gn:1632549,Pantai,South Kalimantan,0,village,0,0,50,0,none,none
+gn:1632566,Panji,East Java,42789,town,0,0,50,0,none,none
+gn:1632598,Panjang,Lampung,0,village,0,0,50,0,none,none
+gn:1632604,Panjalu,West Java,0,village,0,0,50,0,none,none
+gn:1632654,Pangkalpinang,Bangka–Belitung Islands,226297,city,0,0,50,0,none,none
+gn:1632684,Pangkalan Kasai,Riau,0,village,0,0,50,0,none,none
+gn:1632694,Pangkalanbuun,Central Kalimantan,108814,city,0,0,50,0,none,none
+gn:1632695,Pangkalan Bunut,Riau,0,village,0,0,50,0,none,none
+gn:1632701,Pangkalan Balai,South Sumatra,0,village,0,0,50,0,none,none
+gn:1632724,Pangkajene,South Sulawesi,0,village,0,0,50,0,none,none
+gn:1632733,Pagimana,Central Sulawesi,0,village,0,0,50,0,none,none
+gn:1632740,Panggungrejo,East Java,0,village,0,0,50,0,none,none
+gn:1632748,Panggul,East Java,0,village,0,0,50,0,none,none
+gn:1632823,Pandeglang,Banten,92316,town,0,0,50,0,none,none
+gn:1632859,Pandaan,East Java,34184,town,0,0,50,0,none,none
+gn:1632861,Pandak,Yogyakarta,56043,town,0,0,50,0,none,none
+gn:1632866,Pancur,Central Java,0,village,0,0,50,0,none,none
+gn:1632892,Panawangan,West Java,0,village,0,0,50,0,none,none
+gn:1632903,Panarukan,East Java,30749,town,0,0,50,0,none,none
+gn:1632906,Panaragan,Lampung,0,village,0,0,50,0,none,none
+gn:1632912,Penajam,East Kalimantan,0,village,0,0,50,0,none,none
+gn:1632937,Pamulang,West Java,174557,city,0,0,50,0,none,none
+gn:1632948,Pompanua,South Sulawesi,0,village,0,0,50,0,none,none
+gn:1632957,Pamotan,Central Java,0,village,0,0,50,0,none,none
+gn:1632972,Pameungpeuk,West Java,0,village,0,0,50,0,none,none
+gn:1632974,Pameungpeuk,West Java,48294,town,0,0,50,0,none,none
+gn:1632978,Pamekasan,East Java,92447,town,0,0,50,0,none,none
+gn:1632991,Pamarican,West Java,0,village,0,0,50,0,none,none
+gn:1632998,Pamanukan,West Java,114290,city,0,0,50,0,none,none
+gn:1633034,Palu,Central Sulawesi,389959,city,0,0,50,0,none,none
+gn:1633037,Palopo,South Sulawesi,184961,city,0,0,50,0,none,none
+gn:1633056,Palimanan,West Java,92600,town,0,0,50,0,none,none
+gn:1633068,Palembaian,West Sumatra,0,village,0,0,50,0,none,none
+gn:1633070,Palembang,South Sumatra,1801367,large-city,0,0,50,0,none,none
+gn:1633094,Palattae,South Sulawesi,0,village,0,0,50,0,none,none
+gn:1633118,Palangkaraya,Central Kalimantan,318247,city,0,0,50,0,none,none
+gn:1633133,Palakka,South Sulawesi,0,village,0,0,50,0,none,none
+gn:1633147,Pakuniran,East Java,0,village,0,0,50,0,none,none
+gn:1633158,Pakuan Agung,Lampung,0,village,0,0,50,0,none,none
+gn:1633171,Kuaro,East Kalimantan,0,village,0,0,50,0,none,none
+gn:1633172,Pakong,East Java,0,village,0,0,50,0,none,none
+gn:1633182,Pakisaji,East Java,30213,town,0,0,50,0,none,none
+gn:1633196,Pakenjeng,West Java,0,village,0,0,50,0,none,none
+gn:1633203,Pakel,East Java,0,village,0,0,50,0,none,none
+gn:1633239,Painan,West Sumatra,0,village,0,0,50,0,none,none
+gn:1633286,Pagerageung,West Java,0,village,0,0,50,0,none,none
+gn:1633297,Pagelaran,Banten,0,village,0,0,50,0,none,none
+gn:1633302,Pagatan,South Kalimantan,0,village,0,0,50,0,none,none
+gn:1633303,Pagatan,Central Kalimantan,0,village,0,0,50,0,none,none
+gn:1633304,Pagat,South Kalimantan,0,village,0,0,50,0,none,none
+gn:1633308,Pagar Alam,South Sumatra,70386,town,0,0,50,0,none,none
+gn:1633317,Pagak,East Java,0,village,0,0,50,0,none,none
+gn:1633328,Paga,East Nusa Tenggara,0,village,0,0,50,0,none,none
+gn:1633348,Pademawu,East Java,0,village,0,0,50,0,none,none
+gn:1633364,Padarincang,Banten,0,village,0,0,50,0,none,none
+gn:1633366,Padangulaktanding,Bengkulu,0,village,0,0,50,0,none,none
+gn:1633370,Padangtikar,West Kalimantan,0,village,0,0,50,0,none,none
+gn:1633375,Padangpanjang,West Sumatra,58627,town,0,0,50,0,none,none
+gn:1633387,Padangguci,Bengkulu,0,village,0,0,50,0,none,none
+gn:1633390,Padangcermin,Lampung,0,village,0,0,50,0,none,none
+gn:1633394,Padangbatung,South Kalimantan,0,village,0,0,50,0,none,none
+gn:1633419,Padang,West Sumatra,942938,large-city,0,0,50,0,none,none
+gn:1633427,Padaherang,West Java,0,village,0,0,50,0,none,none
+gn:1633439,Pacitan,East Java,0,village,0,0,50,0,none,none
+gn:1633442,Paciran,East Java,27072,town,0,0,50,0,none,none
+gn:1633468,Pabuaran,Banten,0,village,0,0,50,0,none,none
+gn:1633551,Oransbari,West Papua,0,village,0,0,50,0,none,none
+gn:1633587,Ondong Siau,North Sulawesi,0,village,0,0,50,0,none,none
+gn:1633630,Okaba,South Papua,1270,village,0,0,50,0,none,none
+gn:1633697,Obano,Central Papua,0,village,0,0,50,0,none,none
+gn:1633757,Nyalindung,West Java,0,village,0,0,50,0,none,none
+gn:1633811,Nunukan,North Kalimantan,67006,town,0,0,50,0,none,none
+gn:1633903,Noemuti,East Nusa Tenggara,0,village,0,0,50,0,none,none
+gn:1633936,Nipah Panjang,Jambi,0,village,0,0,50,0,none,none
+gn:1633956,Nikiniki,East Nusa Tenggara,0,village,0,0,50,0,none,none
+gn:1633986,Ngunut,East Java,26297,town,0,0,50,0,none,none
+gn:1634001,Ngrayun,East Java,0,village,0,0,50,0,none,none
+gn:1634010,Ngoro,East Java,22871,town,0,0,50,0,none,none
+gn:1634098,Ngawi,East Java,22412,town,0,0,50,0,none,none
+gn:1634100,Ngawen,Central Java,0,village,0,0,50,0,none,none
+gn:1634126,Ngantru,East Java,0,village,0,0,50,0,none,none
+gn:1634131,Nganjuk,East Java,69011,town,0,0,50,0,none,none
+gn:1634201,Ngabang,West Kalimantan,0,village,0,0,50,0,none,none
+gn:1634261,Negararatu,Lampung,0,village,0,0,50,0,none,none
+gn:1634266,Negara,Bali,100074,city,0,0,50,0,none,none
+gn:1634318,Natar,Lampung,0,village,0,0,50,0,none,none
+gn:1634336,Narmada,West Nusa Tenggara,0,village,0,0,50,0,none,none
+gn:1634338,Naringgul,West Java,0,village,0,0,50,0,none,none
+gn:1634432,Nangaroro,East Nusa Tenggara,0,village,0,0,50,0,none,none
+gn:1634436,Nangah Pinoh,West Kalimantan,0,village,0,0,50,0,none,none
+gn:1634490,Nanga Bulik,Central Kalimantan,0,village,0,0,50,0,none,none
+gn:1634511,Namrole,Maluku,21513,town,0,0,50,0,none,none
+gn:1634519,Namlea,Maluku,37869,town,0,0,50,0,none,none
+gn:1634614,Nabire,Central Papua,99848,town,0,0,50,0,none,none
+gn:1634667,Muraloka,West Nusa Tenggara,0,village,0,0,50,0,none,none
+gn:1634678,Muntok,Bangka–Belitung Islands,26709,town,0,0,50,0,none,none
+gn:1634680,Muntilan,Central Java,81555,town,0,0,50,0,none,none
+gn:1634688,Munjungan,East Java,0,village,0,0,50,0,none,none
+gn:1634710,Munduk,Bali,6200,village,0,0,50,0,none,none
+gn:1634718,Muncar,East Java,64537,town,0,0,50,0,none,none
+gn:1634720,Muncang,Banten,0,village,0,0,50,0,none,none
+gn:1634739,Mulia,Central Papua,35884,town,0,0,50,0,none,none
+gn:1634750,Mukomuko,Bengkulu,0,village,0,0,50,0,none,none
+gn:1634754,Mujur,West Nusa Tenggara,0,village,0,0,50,0,none,none
+gn:1634781,Muarauya,South Kalimantan,0,village,0,0,50,0,none,none
+gn:1634788,Muara Teweh,Central Kalimantan,46652,town,0,0,50,0,none,none
+gn:1634790,Muara Tembesi,Jambi,0,village,0,0,50,0,none,none
+gn:1634792,Muara Tebo,Jambi,0,village,0,0,50,0,none,none
+gn:1634804,Muara Siau,Jambi,0,village,0,0,50,0,none,none
+gn:1634814,Muara Sabak,Jambi,0,village,0,0,50,0,none,none
+gn:1634816,Muararupit,South Sumatra,0,village,0,0,50,0,none,none
+gn:1634820,Muarapinang,South Sumatra,0,village,0,0,50,0,none,none
+gn:1634850,Muara Limun,Jambi,0,village,0,0,50,0,none,none
+gn:1634851,Muara Lembu,Riau,0,village,0,0,50,0,none,none
+gn:1634856,Muaralakitan,South Sumatra,0,village,0,0,50,0,none,none
+gn:1634857,Muaralabuh,West Sumatra,0,village,0,0,50,0,none,none
+gn:1634862,Muarakuang,South Sumatra,0,village,0,0,50,0,none,none
+gn:1634863,Muarakomam,East Kalimantan,0,village,0,0,50,0,none,none
+gn:1634879,Muarajawa,,13182,town,0,0,50,0,none,none
+gn:1634891,Muara Enim,South Sumatra,0,village,0,0,50,0,none,none
+gn:1634896,Muara Dua,South Sumatra,0,village,0,0,50,0,none,none
+gn:1634904,Muara Bungo,Jambi,21243,town,0,0,50,0,none,none
+gn:1634907,Muara Bulian,Jambi,0,village,0,0,50,0,none,none
+gn:1634915,Muara Beliti,South Sumatra,0,village,0,0,50,0,none,none
+gn:1634919,Muarabadak,East Kalimantan,0,village,0,0,50,0,none,none
+gn:1634939,Muaro,West Sumatra,0,village,0,0,50,0,none,none
+gn:1634954,Mranggen,Central Java,28026,town,0,0,50,0,none,none
+gn:1634995,Moro,Riau Islands,0,village,0,0,50,0,none,none
+gn:1635025,Munse,Southeast Sulawesi,0,village,0,0,50,0,none,none
+gn:1635076,Molobulahe,Gorontalo,0,village,0,0,50,0,none,none
+gn:1635087,Molibagu,North Sulawesi,0,village,0,0,50,0,none,none
+gn:1635106,Mojosari,East Java,0,village,0,0,50,0,none,none
+gn:1635111,Mojokerto,East Java,141785,city,0,0,50,0,none,none
+gn:1635116,Mojoagung,East Java,23534,town,0,0,50,0,none,none
+gn:1635164,Mlonggo,Central Java,33542,town,0,0,50,0,none,none
+gn:1635283,Metro,Lampung,182293,city,0,0,50,0,none,none
+gn:1635342,Mertoyudan,Central Java,69871,town,0,0,50,0,none,none
+gn:1635345,Mersam,Jambi,0,village,0,0,50,0,none,none
+gn:1635420,Merakurak,East Java,0,village,0,0,50,0,none,none
+gn:1635494,Mensalong,North Kalimantan,0,village,0,0,50,0,none,none
+gn:1635510,Menjalin,West Kalimantan,0,village,0,0,50,0,none,none
+gn:1635527,Mengkalip,Central Kalimantan,0,village,0,0,50,0,none,none
+gn:1635542,Menggala,Lampung,0,village,0,0,50,0,none,none
+gn:1635552,Menes,Banten,0,village,0,0,50,0,none,none
+gn:1635612,Mempawah,West Kalimantan,0,village,0,0,50,0,none,none
+gn:1635650,Meliau,West Kalimantan,0,village,0,0,50,0,none,none
+gn:1635660,Melati,Yogyakarta,67090,town,0,0,50,0,none,none
+gn:1635707,Mega,Southwest Papua,0,village,0,0,50,0,none,none
+gn:1635754,Borong,East Nusa Tenggara,0,village,0,0,50,0,none,none
+gn:1635777,Mayang,East Java,0,village,0,0,50,0,none,none
+gn:1635810,Mauponggo,East Nusa Tenggara,0,village,0,0,50,0,none,none
+gn:1635815,Maumere,East Nusa Tenggara,87720,town,0,0,50,0,none,none
+gn:1635830,Matur,West Sumatra,0,village,0,0,50,0,none,none
+gn:1635882,Mataram,West Nusa Tenggara,441147,city,0,0,50,0,none,none
+gn:1635936,Masmambang,Bengkulu,0,village,0,0,50,0,none,none
+gn:1635968,Masbagik,West Nusa Tenggara,0,village,0,0,50,0,none,none
+gn:1635973,Masat,Bengkulu,0,village,0,0,50,0,none,none
+gn:1635984,Masamba,South Sulawesi,38024,town,0,0,50,0,none,none
+gn:1636021,Martapura,South Sumatra,0,village,0,0,50,0,none,none
+gn:1636022,Martapura,South Kalimantan,131449,city,0,0,50,0,none,none
+gn:1636029,Maros,South Sulawesi,30000,town,0,0,50,0,none,none
+gn:1636045,Buakayu,South Sulawesi,0,village,0,0,50,0,none,none
+gn:1636066,Marisa,Gorontalo,0,village,0,0,50,0,none,none
+gn:1636106,Maria,West Nusa Tenggara,0,village,0,0,50,0,none,none
+gn:1636121,Margasari,Central Java,27814,town,0,0,50,0,none,none
+gn:1636125,Margahayukencana,West Java,83119,town,0,0,50,0,none,none
+gn:1636192,Marabahan,South Kalimantan,0,village,0,0,50,0,none,none
+gn:1636304,Manonjaya,West Java,0,village,0,0,50,0,none,none
+gn:1636308,Manokwari,West Papua,132300,city,0,0,50,0,none,none
+gn:1636315,Manna,Bengkulu,0,village,0,0,50,0,none,none
+gn:1636322,Manismata,West Kalimantan,18888,town,0,0,50,0,none,none
+gn:1636333,Maninjau,West Sumatra,0,village,0,0,50,0,none,none
+gn:1636367,Mangkutana,South Sulawesi,0,village,0,0,50,0,none,none
+gn:1636426,Manggar,Bangka–Belitung Islands,39135,town,0,0,50,0,none,none
+gn:1636438,Mangaran,North Sulawesi,0,village,0,0,50,0,none,none
+gn:1636439,Mangaran,East Java,0,village,0,0,50,0,none,none
+gn:1636444,Manganitu,North Sulawesi,0,village,0,0,50,0,none,none
+gn:1636462,Mandor,West Kalimantan,0,village,0,0,50,0,none,none
+gn:1636473,Manding,East Java,0,village,0,0,50,0,none,none
+gn:1636498,Mandalawangi,Banten,0,village,0,0,50,0,none,none
+gn:1636507,Mendaha,Jambi,56268,town,0,0,50,0,none,none
+gn:1636513,Khairiahmandah,Riau,0,village,0,0,50,0,none,none
+gn:1636536,Manalu,North Sulawesi,0,village,0,0,50,0,none,none
+gn:1636544,Manado,North Sulawesi,458582,city,0,0,50,0,none,none
+gn:1636556,Mamuju,West Sulawesi,15000,town,0,0,50,0,none,none
+gn:1636595,Mambi,West Sulawesi,0,village,0,0,50,0,none,none
+gn:1636607,Mamasa,West Sulawesi,0,village,0,0,50,0,none,none
+gn:1636657,Malinau,North Kalimantan,25596,town,0,0,50,0,none,none
+gn:1636663,Malili,South Sulawesi,0,village,0,0,50,0,none,none
+gn:1636709,Malangbong,West Java,0,village,0,0,50,0,none,none
+gn:1636722,Malang,East Java,889359,large-city,0,0,50,0,none,none
+gn:1636775,Makbon,Southwest Papua,0,village,0,0,50,0,none,none
+gn:1636798,Makale,South Sulawesi,0,village,0,0,50,0,none,none
+gn:1636806,Majene,West Sulawesi,73883,town,0,0,50,0,none,none
+gn:1636808,Majenang,Central Java,38897,town,0,0,50,0,none,none
+gn:1636816,Majalengka,West Java,73052,town,0,0,50,0,none,none
+gn:1636878,Magetan,East Java,0,village,0,0,50,0,none,none
+gn:1636884,Magelang,Central Java,128709,city,0,0,50,0,none,none
+gn:1636904,Mafa,North Maluku,0,village,0,0,50,0,none,none
+gn:1636906,Maesan,East Java,0,village,0,0,50,0,none,none
+gn:1636930,Madiun,East Java,202544,city,0,0,50,0,none,none
+gn:1636990,Maba,North Maluku,12560,town,0,0,50,0,none,none
+gn:1637001,Luwuk,Central Sulawesi,47778,town,0,0,50,0,none,none
+gn:1637026,Luragung,West Java,0,village,0,0,50,0,none,none
+gn:1637090,Lumajang,East Java,123626,city,0,0,50,0,none,none
+gn:1637131,Lubuk Sikaping,West Sumatra,0,village,0,0,50,0,none,none
+gn:1637158,Lubuklinggau,South Sumatra,234166,city,0,0,50,0,none,none
+gn:1637173,Lubuk Jambi,Riau,0,village,0,0,50,0,none,none
+gn:1637176,Lubukgadang,West Sumatra,0,village,0,0,50,0,none,none
+gn:1637192,Lubuk Basung,West Sumatra,0,village,0,0,50,0,none,none
+gn:1637193,Lubukbergalung,West Sumatra,0,village,0,0,50,0,none,none
+gn:1637197,Lubukalung,West Sumatra,0,village,0,0,50,0,none,none
+gn:1637282,Long Pujungan,North Kalimantan,0,village,0,0,50,0,none,none
+gn:1637291,Longnawang,North Kalimantan,0,village,0,0,50,0,none,none
+gn:1637312,Longkali,East Kalimantan,0,village,0,0,50,0,none,none
+gn:1637318,Longikis,East Kalimantan,0,village,0,0,50,0,none,none
+gn:1637372,Labuan Lombok,West Nusa Tenggara,10000,town,0,0,50,0,none,none
+gn:1637426,Lolak,North Sulawesi,0,village,0,0,50,0,none,none
+gn:1637479,Lodoyo,East Java,0,village,0,0,50,0,none,none
+gn:1637509,Loakulu,East Kalimantan,0,village,0,0,50,0,none,none
+gn:1637510,Loa Janan,East Kalimantan,212816,city,0,0,50,0,none,none
+gn:1637532,Liwa,Lampung,0,village,0,0,50,0,none,none
+gn:1637555,Lirung,North Sulawesi,0,village,0,0,50,0,none,none
+gn:1637651,Limboto,Gorontalo,0,village,0,0,50,0,none,none
+gn:1637720,Likupang,North Sulawesi,0,village,0,0,50,0,none,none
+gn:1637833,Lewoleba,East Nusa Tenggara,30151,town,0,0,50,0,none,none
+gn:1637834,Lewolaga,East Nusa Tenggara,0,village,0,0,50,0,none,none
+gn:1637866,Leuwidamar,Banten,0,village,0,0,50,0,none,none
+gn:1637893,Letung,Riau Islands,0,village,0,0,50,0,none,none
+gn:1637947,Lenteng,East Java,0,village,0,0,50,0,none,none
+gn:1637968,Lengkong,West Java,0,village,0,0,50,0,none,none
+gn:1637988,Lenangguar,West Nusa Tenggara,0,village,0,0,50,0,none,none
+gn:1638030,Lemito,Gorontalo,0,village,0,0,50,0,none,none
+gn:1638059,Lembar,West Nusa Tenggara,10000,town,0,0,50,0,none,none
+gn:1638063,Lembang,West Java,183130,city,0,0,50,0,none,none
+gn:1638078,Lemahputih,West Java,0,village,0,0,50,0,none,none
+gn:1638090,Lelogama,East Nusa Tenggara,0,village,0,0,50,0,none,none
+gn:1638107,Leles,West Java,0,village,0,0,50,0,none,none
+gn:1638131,Lela,East Nusa Tenggara,0,village,0,0,50,0,none,none
+gn:1638133,Leksula,Maluku,0,village,0,0,50,0,none,none
+gn:1638142,Lekebai,East Nusa Tenggara,0,village,0,0,50,0,none,none
+gn:1638182,Ledokombo,East Java,0,village,0,0,50,0,none,none
+gn:1638214,Lebakwangi,West Java,0,village,0,0,50,0,none,none
+gn:1638217,Lebaksiu,Central Java,33606,town,0,0,50,0,none,none
+gn:1638284,Lawang,East Java,112540,city,0,0,50,0,none,none
+gn:1638352,Lasem,Central Java,28948,town,0,0,50,0,none,none
+gn:1638359,Lasehao,Southeast Sulawesi,0,village,0,0,50,0,none,none
+gn:1638368,Larompong,South Sulawesi,0,village,0,0,50,0,none,none
+gn:1638385,Larantuka,East Nusa Tenggara,0,village,0,0,50,0,none,none
+gn:1638398,Lampihung,South Kalimantan,0,village,0,0,50,0,none,none
+gn:1638479,Langgur,Maluku,0,village,0,0,50,0,none,none
+gn:1638490,Langnga,South Sulawesi,0,village,0,0,50,0,none,none
+gn:1638497,Langara,Southeast Sulawesi,0,village,0,0,50,0,none,none
+gn:1638562,Lamongan,East Java,59224,town,0,0,50,0,none,none
+gn:1638735,Laiwui,North Maluku,0,village,0,0,50,0,none,none
+gn:1638744,Lais,Bengkulu,0,village,0,0,50,0,none,none
+gn:1638754,"Laikit, Laikit II (Dimembe)",North Sulawesi,8000,village,0,0,50,0,none,none
+gn:1638775,Lahat,South Sumatra,65906,town,0,0,50,0,none,none
+gn:1638861,Labuhanmaringgai,Lampung,0,village,0,0,50,0,none,none
+gn:1638868,Labuan Bajo,East Nusa Tenggara,188724,city,0,0,50,0,none,none
+gn:1638870,Labuan,Banten,33576,town,0,0,50,0,none,none
+gn:1638874,Labuha,North Maluku,7073,village,0,0,50,0,none,none
+gn:1638947,Kwantisore,Central Papua,0,village,0,0,50,0,none,none
+gn:1638981,Kutoarjo,Central Java,31352,town,0,0,50,0,none,none
+gn:1639002,Kuta,Bali,30012,town,0,0,50,0,none,none
+gn:1639051,Pangkalan Kerinci,Riau,0,village,0,0,50,0,none,none
+gn:1639094,Kuningan,West Java,111742,city,0,0,50,0,none,none
+gn:1639111,Kumurkek,Southwest Papua,0,village,0,0,50,0,none,none
+gn:1639151,Kumai,Central Kalimantan,0,village,0,0,50,0,none,none
+gn:1639157,Kuma,North Sulawesi,0,village,0,0,50,0,none,none
+gn:1639215,Kudus,Central Java,92156,town,0,0,50,0,none,none
+gn:1639246,Kubu,Bali,0,village,0,0,50,0,none,none
+gn:1639249,Kubu,West Kalimantan,0,village,0,0,50,0,none,none
+gn:1639278,Kwandang,Gorontalo,0,village,0,0,50,0,none,none
+gn:1639286,Kuala Tungkal,Jambi,33683,town,0,0,50,0,none,none
+gn:1639304,Kualakapuas,Central Kalimantan,35632,town,0,0,50,0,none,none
+gn:1639307,Kuala Cenaku,Riau,7000,village,0,0,50,0,none,none
+gn:1639334,Krui,Lampung,0,village,0,0,50,0,none,none
+gn:1639337,Kroya,Central Java,23255,town,0,0,50,0,none,none
+gn:1639356,Krian,East Java,38603,town,0,0,50,0,none,none
+gn:1639362,Kresek,West Java,110182,city,0,0,50,0,none,none
+gn:1639431,Kraksaan,East Java,28248,town,0,0,50,0,none,none
+gn:1639443,Kragan,Central Java,0,village,0,0,50,0,none,none
+gn:1639478,Kotawaringin,Central Kalimantan,0,village,0,0,50,0,none,none
+gn:1639485,Kota Tengah,Riau,0,village,0,0,50,0,none,none
+gn:1639494,Kota Pinang,North Sumatra,0,village,0,0,50,0,none,none
+gn:1639500,Kotamobagu,North Sulawesi,121756,city,0,0,50,0,none,none
+gn:1639519,Daik Lingga,Riau Islands,0,village,0,0,50,0,none,none
+gn:1639520,Dabo,Riau Islands,10388,town,0,0,50,0,none,none
+gn:1639523,Kotabunan,North Sulawesi,0,village,0,0,50,0,none,none
+gn:1639524,Kotabumi,Lampung,42366,town,0,0,50,0,none,none
+gn:1639527,Kotabesi,Central Kalimantan,0,village,0,0,50,0,none,none
+gn:1639534,Kotabaru Hilir,South Kalimantan,0,village,0,0,50,0,none,none
+gn:1639536,Kotabaru,West Sumatra,0,village,0,0,50,0,none,none
+gn:1639551,Kotaagung,Lampung,0,village,0,0,50,0,none,none
+gn:1639552,Kotaagung,South Sumatra,0,village,0,0,50,0,none,none
+gn:1639598,Korem,Papua,0,village,0,0,50,0,none,none
+gn:1639600,Korido,Papua,0,village,0,0,50,0,none,none
+gn:1639624,Kopang Satu,West Nusa Tenggara,0,village,0,0,50,0,none,none
+gn:1639693,Komodo,East Nusa Tenggara,2000,village,0,0,50,0,none,none
+gn:1639721,Kolonodale,Central Sulawesi,0,village,0,0,50,0,none,none
+gn:1639783,Kokas Kota,West Papua,0,village,0,0,50,0,none,none
+gn:1639787,Kokar,East Nusa Tenggara,0,village,0,0,50,0,none,none
+gn:1639840,Koba,Bangka–Belitung Islands,0,village,0,0,50,0,none,none
+gn:1639850,Klungkung,Bali,223720,city,0,0,50,0,none,none
+gn:1639859,Kelua,South Kalimantan,0,village,0,0,50,0,none,none
+gn:1639900,Klaten,Central Java,126831,city,0,0,50,0,none,none
+gn:1639925,Klangenan,West Java,88378,town,0,0,50,0,none,none
+gn:1639934,Klampis,East Java,0,village,0,0,50,0,none,none
+gn:1639941,Klakah,East Java,7583,village,0,0,50,0,none,none
+gn:1639970,Kiruru,West Papua,0,village,0,0,50,0,none,none
+gn:1640013,Kimaam,South Papua,0,village,0,0,50,0,none,none
+gn:1640116,Ketahun,Bengkulu,0,village,0,0,50,0,none,none
+gn:1640130,Ketapang,East Java,0,village,0,0,50,0,none,none
+gn:1640135,Ketapang,West Kalimantan,0,village,0,0,50,0,none,none
+gn:1640138,Ketanggungan,Central Java,44288,town,0,0,50,0,none,none
+gn:1640154,Kesugihan,Central Java,0,village,0,0,50,0,none,none
+gn:1640169,Kesamben,East Java,0,village,0,0,50,0,none,none
+gn:1640185,Kertosono,East Java,60782,town,0,0,50,0,none,none
+gn:1640239,Kerek,East Java,0,village,0,0,50,0,none,none
+gn:1640251,Kerang,East Kalimantan,0,village,0,0,50,0,none,none
+gn:1640289,Kepoh,Bangka–Belitung Islands,0,village,0,0,50,0,none,none
+gn:1640293,Kepi,South Papua,8394,village,0,0,50,0,none,none
+gn:1640296,Kepanjen,East Java,51919,town,0,0,50,0,none,none
+gn:1640344,Kendari,Southeast Sulawesi,351085,city,0,0,50,0,none,none
+gn:1640350,Kendal,Central Java,0,village,0,0,50,0,none,none
+gn:1640353,Kendahe,North Sulawesi,0,village,0,0,50,0,none,none
+gn:1640354,Kencong,East Java,43046,town,0,0,50,0,none,none
+gn:1640365,Kenali,Lampung,0,village,0,0,50,0,none,none
+gn:1640467,Kema,North Sulawesi,0,village,0,0,50,0,none,none
+gn:1640532,Kelapa,Bangka–Belitung Islands,0,village,0,0,50,0,none,none
+gn:1640576,Kefamenanu,East Nusa Tenggara,48202,town,0,0,50,0,none,none
+gn:1640581,Kedungwuni,Central Java,117249,city,0,0,50,0,none,none
+gn:1640585,Kedungwaru,East Java,80257,town,0,0,50,0,none,none
+gn:1640658,Kediri,West Nusa Tenggara,0,village,0,0,50,0,none,none
+gn:1640660,Kediri,East Java,301424,city,0,0,50,0,none,none
+gn:1640688,Kedaton,Lampung,0,village,0,0,50,0,none,none
+gn:1640706,Kebumen,Central Java,0,village,0,0,50,0,none,none
+gn:1640755,Kebonarun,Central Java,21745,town,0,0,50,0,none,none
+gn:1640765,Kebomas,East Java,75982,town,0,0,50,0,none,none
+gn:1640785,Padangtepung,South Sumatra,0,village,0,0,50,0,none,none
+gn:1640844,Kayu Agung,South Sumatra,0,village,0,0,50,0,none,none
+gn:1640889,Kawasi,North Maluku,29642,town,0,0,50,0,none,none
+gn:1640897,Kawangu,East Nusa Tenggara,0,village,0,0,50,0,none,none
+gn:1640898,Kawangkoan,North Sulawesi,0,village,0,0,50,0,none,none
+gn:1640902,Kawalu,West Java,50541,town,0,0,50,0,none,none
+gn:1640904,Kawali,West Java,0,village,0,0,50,0,none,none
+gn:1640972,Katobu,Southeast Sulawesi,31929,town,0,0,50,0,none,none
+gn:1640982,Kasui,Lampung,0,village,0,0,50,0,none,none
+gn:1640996,Kasonawejo,Papua,0,village,0,0,50,0,none,none
+gn:1641017,Kasiguncu,Central Sulawesi,0,village,0,0,50,0,none,none
+gn:1641027,Kasarangan,South Kalimantan,0,village,0,0,50,0,none,none
+gn:1641134,Karawang,West Java,307880,city,0,0,50,0,none,none
+gn:1641184,Karangsembung,West Java,75856,town,0,0,50,0,none,none
+gn:1641192,Karangrejo,East Java,0,village,0,0,50,0,none,none
+gn:1641206,Karangpawitan,West Java,0,village,0,0,50,0,none,none
+gn:1641213,Karangnunggal,West Java,0,village,0,0,50,0,none,none
+gn:1641250,Karangintan,South Kalimantan,0,village,0,0,50,0,none,none
+gn:1641257,Karanggeneng,East Java,0,village,0,0,50,0,none,none
+gn:1641301,Amlapura,Bali,31869,town,0,0,50,0,none,none
+gn:1641306,Karangharjo Kidul,East Java,0,village,0,0,50,0,none,none
+gn:1641315,Karanganyar,Central Java,0,village,0,0,50,0,none,none
+gn:1641333,Karanganom,Central Java,47179,town,0,0,50,0,none,none
+gn:1641337,Karangan,East Java,0,village,0,0,50,0,none,none
+gn:1641340,Karangan,West Kalimantan,0,village,0,0,50,0,none,none
+gn:1641342,Karangampel,West Java,31234,town,0,0,50,0,none,none
+gn:1641407,Kapongan,East Java,0,village,0,0,50,0,none,none
+gn:1641437,Kapan,East Nusa Tenggara,0,village,0,0,50,0,none,none
+gn:1641464,Kepahiang,Bengkulu,0,village,0,0,50,0,none,none
+gn:1641547,Kandangan,South Kalimantan,0,village,0,0,50,0,none,none
+gn:1641644,Malaju,West Nusa Tenggara,0,village,0,0,50,0,none,none
+gn:1641708,Kelarik,Riau Islands,0,village,0,0,50,0,none,none
+gn:1641719,Hampang,South Kalimantan,0,village,0,0,50,0,none,none
+gn:1641721,Kampak,East Java,0,village,0,0,50,0,none,none
+gn:1641739,Kameri,Papua,0,village,0,0,50,0,none,none
+gn:1641772,Kambang,West Sumatra,0,village,0,0,50,0,none,none
+gn:1641792,Kamal,East Java,22515,town,0,0,50,0,none,none
+gn:1641836,Cibaregbeg,West Java,0,village,0,0,50,0,none,none
+gn:1641879,Kalipucang,West Java,0,village,0,0,50,0,none,none
+gn:1641882,Kalipang,Central Java,0,village,0,0,50,0,none,none
+gn:1641885,Kaliori,Central Java,0,village,0,0,50,0,none,none
+gn:1641939,Kalidawir,East Java,0,village,0,0,50,0,none,none
+gn:1641943,Kalibunder,West Java,0,village,0,0,50,0,none,none
+gn:1641977,Kalianget,East Java,23897,town,0,0,50,0,none,none
+gn:1641978,Kalianda,Lampung,0,village,0,0,50,0,none,none
+gn:1642038,Kalangbret,East Java,0,village,0,0,50,0,none,none
+gn:1642069,Kalabahi,East Nusa Tenggara,19210,town,0,0,50,0,none,none
+gn:1642099,Kajen,Central Java,0,village,0,0,50,0,none,none
+gn:1642125,Kairatu,Maluku,0,village,0,0,50,0,none,none
+gn:1642133,Kaimana,West Papua,0,village,0,0,50,0,none,none
+gn:1642170,Kahala,East Kalimantan,0,village,0,0,50,0,none,none
+gn:1642188,Kadupandak,West Java,0,village,0,0,50,0,none,none
+gn:1642201,Kadugedong,Banten,0,village,0,0,50,0,none,none
+gn:1642202,Kadugede,West Java,0,village,0,0,50,0,none,none
+gn:1642268,Kabir,East Nusa Tenggara,0,village,0,0,50,0,none,none
+gn:1642289,Kabare,Southwest Papua,0,village,0,0,50,0,none,none
+gn:1642317,Juwana,Central Java,40177,town,0,0,50,0,none,none
+gn:1642337,Dungkek,East Java,0,village,0,0,50,0,none,none
+gn:1642396,Jorong,South Kalimantan,0,village,0,0,50,0,none,none
+gn:1642414,Jombang,East Java,126465,city,0,0,50,0,none,none
+gn:1642420,Jojogan,East Java,0,village,0,0,50,0,none,none
+gn:1642437,Jogonalan,Central Java,28114,town,0,0,50,0,none,none
+gn:1642467,Jimbaran,Bali,1785,village,0,0,50,0,none,none
+gn:1642468,Jimbaran,Yogyakarta,6778,village,0,0,50,0,none,none
+gn:1642541,Jepon,Central Java,0,village,0,0,50,0,none,none
+gn:1642548,Jepara,Central Java,1257912,large-city,0,0,50,0,none,none
+gn:1642549,Jepara,Lampung,0,village,0,0,50,0,none,none
+gn:1642566,Jenggawah,East Java,0,village,0,0,50,0,none,none
+gn:1642570,Jeneponto,South Sulawesi,0,village,0,0,50,0,none,none
+gn:1642588,Jember,East Java,298585,city,0,0,50,0,none,none
+gn:1642617,Jelbuk,East Java,0,village,0,0,50,0,none,none
+gn:1642628,Jekulo,Central Java,37521,town,0,0,50,0,none,none
+gn:1642640,Jebus,Bangka–Belitung Islands,0,village,0,0,50,0,none,none
+gn:1642684,Jatiwangi,West Java,57973,town,0,0,50,0,none,none
+gn:1642691,Jatiroto,East Java,0,village,0,0,50,0,none,none
+gn:1642692,Jatiroto,Central Java,50059,town,0,0,50,0,none,none
+gn:1642693,Jatirogo,East Java,0,village,0,0,50,0,none,none
+gn:1642708,Jatinagara,West Java,0,village,0,0,50,0,none,none
+gn:1642726,Jatibarang,West Java,73010,town,0,0,50,0,none,none
+gn:1642754,Jaten,Central Java,32378,town,0,0,50,0,none,none
+gn:1642775,Japah,Central Java,0,village,0,0,50,0,none,none
+gn:1642801,Jangkat,Jambi,0,village,0,0,50,0,none,none
+gn:1642832,Jampang Tengah,West Java,0,village,0,0,50,0,none,none
+gn:1642834,Jampang Kulon,West Java,0,village,0,0,50,0,none,none
+gn:1642840,Jambula,North Maluku,0,village,0,0,50,0,none,none
+gn:1642858,Jambi City,Jambi,635101,large-city,0,0,50,0,none,none
+gn:1642892,Jalang,South Sulawesi,0,village,0,0,50,0,none,none
+gn:1642901,Jakenan,Central Java,0,village,0,0,50,0,none,none
+gn:1642911,Jakarta,Jakarta,8540121,large-city,0,0,50,0,none,none
+gn:1642920,Jailolo,North Maluku,0,village,0,0,50,0,none,none
+gn:1642954,Jabung,Lampung,0,village,0,0,50,0,none,none
+gn:1642996,Isimu,Gorontalo,0,village,0,0,50,0,none,none
+gn:1643031,Ipuh,Bengkulu,0,village,0,0,50,0,none,none
+gn:1643078,Indramayu,West Java,123263,city,0,0,50,0,none,none
+gn:1643089,Indralaya,South Sumatra,42498,town,0,0,50,0,none,none
+gn:1643103,Serkos,Southwest Papua,0,village,0,0,50,0,none,none
+gn:1643136,Alung,South Kalimantan,0,village,0,0,50,0,none,none
+gn:1643323,Hila,Maluku,0,village,0,0,50,0,none,none
+gn:1643382,Gajrug,Banten,0,village,0,0,50,0,none,none
+gn:1643409,Haruyan,South Kalimantan,0,village,0,0,50,0,none,none
+gn:1643421,Haruai,South Kalimantan,0,village,0,0,50,0,none,none
+gn:1643508,Hadakewa,East Nusa Tenggara,0,village,0,0,50,0,none,none
+gn:1643557,Gunungwungkal,Central Java,0,village,0,0,50,0,none,none
+gn:1643569,Gunung Sugih,Lampung,0,village,0,0,50,0,none,none
+gn:1643592,Gunungmenang,South Sumatra,0,village,0,0,50,0,none,none
+gn:1643594,Gunungmegang Dalam,South Sumatra,0,village,0,0,50,0,none,none
+gn:1643606,Gunungkencana,Banten,0,village,0,0,50,0,none,none
+gn:1643628,Gunungbatubesar,South Kalimantan,0,village,0,0,50,0,none,none
+gn:1643662,Gunem,Central Java,0,village,0,0,50,0,none,none
+gn:1643698,Gulukguluk,East Java,0,village,0,0,50,0,none,none
+gn:1643761,Grogol,Central Java,100613,city,0,0,50,0,none,none
+gn:1643776,Gresik,East Java,73629,town,0,0,50,0,none,none
+gn:1643837,Gorontalo,Gorontalo,205390,city,0,0,50,0,none,none
+gn:1643898,Gongdanglegi Kulon,East Java,22468,town,0,0,50,0,none,none
+gn:1643905,Gondang,East Java,0,village,0,0,50,0,none,none
+gn:1643920,Gombong,Central Java,50950,town,0,0,50,0,none,none
+gn:1643980,Godo,West Nusa Tenggara,0,village,0,0,50,0,none,none
+gn:1643981,Godean,Yogyakarta,63164,town,0,0,50,0,none,none
+gn:1644020,Gitgit,Bali,3876,village,0,0,50,0,none,none
+gn:1644099,Gianyar,Bali,0,village,0,0,50,0,none,none
+gn:1644127,Geser,Maluku,0,village,0,0,50,0,none,none
+gn:1644131,Gerung,West Nusa Tenggara,0,village,0,0,50,0,none,none
+gn:1644178,Genteng,East Java,79652,town,0,0,50,0,none,none
+gn:1644260,Glumbang,South Sumatra,0,village,0,0,50,0,none,none
+gn:1644305,Gedong Tataan,Lampung,0,village,0,0,50,0,none,none
+gn:1644349,Gedangan,East Java,79230,town,0,0,50,0,none,none
+gn:1644360,Gebog,Central Java,43756,town,0,0,50,0,none,none
+gn:1644378,Gayam,East Java,0,village,0,0,50,0,none,none
+gn:1644409,Garut,West Java,131809,city,0,0,50,0,none,none
+gn:1644441,Garawangi,West Java,0,village,0,0,50,0,none,none
+gn:1644454,Gapura,East Java,0,village,0,0,50,0,none,none
+gn:1644487,Gandusari,East Java,0,village,0,0,50,0,none,none
+gn:1644488,Gandusari,East Java,0,village,0,0,50,0,none,none
+gn:1644493,Gandrungmangu,Central Java,0,village,0,0,50,0,none,none
+gn:1644500,Ganding,East Java,0,village,0,0,50,0,none,none
+gn:1644522,Gampengrejo,East Java,49118,town,0,0,50,0,none,none
+gn:1644523,Gampang,East Java,0,village,0,0,50,0,none,none
+gn:1644557,Gambiran Satu,East Java,22525,town,0,0,50,0,none,none
+gn:1644579,Galunggalung,West Sulawesi,0,village,0,0,50,0,none,none
+gn:1644583,Kalumpang,West Sulawesi,0,village,0,0,50,0,none,none
+gn:1644593,Galis,East Java,0,village,0,0,50,0,none,none
+gn:1644605,Galesong,South Sulawesi,83050,town,0,0,50,0,none,none
+gn:1644608,Galela,North Maluku,8760,village,0,0,50,0,none,none
+gn:1644833,Fakfak,Papua,18900,town,0,0,50,0,none,none
+gn:1644861,Essang,North Sulawesi,0,village,0,0,50,0,none,none
+gn:1644906,Enrekang,South Sulawesi,0,village,0,0,50,0,none,none
+gn:1644908,Enok,Riau,0,village,0,0,50,0,none,none
+gn:1644922,Enemawira,North Sulawesi,0,village,0,0,50,0,none,none
+gn:1644932,Ende,East Nusa Tenggara,87269,town,0,0,50,0,none,none
+gn:1644935,Enarotali,Central Papua,0,village,0,0,50,0,none,none
+gn:1644979,Elopada,East Nusa Tenggara,0,village,0,0,50,0,none,none
+gn:1645099,Duri,Riau,0,village,0,0,50,0,none,none
+gn:1645104,Durenan,East Java,0,village,0,0,50,0,none,none
+gn:1645124,Dumoga,North Sulawesi,0,village,0,0,50,0,none,none
+gn:1645133,Dumai,Riau,349389,city,0,0,50,0,none,none
+gn:1645142,Dulanpokpok,West Papua,0,village,0,0,50,0,none,none
+gn:1645154,Dukuhturi,Central Java,98074,town,0,0,50,0,none,none
+gn:1645157,Dukuhseti,Central Java,0,village,0,0,50,0,none,none
+gn:1645220,Driyorejo,East Java,26827,town,0,0,50,0,none,none
+gn:1645273,Kempo,West Nusa Tenggara,0,village,0,0,50,0,none,none
+gn:1645303,Donomulyo,East Java,0,village,0,0,50,0,none,none
+gn:1645305,Dongko,East Java,0,village,0,0,50,0,none,none
+gn:1645323,Donggala,Central Sulawesi,0,village,0,0,50,0,none,none
+gn:1645343,Dompu,West Nusa Tenggara,54987,town,0,0,50,0,none,none
+gn:1645389,Dofa,North Maluku,0,village,0,0,50,0,none,none
+gn:1645413,Dobo,Maluku,52104,town,0,0,50,0,none,none
+gn:1645428,Diwek,East Java,41719,town,0,0,50,0,none,none
+gn:1645518,Depok,Yogyakarta,104527,city,0,0,50,0,none,none
+gn:1645524,Depok,West Java,2163635,large-city,0,0,50,0,none,none
+gn:1645528,Denpasar,Bali,670210,large-city,0,0,50,0,none,none
+gn:1645559,Demak,Central Java,27251,town,0,0,50,0,none,none
+gn:1645565,Delanggu,Central Java,24440,town,0,0,50,0,none,none
+gn:1645607,Dayeuhluhur,Central Java,0,village,0,0,50,0,none,none
+gn:1645658,Dasuk,East Java,0,village,0,0,50,0,none,none
+gn:1645663,Daruba,North Maluku,23566,town,0,0,50,0,none,none
+gn:1645676,Darma,West Java,0,village,0,0,50,0,none,none
+gn:1645749,Dampit,East Java,23094,town,0,0,50,0,none,none
+gn:1645788,Dalududalu,Riau,0,village,0,0,50,0,none,none
+gn:1645866,Dabra,Papua,0,village,0,0,50,0,none,none
+gn:1645875,Curup,Bengkulu,46245,town,0,0,50,0,none,none
+gn:1645895,Curug,Banten,191406,city,0,0,50,0,none,none
+gn:1645976,Comal,Central Java,51092,town,0,0,50,0,none,none
+gn:1645978,Colomadu,Central Java,26274,town,0,0,50,0,none,none
+gn:1646000,Ciwaru,West Java,0,village,0,0,50,0,none,none
+gn:1646034,Citeureup,West Java,214668,city,0,0,50,0,none,none
+gn:1646079,Cisompet,West Java,0,village,0,0,50,0,none,none
+gn:1646082,Cisolok,West Java,0,village,0,0,50,0,none,none
+gn:1646088,Cisewu,West Java,0,village,0,0,50,0,none,none
+gn:1646104,Cisayong,West Java,0,village,0,0,50,0,none,none
+gn:1646138,Cisaga,West Java,0,village,0,0,50,0,none,none
+gn:1646147,Ciruas,Banten,0,village,0,0,50,0,none,none
+gn:1646170,Cirebon,West Java,344851,city,0,0,50,0,none,none
+gn:1646190,Ciracap,West Java,0,village,0,0,50,0,none,none
+gn:1646194,Ciputat,West Java,207858,city,0,0,50,0,none,none
+gn:1646267,Cipatujah,West Java,0,village,0,0,50,0,none,none
+gn:1646279,Cipari,Central Java,0,village,0,0,50,0,none,none
+gn:1646330,Ciomas,Banten,0,village,0,0,50,0,none,none
+gn:1646398,Cimerak,West Java,0,village,0,0,50,0,none,none
+gn:1646414,Cimaragas,West Java,0,village,0,0,50,0,none,none
+gn:1646429,Cimanggu,Central Java,0,village,0,0,50,0,none,none
+gn:1646448,Cimahi,West Java,581994,large-city,0,0,50,0,none,none
+gn:1646492,Cileunyi,West Java,111476,city,0,0,50,0,none,none
+gn:1646494,Cileungsir,West Java,289833,city,0,0,50,0,none,none
+gn:1646510,Cilegong,Banten,0,village,0,0,50,0,none,none
+gn:1646511,Cilegon,Banten,470378,city,0,0,50,0,none,none
+gn:1646523,Cilawu,West Java,0,village,0,0,50,0,none,none
+gn:1646559,Cilacap,Central Java,256996,city,0,0,50,0,none,none
+gn:1646593,Cikoneng,West Java,0,village,0,0,50,0,none,none
+gn:1646613,Cikijing,West Java,0,village,0,0,50,0,none,none
+gn:1646623,Cikeusik,Banten,0,village,0,0,50,0,none,none
+gn:1646637,Cikelet,West Java,0,village,0,0,50,0,none,none
+gn:1646654,Cikatomas,West Java,0,village,0,0,50,0,none,none
+gn:1646678,Cikarang,West Java,106479,city,0,0,50,0,none,none
+gn:1646698,Cikampek,West Java,127173,city,0,0,50,0,none,none
+gn:1646702,Cikalong,West Java,0,village,0,0,50,0,none,none
+gn:1646712,Cikajang,West Java,0,village,0,0,50,0,none,none
+gn:1646732,Cijulang,West Java,0,village,0,0,50,0,none,none
+gn:1646740,Cijeungjing,West Java,0,village,0,0,50,0,none,none
+gn:1646799,Cihaurbeuti,West Java,0,village,0,0,50,0,none,none
+gn:1646870,Ciemas,West Java,0,village,0,0,50,0,none,none
+gn:1646893,Cicurug,West Java,88965,town,0,0,50,0,none,none
+gn:1647003,Cibinong,West Java,363424,city,0,0,50,0,none,none
+gn:1647005,Cibingbin,West Java,0,village,0,0,50,0,none,none
+gn:1647018,Cibeureum,West Java,0,village,0,0,50,0,none,none
+gn:1647086,Cibalong,West Java,0,village,0,0,50,0,none,none
+gn:1647088,Cibaliung,Banten,0,village,0,0,50,0,none,none
+gn:1647142,Cianjur,West Java,174587,city,0,0,50,0,none,none
+gn:1647149,Ciamis,West Java,109839,city,0,0,50,0,none,none
+gn:1647169,Cermee,East Java,0,village,0,0,50,0,none,none
+gn:1647175,Cerenti,Riau,0,village,0,0,50,0,none,none
+gn:1647179,Cepu,Central Java,55055,town,0,0,50,0,none,none
+gn:1647187,Ceper,Central Java,28646,town,0,0,50,0,none,none
+gn:1647229,Cempaka,South Sumatra,0,village,0,0,50,0,none,none
+gn:1647290,Caruban,East Java,0,village,0,0,50,0,none,none
+gn:1647298,Caringin,West Java,91845,town,0,0,50,0,none,none
+gn:1647381,Campurdarat,East Java,0,village,0,0,50,0,none,none
+gn:1647382,Campor,East Java,0,village,0,0,50,0,none,none
+gn:1647383,Ciampea,West Java,207212,city,0,0,50,0,none,none
+gn:1647394,Camming,South Sulawesi,0,village,0,0,50,0,none,none
+gn:1647419,Cakke,South Sulawesi,0,village,0,0,50,0,none,none
+gn:1647574,Buol,Central Sulawesi,0,village,0,0,50,0,none,none
+gn:1647601,Buntok,Central Kalimantan,0,village,0,0,50,0,none,none
+gn:1647614,Buniseuri,West Java,0,village,0,0,50,0,none,none
+gn:1647638,Bungku,Central Sulawesi,25477,town,0,0,50,0,none,none
+gn:1647640,Bungkal,East Java,0,village,0,0,50,0,none,none
+gn:1647661,Bungbulang,West Java,0,village,0,0,50,0,none,none
+gn:1647666,Bunga Mas,South Sumatra,0,village,0,0,50,0,none,none
+gn:1647739,Bulukumba,South Sulawesi,0,village,0,0,50,0,none,none
+gn:1647769,Bulu,Central Java,0,village,0,0,50,0,none,none
+gn:1647834,Bulakamba,Central Java,27367,town,0,0,50,0,none,none
+gn:1647845,Bula,Maluku,0,village,0,0,50,0,none,none
+gn:1647866,Bukittinggi,West Sumatra,121028,city,0,0,50,0,none,none
+gn:1647870,Bukitkemuning,Lampung,0,village,0,0,50,0,none,none
+gn:1647936,Buduran,East Java,48152,town,0,0,50,0,none,none
+gn:1647991,Buaran,Central Java,38770,town,0,0,50,0,none,none
+gn:1648045,Brondong,East Java,0,village,0,0,50,0,none,none
+gn:1648065,Brebes,Central Java,0,village,0,0,50,0,none,none
+gn:1648080,Brakas,East Java,0,village,0,0,50,0,none,none
+gn:1648082,Boyolangu,East Java,32287,town,0,0,50,0,none,none
+gn:1648084,Boyolali,Central Java,59851,town,0,0,50,0,none,none
+gn:1648124,Bosnik,Papua,0,village,0,0,50,0,none,none
+gn:1648140,Boroko,North Sulawesi,0,village,0,0,50,0,none,none
+gn:1648186,Bontang,East Kalimantan,194606,city,0,0,50,0,none,none
+gn:1648194,Bunobogu,Central Sulawesi,0,village,0,0,50,0,none,none
+gn:1648197,Bonjol,West Sumatra,0,village,0,0,50,0,none,none
+gn:1648248,Bonebone,South Sulawesi,0,village,0,0,50,0,none,none
+gn:1648266,Bondowoso,East Java,69783,town,0,0,50,0,none,none
+gn:1648268,Bondokodi,East Nusa Tenggara,0,village,0,0,50,0,none,none
+gn:1648340,Bolaang,North Sulawesi,0,village,0,0,50,0,none,none
+gn:1648342,Bolangitang,North Sulawesi,0,village,0,0,50,0,none,none
+gn:1648345,Bola,East Nusa Tenggara,0,village,0,0,50,0,none,none
+gn:1648354,Bikondini,Highland Papua,0,village,0,0,50,0,none,none
+gn:1648362,Bokat,Central Sulawesi,0,village,0,0,50,0,none,none
+gn:1648388,Bojongmanik Girang,Banten,0,village,0,0,50,0,none,none
+gn:1648451,Bojonegoro,East Java,86568,town,0,0,50,0,none,none
+gn:1648453,Bojonegara,Banten,0,village,0,0,50,0,none,none
+gn:1648469,Bogorejo,Central Java,0,village,0,0,50,0,none,none
+gn:1648473,Bogor,West Java,1078351,large-city,0,0,50,0,none,none
+gn:1648512,Bobong,North Maluku,0,village,0,0,50,0,none,none
+gn:1648549,Boawae,East Nusa Tenggara,0,village,0,0,50,0,none,none
+gn:1648561,Bluto,East Java,0,village,0,0,50,0,none,none
+gn:1648564,Baluburlimbangan,West Java,0,village,0,0,50,0,none,none
+gn:1648568,Blora,Central Java,51811,town,0,0,50,0,none,none
+gn:1648580,Blitar,East Java,161204,city,0,0,50,0,none,none
+gn:1648607,Baranusa,East Nusa Tenggara,0,village,0,0,50,0,none,none
+gn:1648637,Bitung,North Sulawesi,225134,city,0,0,50,0,none,none
+gn:1648667,Birayang,South Kalimantan,0,village,0,0,50,0,none,none
+gn:1648689,Binuang,South Kalimantan,0,village,0,0,50,0,none,none
+gn:1648691,Bintuni,West Papua,24742,town,0,0,50,0,none,none
+gn:1648694,Bintuhan,Bengkulu,0,village,0,0,50,0,none,none
+gn:1648732,Bingintelok,South Sumatra,0,village,0,0,50,0,none,none
+gn:1648744,Binangun,East Java,0,village,0,0,50,0,none,none
+gn:1648759,Bima,West Nusa Tenggara,165113,city,0,0,50,0,none,none
+gn:1648761,Bilungala,Gorontalo,0,village,0,0,50,0,none,none
+gn:1648794,Biha,Lampung,0,village,0,0,50,0,none,none
+gn:1648844,Biak,Papua,41731,town,0,0,50,0,none,none
+gn:1648909,Betaf,Papua,0,village,0,0,50,0,none,none
+gn:1648916,Besuki Satu,East Java,0,village,0,0,50,0,none,none
+gn:1648918,Besuki,East Java,55465,town,0,0,50,0,none,none
+gn:1649085,Beo,North Sulawesi,0,village,0,0,50,0,none,none
+gn:1649108,Benteng,South Sulawesi,0,village,0,0,50,0,none,none
+gn:1649125,Benoa,Bali,39570,town,0,0,50,0,none,none
+gn:1649150,Bengkulu,Bengkulu,397321,city,0,0,50,0,none,none
+gn:1649163,Bengkayang,West Kalimantan,33385,town,0,0,50,0,none,none
+gn:1649169,Bengkalis,Riau,0,village,0,0,50,0,none,none
+gn:1649267,Belopa,South Sulawesi,0,village,0,0,50,0,none,none
+gn:1649296,Belimbing,South Kalimantan,0,village,0,0,50,0,none,none
+gn:1649344,Blambangan Umpu,Lampung,0,village,0,0,50,0,none,none
+gn:1649348,Mentarang,North Kalimantan,0,village,0,0,50,0,none,none
+gn:1649351,Belakangpadang,Riau Islands,0,village,0,0,50,0,none,none
+gn:1649378,Bekasi,West Java,2648272,large-city,0,0,50,0,none,none
+gn:1649383,Bejubang Dua,Jambi,7957,village,0,0,50,0,none,none
+gn:1649458,Bebandem,Bali,0,village,0,0,50,0,none,none
+gn:1649474,Bayunglincir,South Sumatra,0,village,0,0,50,0,none,none
+gn:1649480,Bayongbong,West Java,0,village,0,0,50,0,none,none
+gn:1649541,Baubau,Southeast Sulawesi,161280,city,0,0,50,0,none,none
+gn:1649575,Batusangkar,West Sumatra,0,village,0,0,50,0,none,none
+gn:1649584,Baturiti,Bali,0,village,0,0,50,0,none,none
+gn:1649593,Baturaja,South Sumatra,134759,city,0,0,50,0,none,none
+gn:1649595,Baturaden,Central Java,42394,town,0,0,50,0,none,none
+gn:1649612,Batuputih,East Java,0,village,0,0,50,0,none,none
+gn:1649623,Batu Panjang,Riau,0,village,0,0,50,0,none,none
+gn:1649666,Batumandi,South Kalimantan,0,village,0,0,50,0,none,none
+gn:1649674,Batulicin,South Kalimantan,0,village,0,0,50,0,none,none
+gn:1649776,Batubantar,Banten,0,village,0,0,50,0,none,none
+gn:1649824,Batu,East Java,225408,city,0,0,50,0,none,none
+gn:1649843,Batibati,South Kalimantan,0,village,0,0,50,0,none,none
+gn:1649867,Batangan,Central Java,0,village,0,0,50,0,none,none
+gn:1649869,Batauga,Southeast Sulawesi,0,village,0,0,50,0,none,none
+gn:1649881,Batang,Central Java,139492,city,0,0,50,0,none,none
+gn:1649904,Baso,West Sumatra,0,village,0,0,50,0,none,none
+gn:1649908,Baserah,Riau,0,village,0,0,50,0,none,none
+gn:1649976,Barru,South Sulawesi,0,village,0,0,50,0,none,none
+gn:1650044,Barapas,Papua,0,village,0,0,50,0,none,none
+gn:1650064,Barabai,South Kalimantan,55956,town,0,0,50,0,none,none
+gn:1650077,Banyuwangi,East Java,117558,city,0,0,50,0,none,none
+gn:1650085,Banyuresmi,West Java,0,village,0,0,50,0,none,none
+gn:1650095,Banyumas,Central Java,48378,town,0,0,50,0,none,none
+gn:1650103,Banyuates,East Java,0,village,0,0,50,0,none,none
+gn:1650114,Bantur,East Java,0,village,0,0,50,0,none,none
+gn:1650119,Bantul,Yogyakarta,64360,town,0,0,50,0,none,none
+gn:1650184,Bantaeng,South Sulawesi,0,village,0,0,50,0,none,none
+gn:1650195,Banjarwangi,West Java,0,village,0,0,50,0,none,none
+gn:1650198,Banjarsari,West Java,0,village,0,0,50,0,none,none
+gn:1650205,Banjarejo,Central Java,0,village,0,0,50,0,none,none
+gn:1650210,Banjarnegara,Central Java,0,village,0,0,50,0,none,none
+gn:1650213,Banjarmasin,South Kalimantan,657663,large-city,0,0,50,0,none,none
+gn:1650217,Banjarbaru,South Kalimantan,293332,city,0,0,50,0,none,none
+gn:1650227,Banjaran,West Java,164952,city,0,0,50,0,none,none
+gn:1650232,Banjar,Bali,89040,town,0,0,50,0,none,none
+gn:1650233,Banjar,West Java,0,village,0,0,50,0,none,none
+gn:1650234,Banjar,West Java,209791,city,0,0,50,0,none,none
+gn:1650264,Bangli,Bali,0,village,0,0,50,0,none,none
+gn:1650281,Bangko,Jambi,0,village,0,0,50,0,none,none
+gn:1650284,Bangkir,Central Sulawesi,0,village,0,0,50,0,none,none
+gn:1650285,Bangkinang,Riau,0,village,0,0,50,0,none,none
+gn:1650298,Bangkalan,East Java,86250,town,0,0,50,0,none,none
+gn:1650318,Bangilan,East Java,0,village,0,0,50,0,none,none
+gn:1650319,Bangil,East Java,85504,town,0,0,50,0,none,none
+gn:1650328,Banggai,Central Sulawesi,0,village,0,0,50,0,none,none
+gn:1650353,Bandung,East Java,0,village,0,0,50,0,none,none
+gn:1650357,Bandung,West Java,2528163,large-city,0,0,50,0,none,none
+gn:1650363,Banding Agung,South Sumatra,0,village,0,0,50,0,none,none
+gn:1650394,Elat,Maluku,0,village,0,0,50,0,none,none
+gn:1650401,Bancar,East Java,0,village,0,0,50,0,none,none
+gn:1650434,Bambanglipuro,Yogyakarta,44713,town,0,0,50,0,none,none
+gn:1650458,Balung,East Java,0,village,0,0,50,0,none,none
+gn:1650460,Balung,East Java,47631,town,0,0,50,0,none,none
+gn:1650488,Balong,Central Java,0,village,0,0,50,0,none,none
+gn:1650527,Balikpapan,East Kalimantan,695287,large-city,0,0,50,0,none,none
+gn:1650564,Balauring,East Nusa Tenggara,0,village,0,0,50,0,none,none
+gn:1650572,Balapulang,Central Java,28483,town,0,0,50,0,none,none
+gn:1650600,Balai Pungut,Riau,56452,town,0,0,50,0,none,none
+gn:1650610,Balaiberkuak,West Kalimantan,0,village,0,0,50,0,none,none
+gn:1650670,Baki,Central Java,58909,town,0,0,50,0,none,none
+gn:1650716,Bajo,South Sulawesi,0,village,0,0,50,0,none,none
+gn:1650720,Bajawa,East Nusa Tenggara,0,village,0,0,50,0,none,none
+gn:1650801,Bagan Si Api-api,Riau,0,village,0,0,50,0,none,none
+gn:1650815,Baekrajan,Central Java,57920,town,0,0,50,0,none,none
+gn:1650833,Bade,South Papua,0,village,0,0,50,0,none,none
+gn:1650860,Irarututiga,West Papua,0,village,0,0,50,0,none,none
+gn:1650861,Babirik,South Kalimantan,0,village,0,0,50,0,none,none
+gn:1650888,Babat,East Java,27038,town,0,0,50,0,none,none
+gn:1650890,Babat,South Sumatra,0,village,0,0,50,0,none,none
+gn:1650903,Babana,West Sulawesi,0,village,0,0,50,0,none,none
+gn:1650999,Ayamaru,Southwest Papua,0,village,0,0,50,0,none,none
+gn:1651084,Aitinyo,Southwest Papua,0,village,0,0,50,0,none,none
+gn:1651100,Atap,North Kalimantan,0,village,0,0,50,0,none,none
+gn:1651103,Atambua,East Nusa Tenggara,82196,town,0,0,50,0,none,none
+gn:1651112,Astanajapura,West Java,148047,city,0,0,50,0,none,none
+gn:1651130,Asera,Southeast Sulawesi,0,village,0,0,50,0,none,none
+gn:1651133,Asembagus,East Java,0,village,0,0,50,0,none,none
+gn:1651203,Arosbaya,East Java,0,village,0,0,50,0,none,none
+gn:1651216,Armopa,Papua,0,village,0,0,50,0,none,none
+gn:1651222,Arjasa,East Java,0,village,0,0,50,0,none,none
+gn:1651226,Arjawinangun,West Java,105845,city,0,0,50,0,none,none
+gn:1651228,Arjasa,East Java,0,village,0,0,50,0,none,none
+gn:1651245,Argamakmur,Bengkulu,0,village,0,0,50,0,none,none
+gn:1651362,Ansus,Papua,0,village,0,0,50,0,none,none
+gn:1651383,Ankola,West Java,0,village,0,0,50,0,none,none
+gn:1651398,Anggana,East Kalimantan,0,village,0,0,50,0,none,none
+gn:1651410,Andoolo,Southeast Sulawesi,0,village,0,0,50,0,none,none
+gn:1651461,Amuntai,South Kalimantan,55560,town,0,0,50,0,none,none
+gn:1651489,Ampana,Central Sulawesi,0,village,0,0,50,0,none,none
+gn:1651512,Ambuten,East Java,0,village,0,0,50,0,none,none
+gn:1651531,Ambon,Maluku,347288,city,0,0,50,0,none,none
+gn:1651555,Ambarawa,Central Java,65096,town,0,0,50,0,none,none
+gn:1651591,Amahai,Maluku,50478,town,0,0,50,0,none,none
+gn:1651600,Aluhaluh,South Kalimantan,0,village,0,0,50,0,none,none
+gn:1651678,Alahanpanjang,West Sumatra,0,village,0,0,50,0,none,none
+gn:1651680,Alabio,South Kalimantan,0,village,0,0,50,0,none,none
+gn:1651757,Air Molek,Riau,0,village,0,0,50,0,none,none
+gn:1651763,Airmadidi,North Sulawesi,31446,town,0,0,50,0,none,none
+gn:1651813,Aimere,East Nusa Tenggara,0,village,0,0,50,0,none,none
+gn:1651852,Agats,South Papua,23869,town,0,0,50,0,none,none
+gn:1651867,Airbuaya,Maluku,0,village,0,0,50,0,none,none
+gn:1651871,Aenganyar,East Java,0,village,0,0,50,0,none,none
+gn:1651887,Adiwerna,Central Java,134188,city,0,0,50,0,none,none
+gn:1651888,Adipala,Central Java,0,village,0,0,50,0,none,none
+gn:1899873,Lupak,Central Kalimantan,0,village,0,0,50,0,none,none
+gn:1899875,Tabunganen,South Kalimantan,0,village,0,0,50,0,none,none
+gn:1899892,Belawang,South Kalimantan,0,village,0,0,50,0,none,none
+gn:1901631,Tulehu,Maluku,0,village,0,0,50,0,none,none
+gn:1902387,Sanur,Bali,14628,town,0,0,50,0,none,none
+gn:1902726,Lantebung,South Sulawesi,2400,village,0,0,50,0,none,none
+gn:1903663,Meral,Riau Islands,0,village,0,0,50,0,none,none
+gn:1906549,Gununganyar,East Java,0,village,0,0,50,0,none,none
+gn:1939583,Betun,East Nusa Tenggara,0,village,0,0,50,0,none,none
+gn:1947261,Naisano Dua,East Nusa Tenggara,2345,village,0,0,50,0,none,none
+gn:1951192,Sasi,East Nusa Tenggara,0,village,0,0,50,0,none,none
+gn:1952026,Bangunrejo,Lampung,0,village,0,0,50,0,none,none
+gn:1952041,Punggur,Lampung,0,village,0,0,50,0,none,none
+gn:1952054,Pekalongan,Lampung,0,village,0,0,50,0,none,none
+gn:1952058,Batanghari,Lampung,0,village,0,0,50,0,none,none
+gn:1958013,Sokarame,East Java,0,village,0,0,50,0,none,none
+gn:1958054,Jangkar,East Java,0,village,0,0,50,0,none,none
+gn:1962380,Jimbaran,Central Java,4317,village,0,0,50,0,none,none
+gn:1963770,Padalarang,West Java,193114,city,0,0,50,0,none,none
+gn:1964032,Ciranjang-hilir,West Java,77758,town,0,0,50,0,none,none
+gn:1964069,Ngamprah,West Java,0,village,0,0,50,0,none,none
+gn:1965178,Gunung Kendil,Central Java,1273,village,0,0,50,0,none,none
+gn:1966184,Leuwiliang,West Java,15275,town,0,0,50,0,none,none
+gn:1966827,Kali,Central Sulawesi,0,village,0,0,50,0,none,none
+gn:1966830,Lamadong,Central Sulawesi,0,village,0,0,50,0,none,none
+gn:1967286,Kauditan,North Sulawesi,0,village,0,0,50,0,none,none
+gn:1967607,Ogotua,Central Sulawesi,0,village,0,0,50,0,none,none
+gn:1967767,Sidomulyo,Gorontalo,0,village,0,0,50,0,none,none
+gn:1967939,Tompasobaru,North Sulawesi,0,village,0,0,50,0,none,none
+gn:1968822,Tobadak,West Sulawesi,0,village,0,0,50,0,none,none
+gn:1968971,Rantepang,South Sulawesi,0,village,0,0,50,0,none,none
+gn:1969003,Rindingallo,South Sulawesi,0,village,0,0,50,0,none,none
+gn:1969268,Sukamaju,South Sulawesi,0,village,0,0,50,0,none,none
+gn:1969335,Lamasi,South Sulawesi,0,village,0,0,50,0,none,none
+gn:1969339,Walenrang,South Sulawesi,0,village,0,0,50,0,none,none
+gn:1969497,Malunda,West Sulawesi,0,village,0,0,50,0,none,none
+gn:1969637,Lampa,South Sulawesi,0,village,0,0,50,0,none,none
+gn:1969668,Majennang,South Sulawesi,0,village,0,0,50,0,none,none
+gn:1969674,Uluale,South Sulawesi,0,village,0,0,50,0,none,none
+gn:1969684,Amparita,South Sulawesi,0,village,0,0,50,0,none,none
+gn:1969686,Sidenreng,South Sulawesi,0,village,0,0,50,0,none,none
+gn:1969717,Baranti,South Sulawesi,0,village,0,0,50,0,none,none
+gn:1969733,Teppo,South Sulawesi,0,village,0,0,50,0,none,none
+gn:1969795,Baraka,South Sulawesi,0,village,0,0,50,0,none,none
+gn:1969826,Getengan,South Sulawesi,0,village,0,0,50,0,none,none
+gn:1970753,Dlemmer,East Java,0,village,0,0,50,0,none,none
+gn:1973692,Beringinjaya,South Sulawesi,0,village,0,0,50,0,none,none
+gn:1973714,Beuma,South Sulawesi,0,village,0,0,50,0,none,none
+gn:1973733,Padangsappa,South Sulawesi,0,village,0,0,50,0,none,none
+gn:1973780,Lempokasi,South Sulawesi,0,village,0,0,50,0,none,none
+gn:1974329,Unaaha,Southeast Sulawesi,0,village,0,0,50,0,none,none
+gn:1975225,Tancung,South Sulawesi,0,village,0,0,50,0,none,none
+gn:1975323,Maroanging,South Sulawesi,0,village,0,0,50,0,none,none
+gn:1975344,Kotabaru,South Sulawesi,0,village,0,0,50,0,none,none
+gn:1975600,Matango,South Sulawesi,0,village,0,0,50,0,none,none
+gn:1975643,Apala,South Sulawesi,0,village,0,0,50,0,none,none
+gn:1975740,Kadai,South Sulawesi,0,village,0,0,50,0,none,none
+gn:1975859,Bulubulu,South Sulawesi,0,village,0,0,50,0,none,none
+gn:1980953,Bilalang,North Sulawesi,0,village,0,0,50,0,none,none
+gn:1980981,Modayag,North Sulawesi,0,village,0,0,50,0,none,none
+gn:1982200,Batuputih,South Sulawesi,0,village,0,0,50,0,none,none
+gn:1985528,Gubengairlangga,East Java,0,village,0,0,50,0,none,none
+gn:1985663,Cikupa,West Java,174041,city,0,0,50,0,none,none
+gn:1990589,Teluknaga,West Java,175155,city,0,0,50,0,none,none
+gn:1999251,Karangnongko,Central Java,37420,town,0,0,50,0,none,none
+gn:2005057,Gamping Lor,Yogyakarta,66110,town,0,0,50,0,none,none
+gn:2005237,Kasihan,Yogyakarta,86234,town,0,0,50,0,none,none
+gn:2008537,Pokak,Central Java,3042,village,0,0,50,0,none,none
+gn:2010971,Ngemplak,Central Java,23750,town,0,0,50,0,none,none
+gn:2010985,Kartasura,Central Java,88927,town,0,0,50,0,none,none
+gn:2011457,Gatak,Central Java,48959,town,0,0,50,0,none,none
+gn:2056916,Olafulihaa,East Nusa Tenggara,0,village,0,0,50,0,none,none
+gn:2056953,Seba,East Nusa Tenggara,0,village,0,0,50,0,none,none
+gn:2057005,Oelamasi,East Nusa Tenggara,0,village,0,0,50,0,none,none
+gn:2057008,Oekabiti,East Nusa Tenggara,0,village,0,0,50,0,none,none
+gn:2057087,Kupang,East Nusa Tenggara,474801,city,0,0,50,0,none,none
+gn:2057099,Kelapalima,East Nusa Tenggara,0,village,0,0,50,0,none,none
+gn:2057107,Kananggar,East Nusa Tenggara,0,village,0,0,50,0,none,none
+gn:2057132,Eahun,East Nusa Tenggara,0,village,0,0,50,0,none,none
+gn:2057139,Camplong,East Nusa Tenggara,0,village,0,0,50,0,none,none
+gn:2057163,Babau,East Nusa Tenggara,0,village,0,0,50,0,none,none
+gn:2057166,Baa,East Nusa Tenggara,1263,village,0,0,50,0,none,none
+gn:2082399,Waris,Papua,0,village,0,0,50,0,none,none
+gn:2082416,Ubrub,Papua,0,village,0,0,50,0,none,none
+gn:2082430,Tanah Merah,South Papua,0,village,0,0,50,0,none,none
+gn:2082460,Sentani,Papua,44779,town,0,0,50,0,none,none
+gn:2082461,Sengge,Papua,0,village,0,0,50,0,none,none
+gn:2082539,Merauke,South Papua,116864,city,0,0,50,0,none,none
+gn:2082600,Jayapura,Papua,410852,city,0,0,50,0,none,none
+gn:2082625,Genyem,Papua,0,village,0,0,50,0,none,none
+gn:2082652,Depapre,Papua,0,village,0,0,50,0,none,none
+gn:2082655,Demta,Papua,0,village,0,0,50,0,none,none
+gn:2082704,Arso,Papua,0,village,0,0,50,0,none,none
+gn:2082727,Abepura,Papua,62248,town,0,0,50,0,none,none
+gn:6260829,Mungkid,Central Java,0,village,0,0,50,0,none,none
+gn:6261469,Kebon Gunung,Central Java,2174,village,0,0,50,0,none,none
+gn:6295587,Batam,Riau,1296960,large-city,0,0,50,0,none,none
+gn:6373816,Gambarsari,Central Java,0,village,0,0,50,0,none,none
+gn:6374082,Klapagada,Central Java,0,village,0,0,50,0,none,none
+gn:6378662,Rejanegara,Central Java,0,village,0,0,50,0,none,none
+gn:6378687,Karangbadar Kidul,Central Java,0,village,0,0,50,0,none,none
+gn:6621189,Gili Air,West Nusa Tenggara,1800,village,0,0,50,0,none,none
+gn:6692272,Senggigi,West Nusa Tenggara,5000,village,0,0,50,0,none,none
+gn:6699784,Lueng Putu,Aceh,0,village,0,0,50,0,none,none
+gn:6700544,Kuala Tuha,Aceh,0,village,0,0,50,0,none,none
+gn:6702596,Kebayakan,Aceh,0,village,0,0,50,0,none,none
+gn:6702698,Simpang Tiga Redelong,Aceh,0,village,0,0,50,0,none,none
+gn:6704322,Pandan,North Sumatra,0,village,0,0,50,0,none,none
+gn:6713355,Subulussalam,Aceh,105553,city,0,0,50,0,none,none
+gn:6713640,Tangantangancut,Aceh,0,village,0,0,50,0,none,none
+gn:6714972,Jambi Baru,Aceh,0,village,0,0,50,0,none,none
+gn:6721186,Drien Rampak,Aceh,0,village,0,0,50,0,none,none
+gn:6724406,Angkup,Aceh,0,village,0,0,50,0,none,none
+gn:6726013,Aek Kanopan,North Sumatra,0,village,0,0,50,0,none,none
+gn:6729749,Onolimbu,North Sumatra,0,village,0,0,50,0,none,none
+gn:6752592,Japan,Central Java,3782,village,0,0,50,0,none,none
+gn:6753337,Kaburon,Banten,0,village,0,0,50,0,none,none
+gn:6767891,Curug,Banten,0,village,0,0,50,0,none,none
+gn:6923161,Bahoi,North Sulawesi,0,village,0,0,50,0,none,none
+gn:6923762,Bungalawang,North Sulawesi,0,village,0,0,50,0,none,none
+gn:6924098,Bentung,North Sulawesi,0,village,0,0,50,0,none,none
+gn:6960316,Tutuyan,North Sulawesi,0,village,0,0,50,0,none,none
+gn:7030632,Lolayan,North Sulawesi,0,village,0,0,50,0,none,none
+gn:7031025,Poigar,North Sulawesi,0,village,0,0,50,0,none,none
+gn:7034680,Tanggunggunung,East Java,0,village,0,0,50,0,none,none
+gn:7034983,Kromengan,East Java,0,village,0,0,50,0,none,none
+gn:7035718,Menden,Central Java,0,village,0,0,50,0,none,none
+gn:7035787,Ngraho,Central Java,0,village,0,0,50,0,none,none
+gn:7035906,Pengkok,East Java,0,village,0,0,50,0,none,none
+gn:7036586,Sambopinggir,East Java,0,village,0,0,50,0,none,none
+gn:7037311,Pule,East Java,0,village,0,0,50,0,none,none
+gn:7037469,Darungan Lor,East Java,0,village,0,0,50,0,none,none
+gn:7038931,Pohgending Kawan,Bali,0,village,0,0,50,0,none,none
+gn:7039086,Basa,Bali,0,village,0,0,50,0,none,none
+gn:7040623,Amahusu,Maluku,0,village,0,0,50,0,none,none
+gn:7051062,Watulumbung,Central Java,0,village,0,0,50,0,none,none
+gn:7055258,Duda,Bali,0,village,0,0,50,0,none,none
+gn:7055418,Banjar Wangsian,Bali,2353,village,0,0,50,0,none,none
+gn:7081711,Wonotirto,East Java,0,village,0,0,50,0,none,none
+gn:7083090,Sukorambi,East Java,0,village,0,0,50,0,none,none
+gn:7083110,Patrang,East Java,0,village,0,0,50,0,none,none
+gn:7083162,Kloncing,East Java,0,village,0,0,50,0,none,none
+gn:7083287,Durenan,East Java,0,village,0,0,50,0,none,none
+gn:7083634,Pacarkeling,East Java,0,village,0,0,50,0,none,none
+gn:7083717,Semarapura,Bali,0,village,0,0,50,0,none,none
+gn:7084003,Songgon,East Java,0,village,0,0,50,0,none,none
+gn:7084161,Tirtopuro,East Java,0,village,0,0,50,0,none,none
+gn:7084278,Olehsari,East Java,0,village,0,0,50,0,none,none
+gn:7084323,Penataban Krajan Satu,East Java,0,village,0,0,50,0,none,none
+gn:7084521,Seririt,Bali,25000,town,0,0,50,0,none,none
+gn:7086215,Sukamulia,West Nusa Tenggara,0,village,0,0,50,0,none,none
+gn:7086735,Aikmel,West Nusa Tenggara,0,village,0,0,50,0,none,none
+gn:7087033,Ulakan,Bali,0,village,0,0,50,0,none,none
+gn:7087175,Bedugul,Bali,20000,town,0,0,50,0,none,none
+gn:7087209,Abang,Bali,0,village,0,0,50,0,none,none
+gn:7087267,Subagan,Bali,0,village,0,0,50,0,none,none
+gn:7102417,Pauhambar,West Sumatra,0,village,0,0,50,0,none,none
+gn:7102427,Lubukalung,West Sumatra,0,village,0,0,50,0,none,none
+gn:7102451,Sungaisarik,West Sumatra,0,village,0,0,50,0,none,none
+gn:7102453,Kampungladang,West Sumatra,0,village,0,0,50,0,none,none
+gn:7102625,Kotatua,West Sumatra,0,village,0,0,50,0,none,none
+gn:7103970,Guguk,West Sumatra,0,village,0,0,50,0,none,none
+gn:7104034,Salimpaung,West Sumatra,0,village,0,0,50,0,none,none
+gn:7104044,Sungayang,West Sumatra,0,village,0,0,50,0,none,none
+gn:7104050,Simabur,West Sumatra,0,village,0,0,50,0,none,none
+gn:7104055,Rambatan,West Sumatra,0,village,0,0,50,0,none,none
+gn:7104136,Gunung Talang,West Sumatra,0,village,0,0,50,0,none,none
+gn:7104187,Kumanis,West Sumatra,0,village,0,0,50,0,none,none
+gn:7104203,Tanjungampalu,West Sumatra,0,village,0,0,50,0,none,none
+gn:7104206,Kototujuh,West Sumatra,0,village,0,0,50,0,none,none
+gn:7104261,Sirukam,West Sumatra,0,village,0,0,50,0,none,none
+gn:7104357,Tanjung Mas,West Sumatra,0,village,0,0,50,0,none,none
+gn:7290162,Nusa Dua,Bali,2500,village,0,0,50,0,none,none
+gn:7302172,Legian,Bali,10000,town,0,0,50,0,none,none
+gn:7333595,Banjar Mandung,Bali,0,village,0,0,50,0,none,none
+gn:7334948,Sukawati,Bali,125470,city,0,0,50,0,none,none
+gn:7336548,Tambolaka,East Nusa Tenggara,35790,town,0,0,50,0,none,none
+gn:7337999,Ndona,East Nusa Tenggara,0,village,0,0,50,0,none,none
+gn:7338003,Wolowona,East Nusa Tenggara,0,village,0,0,50,0,none,none
+gn:7338335,Maurole,East Nusa Tenggara,0,village,0,0,50,0,none,none
+gn:7339694,Mantang,West Nusa Tenggara,0,village,0,0,50,0,none,none
+gn:7347342,Sumberrejo,East Java,0,village,0,0,50,0,none,none
+gn:7350522,Rowokangkung,East Java,0,village,0,0,50,0,none,none
+gn:7350569,Sebaren,East Java,0,village,0,0,50,0,none,none
+gn:7375769,Kebonsari,East Java,0,village,0,0,50,0,none,none
+gn:7375776,Kebonan,East Java,0,village,0,0,50,0,none,none
+gn:7376148,Sulahan,Bali,0,village,0,0,50,0,none,none
+gn:7376992,Karang Daye,West Nusa Tenggara,0,village,0,0,50,0,none,none
+gn:7380656,Kotabaru,East Nusa Tenggara,0,village,0,0,50,0,none,none
+gn:7381990,Naru,West Nusa Tenggara,0,village,0,0,50,0,none,none
+gn:7383830,Donggo,West Nusa Tenggara,0,village,0,0,50,0,none,none
+gn:7384423,Tawali,West Nusa Tenggara,0,village,0,0,50,0,none,none
+gn:7385748,Tangratte,South Sulawesi,0,village,0,0,50,0,none,none
+gn:7385892,Totumbang,South Sulawesi,0,village,0,0,50,0,none,none
+gn:7389226,Nggongi,East Nusa Tenggara,0,village,0,0,50,0,none,none
+gn:7389510,Malahar,East Nusa Tenggara,0,village,0,0,50,0,none,none
+gn:7406213,Tempurejo,East Java,0,village,0,0,50,0,none,none
+gn:7406470,Kalianyar Selatan,East Java,0,village,0,0,50,0,none,none
+gn:7406815,Busungbiu,Bali,0,village,0,0,50,0,none,none
+gn:7409810,Sikur,West Nusa Tenggara,0,village,0,0,50,0,none,none
+gn:7409911,Terara,West Nusa Tenggara,0,village,0,0,50,0,none,none
+gn:7410248,Janapria,West Nusa Tenggara,0,village,0,0,50,0,none,none
+gn:7411864,Kabukarudi,East Nusa Tenggara,0,village,0,0,50,0,none,none
+gn:7412369,Allu,West Sulawesi,0,village,0,0,50,0,none,none
+gn:7412370,Petoosang,West Sulawesi,0,village,0,0,50,0,none,none
+gn:7414399,Iteng,East Nusa Tenggara,0,village,0,0,50,0,none,none
+gn:7429819,Detung,East Nusa Tenggara,0,village,0,0,50,0,none,none
+gn:7439770,Onan Ganjang Satu,North Sumatra,0,village,0,0,50,0,none,none
+gn:7455558,Anyar,West Nusa Tenggara,0,village,0,0,50,0,none,none
+gn:7456087,Kotawaikabubak,East Nusa Tenggara,0,village,0,0,50,0,none,none
+gn:7462530,Welamosa,East Nusa Tenggara,0,village,0,0,50,0,none,none
+gn:7462533,Aelande,East Nusa Tenggara,0,village,0,0,50,0,none,none
+gn:7463778,Ritapiret,East Nusa Tenggara,0,village,0,0,50,0,none,none
+gn:7463809,Talibura,East Nusa Tenggara,0,village,0,0,50,0,none,none
+gn:7463907,Boru,East Nusa Tenggara,0,village,0,0,50,0,none,none
+gn:7528985,Dajan Tangluk,Bali,0,village,0,0,50,0,none,none
+gn:7529246,Karyadharma,Bali,0,village,0,0,50,0,none,none
+gn:7529289,Jabajero,Bali,0,village,0,0,50,0,none,none
+gn:7529299,Tuban,Bali,22947,town,0,0,50,0,none,none
+gn:7530293,Cempa Pasar,South Sulawesi,0,village,0,0,50,0,none,none
+gn:7545820,Pringgabaya,West Nusa Tenggara,0,village,0,0,50,0,none,none
+gn:7553299,Pekutatan,Bali,0,village,0,0,50,0,none,none
+gn:7554372,Lokokrangan,West Nusa Tenggara,0,village,0,0,50,0,none,none
+gn:7556524,Manola,East Nusa Tenggara,0,village,0,0,50,0,none,none
+gn:7564230,Werang,East Nusa Tenggara,0,village,0,0,50,0,none,none
+gn:7566994,Waelengga,East Nusa Tenggara,0,village,0,0,50,0,none,none
+gn:7569919,Mataloko,East Nusa Tenggara,0,village,0,0,50,0,none,none
+gn:7570014,Toroloji,East Nusa Tenggara,0,village,0,0,50,0,none,none
+gn:7570338,Sambelia,West Nusa Tenggara,0,village,0,0,50,0,none,none
+gn:7570519,Bentengjawa,East Nusa Tenggara,0,village,0,0,50,0,none,none
+gn:7574263,Waipare,East Nusa Tenggara,0,village,0,0,50,0,none,none
+gn:7579608,Tamanan,East Java,0,village,0,0,50,0,none,none
+gn:7589098,Harapankarya,South Sulawesi,0,village,0,0,50,0,none,none
+gn:7609102,Belajen,South Sulawesi,0,village,0,0,50,0,none,none
+gn:7610554,Kamalaputi,East Nusa Tenggara,0,village,0,0,50,0,none,none
+gn:7610722,Soa,East Nusa Tenggara,0,village,0,0,50,0,none,none
+gn:7611480,Mbay,East Nusa Tenggara,0,village,0,0,50,0,none,none
+gn:7612656,Senggapi,East Nusa Tenggara,0,village,0,0,50,0,none,none
+gn:7613719,Detusoko,East Nusa Tenggara,0,village,0,0,50,0,none,none
+gn:7665065,Bandaragung,Lampung,0,village,0,0,50,0,none,none
+gn:7665091,Gadingrejo,Lampung,0,village,0,0,50,0,none,none
+gn:7665492,Palas,Lampung,0,village,0,0,50,0,none,none
+gn:7665500,Sidorejo,Lampung,0,village,0,0,50,0,none,none
+gn:7665509,Pasuruan,Lampung,0,village,0,0,50,0,none,none
+gn:7665512,Penengahan,Lampung,0,village,0,0,50,0,none,none
+gn:7666470,Kedondong,Lampung,0,village,0,0,50,0,none,none
+gn:7688374,Mulyosari,Central Java,0,village,0,0,50,0,none,none
+gn:7742769,Harian,North Sumatra,0,village,0,0,50,0,none,none
+gn:7743160,Tuktuk Sonak,North Sumatra,5000,village,0,0,50,0,none,none
+gn:7743546,Tigarunggu,North Sumatra,0,village,0,0,50,0,none,none
+gn:7743637,Sipintuangin,North Sumatra,0,village,0,0,50,0,none,none
+gn:7743784,Sarimatondang,North Sumatra,0,village,0,0,50,0,none,none
+gn:7743873,Pane Tongah,North Sumatra,0,village,0,0,50,0,none,none
+gn:7755808,Cigeulis,Banten,0,village,0,0,50,0,none,none
+gn:7758040,Warungbanten,Banten,0,village,0,0,50,0,none,none
+gn:7758238,Polos,Banten,0,village,0,0,50,0,none,none
+gn:7765790,Pasanggrahan,Banten,0,village,0,0,50,0,none,none
+gn:7766022,Panimbang,Banten,0,village,0,0,50,0,none,none
+gn:7780024,Sukacai,Banten,0,village,0,0,50,0,none,none
+gn:7780466,Gardutanjak,Banten,0,village,0,0,50,0,none,none
+gn:7780700,Kopibera,Banten,0,village,0,0,50,0,none,none
+gn:7782441,Sukamaju,Banten,0,village,0,0,50,0,none,none
+gn:7783030,Sajir,Banten,0,village,0,0,50,0,none,none
+gn:7787556,Pasirgeleng,Banten,0,village,0,0,50,0,none,none
+gn:7838713,Gili Trawangan,West Nusa Tenggara,1500,village,0,0,50,0,none,none
+gn:7844765,Sumandang,Banten,0,village,0,0,50,0,none,none
+gn:7846373,Buniasih,West Java,0,village,0,0,50,0,none,none
+gn:7846850,Cisiih,Banten,0,village,0,0,50,0,none,none
+gn:7846883,Ciwaru,Banten,0,village,0,0,50,0,none,none
+gn:7847635,Sinarjaya,West Java,0,village,0,0,50,0,none,none
+gn:7848517,Sukarama,West Java,0,village,0,0,50,0,none,none
+gn:7849009,Kertajadi,West Java,0,village,0,0,50,0,none,none
+gn:7850223,Puncaktugu,West Java,0,village,0,0,50,0,none,none
+gn:7857759,Sindangratu,West Java,0,village,0,0,50,0,none,none
+gn:7858458,Cibungur,West Java,0,village,0,0,50,0,none,none
+gn:7862602,Sukoharjo Satu,Lampung,0,village,0,0,50,0,none,none
+gn:7863189,Kuripan,Lampung,0,village,0,0,50,0,none,none
+gn:7863619,Kalirejo,Lampung,0,village,0,0,50,0,none,none
+gn:7863728,Pulaupanggung,Lampung,0,village,0,0,50,0,none,none
+gn:7910925,Kota Ternate,Maluku,0,village,0,0,50,0,none,none
+gn:7912010,Gudang,West Java,0,village,0,0,50,0,none,none
+gn:7914414,Kebonkai,West Java,0,village,0,0,50,0,none,none
+gn:7914507,Parabon,West Java,0,village,0,0,50,0,none,none
+gn:7915112,Cibitung,West Java,0,village,0,0,50,0,none,none
+gn:7920839,Pakuwon,West Java,0,village,0,0,50,0,none,none
+gn:7921588,Bunisari,West Java,0,village,0,0,50,0,none,none
+gn:7921764,Pasirluhur,West Java,0,village,0,0,50,0,none,none
+gn:7921841,Gununglimbangan,West Java,0,village,0,0,50,0,none,none
+gn:7928705,Simpang,West Java,0,village,0,0,50,0,none,none
+gn:8017310,Tanjungjaya,West Java,0,village,0,0,50,0,none,none
+gn:8017911,Jayapura,West Java,0,village,0,0,50,0,none,none
+gn:8018033,Arjasari,West Java,0,village,0,0,50,0,none,none
+gn:8023742,Sukamaju Kidul,West Java,0,village,0,0,50,0,none,none
+gn:8023777,Argasari,West Java,0,village,0,0,50,0,none,none
+gn:8023847,Nagarasari,West Java,0,village,0,0,50,0,none,none
+gn:8024174,Kahuripan,West Java,0,village,0,0,50,0,none,none
+gn:8025691,Sindangtamu,West Java,0,village,0,0,50,0,none,none
+gn:8025721,Sukaraja,West Java,0,village,0,0,50,0,none,none
+gn:8025880,Jamanis,West Java,0,village,0,0,50,0,none,none
+gn:8044844,Cibongas,West Java,0,village,0,0,50,0,none,none
+gn:8045398,Ciriri,West Java,0,village,0,0,50,0,none,none
+gn:8046110,Cibitung,West Java,0,village,0,0,50,0,none,none
+gn:8051286,Lovina,Bali,10000,town,0,0,50,0,none,none
+gn:8052596,Cigugur,West Java,0,village,0,0,50,0,none,none
+gn:8052810,Limusnunggal,West Java,0,village,0,0,50,0,none,none
+gn:8053732,Sukadana,West Java,0,village,0,0,50,0,none,none
+gn:8057306,Hegarsari,West Java,0,village,0,0,50,0,none,none
+gn:8058050,Ngulakan,Central Java,0,village,0,0,50,0,none,none
+gn:8058291,Bantengan,Central Java,0,village,0,0,50,0,none,none
+gn:8058611,Cipadung Timur,West Java,0,village,0,0,50,0,none,none
+gn:8060713,Rembang,Central Java,0,village,0,0,50,0,none,none
+gn:8060762,Sidowayah Kidul,Central Java,0,village,0,0,50,0,none,none
+gn:8067334,Pananjung,West Java,0,village,0,0,50,0,none,none
+gn:8071161,Bangkle,Central Java,0,village,0,0,50,0,none,none
+gn:8072446,Sinargalih,West Java,0,village,0,0,50,0,none,none
+gn:8075153,Jetis,East Java,0,village,0,0,50,0,none,none
+gn:8075931,Jamong,East Java,0,village,0,0,50,0,none,none
+gn:8078444,Latsari,East Java,0,village,0,0,50,0,none,none
+gn:8078513,Gedongombo,East Java,0,village,0,0,50,0,none,none
+gn:8078524,Bejagung Kidul,East Java,0,village,0,0,50,0,none,none
+gn:8078977,Bakung,East Java,0,village,0,0,50,0,none,none
+gn:8079534,Wates,East Java,0,village,0,0,50,0,none,none
+gn:8079891,Banjaranyar,East Java,0,village,0,0,50,0,none,none
+gn:8080434,Solokuro,East Java,0,village,0,0,50,0,none,none
+gn:8141000,Prupuh,East Java,0,village,0,0,50,0,none,none
+gn:8142547,Gupakan,East Java,0,village,0,0,50,0,none,none
+gn:8144567,Sukorejo,East Java,0,village,0,0,50,0,none,none
+gn:8170715,Gedangan,East Java,0,village,0,0,50,0,none,none
+gn:8180829,Tempursari,East Java,0,village,0,0,50,0,none,none
+gn:8183587,Dawang,East Java,0,village,0,0,50,0,none,none
+gn:8185032,Kebonsari,East Java,0,village,0,0,50,0,none,none
+gn:8185063,Krajan A Wonorejo,East Java,0,village,0,0,50,0,none,none
+gn:8185077,Kebonan,East Java,0,village,0,0,50,0,none,none
+gn:8185452,Sumberan,East Java,0,village,0,0,50,0,none,none
+gn:8190949,Bangsalsari,East Java,0,village,0,0,50,0,none,none
+gn:8224233,Batubulan,Bali,28131,town,0,0,50,0,none,none
+gn:8235749,Pasirpanjang,Riau Islands,0,village,0,0,50,0,none,none
+gn:8236152,Tebing,Riau Islands,0,village,0,0,50,0,none,none
+gn:8305465,Sekotong Tengah,West Nusa Tenggara,0,village,0,0,50,0,none,none
+gn:8309052,Tlogowungu,Central Java,0,village,0,0,50,0,none,none
+gn:8309837,Lakbok,West Java,0,village,0,0,50,0,none,none
+gn:8309957,Dibee,East Java,0,village,0,0,50,0,none,none
+gn:8310211,Glagahwero,East Java,0,village,0,0,50,0,none,none
+gn:8310303,Siliragung,East Java,0,village,0,0,50,0,none,none
+gn:8314342,Prigi,East Java,0,village,0,0,50,0,none,none
+gn:8322171,Sumbergedong,East Java,0,village,0,0,50,0,none,none
+gn:8322216,Bendo,East Java,0,village,0,0,50,0,none,none
+gn:8333543,Larangan,East Java,0,village,0,0,50,0,none,none
+gn:8355633,Woja,West Nusa Tenggara,0,village,0,0,50,0,none,none
+gn:8355852,Pabean,Bali,6212,village,0,0,50,0,none,none
+gn:8355859,Tegallinggah,Bali,2361,village,0,0,50,0,none,none
+gn:8356005,Pakel,East Java,0,village,0,0,50,0,none,none
+gn:8358471,Pucanglaban,East Java,0,village,0,0,50,0,none,none
+gn:8362638,Bara Datu,Lampung,0,village,0,0,50,0,none,none
+gn:8364332,Oganlima,Lampung,0,village,0,0,50,0,none,none
+gn:8364400,Umbulan Kapiak,Lampung,0,village,0,0,50,0,none,none
+gn:8377311,Ledeunu,East Nusa Tenggara,0,village,0,0,50,0,none,none
+gn:8377510,Loboae,East Nusa Tenggara,0,village,0,0,50,0,none,none
+gn:8378159,Bolou,East Nusa Tenggara,0,village,0,0,50,0,none,none
+gn:8379758,Pragaan,East Java,0,village,0,0,50,0,none,none
+gn:8382324,Batutua,East Nusa Tenggara,0,village,0,0,50,0,none,none
+gn:8382573,Busalangga,East Nusa Tenggara,0,village,0,0,50,0,none,none
+gn:8382804,Likioen,East Nusa Tenggara,0,village,0,0,50,0,none,none
+gn:8384104,Momanalu,East Nusa Tenggara,0,village,0,0,50,0,none,none
+gn:8384366,Talango,East Java,0,village,0,0,50,0,none,none
+gn:8390234,Batakte,East Nusa Tenggara,0,village,0,0,50,0,none,none
+gn:8390425,Uitao,East Nusa Tenggara,0,village,0,0,50,0,none,none
+gn:8390650,Oebobo,East Nusa Tenggara,0,village,0,0,50,0,none,none
+gn:8392689,Tarus,East Nusa Tenggara,0,village,0,0,50,0,none,none
+gn:8401562,Takari,East Nusa Tenggara,0,village,0,0,50,0,none,none
+gn:8402512,Neonmat,East Nusa Tenggara,0,village,0,0,50,0,none,none
+gn:8402683,Siso,East Nusa Tenggara,0,village,0,0,50,0,none,none
+gn:8402862,Oekamusa,East Nusa Tenggara,0,village,0,0,50,0,none,none
+gn:8403980,Polen,East Nusa Tenggara,0,village,0,0,50,0,none,none
+gn:8404559,Oeekam,East Nusa Tenggara,0,village,0,0,50,0,none,none
+gn:8405127,Eban,East Nusa Tenggara,0,village,0,0,50,0,none,none
+gn:8409778,Panite,East Nusa Tenggara,0,village,0,0,50,0,none,none
+gn:8410006,Kuanfatu,East Nusa Tenggara,0,village,0,0,50,0,none,none
+gn:8417474,Kie,East Nusa Tenggara,0,village,0,0,50,0,none,none
+gn:8417493,Oinlasi,East Nusa Tenggara,0,village,0,0,50,0,none,none
+gn:8419120,Ayotupas,East Nusa Tenggara,0,village,0,0,50,0,none,none
+gn:8419378,Biudukfoho,East Nusa Tenggara,0,village,0,0,50,0,none,none
+gn:8420482,Maritaing,East Nusa Tenggara,0,village,0,0,50,0,none,none
+gn:8420647,Kemang,East Nusa Tenggara,0,village,0,0,50,0,none,none
+gn:8420927,Mainang,East Nusa Tenggara,0,village,0,0,50,0,none,none
+gn:8420953,Apui,East Nusa Tenggara,0,village,0,0,50,0,none,none
+gn:8421143,Moru,East Nusa Tenggara,0,village,0,0,50,0,none,none
+gn:8421260,Kampungraja,East Nusa Tenggara,0,village,0,0,50,0,none,none
+gn:8423468,Wairiang,East Nusa Tenggara,0,village,0,0,50,0,none,none
+gn:8424305,Watugolok,East Nusa Tenggara,0,village,0,0,50,0,none,none
+gn:8424526,Waiwadan,East Nusa Tenggara,0,village,0,0,50,0,none,none
+gn:8424544,Senadan,East Nusa Tenggara,0,village,0,0,50,0,none,none
+gn:8424668,Loang,East Nusa Tenggara,0,village,0,0,50,0,none,none
+gn:8424883,Klubagolit,East Nusa Tenggara,0,village,0,0,50,0,none,none
+gn:8425144,Baniona,East Nusa Tenggara,0,village,0,0,50,0,none,none
+gn:8425157,Menanga,East Nusa Tenggara,0,village,0,0,50,0,none,none
+gn:8425258,Ritaebang,East Nusa Tenggara,0,village,0,0,50,0,none,none
+gn:8425373,Data Dian,North Kalimantan,0,village,0,0,50,0,none,none
+gn:8430925,Samalantan,West Kalimantan,0,village,0,0,50,0,none,none
+gn:8432612,Rundeng,North Sumatra,0,village,0,0,50,0,none,none
+gn:8432628,Rantau Prapat,North Sumatra,0,village,0,0,50,0,none,none
+gn:8433052,Tobong,Riau Islands,5828,village,0,0,50,0,none,none
+gn:8433158,Waiklibang,East Nusa Tenggara,0,village,0,0,50,0,none,none
+gn:8434361,Uwa,East Nusa Tenggara,0,village,0,0,50,0,none,none
+gn:8445529,Rambangaru,East Nusa Tenggara,0,village,0,0,50,0,none,none
+gn:8446269,Ngalu,East Nusa Tenggara,0,village,0,0,50,0,none,none
+gn:8449493,Pekan Bahapal,North Sumatra,40000,town,0,0,50,0,none,none
+gn:8457723,Mandarahan,West Sumatra,0,village,0,0,50,0,none,none
+gn:8457821,Rantau Ambacang,Jambi,0,village,0,0,50,0,none,none
+gn:8457881,Siulak Deras Mudik,Jambi,0,village,0,0,50,0,none,none
+gn:8458691,Senayan,West Nusa Tenggara,0,village,0,0,50,0,none,none
+gn:8508621,Tanjung Lubuk,South Sumatra,0,village,0,0,50,0,none,none
+gn:8508784,Negeriagung,South Sumatra,0,village,0,0,50,0,none,none
+gn:8519873,Waghete,Central Papua,0,village,0,0,50,0,none,none
+gn:8526083,Eci,South Papua,0,village,0,0,50,0,none,none
+gn:8527358,Getentiri,South Papua,0,village,0,0,50,0,none,none
+gn:8527444,Muting,South Papua,0,village,0,0,50,0,none,none
+gn:8527496,Mindiptana,South Papua,0,village,0,0,50,0,none,none
+gn:8530375,Warmare,West Papua,0,village,0,0,50,0,none,none
+gn:8530396,Kebar,Southwest Papua,0,village,0,0,50,0,none,none
+gn:8530638,Bomomani,Central Papua,0,village,0,0,50,0,none,none
+gn:8530651,Merdey,West Papua,0,village,0,0,50,0,none,none
+gn:8530692,Bofuer,West Papua,0,village,0,0,50,0,none,none
+gn:8530790,Topo,Central Papua,0,village,0,0,50,0,none,none
+gn:8530810,Homeyo,Central Papua,0,village,0,0,50,0,none,none
+gn:8530813,Kumopa,Central Papua,0,village,0,0,50,0,none,none
+gn:8530814,Moanemani,Central Papua,0,village,0,0,50,0,none,none
+gn:8530839,Bilogai,Central Papua,0,village,0,0,50,0,none,none
+gn:8530865,Beoga,Central Papua,0,village,0,0,50,0,none,none
+gn:8531153,Trimuris,Papua,0,village,0,0,50,0,none,none
+gn:8531154,Arbais,Papua,0,village,0,0,50,0,none,none
+gn:8531172,Samanente,Papua,0,village,0,0,50,0,none,none
+gn:8531185,Guay,Papua,0,village,0,0,50,0,none,none
+gn:8531211,Banda,Papua,0,village,0,0,50,0,none,none
+gn:8531216,Wurigelebur,Highland Papua,0,village,0,0,50,0,none,none
+gn:8531221,Karubaga,Highland Papua,6703,village,0,0,50,0,none,none
+gn:8531309,Sawoi,Papua,0,village,0,0,50,0,none,none
+gn:8534008,Sumberan,East Java,0,village,0,0,50,0,none,none
+gn:8537084,Kota Agung,Lampung,0,village,0,0,50,0,none,none
+gn:8537641,Pulosari,West Java,0,village,0,0,50,0,none,none
+gn:8540338,Gondang,East Java,0,village,0,0,50,0,none,none
+gn:8541243,Kokop,East Java,0,village,0,0,50,0,none,none
+gn:8541559,Bontang Baru,East Kalimantan,0,village,0,0,50,0,none,none
+gn:8548995,Wasior,West Papua,0,village,0,0,50,0,none,none
+gn:8562785,Pulau Punjung,West Sumatra,0,village,0,0,50,0,none,none
+gn:8569080,Teluk Pinang,Riau,0,village,0,0,50,0,none,none
+gn:8571632,Suak Bakung,Aceh,0,village,0,0,50,0,none,none
+gn:8571634,Paya Dapur,Aceh,0,village,0,0,50,0,none,none
+gn:8571642,Labuhan Bajau,Aceh,0,village,0,0,50,0,none,none
+gn:8571664,Luan Balu,Aceh,0,village,0,0,50,0,none,none
+gn:8571670,Lauke,Aceh,0,village,0,0,50,0,none,none
+gn:8571684,Kuala Baru,Aceh,0,village,0,0,50,0,none,none
+gn:8571686,Rimo,Aceh,0,village,0,0,50,0,none,none
+gn:8571689,Danauparis,Aceh,0,village,0,0,50,0,none,none
+gn:8571699,Pulo Batal,Aceh,0,village,0,0,50,0,none,none
+gn:8571705,Pulopaya,Aceh,0,village,0,0,50,0,none,none
+gn:8571707,Pulo Ie,Aceh,0,village,0,0,50,0,none,none
+gn:8571708,Terbangan,Aceh,0,village,0,0,50,0,none,none
+gn:8571710,Samadua,Aceh,0,village,0,0,50,0,none,none
+gn:8571711,Sawang,Aceh,0,village,0,0,50,0,none,none
+gn:8571712,Meukek,Aceh,0,village,0,0,50,0,none,none
+gn:8571713,Peuleumat,Aceh,0,village,0,0,50,0,none,none
+gn:8571714,Kota Trieng,Aceh,0,village,0,0,50,0,none,none
+gn:8571723,Mersak,Aceh,0,village,0,0,50,0,none,none
+gn:8571725,Seupakat,Aceh,0,village,0,0,50,0,none,none
+gn:8571727,Tanah Merah,Aceh,0,village,0,0,50,0,none,none
+gn:8571734,Bambol,Aceh,0,village,0,0,50,0,none,none
+gn:8571738,Lawesigalagala Timur,Aceh,0,village,0,0,50,0,none,none
+gn:8571740,Ngkan,Aceh,0,village,0,0,50,0,none,none
+gn:8571744,Idi Rayeuk,Aceh,0,village,0,0,50,0,none,none
+gn:8571745,Idi Cut,Aceh,0,village,0,0,50,0,none,none
+gn:8571746,Bagok,Aceh,0,village,0,0,50,0,none,none
+gn:8571747,Beusa Seberang,Aceh,0,village,0,0,50,0,none,none
+gn:8571748,Sungai Raya,Aceh,0,village,0,0,50,0,none,none
+gn:8571749,Rantau Panjang,Aceh,0,village,0,0,50,0,none,none
+gn:8571750,Buket Teukuh,Aceh,0,village,0,0,50,0,none,none
+gn:8571751,Seuneubok Bayu,Aceh,0,village,0,0,50,0,none,none
+gn:8571752,Simpang Ulim,Aceh,0,village,0,0,50,0,none,none
+gn:8571753,Kota Binjai,Aceh,0,village,0,0,50,0,none,none
+gn:8571757,Luthu,Aceh,0,village,0,0,50,0,none,none
+gn:8571758,Indrapuri,Aceh,0,village,0,0,50,0,none,none
+gn:8571759,Angan,Aceh,0,village,0,0,50,0,none,none
+gn:8571760,Lampuuk,Aceh,0,village,0,0,50,0,none,none
+gn:8571761,Sibreh,Aceh,0,village,0,0,50,0,none,none
+gn:8571762,Mata Ie,Aceh,0,village,0,0,50,0,none,none
+gn:8571767,Keumala,Aceh,0,village,0,0,50,0,none,none
+gn:8571770,Geuleumpangminyeuk,Aceh,0,village,0,0,50,0,none,none
+gn:8571802,Rusip,Aceh,0,village,0,0,50,0,none,none
+gn:8571803,Kute Panang,Aceh,0,village,0,0,50,0,none,none
+gn:8571804,Kemil,Aceh,0,village,0,0,50,0,none,none
+gn:8571805,Pegasing,Aceh,0,village,0,0,50,0,none,none
+gn:8571806,Kuala Bintang,Aceh,0,village,0,0,50,0,none,none
+gn:8571807,Jagongjeget,Aceh,0,village,0,0,50,0,none,none
+gn:8571810,Banda Layung,Aceh,0,village,0,0,50,0,none,none
+gn:8571812,Keudee Aron,Aceh,0,village,0,0,50,0,none,none
+gn:8571816,Pantai Ceuremen,Aceh,0,village,0,0,50,0,none,none
+gn:8571822,Uleeglee,Aceh,0,village,0,0,50,0,none,none
+gn:8571823,Jumpangdua,Aceh,0,village,0,0,50,0,none,none
+gn:8571824,Cot Baroh,Aceh,0,village,0,0,50,0,none,none
+gn:8571825,Adil Makmur,Aceh,0,village,0,0,50,0,none,none
+gn:8571826,Juli,Aceh,0,village,0,0,50,0,none,none
+gn:8571827,Alue Glumpang,Aceh,0,village,0,0,50,0,none,none
+gn:8571836,Blang Ara,Aceh,0,village,0,0,50,0,none,none
+gn:8571837,Beutong Ateuh,Aceh,0,village,0,0,50,0,none,none
+gn:8571838,Alue Bilie,Aceh,0,village,0,0,50,0,none,none
+gn:8571839,Suka Makmue,Aceh,0,village,0,0,50,0,none,none
+gn:8571840,Blang Mane,Aceh,0,village,0,0,50,0,none,none
+gn:8571851,Kalde Panga,Aceh,0,village,0,0,50,0,none,none
+gn:8571852,Lageun,Aceh,0,village,0,0,50,0,none,none
+gn:8571856,Blang Dalam,Aceh,0,village,0,0,50,0,none,none
+gn:8571859,Kajeung,Aceh,0,village,0,0,50,0,none,none
+gn:8571864,Peukanbada,Aceh,0,village,0,0,50,0,none,none
+gn:8571903,Geumpang,Aceh,0,village,0,0,50,0,none,none
+gn:8571905,Mane,Aceh,0,village,0,0,50,0,none,none
+gn:8571909,Tiro,Aceh,0,village,0,0,50,0,none,none
+gn:8571918,Lampoih,Aceh,0,village,0,0,50,0,none,none
+gn:8571919,Caloue,Aceh,0,village,0,0,50,0,none,none
+gn:8571936,Matangkuli,Aceh,0,village,0,0,50,0,none,none
+gn:8571937,Matangpayang,Aceh,0,village,0,0,50,0,none,none
+gn:8571938,Seunudon,Aceh,0,village,0,0,50,0,none,none
+gn:8571939,Bulahblangaro,Aceh,0,village,0,0,50,0,none,none
+gn:8571940,Blang Ara,Aceh,0,village,0,0,50,0,none,none
+gn:8571950,Babah Rot,Aceh,0,village,0,0,50,0,none,none
+gn:8571951,Suek,Aceh,0,village,0,0,50,0,none,none
+gn:8571963,Kutapanjang,Aceh,0,village,0,0,50,0,none,none
+gn:8571964,Sangir,Aceh,0,village,0,0,50,0,none,none
+gn:8571977,Sungai Iyu,Aceh,0,village,0,0,50,0,none,none
+gn:8572002,Karangbaru,Aceh,0,village,0,0,50,0,none,none
+gn:8572003,Sungi Liput,Aceh,0,village,0,0,50,0,none,none
+gn:8572004,Tenggulun,Aceh,0,village,0,0,50,0,none,none
+gn:8572005,Pulau Tiga,Aceh,0,village,0,0,50,0,none,none
+gn:8572032,Simpang Teritit,Aceh,0,village,0,0,50,0,none,none
+gn:8572046,Ulee Gle,Aceh,0,village,0,0,50,0,none,none
+gn:8572047,Trienggadeng,Aceh,0,village,0,0,50,0,none,none
+gn:8572048,Pante Raja,Aceh,0,village,0,0,50,0,none,none
+gn:8572058,Lambaro,Aceh,0,village,0,0,50,0,none,none
+gn:8572075,Pasir Panjang,Aceh,0,village,0,0,50,0,none,none
+gn:8572105,Lawepakam,Aceh,0,village,0,0,50,0,none,none
+gn:8572205,Kuala Baru Sungai,Aceh,0,village,0,0,50,0,none,none
+gn:8581443,South Tangerang,Banten,1429529,large-city,0,0,50,0,none,none
+gn:8594818,Kotabahagia,Aceh,0,village,0,0,50,0,none,none
+gn:8594820,Blangpulo,Aceh,0,village,0,0,50,0,none,none
+gn:8611419,Sarulla,North Sumatra,0,village,0,0,50,0,none,none
+gn:8613250,Long Peso,North Kalimantan,0,village,0,0,50,0,none,none
+gn:8613253,Long Beluah,North Kalimantan,0,village,0,0,50,0,none,none
+gn:8613254,Long Bang,North Kalimantan,0,village,0,0,50,0,none,none
+gn:8613348,Sungai Nyamuk,East Kalimantan,0,village,0,0,50,0,none,none
+gn:8613349,Binalawan,North Kalimantan,0,village,0,0,50,0,none,none
+gn:8613350,Long Layu,North Kalimantan,0,village,0,0,50,0,none,none
+gn:8613625,Sungaiboh,North Kalimantan,0,village,0,0,50,0,none,none
+gn:8613639,Long Loreh,North Kalimantan,0,village,0,0,50,0,none,none
+gn:8613659,Sekatak Bengara,North Kalimantan,0,village,0,0,50,0,none,none
+gn:8613673,Tanjung Palas,North Kalimantan,0,village,0,0,50,0,none,none
+gn:8613689,Kerangagung,North Kalimantan,0,village,0,0,50,0,none,none
+gn:8613708,Kayan Hulu,North Kalimantan,0,village,0,0,50,0,none,none
+gn:8616623,Pasarujungbatu,North Sumatra,0,village,0,0,50,0,none,none
+gn:8636580,Sipoholon,North Sumatra,0,village,0,0,50,0,none,none
+gn:8636696,Sampuran,North Sumatra,0,village,0,0,50,0,none,none
+gn:8639281,Sukarama,North Sumatra,0,village,0,0,50,0,none,none
+gn:8639317,Sumbul,North Sumatra,0,village,0,0,50,0,none,none
+gn:8640712,Pulau Temiang,Jambi,0,village,0,0,50,0,none,none
+gn:8642005,Handilenam,East Kalimantan,0,village,0,0,50,0,none,none
+gn:8642044,Palaran,East Kalimantan,0,village,0,0,50,0,none,none
+gn:8646788,Waru,East Kalimantan,0,village,0,0,50,0,none,none
+gn:8646854,Batusopang,East Kalimantan,0,village,0,0,50,0,none,none
+gn:8647200,Awayan,South Kalimantan,0,village,0,0,50,0,none,none
+gn:8647223,Matangai,Central Kalimantan,0,village,0,0,50,0,none,none
+gn:8647224,Jenamas,Central Kalimantan,0,village,0,0,50,0,none,none
+gn:8647225,Danaupanggang,South Kalimantan,0,village,0,0,50,0,none,none
+gn:8647226,Telagaselaba,South Kalimantan,0,village,0,0,50,0,none,none
+gn:8647227,Sungaiturak,South Kalimantan,0,village,0,0,50,0,none,none
+gn:8647229,Pasararba,South Kalimantan,0,village,0,0,50,0,none,none
+gn:8647231,Tanta,South Kalimantan,0,village,0,0,50,0,none,none
+gn:8647234,Tambarangan,South Kalimantan,0,village,0,0,50,0,none,none
+gn:8647235,Tapintengah,South Kalimantan,0,village,0,0,50,0,none,none
+gn:8647236,Margasari,South Kalimantan,0,village,0,0,50,0,none,none
+gn:8647237,Margasarihilir,South Kalimantan,0,village,0,0,50,0,none,none
+gn:8647238,Angkimang,South Kalimantan,0,village,0,0,50,0,none,none
+gn:8647239,Pasingkan,South Kalimantan,0,village,0,0,50,0,none,none
+gn:8647240,Pendawanbaru,South Kalimantan,0,village,0,0,50,0,none,none
+gn:8647241,Sungaitatas,Central Kalimantan,0,village,0,0,50,0,none,none
+gn:8647242,Bantul,South Kalimantan,0,village,0,0,50,0,none,none
+gn:8647243,Barimba,Central Kalimantan,0,village,0,0,50,0,none,none
+gn:8647244,Anjirserapat,Central Kalimantan,0,village,0,0,50,0,none,none
+gn:8647245,Basarang,Central Kalimantan,0,village,0,0,50,0,none,none
+gn:8647259,Anjirmuara,South Kalimantan,0,village,0,0,50,0,none,none
+gn:8647261,Sungaigampa,South Kalimantan,0,village,0,0,50,0,none,none
+gn:8647262,Sungaipuntik,South Kalimantan,0,village,0,0,50,0,none,none
+gn:8647263,Sungaitabuk,South Kalimantan,0,village,0,0,50,0,none,none
+gn:8647264,Gambut,South Kalimantan,0,village,0,0,50,0,none,none
+gn:8647265,Astambul,South Kalimantan,0,village,0,0,50,0,none,none
+gn:8647269,Sungairaya,South Kalimantan,0,village,0,0,50,0,none,none
+gn:8647276,Kurau,South Kalimantan,0,village,0,0,50,0,none,none
+gn:8647353,Bakau,South Kalimantan,0,village,0,0,50,0,none,none
+gn:8647354,Pudi,South Kalimantan,0,village,0,0,50,0,none,none
+gn:8647355,Putatbasiun,South Kalimantan,0,village,0,0,50,0,none,none
+gn:8647356,Mungkuruyam,South Kalimantan,0,village,0,0,50,0,none,none
+gn:8647357,Halong,South Kalimantan,0,village,0,0,50,0,none,none
+gn:8647358,Manunggulama,South Kalimantan,0,village,0,0,50,0,none,none
+gn:8647662,Binawara,South Kalimantan,0,village,0,0,50,0,none,none
+gn:8647703,Lontar,South Kalimantan,0,village,0,0,50,0,none,none
+gn:8647707,Allealle,South Kalimantan,0,village,0,0,50,0,none,none
+gn:8647743,Telagalangsat,South Kalimantan,0,village,0,0,50,0,none,none
+gn:8647744,Juai,South Kalimantan,0,village,0,0,50,0,none,none
+gn:8655725,Mapurujaya,Central Papua,0,village,0,0,50,0,none,none
+gn:8659104,Woha,West Nusa Tenggara,0,village,0,0,50,0,none,none
+gn:8660721,Kuala Pembuang,Central Kalimantan,0,village,0,0,50,0,none,none
+gn:8667844,Doom,Southwest Papua,0,village,0,0,50,0,none,none
+gn:8667870,Aifat,Southwest Papua,0,village,0,0,50,0,none,none
+gn:8667930,Masohi,Maluku,36433,town,0,0,50,0,none,none
+gn:8667932,Waipia,Maluku,0,village,0,0,50,0,none,none
+gn:8724347,Petani,North Maluku,0,village,0,0,50,0,none,none
+gn:8724349,Buli,North Maluku,0,village,0,0,50,0,none,none
+gn:8726195,Basiong,North Maluku,0,village,0,0,50,0,none,none
+gn:8726235,Malifud,North Maluku,0,village,0,0,50,0,none,none
+gn:8726236,Guruafin,North Maluku,0,village,0,0,50,0,none,none
+gn:8726312,Dufa-Dufa,North Maluku,0,village,0,0,50,0,none,none
+gn:8726933,Tungoo,North Sulawesi,0,village,0,0,50,0,none,none
+gn:8741167,Teritip,Bangka–Belitung Islands,0,village,0,0,50,0,none,none
+gn:9014047,Terentang,West Kalimantan,0,village,0,0,50,0,none,none
+gn:9014049,Batuampar,West Kalimantan,0,village,0,0,50,0,none,none
+gn:9015312,Kenyau,West Kalimantan,0,village,0,0,50,0,none,none
+gn:9018327,Pontianak Barat,West Kalimantan,0,village,0,0,50,0,none,none
+gn:9958154,Barikin,South Kalimantan,0,village,0,0,50,0,none,none
+gn:9958155,Loklaga,South Kalimantan,0,village,0,0,50,0,none,none
+gn:10276543,Senayang,Riau Islands,0,village,0,0,50,0,none,none
+gn:10276708,Matak,Riau Islands,0,village,0,0,50,0,none,none
+gn:10276717,Sabang Mawang Barat,Riau Islands,0,village,0,0,50,0,none,none
+gn:10276719,Cemaga,Riau Islands,0,village,0,0,50,0,none,none
+gn:10276722,Harapan Jaya,Riau Islands,0,village,0,0,50,0,none,none
+gn:11009043,Mangupura,Bali,0,village,0,0,50,0,none,none
+gn:11009130,Tigaraksa,Banten,0,village,0,0,50,0,none,none
+gn:11009131,Tubei,Bengkulu,0,village,0,0,50,0,none,none
+gn:11009132,Karang Tinggi,Bengkulu,0,village,0,0,50,0,none,none
+gn:11009133,Pulau Pramuka,Jakarta,0,village,0,0,50,0,none,none
+gn:11009134,Suwawa,Gorontalo,0,village,0,0,50,0,none,none
+gn:11009145,Siulak,Jambi,0,village,0,0,50,0,none,none
+gn:11009767,Batang,Central Java,0,village,0,0,50,0,none,none
+gn:11009838,Ngasem,East Java,0,village,0,0,50,0,none,none
+gn:11009865,Sungai Raya,West Kalimantan,0,village,0,0,50,0,none,none
+gn:11010168,Sendawar,East Kalimantan,0,village,0,0,50,0,none,none
+gn:11010247,Bandar Seri Bentan,Riau Islands,0,village,0,0,50,0,none,none
+gn:11010380,Wiralaga Mulya,Lampung,0,village,0,0,50,0,none,none
+gn:11010427,Tiakur,Maluku,5227,village,0,0,50,0,none,none
+gn:11011787,Kigamani,Central Papua,0,village,0,0,50,0,none,none
+gn:11011788,Sugapa,Central Papua,0,village,0,0,50,0,none,none
+gn:11012570,Burmeso,Papua,0,village,0,0,50,0,none,none
+gn:11012571,Kobakma,Highland Papua,13062,town,0,0,50,0,none,none
+gn:11012573,Kenyam,Highland Papua,6394,village,0,0,50,0,none,none
+gn:11012574,Oksibil,Highland Papua,0,village,0,0,50,0,none,none
+gn:11012575,Ilaga,Central Papua,0,village,0,0,50,0,none,none
+gn:11022289,Botawa,Papua,0,village,0,0,50,0,none,none
+gn:11023932,Sumohai,Highland Papua,0,village,0,0,50,0,none,none
+gn:11023936,Elelim,Highland Papua,5946,village,0,0,50,0,none,none
+gn:11025117,Ullong,West Papua,0,village,0,0,50,0,none,none
+gn:11025556,Aimas,Southwest Papua,0,village,0,0,50,0,none,none
+gn:11025990,Fef,Southwest Papua,966,village,0,0,50,0,none,none
+gn:11028931,Sigi Biromaru,Central Sulawesi,0,village,0,0,50,0,none,none
+gn:11032462,Buranga,Southeast Sulawesi,0,village,0,0,50,0,none,none
+gn:11033463,Laworo,Southeast Sulawesi,0,village,0,0,50,0,none,none
+gn:11033761,Tuapejat,West Sumatra,5756,village,0,0,50,0,none,none
+gn:11033803,Arosuka,West Sumatra,0,village,0,0,50,0,none,none
+gn:11033806,Padang Aro,West Sumatra,0,village,0,0,50,0,none,none
+gn:11038159,Lotu,North Sumatra,0,village,0,0,50,0,none,none
+gn:11039235,Labungkari,Southeast Sulawesi,0,village,0,0,50,0,none,none
+gn:11185371,Jembrana Subdistrict,Bali,0,village,0,0,50,0,none,none
+gn:11919949,Amlapura city,Bali,31869,town,0,0,50,0,none,none
+gn:12069592,Patipi Pasir,West Papua,0,village,0,0,50,0,none,none
+gn:12075733,Kramongmongga,West Papua,0,village,0,0,50,0,none,none
+gn:12087159,Onimsari,West Papua,0,village,0,0,50,0,none,none
+gn:12090865,Weriagar,West Papua,0,village,0,0,50,0,none,none
+gn:12092721,Moskona Barat,West Papua,0,village,0,0,50,0,none,none
+gn:12110003,Meyado,West Papua,0,village,0,0,50,0,none,none
+gn:12110005,Jagiro,West Papua,0,village,0,0,50,0,none,none
+gn:12110049,Kucir,West Papua,0,village,0,0,50,0,none,none
+gn:12110078,Masyeta,West Papua,0,village,0,0,50,0,none,none
+gn:12110098,Biscoop,West Papua,0,village,0,0,50,0,none,none
+gn:12159595,Pamolokan,East Java,0,village,0,0,50,0,none,none
+gn:12168501,Sitimerto,East Java,0,village,0,0,50,0,none,none
+gn:12183916,Krucil Timur,East Java,0,village,0,0,50,0,none,none
+gn:12184638,Raas,East Java,0,village,0,0,50,0,none,none
+gn:12185757,Tambakrejo,East Java,0,village,0,0,50,0,none,none
+gn:12186497,Buduan Ghejeh,East Java,0,village,0,0,50,0,none,none
+gn:12196969,Pemalang,Central Java,0,village,0,0,50,0,none,none
+gn:12197151,Taman,Central Java,0,village,0,0,50,0,none,none
+gn:13118656,Ranai Kota,Riau Islands,8735,village,0,0,50,0,none,none
+gn:13286635,Bugalaga,Central Papua,3582,village,0,0,50,0,none,none
+gn:13405902,Kota Sambas,West Kalimantan,57295,town,0,0,50,0,none,none
+gn:13406451,Kebonan,East Java,0,village,0,0,50,0,none,none
+gn:13409341,Bangunrejo,Lampung,0,village,0,0,50,0,none,none
+gn:13414104,Gapura,East Java,0,village,0,0,50,0,none,none
+gn:13415066,Pidie,Aceh,0,village,0,0,50,0,none,none
+gn:13415506,Dumai Kota,Riau,0,village,0,0,50,0,none,none
+gn:13452405,Ulu Siau,North Sulawesi,0,village,0,0,50,0,none,none
+gn:13645283,Dalung,Bali,30228,town,0,0,50,0,none,none
+gn:13680164,Nusantara,East Kalimantan,147430,city,0,0,50,0,none,none
+gn:13715595,Japan,East Java,9197,village,0,0,50,0,none,none

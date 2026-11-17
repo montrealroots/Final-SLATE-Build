@@ -1,0 +1,261 @@
+place_id,name,region,population,market,verified_homes,dated_listings,shortfall_to_50,recorded_sales,rent_source,price_source
+gn:556386,Indura,Grodnenskaya,1500,village,0,0,50,0,none,none
+gn:611866,Skidel’,Grodnenskaya,9707,village,0,0,50,0,none,none
+gn:618723,Znamenka,Brest,1324,village,0,0,50,0,none,none
+gn:618800,Horad Zhodzina,Minsk,62983,town,0,0,50,0,none,none
+gn:618806,Zhlobin,Homyel’ Voblasc’,76304,town,0,0,50,0,none,none
+gn:618815,Žytkavičy,Homyel’ Voblasc’,15788,town,0,0,50,0,none,none
+gn:618818,Zhirovichi,Grodnenskaya,1800,village,0,0,50,0,none,none
+gn:618863,Zhaludok,Grodnenskaya,1017,village,0,0,50,0,none,none
+gn:618883,Zhdanovichy,Minsk,5000,village,0,0,50,0,none,none
+gn:618913,Zhabinka,Brest,14430,town,0,0,50,0,none,none
+gn:618932,Zel’va,Grodnenskaya,6193,village,0,0,50,0,none,none
+gn:619066,Zaslawye,Minsk,17166,town,0,0,50,0,none,none
+gn:619217,Zamostochye,Minsk,2500,village,0,0,50,0,none,none
+gn:619598,Yel’sk,Homyel’ Voblasc’,8623,village,0,0,50,0,none,none
+gn:619616,Yalizava,Mogilev,2600,village,0,0,50,0,none,none
+gn:619818,Vysokaye,Brest,4940,village,0,0,50,0,none,none
+gn:619979,Voronovo,Grodnenskaya,5532,village,0,0,50,0,none,none
+gn:620127,Vitebsk,Vitebsk,358927,city,0,0,50,0,none,none
+gn:620141,Vishow,Mogilev,1224,village,0,0,50,0,none,none
+gn:620146,Vishnyeva,Grodnenskaya,7000,village,0,0,50,0,none,none
+gn:620181,Vileyka,Minsk,26015,town,0,0,50,0,none,none
+gn:620191,Vidzy,Vitebsk,1546,village,0,0,50,0,none,none
+gn:620205,Veyno,Mogilev,1717,village,0,0,50,0,none,none
+gn:620214,Vyetka,Homyel’ Voblasc’,8580,village,0,0,50,0,none,none
+gn:620255,Verkhnedvinsk,Vitebsk,6771,village,0,0,50,0,none,none
+gn:620391,Vaukavysk,Grodnenskaya,41020,town,0,0,50,0,none,none
+gn:620425,Vasilyevichy,Homyel’ Voblasc’,3143,village,0,0,50,0,none,none
+gn:620445,Volozhin,Minsk,9840,village,0,0,50,0,none,none
+gn:620483,Uzda,Minsk,10474,town,0,0,50,0,none,none
+gn:620540,Ushachi,Vitebsk,5773,village,0,0,50,0,none,none
+gn:620558,Urechcha,Minsk,3300,village,0,0,50,0,none,none
+gn:620676,Turaŭ,Homyel’ Voblasc’,3100,village,0,0,50,0,none,none
+gn:620833,Tolochin,Vitebsk,9542,village,0,0,50,0,none,none
+gn:620869,Timkovichi,Minsk,1299,village,0,0,50,0,none,none
+gn:620945,Tsyelyakhany,Brest,3625,village,0,0,50,0,none,none
+gn:621048,Svislach,Grodnenskaya,5851,village,0,0,50,0,none,none
+gn:621074,Svetlogorsk,Homyel’ Voblasc’,61812,town,0,0,50,0,none,none
+gn:621266,Stowbtsy,Minsk,17603,town,0,0,50,0,none,none
+gn:621277,Stolin,Brest,14034,town,0,0,50,0,none,none
+gn:621286,Stodolichi,Homyel’ Voblasc’,0,village,0,0,50,0,none,none
+gn:621396,Staryye Dorogi,Minsk,10683,town,0,0,50,0,none,none
+gn:621462,Starobin,Minsk,6000,village,0,0,50,0,none,none
+gn:621543,Stan’kava,Minsk,1850,village,0,0,50,0,none,none
+gn:621605,Sasnovy Bor,Homyel’ Voblasc’,2500,village,0,0,50,0,none,none
+gn:621641,Soly,Grodnenskaya,1840,village,0,0,50,0,none,none
+gn:621700,Snow,Minsk,2600,village,0,0,50,0,none,none
+gn:621713,Smarhoń,Grodnenskaya,35072,town,0,0,50,0,none,none
+gn:621729,Smaliavičy,Minsk,24402,town,0,0,50,0,none,none
+gn:621732,Smilavičy,Minsk,5200,village,0,0,50,0,none,none
+gn:621741,Slutsk,Minsk,58995,town,0,0,50,0,none,none
+gn:621754,Slonim,Grodnenskaya,48402,town,0,0,50,0,none,none
+gn:621817,Slabada,Minsk,1819,village,0,0,50,0,none,none
+gn:621838,Slawharad,Mogilev,7647,village,0,0,50,0,none,none
+gn:621986,Shumilino,Vitebsk,7223,village,0,0,50,0,none,none
+gn:622034,Shklov,Mogilev,14738,town,0,0,50,0,none,none
+gn:622113,Shchuchyn,Grodnenskaya,15127,town,0,0,50,0,none,none
+gn:622179,Sharkovshchina,Vitebsk,5945,village,0,0,50,0,none,none
+gn:622258,Senno,Vitebsk,6974,village,0,0,50,0,none,none
+gn:622274,Syenitsa,Minsk,5000,village,0,0,50,0,none,none
+gn:622279,Syomkava,Minsk,1522,village,0,0,50,0,none,none
+gn:622406,Sarachy,Minsk,1350,village,0,0,50,0,none,none
+gn:622420,Samakhvalavichy,Minsk,2500,village,0,0,50,0,none,none
+gn:622428,Soligorsk,Minsk,96418,town,0,0,50,0,none,none
+gn:622500,Ruzhany,Brest,2642,village,0,0,50,0,none,none
+gn:622614,Rudzyensk,Minsk,2900,village,0,0,50,0,none,none
+gn:622690,Rossony,Vitebsk,5400,village,0,0,50,0,none,none
+gn:622700,Ross’,Grodnenskaya,6200,village,0,0,50,0,none,none
+gn:622739,Rahachow,Homyel’ Voblasc’,31490,town,0,0,50,0,none,none
+gn:622794,Rechytsa,Homyel’ Voblasc’,64733,town,0,0,50,0,none,none
+gn:622795,Rechytsa,Brest,0,village,0,0,50,0,none,none
+gn:622849,Rakaw,Minsk,6300,village,0,0,50,0,none,none
+gn:622877,Radaškovičy,Minsk,6100,village,0,0,50,0,none,none
+gn:622971,Puchavičy,Minsk,2800,village,0,0,50,0,none,none
+gn:622997,Pruzhany,Brest,18994,town,0,0,50,0,none,none
+gn:623129,Prawdzinski,Minsk,2900,village,0,0,50,0,none,none
+gn:623317,Polotsk,Vitebsk,79285,town,0,0,50,0,none,none
+gn:623512,Plyeshchanitsy,Minsk,7800,village,0,0,50,0,none,none
+gn:623549,Pinsk,Brest,123283,city,0,0,50,0,none,none
+gn:623577,Pyatryshki,Minsk,1946,village,0,0,50,0,none,none
+gn:623581,Petrikov,Homyel’ Voblasc’,10278,town,0,0,50,0,none,none
+gn:623760,Pastavy,Vitebsk,18450,town,0,0,50,0,none,none
+gn:623788,Parychy,Homyel’ Voblasc’,2300,village,0,0,50,0,none,none
+gn:623855,Azyartso,Minsk,1247,village,0,0,50,0,none,none
+gn:623902,Asvieja,Vitebsk,1300,village,0,0,50,0,none,none
+gn:623904,Ostryna,Grodnenskaya,1529,village,0,0,50,0,none,none
+gn:623941,Astraviec,Grodnenskaya,15265,town,0,0,50,0,none,none
+gn:623956,Astrashytski Haradok,Minsk,2390,village,0,0,50,0,none,none
+gn:624012,Asnyezhytsy,Brest,1185,village,0,0,50,0,none,none
+gn:624034,Osipovichi,Mogilev,28745,town,0,0,50,0,none,none
+gn:624079,Orsha,Vitebsk,101662,city,0,0,50,0,none,none
+gn:624199,Aktsyabrski,Homyel’ Voblasc’,7167,village,0,0,50,0,none,none
+gn:624297,Novy Svyerzhan’,Minsk,2200,village,0,0,50,0,none,none
+gn:624318,Kadino,Mogilev,1753,village,0,0,50,0,none,none
+gn:624418,Novosel’ye,Minsk,1269,village,0,0,50,0,none,none
+gn:624494,Novolukoml’,Vitebsk,11598,town,0,0,50,0,none,none
+gn:624584,Novaya Huta,Homyel’ Voblasc’,2159,village,0,0,50,0,none,none
+gn:624612,Nasilava,Minsk,1259,village,0,0,50,0,none,none
+gn:624700,Nesvizh,Minsk,15897,town,0,0,50,0,none,none
+gn:624753,Nyakhachava,Brest,1200,village,0,0,50,0,none,none
+gn:624784,Novopolotsk,Vitebsk,95370,town,0,0,50,0,none,none
+gn:624785,Novogrudok,Grodnenskaya,27624,town,0,0,50,0,none,none
+gn:624799,Narovlya,Homyel’ Voblasc’,8388,village,0,0,50,0,none,none
+gn:624804,Narach,Minsk,3400,village,0,0,50,0,none,none
+gn:624805,Narach,Minsk,3400,village,0,0,50,0,none,none
+gn:624842,Myshkavichy,Mogilev,2000,village,0,0,50,0,none,none
+gn:624861,Myadzyel,Minsk,6822,village,0,0,50,0,none,none
+gn:624889,Mscislau,Mogilev,9959,village,0,0,50,0,none,none
+gn:624908,Motal’,Brest,4079,village,0,0,50,0,none,none
+gn:624965,Mosar,Vitebsk,1500,village,0,0,50,0,none,none
+gn:625128,Mir,Grodnenskaya,2248,village,0,0,50,0,none,none
+gn:625130,Miory,Vitebsk,7756,village,0,0,50,0,none,none
+gn:625144,Minsk,Minsk City,1742124,large-city,0,0,50,0,none,none
+gn:625228,Mikashevichy,Brest,11823,town,0,0,50,0,none,none
+gn:625245,Myazhysyatki,Mogilev,1807,village,0,0,50,0,none,none
+gn:625324,Mazyr,Homyel’ Voblasc’,104517,city,0,0,50,0,none,none
+gn:625367,Mosty,Grodnenskaya,14239,town,0,0,50,0,none,none
+gn:625409,Mar’ina Gorka,Minsk,19892,town,0,0,50,0,none,none
+gn:625539,Malorita,Brest,12593,town,0,0,50,0,none,none
+gn:625625,Maladziečna,Minsk,87339,town,0,0,50,0,none,none
+gn:625665,Mahilyow,Mogilev,352896,city,0,0,50,0,none,none
+gn:625671,Machulishchy,Minsk,10869,town,0,0,50,0,none,none
+gn:625721,Lyuban’,Minsk,11165,town,0,0,50,0,none,none
+gn:625737,Lyntupy,Vitebsk,1600,village,0,0,50,0,none,none
+gn:625743,Lyepyel’,Vitebsk,17400,town,0,0,50,0,none,none
+gn:625772,Lyakhovichi,Brest,10473,town,0,0,50,0,none,none
+gn:625818,Luninyets,Brest,23396,town,0,0,50,0,none,none
+gn:625853,Luhavaya Slabada,Minsk,1306,village,0,0,50,0,none,none
+gn:625907,Loyev,Homyel’ Voblasc’,6028,village,0,0,50,0,none,none
+gn:625931,Loshnitsa,Minsk,6524,village,0,0,50,0,none,none
+gn:625972,Logoysk,Minsk,15543,town,0,0,50,0,none,none
+gn:626064,Liozno,Vitebsk,6515,village,0,0,50,0,none,none
+gn:626081,Lida,Grodnenskaya,103262,city,0,0,50,0,none,none
+gn:626188,Lel’chitsy,Homyel’ Voblasc’,0,village,0,0,50,0,none,none
+gn:626266,Lahishyn,Brest,2800,village,0,0,50,0,none,none
+gn:626450,Krychaw,Mogilev,22973,town,0,0,50,0,none,none
+gn:626471,Krupki,Minsk,8276,village,0,0,50,0,none,none
+gn:626491,Krugloye,Mogilev,7300,village,0,0,50,0,none,none
+gn:626523,Kryvichy,Minsk,1298,village,0,0,50,0,none,none
+gn:626548,Kreva,Grodnenskaya,3100,village,0,0,50,0,none,none
+gn:626598,Krasnyy Bereg,Mogilev,2359,village,0,0,50,0,none,none
+gn:626610,Krasnaye,Minsk,2900,village,0,0,50,0,none,none
+gn:626621,Krasnosel’skiy,Grodnenskaya,7300,village,0,0,50,0,none,none
+gn:626625,Krasnapollye,Mogilev,6100,village,0,0,50,0,none,none
+gn:626660,Chyrvonaya Slabada,Minsk,4700,village,0,0,50,0,none,none
+gn:626738,Kazhan-Haradok,Brest,1700,village,0,0,50,0,none,none
+gn:626806,Kastsyukowka,Homyel’ Voblasc’,10552,town,0,0,50,0,none,none
+gn:626808,Kostyukovichi,Mogilev,14757,town,0,0,50,0,none,none
+gn:626829,Kosava,Brest,1770,village,0,0,50,0,none,none
+gn:626895,Korolëv Stan,Minsk,1033,village,0,0,50,0,none,none
+gn:626917,Korma,Homyel’ Voblasc’,0,village,0,0,50,0,none,none
+gn:626933,Karanyowka,Homyel’ Voblasc’,1141,village,0,0,50,0,none,none
+gn:626939,Korelichi,Grodnenskaya,5546,village,0,0,50,0,none,none
+gn:626956,Kopyl’,Minsk,9767,village,0,0,50,0,none,none
+gn:626992,Konstantinovo,Vitebsk,3800,village,0,0,50,0,none,none
+gn:627083,Kalodzishchy,Minsk,17000,town,0,0,50,0,none,none
+gn:627123,Kokhanovo,Vitebsk,4300,village,0,0,50,0,none,none
+gn:627145,Kobryn,Brest,52235,town,0,0,50,0,none,none
+gn:627202,Klimovichi,Mogilev,14868,town,0,0,50,0,none,none
+gn:627205,Kličaŭ,Mogilev,7249,village,0,0,50,0,none,none
+gn:627214,Kletsk,Minsk,11072,town,0,0,50,0,none,none
+gn:627272,Kirovsk,Mogilev,7806,village,0,0,50,0,none,none
+gn:627362,Khoyniki,Homyel’ Voblasc’,13001,town,0,0,50,0,none,none
+gn:627381,Khotimsk,Mogilev,0,village,0,0,50,0,none,none
+gn:627424,Kholopenichi,Minsk,1385,village,0,0,50,0,none,none
+gn:627451,Khodosy,Mogilev,1990,village,0,0,50,0,none,none
+gn:627524,Khal’ch,Homyel’ Voblasc’,1249,village,0,0,50,0,none,none
+gn:627659,Kamyanyuki,Brest,1200,village,0,0,50,0,none,none
+gn:627664,Kamyennyya Lavy,Mogilev,1500,village,0,0,50,0,none,none
+gn:627711,Kamenets,Brest,8114,village,0,0,50,0,none,none
+gn:627751,Kalinkovichi,Homyel’ Voblasc’,36656,town,0,0,50,0,none,none
+gn:627793,Iwye,Grodnenskaya,6906,village,0,0,50,0,none,none
+gn:627798,Ivyanyets,Minsk,4206,village,0,0,50,0,none,none
+gn:627800,Ivatsevichi,Brest,22189,town,0,0,50,0,none,none
+gn:627811,Ivanovo,Brest,15833,town,0,0,50,0,none,none
+gn:627878,Iĺja,Minsk,1800,village,0,0,50,0,none,none
+gn:627904,Hrodna,Grodnenskaya,363718,city,0,0,50,0,none,none
+gn:627905,Horki,Mogilev,28626,town,0,0,50,0,none,none
+gn:627907,Homyel',Homyel’ Voblasc’,501193,large-city,0,0,50,0,none,none
+gn:627908,Hlybokaye,Vitebsk,17807,town,0,0,50,0,none,none
+gn:627909,Hantsavichy,Brest,13155,town,0,0,50,0,none,none
+gn:628112,Hotsk,Minsk,1100,village,0,0,50,0,none,none
+gn:628155,Gorodok,Vitebsk,11321,town,0,0,50,0,none,none
+gn:628175,Gorodishche,Brest,2600,village,0,0,50,0,none,none
+gn:628182,Gorodeya,Minsk,3576,village,0,0,50,0,none,none
+gn:628317,Hal’shany,Grodnenskaya,5000,village,0,0,50,0,none,none
+gn:628387,Glusk,Mogilev,7800,village,0,0,50,0,none,none
+gn:628397,Hlusha,Mogilev,1400,village,0,0,50,0,none,none
+gn:628478,Hyeranyony,Grodnenskaya,1500,village,0,0,50,0,none,none
+gn:628511,Hatava,Minsk,8000,village,0,0,50,0,none,none
+gn:628634,Dzyarzhynsk,Minsk,29607,town,0,0,50,0,none,none
+gn:628658,Dyatlovo,Grodnenskaya,7596,village,0,0,50,0,none,none
+gn:628727,Dukora,Minsk,1300,village,0,0,50,0,none,none
+gn:628758,Dubrowna,Vitebsk,6945,village,0,0,50,0,none,none
+gn:628865,Drybin,Mogilev,2900,village,0,0,50,0,none,none
+gn:628871,Druja,Vitebsk,1500,village,0,0,50,0,none,none
+gn:628884,Drogichin,Brest,14659,town,0,0,50,0,none,none
+gn:628923,Dowsk,Homyel’ Voblasc’,1840,village,0,0,50,0,none,none
+gn:628968,Damachava,Brest,1162,village,0,0,50,0,none,none
+gn:629002,Dokshytsy,Vitebsk,6601,village,0,0,50,0,none,none
+gn:629018,Dobrush,Homyel’ Voblasc’,17901,town,0,0,50,0,none,none
+gn:629055,Dzisna,Vitebsk,1500,village,0,0,50,0,none,none
+gn:629159,Davyd-Haradok,Brest,5658,village,0,0,50,0,none,none
+gn:629163,Dashkawka,Mogilev,1528,village,0,0,50,0,none,none
+gn:629273,Červień,Minsk,10617,town,0,0,50,0,none,none
+gn:629338,Charnawchytsy,Brest,2372,village,0,0,50,0,none,none
+gn:629347,Cherikov,Mogilev,7710,village,0,0,50,0,none,none
+gn:629390,Chachersk,Homyel’ Voblasc’,8926,village,0,0,50,0,none,none
+gn:629395,Chausy,Mogilev,9690,village,0,0,50,0,none,none
+gn:629400,Chashniki,Vitebsk,7573,village,0,0,50,0,none,none
+gn:629447,Bykhov,Mogilev,16296,town,0,0,50,0,none,none
+gn:629454,Byaroza,Brest,27986,town,0,0,50,0,none,none
+gn:629468,Buynovichi,Homyel’ Voblasc’,0,village,0,0,50,0,none,none
+gn:629471,Buynichy,Mogilev,4000,village,0,0,50,0,none,none
+gn:629564,Buda-Kashalyova,Homyel’ Voblasc’,8534,village,0,0,50,0,none,none
+gn:629634,Brest,Brest,347138,city,0,0,50,0,none,none
+gn:629640,Braslav,Vitebsk,9338,village,0,0,50,0,none,none
+gn:629646,Bragin,Homyel’ Voblasc’,4579,village,0,0,50,0,none,none
+gn:629663,Turets-Bayary,Minsk,1602,village,0,0,50,0,none,none
+gn:629697,Baruny,Grodnenskaya,2500,village,0,0,50,0,none,none
+gn:629829,Vyaliki Trastsyanets,Minsk,2100,village,0,0,50,0,none,none
+gn:629986,Vyalikaya Byerastavitsa,Grodnenskaya,5647,village,0,0,50,0,none,none
+gn:630070,Bobr,Minsk,1100,village,0,0,50,0,none,none
+gn:630089,Blon’,Minsk,1780,village,0,0,50,0,none,none
+gn:630136,Beshenkovichi,Vitebsk,6819,village,0,0,50,0,none,none
+gn:630166,Byarozawka,Grodnenskaya,11800,town,0,0,50,0,none,none
+gn:630197,Bierazino,Minsk,11125,town,0,0,50,0,none,none
+gn:630245,Belynichi,Mogilev,9553,village,0,0,50,0,none,none
+gn:630279,Byelaazyorsk,Brest,10984,town,0,0,50,0,none,none
+gn:630343,Byahoml’,Vitebsk,2457,village,0,0,50,0,none,none
+gn:630376,Barysaw,Minsk,133700,city,0,0,50,0,none,none
+gn:630429,Baranovichi,Brest,170039,city,0,0,50,0,none,none
+gn:630431,Baran’,Vitebsk,10131,town,0,0,50,0,none,none
+gn:630468,Bobruysk,Mogilev,205502,city,0,0,50,0,none,none
+gn:630515,Oshmyany,Grodnenskaya,16804,town,0,0,50,0,none,none
+gn:630543,Antopal’,Brest,1369,village,0,0,50,0,none,none
+gn:793279,Bolbasovo,Vitebsk,3600,village,0,0,50,0,none,none
+gn:815847,Ramanavichy,Mogilev,1341,village,0,0,50,0,none,none
+gn:816218,Palykavichy Pyershyya,Mogilev,1572,village,0,0,50,0,none,none
+gn:828920,Horad Krychaw,Mogilev,0,village,0,0,50,0,none,none
+gn:6846555,Fanipol,Minsk,19006,town,0,0,50,0,none,none
+gn:8019679,Khatsyezhyna,Minsk,1145,village,0,0,50,0,none,none
+gn:8019799,Schomyslitsa,Minsk,1822,village,0,0,50,0,none,none
+gn:8019803,Yubilyeyny,Minsk,3000,village,0,0,50,0,none,none
+gn:8019846,Atolina,Minsk,1253,village,0,0,50,0,none,none
+gn:8019860,Pryvol’ny,Minsk,2000,village,0,0,50,0,none,none
+gn:8019924,Enyerhyetykaw,Minsk,2445,village,0,0,50,0,none,none
+gn:8020001,Svislach,Minsk,4200,village,0,0,50,0,none,none
+gn:8020004,Druzhny,Minsk,8978,village,0,0,50,0,none,none
+gn:8178450,Peramoga,Homyel’ Voblasc’,1423,village,0,0,50,0,none,none
+gn:8247183,Borovlyany,Minsk,5000,village,0,0,50,0,none,none
+gn:8247399,Chyst’,Minsk,5300,village,0,0,50,0,none,none
+gn:8247406,Lyeskawka,Minsk,1400,village,0,0,50,0,none,none
+gn:8247407,Lyasny,Minsk,15000,town,0,0,50,0,none,none
+gn:8247409,Bal’shavik,Minsk,3470,village,0,0,50,0,none,none
+gn:8256205,Usiazh,Minsk,1500,village,0,0,50,0,none,none
+gn:8256270,Октябрьский,Minsk,2300,village,0,0,50,0,none,none
+gn:8285492,Michanovichi,Minsk,4800,village,0,0,50,0,none,none
+gn:8331420,Posëlok Voskhod,Mogilev,2000,village,0,0,50,0,none,none
+gn:13192474,Rahozna,Brest,0,village,0,0,50,0,none,none
+gn:13494161,Sonechny,Minsk,1200,village,0,0,50,0,none,none

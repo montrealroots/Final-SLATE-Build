@@ -1,0 +1,2916 @@
+place_id,name,region,population,market,verified_homes,dated_listings,shortfall_to_50,recorded_sales,rent_source,price_source
+gn:5881639,100 Mile House,British Columbia,1980,village,0,0,50,0,none,none
+gn:5881688,Fort St. James,British Columbia,1386,village,0,0,50,0,none,none
+gn:5881791,Abbotsford,British Columbia,141397,city,0,0,50,0,none,none
+gn:5881825,Abbottsfield,Alberta,1775,village,0,0,50,0,none,none
+gn:5881870,Aberdeen,British Columbia,12437,town,0,0,50,0,none,none
+gn:5882023,Acadia,Alberta,9915,village,0,0,50,0,none,none
+gn:5882134,Acton,Ontario,9377,village,0,0,50,0,none,none
+gn:5882142,Acton Vale,Quebec,7656,village,0,0,50,0,none,none
+gn:5882428,Adstock,Quebec,2643,village,0,0,50,0,none,none
+gn:5882534,Agassiz,British Columbia,6300,village,0,0,50,0,none,none
+gn:5882600,Agincourt North,Ontario,29113,town,0,0,50,0,none,none
+gn:5882725,Ahuntsic-Cartierville,Quebec,135336,city,0,0,50,0,none,none
+gn:5882799,Airdrie,Alberta,90044,town,0,0,50,0,none,none
+gn:5882873,Ajax,Ontario,119677,city,0,0,50,0,none,none
+gn:5883074,Albanel,Quebec,1087,village,0,0,50,0,none,none
+gn:5883103,Alberta Avenue,Alberta,6581,village,0,0,50,0,none,none
+gn:5883116,Albert Bridge,Nova Scotia,1285,village,0,0,50,0,none,none
+gn:5883166,Alberton,Prince Edward Island,1301,village,0,0,50,0,none,none
+gn:5883172,Albert Park,Saskatchewan,12475,town,0,0,50,0,none,none
+gn:5883194,Albion,British Columbia,12424,town,0,0,50,0,none,none
+gn:5883214,Albro Lake,Nova Scotia,8503,village,0,0,50,0,none,none
+gn:5883345,Alderwood,Ontario,12054,town,0,0,50,0,none,none
+gn:5883490,Alexandria,Ontario,2906,village,0,0,50,0,none,none
+gn:5883903,Allendale,Alberta,2728,village,0,0,50,0,none,none
+gn:5884051,Alliston,Ontario,18809,town,0,0,50,0,none,none
+gn:5884083,Alma,Quebec,29526,town,0,0,50,0,none,none
+gn:5884199,Alpine,Ontario,3203,village,0,0,50,0,none,none
+gn:5884228,Altadore,Alberta,7290,village,0,0,50,0,none,none
+gn:5884235,Altamont,British Columbia,1064,village,0,0,50,0,none,none
+gn:5884238,Alta Vista,Ontario,24726,town,0,0,50,0,none,none
+gn:5884260,Altona,Manitoba,4212,village,0,0,50,0,none,none
+gn:5884456,Amethyst Harbour,Ontario,3247,village,0,0,50,0,none,none
+gn:5884467,Amherst,Nova Scotia,9404,village,0,0,50,0,none,none
+gn:5884472,Amherstburg,Ontario,13910,town,0,0,50,0,none,none
+gn:5884492,Amherstview,Ontario,7959,village,0,0,50,0,none,none
+gn:5884497,Amigo Beach,Ontario,1545,village,0,0,50,0,none,none
+gn:5884588,Amos,Quebec,17918,town,0,0,50,0,none,none
+gn:5885150,Ange-Gardien,Quebec,2420,village,0,0,50,0,none,none
+gn:5885280,Angus,Ontario,10269,town,0,0,50,0,none,none
+gn:5885383,Anmore,British Columbia,2210,village,0,0,50,0,none,none
+gn:5886182,Antigonish,Nova Scotia,5003,village,0,0,50,0,none,none
+gn:5886468,Applewood Park,Alberta,6830,village,0,0,50,0,none,none
+gn:5886561,Arborg,Manitoba,1279,village,0,0,50,0,none,none
+gn:5886569,Arbour Lake,Alberta,10335,town,0,0,50,0,none,none
+gn:5886586,Arbutus Ridge,British Columbia,15295,town,0,0,50,0,none,none
+gn:5886787,Ardmore,British Columbia,1014,village,0,0,50,0,none,none
+gn:5886795,Ardrossan,Alberta,1238,village,0,0,50,0,none,none
+gn:5886886,Argyle Park,Saskatchewan,6095,village,0,0,50,0,none,none
+gn:5886971,Armdale,Nova Scotia,16502,town,0,0,50,0,none,none
+gn:5887048,Armstrong,British Columbia,5323,village,0,0,50,0,none,none
+gn:5887214,Arnprior,Ontario,8795,village,0,0,50,0,none,none
+gn:5887448,Arviat,Nunavut,2864,village,0,0,50,0,none,none
+gn:5887470,Val-des-Sources,Quebec,7088,village,0,0,50,0,none,none
+gn:5887531,Ashcroft,British Columbia,1558,village,0,0,50,0,none,none
+gn:5887737,Aspen Gardens,Alberta,1638,village,0,0,50,0,none,none
+gn:5887798,Assiniboia,Saskatchewan,2389,village,0,0,50,0,none,none
+gn:5887916,Athabasca,Alberta,2965,village,0,0,50,0,none,none
+gn:5887948,Athlone,Alberta,3116,village,0,0,50,0,none,none
+gn:5888001,Atikokan,Ontario,2753,village,0,0,50,0,none,none
+gn:5888118,Attawapiskat,Ontario,1501,village,0,0,50,0,none,none
+gn:5888216,Auden Park,Ontario,5240,village,0,0,50,0,none,none
+gn:5888377,Aurora,Ontario,55445,town,0,0,50,0,none,none
+gn:5888414,Austin Heights,British Columbia,3340,village,0,0,50,0,none,none
+gn:5888484,Avalon,Saskatchewan,3382,village,0,0,50,0,none,none
+gn:5888573,Avonmore,Alberta,2087,village,0,0,50,0,none,none
+gn:5888681,Ayer's Cliff,Quebec,1180,village,0,0,50,0,none,none
+gn:5888716,Aylmer,Ontario,7492,village,0,0,50,0,none,none
+gn:5888737,Ayr,Ontario,5383,village,0,0,50,0,none,none
+gn:5888759,Azilda,Ontario,4663,village,0,0,50,0,none,none
+gn:5889167,Baden,Ontario,4940,village,0,0,50,0,none,none
+gn:5889745,Baie-Comeau,Quebec,21536,town,0,0,50,0,none,none
+gn:5890542,Baie-D'Urfé,Quebec,3902,village,0,0,50,0,none,none
+gn:5891545,Baie Verte,Newfoundland and Labrador,1311,village,0,0,50,0,none,none
+gn:5891871,Baker Lake,Nunavut,2061,village,0,0,50,0,none,none
+gn:5892190,Balgonie,Saskatchewan,1756,village,0,0,50,0,none,none
+gn:5892205,Ballantrae,Ontario,3223,village,0,0,50,0,none,none
+gn:5892425,Balwin,Alberta,3811,village,0,0,50,0,none,none
+gn:5892510,Bancroft,Ontario,4065,village,0,0,50,0,none,none
+gn:5892532,Banff,Alberta,8305,village,0,0,50,0,none,none
+gn:5892535,Banff Trail,Alberta,3805,village,0,0,50,0,none,none
+gn:5892600,Bankview,Alberta,5125,village,0,0,50,0,none,none
+gn:5892612,Bannerman,Alberta,3049,village,0,0,50,0,none,none
+gn:5892769,Baranow,Alberta,1134,village,0,0,50,0,none,none
+gn:5893060,Barkers Point,New Brunswick,1562,village,0,0,50,0,none,none
+gn:5894033,Barraute,Quebec,1180,village,0,0,50,0,none,none
+gn:5894164,Barrhead,Alberta,4579,village,0,0,50,0,none,none
+gn:5894171,Barrie,Ontario,147829,city,0,0,50,0,none,none
+gn:5894188,Barrière,British Columbia,1765,village,0,0,50,0,none,none
+gn:5894228,Barrington,Nova Scotia,3856,village,0,0,50,0,none,none
+gn:5894642,Bassano,Alberta,1206,village,0,0,50,0,none,none
+gn:5894847,Batchelor Hills,British Columbia,3685,village,0,0,50,0,none,none
+gn:5894924,Bath,Ontario,1180,village,0,0,50,0,none,none
+gn:5895070,Battleford,Saskatchewan,4400,village,0,0,50,0,none,none
+gn:5895186,Baturyn,Alberta,5267,village,0,0,50,0,none,none
+gn:5895263,Bay Bulls,Newfoundland and Labrador,1566,village,0,0,50,0,none,none
+gn:5895419,Bayridge East,Ontario,3200,village,0,0,50,0,none,none
+gn:5895424,Bay Roberts,Newfoundland and Labrador,6012,village,0,0,50,0,none,none
+gn:5895446,Bay St. George South,Newfoundland and Labrador,1103,village,0,0,50,0,none,none
+gn:5895482,Bayview Village,Ontario,21396,town,0,0,50,0,none,none
+gn:5895604,Beacon Heights,Alberta,2911,village,0,0,50,0,none,none
+gn:5895650,Beaconsfield,Quebec,19194,town,0,0,50,0,none,none
+gn:5896271,Bearspaw,Alberta,5567,village,0,0,50,0,none,none
+gn:5896272,Bearspaw,Alberta,2115,village,0,0,50,0,none,none
+gn:5896495,Beauharnois,Quebec,11918,town,0,0,50,0,none,none
+gn:5896514,Beaumaris,Alberta,4383,village,0,0,50,0,none,none
+gn:5896522,Beaumont,Alberta,7366,village,0,0,50,0,none,none
+gn:5896549,Beausejour,Manitoba,3126,village,0,0,50,0,none,none
+gn:5896590,Beaver Bank,Nova Scotia,6000,village,0,0,50,0,none,none
+gn:5896969,Beaverlodge,Alberta,2271,village,0,0,50,0,none,none
+gn:5897183,Beaverton,Ontario,3347,village,0,0,50,0,none,none
+gn:5897209,Bécancour,Quebec,11134,town,0,0,50,0,none,none
+gn:5897312,Beddington Heights,Alberta,11295,town,0,0,50,0,none,none
+gn:5897321,Bedford,Nova Scotia,21474,town,0,0,50,0,none,none
+gn:5897323,Bedford,Quebec,2684,village,0,0,50,0,none,none
+gn:5897460,Beechville,Nova Scotia,2100,village,0,0,50,0,none,none
+gn:5897540,Beeton,Ontario,4151,village,0,0,50,0,none,none
+gn:5897647,Bel Ayr Park,Nova Scotia,1305,village,0,0,50,0,none,none
+gn:5897681,Belfast,Prince Edward Island,1687,village,0,0,50,0,none,none
+gn:5897709,Belgravia,Alberta,2134,village,0,0,50,0,none,none
+gn:5897730,Bella Bella,British Columbia,1193,village,0,0,50,0,none,none
+gn:5897865,Belle River,Ontario,9650,village,0,0,50,0,none,none
+gn:5897884,Belleville,Ontario,50716,town,0,0,50,0,none,none
+gn:5898070,Bells Corners,Ontario,9272,village,0,0,50,0,none,none
+gn:5898124,Belmont,Ontario,1140,village,0,0,50,0,none,none
+gn:5898127,Belmont,Alberta,5198,village,0,0,50,0,none,none
+gn:5898138,Beloeil,Quebec,18927,town,0,0,50,0,none,none
+gn:5898168,Belvedere,Alberta,5018,village,0,0,50,0,none,none
+gn:5898265,Bendale,Ontario,29960,town,0,0,50,0,none,none
+gn:5898596,Bentley,Alberta,1024,village,0,0,50,0,none,none
+gn:5898972,Berry Mills Heights,New Brunswick,4021,village,0,0,50,0,none,none
+gn:5899017,Berthierville,Quebec,4411,village,0,0,50,0,none,none
+gn:5899061,Berwick,Nova Scotia,2455,village,0,0,50,0,none,none
+gn:5899302,Beverly Heights,Alberta,3190,village,0,0,50,0,none,none
+gn:5899368,Bible Hill,Nova Scotia,5076,village,0,0,50,0,none,none
+gn:5899894,Big Eddy,British Columbia,2000,village,0,0,50,0,none,none
+gn:5899982,Biggar,Saskatchewan,2068,village,0,0,50,0,none,none
+gn:5901272,Binbrook,Ontario,8796,village,0,0,50,0,none,none
+gn:5901989,Bishop's Falls,Newfoundland and Labrador,3082,village,0,0,50,0,none,none
+gn:5902027,Bisset,Alberta,3831,village,0,0,50,0,none,none
+gn:5902353,Blackburn Hamlet,Ontario,8173,village,0,0,50,0,none,none
+gn:5902458,Black Diamond,Alberta,3663,village,0,0,50,0,none,none
+gn:5902599,Blackfalds,Alberta,11015,town,0,0,50,0,none,none
+gn:5903510,Blainville,Quebec,46493,town,0,0,50,0,none,none
+gn:5903535,Blairmore,Alberta,1522,village,0,0,50,0,none,none
+gn:5903793,Blind Bay,British Columbia,2369,village,0,0,50,0,none,none
+gn:5903851,Blind River,Ontario,3422,village,0,0,50,0,none,none
+gn:5904032,Blossom Park,Ontario,14190,town,0,0,50,0,none,none
+gn:5904414,The Blue Mountains,Ontario,9390,village,0,0,50,0,none,none
+gn:5904436,Blue Quill,Alberta,4552,village,0,0,50,0,none,none
+gn:5904437,Blue Quill Estates,Alberta,1296,village,0,0,50,0,none,none
+gn:5904444,Blueridge,British Columbia,2245,village,0,0,50,0,none,none
+gn:5904501,Bluewater,Ontario,7044,village,0,0,50,0,none,none
+gn:5905132,Boisbriand,Quebec,26483,town,0,0,50,0,none,none
+gn:5905152,Bois-des-Filion,Quebec,8383,village,0,0,50,0,none,none
+gn:5905191,Boissevain,Manitoba,1656,village,0,0,50,0,none,none
+gn:5905308,Bolton,Ontario,26795,town,0,0,50,0,none,none
+gn:5905348,Bon Accord,Alberta,1529,village,0,0,50,0,none,none
+gn:5905393,Bonavista,Newfoundland and Labrador,3448,village,0,0,50,0,none,none
+gn:5905594,Bonnie Doon,Alberta,4357,village,0,0,50,0,none,none
+gn:5905616,Bonnyville,Alberta,5975,village,0,0,50,0,none,none
+gn:5906229,Botwood,Newfoundland and Labrador,2778,village,0,0,50,0,none,none
+gn:5906267,Boucherville,Quebec,39062,town,0,0,50,0,none,none
+gn:5906281,Bouctouche,New Brunswick,2361,village,0,0,50,0,none,none
+gn:5906413,Boulderwood,Nova Scotia,1393,village,0,0,50,0,none,none
+gn:5906575,Bourget,Ontario,1169,village,0,0,50,0,none,none
+gn:5906664,Bowden,Alberta,1280,village,0,0,50,0,none,none
+gn:5906690,Bowen Island,British Columbia,4256,village,0,0,50,0,none,none
+gn:5906757,Bow Island,Alberta,2025,village,0,0,50,0,none,none
+gn:5906831,Bowmanville,Ontario,39371,town,0,0,50,0,none,none
+gn:5906836,Bowness,Alberta,10770,town,0,0,50,0,none,none
+gn:5906853,Bowser,British Columbia,1729,village,0,0,50,0,none,none
+gn:5907048,Boyle Street,Alberta,6947,village,0,0,50,0,none,none
+gn:5907092,Bracebridge,Ontario,16010,town,0,0,50,0,none,none
+gn:5907166,Bradford,Ontario,38128,town,0,0,50,0,none,none
+gn:5907237,Bradner,British Columbia,3213,village,0,0,50,0,none,none
+gn:5907296,Braeside,Alberta,5700,village,0,0,50,0,none,none
+gn:5907364,Brampton,Ontario,656480,large-city,0,0,50,0,none,none
+gn:5907880,Brander Gardens,Alberta,2435,village,0,0,50,0,none,none
+gn:5907896,Brandon,Manitoba,48859,town,0,0,50,0,none,none
+gn:5907983,Brant,Ontario,34415,town,0,0,50,0,none,none
+gn:5907990,Brantford,Ontario,104688,city,0,0,50,0,none,none
+gn:5908471,Brentwood,Alberta,7410,village,0,0,50,0,none,none
+gn:5908473,Brentwood Bay,British Columbia,7581,village,0,0,50,0,none,none
+gn:5908474,Brentwood Park,British Columbia,10500,town,0,0,50,0,none,none
+gn:5908481,Breslau,Ontario,5053,village,0,0,50,0,none,none
+gn:5908525,Brevoort Park,Saskatchewan,4163,village,0,0,50,0,none,none
+gn:5908623,West Springs,Alberta,11560,town,0,0,50,0,none,none
+gn:5908691,Bridgeport,Ontario,5902,village,0,0,50,0,none,none
+gn:5908717,Bridgeview,Nova Scotia,2206,village,0,0,50,0,none,none
+gn:5908720,Bridgeview,British Columbia,5082,village,0,0,50,0,none,none
+gn:5908723,Bridgewater,Nova Scotia,8790,village,0,0,50,0,none,none
+gn:5908737,Bridlewood,Ontario,24400,town,0,0,50,0,none,none
+gn:5908738,Bridlewood,Alberta,12545,town,0,0,50,0,none,none
+gn:5908809,Brighouse-City Centre,British Columbia,62855,town,0,0,50,0,none,none
+gn:5908832,Brighton,Prince Edward Island,3450,village,0,0,50,0,none,none
+gn:5909045,Britannia Youngstown,Alberta,4723,village,0,0,50,0,none,none
+gn:5909061,British Properties,British Columbia,3800,village,0,0,50,0,none,none
+gn:5909204,Broadmoor,British Columbia,23050,town,0,0,50,0,none,none
+gn:5909278,Brocklehurst,British Columbia,16713,town,0,0,50,0,none,none
+gn:5909294,Brockville,Ontario,23886,town,0,0,50,0,none,none
+gn:5909403,Bromont,Quebec,3895,village,0,0,50,0,none,none
+gn:5909483,Brooklin,Ontario,25000,town,0,0,50,0,none,none
+gn:5909514,Brooks,Alberta,14451,town,0,0,50,0,none,none
+gn:5909573,Brookswood,British Columbia,13336,town,0,0,50,0,none,none
+gn:5909629,Brossard,Quebec,69575,town,0,0,50,0,none,none
+gn:5909969,Brownsburg-Chatham,Quebec,6664,village,0,0,50,0,none,none
+gn:5910322,Brussels,Ontario,1158,village,0,0,50,0,none,none
+gn:5910804,Buena Vista,Saskatchewan,3419,village,0,0,50,0,none,none
+gn:5910853,Buffalo Narrows,Saskatchewan,1014,village,0,0,50,0,none,none
+gn:5911433,Burford,Ontario,1615,village,0,0,50,0,none,none
+gn:5911440,Burgeo,Newfoundland and Labrador,1307,village,0,0,50,0,none,none
+gn:5911495,Burin,Newfoundland and Labrador,2237,village,0,0,50,0,none,none
+gn:5911592,Burlington,Ontario,186948,city,0,0,50,0,none,none
+gn:5911606,Burnaby,British Columbia,249125,city,0,0,50,0,none,none
+gn:5911609,Burnaby Heights,British Columbia,8280,village,0,0,50,0,none,none
+gn:5911715,Burnside,Nova Scotia,7506,village,0,0,50,0,none,none
+gn:5911745,Burns Lake,British Columbia,1779,village,0,0,50,0,none,none
+gn:5912150,Burquitlam,British Columbia,14896,town,0,0,50,0,none,none
+gn:5913049,Cache Creek,British Columbia,1061,village,0,0,50,0,none,none
+gn:5913113,Cadboro Bay,British Columbia,4000,village,0,0,50,0,none,none
+gn:5913172,Caernarvon,Alberta,4198,village,0,0,50,0,none,none
+gn:5913354,Calder,Alberta,3995,village,0,0,50,0,none,none
+gn:5913414,Caledon,Ontario,76581,town,0,0,50,0,none,none
+gn:5913417,Caledon East,Ontario,4568,village,0,0,50,0,none,none
+gn:5913490,Calgary,Alberta,1306784,large-city,0,0,50,0,none,none
+gn:5913550,Callander,Ontario,3964,village,0,0,50,0,none,none
+gn:5913578,Callingwood North,Alberta,2376,village,0,0,50,0,none,none
+gn:5913579,Callingwood South,Alberta,5581,village,0,0,50,0,none,none
+gn:5913601,Calmar,Alberta,2228,village,0,0,50,0,none,none
+gn:5913665,Calvin Park,Ontario,3685,village,0,0,50,0,none,none
+gn:5913687,Cambrian Heights,Alberta,2000,village,0,0,50,0,none,none
+gn:5913695,Cambridge,Ontario,129920,city,0,0,50,0,none,none
+gn:5913698,Cambridge Bay,Nunavut,1760,village,0,0,50,0,none,none
+gn:5913934,Camlachie,Ontario,7506,village,0,0,50,0,none,none
+gn:5914033,Campbellford,Ontario,3372,village,0,0,50,0,none,none
+gn:5914132,Campbell River,British Columbia,33430,town,0,0,50,0,none,none
+gn:5914653,Camrose,Alberta,20405,town,0,0,50,0,none,none
+gn:5914826,Candiac,Quebec,15947,town,0,0,50,0,none,none
+gn:5914894,Canmore,Alberta,13992,town,0,0,50,0,none,none
+gn:5914977,Canoe,British Columbia,1081,village,0,0,50,0,none,none
+gn:5915098,Canora,Saskatchewan,2055,village,0,0,50,0,none,none
+gn:5915099,Canora,Alberta,3309,village,0,0,50,0,none,none
+gn:5915148,Cantley,Quebec,10412,town,0,0,50,0,none,none
+gn:5915230,Canyon Heights,British Columbia,2849,village,0,0,50,0,none,none
+gn:5915247,Canyon Meadows,Alberta,7435,village,0,0,50,0,none,none
+gn:5915327,Cap-aux-Meules,Quebec,12190,town,0,0,50,0,none,none
+gn:5915359,Cap-Chat,Quebec,1466,village,0,0,50,0,none,none
+gn:5915732,Kinngait,Nunavut,1396,village,0,0,50,0,none,none
+gn:5916406,Capilano,Alberta,2683,village,0,0,50,0,none,none
+gn:5916422,Capitol Hill,Alberta,4670,village,0,0,50,0,none,none
+gn:5916424,Capitol Hill,British Columbia,6330,village,0,0,50,0,none,none
+gn:5916546,Cap-Pele,New Brunswick,2441,village,0,0,50,0,none,none
+gn:5916567,Capreol,Ontario,3260,village,0,0,50,0,none,none
+gn:5916706,Carberry,Manitoba,1738,village,0,0,50,0,none,none
+gn:5916722,Carbonear,Newfoundland and Labrador,4838,village,0,0,50,0,none,none
+gn:5916821,Cardston,Alberta,3585,village,0,0,50,0,none,none
+gn:5916896,Cariboo,British Columbia,22780,town,0,0,50,0,none,none
+gn:5917117,Carignan,Quebec,7426,village,0,0,50,0,none,none
+gn:5917158,Carleton Place,Ontario,11901,town,0,0,50,0,none,none
+gn:5917195,Carlisle,Alberta,3850,village,0,0,50,0,none,none
+gn:5917262,Carlyle,Saskatchewan,1508,village,0,0,50,0,none,none
+gn:5917275,Carman,Manitoba,3027,village,0,0,50,0,none,none
+gn:5917434,Carp,Ontario,1477,village,0,0,50,0,none,none
+gn:5917688,Carstairs,Alberta,4077,village,0,0,50,0,none,none
+gn:5917781,Cartierville,Quebec,34667,town,0,0,50,0,none,none
+gn:5917868,Cascade Heights,British Columbia,7449,village,0,0,50,0,none,none
+gn:5918021,Casselman,Ontario,3074,village,0,0,50,0,none,none
+gn:5918022,Casselman,Alberta,3403,village,0,0,50,0,none,none
+gn:5918118,Castlegar,British Columbia,8338,village,0,0,50,0,none,none
+gn:5918162,Castleridge,Alberta,6130,village,0,0,50,0,none,none
+gn:5918228,Caswell Hill,Saskatchewan,3608,village,0,0,50,0,none,none
+gn:5918505,Caulfeild,British Columbia,3757,village,0,0,50,0,none,none
+gn:5918767,Cedar,British Columbia,2836,village,0,0,50,0,none,none
+gn:5918777,Cedarbrae,Alberta,5935,village,0,0,50,0,none,none
+gn:5919004,Centennial Place,New Brunswick,7698,village,0,0,50,0,none,none
+gn:5919015,Central Business District,Saskatchewan,12101,town,0,0,50,0,none,none
+gn:5919127,Central McDougall,Alberta,4694,village,0,0,50,0,none,none
+gn:5919137,Central Saanich,British Columbia,17385,town,0,0,50,0,none,none
+gn:5919248,Centretown,Ontario,25687,town,0,0,50,0,none,none
+gn:5919257,Centreville,Nova Scotia,1159,village,0,0,50,0,none,none
+gn:5919273,Centreville-Wareham-Trinity,Newfoundland and Labrador,1116,village,0,0,50,0,none,none
+gn:5919483,Chalk River,Ontario,1025,village,0,0,50,0,none,none
+gn:5919566,Chambly,Quebec,22608,town,0,0,50,0,none,none
+gn:5919569,Chambord,Quebec,1773,village,0,0,50,0,none,none
+gn:5919815,Channel-Port aux Basques,Newfoundland and Labrador,3547,village,0,0,50,0,none,none
+gn:5919850,Chapais,Quebec,1824,village,0,0,50,0,none,none
+gn:5919853,Chaparral,Alberta,12500,town,0,0,50,0,none,none
+gn:5919915,Chapleau,Ontario,1942,village,0,0,50,0,none,none
+gn:5920089,Charlemagne,Quebec,5594,village,0,0,50,0,none,none
+gn:5920288,Charlottetown,Prince Edward Island,38809,town,0,0,50,0,none,none
+gn:5920343,Chartersville,New Brunswick,5600,village,0,0,50,0,none,none
+gn:5920381,Chase,British Columbia,2471,village,0,0,50,0,none,none
+gn:5920398,Chase River,British Columbia,2900,village,0,0,50,0,none,none
+gn:5920433,Châteauguay,Quebec,42786,town,0,0,50,0,none,none
+gn:5920457,Chatham,Ontario,43550,town,0,0,50,0,none,none
+gn:5920652,Chelsea,Quebec,8000,village,0,0,50,0,none,none
+gn:5920668,Chemainus,British Columbia,3021,village,0,0,50,0,none,none
+gn:5920996,Chertsey,Quebec,4836,village,0,0,50,0,none,none
+gn:5921028,Chester,Nova Scotia,2348,village,0,0,50,0,none,none
+gn:5921060,Chestermere,Alberta,32255,town,0,0,50,0,none,none
+gn:5921091,Chetwynd,British Columbia,2587,village,0,0,50,0,none,none
+gn:5921147,Chibougamau,Quebec,7563,village,0,0,50,0,none,none
+gn:5921225,Chicoutimi,Quebec,69004,town,0,0,50,0,none,none
+gn:5921356,Chilliwack,British Columbia,101491,city,0,0,50,0,none,none
+gn:5921470,Chineside,British Columbia,2929,village,0,0,50,0,none,none
+gn:5921491,Chinook Park,Alberta,1535,village,0,0,50,0,none,none
+gn:5921527,Chipman,New Brunswick,1201,village,0,0,50,0,none,none
+gn:5921556,Chippawa,Ontario,6077,village,0,0,50,0,none,none
+gn:5921588,Chisasibi,Quebec,5397,village,0,0,50,0,none,none
+gn:5921719,Chomedey,Quebec,94030,town,0,0,50,0,none,none
+gn:5921861,Christie Park,Alberta,1880,village,0,0,50,0,none,none
+gn:5921896,Christina Lake,British Columbia,1329,village,0,0,50,0,none,none
+gn:5922112,Adelaide/Churchill,Saskatchewan,3706,village,0,0,50,0,none,none
+gn:5922127,Churchill Park,Newfoundland and Labrador,5086,village,0,0,50,0,none,none
+gn:5922281,Chute-aux-Outardes,Quebec,2000,village,0,0,50,0,none,none
+gn:5922833,Citadel,Alberta,10180,town,0,0,50,0,none,none
+gn:5922904,Clairmont,Alberta,2799,village,0,0,50,0,none,none
+gn:5923101,Clarence-Rockland,Ontario,20790,town,0,0,50,0,none,none
+gn:5923118,Clarenville,Newfoundland and Labrador,6704,village,0,0,50,0,none,none
+gn:5923119,Clarenville-Shoal Harbour,Newfoundland and Labrador,3478,village,0,0,50,0,none,none
+gn:5923125,Claresholm,Alberta,3780,village,0,0,50,0,none,none
+gn:5923223,Clarke's Beach,Newfoundland and Labrador,1400,village,0,0,50,0,none,none
+gn:5923436,Clayburn,British Columbia,11755,town,0,0,50,0,none,none
+gn:5923522,Clayton Park,Nova Scotia,5201,village,0,0,50,0,none,none
+gn:5923667,Clearwater,British Columbia,2388,village,0,0,50,0,none,none
+gn:5923915,Cliff Bungalow,Alberta,1805,village,0,0,50,0,none,none
+gn:5923921,Cliffcrest,Ontario,15935,town,0,0,50,0,none,none
+gn:5924039,Clinton,Ontario,3113,village,0,0,50,0,none,none
+gn:5924041,Clinton,British Columbia,0,village,0,0,50,0,none,none
+gn:5924204,Cloverdale,British Columbia,73355,town,0,0,50,0,none,none
+gn:5924351,Clyde River,Nunavut,1181,village,0,0,50,0,none,none
+gn:5924360,Coach Hill,Alberta,3275,village,0,0,50,0,none,none
+gn:5924417,Coaldale,Alberta,8215,village,0,0,50,0,none,none
+gn:5924428,Coalhurst,Alberta,2668,village,0,0,50,0,none,none
+gn:5924500,Coaticook,Quebec,7021,village,0,0,50,0,none,none
+gn:5924565,Cobden,Ontario,1071,village,0,0,50,0,none,none
+gn:5924579,Cobourg,Ontario,18099,town,0,0,50,0,none,none
+gn:5924597,Cocagne,New Brunswick,2757,village,0,0,50,0,none,none
+gn:5924614,Cochrane,Ontario,5390,village,0,0,50,0,none,none
+gn:5924618,Cochrane,Alberta,32199,town,0,0,50,0,none,none
+gn:5924984,Colchester,Ontario,2334,village,0,0,50,0,none,none
+gn:5924989,Coldbrook,Nova Scotia,1206,village,0,0,50,0,none,none
+gn:5925024,Cold Lake,Alberta,11595,town,0,0,50,0,none,none
+gn:5925058,Coldstream,British Columbia,11171,town,0,0,50,0,none,none
+gn:5925154,Coleman,Alberta,1441,village,0,0,50,0,none,none
+gn:5925315,College Park,Saskatchewan,6208,village,0,0,50,0,none,none
+gn:5925316,College Park East,Saskatchewan,4987,village,0,0,50,0,none,none
+gn:5925975,Collingwood,Ontario,21793,town,0,0,50,0,none,none
+gn:5926268,Colwood,British Columbia,16859,town,0,0,50,0,none,none
+gn:5926387,Commodore Park,Nova Scotia,1976,village,0,0,50,0,none,none
+gn:5926432,Comox,British Columbia,14806,town,0,0,50,0,none,none
+gn:5926511,Conception Bay South,Newfoundland and Labrador,27168,town,0,0,50,0,none,none
+gn:5926526,Concord,Ontario,8255,village,0,0,50,0,none,none
+gn:5926598,Confederation Park,Saskatchewan,7571,village,0,0,50,0,none,none
+gn:5926760,Connaught Heights,British Columbia,2027,village,0,0,50,0,none,none
+gn:5926968,Constance Bay,Ontario,2314,village,0,0,50,0,none,none
+gn:5927024,Contrecoeur,Quebec,3587,village,0,0,50,0,none,none
+gn:5927043,Convoy Place,Nova Scotia,5581,village,0,0,50,0,none,none
+gn:5927234,Cookshire,Quebec,1021,village,0,0,50,0,none,none
+gn:5927235,Cookshire-Eaton,Quebec,5344,village,0,0,50,0,none,none
+gn:5927277,Cookstown,Ontario,1214,village,0,0,50,0,none,none
+gn:5927308,Coombs,British Columbia,1612,village,0,0,50,0,none,none
+gn:5927690,Coquitlam,British Columbia,148625,city,0,0,50,0,none,none
+gn:5927708,Coral Harbour,Nunavut,1035,village,0,0,50,0,none,none
+gn:5927720,Coral Springs,Alberta,5610,village,0,0,50,0,none,none
+gn:5927816,Cordova Bay,British Columbia,8100,village,0,0,50,0,none,none
+gn:5927969,Corner Brook,Newfoundland and Labrador,19316,town,0,0,50,0,none,none
+gn:5928063,Cornwall,Prince Edward Island,6574,village,0,0,50,0,none,none
+gn:5928065,Cornwall,Ontario,48821,town,0,0,50,0,none,none
+gn:5928120,Coronation Park,Saskatchewan,7235,village,0,0,50,0,none,none
+gn:5928202,Corunna,Ontario,5686,village,0,0,50,0,none,none
+gn:5928337,Coteau-du-Lac,Quebec,7044,village,0,0,50,0,none,none
+gn:5928488,Côte-Saint-Luc,Quebec,31395,town,0,0,50,0,none,none
+gn:5928903,Country Hills,Ontario,4821,village,0,0,50,0,none,none
+gn:5928904,Country Hills,Alberta,3660,village,0,0,50,0,none,none
+gn:5928905,Country Hills Village,Alberta,2480,village,0,0,50,0,none,none
+gn:5930890,Courtenay,British Columbia,28420,town,0,0,50,0,none,none
+gn:5930979,Cove Cliff,British Columbia,1778,village,0,0,50,0,none,none
+gn:5931006,Coventry Hills,Alberta,17350,town,0,0,50,0,none,none
+gn:5931074,Cowansville,Quebec,10887,town,0,0,50,0,none,none
+gn:5931082,Cow Bay,Nova Scotia,1619,village,0,0,50,0,none,none
+gn:5931146,Cowie Hill,Nova Scotia,2694,village,0,0,50,0,none,none
+gn:5931287,Coxheath,Nova Scotia,2333,village,0,0,50,0,none,none
+gn:5931427,Crabtree,Quebec,2248,village,0,0,50,0,none,none
+gn:5931800,Cranbrook,British Columbia,20047,town,0,0,50,0,none,none
+gn:5932006,Crawford Plains,Alberta,4381,village,0,0,50,0,none,none
+gn:5932161,Creighton,Saskatchewan,1203,village,0,0,50,0,none,none
+gn:5932213,Crescent Beach,British Columbia,1200,village,0,0,50,0,none,none
+gn:5932231,Crescent Heights,Alberta,6240,village,0,0,50,0,none,none
+gn:5932311,Creston,British Columbia,5583,village,0,0,50,0,none,none
+gn:5932320,Crestwood,Alberta,2063,village,0,0,50,0,none,none
+gn:5932387,Crichton Park,Nova Scotia,2576,village,0,0,50,0,none,none
+gn:5932743,Crofton,British Columbia,1446,village,0,0,50,0,none,none
+gn:5932783,Cromdale,Alberta,1914,village,0,0,50,0,none,none
+gn:5933070,Crossfield,Alberta,2512,village,0,0,50,0,none,none
+gn:5933618,Crystal Beach,Ontario,9531,village,0,0,50,0,none,none
+gn:5933869,Cultus Lake,British Columbia,1164,village,0,0,50,0,none,none
+gn:5933885,Cumberland,British Columbia,3753,village,0,0,50,0,none,none
+gn:5934665,Dalhousie,Alberta,8530,village,0,0,50,0,none,none
+gn:5934685,Dallas,British Columbia,4479,village,0,0,50,0,none,none
+gn:5934709,Dalmeny,Saskatchewan,1504,village,0,0,50,0,none,none
+gn:5934757,Daly Grove,Alberta,3546,village,0,0,50,0,none,none
+gn:5935042,Danville,Quebec,1761,village,0,0,50,0,none,none
+gn:5935277,Dartmouth,Nova Scotia,101343,city,0,0,50,0,none,none
+gn:5935341,Dauphin,Manitoba,8457,village,0,0,50,0,none,none
+gn:5935388,Daveluyville,Quebec,1318,village,0,0,50,0,none,none
+gn:5935486,Davidson,Saskatchewan,1164,village,0,0,50,0,none,none
+gn:5935804,Dawson Creek,British Columbia,12323,town,0,0,50,0,none,none
+gn:5936339,Debert,Nova Scotia,1422,village,0,0,50,0,none,none
+gn:5936956,Deep Cove,British Columbia,2251,village,0,0,50,0,none,none
+gn:5936957,Deep Cove,British Columbia,1177,village,0,0,50,0,none,none
+gn:5937073,Deep River,Ontario,4296,village,0,0,50,0,none,none
+gn:5937252,Deer Lake,Newfoundland and Labrador,5319,village,0,0,50,0,none,none
+gn:5937354,Deer Ridge,Alberta,3795,village,0,0,50,0,none,none
+gn:5937361,Deer Run,Alberta,4910,village,0,0,50,0,none,none
+gn:5937497,Delaware,Ontario,2521,village,0,0,50,0,none,none
+gn:5937503,Delbrook,British Columbia,2497,village,0,0,50,0,none,none
+gn:5937522,Delhi,Ontario,5344,village,0,0,50,0,none,none
+gn:5937538,Delisle,Saskatchewan,1024,village,0,0,50,0,none,none
+gn:5937577,Deloraine,Manitoba,1068,village,0,0,50,0,none,none
+gn:5937612,Delson,Quebec,7322,village,0,0,50,0,none,none
+gn:5937615,Delta,British Columbia,101668,city,0,0,50,0,none,none
+gn:5937643,Delton,Alberta,2009,village,0,0,50,0,none,none
+gn:5937660,Delwood,Alberta,3379,village,0,0,50,0,none,none
+gn:5937819,Denman Island,British Columbia,1020,village,0,0,50,0,none,none
+gn:5937950,Departure Bay,British Columbia,6540,village,0,0,50,0,none,none
+gn:5938187,Deseronto,Ontario,1897,village,0,0,50,0,none,none
+gn:5938513,Deux-Montagnes,Quebec,17402,town,0,0,50,0,none,none
+gn:5938798,Devon,New Brunswick,1477,village,0,0,50,0,none,none
+gn:5938801,Devon,Alberta,6545,village,0,0,50,0,none,none
+gn:5939210,Didsbury,Alberta,4134,village,0,0,50,0,none,none
+gn:5939219,Dieppe,New Brunswick,27304,town,0,0,50,0,none,none
+gn:5939226,Dieppe-Westerra,Saskatchewan,2685,village,0,0,50,0,none,none
+gn:5939236,Digby,Nova Scotia,2001,village,0,0,50,0,none,none
+gn:5939629,Discovery Ridge,Alberta,4330,village,0,0,50,0,none,none
+gn:5939663,Disraeli,Quebec,2212,village,0,0,50,0,none,none
+gn:5940934,Dolbeau-Mistassini,Quebec,12916,town,0,0,50,0,none,none
+gn:5940956,Dollard-Des Ormeaux,Quebec,48930,town,0,0,50,0,none,none
+gn:5940972,Dollarton,British Columbia,2692,village,0,0,50,0,none,none
+gn:5941414,Dominion,Nova Scotia,1953,village,0,0,50,0,none,none
+gn:5941761,Dorchester,Ontario,9329,village,0,0,50,0,none,none
+gn:5941905,Dorset Park,Ontario,25003,town,0,0,50,0,none,none
+gn:5941925,Dorval,Quebec,18980,town,0,0,50,0,none,none
+gn:5942099,Douglas,New Brunswick,5935,village,0,0,50,0,none,none
+gn:5942105,Douglas,British Columbia,3896,village,0,0,50,0,none,none
+gn:5942126,Douglasdale,Alberta,12920,town,0,0,50,0,none,none
+gn:5942238,Dover,Alberta,10795,town,0,0,50,0,none,none
+gn:5942243,Dovercourt,Alberta,2030,village,0,0,50,0,none,none
+gn:5942290,Dowling,Ontario,1466,village,0,0,50,0,none,none
+gn:5942547,Drayton Valley,Alberta,6099,village,0,0,50,0,none,none
+gn:5942798,Drumheller,Alberta,8430,village,0,0,50,0,none,none
+gn:5942845,Drummondville,Quebec,59489,town,0,0,50,0,none,none
+gn:5942913,Dryden,Ontario,8195,village,0,0,50,0,none,none
+gn:5943544,Dufferin,British Columbia,2783,village,0,0,50,0,none,none
+gn:5943647,Duggan,Alberta,4530,village,0,0,50,0,none,none
+gn:5943865,Duncan,British Columbia,22199,town,0,0,50,0,none,none
+gn:5943968,Dundalk,Ontario,2803,village,0,0,50,0,none,none
+gn:5943973,Dundarave,British Columbia,5350,village,0,0,50,0,none,none
+gn:5944007,Dundonald,Saskatchewan,5988,village,0,0,50,0,none,none
+gn:5944071,Dunham,Quebec,3471,village,0,0,50,0,none,none
+gn:5944122,Dunluce,Alberta,6341,village,0,0,50,0,none,none
+gn:5944128,Dunmore,Alberta,1088,village,0,0,50,0,none,none
+gn:5944222,Dunnville,Ontario,5907,village,0,0,50,0,none,none
+gn:5944526,Duvernay,Quebec,37460,town,0,0,50,0,none,none
+gn:5944528,Duvernay-Est,Quebec,14000,town,0,0,50,0,none,none
+gn:5944866,Eagle Ridge,British Columbia,11004,town,0,0,50,0,none,none
+gn:5945016,East Angus,Quebec,3634,village,0,0,50,0,none,none
+gn:5945566,Eastern Passage,Nova Scotia,11738,town,0,0,50,0,none,none
+gn:5945707,East Gwillimbury,Ontario,23991,town,0,0,50,0,none,none
+gn:5945870,East Meadows,Newfoundland and Labrador,1580,village,0,0,50,0,none,none
+gn:5945899,Eastmount,New Brunswick,1697,village,0,0,50,0,none,none
+gn:5946074,East Royalty,Prince Edward Island,2529,village,0,0,50,0,none,none
+gn:5946133,East Sooke,British Columbia,1500,village,0,0,50,0,none,none
+gn:5946197,Eastview,Saskatchewan,1930,village,0,0,50,0,none,none
+gn:5946198,Eastview,Saskatchewan,3971,village,0,0,50,0,none,none
+gn:5946209,East Wellington,British Columbia,1444,village,0,0,50,0,none,none
+gn:5946229,Eastwood,Alberta,3985,village,0,0,50,0,none,none
+gn:5946276,Eau Claire,Alberta,1875,village,0,0,50,0,none,none
+gn:5946480,Eckville,Alberta,1014,village,0,0,50,0,none,none
+gn:5946656,Edgemont,Alberta,15225,town,0,0,50,0,none,none
+gn:5946768,Edmonton,Alberta,1010899,large-city,0,0,50,0,none,none
+gn:5946820,Edson,Alberta,7975,village,0,0,50,0,none,none
+gn:5946961,Eel Ground,New Brunswick,1094,village,0,0,50,0,none,none
+gn:5947035,Eganville,Ontario,1149,village,0,0,50,0,none,none
+gn:5947295,Ekota,Alberta,2563,village,0,0,50,0,none,none
+gn:5947398,Elbow Park,Alberta,3285,village,0,0,50,0,none,none
+gn:5947415,Elboya,Alberta,1835,village,0,0,50,0,none,none
+gn:5947708,Elkford,British Columbia,2585,village,0,0,50,0,none,none
+gn:5947754,Elk Point,Alberta,1399,village,0,0,50,0,none,none
+gn:5947817,Ellenvale,Nova Scotia,3994,village,0,0,50,0,none,none
+gn:5947827,Ellerslie,Alberta,5552,village,0,0,50,0,none,none
+gn:5947866,Elliot Lake,Ontario,12508,town,0,0,50,0,none,none
+gn:5947954,Ellison,British Columbia,3094,village,0,0,50,0,none,none
+gn:5948045,Elmira,Ontario,10790,town,0,0,50,0,none,none
+gn:5948094,Elmvale,Ontario,2314,village,0,0,50,0,none,none
+gn:5948095,Elmvale Acres,Ontario,2627,village,0,0,50,0,none,none
+gn:5948102,Elmwood,Alberta,2611,village,0,0,50,0,none,none
+gn:5948104,Elmwood Park,Alberta,1082,village,0,0,50,0,none,none
+gn:5948111,Elora,Ontario,7800,village,0,0,50,0,none,none
+gn:5948587,Humbermede,Ontario,15545,town,0,0,50,0,none,none
+gn:5948682,Emo,Ontario,1204,village,0,0,50,0,none,none
+gn:5948710,Empire Park,Alberta,5176,village,0,0,50,0,none,none
+gn:5948770,Enderby,British Columbia,2964,village,0,0,50,0,none,none
+gn:5948805,Enfield,Nova Scotia,6583,village,0,0,50,0,none,none
+gn:5948844,Englehart,Ontario,1479,village,0,0,50,0,none,none
+gn:5948870,English Corner,Nova Scotia,1058,village,0,0,50,0,none,none
+gn:5949247,Erin,Ontario,11981,town,0,0,50,0,none,none
+gn:5949293,Ermineskin,Alberta,5045,village,0,0,50,0,none,none
+gn:5949493,Espanola,Ontario,4682,village,0,0,50,0,none,none
+gn:5949512,Esquimalt,British Columbia,17655,town,0,0,50,0,none,none
+gn:5949531,Essex,Ontario,8233,village,0,0,50,0,none,none
+gn:5949543,Essondale,British Columbia,1116,village,0,0,50,0,none,none
+gn:5949563,Esterhazy,Saskatchewan,2194,village,0,0,50,0,none,none
+gn:5949568,Estevan,Saskatchewan,11258,town,0,0,50,0,none,none
+gn:5950268,Etobicoke,Ontario,365000,city,0,0,50,0,none,none
+gn:5950269,Etobicoke West Mall,Ontario,11848,town,0,0,50,0,none,none
+gn:5950464,Evansdale,Alberta,5645,village,0,0,50,0,none,none
+gn:5950593,Evergreen,Alberta,20780,town,0,0,50,0,none,none
+gn:5950674,Exeter,Ontario,4863,village,0,0,50,0,none,none
+gn:5950682,Exhibition,Saskatchewan,2636,village,0,0,50,0,none,none
+gn:5950943,Fairfield Island,British Columbia,4220,village,0,0,50,0,none,none
+gn:5950944,Fairfield,British Columbia,11740,town,0,0,50,0,none,none
+gn:5950962,Fairhaven,Saskatchewan,5542,village,0,0,50,0,none,none
+gn:5951007,Fairmount,Nova Scotia,3928,village,0,0,50,0,none,none
+gn:5951023,Fairvale,New Brunswick,5075,village,0,0,50,0,none,none
+gn:5951027,Fairview,Nova Scotia,8618,village,0,0,50,0,none,none
+gn:5951036,Fairview,Alberta,2998,village,0,0,50,0,none,none
+gn:5951037,Fairview,Alberta,3675,village,0,0,50,0,none,none
+gn:5951051,Fairville Plateau,New Brunswick,4109,village,0,0,50,0,none,none
+gn:5951215,Falconridge,Alberta,10325,town,0,0,50,0,none,none
+gn:5951224,Falher,Alberta,1001,village,0,0,50,0,none,none
+gn:5951289,Fall River,Nova Scotia,11526,town,0,0,50,0,none,none
+gn:5951644,Farnham,Quebec,11228,town,0,0,50,0,none,none
+gn:5952121,Fenelon Falls,Ontario,1915,village,0,0,50,0,none,none
+gn:5952330,Ferme-Neuve,Quebec,2115,village,0,0,50,0,none,none
+gn:5952337,Fermont,Quebec,2966,village,0,0,50,0,none,none
+gn:5952370,Fernie,British Columbia,5249,village,0,0,50,0,none,none
+gn:5954433,Flatrock,Newfoundland and Labrador,1722,village,0,0,50,0,none,none
+gn:5954556,Fleetwood,British Columbia,65565,town,0,0,50,0,none,none
+gn:5954579,Flemingdon Park,Ontario,21933,town,0,0,50,0,none,none
+gn:5954718,Flin Flon,Manitoba,5865,village,0,0,50,0,none,none
+gn:5954848,Florence,Nova Scotia,1684,village,0,0,50,0,none,none
+gn:5955084,Foam Lake,Saskatchewan,1138,village,0,0,50,0,none,none
+gn:5955497,Forest,Ontario,2429,village,0,0,50,0,none,none
+gn:5955523,Forest Grove,Saskatchewan,5957,village,0,0,50,0,none,none
+gn:5955526,Forest Heights,Ontario,15581,town,0,0,50,0,none,none
+gn:5955527,Forest Heights,Alberta,3931,village,0,0,50,0,none,none
+gn:5955536,Forest Hills,New Brunswick,3084,village,0,0,50,0,none,none
+gn:5955537,Forest Hills,Ontario,6238,village,0,0,50,0,none,none
+gn:5955551,Forest Lawn,Alberta,7230,village,0,0,50,0,none,none
+gn:5955797,Fort-Coulonge,Quebec,2911,village,0,0,50,0,none,none
+gn:5955815,Fort Erie,Ontario,30710,town,0,0,50,0,none,none
+gn:5955826,Fort Frances,Ontario,7739,village,0,0,50,0,none,none
+gn:5955879,Fort Langley,British Columbia,3836,village,0,0,50,0,none,none
+gn:5955891,Fort Macleod,Alberta,3060,village,0,0,50,0,none,none
+gn:5955895,Fort McMurray,Alberta,66573,town,0,0,50,0,none,none
+gn:5955902,Fort Nelson,British Columbia,2611,village,0,0,50,0,none,none
+gn:5955922,Fort Qu'Appelle,Saskatchewan,1972,village,0,0,50,0,none,none
+gn:5955948,Fort Saskatchewan,Alberta,14957,town,0,0,50,0,none,none
+gn:5955953,Fort Simpson,Northwest Territories,1100,village,0,0,50,0,none,none
+gn:5955954,Fort Smith,Northwest Territories,2542,village,0,0,50,0,none,none
+gn:5955960,Fort St. John,British Columbia,21465,town,0,0,50,0,none,none
+gn:5955964,Fortune,Newfoundland and Labrador,1285,village,0,0,50,0,none,none
+gn:5956016,Fort William,Newfoundland and Labrador,1611,village,0,0,50,0,none,none
+gn:5956869,Fox Creek,Alberta,2457,village,0,0,50,0,none,none
+gn:5957169,Foxtrap,Newfoundland and Labrador,3087,village,0,0,50,0,none,none
+gn:5957404,Franklin,Quebec,1688,village,0,0,50,0,none,none
+gn:5957564,Fraser Heights,British Columbia,25000,town,0,0,50,0,none,none
+gn:5957776,Fredericton,New Brunswick,63116,town,0,0,50,0,none,none
+gn:5957946,French Creek,British Columbia,1024,village,0,0,50,0,none,none
+gn:5958590,Fruitvale,British Columbia,3491,village,0,0,50,0,none,none
+gn:5958740,Fulton Place,Alberta,2239,village,0,0,50,0,none,none
+gn:5958752,Fundy Heights,New Brunswick,2331,village,0,0,50,0,none,none
+gn:5958891,Gabriola,British Columbia,4500,village,0,0,50,0,none,none
+gn:5959212,Galt,Ontario,4561,village,0,0,50,0,none,none
+gn:5959271,Gambo,Newfoundland and Labrador,1978,village,0,0,50,0,none,none
+gn:5959326,Gananoque,Ontario,5458,village,0,0,50,0,none,none
+gn:5959335,Gander,Newfoundland and Labrador,11880,town,0,0,50,0,none,none
+gn:5959360,Ganges,British Columbia,6000,village,0,0,50,0,none,none
+gn:5959474,Garden Creek,New Brunswick,1361,village,0,0,50,0,none,none
+gn:5959538,Garden Village,British Columbia,10087,town,0,0,50,0,none,none
+gn:5959645,Gariepy,Alberta,1882,village,0,0,50,0,none,none
+gn:5959674,Garneau,Alberta,9480,village,0,0,50,0,none,none
+gn:5959878,Gaspé,Quebec,14819,town,0,0,50,0,none,none
+gn:5959974,Gatineau,Quebec,300045,city,0,0,50,0,none,none
+gn:5960195,Gellatly,British Columbia,1955,village,0,0,50,0,none,none
+gn:5960304,Gentilly,Quebec,1634,village,0,0,50,0,none,none
+gn:5960533,Georgetown,Ontario,44058,town,0,0,50,0,none,none
+gn:5960603,Geraldton,Ontario,1761,village,0,0,50,0,none,none
+gn:5960842,Gibbons,Alberta,2790,village,0,0,50,0,none,none
+gn:5960971,Gibsons,British Columbia,6821,village,0,0,50,0,none,none
+gn:5961153,Gillam,Manitoba,1007,village,0,0,50,0,none,none
+gn:5961417,Gimli,Manitoba,2246,village,0,0,50,0,none,none
+gn:5961560,Gjoa Haven,Nunavut,1349,village,0,0,50,0,none,none
+gn:5961564,Glace Bay,Nova Scotia,16915,town,0,0,50,0,none,none
+gn:5961696,Glamorgan,Alberta,6575,village,0,0,50,0,none,none
+gn:5961846,Glenbrook,Alberta,7240,village,0,0,50,0,none,none
+gn:5961851,Glenbrooke North,British Columbia,4882,village,0,0,50,0,none,none
+gn:5961862,Glen Cairn,New Brunswick,8960,village,0,0,50,0,none,none
+gn:5961863,Glen Cairn,Ontario,11836,town,0,0,50,0,none,none
+gn:5961876,Glencoe,Ontario,2126,village,0,0,50,0,none,none
+gn:5961900,Glendale,Alberta,2715,village,0,0,50,0,none,none
+gn:5961957,Glengarry,Alberta,2906,village,0,0,50,0,none,none
+gn:5962012,Glen Moir,Nova Scotia,2294,village,0,0,50,0,none,none
+gn:5962017,Glenmore,British Columbia,1028,village,0,0,50,0,none,none
+gn:5962052,Glenora,Alberta,3508,village,0,0,50,0,none,none
+gn:5962076,Glenrosa,British Columbia,6039,village,0,0,50,0,none,none
+gn:5962131,Glenwood,Alberta,4823,village,0,0,50,0,none,none
+gn:5962204,Gloucester,Ontario,150012,city,0,0,50,0,none,none
+gn:5962232,Glovertown,Newfoundland and Labrador,1948,village,0,0,50,0,none,none
+gn:5962440,Godefroy,Quebec,1410,village,0,0,50,0,none,none
+gn:5962442,Goderich,Ontario,7628,village,0,0,50,0,none,none
+gn:5962548,Gold Bar,Alberta,2837,village,0,0,50,0,none,none
+gn:5962582,Golden,British Columbia,4038,village,0,0,50,0,none,none
+gn:5962735,Gold River,British Columbia,1246,village,0,0,50,0,none,none
+gn:5963453,Gordon Head,British Columbia,21270,town,0,0,50,0,none,none
+gn:5963821,Goulds,Newfoundland and Labrador,4418,village,0,0,50,0,none,none
+gn:5964215,Granby,Quebec,66222,town,0,0,50,0,none,none
+gn:5964230,Grand Bank,Newfoundland and Labrador,4623,village,0,0,50,0,none,none
+gn:5964243,Grand Bay-Westfield,New Brunswick,4967,village,0,0,50,0,none,none
+gn:5964250,Grand Bend,Ontario,3031,village,0,0,50,0,none,none
+gn:5964304,Grande Cache,Alberta,3276,village,0,0,50,0,none,none
+gn:5964318,Grande-Digue,New Brunswick,2261,village,0,0,50,0,none,none
+gn:5964347,Grande Prairie,Alberta,70385,town,0,0,50,0,none,none
+gn:5964378,Grand Falls-Windsor,Newfoundland and Labrador,13853,town,0,0,50,0,none,none
+gn:5964401,Grand Forks,British Columbia,4049,village,0,0,50,0,none,none
+gn:5964606,Grand Manan,New Brunswick,2595,village,0,0,50,0,none,none
+gn:5964700,Greater Sudbury,Ontario,166004,city,0,0,50,0,none,none
+gn:5964731,Grandview-Woodlands,British Columbia,29175,town,0,0,50,0,none,none
+gn:5965462,Gravelbourg,Saskatchewan,1109,village,0,0,50,0,none,none
+gn:5965546,Gravenhurst,Ontario,12312,town,0,0,50,0,none,none
+gn:5965812,Greater Napanee,Ontario,15892,town,0,0,50,0,none,none
+gn:5965932,Greely,Ontario,9049,village,0,0,50,0,none,none
+gn:5965938,Green Acres,Nova Scotia,1140,village,0,0,50,0,none,none
+gn:5966048,Greendale,New Brunswick,1863,village,0,0,50,0,none,none
+gn:5966050,Greendale,British Columbia,3110,village,0,0,50,0,none,none
+gn:5966074,Greenfield,Alberta,3589,village,0,0,50,0,none,none
+gn:5966078,Greenfield Park,Quebec,16733,town,0,0,50,0,none,none
+gn:5966453,Greenough,Nova Scotia,1819,village,0,0,50,0,none,none
+gn:5966622,Greenstone,Ontario,4636,village,0,0,50,0,none,none
+gn:5966647,Greenview,Alberta,2923,village,0,0,50,0,none,none
+gn:5966689,Greenwood,Nova Scotia,5369,village,0,0,50,0,none,none
+gn:5966855,Grenville Park,Ontario,1620,village,0,0,50,0,none,none
+gn:5966996,Greystone Heights,Saskatchewan,2982,village,0,0,50,0,none,none
+gn:5967149,Grimsby,Ontario,27314,town,0,0,50,0,none,none
+gn:5967157,Grimshaw,Alberta,2560,village,0,0,50,0,none,none
+gn:5967170,Grindrod,British Columbia,1526,village,0,0,50,0,none,none
+gn:5967417,Grosvenor Park,Saskatchewan,1745,village,0,0,50,0,none,none
+gn:5967528,Grovenor,Alberta,2347,village,0,0,50,0,none,none
+gn:5967590,Grunthal,Manitoba,1680,village,0,0,50,0,none,none
+gn:5967629,Guelph,Ontario,143740,city,0,0,50,0,none,none
+gn:5967687,Guildford,British Columbia,64985,town,0,0,50,0,none,none
+gn:5967690,Guildwood,Ontario,9917,village,0,0,50,0,none,none
+gn:5968410,Gunningsville,New Brunswick,9479,village,0,0,50,0,none,none
+gn:5968992,Haileybury,Ontario,3247,village,0,0,50,0,none,none
+gn:5969040,Hairsine,Alberta,2465,village,0,0,50,0,none,none
+gn:5969185,Halfmoon Bay,British Columbia,2800,village,0,0,50,0,none,none
+gn:5969721,Halton Hills,Ontario,62951,town,0,0,50,0,none,none
+gn:5969782,Hamilton,Ontario,569353,large-city,0,0,50,0,none,none
+gn:5969976,Hammonds Plains,Nova Scotia,6242,village,0,0,50,0,none,none
+gn:5970014,Hampstead,Quebec,6996,village,0,0,50,0,none,none
+gn:5970018,Hampton,New Brunswick,4395,village,0,0,50,0,none,none
+gn:5970032,Hamptons,Alberta,7360,village,0,0,50,0,none,none
+gn:5970063,Hanceville,British Columbia,10000,town,0,0,50,0,none,none
+gn:5970149,Haney,British Columbia,21041,town,0,0,50,0,none,none
+gn:5970234,Hanna,Alberta,3140,village,0,0,50,0,none,none
+gn:5970301,Hanover,Ontario,7688,village,0,0,50,0,none,none
+gn:5970414,Hantsport,Nova Scotia,1253,village,0,0,50,0,none,none
+gn:5970458,Happy Valley-Goose Bay,Newfoundland and Labrador,7572,village,0,0,50,0,none,none
+gn:5970478,Harbour Breton,Newfoundland and Labrador,1898,village,0,0,50,0,none,none
+gn:5970482,Harbour Chines,British Columbia,4577,village,0,0,50,0,none,none
+gn:5970492,Harbour Grace,Newfoundland and Labrador,2796,village,0,0,50,0,none,none
+gn:5970554,Harbour Main-Chapel's Cove-Lakeview,Newfoundland and Labrador,1065,village,0,0,50,0,none,none
+gn:5970642,Harbour Village,British Columbia,2711,village,0,0,50,0,none,none
+gn:5971372,Harrison Hot Springs,British Columbia,1905,village,0,0,50,0,none,none
+gn:5971448,Harriston,Ontario,1797,village,0,0,50,0,none,none
+gn:5971450,Harrisville,New Brunswick,4201,village,0,0,50,0,none,none
+gn:5971462,Harrow,Ontario,2562,village,0,0,50,0,none,none
+gn:5971694,Harvest Hills,Alberta,7805,village,0,0,50,0,none,none
+gn:5971859,Hastings-Sunrise,British Columbia,34575,town,0,0,50,0,none,none
+gn:5972018,Hatzic,British Columbia,2952,village,0,0,50,0,none,none
+gn:5972049,Haultain,Saskatchewan,3064,village,0,0,50,0,none,none
+gn:5972291,Havre-Saint-Pierre,Quebec,3460,village,0,0,50,0,none,none
+gn:5972360,Hawkesbury,Ontario,10263,town,0,0,50,0,none,none
+gn:5972470,Hawkwood,Alberta,9115,village,0,0,50,0,none,none
+gn:5972762,Hay River,Northwest Territories,3528,village,0,0,50,0,none,none
+gn:5972768,Haysboro,Alberta,6960,village,0,0,50,0,none,none
+gn:5972864,Hazeldean,Alberta,2984,village,0,0,50,0,none,none
+gn:5972961,Headingley,Manitoba,3215,village,0,0,50,0,none,none
+gn:5973108,Hearst,Ontario,4746,village,0,0,50,0,none,none
+gn:5973420,Heidelberg,Ontario,1032,village,0,0,50,0,none,none
+gn:5973817,Henderson,Ontario,3195,village,0,0,50,0,none,none
+gn:5973973,Henry Farm,Ontario,15723,town,0,0,50,0,none,none
+gn:5974029,Henryville,Quebec,1497,village,0,0,50,0,none,none
+gn:5974031,Hensall,Ontario,1126,village,0,0,50,0,none,none
+gn:5974156,Heritage Park,Ontario,7263,village,0,0,50,0,none,none
+gn:5974316,Herring Cove,Nova Scotia,2790,village,0,0,50,0,none,none
+gn:5974407,Hespeler,Ontario,18445,town,0,0,50,0,none,none
+gn:5974707,Hidden Valley,Alberta,11540,town,0,0,50,0,none,none
+gn:5974949,Highland Creek,Ontario,12494,town,0,0,50,0,none,none
+gn:5974982,Highland Park,Alberta,4105,village,0,0,50,0,none,none
+gn:5974992,Highlands,Alberta,2604,village,0,0,50,0,none,none
+gn:5975004,High Level,Alberta,3159,village,0,0,50,0,none,none
+gn:5975017,High Park,Alberta,1370,village,0,0,50,0,none,none
+gn:5975034,High Prairie,Alberta,2878,village,0,0,50,0,none,none
+gn:5975038,High River,Alberta,14324,town,0,0,50,0,none,none
+gn:5975090,Highwood,Alberta,2205,village,0,0,50,0,none,none
+gn:5975135,Hildegarde,New Brunswick,5327,village,0,0,50,0,none,none
+gn:5975182,Hillcrest Village,Ontario,16934,town,0,0,50,0,none,none
+gn:5975200,Hillhurst,Alberta,5475,village,0,0,50,0,none,none
+gn:5975301,Hillsborough,New Brunswick,1348,village,0,0,50,0,none,none
+gn:5975306,Hillsborough Park,Prince Edward Island,1180,village,0,0,50,0,none,none
+gn:5975315,Hillsdale,Saskatchewan,6745,village,0,0,50,0,none,none
+gn:5975382,Hillview,Alberta,3444,village,0,0,50,0,none,none
+gn:5975503,Hinton,Alberta,9889,village,0,0,50,0,none,none
+gn:5975504,Hintonburg,Ontario,7844,village,0,0,50,0,none,none
+gn:5976107,Holiday Park,Saskatchewan,1657,village,0,0,50,0,none,none
+gn:5976210,Holliston,Saskatchewan,4050,village,0,0,50,0,none,none
+gn:5976393,Holyrood,Newfoundland and Labrador,2471,village,0,0,50,0,none,none
+gn:5976395,Holyrood,Alberta,3320,village,0,0,50,0,none,none
+gn:5976475,Homesteader,Alberta,3277,village,0,0,50,0,none,none
+gn:5976783,Hope,British Columbia,6686,village,0,0,50,0,none,none
+gn:5976999,Hornby Island,British Columbia,1100,village,0,0,50,0,none,none
+gn:5977046,Hornepayne,Ontario,1050,village,0,0,50,0,none,none
+gn:5977325,Horseshoe Bay,British Columbia,1935,village,0,0,50,0,none,none
+gn:5977783,Houston,British Columbia,2993,village,0,0,50,0,none,none
+gn:5977942,Howie Centre,Nova Scotia,1106,village,0,0,50,0,none,none
+gn:5978071,Hubley,Nova Scotia,1029,village,0,0,50,0,none,none
+gn:5978126,Hudson,Quebec,5088,village,0,0,50,0,none,none
+gn:5978133,Hudson Bay,Saskatchewan,1504,village,0,0,50,0,none,none
+gn:5978150,Hudson Bay Park,Saskatchewan,2245,village,0,0,50,0,none,none
+gn:5978381,Humber Arm South,Newfoundland and Labrador,1537,village,0,0,50,0,none,none
+gn:5978398,Humber Summit,Ontario,12416,town,0,0,50,0,none,none
+gn:5978404,Humboldt,Saskatchewan,4822,village,0,0,50,0,none,none
+gn:5978464,Humphrey,New Brunswick,8195,village,0,0,50,0,none,none
+gn:5978478,Humphreys Mills,New Brunswick,4754,village,0,0,50,0,none,none
+gn:5978683,Huntingdon,Quebec,2865,village,0,0,50,0,none,none
+gn:5978706,Huntington Hills,Alberta,13120,town,0,0,50,0,none,none
+gn:5978765,Huntsville,Ontario,19816,town,0,0,50,0,none,none
+gn:5978831,Huron East,Ontario,9264,village,0,0,50,0,none,none
+gn:5979330,Idylwylde,Alberta,1767,village,0,0,50,0,none,none
+gn:5979345,Igloolik,Nunavut,2049,village,0,0,50,0,none,none
+gn:5979367,Ignace,Ontario,1206,village,0,0,50,0,none,none
+gn:5979458,Ilderton,Ontario,2250,village,0,0,50,0,none,none
+gn:5980472,Ile des Chênes,Manitoba,1546,village,0,0,50,0,none,none
+gn:5982627,Imperoyal,Nova Scotia,5102,village,0,0,50,0,none,none
+gn:5982839,Indian Head,Saskatchewan,1642,village,0,0,50,0,none,none
+gn:5983122,Indiantown,New Brunswick,3078,village,0,0,50,0,none,none
+gn:5983175,Ingersoll,Ontario,13693,town,0,0,50,0,none,none
+gn:5983197,Inglewood,Alberta,4130,village,0,0,50,0,none,none
+gn:5983198,Inglewood,Alberta,6255,village,0,0,50,0,none,none
+gn:5983225,Ingonish,Nova Scotia,2673,village,0,0,50,0,none,none
+gn:5983430,Innisfail,Alberta,7672,village,0,0,50,0,none,none
+gn:5983433,Innisfil,Ontario,43326,town,0,0,50,0,none,none
+gn:5983577,Inukjuak,Quebec,1821,village,0,0,50,0,none,none
+gn:5983607,Inuvik,Northwest Territories,3243,village,0,0,50,0,none,none
+gn:5983626,Invermere,British Columbia,3391,village,0,0,50,0,none,none
+gn:5983628,Inverness,Nova Scotia,1228,village,0,0,50,0,none,none
+gn:5983680,Ionview,Ontario,13641,town,0,0,50,0,none,none
+gn:5983720,Iqaluit,Nunavut,7429,village,0,0,50,0,none,none
+gn:5983847,Irishtown-Summerside,Newfoundland and Labrador,1260,village,0,0,50,0,none,none
+gn:5984000,Iroquois Falls,Ontario,4232,village,0,0,50,0,none,none
+gn:5984019,Irricana,Alberta,1216,village,0,0,50,0,none,none
+gn:5984626,Island View Heights,New Brunswick,1148,village,0,0,50,0,none,none
+gn:5985261,Jackson Heights,Alberta,3911,village,0,0,50,0,none,none
+gn:5985549,James Bay,British Columbia,13055,town,0,0,50,0,none,none
+gn:5985873,Jarvis,Ontario,1037,village,0,0,50,0,none,none
+gn:5985932,Jasper Park,Alberta,1832,village,0,0,50,0,none,none
+gn:5985934,Jasper Park Lodge,Alberta,3907,village,0,0,50,0,none,none
+gn:5987650,Joliette,Quebec,34772,town,0,0,50,0,none,none
+gn:5988442,Juniper Ridge,British Columbia,4151,village,0,0,50,0,none,none
+gn:5988976,Kameyosek,Alberta,2895,village,0,0,50,0,none,none
+gn:5989045,Kamloops,British Columbia,104460,city,0,0,50,0,none,none
+gn:5989068,Kamsack,Saskatchewan,1898,village,0,0,50,0,none,none
+gn:5989117,Kanata,Ontario,90000,town,0,0,50,0,none,none
+gn:5989403,Kapuskasing,Ontario,8292,village,0,0,50,0,none,none
+gn:5989520,Kashechewan,Ontario,3309,village,0,0,50,0,none,none
+gn:5989566,Kaslo,British Columbia,1049,village,0,0,50,0,none,none
+gn:5989973,Kearney Lake,Nova Scotia,3220,village,0,0,50,0,none,none
+gn:5990000,Keating,British Columbia,1403,village,0,0,50,0,none,none
+gn:5990268,Keheewin,Alberta,2861,village,0,0,50,0,none,none
+gn:5990326,Keith-Lynn,British Columbia,2595,village,0,0,50,0,none,none
+gn:5990415,Kelligrews,Newfoundland and Labrador,4615,village,0,0,50,0,none,none
+gn:5990579,Kelowna,British Columbia,144576,city,0,0,50,0,none,none
+gn:5990660,Kelvin,British Columbia,1890,village,0,0,50,0,none,none
+gn:5990668,Kelvin Grove,Alberta,1805,village,0,0,50,0,none,none
+gn:5990812,Kenilworth,Alberta,2489,village,0,0,50,0,none,none
+gn:5990916,Kennedy Park,Ontario,17123,town,0,0,50,0,none,none
+gn:5991055,Kenora,Ontario,15096,town,0,0,50,0,none,none
+gn:5991080,Kensington,Prince Edward Island,1619,village,0,0,50,0,none,none
+gn:5991085,Kensington-Cedar Cottage,British Columbia,49235,town,0,0,50,0,none,none
+gn:5991148,Kentville,Nova Scotia,12636,town,0,0,50,0,none,none
+gn:5991216,Keremeos,British Columbia,1791,village,0,0,50,0,none,none
+gn:5991241,Kernohan,Alberta,3073,village,0,0,50,0,none,none
+gn:5991284,Kerrobert,Saskatchewan,1061,village,0,0,50,0,none,none
+gn:5991370,Keswick,Ontario,21000,town,0,0,50,0,none,none
+gn:5991374,Keswick Ridge,New Brunswick,1652,village,0,0,50,0,none,none
+gn:5991833,Kildare,Alberta,2694,village,0,0,50,0,none,none
+gn:5991870,Kilkenny,Alberta,5699,village,0,0,50,0,none,none
+gn:5991888,Killam,Alberta,1056,village,0,0,50,0,none,none
+gn:5991907,Killarney,Manitoba,2362,village,0,0,50,0,none,none
+gn:5991908,Killarney,Alberta,3990,village,0,0,50,0,none,none
+gn:5991909,Killarney,British Columbia,29325,town,0,0,50,0,none,none
+gn:5992059,Kimberley,British Columbia,7425,village,0,0,50,0,none,none
+gn:5992144,Kincardine,Ontario,6725,village,0,0,50,0,none,none
+gn:5992154,Kindersley,Saskatchewan,4249,village,0,0,50,0,none,none
+gn:5992180,King,Ontario,6970,village,0,0,50,0,none,none
+gn:5992211,King City,Ontario,8396,village,0,0,50,0,none,none
+gn:5992248,King Edward Park,Alberta,4215,village,0,0,50,0,none,none
+gn:5992397,Kingsclear,New Brunswick,2839,village,0,0,50,0,none,none
+gn:5992404,Kingscourt,Ontario,5005,village,0,0,50,0,none,none
+gn:5992424,Kingsey Falls,Quebec,1480,village,0,0,50,0,none,none
+gn:5992495,Kingston,Nova Scotia,3466,village,0,0,50,0,none,none
+gn:5992500,Kingston,Ontario,132485,city,0,0,50,0,none,none
+gn:5992526,Kingsville,Ontario,22119,town,0,0,50,0,none,none
+gn:5992746,Kippens,Newfoundland and Labrador,1842,village,0,0,50,0,none,none
+gn:5992830,Kirkland,Quebec,20491,town,0,0,50,0,none,none
+gn:5992836,Kirkland Lake,Ontario,7775,village,0,0,50,0,none,none
+gn:5992996,Kitchener,Ontario,256885,city,0,0,50,0,none,none
+gn:5993072,Kitimat,British Columbia,8987,village,0,0,50,0,none,none
+gn:5993123,Kitsilano,British Columbia,43045,town,0,0,50,0,none,none
+gn:5993879,Koksilah,British Columbia,4000,village,0,0,50,0,none,none
+gn:5994339,Kugluktuk,Nunavut,1382,village,0,0,50,0,none,none
+gn:5994517,Kuujjuaq,Quebec,2668,village,0,0,50,0,none,none
+gn:5994763,Labelle,Quebec,1239,village,0,0,50,0,none,none
+gn:5994839,Labrador City,Newfoundland and Labrador,7220,village,0,0,50,0,none,none
+gn:5994853,Labrecque,Quebec,1328,village,0,0,50,0,none,none
+gn:5994866,La Broquerie,Manitoba,1073,village,0,0,50,0,none,none
+gn:5996666,Lac-Alouette,Quebec,4473,village,0,0,50,0,none,none
+gn:6002133,Lac-Brome,Quebec,5629,village,0,0,50,0,none,none
+gn:6005297,Lac-Connelly,Quebec,1212,village,0,0,50,0,none,none
+gn:6014443,Lac du Bonnet,Manitoba,1089,village,0,0,50,0,none,none
+gn:6024829,Lachute,Quebec,9562,village,0,0,50,0,none,none
+gn:6028050,Lac La Biche,Alberta,2314,village,0,0,50,0,none,none
+gn:6028783,Lac-Lapierre,Quebec,2480,village,0,0,50,0,none,none
+gn:6032673,Lac-Mégantic,Quebec,5747,village,0,0,50,0,none,none
+gn:6035592,Lacolle,Quebec,1528,village,0,0,50,0,none,none
+gn:6035615,Lacombe,Alberta,14258,town,0,0,50,0,none,none
+gn:6035664,La Conception,Quebec,1287,village,0,0,50,0,none,none
+gn:6039722,La Crête,Alberta,2911,village,0,0,50,0,none,none
+gn:6042689,Lac-Simon,Quebec,1243,village,0,0,50,0,none,none
+gn:6047817,Ladysmith,British Columbia,8537,village,0,0,50,0,none,none
+gn:6047861,Laflèche,Quebec,17499,town,0,0,50,0,none,none
+gn:6048131,La Guadeloupe,Quebec,0,village,0,0,50,0,none,none
+gn:6048275,Lake Bonavista,Alberta,10145,town,0,0,50,0,none,none
+gn:6048292,Lakeburn,New Brunswick,5014,village,0,0,50,0,none,none
+gn:6048316,Lake Cowichan,British Columbia,3226,village,0,0,50,0,none,none
+gn:6048347,Lake Echo,Nova Scotia,2365,village,0,0,50,0,none,none
+gn:6048370,Lakefield,Ontario,2753,village,0,0,50,0,none,none
+gn:6048644,Lakeridge,Saskatchewan,3856,village,0,0,50,0,none,none
+gn:6048675,Lakeshore Village,Ontario,6620,village,0,0,50,0,none,none
+gn:6048775,Lakeview,Saskatchewan,7525,village,0,0,50,0,none,none
+gn:6048776,Lakeview,Saskatchewan,7996,village,0,0,50,0,none,none
+gn:6048778,Lakeview,Alberta,5640,village,0,0,50,0,none,none
+gn:6048785,Lakeview Heights,British Columbia,3694,village,0,0,50,0,none,none
+gn:6049024,Lambton Shores,Ontario,10631,town,0,0,50,0,none,none
+gn:6049035,La Minerve,Quebec,1234,village,0,0,50,0,none,none
+gn:6049046,Lamont,Alberta,1774,village,0,0,50,0,none,none
+gn:6049255,Landmark,Manitoba,1292,village,0,0,50,0,none,none
+gn:6049357,Langdale,British Columbia,2407,village,0,0,50,0,none,none
+gn:6049379,Langenburg,Saskatchewan,1165,village,0,0,50,0,none,none
+gn:6049388,Langford,British Columbia,46584,town,0,0,50,0,none,none
+gn:6049403,Langham,Saskatchewan,1496,village,0,0,50,0,none,none
+gn:6049429,Langley,British Columbia,132603,city,0,0,50,0,none,none
+gn:6049515,Lanigan,Saskatchewan,1204,village,0,0,50,0,none,none
+gn:6049537,Lanoraie,Quebec,4447,village,0,0,50,0,none,none
+gn:6049546,Lansdowne,Alberta,1215,village,0,0,50,0,none,none
+gn:6049634,Lantz,Nova Scotia,2229,village,0,0,50,0,none,none
+gn:6049676,La Perle,Alberta,5099,village,0,0,50,0,none,none
+gn:6049858,Lappe,Ontario,1436,village,0,0,50,0,none,none
+gn:6049863,La Prairie,Quebec,23357,town,0,0,50,0,none,none
+gn:6050066,La Ronge,Saskatchewan,5671,village,0,0,50,0,none,none
+gn:6050177,LaSalle,Ontario,32721,town,0,0,50,0,none,none
+gn:6050194,La Sarre,Quebec,7719,village,0,0,50,0,none,none
+gn:6050216,L'Ascension-de-Notre-Seigneur,Quebec,1134,village,0,0,50,0,none,none
+gn:6050263,L'Assomption,Quebec,15906,town,0,0,50,0,none,none
+gn:6050416,La Tuque,Quebec,11001,town,0,0,50,0,none,none
+gn:6050432,Lauderdale,Alberta,2708,village,0,0,50,0,none,none
+gn:6050534,Laurentian Hills,Ontario,10609,town,0,0,50,0,none,none
+gn:6050539,Laurentides,Quebec,12710,town,0,0,50,0,none,none
+gn:6050571,Laurier Heights,Alberta,2648,village,0,0,50,0,none,none
+gn:6050610,Laval,Quebec,438366,city,0,0,50,0,none,none
+gn:6050619,Laval-des-Rapides,Quebec,36933,town,0,0,50,0,none,none
+gn:6050650,Lavaltrie,Quebec,8762,village,0,0,50,0,none,none
+gn:6050874,Lawrencetown,Nova Scotia,3402,village,0,0,50,0,none,none
+gn:6050906,Lawson Heights,Saskatchewan,5285,village,0,0,50,0,none,none
+gn:6051122,Leamington,Ontario,35730,town,0,0,50,0,none,none
+gn:6051264,Lebel-sur-Quévillon,Quebec,3289,village,0,0,50,0,none,none
+gn:6051272,Leblanc,Quebec,1513,village,0,0,50,0,none,none
+gn:6051562,Leduc,Alberta,15561,town,0,0,50,0,none,none
+gn:6051673,Lee Ridge,Alberta,2741,village,0,0,50,0,none,none
+gn:6052239,Le Moyne,Quebec,4855,village,0,0,50,0,none,none
+gn:6052272,Lendrum Place,Alberta,1887,village,0,0,50,0,none,none
+gn:6052583,L'Épiphanie,Quebec,4606,village,0,0,50,0,none,none
+gn:6052773,Les Cèdres,Quebec,1434,village,0,0,50,0,none,none
+gn:6052788,Les Coteaux,Quebec,17396,town,0,0,50,0,none,none
+gn:6053154,Lethbridge,Alberta,103197,city,0,0,50,0,none,none
+gn:6053435,Lewis Point,Prince Edward Island,1108,village,0,0,50,0,none,none
+gn:6053446,Lewisporte,Newfoundland and Labrador,3288,village,0,0,50,0,none,none
+gn:6053462,Lewisville,New Brunswick,9060,village,0,0,50,0,none,none
+gn:6053877,L'Île-Perrot,Quebec,9927,village,0,0,50,0,none,none
+gn:6054238,Limoges,Ontario,2048,village,0,0,50,0,none,none
+gn:6054258,Lincoln,New Brunswick,2504,village,0,0,50,0,none,none
+gn:6054278,Lincoln Park,British Columbia,4040,village,0,0,50,0,none,none
+gn:6054350,Lindsay,Ontario,20354,town,0,0,50,0,none,none
+gn:6054465,Grand Bay-Westfield,New Brunswick,5162,village,0,0,50,0,none,none
+gn:6054474,Linière,Quebec,1385,village,0,0,50,0,none,none
+gn:6054578,Lions Bay,British Columbia,1334,village,0,0,50,0,none,none
+gn:6054677,Listowel,Ontario,7530,village,0,0,50,0,none,none
+gn:6055388,Little Current,Ontario,2156,village,0,0,50,0,none,none
+gn:6057842,Lively,Ontario,5608,village,0,0,50,0,none,none
+gn:6057856,Liverpool,Nova Scotia,2546,village,0,0,50,0,none,none
+gn:6058024,Lloydminster,Alberta,31582,town,0,0,50,0,none,none
+gn:6058415,Logan Lake,British Columbia,2190,village,0,0,50,0,none,none
+gn:6058488,Logy Bay-Middle Cove-Outer Cove,Newfoundland and Labrador,2364,village,0,0,50,0,none,none
+gn:6058560,London,Ontario,422324,city,0,0,50,0,none,none
+gn:6059891,Longueuil,Quebec,229330,city,0,0,50,0,none,none
+gn:6060307,Lorelei,Alberta,4030,village,0,0,50,0,none,none
+gn:6060325,Lorette,Manitoba,3208,village,0,0,50,0,none,none
+gn:6060407,Lorraine,Quebec,9613,village,0,0,50,0,none,none
+gn:6060789,Louisbourg,Nova Scotia,1265,village,0,0,50,0,none,none
+gn:6060800,Louisdale,Nova Scotia,1770,village,0,0,50,0,none,none
+gn:6060839,Louiseville,Quebec,5819,village,0,0,50,0,none,none
+gn:6061187,Lower Economy,Nova Scotia,1111,village,0,0,50,0,none,none
+gn:6061334,Lower Lonsdale,British Columbia,19718,town,0,0,50,0,none,none
+gn:6061378,Lower Mount Royal,Alberta,2990,village,0,0,50,0,none,none
+gn:6061551,Lowertown,Ontario,12824,town,0,0,50,0,none,none
+gn:6061745,Lucan,Ontario,2541,village,0,0,50,0,none,none
+gn:6061818,Lucknow,Ontario,1154,village,0,0,50,0,none,none
+gn:6061958,Lumby,British Columbia,2063,village,0,0,50,0,none,none
+gn:6061979,Lumsden,Saskatchewan,1824,village,0,0,50,0,none,none
+gn:6062069,Lunenburg,Nova Scotia,2396,village,0,0,50,0,none,none
+gn:6062163,Lutes Mountain,New Brunswick,16311,town,0,0,50,0,none,none
+gn:6062341,Lynnmour,British Columbia,2265,village,0,0,50,0,none,none
+gn:6062350,Lynnwood,Alberta,3289,village,0,0,50,0,none,none
+gn:6062534,Mabou,Nova Scotia,1207,village,0,0,50,0,none,none
+gn:6062563,Macamic,Quebec,2734,village,0,0,50,0,none,none
+gn:6062917,MacEwan,Alberta,4740,village,0,0,50,0,none,none
+gn:6063191,Mackenzie,British Columbia,3262,village,0,0,50,0,none,none
+gn:6063244,McKenzie Lake,Alberta,13290,town,0,0,50,0,none,none
+gn:6063429,Macklin,Saskatchewan,1257,village,0,0,50,0,none,none
+gn:6063989,Madoc,Ontario,1535,village,0,0,50,0,none,none
+gn:6064145,Magnetic Hill,New Brunswick,3300,village,0,0,50,0,none,none
+gn:6064180,Magog,Quebec,15550,town,0,0,50,0,none,none
+gn:6064202,Magrath,Alberta,2095,village,0,0,50,0,none,none
+gn:6064280,Mahone Bay,Nova Scotia,1064,village,0,0,50,0,none,none
+gn:6064365,Maillardville,British Columbia,15837,town,0,0,50,0,none,none
+gn:6064704,Malartic,Quebec,3710,village,0,0,50,0,none,none
+gn:6064903,Malmo Plains,Alberta,3306,village,0,0,50,0,none,none
+gn:6064969,Malvern,Ontario,43794,town,0,0,50,0,none,none
+gn:6065088,Mandeville,Quebec,2043,village,0,0,50,0,none,none
+gn:6065253,Manitouwadge,Ontario,1708,village,0,0,50,0,none,none
+gn:6065262,Maniwaki,Quebec,4236,village,0,0,50,0,none,none
+gn:6065295,Manners Sutton,New Brunswick,1920,village,0,0,50,0,none,none
+gn:6065301,Mannheim,Ontario,1002,village,0,0,50,0,none,none
+gn:6065306,Manning,Alberta,1359,village,0,0,50,0,none,none
+gn:6065568,Maple Bay,British Columbia,2640,village,0,0,50,0,none,none
+gn:6065592,Maple Creek,Saskatchewan,2121,village,0,0,50,0,none,none
+gn:6065684,Maple Ridge,Alberta,1830,village,0,0,50,0,none,none
+gn:6065685,Maple Ridge,Alberta,1711,village,0,0,50,0,none,none
+gn:6065686,Maple Ridge,British Columbia,82256,town,0,0,50,0,none,none
+gn:6065709,Maplewood,British Columbia,1090,village,0,0,50,0,none,none
+gn:6066350,Marieville,Quebec,5600,village,0,0,50,0,none,none
+gn:6066419,Marion Bridge,Nova Scotia,1711,village,0,0,50,0,none,none
+gn:6066504,Markdale,Ontario,1216,village,0,0,50,0,none,none
+gn:6066513,Markham,Ontario,338503,city,0,0,50,0,none,none
+gn:6066548,Markland Wood,Ontario,10554,town,0,0,50,0,none,none
+gn:6066595,Markstay-Warren,Ontario,2708,village,0,0,50,0,none,none
+gn:6066608,Marlborough,Alberta,8910,village,0,0,50,0,none,none
+gn:6066612,Marlborough Park,Alberta,8290,village,0,0,50,0,none,none
+gn:6066654,Marmora,Ontario,1499,village,0,0,50,0,none,none
+gn:6067033,Martensville,Saskatchewan,9645,village,0,0,50,0,none,none
+gn:6067090,Martindale,Alberta,14540,town,0,0,50,0,none,none
+gn:6067362,Mary Hill,British Columbia,3974,village,0,0,50,0,none,none
+gn:6067472,Marystown,Newfoundland and Labrador,5204,village,0,0,50,0,none,none
+gn:6067475,Marysville,New Brunswick,2223,village,0,0,50,0,none,none
+gn:6067494,Mascouche,Quebec,34626,town,0,0,50,0,none,none
+gn:6067547,Maskinongé,Quebec,1105,village,0,0,50,0,none,none
+gn:6067687,Massey Drive,Newfoundland and Labrador,1606,village,0,0,50,0,none,none
+gn:6067695,Massey Place,Saskatchewan,3796,village,0,0,50,0,none,none
+gn:6067747,Matagami,Quebec,1966,village,0,0,50,0,none,none
+gn:6067959,Mattawa,Ontario,1993,village,0,0,50,0,none,none
+gn:6068121,Maugerville,New Brunswick,1808,village,0,0,50,0,none,none
+gn:6068315,Mayerthorpe,Alberta,1320,village,0,0,50,0,none,none
+gn:6068329,Mayfield,Alberta,1973,village,0,0,50,0,none,none
+gn:6068380,Mayland Heights,Alberta,5925,village,0,0,50,0,none,none
+gn:6068483,McAdam,New Brunswick,1261,village,0,0,50,0,none,none
+gn:6068816,McCauley,Alberta,3509,village,0,0,50,0,none,none
+gn:6069732,McGregor,Ontario,1536,village,0,0,50,0,none,none
+gn:6070250,McKenzie Towne,Alberta,17505,town,0,0,50,0,none,none
+gn:6070259,McKernan,Alberta,2815,village,0,0,50,0,none,none
+gn:6070625,McLeod,Alberta,2313,village,0,0,50,0,none,none
+gn:6070782,McMasterville,Quebec,5936,village,0,0,50,0,none,none
+gn:6071141,McQueen,Alberta,1670,village,0,0,50,0,none,none
+gn:6071338,Meadowbrook,British Columbia,1969,village,0,0,50,0,none,none
+gn:6071400,Meadowgreen,Saskatchewan,4771,village,0,0,50,0,none,none
+gn:6071421,Meadow Lake,Saskatchewan,5266,village,0,0,50,0,none,none
+gn:6071441,Meadowlark Park,Alberta,2602,village,0,0,50,0,none,none
+gn:6071497,Meaford,Ontario,4910,village,0,0,50,0,none,none
+gn:6071618,Medicine Hat,Alberta,63138,town,0,0,50,0,none,none
+gn:6071876,Melfort,Saskatchewan,5778,village,0,0,50,0,none,none
+gn:6071900,Melita,Manitoba,1042,village,0,0,50,0,none,none
+gn:6071936,Melocheville,Quebec,2621,village,0,0,50,0,none,none
+gn:6071971,Melville,Saskatchewan,4127,village,0,0,50,0,none,none
+gn:6071976,Melville Cove,Nova Scotia,1071,village,0,0,50,0,none,none
+gn:6072045,Memramcook,New Brunswick,5029,village,0,0,50,0,none,none
+gn:6072096,Menisa,Alberta,2545,village,0,0,50,0,none,none
+gn:6072206,Mercier,Quebec,10121,town,0,0,50,0,none,none
+gn:6072350,Merritt,British Columbia,7139,village,0,0,50,0,none,none
+gn:6072447,Métabetchouan,Quebec,2123,village,0,0,50,0,none,none
+gn:6072470,Metcalfe,Ontario,1776,village,0,0,50,0,none,none
+gn:6072482,Metchosin,British Columbia,5067,village,0,0,50,0,none,none
+gn:6072539,Metrotown,British Columbia,52355,town,0,0,50,0,none,none
+gn:6072591,Meyokumin,Alberta,2891,village,0,0,50,0,none,none
+gn:6072657,Michaels Park,Alberta,2196,village,0,0,50,0,none,none
+gn:6072809,Micmac Village,Nova Scotia,2429,village,0,0,50,0,none,none
+gn:6072977,Middlegate,British Columbia,4000,village,0,0,50,0,none,none
+gn:6073248,Middle Sackville,Nova Scotia,4329,village,0,0,50,0,none,none
+gn:6073289,Middleton,Nova Scotia,1873,village,0,0,50,0,none,none
+gn:6073290,Middleton,Nova Scotia,1391,village,0,0,50,0,none,none
+gn:6073363,Midland,Ontario,24353,town,0,0,50,0,none,none
+gn:6073377,Midnapore,Alberta,6480,village,0,0,50,0,none,none
+gn:6073561,Mildmay,Ontario,1219,village,0,0,50,0,none,none
+gn:6073653,Milford,New Brunswick,1528,village,0,0,50,0,none,none
+gn:6073666,Milford Station,Nova Scotia,1100,village,0,0,50,0,none,none
+gn:6073743,Mill Bay,British Columbia,7200,village,0,0,50,0,none,none
+gn:6073749,Millbrook,Ontario,1695,village,0,0,50,0,none,none
+gn:6074099,Millet,Alberta,1905,village,0,0,50,0,none,none
+gn:6074123,Millidgeville,New Brunswick,6527,village,0,0,50,0,none,none
+gn:6074143,Milliken,Ontario,26572,town,0,0,50,0,none,none
+gn:6074228,Millrise,Alberta,6655,village,0,0,50,0,none,none
+gn:6074291,Millview,Nova Scotia,9189,village,0,0,50,0,none,none
+gn:6074377,Milton,Ontario,132979,city,0,0,50,0,none,none
+gn:6074409,Mimico,Ontario,33964,town,0,0,50,0,none,none
+gn:6074472,Minchau,Alberta,3099,village,0,0,50,0,none,none
+gn:6074631,Mineville,Nova Scotia,1073,village,0,0,50,0,none,none
+gn:6074882,Minnedosa,Manitoba,2449,village,0,0,50,0,none,none
+gn:6075003,Minto,New Brunswick,2234,village,0,0,50,0,none,none
+gn:6075061,Mirabel,Quebec,34626,town,0,0,50,0,none,none
+gn:6075081,Miramichi,New Brunswick,17537,town,0,0,50,0,none,none
+gn:6075290,Mission,Alberta,4505,village,0,0,50,0,none,none
+gn:6075292,Mission,British Columbia,41519,town,0,0,50,0,none,none
+gn:6075357,Mississauga,Ontario,717961,large-city,0,0,50,0,none,none
+gn:6075359,Mississauga Beach,Ontario,4662,village,0,0,50,0,none,none
+gn:6075370,Mississippi Mills,Ontario,14740,town,0,0,50,0,none,none
+gn:6075491,Mistissini,Quebec,2869,village,0,0,50,0,none,none
+gn:6076211,Moncton,New Brunswick,86106,town,0,0,50,0,none,none
+gn:6076690,Montague,Prince Edward Island,2027,village,0,0,50,0,none,none
+gn:6076967,Monterey Park,Alberta,10475,town,0,0,50,0,none,none
+gn:6077007,Montgomery,Alberta,4175,village,0,0,50,0,none,none
+gn:6077030,Montgomery Place,Saskatchewan,3325,village,0,0,50,0,none,none
+gn:6077128,Mont-Laurier,Quebec,13405,town,0,0,50,0,none,none
+ca-montreal,Montréal,Quebec,1762949,large-city,0,0,50,0,none,none
+gn:6077251,Montréal-Est,Quebec,3850,village,0,0,50,0,none,none
+gn:6077265,Montréal-Ouest,Quebec,5184,village,0,0,50,0,none,none
+gn:6077294,Montrose,Alberta,3241,village,0,0,50,0,none,none
+gn:6077315,Mont-Royal,Quebec,18933,town,0,0,50,0,none,none
+gn:6077338,Mont-Saint-Grégoire,Quebec,3086,village,0,0,50,0,none,none
+gn:6077340,Mont-Saint-Hilaire,Quebec,15720,town,0,0,50,0,none,none
+gn:6077445,Mont-Tremblant,Quebec,8892,village,0,0,50,0,none,none
+gn:6077991,Moose Factory,Ontario,1807,village,0,0,50,0,none,none
+gn:6078112,Moose Jaw,Saskatchewan,33890,town,0,0,50,0,none,none
+gn:6078177,Moose Lake,Manitoba,1225,village,0,0,50,0,none,none
+gn:6078359,Moosomin,Saskatchewan,2485,village,0,0,50,0,none,none
+gn:6078372,Moosonee,Ontario,1405,village,0,0,50,0,none,none
+gn:6078447,Morden,Manitoba,8668,village,0,0,50,0,none,none
+gn:6078607,Morin-Heights,Quebec,3925,village,0,0,50,0,none,none
+gn:6078636,Morinville,Alberta,9848,village,0,0,50,0,none,none
+gn:6078727,Morris,Manitoba,1916,village,0,0,50,0,none,none
+gn:6078737,Morrisburg,Ontario,3014,village,0,0,50,0,none,none
+gn:6079673,Mount Albert,Ontario,4925,village,0,0,50,0,none,none
+gn:6080088,Mount Brydges,Ontario,2656,village,0,0,50,0,none,none
+gn:6080420,Mount Currie,British Columbia,1242,village,0,0,50,0,none,none
+gn:6080488,Mount Dennis,Ontario,13593,town,0,0,50,0,none,none
+gn:6080782,Mount Forest,Ontario,5040,village,0,0,50,0,none,none
+gn:6081543,Mount Lehman,British Columbia,1558,village,0,0,50,0,none,none
+gn:6082231,Mount Pearl,Newfoundland and Labrador,22477,town,0,0,50,0,none,none
+gn:6082321,Mount Pleasant,Alberta,6325,village,0,0,50,0,none,none
+gn:6082322,Mount Pleasant,British Columbia,33000,town,0,0,50,0,none,none
+gn:6082548,Mount Royal,Saskatchewan,5305,village,0,0,50,0,none,none
+gn:6083052,Mount Uniacke,Nova Scotia,3501,village,0,0,50,0,none,none
+gn:6084340,Munster,Ontario,1145,village,0,0,50,0,none,none
+gn:6084746,Murrayville,British Columbia,11420,town,0,0,50,0,none,none
+gn:6085154,Musquodoboit Harbour,Nova Scotia,1714,village,0,0,50,0,none,none
+gn:6085532,Nahanni Butte,Northwest Territories,0,village,0,0,50,0,none,none
+gn:6085665,Nakusp,British Columbia,1706,village,0,0,50,0,none,none
+gn:6085772,Nanaimo,British Columbia,90504,town,0,0,50,0,none,none
+gn:6085892,Nanton,Alberta,2181,village,0,0,50,0,none,none
+gn:6085931,Napanee,Ontario,7439,village,0,0,50,0,none,none
+gn:6085960,Napierville,Quebec,3124,village,0,0,50,0,none,none
+gn:6086161,Nashwaaksis,New Brunswick,9831,village,0,0,50,0,none,none
+gn:6086361,Nauwigewauk,New Brunswick,1472,village,0,0,50,0,none,none
+gn:6086590,Neebing,Ontario,1986,village,0,0,50,0,none,none
+gn:6086673,Neepawa,Manitoba,4609,village,0,0,50,0,none,none
+gn:6086871,Nelson,British Columbia,10664,town,0,0,50,0,none,none
+gn:6086944,Nelson-Miramichi,New Brunswick,1164,village,0,0,50,0,none,none
+gn:6087029,Nepean,Ontario,180000,city,0,0,50,0,none,none
+gn:6087456,Newcastle,New Brunswick,1149,village,0,0,50,0,none,none
+gn:6087530,New Dundee,Ontario,1174,village,0,0,50,0,none,none
+gn:6087533,New Edinburgh,Ontario,3539,village,0,0,50,0,none,none
+gn:6087579,New Glasgow,Nova Scotia,18665,town,0,0,50,0,none,none
+gn:6087591,New Hamburg,Ontario,13595,town,0,0,50,0,none,none
+gn:6087701,Newmarket,Ontario,91034,town,0,0,50,0,none,none
+gn:6087704,New Maryland,New Brunswick,4153,village,0,0,50,0,none,none
+gn:6087708,New Minas,Nova Scotia,4662,village,0,0,50,0,none,none
+gn:6087789,Newton,Alberta,2914,village,0,0,50,0,none,none
+gn:6087790,Newton,British Columbia,159390,city,0,0,50,0,none,none
+gn:6087824,New Toronto,Ontario,11463,town,0,0,50,0,none,none
+gn:6087839,New Victoria,Nova Scotia,1093,village,0,0,50,0,none,none
+gn:6087843,New Waterford,Nova Scotia,6723,village,0,0,50,0,none,none
+gn:6087844,New Westminster,British Columbia,78916,town,0,0,50,0,none,none
+gn:6087846,New-Wes-Valley,Newfoundland and Labrador,2044,village,0,0,50,0,none,none
+gn:6087892,Niagara Falls,Ontario,99818,town,0,0,50,0,none,none
+gn:6087905,Niagara-on-the-Lake,Ontario,17511,town,0,0,50,0,none,none
+gn:6088132,Nicolet,Quebec,5669,village,0,0,50,0,none,none
+gn:6088469,Nipawin,Saskatchewan,4401,village,0,0,50,0,none,none
+gn:6088485,Nipigon,Ontario,1473,village,0,0,50,0,none,none
+gn:6088677,Niverville,Manitoba,4083,village,0,0,50,0,none,none
+gn:6089009,Noonan,New Brunswick,1042,village,0,0,50,0,none,none
+gn:6089125,Norfolk County,Ontario,60847,town,0,0,50,0,none,none
+gn:6089133,Norgate,British Columbia,3035,village,0,0,50,0,none,none
+gn:6089179,Normandin,Quebec,2728,village,0,0,50,0,none,none
+gn:6089242,Normanview,Saskatchewan,3965,village,0,0,50,0,none,none
+gn:6089243,Normanview West,Saskatchewan,2780,village,0,0,50,0,none,none
+gn:6089245,Norman Wells,Northwest Territories,1027,village,0,0,50,0,none,none
+gn:6089404,North Battleford,Saskatchewan,19440,town,0,0,50,0,none,none
+gn:6089426,North Bay,Ontario,50396,town,0,0,50,0,none,none
+gn:6089661,North Cowichan,British Columbia,29676,town,0,0,50,0,none,none
+gn:6089692,North Delta,British Columbia,60769,town,0,0,50,0,none,none
+gn:6089694,North Devon,New Brunswick,1652,village,0,0,50,0,none,none
+gn:6090056,North Glenora,Alberta,2023,village,0,0,50,0,none,none
+gn:6090172,North Kamloops,British Columbia,10995,town,0,0,50,0,none,none
+gn:6090332,Northmount,Alberta,2902,village,0,0,50,0,none,none
+gn:6090386,North Park,Saskatchewan,2108,village,0,0,50,0,none,none
+gn:6090405,North Perth,Ontario,13130,town,0,0,50,0,none,none
+gn:6090579,North Saanich,British Columbia,11089,town,0,0,50,0,none,none
+gn:6090698,North Sydney,Nova Scotia,5699,village,0,0,50,0,none,none
+gn:6090785,North Vancouver,British Columbia,88168,town,0,0,50,0,none,none
+gn:6091108,Norton,New Brunswick,1410,village,0,0,50,0,none,none
+gn:6091197,Norwood,Ontario,1380,village,0,0,50,0,none,none
+gn:6091314,Notre-Dame-de-Grâce,Quebec,68152,town,0,0,50,0,none,none
+gn:6091369,Notre-Dame-de-l'Île-Perrot,Quebec,9885,village,0,0,50,0,none,none
+gn:6091422,Notre-Dame-des-Prairies,Quebec,8230,village,0,0,50,0,none,none
+gn:6091445,Notre-Dame-du-Lac,Quebec,1184,village,0,0,50,0,none,none
+gn:6091451,Notre-Dame-du-Mont-Carmel,Quebec,1091,village,0,0,50,0,none,none
+gn:6091573,Noyan,Quebec,1418,village,0,0,50,0,none,none
+gn:6091772,Nutana,Saskatchewan,6294,village,0,0,50,0,none,none
+gn:6091773,Nutana Park,Saskatchewan,3093,village,0,0,50,0,none,none
+gn:6091919,Oak Bay,British Columbia,18015,town,0,0,50,0,none,none
+gn:6092095,Oakridge,Ontario,13845,town,0,0,50,0,none,none
+gn:6092096,Oakridge,Alberta,5620,village,0,0,50,0,none,none
+gn:6092097,Oakridge,British Columbia,13030,town,0,0,50,0,none,none
+gn:6092122,Oakville,Ontario,213759,city,0,0,50,0,none,none
+gn:6092125,Oakwood Village,Ontario,21210,town,0,0,50,0,none,none
+gn:6092708,Ogden,Alberta,8315,village,0,0,50,0,none,none
+gn:6092839,Ohsweken,Ontario,1500,village,0,0,50,0,none,none
+gn:6092873,Oka,Quebec,1254,village,0,0,50,0,none,none
+gn:6092889,Okanagan Falls,British Columbia,2266,village,0,0,50,0,none,none
+gn:6092896,Okanagan Mission,British Columbia,38374,town,0,0,50,0,none,none
+gn:6093010,Okotoks,Alberta,30214,town,0,0,50,0,none,none
+gn:6093347,Olds,Alberta,9209,village,0,0,50,0,none,none
+gn:6093513,Wîhkwêntôwin,Alberta,18180,town,0,0,50,0,none,none
+gn:6093514,Oliver,British Columbia,5094,village,0,0,50,0,none,none
+gn:6093992,Ootischenia,British Columbia,1320,village,0,0,50,0,none,none
+gn:6094201,Orangeville,Ontario,30734,town,0,0,50,0,none,none
+gn:6094325,Orillia,Ontario,31166,town,0,0,50,0,none,none
+gn:6094389,Ormsby Place,Alberta,5314,village,0,0,50,0,none,none
+gn:6094391,Ormstown,Quebec,1730,village,0,0,50,0,none,none
+gn:6094407,Oromocto,New Brunswick,8805,village,0,0,50,0,none,none
+gn:6094573,Osgoode,Ontario,2578,village,0,0,50,0,none,none
+gn:6094578,Oshawa,Ontario,175383,city,0,0,50,0,none,none
+gn:6094665,Osoyoos,British Columbia,5556,village,0,0,50,0,none,none
+gn:6094817,Ottawa,Ontario,1017449,large-city,0,0,50,0,none,none
+gn:6094835,Ottawa South,Ontario,125090,city,0,0,50,0,none,none
+gn:6094884,Otterburn Park,Quebec,8464,village,0,0,50,0,none,none
+gn:6095214,Ottewell,Alberta,5848,village,0,0,50,0,none,none
+gn:6095416,Outlook,Saskatchewan,2279,village,0,0,50,0,none,none
+gn:6095514,Overbrook,Ontario,9650,village,0,0,50,0,none,none
+gn:6095548,Overlanders,Alberta,2867,village,0,0,50,0,none,none
+gn:6095645,Owen Sound,Ontario,21341,town,0,0,50,0,none,none
+gn:6095751,Oxbow,Saskatchewan,1058,village,0,0,50,0,none,none
+gn:6095779,Oxford,Nova Scotia,1170,village,0,0,50,0,none,none
+gn:6095787,Oxford Heights,British Columbia,6156,village,0,0,50,0,none,none
+gn:6095788,Oxford House,Manitoba,1950,village,0,0,50,0,none,none
+gn:6095875,Oyster River,British Columbia,1500,village,0,0,50,0,none,none
+gn:6095932,Pacific Heights,Saskatchewan,4570,village,0,0,50,0,none,none
+gn:6096232,Paisley,Ontario,1045,village,0,0,50,0,none,none
+gn:6096356,Palliser,Alberta,3285,village,0,0,50,0,none,none
+gn:6096551,Pangnirtung,Nunavut,1504,village,0,0,50,0,none,none
+gn:6096582,Panorama Hills,Alberta,25535,town,0,0,50,0,none,none
+gn:6096672,Papineauville,Quebec,1600,village,0,0,50,0,none,none
+gn:6096729,Paradise,Newfoundland and Labrador,22957,town,0,0,50,0,none,none
+gn:6098382,Parkallen,Alberta,2219,village,0,0,50,0,none,none
+gn:6098397,Parkdale,Prince Edward Island,2710,village,0,0,50,0,none,none
+gn:6098403,Parkdale,Alberta,3193,village,0,0,50,0,none,none
+gn:6098542,Parkhill,Ontario,1737,village,0,0,50,0,none,none
+gn:6098584,Parkland,Alberta,3430,village,0,0,50,0,none,none
+gn:6098602,Parkridge,Saskatchewan,5430,village,0,0,50,0,none,none
+gn:6098642,Parksville,British Columbia,12000,town,0,0,50,0,none,none
+gn:6098648,Parkview,Alberta,3327,village,0,0,50,0,none,none
+gn:6098717,Parrsboro,Nova Scotia,1472,village,0,0,50,0,none,none
+gn:6098747,Parry Sound,Ontario,6321,village,0,0,50,0,none,none
+gn:6098924,Pasadena,Newfoundland and Labrador,3620,village,0,0,50,0,none,none
+gn:6099550,Patricia Heights,Alberta,1749,village,0,0,50,0,none,none
+gn:6099654,Patterson,Alberta,4145,village,0,0,50,0,none,none
+gn:6100069,Peace River,Alberta,6842,village,0,0,50,0,none,none
+gn:6100086,Peachland,British Columbia,5006,village,0,0,50,0,none,none
+gn:6100681,Pelican Narrows,Saskatchewan,1942,village,0,0,50,0,none,none
+gn:6100799,Pemberton,British Columbia,2574,village,0,0,50,0,none,none
+gn:6100802,Pemberton Heights,British Columbia,2090,village,0,0,50,0,none,none
+gn:6100832,Pembroke,Ontario,13882,town,0,0,50,0,none,none
+gn:6100876,Penbrooke Meadows,Alberta,8235,village,0,0,50,0,none,none
+gn:6100931,Airport Heights,Newfoundland and Labrador,4956,village,0,0,50,0,none,none
+gn:6100932,Penetanguishene,Ontario,10077,town,0,0,50,0,none,none
+gn:6100954,Penhold,Alberta,3277,village,0,0,50,0,none,none
+gn:6101041,Pennfield,New Brunswick,2222,village,0,0,50,0,none,none
+gn:6101112,Penobsquis,New Brunswick,1500,village,0,0,50,0,none,none
+gn:6101141,Penticton,British Columbia,33761,town,0,0,50,0,none,none
+gn:6101546,Perth,Ontario,5573,village,0,0,50,0,none,none
+gn:6101606,Petawawa,Ontario,17187,town,0,0,50,0,none,none
+gn:6101645,Peterborough,Ontario,85807,town,0,0,50,0,none,none
+gn:6101906,Petitcodiac,New Brunswick,1476,village,0,0,50,0,none,none
+gn:6103581,Petrolia,Ontario,5632,village,0,0,50,0,none,none
+gn:6104111,Pickering,Ontario,91771,town,0,0,50,0,none,none
+gn:6104215,Picton,Ontario,4702,village,0,0,50,0,none,none
+gn:6104221,Pictou,Nova Scotia,3107,village,0,0,50,0,none,none
+gn:6104231,Picture Butte,Alberta,1700,village,0,0,50,0,none,none
+gn:6104260,Piedmont,Quebec,2721,village,0,0,50,0,none,none
+gn:6104319,Pierrefonds,Quebec,59093,town,0,0,50,0,none,none
+gn:6104329,Pierreville,Quebec,1119,village,0,0,50,0,none,none
+gn:6104745,Pilot Butte,Saskatchewan,2137,village,0,0,50,0,none,none
+gn:6104841,Pincher Creek,Alberta,3855,village,0,0,50,0,none,none
+gn:6104876,Pincourt,Quebec,11197,town,0,0,50,0,none,none
+gn:6105195,Pineridge,Alberta,9850,village,0,0,50,0,none,none
+gn:6105815,Pitt Meadows,British Columbia,18573,town,0,0,50,0,none,none
+gn:6105892,Placentia,Newfoundland and Labrador,3289,village,0,0,50,0,none,none
+gn:6106158,Plantagenet,Ontario,9680,village,0,0,50,0,none,none
+gn:6106255,Plattsville,Ontario,1366,village,0,0,50,0,none,none
+gn:6106303,Pleasant Hill,Saskatchewan,5169,village,0,0,50,0,none,none
+gn:6106345,Pleasantside,British Columbia,2671,village,0,0,50,0,none,none
+gn:6106369,Pleasantview,Alberta,3745,village,0,0,50,0,none,none
+gn:6107272,Pointe-Calumet,Quebec,6396,village,0,0,50,0,none,none
+gn:6107325,Pointe-Claire,Quebec,30161,town,0,0,50,0,none,none
+gn:6107683,Pointe-du-Lac,Quebec,7104,village,0,0,50,0,none,none
+gn:6108765,Point McKay,Alberta,1330,village,0,0,50,0,none,none
+gn:6108975,Pollard Meadows,Alberta,4553,village,0,0,50,0,none,none
+gn:6109074,Polson Park,Ontario,3005,village,0,0,50,0,none,none
+gn:6109205,Pond Inlet,Nunavut,1555,village,0,0,50,0,none,none
+gn:6109273,Ponoka,Alberta,6656,village,0,0,50,0,none,none
+gn:6110611,Pont Rouge,Quebec,7518,village,0,0,50,0,none,none
+gn:6110747,Pont-Viau,Quebec,14187,town,0,0,50,0,none,none
+gn:6111529,Portage la Prairie,Manitoba,13304,town,0,0,50,0,none,none
+gn:6111632,Port Alberni,British Columbia,20712,town,0,0,50,0,none,none
+gn:6111696,Port-Cartier,Quebec,6516,village,0,0,50,0,none,none
+gn:6111704,Port Colborne,Ontario,18306,town,0,0,50,0,none,none
+gn:6111706,Port Coquitlam,British Columbia,58000,town,0,0,50,0,none,none
+gn:6111745,Port Elgin,Ontario,7862,village,0,0,50,0,none,none
+gn:6111831,Porters Lake,Nova Scotia,3716,village,0,0,50,0,none,none
+gn:6111862,Port Hardy,British Columbia,3902,village,0,0,50,0,none,none
+gn:6111867,Port Hawkesbury,Nova Scotia,3210,village,0,0,50,0,none,none
+gn:6111874,Port Hood,Nova Scotia,1300,village,0,0,50,0,none,none
+gn:6111882,Port Hope,Ontario,12587,town,0,0,50,0,none,none
+gn:6111953,Port McNeill,British Columbia,2234,village,0,0,50,0,none,none
+gn:6111962,Port Moody,British Columbia,27512,town,0,0,50,0,none,none
+gn:6112000,Port Rowan,Ontario,1102,village,0,0,50,0,none,none
+gn:6112027,Port Stanley,Ontario,2148,village,0,0,50,0,none,none
+gn:6112040,Portugal Cove-St. Phillip’s,Newfoundland and Labrador,8415,village,0,0,50,0,none,none
+gn:6112050,Port Wallace,Nova Scotia,6963,village,0,0,50,0,none,none
+gn:6112057,Port Williams,Nova Scotia,1110,village,0,0,50,0,none,none
+gn:6112414,Pouch Cove,Newfoundland and Labrador,2063,village,0,0,50,0,none,none
+gn:6112530,Powassan,Ontario,1243,village,0,0,50,0,none,none
+gn:6112608,Powell River,British Columbia,13157,town,0,0,50,0,none,none
+gn:6112862,Preeceville,Saskatchewan,1003,village,0,0,50,0,none,none
+gn:6113027,Prescott,Ontario,4466,village,0,0,50,0,none,none
+gn:6113141,Preston,Nova Scotia,3223,village,0,0,50,0,none,none
+gn:6113198,Prévost,Quebec,10132,town,0,0,50,0,none,none
+gn:6113335,Prince Albert,Saskatchewan,35102,town,0,0,50,0,none,none
+gn:6113350,Prince Charles,Alberta,1276,village,0,0,50,0,none,none
+gn:6113355,Prince Edward,Ontario,25496,town,0,0,50,0,none,none
+gn:6113365,Prince George,British Columbia,78943,town,0,0,50,0,none,none
+gn:6113405,Prince Rupert,Alberta,1319,village,0,0,50,0,none,none
+gn:6113406,Prince Rupert,British Columbia,14708,town,0,0,50,0,none,none
+gn:6113463,Princeton,British Columbia,2828,village,0,0,50,0,none,none
+gn:6113466,Princeville,Nova Scotia,5571,village,0,0,50,0,none,none
+gn:6113535,Pritchard,British Columbia,1500,village,0,0,50,0,none,none
+gn:6113828,Provost,Alberta,2082,village,0,0,50,0,none,none
+gn:6114163,Pump Hill,Alberta,1455,village,0,0,50,0,none,none
+gn:6114228,Puntledge,British Columbia,1387,village,0,0,50,0,none,none
+gn:6114471,Puvirnituq,Quebec,2129,village,0,0,50,0,none,none
+gn:6114862,Qualicum Beach,British Columbia,9303,village,0,0,50,0,none,none
+gn:6114943,Quarryville,New Brunswick,1036,village,0,0,50,0,none,none
+gn:6115059,Queen Alexandra,Alberta,4679,village,0,0,50,0,none,none
+gn:6115091,Queen Mary Park,Alberta,7365,village,0,0,50,0,none,none
+gn:6115107,Queensborough,British Columbia,11000,town,0,0,50,0,none,none
+gn:6115126,Queensland,Alberta,4585,village,0,0,50,0,none,none
+gn:6115132,Queens Park,British Columbia,2781,village,0,0,50,0,none,none
+gn:6115156,Queenswood Heights,Ontario,12000,town,0,0,50,0,none,none
+gn:6115187,Quesnel,British Columbia,9879,village,0,0,50,0,none,none
+gn:6115355,Quinte West,Ontario,43577,town,0,0,50,0,none,none
+gn:6115362,Quinton Heights,New Brunswick,1493,village,0,0,50,0,none,none
+gn:6115383,Quispamsis,New Brunswick,18768,town,0,0,50,0,none,none
+gn:6115568,Rabbittown,Newfoundland and Labrador,5368,village,0,0,50,0,none,none
+gn:6115713,Radium Hot Springs,British Columbia,1339,village,0,0,50,0,none,none
+gn:6115754,Gamèti,Northwest Territories,0,village,0,0,50,0,none,none
+gn:6116310,Ramsay,Alberta,2155,village,0,0,50,0,none,none
+gn:6116319,Ramsay Heights,Alberta,3349,village,0,0,50,0,none,none
+gn:6116399,Ranchlands,Alberta,7490,village,0,0,50,0,none,none
+gn:6116401,Ranch Park,British Columbia,7925,village,0,0,50,0,none,none
+gn:6116548,Rankin Inlet,Nunavut,2975,village,0,0,50,0,none,none
+gn:6117611,Rawdon,Quebec,5188,village,0,0,50,0,none,none
+gn:6117675,Raymond,Alberta,3708,village,0,0,50,0,none,none
+gn:6117731,Rayside-Balfour,Ontario,14557,town,0,0,50,0,none,none
+gn:6118091,Redcliff,Alberta,5581,village,0,0,50,0,none,none
+gn:6118158,Red Deer,Alberta,100844,city,0,0,50,0,none,none
+gn:6118190,Reddendale,Ontario,1340,village,0,0,50,0,none,none
+gn:6118313,Red Head,New Brunswick,1500,village,0,0,50,0,none,none
+gn:6118417,Red Lake,Ontario,4366,village,0,0,50,0,none,none
+gn:6118425,Red Lake,Ontario,1177,village,0,0,50,0,none,none
+gn:6119101,Regent Park,Ontario,10803,town,0,0,50,0,none,none
+gn:6119103,Regent Park,Saskatchewan,2865,village,0,0,50,0,none,none
+gn:6119109,Regina,Saskatchewan,226404,city,0,0,50,0,none,none
+gn:6119113,Regina Beach,Saskatchewan,1629,village,0,0,50,0,none,none
+gn:6119448,Renfrew,Ontario,8223,village,0,0,50,0,none,none
+gn:6119450,Renfrew,Alberta,6580,village,0,0,50,0,none,none
+gn:6119451,Renfrew-Collingwood,British Columbia,51530,town,0,0,50,0,none,none
+gn:6119518,Repentigny,Quebec,84965,town,0,0,50,0,none,none
+gn:6119528,Naujaat,Nunavut,1225,village,0,0,50,0,none,none
+gn:6121429,Reserve Mines,Nova Scotia,2402,village,0,0,50,0,none,none
+gn:6121621,Revelstoke,British Columbia,7547,village,0,0,50,0,none,none
+gn:6122037,Richelieu,Quebec,5208,village,0,0,50,0,none,none
+gn:6122048,Richfield,Alberta,3299,village,0,0,50,0,none,none
+gn:6122053,Richibucto,New Brunswick,1411,village,0,0,50,0,none,none
+gn:6122078,Richmond,Quebec,3232,village,0,0,50,0,none,none
+gn:6122081,Richmond,Ontario,4055,village,0,0,50,0,none,none
+gn:6122084,Richmond,Alberta,5250,village,0,0,50,0,none,none
+gn:6122085,Richmond,British Columbia,209937,city,0,0,50,0,none,none
+gn:6122091,Richmond Hill,Ontario,202022,city,0,0,50,0,none,none
+gn:6122174,Rideau Heights,Ontario,6555,village,0,0,50,0,none,none
+gn:6122180,Rideau Park,Alberta,1883,village,0,0,50,0,none,none
+gn:6122230,Ridgetown,Ontario,3002,village,0,0,50,0,none,none
+gn:6122288,Rigaud,Quebec,3613,village,0,0,50,0,none,none
+gn:6122374,Rimbey,Alberta,2567,village,0,0,50,0,none,none
+gn:6122448,Rio Terrace,Alberta,1305,village,0,0,50,0,none,none
+gn:6122472,Ripon,Quebec,1735,village,0,0,50,0,none,none
+gn:6122543,Ritchie,Alberta,4194,village,0,0,50,0,none,none
+gn:6122606,Riverbend,Alberta,9205,village,0,0,50,0,none,none
+gn:6122626,Riverdale,Alberta,2004,village,0,0,50,0,none,none
+gn:6122664,River Heights,Saskatchewan,4614,village,0,0,50,0,none,none
+gn:6122675,River John,Nova Scotia,2399,village,0,0,50,0,none,none
+gn:6122707,Rivers,Manitoba,1257,village,0,0,50,0,none,none
+gn:6122711,Riversdale,Saskatchewan,2744,village,0,0,50,0,none,none
+gn:6122741,River Springs,British Columbia,2325,village,0,0,50,0,none,none
+gn:6122758,Riverview,New Brunswick,20584,town,0,0,50,0,none,none
+gn:6124931,Rivière-Rouge,Quebec,4645,village,0,0,50,0,none,none
+gn:6125519,Roberts Creek,British Columbia,1949,village,0,0,50,0,none,none
+gn:6125653,Roberval,Quebec,10227,town,0,0,50,0,none,none
+gn:6125862,Roblin,Manitoba,1614,village,0,0,50,0,none,none
+gn:6126245,Rockcliffe Park,Ontario,1888,village,0,0,50,0,none,none
+gn:6126305,Rock Forest,Quebec,35500,town,0,0,50,0,none,none
+gn:6126326,Rockingham,Nova Scotia,10079,town,0,0,50,0,none,none
+gn:6126529,Rockway,Ontario,1266,village,0,0,50,0,none,none
+gn:6126540,Rockwood,Ontario,4629,village,0,0,50,0,none,none
+gn:6126749,Rocky Mountain House,Alberta,6527,village,0,0,50,0,none,none
+gn:6126913,Rocky Ridge,Alberta,8195,village,0,0,50,0,none,none
+gn:6127159,Rogersville,New Brunswick,1193,village,0,0,50,0,none,none
+gn:6127587,Rosedale,British Columbia,5700,village,0,0,50,0,none,none
+gn:6127681,Rosemère,Quebec,14173,town,0,0,50,0,none,none
+gn:6127688,Rosemont,Alberta,1155,village,0,0,50,0,none,none
+gn:6127691,Rosemount,Ontario,5610,village,0,0,50,0,none,none
+gn:6127749,Rosetown,Saskatchewan,2309,village,0,0,50,0,none,none
+gn:6127823,Rosscarrock,Alberta,3490,village,0,0,50,0,none,none
+gn:6127950,Rossland,British Columbia,4140,village,0,0,50,0,none,none
+gn:6127953,Rosslyn,Alberta,2902,village,0,0,50,0,none,none
+gn:6128008,Rosthern,Saskatchewan,1405,village,0,0,50,0,none,none
+gn:6128033,Rothesay,New Brunswick,11977,town,0,0,50,0,none,none
+gn:6128081,Rouge,Ontario,46496,town,0,0,50,0,none,none
+gn:6128089,Rougemont,Quebec,1481,village,0,0,50,0,none,none
+gn:6128577,Rouyn-Noranda,Quebec,23504,town,0,0,50,0,none,none
+gn:6128682,Roxboro,Quebec,5948,village,0,0,50,0,none,none
+gn:6128700,Roxton Pond,Quebec,4224,village,0,0,50,0,none,none
+gn:6128716,Royal Gardens,Alberta,3481,village,0,0,50,0,none,none
+gn:6128733,Royal Oak,Alberta,11580,town,0,0,50,0,none,none
+gn:6128734,Royal Oak,British Columbia,8855,village,0,0,50,0,none,none
+gn:6128795,Royston,British Columbia,1616,village,0,0,50,0,none,none
+gn:6136373,Rundle,Alberta,10545,town,0,0,50,0,none,none
+gn:6136376,Rundle Heights,Alberta,3359,village,0,0,50,0,none,none
+gn:6136437,Rusagonis,New Brunswick,4661,village,0,0,50,0,none,none
+gn:6136572,Russell,Ontario,6135,village,0,0,50,0,none,none
+gn:6136777,Rutland,British Columbia,34800,town,0,0,50,0,none,none
+gn:6136779,Rutland Park,Alberta,2140,village,0,0,50,0,none,none
+gn:6136887,Ryder Lake,British Columbia,1290,village,0,0,50,0,none,none
+gn:6136944,Saanich,British Columbia,117735,city,0,0,50,0,none,none
+gn:6136948,Saanichton,British Columbia,1565,village,0,0,50,0,none,none
+gn:6137063,Sackville,New Brunswick,2963,village,0,0,50,0,none,none
+gn:6137146,Saddle Ridge,Alberta,24365,town,0,0,50,0,none,none
+gn:6137270,Saguenay,Quebec,148886,city,0,0,50,0,none,none
+gn:6137274,Sahali,British Columbia,13493,town,0,0,50,0,none,none
+gn:6137327,Saint-Adolphe-d'Howard,Quebec,3702,village,0,0,50,0,none,none
+gn:6137352,Saint-Alexandre,Quebec,1093,village,0,0,50,0,none,none
+gn:6137353,Saint-Alexandre,Quebec,1304,village,0,0,50,0,none,none
+gn:6137378,Saint-Amable,Quebec,9486,village,0,0,50,0,none,none
+gn:6137381,Saint-Ambroise,Quebec,1678,village,0,0,50,0,none,none
+gn:6137383,Saint-Ambroise,Quebec,1655,village,0,0,50,0,none,none
+gn:6137404,Saint-André-Avellin,Quebec,3562,village,0,0,50,0,none,none
+gn:6137411,Saint Andrews,New Brunswick,2048,village,0,0,50,0,none,none
+gn:6137419,Saint-Anselme,New Brunswick,6740,village,0,0,50,0,none,none
+gn:6137422,Saint-Antoine,New Brunswick,1252,village,0,0,50,0,none,none
+gn:6137462,Saint-Augustin,Quebec,3961,village,0,0,50,0,none,none
+gn:6137479,Saint-Barnabé-Sud,Quebec,1387,village,0,0,50,0,none,none
+gn:6137489,Saint-Basile-le-Grand,Quebec,15605,town,0,0,50,0,none,none
+gn:6137525,Saint-Boniface,Quebec,1035,village,0,0,50,0,none,none
+gn:6137533,Saint-Bruno,Quebec,2636,village,0,0,50,0,none,none
+gn:6137539,Saint-Bruno-de-Guigues,Quebec,1100,village,0,0,50,0,none,none
+gn:6137540,Saint-Bruno-de-Montarville,Quebec,24388,town,0,0,50,0,none,none
+gn:6137557,Saint-Canut,Quebec,10643,town,0,0,50,0,none,none
+gn:6137573,Saint-Césaire,Quebec,5972,village,0,0,50,0,none,none
+gn:6137576,Saint-Charles,Quebec,1482,village,0,0,50,0,none,none
+gn:6137579,Saint-Charles-Borromée,Quebec,15285,town,0,0,50,0,none,none
+gn:6137626,Saint-Colomban,Quebec,0,village,0,0,50,0,none,none
+gn:6137631,Saint-Côme--Linière,Quebec,2167,village,0,0,50,0,none,none
+gn:6137633,Saint-Constant,Quebec,27359,town,0,0,50,0,none,none
+gn:6137649,Saint-Cyrille-de-Wendover,Quebec,1279,village,0,0,50,0,none,none
+gn:6137655,Saint-Damase,Quebec,1349,village,0,0,50,0,none,none
+gn:6137676,Saint-Denis-sur-Richelieu,Quebec,1067,village,0,0,50,0,none,none
+gn:6137692,Saint-Donat-de-Montcalm,Quebec,1213,village,0,0,50,0,none,none
+gn:6137696,Sainte-Adèle,Quebec,10634,town,0,0,50,0,none,none
+gn:6137702,Sainte-Agathe-des-Monts,Quebec,10223,town,0,0,50,0,none,none
+gn:6137733,Sainte-Anne-de-Bellevue,Quebec,5197,village,0,0,50,0,none,none
+gn:6137740,Sainte-Anne-de-la-Pérade,Quebec,2031,village,0,0,50,0,none,none
+gn:6137749,Sainte-Anne-des-Monts,Quebec,5602,village,0,0,50,0,none,none
+gn:6137753,Sainte-Anne-des-Plaines,Quebec,10680,town,0,0,50,0,none,none
+gn:6137764,Sainte-Béatrix,Quebec,1849,village,0,0,50,0,none,none
+gn:6137780,Sainte-Catherine,Quebec,16762,town,0,0,50,0,none,none
+gn:6137781,Sainte-Catherine,Quebec,16211,town,0,0,50,0,none,none
+gn:6137820,Sainte-Clotilde-de-Horton,Quebec,1563,village,0,0,50,0,none,none
+gn:6137823,Sainte-Croix,Quebec,1401,village,0,0,50,0,none,none
+gn:6137842,Saint-Édouard,Quebec,1672,village,0,0,50,0,none,none
+gn:6137900,Sainte-Geneviève-de-Batiscan,Quebec,1028,village,0,0,50,0,none,none
+gn:6137927,Sainte-Jeanne-d'Arc,Quebec,1101,village,0,0,50,0,none,none
+gn:6137941,Sainte-Julie,Quebec,29019,town,0,0,50,0,none,none
+gn:6137947,Sainte-Julienne,Quebec,3263,village,0,0,50,0,none,none
+gn:6137952,Saint-Élie-de-Caxton,Quebec,1934,village,0,0,50,0,none,none
+gn:6137970,Saint-Elzéar,Quebec,1057,village,0,0,50,0,none,none
+gn:6137971,Sainte-Madeleine,Quebec,1959,village,0,0,50,0,none,none
+gn:6137982,Sainte-Marguerite-du-Lac-Masson,Quebec,3367,village,0,0,50,0,none,none
+gn:6138032,Sainte-Marthe-sur-le-Lac,Quebec,11311,town,0,0,50,0,none,none
+gn:6138038,Sainte-Martine,Quebec,2535,village,0,0,50,0,none,none
+gn:6138048,Sainte-Monique,Quebec,14150,town,0,0,50,0,none,none
+gn:6138075,Saint-Éphrem-de-Beauce,Quebec,1385,village,0,0,50,0,none,none
+gn:6138103,Sainte-Sophie,Quebec,1634,village,0,0,50,0,none,none
+gn:6138112,Saint-Esprit,Quebec,2011,village,0,0,50,0,none,none
+gn:6138118,Sainte-Thècle,Quebec,1333,village,0,0,50,0,none,none
+gn:6138121,Sainte-Thérèse,Quebec,25224,town,0,0,50,0,none,none
+gn:6138175,Saint-Eustache,Quebec,42062,town,0,0,50,0,none,none
+gn:6138201,Saint-Félicien,Quebec,10278,town,0,0,50,0,none,none
+gn:6138210,Saint-Félix-de-Valois,Quebec,6029,village,0,0,50,0,none,none
+gn:6138258,Saint-Fulgence,Quebec,2061,village,0,0,50,0,none,none
+gn:6138260,Saint-Gabriel,Quebec,2901,village,0,0,50,0,none,none
+gn:6138276,Saint-Gédéon,Quebec,1859,village,0,0,50,0,none,none
+gn:6138310,Saint-Germain-de-Grantham,Quebec,3485,village,0,0,50,0,none,none
+gn:6138352,Saint-Hippolyte,Quebec,8083,village,0,0,50,0,none,none
+gn:6138360,Saint-Honoré,Quebec,6376,village,0,0,50,0,none,none
+gn:6138369,Saint-Hubert,Quebec,82548,town,0,0,50,0,none,none
+gn:6138374,Saint-Hyacinthe,Quebec,50326,town,0,0,50,0,none,none
+gn:6138400,Saint-Isidore,Quebec,1122,village,0,0,50,0,none,none
+gn:6138402,Saint-Isidore-de-Laprairie,Quebec,0,village,0,0,50,0,none,none
+gn:6138411,Saint-Jacques,Quebec,0,village,0,0,50,0,none,none
+gn:6138419,Saint-Jacques-le-Mineur,Quebec,1672,village,0,0,50,0,none,none
+gn:6138446,Saint-Jean-Baptiste,Quebec,1703,village,0,0,50,0,none,none
+gn:6138472,Saint-Jean-de-Matha,Quebec,4838,village,0,0,50,0,none,none
+gn:6138495,Saint-Jean-sur-Richelieu,Quebec,98036,town,0,0,50,0,none,none
+gn:6138501,Saint-Jérôme,Quebec,54948,town,0,0,50,0,none,none
+gn:6138517,Saint John,New Brunswick,71808,town,0,0,50,0,none,none
+gn:6138520,Saint John East,New Brunswick,14579,town,0,0,50,0,none,none
+gn:6138525,Saint John West,New Brunswick,15255,town,0,0,50,0,none,none
+gn:6138535,Saint-Joseph,Quebec,2576,village,0,0,50,0,none,none
+gn:6138558,Saint-Joseph-de-Coleraine,Quebec,1319,village,0,0,50,0,none,none
+gn:6138569,Saint-Joseph-de-Sorel,Quebec,1581,village,0,0,50,0,none,none
+gn:6138573,Saint-Joseph-du-Lac,Quebec,6195,village,0,0,50,0,none,none
+gn:6138610,Saint-Laurent,Quebec,98828,town,0,0,50,0,none,none
+gn:6138617,Saint-Lazare,Quebec,19889,town,0,0,50,0,none,none
+gn:6138625,Saint-Léonard,Quebec,79495,town,0,0,50,0,none,none
+gn:6138628,Saint-Léonard-d'Aston,Quebec,1336,village,0,0,50,0,none,none
+gn:6138638,Saint-Liboire,Quebec,1775,village,0,0,50,0,none,none
+gn:6138643,Saint-Lin-Laurentides,Quebec,17463,town,0,0,50,0,none,none
+gn:6138671,Saint-Louis-de-Terrebonne,Quebec,119944,city,0,0,50,0,none,none
+gn:6138719,Saint-Marc-des-Carrières,Quebec,2358,village,0,0,50,0,none,none
+gn:6138754,Saint-Mathieu,Quebec,1879,village,0,0,50,0,none,none
+gn:6138791,Saint-Michel,Quebec,56420,town,0,0,50,0,none,none
+gn:6138802,Saint-Michel-des-Saints,Quebec,1131,village,0,0,50,0,none,none
+gn:6138813,Saint-Narcisse,Quebec,1801,village,0,0,50,0,none,none
+gn:6138815,Saint-Nazaire,Quebec,0,village,0,0,50,0,none,none
+gn:6138908,Saint-Philippe,Quebec,7597,village,0,0,50,0,none,none
+gn:6138912,Saint-Philippe-de-La Prairie,Quebec,0,village,0,0,50,0,none,none
+gn:6138916,Saint-Pie,Quebec,5438,village,0,0,50,0,none,none
+gn:6138920,Saint-Pie-V,Quebec,0,village,0,0,50,0,none,none
+gn:6138950,Saint-Pierre-les-Becquets,Quebec,0,village,0,0,50,0,none,none
+gn:6138963,Saint-Placide,Quebec,1784,village,0,0,50,0,none,none
+gn:6138966,Saint-Polycarpe,Quebec,0,village,0,0,50,0,none,none
+gn:6138968,Saint-Prime,Quebec,1021,village,0,0,50,0,none,none
+gn:6138974,Saint-Raphaël,Quebec,1113,village,0,0,50,0,none,none
+gn:6138980,Saint-Raymond,Quebec,3227,village,0,0,50,0,none,none
+gn:6138987,Saint-Rémi,Quebec,6891,village,0,0,50,0,none,none
+gn:6138996,Saint-Rémi-de-Tingwick,Quebec,0,village,0,0,50,0,none,none
+gn:6139045,Saint-Sauveur,Quebec,9191,village,0,0,50,0,none,none
+gn:6139047,Saint-Sauveur-des-Monts,Quebec,7849,village,0,0,50,0,none,none
+gn:6139123,Saint-Thomas,Quebec,3193,village,0,0,50,0,none,none
+gn:6139154,Saint-Tite,Quebec,3880,village,0,0,50,0,none,none
+gn:6139157,Saint-Ubalde,Quebec,1456,village,0,0,50,0,none,none
+gn:6139166,Saint-Valère,Quebec,1118,village,0,0,50,0,none,none
+gn:6139181,Saint-Victor,Quebec,1233,village,0,0,50,0,none,none
+gn:6139184,Saint-Vincent-de-Paul,Quebec,15194,town,0,0,50,0,none,none
+gn:6139216,Saint-Zotique,Quebec,6773,village,0,0,50,0,none,none
+gn:6139232,Sakaw,Alberta,4113,village,0,0,50,0,none,none
+gn:6139289,Salaberry-de-Valleyfield,Quebec,42787,town,0,0,50,0,none,none
+gn:6139354,Salisbury,New Brunswick,2387,village,0,0,50,0,none,none
+gn:6139393,Salluit,Quebec,1075,village,0,0,50,0,none,none
+gn:6139413,Salmo,British Columbia,1141,village,0,0,50,0,none,none
+gn:6139417,Salmon Arm,British Columbia,19432,town,0,0,50,0,none,none
+gn:6139678,Saltair,British Columbia,2069,village,0,0,50,0,none,none
+gn:6140443,Sand Pits,Newfoundland and Labrador,1273,village,0,0,50,0,none,none
+gn:6140552,Sandstone Valley,Alberta,5795,village,0,0,50,0,none,none
+gn:6140750,Sandy Hill,Ontario,12490,town,0,0,50,0,none,none
+gn:6140995,Sanikiluaq,Nunavut,1010,village,0,0,50,0,none,none
+gn:6141159,Sardis,British Columbia,10010,town,0,0,50,0,none,none
+gn:6141190,Sarnia,Ontario,72125,town,0,0,50,0,none,none
+gn:6141256,Saskatoon,Saskatchewan,266141,city,0,0,50,0,none,none
+gn:6141312,Satoo,Alberta,3391,village,0,0,50,0,none,none
+gn:6141439,Sault Ste. Marie,Ontario,72051,town,0,0,50,0,none,none
+gn:6141894,Scarboro,Alberta,1010,village,0,0,50,0,none,none
+gn:6141900,Scarborough Village,Ontario,16724,town,0,0,50,0,none,none
+gn:6141956,Scenic Acres,Alberta,7850,village,0,0,50,0,none,none
+gn:6142256,Schreiber,Ontario,1039,village,0,0,50,0,none,none
+gn:6142460,Scotchtown,Nova Scotia,1082,village,0,0,50,0,none,none
+gn:6142912,Seafair,British Columbia,16070,town,0,0,50,0,none,none
+gn:6142917,Seaforth,Ontario,2680,village,0,0,50,0,none,none
+gn:6143367,Sechelt,British Columbia,8832,village,0,0,50,0,none,none
+gn:6144054,Selkirk,Manitoba,10278,town,0,0,50,0,none,none
+gn:6144195,Senneterre,Quebec,2239,village,0,0,50,0,none,none
+gn:6144242,Sentinel Hill,British Columbia,1060,village,0,0,50,0,none,none
+gn:6144312,Sept-Îles,Quebec,28534,town,0,0,50,0,none,none
+gn:6144602,Sexsmith,Alberta,2461,village,0,0,50,0,none,none
+gn:6144627,Seymour Heights,British Columbia,2340,village,0,0,50,0,none,none
+gn:6144711,Shad Bay,Nova Scotia,2053,village,0,0,50,0,none,none
+gn:6144789,Shaganappi,Alberta,1765,village,0,0,50,0,none,none
+gn:6145255,Sharbot Lake,Ontario,1400,village,0,0,50,0,none,none
+gn:6145421,Shaughnessy,British Columbia,8430,village,0,0,50,0,none,none
+gn:6145425,Shaunavon,Saskatchewan,1658,village,0,0,50,0,none,none
+gn:6145489,Shawinigan,Quebec,38211,town,0,0,50,0,none,none
+gn:6145529,Shawnee Slopes,Alberta,2020,village,0,0,50,0,none,none
+gn:6145530,Shawnessy,Alberta,9055,village,0,0,50,0,none,none
+gn:6145563,Shawville,Quebec,1203,village,0,0,50,0,none,none
+gn:6145579,Shea Heights,Newfoundland and Labrador,1643,village,0,0,50,0,none,none
+gn:6145668,Shediac,New Brunswick,7535,village,0,0,50,0,none,none
+gn:6145887,Shelburne,Nova Scotia,1330,village,0,0,50,0,none,none
+gn:6145890,Shelburne,Ontario,8126,village,0,0,50,0,none,none
+gn:6145951,Shellbrook,Saskatchewan,1192,village,0,0,50,0,none,none
+gn:6146143,Sherbrooke,Quebec,129447,city,0,0,50,0,none,none
+gn:6146149,Sherbrooke,Alberta,2438,village,0,0,50,0,none,none
+gn:6146252,Sherwood,Prince Edward Island,7404,village,0,0,50,0,none,none
+gn:6146257,Sherwood,Alberta,1254,village,0,0,50,0,none,none
+gn:6146262,Sherwood-McCarthy,Saskatchewan,5660,village,0,0,50,0,none,none
+gn:6146279,Sherwood Park,Alberta,70618,town,0,0,50,0,none,none
+gn:6147353,Sicamous,British Columbia,1786,village,0,0,50,0,none,none
+gn:6147439,Sidney,British Columbia,12318,town,0,0,50,0,none,none
+gn:6147485,Sifton Park,Alberta,2289,village,0,0,50,0,none,none
+gn:6147512,Signal Hill,Alberta,13000,town,0,0,50,0,none,none
+gn:6147736,Silver Falls,New Brunswick,3492,village,0,0,50,0,none,none
+gn:6147908,Silver Springs,Alberta,8570,village,0,0,50,0,none,none
+gn:6147942,Silverwood Heights,Saskatchewan,10716,town,0,0,50,0,none,none
+gn:6147962,Simcoe,Ontario,13922,town,0,0,50,0,none,none
+gn:6148373,Sioux Lookout,Ontario,5839,village,0,0,50,0,none,none
+gn:6148374,Sioux Lookout,Ontario,2941,village,0,0,50,0,none,none
+gn:6149214,Skyrattler,Alberta,1947,village,0,0,50,0,none,none
+gn:6149374,Slave Lake,Alberta,6836,village,0,0,50,0,none,none
+gn:6149996,Smithers,British Columbia,5351,village,0,0,50,0,none,none
+gn:6150174,Smiths Falls,Ontario,8885,village,0,0,50,0,none,none
+gn:6150293,Smoky Lake,Alberta,1063,village,0,0,50,0,none,none
+gn:6150321,Smooth Rock Falls,Ontario,1330,village,0,0,50,0,none,none
+gn:6150786,Snow Lake,Manitoba,1088,village,0,0,50,0,none,none
+gn:6151196,Somerset,Alberta,8320,village,0,0,50,0,none,none
+gn:6151264,Sooke,British Columbia,15086,town,0,0,50,0,none,none
+gn:6151350,Sorel-Tracy,Quebec,41629,town,0,0,50,0,none,none
+gn:6151373,Sorrento,British Columbia,1309,village,0,0,50,0,none,none
+gn:6151455,Souris,Prince Edward Island,1079,village,0,0,50,0,none,none
+gn:6151456,Souris,Manitoba,1876,village,0,0,50,0,none,none
+gn:6151770,South Cambie,British Columbia,7970,village,0,0,50,0,none,none
+gn:6151850,Southdale,Nova Scotia,2925,village,0,0,50,0,none,none
+gn:6152244,South Huron,Ontario,9982,village,0,0,50,0,none,none
+gn:6152518,Southport,Prince Edward Island,3368,village,0,0,50,0,none,none
+gn:6152561,South River,Ontario,1114,village,0,0,50,0,none,none
+gn:6152640,South Slope,British Columbia,12782,town,0,0,50,0,none,none
+gn:6152674,South Surrey,British Columbia,77170,town,0,0,50,0,none,none
+gn:6152734,Southview,Alberta,1550,village,0,0,50,0,none,none
+gn:6153013,Southwood,Alberta,6095,village,0,0,50,0,none,none
+gn:6153111,Spaniard's Bay,Newfoundland and Labrador,2630,village,0,0,50,0,none,none
+gn:6153250,Sparwood,British Columbia,3990,village,0,0,50,0,none,none
+gn:6153766,Spirit River,Alberta,1157,village,0,0,50,0,none,none
+gn:6154159,Springdale,Newfoundland and Labrador,2080,village,0,0,50,0,none,none
+gn:6154187,Springfield Lake,Nova Scotia,1500,village,0,0,50,0,none,none
+gn:6154202,Springhill,Nova Scotia,2743,village,0,0,50,0,none,none
+gn:6154263,Spring Park,Prince Edward Island,4312,village,0,0,50,0,none,none
+gn:6154341,Spruce Avenue,Alberta,2120,village,0,0,50,0,none,none
+gn:6154355,Spruce Cliff,Alberta,4195,village,0,0,50,0,none,none
+gn:6154383,Spruce Grove,Alberta,38985,town,0,0,50,0,none,none
+gn:6154544,Spryfield,Nova Scotia,10118,town,0,0,50,0,none,none
+gn:6154636,Squamish,British Columbia,23819,town,0,0,50,0,none,none
+gn:6154897,St. Adolphe,Manitoba,1362,village,0,0,50,0,none,none
+gn:6155030,St. Alban's,Newfoundland and Labrador,1189,village,0,0,50,0,none,none
+gn:6155033,St. Albert,Alberta,57719,town,0,0,50,0,none,none
+gn:6155141,St. Andrews Heights,Alberta,1345,village,0,0,50,0,none,none
+gn:6155242,Stanley Park,Ontario,7181,village,0,0,50,0,none,none
+gn:6155298,Stanstead,Quebec,2857,village,0,0,50,0,none,none
+gn:6155302,St. Anthony,Newfoundland and Labrador,2049,village,0,0,50,0,none,none
+gn:6155721,St. Catharines,Ontario,136803,city,0,0,50,0,none,none
+gn:6155763,St. Clements,Ontario,1240,village,0,0,50,0,none,none
+gn:6155866,Ste. Anne,Manitoba,2891,village,0,0,50,0,none,none
+gn:6155938,Steeles,Ontario,24623,town,0,0,50,0,none,none
+gn:6156102,Steinbach,Manitoba,15829,town,0,0,50,0,none,none
+gn:6156105,Steinhauer,Alberta,1867,village,0,0,50,0,none,none
+gn:6156141,Stellarton,Nova Scotia,4007,village,0,0,50,0,none,none
+gn:6156244,Stephenville,Newfoundland and Labrador,6540,village,0,0,50,0,none,none
+gn:6156245,Stephenville Crossing,Newfoundland and Labrador,1634,village,0,0,50,0,none,none
+gn:6156307,Stettler,Alberta,5494,village,0,0,50,0,none,none
+gn:6156586,Stewiacke,Nova Scotia,1557,village,0,0,50,0,none,none
+gn:6156608,St. George,New Brunswick,1579,village,0,0,50,0,none,none
+gn:6156619,St. George's,Newfoundland and Labrador,1139,village,0,0,50,0,none,none
+gn:6156750,Stillwater Lake,Nova Scotia,3379,village,0,0,50,0,none,none
+gn:6156822,Stirling,Ontario,2030,village,0,0,50,0,none,none
+gn:6156855,Stittsville,Ontario,40889,town,0,0,50,0,none,none
+gn:6156979,St. Lawrence,Newfoundland and Labrador,1115,village,0,0,50,0,none,none
+gn:6157062,St. Marys,Ontario,7386,village,0,0,50,0,none,none
+gn:6157355,Stonewall,Manitoba,4177,village,0,0,50,0,none,none
+gn:6157390,Stoney Creek,Ontario,76382,town,0,0,50,0,none,none
+gn:6157430,Stoney Point,Ontario,1087,village,0,0,50,0,none,none
+gn:6157433,Stoney Point/Pointe-aux-Roches,Ontario,1394,village,0,0,50,0,none,none
+gn:6157536,Stony Plain,Alberta,17993,town,0,0,50,0,none,none
+gn:6157718,Stouffville,Ontario,36753,town,0,0,50,0,none,none
+gn:6157795,St. Paul,Alberta,5728,village,0,0,50,0,none,none
+gn:6157828,St. Peter's,Nova Scotia,2634,village,0,0,50,0,none,none
+gn:6157974,Stratford,Prince Edward Island,10927,town,0,0,50,0,none,none
+gn:6157977,Stratford,Ontario,31465,town,0,0,50,0,none,none
+gn:6157994,Strathcona,Alberta,8984,village,0,0,50,0,none,none
+gn:6157995,Strathcona,British Columbia,12585,town,0,0,50,0,none,none
+gn:6158003,Strathcona Park,Ontario,3135,village,0,0,50,0,none,none
+gn:6158005,Strathcona Park,Alberta,1980,village,0,0,50,0,none,none
+gn:6158016,Strathearn,Alberta,2622,village,0,0,50,0,none,none
+gn:6158023,Strathmore,Alberta,13592,town,0,0,50,0,none,none
+gn:6158027,Strathroy,Ontario,23871,town,0,0,50,0,none,none
+gn:6158070,Strawberry Hill,British Columbia,41000,town,0,0,50,0,none,none
+gn:6158349,St. Stephen,New Brunswick,4415,village,0,0,50,0,none,none
+gn:6158357,St. Thomas,Ontario,38909,town,0,0,50,0,none,none
+gn:6158573,Sturgeon Falls,Ontario,6939,village,0,0,50,0,none,none
+gn:6159232,Summerland,British Columbia,11615,town,0,0,50,0,none,none
+gn:6159233,Summerlea,Alberta,2058,village,0,0,50,0,none,none
+gn:6159244,Summerside,Prince Edward Island,14829,town,0,0,50,0,none,none
+gn:6159351,Sunalta,Alberta,1910,village,0,0,50,0,none,none
+gn:6159380,Suncrest,British Columbia,1683,village,0,0,50,0,none,none
+gn:6159383,Sundance,Alberta,9590,village,0,0,50,0,none,none
+gn:6159474,Sundre,Alberta,2672,village,0,0,50,0,none,none
+gn:6159572,Sunny Brae,New Brunswick,2135,village,0,0,50,0,none,none
+gn:6159604,Sunnyside,Alberta,4000,village,0,0,50,0,none,none
+gn:6159626,Sun Peaks,British Columbia,1400,village,0,0,50,0,none,none
+gn:6159756,Sunshine Hills,British Columbia,9900,village,0,0,50,0,none,none
+gn:6159905,Surrey,British Columbia,568322,large-city,0,0,50,0,none,none
+gn:6159907,Surrey Centre,British Columbia,11370,town,0,0,50,0,none,none
+gn:6159979,Sussex Corner,New Brunswick,1532,village,0,0,50,0,none,none
+gn:6159980,Sussex,New Brunswick,5298,village,0,0,50,0,none,none
+gn:6159999,Sutherland,Saskatchewan,5746,village,0,0,50,0,none,none
+gn:6160070,Sutton,Quebec,3906,village,0,0,50,0,none,none
+gn:6160291,Swan Hills,Alberta,1900,village,0,0,50,0,none,none
+gn:6160362,Swan River,Manitoba,4198,village,0,0,50,0,none,none
+gn:6160535,Sweet Grass,Alberta,2636,village,0,0,50,0,none,none
+gn:6160603,Swift Current,Saskatchewan,16604,town,0,0,50,0,none,none
+gn:6160739,Sydenham,Ontario,3249,village,0,0,50,0,none,none
+gn:6160759,Sydney Forks,Nova Scotia,1081,village,0,0,50,0,none,none
+gn:6160806,Sylvan Lake,Alberta,17477,town,0,0,50,0,none,none
+gn:6160919,Taber,Alberta,8163,village,0,0,50,0,none,none
+gn:6161443,Tam O'Shanter-Sullivan,Ontario,27446,town,0,0,50,0,none,none
+gn:6161445,Tam O'Shanter Ridge,Nova Scotia,2519,village,0,0,50,0,none,none
+gn:6161637,Taradale,Alberta,17630,town,0,0,50,0,none,none
+gn:6162007,Tavistock,Ontario,2955,village,0,0,50,0,none,none
+gn:6162011,Tawa,Alberta,1972,village,0,0,50,0,none,none
+gn:6162051,Taylor,British Columbia,1317,village,0,0,50,0,none,none
+gn:6162416,Tecumseh,Ontario,23229,town,0,0,50,0,none,none
+gn:6162623,Telkwa,British Columbia,1474,village,0,0,50,0,none,none
+gn:6162654,Témiscaming,Quebec,1854,village,0,0,50,0,none,none
+gn:6162659,Temiskaming Shores,Ontario,10442,town,0,0,50,0,none,none
+gn:6162676,Temple,Alberta,10525,town,0,0,50,0,none,none
+gn:6162703,Templeton-Est,Quebec,20000,town,0,0,50,0,none,none
+gn:6162949,Terrace,British Columbia,19443,town,0,0,50,0,none,none
+gn:6162951,Terrace Bay,Ontario,1528,village,0,0,50,0,none,none
+gn:6162960,Terrace Heights,Alberta,2332,village,0,0,50,0,none,none
+gn:6162997,Terrasse-des-Pins,Quebec,4268,village,0,0,50,0,none,none
+gn:6163012,Terrebonne,Quebec,111575,city,0,0,50,0,none,none
+gn:6163363,The Beaches,Ontario,21567,town,0,0,50,0,none,none
+gn:6163868,The Glebe,Ontario,13055,town,0,0,50,0,none,none
+gn:6164499,The Pas,Manitoba,5513,village,0,0,50,0,none,none
+gn:6164831,Thessalon,Ontario,1175,village,0,0,50,0,none,none
+gn:6165406,Thompson,Manitoba,13678,town,0,0,50,0,none,none
+gn:6165407,Thompson,British Columbia,14955,town,0,0,50,0,none,none
+gn:6165645,Thorncliffe,Alberta,8695,village,0,0,50,0,none,none
+gn:6165646,Thorncliff,Alberta,3503,village,0,0,50,0,none,none
+gn:6165682,Thornhill,Nova Scotia,2188,village,0,0,50,0,none,none
+gn:6165683,Thornhill,Ontario,115292,city,0,0,50,0,none,none
+gn:6165719,Thorold,Ontario,18801,town,0,0,50,0,none,none
+gn:6165875,Three Hills,Alberta,3051,village,0,0,50,0,none,none
+gn:6166142,Thunder Bay,Ontario,108843,city,0,0,50,0,none,none
+gn:6166224,Thurso,Quebec,2476,village,0,0,50,0,none,none
+gn:6166386,Tidnish,Nova Scotia,1327,village,0,0,50,0,none,none
+gn:6166510,Tilbury,Ontario,4687,village,0,0,50,0,none,none
+gn:6166563,Tillicum,British Columbia,10080,town,0,0,50,0,none,none
+gn:6166580,Tillsonburg,Ontario,18615,town,0,0,50,0,none,none
+gn:6166694,Timberlea,Nova Scotia,5627,village,0,0,50,0,none,none
+gn:6166739,Timmins,Ontario,41788,town,0,0,50,0,none,none
+gn:6166950,Tipaskan,Alberta,2901,village,0,0,50,0,none,none
+gn:6166987,Tisdale,Saskatchewan,2862,village,0,0,50,0,none,none
+gn:6167125,Tobermory,Ontario,1427,village,0,0,50,0,none,none
+gn:6167254,Tofield,Alberta,1911,village,0,0,50,0,none,none
+gn:6167794,Topsail,Newfoundland and Labrador,1478,village,0,0,50,0,none,none
+gn:6167817,Torbay,Newfoundland and Labrador,7852,village,0,0,50,0,none,none
+ca-toronto,Toronto,Ontario,2794356,large-city,0,0,50,0,none,none
+gn:6167983,Tottenham,Ontario,5143,village,0,0,50,0,none,none
+gn:6168326,Trail,British Columbia,7920,village,0,0,50,0,none,none
+gn:6168767,Trenton,Nova Scotia,2407,village,0,0,50,0,none,none
+gn:6169141,Trois-Rivières,Quebec,144472,city,0,0,50,0,none,none
+gn:6169587,Truro,Nova Scotia,12954,town,0,0,50,0,none,none
+gn:6169661,Tsawwassen,British Columbia,21588,town,0,0,50,0,none,none
+gn:6169972,Tufts Cove,Nova Scotia,1409,village,0,0,50,0,none,none
+gn:6170118,Tumbler Ridge,British Columbia,2454,village,0,0,50,0,none,none
+gn:6170396,Kingsland,Alberta,4900,village,0,0,50,0,none,none
+gn:6170469,Turner Valley,Alberta,2611,village,0,0,50,0,none,none
+gn:6170682,Tuscany,Alberta,19700,town,0,0,50,0,none,none
+gn:6170765,Tuxedo Park,Alberta,5165,village,0,0,50,0,none,none
+gn:6170799,Tweed,Ontario,1701,village,0,0,50,0,none,none
+gn:6170816,Tweddle Place,Alberta,3128,village,0,0,50,0,none,none
+gn:6170930,Twillingate,Newfoundland and Labrador,2121,village,0,0,50,0,none,none
+gn:6171332,Two Hills,Alberta,1352,village,0,0,50,0,none,none
+gn:6171633,Ucluelet,British Columbia,2066,village,0,0,50,0,none,none
+gn:6171951,Union Bay,British Columbia,1200,village,0,0,50,0,none,none
+gn:6172009,Unity,Saskatchewan,2475,village,0,0,50,0,none,none
+gn:6172016,University Heights,Alberta,2965,village,0,0,50,0,none,none
+gn:6172094,Uplands,Saskatchewan,5270,village,0,0,50,0,none,none
+gn:6172326,Upper Hammonds Plains,Nova Scotia,1840,village,0,0,50,0,none,none
+gn:6172355,Upper Island Cove,Newfoundland and Labrador,1142,village,0,0,50,0,none,none
+gn:6172425,Upper Lynn,British Columbia,3381,village,0,0,50,0,none,none
+gn:6172473,Upper Mount Royal,Alberta,2735,village,0,0,50,0,none,none
+gn:6172595,Upper Sackville,Nova Scotia,1035,village,0,0,50,0,none,none
+gn:6172932,Uxbridge,Ontario,21176,town,0,0,50,0,none,none
+gn:6172998,Valcourt,Quebec,2451,village,0,0,50,0,none,none
+gn:6173001,Val-David,Quebec,5209,village,0,0,50,0,none,none
+gn:6173004,Val-des-Arbres,Quebec,40974,town,0,0,50,0,none,none
+gn:6173012,Val-des-Monts,Quebec,9539,village,0,0,50,0,none,none
+gn:6173017,Val-d'Or,Quebec,25541,town,0,0,50,0,none,none
+gn:6173031,Valemount,British Columbia,1052,village,0,0,50,0,none,none
+gn:6173206,Valley Ridge,Alberta,5365,village,0,0,50,0,none,none
+gn:6173220,Valleyview,Alberta,1863,village,0,0,50,0,none,none
+gn:6173241,Val-Morin,Quebec,2772,village,0,0,50,0,none,none
+ca-vancouver,Vancouver,British Columbia,662248,large-city,0,0,50,0,none,none
+gn:6173361,Vanderhoof,British Columbia,4346,village,0,0,50,0,none,none
+gn:6173404,Vanier,Ontario,17000,town,0,0,50,0,none,none
+gn:6173508,Varennes,Quebec,20994,town,0,0,50,0,none,none
+gn:6173534,Varsity,Alberta,12040,town,0,0,50,0,none,none
+gn:6173570,Vaudreuil-Dorion,Quebec,25789,town,0,0,50,0,none,none
+gn:6173577,Vaughan,Ontario,323103,city,0,0,50,0,none,none
+gn:6173600,Vauxhall,Alberta,1222,village,0,0,50,0,none,none
+gn:6173614,Vedder Crossing,British Columbia,22620,town,0,0,50,0,none,none
+gn:6173635,Vegreville,Alberta,5708,village,0,0,50,0,none,none
+gn:6173690,Venise-en-Québec,Quebec,1547,village,0,0,50,0,none,none
+gn:6173750,Verchères,Quebec,4030,village,0,0,50,0,none,none
+gn:6173767,Verdun,Quebec,69229,town,0,0,50,0,none,none
+gn:6173801,Vermilion,Alberta,4084,village,0,0,50,0,none,none
+gn:6173803,Vermilion Bay,Ontario,1200,village,0,0,50,0,none,none
+gn:6173864,Vernon,British Columbia,40116,town,0,0,50,0,none,none
+gn:6174031,Victoria,Newfoundland and Labrador,1658,village,0,0,50,0,none,none
+gn:6174041,Victoria,British Columbia,289625,city,0,0,50,0,none,none
+gn:6174068,Victoria-Fraserview,British Columbia,31065,town,0,0,50,0,none,none
+gn:6174080,Victoria Hills,Ontario,10533,town,0,0,50,0,none,none
+gn:6174151,Victoriaville,Quebec,34426,town,0,0,50,0,none,none
+gn:6174232,View Royal,British Columbia,11575,town,0,0,50,0,none,none
+gn:6174254,Viking,Alberta,1106,village,0,0,50,0,none,none
+gn:6174335,Ville-Marie,Quebec,2831,village,0,0,50,0,none,none
+gn:6174406,Vineland,Ontario,4074,village,0,0,50,0,none,none
+gn:6174457,Virden,Manitoba,3114,village,0,0,50,0,none,none
+gn:6174462,Virgil,Ontario,2937,village,0,0,50,0,none,none
+gn:6174516,Viscount Alexander Park,Ontario,5430,village,0,0,50,0,none,none
+gn:6174529,Vista Heights,Alberta,2300,village,0,0,50,0,none,none
+gn:6174687,Vulcan,Alberta,1917,village,0,0,50,0,none,none
+gn:6174727,Wabana,Newfoundland and Labrador,2146,village,0,0,50,0,none,none
+gn:6174738,Wabasca-Desmarais,Alberta,1594,village,0,0,50,0,none,none
+gn:6174844,Wabush,Newfoundland and Labrador,1964,village,0,0,50,0,none,none
+gn:6174914,Wadena,Saskatchewan,1306,village,0,0,50,0,none,none
+gn:6175059,Wainwright,Alberta,6270,village,0,0,50,0,none,none
+gn:6175108,Wakefield,Quebec,2000,village,0,0,50,0,none,none
+gn:6175195,Waldheim,Saskatchewan,1237,village,0,0,50,0,none,none
+gn:6175411,Wallaceburg,Ontario,10323,town,0,0,50,0,none,none
+gn:6175433,Wallace Heights,Nova Scotia,1551,village,0,0,50,0,none,none
+gn:6175609,Walpole Island,Ontario,1878,village,0,0,50,0,none,none
+gn:6176205,Warfield,British Columbia,1753,village,0,0,50,0,none,none
+gn:6176226,Warman,Saskatchewan,10961,town,0,0,50,0,none,none
+gn:6176393,Warwick,Quebec,4766,village,0,0,50,0,none,none
+gn:6176421,Wasaga Beach,Ontario,20675,town,0,0,50,0,none,none
+gn:6176563,Waskaganish,Quebec,1839,village,0,0,50,0,none,none
+gn:6176654,Waswanipi,Quebec,1473,village,0,0,50,0,none,none
+gn:6176722,Waterdown,Ontario,24400,town,0,0,50,0,none,none
+gn:6176751,Waterford,Ontario,3132,village,0,0,50,0,none,none
+gn:6176821,Waterloo,Quebec,4410,village,0,0,50,0,none,none
+gn:6176823,Waterloo,Ontario,104986,city,0,0,50,0,none,none
+gn:6176902,Watford,Ontario,1536,village,0,0,50,0,none,none
+gn:6176928,Watrous,Saskatchewan,1865,village,0,0,50,0,none,none
+gn:6176992,Watson Lake,Yukon,1547,village,0,0,50,0,none,none
+gn:6177154,Waverley,Nova Scotia,2541,village,0,0,50,0,none,none
+gn:6177178,Wawa,Ontario,2905,village,0,0,50,0,none,none
+gn:6177711,Weinlos,Alberta,3445,village,0,0,50,0,none,none
+gn:6177814,Welcome Beach,British Columbia,1125,village,0,0,50,0,none,none
+gn:6177869,Welland,Ontario,52293,town,0,0,50,0,none,none
+gn:6177893,Wellesley,Ontario,3246,village,0,0,50,0,none,none
+gn:6177914,Wellington,Alberta,3140,village,0,0,50,0,none,none
+gn:6177945,Wells,New Brunswick,1266,village,0,0,50,0,none,none
+gn:6178038,Wembley,Alberta,1516,village,0,0,50,0,none,none
+gn:6178457,Westbrook Estates,Alberta,1225,village,0,0,50,0,none,none
+gn:6178582,West End,British Columbia,47200,town,0,0,50,0,none,none
+gn:6178583,West End,British Columbia,3600,village,0,0,50,0,none,none
+gn:6178927,Westgate,Alberta,3225,village,0,0,50,0,none,none
+gn:6178999,West Hill,Ontario,27392,town,0,0,50,0,none,none
+gn:6179001,West Hillhurst,Alberta,6635,village,0,0,50,0,none,none
+gn:6179035,West Jasper Place,Alberta,2966,village,0,0,50,0,none,none
+gn:6179138,Westlock,Alberta,4678,village,0,0,50,0,none,none
+gn:6179147,West Lorne,Ontario,1337,village,0,0,50,0,none,none
+gn:6179174,West Meadowlark Park,Alberta,3336,village,0,0,50,0,none,none
+gn:6179221,Westmorland Heights,New Brunswick,2635,village,0,0,50,0,none,none
+gn:6179225,Westmount,Nova Scotia,3000,village,0,0,50,0,none,none
+gn:6179226,Westmount,Quebec,20494,town,0,0,50,0,none,none
+gn:6179227,Westmount,Ontario,4010,village,0,0,50,0,none,none
+gn:6179232,Westmount,Saskatchewan,2838,village,0,0,50,0,none,none
+gn:6179234,Westmount,Alberta,5900,village,0,0,50,0,none,none
+gn:6179235,Westmount,British Columbia,1076,village,0,0,50,0,none,none
+gn:6179259,West Nipissing,Ontario,14583,town,0,0,50,0,none,none
+gn:6179268,Weston,Ontario,17992,town,0,0,50,0,none,none
+gn:6179305,Westphal,Nova Scotia,2533,village,0,0,50,0,none,none
+gn:6179343,West Point Grey,British Columbia,13065,town,0,0,50,0,none,none
+gn:6179393,Westridge,Alberta,1327,village,0,0,50,0,none,none
+gn:6179394,Westridge,British Columbia,2521,village,0,0,50,0,none,none
+gn:6179445,West Royalty,Prince Edward Island,4435,village,0,0,50,0,none,none
+gn:6179515,Westsyde,British Columbia,10713,town,0,0,50,0,none,none
+gn:6179558,Westview,Saskatchewan,3999,village,0,0,50,0,none,none
+gn:6179560,Westville,Nova Scotia,3628,village,0,0,50,0,none,none
+gn:6179589,Westwood,Alberta,3315,village,0,0,50,0,none,none
+gn:6179602,Wetaskiwin,Alberta,12594,town,0,0,50,0,none,none
+gn:6179652,Weyburn,Saskatchewan,10870,town,0,0,50,0,none,none
+gn:6179830,Whalley,British Columbia,102555,city,0,0,50,0,none,none
+gn:6180144,Whistler,British Columbia,8713,village,0,0,50,0,none,none
+gn:6180166,Whitbourne,Newfoundland and Labrador,1066,village,0,0,50,0,none,none
+gn:6180170,Whitby,Ontario,138501,city,0,0,50,0,none,none
+gn:6180176,Whitchurch-Stouffville,Ontario,49864,town,0,0,50,0,none,none
+gn:6180266,White City,Saskatchewan,3099,village,0,0,50,0,none,none
+gn:6180285,Whitecourt,Alberta,8763,village,0,0,50,0,none,none
+gn:6180542,Whitehorn,Alberta,11085,town,0,0,50,0,none,none
+gn:6180550,Whitehorse,Yukon,28201,town,0,0,50,0,none,none
+gn:6180961,White Rock,British Columbia,23670,town,0,0,50,0,none,none
+gn:6181279,Whitmore Park,Saskatchewan,6600,village,0,0,50,0,none,none
+gn:6181303,Whitney Pier,Nova Scotia,4612,village,0,0,50,0,none,none
+gn:6181352,Whonnock,British Columbia,3444,village,0,0,50,0,none,none
+gn:6181933,Wildwood,Saskatchewan,8337,village,0,0,50,0,none,none
+gn:6181935,Wildwood,Alberta,2765,village,0,0,50,0,none,none
+gn:6181940,Wildwood Lake,Nova Scotia,1523,village,0,0,50,0,none,none
+gn:6182001,Wilkie,Saskatchewan,1301,village,0,0,50,0,none,none
+gn:6182212,Williams Lake,British Columbia,14168,town,0,0,50,0,none,none
+gn:6182306,Willingdon Heights,British Columbia,12443,town,0,0,50,0,none,none
+gn:6182480,Willow Park,Alberta,5050,village,0,0,50,0,none,none
+gn:6182823,Winchester,Ontario,2394,village,0,0,50,0,none,none
+gn:6182958,Windsor,Nova Scotia,3864,village,0,0,50,0,none,none
+gn:6182959,Windsor,Quebec,5408,village,0,0,50,0,none,none
+gn:6182962,Windsor,Ontario,229660,city,0,0,50,0,none,none
+gn:6182976,Windsor Junction,Nova Scotia,1199,village,0,0,50,0,none,none
+gn:6182988,Windsor Park,Alberta,4410,village,0,0,50,0,none,none
+gn:6182989,Windsor Park,Alberta,2866,village,0,0,50,0,none,none
+gn:6182990,Windsor Park,British Columbia,1729,village,0,0,50,0,none,none
+gn:6183141,Wingham,Ontario,2934,village,0,0,50,0,none,none
+gn:6183204,Winkler,Manitoba,12660,town,0,0,50,0,none,none
+gn:6183235,Winnipeg,Manitoba,749607,large-city,0,0,50,0,none,none
+gn:6183259,Winsloe,Prince Edward Island,1448,village,0,0,50,0,none,none
+gn:6183448,Wishingwell Park,Newfoundland and Labrador,2020,village,0,0,50,0,none,none
+gn:6183533,Witless Bay,Newfoundland and Labrador,1640,village,0,0,50,0,none,none
+gn:6183590,Woburn,Ontario,53485,town,0,0,50,0,none,none
+gn:6183858,Wolfville,Nova Scotia,4195,village,0,0,50,0,none,none
+gn:6184001,Woodbine,Alberta,8745,village,0,0,50,0,none,none
+gn:6184075,Woodcroft,Alberta,2598,village,0,0,50,0,none,none
+gn:6184118,Woodhaven Court,New Brunswick,2608,village,0,0,50,0,none,none
+gn:6184200,Woodlands,Alberta,5830,village,0,0,50,0,none,none
+gn:6184206,Woodlawn,Nova Scotia,20000,town,0,0,50,0,none,none
+gn:6184316,Woodside,Nova Scotia,8348,village,0,0,50,0,none,none
+gn:6184364,Woodstock,New Brunswick,5553,village,0,0,50,0,none,none
+gn:6184365,Woodstock,Ontario,40404,town,0,0,50,0,none,none
+gn:6184938,Wychwood,Ontario,14349,town,0,0,50,0,none,none
+gn:6185021,Wynyard,Saskatchewan,1732,village,0,0,50,0,none,none
+gn:6185024,Wyoming,Ontario,2348,village,0,0,50,0,none,none
+gn:6185138,Yamachiche,Quebec,1240,village,0,0,50,0,none,none
+gn:6185217,Yarmouth,Nova Scotia,6829,village,0,0,50,0,none,none
+gn:6185377,Yellowknife,Northwest Territories,20340,town,0,0,50,0,none,none
+gn:6185449,Yennadon,British Columbia,7116,village,0,0,50,0,none,none
+gn:6185563,York,Alberta,3836,village,0,0,50,0,none,none
+gn:6185607,Yorkton,Saskatchewan,16343,town,0,0,50,0,none,none
+gn:6185619,Youbou,British Columbia,1302,village,0,0,50,0,none,none
+gn:6185744,Youngs Crossing,New Brunswick,1514,village,0,0,50,0,none,none
+gn:6269202,Lac-des-Aigles,Quebec,629,village,0,0,50,0,none,none
+gn:6295855,Beauceville,Quebec,6354,village,0,0,50,0,none,none
+gn:6324729,Halifax,Nova Scotia,471559,city,0,0,50,0,none,none
+gn:6324733,St. John's,Newfoundland and Labrador,110525,city,0,0,50,0,none,none
+gn:6325478,Beauport,Quebec,81425,town,0,0,50,0,none,none
+gn:6325479,Beaupré,Quebec,2803,village,0,0,50,0,none,none
+gn:6325485,Charlesbourg,Quebec,82870,town,0,0,50,0,none,none
+gn:6325486,Château-Richer,Quebec,3563,village,0,0,50,0,none,none
+gn:6325488,Sainte-Foy,Quebec,111300,city,0,0,50,0,none,none
+gn:6325494,Québec,Quebec,531902,large-city,0,0,50,0,none,none
+gn:6325516,L'Ange-Gardien,Quebec,3634,village,0,0,50,0,none,none
+gn:6325521,Lévis,Quebec,143414,city,0,0,50,0,none,none
+gn:6325526,L'Isle-Verte,Quebec,1356,village,0,0,50,0,none,none
+gn:6325529,Montmagny,Quebec,11724,town,0,0,50,0,none,none
+gn:6325572,Neuville,Quebec,3638,village,0,0,50,0,none,none
+gn:6354894,Portneuf,Quebec,3107,village,0,0,50,0,none,none
+gn:6354895,Rimouski,Quebec,42240,town,0,0,50,0,none,none
+gn:6354897,Rivière-du-Loup,Quebec,18586,town,0,0,50,0,none,none
+gn:6354908,Sydney,Nova Scotia,105968,city,0,0,50,0,none,none
+gn:6354934,Aylmer,Quebec,56542,town,0,0,50,0,none,none
+gn:6354950,Tofino,British Columbia,2516,village,0,0,50,0,none,none
+gn:6354954,Jasper,Alberta,3948,village,0,0,50,0,none,none
+gn:6534203,L'Ancienne-Lorette,Quebec,16516,town,0,0,50,0,none,none
+gn:6544164,Saint-Lazare-de-Bellechasse,Quebec,0,village,0,0,50,0,none,none
+gn:6545023,Edmundston,New Brunswick,16580,town,0,0,50,0,none,none
+gn:6620467,St-Jean-Port-Joli,Quebec,3304,village,0,0,50,0,none,none
+gn:6620953,Saint-Georges,Quebec,31173,town,0,0,50,0,none,none
+gn:6621033,Grand Falls,New Brunswick,5220,village,0,0,50,0,none,none
+gn:6621036,La Baie,Quebec,18036,town,0,0,50,0,none,none
+gn:6621052,Perce,Quebec,3095,village,0,0,50,0,none,none
+gn:6639619,Sainte Catherine de la Jacques Cartier,Quebec,5021,village,0,0,50,0,none,none
+gn:6640171,Beresford,New Brunswick,4294,village,0,0,50,0,none,none
+gn:6690232,Baie-Saint-Paul,Quebec,7146,village,0,0,50,0,none,none
+gn:6693777,Carleton-sur-Mer,Quebec,4077,village,0,0,50,0,none,none
+gn:6694299,Walkerton,Ontario,4724,village,0,0,50,0,none,none
+gn:6695248,Boischatel,Quebec,8231,village,0,0,50,0,none,none
+gn:6695808,Cacouna,Quebec,1939,village,0,0,50,0,none,none
+gn:6696258,Campbellton,New Brunswick,6883,village,0,0,50,0,none,none
+gn:6696259,Bathurst,New Brunswick,11897,town,0,0,50,0,none,none
+gn:6696260,Matane,Quebec,14812,town,0,0,50,0,none,none
+gn:6941419,L'Islet-sur-Mer,Quebec,3803,village,0,0,50,0,none,none
+gn:6942037,Trois Pistoles,Quebec,3115,village,0,0,50,0,none,none
+gn:6942553,Paris,Ontario,12310,town,0,0,50,0,none,none
+gn:6942644,Hull,Quebec,63702,town,0,0,50,0,none,none
+gn:6942645,Buckingham,Quebec,16685,town,0,0,50,0,none,none
+gn:6942800,Kedgwick,New Brunswick,1986,village,0,0,50,0,none,none
+gn:6942803,Caraquet,New Brunswick,4285,village,0,0,50,0,none,none
+gn:6943488,Amqui,Quebec,6261,village,0,0,50,0,none,none
+gn:6943594,Shuniah Township,Ontario,3247,village,0,0,50,0,none,none
+gn:6943599,Dalhousie,New Brunswick,3223,village,0,0,50,0,none,none
+gn:6943605,Perth-Andover,New Brunswick,1574,village,0,0,50,0,none,none
+gn:6943610,Nain,Newfoundland and Labrador,1204,village,0,0,50,0,none,none
+gn:6943713,Dawson City,Yukon,1375,village,0,0,50,0,none,none
+gn:6943717,Lamèque,New Brunswick,1301,village,0,0,50,0,none,none
+gn:6943718,Neguac,New Brunswick,1692,village,0,0,50,0,none,none
+gn:6943723,Saint-Quentin,New Brunswick,2141,village,0,0,50,0,none,none
+gn:6943733,Weymontachie,Quebec,1038,village,0,0,50,0,none,none
+gn:6943811,Chandler,Quebec,7914,village,0,0,50,0,none,none
+gn:6943814,Grande-Riviere,Quebec,3384,village,0,0,50,0,none,none
+gn:6943825,Bonaventure,Quebec,2673,village,0,0,50,0,none,none
+gn:6943826,New-Richmond,Quebec,3748,village,0,0,50,0,none,none
+gn:6943827,Thetford-Mines,Quebec,25704,town,0,0,50,0,none,none
+gn:6943831,Lac-au-Saumon,Quebec,1488,village,0,0,50,0,none,none
+gn:6943833,New Carlisle,Quebec,1358,village,0,0,50,0,none,none
+gn:6943834,Carleton,Quebec,1101,village,0,0,50,0,none,none
+gn:6944109,Cabano,Quebec,3199,village,0,0,50,0,none,none
+gn:6944111,Sacré-Coeur,Quebec,1881,village,0,0,50,0,none,none
+gn:6944112,Forestville,Quebec,2333,village,0,0,50,0,none,none
+gn:6944113,Mont-Joli,Quebec,6568,village,0,0,50,0,none,none
+gn:6945979,Lillooet,British Columbia,2324,village,0,0,50,0,none,none
+gn:6945984,Saint-Anselme,Quebec,2541,village,0,0,50,0,none,none
+gn:6945985,Dégelis,Quebec,2884,village,0,0,50,0,none,none
+gn:6945986,La Malbaie,Quebec,8959,village,0,0,50,0,none,none
+gn:6945989,Sainte-Marie,Quebec,13565,town,0,0,50,0,none,none
+gn:6945991,Plessisville,Quebec,6677,village,0,0,50,0,none,none
+gn:6945992,Betsiamites,Quebec,2428,village,0,0,50,0,none,none
+gn:6945993,Saint-Pamphile,Quebec,2274,village,0,0,50,0,none,none
+gn:6945997,Maliotenam,Quebec,1316,village,0,0,50,0,none,none
+gn:6947099,Sheshatshiu,Newfoundland and Labrador,1049,village,0,0,50,0,none,none
+gn:6955478,Les Escoumins,Quebec,1339,village,0,0,50,0,none,none
+gn:7116273,Fossambault-sur-le-Lac,Quebec,2000,village,0,0,50,0,none,none
+gn:7280414,Cole Harbour,Nova Scotia,19096,town,0,0,50,0,none,none
+gn:7281936,West Kelowna,British Columbia,28793,town,0,0,50,0,none,none
+gn:7290171,Plaster Rock,New Brunswick,1002,village,0,0,50,0,none,none
+gn:7290229,Madeira Park,British Columbia,3039,village,0,0,50,0,none,none
+gn:7290516,St. George,Ontario,3255,village,0,0,50,0,none,none
+gn:7292559,Kaleden,British Columbia,1186,village,0,0,50,0,none,none
+gn:7302644,Tracadie-Sheila,New Brunswick,3184,village,0,0,50,0,none,none
+gn:7303783,Sydney Mines,Nova Scotia,12353,town,0,0,50,0,none,none
+gn:7303786,Jonquière,Quebec,54842,town,0,0,50,0,none,none
+gn:7499201,Port Perry,Ontario,9553,village,0,0,50,0,none,none
+gn:7535673,Cap-Santé,Quebec,2666,village,0,0,50,0,none,none
+gn:7535681,Saint-Augustin-de-Desmaures,Quebec,17281,town,0,0,50,0,none,none
+gn:7535690,Donnacona,Quebec,7200,village,0,0,50,0,none,none
+gn:7535692,La Pocatière,Quebec,4575,village,0,0,50,0,none,none
+gn:7535693,Saint-Joseph-de-Beauce,Quebec,5014,village,0,0,50,0,none,none
+gn:7535694,Metabetchouan-Lac-a-la-Croix,Quebec,4084,village,0,0,50,0,none,none
+gn:7602078,Ladner,British Columbia,23016,town,0,0,50,0,none,none
+gn:7602285,Steveston,British Columbia,25220,town,0,0,50,0,none,none
+gn:7626289,ByWard Market,Ontario,3063,village,0,0,50,0,none,none
+gn:7626787,Lago Lindo,Alberta,3987,village,0,0,50,0,none,none
+gn:7626788,Klarvatten,Alberta,4778,village,0,0,50,0,none,none
+gn:7626789,Belle Rive,Alberta,3958,village,0,0,50,0,none,none
+gn:7626790,Eaux Claires,Alberta,3060,village,0,0,50,0,none,none
+gn:7626794,Griesbach,Alberta,3102,village,0,0,50,0,none,none
+gn:7626795,Downtown,Alberta,12423,town,0,0,50,0,none,none
+gn:7626854,Evergreen,Alberta,1451,village,0,0,50,0,none,none
+gn:7626857,Fraser,Alberta,3276,village,0,0,50,0,none,none
+gn:7626858,Kirkness,Alberta,3735,village,0,0,50,0,none,none
+gn:7626861,Matt Berry,Alberta,4053,village,0,0,50,0,none,none
+gn:7626862,Hollick-Kenyon,Alberta,5189,village,0,0,50,0,none,none
+gn:7626863,Brintnell,Alberta,5178,village,0,0,50,0,none,none
+gn:7626864,Ozerna,Alberta,4495,village,0,0,50,0,none,none
+gn:7626865,Mayliewan,Alberta,4209,village,0,0,50,0,none,none
+gn:7626866,Chambery,Alberta,2064,village,0,0,50,0,none,none
+gn:7626867,Elsinore,Alberta,2125,village,0,0,50,0,none,none
+gn:7626868,Canossa,Alberta,3211,village,0,0,50,0,none,none
+gn:7626871,Oxford,Alberta,3398,village,0,0,50,0,none,none
+gn:7626872,Carlton,Alberta,2735,village,0,0,50,0,none,none
+gn:7626873,Hudson,Alberta,2012,village,0,0,50,0,none,none
+gn:7626874,Cumberland,Alberta,6411,village,0,0,50,0,none,none
+gn:7626877,Kensington,Alberta,3488,village,0,0,50,0,none,none
+gn:7669003,Popkum,British Columbia,1710,village,0,0,50,0,none,none
+gn:7669009,Promontory,British Columbia,11820,town,0,0,50,0,none,none
+gn:7669010,Yarrow,British Columbia,3326,village,0,0,50,0,none,none
+gn:7669011,Huntingdon,British Columbia,1224,village,0,0,50,0,none,none
+gn:7669012,Walnut Grove,British Columbia,25683,town,0,0,50,0,none,none
+gn:7669018,Aldergrove,British Columbia,12363,town,0,0,50,0,none,none
+gn:7669020,Willoughby,British Columbia,31305,town,0,0,50,0,none,none
+gn:7731836,Saint-Léonard,New Brunswick,2700,village,0,0,50,0,none,none
+gn:7732488,Norway House,Manitoba,5753,village,0,0,50,0,none,none
+gn:7803723,Omemee,Ontario,1323,village,0,0,50,0,none,none
+gn:7839094,Evanston,Alberta,18710,town,0,0,50,0,none,none
+gn:7870334,Cowichan Bay,British Columbia,2799,village,0,0,50,0,none,none
+gn:7870782,Moss Park,Ontario,20506,town,0,0,50,0,none,none
+gn:7870864,Casa Loma,Ontario,10968,town,0,0,50,0,none,none
+gn:7870873,North Glenmore,Alberta,2435,village,0,0,50,0,none,none
+gn:7870881,Erin Woods,Alberta,6790,village,0,0,50,0,none,none
+gn:7870882,High Park North,Ontario,22162,town,0,0,50,0,none,none
+gn:7870883,Cranston,Alberta,20850,town,0,0,50,0,none,none
+gn:7870884,Auburn Bay,Alberta,18090,town,0,0,50,0,none,none
+gn:7870890,Beltline,Alberta,25880,town,0,0,50,0,none,none
+gn:7870891,Erlton,Alberta,1280,village,0,0,50,0,none,none
+gn:7870893,Parkhill,Alberta,1770,village,0,0,50,0,none,none
+gn:7870895,Roncesvalles,Ontario,14974,town,0,0,50,0,none,none
+gn:7870898,Springbank Hill,Alberta,9840,village,0,0,50,0,none,none
+gn:7870899,Aspen Woods,Alberta,9435,village,0,0,50,0,none,none
+gn:7870900,Currie Barracks,Alberta,1275,village,0,0,50,0,none,none
+gn:7870902,Kincora,Alberta,7030,village,0,0,50,0,none,none
+gn:7870910,Dufferin Grove,Ontario,11785,town,0,0,50,0,none,none
+gn:7870917,Little Portugal,Ontario,15559,town,0,0,50,0,none,none
+gn:7870919,Niagara,Ontario,31180,town,0,0,50,0,none,none
+gn:7870920,Trinity-Bellwoods,Ontario,16556,town,0,0,50,0,none,none
+gn:7870927,Napanee Downtown,Ontario,1500,village,0,0,50,0,none,none
+gn:7870931,Skatepark,Ontario,1500,village,0,0,50,0,none,none
+gn:7871302,Long Branch,Ontario,10084,town,0,0,50,0,none,none
+gn:7871306,Morningside,Ontario,17455,town,0,0,50,0,none,none
+gn:7871311,Eglinton East,Ontario,22776,town,0,0,50,0,none,none
+gn:7871312,Woodbine Corridor,Ontario,12541,town,0,0,50,0,none,none
+gn:7871313,Greenwood-Coxwell,Ontario,14417,town,0,0,50,0,none,none
+gn:7871314,Woodbine-Lumsden,Ontario,7865,village,0,0,50,0,none,none
+gn:7871317,Pleasant View,Ontario,15818,town,0,0,50,0,none,none
+gn:7871320,Fergus,Ontario,20767,town,0,0,50,0,none,none
+gn:7871388,New Brighton,Alberta,12885,town,0,0,50,0,none,none
+gn:7873814,Lincoln Park,Alberta,1590,village,0,0,50,0,none,none
+gn:7874835,South Calgary,Alberta,4540,village,0,0,50,0,none,none
+gn:7874836,Garrison Woods,Alberta,2860,village,0,0,50,0,none,none
+gn:8062543,Bella Coola,British Columbia,2163,village,0,0,50,0,none,none
+gn:8125781,Almonte,Ontario,5039,village,0,0,50,0,none,none
+gn:8125787,Bobcaygeon,Ontario,3576,village,0,0,50,0,none,none
+gn:8131396,Breakeyville,Quebec,5000,village,0,0,50,0,none,none
+gn:8224455,Saint-Antoine-de-Tilly,Quebec,1462,village,0,0,50,0,none,none
+gn:8285452,Ancaster,Ontario,40557,town,0,0,50,0,none,none
+gn:8354533,Shannon,Quebec,5086,village,0,0,50,0,none,none
+gn:8354586,Saint-Henri,Quebec,5023,village,0,0,50,0,none,none
+gn:8354587,Saint-Lambert-de-Lauzon,Quebec,2443,village,0,0,50,0,none,none
+gn:8379097,Pohénégamook,Quebec,2770,village,0,0,50,0,none,none
+gn:8379100,Pont-Rouge,Quebec,8723,village,0,0,50,0,none,none
+gn:8379101,Princeville,Quebec,5693,village,0,0,50,0,none,none
+gn:8449722,Naramata,British Columbia,1625,village,0,0,50,0,none,none
+gn:8504652,Nanoose Bay,British Columbia,6540,village,0,0,50,0,none,none
+gn:8533869,West Vancouver,British Columbia,45487,town,0,0,50,0,none,none
+gn:8556258,Saint-Siméon,Quebec,1300,village,0,0,50,0,none,none
+gn:8556261,Saint-Ulric,Quebec,1567,village,0,0,50,0,none,none
+gn:8556283,Caplan,Quebec,1966,village,0,0,50,0,none,none
+gn:8556287,Wiarton,Ontario,1996,village,0,0,50,0,none,none
+gn:8556295,Orléans,Ontario,125937,city,0,0,50,0,none,none
+gn:8556299,L'Orignal,Ontario,1450,village,0,0,50,0,none,none
+gn:8558534,Willowdale,Ontario,79440,town,0,0,50,0,none,none
+gn:8581594,Florenceville-Bristol,New Brunswick,1639,village,0,0,50,0,none,none
+gn:8593671,Saint-Pascal,Quebec,3490,village,0,0,50,0,none,none
+gn:8593675,Shawnigan Lake,British Columbia,3908,village,0,0,50,0,none,none
+gn:8593677,Lantzville,British Columbia,3817,village,0,0,50,0,none,none
+gn:8593684,Thamesford,Ontario,2622,village,0,0,50,0,none,none
+gn:8593688,Bertrand,New Brunswick,1153,village,0,0,50,0,none,none
+gn:8593690,Petit-Rocher,New Brunswick,1954,village,0,0,50,0,none,none
+gn:8593691,Vallée-Jonction,Quebec,1940,village,0,0,50,0,none,none
+gn:8593823,East Broughton,Quebec,1832,village,0,0,50,0,none,none
+gn:8593826,Saint-Raymond,Quebec,11108,town,0,0,50,0,none,none
+gn:8593834,St. Jacobs,Ontario,1960,village,0,0,50,0,none,none
+gn:8604651,Saint-Apollinaire,Quebec,7968,village,0,0,50,0,none,none
+gn:8605031,Sayabec,Quebec,1706,village,0,0,50,0,none,none
+gn:8616966,Pointe-à-la-Croix,Quebec,1344,village,0,0,50,0,none,none
+gn:8616967,Maria,Quebec,1124,village,0,0,50,0,none,none
+gn:8616970,Causapscal,Quebec,2147,village,0,0,50,0,none,none
+gn:8617250,Shilo,Manitoba,1419,village,0,0,50,0,none,none
+gn:8617396,Embrun,Ontario,8680,village,0,0,50,0,none,none
+gn:8629216,Cawston,British Columbia,1040,village,0,0,50,0,none,none
+gn:8740846,Saint Romuald,Quebec,11663,town,0,0,50,0,none,none
+gn:8740857,Wendake,Quebec,2200,village,0,0,50,0,none,none
+gn:9408331,Saint-Antonin,Quebec,0,village,0,0,50,0,none,none
+gn:10287505,Lower Sackville,Nova Scotia,51749,town,0,0,50,0,none,none
+gn:10627796,Le Plateau,Quebec,15000,town,0,0,50,0,none,none
+gn:11126288,Charlo,New Brunswick,1323,village,0,0,50,0,none,none
+gn:11126345,Brookside,Nova Scotia,1439,village,0,0,50,0,none,none
+gn:11152651,Longlac,Ontario,1316,village,0,0,50,0,none,none
+gn:11203927,Wild Rose,Alberta,8031,village,0,0,50,0,none,none
+gn:11203928,Silver Berry,Alberta,8089,village,0,0,50,0,none,none
+gn:11203929,Laurel,Alberta,1606,village,0,0,50,0,none,none
+gn:11203930,Tamarack,Alberta,2348,village,0,0,50,0,none,none
+gn:11203933,Larkspur,Alberta,4988,village,0,0,50,0,none,none
+gn:11257139,Hérouxville,Quebec,1340,village,0,0,50,0,none,none
+gn:11429023,Saint-Norbert,Quebec,1059,village,0,0,50,0,none,none
+gn:11429024,Sainte-Élisabeth,Quebec,1559,village,0,0,50,0,none,none
+gn:11669521,Desbiens,Quebec,1034,village,0,0,50,0,none,none
+gn:11696023,Sainte-Claire,Quebec,3526,village,0,0,50,0,none,none
+gn:11696024,Saint-Roch-de-l'Achigan,Quebec,5453,village,0,0,50,0,none,none
+gn:11696027,Sainte-Perpétue,Quebec,1715,village,0,0,50,0,none,none
+gn:11696032,Saint-Agapit,Quebec,4526,village,0,0,50,0,none,none
+gn:11789760,Shippagan,New Brunswick,2580,village,0,0,50,0,none,none
+gn:11791071,Charlesworth,Alberta,2935,village,0,0,50,0,none,none
+gn:11791075,Westview Village,Alberta,2124,village,0,0,50,0,none,none
+gn:11791076,Meyonohk,Alberta,2923,village,0,0,50,0,none,none
+gn:11791077,Dechene,Alberta,1728,village,0,0,50,0,none,none
+gn:11791078,Mill Woods Town Centre,Alberta,1247,village,0,0,50,0,none,none
+gn:11791079,Miller,Alberta,2972,village,0,0,50,0,none,none
+gn:11791080,Aldergrove,Alberta,5304,village,0,0,50,0,none,none
+gn:11791081,Rhatigan Ridge,Alberta,3252,village,0,0,50,0,none,none
+gn:11791083,Oleskiw,Alberta,2995,village,0,0,50,0,none,none
+gn:11791084,Belmead,Alberta,4602,village,0,0,50,0,none,none
+gn:11791085,Falconer Heights,Alberta,2079,village,0,0,50,0,none,none
+gn:11791086,Terra Losa,Alberta,2188,village,0,0,50,0,none,none
+gn:11791088,Lymburn,Alberta,5914,village,0,0,50,0,none,none
+gn:11791090,Hodgson,Alberta,2650,village,0,0,50,0,none,none
+gn:11791094,Henderson Estates,Alberta,1891,village,0,0,50,0,none,none
+gn:11791097,Clareview Town Centre,Alberta,3226,village,0,0,50,0,none,none
+gn:11791098,Rutherford,Alberta,8407,village,0,0,50,0,none,none
+gn:11791099,Canon Ridge,Alberta,2019,village,0,0,50,0,none,none
+gn:11791100,Ambleside,Alberta,6173,village,0,0,50,0,none,none
+gn:11791103,Schonsee,Alberta,1712,village,0,0,50,0,none,none
+gn:11791106,Potter Greens,Alberta,1520,village,0,0,50,0,none,none
+gn:11791107,Bergman,Alberta,1452,village,0,0,50,0,none,none
+gn:11791108,MacEwan,Alberta,5618,village,0,0,50,0,none,none
+gn:11791109,Walker,Alberta,2036,village,0,0,50,0,none,none
+gn:11791114,Blackmud Creek,Alberta,2583,village,0,0,50,0,none,none
+gn:11791117,Blackburne,Alberta,1508,village,0,0,50,0,none,none
+gn:11791119,Carter Crest,Alberta,1716,village,0,0,50,0,none,none
+gn:11791122,Kiniski Gardens,Alberta,6637,village,0,0,50,0,none,none
+gn:11791126,Jamieson Place,Alberta,3905,village,0,0,50,0,none,none
+gn:11791130,The Hamptons,Alberta,9405,village,0,0,50,0,none,none
+gn:11791131,Ogilvie Ridge,Alberta,1001,village,0,0,50,0,none,none
+gn:11791133,Brookside,Alberta,1919,village,0,0,50,0,none,none
+gn:11791137,Callaghan,Alberta,1177,village,0,0,50,0,none,none
+gn:11791141,Bulyea Heights,Alberta,3600,village,0,0,50,0,none,none
+gn:11791147,Suder Greens,Alberta,2811,village,0,0,50,0,none,none
+gn:11791149,Donsdale,Alberta,1250,village,0,0,50,0,none,none
+gn:11791150,Secord,Alberta,3171,village,0,0,50,0,none,none
+gn:11791153,Haddow,Alberta,4352,village,0,0,50,0,none,none
+gn:11791155,Albany,Alberta,1776,village,0,0,50,0,none,none
+gn:11791159,Glastonbury,Alberta,5991,village,0,0,50,0,none,none
+gn:11791164,Leger,Alberta,2559,village,0,0,50,0,none,none
+gn:11791165,Breckenridge Greens,Alberta,1916,village,0,0,50,0,none,none
+gn:11791180,Mactaggart,Alberta,1681,village,0,0,50,0,none,none
+gn:11791181,Magrath Heights,Alberta,2806,village,0,0,50,0,none,none
+gn:11791183,Windermere,Alberta,2136,village,0,0,50,0,none,none
+gn:11791188,Twin Brooks,Alberta,6435,village,0,0,50,0,none,none
+gn:11791192,South Terwillegar,Alberta,7532,village,0,0,50,0,none,none
+gn:11791193,Granville,Alberta,2772,village,0,0,50,0,none,none
+gn:11791195,Cameron Heights,Alberta,1123,village,0,0,50,0,none,none
+gn:11791204,Summerside,Alberta,7976,village,0,0,50,0,none,none
+gn:11791206,Terwillegar Towne,Alberta,6627,village,0,0,50,0,none,none
+gn:11791215,Wedgewood Heights,Alberta,1470,village,0,0,50,0,none,none
+gn:11791217,Allard,Alberta,6847,village,0,0,50,0,none,none
+gn:11791702,Sage Hill,Alberta,9345,village,0,0,50,0,none,none
+gn:11791705,Cougar Ridge,Alberta,7150,village,0,0,50,0,none,none
+gn:11791707,Garrison Green,Alberta,1680,village,0,0,50,0,none,none
+gn:11791710,Chinatown,Alberta,2250,village,0,0,50,0,none,none
+gn:11791711,Walden,Alberta,7650,village,0,0,50,0,none,none
+gn:11791717,Parkdale,Alberta,2300,village,0,0,50,0,none,none
+gn:11791722,Carrington,Alberta,2750,village,0,0,50,0,none,none
+gn:11791723,Sherwood,Alberta,6520,village,0,0,50,0,none,none
+gn:11791724,Hounsfield Heights/Briar Hill,Alberta,2470,village,0,0,50,0,none,none
+gn:11791726,Downtown Commercial Core,Alberta,8225,village,0,0,50,0,none,none
+gn:11791728,Nolan Hill,Alberta,8755,village,0,0,50,0,none,none
+gn:11791737,North Haven,Alberta,2365,village,0,0,50,0,none,none
+gn:11791740,Downtown West End,Alberta,2825,village,0,0,50,0,none,none
+gn:11791741,Copperfield,Alberta,14095,town,0,0,50,0,none,none
+gn:11791742,Redstone,Alberta,9050,village,0,0,50,0,none,none
+gn:11791745,Greenview,Alberta,2100,village,0,0,50,0,none,none
+gn:11791754,Legacy,Alberta,8000,village,0,0,50,0,none,none
+gn:11791755,Crestmont,Alberta,2275,village,0,0,50,0,none,none
+gn:11791756,Skyview Ranch,Alberta,12870,town,0,0,50,0,none,none
+gn:11791758,Charleswood,Alberta,3595,village,0,0,50,0,none,none
+gn:11791763,Winston Heights-Mountview,Alberta,3605,village,0,0,50,0,none,none
+gn:11791766,Abbeydale,Alberta,5925,village,0,0,50,0,none,none
+gn:11791767,Seton,Alberta,3590,village,0,0,50,0,none,none
+gn:11791768,Rosedale,Alberta,1495,village,0,0,50,0,none,none
+gn:11791770,Albert Park/Radisson Heights,Alberta,6740,village,0,0,50,0,none,none
+gn:11791772,Collingwood,Alberta,2290,village,0,0,50,0,none,none
+gn:11791775,Silverado,Alberta,7975,village,0,0,50,0,none,none
+gn:11791778,Red Carpet,Alberta,1745,village,0,0,50,0,none,none
+gn:11791779,Mahogany,Alberta,13860,town,0,0,50,0,none,none
+gn:11810378,Fogo Island,Newfoundland and Labrador,2117,village,0,0,50,0,none,none
+gn:11837933,Behchokǫ̀,Northwest Territories,1746,village,0,0,50,0,none,none
+gn:11838088,Wendover,Ontario,1302,village,0,0,50,0,none,none
+gn:11838435,La Haute-Saint-Charles,Quebec,88460,town,0,0,50,0,none,none
+gn:11838437,Neufchâtel-Est–Lebourgneuf,Quebec,37540,town,0,0,50,0,none,none
+gn:11838440,Atholville,New Brunswick,3290,village,0,0,50,0,none,none
+gn:11838445,Eel River Crossing,New Brunswick,1844,village,0,0,50,0,none,none
+gn:12022702,Downtown Vancouver,British Columbia,62030,town,0,0,50,0,none,none
+gn:12022703,Coal Harbour,British Columbia,10441,town,0,0,50,0,none,none
+gn:12022713,Yaletown,British Columbia,14583,town,0,0,50,0,none,none
+gn:12032531,Chinatown,British Columbia,24000,town,0,0,50,0,none,none
+gn:12069868,Belledune,New Brunswick,1325,village,0,0,50,0,none,none
+gn:12069871,Bas-Caraquet,New Brunswick,1311,village,0,0,50,0,none,none
+gn:12070712,Kanata-Lakes,Ontario,12668,town,0,0,50,0,none,none
+gn:12070741,Beaverbrook,Ontario,5182,village,0,0,50,0,none,none
+gn:12070742,Fallingbrook,Ontario,25000,town,0,0,50,0,none,none
+gn:12070746,Springbrook,Alberta,1507,village,0,0,50,0,none,none
+gn:12070751,Westlake,Alberta,1363,village,0,0,50,0,none,none
+gn:12070752,Grand Centre,Alberta,7256,village,0,0,50,0,none,none
+gn:12070753,Heritage Pointe,Alberta,2075,village,0,0,50,0,none,none
+gn:12070754,Aldergrove East,British Columbia,3491,village,0,0,50,0,none,none
+gn:12070755,Lake Country,British Columbia,15817,town,0,0,50,0,none,none
+gn:12070756,Fairwinds,British Columbia,1147,village,0,0,50,0,none,none
+gn:12070757,Cross Lake 19A,Manitoba,2018,village,0,0,50,0,none,none
+gn:12070759,McEwen,New Brunswick,1462,village,0,0,50,0,none,none
+gn:12070760,Hanwell,New Brunswick,5108,village,0,0,50,0,none,none
+gn:12070761,Hayes Subdivision,Nova Scotia,1121,village,0,0,50,0,none,none
+gn:12070762,Eskasoni 3,Nova Scotia,3521,village,0,0,50,0,none,none
+gn:12070763,Golden,Ontario,1154,village,0,0,50,0,none,none
+gn:12070764,Valley East,Ontario,17451,town,0,0,50,0,none,none
+gn:12076628,Haliburton Village,Ontario,1149,village,0,0,50,0,none,none
+gn:12076629,Luceville,Quebec,1112,village,0,0,50,0,none,none
+gn:12076630,Manawan,Quebec,1648,village,0,0,50,0,none,none
+gn:12076633,Hauterive,Quebec,11549,town,0,0,50,0,none,none
+gn:12076634,Le Bic,Quebec,1115,village,0,0,50,0,none,none
+gn:12076636,Parc-Boutin,Quebec,1127,village,0,0,50,0,none,none
+gn:12076640,North Oyster/Yellow Point,British Columbia,1320,village,0,0,50,0,none,none
+gn:12076641,Baie Ste. Anne,New Brunswick,1319,village,0,0,50,0,none,none
+gn:12076642,South Pender Harbour,British Columbia,1187,village,0,0,50,0,none,none
+gn:12076643,Fundy Bay,New Brunswick,1167,village,0,0,50,0,none,none
+gn:12076644,Denman Island Trust Area,British Columbia,1165,village,0,0,50,0,none,none
+gn:12076646,Shediac Bridge-Shediac River,New Brunswick,1177,village,0,0,50,0,none,none
+gn:12076647,Saint-Pacôme,Quebec,1087,village,0,0,50,0,none,none
+gn:12076648,Weedon Centre,Quebec,1059,village,0,0,50,0,none,none
+gn:12076649,Six Mile,British Columbia,1031,village,0,0,50,0,none,none
+gn:12076652,Greater Lakeburn,New Brunswick,1529,village,0,0,50,0,none,none
+gn:12076998,Downtown Halifax,Nova Scotia,25555,town,0,0,50,0,none,none
+gn:12096348,Balmoral,New Brunswick,1628,village,0,0,50,0,none,none
+gn:12096431,St-André,New Brunswick,1794,village,0,0,50,0,none,none
+gn:12096534,Burnt Church,New Brunswick,1715,village,0,0,50,0,none,none
+gn:12097478,Estey's Bridge,New Brunswick,1908,village,0,0,50,0,none,none
+gn:12123375,Elsipogtog First Nation,New Brunswick,2736,village,0,0,50,0,none,none
+gn:12156434,Spallumcheen,British Columbia,5055,village,0,0,50,0,none,none
+gn:12156817,York University Heights,Ontario,27593,town,0,0,50,0,none,none
+gn:12156818,Parkwoods-Donalda,Ontario,34805,town,0,0,50,0,none,none
+gn:12156819,South Parkdale,Ontario,21849,town,0,0,50,0,none,none
+gn:12156820,South Riverdale,Ontario,27876,town,0,0,50,0,none,none
+gn:12156821,North St.James Town,Ontario,18615,town,0,0,50,0,none,none
+gn:12156822,Waterfront Communities-The Island,Ontario,65913,town,0,0,50,0,none,none
+gn:12156823,West Humber-Clairville,Ontario,33312,town,0,0,50,0,none,none
+gn:12156824,Banbury-Don Mills,Ontario,27695,town,0,0,50,0,none,none
+gn:12156825,Birchcliffe-Cliffside,Ontario,22291,town,0,0,50,0,none,none
+gn:12156826,Islington-City Centre West,Ontario,43965,town,0,0,50,0,none,none
+gn:12156827,Centennial Scarborough,Ontario,13362,town,0,0,50,0,none,none
+gn:12156828,Mount Pleasant West,Ontario,29658,town,0,0,50,0,none,none
+gn:12156829,Humewood-Cedarvale,Ontario,14365,town,0,0,50,0,none,none
+gn:12156830,Beechborough-Greenbrook,Ontario,6577,village,0,0,50,0,none,none
+gn:12156831,Blake-Jones,Ontario,7727,village,0,0,50,0,none,none
+gn:12156832,Forest Hill North,Ontario,12806,town,0,0,50,0,none,none
+gn:12156833,Corso Italia-Davenport,Ontario,14133,town,0,0,50,0,none,none
+gn:12156834,Danforth,Ontario,9666,village,0,0,50,0,none,none
+gn:12156835,Eringate-Centennial-West Deane,Ontario,18588,town,0,0,50,0,none,none
+gn:12156836,Junction Area,Ontario,14366,town,0,0,50,0,none,none
+gn:12156837,University of Toronto,Ontario,7607,village,0,0,50,0,none,none
+gn:12156838,Dovercourt-Wallace Emerson-Junction,Ontario,36625,town,0,0,50,0,none,none
+gn:12156839,Edenbridge-Humber Valley,Ontario,15535,town,0,0,50,0,none,none
+gn:12156840,Newtonbrook East,Ontario,16097,town,0,0,50,0,none,none
+gn:12156841,Yonge-St.Clair,Ontario,12528,town,0,0,50,0,none,none
+gn:12156842,Newtonbrook West,Ontario,23831,town,0,0,50,0,none,none
+gn:12156843,L'Amoreaux,Ontario,43993,town,0,0,50,0,none,none
+gn:12156844,Yorkdale-Glen Park,Ontario,14804,town,0,0,50,0,none,none
+gn:12156845,Taylor-Massey,Ontario,15683,town,0,0,50,0,none,none
+gn:12156846,Lambton Baby Point,Ontario,7985,village,0,0,50,0,none,none
+gn:12156847,Lawrence Park North,Ontario,14607,town,0,0,50,0,none,none
+gn:12156848,Palmerston-Little Italy,Ontario,13826,town,0,0,50,0,none,none
+gn:12156849,Lansing-Westgate,Ontario,16164,town,0,0,50,0,none,none
+gn:12156850,Lawrence Park South,Ontario,15179,town,0,0,50,0,none,none
+gn:12156851,Leaside-Bennington,Ontario,16828,town,0,0,50,0,none,none
+gn:12156852,Rexdale-Kipling,Ontario,10529,town,0,0,50,0,none,none
+gn:12156853,Mount Olive-Silverstone-Jamestown,Ontario,32954,town,0,0,50,0,none,none
+gn:12156854,Mount Pleasant East,Ontario,16775,town,0,0,50,0,none,none
+gn:12156855,North Riverdale,Ontario,11916,town,0,0,50,0,none,none
+gn:12156856,Old East York,Ontario,9233,village,0,0,50,0,none,none
+gn:12156857,Willowdale West,Ontario,16936,town,0,0,50,0,none,none
+gn:12156858,Black Creek,Ontario,21737,town,0,0,50,0,none,none
+gn:12156859,Rockcliffe-Smythe,Ontario,22246,town,0,0,50,0,none,none
+gn:12156860,Pelmo Park-Humberlea,Ontario,10722,town,0,0,50,0,none,none
+gn:12156861,Playter Estates-Danforth,Ontario,7804,village,0,0,50,0,none,none
+gn:12156862,Rosedale-Moore Park,Ontario,20923,town,0,0,50,0,none,none
+gn:12156863,Runnymede-Bloor West Village,Ontario,10070,town,0,0,50,0,none,none
+gn:12156864,Rustic,Ontario,9941,village,0,0,50,0,none,none
+gn:12156865,Stonegate-Queensway,Ontario,25051,town,0,0,50,0,none,none
+gn:12156866,Briar Hill-Belgravia,Ontario,14257,town,0,0,50,0,none,none
+gn:12156867,Danforth East York,Ontario,17180,town,0,0,50,0,none,none
+gn:12156868,St. Andrew-Windfields,Ontario,17812,town,0,0,50,0,none,none
+gn:12156869,Broadview North,Ontario,11499,town,0,0,50,0,none,none
+gn:12156870,Thistletown-Beaumond Heights,Ontario,10360,town,0,0,50,0,none,none
+gn:12156871,Annex,Ontario,30526,town,0,0,50,0,none,none
+gn:12156872,Thorncliffe Park,Ontario,21108,town,0,0,50,0,none,none
+gn:12156873,Victoria Village,Ontario,17510,town,0,0,50,0,none,none
+gn:12156874,Caledonia-Fairbank,Ontario,9955,village,0,0,50,0,none,none
+gn:12156875,Wexford/Maryvale,Ontario,27917,town,0,0,50,0,none,none
+gn:12156876,Weston-Pellam Park,Ontario,11098,town,0,0,50,0,none,none
+gn:12156877,Westminster-Branson,Ontario,26274,town,0,0,50,0,none,none
+gn:12156878,Willowdale East,Ontario,50434,town,0,0,50,0,none,none
+gn:12156879,Yonge-Eglinton,Ontario,11817,town,0,0,50,0,none,none
+gn:12156880,Maple Leaf,Ontario,10111,town,0,0,50,0,none,none
+gn:12156881,Willowridge-Martingrove-Richview,Ontario,22156,town,0,0,50,0,none,none
+gn:12156882,Church-Yonge Corridor,Ontario,31340,town,0,0,50,0,none,none
+gn:12156883,Brookhaven-Amesbury,Ontario,17757,town,0,0,50,0,none,none
+gn:12156884,O'Connor-Parkview,Ontario,18675,town,0,0,50,0,none,none
+gn:12156885,Princess-Rosethorn,Ontario,11051,town,0,0,50,0,none,none
+gn:12156886,Kensington-Chinatown,Ontario,17945,town,0,0,50,0,none,none
+gn:12156887,Bay Street Corridor,Ontario,25797,town,0,0,50,0,none,none
+gn:12156888,Agincourt South-Malvern West,Ontario,23757,town,0,0,50,0,none,none
+gn:12156889,Bayview Woods-Steeles,Ontario,13154,town,0,0,50,0,none,none
+gn:12156890,East End-Danforth,Ontario,21381,town,0,0,50,0,none,none
+gn:12156891,Cabbagetown-South St.James Town,Ontario,11669,town,0,0,50,0,none,none
+gn:12156892,Keelesdale-Eglinton West,Ontario,11058,town,0,0,50,0,none,none
+gn:12156893,Englemount-Lawrence,Ontario,22372,town,0,0,50,0,none,none
+gn:12156894,Forest Hill South,Ontario,10732,town,0,0,50,0,none,none
+gn:12156895,Humber Heights-Westmount,Ontario,10948,town,0,0,50,0,none,none
+gn:12156896,Bedford Park-Nortown,Ontario,23236,town,0,0,50,0,none,none
+gn:12156897,Bathurst Manor,Ontario,15873,town,0,0,50,0,none,none
+gn:12156898,Clanton Park,Ontario,16472,town,0,0,50,0,none,none
+gn:12156899,Clairlea-Birchmount,Ontario,26984,town,0,0,50,0,none,none
+gn:12156900,Bridle Path-Sunnybrook-York Mills,Ontario,9266,village,0,0,50,0,none,none
+gn:12156901,Don Valley Village,Ontario,27051,town,0,0,50,0,none,none
+gn:12156902,Elms-Old Rexdale,Ontario,9456,village,0,0,50,0,none,none
+gn:12156903,Downsview-Roding-CFB,Ontario,35052,town,0,0,50,0,none,none
+gn:12156904,Glenfield-Jane Heights,Ontario,30491,town,0,0,50,0,none,none
+gn:12156905,High Park-Swansea,Ontario,23925,town,0,0,50,0,none,none
+gn:12156906,Kingsview Village-The Westway,Ontario,22000,town,0,0,50,0,none,none
+gn:12156907,Kingsway South,Ontario,9271,village,0,0,50,0,none,none
+gn:12188701,Anahim Lake,British Columbia,1500,village,0,0,50,0,none,none
+gn:12495557,Three Rivers,Prince Edward Island,7883,village,0,0,50,0,none,none
+gn:12495574,Trinity Bay North,Newfoundland and Labrador,1649,village,0,0,50,0,none,none
+gn:12626120,L'Île-Bizard–Sainte-Geneviève,Quebec,19857,town,0,0,50,0,none,none
+gn:12626122,Vieux-Montréal,Quebec,5549,village,0,0,50,0,none,none
+gn:12626134,Ville-Émard,Quebec,30440,town,0,0,50,0,none,none
+gn:12626140,Snowdon,Quebec,32160,town,0,0,50,0,none,none
+gn:12626141,Saint-Henri,Quebec,15800,town,0,0,50,0,none,none
+gn:12626142,Petite-Bourgogne,Quebec,10000,town,0,0,50,0,none,none
+gn:12626145,Pointe-Saint-Charles,Quebec,13731,town,0,0,50,0,none,none
+gn:12626156,Mile End,Quebec,23977,town,0,0,50,0,none,none
+gn:12626157,Parc-Extension,Quebec,33800,town,0,0,50,0,none,none
+gn:12626165,Outremont,Quebec,23954,town,0,0,50,0,none,none
+gn:12626175,Desmarchais-Crawford,Quebec,29688,town,0,0,50,0,none,none
+gn:12626176,Ile-des-Soeurs,Quebec,20461,town,0,0,50,0,none,none
+gn:12626178,Milton-Parc,Quebec,10961,town,0,0,50,0,none,none
+gn:12808562,Ct 0001,Quebec,2684,village,0,0,50,0,none,none
+gn:12808563,Ct 0002,Quebec,3780,village,0,0,50,0,none,none
+gn:12808564,Ct 0003,Quebec,6600,village,0,0,50,0,none,none
+gn:12808565,Ct 0004,Quebec,3355,village,0,0,50,0,none,none
+gn:12808566,Ct 0005,Quebec,3175,village,0,0,50,0,none,none
+gn:12808567,Ct 0006,Quebec,4611,village,0,0,50,0,none,none
+gn:12808568,Ct 0007,Quebec,5655,village,0,0,50,0,none,none
+gn:12808569,Ct 0008,Quebec,3104,village,0,0,50,0,none,none
+gn:12808570,Ct 0009,Quebec,3554,village,0,0,50,0,none,none
+gn:12808571,Ct 0010,Quebec,1494,village,0,0,50,0,none,none
+gn:12808572,Ct 0011,Quebec,6439,village,0,0,50,0,none,none
+gn:12808573,Ct 0012,Quebec,6710,village,0,0,50,0,none,none
+gn:12808574,Ct 0013,Quebec,5694,village,0,0,50,0,none,none
+gn:12808575,Ct 0014,Quebec,7550,village,0,0,50,0,none,none
+gn:12808576,Ct 0015,Quebec,4089,village,0,0,50,0,none,none
+gn:12808577,Ct 0016,Quebec,2470,village,0,0,50,0,none,none
+gn:12808578,Ct 0017,Quebec,2131,village,0,0,50,0,none,none
+gn:12808579,Ct 0018,Quebec,2013,village,0,0,50,0,none,none
+gn:12808580,Ct 0019,Quebec,2398,village,0,0,50,0,none,none
+gn:12808581,Ct 0021,Quebec,3028,village,0,0,50,0,none,none
+gn:12808582,Ct 0022,Quebec,1527,village,0,0,50,0,none,none
+gn:12808583,Ct 0023,Quebec,1238,village,0,0,50,0,none,none
+gn:12808584,Ct 0024,Quebec,2544,village,0,0,50,0,none,none
+gn:12808585,Ct 0025,Quebec,3018,village,0,0,50,0,none,none
+gn:12808586,Ct 0026,Quebec,2519,village,0,0,50,0,none,none
+gn:12808587,Ct 0027,Quebec,1629,village,0,0,50,0,none,none
+gn:12808588,Ct 0028,Quebec,2058,village,0,0,50,0,none,none
+gn:12808589,Ct 0029,Quebec,4027,village,0,0,50,0,none,none
+gn:12808590,Ct 0030,Quebec,3506,village,0,0,50,0,none,none
+gn:13060929,108 Mile Ranch,British Columbia,1043,village,0,0,50,0,none,none
+gn:13060930,Mont-Carmel,Quebec,1200,village,0,0,50,0,none,none
+gn:13060932,Riviere-Bleue,Quebec,1261,village,0,0,50,0,none,none
+gn:13061023,Saint-Louis-du-Ha Ha,Quebec,1311,village,0,0,50,0,none,none
+gn:13061055,Tingwick,Quebec,1484,village,0,0,50,0,none,none
+gn:13100188,West St. Paul,Manitoba,6682,village,0,0,50,0,none,none
+gn:13495376,Fairview,British Columbia,33620,town,0,0,50,0,none,none
+gn:13495377,Dunbar-Southlands,British Columbia,21245,town,0,0,50,0,none,none
+gn:13495378,Marpole,British Columbia,27843,town,0,0,50,0,none,none
+gn:13495379,Sunset,British Columbia,36500,town,0,0,50,0,none,none
+gn:13495380,Riley Park,British Columbia,22555,town,0,0,50,0,none,none
+gn:13495381,Marlborough,British Columbia,14169,town,0,0,50,0,none,none
+gn:13495382,Big Bend,British Columbia,1651,village,0,0,50,0,none,none
+gn:13495383,Morley-Buckingham,British Columbia,4828,village,0,0,50,0,none,none
+gn:13495384,Stride Hill,British Columbia,6019,village,0,0,50,0,none,none
+gn:13495385,Clinton-Glenwood,British Columbia,8422,village,0,0,50,0,none,none
+gn:13495386,Kingsway-Beresford,British Columbia,7376,village,0,0,50,0,none,none
+gn:13495387,Oakalla,British Columbia,1577,village,0,0,50,0,none,none
+gn:13495388,Edmonds,British Columbia,22318,town,0,0,50,0,none,none
+gn:13495389,Lochdale,British Columbia,8535,village,0,0,50,0,none,none
+gn:13495390,Government Road,British Columbia,2325,village,0,0,50,0,none,none
+gn:13495391,West Cambie,British Columbia,12255,town,0,0,50,0,none,none
+gn:13495392,East Cambie,British Columbia,10780,town,0,0,50,0,none,none
+gn:13495393,Bridgeport,British Columbia,4140,village,0,0,50,0,none,none
+gn:13495394,Blundell,British Columbia,18065,town,0,0,50,0,none,none
+gn:13495396,Shellmont,British Columbia,11420,town,0,0,50,0,none,none
+gn:13495397,East Richmond-Fraser Lands,British Columbia,4595,village,0,0,50,0,none,none
+gn:13512353,Surrey City Centre,British Columbia,33520,town,0,0,50,0,none,none
+gn:13512354,Burke Mountain,British Columbia,12100,town,0,0,50,0,none,none
+gn:13512355,Westwood Plateau,British Columbia,19776,town,0,0,50,0,none,none
+gn:13512356,Cape Horn,British Columbia,12680,town,0,0,50,0,none,none
+gn:13512357,Burnside-Gorge,British Columbia,6875,village,0,0,50,0,none,none
+gn:13512358,Victoria-Downtown,British Columbia,46309,town,0,0,50,0,none,none
+gn:13512359,Fernwood,British Columbia,10200,town,0,0,50,0,none,none
+gn:13512360,Hillside-Quadra,British Columbia,7860,village,0,0,50,0,none,none
+gn:13512361,Jubilee,British Columbia,5290,village,0,0,50,0,none,none
+gn:13512362,North Park,British Columbia,3725,village,0,0,50,0,none,none
+gn:13512363,Oaklands,British Columbia,7585,village,0,0,50,0,none,none
+gn:13512364,Rockland,British Columbia,3740,village,0,0,50,0,none,none
+gn:13512365,Gonzales,British Columbia,4300,village,0,0,50,0,none,none
+gn:13512366,Victoria West,British Columbia,8365,village,0,0,50,0,none,none
+gn:13512367,Carey,British Columbia,18405,town,0,0,50,0,none,none
+gn:13512368,Shelbourne,British Columbia,12525,town,0,0,50,0,none,none
+gn:13512369,Saanich Core,British Columbia,5470,village,0,0,50,0,none,none
+gn:13512370,Rural Saanich,British Columbia,5025,village,0,0,50,0,none,none
+gn:13512371,Kerrisdale,British Columbia,13975,town,0,0,50,0,none,none
+gn:13512377,Lougheed,British Columbia,15300,town,0,0,50,0,none,none
+gn:13512378,Harewood,British Columbia,8769,village,0,0,50,0,none,none
+gn:13512379,South End,British Columbia,2475,village,0,0,50,0,none,none
+gn:13512383,Central Lonsdale,British Columbia,18485,town,0,0,50,0,none,none
+gn:13512386,Upper Delbrook,British Columbia,1186,village,0,0,50,0,none,none
+gn:13512387,Lions Gate,British Columbia,2660,village,0,0,50,0,none,none
+gn:13512388,Capilano,British Columbia,3177,village,0,0,50,0,none,none
+gn:13512389,Highlands,British Columbia,2885,village,0,0,50,0,none,none
+gn:13512390,Cleveland,British Columbia,2930,village,0,0,50,0,none,none
+gn:13512391,Norwood Queens,British Columbia,2755,village,0,0,50,0,none,none
+gn:13512392,Edgemont Village,British Columbia,1213,village,0,0,50,0,none,none
+gn:13512393,Carisbrooke,British Columbia,4577,village,0,0,50,0,none,none
+gn:13512394,Central Lynn,British Columbia,4850,village,0,0,50,0,none,none
+gn:13512395,Lynn Canyon,British Columbia,2155,village,0,0,50,0,none,none
+gn:13512396,Boundary,British Columbia,1585,village,0,0,50,0,none,none
+gn:13512397,Kirkstone,British Columbia,1185,village,0,0,50,0,none,none
+gn:13512398,West Lynn Terrace,British Columbia,1125,village,0,0,50,0,none,none
+gn:13512399,Upper West Lynn,British Columbia,1355,village,0,0,50,0,none,none
+gn:13512400,Lower West Lynn,British Columbia,1345,village,0,0,50,0,none,none
+gn:13512401,South Lynnmour,British Columbia,1367,village,0,0,50,0,none,none
+gn:13512402,Indian River,British Columbia,3684,village,0,0,50,0,none,none
+gn:13512403,Tsleil-Waututh,British Columbia,1410,village,0,0,50,0,none,none
+gn:13512404,Parkway,British Columbia,1600,village,0,0,50,0,none,none
+gn:13512409,Handsworth,British Columbia,1965,village,0,0,50,0,none,none
+gn:13512410,Ambleside,British Columbia,11998,town,0,0,50,0,none,none
+gn:13512411,Chartwell,British Columbia,1383,village,0,0,50,0,none,none
+gn:13512412,Whatcom,British Columbia,10270,town,0,0,50,0,none,none
+gn:13512413,McKee,British Columbia,4840,village,0,0,50,0,none,none
+gn:13512415,Fairfield,British Columbia,11165,town,0,0,50,0,none,none
+gn:13512416,Townline,British Columbia,21095,town,0,0,50,0,none,none
+gn:13512417,Historic Downtown,British Columbia,9910,village,0,0,50,0,none,none
+gn:13512418,McMillan,British Columbia,9250,village,0,0,50,0,none,none
+gn:13512419,Marshall-McCallum,British Columbia,10055,town,0,0,50,0,none,none
+gn:13512420,South Clearbrook,British Columbia,10120,town,0,0,50,0,none,none
+gn:13512421,UDistrict,British Columbia,3775,village,0,0,50,0,none,none
+gn:13512422,Cedar Valley,British Columbia,8080,village,0,0,50,0,none,none
+gn:13512423,Hammond,British Columbia,12709,town,0,0,50,0,none,none
+gn:13512424,Port Haney,British Columbia,6630,village,0,0,50,0,none,none
+gn:13512425,Little Mountain,British Columbia,1170,village,0,0,50,0,none,none
+gn:13512426,Chilliwack-Downtown,British Columbia,31410,town,0,0,50,0,none,none
+gn:13512427,Chilliwack Mountain,British Columbia,2510,village,0,0,50,0,none,none
+gn:13512428,Eastern Hillsides,British Columbia,3450,village,0,0,50,0,none,none
+gn:13512543,Quilchena,British Columbia,5692,village,0,0,50,0,none,none
+gn:13512544,English Bay,British Columbia,14225,town,0,0,50,0,none,none
+gn:13512545,South Granville,British Columbia,24820,town,0,0,50,0,none,none
+gn:13512546,Downtown Eastside,British Columbia,18477,town,0,0,50,0,none,none
+gn:13512547,University Endowment Lands,British Columbia,16920,town,0,0,50,0,none,none
+gn:13512548,Maywood,British Columbia,19650,town,0,0,50,0,none,none
+gn:13512549,East Hastings,British Columbia,80740,town,0,0,50,0,none,none
+gn:13512550,Grousewoods,British Columbia,1320,village,0,0,50,0,none,none
+gn:13512590,West End,British Columbia,3443,village,0,0,50,0,none,none
+gn:13512594,Smith Creek,British Columbia,3500,village,0,0,50,0,none,none
+gn:13512595,Hamilton,British Columbia,5505,village,0,0,50,0,none,none
+gn:13512769,Central Coquitlam,British Columbia,15480,town,0,0,50,0,none,none
+gn:13512923,College Park,British Columbia,7396,village,0,0,50,0,none,none
+gn:13512924,Inlet Centre,British Columbia,7232,village,0,0,50,0,none,none
+gn:13512925,Heritage Mountain,British Columbia,4664,village,0,0,50,0,none,none
+gn:13512926,Seaview,British Columbia,3236,village,0,0,50,0,none,none
+gn:13512927,Twin Creeks,British Columbia,2577,village,0,0,50,0,none,none
+gn:13512928,Glenayre,British Columbia,1964,village,0,0,50,0,none,none
+gn:13512929,Coronation Park,British Columbia,1468,village,0,0,50,0,none,none
+gn:13512931,Mountain Meadows,British Columbia,1401,village,0,0,50,0,none,none
+gn:13512932,Coquitlam Town Centre,British Columbia,24282,town,0,0,50,0,none,none
+gn:13512933,Coquitlam West,British Columbia,25656,town,0,0,50,0,none,none
+gn:13512934,Hockaday,British Columbia,10373,town,0,0,50,0,none,none
+gn:13512935,Canyon Springs,British Columbia,7528,village,0,0,50,0,none,none
+gn:13512936,New Horizons,British Columbia,8495,village,0,0,50,0,none,none
+gn:13512937,Douglas-Gilpin,British Columbia,10234,town,0,0,50,0,none,none
+gn:13512938,Cameron,British Columbia,11844,town,0,0,50,0,none,none
+gn:13512941,Lyndhurst,British Columbia,5370,village,0,0,50,0,none,none
+gn:13512943,Scott Creek,British Columbia,2828,village,0,0,50,0,none,none
+gn:13512944,Second Street,British Columbia,5666,village,0,0,50,0,none,none
+gn:13512945,Sapperton,British Columbia,6327,village,0,0,50,0,none,none
+gn:13512948,Champlain Heights,British Columbia,11958,town,0,0,50,0,none,none
+gn:13512949,Terra Nova,British Columbia,5447,village,0,0,50,0,none,none
+gn:13512951,Garden City,British Columbia,5885,village,0,0,50,0,none,none
+gn:13512952,McLennan,British Columbia,1476,village,0,0,50,0,none,none
+gn:13512953,Woodwards,British Columbia,8055,village,0,0,50,0,none,none
+gn:13512954,Golden Village,British Columbia,2855,village,0,0,50,0,none,none
+gn:13512955,Ironwood,British Columbia,6236,village,0,0,50,0,none,none
+gn:13512956,South Arm,British Columbia,7503,village,0,0,50,0,none,none
+gn:13512958,Brow of the Hill,British Columbia,10631,town,0,0,50,0,none,none
+gn:13512959,Uptown,British Columbia,9273,village,0,0,50,0,none,none
+gn:13512960,Victory Heights,British Columbia,4186,village,0,0,50,0,none,none
+gn:13512961,Glenwood,British Columbia,11437,town,0,0,50,0,none,none
+gn:13512962,Riverwood,British Columbia,9008,village,0,0,50,0,none,none
+gn:13512963,Musqueam,British Columbia,1646,village,0,0,50,0,none,none
+gn:13512981,Douglas,British Columbia,7867,village,0,0,50,0,none,none
+gn:13513018,Saint Helen's Park,British Columbia,2644,village,0,0,50,0,none,none
+gn:13513019,East Clayton,British Columbia,15000,town,0,0,50,0,none,none
+gn:13513020,West Clayton,British Columbia,13102,town,0,0,50,0,none,none
+gn:13513180,Renfrew Heights,British Columbia,20570,town,0,0,50,0,none,none
+gn:13513181,Gastown,British Columbia,10187,town,0,0,50,0,none,none
+gn:13513183,Marpole South,British Columbia,7150,village,0,0,50,0,none,none
+gn:13526663,Kits Point,British Columbia,2639,village,0,0,50,0,none,none
+gn:13527833,Cedar Cove,British Columbia,6000,village,0,0,50,0,none,none
+gn:13546315,Kahnawake,Quebec,7965,village,0,0,50,0,none,none
+gn:13546316,Le Plateau-Mont-Royal,Quebec,105813,city,0,0,50,0,none,none
+gn:13546317,Ville-Marie,Quebec,104944,city,0,0,50,0,none,none
+gn:13546318,Le Sud-Ouest,Quebec,86347,town,0,0,50,0,none,none
+gn:13546319,Mercier–Hochelaga-Maisonneuve,Quebec,142753,city,0,0,50,0,none,none
+gn:13546320,Montréal-Nord,Quebec,86857,town,0,0,50,0,none,none
+gn:13546321,Pierrefonds-Roxboro,Quebec,73194,town,0,0,50,0,none,none
+gn:13546322,Rivière-des-Prairies–Pointe-aux-Trembles,Quebec,113868,city,0,0,50,0,none,none
+gn:13546323,Rosemont–La Petite-Patrie,Quebec,146501,city,0,0,50,0,none,none
+gn:13546324,Villeray–Saint-Michel–Parc-Extension,Quebec,144814,city,0,0,50,0,none,none
+gn:13546325,Le Vieux-Longueuil,Quebec,135218,city,0,0,50,0,none,none
+gn:13546430,Queen's,Ontario,1455,village,0,0,50,0,none,none
+gn:13561600,Punjabi Market,British Columbia,6510,village,0,0,50,0,none,none
+gn:13561601,Greektown,British Columbia,4836,village,0,0,50,0,none,none
+gn:13561800,Univercity,British Columbia,5000,village,0,0,50,0,none,none
+gn:13561900,Halifax South End,Nova Scotia,19922,town,0,0,50,0,none,none
+gn:13561901,Quinpool District,Nova Scotia,7228,village,0,0,50,0,none,none
+gn:13561902,Halifax West End,Nova Scotia,22664,town,0,0,50,0,none,none
+gn:13561903,Halifax North End,Nova Scotia,14893,town,0,0,50,0,none,none
+gn:13561904,Manor Park,Nova Scotia,7716,village,0,0,50,0,none,none
+gn:13561905,Downtown Dartmouth,Nova Scotia,6300,village,0,0,50,0,none,none
+gn:13561907,Montebello,Nova Scotia,1751,village,0,0,50,0,none,none
+gn:13561908,Portland Estates,Nova Scotia,3099,village,0,0,50,0,none,none
+gn:13561909,Colby Village,Nova Scotia,4934,village,0,0,50,0,none,none
+gn:13561910,Forest Hills,Nova Scotia,8822,village,0,0,50,0,none,none
+gn:13561911,Highfield Park,Nova Scotia,2678,village,0,0,50,0,none,none
+gn:13561912,Lancaster Ridge,Nova Scotia,1225,village,0,0,50,0,none,none
+gn:13561913,Oakmount,Nova Scotia,1075,village,0,0,50,0,none,none
+gn:13561914,Wellington,British Columbia,3935,village,0,0,50,0,none,none
+gn:13561915,Nantucket,Nova Scotia,1417,village,0,0,50,0,none,none
+gn:13561916,Portland Hills,Nova Scotia,3403,village,0,0,50,0,none,none
+gn:13561917,Russell Lake,Nova Scotia,2146,village,0,0,50,0,none,none
+gn:13561918,Membertou,Nova Scotia,7859,village,0,0,50,0,none,none
+gn:13561919,Downtown St. John's,Newfoundland and Labrador,9431,village,0,0,50,0,none,none
+gn:13561948,Forest Heights,Alberta,5985,village,0,0,50,0,none,none
+gn:13562300,Mt Pleasant,British Columbia,32955,town,0,0,50,0,none,none
+gn:13562301,East Newton North,British Columbia,7336,village,0,0,50,0,none,none
+gn:13562304,East Newton South,British Columbia,7881,village,0,0,50,0,none,none
+gn:13562305,Aloha Estates,British Columbia,3098,village,0,0,50,0,none,none
+gn:13562306,Highway 11,British Columbia,5500,village,0,0,50,0,none,none
+gn:13580443,Downtown Moncton,New Brunswick,7837,village,0,0,50,0,none,none
+gn:13580444,Central Moncton,New Brunswick,8023,village,0,0,50,0,none,none
+gn:13580445,Downtown Dieppe,New Brunswick,6690,village,0,0,50,0,none,none
+gn:13580446,Parkton,New Brunswick,13745,town,0,0,50,0,none,none
+gn:13580447,North End,New Brunswick,5389,village,0,0,50,0,none,none
+gn:13580448,Uptown Saint John,New Brunswick,8221,village,0,0,50,0,none,none
+gn:13580449,McAllister,New Brunswick,1697,village,0,0,50,0,none,none
+gn:13580450,Lancaster,New Brunswick,3630,village,0,0,50,0,none,none
+gn:13580451,South End,New Brunswick,2442,village,0,0,50,0,none,none
+gn:13580452,Glenridge Crescent,Newfoundland and Labrador,3328,village,0,0,50,0,none,none
+gn:13580453,Mount Cashel,Newfoundland and Labrador,6047,village,0,0,50,0,none,none
+gn:13580454,Evergreen Village,Newfoundland and Labrador,4573,village,0,0,50,0,none,none
+gn:13580455,Signal Hill,Newfoundland and Labrador,1551,village,0,0,50,0,none,none
+gn:13580456,Georgestown,Newfoundland and Labrador,1732,village,0,0,50,0,none,none
+gn:13580457,Little Canada,Newfoundland and Labrador,3148,village,0,0,50,0,none,none
+gn:13580458,Spruce Meadows,Newfoundland and Labrador,2288,village,0,0,50,0,none,none
+gn:13580459,Cowan Heights,Newfoundland and Labrador,3985,village,0,0,50,0,none,none
+gn:13580460,Waterford Valley,Newfoundland and Labrador,4681,village,0,0,50,0,none,none
+gn:13580461,Kilbride,Newfoundland and Labrador,5901,village,0,0,50,0,none,none
+gn:13580462,Kenmount Terrace,Newfoundland and Labrador,3500,village,0,0,50,0,none,none
+gn:13580471,Glendale,Newfoundland and Labrador,1901,village,0,0,50,0,none,none
+gn:13580472,Southlands,Newfoundland and Labrador,5340,village,0,0,50,0,none,none
+gn:13580473,Bannerman,Newfoundland and Labrador,1672,village,0,0,50,0,none,none
+gn:13580474,Fairview Acres,Newfoundland and Labrador,4151,village,0,0,50,0,none,none
+gn:13580475,Mundy Pond,Newfoundland and Labrador,6448,village,0,0,50,0,none,none
+gn:13580476,Karwood Estates,Newfoundland and Labrador,4235,village,0,0,50,0,none,none
+gn:13580477,Donovans,Newfoundland and Labrador,5302,village,0,0,50,0,none,none
+gn:13580478,Pearlgate,Newfoundland and Labrador,6555,village,0,0,50,0,none,none
+gn:13580692,Beechwood,Ontario,8925,village,0,0,50,0,none,none
+gn:13580693,Beechwood West,Ontario,6990,village,0,0,50,0,none,none
+gn:13580694,Central,Ontario,12650,town,0,0,50,0,none,none
+gn:13580695,Clair Hills,Ontario,6145,village,0,0,50,0,none,none
+gn:13580696,Columbia,Ontario,13635,town,0,0,50,0,none,none
+gn:13580697,Columbia Hills,Ontario,7125,village,0,0,50,0,none,none
+gn:13580698,Conservation,Ontario,3095,village,0,0,50,0,none,none
+gn:13580700,Dearborn,Ontario,1605,village,0,0,50,0,none,none
+gn:13580701,Eastbridge,Ontario,6840,village,0,0,50,0,none,none
+gn:13580705,Lakeshore North-Conservation,Ontario,5190,village,0,0,50,0,none,none
+gn:13580708,Laurelwood,Ontario,5150,village,0,0,50,0,none,none
+gn:13580711,Lexington,Ontario,7330,village,0,0,50,0,none,none
+gn:13580713,Lincoln,Ontario,8765,village,0,0,50,0,none,none
+gn:13580715,Rural East-Country Squire,Ontario,1510,village,0,0,50,0,none,none
+gn:13580717,Westvale,Ontario,6730,village,0,0,50,0,none,none
+gn:13580719,Willowdale,Ontario,8130,village,0,0,50,0,none,none
+gn:13580720,Colonial Acres,Ontario,8163,village,0,0,50,0,none,none
+gn:13580721,University Downs,Ontario,4036,village,0,0,50,0,none,none
+gn:13580725,Auditorium,Ontario,2310,village,0,0,50,0,none,none
+gn:13580727,Bridgeport East,Ontario,2199,village,0,0,50,0,none,none
+gn:13580729,Bridgeport North,Ontario,2591,village,0,0,50,0,none,none
+gn:13580730,Bridgeport West,Ontario,1112,village,0,0,50,0,none,none
+gn:13580732,Brigadoon,Ontario,3315,village,0,0,50,0,none,none
+gn:13580733,Cedar Hill,Ontario,2633,village,0,0,50,0,none,none
+gn:13580734,Central Frederick,Ontario,3808,village,0,0,50,0,none,none
+gn:13580735,Centre District,Ontario,1656,village,0,0,50,0,none,none
+gn:13580737,Centreville Chicopee,Ontario,10434,town,0,0,50,0,none,none
+gn:13580739,Cherry Hill,Ontario,3027,village,0,0,50,0,none,none
+gn:13580740,City Commercial Core,Ontario,2953,village,0,0,50,0,none,none
+gn:13580741,Country Hills East,Ontario,2546,village,0,0,50,0,none,none
+gn:13580742,Country Hills West,Ontario,6615,village,0,0,50,0,none,none
+gn:13580743,Doon South,Ontario,11524,town,0,0,50,0,none,none
+gn:13580745,Eastwood,Ontario,1768,village,0,0,50,0,none,none
+gn:13580746,Fairfield,Ontario,3651,village,0,0,50,0,none,none
+gn:13580747,Grand River South,Ontario,9649,village,0,0,50,0,none,none
+gn:13580748,Grand River North,Ontario,4765,village,0,0,50,0,none,none
+gn:13580750,Highland West,Ontario,13066,town,0,0,50,0,none,none
+gn:13580751,Huron Park,Ontario,6579,village,0,0,50,0,none,none
+gn:13580752,Idlewood,Ontario,5560,village,0,0,50,0,none,none
+gn:13580753,King East,Ontario,2040,village,0,0,50,0,none,none
+gn:13580754,Lower Doon,Ontario,1305,village,0,0,50,0,none,none
+gn:13580755,Mill Courtland Woodside Park,Ontario,3639,village,0,0,50,0,none,none
+gn:13580756,Mount Hope Huron Park,Ontario,5030,village,0,0,50,0,none,none
+gn:13580757,Northward,Ontario,1003,village,0,0,50,0,none,none
+gn:13580758,Pioneer Park,Ontario,9108,village,0,0,50,0,none,none
+gn:13580761,Southdale,Ontario,5267,village,0,0,50,0,none,none
+gn:13580764,Vanier,Ontario,15249,town,0,0,50,0,none,none
+gn:13580765,East Hespeler,Ontario,7321,village,0,0,50,0,none,none
+gn:13580766,Silver Heights,Ontario,8235,village,0,0,50,0,none,none
+gn:13580767,Alison,Ontario,2697,village,0,0,50,0,none,none
+gn:13580768,Blair Road,Ontario,9289,village,0,0,50,0,none,none
+gn:13580769,Christopher-Champlain,Ontario,15372,town,0,0,50,0,none,none
+gn:13580770,Downtown Cambridge,Ontario,3117,village,0,0,50,0,none,none
+gn:13580771,East Galt,Ontario,3717,village,0,0,50,0,none,none
+gn:13580772,Fiddlesticks,Ontario,17576,town,0,0,50,0,none,none
+gn:13580773,Greenway-Chaplin,Ontario,14146,town,0,0,50,0,none,none
+gn:13580774,Lang's Farm,Ontario,5347,village,0,0,50,0,none,none
+gn:13580775,Little's Corners,Ontario,9413,village,0,0,50,0,none,none
+gn:13580776,Popcorn House,Ontario,7889,village,0,0,50,0,none,none
+gn:13580777,Preston Centre,Ontario,10441,town,0,0,50,0,none,none
+gn:13580778,Preston Heights,Ontario,2869,village,0,0,50,0,none,none
+gn:13580779,Southwood,Ontario,4751,village,0,0,50,0,none,none
+gn:13589045,La Cité-Limoilou,Quebec,108415,city,0,0,50,0,none,none
+gn:13589046,Les Rivières,Quebec,77000,town,0,0,50,0,none,none
+gn:13589154,Shearwater,Nova Scotia,1550,village,0,0,50,0,none,none
+gn:13589205,Nutana Sector,Saskatchewan,72564,town,0,0,50,0,none,none
+gn:13589206,Core Neighbourhoods,Saskatchewan,36088,town,0,0,50,0,none,none
+gn:13589207,Holmwood,Saskatchewan,8495,village,0,0,50,0,none,none
+gn:13589208,Lakewood,Saskatchewan,51237,town,0,0,50,0,none,none
+gn:13589209,University Heights,Saskatchewan,51957,town,0,0,50,0,none,none
+gn:13589210,Blairmore,Saskatchewan,9253,village,0,0,50,0,none,none
+gn:13589211,Confederation,Saskatchewan,70192,town,0,0,50,0,none,none
+gn:13589212,Lawson,Saskatchewan,34620,town,0,0,50,0,none,none
+gn:13589213,Varsity View,Saskatchewan,3935,village,0,0,50,0,none,none
+gn:13589214,Brighton,Saskatchewan,3759,village,0,0,50,0,none,none
+gn:13589215,Briarwood,Saskatchewan,5297,village,0,0,50,0,none,none
+gn:13589216,Lakewood Urban Centre,Saskatchewan,2953,village,0,0,50,0,none,none
+gn:13589217,Rosewood,Saskatchewan,7575,village,0,0,50,0,none,none
+gn:13589218,Nutana Urban Centre,Saskatchewan,3019,village,0,0,50,0,none,none
+gn:13589219,Queen Elizabeth,Saskatchewan,2798,village,0,0,50,0,none,none
+gn:13589220,Stonebridge,Saskatchewan,16392,town,0,0,50,0,none,none
+gn:13589221,Arbor Creek,Saskatchewan,5226,village,0,0,50,0,none,none
+gn:13589222,Aspen Ridge,Saskatchewan,2321,village,0,0,50,0,none,none
+gn:13589223,Erindale,Saskatchewan,4393,village,0,0,50,0,none,none
+gn:13589224,Evergreen,Saskatchewan,10495,town,0,0,50,0,none,none
+gn:13589225,Silverspring,Saskatchewan,5195,village,0,0,50,0,none,none
+gn:13589226,University Heights Urban Centre,Saskatchewan,1943,village,0,0,50,0,none,none
+gn:13589227,Willowgrove,Saskatchewan,9003,village,0,0,50,0,none,none
+gn:13589228,U of S Lands South Management Area,Saskatchewan,1103,village,0,0,50,0,none,none
+gn:13589229,Blairmore Urban Centre,Saskatchewan,1742,village,0,0,50,0,none,none
+gn:13589230,Kensington,Saskatchewan,5545,village,0,0,50,0,none,none
+gn:13589231,Confederation Urban Centre,Saskatchewan,1145,village,0,0,50,0,none,none
+gn:13589232,Hampton Village,Saskatchewan,9288,village,0,0,50,0,none,none
+gn:13589233,City Park,Saskatchewan,4912,village,0,0,50,0,none,none
+gn:13589234,King George,Saskatchewan,2075,village,0,0,50,0,none,none
+gn:13589235,Lawson Heights Urban Centre,Saskatchewan,1573,village,0,0,50,0,none,none
+gn:13589237,Downtown,Saskatchewan,3490,village,0,0,50,0,none,none
+gn:13589239,Northeast Regina,Saskatchewan,7260,village,0,0,50,0,none,none
+gn:13589240,Arcola East,Saskatchewan,33725,town,0,0,50,0,none,none
+gn:13589241,Boothill,Saskatchewan,2915,village,0,0,50,0,none,none
+gn:13589242,Dewdney East,Saskatchewan,18715,town,0,0,50,0,none,none
+gn:13589243,Al Ritchie,Saskatchewan,7890,village,0,0,50,0,none,none
+gn:13589244,Cathedral,Saskatchewan,7250,village,0,0,50,0,none,none
+gn:13589245,Centre Square,Saskatchewan,3565,village,0,0,50,0,none,none
+gn:13589247,Gladmer Park,Saskatchewan,2005,village,0,0,50,0,none,none
+gn:13589248,Heritage,Saskatchewan,4825,village,0,0,50,0,none,none
+gn:13589249,North Central,Saskatchewan,9085,village,0,0,50,0,none,none
+gn:13589251,Harbour Landing,Saskatchewan,14375,town,0,0,50,0,none,none
+gn:13589252,McNab,Saskatchewan,1280,village,0,0,50,0,none,none
+gn:13589253,Prairie View,Saskatchewan,8465,village,0,0,50,0,none,none
+gn:13589254,Rosemont-Mount Royal,Saskatchewan,8760,village,0,0,50,0,none,none
+gn:13589255,Twin Lakes,Saskatchewan,7280,village,0,0,50,0,none,none
+gn:13589256,Walsh Acres-Lakeridge-Garden Ridge,Saskatchewan,13055,town,0,0,50,0,none,none
+gn:13589260,Academy Heights,Ontario,2921,village,0,0,50,0,none,none
+gn:13589261,College Heights,Ontario,5476,village,0,0,50,0,none,none
+gn:13589262,College Park,Ontario,4072,village,0,0,50,0,none,none
+gn:13589263,County Park,Ontario,3367,village,0,0,50,0,none,none
+gn:13589264,Current River,Ontario,4744,village,0,0,50,0,none,none
+gn:13589266,East End,Ontario,1446,village,0,0,50,0,none,none
+gn:13589267,Intercity,Ontario,1486,village,0,0,50,0,none,none
+gn:13589268,Northwood,Ontario,14017,town,0,0,50,0,none,none
+gn:13589269,Parkdale,Ontario,1404,village,0,0,50,0,none,none
+gn:13589270,Shuniah,Ontario,10118,town,0,0,50,0,none,none
+gn:13589271,Vickers Park,Ontario,4317,village,0,0,50,0,none,none
+gn:13589272,West End,Ontario,4142,village,0,0,50,0,none,none
+gn:13589273,Westfort,Ontario,8256,village,0,0,50,0,none,none
+gn:13589461,Davie Village,British Columbia,13768,town,0,0,50,0,none,none
+gn:13591683,Olympic Village,British Columbia,9423,village,0,0,50,0,none,none
+gn:13591974,Sunset Acres,Nova Scotia,2750,village,0,0,50,0,none,none
+gn:13591975,Keystone Village,Nova Scotia,1233,village,0,0,50,0,none,none
+gn:13591976,Willowdale,Nova Scotia,5543,village,0,0,50,0,none,none
+gn:13591978,Harbourview,Nova Scotia,6656,village,0,0,50,0,none,none
+gn:13591979,Westmount,Nova Scotia,6388,village,0,0,50,0,none,none
+gn:13591980,Williams Lake,Nova Scotia,6268,village,0,0,50,0,none,none
+gn:13592143,Arcadia,New Brunswick,3700,village,0,0,50,0,none,none
+gn:13592144,Haut-Madawaska,New Brunswick,3720,village,0,0,50,0,none,none
+gn:13592145,Vallée-des-Rivières,New Brunswick,4250,village,0,0,50,0,none,none
+gn:13592146,Heron Bay,New Brunswick,5536,village,0,0,50,0,none,none
+gn:13592147,Belle-Baie,New Brunswick,14335,town,0,0,50,0,none,none
+gn:13592148,Bois-Joli,New Brunswick,3900,village,0,0,50,0,none,none
+gn:13592149,Rivière-du-Nord,New Brunswick,3530,village,0,0,50,0,none,none
+gn:13592150,Île-de-Lamèque,New Brunswick,5627,village,0,0,50,0,none,none
+gn:13592151,Hautes-Terres,New Brunswick,6140,village,0,0,50,0,none,none
+gn:13592153,Alnwick,New Brunswick,3575,village,0,0,50,0,none,none
+gn:13592154,Miramichi River Valley,New Brunswick,1996,village,0,0,50,0,none,none
+gn:13592155,Upper Miramichi,New Brunswick,2175,village,0,0,50,0,none,none
+gn:13592156,Nouvelle-Arcadie,New Brunswick,3060,village,0,0,50,0,none,none
+gn:13592157,Beaurivage,New Brunswick,6160,village,0,0,50,0,none,none
+gn:13592158,Five Rivers,New Brunswick,3400,village,0,0,50,0,none,none
+gn:13592159,Grand-Bouctouche,New Brunswick,2513,village,0,0,50,0,none,none
+gn:13592160,Champdoré,New Brunswick,5115,village,0,0,50,0,none,none
+gn:13592161,Beausoleil,New Brunswick,8620,village,0,0,50,0,none,none
+gn:13592162,Maple Hills,New Brunswick,9547,village,0,0,50,0,none,none
+gn:13592163,Cap-Acadie,New Brunswick,9165,village,0,0,50,0,none,none
+gn:13592165,Beaubassin East,New Brunswick,6718,village,0,0,50,0,none,none
+gn:13592167,Strait Shores,New Brunswick,2077,village,0,0,50,0,none,none
+gn:13592168,Tantramar,New Brunswick,14545,town,0,0,50,0,none,none
+gn:13592169,Fundy Albert,New Brunswick,6100,village,0,0,50,0,none,none
+gn:13592170,Three Rivers,New Brunswick,3990,village,0,0,50,0,none,none
+gn:13592171,Butternut Valley,New Brunswick,5435,village,0,0,50,0,none,none
+gn:13592172,Valley Waters,New Brunswick,4549,village,0,0,50,0,none,none
+gn:13592173,Fundy-St. Martins,New Brunswick,5225,village,0,0,50,0,none,none
+gn:13592174,Fundy Shores,New Brunswick,2050,village,0,0,50,0,none,none
+gn:13592175,Eastern Charlotte,New Brunswick,7325,village,0,0,50,0,none,none
+gn:13592176,Sunbury-York South,New Brunswick,7455,village,0,0,50,0,none,none
+gn:13592177,Grand Lake,New Brunswick,5725,village,0,0,50,0,none,none
+gn:13592178,Central York,New Brunswick,6930,village,0,0,50,0,none,none
+gn:13592179,Lakeland Ridges,New Brunswick,2450,village,0,0,50,0,none,none
+gn:13592181,Nackawic-Millville,New Brunswick,3765,village,0,0,50,0,none,none
+gn:13592183,Carleton North,New Brunswick,9170,village,0,0,50,0,none,none
+gn:13592184,Southern Victoria,New Brunswick,2550,village,0,0,50,0,none,none
+gn:13592185,Tobique Valley,New Brunswick,2740,village,0,0,50,0,none,none
+gn:13607752,Downtown Charlottetown,Prince Edward Island,5517,village,0,0,50,0,none,none
+gn:13607759,Stonepark,Prince Edward Island,1726,village,0,0,50,0,none,none
+gn:13607761,Mt. Edward,Prince Edward Island,2302,village,0,0,50,0,none,none
+gn:13607763,Sunset Acres,New Brunswick,2240,village,0,0,50,0,none,none
+gn:13607764,Downtown Fredericton,New Brunswick,5193,village,0,0,50,0,none,none
+gn:13607765,Queen Square,New Brunswick,1016,village,0,0,50,0,none,none
+gn:13607766,Town Plat,New Brunswick,6104,village,0,0,50,0,none,none
+gn:13607767,Rabbit Town,New Brunswick,1694,village,0,0,50,0,none,none
+gn:13607768,College Hill,New Brunswick,1421,village,0,0,50,0,none,none
+gn:13607844,Black River-Hardwicke,New Brunswick,1067,village,0,0,50,0,none,none
+gn:13607853,Cap-de-Richibucto,New Brunswick,1067,village,0,0,50,0,none,none
+gn:13607879,North Hanwell,New Brunswick,2897,village,0,0,50,0,none,none
+gn:13607880,Brookside West,New Brunswick,1425,village,0,0,50,0,none,none
+gn:13607883,Skyline Acres,New Brunswick,3321,village,0,0,50,0,none,none
+gn:13607884,Southwood Park,New Brunswick,2691,village,0,0,50,0,none,none
+gn:13607885,Lincoln Heights,New Brunswick,2189,village,0,0,50,0,none,none
+gn:13607886,Uptown Fredericton,New Brunswick,4066,village,0,0,50,0,none,none
+gn:13607919,Fredericton Northside,New Brunswick,28167,town,0,0,50,0,none,none
+gn:13607940,Virginia Park,Newfoundland and Labrador,1667,village,0,0,50,0,none,none
+gn:13607941,Bally Haly,Newfoundland and Labrador,1400,village,0,0,50,0,none,none
+gn:13607942,Pleasantville,Newfoundland and Labrador,1630,village,0,0,50,0,none,none
+gn:13607943,Quidi Vidi,Newfoundland and Labrador,1600,village,0,0,50,0,none,none
+gn:13607944,Sesame Park,Newfoundland and Labrador,2867,village,0,0,50,0,none,none
+gn:13607945,Clovelly Trails,Newfoundland and Labrador,2000,village,0,0,50,0,none,none
+gn:13607946,Bell's Turn,Newfoundland and Labrador,1045,village,0,0,50,0,none,none
+gn:13607949,King William Estates,Newfoundland and Labrador,3400,village,0,0,50,0,none,none
+gn:13607951,Clayton Park West,Nova Scotia,16550,town,0,0,50,0,none,none
+gn:13608158,Paper Mill Lake,Nova Scotia,1970,village,0,0,50,0,none,none
+gn:13608159,Spring Garden,Nova Scotia,4469,village,0,0,50,0,none,none
+gn:13608160,Stoneridge,Nova Scotia,2400,village,0,0,50,0,none,none
+gn:13608161,Schmidtville,Nova Scotia,2940,village,0,0,50,0,none,none
+gn:13608179,Saint-Raphaël,Quebec,2458,village,0,0,50,0,none,none
+gn:13665217,Bridgwater Centre,Manitoba,1165,village,0,0,50,0,none,none
+gn:13665218,Bridgwater Forest,Manitoba,5295,village,0,0,50,0,none,none
+gn:13665219,Bridgwater Lakes,Manitoba,3795,village,0,0,50,0,none,none
+gn:13665220,Bridgwater Trails,Manitoba,4075,village,0,0,50,0,none,none
+gn:13665222,Fairfield Park,Manitoba,3325,village,0,0,50,0,none,none
+gn:13665223,Fort Richmond,Manitoba,12290,town,0,0,50,0,none,none
+gn:13665224,Montcalm,Manitoba,5520,village,0,0,50,0,none,none
+gn:13665225,Parc La Salle,Manitoba,2360,village,0,0,50,0,none,none
+gn:13665226,Prairie Pointe,Manitoba,2265,village,0,0,50,0,none,none
+gn:13665227,Richmond Lakes,Manitoba,1580,village,0,0,50,0,none,none
+gn:13665228,Richmond West,Manitoba,8190,village,0,0,50,0,none,none
+gn:13665229,South Pointe,Manitoba,7535,village,0,0,50,0,none,none
+gn:13665230,St. Norbert,Manitoba,1735,village,0,0,50,0,none,none
+gn:13665231,Waverley Heights,Manitoba,5150,village,0,0,50,0,none,none
+gn:13665232,Fort Garry,Manitoba,99715,town,0,0,50,0,none,none
+gn:13665233,St. James-Assiniboia East,Manitoba,27755,town,0,0,50,0,none,none
+gn:13665246,Birchwood,Manitoba,1890,village,0,0,50,0,none,none
+gn:13665247,Booth,Manitoba,5660,village,0,0,50,0,none,none
+gn:13665248,Bruce Park,Manitoba,2105,village,0,0,50,0,none,none
+gn:13665249,Deer Lodge,Manitoba,3865,village,0,0,50,0,none,none
+gn:13665250,Jameswood,Manitoba,1320,village,0,0,50,0,none,none
+gn:13665252,King Edward,Manitoba,6190,village,0,0,50,0,none,none
+gn:13665253,Silver Heights,Manitoba,5405,village,0,0,50,0,none,none
+gn:13665254,Woodhaven,Manitoba,1035,village,0,0,50,0,none,none
+gn:13680011,"United Townships of Dysart, Dudley, Harcourt, Guilford, Harburn, Bruton, Havelock, Eyre and Clyde",Ontario,7182,village,0,0,50,0,none,none
+gn:13680114,Centre City,Alberta,41000,town,0,0,50,0,none,none
+gn:13680901,Inner Harbour,Ontario,7600,village,0,0,50,0,none,none
+gn:13680902,Sydenham,Ontario,3600,village,0,0,50,0,none,none
+gn:13680904,Sunnyside,Ontario,5665,village,0,0,50,0,none,none
+gn:13680905,Alwington,Ontario,1020,village,0,0,50,0,none,none
+gn:13680906,Williamsville,Ontario,2695,village,0,0,50,0,none,none
+gn:13680907,Markers Acres,Ontario,2820,village,0,0,50,0,none,none
+gn:13680908,CFB Kingston,Ontario,1625,village,0,0,50,0,none,none
+gn:13680909,Cataraqui River East,Ontario,3255,village,0,0,50,0,none,none
+gn:13680910,Greenwood/St. Lawrence South,Ontario,6545,village,0,0,50,0,none,none
+gn:13680911,Elginburg/Silvers Corners/Shannons Corners,Ontario,2545,village,0,0,50,0,none,none
+gn:13680912,Sharpton/Glenvale,Ontario,2005,village,0,0,50,0,none,none
+gn:13680913,Lemoine Point,Ontario,1330,village,0,0,50,0,none,none
+gn:13680914,Mile Square,Ontario,1875,village,0,0,50,0,none,none
+gn:13680916,Cataraqui Westbrook,Ontario,9795,village,0,0,50,0,none,none
+gn:13680917,Gardiners/Meadowbrook,Ontario,7125,village,0,0,50,0,none,none
+gn:13680918,Waterloo Village,Ontario,2180,village,0,0,50,0,none,none
+gn:13680919,Cataraqui North,Ontario,5635,village,0,0,50,0,none,none
+gn:13680920,Bayridge West,Ontario,2905,village,0,0,50,0,none,none
+gn:13680921,Westwoods,Ontario,4730,village,0,0,50,0,none,none
+gn:13680922,Sutton Mills,Ontario,4600,village,0,0,50,0,none,none
+gn:13712858,Saint-Ignace-de-Loyola,Quebec,2048,village,0,0,50,0,none,none
+gn:13712903,Winfield,British Columbia,9100,village,0,0,50,0,none,none
+gn:13712912,Sainte-Foy–Sillery–Cap-Rouge,Quebec,111300,city,0,0,50,0,none,none
+gn:13712913,Cap-Rouge,Quebec,17290,town,0,0,50,0,none,none
+gn:13731644,O'Leary's,Newfoundland and Labrador,4000,village,0,0,50,0,none,none
+gn:13731648,Memorial University of Newfoundland,Newfoundland and Labrador,1700,village,0,0,50,0,none,none
+gn:13731649,Summerville,Newfoundland and Labrador,1351,village,0,0,50,0,none,none
+gn:13731650,Central St. John's,Newfoundland and Labrador,21827,town,0,0,50,0,none,none
+gn:13731651,White Hills,Newfoundland and Labrador,6848,village,0,0,50,0,none,none
+gn:13731654,Ecclesiastical District,Newfoundland and Labrador,1043,village,0,0,50,0,none,none
+gn:13731656,Wedgewood Park,Newfoundland and Labrador,2749,village,0,0,50,0,none,none
+gn:13731658,Ropewalk Lane,Newfoundland and Labrador,1163,village,0,0,50,0,none,none
+gn:13731660,Sheffield Estates,Newfoundland and Labrador,1045,village,0,0,50,0,none,none
+gn:13731664,Newton,Newfoundland and Labrador,1099,village,0,0,50,0,none,none
+gn:13731665,West End,Newfoundland and Labrador,24755,town,0,0,50,0,none,none
+gn:13731666,Lower Cowan Heights,Newfoundland and Labrador,1040,village,0,0,50,0,none,none
+gn:13731667,Old West End,Newfoundland and Labrador,1180,village,0,0,50,0,none,none
+gn:13731668,Cornwall Heights,Newfoundland and Labrador,1252,village,0,0,50,0,none,none
+gn:13731669,Newtown,Newfoundland and Labrador,3963,village,0,0,50,0,none,none
+gn:13731670,Westgate,Newfoundland and Labrador,2019,village,0,0,50,0,none,none
+gn:13731671,Chamberlains,Newfoundland and Labrador,1721,village,0,0,50,0,none,none
+gn:13731672,Manuels,Newfoundland and Labrador,4140,village,0,0,50,0,none,none
+gn:13731673,Long Pond,Newfoundland and Labrador,3000,village,0,0,50,0,none,none
+gn:13731674,Upper Gullies,Newfoundland and Labrador,3519,village,0,0,50,0,none,none
+gn:13731675,East End,Newfoundland and Labrador,26448,town,0,0,50,0,none,none
+gn:13731778,Peachytown,Newfoundland and Labrador,1684,village,0,0,50,0,none,none
+gn:13731797,Beaumont,Manitoba,2360,village,0,0,50,0,none,none
+gn:13731798,Brockville,Manitoba,1525,village,0,0,50,0,none,none
+gn:13731800,Crescent Park,Manitoba,2580,village,0,0,50,0,none,none
+gn:13731801,Linden Ridge,Manitoba,1580,village,0,0,50,0,none,none
+gn:13731802,Maybank,Manitoba,2535,village,0,0,50,0,none,none
+gn:13731803,Pembina Strip,Manitoba,3760,village,0,0,50,0,none,none
+gn:13731804,Point Road,Manitoba,1890,village,0,0,50,0,none,none
+gn:13731805,Whyte Ridge,Manitoba,7295,village,0,0,50,0,none,none
+gn:13731806,Wildwood,Manitoba,1020,village,0,0,50,0,none,none
+gn:13731807,Assiniboine South,Manitoba,35750,town,0,0,50,0,none,none
+gn:13731808,Betsworth,Manitoba,3970,village,0,0,50,0,none,none
+gn:13731809,Edgeland,Manitoba,1300,village,0,0,50,0,none,none
+gn:13731810,Elmhurst,Manitoba,4360,village,0,0,50,0,none,none
+gn:13731811,Eric Coy,Manitoba,2220,village,0,0,50,0,none,none
+gn:13731813,Old Tuxedo,Manitoba,4042,village,0,0,50,0,none,none
+gn:13731815,Ridgewood South,Manitoba,1690,village,0,0,50,0,none,none
+gn:13731816,River West Park,Manitoba,1390,village,0,0,50,0,none,none
+gn:13731818,South Tuxedo,Manitoba,3350,village,0,0,50,0,none,none
+gn:13731819,Southboine,Manitoba,1385,village,0,0,50,0,none,none
+gn:13731820,Tuxedo,Manitoba,2060,village,0,0,50,0,none,none
+gn:13731821,Tuxedo Industrial,Manitoba,1975,village,0,0,50,0,none,none
+gn:13731822,Varsity View,Manitoba,2535,village,0,0,50,0,none,none
+gn:13731824,Westdale,Manitoba,4570,village,0,0,50,0,none,none

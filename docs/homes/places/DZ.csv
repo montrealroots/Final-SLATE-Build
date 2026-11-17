@@ -1,0 +1,351 @@
+place_id,name,region,population,market,verified_homes,dated_listings,shortfall_to_50,recorded_sales,rent_source,price_source
+gn:2474141,Boumerdas,Boumerdes,28996,town,0,0,50,0,none,none
+gn:2474399,Zighout Youcef,Constantine,28764,town,0,0,50,0,none,none
+gn:2474423,Ziama Mansouria,Jijel,12642,town,0,0,50,0,none,none
+gn:2474506,Zeribet el Oued,Biskra,23187,town,0,0,50,0,none,none
+gn:2474583,Zeralda,Algiers,17563,town,0,0,50,0,none,none
+gn:2474638,Zemoura,Relizane,21770,town,0,0,50,0,none,none
+gn:2474862,Zaouiet ed Debarh,Timimoun,5915,village,0,0,50,0,none,none
+gn:2475145,Tsabit,Adrar,1224,village,0,0,50,0,none,none
+gn:2475475,Touggourt,Touggourt,143270,city,0,0,50,0,none,none
+gn:2475612,Tolga,Biskra,50575,town,0,0,50,0,none,none
+gn:2475687,Tlemcen,Tlemcen,173531,city,0,0,50,0,none,none
+gn:2475740,Tizi Rached,Tizi Ouzou,17872,town,0,0,50,0,none,none
+gn:2475744,Tizi Ouzou,Tizi Ouzou,104312,city,0,0,50,0,none,none
+gn:2475752,Tizi-n-Tleta,Tizi Ouzou,22404,town,0,0,50,0,none,none
+gn:2475764,Tizi Gheniff,Tizi Ouzou,27974,town,0,0,50,0,none,none
+gn:2475837,Tit,Adrar,4417,village,0,0,50,0,none,none
+gn:2475860,Tissemsilt,Tissemsilt,66084,town,0,0,50,0,none,none
+gn:2475921,Tirmitine,Tizi Ouzou,26261,town,0,0,50,0,none,none
+gn:2476028,Tipasa,Tipaza,15180,town,0,0,50,0,none,none
+gn:2476059,Tilouline,Adrar,6120,village,0,0,50,0,none,none
+gn:2476301,Tindouf,Tindouf,45610,town,0,0,50,0,none,none
+gn:2476383,Timokten,Adrar,1255,village,0,0,50,0,none,none
+gn:2476396,Timizart,Tizi Ouzou,41158,town,0,0,50,0,none,none
+gn:2476403,Timimoun,Timimoun,22086,town,0,0,50,0,none,none
+gn:2476409,Timgad,Batna,11828,town,0,0,50,0,none,none
+gn:2476412,el hed,Béjaïa,31890,town,0,0,50,0,none,none
+gn:2476700,Tighenif,Mascara,39938,town,0,0,50,0,none,none
+gn:2476783,Tidmaine,Adrar,4442,village,0,0,50,0,none,none
+gn:2476897,Tiaret,Tiaret,178915,city,0,0,50,0,none,none
+gn:2476915,Theniet el Had,Tissemsilt,27628,town,0,0,50,0,none,none
+gn:2476917,Thenia,Boumerdes,16180,town,0,0,50,0,none,none
+gn:2477148,Ténès,Chlef,29220,town,0,0,50,0,none,none
+gn:2477255,Telerghma,Mila,26248,town,0,0,50,0,none,none
+gn:2477461,Tébessa,Tébessa,194461,city,0,0,50,0,none,none
+gn:2477462,Tebesbest,Touggourt,41091,town,0,0,50,0,none,none
+gn:2477528,Tazoult-Lambese,Batna,41636,town,0,0,50,0,none,none
+gn:2477740,Tarhit Ouled Hellal,Batna,3062,village,0,0,50,0,none,none
+gn:2478102,Tamest,Adrar,1133,village,0,0,50,0,none,none
+gn:2478139,Tamentit,Adrar,4835,village,0,0,50,0,none,none
+gn:2478216,Tamanghasset,Tamanrasset,81752,town,0,0,50,0,none,none
+gn:2478226,Tamalous,Skikda,32579,town,0,0,50,0,none,none
+gn:2478509,Taïbet,Touggourt,21000,town,0,0,50,0,none,none
+gn:2478831,Tadmaït,Tizi Ouzou,20952,town,0,0,50,0,none,none
+gn:2478876,Tadjenanet,Mila,41833,town,0,0,50,0,none,none
+gn:2479161,Sour el Ghozlane,Bouira,43985,town,0,0,50,0,none,none
+gn:2479183,Souma,Blida,40745,town,0,0,50,0,none,none
+gn:2479203,Lardjem,Tissemsilt,30000,town,0,0,50,0,none,none
+gn:2479215,Souk Ahras,Souk Ahras,153479,city,0,0,50,0,none,none
+gn:2479247,Sougueur,Tiaret,71036,town,0,0,50,0,none,none
+gn:2479536,Skikda,Skikda,182903,city,0,0,50,0,none,none
+gn:2479609,Sig,Mascara,61373,town,0,0,50,0,none,none
+gn:2479916,Sidi Okba,Biskra,29499,town,0,0,50,0,none,none
+gn:2479966,Sidi Moussa,Algiers,30887,town,0,0,50,0,none,none
+gn:2480198,Sidi Mérouane,Mila,25129,town,0,0,50,0,none,none
+gn:2480368,Sidi Khaled,Ouled Djellal,38987,town,0,0,50,0,none,none
+gn:2480618,Sidi ech Chahmi,Oran,35512,town,0,0,50,0,none,none
+gn:2480960,Sidi Ben Adda,Aïn Témouchent,11695,town,0,0,50,0,none,none
+gn:2481007,Sidi Bel Abbes,Sidi Bel Abbès,210146,city,0,0,50,0,none,none
+gn:2481058,Sidi Amrane,El Mghair,29734,town,0,0,50,0,none,none
+gn:2481207,Sidi Akkacha,Chlef,26558,town,0,0,50,0,none,none
+gn:2481246,Sidi Aïssa,M'Sila,66856,town,0,0,50,0,none,none
+gn:2481389,Sidi Abdelli,Tlemcen,23543,town,0,0,50,0,none,none
+gn:2481639,Sfizef,Sidi Bel Abbès,27914,town,0,0,50,0,none,none
+gn:2481700,Sétif,Sétif,252127,city,0,0,50,0,none,none
+gn:2482090,Sedrata,Souk Ahras,45300,town,0,0,50,0,none,none
+gn:2482159,Seddouk,Béjaïa,19884,town,0,0,50,0,none,none
+gn:2482183,Aziz,Medea,12500,town,0,0,50,0,none,none
+gn:2482211,Sebdou,Tlemcen,32570,town,0,0,50,0,none,none
+gn:2482390,Saoula,Algiers,16812,town,0,0,50,0,none,none
+gn:2482428,Sali,Adrar,3948,village,0,0,50,0,none,none
+gn:2482447,Salah Bey,Sétif,23339,town,0,0,50,0,none,none
+gn:2482572,Saïda,Saida,142497,city,0,0,50,0,none,none
+gn:2482886,Rouissat,Ouargla,80784,town,0,0,50,0,none,none
+gn:2482908,Rouiba,Algiers,117558,city,0,0,50,0,none,none
+gn:2482939,Rouached,Mila,40263,town,0,0,50,0,none,none
+gn:2483000,Robbah,El Oued,30446,town,0,0,50,0,none,none
+gn:2483649,Remchi,Tlemcen,31837,town,0,0,50,0,none,none
+gn:2483668,Relizane,Relizane,123255,city,0,0,50,0,none,none
+gn:2483746,Reguiba,El Oued,25210,town,0,0,50,0,none,none
+gn:2483757,Reghaïa,Algiers,54962,town,0,0,50,0,none,none
+gn:2483761,Reggane,Adrar,32974,town,0,0,50,0,none,none
+gn:2483936,Râs el Oued,Bordj Bou Arréridj,44947,town,0,0,50,0,none,none
+gn:2483968,Râs el Aïoun,Batna,34167,town,0,0,50,0,none,none
+gn:2484187,Rais Hamidou,Algiers,30000,town,0,0,50,0,none,none
+gn:2484242,Ouzera,Medea,12650,town,0,0,50,0,none,none
+gn:2484620,Oum el Bouaghi,Oum el Bouaghi,67201,town,0,0,50,0,none,none
+gn:2484738,Oumache,Biskra,10424,town,0,0,50,0,none,none
+gn:2484777,Ouled Slama Fouaga,Blida,27573,town,0,0,50,0,none,none
+gn:2484835,Ouled Moussa,Boumerdes,40692,town,0,0,50,0,none,none
+gn:2484846,Ouled Mimoun,Tlemcen,25377,town,0,0,50,0,none,none
+gn:2484891,Ouled Haddaj,Boumerdes,29012,town,0,0,50,0,none,none
+gn:2484933,Ouled Djellal,Ouled Djellal,58481,town,0,0,50,0,none,none
+gn:2485162,Oulad Saïd,Timimoun,3357,village,0,0,50,0,none,none
+gn:2485409,Oulad Aïssa,Timimoun,1350,village,0,0,50,0,none,none
+gn:2485540,Ouenza,Tébessa,47312,town,0,0,50,0,none,none
+gn:2485551,Oued Zenati,Guelma,27441,town,0,0,50,0,none,none
+gn:2485572,Oued Sly,Chlef,30504,town,0,0,50,0,none,none
+gn:2485582,Oued Rhiou,Relizane,55430,town,0,0,50,0,none,none
+gn:2485618,Oued Fodda,Chlef,44523,town,0,0,50,0,none,none
+gn:2485633,Oued el Alleug,Blida,21146,town,0,0,50,0,none,none
+gn:2485634,Oued el Alennda,El Oued,6830,village,0,0,50,0,none,none
+gn:2485636,Oued el Abtal,Mascara,22819,town,0,0,50,0,none,none
+gn:2485801,Ouargla,Ouargla,169928,city,0,0,50,0,none,none
+gn:2485926,Oran,Oran,803329,large-city,0,0,50,0,none,none
+gn:2486177,N’Gaous,Batna,29453,town,0,0,50,0,none,none
+gn:2486284,Nedroma,Tlemcen,27742,town,0,0,50,0,none,none
+gn:2486505,Naciria,Boumerdes,15387,town,0,0,50,0,none,none
+gn:2486523,Naama,Naama,14624,town,0,0,50,0,none,none
+gn:2486690,M'Sila,M'Sila,132975,city,0,0,50,0,none,none
+gn:2486825,Mouzaïa,Blida,28552,town,0,0,50,0,none,none
+gn:2487134,Mostaganem,Mostaganem,162885,city,0,0,50,0,none,none
+gn:2487293,Mohammadia,Mascara,62410,town,0,0,50,0,none,none
+gn:2487444,Miliana,Aïn Defla,43366,town,0,0,50,0,none,none
+gn:2487452,Mila,Mila,63251,town,0,0,50,0,none,none
+gn:2487620,Metlili Chaamba,Ghardaia,39588,town,0,0,50,0,none,none
+gn:2487648,Metarfa,Timimoun,1262,village,0,0,50,0,none,none
+gn:2487772,Messaad,Djelfa,97091,town,0,0,50,0,none,none
+gn:2487805,Meskiana,Oum el Bouaghi,30071,town,0,0,50,0,none,none
+gn:2487852,Mers el Kebir,Oran,20178,town,0,0,50,0,none,none
+gn:2487882,Merouana,Batna,47646,town,0,0,50,0,none,none
+gn:2488202,Melouza,M'Sila,25701,town,0,0,50,0,none,none
+gn:2488500,Mekla,Tizi Ouzou,29560,town,0,0,50,0,none,none
+gn:2488616,Mehdia daira de meghila,Tiaret,31396,town,0,0,50,0,none,none
+gn:2488716,Megarine,Touggourt,31711,town,0,0,50,0,none,none
+gn:2488722,Meftah,Blida,40878,town,0,0,50,0,none,none
+gn:2488835,Médéa,Medea,145441,city,0,0,50,0,none,none
+gn:2489279,Draa Klalouche,Batna,5000,village,0,0,50,0,none,none
+gn:2489865,Mecheria,Naama,65043,town,0,0,50,0,none,none
+gn:2489922,M’Daourouch,Souk Ahras,36351,town,0,0,50,0,none,none
+gn:2489987,Mazouna,Relizane,22366,town,0,0,50,0,none,none
+gn:2490098,Mascara,Mascara,108629,city,0,0,50,0,none,none
+gn:2490180,Mansourah,Bordj Bou Arréridj,22117,town,0,0,50,0,none,none
+gn:2490183,Mansoûra,Tlemcen,52285,town,0,0,50,0,none,none
+gn:2490297,Makouda,Tizi Ouzou,34515,town,0,0,50,0,none,none
+gn:2490584,Maghnia,Tlemcen,87373,town,0,0,50,0,none,none
+gn:2491042,L’Arbaa Naït Irathen,Tizi Ouzou,30609,town,0,0,50,0,none,none
+gn:2491050,Larbaâ,Blida,58295,town,0,0,50,0,none,none
+gn:2491134,Lakhdaria,Bouira,42886,town,0,0,50,0,none,none
+gn:2491191,Laghouat,Laghouat,134372,city,0,0,50,0,none,none
+gn:2491323,Ksar el Boukhari,Medea,59634,town,0,0,50,0,none,none
+gn:2491335,Ksar Chellala,Tiaret,51451,town,0,0,50,0,none,none
+gn:2491578,Kolea,Tipaza,61643,town,0,0,50,0,none,none
+gn:2491889,Khenchela,Khenchela,114472,city,0,0,50,0,none,none
+gn:2491911,Khemis Miliana,Aïn Defla,80512,town,0,0,50,0,none,none
+gn:2491913,Khemis el Khechna,Boumerdes,46965,town,0,0,50,0,none,none
+gn:2492345,Kerkera,Skikda,27177,town,0,0,50,0,none,none
+gn:2492809,Kaïs,Khenchela,32668,town,0,0,50,0,none,none
+gn:2492913,Jijel,Jijel,131513,city,0,0,50,0,none,none
+gn:2492920,Djidiouia,Relizane,31996,town,0,0,50,0,none,none
+gn:2493273,In Guezzam,In Guezzam,7045,village,0,0,50,0,none,none
+gn:2493456,Illizi,Illizi,13029,town,0,0,50,0,none,none
+gn:2493605,Ighram,Béjaïa,15030,town,0,0,50,0,none,none
+gn:2493918,Hennaya,Tlemcen,26515,town,0,0,50,0,none,none
+gn:2493956,Héliopolis,Guelma,40139,town,0,0,50,0,none,none
+gn:2494029,Hassi Messaoud,Ouargla,44478,town,0,0,50,0,none,none
+gn:2494065,Assi Bou Nif,Oran,53700,town,0,0,50,0,none,none
+gn:2494073,Hassi Bahbah,Djelfa,77000,town,0,0,50,0,none,none
+gn:2494535,Hammam Righa,Aïn Defla,8488,village,0,0,50,0,none,none
+gn:2494548,Hammamet,Tébessa,28536,town,0,0,50,0,none,none
+gn:2494554,Hammam Bou Hadjar,Aïn Témouchent,25912,town,0,0,50,0,none,none
+gn:2494610,Hamma Bouziane,Constantine,83603,town,0,0,50,0,none,none
+gn:2494962,Hadjout,Tipaza,33830,town,0,0,50,0,none,none
+gn:2495524,Guerara,Ghardaia,58572,town,0,0,50,0,none,none
+gn:2495601,Guemar,El Oued,48413,town,0,0,50,0,none,none
+gn:2495662,Guelma,Guelma,120004,city,0,0,50,0,none,none
+gn:2495846,Grarem,Mila,28551,town,0,0,50,0,none,none
+gn:2496042,Ghazaouet,Tlemcen,28433,town,0,0,50,0,none,none
+gn:2496049,Ghardaïa,Ghardaia,142913,city,0,0,50,0,none,none
+gn:2496059,Gdyel,Oran,32774,town,0,0,50,0,none,none
+gn:2496232,Frenda,Tiaret,49376,town,0,0,50,0,none,none
+gn:2496241,Freha,Tizi Ouzou,31068,town,0,0,50,0,none,none
+gn:2496573,Feraoun,Béjaïa,21700,town,0,0,50,0,none,none
+gn:2496643,Feidh el Botma,Djelfa,26857,town,0,0,50,0,none,none
+gn:2496681,Fedj M’Zala,Mila,26176,town,0,0,50,0,none,none
+gn:2496757,Fatis,Timimoun,3209,village,0,0,50,0,none,none
+gn:2497060,Es Senia,Oran,39064,town,0,0,50,0,none,none
+gn:2497269,En Nedjma,Oran,51665,town,0,0,50,0,none,none
+gn:2497323,El Tarf,El Tarf,13346,town,0,0,50,0,none,none
+gn:2497411,El Oued,El Oued,186525,city,0,0,50,0,none,none
+gn:2497509,El Milia,Jijel,45945,town,0,0,50,0,none,none
+gn:2497655,El Meghaïer,El Mghair,39106,town,0,0,50,0,none,none
+gn:2497714,El Malah,Aïn Témouchent,19415,town,0,0,50,0,none,none
+gn:2497796,El Kseur,Béjaïa,26050,town,0,0,50,0,none,none
+gn:2497849,El Khroub,Constantine,90122,town,0,0,50,0,none,none
+gn:2497988,El Kala,El Tarf,35449,town,0,0,50,0,none,none
+gn:2498000,El Idrissia,Djelfa,29856,town,0,0,50,0,none,none
+gn:2498172,El Hadjira,Ouargla,39744,town,0,0,50,0,none,none
+gn:2498183,El Hadjar,Annaba,26060,town,0,0,50,0,none,none
+gn:2498305,El Menia,El Menia,57344,town,0,0,50,0,none,none
+gn:2498392,El Eulma,Sétif,145380,city,0,0,50,0,none,none
+gn:2498543,El Bayadh,El Bayadh,85577,town,0,0,50,0,none,none
+gn:2498590,El Attaf,Aïn Defla,33349,town,0,0,50,0,none,none
+gn:2498611,Chlef,Chlef,178616,city,0,0,50,0,none,none
+gn:2498614,El Arrouch,Skikda,33085,town,0,0,50,0,none,none
+gn:2498667,El Aouinet,Tébessa,32971,town,0,0,50,0,none,none
+gn:2498704,El Amria,Aïn Témouchent,26407,town,0,0,50,0,none,none
+gn:2498752,El Affroun,Blida,35074,town,0,0,50,0,none,none
+gn:2498766,El Achir,Bordj Bou Arréridj,158333,city,0,0,50,0,none,none
+gn:2498775,El Abiodh Sidi Cheikh,El Bayadh,39283,town,0,0,50,0,none,none
+gn:2498782,El Abadia,Aïn Defla,27185,town,0,0,50,0,none,none
+gn:2498954,Ech Chettia,Chlef,60170,town,0,0,50,0,none,none
+gn:2499055,Drean,El Tarf,55147,town,0,0,50,0,none,none
+gn:2499095,Draâ Esmar,Medea,7465,village,0,0,50,0,none,none
+gn:2499104,Draa el Mizan,Tizi Ouzou,41263,town,0,0,50,0,none,none
+gn:2499116,Draa Ben Khedda,Tizi Ouzou,29403,town,0,0,50,0,none,none
+gn:2499193,Douéra,Algiers,46266,town,0,0,50,0,none,none
+gn:2500017,Djelfa,Djelfa,265833,city,0,0,50,0,none,none
+gn:2500275,Djanet,Djanet,0,village,0,0,50,0,none,none
+gn:2500282,Djamaa,El Mghair,34920,town,0,0,50,0,none,none
+gn:2500401,Didouche Mourad,Constantine,25764,town,0,0,50,0,none,none
+gn:2500583,Dellys,Boumerdes,26384,town,0,0,50,0,none,none
+gn:2500737,Debila,El Oued,36834,town,0,0,50,0,none,none
+gn:2500889,Dar el Beïda,Algiers,37311,town,0,0,50,0,none,none
+gn:2500904,Dar Chioukh,Djelfa,26605,town,0,0,50,0,none,none
+gn:2501152,Constantine,Constantine,448028,city,0,0,50,0,none,none
+gn:2501289,Chorfa,Bouira,20556,town,0,0,50,0,none,none
+gn:2501323,Chiffa,Blida,23218,town,0,0,50,0,none,none
+gn:2501362,Chetouane,Tlemcen,36776,town,0,0,50,0,none,none
+gn:2501404,Cheria,Tébessa,66160,town,0,0,50,0,none,none
+gn:2501440,Cherchell,Tipaza,34372,town,0,0,50,0,none,none
+gn:2501465,Cheraga,Algiers,27835,town,0,0,50,0,none,none
+gn:2501508,Chemini,Béjaïa,21585,town,0,0,50,0,none,none
+gn:2501525,Chellalat el Adhaouara,Medea,26077,town,0,0,50,0,none,none
+gn:2501541,Chelghoum el Aïd,Mila,54495,town,0,0,50,0,none,none
+gn:2501680,Chebli,Blida,19901,town,0,0,50,0,none,none
+gn:2501752,Charouine,Timimoun,1536,village,0,0,50,0,none,none
+gn:2501767,Charef,Djelfa,27700,town,0,0,50,0,none,none
+gn:2501873,Chabet el Ameur,Boumerdes,19522,town,0,0,50,0,none,none
+gn:2502034,Brezina,El Bayadh,19084,town,0,0,50,0,none,none
+gn:2502239,Bou Tlelis,Oran,26144,town,0,0,50,0,none,none
+gn:2502385,Bou Saâda,M'Sila,111787,city,0,0,50,0,none,none
+gn:2502625,Boumagueur,Batna,8474,village,0,0,50,0,none,none
+gn:2502686,Boumahra Ahmed,Guelma,23022,town,0,0,50,0,none,none
+gn:2502924,Boukadir,Chlef,28652,town,0,0,50,0,none,none
+gn:2502939,Bou Ismaïl,Tipaza,40984,town,0,0,50,0,none,none
+gn:2502958,Bouïra,Bouira,68545,town,0,0,50,0,none,none
+gn:2502962,Bouinan,Blida,30271,town,0,0,50,0,none,none
+gn:2503033,Bou Hanifia el Hamamat,Mascara,27576,town,0,0,50,0,none,none
+gn:2503075,Bou Hadjar,El Tarf,16385,town,0,0,50,0,none,none
+gn:2503086,Bougzoul,Medea,14095,town,0,0,50,0,none,none
+gn:2503147,Bougara,Blida,38352,town,0,0,50,0,none,none
+gn:2503156,Bougaa,Sétif,31922,town,0,0,50,0,none,none
+gn:2503181,Boufarik,Blida,57162,town,0,0,50,0,none,none
+gn:2503229,Boudouaou,Boumerdes,56398,town,0,0,50,0,none,none
+gn:2503237,Boudjima,Tizi Ouzou,20557,town,0,0,50,0,none,none
+gn:2503468,Boû Arfa,Blida,44143,town,0,0,50,0,none,none
+gn:2503620,Bordj Zemoura,Bordj Bou Arréridj,19782,town,0,0,50,0,none,none
+gn:2503641,Bordj Menaïel,Boumerdes,44572,town,0,0,50,0,none,none
+gn:2503654,Bordj Ghdir,Bordj Bou Arréridj,34136,town,0,0,50,0,none,none
+gn:2503661,Bordj el Kiffan,Algiers,123246,city,0,0,50,0,none,none
+gn:2503669,Bordj el Bahri,Algiers,52816,town,0,0,50,0,none,none
+gn:2503701,Bordj Bou Arreridj,Bordj Bou Arréridj,158812,city,0,0,50,0,none,none
+gn:2503755,Boghni,Tizi Ouzou,54666,town,0,0,50,0,none,none
+gn:2503769,Blida,Blida,331779,city,0,0,50,0,none,none
+gn:2503826,Biskra,Biskra,204661,city,0,0,50,0,none,none
+gn:2503847,Birkhadem,Algiers,71722,town,0,0,50,0,none,none
+gn:2503852,Birine,Djelfa,26670,town,0,0,50,0,none,none
+gn:2503874,Bir el Djir,Oran,68032,town,0,0,50,0,none,none
+gn:2503878,Bir el Ater,Tébessa,70749,town,0,0,50,0,none,none
+gn:2504072,Besbes,El Tarf,66287,town,0,0,50,0,none,none
+gn:2504099,Berrouaghia,Medea,55775,town,0,0,50,0,none,none
+gn:2504110,Berriane,Ghardaia,30170,town,0,0,50,0,none,none
+gn:2504136,Berrahal,Annaba,19294,town,0,0,50,0,none,none
+gn:2504385,Bensekrane,Tlemcen,21283,town,0,0,50,0,none,none
+gn:2504486,Ben Mehidi,El Tarf,28398,town,0,0,50,0,none,none
+gn:2504553,Beni Tamou,Blida,33846,town,0,0,50,0,none,none
+gn:2504581,Beni Saf,Aïn Témouchent,39749,town,0,0,50,0,none,none
+gn:2504589,Barbouche,Aïn Defla,4897,village,0,0,50,0,none,none
+gn:2504616,Beni Mester,Tlemcen,19808,town,0,0,50,0,none,none
+gn:2504622,Beni Mered,Blida,92749,town,0,0,50,0,none,none
+gn:2504703,Beni Douala,Tizi Ouzou,33611,town,0,0,50,0,none,none
+gn:2504739,Beni Amrane,Boumerdes,18414,town,0,0,50,0,none,none
+gn:2504755,Béni Abbès,Beni Abbes,11416,town,0,0,50,0,none,none
+gn:2504860,Bouda,Adrar,2349,village,0,0,50,0,none,none
+gn:2505329,Béjaïa,Béjaïa,176139,city,0,0,50,0,none,none
+gn:2505530,Béchar,Béchar,165241,city,0,0,50,0,none,none
+gn:2505572,Batna,Batna,289504,city,0,0,50,0,none,none
+gn:2505629,Barika,Batna,98141,town,0,0,50,0,none,none
+gn:2505651,Barbacha,Béjaïa,31983,town,0,0,50,0,none,none
+gn:2505653,Baraki,Algiers,105402,city,0,0,50,0,none,none
+gn:2505854,Bab Ezzouar,Algiers,275630,city,0,0,50,0,none,none
+gn:2505915,Azzaba,Skikda,33766,town,0,0,50,0,none,none
+gn:2506043,Azazga,Tizi Ouzou,26515,town,0,0,50,0,none,none
+gn:2506385,Arzew,Oran,58162,town,0,0,50,0,none,none
+gn:2506404,Arris,Batna,36641,town,0,0,50,0,none,none
+gn:2506519,Arhribs,Tizi Ouzou,23958,town,0,0,50,0,none,none
+gn:2506623,Arbatache,Boumerdes,17481,town,0,0,50,0,none,none
+gn:2506795,Aoulef,Adrar,21723,town,0,0,50,0,none,none
+gn:2506851,Aougrout,Timimoun,7310,village,0,0,50,0,none,none
+gn:2506999,Annaba,Annaba,342703,city,0,0,50,0,none,none
+gn:2507155,Ammi Moussa,Relizane,27530,town,0,0,50,0,none,none
+gn:2507169,Amizour,Béjaïa,25825,town,0,0,50,0,none,none
+gn:2507480,Algiers,Algiers,2364230,large-city,0,0,50,0,none,none
+gn:2507646,Akbou,Béjaïa,38291,town,0,0,50,0,none,none
+gn:2507678,Akabli,Adrar,4409,village,0,0,50,0,none,none
+gn:2507877,Aïn Touta,Batna,55736,town,0,0,50,0,none,none
+gn:2507901,Aïn Temouchent,Aïn Témouchent,70810,town,0,0,50,0,none,none
+gn:2507912,Aïn Taya,Algiers,33575,town,0,0,50,0,none,none
+gn:2507926,Aïn Smara,Constantine,32057,town,0,0,50,0,none,none
+gn:2507943,Aïn Sefra,Naama,47415,town,0,0,50,0,none,none
+gn:2507972,Aïn Oussera,Djelfa,98107,town,0,0,50,0,none,none
+gn:2507979,Aïn Oulmene,Sétif,51207,town,0,0,50,0,none,none
+gn:2508002,Aïn M’Lila,Oum el Bouaghi,65371,town,0,0,50,0,none,none
+gn:2508010,’Aïn Merane,Chlef,34413,town,0,0,50,0,none,none
+gn:2508030,Aïn Lechiakh,Aïn Defla,13745,town,0,0,50,0,none,none
+gn:2508059,Aïn Kercha,Oum el Bouaghi,30575,town,0,0,50,0,none,none
+gn:2508102,Aïn Fakroun,Oum el Bouaghi,48804,town,0,0,50,0,none,none
+gn:2508119,’Aïn el Turk,Oran,36326,town,0,0,50,0,none,none
+gn:2508130,’Aïn el Melh,M'Sila,32880,town,0,0,50,0,none,none
+gn:2508152,’Aïn el Hammam,Tizi Ouzou,28029,town,0,0,50,0,none,none
+gn:2508157,Ain el Hadjel,M'Sila,28728,town,0,0,50,0,none,none
+gn:2508162,’Aïn el Hadjar,Saida,12996,town,0,0,50,0,none,none
+gn:2508174,Aïn el Bya,Oran,37241,town,0,0,50,0,none,none
+gn:2508180,’Aïn el Berd,Sidi Bel Abbès,16548,town,0,0,50,0,none,none
+gn:2508184,’Aïn el Bell,Djelfa,31916,town,0,0,50,0,none,none
+gn:2508225,’Aïn Deheb,Tiaret,36146,town,0,0,50,0,none,none
+gn:2508228,Aïn Defla,Aïn Defla,55259,town,0,0,50,0,none,none
+gn:2508262,’Aïn Boucif,Medea,11989,town,0,0,50,0,none,none
+gn:2508268,Aïn Bessem,Bouira,32548,town,0,0,50,0,none,none
+gn:2508275,’Aïn Benian,Algiers,31102,town,0,0,50,0,none,none
+gn:2508287,Aïn Beïda,Oum el Bouaghi,116064,city,0,0,50,0,none,none
+gn:2508295,’Aïn Azel,Sétif,37970,town,0,0,50,0,none,none
+gn:2508297,Aïn Arnat,Sétif,25315,town,0,0,50,0,none,none
+gn:2508309,’Aïn Abid,Constantine,29486,town,0,0,50,0,none,none
+gn:2508455,Ahmed Bel Hadj,Annaba,29629,town,0,0,50,0,none,none
+gn:2508670,Aghlal,Aïn Témouchent,7146,village,0,0,50,0,none,none
+gn:2508737,Aflou,Laghouat,93585,town,0,0,50,0,none,none
+gn:2508813,Adrar,Adrar,68276,town,0,0,50,0,none,none
+gn:2509031,Abou el Hassan,Chlef,24022,town,0,0,50,0,none,none
+gn:2509271,Abadla,Béchar,13544,town,0,0,50,0,none,none
+gn:2596770,Timiaouine,Bordj Badji Mokhtar,4493,village,0,0,50,0,none,none
+gn:6698360,Babor,Sétif,18445,town,0,0,50,0,none,none
+gn:6930641,In Salah,In Salah,32518,town,0,0,50,0,none,none
+gn:7115828,Smala,Relizane,4000,village,0,0,50,0,none,none
+gn:7838650,Djebilet Rosfa,Tiaret,4930,village,0,0,50,0,none,none
+gn:9858858,Ait Yahia,Tizi Ouzou,0,village,0,0,50,0,none,none
+gn:11204500,Ali Mendjeli,Constantine,64120,town,0,0,50,0,none,none
+gn:11703548,Sidi Senoussi سيدي سنوسي,Tlemcen,7500,village,0,0,50,0,none,none
+gn:12326384,District of Taher,Jijel,60426,town,0,0,50,0,none,none
+gn:12640237,Collo,Skikda,29354,town,0,0,50,0,none,none
+gn:12640238,Maâtkas,Tizi Ouzou,26142,town,0,0,50,0,none,none
+gn:12640239,Sidi Amar,Annaba,45148,town,0,0,50,0,none,none
+gn:13157218,Ouled Ahmed Timmi,Adrar,3567,village,0,0,50,0,none,none
+gn:13157221,Zaouia,Adrar,3026,village,0,0,50,0,none,none
+gn:13157229,Kasbate El Djena,Adrar,8009,village,0,0,50,0,none,none
+gn:13157241,Deldoul,Timimoun,1748,village,0,0,50,0,none,none
+gn:13157276,Tinerkouk,Timimoun,5915,village,0,0,50,0,none,none
+gn:13157283,Ksar Kaddour,Timimoun,1016,village,0,0,50,0,none,none
+gn:13157365,Talmine,Timimoun,1067,village,0,0,50,0,none,none
+gn:13192438,In Zghmir,Adrar,4442,village,0,0,50,0,none,none

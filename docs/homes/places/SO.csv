@@ -1,0 +1,76 @@
+place_id,name,region,population,market,verified_homes,dated_listings,shortfall_to_50,recorded_sales,rent_source,price_source
+gn:49593,Yeed,Bakool,8429,village,0,0,50,0,none,none
+gn:49636,Yagoori,Sool,12190,town,0,0,50,0,none,none
+gn:49747,Xuddur,Bakool,12500,town,0,0,50,0,none,none
+gn:50064,Xarardheere,Mudug,2018,village,0,0,50,0,none,none
+gn:50672,Wanlaweyn,Lower Shabeelle,22022,town,0,0,50,0,none,none
+gn:50814,Waajid,Bakool,6666,village,0,0,50,0,none,none
+gn:51228,Tog Wajaale,Woqooyi Galbeed,22700,town,0,0,50,0,none,none
+gn:51299,Tayeeglow,Bakool,2119,village,0,0,50,0,none,none
+gn:52078,Saylac,Awdal,18600,town,0,0,50,0,none,none
+gn:52381,Saacow,Middle Juba,7893,village,0,0,50,0,none,none
+gn:52407,Ruqi,Awdal,148702,city,0,0,50,0,none,none
+gn:52867,Qoryooley,Lower Shabeelle,51720,town,0,0,50,0,none,none
+gn:53157,Qandala,Bari,19300,town,0,0,50,0,none,none
+gn:53372,Oodweyne,Togdheer,5491,village,0,0,50,0,none,none
+gn:53654,Mogadishu,Banaadir,2587183,large-city,0,0,50,0,none,none
+gn:54225,Marka,Lower Shabeelle,230100,city,0,0,50,0,none,none
+gn:54460,Mahaddayweyne,Middle Shabele,8273,village,0,0,50,0,none,none
+gn:54715,Luuq,Gedo,33820,town,0,0,50,0,none,none
+gn:54746,Lughaye,Awdal,0,village,0,0,50,0,none,none
+gn:55223,Las Khorey,Sanaag,6941,village,0,0,50,0,none,none
+gn:55671,Kismayo,Lower Juba,234852,city,0,0,50,0,none,none
+gn:56055,Kaambooni,Lower Juba,79000,town,0,0,50,0,none,none
+gn:56166,Jilib,Middle Juba,43694,town,0,0,50,0,none,none
+gn:56335,Jawhar,Middle Shabele,47086,town,0,0,50,0,none,none
+gn:56399,Jamaame,Lower Juba,42270,town,0,0,50,0,none,none
+gn:56414,Jalalaqsi,Hiiraan,9743,village,0,0,50,0,none,none
+gn:56505,Iskushuban,Bari,5759,village,0,0,50,0,none,none
+gn:57000,Hobyo,Mudug,12564,town,0,0,50,0,none,none
+gn:57289,Hargeysa,Woqooyi Galbeed,477876,city,0,0,50,0,none,none
+gn:58143,Gorayacowl,Awdal,2574,village,0,0,50,0,none,none
+gn:58831,Gebiley,Woqooyi Galbeed,77320,town,0,0,50,0,none,none
+gn:58933,Garoowe,Nugaal,57300,town,0,0,50,0,none,none
+gn:58994,Garbahaarrey,Gedo,12652,town,0,0,50,0,none,none
+gn:59140,Garadag,Sanaag,10000,town,0,0,50,0,none,none
+gn:59611,Gaalkacyo,Mudug,61200,town,0,0,50,0,none,none
+gn:60019,Eyl,Nugaal,18904,town,0,0,50,0,none,none
+gn:60149,El Dibir,Bari,200000,city,0,0,50,0,none,none
+gn:60457,Dujuuma,Middle Juba,2432,village,0,0,50,0,none,none
+gn:60809,Diinsoor,Bay,20000,town,0,0,50,0,none,none
+gn:60928,Dhuusamarreeb,Galguduud,9000,village,0,0,50,0,none,none
+gn:61360,Dhamas,Gedo,27000,town,0,0,50,0,none,none
+gn:62691,Ceerigaabo,Sanaag,33853,town,0,0,50,0,none,none
+gn:62788,Ceeldheer,Galguduud,26562,town,0,0,50,0,none,none
+gn:62821,Ceelbuur,Galguduud,9031,village,0,0,50,0,none,none
+gn:62854,Ceek,Togdheer,4325,village,0,0,50,0,none,none
+gn:63081,Caluula,Bari,6100,village,0,0,50,0,none,none
+gn:63344,Cadale,Middle Shabele,5385,village,0,0,50,0,none,none
+gn:63361,Adado,Galguduud,0,village,0,0,50,0,none,none
+gn:63400,Cabudwaaq,Galguduud,120000,city,0,0,50,0,none,none
+gn:63571,Buurhakaba,Bay,27792,town,0,0,50,0,none,none
+gn:63580,Buur Gaabo,Lower Juba,3096,village,0,0,50,0,none,none
+gn:63689,Buulobarde,Hiiraan,16928,town,0,0,50,0,none,none
+gn:63707,Buhodle,Togdheer,11373,town,0,0,50,0,none,none
+gn:63795,Burao,Togdheer,99270,town,0,0,50,0,none,none
+gn:63949,Bu’aale,Middle Juba,17475,town,0,0,50,0,none,none
+gn:64013,Bosaso,Bari,74287,town,0,0,50,0,none,none
+gn:64021,Borama,Awdal,597842,large-city,0,0,50,0,none,none
+gn:64412,Bereeda,Bari,11262,town,0,0,50,0,none,none
+gn:64435,Berbera,Woqooyi Galbeed,242344,city,0,0,50,0,none,none
+gn:64460,Beledweyne,Hiiraan,55410,town,0,0,50,0,none,none
+gn:64536,Baidoa,Bay,129839,city,0,0,50,0,none,none
+gn:64670,Bargaal,Bari,6798,village,0,0,50,0,none,none
+gn:64814,Bandarbeyla,Bari,13753,town,0,0,50,0,none,none
+gn:65170,Baardheere,Gedo,42240,town,0,0,50,0,none,none
+gn:65722,Agabar,Woqooyi Galbeed,6547,village,0,0,50,0,none,none
+gn:65785,Afgooye,Lower Shabeelle,65461,town,0,0,50,0,none,none
+gn:342803,Balanbale,Galguduud,68000,town,0,0,50,0,none,none
+gn:400769,Laascaanood,Sool,60100,town,0,0,50,0,none,none
+gn:6311111,Saaxo,Mudug,26000,town,0,0,50,0,none,none
+gn:6311126,Dhabad,Galguduud,36000,town,0,0,50,0,none,none
+gn:8045596,Baki,Awdal,20000,town,0,0,50,0,none,none
+gn:9259238,Baligubadle,Woqooyi Galbeed,0,village,0,0,50,0,none,none
+gn:10228788,Dhobley,Lower Juba,5000,village,0,0,50,0,none,none
+gn:12212406,Beled Hawo,Gedo,73000,town,0,0,50,0,none,none
+gn:12534558,Diga gaw,Mudug,2300,village,0,0,50,0,none,none

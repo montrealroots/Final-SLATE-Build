@@ -1,0 +1,2834 @@
+place_id,name,region,population,market,verified_homes,dated_listings,shortfall_to_50,recorded_sales,rent_source,price_source
+gn:97473,Çey,Hakkâri,13000,town,0,0,50,0,none,none
+gn:295781,Demre,Antalya,14420,town,0,0,50,0,none,none
+gn:295868,Zirekli,Ağrı,1252,village,0,0,50,0,none,none
+gn:295904,Yavrudoğan,Antalya,1749,village,0,0,50,0,none,none
+gn:295907,Zeytinliova,Manisa,2750,village,0,0,50,0,none,none
+gn:295915,Zeytinli,Adana,1336,village,0,0,50,0,none,none
+gn:295921,Zeytindağ,İzmir Province,3192,village,0,0,50,0,none,none
+gn:295924,Zeytinbeli,Adana,1398,village,0,0,50,0,none,none
+gn:295941,Zey,Adıyaman Province,4535,village,0,0,50,0,none,none
+gn:295982,Zara,Sivas,12797,town,0,0,50,0,none,none
+gn:296104,Yüreğil,Afyonkarahisar Province,1491,village,0,0,50,0,none,none
+gn:296113,Yunusoğlu,Adana,1669,village,0,0,50,0,none,none
+gn:296134,Yunak,Konya,14050,town,0,0,50,0,none,none
+gn:296137,Yumurtalık,Adana,17654,town,0,0,50,0,none,none
+gn:296173,Yüksekova,Hakkâri,71729,town,0,0,50,0,none,none
+gn:296247,Salat,Diyarbakır Province,6677,village,0,0,50,0,none,none
+gn:296289,Yukarı Küpkıran,Ağrı,1062,village,0,0,50,0,none,none
+gn:296412,Yukarıgöçmez,Ağrı,1625,village,0,0,50,0,none,none
+gn:296489,Yukarıçamurlu,Iğdır,1329,village,0,0,50,0,none,none
+gn:296509,Kozak,İzmir Province,0,village,0,0,50,0,none,none
+gn:296552,Yücekapı,Ağrı,2019,village,0,0,50,0,none,none
+gn:296555,Yücebağ,Batman,0,village,0,0,50,0,none,none
+gn:296562,Yozgat,Yozgat,87881,town,0,0,50,0,none,none
+gn:296594,Yoncalı,Malatya,0,village,0,0,50,0,none,none
+gn:296639,Yolboyu,Diyarbakır Province,0,village,0,0,50,0,none,none
+gn:296644,Yolbaşı,Mardin,5400,village,0,0,50,0,none,none
+gn:296653,Yolağzı,Batman,2600,village,0,0,50,0,none,none
+gn:296690,Yıprak,Afyonkarahisar Province,1565,village,0,0,50,0,none,none
+gn:296695,Yıllarca,Diyarbakır Province,1177,village,0,0,50,0,none,none
+gn:296708,Yıldızeli,Sivas,6420,village,0,0,50,0,none,none
+gn:296736,Yılanlı,Ağrı,2182,village,0,0,50,0,none,none
+gn:296757,Yiğityolu,Hatay,0,village,0,0,50,0,none,none
+gn:296761,Yiğitler,Canakkale,99,village,0,0,50,0,none,none
+gn:296770,Yiğitçavuş,Diyarbakır Province,2324,village,0,0,50,0,none,none
+gn:296776,Yığınlı,Gaziantep,1399,village,0,0,50,0,none,none
+gn:296783,Yeşilyuva,Denizli,3659,village,0,0,50,0,none,none
+gn:296790,Yeşilyurt,Manisa,0,village,0,0,50,0,none,none
+gn:296791,Yeşilyurt,Malatya,13766,town,0,0,50,0,none,none
+gn:296794,Yeşilyurt,Muğla,0,village,0,0,50,0,none,none
+gn:296796,Yeşilyazı,Tunceli,0,village,0,0,50,0,none,none
+gn:296821,Yeşilova,Aksaray,0,village,0,0,50,0,none,none
+gn:296823,Yeşilova,Burdur,6777,village,0,0,50,0,none,none
+gn:296829,Yeşilova,Adana,15242,town,0,0,50,0,none,none
+gn:296832,Yeşilli,Mardin,32072,town,0,0,50,0,none,none
+gn:296848,Yeşilköy,Adana,1513,village,0,0,50,0,none,none
+gn:296852,Erzin,Hatay,26316,town,0,0,50,0,none,none
+gn:296860,Yeşilhisar,Kayseri,14354,town,0,0,50,0,none,none
+gn:296862,Gölcük,Niğde Province,0,village,0,0,50,0,none,none
+gn:296869,Yeşildere,Karaman,798,village,0,0,50,0,none,none
+gn:296885,Yeşilalan,Mardin,3791,village,0,0,50,0,none,none
+gn:296895,Yerköy,Yozgat,35294,town,0,0,50,0,none,none
+gn:296898,Yerkesik,Muğla,0,village,0,0,50,0,none,none
+gn:296942,Yenişarbademli,Isparta,5198,village,0,0,50,0,none,none
+gn:296943,Yenişakran,İzmir Province,3552,village,0,0,50,0,none,none
+gn:296947,Yenipınar,Batman,1100,village,0,0,50,0,none,none
+gn:296948,Yenipazar,Yozgat,0,village,0,0,50,0,none,none
+gn:296950,Yenipazar,Aydın,6513,village,0,0,50,0,none,none
+gn:296953,Yenimehmetli,Ankara,218,village,0,0,50,0,none,none
+gn:296976,Yeniköy,Balıkesir,0,village,0,0,50,0,none,none
+gn:296998,Yenikent,Kütahya,2266,village,0,0,50,0,none,none
+gn:297027,Yeniköy,Batman,3269,village,0,0,50,0,none,none
+gn:297038,Yeniköy,Aydın,2006,village,0,0,50,0,none,none
+gn:297039,Yenicekale,Kahramanmaraş,0,village,0,0,50,0,none,none
+gn:297045,Akyeniköy,Aydın,2675,village,0,0,50,0,none,none
+gn:297052,Yeniköy,Şırnak,1104,village,0,0,50,0,none,none
+gn:297055,Faydalı,Adana,1163,village,0,0,50,0,none,none
+gn:297090,Didim,Aydın,26000,town,0,0,50,0,none,none
+gn:297097,Yenifoça,İzmir Province,3742,village,0,0,50,0,none,none
+gn:297099,Yenifakılı,Yozgat,11470,town,0,0,50,0,none,none
+gn:297119,Altpınar,Ankara,12925,town,0,0,50,0,none,none
+gn:297125,Yeniceoba,Konya,0,village,0,0,50,0,none,none
+gn:297130,Mavikent,Antalya,7036,village,0,0,50,0,none,none
+gn:297144,Yenice,Canakkale,81,village,0,0,50,0,none,none
+gn:297148,Yenice,Bursa Province,3708,village,0,0,50,0,none,none
+gn:297170,Yenicekent,Denizli,2116,village,0,0,50,0,none,none
+gn:297172,Yenice,Aydın,0,village,0,0,50,0,none,none
+gn:297184,Yenice,Mersin,0,village,0,0,50,0,none,none
+gn:297189,Yeniçağlar,Batman,1606,village,0,0,50,0,none,none
+gn:297194,Yenibaşlar,Bingöl,1384,village,0,0,50,0,none,none
+gn:297195,Yenibaşak,Bingöl,0,village,0,0,50,0,none,none
+gn:297202,Yenibağarası,İzmir Province,4477,village,0,0,50,0,none,none
+gn:297224,Yelten,Antalya,1937,village,0,0,50,0,none,none
+gn:297246,Reşadiye,Bitlis,570,village,0,0,50,0,none,none
+gn:297284,Yeditepe,Hatay,0,village,0,0,50,0,none,none
+gn:297286,Yedisu,Bingöl,1771,village,0,0,50,0,none,none
+gn:297307,Yazyurdu,Sivas,0,village,0,0,50,0,none,none
+gn:297339,Yazır,Antalya,1120,village,0,0,50,0,none,none
+gn:297365,Yazıkent,Aydın,1802,village,0,0,50,0,none,none
+gn:297371,Yazıhan,Malatya,5156,village,0,0,50,0,none,none
+gn:297404,Yayvantepe,Mardin,1813,village,0,0,50,0,none,none
+gn:297416,Yaylı,Mardin,1581,village,0,0,50,0,none,none
+gn:297435,Yaylalı,Antalya,1272,village,0,0,50,0,none,none
+gn:297451,Yaylakonak,Adıyaman Province,1736,village,0,0,50,0,none,none
+gn:297456,Yaylak,Şanlıurfa,0,village,0,0,50,0,none,none
+gn:297459,Yayladüzü,Ağrı,2061,village,0,0,50,0,none,none
+gn:297461,Yayladere,Bingöl,3925,village,0,0,50,0,none,none
+gn:297466,Yayladağı,Hatay,8308,village,0,0,50,0,none,none
+gn:297499,Yayla,Bingöl,0,village,0,0,50,0,none,none
+gn:297517,Yaygın,Muş,0,village,0,0,50,0,none,none
+gn:297532,Yavuzeli,Gaziantep,8170,village,0,0,50,0,none,none
+gn:297542,Yavu,Sivas,0,village,0,0,50,0,none,none
+gn:297564,Yatağan,Muğla,19020,town,0,0,50,0,none,none
+gn:297621,Yarpuzlu,Adıyaman Province,571,village,0,0,50,0,none,none
+gn:297624,Yarpuz,Osmaniye,0,village,0,0,50,0,none,none
+gn:297628,Yarma,Konya,2601,village,0,0,50,0,none,none
+gn:297631,Yarışlı,Afyonkarahisar Province,1609,village,0,0,50,0,none,none
+gn:297651,Yarımca,Elazığ,1080,village,0,0,50,0,none,none
+gn:297673,Yardımcı,Şanlıurfa,0,village,0,0,50,0,none,none
+gn:297684,Yarbasan,Manisa,0,village,0,0,50,0,none,none
+gn:297704,Yaprakbaşı,Diyarbakır Province,1483,village,0,0,50,0,none,none
+gn:297729,Yanışlı,Mersin,1501,village,0,0,50,0,none,none
+gn:297757,Yanarsu,Siirt,0,village,0,0,50,0,none,none
+gn:297759,Yavuzlu,Kilis,1190,village,0,0,50,0,none,none
+gn:297778,Yamaçoba,Gaziantep,1029,village,0,0,50,0,none,none
+gn:297784,Yamaç,Bingöl,315,village,0,0,50,0,none,none
+gn:297789,Yalvaç,Isparta,39145,town,0,0,50,0,none,none
+gn:297831,Yalınca,Van,0,village,0,0,50,0,none,none
+gn:297838,Yalıkavak,Muğla,11227,town,0,0,50,0,none,none
+gn:297839,Yalıhüyük,Konya,6116,village,0,0,50,0,none,none
+gn:297854,Yalankoz,Gaziantep,1477,village,0,0,50,0,none,none
+gn:297856,Yalangöz,Hatay,0,village,0,0,50,0,none,none
+gn:297881,Yakasinek,Afyonkarahisar Province,1330,village,0,0,50,0,none,none
+gn:297882,Yakapınar,Adana,2801,village,0,0,50,0,none,none
+gn:297899,Payas,Hatay,0,village,0,0,50,0,none,none
+gn:297917,Yahyalı,Kayseri,25019,town,0,0,50,0,none,none
+gn:297925,Yahşihan,Kırıkkale,0,village,0,0,50,0,none,none
+gn:297965,Yahşiler,Denizli,1070,village,0,0,50,0,none,none
+gn:297991,Yağcılar,Balıkesir,0,village,0,0,50,0,none,none
+gn:297993,Yağcılar,Manisa,1080,village,0,0,50,0,none,none
+gn:298014,Yağca,Antalya,1405,village,0,0,50,0,none,none
+gn:298033,Viranşehir,Şanlıurfa,154163,city,0,0,50,0,none,none
+gn:298053,Başverimli,Şırnak,7214,village,0,0,50,0,none,none
+gn:298088,Varto,Muş,18691,town,0,0,50,0,none,none
+gn:298091,Varsak,Antalya,12258,town,0,0,50,0,none,none
+gn:298117,Van,Van,525016,large-city,0,0,50,0,none,none
+gn:298163,Pınarlar,Denizli,1079,village,0,0,50,0,none,none
+gn:298178,Uzunkuyu,İzmir Province,0,village,0,0,50,0,none,none
+gn:298198,Uzungeçit,Şırnak,5916,village,0,0,50,0,none,none
+gn:298230,Cimin,Erzincan,39591,town,0,0,50,0,none,none
+gn:298233,Üzümlü,Konya,0,village,0,0,50,0,none,none
+gn:298235,Yeşilüzümlü,Muğla,0,village,0,0,50,0,none,none
+gn:298299,Uşak,Uşak,369433,city,0,0,50,0,none,none
+gn:298316,Urla,İzmir Province,62989,town,0,0,50,0,none,none
+gn:298326,Ürgüp,Nevşehir Province,16642,town,0,0,50,0,none,none
+gn:298333,Şanlıurfa,Şanlıurfa,449549,city,0,0,50,0,none,none
+gn:298360,Umurlu,Aydın,11953,town,0,0,50,0,none,none
+gn:298371,Umraniye,Afyonkarahisar Province,67,village,0,0,50,0,none,none
+gn:298378,Uluyatır,Gaziantep,3350,village,0,0,50,0,none,none
+gn:298398,Ulupınar,Antalya,1315,village,0,0,50,0,none,none
+gn:298414,Ulukışla,Niğde Province,0,village,0,0,50,0,none,none
+gn:298415,Ulukent,Ağrı,1111,village,0,0,50,0,none,none
+gn:298433,Uludere,Şırnak,8827,village,0,0,50,0,none,none
+gn:298435,Arsuz,Hatay,109550,city,0,0,50,0,none,none
+gn:298451,Uluborlu,Isparta,12514,town,0,0,50,0,none,none
+gn:298454,Ulubey,Uşak,5092,village,0,0,50,0,none,none
+gn:298463,Ulaşlı,Batman,1006,village,0,0,50,0,none,none
+gn:298471,Ulaş,Sivas,3879,village,0,0,50,0,none,none
+gn:298476,Ulaş,Mersin,1274,village,0,0,50,0,none,none
+gn:298485,Ula,Muğla,5275,village,0,0,50,0,none,none
+gn:298518,Ufacıklı,Kahramanmaraş,1469,village,0,0,50,0,none,none
+gn:298533,Üçtepe,Diyarbakır Province,1983,village,0,0,50,0,none,none
+gn:298552,Üçpınar,Konya,0,village,0,0,50,0,none,none
+gn:298585,Üçkavak,Mardin,1220,village,0,0,50,0,none,none
+gn:298607,Ucgoz,Adıyaman Province,1086,village,0,0,50,0,none,none
+gn:298620,Üçdam,Tunceli,0,village,0,0,50,0,none,none
+gn:298647,Tuzlukçu,Konya,6008,village,0,0,50,0,none,none
+gn:298659,Tuzlagözü,Batman,0,village,0,0,50,0,none,none
+gn:298727,Tutak,Ağrı,7144,village,0,0,50,0,none,none
+gn:298728,Tut,Adıyaman Province,7560,village,0,0,50,0,none,none
+gn:298729,Turunçova,Antalya,8356,village,0,0,50,0,none,none
+gn:298735,Turunç,Muğla,1939,village,0,0,50,0,none,none
+gn:298770,Türkoğlu,Kahramanmaraş,0,village,0,0,50,0,none,none
+gn:298801,Türkbükü,Muğla,2566,village,0,0,50,0,none,none
+gn:298806,Turgutlu,Manisa,103292,city,0,0,50,0,none,none
+gn:298815,Turgut,Konya,0,village,0,0,50,0,none,none
+gn:298816,Turgut,Muğla,2065,village,0,0,50,0,none,none
+gn:298846,Tunceli,Tunceli,35161,town,0,0,50,0,none,none
+gn:298867,Sütlüce,Tunceli,0,village,0,0,50,0,none,none
+gn:298882,Tufanbeyli,Adana,5158,village,0,0,50,0,none,none
+gn:298920,Tosmurlu,Mersin,1203,village,0,0,50,0,none,none
+gn:298921,Toslak,Antalya,3630,village,0,0,50,0,none,none
+gn:298935,Torbalı,İzmir Province,50303,town,0,0,50,0,none,none
+gn:298953,Toptepe,Mardin,1491,village,0,0,50,0,none,none
+gn:298973,Toprakkale,Ağrı,1033,village,0,0,50,0,none,none
+gn:298977,Toprakkale,Osmaniye,8577,village,0,0,50,0,none,none
+gn:299017,Topallı,Antalya,1847,village,0,0,50,0,none,none
+gn:299031,Topaklı,Nevşehir Province,0,village,0,0,50,0,none,none
+gn:299044,Pınarbaşı,Mersin,10964,town,0,0,50,0,none,none
+gn:299045,Tomruksuyu,Hatay,3722,village,0,0,50,0,none,none
+gn:299054,Tomarza,Kayseri,11753,town,0,0,50,0,none,none
+gn:299065,Tokuşlar,Afyonkarahisar Province,1091,village,0,0,50,0,none,none
+gn:299087,Toklar,Kayseri,0,village,0,0,50,0,none,none
+gn:299119,Tırtar,Mersin,2733,village,0,0,50,0,none,none
+gn:299137,Tire,İzmir Province,47220,town,0,0,50,0,none,none
+gn:299231,Tetirlik,Kahramanmaraş,1037,village,0,0,50,0,none,none
+gn:299268,Tercan,Erzincan,12235,town,0,0,50,0,none,none
+gn:299272,Tepeüstü,Mardin,1441,village,0,0,50,0,none,none
+gn:299317,Tepehan,Malatya,0,village,0,0,50,0,none,none
+gn:299327,Tepecikören,Adana,1105,village,0,0,50,0,none,none
+gn:299342,Tepecik,İzmir Province,3158,village,0,0,50,0,none,none
+gn:299345,Tepecik,Aydın,3801,village,0,0,50,0,none,none
+gn:299350,Tepebaşı,Karaman,374,village,0,0,50,0,none,none
+gn:299351,Tepebağ,Mardin,2069,village,0,0,50,0,none,none
+gn:299354,Tepealtı,Mardin,1333,village,0,0,50,0,none,none
+gn:299357,Tepe,Diyarbakır Province,0,village,0,0,50,0,none,none
+gn:299375,Temelli,Ankara,0,village,0,0,50,0,none,none
+gn:299396,Telçeker,Ağrı,1326,village,0,0,50,0,none,none
+gn:299413,Tekman,Erzurum,8270,village,0,0,50,0,none,none
+gn:299424,Tekkeköy,Antalya,1041,village,0,0,50,0,none,none
+gn:299445,Tekirova,Antalya,3044,village,0,0,50,0,none,none
+gn:299468,Tekeler,Aydın,1899,village,0,0,50,0,none,none
+gn:299499,Tefenni,Burdur,5317,village,0,0,50,0,none,none
+gn:299504,Tecirli,Osmaniye,0,village,0,0,50,0,none,none
+gn:299509,Tece,Mersin,1407,village,0,0,50,0,none,none
+gn:299513,Gaziler,Antalya,3689,village,0,0,50,0,none,none
+gn:299545,Tavşanlı,Kütahya,52182,town,0,0,50,0,none,none
+gn:299575,Tavas,Denizli,11584,town,0,0,50,0,none,none
+gn:299582,Tatvan,Bitlis,73222,town,0,0,50,0,none,none
+gn:299643,Taşucu,Mersin,15184,town,0,0,50,0,none,none
+gn:299658,Taşpınar,Aksaray,0,village,0,0,50,0,none,none
+gn:299672,Taşobası,Mersin,1095,village,0,0,50,0,none,none
+gn:299701,Taşlıçay,Ağrı,6161,village,0,0,50,0,none,none
+gn:299724,Taşlı,Siirt,1029,village,0,0,50,0,none,none
+gn:299755,Taşkent,Konya,11838,town,0,0,50,0,none,none
+gn:299785,Taşdelen,Malatya,0,village,0,0,50,0,none,none
+gn:299790,Bakırdağı,Kayseri,0,village,0,0,50,0,none,none
+gn:299814,Taşağıl,Antalya,4645,village,0,0,50,0,none,none
+gn:299817,Tarsus,Mersin,350732,city,0,0,50,0,none,none
+gn:299839,Taraksu,Adıyaman Province,0,village,0,0,50,0,none,none
+gn:299840,Taraksu,Adıyaman Province,0,village,0,0,50,0,none,none
+gn:299858,Tanyeri,Erzincan,0,village,0,0,50,0,none,none
+gn:299873,Tanır,Kahramanmaraş,0,village,0,0,50,0,none,none
+gn:299900,Talas,Kayseri,36890,town,0,0,50,0,none,none
+gn:299930,Tahtaköprü,Bursa Province,1575,village,0,0,50,0,none,none
+gn:299975,Tabureli,Mersin,1076,village,0,0,50,0,none,none
+gn:300008,Suveren,Iğdır,3414,village,0,0,50,0,none,none
+gn:300015,Suvarlı,Adıyaman Province,1837,village,0,0,50,0,none,none
+gn:300023,Zeyne,Mersin,1388,village,0,0,50,0,none,none
+gn:300027,Şenocak,Mardin,1576,village,0,0,50,0,none,none
+gn:300030,Sütçüler,Isparta,3433,village,0,0,50,0,none,none
+gn:300032,Sutaşı,Hatay,6402,village,0,0,50,0,none,none
+gn:300058,Susurluk,Balıkesir,24816,town,0,0,50,0,none,none
+gn:300075,Suruç,Şanlıurfa,101178,city,0,0,50,0,none,none
+gn:300087,Avine,Mardin,4139,village,0,0,50,0,none,none
+gn:300091,Sürgü,Malatya,0,village,0,0,50,0,none,none
+gn:300096,Sürekli,Mardin,2118,village,0,0,50,0,none,none
+gn:300141,Sulusaray,Tokat Province,4037,village,0,0,50,0,none,none
+gn:300155,Sülüklü,Konya,0,village,0,0,50,0,none,none
+gn:300170,Suluca,Adana,4578,village,0,0,50,0,none,none
+gn:300195,Sultanhisar,Aydın,6259,village,0,0,50,0,none,none
+gn:300197,Sultanhanı,Aksaray,0,village,0,0,50,0,none,none
+gn:300201,Sultandağı,Afyonkarahisar Province,7550,village,0,0,50,0,none,none
+gn:300222,Süleymanlı,Manisa,3718,village,0,0,50,0,none,none
+gn:300225,Süleymanlı,Kahramanmaraş,518,village,0,0,50,0,none,none
+gn:300247,Sülekler,Antalya,1076,village,0,0,50,0,none,none
+gn:300248,Sülek,Antalya,1105,village,0,0,50,0,none,none
+gn:300257,Sulak,Şırnak,1433,village,0,0,50,0,none,none
+gn:300258,Sulak,Şırnak,1433,village,0,0,50,0,none,none
+gn:300273,Şuhut,Afyonkarahisar Province,13842,town,0,0,50,0,none,none
+gn:300289,Sudugunu,Bingöl,1226,village,0,0,50,0,none,none
+gn:300352,Sorgun,Yozgat,62862,town,0,0,50,0,none,none
+gn:300371,Soma,Manisa,98714,town,0,0,50,0,none,none
+gn:300377,Solhan,Bingöl,15303,town,0,0,50,0,none,none
+gn:300381,Şölen,Diyarbakır Province,1556,village,0,0,50,0,none,none
+gn:300387,Solaklı,Adana,3244,village,0,0,50,0,none,none
+gn:300399,Söke,Aydın,68230,town,0,0,50,0,none,none
+gn:300408,Kataro,Mardin,1314,village,0,0,50,0,none,none
+gn:300430,Söğütlü,Bingöl,0,village,0,0,50,0,none,none
+gn:300438,Kindirip,Mardin,7798,village,0,0,50,0,none,none
+gn:300468,Söğüt,Bilecik,0,village,0,0,50,0,none,none
+gn:300514,Soğucak,Aydın,3950,village,0,0,50,0,none,none
+gn:300593,Sivrihisar,Eskişehir,10535,town,0,0,50,0,none,none
+gn:300601,Sivrice,Elazığ,5481,village,0,0,50,0,none,none
+gn:300603,Sivrice,Mardin,1467,village,0,0,50,0,none,none
+gn:300614,Siverek,Şanlıurfa,175341,city,0,0,50,0,none,none
+gn:300615,Çamlıca,Antalya,1224,village,0,0,50,0,none,none
+gn:300616,Sivaslı,Uşak,7378,village,0,0,50,0,none,none
+gn:300619,Sivas,Sivas,264022,city,0,0,50,0,none,none
+gn:300632,Şirvan,Siirt,5510,village,0,0,50,0,none,none
+gn:300635,Tililan,Şırnak,3372,village,0,0,50,0,none,none
+gn:300640,Şırnak,Şırnak,67662,town,0,0,50,0,none,none
+gn:300725,Beşeylül,Aydın,1491,village,0,0,50,0,none,none
+gn:300732,Sındırgı,Balıkesir,10907,town,0,0,50,0,none,none
+gn:300734,Yenice,Ankara,0,village,0,0,50,0,none,none
+gn:300743,Sincik,Adıyaman Province,5531,village,0,0,50,0,none,none
+gn:300750,Sincan,Sivas,0,village,0,0,50,0,none,none
+gn:300754,Sinanpaşa,Afyonkarahisar Province,5940,village,0,0,50,0,none,none
+gn:300767,Sinanköy,Diyarbakır Province,1726,village,0,0,50,0,none,none
+gn:300791,Simav,Kütahya,34909,town,0,0,50,0,none,none
+gn:300796,Silvan,Diyarbakır Province,65956,town,0,0,50,0,none,none
+gn:300797,Silopi,Şırnak,114645,city,0,0,50,0,none,none
+gn:300799,Sille,Konya,0,village,0,0,50,0,none,none
+gn:300808,Silifke,Mersin,132665,city,0,0,50,0,none,none
+gn:300822,Siirt,Siirt,114034,city,0,0,50,0,none,none
+gn:300827,Akçatekir,Adana,1622,village,0,0,50,0,none,none
+gn:300865,Siğacık,İzmir Province,3913,village,0,0,50,0,none,none
+gn:300920,Seyitgazi,Eskişehir,3284,village,0,0,50,0,none,none
+gn:300997,Seyhan,Adana,0,village,0,0,50,0,none,none
+gn:301010,Seydişehir,Konya,51089,town,0,0,50,0,none,none
+gn:301043,Sevinç,Eskişehir,1281,village,0,0,50,0,none,none
+gn:301064,Servi,Bingöl,0,village,0,0,50,0,none,none
+gn:301089,Serinyol,Hatay,16753,town,0,0,50,0,none,none
+gn:301101,Serik,Antalya,36925,town,0,0,50,0,none,none
+gn:301106,Sergen,Diyarbakır Province,1186,village,0,0,50,0,none,none
+gn:301116,Şereflikoçhisar,Ankara,44101,town,0,0,50,0,none,none
+gn:301122,Şerefler,Muğla,1623,village,0,0,50,0,none,none
+gn:301147,Kırıkdağ,Hakkâri,1286,village,0,0,50,0,none,none
+gn:301156,Yuva,Aksaray,1347,village,0,0,50,0,none,none
+gn:301158,Şenyurt,Mardin,1950,village,0,0,50,0,none,none
+gn:301161,Şenoba,Şırnak,7556,village,0,0,50,0,none,none
+gn:301167,Şenköy,Mardin,8975,village,0,0,50,0,none,none
+gn:301168,Şenköy,Hatay,875,village,0,0,50,0,none,none
+gn:301172,Senirkent,Isparta,15919,town,0,0,50,0,none,none
+gn:301209,Şemdinli,Hakkâri,18978,town,0,0,50,0,none,none
+gn:301234,Selimiye,Muğla,0,village,0,0,50,0,none,none
+gn:301238,Side,Antalya,10505,town,0,0,50,0,none,none
+gn:301239,Selimiye,Muğla,1308,village,0,0,50,0,none,none
+gn:301251,Selendi,Manisa,8735,village,0,0,50,0,none,none
+gn:301256,Selçuk,İzmir Province,29101,town,0,0,50,0,none,none
+gn:301258,Selçikler,Uşak,2002,village,0,0,50,0,none,none
+gn:301279,Seksenören,Şanlıurfa,1054,village,0,0,50,0,none,none
+gn:301290,Sekili,Gaziantep,2643,village,0,0,50,0,none,none
+gn:301303,Seki,Muğla,0,village,0,0,50,0,none,none
+gn:301312,Şekerli,Şanlıurfa,0,village,0,0,50,0,none,none
+gn:301326,Şehit Nusretbey,Şanlıurfa,0,village,0,0,50,0,none,none
+gn:301350,Seferihisar,İzmir Province,19596,town,0,0,50,0,none,none
+gn:301353,Şefaatlı,Yozgat,13922,town,0,0,50,0,none,none
+gn:301370,Sebil,Mersin,1726,village,0,0,50,0,none,none
+gn:301418,Sayören,Adıyaman Province,1518,village,0,0,50,0,none,none
+gn:301431,Savur,Mardin,8658,village,0,0,50,0,none,none
+gn:301432,Savulca,Aydın,7414,village,0,0,50,0,none,none
+gn:301446,Savcılı,Kırşehir,0,village,0,0,50,0,none,none
+gn:301451,Kayacık,Diyarbakır Province,0,village,0,0,50,0,none,none
+gn:301453,Savaştepe,Balıkesir,10324,town,0,0,50,0,none,none
+gn:301466,Şatırlı,Antalya,1313,village,0,0,50,0,none,none
+gn:301470,Şatırhüyük,Gaziantep,2828,village,0,0,50,0,none,none
+gn:301483,Sason,Batman,11403,town,0,0,50,0,none,none
+gn:301486,Sasallı,İzmir Province,4452,village,0,0,50,0,none,none
+gn:301492,Saruhanlı,Manisa,12947,town,0,0,50,0,none,none
+gn:301496,Sartmahmut,Manisa,4673,village,0,0,50,0,none,none
+gn:301529,Edremit,Van,7464,village,0,0,50,0,none,none
+gn:301537,Şarkışla,Sivas,23800,town,0,0,50,0,none,none
+gn:301539,Şarkîkaraağaç,Isparta,32771,town,0,0,50,0,none,none
+gn:301546,Sarız,Kayseri,3990,village,0,0,50,0,none,none
+gn:301566,Sarıyahşi,Aksaray,8704,village,0,0,50,0,none,none
+gn:301567,Sarıveliler,Karaman,7507,village,0,0,50,0,none,none
+gn:301594,Sarıseki,Hatay,3188,village,0,0,50,0,none,none
+gn:301609,Sarıoğlan,Kayseri,5393,village,0,0,50,0,none,none
+gn:301657,Sarıköy,Mardin,1059,village,0,0,50,0,none,none
+gn:301660,Sarıkonak,Bitlis,0,village,0,0,50,0,none,none
+gn:301668,Sarıkemer,Aydın,2698,village,0,0,50,0,none,none
+gn:301680,Sarıkaya,Yozgat,0,village,0,0,50,0,none,none
+gn:301703,Sarıkaraman,Aksaray,1036,village,0,0,50,0,none,none
+gn:301719,Sarıhamzalı,Adana,11977,town,0,0,50,0,none,none
+gn:301731,Sarıgöl,Manisa,12794,town,0,0,50,0,none,none
+gn:301770,Sarıçam,Adana,8362,village,0,0,50,0,none,none
+gn:301775,Sarıçubuk,Elazığ,1135,village,0,0,50,0,none,none
+gn:301779,Sarıca,Diyarbakır Province,1891,village,0,0,50,0,none,none
+gn:301790,Sarıbeyler,Balıkesir,0,village,0,0,50,0,none,none
+gn:301792,Sarıbelen,Antalya,1085,village,0,0,50,0,none,none
+gn:301824,Sarayönü,Konya,10198,town,0,0,50,0,none,none
+gn:301827,Sarayköy,Denizli,18937,town,0,0,50,0,none,none
+gn:301829,Saraykent,Yozgat,11175,town,0,0,50,0,none,none
+gn:301855,Saray,Van,0,village,0,0,50,0,none,none
+gn:301884,Şaphane,Kütahya,5085,village,0,0,50,0,none,none
+gn:301911,Sandıklı,Afyonkarahisar Province,42981,town,0,0,50,0,none,none
+gn:301932,Sancak,Bingöl,0,village,0,0,50,0,none,none
+gn:301943,Samsat,Adıyaman Province,9308,village,0,0,50,0,none,none
+gn:301953,Şamlı,Balıkesir,0,village,0,0,50,0,none,none
+gn:301961,Şambayat,Adıyaman Province,3368,village,0,0,50,0,none,none
+gn:301962,Şambayadı,Adana,5251,village,0,0,50,0,none,none
+gn:301975,Samandağ,Hatay,123447,city,0,0,50,0,none,none
+gn:302006,Akbez,Hatay,10228,town,0,0,50,0,none,none
+gn:302027,Salkımbağı,Adıyaman Province,1488,village,0,0,50,0,none,none
+gn:302043,Salihli,Manisa,119311,city,0,0,50,0,none,none
+gn:302064,Salavatlı,Aydın,1204,village,0,0,50,0,none,none
+gn:302076,Çatağıl,Burdur,1324,village,0,0,50,0,none,none
+gn:302109,Sakçagöz,Gaziantep,3920,village,0,0,50,0,none,none
+gn:302119,Sakarkaya,Kahramanmaraş,1053,village,0,0,50,0,none,none
+gn:302150,Saimbeyli,Adana,5423,village,0,0,50,0,none,none
+gn:302199,Şahinbey,Gaziantep,2181,village,0,0,50,0,none,none
+gn:302222,Sağlıklı,Mersin,1212,village,0,0,50,0,none,none
+gn:302230,Sağkaya,Adana,0,village,0,0,50,0,none,none
+gn:302245,Sağınlı,Bitlis,0,village,0,0,50,0,none,none
+gn:302249,Sağdıç,Ağrı,1098,village,0,0,50,0,none,none
+gn:302302,Sabuncu,Kütahya,0,village,0,0,50,0,none,none
+gn:302355,Reyhanlı,Hatay,56995,town,0,0,50,0,none,none
+gn:302389,Reşadiye,Afyonkarahisar Province,1006,village,0,0,50,0,none,none
+gn:302400,Reis,Konya,0,village,0,0,50,0,none,none
+gn:302401,Refahiye,Erzincan,5579,village,0,0,50,0,none,none
+gn:302442,Pütürge,Malatya,0,village,0,0,50,0,none,none
+gn:302469,Pulumer,Tunceli,1759,village,0,0,50,0,none,none
+gn:302482,Pozantı,Adana,10517,town,0,0,50,0,none,none
+gn:302492,Poyraz,Elazığ,165,village,0,0,50,0,none,none
+gn:302496,Poyracık,İzmir Province,5990,village,0,0,50,0,none,none
+gn:302525,Polatlı,Ankara,93262,town,0,0,50,0,none,none
+gn:302561,Pirlibey,Aydın,1043,village,0,0,50,0,none,none
+gn:302572,Pirinçli,Mardin,2379,village,0,0,50,0,none,none
+gn:302624,Pınarönü,Şırnak,1141,village,0,0,50,0,none,none
+gn:302634,Pınarlar,Tunceli,0,village,0,0,50,0,none,none
+gn:302645,Pınardere,Mardin,4044,village,0,0,50,0,none,none
+gn:302667,Pınarbaşı,Kayseri,12333,town,0,0,50,0,none,none
+gn:302678,Pınarbaşı,Şırnak,1824,village,0,0,50,0,none,none
+gn:302720,Pervari,Siirt,5974,village,0,0,50,0,none,none
+gn:302724,Pertek,Tunceli,6837,village,0,0,50,0,none,none
+gn:302736,Akpazar,Tunceli,0,village,0,0,50,0,none,none
+gn:302762,Peksimet,Muğla,2575,village,0,0,50,0,none,none
+gn:302781,Pazaryeri,Bilecik,6730,village,0,0,50,0,none,none
+gn:302786,Pazarören,Kayseri,0,village,0,0,50,0,none,none
+gn:302787,Pazarlar,Kütahya,6387,village,0,0,50,0,none,none
+gn:302788,Pazarköy,Canakkale,232,village,0,0,50,0,none,none
+gn:302789,Pazarköy,Canakkale,1340,village,0,0,50,0,none,none
+gn:302800,Pazarcık,Kahramanmaraş,23850,town,0,0,50,0,none,none
+gn:302816,Payallar,Antalya,5425,village,0,0,50,0,none,none
+gn:302819,Patnos,Ağrı,57933,town,0,0,50,0,none,none
+gn:302824,Pasinler,Erzurum,24553,town,0,0,50,0,none,none
+gn:302871,Parmakkurdu,Mersin,1019,village,0,0,50,0,none,none
+gn:302898,Pamukören,Aydın,2603,village,0,0,50,0,none,none
+gn:302903,Pamukkale,Denizli,10000,town,0,0,50,0,none,none
+gn:302912,Palu,Elazığ,11271,town,0,0,50,0,none,none
+gn:302924,Palamutlu,Siirt,1368,village,0,0,50,0,none,none
+gn:302954,Özpınar,Siirt,0,village,0,0,50,0,none,none
+gn:302956,Özonak,Nevşehir Province,0,village,0,0,50,0,none,none
+gn:302982,Özekli,Diyarbakır Province,2509,village,0,0,50,0,none,none
+gn:302986,Özdere,İzmir Province,13500,town,0,0,50,0,none,none
+gn:302990,Panik,Iğdır,2401,village,0,0,50,0,none,none
+gn:303004,Özbek,İzmir Province,1617,village,0,0,50,0,none,none
+gn:303007,Özbek,Şırnak,1002,village,0,0,50,0,none,none
+gn:303022,Özalp,Van,8249,village,0,0,50,0,none,none
+gn:303035,Oyuklu,Diyarbakır Province,1025,village,0,0,50,0,none,none
+gn:303042,Oyratlı,Adıyaman Province,1399,village,0,0,50,0,none,none
+gn:303046,Oymataş,Batman,1907,village,0,0,50,0,none,none
+gn:303062,Oyalı,Mardin,2267,village,0,0,50,0,none,none
+gn:303085,Medar,Manisa,1889,village,0,0,50,0,none,none
+gn:303089,Ovakışla,Bitlis,0,village,0,0,50,0,none,none
+gn:303091,Ovakent,İzmir Province,0,village,0,0,50,0,none,none
+gn:303092,Ovakavağı,Konya,2261,village,0,0,50,0,none,none
+gn:303107,Ovacık,Tunceli,6407,village,0,0,50,0,none,none
+gn:303114,Ovacık,İzmir Province,2881,village,0,0,50,0,none,none
+gn:303124,Ovacık,Şanlıurfa,0,village,0,0,50,0,none,none
+gn:303138,Ovabağ,Diyarbakır Province,0,village,0,0,50,0,none,none
+gn:303147,Otlukbeli,Erzincan,3669,village,0,0,50,0,none,none
+gn:303167,Osmanpaşa,Yozgat,0,village,0,0,50,0,none,none
+gn:303195,Osmaniye,Osmaniye,202837,city,0,0,50,0,none,none
+gn:303203,Osmancalı,Manisa,0,village,0,0,50,0,none,none
+gn:303282,Ortaköy,Sivas,0,village,0,0,50,0,none,none
+gn:303290,Ortaköy,Aksaray,31144,town,0,0,50,0,none,none
+gn:303304,Ortaköy,Şırnak,1023,village,0,0,50,0,none,none
+gn:303305,Ortaköy,Mardin,7486,village,0,0,50,0,none,none
+gn:303319,Ortaklar,Aydın,0,village,0,0,50,0,none,none
+gn:303325,Ortyakent Yahşi,Muğla,0,village,0,0,50,0,none,none
+gn:303353,Ortaca,Mardin,2599,village,0,0,50,0,none,none
+gn:303354,Ortaca,Muğla,19741,town,0,0,50,0,none,none
+gn:303357,Ortabağ,Şırnak,1996,village,0,0,50,0,none,none
+gn:303361,Cevizli,Denizli,3299,village,0,0,50,0,none,none
+gn:303362,Odabaşı,Antalya,1080,village,0,0,50,0,none,none
+gn:303392,Orhanlı,İzmir Province,1273,village,0,0,50,0,none,none
+gn:303409,Orhaneli,Bursa Province,8959,village,0,0,50,0,none,none
+gn:303416,Örenşehir,Kayseri,0,village,0,0,50,0,none,none
+gn:303432,Örenkaya,Afyonkarahisar Province,1331,village,0,0,50,0,none,none
+gn:303445,Örencik,Kütahya,0,village,0,0,50,0,none,none
+gn:303454,Örencik,Şanlıurfa,1924,village,0,0,50,0,none,none
+gn:303473,Ören,Muğla,0,village,0,0,50,0,none,none
+gn:303502,Öncül,Şanlıurfa,1585,village,0,0,50,0,none,none
+gn:303532,Ömerli,Mardin,7194,village,0,0,50,0,none,none
+gn:303538,Ömerköy,Balıkesir,0,village,0,0,50,0,none,none
+gn:303626,Okçular,Siirt,1002,village,0,0,50,0,none,none
+gn:303642,Oğuzeli,Gaziantep,11527,town,0,0,50,0,none,none
+gn:303645,Oğuzköy,Erzincan,63,village,0,0,50,0,none,none
+gn:303646,Oğuz,Batman,0,village,0,0,50,0,none,none
+gn:303648,Oğuz,Mardin,1029,village,0,0,50,0,none,none
+gn:303656,Oyumsöğüt,Gaziantep,1641,village,0,0,50,0,none,none
+gn:303670,Oğulbey,Ankara,1104,village,0,0,50,0,none,none
+gn:303685,Oğlaklı,Diyarbakır Province,1692,village,0,0,50,0,none,none
+gn:303700,Ödemiş,İzmir Province,67153,town,0,0,50,0,none,none
+gn:303732,Obruk,Konya,0,village,0,0,50,0,none,none
+gn:303750,Nusaybin,Mardin,88977,town,0,0,50,0,none,none
+gn:303763,Nurhak,Kahramanmaraş,8595,village,0,0,50,0,none,none
+gn:303766,Nurettin,Muş,0,village,0,0,50,0,none,none
+gn:303767,Nurettin,Muş,0,village,0,0,50,0,none,none
+gn:303798,Nizip,Gaziantep,82308,town,0,0,50,0,none,none
+gn:303807,Petekkaya,Diyarbakır Province,1313,village,0,0,50,0,none,none
+gn:303814,Çakırkaş,Elazığ,1230,village,0,0,50,0,none,none
+gn:303827,Niğde,Niğde Province,91039,town,0,0,50,0,none,none
+gn:303831,Nevşehir,Nevşehir Province,75527,town,0,0,50,0,none,none
+gn:303837,Neşetiye,Aydın,2172,village,0,0,50,0,none,none
+gn:303872,Nazimiye,Tunceli,3396,village,0,0,50,0,none,none
+gn:303873,Nazilli,Aydın,119370,city,0,0,50,0,none,none
+gn:303892,Demirci,Şanlıurfa,0,village,0,0,50,0,none,none
+gn:303906,Narlıdere,Bitlis,571,village,0,0,50,0,none,none
+gn:303916,Narlı,Siirt,0,village,0,0,50,0,none,none
+gn:303919,Narlı,Kahramanmaraş,6781,village,0,0,50,0,none,none
+gn:303925,Narince,Adıyaman Province,0,village,0,0,50,0,none,none
+gn:303976,Günyurdu,Mersin,2416,village,0,0,50,0,none,none
+gn:304009,Mutki,Bitlis,5510,village,0,0,50,0,none,none
+gn:304013,Mut,Mersin,49397,town,0,0,50,0,none,none
+gn:304028,Mustafabeyli,Adana,1507,village,0,0,50,0,none,none
+gn:304077,Musabeyli,Yozgat,0,village,0,0,50,0,none,none
+gn:304078,Musabeyli,Kilis,1938,village,0,0,50,0,none,none
+gn:304081,Muş,Muş,82536,town,0,0,50,0,none,none
+gn:304089,Mürşitpınar,Şanlıurfa,0,village,0,0,50,0,none,none
+gn:304094,Mursal,Sivas,0,village,0,0,50,0,none,none
+gn:304110,Muratlı,Şanlıurfa,2064,village,0,0,50,0,none,none
+gn:304134,Murat,Ağrı,506,village,0,0,50,0,none,none
+gn:304138,Muradiye,Van,0,village,0,0,50,0,none,none
+gn:304139,Muradiye,Manisa,0,village,0,0,50,0,none,none
+gn:304151,Güneşli,Kayseri,0,village,0,0,50,0,none,none
+gn:304157,Karaova,Muğla,0,village,0,0,50,0,none,none
+gn:304179,Yenidoğan,Aydın,4904,village,0,0,50,0,none,none
+gn:304184,Muğla,Muğla,92328,town,0,0,50,0,none,none
+gn:304196,Mucur,Kırşehir,16522,town,0,0,50,0,none,none
+gn:304204,Mordoğan,İzmir Province,5433,village,0,0,50,0,none,none
+gn:304231,Elmalıdere,Erzurum,0,village,0,0,50,0,none,none
+gn:304244,Mollakendi,Elazığ,0,village,0,0,50,0,none,none
+gn:304341,Minare,Şanlıurfa,1240,village,0,0,50,0,none,none
+gn:304349,Balveren,Şırnak,3796,village,0,0,50,0,none,none
+gn:304355,Milas,Muğla,43193,town,0,0,50,0,none,none
+gn:304367,Kesmetepe,Adıyaman Province,1581,village,0,0,50,0,none,none
+gn:304372,Mihalıçcık,Eskişehir,0,village,0,0,50,0,none,none
+gn:304382,Midyat,Mardin,76268,town,0,0,50,0,none,none
+gn:304406,Kırmızıköprü,Tunceli,0,village,0,0,50,0,none,none
+gn:304414,Mezraa,Şırnak,3812,village,0,0,50,0,none,none
+gn:304418,Mezitli,Mersin,0,village,0,0,50,0,none,none
+gn:304440,Meydankapı,Şanlıurfa,1635,village,0,0,50,0,none,none
+gn:304453,Meydan,Bitlis,0,village,0,0,50,0,none,none
+gn:304500,Söylemez,Erzurum,0,village,0,0,50,0,none,none
+gn:304531,Mersin,Mersin,537842,large-city,0,0,50,0,none,none
+gn:304536,Mermer,Diyarbakır Province,0,village,0,0,50,0,none,none
+gn:304543,Eski Gediz,Kütahya,2612,village,0,0,50,0,none,none
+gn:304569,Mercimekkale,Muş,0,village,0,0,50,0,none,none
+gn:304582,Meram,Konya,0,village,0,0,50,0,none,none
+gn:304585,Menzil,Adıyaman Province,2318,village,0,0,50,0,none,none
+gn:304612,Menemen,İzmir Province,53489,town,0,0,50,0,none,none
+gn:304726,Mazmanlı,Hatay,1529,village,0,0,50,0,none,none
+gn:304732,Bölükyayla,Adıyaman Province,1985,village,0,0,50,0,none,none
+gn:304734,Mazıdağı,Mardin,13138,town,0,0,50,0,none,none
+gn:304738,Mazgirt,Tunceli,2704,village,0,0,50,0,none,none
+gn:304782,Marmaris,Muğla,33731,town,0,0,50,0,none,none
+gn:304797,Mardin,Mardin,129864,city,0,0,50,0,none,none
+gn:304818,Mansurlu,Adana,0,village,0,0,50,0,none,none
+gn:304827,Manisa,Manisa,243971,city,0,0,50,0,none,none
+gn:304854,Manavgat,Antalya,99254,town,0,0,50,0,none,none
+gn:304885,Mamak,Ankara,0,village,0,0,50,0,none,none
+gn:304916,Malazgirt,Muş,26108,town,0,0,50,0,none,none
+gn:304922,Malatya,Malatya,750491,large-city,0,0,50,0,none,none
+gn:304964,Mahmutlar,Antalya,24227,town,0,0,50,0,none,none
+gn:304976,Mahmutköy,Afyonkarahisar Province,1601,village,0,0,50,0,none,none
+gn:304983,Mahmudiye,Eskişehir,0,village,0,0,50,0,none,none
+gn:304998,Mağaralı,Şanlıurfa,1276,village,0,0,50,0,none,none
+gn:305012,Kırobası,Mersin,359,village,0,0,50,0,none,none
+gn:305041,Maden,Elazığ,0,village,0,0,50,0,none,none
+gn:305054,Macarlar,Balıkesir,1385,village,0,0,50,0,none,none
+gn:305082,Limonlu,Mersin,2939,village,0,0,50,0,none,none
+gn:305089,Lice,Diyarbakır Province,16336,town,0,0,50,0,none,none
+gn:305103,Levent,Malatya,0,village,0,0,50,0,none,none
+gn:305107,Halıcılar,Burdur,1440,village,0,0,50,0,none,none
+gn:305145,Kuzucubelen,Mersin,517,village,0,0,50,0,none,none
+gn:305158,Kozluca,Burdur,1042,village,0,0,50,0,none,none
+gn:305182,Kuyulusebil,Konya,2000,village,0,0,50,0,none,none
+gn:305190,Kuyulu,Adıyaman Province,1526,village,0,0,50,0,none,none
+gn:305194,Kuyular,Diyarbakır Province,3019,village,0,0,50,0,none,none
+gn:305210,Kuyucak,Aydın,7017,village,0,0,50,0,none,none
+gn:305211,Kuyucak,Adıyaman Province,0,village,0,0,50,0,none,none
+gn:305259,Kutluca,Adıyaman Province,1018,village,0,0,50,0,none,none
+gn:305263,Kutlubey,Mardin,1685,village,0,0,50,0,none,none
+gn:305268,Kütahya,Kütahya,185008,city,0,0,50,0,none,none
+gn:305287,Kuşsarayı,Elazığ,154,village,0,0,50,0,none,none
+gn:305303,Kuşkayası,Sivas,0,village,0,0,50,0,none,none
+gn:305306,Kuskan Yaylası,Mersin,1846,village,0,0,50,0,none,none
+gn:305359,Kuşadası,Aydın,63177,town,0,0,50,0,none,none
+gn:305429,Kuruçay,Erzincan,0,village,0,0,50,0,none,none
+gn:305456,Kurtuluş,Aydın,1353,village,0,0,50,0,none,none
+gn:305459,Kurtuluş,Mersin,1121,village,0,0,50,0,none,none
+gn:305460,Kurtuluş,Mersin,1121,village,0,0,50,0,none,none
+gn:305469,Kurttepe,Adana,6978,village,0,0,50,0,none,none
+gn:305484,Özbek,Mersin,1078,village,0,0,50,0,none,none
+gn:305510,Kurthasanlı,Konya,0,village,0,0,50,0,none,none
+gn:305532,Kurtalan,Siirt,32114,town,0,0,50,0,none,none
+gn:305542,Kurşunlu,Malatya,0,village,0,0,50,0,none,none
+gn:305545,Kurşunlu,Antalya,2152,village,0,0,50,0,none,none
+gn:305569,Sarıkavak,Mersin,0,village,0,0,50,0,none,none
+gn:305672,Kumluca,Ağrı,1515,village,0,0,50,0,none,none
+gn:305680,Beykonak,Antalya,30339,town,0,0,50,0,none,none
+gn:305681,Kumluca,Antalya,0,village,0,0,50,0,none,none
+gn:305685,Kumlu,Mardin,1274,village,0,0,50,0,none,none
+gn:305686,Kumlu,Hatay,0,village,0,0,50,0,none,none
+gn:305690,Kumköy,Antalya,1074,village,0,0,50,0,none,none
+gn:305692,Kumkale,Canakkale,1016,village,0,0,50,0,none,none
+gn:305697,Kumdanlı,Isparta,0,village,0,0,50,0,none,none
+gn:305699,Kumçatı,Şırnak,5005,village,0,0,50,0,none,none
+gn:305737,Kuluncak,Malatya,8495,village,0,0,50,0,none,none
+gn:305742,Kulu,Konya,47037,town,0,0,50,0,none,none
+gn:305750,Kulp,Diyarbakır Province,26569,town,0,0,50,0,none,none
+gn:305754,Küllük,Iğdır,3010,village,0,0,50,0,none,none
+gn:305797,Kırklar Mahallesi,Bitlis,4351,village,0,0,50,0,none,none
+gn:305810,Kula,Manisa,31100,town,0,0,50,0,none,none
+gn:305825,İnanöz,Diyarbakır Province,1083,village,0,0,50,0,none,none
+gn:305859,Küçüksu,Bitlis,0,village,0,0,50,0,none,none
+gn:305894,Küçükkuyu,Canakkale,0,village,0,0,50,0,none,none
+gn:305897,Karaçallı,Antalya,1193,village,0,0,50,0,none,none
+gn:305957,Gaziosmanpaşa,Ankara,3621,village,0,0,50,0,none,none
+gn:305969,Küçükçiğli,İzmir Province,21784,town,0,0,50,0,none,none
+gn:305996,Küçükbahçe,İzmir Province,0,village,0,0,50,0,none,none
+gn:306041,Kozluk,Batman,29502,town,0,0,50,0,none,none
+gn:306112,Kozan,Adana,88115,town,0,0,50,0,none,none
+gn:306115,Kozaklı,Nevşehir Province,0,village,0,0,50,0,none,none
+gn:306122,Kozağacı,Antalya,1072,village,0,0,50,0,none,none
+gn:306173,Kösbucağı,Mersin,1933,village,0,0,50,0,none,none
+gn:306203,Kovanlık,Antalya,1321,village,0,0,50,0,none,none
+gn:306207,Kovancılar,Elazığ,22976,town,0,0,50,0,none,none
+gn:306215,Kovalı,Mardin,1277,village,0,0,50,0,none,none
+gn:306264,Kösreli,Adana,0,village,0,0,50,0,none,none
+gn:306285,Köşk,Aydın,9676,village,0,0,50,0,none,none
+gn:306308,Köseli,Diyarbakır Province,1238,village,0,0,50,0,none,none
+gn:306346,Kösefakılı,Kırşehir,0,village,0,0,50,0,none,none
+gn:306354,Köseçobanlı,Mersin,2186,village,0,0,50,0,none,none
+gn:306408,Korucu,Balıkesir,0,village,0,0,50,0,none,none
+gn:306474,Korkuteli,Antalya,20465,town,0,0,50,0,none,none
+gn:306476,Korkut,Muş,8078,village,0,0,50,0,none,none
+gn:306517,Köprüören,Kütahya,0,village,0,0,50,0,none,none
+gn:306522,Köprülü,Antalya,0,village,0,0,50,0,none,none
+gn:306525,Köprüköy,Erzurum,0,village,0,0,50,0,none,none
+gn:306537,Köprübaşı,Manisa,4688,village,0,0,50,0,none,none
+gn:306570,Konyaaltı,Antalya,0,village,0,0,50,0,none,none
+gn:306571,Konya,Konya,1433861,large-city,0,0,50,0,none,none
+gn:306612,Konalga,Van,2395,village,0,0,50,0,none,none
+gn:306616,Konakpınar,Balıkesir,0,village,0,0,50,0,none,none
+gn:306617,Konakpınar,Sivas,0,village,0,0,50,0,none,none
+gn:306622,Konaklı,İzmir Province,1906,village,0,0,50,0,none,none
+gn:306626,Konaklı,Antalya,17966,town,0,0,50,0,none,none
+gn:306641,Konak,İzmir Province,332277,city,0,0,50,0,none,none
+gn:306666,Kömür,Adıyaman Province,2909,village,0,0,50,0,none,none
+gn:306759,Köklüce,Gaziantep,1104,village,0,0,50,0,none,none
+gn:306760,Köklüce,Adana,1088,village,0,0,50,0,none,none
+gn:306768,Kökez,Adana,1045,village,0,0,50,0,none,none
+gn:306825,Koçören,Hatay,2013,village,0,0,50,0,none,none
+gn:306859,Göcek,Muğla,4500,village,0,0,50,0,none,none
+gn:306890,Kocatepe,Mardin,0,village,0,0,50,0,none,none
+gn:306891,Kocatepe,Gaziantep,1216,village,0,0,50,0,none,none
+gn:306908,Koçarlı,Aydın,8594,village,0,0,50,0,none,none
+gn:306910,Kocapınar,Van,0,village,0,0,50,0,none,none
+gn:306926,Koçali,Adıyaman Province,463,village,0,0,50,0,none,none
+gn:306935,Kocaköy,Diyarbakır Province,6485,village,0,0,50,0,none,none
+gn:306943,Kocakoç,Tunceli,0,village,0,0,50,0,none,none
+gn:306962,Kocahasanlı,Mersin,5738,village,0,0,50,0,none,none
+gn:307014,Kocaaliler,Burdur,2170,village,0,0,50,0,none,none
+gn:307071,Kızılyaka,Burdur,0,village,0,0,50,0,none,none
+gn:307084,Kızıltepe,Mardin,150174,city,0,0,50,0,none,none
+gn:307102,Kızılsu,Şırnak,1469,village,0,0,50,0,none,none
+gn:307129,Kızılören,Afyonkarahisar Province,2403,village,0,0,50,0,none,none
+gn:307132,Kızılören,Konya,0,village,0,0,50,0,none,none
+gn:307148,Kızıllı,Antalya,1352,village,0,0,50,0,none,none
+gn:307181,Yalçınkaya,Ağrı,1434,village,0,0,50,0,none,none
+gn:307187,Kızılkaya,Burdur,1860,village,0,0,50,0,none,none
+gn:307192,Kızılkaş,Adana,1483,village,0,0,50,0,none,none
+gn:307211,Serinhisar,Denizli,17169,town,0,0,50,0,none,none
+gn:307287,Kızılcasöğüt,Uşak,2024,village,0,0,50,0,none,none
+gn:307289,Kızılcaşehir,Antalya,1100,village,0,0,50,0,none,none
+gn:307290,Kızılcaşar,Ankara,8581,village,0,0,50,0,none,none
+gn:307324,Kızılcadağ,Antalya,0,village,0,0,50,0,none,none
+gn:307327,Kızılcabölük,Denizli,3392,village,0,0,50,0,none,none
+gn:307341,Kızılcaköy,Aydın,1013,village,0,0,50,0,none,none
+gn:307343,Kızılca,Niğde Province,1050,village,0,0,50,0,none,none
+gn:307347,Kızılca,Denizli,1567,village,0,0,50,0,none,none
+gn:307379,Kızılağaç,Muş,0,village,0,0,50,0,none,none
+gn:307392,Kızıklı,Balıkesir,1672,village,0,0,50,0,none,none
+gn:307393,Kızıkhamurkesen,Gaziantep,1020,village,0,0,50,0,none,none
+gn:307459,Kışlak,Hatay,1722,village,0,0,50,0,none,none
+gn:307489,Kısas,Şanlıurfa,3555,village,0,0,50,0,none,none
+gn:307507,Ulukapı,Antalya,3545,village,0,0,50,0,none,none
+gn:307515,Kırşehir,Kırşehir,150700,city,0,0,50,0,none,none
+gn:307543,Köksalan,Gaziantep,1119,village,0,0,50,0,none,none
+gn:307571,Kırköy,Muş,1801,village,0,0,50,0,none,none
+gn:307587,Kırkkoyun,Diyarbakır Province,2469,village,0,0,50,0,none,none
+gn:307608,Kırkgeçit,Van,0,village,0,0,50,0,none,none
+gn:307623,Kırkağaç,Manisa,21789,town,0,0,50,0,none,none
+gn:307625,Kırka,Eskişehir,4097,village,0,0,50,0,none,none
+gn:307632,Kirişçiler,Antalya,1207,village,0,0,50,0,none,none
+gn:307654,Kırıkkale,Kırıkkale,186960,city,0,0,50,0,none,none
+gn:307657,Kırıkhan,Hatay,60916,town,0,0,50,0,none,none
+gn:307677,Kireçocağı,Adana,45476,town,0,0,50,0,none,none
+gn:307683,Kireç,Balıkesir,72,village,0,0,50,0,none,none
+gn:307706,Kırca,Afyonkarahisar Province,1207,village,0,0,50,0,none,none
+gn:307727,Kiraz,İzmir Province,11718,town,0,0,50,0,none,none
+gn:307786,Kınık,İzmir Province,10753,town,0,0,50,0,none,none
+gn:307864,Kilis,Kilis,111648,city,0,0,50,0,none,none
+gn:307888,Kılıçlı,Adana,2250,village,0,0,50,0,none,none
+gn:307898,Kılıçkaya,Diyarbakır Province,1954,village,0,0,50,0,none,none
+gn:307931,Kılbasan,Karaman,1571,village,0,0,50,0,none,none
+gn:307939,Kılavuz,Mardin,2484,village,0,0,50,0,none,none
+gn:307948,Kiğı,Bingöl,0,village,0,0,50,0,none,none
+gn:308024,Keskin,Kırıkkale,49679,town,0,0,50,0,none,none
+gn:308133,Kepsut,Balıkesir,5542,village,0,0,50,0,none,none
+gn:308148,Sağırın,Antalya,1650,village,0,0,50,0,none,none
+gn:308202,Kemerkaya,Afyonkarahisar Province,1730,village,0,0,50,0,none,none
+gn:308203,Kemerhisar,Niğde Province,0,village,0,0,50,0,none,none
+gn:308208,Kemerağzı,Antalya,5991,village,0,0,50,0,none,none
+gn:308217,Kemer,Burdur,2217,village,0,0,50,0,none,none
+gn:308219,Kemer,Muğla,0,village,0,0,50,0,none,none
+gn:308220,Kemer,Antalya,17300,town,0,0,50,0,none,none
+gn:308224,Kemalpaşa,İzmir Province,30411,town,0,0,50,0,none,none
+gn:308230,Kemaliye,Erzincan,2113,village,0,0,50,0,none,none
+gn:308233,Kemah,Erzincan,2549,village,0,0,50,0,none,none
+gn:308246,Kelleci,Denizli,1473,village,0,0,50,0,none,none
+gn:308261,Keles,Bursa Province,3772,village,0,0,50,0,none,none
+gn:308274,Kelekçi,Denizli,0,village,0,0,50,0,none,none
+gn:308322,Doğrular,Gaziantep,1871,village,0,0,50,0,none,none
+gn:308365,Keçiborlu,Isparta,11083,town,0,0,50,0,none,none
+gn:308389,Keban,Elazığ,5837,village,0,0,50,0,none,none
+gn:308400,Kazımkarabekir,Karaman,3563,village,0,0,50,0,none,none
+gn:308436,Kazanlı,Mersin,0,village,0,0,50,0,none,none
+gn:308455,Kazancı,Diyarbakır Province,1401,village,0,0,50,0,none,none
+gn:308457,Kazancı,Karaman,0,village,0,0,50,0,none,none
+gn:308464,Kayseri,Kayseri,1452458,large-city,0,0,50,0,none,none
+gn:308481,Kaypak,Osmaniye,0,village,0,0,50,0,none,none
+gn:308490,Kaynar,Kayseri,0,village,0,0,50,0,none,none
+gn:308496,Kaynakkaya,Mardin,1571,village,0,0,50,0,none,none
+gn:308504,Kaymaz,Eskişehir,0,village,0,0,50,0,none,none
+gn:308510,Kaymakçı,İzmir Province,4478,village,0,0,50,0,none,none
+gn:308519,Kayış,Burdur,1127,village,0,0,50,0,none,none
+gn:308563,Kayapınar,Manisa,1350,village,0,0,50,0,none,none
+gn:308569,Kayapınar,Diyarbakır Province,0,village,0,0,50,0,none,none
+gn:308572,Kayapınar,Batman,5226,village,0,0,50,0,none,none
+gn:308576,Kayapa,Balıkesir,0,village,0,0,50,0,none,none
+gn:308584,Kayalıpınar,Mardin,1332,village,0,0,50,0,none,none
+gn:308585,Kayalıoğlu,Manisa,1732,village,0,0,50,0,none,none
+gn:308617,Kayaköy,İzmir Province,1107,village,0,0,50,0,none,none
+gn:308630,Salmanlı,Yozgat,0,village,0,0,50,0,none,none
+gn:308632,Kayadibi,Sivas,0,village,0,0,50,0,none,none
+gn:308668,Kayacı,Mersin,1223,village,0,0,50,0,none,none
+gn:308697,Kayabağlar,Siirt,5601,village,0,0,50,0,none,none
+gn:308744,Gökdere,Antalya,1763,village,0,0,50,0,none,none
+gn:308775,Kavaklıdere,İzmir Province,3164,village,0,0,50,0,none,none
+gn:308776,Kavaklıdere,Muğla,3466,village,0,0,50,0,none,none
+gn:308811,Kavakbaşı,Bitlis,0,village,0,0,50,0,none,none
+gn:308821,Kavak,Sivas,0,village,0,0,50,0,none,none
+gn:308828,Hazar,Elazığ,0,village,0,0,50,0,none,none
+gn:308840,Kavacık,Balıkesir,480,village,0,0,50,0,none,none
+gn:308908,Kasımlar,Isparta,0,village,0,0,50,0,none,none
+gn:308944,Kasaba,Antalya,1581,village,0,0,50,0,none,none
+gn:308948,Kaş,Antalya,7800,village,0,0,50,0,none,none
+gn:308982,Kartal,Gaziantep,1751,village,0,0,50,0,none,none
+gn:308988,Karşıyaka,İzmir Province,339624,city,0,0,50,0,none,none
+gn:308998,Aladağ,Adana,4445,village,0,0,50,0,none,none
+gn:309008,Karpuzlu,Aydın,2166,village,0,0,50,0,none,none
+gn:309014,Kızılağaç,Antalya,1440,village,0,0,50,0,none,none
+gn:309032,Karlıova,Bingöl,8801,village,0,0,50,0,none,none
+gn:309057,Karlı,Hakkâri,1239,village,0,0,50,0,none,none
+gn:309077,Karıncalı,Bursa Province,2087,village,0,0,50,0,none,none
+gn:309101,Kargınküre,Muğla,1154,village,0,0,50,0,none,none
+gn:309131,Kargı,Muğla,1163,village,0,0,50,0,none,none
+gn:309134,Karkamış,Gaziantep,4951,village,0,0,50,0,none,none
+gn:309181,Karayün,Sivas,0,village,0,0,50,0,none,none
+gn:309182,Karayün,Batman,1025,village,0,0,50,0,none,none
+gn:309192,Karayılan,Hatay,9074,village,0,0,50,0,none,none
+gn:309199,Karayazı,Erzurum,7340,village,0,0,50,0,none,none
+gn:309218,Karayahşılar,Denizli,1123,village,0,0,50,0,none,none
+gn:309235,Karatoprak,Muğla,0,village,0,0,50,0,none,none
+gn:309276,Karateke,Denizli,1208,village,0,0,50,0,none,none
+gn:309307,Karataş,Antalya,1005,village,0,0,50,0,none,none
+gn:309312,Karataş,Adana,9221,village,0,0,50,0,none,none
+gn:309320,Karasungur,Diyarbakır Province,2225,village,0,0,50,0,none,none
+gn:309415,Karapınar,Konya,49509,town,0,0,50,0,none,none
+gn:309452,Karaoğlanlı,Manisa,0,village,0,0,50,0,none,none
+gn:309462,Karaoğlan,Tunceli,0,village,0,0,50,0,none,none
+gn:309512,Karamanlı,Burdur,4820,village,0,0,50,0,none,none
+gn:309527,Karaman,Karaman,175390,city,0,0,50,0,none,none
+gn:309554,Karalar,Şırnak,4718,village,0,0,50,0,none,none
+gn:309570,Karakuyu,Iğdır,2865,village,0,0,50,0,none,none
+gn:309609,Karakoyunlu,Iğdır,2429,village,0,0,50,0,none,none
+gn:309622,Karaköy,Muş,0,village,0,0,50,0,none,none
+gn:309647,Ağrı,Ağrı,124483,city,0,0,50,0,none,none
+gn:309652,Karaköprü,Erzurum,0,village,0,0,50,0,none,none
+gn:309653,Karaköprü,Şanlıurfa,0,village,0,0,50,0,none,none
+gn:309654,Karakollar,Aydın,1611,village,0,0,50,0,none,none
+gn:309663,Karakoçan,Elazığ,29735,town,0,0,50,0,none,none
+gn:309683,Karakise,Hatay,5994,village,0,0,50,0,none,none
+gn:309699,Karakesek,Gaziantep,1282,village,0,0,50,0,none,none
+gn:309705,Karakeçili,Kırıkkale,8468,village,0,0,50,0,none,none
+gn:309707,Karakeçi,Şanlıurfa,0,village,0,0,50,0,none,none
+gn:309758,Karaisalı,Adana,6690,village,0,0,50,0,none,none
+gn:309759,Karaisalı,Mersin,1153,village,0,0,50,0,none,none
+gn:309796,Karahisar,Denizli,2579,village,0,0,50,0,none,none
+gn:309799,Karahıdırlı,Mersin,1267,village,0,0,50,0,none,none
+gn:309805,Karahasanlı,Nevşehir Province,0,village,0,0,50,0,none,none
+gn:309815,Karahan,Adana,1948,village,0,0,50,0,none,none
+gn:309821,Karahallı,Uşak,4948,village,0,0,50,0,none,none
+gn:309909,Karadirek,Afyonkarahisar Province,0,village,0,0,50,0,none,none
+gn:309954,Karadağ,Antalya,1246,village,0,0,50,0,none,none
+gn:310004,Karaçoban,Erzurum,20467,town,0,0,50,0,none,none
+gn:310007,Karaçevre,Diyarbakır Province,2218,village,0,0,50,0,none,none
+gn:310010,Kuşlukçayırı,Diyarbakır Province,1034,village,0,0,50,0,none,none
+gn:310028,Karaçay,Hatay,0,village,0,0,50,0,none,none
+gn:310033,Karacaören,Sivas,0,village,0,0,50,0,none,none
+gn:310044,Karacasu,Aydın,6201,village,0,0,50,0,none,none
+gn:310075,Karacaören,Aksaray,1607,village,0,0,50,0,none,none
+gn:310083,Karacaören,Gaziantep,10428,town,0,0,50,0,none,none
+gn:310112,Karaçalı,Diyarbakır Province,1880,village,0,0,50,0,none,none
+gn:310125,Karacalar,Antalya,2031,village,0,0,50,0,none,none
+gn:310159,Karacadağ,Şanlıurfa,0,village,0,0,50,0,none,none
+gn:310169,Karacaburç,Gaziantep,1345,village,0,0,50,0,none,none
+gn:310175,Karacaahmet,Afyonkarahisar Province,1564,village,0,0,50,0,none,none
+gn:310200,Karaburun,İzmir Province,3312,village,0,0,50,0,none,none
+gn:310214,Karabulak,Ağrı,1615,village,0,0,50,0,none,none
+gn:310230,Gedik,Antalya,1392,village,0,0,50,0,none,none
+gn:310343,Karaağıl,Muş,0,village,0,0,50,0,none,none
+gn:310353,Karaağaçkuyusu,Afyonkarahisar Province,1170,village,0,0,50,0,none,none
+gn:310428,Kapısuyu,Hatay,1959,village,0,0,50,0,none,none
+gn:310516,Kanlıavşar,Şanlıurfa,0,village,0,0,50,0,none,none
+gn:310554,Kangal,Sivas,11888,town,0,0,50,0,none,none
+gn:310560,Kandilli,Erzurum,0,village,0,0,50,0,none,none
+gn:310641,Kaman,Kırşehir,28605,town,0,0,50,0,none,none
+gn:310663,Kalkım,Canakkale,2198,village,0,0,50,0,none,none
+gn:310677,Kalkan,Antalya,3000,village,0,0,50,0,none,none
+gn:310680,Kalınkoz,Denizli,1338,village,0,0,50,0,none,none
+gn:310771,Kabahaydar,Şanlıurfa,0,village,0,0,50,0,none,none
+gn:310784,Kale,Malatya,5167,village,0,0,50,0,none,none
+gn:310789,Kale,Denizli,7255,village,0,0,50,0,none,none
+gn:310798,Kaldırım,Adana,1146,village,0,0,50,0,none,none
+gn:310807,Kaleburcu,Mersin,1102,village,0,0,50,0,none,none
+gn:310824,Kalafat,Canakkale,1061,village,0,0,50,0,none,none
+gn:310838,Kaklık,Denizli,4909,village,0,0,50,0,none,none
+gn:310839,Kaklıç,İzmir Province,1618,village,0,0,50,0,none,none
+gn:310855,Kâhta,Adıyaman Province,97875,town,0,0,50,0,none,none
+gn:310859,Kahramanmaraş,Kahramanmaraş,384953,city,0,0,50,0,none,none
+gn:310860,Kahraman,Aydın,1003,village,0,0,50,0,none,none
+gn:310888,Kadışehri,Yozgat,5722,village,0,0,50,0,none,none
+gn:310892,Kadirli,Osmaniye,70248,town,0,0,50,0,none,none
+gn:310907,Kadınhanı,Konya,15301,town,0,0,50,0,none,none
+gn:310923,Karalarbahşiş,Mersin,1235,village,0,0,50,0,none,none
+gn:310937,Kadıköy,Aydın,1752,village,0,0,50,0,none,none
+gn:310975,Kabasakal,Adana,1625,village,0,0,50,0,none,none
+gn:310982,Kabala,Mardin,9275,village,0,0,50,0,none,none
+gn:310983,Kabakum,İzmir Province,1812,village,0,0,50,0,none,none
+gn:311014,Kabahaydar,Şanlıurfa,0,village,0,0,50,0,none,none
+gn:311046,İzmir,İzmir Province,2938292,large-city,0,0,50,0,none,none
+gn:311054,İvrindi,Balıkesir,6119,village,0,0,50,0,none,none
+gn:311073,Isparta,Isparta,172334,city,0,0,50,0,none,none
+gn:311078,Yuntdağ,İzmir Province,0,village,0,0,50,0,none,none
+gn:311104,İslahiye,Gaziantep,0,village,0,0,50,0,none,none
+gn:311111,İskenderun,Hatay,251682,city,0,0,50,0,none,none
+gn:311141,Işıklı,Aydın,4830,village,0,0,50,0,none,none
+gn:311144,Işıklı,Gaziantep,2760,village,0,0,50,0,none,none
+gn:311159,Işıklar,Afyonkarahisar Province,7250,village,0,0,50,0,none,none
+gn:311183,İshaklı,Denizli,189,village,0,0,50,0,none,none
+gn:311191,İşgören,Mardin,1017,village,0,0,50,0,none,none
+gn:311193,İscehisar,Afyonkarahisar Province,11809,town,0,0,50,0,none,none
+gn:311214,İsabeyli,Aydın,4649,village,0,0,50,0,none,none
+gn:311261,İnönü,Eskişehir,0,village,0,0,50,0,none,none
+gn:311264,İnönü,Karaman,5552,village,0,0,50,0,none,none
+gn:311271,İnlice,Adıyaman Province,1851,village,0,0,50,0,none,none
+gn:311277,İnli,Afyonkarahisar Province,1508,village,0,0,50,0,none,none
+gn:311308,Zey,Adıyaman Province,4535,village,0,0,50,0,none,none
+gn:311314,İncirliova,Aydın,18572,town,0,0,50,0,none,none
+gn:311350,Mebusevleri,Ankara,4338,village,0,0,50,0,none,none
+gn:311358,İncesu,Kayseri,0,village,0,0,50,0,none,none
+gn:311361,İncesu,Aksaray,1654,village,0,0,50,0,none,none
+gn:311381,İncek,Ankara,5578,village,0,0,50,0,none,none
+gn:311383,İncehıdır,Diyarbakır Province,1622,village,0,0,50,0,none,none
+gn:311431,İmrahor,Antalya,1672,village,0,0,50,0,none,none
+gn:311433,İmranlı,Sivas,7192,village,0,0,50,0,none,none
+gn:311453,İmamoğlu,Adana,31916,town,0,0,50,0,none,none
+gn:311469,İlyaslı,Uşak,2035,village,0,0,50,0,none,none
+gn:311501,Ilıdağ,Aydın,1534,village,0,0,50,0,none,none
+gn:311533,Ilıca,Erzurum,12922,town,0,0,50,0,none,none
+gn:311535,Ilıca,Balıkesir,0,village,0,0,50,0,none,none
+gn:311538,Ilıcalar,Bingöl,0,village,0,0,50,0,none,none
+gn:311547,İliç,Erzincan,5003,village,0,0,50,0,none,none
+gn:311553,Ilgın,Konya,27423,town,0,0,50,0,none,none
+gn:311599,İkizce,Ankara,0,village,0,0,50,0,none,none
+gn:311603,İkizce,Gaziantep,1176,village,0,0,50,0,none,none
+gn:311628,İkiköprü,Batman,4065,village,0,0,50,0,none,none
+gn:311645,İhsaniye,Afyonkarahisar Province,5767,village,0,0,50,0,none,none
+gn:311665,Iğdır,Iğdır,101700,city,0,0,50,0,none,none
+gn:311668,İğdir,Mersin,1216,village,0,0,50,0,none,none
+gn:311704,İdil,Şırnak,22960,town,0,0,50,0,none,none
+gn:311708,İçören,Mardin,1677,village,0,0,50,0,none,none
+gn:311711,İçmeler,Muğla,9604,village,0,0,50,0,none,none
+gn:311713,İçme,Elazığ,0,village,0,0,50,0,none,none
+gn:311777,Hüyük,Konya,11502,town,0,0,50,0,none,none
+gn:311847,Çayyazı,Antalya,1831,village,0,0,50,0,none,none
+gn:311869,Hozat,Tunceli,8105,village,0,0,50,0,none,none
+gn:311877,Hotamış,Konya,0,village,0,0,50,0,none,none
+gn:311891,Hoşhaber,Iğdır,2732,village,0,0,50,0,none,none
+gn:311903,Horsunlu,Aydın,2177,village,0,0,50,0,none,none
+gn:311962,Honaz,Denizli,7974,village,0,0,50,0,none,none
+gn:311994,Hocalar,Afyonkarahisar Province,2588,village,0,0,50,0,none,none
+gn:311998,Gyundyukoru,Mardin,1507,village,0,0,50,0,none,none
+gn:312001,Selçuklu,Konya,0,village,0,0,50,0,none,none
+gn:312024,Hizan,Bitlis,15302,town,0,0,50,0,none,none
+gn:312051,Hisarcık,Kütahya,0,village,0,0,50,0,none,none
+gn:312073,Hisar,Batman,2194,village,0,0,50,0,none,none
+gn:312114,Hınıs,Erzurum,35472,town,0,0,50,0,none,none
+gn:312129,Himmetli,Adana,1003,village,0,0,50,0,none,none
+gn:312132,Himmetdede,Kayseri,0,village,0,0,50,0,none,none
+gn:312134,Hilvan,Şanlıurfa,16990,town,0,0,50,0,none,none
+gn:312143,Hilal,Şırnak,2606,village,0,0,50,0,none,none
+gn:312151,Hıdırlı,Adana,4718,village,0,0,50,0,none,none
+gn:312153,Hıdırbeyli,Aydın,1723,village,0,0,50,0,none,none
+gn:312156,Hıdırbey,Hatay,27057,town,0,0,50,0,none,none
+gn:312157,Hıdırbaba,Elazığ,0,village,0,0,50,0,none,none
+gn:312216,Hendekköy,Diyarbakır Province,1018,village,0,0,50,0,none,none
+gn:312245,Hekimhan,Malatya,13946,town,0,0,50,0,none,none
+gn:312246,Hekimdağ,Eskişehir,0,village,0,0,50,0,none,none
+gn:312253,Hazro,Diyarbakır Province,6291,village,0,0,50,0,none,none
+gn:312289,Haymana,Ankara,11896,town,0,0,50,0,none,none
+gn:312314,Haydarlı,Afyonkarahisar Province,0,village,0,0,50,0,none,none
+gn:312344,Havutlu,Adana,4639,village,0,0,50,0,none,none
+gn:312355,Havran,Balıkesir,11050,town,0,0,50,0,none,none
+gn:312363,Hatunsaray,Konya,0,village,0,0,50,0,none,none
+gn:312380,Hatipler,Antalya,3477,village,0,0,50,0,none,none
+gn:312388,Hatip,Konya,0,village,0,0,50,0,none,none
+gn:312405,Hassa,Hatay,9719,village,0,0,50,0,none,none
+gn:312406,Alacakaya,Elazığ,0,village,0,0,50,0,none,none
+gn:312416,Hasköy,Muş,0,village,0,0,50,0,none,none
+gn:312422,Hasyurt,Antalya,5751,village,0,0,50,0,none,none
+gn:312441,Hasbek,Yozgat,0,village,0,0,50,0,none,none
+gn:312479,Hasankeyf,Batman,3676,village,0,0,50,0,none,none
+gn:312484,Hasanhan,Iğdır,2143,village,0,0,50,0,none,none
+gn:312501,Hasançelebi,Malatya,0,village,0,0,50,0,none,none
+gn:312502,Hasancalı,Kilis,1616,village,0,0,50,0,none,none
+gn:312504,Hasanbeyli,Osmaniye,6315,village,0,0,50,0,none,none
+gn:312523,Düziçi,Osmaniye,0,village,0,0,50,0,none,none
+gn:312531,Harran,Şanlıurfa,13640,town,0,0,50,0,none,none
+gn:312532,Harput,Elazığ,0,village,0,0,50,0,none,none
+gn:312543,Harmanlı,Adıyaman Province,0,village,0,0,50,0,none,none
+gn:312555,Harmandalı,İzmir Province,2826,village,0,0,50,0,none,none
+gn:312558,Harmancık,Bursa Province,0,village,0,0,50,0,none,none
+gn:312579,Harbiye,Hatay,0,village,0,0,50,0,none,none
+gn:312649,Han,Eskişehir,0,village,0,0,50,0,none,none
+gn:312653,Hankendi,Elazığ,0,village,0,0,50,0,none,none
+gn:312659,Hanımçiftliği,Malatya,13322,town,0,0,50,0,none,none
+gn:312663,Hani,Diyarbakır Province,11055,town,0,0,50,0,none,none
+gn:312698,Yeni Mahallesi,Iğdır,1213,village,0,0,50,0,none,none
+gn:312699,Hanköy,Şanlıurfa,2123,village,0,0,50,0,none,none
+gn:312708,Hamzalı,Diyarbakır Province,0,village,0,0,50,0,none,none
+gn:312731,Hamur,Ağrı,2858,village,0,0,50,0,none,none
+gn:312771,Hamdibey,Canakkale,1685,village,0,0,50,0,none,none
+gn:312817,Halkapınar,Konya,2101,village,0,0,50,0,none,none
+gn:312825,Halitpaşa,Manisa,0,village,0,0,50,0,none,none
+gn:312843,Halilçavuş,Erzurum,0,village,0,0,50,0,none,none
+gn:312862,Halfeti,Şanlıurfa,3261,village,0,0,50,0,none,none
+gn:312863,Halfeli,Iğdır,8365,village,0,0,50,0,none,none
+gn:312887,Tuzla,Adana,1874,village,0,0,50,0,none,none
+gn:312894,Hafik,Sivas,3462,village,0,0,50,0,none,none
+gn:312899,Hadim,Konya,20110,town,0,0,50,0,none,none
+gn:312924,Hacıveliler,Antalya,2376,village,0,0,50,0,none,none
+gn:312978,Ağılboğazı,Adana,1220,village,0,0,50,0,none,none
+gn:313008,Hacılar,Bingöl,1002,village,0,0,50,0,none,none
+gn:313013,Hacılar,Kayseri,21167,town,0,0,50,0,none,none
+gn:313073,Hacıhalilarpaç,Mersin,1047,village,0,0,50,0,none,none
+gn:313110,Hacıbektaş,Nevşehir Province,6873,village,0,0,50,0,none,none
+gn:313130,Aydınlar,Elazığ,0,village,0,0,50,0,none,none
+gn:313179,Haberli,Mardin,174,village,0,0,50,0,none,none
+gn:313184,Gücünkaya,Aksaray,1222,village,0,0,50,0,none,none
+gn:313199,Güzelyurt,Aksaray,3748,village,0,0,50,0,none,none
+gn:313205,Güzelsu,Bitlis,1851,village,0,0,50,0,none,none
+gn:313207,Güzelsu,Van,0,village,0,0,50,0,none,none
+gn:313209,Güzelsu,Antalya,106,village,0,0,50,0,none,none
+gn:313214,Güzeloluk,Mersin,618,village,0,0,50,0,none,none
+gn:313248,Güzelçamlı,Aydın,7981,village,0,0,50,0,none,none
+gn:313251,Güzelbağ,Antalya,0,village,0,0,50,0,none,none
+gn:313267,Güvercinlik,Muğla,1416,village,0,0,50,0,none,none
+gn:313304,Güveçli,Bingöl,1268,village,0,0,50,0,none,none
+gn:313314,Gürün,Sivas,12715,town,0,0,50,0,none,none
+gn:313328,Gürpınar,Van,0,village,0,0,50,0,none,none
+gn:313331,Güroymak,Bitlis,25826,town,0,0,50,0,none,none
+gn:313368,Güre,Uşak,0,village,0,0,50,0,none,none
+gn:313379,Gürbüz,Diyarbakır Province,5550,village,0,0,50,0,none,none
+gn:313381,Gürbulak,Ağrı,1925,village,0,0,50,0,none,none
+gn:313393,Günyüzü,Eskişehir,0,village,0,0,50,0,none,none
+gn:313481,Güney,Denizli,753,village,0,0,50,0,none,none
+gn:313482,Güney,Burdur,1067,village,0,0,50,0,none,none
+gn:313493,Güneşli,Aksaray,1621,village,0,0,50,0,none,none
+gn:313500,Güneren,Şanlıurfa,3185,village,0,0,50,0,none,none
+gn:313526,Gündoğmuş,Antalya,5792,village,0,0,50,0,none,none
+gn:313575,Gümüşsu,Denizli,0,village,0,0,50,0,none,none
+gn:313593,Gümüşkent,Nevşehir Province,0,village,0,0,50,0,none,none
+gn:313595,Gümüşkaya,Adıyaman Province,1800,village,0,0,50,0,none,none
+gn:313617,Gümüşakar,Erzincan,0,village,0,0,50,0,none,none
+gn:313635,Gülyazı,Şırnak,3372,village,0,0,50,0,none,none
+gn:313640,Gülveren,Mardin,2162,village,0,0,50,0,none,none
+gn:313658,Gülşehir,Nevşehir Province,9740,village,0,0,50,0,none,none
+gn:313660,Gülpınar,Canakkale,1232,village,0,0,50,0,none,none
+gn:313669,Gülnar,Mersin,12385,town,0,0,50,0,none,none
+gn:313680,Güllük,Muğla,0,village,0,0,50,0,none,none
+gn:313709,Güllübahçe,Aydın,1324,village,0,0,50,0,none,none
+gn:313713,Güllü,Uşak,2000,village,0,0,50,0,none,none
+gn:313728,Yenisu,Bingöl,0,village,0,0,50,0,none,none
+gn:313742,Güleçler,Siirt,1102,village,0,0,50,0,none,none
+gn:313744,Başköy,Erzincan,0,village,0,0,50,0,none,none
+gn:313791,Gücük,Kahramanmaraş,0,village,0,0,50,0,none,none
+gn:313794,Güçlükonak,Şırnak,4549,village,0,0,50,0,none,none
+gn:313825,Gözpınar,Siirt,3574,village,0,0,50,0,none,none
+gn:313827,Gözne,Mersin,0,village,0,0,50,0,none,none
+gn:313829,Gözlükuyu,Aksaray,1294,village,0,0,50,0,none,none
+gn:313840,Gözler,Denizli,2083,village,0,0,50,0,none,none
+gn:313857,Gözeli,Elazığ,0,village,0,0,50,0,none,none
+gn:313892,Göynük,Bingöl,0,village,0,0,50,0,none,none
+gn:313900,Göynük,Antalya,7868,village,0,0,50,0,none,none
+gn:313905,Payamlı,Şanlıurfa,0,village,0,0,50,0,none,none
+gn:313922,Bisbin,Şırnak,3196,village,0,0,50,0,none,none
+gn:313947,Göreme,Nevşehir Province,6350,village,0,0,50,0,none,none
+gn:313960,Gördes,Manisa,11168,town,0,0,50,0,none,none
+gn:313973,Gönen,Isparta,14137,town,0,0,50,0,none,none
+gn:313995,Gömeç,Balıkesir,4380,village,0,0,50,0,none,none
+gn:314000,Gömbe,Antalya,1260,village,0,0,50,0,none,none
+gn:314033,Gölova,Antalya,649,village,0,0,50,0,none,none
+gn:314036,Gölören,Konya,0,village,0,0,50,0,none,none
+gn:314038,Gölmarmara,Manisa,12857,town,0,0,50,0,none,none
+gn:314044,Göllü,Kırşehir,0,village,0,0,50,0,none,none
+gn:314072,Gölhisar,Burdur,12721,town,0,0,50,0,none,none
+gn:314075,Gölgelikonak,Siirt,4863,village,0,0,50,0,none,none
+gn:314085,Göldüzü,Bitlis,0,village,0,0,50,0,none,none
+gn:314106,Gölcük,Balıkesir,0,village,0,0,50,0,none,none
+gn:314116,Gölcük,Şanlıurfa,0,village,0,0,50,0,none,none
+gn:314133,Gölbaşı,Ankara,165201,city,0,0,50,0,none,none
+gn:314136,Gölbaşı,Adıyaman Province,28078,town,0,0,50,0,none,none
+gn:314162,Göktepe,Muğla,0,village,0,0,50,0,none,none
+gn:314165,Göktepe,Karaman,0,village,0,0,50,0,none,none
+gn:314182,Göktaş,Mardin,1236,village,0,0,50,0,none,none
+gn:314185,Göksüncük,Gaziantep,2533,village,0,0,50,0,none,none
+gn:314188,Göksun,Kahramanmaraş,34243,town,0,0,50,0,none,none
+gn:314200,Göksu,Erzurum,0,village,0,0,50,0,none,none
+gn:314206,Gökpınar,Antalya,1177,village,0,0,50,0,none,none
+gn:314214,Gökoğlan,Erzurum,0,village,0,0,50,0,none,none
+gn:314225,Gökler,Kütahya,2000,village,0,0,50,0,none,none
+gn:314229,Gökköy,Balıkesir,1428,village,0,0,50,0,none,none
+gn:314262,Gökdere,Elazığ,0,village,0,0,50,0,none,none
+gn:314279,Gökçeyazı,Balıkesir,0,village,0,0,50,0,none,none
+gn:314299,Gökçeören,Manisa,0,village,0,0,50,0,none,none
+gn:314300,Gökçeören,Antalya,1455,village,0,0,50,0,none,none
+gn:314302,Gökçen,İzmir Province,2499,village,0,0,50,0,none,none
+gn:314319,Gökçeler,Adana,1204,village,0,0,50,0,none,none
+gn:314324,Gökçekoru,Siirt,1045,village,0,0,50,0,none,none
+gn:314330,Gökçek,Afyonkarahisar Province,1670,village,0,0,50,0,none,none
+gn:314339,Gökçedağ,Balıkesir,0,village,0,0,50,0,none,none
+gn:314350,Gökçebağ,Siirt,2583,village,0,0,50,0,none,none
+gn:314351,Gökçebağ,Burdur,1215,village,0,0,50,0,none,none
+gn:314353,Gökçealan,İzmir Province,1033,village,0,0,50,0,none,none
+gn:314363,Salda,Burdur,1083,village,0,0,50,0,none,none
+gn:314364,Gökçe,Mardin,4729,village,0,0,50,0,none,none
+gn:314373,Gökbudak,Siirt,1066,village,0,0,50,0,none,none
+gn:314412,Gödekli,Iğdır,2049,village,0,0,50,0,none,none
+gn:314422,Göçerli,Afyonkarahisar Province,1093,village,0,0,50,0,none,none
+gn:314434,Göçbeyli,İzmir Province,1549,village,0,0,50,0,none,none
+gn:314459,Girmeli,Mardin,0,village,0,0,50,0,none,none
+gn:314526,Geyikpınar,Bitlis,0,village,0,0,50,0,none,none
+gn:314529,Geyikli,Canakkale,3029,village,0,0,50,0,none,none
+gn:314557,Gevaş,Van,11879,town,0,0,50,0,none,none
+gn:314559,Gesi,Kayseri,0,village,0,0,50,0,none,none
+gn:314573,Germencik,Aydın,11217,town,0,0,50,0,none,none
+gn:314578,Geriş,Antalya,0,village,0,0,50,0,none,none
+gn:314599,Gerali,Denizli,1257,village,0,0,50,0,none,none
+gn:314601,Gerdibi,Adana,1143,village,0,0,50,0,none,none
+gn:314608,Gercüş,Batman,8590,village,0,0,50,0,none,none
+gn:314611,Gercebahşiş,Mersin,1359,village,0,0,50,0,none,none
+gn:314635,Gencek,Konya,0,village,0,0,50,0,none,none
+gn:314648,Genç,Bingöl,22493,town,0,0,50,0,none,none
+gn:314665,Gemerek,Sivas,16916,town,0,0,50,0,none,none
+gn:314677,Gelinkaya,Mardin,6470,village,0,0,50,0,none,none
+gn:314698,Gelendost,Isparta,7274,village,0,0,50,0,none,none
+gn:314704,Gelembe,Manisa,0,village,0,0,50,0,none,none
+gn:314706,Sevinçli,Aksaray,1618,village,0,0,50,0,none,none
+gn:314716,Gediz,Kütahya,26253,town,0,0,50,0,none,none
+gn:314731,Gedikler,Tunceli,0,village,0,0,50,0,none,none
+gn:314742,Timar,Van,0,village,0,0,50,0,none,none
+gn:314744,Gedikbaşı,Sivas,0,village,0,0,50,0,none,none
+gn:314766,Geçitli,Hakkâri,0,village,0,0,50,0,none,none
+gn:314767,Geçitli,Adana,2259,village,0,0,50,0,none,none
+gn:314790,Gebiz,Antalya,0,village,0,0,50,0,none,none
+gn:314812,Gazipaşa,Antalya,18371,town,0,0,50,0,none,none
+gn:314822,Gazi,Adana,1283,village,0,0,50,0,none,none
+gn:314826,Gaziemir,İzmir Province,0,village,0,0,50,0,none,none
+gn:314830,Gaziantep,Gaziantep,2222415,large-city,0,0,50,0,none,none
+gn:314858,Garipçe,Afyonkarahisar Province,1144,village,0,0,50,0,none,none
+gn:314903,Foça,İzmir Province,28594,town,0,0,50,0,none,none
+gn:314919,Fırdan,Kütahya,1149,village,0,0,50,0,none,none
+gn:314923,Finike,Antalya,9250,village,0,0,50,0,none,none
+gn:314936,Fındık,Şırnak,0,village,0,0,50,0,none,none
+gn:314955,Fevzipaşa,Gaziantep,1173,village,0,0,50,0,none,none
+gn:314967,Fethiye,Muğla,60437,town,0,0,50,0,none,none
+gn:314996,Felahiye,Kayseri,5716,village,0,0,50,0,none,none
+gn:315000,Feke,Adana,4592,village,0,0,50,0,none,none
+gn:315061,Ezine,Canakkale,15677,town,0,0,50,0,none,none
+gn:315081,Eymirli,Mardin,1021,village,0,0,50,0,none,none
+gn:315086,Ataeymir,Aydın,1099,village,0,0,50,0,none,none
+gn:315104,Evrenseki,Antalya,2615,village,0,0,50,0,none,none
+gn:315127,Evciler,Canakkale,1346,village,0,0,50,0,none,none
+gn:315132,Evciler,Afyonkarahisar Province,4902,village,0,0,50,0,none,none
+gn:315138,Evci,Iğdır,1302,village,0,0,50,0,none,none
+gn:315153,Etlik,Ankara,32156,town,0,0,50,0,none,none
+gn:315155,Etimesgut,Ankara,0,village,0,0,50,0,none,none
+gn:315156,Etili,Canakkale,0,village,0,0,50,0,none,none
+gn:315183,Eşme,Uşak,11000,town,0,0,50,0,none,none
+gn:315185,Eşme,Mardin,1316,village,0,0,50,0,none,none
+gn:315202,Eskişehir,Eskişehir,921630,large-city,0,0,50,0,none,none
+gn:315218,Eskil,Aksaray,0,village,0,0,50,0,none,none
+gn:315250,Eskihisar,Aydın,1129,village,0,0,50,0,none,none
+gn:315334,Esendere,Hakkâri,0,village,0,0,50,0,none,none
+gn:315346,Eşen,Muğla,0,village,0,0,50,0,none,none
+gn:315368,Erzurum,Erzurum,767848,large-city,0,0,50,0,none,none
+gn:315373,Erzincan,Erzincan,150714,city,0,0,50,0,none,none
+gn:315378,Eruh,Siirt,7868,village,0,0,50,0,none,none
+gn:315380,Ertuğrul,Balıkesir,0,village,0,0,50,0,none,none
+gn:315401,Ermenek,Karaman,16986,town,0,0,50,0,none,none
+gn:315408,Erköklü,Batman,1099,village,0,0,50,0,none,none
+gn:315410,Erkilet,Kayseri,0,village,0,0,50,0,none,none
+gn:315417,Ergeçli,Ağrı,1096,village,0,0,50,0,none,none
+gn:315435,Erikli,Gaziantep,1126,village,0,0,50,0,none,none
+gn:315468,Ergani,Diyarbakır Province,52684,town,0,0,50,0,none,none
+gn:315471,Erentepe,Muş,0,village,0,0,50,0,none,none
+gn:315498,Ereğli,Konya,156253,city,0,0,50,0,none,none
+gn:315504,Erdoğmuş,Kütahya,1325,village,0,0,50,0,none,none
+gn:315515,Erdemli,Mersin,46570,town,0,0,50,0,none,none
+gn:315530,Erciş,Van,91915,town,0,0,50,0,none,none
+gn:315535,Erçek,Van,0,village,0,0,50,0,none,none
+gn:315553,Kaşlıca,Adıyaman Province,1315,village,0,0,50,0,none,none
+gn:315559,Enginalan,Iğdır,3096,village,0,0,50,0,none,none
+gn:315609,Bulucan,Sivas,0,village,0,0,50,0,none,none
+gn:315617,Emirgazi,Konya,8466,village,0,0,50,0,none,none
+gn:315621,Emirdağ,Afyonkarahisar Province,20063,town,0,0,50,0,none,none
+gn:315629,Emiralem,İzmir Province,0,village,0,0,50,0,none,none
+gn:315639,Emet,Kütahya,23812,town,0,0,50,0,none,none
+gn:315655,Elvanlı,Mersin,2143,village,0,0,50,0,none,none
+gn:315665,Güneysınır,Konya,0,village,0,0,50,0,none,none
+gn:315697,Elmalı,Antalya,16587,town,0,0,50,0,none,none
+gn:315720,Elmadağ,Ankara,25394,town,0,0,50,0,none,none
+gn:315743,Elikesik,Antalya,2118,village,0,0,50,0,none,none
+gn:315746,Elifköy,Gaziantep,3978,village,0,0,50,0,none,none
+gn:315758,Eleşkirt,Ağrı,9788,village,0,0,50,0,none,none
+gn:315795,Elbistan,Kahramanmaraş,80456,town,0,0,50,0,none,none
+gn:315800,Elbeyli,Kilis,2224,village,0,0,50,0,none,none
+gn:315806,Elbaşı,Kayseri,0,village,0,0,50,0,none,none
+gn:315808,Elazığ,Elazığ,443363,city,0,0,50,0,none,none
+gn:315809,Elaçmaz,Van,1064,village,0,0,50,0,none,none
+gn:315831,Ekinyolu,Bingöl,1432,village,0,0,50,0,none,none
+gn:315835,Ekinözü,Kahramanmaraş,6298,village,0,0,50,0,none,none
+gn:315893,Üçpınar,Manisa,1303,village,0,0,50,0,none,none
+gn:315905,Eğirdir,Isparta,16891,town,0,0,50,0,none,none
+gn:315915,Eğrice,Kahramanmaraş,1156,village,0,0,50,0,none,none
+gn:315953,Eğil,Diyarbakır Province,4820,village,0,0,50,0,none,none
+gn:315972,Kocasinan,Kayseri,0,village,0,0,50,0,none,none
+gn:315980,Efeköy,Afyonkarahisar Province,1196,village,0,0,50,0,none,none
+gn:315985,Edremit,Balıkesir,40777,town,0,0,50,0,none,none
+gn:316028,Düzova,Şırnak,1573,village,0,0,50,0,none,none
+gn:316047,Düzce,İzmir Province,1307,village,0,0,50,0,none,none
+gn:316072,Dutluca,Erzincan,0,village,0,0,50,0,none,none
+gn:316096,Duruca,Mardin,3846,village,0,0,50,0,none,none
+gn:316102,Dursunbey,Balıkesir,17532,town,0,0,50,0,none,none
+gn:316134,Durak,Balıkesir,0,village,0,0,50,0,none,none
+gn:316165,Dumlupınar,Kütahya,3179,village,0,0,50,0,none,none
+gn:316214,Düğrek,Muğla,5973,village,0,0,50,0,none,none
+gn:316223,Sumbas,Osmaniye,0,village,0,0,50,0,none,none
+gn:316240,Duacı,Antalya,2837,village,0,0,50,0,none,none
+gn:316262,Döşemealtı,Antalya,0,village,0,0,50,0,none,none
+gn:316266,Dorutay,Van,0,village,0,0,50,0,none,none
+gn:316270,Dorumali,Şanlıurfa,1243,village,0,0,50,0,none,none
+gn:316284,Dörtyol,Hatay,56513,town,0,0,50,0,none,none
+gn:316312,Donduran,Aydın,1019,village,0,0,50,0,none,none
+gn:316329,Dombay,Afyonkarahisar Province,93,village,0,0,50,0,none,none
+gn:316330,Domaniç,Kütahya,5015,village,0,0,50,0,none,none
+gn:316376,Yeşilyurt,Gaziantep,3918,village,0,0,50,0,none,none
+gn:316411,Doğubayazıt,Ağrı,81136,town,0,0,50,0,none,none
+gn:316431,Doğanyol,Malatya,6332,village,0,0,50,0,none,none
+gn:316438,Doğansu,Ağrı,4935,village,0,0,50,0,none,none
+gn:316440,Doğanşehir,Malatya,14794,town,0,0,50,0,none,none
+gn:316443,Doğanpınar,Gaziantep,908,village,0,0,50,0,none,none
+gn:316466,Doğanköy,Siirt,1969,village,0,0,50,0,none,none
+gn:316469,Doğankent,Adana,5130,village,0,0,50,0,none,none
+gn:316473,Doğankavak,Batman,2132,village,0,0,50,0,none,none
+gn:316475,Doğanhisar,Konya,9857,village,0,0,50,0,none,none
+gn:316497,Doğanca,Siirt,1969,village,0,0,50,0,none,none
+gn:316501,Doğanbeyli,Erzincan,0,village,0,0,50,0,none,none
+gn:316505,Doğanbey,Konya,0,village,0,0,50,0,none,none
+gn:316525,Dodurga,Bilecik,2398,village,0,0,50,0,none,none
+gn:316541,Diyarbakır,Diyarbakır Province,1833684,large-city,0,0,50,0,none,none
+gn:316542,Diyadin,Ağrı,18936,town,0,0,50,0,none,none
+gn:316544,Divriği,Sivas,13139,town,0,0,50,0,none,none
+gn:316592,Direkli,Sivas,0,village,0,0,50,0,none,none
+gn:316625,Dinek,Konya,0,village,0,0,50,0,none,none
+gn:316634,Dinar,Afyonkarahisar Province,35359,town,0,0,50,0,none,none
+gn:316654,Dilektepe,Siirt,235,village,0,0,50,0,none,none
+gn:316667,Dilek,Malatya,7321,village,0,0,50,0,none,none
+gn:316726,Dikili,İzmir Province,14125,town,0,0,50,0,none,none
+gn:316746,Dicle,Diyarbakır Province,13017,town,0,0,50,0,none,none
+gn:316748,Dicle,Şırnak,1695,village,0,0,50,0,none,none
+gn:316795,Develi,Kayseri,35868,town,0,0,50,0,none,none
+gn:316823,Devecikonağı,Bursa Province,0,village,0,0,50,0,none,none
+gn:316876,Derinsu,Mardin,1418,village,0,0,50,0,none,none
+gn:316877,Derinkuyu,Nevşehir Province,12408,town,0,0,50,0,none,none
+gn:316899,Derik,Mardin,0,village,0,0,50,0,none,none
+gn:316909,Dereyanı,Mardin,1111,village,0,0,50,0,none,none
+gn:316960,Turanlı,İzmir Province,0,village,0,0,50,0,none,none
+gn:317049,Derebucak,Konya,5035,village,0,0,50,0,none,none
+gn:317075,Dere,Tunceli,0,village,0,0,50,0,none,none
+gn:317095,Derbent,Konya,7919,village,0,0,50,0,none,none
+gn:317109,Denizli,Denizli,313238,city,0,0,50,0,none,none
+gn:317133,Demiryol,Batman,1388,village,0,0,50,0,none,none
+gn:317177,Adala,Manisa,0,village,0,0,50,0,none,none
+gn:317179,Demirköprü,Hatay,1011,village,0,0,50,0,none,none
+gn:317227,Demirciler,Antalya,1337,village,0,0,50,0,none,none
+gn:317236,Demirci,Bursa Province,14824,town,0,0,50,0,none,none
+gn:317241,Demirci,Manisa,21378,town,0,0,50,0,none,none
+gn:317272,Atalar,Mersin,1599,village,0,0,50,0,none,none
+gn:317294,Deliktaş,Sivas,0,village,0,0,50,0,none,none
+gn:317332,Delice,Kırıkkale,12286,town,0,0,50,0,none,none
+gn:317343,Deliçay,Van,0,village,0,0,50,0,none,none
+gn:317390,Değirmendüzü,Ağrı,2986,village,0,0,50,0,none,none
+gn:317413,Değirmendere,İzmir Province,0,village,0,0,50,0,none,none
+gn:317490,Dedebağı,Denizli,1729,village,0,0,50,0,none,none
+gn:317496,Dazkırı,Afyonkarahisar Province,6450,village,0,0,50,0,none,none
+gn:317515,Davutlar,Aydın,9484,village,0,0,50,0,none,none
+gn:317524,Davulga,Afyonkarahisar Province,557,village,0,0,50,0,none,none
+gn:317543,Datça,Muğla,10121,town,0,0,50,0,none,none
+gn:317570,Darıkent,Tunceli,254,village,0,0,50,0,none,none
+gn:317587,Dargeçit,Mardin,20793,town,0,0,50,0,none,none
+gn:317588,Darende,Malatya,20388,town,0,0,50,0,none,none
+gn:317592,Darboğaz,Niğde Province,1479,village,0,0,50,0,none,none
+gn:317616,Danişment,Balıkesir,0,village,0,0,50,0,none,none
+gn:317666,Damlacık,Adıyaman Province,500,village,0,0,50,0,none,none
+gn:317681,Dalyan,Muğla,5000,village,0,0,50,0,none,none
+gn:317696,Dallıbahçe,Tunceli,0,village,0,0,50,0,none,none
+gn:317719,Dalama,Aydın,1828,village,0,0,50,0,none,none
+gn:317732,Dağyolu,Tunceli,0,village,0,0,50,0,none,none
+gn:317749,Dağlıca,Hakkâri,0,village,0,0,50,0,none,none
+gn:317752,Dağkızılca,İzmir Province,0,village,0,0,50,0,none,none
+gn:317762,Serhatta,Siirt,1022,village,0,0,50,0,none,none
+gn:317784,Dağ,Antalya,0,village,0,0,50,0,none,none
+gn:317786,Dağbaşı,Şanlıurfa,0,village,0,0,50,0,none,none
+gn:317790,Dağardı,Kütahya,0,village,0,0,50,0,none,none
+gn:317801,Dadaşköy,Erzurum,0,village,0,0,50,0,none,none
+gn:317837,Çüngüş,Diyarbakır Province,5103,village,0,0,50,0,none,none
+gn:317844,Çumra,Konya,45657,town,0,0,50,0,none,none
+gn:317851,Menderes,İzmir Province,21965,town,0,0,50,0,none,none
+gn:317859,Cumalı,Antalya,2135,village,0,0,50,0,none,none
+gn:317864,Cumaçay,Ağrı,341,village,0,0,50,0,none,none
+gn:317868,Akziyaret,Şanlıurfa,0,village,0,0,50,0,none,none
+gn:317953,Çukurca,Hakkâri,8843,village,0,0,50,0,none,none
+gn:317956,Çukurbağ,Ağrı,1229,village,0,0,50,0,none,none
+gn:317970,Özvatan,Kayseri,0,village,0,0,50,0,none,none
+gn:318012,Camili,Adana,1682,village,0,0,50,0,none,none
+gn:318020,Düvertepe,Balıkesir,0,village,0,0,50,0,none,none
+gn:318103,Çömçeli,Diyarbakır Province,1795,village,0,0,50,0,none,none
+gn:318137,Hakkâri,Hakkâri,77699,town,0,0,50,0,none,none
+gn:318141,Çolaklı,Malatya,0,village,0,0,50,0,none,none
+gn:318177,Çokak,Kahramanmaraş,0,village,0,0,50,0,none,none
+gn:318227,Çobanlar,Afyonkarahisar Province,0,village,0,0,50,0,none,none
+gn:318253,Cizre,Şırnak,134041,city,0,0,50,0,none,none
+gn:318264,Çivril,Denizli,14002,town,0,0,50,0,none,none
+gn:318303,Çırpı,İzmir Province,0,village,0,0,50,0,none,none
+gn:318372,Çine,Aydın,21327,town,0,0,50,0,none,none
+gn:318396,Çınaraltı,Mardin,1334,village,0,0,50,0,none,none
+gn:318404,Çınar,Diyarbakır Province,0,village,0,0,50,0,none,none
+gn:318405,Çınarköy,Diyarbakır Province,1080,village,0,0,50,0,none,none
+gn:318496,Evren,Ankara,0,village,0,0,50,0,none,none
+gn:318506,Cihanbeyli,Konya,13782,town,0,0,50,0,none,none
+gn:318508,Cihadiye,Adana,1901,village,0,0,50,0,none,none
+gn:318522,Çığlı,Hakkâri,1820,village,0,0,50,0,none,none
+gn:318526,Çığır,Şırnak,1965,village,0,0,50,0,none,none
+gn:318531,Çiğil,Konya,0,village,0,0,50,0,none,none
+gn:318551,Başaran,Aydın,1161,village,0,0,50,0,none,none
+gn:318567,Çiftlikköyü,Şırnak,1865,village,0,0,50,0,none,none
+gn:318576,Çiftlik,Erzurum,0,village,0,0,50,0,none,none
+gn:318577,Çiftlikköy,Ağrı,1434,village,0,0,50,0,none,none
+gn:318580,Melikgazi,Kayseri,0,village,0,0,50,0,none,none
+gn:318581,Çiftlik,Niğde Province,0,village,0,0,50,0,none,none
+gn:318603,Çifteler,Eskişehir,10166,town,0,0,50,0,none,none
+gn:318609,Çiftehan,Niğde Province,0,village,0,0,50,0,none,none
+gn:318623,Çiçektepe,Afyonkarahisar Province,1251,village,0,0,50,0,none,none
+gn:318637,Çiçekli,Tunceli,0,village,0,0,50,0,none,none
+gn:318651,Çiçekdağı,Kırşehir,0,village,0,0,50,0,none,none
+gn:318668,Ceylanpınar,Şanlıurfa,31488,town,0,0,50,0,none,none
+gn:318675,Ceyhan,Adana,96303,town,0,0,50,0,none,none
+gn:318679,Çevrimova,Batman,1276,village,0,0,50,0,none,none
+gn:318694,Cevizlik,Siirt,0,village,0,0,50,0,none,none
+gn:318706,Cevizli,Antalya,735,village,0,0,50,0,none,none
+gn:318728,Çatalan,Adana,0,village,0,0,50,0,none,none
+gn:318740,Çetinkaya,Sivas,0,village,0,0,50,0,none,none
+gn:318749,Çeşmeli,Mersin,5925,village,0,0,50,0,none,none
+gn:318755,Çeşme,İzmir Province,33259,town,0,0,50,0,none,none
+gn:318766,Çermik,Diyarbakır Province,20975,town,0,0,50,0,none,none
+gn:318786,Ceritler,Adana,1141,village,0,0,50,0,none,none
+gn:318820,Leblebitaşı,Diyarbakır Province,1586,village,0,0,50,0,none,none
+gn:318829,Cengerli,Erzincan,0,village,0,0,50,0,none,none
+gn:318849,Çemişgezek,Tunceli,0,village,0,0,50,0,none,none
+gn:318870,Çeltiksuyu,Bingöl,1220,village,0,0,50,0,none,none
+gn:318879,Çeltikçi,Burdur,0,village,0,0,50,0,none,none
+gn:318880,Çeltikçi,Antalya,2753,village,0,0,50,0,none,none
+gn:318885,Çeltik,Konya,9429,village,0,0,50,0,none,none
+gn:318904,Çelikhan,Adıyaman Province,12961,town,0,0,50,0,none,none
+gn:318915,Çelemli,Adana,1113,village,0,0,50,0,none,none
+gn:318925,Çelebi,Kırıkkale,0,village,0,0,50,0,none,none
+gn:318935,Celâlli,Sivas,0,village,0,0,50,0,none,none
+gn:318987,Çayyolu,Ankara,6695,village,0,0,50,0,none,none
+gn:319011,Çaylı,İzmir Province,1802,village,0,0,50,0,none,none
+gn:319014,Çaylarbaşı,Şanlıurfa,0,village,0,0,50,0,none,none
+gn:319015,Çaylar,Muş,0,village,0,0,50,0,none,none
+gn:319027,Çayköy,Antalya,1519,village,0,0,50,0,none,none
+gn:319047,Çayırlı,Erzincan,0,village,0,0,50,0,none,none
+gn:319059,Çayırdere,Diyarbakır Province,1020,village,0,0,50,0,none,none
+gn:319069,Çayıralan,Yozgat,14734,town,0,0,50,0,none,none
+gn:319094,Çaybağı,Elazığ,0,village,0,0,50,0,none,none
+gn:319104,Çay,Afyonkarahisar Province,34215,town,0,0,50,0,none,none
+gn:319118,Çavuşlu,Mardin,8555,village,0,0,50,0,none,none
+gn:319149,Çavuş,Konya,0,village,0,0,50,0,none,none
+gn:319151,Çavuşköy,Antalya,2602,village,0,0,50,0,none,none
+gn:319163,Çavdır,Burdur,0,village,0,0,50,0,none,none
+gn:319166,Çavdır,Antalya,3830,village,0,0,50,0,none,none
+gn:319171,Çavdarhisar,Kütahya,0,village,0,0,50,0,none,none
+gn:319295,Çatalçam,Erzincan,0,village,0,0,50,0,none,none
+gn:319297,Çatalçam,Adana,1410,village,0,0,50,0,none,none
+gn:319305,Çatalarmut,Erzincan,0,village,0,0,50,0,none,none
+gn:319323,Çatakköprü,Diyarbakır Province,0,village,0,0,50,0,none,none
+gn:319345,Çatak,Van,0,village,0,0,50,0,none,none
+gn:319357,Çat,Erzurum,15556,town,0,0,50,0,none,none
+gn:319383,Çarıklar,Mersin,2544,village,0,0,50,0,none,none
+gn:319401,Çardaklı,Diyarbakır Province,1706,village,0,0,50,0,none,none
+gn:319408,Altınkaya,Aksaray,1260,village,0,0,50,0,none,none
+gn:319414,Çardak,Kahramanmaraş,0,village,0,0,50,0,none,none
+gn:319415,Çardak,Denizli,0,village,0,0,50,0,none,none
+gn:319472,Çandır,Yozgat,0,village,0,0,50,0,none,none
+gn:319487,Çandarlı,İzmir Province,4858,village,0,0,50,0,none,none
+gn:319525,Çan,Elazığ,0,village,0,0,50,0,none,none
+gn:319528,Kestel,Antalya,15445,town,0,0,50,0,none,none
+gn:319591,Çamlıyayla,Mersin,0,village,0,0,50,0,none,none
+gn:319608,Çamlık,Burdur,1311,village,0,0,50,0,none,none
+gn:319613,Çamlıdere,Şanlıurfa,0,village,0,0,50,0,none,none
+gn:319653,Çamköy,Aydın,1030,village,0,0,50,0,none,none
+gn:319670,Anamas,Isparta,2960,village,0,0,50,0,none,none
+gn:319689,Çameli,Denizli,0,village,0,0,50,0,none,none
+gn:319707,Çamardı,Niğde Province,0,village,0,0,50,0,none,none
+gn:319725,Çaltılıbük,Bursa Province,274,village,0,0,50,0,none,none
+gn:319761,Çalpınar,Mardin,1294,village,0,0,50,0,none,none
+gn:319787,Çalışkan,Şırnak,3810,village,0,0,50,0,none,none
+gn:319823,Çaldıran,Van,0,village,0,0,50,0,none,none
+gn:319857,Çal,Denizli,0,village,0,0,50,0,none,none
+gn:319889,Çakış,Antalya,1820,village,0,0,50,0,none,none
+gn:319910,Çakırlar,Antalya,0,village,0,0,50,0,none,none
+gn:319912,Çakırkaya,Diyarbakır Province,1186,village,0,0,50,0,none,none
+gn:319914,Çakırhüyük,Adıyaman Province,0,village,0,0,50,0,none,none
+gn:319928,Çakırbeyli,Aydın,560,village,0,0,50,0,none,none
+gn:319929,Çakırbey,Ağrı,1132,village,0,0,50,0,none,none
+gn:319977,Menteşe,Muğla,0,village,0,0,50,0,none,none
+gn:320004,Çağlayancerit,Kahramanmaraş,15530,town,0,0,50,0,none,none
+gn:320007,Çağlayan,Erzincan,0,village,0,0,50,0,none,none
+gn:320013,Çağlarca,Tunceli,0,village,0,0,50,0,none,none
+gn:320017,Çağış,Balıkesir,0,village,0,0,50,0,none,none
+gn:320094,Büyükyurt,Tunceli,0,village,0,0,50,0,none,none
+gn:320124,Büyüksofulu,Adana,1692,village,0,0,50,0,none,none
+gn:320171,Büyükköy,Antalya,1235,village,0,0,50,0,none,none
+gn:320177,Nikfer,Denizli,5474,village,0,0,50,0,none,none
+gn:320201,Büyük Kardeş,Mardin,1066,village,0,0,50,0,none,none
+gn:320207,Büyükkarabağ,Afyonkarahisar Province,1075,village,0,0,50,0,none,none
+gn:320211,Boğaziçi,İzmir Province,0,village,0,0,50,0,none,none
+gn:320238,Yeşilovacık,Mersin,3877,village,0,0,50,0,none,none
+gn:320257,Çiğli,İzmir Province,214065,city,0,0,50,0,none,none
+gn:320304,Büyükarmutlu,Erzincan,121,village,0,0,50,0,none,none
+gn:320351,Buruk,Adana,2039,village,0,0,50,0,none,none
+gn:320369,Burhaniye,Balıkesir,38083,town,0,0,50,0,none,none
+gn:320374,Buharkent,Aydın,7723,village,0,0,50,0,none,none
+gn:320392,Burdur,Burdur,95436,town,0,0,50,0,none,none
+gn:320402,Burç,Gaziantep,0,village,0,0,50,0,none,none
+gn:320406,Bünyan,Kayseri,12821,town,0,0,50,0,none,none
+gn:320428,Bulgurca,İzmir Province,2024,village,0,0,50,0,none,none
+gn:320437,Buldan,Denizli,14811,town,0,0,50,0,none,none
+gn:320448,Bulanık,Muş,31430,town,0,0,50,0,none,none
+gn:320457,Bulakbaşı,Iğdır,1491,village,0,0,50,0,none,none
+gn:320523,Bucakkışla,Karaman,145,village,0,0,50,0,none,none
+gn:320528,Buca,İzmir Province,0,village,0,0,50,0,none,none
+gn:320533,Bucak,Burdur,29234,town,0,0,50,0,none,none
+gn:320547,Bozyurt,Aydın,1914,village,0,0,50,0,none,none
+gn:320552,Bozyazı,Mersin,28456,town,0,0,50,0,none,none
+gn:320556,Kirazlıyayla,Denizli,1191,village,0,0,50,0,none,none
+gn:320557,Bozüyük,Bilecik,55365,town,0,0,50,0,none,none
+gn:320562,Boztepe,Kırşehir,0,village,0,0,50,0,none,none
+gn:320581,Bozova,Şanlıurfa,21502,town,0,0,50,0,none,none
+gn:320582,Bozova,Antalya,935,village,0,0,50,0,none,none
+gn:320590,Bozoğlak,Erzincan,0,village,0,0,50,0,none,none
+gn:320591,Bozoğlak,Ağrı,1188,village,0,0,50,0,none,none
+gn:320606,Bozkurt,Denizli,4109,village,0,0,50,0,none,none
+gn:320615,Bozköy,Aydın,1086,village,0,0,50,0,none,none
+gn:320621,Bozkır,Konya,10958,town,0,0,50,0,none,none
+gn:320631,Bozhüyük,Afyonkarahisar Province,1710,village,0,0,50,0,none,none
+gn:320635,Bozhüyük,Siirt,1140,village,0,0,50,0,none,none
+gn:320647,Bozdoğan,Aydın,8378,village,0,0,50,0,none,none
+gn:320648,Bozdoğan,Mersin,1761,village,0,0,50,0,none,none
+gn:320652,Elmalı,Denizli,1269,village,0,0,50,0,none,none
+gn:320700,Bozcaada,Canakkale,2635,village,0,0,50,0,none,none
+gn:320716,Bozburun,Muğla,0,village,0,0,50,0,none,none
+gn:320730,Bozarmut,Muğla,2168,village,0,0,50,0,none,none
+gn:320734,Bozan,Eskişehir,1874,village,0,0,50,0,none,none
+gn:320739,Bozön,Mersin,1141,village,0,0,50,0,none,none
+gn:320745,Bozalan,Şırnak,2007,village,0,0,50,0,none,none
+gn:320757,Boynuyoğun,Adana,1671,village,0,0,50,0,none,none
+gn:320797,Boyaklı,Mardin,1798,village,0,0,50,0,none,none
+gn:320835,Bostancı,Şırnak,2473,village,0,0,50,0,none,none
+gn:320847,Boyunlu,Diyarbakır Province,1187,village,0,0,50,0,none,none
+gn:320857,Bornova,İzmir Province,452479,city,0,0,50,0,none,none
+gn:320859,Borlu,Manisa,0,village,0,0,50,0,none,none
+gn:320860,Börezli,Balıkesir,2729,village,0,0,50,0,none,none
+gn:320871,Bor,Niğde Province,32435,town,0,0,50,0,none,none
+gn:320879,Bolvadin,Afyonkarahisar Province,55870,town,0,0,50,0,none,none
+gn:320882,Bölükyazı,Bitlis,696,village,0,0,50,0,none,none
+gn:320902,Bölme,Uşak,3010,village,0,0,50,0,none,none
+gn:320911,Bölcek,İzmir Province,1004,village,0,0,50,0,none,none
+gn:320924,Böğürtlen,Şanlıurfa,0,village,0,0,50,0,none,none
+gn:320942,Boğazören,Şırnak,1323,village,0,0,50,0,none,none
+gn:320946,Boğazlıyan,Yozgat,0,village,0,0,50,0,none,none
+gn:320986,Boğazkent,Antalya,5000,village,0,0,50,0,none,none
+gn:320995,Bodrum,Muğla,39317,town,0,0,50,0,none,none
+gn:321015,Bıyıklı,Aydın,1111,village,0,0,50,0,none,none
+gn:321025,Bitlis,Bitlis,53023,town,0,0,50,0,none,none
+gn:321028,Bitez,Muğla,11048,town,0,0,50,0,none,none
+gn:321031,Bismil,Diyarbakır Province,74493,town,0,0,50,0,none,none
+gn:321059,Birgi,İzmir Province,1832,village,0,0,50,0,none,none
+gn:321062,Birecik,Şanlıurfa,44284,town,0,0,50,0,none,none
+gn:321074,Binpınar,Erzurum,1626,village,0,0,50,0,none,none
+gn:321082,Bingöl,Bingöl,128935,city,0,0,50,0,none,none
+gn:321088,Binatlı,Batman,2259,village,0,0,50,0,none,none
+gn:321109,Bilgi,Van,1100,village,0,0,50,0,none,none
+gn:321121,Bilek,Gaziantep,2905,village,0,0,50,0,none,none
+gn:321136,Bigadiç,Balıkesir,15242,town,0,0,50,0,none,none
+gn:321171,Bezirgân,Antalya,2180,village,0,0,50,0,none,none
+gn:321184,Beytüşşebap,Şırnak,8354,village,0,0,50,0,none,none
+gn:321191,Beyşehir,Konya,44460,town,0,0,50,0,none,none
+gn:321201,Beypınarı,Sivas,0,village,0,0,50,0,none,none
+gn:321213,Beymelek,Antalya,3708,village,0,0,50,0,none,none
+gn:321219,Beylikova,Eskişehir,5131,village,0,0,50,0,none,none
+gn:321297,Beyçayırı,Batman,0,village,0,0,50,0,none,none
+gn:321308,Beyağaç,Denizli,0,village,0,0,50,0,none,none
+gn:321312,Kızılin,Adıyaman Province,0,village,0,0,50,0,none,none
+gn:321327,Beşpınar,Batman,1227,village,0,0,50,0,none,none
+gn:321328,Beşpınar,Diyarbakır Province,1465,village,0,0,50,0,none,none
+gn:321337,Besni,Adıyaman Province,41892,town,0,0,50,0,none,none
+gn:321347,Beşkonak,Antalya,0,village,0,0,50,0,none,none
+gn:321360,Beşiri,Batman,9513,village,0,0,50,0,none,none
+gn:321426,Bergama,İzmir Province,57200,town,0,0,50,0,none,none
+gn:321452,Erikli,Adıyaman Province,1688,village,0,0,50,0,none,none
+gn:321496,Belören,Adıyaman Province,0,village,0,0,50,0,none,none
+gn:321499,Belören,Konya,0,village,0,0,50,0,none,none
+gn:321529,Belevi,İzmir Province,1938,village,0,0,50,0,none,none
+gn:321564,Belen,Diyarbakır Province,1693,village,0,0,50,0,none,none
+gn:321572,Belen,Hatay,20113,town,0,0,50,0,none,none
+gn:321573,Demirtaş,Antalya,3449,village,0,0,50,0,none,none
+gn:321580,Belek,Antalya,73260,town,0,0,50,0,none,none
+gn:321584,Beldibi,Antalya,3376,village,0,0,50,0,none,none
+gn:321632,Bekirhan,Batman,0,village,0,0,50,0,none,none
+gn:321637,Bekilli,Denizli,3615,village,0,0,50,0,none,none
+gn:321658,Behram,Canakkale,1100,village,0,0,50,0,none,none
+gn:321673,Beğendik,Siirt,2560,village,0,0,50,0,none,none
+gn:321678,Bucak,Şanlıurfa,0,village,0,0,50,0,none,none
+gn:321682,Bedirli,Sivas,0,village,0,0,50,0,none,none
+gn:321733,Bayramiç,Canakkale,0,village,0,0,50,0,none,none
+gn:321743,Bayraklı,İzmir Province,0,village,0,0,50,0,none,none
+gn:321750,Baykan,Siirt,11346,town,0,0,50,0,none,none
+gn:321772,Bayır,Muğla,4005,village,0,0,50,0,none,none
+gn:321786,Bayındır,İzmir Province,16850,town,0,0,50,0,none,none
+gn:321814,Bayat,Afyonkarahisar Province,4790,village,0,0,50,0,none,none
+gn:321836,Batman,Batman,452157,city,0,0,50,0,none,none
+gn:321850,Başyurt,Elazığ,0,village,0,0,50,0,none,none
+gn:321861,Basri,Ankara,2082,village,0,0,50,0,none,none
+gn:321862,Başpınar,Erzincan,0,village,0,0,50,0,none,none
+gn:321887,Başmakçı,Afyonkarahisar Province,8415,village,0,0,50,0,none,none
+gn:321929,Baskil,Elazığ,15922,town,0,0,50,0,none,none
+gn:321935,Başkavak,Mardin,2032,village,0,0,50,0,none,none
+gn:321940,Başkale,Van,14516,town,0,0,50,0,none,none
+gn:321970,Başçayır,Aydın,1359,village,0,0,50,0,none,none
+gn:321978,Yoğun,Diyarbakır Province,0,village,0,0,50,0,none,none
+gn:321988,Başaklı,Diyarbakır Province,2036,village,0,0,50,0,none,none
+gn:322001,Barla,Isparta,0,village,0,0,50,0,none,none
+gn:322002,Barıştepe,Mardin,1452,village,0,0,50,0,none,none
+gn:322010,Bardaklı,Ağrı,1247,village,0,0,50,0,none,none
+gn:322051,Banaz,Uşak,17080,town,0,0,50,0,none,none
+gn:322060,Balya,Balıkesir,1765,village,0,0,50,0,none,none
+gn:322066,Baltaşı,Elazığ,1113,village,0,0,50,0,none,none
+gn:322073,Baltaköy,Aydın,1118,village,0,0,50,0,none,none
+gn:322076,Balpınar,Batman,2879,village,0,0,50,0,none,none
+gn:322077,Balpayam,Tunceli,0,village,0,0,50,0,none,none
+gn:322087,Ballıkpınar,Ankara,1443,village,0,0,50,0,none,none
+gn:322102,Ballıca,Manisa,1381,village,0,0,50,0,none,none
+gn:322109,Ballıbostan,Ağrı,1010,village,0,0,50,0,none,none
+gn:322137,Balışeyh,Kırıkkale,4150,village,0,0,50,0,none,none
+gn:322146,Balıklıova,İzmir Province,1199,village,0,0,50,0,none,none
+gn:322165,Balıkesir,Balıkesir,238151,city,0,0,50,0,none,none
+gn:322195,Balçıkhisar,Afyonkarahisar Province,1304,village,0,0,50,0,none,none
+gn:322202,Balcı,Aksaray,0,village,0,0,50,0,none,none
+gn:322212,Balatçık,İzmir Province,19082,town,0,0,50,0,none,none
+gn:322215,Balat,Aydın,1036,village,0,0,50,0,none,none
+gn:322235,Balaban,Malatya,0,village,0,0,50,0,none,none
+gn:322237,Balaban,Diyarbakır Province,1036,village,0,0,50,0,none,none
+gn:322240,Bala,Ankara,0,village,0,0,50,0,none,none
+gn:322250,Baklan,Denizli,6756,village,0,0,50,0,none,none
+gn:322280,Bakır,Manisa,2667,village,0,0,50,0,none,none
+gn:322306,Bahtılı,Antalya,1344,village,0,0,50,0,none,none
+gn:322308,Bahşılar,Diyarbakır Province,1186,village,0,0,50,0,none,none
+gn:322310,Bahşiş,Mersin,2422,village,0,0,50,0,none,none
+gn:322312,Bahşılı,Kırıkkale,0,village,0,0,50,0,none,none
+gn:322324,Bahçesaray,Van,3731,village,0,0,50,0,none,none
+gn:322329,Bahçelievler,Ankara,10638,town,0,0,50,0,none,none
+gn:322357,Bahçedere,Bitlis,1072,village,0,0,50,0,none,none
+gn:322391,Bahçe,Adana,13117,town,0,0,50,0,none,none
+gn:322438,Bağrıbütün,Mardin,1068,village,0,0,50,0,none,none
+gn:322442,Bağpınar,Adıyaman Province,73,village,0,0,50,0,none,none
+gn:322459,Bağlıca,Siirt,0,village,0,0,50,0,none,none
+gn:322461,Bağlıca,Mardin,1329,village,0,0,50,0,none,none
+gn:322462,Dağlıca,Şırnak,1269,village,0,0,50,0,none,none
+gn:322486,Bağkonak,Isparta,0,village,0,0,50,0,none,none
+gn:322491,Bağışlı,Hakkâri,0,village,0,0,50,0,none,none
+gn:322508,Bağgöze,Siirt,1130,village,0,0,50,0,none,none
+gn:322516,Bağdere,Diyarbakır Province,0,village,0,0,50,0,none,none
+gn:322534,Bağbaşı,Gaziantep,2498,village,0,0,50,0,none,none
+gn:322537,Bağarası,Aydın,5728,village,0,0,50,0,none,none
+gn:322554,Bademli,İzmir Province,1244,village,0,0,50,0,none,none
+gn:322557,Bademli,İzmir Province,1244,village,0,0,50,0,none,none
+gn:322559,Bademli,İzmir Province,2856,village,0,0,50,0,none,none
+gn:322568,Bademler,İzmir Province,2195,village,0,0,50,0,none,none
+gn:322574,Bademağacı,Antalya,1250,village,0,0,50,0,none,none
+gn:322600,Babayağmur,Yozgat,1063,village,0,0,50,0,none,none
+gn:322601,Babatorun,Hatay,0,village,0,0,50,0,none,none
+gn:322618,Babadağ,Denizli,4587,village,0,0,50,0,none,none
+gn:322673,Ayvalık,Balıkesir,70002,town,0,0,50,0,none,none
+gn:322692,Ayvacık,Canakkale,6879,village,0,0,50,0,none,none
+gn:322729,Ayrancı,Karaman,0,village,0,0,50,0,none,none
+gn:322740,Aynalı,Diyarbakır Province,1080,village,0,0,50,0,none,none
+gn:322758,Aygün,Diyarbakır Province,1371,village,0,0,50,0,none,none
+gn:322792,Altınüzüm,Gaziantep,2391,village,0,0,50,0,none,none
+gn:322793,Aydınocak,Van,1055,village,0,0,50,0,none,none
+gn:322810,Tillo,Siirt,3052,village,0,0,50,0,none,none
+gn:322813,Aydınkonak,Batman,1181,village,0,0,50,0,none,none
+gn:322817,İbradı,Antalya,8883,village,0,0,50,0,none,none
+gn:322826,Aydıncık,Mersin,8385,village,0,0,50,0,none,none
+gn:322830,Aydın,Aydın,163022,city,0,0,50,0,none,none
+gn:322847,Ayaş,Mersin,2634,village,0,0,50,0,none,none
+gn:322869,Avsuyu,Hatay,5124,village,0,0,50,0,none,none
+gn:322887,Avsallar,Antalya,12829,town,0,0,50,0,none,none
+gn:322965,Avanos,Nevşehir Province,12833,town,0,0,50,0,none,none
+gn:322981,Atmalı,Adıyaman Province,1692,village,0,0,50,0,none,none
+gn:322990,Atlıhisar,Afyonkarahisar Province,1370,village,0,0,50,0,none,none
+gn:322997,Atlı,Mardin,1746,village,0,0,50,0,none,none
+gn:323014,Atça,Aydın,7602,village,0,0,50,0,none,none
+gn:323015,Atburgazı,Aydın,1827,village,0,0,50,0,none,none
+gn:323025,Atalar,Gaziantep,2620,village,0,0,50,0,none,none
+gn:323039,Atabey,Isparta,12658,town,0,0,50,0,none,none
+gn:323053,Asmalı,Adana,1011,village,0,0,50,0,none,none
+gn:323082,Aslanapa,Kütahya,2388,village,0,0,50,0,none,none
+gn:323086,Askeriye,Burdur,1480,village,0,0,50,0,none,none
+gn:323094,Aşkale,Erzurum,15462,town,0,0,50,0,none,none
+gn:323153,Aşağıyakacık,Aydın,1397,village,0,0,50,0,none,none
+gn:323175,Aşağı Kocayatak,Antalya,1530,village,0,0,50,0,none,none
+gn:323192,Saygeçit,Adana,1111,village,0,0,50,0,none,none
+gn:323218,Aşağıpınarbaşı,Konya,0,village,0,0,50,0,none,none
+gn:323251,Kale,Malatya,0,village,0,0,50,0,none,none
+gn:323268,Aşağıküpkıran,Ağrı,1740,village,0,0,50,0,none,none
+gn:323311,Aşağı Karaman,Antalya,1577,village,0,0,50,0,none,none
+gn:323326,Aşağıışıklı,Van,2240,village,0,0,50,0,none,none
+gn:323381,Aşağıerhacı,Iğdır,4392,village,0,0,50,0,none,none
+gn:323427,Aşağıçiğil,Konya,0,village,0,0,50,0,none,none
+gn:323432,Olgun,Diyarbakır Province,1075,village,0,0,50,0,none,none
+gn:323457,Aşağı Beğdeş,Şanlıurfa,1119,village,0,0,50,0,none,none
+gn:323518,Arslanköy,Mersin,0,village,0,0,50,0,none,none
+gn:323559,Arpaçbahşiş,Mersin,7285,village,0,0,50,0,none,none
+gn:323578,Armutlu,Aksaray,1091,village,0,0,50,0,none,none
+gn:323635,Arıklı,Mardin,3770,village,0,0,50,0,none,none
+gn:323642,Danişment,Sivas,0,village,0,0,50,0,none,none
+gn:323653,Arıcak,Elazığ,5168,village,0,0,50,0,none,none
+gn:323660,Arguvan,Malatya,3282,village,0,0,50,0,none,none
+gn:323661,Argıthanı,Konya,0,village,0,0,50,0,none,none
+gn:323694,Aras,Erzurum,0,village,0,0,50,0,none,none
+gn:323716,Yüreğir,Adana,0,village,0,0,50,0,none,none
+gn:323721,Arapgir,Malatya,10022,town,0,0,50,0,none,none
+gn:323733,Aran,Mardin,1256,village,0,0,50,0,none,none
+gn:323735,Aralık,Iğdır,5809,village,0,0,50,0,none,none
+gn:323736,Aralık,Diyarbakır Province,1756,village,0,0,50,0,none,none
+gn:323750,Araban,Gaziantep,11128,town,0,0,50,0,none,none
+gn:323751,Yeşilyurt,Tokat Province,0,village,0,0,50,0,none,none
+gn:323777,Antalya,Antalya,1335002,large-city,0,0,50,0,none,none
+gn:323779,Antakya,Hatay,399045,city,0,0,50,0,none,none
+gn:323786,Ankara,Ankara,3517182,large-city,0,0,50,0,none,none
+gn:323792,Anıl,Diyarbakır Province,1490,village,0,0,50,0,none,none
+gn:323797,Andırın,Kahramanmaraş,8660,village,0,0,50,0,none,none
+gn:323806,Andaç,Şırnak,2165,village,0,0,50,0,none,none
+gn:323828,Anamur,Mersin,57128,town,0,0,50,0,none,none
+gn:323854,Ambar,Diyarbakır Province,5063,village,0,0,50,0,none,none
+gn:323886,Altınyayla,Sivas,5674,village,0,0,50,0,none,none
+gn:323887,Altınyayla,Burdur,4158,village,0,0,50,0,none,none
+gn:323888,Altınyaka,Antalya,225,village,0,0,50,0,none,none
+gn:323893,Altıntaş,Aydın,1272,village,0,0,50,0,none,none
+gn:323897,Altıntaş,Kütahya,0,village,0,0,50,0,none,none
+gn:323902,Altınsu,Hakkâri,5004,village,0,0,50,0,none,none
+gn:323906,Altınözü,Hatay,4844,village,0,0,50,0,none,none
+gn:323908,Altınova,Balıkesir,0,village,0,0,50,0,none,none
+gn:323911,Altınoluk,Balıkesir,13800,town,0,0,50,0,none,none
+gn:323921,Altınkum,Diyarbakır Province,2000,village,0,0,50,0,none,none
+gn:323927,Altunhisar,Niğde Province,3658,village,0,0,50,0,none,none
+gn:323930,Altınekin,Konya,13090,town,0,0,50,0,none,none
+gn:323963,Alpu,Eskişehir,5981,village,0,0,50,0,none,none
+gn:323965,Alpköy,Erzincan,0,village,0,0,50,0,none,none
+gn:324000,Alitaşı,Diyarbakır Province,1065,village,0,0,50,0,none,none
+gn:324041,Ali Kamerli Mahallesi,Iğdır,2288,village,0,0,50,0,none,none
+gn:324052,Alifakı,Mersin,6551,village,0,0,50,0,none,none
+gn:324106,Aliağa,İzmir Province,44883,town,0,0,50,0,none,none
+gn:324126,Gerger,Adıyaman Province,2800,village,0,0,50,0,none,none
+gn:324132,Alcı,Denizli,1061,village,0,0,50,0,none,none
+gn:324138,Albayrak,Van,0,village,0,0,50,0,none,none
+gn:324147,Alaylı,Antalya,1237,village,0,0,50,0,none,none
+gn:324172,Alaşehir,Manisa,48147,town,0,0,50,0,none,none
+gn:324190,Alanya,Antalya,364180,city,0,0,50,0,none,none
+gn:324221,Alamut,Aydın,1042,village,0,0,50,0,none,none
+gn:324251,Alakamış,Şırnak,1094,village,0,0,50,0,none,none
+gn:324294,Alaçatı,İzmir Province,3658,village,0,0,50,0,none,none
+gn:324315,Turluk,Şanlıurfa,1442,village,0,0,50,0,none,none
+gn:324320,Alacahan,Sivas,0,village,0,0,50,0,none,none
+gn:324347,Alabaş,Diyarbakır Province,1519,village,0,0,50,0,none,none
+gn:324382,Akyar,Balıkesir,1126,village,0,0,50,0,none,none
+gn:324407,Aktuzla,Muş,0,village,0,0,50,0,none,none
+gn:324415,Aktoprak,Gaziantep,7695,village,0,0,50,0,none,none
+gn:324419,Aktepe,Hatay,0,village,0,0,50,0,none,none
+gn:324470,Aksu,Isparta,3842,village,0,0,50,0,none,none
+gn:324476,Aksu,Antalya,0,village,0,0,50,0,none,none
+gn:324486,Akseki,Antalya,11616,town,0,0,50,0,none,none
+gn:324490,Akşehir,Konya,64446,town,0,0,50,0,none,none
+gn:324496,Aksaray,Aksaray,327575,city,0,0,50,0,none,none
+gn:324498,Akşar,Bitlis,0,village,0,0,50,0,none,none
+gn:324531,Akpınar,Kırşehir,0,village,0,0,50,0,none,none
+gn:324550,Akpınar,Adıyaman Province,0,village,0,0,50,0,none,none
+gn:324577,Akören,Konya,0,village,0,0,50,0,none,none
+gn:324630,Akköy,Denizli,2520,village,0,0,50,0,none,none
+gn:324632,Akköy,Aydın,1103,village,0,0,50,0,none,none
+gn:324643,Akkışla,Kayseri,3317,village,0,0,50,0,none,none
+gn:324645,Dikmen,Antalya,1057,village,0,0,50,0,none,none
+gn:324651,Akkent,Denizli,2451,village,0,0,50,0,none,none
+gn:324678,Akıncılar,Adıyaman Province,0,village,0,0,50,0,none,none
+gn:324681,Akıncı,Mardin,0,village,0,0,50,0,none,none
+gn:324698,Akhisar,Manisa,84659,town,0,0,50,0,none,none
+gn:324699,Yeşilhisar,Afyonkarahisar Province,1514,village,0,0,50,0,none,none
+gn:324702,Akkonak,Afyonkarahisar Province,1178,village,0,0,50,0,none,none
+gn:324750,Akdere,Mersin,1720,village,0,0,50,0,none,none
+gn:324759,Akdam,Adana,1044,village,0,0,50,0,none,none
+gn:324764,Akdam,Antalya,1371,village,0,0,50,0,none,none
+gn:324768,Akdağmadeni,Yozgat,23048,town,0,0,50,0,none,none
+gn:324810,Akçıra,Bitlis,1018,village,0,0,50,0,none,none
+gn:324837,Akçay,Antalya,1309,village,0,0,50,0,none,none
+gn:324859,Akçapınar,Tunceli,84366,town,0,0,50,0,none,none
+gn:324866,Akçaova,Aydın,2105,village,0,0,50,0,none,none
+gn:324867,Akçaova,Muğla,1708,village,0,0,50,0,none,none
+gn:324913,Akçaköy,Aydın,2035,village,0,0,50,0,none,none
+gn:324916,Akçakonak,Aydın,1814,village,0,0,50,0,none,none
+gn:324927,Akçakent,Kırşehir,0,village,0,0,50,0,none,none
+gn:324933,Akçakaya,Balıkesir,1141,village,0,0,50,0,none,none
+gn:324944,Akçakale,Şanlıurfa,32114,town,0,0,50,0,none,none
+gn:324947,Akçagöze,Gaziantep,1408,village,0,0,50,0,none,none
+gn:324953,Akçadağ,Malatya,14788,town,0,0,50,0,none,none
+gn:325024,Akarsu,Erzincan,0,village,0,0,50,0,none,none
+gn:325028,Akarsu,Mardin,5440,village,0,0,50,0,none,none
+gn:325050,Akalan,Denizli,1590,village,0,0,50,0,none,none
+gn:325066,Ahmetli,Manisa,11377,town,0,0,50,0,none,none
+gn:325067,Ahmetli,Diyarbakır Province,0,village,0,0,50,0,none,none
+gn:325103,Ahlat,Bitlis,64695,town,0,0,50,0,none,none
+gn:325109,Ahırlı,Konya,0,village,0,0,50,0,none,none
+gn:325115,Kardeşköy,Aydın,2703,village,0,0,50,0,none,none
+gn:325159,Çamyuva,Antalya,6067,village,0,0,50,0,none,none
+gn:325171,Ağlasun,Burdur,4469,village,0,0,50,0,none,none
+gn:325183,Ağın,Elazığ,4014,village,0,0,50,0,none,none
+gn:325236,Akcakışla,Sivas,0,village,0,0,50,0,none,none
+gn:325244,Akçakale,Diyarbakır Province,1676,village,0,0,50,0,none,none
+gn:325269,Ağaçören,Aksaray,5822,village,0,0,50,0,none,none
+gn:325277,Ağaçlı,Diyarbakır Province,0,village,0,0,50,0,none,none
+gn:325278,Gülağaç,Aksaray,0,village,0,0,50,0,none,none
+gn:325293,Ağaçeli,Bingöl,1127,village,0,0,50,0,none,none
+gn:325300,Ağabeyli,Kahramanmaraş,0,village,0,0,50,0,none,none
+gn:325303,Afyonkarahisar,Afyonkarahisar Province,251799,city,0,0,50,0,none,none
+gn:325304,Afşin,Kahramanmaraş,39613,town,0,0,50,0,none,none
+gn:325330,Adıyaman,Adıyaman Province,290883,city,0,0,50,0,none,none
+gn:325336,Adilcevaz,Bitlis,52781,town,0,0,50,0,none,none
+gn:325363,Adana,Adana,1816750,large-city,0,0,50,0,none,none
+gn:325380,Adaklı,Bingöl,0,village,0,0,50,0,none,none
+gn:325420,Acırlı,Mardin,7553,village,0,0,50,0,none,none
+gn:325423,Acıpınar,Aksaray,785,village,0,0,50,0,none,none
+gn:325426,Acıpayam,Denizli,10924,town,0,0,50,0,none,none
+gn:325449,Acıgöl,Nevşehir Province,6749,village,0,0,50,0,none,none
+gn:325474,Acarlar,Aydın,12297,town,0,0,50,0,none,none
+gn:325509,Abdioğlu,Adana,1389,village,0,0,50,0,none,none
+gn:325519,Yeşiltepe,Mersin,2137,village,0,0,50,0,none,none
+gn:388145,Atakent,Mersin,8195,village,0,0,50,0,none,none
+gn:392051,Çardaklı,Şırnak,1171,village,0,0,50,0,none,none
+gn:392059,Ballı,Şırnak,1050,village,0,0,50,0,none,none
+gn:392066,Yemişli,Şırnak,2011,village,0,0,50,0,none,none
+gn:392071,Gündeş,Hakkâri,1323,village,0,0,50,0,none,none
+gn:411563,Altınkum,Aydın,5516,village,0,0,50,0,none,none
+gn:413055,Deliktaş,İzmir Province,1488,village,0,0,50,0,none,none
+gn:415534,Nurdağı,Gaziantep,12827,town,0,0,50,0,none,none
+gn:436138,Yeşildere,Gaziantep,2701,village,0,0,50,0,none,none
+gn:436324,Küçükkendirci,Şanlıurfa,1535,village,0,0,50,0,none,none
+gn:436507,Mahmutlar,Hatay,5800,village,0,0,50,0,none,none
+gn:436827,Güvenç,Hatay,0,village,0,0,50,0,none,none
+gn:437023,Tahtalıkaradut,Kilis,1272,village,0,0,50,0,none,none
+gn:437206,Ardıçlı,Hatay,3860,village,0,0,50,0,none,none
+gn:437241,Aşağı Karafakılı,Hatay,1138,village,0,0,50,0,none,none
+gn:437515,Çukuroba,Kilis,1585,village,0,0,50,0,none,none
+gn:437736,Çırtıman,Hatay,1878,village,0,0,50,0,none,none
+gn:437794,Kızkalesi,Mersin,1742,village,0,0,50,0,none,none
+gn:438046,Kuzeytepe,Hatay,4889,village,0,0,50,0,none,none
+gn:438055,Narlıca,Hatay,18445,town,0,0,50,0,none,none
+gn:438056,Kastal,Hatay,5637,village,0,0,50,0,none,none
+gn:438084,Açıkdere,Hatay,1408,village,0,0,50,0,none,none
+gn:438096,Toygarlı,Hatay,2875,village,0,0,50,0,none,none
+gn:438116,Gümüşgöze,Hatay,3925,village,0,0,50,0,none,none
+gn:438119,Dursunlu,Hatay,5147,village,0,0,50,0,none,none
+gn:438122,Aşağıokçular,Hatay,2008,village,0,0,50,0,none,none
+gn:438129,Boynuyoğun,Hatay,1536,village,0,0,50,0,none,none
+gn:438158,Uzunbağ,Hatay,2984,village,0,0,50,0,none,none
+gn:438161,Büyükçat,Hatay,1481,village,0,0,50,0,none,none
+gn:438162,Balıklıdere,Hatay,1096,village,0,0,50,0,none,none
+gn:438184,Hacıpaşa,Hatay,3274,village,0,0,50,0,none,none
+gn:438234,Samankaya,Hatay,1272,village,0,0,50,0,none,none
+gn:438236,Anayazı,Hatay,2365,village,0,0,50,0,none,none
+gn:438237,Karasüleymanlı,Hatay,1660,village,0,0,50,0,none,none
+gn:438241,Büyük Dalyan,Hatay,1901,village,0,0,50,0,none,none
+gn:438243,Günyazı,Hatay,2154,village,0,0,50,0,none,none
+gn:438245,Tepehan,Hatay,2483,village,0,0,50,0,none,none
+gn:438392,Uzunkavak,Hatay,1013,village,0,0,50,0,none,none
+gn:438400,Denizciler,Hatay,17495,town,0,0,50,0,none,none
+gn:438730,Kasrik,Şırnak,3204,village,0,0,50,0,none,none
+gn:438909,Basaran,Şırnak,1366,village,0,0,50,0,none,none
+gn:438967,Doruklu,Şırnak,1264,village,0,0,50,0,none,none
+gn:439098,Akdiken,Şanlıurfa,1119,village,0,0,50,0,none,none
+gn:439099,Bulutlu,Şanlıurfa,1146,village,0,0,50,0,none,none
+gn:439101,Pekmezli,Şanlıurfa,4300,village,0,0,50,0,none,none
+gn:439119,Koyunluca,Şanlıurfa,1028,village,0,0,50,0,none,none
+gn:439215,Yukarı Taşyalak,Şanlıurfa,1268,village,0,0,50,0,none,none
+gn:439221,Işıklar,Şanlıurfa,1164,village,0,0,50,0,none,none
+gn:439228,Çıplak,Mardin,1424,village,0,0,50,0,none,none
+gn:439748,Ahmetli,Diyarbakır Province,2061,village,0,0,50,0,none,none
+gn:442301,Batikent,Ankara,300000,city,0,0,50,0,none,none
+gn:442350,Örencik,Ankara,1074,village,0,0,50,0,none,none
+gn:446970,Yeşilyayla,Antalya,1517,village,0,0,50,0,none,none
+gn:447025,Türkler,Antalya,7240,village,0,0,50,0,none,none
+gn:447031,Oymapınar,Antalya,1492,village,0,0,50,0,none,none
+gn:447049,Başyayla,Karaman,5713,village,0,0,50,0,none,none
+gn:447273,Dalaman,Muğla,19292,town,0,0,50,0,none,none
+gn:448097,Kuzupınarlı,Adana,1538,village,0,0,50,0,none,none
+gn:737008,Anadolukavağı,Istanbul,1517,village,0,0,50,0,none,none
+gn:737022,Zonguldak,Zonguldak Province,101749,city,0,0,50,0,none,none
+gn:737054,Zile,Tokat Province,55680,town,0,0,50,0,none,none
+gn:737066,Zeytinlik,Artvin,159,village,0,0,50,0,none,none
+gn:737071,Zeytinburnu,Istanbul,280896,city,0,0,50,0,none,none
+gn:737072,Zeytinbağı,Bursa Province,0,village,0,0,50,0,none,none
+gn:737081,Zekeriya,Istanbul,22558,town,0,0,50,0,none,none
+gn:737108,Yüzbaşılar,Iğdır,1936,village,0,0,50,0,none,none
+gn:737119,Yuvacık,Kocaeli,7338,village,0,0,50,0,none,none
+gn:737140,Yusufeli,Artvin,6847,village,0,0,50,0,none,none
+gn:737163,Yürük,Tekirdağ,0,village,0,0,50,0,none,none
+gn:737421,Yomra,Trabzon,19770,town,0,0,50,0,none,none
+gn:737464,Yoğuntaş,Kırklareli,0,village,0,0,50,0,none,none
+gn:737477,Boztepe,Tokat Province,0,village,0,0,50,0,none,none
+gn:737478,Yıldızlı,Trabzon,13443,town,0,0,50,0,none,none
+gn:737486,Yıldız,Istanbul,5385,village,0,0,50,0,none,none
+gn:737521,Yığılca,Düzce,0,village,0,0,50,0,none,none
+gn:737529,Yeşilyurt,Tokat Province,6860,village,0,0,50,0,none,none
+gn:737539,Yeşilvadi,Istanbul,0,village,0,0,50,0,none,none
+gn:737573,Yeşilce,Ordu,0,village,0,0,50,0,none,none
+gn:737611,Yenişehir,Bursa Province,28656,town,0,0,50,0,none,none
+gn:737614,Yenipazar,Bilecik,1293,village,0,0,50,0,none,none
+gn:737627,Yeniköy,Istanbul,14963,town,0,0,50,0,none,none
+gn:737660,Yeniköy,Bursa Province,4352,village,0,0,50,0,none,none
+gn:737703,Yeniçiftlik,Canakkale,1090,village,0,0,50,0,none,none
+gn:737709,Yenice,Bursa Province,3672,village,0,0,50,0,none,none
+gn:737723,Yenice,Karabük Province,0,village,0,0,50,0,none,none
+gn:737756,Yeniçağa,Bolu,6852,village,0,0,50,0,none,none
+gn:737916,Yavuzkemal,Giresun,0,village,0,0,50,0,none,none
+gn:737961,Körfez,Kocaeli,90580,town,0,0,50,0,none,none
+gn:737980,Yapraklı,Çankırı,6394,village,0,0,50,0,none,none
+gn:738025,Yalova,Yalova,71289,town,0,0,50,0,none,none
+gn:738033,Yalnızçam,Ardahan,369,village,0,0,50,0,none,none
+gn:738045,Yalıköy,Istanbul,1484,village,0,0,50,0,none,none
+gn:738055,Yalakdere,Kocaeli,2015,village,0,0,50,0,none,none
+gn:738064,Yakuplu,Istanbul,28811,town,0,0,50,0,none,none
+gn:738085,Yakakent,Samsun,5086,village,0,0,50,0,none,none
+gn:738093,Yakacık,Amasya,1038,village,0,0,50,0,none,none
+gn:738113,Yağmurdere,Gümüşhane Province,0,village,0,0,50,0,none,none
+gn:738123,Yağlıdere,Giresun,0,village,0,0,50,0,none,none
+gn:738124,Yağlıdere,Gümüşhane Province,4058,village,0,0,50,0,none,none
+gn:738134,Yağınözü,Samsun,1240,village,0,0,50,0,none,none
+gn:738154,Vize,Kırklareli,11027,town,0,0,50,0,none,none
+gn:738167,Vezirköprü,Samsun,25155,town,0,0,50,0,none,none
+gn:738168,Vezirhan,Bilecik,3123,village,0,0,50,0,none,none
+gn:738183,Velimeşe,Tekirdağ,7893,village,0,0,50,0,none,none
+gn:738185,Veliköy,Artvin,229,village,0,0,50,0,none,none
+gn:738228,Vakfıkebir,Trabzon,37728,town,0,0,50,0,none,none
+gn:738251,Uzunköprü,Edirne,36470,town,0,0,50,0,none,none
+gn:738255,Uzunisa,Ordu,0,village,0,0,50,0,none,none
+gn:738265,Uzungöl,Trabzon,0,village,0,0,50,0,none,none
+gn:738276,Uzundere,Erzurum,5555,village,0,0,50,0,none,none
+gn:738326,Üsküp,Kırklareli,2272,village,0,0,50,0,none,none
+gn:738327,Uskumruköy,Istanbul,9864,village,0,0,50,0,none,none
+gn:738329,Üsküdar,Istanbul,524452,large-city,0,0,50,0,none,none
+gn:738333,Uruş,Ankara,276,village,0,0,50,0,none,none
+gn:738349,Ünye,Ordu,77585,town,0,0,50,0,none,none
+gn:738356,Şenyurt,Erzurum,0,village,0,0,50,0,none,none
+gn:738372,Umurbey,Bursa Province,3479,village,0,0,50,0,none,none
+gn:738373,Umurbey,Canakkale,0,village,0,0,50,0,none,none
+gn:738377,Ümraniye,Istanbul,573265,large-city,0,0,50,0,none,none
+gn:738390,Ulus,Bartın,5519,village,0,0,50,0,none,none
+gn:738405,Uluköy,Amasya,1047,village,0,0,50,0,none,none
+gn:738444,Ulubey,Ordu,8626,village,0,0,50,0,none,none
+gn:738457,Ulaşlı,Kocaeli,2630,village,0,0,50,0,none,none
+gn:738468,Uğurludağ,Çorum,7399,village,0,0,50,0,none,none
+gn:738510,Ovacık,Erzurum,0,village,0,0,50,0,none,none
+gn:738541,Tuzluca,Iğdır,9876,village,0,0,50,0,none,none
+gn:738554,Tuzcular,Bartın,3185,village,0,0,50,0,none,none
+gn:738569,Tütüncü,Balıkesir,0,village,0,0,50,0,none,none
+gn:738582,Turnasuyu,Ordu,2366,village,0,0,50,0,none,none
+gn:738583,Gülyalı,Ordu,0,village,0,0,50,0,none,none
+gn:738614,Türkeli,Sinop,8287,village,0,0,50,0,none,none
+gn:738618,Turhal,Tokat Province,110884,city,0,0,50,0,none,none
+gn:738648,Trabzon,Trabzon,244083,city,0,0,50,0,none,none
+gn:738662,Tosya,Kastamonu,24013,town,0,0,50,0,none,none
+gn:738668,Torul,Gümüşhane Province,4832,village,0,0,50,0,none,none
+gn:738674,Tortum,Erzurum,9429,village,0,0,50,0,none,none
+gn:738707,Topçam,Ordu,0,village,0,0,50,0,none,none
+gn:738715,Tonya,Trabzon,14544,town,0,0,50,0,none,none
+gn:738743,Tokat,Tokat Province,129702,city,0,0,50,0,none,none
+gn:738753,Tirebolu,Giresun,17124,town,0,0,50,0,none,none
+gn:738803,Terme,Samsun,28397,town,0,0,50,0,none,none
+gn:738858,Tepecik,Istanbul,21699,town,0,0,50,0,none,none
+gn:738902,Tekkiraz,Ordu,0,village,0,0,50,0,none,none
+gn:738907,Tekkeköy,Samsun,17226,town,0,0,50,0,none,none
+gn:738921,Tekke,Amasya,0,village,0,0,50,0,none,none
+gn:738927,Tekirdağ,Tekirdağ,122287,city,0,0,50,0,none,none
+gn:738941,Teke,Istanbul,0,village,0,0,50,0,none,none
+gn:738962,Tavşanlı,Kocaeli,2073,village,0,0,50,0,none,none
+gn:738965,Tavşancıl,Kocaeli,3593,village,0,0,50,0,none,none
+gn:738985,Tatkavaklı,Bursa Province,3415,village,0,0,50,0,none,none
+gn:739015,Taşova,Amasya,19253,town,0,0,50,0,none,none
+gn:739061,Taşköprü,Kastamonu,17491,town,0,0,50,0,none,none
+gn:739067,Taşköprü,Yalova,3129,village,0,0,50,0,none,none
+gn:739070,Sarıgöl,Artvin,0,village,0,0,50,0,none,none
+gn:739107,Taraklı,Sakarya,3897,village,0,0,50,0,none,none
+gn:739110,Tarabya,Istanbul,17852,town,0,0,50,0,none,none
+gn:739143,Tahtaköprü,Samsun,1848,village,0,0,50,0,none,none
+gn:739160,Taflan,Samsun,0,village,0,0,50,0,none,none
+gn:739161,Tacir,Bursa Province,1915,village,0,0,50,0,none,none
+gn:739188,Susuzmüsellim,Tekirdağ,0,village,0,0,50,0,none,none
+gn:739201,Susuz,Kars Province,1998,village,0,0,50,0,none,none
+gn:739209,Suşehri,Sivas,25820,town,0,0,50,0,none,none
+gn:739215,Sürmene,Trabzon,20039,town,0,0,50,0,none,none
+gn:739236,Sungurlu,Çorum,37526,town,0,0,50,0,none,none
+gn:739251,Suluova,Amasya,47572,town,0,0,50,0,none,none
+gn:739272,Sultan,Edirne,1155,village,0,0,50,0,none,none
+gn:739273,Sultanköy,Tekirdağ,2708,village,0,0,50,0,none,none
+gn:739289,Süloğlu,Edirne,0,village,0,0,50,0,none,none
+gn:739318,Sulakyurt,Kırıkkale,6592,village,0,0,50,0,none,none
+gn:739347,Subaşı,Istanbul,1483,village,0,0,50,0,none,none
+gn:739393,Sölöz,Bursa Province,1785,village,0,0,50,0,none,none
+gn:739414,Söğütpınar,Bursa Province,0,village,0,0,50,0,none,none
+gn:739425,Söğütlü,Sakarya,8051,village,0,0,50,0,none,none
+gn:739438,Söğütalan,Bursa Province,0,village,0,0,50,0,none,none
+gn:739549,Şişli,Istanbul,314684,city,0,0,50,0,none,none
+gn:739554,Sırpsındığı,Edirne,0,village,0,0,50,0,none,none
+gn:739574,Şiran,Gümüşhane Province,14692,town,0,0,50,0,none,none
+gn:739600,Sinop,Sinop,34834,town,0,0,50,0,none,none
+gn:739605,Sinekli,Istanbul,0,village,0,0,50,0,none,none
+gn:739606,Sinekçi,Canakkale,336,village,0,0,50,0,none,none
+gn:739634,Silivri,Istanbul,53167,town,0,0,50,0,none,none
+gn:739636,Şile,Istanbul,19778,town,0,0,50,0,none,none
+gn:739683,Seymen,Istanbul,1038,village,0,0,50,0,none,none
+gn:739693,Seyitler,Artvin,1617,village,0,0,50,0,none,none
+gn:739714,Şeyhli,Samsun,0,village,0,0,50,0,none,none
+gn:739741,Seydim,Çorum,0,village,0,0,50,0,none,none
+gn:739742,Seydiler,Kastamonu,3215,village,0,0,50,0,none,none
+gn:739751,Şevketiye,Balıkesir,0,village,0,0,50,0,none,none
+gn:739777,Sergen,Kırklareli,0,village,0,0,50,0,none,none
+gn:739787,Şerefiye,Sivas,0,village,0,0,50,0,none,none
+gn:739788,Serdivan,Sakarya,0,village,0,0,50,0,none,none
+gn:739808,Şenpazar,Kastamonu,0,village,0,0,50,0,none,none
+gn:739816,Şenkaya,Erzurum,3995,village,0,0,50,0,none,none
+gn:739818,Senemoğlu,Ardahan,2021,village,0,0,50,0,none,none
+gn:739838,Selimpaşa,Istanbul,10563,town,0,0,50,0,none,none
+gn:739847,Selim,Kars Province,5893,village,0,0,50,0,none,none
+gn:739914,Şebin Karahisar,Giresun,47360,town,0,0,50,0,none,none
+gn:739917,Seben,Bolu,4375,village,0,0,50,0,none,none
+gn:739950,Şavşat,Artvin,8151,village,0,0,50,0,none,none
+gn:740000,Şarköy,Tekirdağ,0,village,0,0,50,0,none,none
+gn:740070,Sarıköy,Balıkesir,0,village,0,0,50,0,none,none
+gn:740088,Sarıkamış,Kars Province,15433,town,0,0,50,0,none,none
+gn:740102,Sarıdibek,Samsun,2475,village,0,0,50,0,none,none
+gn:740137,Sarıbuğday,Amasya,340,village,0,0,50,0,none,none
+gn:740177,Saraydüzü,Sinop,0,village,0,0,50,0,none,none
+gn:740190,Saraycık,Amasya,0,village,0,0,50,0,none,none
+gn:740205,Saray,Tekirdağ,0,village,0,0,50,0,none,none
+gn:740230,Sapanca,Sakarya,25224,town,0,0,50,0,none,none
+gn:740264,Samsun,Samsun,394050,city,0,0,50,0,none,none
+gn:740286,Samandıra,Istanbul,0,village,0,0,50,0,none,none
+gn:740303,Şalpazarı,Trabzon,10254,town,0,0,50,0,none,none
+gn:740340,Salacak,Istanbul,9522,village,0,0,50,0,none,none
+gn:740412,Şahin,Tekirdağ,0,village,0,0,50,0,none,none
+gn:740430,Safranbolu,Karabük Province,35242,town,0,0,50,0,none,none
+gn:740462,Şabanözü,Çankırı,7717,village,0,0,50,0,none,none
+gn:740476,Rumelikavağı,Istanbul,3657,village,0,0,50,0,none,none
+gn:740478,Rumelifeneri,Istanbul,4337,village,0,0,50,0,none,none
+gn:740483,Rize,Rize Province,119828,city,0,0,50,0,none,none
+gn:740490,Reşadiye,Tokat Province,0,village,0,0,50,0,none,none
+gn:740511,Pursaklar,Ankara,0,village,0,0,50,0,none,none
+gn:740531,Posof,Ardahan,2900,village,0,0,50,0,none,none
+gn:740560,Piraziz,Giresun,0,village,0,0,50,0,none,none
+gn:740561,Piraziz,Giresun,9959,village,0,0,50,0,none,none
+gn:740570,Pınarhisar,Kırklareli,11180,town,0,0,50,0,none,none
+gn:740581,Pınarbaşı,Kastamonu,2491,village,0,0,50,0,none,none
+gn:740605,Perşembe,Ordu,11808,town,0,0,50,0,none,none
+gn:740616,Pendik,Istanbul,0,village,0,0,50,0,none,none
+gn:740650,Pehlivanköy,Kırklareli,3153,village,0,0,50,0,none,none
+gn:740656,Peçenek,Ankara,0,village,0,0,50,0,none,none
+gn:740659,Pazaryolu,Erzurum,5878,village,0,0,50,0,none,none
+gn:740666,Pazarköy,Bolu,480,village,0,0,50,0,none,none
+gn:740675,Pazar,Rize Province,0,village,0,0,50,0,none,none
+gn:740676,Pazar,Ankara,235,village,0,0,50,0,none,none
+gn:740677,Pazar,Tokat Province,5105,village,0,0,50,0,none,none
+gn:740710,Paşaçayırı,Kars Province,2161,village,0,0,50,0,none,none
+gn:740712,Paşabahçe,Istanbul,3717,village,0,0,50,0,none,none
+gn:740729,Pamukova,Sakarya,14885,town,0,0,50,0,none,none
+gn:740800,Oymaağaç,Samsun,1649,village,0,0,50,0,none,none
+gn:740812,Ovayenice,Istanbul,1125,village,0,0,50,0,none,none
+gn:740820,Ovacuma,Karabük Province,0,village,0,0,50,0,none,none
+gn:740828,Ovacık,Karabük Province,0,village,0,0,50,0,none,none
+gn:740847,Yenikonak,Sinop,0,village,0,0,50,0,none,none
+gn:740881,Osmaneli,Bilecik,15708,town,0,0,50,0,none,none
+gn:740883,Osmancık,Çorum,36443,town,0,0,50,0,none,none
+gn:740908,Örtülüce,Canakkale,1229,village,0,0,50,0,none,none
+gn:740937,Ortaköy,Artvin,0,village,0,0,50,0,none,none
+gn:740940,Ortaköy,Istanbul,3835,village,0,0,50,0,none,none
+gn:740941,Hemşin,Rize Province,0,village,0,0,50,0,none,none
+gn:740962,Ortakent,Sivas,0,village,0,0,50,0,none,none
+gn:740964,Ortaköy,Çorum,0,village,0,0,50,0,none,none
+gn:740986,Ortacalar,Artvin,92,village,0,0,50,0,none,none
+gn:741002,Orta,Çankırı,6072,village,0,0,50,0,none,none
+gn:741013,Ormanlı,Istanbul,1035,village,0,0,50,0,none,none
+gn:741015,Ormanlı,Zonguldak Province,0,village,0,0,50,0,none,none
+gn:741019,Ormankadı,Bursa Province,1029,village,0,0,50,0,none,none
+gn:741045,Orhangazi,Bursa Province,51792,town,0,0,50,0,none,none
+gn:741100,Ordu,Ordu,229214,city,0,0,50,0,none,none
+gn:741125,Ömerli,Balıkesir,5057,village,0,0,50,0,none,none
+gn:741136,Olur,Erzurum,3546,village,0,0,50,0,none,none
+gn:741149,Büyük Oluklu,Kars Province,1083,village,0,0,50,0,none,none
+gn:741160,Oltu,Erzurum,23504,town,0,0,50,0,none,none
+gn:741165,Olçulu,Kars Province,1331,village,0,0,50,0,none,none
+gn:741184,Oklalı,Istanbul,1429,village,0,0,50,0,none,none
+gn:741219,Ogurlu,Samsun,1992,village,0,0,50,0,none,none
+gn:741237,Öğdem,Artvin,93,village,0,0,50,0,none,none
+gn:741240,Of,Trabzon,31951,town,0,0,50,0,none,none
+gn:741304,Niksar,Tokat Province,49865,town,0,0,50,0,none,none
+gn:741330,Narman,Erzurum,10104,town,0,0,50,0,none,none
+gn:741335,Narlıca,Bursa Province,2033,village,0,0,50,0,none,none
+gn:741347,Nallıhan,Ankara,19106,town,0,0,50,0,none,none
+gn:741385,Mustafakemalpaşa,Bursa Province,101412,city,0,0,50,0,none,none
+gn:741423,Mürşitali,Iğdır,1516,village,0,0,50,0,none,none
+gn:741436,Muratlı,Artvin,0,village,0,0,50,0,none,none
+gn:741438,Muratlı,Tekirdağ,0,village,0,0,50,0,none,none
+gn:741460,Muncurlu,Düzce,1387,village,0,0,50,0,none,none
+gn:741473,Muharremşah,Zonguldak Province,1067,village,0,0,50,0,none,none
+gn:741484,Mudurnu,Bolu,6267,village,0,0,50,0,none,none
+gn:741487,Mudanya,Bursa Province,23161,town,0,0,50,0,none,none
+gn:741529,Mimarsinan,Istanbul,31002,town,0,0,50,0,none,none
+gn:741538,Mihalgazi,Eskişehir,9677,village,0,0,50,0,none,none
+gn:741542,Mezraa,Samsun,428,village,0,0,50,0,none,none
+gn:741560,Meydancık,Artvin,382,village,0,0,50,0,none,none
+gn:741570,Mesudiye,Ordu,6581,village,0,0,50,0,none,none
+gn:741609,Merzifon,Amasya,50658,town,0,0,50,0,none,none
+gn:741628,Meriç,Edirne,2921,village,0,0,50,0,none,none
+gn:741644,Mengen,Bolu,0,village,0,0,50,0,none,none
+gn:741692,Mecitözü,Çorum,5506,village,0,0,50,0,none,none
+gn:741696,Mecidiye,Edirne,0,village,0,0,50,0,none,none
+gn:741712,Maslak,Istanbul,12260,town,0,0,50,0,none,none
+gn:741725,Marmara Ereğlisi,Tekirdağ,10956,town,0,0,50,0,none,none
+gn:741727,Marmaracık,Tekirdağ,6182,village,0,0,50,0,none,none
+gn:741730,Marmara,Balıkesir,2137,village,0,0,50,0,none,none
+gn:741737,Manyas,Balıkesir,5327,village,0,0,50,0,none,none
+gn:741763,Maltepe,Istanbul,427040,city,0,0,50,0,none,none
+gn:741771,Malkara,Tekirdağ,27427,town,0,0,50,0,none,none
+gn:741793,Mahmut Şevket Paşa,Istanbul,1807,village,0,0,50,0,none,none
+gn:741812,Mahmutbey,Istanbul,0,village,0,0,50,0,none,none
+gn:741850,Maçka,Trabzon,13078,town,0,0,50,0,none,none
+gn:741855,Lüleburgaz,Kırklareli,90899,town,0,0,50,0,none,none
+gn:741878,Lapseki,Canakkale,10076,town,0,0,50,0,none,none
+gn:741884,Lâlapaşa,Edirne,2771,village,0,0,50,0,none,none
+gn:741892,Ladik,Samsun,9542,village,0,0,50,0,none,none
+gn:741898,Kuzyaka,Kastamonu,0,village,0,0,50,0,none,none
+gn:741931,Kuzguncuk,Istanbul,4151,village,0,0,50,0,none,none
+gn:742083,Kuruçeşme,Istanbul,2846,village,0,0,50,0,none,none
+gn:742095,Kurucaşile,Bartın,2070,village,0,0,50,0,none,none
+gn:742143,Kurtkale,Ardahan,213,village,0,0,50,0,none,none
+gn:742164,Kurşunlu,Çankırı,11956,town,0,0,50,0,none,none
+gn:742171,Kurşunlu,Bursa Province,3461,village,0,0,50,0,none,none
+gn:742179,Kurna,Istanbul,1167,village,0,0,50,0,none,none
+gn:742189,Küre,Kastamonu,3890,village,0,0,50,0,none,none
+gn:742214,Küplü,Edirne,2780,village,0,0,50,0,none,none
+gn:742215,Küplü,Bilecik,660,village,0,0,50,0,none,none
+gn:742238,Kumru,Ordu,32174,town,0,0,50,0,none,none
+gn:742245,Kumluca,Bartın,2459,village,0,0,50,0,none,none
+gn:742250,Kumköy,Istanbul,3860,village,0,0,50,0,none,none
+gn:742266,Kumburgaz,Istanbul,11949,town,0,0,50,0,none,none
+gn:742268,Kümbetli,Kars Province,1293,village,0,0,50,0,none,none
+gn:742273,Kumbağ,Tekirdağ,2069,village,0,0,50,0,none,none
+gn:742288,Kuloğlu,Kars Province,1048,village,0,0,50,0,none,none
+gn:742292,Kullar,Kocaeli,8820,village,0,0,50,0,none,none
+gn:742348,Küçükkumla,Bursa Province,4578,village,0,0,50,0,none,none
+gn:742385,Küçükdere,Trabzon,0,village,0,0,50,0,none,none
+gn:742394,Küçükçekmece,Istanbul,792030,large-city,0,0,50,0,none,none
+gn:742437,Kozlu,Zonguldak Province,0,village,0,0,50,0,none,none
+gn:742440,Kozlu,Tokat Province,0,village,0,0,50,0,none,none
+gn:742460,Kozcağız,Bartın,0,village,0,0,50,0,none,none
+gn:742499,Koyulhisar,Sivas,5495,village,0,0,50,0,none,none
+gn:742516,Kovanlık,Giresun,0,village,0,0,50,0,none,none
+gn:742588,Köseköy,Kocaeli,9200,village,0,0,50,0,none,none
+gn:742606,Köse,Gümüşhane Province,8705,village,0,0,50,0,none,none
+gn:742617,Koruköy,Yalova,3050,village,0,0,50,0,none,none
+gn:742657,Korgun,Çankırı,7659,village,0,0,50,0,none,none
+gn:742658,Korgan,Ordu,16733,town,0,0,50,0,none,none
+gn:742686,Köprübaşı,Trabzon,5317,village,0,0,50,0,none,none
+gn:742704,Konuralp,Düzce,0,village,0,0,50,0,none,none
+gn:742763,Kolay,Samsun,0,village,0,0,50,0,none,none
+gn:742786,Saltukova,Zonguldak Province,0,village,0,0,50,0,none,none
+gn:742794,Kofçaz,Kırklareli,1647,village,0,0,50,0,none,none
+gn:742851,Kocaköy,Kars Province,1609,village,0,0,50,0,none,none
+gn:742855,Kocakaymaz,Kocaeli,6377,village,0,0,50,0,none,none
+gn:742875,Kocadere,Yalova,1137,village,0,0,50,0,none,none
+gn:742902,Kocaali,Sakarya,15076,town,0,0,50,0,none,none
+gn:742987,Kızılırmak,Çankırı,3260,village,0,0,50,0,none,none
+gn:743051,Kızılcahamam,Ankara,17975,town,0,0,50,0,none,none
+gn:743093,Kıyıköy,Kırklareli,0,village,0,0,50,0,none,none
+gn:743106,Kışlaköy,Erzurum,0,village,0,0,50,0,none,none
+gn:743166,Kırklareli,Kırklareli,58223,town,0,0,50,0,none,none
+gn:743226,Kırcasalih,Edirne,0,village,0,0,50,0,none,none
+gn:743230,Dikmen,Sinop,0,village,0,0,50,0,none,none
+gn:743233,Kırbaşı,Ankara,0,village,0,0,50,0,none,none
+gn:743256,Kirazlı,Bursa Province,2663,village,0,0,50,0,none,none
+gn:743257,Kirazlı,Canakkale,122,village,0,0,50,0,none,none
+gn:743316,Kınalı,Istanbul,2025,village,0,0,50,0,none,none
+gn:743337,Kilimli,Zonguldak Province,0,village,0,0,50,0,none,none
+gn:743358,Kılıçkaya,Artvin,0,village,0,0,50,0,none,none
+gn:743367,Kılıç,Yalova,876,village,0,0,50,0,none,none
+gn:743373,Kılçak,Zonguldak Province,1469,village,0,0,50,0,none,none
+gn:743382,Kıbrıscık,Bolu,3114,village,0,0,50,0,none,none
+gn:743404,Kestel,Bursa Province,36185,town,0,0,50,0,none,none
+gn:743411,Kestanelik,Istanbul,2418,village,0,0,50,0,none,none
+gn:743438,Keşap,Giresun,10047,town,0,0,50,0,none,none
+gn:743439,Keşan,Edirne,44644,town,0,0,50,0,none,none
+gn:743458,Kerimler,Zonguldak Province,1335,village,0,0,50,0,none,none
+gn:743506,Kemerburgaz,Istanbul,0,village,0,0,50,0,none,none
+gn:743510,Kemalpaşa,Artvin,6276,village,0,0,50,0,none,none
+gn:743537,Kelkit,Gümüşhane Province,23870,town,0,0,50,0,none,none
+gn:743558,Kefken,Kocaeli,1710,village,0,0,50,0,none,none
+gn:743615,Kazan,Ankara,23889,town,0,0,50,0,none,none
+gn:743616,Kaytazdere,Yalova,3464,village,0,0,50,0,none,none
+gn:743624,Kaynaşlı,Düzce,20379,town,0,0,50,0,none,none
+gn:743633,Kaynarca,Sakarya,6183,village,0,0,50,0,none,none
+gn:743645,Kaymas,Kocaeli,0,village,0,0,50,0,none,none
+gn:743818,Kavaklı,Istanbul,50502,town,0,0,50,0,none,none
+gn:743851,Kavak,Samsun,9042,village,0,0,50,0,none,none
+gn:743882,Kastamonu,Kastamonu,125622,city,0,0,50,0,none,none
+gn:743888,Beycuma,Zonguldak Province,0,village,0,0,50,0,none,none
+gn:743952,Kars,Kars Province,96915,town,0,0,50,0,none,none
+gn:744006,Kargı,Çorum,0,village,0,0,50,0,none,none
+gn:744051,Karayaka,Tokat Province,0,village,0,0,50,0,none,none
+gn:744092,Karasu,Sakarya,30746,town,0,0,50,0,none,none
+gn:744093,Karasu Mahallesi,Sakarya,39508,town,0,0,50,0,none,none
+gn:744107,Karaşar,Ankara,429,village,0,0,50,0,none,none
+gn:744110,Karapürçek,Sakarya,4705,village,0,0,50,0,none,none
+gn:744138,Oğuzlar,Çorum,0,village,0,0,50,0,none,none
+gn:744168,Karamürsel,Kocaeli,30525,town,0,0,50,0,none,none
+gn:744182,Koramanlar,Zonguldak Province,1278,village,0,0,50,0,none,none
+gn:744283,Karakasım,Edirne,405,village,0,0,50,0,none,none
+gn:744404,Karadere,Sakarya,0,village,0,0,50,0,none,none
+gn:744514,Karacaköy,Istanbul,2733,village,0,0,50,0,none,none
+gn:744515,Karacaköy,Istanbul,0,village,0,0,50,0,none,none
+gn:744537,Karacabey,Bursa Province,44256,town,0,0,50,0,none,none
+gn:744560,Karabulduk,Giresun,0,village,0,0,50,0,none,none
+gn:744562,Karabük,Karabük Province,125403,city,0,0,50,0,none,none
+gn:744574,Karabiga,Canakkale,0,village,0,0,50,0,none,none
+gn:744621,Karaağaç,Kocaeli,1450,village,0,0,50,0,none,none
+gn:744651,Kaptanpaşa,Rize Province,0,village,0,0,50,0,none,none
+gn:744687,Kapaklı,Tekirdağ,0,village,0,0,50,0,none,none
+gn:744711,Kanlıca,Istanbul,3943,village,0,0,50,0,none,none
+gn:744716,Kandıra,Kocaeli,16264,town,0,0,50,0,none,none
+gn:744745,Kâmil,Çorum,0,village,0,0,50,0,none,none
+gn:744767,Kalkandere,Rize Province,9115,village,0,0,50,0,none,none
+gn:744814,Kalecik,Ankara,12932,town,0,0,50,0,none,none
+gn:744827,Kale,Gümüşhane Province,0,village,0,0,50,0,none,none
+gn:744873,Kağızman,Kars Province,21666,town,0,0,50,0,none,none
+gn:744925,Evreşe,Canakkale,0,village,0,0,50,0,none,none
+gn:744926,Kadıköy,Yalova,2741,village,0,0,50,0,none,none
+gn:744958,Kabataş,Ordu,9066,village,0,0,50,0,none,none
+gn:744966,Kabalı,Sinop,0,village,0,0,50,0,none,none
+gn:745002,Kabakça,Istanbul,1825,village,0,0,50,0,none,none
+gn:745007,Kabadüz,Ordu,3642,village,0,0,50,0,none,none
+gn:745022,İzzettin,Istanbul,1200,village,0,0,50,0,none,none
+gn:745026,İznik,Bursa Province,22230,town,0,0,50,0,none,none
+gn:745028,İzmit,Kocaeli,196571,city,0,0,50,0,none,none
+gn:745030,İyidere,Rize Province,5273,village,0,0,50,0,none,none
+gn:745039,İstinye,Istanbul,15721,town,0,0,50,0,none,none
+tr-istanbul,Istanbul,Istanbul,15701602,large-city,0,0,50,0,none,none
+gn:745047,İspir,Erzurum,12906,town,0,0,50,0,none,none
+gn:745076,İskilip,Çorum,19829,town,0,0,50,0,none,none
+gn:745112,Işıklar,Canakkale,1522,village,0,0,50,0,none,none
+gn:745136,Irmaksırtı,Samsun,1002,village,0,0,50,0,none,none
+gn:745148,İpsala,Edirne,8060,village,0,0,50,0,none,none
+gn:745151,İntepe,Canakkale,0,village,0,0,50,0,none,none
+gn:745152,Boyalı,Kastamonu,0,village,0,0,50,0,none,none
+gn:745164,İnhisar,Bilecik,2718,village,0,0,50,0,none,none
+gn:745169,İnegol,Bursa Province,133959,city,0,0,50,0,none,none
+gn:745172,İnecik,Tekirdağ,0,village,0,0,50,0,none,none
+gn:745174,İnece,Kırklareli,0,village,0,0,50,0,none,none
+gn:745175,İnebolu,Kastamonu,9935,village,0,0,50,0,none,none
+gn:745208,İncesu,Samsun,1117,village,0,0,50,0,none,none
+gn:745260,Gökçeada,Canakkale,7822,village,0,0,50,0,none,none
+gn:745261,İmrahor,Istanbul,11706,town,0,0,50,0,none,none
+gn:745308,Yarhisar,Bilecik,79,village,0,0,50,0,none,none
+gn:745344,Ilgaz,Çankırı,12963,town,0,0,50,0,none,none
+gn:745357,İkizören,Çankırı,0,village,0,0,50,0,none,none
+gn:745362,İkizdere,Rize Province,0,village,0,0,50,0,none,none
+gn:745364,İkizce,Ordu,10743,town,0,0,50,0,none,none
+gn:745379,İhsaniye,Istanbul,1728,village,0,0,50,0,none,none
+gn:745383,İhsaniye,Kocaeli,9186,village,0,0,50,0,none,none
+gn:745387,İhsangazi,Kastamonu,2957,village,0,0,50,0,none,none
+gn:745394,İğneada,Kırklareli,0,village,0,0,50,0,none,none
+gn:745401,İğdir,Kastamonu,1404,village,0,0,50,0,none,none
+gn:745403,İğdir,Kastamonu,0,village,0,0,50,0,none,none
+gn:745407,İğdir,Tokat Province,0,village,0,0,50,0,none,none
+gn:745435,İbriktepe,Edirne,0,village,0,0,50,0,none,none
+gn:745527,Horasan,Erzurum,17067,town,0,0,50,0,none,none
+gn:745530,Hopa,Artvin,17519,town,0,0,50,0,none,none
+gn:745583,Filyos,Zonguldak Province,0,village,0,0,50,0,none,none
+gn:745660,Hereke,Kocaeli,0,village,0,0,50,0,none,none
+gn:745664,Hendek,Sakarya,35257,town,0,0,50,0,none,none
+gn:745665,Nurluca,Rize Province,3354,village,0,0,50,0,none,none
+gn:745672,Güzelkent,Sinop,0,village,0,0,50,0,none,none
+gn:745693,Hayrat,Trabzon,8384,village,0,0,50,0,none,none
+gn:745697,Hayrabolu,Tekirdağ,19793,town,0,0,50,0,none,none
+gn:745714,Havza,Samsun,21500,town,0,0,50,0,none,none
+gn:745719,Havsa,Edirne,7510,village,0,0,50,0,none,none
+gn:745753,Hasköy,Edirne,0,village,0,0,50,0,none,none
+gn:745759,Hasköy,Ardahan,0,village,0,0,50,0,none,none
+gn:745775,Hasayaz,Ankara,0,village,0,0,50,0,none,none
+gn:745813,Hasanbey,Balıkesir,1436,village,0,0,50,0,none,none
+gn:745884,Hanönü,Kastamonu,2445,village,0,0,50,0,none,none
+gn:745903,Hanak,Ardahan,5122,village,0,0,50,0,none,none
+gn:745922,Hamzabey,Bursa Province,1096,village,0,0,50,0,none,none
+gn:745932,Hamitabat,Kırklareli,1020,village,0,0,50,0,none,none
+gn:745937,Hamidiye,Edirne,0,village,0,0,50,0,none,none
+gn:745954,Dedeköy,Amasya,1476,village,0,0,50,0,none,none
+gn:745955,Hamamözü,Amasya,0,village,0,0,50,0,none,none
+gn:746003,Halefoğlu,Kars Province,2310,village,0,0,50,0,none,none
+gn:746081,Hacılar,Zonguldak Province,1217,village,0,0,50,0,none,none
+gn:746099,Hacıköy,Edirne,1034,village,0,0,50,0,none,none
+gn:746107,Perşembe,Zonguldak Province,0,village,0,0,50,0,none,none
+gn:746117,Hacıhamza,Çorum,0,village,0,0,50,0,none,none
+gn:746163,Dokurcun,Sakarya,0,village,0,0,50,0,none,none
+gn:746180,Çayırova,Kocaeli,0,village,0,0,50,0,none,none
+gn:746225,Güvem,Ankara,186,village,0,0,50,0,none,none
+gn:746232,Gürsu,Bursa Province,24510,town,0,0,50,0,none,none
+gn:746234,Gürpınar,Istanbul,29411,town,0,0,50,0,none,none
+gn:746252,Gürgentepe,Ordu,18771,town,0,0,50,0,none,none
+gn:746293,Günindi,Kars Province,1313,village,0,0,50,0,none,none
+gn:746308,Güneysu,Rize Province,5976,village,0,0,50,0,none,none
+gn:746315,Kırık,Erzurum,0,village,0,0,50,0,none,none
+gn:746327,Güneyce,Rize Province,0,village,0,0,50,0,none,none
+gn:746377,Gündoğdu,Rize Province,0,village,0,0,50,0,none,none
+gn:746384,Gündoğdu,Canakkale,344,village,0,0,50,0,none,none
+gn:746385,Gündoğan,Balıkesir,1328,village,0,0,50,0,none,none
+gn:746413,Gümüşova,Düzce,0,village,0,0,50,0,none,none
+gn:746425,Gümüşhane,Gümüşhane Province,39214,town,0,0,50,0,none,none
+gn:746426,Gümüşhacıköy,Amasya,14734,town,0,0,50,0,none,none
+gn:746433,Gümüşçay,Canakkale,0,village,0,0,50,0,none,none
+gn:746436,Gümüş,Amasya,0,village,0,0,50,0,none,none
+gn:746497,Güdül,Ankara,5929,village,0,0,50,0,none,none
+gn:746527,Akkaya,Kastamonu,0,village,0,0,50,0,none,none
+gn:746546,Göynük,Bolu,5600,village,0,0,50,0,none,none
+gn:746547,Göynücek,Amasya,2796,village,0,0,50,0,none,none
+gn:746552,Görükle,Bursa Province,35882,town,0,0,50,0,none,none
+gn:746565,Görele,Giresun,30381,town,0,0,50,0,none,none
+gn:746574,Gönen,Balıkesir,40763,town,0,0,50,0,none,none
+gn:746590,Gölyaka,Düzce,0,village,0,0,50,0,none,none
+gn:746602,Gölpazarı,Bilecik,7406,village,0,0,50,0,none,none
+gn:746603,Gölova,Sivas,4809,village,0,0,50,0,none,none
+gn:746611,Göllüce,Bursa Province,1063,village,0,0,50,0,none,none
+gn:746620,Kömürlü,Erzurum,0,village,0,0,50,0,none,none
+gn:746628,Gölköy,Ordu,0,village,0,0,50,0,none,none
+gn:746629,Gölköy,Bolu,3067,village,0,0,50,0,none,none
+gn:746643,Göle,Ardahan,11943,town,0,0,50,0,none,none
+gn:746666,Gölcük,Kocaeli,56189,town,0,0,50,0,none,none
+gn:746712,Murgul,Artvin,5105,village,0,0,50,0,none,none
+gn:746751,Gökdere,Tokat Province,0,village,0,0,50,0,none,none
+gn:746763,Gökçeli,Tokat Province,0,village,0,0,50,0,none,none
+gn:746770,Gökçesu,Bolu,0,village,0,0,50,0,none,none
+gn:746806,Gökçekent,Sivas,0,village,0,0,50,0,none,none
+gn:746821,Gökçebey,Zonguldak Province,9044,village,0,0,50,0,none,none
+gn:746866,Göçe,Istanbul,1132,village,0,0,50,0,none,none
+gn:746874,Göbel,Balıkesir,0,village,0,0,50,0,none,none
+gn:746881,Giresun,Giresun,125682,city,0,0,50,0,none,none
+gn:746898,Geyve,Sakarya,20199,town,0,0,50,0,none,none
+gn:746913,Gerze,Sinop,11260,town,0,0,50,0,none,none
+gn:746940,Gerede,Bolu,28582,town,0,0,50,0,none,none
+gn:746948,Geriş,Bartın,1159,village,0,0,50,0,none,none
+gn:746956,Çiftlik,Erzurum,0,village,0,0,50,0,none,none
+gn:746958,Gemlik,Bursa Province,71063,town,0,0,50,0,none,none
+gn:746983,Gelibolu,Canakkale,25178,town,0,0,50,0,none,none
+gn:746989,Gediksaray,Amasya,0,village,0,0,50,0,none,none
+gn:747014,Gebze,Kocaeli,281436,city,0,0,50,0,none,none
+gn:747030,Gaziler,Erzurum,0,village,0,0,50,0,none,none
+gn:747090,Fındıklı,Rize Province,0,village,0,0,50,0,none,none
+gn:747135,Ferizli,Sakarya,23740,town,0,0,50,0,none,none
+gn:747146,Fenerköy,Istanbul,1509,village,0,0,50,0,none,none
+gn:747155,Fatsa,Ordu,82160,town,0,0,50,0,none,none
+gn:747158,Fatih,Istanbul,356025,city,0,0,50,0,none,none
+gn:747191,Eynesil,Giresun,13133,town,0,0,50,0,none,none
+gn:747205,Eymir,Yozgat,0,village,0,0,50,0,none,none
+gn:747208,Eğerci,Zonguldak Province,673,village,0,0,50,0,none,none
+gn:747217,Evren,Gümüşhane Province,4631,village,0,0,50,0,none,none
+gn:747262,Eskipazar,Karabük Province,0,village,0,0,50,0,none,none
+gn:747263,Gözyeri,Karabük Province,8305,village,0,0,50,0,none,none
+gn:747311,Esiroğlu,Trabzon,0,village,0,0,50,0,none,none
+gn:747323,Esenyurt,Istanbul,983571,large-city,0,0,50,0,none,none
+gn:747340,Esenler,Istanbul,520235,large-city,0,0,50,0,none,none
+gn:747361,Esençay,Amasya,0,village,0,0,50,0,none,none
+gn:747366,Esenboğa,Ankara,1712,village,0,0,50,0,none,none
+gn:747449,Erfelek,Sinop,3596,village,0,0,50,0,none,none
+gn:747459,Erenler,Sakarya,0,village,0,0,50,0,none,none
+gn:747471,Ereğli,Zonguldak Province,88848,town,0,0,50,0,none,none
+gn:747482,Erdek,Balıkesir,22678,town,0,0,50,0,none,none
+gn:747489,Erbaa,Tokat Province,52185,town,0,0,50,0,none,none
+gn:747503,Enez,Edirne,4119,village,0,0,50,0,none,none
+gn:747538,Eminönü,Istanbul,55548,town,0,0,50,0,none,none
+gn:747618,Eldivan,Çankırı,6397,village,0,0,50,0,none,none
+gn:747630,Elbeyli,Bursa Province,2569,village,0,0,50,0,none,none
+gn:747705,Eflani,Karabük Province,4425,village,0,0,50,0,none,none
+gn:747712,Edirne,Edirne,180002,city,0,0,50,0,none,none
+gn:747714,Edincik,Balıkesir,0,village,0,0,50,0,none,none
+gn:747728,Eceabat,Canakkale,5120,village,0,0,50,0,none,none
+gn:747751,Düzköy,Trabzon,8090,village,0,0,50,0,none,none
+gn:747764,Düzce,Düzce,194097,city,0,0,50,0,none,none
+gn:747793,Durusu,Istanbul,2782,village,0,0,50,0,none,none
+gn:747826,Durağan,Sinop,11626,town,0,0,50,0,none,none
+gn:747839,Dumlupınar,Ankara,4518,village,0,0,50,0,none,none
+gn:747842,Dumlu,Erzurum,0,village,0,0,50,0,none,none
+gn:747899,Dörtdivan,Bolu,3595,village,0,0,50,0,none,none
+gn:747912,Karşıyaka,Kocaeli,3221,village,0,0,50,0,none,none
+gn:747960,Dökmetepe,Tokat Province,0,village,0,0,50,0,none,none
+gn:747978,Doğanyurt,Kastamonu,1634,village,0,0,50,0,none,none
+gn:747979,Doğanyurt,Tokat Province,0,village,0,0,50,0,none,none
+gn:747982,Doğantepe,Amasya,880,village,0,0,50,0,none,none
+gn:747986,Doğanşar,Sivas,3781,village,0,0,50,0,none,none
+gn:747998,Doğanlı,Düzce,2102,village,0,0,50,0,none,none
+gn:748008,Doğankent,Giresun,3718,village,0,0,50,0,none,none
+gn:748032,Doğançay,Sakarya,0,village,0,0,50,0,none,none
+gn:748048,Dodurga,Çorum,0,village,0,0,50,0,none,none
+gn:748146,Dikbıyık,Samsun,1254,village,0,0,50,0,none,none
+gn:748148,Digor,Kars Province,2255,village,0,0,50,0,none,none
+gn:748166,Devrekani,Kastamonu,6640,village,0,0,50,0,none,none
+gn:748167,Devrek,Zonguldak Province,24559,town,0,0,50,0,none,none
+gn:748197,Destek,Amasya,0,village,0,0,50,0,none,none
+gn:748200,Dernekpazarı,Trabzon,6880,village,0,0,50,0,none,none
+gn:748208,Derince,Kocaeli,125485,city,0,0,50,0,none,none
+gn:748226,Dereseki,Istanbul,1646,village,0,0,50,0,none,none
+gn:748230,Derepazarı,Rize Province,0,village,0,0,50,0,none,none
+gn:748240,Dereli,Giresun,8473,village,0,0,50,0,none,none
+gn:748248,Dereköy,Kırklareli,0,village,0,0,50,0,none,none
+gn:748321,Derecik,Trabzon,0,village,0,0,50,0,none,none
+gn:748355,Büyükderbent,Kocaeli,0,village,0,0,50,0,none,none
+gn:748378,Demirtaş,Bursa Province,6702,village,0,0,50,0,none,none
+gn:748383,Demirözü,Bayburt Province,1875,village,0,0,50,0,none,none
+gn:748402,Demirkent,Artvin,277,village,0,0,50,0,none,none
+gn:748418,Demirdöven,Erzurum,1045,village,0,0,50,0,none,none
+gn:748543,Değirmendere,Kocaeli,0,village,0,0,50,0,none,none
+gn:748636,Darıca,Kocaeli,0,village,0,0,50,0,none,none
+gn:748638,Darıca,Balıkesir,0,village,0,0,50,0,none,none
+gn:748685,Dambaslar,Tekirdağ,0,village,0,0,50,0,none,none
+gn:748687,Damar,Artvin,1311,village,0,0,50,0,none,none
+gn:748688,Damal,Ardahan,2856,village,0,0,50,0,none,none
+gn:748756,Dağbaşı,Trabzon,0,village,0,0,50,0,none,none
+gn:748761,Daday,Kastamonu,5199,village,0,0,50,0,none,none
+gn:748870,Çubuk,Ankara,62602,town,0,0,50,0,none,none
+gn:748879,Çorum,Çorum,269595,city,0,0,50,0,none,none
+gn:748893,Çorlu,Tekirdağ,202578,city,0,0,50,0,none,none
+gn:748922,Çöpköy,Edirne,0,village,0,0,50,0,none,none
+gn:749025,Çırçır,Sivas,0,village,0,0,50,0,none,none
+gn:749056,Çınarlık,Samsun,1570,village,0,0,50,0,none,none
+gn:749068,Çınarlı,Canakkale,1817,village,0,0,50,0,none,none
+gn:749075,Çınarcık,Yalova,7629,village,0,0,50,0,none,none
+gn:749100,Çilimli,Düzce,0,village,0,0,50,0,none,none
+gn:749109,Çıldır,Ardahan,0,village,0,0,50,0,none,none
+gn:749163,Çiftlikköy,Yalova,5750,village,0,0,50,0,none,none
+gn:749183,Cide,Kastamonu,12095,town,0,0,50,0,none,none
+gn:749211,Çevrik,Düzce,3910,village,0,0,50,0,none,none
+gn:749263,Cerrah,Bursa Province,3707,village,0,0,50,0,none,none
+gn:749274,Çerkezköy,Tekirdağ,84234,town,0,0,50,0,none,none
+gn:749279,Çerkeş,Çankırı,17802,town,0,0,50,0,none,none
+gn:749288,Çerçiler,Sinop,0,village,0,0,50,0,none,none
+gn:749311,Çengilli,Kars Province,1300,village,0,0,50,0,none,none
+gn:749323,Çengelköy,Istanbul,13801,town,0,0,50,0,none,none
+gn:749334,Cemilbey,Çorum,0,village,0,0,50,0,none,none
+gn:749351,Çeltikçi,Ankara,291,village,0,0,50,0,none,none
+gn:749387,Çekmeköy,Istanbul,0,village,0,0,50,0,none,none
+gn:749392,Çekerek,Yozgat,10585,town,0,0,50,0,none,none
+gn:749421,Kürtün,Gümüşhane Province,3834,village,0,0,50,0,none,none
+gn:749456,Çaykara,Trabzon,14398,town,0,0,50,0,none,none
+gn:749481,Çayırhan,Ankara,8156,village,0,0,50,0,none,none
+gn:749502,Çayeli,Rize Province,24556,town,0,0,50,0,none,none
+gn:749508,Çaycuma,Zonguldak Province,21773,town,0,0,50,0,none,none
+gn:749518,Çaybaşı,Ordu,0,village,0,0,50,0,none,none
+gn:749521,Çayarası,Kars Province,1478,village,0,0,50,0,none,none
+gn:749531,Çayağzı,Istanbul,2885,village,0,0,50,0,none,none
+gn:749602,Çatkaya,Samsun,4149,village,0,0,50,0,none,none
+gn:749609,Çatalzeytin,Kastamonu,3273,village,0,0,50,0,none,none
+gn:749644,Çatalca,Istanbul,39678,town,0,0,50,0,none,none
+gn:749701,Çarşıbaşı,Trabzon,0,village,0,0,50,0,none,none
+gn:749704,Çarşamba,Samsun,50459,town,0,0,50,0,none,none
+gn:749740,Çanta,Istanbul,5470,village,0,0,50,0,none,none
+gn:749748,Çankırı,Çankırı,90564,town,0,0,50,0,none,none
+gn:749762,Çandır,Ankara,0,village,0,0,50,0,none,none
+gn:749780,Çanakkale,Canakkale,143622,city,0,0,50,0,none,none
+gn:749789,Çanakçı,Giresun,0,village,0,0,50,0,none,none
+gn:749793,Çanakça,Istanbul,2807,village,0,0,50,0,none,none
+gn:749795,Çan,Canakkale,26201,town,0,0,50,0,none,none
+gn:749819,Çamoluk,Giresun,0,village,0,0,50,0,none,none
+gn:749833,Çamlıkaya,Erzurum,0,village,0,0,50,0,none,none
+gn:749841,Çamlıhemşin,Rize Province,0,village,0,0,50,0,none,none
+gn:749843,Çamlıdere,Ankara,12484,town,0,0,50,0,none,none
+gn:749857,Çamlıbel,Tokat Province,0,village,0,0,50,0,none,none
+gn:749876,Camili,Artvin,181,village,0,0,50,0,none,none
+gn:749901,Çağlayan,Trabzon,0,village,0,0,50,0,none,none
+gn:749916,Çamaş,Ordu,10535,town,0,0,50,0,none,none
+gn:749939,Çaltı,Bilecik,1074,village,0,0,50,0,none,none
+gn:749987,Çalı,Bursa Province,0,village,0,0,50,0,none,none
+gn:750043,Çakırlı,Bursa Province,2071,village,0,0,50,0,none,none
+gn:750059,Çakırca,Bursa Province,1256,village,0,0,50,0,none,none
+gn:750062,Çakıralan,Samsun,0,village,0,0,50,0,none,none
+gn:750082,Çakılköy,Istanbul,2612,village,0,0,50,0,none,none
+gn:750160,Buyuklu,Samsun,1020,village,0,0,50,0,none,none
+gn:750165,Laçin,Çorum,2471,village,0,0,50,0,none,none
+gn:750170,Büyükköy,Rize Province,0,village,0,0,50,0,none,none
+gn:750176,Büyükkılıçlı,Istanbul,1237,village,0,0,50,0,none,none
+gn:750180,Büyükkarıştıran,Kırklareli,0,village,0,0,50,0,none,none
+gn:750214,Büyükdere,Istanbul,8586,village,0,0,50,0,none,none
+gn:750228,Büyükçavuşlu,Istanbul,3840,village,0,0,50,0,none,none
+gn:750249,Adalar,Istanbul,7335,village,0,0,50,0,none,none
+gn:750269,Bursa,Bursa Province,3101833,large-city,0,0,50,0,none,none
+gn:750285,Burgaz,Istanbul,1655,village,0,0,50,0,none,none
+gn:750296,Sarıcakaya,Eskişehir,0,village,0,0,50,0,none,none
+gn:750317,Bulancak,Giresun,43635,town,0,0,50,0,none,none
+gn:750344,Buğdaylı,Balıkesir,0,village,0,0,50,0,none,none
+gn:750392,Bozkurt,Kastamonu,6050,village,0,0,50,0,none,none
+gn:750446,Boyalık,Istanbul,11835,town,0,0,50,0,none,none
+gn:750450,Boyalıca,Bursa Province,2227,village,0,0,50,0,none,none
+gn:750468,Boyabat,Sinop,27717,town,0,0,50,0,none,none
+gn:750488,Bostanbükü,Karabük Province,5596,village,0,0,50,0,none,none
+gn:750496,Borçka,Artvin,9942,village,0,0,50,0,none,none
+gn:750516,Bolu,Bolu,184682,city,0,0,50,0,none,none
+gn:750519,Bolluca,Istanbul,8274,village,0,0,50,0,none,none
+gn:750525,Bolayır,Canakkale,1053,village,0,0,50,0,none,none
+gn:750528,Bolaman,Ordu,0,village,0,0,50,0,none,none
+gn:750539,Boğazkale,Çorum,0,village,0,0,50,0,none,none
+gn:750548,Boğazkaya,Samsun,0,village,0,0,50,0,none,none
+gn:750590,Eminbey,Ardahan,134,village,0,0,50,0,none,none
+gn:750598,Bilecik,Bilecik,74457,town,0,0,50,0,none,none
+gn:750605,Biga,Canakkale,61066,town,0,0,50,0,none,none
+gn:750615,Asarcık,Samsun,2154,village,0,0,50,0,none,none
+gn:750637,Beypazarı,Ankara,38769,town,0,0,50,0,none,none
+gn:750654,Beylerce,Samsun,1033,village,0,0,50,0,none,none
+gn:750656,Beylerbeyi,Istanbul,5168,village,0,0,50,0,none,none
+gn:750697,Beyçayırı,Canakkale,0,village,0,0,50,0,none,none
+gn:750703,Beyazköy,Tekirdağ,0,village,0,0,50,0,none,none
+gn:750716,Beşpınar,Samsun,1012,village,0,0,50,0,none,none
+gn:750735,Beşikdüzü,Trabzon,36987,town,0,0,50,0,none,none
+gn:750751,Bereketli,Tokat Province,0,village,0,0,50,0,none,none
+gn:750781,Belören,Çankırı,0,village,0,0,50,0,none,none
+gn:750864,Bebek,Istanbul,5464,village,0,0,50,0,none,none
+gn:750874,Bayramören,Çankırı,3049,village,0,0,50,0,none,none
+gn:750938,Bayburt,Bayburt Province,48036,town,0,0,50,0,none,none
+gn:750948,Bayat,Çorum,5613,village,0,0,50,0,none,none
+gn:751016,Başköy,Kars Province,1377,village,0,0,50,0,none,none
+gn:751036,Başçiftlik,Tokat Province,7410,village,0,0,50,0,none,none
+gn:751057,Bartın,Bartın,81692,town,0,0,50,0,none,none
+gn:751077,Bandırma,Balıkesir,107631,city,0,0,50,0,none,none
+gn:751080,Banarlı,Tekirdağ,0,village,0,0,50,0,none,none
+gn:751103,Ondokuzmayıs,Samsun,0,village,0,0,50,0,none,none
+gn:751114,Ballı,Tekirdağ,0,village,0,0,50,0,none,none
+gn:751128,Balıklıçeşme,Canakkale,0,village,0,0,50,0,none,none
+gn:751132,Balıklı,Balıkesir,1658,village,0,0,50,0,none,none
+gn:751170,Balçık,Kocaeli,1102,village,0,0,50,0,none,none
+gn:751242,Bakacak,Canakkale,220,village,0,0,50,0,none,none
+gn:751265,Bahçeköy,Istanbul,3737,village,0,0,50,0,none,none
+gn:751277,Bahçecik,Kocaeli,8648,village,0,0,50,0,none,none
+gn:751324,Bağcılar,Istanbul,740069,large-city,0,0,50,0,none,none
+gn:751335,Bafra,Samsun,92944,town,0,0,50,0,none,none
+gn:751371,Babaeski,Kırklareli,26724,town,0,0,50,0,none,none
+gn:751388,Azdavay,Kastamonu,3287,village,0,0,50,0,none,none
+gn:751427,Ayvacık,Samsun,5731,village,0,0,50,0,none,none
+gn:751475,Aydıntepe,Bayburt Province,7961,village,0,0,50,0,none,none
+gn:751491,Aydıncık,Yozgat,6760,village,0,0,50,0,none,none
+gn:751493,Aydınca,Amasya,0,village,0,0,50,0,none,none
+gn:751503,Aybastı,Ordu,0,village,0,0,50,0,none,none
+gn:751511,Ayaş,Ankara,8570,village,0,0,50,0,none,none
+gn:751516,Ayancık,Sinop,11779,town,0,0,50,0,none,none
+gn:751575,Atkaracalar,Çankırı,5088,village,0,0,50,0,none,none
+gn:751768,Çinik,Samsun,1260,village,0,0,50,0,none,none
+gn:751817,Artvin,Artvin,25841,town,0,0,50,0,none,none
+gn:751818,Artova,Tokat Province,6231,village,0,0,50,0,none,none
+gn:751837,Arslanbey,Kocaeli,3927,village,0,0,50,0,none,none
+gn:751838,Arsin,Trabzon,16148,town,0,0,50,0,none,none
+gn:751864,Arpaçay,Kars Province,2264,village,0,0,50,0,none,none
+gn:751868,Arnavutköy,Istanbul,198165,city,0,0,50,0,none,none
+gn:751869,Arnavutköy,Istanbul,3574,village,0,0,50,0,none,none
+gn:751881,Armutlu,Yalova,0,village,0,0,50,0,none,none
+gn:751905,Arıt,Bartın,310,village,0,0,50,0,none,none
+gn:751922,Arifiye,Sakarya,0,village,0,0,50,0,none,none
+gn:751931,Arhavi,Artvin,16217,town,0,0,50,0,none,none
+gn:751936,Çamiçi,Tokat Province,0,village,0,0,50,0,none,none
+gn:751949,Ardeşen,Rize Province,67965,town,0,0,50,0,none,none
+gn:751950,Ardanuç,Artvin,5432,village,0,0,50,0,none,none
+gn:751952,Ardahan,Ardahan,22927,town,0,0,50,0,none,none
+gn:751971,Araklı,Trabzon,29917,town,0,0,50,0,none,none
+gn:751976,Araç,Kastamonu,5590,village,0,0,50,0,none,none
+gn:751994,Anadoluhisarı,Istanbul,2612,village,0,0,50,0,none,none
+gn:752015,Amasya,Amasya,114921,city,0,0,50,0,none,none
+gn:752016,Amasra,Bartın,6177,village,0,0,50,0,none,none
+gn:752020,Alucra,Giresun,3945,village,0,0,50,0,none,none
+gn:752042,Altınova,Yalova,3875,village,0,0,50,0,none,none
+gn:752064,Alparslan,Amasya,1122,village,0,0,50,0,none,none
+gn:752083,Almus,Tokat Province,6303,village,0,0,50,0,none,none
+gn:752120,Alıcık,Amasya,410,village,0,0,50,0,none,none
+gn:752184,Alaplı,Zonguldak Province,20890,town,0,0,50,0,none,none
+gn:752188,Alanyurt,Bursa Province,2138,village,0,0,50,0,none,none
+gn:752259,Alaçam,Samsun,0,village,0,0,50,0,none,none
+gn:752278,Alaca,Çorum,27019,town,0,0,50,0,none,none
+gn:752284,Akyurt,Ankara,26572,town,0,0,50,0,none,none
+gn:752288,Akyazı,Sakarya,25068,town,0,0,50,0,none,none
+gn:752297,Akyaka,Kars Province,2039,village,0,0,50,0,none,none
+gn:752359,Aksu,Sivas,10500,town,0,0,50,0,none,none
+gn:752373,Akşar,Erzurum,0,village,0,0,50,0,none,none
+gn:752379,Aksakal,Balıkesir,0,village,0,0,50,0,none,none
+gn:752392,Akpınar,Istanbul,1180,village,0,0,50,0,none,none
+gn:752413,Akören,Istanbul,1373,village,0,0,50,0,none,none
+gn:752418,Mollafeneri,Kocaeli,0,village,0,0,50,0,none,none
+gn:752429,Akmeşe,Kocaeli,0,village,0,0,50,0,none,none
+gn:752434,Akkuzulu,Ankara,2903,village,0,0,50,0,none,none
+gn:752437,Akkuş,Ordu,10206,town,0,0,50,0,none,none
+gn:752476,Akıncılar,Sivas,4779,village,0,0,50,0,none,none
+gn:752489,Akhisar,Bursa Province,15198,town,0,0,50,0,none,none
+gn:752517,Akdam,Kars Province,1233,village,0,0,50,0,none,none
+gn:752518,Akdağ,Amasya,0,village,0,0,50,0,none,none
+gn:752584,Akçakoca,Düzce,35151,town,0,0,50,0,none,none
+gn:752627,Akçaabat,Trabzon,45105,town,0,0,50,0,none,none
+gn:752659,Akbaba,Istanbul,2771,village,0,0,50,0,none,none
+gn:752671,Akalan,Istanbul,1093,village,0,0,50,0,none,none
+gn:752690,Ahmetli,Istanbul,2875,village,0,0,50,0,none,none
+gn:752765,Ağva,Istanbul,8750,village,0,0,50,0,none,none
+gn:752770,Ağlı,Kastamonu,0,village,0,0,50,0,none,none
+gn:752806,Ağaköy,Canakkale,2106,village,0,0,50,0,none,none
+gn:752844,Adatepe,Samsun,1190,village,0,0,50,0,none,none
+gn:752850,Adapazarı,Sakarya,286787,city,0,0,50,0,none,none
+gn:752926,Abana,Kastamonu,3956,village,0,0,50,0,none,none
+gn:831432,Espiye,Giresun,15058,town,0,0,50,0,none,none
+gn:857229,Celâliye,Istanbul,7788,village,0,0,50,0,none,none
+gn:857230,Muratbey,Istanbul,1345,village,0,0,50,0,none,none
+gn:857233,Gökçeali,Istanbul,1982,village,0,0,50,0,none,none
+gn:858736,Eğercili,Samsun,1254,village,0,0,50,0,none,none
+gn:862940,Halıdere,Kocaeli,3073,village,0,0,50,0,none,none
+gn:862944,İçmeler,Istanbul,1367,village,0,0,50,0,none,none
+gn:6354984,Merter Keresteciler,Istanbul,50000,town,0,0,50,0,none,none
+gn:6354985,Güngören Merter,Istanbul,50000,town,0,0,50,0,none,none
+gn:6611122,Karşıyaka,Iğdır,2808,village,0,0,50,0,none,none
+gn:6611242,Çukurköy,Diyarbakır Province,1170,village,0,0,50,0,none,none
+gn:6611281,Günyazı,Hakkâri,1543,village,0,0,50,0,none,none
+gn:6611318,Göltepesi,Bingöl,1052,village,0,0,50,0,none,none
+gn:6611796,Kovanlı,Mardin,1424,village,0,0,50,0,none,none
+gn:6620290,Turgutreis,Muğla,16490,town,0,0,50,0,none,none
+gn:6685635,Hatundere,İzmir Province,3660,village,0,0,50,0,none,none
+gn:6686001,Akgedik,Manisa,7654,village,0,0,50,0,none,none
+gn:6686903,Saracalarçiftliği,Ankara,1148,village,0,0,50,0,none,none
+gn:6692058,Karatay,Konya,0,village,0,0,50,0,none,none
+gn:6692511,Incekum,Antalya,3345,village,0,0,50,0,none,none
+gn:6692513,Kargıcak,Antalya,5989,village,0,0,50,0,none,none
+gn:6692514,Kiriş,Antalya,1093,village,0,0,50,0,none,none
+gn:6692520,Çolaklı,Antalya,7190,village,0,0,50,0,none,none
+gn:6692524,Sarigerme,Muğla,16000,town,0,0,50,0,none,none
+gn:6692526,Ölüdeniz,Muğla,2748,village,0,0,50,0,none,none
+gn:6695616,Mavişehir,İzmir Province,13805,town,0,0,50,0,none,none
+gn:6940491,Arıköy,Istanbul,2000,village,0,0,50,0,none,none
+gn:6944973,Sultanahmet,Istanbul,1400,village,0,0,50,0,none,none
+gn:6947636,Heybeliada,Istanbul,4424,village,0,0,50,0,none,none
+gn:6947637,Ataşehir,Istanbul,361615,city,0,0,50,0,none,none
+gn:6947639,Başakşehir,Istanbul,193750,city,0,0,50,0,none,none
+gn:6947640,Beylikdüzü,Istanbul,415290,city,0,0,50,0,none,none
+gn:6947641,Büyükçekmece,Istanbul,163140,city,0,0,50,0,none,none
+gn:6955677,Çankaya,Ankara,792189,large-city,0,0,50,0,none,none
+gn:6955978,Çayırbaşı,Istanbul,1132,village,0,0,50,0,none,none
+gn:6955979,Meşrutiyet,Istanbul,2109,village,0,0,50,0,none,none
+gn:6970652,Kazanbey,Ağrı,2029,village,0,0,50,0,none,none
+gn:6972904,Sarıgül,Ağrı,3121,village,0,0,50,0,none,none
+gn:6973642,Esnemez,Ağrı,1247,village,0,0,50,0,none,none
+gn:6984509,Değirmenaltı,Bitlis,1137,village,0,0,50,0,none,none
+gn:7012677,Demirli,Mardin,1147,village,0,0,50,0,none,none
+gn:7116411,Kadıköy,Istanbul,1454,village,0,0,50,0,none,none
+gn:7280504,Yaniklar,Muğla,2598,village,0,0,50,0,none,none
+gn:7454464,Cayönü,Batman,1194,village,0,0,50,0,none,none
+gn:7457829,Battalgazi,Malatya,0,village,0,0,50,0,none,none
+gn:7458188,Yakınca,Malatya,23063,town,0,0,50,0,none,none
+gn:7471158,Çakmak,Diyarbakır Province,1302,village,0,0,50,0,none,none
+gn:7489953,Ayveri,Diyarbakır Province,1480,village,0,0,50,0,none,none
+gn:7489954,Sevindik,Diyarbakır Province,1361,village,0,0,50,0,none,none
+gn:7503210,Güzelyalı,Canakkale,1641,village,0,0,50,0,none,none
+gn:7519524,Güzelsu,Adıyaman Province,1109,village,0,0,50,0,none,none
+gn:7519817,Çamdere,Adıyaman Province,1771,village,0,0,50,0,none,none
+gn:7519943,Narince,Adıyaman Province,1383,village,0,0,50,0,none,none
+gn:7520148,Kayaönü,Adıyaman Province,1115,village,0,0,50,0,none,none
+gn:7539160,Konuklu,Şanlıurfa,7813,village,0,0,50,0,none,none
+gn:7569266,Güce,Giresun,0,village,0,0,50,0,none,none
+gn:7581514,Çatalpınar,Ordu,0,village,0,0,50,0,none,none
+gn:7619097,Alahacı,Gaziantep,1428,village,0,0,50,0,none,none
+gn:7619107,Süleymanobası,Gaziantep,1861,village,0,0,50,0,none,none
+gn:7619134,Güngürge,Gaziantep,4794,village,0,0,50,0,none,none
+gn:7619145,Şehitkamil,Gaziantep,0,village,0,0,50,0,none,none
+gn:7619146,Şahinbey,Gaziantep,0,village,0,0,50,0,none,none
+gn:7627067,Bahçelievler,Istanbul,576799,large-city,0,0,50,0,none,none
+gn:7628395,Altunizade,Istanbul,13459,town,0,0,50,0,none,none
+gn:7628416,Sultangazi,Istanbul,436935,city,0,0,50,0,none,none
+gn:7628419,Sultanbeyli,Istanbul,358201,city,0,0,50,0,none,none
+gn:7628420,Sancaktepe,Istanbul,489848,city,0,0,50,0,none,none
+gn:7639700,Ferhatlı,Adana,1110,village,0,0,50,0,none,none
+gn:7642396,Karslı,Adana,5172,village,0,0,50,0,none,none
+gn:7642420,Mustafalar,Adana,1291,village,0,0,50,0,none,none
+gn:7642511,Kamışlı,Adana,0,village,0,0,50,0,none,none
+gn:7642622,Turgutlu,Adana,1506,village,0,0,50,0,none,none
+gn:7642635,Güneri,Adana,2073,village,0,0,50,0,none,none
+gn:7669106,Aksaray,Istanbul,8541,village,0,0,50,0,none,none
+gn:7669145,Levent,Istanbul,2911,village,0,0,50,0,none,none
+gn:7669146,Etiler,Istanbul,11258,town,0,0,50,0,none,none
+gn:7697836,Habibfaki,Samsun,1306,village,0,0,50,0,none,none
+gn:7698659,Köprübaşı,Samsun,106,village,0,0,50,0,none,none
+gn:7699594,Çayırkent,Samsun,0,village,0,0,50,0,none,none
+gn:7700531,Salıpazarı,Samsun,0,village,0,0,50,0,none,none
+gn:7701053,Cumhuriyet,Samsun,3298,village,0,0,50,0,none,none
+gn:7701384,Karabağlar,İzmir Province,479338,city,0,0,50,0,none,none
+gn:7849529,Hırkatolu,Aksaray,1231,village,0,0,50,0,none,none
+gn:7850606,Köprübaşı,Mersin,1290,village,0,0,50,0,none,none
+gn:7850607,Malaklar,Mersin,2160,village,0,0,50,0,none,none
+gn:7855834,Akgedik,Mersin,1509,village,0,0,50,0,none,none
+gn:7857872,Işıklı,Mersin,1532,village,0,0,50,0,none,none
+gn:7926667,İncirli,Ankara,30440,town,0,0,50,0,none,none
+gn:7927358,Kızılay,Ankara,1311,village,0,0,50,0,none,none
+gn:8017101,Kavaklıdere,Ankara,6190,village,0,0,50,0,none,none
+gn:8028661,Abdipaşa,Bartın,2593,village,0,0,50,0,none,none
+gn:8068884,Yeşilöz,Antalya,1270,village,0,0,50,0,none,none
+gn:8068981,Tosmur,Antalya,11712,town,0,0,50,0,none,none
+gn:8068982,Oba,Antalya,28864,town,0,0,50,0,none,none
+gn:8068985,Değirmendere,Antalya,1370,village,0,0,50,0,none,none
+gn:8068986,Çıplaklı,Antalya,9139,village,0,0,50,0,none,none
+gn:8069036,Cikcilli,Antalya,21449,town,0,0,50,0,none,none
+gn:8069920,Hacımehmetli,Antalya,2144,village,0,0,50,0,none,none
+gn:8069928,Emişbeleni,Antalya,1492,village,0,0,50,0,none,none
+gn:8070028,Gültepe,Antalya,2226,village,0,0,50,0,none,none
+gn:8070035,Karaöz,Antalya,1062,village,0,0,50,0,none,none
+gn:8073421,Belkıs,Antalya,1564,village,0,0,50,0,none,none
+gn:8073423,Sarıabalı,Antalya,1062,village,0,0,50,0,none,none
+gn:8074152,Gündoğdu,Antalya,2082,village,0,0,50,0,none,none
+gn:8074174,Muratpaşa,Antalya,450000,city,0,0,50,0,none,none
+gn:8074217,Kargalık,Antalya,1238,village,0,0,50,0,none,none
+gn:8077561,Köşkerler,Antalya,2282,village,0,0,50,0,none,none
+gn:8138272,Okurcalar,Antalya,4312,village,0,0,50,0,none,none
+gn:8140653,Cumayeri,Düzce,10695,town,0,0,50,0,none,none
+gn:8140752,Gölormanı,Düzce,1977,village,0,0,50,0,none,none
+gn:8140753,Aydınpınar,Düzce,2712,village,0,0,50,0,none,none
+gn:8142919,Otluoğlu,Düzce,1975,village,0,0,50,0,none,none
+gn:8194997,Doğancı,Bolu,1067,village,0,0,50,0,none,none
+gn:8202044,Kürkçüler,Bolu,2470,village,0,0,50,0,none,none
+gn:8281779,Ortaköy,Sakarya,0,village,0,0,50,0,none,none
+gn:8306130,İncesu,Gaziantep,1107,village,0,0,50,0,none,none
+gn:8306185,Polateli,Kilis,0,village,0,0,50,0,none,none
+gn:8307891,Ovacık,Mersin,0,village,0,0,50,0,none,none
+gn:8322507,Kazımpaşa,Sakarya,0,village,0,0,50,0,none,none
+gn:8378719,Kadriye,Antalya,9658,village,0,0,50,0,none,none
+gn:8383537,Akçaova,Kocaeli,0,village,0,0,50,0,none,none
+gn:8384196,Balaban,Kocaeli,1326,village,0,0,50,0,none,none
+gn:8384779,Termal,Yalova,0,village,0,0,50,0,none,none
+gn:8521963,Yıldırım,Bursa Province,0,village,0,0,50,0,none,none
+gn:8522439,Yaylacık,Bursa Province,2022,village,0,0,50,0,none,none
+gn:8523940,Yalıntaş,Bursa Province,6193,village,0,0,50,0,none,none
+gn:8542938,Osmangazi,Bursa Province,0,village,0,0,50,0,none,none
+gn:8543049,Büyükorhan,Bursa Province,0,village,0,0,50,0,none,none
+gn:8623130,İshaklı,Istanbul,1351,village,0,0,50,0,none,none
+gn:8623131,Paşamandıra,Istanbul,1271,village,0,0,50,0,none,none
+gn:8623135,Zerzavatçı,Istanbul,1028,village,0,0,50,0,none,none
+gn:8623136,Tepetarla,Istanbul,4148,village,0,0,50,0,none,none
+gn:8623137,Elmalı,Istanbul,3147,village,0,0,50,0,none,none
+gn:8623139,Göçbeyli,Istanbul,1389,village,0,0,50,0,none,none
+gn:8623183,Çubuklu,Istanbul,20698,town,0,0,50,0,none,none
+gn:8694518,Tahir,Ağrı,1534,village,0,0,50,0,none,none
+gn:9888116,Tepeköy,İzmir Province,1210,village,0,0,50,0,none,none
+gn:9888191,Yahşeli,İzmir Province,4718,village,0,0,50,0,none,none
+gn:9888550,Payamlı,İzmir Province,1507,village,0,0,50,0,none,none
+gn:9888573,Kuşçular,İzmir Province,3492,village,0,0,50,0,none,none
+gn:9888776,Ataşehir,İzmir Province,28864,town,0,0,50,0,none,none
+gn:9888777,Maltepe,İzmir Province,4108,village,0,0,50,0,none,none
+gn:9888778,Şirintepe,İzmir Province,8355,village,0,0,50,0,none,none
+gn:9888779,Aydınlıkevler,İzmir Province,3937,village,0,0,50,0,none,none
+gn:9888780,Köyiçi,İzmir Province,3898,village,0,0,50,0,none,none
+gn:9888782,Çağdaş,İzmir Province,6125,village,0,0,50,0,none,none
+gn:9888783,Egekent,İzmir Province,8107,village,0,0,50,0,none,none
+gn:9888784,İzkent,İzmir Province,6295,village,0,0,50,0,none,none
+gn:9888785,Evka-Beş,İzmir Province,12717,town,0,0,50,0,none,none
+gn:9888786,Inonu,İzmir Province,7881,village,0,0,50,0,none,none
+gn:9888787,Uğur Mumcu,İzmir Province,6183,village,0,0,50,0,none,none
+gn:9888788,Ahmet Efendi,İzmir Province,2029,village,0,0,50,0,none,none
+gn:9888789,Atakent,İzmir Province,6332,village,0,0,50,0,none,none
+gn:9888792,Bostanlı,İzmir Province,29842,town,0,0,50,0,none,none
+gn:9888797,Demirköprü,İzmir Province,6885,village,0,0,50,0,none,none
+gn:9888806,Şemikler,İzmir Province,29321,town,0,0,50,0,none,none
+gn:9888807,Cumhuriyet,İzmir Province,6834,village,0,0,50,0,none,none
+gn:9921442,Evka-Üç,İzmir Province,20600,town,0,0,50,0,none,none
+gn:10048770,Bağlar,Diyarbakır Province,0,village,0,0,50,0,none,none
+gn:10048774,Sur,Diyarbakır Province,0,village,0,0,50,0,none,none
+gn:10048802,Yeşilbağ,Diyarbakır Province,1084,village,0,0,50,0,none,none
+gn:10048815,Yenişehir,Diyarbakır Province,0,village,0,0,50,0,none,none
+gn:10180439,Pınarkent,Denizli,6778,village,0,0,50,0,none,none
+gn:10182503,Yılmazköy,Aydın,1014,village,0,0,50,0,none,none
+gn:10182514,Çeştepe,Aydın,5787,village,0,0,50,0,none,none
+gn:10182515,Kuyulu,Aydın,1426,village,0,0,50,0,none,none
+gn:10182543,Sandıklı,Aydın,3798,village,0,0,50,0,none,none
+gn:10182544,Gerenkova,Aydın,1980,village,0,0,50,0,none,none
+gn:10182547,Erbeyli,Aydın,1088,village,0,0,50,0,none,none
+gn:10182614,Yalıköy,Aydın,2485,village,0,0,50,0,none,none
+gn:10182639,Yuvaca,Aydın,1463,village,0,0,50,0,none,none
+gn:10191982,Emirdoğan,Aydın,1294,village,0,0,50,0,none,none
+gn:10192104,Dallıca,Aydın,3032,village,0,0,50,0,none,none
+gn:10192105,Ocaklı,Aydın,1234,village,0,0,50,0,none,none
+gn:10194364,Evciler,Aydın,2468,village,0,0,50,0,none,none
+gn:10194365,Mutaflar,Aydın,1224,village,0,0,50,0,none,none
+gn:10202338,Ataköy,Aydın,1073,village,0,0,50,0,none,none
+gn:10251000,Ortaköy,Muğla,2537,village,0,0,50,0,none,none
+gn:10251085,Konacık,Muğla,5344,village,0,0,50,0,none,none
+gn:10331001,Palandöken,Erzurum,0,village,0,0,50,0,none,none
+gn:10331003,Kazımkarabekir,Erzurum,0,village,0,0,50,0,none,none
+gn:10332081,Yakutiye,Erzurum,0,village,0,0,50,0,none,none
+gn:10345206,Tepebaşı,Eskişehir,0,village,0,0,50,0,none,none
+gn:10345207,Odunpazarı,Eskişehir,0,village,0,0,50,0,none,none
+gn:10345315,Pamukkale,Denizli,0,village,0,0,50,0,none,none
+gn:10346824,Nilüfer,Bursa Province,536365,large-city,0,0,50,0,none,none
+gn:10351067,Esentepe,Samsun,3825,village,0,0,50,0,none,none
+gn:10354266,Çaybağı,Tunceli,0,village,0,0,50,0,none,none
+gn:10375669,Merkez,Canakkale,0,village,0,0,50,0,none,none
+gn:10376352,İlkadım,Samsun,0,village,0,0,50,0,none,none
+gn:10377367,Kepez,Antalya,0,village,0,0,50,0,none,none
+gn:10400338,Ümraniye,Istanbul,0,village,0,0,50,0,none,none
+gn:10402306,Altınordu,Ordu,0,village,0,0,50,0,none,none
+gn:10630829,Bolatlı,Mersin,1780,village,0,0,50,0,none,none
+gn:10630881,Akgedik,Mersin,1509,village,0,0,50,0,none,none
+gn:10631605,Çiftepınar,Mersin,1111,village,0,0,50,0,none,none
+gn:10631897,Üçtepe,Mersin,1387,village,0,0,50,0,none,none
+gn:10631907,Esenpınar,Mersin,1287,village,0,0,50,0,none,none
+gn:10632123,Narlıkuyu,Mersin,2476,village,0,0,50,0,none,none
+gn:10632124,Atayurt,Mersin,6876,village,0,0,50,0,none,none
+gn:10632125,Arkum,Mersin,1737,village,0,0,50,0,none,none
+gn:10632127,Ulugöz,Mersin,1165,village,0,0,50,0,none,none
+gn:10636468,Kürecik,Kahramanmaraş,0,village,0,0,50,0,none,none
+gn:10641832,Fettahlı,Antalya,1300,village,0,0,50,0,none,none
+gn:10803517,Ataköy,Samsun,1857,village,0,0,50,0,none,none
+gn:10871033,Esentepe,Adana,3350,village,0,0,50,0,none,none
+gn:11048383,Cumhuriyet,İzmir Province,1386,village,0,0,50,0,none,none
+gn:11192614,Kerimbeyli,Iğdır,1421,village,0,0,50,0,none,none
+gn:11197786,Doğruyol,Ardahan,0,village,0,0,50,0,none,none
+gn:11238838,Merkezefendi,Denizli,280341,city,0,0,50,0,none,none
+gn:11282178,Kartepe,Kocaeli,0,village,0,0,50,0,none,none
+gn:12196106,Diliskelesi,Kocaeli,10910,town,0,0,50,0,none,none
+gn:13192127,Aşağı Hisar,Antalya,8832,village,0,0,50,0,none,none
+gn:13426380,Tanyeri,Erzincan,0,village,0,0,50,0,none,none
+gn:13426796,Karaköy,Muş,0,village,0,0,50,0,none,none
+gn:13589441,Atatürk,Düzce,1057,village,0,0,50,0,none,none
+gn:13589444,Sarıyer,Düzce,1833,village,0,0,50,0,none,none
+gn:13589445,Merkez,Düzce,2363,village,0,0,50,0,none,none
+gn:13589446,Ayazlı,Ordu,8830,village,0,0,50,0,none,none
+gn:13589447,Kumluca,Düzce,1126,village,0,0,50,0,none,none
+gn:13589448,Karaçalı,Düzce,2179,village,0,0,50,0,none,none
+gn:13589487,Çele,Düzce,1821,village,0,0,50,0,none,none
+gn:13589488,Yeni,Düzce,2714,village,0,0,50,0,none,none
+gn:13589489,Merkez,Düzce,1055,village,0,0,50,0,none,none
+gn:13589490,Kültür,Düzce,2296,village,0,0,50,0,none,none
+gn:13590565,Guzeltepe,İzmir Province,6399,village,0,0,50,0,none,none
+gn:13590566,Ahmet Taner Kışlalı,İzmir Province,6354,village,0,0,50,0,none,none
+gn:13590567,Evka-İki,İzmir Province,4139,village,0,0,50,0,none,none
+gn:13590568,Evka-Altı,İzmir Province,2263,village,0,0,50,0,none,none
+gn:13590569,Esentepe,İzmir Province,6224,village,0,0,50,0,none,none
+gn:13590570,Yakakent,İzmir Province,10307,town,0,0,50,0,none,none
+gn:13591680,Altınşehir,Adıyaman Province,26153,town,0,0,50,0,none,none
+gn:13591681,Malazgirt,Adıyaman Province,6400,village,0,0,50,0,none,none
+gn:13591682,Karapınar,Adıyaman Province,11154,town,0,0,50,0,none,none
+gn:13645531,Taşlı Pınar Mahallesi,Bitlis,1236,village,0,0,50,0,none,none
+gn:13696804,Körfez,İzmir Province,5518,village,0,0,50,0,none,none
+gn:13697093,Bağlar,Erzurum,1257,village,0,0,50,0,none,none
+gn:13697147,Köprüler,Iğdır,1095,village,0,0,50,0,none,none
+gn:13697156,Ergenekon,Iğdır,1715,village,0,0,50,0,none,none
+gn:13697159,Yukarı,Iğdır,3246,village,0,0,50,0,none,none
+gn:13697160,Yeni,Iğdır,2575,village,0,0,50,0,none,none
+gn:13697161,Cumhuriyet,Iğdır,2031,village,0,0,50,0,none,none
+gn:13697162,Aşağı,Iğdır,1245,village,0,0,50,0,none,none
+gn:13697165,Bağlar Mahallesi,Iğdır,17505,town,0,0,50,0,none,none
+gn:13697166,Topçular Mahallesi,Iğdır,11979,town,0,0,50,0,none,none
+gn:13697167,Özgür Mahallesi,Iğdır,11243,town,0,0,50,0,none,none
+gn:13697168,Emek,Iğdır,10000,town,0,0,50,0,none,none
+gn:13697169,14 Kasım Mahallesi,Iğdır,9202,village,0,0,50,0,none,none
+gn:13697170,Söğütlü Mahallesi,Iğdır,8568,village,0,0,50,0,none,none
+gn:13697171,Karaağaç Mahallesi,Iğdır,8306,village,0,0,50,0,none,none
+gn:13697172,Cumhuriyet Mahallesi,Iğdır,7996,village,0,0,50,0,none,none
+gn:13697173,Konaklı Mahallesi,Iğdır,6655,village,0,0,50,0,none,none
+gn:13697174,Pir Sultan Abdal Mahallesi,Iğdır,4657,village,0,0,50,0,none,none
+gn:13697175,Atatürk Mahallesi,Iğdır,3763,village,0,0,50,0,none,none
+gn:13697176,Yunus Emre Mahallesi,Iğdır,2196,village,0,0,50,0,none,none
+gn:13697177,Said Nursi Mahallesi,Iğdır,2094,village,0,0,50,0,none,none
+gn:13697178,Bahçelievler Mahallesi,Iğdır,1523,village,0,0,50,0,none,none
+gn:13697180,Özvatan Mahallesi,Iğdır,1462,village,0,0,50,0,none,none
+gn:13697181,Mehmet Akif Ersoy Mahallesi,Iğdır,1288,village,0,0,50,0,none,none
+gn:13697182,Karabağ Mahallesi,Iğdır,1276,village,0,0,50,0,none,none
+gn:13697183,Turgut Özal Mahallesi,Iğdır,1090,village,0,0,50,0,none,none
+gn:13697219,Melekli,Iğdır,3452,village,0,0,50,0,none,none
+gn:13697289,Özerli,Hatay,12456,town,0,0,50,0,none,none
+gn:13712957,Bahçebaşı,Kayseri,1163,village,0,0,50,0,none,none
+gn:13713154,Çarşı Mahallesi,Kars Province,2799,village,0,0,50,0,none,none
+gn:13713155,Cumhuriyet Mahallesi,Kars Province,2521,village,0,0,50,0,none,none
+gn:13713167,Inönü,Kars Province,4010,village,0,0,50,0,none,none
+gn:13713168,Cumhuriyet,Kars Province,2221,village,0,0,50,0,none,none
+gn:13713169,İstiklal,Kars Province,2092,village,0,0,50,0,none,none
+gn:13713170,Şehitler,Kars Province,1918,village,0,0,50,0,none,none
+gn:13713171,Tepe,Kars Province,1781,village,0,0,50,0,none,none
+gn:13713172,Yeni,Kars Province,1151,village,0,0,50,0,none,none
+gn:13713173,İstasyon,Kars Province,1054,village,0,0,50,0,none,none
+gn:13713176,Şahindere,Kars Province,15457,town,0,0,50,0,none,none
+gn:13713177,Aşağı Kümbet,Kars Province,1424,village,0,0,50,0,none,none
+gn:13713178,Aşağıdere,Kars Province,1045,village,0,0,50,0,none,none
+gn:13713179,Yukarı Kümbet,Kars Province,1026,village,0,0,50,0,none,none
+gn:13713184,Yenişehir,Kars Province,20924,town,0,0,50,0,none,none
+gn:13713185,Şehitler,Kars Province,17325,town,0,0,50,0,none,none
+gn:13713186,İstasyon,Kars Province,9798,village,0,0,50,0,none,none
+gn:13713187,Cumhuriyet,Kars Province,5378,village,0,0,50,0,none,none
+gn:13713188,Örnek,Kars Province,4583,village,0,0,50,0,none,none
+gn:13713189,Yeni,Kars Province,3975,village,0,0,50,0,none,none
+gn:13713190,Halitpaşa,Kars Province,3862,village,0,0,50,0,none,none
+gn:13713191,Ortakapı,Kars Province,3354,village,0,0,50,0,none,none
+gn:13713192,Bülbül,Kars Province,3329,village,0,0,50,0,none,none
+gn:13713193,Aydınlıkevler,Kars Province,2914,village,0,0,50,0,none,none
+gn:13713194,Hafızpaşa,Kars Province,2745,village,0,0,50,0,none,none
+gn:13713195,Merkez,Kars Province,2210,village,0,0,50,0,none,none
+gn:13713196,30 Ekim,Kars Province,2184,village,0,0,50,0,none,none
+gn:13713197,Alpaslan,Kars Province,2130,village,0,0,50,0,none,none
+gn:13713198,Bayrampaşa,Kars Province,2067,village,0,0,50,0,none,none
+gn:13713199,Yusufpaşa,Kars Province,1714,village,0,0,50,0,none,none
+gn:13713200,Bahçelievler,Kars Province,1693,village,0,0,50,0,none,none
+gn:13713201,Fevziçakmak,Kars Province,1458,village,0,0,50,0,none,none
+gn:13713202,Karadağ,Kars Province,1110,village,0,0,50,0,none,none
+gn:13713217,Küre,Artvin,3794,village,0,0,50,0,none,none
+gn:13715435,Uzunyalı,Artvin,2203,village,0,0,50,0,none,none
+gn:13715437,Cumhuriyet,Artvin,3711,village,0,0,50,0,none,none
+gn:13715464,Adnan Menderes,Ağrı,1642,village,0,0,50,0,none,none
+gn:13715465,Cumhuriyet,Ağrı,1548,village,0,0,50,0,none,none
+gn:13715466,15 Temmuz Şehitler,Ağrı,1229,village,0,0,50,0,none,none
+gn:13715467,Hürriyet,Ağrı,1742,village,0,0,50,0,none,none
+gn:13715487,Murat,Ağrı,1541,village,0,0,50,0,none,none
+gn:13715488,Pınar,Ağrı,1122,village,0,0,50,0,none,none
+gn:13715489,Karşıyaka,Ağrı,1057,village,0,0,50,0,none,none
+gn:13715490,Yeni,Ağrı,2103,village,0,0,50,0,none,none
+gn:13715491,Cami,Ağrı,1321,village,0,0,50,0,none,none
+gn:13715492,Müftüselim,Ağrı,1809,village,0,0,50,0,none,none
+gn:13715493,İstiklal,Ağrı,1580,village,0,0,50,0,none,none
+gn:13715494,Hürriyet,Ağrı,1530,village,0,0,50,0,none,none
+gn:13715495,Lozan,Ağrı,1405,village,0,0,50,0,none,none
+gn:13715496,Fatih,Ağrı,1185,village,0,0,50,0,none,none
+gn:13715497,Esentepe,Ağrı,1029,village,0,0,50,0,none,none
+gn:13715507,Fatih,Ağrı,4642,village,0,0,50,0,none,none
+gn:13715508,Atatürk,Ağrı,4392,village,0,0,50,0,none,none
+gn:13715509,İsaağa,Ağrı,3100,village,0,0,50,0,none,none
+gn:13715510,Göl,Ağrı,2321,village,0,0,50,0,none,none
+gn:13715511,Ketenpınar,Ağrı,1570,village,0,0,50,0,none,none
+gn:13715512,14 Nisan,Ağrı,1474,village,0,0,50,0,none,none
+gn:13715513,Murat,Ağrı,1437,village,0,0,50,0,none,none
+gn:13715522,Atatürk,Ağrı,7349,village,0,0,50,0,none,none
+gn:13715523,Yunusemre,Ağrı,5226,village,0,0,50,0,none,none
+gn:13715524,Alpaslan,Ağrı,4528,village,0,0,50,0,none,none
+gn:13715525,Yeni,Ağrı,4316,village,0,0,50,0,none,none
+gn:13715526,Çay,Ağrı,3706,village,0,0,50,0,none,none
+gn:13715527,Cumhuriyet,Ağrı,3682,village,0,0,50,0,none,none
+gn:13715528,Sütlü Pınar,Ağrı,3372,village,0,0,50,0,none,none
+gn:13715529,Selahaddini Eyyubi,Ağrı,3244,village,0,0,50,0,none,none
+gn:13715530,Yeşil Çimen,Ağrı,2898,village,0,0,50,0,none,none
+gn:13715531,14 Nisan,Ağrı,2701,village,0,0,50,0,none,none
+gn:13715532,Sanayi,Ağrı,2274,village,0,0,50,0,none,none
+gn:13715533,Süphan Dağı,Ağrı,2091,village,0,0,50,0,none,none
+gn:13715534,Serhad,Ağrı,2049,village,0,0,50,0,none,none
+gn:13715535,Ahmed-i Hani,Ağrı,1927,village,0,0,50,0,none,none
+gn:13715536,Sarısu,Ağrı,1634,village,0,0,50,0,none,none
+gn:13715537,Abdulvehap Küfrevi,Ağrı,1578,village,0,0,50,0,none,none
+gn:13715538,İnönu,Ağrı,1512,village,0,0,50,0,none,none
+gn:13715539,Badişan,Ağrı,1493,village,0,0,50,0,none,none
+gn:13715540,Cami,Ağrı,1384,village,0,0,50,0,none,none
+gn:13715552,Ahmedihani,Ağrı,13175,town,0,0,50,0,none,none
+gn:13715553,Çiftepınar,Ağrı,9609,village,0,0,50,0,none,none
+gn:13715554,İshakpaşa,Ağrı,7005,village,0,0,50,0,none,none
+gn:13715555,Yeni,Ağrı,6641,village,0,0,50,0,none,none
+gn:13715556,Hasankeyf,Ağrı,6603,village,0,0,50,0,none,none
+gn:13715557,Uluyol,Ağrı,6264,village,0,0,50,0,none,none
+gn:13715558,Sanayi,Ağrı,5632,village,0,0,50,0,none,none
+gn:13715559,Büyük Ağrı,Ağrı,5441,village,0,0,50,0,none,none
+gn:13715560,Hürriyet,Ağrı,5042,village,0,0,50,0,none,none
+gn:13715561,Koçkıran,Ağrı,4681,village,0,0,50,0,none,none
+gn:13715562,Barış,Ağrı,3611,village,0,0,50,0,none,none
+gn:13715563,Vatan,Ağrı,3124,village,0,0,50,0,none,none
+gn:13715564,Abdigör,Ağrı,1187,village,0,0,50,0,none,none
+gn:13715598,Fırat,Ağrı,29007,town,0,0,50,0,none,none
+gn:13715599,Abide,Ağrı,14958,town,0,0,50,0,none,none
+gn:13715600,Yüzüncü Yıl,Ağrı,11489,town,0,0,50,0,none,none
+gn:13715601,Fatih,Ağrı,8887,village,0,0,50,0,none,none
+gn:13715602,Mehmet Akif Ersoy,Ağrı,7637,village,0,0,50,0,none,none
+gn:13715603,Kazım Karabekir,Ağrı,7000,village,0,0,50,0,none,none
+gn:13715604,Sıtkıye,Ağrı,5903,village,0,0,50,0,none,none
+gn:13715605,Gazi,Ağrı,5801,village,0,0,50,0,none,none
+gn:13715606,Yavuz,Ağrı,5752,village,0,0,50,0,none,none
+gn:13715607,Cumhuriyet,Ağrı,4455,village,0,0,50,0,none,none
+gn:13715608,Hürriyet,Ağrı,4262,village,0,0,50,0,none,none
+gn:13715609,Leylek Pınar,Ağrı,3620,village,0,0,50,0,none,none
+gn:13715610,Alpaslan,Ağrı,3603,village,0,0,50,0,none,none
+gn:13715611,Murat,Ağrı,3214,village,0,0,50,0,none,none
+gn:13715612,Kurtuluş,Ağrı,2567,village,0,0,50,0,none,none
+gn:13715613,Bahçelievler,Ağrı,2373,village,0,0,50,0,none,none
+gn:13715614,Fevzi Çakmak,Ağrı,2215,village,0,0,50,0,none,none
+gn:13731653,Sursuru,Elazığ,28211,town,0,0,50,0,none,none
+gn:13731769,Pınarbaşı,Bitlis,3111,village,0,0,50,0,none,none

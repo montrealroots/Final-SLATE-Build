@@ -1,0 +1,8 @@
+place_id,name,region,population,market,verified_homes,dated_listings,shortfall_to_50,recorded_sales,rent_source,price_source
+gn:1821263,Taipa,Our Lady of Carmo,112051,city,0,0,50,0,none,none
+gn:1821274,Macau,,649335,large-city,0,0,50,0,none,none
+gn:1821279,Lai Chi Van,Saint Francis Xavier,22125,town,0,0,50,0,none,none
+gn:1821292,Luhuan,Saint Francis Xavier,36384,town,0,0,50,0,none,none
+gn:1821294,Zhuojiacun,Our Lady of Carmo,24000,town,0,0,50,0,none,none
+gn:13527314,Cotai,,300,village,0,0,50,0,none,none
+gn:13527317,Sé,,52200,town,0,0,50,0,none,none

@@ -1,0 +1,310 @@
+place_id,name,region,population,market,verified_homes,dated_listings,shortfall_to_50,recorded_sales,rent_source,price_source
+gn:30485,Daḩasuways,Al Mahrah Governorate,0,village,0,0,50,0,none,none
+gn:30490,Ash Shiḩr,Muhafazat Hadramaout,0,village,0,0,50,0,none,none
+gn:30543,Al Ghaylah,Al Bayda,0,village,0,0,50,0,none,none
+gn:30616,Judaydah,Ma’rib,0,village,0,0,50,0,none,none
+gn:30689,Ḑawrān,Aḑ Ḑāli‘,0,village,0,0,50,0,none,none
+gn:30696,Najd al Jamā‘ī,Ibb Governorate,0,village,0,0,50,0,none,none
+gn:30714,Z̧almah al ‘Ulyā,Ibb Governorate,0,village,0,0,50,0,none,none
+gn:30729,Sūq ar Rubū‘,Dhamār,0,village,0,0,50,0,none,none
+gn:30735,Ash Shuqayrah,Ta‘izz,0,village,0,0,50,0,none,none
+gn:30740,Al Masālīyah,Ta‘izz,0,village,0,0,50,0,none,none
+gn:30748,Ar Rawnah,Ta‘izz,0,village,0,0,50,0,none,none
+gn:30762,Ar Ramādī,Ibb Governorate,0,village,0,0,50,0,none,none
+gn:30777,Al Aḩad,Dhamār,0,village,0,0,50,0,none,none
+gn:30788,Aḑ Ḑil‘,Raymah,0,village,0,0,50,0,none,none
+gn:34703,Sūq Şirwāḩ,Ma’rib,0,village,0,0,50,0,none,none
+gn:34717,Majzar,Ma’rib,0,village,0,0,50,0,none,none
+gn:34724,Bidbadah,Ma’rib,0,village,0,0,50,0,none,none
+gn:34821,Matwaḩ,Sanaa Governorate,0,village,0,0,50,0,none,none
+gn:34827,Şuwayr,Omran,0,village,0,0,50,0,none,none
+gn:34846,Waḑarah,Ḩajjah,0,village,0,0,50,0,none,none
+gn:34860,Al Mirwāḩ,Al Mahwit Governorate,0,village,0,0,50,0,none,none
+gn:34862,Sūq Shamar,Ḩajjah,0,village,0,0,50,0,none,none
+gn:34886,Mustabā’,Ḩajjah,0,village,0,0,50,0,none,none
+gn:34888,An Naz̧īr,Şa‘dah,0,village,0,0,50,0,none,none
+gn:69372,Aţ Ţawīlah,Al Mahwit Governorate,0,village,0,0,50,0,none,none
+gn:69426,Zinjibār,Abyan Governorate,19879,town,0,0,50,0,none,none
+gn:69457,Zarājah,Dhamār,0,village,0,0,50,0,none,none
+gn:69482,Az Zāhir,Al Bayda,0,village,0,0,50,0,none,none
+gn:69500,Zabīd,Al Hudaydah,52590,town,0,0,50,0,none,none
+gn:69537,Yufrus,Ta‘izz,0,village,0,0,50,0,none,none
+gn:69559,Yarīm,Ibb Governorate,33050,town,0,0,50,0,none,none
+gn:69640,Washḩah,Ḩajjah,0,village,0,0,50,0,none,none
+gn:69684,Wa‘lān,Sanaa Governorate,0,village,0,0,50,0,none,none
+gn:69686,Dhī Jalāl,Aḑ Ḑāli‘,0,village,0,0,50,0,none,none
+gn:69769,‘Usaylān,Shabwah,0,village,0,0,50,0,none,none
+gn:69944,‘Ubāl,Al Hudaydah,0,village,0,0,50,0,none,none
+gn:70080,Thamūd,Muhafazat Hadramaout,0,village,0,0,50,0,none,none
+gn:70160,Tarim,Muhafazat Hadramaout,0,village,0,0,50,0,none,none
+gn:70225,Taiz,Ta‘izz,940600,large-city,0,0,50,0,none,none
+gn:70272,As Suwaydā,Laḩij,0,village,0,0,50,0,none,none
+gn:70346,Al ‘Inān,Al Jawf,100,village,0,0,50,0,none,none
+gn:70357,Abs,Ḩajjah,0,village,0,0,50,0,none,none
+gn:70551,Şīf,Muhafazat Hadramaout,0,village,0,0,50,0,none,none
+gn:70656,Shiḩan as Suflá,Al Mahrah Governorate,0,village,0,0,50,0,none,none
+gn:70676,Shibām,Muhafazat Hadramaout,7000,village,0,0,50,0,none,none
+gn:70677,Shibām,Al Mahwit Governorate,0,village,0,0,50,0,none,none
+gn:70759,Ash Sharyah,Al Bayda,0,village,0,0,50,0,none,none
+gn:70808,Sharas,Ḩajjah,0,village,0,0,50,0,none,none
+gn:70910,Shahārat al Ghīs,Omran,0,village,0,0,50,0,none,none
+gn:70979,Sayyān,Sanaa Governorate,69404,town,0,0,50,0,none,none
+gn:71005,Sayḩūt,Al Mahrah Governorate,0,village,0,0,50,0,none,none
+gn:71136,Şanā’,Muhafazat Hadramaout,0,village,0,0,50,0,none,none
+gn:71137,Sanaa,Amanat Alasimah,1937451,large-city,0,0,50,0,none,none
+gn:71273,Saḩar,Sanaa Governorate,31859,town,0,0,50,0,none,none
+gn:71282,Sāh,Muhafazat Hadramaout,0,village,0,0,50,0,none,none
+gn:71334,Sa'dah,Şa‘dah,51870,town,0,0,50,0,none,none
+gn:71481,Riḩāb,Ibb Governorate,0,village,0,0,50,0,none,none
+gn:71491,Radā‘,Al Bayda,0,village,0,0,50,0,none,none
+gn:71549,Ar Raydah,Muhafazat Hadramaout,0,village,0,0,50,0,none,none
+gn:71558,Raydah,Omran,0,village,0,0,50,0,none,none
+gn:71687,Ruḑūm,Shabwah,0,village,0,0,50,0,none,none
+gn:71799,Qalansīyah,Soqatra,3500,village,0,0,50,0,none,none
+gn:71834,Qishn,Al Mahrah Governorate,0,village,0,0,50,0,none,none
+gn:71904,Qa‘ţabah,Aḑ Ḑāli‘,0,village,0,0,50,0,none,none
+gn:72181,Nişāb,Shabwah,0,village,0,0,50,0,none,none
+gn:72430,Al Musaymīr,Laḩij,3,village,0,0,50,0,none,none
+gn:72519,Mukayrās,Al Bayda,0,village,0,0,50,0,none,none
+gn:72557,Mūdīyah,Abyan Governorate,0,village,0,0,50,0,none,none
+gn:72561,Markaz Mudhaykirah,Ibb Governorate,0,village,0,0,50,0,none,none
+gn:72647,Minwakh,Muhafazat Hadramaout,0,village,0,0,50,0,none,none
+gn:72746,Mayfa‘ah,Shabwah,0,village,0,0,50,0,none,none
+gn:72752,Mīdī,Ḩajjah,0,village,0,0,50,0,none,none
+gn:72760,Mawza‘,Ta‘izz,0,village,0,0,50,0,none,none
+gn:72781,Māwiyah,Ta‘izz,0,village,0,0,50,0,none,none
+gn:72855,Al Jawl,Muhafazat Hadramaout,0,village,0,0,50,0,none,none
+gn:72968,Ma'rib,Ma’rib,16794,town,0,0,50,0,none,none
+gn:73091,Manākhah,Sanaa Governorate,0,village,0,0,50,0,none,none
+gn:73100,Milāḩ,Al Bayda,0,village,0,0,50,0,none,none
+gn:73125,Al Malāḩīţ,Şa‘dah,0,village,0,0,50,0,none,none
+gn:73325,Al Māfūd,Shabwah,0,village,0,0,50,0,none,none
+gn:73331,Mafḩaq,Sanaa Governorate,0,village,0,0,50,0,none,none
+gn:73365,Al Madīd,Sanaa Governorate,0,village,0,0,50,0,none,none
+gn:73409,Ma‘bar,Dhamār,0,village,0,0,50,0,none,none
+gn:73422,Al Ma‘allā’,Aden,0,village,0,0,50,0,none,none
+gn:73504,Lawdar,Abyan Governorate,0,village,0,0,50,0,none,none
+gn:73560,Laḩij,Laḩij,23375,town,0,0,50,0,none,none
+gn:73638,Kuḩlān ‘Affār,Ḩajjah,0,village,0,0,50,0,none,none
+gn:73650,Ku‘aydinah,Ḩajjah,0,village,0,0,50,0,none,none
+gn:73656,Crater,Aden,0,village,0,0,50,0,none,none
+gn:73668,Kitāf,Şa‘dah,0,village,0,0,50,0,none,none
+gn:73685,Kilmia,Muhafazat Hadramaout,2013,village,0,0,50,0,none,none
+gn:73786,Khawr Maksar,Aden,0,village,0,0,50,0,none,none
+gn:73788,Khawrah,Shabwah,0,village,0,0,50,0,none,none
+gn:73861,Khamir,Omran,0,village,0,0,50,0,none,none
+gn:74116,Juban,Aḑ Ḑāli‘,0,village,0,0,50,0,none,none
+gn:74167,Jiḩānah,Sanaa Governorate,0,village,0,0,50,0,none,none
+gn:74185,Jiblah,Ibb Governorate,0,village,0,0,50,0,none,none
+gn:74219,Jawf al Maqbābah,Abyan Governorate,14175,town,0,0,50,0,none,none
+gn:74368,Ja‘ār,Abyan Governorate,0,village,0,0,50,0,none,none
+gn:74477,Ibb,Ibb Governorate,771514,large-city,0,0,50,0,none,none
+gn:74490,Ḩūth,Omran,0,village,0,0,50,0,none,none
+gn:74499,As Salāsil,Muhafazat Hadramaout,0,village,0,0,50,0,none,none
+gn:74785,Al ‘Abr,Muhafazat Hadramaout,0,village,0,0,50,0,none,none
+gn:74906,Ḩays,Al Hudaydah,0,village,0,0,50,0,none,none
+gn:74938,Ḩayfān,Ta‘izz,0,village,0,0,50,0,none,none
+gn:75000,Ḩawf,Al Mahrah Governorate,0,village,0,0,50,0,none,none
+gn:75034,Ḩaşwayn,Al Mahrah Governorate,0,village,0,0,50,0,none,none
+gn:75133,Ḩarīb,Ma’rib,0,village,0,0,50,0,none,none
+gn:75163,Ḩaraḑ,Ḩajjah,0,village,0,0,50,0,none,none
+gn:75239,Ḩammām ‘Alī,Dhamār,0,village,0,0,50,0,none,none
+gn:75337,Ḩajjah,Ḩajjah,43549,town,0,0,50,0,none,none
+gn:75357,Madīnat Lab‘ūs,Laḩij,0,village,0,0,50,0,none,none
+gn:75427,Hadibu,Soqatra,8545,village,0,0,50,0,none,none
+gn:75504,Ḩabīl al Jabr,Laḩij,0,village,0,0,50,0,none,none
+gn:75508,Al Ḩabīlayn,Laḩij,0,village,0,0,50,0,none,none
+gn:75518,Ḩabbān,Shabwah,0,village,0,0,50,0,none,none
+gn:75539,Ḩabābah,Omran,0,village,0,0,50,0,none,none
+gn:75618,Ghayl Bā Wazīr,Muhafazat Hadramaout,21259,town,0,0,50,0,none,none
+gn:76089,Dhubāb,Ta‘izz,0,village,0,0,50,0,none,none
+gn:76125,Dhī Nā‘im,Al Bayda,0,village,0,0,50,0,none,none
+gn:76147,Dhaybīn,Omran,0,village,0,0,50,0,none,none
+gn:76154,Dhī as Sufāl,Ibb Governorate,37997,town,0,0,50,0,none,none
+gn:76184,Dhamār,Dhamār,160114,city,0,0,50,0,none,none
+gn:76362,Ḑawrān ad Daydah,Dhamār,0,village,0,0,50,0,none,none
+gn:76482,Dār an Nāşir,Ta‘izz,0,village,0,0,50,0,none,none
+gn:76699,Burūm,Muhafazat Hadramaout,0,village,0,0,50,0,none,none
+gn:76927,Bayt ‘Adhāqah,Omran,0,village,0,0,50,0,none,none
+gn:76930,As Sūq al Jadīd,Omran,0,village,0,0,50,0,none,none
+gn:76991,Bayt al Faqīh,Al Hudaydah,34204,town,0,0,50,0,none,none
+gn:77017,Bayḩān,Shabwah,0,village,0,0,50,0,none,none
+gn:77278,Banī Ḩujjāj,Al Mahwit Governorate,0,village,0,0,50,0,none,none
+gn:77307,Banī Bakr,Laḩij,0,village,0,0,50,0,none,none
+gn:77408,Bājil,Al Hudaydah,48218,town,0,0,50,0,none,none
+gn:77504,Az Zuhrah,Al Hudaydah,0,village,0,0,50,0,none,none
+gn:77515,Az Zaydīyah,Al Hudaydah,0,village,0,0,50,0,none,none
+gn:77529,Az Zāhir,Al Jawf,0,village,0,0,50,0,none,none
+gn:77594,Al Ḩajab,Shabwah,0,village,0,0,50,0,none,none
+gn:77636,Al ‘Awābil,Aḑ Ḑāli‘,0,village,0,0,50,0,none,none
+gn:77646,At Turbah,Ta‘izz,0,village,0,0,50,0,none,none
+gn:77655,At Tuḩaytā’,Al Hudaydah,0,village,0,0,50,0,none,none
+gn:77662,At Tawāhī,Aden,0,village,0,0,50,0,none,none
+gn:77726,Ataq,Shabwah,37315,town,0,0,50,0,none,none
+gn:77772,As Sūdah,Omran,0,village,0,0,50,0,none,none
+gn:77791,As Sayyānī,Ibb Governorate,0,village,0,0,50,0,none,none
+gn:77800,Aş Şawma‘ah,Al Bayda,0,village,0,0,50,0,none,none
+gn:77803,Al Bilād,Muhafazat Hadramaout,0,village,0,0,50,0,none,none
+gn:77809,As Sawādīyah,Al Bayda,0,village,0,0,50,0,none,none
+gn:77843,Aş Şalīf,Al Hudaydah,0,village,0,0,50,0,none,none
+gn:77862,Aş Şa‘īd,Shabwah,0,village,0,0,50,0,none,none
+gn:77872,Aş Şafaqayn,Al Mahwit Governorate,0,village,0,0,50,0,none,none
+gn:77881,As Saddah,Ibb Governorate,0,village,0,0,50,0,none,none
+gn:77940,Ash Shaykh ‘Uthmān,Aden,0,village,0,0,50,0,none,none
+gn:77946,Ash Shaţţ,Laḩij,0,village,0,0,50,0,none,none
+gn:77980,Ash Shāhil,Ḩajjah,0,village,0,0,50,0,none,none
+gn:77985,Ash Shaghādirah,Ḩajjah,0,village,0,0,50,0,none,none
+gn:78019,Asdās,Ma’rib,0,village,0,0,50,0,none,none
+gn:78112,Marbāţ,Shabwah,0,village,0,0,50,0,none,none
+gn:78137,Ar Rawḑah,Amanat Alasimah,0,village,0,0,50,0,none,none
+gn:78141,Ar Rawḑah,Shabwah,0,village,0,0,50,0,none,none
+gn:78379,An Nādirah,Ibb Governorate,0,village,0,0,50,0,none,none
+gn:78428,‘Amrān,Omran,90792,town,0,0,50,0,none,none
+gn:78448,‘Amd,Muhafazat Hadramaout,0,village,0,0,50,0,none,none
+gn:78471,Al Wuday‘,Abyan Governorate,0,village,0,0,50,0,none,none
+gn:78543,Al ‘Udayn,Ibb Governorate,0,village,0,0,50,0,none,none
+gn:78566,Al Qurḩ,Al Mahrah Governorate,0,village,0,0,50,0,none,none
+gn:78675,Al Qanāwiş,Al Hudaydah,0,village,0,0,50,0,none,none
+gn:78699,Al Qaflah,Omran,0,village,0,0,50,0,none,none
+gn:78708,Qaryat al Qābil,Amanat Alasimah,0,village,0,0,50,0,none,none
+gn:78713,Āl Ma‘ūdah,Al Bayda,0,village,0,0,50,0,none,none
+gn:78742,Al Munīrah,Al Hudaydah,0,village,0,0,50,0,none,none
+gn:78751,Mocha,Ta‘izz,16794,town,0,0,50,0,none,none
+gn:78754,Mukalla,Muhafazat Hadramaout,594951,large-city,0,0,50,0,none,none
+gn:78776,Al Misrākh,Ta‘izz,0,village,0,0,50,0,none,none
+gn:78814,Al Milāḩ,Laḩij,0,village,0,0,50,0,none,none
+gn:78823,Al Mighlāf,Al Hudaydah,0,village,0,0,50,0,none,none
+gn:78905,Markaz al Marīr,Al Hudaydah,0,village,0,0,50,0,none,none
+gn:78909,Al Marāwi‘ah,Al Hudaydah,0,village,0,0,50,0,none,none
+gn:78929,Al Manşūrīyah,Al Hudaydah,0,village,0,0,50,0,none,none
+gn:78931,Al Manşūrah,Aden,0,village,0,0,50,0,none,none
+gn:78964,Al Makhādir,Ibb Governorate,0,village,0,0,50,0,none,none
+gn:78977,Al Maḩwīt,Al Mahwit Governorate,10593,town,0,0,50,0,none,none
+gn:78991,Al Maḩfid,Abyan Governorate,0,village,0,0,50,0,none,none
+gn:79006,Al Maḩābishah,Ḩajjah,0,village,0,0,50,0,none,none
+gn:79015,Al Madu,Aḑ Ḑāli‘,1986,village,0,0,50,0,none,none
+gn:79050,Al Luḩayyah,Al Hudaydah,0,village,0,0,50,0,none,none
+gn:79088,Kirsh,Laḩij,0,village,0,0,50,0,none,none
+gn:79131,Al Khawkhah,Al Hudaydah,0,village,0,0,50,0,none,none
+gn:79219,Al Jurbah,Laḩij,0,village,0,0,50,0,none,none
+gn:79284,Al Jarrāḩī,Al Hudaydah,0,village,0,0,50,0,none,none
+gn:79384,Al Ḩusayn,Aḑ Ḑāli‘,0,village,0,0,50,0,none,none
+gn:79393,Ḩurayḑah,Muhafazat Hadramaout,0,village,0,0,50,0,none,none
+gn:79415,Al Ḩudaydah,Al Hudaydah,734699,large-city,0,0,50,0,none,none
+gn:79455,Al Ḩazm,Al Jawf,18241,town,0,0,50,0,none,none
+gn:79478,Al Qaţan,Muhafazat Hadramaout,0,village,0,0,50,0,none,none
+gn:79531,Al Ḩarf,Omran,0,village,0,0,50,0,none,none
+gn:79609,Ḩajar al Mashā’ikh,Muhafazat Hadramaout,0,village,0,0,50,0,none,none
+gn:79700,Al Ghayz̧ah,Al Mahrah Governorate,10948,town,0,0,50,0,none,none
+gn:79799,Al Burayqah,Aden,0,village,0,0,50,0,none,none
+gn:79836,Al Bayda,Al Bayda,37821,town,0,0,50,0,none,none
+gn:79845,Al Bāţinah,Muhafazat Hadramaout,0,village,0,0,50,0,none,none
+gn:79967,Al ‘Āqir,Shabwah,0,village,0,0,50,0,none,none
+gn:80105,Aḩwar,Abyan Governorate,0,village,0,0,50,0,none,none
+gn:80309,Ad Durayhimī,Al Hudaydah,0,village,0,0,50,0,none,none
+gn:80331,Ad Dīs ash Sharqīyah,Muhafazat Hadramaout,0,village,0,0,50,0,none,none
+gn:80336,Ad Dimnah,Ta‘izz,0,village,0,0,50,0,none,none
+gn:80379,Ad Dann,Dhamār,0,village,0,0,50,0,none,none
+gn:80383,Az̧ Z̧alī‘ah,Muhafazat Hadramaout,0,village,0,0,50,0,none,none
+gn:80384,Aḑ Ḑāli‘,Aḑ Ḑāli‘,14760,town,0,0,50,0,none,none
+gn:80393,Aḑ Ḑaḩī,Al Hudaydah,0,village,0,0,50,0,none,none
+gn:400734,Markaz Bilād aţ Ţa‘ām,Raymah,0,village,0,0,50,0,none,none
+gn:401000,Al Jum‘ah,Dhamār,0,village,0,0,50,0,none,none
+gn:401019,Al Ḩadīyah,Raymah,0,village,0,0,50,0,none,none
+gn:401023,Kusmah,Raymah,0,village,0,0,50,0,none,none
+gn:401043,Al Jabīn,Raymah,0,village,0,0,50,0,none,none
+gn:401653,Riqāb,Al Hudaydah,0,village,0,0,50,0,none,none
+gn:401672,As Sukhnah,Al Hudaydah,0,village,0,0,50,0,none,none
+gn:402074,Ar Rujum,Al Mahwit Governorate,0,village,0,0,50,0,none,none
+gn:402470,Al Khamīs,Al Mahwit Governorate,0,village,0,0,50,0,none,none
+gn:402753,Al ‘Urrah,Sanaa Governorate,0,village,0,0,50,0,none,none
+gn:403270,Al Maghrabah,Ḩajjah,0,village,0,0,50,0,none,none
+gn:403271,Aş Şarārah,Omran,0,village,0,0,50,0,none,none
+gn:403272,An Nāşirah,Omran,0,village,0,0,50,0,none,none
+gn:403316,Mabyan,Ḩajjah,0,village,0,0,50,0,none,none
+gn:403754,Matnah,Sanaa Governorate,0,village,0,0,50,0,none,none
+gn:404914,Al Ḩayfah,Sanaa Governorate,0,village,0,0,50,0,none,none
+gn:404915,Bayt Marrān,Sanaa Governorate,0,village,0,0,50,0,none,none
+gn:406072,Al Nashmah,Ta‘izz,0,village,0,0,50,0,none,none
+gn:406635,Al Ḩashwah,Şa‘dah,0,village,0,0,50,0,none,none
+gn:406662,Sāqayn,Şa‘dah,41,village,0,0,50,0,none,none
+gn:406737,Al Maḩjal,Al Jawf,0,village,0,0,50,0,none,none
+gn:406761,Rajūzah,Al Jawf,0,village,0,0,50,0,none,none
+gn:406845,Al Khirāb,Al Jawf,0,village,0,0,50,0,none,none
+gn:406884,Al Ḩumaydāt,Al Jawf,0,village,0,0,50,0,none,none
+gn:407014,Al Madān,Omran,0,village,0,0,50,0,none,none
+gn:407024,Al ‘Ashshah,Omran,0,village,0,0,50,0,none,none
+gn:407036,Ḩişn Banī Sa‘d,Al Jawf,0,village,0,0,50,0,none,none
+gn:407042,Al Matūn,Al Jawf,0,village,0,0,50,0,none,none
+gn:407048,Al Maşlūb,Al Jawf,0,village,0,0,50,0,none,none
+gn:407049,Al Ghayl,Al Jawf,0,village,0,0,50,0,none,none
+gn:407094,Al Jamīmah,Ḩajjah,0,village,0,0,50,0,none,none
+gn:407096,Ḩabūr,Omran,0,village,0,0,50,0,none,none
+gn:407129,Ar Rawḑ,Al Jawf,0,village,0,0,50,0,none,none
+gn:407690,Ar Rubū‘,Ta‘izz,0,village,0,0,50,0,none,none
+gn:407716,Maqbanah,Ta‘izz,0,village,0,0,50,0,none,none
+gn:408124,Z̧abah,Dhamār,0,village,0,0,50,0,none,none
+gn:408342,Ar Riḑā’ī,Ibb Governorate,0,village,0,0,50,0,none,none
+gn:408801,Al Mayfa’ah,Dhamār,0,village,0,0,50,0,none,none
+gn:408846,Ar Raḑmah,Ibb Governorate,0,village,0,0,50,0,none,none
+gn:408866,Ḩammām Damt,Aḑ Ḑāli‘,0,village,0,0,50,0,none,none
+gn:408883,Zakhim,Al Bayda,0,village,0,0,50,0,none,none
+gn:408970,Maswarah,Al Bayda,0,village,0,0,50,0,none,none
+gn:409051,Ţawr al Bāḩah,Laḩij,0,village,0,0,50,0,none,none
+gn:410914,Kushar,Ḩajjah,0,village,0,0,50,0,none,none
+gn:410915,Aslam,Ḩajjah,0,village,0,0,50,0,none,none
+gn:411056,Ḩaydān,Şa‘dah,0,village,0,0,50,0,none,none
+gn:413170,Al Miftāḩ,Ḩajjah,0,village,0,0,50,0,none,none
+gn:415189,Aden,Aden,1079670,large-city,0,0,50,0,none,none
+gn:7341410,Madghil,Ma’rib,0,village,0,0,50,0,none,none
+gn:7341563,Al Ḩarjah,Ma’rib,0,village,0,0,50,0,none,none
+gn:7344394,Banī al ‘Awwām,Ḩajjah,41,village,0,0,50,0,none,none
+gn:7344569,Banī an Nahārī,Ḩajjah,0,village,0,0,50,0,none,none
+gn:7345723,Al Hijrah,Şa‘dah,0,village,0,0,50,0,none,none
+gn:7345827,Sūq al Khamīs,Şa‘dah,0,village,0,0,50,0,none,none
+gn:7346082,Al Mashāf,Şa‘dah,0,village,0,0,50,0,none,none
+gn:7346660,Al Kharāb,Şa‘dah,0,village,0,0,50,0,none,none
+gn:7354697,Al ‘Ayn,Ta‘izz,0,village,0,0,50,0,none,none
+gn:7356864,Qaryat ad Da‘īs,Ibb Governorate,0,village,0,0,50,0,none,none
+gn:7360069,Ḩazm al ‘Udayn,Ibb Governorate,0,village,0,0,50,0,none,none
+gn:7363900,An Najd,Al Bayda,0,village,0,0,50,0,none,none
+gn:7364022,Raḩabah,Ma’rib,0,village,0,0,50,0,none,none
+gn:7364546,Al ‘Amūd,Ma’rib,0,village,0,0,50,0,none,none
+gn:7364784,Al ‘Aqabah,Al Bayda,0,village,0,0,50,0,none,none
+gn:7364913,Al Qurayshīyah,Al Bayda,0,village,0,0,50,0,none,none
+gn:7367232,Ḩawrah,Ta‘izz,0,village,0,0,50,0,none,none
+gn:7683765,Ash Shawātī,Şa‘dah,25,village,0,0,50,0,none,none
+gn:7792745,Al Ḩamdī,Muhafazat Hadramaout,1273,village,0,0,50,0,none,none
+gn:7792748,At Taḩāluf,Muhafazat Hadramaout,1281,village,0,0,50,0,none,none
+gn:7792750,Suḩayl Shibām,Muhafazat Hadramaout,645,village,0,0,50,0,none,none
+gn:7890531,Al Khāniq,Sanaa Governorate,2,village,0,0,50,0,none,none
+gn:7928383,Bi’r Ḩāt,Al Mahrah Governorate,0,village,0,0,50,0,none,none
+gn:7928384,Ḩadādah,Laḩij,0,village,0,0,50,0,none,none
+gn:7930439,Rumāh,Muhafazat Hadramaout,0,village,0,0,50,0,none,none
+gn:7931038,Al Shirūj,Muhafazat Hadramaout,0,village,0,0,50,0,none,none
+gn:7931039,Jawl al Majma‘,Shabwah,0,village,0,0,50,0,none,none
+gn:7931040,Sūq Sibāḩ,Abyan Governorate,0,village,0,0,50,0,none,none
+gn:7931041,Al Ḩazm,Al Bayda,0,village,0,0,50,0,none,none
+gn:7931042,Al Aqţa‘,Ma’rib,0,village,0,0,50,0,none,none
+gn:8015577,Bāqim as Sūq,Şa‘dah,0,village,0,0,50,0,none,none
+gn:8308191,Maţarah,Shabwah,0,village,0,0,50,0,none,none
+gn:8308217,Khimār,Shabwah,3000,village,0,0,50,0,none,none
+gn:8308699,Ḩabīl ar Raydah,Laḩij,0,village,0,0,50,0,none,none
+gn:8308729,Al ‘Ulayb,Muhafazat Hadramaout,0,village,0,0,50,0,none,none
+gn:8308730,Aţ Ţalḩ,Shabwah,0,village,0,0,50,0,none,none
+gn:8308731,Sirār,Abyan Governorate,0,village,0,0,50,0,none,none
+gn:8356282,Khayrān,Ḩajjah,0,village,0,0,50,0,none,none
+gn:8356686,Al Ḩuşūn,Ma’rib,0,village,0,0,50,0,none,none
+gn:8357700,Jayshān,Abyan Governorate,0,village,0,0,50,0,none,none
+gn:8357701,Aş Şalw,Ta‘izz,0,village,0,0,50,0,none,none
+gn:8357714,Raşad,Abyan Governorate,0,village,0,0,50,0,none,none
+gn:8357764,Saḩḩab,Omran,0,village,0,0,50,0,none,none
+gn:8534038,Majz,Şa‘dah,0,village,0,0,50,0,none,none
+gn:11125824,AL-khashā upper,Shabwah,1100,village,0,0,50,0,none,none
+gn:11153801,"Al-Medy Village, قرية المدي",Dhamār,2000,village,0,0,50,0,none,none
+gn:11776813,Village of ALAMRAH,Ta‘izz,4500,village,0,0,50,0,none,none
+gn:11776817,Jadder Cemetery,Amanat Alasimah,10000,town,0,0,50,0,none,none
+gn:12097222,Ahl Mohammed bin Ahmed,Abyan Governorate,1800,village,0,0,50,0,none,none
+gn:12167129,Al Qabyal,Laḩij,2000,village,0,0,50,0,none,none
+gn:12167139,Al Madakisha,Laḩij,5000,village,0,0,50,0,none,none
+gn:12217890,CPF,Muhafazat Hadramaout,6000,village,0,0,50,0,none,none

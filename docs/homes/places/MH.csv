@@ -1,0 +1,27 @@
+place_id,name,region,population,market,verified_homes,dated_listings,shortfall_to_50,recorded_sales,rent_source,price_source
+gn:2080115,Likiep,Likiep Atoll,482,village,0,0,50,0,none,none
+gn:2080422,Jabor,Jaluit Atoll,1200,village,0,0,50,0,none,none
+gn:2080970,Ailuk,Ailuk Atoll,451,village,0,0,50,0,none,none
+gn:2113779,Majuro,Majuro Atoll,25400,town,0,0,50,0,none,none
+gn:4039539,Taroa,Maloelap Atoll,0,village,0,0,50,0,none,none
+gn:7304298,Laura,Majuro Atoll,1547,village,0,0,50,0,none,none
+gn:7304467,Ebaye,Kwajalein Atoll,15000,town,0,0,50,0,none,none
+gn:7306511,Enewetak,Enewetak Atoll,0,village,0,0,50,0,none,none
+gn:7306512,Ebon,Ebon Atoll,714,village,0,0,50,0,none,none
+gn:7306513,Aur,Aur Atoll,438,village,0,0,50,0,none,none
+gn:7306514,Arno,Arno Atoll,2068,village,0,0,50,0,none,none
+gn:7306515,Airuk,Ailinglaplap Atoll,0,village,0,0,50,0,none,none
+gn:7306516,Mili,Mili Atoll,854,village,0,0,50,0,none,none
+gn:7306517,Lae,Lae Atoll,319,village,0,0,50,0,none,none
+gn:7306518,Utrik,Utrik Atoll,409,village,0,0,50,0,none,none
+gn:7306519,Ujae,Ujae Atoll,448,village,0,0,50,0,none,none
+gn:7306520,Rongelap,Rongelap Atoll,19,village,0,0,50,0,none,none
+gn:7306521,Loen,Namu Atoll,0,village,0,0,50,0,none,none
+gn:7306522,Namdrik,Namdrik Atoll,814,village,0,0,50,0,none,none
+gn:7306523,Mejit,Mejit Island,300,village,0,0,50,0,none,none
+gn:7306524,Lib,Lib Island,115,village,0,0,50,0,none,none
+gn:7306525,Kili,Kili Island,602,village,0,0,50,0,none,none
+gn:7306526,Jabat,Jabat Island,112,village,0,0,50,0,none,none
+gn:7306528,Wotje,Wotje Atoll,880,village,0,0,50,0,none,none
+gn:7306529,Wotho,Wotho Atoll,160,village,0,0,50,0,none,none
+gn:8347657,Dalap-Uliga-Dorrit,Majuro Atoll,20301,town,0,0,50,0,none,none

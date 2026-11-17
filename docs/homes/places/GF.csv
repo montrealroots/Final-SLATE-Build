@@ -1,0 +1,20 @@
+place_id,name,region,population,market,verified_homes,dated_listings,shortfall_to_50,recorded_sales,rent_source,price_source
+gn:3380290,Sinnamary,Guyane,3180,village,0,0,50,0,none,none
+gn:3380387,Saint-Laurent-du-Maroni,Guyane,24287,town,0,0,50,0,none,none
+gn:3380402,Saint-Georges,Guyane,2742,village,0,0,50,0,none,none
+gn:3380450,Roura,Guyane,2229,village,0,0,50,0,none,none
+gn:3380520,Rémire,Guyane,0,village,0,0,50,0,none,none
+gn:3380523,Régina,Guyane,1657,village,0,0,50,0,none,none
+gn:3380892,Rémire-Montjoly,Guyane,19029,town,0,0,50,0,none,none
+gn:3380965,Matoury,Guyane,26350,town,0,0,50,0,none,none
+gn:3380994,Maripasoula,Guyane,8423,village,0,0,50,0,none,none
+gn:3381041,Mana,Guyane,5885,village,0,0,50,0,none,none
+gn:3381117,Macouria,Guyane,8773,village,0,0,50,0,none,none
+gn:3381303,Kourou,Guyane,24029,town,0,0,50,0,none,none
+gn:3381428,Iracoubo,Guyane,1536,village,0,0,50,0,none,none
+gn:3381538,Grand-Santi,Guyane,9668,village,0,0,50,0,none,none
+gn:3382160,Cayenne,Guyane,61550,town,0,0,50,0,none,none
+gn:3382527,Apatou,Guyane,10059,town,0,0,50,0,none,none
+gn:3382530,Awala-Yalimapo,Guyane,1549,village,0,0,50,0,none,none
+gn:11953175,Résidence Arc-en-Ciel,,2000,village,0,0,50,0,none,none
+gn:11953214,Résidence Cogneau-Larivot,,2730,village,0,0,50,0,none,none

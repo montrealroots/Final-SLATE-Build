@@ -1,0 +1,10 @@
+place_id,name,region,population,market,verified_homes,dated_listings,shortfall_to_50,recorded_sales,rent_source,price_source
+gn:3578434,Saint-James,,1739,village,0,0,50,0,none,none
+gn:3578556,Colombier,,3335,village,0,0,50,0,none,none
+gn:3578557,Quartier d’Orléans,,3385,village,0,0,50,0,none,none
+gn:3578851,Marigot,,5700,village,0,0,50,0,none,none
+gn:3579247,Grand-Case,,6333,village,0,0,50,0,none,none
+gn:6984545,Sandy Ground,,3493,village,0,0,50,0,none,none
+gn:6984577,Concordia,,6102,village,0,0,50,0,none,none
+gn:6984581,Agrément,,1876,village,0,0,50,0,none,none
+gn:13535720,Oyster Pond,,1830,village,0,0,50,0,none,none

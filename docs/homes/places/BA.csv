@@ -1,0 +1,293 @@
+place_id,name,region,population,market,verified_homes,dated_listings,shortfall_to_50,recorded_sales,rent_source,price_source
+gn:3186246,Zvornik,Srpska,8026,village,0,0,50,0,none,none
+gn:3186422,Živinice,Srpska,3718,village,0,0,50,0,none,none
+gn:3186423,Živinice,Federation of B&H,13641,town,0,0,50,0,none,none
+gn:3186425,Živinice,Srpska,1274,village,0,0,50,0,none,none
+gn:3186567,Žepče,Federation of B&H,8502,village,0,0,50,0,none,none
+gn:3186573,Zenica,Federation of B&H,164423,city,0,0,50,0,none,none
+gn:3186588,Željezno Polje,Federation of B&H,5783,village,0,0,50,0,none,none
+gn:3186679,Zborište,Federation of B&H,4922,village,0,0,50,0,none,none
+gn:3186717,Zavidovići,Federation of B&H,14380,town,0,0,50,0,none,none
+gn:3186961,Zabrišće,Federation of B&H,4261,village,0,0,50,0,none,none
+gn:3187040,Vukovije Donje,Federation of B&H,3535,village,0,0,50,0,none,none
+gn:3187162,Vrnograč,Federation of B&H,6860,village,0,0,50,0,none,none
+gn:3187393,Vozuća,,3209,village,0,0,50,0,none,none
+gn:3187419,Voljevac,Federation of B&H,3764,village,0,0,50,0,none,none
+gn:3187464,Vogošća,Federation of B&H,8180,village,0,0,50,0,none,none
+gn:3187524,Vlasenica,Srpska,4508,village,0,0,50,0,none,none
+gn:3187588,Vitina,Federation of B&H,4384,village,0,0,50,0,none,none
+gn:3187590,Vitez,Federation of B&H,8140,village,0,0,50,0,none,none
+gn:3187609,Visoko,Federation of B&H,17890,town,0,0,50,0,none,none
+gn:3187681,Višegrad,Srpska,6087,village,0,0,50,0,none,none
+gn:3187799,Vidoši,Federation of B&H,3905,village,0,0,50,0,none,none
+gn:3188165,Velika Sočanica,Srpska,1489,village,0,0,50,0,none,none
+gn:3188199,Velika Obarska,Srpska,3549,village,0,0,50,0,none,none
+gn:3188225,Velika Kladuša,Federation of B&H,19330,town,0,0,50,0,none,none
+gn:3188329,Velagići,Federation of B&H,4972,village,0,0,50,0,none,none
+gn:3188357,Varoška Rijeka,Federation of B&H,6573,village,0,0,50,0,none,none
+gn:3188366,Vareš,Federation of B&H,7193,village,0,0,50,0,none,none
+gn:3188458,Ustikolina,Federation of B&H,4446,village,0,0,50,0,none,none
+gn:3188532,Ugljevik,Srpska,3452,village,0,0,50,0,none,none
+gn:3188582,Tuzla,Federation of B&H,142486,city,0,0,50,0,none,none
+gn:3188633,Turbe,Federation of B&H,4767,village,0,0,50,0,none,none
+gn:3188691,Tržačka Raštela,Federation of B&H,6617,village,0,0,50,0,none,none
+gn:3188773,Trnovo,Srpska,0,village,0,0,50,0,none,none
+gn:3188817,Trn,Srpska,7553,village,0,0,50,0,none,none
+gn:3188893,Trebinje,Srpska,33178,town,0,0,50,0,none,none
+gn:3188924,Travnik,Federation of B&H,31127,town,0,0,50,0,none,none
+gn:3189046,Tojšići,Federation of B&H,6587,village,0,0,50,0,none,none
+gn:3189143,Teslić,Srpska,6405,village,0,0,50,0,none,none
+gn:3189146,Tešanj,Federation of B&H,7550,village,0,0,50,0,none,none
+gn:3189194,Tasovčići,Federation of B&H,2007,village,0,0,50,0,none,none
+gn:3189236,Svodna,Srpska,4388,village,0,0,50,0,none,none
+gn:3189513,Šumatac,Federation of B&H,4987,village,0,0,50,0,none,none
+gn:3189545,Suho Polje,Srpska,1503,village,0,0,50,0,none,none
+gn:3189602,Šturlić,Federation of B&H,5014,village,0,0,50,0,none,none
+gn:3189621,Stupari,,4424,village,0,0,50,0,none,none
+gn:3189823,Stolac,Federation of B&H,7733,village,0,0,50,0,none,none
+gn:3189848,Stjepan-Polje,Federation of B&H,4341,village,0,0,50,0,none,none
+gn:3189884,Stijena,Federation of B&H,10844,town,0,0,50,0,none,none
+gn:3190158,Srebrenik,Federation of B&H,6723,village,0,0,50,0,none,none
+gn:3190159,Srebrenica,Srpska,2862,village,0,0,50,0,none,none
+gn:3190172,Srbac,Srpska,7380,village,0,0,50,0,none,none
+gn:3190357,Solina,Federation of B&H,4780,village,0,0,50,0,none,none
+gn:3190385,Sokolac,Srpska,8842,village,0,0,50,0,none,none
+gn:3190652,Sladna,Federation of B&H,4304,village,0,0,50,0,none,none
+gn:3190733,Kneževo,Srpska,6866,village,0,0,50,0,none,none
+gn:3190837,Šipovo,Srpska,10738,town,0,0,50,0,none,none
+gn:3190878,Simin Han,Federation of B&H,2278,village,0,0,50,0,none,none
+gn:3190987,Šerići,Federation of B&H,3663,village,0,0,50,0,none,none
+gn:3191156,Šekovići,Srpska,6315,village,0,0,50,0,none,none
+gn:3191281,Sarajevo,Federation of B&H,696731,large-city,0,0,50,0,none,none
+gn:3191287,Sapna,Federation of B&H,0,village,0,0,50,0,none,none
+gn:3191297,Sanski Most,Federation of B&H,13551,town,0,0,50,0,none,none
+gn:3191302,Sanica,Federation of B&H,5666,village,0,0,50,0,none,none
+gn:3191426,Rumboci,Federation of B&H,3854,village,0,0,50,0,none,none
+gn:3191449,Rudo,Srpska,1760,village,0,0,50,0,none,none
+gn:3191576,Rogatica,Srpska,4947,village,0,0,50,0,none,none
+gn:3191589,Rodoč,Federation of B&H,5159,village,0,0,50,0,none,none
+gn:3191808,Ravno,Federation of B&H,0,village,0,0,50,0,none,none
+gn:3192123,Radišići,Federation of B&H,4072,village,0,0,50,0,none,none
+gn:3192206,Puračić,Federation of B&H,3461,village,0,0,50,0,none,none
+gn:3192236,Novi Travnik,Federation of B&H,10006,town,0,0,50,0,none,none
+gn:3192279,Prozor,Federation of B&H,10349,town,0,0,50,0,none,none
+gn:3192327,Prnjavor,Srpska,7099,village,0,0,50,0,none,none
+gn:3192409,Prijedor,Srpska,36347,town,0,0,50,0,none,none
+gn:3192449,Priboj,Srpska,4351,village,0,0,50,0,none,none
+gn:3192456,Pribinić,Srpska,3558,village,0,0,50,0,none,none
+gn:3192609,Prača,Federation of B&H,0,village,0,0,50,0,none,none
+gn:3192652,Potoci,Srpska,0,village,0,0,50,0,none,none
+gn:3192653,Potoci,Federation of B&H,8312,village,0,0,50,0,none,none
+gn:3192669,Posušje,Federation of B&H,6267,village,0,0,50,0,none,none
+gn:3192718,Popovi,Srpska,1145,village,0,0,50,0,none,none
+gn:3192793,Polje-Bijela,Federation of B&H,1078,village,0,0,50,0,none,none
+gn:3192798,Polje,Srpska,1125,village,0,0,50,0,none,none
+gn:3192878,Podzvizd,Federation of B&H,6665,village,0,0,50,0,none,none
+gn:3192961,Podnovlje,Srpska,1250,village,0,0,50,0,none,none
+gn:3193008,Podhum,Federation of B&H,5801,village,0,0,50,0,none,none
+gn:3193439,Petkovci,Srpska,2212,village,0,0,50,0,none,none
+gn:3193520,Pelagićevo,Srpska,4,village,0,0,50,0,none,none
+gn:3193542,Pećigrad,Federation of B&H,6514,village,0,0,50,0,none,none
+gn:3193545,Peći,Federation of B&H,3650,village,0,0,50,0,none,none
+gn:3193563,Pazarić,Federation of B&H,4787,village,0,0,50,0,none,none
+gn:3193593,Patkovača,Srpska,2728,village,0,0,50,0,none,none
+gn:3193613,Pasci Donji,Federation of B&H,1092,village,0,0,50,0,none,none
+gn:3193692,Pale,Srpska,7458,village,0,0,50,0,none,none
+gn:3193776,Otoka,Federation of B&H,6595,village,0,0,50,0,none,none
+gn:3193821,Ostrožac,Federation of B&H,5456,village,0,0,50,0,none,none
+gn:3193855,Oštra Luka,Srpska,3923,village,0,0,50,0,none,none
+gn:3193856,Oštra Luka,Srpska,0,village,0,0,50,0,none,none
+gn:3193900,Osmaci,Srpska,0,village,0,0,50,0,none,none
+gn:3193927,Osinja,Srpska,1264,village,0,0,50,0,none,none
+gn:3194013,Orguz,Federation of B&H,4371,village,0,0,50,0,none,none
+gn:3194035,Orašje,Federation of B&H,3613,village,0,0,50,0,none,none
+gn:3194041,Orašac,Federation of B&H,3856,village,0,0,50,0,none,none
+gn:3194061,Orahovica Donja,Federation of B&H,5612,village,0,0,50,0,none,none
+gn:3194120,Omarska,Srpska,6466,village,0,0,50,0,none,none
+gn:3194125,Omanjska,Federation of B&H,4,village,0,0,50,0,none,none
+gn:3194133,Olovo,Federation of B&H,3305,village,0,0,50,0,none,none
+gn:3194199,Odžak,Federation of B&H,11621,town,0,0,50,0,none,none
+gn:3194231,Obudovac,Srpska,2171,village,0,0,50,0,none,none
+gn:3194273,Obodnica Donja,Federation of B&H,1017,village,0,0,50,0,none,none
+gn:3194339,Novo Selo,Srpska,0,village,0,0,50,0,none,none
+gn:3194358,Novi Šeher,Federation of B&H,4416,village,0,0,50,0,none,none
+gn:3194510,Nevesinje,Srpska,7313,village,0,0,50,0,none,none
+gn:3194514,Neum,Federation of B&H,4200,village,0,0,50,0,none,none
+gn:3194724,Mrkonjić Grad,Srpska,14737,town,0,0,50,0,none,none
+gn:3194773,Mramor,Federation of B&H,3918,village,0,0,50,0,none,none
+gn:3194828,Mostar,Federation of B&H,104518,city,0,0,50,0,none,none
+gn:3195066,Mionica,Federation of B&H,8701,village,0,0,50,0,none,none
+gn:3195128,Milići,Srpska,8210,village,0,0,50,0,none,none
+gn:3195308,Međugorje,Federation of B&H,2265,village,0,0,50,0,none,none
+gn:3195360,Matuzići,Federation of B&H,0,village,0,0,50,0,none,none
+gn:3195399,Maslovare,Srpska,4899,village,0,0,50,0,none,none
+gn:3195500,Marićka,Srpska,3707,village,0,0,50,0,none,none
+gn:3195839,Mala Kladuša,Federation of B&H,6033,village,0,0,50,0,none,none
+gn:3195930,Mahala,Federation of B&H,5062,village,0,0,50,0,none,none
+gn:3195945,Maglajani,Srpska,4221,village,0,0,50,0,none,none
+gn:3195946,Maglaj,Federation of B&H,7399,village,0,0,50,0,none,none
+gn:3196066,Lukavica,Federation of B&H,4084,village,0,0,50,0,none,none
+gn:3196069,Lukavica,Srpska,0,village,0,0,50,0,none,none
+gn:3196079,Lukavac,Federation of B&H,44520,town,0,0,50,0,none,none
+gn:3196108,Lug,Srpska,1139,village,0,0,50,0,none,none
+gn:3196209,Lopare,Srpska,3614,village,0,0,50,0,none,none
+gn:3196243,Lokvine,Federation of B&H,3928,village,0,0,50,0,none,none
+gn:3196324,Ljubuški,Federation of B&H,9987,village,0,0,50,0,none,none
+gn:3196364,Ljubinje,Srpska,4235,village,0,0,50,0,none,none
+gn:3196410,Livno,Federation of B&H,11748,town,0,0,50,0,none,none
+gn:3196428,Široki Brijeg,Federation of B&H,9370,village,0,0,50,0,none,none
+gn:3196520,Lipnica Gornja,Federation of B&H,1264,village,0,0,50,0,none,none
+gn:3196792,Laktaši,Srpska,6464,village,0,0,50,0,none,none
+gn:3196915,Kupres,Federation of B&H,0,village,0,0,50,0,none,none
+gn:3197112,Krupa na Vrbasu,Srpska,1257,village,0,0,50,0,none,none
+gn:3197138,Teočak,Federation of B&H,0,village,0,0,50,0,none,none
+gn:3197296,Kreševo,Federation of B&H,0,village,0,0,50,0,none,none
+gn:3197532,Kotor Varoš,Srpska,5068,village,0,0,50,0,none,none
+gn:3197718,Koraće,Srpska,1165,village,0,0,50,0,none,none
+gn:3197764,Kopači,Srpska,0,village,0,0,50,0,none,none
+gn:3197944,Kočerin,Federation of B&H,3516,village,0,0,50,0,none,none
+gn:3197964,Kobilja Glava,Federation of B&H,3666,village,0,0,50,0,none,none
+gn:3198026,Klokotnica,Federation of B&H,0,village,0,0,50,0,none,none
+gn:3198050,Ključ,Federation of B&H,7245,village,0,0,50,0,none,none
+gn:3198126,Kladanj,Federation of B&H,6783,village,0,0,50,0,none,none
+gn:3198137,Kiseljak,Federation of B&H,3447,village,0,0,50,0,none,none
+gn:3198138,Kiseljak,Federation of B&H,8475,village,0,0,50,0,none,none
+gn:3198293,Karadaglije,Federation of B&H,3700,village,0,0,50,0,none,none
+gn:3198448,Kalinovik,Srpska,1095,village,0,0,50,0,none,none
+gn:3198459,Kalesija,Federation of B&H,2039,village,0,0,50,0,none,none
+gn:3198490,Kakanj,Federation of B&H,12406,town,0,0,50,0,none,none
+gn:3198618,Jezerski,Federation of B&H,4361,village,0,0,50,0,none,none
+gn:3198623,Jezero,Srpska,581,village,0,0,50,0,none,none
+gn:3198895,Janja,Srpska,5544,village,0,0,50,0,none,none
+gn:3198934,Jajce,Federation of B&H,9763,village,0,0,50,0,none,none
+gn:3199027,Izačić,Federation of B&H,4089,village,0,0,50,0,none,none
+gn:3199142,Ilijaš,Federation of B&H,5855,village,0,0,50,0,none,none
+gn:3199145,Ilidža,Federation of B&H,71277,town,0,0,50,0,none,none
+gn:3199275,Hreša,Srpska,0,village,0,0,50,0,none,none
+gn:3199417,Han Pijesak,Srpska,4206,village,0,0,50,0,none,none
+gn:3199438,Hadžići,Federation of B&H,7173,village,0,0,50,0,none,none
+gn:3199509,Grude,Federation of B&H,4627,village,0,0,50,0,none,none
+gn:3199525,Gromiljak,Federation of B&H,6457,village,0,0,50,0,none,none
+gn:3199744,Gradačac,Federation of B&H,15659,town,0,0,50,0,none,none
+gn:3199779,Gračanica,Federation of B&H,15758,town,0,0,50,0,none,none
+gn:3199784,Gračanica,Federation of B&H,3871,village,0,0,50,0,none,none
+gn:3199804,Grabovica Donja,Federation of B&H,1054,village,0,0,50,0,none,none
+gn:3199862,Gostovići,Federation of B&H,5802,village,0,0,50,0,none,none
+gn:3199904,Gornji Vakuf,Federation of B&H,7014,village,0,0,50,0,none,none
+gn:3199920,Gornji Smrtići,Srpska,1443,village,0,0,50,0,none,none
+gn:3199933,Gornji Ribnik,Srpska,0,village,0,0,50,0,none,none
+gn:3200059,Gornje Živinice,Federation of B&H,4661,village,0,0,50,0,none,none
+gn:3200108,Gornje Moštre,Federation of B&H,4009,village,0,0,50,0,none,none
+gn:3200167,Gornja Tuzla,Federation of B&H,3017,village,0,0,50,0,none,none
+gn:3200245,Gornja Koprivna,Federation of B&H,4600,village,0,0,50,0,none,none
+gn:3200340,Gorica,Federation of B&H,1179,village,0,0,50,0,none,none
+gn:3200396,Goražde,Federation of B&H,17650,town,0,0,50,0,none,none
+gn:3200538,Gnojnica,Federation of B&H,3985,village,0,0,50,0,none,none
+gn:3200651,Glamoč,Federation of B&H,4016,village,0,0,50,0,none,none
+gn:3200768,Gacko,Srpska,3417,village,0,0,50,0,none,none
+gn:3200829,Fojnica,Federation of B&H,8244,village,0,0,50,0,none,none
+gn:3200837,Foča,Srpska,14615,town,0,0,50,0,none,none
+gn:3200930,Tomislavgrad,Federation of B&H,7737,village,0,0,50,0,none,none
+gn:3201057,Dubravica,Federation of B&H,3868,village,0,0,50,0,none,none
+gn:3201060,Dubrave Gornje,Federation of B&H,4821,village,0,0,50,0,none,none
+gn:3201061,Dubrave Donje,Federation of B&H,3811,village,0,0,50,0,none,none
+gn:3201136,Drvar,Federation of B&H,3730,village,0,0,50,0,none,none
+gn:3201177,Drinovci,Federation of B&H,3791,village,0,0,50,0,none,none
+gn:3201183,Drinić,Srpska,0,village,0,0,50,0,none,none
+gn:3201368,Donji Žabar,Srpska,1157,village,0,0,50,0,none,none
+gn:3201376,Donji Vakuf,Federation of B&H,7955,village,0,0,50,0,none,none
+gn:3201482,Donji Dubovik,Srpska,0,village,0,0,50,0,none,none
+gn:3201660,Donja Međiđa,Federation of B&H,3782,village,0,0,50,0,none,none
+gn:3201662,Donja Mahala,Federation of B&H,5565,village,0,0,50,0,none,none
+gn:3201697,Donja Dubica,Federation of B&H,3489,village,0,0,50,0,none,none
+gn:3201738,Domaljevac,Federation of B&H,4,village,0,0,50,0,none,none
+gn:3201924,Dobrnja,Federation of B&H,1966,village,0,0,50,0,none,none
+gn:3201928,Dobrljin,Srpska,3582,village,0,0,50,0,none,none
+gn:3201931,Dobrinje,Federation of B&H,3987,village,0,0,50,0,none,none
+gn:3201984,Doboj,Srpska,27235,town,0,0,50,0,none,none
+gn:3202014,Divičani,Federation of B&H,7251,village,0,0,50,0,none,none
+gn:3202053,Devetak,Federation of B&H,2169,village,0,0,50,0,none,none
+gn:3202081,Derventa,Srpska,9773,village,0,0,50,0,none,none
+gn:3202564,Čitluk,Federation of B&H,5718,village,0,0,50,0,none,none
+gn:3202589,Cim,Federation of B&H,3966,village,0,0,50,0,none,none
+gn:3202732,Cerani,Srpska,1043,village,0,0,50,0,none,none
+gn:3202784,Čelinac,Srpska,0,village,0,0,50,0,none,none
+gn:3202791,Čelić,Federation of B&H,4,village,0,0,50,0,none,none
+gn:3202817,Čečava,Srpska,3847,village,0,0,50,0,none,none
+gn:3202822,Cazin,Federation of B&H,21741,town,0,0,50,0,none,none
+gn:3202873,Čapljina,Federation of B&H,7923,village,0,0,50,0,none,none
+gn:3202890,Ćaklovici Gornji,Federation of B&H,1480,village,0,0,50,0,none,none
+gn:3202895,Čajniče,Srpska,3909,village,0,0,50,0,none,none
+gn:3202935,Bužim,Federation of B&H,7229,village,0,0,50,0,none,none
+gn:3202955,Busovača,Federation of B&H,4776,village,0,0,50,0,none,none
+gn:3203099,Bugojno,Federation of B&H,41378,town,0,0,50,0,none,none
+gn:3203227,Bronzani Majdan,Srpska,3945,village,0,0,50,0,none,none
+gn:3203280,Brka,Brčko,2800,village,0,0,50,0,none,none
+gn:3203427,Breza,Federation of B&H,0,village,0,0,50,0,none,none
+gn:3203521,Brčko,Brčko,38968,town,0,0,50,0,none,none
+gn:3203533,Bratunac,Srpska,4717,village,0,0,50,0,none,none
+gn:3203643,Petrovo,Srpska,0,village,0,0,50,0,none,none
+gn:3203644,Bosansko Grahovo,Federation of B&H,5643,village,0,0,50,0,none,none
+gn:3203645,Šamac,Srpska,3599,village,0,0,50,0,none,none
+gn:3203646,Bosanski Petrovac,Federation of B&H,4,village,0,0,50,0,none,none
+gn:3203647,Novi Grad,Srpska,8920,village,0,0,50,0,none,none
+gn:3203651,Brod,Srpska,9249,village,0,0,50,0,none,none
+gn:3203653,Bosanska Krupa,Federation of B&H,15193,town,0,0,50,0,none,none
+gn:3203655,Kostajnica,Srpska,4739,village,0,0,50,0,none,none
+gn:3203656,Gradiška,Srpska,13346,town,0,0,50,0,none,none
+gn:3203657,Kozarska Dubica,Srpska,9959,village,0,0,50,0,none,none
+gn:3203950,Blatnica,Srpska,5676,village,0,0,50,0,none,none
+gn:3203970,Blagaj,Federation of B&H,4715,village,0,0,50,0,none,none
+gn:3204161,Bileća,Srpska,13257,town,0,0,50,0,none,none
+gn:3204168,Bila,Federation of B&H,4397,village,0,0,50,0,none,none
+gn:3204186,Bijeljina,Srpska,37692,town,0,0,50,0,none,none
+gn:3204222,Bihać,Federation of B&H,75641,town,0,0,50,0,none,none
+gn:3204269,Berkovići,Srpska,0,village,0,0,50,0,none,none
+gn:3204520,Banovići,Federation of B&H,7211,village,0,0,50,0,none,none
+gn:3204541,Banja Luka,Srpska,221106,city,0,0,50,0,none,none
+gn:3204590,Balatun,Srpska,1400,village,0,0,50,0,none,none
+gn:3206012,Koran,Srpska,3395,village,0,0,50,0,none,none
+gn:3210439,Jelah,Federation of B&H,5291,village,0,0,50,0,none,none
+gn:3210448,Stanari,Srpska,3590,village,0,0,50,0,none,none
+gn:3210492,Dobratići,Federation of B&H,0,village,0,0,50,0,none,none
+gn:3210593,Podbrdo,Srpska,4028,village,0,0,50,0,none,none
+gn:3210920,Malešići,Federation of B&H,3764,village,0,0,50,0,none,none
+gn:3211287,Svojat,,3516,village,0,0,50,0,none,none
+gn:3211537,Dvorovi,Srpska,1710,village,0,0,50,0,none,none
+gn:3211605,Karakaj,Srpska,2735,village,0,0,50,0,none,none
+gn:3211929,Knežica,Srpska,4792,village,0,0,50,0,none,none
+gn:3212301,Pjanići,Federation of B&H,3537,village,0,0,50,0,none,none
+gn:3212590,Polje,Federation of B&H,3799,village,0,0,50,0,none,none
+gn:3213083,Ilići,Federation of B&H,3688,village,0,0,50,0,none,none
+gn:3220831,Lipnica,Federation of B&H,1029,village,0,0,50,0,none,none
+gn:3245419,Careva Ćuprija,,3954,village,0,0,50,0,none,none
+gn:3246028,Starcevica,Srpska,2300,village,0,0,50,0,none,none
+gn:3247554,Čelinac,Srpska,6670,village,0,0,50,0,none,none
+gn:3248273,Jezero,Srpska,1144,village,0,0,50,0,none,none
+gn:3248643,Hiseti,Srpska,5000,village,0,0,50,0,none,none
+gn:3248645,Piskavica,Srpska,3797,village,0,0,50,0,none,none
+gn:3249941,Lamovita,Srpska,4582,village,0,0,50,0,none,none
+gn:3250684,Tetima,Srpska,1164,village,0,0,50,0,none,none
+gn:3253010,Tešanjka,Federation of B&H,5666,village,0,0,50,0,none,none
+gn:3257948,Kovači,Federation of B&H,6410,village,0,0,50,0,none,none
+gn:3258022,Liješnica,Federation of B&H,3559,village,0,0,50,0,none,none
+gn:3259075,Ćoralići,Federation of B&H,5223,village,0,0,50,0,none,none
+gn:3262021,Crnići,Federation of B&H,5789,village,0,0,50,0,none,none
+gn:3262877,Barice,Federation of B&H,3697,village,0,0,50,0,none,none
+gn:3263149,Mramor Novi,Federation of B&H,1344,village,0,0,50,0,none,none
+gn:3263273,Mihatovići,Federation of B&H,1353,village,0,0,50,0,none,none
+gn:3263288,Šički Brod,Federation of B&H,1315,village,0,0,50,0,none,none
+gn:3268187,Hotonj,Federation of B&H,4013,village,0,0,50,0,none,none
+gn:3278045,Skokovi,Federation of B&H,3553,village,0,0,50,0,none,none
+gn:3283848,Drežnica,Federation of B&H,3908,village,0,0,50,0,none,none
+gn:3289093,Kačuni,Federation of B&H,5042,village,0,0,50,0,none,none
+gn:3291189,Lise,Federation of B&H,2025,village,0,0,50,0,none,none
+gn:3293429,Pajić Polje,Federation of B&H,4026,village,0,0,50,0,none,none
+gn:3295485,Gornja Breza,Federation of B&H,3732,village,0,0,50,0,none,none
+gn:3301568,Todorovo,Federation of B&H,9560,village,0,0,50,0,none,none
+gn:3337476,Konjic,Federation of B&H,15950,town,0,0,50,0,none,none
+gn:3344411,Jablanica,Federation of B&H,6209,village,0,0,50,0,none,none
+gn:3344788,Bijela,Federation of B&H,3484,village,0,0,50,0,none,none
+gn:8335444,Mejdan - Obilićevo,Srpska,5400,village,0,0,50,0,none,none
+gn:11205170,Modriča,Srpska,8996,village,0,0,50,0,none,none
+gn:12680288,Pečeneg Ilova,Srpska,1287,village,0,0,50,0,none,none

@@ -1,0 +1,11 @@
+place_id,name,region,population,market,verified_homes,dated_listings,shortfall_to_50,recorded_sales,rent_source,price_source
+gn:2110419,Yangor,Aiwo District,1258,village,0,0,50,0,none,none
+gn:2110421,Uaboe,Uaboe District,330,village,0,0,50,0,none,none
+gn:2110427,Baiti,Baiti District,810,village,0,0,50,0,none,none
+gn:2110433,Ijuw,Ijuw District,180,village,0,0,50,0,none,none
+gn:2110447,Anibare,Anibare District,373,village,0,0,50,0,none,none
+gn:2110450,Anabar,Anabar District,378,village,0,0,50,0,none,none
+gn:7626461,Yaren,Yaren District,1100,village,0,0,50,0,none,none
+gn:7626485,Arijejen,Aiwo District,2381,village,0,0,50,0,none,none
+gn:11695310,Menen,Meneng District,1400,village,0,0,50,0,none,none
+gn:12129637,Denigomodu,Denigomodu District,1804,village,0,0,50,0,none,none

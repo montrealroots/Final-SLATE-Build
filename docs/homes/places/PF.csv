@@ -1,0 +1,39 @@
+place_id,name,region,population,market,verified_homes,dated_listings,shortfall_to_50,recorded_sales,rent_source,price_source
+gn:4020109,Atuona,Marquesas Islands,1762,village,0,0,50,0,none,none
+gn:4030556,Rikitea,Tuamotu-Gambier Islands,1103,village,0,0,50,0,none,none
+gn:4033062,Vaitoare,Austral Islands,5946,village,0,0,50,0,none,none
+gn:4033077,Vaitape,Leeward Islands,4927,village,0,0,50,0,none,none
+gn:4033094,Vairao,Îles du Vent,2423,village,0,0,50,0,none,none
+gn:4033205,Uturoa,Leeward Islands,3668,village,0,0,50,0,none,none
+gn:4033295,Tohautu,Îles du Vent,2842,village,0,0,50,0,none,none
+gn:4033356,Tiarei,,2795,village,0,0,50,0,none,none
+gn:4033375,Tevaitoa,Leeward Islands,1851,village,0,0,50,0,none,none
+gn:4033514,Teavaro,Îles du Vent,2289,village,0,0,50,0,none,none
+gn:4033543,Teahupoo,Îles du Vent,1422,village,0,0,50,0,none,none
+gn:4033557,Tautira,Îles du Vent,2293,village,0,0,50,0,none,none
+gn:4033566,Taunoa,Îles du Vent,4131,village,0,0,50,0,none,none
+gn:4033779,Punaauia,Îles du Vent,25750,town,0,0,50,0,none,none
+gn:4033792,Pueu,Îles du Vent,1968,village,0,0,50,0,none,none
+gn:4033838,Pirae,Îles du Vent,14475,town,0,0,50,0,none,none
+gn:4033910,Papetoai,Îles du Vent,1964,village,0,0,50,0,none,none
+gn:4033936,Papeete,Îles du Vent,26357,town,0,0,50,0,none,none
+gn:4033951,Papao,Îles du Vent,10360,town,0,0,50,0,none,none
+gn:4033958,Paopao,Îles du Vent,4221,village,0,0,50,0,none,none
+gn:4034005,Paea,Îles du Vent,12084,town,0,0,50,0,none,none
+gn:4034022,Otutara,Îles du Vent,4609,village,0,0,50,0,none,none
+gn:4034036,Otepa,Tuamotu-Gambier Islands,1009,village,0,0,50,0,none,none
+gn:4034188,Moerai,Austral Islands,1044,village,0,0,50,0,none,none
+gn:4034307,Mahina,Îles du Vent,14369,town,0,0,50,0,none,none
+gn:4034402,Hitiaa,,1826,village,0,0,50,0,none,none
+gn:4034438,Haapiti,Îles du Vent,3959,village,0,0,50,0,none,none
+gn:4034451,Fitii,Leeward Islands,1154,village,0,0,50,0,none,none
+gn:4034496,Fare,Leeward Islands,1540,village,0,0,50,0,none,none
+gn:4034548,Faone,Îles du Vent,1747,village,0,0,50,0,none,none
+gn:4034551,Faanui,Leeward Islands,2061,village,0,0,50,0,none,none
+gn:4034561,Faaa,Îles du Vent,29851,town,0,0,50,0,none,none
+gn:4034636,Arue,Îles du Vent,9458,village,0,0,50,0,none,none
+gn:4034688,Anau,Leeward Islands,1412,village,0,0,50,0,none,none
+gn:4034741,Afareaitu,Îles du Vent,3213,village,0,0,50,0,none,none
+gn:4034745,Afaahiti,Îles du Vent,5186,village,0,0,50,0,none,none
+gn:8063344,Taiohae,Marquesas Islands,1224,village,0,0,50,0,none,none
+gn:11427336,Tapuarava,Tuamotu-Gambier Islands,0,village,0,0,50,0,none,none

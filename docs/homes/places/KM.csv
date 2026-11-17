@@ -1,0 +1,94 @@
+place_id,name,region,population,market,verified_homes,dated_listings,shortfall_to_50,recorded_sales,rent_source,price_source
+gn:921654,Ouanani,Mohéli,1917,village,0,0,50,0,none,none
+gn:921655,Vouani,Anjouan,2513,village,0,0,50,0,none,none
+gn:921661,Vanambouani,Grande Comore,1654,village,0,0,50,0,none,none
+gn:921664,Tsimbeo,Anjouan,12590,town,0,0,50,0,none,none
+gn:921674,Singani,Grande Comore,2309,village,0,0,50,0,none,none
+gn:921675,Sima,Anjouan,8737,village,0,0,50,0,none,none
+gn:921687,Salimani,Grande Comore,1662,village,0,0,50,0,none,none
+gn:921703,Patsi,Anjouan,1498,village,0,0,50,0,none,none
+gn:921711,Ouzini,Anjouan,1886,village,0,0,50,0,none,none
+gn:921713,Oussivo,Grande Comore,1708,village,0,0,50,0,none,none
+gn:921714,Ourovéni,Grande Comore,1419,village,0,0,50,0,none,none
+gn:921719,Ouellah,Grande Comore,5478,village,0,0,50,0,none,none
+gn:921721,Ouani,Anjouan,10073,town,0,0,50,0,none,none
+gn:921726,Ongoni,Anjouan,2058,village,0,0,50,0,none,none
+gn:921729,Ntsoudjini,Grande Comore,3559,village,0,0,50,0,none,none
+gn:921731,Ntsaouéni,Grande Comore,2760,village,0,0,50,0,none,none
+gn:921745,Nioumachoua,Mohéli,2687,village,0,0,50,0,none,none
+gn:921746,Kyo,Anjouan,2209,village,0,0,50,0,none,none
+gn:921753,Moutsamoudou,Anjouan,26313,town,0,0,50,0,none,none
+gn:921756,Mtsamdou,Grande Comore,1171,village,0,0,50,0,none,none
+gn:921762,Mrémani,Anjouan,5470,village,0,0,50,0,none,none
+gn:921763,Mramani,Anjouan,5126,village,0,0,50,0,none,none
+gn:921764,Moya,Anjouan,7529,village,0,0,50,0,none,none
+gn:921772,Moroni,Grande Comore,74749,town,0,0,50,0,none,none
+gn:921777,Mohoro,Grande Comore,2014,village,0,0,50,0,none,none
+gn:921783,Mjimandra,Anjouan,3114,village,0,0,50,0,none,none
+gn:921784,Mjamaoué,Anjouan,1490,village,0,0,50,0,none,none
+gn:921785,Mitsoudjé,Grande Comore,3129,village,0,0,50,0,none,none
+gn:921786,Mitsamiouli,Grande Comore,4811,village,0,0,50,0,none,none
+gn:921806,Mbéni,Grande Comore,5128,village,0,0,50,0,none,none
+gn:921814,Maraharé,Anjouan,1415,village,0,0,50,0,none,none
+gn:921834,Koni-Djodjo,Anjouan,8109,village,0,0,50,0,none,none
+gn:921835,Koni-Ngani,Anjouan,3288,village,0,0,50,0,none,none
+gn:921838,Koki,Anjouan,4929,village,0,0,50,0,none,none
+gn:921839,Koimbani,Grande Comore,2054,village,0,0,50,0,none,none
+gn:921847,Kangani,Anjouan,3711,village,0,0,50,0,none,none
+gn:921852,Ivouani,Grande Comore,1317,village,0,0,50,0,none,none
+gn:921856,Itsandra,Grande Comore,2684,village,0,0,50,0,none,none
+gn:921858,Héroumbili,Grande Comore,1463,village,0,0,50,0,none,none
+gn:921870,Hoani,Mohéli,1114,village,0,0,50,0,none,none
+gn:921884,Foumbouni,Grande Comore,3386,village,0,0,50,0,none,none
+gn:921889,Fomboni,Mohéli,17291,town,0,0,50,0,none,none
+gn:921897,Dziani,Anjouan,1754,village,0,0,50,0,none,none
+gn:921902,Dzahadjou,Grande Comore,2000,village,0,0,50,0,none,none
+gn:921906,Domoni,Anjouan,12262,town,0,0,50,0,none,none
+gn:921913,Djoyézi,Mohéli,2096,village,0,0,50,0,none,none
+gn:921918,Dembéni,Grande Comore,2657,village,0,0,50,0,none,none
+gn:921939,Chironkamba,Anjouan,2391,village,0,0,50,0,none,none
+gn:921942,Chindini,Grande Comore,1471,village,0,0,50,0,none,none
+gn:921944,Chezani,Grande Comore,2322,village,0,0,50,0,none,none
+gn:921946,Chandra,Anjouan,5645,village,0,0,50,0,none,none
+gn:921948,Chouani,Grande Comore,2615,village,0,0,50,0,none,none
+gn:921956,Bouni,Grande Comore,1104,village,0,0,50,0,none,none
+gn:921957,Boungouéni,Anjouan,2465,village,0,0,50,0,none,none
+gn:921967,Bimbini,Anjouan,2052,village,0,0,50,0,none,none
+gn:921984,Bandamadji-Domba,Grande Comore,1929,village,0,0,50,0,none,none
+gn:921992,Bambao,Anjouan,2699,village,0,0,50,0,none,none
+gn:921996,Assimpao,Anjouan,1112,village,0,0,50,0,none,none
+gn:921998,Antsahé,Anjouan,1180,village,0,0,50,0,none,none
+gn:1090583,Mtakoudja,Mohéli,1410,village,0,0,50,0,none,none
+gn:1090640,Ziroudani,Mohéli,1197,village,0,0,50,0,none,none
+gn:1090919,Kavani,Anjouan,2160,village,0,0,50,0,none,none
+gn:1090930,Bandajou,Anjouan,1816,village,0,0,50,0,none,none
+gn:1090960,Chitrouni,Anjouan,1081,village,0,0,50,0,none,none
+gn:1090996,Dar Salam,Anjouan,1059,village,0,0,50,0,none,none
+gn:1091076,Hajoho,Anjouan,2505,village,0,0,50,0,none,none
+gn:1091088,Barakani,Anjouan,6089,village,0,0,50,0,none,none
+gn:1091102,Harembo,Anjouan,1698,village,0,0,50,0,none,none
+gn:1091117,Mirontsi,Anjouan,11955,town,0,0,50,0,none,none
+gn:1091121,Pajé,Anjouan,1894,village,0,0,50,0,none,none
+gn:1091159,Limbi,Anjouan,1037,village,0,0,50,0,none,none
+gn:1091370,Lingoni,Anjouan,3583,village,0,0,50,0,none,none
+gn:1091390,Magnassini-Nindri,Anjouan,2213,village,0,0,50,0,none,none
+gn:1091401,Adda-Douéni,Anjouan,10858,town,0,0,50,0,none,none
+gn:1091436,Daji,Anjouan,2676,village,0,0,50,0,none,none
+gn:1091669,Nkourani,Grande Comore,10000,town,0,0,50,0,none,none
+gn:1091674,Ouhozi,Grande Comore,1930,village,0,0,50,0,none,none
+gn:1091711,Mandza,Grande Comore,1602,village,0,0,50,0,none,none
+gn:1091712,Douniani,Grande Comore,1778,village,0,0,50,0,none,none
+gn:1091713,Koua,Grande Comore,1391,village,0,0,50,0,none,none
+gn:1091828,Hantsindzi,Grande Comore,2004,village,0,0,50,0,none,none
+gn:1091868,Itsandzéni,Grande Comore,1382,village,0,0,50,0,none,none
+gn:1091870,Bambadjani,Grande Comore,1355,village,0,0,50,0,none,none
+gn:1091996,Mnoungou,Grande Comore,1013,village,0,0,50,0,none,none
+gn:1092041,Vanadjou,Grande Comore,1830,village,0,0,50,0,none,none
+gn:1092065,Bahani,Grande Comore,1272,village,0,0,50,0,none,none
+gn:1092169,Tsidjé,Grande Comore,4600,village,0,0,50,0,none,none
+gn:1092341,Mvouni,Grande Comore,4791,village,0,0,50,0,none,none
+gn:1092343,Mavingouni,Grande Comore,1390,village,0,0,50,0,none,none
+gn:1092369,Ikoni,Grande Comore,5474,village,0,0,50,0,none,none
+gn:1092396,Séléa,Grande Comore,1662,village,0,0,50,0,none,none
+gn:1092516,Madjeouéni,Grande Comore,1320,village,0,0,50,0,none,none
+gn:1092529,Nioumamilima,Grande Comore,1068,village,0,0,50,0,none,none

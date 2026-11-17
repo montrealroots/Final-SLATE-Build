@@ -20,8 +20,8 @@
   "gross": 93680,
   "revenue": 108901,
   "distributed": 1.65,
-  "money": 24697049.713,
-  "moneyChange": -302950.287,
+  "money": 24698829.074,
+  "moneyChange": -301170.926,
   "jobsTaken": 0.975,
   "jobsOffered": 0.975,
   "jobPay": 5025.2,
@@ -34,7 +34,7 @@
   "jobsWithdrawn": 0,
   "jobsDeclined": 0,
   "ratesAgreed": 0,
-  "logLines": 151.35,
+  "logLines": 151.325,
   "hired": 16,
   "castRates": 3189.5,
   "releaseDelay": 99.454,
@@ -95,7 +95,7 @@
   "bankFees": 0,
   "owed": 0,
   "accounts": 1,
-  "worth": 18572181.384,
+  "worth": 18573519.464,
   "rewards": 0,
   "fired": 0
  },
@@ -107,8 +107,8 @@
   "gross": 93680,
   "revenue": 108901,
   "distributed": 1.65,
-  "money": 24696802.373,
-  "moneyChange": -303197.627,
+  "money": 24698581.734,
+  "moneyChange": -301418.266,
   "jobsTaken": 0.975,
   "jobsOffered": 0.975,
   "jobPay": 5025.2,
@@ -121,7 +121,7 @@
   "jobsWithdrawn": 0,
   "jobsDeclined": 0,
   "ratesAgreed": 0,
-  "logLines": 152.35,
+  "logLines": 152.325,
   "hired": 16,
   "castRates": 3189.5,
   "releaseDelay": 99.454,
@@ -182,7 +182,7 @@
   "bankFees": 0,
   "owed": 0,
   "accounts": 1,
-  "worth": 18571995.384,
+  "worth": 18573333.464,
   "rewards": 0,
   "fired": 0
  },
@@ -238,14 +238,14 @@
   },
   "money": {
    "mean": -247.34,
-   "lo": -247.34,
+   "lo": -247.341,
    "hi": -247.34,
    "changed": 40,
    "n": 40
   },
   "moneyChange": {
    "mean": -247.34,
-   "lo": -247.34,
+   "lo": -247.341,
    "hi": -247.34,
    "changed": 40,
    "n": 40
@@ -809,7 +809,7 @@
  ],
  "verdict": "proven",
  "hashes": {
-  "src/engine/homes/renting.ts": "7cfd10cb71f96a26",
+  "src/engine/homes/renting.ts": "c577f53dd878c359",
   "tests/proof/career.ts": "50bea06f19a02c5b"
  }
 }

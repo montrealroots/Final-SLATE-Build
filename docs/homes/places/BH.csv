@@ -1,0 +1,13 @@
+place_id,name,region,population,market,verified_homes,dated_listings,shortfall_to_50,recorded_sales,rent_source,price_source
+gn:290104,Sitrah,Manama,72601,town,0,0,50,0,none,none
+gn:290118,Sār,Northern,6000,village,0,0,50,0,none,none
+gn:290121,Sanābis,Manama,6564,village,0,0,50,0,none,none
+gn:290187,Madīnat ‘Īsá,Southern Governorate,38090,town,0,0,50,0,none,none
+gn:290215,Jidd Ḩafş,Manama,66588,town,0,0,50,0,none,none
+gn:290247,Madīnat Ḩamad,Northern,133550,city,0,0,50,0,none,none
+gn:290269,Dār Kulayb,Southern Governorate,65466,town,0,0,50,0,none,none
+gn:290296,Az Zallāq,Southern Governorate,9095,village,0,0,50,0,none,none
+gn:290332,Al Muharraq,Muharraq,176583,city,0,0,50,0,none,none
+gn:290340,Manama,Manama,147074,city,0,0,50,0,none,none
+gn:290363,Al Ḩadd,Muharraq,12797,town,0,0,50,0,none,none
+gn:385038,Ar Rifā‘,Southern Governorate,115495,city,0,0,50,0,none,none

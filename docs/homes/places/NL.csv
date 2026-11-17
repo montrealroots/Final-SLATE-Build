@@ -1,0 +1,1606 @@
+place_id,name,region,population,market,verified_homes,dated_listings,shortfall_to_50,recorded_sales,rent_source,price_source
+gn:2743477,Zwolle,Overijssel,129840,city,0,0,50,0,none,none
+gn:2743493,Zwijndrecht,South Holland,45696,town,0,0,50,0,none,none
+gn:2743518,Zwartsluis,Overijssel,4890,village,0,0,50,0,none,none
+gn:2743574,Zwanenburg,North Holland,8095,village,0,0,50,0,none,none
+gn:2743588,Zwaanshoek,North Holland,2295,village,0,0,50,0,none,none
+gn:2743590,De Westereen,Friesland,5030,village,0,0,50,0,none,none
+gn:2743593,Zwaagdijk-Oost,North Holland,1380,village,0,0,50,0,none,none
+gn:2743595,Zwaag,North Holland,17671,town,0,0,50,0,none,none
+gn:2743608,Zutphen,Gelderland,36188,town,0,0,50,0,none,none
+gn:2743619,Zundert,North Brabant,6835,village,0,0,50,0,none,none
+gn:2743624,Zuilichem,Gelderland,1245,village,0,0,50,0,none,none
+gn:2743640,Zuidwijk,South Holland,12490,town,0,0,50,0,none,none
+gn:2743658,Zuid-Scharwoude,North Holland,6880,village,0,0,50,0,none,none
+gn:2743673,Zuidoostbeemster,North Holland,4520,village,0,0,50,0,none,none
+gn:2743680,Zuidlaren,Drenthe,3905,village,0,0,50,0,none,none
+gn:2743694,Zuidhorn,Groningen,7075,village,0,0,50,0,none,none
+gn:2743774,Zuiderburen,Friesland,5790,village,0,0,50,0,none,none
+gn:2743800,Zuidbroek,Groningen,2255,village,0,0,50,0,none,none
+gn:2743807,Zuid-Beijerland,South Holland,2740,village,0,0,50,0,none,none
+gn:2743816,Zoutkamp,Groningen,1215,village,0,0,50,0,none,none
+gn:2743822,Zoutelande,Zeeland,1315,village,0,0,50,0,none,none
+gn:2743834,Zonnemaat,Gelderland,4250,village,0,0,50,0,none,none
+gn:2743844,Zonderwijk,North Brabant,3435,village,0,0,50,0,none,none
+gn:2743853,Zoeterwoude-Dorp,South Holland,4230,village,0,0,50,0,none,none
+gn:2743856,Zoetermeer,South Holland,115845,city,0,0,50,0,none,none
+gn:2743861,Zoelen,Gelderland,1010,village,0,0,50,0,none,none
+gn:2743877,Zijtaart,North Brabant,1055,village,0,0,50,0,none,none
+gn:2743913,Zierikzee,Zeeland,10483,town,0,0,50,0,none,none
+gn:2743923,Zevenhuizen,Gelderland,2290,village,0,0,50,0,none,none
+gn:2743937,Zevenhoven,South Holland,2200,village,0,0,50,0,none,none
+gn:2743944,Zevenbergschen Hoek,North Brabant,1245,village,0,0,50,0,none,none
+gn:2743949,Zevenaar,Gelderland,26063,town,0,0,50,0,none,none
+gn:2743952,Zetten,Gelderland,2985,village,0,0,50,0,none,none
+gn:2743956,Zesgehuchten,North Brabant,3460,village,0,0,50,0,none,none
+gn:2743963,Zelhem,Gelderland,5760,village,0,0,50,0,none,none
+gn:2743977,Zeist,Utrecht,60949,town,0,0,50,0,none,none
+gn:2743978,Zeilberg,North Brabant,1775,village,0,0,50,0,none,none
+gn:2743990,Zegveld,Utrecht,2348,village,0,0,50,0,none,none
+gn:2743992,Zegge,North Brabant,1575,village,0,0,50,0,none,none
+gn:2743997,Zeewolde,Flevoland,19022,town,0,0,50,0,none,none
+gn:2744006,Zeelst,North Brabant,5280,village,0,0,50,0,none,none
+gn:2744014,Zeeland,North Brabant,4750,village,0,0,50,0,none,none
+gn:2744031,Zeddam,Gelderland,2305,village,0,0,50,0,none,none
+gn:2744042,Zandvoort,North Holland,16325,town,0,0,50,0,none,none
+gn:2744093,Zandberg,North Brabant,5300,village,0,0,50,0,none,none
+gn:2744102,Zaltbommel,Gelderland,26383,town,0,0,50,0,none,none
+gn:2744114,Zaanstad,North Holland,140085,city,0,0,50,0,none,none
+gn:2744116,Zaandijk,North Holland,8868,village,0,0,50,0,none,none
+gn:2744118,Zaandam,North Holland,71708,town,0,0,50,0,none,none
+gn:2744122,Zaamslag,Zeeland,2980,village,0,0,50,0,none,none
+gn:2744129,Yerseke,Zeeland,6541,village,0,0,50,0,none,none
+gn:2744145,Wouw,North Brabant,4600,village,0,0,50,0,none,none
+gn:2744153,Woudsend,Friesland,1375,village,0,0,50,0,none,none
+gn:2744156,Woudrichem,North Brabant,4674,village,0,0,50,0,none,none
+gn:2744163,Woudenberg,Utrecht,11305,town,0,0,50,0,none,none
+gn:2744167,Woubrugge,South Holland,1060,village,0,0,50,0,none,none
+gn:2744174,Wormer,North Holland,13175,town,0,0,50,0,none,none
+gn:2744179,Workum,Friesland,4295,village,0,0,50,0,none,none
+gn:2744183,Wooldrik,Overijssel,1225,village,0,0,50,0,none,none
+gn:2744186,Woolde,Overijssel,1670,village,0,0,50,0,none,none
+gn:2744191,Wommels,Friesland,2065,village,0,0,50,0,none,none
+gn:2744194,Wolvega,Friesland,13090,town,0,0,50,0,none,none
+gn:2744199,Wolphaartsdijk,Zeeland,1595,village,0,0,50,0,none,none
+gn:2744210,Wolfsbos,Drenthe,4215,village,0,0,50,0,none,none
+gn:2744219,Wolfheze,Gelderland,1505,village,0,0,50,0,none,none
+gn:2744227,Wolder,Limburg,1425,village,0,0,50,0,none,none
+gn:2744237,Wognum,North Holland,6315,village,0,0,50,0,none,none
+gn:2744248,Woerden,Utrecht,48431,town,0,0,50,0,none,none
+gn:2744250,Woenselse Heide,North Brabant,5205,village,0,0,50,0,none,none
+gn:2744257,Woensdrecht,North Brabant,1340,village,0,0,50,0,none,none
+gn:2744303,Witmarsum,Friesland,1585,village,0,0,50,0,none,none
+gn:2744317,Wissenkerke,Zeeland,1040,village,0,0,50,0,none,none
+gn:2744324,Wisch,Gelderland,19496,town,0,0,50,0,none,none
+gn:2744327,Wirdum,Friesland,1050,village,0,0,50,0,none,none
+gn:2744332,Winterswijk,Gelderland,29623,town,0,0,50,0,none,none
+gn:2744333,Wintelre,North Brabant,2125,village,0,0,50,0,none,none
+gn:2744337,Winsum,Groningen,1365,village,0,0,50,0,none,none
+gn:2744344,Winschoten,Groningen,18506,town,0,0,50,0,none,none
+gn:2744354,Winkel,North Holland,3610,village,0,0,50,0,none,none
+gn:2744376,Wilnis,Utrecht,5715,village,0,0,50,0,none,none
+gn:2744424,Wilhelminadorp,North Brabant,3645,village,0,0,50,0,none,none
+gn:2744431,Wildervank,Groningen,2990,village,0,0,50,0,none,none
+gn:2744459,Wijnjewoude,Friesland,1245,village,0,0,50,0,none,none
+gn:2744471,Wijnandsrade,Limburg,1365,village,0,0,50,0,none,none
+gn:2744477,Wijlre,Limburg,1960,village,0,0,50,0,none,none
+gn:2744483,Wijk bij Duurstede,Utrecht,17465,town,0,0,50,0,none,none
+gn:2744484,Wijk aan Zee,North Holland,2155,village,0,0,50,0,none,none
+gn:2744489,Wijhe,Overijssel,5640,village,0,0,50,0,none,none
+gn:2744495,Wijdewormer,North Holland,1730,village,0,0,50,0,none,none
+gn:2744498,Wijdenes,North Holland,1525,village,0,0,50,0,none,none
+gn:2744514,Wijchen,Gelderland,32693,town,0,0,50,0,none,none
+gn:2744516,Wijbosch,North Brabant,1365,village,0,0,50,0,none,none
+gn:2744532,Wieringerwerf,North Holland,6305,village,0,0,50,0,none,none
+gn:2744534,Wieringerwaard,North Holland,2360,village,0,0,50,0,none,none
+gn:2744549,Wierden,Overijssel,25342,town,0,0,50,0,none,none
+gn:2744580,Wezep,Gelderland,13885,town,0,0,50,0,none,none
+gn:2744600,Westzaan,North Holland,5131,village,0,0,50,0,none,none
+gn:2744603,Westwoud,North Holland,1330,village,0,0,50,0,none,none
+gn:2744608,West-Terschelling,Friesland,2525,village,0,0,50,0,none,none
+gn:2744611,West-Souburg,Zeeland,1790,village,0,0,50,0,none,none
+gn:2744631,Westmaas,South Holland,1760,village,0,0,50,0,none,none
+gn:2744632,Westlaren,Drenthe,1410,village,0,0,50,0,none,none
+gn:2744642,Westkapelle,Zeeland,2515,village,0,0,50,0,none,none
+gn:2744663,Westerzicht,Zeeland,1595,village,0,0,50,0,none,none
+gn:2744675,Westervoort,Gelderland,5635,village,0,0,50,0,none,none
+gn:2744715,Westerlee,Groningen,1295,village,0,0,50,0,none,none
+gn:2744731,Westerhoven,North Brabant,1635,village,0,0,50,0,none,none
+gn:2744741,Westerhaar-Vriezenveensewijk,Overijssel,4470,village,0,0,50,0,none,none
+gn:2744769,Westerbork,Drenthe,4605,village,0,0,50,0,none,none
+gn:2744777,Westeneng,Gelderland,1320,village,0,0,50,0,none,none
+gn:2744786,Westeinde,Friesland,3890,village,0,0,50,0,none,none
+gn:2744800,Westdorpe,Zeeland,2113,village,0,0,50,0,none,none
+gn:2744806,Westbroek,Utrecht,1197,village,0,0,50,0,none,none
+gn:2744815,Wessem,Limburg,2050,village,0,0,50,0,none,none
+gn:2744820,Wervershoof,North Holland,6345,village,0,0,50,0,none,none
+gn:2744824,Wernhout,North Brabant,1030,village,0,0,50,0,none,none
+gn:2744825,Werkhoven,Utrecht,1990,village,0,0,50,0,none,none
+gn:2744827,Werkendam,North Brabant,11204,town,0,0,50,0,none,none
+gn:2744839,Wemeldinge,Zeeland,2855,village,0,0,50,0,none,none
+gn:2744859,Wellerlooi,Limburg,1225,village,0,0,50,0,none,none
+gn:2744865,Well,Limburg,2500,village,0,0,50,0,none,none
+gn:2744869,Welberg,North Brabant,1410,village,0,0,50,0,none,none
+gn:2744871,Wekerom,Gelderland,2540,village,0,0,50,0,none,none
+gn:2744875,Weiteveen,Drenthe,1510,village,0,0,50,0,none,none
+gn:2744885,Weijpoort,South Holland,1370,village,0,0,50,0,none,none
+gn:2744896,Wehl,Gelderland,7035,village,0,0,50,0,none,none
+gn:2744904,Weesp,North Holland,17802,town,0,0,50,0,none,none
+gn:2744911,Weert,Limburg,48662,town,0,0,50,0,none,none
+gn:2744919,Weerestein,South Holland,1105,village,0,0,50,0,none,none
+gn:2744950,Waubach,Limburg,2910,village,0,0,50,0,none,none
+gn:2744982,Waterakkers,North Holland,2805,village,0,0,50,0,none,none
+gn:2744991,Wassenaar,South Holland,25353,town,0,0,50,0,none,none
+gn:2744994,Waspik,North Brabant,5120,village,0,0,50,0,none,none
+gn:2745003,Warnsveld,Gelderland,9200,village,0,0,50,0,none,none
+gn:2745012,Warmond,South Holland,4275,village,0,0,50,0,none,none
+gn:2745014,Warmenhuizen,North Holland,6495,village,0,0,50,0,none,none
+gn:2745018,Warga,Friesland,1560,village,0,0,50,0,none,none
+gn:2745024,Warffum,Groningen,1950,village,0,0,50,0,none,none
+gn:2745037,Wapenveld,Gelderland,3995,village,0,0,50,0,none,none
+gn:2745043,Wanssum,Limburg,1905,village,0,0,50,0,none,none
+gn:2745046,Wanroij,North Brabant,2340,village,0,0,50,0,none,none
+gn:2745088,Wageningen,Gelderland,35433,town,0,0,50,0,none,none
+gn:2745090,Wagenborgen,Groningen,1695,village,0,0,50,0,none,none
+gn:2745091,Wagenberg,North Brabant,1905,village,0,0,50,0,none,none
+gn:2745096,Waddinxveen,South Holland,25338,town,0,0,50,0,none,none
+gn:2745105,Waarland,North Holland,2695,village,0,0,50,0,none,none
+gn:2745113,Waarder,South Holland,1330,village,0,0,50,0,none,none
+gn:2745116,Waardenburg,Gelderland,1740,village,0,0,50,0,none,none
+gn:2745118,Waarde,Zeeland,1080,village,0,0,50,0,none,none
+gn:2745123,Waalwijk,North Brabant,45610,town,0,0,50,0,none,none
+gn:2745127,Waalre,North Brabant,6445,village,0,0,50,0,none,none
+gn:2745143,Vuren,Gelderland,1880,village,0,0,50,0,none,none
+gn:2745154,Vught,North Brabant,25043,town,0,0,50,0,none,none
+gn:2745169,Vroomshoop,Overijssel,8480,village,0,0,50,0,none,none
+gn:2745182,Vriezenveen,Overijssel,12310,town,0,0,50,0,none,none
+gn:2745189,Vries,Drenthe,3915,village,0,0,50,0,none,none
+gn:2745190,Vrieheide,Limburg,1500,village,0,0,50,0,none,none
+gn:2745193,Vreewijk,South Holland,13745,town,0,0,50,0,none,none
+gn:2745195,Vreeswijk,Utrecht,3460,village,0,0,50,0,none,none
+gn:2745207,Vredenburg,Gelderland,4370,village,0,0,50,0,none,none
+gn:2745252,Vorstenbosch,North Brabant,1630,village,0,0,50,0,none,none
+gn:2745258,Vorden,Gelderland,4900,village,0,0,50,0,none,none
+gn:2745271,Voorthuizen,Gelderland,9710,village,0,0,50,0,none,none
+gn:2745297,Voorst,Gelderland,1505,village,0,0,50,0,none,none
+gn:2745301,Voorschoten,South Holland,22468,town,0,0,50,0,none,none
+gn:2745311,Voorhout,South Holland,4670,village,0,0,50,0,none,none
+gn:2745321,Voorburg,South Holland,38000,town,0,0,50,0,none,none
+gn:2745333,Vollenhove,Overijssel,3955,village,0,0,50,0,none,none
+gn:2745338,Volkel,North Brabant,3560,village,0,0,50,0,none,none
+gn:2745340,Volendam,North Holland,22000,town,0,0,50,0,none,none
+gn:2745343,Voldijn,North Brabant,2785,village,0,0,50,0,none,none
+gn:2745351,Vogelwijk,South Holland,5155,village,0,0,50,0,none,none
+gn:2745360,Vogelenzang,North Holland,2160,village,0,0,50,0,none,none
+gn:2745369,Voerendaal,Limburg,3035,village,0,0,50,0,none,none
+gn:2745373,Vlokhoven,North Brabant,3570,village,0,0,50,0,none,none
+gn:2745382,Vlodrop,Limburg,1860,village,0,0,50,0,none,none
+gn:2745392,Vlissingen,Zeeland,45273,town,0,0,50,0,none,none
+gn:2745399,Vlietwijk,South Holland,3745,village,0,0,50,0,none,none
+gn:2745414,Vlierden,North Brabant,1115,village,0,0,50,0,none,none
+gn:2745428,Vliedberg,North Brabant,4445,village,0,0,50,0,none,none
+gn:2745431,Vleuten,Utrecht,6945,village,0,0,50,0,none,none
+gn:2745449,Vledder,Drenthe,1815,village,0,0,50,0,none,none
+gn:2745461,Vlagtwedde,Groningen,1955,village,0,0,50,0,none,none
+gn:2745467,Vlaardingen,South Holland,73798,town,0,0,50,0,none,none
+gn:2745493,Vinkeveen,Utrecht,2340,village,0,0,50,0,none,none
+gn:2745522,Vijlen,Limburg,1290,village,0,0,50,0,none,none
+gn:2745528,Vijfhuizen,North Holland,4385,village,0,0,50,0,none,none
+gn:2745547,Vierpolders,South Holland,1215,village,0,0,50,0,none,none
+gn:2745580,Vianen,Utrecht,19931,town,0,0,50,0,none,none
+gn:2745589,Vessem,North Brabant,2220,village,0,0,50,0,none,none
+gn:2745634,Venray,Limburg,39047,town,0,0,50,0,none,none
+gn:2745641,Venlo,Limburg,101988,city,0,0,50,0,none,none
+gn:2745645,Venhuizen,North Holland,4290,village,0,0,50,0,none,none
+gn:2745646,Venhorst,North Brabant,1050,village,0,0,50,0,none,none
+gn:2745655,Ven,North Brabant,4430,village,0,0,50,0,none,none
+gn:2745667,Veltum,Limburg,3765,village,0,0,50,0,none,none
+gn:2745673,Velsen-Zuid,North Holland,3885,village,0,0,50,0,none,none
+gn:2745674,Velsen-Noord,North Holland,15340,town,0,0,50,0,none,none
+gn:2745677,Velp,Gelderland,17669,town,0,0,50,0,none,none
+gn:2745700,Veldhuizen,Gelderland,14585,town,0,0,50,0,none,none
+gn:2745702,Veldhuizen,Utrecht,9460,village,0,0,50,0,none,none
+gn:2745706,Veldhoven,North Brabant,5340,village,0,0,50,0,none,none
+gn:2745717,Velden,Limburg,5535,village,0,0,50,0,none,none
+gn:2745726,Veghel,North Brabant,25352,town,0,0,50,0,none,none
+gn:2745739,Veere,Zeeland,1640,village,0,0,50,0,none,none
+gn:2745743,Feanwâlden,Friesland,3440,village,0,0,50,0,none,none
+gn:2745753,Veenoord,Drenthe,2175,village,0,0,50,0,none,none
+gn:2745774,Veenendaal,Utrecht,61271,town,0,0,50,0,none,none
+gn:2745783,Veendam,Groningen,28155,town,0,0,50,0,none,none
+gn:2745784,Veen,North Brabant,2991,village,0,0,50,0,none,none
+gn:2745800,Varsseveld,Gelderland,5450,village,0,0,50,0,none,none
+gn:2745842,Valthermond,Drenthe,3385,village,0,0,50,0,none,none
+gn:2745846,Valthe,Drenthe,1095,village,0,0,50,0,none,none
+gn:2745860,Valkenswaard,North Brabant,31071,town,0,0,50,0,none,none
+gn:2745872,Valkenburg,South Holland,3925,village,0,0,50,0,none,none
+gn:2745874,Valkenburg,Limburg,3400,village,0,0,50,0,none,none
+gn:2745877,Valendries,Gelderland,2000,village,0,0,50,0,none,none
+gn:2745885,Valburg,Gelderland,1660,village,0,0,50,0,none,none
+gn:2745892,Vaassen,Gelderland,12719,town,0,0,50,0,none,none
+gn:2745896,Vaartbroek,North Brabant,5200,village,0,0,50,0,none,none
+gn:2745906,Vaals,Limburg,6970,village,0,0,50,0,none,none
+gn:2745912,Utrecht,Utrecht,376435,city,0,0,50,0,none,none
+gn:2745918,Usquert,Groningen,1275,village,0,0,50,0,none,none
+gn:2745924,Ursem,North Holland,3010,village,0,0,50,0,none,none
+gn:2745926,Urmond,Limburg,3560,village,0,0,50,0,none,none
+gn:2745932,Urk,Flevoland,22173,town,0,0,50,0,none,none
+gn:2745936,Ureterp,Friesland,3810,village,0,0,50,0,none,none
+gn:2745940,Ulvenhout,North Brabant,4520,village,0,0,50,0,none,none
+gn:2745944,Ulrum,Groningen,1310,village,0,0,50,0,none,none
+gn:2745953,Ulft,Gelderland,10440,town,0,0,50,0,none,none
+gn:2745955,Ulestraten,Limburg,2595,village,0,0,50,0,none,none
+gn:2745968,Uithuizermeeden,Groningen,2775,village,0,0,50,0,none,none
+gn:2745970,Uithuizen,Groningen,4935,village,0,0,50,0,none,none
+gn:2745973,Uithoorn,North Holland,28434,town,0,0,50,0,none,none
+gn:2745978,Uitgeest,North Holland,13489,town,0,0,50,0,none,none
+gn:2745997,Ugchelen,Gelderland,3475,village,0,0,50,0,none,none
+gn:2746000,Uffelte,Drenthe,1235,village,0,0,50,0,none,none
+gn:2746003,Udenhout,North Brabant,7650,village,0,0,50,0,none,none
+gn:2746005,Uden,North Brabant,34601,town,0,0,50,0,none,none
+gn:2746009,Uddel,Gelderland,1865,village,0,0,50,0,none,none
+gn:2746014,Ubachsberg,Limburg,1420,village,0,0,50,0,none,none
+gn:2746023,Tzummarum,Friesland,1205,village,0,0,50,0,none,none
+gn:2746024,Tzum,Friesland,1115,village,0,0,50,0,none,none
+gn:2746031,'t Zand,North Holland,2775,village,0,0,50,0,none,none
+gn:2746038,Tynaarlo,Drenthe,1530,village,0,0,50,0,none,none
+gn:2746048,Twisk,North Holland,1045,village,0,0,50,0,none,none
+gn:2746051,Twijzelerheide,Friesland,1580,village,0,0,50,0,none,none
+gn:2746052,Twijzel,Friesland,1020,village,0,0,50,0,none,none
+gn:2746060,Twello,Gelderland,13500,town,0,0,50,0,none,none
+gn:2746062,Twekkelerveld,Overijssel,4395,village,0,0,50,0,none,none
+gn:2746075,Tweede Exloërmond,Drenthe,2365,village,0,0,50,0,none,none
+gn:2746093,t Veld,North Holland,2275,village,0,0,50,0,none,none
+gn:2746120,Tuk,Overijssel,1615,village,0,0,50,0,none,none
+gn:2746121,Tuitjenhorn,North Holland,3865,village,0,0,50,0,none,none
+gn:2746125,Tuindorp,South Holland,1040,village,0,0,50,0,none,none
+gn:2746131,Tuikwerd,Groningen,3005,village,0,0,50,0,none,none
+gn:2746133,Tubbergen,Overijssel,20334,town,0,0,50,0,none,none
+gn:2746162,Tricht,Gelderland,1850,village,0,0,50,0,none,none
+gn:2746215,Tongelre,North Brabant,19680,town,0,0,50,0,none,none
+gn:2746226,Tollebeek,Flevoland,2455,village,0,0,50,0,none,none
+gn:2746228,Tolkamer,Gelderland,2430,village,0,0,50,0,none,none
+gn:2746247,t Loo,Gelderland,1330,village,0,0,50,0,none,none
+gn:2746282,Tivoli,North Brabant,1495,village,0,0,50,0,none,none
+gn:2746286,Tinga,Friesland,2120,village,0,0,50,0,none,none
+gn:2746301,Tilburg,North Brabant,221947,city,0,0,50,0,none,none
+gn:2746304,Tijnje,Friesland,1120,village,0,0,50,0,none,none
+gn:2746311,Tytsjerk,Friesland,1400,village,0,0,50,0,none,none
+gn:2746314,Tienray,Limburg,1040,village,0,0,50,0,none,none
+gn:2746331,Tiel,Gelderland,40702,town,0,0,50,0,none,none
+gn:2746342,Thorn,Limburg,2295,village,0,0,50,0,none,none
+gn:2746351,Tholen,Zeeland,7475,village,0,0,50,0,none,none
+gn:2746354,'t Hofke,North Brabant,3475,village,0,0,50,0,none,none
+gn:2746367,Theereheide,North Brabant,4045,village,0,0,50,0,none,none
+gn:2746371,t Harde,Gelderland,6685,village,0,0,50,0,none,none
+gn:2746389,Teteringen,North Brabant,7230,village,0,0,50,0,none,none
+gn:2746395,Terwolde,Gelderland,1120,village,0,0,50,0,none,none
+gn:2746400,Terwinselen,Limburg,3820,village,0,0,50,0,none,none
+gn:2746407,Terschuur,Gelderland,1480,village,0,0,50,0,none,none
+gn:2746420,Terneuzen,Zeeland,27930,town,0,0,50,0,none,none
+gn:2746424,Ternaard,Friesland,1165,village,0,0,50,0,none,none
+gn:2746456,Terheijden,North Brabant,5910,village,0,0,50,0,none,none
+gn:2746464,Terbregge,South Holland,3525,village,0,0,50,0,none,none
+gn:2746468,Terborg,Gelderland,4425,village,0,0,50,0,none,none
+gn:2746475,Ter Apel,Groningen,3880,village,0,0,50,0,none,none
+gn:2746478,Ter Aar,South Holland,9630,village,0,0,50,0,none,none
+gn:2746491,Ten Boer,Groningen,4355,village,0,0,50,0,none,none
+gn:2746504,Tegelen,Limburg,20190,town,0,0,50,0,none,none
+gn:2746540,Swifterbant,Flevoland,6475,village,0,0,50,0,none,none
+gn:2746558,Surhuisterveen,Friesland,5550,village,0,0,50,0,none,none
+gn:2746600,Strijp,South Holland,3955,village,0,0,50,0,none,none
+gn:2746609,Strijen,South Holland,9371,village,0,0,50,0,none,none
+gn:2746631,Stramproy,Limburg,4510,village,0,0,50,0,none,none
+gn:2746661,Stompetoren,North Holland,2090,village,0,0,50,0,none,none
+gn:2746665,Stolwijk,South Holland,3730,village,0,0,50,0,none,none
+gn:2746705,Stiens,Friesland,7300,village,0,0,50,0,none,none
+gn:2746735,Stepekolk,North Brabant,1995,village,0,0,50,0,none,none
+gn:2746747,Stein,South Holland,1095,village,0,0,50,0,none,none
+gn:2746748,Stein,Limburg,11290,town,0,0,50,0,none,none
+gn:2746751,Steyl,Limburg,3695,village,0,0,50,0,none,none
+gn:2746753,Stegeslag,Gelderland,3145,village,0,0,50,0,none,none
+gn:2746761,Steenwijkerwold,Overijssel,1720,village,0,0,50,0,none,none
+gn:2746766,Steenwijk,Overijssel,17138,town,0,0,50,0,none,none
+gn:2746773,Steensel,North Brabant,1280,village,0,0,50,0,none,none
+gn:2746794,Steenderen,Gelderland,1950,village,0,0,50,0,none,none
+gn:2746804,Steenbergen,North Brabant,23582,town,0,0,50,0,none,none
+gn:2746823,Stavenisse,Zeeland,1505,village,0,0,50,0,none,none
+gn:2746826,Statenkwartier,South Holland,9300,village,0,0,50,0,none,none
+gn:2746839,Staphorst,Overijssel,15765,town,0,0,50,0,none,none
+gn:2746845,Standdaarbuiten,North Brabant,1930,village,0,0,50,0,none,none
+gn:2746846,Stampersgat,North Brabant,1155,village,0,0,50,0,none,none
+gn:2746860,Stadskanaal,Groningen,20000,town,0,0,50,0,none,none
+gn:2746862,Stadsfenne,Friesland,3060,village,0,0,50,0,none,none
+gn:2746870,Stadbroek,Limburg,2525,village,0,0,50,0,none,none
+gn:2746886,Sprundel,North Brabant,3625,village,0,0,50,0,none,none
+gn:2746905,Spoorwijk,South Holland,4255,village,0,0,50,0,none,none
+gn:2746932,Spijkenisse,South Holland,74988,town,0,0,50,0,none,none
+gn:2746935,Spijk,Groningen,1220,village,0,0,50,0,none,none
+gn:2746943,Spierdijk,North Holland,1600,village,0,0,50,0,none,none
+gn:2746956,Spekholzerheide,Limburg,3175,village,0,0,50,0,none,none
+gn:2746964,Spaubeek,Limburg,3360,village,0,0,50,0,none,none
+gn:2746975,Spangen,South Holland,10285,town,0,0,50,0,none,none
+gn:2746980,Spanbroek,North Holland,5005,village,0,0,50,0,none,none
+gn:2746981,Spakenburg,Utrecht,4375,village,0,0,50,0,none,none
+gn:2746986,Spaarndam,North Holland,3560,village,0,0,50,0,none,none
+gn:2747010,Son,North Brabant,4930,village,0,0,50,0,none,none
+gn:2747019,Someren-Eind,North Brabant,2725,village,0,0,50,0,none,none
+gn:2747021,Someren,North Brabant,10690,town,0,0,50,0,none,none
+gn:2747030,Soesterberg,Utrecht,7535,village,0,0,50,0,none,none
+gn:2747032,Soestdijk,Utrecht,4780,village,0,0,50,0,none,none
+gn:2747034,Soest,Utrecht,45021,town,0,0,50,0,none,none
+gn:2747037,Soerendonk,North Brabant,1660,village,0,0,50,0,none,none
+gn:2747063,Sneek,Friesland,32811,town,0,0,50,0,none,none
+gn:2747109,Sluiskil,Zeeland,2411,village,0,0,50,0,none,none
+gn:2747117,Sluis,Zeeland,1935,village,0,0,50,0,none,none
+gn:2747136,Slootdorp,North Holland,2255,village,0,0,50,0,none,none
+gn:2747143,Slochteren,Groningen,2055,village,0,0,50,0,none,none
+gn:2747151,Slikkerveer,South Holland,8750,village,0,0,50,0,none,none
+gn:2747169,Sliedrecht,South Holland,23854,town,0,0,50,0,none,none
+gn:2747178,Sleeuwijk,North Brabant,5859,village,0,0,50,0,none,none
+gn:2747182,Sleen,Drenthe,2200,village,0,0,50,0,none,none
+gn:2747203,Sittard,Limburg,48400,town,0,0,50,0,none,none
+gn:2747210,Sint Willebrord,North Brabant,8655,village,0,0,50,0,none,none
+gn:2747221,Sint Philipsland,Zeeland,2095,village,0,0,50,0,none,none
+gn:2747225,Sint Pancras,North Holland,5870,village,0,0,50,0,none,none
+gn:2747227,Sint-Oedenrode,North Brabant,16931,town,0,0,50,0,none,none
+gn:2747229,Sint Odiliënberg,Limburg,2810,village,0,0,50,0,none,none
+gn:2747231,Sint Nicolaasga,Friesland,3285,village,0,0,50,0,none,none
+gn:2747234,Sint-Michielsgestel,North Brabant,2580,village,0,0,50,0,none,none
+gn:2747244,Sint Maarten,North Holland,1955,village,0,0,50,0,none,none
+gn:2747248,Sint Laurens,Zeeland,1005,village,0,0,50,0,none,none
+gn:2747256,Sint Joost,Limburg,1310,village,0,0,50,0,none,none
+gn:2747257,Sintjohannesga,Friesland,1290,village,0,0,50,0,none,none
+gn:2747262,Sint Jansklooster,Overijssel,1190,village,0,0,50,0,none,none
+gn:2747270,Sint Jacobiparochie,Friesland,1380,village,0,0,50,0,none,none
+gn:2747290,Sint Anthonis,North Brabant,3340,village,0,0,50,0,none,none
+gn:2747297,Sint Annaparochie,Friesland,3935,village,0,0,50,0,none,none
+gn:2747312,Simpelveld,Limburg,2405,village,0,0,50,0,none,none
+gn:2747322,Silvolde,Gelderland,4850,village,0,0,50,0,none,none
+gn:2747343,Siddeburen,Groningen,2910,village,0,0,50,0,none,none
+gn:2747348,Sibbe,Limburg,1015,village,0,0,50,0,none,none
+gn:2747351,'s-Hertogenbosch,North Brabant,160783,city,0,0,50,0,none,none
+gn:2747357,'s-Heerenberg,Gelderland,4720,village,0,0,50,0,none,none
+gn:2747364,'s-Gravenzande,South Holland,19190,town,0,0,50,0,none,none
+gn:2747371,'s Gravenmoer,North Brabant,2315,village,0,0,50,0,none,none
+gn:2747373,The Hague,South Holland,474292,city,0,0,50,0,none,none
+gn:2747375,s-Gravendeel,South Holland,9000,village,0,0,50,0,none,none
+gn:2747377,`s-Graveland,North Holland,1390,village,0,0,50,0,none,none
+gn:2747380,Sexbierum,Friesland,1530,village,0,0,50,0,none,none
+gn:2747382,Sevenum,Limburg,5035,village,0,0,50,0,none,none
+gn:2747386,Serooskerke,Zeeland,1605,village,0,0,50,0,none,none
+gn:2747392,Selwerd,Groningen,6525,village,0,0,50,0,none,none
+gn:2747400,Sellingen,Groningen,1880,village,0,0,50,0,none,none
+gn:2747425,Schutsboom,North Brabant,3490,village,0,0,50,0,none,none
+gn:2747492,Schoorl,North Holland,6195,village,0,0,50,0,none,none
+gn:2747499,Schoonrewoerd,Utrecht,1595,village,0,0,50,0,none,none
+gn:2747501,Schoonoord,Drenthe,2030,village,0,0,50,0,none,none
+gn:2747506,Schoonhoven,South Holland,12352,town,0,0,50,0,none,none
+gn:2747515,Schoonebeek,Drenthe,3845,village,0,0,50,0,none,none
+gn:2747517,Schoondijke,Zeeland,1280,village,0,0,50,0,none,none
+gn:2747540,Schipluiden,South Holland,3635,village,0,0,50,0,none,none
+gn:2747550,Schinveld,Limburg,4685,village,0,0,50,0,none,none
+gn:2747553,Schinnen,Limburg,1550,village,0,0,50,0,none,none
+gn:2747561,Schimmert,Limburg,2310,village,0,0,50,0,none,none
+gn:2747570,Schildwolde,Groningen,1485,village,0,0,50,0,none,none
+gn:2747579,Schilberg,Limburg,1960,village,0,0,50,0,none,none
+gn:2747584,Schijndel,North Brabant,23239,town,0,0,50,0,none,none
+gn:2747591,Schiermonnikoog,Friesland,972,village,0,0,50,0,none,none
+gn:2747596,Schiedam,South Holland,75438,town,0,0,50,0,none,none
+gn:2747597,Schiebroek,South Holland,16305,town,0,0,50,0,none,none
+gn:2747599,Scheveningen,South Holland,23000,town,0,0,50,0,none,none
+gn:2747607,Scherpenzeel,Gelderland,8820,village,0,0,50,0,none,none
+gn:2747610,Scherpenisse,Zeeland,1605,village,0,0,50,0,none,none
+gn:2747617,Schermerhorn,North Holland,1275,village,0,0,50,0,none,none
+gn:2747636,Schelluinen,South Holland,1255,village,0,0,50,0,none,none
+gn:2747661,Scheemda,Groningen,2395,village,0,0,50,0,none,none
+gn:2747671,Scharnegoutum,Friesland,1540,village,0,0,50,0,none,none
+gn:2747673,Scharn,Limburg,6540,village,0,0,50,0,none,none
+gn:2747680,Scharendijke,Zeeland,1105,village,0,0,50,0,none,none
+gn:2747704,Schalkhaar,Overijssel,4610,village,0,0,50,0,none,none
+gn:2747713,Schaijk,North Brabant,5970,village,0,0,50,0,none,none
+gn:2747715,Schagerbrug,North Holland,2275,village,0,0,50,0,none,none
+gn:2747720,Schagen,North Holland,20105,town,0,0,50,0,none,none
+gn:2747749,Sas van Gent,Zeeland,3856,village,0,0,50,0,none,none
+gn:2747751,Sassenheim,South Holland,15510,town,0,0,50,0,none,none
+gn:2747758,Sappemeer,Groningen,8298,village,0,0,50,0,none,none
+gn:2747759,Santpoort-Zuid,North Holland,3390,village,0,0,50,0,none,none
+gn:2747760,Santpoort-Noord,North Holland,7260,village,0,0,50,0,none,none
+gn:2747792,Ruurlo,Gelderland,5940,village,0,0,50,0,none,none
+gn:2747796,Rutten,Flevoland,1655,village,0,0,50,0,none,none
+gn:2747828,Ruinerwold,Drenthe,2485,village,0,0,50,0,none,none
+gn:2747835,Ruinen,Drenthe,2610,village,0,0,50,0,none,none
+gn:2747852,Rugge,South Holland,2495,village,0,0,50,0,none,none
+gn:2747858,Rucphen,North Brabant,3660,village,0,0,50,0,none,none
+gn:2747865,Rozendaal,Gelderland,1485,village,0,0,50,0,none,none
+gn:2747870,Rozenburg,South Holland,12420,town,0,0,50,0,none,none
+gn:2747886,Rottevalle,Friesland,1355,village,0,0,50,0,none,none
+nl-rotterdam,Rotterdam,South Holland,868135,large-city,0,0,50,0,none,none
+gn:2747900,Rothem,Limburg,1590,village,0,0,50,0,none,none
+gn:2747907,Rossum,Overijssel,1355,village,0,0,50,0,none,none
+gn:2747908,Rossum,Gelderland,2190,village,0,0,50,0,none,none
+gn:2747924,Roosteren,Limburg,1125,village,0,0,50,0,none,none
+gn:2747930,Roosendaal,North Brabant,77725,town,0,0,50,0,none,none
+gn:2747979,Rolde,Drenthe,3740,village,0,0,50,0,none,none
+gn:2748000,Roermond,Limburg,44975,town,0,0,50,0,none,none
+gn:2748006,Roelofarendsveen,South Holland,2710,village,0,0,50,0,none,none
+gn:2748026,Roden,Drenthe,7030,village,0,0,50,0,none,none
+gn:2748029,Rockanje,South Holland,1275,village,0,0,50,0,none,none
+gn:2748076,Rijswijk,South Holland,47299,town,0,0,50,0,none,none
+gn:2748078,Rijswijk,North Brabant,1862,village,0,0,50,0,none,none
+gn:2748083,Rijssen,Overijssel,27740,town,0,0,50,0,none,none
+gn:2748085,Rijsoord,South Holland,3045,village,0,0,50,0,none,none
+gn:2748086,Rijsenhout,North Holland,4400,village,0,0,50,0,none,none
+gn:2748091,Rijsbergen,North Brabant,4140,village,0,0,50,0,none,none
+gn:2748094,Rijpwetering,South Holland,1605,village,0,0,50,0,none,none
+gn:2748104,Rijnsburg,South Holland,7990,village,0,0,50,0,none,none
+gn:2748106,Rijnsaterwoude,South Holland,1130,village,0,0,50,0,none,none
+gn:2748130,Rijen,North Brabant,16230,town,0,0,50,0,none,none
+gn:2748150,Riethoven,North Brabant,2515,village,0,0,50,0,none,none
+gn:2748172,Ridderkerk,South Holland,45189,town,0,0,50,0,none,none
+gn:2748178,Rhoon,South Holland,18250,town,0,0,50,0,none,none
+gn:2748185,Rhenen,Utrecht,18061,town,0,0,50,0,none,none
+gn:2748201,Rheden,Gelderland,7400,village,0,0,50,0,none,none
+gn:2748208,Reuver,Limburg,6140,village,0,0,50,0,none,none
+gn:2748217,Reusel,North Brabant,7055,village,0,0,50,0,none,none
+gn:2748228,Renswoude,Utrecht,3420,village,0,0,50,0,none,none
+gn:2748236,Renkum,Gelderland,9421,village,0,0,50,0,none,none
+gn:2748240,Renesse,Zeeland,1095,village,0,0,50,0,none,none
+gn:2748280,Reeuwijk,South Holland,12817,town,0,0,50,0,none,none
+gn:2748286,Reek,North Brabant,1495,village,0,0,50,0,none,none
+gn:2748308,Ravenstein,North Brabant,1465,village,0,0,50,0,none,none
+gn:2748361,Raamsdonksveer,North Brabant,6590,village,0,0,50,0,none,none
+gn:2748363,Raamsdonk,North Brabant,1920,village,0,0,50,0,none,none
+gn:2748367,Raam,North Brabant,2965,village,0,0,50,0,none,none
+gn:2748371,Raalte,Overijssel,20015,town,0,0,50,0,none,none
+gn:2748377,Quirijnstok,North Brabant,3970,village,0,0,50,0,none,none
+gn:2748392,Putten,Gelderland,23168,town,0,0,50,0,none,none
+gn:2748397,Putte,North Brabant,3440,village,0,0,50,0,none,none
+gn:2748403,Puth,Limburg,1990,village,0,0,50,0,none,none
+gn:2748413,Purmerend,North Holland,80117,town,0,0,50,0,none,none
+gn:2748421,Puiflijk,Gelderland,1105,village,0,0,50,0,none,none
+gn:2748448,Prinsenbeek,North Brabant,10720,town,0,0,50,0,none,none
+gn:2748457,Princenhage,North Brabant,8535,village,0,0,50,0,none,none
+gn:2748474,Pottenberg,Limburg,2415,village,0,0,50,0,none,none
+gn:2748481,Posterholt,Limburg,3540,village,0,0,50,0,none,none
+gn:2748498,Poortvliet,Zeeland,1220,village,0,0,50,0,none,none
+gn:2748533,Poeldijk,South Holland,5800,village,0,0,50,0,none,none
+gn:2748591,Pijnacker,South Holland,18695,town,0,0,50,0,none,none
+gn:2748608,Piershil,South Holland,1410,village,0,0,50,0,none,none
+gn:2748611,Pierik,Overijssel,2180,village,0,0,50,0,none,none
+gn:2748631,Petten,North Holland,1570,village,0,0,50,0,none,none
+gn:2748643,Pesse,Drenthe,1840,village,0,0,50,0,none,none
+gn:2748647,Pernis,South Holland,4785,village,0,0,50,0,none,none
+gn:2748657,Pendrecht,South Holland,11885,town,0,0,50,0,none,none
+gn:2748673,Peize,Drenthe,4295,village,0,0,50,0,none,none
+gn:2748675,Peij,Limburg,2935,village,0,0,50,0,none,none
+gn:2748686,Peelo,Drenthe,6635,village,0,0,50,0,none,none
+gn:2748700,Pathmos,Overijssel,2065,village,0,0,50,0,none,none
+gn:2748702,Paterswolde,Drenthe,3655,village,0,0,50,0,none,none
+gn:2748710,Passart,Limburg,2010,village,0,0,50,0,none,none
+gn:2748725,Papenveer,South Holland,1135,village,0,0,50,0,none,none
+gn:2748729,Papendrecht,South Holland,31621,town,0,0,50,0,none,none
+gn:2748737,Panningen,Limburg,6710,village,0,0,50,0,none,none
+gn:2748740,Pannerden,Gelderland,2085,village,0,0,50,0,none,none
+gn:2748760,Palenstein,South Holland,6000,village,0,0,50,0,none,none
+gn:2748813,Overveen,North Holland,4465,village,0,0,50,0,none,none
+gn:2748826,Overschie,South Holland,6685,village,0,0,50,0,none,none
+gn:2748833,Overloon,North Brabant,3626,village,0,0,50,0,none,none
+gn:2748839,Overhoven,Limburg,3450,village,0,0,50,0,none,none
+gn:2748864,Overberg,Utrecht,1379,village,0,0,50,0,none,none
+gn:2748868,Overasselt,Gelderland,1715,village,0,0,50,0,none,none
+gn:2748891,Oud-Vossemeer,Zeeland,2400,village,0,0,50,0,none,none
+gn:2748917,Oudorp,North Holland,13995,town,0,0,50,0,none,none
+gn:2748926,Oud-Loosdrecht,North Holland,2035,village,0,0,50,0,none,none
+gn:2748943,Oudkarspel,North Holland,3845,village,0,0,50,0,none,none
+gn:2748956,Oud Gastel,North Brabant,5305,village,0,0,50,0,none,none
+gn:2748968,Oude Wetering,South Holland,3055,village,0,0,50,0,none,none
+gn:2748979,Oudewater,Utrecht,9836,village,0,0,50,0,none,none
+gn:2749007,Oudeschoot,Friesland,1590,village,0,0,50,0,none,none
+gn:2749009,Oudeschild,North Holland,1170,village,0,0,50,0,none,none
+gn:2749016,Ouderkerk aan den IJssel,South Holland,4025,village,0,0,50,0,none,none
+gn:2749017,Ouderkerk aan de Amstel,North Holland,8860,village,0,0,50,0,none,none
+gn:2749034,Oude Pekela,Groningen,7580,village,0,0,50,0,none,none
+gn:2749053,Oudenbosch,North Brabant,13380,town,0,0,50,0,none,none
+gn:2749061,Oudemirdum,Friesland,1335,village,0,0,50,0,none,none
+gn:2749120,Oudehaske,Friesland,1980,village,0,0,50,0,none,none
+gn:2749136,Oudega,Friesland,1715,village,0,0,50,0,none,none
+gn:2749164,Ouddorp,South Holland,5930,village,0,0,50,0,none,none
+gn:2749170,Oud-Caberg,Limburg,1890,village,0,0,50,0,none,none
+gn:2749182,Oud-Beijerland,South Holland,23569,town,0,0,50,0,none,none
+gn:2749197,Ottersum,Limburg,1585,village,0,0,50,0,none,none
+gn:2749203,Otterlo,Gelderland,2380,village,0,0,50,0,none,none
+gn:2749205,Othene,Zeeland,3325,village,0,0,50,0,none,none
+gn:2749223,Ossendrecht,North Brabant,3970,village,0,0,50,0,none,none
+gn:2749234,Oss,North Brabant,76430,town,0,0,50,0,none,none
+gn:2749235,Ospel,Limburg,2505,village,0,0,50,0,none,none
+gn:2749242,Osdorp,North Holland,34290,town,0,0,50,0,none,none
+gn:2749248,Orthen,North Brabant,1515,village,0,0,50,0,none,none
+gn:2749250,Orden,Gelderland,6385,village,0,0,50,0,none,none
+gn:2749251,Oranjewoud,Friesland,1580,village,0,0,50,0,none,none
+gn:2749281,Opperdoes,North Holland,2035,village,0,0,50,0,none,none
+gn:2749284,Oppenhuizen,Friesland,1060,village,0,0,50,0,none,none
+gn:2749286,Opmeer,North Holland,2405,village,0,0,50,0,none,none
+gn:2749290,Opijnen,Gelderland,1135,village,0,0,50,0,none,none
+gn:2749293,Ophoven,Limburg,4105,village,0,0,50,0,none,none
+gn:2749296,Opheusden,Gelderland,5460,village,0,0,50,0,none,none
+gn:2749298,Ophemert,Gelderland,1425,village,0,0,50,0,none,none
+gn:2749302,Opende,Groningen,2930,village,0,0,50,0,none,none
+gn:2749304,Opeinde,Friesland,1630,village,0,0,50,0,none,none
+gn:2749315,Ooyerhoek,Gelderland,2305,village,0,0,50,0,none,none
+gn:2749317,Ootmarsum,Overijssel,4450,village,0,0,50,0,none,none
+gn:2749320,Oostzaan,North Holland,9778,village,0,0,50,0,none,none
+gn:2749330,Oostvoorne,South Holland,4635,village,0,0,50,0,none,none
+gn:2749334,Oost-Vlieland,Friesland,1202,village,0,0,50,0,none,none
+gn:2749341,Oost-Souburg,Zeeland,10370,town,0,0,50,0,none,none
+gn:2749344,Oostrum,Limburg,2375,village,0,0,50,0,none,none
+gn:2749362,Oostkapelle,Zeeland,1505,village,0,0,50,0,none,none
+gn:2749366,Oosthuizen,North Holland,3775,village,0,0,50,0,none,none
+gn:2749383,Oosterzij,North Holland,2095,village,0,0,50,0,none,none
+gn:2749391,Oosterwolde,Friesland,9245,village,0,0,50,0,none,none
+gn:2749423,Oosterpark,Groningen,10550,town,0,0,50,0,none,none
+gn:2749430,Eastermar,Friesland,1310,village,0,0,50,0,none,none
+gn:2749431,Oostermeenthe,Overijssel,3075,village,0,0,50,0,none,none
+gn:2749440,Oosterland,Zeeland,2060,village,0,0,50,0,none,none
+gn:2749449,Oosterhout,Gelderland,2340,village,0,0,50,0,none,none
+gn:2749450,Oosterhout,North Brabant,53107,town,0,0,50,0,none,none
+gn:2749451,Oosterhoogebrug,Groningen,2210,village,0,0,50,0,none,none
+gn:2749453,Oosterholt,Overijssel,1175,village,0,0,50,0,none,none
+gn:2749461,Oosterhesselen,Drenthe,1690,village,0,0,50,0,none,none
+gn:2749496,Oosterblokker,North Holland,1595,village,0,0,50,0,none,none
+gn:2749503,Oosterbeek,Gelderland,11138,town,0,0,50,0,none,none
+gn:2749506,Oostendorp,Gelderland,2985,village,0,0,50,0,none,none
+gn:2749513,Oostelbeers,North Brabant,1115,village,0,0,50,0,none,none
+gn:2749525,Oosteinde,North Holland,10495,town,0,0,50,0,none,none
+gn:2749528,Oosteind,North Brabant,1005,village,0,0,50,0,none,none
+gn:2749533,Oostdorp,South Holland,1900,village,0,0,50,0,none,none
+gn:2749541,Oostburg,Zeeland,4410,village,0,0,50,0,none,none
+gn:2749553,Oosseld,Gelderland,2830,village,0,0,50,0,none,none
+gn:2749567,Ooy,Gelderland,1070,village,0,0,50,0,none,none
+gn:2749569,Ooij,Gelderland,2090,village,0,0,50,0,none,none
+gn:2749573,Oog in Al,Utrecht,4235,village,0,0,50,0,none,none
+gn:2749577,Onstwedde,Groningen,1935,village,0,0,50,0,none,none
+gn:2749599,Onderdijk,North Holland,1885,village,0,0,50,0,none,none
+gn:2749604,Ommoord,South Holland,25150,town,0,0,50,0,none,none
+gn:2749613,Ommen,Overijssel,11820,town,0,0,50,0,none,none
+gn:2749615,Ommelanderwijk,Groningen,1055,village,0,0,50,0,none,none
+gn:2749626,Olst,Overijssel,4780,village,0,0,50,0,none,none
+gn:2749644,Oldenzaal,Overijssel,31410,town,0,0,50,0,none,none
+gn:2749653,Oldemarkt,Overijssel,2435,village,0,0,50,0,none,none
+gn:2749660,Oldehove,Groningen,1330,village,0,0,50,0,none,none
+gn:2749668,Oldebroek,Gelderland,3275,village,0,0,50,0,none,none
+gn:2749669,Aldeboarn,Friesland,1525,village,0,0,50,0,none,none
+gn:2749671,Oldeberkoop,Friesland,1190,village,0,0,50,0,none,none
+gn:2749680,Oisterwijk,North Brabant,25980,town,0,0,50,0,none,none
+gn:2749683,Oirschot,North Brabant,10393,town,0,0,50,0,none,none
+gn:2749685,Oirsbeek,Limburg,3600,village,0,0,50,0,none,none
+gn:2749687,Oirlo,Limburg,1230,village,0,0,50,0,none,none
+gn:2749696,Offenbeek,Limburg,4660,village,0,0,50,0,none,none
+gn:2749703,Oerle,North Brabant,1990,village,0,0,50,0,none,none
+gn:2749708,Oentsjerk,Friesland,1965,village,0,0,50,0,none,none
+gn:2749723,Oegstgeest,South Holland,21149,town,0,0,50,0,none,none
+gn:2749734,Odoorn,Drenthe,1835,village,0,0,50,0,none,none
+gn:2749735,Odiliapeel,North Brabant,1390,village,0,0,50,0,none,none
+gn:2749736,Odijk,Utrecht,5480,village,0,0,50,0,none,none
+gn:2749741,Ochten,Gelderland,4185,village,0,0,50,0,none,none
+gn:2749742,Obergum,Groningen,1675,village,0,0,50,0,none,none
+gn:2749745,Obdam,North Holland,6095,village,0,0,50,0,none,none
+gn:2749748,Obbicht,Limburg,1895,village,0,0,50,0,none,none
+gn:2749753,Nuth,Limburg,4585,village,0,0,50,0,none,none
+gn:2749756,Nunspeet,Gelderland,19496,town,0,0,50,0,none,none
+gn:2749765,Numansdorp,South Holland,4280,village,0,0,50,0,none,none
+gn:2749772,Nuland,North Brabant,4554,village,0,0,50,0,none,none
+gn:2749780,Nuenen,North Brabant,23223,town,0,0,50,0,none,none
+gn:2749796,Norg,Drenthe,3290,village,0,0,50,0,none,none
+gn:2749800,Nootdorp,South Holland,19020,town,0,0,50,0,none,none
+gn:2749807,Noordwolde,Friesland,3605,village,0,0,50,0,none,none
+gn:2749811,Noordwijkerhout,South Holland,11875,town,0,0,50,0,none,none
+gn:2749812,Noordwijk-Binnen,South Holland,24363,town,0,0,50,0,none,none
+gn:2749835,Noord-Scharwoude,North Holland,6085,village,0,0,50,0,none,none
+gn:2749875,Noordhorn,Groningen,1375,village,0,0,50,0,none,none
+gn:2749881,Noord-Hofland,South Holland,5445,village,0,0,50,0,none,none
+gn:2749883,Noordhoek,North Brabant,1030,village,0,0,50,0,none,none
+gn:2749892,Noordgeest,North Brabant,3700,village,0,0,50,0,none,none
+gn:2749967,Noordeloos,South Holland,1560,village,0,0,50,0,none,none
+gn:2749976,Noordeinde,South Holland,1610,village,0,0,50,0,none,none
+gn:2749989,Noordbroek,Groningen,1665,village,0,0,50,0,none,none
+gn:2749992,Noardburgum,Friesland,2385,village,0,0,50,0,none,none
+gn:2749996,Noordbarge,Drenthe,1075,village,0,0,50,0,none,none
+gn:2750016,Nollen,North Holland,1540,village,0,0,50,0,none,none
+gn:2750031,Nistelrode,North Brabant,6090,village,0,0,50,0,none,none
+gn:2750035,Nispen,North Brabant,1245,village,0,0,50,0,none,none
+gn:2750039,Nijverdal,Overijssel,25000,town,0,0,50,0,none,none
+gn:2750047,Nijrees,Overijssel,2235,village,0,0,50,0,none,none
+gn:2750048,Nijnsel,North Brabant,1405,village,0,0,50,0,none,none
+gn:2750053,Nijmegen,Gelderland,177359,city,0,0,50,0,none,none
+gn:2750061,Nijkerkerveen,Gelderland,2905,village,0,0,50,0,none,none
+gn:2750065,Nijkerk,Gelderland,38335,town,0,0,50,0,none,none
+gn:2750086,Nijenheim,Utrecht,2680,village,0,0,50,0,none,none
+gn:2750114,Nieuw-Wehl,Gelderland,1300,village,0,0,50,0,none,none
+gn:2750117,Nieuw-Vossemeer,North Brabant,1975,village,0,0,50,0,none,none
+gn:2750121,Nieuw-Vennep,North Holland,31790,town,0,0,50,0,none,none
+gn:2750123,Nieuwveen,South Holland,1325,village,0,0,50,0,none,none
+gn:2750140,Nieuw-Roden,Drenthe,1300,village,0,0,50,0,none,none
+gn:2750146,Nieuwpoort,South Holland,1390,village,0,0,50,0,none,none
+gn:2750150,Nieuwoord,Overijssel,1265,village,0,0,50,0,none,none
+gn:2750154,Nieuwolda,Groningen,1110,village,0,0,50,0,none,none
+gn:2750155,Nieuw-Namen,Zeeland,1057,village,0,0,50,0,none,none
+gn:2750157,Nieuw-Lotbroek,Limburg,4691,village,0,0,50,0,none,none
+gn:2750158,Nieuw-Loosdrecht,North Holland,5970,village,0,0,50,0,none,none
+gn:2750163,Nieuw-Lekkerland,South Holland,9535,village,0,0,50,0,none,none
+gn:2750176,Nieuwland,Utrecht,1400,village,0,0,50,0,none,none
+gn:2750177,Nieuw- en Sint Joosland,Zeeland,1140,village,0,0,50,0,none,none
+gn:2750180,Nieuwkuijk,North Brabant,2140,village,0,0,50,0,none,none
+gn:2750187,Nieuwkoop,South Holland,1410,village,0,0,50,0,none,none
+gn:2750263,Nieuwerkerk aan den IJssel,South Holland,10000,town,0,0,50,0,none,none
+gn:2750264,Nieuwerkerk,Zeeland,2275,village,0,0,50,0,none,none
+gn:2750269,Nieuwerbrug aan den Rijn,South Holland,1790,village,0,0,50,0,none,none
+gn:2750272,Nieuwe Pekela,Groningen,3895,village,0,0,50,0,none,none
+gn:2750278,Nieuwe Niedorp,North Holland,3265,village,0,0,50,0,none,none
+gn:2750280,Nieuwenhoorn,South Holland,1130,village,0,0,50,0,none,none
+gn:2750285,Nieuwendijk,North Brabant,3659,village,0,0,50,0,none,none
+gn:2750310,Nieuwehorne,Friesland,1450,village,0,0,50,0,none,none
+gn:2750325,Nieuwegein,Utrecht,61489,town,0,0,50,0,none,none
+gn:2750355,Nieuwdorp,Limburg,2445,village,0,0,50,0,none,none
+gn:2750357,Nieuw-Dordrecht,Drenthe,1370,village,0,0,50,0,none,none
+gn:2750362,Nieuw-Buinen,Drenthe,4705,village,0,0,50,0,none,none
+gn:2750366,Nieuw-Bergen,Limburg,5270,village,0,0,50,0,none,none
+gn:2750371,Nieuw-Beijerland,South Holland,3510,village,0,0,50,0,none,none
+gn:2750375,Nieuw-Amsterdam,Drenthe,4730,village,0,0,50,0,none,none
+gn:2750390,Niekerk,Groningen,1390,village,0,0,50,0,none,none
+gn:2750398,Nibbixwoud,North Holland,2575,village,0,0,50,0,none,none
+gn:2750417,Nes,Friesland,1270,village,0,0,50,0,none,none
+gn:2750420,Nes,Friesland,1080,village,0,0,50,0,none,none
+gn:2750442,Neerkant,North Brabant,1325,village,0,0,50,0,none,none
+gn:2750452,Neerbeek,Limburg,2480,village,0,0,50,0,none,none
+gn:2750453,Andel,North Brabant,2535,village,0,0,50,0,none,none
+gn:2750460,Neede,Gelderland,7730,village,0,0,50,0,none,none
+gn:2750463,Nederwoud,Gelderland,1610,village,0,0,50,0,none,none
+gn:2750467,Nederweert,Limburg,7205,village,0,0,50,0,none,none
+gn:2750479,Nederhemert-Noord,Gelderland,1490,village,0,0,50,0,none,none
+gn:2750480,Nederhemert,Gelderland,1496,village,0,0,50,0,none,none
+gn:2750484,Neder-Hardinxveld,South Holland,5335,village,0,0,50,0,none,none
+gn:2750491,Neck,North Holland,1139,village,0,0,50,0,none,none
+gn:2750510,Nagele,Flevoland,1940,village,0,0,50,0,none,none
+gn:2750515,Naastenbest,North Brabant,3955,village,0,0,50,0,none,none
+gn:2750521,Naarden,North Holland,18520,town,0,0,50,0,none,none
+gn:2750523,Naaldwijk,South Holland,17753,town,0,0,50,0,none,none
+gn:2750527,Musselkanaal,Groningen,7350,village,0,0,50,0,none,none
+gn:2750539,Munstergeleen,Limburg,4580,village,0,0,50,0,none,none
+gn:2750567,Muiderberg,North Holland,1730,village,0,0,50,0,none,none
+gn:2750569,Muiden,North Holland,7325,village,0,0,50,0,none,none
+gn:2750621,Mook,Limburg,2715,village,0,0,50,0,none,none
+gn:2750624,Montfort,Limburg,2815,village,0,0,50,0,none,none
+gn:2750626,Montfoort,Utrecht,5500,village,0,0,50,0,none,none
+gn:2750630,Monster,South Holland,11580,town,0,0,50,0,none,none
+gn:2750641,Monnickendam,North Holland,2015,village,0,0,50,0,none,none
+gn:2750694,Molenhoek,North Brabant,3745,village,0,0,50,0,none,none
+gn:2750751,Moesel,Limburg,3675,village,0,0,50,0,none,none
+gn:2750769,Moerdijk,North Brabant,1030,village,0,0,50,0,none,none
+gn:2750790,Minnertsga,Friesland,1625,village,0,0,50,0,none,none
+gn:2750795,Milsbeek,Limburg,2055,village,0,0,50,0,none,none
+gn:2750802,Mill,North Brabant,6289,village,0,0,50,0,none,none
+gn:2750803,Milheeze,North Brabant,1400,village,0,0,50,0,none,none
+gn:2750810,Mijnsheerenland,South Holland,1775,village,0,0,50,0,none,none
+gn:2750815,Mijdrecht,Utrecht,15230,town,0,0,50,0,none,none
+gn:2750821,Mierlo,North Brabant,9405,village,0,0,50,0,none,none
+gn:2750829,Midwoud,North Holland,2500,village,0,0,50,0,none,none
+gn:2750832,Midwolda,Groningen,1885,village,0,0,50,0,none,none
+gn:2750835,Midsland,Friesland,1255,village,0,0,50,0,none,none
+gn:2750850,Middenmeer,North Holland,4690,village,0,0,50,0,none,none
+gn:2750861,Middenbeemster,North Holland,6070,village,0,0,50,0,none,none
+gn:2750868,Middelstum,Groningen,2105,village,0,0,50,0,none,none
+gn:2750869,Middelsluis,South Holland,1060,village,0,0,50,0,none,none
+gn:2750870,Middelrode,North Brabant,1465,village,0,0,50,0,none,none
+gn:2750884,Middelharnis,South Holland,17554,town,0,0,50,0,none,none
+gn:2750896,Middelburg,Zeeland,46485,town,0,0,50,0,none,none
+gn:2750903,Middelbeers,North Brabant,2715,village,0,0,50,0,none,none
+gn:2750921,Meteren,Gelderland,3855,village,0,0,50,0,none,none
+gn:2750932,Merum,Limburg,2145,village,0,0,50,0,none,none
+gn:2750933,Merselo,Limburg,1120,village,0,0,50,0,none,none
+gn:2750938,Merkelbeek,Limburg,1720,village,0,0,50,0,none,none
+gn:2750939,Merenwijk,South Holland,16500,town,0,0,50,0,none,none
+gn:2750947,Meppel,Drenthe,30697,town,0,0,50,0,none,none
+gn:2750965,Menaam,Friesland,2820,village,0,0,50,0,none,none
+gn:2750969,Melle,North Brabant,4225,village,0,0,50,0,none,none
+gn:2750974,Meliskerke,Zeeland,1225,village,0,0,50,0,none,none
+gn:2750978,Melick,Limburg,3650,village,0,0,50,0,none,none
+gn:2750979,Melderslo,Limburg,1175,village,0,0,50,0,none,none
+gn:2750982,Mekkelholt,Overijssel,2585,village,0,0,50,0,none,none
+gn:2750995,Meijel,Limburg,5180,village,0,0,50,0,none,none
+gn:2751002,Megen,North Brabant,1520,village,0,0,50,0,none,none
+gn:2751005,Meezenbroek,Limburg,2910,village,0,0,50,0,none,none
+gn:2751030,Meerveldhoven,North Brabant,2360,village,0,0,50,0,none,none
+gn:2751037,Meerssen,Limburg,5650,village,0,0,50,0,none,none
+gn:2751042,Meerlo,Limburg,1605,village,0,0,50,0,none,none
+gn:2751068,Meeden,Groningen,1440,village,0,0,50,0,none,none
+gn:2751073,Medemblik,North Holland,8655,village,0,0,50,0,none,none
+gn:2751077,Mechelen,Limburg,1375,village,0,0,50,0,none,none
+gn:2751085,Maurik,Gelderland,3270,village,0,0,50,0,none,none
+gn:2751111,Marum,Groningen,5170,village,0,0,50,0,none,none
+gn:2751122,Marsum,Friesland,1185,village,0,0,50,0,none,none
+gn:2751129,Marrum,Friesland,1230,village,0,0,50,0,none,none
+gn:2751147,Marknesse,Flevoland,4010,village,0,0,50,0,none,none
+gn:2751161,Markelo,Overijssel,3785,village,0,0,50,0,none,none
+gn:2751180,Mariarade,Limburg,3770,village,0,0,50,0,none,none
+gn:2751189,Mariahout,North Brabant,1130,village,0,0,50,0,none,none
+gn:2751199,Margraten,Limburg,3320,village,0,0,50,0,none,none
+gn:2751212,Mantgum,Friesland,1105,village,0,0,50,0,none,none
+gn:2751227,Malta,Zeeland,1545,village,0,0,50,0,none,none
+gn:2751243,Malburgen West,Gelderland,4200,village,0,0,50,0,none,none
+gn:2751247,Malberg,Limburg,5345,village,0,0,50,0,none,none
+gn:2751254,Makkum,Friesland,3285,village,0,0,50,0,none,none
+gn:2751264,Magele,Overijssel,1020,village,0,0,50,0,none,none
+gn:2751272,Made,North Brabant,11795,town,0,0,50,0,none,none
+gn:2751283,Maastricht,Limburg,122378,city,0,0,50,0,none,none
+gn:2751285,Maassluis,South Holland,32780,town,0,0,50,0,none,none
+gn:2751288,Maasland,South Holland,4545,village,0,0,50,0,none,none
+gn:2751289,Maaskantje,North Brabant,1610,village,0,0,50,0,none,none
+gn:2751296,Maasdijk,South Holland,5000,village,0,0,50,0,none,none
+gn:2751301,Maasbree,Limburg,5045,village,0,0,50,0,none,none
+gn:2751303,Maasbracht,Limburg,5680,village,0,0,50,0,none,none
+gn:2751304,Maasbommel,Gelderland,1345,village,0,0,50,0,none,none
+gn:2751310,Maartensdijk,Utrecht,4925,village,0,0,50,0,none,none
+gn:2751316,Maarssen,Utrecht,39675,town,0,0,50,0,none,none
+gn:2751320,Maarn,Utrecht,4618,village,0,0,50,0,none,none
+gn:2751325,Maarheeze,North Brabant,4715,village,0,0,50,0,none,none
+gn:2751346,Luyksgestel,North Brabant,2465,village,0,0,50,0,none,none
+gn:2751361,Luttelgeest,Flevoland,2285,village,0,0,50,0,none,none
+gn:2751379,Lutjebroek,North Holland,2205,village,0,0,50,0,none,none
+gn:2751385,Lunteren,Gelderland,12510,town,0,0,50,0,none,none
+gn:2751415,Loven,North Brabant,3865,village,0,0,50,0,none,none
+gn:2751422,Lottum,Limburg,1170,village,0,0,50,0,none,none
+gn:2751424,Losser,Overijssel,22431,town,0,0,50,0,none,none
+gn:2751429,Loppersum,Groningen,2365,village,0,0,50,0,none,none
+gn:2751436,Lopik,Utrecht,14013,town,0,0,50,0,none,none
+gn:2751449,Loosbroek,North Brabant,1295,village,0,0,50,0,none,none
+gn:2751456,Loon op Zand,North Brabant,23000,town,0,0,50,0,none,none
+gn:2751489,Lonneker,Overijssel,1910,village,0,0,50,0,none,none
+gn:2751493,Lomm,Limburg,1055,village,0,0,50,0,none,none
+gn:2751497,Lombardijen,South Holland,13785,town,0,0,50,0,none,none
+gn:2751523,Loenen aan de Vecht,Utrecht,8222,village,0,0,50,0,none,none
+gn:2751524,Loenen,Gelderland,2135,village,0,0,50,0,none,none
+gn:2751537,Lochem,Gelderland,12360,town,0,0,50,0,none,none
+gn:2751538,Lobith,Gelderland,3045,village,0,0,50,0,none,none
+gn:2751543,Lith,North Brabant,2895,village,0,0,50,0,none,none
+gn:2751544,Lisserbroek,North Holland,3355,village,0,0,50,0,none,none
+gn:2751547,Lisse,South Holland,22321,town,0,0,50,0,none,none
+gn:2751561,Linschoten,Utrecht,3435,village,0,0,50,0,none,none
+gn:2751566,Linne,Limburg,3645,village,0,0,50,0,none,none
+gn:2751582,Lindenholt,Gelderland,16121,town,0,0,50,0,none,none
+gn:2751583,Lindenheuvel,Limburg,8040,village,0,0,50,0,none,none
+gn:2751592,Limmen,North Holland,7790,village,0,0,50,0,none,none
+gn:2751593,Limmel,Limburg,2370,village,0,0,50,0,none,none
+gn:2751599,Limbricht,Limburg,2575,village,0,0,50,0,none,none
+gn:2751615,Lievendaal,North Brabant,3175,village,0,0,50,0,none,none
+gn:2751621,Liesveld,South Holland,9767,village,0,0,50,0,none,none
+gn:2751623,Liessel,North Brabant,2395,village,0,0,50,0,none,none
+gn:2751627,Lieshout,North Brabant,3530,village,0,0,50,0,none,none
+gn:2751634,Lierop,North Brabant,1460,village,0,0,50,0,none,none
+gn:2751641,Lienden,Gelderland,3470,village,0,0,50,0,none,none
+gn:2751645,Liempde,North Brabant,4170,village,0,0,50,0,none,none
+gn:2751651,Lichtenvoorde,Gelderland,19590,town,0,0,50,0,none,none
+gn:2751653,Lichtenberg,Limburg,1635,village,0,0,50,0,none,none
+gn:2751682,Leuth,Gelderland,1595,village,0,0,50,0,none,none
+gn:2751686,Leusden-Zuid,Utrecht,5210,village,0,0,50,0,none,none
+gn:2751687,Leusden,Utrecht,29215,town,0,0,50,0,none,none
+gn:2751695,Leunen,Limburg,2270,village,0,0,50,0,none,none
+gn:2751700,Leuken,Limburg,3805,village,0,0,50,0,none,none
+gn:2751709,Lepelstraat,North Brabant,1425,village,0,0,50,0,none,none
+gn:2751714,Lent,Gelderland,9160,village,0,0,50,0,none,none
+gn:2751729,Lemmer,Friesland,10050,town,0,0,50,0,none,none
+gn:2751738,Lelystad,Flevoland,79811,town,0,0,50,0,none,none
+gn:2751750,Leimuiden,South Holland,1035,village,0,0,50,0,none,none
+gn:2751771,Leiderdorp,South Holland,25966,town,0,0,50,0,none,none
+gn:2751773,Leiden,South Holland,119713,city,0,0,50,0,none,none
+gn:2751789,Leeuwen,Limburg,1075,village,0,0,50,0,none,none
+gn:2751792,Leeuwarden,Friesland,124481,city,0,0,50,0,none,none
+gn:2751793,Leesten,Gelderland,10000,town,0,0,50,0,none,none
+gn:2751795,Leest,North Brabant,2840,village,0,0,50,0,none,none
+gn:2751801,Leersum,Utrecht,6385,village,0,0,50,0,none,none
+gn:2751808,Leerdam,Utrecht,20758,town,0,0,50,0,none,none
+gn:2751813,Leens,Groningen,1675,village,0,0,50,0,none,none
+gn:2751821,Leende,North Brabant,3490,village,0,0,50,0,none,none
+gn:2751834,Leek,Groningen,19651,town,0,0,50,0,none,none
+gn:2751858,Lauradorp,Limburg,3170,village,0,0,50,0,none,none
+gn:2751874,Laren,North Holland,11547,town,0,0,50,0,none,none
+gn:2751875,Laren,Gelderland,1730,village,0,0,50,0,none,none
+gn:2751888,Langweer,Friesland,1095,village,0,0,50,0,none,none
+gn:2751927,Langenoord,Utrecht,1695,village,0,0,50,0,none,none
+gn:2751932,Langenboom,North Brabant,1400,village,0,0,50,0,none,none
+gn:2751955,Langeheit,North Holland,1195,village,0,0,50,0,none,none
+gn:2751980,Landsmeer,North Holland,10438,town,0,0,50,0,none,none
+gn:2751998,Lammerenburg,Zeeland,1200,village,0,0,50,0,none,none
+gn:2752028,Lage Mierde,North Brabant,1405,village,0,0,50,0,none,none
+gn:2752130,Kwintsheul,South Holland,3560,village,0,0,50,0,none,none
+gn:2752151,Kunrade,Limburg,3405,village,0,0,50,0,none,none
+gn:2752178,Kudelstaart,North Holland,9235,village,0,0,50,0,none,none
+gn:2752192,Kruisland,North Brabant,1785,village,0,0,50,0,none,none
+gn:2752202,Kruisberg,Limburg,1150,village,0,0,50,0,none,none
+gn:2752218,Krooswijk,North Brabant,4130,village,0,0,50,0,none,none
+gn:2752240,Krommenie,North Holland,17240,town,0,0,50,0,none,none
+gn:2752264,Krimpen aan den IJssel,South Holland,29017,town,0,0,50,0,none,none
+gn:2752317,Krakeel,Drenthe,5105,village,0,0,50,0,none,none
+gn:2752320,Kraggenburg,Flevoland,1445,village,0,0,50,0,none,none
+gn:2752367,Koudum,Friesland,2600,village,0,0,50,0,none,none
+gn:2752374,Koudekerke,Zeeland,2880,village,0,0,50,0,none,none
+gn:2752389,Korvel,North Brabant,12520,town,0,0,50,0,none,none
+gn:2752409,Kortenhoef,North Holland,6570,village,0,0,50,0,none,none
+gn:2752420,Korrewegwijk,Groningen,16710,town,0,0,50,0,none,none
+gn:2752441,Kootwijkerbroek,Gelderland,1690,village,0,0,50,0,none,none
+gn:2752444,Kootstertille,Friesland,2180,village,0,0,50,0,none,none
+gn:2752476,Koog aan de Zaan,North Holland,11306,town,0,0,50,0,none,none
+gn:2752484,Koningslust,Limburg,1270,village,0,0,50,0,none,none
+gn:2752492,Koningsbosch,Limburg,1540,village,0,0,50,0,none,none
+gn:2752520,Kollumersweach,Friesland,2805,village,0,0,50,0,none,none
+gn:2752524,Kollum,Friesland,5529,village,0,0,50,0,none,none
+gn:2752531,Kolhorn,North Holland,1100,village,0,0,50,0,none,none
+gn:2752547,Koewacht,Zeeland,2656,village,0,0,50,0,none,none
+gn:2752568,Koekange,Drenthe,1085,village,0,0,50,0,none,none
+gn:2752591,Knegsel,North Brabant,1435,village,0,0,50,0,none,none
+gn:2752600,Klundert,North Brabant,5405,village,0,0,50,0,none,none
+gn:2752638,Kloetinge,Zeeland,1595,village,0,0,50,0,none,none
+gn:2752646,Klimmen,Limburg,1780,village,0,0,50,0,none,none
+gn:2752660,Klein-Zundert,North Brabant,1320,village,0,0,50,0,none,none
+gn:2752772,Klein Driene,Overijssel,1470,village,0,0,50,0,none,none
+gn:2752798,Klazienaveen,Drenthe,11919,town,0,0,50,0,none,none
+gn:2752806,Klarenbeek,Zeeland,3350,village,0,0,50,0,none,none
+gn:2752814,Klaaswaal,South Holland,3490,village,0,0,50,0,none,none
+gn:2752842,Kijkduin,South Holland,1495,village,0,0,50,0,none,none
+gn:2752899,Kesteren,Gelderland,4455,village,0,0,50,0,none,none
+gn:2752906,Kessel,Limburg,3020,village,0,0,50,0,none,none
+gn:2752910,Kerschoten,Gelderland,3540,village,0,0,50,0,none,none
+gn:2752923,Kerkrade,Limburg,49777,town,0,0,50,0,none,none
+gn:2752937,Kerkelanden,North Holland,5655,village,0,0,50,0,none,none
+gn:2752942,Kerkehout,South Holland,1045,village,0,0,50,0,none,none
+gn:2752947,Kerkdriel,Gelderland,6580,village,0,0,50,0,none,none
+gn:2752950,Marken,North Holland,1846,village,0,0,50,0,none,none
+gn:2752954,Kerensheide,Limburg,2740,village,0,0,50,0,none,none
+gn:2752956,Kerckebosch,Utrecht,2555,village,0,0,50,0,none,none
+gn:2752986,Keijenborg,Gelderland,1050,village,0,0,50,0,none,none
+gn:2752993,Keent,Limburg,4465,village,0,0,50,0,none,none
+gn:2752998,Kedichem,Utrecht,1045,village,0,0,50,0,none,none
+gn:2753010,Katwijk aan Zee,South Holland,20010,town,0,0,50,0,none,none
+gn:2753011,Katwijk aan den Rijn,South Holland,5940,village,0,0,50,0,none,none
+gn:2753045,Katendrecht,South Holland,4755,village,0,0,50,0,none,none
+gn:2753097,Kamperland,Zeeland,1610,village,0,0,50,0,none,none
+gn:2753106,Kampen,Overijssel,48980,town,0,0,50,0,none,none
+gn:2753123,Kalsdonk,North Brabant,4250,village,0,0,50,0,none,none
+gn:2753144,Kakert,Limburg,1750,village,0,0,50,0,none,none
+gn:2753148,Kadoelen,North Holland,1915,village,0,0,50,0,none,none
+gn:2753167,Kaalheide,Limburg,2840,village,0,0,50,0,none,none
+gn:2753184,Julianadorp,North Holland,15380,town,0,0,50,0,none,none
+gn:2753197,Joure,Friesland,13090,town,0,0,50,0,none,none
+gn:2753201,Jordaan,North Holland,19485,town,0,0,50,0,none,none
+gn:2753282,Jagershoef,North Brabant,3560,village,0,0,50,0,none,none
+gn:2753307,Jirnsum,Friesland,1255,village,0,0,50,0,none,none
+gn:2753316,Ingen,Gelderland,1080,village,0,0,50,0,none,none
+gn:2753334,Ilpendam,North Holland,1835,village,0,0,50,0,none,none
+gn:2753348,IJzendijke,Zeeland,1785,village,0,0,50,0,none,none
+gn:2753353,Ysselsteyn,Limburg,2260,village,0,0,50,0,none,none
+gn:2753355,IJsselstein,Utrecht,33886,town,0,0,50,0,none,none
+gn:2753358,IJsselmuiden,Overijssel,12670,town,0,0,50,0,none,none
+gn:2753376,IJmuiden,North Holland,31925,town,0,0,50,0,none,none
+gn:2753379,IJlst,Friesland,3180,village,0,0,50,0,none,none
+gn:2753401,Husken,Limburg,1380,village,0,0,50,0,none,none
+gn:2753423,Hummelo,Gelderland,1010,village,0,0,50,0,none,none
+gn:2753439,Hulst,Zeeland,1405,village,0,0,50,0,none,none
+gn:2753452,Hulsberg,Limburg,3215,village,0,0,50,0,none,none
+gn:2753468,Huizen,North Holland,41273,town,0,0,50,0,none,none
+gn:2753470,Huizum,Friesland,9000,village,0,0,50,0,none,none
+gn:2753488,Huis ter Heide,Utrecht,1285,village,0,0,50,0,none,none
+gn:2753504,Huissen,Gelderland,19725,town,0,0,50,0,none,none
+gn:2753521,Huijbergen,North Brabant,1655,village,0,0,50,0,none,none
+gn:2753548,Houthem,Limburg,1470,village,0,0,50,0,none,none
+gn:2753557,Houten,Utrecht,1335,village,0,0,50,0,none,none
+gn:2753563,Hout-Blerick,Limburg,2890,village,0,0,50,0,none,none
+gn:2753591,Horst,Limburg,13365,town,0,0,50,0,none,none
+gn:2753593,Horssen,Gelderland,1095,village,0,0,50,0,none,none
+gn:2753615,Hopel,Limburg,2240,village,0,0,50,0,none,none
+gn:2753638,Hoorn,North Holland,68852,town,0,0,50,0,none,none
+gn:2753663,Hoogwoud,North Holland,3700,village,0,0,50,0,none,none
+gn:2753666,Hoogvliet,South Holland,34950,town,0,0,50,0,none,none
+gn:2753681,Hoogmade,South Holland,1480,village,0,0,50,0,none,none
+gn:2753686,Hoogland,Utrecht,10587,town,0,0,50,0,none,none
+gn:2753688,Hoogkerk,Groningen,11405,town,0,0,50,0,none,none
+gn:2753691,Hoogkarspel,North Holland,8705,village,0,0,50,0,none,none
+gn:2753700,Hooge Zwaluwe,North Brabant,1265,village,0,0,50,0,none,none
+gn:2753706,Hoogezand,Groningen,21480,town,0,0,50,0,none,none
+gn:2753719,Hoogeveen,Drenthe,38754,town,0,0,50,0,none,none
+gn:2753725,Hoogerheide,North Brabant,5810,village,0,0,50,0,none,none
+gn:2753736,Hooge Mierde,North Brabant,1310,village,0,0,50,0,none,none
+gn:2753741,Hoogeloon,North Brabant,1790,village,0,0,50,0,none,none
+gn:2753789,Hoogblokland,South Holland,1090,village,0,0,50,0,none,none
+gn:2753801,Hoofddorp,North Holland,132734,city,0,0,50,0,none,none
+gn:2753806,Honselersdijk,South Holland,7366,village,0,0,50,0,none,none
+gn:2753841,Holz,Limburg,2390,village,0,0,50,0,none,none
+gn:2753852,Holwert,Friesland,1435,village,0,0,50,0,none,none
+gn:2753856,Holtum,Limburg,1170,village,0,0,50,0,none,none
+gn:2753887,Hollum,Friesland,1305,village,0,0,50,0,none,none
+gn:2753907,Hollandscheveld,Drenthe,4560,village,0,0,50,0,none,none
+gn:2753908,Hollandsche Rading,Utrecht,1325,village,0,0,50,0,none,none
+gn:2753939,Hoge Mors,South Holland,5050,village,0,0,50,0,none,none
+gn:2753955,Hoge Vucht,North Brabant,16000,town,0,0,50,0,none,none
+gn:2753969,Hofgeest,North Holland,1440,village,0,0,50,0,none,none
+gn:2753980,Hoeven,North Brabant,1960,village,0,0,50,0,none,none
+gn:2753982,Hoeven,North Brabant,4895,village,0,0,50,0,none,none
+gn:2753987,Hoevelaken,Gelderland,9800,village,0,0,50,0,none,none
+gn:2753996,Hoensbroek,Limburg,25000,town,0,0,50,0,none,none
+gn:2754007,Hoek van Holland,South Holland,9400,village,0,0,50,0,none,none
+gn:2754050,Hippolytushoef,North Holland,5135,village,0,0,50,0,none,none
+gn:2754061,Hilversumse Meent,North Holland,4065,village,0,0,50,0,none,none
+gn:2754064,Hilversum,North Holland,83640,town,0,0,50,0,none,none
+gn:2754066,Hilvarenbeek,North Brabant,7855,village,0,0,50,0,none,none
+gn:2754073,Hillegom,South Holland,18419,town,0,0,50,0,none,none
+gn:2754097,Hierden,Gelderland,3240,village,0,0,50,0,none,none
+gn:2754111,Heythuysen,Limburg,6420,village,0,0,50,0,none,none
+gn:2754132,Heusdenhout,North Brabant,5160,village,0,0,50,0,none,none
+gn:2754135,Heusden,North Brabant,1300,village,0,0,50,0,none,none
+gn:2754136,Heusden,North Brabant,1415,village,0,0,50,0,none,none
+gn:2754147,Heumen,Gelderland,1010,village,0,0,50,0,none,none
+gn:2754156,Heugem,Limburg,4620,village,0,0,50,0,none,none
+gn:2754226,Het Oostrik,Overijssel,2380,village,0,0,50,0,none,none
+gn:2754241,Het Loo,Gelderland,1330,village,0,0,50,0,none,none
+gn:2754287,Heteren,Gelderland,4805,village,0,0,50,0,none,none
+gn:2754318,Herwijnen,Gelderland,2305,village,0,0,50,0,none,none
+gn:2754331,Herten,Limburg,3305,village,0,0,50,0,none,none
+gn:2754339,Herpen,North Brabant,2360,village,0,0,50,0,none,none
+gn:2754352,Herkenbosch,Limburg,3935,village,0,0,50,0,none,none
+gn:2754375,Hensbroek,North Holland,1745,village,0,0,50,0,none,none
+gn:2754386,Hengstdal,Gelderland,7010,village,0,0,50,0,none,none
+gn:2754389,Hengevelde,Overijssel,1510,village,0,0,50,0,none,none
+gn:2754394,Hengelo,Overijssel,82311,town,0,0,50,0,none,none
+gn:2754395,Hengelo,Gelderland,4510,village,0,0,50,0,none,none
+gn:2754408,Hendrik-Ido-Ambacht,South Holland,21027,town,0,0,50,0,none,none
+gn:2754434,Hem,North Holland,1595,village,0,0,50,0,none,none
+gn:2754440,Helvoirt,North Brabant,3625,village,0,0,50,0,none,none
+gn:2754444,Helpman,Groningen,6050,village,0,0,50,0,none,none
+gn:2754447,Helmond,North Brabant,74740,town,0,0,50,0,none,none
+gn:2754454,Hellevoetsluis,South Holland,21927,town,0,0,50,0,none,none
+gn:2754482,Helden,Limburg,5530,village,0,0,50,0,none,none
+gn:2754486,Heksenberg,Limburg,2395,village,0,0,50,0,none,none
+gn:2754502,Heino,Overijssel,6459,village,0,0,50,0,none,none
+gn:2754516,Heiloo,North Holland,24144,town,0,0,50,0,none,none
+gn:2754519,Heiligerlee,Groningen,1365,village,0,0,50,0,none,none
+gn:2754552,Heijplaat,South Holland,1365,village,0,0,50,0,none,none
+gn:2754556,Heijen,Limburg,1610,village,0,0,50,0,none,none
+gn:2754599,Heide,Limburg,1040,village,0,0,50,0,none,none
+gn:2754611,Hegelsom,Limburg,1185,village,0,0,50,0,none,none
+gn:2754618,Heeze,North Brabant,9945,village,0,0,50,0,none,none
+gn:2754629,Heeswijk-Dinther,North Brabant,7985,village,0,0,50,0,none,none
+gn:2754631,Heesterakker,North Brabant,2765,village,0,0,50,0,none,none
+gn:2754635,Heesch,North Brabant,12810,town,0,0,50,0,none,none
+gn:2754643,Hees,Gelderland,2875,village,0,0,50,0,none,none
+gn:2754652,Heerlen,Limburg,93084,town,0,0,50,0,none,none
+gn:2754653,Heerle,North Brabant,1320,village,0,0,50,0,none,none
+gn:2754656,Heerjansdam,South Holland,3770,village,0,0,50,0,none,none
+gn:2754659,Heerhugowaard,North Holland,47580,town,0,0,50,0,none,none
+gn:2754662,Heerewaarden,Gelderland,1005,village,0,0,50,0,none,none
+gn:2754669,Heerenveen,Friesland,43094,town,0,0,50,0,none,none
+gn:2754681,Heerde,Gelderland,8850,village,0,0,50,0,none,none
+gn:2754682,Heer,Limburg,7615,village,0,0,50,0,none,none
+gn:2754692,Heemstede,North Holland,25562,town,0,0,50,0,none,none
+gn:2754697,Heemskerk,North Holland,39191,town,0,0,50,0,none,none
+gn:2754703,Heelsum,Gelderland,3175,village,0,0,50,0,none,none
+gn:2754706,Heel,Limburg,3980,village,0,0,50,0,none,none
+gn:2754712,Heeg,Friesland,1995,village,0,0,50,0,none,none
+gn:2754713,Heechterp,Friesland,1805,village,0,0,50,0,none,none
+gn:2754719,Hedel,Gelderland,4350,village,0,0,50,0,none,none
+gn:2754752,Havelte,Drenthe,3060,village,0,0,50,0,none,none
+gn:2754758,Haulerwijk,Friesland,2935,village,0,0,50,0,none,none
+gn:2754764,Hattemerbroek,Gelderland,1025,village,0,0,50,0,none,none
+gn:2754768,Hattem,Gelderland,11876,town,0,0,50,0,none,none
+gn:2754773,Hatert,Gelderland,10210,town,0,0,50,0,none,none
+gn:2754779,Hasselt,Overijssel,6959,village,0,0,50,0,none,none
+gn:2754804,Harskamp,Gelderland,3450,village,0,0,50,0,none,none
+gn:2754814,Harmelen,Utrecht,8374,village,0,0,50,0,none,none
+gn:2754817,Harlingen,Friesland,16119,town,0,0,50,0,none,none
+gn:2754819,Harkstede,Groningen,2490,village,0,0,50,0,none,none
+gn:2754821,Harkema,Friesland,4005,village,0,0,50,0,none,none
+gn:2754841,Haren,Groningen,9375,village,0,0,50,0,none,none
+gn:2754848,Harderwijk,Gelderland,40516,town,0,0,50,0,none,none
+gn:2754861,Hardenberg,Overijssel,57909,town,0,0,50,0,none,none
+gn:2754864,Hurdegaryp,Friesland,4510,village,0,0,50,0,none,none
+gn:2754868,Haps,North Brabant,2165,village,0,0,50,0,none,none
+gn:2754872,Hapert,North Brabant,4955,village,0,0,50,0,none,none
+gn:2754888,Hank,North Brabant,4323,village,0,0,50,0,none,none
+gn:2754897,Handel,North Brabant,1310,village,0,0,50,0,none,none
+gn:2754922,Halsteren,North Brabant,9850,village,0,0,50,0,none,none
+gn:2754930,Hallum,Friesland,2355,village,0,0,50,0,none,none
+gn:2754942,Halfweg,North Holland,2330,village,0,0,50,0,none,none
+gn:2754943,Halfweg,North Holland,2610,village,0,0,50,0,none,none
+gn:2754962,Hagestein,Utrecht,1450,village,0,0,50,0,none,none
+gn:2754975,Haelen,Limburg,9935,village,0,0,50,0,none,none
+gn:2754978,Haastrecht,South Holland,4500,village,0,0,50,0,none,none
+gn:2754986,Haarsteeg,North Brabant,2100,village,0,0,50,0,none,none
+gn:2755003,Haarlem,North Holland,162543,city,0,0,50,0,none,none
+gn:2755006,Haarle,Overijssel,1045,village,0,0,50,0,none,none
+gn:2755009,Haaren,North Brabant,3835,village,0,0,50,0,none,none
+gn:2755021,Haanrade,Limburg,2015,village,0,0,50,0,none,none
+gn:2755023,Haamstede,Zeeland,1885,village,0,0,50,0,none,none
+gn:2755026,Haalderen,Gelderland,1850,village,0,0,50,0,none,none
+gn:2755030,Haaksbergen,Overijssel,24137,town,0,0,50,0,none,none
+gn:2755039,Haaften,Gelderland,2370,village,0,0,50,0,none,none
+gn:2755040,Guttecoven,Limburg,1260,village,0,0,50,0,none,none
+gn:2755045,Gulpen,Limburg,3560,village,0,0,50,0,none,none
+gn:2755051,Grubbenvorst,Limburg,4885,village,0,0,50,0,none,none
+gn:2755052,Grou,Friesland,5655,village,0,0,50,0,none,none
+gn:2755123,Groot IJsselmonde,South Holland,28120,town,0,0,50,0,none,none
+gn:2755204,Grootegast,Groningen,3355,village,0,0,50,0,none,none
+gn:2755211,Grootebroek,North Holland,9891,village,0,0,50,0,none,none
+gn:2755239,Groot-Ammers,South Holland,3305,village,0,0,50,0,none,none
+gn:2755243,Gronsveld,Limburg,2380,village,0,0,50,0,none,none
+gn:2755251,Groningen,Groningen,244807,city,0,0,50,0,none,none
+gn:2755266,Groet,North Holland,1520,village,0,0,50,0,none,none
+gn:2755267,Groessen,Gelderland,1955,village,0,0,50,0,none,none
+gn:2755272,Groesbeek,Gelderland,18741,town,0,0,50,0,none,none
+gn:2755281,Groenlo,Gelderland,10000,town,0,0,50,0,none,none
+gn:2755287,Groenewoud,North Brabant,7710,village,0,0,50,0,none,none
+gn:2755302,Groenekan,Utrecht,1565,village,0,0,50,0,none,none
+gn:2755315,Grijpskerke,Zeeland,1040,village,0,0,50,0,none,none
+gn:2755317,Grijpskerk,Groningen,2520,village,0,0,50,0,none,none
+gn:2755319,Griffioen,Zeeland,3005,village,0,0,50,0,none,none
+gn:2755337,Grevenbicht,Limburg,2355,village,0,0,50,0,none,none
+gn:2755358,Grave,North Brabant,12999,town,0,0,50,0,none,none
+gn:2755367,Grashoek,Limburg,1355,village,0,0,50,0,none,none
+gn:2755376,Grafhorst,Overijssel,1015,village,0,0,50,0,none,none
+gn:2755381,Gracht,Limburg,2080,village,0,0,50,0,none,none
+gn:2755391,Gouwsluis,South Holland,1470,village,0,0,50,0,none,none
+gn:2755399,Goutum,Friesland,2790,village,0,0,50,0,none,none
+gn:2755401,Goudswaard,South Holland,1530,village,0,0,50,0,none,none
+gn:2755410,Gouderak,South Holland,2635,village,0,0,50,0,none,none
+gn:2755420,Gouda,South Holland,71952,town,0,0,50,0,none,none
+gn:2755428,Gorssel,Gelderland,3530,village,0,0,50,0,none,none
+gn:2755429,Gorredijk,Friesland,7040,village,0,0,50,0,none,none
+gn:2755434,Gorinchem,South Holland,34736,town,0,0,50,0,none,none
+gn:2755449,Goor,Overijssel,11460,town,0,0,50,0,none,none
+gn:2755464,Goirle,North Brabant,22646,town,0,0,50,0,none,none
+gn:2755476,Goes,Zeeland,36931,town,0,0,50,0,none,none
+gn:2755485,Goedereede,South Holland,11597,town,0,0,50,0,none,none
+gn:2755495,Glimmen,Groningen,1065,village,0,0,50,0,none,none
+gn:2755496,Glanerbrug,Overijssel,17260,town,0,0,50,0,none,none
+gn:2755498,Ginneken,North Brabant,5370,village,0,0,50,0,none,none
+gn:2755507,Gilze,North Brabant,6300,village,0,0,50,0,none,none
+gn:2755517,Giethoorn,Overijssel,2130,village,0,0,50,0,none,none
+gn:2755527,Gieten,Drenthe,4885,village,0,0,50,0,none,none
+gn:2755531,Giessendam,South Holland,5235,village,0,0,50,0,none,none
+gn:2755533,Giessenburg,South Holland,4800,village,0,0,50,0,none,none
+gn:2755535,Giessen,North Brabant,1640,village,0,0,50,0,none,none
+gn:2755536,Giesbeek,Gelderland,2745,village,0,0,50,0,none,none
+gn:2755542,Gytsjerk,Friesland,2175,village,0,0,50,0,none,none
+gn:2755564,Gerwen,North Brabant,1735,village,0,0,50,0,none,none
+gn:2755581,Genoenhuis,North Brabant,3815,village,0,0,50,0,none,none
+gn:2755584,Gennep,Limburg,16642,town,0,0,50,0,none,none
+gn:2755594,Genemuiden,Overijssel,9700,village,0,0,50,0,none,none
+gn:2755597,Gendt,Gelderland,5590,village,0,0,50,0,none,none
+gn:2755599,Gendringen,Gelderland,3880,village,0,0,50,0,none,none
+gn:2755601,Genderen,North Brabant,1730,village,0,0,50,0,none,none
+gn:2755603,Gemonde,North Brabant,1490,village,0,0,50,0,none,none
+gn:2755605,Gemert,North Brabant,15995,town,0,0,50,0,none,none
+gn:2755616,Geleen,Limburg,32790,town,0,0,50,0,none,none
+gn:2755619,Geldrop,North Brabant,27900,town,0,0,50,0,none,none
+gn:2755630,Geldermalsen-West,Gelderland,2580,village,0,0,50,0,none,none
+gn:2755633,Geldermalsen,Gelderland,25734,town,0,0,50,0,none,none
+gn:2755638,Geitenkamp,Gelderland,4005,village,0,0,50,0,none,none
+gn:2755645,Geffen,North Brabant,3870,village,0,0,50,0,none,none
+gn:2755669,Geertruidenberg,North Brabant,20941,town,0,0,50,0,none,none
+gn:2755685,Geenhoven,North Brabant,3270,village,0,0,50,0,none,none
+gn:2755712,Gasselternijveen,Drenthe,1780,village,0,0,50,0,none,none
+gn:2755717,Gasselte,Drenthe,1495,village,0,0,50,0,none,none
+gn:2755729,Garyp,Friesland,1545,village,0,0,50,0,none,none
+gn:2755732,Garderen,Gelderland,1320,village,0,0,50,0,none,none
+gn:2755751,Gameren,Gelderland,2200,village,0,0,50,0,none,none
+gn:2755774,Gageldonk,North Brabant,4865,village,0,0,50,0,none,none
+gn:2755794,Gaanderen,Gelderland,5575,village,0,0,50,0,none,none
+gn:2755840,Frankhuis,Overijssel,6145,village,0,0,50,0,none,none
+gn:2755845,Franeker,Friesland,12996,town,0,0,50,0,none,none
+gn:2755893,Flevowijk,Overijssel,3675,village,0,0,50,0,none,none
+gn:2755911,Fijnaart,North Brabant,4855,village,0,0,50,0,none,none
+gn:2755920,Ferwert,Friesland,1935,village,0,0,50,0,none,none
+gn:2755925,Feijenoord,South Holland,7275,village,0,0,50,0,none,none
+gn:2755929,Farmsum,Groningen,2185,village,0,0,50,0,none,none
+gn:2755947,Exloo,Drenthe,1525,village,0,0,50,0,none,none
+gn:2755976,Everdingen,Utrecht,1200,village,0,0,50,0,none,none
+gn:2755995,Etten,Gelderland,1470,village,0,0,50,0,none,none
+gn:2755996,Etten-Leur,North Brabant,43869,town,0,0,50,0,none,none
+gn:2756004,Essesteijn,South Holland,4900,village,0,0,50,0,none,none
+gn:2756019,Espel,Flevoland,1515,village,0,0,50,0,none,none
+gn:2756030,Esch,North Brabant,1820,village,0,0,50,0,none,none
+gn:2756035,Erp,North Brabant,3600,village,0,0,50,0,none,none
+gn:2756039,Ermelo,Gelderland,10255,town,0,0,50,0,none,none
+gn:2756050,Epse,Gelderland,1470,village,0,0,50,0,none,none
+gn:2756059,Epe,Gelderland,33385,town,0,0,50,0,none,none
+gn:2756065,Enter,Overijssel,7545,village,0,0,50,0,none,none
+gn:2756069,Enschot,North Brabant,3865,village,0,0,50,0,none,none
+gn:2756071,Enschede,Overijssel,153655,city,0,0,50,0,none,none
+gn:2756072,Ens,Flevoland,3174,village,0,0,50,0,none,none
+gn:2756077,Enkhuizen,North Holland,18738,town,0,0,50,0,none,none
+gn:2756114,Emst,Gelderland,1310,village,0,0,50,0,none,none
+gn:2756126,Emmerschans,Drenthe,1005,village,0,0,50,0,none,none
+gn:2756127,Emmermeer,Drenthe,5995,village,0,0,50,0,none,none
+gn:2756128,Emmerhout,Drenthe,7375,village,0,0,50,0,none,none
+gn:2756131,Emmer-Erfscheidenveen,Drenthe,1875,village,0,0,50,0,none,none
+gn:2756133,Emmer-Compascuum,Drenthe,8130,village,0,0,50,0,none,none
+gn:2756136,Emmen,Drenthe,57010,town,0,0,50,0,none,none
+gn:2756139,Emmeloord,Flevoland,46409,town,0,0,50,0,none,none
+gn:2756161,Elst,Gelderland,20488,town,0,0,50,0,none,none
+gn:2756165,Elspeet,Gelderland,2810,village,0,0,50,0,none,none
+gn:2756169,Elsloo,Limburg,7220,village,0,0,50,0,none,none
+gn:2756172,Elshout,North Brabant,1655,village,0,0,50,0,none,none
+gn:2756200,Ellecom,Gelderland,1015,village,0,0,50,0,none,none
+gn:2756229,Elden,Gelderland,2300,village,0,0,50,0,none,none
+gn:2756232,Elburg,Gelderland,21844,town,0,0,50,0,none,none
+gn:2756239,Ekenrooi,North Brabant,3970,village,0,0,50,0,none,none
+gn:2756248,Einighausen,Limburg,1340,village,0,0,50,0,none,none
+gn:2756253,Eindhoven,North Brabant,235691,city,0,0,50,0,none,none
+gn:2756283,Eijsden,Limburg,11795,town,0,0,50,0,none,none
+gn:2756295,Eibergen,Gelderland,16493,town,0,0,50,0,none,none
+gn:2756299,Egmond-Binnen,North Holland,2700,village,0,0,50,0,none,none
+gn:2756301,Egmond aan Zee,North Holland,2505,village,0,0,50,0,none,none
+gn:2756302,Egmond aan den Hoef,North Holland,3360,village,0,0,50,0,none,none
+gn:2756308,Egchel,Limburg,1115,village,0,0,50,0,none,none
+gn:2756316,Eexta,Groningen,1605,village,0,0,50,0,none,none
+gn:2756317,Eext,Drenthe,1225,village,0,0,50,0,none,none
+gn:2756342,Eersel,North Brabant,18185,town,0,0,50,0,none,none
+gn:2756343,Eerschot,North Brabant,2210,village,0,0,50,0,none,none
+gn:2756349,Eerde,North Brabant,1065,village,0,0,50,0,none,none
+gn:2756351,Eerbeek,Gelderland,10103,town,0,0,50,0,none,none
+gn:2756358,Eenrum,Groningen,1365,village,0,0,50,0,none,none
+gn:2756408,Eelde,Drenthe,6450,village,0,0,50,0,none,none
+gn:2756418,Eefde,Gelderland,3285,village,0,0,50,0,none,none
+gn:2756426,Ederveen,Gelderland,3100,village,0,0,50,0,none,none
+gn:2756429,Ede,Gelderland,67670,town,0,0,50,0,none,none
+gn:2756431,Edam,North Holland,7380,village,0,0,50,0,none,none
+gn:2756435,Eckart,North Brabant,4300,village,0,0,50,0,none,none
+gn:2756438,Echtenerbrug,Friesland,1200,village,0,0,50,0,none,none
+gn:2756444,Echt,Limburg,7760,village,0,0,50,0,none,none
+gn:2756451,Dwingeloo,Drenthe,2430,village,0,0,50,0,none,none
+gn:2756483,Dussen,North Brabant,2528,village,0,0,50,0,none,none
+gn:2756500,Duizel,North Brabant,1460,village,0,0,50,0,none,none
+gn:2756504,Duivendrecht,North Holland,5665,village,0,0,50,0,none,none
+gn:2756507,Duiven,Gelderland,25469,town,0,0,50,0,none,none
+gn:2756515,Duinzigt,South Holland,2510,village,0,0,50,0,none,none
+gn:2756524,Duin en Bosch,North Holland,1210,village,0,0,50,0,none,none
+gn:2756526,Duindorp,South Holland,5935,village,0,0,50,0,none,none
+gn:2756539,Druten,Gelderland,6270,village,0,0,50,0,none,none
+gn:2756543,Drunen,North Brabant,18320,town,0,0,50,0,none,none
+gn:2756544,Drumpt,Gelderland,2130,village,0,0,50,0,none,none
+gn:2756559,Dronten,Flevoland,28073,town,0,0,50,0,none,none
+gn:2756561,Dronryp,Friesland,3486,village,0,0,50,0,none,none
+gn:2756567,Drogeham,Friesland,1530,village,0,0,50,0,none,none
+gn:2756584,Driemond,North Holland,1680,village,0,0,50,0,none,none
+gn:2756587,Driemanspolder,South Holland,6250,village,0,0,50,0,none,none
+gn:2756591,Driel,Gelderland,2940,village,0,0,50,0,none,none
+gn:2756592,Driehuizen,Gelderland,4610,village,0,0,50,0,none,none
+gn:2756598,Driehuis,North Holland,1210,village,0,0,50,0,none,none
+gn:2756614,Driebruggen,South Holland,1485,village,0,0,50,0,none,none
+gn:2756619,Driebergen-Rijsenburg,Utrecht,18553,town,0,0,50,0,none,none
+gn:2756626,Dreumel,Gelderland,3520,village,0,0,50,0,none,none
+gn:2756642,Drachtstercompagnie,Friesland,1500,village,0,0,50,0,none,none
+gn:2756644,Drachten,Friesland,45186,town,0,0,50,0,none,none
+gn:2756648,Draai,North Holland,5005,village,0,0,50,0,none,none
+gn:2756657,Dorst,North Brabant,1965,village,0,0,50,0,none,none
+gn:2756669,Dordrecht,South Holland,119260,city,0,0,50,0,none,none
+gn:2756673,Doorwerth,Gelderland,4370,village,0,0,50,0,none,none
+gn:2756675,Doornsteeg,Gelderland,5400,village,0,0,50,0,none,none
+gn:2756677,Doornspijk,Gelderland,1555,village,0,0,50,0,none,none
+gn:2756683,Doornenburg,Gelderland,2075,village,0,0,50,0,none,none
+gn:2756686,Doorn,Utrecht,10330,town,0,0,50,0,none,none
+gn:2756688,Doonheide,North Brabant,1030,village,0,0,50,0,none,none
+gn:2756703,Donkerbroek,Friesland,1140,village,0,0,50,0,none,none
+gn:2756706,Donk,North Brabant,3580,village,0,0,50,0,none,none
+gn:2756723,Dongen,North Brabant,25464,town,0,0,50,0,none,none
+gn:2756739,Dommelen,North Brabant,1220,village,0,0,50,0,none,none
+gn:2756746,Domburg,Zeeland,1435,village,0,0,50,0,none,none
+gn:2756759,Dokkum,Friesland,12669,town,0,0,50,0,none,none
+gn:2756767,Doetinchem,Gelderland,49906,town,0,0,50,0,none,none
+gn:2756771,Doesburg,Gelderland,1050,village,0,0,50,0,none,none
+gn:2756772,Doesburg,Gelderland,11480,town,0,0,50,0,none,none
+gn:2756774,Doenrade,Limburg,1140,village,0,0,50,0,none,none
+gn:2756777,Dodewaard,Gelderland,4465,village,0,0,50,0,none,none
+gn:2756787,Dirksland,South Holland,4500,village,0,0,50,0,none,none
+gn:2756788,Dirkshorn,North Holland,1690,village,0,0,50,0,none,none
+gn:2756793,Dinxperlo,Gelderland,8240,village,0,0,50,0,none,none
+gn:2756800,Dinteloord,North Brabant,5105,village,0,0,50,0,none,none
+gn:2756855,Diever,Drenthe,2175,village,0,0,50,0,none,none
+gn:2756859,Diessen,North Brabant,2815,village,0,0,50,0,none,none
+gn:2756865,Dieren,Gelderland,14842,town,0,0,50,0,none,none
+gn:2756878,Diepenheim,Overijssel,1900,village,0,0,50,0,none,none
+gn:2756888,Diemen,North Holland,24361,town,0,0,50,0,none,none
+gn:2756896,Didam,Gelderland,17812,town,0,0,50,0,none,none
+gn:2756936,De Wijk,Drenthe,2495,village,0,0,50,0,none,none
+gn:2756937,De Wijert,Groningen,4765,village,0,0,50,0,none,none
+gn:2756987,Deventer,Overijssel,97331,town,0,0,50,0,none,none
+gn:2756999,Deuteren,North Brabant,1540,village,0,0,50,0,none,none
+gn:2757015,De Uithof,Utrecht,2790,village,0,0,50,0,none,none
+gn:2757089,De Rompert,North Brabant,2440,village,0,0,50,0,none,none
+gn:2757095,De Rijp,North Holland,4245,village,0,0,50,0,none,none
+gn:2757108,De Reit,North Brabant,6105,village,0,0,50,0,none,none
+gn:2757152,De Peulen,South Holland,2700,village,0,0,50,0,none,none
+gn:2757189,De Noord,North Holland,3695,village,0,0,50,0,none,none
+gn:2757194,Den Oever,North Holland,2145,village,0,0,50,0,none,none
+gn:2757220,Den Helder,North Holland,59569,town,0,0,50,0,none,none
+gn:2757224,Den Ham,Overijssel,1830,village,0,0,50,0,none,none
+gn:2757232,Denekamp,Overijssel,9125,village,0,0,50,0,none,none
+gn:2757237,Den Dungen,North Brabant,3450,village,0,0,50,0,none,none
+gn:2757240,Den Dolder,Utrecht,4420,village,0,0,50,0,none,none
+gn:2757244,Den Burg,North Holland,6485,village,0,0,50,0,none,none
+gn:2757290,De Mheen,Gelderland,3190,village,0,0,50,0,none,none
+gn:2757295,De Meern,Utrecht,22116,town,0,0,50,0,none,none
+gn:2757313,De Maer,North Holland,1235,village,0,0,50,0,none,none
+gn:2757325,De Loo,Drenthe,1275,village,0,0,50,0,none,none
+gn:2757336,De Lier,South Holland,11823,town,0,0,50,0,none,none
+gn:2757340,Delfzijl,Groningen,28649,town,0,0,50,0,none,none
+gn:2757345,Delft,South Holland,95060,town,0,0,50,0,none,none
+gn:2757347,Delfshaven,South Holland,7215,village,0,0,50,0,none,none
+gn:2757370,Delden,Overijssel,6920,village,0,0,50,0,none,none
+gn:2757379,De Kwakel,North Holland,3770,village,0,0,50,0,none,none
+gn:2757386,De Kruiskamp,North Brabant,8025,village,0,0,50,0,none,none
+gn:2757417,De Koog,North Holland,1040,village,0,0,50,0,none,none
+gn:2757449,De Kieviet,South Holland,1300,village,0,0,50,0,none,none
+gn:2757478,Deil,Gelderland,1880,village,0,0,50,0,none,none
+gn:2757488,De Hoven,Overijssel,2365,village,0,0,50,0,none,none
+gn:2757575,De Heeg,Limburg,6255,village,0,0,50,0,none,none
+gn:2757586,De Hagen,Utrecht,2435,village,0,0,50,0,none,none
+gn:2757619,De Greiden,Friesland,7470,village,0,0,50,0,none,none
+gn:2757623,De Goorn,North Holland,3870,village,0,0,50,0,none,none
+gn:2757627,De Glip,North Holland,1355,village,0,0,50,0,none,none
+gn:2757651,Deest,Gelderland,1655,village,0,0,50,0,none,none
+gn:2757683,De Drait,Friesland,6310,village,0,0,50,0,none,none
+gn:2757685,De Doornakkers,North Brabant,6345,village,0,0,50,0,none,none
+gn:2757690,De Domp,Friesland,1925,village,0,0,50,0,none,none
+gn:2757698,Dedemsvaart,Overijssel,13090,town,0,0,50,0,none,none
+gn:2757777,De Blaak,North Brabant,6005,village,0,0,50,0,none,none
+gn:2757783,De Bilt,Utrecht,8945,village,0,0,50,0,none,none
+gn:2757823,Dauwendaele,Zeeland,6220,village,0,0,50,0,none,none
+gn:2757838,Damwâld,Friesland,5560,village,0,0,50,0,none,none
+gn:2757850,Dalfsen,Overijssel,26575,town,0,0,50,0,none,none
+gn:2757857,Dalen,Drenthe,3295,village,0,0,50,0,none,none
+gn:2757872,Culemborg,Gelderland,26826,town,0,0,50,0,none,none
+gn:2757874,Cuijk,North Brabant,3610,village,0,0,50,0,none,none
+gn:2757875,Cruquius,North Holland,2455,village,0,0,50,0,none,none
+gn:2757886,Creil,Flevoland,1695,village,0,0,50,0,none,none
+gn:2757890,Cranendonck,North Brabant,19966,town,0,0,50,0,none,none
+gn:2757899,Cothen,Utrecht,2765,village,0,0,50,0,none,none
+gn:2757922,Commandeurs,North Holland,2405,village,0,0,50,0,none,none
+gn:2757931,Colijnsplaat,Zeeland,1485,village,0,0,50,0,none,none
+gn:2757937,Coevorden,Drenthe,14600,town,0,0,50,0,none,none
+gn:2757938,Coevering,North Brabant,5290,village,0,0,50,0,none,none
+gn:2757942,Coendersborg,Groningen,3075,village,0,0,50,0,none,none
+gn:2757969,Chaam,North Brabant,2805,village,0,0,50,0,none,none
+gn:2757991,Castricum,North Holland,23790,town,0,0,50,0,none,none
+gn:2758001,Carnisse,South Holland,11225,town,0,0,50,0,none,none
+gn:2758007,Capelle-West,South Holland,2400,village,0,0,50,0,none,none
+gn:2758012,Capelle aan den IJssel,South Holland,65255,town,0,0,50,0,none,none
+gn:2758027,Callantsoog,North Holland,2420,village,0,0,50,0,none,none
+gn:2758058,Butterhuizen,North Holland,3805,village,0,0,50,0,none,none
+gn:2758064,Bussum,North Holland,31334,town,0,0,50,0,none,none
+gn:2758097,Buren,Gelderland,3595,village,0,0,50,0,none,none
+gn:2758104,Bunschoten,Utrecht,3015,village,0,0,50,0,none,none
+gn:2758106,Bunnik,Utrecht,6315,village,0,0,50,0,none,none
+gn:2758111,Bunde,Limburg,5500,village,0,0,50,0,none,none
+gn:2758131,Buitenpost,Friesland,5120,village,0,0,50,0,none,none
+gn:2758162,Budschop,Limburg,1550,village,0,0,50,0,none,none
+gn:2758163,Budel-Schoot,North Brabant,1860,village,0,0,50,0,none,none
+gn:2758164,Budel-Dorplein,North Brabant,1540,village,0,0,50,0,none,none
+gn:2758166,Budel,North Brabant,7895,village,0,0,50,0,none,none
+gn:2758167,Buchten,Limburg,2015,village,0,0,50,0,none,none
+gn:2758174,Brunssum,Limburg,29254,town,0,0,50,0,none,none
+gn:2758175,Brunnepe,Overijssel,3780,village,0,0,50,0,none,none
+gn:2758177,Brummen,Gelderland,21344,town,0,0,50,0,none,none
+gn:2758180,Brukske,Limburg,4955,village,0,0,50,0,none,none
+gn:2758186,Bruinisse,Zeeland,3100,village,0,0,50,0,none,none
+gn:2758207,Bruchem,Gelderland,1370,village,0,0,50,0,none,none
+gn:2758213,Brouwershaven,Zeeland,1275,village,0,0,50,0,none,none
+gn:2758239,Broeksterwâld,Friesland,1115,village,0,0,50,0,none,none
+gn:2758241,Broeksittard,Limburg,1550,village,0,0,50,0,none,none
+gn:2758245,Broek op Langedijk,North Holland,6165,village,0,0,50,0,none,none
+gn:2758258,Broek in Waterland,North Holland,3150,village,0,0,50,0,none,none
+gn:2758268,Broekhoven,North Brabant,7420,village,0,0,50,0,none,none
+gn:2758271,Broekhorn,North Holland,1995,village,0,0,50,0,none,none
+gn:2758275,Broekhem,Limburg,1960,village,0,0,50,0,none,none
+gn:2758311,Brinkhorst,Gelderland,3070,village,0,0,50,0,none,none
+gn:2758326,Brielle,South Holland,2765,village,0,0,50,0,none,none
+gn:2758333,Breukelen,Utrecht,14498,town,0,0,50,0,none,none
+gn:2758336,Breugel,North Brabant,1055,village,0,0,50,0,none,none
+gn:2758341,Breskens,Zeeland,4335,village,0,0,50,0,none,none
+gn:2758360,Breezand,North Holland,3940,village,0,0,50,0,none,none
+gn:2758391,Bredeweg,Gelderland,2500,village,0,0,50,0,none,none
+gn:2758393,Bredevoort,Gelderland,1405,village,0,0,50,0,none,none
+gn:2758401,Breda,North Brabant,184126,city,0,0,50,0,none,none
+gn:2758416,Brand,North Brabant,1270,village,0,0,50,0,none,none
+gn:2758422,Brakkenstein,Gelderland,3755,village,0,0,50,0,none,none
+gn:2758426,Brakel,Gelderland,2555,village,0,0,50,0,none,none
+gn:2758429,Brachterbeek,Limburg,1220,village,0,0,50,0,none,none
+gn:2758431,Brabander,Limburg,1680,village,0,0,50,0,none,none
+gn:2758460,Boxtel,North Brabant,29511,town,0,0,50,0,none,none
+gn:2758462,Boxmeer,North Brabant,12407,town,0,0,50,0,none,none
+gn:2758490,Boven-Leeuwen,Gelderland,2245,village,0,0,50,0,none,none
+gn:2758495,Bovenkerk,North Holland,3210,village,0,0,50,0,none,none
+gn:2758498,Bovenkarspel,North Holland,10122,town,0,0,50,0,none,none
+gn:2758500,Boven-Hardinxveld,South Holland,4500,village,0,0,50,0,none,none
+gn:2758540,Bosschenhoofd,North Brabant,1925,village,0,0,50,0,none,none
+gn:2758547,Boskoop,South Holland,15222,town,0,0,50,0,none,none
+gn:2758549,Boskamp,Overijssel,1150,village,0,0,50,0,none,none
+gn:2758579,Bosch en Duin,Utrecht,1675,village,0,0,50,0,none,none
+gn:2758587,Borssele,Zeeland,22285,town,0,0,50,0,none,none
+gn:2758598,Borne,Overijssel,23877,town,0,0,50,0,none,none
+gn:2758602,Born,Limburg,2430,village,0,0,50,0,none,none
+gn:2758611,Borgharen,Limburg,1735,village,0,0,50,0,none,none
+gn:2758621,Borger,Drenthe,4570,village,0,0,50,0,none,none
+gn:2758623,Borgele,Overijssel,3580,village,0,0,50,0,none,none
+gn:2758626,Borculo,Gelderland,10373,town,0,0,50,0,none,none
+gn:2758633,Boornbergum,Friesland,1660,village,0,0,50,0,none,none
+gn:2758682,Bolsward,Friesland,9160,village,0,0,50,0,none,none
+gn:2758686,Bolnes,South Holland,7650,village,0,0,50,0,none,none
+gn:2758759,Boekel,North Brabant,5480,village,0,0,50,0,none,none
+gn:2758765,Bodegraven,South Holland,19395,town,0,0,50,0,none,none
+gn:2758770,Bocholtz,Limburg,4340,village,0,0,50,0,none,none
+gn:2758777,Blokzijl,Overijssel,1110,village,0,0,50,0,none,none
+gn:2758795,Bloemhof,South Holland,13715,town,0,0,50,0,none,none
+gn:2758803,Bloemendaal,South Holland,9900,village,0,0,50,0,none,none
+gn:2758804,Bloemendaal,North Holland,6705,village,0,0,50,0,none,none
+gn:2758809,Blitterswijck,Limburg,1105,village,0,0,50,0,none,none
+gn:2758815,Blijham,Groningen,2060,village,0,0,50,0,none,none
+gn:2758825,Bleskensgraaf,South Holland,2800,village,0,0,50,0,none,none
+gn:2758831,Blerick,Limburg,15820,town,0,0,50,0,none,none
+gn:2758838,Bleiswijk,South Holland,10549,town,0,0,50,0,none,none
+gn:2758839,Bleijerheide,Limburg,4285,village,0,0,50,0,none,none
+gn:2758868,Blaricum,North Holland,12940,town,0,0,50,0,none,none
+gn:2758878,Bladel,North Brabant,9785,village,0,0,50,0,none,none
+gn:2758880,Blaarthem,North Brabant,2465,village,0,0,50,0,none,none
+gn:2758884,Bitswijk,North Brabant,4030,village,0,0,50,0,none,none
+gn:2758895,Burdaard,Friesland,1166,village,0,0,50,0,none,none
+gn:2758908,Binnenhof,South Holland,1400,village,0,0,50,0,none,none
+gn:2758927,Bilthoven,Utrecht,23248,town,0,0,50,0,none,none
+gn:2758930,Bilgaard,Friesland,6105,village,0,0,50,0,none,none
+gn:2758941,Bijvanck,North Holland,3875,village,0,0,50,0,none,none
+gn:2758971,Biesland,Limburg,1505,village,0,0,50,0,none,none
+gn:2758974,Biesdonk,North Brabant,4970,village,0,0,50,0,none,none
+gn:2758992,Biddinghuizen,Flevoland,5010,village,0,0,50,0,none,none
+gn:2758998,Beverwijk,North Holland,37585,town,0,0,50,0,none,none
+gn:2759006,Beusichem,Gelderland,2750,village,0,0,50,0,none,none
+gn:2759016,Beuningen,Gelderland,25557,town,0,0,50,0,none,none
+gn:2759040,Best,North Brabant,29074,town,0,0,50,0,none,none
+gn:2759043,Besoijen,North Brabant,3770,village,0,0,50,0,none,none
+gn:2759057,Berltsum,Friesland,2530,village,0,0,50,0,none,none
+gn:2759059,Berlicum,North Brabant,4250,village,0,0,50,0,none,none
+gn:2759064,Berkum,Overijssel,3720,village,0,0,50,0,none,none
+gn:2759070,Berkhout,North Holland,2945,village,0,0,50,0,none,none
+gn:2759078,Berkenwoude,South Holland,1390,village,0,0,50,0,none,none
+gn:2759097,Beringe,Limburg,1925,village,0,0,50,0,none,none
+gn:2759103,Burgum,Friesland,9720,village,0,0,50,0,none,none
+gn:2759105,Bergstoep,South Holland,1205,village,0,0,50,0,none,none
+gn:2759113,Bergschenhoek,South Holland,16579,town,0,0,50,0,none,none
+gn:2759126,Berghem,North Brabant,6500,village,0,0,50,0,none,none
+gn:2759129,Bergharen,Gelderland,1370,village,0,0,50,0,none,none
+gn:2759132,Bergeijk,North Brabant,18181,town,0,0,50,0,none,none
+gn:2759145,Bergen op Zoom,North Brabant,66256,town,0,0,50,0,none,none
+gn:2759147,Berg en Dal,Gelderland,1949,village,0,0,50,0,none,none
+gn:2759148,Berg en Bos,Gelderland,1995,village,0,0,50,0,none,none
+gn:2759154,Bergen,North Holland,29715,town,0,0,50,0,none,none
+gn:2759163,Berg,Limburg,1985,village,0,0,50,0,none,none
+gn:2759164,Berg,Limburg,3200,village,0,0,50,0,none,none
+gn:2759175,Bentveld,North Holland,1010,village,0,0,50,0,none,none
+gn:2759178,Benthuizen,South Holland,18959,town,0,0,50,0,none,none
+gn:2759197,Bennekom,Gelderland,15160,town,0,0,50,0,none,none
+gn:2759199,Bennebroek,North Holland,5410,village,0,0,50,0,none,none
+gn:2759212,Beneden-Leeuwen,Gelderland,6925,village,0,0,50,0,none,none
+gn:2759231,Bemmel,Gelderland,12020,town,0,0,50,0,none,none
+gn:2759240,Beltrum,Gelderland,1285,village,0,0,50,0,none,none
+gn:2759247,Bellingwolde,Groningen,2290,village,0,0,50,0,none,none
+gn:2759254,Belfort,Limburg,2645,village,0,0,50,0,none,none
+gn:2759256,Belfeld,Limburg,5575,village,0,0,50,0,none,none
+gn:2759259,Belcrum,North Brabant,3605,village,0,0,50,0,none,none
+gn:2759271,Beilen,Drenthe,9495,village,0,0,50,0,none,none
+gn:2759275,Beetsterzwaag,Friesland,3485,village,0,0,50,0,none,none
+gn:2759286,Beesel,Limburg,2090,village,0,0,50,0,none,none
+gn:2759288,Beesd,Gelderland,2980,village,0,0,50,0,none,none
+gn:2759302,Beersdal,Limburg,1620,village,0,0,50,0,none,none
+gn:2759309,Beers,North Brabant,1275,village,0,0,50,0,none,none
+gn:2759342,Beekbergen,Gelderland,2545,village,0,0,50,0,none,none
+gn:2759344,Beek gem Montferland,Gelderland,1315,village,0,0,50,0,none,none
+gn:2759349,Beek,North Brabant,5185,village,0,0,50,0,none,none
+gn:2759350,Beek,Limburg,8415,village,0,0,50,0,none,none
+gn:2759353,Beegden,Limburg,1765,village,0,0,50,0,none,none
+gn:2759356,Bedum,Groningen,7765,village,0,0,50,0,none,none
+gn:2759373,Bavel,North Brabant,5360,village,0,0,50,0,none,none
+gn:2759381,Bathmen,Overijssel,5815,village,0,0,50,0,none,none
+gn:2759407,Barneveld,Gelderland,35095,town,0,0,50,0,none,none
+gn:2759415,Barger-Oosterveld,Drenthe,3090,village,0,0,50,0,none,none
+gn:2759419,Bargeres,Drenthe,9060,village,0,0,50,0,none,none
+gn:2759426,Barendrecht,South Holland,38672,town,0,0,50,0,none,none
+gn:2759434,Bant,Flevoland,1665,village,0,0,50,0,none,none
+gn:2759441,Banholt,Limburg,1005,village,0,0,50,0,none,none
+gn:2759444,Bangert,North Holland,1435,village,0,0,50,0,none,none
+gn:2759467,Ballast,Drenthe,1710,village,0,0,50,0,none,none
+gn:2759472,Balk,Friesland,3915,village,0,0,50,0,none,none
+gn:2759483,Bakkum,North Holland,3985,village,0,0,50,0,none,none
+gn:2759486,Bakkeveen,Friesland,1450,village,0,0,50,0,none,none
+gn:2759496,Bakhuizen,Friesland,1060,village,0,0,50,0,none,none
+gn:2759505,Bakenberg,Gelderland,1025,village,0,0,50,0,none,none
+gn:2759511,Bakel,North Brabant,4140,village,0,0,50,0,none,none
+gn:2759520,Baflo,Groningen,1730,village,0,0,50,0,none,none
+gn:2759524,Badhoevedorp,North Holland,15625,town,0,0,50,0,none,none
+gn:2759529,Babberich,Gelderland,1445,village,0,0,50,0,none,none
+gn:2759544,Baarn,Utrecht,24584,town,0,0,50,0,none,none
+gn:2759549,Baarlo,Limburg,5215,village,0,0,50,0,none,none
+gn:2759554,Baarle-Nassau,North Brabant,6845,village,0,0,50,0,none,none
+gn:2759563,Baardwijk,North Brabant,2165,village,0,0,50,0,none,none
+gn:2759572,Baambrugge,Utrecht,1010,village,0,0,50,0,none,none
+gn:2759575,Baalder,Overijssel,3470,village,0,0,50,0,none,none
+gn:2759594,Axel,Zeeland,8149,village,0,0,50,0,none,none
+gn:2759601,Avenhorn,North Holland,3415,village,0,0,50,0,none,none
+gn:2759610,Austerlitz,Utrecht,1440,village,0,0,50,0,none,none
+gn:2759611,Augustinusga,Friesland,1075,village,0,0,50,0,none,none
+gn:2759621,Asten,North Brabant,9535,village,0,0,50,0,none,none
+gn:2759631,Assendelft,North Holland,25460,town,0,0,50,0,none,none
+gn:2759633,Assen,Drenthe,68836,town,0,0,50,0,none,none
+gn:2759661,Arnhem,Gelderland,162424,city,0,0,50,0,none,none
+gn:2759664,Arnemuiden,Zeeland,5075,village,0,0,50,0,none,none
+gn:2759673,Arkel,South Holland,2980,village,0,0,50,0,none,none
+gn:2759684,Arcen,Limburg,8793,village,0,0,50,0,none,none
+gn:2759687,Appingedam,Groningen,12364,town,0,0,50,0,none,none
+gn:2759698,Appelscha,Friesland,4035,village,0,0,50,0,none,none
+gn:2759706,Apeldoorn,Gelderland,136670,city,0,0,50,0,none,none
+gn:2759729,Annen,Drenthe,3405,village,0,0,50,0,none,none
+gn:2759737,Anna Paulowna,North Holland,8845,village,0,0,50,0,none,none
+gn:2759748,Anklaar,Gelderland,3865,village,0,0,50,0,none,none
+gn:2759749,Ankeveense Rade,North Holland,1075,village,0,0,50,0,none,none
+gn:2759751,Ankeveen,North Holland,1505,village,0,0,50,0,none,none
+gn:2759764,Angerlo,Gelderland,1130,village,0,0,50,0,none,none
+gn:2759765,Angeren,Gelderland,2275,village,0,0,50,0,none,none
+gn:2759766,Angelslo,Drenthe,7840,village,0,0,50,0,none,none
+gn:2759774,Andijk,North Holland,7410,village,0,0,50,0,none,none
+gn:2759781,Andelst,Gelderland,2990,village,0,0,50,0,none,none
+nl-amsterdam,Amsterdam,North Holland,741636,large-city,0,0,50,0,none,none
+gn:2759796,Amstenrade,Limburg,1740,village,0,0,50,0,none,none
+gn:2759798,Amstelveen,North Holland,79639,town,0,0,50,0,none,none
+gn:2759813,Ammerzoden,Gelderland,3040,village,0,0,50,0,none,none
+gn:2759815,Ammerstol,South Holland,1580,village,0,0,50,0,none,none
+gn:2759821,Amersfoort,Utrecht,139914,city,0,0,50,0,none,none
+gn:2759828,Amerongen,Utrecht,5085,village,0,0,50,0,none,none
+gn:2759831,America,Limburg,1175,village,0,0,50,0,none,none
+gn:2759849,Ameide,Utrecht,3500,village,0,0,50,0,none,none
+gn:2759850,Amby,Limburg,6535,village,0,0,50,0,none,none
+gn:2759853,Alverna,Gelderland,1595,village,0,0,50,0,none,none
+gn:2759862,Alteveer,Groningen,1155,village,0,0,50,0,none,none
+gn:2759875,Alphen aan den Rijn,South Holland,70251,town,0,0,50,0,none,none
+gn:2759876,Alphen,Gelderland,1675,village,0,0,50,0,none,none
+gn:2759877,Alphen,North Brabant,3160,village,0,0,50,0,none,none
+gn:2759878,Almkerk,North Brabant,2715,village,0,0,50,0,none,none
+gn:2759879,Almere Stad,Flevoland,176432,city,0,0,50,0,none,none
+gn:2759887,Almelo,Overijssel,72725,town,0,0,50,0,none,none
+gn:2759899,Alkmaar,North Holland,94853,town,0,0,50,0,none,none
+gn:2759915,Alblasserdam,South Holland,18348,town,0,0,50,0,none,none
+gn:2759922,Akkrum,Friesland,3440,village,0,0,50,0,none,none
+gn:2759929,Akert,North Brabant,2000,village,0,0,50,0,none,none
+gn:2759931,Akersloot,North Holland,5340,village,0,0,50,0,none,none
+gn:2759945,Afferden,Gelderland,1405,village,0,0,50,0,none,none
+gn:2759951,Aerdenhout,North Holland,4815,village,0,0,50,0,none,none
+gn:2759961,Aduard,Groningen,2030,village,0,0,50,0,none,none
+gn:2759971,Adegeest,South Holland,2610,village,0,0,50,0,none,none
+gn:2759995,Achterveld,Utrecht,2652,village,0,0,50,0,none,none
+gn:2760063,Abdissenbosch,Limburg,1420,village,0,0,50,0,none,none
+gn:2760064,Abcoven,North Brabant,1325,village,0,0,50,0,none,none
+gn:2760067,Abcoude,Utrecht,6920,village,0,0,50,0,none,none
+gn:2760073,Abbenes,North Holland,1015,village,0,0,50,0,none,none
+gn:2760078,Abbekerk,North Holland,2070,village,0,0,50,0,none,none
+gn:2760096,Aardenburg,Zeeland,2005,village,0,0,50,0,none,none
+gn:2760123,Aalten,Gelderland,19141,town,0,0,50,0,none,none
+gn:2760129,Aalst,North Brabant,3480,village,0,0,50,0,none,none
+gn:2760131,Aalst,Gelderland,1580,village,0,0,50,0,none,none
+gn:2760134,Aalsmeer,North Holland,13730,town,0,0,50,0,none,none
+gn:2760142,Aalden,Drenthe,1625,village,0,0,50,0,none,none
+gn:2760144,Aalburg,North Brabant,6588,village,0,0,50,0,none,none
+gn:2760146,Aalanden,Overijssel,13375,town,0,0,50,0,none,none
+gn:2760147,Aagtekerke,Zeeland,1245,village,0,0,50,0,none,none
+gn:6324403,Camminghaburen,Friesland,11500,town,0,0,50,0,none,none
+gn:6544881,Amsterdam-Zuidoost,North Holland,87854,town,0,0,50,0,none,none
+gn:6544882,Zuid-Berghuizen,Overijssel,3970,village,0,0,50,0,none,none
+gn:6619678,Chevremont,Limburg,3160,village,0,0,50,0,none,none
+gn:6621454,Welgelegen,Gelderland,3790,village,0,0,50,0,none,none
+gn:6621507,Matenveld,Gelderland,5895,village,0,0,50,0,none,none
+gn:6621508,Matenhoeve,Gelderland,4915,village,0,0,50,0,none,none
+gn:6621509,Matendonk,Gelderland,5225,village,0,0,50,0,none,none
+gn:6621510,Matenhorst,Gelderland,3055,village,0,0,50,0,none,none
+gn:6621511,Matendreef,Gelderland,4325,village,0,0,50,0,none,none
+gn:6621512,Matengaarde,Gelderland,2810,village,0,0,50,0,none,none
+gn:6621515,Rivierenkwartier,Gelderland,2940,village,0,0,50,0,none,none
+gn:6621516,Staatsliedenkwartier,Gelderland,3065,village,0,0,50,0,none,none
+gn:6621517,Brummelhof,Gelderland,3455,village,0,0,50,0,none,none
+gn:6621518,Vogelkwartier,Gelderland,4975,village,0,0,50,0,none,none
+gn:6621519,Componistenkwartier,Gelderland,3615,village,0,0,50,0,none,none
+gn:6621520,Woudhuis,Gelderland,6375,village,0,0,50,0,none,none
+gn:6621522,Sluisoord,Gelderland,4205,village,0,0,50,0,none,none
+gn:6621523,Sprenkelaar,Gelderland,3775,village,0,0,50,0,none,none
+gn:6621525,De Haven,Gelderland,1565,village,0,0,50,0,none,none
+gn:6621526,Binnenstad,Gelderland,4900,village,0,0,50,0,none,none
+gn:6621527,Sprengenweg-Noord,Gelderland,1120,village,0,0,50,0,none,none
+gn:6621528,Sprengenbos,Gelderland,4315,village,0,0,50,0,none,none
+gn:6621529,Spainkbos,Gelderland,1155,village,0,0,50,0,none,none
+gn:6621532,De Heeze,Gelderland,2510,village,0,0,50,0,none,none
+gn:6621533,Westenenk,Gelderland,3680,village,0,0,50,0,none,none
+gn:6621534,Winkewijert,Gelderland,1760,village,0,0,50,0,none,none
+gn:6621535,De Bouwhof,Gelderland,2380,village,0,0,50,0,none,none
+gn:6640198,Speelheide,North Brabant,1355,village,0,0,50,0,none,none
+gn:6640199,Salderes,North Brabant,3240,village,0,0,50,0,none,none
+gn:6692371,Jubbega,Friesland,3230,village,0,0,50,0,none,none
+gn:6695503,Meerhoven,North Brabant,7175,village,0,0,50,0,none,none
+gn:6695505,Grasrijk,North Brabant,5375,village,0,0,50,0,none,none
+gn:6697850,Hoek,Friesland,1100,village,0,0,50,0,none,none
+gn:6697854,De Knipe,Friesland,1480,village,0,0,50,0,none,none
+gn:6698635,Lunetten,Utrecht,11679,town,0,0,50,0,none,none
+gn:6698718,Aarle-Rixtel,North Brabant,5125,village,0,0,50,0,none,none
+gn:6929953,Kelpen-Oler,Limburg,1170,village,0,0,50,0,none,none
+gn:6929980,Muschberg en Geestenberg,North Brabant,3836,village,0,0,50,0,none,none
+gn:6929984,Villapark,North Brabant,2050,village,0,0,50,0,none,none
+gn:6929985,Lakerlopen,North Brabant,3355,village,0,0,50,0,none,none
+gn:6929992,Berkel en Rodenrijs,South Holland,20189,town,0,0,50,0,none,none
+gn:6930031,Reitdiep,Groningen,2625,village,0,0,50,0,none,none
+gn:6941548,Ypenburg,South Holland,30000,town,0,0,50,0,none,none
+gn:6946241,Aldlân-Oost,Friesland,3850,village,0,0,50,0,none,none
+gn:6948945,Oranjewijk,South Holland,2650,village,0,0,50,0,none,none
+gn:6948946,Vondelwijk,South Holland,2205,village,0,0,50,0,none,none
+gn:6948947,Groenswaard,South Holland,5160,village,0,0,50,0,none,none
+gn:6950811,Randenbroek,Utrecht,7131,village,0,0,50,0,none,none
+gn:7115205,Corlaer,Gelderland,2700,village,0,0,50,0,none,none
+gn:7118109,Velserbroek,North Holland,15420,town,0,0,50,0,none,none
+gn:7284469,Kapelle,Zeeland,8670,village,0,0,50,0,none,none
+gn:7648384,Noord,North Holland,116777,city,0,0,50,0,none,none
+gn:7870365,Hoogkamp,Gelderland,1870,village,0,0,50,0,none,none
+gn:7870372,Gulden Bodem,Gelderland,1210,village,0,0,50,0,none,none
+gn:7870373,Sterrenberg,Gelderland,1035,village,0,0,50,0,none,none
+gn:7870374,Burgemeesterswijk,Gelderland,2850,village,0,0,50,0,none,none
+gn:7873874,Kop van Zuid,South Holland,2235,village,0,0,50,0,none,none
+gn:8379268,'s-Gravenland,South Holland,10000,town,0,0,50,0,none,none
+gn:8449928,Spechtenkamp,Utrecht,1080,village,0,0,50,0,none,none
+gn:8692975,Besterd,North Brabant,3395,village,0,0,50,0,none,none
+gn:8714374,Loosdrecht,North Holland,9410,village,0,0,50,0,none,none
+gn:9036084,Wisselaar,North Brabant,4200,village,0,0,50,0,none,none
+gn:9036086,Waterdonken,North Brabant,1110,village,0,0,50,0,none,none
+gn:11102422,Hunnerberg,Gelderland,3800,village,0,0,50,0,none,none
+gn:11776989,Son en Breugel,North Brabant,0,village,0,0,50,0,none,none
+gn:11951321,Marsdijk,Drenthe,12241,town,0,0,50,0,none,none
+gn:12207018,Op Buuren,Utrecht,1490,village,0,0,50,0,none,none
+gn:12207019,Zandweg-Oostwaard,Utrecht,3345,village,0,0,50,0,none,none
+gn:12495525,Dapperbuurt,North Holland,9755,village,0,0,50,0,none,none
+gn:12514473,Grachtengordel West,North Holland,6505,village,0,0,50,0,none,none
+gn:12547269,Nieuw-Vennep - Getsewoud,North Holland,16455,town,0,0,50,0,none,none
+gn:12573832,Grauwaart,Utrecht,1735,village,0,0,50,0,none,none
+gn:12746919,Almere Duin,Flevoland,2875,village,0,0,50,0,none,none
+gn:13535632,Maaspoort,North Brabant,16150,town,0,0,50,0,none,none
+gn:13645515,Leidsche Rijn,Utrecht,49307,town,0,0,50,0,none,none
+gn:13696813,Amsterdam Nieuw-West,North Holland,151677,city,0,0,50,0,none,none
+gn:13696815,Amsterdam-Oost,North Holland,135767,city,0,0,50,0,none,none
+gn:13696816,Amsterdam-Centrum,North Holland,86422,town,0,0,50,0,none,none
+gn:13696817,Amsterdam-Zuid,North Holland,144432,city,0,0,50,0,none,none
+gn:13696818,Amsterdam-West,North Holland,143842,city,0,0,50,0,none,none
+gn:13696819,Burgwallen-Oude Zijde,North Holland,4683,village,0,0,50,0,none,none
+gn:13696821,Burgwallen-Nieuwe Zijde,North Holland,4323,village,0,0,50,0,none,none
+gn:13696822,Nieuwmarkt/Lastage,North Holland,9973,village,0,0,50,0,none,none
+gn:13696823,Haarlemmerbuurt,North Holland,9145,village,0,0,50,0,none,none
+gn:13696825,Westelijke Eilanden,North Holland,2915,village,0,0,50,0,none,none
+gn:13696827,Westerdokseiland,North Holland,1845,village,0,0,50,0,none,none
+gn:13696828,Haarlemmerbuurt-West,North Holland,2395,village,0,0,50,0,none,none
+gn:13696829,Haarlemmerbuurt-Oost,North Holland,1510,village,0,0,50,0,none,none
+gn:13696830,Marnixbuurt-Noord,North Holland,1445,village,0,0,50,0,none,none
+gn:13696831,Driehoekbuurt,North Holland,2730,village,0,0,50,0,none,none
+gn:13696832,Anjeliersbuurt-Noord,North Holland,2070,village,0,0,50,0,none,none
+gn:13696833,Anjeliersbuurt-Zuid,North Holland,2945,village,0,0,50,0,none,none
+gn:13696836,Elandsgrachtbuurt,North Holland,4300,village,0,0,50,0,none,none
+gn:13696840,Langestraat en omgeving,North Holland,1885,village,0,0,50,0,none,none
+gn:13696841,Leliegracht en omgeving,North Holland,1825,village,0,0,50,0,none,none
+gn:13696842,Felix Meritisbuurt,North Holland,2115,village,0,0,50,0,none,none
+gn:13696903,Kop Zeedijk,North Holland,1150,village,0,0,50,0,none,none
+gn:13696905,Burgwallen-Oost,North Holland,1715,village,0,0,50,0,none,none
+gn:13696909,Lastage,North Holland,1110,village,0,0,50,0,none,none
+gn:13696910,Nieuwmarktbuurt,North Holland,1575,village,0,0,50,0,none,none
+gn:13696911,Zuiderkerkbuurt,North Holland,1600,village,0,0,50,0,none,none
+gn:13696918,Vijzelstraatbuurt,North Holland,1390,village,0,0,50,0,none,none
+gn:13696919,Amstelveldbuurt,North Holland,1525,village,0,0,50,0,none,none
+gn:13696921,Leidsebuurt-Noordoost,North Holland,1120,village,0,0,50,0,none,none
+gn:13696922,Weteringbuurt,North Holland,2440,village,0,0,50,0,none,none
+gn:13696923,Utrechtsebuurt-Zuid,North Holland,1190,village,0,0,50,0,none,none
+gn:13696926,Den Texbuurt,North Holland,1090,village,0,0,50,0,none,none
+gn:13696951,Generalenbuurt,North Brabant,5545,village,0,0,50,0,none,none

@@ -1,0 +1,143 @@
+place_id,name,region,population,market,verified_homes,dated_listings,shortfall_to_50,recorded_sales,rent_source,price_source
+gn:2220849,Yoko,Centre,5269,village,0,0,50,0,none,none
+gn:2220853,Yokadouma,East,32900,town,0,0,50,0,none,none
+gn:2220957,Yaoundé,Centre,1299369,large-city,0,0,50,0,none,none
+gn:2221030,Yagoua,Far North,59069,town,0,0,50,0,none,none
+gn:2221046,Yabassi,Littoral,7560,village,0,0,50,0,none,none
+gn:2221053,Wum,North-West,42457,town,0,0,50,0,none,none
+gn:2221362,Touboro,North,28987,town,0,0,50,0,none,none
+gn:2221394,Tonga,West,16036,town,0,0,50,0,none,none
+gn:2221408,Tombel,South-West,24384,town,0,0,50,0,none,none
+gn:2221504,Tiko,South-West,94836,town,0,0,50,0,none,none
+gn:2221513,Tignère,Adamaoua,4353,village,0,0,50,0,none,none
+gn:2221530,Tibati,Adamaoua,35673,town,0,0,50,0,none,none
+gn:2221607,Tcholliré,North,23187,town,0,0,50,0,none,none
+gn:2221631,Tchéboa,North,35199,town,0,0,50,0,none,none
+gn:2221802,Souza Gare,Littoral,24994,town,0,0,50,0,none,none
+gn:2222230,Sangmélima,South,80036,town,0,0,50,0,none,none
+gn:2222366,Saa,Centre,5727,village,0,0,50,0,none,none
+gn:2222439,Rey Bouba,North,11454,town,0,0,50,0,none,none
+gn:2222539,Poli,North,5727,village,0,0,50,0,none,none
+gn:2222568,Pitoa,North,33610,town,0,0,50,0,none,none
+gn:2222623,Penja,Littoral,21367,town,0,0,50,0,none,none
+gn:2223092,Oshie,North-West,10822,town,0,0,50,0,none,none
+gn:2223162,Ombésa,Centre,1833,village,0,0,50,0,none,none
+gn:2223191,Olamzé,South,8518,village,0,0,50,0,none,none
+gn:2223198,Oku,North-West,44443,town,0,0,50,0,none,none
+gn:2223216,Okola,Centre,5390,village,0,0,50,0,none,none
+gn:2223226,Okoa,Centre,24110,town,0,0,50,0,none,none
+gn:2223293,Obala,Centre,45321,town,0,0,50,0,none,none
+gn:2223421,Ntui,Centre,6185,village,0,0,50,0,none,none
+gn:2223734,Nkoteng,Centre,27677,town,0,0,50,0,none,none
+gn:2223763,Nkongsamba,Littoral,162309,city,0,0,50,0,none,none
+gn:2224163,Nkambe,North-West,26816,town,0,0,50,0,none,none
+gn:2224197,Njombé,Littoral,27130,town,0,0,50,0,none,none
+gn:2224212,Njinikom,North-West,8247,village,0,0,50,0,none,none
+gn:2224413,Nguti,South-West,5498,village,0,0,50,0,none,none
+gn:2224584,Ngoro,Centre,2305,village,0,0,50,0,none,none
+gn:2224641,Ngomedzap,Centre,4284,village,0,0,50,0,none,none
+gn:2224827,Ngaoundéré,Adamaoua,238196,city,0,0,50,0,none,none
+gn:2224863,Ngambé,Littoral,6414,village,0,0,50,0,none,none
+gn:2225263,Ndikiniméki,Centre,8247,village,0,0,50,0,none,none
+gn:2225325,Ndelele,East,5040,village,0,0,50,0,none,none
+gn:2225457,Nanga Eboko,Centre,28518,town,0,0,50,0,none,none
+gn:2225703,Mvangué,South,1908,village,0,0,50,0,none,none
+gn:2225726,Muyuka,South-West,43749,town,0,0,50,0,none,none
+gn:2225728,Mutengene,South-West,64054,town,0,0,50,0,none,none
+gn:2225745,Mundemba,South-West,11912,town,0,0,50,0,none,none
+gn:2225940,Mouanko,Littoral,1604,village,0,0,50,0,none,none
+gn:2225991,Mora,Far North,61523,town,0,0,50,0,none,none
+gn:2226275,Mokolo,Far North,51999,town,0,0,50,0,none,none
+gn:2226441,Mme-Bafumen,North-West,6149,village,0,0,50,0,none,none
+gn:2226515,Minta,Centre,4934,village,0,0,50,0,none,none
+gn:2226641,Mindif,Far North,10538,town,0,0,50,0,none,none
+gn:2227230,Melong,Littoral,76716,town,0,0,50,0,none,none
+gn:2227402,Meïganga,Adamaoua,59426,town,0,0,50,0,none,none
+gn:2227613,Mbouda,West,71867,town,0,0,50,0,none,none
+gn:2227853,Mbengwi,North-West,9734,village,0,0,50,0,none,none
+gn:2227980,Mbankomo,Centre,2387,village,0,0,50,0,none,none
+gn:2228005,Mbanga,Littoral,44155,town,0,0,50,0,none,none
+gn:2228019,Mbang,East,1237,village,0,0,50,0,none,none
+gn:2228028,Mbandjok,Centre,29281,town,0,0,50,0,none,none
+gn:2228079,Mbalmayo,Centre,82384,town,0,0,50,0,none,none
+gn:2228373,Maroua,Far North,314122,city,0,0,50,0,none,none
+gn:2228499,Manjo,Littoral,41740,town,0,0,50,0,none,none
+gn:2228675,Mamfe,South-West,20350,town,0,0,50,0,none,none
+gn:2228881,Makary,Far North,7331,village,0,0,50,0,none,none
+gn:2228902,Makak,Centre,29135,town,0,0,50,0,none,none
+gn:2228964,Magba,West,30931,town,0,0,50,0,none,none
+gn:2228977,Maga,Far North,24492,town,0,0,50,0,none,none
+gn:2229152,Loum,Littoral,58554,town,0,0,50,0,none,none
+gn:2229267,Lolodorf,South,22252,town,0,0,50,0,none,none
+gn:2229411,Limbe,South-West,131381,city,0,0,50,0,none,none
+gn:2229681,Lagdo,North,33564,town,0,0,50,0,none,none
+gn:2229748,Kumbo,North-West,125124,city,0,0,50,0,none,none
+gn:2229752,Kumba,South-West,225046,city,0,0,50,0,none,none
+gn:2229761,Kribi,South,93482,town,0,0,50,0,none,none
+gn:2229780,Koza,Far North,3665,village,0,0,50,0,none,none
+gn:2229798,Kousséri,Far North,139024,city,0,0,50,0,none,none
+gn:2230028,Kontcha,Adamaoua,8018,village,0,0,50,0,none,none
+gn:2230285,Bankim,Adamaoua,5727,village,0,0,50,0,none,none
+gn:2230378,Kekem,West,27038,town,0,0,50,0,none,none
+gn:2230599,Kaélé,Far North,32853,town,0,0,50,0,none,none
+gn:2230641,Jakiri,North-West,5269,village,0,0,50,0,none,none
+gn:2230873,Guidiguis,Far North,24554,town,0,0,50,0,none,none
+gn:2230876,Guider,North,81608,town,0,0,50,0,none,none
+gn:2231319,Garoua Boulaï,East,46615,town,0,0,50,0,none,none
+gn:2231320,Garoua,North,34957,town,0,0,50,0,none,none
+gn:2231482,Fundong,North-West,43509,town,0,0,50,0,none,none
+gn:2231504,Foumbot,West,74319,town,0,0,50,0,none,none
+gn:2231506,Foumban,West,130287,city,0,0,50,0,none,none
+gn:2231564,Fontem,South-West,42689,town,0,0,50,0,none,none
+gn:2231636,Figuil,North,31550,town,0,0,50,0,none,none
+gn:2231775,Évodoula,Centre,1521,village,0,0,50,0,none,none
+gn:2231851,Essé,Centre,3803,village,0,0,50,0,none,none
+gn:2231881,Eséka,Centre,27928,town,0,0,50,0,none,none
+gn:2232102,Ekondo Titi,South-West,23975,town,0,0,50,0,none,none
+gn:2232239,Edéa,Littoral,103861,city,0,0,50,0,none,none
+gn:2232283,Ébolowa,South,101363,city,0,0,50,0,none,none
+gn:2232444,Dschang,West,99582,town,0,0,50,0,none,none
+gn:2232497,Doumé,East,5581,village,0,0,50,0,none,none
+gn:2232593,Douala,Littoral,1338082,large-city,0,0,50,0,none,none
+gn:2232774,Djohong,Adamaoua,4813,village,0,0,50,0,none,none
+gn:2232997,Dizangué,Littoral,19243,town,0,0,50,0,none,none
+gn:2233056,Dimako,East,8476,village,0,0,50,0,none,none
+gn:2233100,Dibombari,Littoral,4811,village,0,0,50,0,none,none
+gn:2233118,Diang,Littoral,2062,village,0,0,50,0,none,none
+gn:2233410,Buea,South-West,140533,city,0,0,50,0,none,none
+gn:2233704,Bonabéri,Littoral,8091,village,0,0,50,0,none,none
+gn:2233805,Bogo,Far North,32830,town,0,0,50,0,none,none
+gn:2234339,Bétaré Oya,East,11866,town,0,0,50,0,none,none
+gn:2234359,Bertoua,East,137993,city,0,0,50,0,none,none
+gn:2234455,Belo,North-West,8705,village,0,0,50,0,none,none
+gn:2234520,Bélel,Adamaoua,6831,village,0,0,50,0,none,none
+gn:2234536,Bélabo,East,24359,town,0,0,50,0,none,none
+gn:2234545,Bekondo,South-West,7331,village,0,0,50,0,none,none
+gn:2234635,Bazou,West,13058,town,0,0,50,0,none,none
+gn:2234663,Batouri,East,49422,town,0,0,50,0,none,none
+gn:2234684,Batibo,North-West,9163,village,0,0,50,0,none,none
+gn:2234794,Banyo,Adamaoua,47936,town,0,0,50,0,none,none
+gn:2234803,Bansoa,West,7560,village,0,0,50,0,none,none
+gn:2234842,Ngou,West,7560,village,0,0,50,0,none,none
+gn:2234865,Bangangté,West,43694,town,0,0,50,0,none,none
+gn:2234904,Bandjoun,West,31750,town,0,0,50,0,none,none
+gn:2234936,Bana,West,5727,village,0,0,50,0,none,none
+gn:2234941,Bamusso,South-West,24741,town,0,0,50,0,none,none
+gn:2234942,Ndop,North-West,40152,town,0,0,50,0,none,none
+gn:2234968,Bamendjou,West,6643,village,0,0,50,0,none,none
+gn:2234974,Bamenda,North-West,420445,city,0,0,50,0,none,none
+gn:2235029,Bali,North-West,27473,town,0,0,50,0,none,none
+gn:2235186,Bafut,North-West,25563,town,0,0,50,0,none,none
+gn:2235189,Bafoussam,West,373268,city,0,0,50,0,none,none
+gn:2235194,Bafia,Centre,74050,town,0,0,50,0,none,none
+gn:2235196,Bafang,West,54505,town,0,0,50,0,none,none
+gn:2235293,Babanki,North-West,9851,village,0,0,50,0,none,none
+gn:2235660,Ambam,South,25052,town,0,0,50,0,none,none
+gn:2235776,Akonolinga,Centre,30078,town,0,0,50,0,none,none
+gn:2235780,Akono,Centre,3821,village,0,0,50,0,none,none
+gn:2235814,Akom II,South,9709,village,0,0,50,0,none,none
+gn:2236053,Abong Mbang,East,24433,town,0,0,50,0,none,none
+gn:2576483,Ngaoundal,Adamaoua,40328,town,0,0,50,0,none,none
+gn:2595172,Ndom,Littoral,5498,village,0,0,50,0,none,none
+gn:2596834,Blangwa,Far North,27208,town,0,0,50,0,none,none
+gn:6620518,Somié,Adamaoua,2000,village,0,0,50,0,none,none

@@ -1,0 +1,176 @@
+place_id,name,region,population,market,verified_homes,dated_listings,shortfall_to_50,recorded_sales,rent_source,price_source
+gn:610824,Zugdidi,Samegrelo and Zemo Svaneti,40067,town,0,0,50,0,none,none
+gn:610830,Zovreti,Imereti,1513,village,0,0,50,0,none,none
+gn:610849,Zhinvali,Mtskheta-Mtianeti,2643,village,0,0,50,0,none,none
+gn:610864,Zestaponi,Imereti,20183,town,0,0,50,0,none,none
+gn:610960,Zemo Gulripshi,Abkhazia,1106,village,0,0,50,0,none,none
+gn:610984,Zemo-Barghebi,Abkhazia,1159,village,0,0,50,0,none,none
+gn:611029,Zeda Sakara,Imereti,2099,village,0,0,50,0,none,none
+gn:611093,Zahesi,Mtskheta-Mtianeti,5200,village,0,0,50,0,none,none
+gn:611131,Vladimirovka,Abkhazia,1676,village,0,0,50,0,none,none
+gn:611150,Zemo Eshera,Abkhazia,1052,village,0,0,50,0,none,none
+gn:611212,Varch’a,Abkhazia,2677,village,0,0,50,0,none,none
+gn:611219,Vani,Imereti,3151,village,0,0,50,0,none,none
+gn:611230,Vale,Samtskhe-Javakheti,4982,village,0,0,50,0,none,none
+gn:611274,Ureki,Guria,1166,village,0,0,50,0,none,none
+gn:611287,Ch’iauri,Kakheti,1044,village,0,0,50,0,none,none
+gn:611373,Tsnori,Kakheti,4767,village,0,0,50,0,none,none
+gn:611398,Tsqnet’i,Kvemo Kartli,7166,village,0,0,50,0,none,none
+gn:611403,Ts’khinvali,Shida Kartli,32180,town,0,0,50,0,none,none
+gn:611492,Ts’inandali,Kakheti,2675,village,0,0,50,0,none,none
+gn:611512,Tsikhisdziri,Adjara,1500,village,0,0,50,0,none,none
+gn:611534,Ts’avk’isi,Tbilisi,1083,village,0,0,50,0,none,none
+gn:611548,Tsalka,Kvemo Kartli,3900,village,0,0,50,0,none,none
+gn:611551,Tsalenjikha,Samegrelo and Zemo Svaneti,2938,village,0,0,50,0,none,none
+gn:611566,Tsageri,Racha-Lechkhumi and Kvemo Svaneti,1014,village,0,0,50,0,none,none
+gn:611583,Tqvarch'eli,Abkhazia,5044,village,0,0,50,0,none,none
+gn:611584,Tqibuli,Imereti,7957,village,0,0,50,0,none,none
+gn:611669,Tianeti,Mtskheta-Mtianeti,3549,village,0,0,50,0,none,none
+gn:611674,Tetritsqaro,Kvemo Kartli,5041,village,0,0,50,0,none,none
+gn:611682,Terjola,Imereti,4888,village,0,0,50,0,none,none
+gn:611694,Telavi,Kakheti,19875,town,0,0,50,0,none,none
+gn:611717,Tbilisi,Tbilisi,1049498,large-city,0,0,50,0,none,none
+gn:611786,T’abakhmela,Tbilisi,2073,village,0,0,50,0,none,none
+gn:611809,Surami,Shida Kartli,7492,village,0,0,50,0,none,none
+gn:611847,Sokhumi,Abkhazia,65439,town,0,0,50,0,none,none
+gn:611849,Ponich’ala,Tbilisi,4452,village,0,0,50,0,none,none
+gn:611902,Sighnaghi,Kakheti,1407,village,0,0,50,0,none,none
+gn:611936,Shuakhevi,Adjara,566,village,0,0,50,0,none,none
+gn:611964,Shorapani,Imereti,1258,village,0,0,50,0,none,none
+gn:611986,Shindisi,Tbilisi,1722,village,0,0,50,0,none,none
+gn:611998,Shemokmedi,Guria,1322,village,0,0,50,0,none,none
+gn:612012,Shaumiani,Kvemo Kartli,3107,village,0,0,50,0,none,none
+gn:612053,Senaki,Samegrelo and Zemo Svaneti,14991,town,0,0,50,0,none,none
+gn:612076,Satkhe,Samtskhe-Javakheti,1516,village,0,0,50,0,none,none
+gn:612092,Sartich’ala,Kvemo Kartli,6009,village,0,0,50,0,none,none
+gn:612126,Samtredia,Imereti,21063,town,0,0,50,0,none,none
+gn:612165,Saq’ulia,Imereti,1869,village,0,0,50,0,none,none
+gn:612230,Sagarejo,Kakheti,10166,town,0,0,50,0,none,none
+gn:612251,Sadakhlo,Kvemo Kartli,7337,village,0,0,50,0,none,none
+gn:612256,Sachkhere,Imereti,5235,village,0,0,50,0,none,none
+gn:612287,Rustavi,Kvemo Kartli,128249,city,0,0,50,0,none,none
+gn:612338,Kvareli,Kakheti,10177,town,0,0,50,0,none,none
+gn:612348,Pskhu,Abkhazia,1659,village,0,0,50,0,none,none
+gn:612366,Poti,Samegrelo and Zemo Svaneti,41175,town,0,0,50,0,none,none
+gn:612394,P’irveli Ot’obaia,Abkhazia,2772,village,0,0,50,0,none,none
+gn:612502,Pasanauri,Mtskheta-Mtianeti,1148,village,0,0,50,0,none,none
+gn:612536,Ozurgeti,Guria,13935,town,0,0,50,0,none,none
+gn:612558,Orsant’ia,Samegrelo and Zemo Svaneti,1200,village,0,0,50,0,none,none
+gn:612592,Oni,Racha-Lechkhumi and Kvemo Svaneti,2480,village,0,0,50,0,none,none
+gn:612648,Ochkhamuri,Adjara,3024,village,0,0,50,0,none,none
+gn:612652,Ochamchire,Abkhazia,5238,village,0,0,50,0,none,none
+gn:612660,Akhali Atoni,Abkhazia,1518,village,0,0,50,0,none,none
+gn:612691,Ninotsminda,Samtskhe-Javakheti,3844,village,0,0,50,0,none,none
+gn:612890,Mtskheta,Mtskheta-Mtianeti,7380,village,0,0,50,0,none,none
+gn:612987,Mestia,Samegrelo and Zemo Svaneti,1689,village,0,0,50,0,none,none
+gn:613060,Mat’ani,Kakheti,4451,village,0,0,50,0,none,none
+gn:613065,Martvili,Samegrelo and Zemo Svaneti,3966,village,0,0,50,0,none,none
+gn:613071,Mart’q’opi,Kvemo Kartli,7397,village,0,0,50,0,none,none
+gn:613074,Marneuli,Kvemo Kartli,26400,town,0,0,50,0,none,none
+gn:613093,Manglisi,Kvemo Kartli,1673,village,0,0,50,0,none,none
+gn:613125,Makhinjauri,Adjara,2736,village,0,0,50,0,none,none
+gn:613156,Machara,Abkhazia,2640,village,0,0,50,0,none,none
+gn:613195,Lidzava,Abkhazia,1506,village,0,0,50,0,none,none
+gn:613226,Lentekhi,Racha-Lechkhumi and Kvemo Svaneti,1020,village,0,0,50,0,none,none
+gn:613278,Laituri,Guria,3225,village,0,0,50,0,none,none
+gn:613311,Lanchkhuti,Guria,6214,village,0,0,50,0,none,none
+gn:613342,Lagodekhi,Kakheti,5607,village,0,0,50,0,none,none
+gn:613559,Kveda Chkhorots’q’u,Samegrelo and Zemo Svaneti,4357,village,0,0,50,0,none,none
+gn:613607,Kutaisi,Imereti,135201,city,0,0,50,0,none,none
+gn:613623,K’urdghelauri,Kakheti,3962,village,0,0,50,0,none,none
+gn:613724,K’olkhida,Abkhazia,3102,village,0,0,50,0,none,none
+gn:613742,Kojori,Kvemo Kartli,1232,village,0,0,50,0,none,none
+gn:613762,Kobuleti,Adjara,17538,town,0,0,50,0,none,none
+gn:613870,Khulo,Adjara,874,village,0,0,50,0,none,none
+gn:613902,Khoni,Imereti,7651,village,0,0,50,0,none,none
+gn:613906,Kholodnaia-Rech’ka,Abkhazia,1624,village,0,0,50,0,none,none
+gn:613918,Khobi,Samegrelo and Zemo Svaneti,2970,village,0,0,50,0,none,none
+gn:613971,Khelvachauri,Adjara,0,village,0,0,50,0,none,none
+gn:613981,Kheivani,Abkhazia,3096,village,0,0,50,0,none,none
+gn:613988,Khashuri,Shida Kartli,23949,town,0,0,50,0,none,none
+gn:614080,Keda,Adjara,1055,village,0,0,50,0,none,none
+gn:614084,Kazreti,Kvemo Kartli,5547,village,0,0,50,0,none,none
+gn:614087,Stepantsminda,Mtskheta-Mtianeti,1552,village,0,0,50,0,none,none
+gn:614096,K’atskhi,Imereti,2000,village,0,0,50,0,none,none
+gn:614104,Kaspi,Shida Kartli,12319,town,0,0,50,0,none,none
+gn:614133,K’ardenakhi,Kakheti,3873,village,0,0,50,0,none,none
+gn:614217,Java,Shida Kartli,426,village,0,0,50,0,none,none
+gn:614351,Gurjaani,Kakheti,7217,village,0,0,50,0,none,none
+gn:614379,Gulripshi,Abkhazia,3797,village,0,0,50,0,none,none
+gn:614409,Gudauta,Abkhazia,8752,village,0,0,50,0,none,none
+gn:614410,Gudauri,Mtskheta-Mtianeti,10000,town,0,0,50,0,none,none
+gn:614455,Gori,Shida Kartli,41933,town,0,0,50,0,none,none
+gn:614520,Gldani,Tbilisi,3669,village,0,0,50,0,none,none
+gn:614575,Gardabani,Kvemo Kartli,12364,town,0,0,50,0,none,none
+gn:614580,Gantiadi,Abkhazia,5170,village,0,0,50,0,none,none
+gn:614613,Gali,Abkhazia,7452,village,0,0,50,0,none,none
+gn:614622,Gagra,Abkhazia,11807,town,0,0,50,0,none,none
+gn:614666,Eshera,Abkhazia,2141,village,0,0,50,0,none,none
+gn:614740,Jvari,Samegrelo and Zemo Svaneti,1148,village,0,0,50,0,none,none
+gn:614823,Dzegvi,Mtskheta-Mtianeti,2911,village,0,0,50,0,none,none
+gn:614843,Dusheti,Mtskheta-Mtianeti,7389,village,0,0,50,0,none,none
+gn:614863,Dranda,Abkhazia,3205,village,0,0,50,0,none,none
+gn:614890,Jvara,Kvemo Kartli,3038,village,0,0,50,0,none,none
+gn:614891,Dmanisi,Kvemo Kartli,3099,village,0,0,50,0,none,none
+gn:614897,Diok’nisi,Adjara,7725,village,0,0,50,0,none,none
+gn:614900,Dilisk’a,Samtskhe-Javakheti,2374,village,0,0,50,0,none,none
+gn:614909,Dighomi,Tbilisi,7497,village,0,0,50,0,none,none
+gn:614934,Didi Lilo,Kvemo Kartli,3349,village,0,0,50,0,none,none
+gn:615005,Dedoplistsqaro,Kakheti,5460,village,0,0,50,0,none,none
+gn:615118,Chokhatauri,Guria,1454,village,0,0,50,0,none,none
+gn:615140,Chkhorotsqu,Samegrelo and Zemo Svaneti,2372,village,0,0,50,0,none,none
+gn:615190,Ch’lou,Abkhazia,1609,village,0,0,50,0,none,none
+gn:615211,Chiatura,Imereti,11943,town,0,0,50,0,none,none
+gn:615297,Chakvi,Adjara,6720,village,0,0,50,0,none,none
+gn:615321,Bzipi,Abkhazia,4820,village,0,0,50,0,none,none
+gn:615403,Borjomi,Samtskhe-Javakheti,11248,town,0,0,50,0,none,none
+gn:615419,Bolnisi,Kvemo Kartli,8461,village,0,0,50,0,none,none
+gn:615460,Bich’vinta,Abkhazia,3986,village,0,0,50,0,none,none
+gn:615532,Batumi,Adjara,186949,city,0,0,50,0,none,none
+gn:615538,Besleti,Abkhazia,2290,village,0,0,50,0,none,none
+gn:615583,Bakuriani,Samtskhe-Javakheti,1817,village,0,0,50,0,none,none
+gn:615607,Baghdati,Imereti,2412,village,0,0,50,0,none,none
+gn:615611,Bagdadi,,4564,village,0,0,50,0,none,none
+gn:615620,Babushara,Abkhazia,2696,village,0,0,50,0,none,none
+gn:615660,Aspindza,Samtskhe-Javakheti,2425,village,0,0,50,0,none,none
+gn:615761,Anaklia,Samegrelo and Zemo Svaneti,1300,village,0,0,50,0,none,none
+gn:615776,Ambrolauri,Racha-Lechkhumi and Kvemo Svaneti,1952,village,0,0,50,0,none,none
+gn:615814,Alakhadzi,Abkhazia,2876,village,0,0,50,0,none,none
+gn:615844,Akhmeta,Kakheti,5664,village,0,0,50,0,none,none
+gn:615860,Akhaltsikhe,Samtskhe-Javakheti,17445,town,0,0,50,0,none,none
+gn:615893,Akhalkalaki,Samtskhe-Javakheti,7437,village,0,0,50,0,none,none
+gn:615912,Stantsiya Novyy Afon,Abkhazia,26636,town,0,0,50,0,none,none
+gn:615914,Akhalgori,Mtskheta-Mtianeti,1420,village,0,0,50,0,none,none
+gn:615919,Akhaldaba,Samtskhe-Javakheti,1763,village,0,0,50,0,none,none
+gn:615921,Akhaldaba,Adjara,3640,village,0,0,50,0,none,none
+gn:615931,Agudzera,Abkhazia,1516,village,0,0,50,0,none,none
+gn:615933,Agubedia,Abkhazia,1864,village,0,0,50,0,none,none
+gn:615937,Aghaiani,Shida Kartli,1505,village,0,0,50,0,none,none
+gn:615943,Agara,Shida Kartli,2803,village,0,0,50,0,none,none
+gn:615951,Adzyubzha,Abkhazia,1072,village,0,0,50,0,none,none
+gn:615973,Adigeni,Samtskhe-Javakheti,1068,village,0,0,50,0,none,none
+gn:615984,Achigvara,Abkhazia,1032,village,0,0,50,0,none,none
+gn:615990,Ach’andara,Abkhazia,1226,village,0,0,50,0,none,none
+gn:616010,Abgharkhuki,Abkhazia,1024,village,0,0,50,0,none,none
+gn:616022,Abasha,Samegrelo and Zemo Svaneti,4133,village,0,0,50,0,none,none
+gn:616032,Aats’i,Abkhazia,1061,village,0,0,50,0,none,none
+gn:798780,Ingiri,Samegrelo and Zemo Svaneti,4049,village,0,0,50,0,none,none
+gn:799955,P’rimorsk’oe,Abkhazia,2573,village,0,0,50,0,none,none
+gn:823852,Bzibta,Abkhazia,4835,village,0,0,50,0,none,none
+gn:823854,Ipnari,Abkhazia,5166,village,0,0,50,0,none,none
+gn:823856,Akvara,Abkhazia,1164,village,0,0,50,0,none,none
+gn:823860,At’idzt’a,Abkhazia,1785,village,0,0,50,0,none,none
+gn:824135,Otradnoe,Abkhazia,1055,village,0,0,50,0,none,none
+gn:824288,Tsqaltubo,Imereti,7104,village,0,0,50,0,none,none
+gn:824385,Naruja,Guria,2148,village,0,0,50,0,none,none
+gn:824613,Bak’urianis Andezit’i,Samtskhe-Javakheti,1085,village,0,0,50,0,none,none
+gn:865372,Kelasuri,Abkhazia,1373,village,0,0,50,0,none,none
+gn:865869,Vark’etili,Tbilisi,3004,village,0,0,50,0,none,none
+gn:874068,Narazeni,Samegrelo and Zemo Svaneti,2345,village,0,0,50,0,none,none
+gn:874660,Meore Bighazhiashta,Abkhazia,1564,village,0,0,50,0,none,none
+gn:7667751,Kharagauli,Imereti,1738,village,0,0,50,0,none,none
+gn:7669163,Kareli,Shida Kartli,6746,village,0,0,50,0,none,none
+gn:9506676,Nasakirali,Guria,2558,village,0,0,50,0,none,none
+gn:12109753,Nasaguri,Tbilisi,1509,village,0,0,50,0,none,none
+gn:12109754,Ts’inubani,Tbilisi,1274,village,0,0,50,0,none,none
+gn:12109755,Okroq’ana,Tbilisi,2253,village,0,0,50,0,none,none

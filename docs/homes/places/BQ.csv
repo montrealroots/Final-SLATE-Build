@@ -1,0 +1,9 @@
+place_id,name,region,population,market,verified_homes,dated_listings,shortfall_to_50,recorded_sales,rent_source,price_source
+gn:3513146,Upper Hell's Gate,Saba,2810,village,0,0,50,0,none,none
+gn:3513173,The Bottom,Saba,488,village,0,0,50,0,none,none
+gn:3513426,Oranjestad,Sint Eustatius,1097,village,0,0,50,0,none,none
+gn:3513563,Kralendijk,Bonaire,10620,town,0,0,50,0,none,none
+gn:3513760,Dorp Tera Kora,Bonaire,1186,village,0,0,50,0,none,none
+gn:3513765,Dorp Rincon,Bonaire,1875,village,0,0,50,0,none,none
+gn:3513767,Dorp Nikiboko,Bonaire,3475,village,0,0,50,0,none,none
+gn:3513768,Dorp Antriol,Bonaire,3811,village,0,0,50,0,none,none

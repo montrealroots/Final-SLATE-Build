@@ -17,8 +17,8 @@
   "gross": 91925,
   "revenue": 137416.5,
   "distributed": 1.75,
-  "money": 24731670.431,
-  "moneyChange": -268329.569,
+  "money": 24726777.884,
+  "moneyChange": -273222.116,
   "jobsTaken": 0.975,
   "jobsOffered": 0.975,
   "jobPay": 4942.2,
@@ -31,7 +31,7 @@
   "jobsWithdrawn": 0,
   "jobsDeclined": 0,
   "ratesAgreed": 0,
-  "logLines": 148.525,
+  "logLines": 148.375,
   "hired": 16,
   "castRates": 3228.5,
   "releaseDelay": 100.992,
@@ -92,7 +92,7 @@
   "bankFees": 0,
   "owed": 0,
   "accounts": 1,
-  "worth": 18598216.164,
+  "worth": 18594536.969,
   "rewards": 0,
   "fired": 0
  },
@@ -104,8 +104,8 @@
   "gross": 91925,
   "revenue": 137416.5,
   "distributed": 1.75,
-  "money": 24731255.538,
-  "moneyChange": -268744.462,
+  "money": 24726362.991,
+  "moneyChange": -273637.008,
   "jobsTaken": 0.975,
   "jobsOffered": 0.975,
   "jobPay": 4942.2,
@@ -118,7 +118,7 @@
   "jobsWithdrawn": 0,
   "jobsDeclined": 0,
   "ratesAgreed": 0,
-  "logLines": 149.525,
+  "logLines": 149.375,
   "hired": 16,
   "castRates": 3228.5,
   "releaseDelay": 100.992,
@@ -179,7 +179,7 @@
   "bankFees": 0,
   "owed": 0,
   "accounts": 1,
-  "worth": 18597904.164,
+  "worth": 18594224.969,
   "rewards": 0,
   "fired": 0
  },
@@ -234,16 +234,16 @@
    "n": 40
   },
   "money": {
-   "mean": -414.894,
-   "lo": -414.896,
-   "hi": -414.892,
+   "mean": -414.893,
+   "lo": -414.894,
+   "hi": -414.891,
    "changed": 40,
    "n": 40
   },
   "moneyChange": {
-   "mean": -414.894,
-   "lo": -414.896,
-   "hi": -414.892,
+   "mean": -414.893,
+   "lo": -414.894,
+   "hi": -414.891,
    "changed": 40,
    "n": 40
   },
@@ -806,7 +806,7 @@
  ],
  "verdict": "proven",
  "hashes": {
-  "src/engine/homes/living.ts": "ad78939a5e52c0c1",
+  "src/engine/homes/living.ts": "09a1d2da0f81afce",
   "tests/proof/career.ts": "50bea06f19a02c5b"
  }
 }

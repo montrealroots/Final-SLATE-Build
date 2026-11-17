@@ -1,0 +1,979 @@
+place_id,name,region,population,market,verified_homes,dated_listings,shortfall_to_50,recorded_sales,rent_source,price_source
+gn:936374,Roodepoort,Gauteng,326416,city,0,0,50,0,none,none
+gn:936953,Zoar,Western Cape,5582,village,0,0,50,0,none,none
+gn:937136,Zeerust,North West,19154,town,0,0,50,0,none,none
+gn:937246,Zastron,Free State,18699,town,0,0,50,0,none,none
+gn:937796,Xanthia,Limpopo,3615,village,0,0,50,0,none,none
+gn:938457,Wolmaransstad,North West,49366,town,0,0,50,0,none,none
+gn:938640,Wittedrif,Western Cape,2182,village,0,0,50,0,none,none
+gn:938694,White River,Mpumalanga,25607,town,0,0,50,0,none,none
+gn:938753,Witpoort,North West,2120,village,0,0,50,0,none,none
+gn:939270,Emalahleni,Mpumalanga,373403,city,0,0,50,0,none,none
+gn:939340,Winterton,KwaZulu-Natal,7224,village,0,0,50,0,none,none
+gn:939608,Winburg,Free State,16862,town,0,0,50,0,none,none
+gn:939658,Willowvale,Eastern Cape,3021,village,0,0,50,0,none,none
+gn:939676,Willowmore,Eastern Cape,9199,village,0,0,50,0,none,none
+gn:939702,Williston,Northern Cape,3368,village,0,0,50,0,none,none
+gn:939930,Wilderness,Western Cape,7385,village,0,0,50,0,none,none
+gn:940186,Whittlesea,Eastern Cape,33844,town,0,0,50,0,none,none
+gn:940316,Westonaria,Gauteng,156831,city,0,0,50,0,none,none
+gn:940364,Western Areas,Gauteng,2270,village,0,0,50,0,none,none
+gn:940394,Westbrook,KwaZulu-Natal,1828,village,0,0,50,0,none,none
+gn:940424,Wesselsbron,Free State,42552,town,0,0,50,0,none,none
+gn:940438,Wesley,Eastern Cape,1957,village,0,0,50,0,none,none
+gn:940477,Wepener,Free State,11446,town,0,0,50,0,none,none
+gn:940509,Wembesi,KwaZulu-Natal,33849,town,0,0,50,0,none,none
+gn:940522,Welverdiend,Gauteng,3244,village,0,0,50,0,none,none
+gn:940524,Welverdiend,Limpopo,7601,village,0,0,50,0,none,none
+gn:940909,Welkom,Free State,431944,city,0,0,50,0,none,none
+gn:941335,Weenen,KwaZulu-Natal,8183,village,0,0,50,0,none,none
+gn:941458,Waterval,KwaZulu-Natal,1674,village,0,0,50,0,none,none
+gn:941914,Wasbank,KwaZulu-Natal,1585,village,0,0,50,0,none,none
+gn:941923,Wartburg,KwaZulu-Natal,0,village,0,0,50,0,none,none
+gn:941931,Warrenton,Northern Cape,17946,town,0,0,50,0,none,none
+gn:941966,Bela Bela,Limpopo,90210,town,0,0,50,0,none,none
+gn:941976,Warden,Free State,13152,town,0,0,50,0,none,none
+gn:942097,Walkerville,Gauteng,7981,village,0,0,50,0,none,none
+gn:942112,Wales,Mpumalanga,2949,village,0,0,50,0,none,none
+gn:942136,Wakkerstroom,Mpumalanga,8209,village,0,0,50,0,none,none
+gn:942206,Arniston,Western Cape,1518,village,0,0,50,0,none,none
+gn:942245,Waay Hoek,KwaZulu-Natal,1944,village,0,0,50,0,none,none
+gn:942470,Vryheid,KwaZulu-Natal,150012,city,0,0,50,0,none,none
+gn:942511,Vryburg,North West,55879,town,0,0,50,0,none,none
+gn:942683,Vredefort,Free State,17515,town,0,0,50,0,none,none
+gn:942701,Vrede,Free State,21193,town,0,0,50,0,none,none
+gn:943032,Volksrust,Mpumalanga,43378,town,0,0,50,0,none,none
+gn:943882,Virginia,Free State,122502,city,0,0,50,0,none,none
+gn:943937,Villiers,Free State,20745,town,0,0,50,0,none,none
+gn:943960,Viljoenskroon,Free State,54955,town,0,0,50,0,none,none
+gn:944024,Victoria West,Northern Cape,8254,village,0,0,50,0,none,none
+gn:944263,Verkeerdevlei,Free State,2557,village,0,0,50,0,none,none
+gn:944380,Verena,Gauteng,21252,town,0,0,50,0,none,none
+gn:944385,Vereeniging,Gauteng,474681,city,0,0,50,0,none,none
+gn:944480,Venterstad,Eastern Cape,5977,village,0,0,50,0,none,none
+gn:944531,Ventersdorp,North West,26446,town,0,0,50,0,none,none
+gn:944540,Ventersburg,Free State,13490,town,0,0,50,0,none,none
+gn:944774,Van Wyksvlei,Northern Cape,1721,village,0,0,50,0,none,none
+gn:944840,Van Stadensrus,Free State,2090,village,0,0,50,0,none,none
+gn:944986,Vanderbijlpark,Gauteng,246754,city,0,0,50,0,none,none
+gn:945141,Vaalwater,Limpopo,19723,town,0,0,50,0,none,none
+gn:945813,Utrecht,KwaZulu-Natal,8486,village,0,0,50,0,none,none
+gn:945945,Upington,Northern Cape,71373,town,0,0,50,0,none,none
+gn:945970,Uniondale,Western Cape,5421,village,0,0,50,0,none,none
+gn:945995,Underberg,KwaZulu-Natal,3227,village,0,0,50,0,none,none
+gn:946010,eMuziwezinto,KwaZulu-Natal,19415,town,0,0,50,0,none,none
+gn:946058,Mthatha,Eastern Cape,164848,city,0,0,50,0,none,none
+gn:946128,eMkhomazi,KwaZulu-Natal,20410,town,0,0,50,0,none,none
+gn:946218,eMdloti,KwaZulu-Natal,2130,village,0,0,50,0,none,none
+gn:946257,Ulundi,KwaZulu-Natal,31795,town,0,0,50,0,none,none
+gn:946877,Kariega,Eastern Cape,291052,city,0,0,50,0,none,none
+gn:946932,Ugie,Eastern Cape,16133,town,0,0,50,0,none,none
+gn:946973,Tzaneen,Limpopo,17457,town,0,0,50,0,none,none
+gn:946981,Tyusha,Eastern Cape,1544,village,0,0,50,0,none,none
+gn:947187,Tweespruit,Free State,6939,village,0,0,50,0,none,none
+gn:947267,Tweeling,Free State,7745,village,0,0,50,0,none,none
+gn:947486,Tutuka,Mpumalanga,3191,village,0,0,50,0,none,none
+gn:947666,Tugela Ferry,KwaZulu-Natal,0,village,0,0,50,0,none,none
+gn:947679,Tugela,KwaZulu-Natal,3572,village,0,0,50,0,none,none
+gn:947723,Tswafeng,Mpumalanga,1660,village,0,0,50,0,none,none
+gn:947730,Tsomo,Eastern Cape,2525,village,0,0,50,0,none,none
+gn:947739,Tsolo,Eastern Cape,6860,village,0,0,50,0,none,none
+gn:947846,Tshituni,Limpopo,2039,village,0,0,50,0,none,none
+gn:947962,Tshandama,Limpopo,5842,village,0,0,50,0,none,none
+gn:948099,Trompsburg,Free State,6395,village,0,0,50,0,none,none
+gn:948130,Trichardt,Mpumalanga,52776,town,0,0,50,0,none,none
+gn:948293,Touwsrivier,Western Cape,9735,village,0,0,50,0,none,none
+gn:948468,Tongaat,KwaZulu-Natal,64829,town,0,0,50,0,none,none
+gn:948542,Tokoza,Gauteng,106000,city,0,0,50,0,none,none
+gn:949023,Thulani,Limpopo,1551,village,0,0,50,0,none,none
+gn:949026,Thulamahashi,Limpopo,15974,town,0,0,50,0,none,none
+gn:949224,Thohoyandou,Limpopo,107144,city,0,0,50,0,none,none
+gn:949282,Theunissen,Free State,34718,town,0,0,50,0,none,none
+gn:949683,Thabazimbi,Limpopo,34561,town,0,0,50,0,none,none
+gn:949703,Thaba Nchu,Free State,72721,town,0,0,50,0,none,none
+gn:949880,Thembisa,Gauteng,511655,large-city,0,0,50,0,none,none
+gn:949923,Teko Springs,Eastern Cape,1905,village,0,0,50,0,none,none
+gn:950002,Taung,North West,0,village,0,0,50,0,none,none
+gn:950037,Tarkastad,Eastern Cape,7260,village,0,0,50,0,none,none
+gn:950468,Ntabankulu,Eastern Cape,3913,village,0,0,50,0,none,none
+gn:950709,Swellendam,Western Cape,20993,town,0,0,50,0,none,none
+gn:950833,Swartruggens,North West,12639,town,0,0,50,0,none,none
+gn:951046,Swartklip,Limpopo,4213,village,0,0,50,0,none,none
+gn:951242,Suurbraak,Western Cape,2698,village,0,0,50,0,none,none
+gn:951441,Sundumbili,KwaZulu-Natal,12455,town,0,0,50,0,none,none
+gn:951650,Stutterheim,Eastern Cape,35510,town,0,0,50,0,none,none
+gn:951787,Struisbaai,Western Cape,5301,village,0,0,50,0,none,none
+gn:951910,Stormsrivier,Eastern Cape,2000,village,0,0,50,0,none,none
+gn:952192,Stilfontein,North West,93110,town,0,0,50,0,none,none
+gn:952200,Stilbaai,Western Cape,8000,village,0,0,50,0,none,none
+gn:952213,Steytlerville,Eastern Cape,4812,village,0,0,50,0,none,none
+gn:952224,Steynsrus,Free State,10910,town,0,0,50,0,none,none
+gn:952249,Steynsburg,Eastern Cape,8642,village,0,0,50,0,none,none
+gn:952301,Sterkstroom,Eastern Cape,8584,village,0,0,50,0,none,none
+gn:952523,Stella,North West,5620,village,0,0,50,0,none,none
+gn:952681,Steelpoort,Mpumalanga,1323,village,0,0,50,0,none,none
+gn:952734,KwaDukuza,KwaZulu-Natal,161177,city,0,0,50,0,none,none
+gn:952747,Standerton,Mpumalanga,101101,city,0,0,50,0,none,none
+gn:952865,Springs,Gauteng,186394,city,0,0,50,0,none,none
+gn:952869,Springs,Gauteng,2996,village,0,0,50,0,none,none
+gn:952906,Springfontein,Free State,4431,village,0,0,50,0,none,none
+gn:953781,Soweto,Gauteng,1695047,large-city,0,0,50,0,none,none
+gn:953979,Southbroom,KwaZulu-Natal,1934,village,0,0,50,0,none,none
+gn:954013,Soshanguve,Gauteng,872309,large-city,0,0,50,0,none,none
+gn:954161,Somerset East,Eastern Cape,22553,town,0,0,50,0,none,none
+gn:954486,Smithfield,Free State,5725,village,0,0,50,0,none,none
+gn:955313,Siyabuswa,Mpumalanga,44189,town,0,0,50,0,none,none
+gn:956128,Sheepmoor,Mpumalanga,3267,village,0,0,50,0,none,none
+gn:956232,Shakaskraal,KwaZulu-Natal,27345,town,0,0,50,0,none,none
+gn:956253,Sezela,KwaZulu-Natal,1441,village,0,0,50,0,none,none
+gn:956254,Seymour,Eastern Cape,2954,village,0,0,50,0,none,none
+gn:956507,Senekal,Free State,39584,town,0,0,50,0,none,none
+gn:956754,Sedgefield,Western Cape,10069,town,0,0,50,0,none,none
+gn:956767,Secunda,Mpumalanga,20418,town,0,0,50,0,none,none
+gn:956806,Sebayeng,Limpopo,10917,town,0,0,50,0,none,none
+gn:956878,Scottburgh,KwaZulu-Natal,23949,town,0,0,50,0,none,none
+gn:956907,Schweizer-Reneke,North West,70214,town,0,0,50,0,none,none
+gn:956945,Hlengesha,Mpumalanga,3966,village,0,0,50,0,none,none
+gn:957178,Schoemansdal,Mpumalanga,23257,town,0,0,50,0,none,none
+gn:957487,Sasolburg,Free State,135828,city,0,0,50,0,none,none
+gn:957592,Sannieshof,North West,13198,town,0,0,50,0,none,none
+gn:957995,Sanddrif,Eastern Cape,4065,village,0,0,50,0,none,none
+gn:958273,Saint Lucia,KwaZulu-Natal,1322,village,0,0,50,0,none,none
+gn:958441,Sabie,Mpumalanga,18903,town,0,0,50,0,none,none
+gn:958724,Rustenburg,North West,373695,city,0,0,50,0,none,none
+gn:959018,Rouxville,Free State,8759,village,0,0,50,0,none,none
+gn:959172,Rosendal,Free State,4950,village,0,0,50,0,none,none
+gn:959290,Roossenekal,Mpumalanga,3145,village,0,0,50,0,none,none
+gn:960109,Rooiboklaagte B,Mpumalanga,3650,village,0,0,50,0,none,none
+gn:960144,Rooiberg,Limpopo,2767,village,0,0,50,0,none,none
+gn:961152,Riversdale,Western Cape,19382,town,0,0,50,0,none,none
+gn:961226,Ritchie,Northern Cape,9960,village,0,0,50,0,none,none
+gn:961327,Rietvlei,Eastern Cape,3006,village,0,0,50,0,none,none
+gn:961712,Rietkuil,Mpumalanga,4355,village,0,0,50,0,none,none
+gn:962251,Rietbron,Eastern Cape,1418,village,0,0,50,0,none,none
+gn:962330,Richmond,KwaZulu-Natal,32445,town,0,0,50,0,none,none
+gn:962367,Richards Bay,KwaZulu-Natal,252968,city,0,0,50,0,none,none
+gn:962529,Rheenendal,Western Cape,4715,village,0,0,50,0,none,none
+gn:962847,Reitz,Free State,24181,town,0,0,50,0,none,none
+gn:962994,Reddersburg,Free State,5854,village,0,0,50,0,none,none
+gn:963049,Rayton,Gauteng,4812,village,0,0,50,0,none,none
+gn:963230,Randfontein,Gauteng,133654,city,0,0,50,0,none,none
+gn:963241,Randburg,Gauteng,337053,city,0,0,50,0,none,none
+gn:963488,Qumbu,Eastern Cape,5904,village,0,0,50,0,none,none
+gn:963516,Queenstown,Eastern Cape,118599,city,0,0,50,0,none,none
+gn:963525,Queensdale,Eastern Cape,20009,town,0,0,50,0,none,none
+gn:964078,Prince Albert,Western Cape,13136,town,0,0,50,0,none,none
+gn:964090,Prieska,Northern Cape,11236,town,0,0,50,0,none,none
+gn:964137,Pretoria,Gauteng,2112693,large-city,0,0,50,0,none,none
+gn:964315,Mokopane,Limpopo,101090,city,0,0,50,0,none,none
+gn:964349,Potchefstroom,North West,178285,city,0,0,50,0,none,none
+gn:964363,Postmasburg,Northern Cape,30089,town,0,0,50,0,none,none
+gn:964406,Port Shepstone,KwaZulu-Natal,52793,town,0,0,50,0,none,none
+gn:964408,Port Saint John’s,Eastern Cape,5939,village,0,0,50,0,none,none
+gn:964420,Gqeberha,Eastern Cape,1050078,large-city,0,0,50,0,none,none
+gn:964424,Port Edward,KwaZulu-Natal,6872,village,0,0,50,0,none,none
+gn:964432,Port Alfred,Eastern Cape,30981,town,0,0,50,0,none,none
+gn:964574,Pongola,KwaZulu-Natal,1680,village,0,0,50,0,none,none
+gn:964596,Pomfret,North West,2323,village,0,0,50,0,none,none
+gn:964599,Solomon Linda,KwaZulu-Natal,1942,village,0,0,50,0,none,none
+gn:964712,Plettenberg Bay,Western Cape,38126,town,0,0,50,0,none,none
+gn:965154,Pinetown,KwaZulu-Natal,144026,city,0,0,50,0,none,none
+gn:965179,Pilgrim’s Rest,Mpumalanga,2061,village,0,0,50,0,none,none
+gn:965241,Piet Retief,Mpumalanga,84349,town,0,0,50,0,none,none
+gn:965245,Piet Plessis,North West,1982,village,0,0,50,0,none,none
+gn:965289,Polokwane,Limpopo,272461,city,0,0,50,0,none,none
+gn:965301,Pietermaritzburg,KwaZulu-Natal,839327,large-city,0,0,50,0,none,none
+gn:965330,Pienaarsrivier,Limpopo,2272,village,0,0,50,0,none,none
+gn:965401,Phuthaditjhaba,Free State,84258,town,0,0,50,0,none,none
+gn:965471,Philipstown,Northern Cape,3365,village,0,0,50,0,none,none
+gn:965478,Philippolis,Free State,4370,village,0,0,50,0,none,none
+gn:965528,Phalaborwa,Limpopo,109468,city,0,0,50,0,none,none
+gn:965564,Petrusville,Northern Cape,0,village,0,0,50,0,none,none
+gn:965571,Mamafubedu,Free State,15447,town,0,0,50,0,none,none
+gn:965581,Petrusburg,Free State,10106,town,0,0,50,0,none,none
+gn:965722,Perdekop,Mpumalanga,6087,village,0,0,50,0,none,none
+gn:965925,Penge,Limpopo,3377,village,0,0,50,0,none,none
+gn:966007,Peddie,Eastern Cape,5580,village,0,0,50,0,none,none
+gn:966012,Pearston,Eastern Cape,5410,village,0,0,50,0,none,none
+gn:966058,Paul Roux,Free State,7370,village,0,0,50,0,none,none
+gn:966060,Paulpietersburg,KwaZulu-Natal,13123,town,0,0,50,0,none,none
+gn:966134,Paterson,Eastern Cape,6687,village,0,0,50,0,none,none
+gn:966137,Patensie,Eastern Cape,6304,village,0,0,50,0,none,none
+gn:966166,Parys,Free State,71319,town,0,0,50,0,none,none
+gn:966380,Pampierstad,Northern Cape,21707,town,0,0,50,0,none,none
+gn:967106,Oudtshoorn,Western Cape,73694,town,0,0,50,0,none,none
+gn:967238,Ottosdal,North West,22011,town,0,0,50,0,none,none
+gn:967476,Orkney,North West,110052,city,0,0,50,0,none,none
+gn:967511,Oranjeville,Free State,6189,village,0,0,50,0,none,none
+gn:967542,Orania,Northern Cape,2066,village,0,0,50,0,none,none
+gn:967580,Orange Farm,Gauteng,10000,town,0,0,50,0,none,none
+gn:968442,Ogies,Mpumalanga,4265,village,0,0,50,0,none,none
+gn:968477,Odendaalsrus,Free State,76371,town,0,0,50,0,none,none
+gn:968562,Oakley,Mpumalanga,12064,town,0,0,50,0,none,none
+gn:968665,Modimolle,Limpopo,50306,town,0,0,50,0,none,none
+gn:969454,Nqutu,KwaZulu-Natal,6533,village,0,0,50,0,none,none
+gn:969515,Ngqamakhwe,Eastern Cape,1866,village,0,0,50,0,none,none
+gn:969582,Noupoort,Northern Cape,3924,village,0,0,50,0,none,none
+gn:969619,Nottingham Road,KwaZulu-Natal,1530,village,0,0,50,0,none,none
+gn:969698,Northam,Limpopo,15598,town,0,0,50,0,none,none
+gn:970133,Nongoma,KwaZulu-Natal,9140,village,0,0,50,0,none,none
+gn:970148,Nondweni,KwaZulu-Natal,6691,village,0,0,50,0,none,none
+gn:970341,Nkowakowa,Limpopo,51350,town,0,0,50,0,none,none
+gn:970480,Nkandla,KwaZulu-Natal,4261,village,0,0,50,0,none,none
+gn:970566,Nigel,Gauteng,140644,city,0,0,50,0,none,none
+gn:970641,Nieu-Bethesda,Eastern Cape,1845,village,0,0,50,0,none,none
+gn:971016,Ngqeleni,Eastern Cape,3151,village,0,0,50,0,none,none
+gn:971233,Ngagane,KwaZulu-Natal,1321,village,0,0,50,0,none,none
+gn:971377,New Hanover,KwaZulu-Natal,3804,village,0,0,50,0,none,none
+gn:971393,New Forest A,Limpopo,1731,village,0,0,50,0,none,none
+gn:971421,Newcastle,KwaZulu-Natal,404838,city,0,0,50,0,none,none
+gn:971441,New Brighton,Eastern Cape,47917,town,0,0,50,0,none,none
+gn:971534,Mbombela,Mpumalanga,110159,city,0,0,50,0,none,none
+gn:971541,Nelspoort,Western Cape,2035,village,0,0,50,0,none,none
+gn:971669,Ndwedwe,KwaZulu-Natal,0,village,0,0,50,0,none,none
+gn:972147,Namakgale,Limpopo,14588,town,0,0,50,0,none,none
+gn:972206,Mookgophong,Limpopo,29778,town,0,0,50,0,none,none
+gn:972512,Mutale,Limpopo,0,village,0,0,50,0,none,none
+gn:972549,Murraysburg,Western Cape,6073,village,0,0,50,0,none,none
+gn:972572,Murchison,Limpopo,1543,village,0,0,50,0,none,none
+gn:972673,Muldersdriseloop,Gauteng,1500,village,0,0,50,0,none,none
+gn:972787,Mtunzini,KwaZulu-Natal,2635,village,0,0,50,0,none,none
+gn:972803,Mtubatuba,KwaZulu-Natal,33182,town,0,0,50,0,none,none
+gn:972870,Mtititi,Limpopo,1450,village,0,0,50,0,none,none
+gn:973061,Mqanduli,Eastern Cape,3171,village,0,0,50,0,none,none
+gn:973111,Mpumalanga,KwaZulu-Natal,140121,city,0,0,50,0,none,none
+gn:973139,Mpophomeni,KwaZulu-Natal,30830,town,0,0,50,0,none,none
+gn:973350,Mpakeni,Mpumalanga,1670,village,0,0,50,0,none,none
+gn:973525,Mount Frere,Eastern Cape,11842,town,0,0,50,0,none,none
+gn:973527,Tlokoeng,Eastern Cape,15884,town,0,0,50,0,none,none
+gn:973551,Mount Ayliff,Eastern Cape,6431,village,0,0,50,0,none,none
+gn:973676,Motetema,Mpumalanga,10090,town,0,0,50,0,none,none
+gn:973709,Mossel Bay,Western Cape,78940,town,0,0,50,0,none,none
+gn:973816,Morolaneng,Mpumalanga,4055,village,0,0,50,0,none,none
+gn:973873,Morgenzon,Mpumalanga,9162,village,0,0,50,0,none,none
+gn:974222,Mooi River,KwaZulu-Natal,21730,town,0,0,50,0,none,none
+gn:974331,Mooinooi,North West,5670,village,0,0,50,0,none,none
+gn:974611,Montagu,Western Cape,18182,town,0,0,50,0,none,none
+gn:974648,Monnakato,North West,9676,village,0,0,50,0,none,none
+gn:974670,Mondlo,KwaZulu-Natal,53892,town,0,0,50,0,none,none
+gn:974719,Molteno,Eastern Cape,13840,town,0,0,50,0,none,none
+gn:974738,Moloto South,Mpumalanga,22076,town,0,0,50,0,none,none
+gn:974742,Moloro,Mpumalanga,2053,village,0,0,50,0,none,none
+gn:974932,Mogwase,North West,0,village,0,0,50,0,none,none
+gn:974933,Mogwase,North West,12871,town,0,0,50,0,none,none
+gn:975144,Modderfontein,Gauteng,3000,village,0,0,50,0,none,none
+gn:975404,Mmametlhake,Mpumalanga,9450,village,0,0,50,0,none,none
+gn:975436,Mmabatho,North West,76754,town,0,0,50,0,none,none
+gn:975509,eMkhuze,KwaZulu-Natal,5288,village,0,0,50,0,none,none
+gn:975511,Mkuze,KwaZulu-Natal,0,village,0,0,50,0,none,none
+gn:975903,Migdol,North West,4224,village,0,0,50,0,none,none
+gn:976009,Middledrift,Eastern Cape,2563,village,0,0,50,0,none,none
+gn:976197,Middelplaas,Mpumalanga,4365,village,0,0,50,0,none,none
+gn:976358,Middelburg,Eastern Cape,22380,town,0,0,50,0,none,none
+gn:976361,Middelburg,Mpumalanga,196263,city,0,0,50,0,none,none
+gn:976764,Meyerton,Gauteng,0,village,0,0,50,0,none,none
+gn:976901,Merweville,Western Cape,1907,village,0,0,50,0,none,none
+gn:976922,Merry Pebble Stream,Limpopo,6905,village,0,0,50,0,none,none
+gn:977086,Memel,Free State,8556,village,0,0,50,0,none,none
+gn:977135,Melmoth,KwaZulu-Natal,9362,village,0,0,50,0,none,none
+gn:977169,Melkhoutfontein,Western Cape,3034,village,0,0,50,0,none,none
+gn:977302,Meetse,Limpopo,1809,village,0,0,50,0,none,none
+gn:977432,Mdantsane,Eastern Cape,205504,city,0,0,50,0,none,none
+gn:977907,Maviljan A,Mpumalanga,6829,village,0,0,50,0,none,none
+gn:977975,Matsulu,Mpumalanga,47306,town,0,0,50,0,none,none
+gn:978327,Matatiele,KwaZulu-Natal,14935,town,0,0,50,0,none,none
+gn:978677,Marquard,Free State,18573,town,0,0,50,0,none,none
+gn:978786,Marite,Mpumalanga,8657,village,0,0,50,0,none,none
+gn:978895,Margate,KwaZulu-Natal,34407,town,0,0,50,0,none,none
+gn:978944,Marble Hall,Mpumalanga,3219,village,0,0,50,0,none,none
+gn:979365,Mankoeng,Limpopo,12499,town,0,0,50,0,none,none
+gn:979405,Manguzi,KwaZulu-Natal,5534,village,0,0,50,0,none,none
+gn:979837,Malelane,Mpumalanga,4176,village,0,0,50,0,none,none
+gn:979910,Makwassie,North West,15996,town,0,0,50,0,none,none
+gn:980101,Makapanstad,North West,0,village,0,0,50,0,none,none
+gn:980213,Maile,North West,10000,town,0,0,50,0,none,none
+gn:980322,Mahlabatini,KwaZulu-Natal,1810,village,0,0,50,0,none,none
+gn:980457,Magogeni,Mpumalanga,7396,village,0,0,50,0,none,none
+gn:980557,Magaliesburg,Gauteng,7623,village,0,0,50,0,none,none
+gn:980579,Magabeni,KwaZulu-Natal,5904,village,0,0,50,0,none,none
+gn:980595,Mafikeng,North West,77110,town,0,0,50,0,none,none
+gn:980632,Madyembeni,Mpumalanga,7210,village,0,0,50,0,none,none
+gn:980661,Madras A,Mpumalanga,6635,village,0,0,50,0,none,none
+gn:980703,Madikwe,North West,4340,village,0,0,50,0,none,none
+gn:980798,Maclear,Eastern Cape,12604,town,0,0,50,0,none,none
+gn:980845,Machadodorp,Mpumalanga,10712,town,0,0,50,0,none,none
+gn:980921,Mabopane,Gauteng,110972,city,0,0,50,0,none,none
+gn:981158,Lydenburg,Mpumalanga,49605,town,0,0,50,0,none,none
+gn:981294,Lusikisiki,Eastern Cape,7396,village,0,0,50,0,none,none
+gn:981331,Luphisi,Mpumalanga,3487,village,0,0,50,0,none,none
+gn:981517,Ludlow,Limpopo,5766,village,0,0,50,0,none,none
+gn:981554,Luckhoff,Free State,4430,village,0,0,50,0,none,none
+gn:981782,Louwsburg,KwaZulu-Natal,4865,village,0,0,50,0,none,none
+gn:981802,Louterwater,Eastern Cape,5785,village,0,0,50,0,none,none
+gn:981827,Louis Trichardt,Limpopo,86854,town,0,0,50,0,none,none
+gn:981906,Lothair,Mpumalanga,7306,village,0,0,50,0,none,none
+gn:982298,Masakeng,Mpumalanga,1051,village,0,0,50,0,none,none
+gn:982494,eMbangweni,Mpumalanga,3449,village,0,0,50,0,none,none
+gn:982701,Lindley,Free State,14377,town,0,0,50,0,none,none
+gn:982806,Lillydale,Limpopo,6799,village,0,0,50,0,none,none
+gn:982891,Lidgetton,KwaZulu-Natal,5416,village,0,0,50,0,none,none
+gn:982899,Lichtenburg,North West,65863,town,0,0,50,0,none,none
+gn:982906,Libode,Eastern Cape,5464,village,0,0,50,0,none,none
+gn:983065,Leslie,Mpumalanga,39514,town,0,0,50,0,none,none
+gn:983151,Lenyenye,Limpopo,14496,town,0,0,50,0,none,none
+gn:983857,Leeupoort,Limpopo,1214,village,0,0,50,0,none,none
+gn:983988,Leeu-Gamka,Western Cape,3267,village,0,0,50,0,none,none
+gn:984012,Leeudoringstad,North West,16042,town,0,0,50,0,none,none
+gn:984118,Thuli,Mpumalanga,2023,village,0,0,50,0,none,none
+gn:984655,Emtfuntini,Mpumalanga,11323,town,0,0,50,0,none,none
+gn:984896,La Mercy,KwaZulu-Natal,3061,village,0,0,50,0,none,none
+gn:984962,Laingsburg,Western Cape,6789,village,0,0,50,0,none,none
+gn:984998,Ladysmith,KwaZulu-Natal,143446,city,0,0,50,0,none,none
+gn:985004,Lady Grey,Eastern Cape,8414,village,0,0,50,0,none,none
+gn:985011,Lady Frere,Eastern Cape,25041,town,0,0,50,0,none,none
+gn:985015,Ladybrand,Free State,30930,town,0,0,50,0,none,none
+gn:985020,Ladismith,Western Cape,8539,village,0,0,50,0,none,none
+gn:985609,KwaMbonambi,KwaZulu-Natal,3441,village,0,0,50,0,none,none
+gn:985885,Kwaggafontein,Mpumalanga,54040,town,0,0,50,0,none,none
+gn:986083,Kutloanong,Free State,95008,town,0,0,50,0,none,none
+gn:986134,Kuruman,Northern Cape,9093,village,0,0,50,0,none,none
+gn:986717,Kruisfontein,Eastern Cape,18991,town,0,0,50,0,none,none
+gn:986822,Krugersdorp,Gauteng,378821,city,0,0,50,0,none,none
+gn:986846,Kroonstad,Free State,117152,city,0,0,50,0,none,none
+gn:987202,Kriel,Mpumalanga,18255,town,0,0,50,0,none,none
+gn:987298,Kranskop,KwaZulu-Natal,1813,village,0,0,50,0,none,none
+gn:987452,Krakeelrivier,Eastern Cape,2313,village,0,0,50,0,none,none
+gn:987458,Kragbron,Free State,1268,village,0,0,50,0,none,none
+gn:987648,Koster,North West,23361,town,0,0,50,0,none,none
+gn:987875,Koppies,Free State,16537,town,0,0,50,0,none,none
+gn:988265,Komga,Eastern Cape,9692,village,0,0,50,0,none,none
+gn:988290,Komatipoort,Mpumalanga,20508,town,0,0,50,0,none,none
+gn:988295,Komati,Mpumalanga,2181,village,0,0,50,0,none,none
+gn:988356,Kokstad,KwaZulu-Natal,61751,town,0,0,50,0,none,none
+gn:988429,Koffiefontein,Free State,12464,town,0,0,50,0,none,none
+gn:988698,Knysna,Western Cape,68659,town,0,0,50,0,none,none
+gn:989173,Klipplaat,Eastern Cape,3554,village,0,0,50,0,none,none
+gn:989921,Klerksdorp,North West,227039,city,0,0,50,0,none,none
+gn:990802,Kirkwood,Eastern Cape,10148,town,0,0,50,0,none,none
+gn:990825,Kinross,Mpumalanga,18266,town,0,0,50,0,none,none
+gn:990849,Qonce,Eastern Cape,93072,town,0,0,50,0,none,none
+gn:990930,Kimberley,Northern Cape,142089,city,0,0,50,0,none,none
+gn:991310,Kestell,Free State,9907,village,0,0,50,0,none,none
+gn:991353,Kenton,Eastern Cape,13539,town,0,0,50,0,none,none
+gn:991359,Centane,Eastern Cape,1744,village,0,0,50,0,none,none
+gn:991396,Kenhardt,Northern Cape,4842,village,0,0,50,0,none,none
+gn:991478,Keiskammahoek,Eastern Cape,3276,village,0,0,50,0,none,none
+gn:991485,Kei Road,Eastern Cape,1605,village,0,0,50,0,none,none
+gn:991488,Kei Mouth,Eastern Cape,2439,village,0,0,50,0,none,none
+gn:991664,Kathu,Northern Cape,9219,village,0,0,50,0,none,none
+gn:992071,Kareedouw,Eastern Cape,5972,village,0,0,50,0,none,none
+gn:992385,Ka-Mhinga,Limpopo,12609,town,0,0,50,0,none,none
+gn:993014,Kakamas,Northern Cape,9538,village,0,0,50,0,none,none
+gn:993507,Justicia,Limpopo,6221,village,0,0,50,0,none,none
+gn:993568,Jozini,KwaZulu-Natal,0,village,0,0,50,0,none,none
+gn:993612,Joubertina,Eastern Cape,7472,village,0,0,50,0,none,none
+za-johannesburg,Johannesburg,Gauteng,9418183,large-city,0,0,50,0,none,none
+gn:993894,Embhojeni,Mpumalanga,12589,town,0,0,50,0,none,none
+gn:993910,Jeffreys Bay,Eastern Cape,32477,town,0,0,50,0,none,none
+gn:993993,Jansenville,Eastern Cape,6723,village,0,0,50,0,none,none
+gn:994023,Jan Kempdorp,North West,13485,town,0,0,50,0,none,none
+gn:994037,Jane Furse,Limpopo,0,village,0,0,50,0,none,none
+gn:994060,James Calata,Eastern Cape,5590,village,0,0,50,0,none,none
+gn:994257,Jagersfontein,Free State,6865,village,0,0,50,0,none,none
+gn:994304,Jacobsdal,Free State,10497,town,0,0,50,0,none,none
+gn:994408,Izingolweni,KwaZulu-Natal,0,village,0,0,50,0,none,none
+gn:994418,Ixopo,KwaZulu-Natal,14929,town,0,0,50,0,none,none
+gn:994432,Itsoseng,North West,23913,town,0,0,50,0,none,none
+gn:994758,Ingwavuma,KwaZulu-Natal,1561,village,0,0,50,0,none,none
+gn:994804,Indwe,Eastern Cape,9505,village,0,0,50,0,none,none
+gn:994860,Inanda,KwaZulu-Natal,10032,town,0,0,50,0,none,none
+gn:994883,Impendle,KwaZulu-Natal,0,village,0,0,50,0,none,none
+gn:994939,Ilinge,Eastern Cape,12806,town,0,0,50,0,none,none
+gn:994978,Dutywa,Eastern Cape,13270,town,0,0,50,0,none,none
+gn:995061,Hundzukani,Limpopo,2947,village,0,0,50,0,none,none
+gn:995094,Humansdorp,Eastern Cape,34733,town,0,0,50,0,none,none
+gn:995202,Howick,KwaZulu-Natal,32453,town,0,0,50,0,none,none
+gn:995469,Hopewell,KwaZulu-Natal,13321,town,0,0,50,0,none,none
+gn:995508,Hopetown,Northern Cape,0,village,0,0,50,0,none,none
+gn:995573,Hoopstad,Free State,19209,town,0,0,50,0,none,none
+gn:996060,Hogsback,Eastern Cape,1232,village,0,0,50,0,none,none
+gn:996072,Hofmeyr,Eastern Cape,4410,village,0,0,50,0,none,none
+gn:996195,Hoedspruit,Limpopo,3782,village,0,0,50,0,none,none
+gn:996223,Hobhouse,Free State,4768,village,0,0,50,0,none,none
+gn:996236,Hluvukani,Limpopo,9631,village,0,0,50,0,none,none
+gn:996256,Hluhluwe,KwaZulu-Natal,4588,village,0,0,50,0,none,none
+gn:996289,Hlobane,KwaZulu-Natal,4502,village,0,0,50,0,none,none
+gn:996377,Hlabisa,KwaZulu-Natal,2958,village,0,0,50,0,none,none
+gn:996409,Himeville,KwaZulu-Natal,2033,village,0,0,50,0,none,none
+gn:996419,Hilton,KwaZulu-Natal,1787,village,0,0,50,0,none,none
+gn:996490,Hillshaven,Gauteng,3068,village,0,0,50,0,none,none
+gn:996643,Hibberdene,KwaZulu-Natal,2280,village,0,0,50,0,none,none
+gn:996800,Hertzogville,Free State,11289,town,0,0,50,0,none,none
+gn:996918,Hennenman,Free State,22847,town,0,0,50,0,none,none
+gn:996930,Hendrina,Mpumalanga,27300,town,0,0,50,0,none,none
+gn:997140,Heilbron,Free State,32836,town,0,0,50,0,none,none
+gn:997150,Heidelberg,Western Cape,9895,village,0,0,50,0,none,none
+gn:997151,Heidelberg,Gauteng,85858,town,0,0,50,0,none,none
+gn:997184,Hectorspruit,Mpumalanga,3709,village,0,0,50,0,none,none
+gn:997255,Hazyview,Mpumalanga,5074,village,0,0,50,0,none,none
+gn:997373,Hartswater,Northern Cape,0,village,0,0,50,0,none,none
+gn:997678,Hartbeespoort,North West,26732,town,0,0,50,0,none,none
+gn:997718,Hartbeesfontein,North West,22294,town,0,0,50,0,none,none
+gn:997751,Harrismith,Free State,33390,town,0,0,50,0,none,none
+gn:997861,Harding,KwaZulu-Natal,11434,town,0,0,50,0,none,none
+gn:997971,Hanover,Eastern Cape,1437,village,0,0,50,0,none,none
+gn:998001,Hankey,Eastern Cape,14091,town,0,0,50,0,none,none
+gn:998082,Hammanskraal,North West,112950,city,0,0,50,0,none,none
+gn:998131,Hamburg,Eastern Cape,1615,village,0,0,50,0,none,none
+gn:998149,Ha-Mavhunga,Limpopo,2124,village,0,0,50,0,none,none
+gn:998360,Haarlem,Western Cape,2846,village,0,0,50,0,none,none
+gn:998836,Grootvlei,Mpumalanga,6487,village,0,0,50,0,none,none
+gn:999121,Groot-Marico,North West,4054,village,0,0,50,0,none,none
+gn:999602,Groot-Brakrivier,Western Cape,18008,town,0,0,50,0,none,none
+gn:999775,Groenpunt,Gauteng,4466,village,0,0,50,0,none,none
+gn:999962,Groblershoop,Northern Cape,0,village,0,0,50,0,none,none
+gn:999964,Groblersdal,Mpumalanga,4925,village,0,0,50,0,none,none
+gn:1000006,Greytown,KwaZulu-Natal,23139,town,0,0,50,0,none,none
+gn:1000023,Nthrowane,Mpumalanga,8336,village,0,0,50,0,none,none
+gn:1000162,Gravelotte,Limpopo,1315,village,0,0,50,0,none,none
+gn:1000352,Graskop,Mpumalanga,4788,village,0,0,50,0,none,none
+gn:1000501,Grahamstown,Eastern Cape,91548,town,0,0,50,0,none,none
+gn:1000543,Graaff Reinet,Eastern Cape,62896,town,0,0,50,0,none,none
+gn:1000937,Gonubie,Eastern Cape,23733,town,0,0,50,0,none,none
+gn:1001642,Glenharvie,Gauteng,11763,town,0,0,50,0,none,none
+gn:1001736,Glencoe,KwaZulu-Natal,21024,town,0,0,50,0,none,none
+gn:1001817,Glaudina,North West,2837,village,0,0,50,0,none,none
+gn:1001860,Giyani,Limpopo,37024,town,0,0,50,0,none,none
+gn:1001869,KwaGingindlovu,KwaZulu-Natal,1328,village,0,0,50,0,none,none
+gn:1002044,Geysdorp,North West,1635,village,0,0,50,0,none,none
+gn:1002108,Germiston,Gauteng,255863,city,0,0,50,0,none,none
+gn:1002145,George,Western Cape,188580,city,0,0,50,0,none,none
+gn:1002851,Ga-Rankuwa,North West,90945,town,0,0,50,0,none,none
+gn:1002917,Ganyesa,North West,0,village,0,0,50,0,none,none
+gn:1003297,Ga-Maotole,Limpopo,3834,village,0,0,50,0,none,none
+gn:1003462,Ga-Kgapane,Limpopo,13000,town,0,0,50,0,none,none
+gn:1003508,Ga-Boelang,Mpumalanga,3696,village,0,0,50,0,none,none
+gn:1003702,Fraserburg,Northern Cape,3029,village,0,0,50,0,none,none
+gn:1003753,Franklin,KwaZulu-Natal,2417,village,0,0,50,0,none,none
+gn:1003761,Frankfort,Eastern Cape,2447,village,0,0,50,0,none,none
+gn:1003763,Frankfort,Free State,31323,town,0,0,50,0,none,none
+gn:1003843,Fouriesburg,Free State,15544,town,0,0,50,0,none,none
+gn:1003953,Fort Beaufort,Eastern Cape,58419,town,0,0,50,0,none,none
+gn:1004109,Fochville,North West,62416,town,0,0,50,0,none,none
+gn:1004210,Flagstaff,Eastern Cape,12280,town,0,0,50,0,none,none
+gn:1004303,Ficksburg,Free State,49420,town,0,0,50,0,none,none
+gn:1004380,Felixton,KwaZulu-Natal,1225,village,0,0,50,0,none,none
+gn:1004406,Fauresmith,Free State,4346,village,0,0,50,0,none,none
+gn:1004763,Excelsior,Free State,7594,village,0,0,50,0,none,none
+gn:1004866,Evaton,Gauteng,725468,large-city,0,0,50,0,none,none
+gn:1004875,Evander,Mpumalanga,12180,town,0,0,50,0,none,none
+gn:1004962,Estcourt,KwaZulu-Natal,26444,town,0,0,50,0,none,none
+gn:1005029,eSikhaleni,KwaZulu-Natal,49265,town,0,0,50,0,none,none
+gn:1005040,Eshowe,KwaZulu-Natal,17663,town,0,0,50,0,none,none
+gn:1005125,Ermelo,Mpumalanga,100324,city,0,0,50,0,none,none
+gn:1005342,Enon,Eastern Cape,2587,village,0,0,50,0,none,none
+gn:1005470,Ngcobo,Eastern Cape,11783,town,0,0,50,0,none,none
+gn:1005544,Empangeni,KwaZulu-Natal,33075,town,0,0,50,0,none,none
+gn:1005646,eMbalenhle,Mpumalanga,142443,city,0,0,50,0,none,none
+gn:1005753,Eloff,Mpumalanga,4755,village,0,0,50,0,none,none
+gn:1005779,Elliotdale,Eastern Cape,2716,village,0,0,50,0,none,none
+gn:1005781,Khowa,Eastern Cape,17224,town,0,0,50,0,none,none
+gn:1006204,Elandshoek,Mpumalanga,1410,village,0,0,50,0,none,none
+gn:1006420,Ekuvukeni,KwaZulu-Natal,14331,town,0,0,50,0,none,none
+gn:1006831,Edenville,Free State,7540,village,0,0,50,0,none,none
+gn:1006834,Edenvale,Gauteng,49292,town,0,0,50,0,none,none
+gn:1006852,Edenburg,Free State,7739,village,0,0,50,0,none,none
+gn:1006984,East London,Eastern Cape,478676,city,0,0,50,0,none,none
+gn:1007061,Dysselsdorp,Western Cape,15029,town,0,0,50,0,none,none
+gn:1007140,Dwarsloop,Limpopo,35397,town,0,0,50,0,none,none
+za-durban,Durban,KwaZulu-Natal,3338026,large-city,0,0,50,0,none,none
+gn:1007400,Dundee,KwaZulu-Natal,84413,town,0,0,50,0,none,none
+gn:1007476,Dullstroom,Mpumalanga,6256,village,0,0,50,0,none,none
+gn:1007514,Duiwelskloof,Limpopo,24572,town,0,0,50,0,none,none
+gn:1008064,Driekoppies,Mpumalanga,18498,town,0,0,50,0,none,none
+gn:1008261,Driefontein,Mpumalanga,28127,town,0,0,50,0,none,none
+gn:1008612,Douglas,Northern Cape,0,village,0,0,50,0,none,none
+gn:1008858,Dordrecht,Eastern Cape,12292,town,0,0,50,0,none,none
+gn:1009781,Dirkiesdorp,Mpumalanga,2913,village,0,0,50,0,none,none
+gn:1009863,Dimbaza,Eastern Cape,26099,town,0,0,50,0,none,none
+gn:1010586,Dewetsdorp,Free State,11379,town,0,0,50,0,none,none
+gn:1010627,Devon,Gauteng,11476,town,0,0,50,0,none,none
+gn:1010717,Despatch,Eastern Cape,39619,town,0,0,50,0,none,none
+gn:1010728,De Rust,Western Cape,4272,village,0,0,50,0,none,none
+gn:1010821,Derby,North West,4157,village,0,0,50,0,none,none
+gn:1010962,Deneysville,Free State,23337,town,0,0,50,0,none,none
+gn:1010967,Dendron,Limpopo,4846,village,0,0,50,0,none,none
+gn:1011031,Delmas,Mpumalanga,92046,town,0,0,50,0,none,none
+gn:1011062,Delareyville,North West,12736,town,0,0,50,0,none,none
+gn:1011624,Dealesville,Free State,6524,village,0,0,50,0,none,none
+gn:1011632,De Aar,Northern Cape,32318,town,0,0,50,0,none,none
+gn:1011708,Davel,Mpumalanga,1429,village,0,0,50,0,none,none
+gn:1011824,Darnall,KwaZulu-Natal,10106,town,0,0,50,0,none,none
+gn:1011881,Dannhauser,KwaZulu-Natal,10378,town,0,0,50,0,none,none
+gn:1011918,Daniëlskuil,Northern Cape,10123,town,0,0,50,0,none,none
+gn:1012080,Dalton,KwaZulu-Natal,1788,village,0,0,50,0,none,none
+gn:1012413,Cullinan,Gauteng,34087,town,0,0,50,0,none,none
+gn:1012528,Creighton,KwaZulu-Natal,0,village,0,0,50,0,none,none
+gn:1012600,Cradock,Eastern Cape,43936,town,0,0,50,0,none,none
+gn:1012688,Coronation,KwaZulu-Natal,4422,village,0,0,50,0,none,none
+gn:1012724,Cornelia,Free State,3551,village,0,0,50,0,none,none
+gn:1012807,Cookhouse,Eastern Cape,6837,village,0,0,50,0,none,none
+gn:1013067,Coligny,North West,20701,town,0,0,50,0,none,none
+gn:1013076,Colesberg,Northern Cape,12423,town,0,0,50,0,none,none
+gn:1013081,Colenso,KwaZulu-Natal,7653,village,0,0,50,0,none,none
+gn:1013092,Coldstream,Eastern Cape,1985,village,0,0,50,0,none,none
+gn:1013125,Cofimvaba,Eastern Cape,10523,town,0,0,50,0,none,none
+gn:1013199,Clydesdale,Eastern Cape,18357,town,0,0,50,0,none,none
+gn:1013266,Hlohlolwane,Free State,21089,town,0,0,50,0,none,none
+gn:1013386,Clarkson,Eastern Cape,2185,village,0,0,50,0,none,none
+gn:1013397,Clarens,Free State,7644,village,0,0,50,0,none,none
+gn:1013464,Cintsa Mouth West,Eastern Cape,2084,village,0,0,50,0,none,none
+gn:1013550,Christiana,North West,25019,town,0,0,50,0,none,none
+gn:1013563,Chrissiesmeer,Mpumalanga,4806,village,0,0,50,0,none,none
+gn:1013706,Charlestown,KwaZulu-Natal,5262,village,0,0,50,0,none,none
+gn:1013835,Cedarville,KwaZulu-Natal,5286,village,0,0,50,0,none,none
+gn:1013886,Cato Ridge,KwaZulu-Natal,5168,village,0,0,50,0,none,none
+gn:1013911,Cathcart,Eastern Cape,8818,village,0,0,50,0,none,none
+gn:1014012,Carolina,Mpumalanga,20184,town,0,0,50,0,none,none
+gn:1014034,Carnarvon,Northern Cape,5785,village,0,0,50,0,none,none
+gn:1014073,Carletonville,Gauteng,182304,city,0,0,50,0,none,none
+gn:1014180,Camperdown,KwaZulu-Natal,2517,village,0,0,50,0,none,none
+gn:1014257,Calitzdorp,Western Cape,5133,village,0,0,50,0,none,none
+gn:1014306,Calcutta,Mpumalanga,35864,town,0,0,50,0,none,none
+gn:1014322,Cala,Eastern Cape,15764,town,0,0,50,0,none,none
+gn:1014489,Butterworth,Eastern Cape,53086,town,0,0,50,0,none,none
+gn:1014650,Burgersfort,Mpumalanga,7630,village,0,0,50,0,none,none
+gn:1014653,Burgersdorp,Eastern Cape,19159,town,0,0,50,0,none,none
+gn:1014709,Bulwer,KwaZulu-Natal,1285,village,0,0,50,0,none,none
+gn:1014747,Bultfontein,Free State,27994,town,0,0,50,0,none,none
+gn:1014994,Mhlambanyatsi,Mpumalanga,9219,village,0,0,50,0,none,none
+gn:1015228,Buffeljagsrivier,Western Cape,1724,village,0,0,50,0,none,none
+gn:1015504,Bronkhorstspruit,Gauteng,41209,town,0,0,50,0,none,none
+gn:1015621,Brits,North West,122497,city,0,0,50,0,none,none
+gn:1015694,Breyten,Mpumalanga,17189,town,0,0,50,0,none,none
+gn:1015776,Bredasdorp,Western Cape,18599,town,0,0,50,0,none,none
+gn:1015837,Brandwag,Western Cape,1761,village,0,0,50,0,none,none
+gn:1015850,Brandvlei,Northern Cape,2859,village,0,0,50,0,none,none
+gn:1015969,Winnie Mandela,Free State,15454,town,0,0,50,0,none,none
+gn:1016181,Brakpan,Gauteng,305692,city,0,0,50,0,none,none
+gn:1016670,Botshabelo,Free State,309714,city,0,0,50,0,none,none
+gn:1016698,Bothaville,Free State,71934,town,0,0,50,0,none,none
+gn:1016747,Botha’s Hill,KwaZulu-Natal,2623,village,0,0,50,0,none,none
+gn:1017048,Boshof,Free State,10194,town,0,0,50,0,none,none
+gn:1017076,Bosfontein,Mpumalanga,7811,village,0,0,50,0,none,none
+gn:1017354,Bosbokrand,Mpumalanga,2109,village,0,0,50,0,none,none
+gn:1017565,Bontrug,Eastern Cape,10057,town,0,0,50,0,none,none
+gn:1017620,Bonnievale,Western Cape,10893,town,0,0,50,0,none,none
+gn:1017780,Boksburg,Gauteng,445168,city,0,0,50,0,none,none
+gn:1018148,Bochum,Limpopo,12000,town,0,0,50,0,none,none
+gn:1018673,Bloemhof,North West,33432,town,0,0,50,0,none,none
+gn:1018725,Bloemfontein,Free State,556637,large-city,0,0,50,0,none,none
+gn:1018838,Blinkpan,Mpumalanga,1446,village,0,0,50,0,none,none
+gn:1019264,Bizana,Eastern Cape,9553,village,0,0,50,0,none,none
+gn:1019330,Bhisho,Eastern Cape,137287,city,0,0,50,0,none,none
+gn:1019700,Bethulie,Free State,7783,village,0,0,50,0,none,none
+gn:1019704,Bethlehem,Free State,91075,town,0,0,50,0,none,none
+gn:1019760,Bethal,Mpumalanga,72821,town,0,0,50,0,none,none
+gn:1019847,Bertha Shaft Village,Free State,2193,village,0,0,50,0,none,none
+gn:1019883,Ntabozuko,Eastern Cape,3650,village,0,0,50,0,none,none
+gn:1019933,Bergville,KwaZulu-Natal,1405,village,0,0,50,0,none,none
+gn:1019995,Bergnek,Limpopo,1698,village,0,0,50,0,none,none
+gn:1020066,Berea,KwaZulu-Natal,15000,town,0,0,50,0,none,none
+gn:1020098,Benoni,Gauteng,605344,large-city,0,0,50,0,none,none
+gn:1020340,Belfast,Mpumalanga,20036,town,0,0,50,0,none,none
+gn:1020592,Bedford,Eastern Cape,10506,town,0,0,50,0,none,none
+gn:1020641,Beaufort West,Western Cape,44737,town,0,0,50,0,none,none
+gn:1020854,Bathurst,Eastern Cape,7630,village,0,0,50,0,none,none
+gn:1020992,Barrydale,Western Cape,4979,village,0,0,50,0,none,none
+gn:1021040,Barkly West,Northern Cape,11621,town,0,0,50,0,none,none
+gn:1021046,Barkly East,Eastern Cape,11965,town,0,0,50,0,none,none
+gn:1021086,Barberton,Mpumalanga,67927,town,0,0,50,0,none,none
+gn:1021360,Ballitoville,KwaZulu-Natal,27718,town,0,0,50,0,none,none
+gn:1021395,Balfour,Eastern Cape,3187,village,0,0,50,0,none,none
+gn:1021396,Balfour,Mpumalanga,46008,town,0,0,50,0,none,none
+gn:1021770,eManzana,Mpumalanga,8293,village,0,0,50,0,none,none
+gn:1021844,Babanango,KwaZulu-Natal,2259,village,0,0,50,0,none,none
+gn:1022038,Augrabies,Northern Cape,3627,village,0,0,50,0,none,none
+gn:1022145,Ashton,Western Cape,15964,town,0,0,50,0,none,none
+gn:1022210,Arthur’s Seat,Mpumalanga,1569,village,0,0,50,0,none,none
+gn:1022283,Arlington,Free State,4714,village,0,0,50,0,none,none
+gn:1022508,Apel,Limpopo,0,village,0,0,50,0,none,none
+gn:1022857,eMvelo,Mpumalanga,8110,village,0,0,50,0,none,none
+gn:1022912,Amersfoort,Mpumalanga,14778,town,0,0,50,0,none,none
+gn:1022953,eManzimtoti,KwaZulu-Natal,13813,town,0,0,50,0,none,none
+gn:1022982,Amandelbult,Limpopo,25587,town,0,0,50,0,none,none
+gn:1023003,Amalia,North West,6566,village,0,0,50,0,none,none
+gn:1023281,Alldays,Limpopo,3578,village,0,0,50,0,none,none
+gn:1023287,Allanridge,Free State,31700,town,0,0,50,0,none,none
+gn:1023291,Allandale A,Limpopo,2743,village,0,0,50,0,none,none
+gn:1023309,Aliwal North,Eastern Cape,44436,town,0,0,50,0,none,none
+gn:1023319,Alicedale,Eastern Cape,4639,village,0,0,50,0,none,none
+gn:1023332,Alice,Eastern Cape,18141,town,0,0,50,0,none,none
+gn:1023365,Alexandria,Eastern Cape,12084,town,0,0,50,0,none,none
+gn:1023366,Hlanganani,Mpumalanga,21506,town,0,0,50,0,none,none
+gn:1023374,Alexandra,Gauteng,179624,city,0,0,50,0,none,none
+gn:1023441,Alberton,Gauteng,121536,city,0,0,50,0,none,none
+gn:1023445,Albertina,Western Cape,7634,village,0,0,50,0,none,none
+gn:1023454,Albert Falls,KwaZulu-Natal,5434,village,0,0,50,0,none,none
+gn:1023656,Adelaide,Eastern Cape,14606,town,0,0,50,0,none,none
+gn:1023672,Addo,Eastern Cape,7475,village,0,0,50,0,none,none
+gn:1023713,Acornhoek,Limpopo,33529,town,0,0,50,0,none,none
+gn:1023790,Aberdeen,Eastern Cape,8580,village,0,0,50,0,none,none
+gn:1105726,Ekangala,Gauteng,58099,town,0,0,50,0,none,none
+gn:1105727,Kwamhlanga,Gauteng,8535,village,0,0,50,0,none,none
+gn:1105728,Somaroboro,Mpumalanga,114369,city,0,0,50,0,none,none
+gn:1105730,Allemansdrif,Mpumalanga,12670,town,0,0,50,0,none,none
+gn:1105776,Midrand,Gauteng,87387,town,0,0,50,0,none,none
+gn:1105777,Centurion,Gauteng,236580,city,0,0,50,0,none,none
+gn:3358975,Yzerfontein,Western Cape,1365,village,0,0,50,0,none,none
+gn:3359041,Worcester,Western Cape,127597,city,0,0,50,0,none,none
+gn:3359094,Wolseley,Western Cape,14533,town,0,0,50,0,none,none
+gn:3359510,Wellington,Western Cape,55543,town,0,0,50,0,none,none
+gn:3359736,Vredendal,Western Cape,21769,town,0,0,50,0,none,none
+gn:3359741,Vredenburg,Western Cape,45986,town,0,0,50,0,none,none
+gn:3359957,Villiersdorp,Western Cape,11986,town,0,0,50,0,none,none
+gn:3360020,Velddrif,Western Cape,13199,town,0,0,50,0,none,none
+gn:3360078,Vanrhynsdorp,Western Cape,7515,village,0,0,50,0,none,none
+gn:3360396,Tulbagh,Western Cape,10745,town,0,0,50,0,none,none
+gn:3360605,Tesselaarsdal,Western Cape,1500,village,0,0,50,0,none,none
+gn:3361025,Stellenbosch,Western Cape,96228,town,0,0,50,0,none,none
+gn:3361084,Stanford,Western Cape,5747,village,0,0,50,0,none,none
+gn:3361142,Springbok,Northern Cape,10438,town,0,0,50,0,none,none
+gn:3361618,Simon's Town,Western Cape,6569,village,0,0,50,0,none,none
+gn:3361777,Saron,Western Cape,9396,village,0,0,50,0,none,none
+gn:3361934,Saldanha,Western Cape,68284,town,0,0,50,0,none,none
+gn:3361943,Saint Helena Bay,Western Cape,13813,town,0,0,50,0,none,none
+gn:3362024,Rosebank,Western Cape,10000,town,0,0,50,0,none,none
+gn:3362349,Robertson,Western Cape,33204,town,0,0,50,0,none,none
+gn:3362360,Riviersonderend,Western Cape,6284,village,0,0,50,0,none,none
+gn:3362482,Riebeek West,Western Cape,5211,village,0,0,50,0,none,none
+gn:3362485,Riebeek-Kasteel,Western Cape,5704,village,0,0,50,0,none,none
+gn:3362555,Rawsonville,Western Cape,3712,village,0,0,50,0,none,none
+gn:3362675,Prince Alfred Hamlet,Western Cape,8159,village,0,0,50,0,none,none
+gn:3362713,Port Nolloth,Northern Cape,0,village,0,0,50,0,none,none
+gn:3362714,Porterville,Western Cape,8455,village,0,0,50,0,none,none
+gn:3362755,Pofadder,Northern Cape,3287,village,0,0,50,0,none,none
+gn:3362762,Pniel,Western Cape,2366,village,0,0,50,0,none,none
+gn:3362870,Piketberg,Western Cape,14862,town,0,0,50,0,none,none
+gn:3362976,Pearly Beach,Western Cape,1248,village,0,0,50,0,none,none
+gn:3363003,Paternoster,Western Cape,2360,village,0,0,50,0,none,none
+gn:3363094,Paarl,Western Cape,236910,city,0,0,50,0,none,none
+gn:3363273,Op-die-Berg,Western Cape,1834,village,0,0,50,0,none,none
+gn:3363792,Napier,Western Cape,5048,village,0,0,50,0,none,none
+gn:3363848,Nababeep,Northern Cape,5374,village,0,0,50,0,none,none
+gn:3363882,Muizenberg,Western Cape,36857,town,0,0,50,0,none,none
+gn:3363957,Moorreesburg,Western Cape,15428,town,0,0,50,0,none,none
+gn:3364208,Melkbosstrand,Western Cape,13542,town,0,0,50,0,none,none
+gn:3364246,McGregor,Western Cape,3744,village,0,0,50,0,none,none
+gn:3364343,Mamre,Western Cape,10840,town,0,0,50,0,none,none
+gn:3364346,Malmesbury,Western Cape,43009,town,0,0,50,0,none,none
+gn:3364403,Lutzville,Western Cape,6268,village,0,0,50,0,none,none
+gn:3364682,Lansdowne,Western Cape,17399,town,0,0,50,0,none,none
+gn:3364795,Langebaan,Western Cape,9940,village,0,0,50,0,none,none
+gn:3364847,Lamberts Bay,Western Cape,7332,village,0,0,50,0,none,none
+gn:3364872,Kylemore,Western Cape,5185,village,0,0,50,0,none,none
+gn:3364937,Kuils River,Western Cape,46685,town,0,0,50,0,none,none
+gn:3365083,Kraaifontein,Western Cape,57911,town,0,0,50,0,none,none
+gn:3365182,Koringberg,Western Cape,1454,village,0,0,50,0,none,none
+gn:3365354,Koekenaap,Western Cape,1858,village,0,0,50,0,none,none
+gn:3365533,Klipheuwel,Western Cape,2748,village,0,0,50,0,none,none
+gn:3365754,Kleinmond,Western Cape,7948,village,0,0,50,0,none,none
+gn:3365921,Klawer,Western Cape,7469,village,0,0,50,0,none,none
+gn:3366317,Kalbaskraal,Western Cape,2888,village,0,0,50,0,none,none
+gn:3366695,Hopefield,Western Cape,7457,village,0,0,50,0,none,none
+gn:3366880,Hermanus,Western Cape,56139,town,0,0,50,0,none,none
+gn:3367442,Greyton,Western Cape,3329,village,0,0,50,0,none,none
+gn:3367513,Grabouw,Western Cape,37490,town,0,0,50,0,none,none
+gn:3367527,Graafwater,Western Cape,2708,village,0,0,50,0,none,none
+gn:3367553,Gouda,Western Cape,4122,village,0,0,50,0,none,none
+gn:3367594,Goedverwag,Western Cape,2371,village,0,0,50,0,none,none
+gn:3367707,Genadendal,Western Cape,6784,village,0,0,50,0,none,none
+gn:3367786,Garies,Northern Cape,0,village,0,0,50,0,none,none
+gn:3367804,Gansbaai,Western Cape,15957,town,0,0,50,0,none,none
+gn:3367877,Franschhoek,Western Cape,20000,town,0,0,50,0,none,none
+gn:3368033,eNduli,Western Cape,11203,town,0,0,50,0,none,none
+gn:3368057,Elim,Western Cape,1691,village,0,0,50,0,none,none
+gn:3368118,Elandsbaai,Western Cape,1827,village,0,0,50,0,none,none
+gn:3368187,Eendekuil,Western Cape,1833,village,0,0,50,0,none,none
+gn:3368195,Ebenhaeser,Western Cape,1563,village,0,0,50,0,none,none
+gn:3368254,Durbanville,Western Cape,54286,town,0,0,50,0,none,none
+gn:3368507,Doringbaai,Western Cape,1509,village,0,0,50,0,none,none
+gn:3368906,De Doorns,Western Cape,12679,town,0,0,50,0,none,none
+gn:3368962,Darling,Western Cape,12484,town,0,0,50,0,none,none
+gn:3369056,Constantia,Western Cape,6922,village,0,0,50,0,none,none
+gn:3369098,Claremont,Western Cape,14531,town,0,0,50,0,none,none
+gn:3369100,Clanwilliam,Western Cape,9194,village,0,0,50,0,none,none
+gn:3369103,Citrusdal,Western Cape,8598,village,0,0,50,0,none,none
+gn:3369115,Chatsworth,Western Cape,4854,village,0,0,50,0,none,none
+gn:3369129,Ceres,Western Cape,41596,town,0,0,50,0,none,none
+za-cape-town,Cape Town,Western Cape,4772846,large-city,0,0,50,0,none,none
+gn:3369174,Calvinia,Northern Cape,8146,village,0,0,50,0,none,none
+gn:3369179,Caledon,Western Cape,16752,town,0,0,50,0,none,none
+gn:3369367,Brandvlei,Western Cape,1171,village,0,0,50,0,none,none
+gn:3369569,Botrivier,Western Cape,6594,village,0,0,50,0,none,none
+gn:3370086,Betty’s Bay,Western Cape,1653,village,0,0,50,0,none,none
+gn:3370105,Bergvliet,Western Cape,3902,village,0,0,50,0,none,none
+gn:3370352,Atlantis,Western Cape,82736,town,0,0,50,0,none,none
+gn:3370356,Athlone,Western Cape,237414,city,0,0,50,0,none,none
+gn:3370511,Alexander Bay,Northern Cape,1736,village,0,0,50,0,none,none
+gn:6692734,Pennington,KwaZulu-Natal,3337,village,0,0,50,0,none,none
+gn:6942527,Century City,Western Cape,4239,village,0,0,50,0,none,none
+gn:6942529,Sunset Beach,Western Cape,2000,village,0,0,50,0,none,none
+gn:6951112,Somerset West,Western Cape,225289,city,0,0,50,0,none,none
+gn:7289237,Marloth Park,Mpumalanga,1198,village,0,0,50,0,none,none
+gn:7302797,Eden Glen,Gauteng,7345,village,0,0,50,0,none,none
+gn:7302802,Rondebosch,Western Cape,15158,town,0,0,50,0,none,none
+gn:7304422,Herolds Bay,Western Cape,1268,village,0,0,50,0,none,none
+gn:7506857,Newlands,Western Cape,5343,village,0,0,50,0,none,none
+gn:7576313,Bela-Bela,Limpopo,0,village,0,0,50,0,none,none
+gn:7730334,Lephalale,Limpopo,21133,town,0,0,50,0,none,none
+gn:8030223,Musina,Limpopo,51132,town,0,0,50,0,none,none
+gn:8030233,Midstream,Gauteng,25000,town,0,0,50,0,none,none
+gn:8063456,Mandeni,KwaZulu-Natal,37533,town,0,0,50,0,none,none
+gn:8063467,St Francis Bay,Eastern Cape,5910,village,0,0,50,0,none,none
+gn:8184439,Vierlanden,Western Cape,1157,village,0,0,50,0,none,none
+gn:8555959,Klapmuts,Western Cape,9229,village,0,0,50,0,none,none
+gn:8604596,Retreat,Western Cape,25745,town,0,0,50,0,none,none
+gn:8604906,Hartbeestfontein-A,North West,31554,town,0,0,50,0,none,none
+gn:8629684,Marapong,Limpopo,31424,town,0,0,50,0,none,none
+gn:8643436,Colchester,Eastern Cape,2483,village,0,0,50,0,none,none
+gn:8764562,Diepsloot,Gauteng,350000,city,0,0,50,0,none,none
+gn:11203982,Kurland,Western Cape,4832,village,0,0,50,0,none,none
+gn:11204017,Tjakastad,Mpumalanga,12711,town,0,0,50,0,none,none
+gn:11204092,Leeuwfontein-C,Mpumalanga,9773,village,0,0,50,0,none,none
+gn:11204106,Etwatwa,Gauteng,151866,city,0,0,50,0,none,none
+gn:11204123,Marikana,North West,23389,town,0,0,50,0,none,none
+gn:11204214,Ga-Malakhe,KwaZulu-Natal,16891,town,0,0,50,0,none,none
+gn:11204237,Ivory Park,Gauteng,184383,city,0,0,50,0,none,none
+gn:11204240,Lukwatini,Mpumalanga,37362,town,0,0,50,0,none,none
+gn:11204446,Mankweng,Limpopo,49480,town,0,0,50,0,none,none
+gn:11204546,Phatsima,North West,8796,village,0,0,50,0,none,none
+gn:11204552,Mkhuhlu,Mpumalanga,42969,town,0,0,50,0,none,none
+gn:11204578,Trust Feed,KwaZulu-Natal,6901,village,0,0,50,0,none,none
+gn:11204670,Eastleigh,Gauteng,6988,village,0,0,50,0,none,none
+gn:11204695,Kamaqhekeza,Mpumalanga,25390,town,0,0,50,0,none,none
+gn:11205133,Phola,Mpumalanga,38202,town,0,0,50,0,none,none
+gn:11205248,Motherwell,Eastern Cape,140351,city,0,0,50,0,none,none
+gn:11205667,Ntuzuma,KwaZulu-Natal,125394,city,0,0,50,0,none,none
+gn:11205753,Ncotshane,KwaZulu-Natal,19562,town,0,0,50,0,none,none
+gn:11256886,Skoonplaas,Mpumalanga,2757,village,0,0,50,0,none,none
+gn:11258592,Lehurutshe,North West,8252,village,0,0,50,0,none,none
+gn:11282157,Malamulele,Limpopo,15659,town,0,0,50,0,none,none
+gn:11287120,Maluti,Eastern Cape,8654,village,0,0,50,0,none,none
+gn:11287518,Tukakgomo,Limpopo,13472,town,0,0,50,0,none,none
+gn:11287980,Poortje,Gauteng,13362,town,0,0,50,0,none,none
+gn:11288103,Folweni,KwaZulu-Natal,36425,town,0,0,50,0,none,none
+gn:11395710,Shatale,Mpumalanga,9155,village,0,0,50,0,none,none
+gn:11427405,Eden Glen Ext 60,Gauteng,5494,village,0,0,50,0,none,none
+gn:11427426,Tongaat Beach,KwaZulu-Natal,3962,village,0,0,50,0,none,none
+gn:11428880,Lebohang,Mpumalanga,31553,town,0,0,50,0,none,none
+gn:11428969,Cool Air,KwaZulu-Natal,3079,village,0,0,50,0,none,none
+gn:11495909,Mathibela,Limpopo,6943,village,0,0,50,0,none,none
+gn:12104196,Thornhill,Eastern Cape,5000,village,0,0,50,0,none,none
+gn:12420903,Khaya Mnandi,Eastern Cape,5500,village,0,0,50,0,none,none
+gn:12626041,Gariep Dam,Free State,1878,village,0,0,50,0,none,none
+gn:12718742,Santombe,Eastern Cape,1299,village,0,0,50,0,none,none
+gn:12718743,Glenmore,Eastern Cape,1491,village,0,0,50,0,none,none
+gn:12718744,Mkukwini,Eastern Cape,1970,village,0,0,50,0,none,none
+gn:12718745,Msobomvu,Eastern Cape,2114,village,0,0,50,0,none,none
+gn:12718746,Woodlands,Eastern Cape,2254,village,0,0,50,0,none,none
+gn:12718747,Clarendon Marine,Eastern Cape,2730,village,0,0,50,0,none,none
+gn:12718748,Ngabangu,Eastern Cape,2826,village,0,0,50,0,none,none
+gn:12718749,Loerieheuwel,Eastern Cape,3339,village,0,0,50,0,none,none
+gn:12718750,Ducats,Eastern Cape,4248,village,0,0,50,0,none,none
+gn:12718751,Phakamisa,Eastern Cape,8806,village,0,0,50,0,none,none
+gn:12718752,Ilitha,Eastern Cape,9757,village,0,0,50,0,none,none
+gn:12718753,Nomathamasanqa,Eastern Cape,12815,town,0,0,50,0,none,none
+gn:12718754,Ndevana,Eastern Cape,18151,town,0,0,50,0,none,none
+gn:12718755,Ikgomotseng,Free State,3897,village,0,0,50,0,none,none
+gn:12718756,Tshiame,Free State,17800,town,0,0,50,0,none,none
+gn:12718757,Phomolong,Free State,24635,town,0,0,50,0,none,none
+gn:12718758,Mamello,Gauteng,1407,village,0,0,50,0,none,none
+gn:12718759,Kameelkraal,Gauteng,1464,village,0,0,50,0,none,none
+gn:12718760,Onverwacht,Gauteng,1818,village,0,0,50,0,none,none
+gn:12718761,Orient Hills,Gauteng,2043,village,0,0,50,0,none,none
+gn:12718762,Leeudoorn Mine,Gauteng,2043,village,0,0,50,0,none,none
+gn:12718763,Randvaal,Gauteng,2049,village,0,0,50,0,none,none
+gn:12718764,Seberuberung,Gauteng,2059,village,0,0,50,0,none,none
+gn:12718765,Elsburg Gold Mine,Gauteng,2141,village,0,0,50,0,none,none
+gn:12718766,Thembisile,Gauteng,2167,village,0,0,50,0,none,none
+gn:12718767,Rethabiseng,Gauteng,13136,town,0,0,50,0,none,none
+gn:12718768,Bagale,Gauteng,16087,town,0,0,50,0,none,none
+gn:12718769,Hlalanathi,KwaZulu-Natal,1281,village,0,0,50,0,none,none
+gn:12718770,Loss,KwaZulu-Natal,1290,village,0,0,50,0,none,none
+gn:12718771,Ocean Drive-In,KwaZulu-Natal,1299,village,0,0,50,0,none,none
+gn:12718772,Thembalethu,KwaZulu-Natal,1471,village,0,0,50,0,none,none
+gn:12718773,Hambanathi,KwaZulu-Natal,1520,village,0,0,50,0,none,none
+gn:12718774,Drummond,KwaZulu-Natal,1823,village,0,0,50,0,none,none
+gn:12718775,Randgate,KwaZulu-Natal,1903,village,0,0,50,0,none,none
+gn:12718776,Glen Mill,KwaZulu-Natal,2106,village,0,0,50,0,none,none
+gn:12718777,Mpungamhlophe,KwaZulu-Natal,2161,village,0,0,50,0,none,none
+gn:12718778,Cibelichle,KwaZulu-Natal,2409,village,0,0,50,0,none,none
+gn:12718779,Emona,KwaZulu-Natal,2590,village,0,0,50,0,none,none
+gn:12718780,Greylands,KwaZulu-Natal,2617,village,0,0,50,0,none,none
+gn:12718781,Ashburton,KwaZulu-Natal,2659,village,0,0,50,0,none,none
+gn:12718782,Emaqeleni,KwaZulu-Natal,2741,village,0,0,50,0,none,none
+gn:12718783,Ezibomvu,KwaZulu-Natal,2893,village,0,0,50,0,none,none
+gn:12718784,Nkongolwane,KwaZulu-Natal,3213,village,0,0,50,0,none,none
+gn:12718785,Ibisikululwa,KwaZulu-Natal,3554,village,0,0,50,0,none,none
+gn:12718786,Hazelmere,KwaZulu-Natal,10605,town,0,0,50,0,none,none
+gn:12718787,Kgwaripe,KwaZulu-Natal,11519,town,0,0,50,0,none,none
+gn:12718788,Craigieburn,KwaZulu-Natal,13543,town,0,0,50,0,none,none
+gn:12718789,Frischgewaagd,KwaZulu-Natal,16192,town,0,0,50,0,none,none
+gn:12718790,KaNdengeza,Limpopo,1267,village,0,0,50,0,none,none
+gn:12718791,Thusang,Limpopo,1299,village,0,0,50,0,none,none
+gn:12718792,Louis Trichardt Airforce Base,Limpopo,1345,village,0,0,50,0,none,none
+gn:12718793,Lwamondo,Limpopo,1557,village,0,0,50,0,none,none
+gn:12718794,Moshate,Limpopo,1834,village,0,0,50,0,none,none
+gn:12718795,Mvelaphanda,Limpopo,1872,village,0,0,50,0,none,none
+gn:12718796,Phaweni,Limpopo,2077,village,0,0,50,0,none,none
+gn:12718797,Laersdrift,Limpopo,2657,village,0,0,50,0,none,none
+gn:12718798,Thabo Mbeki,Limpopo,2700,village,0,0,50,0,none,none
+gn:12718799,Morbeng,Limpopo,2841,village,0,0,50,0,none,none
+gn:12718800,Ka-Xihosana,Limpopo,3050,village,0,0,50,0,none,none
+gn:12718801,Mokgoba,Limpopo,3063,village,0,0,50,0,none,none
+gn:12718802,Nthabiseng,Limpopo,3210,village,0,0,50,0,none,none
+gn:12718803,Vuwani,Limpopo,3343,village,0,0,50,0,none,none
+gn:12718804,Saselamani,Limpopo,4465,village,0,0,50,0,none,none
+gn:12718805,Ka-Mahonisi,Limpopo,4490,village,0,0,50,0,none,none
+gn:12718806,Babirwa,Limpopo,5006,village,0,0,50,0,none,none
+gn:12718807,GaSekhaolelo,Limpopo,5232,village,0,0,50,0,none,none
+gn:12718808,Senwamokgope,Limpopo,5328,village,0,0,50,0,none,none
+gn:12718809,Nthabalala,Limpopo,5969,village,0,0,50,0,none,none
+gn:12718810,Elandskraal,Limpopo,7621,village,0,0,50,0,none,none
+gn:12718811,Tshitereke,Limpopo,19092,town,0,0,50,0,none,none
+gn:12718812,Praktiseer,Limpopo,26675,town,0,0,50,0,none,none
+gn:12718813,Lebowakgomo,Limpopo,42040,town,0,0,50,0,none,none
+gn:12718815,Bosoord,Mpumalanga,1353,village,0,0,50,0,none,none
+gn:12718816,Sizanane,Mpumalanga,1383,village,0,0,50,0,none,none
+gn:12718817,Betty's Goed,Mpumalanga,1784,village,0,0,50,0,none,none
+gn:12718818,Kriel Power Station,Mpumalanga,1939,village,0,0,50,0,none,none
+gn:12718819,Iswepe,Mpumalanga,3394,village,0,0,50,0,none,none
+gn:12718820,Warburton,Mpumalanga,3411,village,0,0,50,0,none,none
+gn:12718821,Wolfenkop,Mpumalanga,3660,village,0,0,50,0,none,none
+gn:12718822,Pullens Hope,Mpumalanga,4120,village,0,0,50,0,none,none
+gn:12718823,Ngodwana,Mpumalanga,4173,village,0,0,50,0,none,none
+gn:12718824,KwaDela,Mpumalanga,4530,village,0,0,50,0,none,none
+gn:12718825,Mapulaneng View,Mpumalanga,4600,village,0,0,50,0,none,none
+gn:12718826,Masakhane,Mpumalanga,4811,village,0,0,50,0,none,none
+gn:12718827,Ekulindeni,Mpumalanga,5416,village,0,0,50,0,none,none
+gn:12718828,Doornkop,Mpumalanga,6037,village,0,0,50,0,none,none
+gn:12718829,Emgwenya,Mpumalanga,7410,village,0,0,50,0,none,none
+gn:12718830,Kamhlushwa,Mpumalanga,7917,village,0,0,50,0,none,none
+gn:12718831,Gemsbokspruit,Mpumalanga,8138,village,0,0,50,0,none,none
+gn:12718832,Empuluzu,Mpumalanga,15008,town,0,0,50,0,none,none
+gn:12718833,Daggakraal,Mpumalanga,15793,town,0,0,50,0,none,none
+gn:12718834,Thubelihle,Mpumalanga,15876,town,0,0,50,0,none,none
+gn:12718835,Tekwane,Mpumalanga,17846,town,0,0,50,0,none,none
+gn:12718836,Vaalbank,Mpumalanga,19517,town,0,0,50,0,none,none
+gn:12718837,Redhill,Mpumalanga,23153,town,0,0,50,0,none,none
+gn:12718839,Sun City,North West,1556,village,0,0,50,0,none,none
+gn:12718840,Sun Village,North West,1592,village,0,0,50,0,none,none
+gn:12718841,Bray,North West,1625,village,0,0,50,0,none,none
+gn:12718842,Boipelo,North West,5010,village,0,0,50,0,none,none
+gn:12718843,Itekeng,North West,6740,village,0,0,50,0,none,none
+gn:12718844,Umzimhle,North West,7352,village,0,0,50,0,none,none
+gn:12718845,Carousel View,North West,8875,village,0,0,50,0,none,none
+gn:12718846,Letlhabile,North West,49718,town,0,0,50,0,none,none
+gn:12718847,Philandersbron,Northern Cape,1295,village,0,0,50,0,none,none
+gn:12718848,Leerkrans,Northern Cape,1657,village,0,0,50,0,none,none
+gn:12718849,Gannaput,Northern Cape,1674,village,0,0,50,0,none,none
+gn:12718850,Swartkop,Northern Cape,1979,village,0,0,50,0,none,none
+gn:12718851,Cillie,Northern Cape,2359,village,0,0,50,0,none,none
+gn:12718852,Wegdraai,Northern Cape,2622,village,0,0,50,0,none,none
+gn:12718853,Grootdrink,Northern Cape,3169,village,0,0,50,0,none,none
+gn:12718854,Raaswater,Northern Cape,3352,village,0,0,50,0,none,none
+gn:12718855,Oakglen,Northern Cape,5504,village,0,0,50,0,none,none
+gn:12718856,Nuwerus NC,Northern Cape,8531,village,0,0,50,0,none,none
+gn:12718857,Wemmershoek,Western Cape,1238,village,0,0,50,0,none,none
+gn:12718858,Hugenote,Western Cape,1277,village,0,0,50,0,none,none
+gn:12718859,Friemersheim,Western Cape,1479,village,0,0,50,0,none,none
+gn:12718860,Pella WC,Western Cape,2014,village,0,0,50,0,none,none
+gn:12718861,Wiesiesdraai,Western Cape,2069,village,0,0,50,0,none,none
+gn:12718862,Victor Verster,Western Cape,3387,village,0,0,50,0,none,none
+gn:12718863,Slangrivier,Western Cape,3607,village,0,0,50,0,none,none
+gn:12718864,Abbotsdale,Western Cape,4507,village,0,0,50,0,none,none
+gn:12718865,Languedoc,Western Cape,5138,village,0,0,50,0,none,none
+gn:12718866,Kranshoek,Western Cape,6705,village,0,0,50,0,none,none
+gn:12718867,Fisantekraal,Western Cape,14819,town,0,0,50,0,none,none
+gn:12718868,Le Roux,Western Cape,17432,town,0,0,50,0,none,none
+gn:12746698,Westville,Eastern Cape,0,village,0,0,50,0,none,none
+gn:12750584,Nhlazatje,Mpumalanga,28224,town,0,0,50,0,none,none
+gn:12750585,Mooiplaas,Mpumalanga,4196,village,0,0,50,0,none,none
+gn:12750586,Swalluwnest,Mpumalanga,2520,village,0,0,50,0,none,none
+gn:12750587,Glenmore,Mpumalanga,7180,village,0,0,50,0,none,none
+gn:12750588,Dundonald,Mpumalanga,4764,village,0,0,50,0,none,none
+gn:12750601,Fernie,Mpumalanga,15693,town,0,0,50,0,none,none
+gn:12808666,KwaThandeka,Mpumalanga,7289,village,0,0,50,0,none,none
+gn:12808667,KwaNgema,Mpumalanga,1006,village,0,0,50,0,none,none
+gn:12808668,Ngema Tribal Trust,Mpumalanga,5590,village,0,0,50,0,none,none
+gn:12808734,Palmietfontein,Mpumalanga,1670,village,0,0,50,0,none,none
+gn:13527121,Sidlamafa,Mpumalanga,4316,village,0,0,50,0,none,none
+gn:13527123,Matsamo,Mpumalanga,2289,village,0,0,50,0,none,none
+gn:13527126,Louieville,Mpumalanga,1364,village,0,0,50,0,none,none
+gn:13527138,Seville B,Mpumalanga,1149,village,0,0,50,0,none,none
+gn:13527141,Hlavekisa,Mpumalanga,2563,village,0,0,50,0,none,none
+gn:13527142,Eglington A,Mpumalanga,1457,village,0,0,50,0,none,none
+gn:13527143,Humulani,Mpumalanga,2694,village,0,0,50,0,none,none
+gn:13527146,Clare A,Mpumalanga,2518,village,0,0,50,0,none,none
+gn:13527147,Eglington B,Mpumalanga,1054,village,0,0,50,0,none,none
+gn:13527148,Islington,Mpumalanga,4560,village,0,0,50,0,none,none
+gn:13527149,Burlington,Mpumalanga,4154,village,0,0,50,0,none,none
+gn:13527150,Edinburgh B,Mpumalanga,2978,village,0,0,50,0,none,none
+gn:13527151,Edinburgh A,Mpumalanga,7305,village,0,0,50,0,none,none
+gn:13527153,Dumfries A,Mpumalanga,1950,village,0,0,50,0,none,none
+gn:13527154,Dumfries B,Mpumalanga,1804,village,0,0,50,0,none,none
+gn:13527155,Kumana,Mpumalanga,5235,village,0,0,50,0,none,none
+gn:13527156,Thulamahashe,Mpumalanga,13333,town,0,0,50,0,none,none
+gn:13527157,Godide,Mpumalanga,6291,village,0,0,50,0,none,none
+gn:13527158,New Forest B,Mpumalanga,4386,village,0,0,50,0,none,none
+gn:13527161,Dingleydale A,Mpumalanga,3401,village,0,0,50,0,none,none
+gn:13527162,Dingleydale B,Mpumalanga,1444,village,0,0,50,0,none,none
+gn:13527163,Bolla-Tau,Mpumalanga,12703,town,0,0,50,0,none,none
+gn:13527164,Xikhusese,Mpumalanga,13324,town,0,0,50,0,none,none
+gn:13527166,Rooiboklaagte A,Mpumalanga,1723,village,0,0,50,0,none,none
+gn:13527167,Tsakani,Mpumalanga,8907,village,0,0,50,0,none,none
+gn:13527168,Kgapamadi,Mpumalanga,5049,village,0,0,50,0,none,none
+gn:13527169,Mamelodi,Mpumalanga,3619,village,0,0,50,0,none,none
+gn:13527170,Mapaleng A,Mpumalanga,2206,village,0,0,50,0,none,none
+gn:13527171,Pelindaba,Mpumalanga,1768,village,0,0,50,0,none,none
+gn:13527174,New Line,Mpumalanga,1843,village,0,0,50,0,none,none
+gn:13527175,Motlamogatsane,Mpumalanga,2169,village,0,0,50,0,none,none
+gn:13527176,Ga-Josepha,Mpumalanga,4329,village,0,0,50,0,none,none
+gn:13527178,Graigieburn,Mpumalanga,1394,village,0,0,50,0,none,none
+gn:13527179,Motlamogale,Mpumalanga,4702,village,0,0,50,0,none,none
+gn:13527180,Maboke,Mpumalanga,12752,town,0,0,50,0,none,none
+gn:13527181,Violetbank D,Mpumalanga,3815,village,0,0,50,0,none,none
+gn:13527182,Rivoni,Mpumalanga,1424,village,0,0,50,0,none,none
+gn:13527185,Orinoco A,Mpumalanga,5884,village,0,0,50,0,none,none
+gn:13527186,Relani,Mpumalanga,1989,village,0,0,50,0,none,none
+gn:13527187,Shata,Mpumalanga,3073,village,0,0,50,0,none,none
+gn:13527188,Thabakgolo,Mpumalanga,5939,village,0,0,50,0,none,none
+gn:13527189,Mafemani,Mpumalanga,20389,town,0,0,50,0,none,none
+gn:13527190,Orinoco B,Mpumalanga,2062,village,0,0,50,0,none,none
+gn:13527191,Orinoco C,Mpumalanga,2858,village,0,0,50,0,none,none
+gn:13527192,Buyisonto,Mpumalanga,10472,town,0,0,50,0,none,none
+gn:13527193,Maviljan B,Mpumalanga,4717,village,0,0,50,0,none,none
+gn:13527194,Masana,Mpumalanga,1616,village,0,0,50,0,none,none
+gn:13527195,Mphenyatsatsi,Mpumalanga,2159,village,0,0,50,0,none,none
+gn:13527196,Matsavana,Mpumalanga,5157,village,0,0,50,0,none,none
+gn:13527197,Manyakatana,Mpumalanga,4532,village,0,0,50,0,none,none
+gn:13527199,Croquet Lawn A,Mpumalanga,2816,village,0,0,50,0,none,none
+gn:13527200,Matshaye,Mpumalanga,1640,village,0,0,50,0,none,none
+gn:13527201,Khomanani,Mpumalanga,3276,village,0,0,50,0,none,none
+gn:13527202,Sabi-Sand Game Reserve,Mpumalanga,1242,village,0,0,50,0,none,none
+gn:13527203,Rulani,Mpumalanga,2485,village,0,0,50,0,none,none
+gn:13527204,Mabharule,Mpumalanga,2200,village,0,0,50,0,none,none
+gn:13527205,Mahlobyanini,Mpumalanga,3908,village,0,0,50,0,none,none
+gn:13527208,eMakhazeni B,Mpumalanga,6118,village,0,0,50,0,none,none
+gn:13527209,Khokhamoya,Mpumalanga,9466,village,0,0,50,0,none,none
+gn:13527210,Kamalamule,Mpumalanga,8766,village,0,0,50,0,none,none
+gn:13527212,Tiyimeleni B,Mpumalanga,2992,village,0,0,50,0,none,none
+gn:13527213,Tiyimeleni A,Mpumalanga,4989,village,0,0,50,0,none,none
+gn:13527214,Fayini,Mpumalanga,1722,village,0,0,50,0,none,none
+gn:13527216,Teka Mahala,Mpumalanga,2301,village,0,0,50,0,none,none
+gn:13527219,Mahukule B,Mpumalanga,2432,village,0,0,50,0,none,none
+gn:13527220,Jim Brown,Mpumalanga,2552,village,0,0,50,0,none,none
+gn:13527221,Sekrepeng,Mpumalanga,2024,village,0,0,50,0,none,none
+gn:13665080,Cacadu,Eastern Cape,0,village,0,0,50,0,none,none
+gn:13665309,Ekhephini,Eastern Cape,0,village,0,0,50,0,none,none

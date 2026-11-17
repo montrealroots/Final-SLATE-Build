@@ -98,6 +98,8 @@ function buy(s: GameState, day: number, plan: Plan, o: { share?: number; place?:
   return p;
 }
 const CASH: Plan = { finance: 'cash', inspect: false };
+/** A house or townhouse: a flat's outside is its building's, and a small flat has no laundry. */
+const HOUSE = { pick: (h: Home) => h.form === 'detached' || h.form === 'townhouse' };
 const owned = (s: GameState) => homesOf(s).owned.find((o) => !o.soldAt);
 const tryIt = (fn: () => void) => { try { fn(); } catch { /* refused today, as the screen would say: the player tries again tomorrow */ } };
 
@@ -343,9 +345,9 @@ export const PROBES: Probe[] = [
     id: 'paint-the-outside',
     features: [F('"New Colour"')],
     decision: 'Repaint the outside of the home you own sage, rather than leave it',
-    reads: [`${L}#startWork`, `${L}#workDone`, 'src/engine/homes/illustration.ts#exteriorFor'],
-    base: { daily: (s, d) => void buy(s, d, CASH) },
-    variant: { daily: (s, d) => { buy(s, d, CASH); const o = owned(s); if (o && !homesOf(s).jobs.length) tryIt(() => void startWork(s, o.homeId, 'exterior-paint', { color: 'sage' })); } },
+    reads: [`${L}#startWork`, `${L}#workDone`],
+    base: { daily: (s, d) => void buy(s, d, CASH, HOUSE) },
+    variant: { daily: (s, d) => { buy(s, d, CASH, HOUSE); const o = owned(s); if (o && !homesOf(s).jobs.length) tryIt(() => void startWork(s, o.homeId, 'exterior-paint', { color: 'sage' })); } },
     measure, bites: ['designRevisions', 'workPaid'], downstream: money,
   },
   {
@@ -594,7 +596,7 @@ function workThen(cancel: boolean) {
 /** Own the LA home; buy a washer for a room of a kind; install it when it comes, or not. */
 function washerIn(kind: 'bedroom' | 'laundry', install = true) {
   return (s: GameState, d: number) => {
-    buy(s, d, CASH);
+    buy(s, d, CASH, HOUSE);
     const o = owned(s);
     const hs = homesOf(s);
     if (!o) return;
@@ -607,7 +609,7 @@ function washerIn(kind: 'bedroom' | 'laundry', install = true) {
 }
 function dishwasher(measureIt: boolean) {
   return (s: GameState, d: number) => {
-    buy(s, d, CASH);
+    buy(s, d, CASH, HOUSE);
     const o = owned(s);
     const hs = homesOf(s);
     if (!o || !WASHER_NO_DEPTH) return;

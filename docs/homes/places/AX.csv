@@ -1,0 +1,22 @@
+place_id,name,region,population,market,verified_homes,dated_listings,shortfall_to_50,recorded_sales,rent_source,price_source
+gn:630705,Ytterby,Ålands landsbygd,6384,village,0,0,50,0,none,none
+gn:632421,Vårdö,Ålands skärgård,411,village,0,0,50,0,none,none
+gn:635815,Sund,Ålands landsbygd,1016,village,0,0,50,0,none,none
+gn:636158,Sottunga,Ålands skärgård,144,village,0,0,50,0,none,none
+gn:637878,Saltvik,Ålands landsbygd,1691,village,0,0,50,0,none,none
+gn:647455,Lumparland,Ålands landsbygd,335,village,0,0,50,0,none,none
+gn:648382,Lemland,Ålands landsbygd,1829,village,0,0,50,0,none,none
+gn:650395,Kumlinge,Ålands skärgård,384,village,0,0,50,0,none,none
+gn:651986,Kökar,Ålands skärgård,355,village,0,0,50,0,none,none
+gn:659823,Godby,Ålands landsbygd,1369,village,0,0,50,0,none,none
+gn:659949,Föglö,Ålands skärgård,632,village,0,0,50,0,none,none
+gn:660521,Brändö,Ålands skärgård,515,village,0,0,50,0,none,none
+gn:660567,Bomarsund,Ålands landsbygd,1016,village,0,0,50,0,none,none
+gn:3041666,Tjudö,Ålands landsbygd,2630,village,0,0,50,0,none,none
+gn:3041732,Mariehamn,Mariehamn,10682,town,0,0,50,0,none,none
+gn:3041760,Jomala,Ålands landsbygd,3662,village,0,0,50,0,none,none
+gn:3041776,Hammarland,Ålands landsbygd,1395,village,0,0,50,0,none,none
+gn:3041792,Geta,Ålands landsbygd,452,village,0,0,50,0,none,none
+gn:3041798,Finström,Ålands landsbygd,2412,village,0,0,50,0,none,none
+gn:3041807,Eckerö,Ålands landsbygd,959,village,0,0,50,0,none,none
+gn:13527044,Yomala,Ålands landsbygd,5789,village,0,0,50,0,none,none

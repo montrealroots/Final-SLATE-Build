@@ -1,0 +1,346 @@
+place_id,name,region,population,market,verified_homes,dated_listings,shortfall_to_50,recorded_sales,rent_source,price_source
+gn:607510,Zhumysker,,6834,village,0,0,50,0,none,none
+gn:607551,Zhetybay,Mangystau,11731,town,0,0,50,0,none,none
+gn:607610,Zhanaozen,Mangystau,103598,city,0,0,50,0,none,none
+gn:608036,Temir,Aktobe,2560,village,0,0,50,0,none,none
+gn:608053,Taūshyq,Mangystau,2600,village,0,0,50,0,none,none
+gn:608270,Shubarshi,Aktobe,8651,village,0,0,50,0,none,none
+gn:608271,Shubarkuduk,Aktobe,11733,town,0,0,50,0,none,none
+gn:608324,Shetpe,Mangystau,11836,town,0,0,50,0,none,none
+gn:608359,Shalqar,Aktobe,27399,town,0,0,50,0,none,none
+gn:608362,Shalkar,Atyrau Oblisi,27072,town,0,0,50,0,none,none
+gn:608402,Say-Otes,Mangystau,1571,village,0,0,50,0,none,none
+gn:608413,Saykhin,West Kazakhstan,4825,village,0,0,50,0,none,none
+gn:608414,Saykhin,West Kazakhstan,0,village,0,0,50,0,none,none
+gn:608629,Peremetnoe,West Kazakhstan,4003,village,0,0,50,0,none,none
+gn:608647,Oyyl,Aktobe,6472,village,0,0,50,0,none,none
+gn:608668,Oral,West Kazakhstan,330000,city,0,0,50,0,none,none
+gn:608679,Kandyagash,Aktobe,28196,town,0,0,50,0,none,none
+gn:608722,Xamït Erğalïyev awılı,Atyrau Oblisi,3451,village,0,0,50,0,none,none
+gn:608724,Qobda,Aktobe,0,village,0,0,50,0,none,none
+gn:608729,Zhana-Omir,West Kazakhstan,3044,village,0,0,50,0,none,none
+gn:608778,Munayshy,Mangystau,4085,village,0,0,50,0,none,none
+gn:608816,Miyaly,Atyrau Oblisi,6213,village,0,0,50,0,none,none
+gn:608867,Martuk,Aktobe,7756,village,0,0,50,0,none,none
+gn:608872,Maqat,Atyrau Oblisi,14082,town,0,0,50,0,none,none
+gn:608880,Mangistau,Mangystau,31368,town,0,0,50,0,none,none
+gn:608901,Maloye Ganyushkino,Atyrau Oblisi,8387,village,0,0,50,0,none,none
+gn:608915,Makhambet,Atyrau Oblisi,8905,village,0,0,50,0,none,none
+gn:609123,Qulsary,Atyrau Oblisi,51216,town,0,0,50,0,none,none
+gn:609167,Krugloozërnoye,West Kazakhstan,2977,village,0,0,50,0,none,none
+gn:609404,Khromtau,Aktobe,23715,town,0,0,50,0,none,none
+gn:609454,Kaztalovka,West Kazakhstan,4825,village,0,0,50,0,none,none
+gn:609537,Karaton,Atyrau Oblisi,8905,village,0,0,50,0,none,none
+gn:609544,Karatobe,West Kazakhstan,0,village,0,0,50,0,none,none
+gn:609655,Karagandy,Karaganda,497777,city,0,0,50,0,none,none
+gn:609721,Tasqala,West Kazakhstan,6980,village,0,0,50,0,none,none
+gn:609798,Inderbor,Atyrau Oblisi,13254,town,0,0,50,0,none,none
+gn:609906,Fort-Shevchenko,Mangystau,5213,village,0,0,50,0,none,none
+gn:609915,Terekti,West Kazakhstan,5338,village,0,0,50,0,none,none
+gn:609919,Kuryk,Mangystau,11836,town,0,0,50,0,none,none
+gn:609924,Embi,Aktobe,18760,town,0,0,50,0,none,none
+gn:609953,Zhanibek,West Kazakhstan,8212,village,0,0,50,0,none,none
+gn:609965,Zhangaqala,West Kazakhstan,5954,village,0,0,50,0,none,none
+gn:609977,Zhympity,West Kazakhstan,6262,village,0,0,50,0,none,none
+gn:610023,Dossor,Atyrau Oblisi,9526,village,0,0,50,0,none,none
+gn:610091,Shyngyrlau,West Kazakhstan,6218,village,0,0,50,0,none,none
+gn:610132,Chapayev,West Kazakhstan,6000,village,0,0,50,0,none,none
+gn:610164,Burlin,West Kazakhstan,3593,village,0,0,50,0,none,none
+gn:610298,Beyneu,Mangystau,14245,town,0,0,50,0,none,none
+gn:610386,Bayganin,Aktobe,7657,village,0,0,50,0,none,none
+gn:610389,Baychunas,Atyrau Oblisi,1864,village,0,0,50,0,none,none
+gn:610398,Bautino,Mangystau,3247,village,0,0,50,0,none,none
+gn:610416,Badamsha,Aktobe,5668,village,0,0,50,0,none,none
+gn:610445,Balykshi,Atyrau Oblisi,19260,town,0,0,50,0,none,none
+gn:610529,Atyrau,Atyrau Oblisi,290700,city,0,0,50,0,none,none
+gn:610611,Aktobe,Aktobe,500757,large-city,0,0,50,0,none,none
+gn:610612,Aktau,Mangystau,147443,city,0,0,50,0,none,none
+gn:610613,Aqsay,West Kazakhstan,34799,town,0,0,50,0,none,none
+gn:610658,Algha,Aktobe,0,village,0,0,50,0,none,none
+gn:610743,Akkistau,Atyrau Oblisi,8486,village,0,0,50,0,none,none
+gn:610764,Akkol’,Atyrau Oblisi,4245,village,0,0,50,0,none,none
+gn:828390,Umirzak,Mangystau,1885,village,0,0,50,0,none,none
+gn:1484007,Qasym Qaysenov,East Kazakhstan,0,village,0,0,50,0,none,none
+gn:1516438,Altay,East Kazakhstan,44929,town,0,0,50,0,none,none
+gn:1516519,Zhosaly,Kyzylorda,20065,town,0,0,50,0,none,none
+gn:1516527,Zholymbet,Aqmola,6876,village,0,0,50,0,none,none
+gn:1516589,Zhezqazghan,Ulytau Region,104357,city,0,0,50,0,none,none
+gn:1516590,Zhezkent,Abai Region,8896,village,0,0,50,0,none,none
+gn:1516601,Zhitikara,Kostanay,43104,town,0,0,50,0,none,none
+gn:1516634,Zhelezinka,Pavlodar Region,5225,village,0,0,50,0,none,none
+gn:1516678,Zharyk,Karaganda,2940,village,0,0,50,0,none,none
+gn:1516776,Zhansugurov,Zhetysu Region,0,village,0,0,50,0,none,none
+gn:1516788,Zhangatas,Zhambyl,33492,town,0,0,50,0,none,none
+gn:1516789,Novokazalinsk,Kyzylorda,35883,town,0,0,50,0,none,none
+gn:1516905,Taraz,Zhambyl,358153,city,0,0,50,0,none,none
+gn:1516984,Zhalghyztobe,East Kazakhstan,4400,village,0,0,50,0,none,none
+gn:1517020,Zhaksy,Aqmola,5001,village,0,0,50,0,none,none
+gn:1517047,Zerenda,Aqmola,0,village,0,0,50,0,none,none
+gn:1517060,Zaysan,East Kazakhstan,17600,town,0,0,50,0,none,none
+gn:1517073,Tobyl,Kostanay,0,village,0,0,50,0,none,none
+gn:1517092,Zaporozhye,Aqmola,1835,village,0,0,50,0,none,none
+gn:1517131,Yul’yevka,Kostanay,0,village,0,0,50,0,none,none
+gn:1517136,Yrghyz,Aktobe,4673,village,0,0,50,0,none,none
+gn:1517305,Yavlenka,North Kazakhstan,4945,village,0,0,50,0,none,none
+gn:1517323,Zhangaqorghan,Kyzylorda,21339,town,0,0,50,0,none,none
+gn:1517354,Vozvyshenka,North Kazakhstan,0,village,0,0,50,0,none,none
+gn:1517410,Saumalkol’,North Kazakhstan,2074,village,0,0,50,0,none,none
+gn:1517443,Arshaly,Aqmola,0,village,0,0,50,0,none,none
+gn:1517471,Atameken,Zhetysu Region,5081,village,0,0,50,0,none,none
+gn:1517474,Verkhniye Kayrakty,Karaganda,1158,village,0,0,50,0,none,none
+gn:1517501,Turar Ryskulov,Turkistan,18421,town,0,0,50,0,none,none
+gn:1517563,Uzunagach,Almaty Region,0,village,0,0,50,0,none,none
+gn:1517610,Ūst’-Talovka,East Kazakhstan,6122,village,0,0,50,0,none,none
+gn:1517628,Uspenka,Pavlodar Region,0,village,0,0,50,0,none,none
+gn:1517637,Ushtobe,Zhetysu Region,20492,town,0,0,50,0,none,none
+gn:1517717,Saryköl,Kostanay,0,village,0,0,50,0,none,none
+gn:1517721,Urzhar,East Kazakhstan,14826,town,0,0,50,0,none,none
+gn:1517743,Ulytau,Ulytau Region,2055,village,0,0,50,0,none,none
+gn:1517746,Botaqara,Karaganda,0,village,0,0,50,0,none,none
+gn:1517808,Ul’ba,East Kazakhstan,4759,village,0,0,50,0,none,none
+gn:1517836,Usharal,Zhetysu Region,0,village,0,0,50,0,none,none
+gn:1517880,Tyul’kubas,Turkistan,10802,town,0,0,50,0,none,none
+gn:1517945,Turkistan,Turkistan,227098,city,0,0,50,0,none,none
+gn:1517957,Turgen,Almaty Region,13000,town,0,0,50,0,none,none
+gn:1518009,Timiryazevo,North Kazakhstan,4147,village,0,0,50,0,none,none
+gn:1518019,Troyebratskiy,Kostanay,2951,village,0,0,50,0,none,none
+gn:1518062,Torghay,Kostanay,5277,village,0,0,50,0,none,none
+gn:1518112,Tokarevka,Karaganda,4098,village,0,0,50,0,none,none
+gn:1518139,Tobol,Kostanay,7155,village,0,0,50,0,none,none
+gn:1518203,Terenozek,Kyzylorda,9661,village,0,0,50,0,none,none
+gn:1518262,Temirtau,Karaganda,170600,city,0,0,50,0,none,none
+gn:1518266,Temirlanovka,Turkistan,12245,town,0,0,50,0,none,none
+gn:1518296,Tekeli,Zhetysu Region,26678,town,0,0,50,0,none,none
+gn:1518380,Tasty,Kostanay,1187,village,0,0,50,0,none,none
+gn:1518431,Tasbuget,Kyzylorda,16455,town,0,0,50,0,none,none
+gn:1518462,Ayat,Kostanay,3130,village,0,0,50,0,none,none
+gn:1518511,Talshik,North Kazakhstan,3111,village,0,0,50,0,none,none
+gn:1518518,Talghar,Almaty Region,42194,town,0,0,50,0,none,none
+gn:1518542,Taldykorgan,Zhetysu Region,116558,city,0,0,50,0,none,none
+gn:1518622,Tayynsha,North Kazakhstan,0,village,0,0,50,0,none,none
+gn:1518687,Suykbulak,Abai Region,1244,village,0,0,50,0,none,none
+gn:1518768,Stepnyak,Aqmola,4928,village,0,0,50,0,none,none
+gn:1518936,Smirnovo,North Kazakhstan,5742,village,0,0,50,0,none,none
+gn:1518945,Myrzakent,Turkistan,9752,village,0,0,50,0,none,none
+gn:1518980,Shymkent,Shymkent,1200000,large-city,0,0,50,0,none,none
+gn:1519030,Shu,Zhambyl,39785,town,0,0,50,0,none,none
+gn:1519050,Shortandy,Aqmola,6980,village,0,0,50,0,none,none
+gn:1519055,Chernak,Turkistan,0,village,0,0,50,0,none,none
+gn:1519226,Shemonaikha,East Kazakhstan,20087,town,0,0,50,0,none,none
+gn:1519230,Shelek,Almaty Region,29032,town,0,0,50,0,none,none
+gn:1519244,Shchuchinsk,Aqmola,47290,town,0,0,50,0,none,none
+gn:1519246,Sharbaqty,Pavlodar Region,0,village,0,0,50,0,none,none
+gn:1519259,Shaul’der,Turkistan,0,village,0,0,50,0,none,none
+gn:1519275,Shar,Abai Region,9087,village,0,0,50,0,none,none
+gn:1519277,Shantobe,Aqmola,5626,village,0,0,50,0,none,none
+gn:1519327,Shakhtinsk,Karaganda,41602,town,0,0,50,0,none,none
+gn:1519333,Shakhan,Karaganda,13273,town,0,0,50,0,none,none
+gn:1519385,Sergeyevka,North Kazakhstan,8845,village,0,0,50,0,none,none
+gn:1519395,Serebryansk,East Kazakhstan,0,village,0,0,50,0,none,none
+gn:1519417,Äūlīeköl,Kostanay,0,village,0,0,50,0,none,none
+gn:1519422,Semey,Abai Region,292780,city,0,0,50,0,none,none
+gn:1519455,Sayram,Turkistan,0,village,0,0,50,0,none,none
+gn:1519463,Sayaq,Karaganda,4543,village,0,0,50,0,none,none
+gn:1519516,Sastobe,Turkistan,6827,village,0,0,50,0,none,none
+gn:1519563,Saryshaghan,Karaganda,4365,village,0,0,50,0,none,none
+gn:1519580,Saryozek,Zhetysu Region,13930,town,0,0,50,0,none,none
+gn:1519625,Sarykamys,,4038,village,0,0,50,0,none,none
+gn:1519673,Saryaghash,Turkistan,25139,town,0,0,50,0,none,none
+gn:1519691,Sarqant,Zhetysu Region,76919,town,0,0,50,0,none,none
+gn:1519725,Saran,Karaganda,42552,town,0,0,50,0,none,none
+gn:1519756,Samarskoye,East Kazakhstan,0,village,0,0,50,0,none,none
+gn:1519776,Saksaul’skiy,Kyzylorda,9296,village,0,0,50,0,none,none
+gn:1519843,Rudnyy,Kostanay,124000,city,0,0,50,0,none,none
+gn:1519922,Kyzylorda,Kyzylorda,354800,city,0,0,50,0,none,none
+gn:1519924,Qusmuryn,Kostanay,8049,village,0,0,50,0,none,none
+gn:1519928,Kostanay,Kostanay,210000,city,0,0,50,0,none,none
+gn:1519932,Qashar,Kostanay,10285,town,0,0,50,0,none,none
+gn:1519933,Qarsaqbay,Ulytau Region,1668,village,0,0,50,0,none,none
+gn:1519934,Qarqaraly,Karaganda,8195,village,0,0,50,0,none,none
+gn:1519935,Qarazhal,Ulytau Region,13807,town,0,0,50,0,none,none
+gn:1519936,Karaaul,Abai Region,5261,village,0,0,50,0,none,none
+gn:1519938,Karatau,Zhambyl,37881,town,0,0,50,0,none,none
+gn:1519948,Konayev,Almaty Region,42167,town,0,0,50,0,none,none
+gn:1520025,Tughyl,East Kazakhstan,6696,village,0,0,50,0,none,none
+gn:1520051,Presnovka,North Kazakhstan,0,village,0,0,50,0,none,none
+gn:1520172,Petropavl,North Kazakhstan,200920,city,0,0,50,0,none,none
+gn:1520196,Pervorossiyskoye,East Kazakhstan,2583,village,0,0,50,0,none,none
+gn:1520208,Pervomayka,Almaty,7874,village,0,0,50,0,none,none
+gn:1520240,Pavlodar,Pavlodar Region,329002,city,0,0,50,0,none,none
+gn:1520253,Zharkent,Zhetysu Region,34422,town,0,0,50,0,none,none
+gn:1520281,Oytal,Zhambyl,9821,village,0,0,50,0,none,none
+gn:1520316,Ust-Kamenogorsk,East Kazakhstan,319067,city,0,0,50,0,none,none
+gn:1520327,Osakarovka,Karaganda,7305,village,0,0,50,0,none,none
+gn:1520381,Denisovka,Kostanay,4919,village,0,0,50,0,none,none
+gn:1520425,Oktyabr’skoye,Kostanay,0,village,0,0,50,0,none,none
+gn:1520474,Ognyovka,East Kazakhstan,1722,village,0,0,50,0,none,none
+gn:1520590,Zhabagly,Turkistan,2000,village,0,0,50,0,none,none
+gn:1520627,Novodolinskiy,Karaganda,5167,village,0,0,50,0,none,none
+gn:1520656,Novaya Shūl’ba,Abai Region,0,village,0,0,50,0,none,none
+gn:1520660,Novaya Bukhtarma,East Kazakhstan,6026,village,0,0,50,0,none,none
+gn:1520692,Satpayev,Ulytau Region,69782,town,0,0,50,0,none,none
+gn:1520747,Narynkol,Almaty Region,7731,village,0,0,50,0,none,none
+gn:1520789,Mynaral,Zhambyl,1303,village,0,0,50,0,none,none
+gn:1520844,Moyynty,Karaganda,2049,village,0,0,50,0,none,none
+gn:1520885,Kurchatov,Abai Region,10747,town,0,0,50,0,none,none
+gn:1520947,Sarykemer,Zhambyl,15132,town,0,0,50,0,none,none
+gn:1520969,Merke,Zhambyl,15934,town,0,0,50,0,none,none
+gn:1521048,Mayqayyng,Pavlodar Region,7695,village,0,0,50,0,none,none
+gn:1521079,Matay,Zhetysu Region,4139,village,0,0,50,0,none,none
+gn:1521126,Maqanshy,Abai Region,18754,town,0,0,50,0,none,none
+gn:1521153,Mamlyutka,North Kazakhstan,0,village,0,0,50,0,none,none
+gn:1521193,Aqmol,Aqmola,0,village,0,0,50,0,none,none
+gn:1521230,Makinsk,Aqmola,17711,town,0,0,50,0,none,none
+gn:1521292,Kulan,Zhambyl,13128,town,0,0,50,0,none,none
+gn:1521293,Lugovoy,Zhambyl,10422,town,0,0,50,0,none,none
+gn:1521296,Lugansk,Pavlodar Region,1677,village,0,0,50,0,none,none
+gn:1521315,Lisakovsk,Kostanay,40000,town,0,0,50,0,none,none
+gn:1521348,Uzynköl,Kostanay,0,village,0,0,50,0,none,none
+gn:1521351,Kazygurt,Turkistan,14737,town,0,0,50,0,none,none
+gn:1521365,Leninskiy,Pavlodar Region,8646,village,0,0,50,0,none,none
+gn:1521368,Baikonur,Baikonur,70000,town,0,0,50,0,none,none
+gn:1521370,Ridder,East Kazakhstan,52664,town,0,0,50,0,none,none
+gn:1521374,Leningradskoye,North Kazakhstan,0,village,0,0,50,0,none,none
+gn:1521379,Lenger,Turkistan,21238,town,0,0,50,0,none,none
+gn:1521381,Akkuly,Pavlodar Region,2661,village,0,0,50,0,none,none
+gn:1521401,Kishkenekol’,North Kazakhstan,6779,village,0,0,50,0,none,none
+gn:1521425,Kyzylzhar,Karaganda,1514,village,0,0,50,0,none,none
+gn:1521638,Novoishimskoye,North Kazakhstan,0,village,0,0,50,0,none,none
+gn:1521677,Kushoky,Karaganda,3920,village,0,0,50,0,none,none
+gn:1521750,Qorghalzhyn,Aqmola,0,village,0,0,50,0,none,none
+gn:1521762,Kurchum,East Kazakhstan,8800,village,0,0,50,0,none,none
+gn:1521998,Egindiköl,Aqmola,3751,village,0,0,50,0,none,none
+gn:1522021,Aqtoghay,Pavlodar Region,0,village,0,0,50,0,none,none
+gn:1522026,Krasnogorskiy,Aqmola,3646,village,0,0,50,0,none,none
+gn:1522035,Taiynsha,North Kazakhstan,13148,town,0,0,50,0,none,none
+gn:1522202,Koshi,Aqmola,0,village,0,0,50,0,none,none
+gn:1522203,Kokshetau,Aqmola,150649,city,0,0,50,0,none,none
+gn:1522331,Selo Temirbeka Zhurgenova,Aktobe,0,village,0,0,50,0,none,none
+gn:1522348,Qarabalyq,Kostanay,9838,village,0,0,50,0,none,none
+gn:1522447,Kokterek,Turkistan,2384,village,0,0,50,0,none,none
+gn:1522466,Koktal,Karaganda,1403,village,0,0,50,0,none,none
+gn:1522503,Kokpekty,,5165,village,0,0,50,0,none,none
+gn:1522505,Kokpekty,Abai Region,3651,village,0,0,50,0,none,none
+gn:1522605,Nura,Karaganda,7037,village,0,0,50,0,none,none
+gn:1522642,Balpyk Bi,Zhetysu Region,11810,town,0,0,50,0,none,none
+gn:1522643,Asyqata,Turkistan,11378,town,0,0,50,0,none,none
+gn:1522684,Khorgos,Zhetysu Region,1148,village,0,0,50,0,none,none
+gn:1522714,Khantau,Zhambyl,1403,village,0,0,50,0,none,none
+gn:1522738,Karabulak,Zhetysu Region,0,village,0,0,50,0,none,none
+gn:1522751,Kentau,Turkistan,57408,town,0,0,50,0,none,none
+gn:1522818,Kegen,Almaty Region,9993,village,0,0,50,0,none,none
+gn:1522862,Kazalinsk,Kyzylorda,7686,village,0,0,50,0,none,none
+gn:1523149,Karasu,Kostanay,3220,village,0,0,50,0,none,none
+gn:1523470,Karabas,,2672,village,0,0,50,0,none,none
+gn:1523512,Kantagi,Turkistan,10186,town,0,0,50,0,none,none
+gn:1523543,Qamysty,Kostanay,0,village,0,0,50,0,none,none
+gn:1523605,Kalkaman,Pavlodar Region,5415,village,0,0,50,0,none,none
+gn:1523662,Terengköl,Pavlodar Region,8931,village,0,0,50,0,none,none
+gn:1523741,Esik,Almaty Region,32995,town,0,0,50,0,none,none
+gn:1523768,Irtyshsk,Pavlodar Region,9216,village,0,0,50,0,none,none
+gn:1523986,Altynemel,Zhetysu Region,1040,village,0,0,50,0,none,none
+gn:1524138,Atakent,Turkistan,12895,town,0,0,50,0,none,none
+gn:1524182,Granitogorsk,Zhambyl,2004,village,0,0,50,0,none,none
+gn:1524227,Glubokoye,East Kazakhstan,11192,town,0,0,50,0,none,none
+gn:1524243,Korday,Zhambyl,9821,village,0,0,50,0,none,none
+gn:1524245,Kalbatau,Abai Region,22047,town,0,0,50,0,none,none
+gn:1524265,Moyynkum,Zhambyl,10923,town,0,0,50,0,none,none
+gn:1524282,Fyodorov,Kostanay,8317,village,0,0,50,0,none,none
+gn:1524296,Esil,Aqmola,13504,town,0,0,50,0,none,none
+gn:1524298,Aksu,Pavlodar Region,44808,town,0,0,50,0,none,none
+gn:1524302,Yereymentau,Aqmola,14169,town,0,0,50,0,none,none
+gn:1524308,Otegen Batyra,Almaty Region,18864,town,0,0,50,0,none,none
+gn:1524325,Ekibastuz,Pavlodar Region,121470,city,0,0,50,0,none,none
+gn:1524385,Zhetysay,Turkistan,36494,town,0,0,50,0,none,none
+gn:1524451,Dzhambul,Karaganda,1336,village,0,0,50,0,none,none
+gn:1524478,Zhalagash,Kyzylorda,14226,town,0,0,50,0,none,none
+gn:1524484,Dzerzhinskoye,Zhetysu Region,2682,village,0,0,50,0,none,none
+gn:1524537,Druzhba,Zhetysu Region,2930,village,0,0,50,0,none,none
+gn:1524571,Dolinka,Karaganda,4543,village,0,0,50,0,none,none
+gn:1524577,Qaramengdi,Kostanay,0,village,0,0,50,0,none,none
+gn:1524606,Derzhavinsk,Aqmola,13856,town,0,0,50,0,none,none
+gn:1524696,Chundzha,Almaty Region,0,village,0,0,50,0,none,none
+gn:1524703,Sholakkorgan,Turkistan,10836,town,0,0,50,0,none,none
+gn:1524801,Shiyeli,Kyzylorda,29832,town,0,0,50,0,none,none
+gn:1524815,Zhibek Zholy,Turkistan,7537,village,0,0,50,0,none,none
+gn:1524871,Shayan,Turkistan,9536,village,0,0,50,0,none,none
+gn:1524889,Shardara,Turkistan,25356,town,0,0,50,0,none,none
+gn:1524958,Burunday,Almaty Region,20996,town,0,0,50,0,none,none
+gn:1524965,Bauyrzhan Momyshuly,Zhambyl,0,village,0,0,50,0,none,none
+gn:1525014,Bulayevo,North Kazakhstan,9886,village,0,0,50,0,none,none
+gn:1525121,Borovskoy,Kostanay,9659,village,0,0,50,0,none,none
+gn:1525126,Būrabay,Aqmola,6500,village,0,0,50,0,none,none
+gn:1525134,Borodulikha,Abai Region,5931,village,0,0,50,0,none,none
+gn:1525197,Ulken Naryn,East Kazakhstan,5236,village,0,0,50,0,none,none
+gn:1525199,Besqaraghay,Abai Region,4268,village,0,0,50,0,none,none
+gn:1525223,Boko,Abai Region,1052,village,0,0,50,0,none,none
+gn:1525295,Bishkul,North Kazakhstan,5423,village,0,0,50,0,none,none
+gn:1525376,Bestobe,Aqmola,7189,village,0,0,50,0,none,none
+gn:1525462,Aksu,Turkistan,26115,town,0,0,50,0,none,none
+gn:1525490,Belousovka,East Kazakhstan,9948,village,0,0,50,0,none,none
+gn:1525504,Koktobe,Pavlodar Region,3610,village,0,0,50,0,none,none
+gn:1525506,Belogorskiy,East Kazakhstan,1530,village,0,0,50,0,none,none
+gn:1525576,Bayzhansay,Turkistan,2384,village,0,0,50,0,none,none
+gn:1525650,Bayanaul,Pavlodar Region,5700,village,0,0,50,0,none,none
+gn:1525658,Qogham,Turkistan,2276,village,0,0,50,0,none,none
+gn:1525798,Balqash,Karaganda,81364,town,0,0,50,0,none,none
+gn:1525809,Balkashino,Aqmola,6147,village,0,0,50,0,none,none
+gn:1525850,Bakanas,Almaty Region,6965,village,0,0,50,0,none,none
+gn:1525973,Ayatskiy,Kostanay,3221,village,0,0,50,0,none,none
+gn:1525988,Ayagoz,Abai Region,33479,town,0,0,50,0,none,none
+gn:1526021,Auezov,Abai Region,4209,village,0,0,50,0,none,none
+gn:1526038,Atbasar,Aqmola,34797,town,0,0,50,0,none,none
+gn:1526041,Zhangaarqa,Ulytau Region,13184,town,0,0,50,0,none,none
+gn:1526055,Asubulak,East Kazakhstan,5644,village,0,0,50,0,none,none
+gn:1526059,Astrakhanka,Aqmola,6459,village,0,0,50,0,none,none
+gn:1526066,Asa,Zhambyl,0,village,0,0,50,0,none,none
+gn:1526081,Ashchysay,Turkistan,5635,village,0,0,50,0,none,none
+gn:1526168,Arys,Turkistan,36285,town,0,0,50,0,none,none
+gn:1526178,Arykbalyk,North Kazakhstan,0,village,0,0,50,0,none,none
+gn:1526193,Arkalyk,Kostanay,42000,town,0,0,50,0,none,none
+gn:1526265,Aral,Kyzylorda,33017,town,0,0,50,0,none,none
+gn:1526268,Aqtoghay,Abai Region,4974,village,0,0,50,0,none,none
+gn:1526269,Aktau,Karaganda,9500,village,0,0,50,0,none,none
+gn:1526271,Aksu,Aqmola,8543,village,0,0,50,0,none,none
+gn:1526272,Aqshataū,Karaganda,4899,village,0,0,50,0,none,none
+gn:1526273,Astana,Astana,1544142,large-city,0,0,50,0,none,none
+gn:1526274,Aqadyr,Karaganda,9710,village,0,0,50,0,none,none
+gn:1526344,Amangeldi,Kostanay,0,village,0,0,50,0,none,none
+gn:1526384,Almaty,Almaty,1977011,large-city,0,0,50,0,none,none
+gn:1526443,Akkol,Aqmola,2605,village,0,0,50,0,none,none
+gn:1526447,Marqaköl,East Kazakhstan,0,village,0,0,50,0,none,none
+gn:1526522,Prigorodnoye,Karaganda,3563,village,0,0,50,0,none,none
+gn:1526572,Aktogay,Karaganda,0,village,0,0,50,0,none,none
+gn:1526573,Aktogay,Karaganda,3741,village,0,0,50,0,none,none
+gn:1526601,Aktau,Karaganda,9977,village,0,0,50,0,none,none
+gn:1526619,Aktas,Karaganda,9888,village,0,0,50,0,none,none
+gn:1526636,Aksu-Ayuly,Karaganda,4721,village,0,0,50,0,none,none
+gn:1526648,Aksuat,,6696,village,0,0,50,0,none,none
+gn:1526650,Aksuat,Abai Region,4549,village,0,0,50,0,none,none
+gn:1526797,Akkol’,Aqmola,16773,town,0,0,50,0,none,none
+gn:1526900,Akbakay,Zhambyl,1804,village,0,0,50,0,none,none
+gn:1526970,Abay,Karaganda,35454,town,0,0,50,0,none,none
+gn:1526973,Abay,Turkistan,24047,town,0,0,50,0,none,none
+gn:1529689,Kazakhstan,Almaty Region,3050,village,0,0,50,0,none,none
+gn:1529724,Shalqīya,Kyzylorda,3822,village,0,0,50,0,none,none
+gn:1532249,Birlestik,North Kazakhstan,1354,village,0,0,50,0,none,none
+gn:1534565,Maleyevsk,East Kazakhstan,2678,village,0,0,50,0,none,none
+gn:1535059,Belköl,Kyzylorda,1486,village,0,0,50,0,none,none
+gn:1535379,Novoishimskiy,North Kazakhstan,6062,village,0,0,50,0,none,none
+gn:1537253,Ozernyy,Karaganda,3563,village,0,0,50,0,none,none
+gn:1537264,Atbasar,Aqmola,0,village,0,0,50,0,none,none
+gn:1537856,Chiganak,Zhambyl,2405,village,0,0,50,0,none,none
+gn:1537909,Shubarköl,Karaganda,1247,village,0,0,50,0,none,none
+gn:1537922,Zhana Kiima,Aqmola,0,village,0,0,50,0,none,none
+gn:1537939,Stepnogorsk,Aqmola,46736,town,0,0,50,0,none,none
+gn:1537947,Zavodskoy,Aqmola,6043,village,0,0,50,0,none,none
+gn:1537980,Ülken,Almaty Region,3735,village,0,0,50,0,none,none
+gn:1538012,Altayskiy,East Kazakhstan,2678,village,0,0,50,0,none,none
+gn:1539153,Jıbek joly,Almaty Region,13616,town,0,0,50,0,none,none
+gn:7536148,Priozersk,Karaganda,13457,town,0,0,50,0,none,none
+gn:9858283,Tyuratam,Baikonur,9548,village,0,0,50,0,none,none
+gn:11508441,Obaghan,Kostanay,0,village,0,0,50,0,none,none
+gn:12228179,Kengir,Ulytau Region,2393,village,0,0,50,0,none,none
+gn:12253783,Tekeli,Zhetysu Region,0,village,0,0,50,0,none,none
+gn:12400523,Tasty-Taldy,Aqmola,692,village,0,0,50,0,none,none
+gn:13535800,Qabilanbek,Turkistan,6447,village,0,0,50,0,none,none

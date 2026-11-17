@@ -42,14 +42,17 @@ test('Renting in London: costs, apply, sign, move in, furnish, rent, a repair, n
   await tab(page, 'Find A Home');
   await expect(card(page, /To Rent$/)).toBeVisible();
   // England's rent is ONS's, said as a benchmark, and the homes say they aren't real listings.
-  await expect(page.locator('main')).toContainText("These are the game's homes, not real listings, and none is at a real address.");
+  await expect(page.getByRole('note', { name: 'Housing Records For London' })).toContainText("Verified homes at real addresses: 0 of the 50 the game aims for (50 short). Real listings: 0.");
+  await expect(page.getByRole('note', { name: 'Housing Records For London' })).toContainText("none is a real listing or at a real address");
   const offer = card(page, /To Rent$/).getByRole('listitem').first();
   const offerTitle = (await offer.locator('strong').first().innerText()).trim();
   await offer.getByRole('button', { name: /^Details: / }).click();
   const detail = page.locator('#home-detail');
   await expect(detail).toContainText('Where The Price Comes From');
   await expect(detail).toContainText("ONS's average private rent in England");
-  await expect(detail.locator('figcaption')).toContainText('Not a photograph, not an AI image, and not a depiction of any real address.');
+  // No picture (the owner had them removed, November 17, 2026): the outside is said in words.
+  await expect(detail.locator('figure')).toHaveCount(0);
+  await expect(detail).toContainText(/Outside.*front door/);
   const costs = detail.getByRole('list', { name: 'Costs To Move In' });
   const rent = pounds(await costs.getByRole('listitem').filter({ hasText: "First month's rent" }).locator('span').last().innerText());
   const deposit = pounds(await costs.getByRole('listitem').filter({ hasText: /^Deposit/ }).locator('span').last().innerText());
@@ -94,7 +97,7 @@ test('Renting in London: costs, apply, sign, move in, furnish, rent, a repair, n
   await tenancy().getByRole('button', { name: `Move In: ${offerTitle}` }).click();
   await expect(tenancy()).toContainText('You live here');
   await expect(card(page, 'Where You Live')).toContainText(offerTitle);
-  await expect(card(page, 'Where You Live').locator('figcaption')).toContainText('Checked against the design: every feature matches.');
+  await expect(card(page, 'Where You Live')).toContainText(/Outside.*front door/);
 
   // A desk: bought, paid for, delivered and put in the room chosen (furniture needs no fitter).
   await tab(page, 'Improvements And Furnishings');
@@ -192,7 +195,7 @@ test('Buying in Los Angeles: a mortgage, an inspection, completion, a new exteri
   expect(start - afterBuy).toBeGreaterThan(0); // the deposit, the inspection and closing, never the whole price
   await onTab(page, 'Your Home');
   await expect(page.locator('main')).toContainText('Inspection Report');
-  // A new exterior: sage walls, paid as the work goes, and the picture is redrawn as revision 2.
+  // A new exterior: sage walls, paid as the work goes, and the outside is revision 2 of the design.
   await onTab(page, 'Improvements And Furnishings');
   await page.getByLabel('Work', { exact: true }).selectOption({ label: 'Repaint The Exterior' });
   await page.getByLabel('New Colour').selectOption({ label: 'Sage' });
@@ -201,9 +204,8 @@ test('Buying in Los Angeles: a mortgage, an inspection, completion, a new exteri
   await expect(card(page, 'Work On The Home').getByRole('list', { name: 'Work' })).toContainText('Repaint The Exterior');
   await until(page, 'week', 6, async () => { await onTab(page, 'Improvements And Furnishings'); return (await card(page, 'Work On The Home').getByRole('list', { name: 'Work' }).innerText()).includes('Repaint The Exterior: done'); });
   await onTab(page, 'Your Properties');
-  await expect(card(page, title).locator('figcaption')).toContainText('Design revision 2.');
-  await expect(card(page, title).locator('figcaption')).toContainText('every feature matches');
-  await expect(card(page, title).locator('svg [data-feature^="walls:"]')).toHaveAttribute('data-feature', /:sage$/);
+  await expect(card(page, title)).toContainText(/walls in sage, .*\(design revision 2\)/);
+  await expect(card(page, title).locator('figure')).toHaveCount(0); // no picture: the owner had them removed
   // Sold at what it's worth; the offer comes, is accepted, and completes: the mortgage repaid first, the rest yours.
   await card(page, title).getByRole('button', { name: 'Put It Up For Sale' }).click();
   await expect(card(page, title)).toContainText('Waiting for a buyer.');
@@ -229,7 +231,9 @@ test('Land in Austin: a plot, its survey, a design revised, approval, building s
   const title = await firstOffer(page, 'Buy Land To Build On');
   const detail = page.locator('#home-detail');
   await expect(detail).toContainText('Known Of The Land');
-  await detail.getByLabel('Paying With').selectOption({ label: 'Cash' });
+  // A plot offers no mortgage: the choice isn't shown, and the screen says why.
+  await expect(detail.getByLabel('Paying With')).toHaveCount(0);
+  await expect(detail).toContainText('the game offers no mortgage on land');
   await detail.getByRole('button', { name: `Make The Offer: ${title}` }).click();
   await until(page, 'week', 8, async () => { await onTab(page, 'Land And Building'); return (await page.locator('main').innerText()).includes('Your plot of'); });
   const plot = card(page, title);
@@ -249,7 +253,6 @@ test('Land in Austin: a plot, its survey, a design revised, approval, building s
   await expect(design).toContainText('Design revision 2');
   const after = dollars((await design.getByRole('list', { name: 'Cost Plan' }).getByRole('listitem').last().innerText()).match(/\$[\d,]+/)![0]);
   expect(after).toBeGreaterThan(before);
-  await expect(design.locator('svg [data-feature="garage:double"]')).toHaveCount(1);
   await design.getByRole('button', { name: 'Apply For Building Approval' }).click();
   await expect(design).toContainText('Waiting for the building approval');
   await until(page, 'week', 6, async () => { await onTab(page, 'Land And Building'); return (await card(page, `House Design For ${title}`).innerText()).includes('Approved: sign the contract'); });
@@ -263,10 +266,11 @@ test('Land in Austin: a plot, its survey, a design revised, approval, building s
   const house = page.locator('section.card').filter({ has: page.getByRole('list', { name: 'Building Stages' }) }).first();
   await expect(house.getByRole('list', { name: 'Building Stages' }).getByRole('listitem')).toHaveCount(8);
   await expect(house.getByRole('list', { name: 'Building Stages' })).not.toContainText('to come');
-  await expect(house.locator('figcaption').first()).toContainText('every feature matches');
   await house.getByRole('button', { name: /^Move In: / }).click();
   await onTab(page, 'Your Home');
-  await expect(card(page, 'Where You Live').locator('svg [data-feature^="walls:"]')).toHaveAttribute('data-feature', /:sage$/);
+  // The house as built from revision 2: sage walls and the double garage the design added.
+  await expect(card(page, 'Where You Live')).toContainText('walls in sage');
+  await expect(card(page, 'Where You Live')).toContainText('Double Garage');
   const saved = await readSavedState(page);
   expect(saved.homes.builds[0].payments.filter((p: { key: string }) => p.key.includes(':stage:')).length).toBe(8);
 });
@@ -371,16 +375,28 @@ test('A lapsed approval, a refused permission, a stale favourite, a withdrawn pu
   await until(page, 'next-day', 5, async () => { await onTab(page, 'Your Home'); return (await card(page, `Renting: ${a}`).innerText()).includes('Approved'); });
   await until(page, 'week', 4, async () => { await onTab(page, 'Your Home'); return (await card(page, `Renting: ${a}`).innerText()).includes('Approval lapsed'); });
   await expect(card(page, `Renting: ${a}`).getByRole('button', { name: 'Sign The Lease And Pay' })).toHaveCount(0);
-  // The favourite stays listed after its month; once its offer has lapsed it can't be applied for.
-  await until(page, 'week', 8, async () => {
+  // The favourite stays listed after its listing ends. Then either its offer has lapsed and it can't be applied for, or
+  // the same home came back on the market in its next window (market.ts marketPool) and the favourite shows the new
+  // listing, which can be. Until November 17, 2026 this waited for a lapse only, and failed when the home came back.
+  const favourite = (await readSavedState(page)).homes as { favorites: string[]; homes: Record<string, { validUntil: string }> };
+  const favId = favourite.favorites[0];
+  const firstUntil = favourite.homes[favId].validUntil;
+  let relisted = false;
+  await until(page, 'week', 16, async () => { // a listing runs to the end of its three-month window
     await onTab(page, 'Find A Home');
     await page.getByLabel('Favourites Only').check();
     const it = card(page, /To Rent$/).getByRole('listitem').filter({ hasText: b });
     if (!(await it.count())) return false;
     await it.getByRole('button', { name: /^Details: / }).click();
-    return (await page.locator('#home-detail').innerText()).includes('This offer has lapsed');
+    if ((await page.locator('#home-detail').innerText()).includes('This offer has lapsed')) return true;
+    relisted = (await readSavedState(page)).homes.homes[favId].validUntil > firstUntil;
+    return relisted;
   });
-  await expect(page.locator('#home-detail').getByRole('button', { name: `Apply To Rent: ${b}` })).toBeDisabled();
+  const applyB = page.locator('#home-detail').getByRole('button', { name: `Apply To Rent: ${b}` });
+  if (relisted) {
+    await expect(page.locator('#home-detail')).not.toContainText('This offer has lapsed');
+    await expect(applyB).toBeEnabled();
+  } else await expect(applyB).toBeDisabled();
   // A fresh home, rented; a wall the landlord won't let a tenant take out.
   await page.getByLabel('Favourites Only').uncheck();
   const c = card(page, /To Rent$/).getByRole('listitem').filter({ hasNotText: a }).filter({ hasNotText: b }).first();

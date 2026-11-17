@@ -1,0 +1,1071 @@
+place_id,name,region,population,market,verified_homes,dated_listings,shortfall_to_50,recorded_sales,rent_source,price_source
+gn:1116760,Don Sak,Surat Thani,12422,town,0,0,50,0,none,none
+gn:1117344,Thung Sai,Kamphaeng Phet,0,village,0,0,50,0,none,none
+gn:1117557,Tham Phannara,Nakhon Si Thammarat,7119,village,0,0,50,0,none,none
+gn:1117652,Ban Talat Yai,Phuket,52192,town,0,0,50,0,none,none
+gn:1117656,Ban Talat Nua,Phuket,23381,town,0,0,50,0,none,none
+gn:1117823,Sam Roi Yot,Prachuap Khiri Khan,19709,town,0,0,50,0,none,none
+gn:1118429,Nopphitam,Nakhon Si Thammarat,0,village,0,0,50,0,none,none
+gn:1118512,Ban Nong Pradu,Kanchanaburi,8375,village,0,0,50,0,none,none
+gn:1119287,Lam Thap,Krabi,0,village,0,0,50,0,none,none
+gn:1119933,Ban Huai I Huak,Mae Hong Son,0,village,0,0,50,0,none,none
+gn:1120443,Phrao,Chiang Mai,5499,village,0,0,50,0,none,none
+gn:1120449,Mae Taeng,Chiang Mai,0,village,0,0,50,0,none,none
+gn:1120453,Mae Ai,Chiang Mai,0,village,0,0,50,0,none,none
+gn:1149698,Phetchaburi,Phetchaburi,46601,town,0,0,50,0,none,none
+gn:1149700,Mae Chai,Phayao,5094,village,0,0,50,0,none,none
+gn:1149757,Yan Ta Khao,Trang,0,village,0,0,50,0,none,none
+gn:1149878,Wiang Sa,Surat Thani,11933,town,0,0,50,0,none,none
+gn:1149881,Wiang Pa Pao,Chiang Rai,0,village,0,0,50,0,none,none
+gn:1149882,Wiang Haeng,Chiang Mai,0,village,0,0,50,0,none,none
+gn:1149883,Wiang Chai,Chiang Rai,0,village,0,0,50,0,none,none
+gn:1149892,Wat Phleng,Ratchaburi,0,village,0,0,50,0,none,none
+gn:1149903,Wang Wiset,Trang,0,village,0,0,50,0,none,none
+gn:1149915,Wang Nuea,Lampang,0,village,0,0,50,0,none,none
+gn:1149964,U Thong,Suphan Buri,0,village,0,0,50,0,none,none
+gn:1149975,Umphang,Tak,0,village,0,0,50,0,none,none
+gn:1150007,Trang,Trang,66713,town,0,0,50,0,none,none
+gn:1150076,Thung Yai,Nakhon Si Thammarat,0,village,0,0,50,0,none,none
+gn:1150081,Thung Tako,Chumphon,0,village,0,0,50,0,none,none
+gn:1150085,Thung Song,Nakhon Si Thammarat,28223,town,0,0,50,0,none,none
+gn:1150089,Thung Saliam,Sukhothai,0,village,0,0,50,0,none,none
+gn:1150133,Thong Pha Phum,Kanchanaburi,0,village,0,0,50,0,none,none
+gn:1150154,Thoen,Lampang,18459,town,0,0,50,0,none,none
+gn:1150196,Tha Song Yang,Tak,0,village,0,0,50,0,none,none
+gn:1150200,Tha Sala,Nakhon Si Thammarat,0,village,0,0,50,0,none,none
+gn:1150203,Tha Sae,Chumphon,0,village,0,0,50,0,none,none
+gn:1150210,Thap Than,Uthai Thani,16615,town,0,0,50,0,none,none
+gn:1150218,Thap Sakae,Prachuap Khiri Khan,0,village,0,0,50,0,none,none
+gn:1150221,Thap Put,Phang Nga,0,village,0,0,50,0,none,none
+gn:1150227,Tha Phae,Satun,0,village,0,0,50,0,none,none
+gn:1150246,Tha Muang,Kanchanaburi,26746,town,0,0,50,0,none,none
+gn:1150275,Tha Maka,Kanchanaburi,52907,town,0,0,50,0,none,none
+gn:1150296,Thalang,Phuket,0,village,0,0,50,0,none,none
+gn:1150317,Thai Mueang,Phang Nga,0,village,0,0,50,0,none,none
+gn:1150338,Tha Chang,Surat Thani,0,village,0,0,50,0,none,none
+gn:1150340,Tha Chana,Surat Thani,0,village,0,0,50,0,none,none
+gn:1150447,Takua Thung,Phang Nga,0,village,0,0,50,0,none,none
+gn:1150452,Takua Pa,Phang Nga,48004,town,0,0,50,0,none,none
+gn:1150490,Tak,Tak,24149,town,0,0,50,0,none,none
+gn:1150515,Surat Thani,Surat Thani,132040,city,0,0,50,0,none,none
+gn:1150533,Sukhothai,Sukhothai,37000,town,0,0,50,0,none,none
+gn:1150544,Suan Phueng,Ratchaburi,0,village,0,0,50,0,none,none
+gn:1150562,Sop Prap,Lampang,0,village,0,0,50,0,none,none
+gn:1150607,Soem Ngam,Lampang,0,village,0,0,50,0,none,none
+gn:1150622,Si Sawat,Kanchanaburi,0,village,0,0,50,0,none,none
+gn:1150624,Si Satchanalai,Sukhothai,25942,town,0,0,50,0,none,none
+gn:1150626,Si Samrong,Sukhothai,0,village,0,0,50,0,none,none
+gn:1150643,Si Nakhon,Sukhothai,0,village,0,0,50,0,none,none
+gn:1150651,Sikao,Trang,0,village,0,0,50,0,none,none
+gn:1150659,Si Banphot,Phatthalung,0,village,0,0,50,0,none,none
+gn:1150678,Sawi,Chumphon,0,village,0,0,50,0,none,none
+gn:1150681,Sawankhalok,Sukhothai,19805,town,0,0,50,0,none,none
+gn:1150683,Sawang Arom,Uthai Thani,0,village,0,0,50,0,none,none
+gn:1150700,Saraphi,Chiang Mai,0,village,0,0,50,0,none,none
+gn:1150726,San Sai,Chiang Mai,0,village,0,0,50,0,none,none
+gn:1150728,San Pa Tong,Chiang Mai,17773,town,0,0,50,0,none,none
+gn:1150732,San Kamphaeng,Chiang Mai,32950,town,0,0,50,0,none,none
+gn:1150735,Sangkhla Buri,Kanchanaburi,10000,town,0,0,50,0,none,none
+gn:1150783,Samoeng,Chiang Mai,0,village,0,0,50,0,none,none
+gn:1150786,Sam Ngao,Tak,0,village,0,0,50,0,none,none
+gn:1150844,Sai Yok,Kanchanaburi,0,village,0,0,50,0,none,none
+gn:1150854,Sai Ngam,Kamphaeng Phet,0,village,0,0,50,0,none,none
+gn:1150921,Ron Phibun,Nakhon Si Thammarat,26621,town,0,0,50,0,none,none
+gn:1150954,Ratchaburi,Ratchaburi,92448,town,0,0,50,0,none,none
+gn:1150965,Ranong,Ranong province,24561,town,0,0,50,0,none,none
+gn:1151063,Pran Buri,Prachuap Khiri Khan,47293,town,0,0,50,0,none,none
+gn:1151074,Prachuap Khiri Khan,Prachuap Khiri Khan,33521,town,0,0,50,0,none,none
+gn:1151150,Plai Phraya,Krabi,0,village,0,0,50,0,none,none
+gn:1151211,Tha Kham,Surat Thani,25810,town,0,0,50,0,none,none
+gn:1151254,Phuket,Phuket,79308,town,0,0,50,0,none,none
+gn:1151278,Phrom Khiri,Nakhon Si Thammarat,0,village,0,0,50,0,none,none
+gn:1151296,Phrasaeng,Surat Thani,0,village,0,0,50,0,none,none
+gn:1151308,Phran Kratai,Kamphaeng Phet,0,village,0,0,50,0,none,none
+gn:1151340,Photharam,Ratchaburi,36248,town,0,0,50,0,none,none
+gn:1151350,Phop Phra,Tak,0,village,0,0,50,0,none,none
+gn:1151397,Phipun,Nakhon Si Thammarat,0,village,0,0,50,0,none,none
+gn:1151426,Phayao,Phayao,21058,town,0,0,50,0,none,none
+gn:1151429,Phato,Chumphon,0,village,0,0,50,0,none,none
+gn:1151446,Phanom Thuan,Kanchanaburi,12469,town,0,0,50,0,none,none
+gn:1151449,Phanom,Surat Thani,0,village,0,0,50,0,none,none
+gn:1151464,Phang Nga,Phang Nga,9676,village,0,0,50,0,none,none
+gn:1151477,Phan,Chiang Rai,0,village,0,0,50,0,none,none
+gn:1151523,Pathio,Chumphon,0,village,0,0,50,0,none,none
+gn:1151528,Pa Sang,Lamphun,15607,town,0,0,50,0,none,none
+gn:1151557,Palian,Trang,0,village,0,0,50,0,none,none
+gn:1151567,Pak Tho,Ratchaburi,0,village,0,0,50,0,none,none
+gn:1151601,Pai,Chiang Mai,2284,village,0,0,50,0,none,none
+gn:1151634,Om Koi,Chiang Mai,1937,village,0,0,50,0,none,none
+gn:1151664,Nong Ya Plong,Phetchaburi,0,village,0,0,50,0,none,none
+gn:1151710,Nong Kha Yang,Uthai Thani,0,village,0,0,50,0,none,none
+gn:1151730,Nong Chang,Uthai Thani,0,village,0,0,50,0,none,none
+gn:1151848,Ngao,Lampang,0,village,0,0,50,0,none,none
+gn:1151933,Nakhon Si Thammarat,Nakhon Si Thammarat,102152,city,0,0,50,0,none,none
+gn:1151958,Na Bon,Nakhon Si Thammarat,0,village,0,0,50,0,none,none
+gn:1151987,Mueang Pan,Lampang,0,village,0,0,50,0,none,none
+gn:1152180,Mae Tha,Lamphun,10048,town,0,0,50,0,none,none
+gn:1152181,Mae Tha,Lampang,0,village,0,0,50,0,none,none
+gn:1152186,Mae Suai,Chiang Rai,0,village,0,0,50,0,none,none
+gn:1152188,Mae Sot,Tak,44563,town,0,0,50,0,none,none
+gn:1152194,Mae Sai,Chiang Rai,27520,town,0,0,50,0,none,none
+gn:1152202,Mae Ramat,Tak,17316,town,0,0,50,0,none,none
+gn:1152204,Mae Phrik,Lampang,0,village,0,0,50,0,none,none
+gn:1152216,Mae Mo,Lampang,0,village,0,0,50,0,none,none
+gn:1152217,Mae La Noi,Mae Hong Son,0,village,0,0,50,0,none,none
+gn:1152222,Mae Hong Son,Mae Hong Son,9109,village,0,0,50,0,none,none
+gn:1152227,Mae Chan,Chiang Rai,37672,town,0,0,50,0,none,none
+gn:1152230,Mae Chaem,Chiang Mai,0,village,0,0,50,0,none,none
+gn:1152322,Long,Phrae,11802,town,0,0,50,0,none,none
+gn:1152357,Li,Lamphun,0,village,0,0,50,0,none,none
+gn:1152375,La-Un,Ranong province,0,village,0,0,50,0,none,none
+gn:1152377,Lat Yao,Nakhon Sawan,17506,town,0,0,50,0,none,none
+gn:1152408,Lao Khwan,Kanchanaburi,0,village,0,0,50,0,none,none
+gn:1152420,Lan Saka,Nakhon Si Thammarat,0,village,0,0,50,0,none,none
+gn:1152421,Lan Sak,Uthai Thani,13905,town,0,0,50,0,none,none
+gn:1152423,Lan Krabue,Kamphaeng Phet,7633,village,0,0,50,0,none,none
+gn:1152426,La-ngu,Satun,0,village,0,0,50,0,none,none
+gn:1152432,Lang Suan,Chumphon,16142,town,0,0,50,0,none,none
+gn:1152468,Lamphun,Lamphun,43196,town,0,0,50,0,none,none
+gn:1152473,Lampang,Lampang,156139,city,0,0,50,0,none,none
+gn:1152479,Lamae,Chumphon,0,village,0,0,50,0,none,none
+gn:1152562,Kui Buri,Prachuap Khiri Khan,19046,town,0,0,50,0,none,none
+gn:1152625,Kra Buri,Ranong province,0,village,0,0,50,0,none,none
+gn:1152633,Krabi,Krabi,31219,town,0,0,50,0,none,none
+gn:1152640,Ko Yao,Phang Nga,0,village,0,0,50,0,none,none
+gn:1152654,Kong Ra,Phatthalung,0,village,0,0,50,0,none,none
+gn:1152657,Kong Krailat,Sukhothai,0,village,0,0,50,0,none,none
+gn:1152670,Ko Lanta,Krabi,6090,village,0,0,50,0,none,none
+gn:1152679,Ko Kha,Lampang,0,village,0,0,50,0,none,none
+gn:1152762,Khura Buri,Phang Nga,0,village,0,0,50,0,none,none
+gn:1152765,Khun Yuam,Mae Hong Son,0,village,0,0,50,0,none,none
+gn:1152843,Khlong Thom,Krabi,0,village,0,0,50,0,none,none
+gn:1152850,Khlong Lan,Kamphaeng Phet,0,village,0,0,50,0,none,none
+gn:1152854,Khlong Khlung,Kamphaeng Phet,0,village,0,0,50,0,none,none
+gn:1152873,Tha Khanon,Surat Thani,7300,village,0,0,50,0,none,none
+gn:1152876,Khiri Mat,Sukhothai,11272,town,0,0,50,0,none,none
+gn:1152899,Khian Sa,Surat Thani,0,village,0,0,50,0,none,none
+gn:1152919,Khao Yoi,Phetchaburi,18506,town,0,0,50,0,none,none
+gn:1152933,Khao Phanom,Krabi,0,village,0,0,50,0,none,none
+gn:1152953,Khanu Woralaksaburi,Kamphaeng Phet,21889,town,0,0,50,0,none,none
+gn:1153035,Kathu,Phuket,34835,town,0,0,50,0,none,none
+gn:1153059,Kapong,Phang Nga,0,village,0,0,50,0,none,none
+gn:1153062,Kapoe,Ranong province,0,village,0,0,50,0,none,none
+gn:1153072,Kantang,Trang,14156,town,0,0,50,0,none,none
+gn:1153079,Kanchanadit,Surat Thani,0,village,0,0,50,0,none,none
+gn:1153081,Kanchanaburi,Kanchanaburi,63699,town,0,0,50,0,none,none
+gn:1153090,Kamphaeng Phet,Kamphaeng Phet,58787,town,0,0,50,0,none,none
+gn:1153241,Huai Yot,Trang,16586,town,0,0,50,0,none,none
+gn:1153263,Huai Khot,Uthai Thani,5940,village,0,0,50,0,none,none
+gn:1153269,Hua Hin,Prachuap Khiri Khan,126355,city,0,0,50,0,none,none
+gn:1153278,Hot,Chiang Mai,0,village,0,0,50,0,none,none
+gn:1153386,Hang Dong,Chiang Mai,17931,town,0,0,50,0,none,none
+gn:1153389,Hang Chat,Lampang,0,village,0,0,50,0,none,none
+gn:1153427,Fang,Chiang Mai,7635,village,0,0,50,0,none,none
+gn:1153464,Dok Kham Tai,Phayao,23824,town,0,0,50,0,none,none
+gn:1153467,Doi Tao,Chiang Mai,0,village,0,0,50,0,none,none
+gn:1153507,Dan Chang,Suphan Buri,0,village,0,0,50,0,none,none
+gn:1153513,Damnoen Saduak,Ratchaburi,23296,town,0,0,50,0,none,none
+gn:1153557,Chumphon,Chumphon,55835,town,0,0,50,0,none,none
+gn:1153634,Chom Thong,Chiang Mai,12488,town,0,0,50,0,none,none
+gn:1153646,Chom Bueng,Ratchaburi,15143,town,0,0,50,0,none,none
+gn:1153669,Chiang Rai,Chiang Rai,78756,town,0,0,50,0,none,none
+gn:1153671,Chiang Mai,Chiang Mai,127240,city,0,0,50,0,none,none
+gn:1153673,Chiang Dao,Chiang Mai,0,village,0,0,50,0,none,none
+gn:1153686,Chawang,Nakhon Si Thammarat,10923,town,0,0,50,0,none,none
+gn:1153783,Chaiya,Surat Thani,12223,town,0,0,50,0,none,none
+gn:1153788,Chai Buri,Surat Thani,6126,village,0,0,50,0,none,none
+gn:1153800,Chae Hom,Lampang,0,village,0,0,50,0,none,none
+gn:1153807,Cha-am,Phetchaburi,49375,town,0,0,50,0,none,none
+gn:1153850,Bo Phloi,Kanchanaburi,16786,town,0,0,50,0,none,none
+gn:1153981,Wiang Nuea,Mae Hong Son,1341,village,0,0,50,0,none,none
+gn:1154053,Ban Wang Man,Tak,1806,village,0,0,50,0,none,none
+gn:1154093,Wang Chin,Phrae,0,village,0,0,50,0,none,none
+gn:1154094,Wang Chao,Tak,0,village,0,0,50,0,none,none
+gn:1154190,Thung Wa,Satun,0,village,0,0,50,0,none,none
+gn:1154329,Thung Hua Chang,Lamphun,0,village,0,0,50,0,none,none
+gn:1154519,Tha Maka,Kanchanaburi,0,village,0,0,50,0,none,none
+gn:1154677,Ban Tak,Tak,18384,town,0,0,50,0,none,none
+gn:1154689,Ko Samui,Surat Thani,50000,town,0,0,50,0,none,none
+gn:1154770,Ban Ko Sire,Phuket,71284,town,0,0,50,0,none,none
+gn:1155010,Rawai,Phuket,13623,town,0,0,50,0,none,none
+gn:1155064,Ban Rai,Uthai Thani,0,village,0,0,50,0,none,none
+gn:1155139,Ban Pong,Ratchaburi,57559,town,0,0,50,0,none,none
+gn:1155214,Banphot Phisai,Nakhon Sawan,0,village,0,0,50,0,none,none
+gn:1155231,Ban Phru Nai,Phang Nga,5713,village,0,0,50,0,none,none
+gn:1155525,Nuea Khlong,Krabi,12217,town,0,0,50,0,none,none
+gn:1155656,Nong Prue,Kanchanaburi,79258,town,0,0,50,0,none,none
+gn:1155740,Nong Mamong,Chai Nat,0,village,0,0,50,0,none,none
+gn:1155989,Noen Kham,Chai Nat,0,village,0,0,50,0,none,none
+gn:1156046,Ban Na San,Surat Thani,21900,town,0,0,50,0,none,none
+gn:1156244,Ban Na Doem,Surat Thani,0,village,0,0,50,0,none,none
+gn:1156257,Ban Na,Sukhothai,40174,town,0,0,50,0,none,none
+gn:1156279,Ban Mueang Pon,Mae Hong Son,1490,village,0,0,50,0,none,none
+gn:1156349,Ban Huai Malai,Kanchanaburi,1192,village,0,0,50,0,none,none
+gn:1156383,Ban Mai Khao,Phuket,5000,village,0,0,50,0,none,none
+gn:1156416,Ban Mae Waen,Chiang Mai,5517,village,0,0,50,0,none,none
+gn:1156428,Ban Mae Thalop,Chiang Mai,7930,village,0,0,50,0,none,none
+gn:1156632,Ban Lin Thin,Kanchanaburi,1477,village,0,0,50,0,none,none
+gn:1156648,Ban Lat,Phetchaburi,0,village,0,0,50,0,none,none
+gn:1156739,Ban Laem,Phetchaburi,0,village,0,0,50,0,none,none
+gn:1156836,Ban Ko Kaeo,Phuket,10136,town,0,0,50,0,none,none
+gn:1157190,Ban Khao Lak,Phang Nga,1700,village,0,0,50,0,none,none
+gn:1157232,Ban Kha,Ratchaburi,0,village,0,0,50,0,none,none
+gn:1157243,Ban Kata,Phuket,5000,village,0,0,50,0,none,none
+gn:1157249,Ban Karon,Phuket,7094,village,0,0,50,0,none,none
+gn:1157266,Ban Kamala,Phuket,22296,town,0,0,50,0,none,none
+gn:1157277,Kaeng Krachan,Phetchaburi,0,village,0,0,50,0,none,none
+gn:1157288,Ban I Lup,Uthai Thani,2086,village,0,0,50,0,none,none
+gn:1157289,Ban I Let,Chumphon,13684,town,0,0,50,0,none,none
+gn:1157290,Ban I Chang,Ratchaburi,119858,city,0,0,50,0,none,none
+gn:1157482,Huai Krachao,Kanchanaburi,0,village,0,0,50,0,none,none
+gn:1157551,Ban Hong,Lamphun,0,village,0,0,50,0,none,none
+gn:1157568,Ban Hin Laem,Kanchanaburi,1341,village,0,0,50,0,none,none
+gn:1157660,Bang Saphan Noi,Prachuap Khiri Khan,0,village,0,0,50,0,none,none
+gn:1157662,Bang Saphan,Prachuap Khiri Khan,15134,town,0,0,50,0,none,none
+gn:1157683,Bang Phae,Ratchaburi,29548,town,0,0,50,0,none,none
+gn:1157725,Bang Khon Thi,Samut Songkhram,0,village,0,0,50,0,none,none
+gn:1157730,Bang Khan,Nakhon Si Thammarat,0,village,0,0,50,0,none,none
+gn:1157794,Don Tum,Nakhon Pathom,0,village,0,0,50,0,none,none
+gn:1157949,Doi Lo,Chiang Mai,0,village,0,0,50,0,none,none
+gn:1157966,Dan Makham Tia,Kanchanaburi,0,village,0,0,50,0,none,none
+gn:1157969,Ban Dan Lan Hoi,Sukhothai,5791,village,0,0,50,0,none,none
+gn:1158377,Ban Ao Nang,Krabi,8000,village,0,0,50,0,none,none
+gn:1158398,Ban Aen Mai,Chiang Mai,3340,village,0,0,50,0,none,none
+gn:1158412,Ao Luek,Krabi,9628,village,0,0,50,0,none,none
+gn:1158432,Amphawa,Samut Songkhram,0,village,0,0,50,0,none,none
+gn:1595207,Sa Bot,Lopburi,0,village,0,0,50,0,none,none
+gn:1595484,Phatthana Nikhom,Lopburi,0,village,0,0,50,0,none,none
+gn:1595679,Nong Kung Si,Kalasin,17001,town,0,0,50,0,none,none
+gn:1595865,Na Dun,Maha Sarakham,0,village,0,0,50,0,none,none
+gn:1596216,Ko Pha Ngan,Surat Thani,0,village,0,0,50,0,none,none
+gn:1597130,Yang Si Surat,Maha Sarakham,0,village,0,0,50,0,none,none
+gn:1597163,Mueang Yang,Nakhon Ratchasima,0,village,0,0,50,0,none,none
+gn:1598222,Siao,Si Sa Ket,0,village,0,0,50,0,none,none
+gn:1598417,Samran,Kalasin,0,village,0,0,50,0,none,none
+gn:1598434,Thepharak,Nakhon Ratchasima,0,village,0,0,50,0,none,none
+gn:1598503,Sak Lek,Phichit,0,village,0,0,50,0,none,none
+gn:1599042,Phayu,Si Sa Ket,0,village,0,0,50,0,none,none
+gn:1599114,Pha Khao,Loei,0,village,0,0,50,0,none,none
+gn:1599410,Non Suwan,Buriram,0,village,0,0,50,0,none,none
+gn:1599640,Ban Nong Wua So,Udon Thani,21722,town,0,0,50,0,none,none
+gn:1599641,Nong Wua So,Udon Thani,7503,village,0,0,50,0,none,none
+gn:1600104,Nong Na Kham,Khon Kaen,0,village,0,0,50,0,none,none
+gn:1600129,Nong Muang,Lopburi,0,village,0,0,50,0,none,none
+gn:1600435,Nong Hin,Loei,0,village,0,0,50,0,none,none
+gn:1600444,Nong Hi,Roi Et,0,village,0,0,50,0,none,none
+gn:1600752,Na Yung,Udon Thani,0,village,0,0,50,0,none,none
+gn:1600814,Na Tan,Ubon Ratchathani,0,village,0,0,50,0,none,none
+gn:1600964,Ban Nam Yuen,Chumphon,12335,town,0,0,50,0,none,none
+gn:1600983,Na Mom,Songkhla,7537,village,0,0,50,0,none,none
+gn:1601446,Mueang Chan,Si Sa Ket,0,village,0,0,50,0,none,none
+gn:1601579,Ban Mai,Songkhla,86899,town,0,0,50,0,none,none
+gn:1601787,Lam Sonthi,Lopburi,0,village,0,0,50,0,none,none
+gn:1602708,Ban Khlong Bang Bon,Bangkok,24008,town,0,0,50,0,none,none
+gn:1603235,Ban Huai Thalaeng,Nakhon Ratchasima,15352,town,0,0,50,0,none,none
+gn:1603291,Huai Rat,Buriram,0,village,0,0,50,0,none,none
+gn:1603642,Ban Haet,Khon Kaen,0,village,0,0,50,0,none,none
+gn:1603666,Fao Rai,Nong Khai,0,village,0,0,50,0,none,none
+gn:1604060,Ban Dan,Buriram,0,village,0,0,50,0,none,none
+gn:1604194,Charoen Sin,Sakon Nakhon,0,village,0,0,50,0,none,none
+gn:1604452,Ban Khlong Bang Sao Thong,Samut Prakan,31153,town,0,0,50,0,none,none
+gn:1604597,Waeng,Narathiwat,0,village,0,0,50,0,none,none
+gn:1604600,Thepha,Songkhla,0,village,0,0,50,0,none,none
+gn:1604606,Tak Fa,Nakhon Sawan,0,village,0,0,50,0,none,none
+gn:1604632,Prakhon Chai,Buriram,0,village,0,0,50,0,none,none
+gn:1604654,Na Klang,Nong Bua Lamphu,31024,town,0,0,50,0,none,none
+gn:1604710,Bacho,Narathiwat,0,village,0,0,50,0,none,none
+gn:1604761,Yi-ngo,Narathiwat,0,village,0,0,50,0,none,none
+gn:1604769,Yasothon,Yasothon,21643,town,0,0,50,0,none,none
+gn:1604771,Yaring,Pattani,31111,town,0,0,50,0,none,none
+gn:1604792,Yan Nawa,Bangkok,81521,town,0,0,50,0,none,none
+gn:1604797,Yang Talat,Kalasin,13360,town,0,0,50,0,none,none
+gn:1604807,Yang Chum Noi,Si Sa Ket,0,village,0,0,50,0,none,none
+gn:1604863,Yarang,Pattani,0,village,0,0,50,0,none,none
+gn:1604870,Yala,Yala,93558,town,0,0,50,0,none,none
+gn:1604979,Yaha,Yala,0,village,0,0,50,0,none,none
+gn:1605018,Wiset Chaichan,Ang Thong,19129,town,0,0,50,0,none,none
+gn:1605022,Wihan Daeng,Saraburi,0,village,0,0,50,0,none,none
+gn:1605024,Wichian Buri,Phetchabun,39272,town,0,0,50,0,none,none
+gn:1605026,Wiang Sa,Nan,0,village,0,0,50,0,none,none
+gn:1605043,Watthana Nakhon,Sa Kaeo,0,village,0,0,50,0,none,none
+gn:1605048,Wat Sing,Chai Nat,0,village,0,0,50,0,none,none
+gn:1605062,Wat Bot,Phitsanulok,0,village,0,0,50,0,none,none
+gn:1605069,Warin Chamrap,Ubon Ratchathani,43102,town,0,0,50,0,none,none
+gn:1605070,Warichaphum,Sakon Nakhon,15760,town,0,0,50,0,none,none
+gn:1605072,Wapi Pathum,Maha Sarakham,10198,town,0,0,50,0,none,none
+gn:1605074,Wan Yai,Mukdahan,0,village,0,0,50,0,none,none
+gn:1605076,Wanon Niwat,Sakon Nakhon,0,village,0,0,50,0,none,none
+gn:1605092,Wang Thong,Phitsanulok,0,village,0,0,50,0,none,none
+gn:1605102,Wang Saphung,Loei,15747,town,0,0,50,0,none,none
+gn:1605104,Wang Sam Mo,Udon Thani,0,village,0,0,50,0,none,none
+gn:1605118,Wang Noi,Phra Nakhon Si Ayutthaya,15865,town,0,0,50,0,none,none
+gn:1605119,Wang Nam Yen,Sa Kaeo,16299,town,0,0,50,0,none,none
+gn:1605145,Wang Hin,Si Sa Ket,0,village,0,0,50,0,none,none
+gn:1605149,Wang Chan,Rayong,0,village,0,0,50,0,none,none
+gn:1605156,Wang Sai Phun,Phichit,8899,village,0,0,50,0,none,none
+gn:1605176,Waeng Yai,Khon Kaen,0,village,0,0,50,0,none,none
+gn:1605179,Waeng Noi,Khon Kaen,0,village,0,0,50,0,none,none
+gn:1605215,Uttaradit,Uttaradit,58313,town,0,0,50,0,none,none
+gn:1605219,Uthumphon Phisai,Si Sa Ket,0,village,0,0,50,0,none,none
+gn:1605221,Uthai Thani,Uthai Thani,22219,town,0,0,50,0,none,none
+gn:1605223,Uthai,Phra Nakhon Si Ayutthaya,0,village,0,0,50,0,none,none
+gn:1605239,Udon Thani,Udon Thani,130531,city,0,0,50,0,none,none
+gn:1605245,Ubon Ratchathani,Ubon Ratchathani,122533,city,0,0,50,0,none,none
+gn:1605248,Khuean Ubonrat,Khon Kaen,0,village,0,0,50,0,none,none
+gn:1605268,Tron,Uttaradit,0,village,0,0,50,0,none,none
+gn:1605279,Trat,Trat,21590,town,0,0,50,0,none,none
+gn:1605281,Trakan Phut Phon,Ubon Ratchathani,0,village,0,0,50,0,none,none
+gn:1605355,Thung Fon,Udon Thani,0,village,0,0,50,0,none,none
+gn:1605403,Thon Buri,Bangkok,119708,city,0,0,50,0,none,none
+gn:1605409,Thoeng,Chiang Rai,0,village,0,0,50,0,none,none
+gn:1605451,Thep Sathit,Chaiyaphum,0,village,0,0,50,0,none,none
+gn:1605467,Tha Yang,Phetchaburi,42602,town,0,0,50,0,none,none
+gn:1605469,Tha Wung,Lopburi,0,village,0,0,50,0,none,none
+gn:1605473,Thawat Buri,Roi Et,0,village,0,0,50,0,none,none
+gn:1605475,Tha Wang Pha,Nan,0,village,0,0,50,0,none,none
+gn:1605479,Tha Uthen,Nakhon Phanom,0,village,0,0,50,0,none,none
+gn:1605481,Tha Tum,Surin,0,village,0,0,50,0,none,none
+gn:1605483,That Phanom,Nakhon Phanom,14424,town,0,0,50,0,none,none
+gn:1605490,Tha Tako,Nakhon Sawan,0,village,0,0,50,0,none,none
+gn:1605509,Tha Ruea,Phra Nakhon Si Ayutthaya,19116,town,0,0,50,0,none,none
+gn:1605529,Tha Pla,Uttaradit,0,village,0,0,50,0,none,none
+gn:1605538,Thap Khlo,Phichit,15528,town,0,0,50,0,none,none
+gn:1605549,Thanyaburi,Pathum Thani,0,village,0,0,50,0,none,none
+gn:1605550,Than To,Yala,0,village,0,0,50,0,none,none
+gn:1605601,Tha Mai,Chanthaburi,22445,town,0,0,50,0,none,none
+gn:1605607,Tha Luang,Lopburi,0,village,0,0,50,0,none,none
+gn:1605613,Tha Li,Loei,0,village,0,0,50,0,none,none
+gn:1605639,Tha Khantho,Kalasin,0,village,0,0,50,0,none,none
+gn:1605671,Tha Chang,Sing Buri,0,village,0,0,50,0,none,none
+gn:1605677,Tha Bo,Nong Khai,35292,town,0,0,50,0,none,none
+gn:1605742,Ta Phraya,Sa Kaeo,0,village,0,0,50,0,none,none
+gn:1605754,Taphan Hin,Phichit,21895,town,0,0,50,0,none,none
+gn:1605763,Tao Ngoi,Sakon Nakhon,0,village,0,0,50,0,none,none
+gn:1605773,Tan Sum,Ubon Ratchathani,0,village,0,0,50,0,none,none
+gn:1605810,Tamot,Phatthalung,0,village,0,0,50,0,none,none
+gn:1605843,Taling Chan,Bangkok,105299,city,0,0,50,0,none,none
+gn:1605912,Takhli,Nakhon Sawan,0,village,0,0,50,0,none,none
+gn:1605957,Tak Bai,Narathiwat,17241,town,0,0,50,0,none,none
+gn:1606017,Suwannaphum,Roi Et,12221,town,0,0,50,0,none,none
+gn:1606019,Suwannakhuha,Nong Bua Lamphu,0,village,0,0,50,0,none,none
+gn:1606030,Surin,Surin,46673,town,0,0,50,0,none,none
+gn:1606033,Suphan Buri,Suphan Buri,53399,town,0,0,50,0,none,none
+gn:1606040,Sung Noen,Nakhon Ratchasima,14365,town,0,0,50,0,none,none
+gn:1606043,Sung Men,Phrae,0,village,0,0,50,0,none,none
+gn:1606047,Ban Su-ngai Pa Di,Narathiwat,14274,town,0,0,50,0,none,none
+gn:1606050,Su-ngai Kolok,Narathiwat,42776,town,0,0,50,0,none,none
+gn:1606073,Sukhirin,Narathiwat,0,village,0,0,50,0,none,none
+gn:1606114,So Phisai,Bueng Kan,0,village,0,0,50,0,none,none
+gn:1606139,Song Phi Nong,Suphan Buri,0,village,0,0,50,0,none,none
+gn:1606147,Songkhla,Songkhla,61758,town,0,0,50,0,none,none
+gn:1606167,Song,Phrae,0,village,0,0,50,0,none,none
+gn:1606188,Somdet,Kalasin,0,village,0,0,50,0,none,none
+gn:1606213,Soeng Sang,Nakhon Ratchasima,14138,town,0,0,50,0,none,none
+gn:1606228,Si Thep,Phetchabun,0,village,0,0,50,0,none,none
+gn:1606229,Si That,Udon Thani,0,village,0,0,50,0,none,none
+gn:1606232,Si Songkhram,Nakhon Phanom,0,village,0,0,50,0,none,none
+gn:1606237,Si Sakhon,Narathiwat,0,village,0,0,50,0,none,none
+gn:1606239,Si Sa Ket,Si Sa Ket,44751,town,0,0,50,0,none,none
+gn:1606246,Si Rattana,Si Sa Ket,0,village,0,0,50,0,none,none
+gn:1606250,Si Racha,Chon Buri,178916,city,0,0,50,0,none,none
+gn:1606257,Si Prachan,Suphan Buri,0,village,0,0,50,0,none,none
+gn:1606270,Sing Buri,Sing Buri,20046,town,0,0,50,0,none,none
+gn:1606283,Si Mueang Mai,Ubon Ratchathani,0,village,0,0,50,0,none,none
+gn:1606291,Si Maha Phot,Prachin Buri,100563,city,0,0,50,0,none,none
+gn:1606302,Si Khoraphum,Surin,0,village,0,0,50,0,none,none
+gn:1606303,Sikhio,Nakhon Ratchasima,0,village,0,0,50,0,none,none
+gn:1606314,Si Chomphu,Khon Kaen,0,village,0,0,50,0,none,none
+gn:1606316,Si Chiang Mai,Nong Khai,14068,town,0,0,50,0,none,none
+gn:1606323,Si Bun Rueang,Nong Bua Lamphu,12842,town,0,0,50,0,none,none
+gn:1606334,Senangkhanikhom,Amnat Charoen,0,village,0,0,50,0,none,none
+gn:1606336,Sena,Phra Nakhon Si Ayutthaya,0,village,0,0,50,0,none,none
+gn:1606340,Selaphum,Roi Et,0,village,0,0,50,0,none,none
+gn:1606343,Seka,Bueng Kan,16493,town,0,0,50,0,none,none
+gn:1606350,Sawang Daen Din,Sakon Nakhon,16825,town,0,0,50,0,none,none
+gn:1606374,Sawaengha,Ang Thong,0,village,0,0,50,0,none,none
+gn:1606376,Satun,Satun,34544,town,0,0,50,0,none,none
+gn:1606378,Satuek,Buriram,11481,town,0,0,50,0,none,none
+gn:1606386,Sattahip,Chon Buri,65444,town,0,0,50,0,none,none
+gn:1606394,Sathing Phra,Songkhla,0,village,0,0,50,0,none,none
+gn:1606418,Saraburi,Saraburi,67763,town,0,0,50,0,none,none
+gn:1606489,Sao Hai,Saraburi,0,village,0,0,50,0,none,none
+gn:1606512,Sapphaya,Chai Nat,0,village,0,0,50,0,none,none
+gn:1606520,Sanom,Surin,0,village,0,0,50,0,none,none
+gn:1606530,Sankhaburi,Chai Nat,0,village,0,0,50,0,none,none
+gn:1606536,Sangkhom,Nong Khai,3846,village,0,0,50,0,none,none
+gn:1606537,Sang Khom,Udon Thani,0,village,0,0,50,0,none,none
+gn:1606543,Sangkha,Surin,0,village,0,0,50,0,none,none
+gn:1606564,Sanam Chai Khet,Chachoengsao,0,village,0,0,50,0,none,none
+gn:1606586,Samut Songkhram,Samut Songkhram,35065,town,0,0,50,0,none,none
+gn:1606588,Samut Sakhon,Samut Sakhon,63498,town,0,0,50,0,none,none
+gn:1606590,Samut Prakan,Samut Prakan,388920,city,0,0,50,0,none,none
+gn:1606615,Samrong Thap,Surin,0,village,0,0,50,0,none,none
+gn:1606638,Sam Phran,Nakhon Pathom,37115,town,0,0,50,0,none,none
+gn:1606640,Samphanthawong,Bangkok,24150,town,0,0,50,0,none,none
+gn:1606667,Sam Ngam,Phichit,0,village,0,0,50,0,none,none
+gn:1606685,Samko,Ang Thong,0,village,0,0,50,0,none,none
+gn:1606687,Sam Khok,Pathum Thani,0,village,0,0,50,0,none,none
+gn:1606726,Sam Chuk,Suphan Buri,0,village,0,0,50,0,none,none
+gn:1606790,Sakon Nakhon,Sakon Nakhon,76237,town,0,0,50,0,none,none
+gn:1606807,Sa Kaeo,Sa Kaeo,28497,town,0,0,50,0,none,none
+gn:1606837,Sai Noi,Nonthaburi,0,village,0,0,50,0,none,none
+gn:1606842,Sai Mun,Yasothon,0,village,0,0,50,0,none,none
+gn:1606851,Sai Buri,Pattani,14356,town,0,0,50,0,none,none
+gn:1606913,Sahatsakhan,Kalasin,0,village,0,0,50,0,none,none
+gn:1606939,Sadao,Songkhla,46236,town,0,0,50,0,none,none
+gn:1606944,Saba Yoi,Songkhla,0,village,0,0,50,0,none,none
+gn:1606961,Rueso,Narathiwat,0,village,0,0,50,0,none,none
+gn:1606983,Rong Kwang,Phrae,12087,town,0,0,50,0,none,none
+gn:1606988,Rong Kham,Kalasin,0,village,0,0,50,0,none,none
+gn:1607001,Roi Et,Roi Et,39328,town,0,0,50,0,none,none
+gn:1607013,Renu Nakhon,Nakhon Phanom,0,village,0,0,50,0,none,none
+gn:1607017,Rayong,Rayong,106737,city,0,0,50,0,none,none
+gn:1607028,Rattaphum,Songkhla,0,village,0,0,50,0,none,none
+gn:1607030,Rattanaburi,Surin,0,village,0,0,50,0,none,none
+gn:1607055,Rat Burana,Bangkok,86695,town,0,0,50,0,none,none
+gn:1607062,Rasi Salai,Si Sa Ket,0,village,0,0,50,0,none,none
+gn:1607068,Ranot,Songkhla,19780,town,0,0,50,0,none,none
+gn:1607083,Ra-ngae,Narathiwat,16862,town,0,0,50,0,none,none
+gn:1607097,Raman,Yala,0,village,0,0,50,0,none,none
+gn:1607161,Pueai Noi,Khon Kaen,4468,village,0,0,50,0,none,none
+gn:1607164,Pua,Nan,0,village,0,0,50,0,none,none
+gn:1607236,Prathai,Nakhon Ratchasima,0,village,0,0,50,0,none,none
+gn:1607244,Prasat,Surin,0,village,0,0,50,0,none,none
+gn:1607251,Prang Ku,Si Sa Ket,0,village,0,0,50,0,none,none
+gn:1607257,Prakhon Chai,Buriram,15564,town,0,0,50,0,none,none
+gn:1607258,Pakham,Buriram,0,village,0,0,50,0,none,none
+gn:1607280,Prachin Buri,Prachin Buri,32600,town,0,0,50,0,none,none
+gn:1607284,Prachantakham,Prachin Buri,59696,town,0,0,50,0,none,none
+gn:1607306,Pong Nam Ron,Chanthaburi,8878,village,0,0,50,0,none,none
+gn:1607324,Pong,Phayao,14392,town,0,0,50,0,none,none
+gn:1607327,Pom Prap Sattru Phai,Bangkok,51006,town,0,0,50,0,none,none
+gn:1607345,Pluak Daeng,Rayong,0,village,0,0,50,0,none,none
+gn:1607363,Pla Pak,Nakhon Phanom,0,village,0,0,50,0,none,none
+gn:1607398,Plaeng Yao,Chachoengsao,0,village,0,0,50,0,none,none
+gn:1607418,Phu Wiang,Khon Kaen,0,village,0,0,50,0,none,none
+gn:1607421,Phutthaisong,Buriram,0,village,0,0,50,0,none,none
+gn:1607424,Phu Ruea,Loei,0,village,0,0,50,0,none,none
+gn:1607426,Phu Pha Man,Khon Kaen,0,village,0,0,50,0,none,none
+gn:1607433,Phu Luang,Loei,0,village,0,0,50,0,none,none
+gn:1607435,Phu Kradueng,Loei,16079,town,0,0,50,0,none,none
+gn:1607439,Phu Khiao,Chaiyaphum,17122,town,0,0,50,0,none,none
+gn:1607468,Phrom Phiram,Phitsanulok,0,village,0,0,50,0,none,none
+gn:1607473,Phrom Buri,Sing Buri,0,village,0,0,50,0,none,none
+gn:1607479,Phra Yuen,Khon Kaen,0,village,0,0,50,0,none,none
+gn:1607508,Phra Pradaeng,Samut Prakan,196129,city,0,0,50,0,none,none
+gn:1607512,Phra Phutthabat,Saraburi,57008,town,0,0,50,0,none,none
+gn:1607532,Phra Nakhon Si Ayutthaya,Phra Nakhon Si Ayutthaya,50830,town,0,0,50,0,none,none
+gn:1607542,Phra Khanong,Bangkok,90354,town,0,0,50,0,none,none
+gn:1607544,Phrai Bueng,Si Sa Ket,11494,town,0,0,50,0,none,none
+gn:1607552,Phrae,Phrae,38538,town,0,0,50,0,none,none
+gn:1607579,Pho Thong,Ang Thong,12200,town,0,0,50,0,none,none
+gn:1607584,Pho Thale,Phichit,0,village,0,0,50,0,none,none
+gn:1607592,Pho Sai,Ubon Ratchathani,0,village,0,0,50,0,none,none
+gn:1607600,Waeng,Roi Et,13317,town,0,0,50,0,none,none
+gn:1607603,Phon Sai,Roi Et,0,village,0,0,50,0,none,none
+gn:1607606,Phon Phisai,Nong Khai,0,village,0,0,50,0,none,none
+gn:1607615,Phon Charoen,Nong Khai,15208,town,0,0,50,0,none,none
+gn:1607617,Phon,Khon Kaen,14596,town,0,0,50,0,none,none
+gn:1607635,Chai Wari,Roi Et,13671,town,0,0,50,0,none,none
+gn:1607708,Phitsanulok,Phitsanulok,62584,town,0,0,50,0,none,none
+gn:1607716,Phimai,Nakhon Ratchasima,13084,town,0,0,50,0,none,none
+gn:1607725,Phichit,Phichit,35760,town,0,0,50,0,none,none
+gn:1607728,Phichai,Uttaradit,0,village,0,0,50,0,none,none
+gn:1607730,Phibun Mangsahan,Ubon Ratchathani,19883,town,0,0,50,0,none,none
+gn:1607737,Phetchabun,Phetchabun,50656,town,0,0,50,0,none,none
+gn:1607741,Phen,Udon Thani,0,village,0,0,50,0,none,none
+gn:1607752,Phayuha Khiri,Nakhon Sawan,12271,town,0,0,50,0,none,none
+gn:1607763,Phayakkhaphum Phisai,Maha Sarakham,10212,town,0,0,50,0,none,none
+gn:1607779,Phatthalung,Phatthalung,43522,town,0,0,50,0,none,none
+gn:1607782,Phasi Charoen,Bangkok,122070,city,0,0,50,0,none,none
+gn:1607793,Phan Thong,Chon Buri,18708,town,0,0,50,0,none,none
+gn:1607801,Phanom Sarakham,Chachoengsao,16057,town,0,0,50,0,none,none
+gn:1607804,Phanom Phrai,Roi Et,0,village,0,0,50,0,none,none
+gn:1607812,Phanna Nikhom,Sakon Nakhon,0,village,0,0,50,0,none,none
+gn:1607826,Phang Khon,Sakon Nakhon,0,village,0,0,50,0,none,none
+gn:1607838,Phanat Nikhom,Chon Buri,21924,town,0,0,50,0,none,none
+gn:1607840,Phana,Amnat Charoen,0,village,0,0,50,0,none,none
+gn:1607865,Phak Hai,Phra Nakhon Si Ayutthaya,19386,town,0,0,50,0,none,none
+gn:1607881,Phai Sali,Nakhon Sawan,13088,town,0,0,50,0,none,none
+gn:1607958,Phachi,Phra Nakhon Si Ayutthaya,0,village,0,0,50,0,none,none
+gn:1607960,Pa Bon,Phatthalung,0,village,0,0,50,0,none,none
+gn:1607971,Phaya Mengrai,Chiang Rai,0,village,0,0,50,0,none,none
+gn:1607978,Pattani,Pattani,43690,town,0,0,50,0,none,none
+gn:1607980,Pa Tio,Yasothon,0,village,0,0,50,0,none,none
+gn:1607983,Pathum Thani,Pathum Thani,24547,town,0,0,50,0,none,none
+gn:1607984,Pathum Rat,Roi Et,0,village,0,0,50,0,none,none
+gn:1608007,Panare,Pattani,0,village,0,0,50,0,none,none
+gn:1608011,Pa Mok,Ang Thong,0,village,0,0,50,0,none,none
+gn:1608019,Pak Thong Chai,Nakhon Ratchasima,0,village,0,0,50,0,none,none
+gn:1608026,Pak Phli,Nakhon Nayok,0,village,0,0,50,0,none,none
+gn:1608028,Pak Phayun,Phatthalung,0,village,0,0,50,0,none,none
+gn:1608033,Pak Phanang,Nakhon Si Thammarat,25014,town,0,0,50,0,none,none
+gn:1608048,Pak Kret,Nonthaburi,190272,city,0,0,50,0,none,none
+gn:1608053,Pak Khat,Bueng Kan,0,village,0,0,50,0,none,none
+gn:1608057,Pak Chong,Nakhon Ratchasima,48999,town,0,0,50,0,none,none
+gn:1608068,Pa Daet,Chiang Rai,13624,town,0,0,50,0,none,none
+gn:1608080,Ongkharak,Nakhon Nayok,13338,town,0,0,50,0,none,none
+gn:1608131,Non Thai,Nakhon Ratchasima,11959,town,0,0,50,0,none,none
+gn:1608133,Mueang Nonthaburi,Nonthaburi,254375,city,0,0,50,0,none,none
+gn:1608136,Non Sung,Nakhon Ratchasima,18399,town,0,0,50,0,none,none
+gn:1608139,Non Sang,Nong Bua Lamphu,11819,town,0,0,50,0,none,none
+gn:1608140,Non Sa-at,Udon Thani,0,village,0,0,50,0,none,none
+gn:1608142,Non Kho,Si Sa Ket,0,village,0,0,50,0,none,none
+gn:1608148,Nong Yai,Chon Buri,0,village,0,0,50,0,none,none
+gn:1608160,Nong Sung,Mukdahan,0,village,0,0,50,0,none,none
+gn:1608163,Nong Suea,Pathum Thani,0,village,0,0,50,0,none,none
+gn:1608173,Nong Saeng,Udon Thani,0,village,0,0,50,0,none,none
+gn:1608174,Nong Saeng,Saraburi,0,village,0,0,50,0,none,none
+gn:1608177,Nong Ruea,Khon Kaen,0,village,0,0,50,0,none,none
+gn:1608188,Nong Phok,Roi Et,0,village,0,0,50,0,none,none
+gn:1608191,Nong Phai,Phetchabun,27756,town,0,0,50,0,none,none
+gn:1608222,Nong Ki,Buriram,13592,town,0,0,50,0,none,none
+gn:1608232,Nong Khai,Nong Khai,63609,town,0,0,50,0,none,none
+gn:1608236,Nong Khaem,Bangkok,150218,city,0,0,50,0,none,none
+gn:1608239,Nong Khae,Saraburi,41067,town,0,0,50,0,none,none
+gn:1608247,Nong Hong,Buriram,0,village,0,0,50,0,none,none
+gn:1608251,Nong Han,Udon Thani,0,village,0,0,50,0,none,none
+gn:1608258,Nong Chok,Bangkok,157138,city,0,0,50,0,none,none
+gn:1608263,Nong Chik,Pattani,11385,town,0,0,50,0,none,none
+gn:1608266,Nong Bun Nak,Nakhon Ratchasima,0,village,0,0,50,0,none,none
+gn:1608267,Nong Bua Rawe,Chaiyaphum,0,village,0,0,50,0,none,none
+gn:1608269,Nong Bua Lamphu,Nong Bua Lamphu,34401,town,0,0,50,0,none,none
+gn:1608273,Nong Bua Daeng,Chaiyaphum,0,village,0,0,50,0,none,none
+gn:1608286,Nong Bua,Nakhon Sawan,14160,town,0,0,50,0,none,none
+gn:1608371,Noen Maprang,Phitsanulok,0,village,0,0,50,0,none,none
+gn:1608381,Nikhom Nam Un,Sakon Nakhon,0,village,0,0,50,0,none,none
+gn:1608382,Nikhom Kham Soi,Mukdahan,0,village,0,0,50,0,none,none
+gn:1608399,Na Wa,Nakhon Phanom,12989,town,0,0,50,0,none,none
+gn:1608402,Na Thawi,Songkhla,0,village,0,0,50,0,none,none
+gn:1608409,Narathiwat,Narathiwat,47771,town,0,0,50,0,none,none
+gn:1608415,Na Pho,Buriram,0,village,0,0,50,0,none,none
+gn:1608418,Na Noi,Nan,0,village,0,0,50,0,none,none
+gn:1608424,Nang Rong,Buriram,21961,town,0,0,50,0,none,none
+gn:1608452,Nan,Nan,24670,town,0,0,50,0,none,none
+gn:1608457,Na Muen,Nan,0,village,0,0,50,0,none,none
+gn:1608462,Nam Som,Udon Thani,19324,town,0,0,50,0,none,none
+gn:1608480,Nam Phong,Khon Kaen,0,village,0,0,50,0,none,none
+gn:1608483,Nam Pat,Uttaradit,0,village,0,0,50,0,none,none
+gn:1608484,Na Mon,Kalasin,0,village,0,0,50,0,none,none
+gn:1608485,Nam Nao,Phetchabun,0,village,0,0,50,0,none,none
+gn:1608488,Nam Kliang,Si Sa Ket,0,village,0,0,50,0,none,none
+gn:1608524,Nakhon Thai,Phitsanulok,12345,town,0,0,50,0,none,none
+gn:1608527,Nakhon Sawan,Nakhon Sawan,82305,town,0,0,50,0,none,none
+gn:1608529,Nakhon Ratchasima,Nakhon Ratchasima,126391,city,0,0,50,0,none,none
+gn:1608531,Nakhon Phanom,Nakhon Phanom,34595,town,0,0,50,0,none,none
+gn:1608534,Nakhon Pathom,Nakhon Pathom,117927,city,0,0,50,0,none,none
+gn:1608539,Nakhon Nayok,Nakhon Nayok,21309,town,0,0,50,0,none,none
+gn:1608541,Nakhon Luang,Phra Nakhon Si Ayutthaya,15008,town,0,0,50,0,none,none
+gn:1608545,Nakhon Chai Si,Nakhon Pathom,0,village,0,0,50,0,none,none
+gn:1608551,Na Kae,Nakhon Phanom,0,village,0,0,50,0,none,none
+gn:1608568,Na Chueak,Maha Sarakham,0,village,0,0,50,0,none,none
+gn:1608570,Na Chaluai,Ubon Ratchathani,0,village,0,0,50,0,none,none
+gn:1608597,Mukdahan,Mukdahan,40480,town,0,0,50,0,none,none
+gn:1608614,Mueang Suang,Roi Et,0,village,0,0,50,0,none,none
+gn:1608625,Muang Sam Sip,Ubon Ratchathani,0,village,0,0,50,0,none,none
+gn:1608718,Min Buri,Bangkok,0,village,0,0,50,0,none,none
+gn:1608725,Moeiwadi,Roi Et,5609,village,0,0,50,0,none,none
+gn:1608733,Mayo,Pattani,0,village,0,0,50,0,none,none
+gn:1608762,Manorom,Chai Nat,0,village,0,0,50,0,none,none
+gn:1608774,Mancha Khiri,Khon Kaen,0,village,0,0,50,0,none,none
+gn:1608797,Makkasan,Bangkok,15815,town,0,0,50,0,none,none
+gn:1608808,Makham,Chanthaburi,0,village,0,0,50,0,none,none
+gn:1608857,Mai Kaen,Pattani,0,village,0,0,50,0,none,none
+gn:1608900,Maha Sarakham,Maha Sarakham,51584,town,0,0,50,0,none,none
+gn:1608902,Maha Rat,Phra Nakhon Si Ayutthaya,0,village,0,0,50,0,none,none
+gn:1608909,Maha Chana Chai,Yasothon,0,village,0,0,50,0,none,none
+gn:1608937,Mae Charim,Nan,0,village,0,0,50,0,none,none
+gn:1609032,Lop Buri,Lopburi,57761,town,0,0,50,0,none,none
+gn:1609043,Lom Sak,Phetchabun,17309,town,0,0,50,0,none,none
+gn:1609048,Lom Kao,Phetchabun,0,village,0,0,50,0,none,none
+gn:1609068,Loeng Nok Tha,Yasothon,0,village,0,0,50,0,none,none
+gn:1609071,Loei,Loei,35273,town,0,0,50,0,none,none
+gn:1609121,Lat Lum Kaeo,Pathum Thani,0,village,0,0,50,0,none,none
+gn:1609141,Lat Bua Luang,Phra Nakhon Si Ayutthaya,0,village,0,0,50,0,none,none
+gn:1609163,Lap Lae,Uttaradit,0,village,0,0,50,0,none,none
+gn:1609204,Lam Plai Mat,Buriram,0,village,0,0,50,0,none,none
+gn:1609219,Lam Luk Ka,Pathum Thani,0,village,0,0,50,0,none,none
+gn:1609223,Lamduan,Surin,0,village,0,0,50,0,none,none
+gn:1609258,Lahan Sai,Buriram,0,village,0,0,50,0,none,none
+gn:1609278,Laem Sing,Chanthaburi,16066,town,0,0,50,0,none,none
+gn:1609283,Laem Ngop,Trat,17198,town,0,0,50,0,none,none
+gn:1609318,Kut Khaopun,Ubon Ratchathani,0,village,0,0,50,0,none,none
+gn:1609321,Kut Chum,Yasothon,0,village,0,0,50,0,none,none
+gn:1609324,Kut Chap,Udon Thani,24696,town,0,0,50,0,none,none
+gn:1609327,Kut Bak,Sakon Nakhon,0,village,0,0,50,0,none,none
+gn:1609332,Kusuman,Sakon Nakhon,0,village,0,0,50,0,none,none
+gn:1609336,Kumphawapi,Udon Thani,0,village,0,0,50,0,none,none
+gn:1609345,Kuchinarai,Kalasin,20532,town,0,0,50,0,none,none
+gn:1609350,Bangkok,Bangkok,5104476,large-city,0,0,50,0,none,none
+gn:1609379,Krok Phra,Nakhon Sawan,0,village,0,0,50,0,none,none
+gn:1609395,Krathum Baen,Samut Sakhon,72819,town,0,0,50,0,none,none
+gn:1609421,Krasang,Buriram,0,village,0,0,50,0,none,none
+gn:1609422,Krasae Sin,Songkhla,0,village,0,0,50,0,none,none
+gn:1609430,Kranuan,Khon Kaen,13475,town,0,0,50,0,none,none
+gn:1609476,Kosum Phisai,Maha Sarakham,10672,town,0,0,50,0,none,none
+gn:1609479,Ko Si Chang,Chon Buri,0,village,0,0,50,0,none,none
+gn:1609610,Klaeng,Rayong,55619,town,0,0,50,0,none,none
+gn:1609688,Khun Han,Si Sa Ket,0,village,0,0,50,0,none,none
+gn:1609699,Khu Mueang,Buriram,0,village,0,0,50,0,none,none
+gn:1609708,Khu Khan,Si Sa Ket,0,village,0,0,50,0,none,none
+gn:1609711,Khuan Niang,Songkhla,0,village,0,0,50,0,none,none
+gn:1609715,Khuan Khanun,Phatthalung,0,village,0,0,50,0,none,none
+gn:1609717,Khuan Kalong,Satun,0,village,0,0,50,0,none,none
+gn:1609720,Khueang Nai,Ubon Ratchathani,0,village,0,0,50,0,none,none
+gn:1609722,Khuan Don,Satun,0,village,0,0,50,0,none,none
+gn:1609753,Kho Wang,Yasothon,0,village,0,0,50,0,none,none
+gn:1609765,Khon Sawan,Chaiyaphum,0,village,0,0,50,0,none,none
+gn:1609768,Khon San,Chaiyaphum,0,village,0,0,50,0,none,none
+gn:1609776,Khon Kaen,Khon Kaen,114459,city,0,0,50,0,none,none
+gn:1609784,Khong Chiam,Ubon Ratchathani,0,village,0,0,50,0,none,none
+gn:1609793,Khong,Nakhon Ratchasima,0,village,0,0,50,0,none,none
+gn:1609795,Khon Buri,Nakhon Ratchasima,18596,town,0,0,50,0,none,none
+gn:1609808,Khok Si Suphan,Sakon Nakhon,0,village,0,0,50,0,none,none
+gn:1609812,Khok Samrong,Lopburi,0,village,0,0,50,0,none,none
+gn:1609820,Khok Pho,Pattani,0,village,0,0,50,0,none,none
+gn:1609839,Khok Charoen,Lopburi,0,village,0,0,50,0,none,none
+gn:1609858,Khlung,Chanthaburi,13286,town,0,0,50,0,none,none
+gn:1609863,Khlong Yai,Trat,38099,town,0,0,50,0,none,none
+gn:1609879,Khlong San,Bangkok,73263,town,0,0,50,0,none,none
+gn:1609899,Khlong Luang,Pathum Thani,118551,city,0,0,50,0,none,none
+gn:1609907,Khlong Hat,Sa Kaeo,0,village,0,0,50,0,none,none
+gn:1609970,Khemarat,Ubon Ratchathani,0,village,0,0,50,0,none,none
+gn:1609990,Khao Wong,Kalasin,15184,town,0,0,50,0,none,none
+gn:1609997,Khao Saming,Trat,38941,town,0,0,50,0,none,none
+gn:1610018,Khao Chaison,Phatthalung,0,village,0,0,50,0,none,none
+gn:1610068,Kham Thale So,Nakhon Ratchasima,0,village,0,0,50,0,none,none
+gn:1610069,Kham Ta Kla,Sakon Nakhon,0,village,0,0,50,0,none,none
+gn:1610072,Kham Sakae Saeng,Nakhon Ratchasima,11018,town,0,0,50,0,none,none
+gn:1610081,Kham Muang,Kalasin,0,village,0,0,50,0,none,none
+gn:1610086,Kham Khuean Kaeo,Yasothon,0,village,0,0,50,0,none,none
+gn:1610093,Khamcha-i,Mukdahan,0,village,0,0,50,0,none,none
+gn:1610185,Kaset Wisai,Roi Et,18569,town,0,0,50,0,none,none
+gn:1610187,Kaset Sombun,Chaiyaphum,16996,town,0,0,50,0,none,none
+gn:1610211,Kao Liao,Nakhon Sawan,4988,village,0,0,50,0,none,none
+gn:1610223,Kantharawichai,Maha Sarakham,0,village,0,0,50,0,none,none
+gn:1610225,Kanthararom,Si Sa Ket,0,village,0,0,50,0,none,none
+gn:1610227,Kantharalak,Si Sa Ket,36621,town,0,0,50,0,none,none
+gn:1610296,Krong Pi Nang,Yala,0,village,0,0,50,0,none,none
+gn:1610303,Su-ngai Padi,Narathiwat,0,village,0,0,50,0,none,none
+gn:1610360,Ka Bang,Yala,0,village,0,0,50,0,none,none
+gn:1610393,Cho-airong,Narathiwat,0,village,0,0,50,0,none,none
+gn:1610445,Kamphaeng Saen,Nakhon Pathom,0,village,0,0,50,0,none,none
+gn:1610459,Kamalasai,Kalasin,23393,town,0,0,50,0,none,none
+gn:1610469,Kalasin,Kalasin,55102,town,0,0,50,0,none,none
+gn:1610503,Kaeng Khoi,Saraburi,30332,town,0,0,50,0,none,none
+gn:1610505,Kaeng Khro,Chaiyaphum,29056,town,0,0,50,0,none,none
+gn:1610510,Kae Dam,Maha Sarakham,0,village,0,0,50,0,none,none
+gn:1610538,Kabin Buri,Prachin Buri,140056,city,0,0,50,0,none,none
+gn:1610571,In Buri,Sing Buri,8586,village,0,0,50,0,none,none
+gn:1610607,Hua Taphan,Amnat Charoen,0,village,0,0,50,0,none,none
+gn:1610622,Hua Sai,Nakhon Si Thammarat,11236,town,0,0,50,0,none,none
+gn:1610650,Huai Thap Than,Si Sa Ket,0,village,0,0,50,0,none,none
+gn:1610652,Huai Thalaeng,Nakhon Ratchasima,0,village,0,0,50,0,none,none
+gn:1610658,Huai Phueng,Kalasin,0,village,0,0,50,0,none,none
+gn:1610661,Huai Mek,Kalasin,12352,town,0,0,50,0,none,none
+gn:1610780,Hat Yai,Songkhla,191696,city,0,0,50,0,none,none
+gn:1610800,Hankha,Chai Nat,0,village,0,0,50,0,none,none
+gn:1610826,Godown,Bangkok,5000,village,0,0,50,0,none,none
+gn:1610841,Fak Tha,Uttaradit,0,village,0,0,50,0,none,none
+gn:1610858,Dusit,Bangkok,107655,city,0,0,50,0,none,none
+gn:1610876,Don Tan,Mukdahan,0,village,0,0,50,0,none,none
+gn:1610897,Dong Luang,Mukdahan,0,village,0,0,50,0,none,none
+gn:1610900,Don Chedi,Suphan Buri,0,village,0,0,50,0,none,none
+gn:1610911,Doembang Nangbuat,Suphan Buri,14671,town,0,0,50,0,none,none
+gn:1610940,Det Udom,Ubon Ratchathani,35669,town,0,0,50,0,none,none
+gn:1610943,Den Chai,Phrae,17019,town,0,0,50,0,none,none
+gn:1610958,Dan Sai,Loei,0,village,0,0,50,0,none,none
+gn:1610963,Dan Khun Thot,Nakhon Ratchasima,15580,town,0,0,50,0,none,none
+gn:1611020,Chum Phuang,Nakhon Ratchasima,0,village,0,0,50,0,none,none
+gn:1611022,Chumphon Buri,Surin,0,village,0,0,50,0,none,none
+gn:1611026,Chum Phae,Khon Kaen,46335,town,0,0,50,0,none,none
+gn:1611078,Chonnabot,Khon Kaen,0,village,0,0,50,0,none,none
+gn:1611088,Chong Nonsi,Bangkok,48277,town,0,0,50,0,none,none
+gn:1611106,Chon Daen,Phetchabun,17567,town,0,0,50,0,none,none
+gn:1611110,Chon Buri,Chon Buri,219164,city,0,0,50,0,none,none
+gn:1611125,Chom Phra,Surin,0,village,0,0,50,0,none,none
+gn:1611135,Chok Chai,Nakhon Ratchasima,23337,town,0,0,50,0,none,none
+gn:1611183,Chian Yai,Nakhon Si Thammarat,0,village,0,0,50,0,none,none
+gn:1611185,Chiang Yuen,Maha Sarakham,0,village,0,0,50,0,none,none
+gn:1611187,Chiang Saen,Chiang Rai,10807,town,0,0,50,0,none,none
+gn:1611195,Chiang Klang,Nan,13244,town,0,0,50,0,none,none
+gn:1611197,Chiang Khong,Chiang Rai,14505,town,0,0,50,0,none,none
+gn:1611200,Chiang Khan,Loei,0,village,0,0,50,0,none,none
+gn:1611202,Chiang Kham,Phayao,14092,town,0,0,50,0,none,none
+gn:1611231,Cha-uat,Nakhon Si Thammarat,0,village,0,0,50,0,none,none
+gn:1611233,Chaturaphak Phiman,Roi Et,0,village,0,0,50,0,none,none
+gn:1611234,Chatturat,Chaiyaphum,0,village,0,0,50,0,none,none
+gn:1611235,Chat Trakan,Phitsanulok,4608,village,0,0,50,0,none,none
+gn:1611261,Chanuman,Amnat Charoen,0,village,0,0,50,0,none,none
+gn:1611269,Chanthaburi,Chanthaburi,99819,town,0,0,50,0,none,none
+gn:1611320,Chanae,Narathiwat,0,village,0,0,50,0,none,none
+gn:1611324,Chana,Songkhla,0,village,0,0,50,0,none,none
+gn:1611394,Chaloem Phra Kiat,Nakhon Ratchasima,0,village,0,0,50,0,none,none
+gn:1611405,Chaiyo,Ang Thong,0,village,0,0,50,0,none,none
+gn:1611407,Chaiyaphum,Chaiyaphum,58350,town,0,0,50,0,none,none
+gn:1611410,Chaiwan,Udon Thani,0,village,0,0,50,0,none,none
+gn:1611416,Chai Nat,Chai Nat,15469,town,0,0,50,0,none,none
+gn:1611424,Chai Badan,Lopburi,25196,town,0,0,50,0,none,none
+gn:1611439,Chachoengsao,Chachoengsao,49741,town,0,0,50,0,none,none
+gn:1611453,Buri Ram,Buriram,28283,town,0,0,50,0,none,none
+gn:1611461,Buntharik,Ubon Ratchathani,0,village,0,0,50,0,none,none
+gn:1611467,Bueng Sam Phan,Phetchabun,0,village,0,0,50,0,none,none
+gn:1611473,Bueng Khong Long,Bueng Kan,0,village,0,0,50,0,none,none
+gn:1611475,Bueng Kan,Bueng Kan,9712,village,0,0,50,0,none,none
+gn:1611492,Bua Yai,Nakhon Ratchasima,16832,town,0,0,50,0,none,none
+gn:1611504,Bua Chet,Surin,0,village,0,0,50,0,none,none
+gn:1611548,Bo Thong,Chon Buri,0,village,0,0,50,0,none,none
+gn:1611578,Bo Rai,Trat,13620,town,0,0,50,0,none,none
+gn:1611580,Borabue,Maha Sarakham,0,village,0,0,50,0,none,none
+gn:1611620,Bo Kluea,Nan,0,village,0,0,50,0,none,none
+gn:1611635,Betong,Yala,29604,town,0,0,50,0,none,none
+gn:1611798,Ban Wat Bot,Prachin Buri,2922,village,0,0,50,0,none,none
+gn:1611881,Wang Pong,Phetchabun,0,village,0,0,50,0,none,none
+gn:1611914,Wang Muang,Saraburi,0,village,0,0,50,0,none,none
+gn:1612253,Ban Thung Klang,Nan,7857,village,0,0,50,0,none,none
+gn:1612542,Ban Tha Ngam,Prachin Buri,4720,village,0,0,50,0,none,none
+gn:1612696,Ban Tha Kham,Bangkok,61011,town,0,0,50,0,none,none
+gn:1612722,Ban Thai Tan,Ang Thong,14430,town,0,0,50,0,none,none
+gn:1612772,Ban Thaen,Chaiyaphum,0,village,0,0,50,0,none,none
+gn:1613174,Song Khwae,Nan,0,village,0,0,50,0,none,none
+gn:1613284,Ban Selaphum,Roi Et,17412,town,0,0,50,0,none,none
+gn:1613294,Sawang Wirawong,Ubon Ratchathani,7773,village,0,0,50,0,none,none
+gn:1613409,Ban Sang,Prachin Buri,38245,town,0,0,50,0,none,none
+gn:1613534,Ban Sam Chuk,Suphan Buri,13438,town,0,0,50,0,none,none
+gn:1613549,Ban Samae Dam,Bangkok,125133,city,0,0,50,0,none,none
+gn:1613759,Ratchasan,Chachoengsao,0,village,0,0,50,0,none,none
+gn:1614050,Ban Phue,Udon Thani,0,village,0,0,50,0,none,none
+gn:1614108,Ban Phraek,Phra Nakhon Si Ayutthaya,0,village,0,0,50,0,none,none
+gn:1614115,Ban Phra,Prachin Buri,15396,town,0,0,50,0,none,none
+gn:1614240,Ban Pho,Chachoengsao,0,village,0,0,50,0,none,none
+gn:1614288,Ban Phe,Rayong,17414,town,0,0,50,0,none,none
+gn:1614295,Pattaya,Chon Buri,116417,city,0,0,50,0,none,none
+gn:1614336,Ban Phan Don,Udon Thani,29211,town,0,0,50,0,none,none
+gn:1614455,Ban Phai,Khon Kaen,35583,town,0,0,50,0,none,none
+gn:1614465,Ban Phaeo,Samut Sakhon,41904,town,0,0,50,0,none,none
+gn:1614469,Ban Phaeng,Nakhon Phanom,0,village,0,0,50,0,none,none
+gn:1614696,Pak Chom,Loei,0,village,0,0,50,0,none,none
+gn:1614862,Ban Non Hom,Prachin Buri,5794,village,0,0,50,0,none,none
+gn:1615380,Nong Muang Khai,Phrae,0,village,0,0,50,0,none,none
+gn:1615758,Nong Don,Saraburi,0,village,0,0,50,0,none,none
+gn:1616020,Ban Noen Hom,Prachin Buri,9304,village,0,0,50,0,none,none
+gn:1616060,Na Yia,Ubon Ratchathani,0,village,0,0,50,0,none,none
+gn:1616066,Na Yai Am,Chanthaburi,0,village,0,0,50,0,none,none
+gn:1616090,Na Thom,Nakhon Phanom,0,village,0,0,50,0,none,none
+gn:1616198,Ban Nang Sata,Yala,0,village,0,0,50,0,none,none
+gn:1616222,Thambon Na Mueang,Prachin Buri,19910,town,0,0,50,0,none,none
+gn:1616379,Na Khu,Kalasin,0,village,0,0,50,0,none,none
+gn:1616445,Na Haeo,Loei,0,village,0,0,50,0,none,none
+gn:1616464,Na Di,Prachin Buri,57466,town,0,0,50,0,none,none
+gn:1616503,Ban Na,Nakhon Nayok,0,village,0,0,50,0,none,none
+gn:1616609,Ban Muang,Sakon Nakhon,0,village,0,0,50,0,none,none
+gn:1616631,Muak Lek,Saraburi,0,village,0,0,50,0,none,none
+gn:1616658,Ban Mo,Saraburi,15959,town,0,0,50,0,none,none
+gn:1616665,Ban Mi,Lopburi,0,village,0,0,50,0,none,none
+gn:1616888,Mae Lan,Pattani,0,village,0,0,50,0,none,none
+gn:1616933,Chiang Muan,Phayao,0,village,0,0,50,0,none,none
+gn:1616934,Ban Luang,Nan,0,village,0,0,50,0,none,none
+gn:1616940,Ban Lueam,Nakhon Ratchasima,0,village,0,0,50,0,none,none
+gn:1617033,Lao Suea Kok,Ubon Ratchathani,0,village,0,0,50,0,none,none
+gn:1617111,Ban Lam Luk Ka,Pathum Thani,60700,town,0,0,50,0,none,none
+gn:1617266,Kut Rang,Maha Sarakham,0,village,0,0,50,0,none,none
+gn:1617331,Ban Kruat,Buriram,0,village,0,0,50,0,none,none
+gn:1617483,Ban Ko Lan,Chon Buri,2000,village,0,0,50,0,none,none
+gn:1617625,Ban Khwao,Chaiyaphum,0,village,0,0,50,0,none,none
+gn:1617816,Khok Sung,Sa Kaeo,0,village,0,0,50,0,none,none
+gn:1617858,Bang Rachan,Sing Buri,0,village,0,0,50,0,none,none
+gn:1617906,Ban Khok Mai Lai,Prachin Buri,3977,village,0,0,50,0,none,none
+gn:1618002,Ban Khok,Uttaradit,0,village,0,0,50,0,none,none
+gn:1618051,Ban Khlong Yai Tho,Prachin Buri,1503,village,0,0,50,0,none,none
+gn:1618177,Ban Khlong Prawet,Bangkok,160671,city,0,0,50,0,none,none
+gn:1618294,Khlong Khuean,Chachoengsao,3703,village,0,0,50,0,none,none
+gn:1618326,Khlong Hoi Khong,Songkhla,0,village,0,0,50,0,none,none
+gn:1618363,Ban Khlong Bang Ramat,Bangkok,19783,town,0,0,50,0,none,none
+gn:1618365,Ban Khlong Bang Phrom,Bangkok,13553,town,0,0,50,0,none,none
+gn:1618473,Khao Chakan,Sa Kaeo,0,village,0,0,50,0,none,none
+gn:1618573,Ban Khai,Rayong,0,village,0,0,50,0,none,none
+gn:1618616,Kap Choeng,Surin,0,village,0,0,50,0,none,none
+gn:1618661,Kapho,Pattani,0,village,0,0,50,0,none,none
+gn:1618680,Kaeng Sanam Nang,Nakhon Ratchasima,0,village,0,0,50,0,none,none
+gn:1618705,Kaeng Hang Maeo,Chanthaburi,0,village,0,0,50,0,none,none
+gn:1618722,Ban I Toeng,Sakon Nakhon,8046,village,0,0,50,0,none,none
+gn:1618724,Ban I Pat,Chanthaburi,7493,village,0,0,50,0,none,none
+gn:1618729,Ban I Loet,Phetchabun,9238,village,0,0,50,0,none,none
+gn:1619138,Ban Hat Lek,Trat,5530,village,0,0,50,0,none,none
+gn:1619198,Bang Yai,Nonthaburi,14012,town,0,0,50,0,none,none
+gn:1619262,Bang Sai,Phra Nakhon Si Ayutthaya,0,village,0,0,50,0,none,none
+gn:1619276,Bang Rakam,Phitsanulok,16841,town,0,0,50,0,none,none
+gn:1619278,Bang Rak,Bangkok,99273,town,0,0,50,0,none,none
+gn:1619281,Bang Racham,Sing Buri,15313,town,0,0,50,0,none,none
+gn:1619298,Bang Pla Ma,Suphan Buri,0,village,0,0,50,0,none,none
+gn:1619347,Bang Phli,Samut Prakan,0,village,0,0,50,0,none,none
+gn:1619363,Bang Pakong,Chachoengsao,25620,town,0,0,50,0,none,none
+gn:1619369,Bang Pa-in,Phra Nakhon Si Ayutthaya,20484,town,0,0,50,0,none,none
+gn:1619371,Bang Pahan,Phra Nakhon Si Ayutthaya,0,village,0,0,50,0,none,none
+gn:1619391,Bang Nam Priao,Chachoengsao,8642,village,0,0,50,0,none,none
+gn:1619400,Bang Mun Nak,Phichit,15616,town,0,0,50,0,none,none
+gn:1619415,Bang Len,Nakhon Pathom,17914,town,0,0,50,0,none,none
+gn:1619423,Bang Lamung,Chon Buri,39620,town,0,0,50,0,none,none
+gn:1619434,Bang Kruai,Nonthaburi,78305,town,0,0,50,0,none,none
+gn:1619437,Bang Krathum,Phitsanulok,18874,town,0,0,50,0,none,none
+gn:1619457,Bangkok Yai,Bangkok,72321,town,0,0,50,0,none,none
+gn:1619460,Bangkok Noi,Bangkok,117793,city,0,0,50,0,none,none
+gn:1619485,Bang Khun Thian,Bangkok,165491,city,0,0,50,0,none,none
+gn:1619496,Bang Khlo,Bangkok,35838,town,0,0,50,0,none,none
+gn:1619498,Bang Khla,Chachoengsao,13528,town,0,0,50,0,none,none
+gn:1619506,Bang Khen,Bangkok,0,village,0,0,50,0,none,none
+gn:1619532,Bang Kapi,Bangkok,147800,city,0,0,50,0,none,none
+gn:1619602,Bang Bua Thong,Nonthaburi,41567,town,0,0,50,0,none,none
+gn:1619611,Bang Bo,Samut Prakan,0,village,0,0,50,0,none,none
+gn:1619616,Bang Ban,Phra Nakhon Si Ayutthaya,16588,town,0,0,50,0,none,none
+gn:1619630,Ban Fang,Khon Kaen,0,village,0,0,50,0,none,none
+gn:1619650,Ban Dung,Udon Thani,19479,town,0,0,50,0,none,none
+gn:1619761,Don Phut,Saraburi,0,village,0,0,50,0,none,none
+gn:1619866,Ban Don Kaeo,Phayao,3874,village,0,0,50,0,none,none
+gn:1619899,Ban Dong Phra Ram,Prachin Buri,12703,town,0,0,50,0,none,none
+gn:1619932,Dong Khilek,Prachin Buri,9640,village,0,0,50,0,none,none
+gn:1620254,Ban Chang,Rayong,28204,town,0,0,50,0,none,none
+gn:1620279,Chamni,Buriram,0,village,0,0,50,0,none,none
+gn:1620321,Chakkarat,Nakhon Ratchasima,0,village,0,0,50,0,none,none
+gn:1620371,Ban Bueng,Chon Buri,23509,town,0,0,50,0,none,none
+gn:1620390,Bueng Na Rang,Phichit,4948,village,0,0,50,0,none,none
+gn:1620442,Ban Talat Bueng,Chon Buri,26113,town,0,0,50,0,none,none
+gn:1620706,Bang Phlat,Bangkok,92325,town,0,0,50,0,none,none
+gn:1620755,Bang Na,Bangkok,95912,town,0,0,50,0,none,none
+gn:1620816,Bang Klam,Songkhla,0,village,0,0,50,0,none,none
+gn:1620873,Bang Kaeo,Phatthalung,0,village,0,0,50,0,none,none
+gn:1620875,Ban Bang Kadi,Pathum Thani,27911,town,0,0,50,0,none,none
+gn:1620891,Ban Bang Decha,Prachin Buri,3143,village,0,0,50,0,none,none
+gn:1620919,Bang Bo District,Samut Prakan,28376,town,0,0,50,0,none,none
+gn:1620920,Ban Bang Boribun,Prachin Buri,1296,village,0,0,50,0,none,none
+gn:1620924,Ban Bang Bamru,Bangkok,18514,town,0,0,50,0,none,none
+gn:1620954,Ban Ang Sila,Chon Buri,36055,town,0,0,50,0,none,none
+gn:1620965,Lue Amnat,Amnat Charoen,0,village,0,0,50,0,none,none
+gn:1620989,Bamnet Narong,Chaiyaphum,14890,town,0,0,50,0,none,none
+gn:1621008,At Samat,Roi Et,0,village,0,0,50,0,none,none
+gn:1621020,Aranyaprathet,Sa Kaeo,20236,town,0,0,50,0,none,none
+gn:1621035,Ang Thong,Ang Thong,13738,town,0,0,50,0,none,none
+gn:1621060,Amnat Charoen,Amnat Charoen,34769,town,0,0,50,0,none,none
+gn:1621066,Akat Amnuai,Sakon Nakhon,0,village,0,0,50,0,none,none
+gn:1884764,Phon Charoen,Bueng Kan,0,village,0,0,50,0,none,none
+gn:1884830,Chaiyo,Ang Thong,13255,town,0,0,50,0,none,none
+gn:1885004,Samrong,Ubon Ratchathani,0,village,0,0,50,0,none,none
+gn:1885051,Bueng Bun,Si Sa Ket,0,village,0,0,50,0,none,none
+gn:1888247,Song Dao,Sakon Nakhon,0,village,0,0,50,0,none,none
+gn:1897926,Laem Chabang,Chon Buri,88271,town,0,0,50,0,none,none
+gn:1941204,Thung Yang Daeng,Pattani,0,village,0,0,50,0,none,none
+gn:1948015,Amphoe Sikhiu,Nakhon Ratchasima,28681,town,0,0,50,0,none,none
+gn:1954056,Phanom Dong Rak,Surin,0,village,0,0,50,0,none,none
+gn:6691842,Saladan,Krabi,7946,village,0,0,50,0,none,none
+gn:6694101,Din Daeng,Bangkok,130220,city,0,0,50,0,none,none
+gn:6696291,Wichit,Phuket,38701,town,0,0,50,0,none,none
+gn:6698658,Ko Pha Ngan,Surat Thani,11846,town,0,0,50,0,none,none
+gn:6698659,Koh Tao,Surat Thani,1382,village,0,0,50,0,none,none
+gn:6845329,Bang Sue,Bangkok,125440,city,0,0,50,0,none,none
+gn:6845590,Don Mueang,Bangkok,0,village,0,0,50,0,none,none
+gn:6865646,Ban Khlong Chak Phra,Bangkok,9982,village,0,0,50,0,none,none
+gn:6865927,Salaya,Nakhon Pathom,0,village,0,0,50,0,none,none
+gn:6908579,Muban Thep Thani,Bangkok,7613,village,0,0,50,0,none,none
+gn:6908641,Khlong Toei,Bangkok,109041,city,0,0,50,0,none,none
+gn:6908878,Ban Khlong Sakae,Bangkok,2236,village,0,0,50,0,none,none
+gn:6941772,Patong,Phuket,14797,town,0,0,50,0,none,none
+gn:6957680,Chun,Phayao,0,village,0,0,50,0,none,none
+gn:6957685,Thung Chang,Nan,0,village,0,0,50,0,none,none
+gn:6957690,Lat Krabang,Bangkok,163175,city,0,0,50,0,none,none
+gn:7026720,Bang Khae,Bangkok,193002,city,0,0,50,0,none,none
+gn:7026735,Bang Kho Laem,Bangkok,22697,town,0,0,50,0,none,none
+gn:7026776,Bueng Kum,Bangkok,145830,city,0,0,50,0,none,none
+gn:7026785,Chatuchak,Bangkok,160906,city,0,0,50,0,none,none
+gn:7026787,Chom Thong,Bangkok,158005,city,0,0,50,0,none,none
+gn:7026800,Huai Khwang,Bangkok,78175,town,0,0,50,0,none,none
+gn:7026817,Khan Na Yao,Bangkok,88678,town,0,0,50,0,none,none
+gn:7026833,Lak Si,Bangkok,109770,city,0,0,50,0,none,none
+gn:7026837,Lat Phrao,Bangkok,122182,city,0,0,50,0,none,none
+gn:7026842,Pathum Wan,Bangkok,53263,town,0,0,50,0,none,none
+gn:7026870,Phaya Thai,Bangkok,70238,town,0,0,50,0,none,none
+gn:7026885,Ratchathewi,Bangkok,73035,town,0,0,50,0,none,none
+gn:7026886,Sai Mai,Bangkok,188123,city,0,0,50,0,none,none
+gn:7026889,Saphan Sung,Bangkok,89825,town,0,0,50,0,none,none
+gn:7026897,Sathon,Bangkok,84916,town,0,0,50,0,none,none
+gn:7026898,Suan Luang,Bangkok,115658,city,0,0,50,0,none,none
+gn:7026994,Thawi Watthana,Bangkok,76351,town,0,0,50,0,none,none
+gn:7026999,Thung Khru,Bangkok,116473,city,0,0,50,0,none,none
+gn:7027001,Wang Thonglang,Bangkok,114768,city,0,0,50,0,none,none
+gn:7027003,Watthana,Bangkok,171150,city,0,0,50,0,none,none
+gn:7072944,Sop Pong,Mae Hong Son,0,village,0,0,50,0,none,none
+gn:7091861,Ban Chalong,Phuket,18072,town,0,0,50,0,none,none
+gn:7091912,Ban Ratsada,Phuket,33534,town,0,0,50,0,none,none
+gn:7092271,Mueang Phuket,Phuket,0,village,0,0,50,0,none,none
+gn:7100111,Bang Sao Thong,Samut Prakan,0,village,0,0,50,0,none,none
+gn:7280459,Ko Chang Tai,Trat,2346,village,0,0,50,0,none,none
+gn:7302494,Nai Harn,Phuket,4767,village,0,0,50,0,none,none
+gn:7323625,Mae Fa Luang,Chiang Rai,0,village,0,0,50,0,none,none
+gn:7325957,Wiang Chiang Rung,Chiang Rai,0,village,0,0,50,0,none,none
+gn:7325958,Wiang Kaen,Chiang Rai,0,village,0,0,50,0,none,none
+gn:7383661,Khun Tan,Chiang Rai,0,village,0,0,50,0,none,none
+gn:7383662,Chaloem Phra Kiat,Nan,0,village,0,0,50,0,none,none
+gn:7421899,Mae Lao,Chiang Rai,0,village,0,0,50,0,none,none
+gn:7503743,Ban Khlong Bang Phran,Bangkok,32286,town,0,0,50,0,none,none
+gn:7503760,Ban Lak Song,Bangkok,52144,town,0,0,50,0,none,none
+gn:7504194,Khwaeng Bang Khae,Bangkok,38915,town,0,0,50,0,none,none
+gn:7510867,Suk Samran,Ranong province,0,village,0,0,50,0,none,none
+gn:7510870,Ban Takhun,Surat Thani,0,village,0,0,50,0,none,none
+gn:7510871,Takuk Nuea,Surat Thani,0,village,0,0,50,0,none,none
+gn:7510872,Wiang Nong Long,Lamphun,0,village,0,0,50,0,none,none
+gn:7510879,Mae Poen,Nakhon Sawan,0,village,0,0,50,0,none,none
+gn:7510880,Pang Sila Thong,Kamphaeng Phet,0,village,0,0,50,0,none,none
+gn:7510881,Kosamphi Nakhon,Kamphaeng Phet,0,village,0,0,50,0,none,none
+gn:7510882,Ban Thi,Lamphun,0,village,0,0,50,0,none,none
+gn:7510883,Manang,Satun,0,village,0,0,50,0,none,none
+gn:7510884,Ratsada,Trang,0,village,0,0,50,0,none,none
+gn:7510885,Phra Phrom,Nakhon Si Thammarat,0,village,0,0,50,0,none,none
+gn:7510886,Chulabhorn,Nakhon Si Thammarat,0,village,0,0,50,0,none,none
+gn:7510887,Chang Klang,Nakhon Si Thammarat,0,village,0,0,50,0,none,none
+gn:7510891,Nong Yasai,Suphan Buri,0,village,0,0,50,0,none,none
+gn:7510894,Chum Ta Bong,Nakhon Sawan,0,village,0,0,50,0,none,none
+gn:7510895,Mae Wong,Nakhon Sawan,0,village,0,0,50,0,none,none
+gn:7510896,Bueng Samakkhi,Kamphaeng Phet,0,village,0,0,50,0,none,none
+gn:7510900,Phu Kam Yao,Phayao,0,village,0,0,50,0,none,none
+gn:7510901,Chaloem Phra Kiat,Nakhon Si Thammarat,0,village,0,0,50,0,none,none
+gn:7510904,Doem Bang Nang Buat,Suphan Buri,0,village,0,0,50,0,none,none
+gn:7510905,Chumsaeng,Nakhon Sawan,0,village,0,0,50,0,none,none
+gn:7510908,Wachira Barami,Phichit,0,village,0,0,50,0,none,none
+gn:7510909,Thong Saen Khan,Uttaradit,0,village,0,0,50,0,none,none
+gn:7510910,Laplae,Uttaradit,0,village,0,0,50,0,none,none
+gn:7510912,Chaloem Phra Kiat,Saraburi,0,village,0,0,50,0,none,none
+gn:7510916,Santi Suk,Nan,0,village,0,0,50,0,none,none
+gn:7510917,Phu Phiang,Nan,0,village,0,0,50,0,none,none
+gn:7510920,Nikhom Phattana,Rayong,0,village,0,0,50,0,none,none
+gn:7510921,Ko Chan,Chon Buri,0,village,0,0,50,0,none,none
+gn:7510923,Si Mahosot,Prachin Buri,18903,town,0,0,50,0,none,none
+gn:7510929,Phakdi Chumphon,Chaiyaphum,0,village,0,0,50,0,none,none
+gn:7510932,Khao Chamao,Rayong,0,village,0,0,50,0,none,none
+gn:7510933,Tha Takiap,Chachoengsao,0,village,0,0,50,0,none,none
+gn:7510934,Wang Nam Khiao,Nakhon Ratchasima,0,village,0,0,50,0,none,none
+gn:7510935,Prachamtakham,Prachin Buri,0,village,0,0,50,0,none,none
+gn:7510937,Sap Yai,Chaiyaphum,0,village,0,0,50,0,none,none
+gn:7510940,Erawan,Loei,15137,town,0,0,50,0,none,none
+gn:7510943,Khao Khitchakut,Chanthaburi,0,village,0,0,50,0,none,none
+gn:7510944,Soi Dao,Chanthaburi,0,village,0,0,50,0,none,none
+gn:7510945,Wang Sombun,Sa Kaeo,0,village,0,0,50,0,none,none
+gn:7510950,Noen Sa-nga,Chaiyaphum,0,village,0,0,50,0,none,none
+gn:7510951,Khok Pho Chai,Khon Kaen,0,village,0,0,50,0,none,none
+gn:7510952,Na Wang,Nong Bua Lamphu,0,village,0,0,50,0,none,none
+gn:7510956,Non Din Daeng,Buriram,0,village,0,0,50,0,none,none
+gn:7510957,Pa Kham,Buriram,0,village,0,0,50,0,none,none
+gn:7510958,Chaloem Phra Kiat,Buriram,0,village,0,0,50,0,none,none
+gn:7510959,Lam Thamen Chai,Nakhon Ratchasima,0,village,0,0,50,0,none,none
+gn:7510961,Non Daeng,Nakhon Ratchasima,0,village,0,0,50,0,none,none
+gn:7510963,Ban Mai Chaiyaphot,Buriram,0,village,0,0,50,0,none,none
+gn:7510964,Non Sila,Khon Kaen,0,village,0,0,50,0,none,none
+gn:7510966,Ubonratana,Khon Kaen,0,village,0,0,50,0,none,none
+gn:7510967,Ban Na Muang,Udon Thani,0,village,0,0,50,0,none,none
+gn:7510969,Sa Khrai,Nong Khai,0,village,0,0,50,0,none,none
+gn:7510970,Phlapphla Chai,Buriram,0,village,0,0,50,0,none,none
+gn:7510973,Si Somdet,Roi Et,0,village,0,0,50,0,none,none
+gn:7510975,Khong Chai,Kalasin,0,village,0,0,50,0,none,none
+gn:7510978,Chuen Chom,Maha Sarakham,0,village,0,0,50,0,none,none
+gn:7510979,Sam Sung,Khon Kaen,0,village,0,0,50,0,none,none
+gn:7510980,Ku Kaeo,Udon Thani,0,village,0,0,50,0,none,none
+gn:7510982,Phibun Rak,Udon Thani,0,village,0,0,50,0,none,none
+gn:7510983,Pakkhat,Nong Khai,0,village,0,0,50,0,none,none
+gn:7510984,Phonphisai,Nong Khai,0,village,0,0,50,0,none,none
+gn:7510985,Si Narong,Surin,0,village,0,0,50,0,none,none
+gn:7510986,Non Narai,Surin,0,village,0,0,50,0,none,none
+gn:7510987,Khwao Sinarin,Surin,0,village,0,0,50,0,none,none
+gn:7510988,Thung Khao Luang,Roi Et,0,village,0,0,50,0,none,none
+gn:7510990,Chiang Khwan,Roi Et,0,village,0,0,50,0,none,none
+gn:7510991,Changhan,Roi Et,0,village,0,0,50,0,none,none
+gn:7510992,Don Chan,Kalasin,0,village,0,0,50,0,none,none
+gn:7510993,Phu Phan,Sakon Nakhon,0,village,0,0,50,0,none,none
+gn:7510995,Si Wilai,Bueng Kan,0,village,0,0,50,0,none,none
+gn:7510997,Phu Sing,Si Sa Ket,0,village,0,0,50,0,none,none
+gn:7510999,Pho Si Suwan,Si Sa Ket,0,village,0,0,50,0,none,none
+gn:7511001,Sila Lat,Si Sa Ket,0,village,0,0,50,0,none,none
+gn:7511004,Thai Charoen,Yasothon,0,village,0,0,50,0,none,none
+gn:7511006,Phon Na Kaeo,Sakon Nakhon,0,village,0,0,50,0,none,none
+gn:7511008,Wang Yang,Nakhon Phanom,0,village,0,0,50,0,none,none
+gn:7511010,Nathom,Nakhon Phanom,0,village,0,0,50,0,none,none
+gn:7511011,Thung Si Udom,Ubon Ratchathani,0,village,0,0,50,0,none,none
+gn:7511012,Nam Khun,Ubon Ratchathani,0,village,0,0,50,0,none,none
+gn:7511013,Benchalak,Si Sa Ket,0,village,0,0,50,0,none,none
+gn:7511015,Pathum Ratchawongsa,Amnat Charoen,0,village,0,0,50,0,none,none
+gn:7511019,Don Mot Daeng,Ubon Ratchathani,0,village,0,0,50,0,none,none
+gn:7511021,Mae Wang,Chiang Mai,0,village,0,0,50,0,none,none
+gn:7511025,Khao Kho,Phetchabun,0,village,0,0,50,0,none,none
+gn:7511026,Phra Thong Kham,Nakhon Ratchasima,0,village,0,0,50,0,none,none
+gn:7511027,Wiang Kao,Khon Kaen,0,village,0,0,50,0,none,none
+gn:7511028,Khaen Dong,Buriram,0,village,0,0,50,0,none,none
+gn:7511029,Sirindhorn,Ubon Ratchathani,0,village,0,0,50,0,none,none
+gn:7511045,Sida,Nakhon Ratchasima,0,village,0,0,50,0,none,none
+gn:7511049,Srinagarindra,Phatthalung,0,village,0,0,50,0,none,none
+gn:7511051,Sam Chai,Kalasin,0,village,0,0,50,0,none,none
+gn:7511053,Dong Charoen,Phichit,0,village,0,0,50,0,none,none
+gn:7524617,Chaem Luang,Chiang Mai,0,village,0,0,50,0,none,none
+gn:7525691,Rattanawapi,Nong Khai,0,village,0,0,50,0,none,none
+gn:7603495,Hat Samran,Trang,0,village,0,0,50,0,none,none
+gn:7761865,Ban Pa Pae,Mae Hong Son,0,village,0,0,50,0,none,none
+gn:8181809,Bung Khla,Bueng Kan,0,village,0,0,50,0,none,none
+gn:8205089,Ban Aranyik,Phitsanulok,30508,town,0,0,50,0,none,none
+gn:8242485,Ban Na Saton,Nakhon Si Thammarat,10795,town,0,0,50,0,none,none
+gn:8242530,Ban Sai Khao,Nakhon Si Thammarat,8011,village,0,0,50,0,none,none
+gn:8299884,Chai Prakan,Chiang Mai,0,village,0,0,50,0,none,none
+gn:8299991,Doi Luang,Chiang Rai,0,village,0,0,50,0,none,none
+gn:8304646,Mae On,Chiang Mai,0,village,0,0,50,0,none,none
+gn:8304648,Sop Moei,Mae Hong Son,0,village,0,0,50,0,none,none
+gn:8304649,Bua Lai,Nakhon Ratchasima,0,village,0,0,50,0,none,none
+gn:8305044,Phra Samut Chedi,Samut Prakan,0,village,0,0,50,0,none,none
+gn:8305251,Singhanakhon,Songkhla,0,village,0,0,50,0,none,none
+gn:8354994,Phu Sang,Phayao,0,village,0,0,50,0,none,none
+gn:8355827,Mae Hi,Mae Hong Son,0,village,0,0,50,0,none,none
+gn:8355828,Pa Phayom,Phatthalung,0,village,0,0,50,0,none,none
+gn:8355829,Na Yong,Trang,0,village,0,0,50,0,none,none
+gn:8355830,Pho Tak,Nong Khai,0,village,0,0,50,0,none,none
+gn:8355831,Ko Kut,Trat,0,village,0,0,50,0,none,none
+gn:8355932,Bang Bon,Bangkok,105161,city,0,0,50,0,none,none
+gn:8455210,Ban Khao Nang Sang Hua,Kanchanaburi,9256,village,0,0,50,0,none,none
+gn:10128831,Phra Nakhon,Bangkok,51231,town,0,0,50,0,none,none
+gn:10172776,Sathorn,Bangkok,79624,town,0,0,50,0,none,none
+gn:10176275,Bangkok Riverside,Bangkok,48227,town,0,0,50,0,none,none
+gn:10227099,Huamak,Bangkok,67798,town,0,0,50,0,none,none
+gn:11071484,Latkrabang,Bangkok,173987,city,0,0,50,0,none,none
+gn:11071513,Samphantawong,Bangkok,7998,village,0,0,50,0,none,none
+gn:11496323,Na Kluea,Chon Buri,0,village,0,0,50,0,none,none
+gn:13405657,Khet Rop Mueang,Prachin Buri,6092,village,0,0,50,0,none,none
+gn:13405658,Mai Khet,Prachin Buri,11342,town,0,0,50,0,none,none
+gn:13405659,Prachin Buri Town,Prachin Buri,25157,town,0,0,50,0,none,none
+gn:13408056,Ko Chang,Trat,0,village,0,0,50,0,none,none
+gn:13494061,Sam Sen Nai,Bangkok,30476,town,0,0,50,0,none,none
+gn:13494063,Inner Huai Khwang,Bangkok,25879,town,0,0,50,0,none,none
+gn:13494065,Khetsamsenok,Bangkok,38204,town,0,0,50,0,none,none
+gn:13494066,Chorakhe Bua,Bangkok,27465,town,0,0,50,0,none,none
+gn:13494067,Chan Kasem,Bangkok,38080,town,0,0,50,0,none,none
+gn:13494068,Khwaeng Bang Plat,Bangkok,21953,town,0,0,50,0,none,none
+gn:13494069,Khlong Sam Wa,Bangkok,169489,city,0,0,50,0,none,none
+gn:13494070,Bang Bon Nuea,Bangkok,22619,town,0,0,50,0,none,none
+gn:13494071,Bangbontai,Bangkok,24860,town,0,0,50,0,none,none
+gn:13494072,Khlong Chan,Bangkok,76934,town,0,0,50,0,none,none
+gn:13494073,Bang Khae Nuea,Bangkok,59821,town,0,0,50,0,none,none
+gn:13494074,Bang Phai,Bangkok,40277,town,0,0,50,0,none,none
+gn:13494075,Tha Raeng,Bangkok,97658,town,0,0,50,0,none,none
+gn:13494076,Anusawari,Bangkok,94550,town,0,0,50,0,none,none
+gn:13494077,Bang Kho Laem subdistrict,Bangkok,22697,town,0,0,50,0,none,none
+gn:13494078,Bang O,Nonthaburi,24225,town,0,0,50,0,none,none
+gn:13494079,Bang Yi Khan,Bangkok,24745,town,0,0,50,0,none,none
+gn:13494080,Bang Rak Subdistrict,Bangkok,2672,village,0,0,50,0,none,none
+gn:13494081,Bang Sue subdistrict,Bangkok,79405,town,0,0,50,0,none,none
+gn:13494082,Wong Sawang,Bangkok,43005,town,0,0,50,0,none,none
+gn:13494083,Siriraj,Bangkok,13458,town,0,0,50,0,none,none
+gn:13494084,Ban Chang Lo,Bangkok,29122,town,0,0,50,0,none,none
+gn:13494085,Bang Khun Non,Bangkok,9549,village,0,0,50,0,none,none
+gn:13494086,Bang Khun Si,Bangkok,31689,town,0,0,50,0,none,none
+gn:13494087,Arun Amarin,Bangkok,19882,town,0,0,50,0,none,none
+gn:13494088,Wat Arun,Bangkok,14100,town,0,0,50,0,none,none
+gn:13494089,Wat Tha Phra,Bangkok,53111,town,0,0,50,0,none,none
+gn:13494090,Khlong Kum,Bangkok,69071,town,0,0,50,0,none,none
+gn:13494091,Lat Yao,Bangkok,41238,town,0,0,50,0,none,none
+gn:13494092,Sena Nikhom,Bangkok,20393,town,0,0,50,0,none,none
+gn:13494093,Chomphon,Bangkok,33250,town,0,0,50,0,none,none
+gn:13494094,Chatuchak subdistrict,Bangkok,21853,town,0,0,50,0,none,none
+gn:13590588,Ko Chang,Trat,12346,town,0,0,50,0,none,none
+gn:13590589,Ko Kood,Trat,2894,village,0,0,50,0,none,none

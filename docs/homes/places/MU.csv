@@ -1,0 +1,114 @@
+place_id,name,region,population,market,verified_homes,dated_listings,shortfall_to_50,recorded_sales,rent_source,price_source
+gn:933933,Verdun,Moka,2208,village,0,0,50,0,none,none
+gn:933945,Vacoas,Plaines Wilhems,115289,city,0,0,50,0,none,none
+gn:933953,Trou aux Biches,Pamplemousses,14706,town,0,0,50,0,none,none
+gn:933959,Triolet,Pamplemousses,24361,town,0,0,50,0,none,none
+gn:933970,The Vale,Rivière du Rempart,3707,village,0,0,50,0,none,none
+gn:933974,Terre Rouge,Pamplemousses,11210,town,0,0,50,0,none,none
+gn:933982,Tamarin,Black River,4371,village,0,0,50,0,none,none
+gn:933988,Surinam,Savanne,10621,town,0,0,50,0,none,none
+gn:933995,Souillac,Savanne,4434,village,0,0,50,0,none,none
+gn:934013,Sebastopol,Flacq,5745,village,0,0,50,0,none,none
+gn:934032,Saint Pierre,Moka,16704,town,0,0,50,0,none,none
+gn:934043,Saint Julien,Flacq,3188,village,0,0,50,0,none,none
+gn:934047,Saint Hubert,Grand Port,4170,village,0,0,50,0,none,none
+gn:934056,Saint Aubin,Savanne,1659,village,0,0,50,0,none,none
+gn:934058,Morcellement Saint André,Pamplemousses,6150,village,0,0,50,0,none,none
+gn:934065,Rouge Terre,Pamplemousses,10760,town,0,0,50,0,none,none
+gn:934072,Rose Belle,Grand Port,12619,town,0,0,50,0,none,none
+gn:934076,Roche Terre,Rivière du Rempart,3199,village,0,0,50,0,none,none
+gn:934085,Roches Noire,Rivière du Rempart,5733,village,0,0,50,0,none,none
+gn:934089,Grande Rivière Noire,Black River,2361,village,0,0,50,0,none,none
+gn:934091,Rivière du Rempart,Rivière du Rempart,10825,town,0,0,50,0,none,none
+gn:934092,Rivière du Poste,Savanne,2170,village,0,0,50,0,none,none
+gn:934095,Rivière des Anguilles,Savanne,9927,village,0,0,50,0,none,none
+gn:934126,Queen Victoria,Flacq,3025,village,0,0,50,0,none,none
+gn:934127,Quatre Soeurs,Flacq,3515,village,0,0,50,0,none,none
+gn:934131,Quatre Bornes,Plaines Wilhems,77308,town,0,0,50,0,none,none
+gn:934133,Quartier Militaire,Moka,6424,village,0,0,50,0,none,none
+gn:934138,Providence,Moka,3126,village,0,0,50,0,none,none
+gn:934144,Poudre d’Or,Rivière du Rempart,2373,village,0,0,50,0,none,none
+gn:934149,Poste de Flacq,Flacq,8659,village,0,0,50,0,none,none
+gn:934154,Port Louis,Port Louis,155226,city,0,0,50,0,none,none
+gn:934169,Plaine Magnien,Grand Port,10778,town,0,0,50,0,none,none
+gn:934170,Plaine des Papayes,Pamplemousses,7925,village,0,0,50,0,none,none
+gn:934184,Petit Raffray,Rivière du Rempart,9410,village,0,0,50,0,none,none
+gn:934195,Petite Rivière,Black River,5331,village,0,0,50,0,none,none
+gn:934198,Petite Case Noyale,Black River,1525,village,0,0,50,0,none,none
+gn:934213,Pamplemousses,Pamplemousses,9682,village,0,0,50,0,none,none
+gn:934219,Pailles,Moka,10622,town,0,0,50,0,none,none
+gn:934225,Olivia,Flacq,3980,village,0,0,50,0,none,none
+gn:934229,Nouvelle France,Grand Port,7238,village,0,0,50,0,none,none
+gn:934232,Notre Dame,Pamplemousses,3959,village,0,0,50,0,none,none
+gn:934240,New Grove,Grand Port,11023,town,0,0,50,0,none,none
+gn:934255,Piton,Rivière du Rempart,5909,village,0,0,50,0,none,none
+gn:934262,Montagne Blanche,,9440,village,0,0,50,0,none,none
+gn:934277,Moka,Moka,9364,village,0,0,50,0,none,none
+gn:934282,Midlands,Plaines Wilhems,4546,village,0,0,50,0,none,none
+gn:934288,Melrose,Moka,2002,village,0,0,50,0,none,none
+gn:934322,Mahébourg,Grand Port,17042,town,0,0,50,0,none,none
+gn:934333,Long Mountain,Pamplemousses,7775,village,0,0,50,0,none,none
+gn:934343,L’Escalier,Grand Port,7899,village,0,0,50,0,none,none
+gn:934390,Lalmatie,Flacq,10641,town,0,0,50,0,none,none
+gn:934400,Dagotière,Moka,7468,village,0,0,50,0,none,none
+gn:934459,Grand Sable,Grand Port,2208,village,0,0,50,0,none,none
+gn:934475,Grande Rivière Sud Est,Flacq,2472,village,0,0,50,0,none,none
+gn:934479,Grand Gaube,Rivière du Rempart,7706,village,0,0,50,0,none,none
+gn:934482,Grand Baie,Rivière du Rempart,12173,town,0,0,50,0,none,none
+gn:934485,Grand Bois,Savanne,7804,village,0,0,50,0,none,none
+gn:934488,Goodlands,Rivière du Rempart,21063,town,0,0,50,0,none,none
+gn:934513,Fond du Sac,Pamplemousses,5796,village,0,0,50,0,none,none
+gn:934517,Flic en Flac,Black River,2010,village,0,0,50,0,none,none
+gn:934533,Espérance Trébuchet,Rivière du Rempart,2323,village,0,0,50,0,none,none
+gn:934570,Curepipe,Plaines Wilhems,78618,town,0,0,50,0,none,none
+gn:934573,Crève Coeur,Pamplemousses,3097,village,0,0,50,0,none,none
+gn:934599,Clémencia,Flacq,1835,village,0,0,50,0,none,none
+gn:934614,Chemin Grenier,Savanne,12457,town,0,0,50,0,none,none
+gn:934624,Chamouny,Savanne,4913,village,0,0,50,0,none,none
+gn:934631,Centre de Flacq,Flacq,17710,town,0,0,50,0,none,none
+gn:934644,Cascavelle,Black River,2613,village,0,0,50,0,none,none
+gn:934649,Cap Malheureux,Rivière du Rempart,4803,village,0,0,50,0,none,none
+gn:934656,Camp Thorel,Moka,2299,village,0,0,50,0,none,none
+gn:934660,Camp Diable,Savanne,5082,village,0,0,50,0,none,none
+gn:934661,Camp de Masque,Flacq,2721,village,0,0,50,0,none,none
+gn:934677,Brisée Verdière,Flacq,7696,village,0,0,50,0,none,none
+gn:934693,Bon Accueil,Flacq,6553,village,0,0,50,0,none,none
+gn:934705,Bois des Amourettes,Grand Port,1986,village,0,0,50,0,none,none
+gn:934731,Bel Ombre,Savanne,2417,village,0,0,50,0,none,none
+gn:934735,Belle Vue Pilot,Pamplemousses,4518,village,0,0,50,0,none,none
+gn:934736,Belle Vue Harel,Pamplemousses,7607,village,0,0,50,0,none,none
+gn:934739,Belle Vue Maurel,Rivière du Rempart,7607,village,0,0,50,0,none,none
+gn:934750,Bel Air Rivière Sèche,Flacq,18036,town,0,0,50,0,none,none
+gn:934753,Beau Vallon,Grand Port,7016,village,0,0,50,0,none,none
+gn:934765,Beau Bassin-Rose Hill,Plaines Wilhems,111355,city,0,0,50,0,none,none
+gn:934778,Bambous,Black River,17818,town,0,0,50,0,none,none
+gn:934812,Albion,Black River,3254,village,0,0,50,0,none,none
+gn:1106584,Laventure,Flacq,6171,village,0,0,50,0,none,none
+gn:1106589,Cluny,Grand Port,1629,village,0,0,50,0,none,none
+gn:1106596,Cottage,Rivière du Rempart,3646,village,0,0,50,0,none,none
+gn:1106611,Péreybère,Rivière du Rempart,5000,village,0,0,50,0,none,none
+gn:1106614,Pointe aux Piments,Pamplemousses,7556,village,0,0,50,0,none,none
+gn:1106616,Baie du Tombeau,Pamplemousses,15301,town,0,0,50,0,none,none
+gn:1106621,Congomah,Pamplemousses,1956,village,0,0,50,0,none,none
+gn:1106630,Amaury,Rivière du Rempart,2912,village,0,0,50,0,none,none
+gn:1106631,Plaines des Roches,Rivière du Rempart,4218,village,0,0,50,0,none,none
+gn:1106638,Mare La Chaux,Flacq,2058,village,0,0,50,0,none,none
+gn:1106643,Quatre Cocos,Flacq,5724,village,0,0,50,0,none,none
+gn:1106645,Camp Ithier,Flacq,4401,village,0,0,50,0,none,none
+gn:1106660,Ecroignard,Flacq,5952,village,0,0,50,0,none,none
+gn:1106677,Bambous Virieux,Grand Port,1540,village,0,0,50,0,none,none
+gn:1106748,Ebene,Plaines Wilhems,1001,village,0,0,50,0,none,none
+gn:1106763,Gros Cailloux,Black River,3361,village,0,0,50,0,none,none
+gn:1106771,Mapou,Rivière du Rempart,1288,village,0,0,50,0,none,none
+gn:1106788,Dubreuil,Moka,2726,village,0,0,50,0,none,none
+gn:1106809,Le Hochet,Pamplemousses,15662,town,0,0,50,0,none,none
+gn:1106811,Calebasses,Pamplemousses,4648,village,0,0,50,0,none,none
+gn:1106813,Arsenal,Pamplemousses,2599,village,0,0,50,0,none,none
+gn:1545752,Port Mathurin,Rodrigues,8350,village,0,0,50,0,none,none
+gn:1547471,Baie aux Huîtres,Rodrigues,2500,village,0,0,50,0,none,none
+gn:8199111,Cargados Carajos,Cargados Carajos,63,village,0,0,50,0,none,none
+gn:8643380,Calodyne,Rivière du Rempart,6252,village,0,0,50,0,none,none
+gn:10171149,Anse La Raye,,6060,village,0,0,50,0,none,none
+gn:11205637,Lallmatie,,11910,town,0,0,50,0,none,none
+gn:12022106,Vingt Cinq,Agalega Islands,250,village,0,0,50,0,none,none
+gn:12168288,Richelieu,Black River,9178,village,0,0,50,0,none,none

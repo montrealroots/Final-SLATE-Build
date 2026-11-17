@@ -1,0 +1,765 @@
+place_id,name,region,population,market,verified_homes,dated_listings,shortfall_to_50,recorded_sales,rent_source,price_source
+gn:3186233,Vranjic,Split-Dalmatia,1064,village,0,0,50,0,none,none
+gn:3186294,Županja,Vukovar-Srijem,9153,village,0,0,50,0,none,none
+gn:3186303,Žumberak,Zagreb County,9,village,0,0,50,0,none,none
+gn:3186331,Žrnovo,Dubrovnik-Neretva,1401,village,0,0,50,0,none,none
+gn:3186334,Žrnovnica,Split-Dalmatia,3279,village,0,0,50,0,none,none
+gn:3186342,Zrinski Topolovac,Bjelovar-Bilogora,524,village,0,0,50,0,none,none
+gn:3186367,Žminj,Istria,826,village,0,0,50,0,none,none
+gn:3186406,Zlatar,Krapina-Zagorje,2825,village,0,0,50,0,none,none
+gn:3186604,Sveti Ivan Zelina,Zagreb County,2583,village,0,0,50,0,none,none
+gn:3186662,Ždralovi,Bjelovar-Bilogora,1311,village,0,0,50,0,none,none
+gn:3186670,Zdenci Brdovečki,Zagreb County,1169,village,0,0,50,0,none,none
+gn:3186671,Zdenci,Virovitica-Podravina,737,village,0,0,50,0,none,none
+gn:3186738,Zaton,Dubrovnik-Neretva,1024,village,0,0,50,0,none,none
+gn:3186781,Zaprešić,Zagreb County,18768,town,0,0,50,0,none,none
+gn:3186859,Žakanje,Karlovac,142,village,0,0,50,0,none,none
+gn:3186876,Zagvozd,Split-Dalmatia,640,village,0,0,50,0,none,none
+gn:3186884,Dubrava,Zagreb County,1281,village,0,0,50,0,none,none
+gn:3186886,Zagreb,Zagreb,663592,large-city,0,0,50,0,none,none
+gn:3186941,Zadvorsko,Zagreb,1260,village,0,0,50,0,none,none
+gn:3186943,Zadvarje,Split-Dalmatia,289,village,0,0,50,0,none,none
+gn:3186952,Zadar,Zadar,67309,town,0,0,50,0,none,none
+gn:3186954,Sveti Križ Začretje,Krapina-Zagorje,922,village,0,0,50,0,none,none
+gn:3186984,Zabok,Krapina-Zagorje,3408,village,0,0,50,0,none,none
+gn:3186987,Sveti Ivan Žabno,Koprivnica-Križevci,1049,village,0,0,50,0,none,none
+gn:3187047,Vukovar,Vukovar-Srijem,22255,town,0,0,50,0,none,none
+gn:3187070,Vuka,County of Osijek-Baranja,764,village,0,0,50,0,none,none
+gn:3187142,Vrsi,Zadar,1613,village,0,0,50,0,none,none
+gn:3187145,Vrsar,Istria,1535,village,0,0,50,0,none,none
+gn:3187153,Vrpolje,Brod-Posavina,1396,village,0,0,50,0,none,none
+gn:3187169,Vrlika,Split-Dalmatia,718,village,0,0,50,0,none,none
+gn:3187195,Vrhovine,Lika-Senj,218,village,0,0,50,0,none,none
+gn:3187230,Vrgorac,Split-Dalmatia,2132,village,0,0,50,0,none,none
+gn:3187232,Vrginmost,Sisak-Moslavina,860,village,0,0,50,0,none,none
+gn:3187257,Vrbovsko,Primorje-Gorski Kotar,1257,village,0,0,50,0,none,none
+gn:3187265,Vrbovec,Zagreb County,4551,village,0,0,50,0,none,none
+gn:3187275,Vrbnik,Primorje-Gorski Kotar,887,village,0,0,50,0,none,none
+gn:3187282,Vrbje,Brod-Posavina,358,village,0,0,50,0,none,none
+gn:3187301,Vrbanja,Vukovar-Srijem,1583,village,0,0,50,0,none,none
+gn:3187320,Vratišinec,Međimurje,1155,village,0,0,50,0,none,none
+gn:3187360,Seget Vranjica,Split-Dalmatia,1023,village,0,0,50,0,none,none
+gn:3187415,Voloder,Sisak-Moslavina,1574,village,0,0,50,0,none,none
+gn:3187451,Vojnić,Karlovac,1099,village,0,0,50,0,none,none
+gn:3187477,Vodnjan,Istria,3133,village,0,0,50,0,none,none
+gn:3187482,Vođinci,Vukovar-Srijem,1634,village,0,0,50,0,none,none
+gn:3187489,Vodice,Šibenik-Knin,6592,village,0,0,50,0,none,none
+gn:3187503,Voćin,Virovitica-Podravina,956,village,0,0,50,0,none,none
+gn:3187547,Vladislavci,County of Osijek-Baranja,919,village,0,0,50,0,none,none
+gn:3187565,Vižinada,Istria,269,village,0,0,50,0,none,none
+gn:3187607,Visoko,Varaždin,454,village,0,0,50,0,none,none
+gn:3187657,Višnjevac,County of Osijek-Baranja,5870,village,0,0,50,0,none,none
+gn:3187662,Višnjan - Visignano,Istria,664,village,0,0,50,0,none,none
+gn:3187666,Viškovci,County of Osijek-Baranja,920,village,0,0,50,0,none,none
+gn:3187685,Vis,Split-Dalmatia,1582,village,0,0,50,0,none,none
+gn:3187694,Virovitica,Virovitica-Podravina,13486,town,0,0,50,0,none,none
+gn:3187699,Virje,Koprivnica-Križevci,2811,village,0,0,50,0,none,none
+gn:3187702,Vir,Zadar,3045,village,0,0,50,0,none,none
+gn:3187719,Vinkovci,Vukovar-Srijem,28111,town,0,0,50,0,none,none
+gn:3187735,Vinica,Varaždin,965,village,0,0,50,0,none,none
+gn:3187740,Vinež,Istria,1172,village,0,0,50,0,none,none
+gn:3187750,Viljevo,County of Osijek-Baranja,987,village,0,0,50,0,none,none
+gn:3187793,Vidovec,Varaždin,769,village,0,0,50,0,none,none
+gn:3187857,Veprinac,Primorje-Gorski Kotar,1008,village,0,0,50,0,none,none
+gn:3187919,Veliko Trojstvo,Bjelovar-Bilogora,1075,village,0,0,50,0,none,none
+gn:3187920,Veliko Trgovišće,Krapina-Zagorje,1193,village,0,0,50,0,none,none
+gn:3188075,Veliki Grđevac,Bjelovar-Bilogora,1054,village,0,0,50,0,none,none
+gn:3188101,Veliki Bukovec,Varaždin,660,village,0,0,50,0,none,none
+gn:3188155,Velika Trnovitica,Bjelovar-Bilogora,486,village,0,0,50,0,none,none
+gn:3188188,Velika Pisanica,Bjelovar-Bilogora,830,village,0,0,50,0,none,none
+gn:3188195,Velika Ostrna,Zagreb County,1136,village,0,0,50,0,none,none
+gn:3188204,Velika Mlaka,Zagreb County,3395,village,0,0,50,0,none,none
+gn:3188206,Velika Ludina,Sisak-Moslavina,697,village,0,0,50,0,none,none
+gn:3188222,Velika Kopanica,Brod-Posavina,1412,village,0,0,50,0,none,none
+gn:3188244,Velika Gorica,Zagreb County,30036,town,0,0,50,0,none,none
+gn:3188279,Velika,Požega-Slavonia,1650,village,0,0,50,0,none,none
+gn:3188326,Vela Luka,Dubrovnik-Neretva,3772,village,0,0,50,0,none,none
+gn:3188380,Varaždinske Toplice,Varaždin,1606,village,0,0,50,0,none,none
+gn:3188381,Varaždin Breg,Varaždin,1661,village,0,0,50,0,none,none
+gn:3188383,Varaždin,Varaždin,36187,town,0,0,50,0,none,none
+gn:3188395,Valpovo,County of Osijek-Baranja,6332,village,0,0,50,0,none,none
+gn:3188482,Unešić,Šibenik-Knin,265,village,0,0,50,0,none,none
+gn:3188498,Umag,Istria,6751,village,0,0,50,0,none,none
+gn:3188538,Ugljan,Zadar,1024,village,0,0,50,0,none,none
+gn:3188554,Udbina,Lika-Senj,738,village,0,0,50,0,none,none
+gn:3188620,Turjaci,Split-Dalmatia,1014,village,0,0,50,0,none,none
+gn:3188635,Turanj,Zadar,1121,village,0,0,50,0,none,none
+gn:3188668,Tuhelj,Krapina-Zagorje,195,village,0,0,50,0,none,none
+gn:3188675,Tučepi,Split-Dalmatia,1819,village,0,0,50,0,none,none
+gn:3188730,Trpinja,Vukovar-Srijem,1130,village,0,0,50,0,none,none
+gn:3188734,Trpanj,Dubrovnik-Neretva,594,village,0,0,50,0,none,none
+gn:3188763,Trogir,Split-Dalmatia,10107,town,0,0,50,0,none,none
+gn:3188785,Trnovec Bartolovečki,Varaždin,3750,village,0,0,50,0,none,none
+gn:3188813,Trnava,County of Osijek-Baranja,524,village,0,0,50,0,none,none
+gn:3188830,Trilj,Split-Dalmatia,1906,village,0,0,50,0,none,none
+gn:3188837,Tribunj,Šibenik-Knin,1594,village,0,0,50,0,none,none
+gn:3188946,Tovarnik,Vukovar-Srijem,1385,village,0,0,50,0,none,none
+gn:3188951,Tounj,Karlovac,323,village,0,0,50,0,none,none
+gn:3188966,Tordinci,Vukovar-Srijem,594,village,0,0,50,0,none,none
+gn:3188970,Topusko,Sisak-Moslavina,878,village,0,0,50,0,none,none
+gn:3188998,Tompojevci,Vukovar-Srijem,227,village,0,0,50,0,none,none
+gn:3189067,Tkon,Zadar,662,village,0,0,50,0,none,none
+gn:3189076,Korenica,Lika-Senj,1563,village,0,0,50,0,none,none
+gn:3189108,Tinjan,Istria,433,village,0,0,50,0,none,none
+gn:3189120,Tisno,Šibenik-Knin,1192,village,0,0,50,0,none,none
+gn:3189161,Tenja,County of Osijek-Baranja,6260,village,0,0,50,0,none,none
+gn:3189204,Tar,Istria,1144,village,0,0,50,0,none,none
+gn:3189267,Svetvinčenat,Istria,245,village,0,0,50,0,none,none
+gn:3189285,Sveti Petar u Šumi,Istria,1051,village,0,0,50,0,none,none
+gn:3189310,Sveti Martin na Muri,Međimurje,452,village,0,0,50,0,none,none
+gn:3189341,Sveti Ilija,Varaždin,572,village,0,0,50,0,none,none
+gn:3189350,Sveti Ðurđ,Varaždin,556,village,0,0,50,0,none,none
+gn:3189386,Sveta Nedjelja,Zagreb County,1363,village,0,0,50,0,none,none
+gn:3189391,Sveta Marija,Međimurje,1374,village,0,0,50,0,none,none
+gn:3189438,Sutivan,Split-Dalmatia,936,village,0,0,50,0,none,none
+gn:3189492,Supetar,Split-Dalmatia,3415,village,0,0,50,0,none,none
+gn:3189498,Sunja,Sisak-Moslavina,1170,village,0,0,50,0,none,none
+gn:3189531,Sukošan,Zadar,2980,village,0,0,50,0,none,none
+gn:3189543,Suhopolje,Virovitica-Podravina,2237,village,0,0,50,0,none,none
+gn:3189587,Sućuraj,Split-Dalmatia,293,village,0,0,50,0,none,none
+gn:3189686,Strožanac - Donji,Split-Dalmatia,1687,village,0,0,50,0,none,none
+gn:3189712,Strmec,Zagreb County,4250,village,0,0,50,0,none,none
+gn:3189718,Strizivojna,County of Osijek-Baranja,2027,village,0,0,50,0,none,none
+gn:3189728,Štrigova,Međimurje,436,village,0,0,50,0,none,none
+gn:3189782,Strahoninec,Međimurje,2598,village,0,0,50,0,none,none
+gn:3189810,Ston,Dubrovnik-Neretva,500,village,0,0,50,0,none,none
+gn:3189844,Stobreč,Split-Dalmatia,2879,village,0,0,50,0,none,none
+gn:3189858,Štitar,Vukovar-Srijem,1552,village,0,0,50,0,none,none
+gn:3189897,Štefanje,Bjelovar-Bilogora,300,village,0,0,50,0,none,none
+gn:3189930,Staro Petrovo Selo,Brod-Posavina,1277,village,0,0,50,0,none,none
+gn:3189951,Stari Mikanovci,Vukovar-Srijem,1883,village,0,0,50,0,none,none
+gn:3189959,Stari Jankovci,Vukovar-Srijem,1124,village,0,0,50,0,none,none
+gn:3189964,Starigrad,Zadar,1051,village,0,0,50,0,none,none
+gn:3189965,Stari Grad,Split-Dalmatia,1921,village,0,0,50,0,none,none
+gn:3190015,Stara Gradiška,Brod-Posavina,207,village,0,0,50,0,none,none
+gn:3190016,Gradina,Virovitica-Podravina,730,village,0,0,50,0,none,none
+gn:3190036,Stankovci,Zadar,634,village,0,0,50,0,none,none
+gn:3190088,Srinjine,Split-Dalmatia,1199,village,0,0,50,0,none,none
+gn:3190156,Srebreno,Dubrovnik-Neretva,382,village,0,0,50,0,none,none
+gn:3190176,Sračinec,Varaždin,3807,village,0,0,50,0,none,none
+gn:3190261,Split,Split-Dalmatia,149830,city,0,0,50,0,none,none
+gn:3190264,Špišić-Bukovica,Virovitica-Podravina,1346,village,0,0,50,0,none,none
+gn:3190329,Sopje,Virovitica-Podravina,430,village,0,0,50,0,none,none
+gn:3190359,Solin,Split-Dalmatia,20996,town,0,0,50,0,none,none
+gn:3190371,Sokolovac,Koprivnica-Križevci,381,village,0,0,50,0,none,none
+gn:3190392,Šodolovci,County of Osijek-Baranja,267,village,0,0,50,0,none,none
+gn:3190465,Smokvica,Dubrovnik-Neretva,868,village,0,0,50,0,none,none
+gn:3190523,Slunj,Karlovac,1576,village,0,0,50,0,none,none
+gn:3190544,Slobodnica,Brod-Posavina,1314,village,0,0,50,0,none,none
+gn:3190584,Slavonski Kobaš,Brod-Posavina,1034,village,0,0,50,0,none,none
+gn:3190586,Slavonski Brod,Brod-Posavina,45005,town,0,0,50,0,none,none
+gn:3190589,Požega,Požega-Slavonia,16867,town,0,0,50,0,none,none
+gn:3190641,Slano,Dubrovnik-Neretva,577,village,0,0,50,0,none,none
+gn:3190672,Škrljevo,Primorje-Gorski Kotar,1158,village,0,0,50,0,none,none
+gn:3190692,Skradin,Šibenik-Knin,508,village,0,0,50,0,none,none
+gn:3190694,Skrad,Primorje-Gorski Kotar,568,village,0,0,50,0,none,none
+gn:3190764,Škabrnje,Zadar,1320,village,0,0,50,0,none,none
+gn:3190810,Šišan,Istria,1007,village,0,0,50,0,none,none
+gn:3190813,Sisak,Sisak-Moslavina,27859,town,0,0,50,0,none,none
+gn:3190835,Sirač,Bjelovar-Bilogora,1152,village,0,0,50,0,none,none
+gn:3190865,Sinj,Split-Dalmatia,10771,town,0,0,50,0,none,none
+gn:3190906,Sikirevci,Brod-Posavina,1490,village,0,0,50,0,none,none
+gn:3190918,Sigetec,Koprivnica-Križevci,1016,village,0,0,50,0,none,none
+gn:3190934,Sibinj,Brod-Posavina,2088,village,0,0,50,0,none,none
+gn:3190941,Šibenik,Šibenik-Knin,31115,town,0,0,50,0,none,none
+gn:3190956,Severin,Bjelovar-Bilogora,449,village,0,0,50,0,none,none
+gn:3190966,Sesvete,Zagreb,55313,town,0,0,50,0,none,none
+gn:3190980,Šestanovac,Split-Dalmatia,371,village,0,0,50,0,none,none
+gn:3191048,Šenkovec,Međimurje,2336,village,0,0,50,0,none,none
+gn:3191055,Senj,Lika-Senj,4164,village,0,0,50,0,none,none
+gn:3191075,Semeljci,County of Osijek-Baranja,1025,village,0,0,50,0,none,none
+gn:3191096,Selnica,Međimurje,949,village,0,0,50,0,none,none
+gn:3191126,Selci Ðakovački,County of Osijek-Baranja,1412,village,0,0,50,0,none,none
+gn:3191130,Selce,Primorje-Gorski Kotar,1298,village,0,0,50,0,none,none
+gn:3191134,Selca,Split-Dalmatia,692,village,0,0,50,0,none,none
+gn:3191249,Satnica Ðakovačka,County of Osijek-Baranja,1223,village,0,0,50,0,none,none
+gn:3191265,Sarvaš,County of Osijek-Baranja,1658,village,0,0,50,0,none,none
+gn:3191304,Šandrovac,Bjelovar-Bilogora,623,village,0,0,50,0,none,none
+gn:3191316,Samobor,Zagreb County,16911,town,0,0,50,0,none,none
+gn:3191326,Slavonski Šamac,Brod-Posavina,768,village,0,0,50,0,none,none
+gn:3191335,Sali,Zadar,726,village,0,0,50,0,none,none
+gn:3191369,Saborsko,Karlovac,331,village,0,0,50,0,none,none
+gn:3191386,Ružić,Šibenik-Knin,228,village,0,0,50,0,none,none
+gn:3191402,Ruščica,Brod-Posavina,1006,village,0,0,50,0,none,none
+gn:3191411,Runović,Split-Dalmatia,1706,village,0,0,50,0,none,none
+gn:3191443,Rugvica,Zagreb County,704,village,0,0,50,0,none,none
+gn:3191470,Rude,Zagreb County,1087,village,0,0,50,0,none,none
+gn:3191490,Rubeši,Primorje-Gorski Kotar,1730,village,0,0,50,0,none,none
+gn:3191514,Rovišće,Bjelovar-Bilogora,1033,village,0,0,50,0,none,none
+gn:3191515,Rovinjsko Selo,Istria,1339,village,0,0,50,0,none,none
+gn:3191518,Rovinj,Istria,11629,town,0,0,50,0,none,none
+gn:3191553,Rokovci,Vukovar-Srijem,1692,village,0,0,50,0,none,none
+gn:3191561,Rogoznica,Šibenik-Knin,960,village,0,0,50,0,none,none
+gn:3191648,Rijeka,Primorje-Gorski Kotar,107964,city,0,0,50,0,none,none
+gn:3191677,Ribnik,Karlovac,98,village,0,0,50,0,none,none
+gn:3191701,Rezovac,Virovitica-Podravina,1146,village,0,0,50,0,none,none
+gn:3191704,Retkovci,Vukovar-Srijem,1011,village,0,0,50,0,none,none
+gn:3191720,Rešetari,Brod-Posavina,2072,village,0,0,50,0,none,none
+gn:3191723,Repušnica,Sisak-Moslavina,1552,village,0,0,50,0,none,none
+gn:3191742,Remetinec,Varaždin,1351,village,0,0,50,0,none,none
+gn:3191749,Reka,Koprivnica-Križevci,1317,village,0,0,50,0,none,none
+gn:3191800,Ražanac,Zadar,883,village,0,0,50,0,none,none
+gn:3191856,Ravna Gora,Primorje-Gorski Kotar,1477,village,0,0,50,0,none,none
+gn:3191948,Rasinja,Koprivnica-Križevci,730,village,0,0,50,0,none,none
+gn:3191963,Raša,Istria,1184,village,0,0,50,0,none,none
+gn:3191985,Rakov Potok,Zagreb County,1089,village,0,0,50,0,none,none
+gn:3191990,Rakovica,Karlovac,247,village,0,0,50,0,none,none
+gn:3191993,Rakovec,Zagreb County,226,village,0,0,50,0,none,none
+gn:3192016,Rakitje,Zagreb County,2239,village,0,0,50,0,none,none
+gn:3192111,Radoboj,Krapina-Zagorje,1131,village,0,0,50,0,none,none
+gn:3192174,Rabac,Istria,1257,village,0,0,50,0,none,none
+gn:3192178,Rab,Primorje-Gorski Kotar,364,village,0,0,50,0,none,none
+gn:3192199,Pušćine,Međimurje,1089,village,0,0,50,0,none,none
+gn:3192217,Punitovci,County of Osijek-Baranja,566,village,0,0,50,0,none,none
+gn:3192219,Punat,Primorje-Gorski Kotar,1784,village,0,0,50,0,none,none
+gn:3192224,Pula,Istria,52220,town,0,0,50,0,none,none
+gn:3192231,Pučišća,Split-Dalmatia,1341,village,0,0,50,0,none,none
+gn:3192345,Privlaka,Vukovar-Srijem,2192,village,0,0,50,0,none,none
+gn:3192346,Privlaka,Zadar,2128,village,0,0,50,0,none,none
+gn:3192383,Primošten,Šibenik-Knin,1555,village,0,0,50,0,none,none
+gn:3192386,Primorski Dolac,Split-Dalmatia,686,village,0,0,50,0,none,none
+gn:3192426,Prigorje Brdovečko,Zagreb County,1340,village,0,0,50,0,none,none
+gn:3192438,Pridraga,Zadar,1346,village,0,0,50,0,none,none
+gn:3192452,Pribislavec,Međimurje,2963,village,0,0,50,0,none,none
+gn:3192467,Prgomet,Split-Dalmatia,87,village,0,0,50,0,none,none
+gn:3192507,Preseka,Zagreb County,83,village,0,0,50,0,none,none
+gn:3192532,Prelog,Međimurje,4042,village,0,0,50,0,none,none
+gn:3192545,Pregrada,Krapina-Zagorje,1870,village,0,0,50,0,none,none
+gn:3192563,Predavac,Bjelovar-Bilogora,1144,village,0,0,50,0,none,none
+gn:3192622,Povljana,Zadar,669,village,0,0,50,0,none,none
+gn:3192674,Postira,Split-Dalmatia,1431,village,0,0,50,0,none,none
+gn:3192679,Posedarje,Zadar,1286,village,0,0,50,0,none,none
+gn:3192699,Poreč,Istria,8841,village,0,0,50,0,none,none
+gn:3192724,Popovača,Sisak-Moslavina,3633,village,0,0,50,0,none,none
+gn:3192725,Popovac,County of Osijek-Baranja,738,village,0,0,50,0,none,none
+gn:3192812,Poljanica Bistranska,Zagreb County,1254,village,0,0,50,0,none,none
+gn:3192830,Poličnik,Zadar,1023,village,0,0,50,0,none,none
+gn:3192848,Polača,Zadar,993,village,0,0,50,0,none,none
+gn:3192850,Pokupsko,Zagreb County,186,village,0,0,50,0,none,none
+gn:3192865,Pojatno,Zagreb County,1154,village,0,0,50,0,none,none
+gn:3192892,Podvinje,Brod-Posavina,3057,village,0,0,50,0,none,none
+gn:3192904,Podturen,Međimurje,1323,village,0,0,50,0,none,none
+gn:3192910,Podstrana,Split-Dalmatia,9129,village,0,0,50,0,none,none
+gn:3192930,Podravske Sesvete,Koprivnica-Križevci,1446,village,0,0,50,0,none,none
+gn:3192932,Slatina,Virovitica-Podravina,8722,village,0,0,50,0,none,none
+gn:3193006,Podhum,Primorje-Gorski Kotar,1356,village,0,0,50,0,none,none
+gn:3193051,Podgorač,County of Osijek-Baranja,783,village,0,0,50,0,none,none
+gn:3193060,Podgora,Split-Dalmatia,1181,village,0,0,50,0,none,none
+gn:3193074,Podcrkavlje,Brod-Posavina,375,village,0,0,50,0,none,none
+gn:3193150,Ploče,Dubrovnik-Neretva,4711,village,0,0,50,0,none,none
+gn:3193187,Pleternica,Požega-Slavonia,2895,village,0,0,50,0,none,none
+gn:3193237,Plaški,Karlovac,1031,village,0,0,50,0,none,none
+gn:3193305,Pitomača,Virovitica-Podravina,4845,village,0,0,50,0,none,none
+gn:3193314,Piškorevci,County of Osijek-Baranja,1434,village,0,0,50,0,none,none
+gn:3193325,Pisarovina,Zagreb County,436,village,0,0,50,0,none,none
+gn:3193331,Pirovac,Šibenik-Knin,1434,village,0,0,50,0,none,none
+gn:3193377,Pićan,Istria,304,village,0,0,50,0,none,none
+gn:3193384,Petrovsko,Krapina-Zagorje,197,village,0,0,50,0,none,none
+gn:3193420,Petrinja,Sisak-Moslavina,12963,town,0,0,50,0,none,none
+gn:3193424,Petrijevci,County of Osijek-Baranja,1948,village,0,0,50,0,none,none
+gn:3193425,Petrijanec,Varaždin,1349,village,0,0,50,0,none,none
+gn:3193436,Petlovac,County of Osijek-Baranja,532,village,0,0,50,0,none,none
+gn:3193447,Peteranec,Koprivnica-Križevci,1240,village,0,0,50,0,none,none
+gn:3193476,Perušić,Lika-Senj,752,village,0,0,50,0,none,none
+gn:3193522,Peklenica,Međimurje,1072,village,0,0,50,0,none,none
+gn:3193561,Pazin,Istria,3981,village,0,0,50,0,none,none
+gn:3193599,Pašman,Zadar,346,village,0,0,50,0,none,none
+gn:3193706,Pakrac,Požega-Slavonia,4151,village,0,0,50,0,none,none
+gn:3193710,Pakoštane,Zadar,2180,village,0,0,50,0,none,none
+gn:3193726,Pag,Zadar,2322,village,0,0,50,0,none,none
+gn:3193754,Ozalj,Karlovac,1053,village,0,0,50,0,none,none
+gn:3193781,Otok,Vukovar-Srijem,3571,village,0,0,50,0,none,none
+gn:3193782,Otok,Split-Dalmatia,2807,village,0,0,50,0,none,none
+gn:3193788,Otočac,Lika-Senj,3852,village,0,0,50,0,none,none
+gn:3193871,Oštarije,Karlovac,1300,village,0,0,50,0,none,none
+gn:3193935,Osijek,County of Osijek-Baranja,75535,town,0,0,50,0,none,none
+gn:3193962,Oroslavje,Krapina-Zagorje,3253,village,0,0,50,0,none,none
+gn:3194003,Orle,Zagreb County,71,village,0,0,50,0,none,none
+gn:3194010,Oriovac,Brod-Posavina,1490,village,0,0,50,0,none,none
+gn:3194018,Orešje,Zagreb County,1097,village,0,0,50,0,none,none
+gn:3194020,Orehovica,Međimurje,1803,village,0,0,50,0,none,none
+gn:3194024,Sveti Petar Orehovec,Koprivnica-Križevci,226,village,0,0,50,0,none,none
+gn:3194029,Orebić,Dubrovnik-Neretva,1794,village,0,0,50,0,none,none
+gn:3194064,Orahovica,Virovitica-Podravina,3384,village,0,0,50,0,none,none
+gn:3194075,Opuzen,Dubrovnik-Neretva,2355,village,0,0,50,0,none,none
+gn:3194078,Oprtalj,Istria,75,village,0,0,50,0,none,none
+gn:3194079,Oprisavci,Brod-Posavina,715,village,0,0,50,0,none,none
+gn:3194099,Opatija,Primorje-Gorski Kotar,5701,village,0,0,50,0,none,none
+gn:3194112,Omišalj,Primorje-Gorski Kotar,1877,village,0,0,50,0,none,none
+gn:3194114,Omiš,Split-Dalmatia,5985,village,0,0,50,0,none,none
+gn:3194145,Okučani,Brod-Posavina,1143,village,0,0,50,0,none,none
+gn:3194172,Oklaj,Šibenik-Knin,410,village,0,0,50,0,none,none
+gn:3194183,Ogulin,Karlovac,7374,village,0,0,50,0,none,none
+gn:3194216,Odra,Zagreb,2630,village,0,0,50,0,none,none
+gn:3194245,Obrovac,Zadar,793,village,0,0,50,0,none,none
+gn:3194258,Odranski Obrež,Zagreb,1503,village,0,0,50,0,none,none
+gn:3194310,Nuštar,Vukovar-Srijem,3132,village,0,0,50,0,none,none
+gn:3194319,Novska,Sisak-Moslavina,5922,village,0,0,50,0,none,none
+gn:3194323,Novo Selo Rok,Međimurje,1320,village,0,0,50,0,none,none
+gn:3194344,Novoselec,Zagreb County,1210,village,0,0,50,0,none,none
+gn:3194352,Novo Čiče,Zagreb County,1142,village,0,0,50,0,none,none
+gn:3194355,Novi Vinodolski,Primorje-Gorski Kotar,3336,village,0,0,50,0,none,none
+gn:3194367,Novi Marof,Varaždin,1810,village,0,0,50,0,none,none
+gn:3194374,Novigrad Podravski,Koprivnica-Križevci,1577,village,0,0,50,0,none,none
+gn:3194379,Novigrad,Istria,2292,village,0,0,50,0,none,none
+gn:3194381,Novigrad,Zadar,481,village,0,0,50,0,none,none
+gn:3194383,Novi Golubovec,Krapina-Zagorje,192,village,0,0,50,0,none,none
+gn:3194414,Nova Rača,Bjelovar-Bilogora,382,village,0,0,50,0,none,none
+gn:3194422,Novalja,Lika-Senj,2415,village,0,0,50,0,none,none
+gn:3194446,Nova Kapela,Brod-Posavina,777,village,0,0,50,0,none,none
+gn:3194449,Nova Gradiška,Brod-Posavina,9820,village,0,0,50,0,none,none
+gn:3194459,Nova Bukovica,Virovitica-Podravina,638,village,0,0,50,0,none,none
+gn:3194475,Njivice,Primorje-Gorski Kotar,1115,village,0,0,50,0,none,none
+gn:3194499,Nijemci,Vukovar-Srijem,1330,village,0,0,50,0,none,none
+gn:3194524,Nerežišće,Split-Dalmatia,642,village,0,0,50,0,none,none
+gn:3194552,Negoslavci,Vukovar-Srijem,983,village,0,0,50,0,none,none
+gn:3194557,Nedeščina,Istria,537,village,0,0,50,0,none,none
+gn:3194558,Nedeljanec,Varaždin,1320,village,0,0,50,0,none,none
+gn:3194559,Nedelišće,Međimurje,3840,village,0,0,50,0,none,none
+gn:3194581,Našice,County of Osijek-Baranja,7307,village,0,0,50,0,none,none
+gn:3194626,Mursko Središće,Međimurje,3321,village,0,0,50,0,none,none
+gn:3194643,Murter,Šibenik-Knin,1920,village,0,0,50,0,none,none
+gn:3194722,Mrkopalj,Primorje-Gorski Kotar,557,village,0,0,50,0,none,none
+gn:3194762,Mravince,Split-Dalmatia,1717,village,0,0,50,0,none,none
+gn:3194779,Mraclin,Zagreb County,1026,village,0,0,50,0,none,none
+gn:3194802,Motovun,Istria,397,village,0,0,50,0,none,none
+gn:3194841,Podravska Moslavina,County of Osijek-Baranja,655,village,0,0,50,0,none,none
+gn:3194856,Mošćenička Draga,Primorje-Gorski Kotar,452,village,0,0,50,0,none,none
+gn:3194858,Mošćenica,Sisak-Moslavina,2096,village,0,0,50,0,none,none
+gn:3194889,Molve,Koprivnica-Križevci,1195,village,0,0,50,0,none,none
+gn:3194919,Mokošica,Dubrovnik-Neretva,2193,village,0,0,50,0,none,none
+gn:3194969,Mlini,Dubrovnik-Neretva,933,village,0,0,50,0,none,none
+gn:3195046,Mirkovci,Vukovar-Srijem,2731,village,0,0,50,0,none,none
+gn:3195069,Ðulovac,Bjelovar-Bilogora,801,village,0,0,50,0,none,none
+gn:3195095,Milna,Split-Dalmatia,775,village,0,0,50,0,none,none
+gn:3195159,Mikleuš,Virovitica-Podravina,646,village,0,0,50,0,none,none
+gn:3195175,Mihovljan,Međimurje,1391,village,0,0,50,0,none,none
+gn:3195176,Mihovljan,Krapina-Zagorje,956,village,0,0,50,0,none,none
+gn:3195199,Mičevec,Zagreb County,1251,village,0,0,50,0,none,none
+gn:3195222,Metković,Dubrovnik-Neretva,13971,town,0,0,50,0,none,none
+gn:3195307,Medulin,Istria,2830,village,0,0,50,0,none,none
+gn:3195362,Matulji,Primorje-Gorski Kotar,3566,village,0,0,50,0,none,none
+gn:3195415,Maruševec,Varaždin,391,village,0,0,50,0,none,none
+gn:3195441,Martijanec,Varaždin,347,village,0,0,50,0,none,none
+gn:3195447,Markušica,Vukovar-Srijem,733,village,0,0,50,0,none,none
+gn:3195461,Markovac Trojstveni,Bjelovar-Bilogora,1226,village,0,0,50,0,none,none
+gn:3195462,Markovac Našički,County of Osijek-Baranja,1396,village,0,0,50,0,none,none
+gn:3195471,Marjanci,County of Osijek-Baranja,680,village,0,0,50,0,none,none
+gn:3195482,Marinići,Primorje-Gorski Kotar,3862,village,0,0,50,0,none,none
+gn:3195491,Marina,Split-Dalmatia,1015,village,0,0,50,0,none,none
+gn:3195498,Marija Gorica,Zagreb County,228,village,0,0,50,0,none,none
+gn:3195499,Marija Bistrica,Krapina-Zagorje,1045,village,0,0,50,0,none,none
+gn:3195513,Marčelji,Primorje-Gorski Kotar,2535,village,0,0,50,0,none,none
+gn:3195515,Marčana,Istria,1099,village,0,0,50,0,none,none
+gn:3195653,Malinska,Primorje-Gorski Kotar,816,village,0,0,50,0,none,none
+gn:3195674,Mali Lošinj,Primorje-Gorski Kotar,5561,village,0,0,50,0,none,none
+gn:3195731,Mali Bukovec,Varaždin,616,village,0,0,50,0,none,none
+gn:3195786,Mala Subotica,Međimurje,1766,village,0,0,50,0,none,none
+gn:3195890,Makarska,Split-Dalmatia,12809,town,0,0,50,0,none,none
+gn:3195971,Mačkovec,Međimurje,1222,village,0,0,50,0,none,none
+gn:3195989,Mače,Krapina-Zagorje,675,village,0,0,50,0,none,none
+gn:3196020,Lupoglav,Istria,298,village,0,0,50,0,none,none
+gn:3196039,Lumbarda,Dubrovnik-Neretva,1209,village,0,0,50,0,none,none
+gn:3196063,Luka Vrbovečka,Zagreb County,737,village,0,0,50,0,none,none
+gn:3196072,Lukavec,Zagreb County,1260,village,0,0,50,0,none,none
+gn:3196089,Lukač,Virovitica-Podravina,357,village,0,0,50,0,none,none
+gn:3196120,Ludbreg,Varaždin,3463,village,0,0,50,0,none,none
+gn:3196123,Lučko,Zagreb,2987,village,0,0,50,0,none,none
+gn:3196172,Sveti Lovreč,Istria,267,village,0,0,50,0,none,none
+gn:3196173,Lovreć,Split-Dalmatia,488,village,0,0,50,0,none,none
+gn:3196175,Lovran,Primorje-Gorski Kotar,2859,village,0,0,50,0,none,none
+gn:3196182,Lovinac,Lika-Senj,242,village,0,0,50,0,none,none
+gn:3196189,Lovas,Vukovar-Srijem,728,village,0,0,50,0,none,none
+gn:3196201,Lopatinec,Međimurje,906,village,0,0,50,0,none,none
+gn:3196212,Lopar,Primorje-Gorski Kotar,1107,village,0,0,50,0,none,none
+gn:3196245,Lokvičič,Split-Dalmatia,358,village,0,0,50,0,none,none
+gn:3196251,Lokve,Primorje-Gorski Kotar,464,village,0,0,50,0,none,none
+gn:3196375,Ljubešćica,Varaždin,1211,village,0,0,50,0,none,none
+gn:3196408,Ližnjan,Istria,1445,village,0,0,50,0,none,none
+gn:3196464,Lišane Ostrovičke,Zadar,509,village,0,0,50,0,none,none
+gn:3196534,Lipik,Požega-Slavonia,1967,village,0,0,50,0,none,none
+gn:3196578,Martinska Ves,Sisak-Moslavina,540,village,0,0,50,0,none,none
+gn:3196595,Lički Osik,Lika-Senj,1438,village,0,0,50,0,none,none
+gn:3196621,Levanjska Varoš,County of Osijek-Baranja,216,village,0,0,50,0,none,none
+gn:3196657,Lepoglava,Varaždin,3400,village,0,0,50,0,none,none
+gn:3196697,Lekenik,Sisak-Moslavina,1697,village,0,0,50,0,none,none
+gn:3196699,Legrad,Koprivnica-Križevci,862,village,0,0,50,0,none,none
+gn:3196715,Lećevica,Split-Dalmatia,177,village,0,0,50,0,none,none
+gn:3196754,Lastovo,Dubrovnik-Neretva,309,village,0,0,50,0,none,none
+gn:3196761,Lasinja,Karlovac,542,village,0,0,50,0,none,none
+gn:3196777,Lanišće,Istria,68,village,0,0,50,0,none,none
+gn:3196816,Ladimirevci,County of Osijek-Baranja,1290,village,0,0,50,0,none,none
+gn:3196834,Labin,Istria,5806,village,0,0,50,0,none,none
+gn:3196855,Kutjevo,Požega-Slavonia,1941,village,0,0,50,0,none,none
+gn:3196864,Kutina,Sisak-Moslavina,12012,town,0,0,50,0,none,none
+gn:3196893,Kuršanec,Međimurje,1727,village,0,0,50,0,none,none
+gn:3196954,Kumrovec,Krapina-Zagorje,245,village,0,0,50,0,none,none
+gn:3196969,Kula Norinska,Dubrovnik-Neretva,205,village,0,0,50,0,none,none
+gn:3197033,Kuče,Zagreb County,1370,village,0,0,50,0,none,none
+gn:3197034,Kućan Marof,Varaždin,1280,village,0,0,50,0,none,none
+gn:3197157,Kršan,Istria,227,village,0,0,50,0,none,none
+gn:3197174,Krnjak,Karlovac,258,village,0,0,50,0,none,none
+gn:3197208,Krk,Primorje-Gorski Kotar,3935,village,0,0,50,0,none,none
+gn:3197230,Križevci,Koprivnica-Križevci,10522,town,0,0,50,0,none,none
+gn:3197242,Križ,Zagreb County,1604,village,0,0,50,0,none,none
+gn:3197338,Kravarsko,Zagreb County,510,village,0,0,50,0,none,none
+gn:3197353,Krasica,Primorje-Gorski Kotar,1325,village,0,0,50,0,none,none
+gn:3197354,Krašić,Zagreb County,542,village,0,0,50,0,none,none
+gn:3197364,Krapinske Toplice,Krapina-Zagorje,1257,village,0,0,50,0,none,none
+gn:3197369,Krapina,Krapina-Zagorje,4201,village,0,0,50,0,none,none
+gn:3197390,Kraljevica,Primorje-Gorski Kotar,2415,village,0,0,50,0,none,none
+gn:3197394,Kraljevec na Sutli,Krapina-Zagorje,318,village,0,0,50,0,none,none
+gn:3197395,Kraljevec Kupinečki,Zagreb,2015,village,0,0,50,0,none,none
+gn:3197420,Dicmo Kraj,Split-Dalmatia,689,village,0,0,50,0,none,none
+gn:3197459,Kozinščak,Zagreb County,1330,village,0,0,50,0,none,none
+gn:3197536,Kotoriba,Međimurje,2938,village,0,0,50,0,none,none
+gn:3197556,Košute,Split-Dalmatia,1667,village,0,0,50,0,none,none
+gn:3197564,Kostrena,Primorje-Gorski Kotar,4398,village,0,0,50,0,none,none
+gn:3197591,Majur,Sisak-Moslavina,272,village,0,0,50,0,none,none
+gn:3197594,Hrvatska Kostajnica,Sisak-Moslavina,1439,village,0,0,50,0,none,none
+gn:3197621,Koška,County of Osijek-Baranja,1237,village,0,0,50,0,none,none
+gn:3197710,Korčula,Dubrovnik-Neretva,2659,village,0,0,50,0,none,none
+gn:3197728,Koprivnica,Koprivnica-Križevci,22262,town,0,0,50,0,none,none
+gn:3197809,Končanica,Bjelovar-Bilogora,692,village,0,0,50,0,none,none
+gn:3197831,Komletinci,Vukovar-Srijem,1328,village,0,0,50,0,none,none
+gn:3197834,Komiža,Split-Dalmatia,1261,village,0,0,50,0,none,none
+gn:3197902,Kolan,Zadar,332,village,0,0,50,0,none,none
+gn:3197986,Knin,Šibenik-Knin,8262,village,0,0,50,0,none,none
+gn:3197997,Kneževi Vinogradi,County of Osijek-Baranja,1332,village,0,0,50,0,none,none
+gn:3198018,Kloštar Podravski,Koprivnica-Križevci,1281,village,0,0,50,0,none,none
+gn:3198019,Kloštar Ivanić,Zagreb County,3263,village,0,0,50,0,none,none
+gn:3198062,Klis,Split-Dalmatia,3496,village,0,0,50,0,none,none
+gn:3198070,Klinča Sela,Zagreb County,1809,village,0,0,50,0,none,none
+gn:3198078,Klenovnik,Varaždin,925,village,0,0,50,0,none,none
+gn:3198103,Klanjec,Krapina-Zagorje,506,village,0,0,50,0,none,none
+gn:3198111,Klana,Primorje-Gorski Kotar,1147,village,0,0,50,0,none,none
+gn:3198116,Klakar,Brod-Posavina,243,village,0,0,50,0,none,none
+gn:3198135,Kistanje,Šibenik-Knin,1638,village,0,0,50,0,none,none
+gn:3198157,Kijevo,Šibenik-Knin,272,village,0,0,50,0,none,none
+gn:3198172,Kerestinec,Zagreb County,1489,village,0,0,50,0,none,none
+gn:3198210,Kaštel Sućurac,Split-Dalmatia,6544,village,0,0,50,0,none,none
+gn:3198212,Kaštel Stari,Split-Dalmatia,6950,village,0,0,50,0,none,none
+gn:3198213,Kaštel Štafilić,Split-Dalmatia,2822,village,0,0,50,0,none,none
+gn:3198214,Kaštel Novi,Split-Dalmatia,6507,village,0,0,50,0,none,none
+gn:3198215,Kaštel Lukšić,Split-Dalmatia,5221,village,0,0,50,0,none,none
+gn:3198216,Kaštel Kambelovac,Split-Dalmatia,5051,village,0,0,50,0,none,none
+gn:3198217,Kaštelir,Istria,305,village,0,0,50,0,none,none
+gn:3198218,Kaštel Gomilica,Split-Dalmatia,4699,village,0,0,50,0,none,none
+gn:3198227,Kastav,Primorje-Gorski Kotar,10202,town,0,0,50,0,none,none
+gn:3198236,Kašina,Zagreb,1402,village,0,0,50,0,none,none
+gn:3198253,Karojba,Istria,413,village,0,0,50,0,none,none
+gn:3198261,Karlobag,Lika-Senj,368,village,0,0,50,0,none,none
+gn:3198298,Kaptol,Požega-Slavonia,1040,village,0,0,50,0,none,none
+gn:3198321,Kapela,Bjelovar-Bilogora,358,village,0,0,50,0,none,none
+gn:3198348,Kanfanar,Istria,485,village,0,0,50,0,none,none
+gn:3198428,Kamanje,Karlovac,366,village,0,0,50,0,none,none
+gn:3198440,Kalnik,Koprivnica-Križevci,287,village,0,0,50,0,none,none
+gn:3198450,Kalinovac,Koprivnica-Križevci,1194,village,0,0,50,0,none,none
+gn:3198457,Kali,Zadar,1585,village,0,0,50,0,none,none
+gn:3198570,Ivanovac,County of Osijek-Baranja,1375,village,0,0,50,0,none,none
+gn:3198576,Josipovac,County of Osijek-Baranja,3602,village,0,0,50,0,none,none
+gn:3198578,Josipdol,Karlovac,1015,village,0,0,50,0,none,none
+gn:3198635,Ježdovec,Zagreb,1844,village,0,0,50,0,none,none
+gn:3198649,Jesenice,Zadar,151,village,0,0,50,0,none,none
+gn:3198650,Jesenice,Split-Dalmatia,1978,village,0,0,50,0,none,none
+gn:3198673,Jelsa,Split-Dalmatia,1753,village,0,0,50,0,none,none
+gn:3198695,Jelisavac,County of Osijek-Baranja,1024,village,0,0,50,0,none,none
+gn:3198705,Jelenje,Primorje-Gorski Kotar,395,village,0,0,50,0,none,none
+gn:3198799,Jastrebarsko,Zagreb County,5312,village,0,0,50,0,none,none
+gn:3198815,Jasenovac,Sisak-Moslavina,525,village,0,0,50,0,none,none
+gn:3198852,Jarmina,Vukovar-Srijem,2016,village,0,0,50,0,none,none
+gn:3198884,Janjina,Dubrovnik-Neretva,185,village,0,0,50,0,none,none
+gn:3198913,Jalžabet,Varaždin,1005,village,0,0,50,0,none,none
+gn:3198918,Jalkovec,Varaždin,1259,village,0,0,50,0,none,none
+gn:3198922,Jakšić,Požega-Slavonia,1566,village,0,0,50,0,none,none
+gn:3198924,Jakovlje,Zagreb County,2557,village,0,0,50,0,none,none
+gn:3198943,Jagodnjak,County of Osijek-Baranja,990,village,0,0,50,0,none,none
+gn:3198964,Jadranovo,Primorje-Gorski Kotar,1077,village,0,0,50,0,none,none
+gn:3198994,Jablanovec,Zagreb County,1301,village,0,0,50,0,none,none
+gn:3199038,Ivanska,Bjelovar-Bilogora,564,village,0,0,50,0,none,none
+gn:3199044,Ivanovec,Međimurje,1922,village,0,0,50,0,none,none
+gn:3199051,Ivankovo,Vukovar-Srijem,5076,village,0,0,50,0,none,none
+gn:3199065,Ivanja Reka,Zagreb,1753,village,0,0,50,0,none,none
+gn:3199069,Ivanić-Grad,Zagreb County,8452,village,0,0,50,0,none,none
+gn:3199076,Ivanec,Varaždin,4997,village,0,0,50,0,none,none
+gn:3199111,Imotski,Split-Dalmatia,4008,village,0,0,50,0,none,none
+gn:3199128,Ilok,Vukovar-Srijem,3842,village,0,0,50,0,none,none
+gn:3199180,Hvar,Split-Dalmatia,3519,village,0,0,50,0,none,none
+gn:3199194,Hum na Sutli,Krapina-Zagorje,957,village,0,0,50,0,none,none
+gn:3199202,Breznički Hum,Varaždin,410,village,0,0,50,0,none,none
+gn:3199229,Hrvatski Leskovac,Zagreb,2659,village,0,0,50,0,none,none
+gn:3199235,Hrvace,Split-Dalmatia,1483,village,0,0,50,0,none,none
+gn:3199279,Hreljin,Primorje-Gorski Kotar,2139,village,0,0,50,0,none,none
+gn:3199319,Hrašćina,Krapina-Zagorje,76,village,0,0,50,0,none,none
+gn:3199320,Hrašće Turopoljsko,Zagreb,1232,village,0,0,50,0,none,none
+gn:3199346,Horvati,Zagreb,1477,village,0,0,50,0,none,none
+gn:3199360,Hodošan,Međimurje,1063,village,0,0,50,0,none,none
+gn:3199376,Hlebine,Koprivnica-Križevci,1056,village,0,0,50,0,none,none
+gn:3199391,Hercegovac,Bjelovar-Bilogora,857,village,0,0,50,0,none,none
+gn:3199473,Gunja,Vukovar-Srijem,2600,village,0,0,50,0,none,none
+gn:3199474,Gundinci,Brod-Posavina,1610,village,0,0,50,0,none,none
+gn:3199515,Grubišno Polje,Bjelovar-Bilogora,2588,village,0,0,50,0,none,none
+gn:3199519,Grožnjan,Istria,142,village,0,0,50,0,none,none
+gn:3199531,Grohote,Split-Dalmatia,440,village,0,0,50,0,none,none
+gn:3199680,Gradište,Vukovar-Srijem,2227,village,0,0,50,0,none,none
+gn:3199732,Gradići,Zagreb County,1871,village,0,0,50,0,none,none
+gn:3199737,Gradec,Zagreb County,403,village,0,0,50,0,none,none
+gn:3199753,Gradac,Split-Dalmatia,989,village,0,0,50,0,none,none
+gn:3199770,Gračišće,Istria,418,village,0,0,50,0,none,none
+gn:3199790,Gračac,Zadar,2060,village,0,0,50,0,none,none
+gn:3199873,Gospić,Lika-Senj,6362,village,0,0,50,0,none,none
+gn:3199954,Okrug Gornji,Split-Dalmatia,2760,village,0,0,50,0,none,none
+gn:3199964,Gornji Mihaljevec,Međimurje,233,village,0,0,50,0,none,none
+gn:3199983,Kućan Gornji,Varaždin,1013,village,0,0,50,0,none,none
+gn:3199998,Gornji Kneginec,Varaždin,1430,village,0,0,50,0,none,none
+gn:3200050,Gornji Bogičevci,Brod-Posavina,538,village,0,0,50,0,none,none
+gn:3200069,Gornje Vratno,Varaždin,1297,village,0,0,50,0,none,none
+gn:3200097,Podbablje Gornje,Split-Dalmatia,459,village,0,0,50,0,none,none
+gn:3200124,Gornje Jesenje,Krapina-Zagorje,669,village,0,0,50,0,none,none
+gn:3200153,Gornja Vrba,Brod-Posavina,1654,village,0,0,50,0,none,none
+gn:3200183,Gornja Stubica,Krapina-Zagorje,747,village,0,0,50,0,none,none
+gn:3200190,Gornja Rijeka,Koprivnica-Križevci,331,village,0,0,50,0,none,none
+gn:3200286,Gornja Bistra,Zagreb County,1671,village,0,0,50,0,none,none
+gn:3200304,Gorjani,County of Osijek-Baranja,794,village,0,0,50,0,none,none
+gn:3200328,Goričan,Međimurje,2343,village,0,0,50,0,none,none
+gn:3200501,Gola,Koprivnica-Križevci,779,village,0,0,50,0,none,none
+gn:3200600,Glina,Sisak-Moslavina,4028,village,0,0,50,0,none,none
+gn:3200613,Glavina Donja,Split-Dalmatia,1625,village,0,0,50,0,none,none
+gn:3200622,Glavice,Split-Dalmatia,3597,village,0,0,50,0,none,none
+gn:3200677,Generalski Stol,Karlovac,482,village,0,0,50,0,none,none
+gn:3200711,Garešnica,Bjelovar-Bilogora,3294,village,0,0,50,0,none,none
+gn:3200714,Garčin,Brod-Posavina,733,village,0,0,50,0,none,none
+gn:3200731,Galovac,Zadar,1258,village,0,0,50,0,none,none
+gn:3200734,Galižana,Istria,1620,village,0,0,50,0,none,none
+gn:3200799,Fužine,Primorje-Gorski Kotar,597,village,0,0,50,0,none,none
+gn:3200806,Funtana,Istria,911,village,0,0,50,0,none,none
+gn:3200845,Sveti Filip i Jakov,Zadar,1603,village,0,0,50,0,none,none
+gn:3200855,Feričanci,County of Osijek-Baranja,1332,village,0,0,50,0,none,none
+gn:3200856,Ferdinandovac,Koprivnica-Križevci,1352,village,0,0,50,0,none,none
+gn:3200862,Fažana,Istria,1788,village,0,0,50,0,none,none
+gn:3200879,Ervenik,Šibenik-Knin,227,village,0,0,50,0,none,none
+gn:3200881,Ernestinovo,County of Osijek-Baranja,996,village,0,0,50,0,none,none
+gn:3200884,Erdut,County of Osijek-Baranja,561,village,0,0,50,0,none,none
+gn:3200917,Dvor,Sisak-Moslavina,809,village,0,0,50,0,none,none
+gn:3200943,Ðurmanec,Krapina-Zagorje,786,village,0,0,50,0,none,none
+gn:3200961,Đurđevac,Koprivnica-Križevci,5834,village,0,0,50,0,none,none
+gn:3200962,Ðurđenovac,County of Osijek-Baranja,2318,village,0,0,50,0,none,none
+gn:3201009,Dugo Selo,Zagreb County,11097,town,0,0,50,0,none,none
+gn:3201011,Dugopolje,Split-Dalmatia,3248,village,0,0,50,0,none,none
+gn:3201021,Dugi Rat,Split-Dalmatia,3338,village,0,0,50,0,none,none
+gn:3201030,Duga Resa,Karlovac,5380,village,0,0,50,0,none,none
+gn:3201045,Duće,Split-Dalmatia,1560,village,0,0,50,0,none,none
+gn:3201047,Dubrovnik,Dubrovnik-Neretva,26922,town,0,0,50,0,none,none
+gn:3201056,Dubravica,Zagreb County,112,village,0,0,50,0,none,none
+gn:3201066,Dubrava,Šibenik-Knin,1117,village,0,0,50,0,none,none
+gn:3201067,Dubrava,Zagreb County,1233,village,0,0,50,0,none,none
+gn:3201110,Hrvatska Dubica,Sisak-Moslavina,774,village,0,0,50,0,none,none
+gn:3201160,Drnje,Koprivnica-Križevci,805,village,0,0,50,0,none,none
+gn:3201162,Drniš,Šibenik-Knin,2752,village,0,0,50,0,none,none
+gn:3201203,Novo Virje,Koprivnica-Križevci,1026,village,0,0,50,0,none,none
+gn:3201207,Drenovci,Vukovar-Srijem,1398,village,0,0,50,0,none,none
+gn:3201217,Drenova,Primorje-Gorski Kotar,7638,village,0,0,50,0,none,none
+gn:3201223,Drenje,County of Osijek-Baranja,462,village,0,0,50,0,none,none
+gn:3201233,Dražice,Primorje-Gorski Kotar,2064,village,0,0,50,0,none,none
+gn:3201250,Draž,County of Osijek-Baranja,355,village,0,0,50,0,none,none
+gn:3201320,Draganići,Karlovac,2541,village,0,0,50,0,none,none
+gn:3201326,Dragalić,Brod-Posavina,454,village,0,0,50,0,none,none
+gn:3201363,Zemunik Donji,Zadar,1557,village,0,0,50,0,none,none
+gn:3201373,Donji Vidovec,Međimurje,1197,village,0,0,50,0,none,none
+gn:3201395,Donji Seget,Split-Dalmatia,2530,village,0,0,50,0,none,none
+gn:3201412,Donji Proložac,Split-Dalmatia,1288,village,0,0,50,0,none,none
+gn:3201426,Donji Muć,Split-Dalmatia,541,village,0,0,50,0,none,none
+gn:3201432,Donji Miholjac,County of Osijek-Baranja,5330,village,0,0,50,0,none,none
+gn:3201450,Donji Lapac,Lika-Senj,677,village,0,0,50,0,none,none
+gn:3201454,Donji Kraljevec,Međimurje,1407,village,0,0,50,0,none,none
+gn:3201513,Donji Andrijevci,Brod-Posavina,2097,village,0,0,50,0,none,none
+gn:3201562,Donje Ladanje,Varaždin,1030,village,0,0,50,0,none,none
+gn:3201595,Donja Voća,Varaždin,958,village,0,0,50,0,none,none
+gn:3201621,Donja Stubica,Krapina-Zagorje,2121,village,0,0,50,0,none,none
+gn:3201636,Donja Pušća,Zagreb County,846,village,0,0,50,0,none,none
+gn:3201656,Donja Motičina,County of Osijek-Baranja,990,village,0,0,50,0,none,none
+gn:3201668,Donja Lomnica,Zagreb County,1603,village,0,0,50,0,none,none
+gn:3201696,Donja Dubrava,Međimurje,1658,village,0,0,50,0,none,none
+gn:3201712,Brela,Split-Dalmatia,1472,village,0,0,50,0,none,none
+gn:3201716,Donja Bistra,Zagreb County,1455,village,0,0,50,0,none,none
+gn:3201734,Domašinec,Međimurje,1456,village,0,0,50,0,none,none
+gn:3201919,Dobrodol,Zagreb,1165,village,0,0,50,0,none,none
+gn:3201934,Dobrinj,Primorje-Gorski Kotar,89,village,0,0,50,0,none,none
+gn:3202046,Dežanovac,Bjelovar-Bilogora,608,village,0,0,50,0,none,none
+gn:3202071,Desinić,Krapina-Zagorje,330,village,0,0,50,0,none,none
+gn:3202104,Delnice,Primorje-Gorski Kotar,3861,village,0,0,50,0,none,none
+gn:3202109,Ðelekovec,Koprivnica-Križevci,990,village,0,0,50,0,none,none
+gn:3202110,Dekanovec,Međimurje,739,village,0,0,50,0,none,none
+gn:3202172,Davor,Brod-Posavina,2025,village,0,0,50,0,none,none
+gn:3202184,Daruvar,Bjelovar-Bilogora,7440,village,0,0,50,0,none,none
+gn:3202186,Darda,County of Osijek-Baranja,4151,village,0,0,50,0,none,none
+gn:3202215,Dalj,County of Osijek-Baranja,2877,village,0,0,50,0,none,none
+gn:3202220,Đakovo,County of Osijek-Baranja,16875,town,0,0,50,0,none,none
+gn:3202474,Crnac,Virovitica-Podravina,407,village,0,0,50,0,none,none
+gn:3202507,Crikvenica,Primorje-Gorski Kotar,6239,village,0,0,50,0,none,none
+gn:3202523,Cres,Primorje-Gorski Kotar,2185,village,0,0,50,0,none,none
+gn:3202553,Civljane,Šibenik-Knin,47,village,0,0,50,0,none,none
+gn:3202567,Cista Provo,Split-Dalmatia,404,village,0,0,50,0,none,none
+gn:3202630,Čibača,Dubrovnik-Neretva,2039,village,0,0,50,0,none,none
+gn:3202642,Cetingrad,Karlovac,293,village,0,0,50,0,none,none
+gn:3202654,Cestica,Varaždin,479,village,0,0,50,0,none,none
+gn:3202681,Cerovlje,Istria,197,village,0,0,50,0,none,none
+gn:3202697,Cernik,Primorje-Gorski Kotar,1274,village,0,0,50,0,none,none
+gn:3202698,Cernik,Brod-Posavina,1426,village,0,0,50,0,none,none
+gn:3202702,Cerna,Vukovar-Srijem,3019,village,0,0,50,0,none,none
+gn:3202726,Cerić,Vukovar-Srijem,1292,village,0,0,50,0,none,none
+gn:3202743,Čepin,County of Osijek-Baranja,8001,village,0,0,50,0,none,none
+gn:3202763,Čeminac,County of Osijek-Baranja,865,village,0,0,50,0,none,none
+gn:3202820,Čazma,Bjelovar-Bilogora,2417,village,0,0,50,0,none,none
+gn:3202825,Cavtat,Dubrovnik-Neretva,2189,village,0,0,50,0,none,none
+gn:3202831,Čavle,Primorje-Gorski Kotar,1269,village,0,0,50,0,none,none
+gn:3202888,Čakovec,Međimurje,15078,town,0,0,50,0,none,none
+gn:3202905,Čaglin,Požega-Slavonia,478,village,0,0,50,0,none,none
+gn:3202918,Čađavica,Virovitica-Podravina,569,village,0,0,50,0,none,none
+gn:3202922,Čačinci,Virovitica-Podravina,1719,village,0,0,50,0,none,none
+gn:3202932,Čabar,Primorje-Gorski Kotar,325,village,0,0,50,0,none,none
+gn:3202934,Buzin,Zagreb,1074,village,0,0,50,0,none,none
+gn:3202942,Buzet,Istria,2339,village,0,0,50,0,none,none
+gn:3202967,Buševec,Zagreb County,1018,village,0,0,50,0,none,none
+gn:3203026,Bukovlje,Brod-Posavina,1733,village,0,0,50,0,none,none
+gn:3203090,Buje,Istria,2087,village,0,0,50,0,none,none
+gn:3203108,Budrovci,County of Osijek-Baranja,1107,village,0,0,50,0,none,none
+gn:3203123,Budinšćina,Krapina-Zagorje,510,village,0,0,50,0,none,none
+gn:3203138,Budaševo,Sisak-Moslavina,1373,village,0,0,50,0,none,none
+gn:3203206,Brtonigla,Istria,705,village,0,0,50,0,none,none
+gn:3203231,Brodski Varoš,Brod-Posavina,1829,village,0,0,50,0,none,none
+gn:3203232,Brodski Stupnik,Brod-Posavina,1285,village,0,0,50,0,none,none
+gn:3203235,Brod Moravice,Primorje-Gorski Kotar,270,village,0,0,50,0,none,none
+gn:3203262,Brnaze,Split-Dalmatia,3124,village,0,0,50,0,none,none
+gn:3203298,Brinje,Lika-Senj,1250,village,0,0,50,0,none,none
+gn:3203315,Bribir,Primorje-Gorski Kotar,1480,village,0,0,50,0,none,none
+gn:3203378,Breznica,Varaždin,749,village,0,0,50,0,none,none
+gn:3203434,Brestovac,Požega-Slavonia,597,village,0,0,50,0,none,none
+gn:3203455,Briješće,County of Osijek-Baranja,1153,village,0,0,50,0,none,none
+gn:3203473,Koprivnički Bregi,Koprivnica-Križevci,1118,village,0,0,50,0,none,none
+gn:3203478,Bregana,Zagreb County,2198,village,0,0,50,0,none,none
+gn:3203487,Brdovec,Zagreb County,2848,village,0,0,50,0,none,none
+gn:3203520,Brckovljani,Zagreb County,1368,village,0,0,50,0,none,none
+gn:3203631,Bošnjaci,Vukovar-Srijem,2868,village,0,0,50,0,none,none
+gn:3203639,Bosiljevo,Karlovac,44,village,0,0,50,0,none,none
+gn:3203765,Bol,Split-Dalmatia,1656,village,0,0,50,0,none,none
+gn:3203837,Bogdanovci,Vukovar-Srijem,614,village,0,0,50,0,none,none
+gn:3203880,Bobota,Vukovar-Srijem,1202,village,0,0,50,0,none,none
+gn:3203943,Blato,Dubrovnik-Neretva,3282,village,0,0,50,0,none,none
+gn:3203961,Blato,Dubrovnik-Neretva,31,village,0,0,50,0,none,none
+gn:3203982,Bjelovar,Bjelovar-Bilogora,24392,town,0,0,50,0,none,none
+gn:3204022,Bizovac,County of Osijek-Baranja,1713,village,0,0,50,0,none,none
+gn:3204035,Bistrinci,County of Osijek-Baranja,1301,village,0,0,50,0,none,none
+gn:3204086,Biskupija,Šibenik-Knin,266,village,0,0,50,0,none,none
+gn:3204121,Biograd na Moru,Zadar,5601,village,0,0,50,0,none,none
+gn:3204145,Bilje,County of Osijek-Baranja,3163,village,0,0,50,0,none,none
+gn:3204158,Bilice,Šibenik-Knin,2546,village,0,0,50,0,none,none
+gn:3204182,Bijelo Brdo,County of Osijek-Baranja,1517,village,0,0,50,0,none,none
+gn:3204237,Bibinje,Zadar,3962,village,0,0,50,0,none,none
+gn:3204277,Beretinec,Varaždin,988,village,0,0,50,0,none,none
+gn:3204278,Berek,Bjelovar-Bilogora,395,village,0,0,50,0,none,none
+gn:3204293,Benkovac,Zadar,2484,village,0,0,50,0,none,none
+gn:3204317,Belišće,County of Osijek-Baranja,5354,village,0,0,50,0,none,none
+gn:3204320,Beli Manastir,County of Osijek-Baranja,6327,village,0,0,50,0,none,none
+gn:3204322,Belica,Međimurje,2038,village,0,0,50,0,none,none
+gn:3204378,Bednja,Varaždin,596,village,0,0,50,0,none,none
+gn:3204383,Bedenica,Zagreb County,483,village,0,0,50,0,none,none
+gn:3204387,Bedekovčina,Krapina-Zagorje,3119,village,0,0,50,0,none,none
+gn:3204391,Bebrina,Brod-Posavina,372,village,0,0,50,0,none,none
+gn:3204439,Baška Voda,Split-Dalmatia,1766,village,0,0,50,0,none,none
+gn:3204441,Baška,Primorje-Gorski Kotar,899,village,0,0,50,0,none,none
+gn:3204470,Barilović,Karlovac,295,village,0,0,50,0,none,none
+gn:3204492,Barbat,Primorje-Gorski Kotar,1140,village,0,0,50,0,none,none
+gn:3204500,Barban,Istria,218,village,0,0,50,0,none,none
+gn:3204530,Banjol,Primorje-Gorski Kotar,1708,village,0,0,50,0,none,none
+gn:3204586,Bale,Istria,973,village,0,0,50,0,none,none
+gn:3204612,Bakar,Primorje-Gorski Kotar,1187,village,0,0,50,0,none,none
+gn:3204712,Babino Polje,Dubrovnik-Neretva,262,village,0,0,50,0,none,none
+gn:3204725,Babina Greda,Vukovar-Srijem,2762,village,0,0,50,0,none,none
+gn:3204799,Antunovac,County of Osijek-Baranja,2036,village,0,0,50,0,none,none
+gn:3204817,Andrijaševci,Vukovar-Srijem,1749,village,0,0,50,0,none,none
+gn:3205327,Mlinište,Dubrovnik-Neretva,254,village,0,0,50,0,none,none
+gn:3209376,Gornji Stupnik,Zagreb County,2087,village,0,0,50,0,none,none
+gn:3209378,Novaki,Zagreb County,2001,village,0,0,50,0,none,none
+gn:3209379,Jankomir,Zagreb,5000,village,0,0,50,0,none,none
+gn:3209381,Bestovje,Zagreb County,2236,village,0,0,50,0,none,none
+gn:3209408,Novi Zagreb,Zagreb,5000,village,0,0,50,0,none,none
+gn:3213267,Brodarica,Šibenik-Knin,2611,village,0,0,50,0,none,none
+gn:3213523,Zagorska Sela,Krapina-Zagorje,263,village,0,0,50,0,none,none
+gn:3214494,Buzdohanj,Primorje-Gorski Kotar,1648,village,0,0,50,0,none,none
+gn:3214497,Otrić-Seoci,Dubrovnik-Neretva,689,village,0,0,50,0,none,none
+gn:3214667,Donji Vinjani,Split-Dalmatia,1735,village,0,0,50,0,none,none
+gn:3215000,Netretić,Karlovac,44,village,0,0,50,0,none,none
+gn:3215199,Donji Kukuruzari,Sisak-Moslavina,188,village,0,0,50,0,none,none
+gn:3215502,Lipovljani,Sisak-Moslavina,1902,village,0,0,50,0,none,none
+gn:3215724,Lobor,Krapina-Zagorje,477,village,0,0,50,0,none,none
+gn:3215728,Kukljica,Zadar,628,village,0,0,50,0,none,none
+gn:3215759,Preko,Zadar,1250,village,0,0,50,0,none,none
+gn:3215785,Zlatar bistrica,Krapina-Zagorje,1393,village,0,0,50,0,none,none
+gn:3215880,Starigrad,Koprivnica-Križevci,2248,village,0,0,50,0,none,none
+gn:3215881,Koprivnički Ivanec,Koprivnica-Križevci,997,village,0,0,50,0,none,none
+gn:3216383,Farkaševac,Zagreb County,287,village,0,0,50,0,none,none
+gn:3216446,Nin,Zadar,1101,village,0,0,50,0,none,none
+gn:3216885,Stari Grad,Zadar,1906,village,0,0,50,0,none,none
+gn:3217785,Horvati,Zagreb,1401,village,0,0,50,0,none,none
+gn:3217900,Kampor,Primorje-Gorski Kotar,1030,village,0,0,50,0,none,none
+gn:3238625,Vidovci,Požega-Slavonia,1264,village,0,0,50,0,none,none
+gn:3244782,Borovo,Vukovar-Srijem,3555,village,0,0,50,0,none,none
+gn:3281054,Kamen,Split-Dalmatia,1821,village,0,0,50,0,none,none
+gn:3281094,Kučine,Split-Dalmatia,1082,village,0,0,50,0,none,none
+gn:3281556,Zmijavci,Split-Dalmatia,1654,village,0,0,50,0,none,none
+gn:3281575,Kamenmost,Split-Dalmatia,393,village,0,0,50,0,none,none
+gn:3282009,Greda,Split-Dalmatia,1015,village,0,0,50,0,none,none
+gn:3282297,Gornji Vinjani,Split-Dalmatia,1157,village,0,0,50,0,none,none
+gn:3282309,Grabovci,Split-Dalmatia,1480,village,0,0,50,0,none,none
+gn:3287406,Vlaka,Dubrovnik-Neretva,268,village,0,0,50,0,none,none
+gn:3296403,Korenica,Brod-Posavina,1578,village,0,0,50,0,none,none
+gn:3315388,Brijest,County of Osijek-Baranja,1005,village,0,0,50,0,none,none
+gn:3339295,Milanovac,Virovitica-Podravina,1515,village,0,0,50,0,none,none
+gn:3345300,Karlovac,Karlovac,41869,town,0,0,50,0,none,none
+gn:6618983,Centar,Zagreb,37000,town,0,0,50,0,none,none
+gn:7870346,Dramalj,Primorje-Gorski Kotar,1366,village,0,0,50,0,none,none
+gn:8505062,Stubičke Toplice,Krapina-Zagorje,1775,village,0,0,50,0,none,none
+gn:8505066,Viškovo,Primorje-Gorski Kotar,3602,village,0,0,50,0,none,none
+gn:8505067,Magadenovac,County of Osijek-Baranja,96,village,0,0,50,0,none,none
+gn:8740364,Donji Stupnik,Zagreb County,1447,village,0,0,50,0,none,none
+gn:8741096,Grljevac,Split-Dalmatia,1523,village,0,0,50,0,none,none
+gn:8741097,Hrašćica,Varaždin,1270,village,0,0,50,0,none,none
+gn:11071329,Pobri,Primorje-Gorski Kotar,1096,village,0,0,50,0,none,none
+gn:11071349,Valbandon,Istria,1675,village,0,0,50,0,none,none
+gn:11136870,Konjšćina,Krapina-Zagorje,910,village,0,0,50,0,none,none
+gn:12047445,Palit,Primorje-Gorski Kotar,1580,village,0,0,50,0,none,none
+gn:12200243,Parag,Međimurje,1389,village,0,0,50,0,none,none
+gn:12212330,Savska Ves,Međimurje,1165,village,0,0,50,0,none,none
+gn:12212651,Kopčevec,Zagreb County,1060,village,0,0,50,0,none,none
+gn:12212815,Veliko Polje,Zagreb,2122,village,0,0,50,0,none,none
+gn:12213020,Lukarišće,Zagreb County,1007,village,0,0,50,0,none,none
+gn:12500939,Sroki,Primorje-Gorski Kotar,1979,village,0,0,50,0,none,none
+gn:12500940,Saršoni,Primorje-Gorski Kotar,1664,village,0,0,50,0,none,none
+gn:12500942,Brezje,Zagreb County,1468,village,0,0,50,0,none,none
+gn:12500943,Mladenići,Primorje-Gorski Kotar,1448,village,0,0,50,0,none,none
+gn:12500944,Postranje,Split-Dalmatia,1079,village,0,0,50,0,none,none
+gn:12500945,Mavrinci,Primorje-Gorski Kotar,1035,village,0,0,50,0,none,none
+gn:12500960,Podstrana - Miljevac,Split-Dalmatia,1092,village,0,0,50,0,none,none
+gn:12500961,Podstrana - Žminjača,Split-Dalmatia,1021,village,0,0,50,0,none,none
+gn:12503548,Nova Mokošica,Dubrovnik-Neretva,5682,village,0,0,50,0,none,none
+gn:12509390,Lugarski Breg,Zagreb County,66,village,0,0,50,0,none,none
+gn:12509391,Vučilčevo,Zagreb County,130,village,0,0,50,0,none,none
+gn:12509392,Prosinec,Zagreb County,85,village,0,0,50,0,none,none
+gn:12509830,Klepeće Selo,Primorje-Gorski Kotar,1,village,0,0,50,0,none,none
+gn:12509831,Naglići,Primorje-Gorski Kotar,1,village,0,0,50,0,none,none
+gn:12509832,Doluš,Primorje-Gorski Kotar,5,village,0,0,50,0,none,none
+gn:12509902,Mrežničke Poljice,Karlovac,110,village,0,0,50,0,none,none
+gn:12509972,Sela Žakanjska,Karlovac,53,village,0,0,50,0,none,none
+gn:12510044,Gornjaki,Krapina-Zagorje,104,village,0,0,50,0,none,none
+gn:12510384,Veliko Selce,Primorje-Gorski Kotar,70,village,0,0,50,0,none,none
+gn:12510385,Pucak,Primorje-Gorski Kotar,1,village,0,0,50,0,none,none
+gn:12510401,Brodić,Koprivnica-Križevci,63,village,0,0,50,0,none,none
+gn:12510425,Orišje,Karlovac,39,village,0,0,50,0,none,none
+gn:12510426,Podrebar,Karlovac,13,village,0,0,50,0,none,none
+gn:12510427,Lipošćaki,Karlovac,8,village,0,0,50,0,none,none
+gn:12510428,Krč Bosiljevski,Karlovac,22,village,0,0,50,0,none,none
+gn:12510614,Veliki Prokop,Bjelovar-Bilogora,25,village,0,0,50,0,none,none
+gn:12514122,Dubac-Varsan,Lika-Senj,6,village,0,0,50,0,none,none
+gn:12514312,Podstrana - Sita,Split-Dalmatia,2130,village,0,0,50,0,none,none
+gn:13405691,Liberpolis,County of Osijek-Baranja,63,village,0,0,50,0,none,none

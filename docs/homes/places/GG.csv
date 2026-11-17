@@ -1,0 +1,12 @@
+place_id,name,region,population,market,verified_homes,dated_listings,shortfall_to_50,recorded_sales,rent_source,price_source
+gn:3042274,Torteval,Torteval,0,village,0,0,50,0,none,none
+gn:3042286,Saint Sampson,St Sampson,8966,village,0,0,50,0,none,none
+gn:3042287,Saint Peter Port,St Peter Port,16488,town,0,0,50,0,none,none
+gn:3042289,St Anne,Alderney,0,village,0,0,50,0,none,none
+gn:6424194,Saint Saviour,Saint Saviour,0,village,0,0,50,0,none,none
+gn:6692239,Castel,Castel,0,village,0,0,50,0,none,none
+gn:6692240,Saint Andrew,Saint Andrew,0,village,0,0,50,0,none,none
+gn:6696773,St Martin,St Martin,0,village,0,0,50,0,none,none
+gn:13527037,Vale Parish,,9646,village,0,0,50,0,none,none
+gn:13527040,Forest Parish,Forest,1624,village,0,0,50,0,none,none
+gn:13527042,Saint Pierre du Bois Parish,St Pierre du Bois,2001,village,0,0,50,0,none,none

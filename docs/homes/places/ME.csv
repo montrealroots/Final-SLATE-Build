@@ -1,0 +1,42 @@
+place_id,name,region,population,market,verified_homes,dated_listings,shortfall_to_50,recorded_sales,rent_source,price_source
+gn:786234,Rožaje,Rožaje Municipality,9121,village,0,0,50,0,none,none
+gn:790037,Ibarac,Rožaje Municipality,3135,village,0,0,50,0,none,none
+gn:3186999,Žabljak,Opština Žabljak,1937,village,0,0,50,0,none,none
+gn:3188516,Ulcinj,Ulcinj,10828,town,0,0,50,0,none,none
+gn:3188584,Tuzi,Tuzi Municipality,3789,village,0,0,50,0,none,none
+gn:3189073,Tivat,Tivat,6280,village,0,0,50,0,none,none
+gn:3189429,Sutomore,Bar,1827,village,0,0,50,0,none,none
+gn:3189979,Stari Bar,Bar,1514,village,0,0,50,0,none,none
+gn:3190178,Spuž,Danilovgrad,1241,village,0,0,50,0,none,none
+gn:3191222,Šavnik,Opština Šavnik,633,village,0,0,50,0,none,none
+gn:3191631,Risan,Kotor,2083,village,0,0,50,0,none,none
+gn:3192576,Prčanj,Kotor,1244,village,0,0,50,0,none,none
+gn:3193044,Podgorica,Podgorica,236852,city,0,0,50,0,none,none
+gn:3193131,Plužine,Opština Plužine,1494,village,0,0,50,0,none,none
+gn:3193161,Pljevlja,Pljevlja,19489,town,0,0,50,0,none,none
+gn:3193228,Plav,Opština Plav,3615,village,0,0,50,0,none,none
+gn:3193413,Petrovac na Moru,Budva,1485,village,0,0,50,0,none,none
+gn:3193471,Pešca,Berane,1805,village,0,0,50,0,none,none
+gn:3194494,Nikšić,Opština Nikšić,58212,town,0,0,50,0,none,none
+gn:3194926,Mojkovac,Mojkovac,4120,village,0,0,50,0,none,none
+gn:3194928,Mojanovići,Podgorica,1800,village,0,0,50,0,none,none
+gn:3195390,Mataguži,Podgorica,1132,village,0,0,50,0,none,none
+gn:3196540,Lipci,,1200,village,0,0,50,0,none,none
+gn:3197538,Kotor,Kotor,5345,village,0,0,50,0,none,none
+gn:3197896,Kolašin,Opština Kolašin,2989,village,0,0,50,0,none,none
+gn:3199071,Berane,Berane,11073,town,0,0,50,0,none,none
+gn:3199161,Igalo,Herceg Novi,3754,village,0,0,50,0,none,none
+gn:3199394,Herceg Novi,Herceg Novi,19536,town,0,0,50,0,none,none
+gn:3199463,Gusinje,Gusinje Municipality,1673,village,0,0,50,0,none,none
+gn:3200326,Goričani,Podgorica,1205,village,0,0,50,0,none,none
+gn:3200422,Golubovci,Zeta,3110,village,0,0,50,0,none,none
+gn:3201903,Dobrota,Kotor,5435,village,0,0,50,0,none,none
+gn:3202194,Danilovgrad,Danilovgrad,5208,village,0,0,50,0,none,none
+gn:3202641,Cetinje,Cetinje,15137,town,0,0,50,0,none,none
+gn:3203106,Budva,Budva,18000,town,0,0,50,0,none,none
+gn:3204176,Bijelo Polje,Bijelo Polje,15400,town,0,0,50,0,none,none
+gn:3204214,Bijela,Herceg Novi,2395,village,0,0,50,0,none,none
+gn:3204509,Bar,Bar,15868,town,0,0,50,0,none,none
+gn:3204816,Andrijevica,Andrijevica,1073,village,0,0,50,0,none,none
+gn:3220594,Petnjica,Petnjica Municipality,0,village,0,0,50,0,none,none
+gn:3318488,Šušanj,Bar,2521,village,0,0,50,0,none,none

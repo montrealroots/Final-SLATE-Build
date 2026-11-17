@@ -1,0 +1,24 @@
+place_id,name,region,population,market,verified_homes,dated_listings,shortfall_to_50,recorded_sales,rent_source,price_source
+gn:2101986,Vavaea,Honiara,10813,town,0,0,50,0,none,none
+gn:2102384,Tulagi,Central Province,1750,village,0,0,50,0,none,none
+gn:2104533,Panatina,Honiara,32712,town,0,0,50,0,none,none
+gn:2104863,Noro,Western Province,7204,village,0,0,50,0,none,none
+gn:2105033,Nggosi,Guadalcanal Province,26009,town,0,0,50,0,none,none
+gn:2105575,Munda,Western Province,3144,village,0,0,50,0,none,none
+gn:2105734,Mbumburu,Honiara,5806,village,0,0,50,0,none,none
+gn:2106239,Mataniko,Honiara,5722,village,0,0,50,0,none,none
+gn:2106543,Malango,Guadalcanal Province,10532,town,0,0,50,0,none,none
+gn:2107201,Kukum,Honiara,2541,village,0,0,50,0,none,none
+gn:2108502,Honiara,Honiara,56298,town,0,0,50,0,none,none
+gn:2108857,Gizo,Western Province,7177,village,0,0,50,0,none,none
+gn:2109528,Buala,Isabel Province,2700,village,0,0,50,0,none,none
+gn:2109701,Auki,Malaita Province,7020,village,0,0,50,0,none,none
+gn:2178750,Lata,Temotu Province,553,village,0,0,50,0,none,none
+gn:2178753,Kirakira,Makira-Ulawa Province,2107,village,0,0,50,0,none,none
+gn:11423653,Taro,Choiseul Province,1053,village,0,0,50,0,none,none
+gn:13526997,Vuhokesa,Honiara,1328,village,0,0,50,0,none,none
+gn:13526998,Kola'a,Honiara,20783,town,0,0,50,0,none,none
+gn:13526999,Vura,Honiara,18753,town,0,0,50,0,none,none
+gn:13527000,Rove - Lengakiki,Honiara,4244,village,0,0,50,0,none,none
+gn:13527001,Malango,Guadalcanal Province,15560,town,0,0,50,0,none,none
+gn:13527002,Tandai,Guadalcanal Province,24592,town,0,0,50,0,none,none

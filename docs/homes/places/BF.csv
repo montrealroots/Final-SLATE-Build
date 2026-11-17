@@ -1,0 +1,114 @@
+place_id,name,region,population,market,verified_homes,dated_listings,shortfall_to_50,recorded_sales,rent_source,price_source
+gn:2353197,Zorgo,Plateau-Central,35398,town,0,0,50,0,none,none
+gn:2353238,Zitenga,Plateau-Central,0,village,0,0,50,0,none,none
+gn:2353257,Ziniaré,Plateau-Central,33296,town,0,0,50,0,none,none
+gn:2353332,Zinguédéssé,Centre,19648,town,0,0,50,0,none,none
+gn:2353436,Zabré,Centre-Est,21726,town,0,0,50,0,none,none
+gn:2353670,Yalgo,Centre-Nord,26340,town,0,0,50,0,none,none
+gn:2353688,Yako,Nord,38679,town,0,0,50,0,none,none
+gn:2354176,Tougan,Boucle du Mouhoun,26347,town,0,0,50,0,none,none
+gn:2354265,Toma,Boucle du Mouhoun,15851,town,0,0,50,0,none,none
+gn:2354319,Toéghin,Plateau-Central,0,village,0,0,50,0,none,none
+gn:2354340,Tô,Centre-Ouest,16026,town,0,0,50,0,none,none
+gn:2354349,Titao,Nord,48241,town,0,0,50,0,none,none
+gn:2354351,Tita,Centre-Ouest,16450,town,0,0,50,0,none,none
+gn:2354675,Tenkodogo,Centre-Est,61936,town,0,0,50,0,none,none
+gn:2354971,Tanghin-Dassouri,Centre,0,village,0,0,50,0,none,none
+gn:2355221,Sourgoubila,Plateau-Central,0,village,0,0,50,0,none,none
+gn:2355404,Solenzo,Boucle du Mouhoun,24783,town,0,0,50,0,none,none
+gn:2355548,Sindou,Cascades Region,7053,village,0,0,50,0,none,none
+gn:2355649,Siglé,Centre-Ouest,0,village,0,0,50,0,none,none
+gn:2355803,Sebba,Sahel,11298,town,0,0,50,0,none,none
+gn:2355869,Sapouy,Centre-Ouest,26345,town,0,0,50,0,none,none
+gn:2355872,Saponé,Centre-Sud,0,village,0,0,50,0,none,none
+gn:2355886,Saonré,Centre,47728,town,0,0,50,0,none,none
+gn:2356032,Sam,Centre-Ouest,1255,village,0,0,50,0,none,none
+gn:2356136,Sabou,Centre-Ouest,15060,town,0,0,50,0,none,none
+gn:2356157,Saaba,Centre,136011,city,0,0,50,0,none,none
+gn:2356228,Réo,Centre-Ouest,33894,town,0,0,50,0,none,none
+gn:2356300,Pouytenga,Centre-Est,96469,town,0,0,50,0,none,none
+gn:2356436,Nagréongo,Plateau-Central,0,village,0,0,50,0,none,none
+gn:2356454,Pô,Centre-Sud,28079,town,0,0,50,0,none,none
+gn:2356459,Pitmoaga,Centre-Ouest,7991,village,0,0,50,0,none,none
+gn:2356467,Pissila,Centre-Nord,23420,town,0,0,50,0,none,none
+gn:2356738,Pama,Est,13579,town,0,0,50,0,none,none
+gn:2356759,Pabré,Centre,0,village,0,0,50,0,none,none
+gn:2356765,Pa,Boucle du Mouhoun,15170,town,0,0,50,0,none,none
+gn:2356784,Oursi,Sahel,0,village,0,0,50,0,none,none
+gn:2356792,Ourgou-Manéga,Plateau-Central,0,village,0,0,50,0,none,none
+gn:2357012,Ouargaye,Centre-Est,13431,town,0,0,50,0,none,none
+gn:2357043,Ouahigouya,Nord,124587,city,0,0,50,0,none,none
+bf-ouagadougou,Ouagadougou,Centre,2415266,large-city,0,0,50,0,none,none
+gn:2357062,Orodara,Hauts-Bassins,33422,town,0,0,50,0,none,none
+gn:2357095,Niou,Plateau-Central,0,village,0,0,50,0,none,none
+gn:2357109,Nioko I,Centre,65263,town,0,0,50,0,none,none
+gn:2357163,Nouna,Boucle du Mouhoun,32428,town,0,0,50,0,none,none
+gn:2357371,Niangoloko,Cascades Region,33292,town,0,0,50,0,none,none
+gn:2357487,Natiaboani,Est,16640,town,0,0,50,0,none,none
+gn:2357560,Nanoro,Centre-Ouest,10847,town,0,0,50,0,none,none
+gn:2357801,Koubri,Centre,0,village,0,0,50,0,none,none
+gn:2357931,Mogtédo,Plateau-Central,25699,town,0,0,50,0,none,none
+gn:2358095,Mangodara,Cascades Region,9126,village,0,0,50,0,none,none
+gn:2358100,Manga,Centre-Sud,28615,town,0,0,50,0,none,none
+gn:2358109,Mané,Centre-Nord,0,village,0,0,50,0,none,none
+gn:2358201,Loumbila,Plateau-Central,0,village,0,0,50,0,none,none
+gn:2358382,Léo,Centre-Ouest,51743,town,0,0,50,0,none,none
+gn:2358434,Laye,Plateau-Central,0,village,0,0,50,0,none,none
+gn:2358738,Koupéla,Centre-Est,49372,town,0,0,50,0,none,none
+gn:2358898,Kouka,Centre-Nord,17286,town,0,0,50,0,none,none
+gn:2358946,Koudougou,Centre-Ouest,160239,city,0,0,50,0,none,none
+gn:2359042,Korsimoro,Centre-Nord,18875,town,0,0,50,0,none,none
+gn:2359142,Kongoussi,Centre-Nord,53627,town,0,0,50,0,none,none
+gn:2359200,Komsilga,Centre,0,village,0,0,50,0,none,none
+gn:2359214,Komki-Ipala,Centre,0,village,0,0,50,0,none,none
+gn:2359227,Kombissiri,Centre-Sud,28617,town,0,0,50,0,none,none
+gn:2359317,Kokologo,Centre-Ouest,25958,town,0,0,50,0,none,none
+gn:2359495,Kindi,Centre-Ouest,16424,town,0,0,50,0,none,none
+gn:2359606,Kayao,Centre-Sud,0,village,0,0,50,0,none,none
+gn:2359608,Kaya,Centre-Nord,121970,city,0,0,50,0,none,none
+gn:2359695,Karankasso,Hauts-Bassins,15474,town,0,0,50,0,none,none
+gn:2360073,Houndé,Hauts-Bassins,87151,town,0,0,50,0,none,none
+gn:2360238,Gourcy,Nord,40141,town,0,0,50,0,none,none
+gn:2360286,Goulouré,Centre-Ouest,6677,village,0,0,50,0,none,none
+gn:2360372,Gorom-Gorom,Sahel,9752,village,0,0,50,0,none,none
+gn:2360541,Gayéri,Est,15170,town,0,0,50,0,none,none
+gn:2360615,Garango,Centre-Est,40404,town,0,0,50,0,none,none
+gn:2360620,Gaoua,Sud-Ouest,45284,town,0,0,50,0,none,none
+gn:2360621,Gaongo,Centre-Sud,0,village,0,0,50,0,none,none
+gn:2360626,Gao,Centre-Ouest,26453,town,0,0,50,0,none,none
+gn:2360855,Fara Department,Boucle du Mouhoun,20434,town,0,0,50,0,none,none
+gn:2360886,Fada N'gourma,Est,73200,town,0,0,50,0,none,none
+gn:2361082,Dori,Sahel,46512,town,0,0,50,0,none,none
+gn:2361177,Djibo,Sahel,61462,town,0,0,50,0,none,none
+gn:2361342,Diébougou,Sud-Ouest,25688,town,0,0,50,0,none,none
+gn:2361373,Diapaga,Est,15515,town,0,0,50,0,none,none
+gn:2361444,Déou,Sahel,0,village,0,0,50,0,none,none
+gn:2361477,Dédougou,Boucle du Mouhoun,63617,town,0,0,50,0,none,none
+gn:2361567,Dapélogo,Plateau-Central,0,village,0,0,50,0,none,none
+gn:2361586,Dano,Sud-Ouest,25922,town,0,0,50,0,none,none
+gn:2361778,Gomboussougou,Centre-Sud,15336,town,0,0,50,0,none,none
+gn:2361836,Boussouma,Centre-Nord,0,village,0,0,50,0,none,none
+gn:2361845,Boussé,Plateau-Central,25022,town,0,0,50,0,none,none
+gn:2361853,Bourzanga,Centre-Nord,27213,town,0,0,50,0,none,none
+gn:2361946,Boulsa,Centre-Nord,24200,town,0,0,50,0,none,none
+gn:2362150,Boromo,Boucle du Mouhoun,20193,town,0,0,50,0,none,none
+gn:2362323,Bogandé,Est,21443,town,0,0,50,0,none,none
+gn:2362344,Bobo-Dioulasso,Hauts-Bassins,904920,large-city,0,0,50,0,none,none
+gn:2362376,Bittou,Centre-Est,31210,town,0,0,50,0,none,none
+gn:2362458,Bingo,Centre-Ouest,0,village,0,0,50,0,none,none
+gn:2362498,Bilanga,Est,0,village,0,0,50,0,none,none
+gn:2362626,Béguédo,Centre-Est,21894,town,0,0,50,0,none,none
+gn:2362669,Batié,Sud-Ouest,17997,town,0,0,50,0,none,none
+gn:2362740,Barogo,Plateau-Central,26539,town,0,0,50,0,none,none
+gn:2362781,Barani,Boucle du Mouhoun,5000,village,0,0,50,0,none,none
+gn:2362909,Banfora,Cascades Region,117452,city,0,0,50,0,none,none
+gn:2362970,Bama,Boucle du Mouhoun,31215,town,0,0,50,0,none,none
+gn:2363174,Aribinda,Sahel,45818,town,0,0,50,0,none,none
+gn:2363246,Absouya,Plateau-Central,0,village,0,0,50,0,none,none
+gn:2596769,Tin-Akoff,Sahel,0,village,0,0,50,0,none,none
+gn:10342754,Mani,Est,15066,town,0,0,50,0,none,none
+gn:12076761,Boundoré,Sahel,0,village,0,0,50,0,none,none
+gn:12217144,Namponkoré,Est,16423,town,0,0,50,0,none,none
+gn:12640343,Cinkansé,Centre-Est,19815,town,0,0,50,0,none,none
+gn:12640344,Kompienga,Est,15024,town,0,0,50,0,none,none
+gn:13545848,Kiougou-Kandaga,Est,1732,village,0,0,50,0,none,none
