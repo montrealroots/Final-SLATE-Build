@@ -20,8 +20,8 @@
   "gross": 73755,
   "revenue": 138706.75,
   "distributed": 1.675,
-  "money": 24511006.491,
-  "moneyChange": -488993.509,
+  "money": 24214761.918,
+  "moneyChange": -785238.082,
   "jobsTaken": 0.9,
   "jobsOffered": 0.9,
   "jobPay": 4537.4,
@@ -64,7 +64,7 @@
   "repairSpend": 0,
   "repairsFixed": 0,
   "homesOwned": 1,
-  "pricePaid": 260425,
+  "pricePaid": 551525,
   "mortgageLoan": 0,
   "mortgagePayment": 0,
   "mortgageOwed": 0,
@@ -95,7 +95,7 @@
   "bankFees": 0,
   "owed": 0,
   "accounts": 1,
-  "worth": 18432276.882,
+  "worth": 18209500.963,
   "rewards": 0,
   "fired": 0
  },
@@ -107,8 +107,8 @@
   "gross": 73755,
   "revenue": 138706.75,
   "distributed": 1.675,
-  "money": 24764288.915,
-  "moneyChange": -235711.085,
+  "money": 24746592.491,
+  "moneyChange": -253407.509,
   "jobsTaken": 0.9,
   "jobsOffered": 0.9,
   "jobPay": 4537.4,
@@ -151,15 +151,15 @@
   "repairSpend": 0,
   "repairsFixed": 0,
   "homesOwned": 0,
-  "pricePaid": 260425,
+  "pricePaid": 551525,
   "mortgageLoan": 0,
   "mortgagePayment": 0,
   "mortgageOwed": 0,
   "inspections": 0,
   "purchasesEnded": 0,
   "sold": 1,
-  "saleProceeds": 247876,
-  "saleOffer": 253040.125,
+  "saleProceeds": 524950.35,
+  "saleOffer": 535886.8,
   "soldAtDay": 116.667,
   "workPaid": 0,
   "designRevisions": 0,
@@ -179,10 +179,10 @@
   "lettingsEnded": 0,
   "interestIn": 0,
   "interestOut": 0,
-  "bankFees": 3904.078,
+  "bankFees": 8267.956,
   "owed": 0,
   "accounts": 1,
-  "worth": 18622745.264,
+  "worth": 18609437.553,
   "rewards": 0,
   "fired": 0
  },
@@ -237,16 +237,16 @@
    "n": 40
   },
   "money": {
-   "mean": 253282.424,
-   "lo": 215508.078,
-   "hi": 291056.769,
+   "mean": 531830.572,
+   "lo": 451536.104,
+   "hi": 612125.041,
    "changed": 40,
    "n": 40
   },
   "moneyChange": {
-   "mean": 253282.424,
-   "lo": 215508.078,
-   "hi": 291056.769,
+   "mean": 531830.572,
+   "lo": 451536.104,
+   "hi": 612125.041,
    "changed": 40,
    "n": 40
   },
@@ -594,16 +594,16 @@
    "n": 40
   },
   "saleProceeds": {
-   "mean": 247876,
-   "lo": 210062.771,
-   "hi": 285689.229,
+   "mean": 524950.35,
+   "lo": 444835.137,
+   "hi": 605065.563,
    "changed": 40,
    "n": 40
   },
   "saleOffer": {
-   "mean": 253040.125,
-   "lo": 214439.124,
-   "hi": 291641.126,
+   "mean": 535886.8,
+   "lo": 454102.524,
+   "hi": 617671.076,
    "changed": 40,
    "n": 40
   },
@@ -741,9 +741,9 @@
    "n": 40
   },
   "bankFees": {
-   "mean": 3904.078,
-   "lo": 3308.522,
-   "hi": 4499.634,
+   "mean": 8267.956,
+   "lo": 7006.144,
+   "hi": 9529.768,
    "changed": 40,
    "n": 40
   },
@@ -762,9 +762,9 @@
    "n": 40
   },
   "worth": {
-   "mean": 190468.382,
-   "lo": 162062.075,
-   "hi": 218874.689,
+   "mean": 399936.59,
+   "lo": 339555.15,
+   "hi": 460318.03,
    "changed": 40,
    "n": 40
   },

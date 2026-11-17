@@ -24,6 +24,8 @@ const SG = import.meta.glob<string>('../../data/homes/sg/*.json', { query: '?url
 const BENCH = import.meta.glob<string>('../../data/homes/benchmarks.json', { query: '?url', import: 'default', eager: true });
 const COUNTIES = import.meta.glob<string>('../../data/homes/hud/counties.json', { query: '?url', import: 'default', eager: true });
 const FR_CODES = import.meta.glob<string>('../../data/homes/fr/communes.json', { query: '?url', import: 'default', eager: true });
+const CENSUS = import.meta.glob<string>('../../data/homes/census/*.json', { query: '?url', import: 'default', eager: true });
+const FHFA = import.meta.glob<string>('../../data/homes/fhfa.json', { query: '?url', import: 'default', eager: true });
 
 /**
  * Each factual dataset's geography, dates, units, method and source (from November 17, 2026: the owner's brief, 3).
@@ -37,13 +39,16 @@ export const DATASETS = {
   'US-EIA': { geography: 'US state', effectiveFrom: '2025-01-01', effectiveTo: '2025-12-31', publishedAt: '2026-10-21', availableFrom: '2026-10-21', retrievedAt: '2026-11-16', currency: 'USD', units: 'US cents per kWh, residential average', method: 'EIA Electric Power Annual, data for 2025: revenue divided by kWh sold. Released October 21, 2026', source: 'https://www.eia.gov/electricity/annual/' },
   'GB-ONS': { geography: 'UK nation (England, Wales, Scotland) or UK', effectiveFrom: '2026-09-01', effectiveTo: '2026-09-30', publishedAt: '2026-10-21', availableFrom: '2026-10-21', retrievedAt: '2026-11-16', currency: 'GBP', units: 'pounds a month, average private rent', method: 'ONS Price Index of Private Rents, September 2026, provisional. Published October 21, 2026', source: 'https://www.ons.gov.uk/economy/inflationandpriceindices/bulletins/privaterentandhousepricesuk/october2026' },
   'FR-DVF-2025': { geography: 'French commune', effectiveFrom: '2025-01-01', effectiveTo: '2025-12-31', publishedAt: null, availableFrom: '2026-11-16', retrievedAt: '2026-11-16', currency: 'EUR', units: 'euros per square metre, median of single-home sales', method: 'DVF recorded sales in 2025, kept as commune medians by the game. Publication date not verified: unlocked from the day it was retrieved', source: 'https://www.data.gouv.fr/datasets/demandes-de-valeurs-foncieres-geolocalisees' },
+  'US-ACS-2023': { geography: 'US place (city, town or census-designated place), or its county', effectiveFrom: '2019-01-01', effectiveTo: '2023-12-31', publishedAt: '2024-12-12', availableFrom: '2024-12-12', retrievedAt: '2026-11-17', currency: 'USD', units: 'dollars: median value of owner-occupied homes; median gross rent a month by bedrooms', method: "Census Bureau, American Community Survey 2019-2023 5-year estimates, tables B25077 and B25031, in 2023 dollars; a figure is used only when its margin of error is at most 30% of it. Released December 12, 2024", source: 'https://www2.census.gov/programs-surveys/acs/summary_file/2023/table-based-SF/' },
+  'US-ACS-2024': { geography: 'US place (city, town or census-designated place), or its county', effectiveFrom: '2020-01-01', effectiveTo: '2024-12-31', publishedAt: '2026-01-29', availableFrom: '2026-01-29', retrievedAt: '2026-11-17', currency: 'USD', units: 'dollars: median value of owner-occupied homes; median gross rent a month by bedrooms', method: "Census Bureau, American Community Survey 2020-2024 5-year estimates, tables B25077 and B25031, in 2024 dollars; a figure is used only when its margin of error is at most 30% of it. Released January 29, 2026, after the 2025 shutdown delayed it", source: 'https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/' },
+  'US-FHFA': { geography: 'US metro area or metro division (OMB, July 2023), or the state outside one', effectiveFrom: '1975-01-01', effectiveTo: '2026-06-30', publishedAt: null, availableFrom: 'by quarter', retrievedAt: '2026-11-17', currency: 'USD', units: 'index, not seasonally adjusted', method: "FHFA's all-transactions house price index, quarterly: repeat sales and refinance appraisals of the same homes. The game takes a quarter as known from the end of the second month after it (FHFA publishes in the last week of that month)", source: 'https://www.fhfa.gov/data/hpi/datasets' },
   'SG-HDB': { geography: 'HDB town', effectiveFrom: '2017-01-01', effectiveTo: '2026-10-31', publishedAt: null, availableFrom: 'by month', retrievedAt: '2026-11-16', currency: 'SGD', units: 'Singapore dollars per resale', method: "HDB resale transactions by month: only those up to the game's month are used", source: 'https://data.gov.sg/datasets/d_8b84c4ee58e3cfc0ece0d773c8ca6abc/view' },
 } as const;
 /** A figure's words, said as retrospective when the game's date is before the figure was available to anyone. */
 function dated(says: string, id: keyof typeof DATASETS, day: string): { says: string; retrospective?: true } {
   const d = DATASETS[id];
-  if (d.availableFrom !== 'by month' && day < d.availableFrom) return { says: `${says} Retrospective: these figures were only available from ${d.availableFrom}, after this date; the game uses them to reconstruct the market then.`, retrospective: true };
-  if (id !== 'SG-HDB' && day > d.effectiveTo) return { says: `${says} The latest figures the game holds; they describe ${d.effectiveTo.slice(0, 4)}.` };
+  if (/^\d/.test(d.availableFrom) && day < d.availableFrom) return { says: `${says} Retrospective: these figures were only available from ${d.availableFrom}, after this date; the game uses them to reconstruct the market then.`, retrospective: true };
+  if (id !== 'SG-HDB' && id !== 'US-FHFA' && day > d.effectiveTo) return { says: `${says} The latest figures the game holds; they describe ${d.effectiveTo.slice(0, 4)}.` };
   return { says };
 }
 const cache = new Map<string, Promise<unknown>>();
@@ -70,7 +75,7 @@ export interface MarketEvidence {
   /** Monthly rent by bedrooms 0–4, in hundredths, where a benchmark gives it. */
   rent?: { byBedrooms: number[]; evidence: Evidence; original?: number[] };
   /** Purchase price per square metre, in hundredths, by kind of home, where evidence gives it. */
-  sale?: { houseM2?: number; apartmentM2?: number; evidence: Evidence; medianAreaM2?: number; /** Recorded sales behind it, where it's from sales. */ records?: number };
+  sale?: { houseM2?: number; apartmentM2?: number; evidence: Evidence; medianAreaM2?: number; /** Recorded sales behind it, where it's from sales. */ records?: number; /** A Census median: the place's own, or its county's. */ scope?: 'place' | 'county' };
   /** Singapore: the HDB town and its recent resales by flat type. */
   hdb?: { town: string; byType: Record<string, { price: number; area: number; storey: string; leaseFrom: number; remainingMonths: number | null }[]>; evidence: Evidence };
   /** Recorded sales nearby, for the player to read: never "available now". */
@@ -78,6 +83,37 @@ export interface MarketEvidence {
   /** Average delivered electricity price, US cents per kWh, where EIA gives the state's. Not a tariff. */
   electricity?: { centsPerKwh: number; evidence: Evidence };
   land?: { perM2: number; evidence: Evidence };
+}
+
+interface CensusPlace { fips: string; name: string; value: Record<string, number>; rent: Record<string, number[]> }
+/** The American Housing Survey's median size of a single-family home, 1,800 square feet (2011 survey; Census Bureau release CB13-04), in m². */
+const HOME_M2 = 1800 * 0.092903;
+/**
+ * How much prices have moved since the Census year, by FHFA's index for the place's metro (or its state outside one):
+ * the latest quarter known on the game's day over the Census year's average. The Census median is taken as that year's
+ * level (the game's assumption: a 5-year median is in the final year's dollars, but drawn from all five).
+ */
+export async function priceTrend(county: string | undefined, st: string, year: string, day: string): Promise<{ factor: number; says: string; series?: string; quarter?: string }> {
+  const f = await fetchJson<{ last: [number, number]; series: Record<string, { name: string; from: [number, number]; index: (number | null)[] }>; metro: Record<string, string> }>(FHFA['../../data/homes/fhfa.json']);
+  const code = (county && f?.metro[county]) || st;
+  const s = f?.series[code];
+  if (!s) return { factor: 1, says: 'No price index covers it: the Census figure is used as it stands.' };
+  const at = (y: number, q: number) => s.index[y * 4 + q - 1 - (s.from[0] * 4 + s.from[1] - 1)] ?? null;
+  // The latest quarter published by the game's day: one ending in June is known from the first of September.
+  const month = Number(day.slice(0, 4)) * 12 + Number(day.slice(5, 7)) - 1;
+  let k = Math.floor(month / 3);
+  while (Math.floor(k / 4) * 12 + (k % 4) * 3 + 4 >= month) k--;
+  const lastK = f!.last[0] * 4 + f!.last[1] - 1;
+  k = Math.min(k, lastK);
+  let i: number | null = null;
+  while (k >= s.from[0] * 4 + s.from[1] - 1 && (i = at(Math.floor(k / 4), (k % 4) + 1)) === null) k--;
+  const ref = [1, 2, 3, 4].map((q) => at(Number(year), q)).filter((x): x is number => x !== null);
+  if (i === null || !ref.length) return { factor: 1, says: `No index for ${s.name} at this date: the Census figure is used as it stands.`, series: s.name };
+  const base = ref.reduce((a, x) => a + x, 0) / ref.length;
+  const factor = i / base;
+  const quarter = `${Math.floor(k / 4)} Q${(k % 4) + 1}`;
+  const pct = Math.round((factor - 1) * 1000) / 10;
+  return { factor, series: s.name, quarter, says: `FHFA's house price index for ${s.name} ${pct === 0 ? `was where it stood in ${year}` : pct > 0 ? `had risen ${pct}% from ${year}` : `had fallen ${-pct}% from ${year}`} by ${quarter}, the latest quarter published by this date; the price follows it.` };
 }
 
 /** Evidence for a place, from whichever pack covers it; nothing (and the placeholder model) where none does. */
@@ -97,15 +133,39 @@ export async function marketEvidence(placeId: string, day: string): Promise<Mark
     const inCounty = county ? (hud?.areas ?? []).filter((a) => a.fips.slice(0, 5) === county) : [];
     const match = (inCounty.find((a) => fold(a.town ?? '') === name) ?? inCounty.sort((a, b) => (b.pop2023 ?? 0) - (a.pop2023 ?? 0))[0])
       ?? (county ? undefined : hud?.areas.filter((a) => fold(a.areaName).includes(name) || fold(a.town ?? '').includes(name) || fold(a.county).startsWith(name)).sort((a, b) => (b.pop2023 ?? 0) - (a.pop2023 ?? 0))[0]);
+    // The place's own Census figures (tools/homes/census.py), from November 17, 2026: until then its rent was HUD's for
+    // its county and its price NAHB's national average for a new house. The release the game's day could know: the
+    // 2020-2024 estimates from January 29, 2026, the 2019-2023 before (and, before December 12, 2024, retrospectively).
+    const year = day >= DATASETS['US-ACS-2024'].availableFrom ? '2024' : '2023';
+    const acsId = `US-ACS-${year}` as const;
+    const pack = await fetchJson<{ places: Record<string, CensusPlace>; counties: Record<string, { name: string; value: Record<string, number> }> }>(CENSUS[`../../data/homes/census/${st}.json`]);
+    const own = pack?.places[placeId.replace(/^gn:/, '')];
+    const rentRow = own?.rent[year];
+    if (rentRow) {
+      ev.rent = { byBedrooms: rentRow.map((d) => toLocal(d * 100)), evidence: { basis: 'benchmark', sourceId: acsId, ...dated(`The Census Bureau's median gross rent (rent plus utilities) in ${own!.name}, by bedrooms, from the American Community Survey ${Number(year) - 4}-${year}: every renter's rent, long tenancies too, so a new tenancy often costs more.`, acsId, day) } };
+      ev.nearby.push({ label: `Census median rent, ${own!.name}`, detail: `${Number(year) - 4}-${year} survey: ${rentRow.map((d, i) => `${i === 0 ? 'studio' : `${i} bed`} $${d.toLocaleString('en-US')}`).join(', ')} a month (gross rent).` });
+    }
     if (match) {
       const where = match.town ? `${match.town}, ${match.county}` : match.county;
-      ev.rent = { byBedrooms: match.revised.map((d) => toLocal(d * 100)), original: match.original?.map((d) => toLocal(d * 100)), evidence: { basis: 'benchmark', sourceId: 'US-HUD', ...dated(`HUD's FY2026 Fair Market Rent for ${where} (${match.areaName}): a 40th-percentile gross rent (rent plus utilities), not an asking rent.`, 'US-HUD', day) } };
+      if (!ev.rent) ev.rent = { byBedrooms: match.revised.map((d) => toLocal(d * 100)), original: match.original?.map((d) => toLocal(d * 100)), evidence: { basis: 'benchmark', sourceId: 'US-HUD', ...dated(`HUD's FY2026 Fair Market Rent for ${where} (${match.areaName}): a 40th-percentile gross rent (rent plus utilities), not an asking rent.`, 'US-HUD', day) } };
       ev.nearby.push({ label: `HUD Fair Market Rent, ${where}`, detail: `FY2026, revised: ${match.revised.map((d, i) => `${i === 0 ? 'studio' : `${i} bed`} $${d.toLocaleString('en-US')}`).join(', ')} a month (gross rent).` });
     }
     const bench = await fetchJson<{ nahb: { sales_price: number; finished_area_sqft: number; finished_lot_cost: number }; eia: { geography: string; geography_type: string; residential_us_cents_per_kwh_2025: number }[] }>(BENCH['../../data/homes/benchmarks.json']);
+    const countyRow = county ? pack?.counties[county] : undefined;
+    const median = own?.value[year] ? { value: own.value[year], name: own.name, scope: 'place' as const } : countyRow?.value[year] ? { value: countyRow.value[year], name: countyRow.name, scope: 'county' as const } : undefined;
+    if (median) {
+      const trend = await priceTrend(county, st, year, day);
+      const perM2 = (median.value * 100 * trend.factor) / HOME_M2;
+      const whose = median.scope === 'place' ? `in ${median.name}` : `in ${median.name}, as ${place.name} has no figure of its own good enough to use`;
+      ev.sale = { houseM2: toLocal(Math.round(perM2)), apartmentM2: toLocal(Math.round(perM2 * 0.85)), scope: median.scope, evidence: { basis: 'benchmark', sourceId: acsId, ...dated(`The Census Bureau's median value of owner-occupied homes ${whose}, from the American Community Survey ${Number(year) - 4}-${year}: $${median.value.toLocaleString('en-US')}, priced by the square metre at the American Housing Survey's median home of 1,800 square feet. ${trend.says} Apartments are priced at 85% of it, the game's assumption.`, acsId, day) } };
+      ev.nearby.push({ label: `Census median home value, ${median.name}`, detail: `${Number(year) - 4}-${year} survey: $${median.value.toLocaleString('en-US')}, the value owners put on their homes. Not a sale price.` });
+      if (trend.series) ev.nearby.push({ label: `FHFA house price index, ${trend.series}`, detail: trend.says });
+    }
     if (bench) {
-      const perM2 = Math.round((bench.nahb.sales_price / (bench.nahb.finished_area_sqft * 0.092903)) * 100);
-      ev.sale = { houseM2: toLocal(perM2), apartmentM2: toLocal(Math.round(perM2 * 0.85)), evidence: { basis: 'benchmark', sourceId: 'US-NAHB', ...dated("NAHB's 2024 national survey of new single-family homes: an average sales price per square foot, across the country, not this city's market. Apartments are priced at 85% of it, the game's assumption.", 'US-NAHB', day) } };
+      if (!ev.sale) {
+        const perM2 = Math.round((bench.nahb.sales_price / (bench.nahb.finished_area_sqft * 0.092903)) * 100);
+        ev.sale = { houseM2: toLocal(perM2), apartmentM2: toLocal(Math.round(perM2 * 0.85)), evidence: { basis: 'benchmark', sourceId: 'US-NAHB', ...dated("NAHB's 2024 national survey of new single-family homes: an average sales price per square foot, across the country, not this city's market. Apartments are priced at 85% of it, the game's assumption.", 'US-NAHB', day) } };
+      }
       ev.land = { perM2: toLocal(Math.round((bench.nahb.finished_lot_cost / 900) * 100)), evidence: { basis: 'benchmark', sourceId: 'US-NAHB', ...dated("NAHB's national average finished-lot cost, spread over a 900 m² lot (the game's assumption): not this town's land price.", 'US-NAHB', day) } };
       const e = bench.eia.find((x) => x.geography === place.region && x.geography_type === 'state_or_district');
       if (e) ev.electricity = { centsPerKwh: e.residential_us_cents_per_kwh_2025, evidence: { basis: 'benchmark', sourceId: 'US-EIA', ...dated(`EIA's 2025 average residential price in ${place.region}: revenue per kWh delivered, not your tariff.`, 'US-EIA', day) } };
@@ -375,7 +435,7 @@ export function coverageOf(place: Place, ev: MarketEvidence): Coverage {
   const verified = VERIFIED_HOMES[place.id] ?? 0;
   const mix = localMix(place);
   const hdbSales = ev.hdb ? Object.values(ev.hdb.byType).reduce((a, xs) => a + xs.length, 0) : 0;
-  const tier = (e: Evidence | undefined, what: string) => !e ? `none: ${what} are the game's estimate` : e.sourceId === 'US-HUD' ? 'HUD Fair Market Rent for its county' : e.sourceId === 'GB-ONS' ? "ONS average rent for its nation (not the city's own)" : e.sourceId === 'US-NAHB' ? "NAHB's national average (not the city's own)" : e.sourceId === 'FR-DVF-2025' ? 'DVF 2025 recorded sales in its own commune' : e.sourceId === 'SG-HDB' ? 'HDB resales in its own town' : e.sourceId;
+  const tier = (e: Evidence | undefined, what: string) => !e ? `none: ${what} are the game's estimate` : e.sourceId === 'US-HUD' ? 'HUD Fair Market Rent for its county' : e.sourceId.startsWith('US-ACS') ? (what === 'prices' && ev.sale?.scope === 'county' ? "Census median for its county (not the place's own)" : 'Census median for the place itself') : e.sourceId === 'GB-ONS' ? "ONS average rent for its nation (not the city's own)" : e.sourceId === 'US-NAHB' ? "NAHB's national average (not the city's own)" : e.sourceId === 'FR-DVF-2025' ? 'DVF 2025 recorded sales in its own commune' : e.sourceId === 'SG-HDB' ? 'HDB resales in its own town' : e.sourceId;
   return {
     placeId: place.id, market: mix.label,
     verifiedHomes: verified, datedListings: 0, shortfall: Math.max(0, VERIFIED_TARGET - verified),

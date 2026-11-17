@@ -18,7 +18,9 @@ are never presented as real listings. Recorded sales are past transactions, not 
 - `rent_source`, `price_source`: where its rents and prices come from: `hud-county` (HUD FY2026 Fair Market Rent for
   the place's own county), `ons-nation` (ONS's average rent for the UK nation, not the city's own), `nahb-national`
   (NAHB's national average, not the city's own), `dvf-commune` (DVF 2025 recorded sales in the place's own commune),
-  `hdb-town` (HDB resales in its own town), `none` (the game's placeholder: nothing researched).
+  `hdb-town` (HDB resales in its own town), `acs-place` (the Census Bureau's median rent or home value for the place
+  itself, American Community Survey 2020-2024; a home value moved by FHFA's price index), `acs-county` (the Census
+  median home value for its county, where the place has none good enough), `none` (the game's placeholder).
 - The kinds of home each market holds follow its size (market.ts localMix): a large city and a city have flats,
   condominiums, townhouses and houses; a town and a village mostly houses, with some flats and townhouses; every
   market has studios and building plots, and a Singapore HDB town has HDB flats.
@@ -27,8 +29,8 @@ are never presented as real listings. Recorded sales are past transactions, not 
 - Verified homes at real addresses: 0. Dated real listings: 0.
 - Shortfall against fifty verified homes each: 8,587,500
 - Places with recorded sales of their own (DVF communes, HDB towns): 8,322
-- Places whose rents come from their own county (HUD): 17,320
-- Places whose prices come from their own commune or town's recorded sales: 8,322
+- Places whose rents are their own (Census) or their county's (HUD): 17,321
+- Places whose prices are their own (Census, DVF, HDB) or their county's (Census): 25,600
 - Places with no housing statistics at all (rents and prices both the game's placeholder): 141,440
 
 | Code | Country | Places | Verified | Listings | Shortfall | With recorded sales | Local rents | Local prices |
@@ -261,7 +263,7 @@ are never presented as real listings. Recorded sales are past transactions, not 
 | TZ | Tanzania | 324 | 0 | 0 | 16200 | 0 | 0 | 0 |
 | UA | Ukraine | 3887 | 0 | 0 | 194350 | 0 | 0 | 0 |
 | UG | Uganda | 208 | 0 | 0 | 10400 | 0 | 0 | 0 |
-| US | United States | 17343 | 0 | 0 | 867150 | 0 | 17320 | 0 |
+| US | United States | 17343 | 0 | 0 | 867150 | 0 | 17321 | 17278 |
 | UY | Uruguay | 135 | 0 | 0 | 6750 | 0 | 0 | 0 |
 | UZ | Uzbekistan | 219 | 0 | 0 | 10950 | 0 | 0 | 0 |
 | VA | Vatican | 1 | 0 | 0 | 50 | 0 | 0 | 0 |

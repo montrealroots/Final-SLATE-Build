@@ -20,8 +20,8 @@
   "gross": 71725,
   "revenue": 123649.5,
   "distributed": 1.775,
-  "money": 24502070.569,
-  "moneyChange": -497929.431,
+  "money": 24209082.549,
+  "moneyChange": -790917.451,
   "jobsTaken": 1.1,
   "jobsOffered": 1.1,
   "jobPay": 5304.9,
@@ -64,7 +64,7 @@
   "repairSpend": 0,
   "repairsFixed": 0,
   "homesOwned": 1,
-  "pricePaid": 257600,
+  "pricePaid": 545500,
   "mortgageLoan": 0,
   "mortgagePayment": 0,
   "mortgageOwed": 0,
@@ -95,7 +95,7 @@
   "bankFees": 0,
   "owed": 0,
   "accounts": 1,
-  "worth": 18425557.067,
+  "worth": 18205230.076,
   "rewards": 0,
   "fired": 0
  },
@@ -107,8 +107,8 @@
   "gross": 71725,
   "revenue": 123649.5,
   "distributed": 1.775,
-  "money": 24527489.66,
-  "moneyChange": -472510.34,
+  "money": 24262101.028,
+  "moneyChange": -737898.972,
   "jobsTaken": 1.1,
   "jobsOffered": 1.1,
   "jobPay": 5304.9,
@@ -151,7 +151,7 @@
   "repairSpend": 158.25,
   "repairsFixed": 0.25,
   "homesOwned": 1,
-  "pricePaid": 257600,
+  "pricePaid": 545500,
   "mortgageLoan": 0,
   "mortgagePayment": 0,
   "mortgageOwed": 0,
@@ -174,7 +174,7 @@
   "buildQuote": 0,
   "buildSpend": 0,
   "letRents": 23,
-  "letIncome": 23668.9,
+  "letIncome": 50121.9,
   "letCosts": 0,
   "lettingsEnded": 0,
   "interestIn": 0,
@@ -182,7 +182,7 @@
   "bankFees": 0,
   "owed": 0,
   "accounts": 1,
-  "worth": 18444672.224,
+  "worth": 18245099.972,
   "rewards": 0,
   "fired": 0
  },
@@ -237,16 +237,16 @@
    "n": 40
   },
   "money": {
-   "mean": 25419.091,
-   "lo": 22498.377,
-   "hi": 28339.805,
+   "mean": 53018.479,
+   "lo": 46852.833,
+   "hi": 59184.125,
    "changed": 40,
    "n": 40
   },
   "moneyChange": {
-   "mean": 25419.091,
-   "lo": 22498.377,
-   "hi": 28339.805,
+   "mean": 53018.479,
+   "lo": 46852.833,
+   "hi": 59184.125,
    "changed": 40,
    "n": 40
   },
@@ -706,9 +706,9 @@
    "n": 40
   },
   "letIncome": {
-   "mean": 23668.9,
-   "lo": 20890.684,
-   "hi": 26447.116,
+   "mean": 50121.9,
+   "lo": 44232.248,
+   "hi": 56011.552,
    "changed": 40,
    "n": 40
   },
@@ -762,9 +762,9 @@
    "n": 40
   },
   "worth": {
-   "mean": 19115.157,
-   "lo": 16918.78,
-   "hi": 21311.534,
+   "mean": 39869.896,
+   "lo": 35233.33,
+   "hi": 44506.462,
    "changed": 40,
    "n": 40
   },

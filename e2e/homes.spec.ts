@@ -176,8 +176,10 @@ test('Buying in Los Angeles: a mortgage, an inspection, completion, a new exteri
   // A house: a flat's outside is its building's, and the association decides it (the failure journey shows a refusal).
   const title = await firstOffer(page, 'Buy A Home', /House|Townhouse/);
   const detail = page.locator('#home-detail');
-  // US sale prices are NAHB's national benchmark, said as such; the costs before buying are listed.
-  await expect(detail).toContainText("NAHB's 2024 national survey");
+  // US sale prices are the city's own Census median value, moved by FHFA's index (NAHB's national average until
+  // November 17, 2026), said as such; the costs before buying are listed.
+  await expect(detail).toContainText("The Census Bureau's median value of owner-occupied homes in Los Angeles city, California");
+  await expect(detail).toContainText("FHFA's house price index");
   await expect(detail.getByLabel('Paying With')).toHaveValue('mortgage');
   await expect(detail.getByLabel('Have It Inspected')).toBeChecked();
   const costs = detail.getByRole('list', { name: 'Costs To Buy' });
@@ -388,10 +390,17 @@ test('A lapsed approval, a refused permission, a stale favourite, a withdrawn pu
     const it = card(page, /To Rent$/).getByRole('listitem').filter({ hasText: b });
     if (!(await it.count())) return false;
     await it.getByRole('button', { name: /^Details: / }).click();
-    if ((await page.locator('#home-detail').innerText()).includes('This offer has lapsed')) return true;
-    relisted = (await readSavedState(page)).homes.homes[favId].validUntil > firstUntil;
+    const shown = await page.locator('#home-detail').innerText();
+    if (shown.includes('This offer has lapsed')) return true;
+    // Relisted: the listing shown runs past the one saved. The saved record keeps its old dates (the list shows the
+    // home as it's listed now), so this reads the dates on screen; until November 17, 2026 it read the save, and failed
+    // whenever the home came straight back on the market.
+    const until = /offer stands until ([A-Z][a-z]+ \d{1,2}, \d{4})/.exec(shown)?.[1];
+    const d = until ? new Date(`${until} 12:00`) : null;
+    relisted = !!d && `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}` > firstUntil;
     return relisted;
   });
+  test.info().annotations.push({ type: 'favourite', description: relisted ? 'came back on the market' : 'lapsed' });
   const applyB = page.locator('#home-detail').getByRole('button', { name: `Apply To Rent: ${b}` });
   if (relisted) {
     await expect(page.locator('#home-detail')).not.toContainText('This offer has lapsed');

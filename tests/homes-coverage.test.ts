@@ -22,6 +22,8 @@ const SOURCE: Record<string, string> = {
   "NAHB's national average (not the city's own)": 'nahb-national',
   'DVF 2025 recorded sales in its own commune': 'dvf-commune',
   'HDB resales in its own town': 'hdb-town',
+  'Census median for the place itself': 'acs-place',
+  "Census median for its county (not the place's own)": 'acs-county',
 };
 const short = (s: string) => SOURCE[s] ?? (s.startsWith('none') ? 'none' : s);
 const MARKET: Record<string, string> = { 'a large city': 'large-city', 'a city': 'city', 'a town': 'town', 'a village or small town': 'village' };
@@ -62,7 +64,7 @@ describe('housing coverage, place by place', () => {
       const path = `${OUT}/${code}.csv`;
       if (write) writeFileSync(path, text);
       else expect(existsSync(path) && readFileSync(path, 'utf8') === text, `${path} is out of date: run with SLATE_WRITE_AUDIT=1`).toBe(true);
-      const local = (s: string) => /own commune|own town|its county/.test(s);
+      const local = (s: string) => /own commune|own town|its county|place itself/.test(s);
       const n = { places: covs.length, shortfall: covs.reduce((a, c) => a + c.shortfall, 0), recorded: covs.filter((c) => c.recordedSales?.count).length, localRent: covs.filter((c) => local(c.rentEvidence)).length, localSale: covs.filter((c) => local(c.saleEvidence)).length };
       totals.places += n.places; totals.shortfall += n.shortfall; totals.recorded += n.recorded; totals.localRent += n.localRent; totals.localSale += n.localSale;
       totals.none += covs.filter((c) => c.rentEvidence.startsWith('none') && c.saleEvidence.startsWith('none')).length;
@@ -89,7 +91,9 @@ describe('housing coverage, place by place', () => {
       '- `rent_source`, `price_source`: where its rents and prices come from: `hud-county` (HUD FY2026 Fair Market Rent for',
       "  the place's own county), `ons-nation` (ONS's average rent for the UK nation, not the city's own), `nahb-national`",
       "  (NAHB's national average, not the city's own), `dvf-commune` (DVF 2025 recorded sales in the place's own commune),",
-      "  `hdb-town` (HDB resales in its own town), `none` (the game's placeholder: nothing researched).",
+      "  `hdb-town` (HDB resales in its own town), `acs-place` (the Census Bureau's median rent or home value for the place",
+      "  itself, American Community Survey 2020-2024; a home value moved by FHFA's price index), `acs-county` (the Census",
+      "  median home value for its county, where the place has none good enough), `none` (the game's placeholder).",
       '- The kinds of home each market holds follow its size (market.ts localMix): a large city and a city have flats,',
       '  condominiums, townhouses and houses; a town and a village mostly houses, with some flats and townhouses; every',
       "  market has studios and building plots, and a Singapore HDB town has HDB flats.",
@@ -98,8 +102,8 @@ describe('housing coverage, place by place', () => {
       `- Verified homes at real addresses: 0. Dated real listings: 0.`,
       `- Shortfall against fifty verified homes each: ${totals.shortfall.toLocaleString('en-US')}`,
       `- Places with recorded sales of their own (DVF communes, HDB towns): ${totals.recorded.toLocaleString('en-US')}`,
-      `- Places whose rents come from their own county (HUD): ${totals.localRent.toLocaleString('en-US')}`,
-      `- Places whose prices come from their own commune or town's recorded sales: ${totals.localSale.toLocaleString('en-US')}`,
+      `- Places whose rents are their own (Census) or their county's (HUD): ${totals.localRent.toLocaleString('en-US')}`,
+      `- Places whose prices are their own (Census, DVF, HDB) or their county's (Census): ${totals.localSale.toLocaleString('en-US')}`,
       `- Places with no housing statistics at all (rents and prices both the game's placeholder): ${totals.none.toLocaleString('en-US')}`,
       '',
       '| Code | Country | Places | Verified | Listings | Shortfall | With recorded sales | Local rents | Local prices |',
@@ -113,10 +117,13 @@ describe('housing coverage, place by place', () => {
     expect(totals.shortfall).toBe(171750 * VERIFIED_TARGET);
   }, 600_000);
 
-  it("prices each place from its own records: Lancaster, Texas from Dallas County; Blaye from Blaye's sales; Paris from its arrondissements", async () => {
+  it("prices each place from its own records: Fort Worth from its own Census figures; Lancaster, Texas its own value and Dallas County's rents; Paris from its arrondissements", async () => {
     const { rows } = await countryRows('US');
     const lancaster = rows.find((r) => r[0] === 'gn:4705191')!;
     expect(lancaster[9]).toBe('hud-county');
+    expect(lancaster[10]).toBe('acs-place');
+    const fortWorth = rows.find((r) => r[0] === 'gn:4691930')!;
+    expect([fortWorth[9], fortWorth[10]]).toEqual(['acs-place', 'acs-place']);
     const paris = coverageOf(getPlace('fr-paris'), await marketEvidence('fr-paris', DAY));
     expect(paris.recordedSales?.count).toBeGreaterThan(10000);
     expect(paris.saleEvidence).toContain('own commune');
