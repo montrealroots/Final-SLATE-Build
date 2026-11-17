@@ -23,7 +23,7 @@ import type { CreationDraft, FinanceDeal, GameState, Project } from './types';
 
 export type FamilyCircumstances = 'stretched' | 'getting-by' | 'comfortable' | 'wealthy';
 export type FamilySupportKind = 'none' | 'gift' | 'loan' | 'investment' | 'equipment';
-export type PersonalKind = 'inheritance' | 'savings' | 'gift' | 'loan' | 'investment' | 'repayment' | 'participation' | 'to-project' | 'from-project' | 'equipment' | 'equipment-sale' | 'paid-work' | 'commission' | 'company' | 'overhead';
+export type PersonalKind = 'inheritance' | 'savings' | 'gift' | 'loan' | 'investment' | 'repayment' | 'participation' | 'to-project' | 'from-project' | 'equipment' | 'equipment-sale' | 'paid-work' | 'commission' | 'company' | 'overhead' | 'guarantee';
 export interface PersonalPosting { id: string; at: number; kind: PersonalKind; amount: number; label: string; key: string }
 export interface FamilyTerms {
   circumstances: FamilyCircumstances;
@@ -108,7 +108,7 @@ export const PERSONAL_CASH = 'player:cash:USD';
 const COUNTER: Record<PersonalKind, string> = {
   inheritance: 'inheritance', savings: 'opening-savings', gift: 'family-gift', loan: 'family-loan', investment: 'family-investment', repayment: 'family-loan', participation: 'family-investment',
   'to-project': 'projects', 'from-project': 'projects', equipment: 'equipment', 'equipment-sale': 'equipment', 'paid-work': 'paid-work', commission: 'agent-commission',
-  company: 'company-transfers', overhead: 'first-look-overhead',
+  company: 'company-transfers', overhead: 'first-look-overhead', guarantee: 'overall-guarantee',
 };
 export const counterOf = (kind: PersonalKind) => COUNTER[kind];
 /** Opens your bank, where a story has none yet: a current account with nothing in it. */
@@ -236,7 +236,7 @@ export function personalStatement(state: GameState): { kind: PersonalKind; total
 export const PERSONAL_LABELS: Record<PersonalKind, string> = {
   inheritance: 'Your Inheritance', savings: 'Your Savings', gift: 'Gift From Your Family', loan: 'Loan From Your Family', investment: 'Investment From Your Family', 'from-project': 'Taken Home From Your Projects',
   'to-project': 'Put Into Your Projects', repayment: 'Repaid To Your Family', participation: "Your Family's Share Of What You Took Home",
-  equipment: 'Equipment Bought And Serviced', 'equipment-sale': 'Equipment Sold', 'paid-work': 'Paid For Work On Others\' Productions', commission: 'Commission To Your Agent', company: 'To And From Your Company', overhead: 'Overhead From A First-Look Deal',
+  equipment: 'Equipment Bought And Serviced', 'equipment-sale': 'Equipment Sold', 'paid-work': 'Paid For Work On Others\' Productions', commission: 'Commission To Your Agent', company: 'To And From Your Company', overhead: 'Overhead From A First-Look Deal', guarantee: 'Pay From An Overall Deal',
 };
 void deals; void ownMoney;
 

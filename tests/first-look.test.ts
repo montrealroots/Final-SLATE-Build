@@ -4,8 +4,9 @@
 import { describe, expect, it } from 'vitest';
 import { DAY, acceptDeal, createProject, deserialize, processUntil, serialize, setFinanceTarget } from './engine-api';
 import { backerOptions, pitchToStudio, studioOption, submitSeries } from '../src/engine/finance';
+import { acceptJob, acceptRefusal, moveJob } from '../src/engine/jobs';
 import { companyBalance } from '../src/engine/company';
-import { personalBalance, postPersonal } from '../src/engine/personal';
+import { personalBalance, personalStatement, postPersonal } from '../src/engine/personal';
 import {
   dealTier,
   FIRST_LOOK_NOTICE_DAYS, acceptFirstLook, activeFirstLook, askMoreOverhead, declineFirstLook, developmentRefusal, drawDevelopment, endFirstLook,
@@ -320,5 +321,124 @@ describe('A13: what a record earns, and what money doesn\'t', () => {
     expect(dealTier(rich)).toBe('proven');
     const fl = offerFirstLook(rich)!;
     expect([fl.terms.tier, fl.terms.months]).toEqual(['proven', 24]);
+  });
+});
+
+// The owner's v8 package, A14 (from November 17, 2026): an overall deal. A large studio offers one for a record past its
+// start; its yearly guarantee is your pay, a twelfth a month, never the term's headline at signing; it has your services
+// exclusively, and your films and series both.
+describe('A14: an overall deal', () => {
+  /** A proven record (two well-received films) in a world whose only fitting studio makes twelve films a year. */
+  function proven(tag: string, studios = [BIG]): GameState {
+    const s = world(tag, studios);
+    record(s, 66);
+    record(s, 72);
+    return s;
+  }
+  const paid = (s: GameState, kind: string) => personalStatement(s).find((x) => x.kind === kind)?.total ?? 0;
+  const guaranteePaid = (s: GameState) => paid(s, 'guarantee');
+  const job = (s: GameState, company: string) => {
+    (s.jobs ??= []).push({ id: `job-${company}`, role: 'acting', production: 'Fixture', company, dayRate: 300, days: ['2027-06-01'], placeId: s.locationId, zone: 'Europe/London', status: 'offered', offeredAt: s.now, answerBy: s.now + 7 * DAY, attended: [], missed: [] });
+    return `job-${company}`;
+  };
+
+  it('comes from a large studio for a record past its start, never to a beginner, never from a small studio', () => {
+    const s = proven('ov-offer');
+    const fl = offerFirstLook(s)!;
+    expect(fl.terms.overall).toBeDefined();
+    expect([fl.terms.tier, fl.terms.months, fl.terms.overhead]).toEqual(['proven', 24, 0]);
+    // The proven band (deal-model.json): $1m to $5m a year, placed by the studio's scale (twelve films a year).
+    expect(fl.terms.overall!.annual).toBeGreaterThanOrEqual(1_000_000);
+    expect(fl.terms.overall!.annual).toBeLessThanOrEqual(5_000_000);
+    expect(firstLookWords(fl).join(' ')).toMatch(/never at signing/);
+    // The same record with a small studio is offered a first look; one film with a large studio, a first look too.
+    expect(offerFirstLook(proven('ov-small', [HORROR]))!.terms.overall).toBeUndefined();
+    const start = world('ov-start', [BIG]);
+    record(start, 66);
+    expect(offerFirstLook(start)!.terms.overall).toBeUndefined();
+  });
+
+  it('pays its guarantee a twelfth a month as your pay, never the headline at signing, and stops when it ends', () => {
+    const s = proven('ov-pay');
+    const fl = offerFirstLook(s)!;
+    const before = personalBalance(s);
+    acceptFirstLook(s, fl.id);
+    const monthly = fl.terms.overall!.annual / 12;
+    // Signing pays the first month only: the term's headline is twenty-four times that.
+    expect(guaranteePaid(s)).toBeCloseTo(monthly, 2);
+    expect(personalBalance(s) - before).toBeCloseTo(monthly, 0);
+    wait(s, 95);
+    expect(guaranteePaid(s)).toBeCloseTo(monthly * 4, 2);
+    endFirstLook(s, fl.id);
+    wait(s, 90);
+    expect(guaranteePaid(s)).toBeCloseTo(monthly * 4, 2);
+    // Overhead stayed nothing: the guarantee is pay, a kind of its own (A14: overhead and pay kept apart).
+    expect(paid(s, 'overhead')).toBe(0);
+  });
+
+  it('has your services alone: work for another company is refused while it runs, and taken once it ends', () => {
+    const s = proven('ov-excl');
+    const id = job(s, 'Another Company (Fixture)');
+    expect(acceptRefusal(s, id)).toBeNull();
+    const fl = offerFirstLook(s)!;
+    acceptFirstLook(s, fl.id);
+    expect(acceptRefusal(s, id)).toMatch(/^Your overall deal with Meridian \(Fixture\) has your services alone until /);
+    endFirstLook(s, fl.id);
+    expect(acceptRefusal(s, id)).toBeNull();
+    // A first look leaves your services free.
+    const t = signed('ov-fl');
+    expect(acceptRefusal(t, job(t, 'Another Company (Fixture)'))).toBeNull();
+  });
+
+  it('keeps work taken before it was signed: a production put back moves that work, it doesn\'t refuse it (proofs, November 17, 2026)', () => {
+    // Until the fix, moving the days re-accepted the work through every check, the deal's exclusivity among them, so the
+    // production's confirmation threw and time couldn't pass (docs/v10/proof/off-first-look-check.json found it).
+    const s = proven('ov-moved');
+    const id = job(s, 'Another Company (Fixture)');
+    acceptJob(s, id);
+    acceptFirstLook(s, offerFirstLook(s)!.id);
+    const j = s.jobs!.find((x) => x.id === id)!;
+    expect(() => moveJob(s, j, 21)).not.toThrow();
+    expect([j.status, j.days[0]]).toEqual(['accepted', '2027-06-22']);
+    expect(s.plans.filter((x) => x.status === 'upcoming' && x.title.includes('Fixture'))).toHaveLength(1);
+  });
+
+  it('covers films and series both: each goes to its studio first', () => {
+    const s = proven('ov-scope');
+    acceptFirstLook(s, offerFirstLook(s)!.id);
+    const fl = activeFirstLook(s)!;
+    const film = feature(s, { title: 'A Covered Film' });
+    const series = feature(s, { title: 'A Covered Series', genres: ['crime'] });
+    series.axes.format = 'series';
+    expect([covers(fl, film), covers(fl, series)]).toEqual([true, true]);
+    expect(studioOption(s, film, HORROR.c)?.needs ?? '').toBe(''); // HORROR isn't in this world; nothing to hold
+    expect(submissionStanding(s, series)?.stage).toBe('not-submitted');
+    submitSeries(s, series);
+    expect(submissionStanding(s, series)?.stage).toBe('considering');
+  });
+
+  it('can be asked once for more, never past the most its tier pays', () => {
+    const s = proven('ov-ask');
+    const fl = offerFirstLook(s)!;
+    askMoreOverhead(s, fl.id);
+    expect(() => askMoreOverhead(s, fl.id)).toThrow(/asked once/);
+    wait(s, 8);
+    expect(fl.counter?.outcome).toBeDefined();
+    expect(fl.terms.overall!.annual).toBeLessThanOrEqual(5_000_000);
+    // Already at the top of its band, nothing more is asked.
+    const t = proven('ov-top');
+    const top = offerFirstLook(t)!;
+    top.terms.overall!.annual = 5_000_000; // labelled fixture: an offer at the band's top
+    expect(() => askMoreOverhead(t, top.id)).toThrow(/already offers the most/);
+  });
+
+  it('is kept whole through a save, and its guarantee counts as wages to a bank', async () => {
+    const s = proven('ov-save');
+    acceptFirstLook(s, offerFirstLook(s)!.id);
+    const back = deserialize(serialize(s));
+    expect(activeFirstLook(back)?.terms.overall).toEqual(activeFirstLook(s)!.terms.overall);
+    expect(() => validateGameState(JSON.parse(JSON.stringify(back)))).not.toThrow();
+    const { isWages } = await import('../src/engine/bankworld/core/ledger');
+    expect(isWages('slate:guarantee#overall:fl-1:1')).toBe(true);
   });
 });

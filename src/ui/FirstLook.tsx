@@ -6,8 +6,9 @@ import { money } from '../engine/budget';
 import {
   acceptFirstLook, activeFirstLook, askMoreOverhead, declineFirstLook, developmentRefusal, drawDevelopment, endFirstLook, firstLookWords, firstLooks, fundLeft,
   openFirstLookOffer, submissionStanding,
-  scopeOf,
+  dealName, scopeOf,
 } from '../engine/first-look';
+import { TV_FORMATS } from '../engine/blueprints';
 import { deals, submitSeries } from '../engine/finance';
 import { formatDateKey } from '../engine/time';
 import type { Project } from '../engine/types';
@@ -25,25 +26,28 @@ export function FirstLookCard() {
   const fl = activeFirstLook(g);
   const past = firstLooks(g).filter((x) => x !== offer && x !== fl);
   if (!offer && !fl && !past.length) return null;
+  // An overall deal (from November 17, 2026) is shown as one: pay a year for your services, not overhead a month.
+  const overall = (offer ?? fl)?.terms.overall;
+  const figure = (t: NonNullable<typeof offer>['terms']) => (t.overall ? `${money(t.overall.annual)} a year` : `${money(t.overhead)} a month`);
   return (
     <section className="card" aria-labelledby="firstlook-h">
-      <h2 id="firstlook-h">First-Look Deal</h2>
+      <h2 id="firstlook-h">{overall ? 'Overall Deal' : 'First-Look Deal'}</h2>
       {offer && (
-        <div role="region" aria-label="First-Look Offer">
-          <p><strong>{offer.name}</strong> offers you a first-look deal{offer.renews ? ', renewing the last one' : ''}. {offer.why}</p>
+        <div role="region" aria-label={offer.terms.overall ? 'Overall Deal Offer' : 'First-Look Offer'}>
+          <p><strong>{offer.name}</strong> offers you {offer.terms.overall ? 'an overall deal' : 'a first-look deal'}{offer.renews ? ', renewing the last one' : ''}. {offer.why}</p>
           <ul className="list" aria-label="Its Terms">{firstLookWords(offer).map((w) => <li key={w} className="list-item">{w}</li>)}</ul>
-          {offer.counter && <p className="dim small">{offer.counter.outcome === 'agreed' ? `It agreed to ${money(offer.terms.overhead)} a month.` : offer.counter.outcome === 'held' ? `It kept its offer of ${money(offer.terms.overhead)} a month.` : `You asked for more overhead. It answers by ${day(offer.counter.answerAt)}.`}</p>}
+          {offer.counter && <p className="dim small">{offer.counter.outcome === 'agreed' ? `It agreed to ${figure(offer.terms)}.` : offer.counter.outcome === 'held' ? `It kept its offer of ${figure(offer.terms)}.` : `You asked for more. It answers by ${day(offer.counter.answerAt)}.`}</p>}
           <p className="dim small">The offer expires on {day(offer.answerBy)}. Nothing binds you until you accept. Amounts are game calibration by the company's recorded scale, not its real terms.</p>
           <div className="row gap-2 wrap">
-            <button className="btn primary" disabled={!!fl || (!!offer.counter && !offer.counter.outcome)} onClick={() => setErr(store.act((s) => acceptFirstLook(s, offer.id)))}>Accept The First-Look Deal</button>
-            <button className="btn" disabled={!!offer.counter} onClick={() => setErr(store.act((s) => askMoreOverhead(s, offer.id)))}>Ask For {money(Math.round(offer.terms.overhead * 1.5))} A Month</button>
+            <button className="btn primary" disabled={!!fl || (!!offer.counter && !offer.counter.outcome)} onClick={() => setErr(store.act((s) => acceptFirstLook(s, offer.id)))}>{offer.terms.overall ? 'Accept The Overall Deal' : 'Accept The First-Look Deal'}</button>
+            <button className="btn" disabled={!!offer.counter} onClick={() => setErr(store.act((s) => askMoreOverhead(s, offer.id)))}>{offer.terms.overall ? 'Ask For More A Year' : `Ask For ${money(Math.round(offer.terms.overhead * 1.5))} A Month`}</button>
             <button className="btn" onClick={() => setErr(store.act((s) => declineFirstLook(s, offer.id)))}>Decline</button>
           </div>
         </div>
       )}
       {fl && (
-        <div role="region" aria-label="Your First-Look Deal">
-          <p><strong>{fl.name}</strong>: {money(fl.terms.overhead)} a month until {day(fl.endsAt!)}. {money(fundLeft(fl))} of development money left. It answers a submission in {fl.terms.considerDays} days.</p>
+        <div role="region" aria-label={fl.terms.overall ? 'Your Overall Deal' : 'Your First-Look Deal'}>
+          <p><strong>{fl.name}</strong>: {fl.terms.overall ? `${figure(fl.terms)} for your services, your work its alone,` : figure(fl.terms)} until {day(fl.endsAt!)}. {money(fundLeft(fl))} of development money left. It answers a submission in {fl.terms.considerDays} days.</p>
           {fl.submissions.length ? (
             <ul className="list" aria-label="Submitted To It">
               {fl.submissions.map((x) => {
@@ -53,13 +57,13 @@ export function FirstLookCard() {
                 return <li key={x.dealId} className="list-item"><span className="grow">{p?.title ?? 'A project'}, submitted {day(x.at)}</span><span>{st ? STAGE[st.stage] : ''}{d?.status === 'considering' && d.decideAt ? `, answers by ${day(d.decideAt)}` : ''}</span></li>;
               })}
             </ul>
-          ) : <p className="muted">{scopeOf(fl.terms) === 'television' ? `Nothing submitted yet. Submit a covered series to ${fl.name} from its Budget page.` : `Nothing submitted yet. Submit a covered film by pitching it to ${fl.name} from its Budget page.`}</p>}
+          ) : <p className="muted">{fl.terms.overall ? `Nothing submitted yet. Pitch a film to ${fl.name}, or submit a series to it, from the project's Budget page.` : scopeOf(fl.terms) === 'television' ? `Nothing submitted yet. Submit a covered series to ${fl.name} from its Budget page.` : `Nothing submitted yet. Submit a covered film by pitching it to ${fl.name} from its Budget page.`}</p>}
           <button className="btn" onClick={() => setErr(store.act((s) => endFirstLook(s, fl.id)))}>End The Deal Early</button>
         </div>
       )}
       {past.length > 0 && (
-        <ul className="list" aria-label="Earlier First-Look Deals">
-          {past.map((x) => <li key={x.id} className="list-item dim small">{x.name}: {x.status === 'declined' ? 'declined' : x.status === 'lapsed' ? 'lapsed unanswered' : x.status === 'ended-early' ? `ended early, ${day(x.endsAt!)}` : `ended ${day(x.endsAt!)}`}</li>)}
+        <ul className="list" aria-label="Earlier Deals">
+          {past.map((x) => <li key={x.id} className="list-item dim small">{x.name}, {dealName(x.terms)}: {x.status === 'declined' ? 'declined' : x.status === 'lapsed' ? 'lapsed unanswered' : x.status === 'ended-early' ? `ended early, ${day(x.endsAt!)}` : `ended ${day(x.endsAt!)}`}</li>)}
         </ul>
       )}
       {err && <p role="alert" style={{ color: 'var(--negative)' }}>{err}</p>}
@@ -77,18 +81,20 @@ export function FirstLookProjectCard({ p }: { p: Project }) {
   const no = developmentRefusal(g, p, amount);
   const drawn = st.fl.drawn.filter((x) => x.projectId === p.id).reduce((a, x) => a + x.amount, 0);
   const live = () => store.state!.projects.find((x) => x.id === p.id)!;
-  const tv = scopeOf(st.fl.terms) === 'television';
+  // A series goes to the studio as a submission, a film as a pitch: an overall deal covers both (November 17, 2026).
+  const tv = st.fl.terms.overall ? TV_FORMATS.includes(p.axes.format) : scopeOf(st.fl.terms) === 'television';
+  const deal = dealName(st.fl.terms);
   return (
     <section className="card" aria-labelledby="firstlook-p-h">
-      <h2 id="firstlook-p-h">First Look: {st.fl.name}</h2>
+      <h2 id="firstlook-p-h">{st.fl.terms.overall ? 'Overall Deal' : 'First Look'}: {st.fl.name}</h2>
       <p className="muted">
         {tv
-          ? (st.stage === 'not-submitted' ? `Your first-look deal gives ${st.fl.name} the first chance at ${p.title}. Submit it to them before you take it to any commissioner; they have ${st.fl.terms.considerDays} days to answer.`
+          ? (st.stage === 'not-submitted' ? `Your ${deal} gives ${st.fl.name} the first chance at ${p.title}. Submit it to them before you take it to any commissioner; they have ${st.fl.terms.considerDays} days to answer.`
             : st.stage === 'considering' ? `${st.fl.name} is considering it until ${day(st.deal!.decideAt!)}. No commissioner can be approached for it until then.`
             : st.stage === 'offered' ? `${st.fl.name} offered to commission it. Accept or refuse it below.`
             : st.stage === 'taken' ? `${st.fl.name} commissioned it.`
             : `${st.fl.name} passed. You may take it to a commissioner${drawn ? `; if one takes it, the ${money(drawn)} of development money is repaid from its money` : ''}.`)
-          : (st.stage === 'not-submitted' ? `Your first-look deal gives ${st.fl.name} the first chance at ${p.title}. Pitch it to them under Studios before any other studio; they have ${st.fl.terms.considerDays} days to answer.`
+          : (st.stage === 'not-submitted' ? `Your ${deal} gives ${st.fl.name} the first chance at ${p.title}. Pitch it to them under Studios before any other studio; they have ${st.fl.terms.considerDays} days to answer.`
             : st.stage === 'considering' ? `${st.fl.name} is considering it until ${day(st.deal!.decideAt!)}. No other studio can be pitched it until then.`
             : st.stage === 'offered' ? `${st.fl.name} made an offer for it. Accept or refuse it below.`
             : st.stage === 'taken' ? `${st.fl.name} took it.`

@@ -289,3 +289,20 @@ test.describe('a copy that offers no film pack', () => {
     await expect(page.getByRole('status').filter({ hasText: 'Installed Cinemas.' })).toBeVisible();
   });
 });
+
+// J18's other missing step (docs/v6/JOURNEYS.md; from November 17, 2026): a pack listing the same record twice, through the
+// screens. It is refused and says so, and nothing of it is installed (the engine's rule: tests/packs.test.ts).
+test('a pack that lists the same record twice is refused in Settings, and nothing of it is installed', async ({ page }) => {
+  test.setTimeout(120_000);
+  const at = new Date(Date.now() - DAY).toISOString();
+  const entries = Object.entries(CATALOG_FIXTURE).filter(([p]) => !p.startsWith('cinemas/')).map(([p, body]) => [p, JSON.stringify(p === 'index.json' ? { ...(body as object), retrieved: { from: at, to: at, maxAgeDays: 180 } } : body)] as [string, string]);
+  // Labelled fixture: the first title listed again, with other contents.
+  const [first] = entries.filter(([p]) => p.startsWith('titles/'));
+  const damaged = writePack({ kind: 'catalog', name: 'Films And Series', source: 'TMDB', builtAt: at, retrieved: { from: at, to: at, maxAgeDays: 180 } }, [...entries, [first[0], JSON.stringify({ ref: 'movie:0', title: 'Another' })]]);
+  await quickLife(page, 'gb-london', '2026-01-05');
+  await nav(page, 'Settings');
+  await install(page, 'slate-catalog.slatepack', damaged);
+  await expect(page.getByText("This data pack is damaged: it lists the same record twice. It wasn't installed.")).toBeVisible();
+  // Nothing of it is installed: the server here offers no mods, so an installed pack would be the only row.
+  await expect(page.getByRole('list', { name: 'Mods' }).locator('li', { hasText: 'Films And Series' })).toHaveCount(0);
+});

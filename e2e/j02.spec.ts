@@ -166,4 +166,20 @@ test('J02: an inheritance, a feature on a rented kit, a harbour filmed abroad wi
   const end = await readSavedState(page);
   expect(personalPostingsOf(end).filter((x: { kind: string }) => x.kind === 'inheritance')).toHaveLength(1);
   expect(personalPostingsOf(end).filter((x: { kind: string }) => ['from-project', 'gift', 'loan', 'savings', 'investment'].includes(x.kind))).toEqual([]);
+
+  // What is left, withdrawn by the player (the v6 package's J02; from November 17, 2026): the income the film keeps, if
+  // any, taken home. It is the one thing from the project that reaches the player's account, and only because they chose it.
+  await open(page, 'Budget');
+  const account = page.locator('section', { has: page.getByRole('heading', { name: 'Your Own Account' }) });
+  const takeHome = account.getByRole('button', { name: /^Take Home \$[\d,]+ Of Income$/ });
+  const left = Number((await takeHome.innerText()).match(/\$([\d,]+)/)![1].replace(/,/g, ''));
+  if (left > 0) {
+    await takeHome.click();
+    await expect(account.getByRole('button', { name: 'Take Home $0 Of Income' })).toBeVisible();
+    const home = personalPostingsOf(await readSavedState(page)).filter((x: { kind: string }) => x.kind === 'from-project');
+    expect(home.reduce((a: number, x: { amount: number }) => a + x.amount, 0)).toBe(left);
+  }
+  // Standing at the end: the delivered feature counts once, as a producer's completed work.
+  await nav(page, 'Profile');
+  await expect(page.getByLabel('Standing By Role')).toContainText('from 1 completed work');
 });

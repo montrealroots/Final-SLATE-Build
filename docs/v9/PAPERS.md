@@ -25,6 +25,36 @@ What the records don't hold, said so the game never fills it:
 - **Work.** The rule, the route's name, and the days a short engagement may be worked without it (42 countries for every
   other passport). No route's fee or decision time.
 
+### Rules That End On A Date (From November 17, 2026)
+
+SLATE-REBUILD's notes give the end of each temporary rule, but until November 17, 2026 the game applied every rule for
+ever, so China's unilateral visa-free entry still let a Briton in without a visa in 2030.
+`src/data/papers/visits-temporary.json` lists each rule that ends, its last day and the rule after it, with its source:
+- China's unilateral 30-day list (48 passports, Canada and the United Kingdom among them) ends after December 31, 2026,
+  then a visa. The mutual agreements (Singapore, Thailand and the others) don't end. Russia's trial ends after
+  December 31, 2027.
+- Korea's K-ETA exemption for its 22 passports ends after December 31, 2026, then a K-ETA.
+- Brazil's waiver for Chinese passports ends after December 31, 2026, then a visa.
+
+A renewal announced later is new research, not assumed. `tests/v10-visits-temporary.test.ts` changes only the day and
+reads the outcome.
+
+### Spot-Checked Against Current Sources (November 17, 2026)
+
+The records for the largest film markets were read for 14 passports (US, GB, DE, FR, JP, CN, IN, BR, NG, AU, CA, MX, KR,
+ZA), and the ones most likely to have changed since were checked against current sources:
+- China's list, with Canada and the United Kingdom from February 17, 2026: matches.
+- Brazil's waiver for Chinese passports, from May 11, 2026: matches.
+- Türkiye's visa-free entry for Chinese passports, from January 2, 2026: matches.
+- Thailand's cut from 60 to 30 days on September 15, 2026, with India in the 30-day group: matches.
+- Korea's K-ETA exemption for 2026: matches.
+- South Africa's free visa for Mexican passports, still a visa: matches.
+- ETIAS isn't operational, so the Schengen states stay free: matches.
+
+Left unsettled, as sources conflict: the UAE's 30-day and 90-day lists, Thailand for Mexican passports, and Türkiye for
+Mexican passports. The coverage matrix keeps visiting rules as SLATE-REBUILD's, unverified: a spot check isn't a
+verification of every passport.
+
 ## What Is Kept Apart (`src/engine/papers.ts`)
 
 1. **A passport and whether it is in force.** This is 1221's document in the bank world. You apply on Your Papers: the
@@ -65,7 +95,9 @@ The lifecycle:
 2. **The documents it needs:** a passport in force until the decision at least.
 3. **Applying, with the fee paid from your bank** at the day's reference rate. It is a line in your statement.
 4. **The review:** the recorded days.
-5. **The decision.** No refusal is modelled; the game doesn't invent a probability.
+5. **The decision.** Until November 15, 2026 no refusal was modelled. Since then a visitor visa is refused at the
+   published rate for the passport applying, and a work visa's chance is anchored to the O-1's published approval rate
+   (`docs/v10/README.md`, `tests/v10-living-abroad.test.ts`).
 6. **The document issued,** with its recorded validity.
 7. **Its use:** entry is allowed, and work is still not.
 8. **Its expiry,** after which it is needed again.
@@ -105,8 +137,9 @@ the terms it was applied for under.
 ## Not Yet Done
 
 - **Research for the estimated routes.** Japan, South Korea, India and Mexico were searched on November 14, 2026, but no
-  official fee could be confirmed (Japan's varies by nationality; Korea's and Mexico's were on agency sites only), so
-  they stay estimates.
+  official fee was confirmed then. Batches 2 and 3 (November 17, 2026, `docs/v9/COVERAGE.md`) researched Japan and
+  India in full and found Korea's and Mexico's fees without a decision time. What is left, and why each is still the
+  game's estimate, is in `docs/v10/papers-research/fees-without-times.md`.
 - **A residence application.**
 
 Done since: travel asks for entry (`entryRefusal`, from November 14, 2026); a visit's days are counted against its

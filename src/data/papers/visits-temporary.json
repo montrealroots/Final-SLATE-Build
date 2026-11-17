@@ -1,0 +1,168 @@
+{
+ "about": "Visit rules that end on a date (from November 17, 2026). SLATE-REBUILD's visit records (visits.json) give each rule as it stood when researched, and their notes say when a temporary one ends; until this table the game applied them for ever. Each rule here names the destination, the passports, the last day it is in force, and the rule after it, with the source that gives the date. A renewal announced later is new research, not assumed.",
+ "rules": [
+  {
+   "destination": "CN",
+   "passports": [
+    "AD",
+    "AR",
+    "AT",
+    "AU",
+    "BE",
+    "BG",
+    "BH",
+    "BR",
+    "CA",
+    "CH",
+    "CL",
+    "CY",
+    "DE",
+    "DK",
+    "EE",
+    "ES",
+    "FI",
+    "FR",
+    "GB",
+    "GR",
+    "HR",
+    "HU",
+    "IE",
+    "IS",
+    "IT",
+    "JP",
+    "KR",
+    "KW",
+    "LI",
+    "LU",
+    "LV",
+    "MC",
+    "ME",
+    "MK",
+    "MT",
+    "NL",
+    "NO",
+    "NZ",
+    "OM",
+    "PE",
+    "PL",
+    "PT",
+    "RO",
+    "SA",
+    "SE",
+    "SI",
+    "SK",
+    "UY"
+   ],
+   "until": "2026-12-31",
+   "after": {
+    "entry": "visa"
+   },
+   "basis": "China's unilateral 30-day visa-free entry for these ordinary passports, extended to 31 December 2026 (the National Immigration Administration's list of 17 February 2026). The mutual exemption agreements (Singapore, Thailand, Malaysia, the UAE and the others) don't end.",
+   "source": {
+    "kind": "secondary",
+    "url": "https://www.china-briefing.com/news/china-visa-free-travel-policies-complete-guide/",
+    "what": "China Briefing, China's visa-free policies: the unilateral policy for its countries runs to 31 December 2026; Canada and the United Kingdom added from 17 February 2026"
+   }
+  },
+  {
+   "destination": "CN",
+   "passports": [
+    "RU"
+   ],
+   "until": "2027-12-31",
+   "after": {
+    "entry": "visa"
+   },
+   "basis": "Russians' visa-free entry to China, a trial from 15 September 2025, extended on 20 May 2026 to 31 December 2027 (SLATE-REBUILD's research note).",
+   "source": {
+    "kind": "secondary",
+    "url": "https://www.china-briefing.com/news/china-visa-free-travel-policies-complete-guide/",
+    "what": "China Briefing, China's visa-free policies"
+   }
+  },
+  {
+   "destination": "KR",
+   "passports": [
+    "BE",
+    "NL",
+    "NZ"
+   ],
+   "until": "2026-12-31",
+   "after": {
+    "entry": "eta"
+   },
+   "basis": "The Ministry of Justice's exemption of these passports from the K-ETA, extended for 2026 (1 January to 31 December 2026); after it, a K-ETA is needed before boarding again.",
+   "source": {
+    "kind": "official",
+    "url": "https://usa-houston.mofa.go.kr/us-houston-en/brd/m_5573/view.do?seq=759958",
+    "what": "Consulate General of Korea in Houston: the K-ETA exemption, January 1 to December 31, 2026"
+   }
+  },
+  {
+   "destination": "KR",
+   "passports": [
+    "CA"
+   ],
+   "until": "2026-12-31",
+   "after": {
+    "entry": "eta"
+   },
+   "basis": "The Ministry of Justice's exemption of these passports from the K-ETA, extended for 2026 (1 January to 31 December 2026); after it, a K-ETA is needed before boarding again.",
+   "source": {
+    "kind": "official",
+    "url": "https://usa-houston.mofa.go.kr/us-houston-en/brd/m_5573/view.do?seq=759958",
+    "what": "Consulate General of Korea in Houston: the K-ETA exemption, January 1 to December 31, 2026"
+   }
+  },
+  {
+   "destination": "KR",
+   "passports": [
+    "AT",
+    "AU",
+    "DE",
+    "DK",
+    "ES",
+    "FI",
+    "FR",
+    "GB",
+    "HK",
+    "IT",
+    "JP",
+    "MO",
+    "NO",
+    "PL",
+    "SE",
+    "SG",
+    "TW",
+    "US"
+   ],
+   "until": "2026-12-31",
+   "after": {
+    "entry": "eta",
+    "days": 90
+   },
+   "basis": "The Ministry of Justice's exemption of these passports from the K-ETA, extended for 2026 (1 January to 31 December 2026); after it, a K-ETA is needed before boarding again.",
+   "source": {
+    "kind": "official",
+    "url": "https://usa-houston.mofa.go.kr/us-houston-en/brd/m_5573/view.do?seq=759958",
+    "what": "Consulate General of Korea in Houston: the K-ETA exemption, January 1 to December 31, 2026"
+   }
+  },
+  {
+   "destination": "BR",
+   "passports": [
+    "CN"
+   ],
+   "until": "2026-12-31",
+   "after": {
+    "entry": "visa"
+   },
+   "basis": "Brazil's waiver for Chinese ordinary passports, by reciprocity, from 11 May to 31 December 2026: up to 30 days a year, not extendable.",
+   "source": {
+    "kind": "secondary",
+    "url": "https://taxnews.ey.com/news/2026-1047-brazil-announces-visa-free-entry-for-nationals-of-the-chinese-mainland",
+    "what": "EY, May 12, 2026: Brazil announces visa-free entry for nationals of the Chinese mainland, May 11 to December 31, 2026"
+   }
+  }
+ ]
+}

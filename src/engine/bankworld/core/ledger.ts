@@ -243,7 +243,8 @@ export type ToCurrency = (amount: Money, currency: string) => Money | undefined;
  * deal's overhead ('overhead') are earned pay too (from November 14, 2026: until then no SLATE player was ever paid wages
  * in the bank's eyes, so no bank would lend to one, which the feature proofs found: docs/v10/proof/bank-loan.json).
  */
-export const isWages = (category: string): boolean => category === 'salary' || /^slate:(paid-work|overhead)#/.test(category);
+// An overall deal's guarantee ('guarantee') is pay for services too (from November 17, 2026).
+export const isWages = (category: string): boolean => category === 'salary' || /^slate:(paid-work|overhead|guarantee)#/.test(category);
 
 export interface LedgerTransaction {
   id: string;

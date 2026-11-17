@@ -50,6 +50,13 @@ test('a Release Plan: festivals first, a licence turned down and then signed, an
   await plan.getByLabel('Held For Festivals Until').fill(day(now, 40));
   await plan.getByRole('button', { name: 'Save The Plan' }).click();
   await expect(plan.getByRole('list', { name: 'The Plan' })).toContainText('Held for festivals until');
+  // The festival hold through the screens (the v6 package's J14; from November 17, 2026): a public release before the
+  // plan's festival date is refused, and says why, so the premiere stays a premiere.
+  await page.getByLabel('Route').selectOption({ label: 'Digital Self-Release' });
+  await page.getByLabel('Territory Code').fill('GB');
+  await page.getByLabel('Release Date').fill(day(now, 20));
+  await page.getByRole('button', { name: 'Plan Release' }).click();
+  await expect(page.getByText(/^Your Release Plan keeps Harbour Lights for festivals until .+, so it can premiere there\. Release it from then, or change the plan\.$/)).toBeVisible();
 
   // Asking far too much: turned down for the price, with what remains.
   const broadcast = plan.getByRole('region', { name: 'Broadcast Licence Proposals' });

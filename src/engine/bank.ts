@@ -128,7 +128,7 @@ function counterLabel(kind: string): string {
     inheritance: 'Your Family\'s Estate', savings: 'Your Savings', gift: 'Your Family', loan: 'Your Family', investment: 'Your Family',
     repayment: 'Your Family', participation: 'Your Family', 'to-project': 'Your Projects', 'from-project': 'Your Projects',
     equipment: 'Equipment', 'equipment-sale': 'Equipment', 'paid-work': 'Paid Work', commission: 'Your Agent',
-    company: 'Your Company', overhead: 'First-Look Overhead', 'company-transfers': 'Your Company', papers: 'Documents And Their Fees',
+    company: 'Your Company', overhead: 'First-Look Overhead', 'overall-guarantee': 'Overall Deal Guarantee', 'company-transfers': 'Your Company', papers: 'Documents And Their Fees',
   } as Record<string, string>)[kind] ?? kind;
 }
 

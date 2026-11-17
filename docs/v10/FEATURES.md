@@ -70,11 +70,11 @@ journey that shows it there.
 | deliver | action | src/engine/finish.ts | proven | deliver (40 seeds) | delivered -2; released -2; revenue -123105.125; standing.producing -2.9 |
 | planRelease | action | src/engine/finish.ts | proven | release-or-not (40 seeds) | released -2; revenue -124002.125; money -117974.625 |
 | setReleaseVersion | action | src/engine/finish.ts | proven | release-dubbed (60 seeds) | dubbed +0.85; spent +4083.333; gross +6406.667; revenue +13511.333 |
-| acceptFirstLook | action | src/engine/first-look.ts | proven | first-look-accept (40 seeds) | firstLookActive +1.5; money +620576.828 |
-| askMoreOverhead | action | src/engine/first-look.ts | proven | first-look-overhead (120 seeds) | overheadAsked +1.425; overheadAgreed +0.158; overheadPaid +54497.083; money +54641.697 |
-| declineFirstLook | action | src/engine/first-look.ts | proven | first-look-decline (40 seeds) | firstLookDeclined +1.45; firstLookActive -1.5; money -555601.822 |
+| acceptFirstLook | action | src/engine/first-look.ts | proven | first-look-accept (40 seeds) | firstLookActive +1.5; money +619571.828 |
+| askMoreOverhead | action | src/engine/first-look.ts | proven | first-look-overhead (120 seeds) | overheadAsked +1.425; overheadAgreed +0.158; overheadPaid +55885.417; money +54646.697 |
+| declineFirstLook | action | src/engine/first-look.ts | proven | first-look-decline (40 seeds) | firstLookDeclined +1.45; firstLookActive -1.5; money -554863.822 |
 | drawDevelopment | action | src/engine/first-look.ts | proven | draw-development (40 seeds) | developmentIn +47550; ownIn -47550; money +37486.843 |
-| endFirstLook | action | src/engine/first-look.ts | proven | first-look-end (40 seeds) | firstLookEnded +1.125; money -212307.846 |
+| endFirstLook | action | src/engine/first-look.ts | proven | first-look-end (40 seeds) | firstLookEnded +1.125; money -212517.846 |
 | considerFor | action | src/engine/guests.ts | proven | consider-real (40 seeds) | realCast +1.75; castCapability -3.65; performance -2.831; castRates +562.75 |
 | considerPerson | action | src/engine/guests.ts | proven | consider-real (40 seeds) | realCast +1.75; castCapability -3.65; performance -2.831; castRates +562.75 |
 | stopConsidering | action | src/engine/guests.ts | proven | stop-considering (40 seeds) | realReads -1.45; realCast -1.3; castRates -973780.85; spent -3370007.35 |
@@ -112,7 +112,7 @@ journey that shows it there.
 | declineOpportunity | action | src/engine/opportunities.ts | proven | decline-opportunity (30 seeds) | proposalsAccepted -0.567; commissioned -0.567; commissionMoney -40533.333 |
 | applyForPermit | action | src/engine/papers.ts | proven | work-permit (100 seeds) | permits +0.99; lateDays -3.53; spent +4725.5; quality.direction +4.25; overall +1.81 |
 | applyForRecordedPassport | action | src/engine/papers.ts | proven | recorded-passport (40 seeds) | passports +1; papersPaid +36.64; worth -36.64 |
-| applyForVisa | action | src/engine/papers.ts | proven | visitor-visa (30 seeds) | visas +1.133; attended +0.933; offers +1.4 |
+| applyForVisa | action | src/engine/papers.ts | proven | visitor-visa (30 seeds) | visas +1.533; attended +1.2; offers +1.633 |
 | moveTo | action | src/engine/papers.ts | proven | move-home (40 seeds) | livesInLondon -1; frenchAccounts +2; bankFees +31.19; overall -0.587; quality.direction -1.287; money -686082.579 |
 | addStage | action | src/engine/parts.ts | proven | add-stage (40 seeds) | stages +2; stageCast +2; performersCast +2; castRates +1578.75 |
 | removeStage | action | src/engine/parts.ts | proven | remove-stage (40 seeds) | stages -2; stageCast -2; performersCast -2; castRates -1590.75 |
@@ -261,11 +261,11 @@ journey that shows it there.
 | finance-deadline | scheduled | src/engine/finance.ts | proven | off-finance-deadline (40 seeds) | breached -1; repaymentDue -60000 |
 | finance-decision | scheduled | src/engine/finance.ts | proven | off-finance-decision (40 seeds) | backerIn -34725; ownIn +34725; money +9471.404 |
 | finance-offer-lapse | scheduled | src/engine/negotiation.ts | proven | off-finance-offer-lapse (40 seeds) | studioIn -850000; ownIn +850000; money +87708.225 |
-| first-look-check | scheduled | src/engine/first-look.ts | proven | off-first-look-check (40 seeds) | firstLookOffers -1.45; overheadPaid -793555; money -793769.428 |
-| first-look-counter | scheduled | src/engine/first-look.ts | proven | first-look-overhead (120 seeds) | overheadAsked +1.425; overheadAgreed +0.158; overheadPaid +54497.083; money +54641.697 |
-| first-look-end | scheduled | src/engine/first-look.ts | proven | off-first-look-end (40 seeds) | firstLookEnded -1.45; overheadPaid -459125; money -459125 |
-| first-look-lapse | scheduled | src/engine/first-look.ts | proven | off-first-look-lapse (40 seeds) | firstLookActive -0.975; overheadPaid -1328635; money -1328635 |
-| first-look-overhead | scheduled | src/engine/first-look.ts | proven | first-look-accept (40 seeds) | firstLookActive +1.5; money +620576.828 |
+| first-look-check | scheduled | src/engine/first-look.ts | proven | off-first-look-check (40 seeds) | firstLookOffers -1.45; overheadPaid -306250; money -791618.028 |
+| first-look-counter | scheduled | src/engine/first-look.ts | proven | first-look-overhead (120 seeds) | overheadAsked +1.425; overheadAgreed +0.158; overheadPaid +55885.417; money +54646.697 |
+| first-look-end | scheduled | src/engine/first-look.ts | proven | off-first-look-end (40 seeds) | firstLookEnded -1.45; overheadPaid -355000; money -458750 |
+| first-look-lapse | scheduled | src/engine/first-look.ts | proven | off-first-look-lapse (40 seeds) | firstLookActive -0.975; money -2294626.55 |
+| first-look-overhead | scheduled | src/engine/first-look.ts | proven | first-look-accept (40 seeds) | firstLookActive +1.5; money +619571.828 |
 | guide-me | scheduled | src/engine/mandates.ts | proven | off-guide-me (40 seeds) | writingPasses -3.375; quality.script -2.537; spent -4258.5 |
 | industry-decision | scheduled | src/engine/industry.ts | not a feature |  | Renews or ends the real series the world follows, as the catalog's world pages show them (catalog/world.ts, simseason.ts); nothing in a player's career reads those outcomes. |
 | job-counter | scheduled | src/engine/jobs.ts | proven | ask-better-rate (60 seeds) | ratesAgreed +7.417; jobPay +5348.317; money +4632.203 |

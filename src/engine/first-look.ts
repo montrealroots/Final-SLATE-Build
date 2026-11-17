@@ -54,9 +54,19 @@ export interface FirstLookTerms {
   /** The track record the terms were set for, and the yearly overhead they came from (from November 14, 2026). */
   tier?: DealTier;
   annualOverhead?: number;
+  /**
+   * An overall deal (from November 17, 2026; the owner's v8 package, 04, and A14): the studio has your services
+   * exclusively, films and series both, and pays a guaranteed yearly sum for them, a twelfth a month, as your pay. Its
+   * overhead is nothing: the guarantee isn't overhead, and its headline over the term is never paid at signing.
+   */
+  overall?: { annual: number };
 }
 export const scopeOf = (t: FirstLookTerms): 'film' | 'television' => t.scope ?? 'film';
 const formatsOf = (scope: 'film' | 'television') => (scope === 'television' ? TV_FORMATS : FILM_FORMATS);
+/** Whether a deal covers series: a television first look, or an overall deal, which covers both. */
+export const coversSeries = (t: FirstLookTerms): boolean => scopeOf(t) === 'television' || !!t.overall;
+/** What the player calls the deal. */
+export const dealName = (t: FirstLookTerms): string => (t.overall ? 'overall deal' : 'first-look deal');
 export interface FirstLook {
   id: string;
   /** Who its overhead is paid to: the company, for a deal signed while the player had one (save version 11); else you. */
@@ -129,12 +139,30 @@ export function firstLookTerms(s: StudioStrategy, scope: 'film' | 'television' =
   };
 }
 
+/**
+ * An overall deal's terms, or null where a studio wouldn't offer one: only a studio of at least eight films a year, and
+ * only for a record past its start (the package's calibration has no emerging band for overall deals). The guarantee is
+ * the yearly figure for your tier (deal-model.json overallAnnualGuarantee, "original game calibration, not published
+ * company rates"), placed in its range by the studio's scale, from eight films a year to thirty.
+ */
+export function overallTerms(s: StudioStrategy, tier: DealTier): FirstLookTerms | null {
+  const range = (dealModel.overallAnnualGuarantee as Partial<Record<DealTier, [number, number]>>)[tier];
+  if (!range || s.pace < 8) return null;
+  const [lo, hi] = range;
+  const annual = Math.round((lo + (hi - lo) * Math.min(1, (s.pace - 8) / 22)) / 12_000) * 12_000;
+  return { months: TIER_MONTHS[tier], considerDays: 90, overhead: 0, fund: 100_000, animatedOnly: false, tier, overall: { annual } };
+}
+/** The most a studio pays a year under an overall deal for this tier: a request for more never goes past it. */
+const overallCeiling = (tier: DealTier | undefined): number => ((dealModel.overallAnnualGuarantee as Partial<Record<DealTier, [number, number]>>)[tier ?? 'proven'] ?? [0, 0])[1];
+
 export const firstLooks = (state: GameState): FirstLook[] => state.firstLooks ?? [];
+/** The overall deal running now, if the deal running is one. */
+export const activeOverall = (state: GameState): FirstLook | null => { const fl = activeFirstLook(state); return fl?.terms.overall ? fl : null; };
 export const activeFirstLook = (state: GameState): FirstLook | null => firstLooks(state).find((x) => x.status === 'active') ?? null;
 export const openFirstLookOffer = (state: GameState): FirstLook | null => firstLooks(state).find((x) => x.status === 'offered') ?? null;
 
 /** Whether a deal's terms cover this project. */
-export const covers = (fl: FirstLook, p: Project): boolean => formatsOf(scopeOf(fl.terms)).includes(p.axes.format) && (!fl.terms.animatedOnly || p.axes.medium === 'animation');
+export const covers = (fl: FirstLook, p: Project): boolean => (fl.terms.overall ? [...FILM_FORMATS, ...TV_FORMATS] : formatsOf(scopeOf(fl.terms))).includes(p.axes.format) && (!fl.terms.animatedOnly || p.axes.medium === 'animation');
 
 /**
  * The first-look deal this project is bound to now, if any: the active deal if it covers it, or an ended one whose
@@ -166,10 +194,11 @@ export function submissionStanding(state: GameState, p: Project): { fl: FirstLoo
 export function firstLookHold(state: GameState, p: Project, company: string): string {
   const s = submissionStanding(state, p);
   if (!s || s.fl.company === company) return '';
-  if (s.stage === 'not-submitted') return `Your first-look deal gives ${s.fl.name} the first chance at ${p.title}: submit it to them first.`;
-  if (s.stage === 'considering') return `${s.fl.name} is considering it under your first-look deal, until ${dateOf(s.deal!.decideAt!)}.`;
-  if (s.stage === 'offered') return `${s.fl.name} made an offer for it under your first-look deal: accept or refuse it first.`;
-  if (s.stage === 'taken') return `${s.fl.name} took it under your first-look deal.`;
+  const deal = dealName(s.fl.terms);
+  if (s.stage === 'not-submitted') return `Your ${deal} gives ${s.fl.name} the first chance at ${p.title}: submit it to them first.`;
+  if (s.stage === 'considering') return `${s.fl.name} is considering it under your ${deal}, until ${dateOf(s.deal!.decideAt!)}.`;
+  if (s.stage === 'offered') return `${s.fl.name} made an offer for it under your ${deal}: accept or refuse it first.`;
+  if (s.stage === 'taken') return `${s.fl.name} took it under your ${deal}.`;
   return '';
 }
 // Written out, as the rest of the game writes dates (until November 14, 2026 these were ISO keys).
@@ -181,11 +210,12 @@ const dateOf = (t: number) => formatDateKey(new Date(t).toISOString().slice(0, 1
  */
 export function commissionerHold(state: GameState, p: Project): string {
   const s = submissionStanding(state, p);
-  if (!s || scopeOf(s.fl.terms) !== 'television') return '';
-  if (s.stage === 'not-submitted') return `Your first-look deal gives ${s.fl.name} the first chance at ${p.title}: submit it to them first.`;
-  if (s.stage === 'considering') return `${s.fl.name} is considering it under your first-look deal, until ${dateOf(s.deal!.decideAt!)}.`;
-  if (s.stage === 'offered') return `${s.fl.name} made an offer for it under your first-look deal: accept or refuse it first.`;
-  if (s.stage === 'taken') return `${s.fl.name} commissioned it under your first-look deal.`;
+  if (!s || !coversSeries(s.fl.terms)) return '';
+  const deal = dealName(s.fl.terms);
+  if (s.stage === 'not-submitted') return `Your ${deal} gives ${s.fl.name} the first chance at ${p.title}: submit it to them first.`;
+  if (s.stage === 'considering') return `${s.fl.name} is considering it under your ${deal}, until ${dateOf(s.deal!.decideAt!)}.`;
+  if (s.stage === 'offered') return `${s.fl.name} made an offer for it under your ${deal}: accept or refuse it first.`;
+  if (s.stage === 'taken') return `${s.fl.name} commissioned it under your ${deal}.`;
   return '';
 }
 
@@ -241,15 +271,19 @@ export function firstLookCandidate(state: GameState, scope: 'film' | 'television
 export function offerFirstLook(state: GameState, renews?: FirstLook, scope: 'film' | 'television' = 'film'): FirstLook | null {
   const c = renews ? (() => { const p = state.industry?.studios?.find((x) => x.c === renews.company); return p ? { company: p.c, strategy: strategyOf(p), why: renews.submissions.some((x) => isTaken(state, x)) ? `${renews.name} took a project you submitted, and wants to keep going.` : 'Your record still counts with it, and it wants to keep going.' } : null; })() : firstLookCandidate(state, scope);
   if (!c) return null;
-  // A renewal keeps the terms it renews; a new offer is set for your record now.
-  const terms = renews ? { ...renews.terms } : firstLookTerms(c.strategy, scope, dealTier(state));
+  // A renewal keeps the terms it renews; a new offer is set for your record now: an overall deal where the studio is
+  // large enough and your record past its start (from November 17, 2026), otherwise a first look.
+  const tier = dealTier(state);
+  const terms = renews ? { ...renews.terms, ...(renews.terms.overall ? { overall: { ...renews.terms.overall } } : {}) } : overallTerms(c.strategy, tier) ?? firstLookTerms(c.strategy, scope, tier);
   const fl: FirstLook = {
     id: newId(state, 'fl'), company: c.company, name: c.strategy.name, status: 'offered', offeredAt: state.now, answerBy: state.now + FIRST_LOOK_OPEN_DAYS * DAY,
     terms, why: c.why, submissions: [], drawn: [], ...(renews ? { renews: renews.id } : {}),
   };
   (state.firstLooks ??= []).push(fl);
   schedule(state, fl.answerBy, 'first-look-lapse', { id: fl.id }, { attention: 'silent', priority: 60, id: `fl-lapse:${fl.id}` });
-  addLog(state, `${fl.name} offered you a${renews ? ' renewed' : ''} first-look deal: ${money(terms.overhead)} a month for ${terms.months} months, for the first chance at your ${coveredWords(terms)}. It is open for ${FIRST_LOOK_OPEN_DAYS} days.`, 'money', { route: { view: 'profile' } });
+  addLog(state, terms.overall
+    ? `${fl.name} offered you a${renews ? ' renewed' : 'n'} overall deal: ${money(terms.overall.annual)} a year for your services, paid monthly, for ${terms.months} months. It has all your films and series, and your work, exclusively. It is open for ${FIRST_LOOK_OPEN_DAYS} days.`
+    : `${fl.name} offered you a${renews ? ' renewed' : ''} first-look deal: ${money(terms.overhead)} a month for ${terms.months} months, for the first chance at your ${coveredWords(terms)}. It is open for ${FIRST_LOOK_OPEN_DAYS} days.`, 'money', { route: { view: 'profile' } });
   return fl;
 }
 const isTaken = (state: GameState, s: FirstLook['submissions'][number]) => {
@@ -258,11 +292,21 @@ const isTaken = (state: GameState, s: FirstLook['submissions'][number]) => {
 };
 
 /** What a deal covers, in a few words: "films", "animated films" or "series". */
-export const coveredWords = (t: FirstLookTerms): string => (scopeOf(t) === 'television' ? 'series' : t.animatedOnly ? 'animated films' : 'films');
+export const coveredWords = (t: FirstLookTerms): string => (t.overall ? 'films and series' : scopeOf(t) === 'television' ? 'series' : t.animatedOnly ? 'animated films' : 'films');
 
 /** Every term of a first-look offer, in the words shown before accepting. */
 export function firstLookWords(fl: FirstLook): string[] {
   const t = fl.terms;
+  if (t.overall) {
+    return [
+      `It runs ${t.months} months from the day you accept.`,
+      `${fl.name} pays you ${money(t.overall.annual)} a year for your services, ${money(t.overall.annual / 12)} a month into your own account. That is ${money(t.overall.annual * t.months / 12)} over the term, paid as each month comes, never at signing. It is set for ${TIER_WORDS[t.tier ?? 'proven']}, and is the game's own calibration, not any studio's published rate.`,
+      `Your services are ${fl.name}'s alone while it runs: no other company can hire you, and work offered by one can't be taken.`,
+      `It covers the films and series you make while it runs. You submit each one to ${fl.name} before you take it anywhere else, and it has ${t.considerDays} days to answer. If it passes, you may take the project elsewhere.`,
+      `Up to ${money(t.fund)} of development money for your projects, kept apart from your pay. If another studio or a commissioner later takes a project ${fl.name} passed on, what it put in is repaid from their money.`,
+      'It ends at its term unless it is renewed. You may end it early: the pay stops, and what it has in hand is still answered.',
+    ];
+  }
   const tv = scopeOf(t) === 'television';
   return [
     `It runs ${t.months} months from the day you accept.`,
@@ -286,34 +330,42 @@ export function acceptFirstLook(state: GameState, id: string): void {
   const fl = offerOf(state, id);
   if (fl.counter && !fl.counter.outcome) throw new Error(`${fl.name} is considering the overhead you asked for. Wait for its answer.`);
   const other = activeFirstLook(state);
-  if (other) throw new Error(`You already have a first-look deal with ${other.name}. End it first.`);
+  if (other) throw new Error(`You already have ${other.terms.overall ? 'an overall' : 'a first-look'} deal with ${other.name}. End it first.`);
   fl.status = 'active';
   fl.startsAt = state.now;
   fl.endsAt = state.now + fl.terms.months * MONTH;
   cancelEvents(state, (e) => e.id === `fl-lapse:${fl.id}`);
   payOverhead(state, fl, 1);
   schedule(state, fl.endsAt, 'first-look-end', { id: fl.id }, { attention: 'notify', priority: 45, id: `fl-end:${fl.id}` });
-  addLog(state, `You signed a first-look deal with ${fl.name}. Submit your ${coveredWords(fl.terms)} to it first until ${dateOf(fl.endsAt)}.`, 'money', { route: { view: 'profile' } });
+  addLog(state, fl.terms.overall
+    ? `You signed an overall deal with ${fl.name}. Your services are its alone, and your films and series go to it first, until ${dateOf(fl.endsAt)}.`
+    : `You signed a first-look deal with ${fl.name}. Submit your ${coveredWords(fl.terms)} to it first until ${dateOf(fl.endsAt)}.`, 'money', { route: { view: 'profile' } });
 }
 
 export function declineFirstLook(state: GameState, id: string): void {
   const fl = offerOf(state, id);
   fl.status = 'declined';
   cancelEvents(state, (e) => e.id === `fl-lapse:${fl.id}` || e.id === `fl-counter:${fl.id}`);
-  addLog(state, `You declined ${fl.name}'s first-look deal.`, 'money', { route: { view: 'profile' } });
+  addLog(state, `You declined ${fl.name}'s ${dealName(fl.terms)}.`, 'money', { route: { view: 'profile' } });
 }
 
 /** Ask once for half as much overhead again. The studio answers in a week; the offer stays open until then. */
 export function askMoreOverhead(state: GameState, id: string): void {
   const fl = offerOf(state, id);
   if (fl.counter) throw new Error('You have asked once already.');
+  if (fl.terms.overall && fl.terms.overall.annual >= overallCeiling(fl.terms.tier)) throw new Error(`${fl.name} already offers the most it pays for ${TIER_WORDS[fl.terms.tier ?? 'proven']}.`);
   fl.counter = { askedAt: state.now, answerAt: state.now + FIRST_LOOK_COUNTER_DAYS * DAY };
   fl.answerBy = Math.max(fl.answerBy, fl.counter.answerAt + FIRST_LOOK_COUNTER_DAYS * DAY);
   cancelEvents(state, (e) => e.id === `fl-lapse:${fl.id}`);
   schedule(state, fl.answerBy, 'first-look-lapse', { id: fl.id }, { attention: 'silent', priority: 60, id: `fl-lapse:${fl.id}` });
   schedule(state, fl.counter.answerAt, 'first-look-counter', { id: fl.id }, { attention: 'notify', priority: 50, id: `fl-counter:${fl.id}` });
-  addLog(state, `You asked ${fl.name} for ${money(Math.round(fl.terms.overhead * 1.5))} a month. It will answer in about ${FIRST_LOOK_COUNTER_DAYS} days.`, 'money', { route: { view: 'profile' } });
+  addLog(state, fl.terms.overall
+    ? `You asked ${fl.name} for ${money(raisedGuarantee(fl.terms))} a year. It will answer in about ${FIRST_LOOK_COUNTER_DAYS} days.`
+    : `You asked ${fl.name} for ${money(Math.round(fl.terms.overhead * 1.5))} a month. It will answer in about ${FIRST_LOOK_COUNTER_DAYS} days.`, 'money', { route: { view: 'profile' } });
 }
+
+/** What a request for more asks under an overall deal: half as much again, never past the tier's top. */
+const raisedGuarantee = (t: FirstLookTerms): number => Math.min(overallCeiling(t.tier), Math.round(t.overall!.annual * 1.5 / 12_000) * 12_000);
 
 /** End the deal early: the overhead stops; submissions in hand are still answered, and development money stays owed. */
 export function endFirstLook(state: GameState, id: string): void {
@@ -322,18 +374,25 @@ export function endFirstLook(state: GameState, id: string): void {
   fl.status = 'ended-early';
   fl.endsAt = state.now;
   cancelEvents(state, (e) => e.id.startsWith(`fl-oh:${fl.id}:`) || e.id === `fl-end:${fl.id}`);
-  addLog(state, `You ended your first-look deal with ${fl.name}. Its overhead stops.${fl.drawn.length ? ' The development money it put in is still repaid if another studio takes those projects.' : ''}`, 'money', { route: { view: 'profile' } });
+  addLog(state, `You ended your ${dealName(fl.terms)} with ${fl.name}. Its ${fl.terms.overall ? 'pay' : 'overhead'} stops.${fl.drawn.length ? ' The development money it put in is still repaid if another studio takes those projects.' : ''}`, 'money', { route: { view: 'profile' } });
 }
 
 function payOverhead(state: GameState, fl: FirstLook, month: number): void {
+  // An overall deal's guarantee is your pay for your services, a twelfth of the year each month: a kind of its own, never
+  // overhead, and never the term's headline paid at once (A14).
+  if (fl.terms.overall) postPersonal(state, 'guarantee', fl.terms.overall.annual / 12, `Guarantee From ${fl.name}, Month ${month}`, `overall:${fl.id}:${month}`);
+  if (fl.terms.overall) { scheduleNextMonth(state, fl, month); return; }
   const label = `Overhead From ${fl.name}, Month ${month}`;
   const key = `first-look:${fl.id}:${month}`;
   // Paid to the company only under a deal signed while the company held it (cash/migrate11.ts `payee`): the company left
   // play on November 14, 2026, and a deal made since pays you. No signed deal's payee is rewritten.
   if (fl.payee === 'company' && state.company) postCompany(state, 'overhead', fl.terms.overhead, label, key);
   else postPersonal(state, 'overhead', fl.terms.overhead, label, key);
-  if (month < fl.terms.months) schedule(state, state.now + MONTH, 'first-look-overhead', { id: fl.id, month: month + 1 }, { attention: 'silent', priority: 60, id: `fl-oh:${fl.id}:${month + 1}` });
+  scheduleNextMonth(state, fl, month);
 }
+const scheduleNextMonth = (state: GameState, fl: FirstLook, month: number) => {
+  if (month < fl.terms.months) schedule(state, state.now + MONTH, 'first-look-overhead', { id: fl.id, month: month + 1 }, { attention: 'silent', priority: 60, id: `fl-oh:${fl.id}:${month + 1}` });
+};
 
 /** Development money left under the deal. */
 export const fundLeft = (fl: FirstLook): number => fl.terms.fund - fl.drawn.reduce((a, x) => a + x.amount, 0);
@@ -412,8 +471,10 @@ registerHandler('first-look-counter', (state, ev) => {
   const r = trackRecord(state);
   const agreed = r.wins > 0 || (r.reception ?? 0) >= FIRST_LOOK_RECEPTION + 10;
   fl.counter.outcome = agreed ? 'agreed' : 'held';
-  if (agreed) { const overhead = Math.round(fl.terms.overhead * 1.5); fl.terms = { ...fl.terms, overhead, annualOverhead: overhead * 12 }; }
-  const text = agreed ? `${fl.name} agreed to ${money(fl.terms.overhead)} a month.` : `${fl.name} kept its offer of ${money(fl.terms.overhead)} a month. It is still open.`;
+  if (agreed && fl.terms.overall) fl.terms = { ...fl.terms, overall: { annual: raisedGuarantee(fl.terms) } };
+  else if (agreed) { const overhead = Math.round(fl.terms.overhead * 1.5); fl.terms = { ...fl.terms, overhead, annualOverhead: overhead * 12 }; }
+  const figure = fl.terms.overall ? `${money(fl.terms.overall.annual)} a year` : `${money(fl.terms.overhead)} a month`;
+  const text = agreed ? `${fl.name} agreed to ${figure}.` : `${fl.name} kept its offer of ${figure}. It is still open.`;
   addLog(state, text, 'money', { route: { view: 'profile' } });
   return { message: text };
 });
@@ -429,7 +490,8 @@ registerHandler('first-look-end', (state, ev) => {
   fl.status = 'ended';
   const r = trackRecord(state);
   const keep = fl.submissions.some((x) => isTaken(state, x)) || r.bonus > 0;
-  addLog(state, `Your first-look deal with ${fl.name} reached its end.${keep ? '' : ' It isn\'t renewing it.'}`, 'money', { route: { view: 'profile' } });
+  const deal = dealName(fl.terms);
+  addLog(state, `Your ${deal} with ${fl.name} reached its end.${keep ? '' : ' It isn\'t renewing it.'}`, 'money', { route: { view: 'profile' } });
   const again = keep ? offerFirstLook(state, fl) : null;
-  return { message: again ? `${fl.name} offered to renew your first-look deal.` : `Your first-look deal with ${fl.name} ended.` };
+  return { message: again ? `${fl.name} offered to renew your ${deal}.` : `Your ${deal} with ${fl.name} ended.` };
 });

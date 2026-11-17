@@ -18,6 +18,7 @@ import { money } from './budget';
 import { getPlace } from '../data/places';
 import { KILL_FEE_DAYS, PRODUCTION_KIND_LABELS, daysUntil, industryStanding, shootingDays, slateHere, type Production } from './productions';
 import { workRight, type Activity } from './papers';
+import { activeOverall } from './first-look';
 import type { GameState } from './types';
 
 export type JobRole = 'acting' | 'writing' | 'directing';
@@ -217,6 +218,9 @@ export function acceptRefusal(state: GameState, id: string): string | null {
   if (!j || j.status !== 'offered') return 'That offer is no longer open.';
   if (j.counter && !j.counter.outcome) return `${j.company} is answering the rate you asked for.`;
   if (state.now > j.answerBy) return 'That offer has lapsed.';
+  // An overall deal has your services exclusively (from November 17, 2026): work for any other company is refused.
+  const overall = activeOverall(state);
+  if (overall && overall.name !== j.company) return `Your overall deal with ${overall.name} has your services alone until ${formatDateKey(new Date(overall.endsAt!).toISOString().slice(0, 10))}.`;
   const right = jobRight(state, j);
   if (!right.can) return right.why;
   return jobClash(state, j);
@@ -231,6 +235,12 @@ export function acceptJob(state: GameState, id: string): void {
   const no = acceptRefusal(state, id);
   if (no) throw new Error(no);
   const j = jobById(state, id)!;
+  bookJob(state, j);
+  addLog(state, `You took the work on ${j.production}: ${j.days.length} days from ${formatDateKey(j.days[0])}.`, 'personal', { route: { view: 'profile' } });
+}
+
+/** The work's days on the calendar, each morning expected there: for work taken, or taken and moved (moveJob). */
+function bookJob(state: GameState, j: OutsideJob): void {
   j.status = 'accepted';
   j.planIds = j.days.map((k) => {
     const { year, month, day } = parseYmd(k);
@@ -240,7 +250,6 @@ export function acceptJob(state: GameState, id: string): void {
     schedule(state, start, 'job-day', { jobId: j.id, date: k, planId }, { attention: 'notify', priority: 30 });
     return planId;
   });
-  addLog(state, `You took the work on ${j.production}: ${j.days.length} days from ${formatDateKey(j.days[0])}.`, 'personal', { route: { view: 'profile' } });
 }
 
 export function declineJob(state: GameState, id: string): void {
@@ -315,7 +324,10 @@ export function moveJob(state: GameState, j: OutsideJob, by: number): void {
     cancelEvents(state, (e) => e.kind === 'job-day' && e.payload.jobId === j.id);
   }
   j.days = moved.days;
-  if (was === 'accepted') { j.status = 'offered'; j.answerBy = Math.max(j.answerBy, state.now); acceptJob(state, j.id); }
+  // Booked again on its new days, not accepted again: it was taken already, so what decides taking it (an overall deal
+  // signed since, papers, a lapsed answer date) doesn't apply. Until November 17, 2026 it went back through acceptJob,
+  // which an overall deal signed after the work was taken refused, and the production's confirmation threw.
+  if (was === 'accepted') bookJob(state, j);
   addLog(state, `${j.production} was put back ${by} days. Your work on it moves with it: ${formatDateKey(j.days[0])} to ${formatDateKey(j.days.at(-1)!)}.`, 'personal', { route: { view: 'profile' } });
 }
 

@@ -43,7 +43,7 @@ import { RULE_WORDS, ageWords, fitNotes, hoursWords } from '../engine/casting-no
 import { COVERAGE, EMPHASIS, SETUPS_OF, TAKES, TAKE_RULES, isDirecting2, planTime, requiredSetups, shotPlan, type Coverage, type Emphasis, type TakePolicy } from '../engine/takes';
 import type { Audition, FinanceDeal, GameState, Hire, Obligation, PerformanceMethod, Project } from '../engine/types';
 import { Check, Modal, NumberField, SelectField, TextField, longLocal, plural } from './components';
-import { budgetPicture, plannedText, readiness, setPlannedBudget } from '../engine/project-budget';
+import { budgetPicture, paymentSchedule, plannedText, readiness, setPlannedBudget } from '../engine/project-budget';
 import { formatMoney, parseAmount } from '../engine/cash/money';
 import { store, useGame } from './store';
 import { RecognisedCandidates } from './Recognised';
@@ -979,6 +979,7 @@ function BudgetPlanCard({ p }: { p: Project }) {
   const g = useGame();
   const b = budgetPicture(g, p);
   const r = readiness(g, p);
+  const due = paymentSchedule(g, p);
   const [text, setText] = useState('');
   const [reason, setReason] = useState('');
   const [err, setErr] = useState<string | null>(null);
@@ -996,6 +997,18 @@ function BudgetPlanCard({ p }: { p: Project }) {
         <li className="list-item">{r.overall}</li>
         <li className="list-item">{r.onTime}</li>
       </ul>
+      {due.length > 0 && (
+        <>
+          <h3>When It's Paid</h3>
+          <ul className="list small" aria-label="When It's Paid">
+            {due.slice(0, 8).map((x) => (
+              <li key={x.id} className="list-item"><span className="grow">{formatDateKey(x.date)}: {x.label}, to {x.payee.charAt(0).toLowerCase() + x.payee.slice(1)}</span><span>{formatMoney({ currency: 'USD', minor: x.minor })}</span></li>
+            ))}
+          </ul>
+          {due.length > 8 && <p className="dim small">And {due.length - 8} more payments, the last on {formatDateKey(due[due.length - 1].date)}.</p>}
+          <p className="dim small">Estimated: work on set is paid on the shoot days still scheduled, or from the production window's start while none is; materials before the shoot.</p>
+        </>
+      )}
       {!p.delivered && (
         <>
           <div className="field-row">
