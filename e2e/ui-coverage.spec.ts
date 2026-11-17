@@ -9,6 +9,7 @@
 // reaches is listed there as not visited; nothing is called checked that wasn't.
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { expect, test, type Page } from './test';
+import { HOMES_SHOWN } from '../src/ui/routes';
 import { adaptWork, addScene, advance, castRoles, freshStart, nav, newProject, openStart, pinSeed, quickLife, saveAndApprove, saveAndExit, section, staffEveryDepartment } from './helpers';
 import { firstSaveId, readRecord, writeRecords } from './vault';
 import { audit, coveredWhenFocused, shiftSince, watchShifts, type Defect } from './ui-audit';
@@ -158,8 +159,8 @@ test('the UI audit: one career, every screen it reaches, measured at each size',
   // Your Bank and Your Papers, from Home (from November 14, 2026).
   await nav(page, 'Home'); await page.getByRole('button', { name: 'Open Your Bank' }).click(); await v('bank', 'You', 'Your Bank');
   await page.getByRole('button', { name: 'Back To Home' }).click(); await page.getByRole('button', { name: 'Open Your Papers' }).click(); await v('papers', 'You', 'Your Papers');
-  // Homes And Property, from Home (from November 17, 2026).
-  await page.getByRole('button', { name: 'Back To Home' }).click(); await page.getByRole('button', { name: 'Open Homes And Property' }).click(); await v('homes', 'You', 'Homes And Property');
+  // Homes And Property, from Home (from November 17, 2026), while it's in the game (routes.ts HOMES_SHOWN).
+  if (HOMES_SHOWN) { await page.getByRole('button', { name: 'Back To Home' }).click(); await page.getByRole('button', { name: 'Open Homes And Property' }).click(); await v('homes', 'You', 'Homes And Property'); }
   await nav(page, 'Calendar'); await v('calendar', 'Your Day', 'Calendar');
   const add = page.getByRole('button', { name: 'Add Plan' });
   if (await add.count()) { await add.first().click(); await v('add-plan', 'Your Day', 'Add Plan', 'dialog'); await page.keyboard.press('Escape'); }

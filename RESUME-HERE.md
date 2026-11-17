@@ -20,6 +20,17 @@ finished, and they come back only when the owner says so:
   work permits are still estimates in all (`docs/v10/papers-estimates.json`).
 - **Real-phone and pacing tests:** they need the owner's own device and a person playing.
 
+## Homes And Property Is Set Aside (The Owner, November 17, 2026, Evening)
+
+The owner asked for Homes And Property to be removed from the game for now and kept to pick up later. The way in is
+gone: the rail entry, Home's panel, the page and the housing credits, behind one switch, `HOMES_SHOWN` in
+`src/ui/routes.ts` (false). Everything else is kept as it was: the engine (`src/engine/homes/`, still registered, so a
+save that already holds a tenancy, a purchase or a build keeps running it, though the player can't open it), the
+screens (`src/ui/Homes.tsx`), the data packs, the unit tests and the 42 proofs. The 12 housing journeys
+(`e2e/homes.spec.ts`) skip while the switch is off; `e2e/homes-hidden.spec.ts` holds that no way in is left. To bring
+it back: set `HOMES_SHOWN` to true, delete `e2e/homes-hidden.spec.ts`, and run `e2e/homes.spec.ts`. The next housing
+work is listed below, unchanged.
+
 ## The Owner's Second Housing Brief (November 17, 2026, Later): City-By-City Coverage And The Full Vision
 
 Item by item in `docs/homes/BRIEF-2026-11-17.md`; every place's coverage in `docs/homes/places/`.
