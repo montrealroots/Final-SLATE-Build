@@ -193,6 +193,35 @@ test('a second tab opens the same save read-only until it takes over', async ({ 
   await expect(page.getByText('This game is open in another tab')).toBeVisible({ timeout: 8000 });
 });
 
+// From November 17, 2026: until then a take-over whose read of the latest save failed did nothing at all, the tab
+// staying read-only with no word, and one whose read errored ran this tab's older copy over the other tab's newer one.
+test('a take-over that cannot read the latest save says so, stays read-only, and works once it can', async ({ page, context }, info) => {
+  test.skip(info.project.name !== 'desktop', 'Lifecycle check runs once.');
+  await seedGame(page);
+  await pressSaveAndExit(page);
+  await page.getByRole('button', { name: 'Continue', exact: true }).click();
+  await expect(page.getByRole('heading', { name: /^Good (Morning|Afternoon|Evening), /, level: 1 })).toBeVisible();
+  const second = await context.newPage();
+  await second.goto('/');
+  await second.getByRole('button', { name: 'Continue', exact: true }).click();
+  await expect(second.getByText('This game is open in another tab')).toBeVisible();
+  // Labelled fixture: the browser refuses every read of the saves in this tab.
+  await second.evaluate(() => {
+    const w = window as unknown as { realGet?: typeof IDBObjectStore.prototype.get };
+    w.realGet = IDBObjectStore.prototype.get;
+    IDBObjectStore.prototype.get = () => { throw new DOMException('Labelled fixture: reads refused.', 'UnknownError'); };
+  });
+  await second.getByRole('button', { name: 'Take Over Here' }).click();
+  await expect(second.getByText("The latest save couldn't be read here, so this tab hasn't taken over. Try again.")).toBeVisible({ timeout: 30_000 });
+  await expect(second.getByRole('button', { name: 'Advance', exact: true })).toBeDisabled();
+  await second.evaluate(() => {
+    IDBObjectStore.prototype.get = (window as unknown as { realGet: typeof IDBObjectStore.prototype.get }).realGet;
+  });
+  await second.getByRole('button', { name: 'Take Over Here' }).click();
+  await expect(second.getByRole('button', { name: 'Advance', exact: true })).toBeEnabled({ timeout: 30_000 });
+  await expect(second.getByText("The latest save couldn't be read here")).toHaveCount(0);
+});
+
 // Found by e2e/careers.spec.ts on November 7, 2026: a page reloaded mid-game left its tab's lock fresh for up to six
 // seconds, so Continue straight after opened the game read-only, as if another tab had it.
 test('reloading the page and continuing at once opens the game in this tab, not read-only', async ({ page }, info) => {
