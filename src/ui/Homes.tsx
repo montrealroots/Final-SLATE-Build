@@ -10,7 +10,7 @@ import { PLACES, findPlace, getPlace } from '../data/places';
 import type { GameState } from '../engine/types';
 import { COMPONENT_WORDS, DESIGN_CHOICES, DESIGN_COLORS, FORM_WORDS, ROOM_WORDS, WORK, gardenOf, inBuilding, permissionFor, roomCheck, type Design, type Evidence, type Home, type RoomKind, type WorkKind } from '../engine/homes/model';
 import { HOME_RULES, applianceCatalog, marketEvidence, offersIn, type MarketEvidence } from '../engine/homes/market';
-import { formatDateKey, homesOf, money, todayAt, type Build, type Tenancy } from '../engine/homes/core';
+import { engaged, formatDateKey, homesOf, money, todayAt, type Build, type Tenancy } from '../engine/homes/core';
 import { applyRefusal, applyToRent, askPermission, disputeDeductions, giveNotice, leaseTerms, moveIn, moveInRefusal, payArrears, rentQuote, reportRepair, approveRepair, signLease, signRefusal } from '../engine/homes/renting';
 import { acceptCounter, acceptSaleOffer, acceptSaleRefusal, declineSaleOffer, listForSale, makeOffer, offerRefusal, purchaseQuote, saleRefusal, valuation, withdrawPurchase, type Plan } from '../engine/homes/buying';
 import { GENERIC_FURNITURE, billLines, bookStay, buyInsurance, buyItem, cancelWork, claimRepair, disposeItem, insuranceQuote, installItem, installRefusal, itemCheck, itemPrices, measureForInstall, restoreChange, returnItem, startWork, workQuote, workRefusal, type CatalogItem } from '../engine/homes/living';
@@ -343,7 +343,8 @@ function FindHome({ g }: { g: GameState }) {
   // A home the player acted on is the saved one from then on: its record, not a fresh draw.
   // A saved favourite from an earlier month stays listed with its own dates, though no longer on offer as new.
   const kept = hs.favorites.map((id) => hs.homes[id]).filter((h): h is Home => !!h && h.placeId === placeId && !offers.some((o) => o.id === h.id));
-  const shown = [...kept, ...offers.map((o) => hs.homes[o.id] ?? o)]
+  // A home you're renting, buying or own shows as agreed; any other is shown as it's listed now.
+  const shown = [...kept, ...offers.map((o) => (hs.homes[o.id] && engaged(hs, o.id) ? hs.homes[o.id] : o))]
     .filter((o) => (want === 'land' ? o.form === 'land' : o.market === want && o.form !== 'land'))
     .filter((o) => !maxPrice || o.priceMinor <= maxPrice * 100)
     .filter((o) => !minBeds || (o.bedrooms ?? 0) >= minBeds)

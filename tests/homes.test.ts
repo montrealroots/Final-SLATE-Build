@@ -28,6 +28,16 @@ async function offers(s: GameState, placeId: string) {
   const day = new Date(s.now).toISOString().slice(0, 10);
   return offersIn(s.seed, await marketEvidence(placeId, day), day);
 }
+
+/** The first home a pick finds on the market, waiting a month at a time, as a player would, when none is listed now. */
+async function listed(s: GameState, placeId: string, pickIt: (h: Home) => boolean): Promise<Home> {
+  for (let i = 0; i < 12; i++) {
+    const h = (await offers(s, placeId)).find(pickIt);
+    if (h) return h;
+    processUntil(s, s.now + 30 * DAY, 'advance', 100000);
+  }
+  throw new Error(`Nothing listed in ${placeId} in a year`);
+}
 const nominal = (s: GameState, name: string) => Object.values(s.bank!.accounts).find((a) => a.nominal && a.name === name)?.balance ?? 0;
 const incomeTotal = (s: GameState) => Object.values(s.bank!.accounts).filter((a) => a.nominal && a.kind === 'income').reduce((a, x) => a + x.balance, 0);
 
@@ -102,7 +112,9 @@ describe('renting in London, from application to the deposit back', () => {
     // Labelled fixture: the rent set beyond what the $25m inheritance could pay.
     const dear: Home = { ...home, id: `${home.id}:dear`, priceMinor: 9e12 };
     expect(applyRefusal(s, dear)).toMatch(/^You need .+ available to move in/);
-    advance(s, 40);
+    expect(applyRefusal(s, home)).toBeNull();
+    // The day after the listing's own last day (each listing runs to the end of its three-month window).
+    advance(s, (Date.parse(`${home.validUntil}T23:59:00Z`) - s.now) / DAY + 1);
     expect(applyRefusal(s, home)).toMatch(/lapsed/);
   });
 });
@@ -211,7 +223,7 @@ describe('an appliance in a rented flat, in Chicago', () => {
 describe('land, a design and a house built on the clock, in Austin', () => {
   it('investigate, a design refused then fixed, approval, stages paid as they start, and a house to move into', async () => {
     const s = startLife('homes-build', 'us-austin', { startDate: '2026-03-02' });
-    const land = (await offers(s, 'us-austin')).find((h) => h.form === 'land')!;
+    const land = await listed(s, 'us-austin', (h) => h.form === 'land');
     const p = makeOffer(s, land, land.priceMinor, { finance: 'cash', inspect: false });
     advance(s, 35);
     expect(p.stage).toBe('completed');

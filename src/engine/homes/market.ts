@@ -158,7 +158,7 @@ export async function marketEvidence(placeId: string, day: string): Promise<Mark
 // ---------------- Offers ----------------
 
 const PALETTE = { wall: ['white', 'cream', 'grey', 'terracotta', 'sage', 'navy', 'sand'], roof: ['charcoal', 'red', 'brown', 'grey', 'green'], frame: ['white', 'black', 'oak', 'grey'], door: ['red', 'navy', 'black', 'green', 'yellow', 'oak'] };
-function designFor(rng: Rng, form: Form, floorAreaM2: number, plotAreaM2: number | null): Design {
+function designFor(rng: Rng, form: Form, floorAreaM2: number, plotAreaM2: number | null, warm: boolean): Design {
   const r = rng;
   const building = inBuilding(form);
   const floors = building ? intBetween(rng, form === 'hdb-flat' ? 10 : 4, form === 'hdb-flat' ? 25 : 14) : form === 'townhouse' ? intBetween(rng, 2, 3) : intBetween(rng, 1, 2);
@@ -185,7 +185,8 @@ function designFor(rng: Rng, form: Form, floorAreaM2: number, plotAreaM2: number
     garage: detached ? pick(rng, ['none', 'single', 'double', 'carport'] as const) : 'none',
     driveway: detached ? pick(rng, ['gravel', 'paved', 'none'] as const) : 'none',
     landscaping: building ? 'none' : plotAreaM2 && plotAreaM2 > 300 ? pick(rng, ['lawn', 'garden', 'trees'] as const) : 'lawn',
-    outdoor: detached && plotAreaM2 && plotAreaM2 > 700 && r() < 0.2 ? ['pool', 'terrace'] : detached && r() < 0.4 ? ['porch'] : [],
+    // A private pool only where the summers are hot and the winters mild: never a pool for a house in Anchorage.
+    outdoor: detached && warm && plotAreaM2 && plotAreaM2 > 700 && r() < 0.2 ? ['pool', 'terrace'] : detached && r() < 0.4 ? ['porch'] : [],
   };
 }
 function conditionFor(r: Rng): Condition {
@@ -202,22 +203,53 @@ const LAYOUT: Record<number, [RoomKind, number][]> = {
 const fmt = (n: number) => n.toLocaleString('en-US');
 
 /** The month's offers in a place: rentals, homes for sale and building plots, every one simulated, each with its basis. */
-export function offersIn(seed: number, ev: MarketEvidence, day: string): Home[] {
+/**
+ * Each place's own housing market (from November 17, 2026: the owner's brief, sections 2, 4 and 9): fifty homes and
+ * plots kept for good, each with its own identity, kind, size, condition and design. Each comes onto the market in its
+ * own three-month windows and leaves again, so the market changes a little each month and a home seen once is the same
+ * home when it returns. Until then twelve unrelated offers were drawn afresh each month.
+ * They are all the game's: none is a verified home or a real listing (docs/homes/coverage has each place's shortfall).
+ * Asking prices are the evidence's, varied a little from listing to listing; no trend is modeled, as no source gives one.
+ */
+export const MARKET_SIZE = 50;
+const monthIndex = (day: string) => Number(day.slice(0, 4)) * 12 + Number(day.slice(5, 7)) - 1;
+const monthStart = (m: number) => `${Math.floor(m / 12)}-${String((m % 12) + 1).padStart(2, '0')}-01`;
+/** The mix of homes a place of this size has: a city's flats, a village's houses (the game's model, by population). */
+export function localMix(place: Place): { rent: number; sale: number; land: number; forms: Form[]; warm: boolean; label: string } {
+  const pop = place.population ?? 1_000_000; // the catalog's own cities carry no population: all are large cities
+  const warm = place.climate.warmHigh >= 28 && place.climate.coldHigh >= 8;
+  if (pop >= 500_000) return { rent: 26, sale: 21, land: 3, warm, label: 'a large city', forms: ['apartment', 'apartment', 'apartment', 'apartment', 'condo', 'condo', 'townhouse', 'townhouse', 'detached', 'detached'] };
+  if (pop >= 100_000) return { rent: 25, sale: 22, land: 3, warm, label: 'a city', forms: ['apartment', 'apartment', 'apartment', 'condo', 'townhouse', 'townhouse', 'detached', 'detached', 'detached', 'detached'] };
+  if (pop >= 10_000) return { rent: 22, sale: 23, land: 5, warm, label: 'a town', forms: ['apartment', 'townhouse', 'detached', 'detached', 'detached', 'detached', 'detached', 'detached'] };
+  return { rent: 18, sale: 26, land: 6, warm, label: 'a village or small town', forms: ['apartment', 'townhouse', 'detached', 'detached', 'detached', 'detached', 'detached', 'detached', 'detached', 'detached'] };
+}
+/** Every home of the place's market, listed or not this month: the same homes every month, by their own ids. */
+export function marketPool(seed: number, ev: MarketEvidence, day: string): (Home & { listed: boolean })[] {
   const place = getPlace(ev.placeId);
-  const month = day.slice(0, 7);
-  const out: Home[] = [];
+  const mix = localMix(place);
+  const m = monthIndex(day);
+  const out: (Home & { listed: boolean })[] = [];
   const usd = (cents: number) => exchange(cents, 'USD', ev.currency, day) ?? cents;
-  const placeholder = (what: string): Evidence => ({ basis: 'model', sourceId: 'SLATE-MODEL', says: `No ${what} for ${place.countryName} has been researched. This price is the game's placeholder, not local evidence.` });
-  for (let i = 0; i < 12; i++) {
-    const r = stream(seed, 'home-offer', ev.placeId, month, i);
+  const placeholder = (what: string): Evidence => ({ basis: 'model', sourceId: 'SLATE-MODEL', says: `No ${what} for ${place.name} has been researched. This price is the game's placeholder, not local evidence.` });
+  for (let i = 0; i < MARKET_SIZE; i++) {
+    const id = `hm:${ev.placeId}:${i}`;
+    const r = stream(seed, 'market-home', ev.placeId, i);
     const next = r;
-    const kind: 'rent' | 'sale' | 'land' = i < 6 ? 'rent' : i < 11 ? 'sale' : 'land';
+    const kind: 'rent' | 'sale' | 'land' = i < mix.rent ? 'rent' : i < mix.rent + mix.sale ? 'sale' : 'land';
+    // Its listing windows: three months each, staggered by home, so no two months' markets are wholly different.
+    const offset = Math.floor(unit(seed, 'market-offset', ev.placeId, i) * 3);
+    const block = Math.floor((m + offset) / 3);
+    const listed = unit(seed, 'market-listed', ev.placeId, i, block) < (kind === 'land' ? 0.8 : 0.35);
+    const listingFactor = 0.97 + unit(seed, 'market-price', ev.placeId, i, block) * 0.06;
+    const from = monthStart(block * 3 - offset);
+    const until = addDaysToKey(monthStart(block * 3 - offset + 3), -1);
+    const listing = { availableFrom: from > day ? from : day, validUntil: until, listed };
     if (kind === 'land') {
       const plot = intBetween(r, 6, 20) * 50;
       const perM2 = ev.land?.perM2 ?? usd(PLACEHOLDER.landPerM2Usd * 100);
-      out.push(baseHome(place, ev, `ho:${ev.placeId}:${month}:${i}`, 'land', 'freehold', 'sale', `Building Plot, ${fmt(plot)} m²`, Math.round((perM2 * plot * (0.8 + next() * 0.5)) / 100) * 100, [ev.land?.evidence ?? placeholder('land prices')], null, null, 0, plot, [], day, next, {
+      out.push({ ...baseHome(place, ev, id, 'land', 'freehold', 'sale', `Building Plot, ${fmt(plot)} m²`, Math.round((perM2 * plot * (0.8 + next() * 0.5) * listingFactor) / 100) * 100, [ev.land?.evidence ?? placeholder('land prices')], null, null, 0, plot, [], day, next, mix.warm, {
         land: { access: next() < 0.8 ? 'road' : 'track', services: next() < 0.5 ? 'connected' : next() < 0.8 ? 'nearby' : 'unknown', buildableM2: null, investigated: [] },
-      }));
+      }), ...listing });
       continue;
     }
     if (ev.hdb && kind === 'sale') {
@@ -229,41 +261,47 @@ export function offersIn(seed: number, ev: MarketEvidence, day: string): Home[] 
         const sorted = xs.map((x) => x.price).sort((a, b) => a - b);
         const med = sorted[sorted.length >> 1];
         const beds = Math.max(1, Math.min(4, Number(/^(\d)/.exec(type)?.[1] ?? 3) - 1));
-        out.push(baseHome(place, ev, `ho:${ev.placeId}:${month}:${i}`, 'hdb-flat', 'hdb-lease', 'sale', `${type} HDB Flat, ${ev.hdb.town}`, Math.round(med * (0.92 + next() * 0.16) / 100) * 100, [ev.hdb.evidence], beds, 1, ex.area, null, LAYOUT[beds], day, next, {
+        out.push({ ...baseHome(place, ev, id, 'hdb-flat', 'hdb-lease', 'sale', `${type} HDB Flat, ${ev.hdb.town}`, Math.round(med * (0.92 + next() * 0.16) * listingFactor / 100) * 100, [ev.hdb.evidence], beds, 1, ex.area, null, LAYOUT[beds], day, next, mix.warm, {
           sourceLabel: `${type} (HDB's flat type, not a bedroom count)`, storeyBand: ex.storey, leaseYearsLeft: ex.remainingMonths ? Math.floor(ex.remainingMonths / 12) : undefined, sharedAmenities: ['Shared Playground', 'Void Deck'],
-        }));
+        }), ...listing });
         continue;
       }
     }
-    const beds = kind === 'rent' ? intBetween(r, 0, 3) : intBetween(r, 1, 4);
+    const beds = kind === 'rent' ? intBetween(r, mix.label === 'a village or small town' ? 1 : 0, 3) : intBetween(r, 1, 4);
     const layout = LAYOUT[beds];
-    const roomsM2 = layout.reduce((a, [, m]) => a + m, 0);
+    const roomsM2 = layout.reduce((x, [, a2]) => x + a2, 0);
     const area = Math.round(roomsM2 * (1.15 + next() * 0.25));
-    const form: Form = beds === 0 ? 'studio' : kind === 'rent' ? pick(r, ['apartment', 'apartment', 'condo', 'townhouse', 'detached'] as const) : pick(r, ['apartment', 'condo', 'townhouse', 'detached', 'detached'] as const);
+    const form: Form = beds === 0 ? 'studio' : pick(r, mix.forms);
     const plot = form === 'detached' ? Math.round(area * (2.5 + next() * 4)) : form === 'townhouse' ? Math.round(area * 0.9) : null;
+    // A building's shared pool where it's warm or it's a big city's block; most buildings have only a bicycle store.
+    const shared = inBuilding(form) && (mix.warm || mix.label === 'a large city') && next() < 0.35 ? ['Shared Building Pool', 'Shared Gym'] : inBuilding(form) ? ['Shared Bicycle Store'] : [];
     if (kind === 'rent') {
       const bench = ev.rent?.byBedrooms[beds];
       const included = bench && next() < 0.5 ? (['water', 'heating'] as const) : ([] as const);
       // A gross-rent benchmark includes utilities; without them the rent is the benchmark less the game's utilities allowance.
-      const price = bench ? Math.round((bench * (0.85 + next() * 0.45) * (included.length ? 1 : 0.88)) / 100) * 100 : Math.round((usd(PLACEHOLDER.rentPerM2Usd * 100) * area * (0.8 + next() * 0.5)) / 100) * 100;
-      out.push(baseHome(place, ev, `ho:${ev.placeId}:${month}:${i}`, form, 'rent', 'rent', `${beds === 0 ? 'Studio' : `${beds}-Bedroom ${form === 'detached' ? 'House' : form === 'townhouse' ? 'Townhouse' : 'Apartment'}`} To Rent`, price, [ev.rent?.evidence ?? placeholder('rents')], beds, beds >= 3 ? 2 : 1, area, plot, layout, day, next, {
-        included: [...included], furnished: next() < 0.3, sharedAmenities: inBuilding(form) && next() < 0.35 ? ['Shared Building Pool', 'Shared Gym'] : inBuilding(form) ? ['Shared Bicycle Store'] : [],
-      }));
+      const price = bench ? Math.round((bench * (0.85 + next() * 0.45) * (included.length ? 1 : 0.88) * listingFactor) / 100) * 100 : Math.round((usd(PLACEHOLDER.rentPerM2Usd * 100) * area * (0.8 + next() * 0.5) * listingFactor) / 100) * 100;
+      out.push({ ...baseHome(place, ev, id, form, 'rent', 'rent', `${beds === 0 ? 'Studio' : `${beds}-Bedroom ${form === 'detached' ? 'House' : form === 'townhouse' ? 'Townhouse' : 'Apartment'}`} To Rent`, price, [ev.rent?.evidence ?? placeholder('rents')], beds, beds >= 3 ? 2 : 1, area, plot, layout, day, next, mix.warm, {
+        included: [...included], furnished: next() < 0.3, sharedAmenities: shared,
+      }), ...listing });
     } else {
       const perM2 = ev.sale ? (inBuilding(form) ? ev.sale.apartmentM2 : ev.sale.houseM2) : undefined;
-      const price = Math.round(((perM2 ?? usd(PLACEHOLDER.salePerM2Usd * 100)) * area * (0.82 + next() * 0.4)) / 100 / 1000) * 100000;
+      const price = Math.round(((perM2 ?? usd(PLACEHOLDER.salePerM2Usd * 100)) * area * (0.82 + next() * 0.4) * listingFactor) / 100 / 1000) * 100000;
       const tenure = form === 'condo' || form === 'apartment' ? 'strata' : place.country === 'KE' ? 'leasehold' : 'freehold';
-      out.push(baseHome(place, ev, `ho:${ev.placeId}:${month}:${i}`, form, tenure, 'sale', `${beds}-Bedroom ${form === 'detached' ? 'House' : form === 'townhouse' ? 'Townhouse' : form === 'condo' ? 'Condominium' : 'Apartment'} For Sale`, price, [ev.sale?.evidence ?? placeholder('purchase prices')], beds, beds >= 3 ? 2 : 1, area, plot, layout, day, next, {
-        sharedAmenities: inBuilding(form) && next() < 0.35 ? ['Shared Building Pool', 'Shared Gym'] : inBuilding(form) ? ['Shared Bicycle Store'] : [],
+      out.push({ ...baseHome(place, ev, id, form, tenure, 'sale', `${beds}-Bedroom ${form === 'detached' ? 'House' : form === 'townhouse' ? 'Townhouse' : form === 'condo' ? 'Condominium' : 'Apartment'} For Sale`, price, [ev.sale?.evidence ?? placeholder('purchase prices')], beds, beds >= 3 ? 2 : 1, area, plot, layout, day, next, mix.warm, {
+        sharedAmenities: shared,
         buildingChargeMinor: inBuilding(form) ? Math.round((usd(250 * 100) * (0.6 + next())) / 100) * 100 : undefined,
-      }));
+      }), ...listing });
     }
   }
   return out;
 }
+/** What's on the market in a place this month: the homes of its market that are listed now. */
+export function offersIn(seed: number, ev: MarketEvidence, day: string): Home[] {
+  return marketPool(seed, ev, day).filter((h) => h.listed).map(({ listed: _l, ...h }) => h);
+}
 
-function baseHome(place: Place, ev: MarketEvidence, id: string, form: Form, tenure: Home['tenure'], market: Home['market'], title: string, priceMinor: number, evidence: Evidence[], bedrooms: number | null, bathrooms: number | null, floorAreaM2: number, plotAreaM2: number | null, layout: [RoomKind, number][], day: string, next: Rng, extra: Partial<Home> = {}): Home {
-  const design = designFor(next, form, Math.max(40, floorAreaM2), plotAreaM2);
+function baseHome(place: Place, ev: MarketEvidence, id: string, form: Form, tenure: Home['tenure'], market: Home['market'], title: string, priceMinor: number, evidence: Evidence[], bedrooms: number | null, bathrooms: number | null, floorAreaM2: number, plotAreaM2: number | null, layout: [RoomKind, number][], day: string, next: Rng, warm: boolean, extra: Partial<Home> = {}): Home {
+  const design = designFor(next, form, Math.max(40, floorAreaM2), plotAreaM2, warm);
   const rooms: Room[] = form === 'land' ? [] : roomsFrom(layout, `${id}:`);
   const privateAmenities = [
     ...(design.outdoor.includes('pool') ? ['Private Pool'] : []),

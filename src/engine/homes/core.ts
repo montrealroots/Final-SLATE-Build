@@ -109,7 +109,18 @@ export const homeOf = (state: GameState, id: string): Home => {
 /** A home acted on is kept as it was offered: later market packs can't rewrite it. */
 export function pin(state: GameState, home: Home): Home {
   const hs = homesOf(state);
-  return (hs.homes[home.id] ??= structuredClone(home));
+  const kept = hs.homes[home.id];
+  if (!kept) return (hs.homes[home.id] = structuredClone(home));
+  // A home back on the market comes with its new listing: its asking price and dates, and the evidence they're from.
+  // What you've done there (a tenancy, a purchase, ownership) keeps the record as it was agreed.
+  if (!engaged(hs, home.id) && kept.validUntil !== home.validUntil) Object.assign(kept, { priceMinor: home.priceMinor, availableFrom: home.availableFrom, validUntil: home.validUntil, evidence: structuredClone(home.evidence), market: home.market });
+  return kept;
+}
+/** Whether the player is renting, buying, owns or is selling or letting this home: its agreed terms are then fixed. */
+export function engaged(hs: HomesState, id: string): boolean {
+  return hs.tenancies.some((t) => t.homeId === id && ['applied', 'approved', 'signed', 'active', 'notice'].includes(t.stage))
+    || hs.purchases.some((p) => p.homeId === id && !['completed', 'failed', 'rejected', 'withdrawn'].includes(p.stage))
+    || hs.owned.some((o) => o.homeId === id && !o.soldAt);
 }
 
 export const zoneOf = (h: Pick<Home, 'placeId'>) => getPlace(h.placeId).zone;

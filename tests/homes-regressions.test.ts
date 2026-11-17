@@ -12,6 +12,7 @@ import { processUntil } from '../src/engine/state';
 import { deserialize, serialize } from '../src/engine/save';
 import { DAY } from '../src/engine/time';
 import type { GameState } from '../src/engine/types';
+import type { Home } from '../src/engine/homes/model';
 import { startLife } from './helpers';
 
 const advance = (s: GameState, days: number) => processUntil(s, s.now + days * DAY, 'advance', 100000);
@@ -19,10 +20,20 @@ async function offers(s: GameState, placeId: string) {
   const day = new Date(s.now).toISOString().slice(0, 10);
   return offersIn(s.seed, await marketEvidence(placeId, day), day);
 }
+
+/** The first home a pick finds on the market, waiting a month at a time, as a player would, when none is listed now. */
+async function listed(s: GameState, placeId: string, pickIt: (h: Home) => boolean): Promise<Home> {
+  for (let i = 0; i < 12; i++) {
+    const h = (await offers(s, placeId)).find(pickIt);
+    if (h) return h;
+    processUntil(s, s.now + 30 * DAY, 'advance', 100000);
+  }
+  throw new Error(`Nothing listed in ${placeId} in a year`);
+}
 /** A plot in Austin, surveyed, with a design started on it. */
 async function plotWithDesign(tag: string, inheritanceUsd?: number) {
   const s = startLife(tag, 'us-austin', { startDate: '2026-03-02', ...(inheritanceUsd ? { inheritance: { currency: 'USD' as const, amountMinor: inheritanceUsd * 100 } } : {}) });
-  const land = (await offers(s, 'us-austin')).find((h) => h.form === 'land')!;
+  const land = await listed(s, 'us-austin', (h) => h.form === 'land');
   makeOffer(s, land, land.priceMinor, { finance: 'cash', inspect: false });
   advance(s, 35);
   investigate(s, land.id, 'survey');
@@ -178,5 +189,53 @@ describe('local and dated evidence', () => {
     const la = await marketEvidence('us-los-angeles', '2026-03-02');
     expect(la.electricity?.evidence.retrospective).toBe(true);
     expect(la.sale?.evidence.retrospective).toBeUndefined(); // NAHB's 2024 survey, published January 2025
+  });
+});
+
+describe("each place's own market", () => {
+  it('keeps the same fifty homes month to month, each listed in its own windows, and some change each month', async () => {
+    const s = startLife('reg-market', 'us-chicago', { startDate: '2026-03-02' });
+    const { marketPool, MARKET_SIZE } = await import('../src/engine/homes/market');
+    const months = ['2026-03-02', '2026-04-02', '2026-05-02', '2026-06-02', '2026-09-02'];
+    const pools = await Promise.all(months.map(async (d) => marketPool(s.seed, await marketEvidence('us-chicago', d), d)));
+    for (const p of pools) expect(p).toHaveLength(MARKET_SIZE);
+    // The same homes by id, and the same home is the same size and design whenever it's seen.
+    expect(pools[4].map((h) => h.id)).toEqual(pools[0].map((h) => h.id));
+    expect(pools[4].map((h) => `${h.form}:${h.floorAreaM2}:${h.design.style}`)).toEqual(pools[0].map((h) => `${h.form}:${h.floorAreaM2}:${h.design.style}`));
+    // What's listed changes, but never all at once.
+    for (let i = 1; i < pools.length; i++) {
+      const a = new Set(pools[i - 1].filter((h) => h.listed).map((h) => h.id));
+      const b = new Set(pools[i].filter((h) => h.listed).map((h) => h.id));
+      const kept = [...b].filter((id) => a.has(id)).length;
+      expect(kept).toBeGreaterThan(0);
+    }
+    const everListed = new Set(pools.flatMap((p) => p.filter((h) => h.listed).map((h) => h.id)));
+    expect(everListed.size).toBeGreaterThan(pools[0].filter((h) => h.listed).length);
+  });
+
+  it("fits the place: no private pool in Anchorage's climate, and a small town's homes are mostly houses", async () => {
+    const { marketPool, localMix } = await import('../src/engine/homes/market');
+    const { getPlace, registerPlace } = await import('../src/data/places');
+    const s = startLife('reg-fit', 'us-anchorage', { startDate: '2026-03-02' });
+    const cold = marketPool(s.seed, await marketEvidence('us-anchorage', '2026-03-02'), '2026-03-02');
+    expect(cold.some((h) => h.design.outdoor.includes('pool'))).toBe(false);
+    expect(cold.some((h) => h.privateAmenities.includes('Private Pool'))).toBe(false);
+    registerPlace({ ...getPlace('us-austin'), id: 'gn:4705191', name: 'Lancaster', region: 'Texas', population: 38801, geonameId: '4705191' } as never);
+    expect(localMix(getPlace('gn:4705191')).label).toBe('a town');
+    const town = marketPool(s.seed, await marketEvidence('gn:4705191', '2026-03-02'), '2026-03-02').filter((h) => h.form !== 'land');
+    expect(town.filter((h) => h.form === 'detached').length).toBeGreaterThan(town.length / 2);
+  });
+
+  it('a relisted home comes back with its new listing, unless you are renting, buying or own it', async () => {
+    const { pin } = await import('../src/engine/homes/core');
+    const s = startLife('reg-relist', 'gb-london', { startDate: '2026-03-02' });
+    const home = (await offers(s, 'gb-london')).find((h) => h.market === 'rent')!;
+    pin(s, home); // seen (a favourite or a viewing): not agreed
+    const relisted = { ...home, priceMinor: home.priceMinor + 5000, validUntil: '2026-09-30' };
+    expect(pin(s, relisted).priceMinor).toBe(home.priceMinor + 5000);
+    const t = applyToRent(s, relisted);
+    expect(t.rentMinor).toBe(home.priceMinor + 5000);
+    const again = { ...home, priceMinor: home.priceMinor + 99900, validUntil: '2026-12-31' };
+    expect(pin(s, again).priceMinor).toBe(home.priceMinor + 5000); // applied for: the terms stand
   });
 });
