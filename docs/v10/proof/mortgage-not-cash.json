@@ -19,8 +19,8 @@
   "gross": 62540,
   "revenue": 124148.375,
   "distributed": 1.775,
-  "money": 24484563.222,
-  "moneyChange": -515436.778,
+  "money": 24172213.976,
+  "moneyChange": -827786.024,
   "jobsTaken": 0.85,
   "jobsOffered": 0.85,
   "jobPay": 4471.6,
@@ -63,7 +63,7 @@
   "repairSpend": 0,
   "repairsFixed": 0,
   "homesOwned": 1,
-  "pricePaid": 274675,
+  "pricePaid": 581600,
   "mortgageLoan": 0,
   "mortgagePayment": 0,
   "mortgageOwed": 0,
@@ -94,7 +94,7 @@
   "bankFees": 0,
   "owed": 0,
   "accounts": 1,
-  "worth": 18412391.543,
+  "worth": 18177504.91,
   "rewards": 0,
   "fired": 0
  },
@@ -106,8 +106,8 @@
   "gross": 62540,
   "revenue": 124148.375,
   "distributed": 1.775,
-  "money": 24669002.254,
-  "moneyChange": -330997.746,
+  "money": 24562747.414,
+  "moneyChange": -437252.586,
   "jobsTaken": 0.85,
   "jobsOffered": 0.85,
   "jobPay": 4471.6,
@@ -150,10 +150,10 @@
   "repairSpend": 0,
   "repairsFixed": 0,
   "homesOwned": 1,
-  "pricePaid": 274675,
-  "mortgageLoan": 219740,
-  "mortgagePayment": 1483.705,
-  "mortgageOwed": 209909.488,
+  "pricePaid": 581600,
+  "mortgageLoan": 465280,
+  "mortgagePayment": 3141.609,
+  "mortgageOwed": 444464.886,
   "inspections": 0,
   "purchasesEnded": 0,
   "sold": 0,
@@ -177,11 +177,11 @@
   "letCosts": 0,
   "lettingsEnded": 0,
   "interestIn": 0,
-  "interestOut": 19153.782,
+  "interestOut": 40556.448,
   "bankFees": 0,
-  "owed": 157851.935,
+  "owed": 334237.594,
   "accounts": 2,
-  "worth": 18393237.761,
+  "worth": 18136948.461,
   "rewards": 0,
   "fired": 0
  },
@@ -236,16 +236,16 @@
    "n": 40
   },
   "money": {
-   "mean": 184439.032,
-   "lo": 160258.997,
-   "hi": 208619.067,
+   "mean": 390533.438,
+   "lo": 339346.627,
+   "hi": 441720.25,
    "changed": 40,
    "n": 40
   },
   "moneyChange": {
-   "mean": 184439.032,
-   "lo": 160258.997,
-   "hi": 208619.067,
+   "mean": 390533.438,
+   "lo": 339346.627,
+   "hi": 441720.25,
    "changed": 40,
    "n": 40
   },
@@ -551,23 +551,23 @@
    "n": 40
   },
   "mortgageLoan": {
-   "mean": 219740,
-   "lo": 190932.008,
-   "hi": 248547.992,
+   "mean": 465280,
+   "lo": 404296.248,
+   "hi": 526263.752,
    "changed": 40,
    "n": 40
   },
   "mortgagePayment": {
-   "mean": 1483.705,
-   "lo": 1289.191,
-   "hi": 1678.218,
+   "mean": 3141.609,
+   "lo": 2729.842,
+   "hi": 3553.375,
    "changed": 40,
    "n": 40
   },
   "mortgageOwed": {
-   "mean": 209909.488,
-   "lo": 182390.265,
-   "hi": 237428.711,
+   "mean": 444464.886,
+   "lo": 386209.335,
+   "hi": 502720.437,
    "changed": 40,
    "n": 40
   },
@@ -733,9 +733,9 @@
    "n": 40
   },
   "interestOut": {
-   "mean": 19153.782,
-   "lo": 16642.713,
-   "hi": 21664.851,
+   "mean": 40556.448,
+   "lo": 35240.756,
+   "hi": 45872.14,
    "changed": 40,
    "n": 40
   },
@@ -747,9 +747,9 @@
    "n": 40
   },
   "owed": {
-   "mean": 157851.935,
-   "lo": 137157.479,
-   "hi": 178546.39,
+   "mean": 334237.594,
+   "lo": 290429.42,
+   "hi": 378045.768,
    "changed": 40,
    "n": 40
   },
@@ -761,9 +761,9 @@
    "n": 40
   },
   "worth": {
-   "mean": -19153.782,
-   "lo": -21664.851,
-   "hi": -16642.713,
+   "mean": -40556.448,
+   "lo": -45872.14,
+   "hi": -35240.756,
    "changed": 40,
    "n": 40
   },
