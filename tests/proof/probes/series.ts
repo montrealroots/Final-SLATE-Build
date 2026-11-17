@@ -4,6 +4,7 @@
 import type { Probe } from '../probe';
 import type { GameState, Project } from '../../../src/engine/types';
 import { SERIES } from './scheduled';
+import { planFinalSeason } from '../../../src/engine/continuation';
 import { deliverEpisode, episodeDeliveryBlockers, episodeLockBlockers, episodeLocked, startEpisodeCutPass, lockEpisode } from '../../../src/engine/episode-delivery';
 import { assignEpisodeRole } from '../../../src/engine/projects';
 import { makeOffer, roleCandidates } from '../../../src/engine/hiring';
@@ -175,3 +176,24 @@ PROBES.push({
   bites: ['episodesDeliveredAlone'], downstream: ['firstOut', 'episodesOut'],
 });
 
+// A season planned as the series' last (continuation.ts planFinalSeason; from November 17, 2026): the first year's
+// season ends as planned instead of going to the commissioner. A commissioner who renewed another of your series that
+// year wants more of the next one's audience (commissionerRaise), so a first season that ends leaves the second's bar
+// where it was.
+const lastSeason = (s: GameState, p: Project, year: number) => { if (year === 0) planFinalSeason(s, p, true); };
+PROBES.push({
+  id: 'final-season', features: ['action:continuation.planFinalSeason'], decision: "Plan the first year's season as the series' last",
+  reads: ['src/engine/continuation.ts#planFinalSeason', 'src/engine/continuation.ts#handler:season-decision', 'src/engine/continuation.ts#commissionerRaise'],
+  base: SERIES, variant: { ...SERIES, decide: lastSeason }, measure: (_s, projects) => {
+    const first = projects[0];
+    return {
+      ended: projects.filter((p) => p.renewal?.outcome === 'ended').length,
+      firstRenewed: first?.renewal?.outcome === 'renewed' ? 1 : 0,
+      laterRenewed: projects.slice(1).filter((p) => p.renewal?.outcome === 'renewed').length,
+      slateRaised: projects.slice(1).filter((p) => p.renewal?.reason.includes('less room on their slate')).length,
+    };
+  },
+  bites: ['ended', 'firstRenewed'], downstream: ['slateRaised', 'laterRenewed'],
+  // At 40 careers the slate's raise moved -0.1, interval -0.198 to -0.002 (November 17, 2026): 100, to hold it clear.
+  seeds: 100,
+});

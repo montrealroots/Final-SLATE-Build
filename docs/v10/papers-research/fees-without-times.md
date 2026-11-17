@@ -5,10 +5,7 @@ fee-only record (`src/data/papers/terms.json`, no `days`): the fee is researched
 said as one. Those are counted under `permitTimes` and `visaTimes` in `docs/v10/papers-estimates.json`.
 
 Not recorded yet, as the sources conflict:
-- Saudi Arabia's tourist e-visa: SAR 535 with insurance by several guides; SAR 395 on Visit Saudi from October 27, 2026
-  by one.
-- Ethiopia's 30-day tourist e-visa: $82 in the embassy's table; $62 after a reported cut.
-- Egypt's e-visa: $25 or $30. Kyrgyzstan's e-visa: $30 to $82. Mongolia's e-visa: about $50, varying by nationality.
+- Kyrgyzstan's e-visa: $30 to $82. Mongolia's e-visa: about $50, varying by nationality.
 - Pakistan's e-visa: by nationality, $20 to $75, since the free visa prior to arrival ended on January 1, 2026.
 - China's visas: by nationality and post. The Philippines' 9(a): by post (€30, CAD 43.50, AUD 54, $20).
 - Malaysia's PLIK: PUSPAL RM 90 for filming, and RM 1,296 to Immigration by one consultancy.
@@ -28,7 +25,6 @@ Found later the same day, also conflicting or incomplete (batch 3's research):
   three months.
 - Morocco's shooting authorization: no fee published under law no. 18.23.
 - Turks and Caicos: fees by occupation band, nothing for entertainers.
-- Côte d'Ivoire's e-visa: €73 by one agency, 50,000 to 100,000 XOF by others.
 - Nigeria's e-visa: $160 plus $20 for US citizens by one guide, $253 plus $100 by another; stays of 30 or 90 days.
 - Sri Lanka's ETA: free for 40 countries from May 25, 2026 and $50 for the rest, by one blog; not confirmed.
 - Mozambique: the e-visa about $190 in most guides, $50 in one; the ETA $48 or MZN 650.
@@ -38,3 +34,23 @@ Found later the same day, also conflicting or incomplete (batch 3's research):
 - Venezuela: an e-visa for US nationals from April 6, 2026, with no published fee or time. Suriname: the e-visa and
   tourist card may have been replaced by an entry fee. Bolivia: US citizens visa-free from December 1, 2025.
 - Nauru (AUD 50 to 100, or free) and Kiribati (no fee found).
+
+Batch 4 (November 17, 2026, later), resolved where two sources now agree and recorded with both:
+- Saudi Arabia: SAR 395 with the compulsory insurance on Visit Saudi's visa finder, SAR 535 being the 2023 price.
+- Ethiopia: $62 for the 30-day e-visa since the August 2024 cut, three working days.
+- Egypt: $30 for the single-entry e-visa from April 27, 2026. Côte d'Ivoire: €73 on SNEDAI, the accredited portal.
+- Burundi: a $90 visa on arrival, 30 days. Liberia: USD 102.50 for the online visa on arrival, as its portal quotes it.
+- New Zealand: from NZD 441 for the visitor visa, 80% decided within two weeks (Immigration New Zealand's own page).
+- Ghana: $260 for the single-entry e-visa launched May 25, 2026, three to five business days. Indonesia: IDR 500,000
+  for the visa on arrival, 30 days. Morocco: MAD 770 for the e-visa, about three business days. Ukraine: $20 on the
+  Ministry's own page (its time is three or nine working days by different sources, so it's left the game's estimate).
+
+Still open after batch 4:
+- Iran: the e-visa is EUR 40 to 80 by nationality in guides, none official; one to four weeks, longer since January 2026.
+- Malawi: the 2023 waiver was replaced on January 3, 2026 by reciprocal fees; $50 in the portal's FAQ, $75 on its fee page.
+- Turkey: the e-visa is $15 to $100 in guides, and some say US and UK passports need none.
+- South Africa: ZAR 190 or 425; five days to six weeks. Hong Kong: HK$230 before the September 2025 revision, and the
+  Immigration Department's page gives no fee.
+- Colombia: the visitor (V) visa's study and issuance fees are given as $52 to $56 and $52 to $177 by different guides.
+- Argentina: the AVE is 20 business days on the consulates' pages, but its fee is USD 400, €368 or $150 by source.
+- Serbia: each embassy prices the type C visa itself (92 EUR in Baku, 96 USD in Washington, 88 CHF in Zurich).

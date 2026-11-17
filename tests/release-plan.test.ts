@@ -4,6 +4,7 @@
 import { describe, expect, it } from 'vitest';
 import { RENTAL_SHARE } from '../src/engine/box-office';
 import { DAY, acceptDistribution, deserialize, ledgerTotals, planRelease, processUntil, serialize } from './engine-api';
+import { COMPANIES } from '../src/catalog/registry';
 import {
   AGENT_SHARE, AGGREGATOR_FEE, BOOKER_SHARE_OF_GROSS, BUYERS, SCREEN_RENTAL, SELF_SHARE, alternatives, buyerValue, planRefusal, proposalRefusal, proposeLicence, releaseYourself,
   selfCosts, selfRefusal, setReleasePlan,
@@ -53,28 +54,35 @@ describe('a plan', () => {
 });
 
 describe('a licence proposal', () => {
+  it('goes to a real company by the name the registry records it under, one that distributes, broadcasts or streams (November 17, 2026)', () => {
+    const role = { 'distributor-sales': 'distribution', 'broadcast-licence': 'network', 'streaming-licence': 'streaming' } as const;
+    for (const [route, names] of Object.entries(BUYERS) as [keyof typeof role, string[]][]) {
+      expect(names, route).toHaveLength(6); // every name listed is in the registry with its role: none dropped
+      for (const n of names) expect(COMPANIES.find((c) => c.name === n)!.roles, n).toContain(role[route]);
+    }
+  });
   it('is accepted at or under what the buyer would pay, countered up to half again, rejected beyond; the offer still waits for you', () => {
     const value = buyerValue(film('rp-v', 70).p, 'broadcast-licence', ['GB'], false);
     expect(value).toBe(180_000); // (70 - 40) x 6,000, a feature's full length, one territory: game calibration
     for (const [ask, status, guarantee] of [[value, 'accepted', value], [value * 1.4, 'countered', value], [value * 2, 'rejected', null]] as const) {
       const { s, p } = film(`rp-ask-${status}`, 70);
       setReleasePlan(s, p, plan(s, p, { routes: ['broadcast-licence'] }));
-      const pr = proposeLicence(s, p, { route: 'broadcast-licence', buyer: 'Channel Meridian', territories: ['GB'], ask, exclusive: false });
+      const pr = proposeLicence(s, p, { route: 'broadcast-licence', buyer: 'FX', territories: ['GB'], ask, exclusive: false });
       wait(s, 22);
       expect(pr.status).toBe(status);
       const o = p.offers.find((x) => x.id === pr.offerId);
       expect(o ? [o.status, o.minimumGuarantee] : null).toEqual(guarantee === null ? null : ['open', guarantee]);
-      if (status === 'rejected') expect(alternatives(p, pr)[0]).toBe('Ask Channel Meridian again for less: rights like these sell for about $180,000.');
+      if (status === 'rejected') expect(alternatives(p, pr)[0]).toBe('Ask FX again for less: rights like these sell for about $180,000.');
     }
   });
 
   it('is turned down on the work under a buyer\'s bar, finally for that buyer, with the routes that remain', () => {
     const { s, p } = film('rp-bar', 60);
     setReleasePlan(s, p, plan(s, p, { routes: ['streaming-licence', 'transactional'] }));
-    const pr = proposeLicence(s, p, { route: 'streaming-licence', buyer: 'Cobalt Stream', territories: ['GB'], ask: 1_000, exclusive: false });
+    const pr = proposeLicence(s, p, { route: 'streaming-licence', buyer: 'Peacock', territories: ['GB'], ask: 1_000, exclusive: false });
     wait(s, 29);
     expect([pr.status, pr.over, pr.answer]).toEqual(['rejected', 'reception', 'It takes work received at 65 or better, and Tidewater was received at 60.']);
-    expect(proposalRefusal(s, p, { route: 'streaming-licence', buyer: 'Cobalt Stream', territories: ['GB'], ask: 1_000, exclusive: false })).toBe("Cobalt Stream turned it down on how it was received. It won't read it again.");
+    expect(proposalRefusal(s, p, { route: 'streaming-licence', buyer: 'Peacock', territories: ['GB'], ask: 1_000, exclusive: false })).toBe("Peacock turned it down on how it was received. It won't read it again.");
     const alt = alternatives(p, pr).join(' ');
     expect(alt).toContain('Buyers who work to a lower bar: Distributor Sales, Broadcast Licence.');
     expect(alt).toContain('Release it yourself: Transactional Digital, Direct To Audience, Partner-Assisted Theatrical.');
@@ -83,7 +91,7 @@ describe('a licence proposal', () => {
   it('to a streaming service goes through a sales agent, whose share of the guarantee is taken when you sign', () => {
     const { s, p } = film('rp-agent', 80);
     setReleasePlan(s, p, plan(s, p, { routes: ['streaming-licence'] }));
-    const pr = proposeLicence(s, p, { route: 'streaming-licence', buyer: 'Night Owl Streaming', territories: ['GB'], ask: 50_000, exclusive: true });
+    const pr = proposeLicence(s, p, { route: 'streaming-licence', buyer: 'Hulu', territories: ['GB'], ask: 50_000, exclusive: true });
     wait(s, 29);
     expect(pr.status).toBe('accepted');
     const o = p.offers.find((x) => x.id === pr.offerId)!;
@@ -91,7 +99,7 @@ describe('a licence proposal', () => {
     acceptDistribution(s, p, o.id);
     expect(p.obligations.find((x) => x.ref === `agent:${o.id}`)!.settled).toBe(50_000 * AGENT_SHARE);
     // Its exclusive rights keep the territory from any other proposal.
-    expect(proposalRefusal(s, p, { route: 'streaming-licence', buyer: 'Cobalt Stream', territories: ['GB'], ask: 10_000, exclusive: false })).toBe('An exclusive deal holds United Kingdom.');
+    expect(proposalRefusal(s, p, { route: 'streaming-licence', buyer: 'Peacock', territories: ['GB'], ask: 10_000, exclusive: false })).toBe('An exclusive deal holds United Kingdom.');
   });
 
   it('takes a season, worth more for more episodes', () => {

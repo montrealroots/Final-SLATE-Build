@@ -145,6 +145,7 @@ Projects.tsx,"""Story Setting Place""",1,decision,axes.settingPlaceId,projects.t
 Projects.tsx,"""Production Base""",1,decision,axes.basePlaceId,production/schedule.ts isWorkingDay; weather.ts,"Holidays, weather and time zone of the shoot",tests/depth-gaps-production.test.ts::rain stops an exterior day,e2e/journeys.spec.ts::live action in a wet October,playthrough,
 Projects.tsx,"""Planned Budget (US Dollars)""",1,decision,"project.finance.planned (cents), finance.target","project-budget.ts setPlannedBudget, budgetPicture, plannedText; finance.ts financeSummary","What you plan to spend, kept exactly; at $1,000 or more it becomes what backers are asked for. It moves no money","tests/v8-budget.test.ts::keeps 20,000 and 2,000,000 exactly",,,
 Projects.tsx,"""Search Genres""",1,view,,,,,,,
+Projects.tsx,"""Plan This Season As The Last""",1,decision,project.finalSeason,"continuation.ts season-decision, canContinue","The season ends as planned: nobody decides on another, and no next season can be started",tests/v10-planned-ending.test.ts::ends as planned,e2e/v10-planned-ending.spec.ts::a season planned as the last ends as planned,targeted,
 Projects.tsx,"""Years That Pass In The Story""",1,decision,character.ageInStory (next season),sequel.ts continueProject,Each character is that much older in the next season or sequel; a child in the cast may stop being one,tests/minors.test.ts::ages a series' characters by the years that pass between seasons,,,
 Recognised.tsx,"""Search By Name""",1,view,,,,,,,
 RecordBook.tsx,"""As Of""",1,view,,,,,,,

@@ -57,7 +57,13 @@ These sources are explainers and encyclopedia entries. No contract was copied, a
   studio's release holds territories.
 - **Overhead.** It is paid monthly into the player's company account, or into their own account if they have no company.
 - **The end.** The deal ends at its term. It is offered again if the studio took a project or the player's record still
-  counts. If the player ends it early, the overhead stops. Either way, submissions in hand are still answered, and a
+  counts; from November 17, 2026 a deal that covers series is judged on the series it commissioned, once a commissioner
+  has decided on one (`first-look.ts seriesJudgement`): a series renewed keeps the deal, and series all cancelled end it,
+  whatever else the record says. A season the player ended as planned says nothing either way. If the player ends it
+  early, the overhead stops.
+- **Season obligations.** From November 17, 2026 a season a television deal commissions is owed by a date, two years
+  after the offer (`finance.ts`, as a studio's film is): undelivered by then, what the company paid in is repaid. The
+  terms say so before the player accepts. Either way, submissions in hand are still answered, and a
   project developed with its money stays bound to submit to that studio first.
 
 ## Not Modelled

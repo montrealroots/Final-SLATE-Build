@@ -400,12 +400,29 @@ and the rest) with real grades filling the hiring lists.
   - Journeys J02, J04, J15, J17 and J18 gained the steps they lacked; `docs/v6/JOURNEYS.md` says what each runs.
   - The 43 proofs these made stale were rerun: 42 proven, and `off-job-lapse` gave the same "no downstream effect" as
     its committed result, already explained in `docs/v10/explained.json`. The matrix: 415 results, none stale, open 0.
-  - **Next, already built and tested in a scratch worktree, to land as the second checkpoint:** J10 (a season planned as
-    the last, `continuation.ts planFinalSeason`; one series reported territory by territory), J13 (a commissioned season
-    owed by a date; a TV deal renewed on its series' results, `first-look.ts seriesJudgement`), J14 (licence buyers
-    are real companies from the registry, `release-plan.ts BUYERS`), J19 (`e2e/v10-long-career.spec.ts`), awards
-    judged against the recorded nominees (`awards-results.ts recordedField`), and papers batch 4 (11 visitor visas).
-    It stales about 37 proofs, which must be rerun before it merges.
+- That checkpoint merged as #117 (all 13 CI jobs green). The second checkpoint, the rest of the order:
+  - J10: a season planned as the series' last (`continuation.ts planFinalSeason`, a card on the project's overview until
+    the commissioner would decide) ends as planned, with no decision and no next season; and one series sold in two
+    territories reports apart, each deal naming its territories under Earnings.
+  - J13: a season a television deal commissions is owed by a date (`finance.ts`, as a studio's film), said in the terms
+    before you accept; and the deal's renewal is judged on the series it commissioned (`first-look.ts seriesJudgement`).
+  - J14: the licence buyers are real companies by the names the registry records (`release-plan.ts BUYERS`); how each
+    answers is the game's calibration, said where a buyer is chosen, and a real buyer's offer isn't called fictional.
+  - J19: two years of one game through the screens (`e2e/v10-long-career.spec.ts`).
+  - Awards: an entry is judged against the recorded nominees where the record has them, published by that day
+    (`awards-results.ts recordedField`); your nominated work takes the last-listed nominee's place, as the history shows,
+    and the recorded winner, once published, is the strongest. The margins (`RECORDED_NOMINEE` 18, `RECORDED_WIN` 15)
+    are calibration: at 10 and 6 a 99-rated picture beat the Oscars' recorded field almost always.
+  - An opportunity commission's breach said "the grant" was repaid; it says what they paid in.
+  - Papers batch 4: 11 visitor visas (queue 122 -> 111): New Zealand, Ethiopia, Morocco and Ghana in full; the fees of
+    Saudi Arabia, Egypt, Côte d'Ivoire, Burundi, Liberia, Indonesia and Ukraine. Iran, Malawi, Turkey, South Africa, Hong
+    Kong, Serbia, Colombia and Argentina stay estimated, each with why (`docs/v10/papers-research/fees-without-times.md`).
+  - Journeys: 18 Covered, 4 Partly. What's left there isn't code: J01 and J21 need box office observations and a recorded
+    correction or late report, which no dataset has; J02's real work and real people run in their own journeys rather
+    than its one game; J20 would run every journey on WebKit, a CI cost.
+  - Proofs: 37 rerun (36 stale and the new `final-season`, at 100 seeds), all proven.
+  - Still open: the physical-phone and pacing tests (need the owner's device and a human player); more papers research
+    where sources now conflict.
 Still the game's own figures: the stop-motion and creature materials and the broadcast edit (no published per-item price
 found).
 

@@ -1,5 +1,5 @@
 {
- "about": "Fees and decision times for the work permit routes in work.json, and for visitor visas by destination, researched on November 14, 2026 (the owner's command of that day: research, then estimate); and for electronic travel authorizations by destination (authorizations; passports lists the passports whose authorization differs), researched on November 16, 2026 (Morocco, Russia and Saudi Arabia later that day). Each entry names its source and whether it is the government's own page (official) or another publication (secondary). days is calendar days, or [shortest, longest] where the source gives a range; stayDays is how long the permission lasts at most, where the source says. On November 17, 2026 the work permits of 24 European states were researched (Austria to Sweden, and Åland on Finland's law); permitAuthorities lists the territories whose work permit route is their sovereign's, which take the sovereign's terms; and visaAuthorities lists the territories whose visitors hold their sovereign's visa, with the law or page that says so. On November 17, 2026 (later), batch 2: work permits and visitor visas across Asia, Africa, the Middle East and the Caribbean, each with its sources; a record may leave out the decision time where no source gives it, and the time is then the game's estimate, said as one; and the French overseas territories, the Dutch Caribbean, Andorra, San Marino, the Vatican, Åland and Svalbard join visaAuthorities. Batch 3, the same day: work permits and visitor visas across Africa, Latin America, Central Asia and the Pacific, Indonesia's permit gaining its decision time.",
+ "about": "Fees and decision times for the work permit routes in work.json, and for visitor visas by destination, researched on November 14, 2026 (the owner's command of that day: research, then estimate); and for electronic travel authorizations by destination (authorizations; passports lists the passports whose authorization differs), researched on November 16, 2026 (Morocco, Russia and Saudi Arabia later that day). Each entry names its source and whether it is the government's own page (official) or another publication (secondary). days is calendar days, or [shortest, longest] where the source gives a range; stayDays is how long the permission lasts at most, where the source says. On November 17, 2026 the work permits of 24 European states were researched (Austria to Sweden, and Åland on Finland's law); permitAuthorities lists the territories whose work permit route is their sovereign's, which take the sovereign's terms; and visaAuthorities lists the territories whose visitors hold their sovereign's visa, with the law or page that says so. On November 17, 2026 (later), batch 2: work permits and visitor visas across Asia, Africa, the Middle East and the Caribbean, each with its sources; a record may leave out the decision time where no source gives it, and the time is then the game's estimate, said as one; and the French overseas territories, the Dutch Caribbean, Andorra, San Marino, the Vatican, Åland and Svalbard join visaAuthorities. Batch 3, the same day: work permits and visitor visas across Africa, Latin America, Central Asia and the Pacific, Indonesia's permit gaining its decision time. Batch 4, the same day: visitor visas for Burundi, Côte d'Ivoire, Egypt, Ethiopia, Ghana, Indonesia, Liberia, Morocco, New Zealand, Saudi Arabia and Ukraine; Iran, Malawi, Turkey, South Africa, Hong Kong and Serbia were left for want of agreeing sources.",
  "permits": {
   "US": {
    "route": "O-1 (extraordinary ability in the arts, or extraordinary achievement in motion pictures or television)",
@@ -3172,6 +3172,227 @@
      "kind": "official",
      "url": "https://new-delhi.mfa.gov.sg/consular-services/visa-information/",
      "what": "High Commission of Singapore, New Delhi: 3 to 5 working days, excluding the date of submission, weekends and public holidays"
+    }
+   ]
+  },
+  "EG": {
+   "name": "e-Visa (single entry)",
+   "fee": 30,
+   "currency": "USD",
+   "feeBasis": "The single-entry tourist e-visa on visa2egypt.gov.eg, raised from $25 to $30 on April 27, 2026 (the visa on arrival rose to $30 on March 1, 2026); a levy rising on January 1, 2027 is expected to take it to about $33.",
+   "stayDays": 30,
+   "stayBasis": "A single entry, staying up to 30 days.",
+   "sources": [
+    {
+     "kind": "secondary",
+     "url": "https://discover.passportindex.org/policy-and-regulations/egypt-raises-tourist-e-visa-fees/",
+     "what": "Passport Index, Egypt raises tourist e-visa fees: single entry $30, multiple $65, on the official portal from April 27, 2026"
+    },
+    {
+     "kind": "secondary",
+     "url": "https://www.ivisa.com/news/2026-04-28-eg-egypt-increases-tourist-e-visa-fees",
+     "what": "iVisa news, April 28, 2026: Egypt increases tourist e-visa fees"
+    }
+   ]
+  },
+  "ET": {
+   "name": "e-Visa (tourist, 30 days)",
+   "fee": 62,
+   "currency": "USD",
+   "feeBasis": "The 30-day single-entry tourist e-visa on evisa.gov.et, cut from $82 to $62 in August 2024; other categories kept their prices.",
+   "days": 5,
+   "daysBasis": "Normal processing takes three working days.",
+   "stayDays": 30,
+   "stayBasis": "A single entry, staying up to 30 days, through Addis Ababa Bole International Airport.",
+   "sources": [
+    {
+     "kind": "secondary",
+     "url": "https://visasnews.com/en/ethiopia-lowers-the-price-of-its-tourist-visa/",
+     "what": "Visas News, August 13, 2024: Ethiopia's tourist e-visa down from $82 to $62"
+    },
+    {
+     "kind": "secondary",
+     "url": "https://ethiopiadriver.com/ethiopia/do-you-need-a-visa-for-ethiopia",
+     "what": "Ethiopia Driver (October 2026): US$62 for a 30-day single-entry tourist visa, normal processing three days"
+    }
+   ]
+  },
+  "SA": {
+   "name": "Tourist e-Visa",
+   "fee": 395,
+   "currency": "SAR",
+   "feeBasis": "The one-year multiple-entry tourist e-visa with its compulsory medical insurance, SAR 395 on Visit Saudi's visa finder (SAR 535 was the price in 2023).",
+   "stayDays": 90,
+   "stayBasis": "Up to 90 days a visit within the year.",
+   "sources": [
+    {
+     "kind": "secondary",
+     "url": "https://howtosaudiarabia.com/visa/tourist-visa",
+     "what": "How To Saudi Arabia (October 2026): Visit Saudi's visa finder lists the eVisa at SAR 395 with medical insurance"
+    },
+    {
+     "kind": "secondary",
+     "url": "https://warsawtravelers.pl/en/guides/tourist-visa-to-saudi-arabia/",
+     "what": "Warsaw Travelers: SAR 535 in 2023, lower since"
+    }
+   ]
+  },
+  "CI": {
+   "name": "e-Visa (airport delivery)",
+   "fee": 73,
+   "currency": "EUR",
+   "feeBasis": "The e-visa on snedai.com, the only site the State accredits: €70 in visa charges and a €3 online payment commission, for a visa issued at Abidjan's airport after biometric enrolment there.",
+   "stayDays": 90,
+   "stayBasis": "Up to three months.",
+   "sources": [
+    {
+     "kind": "secondary",
+     "url": "https://visaatlas.org/visas/cote-divoire/evisa",
+     "what": "Visa Atlas, Côte d'Ivoire e-visa: SNEDAI's FAQ gives €73, €70 application charge plus €3 online payment commission"
+    },
+    {
+     "kind": "secondary",
+     "url": "https://www.action-visas.com/visa/Cote-d'Ivoire-e-Visa",
+     "what": "Action Visas: the SNEDAI portal lists a three-month airport-delivery visa at €73 including taxes"
+    }
+   ]
+  },
+  "BI": {
+   "name": "Visa on arrival",
+   "fee": 90,
+   "currency": "USD",
+   "feeBasis": "The single-entry visa on arrival at Bujumbura, paid in cash; guides agree on $90, though none quotes an official fee page.",
+   "stayDays": 30,
+   "stayBasis": "A single entry, staying up to 30 days.",
+   "sources": [
+    {
+     "kind": "secondary",
+     "url": "https://safarifind.com/blog/burundi-visa-for-american-citizens-2026-requirements-costs",
+     "what": "Safarifind (2026): Burundi's visa on arrival, $90, up to 30 days"
+    },
+    {
+     "kind": "secondary",
+     "url": "https://www.entrybrief.com/gb-passport/bi/",
+     "what": "EntryBrief, Burundi for British passport holders: visa on arrival $90, 30 days"
+    }
+   ]
+  },
+  "LR": {
+   "name": "e-Visa on arrival",
+   "fee": 102.5,
+   "currency": "USD",
+   "feeBasis": "The non-refundable online fee on Liberia's visa-on-arrival portal, USD 102.50, as the portal's own instructions quote it.",
+   "stayDays": 30,
+   "stayBasis": "A single entry, staying 30 days (90 days may be asked for).",
+   "sources": [
+    {
+     "kind": "secondary",
+     "url": "https://www.legit.ng/people/1720389-liberia-publishes-7-steps-apply-a-visa-arrival-online-mentions-application-fee/",
+     "what": "Legit.ng: Liberia's seven steps for the online visa on arrival, quoting the portal's 'USD 102.5' fee"
+    },
+    {
+     "kind": "secondary",
+     "url": "https://visasnews.com/en/liberia-activates-its-electronic-visa-on-arrival-service/",
+     "what": "Visas News: Liberia activates its electronic visa on arrival, single entry, 30 or 90 days"
+    }
+   ]
+  },
+  "NZ": {
+   "name": "Visitor Visa",
+   "fee": 441,
+   "currency": "NZD",
+   "feeBasis": "The visitor visa's application fee, from NZD 441 on Immigration New Zealand's page (some passports pay a different amount).",
+   "days": 14,
+   "daysBasis": "80% of applications are processed within 2 weeks.",
+   "stayDays": 270,
+   "stayBasis": "Up to 9 months in any 18-month period.",
+   "sources": [
+    {
+     "kind": "official",
+     "url": "https://www.immigration.govt.nz/new-zealand-visas/visas/visa/visitor-visa",
+     "what": "Immigration New Zealand, Visitor Visa: from NZD 441, 80% processed within 2 weeks, up to 9 months in 18"
+    }
+   ]
+  },
+  "GH": {
+   "name": "e-Visa (single entry)",
+   "fee": 260,
+   "currency": "USD",
+   "feeBasis": "The single-entry tourist or business e-visa on Ghana's national e-visa platform, launched May 25, 2026, at normal processing ($338 for 48 hours, $442 for five); African passports pay nothing.",
+   "days": 5,
+   "daysBasis": "Normal processing takes three to five business days.",
+   "sources": [
+    {
+     "kind": "secondary",
+     "url": "https://www.citinewsroom.com/?p=1351633",
+     "what": "Citi Newsroom: Ghana's e-visa fees at launch, $260 single entry, $468 multiple"
+    },
+    {
+     "kind": "secondary",
+     "url": "https://ghana-net.com/ghana-eta-and-e-visa",
+     "what": "Ghana-net: single-entry e-visa $260, normal processing three to five business days, $338 priority and $442 express"
+    }
+   ]
+  },
+  "ID": {
+   "name": "Visa on Arrival (B1)",
+   "fee": 500000,
+   "currency": "IDR",
+   "feeBasis": "The visa on arrival, or the same visa applied for online as an e-VOA: IDR 500,000, with a once-only extension at the same fee.",
+   "stayDays": 30,
+   "stayBasis": "A single entry, staying 30 days, extendable once for another 30.",
+   "sources": [
+    {
+     "kind": "secondary",
+     "url": "https://www.issacompass.com/insights/indonesia-b1-e-voa-2026-eligibility-fees-and-the-one-time-30-day-extension",
+     "what": "ISSA Compass, Indonesia B1 e-VOA 2026: IDR 500,000, 30 days, one 30-day extension"
+    },
+    {
+     "kind": "secondary",
+     "url": "https://visasnews.com/en/indonesia-immigration-plans-to-raise-visa-on-arrival-fees-for-voa-and-e-voa/",
+     "what": "Visas News: the official VOA and e-VOA fee remains IDR 500,000 for now"
+    }
+   ]
+  },
+  "MA": {
+   "name": "e-Visa (single entry)",
+   "fee": 770,
+   "currency": "MAD",
+   "feeBasis": "The standard single-entry e-visa on acces-maroc.ma, MAD 770 (MAD 1,100 express).",
+   "days": 3,
+   "daysBasis": "Standard processing takes about three business days.",
+   "stayDays": 30,
+   "stayBasis": "Up to 30 days, within the visa's 180 days.",
+   "sources": [
+    {
+     "kind": "secondary",
+     "url": "https://visafoto.com/morocco/e-visa-application-and-photo",
+     "what": "Visafoto, Morocco e-visa: MAD 770 standard, MAD 1,100 express"
+    },
+    {
+     "kind": "secondary",
+     "url": "https://www.flydestinations.com.ng/visa-requirement/morocco-evisa-requirements-nigerians-2026/",
+     "what": "Fly Destinations (2026): the official e-visa fee is MAD 770, a stay of 30 days"
+    }
+   ]
+  },
+  "UA": {
+   "name": "e-Visa (single entry)",
+   "fee": 20,
+   "currency": "USD",
+   "feeBasis": "The single-entry e-visa, $20 on the Ministry of Foreign Affairs' page ($30 double entry; the fee doubles for the urgent procedure). Its processing time is given as three working days by the embassy and up to nine by launch reports, so it isn't recorded.",
+   "stayDays": 30,
+   "stayBasis": "A single entry, staying up to 30 days.",
+   "sources": [
+    {
+     "kind": "official",
+     "url": "https://mfa.gov.ua/en/consular-affairs/entry-and-stay-foreigners-ukraine/e-visa",
+     "what": "Ministry of Foreign Affairs of Ukraine, e-Visa: single entry 20 US dollars, double entry 30"
+    },
+    {
+     "kind": "secondary",
+     "url": "https://discover.passportindex.org/policy-and-regulations/ukraine-e-visa-relaunch/",
+     "what": "Passport Index, Ukraine e-visa relaunch: single entry for up to 30 days"
     }
    ]
   }

@@ -13,6 +13,7 @@ import { COMEDY_MUSICAL } from './script-effects';
 import { addLog, schedule, type HandlerResult } from './state';
 import { DAY, addDaysToKey, dateKey, formatDateKey, localToInstant, parseYmd } from './time';
 import { studioFilms, type StudioFilm } from './studios';
+import { recordedResults } from './history';
 import type { Edition, EditionEntry, GameState, Project, RivalFilm, ScheduledEvent } from './types';
 
 /**
@@ -311,7 +312,37 @@ export function seasonOf(ed: Edition): number {
 /** A candidate competing work for one category: its film (stored once per save if chosen) and its strength there. */
 export interface Candidate { id: string; filmKey: string; film: RivalFilm; score: number }
 
+/**
+ * The recorded field (the owner's v8 package, A18: "judging the recorded field"; from November 17, 2026). Where the record
+ * has a category's nominees, published by the day it is judged, they are the field your entry competes with, not works
+ * the game draws: a recorded nominee is strong for the institution (RECORDED_NOMINEE over its usual rival, which is drawn
+ * around the institution's prestige less 8 with a spread of 10: about the best of a year's field), and the recorded
+ * winner, once its result is published, stronger again (RECORDED_WIN). The record doesn't say how strong any
+ * of them were; the margins are game calibration. Until that day the record replaced a category's result only where you
+ * entered, and you were judged against the game's own followed work.
+ */
+export const RECORDED_NOMINEE = 18;
+export const RECORDED_WIN = 15;
+const recordedOf = (ed: Edition, cat: Category, today: string, kind: 'nominees' | 'winner') =>
+  recordedResults(ed.institutionId, ed.year, today).find((o) => o.kind === kind && o.category === cat.id);
+export function recordedField(state: GameState, ed: Edition, cat: Category): Candidate[] {
+  const noms = recordedOf(ed, cat, dateKey(state.now, 'UTC'), 'nominees');
+  if (!noms) return [];
+  const score = Math.max(20, Math.min(97, institution(ed.institutionId).prestige - 8 + RECORDED_NOMINEE));
+  return noms.subjects.map((title, i) => ({
+    id: `${ed.id}:${cat.id}:rec${i}`, filmKey: `${ed.id}:${cat.id}:rec${i}`, score,
+    film: { title, people: {}, format: cat.formats[0], medium: cat.mediums?.[0] ?? 'live-action', runtimeMin: cat.formats.includes('short') ? 15 : 110 },
+  }));
+}
+/** At the ceremony: a recorded winner, published by then, is the strongest of the field. */
+function recordedWinBonus(state: GameState, ed: Edition, cat: Category, id: string): number {
+  const win = recordedOf(ed, cat, dateKey(state.now, 'UTC'), 'winner');
+  return win && win.subjects.includes(rivalTitle(state, ed, id) ?? '') ? RECORDED_WIN : 0;
+}
+
 export function rivalsFor(state: GameState, ed: Edition, cat: Category): Candidate[] {
+  const recorded = recordedField(state, ed, cat);
+  if (recorded.length) return recorded;
   const slate = seasonSlate(state.seed, seasonOf(ed)).filter((f) =>
     cat.formats.includes(f.format) && (!cat.mediums || cat.mediums.includes(f.medium)) &&
     (!cat.genres || f.genres.some((g) => cat.genres!.includes(g))) && (!cat.excludeGenres || !f.genres.some((g) => cat.excludeGenres!.includes(g))) &&
@@ -451,7 +482,10 @@ export function announce(state: GameState, ed: Edition): HandlerResult {
       fromWork.set(keyProject(x.id), n);
       return n <= most;
     }).slice(0, cat.slots);
-    const chosenRivals = rivals.filter((x) => ranked.some((y) => y.id === x.id));
+    // In a recorded field your nominated work takes the last-listed recorded nominee's place, as the history shows it
+    // (awards-history.ts savedResult): the record doesn't say who would have been left out.
+    const recordedRivals = recordedField(state, ed, cat).length > 0;
+    const chosenRivals = recordedRivals ? rivals.slice(0, ranked.filter((x) => x.kind === 'rival').length) : rivals.filter((x) => ranked.some((y) => y.id === x.id));
     for (const x of chosenRivals) {
       state.rivalFilms[x.filmKey] ??= x.film;
       ed.rivals.push({ id: x.id, film: x.filmKey, score: x.score });
@@ -564,7 +598,7 @@ export function editionResults(state: GameState, ed: Edition): HandlerResult {
         const vis = cat.judging === 'members' ? visibility(state, p, ed.start) : 0;
         return { id, kind: 'project' as const, score: (e ? entryScore(p, cat, e) : playerScore(p, cat, [], cat.judging)) + vis };
       }).filter((x) => ed.entries.some((e) => entryKey(e) === x.id && e.categoryId === cat.id && e.status !== 'withdrawn' && e.status !== 'disqualified')),
-      ...res.rivalIds.map((id) => ({ id, kind: 'rival' as const, score: ed.rivals.find((r) => r.id === id)?.score ?? 50 })),
+      ...res.rivalIds.map((id) => ({ id, kind: 'rival' as const, score: (ed.rivals.find((r) => r.id === id)?.score ?? 50) + recordedWinBonus(state, ed, cat, id) })),
     ];
     if (!pool.length) continue;
     const winners = winnersOf(cat, judge(state, ed, cat, 'winner', pool));

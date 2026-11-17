@@ -39,6 +39,7 @@ import { forecastFinish } from '../engine/production/forecast';
 import { formatDuration } from '../engine/time';
 import { deals } from '../engine/finance';
 import { countryName } from '../world/gazetteer/gazetteer';
+import { REAL_BUYERS } from '../engine/release-plan';
 import { EXCLUSIVE_DAYS, dubbingCost, offerConflicts, setReleaseVersion, versionLanguages, versionRefusal } from '../engine/finish';
 import { DUBBED_REACH } from '../engine/script-effects';
 import { studioFilms } from '../engine/studios';
@@ -599,7 +600,7 @@ export function ReleaseTab({ p }: { p: Project }) {
               return (
                 <li key={o.id}>
                   <div className="row-wrap">
-                    <span className="grow"><strong>{o.distributor}</strong>{o.exclusive ? <> <span className="chip">Exclusive</span></> : null}: {o.route === 'digital' ? 'Digital' : ROUTE_LABELS[o.route]} release in {o.territories.length > 6 ? `${o.territories.length} territories (${o.territories.slice(0, 3).map(countryName).join(', ')} and others)` : o.territories.map(countryName).join(', ')} for a minimum guarantee of {money(o.minimumGuarantee)}{o.slot === 'late' ? ' in a late-evening slot' : ''}, releasing about {o.releaseWindowDays} days after you accept. The contract requires delivery materials, about {money(offerMaterials(p, o))}{subs ? `, including ${money(subs)} of subtitles for languages the dialogue isn't in` : ''}, held from your budget until release.<span className="dim"> Distributors in this game are fictional.</span></span>
+                    <span className="grow"><strong>{o.distributor}</strong>{o.exclusive ? <> <span className="chip">Exclusive</span></> : null}: {o.route === 'digital' ? 'Digital' : ROUTE_LABELS[o.route]} release in {o.territories.length > 6 ? `${o.territories.length} territories (${o.territories.slice(0, 3).map(countryName).join(', ')} and others)` : o.territories.map(countryName).join(', ')} for a minimum guarantee of {money(o.minimumGuarantee)}{o.slot === 'late' ? ' in a late-evening slot' : ''}, releasing about {o.releaseWindowDays} days after you accept. The contract requires delivery materials, about {money(offerMaterials(p, o))}{subs ? `, including ${money(subs)} of subtitles for languages the dialogue isn't in` : ''}, held from your budget until release.<span className="dim">{REAL_BUYERS.has(o.distributor) ? ` ${o.distributor} is a real company; its offer is the game's calibration, not its real terms.` : ' Distributors in this game are fictional.'}</span></span>
                     <div className="row gap-2 wrap">
                       <button className="btn btn-sm btn-primary" disabled={!!needs} onClick={() => setErr(store.act((s) => void acceptDistribution(s, p, o.id)))}>{o.slot === 'late' ? 'Accept The Late Slot' : 'Accept Offer'}</button>
                       {o.slot === 'late' && <button className="btn btn-sm" disabled={!!needs} onClick={() => setErr(store.act((s) => void acceptDistribution(s, p, o.id, { broadcastEdit: true })))}>Accept With A Broadcast Edit</button>}
@@ -631,7 +632,8 @@ export function ReleaseTab({ p }: { p: Project }) {
           <p className="dim">What each distributor reports is not what you receive. Their fee comes off what they report first, and what is left repays the guarantee they already paid you. Only what they report beyond that reaches you, as an overage. They report monthly for {REPORT_MONTHS} months after release.</p>
           <ul className="list">{p.offers.filter((o) => o.status === 'accepted').map((o) => (
             <li key={o.id}>
-              <strong>{o.distributor}</strong> <span className="dim">· {ROUTE_LABELS[o.route]}</span>
+              {/* Which territories each deal reports for (from November 17, 2026): one series sold apart in each reads apart. */}
+              <strong>{o.distributor}</strong> <span className="dim">· {ROUTE_LABELS[o.route]} · {o.territories.length > 6 ? `${o.territories.length} territories` : o.territories.map(countryName).join(', ')}</span>
               <dl className="kv">
                 <dt>Reported Earnings</dt><dd>{money(o.reported?.gross ?? 0)}</dd>
                 <dt>After Their Fee</dt><dd>{money(o.reported?.net ?? 0)}</dd>

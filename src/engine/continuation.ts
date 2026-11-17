@@ -12,6 +12,9 @@
 //   streaming service (November 12, 2026; audiences.ts seasonAudience). Thirty days after delivery they look; if it is
 //   still to air they wait, a week at a time, for up to a year. A season with no such release is decided at thirty
 //   days on how it turned out, as every season was before.
+// - A season the player plans as the series' last (from November 17, 2026; the v6 package, J10: "renewal versus planned
+//   ending") ends as planned: when the commissioner would decide, nobody does, and no continuation can be made. The plan
+//   can be dropped until then. Until that day every commissioned season went to the decision.
 // The renewal decision lives here, registered at startup for saves with one pending; starting the continuation itself is
 // in sequel.ts, loaded with the Projects page (the startup JavaScript budget).
 import { airingDeal, seasonAudience } from './audiences';
@@ -56,8 +59,25 @@ export function renewalStanding(state: GameState, p: Project): string | null {
 
 export function canContinue(p: Project): string | null {
   if (!p.delivered) return 'Deliver it first.';
+  if (p.finalSeason) return 'You planned this season as the last.';
   if (p.continuedBy) return 'It already has a continuation.';
   return null;
+}
+
+/** Why this season can't be planned as the series' last, or null. */
+export function finalSeasonRefusal(p: Project): string | null {
+  if (p.episodes.length < 2) return 'Only a series has seasons to end.';
+  if (p.renewal) return 'The commissioner has already decided on another season.';
+  if (p.continuedBy) return 'It already has a continuation.';
+  return null;
+}
+
+/** Plan this season as the series' last, or drop the plan. */
+export function planFinalSeason(state: GameState, p: Project, on: boolean): void {
+  const no = finalSeasonRefusal(p);
+  if (no) throw new Error(no);
+  if (on) p.finalSeason = true; else delete p.finalSeason;
+  addLog(state, on ? `You planned this season of ${p.title} as its last.` : `${p.title} isn't planned to end with this season any more.`, 'project', { projectId: p.id, route: { view: 'project', projectId: p.id, tab: 'overview' } });
 }
 
 /** The commissioner's decision is scheduled on delivery, for a season they paid for. */
@@ -69,6 +89,12 @@ export function scheduleRenewal(state: GameState, p: Project): void {
 registerHandler('season-decision', (state, ev) => {
   const p = state.projects.find((x) => x.id === ev.payload.projectId);
   if (!p || p.renewal) return;
+  // A season planned as the last ends as planned: nobody decides on another.
+  if (p.finalSeason) {
+    p.renewal = { decidedAt: state.now, outcome: 'ended', reason: `${p.title} ended as you planned: this season was its last. The commissioner's agreement for it is settled.` };
+    addLog(state, p.renewal.reason, 'project', { projectId: p.id, route: { view: 'project', projectId: p.id, tab: 'overview' } });
+    return;
+  }
   // A season going out on television or a streaming service is decided on its audience, once it has been shown.
   const deal = airingDeal(p);
   const weigh = commissionerRaise(state, p);

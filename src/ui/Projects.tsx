@@ -6,7 +6,7 @@ import { getPlace, placeLabel } from '../data/places';
 import {
   FORMAT_LABELS, FUNDING_SCENARIOS, dateKey, deals, financeSummary, formatDateKey, GENRES, MEDIUM_LABELS, MODULE_LABELS, TECHNIQUE_LABELS, approvalRights, composeGenres, createProject, genre,
   genreCategory, hasTrackRecord, isEpisodic, isNonfiction, ledgerTotals, money, projectGenreLabel, projectModules, qualityWords, scriptIssues,
-  canContinue, renewalStanding, currentZone, searchGenres, type ModuleId,
+  canContinue, finalSeasonRefusal, planFinalSeason, renewalStanding, currentZone, searchGenres, type ModuleId,
 } from '../engine';
 import { continueProject, defaultStoryYears } from '../engine/sequel';
 import { projectStages } from '../engine/stages';
@@ -381,6 +381,14 @@ function Overview({ p }: { p: Project }) {
         {!p.delivered && <p style={{ marginTop: 'var(--s3)' }}><button className="btn btn-sm" onClick={() => setShelving(true)}>Shelve The Project</button></p>}
         {err && <p role="alert" style={{ color: 'var(--negative)' }}>{err}</p>}
       </section>
+      )}
+      {/* The season's planned ending (from November 17, 2026): shown for a series until the commissioner decides, delivered or not. */}
+      {p.episodes.length > 1 && !finalSeasonRefusal(p) && (
+        <section className="card" aria-labelledby="last-season-h">
+          <h2 id="last-season-h">The Last Season?</h2>
+          <Check label="Plan This Season As The Last" checked={!!p.finalSeason} onChange={(on) => setErr(store.act((s) => planFinalSeason(s, s.projects.find((x) => x.id === p.id)!, on)))}
+            hint={p.finalSeason ? `${p.title} ends with this season. Nobody will decide on another, and none can be made. You can change your mind until the commissioner would decide.` : 'Left unplanned, a commissioner who paid for this season decides on another once it has been delivered and shown.'} />
+        </section>
       )}
       {p.delivered && (
         <section className="card" aria-labelledby="continue-h">

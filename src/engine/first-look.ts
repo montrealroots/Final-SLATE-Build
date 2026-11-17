@@ -291,6 +291,24 @@ const isTaken = (state: GameState, s: FirstLook['submissions'][number]) => {
   return !!p && deals(p).some((d) => d.id === s.dealId && (d.status === 'accepted' || d.status === 'breached'));
 };
 
+/**
+ * A deal that covers series is renewed on how the series it commissioned did (the v6 package, J13: "the deal's renewal
+ * judged on the series' results"; from November 17, 2026): once a commissioner has decided on one of them, a series
+ * renewed keeps the deal and series all cancelled end it. A season you ended as planned says nothing either way. Until
+ * then, or with no series it took decided, it is judged as every deal was before: a project taken, or a record that
+ * counts. Null when no series it took has been decided.
+ */
+export function seriesJudgement(state: GameState, fl: FirstLook): { keep: boolean; why: string } | null {
+  if (!fl.terms.overall && scopeOf(fl.terms) !== 'television') return null;
+  const taken = fl.submissions.filter((x) => isTaken(state, x)).map((x) => state.projects.find((p) => p.id === x.projectId)!)
+    .filter((p) => TV_FORMATS.includes(p.axes.format) && (p.renewal?.outcome === 'renewed' || p.renewal?.outcome === 'cancelled'));
+  if (!taken.length) return null;
+  const renewed = taken.find((p) => p.renewal!.outcome === 'renewed');
+  return renewed
+    ? { keep: true, why: `${renewed.title}, a series it commissioned under the deal, was renewed.` }
+    : { keep: false, why: `${taken.map((p) => p.title).join(' and ')}, which it commissioned under the deal, ${taken.length > 1 ? 'weren\'t' : 'wasn\'t'} renewed.` };
+}
+
 /** What a deal covers, in a few words: "films", "animated films" or "series". */
 export const coveredWords = (t: FirstLookTerms): string => (t.overall ? 'films and series' : scopeOf(t) === 'television' ? 'series' : t.animatedOnly ? 'animated films' : 'films');
 
@@ -489,9 +507,10 @@ registerHandler('first-look-end', (state, ev) => {
   if (!fl || fl.status !== 'active') return { suppressInterrupt: true };
   fl.status = 'ended';
   const r = trackRecord(state);
-  const keep = fl.submissions.some((x) => isTaken(state, x)) || r.bonus > 0;
+  const judged = seriesJudgement(state, fl);
+  const keep = judged ? judged.keep : fl.submissions.some((x) => isTaken(state, x)) || r.bonus > 0;
   const deal = dealName(fl.terms);
-  addLog(state, `Your ${deal} with ${fl.name} reached its end.${keep ? '' : ' It isn\'t renewing it.'}`, 'money', { route: { view: 'profile' } });
+  addLog(state, `Your ${deal} with ${fl.name} reached its end.${judged ? ` ${judged.why}` : ''}${keep ? '' : ' It isn\'t renewing it.'}`, 'money', { route: { view: 'profile' } });
   const again = keep ? offerFirstLook(state, fl) : null;
   return { message: again ? `${fl.name} offered to renew your ${deal}.` : `Your ${deal} with ${fl.name} ended.` };
 });
