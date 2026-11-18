@@ -10,9 +10,9 @@ journey that shows it there.
 |---|---|---|---|---|---|---|---|---|
 | action | 186 | 0 | 0 | 0 | 0 | 15 | 0 | 201 |
 | bank | 54 | 0 | 0 | 0 | 0 | 0 | 0 | 54 |
-| scheduled | 57 | 0 | 0 | 0 | 0 | 11 | 0 | 68 |
+| scheduled | 58 | 0 | 0 | 0 | 0 | 11 | 0 | 69 |
 | field | 273 | 102 | 0 | 0 | 0 | 9 | 0 | 384 |
-| all | 570 | 102 | 0 | 0 | 0 | 35 | 0 | 707 |
+| all | 571 | 102 | 0 | 0 | 0 | 35 | 0 | 708 |
 
 ## Rows
 
@@ -71,10 +71,10 @@ journey that shows it there.
 | deliver | action | src/engine/finish.ts | proven | deliver (40 seeds) | delivered -2; released -2; revenue -123105.125; standing.producing -2.9 |
 | planRelease | action | src/engine/finish.ts | proven | release-or-not (40 seeds) | released -2; revenue -124002.125; money -117974.625 |
 | setReleaseVersion | action | src/engine/finish.ts | proven | release-dubbed (60 seeds) | dubbed +0.85; spent +4083.333; gross +6406.667; revenue +13511.333 |
-| acceptFirstLook | action | src/engine/first-look.ts | proven | first-look-accept (40 seeds) | firstLookActive +1.5; money +619571.828 |
+| acceptFirstLook | action | src/engine/first-look.ts | proven | first-look-accept (40 seeds) | firstLookActive +1.5; money +664571.828 |
 | askMoreOverhead | action | src/engine/first-look.ts | proven | first-look-overhead (120 seeds) | overheadAsked +1.975; overheadAgreed +0.183; overheadPaid +55885.417; money +54646.697 |
 | askToMatch | action | src/engine/first-look.ts | proven | first-look-match (40 seeds) | matchAsked +0.275; dealPay +65550; money +65550 |
-| declineFirstLook | action | src/engine/first-look.ts | proven | first-look-decline (40 seeds) | firstLookDeclined +0.975; firstLookActive -1.5; money -554863.822 |
+| declineFirstLook | action | src/engine/first-look.ts | proven | first-look-decline (40 seeds) | firstLookDeclined +0.975; firstLookActive -1.5; money -607363.822 |
 | drawDevelopment | action | src/engine/first-look.ts | proven | draw-development (40 seeds) | developmentIn +47550; ownIn -47550; money +37486.843 |
 | endFirstLook | action | src/engine/first-look.ts | proven | first-look-end (40 seeds) | firstLookEnded +1.125; money -212517.846 |
 | considerFor | action | src/engine/guests.ts | proven | consider-real (40 seeds) | realCast +1.75; castCapability -3.65; performance -2.831; castRates +562.75 |
@@ -305,8 +305,8 @@ journey that shows it there.
 | first-look-check | scheduled | src/engine/first-look.ts | proven | off-first-look-check (40 seeds) | firstLookOffers -2.1; overheadPaid -306250; money -791618.028 |
 | first-look-counter | scheduled | src/engine/first-look.ts | proven | first-look-overhead (120 seeds) | overheadAsked +1.975; overheadAgreed +0.183; overheadPaid +55885.417; money +54646.697 |
 | first-look-end | scheduled | src/engine/first-look.ts | proven | off-first-look-end (40 seeds) | firstLookEnded -1.45; overheadPaid -355000; money -458750 |
-| first-look-lapse | scheduled | src/engine/first-look.ts | proven | off-first-look-lapse (40 seeds) | firstLookActive -0.85; money -1995651.55 |
-| first-look-overhead | scheduled | src/engine/first-look.ts | proven | first-look-accept (40 seeds) | firstLookActive +1.5; money +619571.828 |
+| first-look-lapse | scheduled | src/engine/first-look.ts | proven | off-first-look-lapse (40 seeds) | firstLookActive -0.85; money -2085651.55 |
+| first-look-overhead | scheduled | src/engine/first-look.ts | proven | first-look-accept (40 seeds) | firstLookActive +1.5; money +664571.828 |
 | guide-me | scheduled | src/engine/mandates.ts | proven | off-guide-me (40 seeds) | writingPasses -3.375; quality.script -2.537; spent -4258.5 |
 | home | scheduled | src/engine/homes/index.ts | proven | housing-clock (40 seeds) | rentsPaid -24; money +46545.941; moneyChange +46545.941; worth +35002.548 |
 | industry-decision | scheduled | src/engine/industry.ts | not a feature |  | Renews or ends the real series the world follows, as the catalog's world pages show them (catalog/world.ts, simseason.ts); nothing in a player's career reads those outcomes. |
@@ -336,6 +336,7 @@ journey that shows it there.
 | shoot-call | scheduled | src/engine/production/shoot.ts | proven | off-shoot-call (40 seeds) | lateDays -1; quality.direction +0.6; overall +0.288 |
 | shoot-wrap | scheduled | src/engine/production/shoot.ts | proven | off-shoot-wrap (40 seeds) | delivered -2; revenue -136781.125; money -157857.058 |
 | stay-limit | scheduled | src/engine/papers.ts | proven | off-stay-limit (20 seeds) | overstays -1; usVisas -1; papersPaid -185; secondTripDays +30 |
+| studio-project | scheduled | src/engine/studio-projects.ts | proven | off-studio-project (40 seeds) | studioOffers -1.375; jobPay -910699.95; money -910821.55 |
 | studio-release | scheduled | src/engine/finish.ts | proven | off-studio-release (40 seeds) | released -8.925; gross -1639510 |
 | wake | scheduled | src/engine/state.ts | proven | off-wake (40 seeds) | lateDays +6.75; quality.direction -63.5; overall -58.712 |
 | weather-check | scheduled | src/engine/production/shoot.ts | proven | off-weather-check (60 seeds) | lostDays +1.567; daysToDeliver +1.208; spent +3456.833 |

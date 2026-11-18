@@ -69,6 +69,7 @@
   "offers": 3.775,
   "editionsOpen": 99.7,
   "firstLookOffers": 0,
+  "studioOffers": 0,
   "opportunities": 0.3,
   "openOpportunities": 0,
   "openOffers": 0,
@@ -144,6 +145,7 @@
   "offers": 3.775,
   "editionsOpen": 99.7,
   "firstLookOffers": 0,
+  "studioOffers": 0,
   "opportunities": 0.3,
   "openOpportunities": 0,
   "openOffers": 0.8,
@@ -579,6 +581,13 @@
    "changed": 0,
    "n": 40
   },
+  "studioOffers": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 40
+  },
   "opportunities": {
    "mean": 0,
    "lo": 0,
@@ -685,7 +694,7 @@
  ],
  "verdict": "no downstream effect",
  "hashes": {
-  "src/engine/jobs.ts": "d59759aa0b17e939",
+  "src/engine/jobs.ts": "98f42a74f72d9707",
   "tests/proof/career.ts": "50bea06f19a02c5b"
  }
 }
