@@ -13,6 +13,7 @@ import { COMEDY_MUSICAL } from './script-effects';
 import { addLog, schedule, type HandlerResult } from './state';
 import { DAY, addDaysToKey, dateKey, formatDateKey, localToInstant, parseYmd } from './time';
 import { studioFilms, type StudioFilm } from './studios';
+import { pictureEligible, yourFilmId, yourPicture, yourPictures, yourWorldFilms } from './your-films';
 import { recordedResults } from './history';
 import { noticeGrades } from './grade-news';
 import type { Edition, EditionEntry, GameState, Project, RivalFilm, ScheduledEvent } from './types';
@@ -233,7 +234,9 @@ const GENRE = (g: string) => g.toLowerCase().replace(/ /g, '-').replace('music',
  * slate's is; nothing reads TMDB ratings, budgets or box office.
  */
 function studioCandidates(state: GameState, ed: Edition, cat: Category): Candidate[] {
-  const films = studioFilms(state, ed.eligibility.from, ed.eligibility.to);
+  // Your studio pictures released in the window compete as the studios' films do, judged on their quality (your-films.ts).
+  const yours = new Map(yourPictures(state).map((j) => [yourFilmId(j), j.studio!.quality ?? 50]));
+  const films = [...studioFilms(state, ed.eligibility.from, ed.eligibility.to), ...yourWorldFilms(state, ed.eligibility.from, ed.eligibility.to)];
   const out: Candidate[] = [];
   for (const f of films) {
     const doc = f.genres.includes('Documentary');
@@ -244,7 +247,10 @@ function studioCandidates(state: GameState, ed: Edition, cat: Category): Candida
     if (cat.genres && !genres.some((g) => cat.genres!.includes(g))) continue;
     if (cat.excludeGenres && genres.some((g) => cat.excludeGenres!.includes(g))) continue;
     if (cat.class && (cat.class === 'comedy') !== genres.some((g) => COMEDY_MUSICAL.includes(g))) continue;
-    out.push({ id: `${ed.id}:${cat.id}:${f.id}`, filmKey: f.id, film: studioRival(f, format, medium), score: studioScore(state.seed, f, cat.recipient) });
+    const q = yours.get(f.id);
+    const mine = q === undefined ? undefined : yourPicture(state, f.id);
+    if (mine && !pictureEligible(state, mine, institution(ed.institutionId), cat, f.runtimeMin)) continue;
+    out.push({ id: `${ed.id}:${cat.id}:${f.id}`, filmKey: f.id, film: studioRival(f, format, medium), score: q === undefined ? studioScore(state.seed, f, cat.recipient) : Math.max(20, Math.min(97, q + gaussian(stream(state.seed, 'studio-score', f.id, cat.recipient), 0, 4))) });
   }
   return out;
 }
@@ -583,6 +589,28 @@ export function screeningReminder(state: GameState, ev: ScheduledEvent): Handler
   return { message: text };
 }
 
+/**
+ * Your studio pictures' honours at an edition, once it's decided (your-films.ts): each category its field or winners name
+ * one in, kept on the picture with what it was for, and told. Returns whether any won.
+ */
+function recordYourHonours(state: GameState, ed: Edition, messages: string[]): boolean {
+  const mine = yourPictures(state).filter((j) => j.studio!.quality !== undefined && j.studio!.released! >= ed.eligibility.from && j.studio!.released! <= ed.eligibility.to);
+  let won = false;
+  for (const j of mine) {
+    const title = j.studio!.title!;
+    for (const cat of categoriesFor(institution(ed.institutionId), ed.year)) {
+      const res = publicResult(state, ed, cat);
+      if (!res || !res.field.includes(title) && !res.winners.includes(title)) continue;
+      const status = res.winners.includes(title) ? 'won' as const : res.stage === 'selection' ? 'selected' as const : 'nominated' as const;
+      (j.studio!.honours ??= []).push({ status, category: cat.name, recipient: cat.recipient, event: ed.label, at: ed.end });
+      won ||= status === 'won';
+      const verb = status === 'won' ? 'won' : status === 'selected' ? 'was selected for' : 'was nominated for';
+      messages.push(`${title}, which you ${j.role === 'directing' ? 'directed' : 'wrote'} for ${j.company}, ${verb} ${cat.name} at the ${ed.label}.`);
+    }
+  }
+  return won;
+}
+
 export function editionResults(state: GameState, ed: Edition): HandlerResult {
   if (ed.status === 'complete') return { suppressInterrupt: true };
   const inst = institution(ed.institutionId);
@@ -622,10 +650,12 @@ export function editionResults(state: GameState, ed: Edition): HandlerResult {
     }
   }
   decidePrizes(state, ed, messages);
+  // Complete before your studio pictures' results are read, which are worked out for a decided edition (publicResult).
+  ed.status = 'complete';
+  const yourWins = recordYourHonours(state, ed, messages);
   // A win brings studios calling (studio-projects.ts, from November 18, 2026, the owner: "as I win awards I'll start
   // getting these offers"): a studio may ask you onto its own picture a fortnight on, when your record has earned it.
-  if (ed.entries.some((x) => x.status === 'won')) schedule(state, state.now + STUDIO_CALL_AFTER_WIN_DAYS * DAY, 'studio-project', { after: ed.id }, { attention: 'silent', priority: 70, id: `studio-project:${ed.id}` });
-  ed.status = 'complete';
+  if (yourWins || ed.entries.some((x) => x.status === 'won')) schedule(state, state.now + STUDIO_CALL_AFTER_WIN_DAYS * DAY, 'studio-project', { after: ed.id }, { attention: 'silent', priority: 70, id: `studio-project:${ed.id}` });
   compactEdition(ed);
   for (const m of messages) addLog(state, m, inst.kind === 'festival' ? 'festival' : 'award', { route: { view: 'event', editionId: ed.id } });
   // Wins move grades, told after the results themselves (grade-news.ts).

@@ -14,6 +14,7 @@ import { ledgerTotals } from './budget';
 import { papersReads } from './papers';
 import { reliability, type JobRole } from './jobs';
 import { institution, type Recipient } from './awards';
+import { isOut, yourPictures } from './your-films';
 import type { GameState, Project } from './types';
 
 export interface CraftRecord { craft: number | null; works: { title: string; score: number }[] }
@@ -41,6 +42,8 @@ export function roleCraft(s: GameState, role: JobRole): CraftRecord {
       if (mine.length) works.push({ title: p.title, score: avg(mine)! });
     }
   }
+  // A studio picture you made counts once it's out, by its quality (your-films.ts; from November 18, 2026).
+  if (role !== 'acting') for (const j of yourPictures(s)) if (j.role === role && j.studio!.quality !== undefined && isOut(s, j)) works.push({ title: j.studio!.title!, score: j.studio!.quality });
   return { craft: avg(works.map((w) => w.score)), works };
 }
 
@@ -151,6 +154,11 @@ export function honoursIn(s: GameState, role: StandingRole): Honour[] {
       if (r === 'acting' && !e.recipients.some((id) => p.credits.find((c) => c.id === id)?.person === 'player')) continue;
       out.push({ score, status: e.status, title: p.title, category: cat.name, event: ed.label, at: ed.end });
     }
+  }
+  // A studio picture's honours in the categories of your role: its director's for a director, its writer's for a writer.
+  for (const j of yourPictures(s)) {
+    if (j.role !== role) continue;
+    for (const h of j.studio!.honours ?? []) if (RECIPIENT_ROLE[h.recipient as Recipient] === role) out.push({ score: HONOUR_SCORE[h.status], status: h.status, title: j.studio!.title!, category: h.category, event: h.event, at: h.at });
   }
   return out;
 }

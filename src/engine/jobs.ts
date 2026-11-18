@@ -19,6 +19,7 @@ import { getPlace } from '../data/places';
 import { KILL_FEE_DAYS, PRODUCTION_KIND_LABELS, daysUntil, industryStanding, shootingDays, slateHere, type Production } from './productions';
 import { workRight, type Activity } from './papers';
 import { activeOverall, STUDIO_PROJECT_NOTICE_DAYS } from './first-look';
+import { pictureQuality } from './your-films';
 import type { GameState } from './types';
 
 export type JobRole = 'acting' | 'writing' | 'directing';
@@ -57,7 +58,9 @@ export interface OutsideJob {
     /** A multi-picture deal (from November 18, 2026): this is picture `picture` of `of`, and `fees` are each picture's. */
     deal?: { picture: number; of: number; fees: number[] };
     /** The title it's released under, the studio's, invented by the game; and the day it comes out, set when shooting wraps. */
-    title?: string; released?: string };
+    title?: string; released?: string;
+    /** Its genres (the franchise's latest film's, else the studio's own), its quality once the work is done, and its honours (your-films.ts). */
+    genres?: string[]; quality?: number; honours?: { status: 'selected' | 'nominated' | 'won'; category: string; recipient: string; event: string; at: number }[] };
 }
 
 export const JOB_ROLES: Record<JobRole, { label: string; doing: string; days: [number, number]; base: number; perDelivered: number }> = {
@@ -323,6 +326,10 @@ registerHandler('job-day', (state, ev) => {
     // The studio announces its title and its release, a year on (STUDIO_RELEASE_DAYS), once the work is done.
     if (j.studio?.title) {
       j.studio.released = addDaysToKey(j.days[j.days.length - 1], STUDIO_RELEASE_DAYS);
+      // How good it is: your craft in the role, with a picture's luck (your-films.ts); it opens on its day.
+      j.studio.quality = pictureQuality(state, j);
+      const { year, month, day } = parseYmd(j.studio.released);
+      schedule(state, localToInstant(j.zone, year, month, day, 10).instant, 'your-film-release', { jobId: j.id }, { attention: 'notify', priority: 55, id: `your-film-release:${j.id}` });
       text += ` ${j.company} will release it as ${j.studio.title} on ${formatDateKey(j.studio.released)}.`;
     }
   }

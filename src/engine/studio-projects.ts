@@ -55,7 +55,7 @@ export const STUDIO_BUDGET_SCALE: [number, number] = [20_000_000, 300_000_000];
  */
 export const STUDIO_FEE_SHARE = 0.05;
 /** Where a studio is based, by the registry's TMDB record: its own, else its group's. */
-const countryOf = (company: string): string | undefined => {
+export const countryOf = (company: string): string | undefined => {
   const c = COMPANIES.find((x) => x.id === company);
   return c?.tmdb?.country ?? COMPANIES.find((x) => x.id === c?.parent?.id)?.tmdb?.country;
 };
@@ -162,6 +162,8 @@ export function studioProjectOffer(state: GameState): OutsideJob | null {
   const live = (sequel?.studio?.franchise ? within.find((f) => franchiseName(f.name) === sequel.studio!.franchise) : undefined)
     ?? within.find((f) => !offered.has(franchiseName(f.name))) ?? within[0];
   const franchise = live ? franchiseName(live.name) : undefined;
+  // The picture's genres: the franchise's latest film's, where the build kept them; else the studio's own.
+  const lastFilm = live?.films?.[live.films.length - 1];
   const genre = strategy.families[0]?.genre ?? 'Drama';
   const day = dateKey(state.now, currentPlace(state).zone);
   const directing = role === 'directing';
@@ -208,7 +210,7 @@ export function studioProjectOffer(state: GameState): OutsideJob | null {
     requirement: directing ? `On set in ${place.name} each shooting day.` : `With the studio's producers in ${place.name}; the draft is due on the last day.`,
     dayRate: Math.round(fee / days.length), days, placeId: place.id, zone: place.zone,
     status: 'offered', offeredAt: state.now, answerBy: state.now + JOB_ANSWER_DAYS * DAY, attended: [], missed: [],
-    studio: { fee, ...(franchise ? { franchise } : {}), genre, ...(budget ? { budget, budgetOf } : {}), first, ...(set ? { set } : {}), ...(why ? { why } : {}), ...(deal ? { deal } : {}), title },
+    studio: { fee, ...(franchise ? { franchise } : {}), genre, ...(budget ? { budget, budgetOf } : {}), first, ...(set ? { set } : {}), ...(why ? { why } : {}), ...(deal ? { deal } : {}), title, genres: lastFilm?.g?.length ? lastFilm.g : [strategy.families[0]?.genre ?? 'Drama'] },
   };
 }
 
