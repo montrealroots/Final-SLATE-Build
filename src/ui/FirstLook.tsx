@@ -34,11 +34,12 @@ export function FirstLookCard() {
     <section className="card" aria-labelledby="firstlook-h">
       <h2 id="firstlook-h">{overall ? 'Overall Deal' : 'First-Look Deal'}</h2>
       {offers.length > 1 && <p className="small">Two studios want your work. Weigh them, ask one to match the other, and sign one: signing turns the other down.</p>}
-      {offers.map((offer) => {
+      {offers.map((offer, i) => {
         const rival = offers.find((x) => x.id === offer.competing);
         const noMatch = matchRefusal(g, offer);
         return (
-        <div key={offer.id} role="region" aria-label={`${offer.terms.overall ? 'Overall Deal Offer' : 'First-Look Offer'}${offers.length > 1 ? ` From ${offer.name}` : ''}`}>
+        // A rule between two studios' offers, so where one ends and the other begins is plain.
+        <div key={offer.id} role="region" aria-label={`${offer.terms.overall ? 'Overall Deal Offer' : 'First-Look Offer'}${offers.length > 1 ? ` From ${offer.name}` : ''}`} style={i > 0 ? { borderTop: '1px solid var(--line-strong)', marginTop: 'var(--s4)', paddingTop: 'var(--s4)' } : undefined}>
           <p><strong>{offer.name}</strong> offers you {offer.terms.overall ? 'an overall deal' : 'a first-look deal'}{offer.renews ? ', renewing the last one' : ''}. {offer.why}</p>
           <ul className="list" aria-label="Its Terms">{firstLookWords(offer).map((w) => <li key={w} className="list-item">{w}</li>)}</ul>
           {offer.counter && <p className="dim small">{offer.counter.outcome === 'agreed' ? `It ${offer.counter.match ? 'matched' : 'agreed to'} ${figure(offer.terms)}.` : offer.counter.outcome === 'held' ? `It kept its offer of ${figure(offer.terms)}.` : `You asked ${offer.counter.match ? 'it to match' : 'for more'}. It answers by ${day(offer.counter.answerAt)}.`}</p>}

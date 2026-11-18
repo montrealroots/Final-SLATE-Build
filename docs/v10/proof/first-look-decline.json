@@ -30,7 +30,7 @@
   "jobsWithdrawn": 0,
   "jobsDeclined": 0,
   "ratesAgreed": 0,
-  "logLines": 183.175,
+  "logLines": 184.375,
   "hired": 23.975,
   "castRates": 4831,
   "releaseDelay": 102.296,
@@ -55,11 +55,13 @@
   "viaAgent": 0,
   "commission": 0,
   "firstLookActive": 1.5,
-  "firstLookDeclined": 0,
+  "firstLookDeclined": 0.6,
   "overheadAsked": 0,
   "overheadPaid": 382500,
   "overheadAgreed": 0,
   "firstLookEnded": 0,
+  "matchAsked": 0,
+  "dealPay": 554725,
   "fired": 0
  },
  "variant": {
@@ -84,7 +86,7 @@
   "jobsWithdrawn": 0,
   "jobsDeclined": 0,
   "ratesAgreed": 0,
-  "logLines": 182.35,
+  "logLines": 182.6,
   "hired": 23.975,
   "castRates": 4831,
   "releaseDelay": 102.296,
@@ -109,11 +111,13 @@
   "viaAgent": 0,
   "commission": 0,
   "firstLookActive": 0,
-  "firstLookDeclined": 1.45,
+  "firstLookDeclined": 1.575,
   "overheadAsked": 0,
   "overheadPaid": 0,
   "overheadAgreed": 0,
   "firstLookEnded": 0,
+  "matchAsked": 0,
+  "dealPay": 0,
   "fired": 0
  },
  "diff": {
@@ -265,10 +269,10 @@
    "n": 40
   },
   "logLines": {
-   "mean": -0.825,
-   "lo": -1.511,
-   "hi": -0.139,
-   "changed": 21,
+   "mean": -1.775,
+   "lo": -2.618,
+   "hi": -0.932,
+   "changed": 20,
    "n": 40
   },
   "hired": {
@@ -440,9 +444,9 @@
    "n": 40
   },
   "firstLookDeclined": {
-   "mean": 1.45,
-   "lo": 1.03,
-   "hi": 1.87,
+   "mean": 0.975,
+   "lo": 0.696,
+   "hi": 1.254,
    "changed": 25,
    "n": 40
   },
@@ -474,6 +478,20 @@
    "changed": 0,
    "n": 40
   },
+  "matchAsked": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 40
+  },
+  "dealPay": {
+   "mean": -554725,
+   "lo": -715644.108,
+   "hi": -393805.892,
+   "changed": 25,
+   "n": 40
+  },
   "fired": {
    "mean": 0,
    "lo": 0,
@@ -500,7 +518,7 @@
  ],
  "verdict": "proven",
  "hashes": {
-  "src/engine/first-look.ts": "29363b61868a1a82",
+  "src/engine/first-look.ts": "cbcea28107b39b56",
   "tests/proof/career.ts": "50bea06f19a02c5b"
  }
 }
