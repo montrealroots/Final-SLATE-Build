@@ -62,3 +62,29 @@ test('a studio you made a picture for offers a two-picture deal, said with both 
   await offers.getByRole('button', { name: 'Accept Untitled Long Road Film' }).click();
   await expect(card(page, 'Work For Others').getByRole('list', { name: 'Work You Have Taken' })).toContainText('Directing: Untitled Long Road Film');
 });
+
+// The studio's franchises on its page (from November 18, 2026): Toho's Godzilla films from the records, then the picture
+// you made, under the title the studio releases it as. Labelled fixture: the studio's profile and the finished picture
+// are written into the save as the build (tools/screen-catalog/franchises.mjs) and the engine (jobs.ts) write them.
+test("a studio's franchise on its page: its recorded films, then the picture you made, titled and dated", async ({ page }, info) => {
+  test.skip(!['desktop', 'phone'].includes(info.project.name), 'Desktop and phone.');
+  test.setTimeout(300_000);
+  await quickLife(page, 'jp-tokyo', '2026-11-12');
+  await editSave(page, (s) => {
+    s.industry = { ...(s.industry ?? { horizon: '2026-11-10', builtAt: '2026-11-10T00:00:00Z', series: {} }), studios: [{
+      c: 'company:toho', name: 'TOHO', n: 26.8, g: [['Drama', 10], ['Science Fiction', 6]], m: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1], ann: {},
+      fr: [{ name: 'Godzilla Minus Collection', entries: 2, last: '2026-11-03', budget: 15_000_000, budgetOf: 'Godzilla Minus Zero (2026)',
+        films: [{ r: 'movie:940721', t: 'Godzilla Minus One', d: '2023-11-03' }, { r: 'movie:1381071', t: 'Godzilla Minus Zero', d: '2026-11-03' }] }],
+    }] };
+    (s.jobs ??= []).push({
+      id: 'studio-made', role: 'directing', production: 'Untitled Godzilla Film', company: 'TOHO', part: 'Directing the picture', material: '', requirement: '',
+      dayRate: 18_750, days: weekdays('2027-01-12', 40), placeId: s.locationId, zone: 'Asia/Tokyo', status: 'done', offeredAt: s.now, answerBy: s.now,
+      attended: weekdays('2027-01-12', 40), missed: [], studio: { fee: 750_000, franchise: 'Godzilla', genre: 'Science Fiction', title: 'Godzilla: Burning Tide', released: '2028-03-08' },
+    });
+  });
+  await nav(page, 'Companies');
+  await card(page, 'Independent Studios, Japan: Film').getByRole('button', { name: 'TOHO', exact: true }).click();
+  const franchises = card(page, 'Franchises');
+  const godzilla = franchises.getByRole('list', { name: 'Godzilla Films' });
+  await expect(godzilla.getByRole('listitem')).toHaveText([/^Godzilla Minus One\s*2023$/, /^Godzilla Minus Zero\s*2026$/, /^Godzilla: Burning Tide Your Picture You directed it\.\s*Due March 8, 2028$/]);
+});

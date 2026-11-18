@@ -27,6 +27,8 @@ import { addDaysToKey, dateKey, DAY, formatDateKey, weekdayOfKey } from './time'
 import { DGA_HIGH_BUDGET_WEEK, WGA_DRAFT_DAYS, WGA_SCREENPLAY } from './union';
 import { money } from './budget';
 import { COMPANIES } from '../catalog/registry';
+import { pick, stream } from './rng';
+import { WORDS_A, WORDS_B } from './studios';
 import type { GameState } from './types';
 
 /** The least time between two studio offers. Game calibration. (The notice after a delivery is first-look.ts
@@ -108,6 +110,10 @@ export const STUDIO_REACH: Record<string, number> = { Emerging: 0, Established: 
 export const STUDIO_DEAL_PICTURES: Record<string, number> = { Established: 2, 'In Demand': 2, Leading: 3 };
 export const STUDIO_DEAL_STEP = 0.15;
 const PICTURES_WORD: Record<number, string> = { 2: 'two', 3: 'three' };
+/** A franchise entry's subtitle, as sequels are titled ("Godzilla: Resurgence"). Invented by the game. */
+const FRANCHISE_SUBTITLES = ['Resurgence', 'Reckoning', 'Dominion', 'Awakening', 'Legacy', 'Requiem', 'Uprising', 'Rebirth', 'Retribution', 'Ascension',
+  'Aftermath', 'Revelation', 'Exodus', 'Eclipse', 'Inferno', 'Black Tide', 'Last Light', 'Fallout', 'Homecoming', 'First Strike', 'The Return',
+  'Undertow', 'Firestorm', 'Nightfall', 'Shockwave', 'Wildfire', 'Stormfront', 'Deep Water', 'Zero Hour', 'Endgame'];
 /** A studio that asked you lately gives way to another, so the offers stay fresh: two years. Game calibration. */
 export const STUDIO_ROTATION_DAYS = 730;
 
@@ -189,6 +195,10 @@ export function studioProjectOffer(state: GameState): OutsideJob | null {
   const lastAsk = Math.max(0, ...jobs.filter((j) => j.company === strategy.name).map((j) => j.offeredAt));
   const why = owedDeal ? `Picture ${deal!.picture} of your ${PICTURES_WORD[deal!.of] ?? deal!.of}-picture deal with ${strategy.name}.`
     : sequel ? `You ${sequel.role === 'directing' ? 'directed' : 'wrote'} ${sequel.studio?.franchise ? `its last ${sequel.studio.franchise} film` : `${sequel.production} for it`}, and it wants you back.` : whyAsked(state, role, lastAsk);
+  // The title it will be released under, the studio's own, invented as the world's films are (studios.ts): a franchise
+  // entry carries the franchise's name. Said only once the work is done; the offer has the working title.
+  const r = stream(state.seed, 'studio-title', day, strategy.company);
+  const title = franchise ? `${franchise}: ${pick(r, FRANCHISE_SUBTITLES)}` : `${pick(r, ['The ', '', 'A '])}${pick(r, WORDS_A)} ${pick(r, WORDS_B)}`;
   return {
     id: `studio-${day}`, role,
     production: franchise ? `Untitled ${franchise} Film` : `Untitled ${strategy.name} ${genre} Picture`,
@@ -198,7 +208,7 @@ export function studioProjectOffer(state: GameState): OutsideJob | null {
     requirement: directing ? `On set in ${place.name} each shooting day.` : `With the studio's producers in ${place.name}; the draft is due on the last day.`,
     dayRate: Math.round(fee / days.length), days, placeId: place.id, zone: place.zone,
     status: 'offered', offeredAt: state.now, answerBy: state.now + JOB_ANSWER_DAYS * DAY, attended: [], missed: [],
-    studio: { fee, ...(franchise ? { franchise } : {}), genre, ...(budget ? { budget, budgetOf } : {}), first, ...(set ? { set } : {}), ...(why ? { why } : {}), ...(deal ? { deal } : {}) },
+    studio: { fee, ...(franchise ? { franchise } : {}), genre, ...(budget ? { budget, budgetOf } : {}), first, ...(set ? { set } : {}), ...(why ? { why } : {}), ...(deal ? { deal } : {}), title },
   };
 }
 

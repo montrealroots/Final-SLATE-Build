@@ -4,13 +4,13 @@
 import { describe, expect, it } from 'vitest';
 import { DAY, createProject, processUntil, setFinanceTarget } from './engine-api';
 import { acceptFirstLook, offerFirstLook, scheduleFirstLookCheck } from '../src/engine/first-look';
-import { acceptJob, acceptRefusal, askBetterRate, declineJob } from '../src/engine/jobs';
+import { acceptJob, acceptRefusal, askBetterRate, declineJob, STUDIO_RELEASE_DAYS } from '../src/engine/jobs';
 import { franchiseName, studioPitch, studioProjectOffer, studioReach, studioScale, STUDIO_DEAL_PICTURES, STUDIO_DEAL_STEP, STUDIO_FEE_SHARE, STUDIO_FEES, STUDIO_REACH } from '../src/engine/studio-projects';
 import { standingIn } from '../src/engine/reputation';
 import { institution } from '../src/engine/awards';
 import { personalPostings } from '../src/engine/personal';
 import { DGA_HIGH_BUDGET_WEEK, WGA_SCREENPLAY } from '../src/engine/union';
-import { dateKey } from '../src/engine/time';
+import { addDaysToKey, dateKey } from '../src/engine/time';
 import type { StudioProfile } from '../src/engine/studios';
 import type { GameState, Project } from '../src/engine/types';
 import { approve, buildProject, startLife, writePitch } from './helpers';
@@ -65,6 +65,8 @@ describe('a studio project', () => {
     expect(j.dayRate).toBe(Math.round(750_000 / 90));
     expect(studioPitch(j)).toMatch(/^Overdrive Pictures \(Fixture\) wants you to direct the next Long Road film: \$750,000 for 18 weeks of shooting, from .*\. On the strength of Film 1\.$/);
     expect(j.material).toBe("The Long Road films so far, and the studio's notes for the next one.");
+    // A franchise entry's title carries the franchise's name: "Long Road: Burning Tide".
+    expect(j.studio!.title).toMatch(/^Long Road: [A-Z][A-Za-z ]+$/);
     expect(studioScale(j)).toBe("A picture of about $340,000,000, as Long Road X (2023) cost. The fee is what studios pay for a director's first studio picture, as the trade reports it, before any share of the profits.");
   });
 
@@ -207,6 +209,10 @@ describe('a studio project', () => {
     acceptJob(s, j.id);
     processUntil(s, s.now + 220 * DAY, 'tick', 5_000_000); // eight weeks out, then eighteen weeks of shooting
     expect(j.status).toBe('done');
+    // Its title, the studio's, invented as the world's films are; said with its release, a year after the last day.
+    expect(j.studio!.title).toMatch(/^(The |A )?[A-Z][a-z]+ [A-Z][a-z]+$/);
+    expect(j.studio!.released).toBe(addDaysToKey(j.days[j.days.length - 1], STUDIO_RELEASE_DAYS));
+    expect(s.log.some((x) => x.text.includes(`${j.company} will release it as ${j.studio!.title} on `))).toBe(true);
     const paid = personalPostings(s).filter((x) => x.kind === 'paid-work' && x.key === `job:${j.id}`).reduce((a, x) => a + x.amount, 0);
     // The fee itself, for the days worked: never a rounded day rate times the days.
     expect(paid).toBe(Math.round((j.studio!.fee * j.attended.length) / j.days.length));

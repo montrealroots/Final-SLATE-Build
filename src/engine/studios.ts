@@ -25,7 +25,7 @@ export interface StudioProfile {
   /** The studio's latest dated film. */
   last?: string;
   /** Its live franchises, the most recent first (tools/screen-catalog/franchises.mjs; catalogs built from November 18, 2026). */
-  fr?: { name: string; entries: number; last: string; budget?: number; budgetOf?: string }[];
+  fr?: { name: string; entries: number; last: string; budget?: number; budgetOf?: string; films?: { r: string; t: string; d: string }[] }[];
   /** Its median recorded budget over the ten years before the records end (franchises.mjs). */
   mb?: number;
   /**
@@ -48,8 +48,8 @@ export interface StudioFilm {
   people: { director: string; writer: string; lead: string };
 }
 
-const WORDS_A = ['Quiet', 'Salt', 'Paper', 'Northern', 'Last', 'Glass', 'Hollow', 'Bright', 'Small', 'Burning', 'Silent', 'Iron', 'Little', 'Distant', 'Golden', 'Low', 'Wild', 'Late', 'Blue', 'Second', 'Hidden', 'Starlit', 'Winter', 'Lost', 'Crimson', 'Endless', 'Brave', 'Secret', 'Midnight', 'Forgotten'];
-const WORDS_B = ['Harbor', 'Summer', 'Orchard', 'Signal', 'River', 'Kingdom', 'Witness', 'Houses', 'Tide', 'Season', 'Weather', 'Mountain', 'Archive', 'Garden', 'Crossing', 'Lights', 'Hours', 'Field', 'Animals', 'Room', 'Voyage', 'Machine', 'Frontier', 'Promise', 'Comet', 'Lantern', 'Forest', 'Island', 'Engine', 'Legend'];
+export const WORDS_A = ['Quiet', 'Salt', 'Paper', 'Northern', 'Last', 'Glass', 'Hollow', 'Bright', 'Small', 'Burning', 'Silent', 'Iron', 'Little', 'Distant', 'Golden', 'Low', 'Wild', 'Late', 'Blue', 'Second', 'Hidden', 'Starlit', 'Winter', 'Lost', 'Crimson', 'Endless', 'Brave', 'Secret', 'Midnight', 'Forgotten'];
+export const WORDS_B = ['Harbor', 'Summer', 'Orchard', 'Signal', 'River', 'Kingdom', 'Witness', 'Houses', 'Tide', 'Season', 'Weather', 'Mountain', 'Archive', 'Garden', 'Crossing', 'Lights', 'Hours', 'Field', 'Animals', 'Room', 'Voyage', 'Machine', 'Frontier', 'Promise', 'Comet', 'Lantern', 'Forest', 'Island', 'Engine', 'Legend'];
 const FIRSTS = ['Iris', 'Teo', 'Marisol', 'Kwame', 'Ana', 'Lars', 'Mina', 'Rafi', 'Odile', 'Sung-min', 'Leila', 'Joaquín', 'Ngozi', 'Yuki', 'Farid', 'Elsa', 'Dara', 'Ines', 'Malik', 'Priya'];
 const LASTS = ['Varga', 'Mbeki', 'Holt', 'Ruiz', 'Okoro', 'Aalto', 'Brandt', 'Sato', 'Navarro', 'Achterberg', 'Kader', 'Lindqvist', 'Moreau', 'Osei', 'Petrova', 'Tanaka', 'Quist', 'Delacroix', 'Haddad', 'Ferreira'];
 

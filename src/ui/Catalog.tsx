@@ -17,6 +17,7 @@ import { episodeDates, outletOf, profileFor, recordedModel, recordedUpTo, type S
 import { ageOn, announcedSeason, breakLength, breaksOf, castFor, decisionsFor, nightsOf, usualDecision } from '../catalog/simseason';
 import { addDaysToKey } from '../engine';
 import { studioFilm, studioFilms } from '../engine/studios';
+import { franchiseName } from '../engine/studio-projects';
 import logo from '../catalog/tmdb-logo.svg';
 import { Check, Empty, PageHead, Panel, SelectField, TextField } from './components';
 import { Breadcrumbs } from './Shell';
@@ -226,6 +227,7 @@ export function CompanyPage({ id }: { id: string }) {
       </Panel>
       <LeadershipCard c={c} today={today} />
       <SimulatedFilms companyId={c.id} today={today} />
+      <Franchises companyId={c.id} name={c.name} today={today} />
       {c.tmdb && c.kind !== 'network' ? <Filmography tmdbId={c.tmdb.id} name={c.name} today={today} /> : (
         <Panel title="Titles"><p className="muted">{c.kind === 'network' ? 'No titles are gathered for networks and streaming services: where a title airs or streams isn\'t who made it.' : 'TMDB credits no titles to this company itself; see its studios and labels.'}</p></Panel>
       )}
@@ -364,6 +366,54 @@ function SimulatedFilms({ companyId, today }: { companyId: string; today: string
         </ul>
       ) : <p className="muted">None yet.</p>}
     </Panel>
+  );
+}
+
+/**
+ * The studio's franchises (from November 18, 2026, the owner: "show me what the Godzilla franchise would look like"):
+ * each one's recorded films (tools/screen-catalog/franchises.mjs), then the pictures you made for it, the studio's own
+ * and invented by the game, with the title it releases them under and when.
+ */
+function Franchises({ companyId, name, today }: { companyId: string; name: string; today: string }) {
+  const g = useGame();
+  const profile = g.industry?.studios?.find((p) => p.c === companyId);
+  const mine = (g.jobs ?? []).filter((j) => j.status === 'done' && j.studio?.title && j.company === (profile?.name ?? name));
+  if (!profile?.fr?.length && !mine.length) return null;
+  const yours = (j: (typeof mine)[number]) => (
+    <li key={j.id} className="list-item">
+      <span className="grow">{j.studio!.title} <span className="chip">Your Picture</span> <span className="dim small">You {j.role === 'directing' ? 'directed' : 'wrote'} it.</span></span>
+      <span className="dim small">{j.studio!.released ? (j.studio!.released <= today ? `Released ${day(j.studio!.released)}` : `Due ${day(j.studio!.released)}`) : 'Not yet dated'}</span>
+    </li>
+  );
+  const own = new Set((profile?.fr ?? []).map((f) => franchiseName(f.name)));
+  const originals = mine.filter((j) => !j.studio!.franchise || !own.has(j.studio!.franchise));
+  return (
+    <Panel title="Franchises" subtitle={`The franchises ${name} has made films in lately, from the records, with the pictures you made in them. Yours are its own, invented by the game.`}>
+      {(profile?.fr ?? []).map((f) => {
+        const said = franchiseName(f.name);
+        return <FranchiseFilms key={f.name} said={said} f={f} today={today}>{mine.filter((j) => j.studio!.franchise === said).map(yours)}</FranchiseFilms>;
+      })}
+      {originals.length > 0 && <><h3>Your Pictures For {name}</h3><ul className="list">{originals.map(yours)}</ul></>}
+    </Panel>
+  );
+}
+
+/** A franchise's latest five recorded films, all on asking, then yours (Franchises). */
+const FRANCHISE_SHOWN = 5;
+function FranchiseFilms({ said, f, today, children }: { said: string; f: { entries: number; last: string; films?: { r: string; t: string; d: string }[] }; today: string; children: ReactNode }) {
+  const [all, setAll] = useState(false);
+  const films = f.films ?? [];
+  const shown = all ? films : films.slice(-FRANCHISE_SHOWN);
+  return (
+    <section>
+      <h3>{said}</h3>
+      <ul className="list" aria-label={`${said} Films`}>
+        {shown.map((x) => <li key={x.r} className="list-item"><span className="grow"><Link to={titleRoute(x.r)}>{x.t}</Link></span><span className="dim small">{happenedBy(x.d, today) ? yearOf(x.d) : `Due ${day(x.d)}`}</span></li>)}
+        {!films.length && <li className="list-item"><span className="grow muted">{plural(f.entries, 'film')} recorded, the latest in {yearOf(f.last)}.</span></li>}
+        {children}
+      </ul>
+      {films.length > FRANCHISE_SHOWN && <button className="btn btn-sm" onClick={() => setAll(!all)}>{all ? `Show The Latest ${FRANCHISE_SHOWN}` : `Show All ${films.length} ${said} Films`}</button>}
+    </section>
   );
 }
 

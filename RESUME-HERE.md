@@ -93,6 +93,16 @@ like "so and so wants you to take over and film the next Batman", invented entri
   after the last is done (`jobs.ts` schedules the `studio-project` event), owed whatever the six-month gap or the grade;
   declining or withdrawing ends the deal and says so; a better fee agreed on the first picture lifts the rest. No new
   command, event or saved field. Tests: `tests/studio-projects.test.ts` "multi-picture deals"; `e2e/studio-projects.spec.ts`.
+- **Studio pictures are titled, and franchises show on the studio's page (the owner, November 18: "Give a name to that
+  Godzilla movie then show me what the Godzilla franchise would look like after on the industry page"):** each studio
+  offer carries the title the studio will release it under (`studio.title`, invented: a franchise entry is
+  "Franchise: Subtitle" from a list of sequel subtitles, an original from the world's film words); the offer keeps its
+  working title, and when the last day is worked the news says the title and the release, a year on
+  (`STUDIO_RELEASE_DAYS`, `studio.released`). The build keeps each franchise's films (`fr[].films`, franchises.mjs), and a
+  studio's Companies page has a Franchises section: each franchise's latest five recorded films (all on asking), then
+  the pictures you made in it, marked Your Picture. A save takes the studio profiles when its world starts, so a save
+  from before November 18 shows counts, not the films. Tests: `tests/studio-projects.test.ts`, `tests/franchises.test.ts`,
+  `e2e/studio-projects.spec.ts`.
 - **Still to bring in, if the owner wants them:** more of the world's studios (Australia, Spain, Nordic countries,
   Nigeria, Turkey, Brazil, Argentina, other Indian languages' studios), found by the same company search.
 - Tests: `tests/studio-projects.test.ts`, `e2e/studio-projects.spec.ts`, proof `off-studio-project`.

@@ -15,7 +15,7 @@ describe('addFranchises', () => {
   it('counts feature films only and names a non-Latin collection by its first film', () => {
     mkdirSync(join(dir, 'titles'));
     const film = (id: number, title: string, date: string, collection: string, runtime: number, genres: string[], budget?: number) =>
-      writeFileSync(join(dir, 'titles', `movie-${id}.json`), JSON.stringify({ title, date, runtime, genres, budget, collection: { name: collection }, companies: [{ name: 'Toho' }] }));
+      writeFileSync(join(dir, 'titles', `movie-${id}.json`), JSON.stringify({ ref: `movie:${id}`, title, date, runtime, genres, budget, collection: { name: collection }, companies: [{ name: 'Toho' }] }));
     film(1, 'Godzilla Minus One', '2023-11-03', 'Godzilla Minus Collection', 125, ['Science Fiction'], 15_000_000);
     film(2, 'Godzilla Fest 5', '2024-11-03', 'Godzilla Fest Short Film Collection', 13, ['Action'], 13_103);
     film(3, 'Godzilla Fest 6', '2025-11-03', 'Godzilla Fest Short Film Collection', 12, ['Action']);
@@ -27,5 +27,7 @@ describe('addFranchises', () => {
     const toho = JSON.parse(readFileSync(join(dir, 'world.json'), 'utf8')).studios[0];
     expect(toho.fr.map((f: { name: string }) => f.name)).toEqual(['Till We Meet Again on the Lily Hill', 'Godzilla Minus Collection']);
     expect(toho.fr[1]).toMatchObject({ budget: 15_000_000, budgetOf: 'Godzilla Minus One (2023)' });
+    // Each franchise keeps its films in date order, for the franchise on the studio's page (Catalog.tsx).
+    expect(toho.fr[0].films.map((f: { t: string }) => f.t)).toEqual(['Till We Meet Again on the Lily Hill', 'Till We Meet Again on the Starry Hill']);
   });
 });

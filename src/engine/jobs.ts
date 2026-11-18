@@ -55,7 +55,9 @@ export interface OutsideJob {
   /** A studio's own picture (studio-projects.ts, from November 18, 2026): the fee in all, its franchise, its genre. */
   studio?: { fee: number; franchise?: string; genre: string; budget?: number; budgetOf?: string; first?: boolean; set?: 'share' | 'guild'; why?: string;
     /** A multi-picture deal (from November 18, 2026): this is picture `picture` of `of`, and `fees` are each picture's. */
-    deal?: { picture: number; of: number; fees: number[] } };
+    deal?: { picture: number; of: number; fees: number[] };
+    /** The title it's released under, the studio's, invented by the game; and the day it comes out, set when shooting wraps. */
+    title?: string; released?: string };
 }
 
 export const JOB_ROLES: Record<JobRole, { label: string; doing: string; days: [number, number]; base: number; perDelivered: number }> = {
@@ -296,6 +298,9 @@ export function pay(state: GameState, j: OutsideJob): void {
   if (j.viaAgent) postPersonal(state, 'commission', -Math.round(gross * j.viaAgent.rate), `Commission To ${agentById(j.viaAgent.agentId).name}: ${Math.round(j.viaAgent.rate * 100)}% Of ${money(gross)}`, `job-commission:${j.id}`);
 }
 
+/** Days from a studio picture's last day of work to its release: a year of post-production and marketing. Game calibration. */
+export const STUDIO_RELEASE_DAYS = 365;
+
 /** A job morning: there, awake and not travelling, or the day is missed. After the last, the job is paid and credited. */
 registerHandler('job-day', (state, ev) => {
   const j = jobById(state, ev.payload.jobId as string);
@@ -315,6 +320,11 @@ registerHandler('job-day', (state, ev) => {
     const deal = j.studio?.deal;
     if (deal && deal.picture < deal.of) schedule(state, state.now + STUDIO_PROJECT_NOTICE_DAYS * DAY, 'studio-project', { after: j.id }, { attention: 'silent', priority: 70, id: `studio-project:${j.id}` });
     text += ` That was the last day: ${money(personalBalance(state) - before)} comes to your account${j.viaAgent ? ', after your agent\'s commission' : ''}.`;
+    // The studio announces its title and its release, a year on (STUDIO_RELEASE_DAYS), once the work is done.
+    if (j.studio?.title) {
+      j.studio.released = addDaysToKey(j.days[j.days.length - 1], STUDIO_RELEASE_DAYS);
+      text += ` ${j.company} will release it as ${j.studio.title} on ${formatDateKey(j.studio.released)}.`;
+    }
   }
   addLog(state, text, worked ? 'personal' : 'warning', { route: { view: 'profile' } });
   return { message: text, suppressInterrupt: there };
