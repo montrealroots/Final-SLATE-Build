@@ -74,28 +74,37 @@ export function TmdbCredit() {
 
 const KIND_LABEL: Record<CompanyRecord['kind'], string> = { corporate: 'The Company', film: 'Film', television: 'Television', network: 'Networks And Streaming' };
 /**
- * The groups the catalog follows; the independent studios (from November 18, 2026); and companies whose films a group
- * releases without owning them (Illumination, Working Title).
+ * The groups the catalog follows: each company at the top of a chain of owners, in the registry's order (from November 18,
+ * 2026, read off the registry, not listed here); then the studios that stand on their own, by country; then companies whose
+ * films a group releases without owning them (Illumination, Working Title).
  */
-const GROUPS = ['company:the-walt-disney-company', 'company:comcast', 'company:skydance', 'company:sony-group', 'company:amazon', 'company:lionsgate-studios', 'company:netflix-inc', 'company:apple', 'company:legendary-entertainment', 'independent', 'other'] as const;
-const GROUP_LABEL: Record<(typeof GROUPS)[number], string> = {
-  'company:the-walt-disney-company': 'The Walt Disney Company', 'company:comcast': 'Comcast And NBCUniversal', 'company:skydance': 'Skydance (Paramount And Warner Bros.)', 'company:sony-group': 'Sony',
-  'company:amazon': 'Amazon (Amazon MGM Studios)', 'company:lionsgate-studios': 'Lionsgate', 'company:netflix-inc': 'Netflix', 'company:apple': 'Apple', 'company:legendary-entertainment': 'Legendary',
-  independent: 'Independent Studios', other: 'Released By Universal Pictures',
-};
 const RELEASED_BY_UNIVERSAL = new Set(['company:illumination', 'company:working-title']);
-const inGroup = (c: CompanyRecord, g: (typeof GROUPS)[number]) => {
-  const top = groupOf(c.id)?.id;
-  const alone = top === c.id && c.kind !== 'corporate';
-  return g === 'other' ? alone && RELEASED_BY_UNIVERSAL.has(c.id) : g === 'independent' ? alone && !RELEASED_BY_UNIVERSAL.has(c.id) : top === g;
+const GROUP_NAME: Record<string, string> = {
+  'company:comcast': 'Comcast And NBCUniversal', 'company:skydance': 'Skydance (Paramount And Warner Bros.)', 'company:sony-group': 'Sony',
+  'company:amazon': 'Amazon (Amazon MGM Studios)', 'company:lionsgate-studios': 'Lionsgate', 'company:netflix-inc': 'Netflix', 'company:legendary-entertainment': 'Legendary',
 };
+const country = (code: string) => { try { return new Intl.DisplayNames(['en'], { type: 'region' }).of(code) ?? code; } catch { return code; } };
+const alone = (c: CompanyRecord) => groupOf(c.id)?.id === c.id && c.kind !== 'corporate';
+const groupKey = (c: CompanyRecord): string => {
+  if (!alone(c)) return groupOf(c.id)?.id ?? c.id;
+  return RELEASED_BY_UNIVERSAL.has(c.id) ? 'other' : `independent:${c.tmdb?.country ?? 'US'}`;
+};
+const GROUPS: string[] = [...new Set([
+  ...COMPANIES.filter((c) => c.kind === 'corporate' && !c.parent).map((c) => c.id),
+  ...COMPANIES.filter((c) => alone(c) && !RELEASED_BY_UNIVERSAL.has(c.id)).map(groupKey),
+  'other',
+])];
+const groupLabel = (g: string) => g === 'other' ? 'Released By Universal Pictures'
+  : g.startsWith('independent:') ? `Independent Studios, ${country(g.slice('independent:'.length))}`
+  : GROUP_NAME[g] ?? registryCompany(g)?.name ?? g;
+const inGroup = (c: CompanyRecord, g: string) => groupKey(c) === g;
 
 export function CompaniesPage() {
   const index = useCatalogFile<CatalogIndex>('index.json');
   const counts = index.status === 'ready' ? new Map(index.data.companies.map((c) => [c.tmdbId, c])) : null;
   return (
     <>
-      <PageHead eyebrow="Industry" title="Companies" lede="The studios and labels of The Walt Disney Company, NBCUniversal, Skydance (Paramount and Warner Bros.), Sony, Amazon, Lionsgate, Netflix, Apple and Legendary, and of the independent studios, their leadership, and the films and series credited to them, from TMDB." />
+      <PageHead eyebrow="Industry" title="Companies" lede="The studios and labels of the big groups and of the independent studios in America and Europe, their leadership, and the films and series credited to them, from TMDB." />
       <CatalogStatus index={index} />
       <CatalogSearch ready={index.status === 'ready'} />
       {index.status === 'ready' && index.data.counts.networks ? (
@@ -104,7 +113,7 @@ export function CompaniesPage() {
         </Panel>
       ) : null}
       {GROUPS.flatMap((g) => (['corporate', 'film', 'television', 'network'] as const).filter((k) => COMPANIES.some((c) => c.kind === k && inGroup(c, g))).map((k) => (
-        <Panel key={`${g}:${k}`} title={`${GROUP_LABEL[g]}: ${KIND_LABEL[k]}`}>
+        <Panel key={`${g}:${k}`} title={`${groupLabel(g)}: ${KIND_LABEL[k]}`}>
           <ul className="list">
             {COMPANIES.filter((c) => c.kind === k && inGroup(c, g)).map((c) => {
               const n = c.tmdb && counts?.get(c.tmdb.id);

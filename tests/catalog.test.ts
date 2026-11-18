@@ -49,8 +49,9 @@ describe('the company registry', () => {
       'Prime Video', 'Starz', 'Netflix (The Service)', 'Apple TV']);
     for (const n of networks) { expect(n.tmdb).toBeNull(); expect(DISCOVERED).not.toContain(n); }
     // 32 Disney records and 10 NBCUniversal's; from milestone F, 19 of Paramount's and Skydance Media's, 19 of Warner Bros.' and 12 of Sony's;
-    // from November 18, 2026, 6 of Amazon's, 4 of Lionsgate's, 2 of Netflix's, Apple's 1, Legendary's 2 and 7 independents'.
-    expect(DISCOVERED).toHaveLength(114);
+    // from November 18, 2026, 6 of Amazon's, 4 of Lionsgate's, 2 of Netflix's, Apple's 1, Legendary's 2 and 7 independents',
+    // and 11 of Europe's.
+    expect(DISCOVERED).toHaveLength(125);
     expect(new Set(COMPANIES.map((c) => c.id)).size).toBe(COMPANIES.length);
     expect(new Set(DISCOVERED.map((c) => c.tmdb!.id)).size).toBe(DISCOVERED.length);
   });
@@ -84,6 +85,17 @@ describe('the company registry', () => {
     expect(checkedFor('company:universal-pictures')).toBe(REGISTRY_CHECKED_NBCU);
   });
 
+  it("places a European studio in a group only where an official page says so, and otherwise leaves it on its own (November 18, 2026)", () => {
+    expect(groupOf('company:constantin-film')!.name).toBe('Highlight Communications AG');
+    expect(groupOf('company:film4-productions')!.name).toBe('Channel 4');
+    // CANAL+'s, the BBC's and RAI's own sites couldn't be read: each studio stands alone and says why.
+    for (const id of ['company:studiocanal', 'company:bbc-film', 'company:rai-cinema']) {
+      expect(groupOf(id)!.id).toBe(id);
+      expect(company(id)!.notes.join(' ')).toContain('no official source saying so could be read');
+    }
+    for (const id of ['company:gaumont', 'company:constantin-film', 'company:film4-productions']) expect(checkedFor(id)).toBe('2026-11-18');
+  });
+
   it('shows Skydance\'s leaders only from the day the company took that form, and as current only once its page was read', () => {
     const sky = (today: string) => leadershipAt('company:skydance', today, checkedFor('company:skydance')).map((x) => `${x.role.name}|${x.standing}`);
     expect(sky('2026-10-05')).toEqual([]);
@@ -98,7 +110,7 @@ describe('the company registry', () => {
     for (const r of LEADERSHIP) {
       expect(company(r.companyId), r.name).toBeDefined();
       expect(r.sources.length).toBeGreaterThan(0);
-      for (const s of r.sources) expect(s.url).toMatch(/^https:\/\/(thewaltdisneycompany\.com|www\.lucasfilm\.com|www\.starwars\.com|www\.pixar\.com|www\.sec\.gov|www\.nbcuniversal\.com|www\.skydance\.com|www\.aboutamazon\.com|ir\.netflix\.net|www\.apple\.com)\//);
+      for (const s of r.sources) expect(s.url).toMatch(/^https:\/\/(thewaltdisneycompany\.com|www\.lucasfilm\.com|www\.starwars\.com|www\.pixar\.com|www\.sec\.gov|www\.nbcuniversal\.com|www\.skydance\.com|www\.aboutamazon\.com|ir\.netflix\.net|www\.apple\.com|constantin\.film)\//);
     }
   });
 });
