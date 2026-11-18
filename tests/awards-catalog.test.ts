@@ -224,7 +224,10 @@ describe('festival prizes are decided among the films a section selected', () =>
 
   it('a win brings a studio calling a fortnight on; an edition you won nothing at doesn\'t', () => {
     const { s, e } = selected('prizes-call', true);
+    // Labelled fixture: the save last told an Established director; one film can't hold Established, so the results tell it.
+    s.gradesHeard = { ...s.gradesHeard, directing: 'Established' };
     editionResults(s, e);
+    expect(s.log.some((l) => l.text.startsWith('Your standing as a director has slipped from Established to') && l.text.includes(`after the ${e.label}'s results`))).toBe(true);
     const call = s.events.find((x) => x.id === `studio-project:${e.id}`);
     // A film scored 99 in Competition wins prizes on this seed.
     expect(e.entries.some((x) => x.status === 'won')).toBe(true);

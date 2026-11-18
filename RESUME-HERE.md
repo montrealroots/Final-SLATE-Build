@@ -79,6 +79,13 @@ like "so and so wants you to take over and film the next Batman", invented entri
     reputation card has a Studio Pictures section saying what each role can be offered now and how that grows.
   - Tests: `tests/studio-projects.test.ts` (reach, why, freshness, continuity), `tests/awards-catalog.test.ts` (a win
     schedules the call), `e2e/studio-projects.spec.ts` (the Profile says it).
+- **Grade news (the owner, November 18: "so I know when I level up"):** `src/engine/grade-news.ts`. The grade last told
+  per role is saved (`gradesHeard`); after a delivery (`finish.ts`), a selection or nominations and an edition's results
+  (`awards-results.ts`) the grades are read again and each change is news on the log, routed to the Profile: the new
+  grade, what moved it ("after the reception of X", "after the Venice ... 2026's results") and what it opens (studio
+  pictures' size, a better rate agreed), or a slip and what it closes. A new life starts Emerging; an older save starts
+  from the grades it has on load (`save.ts`). Tests: `tests/grade-news.test.ts`, and the hooks in
+  `tests/episode-delivery.test.ts` and `tests/awards-catalog.test.ts`.
 - **Still to bring in, if the owner wants them:** more of the world's studios (Australia, Spain, Nordic countries,
   Nigeria, Turkey, Brazil, Argentina, other Indian languages' studios), found by the same company search.
 - Tests: `tests/studio-projects.test.ts`, `e2e/studio-projects.spec.ts`, proof `off-studio-project`.

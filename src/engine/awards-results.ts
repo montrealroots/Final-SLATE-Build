@@ -14,6 +14,7 @@ import { addLog, schedule, type HandlerResult } from './state';
 import { DAY, addDaysToKey, dateKey, formatDateKey, localToInstant, parseYmd } from './time';
 import { studioFilms, type StudioFilm } from './studios';
 import { recordedResults } from './history';
+import { noticeGrades } from './grade-news';
 import type { Edition, EditionEntry, GameState, Project, RivalFilm, ScheduledEvent } from './types';
 
 /**
@@ -508,6 +509,8 @@ export function announce(state: GameState, ed: Edition): HandlerResult {
     }
   }
   for (const m of messages) addLog(state, m, inst.kind === 'festival' ? 'festival' : 'award', { route: { view: 'event', editionId: ed.id } });
+  // A selection or nomination is recognition, and may move a grade (grade-news.ts).
+  noticeGrades(state, `the ${ed.label}'s ${inst.kind === 'festival' ? 'selection' : 'nominations'}`);
   if (!messages.length) return involved(state, ed) ? { message: `The ${ed.label} announced its ${inst.kind === 'festival' ? 'selection' : 'nominations'}.` } : { suppressInterrupt: true };
   return { message: messages[0] };
 }
@@ -625,6 +628,8 @@ export function editionResults(state: GameState, ed: Edition): HandlerResult {
   ed.status = 'complete';
   compactEdition(ed);
   for (const m of messages) addLog(state, m, inst.kind === 'festival' ? 'festival' : 'award', { route: { view: 'event', editionId: ed.id } });
+  // Wins move grades, told after the results themselves (grade-news.ts).
+  noticeGrades(state, `the ${ed.label}'s results`);
   return messages.length ? { message: messages[0] } : { suppressInterrupt: true };
 }
 

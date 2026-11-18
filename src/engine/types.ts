@@ -1428,6 +1428,8 @@ export interface GameState {
   papersWorked?: Record<string, string[]>;
   /** First-look deals offered, running and past (first-look.ts). Absent until the first offer, and in saves from before November 13, 2026. */
   firstLooks?: import('./first-look').FirstLook[];
+  /** The grade by role the player was last told (grade-news.ts), so a change is told once. */
+  gradesHeard?: Partial<Record<import('./reputation').StandingRole, string>>;
   /** Equipment you own or your family lends (equipment.ts). Absent in saves from before November 12, 2026: none. */
   gear?: import('./equipment').GearInventory;
   /** Paid work on others' productions (jobs.ts). Absent until the first offer. */

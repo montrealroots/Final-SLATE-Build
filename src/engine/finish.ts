@@ -17,6 +17,7 @@ import { getPlace } from '../data/places';
 import { countryName } from '../world/gazetteer/gazetteer';
 import { cancel, closeSettled, ledgerTotals, money, reserve, settle } from './budget';
 import { countryLanguage, personById, roleLabel } from './people';
+import { noticeGrades } from './grade-news';
 import {
   approvedCharacters, approvedScenes, isEpisodic, isNonfiction, projectModules, scriptIssues, sceneLabel,
 } from './projects';
@@ -130,6 +131,8 @@ export function deliver(state: GameState, p: Project): void {
   p.history.push({ at: state.now, text: `Delivered at ${runtime} minutes. Spent ${money(ledgerTotals(p).settled)}.` });
   // Distributors hear about it.
   schedule(state, state.now + 5 * DAY, 'distribution-offer', { projectId: p.id, wave: 'delivery' }, { attention: 'notify', priority: 55 });
+  // How it was received may move a grade (grade-news.ts).
+  noticeGrades(state, `the reception of ${p.title}`);
 }
 
 // ---------------- Credits ----------------
