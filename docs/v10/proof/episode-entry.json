@@ -531,7 +531,7 @@
  "hashes": {
   "src/engine/awards-actions.ts": "cef3e1812969115e",
   "src/engine/finish.ts": "e0a1318764a0a429",
-  "src/engine/awards-results.ts": "4e0a4bc1294ec808",
+  "src/engine/awards-results.ts": "cd15331791e3f647",
   "tests/proof/career.ts": "50bea06f19a02c5b"
  }
 }
