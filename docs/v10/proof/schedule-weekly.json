@@ -520,7 +520,7 @@
  "verdict": "proven",
  "hashes": {
   "src/engine/episode-releases.ts": "7fd01a5dcda8b234",
-  "src/engine/awards-rules.ts": "9e27d96ba6ec918f",
+  "src/engine/awards-rules.ts": "54b469ece67fc0f5",
   "tests/proof/career.ts": "50bea06f19a02c5b"
  }
 }

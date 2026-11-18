@@ -10,9 +10,9 @@ journey that shows it there.
 |---|---|---|---|---|---|---|---|---|
 | action | 186 | 0 | 0 | 0 | 0 | 15 | 0 | 201 |
 | bank | 54 | 0 | 0 | 0 | 0 | 0 | 0 | 54 |
-| scheduled | 58 | 0 | 0 | 0 | 0 | 11 | 0 | 69 |
+| scheduled | 58 | 0 | 0 | 0 | 0 | 12 | 0 | 70 |
 | field | 273 | 102 | 0 | 0 | 0 | 9 | 0 | 384 |
-| all | 571 | 102 | 0 | 0 | 0 | 35 | 0 | 708 |
+| all | 571 | 102 | 0 | 0 | 0 | 36 | 0 | 709 |
 
 ## Rows
 
@@ -336,12 +336,13 @@ journey that shows it there.
 | shoot-call | scheduled | src/engine/production/shoot.ts | proven | off-shoot-call (40 seeds) | lateDays -1; quality.direction +0.6; overall +0.288 |
 | shoot-wrap | scheduled | src/engine/production/shoot.ts | proven | off-shoot-wrap (40 seeds) | delivered -2; revenue -136781.125; money -157857.058 |
 | stay-limit | scheduled | src/engine/papers.ts | proven | off-stay-limit (20 seeds) | overstays -1; usVisas -1; papersPaid -185; secondTripDays +30 |
-| studio-project | scheduled | src/engine/studio-projects.ts | proven | off-studio-project (40 seeds) | studioOffers -1.325; jobPay -955699.95; money -955821.55 |
+| studio-project | scheduled | src/engine/studio-projects.ts | proven | off-studio-project (40 seeds) | studioOffers -1.725; jobPay -1670227.45; money -1670349.05 |
 | studio-release | scheduled | src/engine/finish.ts | proven | off-studio-release (40 seeds) | released -8.925; gross -1639510 |
 | wake | scheduled | src/engine/state.ts | proven | off-wake (40 seeds) | lateDays +6.75; quality.direction -63.5; overall -58.712 |
 | weather-check | scheduled | src/engine/production/shoot.ts | proven | off-weather-check (60 seeds) | lostDays +1.567; daysToDeliver +1.208; spent +3456.833 |
 | work-day | scheduled | src/engine/production/workday.ts | proven | off-work-day (40 seeds) | delivered -1.975; revenue -140708.75; money -162293.04 |
 | writing-day | scheduled | src/engine/writing-jobs.ts | proven | off-writing-day (40 seeds) | passesAccepted -1.875; quality.script -1.575; spent -886.25 |
+| your-film-release | scheduled | src/engine/your-films.ts | not a feature |  | A notice: on its release date it tells you a studio picture you made has opened, with its first week, and reads your grades again. The picture's box office, its reception in your craft and its place in the awards are all read from its release date (your-films.ts), not from this event, so switching it off changes only the news. |
 | "Working Title" | field | everywhere a project is named | carried | tests/proposal.test.ts::makes one project | A name or a record, carried to everywhere a project is named: it decides nothing by its nature. |
 | "Format" | field | proposal.ts proposeFromSource; projects.ts, production/tasks.ts | proven | adapt-short (40 seeds) | scenes -6; spent -295140.5; daysToDeliver -77.587 |
 | "Medium" | field | production/tasks.ts buildTasks | proven | adapt-animated (40 seeds) | shootDays -48.075; hired +8; spent +68923.95; delivered -2 |

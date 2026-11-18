@@ -30,7 +30,7 @@
   "jobsWithdrawn": 0,
   "jobsDeclined": 0,
   "ratesAgreed": 0,
-  "logLines": 112.525,
+  "logLines": 113.425,
   "hired": 16,
   "castRates": 3222.5,
   "releaseDelay": 100.892,
@@ -106,7 +106,7 @@
   "jobsWithdrawn": 0,
   "jobsDeclined": 0,
   "ratesAgreed": 0,
-  "logLines": 111.75,
+  "logLines": 112.65,
   "hired": 16,
   "castRates": 3222.5,
   "releaseDelay": 100.892,
@@ -694,7 +694,7 @@
  ],
  "verdict": "no downstream effect",
  "hashes": {
-  "src/engine/jobs.ts": "2f0bf56a472a3f97",
+  "src/engine/jobs.ts": "a5ca469a6209a714",
   "tests/proof/career.ts": "50bea06f19a02c5b"
  }
 }

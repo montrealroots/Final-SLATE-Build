@@ -31,7 +31,7 @@
   "jobsWithdrawn": 0,
   "jobsDeclined": 0,
   "ratesAgreed": 0,
-  "logLines": 310.05,
+  "logLines": 311.475,
   "hired": 39,
   "castRates": 4833.5,
   "releaseDelay": 20.667,
@@ -80,7 +80,7 @@
   "jobsWithdrawn": 0,
   "jobsDeclined": 0,
   "ratesAgreed": 0,
-  "logLines": 313.05,
+  "logLines": 314.475,
   "hired": 39,
   "castRates": 4833.5,
   "releaseDelay": 20.667,
@@ -461,7 +461,7 @@
  "verdict": "proven",
  "hashes": {
   "src/engine/song-actions.ts": "6c8e9ec0751613f6",
-  "src/engine/awards-rules.ts": "9e27d96ba6ec918f",
+  "src/engine/awards-rules.ts": "54b469ece67fc0f5",
   "tests/proof/career.ts": "50bea06f19a02c5b"
  }
 }
