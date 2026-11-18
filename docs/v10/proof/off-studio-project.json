@@ -698,7 +698,7 @@
  ],
  "verdict": "proven",
  "hashes": {
-  "src/engine/studio-projects.ts": "780f55e73dfe5227",
+  "src/engine/studio-projects.ts": "6ed50ea11249e80e",
   "tests/proof/career.ts": "50bea06f19a02c5b"
  }
 }

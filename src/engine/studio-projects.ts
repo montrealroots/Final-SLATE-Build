@@ -44,8 +44,12 @@ export const STUDIO_SHOOT_WEEKS: [number, number][] = [[150_000_000, 18], [50_00
 export const DGA_GUARANTEE_WEEKS = 10;
 
 /** A franchise's name as people say it: "The Batman Collection" is the Batman films, "Superman (DCU)" Superman's. */
-export const franchiseName = (collection: string): string =>
-  collection.replace(/\s*-?\s*Coll?ection$/i, '').replace(/\s*Colletion$/i, '').replace(/\s*\([^)]*\)\s*/g, ' ').replace(/^The\s+/i, '').trim();
+export const franchiseName = (collection: string): string => {
+  const name = collection.replace(/\s*-?\s*Coll?ection$/i, '').replace(/\s*Colletion$/i, '').replace(/\s*\([^)]*\)\s*/g, ' ').replace(/^The\s+/i, '').trim();
+  // "Minecraft Movie" and "Lego Movie" are said "Minecraft" and "Lego", or the offer says "the next Minecraft Movie film";
+  // Scary Movie is a title in its own right. shortcut: one exception, read off the built catalog's names on November 18, 2026.
+  return name === 'Scary Movie' ? name : name.replace(/\s+Movie$/, '');
+};
 
 const inForce = (table: [string, number][], day: string): number => [...table].reverse().find(([from]) => from <= day)?.[1] ?? table[0][1];
 const weekdaysFrom = (start: string, n: number): string[] => {
@@ -91,7 +95,7 @@ export function studioProjectOffer(state: GameState): OutsideJob | null {
     production: franchise ? `Untitled ${franchise} Film` : `Untitled ${strategy.name} ${genre} Picture`,
     company: strategy.name,
     part: directing ? 'Directing the picture' : 'Writing the screenplay',
-    material: franchise ? `The ${franchise} films so far, and the studio's notes for the next one.` : `The studio's brief for a ${genre.toLowerCase()} picture.`,
+    material: franchise ? `${live!.entries === 1 ? `The ${franchise} film` : `The ${franchise} films so far`}, and the studio's notes for the next one.` : `The studio's brief for a ${genre.toLowerCase()} picture.`,
     requirement: directing ? `On set in ${place.name} each shooting day.` : `With the studio's producers in ${place.name}; the draft is due on the last day.`,
     dayRate: Math.round(fee / days.length), days, placeId: place.id, zone: place.zone,
     status: 'offered', offeredAt: state.now, answerBy: state.now + JOB_ANSWER_DAYS * DAY, attended: [], missed: [],

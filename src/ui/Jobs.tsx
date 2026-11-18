@@ -77,7 +77,7 @@ export function WorkForOthersCard() {
           {credits.map((j) => { const p = j.productionId ? productionById(g, j.productionId) : undefined; return <li key={j.id} className="list-item">{JOB_ROLES[j.role].label}{j.part ? ` (${j.part.replace(/^The part of /, 'as ')})` : ''}, {j.production} ({j.company}), {j.attended.length} {j.attended.length === 1 ? 'day' : 'days'}{p ? (p.result ? `. Out ${formatDateKey(p.releasesOn)}, received at ${p.result.reception} (simulated).` : `. Comes out ${formatDateKey(p.releasesOn)}.`) : ''}</li>; })}
         </ul>
       )}
-      <p className="dim small">Day rates, the odds of an offer and its length are game calibration. The pay comes to your own account when the days are done.</p>
+      <p className="dim small">Day rates, the odds of an offer and its length are game calibration{offers.some((j) => j.studio) ? "; a studio's fee is what the trade reports for your record" : ''}. The pay comes to your own account when the days are done.</p>
       {err && <p role="alert" style={{ color: 'var(--negative)' }}>{err}</p>}
     </section>
   );
