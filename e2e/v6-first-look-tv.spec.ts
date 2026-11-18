@@ -105,9 +105,11 @@ test('J13: a first-look deal for television covers series, not films; a covered 
   await nav(page, 'Profile');
   const fl = card(page, 'First-Look Deal');
   const offer = fl.getByRole('region', { name: 'First-Look Offer' });
-  const terms = offer.getByRole('list', { name: 'Its Terms' });
-  await expect(terms).toContainText(`It covers the series you make while it runs, not films. You submit each one to ${NIGHT} before you take it to any commissioner.`);
-  await expect(terms).toContainText(`${NIGHT} has 60 days to answer each one.`);
+  // Said as the company would, then broken down (from November 18, 2026).
+  await expect(offer).toContainText(`${NIGHT} wants first look at your next series`);
+  const terms = offer.getByLabel('Its Terms');
+  await expect(terms).toContainText('The first chance at every series you make, before any commissioner; not your films');
+  await expect(terms).toContainText("Within 60 days of each one; if they pass, it's yours to take elsewhere");
   await offer.getByRole('button', { name: 'Accept The First-Look Deal' }).click();
   const running = fl.getByRole('region', { name: 'Your First-Look Deal' });
   await expect(running).toContainText(`Nothing submitted yet. Submit a covered series to ${NIGHT} from its Budget page.`);
@@ -177,5 +179,5 @@ test('J13: a first-look deal for television covers series, not films; a covered 
   await nav(page, 'Home');
   await expect(page.locator('section.card', { has: page.getByRole('heading', { name: 'Recent Updates' }) })).toContainText('Night Watch, a series it commissioned under the deal, was renewed.');
   await nav(page, 'Profile');
-  await expect(fl.getByRole('region', { name: 'First-Look Offer' })).toContainText(', renewing the last one');
+  await expect(fl.getByRole('region', { name: 'First-Look Offer' })).toContainText('It renews your last deal with them.');
 });

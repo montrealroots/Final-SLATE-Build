@@ -44,3 +44,4 @@ export * from './gear-catalog';
 // A licence proposal's answer is an event (release-plan.ts), so the module loads with the engine, its names left to import.
 import './release-plan';
 import './homes';
+import './studio-projects';

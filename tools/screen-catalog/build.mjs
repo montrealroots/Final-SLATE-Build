@@ -6,6 +6,7 @@ import { existsSync, mkdirSync, readFileSync, renameSync, rmSync, writeFileSync 
 import { join, resolve } from 'node:path';
 import { DISCOVERED, REGISTRY_CHECKED } from '../../src/catalog/registry.ts';
 import { CACHE, MAX_AGE_DAYS, cached } from './tmdb.mjs';
+import { addFranchises } from './franchises.mjs';
 
 const arg = process.argv.indexOf('--out');
 const FINAL = resolve(arg > 0 ? process.argv[arg + 1] : '.screen-catalog');
@@ -239,6 +240,8 @@ rmSync(`${FINAL}.old`, { recursive: true, force: true });
 if (existsSync(FINAL)) renameSync(FINAL, `${FINAL}.old`);
 renameSync(OUT, FINAL);
 rmSync(`${FINAL}.old`, { recursive: true, force: true });
+// Each studio's live franchises, read from the films just built (franchises.mjs; from November 18, 2026).
+console.log(JSON.stringify({ franchises: addFranchises(FINAL) }));
 console.log(JSON.stringify({ out: FINAL, counts: { ...counts, people: people.size, peopleWithDetails: withDetails }, failures: manifest.failures.length, stale: stale.length }, null, 1));
 if (stale.length) console.log(`${stale.length} cached responses were missing or older than ${MAX_AGE_DAYS} days and were left out; rerun the importer.`);
 if (!existsSync(FINAL)) process.exit(1);

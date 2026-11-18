@@ -16,21 +16,21 @@
   "gross": 154550,
   "revenue": 282808.5,
   "distributed": 3.625,
-  "money": 27163512.677,
-  "moneyChange": 2163512.677,
-  "jobsTaken": 1.7,
-  "jobsOffered": 1.975,
-  "jobPay": 11263.15,
-  "offeredDayRate": 799.567,
+  "money": 27959537.677,
+  "moneyChange": 2959537.677,
+  "jobsTaken": 2.775,
+  "jobsOffered": 3.2,
+  "jobPay": 1106263.15,
+  "offeredDayRate": 8056.836,
   "ownIn": 161625,
   "backerIn": 0,
   "backerDeals": 0,
   "leftInProjects": 0,
-  "jobsDone": 1.6,
+  "jobsDone": 2.675,
   "jobsWithdrawn": 0,
   "jobsDeclined": 0,
   "ratesAgreed": 0,
-  "logLines": 245.05,
+  "logLines": 291.4,
   "hired": 32,
   "castRates": 6454.25,
   "releaseDelay": 101.292,
@@ -54,9 +54,9 @@
   "standing.producing": 54.575,
   "overheadPaid": 0,
   "firstLookEnded": 0.4,
-  "firstLookOffers": 1.625,
-  "firstLookActive": 0.975,
-  "fired": 0.65
+  "firstLookOffers": 2.075,
+  "firstLookActive": 0.85,
+  "fired": 0.825
  },
  "variant": {
   "delivered": 4,
@@ -66,21 +66,21 @@
   "gross": 154550,
   "revenue": 282808.5,
   "distributed": 3.625,
-  "money": 24868886.126,
-  "moneyChange": -131113.874,
-  "jobsTaken": 1.975,
-  "jobsOffered": 1.975,
-  "jobPay": 13375,
-  "offeredDayRate": 799.567,
+  "money": 25873886.126,
+  "moneyChange": 873886.126,
+  "jobsTaken": 2.975,
+  "jobsOffered": 3.375,
+  "jobPay": 1018375,
+  "offeredDayRate": 9020.697,
   "ownIn": 161625,
   "backerIn": 0,
   "backerDeals": 0,
   "leftInProjects": 0,
-  "jobsDone": 1.85,
+  "jobsDone": 2.85,
   "jobsWithdrawn": 0,
   "jobsDeclined": 0,
   "ratesAgreed": 0,
-  "logLines": 244.05,
+  "logLines": 287.025,
   "hired": 32,
   "castRates": 6454.25,
   "releaseDelay": 101.292,
@@ -104,9 +104,9 @@
   "standing.producing": 54.575,
   "overheadPaid": 0,
   "firstLookEnded": 0,
-  "firstLookOffers": 0.65,
+  "firstLookOffers": 0.825,
   "firstLookActive": 0,
-  "fired": 0.65
+  "fired": 0.825
  },
  "diff": {
   "delivered": {
@@ -159,45 +159,45 @@
    "n": 40
   },
   "money": {
-   "mean": -2294626.55,
-   "lo": -3031435.751,
-   "hi": -1557817.35,
-   "changed": 23,
+   "mean": -2085651.55,
+   "lo": -3018229.46,
+   "hi": -1153073.641,
+   "changed": 21,
    "n": 40
   },
   "moneyChange": {
-   "mean": -2294626.55,
-   "lo": -3031435.751,
-   "hi": -1557817.35,
-   "changed": 23,
+   "mean": -2085651.55,
+   "lo": -3018229.46,
+   "hi": -1153073.641,
+   "changed": 21,
    "n": 40
   },
   "jobsTaken": {
-   "mean": 0.275,
-   "lo": 0.111,
-   "hi": 0.439,
-   "changed": 10,
+   "mean": 0.2,
+   "lo": 0.069,
+   "hi": 0.331,
+   "changed": 8,
    "n": 40
   },
   "jobsOffered": {
-   "mean": 0,
-   "lo": 0,
-   "hi": 0,
-   "changed": 0,
+   "mean": 0.175,
+   "lo": 0.051,
+   "hi": 0.299,
+   "changed": 7,
    "n": 40
   },
   "jobPay": {
-   "mean": 2111.85,
-   "lo": 682.592,
-   "hi": 3541.108,
-   "changed": 10,
+   "mean": -87888.15,
+   "lo": -333078.678,
+   "hi": 157302.378,
+   "changed": 14,
    "n": 40
   },
   "offeredDayRate": {
-   "mean": 0,
-   "lo": 0,
-   "hi": 0,
-   "changed": 0,
+   "mean": 963.861,
+   "lo": 3.279,
+   "hi": 1924.443,
+   "changed": 9,
    "n": 40
   },
   "ownIn": {
@@ -229,10 +229,10 @@
    "n": 40
   },
   "jobsDone": {
-   "mean": 0.25,
-   "lo": 0.108,
-   "hi": 0.392,
-   "changed": 10,
+   "mean": 0.175,
+   "lo": 0.051,
+   "hi": 0.299,
+   "changed": 7,
    "n": 40
   },
   "jobsWithdrawn": {
@@ -257,9 +257,9 @@
    "n": 40
   },
   "logLines": {
-   "mean": -1,
-   "lo": -2.017,
-   "hi": 0.017,
+   "mean": -4.375,
+   "lo": -11.195,
+   "hi": 2.445,
    "changed": 24,
    "n": 40
   },
@@ -425,17 +425,17 @@
    "n": 40
   },
   "firstLookOffers": {
-   "mean": -0.975,
-   "lo": -1.272,
-   "hi": -0.678,
-   "changed": 23,
+   "mean": -1.25,
+   "lo": -1.712,
+   "hi": -0.788,
+   "changed": 18,
    "n": 40
   },
   "firstLookActive": {
-   "mean": -0.975,
-   "lo": -1.272,
-   "hi": -0.678,
-   "changed": 23,
+   "mean": -0.85,
+   "lo": -1.165,
+   "hi": -0.535,
+   "changed": 18,
    "n": 40
   },
   "fired": {
@@ -464,7 +464,7 @@
  ],
  "verdict": "proven",
  "hashes": {
-  "src/engine/first-look.ts": "29363b61868a1a82",
+  "src/engine/first-look.ts": "439897ac215c7e2d",
   "tests/proof/career.ts": "50bea06f19a02c5b"
  }
 }

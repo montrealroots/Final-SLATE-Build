@@ -3,7 +3,7 @@ import type { Probe } from '../probe';
 import type { GameState, Project } from '../../../src/engine/types';
 import type { StudioProfile } from '../../../src/engine/studios';
 import { approachAgent, signWith } from '../../../src/engine/representation';
-import { acceptFirstLook, askMoreOverhead, declineFirstLook, endFirstLook, firstLooks } from '../../../src/engine/first-look';
+import { acceptFirstLook, askMoreOverhead, askToMatch, declineFirstLook, endFirstLook, firstLooks, matchRefusal } from '../../../src/engine/first-look';
 import { resumeProject, shelveProject } from '../../../src/engine/shelve';
 import { personalPostings } from '../../../src/engine/personal';
 import { DAY, processUntil } from '../../engine-api';
@@ -18,10 +18,14 @@ export const withAgent = (agentId: string) => (s: GameState) => {
   if (r?.approaches.some((a) => a.status === 'asked')) return;
   try { approachAgent(s, agentId); } catch { /* not yet: a script to show first */ }
 };
-export const answerFirstLooks = (how: 'accept' | 'decline' | 'ask' | 'accept-then-end') => (s: GameState) => {
+export const answerFirstLooks = (how: 'accept' | 'decline' | 'ask' | 'accept-then-end' | 'match') => (s: GameState) => {
   for (const fl of firstLooks(s)) {
     if (fl.status === 'active' && how === 'accept-then-end' && s.now - (fl.startsAt ?? s.now) > 90 * DAY) endFirstLook(s, fl.id);
     if (fl.status !== 'offered') continue;
+    // Match: the best fit (the first offer) is told of the rival's higher offer, then signed whatever it answers.
+    if (how === 'match' && fl.competing && !fl.counter && !matchRefusal(s, fl)) { askToMatch(s, fl.id); continue; }
+    if (how === 'match' && fl.counter && !fl.counter.outcome) continue;
+    if (how === 'match' && firstLooks(s).some((x) => x.id === fl.competing && x.counter?.match && x.status === 'offered')) continue;
     if (how === 'decline') declineFirstLook(s, fl.id);
     else if (how === 'ask' && !fl.counter) askMoreOverhead(s, fl.id);
     else if (how !== 'ask' || fl.counter?.outcome) { try { acceptFirstLook(s, fl.id); } catch { /* one running already */ } }
@@ -43,7 +47,13 @@ const measure = (s: GameState) => ({
   overheadPaid: personalPostings(s).filter((x) => x.kind === 'overhead').reduce((a, x) => a + x.amount, 0),
   overheadAgreed: firstLooks(s).filter((f) => f.counter?.outcome === 'agreed').length,
   firstLookEnded: firstLooks(s).filter((f) => f.status === 'ended-early').length,
+  matchAsked: firstLooks(s).filter((f) => f.counter?.match).length,
+  // What a deal paid you: a first look's overhead and an overall deal's guarantee (first-look.ts payOverhead).
+  dealPay: personalPostings(s).filter((x) => x.kind === 'overhead' || x.kind === 'guarantee').reduce((a, x) => a + x.amount, 0),
 });
+/** Labelled fixture studios bidding at once: the closer fit makes eleven films a year, the broad rival twelve, so the rival
+ * offers more and the closer fit can match it (within a quarter: first-look.ts MATCH_REACH). */
+const RIVALS: StudioProfile[] = [{ ...STUDIOS[0], n: 11 }, STUDIOS[1]];
 /** Shelves the year's project once its script is approved, and takes it up again two months later. */
 /** Shelved once the cast and crew are hired, taken up two months later and hired again (they were released). */
 const shelveHired = (s: GameState, p: Project) => {
@@ -69,6 +79,9 @@ export const PROBES: Probe[] = [
     // At 40 careers a studio agreed in 4 (November 16, 2026), inside the noise; 120 separate it.
     seeds: 120, base: { years: 3, studios: STUDIOS, daily: answerFirstLooks('accept') }, variant: { years: 3, studios: STUDIOS, daily: answerFirstLooks('ask') }, measure,
     bites: ['overheadAsked'], downstream: ['overheadAgreed', 'overheadPaid', 'money', 'firstLookActive'] },
+  { id: 'first-look-match', features: ['action:first-look.askToMatch'], decision: "Ask the studio you'd sign with to match a rival's higher offer, then sign it",
+    reads: ['src/engine/first-look.ts#askToMatch'], base: { years: 3, studios: RIVALS, daily: answerFirstLooks('accept') }, variant: { years: 3, studios: RIVALS, daily: answerFirstLooks('match') }, measure,
+    bites: ['matchAsked'], downstream: ['dealPay', 'money'] },
   { id: 'first-look-end', features: ['action:first-look.endFirstLook'], decision: 'End a first-look deal after three months',
     reads: ['src/engine/first-look.ts#endFirstLook'], base: { years: 3, studios: STUDIOS, daily: answerFirstLooks('accept') }, variant: { years: 3, studios: STUDIOS, daily: answerFirstLooks('accept-then-end') }, measure,
     bites: ['firstLookEnded'], downstream: ['money'] },

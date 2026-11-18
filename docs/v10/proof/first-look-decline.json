@@ -16,21 +16,21 @@
   "gross": 115435,
   "revenue": 182381.875,
   "distributed": 2.55,
-  "money": 25350243.622,
-  "moneyChange": 350243.622,
-  "jobsTaken": 1.475,
-  "jobsOffered": 1.5,
-  "jobPay": 7825.6,
-  "offeredDayRate": 663.2,
+  "money": 25875243.622,
+  "moneyChange": 875243.622,
+  "jobsTaken": 2.125,
+  "jobsOffered": 2.475,
+  "jobPay": 532825.6,
+  "offeredDayRate": 6878.318,
   "ownIn": 121700,
   "backerIn": 0,
   "backerDeals": 0,
   "leftInProjects": 71.95,
-  "jobsDone": 1.425,
+  "jobsDone": 2.075,
   "jobsWithdrawn": 0,
   "jobsDeclined": 0,
   "ratesAgreed": 0,
-  "logLines": 183.175,
+  "logLines": 212.325,
   "hired": 23.975,
   "castRates": 4831,
   "releaseDelay": 102.296,
@@ -55,11 +55,13 @@
   "viaAgent": 0,
   "commission": 0,
   "firstLookActive": 1.5,
-  "firstLookDeclined": 0,
+  "firstLookDeclined": 0.6,
   "overheadAsked": 0,
   "overheadPaid": 382500,
   "overheadAgreed": 0,
   "firstLookEnded": 0,
+  "matchAsked": 0,
+  "dealPay": 554725,
   "fired": 0
  },
  "variant": {
@@ -70,21 +72,21 @@
   "gross": 115435,
   "revenue": 182381.875,
   "distributed": 2.55,
-  "money": 24795379.801,
-  "moneyChange": -204620.2,
-  "jobsTaken": 1.5,
-  "jobsOffered": 1.5,
-  "jobPay": 7941.1,
-  "offeredDayRate": 663.2,
+  "money": 25267879.801,
+  "moneyChange": 267879.8,
+  "jobsTaken": 2.1,
+  "jobsOffered": 2.425,
+  "jobPay": 480441.1,
+  "offeredDayRate": 6576.739,
   "ownIn": 121700,
   "backerIn": 0,
   "backerDeals": 0,
   "leftInProjects": 71.95,
-  "jobsDone": 1.45,
+  "jobsDone": 2.05,
   "jobsWithdrawn": 0,
   "jobsDeclined": 0,
   "ratesAgreed": 0,
-  "logLines": 182.35,
+  "logLines": 208.45,
   "hired": 23.975,
   "castRates": 4831,
   "releaseDelay": 102.296,
@@ -109,11 +111,13 @@
   "viaAgent": 0,
   "commission": 0,
   "firstLookActive": 0,
-  "firstLookDeclined": 1.45,
+  "firstLookDeclined": 1.575,
   "overheadAsked": 0,
   "overheadPaid": 0,
   "overheadAgreed": 0,
   "firstLookEnded": 0,
+  "matchAsked": 0,
+  "dealPay": 0,
   "fired": 0
  },
  "diff": {
@@ -167,45 +171,45 @@
    "n": 40
   },
   "money": {
-   "mean": -554863.822,
-   "lo": -715730.77,
-   "hi": -393996.873,
+   "mean": -607363.822,
+   "lo": -823874.114,
+   "hi": -390853.529,
    "changed": 25,
    "n": 40
   },
   "moneyChange": {
-   "mean": -554863.822,
-   "lo": -715730.77,
-   "hi": -393996.873,
+   "mean": -607363.822,
+   "lo": -823874.114,
+   "hi": -390853.529,
    "changed": 25,
    "n": 40
   },
   "jobsTaken": {
-   "mean": 0.025,
-   "lo": -0.026,
-   "hi": 0.076,
+   "mean": -0.025,
+   "lo": -0.076,
+   "hi": 0.026,
    "changed": 1,
    "n": 40
   },
   "jobsOffered": {
-   "mean": 0,
-   "lo": 0,
-   "hi": 0,
-   "changed": 0,
+   "mean": -0.05,
+   "lo": -0.121,
+   "hi": 0.021,
+   "changed": 2,
    "n": 40
   },
   "jobPay": {
-   "mean": 115.5,
-   "lo": -120.697,
-   "hi": 351.698,
-   "changed": 1,
+   "mean": -52384.5,
+   "lo": -134163.39,
+   "hi": 29394.39,
+   "changed": 2,
    "n": 40
   },
   "offeredDayRate": {
-   "mean": 0,
-   "lo": 0,
-   "hi": 0,
-   "changed": 0,
+   "mean": -301.579,
+   "lo": -817.552,
+   "hi": 214.394,
+   "changed": 2,
    "n": 40
   },
   "ownIn": {
@@ -237,9 +241,9 @@
    "n": 40
   },
   "jobsDone": {
-   "mean": 0.025,
-   "lo": -0.026,
-   "hi": 0.076,
+   "mean": -0.025,
+   "lo": -0.076,
+   "hi": 0.026,
    "changed": 1,
    "n": 40
   },
@@ -265,9 +269,9 @@
    "n": 40
   },
   "logLines": {
-   "mean": -0.825,
-   "lo": -1.511,
-   "hi": -0.139,
+   "mean": -3.875,
+   "lo": -6.58,
+   "hi": -1.17,
    "changed": 21,
    "n": 40
   },
@@ -440,9 +444,9 @@
    "n": 40
   },
   "firstLookDeclined": {
-   "mean": 1.45,
-   "lo": 1.03,
-   "hi": 1.87,
+   "mean": 0.975,
+   "lo": 0.696,
+   "hi": 1.254,
    "changed": 25,
    "n": 40
   },
@@ -474,6 +478,20 @@
    "changed": 0,
    "n": 40
   },
+  "matchAsked": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 40
+  },
+  "dealPay": {
+   "mean": -554725,
+   "lo": -715644.108,
+   "hi": -393805.892,
+   "changed": 25,
+   "n": 40
+  },
   "fired": {
    "mean": 0,
    "lo": 0,
@@ -500,7 +518,7 @@
  ],
  "verdict": "proven",
  "hashes": {
-  "src/engine/first-look.ts": "29363b61868a1a82",
+  "src/engine/first-look.ts": "439897ac215c7e2d",
   "tests/proof/career.ts": "50bea06f19a02c5b"
  }
 }

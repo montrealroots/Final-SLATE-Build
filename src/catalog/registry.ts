@@ -56,6 +56,16 @@ const S = {
   skyWbd: { url: 'https://www.skydance.com/news/press/paramount-completes-acquisition-of-warner-bros-discovery-creating-a-new-global-entertainment-leader-skydance', title: 'Paramount Completes Acquisition of Warner Bros. Discovery, Creating a New Global Entertainment Leader, Skydance', published: '2026-10-06' },
   skyLeaders: { url: 'https://www.skydance.com/about/leadership', title: 'Skydance: Leadership', published: null },
   sonyStructure: { url: 'https://www.sec.gov/Archives/edgar/data/313838/000110465925006885/tm254786d1_6k.htm', title: "Sony Group Corporation, Form 6-K: Sony Group's New Management Structure (as of April 1, 2025)", published: '2025-01-29' },
+  // The other American studios and services, read on November 18, 2026 (the owner: "all the studios and their stuff").
+  mgm: { url: 'https://www.aboutamazon.com/news/entertainment/mgm-joins-prime-video-and-amazon-studios', title: 'MGM joins Prime Video and Amazon Studios', published: '2022-03-17' },
+  sTeam: { url: 'https://www.aboutamazon.com/news/workplace/amazon-s-team-members', title: "Amazon's S-team: Meet the members who make up our senior leadership team (updated August 1, 2026)", published: '2023-12-14' },
+  starzSplit: { url: 'https://www.sec.gov/Archives/edgar/data/2052959/000119312525114482/d927789d8k12b.htm', title: 'Lionsgate Studios Corp., Form 8-K12B (Starz separated from the studio business on May 6, 2025)', published: '2025-05-07' },
+  summit: { url: 'https://www.sec.gov/Archives/edgar/data/929351/000110465912002181/a12-2800_1ex99d1.htm', title: 'Lions Gate Entertainment Corp., Form 8-K, Exhibit 99.1: Lionsgate completes its acquisition of Summit Entertainment', published: '2012-01-13' },
+  miramax: { url: 'https://www.sec.gov/Archives/edgar/data/813828/000081382820000022/viac10q-033120.htm', title: 'ViacomCBS Inc., Form 10-Q, quarter ended March 31, 2020 (a 49% interest in Miramax, bought in April 2020)', published: null },
+  netflixLeaders: { url: 'https://ir.netflix.net/governance/leadership-and-directors/default.aspx', title: 'Netflix: Leadership & Directors (Officers)', published: null },
+  appleLeaders: { url: 'https://www.apple.com/leadership/', title: 'Apple Leadership', published: null },
+  appleVideo: { url: 'https://www.apple.com/uk/tv-pr/news/2026/06/apples-eddy-cue-honored-as-the-2026-entertainment-person-of-the-year/', title: "Apple's Eddy Cue honoured as the 2026 Entertainment Person of the Year", published: '2026-06-22' },
+  legendary: { url: 'https://www.legendary.com/about/', title: 'Legendary: About (its film and television divisions)', published: null },
 } satisfies Record<string, Source>;
 
 /** When the registry was researched: TMDB IDs checked, leadership pages read. Disney's companies, November 10, 2026. */
@@ -64,6 +74,8 @@ export const REGISTRY_CHECKED = '2026-11-10';
 export const REGISTRY_CHECKED_NBCU = '2026-11-11';
 /** Skydance's and Sony's companies, the same day as NBCUniversal's, for the Creative Depth package. */
 export const REGISTRY_CHECKED_F = '2026-11-11';
+/** Amazon's, Lionsgate's, Netflix's and Apple's companies, and the independent studios, read on November 18, 2026. */
+export const REGISTRY_CHECKED_US = '2026-11-18';
 
 const TWDC = 'company:the-walt-disney-company';
 const STUDIOS = 'company:the-walt-disney-studios';
@@ -85,6 +97,17 @@ const sony = () => ({ id: SPE, how: 'division' as const, from: null, source: nul
 const LABEL = 'Placed here as a Warner Bros. label. No official source for when it became one was read on November 11, 2026; the date given is the day Skydance took over Warner Bros. Discovery.';
 const PLABEL = 'Placed here as a Paramount label. No official source for when it became one was read on November 11, 2026; the date given is the day the combined company was formed.';
 const SLABEL = "Placed here as a Sony Pictures label. When it became one isn't recorded: Sony's own pages refuse automated readers, and no other official source was read on November 11, 2026.";
+const AMAZON = 'company:amazon';
+const LIONSGATE = 'company:lionsgate-studios';
+const NETFLIX = 'company:netflix-inc';
+const APPLE = 'company:apple';
+const LEGENDARY = 'company:legendary-entertainment';
+const amz = () => ({ id: AMAZON, how: 'division' as const, from: null, source: null });
+const mgmLabel = () => ({ id: 'company:metro-goldwyn-mayer', how: 'division' as const, from: null, source: null });
+const MLABEL = "Placed here as an MGM label. No official source for when it became one was read on November 18, 2026; it came to Amazon with MGM on March 17, 2022.";
+const lgs = () => ({ id: LIONSGATE, how: 'division' as const, from: null, source: S.starzSplit });
+const nfx = () => ({ id: NETFLIX, how: 'division' as const, from: null, source: null });
+const apl = () => ({ id: APPLE, how: 'division' as const, from: null, source: null });
 type Kind = CompanyRecord['kind'];
 const rec = (slug: string, name: string, kind: Kind, id: number, country: string, hq: string, parent: CompanyRecord['parent'], notes: string[] = [], related: CompanyRecord['related'] = []): CompanyRecord =>
   ({ id: `company:${slug}`, name, kind, roles: ['production'], tmdb: tm(id, name, country, hq), website: null, parent, related, notes });
@@ -244,6 +267,40 @@ export const COMPANIES: CompanyRecord[] = [
   rec('columbia-tristar-television', 'Columbia TriStar Television', 'television', 10471, 'US', 'Culver City, California', sony(), [SLABEL], [{ id: 'company:columbia-pictures-television', relation: 'An earlier name, a separate TMDB record (the date is not recorded here)' }]),
   rec('columbia-pictures-television', 'Columbia Pictures Television', 'television', 3614, 'US', '', sony(), [SLABEL]),
   net('crunchyroll', 'Crunchyroll', 'streaming', 'https://www.crunchyroll.com', sony(), ["Sony's purchase of it could not be read from an official source on November 11, 2026, so no date is given. A title being on Crunchyroll does not make it a Sony production."]),
+  // Amazon, Lionsgate, Netflix, Apple and the independent studios, read on November 18, 2026. Each TMDB ID was found by
+  // TMDB's company search and checked against its company details and its count of films and series that day.
+  { id: AMAZON, name: 'Amazon', kind: 'corporate', roles: ['holding'], tmdb: null, website: 'https://www.aboutamazon.com', parent: null, related: [], notes: ['TMDB credits no titles to Amazon itself; its studios are credited.'] },
+  { ...rec('amazon-mgm-studios', 'Amazon MGM Studios', 'film', 210099, 'US', 'Culver City, California', amz(), ["Amazon's studio under the name it took after MGM joined it. When it took the name isn't recorded: no official source for the date was read on November 18, 2026."], [{ id: 'company:amazon-studios', relation: 'Its earlier name, a separate TMDB record' }]), kind: 'film', roles: ['production', 'distribution'] },
+  { ...rec('amazon-studios', 'Amazon Studios', 'film', 20580, 'US', 'Santa Monica, California', amz()), notes: ['The name TMDB credits on its earlier titles. TMDB has regional Amazon Studios records (Brazil, Mexico, Australia, India, Germany, South Africa), which are not covered.'] },
+  { ...rec('metro-goldwyn-mayer', 'Metro-Goldwyn-Mayer', 'film', 21, 'US', 'Beverly Hills, California', { id: AMAZON, how: 'acquired', from: '2022-03-17', source: S.mgm }, ['MGM joined Amazon on March 17, 2022 (Amazon\'s own news of that day). Most of its titles were made long before that.', "TMDB's record names Sony Pictures as its parent company; no source read on November 18, 2026 supports that, so it isn't followed."]), roles: ['production', 'distribution'] },
+  rec('united-artists', 'United Artists', 'film', 60, 'US', 'Beverly Hills, California', mgmLabel(), [MLABEL, 'Most of its titles were made long before Amazon owned MGM. TMDB has a newer United Artists record (242583, Culver City), which is not covered.']),
+  rec('orion-pictures', 'Orion Pictures', 'film', 41, 'US', 'Los Angeles, California', mgmLabel(), [MLABEL, 'TMDB has a second Orion Pictures record (267168), which is not covered.']),
+  rec('mgm-television', 'MGM Television', 'television', 2230, 'US', 'Beverly Hills, California', mgmLabel(), [MLABEL]),
+  net('prime-video', 'Prime Video', 'streaming', 'https://www.primevideo.com', amz()),
+  { id: LIONSGATE, name: 'Lionsgate Studios Corp.', kind: 'corporate', roles: ['holding'], tmdb: null, website: 'https://www.lionsgate.com', parent: null, related: [],
+    notes: ['The studio business of Lions Gate Entertainment, a separate public company since May 6, 2025, when Starz was split from it (its Form 8-K12B).', "Legendary was reported in October 2026 to have offered to buy it. Neither company confirmed it, so it isn't recorded as a change of owner."] },
+  { ...rec('lionsgate', 'Lionsgate', 'film', 1632, 'US', 'Santa Monica, California', lgs(), [], [{ id: 'company:lions-gate-films', relation: 'Its earlier name, a separate TMDB record' }]), roles: ['production', 'distribution'] },
+  rec('lions-gate-films', 'Lions Gate Films', 'film', 35, 'US', '', lgs(), ['The name TMDB credits on its earlier titles.']),
+  rec('summit-entertainment', 'Summit Entertainment', 'film', 491, 'US', 'Santa Monica, California', { id: LIONSGATE, how: 'acquired', from: '2012-01-13', source: S.summit }, ['Lionsgate completed its purchase of Summit on January 13, 2012 (its Form 8-K). Its titles before then came out before Lionsgate owned it.']),
+  rec('lionsgate-television', 'Lionsgate Television', 'television', 28523, 'US', '', lgs()),
+  net('starz', 'Starz', 'network', 'https://www.starz.com', null, ['Part of Lionsgate until May 6, 2025, a separate public company since (Lionsgate Studios Corp.\'s Form 8-K12B). A title being on Starz does not make it a Lionsgate production.']),
+  { id: NETFLIX, name: 'Netflix, Inc.', kind: 'corporate', roles: ['holding'], tmdb: null, website: 'https://ir.netflix.net', parent: null, related: [], notes: [] },
+  { ...rec('netflix', 'Netflix', 'film', 178464, 'US', 'Los Gatos, California', nfx()), roles: ['production', 'distribution'], notes: ["TMDB credits most Netflix originals to the companies that made them, not to Netflix: its series are counted here only where TMDB credits Netflix itself. TMDB's regional Netflix records (Japan, the UK) are not covered."] },
+  rec('netflix-animation-studios', 'Netflix Animation Studios', 'film', 171251, 'US', 'Los Angeles, California', nfx()),
+  net('netflix-service', 'Netflix (The Service)', 'streaming', 'https://www.netflix.com', nfx()),
+  { id: APPLE, name: 'Apple', kind: 'corporate', roles: ['holding'], tmdb: null, website: 'https://www.apple.com', parent: null, related: [], notes: [] },
+  { ...rec('apple-studios', 'Apple Studios', 'film', 194232, 'US', 'Culver City, California', apl()), roles: ['production', 'distribution'] },
+  net('apple-tv', 'Apple TV', 'streaming', 'https://tv.apple.com', apl()),
+  { id: LEGENDARY, name: 'Legendary Entertainment', kind: 'corporate', roles: ['holding'], tmdb: null, website: 'https://www.legendary.com', parent: null, related: [], notes: ["Legendary's own page names its film and television divisions. Who owns Legendary isn't recorded: no official source was read on November 18, 2026."] },
+  rec('legendary-pictures', 'Legendary Pictures', 'film', 923, 'US', 'Burbank, California', { id: LEGENDARY, how: 'division', from: null, source: S.legendary }),
+  rec('legendary-television', 'Legendary Television', 'television', 54629, 'US', 'Burbank, California', { id: LEGENDARY, how: 'division', from: null, source: S.legendary }),
+  { ...rec('a24', 'A24', 'film', 41077, 'US', 'New York City, New York', null, ['TMDB has a London A24 record (293354), which is not covered.']), roles: ['production', 'distribution'] },
+  { ...rec('neon', 'NEON', 'film', 90733, 'US', 'New York City, New York', null), roles: ['distribution'] },
+  rec('blumhouse-productions', 'Blumhouse Productions', 'film', 3172, 'US', 'Los Angeles, California', null, [], [{ id: 'company:blumhouse-television', relation: 'Its television arm, a separate TMDB record' }]),
+  rec('blumhouse-television', 'Blumhouse Television', 'television', 68884, 'US', 'Los Angeles, California', null),
+  rec('amblin-entertainment', 'Amblin Entertainment', 'film', 56, 'US', 'Universal City, California', null),
+  rec('annapurna-pictures', 'Annapurna Pictures', 'film', 13184, 'US', 'Los Angeles, California', null, ['TMDB has an Annapurna Pictures record in India (117057), a different company, which is not covered.']),
+  { ...rec('miramax', 'Miramax', 'film', 14, 'US', 'Los Angeles, California', null, ['ViacomCBS (later Paramount, now part of Skydance) bought 49% of Miramax in April 2020 (its 10-Q for that quarter). That is a minority holding, so Miramax stands on its own here; who holds the rest was not read from an official source on November 18, 2026.']), related: [] },
 ];
 
 export interface LeadershipRole {
@@ -323,6 +380,19 @@ export const LEADERSHIP: LeadershipRole[] = [
   ] as [string, string, string, string][]).map(([slug, name, co, title]) => role(`exec:${slug}`, name, co, title, [S.skyLeaders, S.skyWbd], { announced: '2026-10-06' })),
   // Sony's, from Sony Group's management structure as of April 1, 2025. When he took the title isn't given there.
   role('exec:ravi-ahuja', 'Ravi Ahuja', SPE, 'President and CEO, Sony Pictures Entertainment Inc.', [S.sonyStructure]),
+  // Netflix's officers, from its investor site as it stood on November 18, 2026 (the page gives no dates), the ones
+  // over the company and its content.
+  ...([
+    ['ted-sarandos', 'Ted Sarandos', 'Co-CEO'], ['greg-peters', 'Greg Peters', 'Co-CEO'], ['peter-rice', 'Peter Rice', 'Chief Content Officer'],
+    ['spencer-neumann', 'Spencer Neumann', 'Chief Financial Officer'], ['jinny-howe', 'Jinny Howe', 'Head of Scripted Series, US and Canada'],
+    ['brandon-riegg', 'Brandon Riegg', 'Vice President, Nonfiction Series & Sports'], ['marian-lee', 'Marian Lee', 'Chief Marketing Officer'],
+  ] as [string, string, string][]).map(([slug, name, title]) => role(`exec:${slug}`, name, NETFLIX, title, [S.netflixLeaders])),
+  // Amazon's, from its S-team page (updated August 1, 2026): the one who leads its studios.
+  role('exec:mike-hopkins', 'Mike Hopkins', AMAZON, 'SVP, Amazon Video and Studios', [S.sTeam]),
+  // Apple's, from its leadership page and its newsroom (June 22, 2026).
+  role('exec:john-ternus', 'John Ternus', APPLE, 'CEO', [S.appleLeaders]),
+  role('exec:eddy-cue', 'Eddy Cue', APPLE, 'Senior Vice President Services and Health', [S.appleLeaders, S.appleVideo]),
+  role('exec:jamie-erlicht', 'Jamie Erlicht', 'company:apple-studios', "Apple's head of Worldwide Video", [S.appleVideo]),
 ];
 
 /** Companies whose leadership couldn't be confirmed from a current official source, and why. Shown on their pages. */
@@ -339,6 +409,17 @@ export const LEADERSHIP_GAPS: Record<string, string> = {
   'company:hbo': "Skydance's leadership page (read November 11, 2026) names a content chief for its streaming business, not a head of HBO itself, so none is listed here.",
   'company:columbia-pictures': "Sony's own pages refuse automated readers, so no current official source for Columbia Pictures' leadership could be read on November 11, 2026, and none is listed.",
   'company:sony-pictures-television': "Sony's own pages refuse automated readers, so no current official source for Sony Pictures Television's leadership could be read on November 11, 2026, and none is listed.",
+  'company:amazon-mgm-studios': "Amazon's own pages (read November 18, 2026) name the head of its video and studios business, listed under Amazon, but not the heads of Amazon MGM Studios' film or television; the trade press does, but no official source, so none is listed here.",
+  'company:metro-goldwyn-mayer': 'No current official source for MGM\'s own leadership was found on November 18, 2026, so none is listed.',
+  'company:lionsgate': "Lionsgate's investor pages refuse automated readers, so no current official source for its leadership could be read on November 18, 2026, and none is listed.",
+  'company:netflix': "Netflix's officers are listed under Netflix, Inc.: its investor site names no separate head of its studio.",
+  'company:a24': 'No official source for A24\'s leadership was found on November 18, 2026, so none is listed.',
+  'company:neon': 'No official source for NEON\'s leadership was found on November 18, 2026, so none is listed.',
+  'company:legendary-pictures': "Legendary's own page (read November 18, 2026) names no executives, so none is listed.",
+  'company:blumhouse-productions': 'No official source for Blumhouse\'s leadership was found on November 18, 2026, so none is listed.',
+  'company:amblin-entertainment': 'No official source for Amblin\'s leadership was found on November 18, 2026, so none is listed.',
+  'company:annapurna-pictures': 'No official source for Annapurna\'s leadership was found on November 18, 2026, so none is listed.',
+  'company:miramax': 'No official source for Miramax\'s leadership was found on November 18, 2026, so none is listed.',
 };
 
 export const company = (id: string) => COMPANIES.find((c) => c.id === id);
@@ -347,9 +428,11 @@ export const companyByTmdb = (tmdbId: number) => COMPANIES.find((c) => c.tmdb?.i
  * When a company's record and leadership were read. Illumination and Working Title stand outside NBCUniversal (no official
  * source placed them in it) but were read with it.
  */
+const READ_US = new Set([AMAZON, LIONSGATE, NETFLIX, APPLE, LEGENDARY, 'company:a24', 'company:neon', 'company:blumhouse-productions', 'company:blumhouse-television', 'company:amblin-entertainment', 'company:annapurna-pictures', 'company:miramax', 'company:starz']);
 export function checkedFor(id: string): string {
   const g = groupOf(id)?.id;
   if (g === SKY || g === SONY) return REGISTRY_CHECKED_F;
+  if (g && READ_US.has(g)) return REGISTRY_CHECKED_US;
   return g === COMCAST || id === 'company:illumination' || id === 'company:working-title' ? REGISTRY_CHECKED_NBCU : REGISTRY_CHECKED;
 }
 

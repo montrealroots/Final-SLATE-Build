@@ -70,11 +70,11 @@ test('a first-look deal: offered after delivered work, read in full, bargained, 
   await nav(page, 'Profile');
   const fl = card(page, 'First-Look Deal');
   const offer = fl.getByRole('region', { name: 'First-Look Offer' });
-  await expect(offer).toContainText(`${NIGHT} offers you a first-look deal.`);
-  const terms = offer.getByRole('list', { name: 'Its Terms' });
-  await expect(terms).toContainText('It runs 12 months from the day you accept.');
-  await expect(terms).toContainText(new RegExp(`${NIGHT.replace(/[()]/g, "\\$&")} pays \\$[\\d,]+ a month toward your overhead, into your company's account if you have one, or your own\\. That is \\$[\\d,]+ a year, set for a record that is just starting`));
-  await expect(terms).toContainText(`${NIGHT} has 60 days to answer each one.`);
+  // The offer as a studio would put it, then broken down (from November 18, 2026).
+  await expect(offer).toContainText(new RegExp(`${NIGHT.replace(/[()]/g, "\\$&")} wants first look at your next films: \\$[\\d,]+ a month toward your office for a year, \\$[\\d,]+ in all\\.`));
+  await expect(offer.getByLabel('Its Terms')).toContainText('How Long');
+  await expect(offer.getByLabel('Its Terms')).toContainText(/\$[\d,]+ a month into your own account, \$[\d,]+ a year: it pays for an office and development, not you/);
+  await expect(offer.getByLabel('Its Terms')).toContainText("Within 60 days of each one; if they pass, it's yours to take elsewhere");
   await expect(offer).toContainText('Nothing binds you until you accept.');
   const before = personalPostingsOf(await readSavedState(page)).length;
   await offer.getByRole('button', { name: /^Ask For \$[\d,]+ A Month$/ }).click(); // half again the offer, whatever the record set it at

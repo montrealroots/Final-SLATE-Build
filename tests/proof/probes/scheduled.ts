@@ -36,6 +36,7 @@ const measure = (s: GameState, projects: Project[]) => {
     offers: projects.reduce((a, p) => a + p.offers.length, 0),
     editionsOpen: s.editions.filter((e) => e.status !== 'upcoming').length,
     firstLookOffers: firstLooks(s).length,
+    studioOffers: (s.jobs ?? []).filter((j) => j.studio).length,
     opportunities: (s.opportunities ?? []).length,
     openOpportunities: (s.opportunities ?? []).filter((o) => (o as { status?: string }).status === 'open' || (o as { status?: string }).status === 'offered').length,
     openOffers: (s.jobs ?? []).filter((j) => j.status === 'offered').length,
@@ -127,6 +128,9 @@ export const PROBES: Probe[] = [
   { ...off('production-release', 'industry productions coming out', ['productionResults'], ['industryStanding', 'jobsOffered', 'jobPay'], { years: 3 }), seeds: 180 },
   // With studios in the world and the player accepting what they offer (until November 14, 2026 this career had no
   // studios, so nobody could offer and switching the check off changed nothing).
+  // A studio asking you onto its own picture (studio-projects.ts, from November 18, 2026), in a career that takes the work
+  // it's offered; the studios are fixtures, one with a franchise of its own.
+  off('studio-project', 'studios asking you onto a picture of their own', ['studioOffers'], ['jobPay', 'money'], { years: 4, studios: [{ ...STUDIOS[0], fr: [{ name: 'Long Light (Fixture) Collection', entries: 4, last: '2025-06-01' }] }, STUDIOS[1]] }),
   off('first-look-check', 'companies considering a first-look deal', ['firstLookOffers'], ['overheadPaid', 'money'], { years: 3, studios: STUDIOS, daily: answerFirstLooks('accept') }),
   // With the player taking what is offered: an opportunity nobody answers changes nothing (until November 14, 2026).
   off('opportunity', 'opportunities after well-received work', ['opportunities'], ['commissioned', 'money'], { daily: answerOpportunities('accept') }),

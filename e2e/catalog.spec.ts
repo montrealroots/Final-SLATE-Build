@@ -24,6 +24,11 @@ test('company to film to cast member to another credit, and back', async ({ page
   await expect(card(page, 'The Catalog')).toContainText('3 films, 1 series with 1 season and 2 episodes, and 6 people');
   await expect(page.getByText('This product uses the TMDB API but is not endorsed or certified by TMDB.')).toBeVisible();
   await expect(page.getByRole('img', { name: 'TMDB' })).toBeVisible();
+  // The studios added on November 18, 2026, each under its own group; Miramax among the independents, not under Skydance.
+  await expect(card(page, 'Amazon (Amazon MGM Studios): Film')).toContainText('Metro-Goldwyn-Mayer');
+  await expect(card(page, 'Lionsgate: Film')).toContainText('Summit Entertainment');
+  await expect(card(page, 'Independent Studios: Film')).toContainText('Miramax');
+  await expect(card(page, 'Skydance (Paramount And Warner Bros.): Film')).not.toContainText('Miramax');
 
   await page.getByRole('button', { name: 'Walt Disney Pictures', exact: true }).click();
   const titles = card(page, 'Films And Series');
