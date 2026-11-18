@@ -46,8 +46,8 @@ like "so and so wants you to take over and film the next Batman", invented entri
   `docs/CATALOG.md` "Amazon, Lionsgate, Netflix, Apple, Legendary And The Independent Studios"): 22 production
   records, 114 gathered in all, with dated ownership and leaders from official sources only. Their titles were
   gathered into the git-ignored cache the same day (`node tools/screen-catalog/import.mjs`); the catalog then needs a
-  build (`node tools/screen-catalog/build.mjs`), which also gives them franchises and makes them studios that offer
-  deals and pictures in a new game.
+  build (`node tools/screen-catalog/build.mjs`, run that day): 82 world studios, up from 65, 66 with franchises
+  (Legendary's Dune, Amblin's Jurassic Park, Apple's F1, Blumhouse's M3GAN). Merged as #123.
 - **Next: the international studios.** Their TMDB records were found on November 18, 2026, not yet checked for
   ownership or leadership: Toho 882, Toei Company 5822, Toei Animation 5542, Shochiku 192, Nikkatsu 955, KADOKAWA
   2073, Studio Ghibli 10342, StudioCanal 694 (and UK 113521), Gaumont 9, Pathé 7981 (and UK 7396), EuropaCorp 6896,
