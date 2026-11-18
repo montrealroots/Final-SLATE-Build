@@ -32,7 +32,7 @@
   "jobsWithdrawn": 0,
   "jobsDeclined": 0,
   "ratesAgreed": 0,
-  "logLines": 119.275,
+  "logLines": 120.05,
   "hired": 16,
   "castRates": 3192.5,
   "releaseDelay": 102.892,
@@ -81,7 +81,7 @@
   "jobsWithdrawn": 0,
   "jobsDeclined": 0,
   "ratesAgreed": 0,
-  "logLines": 118.725,
+  "logLines": 119.5,
   "hired": 16,
   "castRates": 3192.5,
   "releaseDelay": 102.667,
@@ -258,8 +258,8 @@
   },
   "logLines": {
    "mean": -0.55,
-   "lo": -1.998,
-   "hi": 0.898,
+   "lo": -2.003,
+   "hi": 0.903,
    "changed": 11,
    "n": 40
   },
@@ -463,7 +463,7 @@
  "hashes": {
   "src/engine/music-catalog.ts": "72793339fc91cd5f",
   "src/engine/guests.ts": "ebd690169529e00b",
-  "src/engine/finish.ts": "e0a1318764a0a429",
+  "src/engine/finish.ts": "a60336a738e48e77",
   "tests/proof/career.ts": "50bea06f19a02c5b"
  }
 }
