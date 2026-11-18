@@ -4,7 +4,8 @@
 // Layout: the bytes "SLATEPACK1\n", a 4-byte little-endian header length, the header as JSON, then each record gzipped,
 // one after another. The header lists each record's path and where its bytes are, so a reader slices the file rather
 // than unpacking it, and keeps each record compressed until a page asks for it.
-import { gzipSync } from 'node:zlib';
+import { closeSync, openSync, readSync } from 'node:fs';
+import { gunzipSync, gzipSync } from 'node:zlib';
 
 export const MAGIC = 'SLATEPACK1\n';
 
@@ -29,4 +30,32 @@ export function writePack(meta, files) {
   const len = Buffer.alloc(4);
   len.writeUInt32LE(header.length);
   return Buffer.concat([Buffer.from(MAGIC, 'utf8'), len, header, ...parts]);
+}
+
+/**
+ * A pack on disk, read a record at a time (from November 18, 2026): the picture packs became where each picture is kept,
+ * so a later packing reads the pictures it already packed from them. `get(path)` is a record's bytes, or null.
+ * @param {string} file
+ */
+export function openPack(file) {
+  const fd = openSync(file, 'r');
+  const head = Buffer.alloc(MAGIC.length + 4);
+  readSync(fd, head, 0, head.length, 0);
+  if (head.subarray(0, MAGIC.length).toString('utf8') !== MAGIC) { closeSync(fd); throw new Error(`${file} is not a data pack`); }
+  const json = Buffer.alloc(head.readUInt32LE(MAGIC.length));
+  readSync(fd, json, 0, json.length, head.length);
+  const header = JSON.parse(json.toString('utf8'));
+  const base = head.length + json.length;
+  const at = new Map(header.entries.map(([path, offset, length]) => [path, [offset, length]]));
+  return {
+    header,
+    get(path) {
+      const e = at.get(path);
+      if (!e) return null;
+      const b = Buffer.alloc(e[1]);
+      readSync(fd, b, 0, e[1], base + e[0]);
+      return gunzipSync(b);
+    },
+    close() { closeSync(fd); },
+  };
 }

@@ -4,3 +4,4 @@ export declare function writePack(
   meta: { kind: 'catalog' | 'cinemas' | 'images' | 'pictures'; part?: string; name: string; source: string; builtAt: string; retrieved?: { from: string; to: string; maxAgeDays: number } },
   files: Iterable<[string, string | Buffer]>,
 ): Buffer;
+export declare function openPack(file: string): { header: { entries: [string, number, number][]; [k: string]: unknown }; get(path: string): Buffer | null; close(): void };
