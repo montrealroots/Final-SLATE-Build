@@ -20,6 +20,24 @@ finished, and they come back only when the owner says so:
   work permits are still estimates in all (`docs/v10/papers-estimates.json`).
 - **Real-phone and pacing tests:** they need the owner's own device and a person playing.
 
+## Studio Projects, And Offers In Plain Words (The Owner, November 18, 2026)
+
+The owner asked for deals in natural words ("so and so is offering ... worth this, and break it down") and for offers
+like "so and so wants you to take over and film the next Batman", invented entries in the studio's own franchises
+("it's a fantasy world"; the rights go in the credits).
+- **Offers in plain words:** a deal leads with what it is and what it's worth, then a breakdown row by row
+  (`first-look.ts offerWords`).
+- **Studio projects** (`src/engine/studio-projects.ts`): after a delivery, for a record past its start, the studio your
+  work fits best, or the one whose overall deal you're on, may ask you to direct or write its next picture: the next
+  entry in its most recent live franchise, or an original in the genre it makes most; at most one in six months. It is
+  a job (`jobs.ts`): days on the calendar, worked in person, paid for the days worked, credited. Fee: the guild minimum
+  (DGA high-budget weeks, WGA screenplay) times 3 for a franchise entry, 1.5 for an original, moved by your standing.
+- **Franchises:** each studio's live franchises come from its films' TMDB collections in the built catalog
+  (`tools/screen-catalog/franchises.mjs`, run by every build and runnable on an older one; 52 of 65 studios).
+- Tests: `tests/studio-projects.test.ts`, `e2e/studio-projects.spec.ts`, proof `off-studio-project`.
+- **Not yet:** producing (there is no producing job), multi-picture deals, series franchises (TMDB's collections are
+  films only).
+
 ## Studios Bidding Against Each Other (The Owner, November 18, 2026)
 
 The owner asked for competing offers for deals. A record past its start (proven and above) now draws a second studio
