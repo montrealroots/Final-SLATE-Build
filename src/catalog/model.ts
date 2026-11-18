@@ -17,7 +17,7 @@ export interface CatalogIndex {
   counts: Record<string, number>;
   /** Whose details were fetched: top-billed cast and key crew, or (`all`, from November 10, 2026) everyone credited. */
   peopleRule: { cast: number; jobs: string[]; all?: boolean };
-  discovery: { company: number; type: 'movie' | 'tv'; reported: number | null; found: number; pages: number; split: boolean; failedPages: (number | string)[] }[];
+  discovery: { company: number | null; watched?: number; type: 'movie' | 'tv'; reported: number | null; found: number; pages: number | null; split: boolean; failedPages: (number | string)[] }[];
   failures: number;
   stale: number;
   companies: { tmdbId: number; titles: number; movies: number; series: number }[];

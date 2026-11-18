@@ -2,7 +2,8 @@
 // the build, and the rules for showing it at a save's date. The importer is tested against a stand-in for TMDB with
 // made-up records; no real TMDB data is in this repository (TMDB's terms: cached at most six months, not redistributed).
 import { execFileSync } from 'node:child_process';
-import { existsSync, mkdtempSync, readFileSync, readdirSync, writeFileSync } from 'node:fs';
+import { createHash } from 'node:crypto';
+import { appendFileSync, existsSync, mkdirSync, mkdtempSync, readFileSync, readdirSync, rmSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { beforeAll, describe, expect, it } from 'vitest';
@@ -14,9 +15,10 @@ process.env.SCREEN_CATALOG_CACHE = CACHE;
 type Tmdb = typeof import('../tools/screen-catalog/tmdb.mjs');
 let tmdb: Tmdb;
 let discover: typeof import('../tools/screen-catalog/import.mjs').discover;
+let discoverWatched: typeof import('../tools/screen-catalog/import.mjs').discoverWatched;
 beforeAll(async () => {
   tmdb = await import('../tools/screen-catalog/tmdb.mjs');
-  ({ discover } = await import('../tools/screen-catalog/import.mjs'));
+  ({ discover, discoverWatched } = await import('../tools/screen-catalog/import.mjs'));
 });
 const json = (status: number, body: unknown, headers: Record<string, string> = {}) => new Response(status === 200 ? JSON.stringify(body) : '{}', { status, headers: { 'content-type': 'application/json', ...headers } });
 const noWait = () => Promise.resolve();
@@ -295,6 +297,32 @@ describe('the importer', () => {
     expect(tmdb.failures().map((f) => f.path)).not.toContain('t/broken');
   });
 
+  it('keeps its answers compressed in bucket logs: old files moved in, answers read back, a record cut short by a crash dropped', () => {
+    const dir = mkdtempSync(join(tmpdir(), 'slate-catalog-logs-'));
+    const sha = (p: string) => createHash('sha1').update(p).digest('hex');
+    // A response in the one-file-per-response form the cache used until November 18, 2026.
+    const old = { path: 'p/old', status: 200, retrievedAt: new Date().toISOString(), body: { was: 'a file' } };
+    mkdirSync(join(dir, 'http', sha('p/old').slice(0, 2)), { recursive: true });
+    writeFileSync(join(dir, 'http', sha('p/old').slice(0, 2), `${sha('p/old')}.json`), JSON.stringify(old));
+    // Each step in a fresh process, so each reads the logs from disk.
+    const run = (code: string) => execFileSync(process.execPath, ['--input-type=module', '-e', `const t = await import(${JSON.stringify(join(process.cwd(), 'tools/screen-catalog/tmdb.mjs'))}); const ok = (b) => new Response(JSON.stringify(b), { status: 200 }); ${code}`], { env: { ...process.env, SCREEN_CATALOG_CACHE: dir }, encoding: 'utf8' }).trim();
+    expect(run('console.log(JSON.stringify(t.cached("p/old").body))')).toBe('{"was":"a file"}');
+    expect(run('console.log(t.compactLegacy())')).toBe('1');
+    expect(readdirSync(join(dir, 'http')).every((f) => f.endsWith('.log'))).toBe(true);
+    expect(run('console.log(JSON.stringify(t.cached("p/old").body))')).toBe('{"was":"a file"}');
+    // An answer fetched is read back by the next run, not asked for again.
+    run('t.useTransport(async () => ok({ n: 1 })); await t.get("p/x");');
+    expect(run('t.useTransport(async () => { throw new Error("asked again"); }); console.log(JSON.stringify(await t.get("p/x")))')).toBe('{"n":1}');
+    // A crash halfway through a record: the next process drops it, and what it writes after is read.
+    const log = join(dir, 'http', `${sha('p/x').slice(0, 2)}.log`);
+    appendFileSync(log, Buffer.concat([Buffer.from(sha('p/y'), 'hex'), Buffer.from([200, 0, 0, 0]), Buffer.from('cut')]));
+    expect(run('console.log(t.cached("p/y"))')).toBe('null');
+    const sameBucket = Array.from({ length: 5000 }, (_, i) => `p/z${i}`).find((p) => sha(p).slice(0, 2) === sha('p/x').slice(0, 2))!;
+    run(`t.useTransport(async () => ok({ after: 'the crash' })); await t.get(${JSON.stringify(sameBucket)});`);
+    expect(run(`console.log(JSON.stringify(t.cached(${JSON.stringify(sameBucket)}).body), JSON.stringify(t.cached("p/x").body))`)).toBe('{"after":"the crash"} {"n":1}');
+    rmSync(dir, { recursive: true, force: true });
+  });
+
   it('stops, without caching, when TMDB refuses the credential', async () => {
     tmdb.useTransport(async () => json(401, null), noWait);
     await expect(tmdb.get('t/refused')).rejects.toThrow(/network secret for api\.themoviedb\.org is missing or not accepted/);
@@ -330,6 +358,23 @@ describe('the importer', () => {
     expect(b.split).toBe(true);
     expect(b.ids).toHaveLength(28); // 1900 to 2035 in five-year slices
   });
+
+  it("gathers TMDB's most-watched titles a year at a time, every page, at least the votes asked for, keeping what failed", async () => {
+    const asked: string[] = [];
+    tmdb.useTransport(async (url: string) => {
+      const u = new URL(url);
+      asked.push(url);
+      const year = Number(u.searchParams.get('first_air_date.gte')!.slice(0, 4));
+      const page = Number(u.searchParams.get('page'));
+      if (year === 2001 && page === 2) return json(503, null);
+      // Two pages a year, two series a page, numbered by year.
+      return json(200, { page, total_pages: 2, total_results: 4, results: [1, 2].map((n) => ({ id: year * 10 + (page - 1) * 2 + n })) });
+    }, noWait);
+    const w = await discoverWatched('tv', 20, [2000, 2002]);
+    expect(asked.every((a) => new URL(a).searchParams.get('vote_count.gte') === '20' && new URL(a).searchParams.get('sort_by') === 'vote_count.desc')).toBe(true);
+    expect([w.companyId, w.watched, w.total, w.failedPages]).toEqual([null, 20, 12, ['2001:2']]);
+    expect(w.ids.sort()).toEqual([20001, 20002, 20003, 20004, 20011, 20012, 20021, 20022, 20023, 20024]);
+  });
 });
 
 describe('the build', () => {
@@ -355,13 +400,15 @@ describe('the build', () => {
       'movie/900001?append_to_response=credits,external_ids,release_dates': movie,
       'tv/900001?append_to_response=aggregate_credits,credits,external_ids,content_ratings': series,
       'tv/900001/season/1?append_to_response=credits': season,
+      // One of TMDB's most-watched, from a company the registry doesn't follow.
+      'movie/900002?append_to_response=credits,external_ids,release_dates': { ...movie, id: 900002, title: 'Far From Any Studio', original_title: 'Far From Any Studio', production_companies: [{ id: 999999, name: 'Unfollowed Films', origin_country: 'FR' }], credits: { cast: [], crew: [] }, release_dates: { results: [] } },
       'person/800001': { id: 800001, name: 'Ada Quill', birthday: '1960-02-02', deathday: '2030-01-01', also_known_as: [] },
       'person/800002': { id: 800002, name: 'Ben Rook', birthday: null, deathday: null, also_known_as: [] },
     };
     tmdb.useTransport(async (url: string) => { const p = url.replace(tmdb.API, ''); return p in responses ? json(200, responses[p]) : json(404, null); }, noWait);
     for (const p of Object.keys(responses)) await tmdb.get(p);
     writeFileSync(join(CACHE, 'manifest.json'), JSON.stringify({
-      titles: [{ key: 'movie:900001', companies: [25, 2] }, { key: 'tv:900001', companies: [1556] }], seasons: ['tv/900001/season/1?append_to_response=credits'], people: [800001, 800002],
+      titles: [{ key: 'movie:900001', companies: [25, 2] }, { key: 'tv:900001', companies: [1556] }, { key: 'movie:900002', companies: [] }], seasons: ['tv/900001/season/1?append_to_response=credits'], people: [800001, 800002],
       peopleRule: { cast: 10, jobs: ['Director'] }, queries: [], failures: [], stats: {},
     }));
     // What tools/screen-catalog/networks.mjs writes, for a made-up network record: its owners and kind from Wikidata.
@@ -376,7 +423,11 @@ describe('the build', () => {
     expect(read('titles/tv-900001.json').title).toBe('Same Number Series');
     expect(read('companies/25.json').entries).toEqual([{ ref: 'movie:900001', title: 'The Lantern Keeper', date: '1997-06-01', credited: '20th Century Fox', genres: ['Drama'], status: 'Released' }]);
     expect(read('companies/2.json').entries.map((e: FilmographyEntry) => e.ref)).toEqual(['movie:900001']);
-    expect(read('index.json').counts).toMatchObject({ movies: 1, series: 1, seasons: 1, episodes: 2, people: 4, peopleWithDetails: 2 });
+    expect(read('index.json').counts).toMatchObject({ movies: 2, series: 1, seasons: 1, episodes: 2, people: 4, peopleWithDetails: 2 });
+    // A most-watched title no followed company made has its page and is found in search, and is on no company's list.
+    expect(read('titles/movie-900002.json')).toMatchObject({ title: 'Far From Any Studio', discoveredVia: [] });
+    expect(JSON.stringify(read('search/titles.json'))).toContain('Far From Any Studio');
+    expect(existsSync(join(OUT, 'companies/999999.json'))).toBe(false);
     // The world file holds dated events from 2025-10-01 on; these made-up titles are all older, so it has none.
     expect(read('world.json')).toMatchObject({ version: 1, from: '2025-10-01', events: [] });
     expect(read('world.json').horizon).toMatch(/^\d{4}-\d{2}-\d{2}$/);

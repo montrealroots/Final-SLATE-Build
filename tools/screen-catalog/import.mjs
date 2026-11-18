@@ -51,6 +51,31 @@ export async function discover(type, companyId) {
   }
   return { type, companyId, total, pages: first.total_pages, ids: [...ids], split: ranges.length > 1, failedPages };
 }
+/**
+ * TMDB's most-watched titles beyond the followed companies (the owner, November 18, 2026: "Import all of TMDB like the
+ * first haul"): every film and series with at least WATCHED_VOTES votes, a year at a time so no query passes the page cap.
+ * All of TMDB (1,276,903 films and 236,944 series in its November 17 lists) needs some 150 to 250 GB to gather and wouldn't
+ * fit in the session's disk, so the owner chose the titles most people have seen: 67,498 films and 12,931 series.
+ */
+export const WATCHED_VOTES = 20;
+export async function discoverWatched(type, minVotes = WATCHED_VOTES, years = [1874, new Date().getUTCFullYear() + 2]) {
+  const f = type === 'movie' ? 'primary_release_date' : 'first_air_date';
+  const ids = new Set();
+  const failedPages = [];
+  let total = 0;
+  for (let y = years[0]; y <= years[1]; y++) {
+    const q = `discover/${type}?include_adult=false&sort_by=vote_count.desc&vote_count.gte=${minVotes}&${f}.gte=${y}-01-01&${f}.lte=${y}-12-31`;
+    const p1 = await get(`${q}&page=1`);
+    if (!p1) { failedPages.push(`${y}:1`); continue; }
+    total += p1.total_results;
+    const rest = await pool(Array.from({ length: Math.min(PAGE_CAP, p1.total_pages) - 1 }, (_, i) => i + 2), 8, (n) => get(`${q}&page=${n}`));
+    for (const [i, page] of [p1, ...rest].entries()) {
+      if (!page) { failedPages.push(`${y}:${i + 1}`); continue; }
+      for (const x of page.results) ids.add(x.id);
+    }
+  }
+  return { type, companyId: null, watched: minVotes, total, pages: null, ids: [...ids], split: true, failedPages };
+}
 function yearRanges(type) {
   const f = type === 'movie' ? 'primary_release_date' : 'first_air_date';
   const out = [];
@@ -62,11 +87,12 @@ async function main() {
   log(`Discovering titles for ${DISCOVERED.length} companies.`);
   const queries = [];
   for (const c of DISCOVERED) for (const type of ['movie', 'tv']) queries.push(await discover(type, c.tmdb.id));
-  const titles = new Map(); // `${type}:${id}` -> company TMDB ids
+  for (const type of ['movie', 'tv']) queries.push(await discoverWatched(type));
+  const titles = new Map(); // `${type}:${id}` -> company TMDB ids (none for a title found only among the most-watched)
   for (const q of queries) for (const id of q.ids) {
     const k = `${q.type}:${id}`;
     if (!titles.has(k)) titles.set(k, new Set());
-    titles.get(k).add(q.companyId);
+    if (q.companyId !== null) titles.get(k).add(q.companyId);
   }
   log(`Discovered ${titles.size} titles (${[...titles.keys()].filter((k) => k.startsWith('movie')).length} movies).`);
 
