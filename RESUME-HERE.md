@@ -48,13 +48,17 @@ like "so and so wants you to take over and film the next Batman", invented entri
   gathered into the git-ignored cache the same day (`node tools/screen-catalog/import.mjs`); the catalog then needs a
   build (`node tools/screen-catalog/build.mjs`, run that day): 82 world studios, up from 65, 66 with franchises
   (Legendary's Dune, Amblin's Jurassic Park, Apple's F1, Blumhouse's M3GAN). Merged as #123.
-- **Next: the international studios.** Their TMDB records were found on November 18, 2026, not yet checked for
-  ownership or leadership: Toho 882, Toei Company 5822, Toei Animation 5542, Shochiku 192, Nikkatsu 955, KADOKAWA
-  2073, Studio Ghibli 10342, StudioCanal 694 (and UK 113521), Gaumont 9, Pathé 7981 (and UK 7396), EuropaCorp 6896,
-  Wild Bunch 856, Constantin Film 47, UFA 12372, RAI Cinema 155990, Medusa Film 6246, BBC Film 288, Film4 Productions
-  6705, CJ ENM 128404, Showbox 3491, Lotte Entertainment 7819, Shaw Brothers 5798, Orange Sky Golden Harvest 2521,
-  Bona Film Group 30148, Yash Raj Films 1569, T-Series 3522, Dharma Productions 19146, Red Chillies 2343, Televisa
-  20911. About 20,000 films; mind the disk (the catalog was 1 GB and its cache 3 GB before the American round).
+- **The international studios (November 18):** Europe's 11 (StudioCanal, Gaumont, Pathé, EuropaCorp, Wild Bunch,
+  Constantin under Highlight, UFA, RAI Cinema, Medusa, BBC Film, Film4 under Channel 4), and Asia's and Mexico's 18
+  (TOHO, Toei and Toei Animation under it, Shochiku, Nikkatsu, KADOKAWA, Ghibli, CJ ENM, Showbox, Lotte, Shaw
+  Brothers, Golden Harvest, Bona, Yash Raj, T-Series, Dharma, Red Chillies, Televisa) are in the registry, 143 gathered
+  in all (`docs/CATALOG.md`). A group only where an official page says so; the rest stand alone, by country, and say
+  why. Their titles were imported the same day; the catalog then needs a build (`node tools/screen-catalog/build.mjs`).
+- **Studio offers, seen on real studios:** the capture of two engine-made offers (Legendary's Minecraft, Apple's F1)
+  found "Minecraft Movie film", "the F1 films so far" for one film, and a footer calling a studio's fee calibration;
+  all three fixed and tested.
+- **Still to bring in, if the owner wants them:** more of the world's studios (Australia, Spain, Nordic countries,
+  Nigeria, Turkey, Brazil, Argentina, other Indian languages' studios), found by the same company search.
 - Tests: `tests/studio-projects.test.ts`, `e2e/studio-projects.spec.ts`, proof `off-studio-project`.
 - **Not yet:** producing (there is no producing job), multi-picture deals, series franchises (TMDB's collections are
   films only).
