@@ -30,7 +30,7 @@
   "jobsWithdrawn": 0,
   "jobsDeclined": 0,
   "ratesAgreed": 0,
-  "logLines": 183.875,
+  "logLines": 185.175,
   "hired": 24,
   "castRates": 4838.5,
   "releaseDelay": 102.275,
@@ -68,7 +68,7 @@
   "screenings": 0,
   "offers": 5.25,
   "editionsOpen": 136.7,
-  "firstLookOffers": 1.45,
+  "firstLookOffers": 2.1,
   "opportunities": 0.35,
   "openOpportunities": 0,
   "openOffers": 0,
@@ -307,9 +307,9 @@
    "n": 40
   },
   "logLines": {
-   "mean": -3.3,
-   "lo": -4.594,
-   "hi": -2.006,
+   "mean": -4.6,
+   "lo": -6.002,
+   "hi": -3.198,
    "changed": 31,
    "n": 40
   },
@@ -573,9 +573,9 @@
    "n": 40
   },
   "firstLookOffers": {
-   "mean": -1.45,
-   "lo": -1.83,
-   "hi": -1.07,
+   "mean": -2.1,
+   "lo": -2.573,
+   "hi": -1.627,
    "changed": 31,
    "n": 40
   },
@@ -689,7 +689,7 @@
  ],
  "verdict": "proven",
  "hashes": {
-  "src/engine/first-look.ts": "29363b61868a1a82",
+  "src/engine/first-look.ts": "cbcea28107b39b56",
   "tests/proof/career.ts": "50bea06f19a02c5b"
  }
 }

@@ -30,7 +30,7 @@
   "jobsWithdrawn": 0,
   "jobsDeclined": 0,
   "ratesAgreed": 0,
-  "logLines": 186.3,
+  "logLines": 187.05,
   "hired": 24,
   "castRates": 4852.75,
   "releaseDelay": 101.367,
@@ -55,11 +55,13 @@
   "viaAgent": 0,
   "commission": 0,
   "firstLookActive": 1.35,
-  "firstLookDeclined": 0,
+  "firstLookDeclined": 0.375,
   "overheadAsked": 0,
   "overheadPaid": 363750,
   "overheadAgreed": 0,
   "firstLookEnded": 0,
+  "matchAsked": 0,
+  "dealPay": 475800,
   "fired": 0
  },
  "variant": {
@@ -84,7 +86,7 @@
   "jobsWithdrawn": 0,
   "jobsDeclined": 0,
   "ratesAgreed": 0,
-  "logLines": 186.325,
+  "logLines": 187.075,
   "hired": 24,
   "castRates": 4852.75,
   "releaseDelay": 101.367,
@@ -109,11 +111,13 @@
   "viaAgent": 0,
   "commission": 0,
   "firstLookActive": 1.125,
-  "firstLookDeclined": 0,
+  "firstLookDeclined": 0.375,
   "overheadAsked": 0,
   "overheadPaid": 47500,
   "overheadAgreed": 0,
   "firstLookEnded": 1.125,
+  "matchAsked": 0,
+  "dealPay": 263300,
   "fired": 0
  },
  "diff": {
@@ -474,6 +478,20 @@
    "changed": 22,
    "n": 40
   },
+  "matchAsked": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 40
+  },
+  "dealPay": {
+   "mean": -212500,
+   "lo": -316058.787,
+   "hi": -108941.213,
+   "changed": 22,
+   "n": 40
+  },
   "fired": {
    "mean": 0,
    "lo": 0,
@@ -496,7 +514,7 @@
  ],
  "verdict": "proven",
  "hashes": {
-  "src/engine/first-look.ts": "29363b61868a1a82",
+  "src/engine/first-look.ts": "cbcea28107b39b56",
   "tests/proof/career.ts": "50bea06f19a02c5b"
  }
 }
