@@ -4,17 +4,22 @@
 // the game, as the owner asked ("they create invented films and add it to the franchise because it's a fantasy world");
 // otherwise its next original in the genre it makes most. The rights are the game's credits' business.
 //
-// It comes after a delivery, for a record past its start, from the studio that fits the work best, or from the studio
-// whose overall deal you're on (your services are its alone). At most one every six months. Taken, it is a job like any
-// other (jobs.ts): its days on the calendar, worked in person, paid for the days worked, credited when done.
+// It comes a month after a delivery, or a fortnight after a win (awards-results.ts), once your work has made you
+// Established in the role (reputation.ts: your standing follows the quality of your work and its honours), and the
+// picture is no bigger than your grade is trusted with (STUDIO_REACH). The studio is the one whose overall deal you're on
+// (your services are its alone); else one whose picture you made, back for the next; else the best fit that hasn't asked
+// in two years. It says why it asks. At most one every six months. Until November 18, 2026 (the owner: "continuity and
+// freshness") it came from the best fit alone, for its latest franchise whatever its size, on the track record's tier.
+// Taken, it is a job like any other (jobs.ts): its days on the calendar, worked in person, paid for the days worked,
+// credited when done.
 //
 // The money is the trade's (the owner: "real money ... big franchises getting big payday and budget"): the fee is in the
 // range The Hollywood Reporter's salary surveys report for your standing, placed by the picture's real budget, which is the
 // franchise's latest recorded budget or the studio's median (TMDB, in the catalog), and never under the guild minimum.
 // Until it was set this way the fee was the guild minimum times 3 for a franchise, 1.5 for an original.
 import { candidates, dealTier, activeOverall, type DealTier } from './first-look';
-import { JOB_ANSWER_DAYS, rolesOffered, type JobRole, type OutsideJob } from './jobs';
-import { standingIn, standingWeight } from './reputation';
+import { JOB_ANSWER_DAYS, rolesOffered, type OutsideJob } from './jobs';
+import { honoursIn, roleCraft, standingIn, standingWeight } from './reputation';
 import { strategyOf } from './strategy';
 import { addLog, currentPlace, registerHandler, schedule } from './state';
 import { addDaysToKey, dateKey, DAY, formatDateKey, weekdayOfKey } from './time';
@@ -56,14 +61,25 @@ export const STUDIO_SHOOT_WEEKS: [number, number][] = [[150_000_000, 18], [50_00
 /** The guild's guaranteed period on a high-budget film (DGA): ten weeks, the director's floor. */
 export const DGA_GUARANTEE_WEEKS = 10;
 
+/**
+ * How people say a franchise TMDB names some other way, read off the built catalog's names on November 18, 2026 (the
+ * owner: "Make it say the next Godzilla film"). shortcut: a list of names, not a rule; read the catalog's names again
+ * after a build that brings new studios in.
+ */
+export const SAID_AS: Record<string, string> = {
+  'Godzilla Minus': 'Godzilla', 'Alien: Romulus': 'Alien', 'Spider-Man: Spider-Verse': 'Spider-Verse',
+  'Hunger Games – New Trilogy': 'Hunger Games', 'Angels in the ...': 'Angels in the Outfield', 'Welcome to the...': 'Welcome to the South',
+  'Beatles: A Four Film Cinematic Event': 'Beatles', 'Scary Movie': 'Scary Movie',
+};
 /** A franchise's name as people say it: "The Batman Collection" is the Batman films, "Superman (DCU)" Superman's. */
 export const franchiseName = (collection: string): string => {
   // TMDB names some collections in their own language: Rai's "Ferie d'agosto - Collezione", Constantin's "Manitu
   // Filmreihe", CJ ENM's "Cumali Ceber Koleksiyonu", Televisa's "Carrosel: Coleção", StudioCanal's "... - Saga".
   const name = collection.replace(/\s*[-:]?\s*(Coll?ection|Colletion|Collezione|Coleção|Colección|Koleksiyonu|Filmreihe)$/i, '').replace(/\s+-\s+Saga$/, '').replace(/\s*\([^)]*\)\s*/g, ' ').replace(/^The\s+/i, '').trim();
-  // "Minecraft Movie" and "Lego Movie" are said "Minecraft" and "Lego", or the offer says "the next Minecraft Movie film";
-  // Scary Movie is a title in its own right. shortcut: one exception, read off the built catalog's names on November 18, 2026.
-  return name === 'Scary Movie' ? name : name.replace(/\s+Movie$/, '');
+  if (SAID_AS[name]) return SAID_AS[name];
+  // "Minecraft Movie" is said "Minecraft", or the offer says "the next Minecraft Movie film"; "Crayon Shinchan the Movie"
+  // "Crayon Shinchan"; "Rebel Highway Series" and "Girls Band Cry Compilation" without the last word.
+  return name.replace(/\s+Movie$/, '').replace(/\s+the$/i, '').replace(/\s+(Series|Compilation)$/, '');
 };
 
 const inForce = (table: [string, number][], day: string): number => [...table].reverse().find(([from]) => from <= day)?.[1] ?? table[0][1];
@@ -73,32 +89,70 @@ const weekdaysFrom = (start: string, n: number): string[] => {
   return out;
 };
 
+/**
+ * How big a picture a studio trusts to you, by your grade in the role (reputation.ts: your standing from the quality of
+ * your work and its honours): none while you're Emerging; up to $160 million Established, the size studios have handed a
+ * director after one or two well-received films (Colin Trevorrow's Jurassic World, $150 million, after Safety Not
+ * Guaranteed; Gareth Edwards's Godzilla, $160 million, after Monsters); up to $250 million In Demand; any picture they make
+ * once you're Leading. Game calibration, set November 18, 2026 (the owner: "as the reputation and credibility build, as
+ * I win awards, I'll start getting these offers").
+ */
+export const STUDIO_REACH: Record<string, number> = { Emerging: 0, Established: 160_000_000, 'In Demand': 250_000_000, Leading: Infinity };
+/** A studio that asked you lately gives way to another, so the offers stay fresh: two years. Game calibration. */
+export const STUDIO_ROTATION_DAYS = 730;
+
+/** What a studio would trust to you in a role now: the largest budget, by your grade in it. */
+export const studioReach = (state: GameState, role: 'directing' | 'writing'): number => STUDIO_REACH[standingIn(state, role).grade] ?? 0;
+
+/** Why the studio asks, in a sentence: the work it saw. A win or nomination newer than its last ask counts first. */
+function whyAsked(state: GameState, role: 'directing' | 'writing', since: number): string | undefined {
+  const honour = honoursIn(state, role).filter((h) => (h.status === 'won' || h.status === 'nominated') && h.at > since && h.at <= state.now).sort((a, b) => b.at - a.at || b.score - a.score)[0];
+  if (honour) return honour.status === 'won' ? `After ${honour.title} won ${honour.category} at the ${honour.event}.` : `After ${honour.title}'s nomination for ${honour.category} at the ${honour.event}.`;
+  const best = [...roleCraft(state, role).works].sort((a, b) => b.score - a.score)[0];
+  return best ? `On the strength of ${best.title}.` : undefined;
+}
+
 /** The offer a studio would make now, or null: who, what, the role and the fee. Pure: the same save gives the same answer. */
 export function studioProjectOffer(state: GameState): OutsideJob | null {
-  if (dealTier(state) === 'emerging') return null;
-  if ((state.jobs ?? []).some((j) => j.studio && state.now - j.offeredAt < STUDIO_PROJECT_GAP_DAYS * DAY)) return null;
-  const roles = rolesOffered(state).filter((r): r is Exclude<JobRole, 'acting'> => r !== 'acting');
+  const jobs = (state.jobs ?? []).filter((j) => j.studio);
+  if (jobs.some((j) => state.now - j.offeredAt < STUDIO_PROJECT_GAP_DAYS * DAY)) return null;
+  // Studios ask for the roles you've worked in, once your work in one has made you Established in it.
+  const roles = rolesOffered(state).filter((r): r is 'directing' | 'writing' => r !== 'acting' && studioReach(state, r) > 0);
   if (!roles.length) return null;
-  // The studio: the one whose overall deal you're on, else the one your work fits best.
-  const overall = activeOverall(state);
-  const profile = overall ? state.industry?.studios?.find((x) => x.c === overall.company) : undefined;
-  const strategy = profile ? strategyOf(profile) : candidates(state, 'film')[0]?.strategy;
-  if (!strategy) return null;
-  const studio = profile ?? state.industry?.studios?.find((x) => x.c === strategy.company);
   // The role your record is strongest in, directing before writing on a tie.
   const role = roles.sort((a, b) => standingWeight(standingIn(state, b)) - standingWeight(standingIn(state, a)) || (a === 'directing' ? -1 : 1))[0];
-  const live = studio?.fr?.[0];
+  const reach = studioReach(state, role);
+  const profiles = state.industry?.studios ?? [];
+  // The studio: the one whose overall deal you're on; else one whose picture you made, back for the next (continuity);
+  // else the one your work fits best among those that haven't asked in two years (freshness), the best fit if all have.
+  const overall = activeOverall(state);
+  const done = jobs.filter((j) => j.status === 'done').sort((a, b) => b.offeredAt - a.offeredAt)[0];
+  const back = done && !jobs.some((j) => j.company === done.company && j.offeredAt > done.offeredAt) ? profiles.find((x) => strategyOf(x).name === done.company) : undefined;
+  const recent = new Set(jobs.filter((j) => state.now - j.offeredAt < STUDIO_ROTATION_DAYS * DAY).map((j) => j.company));
+  const fits = candidates(state, 'film').map((x) => x.strategy);
+  const profile = overall ? profiles.find((x) => x.c === overall.company) : back;
+  const strategy = profile ? strategyOf(profile) : fits.find((x) => !recent.has(x.name)) ?? fits[0];
+  if (!strategy) return null;
+  const studio = profile ?? profiles.find((x) => x.c === strategy.company);
+  const sequel = !overall && back ? done : undefined;
+  // The picture: the franchise you made for it, else a live franchise within your reach that it hasn't offered you yet,
+  // the most recent first; else one it has; else an original.
+  const offered = new Set(jobs.filter((j) => j.company === strategy.name).map((j) => j.studio!.franchise));
+  const within = (studio?.fr ?? []).filter((f) => (f.budget ?? studio?.mb ?? 0) <= reach);
+  const live = (sequel?.studio?.franchise ? within.find((f) => franchiseName(f.name) === sequel.studio!.franchise) : undefined)
+    ?? within.find((f) => !offered.has(franchiseName(f.name))) ?? within[0];
   const franchise = live ? franchiseName(live.name) : undefined;
   const genre = strategy.families[0]?.genre ?? 'Drama';
   const day = dateKey(state.now, currentPlace(state).zone);
   const directing = role === 'directing';
-  // The picture's budget: its franchise's latest recorded, else the studio's median; unknown, the middle of the scale.
-  const budget = live?.budget ?? studio?.mb;
-  const budgetOf = live?.budget ? live.budgetOf : studio?.mb ? `${strategy.name}'s median budget` : undefined;
+  // The picture's budget: its franchise's latest recorded, else the studio's median within your reach; unknown, the middle of the scale.
+  const median = studio?.mb ? Math.min(studio.mb, reach) : undefined;
+  const budget = live?.budget ?? median;
+  const budgetOf = live?.budget ? live.budgetOf : median && median === studio?.mb ? `${strategy.name}'s median budget` : undefined;
   const [b0, b1] = STUDIO_BUDGET_SCALE;
   const at = budget ? Math.min(1, Math.max(0, Math.log(budget / b0) / Math.log(b1 / b0))) : 0.5;
   // Your first studio picture in the role is a first studio feature, whatever else you've done.
-  const first = !(state.jobs ?? []).some((j) => j.studio && j.role === role && j.status === 'done');
+  const first = !jobs.some((j) => j.role === role && j.status === 'done');
   const [lo, hi] = STUDIO_FEES[role][first ? 'first' : dealTier(state)];
   // The DGA's and WGA's minimums bind American studios, which sign their agreements; a studio elsewhere pays its own way.
   // A studio the registry doesn't place (a test's fixture) is taken as American.
@@ -112,16 +166,18 @@ export function studioProjectOffer(state: GameState): OutsideJob | null {
   const weeks = (STUDIO_SHOOT_WEEKS.find(([from]) => (budget ?? 0) >= from) ?? [0, 8])[1];
   const days = weekdaysFrom(addDaysToKey(day, directing ? 56 : 14), directing ? weeks * 5 : WGA_DRAFT_DAYS);
   const place = currentPlace(state);
+  const lastAsk = Math.max(0, ...jobs.filter((j) => j.company === strategy.name).map((j) => j.offeredAt));
+  const why = sequel ? `You ${sequel.role === 'directing' ? 'directed' : 'wrote'} ${sequel.studio?.franchise ? `its last ${sequel.studio.franchise} film` : `${sequel.production} for it`}, and it wants you back.` : whyAsked(state, role, lastAsk);
   return {
     id: `studio-${day}`, role,
     production: franchise ? `Untitled ${franchise} Film` : `Untitled ${strategy.name} ${genre} Picture`,
     company: strategy.name,
     part: directing ? 'Directing the picture' : 'Writing the screenplay',
-    material: franchise ? `${live!.entries === 1 ? `The ${franchise} film` : `The ${franchise} films so far`}, and the studio's notes for the next one.` : `The studio's brief for a ${genre.toLowerCase()} picture.`,
+    material: franchise ? `${live!.entries === 1 ? `The ${franchise} film` : `The ${franchise} films so far`}, and the studio's notes for the next one.` : `The studio's brief for ${/^[aeiou]/i.test(genre) ? 'an' : 'a'} ${genre.toLowerCase()} picture.`,
     requirement: directing ? `On set in ${place.name} each shooting day.` : `With the studio's producers in ${place.name}; the draft is due on the last day.`,
     dayRate: Math.round(fee / days.length), days, placeId: place.id, zone: place.zone,
     status: 'offered', offeredAt: state.now, answerBy: state.now + JOB_ANSWER_DAYS * DAY, attended: [], missed: [],
-    studio: { fee, ...(franchise ? { franchise } : {}), genre, ...(budget ? { budget, budgetOf } : {}), first, ...(set ? { set } : {}) },
+    studio: { fee, ...(franchise ? { franchise } : {}), genre, ...(budget ? { budget, budgetOf } : {}), first, ...(set ? { set } : {}), ...(why ? { why } : {}) },
   };
 }
 
@@ -129,7 +185,7 @@ export function studioProjectOffer(state: GameState): OutsideJob | null {
 export function studioPitch(j: OutsideJob): string {
   const what = j.studio?.franchise ? `the next ${j.studio.franchise} film` : `its next ${(j.studio?.genre ?? 'drama').toLowerCase()} picture`;
   const work = j.role === 'directing' ? `direct ${what}: ${money(j.studio!.fee)} for ${j.days.length / 5} weeks of shooting` : `write ${what}: ${money(j.studio!.fee)} for the screenplay, ${j.days.length} working days`;
-  return `${j.company} wants you to ${work}, from ${formatDateKey(j.days[0])}.`;
+  return `${j.company} wants you to ${work}, from ${formatDateKey(j.days[0])}.${j.studio?.why ? ` ${j.studio.why}` : ''}`;
 }
 /** The picture's scale and where the fee comes from, for the offer's second line. */
 export function studioScale(j: OutsideJob): string {

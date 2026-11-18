@@ -5,7 +5,7 @@ import { describe, expect, it } from 'vitest';
 import {
   DAY, announceEdition, categoriesFor, checkEligibility, institution, processUntil, publicResult, submitEntry,
 } from './engine-api';
-import { careerRecord, committee, editionResults, honoraryChance, winnersOf } from '../src/engine/awards-results';
+import { careerRecord, committee, editionResults, honoraryChance, STUDIO_CALL_AFTER_WIN_DAYS, winnersOf } from '../src/engine/awards-results';
 import { craftScore, requirementProblems } from '../src/engine/awards-rules';
 import { honors } from '../src/engine/awards-actions';
 import { deserialize, serialize } from '../src/engine/save';
@@ -220,6 +220,19 @@ describe('festival prizes are decided among the films a section selected', () =>
     const again = JSON.stringify(e.entries);
     editionResults(s, e);
     expect(JSON.stringify(e.entries)).toBe(again);
+  });
+
+  it('a win brings a studio calling a fortnight on; an edition you won nothing at doesn\'t', () => {
+    const { s, e } = selected('prizes-call', true);
+    editionResults(s, e);
+    const call = s.events.find((x) => x.id === `studio-project:${e.id}`);
+    // A film scored 99 in Competition wins prizes on this seed.
+    expect(e.entries.some((x) => x.status === 'won')).toBe(true);
+    expect([call?.kind, call?.at]).toEqual(['studio-project', s.now + STUDIO_CALL_AFTER_WIN_DAYS * DAY]);
+    const none = selected('prizes-later-call', false);
+    for (const x of none.e.entries) x.status = 'disqualified';
+    editionResults(none.s, none.e);
+    expect(none.s.events.some((x) => x.id === `studio-project:${none.e.id}`)).toBe(false);
   });
 
   it('a prize with its own requirement considers only works that meet it', () => {

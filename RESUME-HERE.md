@@ -66,6 +66,19 @@ like "so and so wants you to take over and film the next Batman", invented entri
 - **Studio offers, seen on real studios:** the capture of two engine-made offers (Legendary's Minecraft, Apple's F1)
   found "Minecraft Movie film", "the F1 films so far" for one film, and a footer calling a studio's fee calibration;
   all three fixed and tested.
+- **Studio offers follow your reputation (the owner, November 18: "the next Godzilla film"; "as the reputation and
+  credibility build, as I win awards, I'll start getting these offers"; "continuity and freshness"; a reputation that
+  reflects the quality of the work):** `src/engine/studio-projects.ts`.
+  - Offers need the role's grade (reputation.ts standings: the quality of the work plus its selections, nominations and
+    wins) to be Established; the picture's size is capped by grade (`STUDIO_REACH`: $160M, $250M In Demand, any Leading).
+  - A win schedules a studio's call a fortnight on (`awards-results.ts` `STUDIO_CALL_AFTER_WIN_DAYS`), besides the
+    month after a delivery; each offer says why ("After X won Y at the Z.", else "On the strength of X.").
+  - Freshness: a studio that asked in two years gives way to the next best fit (`STUDIO_ROTATION_DAYS`), and asks for a
+    franchise it hasn't offered. Continuity: a studio whose picture you made comes back for the next.
+  - Franchises are said as people do (`SAID_AS`: Godzilla, Alien, Spider-Verse, Hunger Games...). The Profile's
+    reputation card has a Studio Pictures section saying what each role can be offered now and how that grows.
+  - Tests: `tests/studio-projects.test.ts` (reach, why, freshness, continuity), `tests/awards-catalog.test.ts` (a win
+    schedules the call), `e2e/studio-projects.spec.ts` (the Profile says it).
 - **Still to bring in, if the owner wants them:** more of the world's studios (Australia, Spain, Nordic countries,
   Nigeria, Turkey, Brazil, Argentina, other Indian languages' studios), found by the same company search.
 - Tests: `tests/studio-projects.test.ts`, `e2e/studio-projects.spec.ts`, proof `off-studio-project`.
