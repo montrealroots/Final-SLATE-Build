@@ -20,6 +20,17 @@ finished, and they come back only when the owner says so:
   work permits are still estimates in all (`docs/v10/papers-estimates.json`).
 - **Real-phone and pacing tests:** they need the owner's own device and a person playing.
 
+## Studios Bidding Against Each Other (The Owner, November 18, 2026)
+
+The owner asked for competing offers for deals. A record past its start (proven and above) now draws a second studio
+with the first: the next that fits offers at the same time, on its own terms (`first-look.ts offerFirstLook`). Either
+studio can be told of the other's higher offer of the same kind and asked to match (`askToMatch`): it answers in a week,
+matching up to a quarter above its own figure (`MATCH_REACH`, the game's calibration) and never past its tier's top,
+and keeps its offer if the rival's is gone or too high; that is the offer's one request. Signing one turns the other
+down. A mutation of the new test found offers rounded past their band's top ($5,004,000 in a $5m band): fixed.
+Tests: `tests/first-look.test.ts` ("two studios bidding at once"), `e2e/deal-rivals.spec.ts`, proof `first-look-match`.
+Still not modelled: resubmission rights; a studio raising its own offer unasked.
+
 ## Homes And Property Is Set Aside (The Owner, November 17, 2026, Evening)
 
 The owner asked for Homes And Property to be removed from the game for now and kept to pick up later. The way in is
