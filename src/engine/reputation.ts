@@ -129,9 +129,12 @@ const RECIPIENT_ROLE: Partial<Record<Recipient, StandingRole>> = {
   project: 'producing', producer: 'producing', national: 'producing',
 };
 
-/** The scores of the player's honours in a role: each entry of a work of theirs that was selected, nominated, mentioned or won. */
-export function honourScores(s: GameState, role: StandingRole): number[] {
-  const out: number[] = [];
+/** One honour of the player's own work in a role: what it was, where, and when the event ended. */
+export interface Honour { score: number; status: string; title: string; category: string; event: string; at: number }
+
+/** The player's honours in a role: each entry of a work of theirs that was selected, nominated, mentioned or won. */
+export function honoursIn(s: GameState, role: StandingRole): Honour[] {
+  const out: Honour[] = [];
   for (const ed of s.editions ?? []) {
     let inst: ReturnType<typeof institution>;
     try { inst = institution(ed.institutionId); } catch { continue; }
@@ -146,11 +149,13 @@ export function honourScores(s: GameState, role: StandingRole): number[] {
       if (r === 'directing' && !p.episodes.some((x) => x.director === 'player')) continue;
       if (r === 'writing' && !p.episodes.some((x) => x.writer === 'player')) continue;
       if (r === 'acting' && !e.recipients.some((id) => p.credits.find((c) => c.id === id)?.person === 'player')) continue;
-      out.push(score);
+      out.push({ score, status: e.status, title: p.title, category: cat.name, event: ed.label, at: ed.end });
     }
   }
   return out;
 }
+/** The scores of the player's honours in a role. */
+export const honourScores = (s: GameState, role: StandingRole): number[] => honoursIn(s, role).map((h) => h.score);
 
 /** The player's standing in each role, from the delivered work they did in it and its honours. Producing reads how the work was received. */
 export function standings(s: GameState): Standing[] {

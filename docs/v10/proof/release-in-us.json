@@ -501,7 +501,7 @@
  ],
  "verdict": "proven",
  "hashes": {
-  "src/engine/finish.ts": "e0a1318764a0a429",
+  "src/engine/finish.ts": "a60336a738e48e77",
   "src/engine/awards.ts": "28e4ea9a8ba8ebbc",
   "tests/proof/career.ts": "50bea06f19a02c5b"
  }

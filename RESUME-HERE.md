@@ -53,10 +53,39 @@ like "so and so wants you to take over and film the next Batman", invented entri
   (TOHO, Toei and Toei Animation under it, Shochiku, Nikkatsu, KADOKAWA, Ghibli, CJ ENM, Showbox, Lotte, Shaw
   Brothers, Golden Harvest, Bona, Yash Raj, T-Series, Dharma, Red Chillies, Televisa) are in the registry, 143 gathered
   in all (`docs/CATALOG.md`). A group only where an official page says so; the rest stand alone, by country, and say
-  why. Their titles were imported the same day; the catalog then needs a build (`node tools/screen-catalog/build.mjs`).
+  why. Their titles were imported the same day and the catalog built (`node tools/screen-catalog/build.mjs`): 109 world
+  studios, up from 82, 91 with franchises (Toho's Godzilla Minus One, Constantin's Eberhofer, StudioCanal's
+  Paddington, Bona's Pegasus, Yash Raj's Tiger). 1.5 GB built, 701,650 people; 20 titles TMDB no longer serves.
+- **Franchises and fees on the international studios (November 18, after the build):** franchises count feature films
+  only, over 40 minutes and no documentaries (Toho's lead read as the Godzilla Fest shorts at a $13,103 budget, Ghibli's
+  as shorts and making-of films, CJ ENM's as a concert film); a collection named without Latin letters takes its first
+  film's English title (`tools/screen-catalog/franchises.mjs`, `tests/franchises.test.ts`). Offers say Italian, German,
+  Turkish and Portuguese collection names as people do ("Ferie d'agosto", not "... - Collezione"). A studio's fee is at
+  most 5% of the picture's budget (`STUDIO_FEE_SHARE`, game calibration: no published share was found), and only an
+  American studio is held to the DGA's or WGA's minimum (the registry's country); the offer says which set the fee.
 - **Studio offers, seen on real studios:** the capture of two engine-made offers (Legendary's Minecraft, Apple's F1)
   found "Minecraft Movie film", "the F1 films so far" for one film, and a footer calling a studio's fee calibration;
   all three fixed and tested.
+- **Studio offers follow your reputation (the owner, November 18: "the next Godzilla film"; "as the reputation and
+  credibility build, as I win awards, I'll start getting these offers"; "continuity and freshness"; a reputation that
+  reflects the quality of the work):** `src/engine/studio-projects.ts`.
+  - Offers need the role's grade (reputation.ts standings: the quality of the work plus its selections, nominations and
+    wins) to be Established; the picture's size is capped by grade (`STUDIO_REACH`: $160M, $250M In Demand, any Leading).
+  - A win schedules a studio's call a fortnight on (`awards-results.ts` `STUDIO_CALL_AFTER_WIN_DAYS`), besides the
+    month after a delivery; each offer says why ("After X won Y at the Z.", else "On the strength of X.").
+  - Freshness: a studio that asked in two years gives way to the next best fit (`STUDIO_ROTATION_DAYS`), and asks for a
+    franchise it hasn't offered. Continuity: a studio whose picture you made comes back for the next.
+  - Franchises are said as people do (`SAID_AS`: Godzilla, Alien, Spider-Verse, Hunger Games...). The Profile's
+    reputation card has a Studio Pictures section saying what each role can be offered now and how that grows.
+  - Tests: `tests/studio-projects.test.ts` (reach, why, freshness, continuity), `tests/awards-catalog.test.ts` (a win
+    schedules the call), `e2e/studio-projects.spec.ts` (the Profile says it).
+- **Grade news (the owner, November 18: "so I know when I level up"):** `src/engine/grade-news.ts`. The grade last told
+  per role is saved (`gradesHeard`); after a delivery (`finish.ts`), a selection or nominations and an edition's results
+  (`awards-results.ts`) the grades are read again and each change is news on the log, routed to the Profile: the new
+  grade, what moved it ("after the reception of X", "after the Venice ... 2026's results") and what it opens (studio
+  pictures' size, a better rate agreed), or a slip and what it closes. A new life starts Emerging; an older save starts
+  from the grades it has on load (`save.ts`). Tests: `tests/grade-news.test.ts`, and the hooks in
+  `tests/episode-delivery.test.ts` and `tests/awards-catalog.test.ts`.
 - **Still to bring in, if the owner wants them:** more of the world's studios (Australia, Spain, Nordic countries,
   Nigeria, Turkey, Brazil, Argentina, other Indian languages' studios), found by the same company search.
 - Tests: `tests/studio-projects.test.ts`, `e2e/studio-projects.spec.ts`, proof `off-studio-project`.

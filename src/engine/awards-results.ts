@@ -14,6 +14,7 @@ import { addLog, schedule, type HandlerResult } from './state';
 import { DAY, addDaysToKey, dateKey, formatDateKey, localToInstant, parseYmd } from './time';
 import { studioFilms, type StudioFilm } from './studios';
 import { recordedResults } from './history';
+import { noticeGrades } from './grade-news';
 import type { Edition, EditionEntry, GameState, Project, RivalFilm, ScheduledEvent } from './types';
 
 /**
@@ -508,6 +509,8 @@ export function announce(state: GameState, ed: Edition): HandlerResult {
     }
   }
   for (const m of messages) addLog(state, m, inst.kind === 'festival' ? 'festival' : 'award', { route: { view: 'event', editionId: ed.id } });
+  // A selection or nomination is recognition, and may move a grade (grade-news.ts).
+  noticeGrades(state, `the ${ed.label}'s ${inst.kind === 'festival' ? 'selection' : 'nominations'}`);
   if (!messages.length) return involved(state, ed) ? { message: `The ${ed.label} announced its ${inst.kind === 'festival' ? 'selection' : 'nominations'}.` } : { suppressInterrupt: true };
   return { message: messages[0] };
 }
@@ -619,11 +622,19 @@ export function editionResults(state: GameState, ed: Edition): HandlerResult {
     }
   }
   decidePrizes(state, ed, messages);
+  // A win brings studios calling (studio-projects.ts, from November 18, 2026, the owner: "as I win awards I'll start
+  // getting these offers"): a studio may ask you onto its own picture a fortnight on, when your record has earned it.
+  if (ed.entries.some((x) => x.status === 'won')) schedule(state, state.now + STUDIO_CALL_AFTER_WIN_DAYS * DAY, 'studio-project', { after: ed.id }, { attention: 'silent', priority: 70, id: `studio-project:${ed.id}` });
   ed.status = 'complete';
   compactEdition(ed);
   for (const m of messages) addLog(state, m, inst.kind === 'festival' ? 'festival' : 'award', { route: { view: 'event', editionId: ed.id } });
+  // Wins move grades, told after the results themselves (grade-news.ts).
+  noticeGrades(state, `the ${ed.label}'s results`);
   return messages.length ? { message: messages[0] } : { suppressInterrupt: true };
 }
+
+/** Days after a win a studio may call with a picture of its own. Game calibration. */
+export const STUDIO_CALL_AFTER_WIN_DAYS = 14;
 
 /** A result's title: a work, a song of a work ("Salt Water" from Night Ferry), or a competing work. */
 export function keyTitle(state: GameState, ed: Edition, id: string): string | undefined {

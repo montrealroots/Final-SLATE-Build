@@ -16,12 +16,12 @@
   "gross": 130280,
   "revenue": 289436.875,
   "distributed": 3.4,
-  "money": 25790105.983,
-  "moneyChange": 790105.983,
+  "money": 25835105.983,
+  "moneyChange": 835105.983,
   "jobsTaken": 2.65,
-  "jobsOffered": 3.05,
-  "jobPay": 922573.15,
-  "offeredDayRate": 9442.672,
+  "jobsOffered": 3,
+  "jobPay": 967573.15,
+  "offeredDayRate": 8687.215,
   "ownIn": 161650,
   "backerIn": 0,
   "backerDeals": 0,
@@ -30,7 +30,7 @@
   "jobsWithdrawn": 0,
   "jobsDeclined": 0,
   "ratesAgreed": 0,
-  "logLines": 287.85,
+  "logLines": 287.75,
   "hired": 32,
   "castRates": 6406,
   "releaseDelay": 96.973,
@@ -57,7 +57,7 @@
   "bankFees": 0,
   "owed": 0,
   "accounts": 1,
-  "worth": 19394159.699,
+  "worth": 19427999.699,
   "rewards": 0,
   "entries": 0,
   "selected": 0,
@@ -69,7 +69,7 @@
   "offers": 6.95,
   "editionsOpen": 172.525,
   "firstLookOffers": 2.2,
-  "studioOffers": 1.375,
+  "studioOffers": 1.325,
   "opportunities": 0.55,
   "openOpportunities": 0,
   "openOffers": 0,
@@ -211,45 +211,45 @@
    "n": 40
   },
   "money": {
-   "mean": -910821.55,
-   "lo": -1271729.761,
-   "hi": -549913.34,
-   "changed": 27,
+   "mean": -955821.55,
+   "lo": -1347848.272,
+   "hi": -563794.828,
+   "changed": 22,
    "n": 40
   },
   "moneyChange": {
-   "mean": -910821.55,
-   "lo": -1271729.761,
-   "hi": -549913.34,
-   "changed": 27,
+   "mean": -955821.55,
+   "lo": -1347848.272,
+   "hi": -563794.828,
+   "changed": 22,
    "n": 40
   },
   "jobsTaken": {
    "mean": -0.975,
-   "lo": -1.254,
-   "hi": -0.696,
-   "changed": 27,
+   "lo": -1.314,
+   "hi": -0.636,
+   "changed": 22,
    "n": 40
   },
   "jobsOffered": {
-   "mean": -1.375,
-   "lo": -1.76,
-   "hi": -0.99,
-   "changed": 28,
+   "mean": -1.325,
+   "lo": -1.742,
+   "hi": -0.908,
+   "changed": 23,
    "n": 40
   },
   "jobPay": {
-   "mean": -910699.95,
-   "lo": -1271586.756,
-   "hi": -549813.144,
-   "changed": 27,
+   "mean": -955699.95,
+   "lo": -1347738.867,
+   "hi": -563661.033,
+   "changed": 22,
    "n": 40
   },
   "offeredDayRate": {
-   "mean": -8689.23,
-   "lo": -11127.824,
-   "hi": -6250.636,
-   "changed": 28,
+   "mean": -7933.773,
+   "lo": -10670.301,
+   "hi": -5197.246,
+   "changed": 23,
    "n": 40
   },
   "ownIn": {
@@ -282,9 +282,9 @@
   },
   "jobsDone": {
    "mean": -0.925,
-   "lo": -1.203,
-   "hi": -0.647,
-   "changed": 26,
+   "lo": -1.271,
+   "hi": -0.579,
+   "changed": 20,
    "n": 40
   },
   "jobsWithdrawn": {
@@ -309,10 +309,10 @@
    "n": 40
   },
   "logLines": {
-   "mean": -41.325,
-   "lo": -53.052,
-   "hi": -29.598,
-   "changed": 28,
+   "mean": -41.225,
+   "lo": -55.567,
+   "hi": -26.883,
+   "changed": 23,
    "n": 40
   },
   "hired": {
@@ -498,10 +498,10 @@
    "n": 40
   },
   "worth": {
-   "mean": -684937.806,
-   "lo": -956340.78,
-   "hi": -413534.831,
-   "changed": 27,
+   "mean": -718777.806,
+   "lo": -1013581.901,
+   "hi": -423973.711,
+   "changed": 22,
    "n": 40
   },
   "rewards": {
@@ -582,10 +582,10 @@
    "n": 40
   },
   "studioOffers": {
-   "mean": -1.375,
-   "lo": -1.76,
-   "hi": -0.99,
-   "changed": 28,
+   "mean": -1.325,
+   "lo": -1.742,
+   "hi": -0.908,
+   "changed": 23,
    "n": 40
   },
   "opportunities": {
@@ -698,7 +698,7 @@
  ],
  "verdict": "proven",
  "hashes": {
-  "src/engine/studio-projects.ts": "6ed50ea11249e80e",
+  "src/engine/studio-projects.ts": "0839a920a03c1b0b",
   "tests/proof/career.ts": "50bea06f19a02c5b"
  }
 }

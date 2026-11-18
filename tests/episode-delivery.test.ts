@@ -95,8 +95,11 @@ describe('a series delivered an episode at a time', () => {
     expect(r.episodes!.map((e) => e.status)).toEqual(['released', 'released']);
     expect(s.log.filter((l) => /^Episode 2 of Grey Water is out today/.test(l.text)).length).toBe(1);
     for (let i = 0; i < 30 && p.tasks.some((t) => t.status !== 'done'); i++) { manage(s, p); processUntil(s, s.now + DAY, 'tick', 100_000); }
+    // Labelled fixture: the save says it last told a Leading producer, so the delivery's own grade reading is news.
+    s.gradesHeard = { ...s.gradesHeard, producing: 'Leading' };
     deliver(s, p);
     expect(p.delivered).not.toBeNull();
+    expect(s.log.some((l) => l.text.startsWith('Your standing as a producer has slipped from Leading to') && l.text.includes('after the reception of Grey Water'))).toBe(true);
     expect(p.credits.length).toBeGreaterThan(0);
     expect(p.episodeDeliveries![1].at).toBeLessThan(p.episodeDeliveries![2].at); // the history of when each was ready stays
   }, 180_000);

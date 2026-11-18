@@ -30,7 +30,7 @@
   "jobsWithdrawn": 0,
   "jobsDeclined": 0,
   "ratesAgreed": 0,
-  "logLines": 119.125,
+  "logLines": 119.8,
   "hired": 16,
   "castRates": 3225.75,
   "releaseDelay": 98.792,
@@ -69,6 +69,7 @@
   "offers": 3.325,
   "editionsOpen": 99.625,
   "firstLookOffers": 0,
+  "studioOffers": 0,
   "opportunities": 0.325,
   "openOpportunities": 0,
   "openOffers": 0,
@@ -105,7 +106,7 @@
   "jobsWithdrawn": 0,
   "jobsDeclined": 0,
   "ratesAgreed": 0,
-  "logLines": 100.975,
+  "logLines": 101.65,
   "hired": 16,
   "castRates": 3225.75,
   "releaseDelay": 44.667,
@@ -144,6 +145,7 @@
   "offers": 0,
   "editionsOpen": 99.625,
   "firstLookOffers": 0,
+  "studioOffers": 0,
   "opportunities": 0.325,
   "openOpportunities": 0,
   "openOffers": 0,
@@ -579,6 +581,13 @@
    "changed": 0,
    "n": 40
   },
+  "studioOffers": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 40
+  },
   "opportunities": {
    "mean": 0,
    "lo": 0,
@@ -689,7 +698,7 @@
  ],
  "verdict": "proven",
  "hashes": {
-  "src/engine/finish.ts": "e0a1318764a0a429",
+  "src/engine/finish.ts": "a60336a738e48e77",
   "tests/proof/career.ts": "50bea06f19a02c5b"
  }
 }

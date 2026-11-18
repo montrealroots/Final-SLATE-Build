@@ -9,7 +9,7 @@ import { PRODUCTION_KIND_LABELS, productionById } from '../engine/productions';
 import { REPUTATION_MODEL, standings, reputation } from '../engine/reputation';
 import { qualityWords } from '../engine/finish';
 import { agentById } from '../engine/representation';
-import { studioPitch, studioScale } from '../engine/studio-projects';
+import { STUDIO_REACH, studioPitch, studioReach, studioScale } from '../engine/studio-projects';
 import { store, useGame } from './store';
 
 const span = (j: OutsideJob) => `${j.days.length} ${j.days.length === 1 ? 'day' : 'days'}, ${formatDateKey(j.days[0])} to ${formatDateKey(j.days.at(-1)!)}`;
@@ -77,7 +77,7 @@ export function WorkForOthersCard() {
           {credits.map((j) => { const p = j.productionId ? productionById(g, j.productionId) : undefined; return <li key={j.id} className="list-item">{JOB_ROLES[j.role].label}{j.part ? ` (${j.part.replace(/^The part of /, 'as ')})` : ''}, {j.production} ({j.company}), {j.attended.length} {j.attended.length === 1 ? 'day' : 'days'}{p ? (p.result ? `. Out ${formatDateKey(p.releasesOn)}, received at ${p.result.reception} (simulated).` : `. Comes out ${formatDateKey(p.releasesOn)}.`) : ''}</li>; })}
         </ul>
       )}
-      <p className="dim small">Day rates, the odds of an offer and its length are game calibration{offers.some((j) => j.studio) ? "; a studio's fee is what the trade reports for your record" : ''}. The pay comes to your own account when the days are done.</p>
+      <p className="dim small">Day rates, the odds of an offer and its length are game calibration{offers.some((j) => j.studio) ? "; a studio's fee is what the trade reports for your record, and its cap at a twentieth of a picture's budget is calibration too" : ''}. The pay comes to your own account when the days are done.</p>
       {err && <p role="alert" style={{ color: 'var(--negative)' }}>{err}</p>}
     </section>
   );
@@ -112,6 +112,14 @@ export function ReputationCard() {
         {standings(g).map((x) => <Fragment key={x.role}><dt>{{ writing: 'Screenwriter', directing: 'Director', acting: 'Actor', producing: 'Producer' }[x.role]}</dt><dd>{x.grade}{x.works ? `, from ${x.works} completed ${x.works === 1 ? 'work' : 'works'} (standing ${x.standing})` : ', with no completed work in it yet'}.{x.next ? <span className="dim"> {x.next}</span> : null}</dd></Fragment>)}
       </dl>
       <p className="dim small">Each role stands on its own work, each work counted once and none counting for too much. A grade needs several completed works. It is the industry's reading of your record, not your talent. Game design, version {REPUTATION_MODEL.model_version}.</p>
+      <h3>Studio Pictures</h3>
+      <dl className="kv" aria-label="Studio Pictures">
+        {(['directing', 'writing'] as const).map((role) => {
+          const reach = studioReach(g, role);
+          return <Fragment key={role}><dt>{role === 'directing' ? 'Directing' : 'Writing'}</dt><dd>{reach === 0 ? 'No studio offers yet: they come once you\'re Established in this role.' : reach === Infinity ? 'Studios may offer you any picture they make.' : `Studios may offer you pictures of up to ${money(reach)}.`}</dd></Fragment>;
+        })}
+      </dl>
+      <p className="dim small">Studios ask you to direct or write their own pictures as your standing grows: none while you're Emerging, up to {money(STUDIO_REACH.Established)} once you're Established, {money(STUDIO_REACH['In Demand'])} In Demand, and any picture once you're Leading. Your standing follows how good your work is, and every selection, nomination and win it earns counts. A win can bring a studio calling within weeks. A studio that asked lately makes way for others, and one whose picture you made comes back for the next. These sizes are game calibration.</p>
     </section>
   );
 }

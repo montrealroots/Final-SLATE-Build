@@ -2,6 +2,7 @@
 // verified. Writes go to a temporary key first; the previous good save is kept as a backup
 // until the new one verifies, so an interrupted write never destroys the last good save.
 
+import { noticeGrades } from './grade-news';
 import { hashString } from './rng';
 import { findPlace, isCatalogPlace, registerPlace, type Place } from '../data/places';
 import type { CreationDraft, GameState } from './types';
@@ -116,6 +117,8 @@ export function migrate(raw: unknown): GameState {
   startStays(s);
   // The house drawings were removed at the owner's request on November 17, 2026: a save from before drops the ones it kept.
   if (s.homes) delete (s.homes as { images?: unknown }).images;
+  // A save from before grade news (November 18, 2026) starts from the grades it has, so none is told as new (grade-news.ts).
+  if (!s.gradesHeard) noticeGrades(s);
   return s;
 }
 

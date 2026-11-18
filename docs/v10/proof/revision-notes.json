@@ -35,7 +35,7 @@
   "jobsWithdrawn": 0,
   "jobsDeclined": 0,
   "ratesAgreed": 0,
-  "logLines": 126.375,
+  "logLines": 127.275,
   "hired": 16,
   "castRates": 3203.5,
   "releaseDelay": 106.367,
@@ -84,7 +84,7 @@
   "jobsWithdrawn": 0,
   "jobsDeclined": 0,
   "ratesAgreed": 0,
-  "logLines": 127.825,
+  "logLines": 128.875,
   "hired": 16,
   "castRates": 3203.5,
   "releaseDelay": 108.367,
@@ -260,9 +260,9 @@
    "n": 40
   },
   "logLines": {
-   "mean": 1.45,
-   "lo": -3.081,
-   "hi": 5.981,
+   "mean": 1.6,
+   "lo": -2.789,
+   "hi": 5.989,
    "changed": 40,
    "n": 40
   },
@@ -465,7 +465,7 @@
  "verdict": "proven",
  "hashes": {
   "src/engine/projects.ts": "19dd27c5768b23e7",
-  "src/engine/finish.ts": "e0a1318764a0a429",
+  "src/engine/finish.ts": "a60336a738e48e77",
   "tests/proof/career.ts": "50bea06f19a02c5b"
  }
 }

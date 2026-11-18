@@ -26,6 +26,9 @@ test('a studio asks you to direct the next film in its franchise: said in its wo
     });
   });
   await nav(page, 'Profile');
+  // A record just starting is told what brings studio offers (studio-projects.ts STUDIO_REACH).
+  await expect(page.getByLabel('Studio Pictures')).toContainText("No studio offers yet: they come once you're Established in this role.");
+  await expect(card(page, 'Your Reputation')).toContainText('A win can bring a studio calling within weeks.');
   const work = card(page, 'Work For Others');
   const offers = work.getByRole('list', { name: 'Offers Of Work' });
   await expect(offers).toContainText(`${STUDIO} wants you to direct the next Long Road film: $605,000 for 8 weeks of shooting, from January 11, 2027.`);

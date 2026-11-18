@@ -39,6 +39,10 @@ Read the same day, the same way:
 - **The Companies page** lists a studio that heads its own labels (Toei Company over Toei Animation) with its country's
   independents, labels and all.
 - **Left out, on purpose.** Toei Video, KADOKAWA Shoten and KADOKAWA Daiei Studio, Golden Harvest's earlier record.
+- **The build.** After the import the catalog has 109 studios with films in the last five years, 91 with franchises.
+  A franchise counts feature films only, over 40 minutes and no documentaries: before that, Toho's latest was the Godzilla
+  Fest shorts and Ghibli's its Ghiblies shorts and making-of films. A collection named without Latin letters (Shochiku's
+  "あの花シリーズ") is called by its first film's English title, "Till We Meet Again on the Lily Hill".
 
 ## Europe's Studios (November 18, 2026)
 

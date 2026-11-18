@@ -336,7 +336,7 @@ journey that shows it there.
 | shoot-call | scheduled | src/engine/production/shoot.ts | proven | off-shoot-call (40 seeds) | lateDays -1; quality.direction +0.6; overall +0.288 |
 | shoot-wrap | scheduled | src/engine/production/shoot.ts | proven | off-shoot-wrap (40 seeds) | delivered -2; revenue -136781.125; money -157857.058 |
 | stay-limit | scheduled | src/engine/papers.ts | proven | off-stay-limit (20 seeds) | overstays -1; usVisas -1; papersPaid -185; secondTripDays +30 |
-| studio-project | scheduled | src/engine/studio-projects.ts | proven | off-studio-project (40 seeds) | studioOffers -1.375; jobPay -910699.95; money -910821.55 |
+| studio-project | scheduled | src/engine/studio-projects.ts | proven | off-studio-project (40 seeds) | studioOffers -1.325; jobPay -955699.95; money -955821.55 |
 | studio-release | scheduled | src/engine/finish.ts | proven | off-studio-release (40 seeds) | released -8.925; gross -1639510 |
 | wake | scheduled | src/engine/state.ts | proven | off-wake (40 seeds) | lateDays +6.75; quality.direction -63.5; overall -58.712 |
 | weather-check | scheduled | src/engine/production/shoot.ts | proven | off-weather-check (60 seeds) | lostDays +1.567; daysToDeliver +1.208; spent +3456.833 |
