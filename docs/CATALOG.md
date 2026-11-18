@@ -5,6 +5,41 @@ and labels and their leadership, and the films and series TMDB credits to them, 
 and people. Nothing in it changes the simulation. The coverage figures from the gathering run are in
 `docs/CATALOG-COVERAGE.md`.
 
+## Asia's Studios And Televisa (November 18, 2026)
+
+Read the same day, the same way:
+
+| Company | TMDB ID | Group |
+| --- | --- | --- |
+| TOHO | 882 | Independent, Japan |
+| Toei Company | 5822 | Independent, Japan |
+| Toei Animation | 5542 | Toei Company |
+| Shochiku | 192 | Independent, Japan |
+| Nikkatsu Corporation | 955 | Independent, Japan |
+| KADOKAWA | 2073 | Independent, Japan |
+| Studio Ghibli | 10342 | Independent, Japan |
+| CJ ENM | 128404 | Independent, South Korea |
+| Showbox | 3491 | Independent, South Korea |
+| Lotte Entertainment | 7819 | Independent, South Korea |
+| Shaw Brothers | 5798 | Independent, Hong Kong |
+| Orange Sky Golden Harvest | 2521 | Independent, Hong Kong |
+| Bona Film Group | 30148 | Independent, China |
+| Yash Raj Films | 1569 | Independent, India |
+| T-Series | 3522 | Independent, India |
+| Dharma Productions | 19146 | Independent, India |
+| Red Chillies Entertainment | 2343 | Independent, India |
+| Televisa | 20911 | Independent, Mexico |
+
+- **Toei Animation** is placed under Toei Company: its own history says Toei bought it in July 1956 and renamed it Toei
+  Doga. How much of it Toei holds now isn't recorded, so no date of joining is claimed.
+- **Studio Ghibli** is reported as Nippon TV's subsidiary since October 6, 2023, but the official notice couldn't be read,
+  so Ghibli stands on its own and says so. TMDB's record calls Lotte Entertainment Showbox's parent; nothing read supports
+  it, so it isn't followed.
+- **Leadership.** No official page naming these studios' leaders could be read; each page says so.
+- **The Companies page** lists a studio that heads its own labels (Toei Company over Toei Animation) with its country's
+  independents, labels and all.
+- **Left out, on purpose.** Toei Video, KADOKAWA Shoten and KADOKAWA Daiei Studio, Golden Harvest's earlier record.
+
 ## Europe's Studios (November 18, 2026)
 
 The international studios came next, Europe's first, read the same day:
@@ -33,8 +68,7 @@ The international studios came next, Europe's first, read the same day:
 - **The Companies page** now takes its groups from the registry: each company at the top of a chain of owners, then the
   studios that stand on their own, by country.
 - **Left out, on purpose.** StudioCanal's UK and German records and Pathé's UK record.
-- **Next:** Asia (Toho, Toei, Shochiku, Nikkatsu, KADOKAWA, Studio Ghibli, CJ ENM, Showbox, Lotte, Shaw Brothers,
-  Golden Harvest, Bona, Yash Raj, T-Series, Dharma, Red Chillies) and Televisa.
+- **Next:** Asia's and Televisa, the same day ("Asia's Studios And Televisa", above).
 
 ## Amazon, Lionsgate, Netflix, Apple, Legendary And The Independent Studios (November 18, 2026)
 

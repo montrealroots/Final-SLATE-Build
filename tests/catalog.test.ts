@@ -50,8 +50,8 @@ describe('the company registry', () => {
     for (const n of networks) { expect(n.tmdb).toBeNull(); expect(DISCOVERED).not.toContain(n); }
     // 32 Disney records and 10 NBCUniversal's; from milestone F, 19 of Paramount's and Skydance Media's, 19 of Warner Bros.' and 12 of Sony's;
     // from November 18, 2026, 6 of Amazon's, 4 of Lionsgate's, 2 of Netflix's, Apple's 1, Legendary's 2 and 7 independents',
-    // and 11 of Europe's.
-    expect(DISCOVERED).toHaveLength(125);
+    // 11 of Europe's, and 18 of Asia's and Mexico's.
+    expect(DISCOVERED).toHaveLength(143);
     expect(new Set(COMPANIES.map((c) => c.id)).size).toBe(COMPANIES.length);
     expect(new Set(DISCOVERED.map((c) => c.tmdb!.id)).size).toBe(DISCOVERED.length);
   });
@@ -94,6 +94,14 @@ describe('the company registry', () => {
       expect(company(id)!.notes.join(' ')).toContain('no official source saying so could be read');
     }
     for (const id of ['company:gaumont', 'company:constantin-film', 'company:film4-productions']) expect(checkedFor(id)).toBe('2026-11-18');
+  });
+
+  it("places Toei Animation under Toei, as its own history says, and leaves Studio Ghibli on its own (November 18, 2026)", () => {
+    expect(groupOf('company:toei-animation')!.id).toBe('company:toei-company');
+    expect(joinedGroup('company:toei-animation')).toBeNull(); // a division, its share not recorded: no date claimed
+    expect(groupOf('company:studio-ghibli')!.id).toBe('company:studio-ghibli');
+    expect(company('company:studio-ghibli')!.notes.join(' ')).toContain('Nippon TV');
+    expect(checkedFor('company:televisa')).toBe('2026-11-18');
   });
 
   it('shows Skydance\'s leaders only from the day the company took that form, and as current only once its page was read', () => {

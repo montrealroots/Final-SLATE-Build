@@ -84,10 +84,13 @@ const GROUP_NAME: Record<string, string> = {
   'company:amazon': 'Amazon (Amazon MGM Studios)', 'company:lionsgate-studios': 'Lionsgate', 'company:netflix-inc': 'Netflix', 'company:legendary-entertainment': 'Legendary',
 };
 const country = (code: string) => { try { return new Intl.DisplayNames(['en'], { type: 'region' }).of(code) ?? code; } catch { return code; } };
-const alone = (c: CompanyRecord) => groupOf(c.id)?.id === c.id && c.kind !== 'corporate';
+// A studio at the top of its own chain (Toei Company over Toei Animation) is independent, and so are the labels under it.
+const alone = (c: CompanyRecord) => c.kind !== 'corporate' && groupOf(c.id)?.kind !== 'corporate';
 const groupKey = (c: CompanyRecord): string => {
   if (!alone(c)) return groupOf(c.id)?.id ?? c.id;
-  return RELEASED_BY_UNIVERSAL.has(c.id) ? 'other' : `independent:${c.tmdb?.country ?? 'US'}`;
+  if (RELEASED_BY_UNIVERSAL.has(c.id)) return 'other';
+  const top = groupOf(c.id) ?? c;
+  return `independent:${top.tmdb?.country ?? c.tmdb?.country ?? 'US'}`;
 };
 const GROUPS: string[] = [...new Set([
   ...COMPANIES.filter((c) => c.kind === 'corporate' && !c.parent).map((c) => c.id),

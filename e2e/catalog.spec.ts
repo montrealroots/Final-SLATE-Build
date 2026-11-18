@@ -31,6 +31,9 @@ test('company to film to cast member to another credit, and back', async ({ page
   // Europe's (also from November 18, 2026): in a group where an official page says so, else by country.
   await expect(card(page, 'Highlight Communications AG: Film')).toContainText('Constantin Film');
   await expect(card(page, 'Independent Studios, France: Film')).toContainText('StudioCanal');
+  // Asia's: Toei Animation sits with Toei Company among Japan's independents, which no holding company owns.
+  await expect(card(page, 'Independent Studios, Japan: Film')).toContainText('Toei Animation');
+  await expect(card(page, 'Independent Studios, India: Film')).toContainText('Yash Raj Films');
   await expect(card(page, 'Skydance (Paramount And Warner Bros.): Film')).not.toContainText('Miramax');
 
   await page.getByRole('button', { name: 'Walt Disney Pictures', exact: true }).click();

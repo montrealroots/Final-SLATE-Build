@@ -69,6 +69,8 @@ const S = {
   // Europe's studios, read on November 18, 2026.
   constantin: { url: 'https://constantin.film/en/companies/constantin-film-ag/', title: 'Constantin Film AG (a subsidiary of Highlight Communications AG; its Executive Board)', published: null },
   film4: { url: 'https://film4productions.com/about', title: "About Film4 Productions (Channel 4 Television's feature film division)", published: null },
+  // Asia's and Mexico's, read on November 18, 2026.
+  toeiAnim: { url: 'https://corp.toei-anim.co.jp/en/company/history.html', title: 'Toei Animation: History (July 1956: Nichido Film purchased by Toei Co. and renamed Toei Doga)', published: null },
 } satisfies Record<string, Source>;
 
 /** When the registry was researched: TMDB IDs checked, leadership pages read. Disney's companies, November 10, 2026. */
@@ -323,6 +325,26 @@ export const COMPANIES: CompanyRecord[] = [
   rec('bbc-film', 'BBC Film', 'film', 288, 'GB', 'London, England', null, [UNREAD('the BBC')]),
   { id: CHANNEL4, name: 'Channel 4', kind: 'corporate', roles: ['holding'], tmdb: null, website: 'https://www.channel4.com', parent: null, related: [], notes: ['TMDB credits Film4 Productions, not Channel 4 itself, with its films.'] },
   rec('film4-productions', 'Film4 Productions', 'film', 6705, 'GB', 'London, England', { id: CHANNEL4, how: 'division', from: null, source: S.film4 }, ["Film4's own page calls it Channel 4 Television's feature film division."]),
+  // Asia's and Mexico's studios, read on November 18, 2026, the same way. Only Toei Animation is placed under another
+  // company: its own history says Toei bought it. The rest stand on their own, by country.
+  { ...rec('toho', 'TOHO', 'film', 882, 'JP', 'Tokyo', null), roles: ['production', 'distribution'] },
+  { ...rec('toei-company', 'Toei Company', 'film', 5822, 'JP', 'Chuo, Tokyo', null, ["TMDB's Toei Video Company record (9221) is not covered."]), roles: ['production', 'distribution'] },
+  rec('toei-animation', 'Toei Animation', 'film', 5542, 'JP', 'Nerima, Tokyo', { id: 'company:toei-company', how: 'division', from: null, source: S.toeiAnim }, ["Toei Animation's own history says Toei bought it in July 1956, as Nichido Film, and renamed it Toei Doga. How much of it Toei holds now isn't recorded."]),
+  { ...rec('shochiku', 'Shochiku', 'film', 192, 'JP', 'Tokyo', null), roles: ['production', 'distribution'] },
+  rec('nikkatsu', 'Nikkatsu Corporation', 'film', 955, 'JP', 'Bunkyo, Tokyo', null),
+  rec('kadokawa', 'KADOKAWA', 'film', 2073, 'JP', 'Tokyo', null, ["TMDB's KADOKAWA Shoten (1194) and KADOKAWA Daiei Studio (46774) records are not covered."]),
+  rec('studio-ghibli', 'Studio Ghibli', 'film', 10342, 'JP', 'Koganei, Tokyo', null, [UNREAD('Nippon TV since October 6, 2023')]),
+  { ...rec('cj-enm', 'CJ ENM', 'film', 128404, 'KR', 'Mapo, Seoul', null), roles: ['production', 'distribution'] },
+  { ...rec('showbox', 'Showbox', 'film', 3491, 'KR', 'Gangnam, Seoul', null, ["TMDB's record names Lotte Entertainment as its parent; no source read on November 18, 2026 supports that, so it isn't followed."]), roles: ['production', 'distribution'] },
+  { ...rec('lotte-entertainment', 'Lotte Entertainment', 'film', 7819, 'KR', 'Songpa, Seoul', null), roles: ['production', 'distribution'] },
+  rec('shaw-brothers', 'Shaw Brothers', 'film', 5798, 'HK', '', null),
+  { ...rec('orange-sky-golden-harvest', 'Orange Sky Golden Harvest', 'film', 2521, 'HK', 'Hong Kong', null, ["TMDB's earlier Golden Harvest Productions record (39985) is not covered."]), roles: ['production', 'distribution'] },
+  { ...rec('bona-film-group', 'Bona Film Group', 'film', 30148, 'CN', 'Beijing', null), roles: ['production', 'distribution'] },
+  { ...rec('yash-raj-films', 'Yash Raj Films', 'film', 1569, 'IN', 'Mumbai, Maharashtra', null), roles: ['production', 'distribution'] },
+  rec('t-series', 'T-Series', 'film', 3522, 'IN', 'Mumbai, Maharashtra', null),
+  rec('dharma-productions', 'Dharma Productions', 'film', 19146, 'IN', 'Mumbai, Maharashtra', null),
+  rec('red-chillies-entertainment', 'Red Chillies Entertainment', 'film', 2343, 'IN', 'Mumbai, Maharashtra', null),
+  rec('televisa', 'Televisa', 'television', 20911, 'MX', 'Mexico City', null, ['Mostly series: TMDB credits it with far more series than films.']),
 ];
 
 export interface LeadershipRole {
@@ -454,6 +476,12 @@ export const LEADERSHIP_GAPS: Record<string, string> = {
   'company:medusa-film': "Medusa Film's own page (read November 18, 2026) names no executives, so none is listed.",
   'company:bbc-film': "The BBC's own site refuses automated readers, so no current official source for BBC Film's leadership could be read on November 18, 2026, and none is listed.",
   'company:film4-productions': "Film4's own page (read November 18, 2026) names no executives, so none is listed.",
+  'company:toho': "No official source for its leadership could be read on November 18, 2026, so none is listed.",
+  'company:toei-company': "No official source for its leadership could be read on November 18, 2026, so none is listed.",
+  'company:shochiku': "No official source for its leadership could be read on November 18, 2026, so none is listed.",
+  'company:studio-ghibli': "No official source for its leadership could be read on November 18, 2026, so none is listed.",
+  'company:cj-enm': "No official source for its leadership could be read on November 18, 2026, so none is listed.",
+  'company:yash-raj-films': "No official source for its leadership could be read on November 18, 2026, so none is listed.",
 };
 
 export const company = (id: string) => COMPANIES.find((c) => c.id === id);
@@ -464,7 +492,9 @@ export const companyByTmdb = (tmdbId: number) => COMPANIES.find((c) => c.tmdb?.i
  */
 const READ_US = new Set([AMAZON, LIONSGATE, NETFLIX, APPLE, LEGENDARY, 'company:a24', 'company:neon', 'company:blumhouse-productions', 'company:blumhouse-television', 'company:amblin-entertainment', 'company:annapurna-pictures', 'company:miramax', 'company:starz',
   // Europe's, read the same day.
-  'company:studiocanal', 'company:gaumont', 'company:pathe', 'company:europacorp', 'company:wild-bunch', HIGHLIGHT, 'company:ufa', 'company:rai-cinema', 'company:medusa-film', 'company:bbc-film', CHANNEL4]);
+  'company:studiocanal', 'company:gaumont', 'company:pathe', 'company:europacorp', 'company:wild-bunch', HIGHLIGHT, 'company:ufa', 'company:rai-cinema', 'company:medusa-film', 'company:bbc-film', CHANNEL4,
+  // Asia's and Mexico's, read the same day.
+  'company:toho', 'company:toei-company', 'company:shochiku', 'company:nikkatsu', 'company:kadokawa', 'company:studio-ghibli', 'company:cj-enm', 'company:showbox', 'company:lotte-entertainment', 'company:shaw-brothers', 'company:orange-sky-golden-harvest', 'company:bona-film-group', 'company:yash-raj-films', 'company:t-series', 'company:dharma-productions', 'company:red-chillies-entertainment', 'company:televisa']);
 export function checkedFor(id: string): string {
   const g = groupOf(id)?.id;
   if (g === SKY || g === SONY) return REGISTRY_CHECKED_F;
