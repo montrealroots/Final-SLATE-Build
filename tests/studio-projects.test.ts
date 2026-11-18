@@ -40,8 +40,8 @@ const inForce = (t: [string, number][], d: string) => [...t].reverse().find(([f]
 
 describe('a studio project', () => {
   it("names a franchise as people say it", () => {
-    expect(['The Batman Collection', 'Superman (DCU) Collection', 'The Fast and the Furious Collection', 'Days of Thunder Colletion', 'Heart Eyes - Collection', 'Minecraft Movie Collection'].map(franchiseName))
-      .toEqual(['Batman', 'Superman', 'Fast and the Furious', 'Days of Thunder', 'Heart Eyes', 'Minecraft Movie']);
+    expect(['The Batman Collection', 'Superman (DCU) Collection', 'The Fast and the Furious Collection', 'Days of Thunder Colletion', 'Heart Eyes - Collection', 'Minecraft Movie Collection', 'The Lego Movie Collection', 'Scary Movie Collection'].map(franchiseName))
+      .toEqual(['Batman', 'Superman', 'Fast and the Furious', 'Days of Thunder', 'Heart Eyes', 'Minecraft', 'Lego', 'Scary Movie']);
   });
 
   it("is the next entry in the best-fitting studio's own franchise, paid what the trade reports, placed by the franchise's real budget", () => {
@@ -54,6 +54,7 @@ describe('a studio project', () => {
     expect(j.days).toHaveLength(90);
     expect(j.dayRate).toBe(Math.round(750_000 / 90));
     expect(studioPitch(j)).toMatch(/^Overdrive Pictures \(Fixture\) wants you to direct the next Long Road film: \$750,000 for 18 weeks of shooting, from /);
+    expect(j.material).toBe("The Long Road films so far, and the studio's notes for the next one.");
     expect(studioScale(j)).toBe("A picture of about $340,000,000, as Long Road X (2023) cost. The fee is what studios pay for a director's first studio picture, as the trade reports it, before any share of the profits.");
   });
 
@@ -69,6 +70,9 @@ describe('a studio project', () => {
     const small = studioProjectOffer(t)!;
     expect(small.studio!.fee).toBe(Math.round((450_000 + 300_000 * (Math.log(2) / Math.log(15))) / 1000) * 1000);
     expect(small.days).toHaveLength(40);
+    // A franchise of one film so far is said as one.
+    const one = studioProjectOffer(proven('sp-one', [{ ...FAST, fr: [{ ...FAST.fr![0], entries: 1 }] }]))!;
+    expect(one.material).toBe("The Long Road film, and the studio's notes for the next one.");
   });
 
   it("is an original in the genre the studio makes most where it has no live franchise; with no budget recorded, the middle of the range", () => {

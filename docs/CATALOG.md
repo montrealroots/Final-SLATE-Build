@@ -5,6 +5,71 @@ and labels and their leadership, and the films and series TMDB credits to them, 
 and people. Nothing in it changes the simulation. The coverage figures from the gathering run are in
 `docs/CATALOG-COVERAGE.md`.
 
+## Asia's Studios And Televisa (November 18, 2026)
+
+Read the same day, the same way:
+
+| Company | TMDB ID | Group |
+| --- | --- | --- |
+| TOHO | 882 | Independent, Japan |
+| Toei Company | 5822 | Independent, Japan |
+| Toei Animation | 5542 | Toei Company |
+| Shochiku | 192 | Independent, Japan |
+| Nikkatsu Corporation | 955 | Independent, Japan |
+| KADOKAWA | 2073 | Independent, Japan |
+| Studio Ghibli | 10342 | Independent, Japan |
+| CJ ENM | 128404 | Independent, South Korea |
+| Showbox | 3491 | Independent, South Korea |
+| Lotte Entertainment | 7819 | Independent, South Korea |
+| Shaw Brothers | 5798 | Independent, Hong Kong |
+| Orange Sky Golden Harvest | 2521 | Independent, Hong Kong |
+| Bona Film Group | 30148 | Independent, China |
+| Yash Raj Films | 1569 | Independent, India |
+| T-Series | 3522 | Independent, India |
+| Dharma Productions | 19146 | Independent, India |
+| Red Chillies Entertainment | 2343 | Independent, India |
+| Televisa | 20911 | Independent, Mexico |
+
+- **Toei Animation** is placed under Toei Company: its own history says Toei bought it in July 1956 and renamed it Toei
+  Doga. How much of it Toei holds now isn't recorded, so no date of joining is claimed.
+- **Studio Ghibli** is reported as Nippon TV's subsidiary since October 6, 2023, but the official notice couldn't be read,
+  so Ghibli stands on its own and says so. TMDB's record calls Lotte Entertainment Showbox's parent; nothing read supports
+  it, so it isn't followed.
+- **Leadership.** No official page naming these studios' leaders could be read; each page says so.
+- **The Companies page** lists a studio that heads its own labels (Toei Company over Toei Animation) with its country's
+  independents, labels and all.
+- **Left out, on purpose.** Toei Video, KADOKAWA Shoten and KADOKAWA Daiei Studio, Golden Harvest's earlier record.
+
+## Europe's Studios (November 18, 2026)
+
+The international studios came next, Europe's first, read the same day:
+
+| Company | TMDB ID | Group |
+| --- | --- | --- |
+| StudioCanal | 694 | Independent, France |
+| Gaumont | 9 | Independent, France |
+| Pathé | 7981 | Independent, France |
+| EuropaCorp | 6896 | Independent, France |
+| Wild Bunch | 856 | Independent, France |
+| Constantin Film | 47 | Highlight Communications AG |
+| UFA | 12372 | Independent, Germany |
+| RAI Cinema | 155990 | Independent, Italy |
+| Medusa Film | 6246 | Independent, Italy |
+| BBC Film | 288 | Independent, United Kingdom |
+| Film4 Productions | 6705 | Channel 4 |
+
+- **A group only where an official page says so.** Constantin's own page calls it a subsidiary of Highlight
+  Communications AG; Film4's calls it Channel 4 Television's feature film division. StudioCanal (reported as CANAL+'s),
+  BBC Film (the BBC's) and RAI Cinema (RAI's) are reported as their broadcasters', but those sites refuse automated
+  readers, so each stands on its own and says why. UFA's page names "an international media group" without naming it;
+  Medusa's names no owner.
+- **Leadership.** Constantin's Executive Board, from its page. No other European studio's leaders could be read from an
+  official page, and each page says so.
+- **The Companies page** now takes its groups from the registry: each company at the top of a chain of owners, then the
+  studios that stand on their own, by country.
+- **Left out, on purpose.** StudioCanal's UK and German records and Pathé's UK record.
+- **Next:** Asia's and Televisa, the same day ("Asia's Studios And Televisa", above).
+
 ## Amazon, Lionsgate, Netflix, Apple, Legendary And The Independent Studios (November 18, 2026)
 
 The owner asked for every other studio to be brought over the way the first TMDB haul was ("all the studios and their
@@ -59,7 +124,7 @@ stuff"). The American ones came first, read on November 18, 2026 (`REGISTRY_CHEC
   TMDB credits to Netflix itself are gathered under it.
 - **Left out, on purpose.** Amazon Studios' regional records, a second Orion record, the newer United Artists record,
   Netflix's regional records, A24's London record and Annapurna's namesake in India. None is claimed either way.
-- **Next:** the big international studios (Toho, StudioCanal, Gaumont, Pathé and others).
+- **Next:** the big international studios. Europe's came the same day ("Europe's Studios", above).
 
 ## Skydance (Paramount And Warner Bros.) And Sony (November 11, 2026)
 

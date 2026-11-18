@@ -66,6 +66,11 @@ const S = {
   appleLeaders: { url: 'https://www.apple.com/leadership/', title: 'Apple Leadership', published: null },
   appleVideo: { url: 'https://www.apple.com/uk/tv-pr/news/2026/06/apples-eddy-cue-honored-as-the-2026-entertainment-person-of-the-year/', title: "Apple's Eddy Cue honoured as the 2026 Entertainment Person of the Year", published: '2026-06-22' },
   legendary: { url: 'https://www.legendary.com/about/', title: 'Legendary: About (its film and television divisions)', published: null },
+  // Europe's studios, read on November 18, 2026.
+  constantin: { url: 'https://constantin.film/en/companies/constantin-film-ag/', title: 'Constantin Film AG (a subsidiary of Highlight Communications AG; its Executive Board)', published: null },
+  film4: { url: 'https://film4productions.com/about', title: "About Film4 Productions (Channel 4 Television's feature film division)", published: null },
+  // Asia's and Mexico's, read on November 18, 2026.
+  toeiAnim: { url: 'https://corp.toei-anim.co.jp/en/company/history.html', title: 'Toei Animation: History (July 1956: Nichido Film purchased by Toei Co. and renamed Toei Doga)', published: null },
 } satisfies Record<string, Source>;
 
 /** When the registry was researched: TMDB IDs checked, leadership pages read. Disney's companies, November 10, 2026. */
@@ -74,7 +79,7 @@ export const REGISTRY_CHECKED = '2026-11-10';
 export const REGISTRY_CHECKED_NBCU = '2026-11-11';
 /** Skydance's and Sony's companies, the same day as NBCUniversal's, for the Creative Depth package. */
 export const REGISTRY_CHECKED_F = '2026-11-11';
-/** Amazon's, Lionsgate's, Netflix's and Apple's companies, and the independent studios, read on November 18, 2026. */
+/** Amazon's, Lionsgate's, Netflix's and Apple's companies, the American independents and Europe's studios, read on November 18, 2026. */
 export const REGISTRY_CHECKED_US = '2026-11-18';
 
 const TWDC = 'company:the-walt-disney-company';
@@ -108,6 +113,10 @@ const MLABEL = "Placed here as an MGM label. No official source for when it beca
 const lgs = () => ({ id: LIONSGATE, how: 'division' as const, from: null, source: S.starzSplit });
 const nfx = () => ({ id: NETFLIX, how: 'division' as const, from: null, source: null });
 const apl = () => ({ id: APPLE, how: 'division' as const, from: null, source: null });
+const HIGHLIGHT = 'company:highlight-communications';
+const CHANNEL4 = 'company:channel-4';
+/** Its own page refused automated readers or named no owner on November 18, 2026, so it stands on its own here. */
+const UNREAD = (owner: string) => `Reported as part of ${owner}, but no official source saying so could be read on November 18, 2026, so it stands on its own here.`;
 type Kind = CompanyRecord['kind'];
 const rec = (slug: string, name: string, kind: Kind, id: number, country: string, hq: string, parent: CompanyRecord['parent'], notes: string[] = [], related: CompanyRecord['related'] = []): CompanyRecord =>
   ({ id: `company:${slug}`, name, kind, roles: ['production'], tmdb: tm(id, name, country, hq), website: null, parent, related, notes });
@@ -301,6 +310,41 @@ export const COMPANIES: CompanyRecord[] = [
   rec('amblin-entertainment', 'Amblin Entertainment', 'film', 56, 'US', 'Universal City, California', null),
   rec('annapurna-pictures', 'Annapurna Pictures', 'film', 13184, 'US', 'Los Angeles, California', null, ['TMDB has an Annapurna Pictures record in India (117057), a different company, which is not covered.']),
   { ...rec('miramax', 'Miramax', 'film', 14, 'US', 'Los Angeles, California', null, ['ViacomCBS (later Paramount, now part of Skydance) bought 49% of Miramax in April 2020 (its 10-Q for that quarter). That is a minority holding, so Miramax stands on its own here; who holds the rest was not read from an official source on November 18, 2026.']), related: [] },
+  // Europe's studios, read on November 18, 2026. Each TMDB ID was found by TMDB's company search and checked against its
+  // details that day; regional records (StudioCanal's UK and German, Pathé's UK) are not covered.
+  { ...rec('studiocanal', 'StudioCanal', 'film', 694, 'FR', 'Paris', null, [UNREAD('CANAL+'), "TMDB's StudioCanal records for the UK (113521) and Germany (106689) are not covered."]), roles: ['production', 'distribution'] },
+  { ...rec('gaumont', 'Gaumont', 'film', 9, 'FR', 'Neuilly-sur-Seine', null), roles: ['production', 'distribution'] },
+  { ...rec('pathe', 'Pathé', 'film', 7981, 'FR', 'Paris', null, ["TMDB's Pathe record for the UK (7396) is not covered."]), roles: ['production', 'distribution'] },
+  { ...rec('europacorp', 'EuropaCorp', 'film', 6896, 'FR', 'Paris', null), roles: ['production', 'distribution'] },
+  { ...rec('wild-bunch', 'Wild Bunch', 'film', 856, 'FR', 'Paris', null), roles: ['production', 'distribution'] },
+  { id: HIGHLIGHT, name: 'Highlight Communications AG', kind: 'corporate', roles: ['holding'], tmdb: null, website: 'https://www.highlight-group.com', parent: null, related: [], notes: ['TMDB credits no titles to Highlight Communications itself; Constantin Film is credited.'] },
+  { ...rec('constantin-film', 'Constantin Film', 'film', 47, 'DE', 'Munich', { id: HIGHLIGHT, how: 'division', from: null, source: S.constantin }, ["Constantin's own page calls it a subsidiary of Highlight Communications AG; when it became one isn't recorded."]), roles: ['production', 'distribution'] },
+  rec('ufa', 'UFA', 'film', 12372, 'DE', 'Potsdam', null, ["UFA's own page calls it the parent of all the German production of an international media group, without naming the group, so it stands on its own here."]),
+  rec('rai-cinema', 'RAI Cinema', 'film', 155990, 'IT', 'Rome', null, [UNREAD('RAI, Italy\'s public broadcaster')]),
+  rec('medusa-film', 'Medusa Film', 'film', 6246, 'IT', 'Rome', null, ["Its own page names no owner, and no official source for one was read on November 18, 2026, so it stands on its own here."]),
+  rec('bbc-film', 'BBC Film', 'film', 288, 'GB', 'London, England', null, [UNREAD('the BBC')]),
+  { id: CHANNEL4, name: 'Channel 4', kind: 'corporate', roles: ['holding'], tmdb: null, website: 'https://www.channel4.com', parent: null, related: [], notes: ['TMDB credits Film4 Productions, not Channel 4 itself, with its films.'] },
+  rec('film4-productions', 'Film4 Productions', 'film', 6705, 'GB', 'London, England', { id: CHANNEL4, how: 'division', from: null, source: S.film4 }, ["Film4's own page calls it Channel 4 Television's feature film division."]),
+  // Asia's and Mexico's studios, read on November 18, 2026, the same way. Only Toei Animation is placed under another
+  // company: its own history says Toei bought it. The rest stand on their own, by country.
+  { ...rec('toho', 'TOHO', 'film', 882, 'JP', 'Tokyo', null), roles: ['production', 'distribution'] },
+  { ...rec('toei-company', 'Toei Company', 'film', 5822, 'JP', 'Chuo, Tokyo', null, ["TMDB's Toei Video Company record (9221) is not covered."]), roles: ['production', 'distribution'] },
+  rec('toei-animation', 'Toei Animation', 'film', 5542, 'JP', 'Nerima, Tokyo', { id: 'company:toei-company', how: 'division', from: null, source: S.toeiAnim }, ["Toei Animation's own history says Toei bought it in July 1956, as Nichido Film, and renamed it Toei Doga. How much of it Toei holds now isn't recorded."]),
+  { ...rec('shochiku', 'Shochiku', 'film', 192, 'JP', 'Tokyo', null), roles: ['production', 'distribution'] },
+  rec('nikkatsu', 'Nikkatsu Corporation', 'film', 955, 'JP', 'Bunkyo, Tokyo', null),
+  rec('kadokawa', 'KADOKAWA', 'film', 2073, 'JP', 'Tokyo', null, ["TMDB's KADOKAWA Shoten (1194) and KADOKAWA Daiei Studio (46774) records are not covered."]),
+  rec('studio-ghibli', 'Studio Ghibli', 'film', 10342, 'JP', 'Koganei, Tokyo', null, [UNREAD('Nippon TV since October 6, 2023')]),
+  { ...rec('cj-enm', 'CJ ENM', 'film', 128404, 'KR', 'Mapo, Seoul', null), roles: ['production', 'distribution'] },
+  { ...rec('showbox', 'Showbox', 'film', 3491, 'KR', 'Gangnam, Seoul', null, ["TMDB's record names Lotte Entertainment as its parent; no source read on November 18, 2026 supports that, so it isn't followed."]), roles: ['production', 'distribution'] },
+  { ...rec('lotte-entertainment', 'Lotte Entertainment', 'film', 7819, 'KR', 'Songpa, Seoul', null), roles: ['production', 'distribution'] },
+  rec('shaw-brothers', 'Shaw Brothers', 'film', 5798, 'HK', '', null),
+  { ...rec('orange-sky-golden-harvest', 'Orange Sky Golden Harvest', 'film', 2521, 'HK', 'Hong Kong', null, ["TMDB's earlier Golden Harvest Productions record (39985) is not covered."]), roles: ['production', 'distribution'] },
+  { ...rec('bona-film-group', 'Bona Film Group', 'film', 30148, 'CN', 'Beijing', null), roles: ['production', 'distribution'] },
+  { ...rec('yash-raj-films', 'Yash Raj Films', 'film', 1569, 'IN', 'Mumbai, Maharashtra', null), roles: ['production', 'distribution'] },
+  rec('t-series', 'T-Series', 'film', 3522, 'IN', 'Mumbai, Maharashtra', null),
+  rec('dharma-productions', 'Dharma Productions', 'film', 19146, 'IN', 'Mumbai, Maharashtra', null),
+  rec('red-chillies-entertainment', 'Red Chillies Entertainment', 'film', 2343, 'IN', 'Mumbai, Maharashtra', null),
+  rec('televisa', 'Televisa', 'television', 20911, 'MX', 'Mexico City', null, ['Mostly series: TMDB credits it with far more series than films.']),
 ];
 
 export interface LeadershipRole {
@@ -393,6 +437,10 @@ export const LEADERSHIP: LeadershipRole[] = [
   role('exec:john-ternus', 'John Ternus', APPLE, 'CEO', [S.appleLeaders]),
   role('exec:eddy-cue', 'Eddy Cue', APPLE, 'Senior Vice President Services and Health', [S.appleLeaders, S.appleVideo]),
   role('exec:jamie-erlicht', 'Jamie Erlicht', 'company:apple-studios', "Apple's head of Worldwide Video", [S.appleVideo]),
+  // Constantin Film's Executive Board, from its own page as it stood on November 18, 2026 (no dates given).
+  role('exec:oliver-berben', 'Oliver Berben', 'company:constantin-film', 'CEO', [S.constantin]),
+  role('exec:martin-bachmann', 'Martin Bachmann', 'company:constantin-film', 'Member of the Executive Board', [S.constantin]),
+  role('exec:hanns-beese', 'Hanns Beese', 'company:constantin-film', 'Member of the Executive Board', [S.constantin]),
 ];
 
 /** Companies whose leadership couldn't be confirmed from a current official source, and why. Shown on their pages. */
@@ -420,6 +468,20 @@ export const LEADERSHIP_GAPS: Record<string, string> = {
   'company:amblin-entertainment': 'No official source for Amblin\'s leadership was found on November 18, 2026, so none is listed.',
   'company:annapurna-pictures': 'No official source for Annapurna\'s leadership was found on November 18, 2026, so none is listed.',
   'company:miramax': 'No official source for Miramax\'s leadership was found on November 18, 2026, so none is listed.',
+  'company:studiocanal': "StudioCanal's and CANAL+'s own sites refuse automated readers, so no current official source for its leadership could be read on November 18, 2026, and none is listed.",
+  'company:gaumont': "No current official source for Gaumont's leadership was read on November 18, 2026, so none is listed.",
+  'company:pathe': "No current official source for Pathé's leadership was read on November 18, 2026, so none is listed.",
+  'company:ufa': "UFA's own page (read November 18, 2026) names no executives, so none is listed.",
+  'company:rai-cinema': "RAI Cinema's own site refuses automated readers, so no current official source for its leadership could be read on November 18, 2026, and none is listed.",
+  'company:medusa-film': "Medusa Film's own page (read November 18, 2026) names no executives, so none is listed.",
+  'company:bbc-film': "The BBC's own site refuses automated readers, so no current official source for BBC Film's leadership could be read on November 18, 2026, and none is listed.",
+  'company:film4-productions': "Film4's own page (read November 18, 2026) names no executives, so none is listed.",
+  'company:toho': "No official source for its leadership could be read on November 18, 2026, so none is listed.",
+  'company:toei-company': "No official source for its leadership could be read on November 18, 2026, so none is listed.",
+  'company:shochiku': "No official source for its leadership could be read on November 18, 2026, so none is listed.",
+  'company:studio-ghibli': "No official source for its leadership could be read on November 18, 2026, so none is listed.",
+  'company:cj-enm': "No official source for its leadership could be read on November 18, 2026, so none is listed.",
+  'company:yash-raj-films': "No official source for its leadership could be read on November 18, 2026, so none is listed.",
 };
 
 export const company = (id: string) => COMPANIES.find((c) => c.id === id);
@@ -428,7 +490,11 @@ export const companyByTmdb = (tmdbId: number) => COMPANIES.find((c) => c.tmdb?.i
  * When a company's record and leadership were read. Illumination and Working Title stand outside NBCUniversal (no official
  * source placed them in it) but were read with it.
  */
-const READ_US = new Set([AMAZON, LIONSGATE, NETFLIX, APPLE, LEGENDARY, 'company:a24', 'company:neon', 'company:blumhouse-productions', 'company:blumhouse-television', 'company:amblin-entertainment', 'company:annapurna-pictures', 'company:miramax', 'company:starz']);
+const READ_US = new Set([AMAZON, LIONSGATE, NETFLIX, APPLE, LEGENDARY, 'company:a24', 'company:neon', 'company:blumhouse-productions', 'company:blumhouse-television', 'company:amblin-entertainment', 'company:annapurna-pictures', 'company:miramax', 'company:starz',
+  // Europe's, read the same day.
+  'company:studiocanal', 'company:gaumont', 'company:pathe', 'company:europacorp', 'company:wild-bunch', HIGHLIGHT, 'company:ufa', 'company:rai-cinema', 'company:medusa-film', 'company:bbc-film', CHANNEL4,
+  // Asia's and Mexico's, read the same day.
+  'company:toho', 'company:toei-company', 'company:shochiku', 'company:nikkatsu', 'company:kadokawa', 'company:studio-ghibli', 'company:cj-enm', 'company:showbox', 'company:lotte-entertainment', 'company:shaw-brothers', 'company:orange-sky-golden-harvest', 'company:bona-film-group', 'company:yash-raj-films', 'company:t-series', 'company:dharma-productions', 'company:red-chillies-entertainment', 'company:televisa']);
 export function checkedFor(id: string): string {
   const g = groupOf(id)?.id;
   if (g === SKY || g === SONY) return REGISTRY_CHECKED_F;
