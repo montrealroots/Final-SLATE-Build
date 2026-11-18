@@ -119,7 +119,7 @@ export function ReputationCard() {
           return <Fragment key={role}><dt>{role === 'directing' ? 'Directing' : 'Writing'}</dt><dd>{reach === 0 ? 'No studio offers yet: they come once you\'re Established in this role.' : reach === Infinity ? 'Studios may offer you any picture they make.' : `Studios may offer you pictures of up to ${money(reach)}.`}</dd></Fragment>;
         })}
       </dl>
-      <p className="dim small">Studios ask you to direct or write their own pictures as your standing grows: none while you're Emerging, up to {money(STUDIO_REACH.Established)} once you're Established, {money(STUDIO_REACH['In Demand'])} In Demand, and any picture once you're Leading. Your standing follows how good your work is, and every selection, nomination and win it earns counts. A win can bring a studio calling within weeks. A studio that asked lately makes way for others, and one whose picture you made comes back for the next. These sizes are game calibration.</p>
+      <p className="dim small">Studios ask you to direct or write their own pictures as your standing grows: none while you're Emerging, up to {money(STUDIO_REACH.Established)} once you're Established, {money(STUDIO_REACH['In Demand'])} In Demand, and any picture once you're Leading. Your standing follows how good your work is, and every selection, nomination and win it earns counts. A win can bring a studio calling within weeks. A studio that asked lately makes way for others, and one whose picture you made comes back with a deal for its next two (three once you're Leading), each paid a step above the last. These sizes are game calibration.</p>
     </section>
   );
 }

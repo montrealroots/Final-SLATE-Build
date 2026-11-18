@@ -18,7 +18,8 @@ import { money } from './budget';
 import { getPlace } from '../data/places';
 import { KILL_FEE_DAYS, PRODUCTION_KIND_LABELS, daysUntil, industryStanding, shootingDays, slateHere, type Production } from './productions';
 import { workRight, type Activity } from './papers';
-import { activeOverall } from './first-look';
+import { activeOverall, STUDIO_PROJECT_NOTICE_DAYS } from './first-look';
+import { pictureQuality } from './your-films';
 import type { GameState } from './types';
 
 export type JobRole = 'acting' | 'writing' | 'directing';
@@ -53,7 +54,13 @@ export interface OutsideJob {
   missed: string[];
   planIds?: string[];
   /** A studio's own picture (studio-projects.ts, from November 18, 2026): the fee in all, its franchise, its genre. */
-  studio?: { fee: number; franchise?: string; genre: string; budget?: number; budgetOf?: string; first?: boolean; set?: 'share' | 'guild'; why?: string };
+  studio?: { fee: number; franchise?: string; genre: string; budget?: number; budgetOf?: string; first?: boolean; set?: 'share' | 'guild'; why?: string;
+    /** A multi-picture deal (from November 18, 2026): this is picture `picture` of `of`, and `fees` are each picture's. */
+    deal?: { picture: number; of: number; fees: number[] };
+    /** The title it's released under, the studio's, invented by the game; and the day it comes out, set when shooting wraps. */
+    title?: string; released?: string;
+    /** Its genres (the franchise's latest film's, else the studio's own), its quality once the work is done, and its honours (your-films.ts). */
+    genres?: string[]; quality?: number; honours?: { status: 'selected' | 'nominated' | 'won'; category: string; recipient: string; event: string; at: number }[] };
 }
 
 export const JOB_ROLES: Record<JobRole, { label: string; doing: string; days: [number, number]; base: number; perDelivered: number }> = {
@@ -157,6 +164,9 @@ registerHandler('job-counter', (state, ev) => {
   if (agreed) j.dayRate = j.counter.rate;
   // A studio picture's ask is for a fifth more on the fee, which the day rate follows.
   if (agreed && j.studio) j.studio.fee = Math.round((j.studio.fee * 1.2) / 1000) * 1000;
+  // A deal's first picture agreed higher lifts the deal's later pictures alike.
+  const deal = j.studio?.deal;
+  if (agreed && deal?.picture === 1) deal.fees = deal.fees.map((f) => Math.round((f * 1.2) / 1000) * 1000);
   const what = j.studio ? `${money(j.studio.fee)} for ${j.production}` : `${money(j.dayRate)} a day on ${j.production}`;
   const text = agreed ? `${j.company} agreed to ${what}.` : `${j.company} kept its ${j.studio ? 'fee' : 'rate'} of ${what}. The offer is still open.`;
   addLog(state, text, 'personal', { route: { view: 'profile' } });
@@ -261,6 +271,13 @@ export function declineJob(state: GameState, id: string): void {
   const j = jobById(state, id);
   if (!j || j.status !== 'offered') throw new Error('That offer is no longer open.');
   j.status = 'declined';
+  endsDeal(state, j);
+}
+
+/** A deal's picture not made ends the deal (studio-projects.ts): no picture after it is owed. Declining the first is declining the deal. */
+function endsDeal(state: GameState, j: OutsideJob, signed = false): void {
+  const deal = j.studio?.deal;
+  if (deal && (deal.picture > 1 || signed)) addLog(state, `That ends your ${deal.of}-picture deal with ${j.company}.`, 'personal', { route: { view: 'profile' } });
 }
 
 /** Leave a job taken: no pay for days not yet worked, and offers come less often. Days worked are still paid. */
@@ -272,6 +289,7 @@ export function withdrawJob(state: GameState, id: string): void {
   cancelEvents(state, (e) => e.kind === 'job-day' && e.payload.jobId === j.id);
   pay(state, j);
   addLog(state, `You withdrew from ${j.production}. Offers will come less often for a while.`, 'warning', { route: { view: 'profile' } });
+  endsDeal(state, j, true);
 }
 
 /** What the job pays for the days worked, less commission, posted once. */
@@ -282,6 +300,9 @@ export function pay(state: GameState, j: OutsideJob): void {
   postPersonal(state, 'paid-work', gross, `Paid For ${JOB_ROLES[j.role].label} On ${j.production}`, `job:${j.id}`);
   if (j.viaAgent) postPersonal(state, 'commission', -Math.round(gross * j.viaAgent.rate), `Commission To ${agentById(j.viaAgent.agentId).name}: ${Math.round(j.viaAgent.rate * 100)}% Of ${money(gross)}`, `job-commission:${j.id}`);
 }
+
+/** Days from a studio picture's last day of work to its release: a year of post-production and marketing. Game calibration. */
+export const STUDIO_RELEASE_DAYS = 365;
 
 /** A job morning: there, awake and not travelling, or the day is missed. After the last, the job is paid and credited. */
 registerHandler('job-day', (state, ev) => {
@@ -298,7 +319,19 @@ registerHandler('job-day', (state, ev) => {
     j.status = 'done';
     const before = personalBalance(state);
     pay(state, j);
+    // A deal's next picture is the studio's to offer a month on (studio-projects.ts).
+    const deal = j.studio?.deal;
+    if (deal && deal.picture < deal.of) schedule(state, state.now + STUDIO_PROJECT_NOTICE_DAYS * DAY, 'studio-project', { after: j.id }, { attention: 'silent', priority: 70, id: `studio-project:${j.id}` });
     text += ` That was the last day: ${money(personalBalance(state) - before)} comes to your account${j.viaAgent ? ', after your agent\'s commission' : ''}.`;
+    // The studio announces its title and its release, a year on (STUDIO_RELEASE_DAYS), once the work is done.
+    if (j.studio?.title) {
+      j.studio.released = addDaysToKey(j.days[j.days.length - 1], STUDIO_RELEASE_DAYS);
+      // How good it is: your craft in the role, with a picture's luck (your-films.ts); it opens on its day.
+      j.studio.quality = pictureQuality(state, j);
+      const { year, month, day } = parseYmd(j.studio.released);
+      schedule(state, localToInstant(j.zone, year, month, day, 10).instant, 'your-film-release', { jobId: j.id }, { attention: 'notify', priority: 55, id: `your-film-release:${j.id}` });
+      text += ` ${j.company} will release it as ${j.studio.title} on ${formatDateKey(j.studio.released)}.`;
+    }
   }
   addLog(state, text, worked ? 'personal' : 'warning', { route: { view: 'profile' } });
   return { message: text, suppressInterrupt: there };

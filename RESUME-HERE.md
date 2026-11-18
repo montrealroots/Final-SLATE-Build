@@ -86,6 +86,37 @@ like "so and so wants you to take over and film the next Batman", invented entri
   pictures' size, a better rate agreed), or a slip and what it closes. A new life starts Emerging; an older save starts
   from the grades it has on load (`save.ts`). Tests: `tests/grade-news.test.ts`, and the hooks in
   `tests/episode-delivery.test.ts` and `tests/awards-catalog.test.ts`.
+- **Multi-picture deals (the owner, November 18: "Build the multi-picture deals next"):** `src/engine/studio-projects.ts`.
+  A studio whose picture you made comes back with a deal for its next two pictures (three once you're Leading), each paid
+  15% above the last (`STUDIO_DEAL_PICTURES`, `STUDIO_DEAL_STEP`, game calibration). The deal rides on the studio offer
+  (`studio.deal`: picture, of, fees) and the existing accept and decline commands; the next picture is offered a month
+  after the last is done (`jobs.ts` schedules the `studio-project` event), owed whatever the six-month gap or the grade;
+  declining or withdrawing ends the deal and says so; a better fee agreed on the first picture lifts the rest. No new
+  command, event or saved field. Tests: `tests/studio-projects.test.ts` "multi-picture deals"; `e2e/studio-projects.spec.ts`.
+- **Studio pictures are titled, and franchises show on the studio's page (the owner, November 18: "Give a name to that
+  Godzilla movie then show me what the Godzilla franchise would look like after on the industry page"):** each studio
+  offer carries the title the studio will release it under (`studio.title`, invented: a franchise entry is
+  "Franchise: Subtitle" from a list of sequel subtitles, an original from the world's film words); the offer keeps its
+  working title, and when the last day is worked the news says the title and the release, a year on
+  (`STUDIO_RELEASE_DAYS`, `studio.released`). The build keeps each franchise's films (`fr[].films`, franchises.mjs), and a
+  studio's Companies page has a Franchises section: each franchise's latest five recorded films (all on asking), then
+  the pictures you made in it, marked Your Picture. A save takes the studio profiles when its world starts, so a save
+  from before November 18 shows counts, not the films. Tests: `tests/studio-projects.test.ts`, `tests/franchises.test.ts`,
+  `e2e/studio-projects.spec.ts`.
+- **Your studio pictures go out into the world (the owner, November 18: "Release my picture into the world with box
+  office and awards. And my movie should have a page just like the other films and series also listing actors and
+  etc."):** `src/engine/your-films.ts`. When its last day is worked a picture gets a quality (your craft in the role,
+  give or take 8) and its opening is scheduled (`your-film-release`, a notice: not a feature in the matrix); it plays 14
+  weeks from its budget and quality (simulated); it enters every award whose rules it meets beside the studios' films
+  (`awards-results.ts` studioCandidates, `pictureEligible`: its studio's country and language, genres, never a debut or
+  independent, a sequel's screenplay adapted, no festivals since it opens in cinemas), judged on its quality; its
+  honours are recorded at each edition's results, told, and those in your role count for you, a win bringing a
+  studio's call; once out its quality counts as a work in your role. Its page (Catalog.tsx YourFilmPage, from Toho's
+  Franchises) shows what it is, its run week by week, its honours, cast and crew (you; the rest invented). Played
+  through for Toho's Godzilla: Retribution: quality 76, $52.9M, Oscar nominations for Adapted Screenplay, Costume,
+  Makeup, Sound and Visual Effects, BAFTA Director, Golden Globe Screenplay and Score, no wins.
+  Not yet: the invented cast's names come from the world's one name pool whatever the studio's country; money from
+  the box office stays the studio's (no profit share).
 - **Still to bring in, if the owner wants them:** more of the world's studios (Australia, Spain, Nordic countries,
   Nigeria, Turkey, Brazil, Argentina, other Indian languages' studios), found by the same company search.
 - Tests: `tests/studio-projects.test.ts`, `e2e/studio-projects.spec.ts`, proof `off-studio-project`.

@@ -466,7 +466,7 @@
  "verdict": "proven",
  "hashes": {
   "src/engine/awards-actions.ts": "cef3e1812969115e",
-  "src/engine/awards-results.ts": "910fd1aff491ff13",
+  "src/engine/awards-results.ts": "8266ff27967123e2",
   "tests/proof/career.ts": "50bea06f19a02c5b"
  }
 }

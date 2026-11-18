@@ -17,6 +17,10 @@ import { episodeDates, outletOf, profileFor, recordedModel, recordedUpTo, type S
 import { ageOn, announcedSeason, breakLength, breaksOf, castFor, decisionsFor, nightsOf, usualDecision } from '../catalog/simseason';
 import { addDaysToKey } from '../engine';
 import { studioFilm, studioFilms } from '../engine/studios';
+import { franchiseName } from '../engine/studio-projects';
+import { asWorldFilm, pictureCredits, yourBoxOffice, yourFilmId, yourPicture } from '../engine/your-films';
+import { money } from '../engine/budget';
+import { qualityWords } from '../engine/finish';
 import logo from '../catalog/tmdb-logo.svg';
 import { Check, Empty, PageHead, Panel, SelectField, TextField } from './components';
 import { Breadcrumbs } from './Shell';
@@ -226,6 +230,7 @@ export function CompanyPage({ id }: { id: string }) {
       </Panel>
       <LeadershipCard c={c} today={today} />
       <SimulatedFilms companyId={c.id} today={today} />
+      <Franchises companyId={c.id} name={c.name} today={today} />
       {c.tmdb && c.kind !== 'network' ? <Filmography tmdbId={c.tmdb.id} name={c.name} today={today} /> : (
         <Panel title="Titles"><p className="muted">{c.kind === 'network' ? 'No titles are gathered for networks and streaming services: where a title airs or streams isn\'t who made it.' : 'TMDB credits no titles to this company itself; see its studios and labels.'}</p></Panel>
       )}
@@ -367,7 +372,112 @@ function SimulatedFilms({ companyId, today }: { companyId: string; today: string
   );
 }
 
+/**
+ * The studio's franchises (from November 18, 2026, the owner: "show me what the Godzilla franchise would look like"):
+ * each one's recorded films (tools/screen-catalog/franchises.mjs), then the pictures you made for it, the studio's own
+ * and invented by the game, with the title it releases them under and when.
+ */
+function Franchises({ companyId, name, today }: { companyId: string; name: string; today: string }) {
+  const g = useGame();
+  const profile = g.industry?.studios?.find((p) => p.c === companyId);
+  const mine = (g.jobs ?? []).filter((j) => j.status === 'done' && j.studio?.title && j.company === (profile?.name ?? name));
+  if (!profile?.fr?.length && !mine.length) return null;
+  const yours = (j: (typeof mine)[number]) => (
+    <li key={j.id} className="list-item">
+      <span className="grow"><Link to={titleRoute(yourFilmId(j))}>{j.studio!.title}</Link> <span className="chip">Your Picture</span> <span className="dim small">You {j.role === 'directing' ? 'directed' : 'wrote'} it.</span></span>
+      <span className="dim small">{j.studio!.released ? (j.studio!.released <= today ? `Released ${day(j.studio!.released)}` : `Due ${day(j.studio!.released)}`) : 'Not yet dated'}</span>
+    </li>
+  );
+  const own = new Set((profile?.fr ?? []).map((f) => franchiseName(f.name)));
+  const originals = mine.filter((j) => !j.studio!.franchise || !own.has(j.studio!.franchise));
+  return (
+    <Panel title="Franchises" subtitle={`The franchises ${name} has made films in lately, from the records, with the pictures you made in them. Yours are its own, invented by the game.`}>
+      {(profile?.fr ?? []).map((f) => {
+        const said = franchiseName(f.name);
+        return <FranchiseFilms key={f.name} said={said} f={f} today={today}>{mine.filter((j) => j.studio!.franchise === said).map(yours)}</FranchiseFilms>;
+      })}
+      {originals.length > 0 && <><h3>Your Pictures For {name}</h3><ul className="list">{originals.map(yours)}</ul></>}
+    </Panel>
+  );
+}
+
+/** A franchise's latest five recorded films, all on asking, then yours (Franchises). */
+const FRANCHISE_SHOWN = 5;
+function FranchiseFilms({ said, f, today, children }: { said: string; f: { entries: number; last: string; films?: { r: string; t: string; d: string }[] }; today: string; children: ReactNode }) {
+  const [all, setAll] = useState(false);
+  const films = f.films ?? [];
+  const shown = all ? films : films.slice(-FRANCHISE_SHOWN);
+  return (
+    <section>
+      <h3>{said}</h3>
+      <ul className="list" aria-label={`${said} Films`}>
+        {shown.map((x) => <li key={x.r} className="list-item"><span className="grow"><Link to={titleRoute(x.r)}>{x.t}</Link></span><span className="dim small">{happenedBy(x.d, today) ? yearOf(x.d) : `Due ${day(x.d)}`}</span></li>)}
+        {!films.length && <li className="list-item"><span className="grow muted">{plural(f.entries, 'film')} recorded, the latest in {yearOf(f.last)}.</span></li>}
+        {children}
+      </ul>
+      {films.length > FRANCHISE_SHOWN && <button className="btn btn-sm" onClick={() => setAll(!all)}>{all ? `Show The Latest ${FRANCHISE_SHOWN}` : `Show All ${films.length} ${said} Films`}</button>}
+    </section>
+  );
+}
+
+/**
+ * A studio picture you made, as the world sees it (your-films.ts; from November 18, 2026, the owner: "my movie should have
+ * a page just like the other films"): what it is, its box office, its honours, and its cast and crew.
+ */
+function YourFilmPage({ refId }: { refId: string }) {
+  const g = useGame();
+  const today = useToday();
+  const j = yourPicture(g, refId);
+  if (!j) return <Empty title="This Film Isn't In Your Story"><p className="muted">It was made in another save.</p><GoBack /></Empty>;
+  const st = j.studio!;
+  const f = asWorldFilm(g, j);
+  const c = registryCompany(f.company);
+  const { cast, crew } = pictureCredits(g, j);
+  const out = st.released! <= today;
+  const bo = yourBoxOffice(g, j);
+  return (
+    <>
+      <Breadcrumbs items={[{ label: 'Companies', route: { view: 'companies' } }, ...(c ? [{ label: c.name, route: { view: 'company', ref: c.id } as Route }] : []), { label: f.title }]} />
+      <PageHead eyebrow="Film" title={f.title} />
+      <Panel title="About">
+        <p><span className="chip">Your Picture</span> You {j.role === 'directing' ? 'directed' : 'wrote'} it for {j.company}. The film and everyone on it but you are invented by the game; its box office and honours are your story's.</p>
+        <dl className="kv">
+          <dt>Studio</dt><dd>{c ? <Link to={{ view: 'company', ref: c.id } as Route}>{c.name}</Link> : j.company}</dd>
+          {st.franchise && <><dt>Franchise</dt><dd>{st.franchise}</dd></>}
+          <dt>{out ? 'Released' : 'Due'}</dt><dd>{day(st.released!)}</dd>
+          <dt>Genres</dt><dd>{f.genres.join(', ')}</dd>
+          <dt>Running Time</dt><dd>{f.runtimeMin} minutes</dd>
+          {st.budget ? <><dt>Budget</dt><dd>{money(st.budget)}</dd></> : null}
+          {out && <><dt>Reception</dt><dd>{qualityWords(st.quality ?? 50)}</dd></>}
+        </dl>
+      </Panel>
+      <Panel title="Box Office" subtitle="Worldwide ticket sales, week by week. Simulated: the game's, from the picture's budget and how good it is.">
+        {!out ? <p className="muted">It opens on {day(st.released!)}.</p> : !bo.weeks.length ? <p className="muted">Its first week ends on {day(addDaysToKey(st.released!, 6))}.</p> : (
+          <>
+            <dl className="kv">
+              <dt>{bo.running ? 'So Far' : 'All Told'}</dt><dd>{money(bo.total)}</dd>
+              <dt>Opening Week</dt><dd>{money(bo.weeks[0].gross)}</dd>
+              <dt>Weeks In Cinemas</dt><dd>{bo.weeks.length}{bo.running ? ', still showing' : ''}</dd>
+            </dl>
+            <ul className="list" aria-label="Weeks">
+              {bo.weeks.map((w, i) => <li key={w.ends} className="list-item"><span className="grow">Week {i + 1}, to {day(w.ends)}</span><span className="dim small">{money(w.gross)}</span></li>)}
+            </ul>
+          </>
+        )}
+      </Panel>
+      <Panel title="Awards And Festivals">
+        {st.honours?.length ? (
+          <ul className="list">{st.honours.map((h) => <li key={`${h.event}-${h.category}`} className="list-item"><span className="grow">{h.category}, {h.event}</span><span className="dim small">{h.status === 'won' ? 'Won' : h.status === 'selected' ? 'Selected' : 'Nominated'}</span></li>)}</ul>
+        ) : <p className="muted">{out ? 'Nothing yet. It competes for every award whose rules it meets.' : 'Once it opens, it competes for every award whose rules it meets.'}</p>}
+      </Panel>
+      <Panel title="Cast"><ul className="list" aria-label="Cast">{cast.map((n, i) => <li key={`${n}-${i}`} className="list-item"><span className="grow">{n}</span><span className="dim small">{i === 0 ? 'Lead' : 'Supporting'}</span></li>)}</ul></Panel>
+      <Panel title="Crew"><ul className="list" aria-label="Crew">{crew.map((x, i) => <li key={`${x.job}-${i}`} className="list-item"><span className="grow">{x.name}{x.name === g.character.name ? <span className="chip"> You</span> : null}</span><span className="dim small">{x.job}</span></li>)}</ul></Panel>
+    </>
+  );
+}
+
 export function TitlePage({ refId }: { refId: string }) {
+  if (refId.startsWith('your-film:')) return <YourFilmPage refId={refId} />;
   if (refId.startsWith('sim-film:')) return <SimFilmPage refId={refId} />;
   return <RecordedTitlePage refId={refId} />;
 }
