@@ -41,7 +41,11 @@ export function Shell({ children }: { children: ReactNode }) {
   useLayoutEffect(() => {
     if (!store.focusMain) return;
     store.focusMain = false;
-    main.current?.focus({ preventScroll: false });
+    // And opens at its top. Until November 18, 2026 it kept the scroll of the page before, so a film clicked at the foot
+    // of a studio's page opened at its crew.
+    window.scrollTo(0, 0);
+    if (main.current) main.current.scrollTop = 0;
+    main.current?.focus({ preventScroll: true });
   });
 
   useEffect(() => {
