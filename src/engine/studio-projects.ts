@@ -11,7 +11,8 @@
 // in two years. It says why it asks. At most one every six months. Until November 18, 2026 (the owner: "continuity and
 // freshness") it came from the best fit alone, for its latest franchise whatever its size, on the track record's tier.
 // Taken, it is a job like any other (jobs.ts): its days on the calendar, worked in person, paid for the days worked,
-// credited when done.
+// credited when done. A studio back for more offers a multi-picture deal (from November 18, 2026): its pictures come one
+// at a time through the same offers, each a month after the last is done, at the deal's fees; declining one ends it.
 //
 // The money is the trade's (the owner: "real money ... big franchises getting big payday and budget"): the fee is in the
 // range The Hollywood Reporter's salary surveys report for your standing, placed by the picture's real budget, which is the
@@ -98,6 +99,15 @@ const weekdaysFrom = (start: string, n: number): string[] => {
  * I win awards, I'll start getting these offers").
  */
 export const STUDIO_REACH: Record<string, number> = { Emerging: 0, Established: 160_000_000, 'In Demand': 250_000_000, Leading: Infinity };
+/**
+ * A multi-picture deal (the owner, November 18, 2026: "Build the multi-picture deals next"): a studio whose picture you
+ * made comes back for its next two, three once you're Leading, each paid a step above the last. Game calibration: no
+ * published schedule of deal sizes or steps was found; the counts follow the two- and three-picture deals the trade
+ * reports, and the step is the game's.
+ */
+export const STUDIO_DEAL_PICTURES: Record<string, number> = { Established: 2, 'In Demand': 2, Leading: 3 };
+export const STUDIO_DEAL_STEP = 0.15;
+const PICTURES_WORD: Record<number, string> = { 2: 'two', 3: 'three' };
 /** A studio that asked you lately gives way to another, so the offers stay fresh: two years. Game calibration. */
 export const STUDIO_ROTATION_DAYS = 730;
 
@@ -115,19 +125,23 @@ function whyAsked(state: GameState, role: 'directing' | 'writing', since: number
 /** The offer a studio would make now, or null: who, what, the role and the fee. Pure: the same save gives the same answer. */
 export function studioProjectOffer(state: GameState): OutsideJob | null {
   const jobs = (state.jobs ?? []).filter((j) => j.studio);
-  if (jobs.some((j) => state.now - j.offeredAt < STUDIO_PROJECT_GAP_DAYS * DAY)) return null;
+  const profiles = state.industry?.studios ?? [];
+  const done = jobs.filter((j) => j.status === 'done').sort((a, b) => b.offeredAt - a.offeredAt)[0];
+  const untouched = done && !jobs.some((j) => j.company === done.company && j.offeredAt > done.offeredAt);
+  // A deal's next picture is owed once the last is made, whatever the gap or the grade: the studio holds you to it.
+  const owed = untouched && done.studio!.deal && done.studio!.deal.picture < done.studio!.deal.of ? done : undefined;
+  if (!owed && jobs.some((j) => state.now - j.offeredAt < STUDIO_PROJECT_GAP_DAYS * DAY)) return null;
   // Studios ask for the roles you've worked in, once your work in one has made you Established in it.
-  const roles = rolesOffered(state).filter((r): r is 'directing' | 'writing' => r !== 'acting' && studioReach(state, r) > 0);
+  const roles = owed ? [owed.role as 'directing' | 'writing'] : rolesOffered(state).filter((r): r is 'directing' | 'writing' => r !== 'acting' && studioReach(state, r) > 0);
   if (!roles.length) return null;
   // The role your record is strongest in, directing before writing on a tie.
   const role = roles.sort((a, b) => standingWeight(standingIn(state, b)) - standingWeight(standingIn(state, a)) || (a === 'directing' ? -1 : 1))[0];
-  const reach = studioReach(state, role);
-  const profiles = state.industry?.studios ?? [];
-  // The studio: the one whose overall deal you're on; else one whose picture you made, back for the next (continuity);
-  // else the one your work fits best among those that haven't asked in two years (freshness), the best fit if all have.
-  const overall = activeOverall(state);
-  const done = jobs.filter((j) => j.status === 'done').sort((a, b) => b.offeredAt - a.offeredAt)[0];
-  const back = done && !jobs.some((j) => j.company === done.company && j.offeredAt > done.offeredAt) ? profiles.find((x) => strategyOf(x).name === done.company) : undefined;
+  const reach = owed ? Infinity : studioReach(state, role);
+  // The studio: the one whose deal has a picture owed; the one whose overall deal you're on; else one whose picture you
+  // made, back for the next with a deal (continuity); else the one your work fits best among those that haven't asked in
+  // two years (freshness), the best fit if all have.
+  const overall = owed ? undefined : activeOverall(state);
+  const back = untouched ? profiles.find((x) => strategyOf(x).name === done.company) : undefined;
   const recent = new Set(jobs.filter((j) => state.now - j.offeredAt < STUDIO_ROTATION_DAYS * DAY).map((j) => j.company));
   const fits = candidates(state, 'film').map((x) => x.strategy);
   const profile = overall ? profiles.find((x) => x.c === overall.company) : back;
@@ -154,20 +168,27 @@ export function studioProjectOffer(state: GameState): OutsideJob | null {
   // Your first studio picture in the role is a first studio feature, whatever else you've done.
   const first = !jobs.some((j) => j.role === role && j.status === 'done');
   const [lo, hi] = STUDIO_FEES[role][first ? 'first' : dealTier(state)];
+  const owedDeal = owed?.studio!.deal;
   // The DGA's and WGA's minimums bind American studios, which sign their agreements; a studio elsewhere pays its own way.
   // A studio the registry doesn't place (a test's fixture) is taken as American.
   const abroad = (countryOf(strategy.company) ?? 'US') !== 'US';
   const floor = abroad ? 0 : directing ? inForce(DGA_HIGH_BUDGET_WEEK, day) * DGA_GUARANTEE_WEEKS : inForce(WGA_SCREENPLAY, day);
   const range = Math.round((lo + (hi - lo) * at) / 1000) * 1000;
   const share = budget ? Math.min(range, Math.round(budget * STUDIO_FEE_SHARE / 1000) * 1000) : range;
-  const fee = Math.max(floor, share);
+  // Under a deal the fee is the deal's for that picture, agreed when it was signed.
+  const fee = owedDeal ? owedDeal.fees[owedDeal.picture] : Math.max(floor, share);
   // What set the fee, for the offer to say: the guild's minimum, the budget's share, or (unsaid) the trade's range.
-  const set = fee === floor && floor > share ? 'guild' as const : share < range ? 'share' as const : undefined;
+  const set = owedDeal ? undefined : fee === floor && floor > share ? 'guild' as const : share < range ? 'share' as const : undefined;
+  // A studio back for more offers a deal: this picture and its next, or its next two once you're Leading, each a step up.
+  const of = !owed && sequel ? STUDIO_DEAL_PICTURES[standingIn(state, role).grade] ?? 0 : 0;
+  const deal = owedDeal ? { ...owedDeal, picture: owedDeal.picture + 1 }
+    : of > 1 ? { picture: 1, of, fees: Array.from({ length: of }, (_, k) => Math.round((fee * (1 + STUDIO_DEAL_STEP) ** k) / 1000) * 1000) } : undefined;
   const weeks = (STUDIO_SHOOT_WEEKS.find(([from]) => (budget ?? 0) >= from) ?? [0, 8])[1];
   const days = weekdaysFrom(addDaysToKey(day, directing ? 56 : 14), directing ? weeks * 5 : WGA_DRAFT_DAYS);
   const place = currentPlace(state);
   const lastAsk = Math.max(0, ...jobs.filter((j) => j.company === strategy.name).map((j) => j.offeredAt));
-  const why = sequel ? `You ${sequel.role === 'directing' ? 'directed' : 'wrote'} ${sequel.studio?.franchise ? `its last ${sequel.studio.franchise} film` : `${sequel.production} for it`}, and it wants you back.` : whyAsked(state, role, lastAsk);
+  const why = owedDeal ? `Picture ${deal!.picture} of your ${PICTURES_WORD[deal!.of] ?? deal!.of}-picture deal with ${strategy.name}.`
+    : sequel ? `You ${sequel.role === 'directing' ? 'directed' : 'wrote'} ${sequel.studio?.franchise ? `its last ${sequel.studio.franchise} film` : `${sequel.production} for it`}, and it wants you back.` : whyAsked(state, role, lastAsk);
   return {
     id: `studio-${day}`, role,
     production: franchise ? `Untitled ${franchise} Film` : `Untitled ${strategy.name} ${genre} Picture`,
@@ -177,7 +198,7 @@ export function studioProjectOffer(state: GameState): OutsideJob | null {
     requirement: directing ? `On set in ${place.name} each shooting day.` : `With the studio's producers in ${place.name}; the draft is due on the last day.`,
     dayRate: Math.round(fee / days.length), days, placeId: place.id, zone: place.zone,
     status: 'offered', offeredAt: state.now, answerBy: state.now + JOB_ANSWER_DAYS * DAY, attended: [], missed: [],
-    studio: { fee, ...(franchise ? { franchise } : {}), genre, ...(budget ? { budget, budgetOf } : {}), first, ...(set ? { set } : {}), ...(why ? { why } : {}) },
+    studio: { fee, ...(franchise ? { franchise } : {}), genre, ...(budget ? { budget, budgetOf } : {}), first, ...(set ? { set } : {}), ...(why ? { why } : {}), ...(deal ? { deal } : {}) },
   };
 }
 
@@ -185,6 +206,13 @@ export function studioProjectOffer(state: GameState): OutsideJob | null {
 export function studioPitch(j: OutsideJob): string {
   const what = j.studio?.franchise ? `the next ${j.studio.franchise} film` : `its next ${(j.studio?.genre ?? 'drama').toLowerCase()} picture`;
   const work = j.role === 'directing' ? `direct ${what}: ${money(j.studio!.fee)} for ${j.days.length / 5} weeks of shooting` : `write ${what}: ${money(j.studio!.fee)} for the screenplay, ${j.days.length} working days`;
+  const deal = j.studio?.deal;
+  // A deal's first picture is the deal's offer: the picture, then what follows and for how much.
+  if (deal && deal.picture === 1) {
+    const rest = deal.fees.slice(1).map((f) => money(f));
+    const more = deal.of === 2 ? `then its next picture for ${rest[0]}` : `then its next ${PICTURES_WORD[deal.of - 1] ?? deal.of - 1} pictures for ${rest.slice(0, -1).join(', ')} and ${rest[rest.length - 1]}`;
+    return `${j.company} offers you a ${PICTURES_WORD[deal.of] ?? deal.of}-picture deal: ${work}, from ${formatDateKey(j.days[0])}, ${more}. Each comes a month after the last is done; declining one ends the deal.${j.studio?.why ? ` ${j.studio.why}` : ''}`;
+  }
   return `${j.company} wants you to ${work}, from ${formatDateKey(j.days[0])}.${j.studio?.why ? ` ${j.studio.why}` : ''}`;
 }
 /** The picture's scale and where the fee comes from, for the offer's second line. */

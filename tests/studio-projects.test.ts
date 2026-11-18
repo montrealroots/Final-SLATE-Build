@@ -4,8 +4,8 @@
 import { describe, expect, it } from 'vitest';
 import { DAY, createProject, processUntil, setFinanceTarget } from './engine-api';
 import { acceptFirstLook, offerFirstLook, scheduleFirstLookCheck } from '../src/engine/first-look';
-import { acceptJob, acceptRefusal } from '../src/engine/jobs';
-import { franchiseName, studioPitch, studioProjectOffer, studioReach, studioScale, STUDIO_FEE_SHARE, STUDIO_FEES, STUDIO_REACH } from '../src/engine/studio-projects';
+import { acceptJob, acceptRefusal, askBetterRate, declineJob } from '../src/engine/jobs';
+import { franchiseName, studioPitch, studioProjectOffer, studioReach, studioScale, STUDIO_DEAL_PICTURES, STUDIO_DEAL_STEP, STUDIO_FEE_SHARE, STUDIO_FEES, STUDIO_REACH } from '../src/engine/studio-projects';
 import { standingIn } from '../src/engine/reputation';
 import { institution } from '../src/engine/awards';
 import { personalPostings } from '../src/engine/personal';
@@ -212,5 +212,90 @@ describe('a studio project', () => {
     expect(paid).toBe(Math.round((j.studio!.fee * j.attended.length) / j.days.length));
     if (j.attended.length === j.days.length) expect(paid).toBe(j.studio!.fee);
     expect(j.attended.length).toBeGreaterThan(0);
+  });
+});
+
+describe('multi-picture deals', () => {
+  /** A studio picture of MID's, made: the studio comes back with a deal. */
+  const madeOne = (tag: string, studios: StudioProfile[] = [MID]) => {
+    const s = proven(tag, studios);
+    const made = studioProjectOffer(s)!;
+    // Its own id: an offer's id is the day it's made, and the next offer here is made the same day.
+    (s.jobs ??= []).push({ ...made, id: 'made', status: 'done', offeredAt: s.now - 400 * DAY });
+    return { s, made };
+  };
+  const dollars = (n: number) => `$${n.toLocaleString('en-US')}`;
+
+  it('a studio whose picture you made offers a deal for its next two, each a step up, and says so', () => {
+    const { s, made } = madeOne('deal-offer');
+    const j = studioProjectOffer(s)!;
+    const fee = j.studio!.fee;
+    expect(j.studio!.deal).toEqual({ picture: 1, of: 2, fees: [fee, Math.round((fee * (1 + STUDIO_DEAL_STEP)) / 1000) * 1000] });
+    expect([j.company, j.studio!.franchise]).toEqual([made.company, made.studio!.franchise]);
+    const pitch = studioPitch(j);
+    expect(pitch.startsWith(`${MID.name} offers you a two-picture deal: direct the next Long Road film: ${dollars(fee)} for `)).toBe(true);
+    expect(pitch).toContain(`, then its next picture for ${dollars(j.studio!.deal!.fees[1])}. Each comes a month after the last is done; declining one ends the deal.`);
+    // A first studio offer is never a deal: only a studio you've made a picture for offers one.
+    expect(studioProjectOffer(proven('deal-none', [MID]))!.studio!.deal).toBeUndefined();
+  });
+
+  it("is three pictures once you're Leading", () => {
+    const s = leading('deal-three', [MID]);
+    (s.jobs ??= []).push({ ...studioProjectOffer(s)!, status: 'done', offeredAt: s.now - 400 * DAY });
+    const j = studioProjectOffer(s)!;
+    expect(j.studio!.deal!.of).toBe(STUDIO_DEAL_PICTURES.Leading);
+    const [, b, c] = j.studio!.deal!.fees;
+    expect(studioPitch(j)).toContain(`offers you a three-picture deal: `);
+    expect(studioPitch(j)).toContain(`, then its next two pictures for ${dollars(b)} and ${dollars(c)}.`);
+  });
+
+  it("owes the next picture once the last is made, inside the six months, at the deal's fee; and is done after the last", () => {
+    const { s } = madeOne('deal-owed');
+    const first = studioProjectOffer(s)!;
+    // Made just now: no ordinary offer would come for six months, but the deal's next picture does.
+    s.jobs!.push({ ...first, id: 'p1', status: 'done', offeredAt: s.now - 30 * DAY });
+    const second = studioProjectOffer(s)!;
+    expect([second.company, second.studio!.franchise, second.studio!.fee, second.studio!.deal!.picture]).toEqual([first.company, first.studio!.franchise, first.studio!.deal!.fees[1], 2]);
+    expect(second.studio!.why).toBe(`Picture 2 of your two-picture deal with ${first.company}.`);
+    expect(studioPitch(second)).toContain(' wants you to direct the next Long Road film: ');
+    expect(studioPitch(second).endsWith(`Picture 2 of your two-picture deal with ${first.company}.`)).toBe(true);
+    // The last picture made: nothing more is owed, and the six months hold again.
+    s.jobs!.push({ ...second, id: 'p2', status: 'done', offeredAt: s.now - 10 * DAY });
+    expect(studioProjectOffer(s)).toBeNull();
+  });
+
+  it("declining a deal's picture ends the deal, and says so", () => {
+    const { s } = madeOne('deal-decline');
+    const first = studioProjectOffer(s)!;
+    s.jobs!.push({ ...first, id: 'p1', status: 'done', offeredAt: s.now - 30 * DAY });
+    const second = studioProjectOffer(s)!;
+    s.jobs!.push(second);
+    declineJob(s, second.id);
+    expect(s.log[0].text).toBe(`That ends your 2-picture deal with ${first.company}.`);
+    expect(studioProjectOffer(s)).toBeNull(); // nothing owed now, and the six months hold
+  });
+
+  it("a better fee agreed on the first picture lifts the deal's later pictures alike", () => {
+    const { s } = madeOne('deal-ask');
+    const j = studioProjectOffer(s)!;
+    s.jobs!.push(j);
+    const before = [...j.studio!.deal!.fees];
+    askBetterRate(s, j.id);
+    processUntil(s, s.now + 3 * DAY, 'tick', 1_000_000);
+    expect(j.counter?.outcome).toBe('agreed'); // an Established director's ask is agreed (reputation.ts hasLeverage)
+    expect(j.studio!.deal!.fees).toEqual(before.map((f) => Math.round((f * 1.2) / 1000) * 1000));
+  });
+
+  it("once a deal's picture is worked to the end, the studio asks for the next a month on", () => {
+    const { s } = madeOne('deal-worked');
+    const j = studioProjectOffer(s)!;
+    s.jobs!.push(j);
+    acceptJob(s, j.id);
+    for (let i = 0; i < 300 && j.status !== 'done'; i++) processUntil(s, s.now + DAY, 'tick', 1_000_000);
+    expect(j.status).toBe('done');
+    expect(s.jobs!.some((x) => x.studio?.deal?.picture === 2)).toBe(false); // not before the month is out
+    processUntil(s, s.now + 31 * DAY, 'tick', 1_000_000);
+    const next = s.jobs!.find((x) => x.studio?.deal?.picture === 2)!;
+    expect([next.status, next.company, next.studio!.fee]).toEqual(['offered', j.company, j.studio!.deal!.fees[1]]);
   });
 });

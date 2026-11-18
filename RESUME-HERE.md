@@ -86,6 +86,13 @@ like "so and so wants you to take over and film the next Batman", invented entri
   pictures' size, a better rate agreed), or a slip and what it closes. A new life starts Emerging; an older save starts
   from the grades it has on load (`save.ts`). Tests: `tests/grade-news.test.ts`, and the hooks in
   `tests/episode-delivery.test.ts` and `tests/awards-catalog.test.ts`.
+- **Multi-picture deals (the owner, November 18: "Build the multi-picture deals next"):** `src/engine/studio-projects.ts`.
+  A studio whose picture you made comes back with a deal for its next two pictures (three once you're Leading), each paid
+  15% above the last (`STUDIO_DEAL_PICTURES`, `STUDIO_DEAL_STEP`, game calibration). The deal rides on the studio offer
+  (`studio.deal`: picture, of, fees) and the existing accept and decline commands; the next picture is offered a month
+  after the last is done (`jobs.ts` schedules the `studio-project` event), owed whatever the six-month gap or the grade;
+  declining or withdrawing ends the deal and says so; a better fee agreed on the first picture lifts the rest. No new
+  command, event or saved field. Tests: `tests/studio-projects.test.ts` "multi-picture deals"; `e2e/studio-projects.spec.ts`.
 - **Still to bring in, if the owner wants them:** more of the world's studios (Australia, Spain, Nordic countries,
   Nigeria, Turkey, Brazil, Argentina, other Indian languages' studios), found by the same company search.
 - Tests: `tests/studio-projects.test.ts`, `e2e/studio-projects.spec.ts`, proof `off-studio-project`.
