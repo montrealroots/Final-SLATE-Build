@@ -341,28 +341,46 @@ export function seriesJudgement(state: GameState, fl: FirstLook): { keep: boolea
 export const coveredWords = (t: FirstLookTerms): string => (t.overall ? 'films and series' : scopeOf(t) === 'television' ? 'series' : t.animatedOnly ? 'animated films' : 'films');
 
 /** Every term of a first-look offer, in the words shown before accepting. */
-export function firstLookWords(fl: FirstLook): string[] {
+const SPAN: Record<number, string> = { 12: 'a year', 24: 'two years', 36: 'three years', 60: 'five years' };
+const span = (months: number): string => SPAN[months] ?? `${months} months`;
+/**
+ * A deal in the words a studio would use (the owner, November 18, 2026: "more natural wording ... and break it down"):
+ * one sentence saying what it is and what it's worth, then the breakdown, row by row. Until then it was six paragraphs
+ * of terms.
+ */
+export function offerWords(fl: FirstLook): { pitch: string; rows: [string, string][] } {
   const t = fl.terms;
+  const set: [string, string] = ['Set For', `${TIER_WORDS[t.tier ?? (t.overall ? 'proven' : 'emerging')]}: the game's own calibration, not any studio's published rate`];
+  const ending: [string, string] = ['Ending Early', `You may. The ${t.overall ? 'pay' : 'money'} stops, and what they have in hand is still answered.`];
   if (t.overall) {
-    return [
-      `It runs ${t.months} months from the day you accept.`,
-      `${fl.name} pays you ${money(t.overall.annual)} a year for your services, ${money(t.overall.annual / 12)} a month into your own account. That is ${money(t.overall.annual * t.months / 12)} over the term, paid as each month comes, never at signing. It is set for ${TIER_WORDS[t.tier ?? 'proven']}, and is the game's own calibration, not any studio's published rate.`,
-      `Your services are ${fl.name}'s alone while it runs: no other company can hire you, and work offered by one can't be taken.`,
-      `It covers the films and series you make while it runs. You submit each one to ${fl.name} before you take it anywhere else, and it has ${t.considerDays} days to answer. If it passes, you may take the project elsewhere.`,
-      `Up to ${money(t.fund)} of development money for your projects, kept apart from your pay. If another studio or a commissioner later takes a project ${fl.name} passed on, what it put in is repaid from their money.`,
-      'It ends at its term unless it is renewed. You may end it early: the pay stops, and what it has in hand is still answered.',
-    ];
+    const a = t.overall.annual;
+    return {
+      pitch: `${fl.name} wants you on an overall deal for ${span(t.months)}: ${money(a)} a year for your services, ${money(a * t.months / 12)} in all. Everything you make goes to them first, and you work for no one else while it runs.`,
+      rows: [
+        ['Your Pay', `${money(a)} a year, ${money(a / 12)} a month into your own account, as each month comes; nothing up front`],
+        ['How Long', `${span(t.months)} from the day you sign; it ends then unless they renew it`],
+        ['They Get', 'First call on every film and series you make'],
+        ['You Give Up', 'Work for any other company while it runs'],
+        ['Their Answer', `Within ${t.considerDays} days of each submission; if they pass, it's yours to take elsewhere`],
+        ['Development Money', `Up to ${money(t.fund)} for your projects, apart from your pay; repaid by any studio that later takes one they passed on`],
+        ending, set,
+      ],
+    };
   }
   const tv = scopeOf(t) === 'television';
-  return [
-    `It runs ${t.months} months from the day you accept.`,
-    `${fl.name} pays ${money(t.overhead)} a month toward your overhead, into your company's account if you have one, or your own.${t.annualOverhead ? ` That is ${money(t.annualOverhead)} a year, set for ${TIER_WORDS[t.tier ?? 'emerging']}; it pays for an office and development, not you, and is the game's own calibration, not any studio's published rate.` : ''}`,
-    tv ? `It covers the series you make while it runs, not films. You submit each one to ${fl.name} before you take it to any commissioner.`
-      : `It covers ${t.animatedOnly ? 'the animated films' : 'the films'} you make while it runs, not series. You submit each one to ${fl.name} before you pitch it to any other studio.`,
-    `${fl.name} has ${t.considerDays} days to answer each one. If it passes, you may take the project elsewhere.`,
-    `Up to ${money(t.fund)} of development money for covered projects. If another studio or a commissioner later takes a project it passed on, what it put in is repaid from their money.`,
-    'It ends at its term unless it is renewed. You may end it early: the overhead stops, and what it has in hand is still answered.',
-  ];
+  const what = tv ? 'series' : t.animatedOnly ? 'animated films' : 'films';
+  const into = fl.payee === 'company' ? "your company's account" : 'your own account';
+  return {
+    pitch: `${fl.name} wants first look at your next ${what}: ${money(t.overhead)} a month toward your office for ${span(t.months)}, ${money(t.overhead * t.months)} in all. Bring them each one first; they have ${t.considerDays} days to say yes before you can take it elsewhere.`,
+    rows: [
+      ['Toward Your Office', `${money(t.overhead)} a month into ${into}${t.annualOverhead ? `, ${money(t.annualOverhead)} a year` : ''}: it pays for an office and development, not you`],
+      ['How Long', `${span(t.months)} from the day you sign; it ends then unless they renew it`],
+      ['They Get', tv ? `The first chance at every series you make, before any commissioner; not your films` : `The first chance at every ${t.animatedOnly ? 'animated film' : 'film'} you make, before any other studio; not your series`],
+      ['Their Answer', `Within ${t.considerDays} days of each one; if they pass, it's yours to take elsewhere`],
+      ['Development Money', `Up to ${money(t.fund)} for the ${what} it covers; repaid by any studio or commissioner that later takes one they passed on`],
+      ending, set,
+    ],
+  };
 }
 
 function offerOf(state: GameState, id: string): FirstLook {

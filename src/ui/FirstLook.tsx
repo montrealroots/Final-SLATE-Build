@@ -1,10 +1,10 @@
 // First-look deals on screen (engine/first-look.ts; the owner's v5 brief, 5). The Profile card is where an offer is read in
 // full and accepted, declined or bargained over, and where a running deal's term, money and submissions are followed.
 // The Budget card is where a covered project's place under the deal shows, and where development money goes in.
-import { useState } from 'react';
+import { Fragment, useState } from 'react';
 import { money } from '../engine/budget';
 import {
-  acceptFirstLook, activeFirstLook, askMoreOverhead, askToMatch, declineFirstLook, developmentRefusal, drawDevelopment, endFirstLook, firstLookWords, firstLooks, fundLeft,
+  acceptFirstLook, activeFirstLook, askMoreOverhead, askToMatch, declineFirstLook, developmentRefusal, drawDevelopment, endFirstLook, firstLooks, fundLeft, offerWords,
   matchRefusal, openFirstLookOffers, submissionStanding,
   dealName, scopeOf,
 } from '../engine/first-look';
@@ -40,8 +40,10 @@ export function FirstLookCard() {
         return (
         // A rule between two studios' offers, so where one ends and the other begins is plain.
         <div key={offer.id} role="region" aria-label={`${offer.terms.overall ? 'Overall Deal Offer' : 'First-Look Offer'}${offers.length > 1 ? ` From ${offer.name}` : ''}`} style={i > 0 ? { borderTop: '1px solid var(--line-strong)', marginTop: 'var(--s4)', paddingTop: 'var(--s4)' } : undefined}>
-          <p><strong>{offer.name}</strong> offers you {offer.terms.overall ? 'an overall deal' : 'a first-look deal'}{offer.renews ? ', renewing the last one' : ''}. {offer.why}</p>
-          <ul className="list" aria-label="Its Terms">{firstLookWords(offer).map((w) => <li key={w} className="list-item">{w}</li>)}</ul>
+          {/* The offer as a studio would put it, then broken down (the owner, November 18, 2026). */}
+          <p><strong>{offerWords(offer).pitch}</strong>{offer.renews ? ' It renews your last deal with them.' : ''}</p>
+          <p className="dim small">{offer.why}</p>
+          <dl className="kv small" aria-label="Its Terms">{offerWords(offer).rows.map(([k, v]) => <Fragment key={k}><dt>{k}</dt><dd>{v}</dd></Fragment>)}</dl>
           {offer.counter && <p className="dim small">{offer.counter.outcome === 'agreed' ? `It ${offer.counter.match ? 'matched' : 'agreed to'} ${figure(offer.terms)}.` : offer.counter.outcome === 'held' ? `It kept its offer of ${figure(offer.terms)}.` : `You asked ${offer.counter.match ? 'it to match' : 'for more'}. It answers by ${day(offer.counter.answerAt)}.`}</p>}
           <p className="dim small">The offer expires on {day(offer.answerBy)}. Nothing binds you until you accept. Amounts are game calibration by the company's recorded scale, not its real terms.</p>
           <div className="row gap-2 wrap">

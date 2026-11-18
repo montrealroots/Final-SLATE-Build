@@ -10,7 +10,7 @@ import { personalBalance, personalStatement, postPersonal } from '../src/engine/
 import {
   dealTier,
   FIRST_LOOK_NOTICE_DAYS, acceptFirstLook, activeFirstLook, askMoreOverhead, askToMatch, declineFirstLook, matchRefusal, openFirstLookOffers, developmentRefusal, drawDevelopment, endFirstLook,
-  covers, firstLookCandidate, firstLookTerms, firstLooks, seriesJudgement, firstLookWords, fundLeft, offerFirstLook, scheduleFirstLookCheck, scopeOf, submissionStanding,
+  covers, firstLookCandidate, firstLookTerms, firstLooks, seriesJudgement, offerWords, fundLeft, offerFirstLook, scheduleFirstLookCheck, scopeOf, submissionStanding,
 } from '../src/engine/first-look';
 import { slateRoom, strategyOf } from '../src/engine/strategy';
 import type { StudioProfile } from '../src/engine/studios';
@@ -86,7 +86,11 @@ describe('an offer', () => {
     record(s, 66);
     const fl = offerFirstLook(s)!;
     expect(fl.status).toBe('offered');
-    expect(firstLookWords(fl)).toContain('Night Shift Pictures (Fixture) has 60 days to answer each one. If it passes, you may take the project elsewhere.');
+    // Said as a studio would (from November 18, 2026): what it is and what it's worth, then broken down.
+    const w = offerWords(fl);
+    expect(w.pitch).toBe('Night Shift Pictures (Fixture) wants first look at your next films: $16,700 a month toward your office for a year, $200,400 in all. Bring them each one first; they have 60 days to say yes before you can take it elsewhere.');
+    expect(w.rows.map(([k]) => k)).toEqual(['Toward Your Office', 'How Long', 'They Get', 'Their Answer', 'Development Money', 'Ending Early', 'Set For']);
+    expect(Object.fromEntries(w.rows)['Their Answer']).toBe("Within 60 days of each one; if they pass, it's yours to take elsewhere");
     expect(personalBalance(s)).toBe(2_000); // nothing paid before acceptance
     expect(offerFirstLook(s)).toBeNull(); // one offer at a time (a second studio offers alongside it only for a record past its start)
   });
@@ -281,7 +285,8 @@ describe('a television first-look deal (the v6 package, J13; the v7 package, DEA
     expect(firstLookCandidate(s, 'film')).toBeNull(); // no delivered film
     const fl = offerFirstLook(s, undefined, 'television')!;
     expect([fl.name, scopeOf(fl.terms)]).toEqual([HORROR.name, 'television']);
-    expect(firstLookWords(fl)[2]).toBe(`It covers the series you make while it runs, not films. You submit each one to ${HORROR.name} before you take it to any commissioner.`);
+    expect(offerWords(fl).pitch).toContain('wants first look at your next series');
+    expect(Object.fromEntries(offerWords(fl).rows)['They Get']).toBe('The first chance at every series you make, before any commissioner; not your films');
     acceptFirstLook(s, fl.id);
     expect(covers(fl, series(s, 'Night Watch'))).toBe(true);
     expect(covers(fl, feature(s, { title: 'A Film Outside It' }))).toBe(false);
@@ -395,7 +400,8 @@ describe('A14: an overall deal', () => {
     // The proven band (deal-model.json): $1m to $5m a year, placed by the studio's scale (twelve films a year).
     expect(fl.terms.overall!.annual).toBeGreaterThanOrEqual(1_000_000);
     expect(fl.terms.overall!.annual).toBeLessThanOrEqual(5_000_000);
-    expect(firstLookWords(fl).join(' ')).toMatch(/never at signing/);
+    expect(offerWords(fl).pitch).toMatch(/wants you on an overall deal for two years: \$[\d,]+ a year for your services, \$[\d,]+ in all\. Everything you make goes to them first, and you work for no one else while it runs\./);
+    expect(Object.fromEntries(offerWords(fl).rows)['Your Pay']).toMatch(/nothing up front$/);
     // The same record with a small studio is offered a first look; one film with a large studio, a first look too.
     expect(offerFirstLook(proven('ov-small', [HORROR]))!.terms.overall).toBeUndefined();
     const start = world('ov-start', [BIG]);
