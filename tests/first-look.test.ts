@@ -9,7 +9,7 @@ import { companyBalance } from '../src/engine/company';
 import { personalBalance, personalStatement, postPersonal } from '../src/engine/personal';
 import {
   dealTier,
-  FIRST_LOOK_NOTICE_DAYS, acceptFirstLook, activeFirstLook, askMoreOverhead, declineFirstLook, developmentRefusal, drawDevelopment, endFirstLook,
+  FIRST_LOOK_NOTICE_DAYS, acceptFirstLook, activeFirstLook, askMoreOverhead, askToMatch, declineFirstLook, matchRefusal, openFirstLookOffers, developmentRefusal, drawDevelopment, endFirstLook,
   covers, firstLookCandidate, firstLookTerms, firstLooks, seriesJudgement, firstLookWords, fundLeft, offerFirstLook, scheduleFirstLookCheck, scopeOf, submissionStanding,
 } from '../src/engine/first-look';
 import { slateRoom, strategyOf } from '../src/engine/strategy';
@@ -79,7 +79,8 @@ describe('an offer', () => {
     expect(firstLookTerms(strategyOf(BIG))).toEqual({ months: 12, considerDays: 90, overhead: 25_000, fund: 100_000, animatedOnly: false, tier: 'emerging', annualOverhead: 300_000 });
     // A better record moves the range and the term, never the money you have.
     expect(firstLookTerms(strategyOf(BIG), 'film', 'proven')).toMatchObject({ months: 24, annualOverhead: 999_600 });
-    expect(firstLookTerms(strategyOf(BIG), 'film', 'elite')).toMatchObject({ months: 60, annualOverhead: 8_000_400 });
+    // Never past the band's $8m top: until November 18, 2026 the rounding offered $8,000,400.
+    expect(firstLookTerms(strategyOf(BIG), 'film', 'elite')).toMatchObject({ months: 60, annualOverhead: 7_999_200 });
     for (const t of ['emerging', 'proven', 'established', 'elite'] as const) { const x = firstLookTerms(strategyOf(HORROR), 'film', t); expect(x.overhead * 12).toBe(x.annualOverhead); }
     const s = world('fl-words', [HORROR]);
     record(s, 66);
@@ -87,7 +88,7 @@ describe('an offer', () => {
     expect(fl.status).toBe('offered');
     expect(firstLookWords(fl)).toContain('Night Shift Pictures (Fixture) has 60 days to answer each one. If it passes, you may take the project elsewhere.');
     expect(personalBalance(s)).toBe(2_000); // nothing paid before acceptance
-    expect(offerFirstLook(s)).toBeNull(); // one offer at a time
+    expect(offerFirstLook(s)).toBeNull(); // one offer at a time (a second studio offers alongside it only for a record past its start)
   });
 
   it('arrives by itself some weeks after a delivery, and lapses unanswered', () => {
@@ -484,5 +485,94 @@ describe('A14: an overall deal', () => {
     expect(() => validateGameState(JSON.parse(JSON.stringify(back)))).not.toThrow();
     const { isWages } = await import('../src/engine/bankworld/core/ledger');
     expect(isWages('slate:guarantee#overall:fl-1:1')).toBe(true);
+  });
+});
+
+describe('two studios bidding at once (from November 18, 2026)', () => {
+  // Labelled fixture studios: a small horror house (two films a year), and large ones of twelve, fourteen and thirty.
+  const SMALL: StudioProfile = { c: 'company:fixture-small', name: 'Cellar Door (Fixture)', n: 2, g: [['Horror', 10], ['Thriller', 4]], m: EVEN, ann: {} };
+  const BIG2: StudioProfile = { c: 'company:fixture-big2', name: 'Northlight (Fixture)', n: 14, g: [['Horror', 6], ['Thriller', 6], ['Drama', 6]], m: EVEN, ann: {} };
+  const HUGE: StudioProfile = { c: 'company:fixture-huge', name: 'Atlas (Fixture)', n: 30, g: [['Horror', 4], ['Action', 8], ['Drama', 8]], m: EVEN, ann: {} };
+  function proven(tag: string, studios: StudioProfile[]): GameState {
+    const s = world(tag, studios);
+    record(s, 66);
+    record(s, 72);
+    return s;
+  }
+  const yearly = (fl: { terms: { overall?: { annual: number }; annualOverhead?: number; overhead: number } }) => fl.terms.overall?.annual ?? fl.terms.annualOverhead ?? fl.terms.overhead * 12;
+
+  it('a record just starting gets one offer; a record past its start draws a second studio, on its own terms', () => {
+    const start = world('rv-start', [HORROR, SMALL]);
+    record(start, 66);
+    offerFirstLook(start);
+    expect(openFirstLookOffers(start)).toHaveLength(1);
+    const s = proven('rv-two', [HORROR, SMALL]);
+    const fl = offerFirstLook(s)!;
+    const offers = openFirstLookOffers(s);
+    expect(offers.map((x) => x.company).sort()).toEqual([HORROR.c, SMALL.c].sort());
+    const rival = offers.find((x) => x.id !== fl.id)!;
+    expect([fl.competing, rival.competing]).toEqual([rival.id, fl.id]);
+    expect(rival.why).toContain(`It knows ${fl.name} has made you an offer`);
+    // Each on its own scale (deal-model.json, proven first looks): $300,000 a year for two films a year, the middle of the
+    // band for five ($650,000, kept a multiple of $1,200 so a month is whole dollars).
+    expect(offers.map(yearly).sort((a, b) => a - b)).toEqual([300_000, 650_400]);
+  });
+
+  it('signing one turns the other down', () => {
+    const s = proven('rv-sign', [HORROR, SMALL]);
+    const fl = offerFirstLook(s)!;
+    const rival = firstLooks(s).find((x) => x.id === fl.competing)!;
+    acceptFirstLook(s, rival.id);
+    expect([rival.status, fl.status]).toEqual(['active', 'declined']);
+    expect(s.log.some((x) => x.text.includes(`You turned down ${fl.name}'s`))).toBe(true);
+    expect(() => acceptFirstLook(s, fl.id)).toThrow('no longer open');
+  });
+
+  it("matches a rival's higher offer up to a quarter above its own; past that, its own stands", () => {
+    // Two large studios: about $1.73m and $2.09m a year on overall deals, within a quarter: the lower one matches.
+    const s = proven('rv-match', [BIG, BIG2]);
+    offerFirstLook(s);
+    const [low, high] = openFirstLookOffers(s).sort((a, b) => yearly(a) - yearly(b));
+    expect(low.terms.overall && high.terms.overall).toBeTruthy();
+    expect(matchRefusal(s, high)).toMatch(/already offers as much/);
+    expect(matchRefusal(s, low)).toBeNull();
+    askToMatch(s, low.id);
+    expect(() => askToMatch(s, low.id)).toThrow('You have asked once already.');
+    expect(() => askMoreOverhead(s, low.id)).toThrow('You have asked once already.');
+    wait(s, 8);
+    expect([low.counter!.outcome, yearly(low)]).toEqual(['agreed', yearly(high)]);
+    // Against thirty films a year ($5m), twelve won't go that far: its offer stands, still open.
+    const t = proven('rv-held', [BIG, HUGE]);
+    offerFirstLook(t);
+    const [l2, h2] = openFirstLookOffers(t).sort((a, b) => yearly(a) - yearly(b));
+    const before = yearly(l2);
+    askToMatch(t, l2.id);
+    wait(t, 8);
+    expect([l2.counter!.outcome, yearly(l2), l2.status]).toEqual(['held', before, 'offered']);
+    expect(yearly(h2)).toBeGreaterThan(before * 1.25);
+  });
+
+  it('has nothing to match once the rival is gone, and never across kinds of deal', () => {
+    const s = proven('rv-gone', [BIG, BIG2]);
+    offerFirstLook(s);
+    const [low, high] = openFirstLookOffers(s).sort((a, b) => yearly(a) - yearly(b));
+    askToMatch(s, low.id);
+    declineFirstLook(s, high.id);
+    wait(s, 8);
+    expect(low.counter!.outcome).toBe('held');
+    expect(s.log.some((x) => x.text.includes('no longer open'))).toBe(true);
+    // An overall deal (twelve films a year) and a first look (five) aren't the same thing to match.
+    const k = proven('rv-kinds', [BIG, HORROR]);
+    offerFirstLook(k);
+    const first = openFirstLookOffers(k).find((x) => !x.terms.overall)!;
+    expect(matchRefusal(k, first)).toMatch(/different kind of deal/);
+  });
+
+  it('keeps both offers and their link through a save', () => {
+    const s = proven('rv-save', [HORROR, SMALL]);
+    offerFirstLook(s);
+    const back = deserialize(serialize(s));
+    expect(() => validateGameState(back)).not.toThrow();
+    expect(openFirstLookOffers(back).map((x) => x.competing).filter(Boolean)).toHaveLength(2);
   });
 });

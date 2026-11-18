@@ -4,8 +4,8 @@
 import { useState } from 'react';
 import { money } from '../engine/budget';
 import {
-  acceptFirstLook, activeFirstLook, askMoreOverhead, declineFirstLook, developmentRefusal, drawDevelopment, endFirstLook, firstLookWords, firstLooks, fundLeft,
-  openFirstLookOffer, submissionStanding,
+  acceptFirstLook, activeFirstLook, askMoreOverhead, askToMatch, declineFirstLook, developmentRefusal, drawDevelopment, endFirstLook, firstLookWords, firstLooks, fundLeft,
+  matchRefusal, openFirstLookOffers, submissionStanding,
   dealName, scopeOf,
 } from '../engine/first-look';
 import { TV_FORMATS } from '../engine/blueprints';
@@ -22,29 +22,37 @@ const STAGE: Record<string, string> = { 'not-submitted': 'Not submitted yet', co
 export function FirstLookCard() {
   const g = useGame();
   const [err, setErr] = useState<string | null>(null);
-  const offer = openFirstLookOffer(g);
+  // One offer, or two studios bidding at once (from November 18, 2026), each read and answered on its own.
+  const offers = openFirstLookOffers(g);
   const fl = activeFirstLook(g);
-  const past = firstLooks(g).filter((x) => x !== offer && x !== fl);
-  if (!offer && !fl && !past.length) return null;
+  const past = firstLooks(g).filter((x) => !offers.includes(x) && x !== fl);
+  if (!offers.length && !fl && !past.length) return null;
   // An overall deal (from November 17, 2026) is shown as one: pay a year for your services, not overhead a month.
-  const overall = (offer ?? fl)?.terms.overall;
-  const figure = (t: NonNullable<typeof offer>['terms']) => (t.overall ? `${money(t.overall.annual)} a year` : `${money(t.overhead)} a month`);
+  const overall = (offers[0] ?? fl)?.terms.overall;
+  const figure = (t: (typeof offers)[number]['terms']) => (t.overall ? `${money(t.overall.annual)} a year` : `${money(t.overhead)} a month`);
   return (
     <section className="card" aria-labelledby="firstlook-h">
       <h2 id="firstlook-h">{overall ? 'Overall Deal' : 'First-Look Deal'}</h2>
-      {offer && (
-        <div role="region" aria-label={offer.terms.overall ? 'Overall Deal Offer' : 'First-Look Offer'}>
+      {offers.length > 1 && <p className="small">Two studios want your work. Weigh them, ask one to match the other, and sign one: signing turns the other down.</p>}
+      {offers.map((offer) => {
+        const rival = offers.find((x) => x.id === offer.competing);
+        const noMatch = matchRefusal(g, offer);
+        return (
+        <div key={offer.id} role="region" aria-label={`${offer.terms.overall ? 'Overall Deal Offer' : 'First-Look Offer'}${offers.length > 1 ? ` From ${offer.name}` : ''}`}>
           <p><strong>{offer.name}</strong> offers you {offer.terms.overall ? 'an overall deal' : 'a first-look deal'}{offer.renews ? ', renewing the last one' : ''}. {offer.why}</p>
           <ul className="list" aria-label="Its Terms">{firstLookWords(offer).map((w) => <li key={w} className="list-item">{w}</li>)}</ul>
-          {offer.counter && <p className="dim small">{offer.counter.outcome === 'agreed' ? `It agreed to ${figure(offer.terms)}.` : offer.counter.outcome === 'held' ? `It kept its offer of ${figure(offer.terms)}.` : `You asked for more. It answers by ${day(offer.counter.answerAt)}.`}</p>}
+          {offer.counter && <p className="dim small">{offer.counter.outcome === 'agreed' ? `It ${offer.counter.match ? 'matched' : 'agreed to'} ${figure(offer.terms)}.` : offer.counter.outcome === 'held' ? `It kept its offer of ${figure(offer.terms)}.` : `You asked ${offer.counter.match ? 'it to match' : 'for more'}. It answers by ${day(offer.counter.answerAt)}.`}</p>}
           <p className="dim small">The offer expires on {day(offer.answerBy)}. Nothing binds you until you accept. Amounts are game calibration by the company's recorded scale, not its real terms.</p>
           <div className="row gap-2 wrap">
-            <button className="btn primary" disabled={!!fl || (!!offer.counter && !offer.counter.outcome)} onClick={() => setErr(store.act((s) => acceptFirstLook(s, offer.id)))}>{offer.terms.overall ? 'Accept The Overall Deal' : 'Accept The First-Look Deal'}</button>
+            <button className="btn primary" disabled={!!fl || (!!offer.counter && !offer.counter.outcome)} aria-label={`${offer.terms.overall ? 'Accept The Overall Deal' : 'Accept The First-Look Deal'}${offers.length > 1 ? ` From ${offer.name}` : ''}`} onClick={() => setErr(store.act((s) => acceptFirstLook(s, offer.id)))}>{offer.terms.overall ? 'Accept The Overall Deal' : 'Accept The First-Look Deal'}</button>
             <button className="btn" disabled={!!offer.counter} onClick={() => setErr(store.act((s) => askMoreOverhead(s, offer.id)))}>{offer.terms.overall ? 'Ask For More A Year' : `Ask For ${money(Math.round(offer.terms.overhead * 1.5))} A Month`}</button>
-            <button className="btn" onClick={() => setErr(store.act((s) => declineFirstLook(s, offer.id)))}>Decline</button>
+            {rival && <button className="btn" disabled={!!noMatch} title={noMatch ?? undefined} onClick={() => setErr(store.act((s) => askToMatch(s, offer.id)))}>Ask {offer.name} To Match {rival.name}</button>}
+            <button className="btn" aria-label={`Decline${offers.length > 1 ? ` ${offer.name}'s Offer` : ''}`} onClick={() => setErr(store.act((s) => declineFirstLook(s, offer.id)))}>Decline</button>
           </div>
+          {rival && noMatch && !offer.counter && <p className="dim small">{noMatch}</p>}
         </div>
-      )}
+        );
+      })}
       {fl && (
         <div role="region" aria-label={fl.terms.overall ? 'Your Overall Deal' : 'Your First-Look Deal'}>
           <p><strong>{fl.name}</strong>: {fl.terms.overall ? `${figure(fl.terms)} for your services, your work its alone,` : figure(fl.terms)} until {day(fl.endsAt!)}. {money(fundLeft(fl))} of development money left. It answers a submission in {fl.terms.considerDays} days.</p>

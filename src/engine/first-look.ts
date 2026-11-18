@@ -81,8 +81,10 @@ export interface FirstLook {
   why: string;
   startsAt?: number;
   endsAt?: number;
-  /** The one request for more overhead an offer allows, and the answer. */
-  counter?: { askedAt: number; answerAt: number; outcome?: 'agreed' | 'held' };
+  /** The one request an offer allows (more overhead, or to match a rival's offer: `match`), and the answer. */
+  counter?: { askedAt: number; answerAt: number; outcome?: 'agreed' | 'held'; match?: string };
+  /** The other studio's offer made at the same time, to weigh against this one (from November 18, 2026). */
+  competing?: string;
   /** The pitches made to it under the deal (finance.ts pitchToStudio), by deal id. */
   submissions: { projectId: string; dealId: string; at: number }[];
   /** Development money put into projects, by the backer line it made. */
@@ -130,7 +132,9 @@ export function firstLookTerms(s: StudioStrategy, scope: 'film' | 'television' =
   const big = scope === 'television' ? s.pace >= 30 : s.pace >= 8;
   const mid = scope === 'television' ? s.pace >= 10 : s.pace >= 3;
   const [lo, hi] = (dealModel.firstLookAnnualOverhead as Record<DealTier, [number, number]>)[tier];
-  const annual = Math.round((lo + (hi - lo) * (big ? 1 : mid ? 0.5 : 0)) / 1200) * 1200;
+  // Kept a multiple of $1,200 (a month in whole dollars) and never past its band: until November 18, 2026 the rounding
+  // could put a large studio's offer above its tier's top (a $1m band offered $1,000,800).
+  const annual = Math.min(bandTop(hi, 1200), Math.round((lo + (hi - lo) * (big ? 1 : mid ? 0.5 : 0)) / 1200) * 1200);
   return {
     months: TIER_MONTHS[tier], considerDays: big ? 90 : mid ? 60 : 30,
     overhead: annual / 12, fund: big ? 100_000 : mid ? 50_000 : 25_000,
@@ -149,17 +153,22 @@ export function overallTerms(s: StudioStrategy, tier: DealTier): FirstLookTerms 
   const range = (dealModel.overallAnnualGuarantee as Partial<Record<DealTier, [number, number]>>)[tier];
   if (!range || s.pace < 8) return null;
   const [lo, hi] = range;
-  const annual = Math.round((lo + (hi - lo) * Math.min(1, (s.pace - 8) / 22)) / 12_000) * 12_000;
+  // Never past its band: until November 18, 2026 thirty films a year were offered $5,004,000 in a $5m band.
+  const annual = Math.min(bandTop(hi, 12_000), Math.round((lo + (hi - lo) * Math.min(1, (s.pace - 8) / 22)) / 12_000) * 12_000);
   return { months: TIER_MONTHS[tier], considerDays: 90, overhead: 0, fund: 100_000, animatedOnly: false, tier, overall: { annual } };
 }
+/** A band's top in whole steps, never above it: the most a yearly figure in that band can be. */
+const bandTop = (hi: number, step: number): number => Math.floor(hi / step) * step;
 /** The most a studio pays a year under an overall deal for this tier: a request for more never goes past it. */
-const overallCeiling = (tier: DealTier | undefined): number => ((dealModel.overallAnnualGuarantee as Partial<Record<DealTier, [number, number]>>)[tier ?? 'proven'] ?? [0, 0])[1];
+const overallCeiling = (tier: DealTier | undefined): number => bandTop(((dealModel.overallAnnualGuarantee as Partial<Record<DealTier, [number, number]>>)[tier ?? 'proven'] ?? [0, 0])[1], 12_000);
 
 export const firstLooks = (state: GameState): FirstLook[] => state.firstLooks ?? [];
 /** The overall deal running now, if the deal running is one. */
 export const activeOverall = (state: GameState): FirstLook | null => { const fl = activeFirstLook(state); return fl?.terms.overall ? fl : null; };
 export const activeFirstLook = (state: GameState): FirstLook | null => firstLooks(state).find((x) => x.status === 'active') ?? null;
 export const openFirstLookOffer = (state: GameState): FirstLook | null => firstLooks(state).find((x) => x.status === 'offered') ?? null;
+/** Every offer open now: one, or two studios bidding at once (from November 18, 2026). */
+export const openFirstLookOffers = (state: GameState): FirstLook[] => firstLooks(state).filter((x) => x.status === 'offered');
 
 /** Whether a deal's terms cover this project. */
 export const covers = (fl: FirstLook, p: Project): boolean => (fl.terms.overall ? [...FILM_FORMATS, ...TV_FORMATS] : formatsOf(scopeOf(fl.terms))).includes(p.axes.format) && (!fl.terms.animatedOnly || p.axes.medium === 'animation');
@@ -237,11 +246,15 @@ export function noteSubmission(state: GameState, p: Project, deal: FinanceDeal):
 /** The studio that would offer a first look now, and why, or null. Pure: the same save gives the same answer. */
 export function firstLookCandidate(state: GameState, scope: 'film' | 'television' = 'film'): { company: string; strategy: StudioStrategy; why: string } | null {
   if (activeFirstLook(state) || openFirstLookOffer(state)) return null;
+  return candidates(state, scope)[0] ?? null;
+}
+/** Every studio that would offer now, the best fit first. */
+function candidates(state: GameState, scope: 'film' | 'television'): { company: string; strategy: StudioStrategy; why: string }[] {
   const record = trackRecord(state);
-  if (!record.works || !(record.wins > 0 || (record.reception ?? 0) >= FIRST_LOOK_RECEPTION)) return null;
+  if (!record.works || !(record.wins > 0 || (record.reception ?? 0) >= FIRST_LOOK_RECEPTION)) return [];
   // A television deal follows delivered series, a film deal delivered films: neither stands in for the other.
   const works = state.projects.filter((x) => x.delivered && x.quality && formatsOf(scope).includes(x.axes.format));
-  if (!works.length) return null;
+  if (!works.length) return [];
   // A studio declined or let lapse in the last year doesn't ask again yet.
   const recent = new Set(firstLooks(state).filter((x) => (x.status === 'declined' || x.status === 'lapsed') && state.now - x.answerBy < 365 * DAY).map((x) => x.company));
   // A television deal comes only from a company the series the world follows credit, read on those series; until
@@ -255,16 +268,16 @@ export function firstLookCandidate(state: GameState, scope: 'film' | 'television
     const names = projectFamilies(p).flatMap((f) => FAMILY_AS_RECORDED[f] ?? []);
     return a + strategyOf(profile).families.filter((f) => names.includes(f.genre)).reduce((n, f) => n + f.share, 0);
   }, 0) / works.length;
-  const best = pool.map((profile) => {
+  return pool.map((profile) => {
     const fit = works.reduce((a, p) => a + fitWeight(profile, projectFamilies(p), p.axes.medium), 0) / works.length;
     return { profile, fit, near: near(profile) };
-  }).filter((x) => x.fit >= FIRST_LOOK_FIT).sort((a, b) => b.fit - a.fit || b.near - a.near || b.profile.n - a.profile.n || a.profile.c.localeCompare(b.profile.c))[0];
-  if (!best) return null;
-  const strategy = strategyOf(best.profile);
-  const led = strategy.families[0]?.genre;
-  const kind = scope === 'television' ? 'series' : works.length === 1 ? 'film' : 'films';
-  const why = `Your ${works.length === 1 ? kind : `${works.length} ${kind}`} sit${works.length === 1 ? 's' : ''} with what ${strategy.name} makes${led ? `, most of all ${led.toLowerCase()}` : ''}. ${record.wins ? `${record.wins === 1 ? 'The award' : `The ${record.wins} awards`} your work won counted.` : 'How well your work was received counted.'}`;
-  return { company: best.profile.c, strategy, why };
+  }).filter((x) => x.fit >= FIRST_LOOK_FIT).sort((a, b) => b.fit - a.fit || b.near - a.near || b.profile.n - a.profile.n || a.profile.c.localeCompare(b.profile.c)).map((best) => {
+    const strategy = strategyOf(best.profile);
+    const led = strategy.families[0]?.genre;
+    const kind = scope === 'television' ? 'series' : works.length === 1 ? 'film' : 'films';
+    const why = `Your ${works.length === 1 ? kind : `${works.length} ${kind}`} sit${works.length === 1 ? 's' : ''} with what ${strategy.name} makes${led ? `, most of all ${led.toLowerCase()}` : ''}. ${record.wins ? `${record.wins === 1 ? 'The award' : `The ${record.wins} awards`} your work won counted.` : 'How well your work was received counted.'}`;
+    return { company: best.profile.c, strategy, why };
+  });
 }
 
 /** Make the offer, if a studio would. Nothing binds the player until they accept. */
@@ -274,7 +287,22 @@ export function offerFirstLook(state: GameState, renews?: FirstLook, scope: 'fil
   // A renewal keeps the terms it renews; a new offer is set for your record now: an overall deal where the studio is
   // large enough and your record past its start (from November 17, 2026), otherwise a first look.
   const tier = dealTier(state);
-  const terms = renews ? { ...renews.terms, ...(renews.terms.overall ? { overall: { ...renews.terms.overall } } : {}) } : overallTerms(c.strategy, tier) ?? firstLookTerms(c.strategy, scope, tier);
+  const kind = renews ? scopeOf(renews.terms) : scope;
+  const fl = makeOffer(state, c, renews ? { ...renews.terms, ...(renews.terms.overall ? { overall: { ...renews.terms.overall } } : {}) } : overallTerms(c.strategy, tier) ?? firstLookTerms(c.strategy, scope, tier), renews);
+  // A record past its start draws more than one studio (from November 18, 2026): the next studio that fits offers too,
+  // at the same time and on its own terms, so the player can weigh them and ask one to match the other. A record just
+  // starting gets the one offer, as before.
+  if (tier !== 'emerging') {
+    const r = candidates(state, kind).find((x) => x.company !== c.company);
+    if (r) {
+      const rival = makeOffer(state, { ...r, why: `${r.why} It knows ${c.strategy.name} has made you an offer.` }, overallTerms(r.strategy, tier) ?? firstLookTerms(r.strategy, kind, tier));
+      fl.competing = rival.id;
+      rival.competing = fl.id;
+    }
+  }
+  return fl;
+}
+function makeOffer(state: GameState, c: { company: string; strategy: StudioStrategy; why: string }, terms: FirstLookTerms, renews?: FirstLook): FirstLook {
   const fl: FirstLook = {
     id: newId(state, 'fl'), company: c.company, name: c.strategy.name, status: 'offered', offeredAt: state.now, answerBy: state.now + FIRST_LOOK_OPEN_DAYS * DAY,
     terms, why: c.why, submissions: [], drawn: [], ...(renews ? { renews: renews.id } : {}),
@@ -354,6 +382,12 @@ export function acceptFirstLook(state: GameState, id: string): void {
   fl.endsAt = state.now + fl.terms.months * MONTH;
   cancelEvents(state, (e) => e.id === `fl-lapse:${fl.id}`);
   payOverhead(state, fl, 1);
+  // Signing one turns down any other studio's offer still open: one deal at a time.
+  for (const other of openFirstLookOffers(state)) {
+    other.status = 'declined';
+    cancelEvents(state, (e) => e.id === `fl-lapse:${other.id}` || e.id === `fl-counter:${other.id}`);
+    addLog(state, `You turned down ${other.name}'s ${dealName(other.terms)} by signing with ${fl.name}.`, 'money', { route: { view: 'profile' } });
+  }
   schedule(state, fl.endsAt, 'first-look-end', { id: fl.id }, { attention: 'notify', priority: 45, id: `fl-end:${fl.id}` });
   addLog(state, fl.terms.overall
     ? `You signed an overall deal with ${fl.name}. Your services are its alone, and your films and series go to it first, until ${dateOf(fl.endsAt)}.`
@@ -380,6 +414,36 @@ export function askMoreOverhead(state: GameState, id: string): void {
   addLog(state, fl.terms.overall
     ? `You asked ${fl.name} for ${money(raisedGuarantee(fl.terms))} a year. It will answer in about ${FIRST_LOOK_COUNTER_DAYS} days.`
     : `You asked ${fl.name} for ${money(Math.round(fl.terms.overhead * 1.5))} a month. It will answer in about ${FIRST_LOOK_COUNTER_DAYS} days.`, 'money', { route: { view: 'profile' } });
+}
+
+/** An offer's figure a year: the guarantee of an overall deal, the overhead of a first look. */
+const yearly = (t: FirstLookTerms): number => (t.overall ? t.overall.annual : (t.annualOverhead ?? t.overhead * 12));
+const figureWords = (t: FirstLookTerms): string => (t.overall ? `${money(t.overall.annual)} a year` : `${money(t.overhead)} a month`);
+/** A studio matches a rival's offer up to a quarter above its own, never past its tier's top (the game's calibration). */
+export const MATCH_REACH = 1.25;
+const tierTop = (t: FirstLookTerms): number => (t.overall ? overallCeiling(t.tier) : bandTop(((dealModel.firstLookAnnualOverhead as Record<DealTier, [number, number]>)[t.tier ?? 'emerging'] ?? [0, 0])[1], 1200));
+
+/** Why this offer can't be set against the other studio's, or null when it can. */
+export function matchRefusal(state: GameState, fl: FirstLook): string | null {
+  const rival = fl.competing ? firstLooks(state).find((x) => x.id === fl.competing) : undefined;
+  if (!rival || rival.status !== 'offered' || state.now >= rival.answerBy) return 'No other studio has an offer open to set against it.';
+  if (fl.counter) return 'You have asked once already.';
+  if (!!fl.terms.overall !== !!rival.terms.overall || scopeOf(fl.terms) !== scopeOf(rival.terms)) return `${rival.name}'s is a different kind of deal: ${fl.name} can't match it.`;
+  if (yearly(rival.terms) <= yearly(fl.terms)) return `${fl.name} already offers as much as ${rival.name}.`;
+  return null;
+}
+/** Tell the studio about the other's higher offer and ask it to match. The one request the offer allows; answered in a week. */
+export function askToMatch(state: GameState, id: string): void {
+  const fl = offerOf(state, id);
+  const why = matchRefusal(state, fl);
+  if (why) throw new Error(why);
+  const rival = firstLooks(state).find((x) => x.id === fl.competing)!;
+  fl.counter = { askedAt: state.now, answerAt: state.now + FIRST_LOOK_COUNTER_DAYS * DAY, match: rival.id };
+  fl.answerBy = Math.max(fl.answerBy, fl.counter.answerAt + FIRST_LOOK_COUNTER_DAYS * DAY);
+  cancelEvents(state, (e) => e.id === `fl-lapse:${fl.id}`);
+  schedule(state, fl.answerBy, 'first-look-lapse', { id: fl.id }, { attention: 'silent', priority: 60, id: `fl-lapse:${fl.id}` });
+  schedule(state, fl.counter.answerAt, 'first-look-counter', { id: fl.id }, { attention: 'notify', priority: 50, id: `fl-counter:${fl.id}` });
+  addLog(state, `You told ${fl.name} about ${rival.name}'s offer of ${figureWords(rival.terms)} and asked it to match. It will answer in about ${FIRST_LOOK_COUNTER_DAYS} days.`, 'money', { route: { view: 'profile' } });
 }
 
 /** What a request for more asks under an overall deal: half as much again, never past the tier's top. */
@@ -474,7 +538,8 @@ registerHandler('first-look-check', (state, ev) => {
   // The delivery that prompted the check says which kind of deal a company would offer for it.
   const after = state.projects.find((x) => x.id === ev.payload.after);
   const fl = offerFirstLook(state, undefined, after && TV_FORMATS.includes(after.axes.format) ? 'television' : 'film');
-  return fl ? { message: `${fl.name} offered you a first-look deal.` } : { suppressInterrupt: true };
+  const rival = fl?.competing ? firstLooks(state).find((x) => x.id === fl.competing) : undefined;
+  return fl ? { message: rival ? `${fl.name} and ${rival.name} each offered you a deal.` : `${fl.name} offered you a ${dealName(fl.terms)}.` } : { suppressInterrupt: true };
 });
 registerHandler('first-look-lapse', (state, ev) => {
   const fl = firstLooks(state).find((x) => x.id === ev.payload.id);
@@ -485,6 +550,21 @@ registerHandler('first-look-lapse', (state, ev) => {
 registerHandler('first-look-counter', (state, ev) => {
   const fl = firstLooks(state).find((x) => x.id === ev.payload.id);
   if (!fl || fl.status !== 'offered' || !fl.counter || fl.counter.outcome) return { suppressInterrupt: true };
+  if (fl.counter.match) {
+    // Matching a rival: up to a quarter above its own offer and within its tier's top, while the rival's offer is still open.
+    const rival = firstLooks(state).find((x) => x.id === fl.counter!.match);
+    const open = !!rival && rival.status === 'offered' && state.now < rival.answerBy;
+    const target = rival ? yearly(rival.terms) : 0;
+    const agreed = open && target <= Math.min(yearly(fl.terms) * MATCH_REACH, tierTop(fl.terms));
+    fl.counter.outcome = agreed ? 'agreed' : 'held';
+    if (agreed && fl.terms.overall) fl.terms = { ...fl.terms, overall: { annual: rival!.terms.overall!.annual } };
+    else if (agreed) fl.terms = { ...fl.terms, overhead: rival!.terms.overhead, annualOverhead: yearly(rival!.terms) };
+    const text = agreed ? `${fl.name} matched ${rival!.name}: ${figureWords(fl.terms)}.`
+      : !open ? `${fl.name} kept its offer of ${figureWords(fl.terms)}: ${rival?.name ?? 'the other studio'}'s offer is no longer open. Its offer is still open.`
+      : `${fl.name} won't match ${rival!.name}'s ${figureWords(rival!.terms)}: it is more than it will pay. It kept its offer of ${figureWords(fl.terms)}, still open.`;
+    addLog(state, text, 'money', { route: { view: 'profile' } });
+    return { message: text };
+  }
   // It pays more for a record that counts for more than the offer already did: a win, or reception well above the bar.
   const r = trackRecord(state);
   const agreed = r.wins > 0 || (r.reception ?? 0) >= FIRST_LOOK_RECEPTION + 10;
