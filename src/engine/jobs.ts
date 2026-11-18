@@ -53,7 +53,7 @@ export interface OutsideJob {
   missed: string[];
   planIds?: string[];
   /** A studio's own picture (studio-projects.ts, from November 18, 2026): the fee in all, its franchise, its genre. */
-  studio?: { fee: number; franchise?: string; genre: string };
+  studio?: { fee: number; franchise?: string; genre: string; budget?: number; budgetOf?: string; first?: boolean };
 }
 
 export const JOB_ROLES: Record<JobRole, { label: string; doing: string; days: [number, number]; base: number; perDelivered: number }> = {
@@ -145,7 +145,7 @@ export function askBetterRate(state: GameState, id: string): void {
   cancelEvents(state, (e) => e.id === `job-lapse:${j.id}`);
   schedule(state, j.answerBy, 'job-lapse', { jobId: j.id }, { attention: 'silent', priority: 70, id: `job-lapse:${j.id}` });
   schedule(state, j.counter.answerAt, 'job-counter', { jobId: j.id }, { attention: 'notify', priority: 60, id: `job-counter:${j.id}` });
-  addLog(state, `You asked ${j.company} for ${money(rate)} a day on ${j.production}.`, 'personal', { route: { view: 'profile' } });
+  addLog(state, j.studio ? `You asked ${j.company} for ${money(Math.round((j.studio.fee * 1.2) / 1000) * 1000)} to make ${j.production}.` : `You asked ${j.company} for ${money(rate)} a day on ${j.production}.`, 'personal', { route: { view: 'profile' } });
 }
 registerHandler('job-counter', (state, ev) => {
   const j = jobById(state, String(ev.payload.jobId));
@@ -155,7 +155,10 @@ registerHandler('job-counter', (state, ev) => {
   const agreed = !!j.viaAgent || hasLeverage(standingIn(state, j.role));
   j.counter.outcome = agreed ? 'agreed' : 'held';
   if (agreed) j.dayRate = j.counter.rate;
-  const text = agreed ? `${j.company} agreed to ${money(j.dayRate)} a day on ${j.production}.` : `${j.company} kept its rate of ${money(j.dayRate)} a day on ${j.production}. The offer is still open.`;
+  // A studio picture's ask is for a fifth more on the fee, which the day rate follows.
+  if (agreed && j.studio) j.studio.fee = Math.round((j.studio.fee * 1.2) / 1000) * 1000;
+  const what = j.studio ? `${money(j.studio.fee)} for ${j.production}` : `${money(j.dayRate)} a day on ${j.production}`;
+  const text = agreed ? `${j.company} agreed to ${what}.` : `${j.company} kept its ${j.studio ? 'fee' : 'rate'} of ${what}. The offer is still open.`;
   addLog(state, text, 'personal', { route: { view: 'profile' } });
   return { message: text };
 });
@@ -273,7 +276,8 @@ export function withdrawJob(state: GameState, id: string): void {
 
 /** What the job pays for the days worked, less commission, posted once. */
 export function pay(state: GameState, j: OutsideJob): void {
-  const gross = j.dayRate * j.attended.length;
+  // A studio picture's fee is paid in full for every day worked, not a rounded day rate times the days (from November 18, 2026).
+  const gross = j.studio ? Math.round((j.studio.fee * j.attended.length) / j.days.length) : j.dayRate * j.attended.length;
   if (gross <= 0) return; // earned pay opens an account even in a story from before one existed
   postPersonal(state, 'paid-work', gross, `Paid For ${JOB_ROLES[j.role].label} On ${j.production}`, `job:${j.id}`);
   if (j.viaAgent) postPersonal(state, 'commission', -Math.round(gross * j.viaAgent.rate), `Commission To ${agentById(j.viaAgent.agentId).name}: ${Math.round(j.viaAgent.rate * 100)}% Of ${money(gross)}`, `job-commission:${j.id}`);

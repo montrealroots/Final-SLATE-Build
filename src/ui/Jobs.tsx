@@ -9,7 +9,7 @@ import { PRODUCTION_KIND_LABELS, productionById } from '../engine/productions';
 import { REPUTATION_MODEL, standings, reputation } from '../engine/reputation';
 import { qualityWords } from '../engine/finish';
 import { agentById } from '../engine/representation';
-import { studioPitch } from '../engine/studio-projects';
+import { studioPitch, studioScale } from '../engine/studio-projects';
 import { store, useGame } from './store';
 
 const span = (j: OutsideJob) => `${j.days.length} ${j.days.length === 1 ? 'day' : 'days'}, ${formatDateKey(j.days[0])} to ${formatDateKey(j.days.at(-1)!)}`;
@@ -41,17 +41,17 @@ export function WorkForOthersCard() {
               <li key={j.id} className="list-item" style={{ flexWrap: 'wrap', gap: 'var(--s2)' }}>
                 <div className="grow" style={{ minWidth: 0 }}>
                   {/* A studio's own picture (from November 18, 2026) is said as the studio would say it. */}
-                  {j.studio ? <><strong>{studioPitch(j)}</strong> <div className="dim small">{j.production}, the studio's own picture, invented by the game.</div></>
+                  {j.studio ? <><strong>{studioPitch(j)}</strong> <div className="dim small">{j.production}, the studio's own picture, invented by the game. {studioScale(j)}</div></>
                     : <><strong>{JOB_ROLES[j.role].label}: {j.production}</strong> <span className="dim small">({j.company}; an invented production)</span></>}
                   <ProductionLine j={j} />
                   {j.part && <div className="small"><strong>{j.part}.</strong> {j.material} {j.requirement}</div>}
-                  <div className="small">{span(j)}, {money(j.dayRate)} a day: {money(j.dayRate * j.days.length)} if every day is worked{j.viaAgent ? `, less ${Math.round(j.viaAgent.rate * 100)}% to ${agentById(j.viaAgent.agentId).name}, who found it` : ''}.</div>
+                  <div className="small">{span(j)}, {money(j.dayRate)} a day: {money(j.studio ? j.studio.fee : j.dayRate * j.days.length)} if every day is worked{j.viaAgent ? `, less ${Math.round(j.viaAgent.rate * 100)}% to ${agentById(j.viaAgent.agentId).name}, who found it` : ''}.</div>
                   {j.role !== 'acting' && <div className="dim small">{evidenceFor(g, j.role)}</div>}
-                  {j.counter && <div className="dim small">{j.counter.outcome === 'agreed' ? `It agreed to ${money(j.dayRate)} a day.` : j.counter.outcome === 'held' ? `It kept its rate of ${money(j.dayRate)} a day.` : `You asked for ${money(j.counter.rate)} a day; it answers in a couple of days.`}</div>}
+                  {j.counter && <div className="dim small">{j.studio ? (j.counter.outcome === 'agreed' ? `It agreed to ${money(j.studio.fee)}.` : j.counter.outcome === 'held' ? `It kept its fee of ${money(j.studio.fee)}.` : `You asked for ${money(Math.round((j.studio.fee * 1.2) / 1000) * 1000)}; it answers in a couple of days.`) : j.counter.outcome === 'agreed' ? `It agreed to ${money(j.dayRate)} a day.` : j.counter.outcome === 'held' ? `It kept its rate of ${money(j.dayRate)} a day.` : `You asked for ${money(j.counter.rate)} a day; it answers in a couple of days.`}</div>}
                   {no && <div className="dim small">{no}</div>}
                 </div>
                 <button className="btn btn-sm btn-primary" disabled={!!no} aria-label={`Accept ${j.production}`} onClick={() => setErr(store.act((s) => acceptJob(s, j.id)))}>Accept</button>
-                <button className="btn btn-sm" disabled={!!j.counter} aria-label={`Ask For ${money(Math.round(j.dayRate * 1.2))} A Day On ${j.production}`} onClick={() => setErr(store.act((s) => askBetterRate(s, j.id)))}>Ask For {money(Math.round(j.dayRate * 1.2))} A Day</button>
+                <button className="btn btn-sm" disabled={!!j.counter} aria-label={j.studio ? `Ask For ${money(Math.round((j.studio.fee * 1.2) / 1000) * 1000)} On ${j.production}` : `Ask For ${money(Math.round(j.dayRate * 1.2))} A Day On ${j.production}`} onClick={() => setErr(store.act((s) => askBetterRate(s, j.id)))}>{j.studio ? `Ask For ${money(Math.round((j.studio.fee * 1.2) / 1000) * 1000)}` : `Ask For ${money(Math.round(j.dayRate * 1.2))} A Day`}</button>
                 <button className="btn btn-sm" aria-label={`Decline ${j.production}`} onClick={() => setErr(store.act((s) => declineJob(s, j.id)))}>Decline</button>
               </li>
             );
