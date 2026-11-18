@@ -5,7 +5,7 @@ import { describe, expect, it } from 'vitest';
 import { DAY, createProject, processUntil, setFinanceTarget } from './engine-api';
 import { acceptFirstLook, offerFirstLook, scheduleFirstLookCheck } from '../src/engine/first-look';
 import { acceptJob, acceptRefusal } from '../src/engine/jobs';
-import { franchiseName, studioPitch, studioProjectOffer, studioScale, STUDIO_FEES } from '../src/engine/studio-projects';
+import { franchiseName, studioPitch, studioProjectOffer, studioScale, STUDIO_FEE_SHARE, STUDIO_FEES } from '../src/engine/studio-projects';
 import { personalPostings } from '../src/engine/personal';
 import { DGA_HIGH_BUDGET_WEEK, WGA_SCREENPLAY } from '../src/engine/union';
 import { dateKey } from '../src/engine/time';
@@ -40,8 +40,10 @@ const inForce = (t: [string, number][], d: string) => [...t].reverse().find(([f]
 
 describe('a studio project', () => {
   it("names a franchise as people say it", () => {
-    expect(['The Batman Collection', 'Superman (DCU) Collection', 'The Fast and the Furious Collection', 'Days of Thunder Colletion', 'Heart Eyes - Collection', 'Minecraft Movie Collection', 'The Lego Movie Collection', 'Scary Movie Collection'].map(franchiseName))
-      .toEqual(['Batman', 'Superman', 'Fast and the Furious', 'Days of Thunder', 'Heart Eyes', 'Minecraft', 'Lego', 'Scary Movie']);
+    expect(['The Batman Collection', 'Superman (DCU) Collection', 'The Fast and the Furious Collection', 'Days of Thunder Colletion', 'Heart Eyes - Collection', 'Minecraft Movie Collection', 'The Lego Movie Collection', 'Scary Movie Collection',
+      "Ferie d'agosto - Collezione", 'Manitu Filmreihe', 'Cumali Ceber Koleksiyonu', 'Carrosel: Coleção', 'Les Enfants de la Résistance - Saga', 'Il milanese imbruttito (Film) - Collezione'].map(franchiseName))
+      .toEqual(['Batman', 'Superman', 'Fast and the Furious', 'Days of Thunder', 'Heart Eyes', 'Minecraft', 'Lego', 'Scary Movie',
+        "Ferie d'agosto", 'Manitu', 'Cumali Ceber', 'Carrosel', 'Les Enfants de la Résistance', 'Il milanese imbruttito']);
   });
 
   it("is the next entry in the best-fitting studio's own franchise, paid what the trade reports, placed by the franchise's real budget", () => {
@@ -82,6 +84,19 @@ describe('a studio project', () => {
     expect(studioPitch(j)).toContain('wants you to direct its next drama picture');
     expect(j.studio!.fee).toBe(600_000);
     expect(studioScale(j)).toMatch(/^Its budget isn't recorded\./);
+  });
+
+  it("pays no more than a share of a small picture's budget, and only an American studio is held to the guild's minimum", () => {
+    // A $1.7 million picture: 5% is $85,000, under the range and under the DGA's ten weeks.
+    const small = (c: string) => { const s = proven(`sp-cap-${c}`, [{ ...FAST, c, fr: [{ ...FAST.fr![0], budget: 1_700_000 }] }]); return [studioProjectOffer(s)!, dateKey(s.now, 'UTC')] as const; };
+    const [korean] = small('company:cj-enm');
+    expect(korean.studio!.fee).toBe(Math.round(1_700_000 * STUDIO_FEE_SHARE / 1000) * 1000);
+    expect(studioScale(korean)).toBe('A picture of about $1,700,000, as Long Road X (2023) cost. The fee is a twentieth of the budget, all a picture this size pays its director, before any share of the profits.');
+    const [american, day] = small('company:universal-pictures');
+    expect(american.studio!.fee).toBe(inForce(DGA_HIGH_BUDGET_WEEK, day) * 10);
+    expect(studioScale(american)).toMatch(/The fee is the DGA's minimum for ten weeks, the least an American studio may pay, before any share of the profits\.$/);
+    // A big picture abroad is paid the trade's range, as at home.
+    expect(studioProjectOffer(proven('sp-cap-big', [{ ...FAST, c: 'company:toho' }]))!.studio!.fee).toBe(STUDIO_FEES.directing.first[1]);
   });
 
   it('never pays under the guild minimum', () => {

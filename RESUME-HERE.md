@@ -53,7 +53,16 @@ like "so and so wants you to take over and film the next Batman", invented entri
   (TOHO, Toei and Toei Animation under it, Shochiku, Nikkatsu, KADOKAWA, Ghibli, CJ ENM, Showbox, Lotte, Shaw
   Brothers, Golden Harvest, Bona, Yash Raj, T-Series, Dharma, Red Chillies, Televisa) are in the registry, 143 gathered
   in all (`docs/CATALOG.md`). A group only where an official page says so; the rest stand alone, by country, and say
-  why. Their titles were imported the same day; the catalog then needs a build (`node tools/screen-catalog/build.mjs`).
+  why. Their titles were imported the same day and the catalog built (`node tools/screen-catalog/build.mjs`): 109 world
+  studios, up from 82, 91 with franchises (Toho's Godzilla Minus One, Constantin's Eberhofer, StudioCanal's
+  Paddington, Bona's Pegasus, Yash Raj's Tiger). 1.5 GB built, 701,650 people; 20 titles TMDB no longer serves.
+- **Franchises and fees on the international studios (November 18, after the build):** franchises count feature films
+  only, over 40 minutes and no documentaries (Toho's lead read as the Godzilla Fest shorts at a $13,103 budget, Ghibli's
+  as shorts and making-of films, CJ ENM's as a concert film); a collection named without Latin letters takes its first
+  film's English title (`tools/screen-catalog/franchises.mjs`, `tests/franchises.test.ts`). Offers say Italian, German,
+  Turkish and Portuguese collection names as people do ("Ferie d'agosto", not "... - Collezione"). A studio's fee is at
+  most 5% of the picture's budget (`STUDIO_FEE_SHARE`, game calibration: no published share was found), and only an
+  American studio is held to the DGA's or WGA's minimum (the registry's country); the offer says which set the fee.
 - **Studio offers, seen on real studios:** the capture of two engine-made offers (Legendary's Minecraft, Apple's F1)
   found "Minecraft Movie film", "the F1 films so far" for one film, and a footer calling a studio's fee calibration;
   all three fixed and tested.

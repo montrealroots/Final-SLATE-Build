@@ -20,6 +20,7 @@ import { addLog, currentPlace, registerHandler, schedule } from './state';
 import { addDaysToKey, dateKey, DAY, formatDateKey, weekdayOfKey } from './time';
 import { DGA_HIGH_BUDGET_WEEK, WGA_DRAFT_DAYS, WGA_SCREENPLAY } from './union';
 import { money } from './budget';
+import { COMPANIES } from '../catalog/registry';
 import type { GameState } from './types';
 
 /** The least time between two studio offers. Game calibration. (The notice after a delivery is first-look.ts
@@ -38,6 +39,18 @@ export const STUDIO_FEES: Record<'directing' | 'writing', Record<'first' | DealT
 };
 /** Where in its range a fee falls, by the picture's budget: the bottom at $20 million or less, the top at $300 million or more, on a log scale. Game calibration. */
 export const STUDIO_BUDGET_SCALE: [number, number] = [20_000_000, 300_000_000];
+/**
+ * The most a studio pays for the role, as a share of the picture's budget: 5%. Game calibration, set on November 18, 2026
+ * when the international studios joined: no source for the share was found (Stephen Follows's budget study folds the fee
+ * into the whole director line), and without a cap CJ ENM offered a first-time director $450,000, The Hollywood
+ * Reporter's Hollywood range, for a $1.7 million Korean picture. In America the guild's minimum still comes first.
+ */
+export const STUDIO_FEE_SHARE = 0.05;
+/** Where a studio is based, by the registry's TMDB record: its own, else its group's. */
+const countryOf = (company: string): string | undefined => {
+  const c = COMPANIES.find((x) => x.id === company);
+  return c?.tmdb?.country ?? COMPANIES.find((x) => x.id === c?.parent?.id)?.tmdb?.country;
+};
 /** Weeks of shooting by budget: a tentpole of $150 million or more 18, $50 million or more 12, less 8. Game calibration. */
 export const STUDIO_SHOOT_WEEKS: [number, number][] = [[150_000_000, 18], [50_000_000, 12], [0, 8]];
 /** The guild's guaranteed period on a high-budget film (DGA): ten weeks, the director's floor. */
@@ -45,7 +58,9 @@ export const DGA_GUARANTEE_WEEKS = 10;
 
 /** A franchise's name as people say it: "The Batman Collection" is the Batman films, "Superman (DCU)" Superman's. */
 export const franchiseName = (collection: string): string => {
-  const name = collection.replace(/\s*-?\s*Coll?ection$/i, '').replace(/\s*Colletion$/i, '').replace(/\s*\([^)]*\)\s*/g, ' ').replace(/^The\s+/i, '').trim();
+  // TMDB names some collections in their own language: Rai's "Ferie d'agosto - Collezione", Constantin's "Manitu
+  // Filmreihe", CJ ENM's "Cumali Ceber Koleksiyonu", Televisa's "Carrosel: Coleção", StudioCanal's "... - Saga".
+  const name = collection.replace(/\s*[-:]?\s*(Coll?ection|Colletion|Collezione|Coleção|Colección|Koleksiyonu|Filmreihe)$/i, '').replace(/\s+-\s+Saga$/, '').replace(/\s*\([^)]*\)\s*/g, ' ').replace(/^The\s+/i, '').trim();
   // "Minecraft Movie" and "Lego Movie" are said "Minecraft" and "Lego", or the offer says "the next Minecraft Movie film";
   // Scary Movie is a title in its own right. shortcut: one exception, read off the built catalog's names on November 18, 2026.
   return name === 'Scary Movie' ? name : name.replace(/\s+Movie$/, '');
@@ -85,8 +100,15 @@ export function studioProjectOffer(state: GameState): OutsideJob | null {
   // Your first studio picture in the role is a first studio feature, whatever else you've done.
   const first = !(state.jobs ?? []).some((j) => j.studio && j.role === role && j.status === 'done');
   const [lo, hi] = STUDIO_FEES[role][first ? 'first' : dealTier(state)];
-  const floor = directing ? inForce(DGA_HIGH_BUDGET_WEEK, day) * DGA_GUARANTEE_WEEKS : inForce(WGA_SCREENPLAY, day);
-  const fee = Math.max(floor, Math.round((lo + (hi - lo) * at) / 1000) * 1000);
+  // The DGA's and WGA's minimums bind American studios, which sign their agreements; a studio elsewhere pays its own way.
+  // A studio the registry doesn't place (a test's fixture) is taken as American.
+  const abroad = (countryOf(strategy.company) ?? 'US') !== 'US';
+  const floor = abroad ? 0 : directing ? inForce(DGA_HIGH_BUDGET_WEEK, day) * DGA_GUARANTEE_WEEKS : inForce(WGA_SCREENPLAY, day);
+  const range = Math.round((lo + (hi - lo) * at) / 1000) * 1000;
+  const share = budget ? Math.min(range, Math.round(budget * STUDIO_FEE_SHARE / 1000) * 1000) : range;
+  const fee = Math.max(floor, share);
+  // What set the fee, for the offer to say: the guild's minimum, the budget's share, or (unsaid) the trade's range.
+  const set = fee === floor && floor > share ? 'guild' as const : share < range ? 'share' as const : undefined;
   const weeks = (STUDIO_SHOOT_WEEKS.find(([from]) => (budget ?? 0) >= from) ?? [0, 8])[1];
   const days = weekdaysFrom(addDaysToKey(day, directing ? 56 : 14), directing ? weeks * 5 : WGA_DRAFT_DAYS);
   const place = currentPlace(state);
@@ -99,7 +121,7 @@ export function studioProjectOffer(state: GameState): OutsideJob | null {
     requirement: directing ? `On set in ${place.name} each shooting day.` : `With the studio's producers in ${place.name}; the draft is due on the last day.`,
     dayRate: Math.round(fee / days.length), days, placeId: place.id, zone: place.zone,
     status: 'offered', offeredAt: state.now, answerBy: state.now + JOB_ANSWER_DAYS * DAY, attended: [], missed: [],
-    studio: { fee, ...(franchise ? { franchise } : {}), genre, ...(budget ? { budget, budgetOf } : {}), first },
+    studio: { fee, ...(franchise ? { franchise } : {}), genre, ...(budget ? { budget, budgetOf } : {}), first, ...(set ? { set } : {}) },
   };
 }
 
@@ -113,6 +135,9 @@ export function studioPitch(j: OutsideJob): string {
 export function studioScale(j: OutsideJob): string {
   const st = j.studio!;
   const budget = st.budget ? `A picture of about ${money(st.budget)}${st.budgetOf ? `, as ${st.budgetOf.endsWith('budget') ? `${st.budgetOf} is` : `${st.budgetOf} cost`}` : ''}.` : 'Its budget isn\'t recorded.';
+  const who = j.role === 'directing' ? 'director' : 'writer';
+  if (st.set === 'guild') return `${budget} The fee is the ${j.role === 'directing' ? "DGA's minimum for ten weeks" : "WGA's minimum for a screenplay"}, the least an American studio may pay, before any share of the profits.`;
+  if (st.set === 'share') return `${budget} The fee is a twentieth of the budget, all a picture this size pays its ${who}, before any share of the profits.`;
   return `${budget} The fee is what studios pay ${st.first ? `for a ${j.role === 'directing' ? "director's" : "writer's"} first studio picture` : `a ${j.role === 'directing' ? 'director' : 'writer'} with your record`}, as the trade reports it, before any share of the profits.`;
 }
 
