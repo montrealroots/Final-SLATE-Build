@@ -89,9 +89,12 @@ test("a studio's franchise on its page: its recorded films, then the picture you
   const godzilla = franchises.getByRole('list', { name: 'Godzilla Films' });
   await expect(godzilla.getByRole('listitem')).toHaveText([/^Godzilla Minus One\s*2023$/, /^Godzilla Minus Zero\s*2026$/, /^Godzilla: Burning Tide Your Picture You directed it\.\s*Released September 1, 2026$/]);
   // Its page, like the catalog's films: what it is, its run in cinemas (ten of its 14 weeks ended by November 12),
-  // its honours, and its people, you among them.
+  // its honours, and its people, you among them. Clicked from the foot of the studio's page, it opens at its top: until
+  // November 18, 2026 a new page kept the scroll of the one before and opened at its crew.
+  await page.evaluate(() => { window.scrollTo(0, document.documentElement.scrollHeight); const m = document.getElementById('main'); if (m) m.scrollTop = m.scrollHeight; });
   await godzilla.getByRole('button', { name: 'Godzilla: Burning Tide' }).click();
-  await expect(page.getByRole('heading', { name: 'Godzilla: Burning Tide', level: 1 })).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'Godzilla: Burning Tide', level: 1 })).toBeInViewport();
+  expect(await page.evaluate(() => window.scrollY + (document.getElementById('main')?.scrollTop ?? 0))).toBe(0);
   await expect(card(page, 'About')).toContainText('You directed it for TOHO.');
   await expect(card(page, 'Box Office')).toContainText('So Far');
   await expect(card(page, 'Box Office')).toContainText('10, still showing');
