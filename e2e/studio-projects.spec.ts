@@ -58,7 +58,7 @@ test('a studio you made a picture for offers a two-picture deal, said with both 
   await nav(page, 'Profile');
   await expect(page.getByLabel('Studio Pictures').locator('..')).toContainText('comes back with a deal for its next two');
   const offers = card(page, 'Work For Others').getByRole('list', { name: 'Offers Of Work' });
-  await expect(offers).toContainText(`${STUDIO} offers you a two-picture deal: direct the next Long Road film: $696,000 for 8 weeks of shooting, from January 11, 2027, then its next picture for $800,000. Each comes a month after the last is done; declining one ends the deal. You directed its last Long Road film, and it wants you back.`);
+  await expect(offers).toContainText(`${STUDIO} offers you a two-picture deal to direct: the next Long Road film for $696,000, 8 weeks of shooting from January 11, 2027, then its next picture for $800,000. Each picture comes a month after the one before is done; declining one ends the deal. You directed its last Long Road film, and it wants you back.`);
   await offers.getByRole('button', { name: 'Accept Untitled Long Road Film' }).click();
   await expect(card(page, 'Work For Others').getByRole('list', { name: 'Work You Have Taken' })).toContainText('Directing: Untitled Long Road Film');
 });

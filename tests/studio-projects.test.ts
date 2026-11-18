@@ -233,8 +233,8 @@ describe('multi-picture deals', () => {
     expect(j.studio!.deal).toEqual({ picture: 1, of: 2, fees: [fee, Math.round((fee * (1 + STUDIO_DEAL_STEP)) / 1000) * 1000] });
     expect([j.company, j.studio!.franchise]).toEqual([made.company, made.studio!.franchise]);
     const pitch = studioPitch(j);
-    expect(pitch.startsWith(`${MID.name} offers you a two-picture deal: direct the next Long Road film: ${dollars(fee)} for `)).toBe(true);
-    expect(pitch).toContain(`, then its next picture for ${dollars(j.studio!.deal!.fees[1])}. Each comes a month after the last is done; declining one ends the deal.`);
+    expect(pitch.startsWith(`${MID.name} offers you a two-picture deal to direct: the next Long Road film for ${dollars(fee)}, `)).toBe(true);
+    expect(pitch).toContain(`, then its next picture for ${dollars(j.studio!.deal!.fees[1])}. Each picture comes a month after the one before is done; declining one ends the deal.`);
     // A first studio offer is never a deal: only a studio you've made a picture for offers one.
     expect(studioProjectOffer(proven('deal-none', [MID]))!.studio!.deal).toBeUndefined();
   });
@@ -245,7 +245,7 @@ describe('multi-picture deals', () => {
     const j = studioProjectOffer(s)!;
     expect(j.studio!.deal!.of).toBe(STUDIO_DEAL_PICTURES.Leading);
     const [, b, c] = j.studio!.deal!.fees;
-    expect(studioPitch(j)).toContain(`offers you a three-picture deal: `);
+    expect(studioPitch(j)).toContain(`offers you a three-picture deal to direct: `);
     expect(studioPitch(j)).toContain(`, then its next two pictures for ${dollars(b)} and ${dollars(c)}.`);
   });
 

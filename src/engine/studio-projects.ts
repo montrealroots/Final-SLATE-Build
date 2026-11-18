@@ -211,7 +211,8 @@ export function studioPitch(j: OutsideJob): string {
   if (deal && deal.picture === 1) {
     const rest = deal.fees.slice(1).map((f) => money(f));
     const more = deal.of === 2 ? `then its next picture for ${rest[0]}` : `then its next ${PICTURES_WORD[deal.of - 1] ?? deal.of - 1} pictures for ${rest.slice(0, -1).join(', ')} and ${rest[rest.length - 1]}`;
-    return `${j.company} offers you a ${PICTURES_WORD[deal.of] ?? deal.of}-picture deal: ${work}, from ${formatDateKey(j.days[0])}, ${more}. Each comes a month after the last is done; declining one ends the deal.${j.studio?.why ? ` ${j.studio.why}` : ''}`;
+    const first = j.role === 'directing' ? `${what} for ${money(j.studio!.fee)}, ${j.days.length / 5} weeks of shooting from ${formatDateKey(j.days[0])}` : `${what} for ${money(j.studio!.fee)}, ${j.days.length} working days from ${formatDateKey(j.days[0])}`;
+    return `${j.company} offers you a ${PICTURES_WORD[deal.of] ?? deal.of}-picture deal to ${j.role === 'directing' ? 'direct' : 'write'}: ${first}, ${more}. Each picture comes a month after the one before is done; declining one ends the deal.${j.studio?.why ? ` ${j.studio.why}` : ''}`;
   }
   return `${j.company} wants you to ${work}, from ${formatDateKey(j.days[0])}.${j.studio?.why ? ` ${j.studio.why}` : ''}`;
 }
