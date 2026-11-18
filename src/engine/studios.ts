@@ -24,6 +24,8 @@ export interface StudioProfile {
   ann: Record<string, number>;
   /** The studio's latest dated film. */
   last?: string;
+  /** Its live franchises, the most recent first (tools/screen-catalog/franchises.mjs; catalogs built from November 18, 2026). */
+  fr?: { name: string; entries: number; last: string }[];
   /**
    * Its television record: how many of the series the world follows credit it, and their genres (TMDB's TV genre names).
    * Kept once, when the save's world starts or first loads a catalog with series (from November 14, 2026), so a later

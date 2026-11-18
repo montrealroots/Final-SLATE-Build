@@ -249,7 +249,7 @@ export function firstLookCandidate(state: GameState, scope: 'film' | 'television
   return candidates(state, scope)[0] ?? null;
 }
 /** Every studio that would offer now, the best fit first. */
-function candidates(state: GameState, scope: 'film' | 'television'): { company: string; strategy: StudioStrategy; why: string }[] {
+export function candidates(state: GameState, scope: 'film' | 'television'): { company: string; strategy: StudioStrategy; why: string }[] {
   const record = trackRecord(state);
   if (!record.works || !(record.wins > 0 || (record.reception ?? 0) >= FIRST_LOOK_RECEPTION)) return [];
   // A television deal follows delivered series, a film deal delivered films: neither stands in for the other.
@@ -551,7 +551,12 @@ export function repayTurnaround(state: GameState, p: Project, by: FinanceDeal): 
 /** After each delivery, studios that have seen it may offer a first look. */
 export function scheduleFirstLookCheck(state: GameState, p: Project): void {
   schedule(state, state.now + FIRST_LOOK_NOTICE_DAYS * DAY, 'first-look-check', { after: p.id }, { attention: 'silent', priority: 70, id: `fl-check:${p.id}` });
+  // And a studio may ask you onto a picture of its own (studio-projects.ts, from November 18, 2026). Its id is its own,
+  // not the shared counter's, so it moves no other seeded draw.
+  schedule(state, state.now + STUDIO_PROJECT_NOTICE_DAYS * DAY, 'studio-project', { after: p.id }, { attention: 'silent', priority: 70, id: `studio-project:${p.id}:${state.now}` });
 }
+/** Weeks after a delivery a studio may ask you onto a picture of its own (studio-projects.ts). Game calibration. */
+export const STUDIO_PROJECT_NOTICE_DAYS = 30;
 
 registerHandler('first-look-check', (state, ev) => {
   // The delivery that prompted the check says which kind of deal a company would offer for it.

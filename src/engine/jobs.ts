@@ -52,6 +52,8 @@ export interface OutsideJob {
   attended: string[];
   missed: string[];
   planIds?: string[];
+  /** A studio's own picture (studio-projects.ts, from November 18, 2026): the fee in all, its franchise, its genre. */
+  studio?: { fee: number; franchise?: string; genre: string };
 }
 
 export const JOB_ROLES: Record<JobRole, { label: string; doing: string; days: [number, number]; base: number; perDelivered: number }> = {

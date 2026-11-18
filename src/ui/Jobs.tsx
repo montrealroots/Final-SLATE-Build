@@ -9,6 +9,7 @@ import { PRODUCTION_KIND_LABELS, productionById } from '../engine/productions';
 import { REPUTATION_MODEL, standings, reputation } from '../engine/reputation';
 import { qualityWords } from '../engine/finish';
 import { agentById } from '../engine/representation';
+import { studioPitch } from '../engine/studio-projects';
 import { store, useGame } from './store';
 
 const span = (j: OutsideJob) => `${j.days.length} ${j.days.length === 1 ? 'day' : 'days'}, ${formatDateKey(j.days[0])} to ${formatDateKey(j.days.at(-1)!)}`;
@@ -39,7 +40,9 @@ export function WorkForOthersCard() {
             return (
               <li key={j.id} className="list-item" style={{ flexWrap: 'wrap', gap: 'var(--s2)' }}>
                 <div className="grow" style={{ minWidth: 0 }}>
-                  <strong>{JOB_ROLES[j.role].label}: {j.production}</strong> <span className="dim small">({j.company}; an invented production)</span>
+                  {/* A studio's own picture (from November 18, 2026) is said as the studio would say it. */}
+                  {j.studio ? <><strong>{studioPitch(j)}</strong> <div className="dim small">{j.production}, the studio's own picture, invented by the game.</div></>
+                    : <><strong>{JOB_ROLES[j.role].label}: {j.production}</strong> <span className="dim small">({j.company}; an invented production)</span></>}
                   <ProductionLine j={j} />
                   {j.part && <div className="small"><strong>{j.part}.</strong> {j.material} {j.requirement}</div>}
                   <div className="small">{span(j)}, {money(j.dayRate)} a day: {money(j.dayRate * j.days.length)} if every day is worked{j.viaAgent ? `, less ${Math.round(j.viaAgent.rate * 100)}% to ${agentById(j.viaAgent.agentId).name}, who found it` : ''}.</div>
