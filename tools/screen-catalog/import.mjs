@@ -96,39 +96,47 @@ async function main() {
   }
   log(`Discovered ${titles.size} titles (${[...titles.keys()].filter((k) => k.startsWith('movie')).length} movies).`);
 
+  // What each answer is needed for is taken from it as it comes, and the answer let go: until November 18, 2026 every
+  // title's and season's details were held to the end, and 110,990 titles ran the importer out of memory.
   const keys = [...titles.keys()];
-  const details = await pool(keys, 12, (k) => {
-    const [type, id] = k.split(':');
-    return get(type === 'movie' ? `movie/${id}?append_to_response=credits,external_ids,release_dates` : `tv/${id}?append_to_response=aggregate_credits,credits,external_ids,content_ratings`);
-  });
-  log(`Fetched ${details.filter(Boolean).length} of ${keys.length} titles.`);
-
   const seasons = [];
-  keys.forEach((k, i) => { if (k.startsWith('tv:') && details[i]) for (const s of details[i].seasons ?? []) seasons.push(`tv/${details[i].id}/season/${s.season_number}?append_to_response=credits`); });
-  const seasonBodies = await pool(seasons, 12, (p) => get(p));
-  log(`Fetched ${seasonBodies.filter(Boolean).length} of ${seasons.length} seasons.`);
-
-  // The networks and streaming services the series are on (November 11, 2026, the owner's request): each one's details.
-  // Who owns them isn't in TMDB; tools/screen-catalog/networks.mjs takes that from Wikidata.
-  const networks = [...new Set(details.flatMap((d) => (d?.networks ?? []).map((n) => n.id)))].sort((a, b) => a - b);
-  const networkBodies = await pool(networks, 12, (id) => get(`network/${id}`));
-  log(`Fetched ${networkBodies.filter(Boolean).length} of ${networks.length} networks.`);
-
-  const people = new Set();
-  for (const d of details) {
-    if (!d) continue;
-    const cast = d.credits?.cast ?? [];
-    for (const c of cast.filter((x) => x.order < PEOPLE_CAST)) people.add(c.id);
+  const networkIds = new Set();
+  const people = new Set(); // the people fetched first: top-billed cast, creators and the key crew
+  const others = new Set(); // everyone else credited
+  const add = (list) => { for (const c of list ?? []) others.add(c.id); };
+  const fetched = await pool(keys, 12, async (k) => {
+    const [type, id] = k.split(':');
+    const d = await get(type === 'movie' ? `movie/${id}?append_to_response=credits,external_ids,release_dates` : `tv/${id}?append_to_response=aggregate_credits,credits,external_ids,content_ratings`);
+    if (!d) return false;
+    if (type === 'tv') for (const s of d.seasons ?? []) seasons.push(`tv/${d.id}/season/${s.season_number}?append_to_response=credits`);
+    for (const n of d.networks ?? []) networkIds.add(n.id);
+    for (const c of (d.credits?.cast ?? []).filter((x) => x.order < PEOPLE_CAST)) people.add(c.id);
     for (const c of d.aggregate_credits?.cast?.slice(0, PEOPLE_CAST) ?? []) people.add(c.id);
     for (const c of d.credits?.crew ?? []) if (PEOPLE_JOBS.has(c.job)) people.add(c.id);
     for (const c of d.created_by ?? []) people.add(c.id);
-  }
+    add(d.credits?.cast); add(d.credits?.crew); add(d.aggregate_credits?.cast); add(d.aggregate_credits?.crew);
+    return true;
+  });
+  log(`Fetched ${fetched.filter(Boolean).length} of ${keys.length} titles.`);
+
+  const seasonsFetched = await pool(seasons, 12, async (p) => {
+    const s = await get(p);
+    if (!s) return false;
+    add(s.credits?.cast); add(s.credits?.crew); for (const e of s.episodes ?? []) { add(e.crew); add(e.guest_stars); }
+    return true;
+  });
+  log(`Fetched ${seasonsFetched.filter(Boolean).length} of ${seasons.length} seasons.`);
+
+  // The networks and streaming services the series are on (November 11, 2026, the owner's request): each one's details.
+  // Who owns them isn't in TMDB; tools/screen-catalog/networks.mjs takes that from Wikidata.
+  const networks = [...networkIds].sort((a, b) => a - b);
+  const networkBodies = await pool(networks, 12, async (id) => !!(await get(`network/${id}`)));
+  log(`Fetched ${networkBodies.filter(Boolean).length} of ${networks.length} networks.`);
+
   // Everyone else credited, after the people above: every cast and crew credit on a title, a season or an episode.
-  const add = (list) => { for (const c of list ?? []) people.add(c.id); };
-  for (const d of details) if (d) { add(d.credits?.cast); add(d.credits?.crew); add(d.aggregate_credits?.cast); add(d.aggregate_credits?.crew); }
-  for (const s of seasonBodies) if (s) { add(s.credits?.cast); add(s.credits?.crew); for (const e of s.episodes ?? []) { add(e.crew); add(e.guest_stars); } }
+  for (const id of others) people.add(id);
   const ids = [...people];
-  const bodies = await pool(ids, 12, (id) => get(`person/${id}`));
+  const bodies = await pool(ids, 12, async (id) => !!(await get(`person/${id}`)));
   log(`Fetched ${bodies.filter(Boolean).length} of ${ids.length} people.`);
 
   saveFailures();
