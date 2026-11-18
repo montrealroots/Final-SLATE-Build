@@ -2,6 +2,13 @@
 // active state, the bar's screen name, each screen's eyebrow and the breadcrumbs all read it.
 // Only implemented capabilities appear here.
 
+/**
+ * Homes And Property is set aside (the owner, November 17, 2026: "remove it for now", to pick up later). Its engine
+ * (engine/homes), its screens (Homes.tsx) and their tests are kept; only the way in is gone: the rail, Home's panel, the
+ * page and its credits. Set this to true to bring it back.
+ */
+export const HOMES_SHOWN = false;
+
 export interface Destination {
   view: string;
   label: string;
@@ -31,7 +38,7 @@ export const DESTINATIONS: readonly DestinationGroup[] = [
       // Home's alone, and the rail lit Home on their pages; the owner asked for that to stop, so the rail has them too.
       { view: 'bank', label: 'Your Bank', detail: 'Your accounts, cards, loans and payments' },
       { view: 'papers', label: 'Your Papers', detail: 'Your passports, visas and permissions to work' },
-      { view: 'homes', label: 'Homes And Property', short: 'Homes', detail: 'Where you live, homes to rent or buy, land, and what you own' },
+      ...(HOMES_SHOWN ? [{ view: 'homes', label: 'Homes And Property', short: 'Homes', detail: 'Where you live, homes to rent or buy, land, and what you own' }] : []),
     ],
   },
   {

@@ -5,6 +5,7 @@ import type { RecordedPerson } from '../engine/guests';
 import { PageHead } from './components';
 import { Startup } from './Startup';
 import { store, useStore } from './store';
+import { HOMES_SHOWN } from './routes';
 
 const CATALOG_VIEWS = ['companies', 'company', 'title', 'season', 'episode', 'person', 'executive', 'networks', 'network'];
 
@@ -158,7 +159,7 @@ export function App() {
     <Shell>
       <PageBoundary key={v}>
       <Suspense fallback={<p role="status">Loading…</p>}>
-      {v === 'home' && <Home />}
+      {(v === 'home' || (v === 'homes' && !HOMES_SHOWN)) && <Home />}
       {v === 'calendar' && <CalendarView />}
       {v === 'world' && <WorldView />}
       {v === 'place' && <PlaceView />}
@@ -169,7 +170,7 @@ export function App() {
       {v === 'event' && <EventDetail />}
       {v === 'bank' && <BankPage />}
       {v === 'papers' && <PapersPage />}
-      {v === 'homes' && <HomesPage />}
+      {v === 'homes' && HOMES_SHOWN && <HomesPage />}
       {v === 'saves' && <SavedGamesPage />}
       {v === 'settings' && <><SettingsPage /><TmdbCredit /></>}
       {CATALOG_VIEWS.includes(v) && <CatalogView route={s.route} />}

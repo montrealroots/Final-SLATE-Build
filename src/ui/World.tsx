@@ -11,6 +11,7 @@ import { store, useClock, useGame } from './store';
 // Drawn with Home, not loaded after it: loaded late they pushed the cards under them down (the UI audit's walk, November
 // 14, 2026). The bank is in the engine Home already loads, so this adds nothing to load.
 import { YourBankPanel, YourHomesPanel, YourPapersPanel } from './HomeMoney';
+import { HOMES_SHOWN } from './routes';
 
 const PHASE_LABEL: Record<string, string> = {
   development: 'In Development', 'pre-production': 'In Pre-Production', production: 'In Production', 'post-production': 'In Post-Production', delivered: 'Delivered', released: 'Released',
@@ -162,7 +163,7 @@ export function Home() {
           <div className="home-money">
             <YourBankPanel />
             <YourPapersPanel />
-            <YourHomesPanel />
+            {HOMES_SHOWN && <YourHomesPanel />}
           </div>
 
           <Proposals />

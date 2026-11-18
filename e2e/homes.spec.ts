@@ -4,6 +4,11 @@
 // payments; ownership, residence and schedules from the page; the saved game from the save itself.
 import { expect, test, type Page } from './test';
 import { advance, editSave, nav, openStart, quickDraft, quickLife, readSavedState, setInheritance } from './helpers';
+import { HOMES_SHOWN } from '../src/ui/routes';
+
+// Homes And Property is set aside (the owner, November 17, 2026): these journeys wait for it to come back.
+// e2e/homes-hidden.spec.ts holds that the way in is gone meanwhile.
+test.skip(!HOMES_SHOWN, 'Homes And Property is set aside (routes.ts HOMES_SHOWN)');
 
 const card = (page: Page, title: string | RegExp) => page.locator('section.card', { has: page.getByRole('heading', { name: title, level: 2 }) }).first();
 const tab = (page: Page, name: string) => page.getByRole('tab', { name, exact: true }).click();
