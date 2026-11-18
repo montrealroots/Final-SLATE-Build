@@ -343,6 +343,7 @@ export const coveredWords = (t: FirstLookTerms): string => (t.overall ? 'films a
 /** Every term of a first-look offer, in the words shown before accepting. */
 const SPAN: Record<number, string> = { 12: 'a year', 24: 'two years', 36: 'three years', 60: 'five years' };
 const span = (months: number): string => SPAN[months] ?? `${months} months`;
+const cap = (x: string): string => x[0].toUpperCase() + x.slice(1);
 /**
  * A deal in the words a studio would use (the owner, November 18, 2026: "more natural wording ... and break it down"):
  * one sentence saying what it is and what it's worth, then the breakdown, row by row. Until then it was six paragraphs
@@ -350,7 +351,7 @@ const span = (months: number): string => SPAN[months] ?? `${months} months`;
  */
 export function offerWords(fl: FirstLook): { pitch: string; rows: [string, string][] } {
   const t = fl.terms;
-  const set: [string, string] = ['Set For', `${TIER_WORDS[t.tier ?? (t.overall ? 'proven' : 'emerging')]}: the game's own calibration, not any studio's published rate`];
+  const set: [string, string] = ['Set For', `${cap(TIER_WORDS[t.tier ?? (t.overall ? 'proven' : 'emerging')])}: the game's own calibration, not any studio's published rate`];
   const ending: [string, string] = ['Ending Early', `You may. The ${t.overall ? 'pay' : 'money'} stops, and what they have in hand is still answered.`];
   if (t.overall) {
     const a = t.overall.annual;
@@ -358,7 +359,7 @@ export function offerWords(fl: FirstLook): { pitch: string; rows: [string, strin
       pitch: `${fl.name} wants you on an overall deal for ${span(t.months)}: ${money(a)} a year for your services, ${money(a * t.months / 12)} in all. Everything you make goes to them first, and you work for no one else while it runs.`,
       rows: [
         ['Your Pay', `${money(a)} a year, ${money(a / 12)} a month into your own account, as each month comes; nothing up front`],
-        ['How Long', `${span(t.months)} from the day you sign; it ends then unless they renew it`],
+        ['How Long', `${cap(span(t.months))} from the day you sign; it ends then unless they renew it`],
         ['They Get', 'First call on every film and series you make'],
         ['You Give Up', 'Work for any other company while it runs'],
         ['Their Answer', `Within ${t.considerDays} days of each submission; if they pass, it's yours to take elsewhere`],
@@ -374,7 +375,7 @@ export function offerWords(fl: FirstLook): { pitch: string; rows: [string, strin
     pitch: `${fl.name} wants first look at your next ${what}: ${money(t.overhead)} a month toward your office for ${span(t.months)}, ${money(t.overhead * t.months)} in all. Bring them each one first; they have ${t.considerDays} days to say yes before you can take it elsewhere.`,
     rows: [
       ['Toward Your Office', `${money(t.overhead)} a month into ${into}${t.annualOverhead ? `, ${money(t.annualOverhead)} a year` : ''}: it pays for an office and development, not you`],
-      ['How Long', `${span(t.months)} from the day you sign; it ends then unless they renew it`],
+      ['How Long', `${cap(span(t.months))} from the day you sign; it ends then unless they renew it`],
       ['They Get', tv ? `The first chance at every series you make, before any commissioner; not your films` : `The first chance at every ${t.animatedOnly ? 'animated film' : 'film'} you make, before any other studio; not your series`],
       ['Their Answer', `Within ${t.considerDays} days of each one; if they pass, it's yours to take elsewhere`],
       ['Development Money', `Up to ${money(t.fund)} for the ${what} it covers; repaid by any studio or commissioner that later takes one they passed on`],
