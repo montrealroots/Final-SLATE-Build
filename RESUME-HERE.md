@@ -42,9 +42,19 @@ like "so and so wants you to take over and film the next Batman", invented entri
 - **Franchises:** each studio's live franchises come from its films' TMDB collections in the built catalog
   (`tools/screen-catalog/franchises.mjs`, run by every build and runnable on an older one; 52 of 65 studios), each with
   the budget of its latest budgeted film, and each studio's median budget over ten years (`mb`).
-- **Next (the owner, November 18):** bring every other studio and streamer over the way the first TMDB haul came
-  (Amazon MGM, Lionsgate, Netflix, Apple, A24, Neon, Legendary, Blumhouse, Amblin, Annapurna, Miramax first, then the
-  big international studios: Toho, StudioCanal, Gaumont, Pathé and others).
+- **Every other studio (the owner, November 18):** the American ones are in the registry (`src/catalog/registry.ts`,
+  `docs/CATALOG.md` "Amazon, Lionsgate, Netflix, Apple, Legendary And The Independent Studios"): 22 production
+  records, 114 gathered in all, with dated ownership and leaders from official sources only. Their titles were
+  gathered into the git-ignored cache the same day (`node tools/screen-catalog/import.mjs`); the catalog then needs a
+  build (`node tools/screen-catalog/build.mjs`), which also gives them franchises and makes them studios that offer
+  deals and pictures in a new game.
+- **Next: the international studios.** Their TMDB records were found on November 18, 2026, not yet checked for
+  ownership or leadership: Toho 882, Toei Company 5822, Toei Animation 5542, Shochiku 192, Nikkatsu 955, KADOKAWA
+  2073, Studio Ghibli 10342, StudioCanal 694 (and UK 113521), Gaumont 9, Pathé 7981 (and UK 7396), EuropaCorp 6896,
+  Wild Bunch 856, Constantin Film 47, UFA 12372, RAI Cinema 155990, Medusa Film 6246, BBC Film 288, Film4 Productions
+  6705, CJ ENM 128404, Showbox 3491, Lotte Entertainment 7819, Shaw Brothers 5798, Orange Sky Golden Harvest 2521,
+  Bona Film Group 30148, Yash Raj Films 1569, T-Series 3522, Dharma Productions 19146, Red Chillies 2343, Televisa
+  20911. About 20,000 films; mind the disk (the catalog was 1 GB and its cache 3 GB before the American round).
 - Tests: `tests/studio-projects.test.ts`, `e2e/studio-projects.spec.ts`, proof `off-studio-project`.
 - **Not yet:** producing (there is no producing job), multi-picture deals, series franchises (TMDB's collections are
   films only).
