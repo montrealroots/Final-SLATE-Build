@@ -99,8 +99,10 @@ for (const t of manifest.titles) {
       const eps = (sb.episodes ?? []).map((e) => ({
         number: e.episode_number, name: e.name, date: date(e.air_date), runtime: known(e.runtime), overview: e.overview || null,
         rating: e.vote_count > 0 ? { average: e.vote_average, count: e.vote_count } : null,
-        crew: (e.crew ?? []).map((c) => ({ person: c.id, name: c.name, department: c.department, job: c.job })),
-        guests: (e.guest_stars ?? []).map((c) => ({ person: c.id, name: c.name, character: c.character || null, order: c.order })),
+        // TMDB keeps a few episode credits with no person, only a hex person_id and no name; they credit no one and are left out.
+        // Until November 18, 2026 they stopped the build, the first time it read the most-watched series.
+        crew: (e.crew ?? []).filter((c) => c.id != null).map((c) => ({ person: c.id, name: c.name, department: c.department, job: c.job })),
+        guests: (e.guest_stars ?? []).filter((c) => c.id != null).map((c) => ({ person: c.id, name: c.name, character: c.character || null, order: c.order })),
       }));
       counts.episodes += eps.length;
       if (s.season_number > 0) {

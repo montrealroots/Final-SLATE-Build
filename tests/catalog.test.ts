@@ -394,7 +394,8 @@ describe('the build', () => {
     };
     const season = { season_number: 1, name: 'Season 1', air_date: '2020-01-01', credits: { cast: [] }, episodes: [
       { episode_number: 1, name: 'Pilot', air_date: '2020-01-01', vote_count: 0, crew: [{ id: 800002, name: 'Ben Rook', department: 'Directing', job: 'Director' }], guest_stars: [{ id: 800004, name: 'Dee Guest', character: 'Visitor', order: 0 }] },
-      { episode_number: 2, name: 'Second', air_date: '2020-01-08', vote_count: 0, crew: [], guest_stars: [] },
+      // Credits TMDB keeps with no person (found November 18, 2026 on two series): only a hex person_id and no name.
+      { episode_number: 2, name: 'Second', air_date: '2020-01-08', vote_count: 0, crew: [{ job: 'Writer', department: 'Writing', person_id: '6738577873a45e5184bf5614', credit_id: '6738577873a45e5184bf561b' }], guest_stars: [{ person_id: '69e85b9d2acaddea8523f2d3', character: 'School Child (uncredited)', credit_id: '69e85b9d2acaddea8523f2da', order: 565 }] },
     ] };
     const responses: Record<string, unknown> = {
       'movie/900001?append_to_response=credits,external_ids,release_dates': movie,
