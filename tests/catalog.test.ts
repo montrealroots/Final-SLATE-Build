@@ -45,10 +45,12 @@ describe('the company registry', () => {
   it('gathers titles for production companies only: networks and streaming services are where titles air, not who made them', () => {
     const networks = COMPANIES.filter((c) => c.kind === 'network');
     expect(networks.map((c) => c.name)).toEqual(['Disney+', 'Hulu', 'ABC', 'Disney Channel', 'FX', 'NBC', 'Peacock', 'Bravo', 'Telemundo',
-      'Paramount+', 'Pluto TV', 'CBS', 'Nickelodeon', 'MTV', 'BET', 'Comedy Central', 'HBO Max', 'HBO (The Channel)', 'Cartoon Network', 'CNN', 'Crunchyroll']);
+      'Paramount+', 'Pluto TV', 'CBS', 'Nickelodeon', 'MTV', 'BET', 'Comedy Central', 'HBO Max', 'HBO (The Channel)', 'Cartoon Network', 'CNN', 'Crunchyroll',
+      'Prime Video', 'Starz', 'Netflix (The Service)', 'Apple TV']);
     for (const n of networks) { expect(n.tmdb).toBeNull(); expect(DISCOVERED).not.toContain(n); }
-    // 32 Disney records and 10 NBCUniversal's; from milestone F, 19 of Paramount's and Skydance Media's, 19 of Warner Bros.' and 12 of Sony's.
-    expect(DISCOVERED).toHaveLength(92);
+    // 32 Disney records and 10 NBCUniversal's; from milestone F, 19 of Paramount's and Skydance Media's, 19 of Warner Bros.' and 12 of Sony's;
+    // from November 18, 2026, 6 of Amazon's, 4 of Lionsgate's, 2 of Netflix's, Apple's 1, Legendary's 2 and 7 independents'.
+    expect(DISCOVERED).toHaveLength(114);
     expect(new Set(COMPANIES.map((c) => c.id)).size).toBe(COMPANIES.length);
     expect(new Set(DISCOVERED.map((c) => c.tmdb!.id)).size).toBe(DISCOVERED.length);
   });
@@ -68,6 +70,20 @@ describe('the company registry', () => {
     expect(checkedFor('company:tristar-pictures')).toBe('2026-11-11');
   });
 
+  it("dates Amazon's, Lionsgate's and the others' studios from official sources, and leaves a minority holding on its own (November 18, 2026)", () => {
+    // MGM's labels came to Amazon with MGM; Summit to Lionsgate on its own day; Lionsgate's own labels were always its.
+    expect(joinedGroup('company:united-artists')).toMatchObject({ from: '2022-03-17' });
+    expect(joinedGroup('company:orion-pictures')!.source!.url).toMatch(/^https:\/\/www\.aboutamazon\.com\//);
+    expect(groupOf('company:mgm-television')!.name).toBe('Amazon');
+    expect(joinedGroup('company:summit-entertainment')).toMatchObject({ from: '2012-01-13' });
+    expect(joinedGroup('company:lionsgate')).toBeNull();
+    // ViacomCBS's 49% of Miramax is a minority holding: Miramax is its own group, not Skydance's.
+    expect(groupOf('company:miramax')!.id).toBe('company:miramax');
+    expect(groupOf('company:starz')!.id).toBe('company:starz');
+    for (const id of ['company:a24', 'company:netflix', 'company:apple-studios', 'company:legendary-television', 'company:starz']) expect(checkedFor(id)).toBe('2026-11-18');
+    expect(checkedFor('company:universal-pictures')).toBe(REGISTRY_CHECKED_NBCU);
+  });
+
   it('shows Skydance\'s leaders only from the day the company took that form, and as current only once its page was read', () => {
     const sky = (today: string) => leadershipAt('company:skydance', today, checkedFor('company:skydance')).map((x) => `${x.role.name}|${x.standing}`);
     expect(sky('2026-10-05')).toEqual([]);
@@ -82,7 +98,7 @@ describe('the company registry', () => {
     for (const r of LEADERSHIP) {
       expect(company(r.companyId), r.name).toBeDefined();
       expect(r.sources.length).toBeGreaterThan(0);
-      for (const s of r.sources) expect(s.url).toMatch(/^https:\/\/(thewaltdisneycompany\.com|www\.lucasfilm\.com|www\.starwars\.com|www\.pixar\.com|www\.sec\.gov|www\.nbcuniversal\.com|www\.skydance\.com)\//);
+      for (const s of r.sources) expect(s.url).toMatch(/^https:\/\/(thewaltdisneycompany\.com|www\.lucasfilm\.com|www\.starwars\.com|www\.pixar\.com|www\.sec\.gov|www\.nbcuniversal\.com|www\.skydance\.com|www\.aboutamazon\.com|ir\.netflix\.net|www\.apple\.com)\//);
     }
   });
 });
@@ -116,6 +132,14 @@ describe('leadership at the save\'s date', () => {
     // Pixar's leaders are listed on a page read November 10, 2026, with no start dates: earlier, they are only "listed".
     expect(at('2026-01-05', 'company:pixar').every((x) => x.endsWith('|listed'))).toBe(true);
     expect(at('2026-11-10', 'company:pixar').every((x) => x.endsWith('|current'))).toBe(true);
+  });
+
+  it("Netflix's and Apple's leaders count from November 18, 2026, the day their pages were read", () => {
+    const lead = (today: string, id: string) => leadershipAt(id, today, checkedFor(id)).map((x) => `${x.role.name}|${x.standing}`);
+    expect(lead('2026-11-17', 'company:netflix-inc')).toContain('Ted Sarandos|listed');
+    expect(lead('2026-11-18', 'company:netflix-inc')).toContain('Peter Rice|current');
+    expect(lead('2026-11-18', 'company:apple-studios')).toEqual(['Jamie Erlicht|current']);
+    expect(lead('2026-11-18', 'company:amazon')).toEqual(['Mike Hopkins|current']);
   });
 
   it('NBCUniversal\'s leaders count from the day they were read, and a role waiting on an undated event never begins', () => {

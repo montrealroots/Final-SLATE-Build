@@ -30,10 +30,21 @@ like "so and so wants you to take over and film the next Batman", invented entri
 - **Studio projects** (`src/engine/studio-projects.ts`): after a delivery, for a record past its start, the studio your
   work fits best, or the one whose overall deal you're on, may ask you to direct or write its next picture: the next
   entry in its most recent live franchise, or an original in the genre it makes most; at most one in six months. It is
-  a job (`jobs.ts`): days on the calendar, worked in person, paid for the days worked, credited. Fee: the guild minimum
-  (DGA high-budget weeks, WGA screenplay) times 3 for a franchise entry, 1.5 for an original, moved by your standing.
+  a job (`jobs.ts`): days on the calendar, worked in person, paid for the days worked, credited.
+- **Real money** (the owner: "big franchises getting big payday ... complete realism"): the fee is the trade-reported
+  range for the role and the record (`STUDIO_FEES`: a director's first studio feature $450,000 to $750,000, after a
+  success $1m to $2m, experienced $2.5m to $5m, the top $5m to $20m; a writer's first $75,000 to $100,000, established
+  $150,000 to $600,000, the top $1m to $2m), placed in the range by where the franchise's latest recorded TMDB budget
+  sits on a $20m to $300m log scale (the studio's median budget for an original; the middle with neither). The guild
+  minimum governs underneath (a writer's first studio screenplay is paid the WGA minimum). Shooting runs 8, 12 or 18
+  weeks by budget. The job pays the fee itself, pro rata to days worked; asking raises it a fifth. The offer says the
+  budget and which film it comes from ("as Fast X (2023) cost"). Profit shares (backend) are not modelled.
 - **Franchises:** each studio's live franchises come from its films' TMDB collections in the built catalog
-  (`tools/screen-catalog/franchises.mjs`, run by every build and runnable on an older one; 52 of 65 studios).
+  (`tools/screen-catalog/franchises.mjs`, run by every build and runnable on an older one; 52 of 65 studios), each with
+  the budget of its latest budgeted film, and each studio's median budget over ten years (`mb`).
+- **Next (the owner, November 18):** bring every other studio and streamer over the way the first TMDB haul came
+  (Amazon MGM, Lionsgate, Netflix, Apple, A24, Neon, Legendary, Blumhouse, Amblin, Annapurna, Miramax first, then the
+  big international studios: Toho, StudioCanal, Gaumont, Pathé and others).
 - Tests: `tests/studio-projects.test.ts`, `e2e/studio-projects.spec.ts`, proof `off-studio-project`.
 - **Not yet:** producing (there is no producing job), multi-picture deals, series franchises (TMDB's collections are
   films only).

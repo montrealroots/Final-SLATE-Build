@@ -1,9 +1,65 @@
-# The Screen Catalog: Disney's And NBCUniversal's Companies, Films And Series
+# The Screen Catalog: The Studios' Companies, Films And Series
 
 Written November 10, 2026. The catalog is reference material inside SLATE. It covers The Walt Disney Company's studios
 and labels and their leadership, and the films and series TMDB credits to them, with their cast, crew, seasons, episodes
 and people. Nothing in it changes the simulation. The coverage figures from the gathering run are in
 `docs/CATALOG-COVERAGE.md`.
+
+## Amazon, Lionsgate, Netflix, Apple, Legendary And The Independent Studios (November 18, 2026)
+
+The owner asked for every other studio to be brought over the way the first TMDB haul was ("all the studios and their
+stuff"). The American ones came first, read on November 18, 2026 (`REGISTRY_CHECKED_US`):
+
+- **TMDB records.** Each was found by TMDB's company search and checked that day against its company details and its
+  count of films and series:
+
+  | Company | TMDB ID | Group |
+  | --- | --- | --- |
+  | Amazon MGM Studios | 210099 | Amazon |
+  | Amazon Studios | 20580 | Amazon (its earlier name) |
+  | Metro-Goldwyn-Mayer | 21 | Amazon, from March 17, 2022 |
+  | United Artists | 60 | Amazon, through MGM |
+  | Orion Pictures | 41 | Amazon, through MGM |
+  | MGM Television | 2230 | Amazon, through MGM |
+  | Lionsgate | 1632 | Lionsgate Studios Corp. |
+  | Lions Gate Films | 35 | Lionsgate (its earlier name) |
+  | Summit Entertainment | 491 | Lionsgate, from January 13, 2012 |
+  | Lionsgate Television | 28523 | Lionsgate |
+  | Netflix | 178464 | Netflix, Inc. |
+  | Netflix Animation Studios | 171251 | Netflix, Inc. |
+  | Apple Studios | 194232 | Apple |
+  | Legendary Pictures | 923 | Legendary Entertainment |
+  | Legendary Television | 54629 | Legendary Entertainment |
+  | A24 | 41077 | Independent |
+  | NEON | 90733 | Independent |
+  | Blumhouse Productions | 3172 | Independent |
+  | Blumhouse Television | 68884 | Independent |
+  | Amblin Entertainment | 56 | Independent |
+  | Annapurna Pictures | 13184 | Independent |
+  | Miramax | 14 | Independent |
+- **Ownership.**
+  - MGM joined Amazon on March 17, 2022 (Amazon's own news of that day). United Artists, Orion and MGM Television are
+    placed as MGM labels, with no official source for when each became one.
+  - Lionsgate's studio business has been its own public company, Lionsgate Studios Corp., since Starz was split from it
+    on May 6, 2025 (its Form 8-K12B). Lionsgate completed its purchase of Summit on January 13, 2012 (its Form 8-K).
+    Legendary was reported in October 2026 to have offered to buy Lionsgate; neither company confirmed it, so no change
+    of owner is recorded.
+  - ViacomCBS (now part of Skydance) bought 49% of Miramax in April 2020 (its 10-Q). A minority holding doesn't place
+    Miramax in Skydance, so it stands on its own.
+  - Who owns Legendary isn't recorded: its own page names its divisions, not its owners.
+  - A24, NEON, Blumhouse, Amblin and Annapurna each stand on their own. No official source placed any of them in a group.
+- **Networks and services, listed without titles:** Prime Video, Starz (its own company since May 6, 2025), Netflix (the
+  service) and Apple TV.
+- **Leadership.** Netflix's officers over the company and its content, from its investor site; Amazon's head of video
+  and studios, from its S-team page (updated August 1, 2026); Apple's chief executive and services chief, from its
+  leadership page, and its head of Worldwide Video, from its newsroom (June 22, 2026). The pages give no start dates,
+  so each is Listed before November 18, 2026 and Current from it. No head of Amazon MGM Studios' film or television,
+  MGM, Lionsgate or the independents is listed: no official page naming them could be read, and each page says why.
+- **Netflix's own titles.** TMDB credits most Netflix originals to the companies that made them, so only the titles
+  TMDB credits to Netflix itself are gathered under it.
+- **Left out, on purpose.** Amazon Studios' regional records, a second Orion record, the newer United Artists record,
+  Netflix's regional records, A24's London record and Annapurna's namesake in India. None is claimed either way.
+- **Next:** the big international studios (Toho, StudioCanal, Gaumont, Pathé and others).
 
 ## Skydance (Paramount And Warner Bros.) And Sony (November 11, 2026)
 
@@ -28,7 +84,7 @@ checked against official sources on the day. Checked that day:
   executive, from the 6-K. No head of Paramount Pictures, Warner Bros. Pictures, HBO, Columbia Pictures or Sony
   Pictures Television is listed, and each page says why.
 - **Left out, on purpose.** Discovery's unscripted channels' own productions, Turner Pictures, the studios' regional
-  arms, Miramax (a minority holding with no official source read), Left Bank Pictures and Bad Wolf (ownership not read
+  arms, Miramax (a minority holding with no official source read; it was added on its own on November 18, 2026), Left Bank Pictures and Bad Wolf (ownership not read
   from an official source), TMDB's second records for Paramount Television Studios and Sony Pictures, and the two
   Crunchyroll company records. None is claimed either way.
 - **The data.** TMDB's, gathered as Disney's is, and the owner's alone (`docs/DEPLOYMENT.md`).

@@ -73,12 +73,21 @@ export function TmdbCredit() {
 // ---------- companies ----------
 
 const KIND_LABEL: Record<CompanyRecord['kind'], string> = { corporate: 'The Company', film: 'Film', television: 'Television', network: 'Networks And Streaming' };
-/** The groups the catalog follows, and companies whose films one of them releases without owning them (Illumination). */
-const GROUPS = ['company:the-walt-disney-company', 'company:comcast', 'company:skydance', 'company:sony-group', 'other'] as const;
-const GROUP_LABEL: Record<(typeof GROUPS)[number], string> = { 'company:the-walt-disney-company': 'The Walt Disney Company', 'company:comcast': 'Comcast And NBCUniversal', 'company:skydance': 'Skydance (Paramount And Warner Bros.)', 'company:sony-group': 'Sony', other: 'Released By Universal Pictures' };
+/**
+ * The groups the catalog follows; the independent studios (from November 18, 2026); and companies whose films a group
+ * releases without owning them (Illumination, Working Title).
+ */
+const GROUPS = ['company:the-walt-disney-company', 'company:comcast', 'company:skydance', 'company:sony-group', 'company:amazon', 'company:lionsgate-studios', 'company:netflix-inc', 'company:apple', 'company:legendary-entertainment', 'independent', 'other'] as const;
+const GROUP_LABEL: Record<(typeof GROUPS)[number], string> = {
+  'company:the-walt-disney-company': 'The Walt Disney Company', 'company:comcast': 'Comcast And NBCUniversal', 'company:skydance': 'Skydance (Paramount And Warner Bros.)', 'company:sony-group': 'Sony',
+  'company:amazon': 'Amazon (Amazon MGM Studios)', 'company:lionsgate-studios': 'Lionsgate', 'company:netflix-inc': 'Netflix', 'company:apple': 'Apple', 'company:legendary-entertainment': 'Legendary',
+  independent: 'Independent Studios', other: 'Released By Universal Pictures',
+};
+const RELEASED_BY_UNIVERSAL = new Set(['company:illumination', 'company:working-title']);
 const inGroup = (c: CompanyRecord, g: (typeof GROUPS)[number]) => {
   const top = groupOf(c.id)?.id;
-  return g === 'other' ? top === c.id && c.kind !== 'corporate' : top === g;
+  const alone = top === c.id && c.kind !== 'corporate';
+  return g === 'other' ? alone && RELEASED_BY_UNIVERSAL.has(c.id) : g === 'independent' ? alone && !RELEASED_BY_UNIVERSAL.has(c.id) : top === g;
 };
 
 export function CompaniesPage() {
@@ -86,7 +95,7 @@ export function CompaniesPage() {
   const counts = index.status === 'ready' ? new Map(index.data.companies.map((c) => [c.tmdbId, c])) : null;
   return (
     <>
-      <PageHead eyebrow="Industry" title="Companies" lede="The studios and labels of The Walt Disney Company, NBCUniversal, Skydance (Paramount and Warner Bros.) and Sony, their leadership, and the films and series credited to them, from TMDB." />
+      <PageHead eyebrow="Industry" title="Companies" lede="The studios and labels of The Walt Disney Company, NBCUniversal, Skydance (Paramount and Warner Bros.), Sony, Amazon, Lionsgate, Netflix, Apple and Legendary, and of the independent studios, their leadership, and the films and series credited to them, from TMDB." />
       <CatalogStatus index={index} />
       <CatalogSearch ready={index.status === 'ready'} />
       {index.status === 'ready' && index.data.counts.networks ? (
@@ -181,7 +190,7 @@ export function CompanyPage({ id }: { id: string }) {
     return (
       <>
         <Breadcrumbs items={[{ label: 'Companies', route: { view: 'companies' } }, { label: tmdbOnly ? 'Credited Company' : 'Company' }]} />
-        <Empty title="This Company Isn't One The Catalog Follows"><p className="muted">It is credited on titles in the catalog, but SLATE gathers titles only for the studios and labels of The Walt Disney Company and of NBCUniversal, so there is nothing more about it here.</p><GoBack /></Empty>
+        <Empty title="This Company Isn't One The Catalog Follows"><p className="muted">It is credited on titles in the catalog, but SLATE gathers titles only for the studios and labels listed under Companies, so there is nothing more about it here.</p><GoBack /></Empty>
       </>
     );
   }
