@@ -38,7 +38,7 @@ a roster that was read says nothing about the eligibility rules, the recipients,
 | Annie Awards (`annie`) | 32 | 30 / 2 / 0 | 29 / 0 / 3 | 0 | 32 | 29 | 11 | 0 | 6 |
 | Film Independent Spirit Awards (`spirit`) | 21 | 21 / 0 / 0 | 21 / 0 / 0 | 0 | 21 | 20 | 9 | 0 | 4 |
 | Gotham Awards (`gotham`) | 12 | 11 / 1 / 0 | 10 / 0 / 2 | 0 | 12 | 10 | 6 | 0 | 1 |
-| Directors Guild Of America Awards (`dga`) | 10 | 10 / 0 / 0 | 10 / 0 / 0 | 0 | 10 | 10 | 8 | 0 | 3 |
+| Directors Guild Of America Awards (`dga`) | 10 | 10 / 0 / 0 | 10 / 0 / 0 | 0 | 10 | 10 | 9 | 0 | 3 |
 | Writers Guild Awards (`wga`) | 18 | 17 / 1 / 0 | 18 / 0 / 0 | 0 | 0 | 18 | 10 | 0 | 11 |
 | Producers Guild Awards (`pga`) | 15 | 14 / 1 / 0 | 12 / 0 / 3 | 0 | 15 | 12 | 11 | 0 | 4 |
 | Actor Awards (`actor-awards`) | 13 | 13 / 0 / 0 | 13 / 0 / 0 | 0 | 13 | 13 | 4 | 0 | 3 |
@@ -50,7 +50,7 @@ a roster that was read says nothing about the eligibility rules, the recipients,
 | Japan Academy Film Prize (`japan-academy`) | 17 | 17 / 0 / 0 | 17 / 0 / 0 | 0 | 0 | 0 | 6 | 0 | 2 |
 | Blue Dragon Film Awards (`blue-dragon`) | 3 | 0 / 0 / 3 | 0 / 0 / 3 | 0 | 0 | 0 | 2 | 0 | 0 |
 | European Film Awards (`european-film-awards`) | 20 | 15 / 5 / 0 | 15 / 0 / 5 | 0 | 20 | 14 | 8 | 6 | 0 |
-| **All 37** | 806 | 709 / 69 / 28 | 592 / 11 / 203 | 28 | 338 | 541 | 283 | 50 | 123 |
+| **All 37** | 806 | 709 / 69 / 28 | 592 / 11 / 203 | 28 | 338 | 541 | 284 | 50 | 123 |
 
 ## Research queue
 

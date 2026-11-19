@@ -10584,6 +10584,13 @@
     ]
    },
    "official": {
+    "2026": {
+     "start": "2026-02-07",
+     "end": "2026-02-07",
+     "label": "78th DGA Awards",
+     "source": "https://www.dga.org/News/PressReleases/2026/260207_78th_Annual-DGA-Award-Winners",
+     "checked": "2026-11-19"
+    },
     "2027": {
      "start": "2027-01-30",
      "end": "2027-01-30",

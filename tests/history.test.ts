@@ -97,6 +97,19 @@ describe('recorded history', () => {
     expect(won.find((o) => o.category === 'tv-female-comedy')).toMatchObject({ subjects: ["Catherine O'Hara"], work: 'The Studio' });
   });
 
+  it('holds the 78th DGA Awards: nominees from January 7 and 8, winners from February 7, and no winner the release does not state', () => {
+    const on = (day: string, kind: string) => recordedResults('dga', 2026, day).filter((o) => o.kind === kind);
+    expect(on('2026-01-07', 'nominees')).toHaveLength(9); // television and documentary
+    expect(on('2026-01-08', 'nominees')).toHaveLength(11); // and the two feature categories
+    expect(on('2026-02-06', 'winner')).toEqual([]);
+    const won = on('2026-02-07', 'winner');
+    expect(won).toHaveLength(10);
+    // Its Comedy Series section is worded as nominees and lists one; the record doesn't guess that it was the winner.
+    expect(won.some((o) => o.category === 'comedy')).toBe(false);
+    expect(won.find((o) => o.category === 'drama')).toMatchObject({ subjects: ['Amanda Marsalis'], work: 'The Pitt, “6:00 P.M.”' });
+    expect(on('2026-01-07', 'nominees').find((o) => o.category === 'reality')!.subjects).toContain('Adam Sandler (The Price is Right, “10,000th Episode”)');
+  });
+
   it('cites a source for every observation, never publishes before it happens, and names the game\'s own categories', () => {
     const insts = (institutions as { institutions: { id: string; categories: { id: string }[]; official?: Record<string, { label?: string }> }[] }).institutions;
     const wrong: string[] = [];

@@ -12,7 +12,7 @@ The catalog (TMDB), the cinemas (Wikidata) and the stories (Wikipedia) are older
 - **What it is:** Award results of 2026 ceremonies, from each organizer's own page.
 - **Kind:** Recorded fact.
 - **Terms:** Facts (who was nominated, who won) read from public pages; titles and names only, no article text. Shown from their published date; nothing written into a save.
-- **Sources (14):**
+- **Sources (17):**
   - <https://goldenglobes.com/articles/one-battle-after-another-and-hamnet-take-best-picture-prizes-at-golden-globes/>, read 2026-11-13. Read through a fetching tool. Only the categories the article states are recorded.
   - <https://goldenglobes.com/nominations/2026>, read 2026-11-19. Every category, its winner marked; read twice through a fetching tool, the readings agreed. A title the page files under its article ("Studio, The") is written in reading order.
   - <https://goldenglobes.com/articles/nominations-announced-for-the-83rd-annual-golden-globes/>, read 2026-11-19. For the date the nominations were announced, December 8, 2025.
@@ -26,6 +26,9 @@ The catalog (TMDB), the cinemas (Wikidata) and the stories (Wikipedia) are older
   - <https://actorawards.org/sites/default/files/2026_Actor%20Awards_Nominations%20Release.pdf>, read 2026-11-19. For the date the nominations were announced, January 7, 2026.
   - <https://www.actorawards.org/media/news/releases/actor-awards-presented-sag-aftra-announce-years-stunt-ensemble-nominees>, read 2026-11-19. For the stunt ensembles' announcement, February 26, 2026.
   - <https://www.actorawards.org/media/news/releases/outstanding-film-and-television-performances-honored-32nd-annual-actor-awards>, read 2026-11-19. The recipients of March 1, 2026; every recipient the category page marks is named here.
+  - <https://www.dga.org/News/PressReleases/2026/260107_78thAnnualDGAAwardsTelevisionNomineesAnnounced>, read 2026-11-19. The DGA's television and documentary nominees (January 7, 2026), downloaded and parsed; Commercials, laid out differently and not held by the game, left out.
+  - <https://www.dga.org/News/PressReleases/2026/260108_78thAnnualDGAAwardsFeatureFilmNomineesAnnounced>, read 2026-11-19. The feature nominees (January 8, 2026).
+  - <https://www.dga.org/News/PressReleases/2026/260207_78th_Annual-DGA-Award-Winners>, read 2026-11-19. The winners (February 7, 2026); its Comedy Series section is worded as nominees, so that winner isn't recorded.
   - <https://www.televisionacademy.com/78th-emmy-winners>, read 2026-11-19. The Academy's winners release (Ernst & Young's list of the telecast's 19 categories), a PDF whose text was read directly.
 
 ## `src/data/history/awards-2026-reference.json`

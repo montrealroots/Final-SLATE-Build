@@ -9,9 +9,10 @@
       "83rd Golden Globe Awards",
       "98th Academy Awards",
       "2026 Primetime Emmy Awards",
-      "32nd Actor Awards"
+      "32nd Actor Awards",
+      "78th DGA Awards"
     ],
-    "notInSet": "Every other 2026 ceremony and festival. The 32nd Actor Awards are recorded whole from November 19, 2026 (15 categories). The 2026 Emmys are recorded whole from November 19, 2026: all 120 categories' winners, and the nominees of the 117 whose page lists a field (three list only their winners: two juried awards and an area award). The 83rd Golden Globe Awards (from goldenglobes.com/nominations/2026) and the 98th Academy Awards are recorded whole from November 19, 2026; until then five Golden Globes were, and the night's article, which names The Pitt and The Studio as series winners without saying which won which, left both out (the nominations page says: The Pitt, Drama; The Studio, Musical or Comedy)."
+    "notInSet": "Every other 2026 ceremony and festival. The 78th DGA Awards from November 19, 2026: every category's nominees but Commercials, and every winner but Comedy Series, which the DGA's release doesn't state as a winner. The 32nd Actor Awards are recorded whole from November 19, 2026 (15 categories). The 2026 Emmys are recorded whole from November 19, 2026: all 120 categories' winners, and the nominees of the 117 whose page lists a field (three list only their winners: two juried awards and an area award). The 83rd Golden Globe Awards (from goldenglobes.com/nominations/2026) and the 98th Academy Awards are recorded whole from November 19, 2026; until then five Golden Globes were, and the night's article, which names The Pitt and The Studio as series winners without saying which won which, left both out (the nominations page says: The Pitt, Drama; The Studio, Musical or Comedy)."
   },
   "sources": {
     "oscars-98": {
@@ -125,6 +126,30 @@
       "retrieved": "2026-11-19",
       "section": "Release dated March 1, 2026",
       "access": "Downloaded directly; every recipient the category page marks is named here."
+    },
+    "dga-78-tv": {
+      "url": "https://www.dga.org/News/PressReleases/2026/260107_78thAnnualDGAAwardsTelevisionNomineesAnnounced",
+      "title": "DGA Announces Nominees for Outstanding Directorial Achievement in Television, Commercials and Documentary for 2025",
+      "provider": "Directors Guild of America",
+      "retrieved": "2026-11-19",
+      "section": "Release dated January 7, 2026",
+      "access": "Downloaded directly and parsed (each nominee, title, episode and network); every category's count matches the networks the release lists. Commercials, laid out differently and not held by the game, are left out."
+    },
+    "dga-78-film": {
+      "url": "https://www.dga.org/News/PressReleases/2026/260108_78thAnnualDGAAwardsFeatureFilmNomineesAnnounced",
+      "title": "DGA Announces Nominees for Outstanding Directorial Achievement in Theatrical Feature Film for 2025",
+      "provider": "Directors Guild of America",
+      "retrieved": "2026-11-19",
+      "section": "Release dated January 8, 2026",
+      "access": "Downloaded directly and parsed."
+    },
+    "dga-78-winners": {
+      "url": "https://www.dga.org/News/PressReleases/2026/260207_78th_Annual-DGA-Award-Winners",
+      "title": "78th Annual DGA Award Winners",
+      "provider": "Directors Guild of America",
+      "retrieved": "2026-11-19",
+      "section": "Release of February 7, 2026, the night of the ceremony",
+      "access": "Downloaded directly and parsed. Its Comedy Series section says \"The nominees ... are\" and lists only Seth Rogen & Evan Goldberg for The Studio, \"The Oner\", where every other section says \"The winner ... is\"; what the page doesn't state isn't guessed, so that winner isn't recorded."
     }
   },
   "observations": [
@@ -8323,6 +8348,465 @@
       "occurred": "2026-03-01",
       "published": "2026-03-01",
       "publishedSource": "actor-32-recipients"
+    },
+    {
+      "id": "dga-78-dramatic-series-nominees",
+      "kind": "nominees",
+      "institution": "dga",
+      "year": 2026,
+      "edition": "78th DGA Awards",
+      "precision": "day",
+      "status": "verified",
+      "revision": 1,
+      "imported": "2026-11-19",
+      "category": "drama",
+      "categoryName": "Outstanding Directorial Achievement in Dramatic Series",
+      "subjects": [
+        "Liza Johnson (The Diplomat, “Amagansett”)",
+        "Amanda Marsalis (The Pitt, “6:00 P.M.”)",
+        "Janus Metz (Andor, “Who Are You?”)",
+        "Ben Stiller (Severance, “Cold Harbor”)",
+        "John Wells (The Pitt, “7:00 A.M.”)"
+      ],
+      "occurred": "2026-01-07",
+      "published": "2026-01-07",
+      "source": "dga-78-tv"
+    },
+    {
+      "id": "dga-78-dramatic-series",
+      "kind": "winner",
+      "institution": "dga",
+      "year": 2026,
+      "edition": "78th DGA Awards",
+      "precision": "day",
+      "status": "verified",
+      "revision": 1,
+      "imported": "2026-11-19",
+      "category": "drama",
+      "categoryName": "Outstanding Directorial Achievement in Dramatic Series",
+      "subjects": [
+        "Amanda Marsalis"
+      ],
+      "work": "The Pitt, “6:00 P.M.”",
+      "recipients": "named_person",
+      "occurred": "2026-02-07",
+      "published": "2026-02-07",
+      "source": "dga-78-winners"
+    },
+    {
+      "id": "dga-78-comedy-series-nominees",
+      "kind": "nominees",
+      "institution": "dga",
+      "year": 2026,
+      "edition": "78th DGA Awards",
+      "precision": "day",
+      "status": "verified",
+      "revision": 1,
+      "imported": "2026-11-19",
+      "category": "comedy",
+      "categoryName": "Outstanding Directorial Achievement in Comedy Series",
+      "subjects": [
+        "Lucia Aniello (Hacks, “A Slippery Slope”)",
+        "Janicza Bravo (The Bear, “Worms”)",
+        "Seth Rogen & Evan Goldberg (The Studio, “The Oner”)",
+        "Christopher Storer (The Bear, “Bears”)",
+        "Mike White (The White Lotus, “Denials”)"
+      ],
+      "occurred": "2026-01-07",
+      "published": "2026-01-07",
+      "source": "dga-78-tv"
+    },
+    {
+      "id": "dga-78-limited-anthology-series-nominees",
+      "kind": "nominees",
+      "institution": "dga",
+      "year": 2026,
+      "edition": "78th DGA Awards",
+      "precision": "day",
+      "status": "verified",
+      "revision": 1,
+      "imported": "2026-11-19",
+      "category": "limited",
+      "categoryName": "Outstanding Directorial Achievement in Limited & Anthology Series",
+      "subjects": [
+        "Jason Bateman (Black Rabbit, “The Black Rabbits”)",
+        "Antonio Campos (The Beast in Me, “Sick Puppy”)",
+        "Lesli Linka Glatter (Zero Day, “Episode 6”)",
+        "Shannon Murphy (Dying for Sex, “It’s Not That Serious”)",
+        "Ally Pankiw (Black Mirror, “Common People”)"
+      ],
+      "occurred": "2026-01-07",
+      "published": "2026-01-07",
+      "source": "dga-78-tv"
+    },
+    {
+      "id": "dga-78-limited-anthology-series",
+      "kind": "winner",
+      "institution": "dga",
+      "year": 2026,
+      "edition": "78th DGA Awards",
+      "precision": "day",
+      "status": "verified",
+      "revision": 1,
+      "imported": "2026-11-19",
+      "category": "limited",
+      "categoryName": "Outstanding Directorial Achievement in Limited & Anthology Series",
+      "subjects": [
+        "Shannon Murphy"
+      ],
+      "work": "Dying for Sex, “It’s Not That Serious”",
+      "recipients": "named_person",
+      "occurred": "2026-02-07",
+      "published": "2026-02-07",
+      "source": "dga-78-winners"
+    },
+    {
+      "id": "dga-78-movies-for-television-nominees",
+      "kind": "nominees",
+      "institution": "dga",
+      "year": 2026,
+      "edition": "78th DGA Awards",
+      "precision": "day",
+      "status": "verified",
+      "revision": 1,
+      "imported": "2026-11-19",
+      "category": "movie",
+      "categoryName": "Outstanding Directorial Achievement in Movies for Television",
+      "subjects": [
+        "Jesse Armstrong (Mountainhead)",
+        "Stephen Chbosky (Nonnas)",
+        "Scott Derrickson (The Gorge)",
+        "Michael Morris (Bridget Jones: Mad About the Boy)",
+        "Kyle Newacheck (Happy Gilmore 2)"
+      ],
+      "occurred": "2026-01-07",
+      "published": "2026-01-07",
+      "source": "dga-78-tv"
+    },
+    {
+      "id": "dga-78-movies-for-television",
+      "kind": "winner",
+      "institution": "dga",
+      "year": 2026,
+      "edition": "78th DGA Awards",
+      "precision": "day",
+      "status": "verified",
+      "revision": 1,
+      "imported": "2026-11-19",
+      "category": "movie",
+      "categoryName": "Outstanding Directorial Achievement in Movies for Television",
+      "subjects": [
+        "Stephen Chbosky"
+      ],
+      "work": "Nonnas",
+      "recipients": "named_person",
+      "occurred": "2026-02-07",
+      "published": "2026-02-07",
+      "source": "dga-78-winners"
+    },
+    {
+      "id": "dga-78-variety-nominees",
+      "kind": "nominees",
+      "institution": "dga",
+      "year": 2026,
+      "edition": "78th DGA Awards",
+      "precision": "day",
+      "status": "verified",
+      "revision": 1,
+      "imported": "2026-11-19",
+      "category": "variety",
+      "categoryName": "Outstanding Directorial Achievement in Variety",
+      "subjects": [
+        "Yvonne De Mare (The Late Show with Stephen Colbert, “Julia Roberts; Sam Smith”)",
+        "Andy Fisher (Jimmy Kimmel Live!, “Stephen Colbert; Kumail Nanjiani; Reneé Rapp”)",
+        "Beth McCarthy-Miller (SNL50: The Homecoming Concert)",
+        "Liz Patrick (SNL50: The Anniversary Special)",
+        "Paul Pennolino (Last Week Tonight with John Oliver, “Public Media”)"
+      ],
+      "occurred": "2026-01-07",
+      "published": "2026-01-07",
+      "source": "dga-78-tv"
+    },
+    {
+      "id": "dga-78-variety",
+      "kind": "winner",
+      "institution": "dga",
+      "year": 2026,
+      "edition": "78th DGA Awards",
+      "precision": "day",
+      "status": "verified",
+      "revision": 1,
+      "imported": "2026-11-19",
+      "category": "variety",
+      "categoryName": "Outstanding Directorial Achievement in Variety",
+      "subjects": [
+        "Liz Patrick"
+      ],
+      "work": "SNL50: The Anniversary Special",
+      "recipients": "named_person",
+      "occurred": "2026-02-07",
+      "published": "2026-02-07",
+      "source": "dga-78-winners"
+    },
+    {
+      "id": "dga-78-sports-nominees",
+      "kind": "nominees",
+      "institution": "dga",
+      "year": 2026,
+      "edition": "78th DGA Awards",
+      "precision": "day",
+      "status": "verified",
+      "revision": 1,
+      "imported": "2026-11-19",
+      "category": null,
+      "categoryName": "Outstanding Directorial Achievement in Sports",
+      "subjects": [
+        "Matthew Gangl (2025 World Series - Game 7 - Los Angeles Dodgers vs. Toronto Blue Jays)",
+        "Steve Milton (2025 Masters Tournament - Augusta National Golf Club)",
+        "Rich Russo (Super Bowl LIX - Philadelphia Eagles vs. Kansas City Chiefs)"
+      ],
+      "occurred": "2026-01-07",
+      "published": "2026-01-07",
+      "source": "dga-78-tv"
+    },
+    {
+      "id": "dga-78-sports",
+      "kind": "winner",
+      "institution": "dga",
+      "year": 2026,
+      "edition": "78th DGA Awards",
+      "precision": "day",
+      "status": "verified",
+      "revision": 1,
+      "imported": "2026-11-19",
+      "category": null,
+      "categoryName": "Outstanding Directorial Achievement in Sports",
+      "subjects": [
+        "Matthew Gangl"
+      ],
+      "work": "2025 World Series - Game 7 - Los Angeles Dodgers vs. Toronto Blue Jays",
+      "recipients": "named_person",
+      "occurred": "2026-02-07",
+      "published": "2026-02-07",
+      "source": "dga-78-winners"
+    },
+    {
+      "id": "dga-78-reality-quiz-game-nominees",
+      "kind": "nominees",
+      "institution": "dga",
+      "year": 2026,
+      "edition": "78th DGA Awards",
+      "precision": "day",
+      "status": "verified",
+      "revision": 1,
+      "imported": "2026-11-19",
+      "category": "reality",
+      "categoryName": "Outstanding Directorial Achievement in Reality / Quiz & Game",
+      "subjects": [
+        "Lucinda M. Margolis (Jeopardy!, “Ep. 9341”)",
+        "Adam Sandler (The Price is Right, “10,000th Episode”)",
+        "Mike Sweeney (Conan O'Brien Must Go, “Austria”)"
+      ],
+      "occurred": "2026-01-07",
+      "published": "2026-01-07",
+      "source": "dga-78-tv"
+    },
+    {
+      "id": "dga-78-reality-quiz-game",
+      "kind": "winner",
+      "institution": "dga",
+      "year": 2026,
+      "edition": "78th DGA Awards",
+      "precision": "day",
+      "status": "verified",
+      "revision": 1,
+      "imported": "2026-11-19",
+      "category": "reality",
+      "categoryName": "Outstanding Directorial Achievement in Reality / Quiz & Game",
+      "subjects": [
+        "Mike Sweeney"
+      ],
+      "work": "Conan O’Brien Must Go, “Austria”",
+      "recipients": "named_person",
+      "occurred": "2026-02-07",
+      "published": "2026-02-07",
+      "source": "dga-78-winners"
+    },
+    {
+      "id": "dga-78-documentary-film-nominees",
+      "kind": "nominees",
+      "institution": "dga",
+      "year": 2026,
+      "edition": "78th DGA Awards",
+      "precision": "day",
+      "status": "verified",
+      "revision": 1,
+      "imported": "2026-11-19",
+      "category": "documentary",
+      "categoryName": "Outstanding Directorial Achievement in Documentary Film",
+      "subjects": [
+        "Mstyslav Chernov (2000 Meters to Andriivka)",
+        "Geeta Gandbhir (The Perfect Neighbor)",
+        "Sara Khaki and Mohammadreza Eyni (Cutting Through Rocks)",
+        "Elizabeth Lo (Mistress Dispeller)",
+        "Laura Poitras and Mark Obenhaus (Cover-Up)"
+      ],
+      "occurred": "2026-01-07",
+      "published": "2026-01-07",
+      "source": "dga-78-tv"
+    },
+    {
+      "id": "dga-78-documentary-film",
+      "kind": "winner",
+      "institution": "dga",
+      "year": 2026,
+      "edition": "78th DGA Awards",
+      "precision": "day",
+      "status": "verified",
+      "revision": 1,
+      "imported": "2026-11-19",
+      "category": "documentary",
+      "categoryName": "Outstanding Directorial Achievement in Documentary Film",
+      "subjects": [
+        "Mstyslav Chernov"
+      ],
+      "work": "2000 Meters to Andriivka",
+      "recipients": "named_person",
+      "occurred": "2026-02-07",
+      "published": "2026-02-07",
+      "source": "dga-78-winners"
+    },
+    {
+      "id": "dga-78-documentary-series-news-nominees",
+      "kind": "nominees",
+      "institution": "dga",
+      "year": 2026,
+      "edition": "78th DGA Awards",
+      "precision": "day",
+      "status": "verified",
+      "revision": 1,
+      "imported": "2026-11-19",
+      "category": "documentary-series",
+      "categoryName": "Outstanding Directorial Achievement in Documentary Series / News",
+      "subjects": [
+        "Marshall Curry (SNL50: Beyond Saturday Night, “Written By: A Week Inside the SNL Writers Room”)",
+        "Susan Lacy and Jessica Levin (Billy Joel: And So It Goes, “Part Two”)",
+        "Rebecca Miller (Mr. Scorsese, “All This Filming Isn’t Healthy”)",
+        "Alexandria Stapleton (Sean Combs: The Reckoning, “Official Girl”)",
+        "Matt Wolf (Pee-wee as Himself, “Part 1”)"
+      ],
+      "occurred": "2026-01-07",
+      "published": "2026-01-07",
+      "source": "dga-78-tv"
+    },
+    {
+      "id": "dga-78-documentary-series-news",
+      "kind": "winner",
+      "institution": "dga",
+      "year": 2026,
+      "edition": "78th DGA Awards",
+      "precision": "day",
+      "status": "verified",
+      "revision": 1,
+      "imported": "2026-11-19",
+      "category": "documentary-series",
+      "categoryName": "Outstanding Directorial Achievement in Documentary Series / News",
+      "subjects": [
+        "Rebecca Miller"
+      ],
+      "work": "Mr. Scorsese, “All This Filming Isn’t Healthy”",
+      "recipients": "named_person",
+      "occurred": "2026-02-07",
+      "published": "2026-02-07",
+      "source": "dga-78-winners"
+    },
+    {
+      "id": "dga-78-theatrical-feature-film-nominees",
+      "kind": "nominees",
+      "institution": "dga",
+      "year": 2026,
+      "edition": "78th DGA Awards",
+      "precision": "day",
+      "status": "verified",
+      "revision": 1,
+      "imported": "2026-11-19",
+      "category": "feature",
+      "categoryName": "Outstanding Directorial Achievement in Theatrical Feature Film",
+      "subjects": [
+        "Paul Thomas Anderson (One Battle After Another)",
+        "Ryan Coogler (Sinners)",
+        "Guillermo Del Toro (Frankenstein)",
+        "Josh Safdie (Marty Supreme)",
+        "Chloé Zhao (Hamnet)"
+      ],
+      "occurred": "2026-01-08",
+      "published": "2026-01-08",
+      "source": "dga-78-film"
+    },
+    {
+      "id": "dga-78-theatrical-feature-film",
+      "kind": "winner",
+      "institution": "dga",
+      "year": 2026,
+      "edition": "78th DGA Awards",
+      "precision": "day",
+      "status": "verified",
+      "revision": 1,
+      "imported": "2026-11-19",
+      "category": "feature",
+      "categoryName": "Outstanding Directorial Achievement in Theatrical Feature Film",
+      "subjects": [
+        "Paul Thomas Anderson"
+      ],
+      "work": "One Battle After Another",
+      "recipients": "named_person",
+      "occurred": "2026-02-07",
+      "published": "2026-02-07",
+      "source": "dga-78-winners"
+    },
+    {
+      "id": "dga-78-first-time-theatrical-feature-film-nominees",
+      "kind": "nominees",
+      "institution": "dga",
+      "year": 2026,
+      "edition": "78th DGA Awards",
+      "precision": "day",
+      "status": "verified",
+      "revision": 1,
+      "imported": "2026-11-19",
+      "category": "first-feature",
+      "categoryName": "Michael Apted Award for Outstanding Directorial Achievement in First-Time Theatrical Feature Film",
+      "subjects": [
+        "Hasan Hadi (The President’s Cake)",
+        "Harry Lighton (Pillion)",
+        "Charlie Polinger (The Plague)",
+        "Alex Russell (Lurker)",
+        "Eva Victor (Sorry, Baby)"
+      ],
+      "occurred": "2026-01-08",
+      "published": "2026-01-08",
+      "source": "dga-78-film"
+    },
+    {
+      "id": "dga-78-first-time-theatrical-feature-film",
+      "kind": "winner",
+      "institution": "dga",
+      "year": 2026,
+      "edition": "78th DGA Awards",
+      "precision": "day",
+      "status": "verified",
+      "revision": 1,
+      "imported": "2026-11-19",
+      "category": "first-feature",
+      "categoryName": "Michael Apted Award for Outstanding Directorial Achievement in First-Time Theatrical Feature Film",
+      "subjects": [
+        "Charlie Polinger"
+      ],
+      "work": "The Plague",
+      "recipients": "named_person",
+      "occurred": "2026-02-07",
+      "published": "2026-02-07",
+      "source": "dga-78-winners"
     }
   ]
 }
