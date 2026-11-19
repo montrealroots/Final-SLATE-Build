@@ -20,6 +20,24 @@ finished, and they come back only when the owner says so:
   work permits are still estimates in all (`docs/v10/papers-estimates.json`).
 - **Real-phone and pacing tests:** they need the owner's own device and a person playing.
 
+## Where The "Go Perfectly" List Stands (The Owner, November 19, 2026)
+
+The owner's "What's next?" list of November 19, worked through in order:
+1. Two bugs (#133), episode pages for your own series and your titles in the search (#134), real producers on studio
+   pictures (#135): merged.
+2. Box office, records, TV reports and awards connected: the awards part merged (#136, the 2026 Oscars and Golden
+   Globes whole, the Emmys' telecast winners). Box office and audience history stay data-limited (no licensed dated
+   dataset; `docs/v6/HISTORY-COVERAGE.md`), and their journeys (J01/J21) are parked. Still open there, one source at a
+   time: the Emmys' nominees and Creative Arts winners, the Actor Awards, the Critics' Choice. BAFTA's site refuses the
+   fetching tool (HTTP 403).
+3. Unrealistic prices: done before this list (`docs/prices/PRICES.md`, 53 sourced or fixed). The two modeled rows
+   (stop-motion and creature materials, a broadcast edit) were searched for again on November 19: only hobby kits
+   ($25 to $180) turned up, so they stay the game's own, said as such.
+4. Overall deals: built on November 17 (A14 in `docs/v8/STATUS.md`); the older summary below that called them unbuilt
+   was corrected.
+5. Papers research: parked by the owner on November 17 (above). What's left is mostly conflicting sources or
+   aggregator-only figures (the batch 3 note below).
+
 ## The Most-Watched TMDB Haul And Its Pictures (The Owner, November 18–19, 2026)
 
 The owner asked for "all of TMDB like the first haul with the complete pictures pack" and chose the biggest slice that
@@ -839,7 +857,8 @@ each step and acceptance case stands. Done so far:
 - **Step 6, banner and company.** A banner is a credit name. A company is applied for, and the registry decides. Draws
   are split into capital returned and earnings paid out.
 - **Step 7, first-look terms (partly).** Terms come from the track-record tier (`dealTier`) and `src/data/deal-model.json`.
-  Overall deals (A14) are still not built.
+  Overall deals (A14) weren't built when this was written (November 14, 2026); they were on November 17 (below, and
+  `docs/v8/STATUS.md` A14).
 - **Step 8, papers.** `papers.ts` and `src/data/work-rights.json`. A day filmed where you may not work starts without
   you.
 - **Step 9, one awards history.** `awards-history.ts`.
@@ -850,7 +869,8 @@ each step and acceptance case stands. Done so far:
 `19b566c`, from `9285a73`, with all seven CI jobs green on that commit. `main` was merged back into the branch with
 `-s ours`, since the trees were identical. New work starts a new pull request from this branch.
 
-What is still open is listed row by row in `docs/v8/STATUS.md`. In order of importance:
+What is still open is listed row by row in `docs/v8/STATUS.md`. In order of importance, as of November 14, 2026 (the
+first four were done on November 17: overall deals, payment dates, `e2e/v10-whole-path.spec.ts`, the visits data):
 1. A14, overall deals.
 2. Budget lines with payment dates.
 3. One browser journey through the whole v8 path.
