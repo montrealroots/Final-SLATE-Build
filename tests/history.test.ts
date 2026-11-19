@@ -82,6 +82,21 @@ describe('recorded history', () => {
     expect(recordedResults('oscars', 2026, '2026-03-15').find((o) => o.kind === 'winner' && o.category === 'live-short')!.subjects).toEqual(['The Singers', 'Two People Exchanging Saliva']);
   });
 
+  it('holds the 32nd Actor Awards whole: the nominees from January 7, the stunt ensembles from February 26, each recipient from March 1', () => {
+    const on = (day: string, kind: string) => recordedResults('actor-awards', 2026, day).filter((o) => o.kind === kind);
+    expect(recordedResults('actor-awards', 2026, '2026-01-06')).toEqual([]);
+    expect(on('2026-01-07', 'nominees')).toHaveLength(13);
+    expect(on('2026-02-26', 'nominees')).toHaveLength(15);
+    expect(on('2026-02-28', 'winner')).toEqual([]);
+    const won = on('2026-03-01', 'winner');
+    expect(won).toHaveLength(15);
+    // The stunt ensembles have no category in the game: kept, and listed apart.
+    expect(won.filter((o) => o.category === null).map((o) => o.subjects[0])).toEqual(['Mission: Impossible - The Final Reckoning', 'The Last of Us']);
+    expect(won.find((o) => o.category === 'cast')!.subjects).toEqual(['Sinners']);
+    // Written as the game's other records write them, not in the page's capitals.
+    expect(won.find((o) => o.category === 'tv-female-comedy')).toMatchObject({ subjects: ["Catherine O'Hara"], work: 'The Studio' });
+  });
+
   it('cites a source for every observation, never publishes before it happens, and names the game\'s own categories', () => {
     const insts = (institutions as { institutions: { id: string; categories: { id: string }[]; official?: Record<string, { label?: string }> }[] }).institutions;
     const wrong: string[] = [];
