@@ -29,12 +29,12 @@ Beside fees that were reported, at the weight of recognition recorded before the
 | Leonardo DiCaprio | Killers of the Flower Moon | 2022 | $30,000,000 | 76 | 150 | $30,000,000 | 1.00 |
 | Joaquin Phoenix | Joker: Folie à Deux | 2022 | $20,000,000 | 60 | 92 | $16,000,000 | 0.80 |
 | Joaquin Phoenix | Joker | 2018 | $4,500,000 | 31 | 92 | $12,845,000 | 2.85 |
-| Margot Robbie | Barbie | 2022 | $12,500,000 | 25.6 | 92 | $12,845,000 | 1.03 |
+| Margot Robbie | Barbie | 2022 | $12,500,000 | 25.6 | 93 | $13,090,000 | 1.05 |
 | Ryan Gosling | Barbie | 2022 | $12,500,000 | 13 | 90 | $12,360,000 | 0.99 |
 | Lady Gaga | Joker: Folie à Deux | 2022 | $10,000,000 | 9 | 199 | $30,000,000 | 3.00 |
 | Daniel Craig | Knives Out sequels (each of two) | 2021 | $50,000,000 | 4.8 | 105 | $16,187,000 | 0.32 |
-| Dwayne Johnson | Red Notice | 2021 | $23,500,000 | 0 | 113 | $18,407,000 | 0.78 |
+| Dwayne Johnson | Red Notice | 2021 | $23,500,000 | 0 | 114 | $18,693,000 | 0.80 |
 | Gal Gadot | Red Notice | 2021 | $20,000,000 | 0 | 94 | $13,337,000 | 0.67 |
 | Ryan Reynolds | Red Notice | 2021 | $20,000,000 | 0 | 91 | $12,601,000 | 0.63 |
 
-Every recognised performer and crew member, with their grade and what they ask: `docs/people/PERFORMERS.csv` and `docs/people/CREW.csv`. Recognition from Wikidata (CC0 1.0), retrieved 2026-11-15.
+Every recognised performer and crew member, with their grade and what they ask: `docs/people/PERFORMERS.csv` and `docs/people/CREW.csv`. Recognition from Wikidata (CC0 1.0), retrieved 2026-11-19.

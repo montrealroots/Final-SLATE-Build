@@ -30,6 +30,15 @@ export const BODIES = [
 ];
 /** Honours for a whole career, or for a film rather than someone's work on it, which say nothing about the job. */
 const NOT_A_JOB = /Honorary|Lifetime|Cecil B|Carol Burnett|Jean Hersholt|Thalberg|Special|Humanitarian|Best (Motion )?Picture|Best Film\b(?! (Editing|Music))|Best (Drama|Comedy|Limited|Animated|Documentary|Foreign|International|Short)|Outstanding (Drama|Comedy|Limited|Variety|Television Movie|Animated|Children)|Best (Television )?Series|Program/i;
+/**
+ * The awards for a picture or a series as a whole, which go to its producers: the Academy names a Best Picture's producers
+ * and the Television Academy an Outstanding Drama Series', so Wikidata records the award on them. From November 19, 2026
+ * these are the producer's (until then they were read as honours for a film and kept for nobody, so a studio picture's
+ * producers were invented: your-films.ts). Animated, documentary, short and foreign-language pictures stay out, with the
+ * job awards for them: the game's pictures are live-action features and series in their makers' own language.
+ */
+const PRODUCED = /(Best|Outstanding) (Motion )?(Picture|Production)$|Best Motion Picture\b|Best Film$|Best First Feature$|Best (Drama|Comedy|Limited|Limited or Anthology|Mini-?) ?Series\b|Best Television Series|Best (Limited or Anthology Series or Television|Miniseries or Television|Mini-Series or Motion Picture Made for Television) Film|Outstanding (Drama|Comedy|Limited|Limited or Anthology|Mini-?) ?Series$|Outstanding Limited Miniseries|Outstanding Television Movie|Best Single Drama|Best Comedy$|Best Scripted Comedy/i;
+const NOT_PRODUCED = /Animat|Documentar|Short|Foreign|International|Non-English|Not in the English|European Union|Promoting/i;
 /** The game's jobs a category recognises, by what its name says. */
 const JOBS = [
   ['voice-actor', /Voice/i],
@@ -70,7 +79,9 @@ const categories = {};
 const keep = (rows) => { for (const r of rows) {
   const label = r.label.value;
   const body = BODIES.find(([, re]) => re.test(label))?.[0];
-  if (!body || NOT_A_JOB.test(label)) continue;
+  if (!body) continue;
+  if (PRODUCED.test(label) && !NOT_PRODUCED.test(label)) { categories[qid(r.award.value)] = { label, body, jobs: ['producer'] }; continue; }
+  if (NOT_A_JOB.test(label)) continue;
   const jobs = JOBS.filter(([, re]) => re.test(label)).map(([j]) => j);
   // A category for performers names only them; one that also matched a crew job by a word in passing keeps the crew job.
   const kept = jobs.includes('actor') && jobs.length > 1 ? jobs.filter((j) => j !== 'actor') : jobs;

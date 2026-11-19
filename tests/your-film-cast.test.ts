@@ -95,9 +95,12 @@ describe('a studio picture cast from real actors', () => {
     const crew = j.studio!.crew!;
     expect(crew.map((c) => c.job)).toEqual(PICTURE_CREW.map((c) => c.job));
     for (const c of crew.filter((x) => x.job === 'Director' || x.job === 'Screenplay')) expect(c).toMatchObject({ name: s.character.name, you: true });
-    expect(crew.filter((c) => c.job === 'Producer').every((c) => !c.tmdbId)).toBe(true);
+    // Its producers are real too, recognised for the pictures and series they produced, and two different people.
+    const producers = crew.filter((c) => c.job === 'Producer');
+    expect(producers.every((c) => c.tmdbId)).toBe(true);
+    expect(new Set(producers.map((c) => c.tmdbId)).size).toBe(2);
     const real = crew.filter((c) => c.tmdbId);
-    expect(real.length).toBeGreaterThanOrEqual(6);
+    expect(real.length).toBeGreaterThanOrEqual(8);
     for (const c of real) {
       const job = PICTURE_CREW.find((x) => x.job === c.job)!.recognised!;
       const st = standingOf(c.tmdbId!, job, 2026)!;

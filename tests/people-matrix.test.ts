@@ -9,6 +9,7 @@ import { applyRecognition, capabilityFrom, describeStanding, experienceFrom, fam
 import { crewAskFrom, directFeeFrom, scoreFeeFrom, scriptFeeFrom, songFeeFrom, DIRECT_DAYS, SCORE_DAYS, SCRIPT_DAYS, SONG_DAYS } from '../src/engine/recognition-pay';
 import { gradeFrom, gradeScore } from '../src/engine/grades';
 import { SAG_PERIODS, AGREEMENT_CEILING, AGREEMENT_NAME } from '../src/engine/union';
+import { ROLES } from '../src/engine/people';
 
 const data = applyRecognition(JSON.parse(readFileSync('src/data/recognition.json', 'utf8')));
 const YEAR = 2026; // the year the game starts in
@@ -26,7 +27,9 @@ function rows(job: string): string[] {
   });
 }
 
-const CREW = [...new Set(data.categories.flatMap((c) => c.jobs))].filter((j) => !PERFORMING.includes(j)).sort();
+// The jobs the game hires for: a producer, whom the record has recognised from November 19, 2026 (for a studio picture's
+// credits, your-films.ts), isn't one, so has no day's asking price to list.
+const CREW = [...new Set(data.categories.flatMap((c) => c.jobs))].filter((j) => !PERFORMING.includes(j) && ROLES.some((r) => r.id === j)).sort();
 const HEAD = 'tmdb_person,name,job,recognition (Wikidata),weight,experience,capability,grade,asks a day';
 
 /** Fees reported for a film (Variety, July 2022, as others reported it: Modeled assumption), against the game's for the year of the deal. */
