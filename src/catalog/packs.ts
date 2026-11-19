@@ -220,6 +220,31 @@ export async function installPack(file: Blob, progress?: (stored: number, total:
   }
 }
 
+/**
+ * The files the player picked, as the packs they make (from November 19, 2026, the owner, installing on their phone from
+ * files sent in a chat that takes at most 500 MB a file). A pack too big to send whole is cut into pieces named
+ * `<name>.part1of2.slatepack`, `<name>.part2of2.slatepack`; picked together, they are joined back into the pack, byte for
+ * byte, so nothing about a pack or its install changes. A piece without the rest of its pack is said, not installed.
+ */
+export function joinParts(files: { name: string; blob: Blob }[]): { packs: { name: string; blob: Blob }[]; problems: string[] } {
+  const PART = /^(.*)\.part(\d+)of(\d+)\.slatepack$/i;
+  const whole: { name: string; blob: Blob }[] = [];
+  const sets = new Map<string, { of: number; got: Map<number, Blob> }>();
+  for (const f of files) {
+    const m = PART.exec(f.name);
+    if (!m) { whole.push(f); continue; }
+    const set = sets.get(m[1]) ?? sets.set(m[1], { of: Number(m[3]), got: new Map() }).get(m[1])!;
+    set.got.set(Number(m[2]), f.blob);
+  }
+  const problems: string[] = [];
+  for (const [name, { of, got }] of sets) {
+    const missing = Array.from({ length: of }, (_, i) => i + 1).filter((n) => !got.has(n));
+    if (missing.length) { problems.push(`${name} comes in ${of} pieces, and ${missing.length === 1 ? `piece ${missing[0]} wasn't` : `pieces ${missing.join(', ')} weren't`} picked with the rest, so it wasn't installed. Pick all ${of} together.`); continue; }
+    whole.push({ name: `${name}.slatepack`, blob: new Blob(Array.from({ length: of }, (_, i) => got.get(i + 1)!)) });
+  }
+  return { packs: whole, problems };
+}
+
 /** Remove a pack and every record it held. */
 export async function removePack(kind: PackKind): Promise<void> {
   packs = null;

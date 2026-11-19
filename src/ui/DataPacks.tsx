@@ -3,7 +3,7 @@
 // Remove; and a pack from a file, for one the game doesn't offer.
 import { useEffect, useRef, useState } from 'react';
 import { forgetCatalog, retryCatalog } from '../catalog/load';
-import { STORAGE_MARGIN, isShard, downloadedSoFar, installOffered, installPack, installedPacks, offeredMods, ownerSession, ownerSignIn, ownerSignOut, packExpires, removePack, storageRoom, type InstalledPack, type OfferedMod, type OwnerSession, type PackKind, type PackMeta } from '../catalog/packs';
+import { STORAGE_MARGIN, isShard, downloadedSoFar, installOffered, installPack, joinParts, installedPacks, offeredMods, ownerSession, ownerSignIn, ownerSignOut, packExpires, removePack, storageRoom, type InstalledPack, type OfferedMod, type OwnerSession, type PackKind, type PackMeta } from '../catalog/packs';
 import { picturesOn, setPicturesOn } from './Picture';
 import { PictureLibrary } from './PictureLibrary';
 import { expirePeople, startLivingWorld } from './App';
@@ -214,7 +214,33 @@ export function DataPacks() {
   const signal = () => (cancel.current = new AbortController()).signal;
   const install = (m: OfferedMod) => run(m.name, () => installOffered(m, (phase, done, total) =>
     setStatus(phase === 'download' ? `Downloading ${m.name}: ${mb(done)} of ${mb(total)}…` : `Installing ${m.name}: ${n(done)} of ${n(total)} files…`), signal()));
-  const fromFile = (f: File) => run('the mod', () => installPack(f, (done, total) => setStatus(`Installing: ${n(done)} of ${n(total)} files…`), signal()));
+  // Several files at once, from November 19, 2026: the whole catalog's pictures are hundreds of packs, and a pack too big
+  // to send whole comes in pieces (packs.ts joinParts). Each pack installs in turn; one that fails is said and the rest go on.
+  const fromFiles = async (list: FileList) => {
+    const { packs: picked, problems } = joinParts([...list].map((f) => ({ name: f.name, blob: f })));
+    if (picked.length === 1 && !problems.length) { await run('the mod', () => installPack(picked[0].blob, (done, total) => setStatus(`Installing: ${n(done)} of ${n(total)} files…`), signal())); return; }
+    setBusy(true); setError(null);
+    const failed = [...problems];
+    let ok = 0;
+    const sig = signal();
+    for (const [i, f] of picked.entries()) {
+      if (sig.aborted) break;
+      try {
+        const p = await installPack(f.blob, (done, total) => setStatus(`Installing ${n(i + 1)} of ${n(picked.length)}: ${n(done)} of ${n(total)} files…`), sig);
+        await refreshGame(p.kind, true);
+        ok++;
+      } catch (e) {
+        failed.push(`${f.name}: ${e instanceof Error ? e.message : String(e)}`);
+      }
+    }
+    setVersion((v) => v + 1);
+    setStatus(`Installed ${n(ok)} of ${n(picked.length)} ${picked.length === 1 ? 'pack' : 'packs'}.`);
+    if (failed.length) setError(failed.join(' '));
+    setBusy(false);
+    cancel.current = null;
+    if (input.current) input.current.value = '';
+    reload();
+  };
   const remove = async (p: InstalledPack) => {
     setBusy(true); setError(null);
     try {
@@ -261,8 +287,8 @@ export function DataPacks() {
         </ul>
       )}
       {asked && <OwnerSignIn session={session} changed={() => void signedInOrOut()} />}
-      <input ref={input} type="file" accept=".slatepack" hidden aria-label="Mod File"
-        onChange={(e) => { const f = e.target.files?.[0]; if (f) void fromFile(f); }} />
+      <input ref={input} type="file" accept=".slatepack" multiple hidden aria-label="Mod File"
+        onChange={(e) => { const f = e.target.files; if (f?.length) void fromFiles(f); }} />
       <button className="btn btn-sm" style={{ marginTop: 'var(--s2)' }} disabled={busy} onClick={() => input.current?.click()}>Install From A File</button>
       {busy && cancel.current && <button className="btn btn-sm" style={{ marginTop: 'var(--s2)', marginLeft: 'var(--s2)' }} onClick={() => cancel.current?.abort()}>Cancel</button>}
       {/* Above everything that arrives late, so nothing arriving moves it. */}

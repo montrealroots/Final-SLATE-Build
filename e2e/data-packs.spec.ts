@@ -306,3 +306,29 @@ test('a pack that lists the same record twice is refused in Settings, and nothin
   // Nothing of it is installed: the server here offers no mods, so an installed pack would be the only row.
   await expect(page.getByRole('list', { name: 'Mods' }).locator('li', { hasText: 'Films And Series' })).toHaveCount(0);
 });
+
+test('several packs picked at once install in turn, and a pack sent in pieces is joined back; a piece alone is refused', async ({ page }) => {
+  test.setTimeout(180_000);
+  const p = packs();
+  const half = Math.floor(p.catalog.length / 2);
+  await quickLife(page, 'gb-london', '2026-01-05');
+  await nav(page, 'Settings');
+  // A piece without the rest: said, and nothing of that pack installed; the whole pack beside it still is.
+  await page.getByLabel('Mod File').setInputFiles([
+    { name: 'slate-catalog.part1of2.slatepack', mimeType: 'application/octet-stream', buffer: p.catalog.subarray(0, half) },
+    { name: 'slate-cinemas.slatepack', mimeType: 'application/octet-stream', buffer: p.cinemas },
+  ]);
+  await expect(page.getByRole('status').filter({ hasText: 'Installed 1 of 1 pack.' })).toBeVisible();
+  await expect(page.getByRole('alert')).toContainText("slate-catalog comes in 2 pieces, and piece 2 wasn't picked with the rest");
+  const list = page.getByRole('list', { name: 'Mods' });
+  await expect(list.locator('li', { hasText: 'Films And Series' })).toHaveCount(0);
+  // Both pieces, picked in either order: the films and series install as the one pack they were cut from.
+  await page.getByLabel('Mod File').setInputFiles([
+    { name: 'slate-catalog.part2of2.slatepack', mimeType: 'application/octet-stream', buffer: p.catalog.subarray(half) },
+    { name: 'slate-catalog.part1of2.slatepack', mimeType: 'application/octet-stream', buffer: p.catalog.subarray(0, half) },
+  ]);
+  await expect(page.getByRole('status').filter({ hasText: 'Installed Films And Series.' })).toBeVisible();
+  await expect(list.locator('li', { hasText: 'Films And Series' })).toContainText('Installed');
+  await nav(page, 'Companies');
+  await expect(card(page, 'The Catalog')).toContainText('3 films, 1 series with 1 season and 2 episodes, and 6 people');
+});
