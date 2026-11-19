@@ -119,6 +119,11 @@ is given any of it (the owner's decision of November 11, 2026).
   each with its size and SHA-256. A record is in exactly one shard, by its own identity, so a person credited at five
   studios is downloaded once. 1,551 pictures are shared by two records (a season using its series' poster) and are in
   both records' shards: half a percent, not removed.
+- **What it found on November 19, 2026**, after the most-watched haul (`RESUME-HERE.md`): 2,970,027 records, of which
+  1,110,116 have a published picture; 1,110,108 are downloaded and packed in 384 packs, 12,398 MB. 4 stills failed and
+  are retried by the next `fetch`, 1 portrait was refused, and 45 were not attempted (20 titles whose details TMDB
+  wouldn't return, each missing its poster and backdrop, and 5 portraits). 10,217 pictures are shared by two records.
+  The fetch ran at 30 requests a second over several runs, each container restart resuming from what was saved. `pack --drop` deletes the loose copy once its pack is written, so the disk holds each picture once.
 
 ### In The Game
 

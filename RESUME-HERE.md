@@ -28,12 +28,15 @@ fits: TMDB's films and series with at least 20 votes.
   1,488,231 people; 20 titles TMDB wouldn't return. Pack `packs/slate-catalog-2026-11-19.slatepack`, 733.5 MB,
   160,788 files (git-ignored, served by the owner's server on 8080). The November 18 pack was deleted when this one
   replaced it, as the Mods page offers the older of two (`DataPacks.tsx offered.find`, still open).
-- **Pictures** (`tools/screen-catalog/pictures.mjs`, `docs/PICTURE-COVERAGE.md`): each picture is kept once, in its
-  pack (`pack --drop` removes the loose copy once its pack is written). On November 19 at 04:00 UTC posters, backdrops,
-  season posters, logos and all 333,607 portraits were packed; about 400,000 episode stills were downloading, due
-  about 07:55 UTC. The run is the scratchpad's `pictures-run.sh`; a container restart stops it and it resumes from
-  what's saved. **Still to do:** finish the stills, install them in a browser, regenerate `docs/PICTURE-COVERAGE.md`,
-  and report.
+- **Pictures** (`tools/screen-catalog/pictures.mjs`, `docs/PICTURE-COVERAGE.md`): finished November 19 at 13:00 UTC.
+  1,110,108 of the 1,110,116 records with a published picture are downloaded and packed: 384 packs in
+  `packs/pictures/`, 12,398 MB (git-ignored, served by the owner's server on 8080). Each picture is kept once, in its
+  pack (`pack --drop` removes the loose copy once its pack is written). Left over: 4 episode stills that failed (a later
+  `fetch` retries them), 1 portrait the host refused, and 45 not attempted (the poster and backdrop of the 20 titles TMDB
+  wouldn't return, and 5 portraits not yet looked into). Installed in a browser from 8080 on November 19: Settings showed the whole
+  library (1,110,108 pictures, 12.11 GB, the six kinds' counts), and one part of every kind (15,883 pictures, 177.6 MB)
+  downloaded, checked and installed, with Inde Navarrette's portrait on her page. The whole 12 GB wasn't installed in
+  one browser here: this container's browser reports 3 GB free.
 - **A person's page at the save's date** (November 19, `biographyAt` and `creditWhen` in `src/catalog/model.ts`;
   `docs/CATALOG.md` "At The Save's Date"): a series credit gives the years the person worked on it, not the year the
   series began (Inde Navarrette's Saturday Night Live hosting had read as 1975); a biography stops at the first sentence
