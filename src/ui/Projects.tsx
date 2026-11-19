@@ -292,7 +292,8 @@ export function ProjectWorkspace() {
     <>
       <Breadcrumbs items={[{ label: 'Projects', route: { view: 'projects' } }, { label: p.title, route: { view: 'project', projectId: p.id, tab: 'overview' } }, { label }]} />
       <PageHead eyebrow="Your Work" title={p.title}
-        lede={<>{FORMAT_LABELS[p.axes.format]}{isEpisodic(p.axes.format) ? `, ${plural(p.axes.episodeCount, 'episode')}` : ''} · {MEDIUM_LABELS[p.axes.medium]}{p.axes.technique !== 'none' ? ` · ${TECHNIQUE_LABELS[p.axes.technique]}` : ''} · {PHASES[p.phase]}</>} />
+        lede={<>{FORMAT_LABELS[p.axes.format]}{isEpisodic(p.axes.format) ? `, ${plural(p.axes.episodeCount, 'episode')}` : ''} · {MEDIUM_LABELS[p.axes.medium]}{p.axes.technique !== 'none' ? ` · ${TECHNIQUE_LABELS[p.axes.technique]}` : ''} · {PHASES[p.phase]}</>}
+        actions={<button type="button" className="btn btn-sm" onClick={() => store.go({ view: 'title', ref: `project:${p.id}` } as Parameters<typeof store.go>[0])}>{isEpisodic(p.axes.format) ? 'Its Series Page' : 'Its Film Page'}</button>} />
       <SectionNav label="Project Sections" items={TABS} current={tab} onChange={(t) => { store.route = { ...store.route, tab: t }; store.emit(); }} />
       {tab === 'overview' && <Overview p={p} />}
       {tab === 'script' && <ScriptTab p={p} />}

@@ -1292,6 +1292,9 @@ function CharacterCard({ p, c, first, last, onRemove, onDesignChange }: { p: Pro
             <AgeFields c={c} up={up} />
             <TextField label="Also Called" hint="Other names they go by, separated with commas. Shown with the part in casting; the character stays one character." value={(c.aliases ?? []).join(', ')} onChange={(v) => up({ aliases: parseList(v).length ? [...new Set(parseList(v))] : undefined })} />
             <SelectField label="Pronouns" value={characterPronouns(c) ?? ''} hint="Casting marks performers who match, and can list them first." options={[{ value: '', label: 'Open To Anyone' }, { value: 'he', label: 'He/Him' }, { value: 'she', label: 'She/Her' }, { value: 'they', label: 'They/Them' }]} onChange={(v) => up({ pronouns: v })} />
+            <SelectField label="Gender" value={c.gender ?? ''} hint="Casting marks performers who match, and can list them first. Choosing one with no pronouns set gives the part theirs."
+              options={[{ value: '', label: 'Open To Anyone' }, { value: 'woman', label: 'Woman' }, { value: 'man', label: 'Man' }, { value: 'nonbinary', label: 'Non-Binary' }]}
+              onChange={(v) => up({ gender: (v || undefined) as StoryCharacter['gender'], ...(v && !characterPronouns(c) ? { pronouns: v === 'woman' ? 'she' : v === 'man' ? 'he' : 'they' } : {}) })} />
             <SelectField label="Speaks" value={c.languages[0] ?? p.axes.dialogueLanguages[0]} options={p.axes.dialogueLanguages.map((l) => ({ value: l, label: languageName(l) }))} onChange={(v) => up({ languages: [v] })} />
             <SelectField label="Awards Placement" value={c.awardPlacement ?? ''} hint={placementExplained(c)}
               options={[{ value: '', label: 'By Role Size' }, { value: 'lead', label: 'Leading' }, { value: 'supporting', label: 'Supporting' }, { value: 'none', label: 'Not Entered' }]}

@@ -16,7 +16,7 @@ import {
   sceneLabel, sceneTechnique, sendStaffingOffers, skillLabel, moveShootDay, swapWithInteriorDay, uncastPlayer, withdrawOffer, addDaysToKey, type Person,
   type StaffingProposal, covers, fundingScenario,
 } from '../engine';
-import { breakdownComplete, characterPronouns, pronounsMatch } from '../engine/script-explain';
+import { breakdownComplete, characterPronouns, genderMatches, pronounsMatch } from '../engine/script-explain';
 import { AUDITION_NOTICE_DAYS, auditionsFor, callBack, chemistryPartners, inviteRefusal, inviteToAudition, setShortlisted } from '../engine/casting-calls';
 import { chemistryWords, qualityWords } from '../engine';
 import { callSheet } from '../engine/callsheet';
@@ -122,6 +122,7 @@ function CandidateList({ p, roleId, characterId, method, stage, onDone }: { p: P
   const [onlyFree, setOnlyFree] = useState(true);
   const [pronounsFirst, setPronounsFirst] = useState(false);
   const [ageFirst, setAgeFirst] = useState(false);
+  const [genderFirst, setGenderFirst] = useState(false);
   const part = characterId ? approvedCharacters(p).find((x) => x.id === characterId) : undefined;
   const partAge = storyAge(part?.ageInStory);
   // Someone from the film catalog has no recorded pronouns, so they are never marked as matching and never sorted on it.
@@ -136,7 +137,7 @@ function CandidateList({ p, roleId, characterId, method, stage, onDone }: { p: P
   // People from the film catalog the player is considering for this (guests.ts) come first and are always shown, free or
   // not: the player put them there. The game's own follow, as before.
   const list = candidatesFor(g, p, roleId, characterId).map((c) => ({ c, av: isAvailable(g, c, win.from, win.to, p.id) })).filter((x) => !onlyFree || x.av.ok || isReal(x.c.id))
-    .sort((a, b) => Number(isReal(b.c.id)) - Number(isReal(a.c.id)) || (ageFirst ? Number(playsPart(b.c)) - Number(playsPart(a.c)) : 0) || (pronounsFirst ? Number(fits(b.c)) - Number(fits(a.c)) : 0) || b.c.experience - a.c.experience || a.c.dayRate - b.c.dayRate);
+    .sort((a, b) => Number(isReal(b.c.id)) - Number(isReal(a.c.id)) || (ageFirst ? Number(playsPart(b.c)) - Number(playsPart(a.c)) : 0) || (pronounsFirst ? Number(fits(b.c)) - Number(fits(a.c)) : 0) || (genderFirst && part ? Number(genderMatches(part, b.c)) - Number(genderMatches(part, a.c)) : 0) || b.c.experience - a.c.experience || a.c.dayRate - b.c.dayRate);
   const days = estimateDays(p, roleId, characterId, method, g, stage);
   return (
     <div className="spaced">
@@ -145,6 +146,7 @@ function CandidateList({ p, roleId, characterId, method, stage, onDone }: { p: P
       {part && <p className="dim">{breakdownComplete(part) ? `Offers include ${part.name}'s casting breakdown (description, wants and fears).` : `Offers go with the script pages. ${part.name}'s casting breakdown isn't written yet (description, wants and fears on the Characters page); it doesn't change who accepts.`}</p>}
       <Check label="Only Show People Who Are Free" checked={onlyFree} onChange={setOnlyFree} />
       {part && characterPronouns(part) && <Check label="List Matching Pronouns First" checked={pronounsFirst} onChange={setPronounsFirst} />}
+      {part?.gender && <Check label="List Matching Gender First" checked={genderFirst} onChange={setGenderFirst} />}
       {partAge && <Check label="List Performers Who Play This Age First" hint={`${part!.name} is ${storyAgeWords(partAge)}.`} checked={ageFirst} onChange={setAgeFirst} />}
       <ul className="list">
         {list.map(({ c, av }) => {
@@ -156,7 +158,7 @@ function CandidateList({ p, roleId, characterId, method, stage, onDone }: { p: P
                 {/* A person from the film catalog has their photo here where the pictures are installed; nobody else has a face drawn for them. */}
                 {isReal(c.id) && <Picture subject={`person:${tmdbIdOf(c.id)}`} name={c.name} size="thumb" />}
                 <div className="grow">
-                  <strong>{c.name}</strong> <span className="chip" title={gradeOf(g, c, roleId).madeOf.join(' ')}>Grade {gradeOf(g, c, roleId).grade}</span> <span className="chip">{EXPERIENCE[c.experience - 1]}</span>{isReal(c.id) && <> <span className="chip chip-info">{realPerson(g, c.id)?.rec?.awards ? 'From The Awards Record' : realPerson(g, c.id)?.rec?.cc0 ? 'From The Music Catalog' : 'From The Film Catalog'}</span></>}{part && characterPronouns(part) && fits(c) && <> <span className="chip chip-positive">Pronouns Match</span></>}
+                  <strong>{c.name}</strong> <span className="chip" title={gradeOf(g, c, roleId).madeOf.join(' ')}>Grade {gradeOf(g, c, roleId).grade}</span> <span className="chip">{EXPERIENCE[c.experience - 1]}</span>{isReal(c.id) && <> <span className="chip chip-info">{realPerson(g, c.id)?.rec?.awards ? 'From The Awards Record' : realPerson(g, c.id)?.rec?.cc0 ? 'From The Music Catalog' : 'From The Film Catalog'}</span></>}{part && characterPronouns(part) && fits(c) && <> <span className="chip chip-positive">Pronouns Match</span></>}{part?.gender && genderMatches(part, c) && <> <span className="chip chip-positive">Gender Matches</span></>}
                   {isReal(c.id)
                     ? <div className="dim">{c.samples}{c.born ? ` Age ${personAge(c, today)}.` : ' Date of birth not recorded.'}{plays(c) ? ` In this story they play ages ${plays(c)![0]} to ${plays(c)![1]}.` : ''} Languages, background and nationality aren't recorded, and none is assumed. In this story they ask {money(c.dayRate)} a day.</div>
                     : <div className="dim">{c.samples} Speaks {c.languages.map(languageName).join(', ')}.{` Age ${personAge(c, today)}.`}{plays(c) ? ` Plays ages ${plays(c)![0]} to ${plays(c)![1]}.` : ''}{c.heritages.length ? ` Ethnicity: ${c.heritages.join(', ')}.` : ''} Nationality: {c.nationalities.map(countryName).join(', ')}. Asks {money(c.dayRate)} a day.</div>}

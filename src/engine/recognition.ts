@@ -115,6 +115,18 @@ export const fameFeeFrom = (editions: number): number => (editions > 0 ? Math.mi
 /** A performer's fee for a film: whichever of their recognition and their fame asks more. */
 export const performerFee = (points: number, editions: number): number => Math.max(filmFeeFrom(points), fameFeeFrom(editions));
 
+/**
+ * A performer's gender as the awards record states it, from the categories it recognised them in ("Best Actress", "a
+ * Female Actor"): the record holds no gender of its own. Unknown for someone recognised only in categories for anyone.
+ */
+export function genderOf(tmdbId: number, data = loaded): 'woman' | 'man' | undefined {
+  const rec = data?.people[String(tmdbId)];
+  if (!rec) return undefined;
+  let w = 0, m = 0;
+  for (const [c] of rec[3]) { const l = data!.categories[c]?.label ?? ''; if (/Actress|Female/.test(l)) w++; else if (/\bActor\b|\bMale\b/.test(l)) m++; }
+  return w > m ? 'woman' : m > w ? 'man' : undefined;
+}
+
 /** The recognition in words: "2 Academy Award nominations and a Golden Globe win". */
 export function describeStanding(s: Standing): string {
   const parts: string[] = [];

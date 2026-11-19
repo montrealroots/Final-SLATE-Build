@@ -3,8 +3,8 @@
 // your-films.test.ts keeps the invented cast a picture has without it.
 import { readFileSync } from 'node:fs';
 import { describe, expect, it } from 'vitest';
-import { applyRecognition, fameOf, performerFee, standingOf } from '../src/engine/recognition';
-import { castPicture, pictureCredits, LEAD_SHARE, SUPPORTING_SHARE } from '../src/engine/your-films';
+import { applyRecognition, fameOf, filmFeeFrom, genderOf, performerFee, standingOf } from '../src/engine/recognition';
+import { castPicture, pictureCredits, ANY_FIRSTS, CREW_SHARE, LEAD_SHARE, MEN_FIRSTS, PICTURE_CREW, SUPPORTING_SHARE, WOMEN_FIRSTS } from '../src/engine/your-films';
 import type { OutsideJob } from '../src/engine/jobs';
 import type { GameState } from '../src/engine/types';
 import { startLife } from './helpers';
@@ -48,9 +48,8 @@ describe('a studio picture cast from real actors', () => {
       expect(!died || died > '2026-10-01').toBe(true);
       expect(!born || Number(born.slice(0, 4)) <= 2008).toBe(true);
     });
-    // The crew are the ones the picture had before it was cast.
-    expect(pictureCredits(s, j).crew).toEqual(crewBefore);
     expect(pictureCredits(s, j).cast).toBe(cast);
+    expect(crewBefore.find((c) => c.job === 'Director')!.name).toBe(s.character.name);
   });
 
   it('is cast once, the same for the same story, and a bigger budget reaches dearer actors', () => {
@@ -74,4 +73,51 @@ describe('a studio picture cast from real actors', () => {
     castPicture(s, j);
     for (const m of j.studio!.cast!.filter((x) => x.tmdbId)) expect(standingOf(m.tmdbId!, 'actor', 1995)).not.toBeNull();
   });
+  it("names each part for the actor's gender as the record states it", () => {
+    const s = startLife('cast-parts');
+    const j = picture(s, '2026-10-01', 60_000_000);
+    castPicture(s, j);
+    const firsts = { woman: WOMEN_FIRSTS, man: MEN_FIRSTS };
+    for (const m of j.studio!.cast!) {
+      const g = m.tmdbId ? genderOf(m.tmdbId) : m.gender;
+      expect(m.gender).toBe(g);
+      expect((g ? firsts[g] : ANY_FIRSTS)).toContain(m.character!.split(' ')[0]);
+    }
+    // The record says so: an actress's categories, an actor's.
+    expect(genderOf(11514)).toBe('woman'); // Catherine O'Hara
+    expect(genderOf(6752)).toBe('man'); // Željko Ivanek
+  });
+
+  it('is directed and written by you, its other heads of department real where the record has someone the budget pays', () => {
+    const s = startLife('cast-crew');
+    const j = picture(s, '2026-10-01', 60_000_000);
+    castPicture(s, j);
+    const crew = j.studio!.crew!;
+    expect(crew.map((c) => c.job)).toEqual(PICTURE_CREW.map((c) => c.job));
+    for (const c of crew.filter((x) => x.job === 'Director' || x.job === 'Screenplay')) expect(c).toMatchObject({ name: s.character.name, you: true });
+    expect(crew.filter((c) => c.job === 'Producer').every((c) => !c.tmdbId)).toBe(true);
+    const real = crew.filter((c) => c.tmdbId);
+    expect(real.length).toBeGreaterThanOrEqual(6);
+    for (const c of real) {
+      const job = PICTURE_CREW.find((x) => x.job === c.job)!.recognised!;
+      const st = standingOf(c.tmdbId!, job, 2026)!;
+      expect(st).not.toBeNull();
+      expect(filmFeeFrom(st.points)).toBeLessThanOrEqual(60_000_000 * CREW_SHARE);
+    }
+    const everyone = [...j.studio!.cast!, ...real].filter((x) => x.tmdbId).map((x) => x.tmdbId);
+    expect(new Set(everyone).size).toBe(everyone.length);
+  });
+
+  it('keeps the actors of a cast chosen before parts were named, and names their parts', () => {
+    const s = startLife('cast-older');
+    const j = picture(s, '2026-10-01', 60_000_000);
+    j.studio!.cast = [{ name: "Catherine O'Hara", tmdbId: 11514 }, { name: 'Elsa Holt' }];
+    castPicture(s, j);
+    expect(j.studio!.cast!.map((m) => m.name)).toEqual(["Catherine O'Hara", 'Elsa Holt']);
+    expect(j.studio!.cast![0].gender).toBe('woman');
+    expect(WOMEN_FIRSTS).toContain(j.studio!.cast![0].character!.split(' ')[0]);
+    expect(j.studio!.cast![1].character).toBeTruthy();
+    expect(j.studio!.crew).toHaveLength(PICTURE_CREW.length);
+  });
 });
+

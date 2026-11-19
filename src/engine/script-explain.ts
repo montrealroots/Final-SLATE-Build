@@ -1,5 +1,6 @@
 // Explanations and helpers only the project screens use (loaded with them, not at startup). They describe the rules in
 // script-effects.ts for the player; none of them changes an outcome.
+import { genderOf } from './recognition';
 import { threadCutConsequences } from './structure';
 import { editScenes } from './finish';
 import { approvedScenes, sceneLabel } from './projects';
@@ -95,6 +96,18 @@ export function characterPronouns(c: Pick<StoryCharacter, 'pronouns'>): 'he' | '
 export function pronounsMatch(c: Pick<StoryCharacter, 'pronouns'>, performerPronouns: 'he' | 'she' | 'they'): boolean {
   const want = characterPronouns(c);
   return want === null || want === performerPronouns;
+}
+
+/** A performer's gender: a real one's as the awards record states it (recognition.ts genderOf), the game's own from their pronouns. Unknown, undefined. */
+export function performerGender(person: { id: string; pronouns?: string }): 'woman' | 'man' | 'nonbinary' | undefined {
+  const real = /^tp_(\d+)$/.exec(person.id);
+  if (real) return genderOf(Number(real[1]));
+  return person.pronouns === 'she' ? 'woman' : person.pronouns === 'he' ? 'man' : person.pronouns === 'they' ? 'nonbinary' : undefined;
+}
+
+/** Whether a performer is the part's written gender: a part with none set matches everyone, a performer of unknown gender no set part. Casting marks it and can list matches first; it scores nothing. */
+export function genderMatches(c: Pick<StoryCharacter, 'gender'>, person: { id: string; pronouns?: string }): boolean {
+  return !c.gender || performerGender(person) === c.gender;
 }
 
 // ---------------- Structure ----------------

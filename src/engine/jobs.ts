@@ -59,8 +59,10 @@ export interface OutsideJob {
     deal?: { picture: number; of: number; fees: number[] };
     /** The title it's released under, the studio's, invented by the game; and the day it comes out, set when shooting wraps. */
     title?: string; released?: string;
-    /** Who it cast (your-films.ts castPicture), from November 19, 2026; absent until the awards record was loaded to choose from. */
-    cast?: { name: string; tmdbId?: number }[];
+    /** Who it cast (your-films.ts castPicture), from November 19, 2026, each with the part the game named; absent until the awards record was loaded to choose from. */
+    cast?: import('./your-films').PictureCastMember[];
+    /** Its crew as hired (castPicture), from November 19, 2026: you direct and write it, the other heads of department real where the record has someone. */
+    crew?: import('./your-films').PictureCrewMember[];
     /** Its genres (the franchise's latest film's, else the studio's own), its quality once the work is done, and its honours (your-films.ts). */
     genres?: string[]; quality?: number; honours?: { status: 'selected' | 'nominated' | 'won'; category: string; recipient: string; event: string; at: number }[] };
 }

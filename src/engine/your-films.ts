@@ -15,7 +15,7 @@
 // You are paid your fee; the box office is the studio's, before any share of the profits, which aren't modelled.
 import { noticeGrades } from './grade-news';
 import type { OutsideJob } from './jobs';
-import { fameOf, performerFee, recognisedIn, recognitionData } from './recognition';
+import { fameOf, filmFeeFrom, genderOf, performerFee, recognisedIn, recognitionData } from './recognition';
 import { roleCraft } from './reputation';
 import { gaussian, intBetween, pick, stream } from './rng';
 import { addLog, registerHandler } from './state';
@@ -54,64 +54,111 @@ export function pictureQuality(state: GameState, j: OutsideJob): number {
   return Math.round(Math.max(20, Math.min(97, gaussian(stream(state.seed, 'your-film', j.id), craft, YOUR_FILM_SPREAD))));
 }
 
-/** One of a picture's cast: a real actor (`tmdbId`, from the industry's record of awards) or an invented one. */
-export interface PictureCastMember { name: string; tmdbId?: number }
+/** One of a picture's cast: a real actor (`tmdbId`, from the industry's record of awards) or an invented one, and the part they play. */
+export interface PictureCastMember { name: string; tmdbId?: number; character?: string; gender?: 'woman' | 'man' }
+/** One of its crew: you, a real person the awards record recognised in the job (`tmdbId`), or someone invented. */
+export interface PictureCrewMember { job: string; department: string; name: string; tmdbId?: number; you?: true }
 /** A picture's lead takes up to this share of its budget, and each of the others up to the second. Game calibration. */
 export const LEAD_SHARE = 0.15;
 export const SUPPORTING_SHARE = 0.03;
+/** Each head of department's fee, at most this share of the budget. Game calibration. */
+export const CREW_SHARE = 0.02;
 /** The budget a picture is cast for when the studio named none. Game calibration. */
 export const UNSTATED_BUDGET = 40_000_000;
-/** Of the actors a part's money reaches, the best-paid this many are the ones the studio asks. Game calibration. */
+/** Of the people a part's money reaches, the best-paid this many are the ones the studio asks. Game calibration. */
 export const ASKED = 40;
 
+/** The parts' first names, by the gender of who plays them, and for a part anyone could play. Invented by the game. */
+export const WOMEN_FIRSTS = ['Amara', 'Clara', 'Hanna', 'Ines', 'Joy', 'Lena', 'Mara', 'Nadia', 'Nora', 'Rosa', 'Sade', 'Tess', 'Vera', 'Yara', 'Zoe', 'Elise', 'Grace', 'Ruth', 'Leila', 'Mina'];
+export const MEN_FIRSTS = ['Abel', 'Caleb', 'Daniel', 'Elias', 'Felix', 'Hugo', 'Isaac', 'Jonah', 'Kofi', 'Leon', 'Marco', 'Noah', 'Omar', 'Paul', 'Samuel', 'Tomas', 'Victor', 'Walter', 'Malik', 'Teo'];
+export const ANY_FIRSTS = ['Alex', 'Ari', 'Jordan', 'Kai', 'Noor', 'Robin', 'Sam', 'Quinn'];
+
+/** The heads of department a studio picture credits, with the awards record's job for each, as TMDB sorts them. */
+export const PICTURE_CREW: { job: string; department: string; recognised?: string }[] = [
+  { job: 'Director', department: 'Directing', recognised: 'episode-director' },
+  { job: 'Screenplay', department: 'Writing', recognised: 'co-writer' },
+  { job: 'Producer', department: 'Production' }, { job: 'Producer', department: 'Production' },
+  { job: 'Casting', department: 'Production', recognised: 'casting-director' },
+  { job: 'Director of Photography', department: 'Camera', recognised: 'dop' },
+  { job: 'Editor', department: 'Editing', recognised: 'editor' },
+  { job: 'Original Music Composer', department: 'Sound', recognised: 'composer' },
+  { job: 'Supervising Sound Editor', department: 'Sound', recognised: 'sound-designer' },
+  { job: 'Production Design', department: 'Art', recognised: 'production-designer' },
+  { job: 'Costume Design', department: 'Costume & Make-Up', recognised: 'costume-designer' },
+  { job: 'Makeup Artist', department: 'Costume & Make-Up', recognised: 'hair-makeup' },
+  { job: 'Visual Effects Supervisor', department: 'Visual Effects', recognised: 'vfx-artist' },
+];
+
 /**
- * Its cast, chosen once from real actors (from November 19, 2026, the owner: "now do one with real cast"): until then a
- * picture's cast were invented names. The studio casts actors the awards record has recognised before the year it comes
- * out, alive and grown by then, whose asking fee (recognition.ts performerFee) its budget can pay: the lead from up to
- * LEAD_SHARE of it, each of the other seven from up to SUPPORTING_SHARE; a part none will take for that goes to an
- * unknown, invented. Their parts aren't named: the record holds no one's gender, and a name drawn for a part read wrong
- * beside the actor playing it (tried and dropped the same day). Kept in the save, so
- * the cast stays whoever was cast; with the record not loaded nothing is chosen yet, and the page shows invented names.
+ * Its cast and crew, chosen once from real people (from November 19, 2026, the owner: "now do one with real cast", then
+ * "the crew should be real too. Except for director because that'll be me ... if there's a writer part that's me too").
+ * Until then everyone on a picture but you was invented.
+ *   - The cast: actors the awards record has recognised before the year it comes out, alive and grown by then, whose
+ *     asking fee (recognition.ts performerFee) its budget can pay, the lead from up to LEAD_SHARE of it and the other
+ *     seven from up to SUPPORTING_SHARE; a part none will take for that goes to an unknown, invented. Each part is named
+ *     by the game, a woman's or a man's name by the actor's gender as the record states it (genderOf). Parts went unnamed
+ *     for a few hours the same day, when gender wasn't read: a name drawn blind read wrong beside the actor playing it.
+ *   - The crew: you direct and write it. Each other head of department is someone recognised in the job before then,
+ *     whose fee (filmFeeFrom) fits CREW_SHARE of the budget; the producers, whom the record doesn't cover, are invented.
+ * Kept in the save, so it stays whoever was hired; with the record not loaded nothing is chosen yet, and the page shows
+ * the invented credits a picture had before (pictureCredits).
  */
 export function castPicture(state: GameState, j: OutsideJob, data = recognitionData()): void {
   const st = j.studio;
-  if (!st?.released || st.cast || !data) return;
+  if (!st?.released || (st.cast && st.crew) || !data) return;
   const year = Number(st.released.slice(0, 4));
   const budget = st.budget ?? UNSTATED_BUDGET;
-  const fit = recognisedIn('actor', year, data)
-    .filter(({ tmdbId }) => { const [, born, died] = data.people[String(tmdbId)]; return (!died || died > st.released!) && (!born || Number(born.slice(0, 4)) <= year - 18); })
-    .map((a) => ({ ...a, fee: performerFee(a.standing.points, fameOf(a.tmdbId)) }));
-  const r = stream(state.seed, 'your-film-cast', j.id);
+  const ok = (tmdbId: number) => { const [, born, died] = data.people[String(tmdbId)]; return (!died || died > st.released!) && (!born || Number(born.slice(0, 4)) <= year - 18); };
   const taken = new Set<number>();
-  const ask = (cap: number) => {
-    const open = fit.filter((a) => a.fee <= cap && !taken.has(a.tmdbId)).sort((a, b) => b.fee - a.fee || a.tmdbId - b.tmdbId).slice(0, ASKED);
+  const asker = (r: () => number, pool: { tmdbId: number; name: string; fee: number }[]) => (cap: number) => {
+    const open = pool.filter((a) => a.fee <= cap && !taken.has(a.tmdbId)).sort((a, b) => b.fee - a.fee || a.tmdbId - b.tmdbId).slice(0, ASKED);
     const a = open.length ? pick(r, open) : undefined;
     if (a) taken.add(a.tmdbId);
     return a;
   };
-  const cast: PictureCastMember[] = [];
-  for (let i = 0; i < 8; i++) {
-    const a = ask(budget * (i === 0 ? LEAD_SHARE : SUPPORTING_SHARE));
-    cast.push(a ? { name: a.name, tmdbId: a.tmdbId } : { name: `${pick(r, FIRSTS)} ${pick(r, LASTS)}` });
+  const r = stream(state.seed, 'your-film-cast', j.id);
+  if (!st.cast) {
+    const ask = asker(r, recognisedIn('actor', year, data).filter((a) => ok(a.tmdbId)).map((a) => ({ ...a, fee: performerFee(a.standing.points, fameOf(a.tmdbId)) })));
+    st.cast = Array.from({ length: 8 }, (_, i) => {
+      const a = ask(budget * (i === 0 ? LEAD_SHARE : SUPPORTING_SHARE));
+      if (a) return { name: a.name, tmdbId: a.tmdbId };
+      const gender = pick(r, ['woman', 'man'] as const);
+      return { name: `${pick(r, gender === 'woman' ? WOMEN_FIRSTS : MEN_FIRSTS)} ${pick(r, LASTS)}`, gender };
+    });
   }
-  st.cast = cast;
+  // A cast chosen before parts were named (earlier on November 19, 2026) keeps its actors and is given its parts.
+  for (const m of st.cast) {
+    if (m.tmdbId) taken.add(m.tmdbId);
+    if (m.character) continue;
+    const gender = m.gender ?? (m.tmdbId ? genderOf(m.tmdbId, data) : undefined);
+    if (gender) m.gender = gender;
+    m.character = `${pick(r, gender === 'woman' ? WOMEN_FIRSTS : gender === 'man' ? MEN_FIRSTS : ANY_FIRSTS)} ${pick(r, LASTS)}`;
+  }
+  const rc = stream(state.seed, 'your-film-crew', j.id);
+  const me = state.character.name;
+  st.crew = PICTURE_CREW.map(({ job, department, recognised }) => {
+    if (job === 'Director' || job === 'Screenplay') return { job, department, name: me, you: true as const };
+    const a = recognised ? asker(rc, recognisedIn(recognised, year, data).filter((x) => ok(x.tmdbId)).map((x) => ({ ...x, fee: filmFeeFrom(x.standing.points) })))(budget * CREW_SHARE) : undefined;
+    return a ? { job, department, name: a.name, tmdbId: a.tmdbId } : { job, department, name: `${pick(rc, [...WOMEN_FIRSTS, ...MEN_FIRSTS])} ${pick(rc, LASTS)}` };
+  });
 }
 
-/** The people on it: you in your role; its cast as cast (castPicture), else invented; its crew invented, as the world's films' people are (studios.ts). */
-export function pictureCredits(state: GameState, j: OutsideJob): { cast: PictureCastMember[]; crew: { job: string; name: string }[] } {
+/** The people on it: its cast and crew as chosen (castPicture), else as invented before November 19, 2026, you in your role. */
+export function pictureCredits(state: GameState, j: OutsideJob): { cast: PictureCastMember[]; crew: PictureCrewMember[] } {
   const r = stream(state.seed, 'your-film-people', j.id);
   const someone = () => `${pick(r, FIRSTS)} ${pick(r, LASTS)}`;
-  // Drawn even when the cast is real, so the crew's names are the ones saves before November 19, 2026 showed.
+  // Drawn even when the cast is chosen, so an older save's invented crew keep the names they had.
   const invented = Array.from({ length: 8 }, someone);
   const cast = j.studio?.cast ?? invented.map((name) => ({ name }));
+  if (j.studio?.crew) return { cast, crew: j.studio.crew };
   const me = state.character.name;
-  const crew = [
-    { job: 'Director', name: j.role === 'directing' ? me : someone() },
-    { job: 'Screenplay', name: j.role === 'writing' ? me : someone() },
-    { job: 'Producer', name: someone() }, { job: 'Producer', name: someone() },
-    { job: 'Director of Photography', name: someone() }, { job: 'Editor', name: someone() },
-    { job: 'Original Music Composer', name: someone() }, { job: 'Production Design', name: someone() },
-  ];
+  const crew: PictureCrewMember[] = [
+    { job: 'Director', department: 'Directing', name: j.role === 'directing' ? me : someone() },
+    { job: 'Screenplay', department: 'Writing', name: j.role === 'writing' ? me : someone() },
+    { job: 'Producer', department: 'Production', name: someone() }, { job: 'Producer', department: 'Production', name: someone() },
+    { job: 'Director of Photography', department: 'Camera', name: someone() }, { job: 'Editor', department: 'Editing', name: someone() },
+    { job: 'Original Music Composer', department: 'Sound', name: someone() }, { job: 'Production Design', department: 'Art', name: someone() },
+  ].map((c) => (c.name === me ? { ...c, you: true as const } : c));
   return { cast, crew };
 }
 
