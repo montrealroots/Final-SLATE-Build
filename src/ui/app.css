@@ -1024,6 +1024,10 @@ td, th { overflow-wrap: break-word; }
   /* An idea's tag, and a name that leads a row and opens something, as tall as a control (from 2026-11-12: 32 and 21
      pixels until then). A link inside a sentence keeps the sentence's line. */
   :where(:root:not([data-layout="scaled"])) strong > button.link:only-child, :where(:root:not([data-layout="scaled"])) li > button.link, :where(:root:not([data-layout="scaled"])) .list-item > .grow > button.link, :where(:root:not([data-layout="scaled"])) dd > button.link:only-child { display: inline-flex; align-items: center; min-height: var(--control); min-width: var(--control); }
+  /* A row's name keeps the same room above and below its words whether it takes one line or two (from November 19,
+     2026): until then a one-line name sat in the middle of its 44 pixels and a two-line name filled them, so on a
+     studio's list of films the gap down to "Film, 2025" changed from row to row. */
+  :where(:root:not([data-layout="scaled"])) .list-item > .grow > button.link { padding-block: max(0px, calc((var(--control) - 1lh) / 2)); }
   /* A button of one glyph (‹, ›, ✕) as wide as it is tall, and the skip link as tall as a control (from 2026-10-23, brief
      23's walk: the Calendar's month arrows were 31 pixels wide, the skip link 37 tall). */
   :where(:root:not([data-layout="scaled"])) .btn { min-width: var(--control); }
