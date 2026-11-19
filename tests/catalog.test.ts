@@ -250,6 +250,7 @@ describe('a person\'s page at the save\'s date', () => {
     expect(creditWhen({ kind: 'cast', date: '2020-05-01' }, '2026-01-05')).toBe('2020');
     expect(creditWhen({ kind: 'cast', date: '2027-05-01' }, '2026-01-05')).toBe('not released yet');
     expect(creditWhen({ kind: 'cast', date: null }, '2026-01-05')).toBe('undated');
+    expect(creditWhen({ kind: 'episode-guest', date: '2026-10-31' }, '2026-01-05')).toBe('not aired yet');
   });
 
   it('stops a biography at the first sentence that tells of later than the save\'s date, keeping Wikipedia\'s credit', () => {

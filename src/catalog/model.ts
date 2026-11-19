@@ -155,7 +155,7 @@ export function creditWhen(c: Pick<PersonCredit, 'kind' | 'date' | 'on'>, today:
     if (!years.length) return 'not aired yet';
     return years[0] === years.at(-1) ? years[0] : `${years[0]}–${years.at(-1)}`;
   }
-  if (!happenedBy(c.date, today)) return c.date ? 'not released yet' : 'undated';
+  if (!happenedBy(c.date, today)) return !c.date ? 'undated' : c.kind.startsWith('episode') ? 'not aired yet' : 'not released yet';
   return c.kind === 'series-cast' || c.kind === 'series-crew' ? `series began ${c.date!.slice(0, 4)}` : c.date!.slice(0, 4);
 }
 

@@ -20,6 +20,28 @@ finished, and they come back only when the owner says so:
   work permits are still estimates in all (`docs/v10/papers-estimates.json`).
 - **Real-phone and pacing tests:** they need the owner's own device and a person playing.
 
+## The Most-Watched TMDB Haul And Its Pictures (The Owner, November 18–19, 2026)
+
+The owner asked for "all of TMDB like the first haul with the complete pictures pack" and chose the biggest slice that
+fits: TMDB's films and series with at least 20 votes.
+- **Catalog** (`docs/CATALOG-COVERAGE.md`): 94,694 films, 16,276 series, 47,907 seasons, 1,210,459 episodes,
+  1,488,231 people; 20 titles TMDB wouldn't return. Pack `packs/slate-catalog-2026-11-19.slatepack`, 733.5 MB,
+  160,788 files (git-ignored, served by the owner's server on 8080). The November 18 pack was deleted when this one
+  replaced it, as the Mods page offers the older of two (`DataPacks.tsx offered.find`, still open).
+- **Pictures** (`tools/screen-catalog/pictures.mjs`, `docs/PICTURE-COVERAGE.md`): each picture is kept once, in its
+  pack (`pack --drop` removes the loose copy once its pack is written). On November 19 at 04:00 UTC posters, backdrops,
+  season posters, logos and all 333,607 portraits were packed; about 400,000 episode stills were downloading, due
+  about 07:55 UTC. The run is the scratchpad's `pictures-run.sh`; a container restart stops it and it resumes from
+  what's saved. **Still to do:** finish the stills, install them in a browser, regenerate `docs/PICTURE-COVERAGE.md`,
+  and report.
+- **A person's page at the save's date** (November 19, `biographyAt` and `creditWhen` in `src/catalog/model.ts`;
+  `docs/CATALOG.md` "At The Save's Date"): a series credit gives the years the person worked on it, not the year the
+  series began (Inde Navarrette's Saturday Night Live hosting had read as 1975); a biography stops at the first sentence
+  naming a later year or one of their titles not out yet, keeping Wikipedia's credit line. A later event with no year
+  and no title of theirs in its sentence isn't caught.
+- **Tests that grew with the data:** `catalog-live` opens "Show All" for Tom Hanks's 40-plus film credits;
+  `picture-library`'s real-logos test reads 1,331 with its comma.
+
 ## Studio Projects, And Offers In Plain Words (The Owner, November 18, 2026)
 
 The owner asked for deals in natural words ("so and so is offering ... worth this, and break it down") and for offers
