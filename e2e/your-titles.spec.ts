@@ -3,6 +3,7 @@
 // my movie and show"), and a part's gender written at creation (the owner: "in the creation set their gender").
 import { expect, test, type Page } from './test';
 import { nav, newProject, quickLife, section } from './helpers';
+import { serveCatalog } from './catalog-fixture';
 
 const panel = (page: Page, title: string) => page.locator('section.card', { has: page.getByRole('heading', { name: title, exact: true }) });
 
@@ -39,6 +40,21 @@ test("a film of yours has a recorded film's page: you direct, write and produce 
   await expect(crew.getByText('You').first()).toBeVisible();
 });
 
+test('your own titles are found by the catalog search, beside the recorded ones', async ({ page }) => {
+  await serveCatalog(page);
+  await quickLife(page, 'gb-london', '2026-01-05');
+  await newProject(page, { title: 'The Lantern Road', format: 'Feature Film' });
+  await nav(page, 'Companies');
+  await page.getByLabel('Title Or Person').fill('lantern');
+  const yours = page.getByRole('list', { name: 'Your Titles' });
+  await expect(yours).toContainText('The Lantern Road');
+  await expect(yours).toContainText('Film, In Development');
+  // The recorded title with the same word is still listed, apart.
+  await expect(page.getByRole('button', { name: 'The Lantern Keeper (Fixture)' })).toBeVisible();
+  await yours.getByRole('button', { name: 'The Lantern Road' }).click();
+  await expect(page.getByRole('heading', { name: 'The Lantern Road', level: 1 })).toBeVisible();
+});
+
 test("a series of yours has a series page and a season page, with every episode", async ({ page }) => {
   await quickLife(page, 'ie-dublin', '2026-01-05');
   await newProject(page, { title: 'The Liffey', format: 'Series', episodes: '3', runtime: '55' });
@@ -51,5 +67,13 @@ test("a series of yours has a series page and a season page, with every episode"
   const eps = panel(page, 'Episodes');
   for (const n of [1, 2, 3]) await expect(eps).toContainText(`${n}. Episode ${n}`);
   await expect(eps).toContainText('no air date');
+  // An episode has its own page, as a recorded one's does: you write and direct it.
+  await eps.getByRole('button', { name: 'Episode 2' }).click();
+  await expect(page.getByRole('heading', { name: 'Episode 2', level: 1 })).toBeVisible();
+  await expect(page.getByText('The Liffey, Season 1')).toBeVisible();
+  const crew = panel(page, 'Episode Crew');
+  await expect(crew.getByRole('list', { name: 'Directing Crew' })).toContainText('Director');
+  await expect(crew.getByRole('list', { name: 'Writing Crew' })).toContainText('You');
+  await expect(panel(page, 'Guest Cast')).toContainText('No guests are credited on this episode.');
   await nav(page, 'Projects');
 });

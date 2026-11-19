@@ -61,7 +61,9 @@ fits: TMDB's films and series with at least 20 votes.
   (`ProjectSeasonPage`) have a recorded title's head, picture boxes, About, Figures, Credited Companies, Cast with their
   parts and Crew by TMDB's departments, from the project's own credits (`finish.ts computeCredits`, and before delivery
   everyone hired). A series is its seasons (`continues`), each with its episodes, their writers and directors and dates.
-  `e2e/your-titles.spec.ts` (desktop and phone). Not built: an episode page of your own; your titles in search.
+  `e2e/your-titles.spec.ts` (desktop and phone). From later the same day, an episode of yours has its page too
+  (`ProjectEpisodePage`: its date, its crew, its guests, the regulars staying on the season's), opened from the season's
+  list, and your titles are found by the catalog search under Your Titles.
 - **Packs from files, for the owner's phone** (November 19; `packs.ts joinParts`, `packsInZip`; `DataPacks.tsx`): the
   owner plays on Base44's copy, which offers no packs, so they install from files sent to them (at most 400 to 500 MB
   each in chat). Install From A File takes many files in one pick, joins a pack cut into `<name>.partNofM.slatepack`

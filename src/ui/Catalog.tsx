@@ -26,7 +26,7 @@ import { boxOffice } from '../engine/awards-rules';
 import { getPlace } from '../data/places';
 import { languageName } from '../data/identity';
 import type { GameState, Project } from '../engine/types';
-import { asWorldFilm, castPicture, pictureCredits, yourBoxOffice, yourFilmId, yourPicture } from '../engine/your-films';
+import { asWorldFilm, castPicture, pictureCredits, yourBoxOffice, yourFilmId, yourPicture, yourPictures } from '../engine/your-films';
 import { loadRecognition } from '../engine/recognition';
 import { money } from '../engine/budget';
 import { qualityWords } from '../engine/finish';
@@ -189,16 +189,23 @@ function CatalogSearch({ ready }: { ready: boolean }) {
   const titles = useCatalogFile<[string, string, string | null][]>(ready ? 'search/titles.json' : null);
   const letter = /^[a-z]/i.test(q.trim()) ? q.trim()[0].toUpperCase() : '_';
   const people = useCatalogFile<[number, string, number][]>(ready && q.trim().length >= 2 ? `search/people-${letter}.json` : null);
+  const g = useGame();
   if (!ready) return null;
   const needle = q.trim().toLowerCase();
   const tHits = needle.length >= 2 && titles.status === 'ready' ? titles.data.filter((t) => t[1].toLowerCase().includes(needle)).slice(0, 20) : [];
+  // Your own titles are found beside the recorded ones (from November 19, 2026): a series by its first season, as its page is.
+  const yours = needle.length < 2 ? [] : [
+    ...g.projects.filter((p) => !p.continues).map((p) => ({ ref: `project:${p.id}`, title: p.title, kind: isEpisodic(p.axes.format) ? 'Series' : 'Film', year: firstDate(p)?.date.slice(0, 4) ?? STATUS[p.phase] })),
+    ...yourPictures(g).map((j) => ({ ref: yourFilmId(j), title: j.studio!.title!, kind: 'Film', year: j.studio!.released!.slice(0, 4) })),
+  ].filter((t) => t.title.toLowerCase().includes(needle));
   const pHits = needle.length >= 2 && people.status === 'ready' ? people.data.filter((p) => p[1].toLowerCase().startsWith(needle)).slice(0, 20) : [];
   return (
     <Panel title="Search The Catalog">
       <TextField label="Title Or Person" value={q} onChange={setQ} hint="At least two letters. People are found by the start of their name." />
       {needle.length >= 2 && (
         <div className="spaced">
-          {!tHits.length && !pHits.length && titles.status === 'ready' && <p className="muted">Nothing in the catalog matches “{q.trim()}”.</p>}
+          {!tHits.length && !pHits.length && !yours.length && titles.status === 'ready' && <p className="muted">Nothing in the catalog matches “{q.trim()}”.</p>}
+          {yours.length > 0 && <><h3>Your Titles</h3><ul className="list" aria-label="Your Titles">{yours.map((t) => <li key={t.ref} className="list-item"><span className="grow"><Link to={titleRoute(t.ref)}>{t.title}</Link> <span className="chip">Yours</span></span><span className="dim small">{t.kind}, {t.year}</span></li>)}</ul></>}
           {tHits.length > 0 && <><h3>Titles</h3><ul className="list">{tHits.map((t) => <li key={t[0]} className="list-item"><span className="grow"><Link to={titleRoute(t[0])}>{t[1]}</Link></span><span className="dim small">{t[0].startsWith('tv') ? 'Series' : 'Film'}, {t[2] ?? 'undated'}</span></li>)}</ul></>}
           {pHits.length > 0 && <><h3>People</h3><ul className="list">{pHits.map((p) => <li key={p[0]} className="list-item"><span className="grow"><Link to={personRoute(p[0])}>{p[1]}</Link></span><span className="dim small">{plural(p[2], 'credit')}</span></li>)}</ul></>}
         </div>
@@ -593,19 +600,23 @@ function firstDate(p: Project): { date: string; out: boolean } | null {
 const STATUS: Record<Project['phase'], string> = { development: 'In Development', 'pre-production': 'Pre-Production', production: 'In Production', 'post-production': 'Post Production', delivered: 'Post Production', released: 'Released' };
 
 /** Its credits as TMDB would list them: cast with their parts and the episodes they're in, crew by department. Before it's delivered, everyone hired so far. */
-function projectCredits(g: GameState, p: Project) {
+/** With `episode`, that episode's: its crew, and as TMDB lists an episode's cast, its guests, the series' regulars being on the season's page. */
+function projectCredits(g: GameState, p: Project, episode?: number) {
   const credits = computeCredits(g, p);
   const eps = (e: number[] | 'all') => (e === 'all' ? p.axes.episodeCount : e.length);
-  const cast = credits.filter((c) => c.roleId === 'actor' || c.roleId === 'voice-actor').map((c) => ({ name: c.personName, tmdbId: tmdbIdOf(c.person), character: c.stage ? `${c.characterName} (${c.stage})` : c.characterName, note: isEpisodic(p.axes.format) ? plural(eps(c.episodes), 'episode') : c.roleId === 'voice-actor' ? 'voice' : undefined }));
+  const on = (e: number[] | 'all') => episode === undefined || e === 'all' || e.includes(episode);
+  const counted = isEpisodic(p.axes.format) && episode === undefined;
+  const cast = credits.filter((c) => (c.roleId === 'actor' || c.roleId === 'voice-actor') && (episode === undefined || (c.episodes !== 'all' && c.episodes.includes(episode))))
+    .map((c) => ({ name: c.personName, tmdbId: tmdbIdOf(c.person), character: c.stage ? `${c.characterName} (${c.stage})` : c.characterName, note: counted ? plural(eps(c.episodes), 'episode') : c.roleId === 'voice-actor' ? 'voice' : undefined }));
   const crewRow = (personId: string, name: string, roleId: string, label: string, episodes: number[] | 'all') => {
     const dept = roleId === 'director' || roleId === 'episode-director' ? 'Directing' : roleId === 'writer' || roleId === 'episode-writer' || roleId === 'co-writer' ? 'Writing' : roleId === 'producer' ? 'Production' : POST_SOUND.has(roleId) ? 'Sound' : TMDB_DEPARTMENT[(() => { try { return roleDef(roleId).dept; } catch { return ''; } })()] ?? 'Crew';
-    return { name, tmdbId: tmdbIdOf(personId), job: TMDB_JOB[roleId] ?? label, department: dept, you: personId === 'player', note: isEpisodic(p.axes.format) ? plural(eps(episodes), 'episode') : undefined };
+    return { name, tmdbId: tmdbIdOf(personId), job: TMDB_JOB[roleId] ?? label, department: dept, you: personId === 'player', note: counted ? plural(eps(episodes), 'episode') : undefined };
   };
   const words: Record<string, string> = { 'Directed By': 'Director', 'Written By': 'Screenplay', 'Co-Written By': 'Screenplay', 'Produced By': 'Producer', 'Executive Producer And Showrunner': 'Executive Producer' };
-  const crew = credits.filter((c) => !['actor', 'voice-actor', 'co-producer', 'backer', 'contributor'].includes(c.roleId) && !c.songId)
+  const crew = credits.filter((c) => !['actor', 'voice-actor', 'co-producer', 'backer', 'contributor'].includes(c.roleId) && !c.songId && on(c.episodes))
     .map((c) => crewRow(c.person, c.personName, c.roleId, words[c.contribution] ?? c.contribution, c.episodes));
   // Hired and not yet at work: credited once they are, listed meanwhile as a title in production lists them.
-  if (!p.delivered) for (const h of p.hires.filter((x) => x.kind === 'crew' && x.status === 'accepted' && !x.daysWorked && !['songwriter', 'lyricist'].includes(x.roleId))) {
+  if (!p.delivered) for (const h of p.hires.filter((x) => x.kind === 'crew' && x.status === 'accepted' && !x.daysWorked && !['songwriter', 'lyricist'].includes(x.roleId) && on(x.episodes))) {
     crew.push(crewRow(h.personId, personById(g, h.personId).name, h.roleId, roleLabel(h.roleId), h.episodes));
   }
   const companies = [...new Set([p.producedBy ?? g.company?.name ?? g.banner?.name, ...credits.filter((c) => c.roleId === 'co-producer' || c.roleId === 'backer').map((c) => c.personName), ...p.releases.filter((r) => r.status !== 'cancelled').map((r) => r.distributor)].filter((x): x is string => !!x))];
@@ -702,7 +713,7 @@ function ProjectSeasonPage({ refId }: { refId: string }) {
       <Panel title="Episodes">
         <ul className="list">{p.episodes.map((e) => { const d = epDate(e.number); return (
           <li key={e.number} className="list-item">
-            <span className="grow">{e.number}. {e.title || `Episode ${e.number}`} <span className="dim small">Directed by {who(e.director)}; written by {who(e.writer)}</span></span>
+            <span className="grow">{e.number}. <Link to={{ view: 'episode', ref: `${refId}:e:${e.number}` } as Route}>{e.title || `Episode ${e.number}`}</Link> <span className="dim small">Directed by {who(e.director)}; written by {who(e.writer)}</span></span>
             <span className="dim small">{d ? (d <= today ? day(d) : `not aired yet, due ${day(d)}`) : 'no air date'}</span>
           </li>
         ); })}</ul>
@@ -714,6 +725,44 @@ function ProjectSeasonPage({ refId }: { refId: string }) {
       </Panel>
       <Panel title="Season Crew" subtitle={crew.length ? `${plural(crew.length, 'credit')}.` : undefined}>
         {crew.length ? <Expandable items={crew} label="Crew" render={(c, i) => <li key={`${c.name}-${c.job}-${i}`} className="list-item"><span className="grow">{c.tmdbId ? <Link to={personRoute(c.tmdbId)}>{c.name}</Link> : c.name}{c.you ? <span className="chip"> You</span> : null} <span className="dim small">{c.job}</span></span><span className="dim small">{c.note ?? ''}</span></li>} /> : <p className="muted">No one is hired yet.</p>}
+      </Panel>
+    </>
+  );
+}
+
+/** An episode of your series, as a recorded episode's page: its date, what it moves in the season, its crew and its guests. */
+function ProjectEpisodePage({ refId }: { refId: string }) {
+  const g = useGame();
+  const today = useToday();
+  const m = /^(project:[^:]+):e:(\d+)$/.exec(refId);
+  const p = m && g.projects.find((x) => `project:${x.id}` === m[1]);
+  const e = p?.episodes.find((x) => x.number === Number(m![2]));
+  if (!p || !e) return <Empty title="This Isn't In Your Story"><p className="muted">It was made in another save.</p><GoBack /></Empty>;
+  const first = seasonsOf(g, p)[0];
+  const n = seasonNumber(p);
+  const rel = p.releases.filter((r) => r.status !== 'cancelled').sort((a, b) => (a.date < b.date ? -1 : 1))[0];
+  const date = rel?.episodes?.find((x) => x.number === e.number)?.date ?? rel?.date ?? null;
+  const name = e.title || `Episode ${e.number}`;
+  const { cast, crew } = projectCredits(g, p, e.number);
+  const depts = [...new Set(crew.map((c) => c.department))].sort();
+  const who = (c: { name: string; tmdbId?: number }) => (c.tmdbId ? <Link to={personRoute(c.tmdbId)}>{c.name}</Link> : c.name);
+  return (
+    <>
+      <Breadcrumbs items={[{ label: 'Projects', route: { view: 'projects' } as Route }, { label: first.title, route: titleRoute(`project:${first.id}`) }, { label: `Season ${n}`, route: { view: 'season', ref: `project:${p.id}` } as Route }, { label: `Episode ${e.number}` }]} />
+      <PageHead eyebrow={`${first.title}, Season ${n}`} title={name} lede={date ? (date <= today ? `Aired ${day(date)}` : `Not aired by ${formatDateKey(today)}: due ${day(date)}`) : `${STATUS[p.phase]}: no air date yet`} />
+      <div className="row gap-2 wrap picture-row"><Picture subject={refId} name={`${first.title}: ${name}`} kind="still" size="page" /></div>
+      <Panel title="About">
+        {e.arc && <p>{e.arc}</p>}
+        <p><span className="chip">Your Series</span> You made it. Its crew and guests are who you hired; its date is your story's.</p>
+        <dl className="kv"><dt>Runtime</dt><dd>{p.axes.targetRuntimeMin} minutes</dd></dl>
+      </Panel>
+      <Panel title="Episode Crew" subtitle="Credited on this episode.">
+        {crew.length ? depts.map((dp) => <section key={dp}><h3>{dp}</h3><ul className="list" aria-label={`${dp} Crew`}>{crew.filter((c) => c.department === dp).map((c, i) => <li key={`${c.name}-${c.job}-${i}`} className="list-item"><span className="grow">{who(c)}{c.you ? <span className="chip"> You</span> : null}</span><span className="dim small">{c.job}</span></li>)}</ul></section>)
+          : <p className="muted">No one is credited on this episode yet.</p>}
+      </Panel>
+      <Panel title="Guest Cast" subtitle="Credited on this episode. The series' regular cast is on the season's page.">
+        {cast.length ? <ul className="list" aria-label="Guest Cast">{cast.map((c, i) => <li key={`${c.name}-${i}`} className="list-item"><Picture subject={c.tmdbId ? `person:${c.tmdbId}` : `invented:${c.name}`} name={c.name} size="thumb" /><span className="grow">{who(c)}</span><span className="dim small">{c.character ?? 'Role not recorded'}</span></li>)}</ul>
+          : <p className="muted">No guests are credited on this episode.</p>}
       </Panel>
     </>
   );
@@ -1092,6 +1141,11 @@ function AfterYourRecords() {
 }
 
 export function EpisodePage({ refId }: { refId: string }) {
+  if (refId.startsWith('project:')) return <ProjectEpisodePage refId={refId} />;
+  return <RecordedEpisodePage refId={refId} />;
+}
+
+function RecordedEpisodePage({ refId }: { refId: string }) {
   const today = useToday();
   const g = useGame();
   const r = parseRef(refId);
