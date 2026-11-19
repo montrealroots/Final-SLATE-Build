@@ -19,7 +19,7 @@ import { getPlace } from '../data/places';
 import { KILL_FEE_DAYS, PRODUCTION_KIND_LABELS, daysUntil, industryStanding, shootingDays, slateHere, type Production } from './productions';
 import { workRight, type Activity } from './papers';
 import { activeOverall, STUDIO_PROJECT_NOTICE_DAYS } from './first-look';
-import { pictureQuality } from './your-films';
+import { castPicture, pictureQuality } from './your-films';
 import type { GameState } from './types';
 
 export type JobRole = 'acting' | 'writing' | 'directing';
@@ -59,6 +59,10 @@ export interface OutsideJob {
     deal?: { picture: number; of: number; fees: number[] };
     /** The title it's released under, the studio's, invented by the game; and the day it comes out, set when shooting wraps. */
     title?: string; released?: string;
+    /** Who it cast (your-films.ts castPicture), from November 19, 2026, each with the part the game named; absent until the awards record was loaded to choose from. */
+    cast?: import('./your-films').PictureCastMember[];
+    /** Its crew as hired (castPicture), from November 19, 2026: you direct and write it, the other heads of department real where the record has someone. */
+    crew?: import('./your-films').PictureCrewMember[];
     /** Its genres (the franchise's latest film's, else the studio's own), its quality once the work is done, and its honours (your-films.ts). */
     genres?: string[]; quality?: number; honours?: { status: 'selected' | 'nominated' | 'won'; category: string; recipient: string; event: string; at: number }[] };
 }
@@ -328,6 +332,7 @@ registerHandler('job-day', (state, ev) => {
       j.studio.released = addDaysToKey(j.days[j.days.length - 1], STUDIO_RELEASE_DAYS);
       // How good it is: your craft in the role, with a picture's luck (your-films.ts); it opens on its day.
       j.studio.quality = pictureQuality(state, j);
+      castPicture(state, j);
       const { year, month, day } = parseYmd(j.studio.released);
       schedule(state, localToInstant(j.zone, year, month, day, 10).instant, 'your-film-release', { jobId: j.id }, { attention: 'notify', priority: 55, id: `your-film-release:${j.id}` });
       text += ` ${j.company} will release it as ${j.studio.title} on ${formatDateKey(j.studio.released)}.`;

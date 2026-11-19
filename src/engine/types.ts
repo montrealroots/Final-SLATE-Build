@@ -265,6 +265,8 @@ export interface StoryCharacter {
   /** How the character changes, beat by beat, each in a scene (structure.ts, SLATE-05-04.02). Never scored. */
   beats?: { id: string; sceneId: string; change: string }[];
   pronouns: string;
+  /** Who the part is written as (from November 19, 2026, the owner: "in the creation set their gender"). Casting marks who matches and can list them first; unset, the part is open to anyone. */
+  gender?: 'woman' | 'man' | 'nonbinary';
   languages: string[];
   description: string;
   wants: string;

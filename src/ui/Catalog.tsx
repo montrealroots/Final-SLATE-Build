@@ -1,7 +1,7 @@
 // The screen catalog's pages: companies, their leadership and titles, a title's credits, seasons, episodes and people
 // (docs/CATALOG.md). Everything here is reference material, loaded on demand and kept out of saves. It is shown at the
 // save's date: later releases are announced, not history, and later results aren't shown as known.
-import { useEffect, useMemo, useState, type ReactNode } from 'react';
+import { Fragment, useEffect, useMemo, useState, type ReactNode } from 'react';
 import { PersonWork } from './PersonWork';
 import { currentZone, dateKey, formatDateKey } from '../engine';
 import type { Route } from '../engine/types';
@@ -18,7 +18,16 @@ import { ageOn, announcedSeason, breakLength, breaksOf, castFor, decisionsFor, n
 import { addDaysToKey } from '../engine';
 import { studioFilm, studioFilms } from '../engine/studios';
 import { franchiseName } from '../engine/studio-projects';
-import { asWorldFilm, pictureCredits, yourBoxOffice, yourFilmId, yourPicture } from '../engine/your-films';
+import { computeCredits } from '../engine/finish';
+import { genreName } from '../engine/genres';
+import { isEpisodic } from '../engine/projects';
+import { personById, role as roleDef, roleLabel } from '../engine/people';
+import { boxOffice } from '../engine/awards-rules';
+import { getPlace } from '../data/places';
+import { languageName } from '../data/identity';
+import type { GameState, Project } from '../engine/types';
+import { asWorldFilm, castPicture, pictureCredits, yourBoxOffice, yourFilmId, yourPicture } from '../engine/your-films';
+import { loadRecognition } from '../engine/recognition';
 import { money } from '../engine/budget';
 import { qualityWords } from '../engine/finish';
 import logo from '../catalog/tmdb-logo.svg';
@@ -421,13 +430,85 @@ function FranchiseFilms({ said, f, today, children }: { said: string; f: { entri
 }
 
 /**
+ * A title of yours as the catalog shows a recorded one (from November 19, 2026, the owner: "these should be accurate to
+ * the real tmdb film and series pages but obviously as if it was my movie and show"): the same head, picture boxes, About,
+ * Figures, Credited Companies, Cast and Crew by department, in that order. What TMDB would hold, your story holds.
+ */
+export interface YourTitle {
+  eyebrow: 'Film' | 'Series';
+  title: string;
+  crumbs: { label: string; route?: Route }[];
+  lede: string;
+  pictureRef: string;
+  /** The line under About that says what is yours, what is real and what the game invented. */
+  yours: ReactNode;
+  tagline?: string;
+  overview?: string;
+  facts: [string, ReactNode][];
+  figures: [string, ReactNode][];
+  companies: { name: string; route?: Route; country?: string }[];
+  /** Between Credited Companies and the cast: the run week by week, honours, seasons. */
+  more?: ReactNode;
+  castTitle?: string;
+  cast: { name: string; tmdbId?: number; character?: string; note?: string }[];
+  crewTitle?: string;
+  crew: { name: string; tmdbId?: number; job: string; department: string; you?: boolean; note?: string }[];
+}
+
+function YourTitleView({ t }: { t: YourTitle }) {
+  const g = useGame();
+  const depts = [...new Set(t.crew.map((c) => c.department))].sort();
+  const who = (c: { name: string; tmdbId?: number; you?: boolean }) => (
+    <>{c.tmdbId ? <Link to={personRoute(c.tmdbId)}>{c.name}</Link> : c.name}{c.you || c.name === g.character.name ? <span className="chip"> You</span> : null}</>
+  );
+  return (
+    <>
+      <Breadcrumbs items={t.crumbs.map((c) => (c.route ? { label: c.label, route: c.route } : { label: c.label }))} />
+      <PageHead eyebrow={t.eyebrow} title={t.title} lede={t.lede} />
+      <div className="row gap-2 wrap picture-row"><Picture subject={t.pictureRef} name={t.title} size="page" /><Picture subject={t.pictureRef} name={t.title} kind="backdrop" size="page" /></div>
+      <Panel title="About">
+        {t.tagline && <p><em>{t.tagline}</em></p>}
+        {t.overview && <p>{t.overview}</p>}
+        <p>{t.yours}</p>
+        <dl className="kv">{t.facts.map(([k, v]) => <Fragment key={k}><dt>{k}</dt><dd>{v}</dd></Fragment>)}</dl>
+      </Panel>
+      <Panel title="Figures" subtitle="From your story.">
+        {t.figures.length ? <dl className="kv">{t.figures.map(([k, v]) => <Fragment key={k}><dt>{k}</dt><dd>{v}</dd></Fragment>)}</dl> : <p className="muted">Nothing to count yet.</p>}
+      </Panel>
+      <Panel title="Credited Companies" subtitle="As credited on the title.">
+        {t.companies.length ? <ul className="list">{t.companies.map((c) => <li key={c.name} className="list-item"><span className="grow">{c.route ? <Link to={c.route}>{c.name}</Link> : c.name}{c.country ? <span className="dim small"> ({c.country})</span> : null}</span></li>)}</ul> : <p className="muted">No company is credited.</p>}
+      </Panel>
+      {t.more}
+      <Panel title={t.castTitle ?? 'Cast'} subtitle={t.cast.length ? `${plural(t.cast.length, 'credit')}, in billing order.` : undefined}>
+        {t.cast.length ? <Expandable items={t.cast} label="Cast" name={t.castTitle ?? 'Cast'} render={(c, i) => (
+          <li key={`${c.name}-${i}`} className="list-item">
+            <Picture subject={c.tmdbId ? `person:${c.tmdbId}` : `invented:${c.name}`} name={c.name} size="thumb" />
+            <span className="grow">{who(c)}</span>
+            <span className="dim small">{c.character ?? 'Role not recorded'}{c.note ? `, ${c.note}` : ''}</span>
+          </li>
+        )} /> : <p className="muted">No one is cast yet.</p>}
+      </Panel>
+      <Panel title={t.crewTitle ?? 'Crew'} subtitle={t.crew.length ? `${plural(t.crew.length, 'credit')} across ${plural(depts.length, 'department')}.` : undefined}>
+        {t.crew.length ? depts.map((d) => (
+          <section key={d}><h3>{d}</h3><Expandable items={t.crew.filter((c) => c.department === d)} label={`${d} Credits`} name={`${d} ${t.crewTitle ?? 'Crew'}`} render={(c, i) => <li key={`${c.name}-${c.job}-${i}`} className="list-item"><span className="grow">{who(c)}</span><span className="dim small">{c.job}{c.note ? `, ${c.note}` : ''}</span></li>} /></section>
+        )) : <p className="muted">No one is hired yet.</p>}
+      </Panel>
+    </>
+  );
+}
+
+/**
  * A studio picture you made, as the world sees it (your-films.ts; from November 18, 2026, the owner: "my movie should have
- * a page just like the other films"): what it is, its box office, its honours, and its cast and crew.
+ * a page just like the other films"): what it is, its box office, its honours, and its cast and crew, laid out as a
+ * recorded film's page from November 19, 2026.
  */
 function YourFilmPage({ refId }: { refId: string }) {
   const g = useGame();
   const today = useToday();
   const j = yourPicture(g, refId);
+  const unchosen = !!j && !(j.studio!.cast?.every((m) => m.character) && j.studio!.crew);
+  // Its cast and crew are chosen from the awards record, which loads when it's wanted: once, then kept in the save.
+  useEffect(() => { if (unchosen) void loadRecognition().then(() => store.act((s) => { const k = yourPicture(s, refId); if (k) castPicture(s, k); })).catch(() => null); }, [unchosen, refId]);
   if (!j) return <Empty title="This Film Isn't In Your Story"><p className="muted">It was made in another save.</p><GoBack /></Empty>;
   const st = j.studio!;
   const f = asWorldFilm(g, j);
@@ -435,49 +516,212 @@ function YourFilmPage({ refId }: { refId: string }) {
   const { cast, crew } = pictureCredits(g, j);
   const out = st.released! <= today;
   const bo = yourBoxOffice(g, j);
+  const real = cast.some((m) => m.tmdbId) || crew.some((m) => m.tmdbId);
+  const t: YourTitle = {
+    eyebrow: 'Film', title: f.title, pictureRef: refId,
+    crumbs: [{ label: 'Companies', route: { view: 'companies' } as Route }, ...(c ? [{ label: c.name, route: { view: 'company', ref: c.id } as Route }] : []), { label: f.title }],
+    lede: out ? `Released ${day(st.released!)}` : `Not released by ${formatDateKey(today)}: due ${day(st.released!)}`,
+    yours: <><span className="chip">Your Picture</span> You {j.role === 'directing' ? 'directed' : 'wrote'} it for {j.company}. {real ? 'Its cast and crew are real people the studio could hire at its budget, in parts the game named; the film, its story and its producers are invented by the game.' : 'The film and everyone on it but you are invented by the game.'} Its box office and honours are your story's.</>,
+    facts: [
+      ...(st.franchise ? [['Franchise', st.franchise] as [string, ReactNode]] : []),
+      ['Genres', f.genres.join(', ')], ['Runtime', `${f.runtimeMin} minutes`],
+      ['Status', out ? 'Released' : 'Post Production'],
+      ...(out ? [['Reception', qualityWords(st.quality ?? 50)] as [string, ReactNode]] : []),
+    ],
+    figures: [
+      ...(st.budget ? [['Budget', money(st.budget)] as [string, ReactNode]] : []),
+      ...(out && bo.weeks.length ? [['Box Office', `${money(bo.total)}${bo.running ? ' so far' : ''}`] as [string, ReactNode]] : []),
+    ],
+    companies: [{ name: c?.name ?? j.company, ...(c ? { route: { view: 'company', ref: c.id } as Route } : {}) }],
+    more: (
+      <>
+        <Panel title="Box Office" subtitle="Worldwide ticket sales, week by week. Simulated: the game's, from the picture's budget and how good it is.">
+          {!out ? <p className="muted">It opens on {day(st.released!)}.</p> : !bo.weeks.length ? <p className="muted">Its first week ends on {day(addDaysToKey(st.released!, 6))}.</p> : (
+            <>
+              <dl className="kv">
+                <dt>{bo.running ? 'So Far' : 'All Told'}</dt><dd>{money(bo.total)}</dd>
+                <dt>Opening Week</dt><dd>{money(bo.weeks[0].gross)}</dd>
+                <dt>Weeks In Cinemas</dt><dd>{bo.weeks.length}{bo.running ? ', still showing' : ''}</dd>
+              </dl>
+              <ul className="list" aria-label="Weeks">
+                {bo.weeks.map((w, i) => <li key={w.ends} className="list-item"><span className="grow">Week {i + 1}, to {day(w.ends)}</span><span className="dim small">{money(w.gross)}</span></li>)}
+              </ul>
+            </>
+          )}
+        </Panel>
+        <Panel title="Awards And Festivals">
+          {st.honours?.length ? (
+            <ul className="list">{st.honours.map((h) => <li key={`${h.event}-${h.category}`} className="list-item"><span className="grow">{h.category}, {h.event}</span><span className="dim small">{h.status === 'won' ? 'Won' : h.status === 'selected' ? 'Selected' : 'Nominated'}</span></li>)}</ul>
+          ) : <p className="muted">{out ? 'Nothing yet. It competes for every award whose rules it meets.' : 'Once it opens, it competes for every award whose rules it meets.'}</p>}
+        </Panel>
+      </>
+    ),
+    cast: cast.map((m, i) => ({ name: m.name, tmdbId: m.tmdbId, character: m.character, note: i === 0 ? 'Lead' : undefined })),
+    crew: crew.map((m) => ({ ...m })),
+  };
+  return <YourTitleView t={t} />;
+}
+
+// ---------- your own films and series ----------
+
+/** The game's departments as TMDB names them, so your title's crew reads like a recorded one's. */
+const TMDB_DEPARTMENT: Record<string, string> = {
+  Writing: 'Writing', Producing: 'Production', Direction: 'Directing', 'Casting And Performance': 'Production', 'Safety And Specialists': 'Crew',
+  Camera: 'Camera', 'Lighting And Grip': 'Lighting', Sound: 'Sound', Locations: 'Production', Art: 'Art', 'Costume And Makeup': 'Costume & Make-Up',
+  'Creature And Effects': 'Costume & Make-Up', Animation: 'Visual Effects', 'Stop Motion': 'Visual Effects', 'Post Production': 'Editing', Music: 'Sound',
+};
+const POST_SOUND = new Set(['sound-designer', 're-recording-mixer']);
+/** The jobs TMDB words differently from the game. */
+const TMDB_JOB: Record<string, string> = { dop: 'Director of Photography', composer: 'Original Music Composer', 'production-designer': 'Production Design', 'costume-designer': 'Costume Design', 'casting-director': 'Casting', 'vfx-artist': 'Visual Effects', 'sound-designer': 'Sound Designer' };
+const tmdbIdOf = (personId: string) => { const m = /^tp_(\d+)$/.exec(personId); return m ? Number(m[1]) : undefined; };
+
+/** The projects a series' seasons are, first to last (continuation.ts `continues`). */
+function seasonsOf(g: GameState, p: Project): Project[] {
+  let first = p;
+  for (let guard = 0; first.continues && guard < 50; guard++) { const prev = g.projects.find((x) => x.id === first.continues!.from); if (!prev) break; first = prev; }
+  const out = [first];
+  for (let guard = 0; guard < 50; guard++) { const next = g.projects.find((x) => x.continues?.from === out.at(-1)!.id); if (!next) break; out.push(next); }
+  return out;
+}
+const seasonNumber = (p: Project) => p.continues?.number ?? 1;
+/** The first date it reached anyone: a release that happened, else one planned. */
+function firstDate(p: Project): { date: string; out: boolean } | null {
+  const rs = p.releases.filter((r) => r.status !== 'cancelled').sort((a, b) => (a.date < b.date ? -1 : 1));
+  const done = rs.find((r) => r.status === 'released');
+  return done ? { date: done.date, out: true } : rs[0] ? { date: rs[0].date, out: false } : null;
+}
+const STATUS: Record<Project['phase'], string> = { development: 'In Development', 'pre-production': 'Pre-Production', production: 'In Production', 'post-production': 'Post Production', delivered: 'Post Production', released: 'Released' };
+
+/** Its credits as TMDB would list them: cast with their parts and the episodes they're in, crew by department. Before it's delivered, everyone hired so far. */
+function projectCredits(g: GameState, p: Project) {
+  const credits = computeCredits(g, p);
+  const eps = (e: number[] | 'all') => (e === 'all' ? p.axes.episodeCount : e.length);
+  const cast = credits.filter((c) => c.roleId === 'actor' || c.roleId === 'voice-actor').map((c) => ({ name: c.personName, tmdbId: tmdbIdOf(c.person), character: c.stage ? `${c.characterName} (${c.stage})` : c.characterName, note: isEpisodic(p.axes.format) ? plural(eps(c.episodes), 'episode') : c.roleId === 'voice-actor' ? 'voice' : undefined }));
+  const crewRow = (personId: string, name: string, roleId: string, label: string, episodes: number[] | 'all') => {
+    const dept = roleId === 'director' || roleId === 'episode-director' ? 'Directing' : roleId === 'writer' || roleId === 'episode-writer' || roleId === 'co-writer' ? 'Writing' : roleId === 'producer' ? 'Production' : POST_SOUND.has(roleId) ? 'Sound' : TMDB_DEPARTMENT[(() => { try { return roleDef(roleId).dept; } catch { return ''; } })()] ?? 'Crew';
+    return { name, tmdbId: tmdbIdOf(personId), job: TMDB_JOB[roleId] ?? label, department: dept, you: personId === 'player', note: isEpisodic(p.axes.format) ? plural(eps(episodes), 'episode') : undefined };
+  };
+  const words: Record<string, string> = { 'Directed By': 'Director', 'Written By': 'Screenplay', 'Co-Written By': 'Screenplay', 'Produced By': 'Producer', 'Executive Producer And Showrunner': 'Executive Producer' };
+  const crew = credits.filter((c) => !['actor', 'voice-actor', 'co-producer', 'backer', 'contributor'].includes(c.roleId) && !c.songId)
+    .map((c) => crewRow(c.person, c.personName, c.roleId, words[c.contribution] ?? c.contribution, c.episodes));
+  // Hired and not yet at work: credited once they are, listed meanwhile as a title in production lists them.
+  if (!p.delivered) for (const h of p.hires.filter((x) => x.kind === 'crew' && x.status === 'accepted' && !x.daysWorked && !['songwriter', 'lyricist'].includes(x.roleId))) {
+    crew.push(crewRow(h.personId, personById(g, h.personId).name, h.roleId, roleLabel(h.roleId), h.episodes));
+  }
+  const companies = [...new Set([p.producedBy ?? g.company?.name ?? g.banner?.name, ...credits.filter((c) => c.roleId === 'co-producer' || c.roleId === 'backer').map((c) => c.personName), ...p.releases.filter((r) => r.status !== 'cancelled').map((r) => r.distributor)].filter((x): x is string => !!x))];
+  return { cast, crew, companies };
+}
+
+function projectFacts(p: Project): [string, ReactNode][] {
+  const base = getPlace(p.axes.basePlaceId);
+  return [
+    ['Genres', p.axes.genres.map((x) => genreName(x.id)).join(', ') || 'Not chosen'],
+    [isEpisodic(p.axes.format) ? 'Episode Length' : 'Runtime', `${p.axes.targetRuntimeMin} minutes`],
+    ['Languages', p.axes.dialogueLanguages.map(languageName).join(', ') || 'None spoken'],
+    ['Countries', base?.countryName ?? 'Not set'],
+    ...(p.axes.storySetting ? [['Setting', p.axes.storySetting] as [string, ReactNode]] : []),
+    ['Status', STATUS[p.phase]],
+  ];
+}
+
+/**
+ * Your own film or series as the catalog shows a recorded one (from November 19, 2026, the owner: "these should be
+ * accurate to the real tmdb film and series pages but obviously as if it was my movie and show"): the head, About,
+ * Figures, Credited Companies, Cast with their parts and Crew by department, from the project's own credits
+ * (finish.ts computeCredits). A series is its seasons, each a project (continuation.ts); a season has its own page.
+ */
+function ProjectTitlePage({ refId }: { refId: string }) {
+  const g = useGame();
+  const today = useToday();
+  const p = g.projects.find((x) => `project:${x.id}` === refId);
+  if (!p) return <Empty title="This Isn't In Your Story"><p className="muted">It was made in another save.</p><GoBack /></Empty>;
+  const series = isEpisodic(p.axes.format);
+  const seasons = series ? seasonsOf(g, p) : [p];
+  const first = seasons[0];
+  const when = firstDate(first);
+  const country = getPlace(first.axes.basePlaceId)?.country ?? 'US';
+  const all = seasons.map((x) => projectCredits(g, x));
+  const gross = seasons.reduce((n, x) => n + boxOffice(x, country).worldwide, 0);
+  const budget = seasons.reduce((n, x) => n + Math.max(x.finance?.estimate ?? 0, x.obligations.filter((o) => o.state !== 'cancelled').reduce((a, o) => a + o.amount, 0)), 0);
+  // A series lists each person once, with every episode they're credited in across its seasons, as TMDB totals them.
+  const merge = <T extends { name: string; note?: string }>(rows: T[][], key: (x: T) => string) => {
+    const m = new Map<string, T & { n: number }>();
+    for (const x of rows.flat()) { const k = key(x); const n = Number(/^(\d+)/.exec(x.note ?? '')?.[1] ?? 0); const was = m.get(k); m.set(k, was ? { ...was, n: was.n + n } : { ...x, n }); }
+    return [...m.values()].map(({ n, ...x }) => ({ ...x, note: series ? plural(n, 'episode') : x.note }));
+  };
+  const t: YourTitle = {
+    eyebrow: series ? 'Series' : 'Film', title: first.title, pictureRef: `project:${first.id}`,
+    crumbs: [{ label: 'Projects', route: { view: 'projects' } as Route }, { label: first.title }],
+    lede: when ? (when.out ? `${series ? 'First aired' : 'Released'} ${day(when.date)}` : `Not ${series ? 'aired' : 'released'} by ${formatDateKey(today)}: due ${day(when.date)}`) : `${STATUS[first.phase]}: no release date yet`,
+    overview: first.story.logline || undefined,
+    yours: <><span className="chip">Your {series ? 'Series' : 'Film'}</span> You made it. Its cast and crew are who you hired, with your own credits as they stand; its figures are your story's.</>,
+    facts: [...projectFacts(first), ...(series ? [['Seasons', String(seasons.length)] as [string, ReactNode], ['Episodes', String(seasons.reduce((n, x) => n + x.axes.episodeCount, 0))] as [string, ReactNode]] : [])],
+    figures: [
+      // What it costs: its estimate, or what's already agreed where that is more (contracts signed past the estimate).
+      ...(budget ? [['Budget', money(budget)] as [string, ReactNode]] : []),
+      ...(gross ? [['Box Office', money(gross)] as [string, ReactNode]] : []),
+    ],
+    companies: [...new Set(all.flatMap((x) => x.companies))].map((name) => ({ name })),
+    more: series ? (
+      <Panel title="Seasons">
+        <ul className="list">{seasons.map((x) => { const d = firstDate(x); return (
+          <li key={x.id} className="list-item"><span className="grow"><Link to={{ view: 'season', ref: `project:${x.id}` } as Route}>Season {seasonNumber(x)}</Link></span><span className="dim small">{plural(x.axes.episodeCount, 'episode')}, {d ? (d.out ? yearOf(d.date) : `due ${day(d.date)}`) : STATUS[x.phase].toLowerCase()}</span></li>
+        ); })}</ul>
+      </Panel>
+    ) : undefined,
+    castTitle: series ? 'Series Cast' : 'Cast',
+    cast: series ? merge(all.map((x) => x.cast), (c) => `${c.name}|${c.character}`) : all[0].cast,
+    crewTitle: series ? 'Series Crew' : 'Crew',
+    crew: series ? merge(all.map((x) => x.crew), (c) => `${c.name}|${c.job}`) : all[0].crew,
+  };
+  return <YourTitleView t={t} />;
+}
+
+/** A season of your series, as a recorded season's page: its episodes with their dates, who wrote and directed each, and its cast. */
+function ProjectSeasonPage({ refId }: { refId: string }) {
+  const g = useGame();
+  const today = useToday();
+  const p = g.projects.find((x) => `project:${x.id}` === refId);
+  if (!p) return <Empty title="This Isn't In Your Story"><p className="muted">It was made in another save.</p><GoBack /></Empty>;
+  const first = seasonsOf(g, p)[0];
+  const n = seasonNumber(p);
+  const rel = p.releases.filter((r) => r.status !== 'cancelled').sort((a, b) => (a.date < b.date ? -1 : 1))[0];
+  const epDate = (e: number) => rel?.episodes?.find((x) => x.number === e)?.date ?? (rel ? rel.date : null);
+  const who = (id: string) => (id === 'player' ? g.character.name : personById(g, id).name);
+  const { cast, crew } = projectCredits(g, p);
+  const when = firstDate(p);
   return (
     <>
-      <Breadcrumbs items={[{ label: 'Companies', route: { view: 'companies' } }, ...(c ? [{ label: c.name, route: { view: 'company', ref: c.id } as Route }] : []), { label: f.title }]} />
-      <PageHead eyebrow="Film" title={f.title} />
+      <Breadcrumbs items={[{ label: 'Projects', route: { view: 'projects' } as Route }, { label: first.title, route: titleRoute(`project:${first.id}`) }, { label: `Season ${n}` }]} />
+      <PageHead eyebrow={first.title} title={`Season ${n}`} lede={when ? (when.out ? `First aired ${day(when.date)}` : `Not aired by ${formatDateKey(today)}: due ${day(when.date)}`) : `${STATUS[p.phase]}: no air date yet`} />
+      <div className="row gap-2 wrap picture-row"><Picture subject={refId} name={`${first.title}, Season ${n}`} kind="season-poster" size="page" /></div>
       <Panel title="About">
-        <p><span className="chip">Your Picture</span> You {j.role === 'directing' ? 'directed' : 'wrote'} it for {j.company}. The film and everyone on it but you are invented by the game; its box office and honours are your story's.</p>
-        <dl className="kv">
-          <dt>Studio</dt><dd>{c ? <Link to={{ view: 'company', ref: c.id } as Route}>{c.name}</Link> : j.company}</dd>
-          {st.franchise && <><dt>Franchise</dt><dd>{st.franchise}</dd></>}
-          <dt>{out ? 'Released' : 'Due'}</dt><dd>{day(st.released!)}</dd>
-          <dt>Genres</dt><dd>{f.genres.join(', ')}</dd>
-          <dt>Running Time</dt><dd>{f.runtimeMin} minutes</dd>
-          {st.budget ? <><dt>Budget</dt><dd>{money(st.budget)}</dd></> : null}
-          {out && <><dt>Reception</dt><dd>{qualityWords(st.quality ?? 50)}</dd></>}
-        </dl>
+        {p.seasonArc ? <p>{p.seasonArc}</p> : p.story.logline ? <p>{p.story.logline}</p> : null}
+        <p><span className="chip">Your Series</span> You made it. Its cast and crew are who you hired; its dates are your story's.</p>
       </Panel>
-      <Panel title="Box Office" subtitle="Worldwide ticket sales, week by week. Simulated: the game's, from the picture's budget and how good it is.">
-        {!out ? <p className="muted">It opens on {day(st.released!)}.</p> : !bo.weeks.length ? <p className="muted">Its first week ends on {day(addDaysToKey(st.released!, 6))}.</p> : (
-          <>
-            <dl className="kv">
-              <dt>{bo.running ? 'So Far' : 'All Told'}</dt><dd>{money(bo.total)}</dd>
-              <dt>Opening Week</dt><dd>{money(bo.weeks[0].gross)}</dd>
-              <dt>Weeks In Cinemas</dt><dd>{bo.weeks.length}{bo.running ? ', still showing' : ''}</dd>
-            </dl>
-            <ul className="list" aria-label="Weeks">
-              {bo.weeks.map((w, i) => <li key={w.ends} className="list-item"><span className="grow">Week {i + 1}, to {day(w.ends)}</span><span className="dim small">{money(w.gross)}</span></li>)}
-            </ul>
-          </>
-        )}
+      <Panel title="Episodes">
+        <ul className="list">{p.episodes.map((e) => { const d = epDate(e.number); return (
+          <li key={e.number} className="list-item">
+            <span className="grow">{e.number}. {e.title || `Episode ${e.number}`} <span className="dim small">Directed by {who(e.director)}; written by {who(e.writer)}</span></span>
+            <span className="dim small">{d ? (d <= today ? day(d) : `not aired yet, due ${day(d)}`) : 'no air date'}</span>
+          </li>
+        ); })}</ul>
       </Panel>
-      <Panel title="Awards And Festivals">
-        {st.honours?.length ? (
-          <ul className="list">{st.honours.map((h) => <li key={`${h.event}-${h.category}`} className="list-item"><span className="grow">{h.category}, {h.event}</span><span className="dim small">{h.status === 'won' ? 'Won' : h.status === 'selected' ? 'Selected' : 'Nominated'}</span></li>)}</ul>
-        ) : <p className="muted">{out ? 'Nothing yet. It competes for every award whose rules it meets.' : 'Once it opens, it competes for every award whose rules it meets.'}</p>}
+      <Panel title="Season Cast" subtitle={cast.length ? `${plural(cast.length, 'credit')}, in billing order.` : undefined}>
+        {cast.length ? <Expandable items={cast} label="Cast" render={(c, i) => (
+          <li key={`${c.name}-${i}`} className="list-item"><Picture subject={c.tmdbId ? `person:${c.tmdbId}` : `invented:${c.name}`} name={c.name} size="thumb" /><span className="grow">{c.tmdbId ? <Link to={personRoute(c.tmdbId)}>{c.name}</Link> : c.name}{c.name === g.character.name ? <span className="chip"> You</span> : null}</span><span className="dim small">{c.character ?? 'Role not recorded'}{c.note ? `, ${c.note}` : ''}</span></li>
+        )} /> : <p className="muted">No one is cast yet.</p>}
       </Panel>
-      <Panel title="Cast"><ul className="list" aria-label="Cast">{cast.map((n, i) => <li key={`${n}-${i}`} className="list-item"><span className="grow">{n}</span><span className="dim small">{i === 0 ? 'Lead' : 'Supporting'}</span></li>)}</ul></Panel>
-      <Panel title="Crew"><ul className="list" aria-label="Crew">{crew.map((x, i) => <li key={`${x.job}-${i}`} className="list-item"><span className="grow">{x.name}{x.name === g.character.name ? <span className="chip"> You</span> : null}</span><span className="dim small">{x.job}</span></li>)}</ul></Panel>
+      <Panel title="Season Crew" subtitle={crew.length ? `${plural(crew.length, 'credit')}.` : undefined}>
+        {crew.length ? <Expandable items={crew} label="Crew" render={(c, i) => <li key={`${c.name}-${c.job}-${i}`} className="list-item"><span className="grow">{c.tmdbId ? <Link to={personRoute(c.tmdbId)}>{c.name}</Link> : c.name}{c.you ? <span className="chip"> You</span> : null} <span className="dim small">{c.job}</span></span><span className="dim small">{c.note ?? ''}</span></li>} /> : <p className="muted">No one is hired yet.</p>}
+      </Panel>
     </>
   );
 }
 
 export function TitlePage({ refId }: { refId: string }) {
   if (refId.startsWith('your-film:')) return <YourFilmPage refId={refId} />;
+  if (refId.startsWith('project:')) return <ProjectTitlePage refId={refId} />;
   if (refId.startsWith('sim-film:')) return <SimFilmPage refId={refId} />;
   return <RecordedTitlePage refId={refId} />;
 }
@@ -560,12 +804,12 @@ function CreditedCompanies({ t }: { t: TitleRecord }) {
   );
 }
 
-function Expandable<T>({ items, render, label }: { items: T[]; render: (x: T, i: number) => ReactNode; label: string }) {
+function Expandable<T>({ items, render, label, name }: { items: T[]; render: (x: T, i: number) => ReactNode; label: string; name?: string }) {
   const [all, setAll] = useState(false);
   const shown = all ? items : items.slice(0, 40);
   return (
     <>
-      <ul className="list">{shown.map(render)}</ul>
+      <ul className="list" aria-label={name}>{shown.map(render)}</ul>
       {items.length > 40 && <button className="btn btn-sm spaced" onClick={() => setAll(!all)}>{all ? `Show Fewer ${label}` : `Show All ${items.length} ${label}`}</button>}
     </>
   );
@@ -689,6 +933,11 @@ function SeasonsCard({ t, today }: { t: TitleRecord; today: string }) {
 // ---------- seasons and episodes ----------
 
 export function SeasonPage({ refId }: { refId: string }) {
+  if (refId.startsWith('project:')) return <ProjectSeasonPage refId={refId} />;
+  return <RecordedSeasonPage refId={refId} />;
+}
+
+function RecordedSeasonPage({ refId }: { refId: string }) {
   const today = useToday();
   const g = useGame();
   const r = parseRef(refId);

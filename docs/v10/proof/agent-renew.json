@@ -507,7 +507,7 @@
  "verdict": "proven",
  "hashes": {
   "src/engine/representation.ts": "321c048270472c9a",
-  "src/engine/jobs.ts": "a5ca469a6209a714",
+  "src/engine/jobs.ts": "a4bf9472d444e5ae",
   "tests/proof/career.ts": "50bea06f19a02c5b"
  }
 }

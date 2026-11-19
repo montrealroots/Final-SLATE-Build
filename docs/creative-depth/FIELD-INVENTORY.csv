@@ -137,6 +137,7 @@ Places.tsx,"""Reminder""",1,decision,SelectField,state.ts addPlan (plan-reminder
 Places.tsx,"""Search Places""",1,view,TextField (search),,"None: a control of the screen, not of the game",n/a,
 PlanViews.tsx,"""Only Show People Who Are Free""",1,view,Check,,"None: a control of the screen, not of the game",n/a,
 PlanViews.tsx,"""List Matching Pronouns First""",1,view,Check,,"None: a control of the screen, not of the game",n/a,
+PlanViews.tsx,"""List Matching Gender First""",1,view,Check,,"None: a control of the screen, not of the game",n/a,
 PlanViews.tsx,"""List Performers Who Play This Age First""",1,view,Check,,"None: a control of the screen, not of the game",n/a,
 PlanViews.tsx,{`Day Rate For ${c.name}`},1,decision,NumberField,hiring.ts resolveOffer,"None: a quantity, entered as a number within its range",n/a,tests/relationships.test.ts::someone who saw a project through with you takes a fair offer ; e2e/decisions.spec.ts::work schedule and staffing rates
 PlanViews.tsx,"""What To Call It""",1,record,TextField,"shown as the stage's name: parts.ts partName: the Cast page, call sheets, offers, credits","None: a name or a record, typed. Name suggestions: milestone C",Unchanged,tests/parts.test.ts::is cast on its own
@@ -321,6 +322,7 @@ ScriptViews.tsx,"""Realized As""",1,decision,SelectField,projects.ts deriveRequi
 ScriptViews.tsx,"""Puppet Face""",1,decision,SelectField,"production/tasks.ts (sm:faces, sm:armature, sm:animation); rates.ts FACE_METHODS",None: already a short list to choose from,n/a,tests/media.test.ts::a puppet face is a choice of work
 ScriptViews.tsx,"""Also Called""",1,identity,TextField,shown with the part in casting,"None: another name for the same character, typed",Unchanged,tests/carried-text.test.ts::kept through a save exactly as written
 ScriptViews.tsx,"""Pronouns""",1,identity,SelectField,shown in casting: script-explain.ts characterPronouns,None: already a short list to choose from,n/a,"tests/advice-carried.test.ts::reach the advice they are written for, and are scored by nothing"
+ScriptViews.tsx,"""Gender""",1,identity,SelectField,shown in casting: script-explain.ts genderMatches,None: already a short list to choose from,n/a,"tests/character-gender.test.ts::matches everyone to a part open to anyone, and only the gender written to one that has it"
 ScriptViews.tsx,"""Speaks""",1,decision,SelectField,production/language.ts personLanguagesFit,None: already a short list to choose from,n/a,tests/decision-effects.test.ts::the same part in English ; e2e/decisions.spec.ts::genre emphasis and dialogue languages
 ScriptViews.tsx,"""Awards Placement""",1,decision,SelectField,script-effects.ts castPlacement,None: already a short list to choose from,n/a,"tests/script-effects.test.ts::placement, essential scenes, the content declaration ; e2e/script-rules.spec.ts::a supporting antagonist"
 ScriptViews.tsx,"""Series Involvement""",1,decision,SelectField,hiring.ts estimateDays; finish.ts computeCredits,None: already a short list to choose from,n/a,tests/script-effects.test.ts::series regulars are booked for every episode

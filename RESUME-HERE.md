@@ -44,6 +44,28 @@ fits: TMDB's films and series with at least 20 votes.
   and no title of theirs in its sentence isn't caught.
 - **Tests that grew with the data:** `catalog-live` opens "Show All" for Tom Hanks's 40-plus film credits;
   `picture-library`'s real-logos test reads 1,331 with its comma.
+- **Your studio picture's cast and crew are real people** (November 19, the owner: "now do one with real cast", then
+  "the crew should be real too. Except for director because that'll be me ... if there's a writer part that's me too";
+  `your-films.ts castPicture`, `tests/your-film-cast.test.ts`): eight actors the awards record (`recognition.json`)
+  recognised before the year it comes out, alive and 18 or older then, whose asking fee (`performerFee`) the budget
+  pays: the lead up to 15% of it, each other part up to 3%; a part nobody fits goes to an invented unknown. Each part is
+  named by the game, a woman's or a man's first name by the actor's gender, which the record states only through the
+  categories it recognised them in (`recognition.ts genderOf`: "Best Actress", "Female Actor"); someone recognised only
+  in categories for anyone gets a name anyone could have. You direct and write it; each other head of department
+  (DoP, editor, composer, sound, production design, costume, makeup, VFX, casting) is someone recognised in that job,
+  paid within 2% of the budget (`CREW_SHARE`); the producers, whom the record doesn't cover, are invented. Chosen once
+  and kept in the save (`studio.cast`, `studio.crew`); a cast chosen before parts were named keeps its actors.
+- **Your titles' pages read like the catalog's** (the owner: "accurate to the real tmdb film and series pages but
+  obviously as if it was my movie and show"; `Catalog.tsx YourTitleView`): a studio picture (`YourFilmPage`), a film or
+  series of your own (`ProjectTitlePage`, from each project's page, "Its Film Page" / "Its Series Page") and a season
+  (`ProjectSeasonPage`) have a recorded title's head, picture boxes, About, Figures, Credited Companies, Cast with their
+  parts and Crew by TMDB's departments, from the project's own credits (`finish.ts computeCredits`, and before delivery
+  everyone hired). A series is its seasons (`continues`), each with its episodes, their writers and directors and dates.
+  `e2e/your-titles.spec.ts` (desktop and phone). Not built: an episode page of your own; your titles in search.
+- **A part's gender** (the owner: "in the creation set their gender"; `StoryCharacter.gender`, the Gender field beside
+  Pronouns): casting marks performers who match and can list them first (`script-explain.ts genderMatches`; a real
+  performer by the awards record, the game's own by their pronouns). It scores nothing
+  (`tests/character-gender.test.ts`).
 
 ## Studio Projects, And Offers In Plain Words (The Owner, November 18, 2026)
 
@@ -137,7 +159,7 @@ like "so and so wants you to take over and film the next Batman", invented entri
   independent, a sequel's screenplay adapted, no festivals since it opens in cinemas), judged on its quality; its
   honours are recorded at each edition's results, told, and those in your role count for you, a win bringing a
   studio's call; once out its quality counts as a work in your role. Its page (Catalog.tsx YourFilmPage, from Toho's
-  Franchises) shows what it is, its run week by week, its honours, cast and crew (you; the rest invented). Played
+  Franchises) shows what it is, its run week by week, its honours, cast and crew (you; the rest invented until November 19, when its cast and crew became real people: above). Played
   through for Toho's Godzilla: Retribution: quality 76, $52.9M, Oscar nominations for Adapted Screenplay, Costume,
   Makeup, Sound and Visual Effects, BAFTA Director, Golden Globe Screenplay and Score, no wins.
   Not yet: the invented cast's names come from the world's one name pool whatever the studio's country; money from
