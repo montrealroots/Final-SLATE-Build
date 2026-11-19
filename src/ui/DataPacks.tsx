@@ -3,7 +3,7 @@
 // Remove; and a pack from a file, for one the game doesn't offer.
 import { useEffect, useRef, useState } from 'react';
 import { forgetCatalog, retryCatalog } from '../catalog/load';
-import { STORAGE_MARGIN, isShard, downloadedSoFar, installOffered, installPack, joinParts, installedPacks, offeredMods, ownerSession, ownerSignIn, ownerSignOut, packExpires, removePack, storageRoom, type InstalledPack, type OfferedMod, type OwnerSession, type PackKind, type PackMeta } from '../catalog/packs';
+import { STORAGE_MARGIN, isShard, downloadedSoFar, installOffered, installPack, joinParts, packsInZip, installedPacks, offeredMods, ownerSession, ownerSignIn, ownerSignOut, packExpires, removePack, storageRoom, type InstalledPack, type OfferedMod, type OwnerSession, type PackKind, type PackMeta } from '../catalog/packs';
 import { picturesOn, setPicturesOn } from './Picture';
 import { PictureLibrary } from './PictureLibrary';
 import { expirePeople, startLivingWorld } from './App';
@@ -217,7 +217,16 @@ export function DataPacks() {
   // Several files at once, from November 19, 2026: the whole catalog's pictures are hundreds of packs, and a pack too big
   // to send whole comes in pieces (packs.ts joinParts). Each pack installs in turn; one that fails is said and the rest go on.
   const fromFiles = async (list: FileList) => {
-    const { packs: picked, problems } = joinParts([...list].map((f) => ({ name: f.name, blob: f })));
+    // A zip of packs is opened here (packs.ts packsInZip), so its packs install as if each had been picked.
+    const unzipped: { name: string; blob: Blob }[] = [];
+    const zipProblems: string[] = [];
+    for (const f of [...list]) {
+      if (!/\.zip$/i.test(f.name)) { unzipped.push({ name: f.name, blob: f }); continue; }
+      try { unzipped.push(...(await packsInZip(f, f.name))); } catch (e) { zipProblems.push(e instanceof Error ? e.message : String(e)); }
+    }
+    const joined = joinParts(unzipped);
+    const picked = joined.packs;
+    const problems = [...zipProblems, ...joined.problems];
     if (picked.length === 1 && !problems.length) { await run('the mod', () => installPack(picked[0].blob, (done, total) => setStatus(`Installing: ${n(done)} of ${n(total)} files…`), signal())); return; }
     setBusy(true); setError(null);
     const failed = [...problems];
@@ -287,7 +296,7 @@ export function DataPacks() {
         </ul>
       )}
       {asked && <OwnerSignIn session={session} changed={() => void signedInOrOut()} />}
-      <input ref={input} type="file" accept=".slatepack" multiple hidden aria-label="Mod File"
+      <input ref={input} type="file" accept=".slatepack,.zip,application/zip" multiple hidden aria-label="Mod File"
         onChange={(e) => { const f = e.target.files; if (f?.length) void fromFiles(f); }} />
       <button className="btn btn-sm" style={{ marginTop: 'var(--s2)' }} disabled={busy} onClick={() => input.current?.click()}>Install From A File</button>
       {busy && cancel.current && <button className="btn btn-sm" style={{ marginTop: 'var(--s2)', marginLeft: 'var(--s2)' }} onClick={() => cancel.current?.abort()}>Cancel</button>}

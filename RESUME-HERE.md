@@ -62,6 +62,13 @@ fits: TMDB's films and series with at least 20 votes.
   parts and Crew by TMDB's departments, from the project's own credits (`finish.ts computeCredits`, and before delivery
   everyone hired). A series is its seasons (`continues`), each with its episodes, their writers and directors and dates.
   `e2e/your-titles.spec.ts` (desktop and phone). Not built: an episode page of your own; your titles in search.
+- **Packs from files, for the owner's phone** (November 19; `packs.ts joinParts`, `packsInZip`; `DataPacks.tsx`): the
+  owner plays on Base44's copy, which offers no packs, so they install from files sent to them (at most 400 to 500 MB
+  each in chat). Install From A File takes many files in one pick, joins a pack cut into `<name>.partNofM.slatepack`
+  pieces, and opens a stored zip of packs with no unzipping. Sent: the catalog in 2 pieces, the pictures in 38 zips by
+  kind. The phone's browser has about 9.8 GB for the game, so not all 13 GB fits. Base44 must build from `main` for
+  the owner to have these. Other routes considered: the owner server on their own computer (they have none); data in
+  the repository (no: it's public, and TMDB's terms).
 - **A part's gender** (the owner: "in the creation set their gender"; `StoryCharacter.gender`, the Gender field beside
   Pronouns): casting marks performers who match and can list them first (`script-explain.ts genderMatches`; a real
   performer by the awards record, the game's own by their pronouns). It scores nothing
