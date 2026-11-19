@@ -1,5 +1,5 @@
 {
- "at": "2026-11-18T23:48:50.041Z",
+ "at": "2026-11-19T13:00:49.177Z",
  "renditions": {
   "profile": "w185",
   "poster": "w185",
@@ -11,81 +11,81 @@
  "coverage": {
   "profile": {
    "eligible": 1488302,
-   "checked": 1282457,
+   "checked": 1488297,
    "available": 333607,
-   "downloaded": 127767,
-   "reused": 5,
+   "downloaded": 333606,
+   "reused": 42,
    "unavailable": 1149681,
    "failed": 0,
-   "permissionLimited": 0,
+   "permissionLimited": 1,
    "excluded": 5009,
-   "remaining": 205845,
-   "bytes": 1754303569
+   "remaining": 5,
+   "bytes": 4666874021
   },
   "poster": {
    "eligible": 110990,
-   "checked": 27152,
+   "checked": 110970,
    "available": 107111,
-   "downloaded": 23293,
-   "reused": 108,
+   "downloaded": 107111,
+   "reused": 180,
    "unavailable": 3859,
    "failed": 0,
    "permissionLimited": 0,
    "excluded": 0,
-   "remaining": 83838,
-   "bytes": 447107297
+   "remaining": 20,
+   "bytes": 2126869804
   },
   "backdrop": {
    "eligible": 110990,
-   "checked": 34192,
+   "checked": 110970,
    "available": 96196,
-   "downloaded": 19418,
-   "reused": 14,
+   "downloaded": 96196,
+   "reused": 56,
    "unavailable": 14774,
    "failed": 0,
    "permissionLimited": 0,
    "excluded": 0,
-   "remaining": 76798,
-   "bytes": 323990578
+   "remaining": 20,
+   "bytes": 1655225282
   },
   "season-poster": {
    "eligible": 47907,
-   "checked": 19118,
+   "checked": 47907,
    "available": 37537,
-   "downloaded": 8748,
-   "reused": 1014,
+   "downloaded": 37537,
+   "reused": 4456,
    "unavailable": 10370,
    "failed": 0,
    "permissionLimited": 0,
    "excluded": 0,
-   "remaining": 28789,
-   "bytes": 154897432
+   "remaining": 0,
+   "bytes": 652045456
   },
   "still": {
    "eligible": 1210459,
-   "checked": 810226,
+   "checked": 1210459,
    "available": 534334,
-   "downloaded": 134101,
-   "reused": 401,
-   "unavailable": 676125,
-   "failed": 0,
+   "downloaded": 534327,
+   "reused": 5437,
+   "unavailable": 676128,
+   "failed": 4,
    "permissionLimited": 0,
    "excluded": 0,
-   "remaining": 400233,
-   "bytes": 1067818714
+   "remaining": 0,
+   "bytes": 4136721424
   },
   "logo": {
    "eligible": 1379,
-   "checked": 392,
+   "checked": 1379,
    "available": 1331,
-   "downloaded": 344,
-   "reused": 9,
+   "downloaded": 1331,
+   "reused": 46,
    "unavailable": 48,
    "failed": 0,
    "permissionLimited": 0,
    "excluded": 0,
-   "remaining": 987,
-   "bytes": 2627139
+   "remaining": 0,
+   "bytes": 9899123
   }
  }
 }
