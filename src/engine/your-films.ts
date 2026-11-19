@@ -77,7 +77,7 @@ export const ANY_FIRSTS = ['Alex', 'Ari', 'Jordan', 'Kai', 'Noor', 'Robin', 'Sam
 export const PICTURE_CREW: { job: string; department: string; recognised?: string }[] = [
   { job: 'Director', department: 'Directing', recognised: 'episode-director' },
   { job: 'Screenplay', department: 'Writing', recognised: 'co-writer' },
-  { job: 'Producer', department: 'Production' }, { job: 'Producer', department: 'Production' },
+  { job: 'Producer', department: 'Production', recognised: 'producer' }, { job: 'Producer', department: 'Production', recognised: 'producer' },
   { job: 'Casting', department: 'Production', recognised: 'casting-director' },
   { job: 'Director of Photography', department: 'Camera', recognised: 'dop' },
   { job: 'Editor', department: 'Editing', recognised: 'editor' },
@@ -99,7 +99,9 @@ export const PICTURE_CREW: { job: string; department: string; recognised?: strin
  *     by the game, a woman's or a man's name by the actor's gender as the record states it (genderOf). Parts went unnamed
  *     for a few hours the same day, when gender wasn't read: a name drawn blind read wrong beside the actor playing it.
  *   - The crew: you direct and write it. Each other head of department is someone recognised in the job before then,
- *     whose fee (filmFeeFrom) fits CREW_SHARE of the budget; the producers, whom the record doesn't cover, are invented.
+ *     whose fee (filmFeeFrom) fits CREW_SHARE of the budget. Its producers are too, from the awards a picture or a series
+ *     wins as a whole (Best Picture, Outstanding Drama Series: tools/recognition/build.mjs); until later that day the
+ *     record didn't cover them, and they were invented.
  * Kept in the save, so it stays whoever was hired; with the record not loaded nothing is chosen yet, and the page shows
  * the invented credits a picture had before (pictureCredits).
  */

@@ -528,7 +528,7 @@ function YourFilmPage({ refId }: { refId: string }) {
     eyebrow: 'Film', title: f.title, pictureRef: refId,
     crumbs: [{ label: 'Companies', route: { view: 'companies' } as Route }, ...(c ? [{ label: c.name, route: { view: 'company', ref: c.id } as Route }] : []), { label: f.title }],
     lede: out ? `Released ${day(st.released!)}` : `Not released by ${formatDateKey(today)}: due ${day(st.released!)}`,
-    yours: <><span className="chip">Your Picture</span> You {j.role === 'directing' ? 'directed' : 'wrote'} it for {j.company}. {real ? 'Its cast and crew are real people the studio could hire at its budget, in parts the game named; the film, its story and its producers are invented by the game.' : 'The film and everyone on it but you are invented by the game.'} Its box office and honours are your story's.</>,
+    yours: <><span className="chip">Your Picture</span> You {j.role === 'directing' ? 'directed' : 'wrote'} it for {j.company}. {real ? 'Its cast and crew are real people the studio could hire at its budget, in parts the game named; the film and its story are invented by the game.' : 'The film and everyone on it but you are invented by the game.'} Its box office and honours are your story's.</>,
     facts: [
       ...(st.franchise ? [['Franchise', st.franchise] as [string, ReactNode]] : []),
       ['Genres', f.genres.join(', ')], ['Runtime', `${f.runtimeMin} minutes`],

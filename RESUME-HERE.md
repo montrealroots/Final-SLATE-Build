@@ -53,7 +53,10 @@ fits: TMDB's films and series with at least 20 votes.
   categories it recognised them in (`recognition.ts genderOf`: "Best Actress", "Female Actor"); someone recognised only
   in categories for anyone gets a name anyone could have. You direct and write it; each other head of department
   (DoP, editor, composer, sound, production design, costume, makeup, VFX, casting) is someone recognised in that job,
-  paid within 2% of the budget (`CREW_SHARE`); the producers, whom the record doesn't cover, are invented. Chosen once
+  paid within 2% of the budget (`CREW_SHARE`). Its two producers are real as well, from the awards a picture or series
+  wins as a whole, which Wikidata records on its producers (Best Picture, Best Film, Best Motion Picture, Outstanding
+  Drama/Comedy/Limited Series and their peers: `tools/recognition/build.mjs PRODUCED`, job `producer`; the game offers
+  no producer's job to hire, so `guests.ts` skips it, as it skips any job that isn't a role). Chosen once
   and kept in the save (`studio.cast`, `studio.crew`); a cast chosen before parts were named keeps its actors.
 - **Your titles' pages read like the catalog's** (the owner: "accurate to the real tmdb film and series pages but
   obviously as if it was my movie and show"; `Catalog.tsx YourTitleView`): a studio picture (`YourFilmPage`), a film or
