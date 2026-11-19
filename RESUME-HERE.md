@@ -30,6 +30,12 @@ The owner's "What's next?" list of November 19, worked through in order:
    dataset; `docs/v6/HISTORY-COVERAGE.md`), and their journeys (J01/J21) are parked. Still open there, one source at a
    time: the Emmys' nominees and Creative Arts winners, the Actor Awards, the Critics' Choice. BAFTA's site refuses the
    fetching tool (HTTP 403).
+   - November 19, later (the owner: "All that hasn't been completed, complete perfectly"): the 2026 Emmys whole (120
+     category pages parsed from their structured data, each winner checked in its night's release) and the 32nd Actor
+     Awards whole (their page parsed; their 2026 date is now official, March 1). Next, one organizer at a time: the
+     DGA, WGA and PGA, the Spirit Awards, the Annies, BAFTA TV, the Césars and Goyas, the AACTAs, the Japan Academy, the
+     Canadian Screen Awards, the European Film Awards, and the festivals' whole lists. Then the papers research and the
+     parked journeys (J02, J20; J01/J21 only with a licensed box-office dataset).
 3. Unrealistic prices: done before this list (`docs/prices/PRICES.md`, 53 sourced or fixed). The two modeled rows
    (stop-motion and creature materials, a broadcast edit) were searched for again on November 19: only hobby kits
    ($25 to $180) turned up, so they stay the game's own, said as such.
