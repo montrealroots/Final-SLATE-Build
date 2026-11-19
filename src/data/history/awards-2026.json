@@ -4,12 +4,13 @@
   "about": "Recorded results of 2026 award ceremonies, read from each organizer's own page (the owner's v6 package, 02-WORLD-AND-HISTORY.md E; November 13, 2026). The 83rd Golden Globe Awards and the 98th Academy Awards whole, every competitive category (from November 19, 2026; until then a small representative set): only what the cited page states is here, word for word, and a category a page doesn't state is absent, not guessed. Each observation is reportable from its publication date, never earlier. Names are kept as each source writes them.",
   "coverage": {
     "requested": "2026-01-01 to 2026-11-13",
-    "observed": "2025-12-08 to 2026-03-15",
+    "observed": "2025-12-08 to 2026-09-14",
     "editions": [
       "83rd Golden Globe Awards",
-      "98th Academy Awards"
+      "98th Academy Awards",
+      "2026 Primetime Emmy Awards"
     ],
-    "notInSet": "Every other 2026 ceremony and festival. The 83rd Golden Globe Awards (from goldenglobes.com/nominations/2026) and the 98th Academy Awards are recorded whole from November 19, 2026; until then five Golden Globes were, and the night's article, which names The Pitt and The Studio as series winners without saying which won which, left both out (the nominations page says: The Pitt, Drama; The Studio, Musical or Comedy)."
+    "notInSet": "Every other 2026 ceremony and festival, the Emmys' nominees, and their winners outside the telecast's 19 categories (the telecast's 16 not held by the reference set are recorded from November 19, 2026). The 83rd Golden Globe Awards (from goldenglobes.com/nominations/2026) and the 98th Academy Awards are recorded whole from November 19, 2026; until then five Golden Globes were, and the night's article, which names The Pitt and The Studio as series winners without saying which won which, left both out (the nominations page says: The Pitt, Drama; The Studio, Musical or Comedy)."
   },
   "sources": {
     "oscars-98": {
@@ -51,6 +52,14 @@
       "retrieved": "2026-11-19",
       "section": "Article dated December 8, 2025",
       "access": "Read through a fetching tool, for the date the nominations were announced."
+    },
+    "emmys-78-winners": {
+      "url": "https://www.televisionacademy.com/78th-emmy-winners",
+      "title": "78th Emmy® Awards Winners Announced",
+      "provider": "Television Academy",
+      "retrieved": "2026-11-19",
+      "section": "Press release dated Sept. 14, 2026, with the telecast's winners as compiled by Ernst & Young LLP",
+      "access": "A PDF, saved through a fetching tool and its text read directly (pdftotext). Names as printed, in their own capitals rather than the list's."
     }
   },
   "observations": [
@@ -2244,6 +2253,356 @@
       "occurred": "2026-01-11",
       "published": "2026-01-11",
       "publishedSource": "globes-83"
+    },
+    {
+      "id": "emmys-78-supporting-actress-comedy",
+      "kind": "winner",
+      "institution": "emmys",
+      "year": 2026,
+      "edition": "2026 Primetime Emmy Awards",
+      "precision": "day",
+      "source": "emmys-78-winners",
+      "status": "verified",
+      "revision": 1,
+      "imported": "2026-11-19",
+      "occurred": "2026-09-14",
+      "published": "2026-09-14",
+      "category": "supporting-actress-comedy",
+      "categoryName": "Outstanding Supporting Actress in a Comedy Series",
+      "subjects": [
+        "Kate O'Flynn"
+      ],
+      "work": "Widow's Bay",
+      "credited": "as Patricia",
+      "recipients": "named_person"
+    },
+    {
+      "id": "emmys-78-lead-actress-comedy",
+      "kind": "winner",
+      "institution": "emmys",
+      "year": 2026,
+      "edition": "2026 Primetime Emmy Awards",
+      "precision": "day",
+      "source": "emmys-78-winners",
+      "status": "verified",
+      "revision": 1,
+      "imported": "2026-11-19",
+      "occurred": "2026-09-14",
+      "published": "2026-09-14",
+      "category": "lead-actress-comedy",
+      "categoryName": "Outstanding Lead Actress in a Comedy Series",
+      "subjects": [
+        "Jean Smart"
+      ],
+      "work": "Hacks",
+      "credited": "as Deborah Vance",
+      "recipients": "named_person"
+    },
+    {
+      "id": "emmys-78-lead-actor-limited",
+      "kind": "winner",
+      "institution": "emmys",
+      "year": 2026,
+      "edition": "2026 Primetime Emmy Awards",
+      "precision": "day",
+      "source": "emmys-78-winners",
+      "status": "verified",
+      "revision": 1,
+      "imported": "2026-11-19",
+      "occurred": "2026-09-14",
+      "published": "2026-09-14",
+      "category": "lead-actor-limited",
+      "categoryName": "Outstanding Lead Actor in a Limited or Anthology Series or Movie",
+      "subjects": [
+        "Matthew Rhys"
+      ],
+      "work": "The Beast In Me",
+      "credited": "as Nile Jarvis",
+      "recipients": "named_person"
+    },
+    {
+      "id": "emmys-78-supporting-actress",
+      "kind": "winner",
+      "institution": "emmys",
+      "year": 2026,
+      "edition": "2026 Primetime Emmy Awards",
+      "precision": "day",
+      "source": "emmys-78-winners",
+      "status": "verified",
+      "revision": 1,
+      "imported": "2026-11-19",
+      "occurred": "2026-09-14",
+      "published": "2026-09-14",
+      "category": "supporting-actress",
+      "categoryName": "Outstanding Supporting Actress in a Drama Series",
+      "subjects": [
+        "Allison Janney"
+      ],
+      "work": "The Diplomat",
+      "credited": "as President Grace Penn",
+      "recipients": "named_person"
+    },
+    {
+      "id": "emmys-78-lead-actress",
+      "kind": "winner",
+      "institution": "emmys",
+      "year": 2026,
+      "edition": "2026 Primetime Emmy Awards",
+      "precision": "day",
+      "source": "emmys-78-winners",
+      "status": "verified",
+      "revision": 1,
+      "imported": "2026-11-19",
+      "occurred": "2026-09-14",
+      "published": "2026-09-14",
+      "category": "lead-actress",
+      "categoryName": "Outstanding Lead Actress in a Drama Series",
+      "subjects": [
+        "Rhea Seehorn"
+      ],
+      "work": "Pluribus",
+      "credited": "as Carol Sturka",
+      "recipients": "named_person"
+    },
+    {
+      "id": "emmys-78-supporting-actor-comedy",
+      "kind": "winner",
+      "institution": "emmys",
+      "year": 2026,
+      "edition": "2026 Primetime Emmy Awards",
+      "precision": "day",
+      "source": "emmys-78-winners",
+      "status": "verified",
+      "revision": 1,
+      "imported": "2026-11-19",
+      "occurred": "2026-09-14",
+      "published": "2026-09-14",
+      "category": "supporting-actor-comedy",
+      "categoryName": "Outstanding Supporting Actor in a Comedy Series",
+      "subjects": [
+        "Stephen Root"
+      ],
+      "work": "Widow's Bay",
+      "credited": "as Wyck",
+      "recipients": "named_person"
+    },
+    {
+      "id": "emmys-78-reality-competition",
+      "kind": "winner",
+      "institution": "emmys",
+      "year": 2026,
+      "edition": "2026 Primetime Emmy Awards",
+      "precision": "day",
+      "source": "emmys-78-winners",
+      "status": "verified",
+      "revision": 1,
+      "imported": "2026-11-19",
+      "occurred": "2026-09-14",
+      "published": "2026-09-14",
+      "category": "reality-competition",
+      "categoryName": "Outstanding Reality Competition Program",
+      "subjects": [
+        "The Traitors"
+      ],
+      "credited": "Stephen Lambert, Mike Cotton, Sam Rees-Jones, Rosie Franks, Tim Harcourt, Jack Burgess, Darrell Olsen and Alan Cumming, Executive Producers",
+      "recipients": "work_only"
+    },
+    {
+      "id": "emmys-78-lead-actor",
+      "kind": "winner",
+      "institution": "emmys",
+      "year": 2026,
+      "edition": "2026 Primetime Emmy Awards",
+      "precision": "day",
+      "source": "emmys-78-winners",
+      "status": "verified",
+      "revision": 1,
+      "imported": "2026-11-19",
+      "occurred": "2026-09-14",
+      "published": "2026-09-14",
+      "category": "lead-actor",
+      "categoryName": "Outstanding Lead Actor in a Drama Series",
+      "subjects": [
+        "Noah Wyle"
+      ],
+      "work": "The Pitt",
+      "credited": "as Dr. Michael \"Robby\" Robinavitch",
+      "recipients": "named_person"
+    },
+    {
+      "id": "emmys-78-supporting-actor",
+      "kind": "winner",
+      "institution": "emmys",
+      "year": 2026,
+      "edition": "2026 Primetime Emmy Awards",
+      "precision": "day",
+      "source": "emmys-78-winners",
+      "status": "verified",
+      "revision": 1,
+      "imported": "2026-11-19",
+      "occurred": "2026-09-14",
+      "published": "2026-09-14",
+      "category": "supporting-actor",
+      "categoryName": "Outstanding Supporting Actor in a Drama Series",
+      "subjects": [
+        "Tom Pelphrey"
+      ],
+      "work": "Task",
+      "credited": "as Robbie Prendergrast",
+      "recipients": "named_person"
+    },
+    {
+      "id": "emmys-78-lead-actress-limited",
+      "kind": "winner",
+      "institution": "emmys",
+      "year": 2026,
+      "edition": "2026 Primetime Emmy Awards",
+      "precision": "day",
+      "source": "emmys-78-winners",
+      "status": "verified",
+      "revision": 1,
+      "imported": "2026-11-19",
+      "occurred": "2026-09-14",
+      "published": "2026-09-14",
+      "category": "lead-actress-limited",
+      "categoryName": "Outstanding Lead Actress in a Limited or Anthology Series or Movie",
+      "subjects": [
+        "Sally Field"
+      ],
+      "work": "Remarkably Bright Creatures",
+      "credited": "as Tova Sullivan",
+      "recipients": "named_person"
+    },
+    {
+      "id": "emmys-78-lead-actor-comedy",
+      "kind": "winner",
+      "institution": "emmys",
+      "year": 2026,
+      "edition": "2026 Primetime Emmy Awards",
+      "precision": "day",
+      "source": "emmys-78-winners",
+      "status": "verified",
+      "revision": 1,
+      "imported": "2026-11-19",
+      "occurred": "2026-09-14",
+      "published": "2026-09-14",
+      "category": "lead-actor-comedy",
+      "categoryName": "Outstanding Lead Actor in a Comedy Series",
+      "subjects": [
+        "Matthew Rhys"
+      ],
+      "work": "Widow's Bay",
+      "credited": "as Mayor Tom Loftis",
+      "recipients": "named_person"
+    },
+    {
+      "id": "emmys-78-writing-comedy",
+      "kind": "winner",
+      "institution": "emmys",
+      "year": 2026,
+      "edition": "2026 Primetime Emmy Awards",
+      "precision": "day",
+      "source": "emmys-78-winners",
+      "status": "verified",
+      "revision": 1,
+      "imported": "2026-11-19",
+      "occurred": "2026-09-14",
+      "published": "2026-09-14",
+      "category": "writing-comedy",
+      "categoryName": "Outstanding Writing for a Comedy Series",
+      "subjects": [
+        "Katie Dippold"
+      ],
+      "work": "Widow's Bay",
+      "recipients": "named_person",
+      "credited": "Written by, for the episode Welcome To Widow's Bay!"
+    },
+    {
+      "id": "emmys-78-directing",
+      "kind": "winner",
+      "institution": "emmys",
+      "year": 2026,
+      "edition": "2026 Primetime Emmy Awards",
+      "precision": "day",
+      "source": "emmys-78-winners",
+      "status": "verified",
+      "revision": 1,
+      "imported": "2026-11-19",
+      "occurred": "2026-09-14",
+      "published": "2026-09-14",
+      "category": "directing",
+      "categoryName": "Outstanding Directing for a Drama Series",
+      "subjects": [
+        "Saul Metzstein"
+      ],
+      "work": "Slow Horses",
+      "recipients": "named_person",
+      "credited": "Directed by, for the episode Scars"
+    },
+    {
+      "id": "emmys-78-variety-series",
+      "kind": "winner",
+      "institution": "emmys",
+      "year": 2026,
+      "edition": "2026 Primetime Emmy Awards",
+      "precision": "day",
+      "source": "emmys-78-winners",
+      "status": "verified",
+      "revision": 1,
+      "imported": "2026-11-19",
+      "occurred": "2026-09-14",
+      "published": "2026-09-14",
+      "category": "variety-series",
+      "categoryName": "Outstanding Variety Series",
+      "subjects": [
+        "The Late Show With Stephen Colbert"
+      ],
+      "credited": "Stephen T. Colbert, Tom Purcell and Jon Stewart, Executive Producers",
+      "recipients": "work_only"
+    },
+    {
+      "id": "emmys-78-directing-comedy",
+      "kind": "winner",
+      "institution": "emmys",
+      "year": 2026,
+      "edition": "2026 Primetime Emmy Awards",
+      "precision": "day",
+      "source": "emmys-78-winners",
+      "status": "verified",
+      "revision": 1,
+      "imported": "2026-11-19",
+      "occurred": "2026-09-14",
+      "published": "2026-09-14",
+      "category": "directing-comedy",
+      "categoryName": "Outstanding Directing for a Comedy Series",
+      "subjects": [
+        "Hiro Murai"
+      ],
+      "work": "Widow's Bay",
+      "recipients": "named_person",
+      "credited": "Directed by, for the episode Welcome To Widow's Bay!"
+    },
+    {
+      "id": "emmys-78-writing",
+      "kind": "winner",
+      "institution": "emmys",
+      "year": 2026,
+      "edition": "2026 Primetime Emmy Awards",
+      "precision": "day",
+      "source": "emmys-78-winners",
+      "status": "verified",
+      "revision": 1,
+      "imported": "2026-11-19",
+      "occurred": "2026-09-14",
+      "published": "2026-09-14",
+      "category": "writing",
+      "categoryName": "Outstanding Writing for a Drama Series",
+      "subjects": [
+        "Vince Gilligan"
+      ],
+      "work": "Pluribus",
+      "recipients": "named_person",
+      "credited": "Written by, for the episode We Is Us"
     }
   ]
 }

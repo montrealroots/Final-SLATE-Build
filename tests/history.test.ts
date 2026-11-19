@@ -47,7 +47,10 @@ describe('recorded history', () => {
 
   it('keeps work-only results free of named recipients, and festivals\' shared prizes whole', () => {
     const emmys = recordedResults('emmys', 2026, '2026-09-14');
-    expect(emmys.map((o) => [o.category, o.subjects, o.recipients])).toEqual([['comedy', ['Widow’s Bay'], 'work_only'], ['drama', ['The Pitt'], 'work_only'], ['limited', ['DTF St. Louis'], 'work_only']]);
+    // The programs' awards name the work; the telecast's people's awards (from November 19, 2026) name the person.
+    expect(emmys.filter((o) => o.recipients === 'work_only').map((o) => [o.category, o.subjects]).sort()).toEqual([['comedy', ['Widow’s Bay']], ['drama', ['The Pitt']], ['limited', ['DTF St. Louis']], ['reality-competition', ['The Traitors']], ['variety-series', ['The Late Show With Stephen Colbert']]].sort());
+    expect(emmys).toHaveLength(19); // the telecast's categories, each once
+    expect(emmys.filter((o) => o.subjects.includes('Matthew Rhys')).map((o) => o.work)).toEqual(['The Beast In Me', "Widow's Bay"]);
     expect(recordedResults('cannes', 2026, '2026-05-23').find((o) => o.category === 'director')!.subjects).toHaveLength(3); // shared: La Bola Negra's two directors and Fatherland's (FEST01)
     expect(recordedResults('bafta-film', 2026, '2026-02-22').filter((o) => o.category === null).map((o) => o.categoryName)).toEqual(['Supporting Actor', 'Supporting Actress']);
   });
