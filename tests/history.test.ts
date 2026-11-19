@@ -43,6 +43,19 @@ describe('recorded history', () => {
     expect(recordedResults('bafta-film', 2026, '2026-02-22').filter((o) => o.category === null).map((o) => o.categoryName)).toEqual(['Supporting Actor', 'Supporting Actress']);
   });
 
+  it("holds the 98th Academy Awards whole: every competitive category's nominees from January 22 and winner from March 15", () => {
+    const insts = (institutions as { institutions: { id: string; categories: { id: string }[] }[] }).institutions;
+    // Not competitive in 2026 (the Board's awards), or not given: Original Musical had no nominees.
+    const competitive = insts.find((x) => x.id === 'oscars')!.categories.map((c) => c.id).filter((c) => !['musical', 'thalberg', 'honorary', 'special-achievement'].includes(c));
+    const at = (day: string, kind: string) => new Set(recordedResults('oscars', 2026, day).filter((o) => o.kind === kind).map((o) => o.category));
+    expect(at('2026-01-21', 'nominees').size).toBe(0);
+    expect([...at('2026-01-22', 'nominees')].sort()).toEqual([...competitive].sort());
+    expect(at('2026-03-14', 'winner').size).toBe(0);
+    expect([...at('2026-03-15', 'winner')].sort()).toEqual([...competitive].sort());
+    // The page's one tie: two winners, each named.
+    expect(recordedResults('oscars', 2026, '2026-03-15').find((o) => o.kind === 'winner' && o.category === 'live-short')!.subjects).toEqual(['The Singers', 'Two People Exchanging Saliva']);
+  });
+
   it('cites a source for every observation, never publishes before it happens, and names the game\'s own categories', () => {
     const insts = (institutions as { institutions: { id: string; categories: { id: string }[]; official?: Record<string, { label?: string }> }[] }).institutions;
     const wrong: string[] = [];

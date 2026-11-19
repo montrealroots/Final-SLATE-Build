@@ -9,15 +9,15 @@ report for what the game holds as recorded history. A field marked unknown has a
 | Requested window | January 1 to November 13, 2026 | January 1 to November 13, 2026 | January 1 to November 13, 2026 |
 | Observed window | January 11 to September 14, 2026 | None | One week, November 2 to 8, 2026 (Netflix's English-language film chart) |
 | Territories | The organizers' own ceremonies and festivals (United States, United Kingdom, France, Italy) | None | Global, as Netflix reports it |
-| Discovered | 9 editions; 11 observations read for this game, 26 grouped from the v7 package's 44 award events | 0 | 10 chart rows |
+| Discovered | 9 editions; 45 observations read for this game (the 98th Academy Awards whole from November 19, 2026: every competitive category's nominees and winner; until then 11), 26 grouped from the v7 package's 44 award events | 0 | 10 chart rows |
 | Fetched | 3 source pages | 0 | 0 |
-| Validated | 37 (`tests/history.test.ts`) | 0 | 10 |
-| Published | 37, each from its own publication date | 0 | 0 in strict playback: their publication is inferred (Netflix's Tuesday rule), so they show only in a playback that opts into inference |
+| Validated | 71 (`tests/history.test.ts`) | 0 | 10 |
+| Published | 71, each from its own publication date | 0 | 0 in strict playback: their publication is inferred (Netflix's Tuesday rule), so they show only in a playback that opts into inference |
 | Installed | Built into the game (2 KB) | 0 | 0 |
-| Missing values | Every other 2026 ceremony and festival; every category of these two not listed in the file | All | All |
+| Missing values | Every other 2026 ceremony and festival; the Golden Globes' categories not in the file (the Oscars' 23 competitive categories are all there) | All | All |
 | Conflicts | None found. The Golden Globes article names The Pitt and The Studio as series winners without saying which won which category: neither is recorded | n/a | n/a |
 | Sources / terms | Organizer pages, read for this game, cited per observation; NBC News for the Oscar nominations' date | No authorized dated dataset found yet; Box Office Mojo and The Numbers forbid automated collection | Nielsen publishes no free weekly dataset; streaming services' own reports are not imported |
-| Latest import | November 13, 2026 | n/a | n/a |
+| Latest import | November 19, 2026 (the Oscars' remaining categories) | n/a | n/a |
 | Historical / simulated boundary | Recorded through March 15, 2026 for these categories; the game's own competition from the 2027 editions is simulated | The player's own releases are simulated and labelled | The player's own series' audiences are simulated and labelled |
 | Next resumable checkpoint | Add editions one at a time from organizer pages, each observation with its source and publication date | Find an authorized dataset first | Find an authorized dataset first |
 
@@ -31,5 +31,5 @@ report for what the game holds as recorded history. A field marked unknown has a
 
 ## Verified By
 
-- `tests/history.test.ts`: publication gating at the exact minute, corrections, sources and categories, and nothing in the save.
+- `tests/history.test.ts`: publication gating at the exact minute, corrections, sources and categories, the 98th Academy Awards whole (every competitive category's nominees from January 22 and winner from March 15, the Live Action Short tie as two winners), and nothing in the save.
 - `e2e/v6-history.spec.ts` (J01), on desktop, phone and the iPhone 15 Pro Max emulation: a January 1 start, the Golden Globes' winners after January 11, the Oscars' nominees and no winner after January 22, and one of each after a reload.

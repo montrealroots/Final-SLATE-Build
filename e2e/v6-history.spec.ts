@@ -62,6 +62,7 @@ test('J01: recorded award results appear only once announced, the nominees befor
   await page.reload();
   await page.getByRole('button', { name: 'Continue', exact: true }).click();
   await open(page, '98th Academy Awards');
-  expect(((await cats(page).textContent()) ?? '').split('Nominees: One Battle after Another').length - 1).toBe(1);
+  // Best Picture's field, whole: from November 19, 2026 the crafts' fields list One Battle after Another first too.
+  expect(((await cats(page).textContent()) ?? '').split('Nominees: One Battle after Another, Bugonia, F1, Frankenstein, Hamnet').length - 1).toBe(1);
   expect(JSON.stringify(await readSavedState(page))).not.toContain('Train Dreams');
 });
