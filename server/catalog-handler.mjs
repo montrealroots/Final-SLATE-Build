@@ -58,11 +58,13 @@ export function readPackHeader(file) {
 
 /**
  * The mods this copy of the game offers (November 11, 2026, docs/DATA-PACKS.md): every data pack in `packsDir`, read
- * from its header. A film pack past TMDB's six months is neither listed nor served.
+ * from its header. A film pack past TMDB's six months is neither listed nor served. Of two packs of one kind, only the
+ * newest built is listed (from November 19, 2026): until then both were, in the files' name order, and the Mods page
+ * offered the first of a kind, so a folder holding last week's films beside this week's offered last week's.
  */
 export function offeredMods(packsDir, now = Date.now(), films = true) {
   if (!packsDir || !existsSync(packsDir)) return [];
-  return readdirSync(packsDir).filter((f) => f.endsWith('.slatepack')).sort().flatMap((file) => {
+  const all = readdirSync(packsDir).filter((f) => f.endsWith('.slatepack')).sort().flatMap((file) => {
     const h = readPackHeader(join(packsDir, file));
     if (!h || h.format !== 1 || (h.kind !== 'catalog' && h.kind !== 'cinemas' && h.kind !== 'images')) return [];
     // The pictures are TMDB's too: offered to the owner alone, and never past the same six months.
@@ -71,6 +73,7 @@ export function offeredMods(packsDir, now = Date.now(), films = true) {
     if (tmdb && !(Date.parse(h.retrieved?.from) + MAX_AGE_DAYS * DAY > now)) return [];
     return [{ file, kind: h.kind, name: h.name, source: h.source, builtAt: h.builtAt, ...(h.retrieved ? { retrieved: h.retrieved } : {}), files: h.files, bytes: statSync(join(packsDir, file)).size }];
   });
+  return all.filter((m) => !all.some((o) => o.kind === m.kind && (o.builtAt > m.builtAt || (o.builtAt === m.builtAt && o.file > m.file))));
 }
 const MODS = /^\/mods\/(index\.json|[\w.-]+\.slatepack)$/;
 

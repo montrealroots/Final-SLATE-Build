@@ -157,6 +157,23 @@ describe('the mods the game offers', () => {
     } finally { other.close(); }
   });
 
+  it('offers only the newest pack of a kind, whatever the files are called, and serves nothing older', async () => {
+    const packs = join(root, 'newest');
+    const film = (at: string) => writePack({ kind: 'catalog', name: 'Films And Series', source: 'TMDB', builtAt: at, retrieved: { from: RETRIEVED, to: at, maxAgeDays: 180 } }, [['index.json', '{"version":1}']]);
+    write(join(packs, 'a.slatepack'), '');
+    // Named so the older sorts first, as slate-catalog-2026-11-18 did before -11-19.
+    writeFileSync(join(packs, 'slate-catalog-a.slatepack'), film('2026-11-18T00:00:00.000Z'));
+    writeFileSync(join(packs, 'slate-catalog-b.slatepack'), film('2026-11-19T00:00:00.000Z'));
+    writeFileSync(join(packs, 'a.slatepack'), writePack({ kind: 'cinemas', name: 'Cinemas', source: 'Wikidata (CC0)', builtAt: RETRIEVED }, [['cinemas/index.json', '{}']]));
+    const s = await start(catalog('newest', null), undefined, packs);
+    try {
+      const list = json(await get(s.port, '/mods/index.json'));
+      expect(list.mods.map((m: { file: string; builtAt: string }) => [m.file, m.builtAt])).toEqual([['a.slatepack', RETRIEVED], ['slate-catalog-b.slatepack', '2026-11-19T00:00:00.000Z']]);
+      expect((await get(s.port, '/mods/slate-catalog-a.slatepack')).status).toBe(404);
+      expect((await get(s.port, '/mods/slate-catalog-b.slatepack')).status).toBe(200);
+    } finally { s.close(); }
+  });
+
   it('offers the picture pack to the owner alone, never past six months, and sends the rest of a download that was cut off', async () => {
     const packs = join(root, 'picture-packs');
     write(join(packs, 'x'), '');
