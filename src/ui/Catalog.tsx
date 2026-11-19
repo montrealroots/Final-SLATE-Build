@@ -480,7 +480,7 @@ function YourTitleView({ t }: { t: YourTitle }) {
       </Panel>
       {t.more}
       <Panel title={t.castTitle ?? 'Cast'} subtitle={t.cast.length ? `${plural(t.cast.length, 'credit')}, in billing order.` : undefined}>
-        {t.cast.length ? <Expandable items={t.cast} label="Cast" render={(c, i) => (
+        {t.cast.length ? <Expandable items={t.cast} label="Cast" name={t.castTitle ?? 'Cast'} render={(c, i) => (
           <li key={`${c.name}-${i}`} className="list-item">
             <Picture subject={c.tmdbId ? `person:${c.tmdbId}` : `invented:${c.name}`} name={c.name} size="thumb" />
             <span className="grow">{who(c)}</span>
@@ -490,7 +490,7 @@ function YourTitleView({ t }: { t: YourTitle }) {
       </Panel>
       <Panel title={t.crewTitle ?? 'Crew'} subtitle={t.crew.length ? `${plural(t.crew.length, 'credit')} across ${plural(depts.length, 'department')}.` : undefined}>
         {t.crew.length ? depts.map((d) => (
-          <section key={d}><h3>{d}</h3><Expandable items={t.crew.filter((c) => c.department === d)} label={`${d} Credits`} render={(c, i) => <li key={`${c.name}-${c.job}-${i}`} className="list-item"><span className="grow">{who(c)}</span><span className="dim small">{c.job}{c.note ? `, ${c.note}` : ''}</span></li>} /></section>
+          <section key={d}><h3>{d}</h3><Expandable items={t.crew.filter((c) => c.department === d)} label={`${d} Credits`} name={`${d} ${t.crewTitle ?? 'Crew'}`} render={(c, i) => <li key={`${c.name}-${c.job}-${i}`} className="list-item"><span className="grow">{who(c)}</span><span className="dim small">{c.job}{c.note ? `, ${c.note}` : ''}</span></li>} /></section>
         )) : <p className="muted">No one is hired yet.</p>}
       </Panel>
     </>
@@ -804,12 +804,12 @@ function CreditedCompanies({ t }: { t: TitleRecord }) {
   );
 }
 
-function Expandable<T>({ items, render, label }: { items: T[]; render: (x: T, i: number) => ReactNode; label: string }) {
+function Expandable<T>({ items, render, label, name }: { items: T[]; render: (x: T, i: number) => ReactNode; label: string; name?: string }) {
   const [all, setAll] = useState(false);
   const shown = all ? items : items.slice(0, 40);
   return (
     <>
-      <ul className="list">{shown.map(render)}</ul>
+      <ul className="list" aria-label={name}>{shown.map(render)}</ul>
       {items.length > 40 && <button className="btn btn-sm spaced" onClick={() => setAll(!all)}>{all ? `Show Fewer ${label}` : `Show All ${items.length} ${label}`}</button>}
     </>
   );

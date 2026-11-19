@@ -101,5 +101,7 @@ test("a studio's franchise on its page: its recorded films, then the picture you
   await expect(card(page, 'Box Office').getByRole('list', { name: 'Weeks' }).getByRole('listitem')).toHaveCount(10);
   await expect(card(page, 'Awards And Festivals')).toContainText('Visual Effects, An Awards Fixture 2026');
   await expect(page.getByRole('list', { name: 'Cast' }).getByRole('listitem')).toHaveCount(8);
-  await expect(page.getByRole('list', { name: 'Crew' }).getByRole('listitem').filter({ hasText: 'Director' }).first()).toContainText('You');
+  // The crew is listed by department, as a recorded film's is (from November 19, 2026): you direct it, and write it.
+  await expect(page.getByRole('list', { name: 'Directing Crew' }).getByRole('listitem').filter({ hasText: 'Director' })).toContainText('You');
+  await expect(page.getByRole('list', { name: 'Writing Crew' }).getByRole('listitem').filter({ hasText: 'Screenplay' })).toContainText('You');
 });
