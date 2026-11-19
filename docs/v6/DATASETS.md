@@ -12,10 +12,13 @@ The catalog (TMDB), the cinemas (Wikidata) and the stories (Wikipedia) are older
 - **What it is:** Award results of 2026 ceremonies, from each organizer's own page.
 - **Kind:** Recorded fact.
 - **Terms:** Facts (who was nominated, who won) read from public pages; titles and names only, no article text. Shown from their published date; nothing written into a save.
-- **Sources (3):**
+- **Sources (6):**
   - <https://goldenglobes.com/articles/one-battle-after-another-and-hamnet-take-best-picture-prizes-at-golden-globes/>, read 2026-11-13. Read through a fetching tool. Only the categories the article states are recorded.
+  - <https://goldenglobes.com/nominations/2026>, read 2026-11-19. Every category, its winner marked; read twice through a fetching tool, the readings agreed. A title the page files under its article ("Studio, The") is written in reading order.
+  - <https://goldenglobes.com/articles/nominations-announced-for-the-83rd-annual-golden-globes/>, read 2026-11-19. For the date the nominations were announced, December 8, 2025.
   - <https://press.oscars.org/news/98th-oscarsr-nominations-announced>, read 2026-11-13.
-  - <https://www.oscars.org/oscars/ceremonies/2026>, read 2026-11-13. Read through a fetching tool; a direct download was refused (HTTP 403). Titles and names as the page prints them.
+  - <https://www.oscars.org/oscars/ceremonies/2026>, read 2026-11-13, and again on 2026-11-19 for every category (two readings that agreed). Read through a fetching tool; a direct download was refused (HTTP 403). Titles and names as the page prints them.
+  - <https://www.televisionacademy.com/78th-emmy-winners>, read 2026-11-19. The Academy's winners release (Ernst & Young's list of the telecast's 19 categories), a PDF whose text was read directly.
 
 ## `src/data/history/awards-2026-reference.json`
 

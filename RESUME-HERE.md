@@ -963,6 +963,19 @@ order of work is at its end. The owner said: "Don't stop until 100% perfect comp
     titled "Box Office Records" with as-of history; V6-040 television first-look scope; V6-039 reputation calibration and
     anti-farming (J22); more recorded editions, one source page at a time; then the journeys the ledger marks unbuilt
     (J04, J05, J06, J13, J16, J19, J21, J22).
+  - *The 98th Academy Awards whole (November 19, 2026):* all 23 competitive categories' nominees (from January 22)
+    and winners (from March 15), read twice from oscars.org's ceremony page, which agreed with each other and with every
+    entry already recorded; the Live Action Short tie is one result with two winners. Crafts list their films as the
+    nominees (the player's film takes the last place, `awards-history.ts`) and the credited people as the winner. The
+    83rd Golden Globes whole the same day, from goldenglobes.com/nominations/2026 (read twice; agreed), nominees from
+    the announcement on December 8, 2025 (the Globes' own article), so a January start shows them; the night's article
+    hadn't said which of The Pitt and The Studio won which, and the page does. Titles the page files under their
+    article ("Studio, The") are written in reading order. The
+    Emmys' 19 telecast winners the same day, from the Television Academy's winners PDF (`/78th-emmy-winners`, its text
+    read with pdftotext, not a summarising fetch). BAFTA's site answers the fetching tool with HTTP 403 on every page,
+    so BAFTA stays at the five winners the reference set has. Next, one edition at a time: the Emmys' nominees (each
+    category's page under `televisionacademy.com/awards/nominees-winners/2026/`; the July 8 release has no list), the
+    Actor Awards, the Critics' Choice.
   - *Research rule:* organizer pages read through the fetching tool (a direct download is refused with HTTP 403); record
     only what the page states, with its URL, title, provider and date read.
 

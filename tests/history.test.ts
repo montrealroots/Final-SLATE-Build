@@ -12,9 +12,18 @@ const ids = (xs: { id: string }[]) => xs.map((x) => x.id).sort();
 
 describe('recorded history', () => {
   it('shows nothing before its published date, and each result from that date in the player\'s calendar', () => {
-    expect(observationsAt('2026-01-05')).toEqual([]);
-    expect(recordedResults('golden-globes', 2026, '2026-01-10')).toEqual([]);
-    expect(ids(recordedResults('golden-globes', 2026, '2026-01-11'))).toEqual(['globes-83-animated', 'globes-83-comedy', 'globes-83-director', 'globes-83-drama', 'globes-83-non-english']);
+    expect(observationsAt('2025-12-07')).toEqual([]);
+    // The Golden Globes' nominees from December 8, 2025 (from November 19, 2026; until then none was recorded, and a
+    // January start saw nothing), its winners from January 11.
+    expect(observationsAt('2026-01-05').every((o) => o.institution === 'golden-globes' && o.kind === 'nominees')).toBe(true);
+    expect(recordedResults('golden-globes', 2026, '2026-01-10')).toHaveLength(28);
+    expect(recordedResults('golden-globes', 2026, '2026-01-10').some((o) => o.kind === 'winner')).toBe(false);
+    const globes = recordedResults('golden-globes', 2026, '2026-01-11').filter((o) => o.kind === 'winner');
+    expect(globes).toHaveLength(28);
+    expect(ids(globes).slice(0, 5)).toEqual(['globes-83-actor-comedy', 'globes-83-actor-drama', 'globes-83-actress-comedy', 'globes-83-actress-drama', 'globes-83-animated']);
+    // The night's article named The Pitt and The Studio without their categories; the nominations page says which.
+    expect(globes.find((o) => o.category === 'tv-drama')!.subjects).toEqual(['The Pitt']);
+    expect(globes.find((o) => o.category === 'tv-comedy')!.subjects).toEqual(['The Studio']);
     // The Oscars: the nominees from January 22 (Best Picture and the four acting categories), no winner until March 15.
     const feb = recordedResults('oscars', 2026, '2026-02-01');
     expect(feb.every((o) => o.kind === 'nominees')).toBe(true);
@@ -38,9 +47,28 @@ describe('recorded history', () => {
 
   it('keeps work-only results free of named recipients, and festivals\' shared prizes whole', () => {
     const emmys = recordedResults('emmys', 2026, '2026-09-14');
-    expect(emmys.map((o) => [o.category, o.subjects, o.recipients])).toEqual([['comedy', ['Widow’s Bay'], 'work_only'], ['drama', ['The Pitt'], 'work_only'], ['limited', ['DTF St. Louis'], 'work_only']]);
+    // The programs' awards name the work; the telecast's people's awards (from November 19, 2026) name the person.
+    expect(emmys.filter((o) => o.recipients === 'work_only').map((o) => [o.category, o.subjects]).sort()).toEqual([['comedy', ['Widow’s Bay']], ['drama', ['The Pitt']], ['limited', ['DTF St. Louis']], ['reality-competition', ['The Traitors']], ['variety-series', ['The Late Show With Stephen Colbert']]].sort());
+    expect(emmys).toHaveLength(19); // the telecast's categories, each once
+    expect(emmys.filter((o) => o.subjects.includes('Matthew Rhys')).map((o) => o.work)).toEqual(['The Beast In Me', "Widow's Bay"]);
     expect(recordedResults('cannes', 2026, '2026-05-23').find((o) => o.category === 'director')!.subjects).toHaveLength(3); // shared: La Bola Negra's two directors and Fatherland's (FEST01)
     expect(recordedResults('bafta-film', 2026, '2026-02-22').filter((o) => o.category === null).map((o) => o.categoryName)).toEqual(['Supporting Actor', 'Supporting Actress']);
+  });
+
+  it("holds the 98th Academy Awards whole: every competitive category's nominees from January 22 and winner from March 15", () => {
+    const insts = (institutions as { institutions: { id: string; categories: { id: string; competitive?: boolean }[] }[] }).institutions;
+    // The competitive categories, the Board's awards aside; of them only Original Musical wasn't given in 2026. (Read by
+    // a flag, not by name: the awards ledger counts a category a test names as one it tests.)
+    const competitive = insts.find((x) => x.id === 'oscars')!.categories.filter((c) => c.competitive).map((c) => c.id);
+    const at = (day: string, kind: string) => new Set(recordedResults('oscars', 2026, day).filter((o) => o.kind === kind).map((o) => o.category));
+    expect(at('2026-01-21', 'nominees').size).toBe(0);
+    const nominated = [...at('2026-01-22', 'nominees')].sort();
+    expect(nominated).toHaveLength(competitive.length - 1);
+    expect(competitive.filter((c) => !nominated.includes(c))).toHaveLength(1);
+    expect(at('2026-03-14', 'winner').size).toBe(0);
+    expect([...at('2026-03-15', 'winner')].sort()).toEqual(nominated);
+    // The page's one tie: two winners, each named.
+    expect(recordedResults('oscars', 2026, '2026-03-15').find((o) => o.kind === 'winner' && o.category === 'live-short')!.subjects).toEqual(['The Singers', 'Two People Exchanging Saliva']);
   });
 
   it('cites a source for every observation, never publishes before it happens, and names the game\'s own categories', () => {

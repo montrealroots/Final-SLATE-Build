@@ -7,23 +7,23 @@ report for what the game holds as recorded history. A field marked unknown has a
 |---|---|---|---|
 | Dataset / entity type | Award nominations and winners | Dated grosses | Weekly audience reports |
 | Requested window | January 1 to November 13, 2026 | January 1 to November 13, 2026 | January 1 to November 13, 2026 |
-| Observed window | January 11 to September 14, 2026 | None | One week, November 2 to 8, 2026 (Netflix's English-language film chart) |
+| Observed window | December 8, 2025 (the Golden Globes' nominations) to September 14, 2026 | None | One week, November 2 to 8, 2026 (Netflix's English-language film chart) |
 | Territories | The organizers' own ceremonies and festivals (United States, United Kingdom, France, Italy) | None | Global, as Netflix reports it |
-| Discovered | 9 editions; 11 observations read for this game, 26 grouped from the v7 package's 44 award events | 0 | 10 chart rows |
-| Fetched | 3 source pages | 0 | 0 |
-| Validated | 37 (`tests/history.test.ts`) | 0 | 10 |
-| Published | 37, each from its own publication date | 0 | 0 in strict playback: their publication is inferred (Netflix's Tuesday rule), so they show only in a playback that opts into inference |
+| Discovered | 9 editions; 112 observations read for this game (from November 19, 2026, the 98th Academy Awards and the 83rd Golden Globe Awards whole, every category's nominees and winner, and the 2026 Emmys' telecast winners; until then 11), 26 grouped from the v7 package's 44 award events | 0 | 10 chart rows |
+| Fetched | 6 source pages (one a PDF, its text read directly) | 0 | 0 |
+| Validated | 138 (`tests/history.test.ts`) | 0 | 10 |
+| Published | 138, each from its own publication date | 0 | 0 in strict playback: their publication is inferred (Netflix's Tuesday rule), so they show only in a playback that opts into inference |
 | Installed | Built into the game (2 KB) | 0 | 0 |
-| Missing values | Every other 2026 ceremony and festival; every category of these two not listed in the file | All | All |
-| Conflicts | None found. The Golden Globes article names The Pitt and The Studio as series winners without saying which won which category: neither is recorded | n/a | n/a |
+| Missing values | Every other 2026 ceremony and festival beyond the reference set (the Oscars' 23 competitive categories and the Golden Globes' 28 are all there; the Emmys' 19 telecast winners, and none of their nominees or Creative Arts winners; BAFTA's site refuses the fetching tool, so it stays at five winners) | All | All |
+| Conflicts | None found. The Golden Globes' night article named The Pitt and The Studio as series winners without saying which won which; the Globes' nominations page says (The Pitt, Drama; The Studio, Musical or Comedy), and both are recorded from November 19, 2026 | n/a | n/a |
 | Sources / terms | Organizer pages, read for this game, cited per observation; NBC News for the Oscar nominations' date | No authorized dated dataset found yet; Box Office Mojo and The Numbers forbid automated collection | Nielsen publishes no free weekly dataset; streaming services' own reports are not imported |
-| Latest import | November 13, 2026 | n/a | n/a |
-| Historical / simulated boundary | Recorded through March 15, 2026 for these categories; the game's own competition from the 2027 editions is simulated | The player's own releases are simulated and labelled | The player's own series' audiences are simulated and labelled |
+| Latest import | November 19, 2026 (the Oscars' and the Golden Globes' remaining categories, the Emmys' telecast winners) | n/a | n/a |
+| Historical / simulated boundary | Recorded from December 8, 2025 through March 15, 2026 for these two ceremonies; the game's own competition from the 2027 editions is simulated | The player's own releases are simulated and labelled | The player's own series' audiences are simulated and labelled |
 | Next resumable checkpoint | Add editions one at a time from organizer pages, each observation with its source and publication date | Find an authorized dataset first | Find an authorized dataset first |
 
 ## How It Behaves
 
-- **Not before it was published.** An observation is reportable from its published date, in the player's own calendar (src/engine/history.ts `reportable`, the v7 package's rule; until November 13, 2026 it waited until that day had ended where it was announced). An unknown publication date is never reported. A January 1 start sees no 2026 result.
+- **Not before it was published.** An observation is reportable from its published date, in the player's own calendar (src/engine/history.ts `reportable`, the v7 package's rule; until November 13, 2026 it waited until that day had ended where it was announced). An unknown publication date is never reported. A January 1 start sees the Golden Globes' nominees (announced December 8, 2025) and no 2026 winner.
 - **Corrections.** A correction is a later revision of the same observation, with its own publication date; the earlier revision stays and applies before it (tests/history.test.ts).
 - **Not in the save.** What a save shows follows from the data and the save's clock: a reload can't duplicate a result, and a later import can't rewrite what a save already settled.
 - **Separate from the game's competition.** An edition's page shows the recorded results in their own card, with their source; the game's own entries and results stay under Your Entries.
@@ -31,5 +31,5 @@ report for what the game holds as recorded history. A field marked unknown has a
 
 ## Verified By
 
-- `tests/history.test.ts`: publication gating at the exact minute, corrections, sources and categories, and nothing in the save.
-- `e2e/v6-history.spec.ts` (J01), on desktop, phone and the iPhone 15 Pro Max emulation: a January 1 start, the Golden Globes' winners after January 11, the Oscars' nominees and no winner after January 22, and one of each after a reload.
+- `tests/history.test.ts`: publication gating at the exact minute, corrections, sources and categories, the 98th Academy Awards whole (every competitive category's nominees from January 22 and winner from March 15, the Live Action Short tie as two winners), the 83rd Golden Globe Awards whole (28 categories' nominees from December 8, 2025 and winners from January 11, The Pitt and The Studio each in its own category), the Emmys' 19 telecast winners each once (Matthew Rhys twice, for two shows), and nothing in the save.
+- `e2e/v6-history.spec.ts` (J01), on desktop, phone and the iPhone 15 Pro Max emulation: a January 1 start with the Golden Globes' nominees and no winner, the Golden Globes' winners after January 11, the Oscars' nominees and no winner after January 22, and one of each after a reload.
