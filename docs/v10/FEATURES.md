@@ -11,8 +11,8 @@ journey that shows it there.
 | action | 186 | 0 | 0 | 0 | 0 | 17 | 0 | 203 |
 | bank | 54 | 0 | 0 | 0 | 0 | 0 | 0 | 54 |
 | scheduled | 58 | 0 | 0 | 0 | 0 | 12 | 0 | 70 |
-| field | 273 | 102 | 0 | 0 | 0 | 9 | 0 | 384 |
-| all | 571 | 102 | 0 | 0 | 0 | 38 | 0 | 711 |
+| field | 273 | 103 | 0 | 0 | 0 | 9 | 0 | 385 |
+| all | 571 | 103 | 0 | 0 | 0 | 38 | 0 | 712 |
 
 ## Rows
 
@@ -625,6 +625,7 @@ journey that shows it there.
 | "Puppet Face" | field | production/tasks.ts (sm:faces, sm:armature, sm:animation); rates.ts FACE_METHODS | proven | puppet-face (40 seeds) | spent +16767; ownIn +18150; daysToDeliver +21.525 |
 | "Also Called" | field | shown with the part in casting | carried | tests/carried-text.test.ts::kept through a save exactly as written | A name or a record, carried to shown with the part in casting: it decides nothing by its nature. |
 | "Pronouns" | field | shown in casting: script-explain.ts characterPronouns | carried | tests/advice-carried.test.ts::reach the advice they are written for, and are scored by nothing | A name or a record, carried to shown in casting: script-explain.ts characterPronouns: it decides nothing by its nature. |
+| "Gender" | field | shown in casting: script-explain.ts genderMatches | carried | tests/character-gender.test.ts::matches everyone to a part open to anyone, and only the gender written to one that has it | A name or a record, carried to shown in casting: script-explain.ts genderMatches: it decides nothing by its nature. |
 | "Speaks" | field | production/language.ts personLanguagesFit | proven | lead-speaks (40 seeds) | spent +2428.5; hired +2 |
 | "Awards Placement" | field | script-effects.ts castPlacement | proven | award-placement (30 seeds) | leadEntries -2.867; actingDecided -2.867 |
 | "Series Involvement" | field | hiring.ts estimateDays; finish.ts computeCredits | proven | series-regular (40 seeds) | guideDays +6; ownIn +4250 |
