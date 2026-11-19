@@ -1,6 +1,6 @@
 // The owner's v6 package, J01 (from November 13, 2026): a January 1, 2026 start shows only what was known then. The
-// Golden Globes' and Oscars' recorded results appear on their pages only once announced, the Oscars' nominees before
-// its winners, and a reload shows each result once. The results are the organizers' own, read for this game
+// Golden Globes' and Oscars' recorded results appear on their pages only once announced, the nominees before the
+// winners, and a reload shows each result once. The results are the organizers' own, read for this game
 // (src/data/history/awards-2026.json); nothing of them is written into the save.
 import { expect, test, type Page } from './test';
 import { advance, nav, quickLife, readSavedState } from './helpers';
@@ -36,10 +36,11 @@ test('J01: recorded award results appear only once announced, the nominees befor
   test.setTimeout(600_000);
   await quickLife(page, 'us-los-angeles', '2026-01-01');
 
-  // January 1: neither ceremony has happened, and nothing of either is shown.
+  // January 1: neither ceremony has happened. The Golden Globes' nominees were announced on December 8, 2025, and are
+  // shown (from November 19, 2026); no winner is, and nothing of the Oscars.
   await open(page, '83rd Golden Globe Awards');
-  await expect(recorded(page)).toContainText('No results for the 83rd Golden Globe Awards have been announced yet.');
-  await expect(cats(page)).not.toContainText('Hamnet');
+  await expect(cats(page)).toContainText('Hamnet, Frankenstein, It Was Just an Accident, Sentimental Value, Sinners, The Secret Agent');
+  await expect(cats(page)).not.toContainText('Winner: Hamnet');
   await open(page, '98th Academy Awards');
   await expect(recorded(page)).toContainText('No results for the 98th Academy Awards have been announced yet.');
 

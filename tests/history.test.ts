@@ -12,9 +12,18 @@ const ids = (xs: { id: string }[]) => xs.map((x) => x.id).sort();
 
 describe('recorded history', () => {
   it('shows nothing before its published date, and each result from that date in the player\'s calendar', () => {
-    expect(observationsAt('2026-01-05')).toEqual([]);
-    expect(recordedResults('golden-globes', 2026, '2026-01-10')).toEqual([]);
-    expect(ids(recordedResults('golden-globes', 2026, '2026-01-11'))).toEqual(['globes-83-animated', 'globes-83-comedy', 'globes-83-director', 'globes-83-drama', 'globes-83-non-english']);
+    expect(observationsAt('2025-12-07')).toEqual([]);
+    // The Golden Globes' nominees from December 8, 2025 (from November 19, 2026; until then none was recorded, and a
+    // January start saw nothing), its winners from January 11.
+    expect(observationsAt('2026-01-05').every((o) => o.institution === 'golden-globes' && o.kind === 'nominees')).toBe(true);
+    expect(recordedResults('golden-globes', 2026, '2026-01-10')).toHaveLength(28);
+    expect(recordedResults('golden-globes', 2026, '2026-01-10').some((o) => o.kind === 'winner')).toBe(false);
+    const globes = recordedResults('golden-globes', 2026, '2026-01-11').filter((o) => o.kind === 'winner');
+    expect(globes).toHaveLength(28);
+    expect(ids(globes).slice(0, 5)).toEqual(['globes-83-actor-comedy', 'globes-83-actor-drama', 'globes-83-actress-comedy', 'globes-83-actress-drama', 'globes-83-animated']);
+    // The night's article named The Pitt and The Studio without their categories; the nominations page says which.
+    expect(globes.find((o) => o.category === 'tv-drama')!.subjects).toEqual(['The Pitt']);
+    expect(globes.find((o) => o.category === 'tv-comedy')!.subjects).toEqual(['The Studio']);
     // The Oscars: the nominees from January 22 (Best Picture and the four acting categories), no winner until March 15.
     const feb = recordedResults('oscars', 2026, '2026-02-01');
     expect(feb.every((o) => o.kind === 'nominees')).toBe(true);
