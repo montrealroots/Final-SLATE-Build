@@ -46,11 +46,22 @@ describe('recorded history', () => {
   });
 
   it('keeps work-only results free of named recipients, and festivals\' shared prizes whole', () => {
-    const emmys = recordedResults('emmys', 2026, '2026-09-14');
-    // The programs' awards name the work; the telecast's people's awards (from November 19, 2026) name the person.
-    expect(emmys.filter((o) => o.recipients === 'work_only').map((o) => [o.category, o.subjects]).sort()).toEqual([['comedy', ['Widow’s Bay']], ['drama', ['The Pitt']], ['limited', ['DTF St. Louis']], ['reality-competition', ['The Traitors']], ['variety-series', ['The Late Show With Stephen Colbert']]].sort());
-    expect(emmys).toHaveLength(19); // the telecast's categories, each once
+    // The 2026 Emmys whole (from November 19, 2026): the nominees from July 8, each category's winner from its own night.
+    const emmysOn = (day: string, kind: string) => recordedResults('emmys', 2026, day).filter((o) => o.kind === kind);
+    expect(recordedResults('emmys', 2026, '2026-07-07')).toEqual([]);
+    expect(emmysOn('2026-07-08', 'nominees')).toHaveLength(117);
+    expect(emmysOn('2026-09-04', 'winner')).toEqual([]);
+    const byName = (os: { categoryName: string }[]) => new Set(os.map((o) => o.categoryName.toLowerCase()));
+    expect(byName(emmysOn('2026-09-05', 'winner')).size).toBe(49); // the first Creative Arts night
+    expect(byName(emmysOn('2026-09-13', 'winner')).size).toBe(101);
+    const emmys = emmysOn('2026-09-14', 'winner');
+    expect(byName(emmys).size).toBe(120); // every category, once
+    expect(emmys).toHaveLength(120);
+    // The programs' awards name the work, the people's the person; the reference set's three keep their wording.
+    expect(emmys.filter((o) => ['comedy', 'drama', 'limited'].includes(o.category ?? '')).map((o) => [o.category, o.subjects, o.recipients]).sort()).toEqual([['comedy', ['Widow’s Bay'], 'work_only'], ['drama', ['The Pitt'], 'work_only'], ['limited', ['DTF St. Louis'], 'work_only']]);
     expect(emmys.filter((o) => o.subjects.includes('Matthew Rhys')).map((o) => o.work)).toEqual(['The Beast In Me', "Widow's Bay"]);
+    // A show nominated twice in a category is told apart by its episode, as the Academy's page lists it.
+    expect(emmysOn('2026-07-08', 'nominees').find((o) => o.category === 'writing')!.subjects).toEqual(['Pluribus', 'The Diplomat', 'The Pitt (1:00 P.M.)', 'The Pitt (12:00 P.M.)', 'Slow Horses', 'Task']);
     expect(recordedResults('cannes', 2026, '2026-05-23').find((o) => o.category === 'director')!.subjects).toHaveLength(3); // shared: La Bola Negra's two directors and Fatherland's (FEST01)
     expect(recordedResults('bafta-film', 2026, '2026-02-22').filter((o) => o.category === null).map((o) => o.categoryName)).toEqual(['Supporting Actor', 'Supporting Actress']);
   });
