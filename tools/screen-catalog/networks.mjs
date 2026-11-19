@@ -21,15 +21,21 @@ mkdirSync(WD, { recursive: true });
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 const log = (...a) => console.log(new Date().toISOString().slice(11, 19), ...a);
 
-/** A Wikidata request, cached by its URL, a second apart and retried as the services ask. */
-async function wd(url) {
+/**
+ * A Wikidata request, cached by its URL, a second apart and retried as the services ask. A query goes in the body: until
+ * November 18, 2026 it went in the URL, which was 15 KB for TMDB's 1,236 networks and refused with HTTP 431.
+ */
+async function wd(url, query) {
   const f = join(WD, `${createHash('sha1').update(url).digest('hex')}.json`);
   if (existsSync(f)) return JSON.parse(readFileSync(f, 'utf8'));
   let last = '';
   for (let attempt = 0; attempt < 5; attempt++) {
     await sleep(attempt ? 2000 * 2 ** attempt : 1000);
     try {
-      const res = await fetch(url, { headers: { Accept: 'application/json, application/sparql-results+json', 'User-Agent': AGENT } });
+      const headers = { Accept: 'application/json, application/sparql-results+json', 'User-Agent': AGENT };
+      const res = query
+        ? await fetch(SPARQL, { method: 'POST', headers: { ...headers, 'Content-Type': 'application/x-www-form-urlencoded' }, body: new URLSearchParams({ query }) })
+        : await fetch(url, { headers });
       if (res.status === 429) { await sleep(1000 * (Number(res.headers.get('retry-after')) || 30)); last = '429'; continue; }
       if (!res.ok) { last = `HTTP ${res.status}`; continue; }
       const body = await res.json();
@@ -39,7 +45,8 @@ async function wd(url) {
   }
   throw new Error(`${url}: ${last}`);
 }
-const sparql = (q) => wd(`https://query.wikidata.org/sparql?format=json&query=${encodeURIComponent(q)}`).then((b) => b.results.bindings);
+const SPARQL = 'https://query.wikidata.org/sparql?format=json';
+const sparql = (q) => wd(`${SPARQL}&query=${encodeURIComponent(q)}`, q).then((b) => b.results.bindings);
 const v = (b, k) => b[k]?.value ?? null;
 const qid = (uri) => uri?.split('/').pop() ?? null;
 /**

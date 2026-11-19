@@ -5,7 +5,8 @@ import { mkdtempSync, readFileSync, rmSync, writeFileSync, existsSync } from 'no
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { afterEach, beforeEach, describe, expect, it } from 'vitest';
-import { Manifest, coverage, fetchPictures, inventory, reconcile, storePath } from '../tools/screen-catalog/pictures.mjs';
+import { Manifest, bucketOf, coverage, fetchPictures, inventory, packShards, packedPictures, reconcile, storePath } from '../tools/screen-catalog/pictures.mjs';
+import { openPack } from '../tools/pack-format.mjs';
 
 // The smallest PNG header the tool can measure: 8 signature bytes, an IHDR of width 2 and height 3.
 const png = (tag: number) => Buffer.concat([Buffer.from([0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a, 0, 0, 0, 13, 0x49, 0x48, 0x44, 0x52, 0, 0, 0, 2, 0, 0, 0, 3]), Buffer.from([tag, tag, tag, tag])]);
@@ -159,5 +160,33 @@ describe('fetching', () => {
     expect(man.get('person:10', 'profile')).toMatchObject({ status: 'not-attempted', path: '/new.jpg' });
     writeFileSync(join(dir, 'x'), ''); // nothing else in the folder is touched
     expect(existsSync(join(dir, 'x'))).toBe(true);
+  });
+});
+
+// Kept once (from November 18, 2026): packing with `drop` leaves each picture only in its pack, and what reads the store
+// reads the packs too, so nothing is fetched again and a later packing still has every picture.
+describe('pictures kept only in their packs', () => {
+  it('drops each stored picture once every record using it is packed; the next inventory, fetch and packing find them there', async () => {
+    reconcile(man, rows(), { store });
+    await fetchPictures(man, { store, ...quiet, transport: async () => ok(7) });
+    const out = join(dir, 'packs');
+    const first = packShards(man, { store, out, drop: true });
+    const pictures = (ix: typeof first.index) => Object.values(ix.kinds).reduce((n, k) => n + k.pictures, 0);
+    expect(pictures(first.index)).toBe(8);
+    // person:10 and person:13 share /a.jpg: it goes once both are packed, and so does every other.
+    for (const [size, path] of [['w185', '/a.jpg'], ['w185', '/p2.jpg'], ['w300', '/b1.jpg'], ['w154', '/l.png']]) expect(existsSync(join(store, storePath(size, path)))).toBe(false);
+    const packed = packedPictures(out);
+    expect(packed.has('profile|person:13|/a.jpg')).toBe(true);
+    expect(reconcile(man, rows(), { store, packed }).stale).toBe(0);
+    let asked = 0;
+    await fetchPictures(man, { store, ...quiet, transport: async () => { asked++; return ok(8); } });
+    expect(asked).toBe(0);
+    const again = packShards(man, { store, out, drop: true });
+    expect([pictures(again.index), again.missing]).toEqual([8, 0]);
+    const part = `profile-${bucketOf('person:13')}`;
+    const pack = openPack(join(out, `${part}.slatepack`));
+    try { expect(pack.get(`pictures/${part}/person:13`)?.equals(png(7))).toBe(true); } finally { pack.close(); }
+    // Without the packs, the store alone says every one of them is gone.
+    expect(reconcile(man, rows(), { store }).stale).toBe(8);
   });
 });

@@ -8,7 +8,7 @@ import type { Route } from '../engine/types';
 import { Picture, PictureDetails } from './Picture';
 import { COMPANIES, LEADERSHIP_GAPS, checkedFor, company as registryCompany, groupOf, joinedGroup, type CompanyRecord, type LeadershipRole } from '../catalog/registry';
 import {
-  ageAt, executive, fileFor, filmographyView, happenedBy, leadershipAt, lifeAt, madeInGroup, moneyOrUnknown, ownersAt, parseRef, registryFor, titleStanding,
+  ageAt, biographyAt, creditWhen, executive, fileFor, filmographyView, happenedBy, leadershipAt, lifeAt, madeInGroup, moneyOrUnknown, ownersAt, parseRef, registryFor, titleStanding,
   type CatalogIndex, type CompanyFilmography, type NetworkRecord, type PersonCredit, type PersonRecord, type SeasonRecord, type SortKey, type TitleRecord,
 } from '../catalog/model';
 import { retryCatalog, useCatalogFile, type Loaded } from '../catalog/load';
@@ -912,7 +912,11 @@ export function PersonPage({ refId }: { refId: string }) {
                 {life?.died && <><dt>Died</dt><dd>{day(life.died)}{age?.atDeath ? `, aged ${age.years}` : ''}</dd></>}
                 {p.details.alsoKnownAs.length > 0 && <><dt>Also Known As</dt><dd>{p.details.alsoKnownAs.join(', ')}</dd></>}
               </dl>
-              {p.details.biography && <p className="muted">{p.details.biography}</p>}
+              {p.details.biography && (() => {
+                const later = p.credits.filter((c) => c.date && !happenedBy(c.on?.[0] ?? c.date, today)).map((c) => c.title);
+                const bio = biographyAt(p.details.biography, today, p.details.retrievedAt, later);
+                return <>{bio.text && <p className="muted">{bio.text}</p>}{bio.cut && <p className="dim small">The rest of this biography tells of what comes after {formatDateKey(today)}, your story's date, so it isn't shown yet.</p>}</>;
+              })()}
               <p className="dim small">From TMDB, {formatDateKey(p.details.retrievedAt.slice(0, 10))}.</p>
             </>
           ) : <p className="muted">{index.status === 'ready' && index.data.peopleRule.all
@@ -922,14 +926,14 @@ export function PersonPage({ refId }: { refId: string }) {
         <PersonWork record={p} gathered={index.status === 'ready' ? index.data.retrieved.from ?? index.data.builtAt : new Date().toISOString()} />
         <Panel title="Credits In The Catalog" subtitle="Their credits on the titles this catalog covers, from TMDB. Their other work isn't gathered. A credit is a record of past work: it doesn't say who they work for now, and what they do in your story is kept apart, above.">
           {CREDIT_GROUPS.map((g) => {
-            const cs = p.credits.filter((c) => g.kinds.includes(c.kind)).sort((a, b) => (b.date ?? '').localeCompare(a.date ?? ''));
+            const cs = p.credits.filter((c) => g.kinds.includes(c.kind)).sort((a, b) => (b.on?.[0] ?? b.date ?? '').localeCompare(a.on?.[0] ?? a.date ?? ''));
             if (!cs.length) return null;
             return (
               <section key={g.title}>
                 <h3>{g.title}</h3>
                 <Expandable items={cs} label="Credits" render={(c, i) => {
                   const to: Route = { view: c.kind.startsWith('episode') ? 'episode' : 'title', ref: c.ref } as Route;
-                  return <li key={`${c.ref}-${c.kind}-${i}`} className="list-item"><span className="grow"><Link to={to}>{c.title}</Link> <span className="dim small">{c.role ?? ''}{c.episodes ? ` (${plural(c.episodes, 'episode')})` : ''}</span></span><span className="dim small">{happenedBy(c.date, today) ? yearOf(c.date) : c.date ? 'not released yet' : 'undated'}</span></li>;
+                  return <li key={`${c.ref}-${c.kind}-${i}`} className="list-item"><span className="grow"><Link to={to}>{c.title}</Link> <span className="dim small">{c.role ?? ''}{c.episodes ? ` (${plural(c.episodes, 'episode')})` : ''}</span></span><span className="dim small">{creditWhen(c, today)}</span></li>;
                 }} />
               </section>
             );

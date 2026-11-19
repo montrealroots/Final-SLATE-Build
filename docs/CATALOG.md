@@ -5,6 +5,26 @@ and labels and their leadership, and the films and series TMDB credits to them, 
 and people. Nothing in it changes the simulation. The coverage figures from the gathering run are in
 `docs/CATALOG-COVERAGE.md`.
 
+## TMDB's Most-Watched Titles (November 18, 2026)
+
+The owner asked for all of TMDB, gathered like the first haul and with the complete pictures pack. TMDB's lists of
+November 17, 2026 hold 1,276,903 films, 236,944 series and 5,105,543 people. Gathering all of them would take about
+150 to 250 GB and two days of requests, and their pictures about 70 GB more. The session had 7.2 GB free, and its
+disk can't be made larger. The owner chose the biggest slice that fits: the titles most people have seen.
+
+- **What is added.** Every film and every series with at least 20 votes on TMDB (`WATCHED_VOTES` in
+  `tools/screen-catalog/import.mjs`): 67,498 films and 12,931 series on November 18. The followed companies' titles were
+  already in the catalog, and are found again here.
+- **How they are found.** `discover/movie` and `discover/tv` sorted by vote count, one release year at a time from 1874,
+  so no query passes the 500-page cap (`discoverWatched`).
+- **What they carry.** The same as the companies' titles: details, credits, seasons, episodes and everyone credited.
+- **Where they show.** A title no followed company made has its own page, is found in search and in its people's
+  credits, and is on no company's list. Its production companies are named on its page as TMDB credits them.
+- **The cache kept smaller.** Until this run every response was its own file: 800,000 files averaging 2.2 KB, each
+  taking at least a 4 KB disk block, so the 1.7 GB of answers held 4.5 GB of disk. Responses are now compressed and
+  appended to 256 bucket logs (`tools/screen-catalog/tmdb.mjs`). A record cut short by a crash is dropped and fetched
+  again. `node tools/screen-catalog/tmdb.mjs --compact` moved the old files in.
+
 ## Asia's Studios And Televisa (November 18, 2026)
 
 Read the same day, the same way:
@@ -442,6 +462,17 @@ of every episode. Each episode's page has its own credits.
 - **People.** A death after the save's date isn't shown. A person's page gives their age on the save's date, or the
   age they died at once their death has happened. Ages turn on the birthday by the game's own rule: a February 29
   birthday is observed on February 28 in other years, as the player's own age is.
+- **Biographies** (`biographyAt`, from November 19, 2026). TMDB's biography is written now, so for an earlier save it
+  tells what hasn't happened yet: a save in January 2026 read of a casting announced later that year. The text stops at
+  the first sentence that names a year after the save's (up to two years past when it was written, so a title like Blade
+  Runner 2049 isn't read as a date) or one of the person's titles not out by then, and the page says the rest tells of
+  what comes later. Biographies run in the order of a life, so what follows goes too. Wikipedia's credit line, which its
+  licence requires, is kept. A later event in a sentence with no year and no title of theirs isn't caught.
+- **Series credits** (`creditWhen`, from November 19, 2026). A person's series credit gives the years they worked on it
+  by the save's date, from the seasons whose cast or crew they were in and the episodes they guested on or crewed, not
+  the year the series began: until then a recent host of Saturday Night Live read as 1975. A series they haven't worked
+  on yet at the save's date is "not aired yet". A catalog built before then has no such years, and its series credits
+  say "series began" and the year.
 - **Ownership.** A company acquired after the save's date says it isn't part of The Walt Disney Company yet. A title
   credited to an acquired company is marked "Released before the acquisition" when its release date is earlier. Until
   November 11, 2026 it said "made before", which the records can't tell: they hold release dates, not when a film was made
@@ -489,7 +520,10 @@ of every episode. Each episode's page has its own credits.
   - filmography filters;
   - reference collisions between films and series;
   - the importer's rate limits, retries, failed queue, 404s, refused credential, cache reuse and six-month limit;
+  - the cache's bucket logs: old files moved in, answers read back by a later run, a record cut short dropped;
   - discovery's pagination, moved titles and page-cap split;
+  - the most-watched discovery: a year at a time, every page, the votes asked for, failed pages kept;
+  - a title no followed company made: its page, its search entry, and no company list;
   - the build's unknown values, deduplication, and series versus episode credits;
   - the credential scan.
 - **Browser tests with a fixture.** `e2e/catalog.spec.ts` runs on desktop and phone with a made-up fixture

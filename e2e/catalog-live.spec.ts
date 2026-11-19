@@ -32,6 +32,9 @@ test('live: Pixar, Toy Story, a cast member, another of their credits', async ({
   await card(page, 'Cast').getByRole('button', { name: 'Tom Hanks' }).click();
   await expect(page.getByRole('heading', { name: 'Tom Hanks', level: 1 })).toBeVisible();
   const credits = card(page, 'Credits In The Catalog');
+  // From the most-watched build of November 18, 2026 he has more than the 40 film credits a list shows at first.
+  const more = credits.getByRole('button', { name: /^Show All \d+ Credits$/ }).first();
+  if (await more.count()) await more.click();
   await credits.getByRole('button', { name: 'Toy Story 2', exact: true }).click();
   await expect(page.getByRole('heading', { name: 'Toy Story 2', level: 1 })).toBeVisible();
   await page.screenshot({ path: `test-results/catalog-live-${info.project.name}-film.png`, fullPage: true });

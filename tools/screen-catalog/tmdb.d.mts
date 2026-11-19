@@ -3,6 +3,7 @@ export const API: string;
 export const CACHE: string;
 export const MAX_AGE_DAYS: number;
 export function cached(path: string): { path: string; status: number; retrievedAt: string; body: unknown } | null;
+export function compactLegacy(say?: (line: string) => void): number;
 export function fresh(at: string, now?: number): boolean;
 export function failures(): { path: string; error: string; at: string }[];
 export function saveFailures(): void;

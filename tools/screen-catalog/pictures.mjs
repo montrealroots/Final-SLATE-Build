@@ -14,10 +14,10 @@
 // Pictures are in .screen-images/store/ (git-ignored), named by TMDB's size and path, so one picture that several
 // records share is fetched and kept once. A picture older than TMDB's six months is `stale` and is fetched again.
 import { createHash } from 'node:crypto';
-import { existsSync, mkdirSync, readFileSync, readdirSync, renameSync, statSync, writeFileSync } from 'node:fs';
+import { existsSync, mkdirSync, readFileSync, readdirSync, renameSync, rmSync, statSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { dimensions } from './images.mjs';
-import { writePack } from '../pack-format.mjs';
+import { openPack, writePack } from '../pack-format.mjs';
 
 export const IMAGE_BASE = 'https://image.tmdb.org/t/p/';
 export const STATUSES = ['ready', 'no-image-published', 'temporarily-failed', 'permission-limited', 'stale', 'intentionally-excluded', 'not-attempted'];
@@ -101,7 +101,7 @@ export class Manifest {
  * an excluded one says why; a `ready` row whose path changed, whose file is gone or is older than six months goes
  * back to be fetched (`stale`). Rows for entities no longer in the catalog are dropped. Returns the counts.
  */
-export function reconcile(man, rows, { store, now = Date.now(), exists = existsSync } = {}) {
+export function reconcile(man, rows, { store, now = Date.now(), exists = existsSync, packed = new Set() } = {}) {
   const seen = new Set();
   const n = { added: 0, kept: 0, stale: 0, dropped: 0 };
   for (const r of rows) {
@@ -112,7 +112,8 @@ export function reconcile(man, rows, { store, now = Date.now(), exists = existsS
     if (r.excluded) { man.set({ ...base, status: 'intentionally-excluded', note: r.excluded }); continue; }
     if (!r.path) { man.set({ ...base, status: r.uncached ? 'not-attempted' : 'no-image-published', ...(r.uncached ? { note: "its details aren't in the catalog's cache" } : {}) }); continue; }
     if (old && old.path === r.path && old.status === 'ready') {
-      const here = exists(join(store, storePath(size, r.path)));
+      // In the store, or in its pack (`packed`, from packedPictures): a packing with `drop` keeps a picture only there.
+      const here = exists(join(store, storePath(size, r.path))) || packed.has(`${r.kind}|${r.entity}|${r.path}`);
       if (here && now - Date.parse(old.at) < MAX_AGE_DAYS * DAY) { n.kept++; continue; }
       man.set({ ...old, status: 'stale', note: here ? 'older than six months' : 'its file is gone' }); n.stale++; continue;
     }
@@ -244,12 +245,14 @@ const RIGHTS = "These pictures are TMDB's, gathered for the owner's own copy of 
  * person credited at five studios is downloaded once. Only rows that are ready and whose file is there go in; nothing
  * stands in for a picture that isn't.
  */
-export function packShards(man, { store, out, now = () => Date.now(), log = () => {} }) {
+export function packShards(man, { store, out, drop = false, now = () => Date.now(), log = () => {} }) {
   const shards = new Map();
+  const refs = new Map(); // a stored file -> the ready rows that use it, so a file two records share goes once both are packed
   for (const r of man.rows()) {
     if (r.status !== 'ready') continue;
     const part = `${r.kind}-${bucketOf(r.entity)}`;
     (shards.get(part) ?? shards.set(part, []).get(part)).push(r);
+    refs.set(r.file, (refs.get(r.file) ?? 0) + 1);
   }
   mkdirSync(out, { recursive: true });
   const builtAt = new Date(now()).toISOString();
@@ -257,14 +260,20 @@ export function packShards(man, { store, out, now = () => Date.now(), log = () =
   let from = '9999', to = '0000', missing = 0;
   for (const [part, rows] of [...shards].sort(([a], [b]) => a.localeCompare(b))) {
     const kind = rows[0].kind;
-    const entries = {}; const files = [];
+    const entries = {}; const files = []; const used = [];
+    // A picture packed before and dropped from the store is read from the pack it went into (from November 18, 2026).
+    const before = existsSync(join(out, `${part}.slatepack`)) ? openPack(join(out, `${part}.slatepack`)) : null;
+    const was = before ? JSON.parse(before.get(`pictures/${part}/index.json`)?.toString('utf8') ?? '{"entries":{}}').entries : {};
     for (const r of rows.sort((a, b) => a.entity.localeCompare(b.entity))) {
       const full = join(store, r.file);
-      if (!existsSync(full)) { missing++; continue; }
+      const bytes = existsSync(full) ? readFileSync(full) : was[r.entity]?.p === r.path ? before.get(`pictures/${part}/${r.entity}`) : null;
+      if (!bytes) { missing++; continue; }
+      if (existsSync(full)) used.push(r.file);
       entries[r.entity] = { p: r.path, w: r.w, h: r.h, at: r.at };
-      files.push([`pictures/${part}/${r.entity}`, readFileSync(full)]);
+      files.push([`pictures/${part}/${r.entity}`, bytes]);
       if (r.at < from) from = r.at; if (r.at > to) to = r.at;
     }
+    before?.close();
     if (!files.length) continue;
     const retrieved = { from: rows.reduce((m, r) => (r.at < m ? r.at : m), '9999'), to: rows.reduce((m, r) => (r.at > m ? r.at : m), '0000'), maxAgeDays: MAX_AGE_DAYS };
     const index = { version: 1, provider: 'TMDB', kind, size: RENDITION[kind], rights: RIGHTS, entries };
@@ -275,10 +284,28 @@ export function packShards(man, { store, out, now = () => Date.now(), log = () =
     k.pictures += files.length; k.bytes += buf.length;
     k.shards.push({ part, file, pictures: files.length, bytes: buf.length, sha256: createHash('sha256').update(buf).digest('hex') });
     log(`${file}: ${files.length} pictures, ${(buf.length / 1048576).toFixed(1)} MB`);
+    // Kept once: until November 18, 2026 every picture stayed in the store beside its pack, 8 GB for 3.6 GB of pictures,
+    // and the most-watched catalog's 12.6 GB wouldn't have fitted twice in the session's disk.
+    if (drop) for (const f of used) { const n = refs.get(f) - 1; refs.set(f, n); if (n === 0) rmSync(join(store, f), { force: true }); }
   }
   const index = { version: 1, provider: 'TMDB', builtAt, retrieved: { from, to, maxAgeDays: MAX_AGE_DAYS }, rights: RIGHTS, kinds };
   writeFileSync(join(out, 'index.json.tmp'), JSON.stringify(index)); renameSync(join(out, 'index.json.tmp'), join(out, 'index.json'));
   return { index, missing };
+}
+
+/** Every picture in the packs in `out`, as `kind|entity|path`, for reconcile: what a packing with `drop` keeps only there. */
+export function packedPictures(out) {
+  const seen = new Set();
+  if (!existsSync(out)) return seen;
+  for (const f of readdirSync(out).filter((x) => x.endsWith('.slatepack'))) {
+    const pack = openPack(join(out, f));
+    try {
+      const part = f.replace(/\.slatepack$/, '');
+      const ix = pack.get(`pictures/${part}/index.json`);
+      if (ix) { const { kind, entries } = JSON.parse(ix.toString('utf8')); for (const [entity, e] of Object.entries(entries)) seen.add(`${kind}|${entity}|${e.p}`); }
+    } finally { pack.close(); }
+  }
+  return seen;
 }
 
 async function main() {
@@ -299,7 +326,7 @@ async function main() {
     // the session's proxy, and cached with everything else.
     const { get } = await import('./tmdb.mjs');
     for (const c of companies) if (!cached(`company/${c.tmdb}`)) await get(`company/${c.tmdb}`);
-    const n = reconcile(man, inventory({ manifest, read, companies, networks: manifest.networks ?? Object.keys(networks?.networks ?? {}) }), { store });
+    const n = reconcile(man, inventory({ manifest, read, companies, networks: manifest.networks ?? Object.keys(networks?.networks ?? {}) }), { store, packed: packedPictures(arg('out', 'packs/pictures')) });
     man.flush();
     log(`Inventory: ${n.added} to fetch, ${n.kept} unchanged, ${n.stale} to fetch again, ${n.dropped} no longer in the catalog.`);
   } else if (cmd === 'fetch') {
@@ -307,10 +334,10 @@ async function main() {
     const r = await fetchPictures(man, { store, kinds: arg('kinds', KINDS.join(',')).split(','), limit: Number(arg('limit', 'Infinity')), rate: Number(arg('rate', '20')), stop: () => Date.now() > until, log });
     log(`${r.stopped ? 'Stopped' : 'Done'}: wanted ${r.wanted}; ${r.fetched} fetched (${(r.bytes / 1048576).toFixed(1)} MB), ${r.reused} reused, ${r.failed} failed.`);
   } else if (cmd === 'pack') {
-    const r = packShards(man, { store, out: arg('out', 'packs/pictures'), log });
+    const r = packShards(man, { store, out: arg('out', 'packs/pictures'), drop: process.argv.includes('--drop'), log });
     const all = Object.values(r.index.kinds);
     log(`Packed ${all.reduce((n, k) => n + k.pictures, 0).toLocaleString('en-US')} pictures in ${all.reduce((n, k) => n + k.shards.length, 0)} packs, ${(all.reduce((n, k) => n + k.bytes, 0) / 1048576).toFixed(0)} MB${r.missing ? `; ${r.missing} listed as ready had no file and were left out` : ''}.`);
-  } else if (cmd !== 'report') { console.error('Usage: pictures.mjs inventory | fetch [--kinds=] [--limit=] [--minutes=] [--rate=] | report | pack [--out=]'); process.exit(2); }
+  } else if (cmd !== 'report') { console.error('Usage: pictures.mjs inventory | fetch [--kinds=] [--limit=] [--minutes=] [--rate=] | report | pack [--out=] [--drop]'); process.exit(2); }
   const by = coverage(man);
   if (cmd === 'report') {
     const manifest = JSON.parse(readFileSync(join(CACHE, 'manifest.json'), 'utf8'));

@@ -232,8 +232,10 @@ test('the owner\'s real logos install from the owner\'s own server and show on a
   await expect(s).toContainText('From TMDB, gathered');
   await kindRow(page, 'Company And Network Logos').getByRole('button', { name: 'Download Company And Network Logos' }).click();
   const before = s.getByRole('group', { name: 'Before You Download' });
-  await expect(before).toContainText(`${listing.kinds.logo.pictures} pictures in ${listing.kinds.logo.shards.length} parts`);
-  await before.getByRole('button', { name: `Download ${listing.kinds.logo.pictures} Pictures` }).click();
+  // The page writes counts with thousands separators; from November 18, 2026 there are more than 999 logos.
+  const logos = listing.kinds.logo.pictures.toLocaleString('en-US');
+  await expect(before).toContainText(`${logos} pictures in ${listing.kinds.logo.shards.length} parts`);
+  await before.getByRole('button', { name: `Download ${logos} Pictures` }).click();
   await expect(s.getByRole('status')).toContainText('Downloaded and installed.', { timeout: 120_000 });
   await expect(kindRow(page, 'Company And Network Logos')).toContainText('Installed');
   await nav(page, 'Companies');

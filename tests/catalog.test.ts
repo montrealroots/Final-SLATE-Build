@@ -2,21 +2,23 @@
 // the build, and the rules for showing it at a save's date. The importer is tested against a stand-in for TMDB with
 // made-up records; no real TMDB data is in this repository (TMDB's terms: cached at most six months, not redistributed).
 import { execFileSync } from 'node:child_process';
-import { existsSync, mkdtempSync, readFileSync, readdirSync, writeFileSync } from 'node:fs';
+import { createHash } from 'node:crypto';
+import { appendFileSync, existsSync, mkdirSync, mkdtempSync, readFileSync, readdirSync, rmSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { beforeAll, describe, expect, it } from 'vitest';
 import { COMPANIES, DISCOVERED, LEADERSHIP, REGISTRY_CHECKED, REGISTRY_CHECKED_NBCU, checkedFor, company, groupOf, joinedGroup } from '../src/catalog/registry';
-import { ageAt, fileFor, filmographyView, leadershipAt, lifeAt, madeInGroup, moneyOrUnknown, ownersAt, parseRef, standingAt, titleStanding, type FilmographyEntry } from '../src/catalog/model';
+import { ageAt, biographyAt, creditWhen, fileFor, filmographyView, leadershipAt, lifeAt, madeInGroup, moneyOrUnknown, ownersAt, parseRef, standingAt, titleStanding, type FilmographyEntry } from '../src/catalog/model';
 
 const CACHE = mkdtempSync(join(tmpdir(), 'slate-catalog-cache-'));
 process.env.SCREEN_CATALOG_CACHE = CACHE;
 type Tmdb = typeof import('../tools/screen-catalog/tmdb.mjs');
 let tmdb: Tmdb;
 let discover: typeof import('../tools/screen-catalog/import.mjs').discover;
+let discoverWatched: typeof import('../tools/screen-catalog/import.mjs').discoverWatched;
 beforeAll(async () => {
   tmdb = await import('../tools/screen-catalog/tmdb.mjs');
-  ({ discover } = await import('../tools/screen-catalog/import.mjs'));
+  ({ discover, discoverWatched } = await import('../tools/screen-catalog/import.mjs'));
 });
 const json = (status: number, body: unknown, headers: Record<string, string> = {}) => new Response(status === 200 ? JSON.stringify(body) : '{}', { status, headers: { 'content-type': 'application/json', ...headers } });
 const noWait = () => Promise.resolve();
@@ -234,6 +236,39 @@ describe('records at the save\'s date', () => {
   });
 });
 
+describe('a person\'s page at the save\'s date', () => {
+  it('dates a series credit by the years they worked on it, not the year the series began', () => {
+    const host = { kind: 'series-cast' as const, date: '1975-10-11', on: ['2026-10-31'] };
+    expect(creditWhen(host, '2027-01-01')).toBe('2026');
+    expect(creditWhen(host, '2026-01-05')).toBe('not aired yet');
+    const regular = { kind: 'series-cast' as const, date: '2021-02-23', on: ['2021-02-23', '2022-01-11', '2023-03-14', '2024-10-07'] };
+    expect(creditWhen(regular, '2026-01-05')).toBe('2021–2024');
+    expect(creditWhen(regular, '2022-06-01')).toBe('2021–2022');
+    expect(creditWhen(regular, '2021-05-01')).toBe('2021');
+    // A catalog built before the years were recorded says what its date is.
+    expect(creditWhen({ kind: 'series-cast', date: '1975-10-11' }, '2026-01-05')).toBe('series began 1975');
+    expect(creditWhen({ kind: 'cast', date: '2020-05-01' }, '2026-01-05')).toBe('2020');
+    expect(creditWhen({ kind: 'cast', date: '2027-05-01' }, '2026-01-05')).toBe('not released yet');
+    expect(creditWhen({ kind: 'cast', date: null }, '2026-01-05')).toBe('undated');
+    expect(creditWhen({ kind: 'episode-guest', date: '2026-10-31' }, '2026-01-05')).toBe('not aired yet');
+  });
+
+  it('stops a biography at the first sentence that tells of later than the save\'s date, keeping Wikipedia\'s credit', () => {
+    const bio = 'Jo Vale (born 2001) is an actress. She starred in Early Days (2020) and Middle Days (2021–2024). Her breakthrough came in Obsession (2025). She was then cast as Rogue. She later appeared in 2027 in Far Days.\n\nDescription above from the Wikipedia article Jo Vale, licensed under CC-BY-SA, full list of contributors on Wikipedia.';
+    const credit = 'Description above from the Wikipedia article Jo Vale, licensed under CC-BY-SA, full list of contributors on Wikipedia.';
+    // In January 2026 Obsession isn't out, so the text stops before it, and everything after it goes too.
+    expect(biographyAt(bio, '2026-01-05', '2026-11-10', ['Obsession'])).toEqual({ text: `Jo Vale (born 2001) is an actress. She starred in Early Days (2020) and Middle Days (2021–2024). ${credit}`, cut: true });
+    // Once it is out, the text runs to the sentence about 2027.
+    expect(biographyAt(bio, '2026-06-01', '2026-11-10', []).text).toBe(`Jo Vale (born 2001) is an actress. She starred in Early Days (2020) and Middle Days (2021–2024). Her breakthrough came in Obsession (2025). She was then cast as Rogue. ${credit}`);
+    // A year after the save's date stops it even with no title to go by; in 2028 the whole of it is shown.
+    expect(biographyAt(bio, '2022-01-01', '2026-11-10', []).text).toBe(`Jo Vale (born 2001) is an actress. ${credit}`);
+    expect(biographyAt(bio, '2028-01-01', '2026-11-10', [])).toEqual({ text: bio, cut: false });
+    // A year far past when it was written is a title, not a date; a title is matched as a name, not inside a word.
+    expect(biographyAt('She starred in Blade Runner 2049. She loved it.', '2020-01-01', '2026-11-10', []).cut).toBe(false);
+    expect(biographyAt('Her obsession with film began early. Obsessions run deep.', '2020-01-01', '2026-11-10', ['Obsession']).cut).toBe(false);
+  });
+});
+
 describe('networks and their owners', () => {
   it('takes a kind of outlet only from cable and streaming classes, and compares websites without scheme, www or trailing slash', async () => {
     // Imported here, not at the top: it loads tmdb.mjs, which must see this file's cache directory first.
@@ -295,6 +330,32 @@ describe('the importer', () => {
     expect(tmdb.failures().map((f) => f.path)).not.toContain('t/broken');
   });
 
+  it('keeps its answers compressed in bucket logs: old files moved in, answers read back, a record cut short by a crash dropped', () => {
+    const dir = mkdtempSync(join(tmpdir(), 'slate-catalog-logs-'));
+    const sha = (p: string) => createHash('sha1').update(p).digest('hex');
+    // A response in the one-file-per-response form the cache used until November 18, 2026.
+    const old = { path: 'p/old', status: 200, retrievedAt: new Date().toISOString(), body: { was: 'a file' } };
+    mkdirSync(join(dir, 'http', sha('p/old').slice(0, 2)), { recursive: true });
+    writeFileSync(join(dir, 'http', sha('p/old').slice(0, 2), `${sha('p/old')}.json`), JSON.stringify(old));
+    // Each step in a fresh process, so each reads the logs from disk.
+    const run = (code: string) => execFileSync(process.execPath, ['--input-type=module', '-e', `const t = await import(${JSON.stringify(join(process.cwd(), 'tools/screen-catalog/tmdb.mjs'))}); const ok = (b) => new Response(JSON.stringify(b), { status: 200 }); ${code}`], { env: { ...process.env, SCREEN_CATALOG_CACHE: dir }, encoding: 'utf8' }).trim();
+    expect(run('console.log(JSON.stringify(t.cached("p/old").body))')).toBe('{"was":"a file"}');
+    expect(run('console.log(t.compactLegacy())')).toBe('1');
+    expect(readdirSync(join(dir, 'http')).every((f) => f.endsWith('.log'))).toBe(true);
+    expect(run('console.log(JSON.stringify(t.cached("p/old").body))')).toBe('{"was":"a file"}');
+    // An answer fetched is read back by the next run, not asked for again.
+    run('t.useTransport(async () => ok({ n: 1 })); await t.get("p/x");');
+    expect(run('t.useTransport(async () => { throw new Error("asked again"); }); console.log(JSON.stringify(await t.get("p/x")))')).toBe('{"n":1}');
+    // A crash halfway through a record: the next process drops it, and what it writes after is read.
+    const log = join(dir, 'http', `${sha('p/x').slice(0, 2)}.log`);
+    appendFileSync(log, Buffer.concat([Buffer.from(sha('p/y'), 'hex'), Buffer.from([200, 0, 0, 0]), Buffer.from('cut')]));
+    expect(run('console.log(t.cached("p/y"))')).toBe('null');
+    const sameBucket = Array.from({ length: 5000 }, (_, i) => `p/z${i}`).find((p) => sha(p).slice(0, 2) === sha('p/x').slice(0, 2))!;
+    run(`t.useTransport(async () => ok({ after: 'the crash' })); await t.get(${JSON.stringify(sameBucket)});`);
+    expect(run(`console.log(JSON.stringify(t.cached(${JSON.stringify(sameBucket)}).body), JSON.stringify(t.cached("p/x").body))`)).toBe('{"after":"the crash"} {"n":1}');
+    rmSync(dir, { recursive: true, force: true });
+  });
+
   it('stops, without caching, when TMDB refuses the credential', async () => {
     tmdb.useTransport(async () => json(401, null), noWait);
     await expect(tmdb.get('t/refused')).rejects.toThrow(/network secret for api\.themoviedb\.org is missing or not accepted/);
@@ -330,6 +391,23 @@ describe('the importer', () => {
     expect(b.split).toBe(true);
     expect(b.ids).toHaveLength(28); // 1900 to 2035 in five-year slices
   });
+
+  it("gathers TMDB's most-watched titles a year at a time, every page, at least the votes asked for, keeping what failed", async () => {
+    const asked: string[] = [];
+    tmdb.useTransport(async (url: string) => {
+      const u = new URL(url);
+      asked.push(url);
+      const year = Number(u.searchParams.get('first_air_date.gte')!.slice(0, 4));
+      const page = Number(u.searchParams.get('page'));
+      if (year === 2001 && page === 2) return json(503, null);
+      // Two pages a year, two series a page, numbered by year.
+      return json(200, { page, total_pages: 2, total_results: 4, results: [1, 2].map((n) => ({ id: year * 10 + (page - 1) * 2 + n })) });
+    }, noWait);
+    const w = await discoverWatched('tv', 20, [2000, 2002]);
+    expect(asked.every((a) => new URL(a).searchParams.get('vote_count.gte') === '20' && new URL(a).searchParams.get('sort_by') === 'vote_count.desc')).toBe(true);
+    expect([w.companyId, w.watched, w.total, w.failedPages]).toEqual([null, 20, 12, ['2001:2']]);
+    expect(w.ids.sort()).toEqual([20001, 20002, 20003, 20004, 20011, 20012, 20021, 20022, 20023, 20024]);
+  });
 });
 
 describe('the build', () => {
@@ -347,21 +425,24 @@ describe('the build', () => {
       aggregate_credits: { cast: [{ id: 800001, name: 'Ada Quill', roles: [{ character: 'Ida', episode_count: 1 }], total_episode_count: 1 }], crew: [] }, credits: { cast: [], crew: [] },
       networks: [{ id: 2, name: 'ABC' }], created_by: [{ id: 800003, name: 'Cy Vale' }], production_companies: [{ id: 1556, name: '20th Century Fox Television' }], external_ids: {}, content_ratings: { results: [] }, vote_count: 3, vote_average: 7.5,
     };
-    const season = { season_number: 1, name: 'Season 1', air_date: '2020-01-01', credits: { cast: [] }, episodes: [
+    const season = { season_number: 1, name: 'Season 1', air_date: '2020-01-01', credits: { cast: [{ id: 800001, name: 'Ada Quill', character: 'Ida', order: 0 }] }, episodes: [
       { episode_number: 1, name: 'Pilot', air_date: '2020-01-01', vote_count: 0, crew: [{ id: 800002, name: 'Ben Rook', department: 'Directing', job: 'Director' }], guest_stars: [{ id: 800004, name: 'Dee Guest', character: 'Visitor', order: 0 }] },
-      { episode_number: 2, name: 'Second', air_date: '2020-01-08', vote_count: 0, crew: [], guest_stars: [] },
+      // Credits TMDB keeps with no person (found November 18, 2026 on two series): only a hex person_id and no name.
+      { episode_number: 2, name: 'Second', air_date: '2020-01-08', vote_count: 0, crew: [{ job: 'Writer', department: 'Writing', person_id: '6738577873a45e5184bf5614', credit_id: '6738577873a45e5184bf561b' }], guest_stars: [{ person_id: '69e85b9d2acaddea8523f2d3', character: 'School Child (uncredited)', credit_id: '69e85b9d2acaddea8523f2da', order: 565 }] },
     ] };
     const responses: Record<string, unknown> = {
       'movie/900001?append_to_response=credits,external_ids,release_dates': movie,
       'tv/900001?append_to_response=aggregate_credits,credits,external_ids,content_ratings': series,
       'tv/900001/season/1?append_to_response=credits': season,
+      // One of TMDB's most-watched, from a company the registry doesn't follow.
+      'movie/900002?append_to_response=credits,external_ids,release_dates': { ...movie, id: 900002, title: 'Far From Any Studio', original_title: 'Far From Any Studio', production_companies: [{ id: 999999, name: 'Unfollowed Films', origin_country: 'FR' }], credits: { cast: [], crew: [] }, release_dates: { results: [] } },
       'person/800001': { id: 800001, name: 'Ada Quill', birthday: '1960-02-02', deathday: '2030-01-01', also_known_as: [] },
       'person/800002': { id: 800002, name: 'Ben Rook', birthday: null, deathday: null, also_known_as: [] },
     };
     tmdb.useTransport(async (url: string) => { const p = url.replace(tmdb.API, ''); return p in responses ? json(200, responses[p]) : json(404, null); }, noWait);
     for (const p of Object.keys(responses)) await tmdb.get(p);
     writeFileSync(join(CACHE, 'manifest.json'), JSON.stringify({
-      titles: [{ key: 'movie:900001', companies: [25, 2] }, { key: 'tv:900001', companies: [1556] }], seasons: ['tv/900001/season/1?append_to_response=credits'], people: [800001, 800002],
+      titles: [{ key: 'movie:900001', companies: [25, 2] }, { key: 'tv:900001', companies: [1556] }, { key: 'movie:900002', companies: [] }], seasons: ['tv/900001/season/1?append_to_response=credits'], people: [800001, 800002],
       peopleRule: { cast: 10, jobs: ['Director'] }, queries: [], failures: [], stats: {},
     }));
     // What tools/screen-catalog/networks.mjs writes, for a made-up network record: its owners and kind from Wikidata.
@@ -376,7 +457,11 @@ describe('the build', () => {
     expect(read('titles/tv-900001.json').title).toBe('Same Number Series');
     expect(read('companies/25.json').entries).toEqual([{ ref: 'movie:900001', title: 'The Lantern Keeper', date: '1997-06-01', credited: '20th Century Fox', genres: ['Drama'], status: 'Released' }]);
     expect(read('companies/2.json').entries.map((e: FilmographyEntry) => e.ref)).toEqual(['movie:900001']);
-    expect(read('index.json').counts).toMatchObject({ movies: 1, series: 1, seasons: 1, episodes: 2, people: 4, peopleWithDetails: 2 });
+    expect(read('index.json').counts).toMatchObject({ movies: 2, series: 1, seasons: 1, episodes: 2, people: 4, peopleWithDetails: 2 });
+    // A most-watched title no followed company made has its page and is found in search, and is on no company's list.
+    expect(read('titles/movie-900002.json')).toMatchObject({ title: 'Far From Any Studio', discoveredVia: [] });
+    expect(JSON.stringify(read('search/titles.json'))).toContain('Far From Any Studio');
+    expect(existsSync(join(OUT, 'companies/999999.json'))).toBe(false);
     // The world file holds dated events from 2025-10-01 on; these made-up titles are all older, so it has none.
     expect(read('world.json')).toMatchObject({ version: 1, from: '2025-10-01', events: [] });
     expect(read('world.json').horizon).toMatch(/^\d{4}-\d{2}-\d{2}$/);
@@ -403,6 +488,8 @@ describe('the build', () => {
   it('keeps series credits, counted in episodes, apart from each episode\'s own crew and guest cast', () => {
     const people = read('people/1.json'); // 800001 % 500
     expect(people['800001'].credits.map((c: { kind: string; ref: string; episodes?: number }) => [c.kind, c.ref, c.episodes])).toEqual([['cast', 'movie:900001', undefined], ['series-cast', 'tv:900001', 1]]);
+    // The years she worked on the series, from the season's cast: 2020's first day of work, not the year it began.
+    expect(people['800001'].credits.map((c: { on?: string[] }) => c.on)).toEqual([undefined, ['2020-01-01']]);
     expect(people['800001'].details).toMatchObject({ birthday: '1960-02-02', deathday: '2030-01-01' }); // the page hides a death after the save's date
     const guest = read('people/4.json')['800004'];
     expect(guest.credits).toEqual([{ ref: 'tv:900001:s:1:e:1', title: 'Same Number Series: Pilot', date: '2020-01-01', kind: 'episode-guest', role: 'Visitor' }]);

@@ -51,6 +51,31 @@ export async function discover(type, companyId) {
   }
   return { type, companyId, total, pages: first.total_pages, ids: [...ids], split: ranges.length > 1, failedPages };
 }
+/**
+ * TMDB's most-watched titles beyond the followed companies (the owner, November 18, 2026: "Import all of TMDB like the
+ * first haul"): every film and series with at least WATCHED_VOTES votes, a year at a time so no query passes the page cap.
+ * All of TMDB (1,276,903 films and 236,944 series in its November 17 lists) needs some 150 to 250 GB to gather and wouldn't
+ * fit in the session's disk, so the owner chose the titles most people have seen: 67,498 films and 12,931 series.
+ */
+export const WATCHED_VOTES = 20;
+export async function discoverWatched(type, minVotes = WATCHED_VOTES, years = [1874, new Date().getUTCFullYear() + 2]) {
+  const f = type === 'movie' ? 'primary_release_date' : 'first_air_date';
+  const ids = new Set();
+  const failedPages = [];
+  let total = 0;
+  for (let y = years[0]; y <= years[1]; y++) {
+    const q = `discover/${type}?include_adult=false&sort_by=vote_count.desc&vote_count.gte=${minVotes}&${f}.gte=${y}-01-01&${f}.lte=${y}-12-31`;
+    const p1 = await get(`${q}&page=1`);
+    if (!p1) { failedPages.push(`${y}:1`); continue; }
+    total += p1.total_results;
+    const rest = await pool(Array.from({ length: Math.min(PAGE_CAP, p1.total_pages) - 1 }, (_, i) => i + 2), 8, (n) => get(`${q}&page=${n}`));
+    for (const [i, page] of [p1, ...rest].entries()) {
+      if (!page) { failedPages.push(`${y}:${i + 1}`); continue; }
+      for (const x of page.results) ids.add(x.id);
+    }
+  }
+  return { type, companyId: null, watched: minVotes, total, pages: null, ids: [...ids], split: true, failedPages };
+}
 function yearRanges(type) {
   const f = type === 'movie' ? 'primary_release_date' : 'first_air_date';
   const out = [];
@@ -62,47 +87,56 @@ async function main() {
   log(`Discovering titles for ${DISCOVERED.length} companies.`);
   const queries = [];
   for (const c of DISCOVERED) for (const type of ['movie', 'tv']) queries.push(await discover(type, c.tmdb.id));
-  const titles = new Map(); // `${type}:${id}` -> company TMDB ids
+  for (const type of ['movie', 'tv']) queries.push(await discoverWatched(type));
+  const titles = new Map(); // `${type}:${id}` -> company TMDB ids (none for a title found only among the most-watched)
   for (const q of queries) for (const id of q.ids) {
     const k = `${q.type}:${id}`;
     if (!titles.has(k)) titles.set(k, new Set());
-    titles.get(k).add(q.companyId);
+    if (q.companyId !== null) titles.get(k).add(q.companyId);
   }
   log(`Discovered ${titles.size} titles (${[...titles.keys()].filter((k) => k.startsWith('movie')).length} movies).`);
 
+  // What each answer is needed for is taken from it as it comes, and the answer let go: until November 18, 2026 every
+  // title's and season's details were held to the end, and 110,990 titles ran the importer out of memory.
   const keys = [...titles.keys()];
-  const details = await pool(keys, 12, (k) => {
-    const [type, id] = k.split(':');
-    return get(type === 'movie' ? `movie/${id}?append_to_response=credits,external_ids,release_dates` : `tv/${id}?append_to_response=aggregate_credits,credits,external_ids,content_ratings`);
-  });
-  log(`Fetched ${details.filter(Boolean).length} of ${keys.length} titles.`);
-
   const seasons = [];
-  keys.forEach((k, i) => { if (k.startsWith('tv:') && details[i]) for (const s of details[i].seasons ?? []) seasons.push(`tv/${details[i].id}/season/${s.season_number}?append_to_response=credits`); });
-  const seasonBodies = await pool(seasons, 12, (p) => get(p));
-  log(`Fetched ${seasonBodies.filter(Boolean).length} of ${seasons.length} seasons.`);
-
-  // The networks and streaming services the series are on (November 11, 2026, the owner's request): each one's details.
-  // Who owns them isn't in TMDB; tools/screen-catalog/networks.mjs takes that from Wikidata.
-  const networks = [...new Set(details.flatMap((d) => (d?.networks ?? []).map((n) => n.id)))].sort((a, b) => a - b);
-  const networkBodies = await pool(networks, 12, (id) => get(`network/${id}`));
-  log(`Fetched ${networkBodies.filter(Boolean).length} of ${networks.length} networks.`);
-
-  const people = new Set();
-  for (const d of details) {
-    if (!d) continue;
-    const cast = d.credits?.cast ?? [];
-    for (const c of cast.filter((x) => x.order < PEOPLE_CAST)) people.add(c.id);
+  const networkIds = new Set();
+  const people = new Set(); // the people fetched first: top-billed cast, creators and the key crew
+  const others = new Set(); // everyone else credited
+  const add = (list) => { for (const c of list ?? []) others.add(c.id); };
+  const fetched = await pool(keys, 12, async (k) => {
+    const [type, id] = k.split(':');
+    const d = await get(type === 'movie' ? `movie/${id}?append_to_response=credits,external_ids,release_dates` : `tv/${id}?append_to_response=aggregate_credits,credits,external_ids,content_ratings`);
+    if (!d) return false;
+    if (type === 'tv') for (const s of d.seasons ?? []) seasons.push(`tv/${d.id}/season/${s.season_number}?append_to_response=credits`);
+    for (const n of d.networks ?? []) networkIds.add(n.id);
+    for (const c of (d.credits?.cast ?? []).filter((x) => x.order < PEOPLE_CAST)) people.add(c.id);
     for (const c of d.aggregate_credits?.cast?.slice(0, PEOPLE_CAST) ?? []) people.add(c.id);
     for (const c of d.credits?.crew ?? []) if (PEOPLE_JOBS.has(c.job)) people.add(c.id);
     for (const c of d.created_by ?? []) people.add(c.id);
-  }
+    add(d.credits?.cast); add(d.credits?.crew); add(d.aggregate_credits?.cast); add(d.aggregate_credits?.crew);
+    return true;
+  });
+  log(`Fetched ${fetched.filter(Boolean).length} of ${keys.length} titles.`);
+
+  const seasonsFetched = await pool(seasons, 12, async (p) => {
+    const s = await get(p);
+    if (!s) return false;
+    add(s.credits?.cast); add(s.credits?.crew); for (const e of s.episodes ?? []) { add(e.crew); add(e.guest_stars); }
+    return true;
+  });
+  log(`Fetched ${seasonsFetched.filter(Boolean).length} of ${seasons.length} seasons.`);
+
+  // The networks and streaming services the series are on (November 11, 2026, the owner's request): each one's details.
+  // Who owns them isn't in TMDB; tools/screen-catalog/networks.mjs takes that from Wikidata.
+  const networks = [...networkIds].sort((a, b) => a - b);
+  const networkBodies = await pool(networks, 12, async (id) => !!(await get(`network/${id}`)));
+  log(`Fetched ${networkBodies.filter(Boolean).length} of ${networks.length} networks.`);
+
   // Everyone else credited, after the people above: every cast and crew credit on a title, a season or an episode.
-  const add = (list) => { for (const c of list ?? []) people.add(c.id); };
-  for (const d of details) if (d) { add(d.credits?.cast); add(d.credits?.crew); add(d.aggregate_credits?.cast); add(d.aggregate_credits?.crew); }
-  for (const s of seasonBodies) if (s) { add(s.credits?.cast); add(s.credits?.crew); for (const e of s.episodes ?? []) { add(e.crew); add(e.guest_stars); } }
+  for (const id of others) people.add(id);
   const ids = [...people];
-  const bodies = await pool(ids, 12, (id) => get(`person/${id}`));
+  const bodies = await pool(ids, 12, async (id) => !!(await get(`person/${id}`)));
   log(`Fetched ${bodies.filter(Boolean).length} of ${ids.length} people.`);
 
   saveFailures();
