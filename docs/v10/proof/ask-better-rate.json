@@ -434,7 +434,7 @@
  ],
  "verdict": "proven",
  "hashes": {
-  "src/engine/jobs.ts": "946f81519b96de9f",
+  "src/engine/jobs.ts": "a4bf9472d444e5ae",
   "src/engine/reputation.ts": "bea78901aef0761d",
   "tests/proof/career.ts": "50bea06f19a02c5b"
  }
