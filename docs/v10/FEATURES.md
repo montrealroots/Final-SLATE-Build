@@ -8,11 +8,11 @@ journey that shows it there.
 
 | Kind | proven | carried | does not bite | no downstream effect | stale | not a feature | not yet proven | All |
 |---|---|---|---|---|---|---|---|---|
-| action | 186 | 0 | 0 | 0 | 0 | 15 | 0 | 201 |
+| action | 186 | 0 | 0 | 0 | 0 | 17 | 0 | 203 |
 | bank | 54 | 0 | 0 | 0 | 0 | 0 | 0 | 54 |
 | scheduled | 58 | 0 | 0 | 0 | 0 | 12 | 0 | 70 |
 | field | 273 | 102 | 0 | 0 | 0 | 9 | 0 | 384 |
-| all | 571 | 102 | 0 | 0 | 0 | 36 | 0 | 709 |
+| all | 571 | 102 | 0 | 0 | 0 | 38 | 0 | 711 |
 
 ## Rows
 
@@ -219,6 +219,8 @@ journey that shows it there.
 | cancelWriting | action | src/engine/writing-jobs.ts | proven | writing-cancel (40 seeds) | passesAccepted -1.9; passesCancelled +1.925; quality.script -1.912; overall -0.562; spent -873.25 |
 | commissionWriting | action | src/engine/writing-jobs.ts | proven | writing-polish (40 seeds) | passesAccepted +1.9; quality.script +1.738; overall +0.563 |
 | requestRevision | action | src/engine/writing-jobs.ts | proven | writing-revision (240 seeds) | passesWritten +1.904; spent +799.458 |
+| castPicture | action | src/engine/your-films.ts | not a feature |  | Chooses a studio picture's cast once, when its page first opens with the awards record loaded (or when the work wraps); the player decides nothing, and the cast decides no outcome. Its rules are tested in tests/your-film-cast.test.ts. |
+| yourPicture | action | src/engine/your-films.ts | not a feature |  | Finds the picture a page shows, inside castPicture; not a decision. |
 | bank.add_standing_order | bank | src/engine/bankworld | proven | standing-order (40 seeds) | interestIn +11501.04; money +15293.935 |
 | bank.arrange_overdraft | bank | src/engine/bankworld | proven | arrange-overdraft (40 seeds) | gearOwned +0.4; interestOut +5.912; worth -117.424 |
 | bank.borrow | bank | src/engine/bankworld | proven | bank-loan (60 seeds) | interestOut +1860.279; money +11383.286 |
