@@ -221,6 +221,45 @@ export async function installPack(file: Blob, progress?: (stored: number, total:
 }
 
 /**
+ * The packs inside a zip the player picked, so a phone needn't unzip anything first (from November 19, 2026: the owner
+ * downloads the pictures as zips of packs, and unzipping hundreds on a phone was a step too many). Only stored zips are
+ * read, as a pack is already compressed record by record and gains nothing from more: the entries are slices of the
+ * file, read from its central directory, so nothing is copied. A compressed zip, or one too big for its own fields
+ * (ZIP64), is refused with what to do instead.
+ */
+export async function packsInZip(zip: Blob, zipName: string): Promise<{ name: string; blob: Blob }[]> {
+  const tailLen = Math.min(zip.size, 65_557);
+  const tail = new DataView(await zip.slice(zip.size - tailLen).arrayBuffer());
+  let eocd = -1;
+  for (let i = tailLen - 22; i >= 0; i--) if (tail.getUint32(i, true) === 0x06054b50) { eocd = i; break; }
+  if (eocd < 0) throw new Error(`${zipName} isn't a zip file, or it was cut short.`);
+  const count = tail.getUint16(eocd + 10, true);
+  const cdSize = tail.getUint32(eocd + 12, true);
+  const cdAt = tail.getUint32(eocd + 16, true);
+  if (count === 0xffff || cdAt === 0xffffffff) throw new Error(`${zipName} is too big to read here. Unzip it in the Files app and pick the packs inside.`);
+  const cd = new DataView(await zip.slice(cdAt, cdAt + cdSize).arrayBuffer());
+  const out: { name: string; blob: Blob }[] = [];
+  for (let at = 0, n = 0; n < count; n++) {
+    if (cd.getUint32(at, true) !== 0x02014b50) throw new Error(`${zipName} is damaged: its list of contents can't be read.`);
+    const method = cd.getUint16(at + 10, true);
+    const size = cd.getUint32(at + 20, true);
+    const nameLen = cd.getUint16(at + 28, true), extraLen = cd.getUint16(at + 30, true), commentLen = cd.getUint16(at + 32, true);
+    const local = cd.getUint32(at + 42, true);
+    const name = new TextDecoder().decode(new Uint8Array(cd.buffer, cd.byteOffset + at + 46, nameLen));
+    at += 46 + nameLen + extraLen + commentLen;
+    const base = name.split('/').pop()!;
+    if (!base.toLowerCase().endsWith('.slatepack') || base.startsWith('.')) continue; // folders, and anything that isn't a pack
+    if (method !== 0) throw new Error(`${zipName} is compressed, which the game can't read. Unzip it in the Files app and pick the packs inside.`);
+    const lh = new DataView(await zip.slice(local, local + 30).arrayBuffer());
+    if (lh.getUint32(0, true) !== 0x04034b50) throw new Error(`${zipName} is damaged: ${base} can't be found in it.`);
+    const start = local + 30 + lh.getUint16(26, true) + lh.getUint16(28, true);
+    out.push({ name: base, blob: zip.slice(start, start + size) });
+  }
+  if (!out.length) throw new Error(`${zipName} holds no SLATE packs.`);
+  return out;
+}
+
+/**
  * The files the player picked, as the packs they make (from November 19, 2026, the owner, installing on their phone from
  * files sent in a chat that takes at most 500 MB a file). A pack too big to send whole is cut into pieces named
  * `<name>.part1of2.slatepack`, `<name>.part2of2.slatepack`; picked together, they are joined back into the pack, byte for

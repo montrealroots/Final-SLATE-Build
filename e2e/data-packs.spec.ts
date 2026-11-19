@@ -332,3 +332,29 @@ test('several packs picked at once install in turn, and a pack sent in pieces is
   await nav(page, 'Companies');
   await expect(card(page, 'The Catalog')).toContainText('3 films, 1 series with 1 season and 2 episodes, and 6 people');
 });
+
+/** A stored zip of files, as `zip -0` writes one (the owner's picture downloads are zips of packs). */
+function storedZip(files: [string, Buffer][]): Buffer {
+  const parts: Buffer[] = []; const central: Buffer[] = []; let at = 0;
+  for (const [name, data] of files) {
+    const n = Buffer.from(name);
+    const lh = Buffer.alloc(30); lh.writeUInt32LE(0x04034b50, 0); lh.writeUInt32LE(data.length, 18); lh.writeUInt32LE(data.length, 22); lh.writeUInt16LE(n.length, 26);
+    const ch = Buffer.alloc(46); ch.writeUInt32LE(0x02014b50, 0); ch.writeUInt32LE(data.length, 20); ch.writeUInt32LE(data.length, 24); ch.writeUInt16LE(n.length, 28); ch.writeUInt32LE(at, 42);
+    parts.push(lh, n, data); central.push(ch, n); at += 30 + n.length + data.length;
+  }
+  const cd = Buffer.concat(central);
+  const end = Buffer.alloc(22); end.writeUInt32LE(0x06054b50, 0); end.writeUInt16LE(files.length, 8); end.writeUInt16LE(files.length, 10); end.writeUInt32LE(cd.length, 12); end.writeUInt32LE(at, 16);
+  return Buffer.concat([...parts, cd, end]);
+}
+
+test('a zip of packs is picked as it is, with no unzipping, and its packs install', async ({ page }) => {
+  test.setTimeout(180_000);
+  const p = packs();
+  await quickLife(page, 'gb-london', '2026-01-05');
+  await nav(page, 'Settings');
+  await page.getByLabel('Mod File').setInputFiles({ name: 'slate-mods.zip', mimeType: 'application/zip', buffer: storedZip([['slate-catalog.slatepack', p.catalog], ['slate-cinemas.slatepack', p.cinemas]]) });
+  await expect(page.getByRole('status').filter({ hasText: 'Installed 2 of 2 packs.' })).toBeVisible();
+  const list = page.getByRole('list', { name: 'Mods' });
+  await expect(list.locator('li', { hasText: 'Films And Series' })).toContainText('Installed');
+  await expect(list.locator('li', { hasText: 'Cinemas' })).toContainText('Installed');
+});
