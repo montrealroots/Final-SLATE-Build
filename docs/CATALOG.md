@@ -462,6 +462,17 @@ of every episode. Each episode's page has its own credits.
 - **People.** A death after the save's date isn't shown. A person's page gives their age on the save's date, or the
   age they died at once their death has happened. Ages turn on the birthday by the game's own rule: a February 29
   birthday is observed on February 28 in other years, as the player's own age is.
+- **Biographies** (`biographyAt`, from November 19, 2026). TMDB's biography is written now, so for an earlier save it
+  tells what hasn't happened yet: a save in January 2026 read of a casting announced later that year. The text stops at
+  the first sentence that names a year after the save's (up to two years past when it was written, so a title like Blade
+  Runner 2049 isn't read as a date) or one of the person's titles not out by then, and the page says the rest tells of
+  what comes later. Biographies run in the order of a life, so what follows goes too. Wikipedia's credit line, which its
+  licence requires, is kept. A later event in a sentence with no year and no title of theirs isn't caught.
+- **Series credits** (`creditWhen`, from November 19, 2026). A person's series credit gives the years they worked on it
+  by the save's date, from the seasons whose cast or crew they were in and the episodes they guested on or crewed, not
+  the year the series began: until then a recent host of Saturday Night Live read as 1975. A series they haven't worked
+  on yet at the save's date is "not aired yet". A catalog built before then has no such years, and its series credits
+  say "series began" and the year.
 - **Ownership.** A company acquired after the save's date says it isn't part of The Walt Disney Company yet. A title
   credited to an acquired company is marked "Released before the acquisition" when its release date is earlier. Until
   November 11, 2026 it said "made before", which the records can't tell: they hold release dates, not when a film was made

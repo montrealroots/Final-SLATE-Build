@@ -8,7 +8,7 @@ import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { beforeAll, describe, expect, it } from 'vitest';
 import { COMPANIES, DISCOVERED, LEADERSHIP, REGISTRY_CHECKED, REGISTRY_CHECKED_NBCU, checkedFor, company, groupOf, joinedGroup } from '../src/catalog/registry';
-import { ageAt, fileFor, filmographyView, leadershipAt, lifeAt, madeInGroup, moneyOrUnknown, ownersAt, parseRef, standingAt, titleStanding, type FilmographyEntry } from '../src/catalog/model';
+import { ageAt, biographyAt, creditWhen, fileFor, filmographyView, leadershipAt, lifeAt, madeInGroup, moneyOrUnknown, ownersAt, parseRef, standingAt, titleStanding, type FilmographyEntry } from '../src/catalog/model';
 
 const CACHE = mkdtempSync(join(tmpdir(), 'slate-catalog-cache-'));
 process.env.SCREEN_CATALOG_CACHE = CACHE;
@@ -236,6 +236,38 @@ describe('records at the save\'s date', () => {
   });
 });
 
+describe('a person\'s page at the save\'s date', () => {
+  it('dates a series credit by the years they worked on it, not the year the series began', () => {
+    const host = { kind: 'series-cast' as const, date: '1975-10-11', on: ['2026-10-31'] };
+    expect(creditWhen(host, '2027-01-01')).toBe('2026');
+    expect(creditWhen(host, '2026-01-05')).toBe('not aired yet');
+    const regular = { kind: 'series-cast' as const, date: '2021-02-23', on: ['2021-02-23', '2022-01-11', '2023-03-14', '2024-10-07'] };
+    expect(creditWhen(regular, '2026-01-05')).toBe('2021–2024');
+    expect(creditWhen(regular, '2022-06-01')).toBe('2021–2022');
+    expect(creditWhen(regular, '2021-05-01')).toBe('2021');
+    // A catalog built before the years were recorded says what its date is.
+    expect(creditWhen({ kind: 'series-cast', date: '1975-10-11' }, '2026-01-05')).toBe('series began 1975');
+    expect(creditWhen({ kind: 'cast', date: '2020-05-01' }, '2026-01-05')).toBe('2020');
+    expect(creditWhen({ kind: 'cast', date: '2027-05-01' }, '2026-01-05')).toBe('not released yet');
+    expect(creditWhen({ kind: 'cast', date: null }, '2026-01-05')).toBe('undated');
+  });
+
+  it('stops a biography at the first sentence that tells of later than the save\'s date, keeping Wikipedia\'s credit', () => {
+    const bio = 'Jo Vale (born 2001) is an actress. She starred in Early Days (2020) and Middle Days (2021–2024). Her breakthrough came in Obsession (2025). She was then cast as Rogue. She later appeared in 2027 in Far Days.\n\nDescription above from the Wikipedia article Jo Vale, licensed under CC-BY-SA, full list of contributors on Wikipedia.';
+    const credit = 'Description above from the Wikipedia article Jo Vale, licensed under CC-BY-SA, full list of contributors on Wikipedia.';
+    // In January 2026 Obsession isn't out, so the text stops before it, and everything after it goes too.
+    expect(biographyAt(bio, '2026-01-05', '2026-11-10', ['Obsession'])).toEqual({ text: `Jo Vale (born 2001) is an actress. She starred in Early Days (2020) and Middle Days (2021–2024). ${credit}`, cut: true });
+    // Once it is out, the text runs to the sentence about 2027.
+    expect(biographyAt(bio, '2026-06-01', '2026-11-10', []).text).toBe(`Jo Vale (born 2001) is an actress. She starred in Early Days (2020) and Middle Days (2021–2024). Her breakthrough came in Obsession (2025). She was then cast as Rogue. ${credit}`);
+    // A year after the save's date stops it even with no title to go by; in 2028 the whole of it is shown.
+    expect(biographyAt(bio, '2022-01-01', '2026-11-10', []).text).toBe(`Jo Vale (born 2001) is an actress. ${credit}`);
+    expect(biographyAt(bio, '2028-01-01', '2026-11-10', [])).toEqual({ text: bio, cut: false });
+    // A year far past when it was written is a title, not a date; a title is matched as a name, not inside a word.
+    expect(biographyAt('She starred in Blade Runner 2049. She loved it.', '2020-01-01', '2026-11-10', []).cut).toBe(false);
+    expect(biographyAt('Her obsession with film began early. Obsessions run deep.', '2020-01-01', '2026-11-10', ['Obsession']).cut).toBe(false);
+  });
+});
+
 describe('networks and their owners', () => {
   it('takes a kind of outlet only from cable and streaming classes, and compares websites without scheme, www or trailing slash', async () => {
     // Imported here, not at the top: it loads tmdb.mjs, which must see this file's cache directory first.
@@ -392,7 +424,7 @@ describe('the build', () => {
       aggregate_credits: { cast: [{ id: 800001, name: 'Ada Quill', roles: [{ character: 'Ida', episode_count: 1 }], total_episode_count: 1 }], crew: [] }, credits: { cast: [], crew: [] },
       networks: [{ id: 2, name: 'ABC' }], created_by: [{ id: 800003, name: 'Cy Vale' }], production_companies: [{ id: 1556, name: '20th Century Fox Television' }], external_ids: {}, content_ratings: { results: [] }, vote_count: 3, vote_average: 7.5,
     };
-    const season = { season_number: 1, name: 'Season 1', air_date: '2020-01-01', credits: { cast: [] }, episodes: [
+    const season = { season_number: 1, name: 'Season 1', air_date: '2020-01-01', credits: { cast: [{ id: 800001, name: 'Ada Quill', character: 'Ida', order: 0 }] }, episodes: [
       { episode_number: 1, name: 'Pilot', air_date: '2020-01-01', vote_count: 0, crew: [{ id: 800002, name: 'Ben Rook', department: 'Directing', job: 'Director' }], guest_stars: [{ id: 800004, name: 'Dee Guest', character: 'Visitor', order: 0 }] },
       // Credits TMDB keeps with no person (found November 18, 2026 on two series): only a hex person_id and no name.
       { episode_number: 2, name: 'Second', air_date: '2020-01-08', vote_count: 0, crew: [{ job: 'Writer', department: 'Writing', person_id: '6738577873a45e5184bf5614', credit_id: '6738577873a45e5184bf561b' }], guest_stars: [{ person_id: '69e85b9d2acaddea8523f2d3', character: 'School Child (uncredited)', credit_id: '69e85b9d2acaddea8523f2da', order: 565 }] },
@@ -455,6 +487,8 @@ describe('the build', () => {
   it('keeps series credits, counted in episodes, apart from each episode\'s own crew and guest cast', () => {
     const people = read('people/1.json'); // 800001 % 500
     expect(people['800001'].credits.map((c: { kind: string; ref: string; episodes?: number }) => [c.kind, c.ref, c.episodes])).toEqual([['cast', 'movie:900001', undefined], ['series-cast', 'tv:900001', 1]]);
+    // The years she worked on the series, from the season's cast: 2020's first day of work, not the year it began.
+    expect(people['800001'].credits.map((c: { on?: string[] }) => c.on)).toEqual([undefined, ['2020-01-01']]);
     expect(people['800001'].details).toMatchObject({ birthday: '1960-02-02', deathday: '2030-01-01' }); // the page hides a death after the save's date
     const guest = read('people/4.json')['800004'];
     expect(guest.credits).toEqual([{ ref: 'tv:900001:s:1:e:1', title: 'Same Number Series: Pilot', date: '2020-01-01', kind: 'episode-guest', role: 'Visitor' }]);

@@ -105,7 +105,7 @@ export interface EpisodeRecord {
   guests: CastCredit[];
 }
 export interface SeasonRecord { ref: string; series: string; seriesTitle: string; number: number; name: string; date: string | null; overview: string | null; retrievedAt: string; cast: CastCredit[]; episodes: EpisodeRecord[] }
-export interface PersonCredit { ref: string; title: string; date: string | null; kind: 'cast' | 'crew' | 'series-cast' | 'series-crew' | 'episode-crew' | 'episode-guest' | 'creator'; role: string | null; department?: string; episodes?: number }
+export interface PersonCredit { ref: string; title: string; date: string | null; kind: 'cast' | 'crew' | 'series-cast' | 'series-crew' | 'episode-crew' | 'episode-guest' | 'creator'; role: string | null; department?: string; episodes?: number; on?: string[] }
 export interface PersonRecord {
   id: number;
   name: string;
@@ -142,6 +142,43 @@ export const happenedBy = (date: string | null | undefined, today: string) => !!
 export function titleStanding(t: { date: string | null; status: string | null }, today: string): 'released' | 'upcoming' | 'undated' {
   if (happenedBy(t.date, today)) return 'released';
   return t.date ? 'upcoming' : 'undated';
+}
+
+/**
+ * When a credit sits in a person's career, as known at the save's date. A series credit tells the years the person worked on
+ * it (`on`, each year's first day of work, from the build); until November 19, 2026 it told the year the series began, so a
+ * recent host of Saturday Night Live read as 1975. A catalog built before then has no `on`, and says it is the series' start.
+ */
+export function creditWhen(c: Pick<PersonCredit, 'kind' | 'date' | 'on'>, today: string): string {
+  if (c.on?.length) {
+    const years = c.on.filter((d) => happenedBy(d, today)).map((d) => d.slice(0, 4));
+    if (!years.length) return 'not aired yet';
+    return years[0] === years.at(-1) ? years[0] : `${years[0]}–${years.at(-1)}`;
+  }
+  if (!happenedBy(c.date, today)) return c.date ? 'not released yet' : 'undated';
+  return c.kind === 'series-cast' || c.kind === 'series-crew' ? `series began ${c.date!.slice(0, 4)}` : c.date!.slice(0, 4);
+}
+
+const WIKIPEDIA_CREDIT = /\s*Description above from the Wikipedia article[\s\S]*$/;
+/**
+ * A biography as known at the save's date. TMDB's biography is written now, so for a story set earlier it tells what hasn't
+ * happened yet: until November 19, 2026, a save in January 2026 read of a casting announced later. Biographies run in order of
+ * a life, so the text stops at the first sentence that names a year after the save's (up to two years past when it was
+ * written, so a title like Blade Runner 2049 isn't read as a date) or a title of theirs not out by then. Wikipedia's credit
+ * line, which its licence requires, is kept.
+ */
+export function biographyAt(text: string, today: string, writtenIn: string, later: string[]): { text: string; cut: boolean } {
+  const year = Number(today.slice(0, 4)), latest = Number(writtenIn.slice(0, 4)) + 2;
+  const credit = WIKIPEDIA_CREDIT.exec(text)?.[0] ?? '';
+  const body = credit ? text.slice(0, text.length - credit.length) : text;
+  const titles = later.filter((t) => t.length >= 3).map((t) => new RegExp(`(?<![\\w])${t.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}(?![\\w])`));
+  const starts = [0, ...[...body.matchAll(/[.!?]["”)]?\s+(?=["“(A-Z])/g)].map((m) => m.index! + m[0].length)];
+  for (let i = 0; i < starts.length; i++) {
+    const s = body.slice(starts[i], starts[i + 1] ?? body.length);
+    const future = [...s.matchAll(/\b(1[5-9]\d\d|20\d\d)\b/g)].some((m) => Number(m[1]) > year && Number(m[1]) <= latest);
+    if (future || titles.some((t) => t.test(s))) return { text: (body.slice(0, starts[i]).trimEnd() + (credit ? ` ${credit.trim()}` : '')).trim(), cut: true };
+  }
+  return { text, cut: false };
 }
 
 /** A person's dates as known at the save's date: a death after it hasn't happened yet. */

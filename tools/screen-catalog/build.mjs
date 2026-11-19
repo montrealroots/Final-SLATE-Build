@@ -58,6 +58,12 @@ for (const t of manifest.titles) {
   times.push(r.retrievedAt);
   const d = r.body;
   const ref = `${type}:${d.id}`;
+  // The years each person worked on the series: a season's cast and crew in every dated episode of that season, a guest or an
+  // episode's crew on that episode's day. Kept as each year's first day of work; until November 19, 2026 a series credit showed
+  // the year the series began, so a recent host of Saturday Night Live read as 1975.
+  const worked = new Map();
+  const mark = (id, d) => { if (id == null || !d) return; const ys = worked.get(id) ?? worked.set(id, new Map()).get(id); const y = d.slice(0, 4); if (!ys.has(y) || d < ys.get(y)) ys.set(y, d); };
+  const workedOn = (id) => { const ys = worked.get(id); return ys ? [...ys.values()].sort() : undefined; };
   const title = type === 'movie' ? d.title : d.name;
   const when = date(type === 'movie' ? d.release_date : d.first_air_date);
   const rec = {
@@ -126,7 +132,9 @@ for (const t of manifest.titles) {
         if (opens && opens >= WORLD_FROM) world.push({ d: opens, k: 'season', r: sref, t: title, s: s.season_number, eps: eps.length, net: rec.networks, ci: studiosOf(rec), first: s.season_number === 1, daily: daily ? 1 : undefined, drop: drop ? 1 : undefined });
         for (const e of dated) if (e.date >= WORLD_FROM) world.push({ d: e.date, k: 'episode', r: `${sref}:e:${e.number}`, t: title, s: s.season_number, e: e.number, n: e.name, net: rec.networks, daily: daily ? 1 : undefined, f: e === last && complete && dated.length === eps.length && dated.length > 1 ? 1 : undefined });
       }
+      for (const c of [...(sb.credits?.cast ?? []), ...(sb.credits?.crew ?? [])]) for (const e of eps) mark(c.id, e.date);
       for (const e of eps) {
+        for (const c of [...e.crew, ...e.guests]) mark(c.person, e.date);
         for (const c of e.crew) { person(c.person, c.name).credits.push({ ref: `${sref}:e:${e.number}`, title: `${title}: ${e.name}`, date: e.date, kind: 'episode-crew', role: c.job, department: c.department }); counts.episodeCredits++; }
         for (const c of e.guests) { person(c.person, c.name).credits.push({ ref: `${sref}:e:${e.number}`, title: `${title}: ${e.name}`, date: e.date, kind: 'episode-guest', role: c.character }); counts.episodeCredits++; }
       }
@@ -157,8 +165,8 @@ for (const t of manifest.titles) {
   // How a series stood when the records were taken. When it was announced isn't recorded, so it is told at the records' end.
   if (type === 'tv' && (rec.status === 'Ended' || rec.status === 'Canceled') && rec.lastAirDate && rec.lastAirDate >= WORLD_FROM) world.push({ d: null, k: 'end', r: ref, t: title, st: rec.status, la: rec.lastAirDate, net: rec.networks, ci: studiosOf(rec) });
   const castList = type === 'tv' ? rec.seriesCast : rec.cast;
-  for (const c of castList) { person(c.person, c.name).credits.push({ ref, title, date: when, kind: type === 'tv' ? 'series-cast' : 'cast', role: type === 'tv' ? c.roles.map((x) => x.character).filter(Boolean).join(', ') || null : c.character, episodes: c.episodes }); counts.castCredits++; }
-  for (const c of type === 'tv' ? rec.seriesCrew : rec.crew) { person(c.person, c.name).credits.push({ ref, title, date: when, kind: type === 'tv' ? 'series-crew' : 'crew', role: type === 'tv' ? c.jobs.map((x) => x.job).join(', ') : c.job, department: c.department, episodes: c.episodes }); counts.crewCredits++; }
+  for (const c of castList) { person(c.person, c.name).credits.push({ ref, title, date: when, kind: type === 'tv' ? 'series-cast' : 'cast', role: type === 'tv' ? c.roles.map((x) => x.character).filter(Boolean).join(', ') || null : c.character, episodes: c.episodes, on: (type === 'tv' ? workedOn(c.person) : undefined) }); counts.castCredits++; }
+  for (const c of type === 'tv' ? rec.seriesCrew : rec.crew) { person(c.person, c.name).credits.push({ ref, title, date: when, kind: type === 'tv' ? 'series-crew' : 'crew', role: type === 'tv' ? c.jobs.map((x) => x.job).join(', ') : c.job, department: c.department, episodes: c.episodes, on: (type === 'tv' ? workedOn(c.person) : undefined) }); counts.crewCredits++; }
   for (const c of rec.createdBy ?? []) person(c.person, c.name).credits.push({ ref, title, date: when, kind: 'creator', role: 'Creator' });
   for (const n of d.networks ?? []) { if (!networkSeries.has(n.id)) networkSeries.set(n.id, { name: n.name, series: [] }); networkSeries.get(n.id).series.push({ ref, title, date: when, lastAirDate: rec.lastAirDate ?? null, status: rec.status }); }
   write(`titles/${type}-${d.id}.json`, rec);
