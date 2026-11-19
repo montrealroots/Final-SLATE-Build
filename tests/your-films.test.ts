@@ -98,7 +98,7 @@ describe('your studio pictures in the world', () => {
     expect(honoursIn(s, 'directing').map((h) => [h.status, h.category])).toEqual([['won', 'Best Director']]); // a craft award isn't the director's
   });
 
-  it('has its people: you in your role, the rest invented', () => {
+  it('has its people: you in your role, the rest invented until it is cast (your-film-cast.test.ts)', () => {
     const s = startLife('yf-people');
     const j = picture(s, '2026-06-01', 76);
     const { cast, crew } = pictureCredits(s, j);

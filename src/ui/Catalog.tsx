@@ -18,7 +18,8 @@ import { ageOn, announcedSeason, breakLength, breaksOf, castFor, decisionsFor, n
 import { addDaysToKey } from '../engine';
 import { studioFilm, studioFilms } from '../engine/studios';
 import { franchiseName } from '../engine/studio-projects';
-import { asWorldFilm, pictureCredits, yourBoxOffice, yourFilmId, yourPicture } from '../engine/your-films';
+import { asWorldFilm, castPicture, pictureCredits, yourBoxOffice, yourFilmId, yourPicture } from '../engine/your-films';
+import { loadRecognition } from '../engine/recognition';
 import { money } from '../engine/budget';
 import { qualityWords } from '../engine/finish';
 import logo from '../catalog/tmdb-logo.svg';
@@ -428,6 +429,9 @@ function YourFilmPage({ refId }: { refId: string }) {
   const g = useGame();
   const today = useToday();
   const j = yourPicture(g, refId);
+  const uncast = !!j && !j.studio!.cast;
+  // Its cast is chosen from the awards record, which loads when it's wanted: once, then kept in the save.
+  useEffect(() => { if (uncast) void loadRecognition().then(() => store.act((s) => { const k = yourPicture(s, refId); if (k) castPicture(s, k); })).catch(() => null); }, [uncast, refId]);
   if (!j) return <Empty title="This Film Isn't In Your Story"><p className="muted">It was made in another save.</p><GoBack /></Empty>;
   const st = j.studio!;
   const f = asWorldFilm(g, j);
@@ -440,7 +444,7 @@ function YourFilmPage({ refId }: { refId: string }) {
       <Breadcrumbs items={[{ label: 'Companies', route: { view: 'companies' } }, ...(c ? [{ label: c.name, route: { view: 'company', ref: c.id } as Route }] : []), { label: f.title }]} />
       <PageHead eyebrow="Film" title={f.title} />
       <Panel title="About">
-        <p><span className="chip">Your Picture</span> You {j.role === 'directing' ? 'directed' : 'wrote'} it for {j.company}. The film and everyone on it but you are invented by the game; its box office and honours are your story's.</p>
+        <p><span className="chip">Your Picture</span> You {j.role === 'directing' ? 'directed' : 'wrote'} it for {j.company}. The film and its crew are invented by the game{st.cast?.some((m) => m.tmdbId) ? <>, and its cast are real actors the studio could pay for at its budget</> : ''}; its box office and honours are your story's.</p>
         <dl className="kv">
           <dt>Studio</dt><dd>{c ? <Link to={{ view: 'company', ref: c.id } as Route}>{c.name}</Link> : j.company}</dd>
           {st.franchise && <><dt>Franchise</dt><dd>{st.franchise}</dd></>}
@@ -470,7 +474,13 @@ function YourFilmPage({ refId }: { refId: string }) {
           <ul className="list">{st.honours.map((h) => <li key={`${h.event}-${h.category}`} className="list-item"><span className="grow">{h.category}, {h.event}</span><span className="dim small">{h.status === 'won' ? 'Won' : h.status === 'selected' ? 'Selected' : 'Nominated'}</span></li>)}</ul>
         ) : <p className="muted">{out ? 'Nothing yet. It competes for every award whose rules it meets.' : 'Once it opens, it competes for every award whose rules it meets.'}</p>}
       </Panel>
-      <Panel title="Cast"><ul className="list" aria-label="Cast">{cast.map((n, i) => <li key={`${n}-${i}`} className="list-item"><span className="grow">{n}</span><span className="dim small">{i === 0 ? 'Lead' : 'Supporting'}</span></li>)}</ul></Panel>
+      <Panel title="Cast"><ul className="list" aria-label="Cast">{cast.map((m, i) => (
+        <li key={`${m.name}-${i}`} className="list-item">
+          {m.tmdbId ? <Picture subject={`person:${m.tmdbId}`} name={m.name} size="thumb" /> : null}
+          <span className="grow">{m.tmdbId ? <Link to={personRoute(m.tmdbId)}>{m.name}</Link> : m.name}</span>
+          <span className="dim small">{i === 0 ? 'Lead' : 'Supporting'}</span>
+        </li>
+      ))}</ul></Panel>
       <Panel title="Crew"><ul className="list" aria-label="Crew">{crew.map((x, i) => <li key={`${x.job}-${i}`} className="list-item"><span className="grow">{x.name}{x.name === g.character.name ? <span className="chip"> You</span> : null}</span><span className="dim small">{x.job}</span></li>)}</ul></Panel>
     </>
   );

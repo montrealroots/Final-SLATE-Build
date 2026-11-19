@@ -11,10 +11,11 @@
 //     judged on its quality, and its selections, nominations and wins in your role are your honours (reputation.ts);
 //   - once released, its reception counts as a work in your role (reputation.ts roleCraft);
 //   - it has a page like the catalog's films (Catalog.tsx), with its cast and crew: you in your role, everyone else
-//     invented, as the world's films' people are.
+//     invented, as the world's films' people are; from November 19, 2026 its cast are real actors (castPicture).
 // You are paid your fee; the box office is the studio's, before any share of the profits, which aren't modelled.
 import { noticeGrades } from './grade-news';
 import type { OutsideJob } from './jobs';
+import { fameOf, performerFee, recognisedIn, recognitionData } from './recognition';
 import { roleCraft } from './reputation';
 import { gaussian, intBetween, pick, stream } from './rng';
 import { addLog, registerHandler } from './state';
@@ -53,11 +54,56 @@ export function pictureQuality(state: GameState, j: OutsideJob): number {
   return Math.round(Math.max(20, Math.min(97, gaussian(stream(state.seed, 'your-film', j.id), craft, YOUR_FILM_SPREAD))));
 }
 
-/** The people on it: you in your role; everyone else invented, as the world's films' people are (studios.ts). */
-export function pictureCredits(state: GameState, j: OutsideJob): { cast: string[]; crew: { job: string; name: string }[] } {
+/** One of a picture's cast: a real actor (`tmdbId`, from the industry's record of awards) or an invented one. */
+export interface PictureCastMember { name: string; tmdbId?: number }
+/** A picture's lead takes up to this share of its budget, and each of the others up to the second. Game calibration. */
+export const LEAD_SHARE = 0.15;
+export const SUPPORTING_SHARE = 0.03;
+/** The budget a picture is cast for when the studio named none. Game calibration. */
+export const UNSTATED_BUDGET = 40_000_000;
+/** Of the actors a part's money reaches, the best-paid this many are the ones the studio asks. Game calibration. */
+export const ASKED = 40;
+
+/**
+ * Its cast, chosen once from real actors (from November 19, 2026, the owner: "now do one with real cast"): until then a
+ * picture's cast were invented names. The studio casts actors the awards record has recognised before the year it comes
+ * out, alive and grown by then, whose asking fee (recognition.ts performerFee) its budget can pay: the lead from up to
+ * LEAD_SHARE of it, each of the other seven from up to SUPPORTING_SHARE; a part none will take for that goes to an
+ * unknown, invented. Their parts aren't named: the record holds no one's gender, and a name drawn for a part read wrong
+ * beside the actor playing it (tried and dropped the same day). Kept in the save, so
+ * the cast stays whoever was cast; with the record not loaded nothing is chosen yet, and the page shows invented names.
+ */
+export function castPicture(state: GameState, j: OutsideJob, data = recognitionData()): void {
+  const st = j.studio;
+  if (!st?.released || st.cast || !data) return;
+  const year = Number(st.released.slice(0, 4));
+  const budget = st.budget ?? UNSTATED_BUDGET;
+  const fit = recognisedIn('actor', year, data)
+    .filter(({ tmdbId }) => { const [, born, died] = data.people[String(tmdbId)]; return (!died || died > st.released!) && (!born || Number(born.slice(0, 4)) <= year - 18); })
+    .map((a) => ({ ...a, fee: performerFee(a.standing.points, fameOf(a.tmdbId)) }));
+  const r = stream(state.seed, 'your-film-cast', j.id);
+  const taken = new Set<number>();
+  const ask = (cap: number) => {
+    const open = fit.filter((a) => a.fee <= cap && !taken.has(a.tmdbId)).sort((a, b) => b.fee - a.fee || a.tmdbId - b.tmdbId).slice(0, ASKED);
+    const a = open.length ? pick(r, open) : undefined;
+    if (a) taken.add(a.tmdbId);
+    return a;
+  };
+  const cast: PictureCastMember[] = [];
+  for (let i = 0; i < 8; i++) {
+    const a = ask(budget * (i === 0 ? LEAD_SHARE : SUPPORTING_SHARE));
+    cast.push(a ? { name: a.name, tmdbId: a.tmdbId } : { name: `${pick(r, FIRSTS)} ${pick(r, LASTS)}` });
+  }
+  st.cast = cast;
+}
+
+/** The people on it: you in your role; its cast as cast (castPicture), else invented; its crew invented, as the world's films' people are (studios.ts). */
+export function pictureCredits(state: GameState, j: OutsideJob): { cast: PictureCastMember[]; crew: { job: string; name: string }[] } {
   const r = stream(state.seed, 'your-film-people', j.id);
   const someone = () => `${pick(r, FIRSTS)} ${pick(r, LASTS)}`;
-  const cast = Array.from({ length: 8 }, someone);
+  // Drawn even when the cast is real, so the crew's names are the ones saves before November 19, 2026 showed.
+  const invented = Array.from({ length: 8 }, someone);
+  const cast = j.studio?.cast ?? invented.map((name) => ({ name }));
   const me = state.character.name;
   const crew = [
     { job: 'Director', name: j.role === 'directing' ? me : someone() },
@@ -77,7 +123,7 @@ export function asWorldFilm(state: GameState, j: OutsideJob): StudioFilm {
   return {
     id: yourFilmId(j), company, title: j.studio!.title!, date: j.studio!.released!, genres: j.studio!.genres ?? [j.studio!.genre],
     runtimeMin: intBetween(r, 105, 140),
-    people: { director: crew[0].name, writer: crew[1].name, lead: cast[0] },
+    people: { director: crew[0].name, writer: crew[1].name, lead: cast[0].name },
   };
 }
 

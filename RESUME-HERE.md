@@ -44,6 +44,13 @@ fits: TMDB's films and series with at least 20 votes.
   and no title of theirs in its sentence isn't caught.
 - **Tests that grew with the data:** `catalog-live` opens "Show All" for Tom Hanks's 40-plus film credits;
   `picture-library`'s real-logos test reads 1,331 with its comma.
+- **Your studio picture's cast are real actors** (November 19, the owner: "now do one with real cast";
+  `your-films.ts castPicture`, `tests/your-film-cast.test.ts`): eight actors the awards record (`recognition.json`)
+  recognised before the year it comes out, alive and 18 or older then, whose asking fee (`performerFee`) the
+  picture's budget pays: the lead up to 15% of it, each other part up to 3%; a part nobody fits goes to an invented
+  unknown. Chosen once, when the work wraps or when its page first opens with the record loaded, and kept in the save
+  (`studio.cast`). The page shows their portraits and links to their pages. Parts aren't named, because the record has
+  no gender and invented part names read wrong beside the actors (tried and dropped). The crew are still invented.
 
 ## Studio Projects, And Offers In Plain Words (The Owner, November 18, 2026)
 
@@ -137,7 +144,7 @@ like "so and so wants you to take over and film the next Batman", invented entri
   independent, a sequel's screenplay adapted, no festivals since it opens in cinemas), judged on its quality; its
   honours are recorded at each edition's results, told, and those in your role count for you, a win bringing a
   studio's call; once out its quality counts as a work in your role. Its page (Catalog.tsx YourFilmPage, from Toho's
-  Franchises) shows what it is, its run week by week, its honours, cast and crew (you; the rest invented). Played
+  Franchises) shows what it is, its run week by week, its honours, cast and crew (you; the rest invented until November 19, when its cast became real actors: above). Played
   through for Toho's Godzilla: Retribution: quality 76, $52.9M, Oscar nominations for Adapted Screenplay, Costume,
   Makeup, Sound and Visual Effects, BAFTA Director, Golden Globe Screenplay and Score, no wins.
   Not yet: the invented cast's names come from the world's one name pool whatever the studio's country; money from
