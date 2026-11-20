@@ -3611,7 +3611,16 @@
      "competitive": false
     }
    ],
-   "rosterStatus": "read"
+   "rosterStatus": "read",
+   "official": {
+    "2026": {
+     "start": "2026-10-08",
+     "end": "2026-10-18",
+     "label": "59th Sitges International Fantastic Film Festival of Catalonia",
+     "source": "https://sitgesfilmfestival.com/en/edition/award-winners",
+     "checked": "2026-11-20"
+    }
+   }
   },
   {
    "id": "idfa",

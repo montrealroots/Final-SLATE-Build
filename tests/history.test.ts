@@ -368,6 +368,15 @@ describe('recorded history', () => {
     expect(won.find((o) => o.categoryName === 'Busan Award for Best Actor')!.subjects).toEqual(['Zhou Xun, for The First Taste of Loneliness', 'Himeno Kashun, for Satoko Always']);
   });
 
+  it('holds the 59th Sitges festival: the competitive awards from October 17, the honorary ones from its last day', () => {
+    const on = (day: string) => recordedResults('sitges', 2026, day);
+    expect(on('2026-10-16')).toEqual([]);
+    expect(on('2026-10-17').find((o) => o.category === 'best-film')!.subjects).toEqual(['Sanguine']);
+    expect(on('2026-10-17').some((o) => o.category === 'grand-honorary')).toBe(false);
+    expect(on('2026-10-18').filter((o) => o.category === 'grand-honorary').map((o) => o.subjects[0])).toEqual(['Kevin Bacon', 'Kyra Sedgwick', 'Sir Peter Jackson', 'Danny DeVito', 'Amy Irving']);
+    expect(on('2026-10-18')).toHaveLength(50);
+  });
+
   it('cites a source for every observation, never publishes before it happens, and names the game\'s own categories', () => {
     const insts = (institutions as { institutions: { id: string; categories: { id: string }[]; official?: Record<string, { label?: string }> }[] }).institutions;
     const wrong: string[] = [];

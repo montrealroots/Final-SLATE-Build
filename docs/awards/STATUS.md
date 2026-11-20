@@ -23,7 +23,7 @@ a roster that was read says nothing about the eligibility rules, the recipients,
 | Toronto International Film Festival (`tiff`) | 16 | 13 / 3 / 0 | 4 / 0 / 12 | 0 | 0 | 4 | 4 | 0 | 1 |
 | San Sebastián International Film Festival (`san-sebastian`) | 23 | 11 / 12 / 0 | 7 / 0 / 16 | 0 | 23 | 7 | 12 | 0 | 4 |
 | Busan International Film Festival (`busan`) | 2 | 0 / 0 / 2 | 2 / 0 / 0 | 0 | 2 | 2 | 2 | 2 | 0 |
-| Sitges Film Festival (`sitges`) | 30 | 29 / 1 / 0 | 6 / 0 / 24 | 0 | 0 | 6 | 7 | 0 | 2 |
+| Sitges Film Festival (`sitges`) | 30 | 29 / 1 / 0 | 6 / 0 / 24 | 0 | 30 | 6 | 11 | 0 | 2 |
 | International Documentary Film Festival Amsterdam (`idfa`) | 11 | 6 / 5 / 0 | 5 / 0 / 6 | 0 | 11 | 5 | 6 | 0 | 0 |
 | Hot Docs Canadian International Documentary Festival (`hot-docs`) | 2 | 1 / 1 / 0 | 1 / 0 / 1 | 0 | 2 | 1 | 2 | 0 | 1 |
 | Clermont-Ferrand International Short Film Festival (`clermont`) | 6 | 4 / 2 / 0 | 3 / 0 / 3 | 3 | 6 | 3 | 6 | 1 | 2 |
@@ -50,7 +50,7 @@ a roster that was read says nothing about the eligibility rules, the recipients,
 | Japan Academy Film Prize (`japan-academy`) | 17 | 17 / 0 / 0 | 17 / 0 / 0 | 0 | 17 | 0 | 9 | 0 | 2 |
 | Blue Dragon Film Awards (`blue-dragon`) | 3 | 0 / 0 / 3 | 0 / 0 / 3 | 0 | 0 | 0 | 2 | 0 | 0 |
 | European Film Awards (`european-film-awards`) | 20 | 15 / 5 / 0 | 15 / 0 / 5 | 0 | 20 | 14 | 8 | 6 | 0 |
-| **All 37** | 806 | 709 / 69 / 28 | 592 / 11 / 203 | 28 | 624 | 541 | 334 | 50 | 123 |
+| **All 37** | 806 | 709 / 69 / 28 | 592 / 11 / 203 | 28 | 654 | 541 | 338 | 50 | 123 |
 
 ## Research queue
 
