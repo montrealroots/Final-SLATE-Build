@@ -16,9 +16,10 @@
       "41st Film Independent Spirit Awards",
       "51st César Awards",
       "40th Goya Awards",
-      "2026 AACTA Awards"
+      "2026 AACTA Awards",
+      "49th Japan Academy Film Prize"
     ],
-    "notInSet": "Every other 2026 ceremony and festival. The 2026 AACTA Awards from November 19, 2026: film, television, documentary and short film (48 categories), the nominees shown from February 4, 2026, the first ceremony, as their release gives no date. The 40th Goya Awards whole from November 19, 2026 (28 categories). The 51st César Awards whole from November 19, 2026 (24 categories; the honorary César has no field). The 41st Film Independent Spirit Awards whole from November 19, 2026 (20 categories). The 37th PGA Awards from November 19, 2026: the 10 categories decided on February 28 whole, and the children's and short-form winners of February 26 (not their nominees). The 78th Writers Guild Awards from November 19, 2026: the 15 categories the game holds and the WGA's page lays out alike (not the variety, quiz, daytime, news, radio or promotional ones). The 78th DGA Awards from November 19, 2026: every category's nominees but Commercials, and every winner but Comedy Series, which the DGA's release doesn't state as a winner. The 32nd Actor Awards are recorded whole from November 19, 2026 (15 categories). The 2026 Emmys are recorded whole from November 19, 2026: all 120 categories' winners, and the nominees of the 117 whose page lists a field (three list only their winners: two juried awards and an area award). The 83rd Golden Globe Awards (from goldenglobes.com/nominations/2026) and the 98th Academy Awards are recorded whole from November 19, 2026; until then five Golden Globes were, and the night's article, which names The Pitt and The Studio as series winners without saying which won which, left both out (the nominations page says: The Pitt, Drama; The Studio, Musical or Comedy)."
+    "notInSet": "Every other 2026 ceremony and festival. The 49th Japan Academy Film Prize from November 19, 2026: its 15 competitive categories (the newcomer and honorary awards have no Best), the Excellent Awards shown from the March 13 ceremony as their announcement states no date. The 2026 AACTA Awards from November 19, 2026: film, television, documentary and short film (48 categories), the nominees shown from February 4, 2026, the first ceremony, as their release gives no date. The 40th Goya Awards whole from November 19, 2026 (28 categories). The 51st César Awards whole from November 19, 2026 (24 categories; the honorary César has no field). The 41st Film Independent Spirit Awards whole from November 19, 2026 (20 categories). The 37th PGA Awards from November 19, 2026: the 10 categories decided on February 28 whole, and the children's and short-form winners of February 26 (not their nominees). The 78th Writers Guild Awards from November 19, 2026: the 15 categories the game holds and the WGA's page lays out alike (not the variety, quiz, daytime, news, radio or promotional ones). The 78th DGA Awards from November 19, 2026: every category's nominees but Commercials, and every winner but Comedy Series, which the DGA's release doesn't state as a winner. The 32nd Actor Awards are recorded whole from November 19, 2026 (15 categories). The 2026 Emmys are recorded whole from November 19, 2026: all 120 categories' winners, and the nominees of the 117 whose page lists a field (three list only their winners: two juried awards and an area award). The 83rd Golden Globe Awards (from goldenglobes.com/nominations/2026) and the 98th Academy Awards are recorded whole from November 19, 2026; until then five Golden Globes were, and the night's article, which names The Pitt and The Studio as series winners without saying which won which, left both out (the nominations page says: The Pitt, Drama; The Studio, Musical or Comedy)."
   },
   "sources": {
     "oscars-98": {
@@ -284,6 +285,14 @@
       "retrieved": "2026-11-19",
       "section": "The Awards Ceremony of Friday, 6 February 2026",
       "access": "Downloaded directly; a category it names is dated the ceremony's."
+    },
+    "japan-49": {
+      "url": "https://www.japan-academy-prize.jp/prizes/list/49",
+      "title": "第49回 日本アカデミー賞 優秀作品 (The 49th Japan Academy Film Prize)",
+      "provider": "Japan Academy Film Prize Association",
+      "retrieved": "2026-11-19",
+      "section": "Each category's Excellent Award winners (優秀賞, the nominees) and its Best (最優秀賞), from the ceremony of March 13, 2026",
+      "access": "Downloaded directly and parsed, from the romanised and English lines the page gives each entry. Names keep the page's order (mostly family name first) with its capitals lowered; titles in capitals take the spelling the game's other records give them, else title case. The page announcing the Excellent Awards states no date, so they are shown from the ceremony, when they were certainly public."
     }
   },
   "observations": [
@@ -15552,6 +15561,663 @@
       "occurred": "2026-02-04",
       "published": "2026-02-04",
       "publishedSource": "aacta-2026-gala"
+    },
+    {
+      "id": "japan-49-picture-nominees",
+      "kind": "nominees",
+      "institution": "japan-academy",
+      "year": 2026,
+      "edition": "49th Japan Academy Film Prize",
+      "precision": "day",
+      "status": "verified",
+      "revision": 1,
+      "imported": "2026-11-19",
+      "source": "japan-49",
+      "occurred": "2026-03-13",
+      "published": "2026-03-13",
+      "category": "picture",
+      "categoryName": "作品賞 Picture Of The Year",
+      "subjects": [
+        "Kokuho",
+        "Hero's Island",
+        "Suzuki=Bakudan",
+        "1st Kiss",
+        "Tokyo Taxi"
+      ]
+    },
+    {
+      "id": "japan-49-picture",
+      "kind": "winner",
+      "institution": "japan-academy",
+      "year": 2026,
+      "edition": "49th Japan Academy Film Prize",
+      "precision": "day",
+      "status": "verified",
+      "revision": 1,
+      "imported": "2026-11-19",
+      "source": "japan-49",
+      "occurred": "2026-03-13",
+      "published": "2026-03-13",
+      "category": "picture",
+      "categoryName": "作品賞 Picture Of The Year",
+      "subjects": [
+        "Kokuho"
+      ],
+      "recipients": "work_only"
+    },
+    {
+      "id": "japan-49-animation-nominees",
+      "kind": "nominees",
+      "institution": "japan-academy",
+      "year": 2026,
+      "edition": "49th Japan Academy Film Prize",
+      "precision": "day",
+      "status": "verified",
+      "revision": 1,
+      "imported": "2026-11-19",
+      "source": "japan-49",
+      "occurred": "2026-03-13",
+      "published": "2026-03-13",
+      "category": "animation",
+      "categoryName": "アニメーション作品賞 Animation Of The Year",
+      "subjects": [
+        "Demon Slayer: Kimetsu no Yaiba Infinity Castle",
+        "Chainsaw Man – The Movie: Reze Arc",
+        "100 Meters",
+        "Peleliu: Guernica of Paradise",
+        "Detective Conan:One-eyed Flashback"
+      ]
+    },
+    {
+      "id": "japan-49-animation",
+      "kind": "winner",
+      "institution": "japan-academy",
+      "year": 2026,
+      "edition": "49th Japan Academy Film Prize",
+      "precision": "day",
+      "status": "verified",
+      "revision": 1,
+      "imported": "2026-11-19",
+      "source": "japan-49",
+      "occurred": "2026-03-13",
+      "published": "2026-03-13",
+      "category": "animation",
+      "categoryName": "アニメーション作品賞 Animation Of The Year",
+      "subjects": [
+        "Demon Slayer: Kimetsu no Yaiba Infinity Castle"
+      ],
+      "recipients": "work_only"
+    },
+    {
+      "id": "japan-49-director-nominees",
+      "kind": "nominees",
+      "institution": "japan-academy",
+      "year": 2026,
+      "edition": "49th Japan Academy Film Prize",
+      "precision": "day",
+      "status": "verified",
+      "revision": 1,
+      "imported": "2026-11-19",
+      "source": "japan-49",
+      "occurred": "2026-03-13",
+      "published": "2026-03-13",
+      "category": "director",
+      "categoryName": "監督賞 Director Of The Year",
+      "subjects": [
+        "Lee Sang-il (Kokuho)",
+        "Uchida Eiji (Night Flower)",
+        "Otomo Keishi (Hero's Island)",
+        "Tsukahara Ayuko (1st Kiss)",
+        "Nagai Akira (Suzuki=Bakudan)"
+      ]
+    },
+    {
+      "id": "japan-49-director",
+      "kind": "winner",
+      "institution": "japan-academy",
+      "year": 2026,
+      "edition": "49th Japan Academy Film Prize",
+      "precision": "day",
+      "status": "verified",
+      "revision": 1,
+      "imported": "2026-11-19",
+      "source": "japan-49",
+      "occurred": "2026-03-13",
+      "published": "2026-03-13",
+      "category": "director",
+      "categoryName": "監督賞 Director Of The Year",
+      "subjects": [
+        "Lee Sang-il"
+      ],
+      "work": "Kokuho",
+      "recipients": "named_person"
+    },
+    {
+      "id": "japan-49-screenplay-nominees",
+      "kind": "nominees",
+      "institution": "japan-academy",
+      "year": 2026,
+      "edition": "49th Japan Academy Film Prize",
+      "precision": "day",
+      "status": "verified",
+      "revision": 1,
+      "imported": "2026-11-19",
+      "source": "japan-49",
+      "occurred": "2026-03-13",
+      "published": "2026-03-13",
+      "category": "screenplay",
+      "categoryName": "脚本賞 Screenplay Of The Year",
+      "subjects": [
+        "Okudera Satoko (Kokuho)",
+        "Uchida Eiji (Night Flower)",
+        "Fukuda Kaho (366 Days)",
+        "Yamaura Masahiro, Yatsu Hiroyuki (Suzuki=Bakudan)",
+        "Yamada Yoji, Asahara Yuzou (Tokyo Taxi)"
+      ]
+    },
+    {
+      "id": "japan-49-screenplay",
+      "kind": "winner",
+      "institution": "japan-academy",
+      "year": 2026,
+      "edition": "49th Japan Academy Film Prize",
+      "precision": "day",
+      "status": "verified",
+      "revision": 1,
+      "imported": "2026-11-19",
+      "source": "japan-49",
+      "occurred": "2026-03-13",
+      "published": "2026-03-13",
+      "category": "screenplay",
+      "categoryName": "脚本賞 Screenplay Of The Year",
+      "subjects": [
+        "Okudera Satoko"
+      ],
+      "work": "Kokuho",
+      "recipients": "named_person"
+    },
+    {
+      "id": "japan-49-actor-nominees",
+      "kind": "nominees",
+      "institution": "japan-academy",
+      "year": 2026,
+      "edition": "49th Japan Academy Film Prize",
+      "precision": "day",
+      "status": "verified",
+      "revision": 1,
+      "imported": "2026-11-19",
+      "source": "japan-49",
+      "occurred": "2026-03-13",
+      "published": "2026-03-13",
+      "category": "actor",
+      "categoryName": "主演男優賞 Outstanding Performance By An Actor In A Leading Role",
+      "subjects": [
+        "Yoshizawa Ryo (Kokuho)",
+        "Tsumabuki Satoshi (Hero's Island)",
+        "Nagatsuka Kyozo (Teki Cometh)",
+        "Matsumura Hokuto (5 Centimeters Per Second)",
+        "Yamada Yuki (Suzuki=Bakudan)"
+      ]
+    },
+    {
+      "id": "japan-49-actor",
+      "kind": "winner",
+      "institution": "japan-academy",
+      "year": 2026,
+      "edition": "49th Japan Academy Film Prize",
+      "precision": "day",
+      "status": "verified",
+      "revision": 1,
+      "imported": "2026-11-19",
+      "source": "japan-49",
+      "occurred": "2026-03-13",
+      "published": "2026-03-13",
+      "category": "actor",
+      "categoryName": "主演男優賞 Outstanding Performance By An Actor In A Leading Role",
+      "subjects": [
+        "Yoshizawa Ryo"
+      ],
+      "work": "Kokuho",
+      "recipients": "named_person"
+    },
+    {
+      "id": "japan-49-actress-nominees",
+      "kind": "nominees",
+      "institution": "japan-academy",
+      "year": 2026,
+      "edition": "49th Japan Academy Film Prize",
+      "precision": "day",
+      "status": "verified",
+      "revision": 1,
+      "imported": "2026-11-19",
+      "source": "japan-49",
+      "occurred": "2026-03-13",
+      "published": "2026-03-13",
+      "category": "actress",
+      "categoryName": "主演女優賞 Outstanding Performance By An Actress In A Leading Role",
+      "subjects": [
+        "Baisho Cieko (Tokyo Taxi)",
+        "Kitagawa Keiko (Night Flower)",
+        "Nagasawa Masami (Dollhouse)",
+        "Hirose Suzu (A Pale View of Hills)",
+        "Matsu Takako (1st Kiss)"
+      ]
+    },
+    {
+      "id": "japan-49-actress",
+      "kind": "winner",
+      "institution": "japan-academy",
+      "year": 2026,
+      "edition": "49th Japan Academy Film Prize",
+      "precision": "day",
+      "status": "verified",
+      "revision": 1,
+      "imported": "2026-11-19",
+      "source": "japan-49",
+      "occurred": "2026-03-13",
+      "published": "2026-03-13",
+      "category": "actress",
+      "categoryName": "主演女優賞 Outstanding Performance By An Actress In A Leading Role",
+      "subjects": [
+        "Baisho Cieko"
+      ],
+      "work": "Tokyo Taxi",
+      "recipients": "named_person"
+    },
+    {
+      "id": "japan-49-supporting-actor-nominees",
+      "kind": "nominees",
+      "institution": "japan-academy",
+      "year": 2026,
+      "edition": "49th Japan Academy Film Prize",
+      "precision": "day",
+      "status": "verified",
+      "revision": 1,
+      "imported": "2026-11-19",
+      "source": "japan-49",
+      "occurred": "2026-03-13",
+      "published": "2026-03-13",
+      "category": "supporting-actor",
+      "categoryName": "助演男優賞 Outstanding Performance By An Actor In A Supporting Role",
+      "subjects": [
+        "Sato Jiro (Suzuki=Bakudan)",
+        "Tanaka Min (Kokuho)",
+        "Matsumura Hokuto (1st Kiss)",
+        "Yokohama Ryusei (Kokuho)",
+        "Watanabe Ken (Kokuho)"
+      ]
+    },
+    {
+      "id": "japan-49-supporting-actor",
+      "kind": "winner",
+      "institution": "japan-academy",
+      "year": 2026,
+      "edition": "49th Japan Academy Film Prize",
+      "precision": "day",
+      "status": "verified",
+      "revision": 1,
+      "imported": "2026-11-19",
+      "source": "japan-49",
+      "occurred": "2026-03-13",
+      "published": "2026-03-13",
+      "category": "supporting-actor",
+      "categoryName": "助演男優賞 Outstanding Performance By An Actor In A Supporting Role",
+      "subjects": [
+        "Sato Jiro"
+      ],
+      "work": "Suzuki=Bakudan",
+      "recipients": "named_person"
+    },
+    {
+      "id": "japan-49-supporting-actress-nominees",
+      "kind": "nominees",
+      "institution": "japan-academy",
+      "year": 2026,
+      "edition": "49th Japan Academy Film Prize",
+      "precision": "day",
+      "status": "verified",
+      "revision": 1,
+      "imported": "2026-11-19",
+      "source": "japan-49",
+      "occurred": "2026-03-13",
+      "published": "2026-03-13",
+      "category": "supporting-actress",
+      "categoryName": "助演女優賞 Outstanding Performance By An Actress In A Supporting Role",
+      "subjects": [
+        "Morita Misato (Night Flower)",
+        "Aoi Yu (Tokyo Taxi)",
+        "Takahata Mitsuki (Kokuho)",
+        "Terajima Shinobu (Kokuho)",
+        "Mori Nana (Kokuho)"
+      ]
+    },
+    {
+      "id": "japan-49-supporting-actress",
+      "kind": "winner",
+      "institution": "japan-academy",
+      "year": 2026,
+      "edition": "49th Japan Academy Film Prize",
+      "precision": "day",
+      "status": "verified",
+      "revision": 1,
+      "imported": "2026-11-19",
+      "source": "japan-49",
+      "occurred": "2026-03-13",
+      "published": "2026-03-13",
+      "category": "supporting-actress",
+      "categoryName": "助演女優賞 Outstanding Performance By An Actress In A Supporting Role",
+      "subjects": [
+        "Morita Misato"
+      ],
+      "work": "Night Flower",
+      "recipients": "named_person"
+    },
+    {
+      "id": "japan-49-music-nominees",
+      "kind": "nominees",
+      "institution": "japan-academy",
+      "year": 2026,
+      "edition": "49th Japan Academy Film Prize",
+      "precision": "day",
+      "status": "verified",
+      "revision": 1,
+      "imported": "2026-11-19",
+      "source": "japan-49",
+      "occurred": "2026-03-13",
+      "published": "2026-03-13",
+      "category": "music",
+      "categoryName": "音楽賞 Outstanding Achievement In Music",
+      "subjects": [
+        "Hara Marihiko (Kokuho)",
+        "Iwasaki Taisei (Tokyo Taxi)",
+        "Sato Naoki (Hero's Island)",
+        "Hyuga Moe (366 Days)",
+        "Yaffle (Suzuki=Bakudan)"
+      ]
+    },
+    {
+      "id": "japan-49-music",
+      "kind": "winner",
+      "institution": "japan-academy",
+      "year": 2026,
+      "edition": "49th Japan Academy Film Prize",
+      "precision": "day",
+      "status": "verified",
+      "revision": 1,
+      "imported": "2026-11-19",
+      "source": "japan-49",
+      "occurred": "2026-03-13",
+      "published": "2026-03-13",
+      "category": "music",
+      "categoryName": "音楽賞 Outstanding Achievement In Music",
+      "subjects": [
+        "Hara Marihiko"
+      ],
+      "work": "Kokuho",
+      "recipients": "named_person"
+    },
+    {
+      "id": "japan-49-cinematography-nominees",
+      "kind": "nominees",
+      "institution": "japan-academy",
+      "year": 2026,
+      "edition": "49th Japan Academy Film Prize",
+      "precision": "day",
+      "status": "verified",
+      "revision": 1,
+      "imported": "2026-11-19",
+      "source": "japan-49",
+      "occurred": "2026-03-13",
+      "published": "2026-03-13",
+      "category": "cinematography",
+      "categoryName": "撮影賞 Outstanding Achievement In Cinematography",
+      "subjects": [
+        "Sofian El Fani (Kokuho)",
+        "Imamura Keisuke (5 Centimeters Per Second)",
+        "Kondoh Tetsuya (Suzuki=Bakudan)",
+        "Daisuke Soma (Hero's Island)",
+        "Chikamori Masashi (Tokyo Taxi)"
+      ]
+    },
+    {
+      "id": "japan-49-cinematography",
+      "kind": "winner",
+      "institution": "japan-academy",
+      "year": 2026,
+      "edition": "49th Japan Academy Film Prize",
+      "precision": "day",
+      "status": "verified",
+      "revision": 1,
+      "imported": "2026-11-19",
+      "source": "japan-49",
+      "occurred": "2026-03-13",
+      "published": "2026-03-13",
+      "category": "cinematography",
+      "categoryName": "撮影賞 Outstanding Achievement In Cinematography",
+      "subjects": [
+        "Sofian El Fani"
+      ],
+      "work": "Kokuho",
+      "recipients": "named_person"
+    },
+    {
+      "id": "japan-49-lighting-nominees",
+      "kind": "nominees",
+      "institution": "japan-academy",
+      "year": 2026,
+      "edition": "49th Japan Academy Film Prize",
+      "precision": "day",
+      "status": "verified",
+      "revision": 1,
+      "imported": "2026-11-19",
+      "source": "japan-49",
+      "occurred": "2026-03-13",
+      "published": "2026-03-13",
+      "category": "lighting",
+      "categoryName": "照明賞 Outstanding Achievement In Lighting Direction",
+      "subjects": [
+        "Yuki Nakamura (Kokuho)",
+        "Ueno Koshiro (5 Centimeters Per Second)",
+        "Mizoguchi Satoshi (Suzuki=Bakudan)",
+        "Nagata Hidenori (Hero's Island)",
+        "Tsuchiyama Masato (Tokyo Taxi)"
+      ]
+    },
+    {
+      "id": "japan-49-lighting",
+      "kind": "winner",
+      "institution": "japan-academy",
+      "year": 2026,
+      "edition": "49th Japan Academy Film Prize",
+      "precision": "day",
+      "status": "verified",
+      "revision": 1,
+      "imported": "2026-11-19",
+      "source": "japan-49",
+      "occurred": "2026-03-13",
+      "published": "2026-03-13",
+      "category": "lighting",
+      "categoryName": "照明賞 Outstanding Achievement In Lighting Direction",
+      "subjects": [
+        "Yuki Nakamura"
+      ],
+      "work": "Kokuho",
+      "recipients": "named_person"
+    },
+    {
+      "id": "japan-49-art-direction-nominees",
+      "kind": "nominees",
+      "institution": "japan-academy",
+      "year": 2026,
+      "edition": "49th Japan Academy Film Prize",
+      "precision": "day",
+      "status": "verified",
+      "revision": 1,
+      "imported": "2026-11-19",
+      "source": "japan-49",
+      "occurred": "2026-03-13",
+      "published": "2026-03-13",
+      "category": "art-direction",
+      "categoryName": "美術賞 Outstanding Achievement In Art Direction",
+      "subjects": [
+        "Taneda Yohei, Shimoyama Nao (Kokuho)",
+        "Sugimoto Ryo, Okada Takuya (Suzuki=Bakudan)",
+        "Nishimura Takashi (Tokyo Taxi)",
+        "Hanatan Hidefumi (Hero's Island)",
+        "Matsuzaki Hiroto (Muromachi Outsiders)"
+      ]
+    },
+    {
+      "id": "japan-49-art-direction",
+      "kind": "winner",
+      "institution": "japan-academy",
+      "year": 2026,
+      "edition": "49th Japan Academy Film Prize",
+      "precision": "day",
+      "status": "verified",
+      "revision": 1,
+      "imported": "2026-11-19",
+      "source": "japan-49",
+      "occurred": "2026-03-13",
+      "published": "2026-03-13",
+      "category": "art-direction",
+      "categoryName": "美術賞 Outstanding Achievement In Art Direction",
+      "subjects": [
+        "Taneda Yohei, Shimoyama Nao"
+      ],
+      "work": "Kokuho",
+      "recipients": "named_person"
+    },
+    {
+      "id": "japan-49-sound-nominees",
+      "kind": "nominees",
+      "institution": "japan-academy",
+      "year": 2026,
+      "edition": "49th Japan Academy Film Prize",
+      "precision": "day",
+      "status": "verified",
+      "revision": 1,
+      "imported": "2026-11-19",
+      "source": "japan-49",
+      "occurred": "2026-03-13",
+      "published": "2026-03-13",
+      "category": "sound",
+      "categoryName": "録音賞 Outstanding Achievement In Sound Recording",
+      "subjects": [
+        "Shiratori Mitsugu (Kokuho)",
+        "Isogai Hiroshi (Suzuki=Bakudan)",
+        "Tanabe Masaharu (366 Days)",
+        "Shota Nagamura (Tokyo Taxi)",
+        "Yuwaki Fusao (Hero's Island)"
+      ]
+    },
+    {
+      "id": "japan-49-sound",
+      "kind": "winner",
+      "institution": "japan-academy",
+      "year": 2026,
+      "edition": "49th Japan Academy Film Prize",
+      "precision": "day",
+      "status": "verified",
+      "revision": 1,
+      "imported": "2026-11-19",
+      "source": "japan-49",
+      "occurred": "2026-03-13",
+      "published": "2026-03-13",
+      "category": "sound",
+      "categoryName": "録音賞 Outstanding Achievement In Sound Recording",
+      "subjects": [
+        "Shiratori Mitsugu"
+      ],
+      "work": "Kokuho",
+      "recipients": "named_person"
+    },
+    {
+      "id": "japan-49-editing-nominees",
+      "kind": "nominees",
+      "institution": "japan-academy",
+      "year": 2026,
+      "edition": "49th Japan Academy Film Prize",
+      "precision": "day",
+      "status": "verified",
+      "revision": 1,
+      "imported": "2026-11-19",
+      "source": "japan-49",
+      "occurred": "2026-03-13",
+      "published": "2026-03-13",
+      "category": "editing",
+      "categoryName": "編集賞 Outstanding Achievement In Film Editing",
+      "subjects": [
+        "Imai Tsuyoshi (Kokuho)",
+        "Sugimoto Hiroshi (Tokyo Taxi)",
+        "Seya Sakura (Exit 8)",
+        "Nishio Mitsuo (1st Kiss)",
+        "Ninomiya Suguru (Suzuki=Bakudan)"
+      ]
+    },
+    {
+      "id": "japan-49-editing",
+      "kind": "winner",
+      "institution": "japan-academy",
+      "year": 2026,
+      "edition": "49th Japan Academy Film Prize",
+      "precision": "day",
+      "status": "verified",
+      "revision": 1,
+      "imported": "2026-11-19",
+      "source": "japan-49",
+      "occurred": "2026-03-13",
+      "published": "2026-03-13",
+      "category": "editing",
+      "categoryName": "編集賞 Outstanding Achievement In Film Editing",
+      "subjects": [
+        "Imai Tsuyoshi"
+      ],
+      "work": "Kokuho",
+      "recipients": "named_person"
+    },
+    {
+      "id": "japan-49-foreign-nominees",
+      "kind": "nominees",
+      "institution": "japan-academy",
+      "year": 2026,
+      "edition": "49th Japan Academy Film Prize",
+      "precision": "day",
+      "status": "verified",
+      "revision": 1,
+      "imported": "2026-11-19",
+      "source": "japan-49",
+      "occurred": "2026-03-13",
+      "published": "2026-03-13",
+      "category": "foreign",
+      "categoryName": "外国作品賞 Outstanding Foreign Language Film",
+      "subjects": [
+        "Conclave",
+        "Twilight of the Warriors: Walled In",
+        "Mission: Impossible - The Final Reckoning",
+        "One Battle After Another",
+        "F1: The Movie"
+      ]
+    },
+    {
+      "id": "japan-49-foreign",
+      "kind": "winner",
+      "institution": "japan-academy",
+      "year": 2026,
+      "edition": "49th Japan Academy Film Prize",
+      "precision": "day",
+      "status": "verified",
+      "revision": 1,
+      "imported": "2026-11-19",
+      "source": "japan-49",
+      "occurred": "2026-03-13",
+      "published": "2026-03-13",
+      "category": "foreign",
+      "categoryName": "外国作品賞 Outstanding Foreign Language Film",
+      "subjects": [
+        "Conclave"
+      ],
+      "recipients": "work_only"
     }
   ]
 }

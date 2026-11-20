@@ -187,6 +187,17 @@ describe('recorded history', () => {
     expect(won.find((o) => o.categoryName === 'AACTA Award For Best Documentary')!.published).toBe('2026-02-06');
   });
 
+  it('holds the 49th Japan Academy Film Prize: 15 categories, the Excellent Awards and the Best from the March 13 ceremony', () => {
+    const on = (day: string, kind: string) => recordedResults('japan-academy', 2026, day).filter((o) => o.kind === kind);
+    expect(recordedResults('japan-academy', 2026, '2026-03-12')).toEqual([]);
+    expect(on('2026-03-13', 'nominees')).toHaveLength(15);
+    const won = on('2026-03-13', 'winner');
+    expect(won).toHaveLength(15);
+    expect(won.find((o) => o.category === 'picture')!.subjects).toEqual(['Kokuho']);
+    // The special award listed after the foreign films isn't one of their field.
+    expect(on('2026-03-13', 'nominees').find((o) => o.category === 'foreign')!.subjects).toEqual(['Conclave', 'Twilight of the Warriors: Walled In', 'Mission: Impossible - The Final Reckoning', 'One Battle After Another', 'F1: The Movie']);
+  });
+
   it('cites a source for every observation, never publishes before it happens, and names the game\'s own categories', () => {
     const insts = (institutions as { institutions: { id: string; categories: { id: string }[]; official?: Record<string, { label?: string }> }[] }).institutions;
     const wrong: string[] = [];

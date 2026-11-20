@@ -16969,7 +16969,16 @@
      "competitive": true
     }
    ],
-   "rosterStatus": "read"
+   "rosterStatus": "read",
+   "official": {
+    "2026": {
+     "start": "2026-03-13",
+     "end": "2026-03-13",
+     "label": "49th Japan Academy Film Prize",
+     "source": "https://www.japan-academy-prize.jp/prizes/list/49",
+     "checked": "2026-11-19"
+    }
+   }
   },
   {
    "id": "blue-dragon",
