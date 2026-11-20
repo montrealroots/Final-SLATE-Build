@@ -12,10 +12,12 @@ const ids = (xs: { id: string }[]) => xs.map((x) => x.id).sort();
 
 describe('recorded history', () => {
   it('shows nothing before its published date, and each result from that date in the player\'s calendar', () => {
-    expect(observationsAt('2025-12-07')).toEqual([]);
+    expect(observationsAt('2025-12-02')).toEqual([]); // the Spirit Awards' nominees, December 3, 2025, are the first
     // The Golden Globes' nominees from December 8, 2025 (from November 19, 2026; until then none was recorded, and a
     // January start saw nothing), its winners from January 11.
-    expect(observationsAt('2026-01-05').every((o) => o.institution === 'golden-globes' && o.kind === 'nominees')).toBe(true);
+    // By then: nominees only, the Spirit Awards', the PGA's documentary field (December 9, 2025) and the Golden Globes'.
+    expect(observationsAt('2026-01-05').every((o) => o.kind === 'nominees')).toBe(true);
+    expect([...new Set(observationsAt('2026-01-05').map((o) => o.institution))].sort()).toEqual(['golden-globes', 'pga', 'spirit']);
     expect(recordedResults('golden-globes', 2026, '2026-01-10')).toHaveLength(28);
     expect(recordedResults('golden-globes', 2026, '2026-01-10').some((o) => o.kind === 'winner')).toBe(false);
     const globes = recordedResults('golden-globes', 2026, '2026-01-11').filter((o) => o.kind === 'winner');
@@ -95,6 +97,115 @@ describe('recorded history', () => {
     expect(won.find((o) => o.category === 'cast')!.subjects).toEqual(['Sinners']);
     // Written as the game's other records write them, not in the page's capitals.
     expect(won.find((o) => o.category === 'tv-female-comedy')).toMatchObject({ subjects: ["Catherine O'Hara"], work: 'The Studio' });
+  });
+
+  it('holds the 78th DGA Awards: nominees from January 7 and 8, winners from February 7, and no winner the release does not state', () => {
+    const on = (day: string, kind: string) => recordedResults('dga', 2026, day).filter((o) => o.kind === kind);
+    expect(on('2026-01-07', 'nominees')).toHaveLength(9); // television and documentary
+    expect(on('2026-01-08', 'nominees')).toHaveLength(11); // and the two feature categories
+    expect(on('2026-02-06', 'winner')).toEqual([]);
+    const won = on('2026-02-07', 'winner');
+    expect(won).toHaveLength(10);
+    // Its Comedy Series section is worded as nominees and lists one; the record doesn't guess that it was the winner.
+    expect(won.some((o) => o.category === 'comedy')).toBe(false);
+    expect(won.find((o) => o.category === 'drama')).toMatchObject({ subjects: ['Amanda Marsalis'], work: 'The Pitt, “6:00 P.M.”' });
+    expect(on('2026-01-07', 'nominees').find((o) => o.category === 'reality')!.subjects).toContain('Adam Sandler (The Price is Right, “10,000th Episode”)');
+  });
+
+  it('holds the 78th Writers Guild Awards in the 15 categories the game holds: nominees from January 27, winners from March 8', () => {
+    const on = (day: string, kind: string) => recordedResults('wga', 2026, day).filter((o) => o.kind === kind);
+    expect(recordedResults('wga', 2026, '2026-01-26')).toEqual([]);
+    expect(on('2026-01-27', 'nominees')).toHaveLength(15);
+    expect(on('2026-03-07', 'winner')).toEqual([]);
+    const won = on('2026-03-08', 'winner');
+    expect(won).toHaveLength(15);
+    expect(won.find((o) => o.category === 'episodic')).toMatchObject({ subjects: ['R. Scott Gemmill'], work: 'The Pitt, “7:00 A.M.”' });
+    // A series' award names the show, crediting its writers.
+    expect(won.find((o) => o.category === 'comedy-series')).toMatchObject({ subjects: ['The Studio'], recipients: 'work_only' });
+  });
+
+  it('holds the 37th PGA Awards: documentary nominees from December 9, the rest from January 9, winners from February 26 and 28', () => {
+    const on = (day: string, kind: string) => recordedResults('pga', 2026, day).filter((o) => o.kind === kind);
+    expect(on('2025-12-09', 'nominees').map((o) => o.category)).toEqual(['documentary']);
+    expect(on('2026-01-09', 'nominees')).toHaveLength(10);
+    expect(on('2026-02-26', 'winner').map((o) => o.category).sort()).toEqual(['childrens', 'short-form']);
+    const won = on('2026-02-28', 'winner');
+    expect(won).toHaveLength(12);
+    expect(won.find((o) => o.category === 'theatrical')).toMatchObject({ subjects: ['One Battle After Another'], credited: 'Adam Somner, Sara Murphy, Paul Thomas Anderson' });
+  });
+
+  it('holds the 41st Spirit Awards whole: nominees from December 3, winners from February 15, each a nominee of its category', () => {
+    const on = (day: string, kind: string) => recordedResults('spirit', 2026, day).filter((o) => o.kind === kind);
+    expect(on('2025-12-03', 'nominees')).toHaveLength(20);
+    expect(on('2026-02-14', 'winner')).toEqual([]);
+    const won = on('2026-02-15', 'winner');
+    expect(won).toHaveLength(20);
+    // Eva Victor was nominated for both directing and writing: her win is the screenplay's, under its own heading.
+    expect(won.find((o) => o.category === 'screenplay')).toMatchObject({ subjects: ['Eva Victor'], work: 'Sorry, Baby' });
+    expect(won.find((o) => o.category === 'director')!.subjects).toEqual(['Clint Bentley']);
+    // A title the PDF breaks over two lines takes its whole name from the nominees.
+    expect(won.find((o) => o.category === 'editing')!.work).toBe('The Testament of Ann Lee');
+    for (const w of won) {
+      const field = on('2025-12-03', 'nominees').find((o) => o.categoryName === w.categoryName)!.subjects.join('|');
+      expect(field).toContain(w.subjects[0]);
+    }
+  });
+
+  it('holds the 51st César Awards whole: nominees from January 28, winners from February 26, in their own spelling', () => {
+    const on = (day: string, kind: string) => recordedResults('cesar', 2026, day).filter((o) => o.kind === kind);
+    expect(recordedResults('cesar', 2026, '2026-01-27')).toEqual([]);
+    expect(on('2026-01-28', 'nominees')).toHaveLength(24);
+    expect(on('2026-02-25', 'winner')).toEqual([]);
+    const won = on('2026-02-26', 'winner');
+    expect(won).toHaveLength(24);
+    expect(won.find((o) => o.category === 'film')!.subjects).toEqual(["L'Attachement"]);
+    expect(won.find((o) => o.category === 'actor')).toMatchObject({ subjects: ['Laurent Lafitte'], work: 'La Femme la plus riche du monde' });
+  });
+
+  it('holds the 40th Goya Awards whole: nominees from January 13, winners from February 28, each a nominee of its category', () => {
+    const on = (day: string, kind: string) => recordedResults('goya', 2026, day).filter((o) => o.kind === kind);
+    expect(on('2026-01-13', 'nominees')).toHaveLength(28);
+    expect(on('2026-02-27', 'winner')).toEqual([]);
+    const won = on('2026-02-28', 'winner');
+    expect(won).toHaveLength(28);
+    expect(won.find((o) => o.category === 'film')!.subjects).toEqual(['Los Domingos']);
+    // A song's writers win it; the song and its film are what was nominated.
+    expect(won.find((o) => o.category === 'song')).toMatchObject({ subjects: ['Alba Flores, Sílvia Pérez Cruz'], work: 'Flores para Antonio, from Flores para Antonio' });
+    expect(won.find((o) => o.category === 'european')).toMatchObject({ subjects: ['Valor sentimental'], credited: 'Noruega' });
+  });
+
+  it('holds the 2026 AACTA Awards: each winner dated by the gala (February 4) or the ceremony (February 6) that named it', () => {
+    const on = (day: string, kind: string) => recordedResults('aacta', 2026, day).filter((o) => o.kind === kind);
+    // The nominations release states no date: the nominees are shown from the first ceremony, when they were public.
+    expect(recordedResults('aacta', 2026, '2026-02-03')).toEqual([]);
+    expect(on('2026-02-04', 'nominees')).toHaveLength(48);
+    expect(on('2026-02-04', 'winner')).toHaveLength(26);
+    const won = on('2026-02-06', 'winner');
+    expect(won).toHaveLength(48);
+    expect(won.find((o) => o.categoryName === 'AACTA Award For Best Film')).toMatchObject({ subjects: ['Bring Her Back'], published: '2026-02-06' });
+    // "Best Documentary" is inside "Best Documentary or Factual Program": the release must name its winner after it.
+    expect(won.find((o) => o.categoryName === 'AACTA Award For Best Documentary')!.published).toBe('2026-02-06');
+  });
+
+  it('holds the 49th Japan Academy Film Prize: 15 categories, the Excellent Awards and the Best from the March 13 ceremony', () => {
+    const on = (day: string, kind: string) => recordedResults('japan-academy', 2026, day).filter((o) => o.kind === kind);
+    expect(recordedResults('japan-academy', 2026, '2026-03-12')).toEqual([]);
+    expect(on('2026-03-13', 'nominees')).toHaveLength(15);
+    const won = on('2026-03-13', 'winner');
+    expect(won).toHaveLength(15);
+    expect(won.find((o) => o.category === 'picture')!.subjects).toEqual(['Kokuho']);
+    // The special award listed after the foreign films isn't one of their field.
+    expect(on('2026-03-13', 'nominees').find((o) => o.category === 'foreign')!.subjects).toEqual(['Conclave', 'Twilight of the Warriors: Walled In', 'Mission: Impossible - The Final Reckoning', 'One Battle After Another', 'F1: The Movie']);
+  });
+
+  it('holds the 2026 Canadian Screen Awards: nominees from March 25, every winner from May 31, the last of their shows', () => {
+    const on = (day: string, kind: string) => recordedResults('canadian-screen', 2026, day).filter((o) => o.kind === kind);
+    expect(recordedResults('canadian-screen', 2026, '2026-03-24')).toEqual([]);
+    expect(on('2026-03-25', 'nominees')).toHaveLength(145);
+    expect(on('2026-05-30', 'winner')).toEqual([]);
+    const won = on('2026-05-31', 'winner');
+    expect(won).toHaveLength(145);
+    expect(won.find((o) => o.category !== null && /Best Motion Picture/.test(o.categoryName))!.subjects[0]).toContain('Nirvanna the Band the Show the Movie');
   });
 
   it('cites a source for every observation, never publishes before it happens, and names the game\'s own categories', () => {

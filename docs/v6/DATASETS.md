@@ -12,7 +12,7 @@ The catalog (TMDB), the cinemas (Wikidata) and the stories (Wikipedia) are older
 - **What it is:** Award results of 2026 ceremonies, from each organizer's own page.
 - **Kind:** Recorded fact.
 - **Terms:** Facts (who was nominated, who won) read from public pages; titles and names only, no article text. Shown from their published date; nothing written into a save.
-- **Sources (14):**
+- **Sources (37):**
   - <https://goldenglobes.com/articles/one-battle-after-another-and-hamnet-take-best-picture-prizes-at-golden-globes/>, read 2026-11-13. Read through a fetching tool. Only the categories the article states are recorded.
   - <https://goldenglobes.com/nominations/2026>, read 2026-11-19. Every category, its winner marked; read twice through a fetching tool, the readings agreed. A title the page files under its article ("Studio, The") is written in reading order.
   - <https://goldenglobes.com/articles/nominations-announced-for-the-83rd-annual-golden-globes/>, read 2026-11-19. For the date the nominations were announced, December 8, 2025.
@@ -26,6 +26,29 @@ The catalog (TMDB), the cinemas (Wikidata) and the stories (Wikipedia) are older
   - <https://actorawards.org/sites/default/files/2026_Actor%20Awards_Nominations%20Release.pdf>, read 2026-11-19. For the date the nominations were announced, January 7, 2026.
   - <https://www.actorawards.org/media/news/releases/actor-awards-presented-sag-aftra-announce-years-stunt-ensemble-nominees>, read 2026-11-19. For the stunt ensembles' announcement, February 26, 2026.
   - <https://www.actorawards.org/media/news/releases/outstanding-film-and-television-performances-honored-32nd-annual-actor-awards>, read 2026-11-19. The recipients of March 1, 2026; every recipient the category page marks is named here.
+  - <https://www.dga.org/News/PressReleases/2026/260107_78thAnnualDGAAwardsTelevisionNomineesAnnounced>, read 2026-11-19. The DGA's television and documentary nominees (January 7, 2026), downloaded and parsed; Commercials, laid out differently and not held by the game, left out.
+  - <https://www.dga.org/News/PressReleases/2026/260108_78thAnnualDGAAwardsFeatureFilmNomineesAnnounced>, read 2026-11-19. The feature nominees (January 8, 2026).
+  - <https://www.dga.org/News/PressReleases/2026/260207_78th_Annual-DGA-Award-Winners>, read 2026-11-19. The winners (February 7, 2026); its Comedy Series section is worded as nominees, so that winner isn't recorded.
+  - <https://awards.wga.org/awards/nominees-winners>, read 2026-11-19. The 2026 Writers Guild Awards' nominees and winners, downloaded and parsed: the 15 categories the game holds and the page lays out alike.
+  - <https://www.wga.org/news-events/news/press/2026/2026-writers-guild-awards-screenplay-television-streaming-news-radio-audio-and-promotional-writing-nominations-announced>, read 2026-11-19. For the date the nominations were announced, January 27, 2026.
+  - <https://www.wga.org/news-events/news/press/2026-writers-guild-awards-winners-announced>, read 2026-11-19. The winners (March 8, 2026); every winner the awards page marks is named in it.
+  - <https://producersguild.org/2026-pga-awards-winners/>, read 2026-11-19. The 37th PGA Awards' nominees and winners, downloaded and parsed; the producers' p.g.a. marks left off.
+  - <https://producersguild.org/2026-pga-awards-motion-pictures-and-television-categories-nominees/>, read 2026-11-19. For the nominations of January 9, 2026 and the ceremony of February 28.
+  - <https://producersguild.org/2026-pga-awards-documentary-motion-pictures-nominees-pga-innovation-award-finalists/>, read 2026-11-19. For the documentary nominations of December 9, 2025.
+  - <https://www.filmindependent.org/blog/here-are-your-2026-film-independent-spirit-awards-nominees/>, read 2026-11-19. The 41st Spirit Awards' nominees (December 3, 2025), downloaded and parsed; credit lines left off.
+  - <https://s3.us-east-1.amazonaws.com/SA_SubForm_etc/2026_SpiritAwards_AllNominees%2BWinners_032726.pdf>, read 2026-11-19. Film Independent's "41 Years of Nominees and Winners", linked from its Spirit Awards history page; the 2026 pages' winners, each the first asterisked entry under its heading, matched to a nominee of that category.
+  - <https://www.academie-cinema.org/palmares/>, read 2026-11-19. The 51st César Awards' nominees and winners, read from the structured data the page carries; the honorary César, with no field, left out.
+  - <https://www.academie-cinema.org/evenements/autour-des-nominations-2026/>, read 2026-11-19. For the nominations of January 28, 2026.
+  - <https://www.academie-cinema.org/evenements/ceremonie-des-cesar-2026/>, read 2026-11-19. For the ceremony of February 26, 2026.
+  - <https://www.premiosgoya.com/40-edicion/nominaciones/>, read 2026-11-19. The 40th Goya Awards' nominees (announced January 13, 2026), downloaded and parsed; producers', countries' and directors' lines left off.
+  - <https://www.premiosgoya.com/40-edicion/premios/por-categoria/>, read 2026-11-19. The winners of the February 28, 2026 gala, each matched to a nominee of its category.
+  - <https://www.aacta.org/aacta-awards/awards-history/2026-aacta-awards/>, read 2026-11-19. The 2026 AACTA Awards' film, television, documentary and short-film nominees with their winners marked, from the page and the sections it loads; the nominations release gives no date, so the nominees are shown from February 4, 2026, the first ceremony.
+  - <https://www.aacta.org/our-news/media-room/aacta-announces-the-winners-for-the-2026-aacta-awards-industry-gala/>, read 2026-11-19. The Industry Gala's winners (February 4, 2026).
+  - <https://www.aacta.org/our-news/media-room/aacta-announces-the-winners-for-the-2026-aacta-awards-presented-by-foxtel-group/>, read 2026-11-19. The Awards Ceremony's winners (February 6, 2026); a category both releases name is dated by the gala's.
+  - <https://www.japan-academy-prize.jp/prizes/list/49>, read 2026-11-19. The 49th Japan Academy Film Prize's Excellent Awards and Bests (March 13, 2026), from the romanised and English lines the page gives each entry; names keep the page's order with its capitals lowered, and a title it cuts short takes the whole one the other records hold. Its Excellent Awards' announcement states no date, so they are shown from the ceremony.
+  - <https://www.academy.ca/nominees/>, read 2026-11-19. The 2026 Canadian Screen Awards' nominees with their winners marked, downloaded and parsed; the winners of the four shows (May 28 to 31) are all shown from May 31, the date of the winners release.
+  - <https://www.academy.ca/2026/nominees-announced-for-the-2026-canadian-screen-awards/>, read 2026-11-19. For the nominations of March 25, 2026.
+  - <https://www.academy.ca/2026/2026-canadian-screen-award-winners-unveiled/>, read 2026-11-19. The winners release of May 31, 2026.
   - <https://www.televisionacademy.com/78th-emmy-winners>, read 2026-11-19. The Academy's winners release (Ernst & Young's list of the telecast's 19 categories), a PDF whose text was read directly.
 
 ## `src/data/history/awards-2026-reference.json`

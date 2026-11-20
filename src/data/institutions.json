@@ -9857,6 +9857,13 @@
     ]
    },
    "official": {
+    "2026": {
+     "start": "2026-02-15",
+     "end": "2026-02-15",
+     "label": "41st Film Independent Spirit Awards",
+     "source": "https://www.filmindependent.org/blog/here-are-your-2026-film-independent-spirit-awards-nominees/",
+     "checked": "2026-11-19"
+    },
     "2027": {
      "start": "2027-03-06",
      "end": "2027-03-06",
@@ -10584,6 +10591,13 @@
     ]
    },
    "official": {
+    "2026": {
+     "start": "2026-02-07",
+     "end": "2026-02-07",
+     "label": "78th DGA Awards",
+     "source": "https://www.dga.org/News/PressReleases/2026/260207_78th_Annual-DGA-Award-Winners",
+     "checked": "2026-11-19"
+    },
     "2027": {
      "start": "2027-01-30",
      "end": "2027-01-30",
@@ -11143,7 +11157,16 @@
      "competitive": true
     }
    ],
-   "rosterStatus": "read"
+   "rosterStatus": "read",
+   "official": {
+    "2026": {
+     "start": "2026-03-08",
+     "end": "2026-03-08",
+     "label": "78th Writers Guild Awards",
+     "source": "https://www.wga.org/news-events/news/press/2026-writers-guild-awards-winners-announced",
+     "checked": "2026-11-19"
+    }
+   }
   },
   {
    "id": "pga",
@@ -11168,6 +11191,13 @@
     ]
    },
    "official": {
+    "2026": {
+     "start": "2026-02-28",
+     "end": "2026-02-28",
+     "label": "37th PGA Awards",
+     "source": "https://producersguild.org/2026-pga-awards-motion-pictures-and-television-categories-nominees/",
+     "checked": "2026-11-19"
+    },
     "2027": {
      "start": "2027-02-27",
      "end": "2027-02-27",
@@ -11745,6 +11775,13 @@
     ]
    },
    "official": {
+    "2026": {
+     "start": "2026-02-26",
+     "end": "2026-02-26",
+     "label": "51st César Awards",
+     "source": "https://www.academie-cinema.org/evenements/ceremonie-des-cesar-2026/",
+     "checked": "2026-11-19"
+    },
     "2027": {
      "start": "2027-02-25",
      "end": "2027-02-25",
@@ -12345,6 +12382,13 @@
     ]
    },
    "official": {
+    "2026": {
+     "start": "2026-02-28",
+     "end": "2026-02-28",
+     "label": "40th Goya Awards",
+     "source": "https://www.premiosgoya.com/40-edicion/",
+     "checked": "2026-11-19"
+    },
     "2027": {
      "start": "2027-02-06",
      "end": "2027-02-06",
@@ -15641,7 +15685,16 @@
      "competitive": true
     }
    ],
-   "rosterStatus": "read"
+   "rosterStatus": "read",
+   "official": {
+    "2026": {
+     "start": "2026-05-31",
+     "end": "2026-05-31",
+     "label": "2026 Canadian Screen Awards",
+     "source": "https://www.academy.ca/2026/2026-canadian-screen-award-winners-unveiled/",
+     "checked": "2026-11-19"
+    }
+   }
   },
   {
    "id": "aacta",
@@ -16437,7 +16490,16 @@
      "competitive": true
     }
    ],
-   "rosterStatus": "read"
+   "rosterStatus": "read",
+   "official": {
+    "2026": {
+     "start": "2026-02-06",
+     "end": "2026-02-06",
+     "label": "2026 AACTA Awards",
+     "source": "https://www.aacta.org/our-news/media-room/aacta-announces-the-winners-for-the-2026-aacta-awards-presented-by-foxtel-group/",
+     "checked": "2026-11-19"
+    }
+   }
   },
   {
    "id": "amaa",
@@ -16916,7 +16978,16 @@
      "competitive": true
     }
    ],
-   "rosterStatus": "read"
+   "rosterStatus": "read",
+   "official": {
+    "2026": {
+     "start": "2026-03-13",
+     "end": "2026-03-13",
+     "label": "49th Japan Academy Film Prize",
+     "source": "https://www.japan-academy-prize.jp/prizes/list/49",
+     "checked": "2026-11-19"
+    }
+   }
   },
   {
    "id": "blue-dragon",
