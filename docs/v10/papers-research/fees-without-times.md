@@ -145,3 +145,17 @@ Batch 8 (November 20, 2026, evening):
     page.
   - Iceland: two months on average for first work permits in 2025, but island.is refuses the tools.
   - Barbados, Korea: their official pages state no decision time.
+
+Batch 9 (November 20, 2026, evening), aiming at the 37 visas whose fee is settled and only the decision time is
+estimated. Nothing settled; what was found, for the next pass:
+- Moldova: the official sources disagree. As search results quote the e-visa portal, examination takes up to 10
+  calendar days (20 when justified) and the e-visa costs €40. The embassy in Washington gives 10 business days, and the
+  game's record has €60 from the same portal. The portal didn't answer when read (503), so it's held as a conflict.
+- Kazakhstan: the Ministry of Foreign Affairs confirms US$60 and a stay of up to 30 days, but gives no decision time.
+- Egypt: the e-visa portal confirms US$30 for a single-entry tourist visa (the record's figure, from a secondary
+  site), with no decision time. Its fee can move to the official source next time.
+- Nepal: the Department of Immigration's own fee table (US$30, $50 and $125 for 15, 30 and 90 days, on arrival) is
+  quoted in search results; every immigration.gov.np page answered 503. Once read, it can be recorded like the other
+  visas on arrival (decided on arrival, one day).
+- Refusing the tools or not answering: Ukraine (mfa.gov.ua, 403), Taiwan (boca.gov.tw, 503), Indonesia's e-visa site
+  (403).
