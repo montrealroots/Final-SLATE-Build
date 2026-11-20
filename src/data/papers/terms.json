@@ -1467,6 +1467,42 @@
      "what": "Immigration and Civil Status Seychelles, Gainful Occupation Permit: SCR 1,000 processing, SCR 500 a month for the permit's whole duration, collected 1 to 5 days after submission (page undated, read November 20, 2026)"
     }
    ]
+  },
+  "VU": {
+   "route": "Temporary Work Permit",
+   "fee": 60000,
+   "currency": "VUV",
+   "feeBasis": "VT 60,000 in all for a Temporary Work Permit, for work of up to four months (VT 30,000 for an Exemption Work Permit, up to a month), from July 1, 2025. An older, undated page of the Department's gave VT 40,000; the directive replaces it.",
+   "stayDays": 120,
+   "stayBasis": "Up to four months.",
+   "sources": [
+    {
+     "kind": "official",
+     "url": "https://dol.gov.vu/index.php/directives/121-directive-on-the-implementation-of-fees-for-temporary-and-exemption-work-permits",
+     "what": "Department of Labour and Employment Services, directive of June 20, 2025 on temporary and exemption work permit fees, effective July 1, 2025"
+    }
+   ]
+  },
+  "GD": {
+   "route": "Work permit (Ministry of Labour)",
+   "fee": 100,
+   "currency": "XCD",
+   "feeBasis": "A non-refundable XCD 100 for the application form (SRO 48/2014). The permit's own fee is paid to the Treasury only once the Minister approves it, by nationality, for each year: XCD 5,000 in general, XCD 3,000 for other Commonwealth citizens, North Americans, Britons and EU nationals, XCD 1,000 for nine Caribbean nationalities; OECS citizens are exempt. The game takes a year.",
+   "issuance": {
+    "amount": 5000,
+    "currency": "XCD"
+   },
+   "days": 17,
+   "daysBasis": "The 2017 regulations require a decision within 12 working days of a complete application: about 17 days. The Ministry says it routinely takes two weeks.",
+   "stayDays": 365,
+   "stayBasis": "A permit is paid for each desired year of employment; the game takes one.",
+   "sources": [
+    {
+     "kind": "official",
+     "url": "https://llca.gov.gd/labour/wp-content/uploads/sites/3/2023/12/LABOUR-WORK-PERMIT-GUIDE.pdf",
+     "what": "Ministry of Labour, Grenada, Work Permit Guidelines (June 2020): fees (section 8.1, citing SRO 26/2008, 26/2015, 48/2014) and the 12-working-day timeframe (section 7.3, SRO 24/2017)"
+    }
+   ]
   }
  },
  "permitAuthorities": {
@@ -3776,6 +3812,21 @@
      "kind": "official",
      "url": "https://mofa.gov.bs/evisa-online-services",
      "what": "Ministry of Foreign Affairs of the Bahamas, eVISA online services: $160 single entry, 7 to 10 business days (last updated April 1, 2026)"
+    }
+   ]
+  },
+  "FJ": {
+   "name": "Visitor visa (single entry)",
+   "fee": 93,
+   "currency": "FJD",
+   "feeBasis": "$93 for a single-entry visa, valid for three months for one journey ($185 multiple entry). The Ministry's page gives dollars without naming them, taken as Fiji dollars.",
+   "days": 20,
+   "daysBasis": "14 working days from when the visa officer receives the application: about 20 days. Until February 1, 2023 it was three days.",
+   "sources": [
+    {
+     "kind": "official",
+     "url": "https://immigration.gov.fj/fiji-visas",
+     "what": "Ministry of Immigration, Fiji visas: $93 single entry, 14 working days (page undated, read November 20, 2026)"
     }
    ]
   }

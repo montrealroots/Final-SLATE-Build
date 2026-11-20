@@ -26,18 +26,18 @@ the screen says so.
 | passport application | not applicable | 6 |
 | visiting rules | inherited-unverified | 246 |
 | visiting rules | not applicable | 6 |
-| visitor visa application | verified | 108 |
+| visitor visa application | verified | 109 |
 | visitor visa application | implemented/tested | 1 |
 | visitor visa application | inherited-unverified | 2 |
-| visitor visa application | modeled | 135 |
+| visitor visa application | modeled | 134 |
 | visitor visa application | not applicable | 6 |
 | work rules | verified | 1 |
 | work rules | inherited-unverified | 228 |
 | work rules | modeled | 17 |
 | work rules | not applicable | 6 |
-| work permit application | verified | 69 |
+| work permit application | verified | 70 |
 | work permit application | implemented/tested | 1 |
-| work permit application | modeled | 176 |
+| work permit application | modeled | 175 |
 | work permit application | not applicable | 6 |
 
 ## What This Says

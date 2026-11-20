@@ -79,6 +79,10 @@ describe('papers terms', () => {
     expect(permitTerms('SC', 'Gainful Occupation Permit')).toMatchObject({ fee: { amount: 2500, currency: 'SCR' }, days: 3, daysText: 'between 1 and 5 days', stayDays: 90, estimate: null });
     expect(visaTerms('BS')).toMatchObject({ fee: { amount: 160, currency: 'BSD' }, days: 12, estimate: null });
     expect(visaTerms('BS').basis).toMatch(/7 to 10 business days/);
+    // Fiji: 14 working days, about 20; Vanuatu: the 2025 directive's fee, its decision time still the game's estimate.
+    expect(visaTerms('FJ')).toMatchObject({ fee: { amount: 93, currency: 'FJD' }, days: 20, estimate: null });
+    expect(permitTerms('VU', 'Work permit (Department of Labour)')).toMatchObject({ route: 'Temporary Work Permit', fee: { amount: 60000, currency: 'VUV' }, stayDays: 120 });
+    expect(permitTerms('VU', 'Work permit (Department of Labour)').estimate?.only).toBe('days');
   });
 
   it('names a source for every researched figure, and each is a real amount and a real time', () => {

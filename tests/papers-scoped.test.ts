@@ -52,7 +52,7 @@ describe('route-scoped fees', () => {
     expect(unsettled.every((r) => !r.applies && r.held)).toBe(true);
     // Every record is either applied or held with a reason; none is silently dropped.
     expect(ROUTE_RECORDS.every((r) => !!r.applies !== !!r.held)).toBe(true);
-    expect(ROUTE_RECORDS).toHaveLength(49);
+    expect(ROUTE_RECORDS).toHaveLength(51);
     // Serbia's long-stay route doesn't stand in for its work permit.
     expect(scopedRecords('RS', 'permit', { livesIn: 'US', passports: ['IN'], today: '2026-06-01' })).toEqual({ application: undefined, issuance: undefined });
   });
@@ -64,6 +64,17 @@ describe('route-scoped fees', () => {
     expect(at('CA').fee).toEqual({ amount: 160, currency: 'CAD' });
     expect(at('CA').estimate?.only).toBe('days');
     expect(at('IN')).toEqual(visaTerms('TT'));
+  });
+
+  // From November 20, 2026 (Grenada's Ministry of Labour guidelines): the application's XCD 100 now, the permit's fee by
+  // nationality only once it's approved; a passport in two tiers pays the lower.
+  it('charges Grenada\'s permit fee by nationality, and only on approval', () => {
+    const at = (passports: string[]) => withScope(permitTerms('GD', 'Work permit'), 'GD', 'permit', { livesIn: 'US', passports, today: '2026-11-20' });
+    expect(at(['CN'])).toMatchObject({ fee: { amount: 100, currency: 'XCD' }, issuance: { amount: 5000, currency: 'XCD' }, days: 17, estimate: null });
+    expect(at(['US']).issuance).toEqual({ amount: 3000, currency: 'XCD' });
+    expect(at(['IN']).issuance).toEqual({ amount: 3000, currency: 'XCD' });
+    expect(at(['JM']).issuance).toEqual({ amount: 1000, currency: 'XCD' });
+    expect(at(['GB', 'JM']).issuance).toEqual({ amount: 1000, currency: 'XCD' });
   });
 
   // From November 20, 2026 (Nepal Tourism Board): some passports get no visa on arrival in Nepal and apply at a mission
