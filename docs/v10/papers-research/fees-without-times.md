@@ -117,7 +117,7 @@ Batch 7 (November 20, 2026, later):
     keeps Namibia's undated official values as candidates.
   - Belarus and Brunei: priced by nationality and by consulate (Belarus: US$75 for US citizens, US$45 for EU citizens,
     in Washington).
-- A finding about the work rules, not the fees: `src/data/papers/work.json` gives Armenia, Kazakhstan and Ukraine
+- A finding about the work rules, not the fees (corrected in batch 11, below): `src/data/papers/work.json` gives Armenia, Kazakhstan and Ukraine
   `"right": "free"` for every passport, as it does Svalbard. Svalbard's is right (the Governor: the Immigration Act
   doesn't apply there). Ukraine's looks wrong: its employment service publishes the fee for a permit to employ
   foreigners (Law on Employment, article 42-4). These rights came from SLATE-REBUILD and are marked inherited and
@@ -192,3 +192,21 @@ Batch 10 (November 20, 2026).
   nationals' visa is free. The SAARC citizens' free visa isn't applied: it covers the first visit of a visa year only,
   which the game doesn't count.
 - Cyprus's €35 facilitation rate is still not applied: the fee form (gov.cy, GL292) answered 403.
+
+Batch 11 (November 20, 2026): the work rules that let anyone work.
+- `work.json` let every passport work freely in Armenia, Kazakhstan, Slovenia, Svalbard and Ukraine. Svalbard's is right
+  and stays. The other four now need a permit:
+  - Armenia, verified: the Migration and Citizenship Service's page (undated, read November 20) says the employer
+    applies online for a foreign employee's employment-based residence status, AMD 105,000 for the card, issued within
+    30 days; EAEU citizens need no permitting document (the EAEU group already said so). Recorded in `terms.json` in
+    full, so one fewer permit is estimated (163).
+  - Ukraine, modeled: a permit to employ a foreigner (Law on Employment, article 42), from law-firm summaries (BDO,
+    Chambers); zakon.rada.gov.ua answered 503 and kyivcity.gov.ua 403. Its fee (2, 4 or 6 subsistence minimums by term,
+    article 42-4, by the same summaries) isn't recorded, so the fee and time stay the game's estimate.
+  - Kazakhstan, modeled: a permit from the local executive body, as the government news site (oq.gov.kz, November 26,
+    2024) treats the rule; the exemption list (Resolution 1041 of November 24, 2023) wasn't readable on adilet.zan.kz.
+  - Slovenia, modeled: the single permit, with up to 90 days a year without it for a performer, from the UK government's
+    "Travel to Slovenia for work" (updated April 15, 2024). gov.si and the Employment Service confirm the permit rule
+    but don't list artists; the law's text (uradni-list.si) answered 503.
+- A player already working in one of these four without a permit loses that right when the save is next loaded, and
+  needs the permit. Permits already issued are unaffected.

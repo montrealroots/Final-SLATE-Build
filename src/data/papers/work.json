@@ -569,8 +569,16 @@
     }
    },
    "others": {
-    "right": "free"
-   }
+    "right": "permit",
+    "route": "Employment-based residence status (Migration and Citizenship Service)"
+   },
+   "sources": [
+    {
+     "kind": "official",
+     "url": "https://migration.mia.gov.am/en/acquiring-employment-based-residence-status",
+     "what": "Migration and Citizenship Service, acquiring employment-based residence status: the employer applies online; EAEU citizens need no permitting document (page undated, read November 20, 2026)"
+    }
+   ]
   },
   "AO": {
    "passports": {},
@@ -4691,8 +4699,10 @@
     }
    },
    "others": {
-    "right": "free"
-   }
+    "right": "permit",
+    "route": "Permit from the local executive body (akimat)"
+   },
+   "modeled": "the game takes this from Kazakhstan's government news site, which treats a permit from the local executive body as the rule; who is exempt wasn't read"
   },
   "LA": {
    "passports": {},
@@ -7202,8 +7212,12 @@
     }
    },
    "others": {
-    "right": "free"
-   }
+    "right": "permit",
+    "route": "Single residence and work permit (enotno dovoljenje)",
+    "days": 90,
+    "within": 365
+   },
+   "modeled": "the 90 days a performer may work without a permit are from the UK government's guidance; Slovenia's own text wasn't read"
   },
   "SJ": {
    "passports": {},
@@ -7843,8 +7857,10 @@
   "UA": {
    "passports": {},
    "others": {
-    "right": "free"
-   }
+    "right": "permit",
+    "route": "Permit to employ a foreigner (State Employment Service)"
+   },
+   "modeled": "the game takes this from summaries of Ukraine's Law on Employment (article 42), because the government's own pages didn't load"
   },
   "UG": {
    "passports": {},

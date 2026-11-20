@@ -31,12 +31,13 @@ the screen says so.
 | visitor visa application | inherited-unverified | 2 |
 | visitor visa application | modeled | 136 |
 | visitor visa application | not applicable | 6 |
-| work rules | inherited-unverified | 232 |
-| work rules | modeled | 14 |
+| work rules | verified | 1 |
+| work rules | inherited-unverified | 228 |
+| work rules | modeled | 17 |
 | work rules | not applicable | 6 |
-| work permit application | verified | 67 |
+| work permit application | verified | 68 |
 | work permit application | implemented/tested | 1 |
-| work permit application | modeled | 178 |
+| work permit application | modeled | 177 |
 | work permit application | not applicable | 6 |
 
 ## What This Says
@@ -96,6 +97,11 @@ the screen says so.
   - **Work rules** (14 countries whose research was blocked): anyone who isn't a citizen needs a permit, with the free
     movement of ECOWAS (Guinea-Bissau), New Zealand citizens in Niue, Gulf citizens in Qatar as in the Emirates, and
     Morocco's rule in Western Sahara.
+  - **Work rules corrected on November 20, 2026** (3 countries, modeled): SLATE-REBUILD's records let anyone work in
+    Ukraine, Kazakhstan and Slovenia. Each now needs its permit. Ukraine's is taken from summaries of its Law on
+    Employment, because the government's pages didn't load; Kazakhstan's from its government news site; Slovenia's
+    90 days without a permit for a performer from the UK government's guidance. Armenia's was corrected the same day
+    from the Migration and Citizenship Service's own page, and is the one verified work rule.
   - Where your story is lived was taken as where you may live and work until November 14, 2026. From then it takes
     citizenship, free movement or a work visa, as anywhere else does (`docs/v9/PAPERS.md`).
   - Past 2026-10-30, the last exchange rate is held and marked stale (`docs/v9/FX.md`).

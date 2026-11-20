@@ -15,6 +15,20 @@ const posted = (x: GameState) => Math.round(personalPostings(x).reduce((a, p) =>
 
 // The fixture player is Japanese and French and lives in London.
 describe('A16: a passport lets you travel; it doesn\'t let you work', () => {
+  // From November 20, 2026: SLATE-REBUILD's records had let anyone work in Armenia, Kazakhstan, Slovenia and Ukraine.
+  it('needs a permit in Armenia, Kazakhstan, Slovenia and Ukraine, where the records had let anyone work', () => {
+    const s = startLife('free-four', 'gb-london', { nationalities: ['US'] });
+    for (const c of ['AM', 'KZ', 'UA']) expect(workRight(s, c).can, c).toBe(false);
+    // Slovenia: a performer's 90 days a year without the permit, then the permit.
+    expect(workRight(s, 'SI')).toMatchObject({ can: true });
+    expect((workRight(s, 'SI') as { why: string }).why).toMatch(/up to 90 days in any 365/);
+    expect((workRight(s, 'UA') as { why: string }).why).toMatch(/Permit to employ a foreigner.*summaries of Ukraine's Law on Employment/);
+    // Armenia's is the Migration and Citizenship Service's, researched in full; its EAEU neighbours still work freely.
+    expect(permitTerms('AM', 'Employment-based residence status (Migration and Citizenship Service)')).toMatchObject({ fee: { amount: 105000, currency: 'AMD' }, days: 30, estimate: null });
+    expect(workRight(startLife('free-four-ru', 'gb-london', { nationalities: ['RU'] }), 'AM').can).toBe(true);
+    expect(workRight(s, 'SJ').can).toBe(true); // Svalbard: the Immigration Act doesn't apply there
+  });
+
   it('reads citizenship, where you live, a treaty right, and the permit everyone else needs', () => {
     const s = startLife('papers', 'gb-london', { nationalities: ['JP', 'FR'] }); // not British, unlike the fixture
     expect(workRight(s, 'FR')).toMatchObject({ can: true, why: 'You are a citizen of France.' });

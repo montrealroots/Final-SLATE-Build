@@ -1432,6 +1432,21 @@
      "what": "New to Denmark (SIRI), Work in Greenland: no processing fee; normally about 3 months, up to 6; artists other than performers may work under 3 months without a permit"
     }
    ]
+  },
+  "AM": {
+   "route": "Employment-based residence status",
+   "fee": 105000,
+   "currency": "AMD",
+   "feeBasis": "AMD 105,000 for issuing a foreign employee's temporary residence card, applied for online by the employer.",
+   "days": 30,
+   "daysBasis": "The card is issued within 30 days of the employer's application.",
+   "sources": [
+    {
+     "kind": "official",
+     "url": "https://migration.mia.gov.am/en/acquiring-employment-based-residence-status",
+     "what": "Migration and Citizenship Service: AMD 105,000 for the card, issued within 30 days of the employer's application (page undated, read November 20, 2026)"
+    }
+   ]
   }
  },
  "permitAuthorities": {
