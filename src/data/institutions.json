@@ -16481,7 +16481,16 @@
      "competitive": true
     }
    ],
-   "rosterStatus": "read"
+   "rosterStatus": "read",
+   "official": {
+    "2026": {
+     "start": "2026-02-06",
+     "end": "2026-02-06",
+     "label": "2026 AACTA Awards",
+     "source": "https://www.aacta.org/our-news/media-room/aacta-announces-the-winners-for-the-2026-aacta-awards-presented-by-foxtel-group/",
+     "checked": "2026-11-19"
+    }
+   }
   },
   {
    "id": "amaa",

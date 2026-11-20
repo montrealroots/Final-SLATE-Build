@@ -45,12 +45,12 @@ a roster that was read says nothing about the eligibility rules, the recipients,
 | César Awards (`cesar`) | 27 | 27 / 0 / 0 | 25 / 0 / 2 | 0 | 27 | 3 | 13 | 0 | 0 |
 | Goya Awards (`goya`) | 30 | 30 / 0 / 0 | 28 / 0 / 2 | 0 | 30 | 28 | 16 | 0 | 0 |
 | Canadian Screen Awards (`canadian-screen`) | 119 | 114 / 5 / 0 | 115 / 0 / 4 | 0 | 0 | 115 | 9 | 0 | 40 |
-| AACTA Awards (`aacta`) | 36 | 35 / 1 / 0 | 36 / 0 / 0 | 0 | 0 | 32 | 12 | 0 | 6 |
+| AACTA Awards (`aacta`) | 36 | 35 / 1 / 0 | 36 / 0 / 0 | 0 | 36 | 32 | 13 | 0 | 6 |
 | Africa Movie Academy Awards (`amaa`) | 4 | 0 / 0 / 4 | 0 / 0 / 4 | 0 | 0 | 4 | 4 | 0 | 0 |
 | Japan Academy Film Prize (`japan-academy`) | 17 | 17 / 0 / 0 | 17 / 0 / 0 | 0 | 0 | 0 | 6 | 0 | 2 |
 | Blue Dragon Film Awards (`blue-dragon`) | 3 | 0 / 0 / 3 | 0 / 0 / 3 | 0 | 0 | 0 | 2 | 0 | 0 |
 | European Film Awards (`european-film-awards`) | 20 | 15 / 5 / 0 | 15 / 0 / 5 | 0 | 20 | 14 | 8 | 6 | 0 |
-| **All 37** | 806 | 709 / 69 / 28 | 592 / 11 / 203 | 28 | 356 | 541 | 297 | 50 | 123 |
+| **All 37** | 806 | 709 / 69 / 28 | 592 / 11 / 203 | 28 | 392 | 541 | 298 | 50 | 123 |
 
 ## Research queue
 

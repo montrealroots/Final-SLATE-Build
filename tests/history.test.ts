@@ -174,6 +174,19 @@ describe('recorded history', () => {
     expect(won.find((o) => o.category === 'european')).toMatchObject({ subjects: ['Valor sentimental'], credited: 'Noruega' });
   });
 
+  it('holds the 2026 AACTA Awards: each winner dated by the gala (February 4) or the ceremony (February 6) that named it', () => {
+    const on = (day: string, kind: string) => recordedResults('aacta', 2026, day).filter((o) => o.kind === kind);
+    // The nominations release states no date: the nominees are shown from the first ceremony, when they were public.
+    expect(recordedResults('aacta', 2026, '2026-02-03')).toEqual([]);
+    expect(on('2026-02-04', 'nominees')).toHaveLength(48);
+    expect(on('2026-02-04', 'winner')).toHaveLength(26);
+    const won = on('2026-02-06', 'winner');
+    expect(won).toHaveLength(48);
+    expect(won.find((o) => o.categoryName === 'AACTA Award For Best Film')).toMatchObject({ subjects: ['Bring Her Back'], published: '2026-02-06' });
+    // "Best Documentary" is inside "Best Documentary or Factual Program": the release must name its winner after it.
+    expect(won.find((o) => o.categoryName === 'AACTA Award For Best Documentary')!.published).toBe('2026-02-06');
+  });
+
   it('cites a source for every observation, never publishes before it happens, and names the game\'s own categories', () => {
     const insts = (institutions as { institutions: { id: string; categories: { id: string }[]; official?: Record<string, { label?: string }> }[] }).institutions;
     const wrong: string[] = [];
