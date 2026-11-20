@@ -89,7 +89,8 @@ test('J02 in one save: a real work, real catalog performers, made, released, ent
   await toyStory();
   const names = (await card(page, 'Cast').getByRole('button').allInnerTexts()).map((x) => x.trim()).filter(Boolean);
   let considered = '';
-  for (const name of names.slice(0, 12)) {
+  let part = '';
+  for (const name of names.slice(0, 40)) {
     await card(page, 'Cast').getByRole('button', { name, exact: true }).first().click();
     await expect(page.getByRole('heading', { name, level: 1 })).toBeVisible();
     const story = card(page, 'In Your Story');
@@ -97,11 +98,18 @@ test('J02 in one save: a real work, real catalog performers, made, released, ent
     // First into the story (offers and costs nothing), then onto a part's list.
     const into = story.getByRole('button', { name: `Consider ${name} For Your Projects` });
     if (await into.isVisible()) await into.click();
+    // Someone this short's budget can pay: a star asks hundreds of thousands a day, and the offer would go nowhere.
+    // The page says one of three things: what they ask, that they died (nobody is approached after), or that the catalog
+    // has no credit this game hires for.
+    await expect(story).toContainText(/ask about \$|died on|records no credit/);
+    const asks = Number(((await story.innerText()).match(/ask about \$([\d,]+) a day/) ?? [])[1]?.replace(/,/g, '') ?? Infinity);
+    if (!(asks <= 3_000)) { await toyStory(); continue; }
     const add = story.getByRole('button', { name: 'Consider For This' });
     if (await add.waitFor({ timeout: 8_000 }).then(() => true, () => false)) {
       await add.click();
       await expect(story.getByRole('status')).toContainText(`${name} is on ${TITLE}'s list for`);
       considered = name;
+      part = ((await story.getByRole('status').innerText()).match(/list for (.+?) \(/) ?? [])[1] ?? '';
       break;
     }
     await toyStory();
@@ -110,7 +118,27 @@ test('J02 in one save: a real work, real catalog performers, made, released, ent
   await nav(page, 'Projects');
   await page.getByRole('button', { name: TITLE }).first().click();
 
-  // Cast: the considered performer is first on their part's list, from the film catalog, and is offered the part.
+  // Their part: they are first on its list, marked as from the film catalog, and offered it at what they ask.
+  expect(part, 'the part they were considered for').not.toBe('');
+  await section(page, 'Cast');
+  const partRow = page.locator('section.card li', { has: page.locator('strong', { hasText: new RegExp(`^${part}$`) }) }).first();
+  await partRow.getByRole('button', { name: 'Find Performers' }).click();
+  const dialog = page.getByRole('dialog');
+  const them = dialog.locator('li', { hasText: considered }).first();
+  await expect(them.getByText('From The Film Catalog', { exact: true })).toBeVisible();
+  await them.getByRole('button', { name: 'Make Offer' }).click();
+  if (await dialog.isVisible()) {
+    const said = await them.innerText();
+    console.log(`J02-OFFER ${said.replace(/\s+/g, ' ').slice(0, 400)}`);
+    await dialog.getByRole('button', { name: 'Close', exact: true }).click();
+  }
+  await advance(page, 'week');
+  await section(page, 'Cast');
+  for (const b of await page.getByRole('button', { name: 'Accept Counteroffer' }).all()) await b.click();
+  const hire = (await readSavedState(page)).projects.find((x: { title: string }) => x.title === TITLE).hires.find((h: { personId: string }) => /^tp_\d+$/.test(h.personId));
+  console.log(`J02-HIRE ${JSON.stringify(hire ? { personId: hire.personId, status: hire.status, dayRate: hire.dayRate } : null)}`);
+
+  // The other parts and the crew, by the generic helpers.
   await castRoles(page);
   await staffEveryDepartment(page);
   await advance(page, 'week');
@@ -177,4 +205,16 @@ test('J02 in one save: a real work, real catalog performers, made, released, ent
   expect(mine(after).history.length).toBeGreaterThanOrEqual(mine(done).history.length);
   expect(JSON.stringify(mine(after)).match(/"tp_\d+"/g)?.length ?? 0).toBeGreaterThan(0);
   expect(errors).toEqual([]);
+  // The journey's summary (JOURNEY-REPORT.md): what happened in this save, from the save itself.
+  const film = mine(after);
+  const summary = {
+    considered, hired: film.hires.filter((h: { personId: string; status: string }) => /^tp_\d+$/.test(h.personId)).map((h: { personId: string; status: string }) => `${h.personId}: ${h.status}`), realPeople: [...new Set(JSON.stringify(film).match(/tp_\d+/g) ?? [])], source: film.proposal?.story?.article,
+    delivered: !!film.delivered, releases: film.releases.map((r: { distributor: string; status: string }) => `${r.distributor}: ${r.status}`),
+    entries: after.editions.filter((e: { id: string }) => e.id === 'sundance-2027').flatMap((e: { entries: { categoryId: string; status: string }[] }) => e.entries.map((x) => `${x.categoryId}: ${x.status}`)),
+    sundanceLogs: results(after), feePostings: fees(after), date: new Date(after.now).toISOString().slice(0, 10),
+  };
+  console.log(`J02-SUMMARY ${JSON.stringify(summary)}`);
+  expect(summary.hired.some((x: string) => /: (accepted|working|done|wrapped|completed)$/.test(x)), `a real performer was contracted: ${summary.hired.join(', ')}`).toBe(true);
+  expect(summary.entries.length).toBeGreaterThan(0);
+  expect(summary.sundanceLogs).toBeGreaterThan(0);
 });
