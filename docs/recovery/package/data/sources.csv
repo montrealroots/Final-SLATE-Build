@@ -1,0 +1,43 @@
+id,url,kind,access,retrievedDate,note
+bafta-film,https://www.bafta.org/media-centre/press-releases/winners-announced-2026-film-awards/,official,retrieved,2026-11-19,
+bafta-film-roster,https://www.bafta.org/awards/film/?award-year=2026,official,retrieved,2026-11-19,Full roster endpoint recovered; nominations and recipient IDs still require structured extraction.
+bafta-film-noms,https://www.bafta.org/media-centre/press-releases/nominations-2026-ee-bafta-film-awards/,official,retrieved,2026-11-19,
+bafta-tv,https://www.bafta.org/media-centre/press-releases/winners-2026-tv-awards/,official,retrieved,2026-11-19,
+bafta-craft,https://www.bafta.org/media-centre/press-releases/winners-bafta-tv-craft-2026/,official,retrieved,2026-11-19,
+sxsw-jury,https://sxsw.com/wp-content/uploads/sites/2/2026/10/2026-FTV-Jury-Special-Awards.pdf,official,retrieved,2026-11-19,March 18 release; October upload path is not the event/publication date.
+sxsw-audience,https://sxsw.com/wp-content/uploads/sites/2/2026/10/Film-TV-Festival-Audience-Awards-Release.pdf,official,retrieved,2026-11-19,March 20 release linked from official archive. PDF metadata says draft; use official archive and dated body as provenance.
+sxsw-archive,https://sxsw.com/press-releases/,official,retrieved,2026-11-19,
+idfa-results,https://festival.idfa.nl/en/news/award-winners-idfa-2026/,official,official search-index text; direct open unavailable,2026-11-19,November 19 awards announcement recovered. Festival end is not award date.
+idfa-press,https://www.idfa.nl/en/about-idfa/contact/press/,official,retrieved,2026-11-19,
+locarno-secondary,https://ch-cultura.ch/kulturfoerderung-kulturvermittlung-kultur-und-medienpolitik/locarno79-der-pardo-doro-geht-an-nu-e-locul-tau-aici-von-florin-serban/,secondary_attributed_organizer_release,retrieved,2026-11-19,Official Locarno URL remained blocked; do not label direct official verification.
+locarno-official,https://www.locarnofestival.ch/press/press-releases/2026/08/locarno79-the-pardo-d-oro-goes-to-you-don-t-belong-here-by-florin-serban.html,official,blocked,2026-11-19,
+tiff-results,https://keithlovesmovies.com/2026/09/20/tiff-announces-2026-award-winners/,secondary,retrieved once; subsequent open blocked,2026-11-19,
+tiff-corroboration,https://awardsfocus.com/news/tiff-2026-announces-award-winners-la-bola-negra-takes-peoples-choice-award/,secondary,retrieved,2026-11-19,
+efa-2026,https://www.europeanfilmawards.eu/award-edition/awards-2026/?tab=winners,official,retrieved,2026-11-19,
+efa-2027-rules,https://www.europeanfilmawards.eu/regulations/,official,retrieved,2026-11-19,
+efa-2027-noms,https://www.europeanfilmawards.eu/nominations-european-film-awards-2027/,official,retrieved,2026-11-19,
+iemmy-noms,https://www.iemmys.tv/2026-international-emmy-awards-nominees-announced/,official,retrieved,2026-11-19,
+iemmy-roster,https://www.iemmys.tv/international-emmy-awards/nominees/,official,retrieved,2026-11-19,
+gotham-noms,https://thegotham.org/press/the-gothams-nominations-36th-edition/,official,official search-index text; direct open blocked,2026-11-19,
+blue-dragon-noms,https://www.soompi.com/article/1882064wpp/47th-blue-dragon-film-awards-announces-nominees,secondary,retrieved,2026-11-19,
+co-fees,https://cancilleria.gov.co/normograma/compilacion/docs/resolucion_minrelaciones_3969_2026.htm,official,retrieved,2026-11-19,Resolution 03969/2026; published March 31; effective next day per Article 19.
+rs-dc,https://washington.mfa.gov.rs/en/citizens/services/price-list-consular-services,official,retrieved,2026-11-19,
+mw-imm,https://immigration.gov.mw/visa/visa-fees/,official,retrieved,2026-11-19,
+mw-eta,https://www.evisa.gov.mw/Faq,official,retrieved,2026-11-19,
+tr-fees,https://en.goc.gov.tr/fee-amount,official,retrieved,2026-11-19,
+lk-eta,https://www.eta.gov.lk/slvisa/visainfo/fees.jsp?locale=en_US,official,official indexed page,2026-11-19,
+lk-gazette,https://documents.gov.lk/api/content-file-proxy?file=%2Fextra-gazette-content%2F2490-02_E_1784568220.pdf,official,official search-index text; direct retrieval timeout,2026-11-19,Time-limited scheme; do not extend beyond November 24 without a new instrument.
+ph-dc,https://philippineembassy-dc.org/schedule-and-fees/,official,retrieved,2026-11-19,
+cy-visa,https://www.gov.cy/en/information/visas/,official,official search-index text; direct blocked,2026-11-19,
+fj-work,https://www.immigration.gov.fj/application-forms-publications-fees,official,retrieved,2026-11-19,
+my-esd,https://esd.imi.gov.my/portal/pdf/payment-table-v13.pdf,official,retrieved,2026-11-19,
+ae-temp,https://tasheel.mohre.gov.ae/en/services/temporary-work-permits-2022,official,retrieved,2026-11-19,Temporary and mission permits are distinct; do not transfer facts between them.
+jm-app,https://mlss.gov.jm/wp-content/uploads/2025/05/Work-Permit-and-Work-Permit-Exemption-Application-Instruction-Sheet.pdf,official,retrieved,2026-11-19,
+ky-fees,https://gov.ky/documents/35692/0/CaymanianProtection%28Fees%29Regulations%2C2026_MADE.pdf/df186a33-80f9-2a0b-d2c1-570df6d88690?t=1776359047875,official,retrieved,2026-11-19,"Enacted regulation dated April16; commencement depends on linked Act, not confirmed here."
+bw-work,https://www.gov.bw/taxonomy/term/115,official,retrieved,2026-11-19,
+na-fee,https://mhaiss.gov.na/application-fees,official,retrieved,2026-11-19,Undated official schedule; recent visitor-fee changes make currency of whole table uncertain.
+numbers,https://www.the-numbers.com/data-services,official,retrieved,2026-11-19,Licensed data/API; do not treat public viewing as bulk redistribution permission.
+comscore,https://www.comscore.com/Products/Movies/Global-Box-Office-Reporting,official,retrieved,2026-11-19,
+bfi,https://www.bfi.org.uk/industry-data-insights/weekend-box-office-figures,official,retrieved,2026-11-19,UK weekend spreadsheets; not worldwide daily history. Redistribution terms still need confirming.
+pw,https://playwright.dev/docs/browsers,official,retrieved,2026-11-19,WebKit testing is not physical iPhone Safari certification.
+safari,https://developer.apple.com/documentation/webkit/testing-with-webdriver-in-safari?changes=_2&language=objc,official,retrieved,2026-11-19,

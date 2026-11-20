@@ -95,6 +95,19 @@ The catalog (TMDB), the cinemas (Wikidata) and the stories (Wikipedia) are older
   - <https://www.biff.kr/eng/addon/10000001/page.asp?page_num=11121>, read 2026-11-20. Every award of the opening ceremony (October 6), the closing ceremony and the Busan Vision Awards; both of the latter are shown from the closing day, October 15, as the page dates neither.
   - <https://sitgesfilmfestival.com/en/noticies/sanguine-marion-corroller-best-feature-film-award-sitges-2026>, read 2026-11-20. The juries' and the public's awards, announced October 17, 2026; the winners are read from the festival's award-winners page.
   - <https://sitgesfilmfestival.com/en/edition/award-winners>, read 2026-11-20. The honorary awards of the 59th edition, given over the festival (October 8 to 18, 2026), shown from its last day as the page dates none of them.
+  - <https://sxsw.com/wp-content/uploads/sites/2/2026/10/2026-FTV-Jury-Special-Awards.pdf>, read 2026-11-20. Jury and special awards, dated March 18, 2026 in the release (the file sits in an October upload folder, which is not its date).
+  - <https://sxsw.com/wp-content/uploads/sites/2/2026/10/Film-TV-Festival-Audience-Awards-Release.pdf>, read 2026-11-20. Audience awards, dated March 20, 2026 in the release; its file properties say draft, its body is the published text.
+  - <https://festival.idfa.nl/en/news/award-winners-idfa-2026/>, read 2026-11-20. Every award and special mention of the 2026 festival, announced Thursday, November 19.
+  - <https://www.europeanfilmawards.eu/nominations-european-film-awards-2027/>, read 2026-11-20. The nominations, dated November 14, 2026, for the ceremony of January 16, 2027 in Athens; the Young Audience, Short Film and World Cinema awards were announced apart and aren't in it.
+  - <https://www.europeanfilmawards.eu/award-edition/awards-2026/?tab=winners>, read 2026-11-20. Every award of the 38th edition; the page gives no ceremony date, which is the owner's research package's (January 17, 2026).
+  - <https://www.iemmys.tv/2026-international-emmy-awards-nominees-announced/>, read 2026-11-20. Every category's nominees, announced September 23, 2026; titles are set in capitals there; here in their own language's ordinary case, without the English translations in brackets.
+  - <https://thegotham.org/press/the-gothams-nominations-36th-edition/>, read 2026-11-20. Every film category's nominees, announced October 27, 2026, for the ceremony of November 30 at Cipriani Wall Street.
+  - <https://www.bafta.org/media-centre/press-releases/winners-announced-2026-film-awards/>, read 2026-11-19. Every film award's winner on February 22, 2026; for a craft award the record names the film, not its credited recipients.
+  - <https://www.bafta.org/media-centre/press-releases/winners-2026-tv-awards/>, read 2026-11-19. Every television award's winner on May 10, 2026.
+  - <https://www.bafta.org/media-centre/press-releases/winners-bafta-tv-craft-2026/>, read 2026-11-19. Every craft award's winner on April 26, 2026.
+  - <https://ch-cultura.ch/kulturfoerderung-kulturvermittlung-kultur-und-medienpolitik/locarno79-der-pardo-doro-geht-an-nu-e-locul-tau-aici-von-florin-serban/>, read 2026-11-19. The festival's awards of August 15, 2026, as reported from the festival's release; the festival's own page refused the owner's research package and this session.
+  - <https://keithlovesmovies.com/2026/09/20/tiff-announces-2026-award-winners/>, read 2026-11-19. Five of the festival's awards of September 20, 2026, as reported; corroborated by Awards Focus.
+  - <https://www.soompi.com/article/1882064wpp/47th-blue-dragon-film-awards-announces-nominees>, read 2026-11-19. The Best Film nominees announced October 28, 2026, as reported; the organizer's site couldn't be read.
 
 ## `src/data/history/awards-2026-reference.json`
 

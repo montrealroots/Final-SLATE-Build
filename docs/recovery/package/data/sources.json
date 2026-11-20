@@ -1,0 +1,338 @@
+[
+  {
+    "id": "bafta-film",
+    "url": "https://www.bafta.org/media-centre/press-releases/winners-announced-2026-film-awards/",
+    "kind": "official",
+    "access": "retrieved",
+    "retrievedDate": "2026-11-19",
+    "note": ""
+  },
+  {
+    "id": "bafta-film-roster",
+    "url": "https://www.bafta.org/awards/film/?award-year=2026",
+    "kind": "official",
+    "access": "retrieved",
+    "retrievedDate": "2026-11-19",
+    "note": "Full roster endpoint recovered; nominations and recipient IDs still require structured extraction."
+  },
+  {
+    "id": "bafta-film-noms",
+    "url": "https://www.bafta.org/media-centre/press-releases/nominations-2026-ee-bafta-film-awards/",
+    "kind": "official",
+    "access": "retrieved",
+    "retrievedDate": "2026-11-19",
+    "note": ""
+  },
+  {
+    "id": "bafta-tv",
+    "url": "https://www.bafta.org/media-centre/press-releases/winners-2026-tv-awards/",
+    "kind": "official",
+    "access": "retrieved",
+    "retrievedDate": "2026-11-19",
+    "note": ""
+  },
+  {
+    "id": "bafta-craft",
+    "url": "https://www.bafta.org/media-centre/press-releases/winners-bafta-tv-craft-2026/",
+    "kind": "official",
+    "access": "retrieved",
+    "retrievedDate": "2026-11-19",
+    "note": ""
+  },
+  {
+    "id": "sxsw-jury",
+    "url": "https://sxsw.com/wp-content/uploads/sites/2/2026/10/2026-FTV-Jury-Special-Awards.pdf",
+    "kind": "official",
+    "access": "retrieved",
+    "retrievedDate": "2026-11-19",
+    "note": "March 18 release; October upload path is not the event/publication date."
+  },
+  {
+    "id": "sxsw-audience",
+    "url": "https://sxsw.com/wp-content/uploads/sites/2/2026/10/Film-TV-Festival-Audience-Awards-Release.pdf",
+    "kind": "official",
+    "access": "retrieved",
+    "retrievedDate": "2026-11-19",
+    "note": "March 20 release linked from official archive. PDF metadata says draft; use official archive and dated body as provenance."
+  },
+  {
+    "id": "sxsw-archive",
+    "url": "https://sxsw.com/press-releases/",
+    "kind": "official",
+    "access": "retrieved",
+    "retrievedDate": "2026-11-19",
+    "note": ""
+  },
+  {
+    "id": "idfa-results",
+    "url": "https://festival.idfa.nl/en/news/award-winners-idfa-2026/",
+    "kind": "official",
+    "access": "official search-index text; direct open unavailable",
+    "retrievedDate": "2026-11-19",
+    "note": "November 19 awards announcement recovered. Festival end is not award date."
+  },
+  {
+    "id": "idfa-press",
+    "url": "https://www.idfa.nl/en/about-idfa/contact/press/",
+    "kind": "official",
+    "access": "retrieved",
+    "retrievedDate": "2026-11-19",
+    "note": ""
+  },
+  {
+    "id": "locarno-secondary",
+    "url": "https://ch-cultura.ch/kulturfoerderung-kulturvermittlung-kultur-und-medienpolitik/locarno79-der-pardo-doro-geht-an-nu-e-locul-tau-aici-von-florin-serban/",
+    "kind": "secondary_attributed_organizer_release",
+    "access": "retrieved",
+    "retrievedDate": "2026-11-19",
+    "note": "Official Locarno URL remained blocked; do not label direct official verification."
+  },
+  {
+    "id": "locarno-official",
+    "url": "https://www.locarnofestival.ch/press/press-releases/2026/08/locarno79-the-pardo-d-oro-goes-to-you-don-t-belong-here-by-florin-serban.html",
+    "kind": "official",
+    "access": "blocked",
+    "retrievedDate": "2026-11-19",
+    "note": ""
+  },
+  {
+    "id": "tiff-results",
+    "url": "https://keithlovesmovies.com/2026/09/20/tiff-announces-2026-award-winners/",
+    "kind": "secondary",
+    "access": "retrieved once; subsequent open blocked",
+    "retrievedDate": "2026-11-19",
+    "note": ""
+  },
+  {
+    "id": "tiff-corroboration",
+    "url": "https://awardsfocus.com/news/tiff-2026-announces-award-winners-la-bola-negra-takes-peoples-choice-award/",
+    "kind": "secondary",
+    "access": "retrieved",
+    "retrievedDate": "2026-11-19",
+    "note": ""
+  },
+  {
+    "id": "efa-2026",
+    "url": "https://www.europeanfilmawards.eu/award-edition/awards-2026/?tab=winners",
+    "kind": "official",
+    "access": "retrieved",
+    "retrievedDate": "2026-11-19",
+    "note": ""
+  },
+  {
+    "id": "efa-2027-rules",
+    "url": "https://www.europeanfilmawards.eu/regulations/",
+    "kind": "official",
+    "access": "retrieved",
+    "retrievedDate": "2026-11-19",
+    "note": ""
+  },
+  {
+    "id": "efa-2027-noms",
+    "url": "https://www.europeanfilmawards.eu/nominations-european-film-awards-2027/",
+    "kind": "official",
+    "access": "retrieved",
+    "retrievedDate": "2026-11-19",
+    "note": ""
+  },
+  {
+    "id": "iemmy-noms",
+    "url": "https://www.iemmys.tv/2026-international-emmy-awards-nominees-announced/",
+    "kind": "official",
+    "access": "retrieved",
+    "retrievedDate": "2026-11-19",
+    "note": ""
+  },
+  {
+    "id": "iemmy-roster",
+    "url": "https://www.iemmys.tv/international-emmy-awards/nominees/",
+    "kind": "official",
+    "access": "retrieved",
+    "retrievedDate": "2026-11-19",
+    "note": ""
+  },
+  {
+    "id": "gotham-noms",
+    "url": "https://thegotham.org/press/the-gothams-nominations-36th-edition/",
+    "kind": "official",
+    "access": "official search-index text; direct open blocked",
+    "retrievedDate": "2026-11-19",
+    "note": ""
+  },
+  {
+    "id": "blue-dragon-noms",
+    "url": "https://www.soompi.com/article/1882064wpp/47th-blue-dragon-film-awards-announces-nominees",
+    "kind": "secondary",
+    "access": "retrieved",
+    "retrievedDate": "2026-11-19",
+    "note": ""
+  },
+  {
+    "id": "co-fees",
+    "url": "https://cancilleria.gov.co/normograma/compilacion/docs/resolucion_minrelaciones_3969_2026.htm",
+    "kind": "official",
+    "access": "retrieved",
+    "retrievedDate": "2026-11-19",
+    "note": "Resolution 03969/2026; published March 31; effective next day per Article 19."
+  },
+  {
+    "id": "rs-dc",
+    "url": "https://washington.mfa.gov.rs/en/citizens/services/price-list-consular-services",
+    "kind": "official",
+    "access": "retrieved",
+    "retrievedDate": "2026-11-19",
+    "note": ""
+  },
+  {
+    "id": "mw-imm",
+    "url": "https://immigration.gov.mw/visa/visa-fees/",
+    "kind": "official",
+    "access": "retrieved",
+    "retrievedDate": "2026-11-19",
+    "note": ""
+  },
+  {
+    "id": "mw-eta",
+    "url": "https://www.evisa.gov.mw/Faq",
+    "kind": "official",
+    "access": "retrieved",
+    "retrievedDate": "2026-11-19",
+    "note": ""
+  },
+  {
+    "id": "tr-fees",
+    "url": "https://en.goc.gov.tr/fee-amount",
+    "kind": "official",
+    "access": "retrieved",
+    "retrievedDate": "2026-11-19",
+    "note": ""
+  },
+  {
+    "id": "lk-eta",
+    "url": "https://www.eta.gov.lk/slvisa/visainfo/fees.jsp?locale=en_US",
+    "kind": "official",
+    "access": "official indexed page",
+    "retrievedDate": "2026-11-19",
+    "note": ""
+  },
+  {
+    "id": "lk-gazette",
+    "url": "https://documents.gov.lk/api/content-file-proxy?file=%2Fextra-gazette-content%2F2490-02_E_1784568220.pdf",
+    "kind": "official",
+    "access": "official search-index text; direct retrieval timeout",
+    "retrievedDate": "2026-11-19",
+    "note": "Time-limited scheme; do not extend beyond November 24 without a new instrument."
+  },
+  {
+    "id": "ph-dc",
+    "url": "https://philippineembassy-dc.org/schedule-and-fees/",
+    "kind": "official",
+    "access": "retrieved",
+    "retrievedDate": "2026-11-19",
+    "note": ""
+  },
+  {
+    "id": "cy-visa",
+    "url": "https://www.gov.cy/en/information/visas/",
+    "kind": "official",
+    "access": "official search-index text; direct blocked",
+    "retrievedDate": "2026-11-19",
+    "note": ""
+  },
+  {
+    "id": "fj-work",
+    "url": "https://www.immigration.gov.fj/application-forms-publications-fees",
+    "kind": "official",
+    "access": "retrieved",
+    "retrievedDate": "2026-11-19",
+    "note": ""
+  },
+  {
+    "id": "my-esd",
+    "url": "https://esd.imi.gov.my/portal/pdf/payment-table-v13.pdf",
+    "kind": "official",
+    "access": "retrieved",
+    "retrievedDate": "2026-11-19",
+    "note": ""
+  },
+  {
+    "id": "ae-temp",
+    "url": "https://tasheel.mohre.gov.ae/en/services/temporary-work-permits-2022",
+    "kind": "official",
+    "access": "retrieved",
+    "retrievedDate": "2026-11-19",
+    "note": "Temporary and mission permits are distinct; do not transfer facts between them."
+  },
+  {
+    "id": "jm-app",
+    "url": "https://mlss.gov.jm/wp-content/uploads/2025/05/Work-Permit-and-Work-Permit-Exemption-Application-Instruction-Sheet.pdf",
+    "kind": "official",
+    "access": "retrieved",
+    "retrievedDate": "2026-11-19",
+    "note": ""
+  },
+  {
+    "id": "ky-fees",
+    "url": "https://gov.ky/documents/35692/0/CaymanianProtection%28Fees%29Regulations%2C2026_MADE.pdf/df186a33-80f9-2a0b-d2c1-570df6d88690?t=1776359047875",
+    "kind": "official",
+    "access": "retrieved",
+    "retrievedDate": "2026-11-19",
+    "note": "Enacted regulation dated April16; commencement depends on linked Act, not confirmed here."
+  },
+  {
+    "id": "bw-work",
+    "url": "https://www.gov.bw/taxonomy/term/115",
+    "kind": "official",
+    "access": "retrieved",
+    "retrievedDate": "2026-11-19",
+    "note": ""
+  },
+  {
+    "id": "na-fee",
+    "url": "https://mhaiss.gov.na/application-fees",
+    "kind": "official",
+    "access": "retrieved",
+    "retrievedDate": "2026-11-19",
+    "note": "Undated official schedule; recent visitor-fee changes make currency of whole table uncertain."
+  },
+  {
+    "id": "numbers",
+    "url": "https://www.the-numbers.com/data-services",
+    "kind": "official",
+    "access": "retrieved",
+    "retrievedDate": "2026-11-19",
+    "note": "Licensed data/API; do not treat public viewing as bulk redistribution permission."
+  },
+  {
+    "id": "comscore",
+    "url": "https://www.comscore.com/Products/Movies/Global-Box-Office-Reporting",
+    "kind": "official",
+    "access": "retrieved",
+    "retrievedDate": "2026-11-19",
+    "note": ""
+  },
+  {
+    "id": "bfi",
+    "url": "https://www.bfi.org.uk/industry-data-insights/weekend-box-office-figures",
+    "kind": "official",
+    "access": "retrieved",
+    "retrievedDate": "2026-11-19",
+    "note": "UK weekend spreadsheets; not worldwide daily history. Redistribution terms still need confirming."
+  },
+  {
+    "id": "pw",
+    "url": "https://playwright.dev/docs/browsers",
+    "kind": "official",
+    "access": "retrieved",
+    "retrievedDate": "2026-11-19",
+    "note": "WebKit testing is not physical iPhone Safari certification."
+  },
+  {
+    "id": "safari",
+    "url": "https://developer.apple.com/documentation/webkit/testing-with-webdriver-in-safari?changes=_2&language=objc",
+    "kind": "official",
+    "access": "retrieved",
+    "retrievedDate": "2026-11-19",
+    "note": ""
+  }
+]

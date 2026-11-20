@@ -15,6 +15,7 @@ export function RecordedResults({ ed, today }: { ed: Edition; today: string }) {
   const shown = recordedResults(ed.institutionId, ed.year, today);
   const unplaced = unplacedRecorded(ed, institution(ed.institutionId).categories, today);
   const label = shown[0]?.edition ?? ed.label;
+  const reported = shown.filter((o) => o.status === 'reported').length;
   const sources = [...new Map(shown.map((o) => { const s = sourceOf(o); return [s.url, s]; })).values()];
   return (
     <section className="card" aria-labelledby="recorded-h">
@@ -22,6 +23,7 @@ export function RecordedResults({ ed, today }: { ed: Edition; today: string }) {
       {!shown.length ? <p className="muted">No results for the {label} have been announced yet.</p> : (
         <>
           <p className="dim">{shown.length} recorded {shown.length === 1 ? 'result is' : 'results are'} in this story&apos;s history, each under its category. Only the categories the record lists come from it; none is guessed.</p>
+          {reported > 0 && <p className="dim">{reported === shown.length ? 'All of them come' : `${reported} of them come`} from reports that the organizer hasn&apos;t confirmed where the game could read it.</p>}
           {unplaced.length > 0 && (
             <ul className="list" aria-label="Recorded Under Other Names">
               {unplaced.map((o) => <li key={o.id}><strong>{o.categoryName}</strong>{o.kind === 'nominees' ? <>, the nominees: {o.subjects.join(', ')}.</> : <>: {o.subjects.join(' and ')}{o.work ? `, for ${o.work}` : ''}.</>}</li>)}

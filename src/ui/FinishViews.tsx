@@ -829,7 +829,7 @@ function ResultLine({ g, ed, c }: { g: GameState; ed: Edition; c: Category }) {
       {res.honoree === 'player' ? 'Honorary: you, for your body of work. ' : res.honoree ? `Given to ${res.honoree}. ` : ''}
       {res.winners.length === 1 ? `Winner: ${res.winners[0]}. ` : res.winners.length > 1 ? `Winners: ${res.winners.join(' and ')}. ` : res.none ? 'No award was given this year. ' : ''}
       {res.field.length > 0 && `${festival ? 'Selected' : 'Nominees'}: ${list(res.field)}.`}
-      {res.from !== 'story' && <span className="small"> {res.from === 'record-changed' ? 'From the record, with your work in it.' : 'From the record.'}</span>}
+      {res.from !== 'story' && <span className="small"> {res.reported ? (res.from === 'record-changed' ? 'As reported, not yet confirmed by the organizer, with your work in it.' : 'As reported, not yet confirmed by the organizer.') : res.from === 'record-changed' ? 'From the record, with your work in it.' : 'From the record.'}</span>}
       {res.about.length > 0 && <details className="small"><summary>About The Other Works</summary><ul>{res.about.map((a) => <li key={a}>{a}.</li>)}</ul></details>}
     </div>
   );
