@@ -32,10 +32,15 @@ The owner's "What's next?" list of November 19, worked through in order:
    fetching tool (HTTP 403).
    - November 19, later (the owner: "All that hasn't been completed, complete perfectly"): the 2026 Emmys whole (120
      category pages parsed from their structured data, each winner checked in its night's release) and the 32nd Actor
-     Awards whole (their page parsed; their 2026 date is now official, March 1). Next, one organizer at a time: the
-     DGA, WGA and PGA, the Spirit Awards, the Annies, BAFTA TV, the Césars and Goyas, the AACTAs, the Japan Academy, the
-     Canadian Screen Awards, the European Film Awards, and the festivals' whole lists. Then the papers research and the
-     parked journeys (J02, J20; J01/J21 only with a licensed box-office dataset).
+     Awards whole (their page parsed; their 2026 date is now official, March 1): merged (#138). Then, each from its
+     organizer's own page and each given its official 2026 date: the 78th DGA, 78th WGA and 37th PGA Awards, the 41st
+     Spirit Awards, the 51st Césars, the 40th Goyas, the 2026 AACTAs, the 49th Japan Academy Film Prize and the 2026
+     Canadian Screen Awards (what each leaves out is in the record's `coverage.notInSet`). Still open: the festivals'
+     whole 2026 lists (Sundance to Sitges), the AMAA and Blue Dragon if held by now. Blocked: BAFTA Film and TV (HTTP
+     403 to every fetch), the Annies (a script-only site; its programme lists nominees only). Not yet held: IDFA (ends
+     November 22), the International Emmys (November 23), the Gothams (November 30), the European Film Awards (January
+     2027). Then the papers research and the parked journeys (J02, J20; J01/J21 only with a licensed box-office
+     dataset).
 3. Unrealistic prices: done before this list (`docs/prices/PRICES.md`, 53 sourced or fixed). The two modeled rows
    (stop-motion and creature materials, a broadcast edit) were searched for again on November 19: only hobby kits
    ($25 to $180) turned up, so they stay the game's own, said as such.
