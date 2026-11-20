@@ -406,12 +406,12 @@ test('Venice: selection for the Competition is not a win; its prizes are decided
   expect(s.projects[0].obligations.flatMap((o: State) => o.postings).filter((x: State) => x.kind === 'settle' && x.key === 'fee:venice-2026:competition')).toHaveLength(1);
   expect(s.editions.find((e: State) => e.id === 'venice-2026').entries.filter((x: State) => x.via === 'selection').every((x: State) => x.fee === 0)).toBe(true);
   // One history (the owner's v8 decision 7, from November 14, 2026; until then the recorded results stood in a card of
-  // their own beside the game's). The real ceremony was on September 12, after the game's own: before then nothing
-  // recorded is shown; after it, the Golden Lion's row is the record's unless this save gave it to Glass Orchard.
+  // their own beside the game's). From November 20, 2026 the game's edition keeps the organizer's dates (September 2 to
+  // 12), so the day after its close is the day after the real ceremony: the record is there, and the Golden Lion's row is
+  // the record's unless this save gave it to Glass Orchard. Until then the game's own close came first, and nothing
+  // recorded was shown at this point.
   const recorded = page.getByRole('region', { name: 'Where The Record Comes From' });
-  await expect(recorded).toContainText('have been announced yet.');
-  await advanceUntil(page, '2026-09-13');
-  await openEvent(page, 'Glass Orchard', 'Venice International Film Festival 2026');
+  await expect(recorded).toContainText(/recorded results are in this story's history/);
   await expect(row(page, 'Golden Lion For Best Film')).toContainText(/Winner: (Woman Unknown|Glass Orchard)\./);
   await expect(row(page, 'Golden Lion For Best Film')).toContainText(/From the record(, with your work in it)?\./);
   await expect(categories(page)).toContainText(/Results from .+, 2026, as they stand in your story/);
