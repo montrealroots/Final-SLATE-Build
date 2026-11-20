@@ -233,6 +233,21 @@ describe('recorded history', () => {
     expect(new Set(won.filter((o) => o.category).map((o) => o.category)).size).toBe(10); // every prize the game holds
   });
 
+  it('holds the 48th Clermont-Ferrand festival: its three competitions from the opening, its prizes from the close', () => {
+    const on = (day: string, kind: string) => recordedResults('clermont', 2026, day).filter((o) => o.kind === kind);
+    expect(recordedResults('clermont', 2026, '2026-01-29')).toEqual([]);
+    const sel = on('2026-01-30', 'nominees');
+    expect(Object.fromEntries(sel.map((o) => [o.category, o.subjects.length]))).toEqual({ international: 60, national: 51, lab: 24 });
+    expect(on('2026-02-06', 'winner')).toEqual([]);
+    const won = on('2026-02-07', 'winner');
+    expect(won).toHaveLength(29);
+    // The palmarès writes titles in capitals and in French; each is the programme's original title.
+    expect(won.find((o) => o.category === 'grand-prix')!.subjects).toEqual(['Cœur bleu']);
+    expect(won.find((o) => o.category === 'special-jury')!.subjects).toEqual(['Buah']);
+    for (const o of won.filter((x) => x.category)) expect(sel.find((x) => x.category === 'international')!.subjects).toContain(o.subjects[0]);
+    expect(won.find((o) => o.id === 'clermont-2026-prix-d-interpretation-competition-internationale')).toMatchObject({ subjects: ['Ana Barja'], work: 'Casi septiembre' });
+  });
+
   it('cites a source for every observation, never publishes before it happens, and names the game\'s own categories', () => {
     const insts = (institutions as { institutions: { id: string; categories: { id: string }[]; official?: Record<string, { label?: string }> }[] }).institutions;
     const wrong: string[] = [];

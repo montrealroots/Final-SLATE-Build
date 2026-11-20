@@ -54,6 +54,8 @@ The catalog (TMDB), the cinemas (Wikidata) and the stories (Wikipedia) are older
   - <https://www.sundance.org/blogs/2026-sundance-film-festival-reveals-54-titles-selected-for-short-film-program-presented-by-ketel-one-vodka/>, read 2026-11-20. The 54 short films in their four groups (December 15, 2025); the Park City Legacy shorts, earlier editions' films, are left out.
   - <https://www.sundance.org/blogs/2026-sundance-film-festival-reveals-short-film-program-award-winners/>, read 2026-11-20. The short film awards, given the evening of January 27, 2026.
   - <https://www.sundance.org/blogs/the-complete-list-of-2026-sundance-film-festival-award-winners/>, read 2026-11-20. Every jury and audience award of the January 30, 2026 ceremony, and the producers awards it lists as announced before.
+  - <https://www.lecourt-clermont.org/programmation-2026/>, read 2026-11-20. The 28 competition programmes (I 1 to I 12, F 1 to F 11, L 1 to L 5): every film of the international, national and lab competitions.
+  - <https://www.lecourt-clermont.org/programmation-2026/palmares-2026/>, read 2026-11-20. Every prize of the 38th international, 48th national, 25th lab and XR competitions, and the out-of-competition one, given at the close on February 7, 2026.
 
 ## `src/data/history/awards-2026-reference.json`
 
