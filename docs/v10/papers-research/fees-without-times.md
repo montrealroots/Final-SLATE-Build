@@ -269,3 +269,14 @@ Batch 14 (November 20, 2026, night).
   - Cyprus' artist permit: the migration department's pages give €80, €120 with €70, and €200 for different permits,
     none named for artists.
   - Guyana: the New York consulate's US$25 is for a visa on arrival.
+
+Batch 15 (November 20, 2026, night): leads only; nothing recorded.
+- Georgia's work permit: the March 1, 2026 law (Georgia's embassy in Japan, news of February 26, 2026: the State
+  Employment Support Agency issues it, for one position and one employer, for a year; the exemptions are listed). The
+  fee, GEL 200 for 30 days or GEL 400 for 10 working days, is only in law firms' and the press's accounts. The game's
+  120 days a year without a permit still holds: an August 2026 amendment allows short-term professional activity of up
+  to four months in a calendar year, registered beforehand (KPMG, EY).
+- Kyrgyzstan's e-visa: the portal gives five working days from a complete application, and says the fee depends on the
+  category, type and period without giving it. A decision time alone can't be recorded.
+- Iraq's e-visa: the portal gives 30 days, single or multiple entry, without the fee.
+- Pakistan's visa: priced by nationality; the Washington embassy's page answered 503.
