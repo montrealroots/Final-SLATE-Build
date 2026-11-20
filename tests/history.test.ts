@@ -12,12 +12,12 @@ const ids = (xs: { id: string }[]) => xs.map((x) => x.id).sort();
 
 describe('recorded history', () => {
   it('shows nothing before its published date, and each result from that date in the player\'s calendar', () => {
-    expect(observationsAt('2025-12-07')).toEqual([]);
+    expect(observationsAt('2025-12-02')).toEqual([]); // the Spirit Awards' nominees, December 3, 2025, are the first
     // The Golden Globes' nominees from December 8, 2025 (from November 19, 2026; until then none was recorded, and a
     // January start saw nothing), its winners from January 11.
-    // By then: nominees only, the Golden Globes' and the PGA's documentary field (December 9, 2025).
+    // By then: nominees only, the Spirit Awards', the PGA's documentary field (December 9, 2025) and the Golden Globes'.
     expect(observationsAt('2026-01-05').every((o) => o.kind === 'nominees')).toBe(true);
-    expect([...new Set(observationsAt('2026-01-05').map((o) => o.institution))].sort()).toEqual(['golden-globes', 'pga']);
+    expect([...new Set(observationsAt('2026-01-05').map((o) => o.institution))].sort()).toEqual(['golden-globes', 'pga', 'spirit']);
     expect(recordedResults('golden-globes', 2026, '2026-01-10')).toHaveLength(28);
     expect(recordedResults('golden-globes', 2026, '2026-01-10').some((o) => o.kind === 'winner')).toBe(false);
     const globes = recordedResults('golden-globes', 2026, '2026-01-11').filter((o) => o.kind === 'winner');
@@ -132,6 +132,23 @@ describe('recorded history', () => {
     const won = on('2026-02-28', 'winner');
     expect(won).toHaveLength(12);
     expect(won.find((o) => o.category === 'theatrical')).toMatchObject({ subjects: ['One Battle After Another'], credited: 'Adam Somner, Sara Murphy, Paul Thomas Anderson' });
+  });
+
+  it('holds the 41st Spirit Awards whole: nominees from December 3, winners from February 15, each a nominee of its category', () => {
+    const on = (day: string, kind: string) => recordedResults('spirit', 2026, day).filter((o) => o.kind === kind);
+    expect(on('2025-12-03', 'nominees')).toHaveLength(20);
+    expect(on('2026-02-14', 'winner')).toEqual([]);
+    const won = on('2026-02-15', 'winner');
+    expect(won).toHaveLength(20);
+    // Eva Victor was nominated for both directing and writing: her win is the screenplay's, under its own heading.
+    expect(won.find((o) => o.category === 'screenplay')).toMatchObject({ subjects: ['Eva Victor'], work: 'Sorry, Baby' });
+    expect(won.find((o) => o.category === 'director')!.subjects).toEqual(['Clint Bentley']);
+    // A title the PDF breaks over two lines takes its whole name from the nominees.
+    expect(won.find((o) => o.category === 'editing')!.work).toBe('The Testament of Ann Lee');
+    for (const w of won) {
+      const field = on('2025-12-03', 'nominees').find((o) => o.categoryName === w.categoryName)!.subjects.join('|');
+      expect(field).toContain(w.subjects[0]);
+    }
   });
 
   it('cites a source for every observation, never publishes before it happens, and names the game\'s own categories', () => {
