@@ -1,12 +1,12 @@
 // J07 as one run (the v4 package, 05: "Original project remains fully playable; era/year and genres editable, no
 // dependency on retired generated stories. An old preset-derived save continues unchanged"; ledger V4-038.07).
 import { expect, test } from './test';
-import { addScene, nav, pressSaveAndExit, produceToDelivery, quickLife, readSavedState, saveAndApprove, section } from './helpers';
+import { addScene, nav, onlyOn, pressSaveAndExit, produceToDelivery, quickLife, readSavedState, saveAndApprove, section } from './helpers';
 import { hashString } from '../src/engine/rng';
 import { firstSaveId, readRecord, writeRecords } from './vault';
 
 test('J07: a project from the retired story library opens and goes on as it was; an original with its era, year and genres is made to delivery', async ({ page }, info) => {
-  test.skip(info.project.name !== 'desktop', 'One whole career run, at desktop width.');
+  test.skip(!onlyOn(info, ['desktop']), 'One whole career run, at desktop width.');
   test.setTimeout(600_000);
   await quickLife(page, 'gb-london', '2026-02-02');
   await nav(page, 'Projects');

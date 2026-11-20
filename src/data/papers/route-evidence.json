@@ -1,0 +1,1152 @@
+{
+ "about": "Fee components researched by the owner's research recovery package of November 19, 2026 (docs/recovery/package/data/scoped-immigration-fees.json), each as it applies in the game: `applies` names the application (visa or work permit), the component (paid on applying, or on issue only) and whose application it is (where they live, their passport, the date); `held` says why a record isn't charged. A record never replaces a country's terms for everyone: it applies only where its conditions hold (src/engine/papers-scoped.ts). Imported November 20, 2026.",
+ "conventions": {
+  "placeOfApplication": "Where you live is where you apply: the game has no consulates, so a consulate's price list (Washington's) applies to those who live in the United States, and Colombia's euro schedule to those who live in a euro country (the rest pay its dollar schedule). A game convention, not a rule read anywhere."
+ },
+ "records": [
+  {
+   "id": "co-V-USD-study",
+   "country": "CO",
+   "route": "V",
+   "amount": 56,
+   "currency": "USD",
+   "component": "study",
+   "scope": "Standard schedule; exceptions/reciprocity and consular currency matter",
+   "evidence": "official_fee_scoped",
+   "from": "2026-04-01",
+   "through": null,
+   "days": null,
+   "dayUnit": null,
+   "note": "Stamp duty excluded; study and issuance are separate payments.",
+   "source": {
+    "url": "https://cancilleria.gov.co/normograma/compilacion/docs/resolucion_minrelaciones_3969_2026.htm",
+    "access": "retrieved",
+    "retrieved": "2026-11-19",
+    "note": "Resolution 03969/2026; published March 31; effective next day per Article 19."
+   },
+   "applies": {
+    "kind": "visa",
+    "component": "application",
+    "when": {
+     "livesOutside": [
+      "AT",
+      "BE",
+      "HR",
+      "CY",
+      "EE",
+      "FI",
+      "FR",
+      "DE",
+      "GR",
+      "IE",
+      "IT",
+      "LV",
+      "LT",
+      "LU",
+      "MT",
+      "NL",
+      "PT",
+      "SK",
+      "SI",
+      "ES"
+     ],
+     "from": "2026-04-01"
+    }
+   }
+  },
+  {
+   "id": "co-V-USD-issue",
+   "country": "CO",
+   "route": "V",
+   "amount": 138,
+   "currency": "USD",
+   "component": "issuance",
+   "scope": "Only if visa issued; route must independently match activity",
+   "evidence": "official_fee_scoped",
+   "from": "2026-04-01",
+   "through": null,
+   "days": null,
+   "dayUnit": null,
+   "note": "",
+   "source": {
+    "url": "https://cancilleria.gov.co/normograma/compilacion/docs/resolucion_minrelaciones_3969_2026.htm",
+    "access": "retrieved",
+    "retrieved": "2026-11-19",
+    "note": "Resolution 03969/2026; published March 31; effective next day per Article 19."
+   },
+   "applies": {
+    "kind": "visa",
+    "component": "issuance",
+    "when": {
+     "livesOutside": [
+      "AT",
+      "BE",
+      "HR",
+      "CY",
+      "EE",
+      "FI",
+      "FR",
+      "DE",
+      "GR",
+      "IE",
+      "IT",
+      "LV",
+      "LT",
+      "LU",
+      "MT",
+      "NL",
+      "PT",
+      "SK",
+      "SI",
+      "ES"
+     ],
+     "from": "2026-04-01"
+    }
+   }
+  },
+  {
+   "id": "co-V-EUR-study",
+   "country": "CO",
+   "route": "V",
+   "amount": 44,
+   "currency": "EUR",
+   "component": "study",
+   "scope": "Standard schedule; exceptions/reciprocity and consular currency matter",
+   "evidence": "official_fee_scoped",
+   "from": "2026-04-01",
+   "through": null,
+   "days": null,
+   "dayUnit": null,
+   "note": "Stamp duty excluded; study and issuance are separate payments.",
+   "source": {
+    "url": "https://cancilleria.gov.co/normograma/compilacion/docs/resolucion_minrelaciones_3969_2026.htm",
+    "access": "retrieved",
+    "retrieved": "2026-11-19",
+    "note": "Resolution 03969/2026; published March 31; effective next day per Article 19."
+   },
+   "applies": {
+    "kind": "visa",
+    "component": "application",
+    "when": {
+     "livesIn": [
+      "AT",
+      "BE",
+      "HR",
+      "CY",
+      "EE",
+      "FI",
+      "FR",
+      "DE",
+      "GR",
+      "IE",
+      "IT",
+      "LV",
+      "LT",
+      "LU",
+      "MT",
+      "NL",
+      "PT",
+      "SK",
+      "SI",
+      "ES"
+     ],
+     "from": "2026-04-01"
+    }
+   }
+  },
+  {
+   "id": "co-V-EUR-issue",
+   "country": "CO",
+   "route": "V",
+   "amount": 106,
+   "currency": "EUR",
+   "component": "issuance",
+   "scope": "Only if visa issued; route must independently match activity",
+   "evidence": "official_fee_scoped",
+   "from": "2026-04-01",
+   "through": null,
+   "days": null,
+   "dayUnit": null,
+   "note": "",
+   "source": {
+    "url": "https://cancilleria.gov.co/normograma/compilacion/docs/resolucion_minrelaciones_3969_2026.htm",
+    "access": "retrieved",
+    "retrieved": "2026-11-19",
+    "note": "Resolution 03969/2026; published March 31; effective next day per Article 19."
+   },
+   "applies": {
+    "kind": "visa",
+    "component": "issuance",
+    "when": {
+     "livesIn": [
+      "AT",
+      "BE",
+      "HR",
+      "CY",
+      "EE",
+      "FI",
+      "FR",
+      "DE",
+      "GR",
+      "IE",
+      "IT",
+      "LV",
+      "LT",
+      "LU",
+      "MT",
+      "NL",
+      "PT",
+      "SK",
+      "SI",
+      "ES"
+     ],
+     "from": "2026-04-01"
+    }
+   }
+  },
+  {
+   "id": "co-M-USD-study",
+   "country": "CO",
+   "route": "M",
+   "amount": 56,
+   "currency": "USD",
+   "component": "study",
+   "scope": "Standard schedule; exceptions/reciprocity and consular currency matter",
+   "evidence": "official_fee_scoped",
+   "from": "2026-04-01",
+   "through": null,
+   "days": null,
+   "dayUnit": null,
+   "note": "Stamp duty excluded; study and issuance are separate payments.",
+   "source": {
+    "url": "https://cancilleria.gov.co/normograma/compilacion/docs/resolucion_minrelaciones_3969_2026.htm",
+    "access": "retrieved",
+    "retrieved": "2026-11-19",
+    "note": "Resolution 03969/2026; published March 31; effective next day per Article 19."
+   },
+   "held": "A migrant or resident route: its code alone doesn't say acting or filming is allowed on it, so it isn't the game's work permit."
+  },
+  {
+   "id": "co-M-USD-issue",
+   "country": "CO",
+   "route": "M",
+   "amount": 204,
+   "currency": "USD",
+   "component": "issuance",
+   "scope": "Only if visa issued; route must independently match activity",
+   "evidence": "official_fee_scoped",
+   "from": "2026-04-01",
+   "through": null,
+   "days": null,
+   "dayUnit": null,
+   "note": "",
+   "source": {
+    "url": "https://cancilleria.gov.co/normograma/compilacion/docs/resolucion_minrelaciones_3969_2026.htm",
+    "access": "retrieved",
+    "retrieved": "2026-11-19",
+    "note": "Resolution 03969/2026; published March 31; effective next day per Article 19."
+   },
+   "held": "A migrant or resident route: its code alone doesn't say acting or filming is allowed on it, so it isn't the game's work permit."
+  },
+  {
+   "id": "co-M-EUR-study",
+   "country": "CO",
+   "route": "M",
+   "amount": 44,
+   "currency": "EUR",
+   "component": "study",
+   "scope": "Standard schedule; exceptions/reciprocity and consular currency matter",
+   "evidence": "official_fee_scoped",
+   "from": "2026-04-01",
+   "through": null,
+   "days": null,
+   "dayUnit": null,
+   "note": "Stamp duty excluded; study and issuance are separate payments.",
+   "source": {
+    "url": "https://cancilleria.gov.co/normograma/compilacion/docs/resolucion_minrelaciones_3969_2026.htm",
+    "access": "retrieved",
+    "retrieved": "2026-11-19",
+    "note": "Resolution 03969/2026; published March 31; effective next day per Article 19."
+   },
+   "held": "A migrant or resident route: its code alone doesn't say acting or filming is allowed on it, so it isn't the game's work permit."
+  },
+  {
+   "id": "co-M-EUR-issue",
+   "country": "CO",
+   "route": "M",
+   "amount": 156,
+   "currency": "EUR",
+   "component": "issuance",
+   "scope": "Only if visa issued; route must independently match activity",
+   "evidence": "official_fee_scoped",
+   "from": "2026-04-01",
+   "through": null,
+   "days": null,
+   "dayUnit": null,
+   "note": "",
+   "source": {
+    "url": "https://cancilleria.gov.co/normograma/compilacion/docs/resolucion_minrelaciones_3969_2026.htm",
+    "access": "retrieved",
+    "retrieved": "2026-11-19",
+    "note": "Resolution 03969/2026; published March 31; effective next day per Article 19."
+   },
+   "held": "A migrant or resident route: its code alone doesn't say acting or filming is allowed on it, so it isn't the game's work permit."
+  },
+  {
+   "id": "co-R-USD-study",
+   "country": "CO",
+   "route": "R",
+   "amount": 56,
+   "currency": "USD",
+   "component": "study",
+   "scope": "Standard schedule; exceptions/reciprocity and consular currency matter",
+   "evidence": "official_fee_scoped",
+   "from": "2026-04-01",
+   "through": null,
+   "days": null,
+   "dayUnit": null,
+   "note": "Stamp duty excluded; study and issuance are separate payments.",
+   "source": {
+    "url": "https://cancilleria.gov.co/normograma/compilacion/docs/resolucion_minrelaciones_3969_2026.htm",
+    "access": "retrieved",
+    "retrieved": "2026-11-19",
+    "note": "Resolution 03969/2026; published March 31; effective next day per Article 19."
+   },
+   "held": "A migrant or resident route: its code alone doesn't say acting or filming is allowed on it, so it isn't the game's work permit."
+  },
+  {
+   "id": "co-R-USD-issue",
+   "country": "CO",
+   "route": "R",
+   "amount": 183,
+   "currency": "USD",
+   "component": "issuance",
+   "scope": "Only if visa issued; route must independently match activity",
+   "evidence": "official_fee_scoped",
+   "from": "2026-04-01",
+   "through": null,
+   "days": null,
+   "dayUnit": null,
+   "note": "",
+   "source": {
+    "url": "https://cancilleria.gov.co/normograma/compilacion/docs/resolucion_minrelaciones_3969_2026.htm",
+    "access": "retrieved",
+    "retrieved": "2026-11-19",
+    "note": "Resolution 03969/2026; published March 31; effective next day per Article 19."
+   },
+   "held": "A migrant or resident route: its code alone doesn't say acting or filming is allowed on it, so it isn't the game's work permit."
+  },
+  {
+   "id": "co-R-EUR-study",
+   "country": "CO",
+   "route": "R",
+   "amount": 44,
+   "currency": "EUR",
+   "component": "study",
+   "scope": "Standard schedule; exceptions/reciprocity and consular currency matter",
+   "evidence": "official_fee_scoped",
+   "from": "2026-04-01",
+   "through": null,
+   "days": null,
+   "dayUnit": null,
+   "note": "Stamp duty excluded; study and issuance are separate payments.",
+   "source": {
+    "url": "https://cancilleria.gov.co/normograma/compilacion/docs/resolucion_minrelaciones_3969_2026.htm",
+    "access": "retrieved",
+    "retrieved": "2026-11-19",
+    "note": "Resolution 03969/2026; published March 31; effective next day per Article 19."
+   },
+   "held": "A migrant or resident route: its code alone doesn't say acting or filming is allowed on it, so it isn't the game's work permit."
+  },
+  {
+   "id": "co-R-EUR-issue",
+   "country": "CO",
+   "route": "R",
+   "amount": 141,
+   "currency": "EUR",
+   "component": "issuance",
+   "scope": "Only if visa issued; route must independently match activity",
+   "evidence": "official_fee_scoped",
+   "from": "2026-04-01",
+   "through": null,
+   "days": null,
+   "dayUnit": null,
+   "note": "",
+   "source": {
+    "url": "https://cancilleria.gov.co/normograma/compilacion/docs/resolucion_minrelaciones_3969_2026.htm",
+    "access": "retrieved",
+    "retrieved": "2026-11-19",
+    "note": "Resolution 03969/2026; published March 31; effective next day per Article 19."
+   },
+   "held": "A migrant or resident route: its code alone doesn't say acting or filming is allowed on it, so it isn't the game's work permit."
+  },
+  {
+   "id": "rs-c-adult",
+   "country": "RS",
+   "route": "C",
+   "amount": 96,
+   "currency": "USD",
+   "component": "application",
+   "scope": "Washington consular post; adult",
+   "evidence": "official_fee_scoped",
+   "from": null,
+   "through": null,
+   "days": null,
+   "dayUnit": null,
+   "note": "Exemptions/reciprocity apply; no global USD replacement.",
+   "source": {
+    "url": "https://washington.mfa.gov.rs/en/citizens/services/price-list-consular-services",
+    "access": "retrieved",
+    "retrieved": "2026-11-19",
+    "note": ""
+   },
+   "applies": {
+    "kind": "visa",
+    "component": "application",
+    "when": {
+     "livesIn": [
+      "US"
+     ]
+    }
+   }
+  },
+  {
+   "id": "rs-c-child",
+   "country": "RS",
+   "route": "C",
+   "amount": 49,
+   "currency": "USD",
+   "component": "application",
+   "scope": "Washington; child under 12; check under-six exemption",
+   "evidence": "official_fee_scoped",
+   "from": null,
+   "through": null,
+   "days": null,
+   "dayUnit": null,
+   "note": "Exemptions/reciprocity apply; no global USD replacement.",
+   "source": {
+    "url": "https://washington.mfa.gov.rs/en/citizens/services/price-list-consular-services",
+    "access": "retrieved",
+    "retrieved": "2026-11-19",
+    "note": ""
+   },
+   "held": "For a child under 12; a story starts at 19."
+  },
+  {
+   "id": "rs-d",
+   "country": "RS",
+   "route": "D",
+   "amount": 54,
+   "currency": "USD",
+   "component": "application",
+   "scope": "Washington; long-stay route; work authorization separately assessed",
+   "evidence": "official_fee_scoped",
+   "from": null,
+   "through": null,
+   "days": null,
+   "dayUnit": null,
+   "note": "Exemptions/reciprocity apply; no global USD replacement.",
+   "source": {
+    "url": "https://washington.mfa.gov.rs/en/citizens/services/price-list-consular-services",
+    "access": "retrieved",
+    "retrieved": "2026-11-19",
+    "note": ""
+   },
+   "held": "A long-stay route; whether it allows work is assessed apart, so it isn't the game's work permit."
+  },
+  {
+   "id": "mw-single-imm",
+   "country": "MW",
+   "route": "single entry",
+   "amount": 75,
+   "currency": "USD",
+   "component": "application",
+   "scope": "",
+   "evidence": "official_conflict",
+   "from": null,
+   "through": null,
+   "days": null,
+   "dayUnit": null,
+   "note": "Conflicts with official eVisa FAQ; not a resolved fee.",
+   "source": {
+    "url": "https://immigration.gov.mw/visa/visa-fees/",
+    "access": "retrieved",
+    "retrieved": "2026-11-19",
+    "note": ""
+   },
+   "held": "Two official Malawi pages give different single-entry fees (75 and 50 dollars); neither is chosen and they aren't averaged."
+  },
+  {
+   "id": "mw-single-eta",
+   "country": "MW",
+   "route": "single entry",
+   "amount": 50,
+   "currency": "USD",
+   "component": "application",
+   "scope": "",
+   "evidence": "official_conflict",
+   "from": null,
+   "through": null,
+   "days": null,
+   "dayUnit": null,
+   "note": "Do not choose one silently or average the fees.",
+   "source": {
+    "url": "https://www.evisa.gov.mw/Faq",
+    "access": "retrieved",
+    "retrieved": "2026-11-19",
+    "note": ""
+   },
+   "held": "Two official Malawi pages give different single-entry fees (75 and 50 dollars); neither is chosen and they aren't averaged."
+  },
+  {
+   "id": "tr-single",
+   "country": "TR",
+   "route": "single entry",
+   "amount": 9376.4,
+   "currency": "TRY",
+   "component": "application",
+   "scope": "General 2026 schedule; NOT universal eVisa pricing; nationality/reciprocity exceptions",
+   "evidence": "official_fee_scoped",
+   "from": "2026-01-01",
+   "through": null,
+   "days": null,
+   "dayUnit": null,
+   "note": "",
+   "source": {
+    "url": "https://en.goc.gov.tr/fee-amount",
+    "access": "retrieved",
+    "retrieved": "2026-11-19",
+    "note": ""
+   },
+   "held": "Turkey's general tariff, not the eVisa price, which differs by nationality; not charged to every applicant."
+  },
+  {
+   "id": "tr-multi",
+   "country": "TR",
+   "route": "multiple entry",
+   "amount": 31410,
+   "currency": "TRY",
+   "component": "application",
+   "scope": "General 2026 schedule; NOT universal eVisa pricing; nationality/reciprocity exceptions",
+   "evidence": "official_fee_scoped",
+   "from": "2026-01-01",
+   "through": null,
+   "days": null,
+   "dayUnit": null,
+   "note": "",
+   "source": {
+    "url": "https://en.goc.gov.tr/fee-amount",
+    "access": "retrieved",
+    "retrieved": "2026-11-19",
+    "note": ""
+   },
+   "held": "Turkey's general tariff, not the eVisa price, which differs by nationality; not charged to every applicant."
+  },
+  {
+   "id": "tr-transit",
+   "country": "TR",
+   "route": "single transit",
+   "amount": 9376.4,
+   "currency": "TRY",
+   "component": "application",
+   "scope": "General 2026 schedule; NOT universal eVisa pricing; nationality/reciprocity exceptions",
+   "evidence": "official_fee_scoped",
+   "from": "2026-01-01",
+   "through": null,
+   "days": null,
+   "dayUnit": null,
+   "note": "",
+   "source": {
+    "url": "https://en.goc.gov.tr/fee-amount",
+    "access": "retrieved",
+    "retrieved": "2026-11-19",
+    "note": ""
+   },
+   "held": "Turkey's general tariff, not the eVisa price, which differs by nationality; not charged to every applicant."
+  },
+  {
+   "id": "tr-double-transit",
+   "country": "TR",
+   "route": "double transit",
+   "amount": 18813.8,
+   "currency": "TRY",
+   "component": "application",
+   "scope": "General 2026 schedule; NOT universal eVisa pricing; nationality/reciprocity exceptions",
+   "evidence": "official_fee_scoped",
+   "from": "2026-01-01",
+   "through": null,
+   "days": null,
+   "dayUnit": null,
+   "note": "",
+   "source": {
+    "url": "https://en.goc.gov.tr/fee-amount",
+    "access": "retrieved",
+    "retrieved": "2026-11-19",
+    "note": ""
+   },
+   "held": "Turkey's general tariff, not the eVisa price, which differs by nationality; not charged to every applicant."
+  },
+  {
+   "id": "lk-free40",
+   "country": "LK",
+   "route": "tourist ETA",
+   "amount": 0,
+   "currency": "USD",
+   "component": "application",
+   "scope": "Eligible 40 nationalities; 30-day stay; ETA still required",
+   "evidence": "official_fee_scoped",
+   "from": "2026-05-25",
+   "through": "2026-11-24",
+   "days": null,
+   "dayUnit": null,
+   "note": "Expiry from lk-gazette; a new policy is required after expiry.",
+   "source": {
+    "url": "https://www.eta.gov.lk/slvisa/visainfo/fees.jsp?locale=en_US",
+    "access": "official indexed page",
+    "retrieved": "2026-11-19",
+    "note": ""
+   },
+   "held": "Free for 40 nationalities from May 25 to November 24, 2026; the package doesn't list them, so it can't say whose ETA is free. After November 24 it needs a successor policy, which isn't known."
+  },
+  {
+   "id": "lk-other-online",
+   "country": "LK",
+   "route": "tourist ETA online",
+   "amount": 50,
+   "currency": "USD",
+   "component": "application",
+   "scope": "Non-SAARC applicants outside all free/exempt categories",
+   "evidence": "official_fee_scoped",
+   "from": null,
+   "through": null,
+   "days": null,
+   "dayUnit": null,
+   "note": "",
+   "source": {
+    "url": "https://www.eta.gov.lk/slvisa/visainfo/fees.jsp?locale=en_US",
+    "access": "official indexed page",
+    "retrieved": "2026-11-19",
+    "note": ""
+   },
+   "held": "Sri Lanka's ETA is already recorded from the government's own page; these agree with it."
+  },
+  {
+   "id": "lk-saarc-online",
+   "country": "LK",
+   "route": "tourist ETA online",
+   "amount": 20,
+   "currency": "USD",
+   "component": "application",
+   "scope": "SAARC applicants outside free/exempt categories",
+   "evidence": "official_fee_scoped",
+   "from": null,
+   "through": null,
+   "days": null,
+   "dayUnit": null,
+   "note": "",
+   "source": {
+    "url": "https://www.eta.gov.lk/slvisa/visainfo/fees.jsp?locale=en_US",
+    "access": "official indexed page",
+    "retrieved": "2026-11-19",
+    "note": ""
+   },
+   "held": "Sri Lanka's ETA is already recorded from the government's own page; these agree with it."
+  },
+  {
+   "id": "ph-free-single",
+   "country": "PH",
+   "route": "9A single",
+   "amount": 30,
+   "currency": "USD",
+   "component": "application",
+   "scope": "Washington; Visa-free nationalities",
+   "evidence": "official_fee_scoped",
+   "from": null,
+   "through": null,
+   "days": null,
+   "dayUnit": null,
+   "note": "Visa validity is NOT authorized stay. 9A does not grant employment rights; eVisa convenience charge may be additional.",
+   "source": {
+    "url": "https://philippineembassy-dc.org/schedule-and-fees/",
+    "access": "retrieved",
+    "retrieved": "2026-11-19",
+    "note": ""
+   },
+   "held": "For passports that may enter the Philippines without a visa; the game asks for this visa only of those that may not."
+  },
+  {
+   "id": "ph-free-six",
+   "country": "PH",
+   "route": "9A six-month multiple",
+   "amount": 60,
+   "currency": "USD",
+   "component": "application",
+   "scope": "Washington; Visa-free nationalities",
+   "evidence": "official_fee_scoped",
+   "from": null,
+   "through": null,
+   "days": null,
+   "dayUnit": null,
+   "note": "Visa validity is NOT authorized stay. 9A does not grant employment rights; eVisa convenience charge may be additional.",
+   "source": {
+    "url": "https://philippineembassy-dc.org/schedule-and-fees/",
+    "access": "retrieved",
+    "retrieved": "2026-11-19",
+    "note": ""
+   },
+   "held": "For passports that may enter the Philippines without a visa; the game asks for this visa only of those that may not."
+  },
+  {
+   "id": "ph-free-one",
+   "country": "PH",
+   "route": "9A one-year multiple",
+   "amount": 90,
+   "currency": "USD",
+   "component": "application",
+   "scope": "Washington; Visa-free nationalities",
+   "evidence": "official_fee_scoped",
+   "from": null,
+   "through": null,
+   "days": null,
+   "dayUnit": null,
+   "note": "Visa validity is NOT authorized stay. 9A does not grant employment rights; eVisa convenience charge may be additional.",
+   "source": {
+    "url": "https://philippineembassy-dc.org/schedule-and-fees/",
+    "access": "retrieved",
+    "retrieved": "2026-11-19",
+    "note": ""
+   },
+   "held": "For passports that may enter the Philippines without a visa; the game asks for this visa only of those that may not."
+  },
+  {
+   "id": "ph-nonfree-single",
+   "country": "PH",
+   "route": "9A single",
+   "amount": 40,
+   "currency": "USD",
+   "component": "application",
+   "scope": "Washington; Non-visa-free nationalities",
+   "evidence": "official_fee_scoped",
+   "from": null,
+   "through": null,
+   "days": null,
+   "dayUnit": null,
+   "note": "Visa validity is NOT authorized stay. 9A does not grant employment rights; eVisa convenience charge may be additional.",
+   "source": {
+    "url": "https://philippineembassy-dc.org/schedule-and-fees/",
+    "access": "retrieved",
+    "retrieved": "2026-11-19",
+    "note": ""
+   },
+   "applies": {
+    "kind": "visa",
+    "component": "application",
+    "when": {
+     "livesIn": [
+      "US"
+     ],
+     "passportNot": [
+      "CN"
+     ]
+    }
+   }
+  },
+  {
+   "id": "ph-nonfree-six",
+   "country": "PH",
+   "route": "9A six-month multiple",
+   "amount": 80,
+   "currency": "USD",
+   "component": "application",
+   "scope": "Washington; Non-visa-free nationalities",
+   "evidence": "official_fee_scoped",
+   "from": null,
+   "through": null,
+   "days": null,
+   "dayUnit": null,
+   "note": "Visa validity is NOT authorized stay. 9A does not grant employment rights; eVisa convenience charge may be additional.",
+   "source": {
+    "url": "https://philippineembassy-dc.org/schedule-and-fees/",
+    "access": "retrieved",
+    "retrieved": "2026-11-19",
+    "note": ""
+   },
+   "held": "A multiple-entry visa; an application in the game is for a single entry."
+  },
+  {
+   "id": "ph-nonfree-one",
+   "country": "PH",
+   "route": "9A one-year multiple",
+   "amount": 120,
+   "currency": "USD",
+   "component": "application",
+   "scope": "Washington; Non-visa-free nationalities",
+   "evidence": "official_fee_scoped",
+   "from": null,
+   "through": null,
+   "days": null,
+   "dayUnit": null,
+   "note": "Visa validity is NOT authorized stay. 9A does not grant employment rights; eVisa convenience charge may be additional.",
+   "source": {
+    "url": "https://philippineembassy-dc.org/schedule-and-fees/",
+    "access": "retrieved",
+    "retrieved": "2026-11-19",
+    "note": ""
+   },
+   "held": "A multiple-entry visa; an application in the game is for a single entry."
+  },
+  {
+   "id": "ph-cn-single",
+   "country": "PH",
+   "route": "9A single",
+   "amount": 25,
+   "currency": "USD",
+   "component": "application",
+   "scope": "Washington; Chinese nationals",
+   "evidence": "official_fee_scoped",
+   "from": null,
+   "through": null,
+   "days": null,
+   "dayUnit": null,
+   "note": "Visa validity is NOT authorized stay. 9A does not grant employment rights; eVisa convenience charge may be additional.",
+   "source": {
+    "url": "https://philippineembassy-dc.org/schedule-and-fees/",
+    "access": "retrieved",
+    "retrieved": "2026-11-19",
+    "note": ""
+   },
+   "applies": {
+    "kind": "visa",
+    "component": "application",
+    "when": {
+     "livesIn": [
+      "US"
+     ],
+     "passport": [
+      "CN"
+     ]
+    }
+   }
+  },
+  {
+   "id": "ph-cn-six",
+   "country": "PH",
+   "route": "9A six-month multiple",
+   "amount": 50,
+   "currency": "USD",
+   "component": "application",
+   "scope": "Washington; Chinese nationals",
+   "evidence": "official_fee_scoped",
+   "from": null,
+   "through": null,
+   "days": null,
+   "dayUnit": null,
+   "note": "Visa validity is NOT authorized stay. 9A does not grant employment rights; eVisa convenience charge may be additional.",
+   "source": {
+    "url": "https://philippineembassy-dc.org/schedule-and-fees/",
+    "access": "retrieved",
+    "retrieved": "2026-11-19",
+    "note": ""
+   },
+   "held": "A multiple-entry visa; an application in the game is for a single entry."
+  },
+  {
+   "id": "ph-cn-one",
+   "country": "PH",
+   "route": "9A one-year multiple",
+   "amount": 100,
+   "currency": "USD",
+   "component": "application",
+   "scope": "Washington; Chinese nationals",
+   "evidence": "official_fee_scoped",
+   "from": null,
+   "through": null,
+   "days": null,
+   "dayUnit": null,
+   "note": "Visa validity is NOT authorized stay. 9A does not grant employment rights; eVisa convenience charge may be additional.",
+   "source": {
+    "url": "https://philippineembassy-dc.org/schedule-and-fees/",
+    "access": "retrieved",
+    "retrieved": "2026-11-19",
+    "note": ""
+   },
+   "held": "A multiple-entry visa; an application in the game is for a single entry."
+  },
+  {
+   "id": "cy-adult",
+   "country": "CY",
+   "route": "A/C",
+   "amount": 90,
+   "currency": "EUR",
+   "component": "application",
+   "scope": "Adults; exemptions including qualifying EU-family cases assessed separately",
+   "evidence": "official_fee_scoped",
+   "from": null,
+   "through": null,
+   "days": null,
+   "dayUnit": null,
+   "note": "",
+   "source": {
+    "url": "https://www.gov.cy/en/information/visas/",
+    "access": "official search-index text; direct blocked",
+    "retrieved": "2026-11-19",
+    "note": ""
+   },
+   "held": "Read only as search-index text: Cyprus's page refused the package; the visa stays the game's estimate."
+  },
+  {
+   "id": "cy-child",
+   "country": "CY",
+   "route": "A/C",
+   "amount": 45,
+   "currency": "EUR",
+   "component": "application",
+   "scope": "Age 6–12; exemptions assessed separately",
+   "evidence": "official_fee_scoped",
+   "from": null,
+   "through": null,
+   "days": null,
+   "dayUnit": null,
+   "note": "",
+   "source": {
+    "url": "https://www.gov.cy/en/information/visas/",
+    "access": "official search-index text; direct blocked",
+    "retrieved": "2026-11-19",
+    "note": ""
+   },
+   "held": "Read only as search-index text: Cyprus's page refused the package; the visa stays the game's estimate."
+  },
+  {
+   "id": "fj-work-app",
+   "country": "FJ",
+   "route": "work permit",
+   "amount": 650.05,
+   "currency": "FJD",
+   "component": "application",
+   "scope": "",
+   "evidence": "official_fee_scoped",
+   "from": null,
+   "through": null,
+   "days": null,
+   "dayUnit": null,
+   "note": "Do not assume application charge includes issuance.",
+   "source": {
+    "url": "https://www.immigration.gov.fj/application-forms-publications-fees",
+    "access": "retrieved",
+    "retrieved": "2026-11-19",
+    "note": ""
+   },
+   "applies": {
+    "kind": "permit",
+    "component": "application",
+    "when": {}
+   }
+  },
+  {
+   "id": "fj-work-issue",
+   "country": "FJ",
+   "route": "work permit",
+   "amount": 185,
+   "currency": "FJD",
+   "component": "issuance",
+   "scope": "",
+   "evidence": "official_fee_scoped",
+   "from": null,
+   "through": null,
+   "days": null,
+   "dayUnit": null,
+   "note": "Confirm applicable permit class before adding this component.",
+   "source": {
+    "url": "https://www.immigration.gov.fj/application-forms-publications-fees",
+    "access": "retrieved",
+    "retrieved": "2026-11-19",
+    "note": ""
+   },
+   "held": "The issuance fee depends on the permit's class, which isn't known for an actor's permit; a further fee on issue isn't charged."
+  },
+  {
+   "id": "my-pvp-app",
+   "country": "MY",
+   "route": "ESD Professional Visit Pass",
+   "amount": 1296,
+   "currency": "MYR",
+   "component": "application",
+   "scope": "ESD route only; includes 8% SST",
+   "evidence": "official_fee_scoped",
+   "from": "2024-09-01",
+   "through": null,
+   "days": null,
+   "dayUnit": null,
+   "note": "Base 1200 plus SST96. Not automatically PUSPAL filming route.",
+   "source": {
+    "url": "https://esd.imi.gov.my/portal/pdf/payment-table-v13.pdf",
+    "access": "retrieved",
+    "retrieved": "2026-11-19",
+    "note": ""
+   },
+   "held": "Malaysia's Professional Visit Pass and its endorsement, not its route for foreign artists filming (PUSPAL); not the game's work permit."
+  },
+  {
+   "id": "my-pvp-endorse",
+   "country": "MY",
+   "route": "ESD Professional Visit Pass",
+   "amount": 90,
+   "currency": "MYR",
+   "component": "endorsement",
+   "scope": "Per quarter; 90/180/270/360 for 1–3/4–6/7–9/10–12 months",
+   "evidence": "official_fee_scoped",
+   "from": null,
+   "through": null,
+   "days": null,
+   "dayUnit": null,
+   "note": "Nationality visa charge separate; not a location-filming licence.",
+   "source": {
+    "url": "https://esd.imi.gov.my/portal/pdf/payment-table-v13.pdf",
+    "access": "retrieved",
+    "retrieved": "2026-11-19",
+    "note": ""
+   },
+   "held": "Malaysia's Professional Visit Pass and its endorsement, not its route for foreign artists filming (PUSPAL); not the game's work permit."
+  },
+  {
+   "id": "ae-temp",
+   "country": "AE",
+   "route": "temporary work permit",
+   "amount": 50,
+   "currency": "AED",
+   "component": "federal",
+   "scope": "Specific temporary route; employer consent requirements apply",
+   "evidence": "official_fee_scoped",
+   "from": null,
+   "through": null,
+   "days": 2,
+   "dayUnit": "working",
+   "note": "Service-centre commission capped at72 separately; page duration wording inconsistent, so validity remains unverified.",
+   "source": {
+    "url": "https://tasheel.mohre.gov.ae/en/services/temporary-work-permits-2022",
+    "access": "retrieved",
+    "retrieved": "2026-11-19",
+    "note": "Temporary and mission permits are distinct; do not transfer facts between them."
+   },
+   "held": "The temporary work permit, not the mission permit; its page says two different things about how long it lasts."
+  },
+  {
+   "id": "jm-app",
+   "country": "JM",
+   "route": "work permit",
+   "amount": 17250,
+   "currency": "JMD",
+   "component": "processing",
+   "scope": "",
+   "evidence": "official_fee_scoped",
+   "from": null,
+   "through": null,
+   "days": null,
+   "dayUnit": null,
+   "note": "Nonrefundable processing fee only; issuance fee still requires applicable schedule.",
+   "source": {
+    "url": "https://mlss.gov.jm/wp-content/uploads/2025/05/Work-Permit-and-Work-Permit-Exemption-Application-Instruction-Sheet.pdf",
+    "access": "retrieved",
+    "retrieved": "2026-11-19",
+    "note": ""
+   },
+   "applies": {
+    "kind": "permit",
+    "component": "application",
+    "when": {}
+   }
+  },
+  {
+   "id": "ky-ent",
+   "country": "KY",
+   "route": "temporary entertainer work permit",
+   "amount": 250,
+   "currency": "KYD",
+   "component": "application",
+   "scope": "Application charge; grant fee separately depends on occupation/island/duration",
+   "evidence": "official_schedule_commencement_unresolved",
+   "from": null,
+   "through": null,
+   "days": null,
+   "dayUnit": null,
+   "note": "Do not activate until commencement is verified. 91–180-day grant uses half annual band, not flat250.",
+   "source": {
+    "url": "https://gov.ky/documents/35692/0/CaymanianProtection%28Fees%29Regulations%2C2026_MADE.pdf/df186a33-80f9-2a0b-d2c1-570df6d88690?t=1776359047875",
+    "access": "retrieved",
+    "retrieved": "2026-11-19",
+    "note": "Enacted regulation dated April16; commencement depends on linked Act, not confirmed here."
+   },
+   "held": "An enacted fee schedule whose start isn't confirmed; never charged on a made-up date."
+  },
+  {
+   "id": "bw-work",
+   "country": "BW",
+   "route": "work permit",
+   "amount": 1500,
+   "currency": "BWP",
+   "component": "application",
+   "scope": "",
+   "evidence": "official_fee_scoped",
+   "from": null,
+   "through": null,
+   "days": 14,
+   "dayUnit": "working",
+   "note": "Published service period, not guaranteed completion; eligibility and documentation separately checked.",
+   "source": {
+    "url": "https://www.gov.bw/taxonomy/term/115",
+    "access": "retrieved",
+    "retrieved": "2026-11-19",
+    "note": ""
+   },
+   "applies": {
+    "kind": "permit",
+    "component": "application",
+    "when": {}
+   }
+  },
+  {
+   "id": "na-short",
+   "country": "NA",
+   "route": "short-term employment up to90days",
+   "amount": 1100,
+   "currency": "NAD",
+   "component": "application",
+   "scope": "",
+   "evidence": "official_undated_candidate",
+   "from": null,
+   "through": null,
+   "days": null,
+   "dayUnit": null,
+   "note": "Do not promote to current verified terms until effective schedule confirmed.",
+   "source": {
+    "url": "https://mhaiss.gov.na/application-fees",
+    "access": "retrieved",
+    "retrieved": "2026-11-19",
+    "note": "Undated official schedule; recent visitor-fee changes make currency of whole table uncertain."
+   },
+   "held": "An official schedule with no date; whether it is current isn't known."
+  },
+  {
+   "id": "na-annual",
+   "country": "NA",
+   "route": "employment permit annual",
+   "amount": 2600,
+   "currency": "NAD",
+   "component": "application",
+   "scope": "",
+   "evidence": "official_undated_candidate",
+   "from": null,
+   "through": null,
+   "days": null,
+   "dayUnit": null,
+   "note": "",
+   "source": {
+    "url": "https://mhaiss.gov.na/application-fees",
+    "access": "retrieved",
+    "retrieved": "2026-11-19",
+    "note": "Undated official schedule; recent visitor-fee changes make currency of whole table uncertain."
+   },
+   "held": "An official schedule with no date; whether it is current isn't known."
+  }
+ ]
+}

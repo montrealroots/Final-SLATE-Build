@@ -599,3 +599,12 @@ export async function askLicence(page: Page, title: string, media: string[] = ['
   await card.getByRole('button', { name: 'Ask Both Holders' }).click();
   await expect(card).toContainText('Asked:');
 }
+
+/**
+ * Whether a test runs on this project: on the projects it names, and always on the all-journeys WebKit project
+ * (`iphone-webkit-all`, run with SLATE_E2E_WEBKIT_ALL=1; the owner's research recovery package of November 19, 2026,
+ * docs/04: "address both Playwright project allowlists and desktop-only skips"). Until November 20, 2026 each test named
+ * its projects itself, and 41 ran on desktop alone, so no journey that ran "once, at desktop width" ever ran on WebKit.
+ */
+export const WEBKIT_ALL = 'iphone-webkit-all';
+export const onlyOn = (info: { project: { name: string } }, names: string[]): boolean => names.includes(info.project.name) || info.project.name === WEBKIT_ALL;

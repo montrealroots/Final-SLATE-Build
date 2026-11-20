@@ -5,7 +5,7 @@
 // there is no company capacity to read across it. The world seed is pinned (helpers.ts pinSeed, 1994, the seed
 // e2e/live-action.spec.ts reaches delivery with), a labelled fixture. Desktop, in Chromium.
 import { expect, test, type Page } from './test';
-import { addScene, advance, nav, newProject, pinSeed, pressSaveAndExit, produceToDelivery, quickLife, readSavedState, saveAndApprove, section, writePitch } from './helpers';
+import { addScene, advance, nav, newProject, onlyOn, pinSeed, pressSaveAndExit, produceToDelivery, quickLife, readSavedState, saveAndApprove, section, writePitch } from './helpers';
 
 test.use({ actionTimeout: 20_000 });
 
@@ -47,7 +47,7 @@ async function makeAndRelease(page: Page, title: string, character: string, firs
 }
 
 test('J19: two years, two shorts made and released through the screens, each counted once, the queue bounded', async ({ page }, info) => {
-  test.skip(info.project.name !== 'desktop', 'One long career, at desktop width.');
+  test.skip(!onlyOn(info, ['desktop']), 'One long career, at desktop width.');
   test.setTimeout(1_500_000);
   await quickLife(page, 'us-los-angeles', '2026-03-02');
   await pinSeed(page, 1994);

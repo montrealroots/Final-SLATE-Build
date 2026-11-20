@@ -2,7 +2,7 @@
 // with what each does said first; acts, a thread left open on purpose, a research question and an arc beat; all of it
 // surviving Save And Exit; then the project shelved, with its consequences listed, and taken up again.
 import { expect, test, type Page } from './test';
-import { nav, newProject, pressSaveAndExit, quickLife, section } from './helpers';
+import { nav, newProject, onlyOn, pressSaveAndExit, quickLife, section } from './helpers';
 
 test.use({ actionTimeout: 20_000 });
 
@@ -16,7 +16,7 @@ async function addLine(page: Page, n: number, speaker: string, text: string): Pr
 }
 
 test('scenes duplicated, split and combined; acts, threads, research and arcs kept; a project shelved and taken up again', async ({ page }, info) => {
-  test.skip(!['desktop', 'phone'].includes(info.project.name), 'Runs at desktop and phone width.');
+  test.skip(!onlyOn(info, ['desktop', 'phone']), 'Runs at desktop and phone width.');
   await quickLife(page, 'gb-london', '2026-01-05');
   await newProject(page, { title: 'Tidewater', format: 'Short Film', runtime: '8', budget: 'Micro Budget' });
   await section(page, 'Characters');

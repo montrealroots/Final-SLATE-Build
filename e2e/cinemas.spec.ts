@@ -3,7 +3,7 @@
 import { expect, test, type Page } from './test';
 import { hashString } from '../src/engine/rng';
 import { serveCatalog } from './catalog-fixture';
-import { nav, newProject, quickLife, saveAndExit, section } from './helpers';
+import { nav, newProject, onlyOn, quickLife, saveAndExit, section } from './helpers';
 import { firstSaveId, readRecord, writeRecords } from './vault';
 
 type State = Record<string, any>; // eslint-disable-line @typescript-eslint/no-explicit-any
@@ -29,7 +29,7 @@ async function openLondon(page: Page): Promise<void> {
 }
 
 test('a place lists the cinemas recorded near it at the save\'s date', async ({ page }, info) => {
-  test.skip(!['desktop', 'phone'].includes(info.project.name), 'Runs at desktop and phone width.');
+  test.skip(!onlyOn(info, ['desktop', 'phone']), 'Runs at desktop and phone width.');
   await serveCatalog(page);
   await quickLife(page, 'gb-london', '2026-01-05');
   await nav(page, 'World');
@@ -49,7 +49,7 @@ test('a place lists the cinemas recorded near it at the save\'s date', async ({ 
 });
 
 test('cinemas show the films in their run: the catalog\'s where they opened, and yours in its territories', async ({ page }, info) => {
-  test.skip(!['desktop', 'phone'].includes(info.project.name), 'Runs at desktop and phone width.');
+  test.skip(!onlyOn(info, ['desktop', 'phone']), 'Runs at desktop and phone width.');
   test.setTimeout(180_000);
   await serveCatalog(page);
   await quickLife(page, 'gb-london', '2026-01-05');

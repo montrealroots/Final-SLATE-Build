@@ -3,7 +3,7 @@
 // loadInstitutions): the handlers that call it run only in a game, which waits for the catalog before opening.
 import { getPlace } from '../data/places';
 import {
-  RIVAL_WORDS_A, RIVAL_WORDS_B, categoriesFor, categoryDeadline, categoryRecipients, categoryRules, checkEligibility, countryWords, edition, enterable, institution,
+  categoriesFor, categoryDeadline, categoryRecipients, categoryRules, checkEligibility, countryWords, edition, enterable, institution,
   festivalListFor, involved, qualifyingWin, rivalTitle, seasonSlate, compactEdition, entryKey, keyProject, type Category, type Judging,
 } from './awards';
 import { craftScore, requirementProblems } from './awards-rules';
@@ -15,6 +15,7 @@ import { DAY, addDaysToKey, dateKey, formatDateKey, localToInstant, parseYmd } f
 import { studioFilms, type StudioFilm } from './studios';
 import { pictureEligible, yourFilmId, yourPicture, yourPictures, yourWorldFilms } from './your-films';
 import { recordedResults } from './history';
+import { SLOTS, slotOf, worldTitle, working } from './world-cast';
 import { noticeGrades } from './grade-news';
 import type { Edition, EditionEntry, GameState, Project, RivalFilm, ScheduledEvent } from './types';
 
@@ -33,7 +34,8 @@ export function committee(state: GameState, ed: Edition, p: Project, taken?: str
   if (taken) return { chosen: false, via: 'committee', reason: `${countryWords(country)}'s selection committee put forward ${taken}; a country submits one film.` };
   const r = stream(state.seed, 'committee', ed.id, country);
   const rival = Math.max(30, Math.min(95, gaussian(r, 66, 8)));
-  const title = `${pick(r, ['The ', '', '', 'A '])}${pick(r, RIVAL_WORDS_A)} ${pick(r, RIVAL_WORDS_B)}`;
+  // The country's other film, from the world's titles of the year (from November 20, 2026; until then 20 words by 20).
+  const title = worldTitle(state.seed, ed.year, SLOTS.committee + slotOf(country, 0, SLOTS.studio - SLOTS.committee));
   const mine = (p.quality?.overall ?? 50) + visibility(state, p, ed.deadline);
   return mine >= rival
     ? { chosen: true, via: 'committee', reason: `${countryWords(country)}'s selection committee chose it over ${title}.` }
@@ -368,15 +370,21 @@ function generatedRivals(state: GameState, ed: Edition, cat: Category, n: number
   const inst = institution(ed.institutionId);
   const r = stream(state.seed, 'rivals', ed.id, cat.id);
   const out: Candidate[] = [];
+  // From November 20, 2026 the extra works of a thin category are the year's own (world-cast.ts): titles from the year's
+  // reserve, consecutive within the category so none repeats there, and leads from the people at work that year. Until
+  // then 20 words by 20 and 10 names by 10.
+  const year = seasonOf(ed);
+  const first = slotOf(`${ed.id}|${cat.id}`, 0, SLOTS.committee - SLOTS.reserve);
+  const leads = working(state.seed, year, 'performer');
   for (let i = 0; i < n; i++) {
-    const title = `${pick(r, ['The ', '', '', 'A '])}${pick(r, RIVAL_WORDS_A)} ${pick(r, RIVAL_WORDS_B)}`;
+    const title = worldTitle(state.seed, year, SLOTS.reserve + ((first + i) % (SLOTS.committee - SLOTS.reserve)));
     // Rival work strength by event prestige; a simulation assumption.
     const score = Math.max(20, Math.min(97, gaussian(r, inst.prestige - 8, 10)));
     const id = `${ed.id}:${cat.id}:r${i}`;
     out.push({
       id, filmKey: id, score,
       film: {
-        title, people: { lead: `${pick(r, ['Iris', 'Teo', 'Marisol', 'Kwame', 'Ana', 'Lars', 'Mina', 'Rafi', 'Odile', 'Sung-min'])} ${pick(r, ['Varga', 'Mbeki', 'Holt', 'Ruiz', 'Okoro', 'Aalto', 'Brandt', 'Sato', 'Navarro', 'Achterberg'])}` },
+        title, people: { lead: pick(r, leads).name },
         format: cat.formats[0], medium: cat.mediums?.[0] ?? 'live-action', runtimeMin: cat.formats.includes('short') ? intBetween(r, 6, 30) : intBetween(r, 80, 140),
       },
     });

@@ -8,10 +8,7 @@
 // were chosen once, not adjusted to pass. Network failures are injected with page.route and declared with expectErrors.
 // Desktop runs in Chromium; the phone run is Chromium at 390×844. Emulation, not devices.
 import { expect, expectErrors, test, type Page } from './test';
-import {
-  addScene, advance, castRoles, creditsTable, nav, newProject, pinSeed, pressSaveAndExit, quickLife, runToDelivery, saveAndApprove, section,
-  secureStartingBacking, staffEveryDepartment, writePitch,
-} from './helpers';
+import { addScene, advance, castRoles, creditsTable, nav, newProject, onlyOn, pinSeed, pressSaveAndExit, quickLife, runToDelivery, saveAndApprove, section, secureStartingBacking, staffEveryDepartment, writePitch } from './helpers';
 
 // stopMotion re-chosen November 16, 2026, when each kind of id got its own counter and the world's draws changed (was 23).
 const SEEDS = { tv: 11, stopMotion: Number(process.env.TRY_SEED ?? 1), behindTheCamera: 31 };
@@ -55,7 +52,7 @@ async function selfRelease(page: Page, territory: string): Promise<void> {
 }
 
 test('a TV season: a regular and a guest, an approved scene changed after filming, a pickup, per-episode credits', async ({ page }, info) => {
-  test.skip(info.project.name !== 'desktop', 'The season runs once, at desktop width.');
+  test.skip(!onlyOn(info, ['desktop']), 'The season runs once, at desktop width.');
   test.setTimeout(1_200_000);
   await quickLife(page, 'us-atlanta', '2026-02-02');
   await pinSeed(page, SEEDS.tv);
@@ -134,7 +131,7 @@ test('a TV season: a regular and a guest, an approved scene changed after filmin
 });
 
 test('stop motion: refused for lack of money, backed for less than its estimate, then funded; reopened while its data fails to load; delivered and released', async ({ page }, info) => {
-  test.skip(info.project.name !== 'desktop', 'Runs once, at desktop width.');
+  test.skip(!onlyOn(info, ['desktop']), 'Runs once, at desktop width.');
   test.setTimeout(1_500_000);
   expectErrors('Refuses the genre catalog and holiday rules on one reload to test recovery.');
   await quickLife(page, 'gb-london', '2026-01-05');
@@ -242,7 +239,7 @@ test('stop motion: refused for lack of money, backed for less than its estimate,
 });
 
 test('writing, producing and directing without acting: an offer to a performer booked elsewhere is turned down, then recast', async ({ page }, info) => {
-  test.skip(!['desktop', 'phone'].includes(info.project.name), 'Runs at desktop and phone width.');
+  test.skip(!onlyOn(info, ['desktop', 'phone']), 'Runs at desktop and phone width.');
   test.setTimeout(1_200_000);
   const p = info.project.name;
   await quickLife(page, 'ca-toronto', '2026-03-02', { portrait: true });

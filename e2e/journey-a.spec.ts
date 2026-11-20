@@ -10,7 +10,7 @@
 // The world seed is pinned (helpers.ts seededLife; seed 11, as auditions.spec.ts, so the same three performers read).
 // It is a labelled fixture, chosen once, not adjusted to pass. Nothing else is written into the save.
 import { expect, test, type Page } from './test';
-import { addScene, advance, nav, newProject, pressSaveAndExit, readSavedState, runToDelivery, saveAndApprove, section, seededLife, staffEveryDepartment } from './helpers';
+import { addScene, advance, nav, newProject, onlyOn, pressSaveAndExit, readSavedState, runToDelivery, saveAndApprove, section, seededLife, staffEveryDepartment } from './helpers';
 
 test.use({ actionTimeout: 20_000 });
 const shot = (page: Page, name: string) => page.screenshot({ path: `test-results/journey-a-${name}.png`, fullPage: true });
@@ -21,7 +21,7 @@ async function openProject(page: Page): Promise<void> {
 }
 
 test('journey A: script, characters, auditions and a callback, financing, production, the edit, delivery, release, an entry and its result, kept after a reload', async ({ page }, info) => {
-  test.skip(info.project.name !== 'desktop', 'One full career run, at desktop width.');
+  test.skip(!onlyOn(info, ['desktop']), 'One full career run, at desktop width.');
   test.setTimeout(1_200_000);
   await seededLife(page, 'gb-london', '2026-01-05', 11);
   await newProject(page, { title: 'Night Ferry', format: 'Short Film', runtime: '10', budget: 'Low Budget' });

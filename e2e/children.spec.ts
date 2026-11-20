@@ -2,7 +2,7 @@
 // of the place the production is based shown on the Cast page, the people a child needs with them asked for in Crew, and
 // performers who play the part's age listed first, each child with what casting them brings.
 import { expect, test, type Page } from './test';
-import { addScene, advance, castRoles, newProject, pinSeed, quickLife, runToDelivery, saveAndApprove, section, staffEveryDepartment } from './helpers';
+import { addScene, advance, castRoles, newProject, onlyOn, pinSeed, quickLife, runToDelivery, saveAndApprove, section, staffEveryDepartment } from './helpers';
 
 const card = (page: Page, heading: string) => page.locator('section.card', { has: page.getByRole('heading', { name: heading, exact: true }) });
 const shot = (page: Page, project: string, name: string) => page.screenshot({ path: `test-results/children-${project}-${name}.png`, fullPage: true });
@@ -21,7 +21,7 @@ async function editCharacter(page: Page, name: string, fn: (c: ReturnType<Page['
 }
 
 test('a child\'s part: the age in numbers, England\'s rules on the Cast page, a chaperone and a tutor in Crew, and children who play the age', async ({ page }, info) => {
-  test.skip(!['desktop', 'phone', 'iphone-15-pro-max'].includes(info.project.name), 'Runs on desktop, phone and WebKit (iPhone 15 Pro Max).');
+  test.skip(!onlyOn(info, ['desktop', 'phone', 'iphone-15-pro-max']), 'Runs on desktop, phone and WebKit (iPhone 15 Pro Max).');
   test.setTimeout(300_000);
   await quickLife(page, 'gb-london', '2026-03-02');
   await pinSeed(page, 41);
@@ -70,7 +70,7 @@ test('a child\'s part: the age in numbers, England\'s rules on the Cast page, a 
 // A shoot with a child in the cast, played through to delivery (the gap RESUME-HERE.md listed until November 11, 2026):
 // in Los Angeles, so the child needs a permit, a studio teacher on set, and 15% of their pay in a Coogan trust.
 test('a shoot with a child in the cast: cast a ten-year-old, the permit before their days, a studio teacher hired, the shoot run to delivery, and their trust paid into', async ({ page }, info) => {
-  test.skip(info.project.name !== 'desktop', 'A full shoot runs once, at desktop width.');
+  test.skip(!onlyOn(info, ['desktop']), 'A full shoot runs once, at desktop width.');
   test.setTimeout(900_000);
   await quickLife(page, 'us-los-angeles', '2026-03-02');
   await pinSeed(page, 41);

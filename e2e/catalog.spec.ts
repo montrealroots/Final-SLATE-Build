@@ -3,7 +3,7 @@
 // date; loading failures; the catalog missing; and the save untouched. The save starts January 5, 2026.
 import { expect, expectErrors, test, type Page } from './test';
 import { serveCatalog } from './catalog-fixture';
-import { nav, pressSaveAndExit, quickLife, readSavedState } from './helpers';
+import { nav, onlyOn, pressSaveAndExit, quickLife, readSavedState } from './helpers';
 
 const card = (page: Page, heading: string) => page.locator('section.card', { has: page.getByRole('heading', { name: heading, exact: true }) });
 const crumb = (page: Page, label: string) => page.getByRole('navigation', { name: 'Breadcrumb' }).getByRole('button', { name: label, exact: true });
@@ -11,7 +11,7 @@ const noSidewaysScroll = (page: Page) => page.evaluate(() => document.documentEl
 const shot = (page: Page, project: string, name: string) => page.screenshot({ path: `test-results/catalog-${project}-${name}.png`, fullPage: true });
 
 test.beforeEach(async ({ page }, info) => {
-  test.skip(!['desktop', 'phone', 'iphone-15-pro-max'].includes(info.project.name), 'Runs on desktop, phone and WebKit (iPhone 15 Pro Max).');
+  test.skip(!onlyOn(info, ['desktop', 'phone', 'iphone-15-pro-max']), 'Runs on desktop, phone and WebKit (iPhone 15 Pro Max).');
   // Served before the game starts: the app loads the world file as soon as a game is open.
   await serveCatalog(page);
   await quickLife(page, 'gb-london', '2026-01-05');

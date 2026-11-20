@@ -13,11 +13,11 @@
   "released": 3,
   "reception": 57.55,
   "overall": 59.058,
-  "gross": 87360,
-  "revenue": 178550.125,
+  "gross": 88650,
+  "revenue": 178335.625,
   "distributed": 2.475,
-  "money": 24789098.935,
-  "moneyChange": -210901.066,
+  "money": 24788884.435,
+  "moneyChange": -211115.566,
   "jobsTaken": 1.525,
   "jobsOffered": 1.525,
   "jobPay": 8984.2,
@@ -30,7 +30,7 @@
   "jobsWithdrawn": 0,
   "jobsDeclined": 0,
   "ratesAgreed": 0,
-  "logLines": 291.225,
+  "logLines": 292.55,
   "hired": 24,
   "castRates": 4792,
   "releaseDelay": 101.042,
@@ -49,26 +49,27 @@
   "quality.editing": 59.258,
   "quality.music": 60.15,
   "standing.writing": 50,
-  "standing.directing": 56.9,
+  "standing.directing": 56.925,
   "standing.acting": 50,
-  "standing.producing": 59.225,
+  "standing.producing": 59.15,
   "interestIn": 0,
   "interestOut": 0,
   "bankFees": 0,
   "owed": 0,
   "accounts": 1,
-  "worth": 18641402.399,
+  "worth": 18641241.095,
   "rewards": 0,
-  "entries": 39.8,
-  "selected": 4.35,
+  "entries": 39.5,
+  "selected": 4.275,
   "won": 0.05,
-  "decided": 29.1,
-  "finalised": 6.275,
+  "decided": 28.8,
+  "finalised": 6,
   "backerBonus": 0.015,
-  "screenings": 8.15,
-  "offers": 11.525,
+  "screenings": 7.95,
+  "offers": 11.175,
   "editionsOpen": 136.775,
   "firstLookOffers": 0,
+  "studioOffers": 0,
   "opportunities": 0.475,
   "openOpportunities": 0,
   "openOffers": 0,
@@ -88,11 +89,11 @@
   "released": 3,
   "reception": 57.55,
   "overall": 59.058,
-  "gross": 85315,
-  "revenue": 176580.625,
+  "gross": 86410,
+  "revenue": 176972.25,
   "distributed": 2.475,
-  "money": 24788738.435,
-  "moneyChange": -211261.566,
+  "money": 24789130.06,
+  "moneyChange": -210869.941,
   "jobsTaken": 1.525,
   "jobsOffered": 1.525,
   "jobPay": 8984.2,
@@ -105,7 +106,7 @@
   "jobsWithdrawn": 0,
   "jobsDeclined": 0,
   "ratesAgreed": 0,
-  "logLines": 181.825,
+  "logLines": 182.875,
   "hired": 24,
   "castRates": 4792,
   "releaseDelay": 101.042,
@@ -126,24 +127,25 @@
   "standing.writing": 50,
   "standing.directing": 56.65,
   "standing.acting": 50,
-  "standing.producing": 53.275,
+  "standing.producing": 53.25,
   "interestIn": 0,
   "interestOut": 0,
   "bankFees": 0,
   "owed": 0,
   "accounts": 1,
-  "worth": 18641131.303,
+  "worth": 18641425.805,
   "rewards": 0,
-  "entries": 1.025,
-  "selected": 0.05,
+  "entries": 1,
+  "selected": 0.025,
   "won": 0,
-  "decided": 0.575,
-  "finalised": 0.05,
+  "decided": 0.55,
+  "finalised": 0.025,
   "backerBonus": 0.013,
-  "screenings": 0.1,
-  "offers": 4.875,
+  "screenings": 0.05,
+  "offers": 4.85,
   "editionsOpen": 128.1,
   "firstLookOffers": 0,
+  "studioOffers": 0,
   "opportunities": 0.475,
   "openOpportunities": 0,
   "openOffers": 0,
@@ -188,17 +190,17 @@
    "n": 40
   },
   "gross": {
-   "mean": -2045,
-   "lo": -5054,
-   "hi": 964,
+   "mean": -2240,
+   "lo": -4955.101,
+   "hi": 475.101,
    "changed": 10,
    "n": 40
   },
   "revenue": {
-   "mean": -1969.5,
-   "lo": -4645.242,
-   "hi": 706.242,
-   "changed": 34,
+   "mean": -1363.375,
+   "lo": -3484.477,
+   "hi": 757.727,
+   "changed": 35,
    "n": 40
   },
   "distributed": {
@@ -209,16 +211,16 @@
    "n": 40
   },
   "money": {
-   "mean": -360.5,
-   "lo": -3047.1,
-   "hi": 2326.1,
+   "mean": 245.625,
+   "lo": -1889.711,
+   "hi": 2380.961,
    "changed": 40,
    "n": 40
   },
   "moneyChange": {
-   "mean": -360.5,
-   "lo": -3047.1,
-   "hi": 2326.1,
+   "mean": 245.625,
+   "lo": -1889.711,
+   "hi": 2380.961,
    "changed": 40,
    "n": 40
   },
@@ -307,9 +309,9 @@
    "n": 40
   },
   "logLines": {
-   "mean": -109.4,
-   "lo": -114.639,
-   "hi": -104.161,
+   "mean": -109.675,
+   "lo": -115.535,
+   "hi": -103.815,
    "changed": 40,
    "n": 40
   },
@@ -371,8 +373,8 @@
   },
   "spent": {
    "mean": -1609,
-   "lo": -1654.943,
-   "hi": -1563.057,
+   "lo": -1655.569,
+   "hi": -1562.431,
    "changed": 40,
    "n": 40
   },
@@ -440,10 +442,10 @@
    "n": 40
   },
   "standing.directing": {
-   "mean": -0.25,
-   "lo": -0.607,
-   "hi": 0.107,
-   "changed": 2,
+   "mean": -0.275,
+   "lo": -0.634,
+   "hi": 0.084,
+   "changed": 3,
    "n": 40
   },
   "standing.acting": {
@@ -454,9 +456,9 @@
    "n": 40
   },
   "standing.producing": {
-   "mean": -5.95,
-   "lo": -6.493,
-   "hi": -5.407,
+   "mean": -5.9,
+   "lo": -6.516,
+   "hi": -5.284,
    "changed": 40,
    "n": 40
   },
@@ -496,9 +498,9 @@
    "n": 40
   },
   "worth": {
-   "mean": -271.096,
-   "lo": -2291.419,
-   "hi": 1749.227,
+   "mean": 184.71,
+   "lo": -1421.062,
+   "hi": 1790.482,
    "changed": 40,
    "n": 40
   },
@@ -510,16 +512,16 @@
    "n": 40
   },
   "entries": {
-   "mean": -38.775,
-   "lo": -40.218,
-   "hi": -37.332,
+   "mean": -38.5,
+   "lo": -40.002,
+   "hi": -36.998,
    "changed": 40,
    "n": 40
   },
   "selected": {
-   "mean": -4.3,
-   "lo": -4.984,
-   "hi": -3.616,
+   "mean": -4.25,
+   "lo": -5.014,
+   "hi": -3.486,
    "changed": 40,
    "n": 40
   },
@@ -531,16 +533,16 @@
    "n": 40
   },
   "decided": {
-   "mean": -28.525,
-   "lo": -30.027,
-   "hi": -27.023,
+   "mean": -28.25,
+   "lo": -29.837,
+   "hi": -26.663,
    "changed": 40,
    "n": 40
   },
   "finalised": {
-   "mean": -6.225,
-   "lo": -7.339,
-   "hi": -5.111,
+   "mean": -5.975,
+   "lo": -7.111,
+   "hi": -4.839,
    "changed": 40,
    "n": 40
   },
@@ -552,16 +554,16 @@
    "n": 40
   },
   "screenings": {
-   "mean": -8.05,
-   "lo": -9.356,
-   "hi": -6.744,
+   "mean": -7.9,
+   "lo": -9.342,
+   "hi": -6.458,
    "changed": 40,
    "n": 40
   },
   "offers": {
-   "mean": -6.65,
-   "lo": -8.203,
-   "hi": -5.097,
+   "mean": -6.325,
+   "lo": -7.951,
+   "hi": -4.699,
    "changed": 40,
    "n": 40
   },
@@ -573,6 +575,13 @@
    "n": 40
   },
   "firstLookOffers": {
+   "mean": 0,
+   "lo": 0,
+   "hi": 0,
+   "changed": 0,
+   "n": 40
+  },
+  "studioOffers": {
    "mean": 0,
    "lo": 0,
    "hi": 0,
@@ -689,7 +698,7 @@
  ],
  "verdict": "proven",
  "hashes": {
-  "src/engine/awards.ts": "28e4ea9a8ba8ebbc",
+  "src/engine/awards.ts": "cc2a12fff3c6a350",
   "tests/proof/career.ts": "50bea06f19a02c5b"
  }
 }

@@ -34,6 +34,7 @@ import { VISAS, type VisaRule } from './bankworld/content/visas';
 import { exchange } from './bankworld/content/currency';
 import { bankReach, postToBank } from './bank';
 import { authorizationTerms, continentOf, permitTerms, visaTerms, type Terms } from './papers-terms';
+import { withScope, type Applicant } from './papers-scoped';
 import { CONTINENT_NAMES } from './bankworld/content/geography';
 import { filmPlace } from './destinations';
 import { stream } from './rng';
@@ -237,6 +238,8 @@ export interface PaperApplication {
   refusal?: { chance: number; basis: string };
   passportId: string;
   fee: { minor: number; currency: string; paidUsdMinor: number };
+  /** A fee paid only on issue (from November 20, 2026), and what was paid of it: nothing until then, nothing if refused. */
+  issuance?: { minor: number; currency: string; paidUsdMinor: number };
   appliedAt: number;
   decideAt: number;
   issuedAt?: number;
@@ -265,14 +268,20 @@ function visaPair(state: GameState, country: string): Terms | undefined {
 export function visaFor(state: GameState, country: string): Terms {
   const e = entryRight(state, country);
   if (e.kind === 'needs' && e.entry === 'eta') return authorizationTerms(country, citizenships(state));
-  return visaPair(state, country) ?? visaTerms(country);
+  return withScope(visaPair(state, country) ?? visaTerms(country), country, 'visa', applicant(state));
 }
+
+/** Who is applying, as a route-scoped fee reads them: where they live (where they apply), their passports, today. */
+export const applicant = (state: GameState): Applicant => ({ livesIn: livesIn(state), passports: citizenships(state), today: dateKey(state.now, 'UTC') });
+
+/** A country's work permit for this applicant: its terms, with the route-scoped fees that apply to them. */
+export const permitFor = (state: GameState, country: string, route: string): Terms => withScope(permitTerms(country, route), country, 'permit', applicant(state));
 
 export type ApplicationCheck =
   | { ok: true; terms: Terms; needs: string[]; feeText: string; refusal: { chance: number; basis: string } }
   | { ok: false; why: string; missing?: string[] };
 
-const feeText = (t: Terms) => (t.fee.amount ? `${t.fee.amount.toLocaleString('en-US')} ${t.fee.currency}` : 'free');
+const feeText = (t: Terms) => `${t.fee.amount ? `${t.fee.amount.toLocaleString('en-US')} ${t.fee.currency}` : 'free'}${t.issuance ? `, and ${t.issuance.amount.toLocaleString('en-US')} ${t.issuance.currency} if it's issued` : ''}`;
 
 /** The documents an application needs: a passport in force until the decision, at least. */
 function passportNeed(state: GameState, t: Terms): { passport: PersonDocument } | { why: string } {
@@ -373,7 +382,7 @@ export function permitCheck(state: GameState, country: string, activity: Activit
   const home = livesIn(state) === country;
   const held = permitIn(state, country, activity);
   const route = w.can ? held?.route ?? null : w.route;
-  const t = permitTerms(country, route ?? 'Work permit');
+  const t = permitFor(state, country, route ?? 'Work permit');
   // A work visa where you live can be renewed once its end is nearer than its decision and a month (game calibration).
   const renewable = !!held && home && held.expiresAt !== undefined && held.expiresAt - state.now <= (t.days + RENEW_MARGIN_DAYS) * DAY;
   const bar = barredFrom(state, country);
@@ -412,12 +421,13 @@ function apply(state: GameState, kind: 'visa' | 'permit', country: string, c: Ex
     id, kind, country, route: t.route, stage: 'applied', passportId: passport.id,
     ...(kind === 'permit' && country === livesIn(state) ? { all: true as const } : activity && activity !== 'act' ? { activity } : {}), ...(t.estimate ? { estimate: true as const } : {}),
     fee: { minor, currency: t.fee.currency, paidUsdMinor: usd }, appliedAt: state.now, decideAt: state.now + t.days * DAY,
+    ...(t.issuance ? { issuance: { minor: Math.round(t.issuance.amount * 100), currency: t.issuance.currency, paidUsdMinor: 0 } } : {}),
     ...(kind === 'permit' ? { sponsor: sponsorsFor(state, country)[0] } : {}),
   };
   (state.paperApplications ??= []).push(a);
   schedule(state, a.decideAt, 'papers-decision', { id }, { attention: 'notify', priority: 55, id: `papers-decision:${id}` });
   const what = kind === 'visa' ? `a ${t.route} for ${the(country)}` : `${t.route} to work in ${the(country)}${activity && activity !== 'act' ? ` (${ACTIVITY_WORDS[activity]})` : ''}`;
-  addLog(state, `You applied for ${what}${minor ? ' and paid its fee' : '; it\'s free'}. It is decided in about ${t.days} days${t.estimate ? ', the game\'s estimate' : ''}.`, 'personal', { route: { view: 'papers' } });
+  addLog(state, `You applied for ${what}${minor ? ' and paid its fee' : '; it\'s free'}${t.issuance ? `; ${t.issuance.amount.toLocaleString('en-US')} ${t.issuance.currency} more is due only if it's issued` : ''}. It is decided in about ${t.days} days${t.estimate ? ', the game\'s estimate' : ''}.`, 'personal', { route: { view: 'papers' } });
   return a;
 }
 
@@ -450,7 +460,7 @@ export function grantArrivalPapers(state: GameState, paid = true): PaperApplicat
   const w = workRight(state, country, 'act');
   const route = w.can ? null : w.route;
   if (!route && !WORK.countries[country]) return undefined; // no record of who may work there: nothing to hold
-  const t = permitTerms(country, route ?? 'Work permit');
+  const t = permitFor(state, country, route ?? 'Work permit');
   const minor = Math.round(t.fee.amount * 100);
   const usd = t.fee.currency === 'USD' ? minor : exchange(minor, t.fee.currency, 'USD');
   // A fixed id, not the next in the save's count, which seeds the draws of everything made after it: arriving on a visa
@@ -815,7 +825,7 @@ onTravelCheck((state, to) => entryRefusal(state, to.country));
 registerHandler('papers-decision', (state, ev) => {
   const a = applications(state).find((x) => x.id === ev.payload.id);
   if (!a || a.stage !== 'applied') return { suppressInterrupt: true };
-  const t = a.kind === 'visa' ? visaFor(state, a.country) : permitTerms(a.country, a.route);
+  const t = a.kind === 'visa' ? visaFor(state, a.country) : permitFor(state, a.country, a.route);
   // Refused by its chance, drawn once for this application (from November 14, 2026; until then always granted). The fee
   // isn't returned; you may apply again.
   a.refusal = refusalChance(state, a.kind, a.country);
@@ -825,6 +835,20 @@ registerHandler('papers-decision', (state, ev) => {
     const message = `Your ${a.route} for ${the(a.country)} was refused. The fee isn't returned; you may apply again.${home ? ' Until a work visa is issued you can\'t work there, and once the one you hold runs out you live there without the right to.' : ''}`;
     addLog(state, message, 'warning', { route: { view: 'papers' } });
     return { message };
+  }
+  if (a.issuance && !a.issuance.paidUsdMinor) {
+    // The issuance fee, paid once (the posting is keyed to the application): if the bank can't pay it, it isn't issued.
+    const usd = a.issuance.currency === 'USD' ? a.issuance.minor : exchange(a.issuance.minor, a.issuance.currency, 'USD');
+    try {
+      if (usd === undefined) throw new Error('no rate');
+      postToBank(state, 'papers', -usd / 100, `${a.route}: The Issuance Fee`, `papers:${a.id}:issuance`);
+      a.issuance.paidUsdMinor = usd;
+    } catch {
+      a.stage = 'refused';
+      const message = `Your ${a.route} for ${the(a.country)} was approved, but its issuance fee of ${(a.issuance.minor / 100).toLocaleString('en-US')} ${a.issuance.currency} couldn't be paid, so it wasn't issued. The first fee isn't returned; you may apply again.`;
+      addLog(state, message, 'warning', { route: { view: 'papers' } });
+      return { message };
+    }
   }
   a.stage = 'issued';
   a.issuedAt = state.now;

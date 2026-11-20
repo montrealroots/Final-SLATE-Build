@@ -5,13 +5,13 @@
 import type { Page } from '@playwright/test';
 import { expect, test } from './test';
 import { audit } from './ui-audit';
-import { addScene, advance, nav, newProject, readSavedState, saveAndApprove, section, seededLife, writePitch } from './helpers';
+import { addScene, advance, nav, newProject, onlyOn, readSavedState, saveAndApprove, section, seededLife, writePitch } from './helpers';
 
 const card = (page: Page, heading: string) => page.locator('section.card', { has: page.getByRole('heading', { name: heading, exact: true }) });
 const dollars = (n: number) => `$${n.toLocaleString('en-US')}`;
 
 test('an agent: refused on the record, signed with, a submission, commission on the ledger, a declared conflict, and notice', async ({ page }, info) => {
-  test.skip(!['desktop', 'phone', 'iphone-15-pro-max'].includes(info.project.name), 'Runs on desktop, phone and WebKit (iPhone 15 Pro Max).');
+  test.skip(!onlyOn(info, ['desktop', 'phone', 'iphone-15-pro-max']), 'Runs on desktop, phone and WebKit (iPhone 15 Pro Max).');
   test.setTimeout(480_000);
   const phone = info.project.name !== 'desktop';
   await seededLife(page, 'gb-london', '2026-01-05', Number(process.env.TRY_SEED ?? 2)) // re-chosen November 16, 2026, when each kind of id got its own counter and the world's draws changed (was 11);

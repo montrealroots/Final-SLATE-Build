@@ -4,10 +4,10 @@
 // the player's, through the interface; nothing is put into the save. The world seed is pinned (a labelled fixture) so
 // the run is the same each time.
 import { expect, test } from './test';
-import { adaptWork, addScene, advance, nav, openStart, pinSeed, produceToDelivery, quickDraft, readSavedState, saveAndApprove, section, setInheritance, writePitch } from './helpers';
+import { adaptWork, addScene, advance, nav, onlyOn, openStart, pinSeed, produceToDelivery, quickDraft, readSavedState, saveAndApprove, section, setInheritance, writePitch } from './helpers';
 
 test('J01: an inheritance, a book, a live-action short on a kit bought for it, released, its receipts settled, and the next one funded', async ({ page }, info) => {
-  test.skip(info.project.name !== 'desktop', 'One whole career run, at desktop width.');
+  test.skip(!onlyOn(info, ['desktop']), 'One whole career run, at desktop width.');
   test.setTimeout(600_000);
 
   // A new game with an inheritance, read on Review before the story starts.

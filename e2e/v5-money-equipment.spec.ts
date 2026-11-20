@@ -1,14 +1,14 @@
 // The owner's v5 brief, 9, through the screens (from November 13, 2026): an equipment shortage that waits for the player
 // and is approved by renting what's missing. Nothing is written into the save; the world seed is pinned (a labelled fixture).
 import { expect, test, type Page } from './test';
-import { addScene, advance, castRoles, nav, newProject, pinSeed, quickLife, readSavedState, runToDelivery, saveAndApprove, section, staffEveryDepartment } from './helpers';
+import { addScene, advance, castRoles, nav, newProject, onlyOn, pinSeed, quickLife, readSavedState, runToDelivery, saveAndApprove, section, staffEveryDepartment } from './helpers';
 
 test.use({ actionTimeout: 20_000 });
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const project = async (page: Page): Promise<any> => (await readSavedState(page))?.projects?.[0];
 
 test('a kit that can\'t light an interior: the day waits for the player, who rents what\'s missing, and the film is made', async ({ page }, info) => {
-  test.skip(info.project.name !== 'desktop', 'A shoot, once, at desktop width.');
+  test.skip(!onlyOn(info, ['desktop']), 'A shoot, once, at desktop width.');
   test.setTimeout(600_000);
   await quickLife(page, 'gb-london', '2026-03-02');
   await pinSeed(page, 7);

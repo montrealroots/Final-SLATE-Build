@@ -5,7 +5,7 @@
 // seed is pinned (labelled fixtures); nothing is written into the save.
 import { expect, test, type Page } from './test';
 import { CATALOG_FIXTURE, serveCatalog } from './catalog-fixture';
-import { addScene, advance, castRoles, nav, pinSeed, quickLife, personalPostingsOf, readSavedState, runToDelivery, saveAndApprove, section, staffEveryDepartment, writePitch } from './helpers';
+import { addScene, advance, castRoles, nav, onlyOn, personalPostingsOf, pinSeed, quickLife, readSavedState, runToDelivery, saveAndApprove, section, staffEveryDepartment, writePitch } from './helpers';
 
 test.use({ actionTimeout: 20_000 });
 
@@ -44,7 +44,7 @@ async function horror(page: Page, title: string, format: string, runtime: string
 }
 
 test('a first-look deal: offered after delivered work, read in full, bargained, accepted; the next film goes to the studio first', async ({ page }, info) => {
-  test.skip(!['desktop', 'phone', 'iphone-15-pro-max'].includes(info.project.name), 'Desktop, phone and the iPhone 15 Pro Max (WebKit).');
+  test.skip(!onlyOn(info, ['desktop', 'phone', 'iphone-15-pro-max']), 'Desktop, phone and the iPhone 15 Pro Max (WebKit).');
   test.setTimeout(1_200_000);
   await serveCatalog(page, {}, { 'world.json': { ...(CATALOG_FIXTURE['world.json'] as object), studios: STUDIOS } });
   await quickLife(page, 'us-los-angeles', '2026-11-12');

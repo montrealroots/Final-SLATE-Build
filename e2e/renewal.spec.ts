@@ -4,12 +4,12 @@
 // without a year of releases: the commissioner's agreement for the season, an accepted broadcast with its first
 // episode's audience reported, and the decision the delivery would have asked for. They are labelled where they are set.
 import { expect, test, type Page } from './test';
-import { addScene, advance, nav, pressSaveAndExit, produceToDelivery, quickLife, readSavedState, saveAndApprove, section, newProject } from './helpers';
+import { addScene, advance, nav, newProject, onlyOn, pressSaveAndExit, produceToDelivery, quickLife, readSavedState, saveAndApprove, section } from './helpers';
 import { hashString } from '../src/engine/rng';
 import { firstSaveId, readRecord, writeRecords } from './vault';
 
 test.describe.configure({ timeout: Number(process.env.SLATE_JOURNEY_TIMEOUT) || 900_000 });
-test.beforeEach(({}, info) => test.skip(info.project.name !== 'desktop', 'Full media journeys run once, at desktop width.'));
+test.beforeEach(({}, info) => test.skip(!onlyOn(info, ['desktop']), 'Full media journeys run once, at desktop width.'));
 
 const DAY = 86_400_000;
 const dateKey = (ms: number) => new Date(ms).toISOString().slice(0, 10);

@@ -3,7 +3,7 @@
 // from, which choice changes it, and what happens next. The world seed is pinned through the labelled fixture in
 // helpers.ts; nothing else is injected.
 import { expect, test, type Page } from './test';
-import { addScene, advance, castRoles, newProject, pinSeed, quickLife, readSavedState, runToDelivery, section, secureStartingBacking, staffEveryDepartment, writePitch } from './helpers';
+import { addScene, advance, castRoles, newProject, onlyOn, pinSeed, quickLife, readSavedState, runToDelivery, section, secureStartingBacking, staffEveryDepartment, writePitch } from './helpers';
 
 // Seed 7 was chosen because its offers include a broadcaster, so the late-slot choice is played; the seed is the only fixture.
 // Re-chosen November 16, 2026, when each kind of id got its own counter and the world's draws changed (was 7).
@@ -31,7 +31,7 @@ const raise = (page: Page) => page.locator('section.card', { has: page.getByRole
 const grantRow = (page: Page) => raise(page).locator('li', { hasText: 'Screen Arts Fund Grant' });
 
 test('a supporting antagonist, an incomplete pitch and a revised treatment: what the grant needs, and sending it', async ({ page }, info) => {
-  test.skip(!['desktop', 'phone'].includes(info.project.name), 'Runs at desktop and phone width.');
+  test.skip(!onlyOn(info, ['desktop', 'phone']), 'Runs at desktop and phone width.');
   await quickLife(page, 'gb-london', '2026-01-05');
   await newProject(page, { title: 'Night Line', format: 'Short Film', runtime: '6', budget: 'Micro Budget' });
   await addCharacters(page, ['Ines', 'Marcus']);
@@ -90,7 +90,7 @@ test('a supporting antagonist, an incomplete pitch and a revised treatment: what
 });
 
 test('a mature project: declared content, an essential scene cut then picked up, and what the broadcaster offers', async ({ page }, info) => {
-  test.skip(info.project.name !== 'desktop', 'The full journey runs once, at desktop width.');
+  test.skip(!onlyOn(info, ['desktop']), 'The full journey runs once, at desktop width.');
   test.setTimeout(900_000);
   await quickLife(page, 'gb-london', '2026-01-05');
   await pinSeed(page, SEED);

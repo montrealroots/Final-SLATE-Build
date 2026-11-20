@@ -6,7 +6,7 @@
 // pinned world seed (helpers.ts pinSeed). Desktop and phone run in Chromium, iphone-15-pro-max in WebKit: emulation,
 // not devices. Every name is made up.
 import { expect, test, type Page } from './test';
-import { advance, castRoles, createCharacter, freshStart, nav, pinSeed, pressSaveAndExit, produceToDelivery, readSavedState, runToDelivery, saveAndApprove, section, secureStartingBacking, seededLife, staffEveryDepartment } from './helpers';
+import { advance, castRoles, createCharacter, freshStart, nav, onlyOn, pinSeed, pressSaveAndExit, produceToDelivery, readSavedState, runToDelivery, saveAndApprove, section, secureStartingBacking, seededLife, staffEveryDepartment } from './helpers';
 
 const shot = (page: Page, project: string, name: string) => page.screenshot({ path: `test-results/creative-ideas-${project}-${name}.png`, fullPage: true });
 const noSidewaysScroll = async (page: Page) => expect(await page.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth)).toBeLessThanOrEqual(1);
@@ -18,7 +18,7 @@ async function savedWhen(page: Page, ready: (p: any) => boolean): Promise<any> {
 }
 
 test('from a chosen idea to a delivered film: the picker, the 1986 zombie brief, makeup and costume, the shoot and delivery', async ({ page }, info) => {
-  test.skip(!['desktop', 'phone', 'iphone-15-pro-max'].includes(info.project.name), 'Runs on desktop, phone and one WebKit iPhone emulation.');
+  test.skip(!onlyOn(info, ['desktop', 'phone', 'iphone-15-pro-max']), 'Runs on desktop, phone and one WebKit iPhone emulation.');
   test.setTimeout(1_500_000);
   const n = info.project.name;
   await freshStart(page);
@@ -192,7 +192,7 @@ test('from a chosen idea to a delivered film: the picker, the 1986 zombie brief,
 });
 
 test('a logline built from four parts, and a crowd extended in post from a scene\'s own ideas', async ({ page }, info) => {
-  test.skip(!['desktop', 'phone'].includes(info.project.name), 'Runs on desktop and phone.');
+  test.skip(!onlyOn(info, ['desktop', 'phone']), 'Runs on desktop and phone.');
   await freshStart(page);
   await createCharacter(page, { name: 'Rin Okafor', pronouns: 'They/Them', birthDate: '2006-06-15', birthplace: 'Lagos', heritages: ['Yoruba'], nationalities: ['Nigeria'], mainLanguage: 'English', extraLanguages: [], start: 'London', startDate: '2026-01-05', startTime: '08:00' });
   await nav(page, 'Projects');
@@ -249,7 +249,7 @@ test('a logline built from four parts, and a crowd extended in post from a scene
 // costume fittings or locations. (A puppet damaged on its stage and repaired is its own journey: journeys.spec.ts,
 // "stop motion: a puppet damaged on set holds its shots until it is repaired".)
 test('J02: the zombie premise as stop motion: puppets, sets and voices are made, and no live-action makeup or location work', async ({ page }, info) => {
-  test.skip(!['desktop', 'iphone-15-pro-max'].includes(info.project.name), 'One full production, on desktop and one WebKit iPhone emulation.');
+  test.skip(!onlyOn(info, ['desktop', 'iphone-15-pro-max']), 'One full production, on desktop and one WebKit iPhone emulation.');
   test.setTimeout(1_500_000);
   await seededLife(page, 'gb-london', '2026-01-05', 7);
   await page.getByRole('button', { name: 'New Project' }).first().click();

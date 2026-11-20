@@ -4,13 +4,13 @@
 // credits. The save is dated January 5, 2026.
 import { existsSync } from 'node:fs';
 import { expect, test, type Page } from './test';
-import { nav, quickLife } from './helpers';
+import { nav, onlyOn, quickLife } from './helpers';
 
 const card = (page: Page, heading: string) => page.locator('section.card', { has: page.getByRole('heading', { name: heading, exact: true }) });
 
 test.beforeEach(async ({ page }, info) => {
   test.skip(!existsSync('.screen-catalog/index.json'), 'The real catalog is installed only where it was gathered from TMDB.');
-  test.skip(!['desktop', 'phone'].includes(info.project.name), 'Runs on desktop and phone.');
+  test.skip(!onlyOn(info, ['desktop', 'phone']), 'Runs on desktop and phone.');
   const tmdb: string[] = [];
   await page.route(/themoviedb\.org|tmdb\.org/, (r) => { tmdb.push(r.request().url()); return r.abort(); });
   await quickLife(page, 'gb-london', '2026-01-05');

@@ -2,12 +2,12 @@
 // lapses; asking for better terms holds it while they consider, and their answer, decided by leverage, is shown and
 // applied (SLATE-08-03.02, .03). The world seed is fixed (labelled fixture), so the answer is the same every run.
 import { expect, test } from './test';
-import { addScene, advance, newProject, saveAndApprove, section, seededLife } from './helpers';
+import { addScene, advance, newProject, onlyOn, saveAndApprove, section, seededLife } from './helpers';
 
 test.use({ actionTimeout: 20_000 });
 
 test('an investor offer: when it lapses, asking for better terms, and their answer', async ({ page }, info) => {
-  test.skip(!['desktop', 'phone'].includes(info.project.name), 'Runs at desktop and phone width.');
+  test.skip(!onlyOn(info, ['desktop', 'phone']), 'Runs at desktop and phone width.');
   await seededLife(page, 'gb-london', '2026-01-05', Number(process.env.TRY_SEED ?? 4)) // re-chosen November 16, 2026, when each kind of id got its own counter and the world's draws changed (was 11);
   await newProject(page, { title: 'Night Ferry', format: 'Short Film', runtime: '10', budget: 'Low Budget' });
   await section(page, 'Characters');

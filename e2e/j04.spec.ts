@@ -1,12 +1,12 @@
 // J04 as one run (the v4 package, 05: "3D production with asset/rig/render dependencies and one revision affecting only
 // its dependents"; ledger V4-038.04). The world seed is pinned (a labelled fixture).
 import { expect, test } from './test';
-import { addScene, advance, castRoles, nav, readSavedState, runToDelivery, saveAndApprove, section, seededLife, staffEveryDepartment } from './helpers';
+import { addScene, advance, castRoles, nav, onlyOn, readSavedState, runToDelivery, saveAndApprove, section, seededLife, staffEveryDepartment } from './helpers';
 
 type Task = { id: string; label: string; status: string; done: number };
 
 test('J04: a 3D short whose models and rigs come before animation and render, one character redesigned mid-way, only its work redone, delivered', async ({ page }, info) => {
-  test.skip(info.project.name !== 'desktop', 'One whole career run, at desktop width.');
+  test.skip(!onlyOn(info, ['desktop']), 'One whole career run, at desktop width.');
   test.setTimeout(600_000);
   await seededLife(page, 'ca-vancouver', '2026-01-05', 4);
   await nav(page, 'Projects');

@@ -1,5 +1,5 @@
 import { expect, test, type Page } from './test';
-import { advance, openStart, section, secureStartingBacking, staffEveryDepartment } from './helpers';
+import { advance, onlyOn, openStart, section, secureStartingBacking, staffEveryDepartment } from './helpers';
 
 async function quickStart(page: Page, place: string): Promise<void> {
   await openStart(page);
@@ -18,7 +18,7 @@ async function quickStart(page: Page, place: string): Promise<void> {
 }
 
 test('3D animation through the UI: voice cast, modeling and rigging before animation, render capacity', async ({ page }, info) => {
-  test.skip(info.project.name !== 'desktop', 'Media journeys run once at desktop width; layout is covered by the viewport test.');
+  test.skip(!onlyOn(info, ['desktop']), 'Media journeys run once at desktop width; layout is covered by the viewport test.');
   await quickStart(page, 'ca-vancouver');
   await page.getByRole('button', { name: 'New Project' }).first().click();
   await page.getByRole('button', { name: 'Write An Original' }).click();
@@ -80,7 +80,7 @@ test('3D animation through the UI: voice cast, modeling and rigging before anima
 });
 
 test('documentary through the UI: contributors, consent, facts, no scripted dialogue', async ({ page }, info) => {
-  test.skip(info.project.name !== 'desktop', 'Media journeys run once at desktop width.');
+  test.skip(!onlyOn(info, ['desktop']), 'Media journeys run once at desktop width.');
   await quickStart(page, 'nl-amsterdam');
   await page.getByRole('button', { name: 'New Project' }).first().click();
   await page.getByRole('button', { name: 'Develop A Documentary' }).click();

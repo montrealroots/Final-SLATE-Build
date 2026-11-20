@@ -2,13 +2,13 @@
 // world decides a series' future, kept in the save, shown as simulated with its returning regulars.
 import { expect, test, type Page } from './test';
 import { serveCatalog } from './catalog-fixture';
-import { advance, nav, pressSaveAndExit, quickLife, readSavedState } from './helpers';
+import { advance, nav, onlyOn, pressSaveAndExit, quickLife, readSavedState } from './helpers';
 
 const card = (page: Page, heading: string) => page.locator('section.card', { has: page.getByRole('heading', { name: heading, exact: true }) });
 const shot = (page: Page, project: string, name: string) => page.screenshot({ path: `test-results/living-world-${project}-${name}.png`, fullPage: true });
 
 test.beforeEach(async ({ page }, info) => {
-  test.skip(!['desktop', 'phone'].includes(info.project.name), 'Runs on desktop and phone.');
+  test.skip(!onlyOn(info, ['desktop', 'phone']), 'Runs on desktop and phone.');
   await serveCatalog(page);
   await quickLife(page, 'gb-london', '2026-11-01'); // a save that starts before the records end on November 10
 });

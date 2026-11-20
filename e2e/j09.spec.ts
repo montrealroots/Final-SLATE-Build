@@ -2,10 +2,10 @@
 // -> recording/electronic delivery -> changed picture cut -> stems/credits -> payment/future collaboration"; ledger
 // V4-038.09). The world seed is pinned (a labelled fixture).
 import { expect, test } from './test';
-import { addScene, advance, castRoles, creditsTable, nav, newProject, readSavedState, runToDelivery, saveAndApprove, section, seededLife, staffEveryDepartment } from './helpers';
+import { addScene, advance, castRoles, creditsTable, nav, newProject, onlyOn, readSavedState, runToDelivery, saveAndApprove, section, seededLife, staffEveryDepartment } from './helpers';
 
 test('J09: a score commissioned through Guide Me within a ceiling, its themes revised and approved, a cut changed after it was written and conformed, delivered with stems, the composer paid, credited and on record', async ({ page }, info) => {
-  test.skip(info.project.name !== 'desktop', 'One whole career run, at desktop width.');
+  test.skip(!onlyOn(info, ['desktop']), 'One whole career run, at desktop width.');
   test.setTimeout(600_000);
   await seededLife(page, 'gb-london', '2026-01-05', 3);
   await nav(page, 'Projects');

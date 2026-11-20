@@ -18,15 +18,13 @@
 // offers a theatrical release; a different seed can bring no theatrical offer, and the journey says so if it does.
 import type { Locator } from '@playwright/test';
 import { expect, test, type Page } from './test';
-import {
-  addScene, advance, approveDesigns, askLicence, castRoles, licenseSong, nav, newProject, pinSeed, pressSaveAndExit, quickLife, readSavedState, saveAndApprove, section, staffEveryDepartment,
-} from './helpers';
+import { addScene, advance, approveDesigns, askLicence, castRoles, licenseSong, nav, newProject, onlyOn, pinSeed, pressSaveAndExit, quickLife, readSavedState, saveAndApprove, section, staffEveryDepartment } from './helpers';
 
 test.use({ actionTimeout: 20_000 });
 const shot = (page: Page, name: string) => page.screenshot({ path: `test-results/journey-c-${name}.png`, fullPage: true });
 
 test('journey C: songs written, recorded and cleared in production, placed in scenes and a version, released in cinemas, entered, judged and kept after a reload', async ({ page }, info) => {
-  test.skip(info.project.name !== 'desktop', 'One full production, at desktop width.');
+  test.skip(!onlyOn(info, ['desktop']), 'One full production, at desktop width.');
   test.setTimeout(1_200_000);
   await quickLife(page, 'us-los-angeles', '2026-01-05');
   // Seed 22 since November 15, 2026, when the edit began counting in a film's overall and seed 8's offers moved; seeds

@@ -1,10 +1,10 @@
 // J06 as one run (the v4 package, 05: "Hybrid production with shared people/assets and no duplicate work billing or
 // simultaneous equipment booking"; ledger V4-038.06). The world seed is pinned (a labelled fixture).
 import { expect, test } from './test';
-import { addScene, advance, castRoles, creditsTable, nav, newProject, openStart, pinSeed, quickDraft, readSavedState, runToDelivery, saveAndApprove, section, staffEveryDepartment, writePitch } from './helpers';
+import { addScene, advance, castRoles, creditsTable, nav, newProject, onlyOn, openStart, pinSeed, quickDraft, readSavedState, runToDelivery, saveAndApprove, section, staffEveryDepartment, writePitch } from './helpers';
 
 test('J06: a hybrid of a live scene and a 3D one, you in both, one crew and a bought camera; a second shoot can\'t take the camera on the same days; nobody is paid twice for a day', async ({ page }, info) => {
-  test.skip(info.project.name !== 'desktop', 'One whole career run, at desktop width.');
+  test.skip(!onlyOn(info, ['desktop']), 'One whole career run, at desktop width.');
   test.setTimeout(600_000);
   // A camera and a card bought with the inheritance (a family lent them until November 14, 2026; a new story no longer
   // offers that).

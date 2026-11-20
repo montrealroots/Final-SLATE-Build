@@ -1,5 +1,5 @@
 import { expect, test, type Page } from './test';
-import { addScene, advance, creditsTable, nav, newProject, openStart, pinSeed, produceToDelivery, readSavedState, section, writePitch } from './helpers';
+import { addScene, advance, creditsTable, nav, newProject, onlyOn, openStart, pinSeed, produceToDelivery, readSavedState, section, writePitch } from './helpers';
 
 // The first-project journey, through visible controls only, from character creation to a second project.
 // Labelled fixture: the world seed is fixed after creation (pinSeed), so backers' answers are the same every run.
@@ -41,7 +41,7 @@ const amount = (page: Page, label: string) => page.locator('section.card', { has
   .locator('dt', { hasText: new RegExp(`^${label}$`) }).locator('xpath=following-sibling::dd[1]');
 
 test('first project: write, approve, a refusal, the agreed backing, production, release, and a second project with its history intact', async ({ page }, info) => {
-  test.skip(info.project.name !== 'desktop', 'The full journey runs once, at desktop width; the phone checks the financing screens below.');
+  test.skip(!onlyOn(info, ['desktop']), 'The full journey runs once, at desktop width; the phone checks the financing screens below.');
   await createFromReview(page);
   await pinSeed(page, SEED);
   const before = await readSavedState(page);
@@ -138,7 +138,7 @@ test('first project: write, approve, a refusal, the agreed backing, production, 
 });
 
 test('the financing screens on a phone: estimate, the agreed backing and its terms, the money arriving', async ({ page }, info) => {
-  test.skip(!['desktop', 'phone'].includes(info.project.name), 'Runs on desktop and phone.');
+  test.skip(!onlyOn(info, ['desktop', 'phone']), 'Runs on desktop and phone.');
   await createFromReview(page);
   await newProject(page, { title: 'Small Hours', format: 'Short Film', runtime: '5', budget: 'Micro Budget' });
   await addCharacters(page, ['Ada']);

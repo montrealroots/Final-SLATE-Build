@@ -6,7 +6,7 @@
 // direct and write it, and are credited and paid. The world seed is fixed (labelled fixture).
 import { expect, test, type Page } from './test';
 import { serveCatalog } from './catalog-fixture';
-import { addScene, advance, creditsTable, nav, newProject, produceToDelivery, readSavedState, saveAndApprove, saveAndExit, section, seededLife, writePitch } from './helpers';
+import { addScene, advance, creditsTable, nav, newProject, onlyOn, produceToDelivery, readSavedState, saveAndApprove, saveAndExit, section, seededLife, writePitch } from './helpers';
 
 test.use({ actionTimeout: 20_000 });
 
@@ -30,7 +30,7 @@ async function openProject(page: Page, title: string): Promise<void> {
 }
 
 test.beforeEach(async ({ page }, info) => {
-  test.skip(!['desktop', 'phone', 'iphone-15-pro-max'].includes(info.project.name), 'Runs on desktop, phone and WebKit (iPhone 15 Pro Max).');
+  test.skip(!onlyOn(info, ['desktop', 'phone', 'iphone-15-pro-max']), 'Runs on desktop, phone and WebKit (iPhone 15 Pro Max).');
   await serveCatalog(page);
 });
 

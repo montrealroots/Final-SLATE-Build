@@ -3,7 +3,7 @@
 // step after it is a click, and time passes by the game's own Advance. Money is read from Your Bank and the home's own
 // payments; ownership, residence and schedules from the page; the saved game from the save itself.
 import { expect, test, type Page } from './test';
-import { advance, editSave, nav, openStart, quickDraft, quickLife, readSavedState, setInheritance } from './helpers';
+import { advance, editSave, nav, onlyOn, openStart, quickDraft, quickLife, readSavedState, setInheritance } from './helpers';
 import { HOMES_SHOWN } from '../src/ui/routes';
 
 // Homes And Property is set aside (the owner, November 17, 2026): these journeys wait for it to come back.
@@ -36,7 +36,7 @@ async function until(page: Page, step: 'next-day' | 'week' | 'month', max: numbe
 }
 
 test('Renting in London: costs, apply, sign, move in, furnish, rent, a repair, notice, move out and the deposit back', async ({ page }, info) => {
-  test.skip(!['desktop', 'phone'].includes(info.project.name), 'Desktop and phone.');
+  test.skip(!onlyOn(info, ['desktop', 'phone']), 'Desktop and phone.');
   test.setTimeout(600_000); // a year's tenancy, advanced a month at a time
   await quickLife(page, 'gb-london', '2026-03-02');
   // Home has Homes And Property beside Your Bank and Your Papers, and the rail has it under You.
@@ -174,7 +174,7 @@ async function firstOffer(page: Page, want: 'Buy A Home' | 'Buy Land To Build On
 }
 
 test('Buying in Los Angeles: a mortgage, an inspection, completion, a new exterior, a sale and its settlement', async ({ page }, info) => {
-  test.skip(!['desktop', 'phone'].includes(info.project.name), 'Desktop and phone.');
+  test.skip(!onlyOn(info, ['desktop', 'phone']), 'Desktop and phone.');
   test.setTimeout(600_000);
   await quickLife(page, 'us-los-angeles', '2026-03-02');
   const start = await available(page, '$');
@@ -232,7 +232,7 @@ test('Buying in Los Angeles: a mortgage, an inspection, completion, a new exteri
 });
 
 test('Land in Austin: a plot, its survey, a design revised, approval, building stage by stage, inspection and moving in', async ({ page }, info) => {
-  test.skip(!['desktop', 'phone'].includes(info.project.name), 'Desktop and phone.');
+  test.skip(!onlyOn(info, ['desktop', 'phone']), 'Desktop and phone.');
   test.setTimeout(600_000);
   await quickLife(page, 'us-austin', '2026-03-02');
   const title = await firstOffer(page, 'Buy Land To Build On');
@@ -283,7 +283,7 @@ test('Land in Austin: a plot, its survey, a design revised, approval, building s
 });
 
 test('Letting in Los Angeles: a home put right, advertised, a tenant chosen, rent collected, notice, the deposit settled', async ({ page }, info) => {
-  test.skip(!['desktop', 'phone'].includes(info.project.name), 'Desktop and phone.');
+  test.skip(!onlyOn(info, ['desktop', 'phone']), 'Desktop and phone.');
   test.setTimeout(600_000);
   await quickLife(page, 'us-los-angeles', '2026-03-02');
   const title = await firstOffer(page, 'Buy A Home');
@@ -334,7 +334,7 @@ test('Letting in Los Angeles: a home put right, advertised, a tenant chosen, ren
 });
 
 test('Not enough money: an application refused before it is made, in words, and nothing paid', async ({ page }, info) => {
-  test.skip(!['desktop', 'phone'].includes(info.project.name), 'Desktop and phone.');
+  test.skip(!onlyOn(info, ['desktop', 'phone']), 'Desktop and phone.');
   test.setTimeout(300_000);
   // Labelled fixture: the inheritance is set to $1,000 on Review, as a player can.
   await openStart(page);
@@ -357,7 +357,7 @@ test('Not enough money: an application refused before it is made, in words, and 
 });
 
 test('A lapsed approval, a refused permission, a stale favourite, a withdrawn purchase, and a save from before housing', async ({ page }, info) => {
-  test.skip(!['desktop', 'phone'].includes(info.project.name), 'Desktop and phone.');
+  test.skip(!onlyOn(info, ['desktop', 'phone']), 'Desktop and phone.');
   test.setTimeout(600_000);
   await quickLife(page, 'gb-london', '2026-03-02');
   // A save made before Homes And Property: it opens with nothing to migrate, and the page starts empty.

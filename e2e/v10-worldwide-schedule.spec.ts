@@ -3,10 +3,10 @@
 // entry deadline in both zones, and the two fall on different days; then two offers of work on the same days, the
 // second refused once the first is taken, with the reason under it. Desktop, in Chromium.
 import { expect, test } from './test';
-import { editSave, nav, newProject, quickLife, section } from './helpers';
+import { editSave, nav, newProject, onlyOn, quickLife, section } from './helpers';
 
 test('J17: a deadline read across a day boundary, and two bookings on the same days refused', async ({ page }, info) => {
-  test.skip(info.project.name !== 'desktop', 'One run, at desktop width.');
+  test.skip(!onlyOn(info, ['desktop']), 'One run, at desktop width.');
   test.setTimeout(240_000);
   await quickLife(page, 'jp-tokyo', '2026-03-02');
 

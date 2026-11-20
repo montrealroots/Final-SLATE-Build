@@ -5,7 +5,7 @@
 // Both studios are made-up fixtures, and the world seed is fixed (labelled fixture).
 import { expect, test, type Page } from './test';
 import { CATALOG_FIXTURE, serveCatalog } from './catalog-fixture';
-import { addScene, advance, castRoles, nav, pinSeed, quickLife, readSavedState, runToDelivery, saveAndExit, section, staffEveryDepartment, writePitch } from './helpers';
+import { addScene, advance, castRoles, nav, onlyOn, pinSeed, quickLife, readSavedState, runToDelivery, saveAndExit, section, staffEveryDepartment, writePitch } from './helpers';
 import { audit } from './ui-audit';
 
 test.use({ actionTimeout: 20_000 });
@@ -22,7 +22,7 @@ const noSidewaysScroll = (page: Page) => page.evaluate(() => document.documentEl
 type Release = { id: string; date: string; territories: string[]; status: string; offerId?: string; version?: string; note: string };
 
 test('J08: a horror film pitched to two studios, optioned by one for its reasons, made, opened at home and then abroad, dubbed, and the studio repaid', async ({ page }, info) => {
-  test.skip(!['desktop', 'iphone-15-pro-max'].includes(info.project.name), 'One full production, on desktop and WebKit (iPhone 15 Pro Max).');
+  test.skip(!onlyOn(info, ['desktop', 'iphone-15-pro-max']), 'One full production, on desktop and WebKit (iPhone 15 Pro Max).');
   test.setTimeout(1_500_000);
   await serveCatalog(page, {}, { 'world.json': { ...(CATALOG_FIXTURE['world.json'] as object), studios: STUDIOS } });
   await quickLife(page, 'us-los-angeles', '2026-11-12');

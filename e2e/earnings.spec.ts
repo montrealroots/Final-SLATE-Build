@@ -4,7 +4,7 @@
 // (helpers.ts pinSeed), chosen so the fund's panel backs the script and a distributor makes an offer.
 import type { Locator } from '@playwright/test';
 import { expect, test, type Page } from './test';
-import { addScene, advance, nav, newProject, pinSeed, pressSaveAndExit, produceToDelivery, quickLife, readSavedState, section, writePitch } from './helpers';
+import { addScene, advance, nav, newProject, onlyOn, pinSeed, pressSaveAndExit, produceToDelivery, quickLife, readSavedState, section, writePitch } from './helpers';
 import { audit } from './ui-audit';
 
 // Re-chosen November 16, 2026, when each kind of id got its own counter and the world's draws changed (was 3).
@@ -46,7 +46,7 @@ async function writeAndApprove(page: Page, character: string, place: string) {
 }
 
 test('your earnings: grant money stays with the film it made; the income it kept funds the next one', async ({ page }, info) => {
-  test.skip(!['desktop', 'phone'].includes(info.project.name), 'Runs on desktop and phone.');
+  test.skip(!onlyOn(info, ['desktop', 'phone']), 'Runs on desktop and phone.');
   test.setTimeout(1_500_000);
   const dev = info.project.name;
   await quickLife(page, 'gb-london', '2026-01-05');

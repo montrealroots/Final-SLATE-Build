@@ -4,7 +4,7 @@
 // 1221's (src/engine/bankworld); its rules are tests/bankworld. Desktop and phone in Chromium, and the iPhone 15 Pro
 // Max in WebKit: emulation, not a physical device.
 import { expect, test, type Page } from './test';
-import { advance, nav, quickLife } from './helpers';
+import { advance, nav, onlyOn, quickLife } from './helpers';
 
 const homeBank = (page: Page) => page.locator('section, .panel', { has: page.getByRole('heading', { name: 'Your Bank', exact: true }) }).first();
 /** Chooses the option whose words include `words`: an account's name, with its number and balance after it. */
@@ -19,7 +19,7 @@ const openBank = async (page: Page) => {
 };
 
 test('Home to Your Bank: savings opened, money moved, a second bank applied for and decided, the statement, and Home again', async ({ page }, info) => {
-  test.skip(!['desktop', 'phone', 'iphone-15-pro-max'].includes(info.project.name), 'Desktop, phone and the iPhone 15 Pro Max (WebKit).');
+  test.skip(!onlyOn(info, ['desktop', 'phone', 'iphone-15-pro-max']), 'Desktop, phone and the iPhone 15 Pro Max (WebKit).');
   test.setTimeout(240_000);
   await quickLife(page, 'us-los-angeles', '2028-01-26');
   // Home reads the journal: what is available, pending and owed, apart.

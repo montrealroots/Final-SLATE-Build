@@ -1,9 +1,9 @@
 import { expect, test } from './test';
 import { audit } from './a11y';
-import { nav, quickLife } from './helpers';
+import { nav, onlyOn, quickLife } from './helpers';
 
 // Automated accessibility checks on every main screen. They don't replace a screen-reader pass by a person.
-test.beforeEach(({}, info) => test.skip(!['desktop', 'phone'].includes(info.project.name), 'Runs on desktop and phone.'));
+test.beforeEach(({}, info) => test.skip(!onlyOn(info, ['desktop', 'phone']), 'Runs on desktop and phone.'));
 
 const SCREENS = ['Home', 'Calendar', 'World', 'Projects', 'Profile', 'Saved Games', 'Settings'] as const;
 

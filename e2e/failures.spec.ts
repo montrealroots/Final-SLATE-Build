@@ -1,11 +1,11 @@
 import { expect, expectErrors, sweepSees, test } from './test';
 import { readFileSync } from 'node:fs';
 import { hashString } from '../src/engine/rng';
-import { advance, nav, openStart, pressSaveAndExit, quickLife, saveAndExit } from './helpers';
+import { advance, nav, onlyOn, openStart, pressSaveAndExit, quickLife, saveAndExit } from './helpers';
 import { firstSaveId, listRecords, readRecord, refuseSaveWrites, writeRecords } from './vault';
 
 // Failure paths through the real UI (Gap Completion Package, M7). Desktop and phone.
-test.beforeEach(({}, info) => test.skip(!['desktop', 'phone'].includes(info.project.name), 'Runs on desktop and phone.'));
+test.beforeEach(({}, info) => test.skip(!onlyOn(info, ['desktop', 'phone']), 'Runs on desktop and phone.'));
 
 test('a failed save says so, keeps you in the game, and Try Again saves once storage works', async ({ page }) => {
   await quickLife(page, 'gb-london', '2026-03-02');

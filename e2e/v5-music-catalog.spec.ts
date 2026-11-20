@@ -3,13 +3,13 @@
 // the Crew page under the one identity the save keeps for them. The catalog is Wikidata's (CC0); nothing is written into
 // the save.
 import { expect, test, type Page } from './test';
-import { addScene, advance, castRoles, creditsTable, nav, newProject, pinSeed, quickLife, readSavedState, runToDelivery, saveAndApprove, section, staffEveryDepartment } from './helpers';
+import { addScene, advance, castRoles, creditsTable, nav, newProject, onlyOn, pinSeed, quickLife, readSavedState, runToDelivery, saveAndApprove, section, staffEveryDepartment } from './helpers';
 
 test.use({ actionTimeout: 20_000 });
 const card = (page: Page, heading: string) => page.locator('section.card', { has: page.getByRole('heading', { name: heading, exact: true }) });
 
 test('real music: a recording licensed with its record, a composer considered under one identity', async ({ page }, info) => {
-  test.skip(!['desktop', 'phone', 'iphone-15-pro-max'].includes(info.project.name), 'Desktop, phone and the iPhone 15 Pro Max (WebKit).');
+  test.skip(!onlyOn(info, ['desktop', 'phone', 'iphone-15-pro-max']), 'Desktop, phone and the iPhone 15 Pro Max (WebKit).');
   await quickLife(page, 'gb-london', '2026-03-02');
   await nav(page, 'Projects');
   await newProject(page, { title: 'Harbour Lights', format: 'Short Film', runtime: '6', budget: 'Low Budget' });
@@ -54,7 +54,7 @@ test('real music: a recording licensed with its record, a composer considered un
 });
 
 test('a real composer: considered from the music catalog, offered the job, hired, scores the film, and is credited', async ({ page }, info) => {
-  test.skip(info.project.name !== 'desktop', 'A whole production, once, at desktop width.');
+  test.skip(!onlyOn(info, ['desktop']), 'A whole production, once, at desktop width.');
   test.setTimeout(900_000);
   await quickLife(page, 'gb-london', '2026-03-02');
   await pinSeed(page, 7);

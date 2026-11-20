@@ -1,10 +1,10 @@
 import { expect, sweepSees, test, type Page } from './test';
-import { advance, nav, quickLife, saveAndExit } from './helpers';
+import { advance, nav, onlyOn, quickLife, saveAndExit } from './helpers';
 import { clearStorage, firstSaveId, listRecords, readRecord, refuseSaveWrites, writeRecords } from './vault';
 
 // Saves live in IndexedDB (src/ui/idb.ts); these journeys cover full storage, recovery copies, and moving saves out of
 // localStorage, where earlier versions kept them. Desktop and phone.
-test.beforeEach(({}, info) => test.skip(!['desktop', 'phone'].includes(info.project.name), 'Runs on desktop and phone.'));
+test.beforeEach(({}, info) => test.skip(!onlyOn(info, ['desktop', 'phone']), 'Runs on desktop and phone.'));
 
 async function continueGame(page: Page) {
   await page.reload();
@@ -93,7 +93,7 @@ test('saves an earlier version left in localStorage move to IndexedDB once, veri
 });
 
 test('two tabs opening at once move the saves once, without conflict copies', async ({ page, context }, info) => {
-  test.skip(info.project.name !== 'desktop', 'Two tabs are checked once.');
+  test.skip(!onlyOn(info, ['desktop']), 'Two tabs are checked once.');
   const { records } = await legacySaves(page);
   const second = await context.newPage();
   await Promise.all([page.reload(), second.goto('/')]);

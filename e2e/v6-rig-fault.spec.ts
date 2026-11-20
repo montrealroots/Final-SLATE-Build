@@ -3,10 +3,10 @@
 // delivered. The engine's rules are tests/rig-fault.test.ts. The world seed is pinned so the fault falls on the same day
 // each run (a labelled fixture; the fault is the world's, about 3% of animation days).
 import { expect, test, type Page } from './test';
-import { addScene, advance, approveDesigns, castRoles, nav, newProject, pinSeed, quickLife, readSavedState, runToDelivery, saveAndApprove, section, staffEveryDepartment } from './helpers';
+import { addScene, advance, approveDesigns, castRoles, nav, newProject, onlyOn, pinSeed, quickLife, readSavedState, runToDelivery, saveAndApprove, section, staffEveryDepartment } from './helpers';
 
 test.describe.configure({ timeout: Number(process.env.SLATE_JOURNEY_TIMEOUT) || 900_000 });
-test.beforeEach(({}, info) => test.skip(info.project.name !== 'desktop', 'Full media journeys run once, at desktop width.'));
+test.beforeEach(({}, info) => test.skip(!onlyOn(info, ['desktop']), 'Full media journeys run once, at desktop width.'));
 
 const progress = (page: Page) => page.locator('section.card', { has: page.getByRole('heading', { name: 'Progress', exact: true }) });
 const FORECAST = /At today's pace, the work left finishes around \w+day, (\w+ \d+, \d{4}), (\d+) working days? away\./;

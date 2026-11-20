@@ -32,5 +32,9 @@ export default defineConfig({
     { name: 'iphone-15-plus', testMatch: /(ui-coverage|live-action|devices|creation|focus|season|career|awards|readers|title-input)\.spec\.ts/, use: { ...devices['iPhone 15 Plus'], ...webkitLaunch } },
     { name: 'iphone-15-pro-max', testMatch: /(ui-coverage|live-action|devices|creation|focus|phone-layout|connected|title-input|journey-e|decisions|catalog|children|foundation|data-packs|creative-ideas|real-people|craft|destinations|layout|stories|characters|picture-library|sources|studio-pitch|casting-director|line-producer|representation|v5-first-look|v5-release-plan|v5-music-catalog|v5-money-equipment|v6-history|v6-first-look-tv|v9-bank|v9-project-money|v9-papers)\.spec\.ts/, use: { ...devices['iPhone 15 Pro Max'], ...webkitLaunch } },
     { name: 'iphone-15-pro-max-landscape', testMatch: /(devices|phone-layout)\.spec\.ts/, use: { ...devices['iPhone 15 Pro Max landscape'], ...webkitLaunch } },
+    // Every journey on WebKit (iPhone 15 Pro Max emulation), with no list of files: SLATE_E2E_WEBKIT_ALL=1 adds it (from
+    // November 20, 2026; e2e/helpers.ts onlyOn lets a desktop-only journey run here too). Opt-in, as a whole run takes
+    // hours. Still emulation: not Safari on a Mac and not a physical iPhone, which are reported apart (JOURNEY-REPORT.md).
+    ...(process.env.SLATE_E2E_WEBKIT_ALL === '1' ? [{ name: 'iphone-webkit-all', use: { ...devices['iPhone 15 Pro Max'], ...webkitLaunch } }] : []),
   ],
 });

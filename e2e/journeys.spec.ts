@@ -1,9 +1,9 @@
 import { expect, sweepSees, test, type Page } from './test';
-import { addScene, advance, approveDesigns, castRoles, creditsTable, nav, produceToDelivery, quickLife, readSavedState, runToDelivery, saveAndApprove, section, saveAndExit, seededLife, newProject, staffEveryDepartment } from './helpers';
+import { addScene, advance, approveDesigns, castRoles, creditsTable, nav, newProject, onlyOn, produceToDelivery, quickLife, readSavedState, runToDelivery, saveAndApprove, saveAndExit, section, seededLife, staffEveryDepartment } from './helpers';
 import { firstSaveId, readRecord, writeRecords } from './vault';
 
 test.describe.configure({ timeout: Number(process.env.SLATE_JOURNEY_TIMEOUT) || 900_000 });
-test.beforeEach(({}, info) => test.skip(info.project.name !== 'desktop', 'Full media journeys run once, at desktop width.'));
+test.beforeEach(({}, info) => test.skip(!onlyOn(info, ['desktop']), 'Full media journeys run once, at desktop width.'));
 
 async function addCharacters(page: Page, names: string[]): Promise<void> {
   await section(page, 'Characters');

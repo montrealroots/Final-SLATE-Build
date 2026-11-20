@@ -2,7 +2,7 @@
 // the Profile in the studio's own words, then taken, its days on your work. Labelled fixture: the offer is written into
 // the save as studioProjectOffer makes it (tests/studio-projects.test.ts makes it from a record), from a made-up studio.
 import { expect, test, type Page } from './test';
-import { editSave, nav, quickLife } from './helpers';
+import { editSave, nav, onlyOn, quickLife } from './helpers';
 
 const STUDIO = 'Overdrive Pictures (Fixture)';
 const card = (page: Page, heading: string) => page.locator('section.card', { has: page.getByRole('heading', { name: heading, exact: true }) });
@@ -13,7 +13,7 @@ const weekdays = (from: string, n: number): string[] => {
 };
 
 test('a studio asks you to direct the next film in its franchise: said in its words, taken, its days on your work', async ({ page }, info) => {
-  test.skip(!['desktop', 'phone'].includes(info.project.name), 'Desktop and phone.');
+  test.skip(!onlyOn(info, ['desktop', 'phone']), 'Desktop and phone.');
   test.setTimeout(300_000);
   await quickLife(page, 'us-los-angeles', '2026-11-12');
   await editSave(page, (s) => {
@@ -42,7 +42,7 @@ test('a studio asks you to direct the next film in its franchise: said in its wo
 // with each picture's fee, and taken like any offer. Labelled fixture, as above: the offer is written as studioProjectOffer
 // makes it (tests/studio-projects.test.ts "multi-picture deals").
 test('a studio you made a picture for offers a two-picture deal, said with both fees, and taken', async ({ page }, info) => {
-  test.skip(!['desktop', 'phone'].includes(info.project.name), 'Desktop and phone.');
+  test.skip(!onlyOn(info, ['desktop', 'phone']), 'Desktop and phone.');
   test.setTimeout(300_000);
   await quickLife(page, 'us-los-angeles', '2026-11-12');
   await editSave(page, (s) => {
@@ -67,7 +67,7 @@ test('a studio you made a picture for offers a two-picture deal, said with both 
 // you made, under the title the studio releases it as; and the picture's own page. Labelled fixture: the studio's profile and the finished picture
 // are written into the save as the build (tools/screen-catalog/franchises.mjs) and the engine (jobs.ts) write them.
 test("a studio's franchise on its page: its recorded films, then the picture you made, titled and dated", async ({ page }, info) => {
-  test.skip(!['desktop', 'phone'].includes(info.project.name), 'Desktop and phone.');
+  test.skip(!onlyOn(info, ['desktop', 'phone']), 'Desktop and phone.');
   test.setTimeout(300_000);
   await quickLife(page, 'jp-tokyo', '2026-11-12');
   await editSave(page, (s) => {

@@ -4,10 +4,10 @@
 // everything built on it.
 // Then the short is finished and delivered. The engine's rule is tests/animatic-revision.test.ts.
 import { expect, test, type Page } from './test';
-import { addScene, advance, approveDesigns, castRoles, newProject, quickLife, readSavedState, runToDelivery, saveAndApprove, section, staffEveryDepartment } from './helpers';
+import { addScene, advance, approveDesigns, castRoles, newProject, onlyOn, quickLife, readSavedState, runToDelivery, saveAndApprove, section, staffEveryDepartment } from './helpers';
 
 test.describe.configure({ timeout: Number(process.env.SLATE_JOURNEY_TIMEOUT) || 900_000 });
-test.beforeEach(({}, info) => test.skip(info.project.name !== 'desktop', 'Full media journeys run once, at desktop width.'));
+test.beforeEach(({}, info) => test.skip(!onlyOn(info, ['desktop']), 'Full media journeys run once, at desktop width.'));
 
 type T = { id: string; kind: string; label: string; done: number; workedDays: number; status: string };
 const tasks = async (page: Page): Promise<T[]> => (await readSavedState(page)).projects[0].tasks;

@@ -2,10 +2,10 @@
 // reservation, capture and repair; compare distinct choices"; ledger V4-038.05). The world seed is pinned (a labelled
 // fixture) so a puppet is damaged during the stage weeks; the damage and the repair are the engine's.
 import { expect, test } from './test';
-import { addScene, nav, newProject, produceToDelivery, readSavedState, saveAndApprove, section, seededLife } from './helpers';
+import { addScene, nav, newProject, onlyOn, produceToDelivery, readSavedState, saveAndApprove, section, seededLife } from './helpers';
 
 test('J05: a puppet\'s face chosen two ways and compared on the estimate, then made, staged, shot, damaged, repaired and delivered', async ({ page }, info) => {
-  test.skip(info.project.name !== 'desktop', 'One whole career run, at desktop width.');
+  test.skip(!onlyOn(info, ['desktop']), 'One whole career run, at desktop width.');
   test.setTimeout(600_000);
   await seededLife(page, 'gb-london', '2026-01-05', 2);
   await nav(page, 'Projects');

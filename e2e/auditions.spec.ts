@@ -2,12 +2,12 @@
 // part, their reads compared side by side, one shortlisted and called back to read with the player, who is cast in the
 // other part, and an offer made from the comparison (SLATE-09-02). The world seed is fixed (labelled fixture).
 import { expect, test } from './test';
-import { addScene, advance, newProject, saveAndApprove, section, seededLife } from './helpers';
+import { addScene, advance, newProject, onlyOn, saveAndApprove, section, seededLife } from './helpers';
 
 test.use({ actionTimeout: 20_000 });
 
 test('auditions: invited, read, compared, shortlisted, called back with a chemistry read, then offered the part', async ({ page }, info) => {
-  test.skip(!['desktop', 'phone'].includes(info.project.name), 'Runs at desktop and phone width.');
+  test.skip(!onlyOn(info, ['desktop', 'phone']), 'Runs at desktop and phone width.');
   await seededLife(page, 'gb-london', '2026-01-05', 11);
   await newProject(page, { title: 'Night Ferry', format: 'Short Film', runtime: '10', budget: 'Low Budget' });
   await section(page, 'Characters');

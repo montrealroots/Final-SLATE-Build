@@ -6,6 +6,28 @@ Read this first. It lists what is finished, what the Gap Completion Package stil
 
 At every stopping point, open a pull request into `main` and merge it (see `CLAUDE.md`, certified by the user on November 6, 2026). Never merge red checks.
 
+## The Research Recovery Package (The Owner, November 20, 2026)
+
+The owner's package `SLATE-Research-Recovery-2026-11-19` is applied as targeted gap completion. It is kept in `docs/recovery/package/`, and its validator passes. What it changed and what remains:
+- **Awards (merged first, commit `d2155a0`).** 228 results from twelve editions; `docs/recovery/MAPPING.md` has the mapping and the unplaced categories.
+  - Read again at their sources where possible: SXSW, IDFA, the 39th European Film Awards' nominations, and the International Emmys' and Gothams' nominations.
+  - BAFTA comes from the package's reading.
+  - A new status, `reported`, holds the secondary and undated ones (Locarno, TIFF, Blue Dragon, the 38th European Film Awards). The game shows them as reported, never as confirmed.
+  - BAFTA Television Craft is held as its own ceremony.
+- **Papers.** Route-scoped fees (`docs/recovery/PAPERS.md`).
+  - 10 of the 45 records apply, by where the applicant lives, their passport and the date. 35 are held, each with its reason: conflicts, undated schedules, unconfirmed commencement, other routes.
+  - Colombia's study fee is paid on applying and its issuance fee only on issue, once.
+  - Botswana's decision counts working days.
+  - None of the 322 gap rows is closed, and the 106 visa and 170 permit estimates stand.
+- **Freshness.** Season titles and people come from `src/engine/world-cast.ts`.
+  - No title comes back in a later season for 164 seasons, from 2020.
+  - People form a lasting pool: 60 debut a year, each with one name for good and a career that rises and fades.
+  - Before this, by 2036 about 60% of a season's titles had been used before, and from 2029 nearly every credit named a stranger who shared a name.
+  - `tests/world-cast.test.ts` holds it over 100 seasons.
+- **Box office.** `docs/recovery/BOX-OFFICE.md`. The contract a licensed dataset would come in through is built and tested on a synthetic fixture. No dataset is installed, and J01/J21 stay parked.
+- **Browser coverage.** Every journey's project list now goes through `e2e/helpers.ts onlyOn`, and `SLATE_E2E_WEBKIT_ALL=1` adds `iphone-webkit-all`, which runs every journey on WebKit. `JOURNEY-REPORT.md` has what ran.
+- **J02 in one save.** `e2e/j02-one-save.spec.ts` runs a real work and a real catalog performer through to Sundance in one save. It runs only where the real catalog is installed.
+
 ## Parked, Not Done (The Owner, November 17, 2026)
 
 The owner set these aside for now, to start something new. They are **not done**; nothing here may be reported as

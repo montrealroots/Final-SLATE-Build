@@ -3,7 +3,7 @@
 // winners, and a reload shows each result once. The results are the organizers' own, read for this game
 // (src/data/history/awards-2026.json); nothing of them is written into the save.
 import { expect, test, type Page } from './test';
-import { advance, nav, quickLife, readSavedState } from './helpers';
+import { advance, nav, onlyOn, quickLife, readSavedState } from './helpers';
 
 test.use({ actionTimeout: 20_000 });
 /** An edition still to come is in the Calendar's list; one that has happened is on its day. */
@@ -32,7 +32,7 @@ async function weeksTo(page: Page, day: string): Promise<void> {
 }
 
 test('J01: recorded award results appear only once announced, the nominees before the winners, and once each after a reload', async ({ page }, info) => {
-  test.skip(!['desktop', 'phone', 'iphone-15-pro-max'].includes(info.project.name), 'Desktop, phone and the iPhone 15 Pro Max (WebKit).');
+  test.skip(!onlyOn(info, ['desktop', 'phone', 'iphone-15-pro-max']), 'Desktop, phone and the iPhone 15 Pro Max (WebKit).');
   test.setTimeout(600_000);
   await quickLife(page, 'us-los-angeles', '2026-01-01');
 

@@ -5,7 +5,7 @@
 import { expect, test, type Page } from './test';
 import { hashString } from '../src/engine/rng';
 import { serveCatalog } from './catalog-fixture';
-import { advance, anotherLife, nav, newProject, pressSaveAndExit, quickLife, readSavedState, saveAndExit, section } from './helpers';
+import { advance, anotherLife, nav, newProject, onlyOn, pressSaveAndExit, quickLife, readSavedState, saveAndExit, section } from './helpers';
 import { firstSaveId, listRecords, readRecord, writeRecords } from './vault';
 
 type State = Record<string, any>; // eslint-disable-line @typescript-eslint/no-explicit-any
@@ -14,7 +14,7 @@ const long = (key: string) => new Date(`${key}T12:00:00Z`).toLocaleDateString('e
 const SERIES = 'tv:900201';
 
 test.beforeEach(({}, info) => {
-  test.skip(!['desktop', 'phone', 'iphone-15-pro-max'].includes(info.project.name), 'Runs on desktop, phone and WebKit (iPhone 15 Pro Max).');
+  test.skip(!onlyOn(info, ['desktop', 'phone', 'iphone-15-pro-max']), 'Runs on desktop, phone and WebKit (iPhone 15 Pro Max).');
 });
 
 /** A save begun before the records end (November 10), played on until its world has decided Coastline's future. */

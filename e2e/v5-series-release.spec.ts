@@ -2,7 +2,7 @@
 // adapted from a work, made and delivered, then released through the digital stores on a Release Plan, episode by
 // episode, a different route from the film's (v5-release-plan.spec). The world seed is pinned (a labelled fixture).
 import { expect, test, type Page } from './test';
-import { adaptWork, addScene, advance, castRoles, nav, pinSeed, quickLife, readSavedState, runToDelivery, saveAndApprove, section, staffEveryDepartment } from './helpers';
+import { adaptWork, addScene, advance, castRoles, nav, onlyOn, pinSeed, quickLife, readSavedState, runToDelivery, saveAndApprove, section, staffEveryDepartment } from './helpers';
 
 test.use({ actionTimeout: 20_000 });
 const card = (page: Page, heading: string) => page.locator('section.card', { has: page.getByRole('heading', { name: heading, exact: true }) });
@@ -11,7 +11,7 @@ const project = async (page: Page): Promise<any> => (await readSavedState(page))
 const day = (t: number, n: number) => new Date(t + n * 86_400_000).toISOString().slice(0, 10);
 
 test('a series released through the stores on its plan, an episode a week: a route of its own', async ({ page }, info) => {
-  test.skip(info.project.name !== 'desktop', 'A whole series, once, at desktop width.');
+  test.skip(!onlyOn(info, ['desktop']), 'A whole series, once, at desktop width.');
   test.setTimeout(1_200_000);
   await quickLife(page, 'gb-london', '2026-01-05');
   await pinSeed(page, 2);

@@ -3,7 +3,7 @@
 // camera goes on a dolly; and each of those shows up as work, crew or cost, survives a reload, and the film is delivered.
 // The world seed is fixed (labelled fixture).
 import { expect, test, type Page } from './test';
-import { addScene, advance, nav, newProject, produceToDelivery, readSavedState, saveAndApprove, saveAndExit, section, seededLife } from './helpers';
+import { addScene, advance, nav, newProject, onlyOn, produceToDelivery, readSavedState, saveAndApprove, saveAndExit, section, seededLife } from './helpers';
 
 test.use({ actionTimeout: 20_000 });
 
@@ -11,7 +11,7 @@ const card = (page: Page, heading: string) => page.locator('section.card', { has
 const noSidewaysScroll = (page: Page) => page.evaluate(() => document.documentElement.scrollWidth <= document.documentElement.clientWidth + 1);
 
 test('a route through the genre, named looks and a dolly: chosen, shown as work, kept across a reload, and delivered', async ({ page }, info) => {
-  test.skip(!['desktop', 'phone', 'iphone-15-pro-max'].includes(info.project.name), 'Runs on desktop, phone and WebKit (iPhone 15 Pro Max).');
+  test.skip(!onlyOn(info, ['desktop', 'phone', 'iphone-15-pro-max']), 'Runs on desktop, phone and WebKit (iPhone 15 Pro Max).');
   test.setTimeout(1_200_000);
   await seededLife(page, 'gb-london', '2026-01-05', 11);
   await newProject(page, { title: 'Till Morning', format: 'Short Film', runtime: '10', budget: 'Low Budget' });

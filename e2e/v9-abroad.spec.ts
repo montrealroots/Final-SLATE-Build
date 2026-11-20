@@ -4,7 +4,7 @@
 // British account (now held from abroad) beside the one the move opens in New York, and the money form says what the payment costs
 // and when it lands before Move It. Desktop and phone in Chromium.
 import { expect, test, type Page } from './test';
-import { nav, openStart } from './helpers';
+import { nav, onlyOn, openStart } from './helpers';
 
 /** Chooses the option whose words include `words`: an account's name, with its number and balance after it. */
 const pick = async (select: ReturnType<Page['locator']>, words: string | RegExp) => {
@@ -18,7 +18,7 @@ const openBank = async (page: Page) => {
 };
 
 test('A payment abroad, between a London account and a New York one, is quoted before it is sent', async ({ page }, info) => {
-  test.skip(!['desktop', 'phone'].includes(info.project.name), 'Desktop and phone.');
+  test.skip(!onlyOn(info, ['desktop', 'phone']), 'Desktop and phone.');
   test.setTimeout(300_000);
   await openStart(page);
   await page.evaluate(() => {
