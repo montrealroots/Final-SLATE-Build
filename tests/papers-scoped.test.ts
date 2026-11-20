@@ -52,7 +52,7 @@ describe('route-scoped fees', () => {
     expect(unsettled.every((r) => !r.applies && r.held)).toBe(true);
     // Every record is either applied or held with a reason; none is silently dropped.
     expect(ROUTE_RECORDS.every((r) => !!r.applies !== !!r.held)).toBe(true);
-    expect(ROUTE_RECORDS).toHaveLength(52);
+    expect(ROUTE_RECORDS).toHaveLength(79);
     // Serbia's long-stay route doesn't stand in for its work permit.
     expect(scopedRecords('RS', 'permit', { livesIn: 'US', passports: ['IN'], today: '2026-06-01' })).toEqual({ application: undefined, issuance: undefined });
   });
@@ -85,6 +85,21 @@ describe('route-scoped fees', () => {
     expect(bw('US').estimate?.only).toBe('days');
     expect(bw('GB')).toEqual(visaTerms('BW'));
     expect(permitTerms('TC', 'Work permit (Employed)')).toMatchObject({ fee: { amount: 270, currency: 'USD' }, issuance: { amount: 2700, currency: 'USD' }, days: 20, daysText: 'between 15 and 25 days', estimate: null });
+  });
+
+  // Batch 16 (November 20, 2026): Jamaica prices its visa by nationality (the High Commission's list of March 30, 2023).
+  it('charges Jamaica\'s visa by nationality, free where the list says gratis, and never before the list', () => {
+    const at = (p: string, today = '2026-11-20') => withScope(visaTerms('JM'), 'JM', 'visa', { livesIn: 'GB', passports: [p], today });
+    expect(at('IR').fee).toEqual({ amount: 3.5, currency: 'USD' });
+    expect(at('KZ').fee).toEqual({ amount: 100, currency: 'USD' });
+    expect(at('KY').fee).toEqual({ amount: 102.4, currency: 'USD' });
+    expect(at('CU').fee).toEqual({ amount: 35, currency: 'USD' });
+    expect(at('PK').fee).toEqual({ amount: 0, currency: 'USD' });
+    expect(at('IR').estimate?.only).toBe('days');
+    expect(at('IR', '2023-01-01')).toEqual(visaTerms('JM'));
+    // Every passport is in one fee at most.
+    const jm = ROUTE_RECORDS.filter((r) => r.id.startsWith('jm-visa-')).flatMap((r) => r.applies!.when.passport!);
+    expect(new Set(jm).size).toBe(jm.length);
   });
 
   // From November 20, 2026 (Nepal Tourism Board): some passports get no visa on arrival in Nepal and apply at a mission

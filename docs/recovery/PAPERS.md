@@ -34,13 +34,14 @@ That makes 10 records applied and 35 held. A test fails if any conflicting, unda
 
 ## Records Added After The Package
 
-Two records, from the Nepal Tourism Board's tourist-visa page (read November 20, 2026), brought the total to 47, two for Trinidad and Tobago's missions to 49, two for Grenada's permit fee tiers to 51, and one for Botswana's Washington embassy to 52: 17 applied and 35 held.
+Two records, from the Nepal Tourism Board's tourist-visa page (read November 20, 2026), brought the total to 47, two for Trinidad and Tobago's missions to 49, two for Grenada's permit fee tiers to 51, one for Botswana's Washington embassy to 52, and 27 for Jamaica's visa fees by nationality to 79: 44 applied and 35 held.
 
 - **Nepal, passports with no visa on arrival.** Nigeria, Ghana, Zimbabwe, Eswatini, Cameroon, Somalia, Liberia, Ethiopia, Iraq, Palestine, Afghanistan, Iran and Syria apply at a Nepalese mission first. They pay the Department of Immigration's US$30; no mission's own price was checked. No source gives a mission's decision time, so it is the game's estimate and is said to be one (`daysEstimated` in `route-evidence.json`). Until then they were given the arrival desk's one day.
 - **Nepal, Chinese nationals.** The visa is free. A passport on the mission list as well pays the mission's fee.
 - **Trinidad and Tobago, by mission.** US$85 at the Washington embassy for applicants who live in the United States (multiple entry, 10 to 14 business days: the game takes 12 working days); CAD 160 at the Canadian missions for applicants who live in Canada, from September 10, 2025, with the decision time still estimated.
 - **Grenada, by nationality.** The permit's fee is paid only once it's approved: XCD 1,000 a year for nine Caribbean nationalities, XCD 3,000 for other Commonwealth citizens, North Americans, Britons and EU nationals, and XCD 5,000 for everyone else (the country's terms). The XCD 100 application fee is everyone's.
 - **Botswana, Washington embassy.** US$30 for a single-entry visitor visa of up to three months, for applicants who live in the United States; the decision time stays estimated.
+- **Jamaica, by nationality.** The High Commission in Ottawa lists each nationality's visa fee (March 30, 2023): 96 of the 97 passports the game asks a visa of are priced, from free (Honduras, Pakistan, Sri Lanka) to US$102.40 (the Cayman Islands); the decision time stays estimated.
 - **Not applied.** The board's free visa for SAARC citizens covers only the first visit of a visa year, which the game doesn't count. Its free visa for children under 10 can't apply, since a story starts at 19.
 
 ## The Gap Ledger

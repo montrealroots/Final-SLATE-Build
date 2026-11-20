@@ -280,3 +280,15 @@ Batch 15 (November 20, 2026, night): leads only; nothing recorded.
   category, type and period without giving it. A decision time alone can't be recorded.
 - Iraq's e-visa: the portal gives 30 days, single or multiple entry, without the fee.
 - Pakistan's visa: priced by nationality; the Washington embassy's page answered 503.
+
+Batch 16 (November 20, 2026, night): Jamaica's visa by nationality.
+- The Jamaican High Commission in Ottawa lists the countries whose citizens need a visa and each one's fee, in US
+  dollars (posted March 30, 2023). Read from the page's own text, not a summary of it, and split into one row per
+  nationality by a script; seven fees were checked by hand against the text. 96 of the 97 passports the game asks a
+  Jamaican visa of now pay the list's fee (27 records in `route-evidence.json`, one per amount), from free (Honduras,
+  Pakistan, Sri Lanka) to US$102.40 (the Cayman Islands). Cuba's US$35 is the list's "Others" beside its diplomatic
+  passports. The list gives no decision time, so it stays the game's estimate, and before March 30, 2023 the estimate
+  stands.
+- Not applied: the list's "Sudan (Republic of South)" names neither Sudan nor South Sudan clearly. The Maldives and
+  Montserrat are listed as needing no visa, while the game's visiting rules ask one of them; the rules aren't changed
+  here. Whether the 2023 list has changed since wasn't found.

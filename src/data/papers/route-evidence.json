@@ -1482,6 +1482,885 @@
      ]
     }
    }
+  },
+  {
+   "id": "jm-visa-usd-0",
+   "country": "JM",
+   "route": "Visa for Jamaica",
+   "amount": 0,
+   "currency": "USD",
+   "component": "application",
+   "scope": "Nationals of 3 countries charged US$0.00",
+   "evidence": "official_fee_scoped",
+   "from": "2023-03-30",
+   "through": null,
+   "days": null,
+   "dayUnit": null,
+   "note": "Jamaica prices its visa by nationality. The list is the High Commission's of March 30, 2023, read as the schedule for every mission; whether it has changed since wasn't found. It gives no decision time, so that stays the game's estimate. The list gives it free (GRATIS or US$0.00).",
+   "source": {
+    "url": "https://missions.mfaft.gov.jm/jhcottawa/fees-2/",
+    "access": "retrieved",
+    "retrieved": "2026-11-20",
+    "note": "Jamaican High Commission, Ottawa, Fees: the list of countries whose citizens need a visa for Jamaica and each one's fee (posted March 30, 2023)."
+   },
+   "applies": {
+    "kind": "visa",
+    "component": "application",
+    "when": {
+     "passport": [
+      "HN",
+      "LK",
+      "PK"
+     ]
+    }
+   }
+  },
+  {
+   "id": "jm-visa-usd-3_5",
+   "country": "JM",
+   "route": "Visa for Jamaica",
+   "amount": 3.5,
+   "currency": "USD",
+   "component": "application",
+   "scope": "Nationals of 2 countries charged US$3.50",
+   "evidence": "official_fee_scoped",
+   "from": "2023-03-30",
+   "through": null,
+   "days": null,
+   "dayUnit": null,
+   "note": "Jamaica prices its visa by nationality. The list is the High Commission's of March 30, 2023, read as the schedule for every mission; whether it has changed since wasn't found. It gives no decision time, so that stays the game's estimate.",
+   "source": {
+    "url": "https://missions.mfaft.gov.jm/jhcottawa/fees-2/",
+    "access": "retrieved",
+    "retrieved": "2026-11-20",
+    "note": "Jamaican High Commission, Ottawa, Fees: the list of countries whose citizens need a visa for Jamaica and each one's fee (posted March 30, 2023)."
+   },
+   "applies": {
+    "kind": "visa",
+    "component": "application",
+    "when": {
+     "passport": [
+      "IQ",
+      "IR"
+     ]
+    }
+   }
+  },
+  {
+   "id": "jm-visa-usd-6",
+   "country": "JM",
+   "route": "Visa for Jamaica",
+   "amount": 6,
+   "currency": "USD",
+   "component": "application",
+   "scope": "Nationals of 1 countries charged US$6.00",
+   "evidence": "official_fee_scoped",
+   "from": "2023-03-30",
+   "through": null,
+   "days": null,
+   "dayUnit": null,
+   "note": "Jamaica prices its visa by nationality. The list is the High Commission's of March 30, 2023, read as the schedule for every mission; whether it has changed since wasn't found. It gives no decision time, so that stays the game's estimate.",
+   "source": {
+    "url": "https://missions.mfaft.gov.jm/jhcottawa/fees-2/",
+    "access": "retrieved",
+    "retrieved": "2026-11-20",
+    "note": "Jamaican High Commission, Ottawa, Fees: the list of countries whose citizens need a visa for Jamaica and each one's fee (posted March 30, 2023)."
+   },
+   "applies": {
+    "kind": "visa",
+    "component": "application",
+    "when": {
+     "passport": [
+      "TD"
+     ]
+    }
+   }
+  },
+  {
+   "id": "jm-visa-usd-7",
+   "country": "JM",
+   "route": "Visa for Jamaica",
+   "amount": 7,
+   "currency": "USD",
+   "component": "application",
+   "scope": "Nationals of 2 countries charged US$7.00",
+   "evidence": "official_fee_scoped",
+   "from": "2023-03-30",
+   "through": null,
+   "days": null,
+   "dayUnit": null,
+   "note": "Jamaica prices its visa by nationality. The list is the High Commission's of March 30, 2023, read as the schedule for every mission; whether it has changed since wasn't found. It gives no decision time, so that stays the game's estimate.",
+   "source": {
+    "url": "https://missions.mfaft.gov.jm/jhcottawa/fees-2/",
+    "access": "retrieved",
+    "retrieved": "2026-11-20",
+    "note": "Jamaican High Commission, Ottawa, Fees: the list of countries whose citizens need a visa for Jamaica and each one's fee (posted March 30, 2023)."
+   },
+   "applies": {
+    "kind": "visa",
+    "component": "application",
+    "when": {
+     "passport": [
+      "AE",
+      "LY"
+     ]
+    }
+   }
+  },
+  {
+   "id": "jm-visa-usd-9",
+   "country": "JM",
+   "route": "Visa for Jamaica",
+   "amount": 9,
+   "currency": "USD",
+   "component": "application",
+   "scope": "Nationals of 1 countries charged US$9.00",
+   "evidence": "official_fee_scoped",
+   "from": "2023-03-30",
+   "through": null,
+   "days": null,
+   "dayUnit": null,
+   "note": "Jamaica prices its visa by nationality. The list is the High Commission's of March 30, 2023, read as the schedule for every mission; whether it has changed since wasn't found. It gives no decision time, so that stays the game's estimate.",
+   "source": {
+    "url": "https://missions.mfaft.gov.jm/jhcottawa/fees-2/",
+    "access": "retrieved",
+    "retrieved": "2026-11-20",
+    "note": "Jamaican High Commission, Ottawa, Fees: the list of countries whose citizens need a visa for Jamaica and each one's fee (posted March 30, 2023)."
+   },
+   "applies": {
+    "kind": "visa",
+    "component": "application",
+    "when": {
+     "passport": [
+      "OM"
+     ]
+    }
+   }
+  },
+  {
+   "id": "jm-visa-usd-10",
+   "country": "JM",
+   "route": "Visa for Jamaica",
+   "amount": 10,
+   "currency": "USD",
+   "component": "application",
+   "scope": "Nationals of 4 countries charged US$10.00",
+   "evidence": "official_fee_scoped",
+   "from": "2023-03-30",
+   "through": null,
+   "days": null,
+   "dayUnit": null,
+   "note": "Jamaica prices its visa by nationality. The list is the High Commission's of March 30, 2023, read as the schedule for every mission; whether it has changed since wasn't found. It gives no decision time, so that stays the game's estimate.",
+   "source": {
+    "url": "https://missions.mfaft.gov.jm/jhcottawa/fees-2/",
+    "access": "retrieved",
+    "retrieved": "2026-11-20",
+    "note": "Jamaican High Commission, Ottawa, Fees: the list of countries whose citizens need a visa for Jamaica and each one's fee (posted March 30, 2023)."
+   },
+   "applies": {
+    "kind": "visa",
+    "component": "application",
+    "when": {
+     "passport": [
+      "DZ",
+      "FM",
+      "MR",
+      "TG"
+     ]
+    }
+   }
+  },
+  {
+   "id": "jm-visa-usd-13",
+   "country": "JM",
+   "route": "Visa for Jamaica",
+   "amount": 13,
+   "currency": "USD",
+   "component": "application",
+   "scope": "Nationals of 1 countries charged US$13.00",
+   "evidence": "official_fee_scoped",
+   "from": "2023-03-30",
+   "through": null,
+   "days": null,
+   "dayUnit": null,
+   "note": "Jamaica prices its visa by nationality. The list is the High Commission's of March 30, 2023, read as the schedule for every mission; whether it has changed since wasn't found. It gives no decision time, so that stays the game's estimate.",
+   "source": {
+    "url": "https://missions.mfaft.gov.jm/jhcottawa/fees-2/",
+    "access": "retrieved",
+    "retrieved": "2026-11-20",
+    "note": "Jamaican High Commission, Ottawa, Fees: the list of countries whose citizens need a visa for Jamaica and each one's fee (posted March 30, 2023)."
+   },
+   "applies": {
+    "kind": "visa",
+    "component": "application",
+    "when": {
+     "passport": [
+      "CV"
+     ]
+    }
+   }
+  },
+  {
+   "id": "jm-visa-usd-15",
+   "country": "JM",
+   "route": "Visa for Jamaica",
+   "amount": 15,
+   "currency": "USD",
+   "component": "application",
+   "scope": "Nationals of 4 countries charged US$15.00",
+   "evidence": "official_fee_scoped",
+   "from": "2023-03-30",
+   "through": null,
+   "days": null,
+   "dayUnit": null,
+   "note": "Jamaica prices its visa by nationality. The list is the High Commission's of March 30, 2023, read as the schedule for every mission; whether it has changed since wasn't found. It gives no decision time, so that stays the game's estimate.",
+   "source": {
+    "url": "https://missions.mfaft.gov.jm/jhcottawa/fees-2/",
+    "access": "retrieved",
+    "retrieved": "2026-11-20",
+    "note": "Jamaican High Commission, Ottawa, Fees: the list of countries whose citizens need a visa for Jamaica and each one's fee (posted March 30, 2023)."
+   },
+   "applies": {
+    "kind": "visa",
+    "component": "application",
+    "when": {
+     "passport": [
+      "BI",
+      "MA",
+      "NP",
+      "TN"
+     ]
+    }
+   }
+  },
+  {
+   "id": "jm-visa-usd-16_5",
+   "country": "JM",
+   "route": "Visa for Jamaica",
+   "amount": 16.5,
+   "currency": "USD",
+   "component": "application",
+   "scope": "Nationals of 1 countries charged US$16.50",
+   "evidence": "official_fee_scoped",
+   "from": "2023-03-30",
+   "through": null,
+   "days": null,
+   "dayUnit": null,
+   "note": "Jamaica prices its visa by nationality. The list is the High Commission's of March 30, 2023, read as the schedule for every mission; whether it has changed since wasn't found. It gives no decision time, so that stays the game's estimate.",
+   "source": {
+    "url": "https://missions.mfaft.gov.jm/jhcottawa/fees-2/",
+    "access": "retrieved",
+    "retrieved": "2026-11-20",
+    "note": "Jamaican High Commission, Ottawa, Fees: the list of countries whose citizens need a visa for Jamaica and each one's fee (posted March 30, 2023)."
+   },
+   "applies": {
+    "kind": "visa",
+    "component": "application",
+    "when": {
+     "passport": [
+      "SY"
+     ]
+    }
+   }
+  },
+  {
+   "id": "jm-visa-usd-18",
+   "country": "JM",
+   "route": "Visa for Jamaica",
+   "amount": 18,
+   "currency": "USD",
+   "component": "application",
+   "scope": "Nationals of 1 countries charged US$18.00",
+   "evidence": "official_fee_scoped",
+   "from": "2023-03-30",
+   "through": null,
+   "days": null,
+   "dayUnit": null,
+   "note": "Jamaica prices its visa by nationality. The list is the High Commission's of March 30, 2023, read as the schedule for every mission; whether it has changed since wasn't found. It gives no decision time, so that stays the game's estimate.",
+   "source": {
+    "url": "https://missions.mfaft.gov.jm/jhcottawa/fees-2/",
+    "access": "retrieved",
+    "retrieved": "2026-11-20",
+    "note": "Jamaican High Commission, Ottawa, Fees: the list of countries whose citizens need a visa for Jamaica and each one's fee (posted March 30, 2023)."
+   },
+   "applies": {
+    "kind": "visa",
+    "component": "application",
+    "when": {
+     "passport": [
+      "HT"
+     ]
+    }
+   }
+  },
+  {
+   "id": "jm-visa-usd-20",
+   "country": "JM",
+   "route": "Visa for Jamaica",
+   "amount": 20,
+   "currency": "USD",
+   "component": "application",
+   "scope": "Nationals of 13 countries charged US$20.00",
+   "evidence": "official_fee_scoped",
+   "from": "2023-03-30",
+   "through": null,
+   "days": null,
+   "dayUnit": null,
+   "note": "Jamaica prices its visa by nationality. The list is the High Commission's of March 30, 2023, read as the schedule for every mission; whether it has changed since wasn't found. It gives no decision time, so that stays the game's estimate.",
+   "source": {
+    "url": "https://missions.mfaft.gov.jm/jhcottawa/fees-2/",
+    "access": "retrieved",
+    "retrieved": "2026-11-20",
+    "note": "Jamaican High Commission, Ottawa, Fees: the list of countries whose citizens need a visa for Jamaica and each one's fee (posted March 30, 2023)."
+   },
+   "applies": {
+    "kind": "visa",
+    "component": "application",
+    "when": {
+     "passport": [
+      "BF",
+      "BH",
+      "BJ",
+      "BT",
+      "CD",
+      "CM",
+      "KW",
+      "LB",
+      "ML",
+      "NG",
+      "PS",
+      "ST",
+      "TH"
+     ]
+    }
+   }
+  },
+  {
+   "id": "jm-visa-usd-25",
+   "country": "JM",
+   "route": "Visa for Jamaica",
+   "amount": 25,
+   "currency": "USD",
+   "component": "application",
+   "scope": "Nationals of 6 countries charged US$25.00",
+   "evidence": "official_fee_scoped",
+   "from": "2023-03-30",
+   "through": null,
+   "days": null,
+   "dayUnit": null,
+   "note": "Jamaica prices its visa by nationality. The list is the High Commission's of March 30, 2023, read as the schedule for every mission; whether it has changed since wasn't found. It gives no decision time, so that stays the game's estimate.",
+   "source": {
+    "url": "https://missions.mfaft.gov.jm/jhcottawa/fees-2/",
+    "access": "retrieved",
+    "retrieved": "2026-11-20",
+    "note": "Jamaican High Commission, Ottawa, Fees: the list of countries whose citizens need a visa for Jamaica and each one's fee (posted March 30, 2023)."
+   },
+   "applies": {
+    "kind": "visa",
+    "component": "application",
+    "when": {
+     "passport": [
+      "EG",
+      "ER",
+      "GN",
+      "ID",
+      "NI",
+      "PH"
+     ]
+    }
+   }
+  },
+  {
+   "id": "jm-visa-usd-27",
+   "country": "JM",
+   "route": "Visa for Jamaica",
+   "amount": 27,
+   "currency": "USD",
+   "component": "application",
+   "scope": "Nationals of 1 countries charged US$27.00",
+   "evidence": "official_fee_scoped",
+   "from": "2023-03-30",
+   "through": null,
+   "days": null,
+   "dayUnit": null,
+   "note": "Jamaica prices its visa by nationality. The list is the High Commission's of March 30, 2023, read as the schedule for every mission; whether it has changed since wasn't found. It gives no decision time, so that stays the game's estimate.",
+   "source": {
+    "url": "https://missions.mfaft.gov.jm/jhcottawa/fees-2/",
+    "access": "retrieved",
+    "retrieved": "2026-11-20",
+    "note": "Jamaican High Commission, Ottawa, Fees: the list of countries whose citizens need a visa for Jamaica and each one's fee (posted March 30, 2023)."
+   },
+   "applies": {
+    "kind": "visa",
+    "component": "application",
+    "when": {
+     "passport": [
+      "SN"
+     ]
+    }
+   }
+  },
+  {
+   "id": "jm-visa-usd-28",
+   "country": "JM",
+   "route": "Visa for Jamaica",
+   "amount": 28,
+   "currency": "USD",
+   "component": "application",
+   "scope": "Nationals of 1 countries charged US$28.00",
+   "evidence": "official_fee_scoped",
+   "from": "2023-03-30",
+   "through": null,
+   "days": null,
+   "dayUnit": null,
+   "note": "Jamaica prices its visa by nationality. The list is the High Commission's of March 30, 2023, read as the schedule for every mission; whether it has changed since wasn't found. It gives no decision time, so that stays the game's estimate.",
+   "source": {
+    "url": "https://missions.mfaft.gov.jm/jhcottawa/fees-2/",
+    "access": "retrieved",
+    "retrieved": "2026-11-20",
+    "note": "Jamaican High Commission, Ottawa, Fees: the list of countries whose citizens need a visa for Jamaica and each one's fee (posted March 30, 2023)."
+   },
+   "applies": {
+    "kind": "visa",
+    "component": "application",
+    "when": {
+     "passport": [
+      "JO"
+     ]
+    }
+   }
+  },
+  {
+   "id": "jm-visa-usd-30",
+   "country": "JM",
+   "route": "Visa for Jamaica",
+   "amount": 30,
+   "currency": "USD",
+   "component": "application",
+   "scope": "Nationals of 11 countries charged US$30.00",
+   "evidence": "official_fee_scoped",
+   "from": "2023-03-30",
+   "through": null,
+   "days": null,
+   "dayUnit": null,
+   "note": "Jamaica prices its visa by nationality. The list is the High Commission's of March 30, 2023, read as the schedule for every mission; whether it has changed since wasn't found. It gives no decision time, so that stays the game's estimate.",
+   "source": {
+    "url": "https://missions.mfaft.gov.jm/jhcottawa/fees-2/",
+    "access": "retrieved",
+    "retrieved": "2026-11-20",
+    "note": "Jamaican High Commission, Ottawa, Fees: the list of countries whose citizens need a visa for Jamaica and each one's fee (posted March 30, 2023)."
+   },
+   "applies": {
+    "kind": "visa",
+    "component": "application",
+    "when": {
+     "passport": [
+      "AF",
+      "AO",
+      "CI",
+      "DJ",
+      "KM",
+      "KP",
+      "MM",
+      "MQ",
+      "RW",
+      "SO",
+      "VG"
+     ]
+    }
+   }
+  },
+  {
+   "id": "jm-visa-usd-33",
+   "country": "JM",
+   "route": "Visa for Jamaica",
+   "amount": 33,
+   "currency": "USD",
+   "component": "application",
+   "scope": "Nationals of 1 countries charged US$33.00",
+   "evidence": "official_fee_scoped",
+   "from": "2023-03-30",
+   "through": null,
+   "days": null,
+   "dayUnit": null,
+   "note": "Jamaica prices its visa by nationality. The list is the High Commission's of March 30, 2023, read as the schedule for every mission; whether it has changed since wasn't found. It gives no decision time, so that stays the game's estimate.",
+   "source": {
+    "url": "https://missions.mfaft.gov.jm/jhcottawa/fees-2/",
+    "access": "retrieved",
+    "retrieved": "2026-11-20",
+    "note": "Jamaican High Commission, Ottawa, Fees: the list of countries whose citizens need a visa for Jamaica and each one's fee (posted March 30, 2023)."
+   },
+   "applies": {
+    "kind": "visa",
+    "component": "application",
+    "when": {
+     "passport": [
+      "QA"
+     ]
+    }
+   }
+  },
+  {
+   "id": "jm-visa-usd-35",
+   "country": "JM",
+   "route": "Visa for Jamaica",
+   "amount": 35,
+   "currency": "USD",
+   "component": "application",
+   "scope": "Nationals of 4 countries charged US$35.00",
+   "evidence": "official_fee_scoped",
+   "from": "2023-03-30",
+   "through": null,
+   "days": null,
+   "dayUnit": null,
+   "note": "Jamaica prices its visa by nationality. The list is the High Commission's of March 30, 2023, read as the schedule for every mission; whether it has changed since wasn't found. It gives no decision time, so that stays the game's estimate.",
+   "source": {
+    "url": "https://missions.mfaft.gov.jm/jhcottawa/fees-2/",
+    "access": "retrieved",
+    "retrieved": "2026-11-20",
+    "note": "Jamaican High Commission, Ottawa, Fees: the list of countries whose citizens need a visa for Jamaica and each one's fee (posted March 30, 2023)."
+   },
+   "applies": {
+    "kind": "visa",
+    "component": "application",
+    "when": {
+     "passport": [
+      "CU",
+      "KH",
+      "LA",
+      "NE"
+     ]
+    }
+   }
+  },
+  {
+   "id": "jm-visa-usd-40",
+   "country": "JM",
+   "route": "Visa for Jamaica",
+   "amount": 40,
+   "currency": "USD",
+   "component": "application",
+   "scope": "Nationals of 3 countries charged US$40.00",
+   "evidence": "official_fee_scoped",
+   "from": "2023-03-30",
+   "through": null,
+   "days": null,
+   "dayUnit": null,
+   "note": "Jamaica prices its visa by nationality. The list is the High Commission's of March 30, 2023, read as the schedule for every mission; whether it has changed since wasn't found. It gives no decision time, so that stays the game's estimate.",
+   "source": {
+    "url": "https://missions.mfaft.gov.jm/jhcottawa/fees-2/",
+    "access": "retrieved",
+    "retrieved": "2026-11-20",
+    "note": "Jamaican High Commission, Ottawa, Fees: the list of countries whose citizens need a visa for Jamaica and each one's fee (posted March 30, 2023)."
+   },
+   "applies": {
+    "kind": "visa",
+    "component": "application",
+    "when": {
+     "passport": [
+      "LR",
+      "TW",
+      "VN"
+     ]
+    }
+   }
+  },
+  {
+   "id": "jm-visa-usd-45",
+   "country": "JM",
+   "route": "Visa for Jamaica",
+   "amount": 45,
+   "currency": "USD",
+   "component": "application",
+   "scope": "Nationals of 2 countries charged US$45.00",
+   "evidence": "official_fee_scoped",
+   "from": "2023-03-30",
+   "through": null,
+   "days": null,
+   "dayUnit": null,
+   "note": "Jamaica prices its visa by nationality. The list is the High Commission's of March 30, 2023, read as the schedule for every mission; whether it has changed since wasn't found. It gives no decision time, so that stays the game's estimate.",
+   "source": {
+    "url": "https://missions.mfaft.gov.jm/jhcottawa/fees-2/",
+    "access": "retrieved",
+    "retrieved": "2026-11-20",
+    "note": "Jamaican High Commission, Ottawa, Fees: the list of countries whose citizens need a visa for Jamaica and each one's fee (posted March 30, 2023)."
+   },
+   "applies": {
+    "kind": "visa",
+    "component": "application",
+    "when": {
+     "passport": [
+      "GW",
+      "MN"
+     ]
+    }
+   }
+  },
+  {
+   "id": "jm-visa-usd-47",
+   "country": "JM",
+   "route": "Visa for Jamaica",
+   "amount": 47,
+   "currency": "USD",
+   "component": "application",
+   "scope": "Nationals of 1 countries charged US$47.00",
+   "evidence": "official_fee_scoped",
+   "from": "2023-03-30",
+   "through": null,
+   "days": null,
+   "dayUnit": null,
+   "note": "Jamaica prices its visa by nationality. The list is the High Commission's of March 30, 2023, read as the schedule for every mission; whether it has changed since wasn't found. It gives no decision time, so that stays the game's estimate.",
+   "source": {
+    "url": "https://missions.mfaft.gov.jm/jhcottawa/fees-2/",
+    "access": "retrieved",
+    "retrieved": "2026-11-20",
+    "note": "Jamaican High Commission, Ottawa, Fees: the list of countries whose citizens need a visa for Jamaica and each one's fee (posted March 30, 2023)."
+   },
+   "applies": {
+    "kind": "visa",
+    "component": "application",
+    "when": {
+     "passport": [
+      "AS"
+     ]
+    }
+   }
+  },
+  {
+   "id": "jm-visa-usd-50",
+   "country": "JM",
+   "route": "Visa for Jamaica",
+   "amount": 50,
+   "currency": "USD",
+   "component": "application",
+   "scope": "Nationals of 6 countries charged US$50.00",
+   "evidence": "official_fee_scoped",
+   "from": "2023-03-30",
+   "through": null,
+   "days": null,
+   "dayUnit": null,
+   "note": "Jamaica prices its visa by nationality. The list is the High Commission's of March 30, 2023, read as the schedule for every mission; whether it has changed since wasn't found. It gives no decision time, so that stays the game's estimate.",
+   "source": {
+    "url": "https://missions.mfaft.gov.jm/jhcottawa/fees-2/",
+    "access": "retrieved",
+    "retrieved": "2026-11-20",
+    "note": "Jamaican High Commission, Ottawa, Fees: the list of countries whose citizens need a visa for Jamaica and each one's fee (posted March 30, 2023)."
+   },
+   "applies": {
+    "kind": "visa",
+    "component": "application",
+    "when": {
+     "passport": [
+      "GA",
+      "GQ",
+      "MH",
+      "PW",
+      "TK",
+      "YE"
+     ]
+    }
+   }
+  },
+  {
+   "id": "jm-visa-usd-54",
+   "country": "JM",
+   "route": "Visa for Jamaica",
+   "amount": 54,
+   "currency": "USD",
+   "component": "application",
+   "scope": "Nationals of 1 countries charged US$54.00",
+   "evidence": "official_fee_scoped",
+   "from": "2023-03-30",
+   "through": null,
+   "days": null,
+   "dayUnit": null,
+   "note": "Jamaica prices its visa by nationality. The list is the High Commission's of March 30, 2023, read as the schedule for every mission; whether it has changed since wasn't found. It gives no decision time, so that stays the game's estimate.",
+   "source": {
+    "url": "https://missions.mfaft.gov.jm/jhcottawa/fees-2/",
+    "access": "retrieved",
+    "retrieved": "2026-11-20",
+    "note": "Jamaican High Commission, Ottawa, Fees: the list of countries whose citizens need a visa for Jamaica and each one's fee (posted March 30, 2023)."
+   },
+   "applies": {
+    "kind": "visa",
+    "component": "application",
+    "when": {
+     "passport": [
+      "SA"
+     ]
+    }
+   }
+  },
+  {
+   "id": "jm-visa-usd-60",
+   "country": "JM",
+   "route": "Visa for Jamaica",
+   "amount": 60,
+   "currency": "USD",
+   "component": "application",
+   "scope": "Nationals of 1 countries charged US$60.00",
+   "evidence": "official_fee_scoped",
+   "from": "2023-03-30",
+   "through": null,
+   "days": null,
+   "dayUnit": null,
+   "note": "Jamaica prices its visa by nationality. The list is the High Commission's of March 30, 2023, read as the schedule for every mission; whether it has changed since wasn't found. It gives no decision time, so that stays the game's estimate.",
+   "source": {
+    "url": "https://missions.mfaft.gov.jm/jhcottawa/fees-2/",
+    "access": "retrieved",
+    "retrieved": "2026-11-20",
+    "note": "Jamaican High Commission, Ottawa, Fees: the list of countries whose citizens need a visa for Jamaica and each one's fee (posted March 30, 2023)."
+   },
+   "applies": {
+    "kind": "visa",
+    "component": "application",
+    "when": {
+     "passport": [
+      "CF"
+     ]
+    }
+   }
+  },
+  {
+   "id": "jm-visa-usd-70",
+   "country": "JM",
+   "route": "Visa for Jamaica",
+   "amount": 70,
+   "currency": "USD",
+   "component": "application",
+   "scope": "Nationals of 2 countries charged US$70.00",
+   "evidence": "official_fee_scoped",
+   "from": "2023-03-30",
+   "through": null,
+   "days": null,
+   "dayUnit": null,
+   "note": "Jamaica prices its visa by nationality. The list is the High Commission's of March 30, 2023, read as the schedule for every mission; whether it has changed since wasn't found. It gives no decision time, so that stays the game's estimate.",
+   "source": {
+    "url": "https://missions.mfaft.gov.jm/jhcottawa/fees-2/",
+    "access": "retrieved",
+    "retrieved": "2026-11-20",
+    "note": "Jamaican High Commission, Ottawa, Fees: the list of countries whose citizens need a visa for Jamaica and each one's fee (posted March 30, 2023)."
+   },
+   "applies": {
+    "kind": "visa",
+    "component": "application",
+    "when": {
+     "passport": [
+      "CG",
+      "ET"
+     ]
+    }
+   }
+  },
+  {
+   "id": "jm-visa-usd-74_5",
+   "country": "JM",
+   "route": "Visa for Jamaica",
+   "amount": 74.5,
+   "currency": "USD",
+   "component": "application",
+   "scope": "Nationals of 1 countries charged US$74.50",
+   "evidence": "official_fee_scoped",
+   "from": "2023-03-30",
+   "through": null,
+   "days": null,
+   "dayUnit": null,
+   "note": "Jamaica prices its visa by nationality. The list is the High Commission's of March 30, 2023, read as the schedule for every mission; whether it has changed since wasn't found. It gives no decision time, so that stays the game's estimate.",
+   "source": {
+    "url": "https://missions.mfaft.gov.jm/jhcottawa/fees-2/",
+    "access": "retrieved",
+    "retrieved": "2026-11-20",
+    "note": "Jamaican High Commission, Ottawa, Fees: the list of countries whose citizens need a visa for Jamaica and each one's fee (posted March 30, 2023)."
+   },
+   "applies": {
+    "kind": "visa",
+    "component": "application",
+    "when": {
+     "passport": [
+      "MG"
+     ]
+    }
+   }
+  },
+  {
+   "id": "jm-visa-usd-100",
+   "country": "JM",
+   "route": "Visa for Jamaica",
+   "amount": 100,
+   "currency": "USD",
+   "component": "application",
+   "scope": "Nationals of 21 countries charged US$100.00",
+   "evidence": "official_fee_scoped",
+   "from": "2023-03-30",
+   "through": null,
+   "days": null,
+   "dayUnit": null,
+   "note": "Jamaica prices its visa by nationality. The list is the High Commission's of March 30, 2023, read as the schedule for every mission; whether it has changed since wasn't found. It gives no decision time, so that stays the game's estimate.",
+   "source": {
+    "url": "https://missions.mfaft.gov.jm/jhcottawa/fees-2/",
+    "access": "retrieved",
+    "retrieved": "2026-11-20",
+    "note": "Jamaican High Commission, Ottawa, Fees: the list of countries whose citizens need a visa for Jamaica and each one's fee (posted March 30, 2023)."
+   },
+   "applies": {
+    "kind": "visa",
+    "component": "application",
+    "when": {
+     "passport": [
+      "AD",
+      "AL",
+      "AM",
+      "AZ",
+      "BA",
+      "BG",
+      "BY",
+      "GE",
+      "HR",
+      "KG",
+      "KZ",
+      "MD",
+      "ME",
+      "MK",
+      "RO",
+      "RS",
+      "TJ",
+      "TM",
+      "UZ",
+      "XK",
+      "ZW"
+     ]
+    }
+   }
+  },
+  {
+   "id": "jm-visa-usd-102_4",
+   "country": "JM",
+   "route": "Visa for Jamaica",
+   "amount": 102.4,
+   "currency": "USD",
+   "component": "application",
+   "scope": "Nationals of 1 countries charged US$102.40",
+   "evidence": "official_fee_scoped",
+   "from": "2023-03-30",
+   "through": null,
+   "days": null,
+   "dayUnit": null,
+   "note": "Jamaica prices its visa by nationality. The list is the High Commission's of March 30, 2023, read as the schedule for every mission; whether it has changed since wasn't found. It gives no decision time, so that stays the game's estimate.",
+   "source": {
+    "url": "https://missions.mfaft.gov.jm/jhcottawa/fees-2/",
+    "access": "retrieved",
+    "retrieved": "2026-11-20",
+    "note": "Jamaican High Commission, Ottawa, Fees: the list of countries whose citizens need a visa for Jamaica and each one's fee (posted March 30, 2023)."
+   },
+   "applies": {
+    "kind": "visa",
+    "component": "application",
+    "when": {
+     "passport": [
+      "KY"
+     ]
+    }
+   }
   }
  ]
 }
