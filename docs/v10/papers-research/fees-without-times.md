@@ -248,3 +248,24 @@ Batch 13 (November 20, 2026, night).
 - Not recorded: Ukraine's permit fee (law-firm summaries disagree: 2, 4 or 6 subsistence minimums, or 9 for two to
   three years); Tonga's visitor visa (TOP 230, TOP 345, TOP 163 for a group, US$69 in Beijing: which is which isn't
   clear); Nauru's (only a 2014 schedule, through secondary sites); Saint Lucia's permit (only consultancies).
+
+Batch 14 (November 20, 2026, night).
+- Turks and Caicos, the work permit, settled in full, as an entertainer: actors aren't named in the Immigration
+  Regulations 2016's fee scales, and "Entertainer/Comedian" is scale 5, US$2,700 a year (a law firm quoted the same
+  scales in December 2025). On applying, the administration fee, $150 or 10% of the permit's fee, whichever is greater:
+  $270. The permit's fee is paid within 21 working days of the approval. The service standard is 15 days without a
+  labour clearance, 25 with one (Border Control and Labour's work permits page, undated). The page calls the later
+  payment the remaining balance without saying whether the administration fee counts toward it; the game charges it in
+  full.
+- Botswana, the visitor visa, scoped to the Washington embassy: US$30 single entry up to three months, no decision time
+  (`route-evidence.json`). gov.bw's own visa page (BWP 300 by search results) answered 503.
+- Leads, not recorded:
+  - British Virgin Islands' work permit notices (bvi.gov.vg answered 503); Anguilla's labour page (404); the
+    Falklands' work permit fee (£40 by search results; the permits page didn't show its table).
+  - Kosovo's €40 visa: only on the Ministry's archived site (2018), with no decision time.
+  - Jamaica's visa: priced by nationality, in the Ottawa High Commission's 2023 table; a passport-scoped set of records
+    could carry it.
+  - Montenegro's, Lesotho's and Suriname's visas, and Djibouti's e-visa: only secondary figures, which disagree.
+  - Cyprus' artist permit: the migration department's pages give €80, €120 with €70, and €200 for different permits,
+    none named for artists.
+  - Guyana: the New York consulate's US$25 is for a visa on arrival.

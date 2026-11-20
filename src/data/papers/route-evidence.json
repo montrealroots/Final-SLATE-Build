@@ -1452,6 +1452,36 @@
      ]
     }
    }
+  },
+  {
+   "id": "bw-visitor-washington",
+   "country": "BW",
+   "route": "Visitor visa (single entry, up to three months)",
+   "amount": 30,
+   "currency": "USD",
+   "component": "application",
+   "scope": "Washington embassy",
+   "evidence": "official_fee_scoped",
+   "from": null,
+   "through": null,
+   "days": null,
+   "dayUnit": null,
+   "note": "US$30 for a single-entry visitor visa of up to three months ($50 multiple entry). The embassy gives no decision time, so it stays the game's estimate. gov.bw's own visa page (BWP 300 by search results) answered 503 and isn't recorded.",
+   "source": {
+    "url": "https://www.botswanaembassy.org/node/1678",
+    "access": "retrieved",
+    "retrieved": "2026-11-20",
+    "note": "Embassy of the Republic of Botswana, Washington, fees for consular and immigration services (page undated)."
+   },
+   "applies": {
+    "kind": "visa",
+    "component": "application",
+    "when": {
+     "livesIn": [
+      "US"
+     ]
+    }
+   }
   }
  ]
 }

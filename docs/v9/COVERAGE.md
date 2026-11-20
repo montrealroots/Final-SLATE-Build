@@ -35,9 +35,9 @@ the screen says so.
 | work rules | inherited-unverified | 228 |
 | work rules | modeled | 17 |
 | work rules | not applicable | 6 |
-| work permit application | verified | 70 |
+| work permit application | verified | 71 |
 | work permit application | implemented/tested | 1 |
-| work permit application | modeled | 175 |
+| work permit application | modeled | 174 |
 | work permit application | not applicable | 6 |
 
 ## What This Says
