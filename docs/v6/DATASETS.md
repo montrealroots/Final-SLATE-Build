@@ -85,6 +85,11 @@ The catalog (TMDB), the cinemas (Wikidata) and the stories (Wikipedia) are older
   - <https://www.annecyfestival.com/en/the-festival/official-selection/feature-films>, read 2026-11-20. The 14 sections of the 2026 official selection, each from its own page.
   - <https://www.annecyfestival.com/en/news/special-prizes-winners>, read 2026-11-20. The special prizes, given at their ceremony of June 26, 2026; the winners themselves are read from the festival's 2026 awards page.
   - <https://www.annecyfestival.com/en/the-festival/2026-awards>, read 2026-11-20. Every official award, announced at the closing ceremony of June 27, 2026 (its news item of that day says so).
+  - <https://www.labiennale.org/en/news/new-film-has-been-added-program-83rd-venice-film-festival>, read 2026-11-20. NAZA completes the Competition (August 24, 2026); the Competition's 21 films are read from its section page and shown whole from this day.
+  - <https://www.labiennale.org/en/cinema/2026/lineup>, read 2026-11-20. The sections Venice Open, Orizzonti (19 features and 15 shorts, the page listing them in that order), Venice Spotlight and the special screenings, each read from its own page.
+  - <https://www.labiennale.org/en/news/official-awards-83rd-venice-international-film-festival>, read 2026-11-20. Every prize of the five official juries and the audience award, from the ceremony of September 12, 2026; the Golden Lion and the Grand Jury Prize are the reference set's.
+  - <https://www.labiennale.org/en/news/george-clooney-golden-lion-lifetime-achievement>, read 2026-11-20. A Golden Lion for Lifetime Achievement, given at the opening on September 2, 2026.
+  - <https://www.labiennale.org/en/news/ellen-burstyn-golden-lion-lifetime-achievement>, read 2026-11-20. A Golden Lion for Lifetime Achievement, given on September 7, 2026.
 
 ## `src/data/history/awards-2026-reference.json`
 

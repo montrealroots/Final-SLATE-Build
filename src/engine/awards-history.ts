@@ -30,11 +30,13 @@ export function savedResult(state: GameState, ed: Edition, cat: Category, today:
   const myTitles = mine.map((k) => keyTitle(state, ed, k)).filter((x): x is string => !!x);
   const myWin = stored?.revealed && stored.winner && mine.includes(stored.winner) ? keyTitle(state, ed, stored.winner) : undefined;
   const nomObs = recorded.find((o) => o.kind === 'nominees');
-  const winObs = recorded.find((o) => o.kind === 'winner');
+  // Every recorded winner of the category, in the data's order: a festival can give an honorary prize twice in an
+  // edition (Venice's two lifetime Golden Lions of 2026, on different days). Until November 20, 2026 only the first was
+  // shown.
   let field = nomObs ? [...nomObs.subjects] : [];
   if (myTitles.length) field = field.length ? [...field.slice(0, Math.max(0, field.length - myTitles.length)), ...myTitles] : myTitles;
-  const recordedWinner = winObs ? `${winObs.subjects.join(' and ')}${winObs.work ? `, for ${winObs.work}` : ''}` : null;
-  const winners = myWin ? [myWin] : recordedWinner ? [recordedWinner] : [];
+  const recordedWinners = recorded.filter((o) => o.kind === 'winner').map((o) => `${o.subjects.join(' and ')}${o.work ? `, for ${o.work}` : ''}`);
+  const winners = myWin ? [myWin] : recordedWinners;
   return {
     stage: winners.length ? 'winner' : 'nomination', field, winners, about: [],
     from: myTitles.length ? 'record-changed' : 'record',

@@ -333,6 +333,20 @@ describe('recorded history', () => {
     expect(won).toHaveLength(36);
   });
 
+  it('holds the 83rd Venice festival: the Competition from NAZA\'s addition, the rest from the opening, the prizes from September 12', () => {
+    const on = (day: string, kind: string) => recordedResults('venice', 2026, day).filter((o) => o.kind === kind);
+    expect(on('2026-08-23', 'nominees')).toEqual([]);
+    expect(on('2026-08-24', 'nominees').map((o) => [o.category, o.subjects.length])).toEqual([['competition', 21]]);
+    expect(Object.fromEntries(on('2026-09-02', 'nominees').filter((o) => o.category).map((o) => [o.category, o.subjects.length]))).toEqual({ competition: 21, 'out-of-competition': 40, orizzonti: 19, 'orizzonti-corti': 15, spotlight: 8 });
+    expect(on('2026-09-11', 'winner').map((o) => o.subjects[0])).toEqual(['George Clooney', 'Ellen Burstyn']);
+    const won = on('2026-09-12', 'winner');
+    // The Golden Lion and the Grand Jury Prize are the reference set's; the page's own spelling stays there.
+    expect(won.find((o) => o.category === 'golden-lion')!.id).toBe('v7-venice-golden_lion-winner');
+    expect(won.find((o) => o.category === 'volpi-actress')).toMatchObject({ subjects: ['Mathilde Arcel'], work: 'Kvinde Ukendt' });
+    expect(won.find((o) => o.category === 'orizzonti-short')!.subjects).toEqual(['Quelques instants de bonheur']);
+    expect(new Set(won.filter((o) => o.category).map((o) => o.category)).size).toBe(18); // every prize the game holds, and the lifetime lions
+  });
+
   it('cites a source for every observation, never publishes before it happens, and names the game\'s own categories', () => {
     const insts = (institutions as { institutions: { id: string; categories: { id: string }[]; official?: Record<string, { label?: string }> }[] }).institutions;
     const wrong: string[] = [];

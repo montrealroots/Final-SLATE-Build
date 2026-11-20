@@ -2151,7 +2151,16 @@
      "competitive": false
     }
    ],
-   "rosterStatus": "read"
+   "rosterStatus": "read",
+   "official": {
+    "2026": {
+     "start": "2026-09-02",
+     "end": "2026-09-12",
+     "label": "2026 Venice International Film Festival",
+     "source": "https://www.labiennale.org/en/news/new-film-has-been-added-program-83rd-venice-film-festival",
+     "checked": "2026-11-20"
+    }
+   }
   },
   {
    "id": "tiff",
