@@ -3825,6 +3825,13 @@
    "prestige": 60,
    "description": "An April documentary festival with an audience award.",
    "official": {
+    "2026": {
+     "start": "2026-04-23",
+     "end": "2026-05-03",
+     "label": "33rd Hot Docs Canadian International Documentary Festival",
+     "source": "https://hotdocs.ca/news/hd26-wrap",
+     "checked": "2026-11-20"
+    },
     "2027": {
      "start": "2027-04-23",
      "end": "2027-05-02",

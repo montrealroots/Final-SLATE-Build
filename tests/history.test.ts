@@ -286,6 +286,15 @@ describe('recorded history', () => {
     expect(on('2026-04-04', 'winner').find((o) => o.categoryName === 'Label des spectateurs UGC')!.subjects).toEqual(['Burden of justice']);
   });
 
+  it('holds the 33rd Hot Docs: the juried awards from May 1, the audience awards from May 4', () => {
+    const on = (day: string) => recordedResults('hot-docs', 2026, day);
+    expect(on('2026-04-30')).toEqual([]);
+    expect(on('2026-05-01')).toHaveLength(11);
+    expect(on('2026-05-03').some((o) => o.category === 'audience')).toBe(false);
+    expect(on('2026-05-04').find((o) => o.category === 'audience')!.subjects).toEqual(['American Doctor']);
+    expect(on('2026-05-04')).toHaveLength(14);
+  });
+
   it('cites a source for every observation, never publishes before it happens, and names the game\'s own categories', () => {
     const insts = (institutions as { institutions: { id: string; categories: { id: string }[]; official?: Record<string, { label?: string }> }[] }).institutions;
     const wrong: string[] = [];

@@ -73,6 +73,8 @@ The catalog (TMDB), the cinemas (Wikidata) and the stories (Wikipedia) are older
   - <https://seriesmania.com/festival/edition/2026/>, read 2026-11-20. The official selection by section (the series pages the edition page filters, read through the site's own feed of them).
   - <https://seriesmania.com/festival/edition/2026/>, read 2026-11-20. Every prize of the closing ceremony of March 27, 2026.
   - <https://seriesmania.com/festival/label-ugc-spectateurs-series-mania-2026/>, read 2026-11-20. The UGC spectators' label (April 4, 2026).
+  - <https://hotdocs.ca/news/hd26-awards>, read 2026-11-20. The twelve awards of the Awards Presentation of May 1, 2026.
+  - <https://hotdocs.ca/news/hd26-top-20-daily>, read 2026-11-20. The Rogers Audience Award (announced May 3) and the audience awards for a feature and a short, all published May 4, 2026.
 
 ## `src/data/history/awards-2026-reference.json`
 
