@@ -94,8 +94,17 @@ export const test = base.extend<{ diagnostics: void }>({
         } catch { done(); } }; go(); });
         new MutationObserver(() => { if (!due) { due = true; setTimeout(run, 400); } }).observe(document, { childList: true, subtree: true, attributes: true }); })();`);
     }
-    page.on('pageerror', (e) => seen.push(`page error: ${e.message}`));
-    page.on('console', (m) => { if (m.type() === 'error') seen.push(`console error: ${m.text()}`); });
+    // Errors raised by a page that is already being replaced are not the game's: found November 20, 2026 on the iPhone
+    // 18 Pro Max in WebKit, where a reload cancels the old page's module loads and WebKit reports each as "Importing a
+    // module script failed" (and a cancelled fetch as an access control failure) before the new page arrives. Chromium
+    // drops them silently. From the main frame's navigation request until it has navigated, errors are not counted.
+    let leaving = false;
+    page.on('request', (r) => { if (r.isNavigationRequest() && r.frame() === page.mainFrame()) leaving = true; });
+    page.on('framenavigated', (f) => { if (f === page.mainFrame()) leaving = false; });
+    // A navigation that fails or is aborted never navigates, so its failure ends the window too.
+    page.on('requestfailed', (r) => { if (r.isNavigationRequest() && r.frame() === page.mainFrame()) leaving = false; });
+    page.on('pageerror', (e) => { if (!leaving) seen.push(`page error: ${e.message}`); });
+    page.on('console', (m) => { if (m.type() === 'error' && !leaving) seen.push(`console error: ${m.text()}`); });
     page.on('requestfailed', (r) => {
       const why = r.failure()?.errorText ?? 'unknown';
       // A request the browser cancels because the page reloads or navigates is not a failure (route.abort() reports
