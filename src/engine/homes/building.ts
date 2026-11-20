@@ -14,7 +14,7 @@ import { newId } from '../state';
 import { unit } from '../rng';
 import { weatherOn } from '../weather';
 import type { GameState } from '../types';
-import { HOME_RULES } from './market';
+import { HOME_RULES } from './rules';
 import { startBills } from './living';
 import { badDesignValue, designHash, gardenOf, roomCheck, roomsFrom, rulesFor, scopesOf, type Design, type Home, type RoomKind } from './model';
 import {

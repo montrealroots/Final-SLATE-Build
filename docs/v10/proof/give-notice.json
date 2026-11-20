@@ -32,7 +32,7 @@
   "jobsWithdrawn": 0,
   "jobsDeclined": 0,
   "ratesAgreed": 0,
-  "logLines": 146.05,
+  "logLines": 146.975,
   "hired": 16,
   "castRates": 3219,
   "releaseDelay": 98.192,
@@ -119,7 +119,7 @@
   "jobsWithdrawn": 0,
   "jobsDeclined": 0,
   "ratesAgreed": 0,
-  "logLines": 136.95,
+  "logLines": 137.875,
   "hired": 16,
   "castRates": 3219,
   "releaseDelay": 98.192,
@@ -811,7 +811,7 @@
  ],
  "verdict": "proven",
  "hashes": {
-  "src/engine/homes/renting.ts": "c577f53dd878c359",
+  "src/engine/homes/renting.ts": "f36a4fc322d28abc",
   "tests/proof/career.ts": "50bea06f19a02c5b"
  }
 }

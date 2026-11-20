@@ -13,7 +13,7 @@ import { getPlace } from '../../data/places';
 import { mortgageOwed, moveBetweenBooks, postHousing } from '../bank';
 import { newId } from '../state';
 import type { GameState } from '../types';
-import { HOME_RULES } from './market';
+import { HOME_RULES } from './rules';
 import { startBills } from './living';
 import { MORTGAGE_MODEL, levelPayment, rulesFor, type Home } from './model';
 import {
