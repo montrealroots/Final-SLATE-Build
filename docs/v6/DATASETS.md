@@ -12,7 +12,7 @@ The catalog (TMDB), the cinemas (Wikidata) and the stories (Wikipedia) are older
 - **What it is:** Award results of 2026 ceremonies, from each organizer's own page.
 - **Kind:** Recorded fact.
 - **Terms:** Facts (who was nominated, who won) read from public pages; titles and names only, no article text. Shown from their published date; nothing written into a save.
-- **Sources (28):**
+- **Sources (30):**
   - <https://goldenglobes.com/articles/one-battle-after-another-and-hamnet-take-best-picture-prizes-at-golden-globes/>, read 2026-11-13. Read through a fetching tool. Only the categories the article states are recorded.
   - <https://goldenglobes.com/nominations/2026>, read 2026-11-19. Every category, its winner marked; read twice through a fetching tool, the readings agreed. A title the page files under its article ("Studio, The") is written in reading order.
   - <https://goldenglobes.com/articles/nominations-announced-for-the-83rd-annual-golden-globes/>, read 2026-11-19. For the date the nominations were announced, December 8, 2025.
@@ -40,6 +40,8 @@ The catalog (TMDB), the cinemas (Wikidata) and the stories (Wikipedia) are older
   - <https://www.academie-cinema.org/palmares/>, read 2026-11-19. The 51st César Awards' nominees and winners, read from the structured data the page carries; the honorary César, with no field, left out.
   - <https://www.academie-cinema.org/evenements/autour-des-nominations-2026/>, read 2026-11-19. For the nominations of January 28, 2026.
   - <https://www.academie-cinema.org/evenements/ceremonie-des-cesar-2026/>, read 2026-11-19. For the ceremony of February 26, 2026.
+  - <https://www.premiosgoya.com/40-edicion/nominaciones/>, read 2026-11-19. The 40th Goya Awards' nominees (announced January 13, 2026), downloaded and parsed; producers', countries' and directors' lines left off.
+  - <https://www.premiosgoya.com/40-edicion/premios/por-categoria/>, read 2026-11-19. The winners of the February 28, 2026 gala, each matched to a nominee of its category.
   - <https://www.televisionacademy.com/78th-emmy-winners>, read 2026-11-19. The Academy's winners release (Ernst & Young's list of the telecast's 19 categories), a PDF whose text was read directly.
 
 ## `src/data/history/awards-2026-reference.json`

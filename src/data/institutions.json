@@ -12382,6 +12382,13 @@
     ]
    },
    "official": {
+    "2026": {
+     "start": "2026-02-28",
+     "end": "2026-02-28",
+     "label": "40th Goya Awards",
+     "source": "https://www.premiosgoya.com/40-edicion/",
+     "checked": "2026-11-19"
+    },
     "2027": {
      "start": "2027-02-06",
      "end": "2027-02-06",

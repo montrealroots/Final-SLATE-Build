@@ -162,6 +162,18 @@ describe('recorded history', () => {
     expect(won.find((o) => o.category === 'actor')).toMatchObject({ subjects: ['Laurent Lafitte'], work: 'La Femme la plus riche du monde' });
   });
 
+  it('holds the 40th Goya Awards whole: nominees from January 13, winners from February 28, each a nominee of its category', () => {
+    const on = (day: string, kind: string) => recordedResults('goya', 2026, day).filter((o) => o.kind === kind);
+    expect(on('2026-01-13', 'nominees')).toHaveLength(28);
+    expect(on('2026-02-27', 'winner')).toEqual([]);
+    const won = on('2026-02-28', 'winner');
+    expect(won).toHaveLength(28);
+    expect(won.find((o) => o.category === 'film')!.subjects).toEqual(['Los Domingos']);
+    // A song's writers win it; the song and its film are what was nominated.
+    expect(won.find((o) => o.category === 'song')).toMatchObject({ subjects: ['Alba Flores, Sílvia Pérez Cruz'], work: 'Flores para Antonio, from Flores para Antonio' });
+    expect(won.find((o) => o.category === 'european')).toMatchObject({ subjects: ['Valor sentimental'], credited: 'Noruega' });
+  });
+
   it('cites a source for every observation, never publishes before it happens, and names the game\'s own categories', () => {
     const insts = (institutions as { institutions: { id: string; categories: { id: string }[]; official?: Record<string, { label?: string }> }[] }).institutions;
     const wrong: string[] = [];
