@@ -232,3 +232,19 @@ Batch 12 (November 20, 2026, night).
     (Útlendingastovan) has handled applications since September 1, 2024, and its own page wasn't found.
   - Malaysia (PUSPAL) and Antigua and Barbuda: only consultancies' figures, which disagree.
   - Gibraltar: the UK fee tool's figures are for UK visas applied for in Gibraltar; it answered 403.
+
+Batch 13 (November 20, 2026, night).
+- Fiji, the visitor visa, settled in full: $93 single entry, valid three months for one journey, 14 working days
+  (about 20) from receipt (Ministry of Immigration, page undated). The page doesn't name the dollars; taken as Fiji
+  dollars. An embassy page's older FJD 91 wasn't read, and isn't recorded.
+- Grenada, the work permit, settled in full: XCD 100 to apply (non-refundable), and the permit's fee by nationality,
+  paid only once the Minister approves it, for each year: XCD 5,000 in general, XCD 3,000 for other Commonwealth
+  citizens, North Americans, Britons and EU nationals, XCD 1,000 for nine Caribbean nationalities, OECS citizens exempt
+  (already free in `work.json`). 12 working days by regulation (SRO 24/2017), about 17. From the Ministry of Labour's
+  Work Permit Guidelines of June 2020. Not applied: a CARICOM Skills Certificate holder's exemption and the waiver a
+  CARICOM artiste may ask the Ministry of Finance for; Mexico's tier (the guide says "North America").
+- Vanuatu, the work permit's fee: VT 60,000 for a Temporary Work Permit of up to four months, from July 1, 2025
+  (Department of Labour's directive of June 20, 2025); no official decision time, so it stays estimated.
+- Not recorded: Ukraine's permit fee (law-firm summaries disagree: 2, 4 or 6 subsistence minimums, or 9 for two to
+  three years); Tonga's visitor visa (TOP 230, TOP 345, TOP 163 for a group, US$69 in Beijing: which is which isn't
+  clear); Nauru's (only a 2014 schedule, through secondary sites); Saint Lucia's permit (only consultancies).

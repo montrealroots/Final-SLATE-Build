@@ -2207,8 +2207,8 @@
    "who may visit: SLATE-REBUILD researched it; not re-checked here"
   ],
   "visitor visa application": [
-   "modeled",
-   "no research gives its fee or time yet: the game estimates both from the researched visas, and says so"
+   "verified",
+   "its visitor visa, researched (November 14, 17 or 20, 2026), with its source"
   ],
   "work rules": [
    "inherited-unverified",
@@ -2635,8 +2635,8 @@
    "who may work: SLATE-REBUILD researched it; not re-checked here"
   ],
   "work permit application": [
-   "modeled",
-   "no research gives its fee or time yet: the game estimates both from the researched permits on its continent, and says so"
+   "verified",
+   "its fee and decision time, researched (November 14 or 17, 2026), with its source"
   ]
  },
  "GP": {
@@ -7316,7 +7316,7 @@
   ],
   "work permit application": [
    "modeled",
-   "no research gives its fee or time yet: the game estimates both from the researched permits on its continent, and says so"
+   "its fee is researched, with its source; how long it takes to decide is the game's estimate, said as one"
   ]
  },
  "VA": {

@@ -1,8 +1,8 @@
 {
  "counts": {
-  "permits": 162,
-  "visas": 101,
-  "permitTimes": 14,
+  "permits": 160,
+  "visas": 100,
+  "permitTimes": 15,
   "visaTimes": 34
  },
  "permits": [
@@ -63,7 +63,6 @@
   "GA",
   "GM",
   "GE",
-  "GD",
   "GT",
   "GN",
   "GW",
@@ -161,7 +160,6 @@
   "AE",
   "UY",
   "UZ",
-  "VU",
   "VA",
   "VE",
   "WF",
@@ -204,7 +202,6 @@
   "SZ",
   "FK",
   "FO",
-  "FJ",
   "GM",
   "GI",
   "GL",
@@ -286,6 +283,7 @@
   "RS",
   "KR",
   "UG",
+  "VU",
   "ZW"
  ],
  "visaTimes": [
