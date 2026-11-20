@@ -12,7 +12,7 @@ The catalog (TMDB), the cinemas (Wikidata) and the stories (Wikipedia) are older
 - **What it is:** Award results of 2026 ceremonies, from each organizer's own page.
 - **Kind:** Recorded fact.
 - **Terms:** Facts (who was nominated, who won) read from public pages; titles and names only, no article text. Shown from their published date; nothing written into a save.
-- **Sources (25):**
+- **Sources (28):**
   - <https://goldenglobes.com/articles/one-battle-after-another-and-hamnet-take-best-picture-prizes-at-golden-globes/>, read 2026-11-13. Read through a fetching tool. Only the categories the article states are recorded.
   - <https://goldenglobes.com/nominations/2026>, read 2026-11-19. Every category, its winner marked; read twice through a fetching tool, the readings agreed. A title the page files under its article ("Studio, The") is written in reading order.
   - <https://goldenglobes.com/articles/nominations-announced-for-the-83rd-annual-golden-globes/>, read 2026-11-19. For the date the nominations were announced, December 8, 2025.
@@ -37,6 +37,9 @@ The catalog (TMDB), the cinemas (Wikidata) and the stories (Wikipedia) are older
   - <https://producersguild.org/2026-pga-awards-documentary-motion-pictures-nominees-pga-innovation-award-finalists/>, read 2026-11-19. For the documentary nominations of December 9, 2025.
   - <https://www.filmindependent.org/blog/here-are-your-2026-film-independent-spirit-awards-nominees/>, read 2026-11-19. The 41st Spirit Awards' nominees (December 3, 2025), downloaded and parsed; credit lines left off.
   - <https://s3.us-east-1.amazonaws.com/SA_SubForm_etc/2026_SpiritAwards_AllNominees%2BWinners_032726.pdf>, read 2026-11-19. Film Independent's "41 Years of Nominees and Winners", linked from its Spirit Awards history page; the 2026 pages' winners, each the first asterisked entry under its heading, matched to a nominee of that category.
+  - <https://www.academie-cinema.org/palmares/>, read 2026-11-19. The 51st César Awards' nominees and winners, read from the structured data the page carries; the honorary César, with no field, left out.
+  - <https://www.academie-cinema.org/evenements/autour-des-nominations-2026/>, read 2026-11-19. For the nominations of January 28, 2026.
+  - <https://www.academie-cinema.org/evenements/ceremonie-des-cesar-2026/>, read 2026-11-19. For the ceremony of February 26, 2026.
   - <https://www.televisionacademy.com/78th-emmy-winners>, read 2026-11-19. The Academy's winners release (Ernst & Young's list of the telecast's 19 categories), a PDF whose text was read directly.
 
 ## `src/data/history/awards-2026-reference.json`

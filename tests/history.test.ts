@@ -151,6 +151,17 @@ describe('recorded history', () => {
     }
   });
 
+  it('holds the 51st César Awards whole: nominees from January 28, winners from February 26, in their own spelling', () => {
+    const on = (day: string, kind: string) => recordedResults('cesar', 2026, day).filter((o) => o.kind === kind);
+    expect(recordedResults('cesar', 2026, '2026-01-27')).toEqual([]);
+    expect(on('2026-01-28', 'nominees')).toHaveLength(24);
+    expect(on('2026-02-25', 'winner')).toEqual([]);
+    const won = on('2026-02-26', 'winner');
+    expect(won).toHaveLength(24);
+    expect(won.find((o) => o.category === 'film')!.subjects).toEqual(["L'Attachement"]);
+    expect(won.find((o) => o.category === 'actor')).toMatchObject({ subjects: ['Laurent Lafitte'], work: 'La Femme la plus riche du monde' });
+  });
+
   it('cites a source for every observation, never publishes before it happens, and names the game\'s own categories', () => {
     const insts = (institutions as { institutions: { id: string; categories: { id: string }[]; official?: Record<string, { label?: string }> }[] }).institutions;
     const wrong: string[] = [];

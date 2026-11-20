@@ -11775,6 +11775,13 @@
     ]
    },
    "official": {
+    "2026": {
+     "start": "2026-02-26",
+     "end": "2026-02-26",
+     "label": "51st César Awards",
+     "source": "https://www.academie-cinema.org/evenements/ceremonie-des-cesar-2026/",
+     "checked": "2026-11-19"
+    },
     "2027": {
      "start": "2027-02-25",
      "end": "2027-02-25",
