@@ -52,7 +52,7 @@ describe('route-scoped fees', () => {
     expect(unsettled.every((r) => !r.applies && r.held)).toBe(true);
     // Every record is either applied or held with a reason; none is silently dropped.
     expect(ROUTE_RECORDS.every((r) => !!r.applies !== !!r.held)).toBe(true);
-    expect(ROUTE_RECORDS).toHaveLength(51);
+    expect(ROUTE_RECORDS).toHaveLength(52);
     // Serbia's long-stay route doesn't stand in for its work permit.
     expect(scopedRecords('RS', 'permit', { livesIn: 'US', passports: ['IN'], today: '2026-06-01' })).toEqual({ application: undefined, issuance: undefined });
   });
@@ -75,6 +75,16 @@ describe('route-scoped fees', () => {
     expect(at(['IN']).issuance).toEqual({ amount: 3000, currency: 'XCD' });
     expect(at(['JM']).issuance).toEqual({ amount: 1000, currency: 'XCD' });
     expect(at(['GB', 'JM']).issuance).toEqual({ amount: 1000, currency: 'XCD' });
+  });
+
+  // Batch 14 (November 20, 2026): Botswana's Washington embassy prices its visitor visa for applicants who live in the
+  // United States; Turks and Caicos takes its administration fee on applying and the permit's annual fee after approval.
+  it('charges Botswana\'s visa at the Washington embassy\'s price, and Turks and Caicos\' permit fee only after approval', () => {
+    const bw = (livesIn: string) => withScope(visaTerms('BW'), 'BW', 'visa', { livesIn, passports: ['IN'], today: '2026-11-20' });
+    expect(bw('US').fee).toEqual({ amount: 30, currency: 'USD' });
+    expect(bw('US').estimate?.only).toBe('days');
+    expect(bw('GB')).toEqual(visaTerms('BW'));
+    expect(permitTerms('TC', 'Work permit (Employed)')).toMatchObject({ fee: { amount: 270, currency: 'USD' }, issuance: { amount: 2700, currency: 'USD' }, days: 20, daysText: 'between 15 and 25 days', estimate: null });
   });
 
   // From November 20, 2026 (Nepal Tourism Board): some passports get no visa on arrival in Nepal and apply at a mission

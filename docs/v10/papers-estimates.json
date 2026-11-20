@@ -1,6 +1,6 @@
 {
  "counts": {
-  "permits": 160,
+  "permits": 159,
   "visas": 100,
   "permitTimes": 15,
   "visaTimes": 34
@@ -154,7 +154,6 @@
   "TO",
   "TN",
   "TM",
-  "TC",
   "TV",
   "UA",
   "AE",

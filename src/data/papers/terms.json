@@ -1503,6 +1503,35 @@
      "what": "Ministry of Labour, Grenada, Work Permit Guidelines (June 2020): fees (section 8.1, citing SRO 26/2008, 26/2015, 48/2014) and the 12-working-day timeframe (section 7.3, SRO 24/2017)"
     }
    ]
+  },
+  "TC": {
+   "route": "Work permit (Employed), as an entertainer",
+   "fee": 270,
+   "currency": "USD",
+   "feeBasis": "On applying, the non-refundable administration fee: $150 or 10% of the permit's fee, whichever is greater, so $270 for an entertainer. The permit's own annual fee, $2,700 for an entertainer or comedian (scale 5 of the Immigration Regulations 2016; actors aren't named), is paid within 21 working days of the approval; the page calls it the remaining balance without saying whether the administration fee counts toward it, and the game charges it in full.",
+   "issuance": {
+    "amount": 2700,
+    "currency": "USD"
+   },
+   "days": [
+    15,
+    25
+   ],
+   "daysBasis": "The service standard: 15 days where no labour clearance is needed, 25 where one is.",
+   "stayDays": 365,
+   "stayBasis": "The fee is annual; the game takes a year.",
+   "sources": [
+    {
+     "kind": "official",
+     "url": "https://www.gov.tc/bordercontrol/services/work-permits",
+     "what": "Turks and Caicos Border Control and Labour, work permits: the administration fee, payment after approval, the 15- and 25-day service standards (page undated, read November 20, 2026)"
+    },
+    {
+     "kind": "official",
+     "url": "https://www.gov.tc/bordercontrol/images/docs/Work%20Permit%20Fees%20-%20Immigration%20Regulations%202016.pdf",
+     "what": "Work permit fees, Immigration Regulations 2016: Entertainer/Comedian $2,700 a year (scale 5)"
+    }
+   ]
   }
  },
  "permitAuthorities": {
