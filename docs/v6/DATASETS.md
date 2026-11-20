@@ -82,6 +82,9 @@ The catalog (TMDB), the cinemas (Wikidata) and the stories (Wikipedia) are older
   - <https://www.festival-cannes.com/en/press/press-releases/peter-jackson-honorary-palme-d-or-of-the-79th-festival-de-cannes/>, read 2026-11-20. An Honorary Palme d'or (March 5, 2026).
   - <https://www.festival-cannes.com/en/press/press-releases/barbra-streisand-honorary-palme-d-or-of-the-79th-festival-de-cannes/>, read 2026-11-20. An Honorary Palme d'or (March 11, 2026).
   - <https://www.festival-cannes.com/en/press/press-releases/the-79th-festival-de-cannes-winners-list/>, read 2026-11-20. The Competition's prizes, the Short Film Palme d'or, the Caméra d'or and the CST awards (May 23, 2026).
+  - <https://www.annecyfestival.com/en/the-festival/official-selection/feature-films>, read 2026-11-20. The 14 sections of the 2026 official selection, each from its own page.
+  - <https://www.annecyfestival.com/en/news/special-prizes-winners>, read 2026-11-20. The special prizes, given at their ceremony of June 26, 2026; the winners themselves are read from the festival's 2026 awards page.
+  - <https://www.annecyfestival.com/en/the-festival/2026-awards>, read 2026-11-20. Every official award, announced at the closing ceremony of June 27, 2026 (its news item of that day says so).
 
 ## `src/data/history/awards-2026-reference.json`
 

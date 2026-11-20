@@ -18,7 +18,7 @@ a roster that was read says nothing about the eligibility rules, the recipients,
 | Sundance Film Festival (`sundance`) | 16 | 6 / 10 / 0 | 6 / 0 / 10 | 0 | 16 | 6 | 14 | 2 | 1 |
 | Berlin International Film Festival (`berlinale`) | 18 | 13 / 5 / 0 | 0 / 6 / 12 | 0 | 18 | 0 | 17 | 5 | 3 |
 | Cannes Film Festival (`cannes`) | 17 | 15 / 2 / 0 | 0 / 5 / 12 | 0 | 17 | 5 | 13 | 0 | 1 |
-| Annecy International Animation Film Festival (`annecy`) | 29 | 26 / 3 / 0 | 6 / 0 / 23 | 0 | 0 | 6 | 7 | 3 | 2 |
+| Annecy International Animation Film Festival (`annecy`) | 29 | 26 / 3 / 0 | 6 / 0 / 23 | 0 | 29 | 6 | 11 | 3 | 2 |
 | Venice International Film Festival (`venice`) | 25 | 24 / 1 / 0 | 7 / 0 / 18 | 0 | 0 | 7 | 12 | 4 | 2 |
 | Toronto International Film Festival (`tiff`) | 16 | 13 / 3 / 0 | 4 / 0 / 12 | 0 | 0 | 4 | 4 | 0 | 1 |
 | San Sebastián International Film Festival (`san-sebastian`) | 23 | 11 / 12 / 0 | 7 / 0 / 16 | 0 | 0 | 7 | 7 | 0 | 4 |
@@ -50,7 +50,7 @@ a roster that was read says nothing about the eligibility rules, the recipients,
 | Japan Academy Film Prize (`japan-academy`) | 17 | 17 / 0 / 0 | 17 / 0 / 0 | 0 | 17 | 0 | 9 | 0 | 2 |
 | Blue Dragon Film Awards (`blue-dragon`) | 3 | 0 / 0 / 3 | 0 / 0 / 3 | 0 | 0 | 0 | 2 | 0 | 0 |
 | European Film Awards (`european-film-awards`) | 20 | 15 / 5 / 0 | 15 / 0 / 5 | 0 | 20 | 14 | 8 | 6 | 0 |
-| **All 37** | 806 | 709 / 69 / 28 | 592 / 11 / 203 | 28 | 545 | 541 | 322 | 50 | 123 |
+| **All 37** | 806 | 709 / 69 / 28 | 592 / 11 / 203 | 28 | 574 | 541 | 326 | 50 | 123 |
 
 ## Research queue
 

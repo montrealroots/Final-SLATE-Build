@@ -1661,7 +1661,16 @@
      "competitive": true
     }
    ],
-   "rosterStatus": "read"
+   "rosterStatus": "read",
+   "official": {
+    "2026": {
+     "start": "2026-06-21",
+     "end": "2026-06-27",
+     "label": "2026 Annecy International Animation Film Festival",
+     "source": "https://www.annecyfestival.com/en/news/date-change-2026",
+     "checked": "2026-11-20"
+    }
+   }
   },
   {
    "id": "venice",

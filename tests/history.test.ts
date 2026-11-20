@@ -317,6 +317,22 @@ describe('recorded history', () => {
     expect(new Set(won.filter((o) => o.category).map((o) => o.category)).size).toBe(12); // every prize the game holds
   });
 
+  it('holds the 2026 Annecy festival: its sections from the opening, the special prizes a day before the official ones', () => {
+    const on = (day: string, kind: string) => recordedResults('annecy', 2026, day).filter((o) => o.kind === kind);
+    expect(recordedResults('annecy', 2026, '2026-06-20')).toEqual([]);
+    const sel = on('2026-06-21', 'nominees');
+    expect(sel.reduce((n, o) => n + o.subjects.length, 0)).toBe(257);
+    expect(sel.find((o) => o.category === 'features')!.subjects).toContain('The Violinist');
+    expect(on('2026-06-26', 'winner').find((o) => o.category === 'canal-junior')!.subjects).toEqual(['Piccolo Piccolo']);
+    expect(on('2026-06-26', 'winner').some((o) => o.category === 'feature-cristal')).toBe(false);
+    const won = on('2026-06-27', 'winner');
+    expect(won.find((o) => o.category === 'feature-cristal')!.subjects).toEqual(['The Violinist']);
+    // Two prizes are called Jury Award; each is the game's own category for its section.
+    expect(won.find((o) => o.category === 'feature-jury')!.subjects).toEqual(['Iron Boy']);
+    expect(won.find((o) => o.category === 'short-jury')!.subjects).toEqual(['God Is Shy']);
+    expect(won).toHaveLength(36);
+  });
+
   it('cites a source for every observation, never publishes before it happens, and names the game\'s own categories', () => {
     const insts = (institutions as { institutions: { id: string; categories: { id: string }[]; official?: Record<string, { label?: string }> }[] }).institutions;
     const wrong: string[] = [];
