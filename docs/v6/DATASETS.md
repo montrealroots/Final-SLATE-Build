@@ -91,6 +91,8 @@ The catalog (TMDB), the cinemas (Wikidata) and the stories (Wikipedia) are older
   - <https://www.labiennale.org/en/news/george-clooney-golden-lion-lifetime-achievement>, read 2026-11-20. A Golden Lion for Lifetime Achievement, given at the opening on September 2, 2026.
   - <https://www.labiennale.org/en/news/ellen-burstyn-golden-lion-lifetime-achievement>, read 2026-11-20. A Golden Lion for Lifetime Achievement, given on September 7, 2026.
   - <https://www.sansebastianfestival.com/2026/news/1/23683/in>, read 2026-11-20. The festival's official and honorary awards of its closing ceremony, September 26, 2026.
+  - <https://www.biff.kr/eng/html/program/prog_list.asp?c_idx=442>, read 2026-11-20. The 13 films of the Competition, read from the section's page and its second page.
+  - <https://www.biff.kr/eng/addon/10000001/page.asp?page_num=11121>, read 2026-11-20. Every award of the opening ceremony (October 6), the closing ceremony and the Busan Vision Awards; both of the latter are shown from the closing day, October 15, as the page dates neither.
 
 ## `src/data/history/awards-2026-reference.json`
 

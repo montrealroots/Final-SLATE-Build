@@ -357,6 +357,17 @@ describe('recorded history', () => {
     expect(won.filter((o) => o.category === 'donostia').map((o) => o.subjects[0])).toEqual(['Werner Herzog', 'Naomi Watts']);
   });
 
+  it('holds the 31st Busan festival: its Competition and the opening night\'s honours from October 6, the rest from October 15', () => {
+    const on = (day: string) => recordedResults('busan', 2026, day);
+    expect(on('2026-10-05')).toEqual([]);
+    expect(on('2026-10-06').find((o) => o.category === 'competition')!.subjects).toHaveLength(13);
+    expect(on('2026-10-06').filter((o) => o.kind === 'winner').map((o) => o.subjects[0])).toEqual(['Michelle Yeoh', 'Kim Dong-ho', 'Ann Hui']);
+    const won = on('2026-10-15').filter((o) => o.kind === 'winner');
+    expect(won.find((o) => o.categoryName === 'Busan Award for Best Film')!.subjects).toEqual(['Midday Meal']);
+    // A prize given twice is one result naming both, each with the film.
+    expect(won.find((o) => o.categoryName === 'Busan Award for Best Actor')!.subjects).toEqual(['Zhou Xun, for The First Taste of Loneliness', 'Himeno Kashun, for Satoko Always']);
+  });
+
   it('cites a source for every observation, never publishes before it happens, and names the game\'s own categories', () => {
     const insts = (institutions as { institutions: { id: string; categories: { id: string }[]; official?: Record<string, { label?: string }> }[] }).institutions;
     const wrong: string[] = [];
