@@ -3467,6 +3467,21 @@
      "what": "Government Gazette No. 55209, August 17, 2026: visitor's visa (section 11) R425,00"
     }
    ]
+  },
+  "AR": {
+   "name": "Tourist visa",
+   "fee": 150,
+   "currency": "USD",
+   "feeBasis": "The consular fee, US$150 (or euros, by the consulate), payable in local currency.",
+   "stayDays": 90,
+   "stayBasis": "A tourist visa allows stays of up to 90 days.",
+   "sources": [
+    {
+     "kind": "official",
+     "url": "https://cancilleria.gob.ar/es/servicios/visas/visa-para-turismo",
+     "what": "Cancillería, Visa para Turismo: consular fee $150 (US dollars or euros), stays of up to 90 days"
+    }
+   ]
   }
  },
  "authorizations": {

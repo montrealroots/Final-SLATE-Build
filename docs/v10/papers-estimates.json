@@ -1,9 +1,9 @@
 {
  "counts": {
   "permits": 170,
-  "visas": 107,
+  "visas": 106,
   "permitTimes": 11,
-  "visaTimes": 34
+  "visaTimes": 35
  },
  "permits": [
   "AF",
@@ -183,7 +183,6 @@
   "AS",
   "AI",
   "AG",
-  "AR",
   "BS",
   "BB",
   "BY",
@@ -301,6 +300,7 @@
  ],
  "visaTimes": [
   "AO",
+  "AR",
   "BA",
   "BI",
   "CM",
