@@ -81,7 +81,7 @@ test('2D animation: deliver, release digitally, enter the Annie Awards and reach
   }
   expect(['Winner', 'Did Not Win', 'Not Nominated', 'Not Accepted']).toContain(await entryStatus(page));
   await page.locator('section', { hasText: 'Your Entries' }).getByRole('button', { name: '54th Annie Awards' }).click();
-  await expect(page.locator('li', { hasText: 'Best Short Subject' }).getByText(/Winner: /)).toBeVisible();
+  await expect(page.locator('li', { hasText: 'Best Short Subject' }).getByText(/^Winner: /)).toBeVisible();
   await page.screenshot({ path: 'test-results/journey-2d-awards.png', fullPage: true });
 });
 
@@ -677,7 +677,9 @@ test('festival under official rules: submit, selection, screening attended, resu
   expect(['Winner', 'Special Mention', 'Did Not Win']).toContain(result);
   await expect(prize.getByText('Considered from its selection; no entry or fee.')).toBeVisible();
   await liveEntry(page).getByRole('button', { name: 'Sundance Film Festival 2027' }).click();
-  await expect(page.locator('li', { hasText: 'Short Film Grand Jury Prize' }).getByText(/Winner: /)).toBeVisible();
+  // Anchored (from November 20, 2026): the title generator can name a rival short "Fatima's Winner", whose description in
+  // About The Other Works ("Fatima's Winner: a 25-minute ...") matched an unanchored /Winner: / in about one run in five.
+  await expect(page.locator('li', { hasText: 'Short Film Grand Jury Prize' }).getByText(/^Winner: /)).toBeVisible();
 
   // Save, reload, and keep playing: one result message, one fee payment, the same winner.
   await saveAndExit(page);
