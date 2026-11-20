@@ -19,6 +19,8 @@ interface Recorded {
   route?: string; name?: string; fee: number; currency: string; feeBasis: string;
   /** Left out where research found the fee but no decision time (from November 17, 2026): the time is then estimated. */
   days?: number | [number, number]; daysBasis?: string; stayDays?: number; stayBasis?: string; sources: Source[];
+  /** A further fee paid only once it is issued (from November 20, 2026: Mauritius' permit fee after its application fee). */
+  issuance?: { amount: number; currency: string };
 }
 /** An authorization's record, and the passports whose authorization there differs (Australia's free eVisitor for Europeans). */
 interface Authority extends Recorded { passports?: (Partial<Recorded> & { codes: string[] })[] }
@@ -64,12 +66,13 @@ function researched(r: Recorded, route: string, country = '', pool: [string, Rec
       route: r.route ?? r.name ?? route, fee: { amount: r.fee, currency: r.currency }, days: e.days, daysText: e.daysText,
       stayDays: r.stayDays ?? null,
       basis: [r.feeBasis, r.stayBasis, `How long it takes to decide is the game's estimate: no source found gives it, so it takes the middle of the ${e.estimate!.where} (${e.estimate!.from.join(', ')}).`].filter(Boolean).join(' '),
-      sources: r.sources, estimate: { ...e.estimate!, only: 'days' },
+      sources: r.sources, estimate: { ...e.estimate!, only: 'days' }, ...(r.issuance ? { issuance: r.issuance } : {}),
     };
   }
   return {
     route: r.route ?? r.name ?? route, fee: { amount: r.fee, currency: r.currency }, days: middle(r.days), daysText: words(r.days),
     stayDays: r.stayDays ?? null, basis: [r.feeBasis, r.daysBasis, r.stayBasis].filter(Boolean).join(' '), sources: r.sources, estimate: null,
+    ...(r.issuance ? { issuance: r.issuance } : {}),
   };
 }
 

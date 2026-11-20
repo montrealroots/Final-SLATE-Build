@@ -43,7 +43,18 @@ export function WorldView() {
             <label htmlFor={searchId}>Search Places</label>
             <input id={searchId} type="search" value={ws.q} disabled={!ws.country} onChange={(e) => ws.setQ(e.target.value)} />
           </div>
-          {ws.status === 'loading' && <p role="status" className="muted">Loading places…</p>}
+          {/* While the places load, a list of the same rows holds the card's height, as the map's placeholder holds its box:
+              until November 20, 2026 the card was one line tall here and the list then pushed the map down by itself (the
+              UI audit's layout shift, 0.17, when the places arrived after the first draw). */}
+          {ws.status === 'loading' && (
+            <>
+              <ul className="list" role="status" aria-label="Places">
+                <li><strong className="muted">Loading places…</strong><div className="dim">&nbsp;</div></li>
+                {Array.from({ length: SHOWN - 1 }, (_, i) => <li key={i} aria-hidden="true" style={{ visibility: 'hidden' }}><strong>&nbsp;</strong><div className="dim">&nbsp;</div></li>)}
+              </ul>
+              <p className="dim" aria-hidden="true" style={{ visibility: 'hidden' }}>&nbsp;</p>
+            </>
+          )}
           {(ws.status === 'error' || openFailed) && <LoadProblem onRetry={() => (openFailed ? void open(openFailed) : ws.retry())} />}
           {ws.status === 'ready' && (
             shown.length ? (

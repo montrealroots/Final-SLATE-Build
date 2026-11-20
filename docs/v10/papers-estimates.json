@@ -1,9 +1,9 @@
 {
  "counts": {
-  "permits": 170,
-  "visas": 106,
-  "permitTimes": 11,
-  "visaTimes": 35
+  "permits": 165,
+  "visas": 104,
+  "permitTimes": 15,
+  "visaTimes": 36
  },
  "permits": [
   "AF",
@@ -19,7 +19,6 @@
   "AZ",
   "BD",
   "BY",
-  "BZ",
   "BJ",
   "BT",
   "BO",
@@ -98,7 +97,6 @@
   "ML",
   "MH",
   "MR",
-  "MU",
   "FM",
   "MD",
   "MC",
@@ -129,7 +127,6 @@
   "QA",
   "CG",
   "RU",
-  "RW",
   "SH",
   "KN",
   "LC",
@@ -163,7 +160,6 @@
   "TM",
   "TC",
   "TV",
-  "UG",
   "UA",
   "AE",
   "UY",
@@ -174,8 +170,7 @@
   "WF",
   "EH",
   "YE",
-  "ZM",
-  "ZW"
+  "ZM"
  ],
  "visas": [
   "AF",
@@ -264,7 +259,6 @@
   "ST",
   "SN",
   "RS",
-  "SB",
   "GS",
   "LK",
   "SD",
@@ -280,7 +274,6 @@
   "TC",
   "TV",
   "AE",
-  "UY",
   "VE",
   "EH",
   "YE"
@@ -292,11 +285,15 @@
   "EC",
   "GH",
   "IS",
+  "MU",
   "MX",
   "NO",
   "PH",
+  "RW",
   "RS",
-  "KR"
+  "KR",
+  "UG",
+  "ZW"
  ],
  "visaTimes": [
   "AO",
@@ -332,6 +329,7 @@
   "TW",
   "TJ",
   "UA",
+  "UY",
   "VU",
   "WF"
  ]

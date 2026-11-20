@@ -18,7 +18,7 @@ The owner's package `SLATE-Research-Recovery-2026-11-19` is applied as targeted 
   - 10 of the 45 records apply, by where the applicant lives, their passport and the date. 35 are held, each with its reason: conflicts, undated schedules, unconfirmed commencement, other routes.
   - Colombia's study fee is paid on applying and its issuance fee only on issue, once.
   - Botswana's decision counts working days.
-  - None of the 322 gap rows is closed, and the 106 visa and 170 permit estimates stand.
+  - None of the 322 gap rows was closed by the package. Batch 6 (later the same day) closed the Solomon Islands' visa in full and settled five more fees; batch 7 closed Belize's permit in full. 104 visa and 165 permit estimates remain (36 and 15 more with only the decision time estimated). Open finding: `work.json` marks Armenia, Kazakhstan and Ukraine free to work in for every passport, which looks wrong for at least Ukraine. See `docs/v10/papers-research/fees-without-times.md`.
 - **Freshness.** Season titles and people come from `src/engine/world-cast.ts`.
   - No title comes back in a later season for 164 seasons, from 2020.
   - People form a lasting pool: 60 debut a year, each with one name for good and a career that rises and fades.
@@ -40,7 +40,7 @@ finished, and they come back only when the owner says so:
 - **J20 (phone parity):** every journey on WebKit; today only the iPhone projects' list in `playwright.config.ts` runs.
 - **Papers research:** Iran, Malawi, Turkey, Serbia and Colombia stay the game's estimate, as their sources conflict
   (`docs/v10/papers-research/fees-without-times.md`); South Africa, Hong Kong and Argentina were settled from their
-  governments' pages on November 20 (batch 5, with Macao and Taiwan). 106 visitor visas and 170 work permits are still
+  governments' pages on November 20 (batch 5, with Macao and Taiwan). 104 visitor visas and 165 work permits are still (after batches 6 and 7 on November 20)
   estimates in all (`docs/v10/papers-estimates.json`), most with conflicting or aggregator-only sources.
 - **Real-phone and pacing tests:** they need the owner's own device and a person playing.
 
