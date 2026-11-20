@@ -75,7 +75,7 @@ function matrix() {
       'visiting rules': fromRebuild(VISITS[iso], 'who may visit'),
       'visitor visa application': empty ? ['not applicable', 'no populated place']
         : visaTerms(iso).estimate?.only ? ['modeled', 'its visitor visa\'s fee is researched, with its source; how long it takes to decide is the game\'s estimate, said as one']
-        : RESEARCHED_VISAS.includes(iso) ? ['verified', 'its visitor visa, researched (November 14 or 17, 2026), with its source']
+        : RESEARCHED_VISAS.includes(iso) ? ['verified', 'its visitor visa, researched (November 14, 17 or 20, 2026), with its source']
           : VISA_AUTHORITY_OF[iso] ? ['verified', `its sovereign's visa (${VISA_AUTHORITY_OF[iso]}), researched, with the law that says so`]
           : VISA_DESTINATIONS.has(iso) ? (iso === 'US' ? ['implemented/tested', '1221\'s visa record for some passports; tests/v8-papers.test.ts, e2e/v9-papers.spec.ts'] : ['inherited-unverified', '1221\'s visa record, for some passports only'])
             : ['modeled', 'no research gives its fee or time yet: the game estimates both from the researched visas, and says so'],
