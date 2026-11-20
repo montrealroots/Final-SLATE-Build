@@ -63,3 +63,7 @@ Batch 5 (November 20, 2026), from the governments' own pages:
   published, so it's a fee-only record (Bureau of Consular Affairs).
 - South Africa: the visitor's visa R425 in the fee schedule gazetted August 17, 2026; no decision time published, so
   it's a fee-only record (Department of Home Affairs).
+- Not recorded, the governments' own pages refusing the tools or disagreeing: Cyprus (gov.cy and mfa.gov.cy refuse
+  the tools; €90 for a Category C visa by search); Trinidad and Tobago (TT$200 single or TT$400 multiple by the
+  Brasília FAQ, while the Ministry's September 2025 instructions say single-entry visas are no longer offered; 10 or
+  14 business days by different missions).
