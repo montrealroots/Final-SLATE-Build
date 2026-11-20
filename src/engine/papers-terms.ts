@@ -21,6 +21,8 @@ interface Recorded {
   days?: number | [number, number]; daysBasis?: string; stayDays?: number; stayBasis?: string; sources: Source[];
   /** A further fee paid only once it is issued (from November 20, 2026: Mauritius' permit fee after its application fee). */
   issuance?: { amount: number; currency: string };
+  /** Set where the decision time is a measured average, not a target or a limit (from November 20, 2026: Iceland's 2025 two months). */
+  daysKind?: 'average';
 }
 /** An authorization's record, and the passports whose authorization there differs (Australia's free eVisitor for Europeans). */
 interface Authority extends Recorded { passports?: (Partial<Recorded> & { codes: string[] })[] }
@@ -70,7 +72,7 @@ function researched(r: Recorded, route: string, country = '', pool: [string, Rec
     };
   }
   return {
-    route: r.route ?? r.name ?? route, fee: { amount: r.fee, currency: r.currency }, days: middle(r.days), daysText: words(r.days),
+    route: r.route ?? r.name ?? route, fee: { amount: r.fee, currency: r.currency }, days: middle(r.days), daysText: r.daysKind === 'average' ? `about ${words(r.days)}, on average` : words(r.days),
     stayDays: r.stayDays ?? null, basis: [r.feeBasis, r.daysBasis, r.stayBasis].filter(Boolean).join(' '), sources: r.sources, estimate: null,
     ...(r.issuance ? { issuance: r.issuance } : {}),
   };

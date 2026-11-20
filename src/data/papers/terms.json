@@ -875,8 +875,23 @@
   "IS": {
    "fee": 80000,
    "currency": "ISK",
-   "feeBasis": "The Directorate of Immigration's fee for a first work-based residence permit from January 1, 2026; work permits are decided by the Directorate from July 8, 2026.",
+   "feeBasis": "ISK 80,000 for a first work-based residence permit (D-107), for applications from January 1, 2026, not refunded once submitted. It's the residence permit's fee; the work permit beside it is a separate decision.",
    "sources": [
+    {
+     "kind": "official",
+     "url": "https://island.is/en/o/directorate-of-immigration/fees",
+     "what": "Directorate of Immigration, Fees: D-107, first work-based residence permit, ISK 80,000 (read from the authority's own text in the official search index; the page refused direct retrieval)"
+    },
+    {
+     "kind": "official",
+     "url": "https://island.is/en/news/increase-in-fees-for-residence-and-citizenship-applications",
+     "what": "Directorate of Immigration, December 22, 2025: the new fees apply to applications from January 1, 2026 (read from the authority's own text in the official search index; the page refused direct retrieval)"
+    },
+    {
+     "kind": "official",
+     "url": "https://island.is/en/o/directorate-of-immigration/have-applied-work",
+     "what": "Directorate of Immigration, Have applied (work): two months on average in 2025 for approved first work-based permits; no expedited processing (read from the authority's own text in the official search index; the page refused direct retrieval)"
+    },
     {
      "kind": "secondary",
      "url": "https://eiglaw.com/iceland-raises-fees-for-residence-and-citizenship-applications-in-2026/",
@@ -887,7 +902,10 @@
      "url": "https://island.is/s/utlendingastofnun/frett/breytingar-a-medferd-umsokna-um-atvinnuleyfi",
      "what": "Directorate of Immigration: work permit applications decided by the Directorate from July 8, 2026"
     }
-   ]
+   ],
+   "days": 60,
+   "daysKind": "average",
+   "daysBasis": "About two months on average for first work-based residence permits approved in 2025. The Directorate says no single application's completion can be predicted, and it can't be expedited."
   },
   "MX": {
    "fee": 321,
@@ -2244,16 +2262,28 @@
    "name": "Tourist visa (15 days)",
    "fee": 30,
    "currency": "USD",
-   "feeBasis": "The 15-day tourist visa, paid on arrival ($50 for 30 days, $125 for 90).",
+   "feeBasis": "The 15-day tourist visa, US$30, paid online or at the airport and issued at the immigration desk on arrival ($50 for 30 days, $125 for 90). Some nationalities must get their visa from a mission before travelling; the game doesn't single them out yet.",
    "stayDays": 15,
    "stayBasis": "The visa charged allows 15 days.",
    "sources": [
+    {
+     "kind": "official",
+     "url": "https://immigration.gov.np/visa-information",
+     "what": "Department of Immigration, Visa information: tourist visa 15 days US$30, 30 days US$50, 90 days US$125; form, payment, then issuance at the desk (read from the authority's own text in the official search index; the page refused direct retrieval)"
+    },
+    {
+     "kind": "official",
+     "url": "https://immigration.gov.np/user-manual-for-visa-fee-payment",
+     "what": "Department of Immigration, visa fee payment manual: about five minutes to fill in and pay; the sticker is issued at the desk (read from the authority's own text in the official search index; the page refused direct retrieval)"
+    },
     {
      "kind": "secondary",
      "url": "https://www.windhorsetours.com/nepal/nepal-visa/",
      "what": "Windhorse Tours, Nepal visa: 15 days USD 30, 30 days USD 50, 90 days USD 125"
     }
-   ]
+   ],
+   "days": 1,
+   "daysBasis": "Issued at the immigration desk on arrival, usually in under an hour by the airport's guidance. The online form's 15-day validity is how long the receipt lasts, not a wait."
   },
   "GE": {
    "name": "e-Visa",
@@ -2758,16 +2788,33 @@
    "name": "Tourist eVisa",
    "fee": 50,
    "currency": "USD",
-   "feeBasis": "The eVisa, paid online in kina at the equivalent.",
+   "feeBasis": "The tourist visa itself has no fee; the online application carries a US$50 eVisa charge, paid once and not refunded if the application fails.",
    "stayDays": 60,
-   "stayBasis": "A stay of 30 or 60 days by nationality.",
+   "stayBasis": "Up to 60 days, single entry, for a tourist visa; Easy Visitor visas of 30 or 60 days are separate classes.",
    "sources": [
+    {
+     "kind": "official",
+     "url": "https://icsa.gov.pg/faqs",
+     "what": "ICSA FAQs: 10 working days when requirements are met; charges not refunded if the application fails (read from the authority's own text in the official search index; the page refused direct retrieval)"
+    },
+    {
+     "kind": "official",
+     "url": "https://icsa.gov.pg/explore-visa/visit/visitor",
+     "what": "ICSA, Visitor visa: single entry, up to 60 days (read from the authority's own text in the official search index; the page refused direct retrieval)"
+    },
+    {
+     "kind": "official",
+     "url": "https://ica.gov.pg/uploads/media/post_file_3195072-visa-information-booklet-2025.pdf",
+     "what": "Visa information booklet 2025: tourist (tour package, own itinerary) fee nil, eVisa fee US$50 (read from the authority's own text in the official search index; the page refused direct retrieval)"
+    },
     {
      "kind": "secondary",
      "url": "https://www.visatraveler.com/visa/papua-new-guinea/evisa/",
      "what": "Visa Traveler, Papua New Guinea eVisa: $50 for every application; 30 or 60 days by nationality"
     }
-   ]
+   ],
+   "days": 14,
+   "daysBasis": "A target of 10 working days when all requirements are met (the Immigration and Citizenship Service Authority, current at June 2025): about two weeks, and not a promise. Some eVisas are issued almost at once."
   },
   "TL": {
    "name": "Visa on arrival",
@@ -3486,21 +3533,28 @@
    "name": "e-Visa (single entry)",
    "fee": 20,
    "currency": "USD",
-   "feeBasis": "The single-entry e-visa, $20 on the Ministry of Foreign Affairs' page ($30 double entry; the fee doubles for the urgent procedure). Its processing time is given as three working days by the embassy and up to nine by launch reports, so it isn't recorded.",
+   "feeBasis": "The single-entry e-visa, $20 ($30 double entry); the urgent procedure doubles them, to $40 and $60.",
    "stayDays": 30,
    "stayBasis": "A single entry, staying up to 30 days.",
    "sources": [
     {
      "kind": "official",
      "url": "https://mfa.gov.ua/en/consular-affairs/entry-and-stay-foreigners-ukraine/e-visa",
-     "what": "Ministry of Foreign Affairs of Ukraine, e-Visa: single entry 20 US dollars, double entry 30"
+     "what": "Ministry of Foreign Affairs, e-Visa: regular 3 working days, urgent 1 working day; single entry $20, double $30, doubled when urgent (read from the authority's own text in the official search index; the page refused direct retrieval)"
+    },
+    {
+     "kind": "official",
+     "url": "https://mfa.gov.ua/en/consular-affairs/entry-and-stay-foreigners-ukraine/visa-information",
+     "what": "Ministry of Foreign Affairs, Visa information: e-visas in 9 working days (older wording, kept as a conflict); consular visas up to 10 working days, $65 (read from the authority's own text in the official search index; the page refused direct retrieval)"
     },
     {
      "kind": "secondary",
      "url": "https://discover.passportindex.org/policy-and-regulations/ukraine-e-visa-relaunch/",
      "what": "Passport Index, Ukraine e-visa relaunch: single entry for up to 30 days"
     }
-   ]
+   ],
+   "days": 5,
+   "daysBasis": "Registered within three working days, or one working day under the urgent procedure, by the Ministry's e-visa page, which announces the changed terms. The Ministry's general visa page still says nine working days for an e-visa; the specific page is the later word. The consular visa is a different route (up to 10 working days, $65)."
   },
   "HK": {
    "name": "Visit visa (ordinary visa, single entry)",
@@ -3634,6 +3688,41 @@
      "kind": "official",
      "url": "https://www.sainthelena.gov.sh/documents/Final-Immigration-Policy-240613.pdf",
      "what": "St Helena Government, Immigration Policy (June 13, 2024), current fees: holiday permit £20 for non-visa nationals; £50 for visa nationals applying at least 21 days in advance"
+    }
+   ]
+  },
+  "CY": {
+   "name": "Short-stay visa (Category C)",
+   "fee": 90,
+   "currency": "EUR",
+   "feeBasis": "The general adult fee, €90 (€45 for ages 6 to 12, free under 6). Some nationalities pay a reduced €35 under facilitation agreements, which the game doesn't apply yet. Embassies take it in local currency at the Treasury's monthly rate.",
+   "days": [
+    15,
+    45
+   ],
+   "daysBasis": "Usually decided in 15 days, up to 45, on the government's visa page (which doesn't say whether working or calendar days). An official information sheet of unknown date gives 10 calendar days, up to 30, instead.",
+   "stayDays": 90,
+   "stayBasis": "A Category C visa covers up to 90 days.",
+   "sources": [
+    {
+     "kind": "official",
+     "url": "https://www.gov.cy/en/information/visas/",
+     "what": "Government of Cyprus, Visas: Category C €90 for adults, €45 for ages 6 to 12, free under 6; usually decided in 15 days, up to 45 (read from the authority's own text in the official search index; the page refused direct retrieval)"
+    },
+    {
+     "kind": "official",
+     "url": "https://www.gov.cy/mfa-embassywashington/en/consular-services/visa-information/",
+     "what": "Embassy of Cyprus in Washington, visa information: the same 15 and 45 days; paid in local currency at the Treasury's monthly rate (read from the authority's own text in the official search index; the page refused direct retrieval)"
+    },
+    {
+     "kind": "official",
+     "url": "https://www.gov.cy/media/sites/42/2026/01/%CE%93%CE%9B292_final.pdf",
+     "what": "Fee receipt form (January 2026): €35 facilitation rate for named nationalities; Cabo Verde €67.50 and €33.75 (read from the authority's own text in the official search index; the page refused direct retrieval)"
+    },
+    {
+     "kind": "official",
+     "url": "https://www.gov.cy/media/sites/145/2025/12/Information-on-visas.pdf",
+     "what": "Information on visas (December 2025 upload, mission and date not established): 10 calendar days, extendable to 30, urgent 2 working days; kept as a conflict (read from the authority's own text in the official search index; the page refused direct retrieval)"
     }
    ]
   }

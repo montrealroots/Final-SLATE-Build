@@ -400,7 +400,7 @@ test('Venice: selection for the Competition is not a win; its prizes are decided
   await expect(lion.getByText('Considered from its selection; no entry or fee.')).toBeVisible();
   await filterTo(page, 'Glass Orchard', 'Yours');
   await expect(row(page, 'Venezia 83 (Competition)').getByText(/^Selected: /)).toBeVisible();
-  await expect(row(page, 'Venezia 83 (Competition)').getByText(/Winner: /)).toHaveCount(0);
+  await expect(row(page, 'Venezia 83 (Competition)').getByText(/^Winner: /)).toHaveCount(0);
   await expect(row(page, 'Golden Lion For Best Film').getByText(/^Winner: /)).toBeVisible();
   const s = await readSavedState(page);
   expect(s.projects[0].obligations.flatMap((o: State) => o.postings).filter((x: State) => x.kind === 'settle' && x.key === 'fee:venice-2026:competition')).toHaveLength(1);
