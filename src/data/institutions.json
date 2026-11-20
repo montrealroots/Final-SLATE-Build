@@ -2929,7 +2929,16 @@
      "competitive": false
     }
    ],
-   "rosterStatus": "read"
+   "rosterStatus": "read",
+   "official": {
+    "2026": {
+     "start": "2026-09-18",
+     "end": "2026-09-26",
+     "label": "74th San Sebastián International Film Festival",
+     "source": "https://www.sansebastianfestival.com/2026/the_edition/1/23327/in",
+     "checked": "2026-11-20"
+    }
+   }
   },
   {
    "id": "busan",

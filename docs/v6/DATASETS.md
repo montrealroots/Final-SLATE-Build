@@ -90,6 +90,7 @@ The catalog (TMDB), the cinemas (Wikidata) and the stories (Wikipedia) are older
   - <https://www.labiennale.org/en/news/official-awards-83rd-venice-international-film-festival>, read 2026-11-20. Every prize of the five official juries and the audience award, from the ceremony of September 12, 2026; the Golden Lion and the Grand Jury Prize are the reference set's.
   - <https://www.labiennale.org/en/news/george-clooney-golden-lion-lifetime-achievement>, read 2026-11-20. A Golden Lion for Lifetime Achievement, given at the opening on September 2, 2026.
   - <https://www.labiennale.org/en/news/ellen-burstyn-golden-lion-lifetime-achievement>, read 2026-11-20. A Golden Lion for Lifetime Achievement, given on September 7, 2026.
+  - <https://www.sansebastianfestival.com/2026/news/1/23683/in>, read 2026-11-20. The festival's official and honorary awards of its closing ceremony, September 26, 2026.
 
 ## `src/data/history/awards-2026-reference.json`
 

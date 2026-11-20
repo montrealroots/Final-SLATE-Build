@@ -347,6 +347,16 @@ describe('recorded history', () => {
     expect(new Set(won.filter((o) => o.category).map((o) => o.category)).size).toBe(18); // every prize the game holds, and the lifetime lions
   });
 
+  it('holds the 74th San Sebastián festival\'s awards from its closing night, the shared Silver Shell as one result', () => {
+    const on = (day: string) => recordedResults('san-sebastian', 2026, day);
+    expect(on('2026-09-25')).toEqual([]);
+    const won = on('2026-09-26');
+    expect(won).toHaveLength(22);
+    expect(won.find((o) => o.category === 'golden-shell')!.subjects).toEqual(['Tender Loving Care']);
+    expect(won.find((o) => o.category === 'silver-shell-leading')!.subjects).toEqual(['Kate O’Flynn, for Tender Loving Care', 'Asta Kamma August, for Markens grøde']);
+    expect(won.filter((o) => o.category === 'donostia').map((o) => o.subjects[0])).toEqual(['Werner Herzog', 'Naomi Watts']);
+  });
+
   it('cites a source for every observation, never publishes before it happens, and names the game\'s own categories', () => {
     const insts = (institutions as { institutions: { id: string; categories: { id: string }[]; official?: Record<string, { label?: string }> }[] }).institutions;
     const wrong: string[] = [];
