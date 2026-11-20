@@ -15,7 +15,9 @@ describe('recorded history', () => {
     expect(observationsAt('2025-12-07')).toEqual([]);
     // The Golden Globes' nominees from December 8, 2025 (from November 19, 2026; until then none was recorded, and a
     // January start saw nothing), its winners from January 11.
-    expect(observationsAt('2026-01-05').every((o) => o.institution === 'golden-globes' && o.kind === 'nominees')).toBe(true);
+    // By then: nominees only, the Golden Globes' and the PGA's documentary field (December 9, 2025).
+    expect(observationsAt('2026-01-05').every((o) => o.kind === 'nominees')).toBe(true);
+    expect([...new Set(observationsAt('2026-01-05').map((o) => o.institution))].sort()).toEqual(['golden-globes', 'pga']);
     expect(recordedResults('golden-globes', 2026, '2026-01-10')).toHaveLength(28);
     expect(recordedResults('golden-globes', 2026, '2026-01-10').some((o) => o.kind === 'winner')).toBe(false);
     const globes = recordedResults('golden-globes', 2026, '2026-01-11').filter((o) => o.kind === 'winner');
@@ -120,6 +122,16 @@ describe('recorded history', () => {
     expect(won.find((o) => o.category === 'episodic')).toMatchObject({ subjects: ['R. Scott Gemmill'], work: 'The Pitt, “7:00 A.M.”' });
     // A series' award names the show, crediting its writers.
     expect(won.find((o) => o.category === 'comedy-series')).toMatchObject({ subjects: ['The Studio'], recipients: 'work_only' });
+  });
+
+  it('holds the 37th PGA Awards: documentary nominees from December 9, the rest from January 9, winners from February 26 and 28', () => {
+    const on = (day: string, kind: string) => recordedResults('pga', 2026, day).filter((o) => o.kind === kind);
+    expect(on('2025-12-09', 'nominees').map((o) => o.category)).toEqual(['documentary']);
+    expect(on('2026-01-09', 'nominees')).toHaveLength(10);
+    expect(on('2026-02-26', 'winner').map((o) => o.category).sort()).toEqual(['childrens', 'short-form']);
+    const won = on('2026-02-28', 'winner');
+    expect(won).toHaveLength(12);
+    expect(won.find((o) => o.category === 'theatrical')).toMatchObject({ subjects: ['One Battle After Another'], credited: 'Adam Somner, Sara Murphy, Paul Thomas Anderson' });
   });
 
   it('cites a source for every observation, never publishes before it happens, and names the game\'s own categories', () => {
