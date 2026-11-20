@@ -70,7 +70,7 @@ async function open(page: Page, title: string): Promise<void> {
 }
 
 test('J13: a first-look deal for television covers series, not films; a covered series goes to the company first, and its answer is its read', async ({ page }, info) => {
-  test.skip(!onlyOn(info, ['desktop', 'phone', 'iphone-15-pro-max']), 'Desktop, phone and the iPhone 15 Pro Max (WebKit).');
+  test.skip(!onlyOn(info, ['desktop', 'phone', 'iphone-18-pro-max']), 'Desktop, phone and the iPhone 18 Pro Max (WebKit).');
   test.setTimeout(900_000);
   await serveCatalog(page, {}, { 'world.json': { ...(CATALOG_FIXTURE['world.json'] as object), studios: STUDIOS } });
   await quickLife(page, 'us-los-angeles', '2026-11-12');

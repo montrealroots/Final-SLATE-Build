@@ -41,7 +41,7 @@ This repository is the continuing base for the game. It is a working, tested bas
 - Rates, fees, throughput and quality assessments are **simulation assumptions** (`docs/ASSUMPTIONS.md`), not real salaries or measures of artistic merit.
 - Not modeled yet: personal finances, reputation, and offers from other producers.
 - Saves live in this browser's local storage. Clearing site data deletes them.
-- Browser testing used Chromium at emulated sizes and WebKit with iPhone 15 Plus and 15 Pro Max profiles. No physical iPhone or real Safari testing has been done.
+- The game's one phone is the iPhone 18 Pro Max (from November 20, 2026; until then the iPhone 15 Plus and 15 Pro Max). Browser tests run desktop Chromium, Chromium at the iPhone 18 Pro Max's size, and WebKit with an iPhone 18 Pro Max profile built from Apple's specifications (6.9 inches, 2868 by 1320 pixels, iOS 27). No physical iPhone or real Safari testing has been done.
 - There is no tutorial. One will be designed separately.
 
 ## Requirements

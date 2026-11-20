@@ -1,7 +1,7 @@
 // One connected career through the real interface (November 7, 2026): creation with Review edits, naming characters,
 // script choices, financing with explicit documents, casting, production with a scene cut and picked up, the edit,
 // distribution with a late broadcast slot, and saving and reloading along the way. Desktop and phone run in Chromium;
-// iphone-15-pro-max runs in WebKit with the iPhone's viewport and user agent. All are browser emulation, not devices.
+// iphone-18-pro-max runs in WebKit with the iPhone's viewport and user agent. All are browser emulation, not devices.
 // The only fixture is the pinned world seed (helpers.ts pinSeed), chosen so a broadcaster makes an offer.
 import { expect, test, type Page } from './test';
 import { addScene, advance, castRoles, createCharacter, editSave, freshStart, nav, onlyOn, pinSeed, pressSaveAndExit, readSavedState, runToDelivery, section, secureStartingBacking, staffEveryDepartment, writePitch } from './helpers';
@@ -19,7 +19,7 @@ async function saveAndReload(page: Page): Promise<void> {
 }
 
 test('a connected career, from creation to a broadcast deal, saved and reloaded on the way', async ({ page }, info) => {
-  test.skip(!onlyOn(info, ['desktop', 'phone', 'iphone-15-pro-max']), 'Runs on desktop, phone and one WebKit iPhone emulation.');
+  test.skip(!onlyOn(info, ['desktop', 'phone', 'iphone-18-pro-max']), 'Runs on desktop, phone and the WebKit iPhone 18 Pro Max emulation.');
   test.setTimeout(1_500_000);
   const p = info.project.name;
   await freshStart(page);

@@ -3,7 +3,7 @@
 // the player's own, scenes ticked, a blend of genres, the year 1986, creature makeup and a built costume, then
 // approval, backing, cast, crew, the schedule with makeup on the call sheet, the shoot, the edit and delivery.
 // Nothing is injected: the money comes from a backer, and the film is delivered by playing it. The only fixture is the
-// pinned world seed (helpers.ts pinSeed). Desktop and phone run in Chromium, iphone-15-pro-max in WebKit: emulation,
+// pinned world seed (helpers.ts pinSeed). Desktop and phone run in Chromium, iphone-18-pro-max in WebKit: emulation,
 // not devices. Every name is made up.
 import { expect, test, type Page } from './test';
 import { advance, castRoles, createCharacter, freshStart, nav, onlyOn, pinSeed, pressSaveAndExit, produceToDelivery, readSavedState, runToDelivery, saveAndApprove, section, secureStartingBacking, seededLife, staffEveryDepartment } from './helpers';
@@ -18,7 +18,7 @@ async function savedWhen(page: Page, ready: (p: any) => boolean): Promise<any> {
 }
 
 test('from a chosen idea to a delivered film: the picker, the 1986 zombie brief, makeup and costume, the shoot and delivery', async ({ page }, info) => {
-  test.skip(!onlyOn(info, ['desktop', 'phone', 'iphone-15-pro-max']), 'Runs on desktop, phone and one WebKit iPhone emulation.');
+  test.skip(!onlyOn(info, ['desktop', 'phone', 'iphone-18-pro-max']), 'Runs on desktop, phone and the WebKit iPhone 18 Pro Max emulation.');
   test.setTimeout(1_500_000);
   const n = info.project.name;
   await freshStart(page);
@@ -249,7 +249,7 @@ test('a logline built from four parts, and a crowd extended in post from a scene
 // costume fittings or locations. (A puppet damaged on its stage and repaired is its own journey: journeys.spec.ts,
 // "stop motion: a puppet damaged on set holds its shots until it is repaired".)
 test('J02: the zombie premise as stop motion: puppets, sets and voices are made, and no live-action makeup or location work', async ({ page }, info) => {
-  test.skip(!onlyOn(info, ['desktop', 'iphone-15-pro-max']), 'One full production, on desktop and one WebKit iPhone emulation.');
+  test.skip(!onlyOn(info, ['desktop', 'iphone-18-pro-max']), 'One full production, on desktop and the WebKit iPhone 18 Pro Max emulation.');
   test.setTimeout(1_500_000);
   await seededLife(page, 'gb-london', '2026-01-05', 7);
   await page.getByRole('button', { name: 'New Project' }).first().click();

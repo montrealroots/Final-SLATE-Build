@@ -26,7 +26,7 @@ The owner's package `SLATE-Research-Recovery-2026-11-19` is applied as targeted 
   - `tests/world-cast.test.ts` holds it over 100 seasons.
 - **Box office.** `docs/recovery/BOX-OFFICE.md`. The contract a licensed dataset would come in through is built and tested on a synthetic fixture. No dataset is installed, and J01/J21 stay parked.
 - **Browser coverage.** Every journey's project list now goes through `e2e/helpers.ts onlyOn`, and `SLATE_E2E_WEBKIT_ALL=1` adds `iphone-webkit-all`, which runs every journey on WebKit. `JOURNEY-REPORT.md` has what ran.
-- **WebKit, every journey (first run, November 20).** 228 passed, 6 failed, 18 skipped, of 252. The six are open, not fixed; `JOURNEY-REPORT.md` lists them, and they are the next item.
+- **The iPhone 18 Pro Max is the game's one phone (the owner, November 20).** Every phone project, the phone-width Chromium run, the UI audit's and viewport sweep's phone sizes, and CI now use it (`playwright.config.ts IPHONE_18_PRO_MAX`, from Apple's specifications). The six WebKit failures of the first all-journeys run were fixed or explained on it: see `JOURNEY-REPORT.md`.
 - **J02 in one save.** `e2e/j02-one-save.spec.ts` runs a real work and a real catalog performer through to Sundance in one save. It runs only where the real catalog is installed.
 
 ## Parked, Not Done (The Owner, November 17, 2026)
@@ -2665,7 +2665,7 @@ the look against 1221 beyond the side-by-side captures.
 
 ### External Or Manual (never blocks other work or future years)
 
-- **Physical devices:** iPhone 15 Plus and 15 Pro Max in real Safari. Emulation runs in CI; a person with the devices must do the rest.
+- **Physical devices:** the iPhone 18 Pro Max in real Safari (until November 20, 2026 the iPhone 15 Plus and 15 Pro Max). Emulation runs in CI; a person with the device must do the rest.
 - **Human enjoyment and balance feedback:** the questions in `BALANCE-REPORT.md`.
 - **Unpublished official information:** China's 2027 holiday notice (not out as of November 6, 2026), future Islamic announcements, future festival dates. The game uses projected dates, labelled, until these exist.
 

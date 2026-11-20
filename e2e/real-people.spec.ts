@@ -30,7 +30,7 @@ async function openProject(page: Page, title: string): Promise<void> {
 }
 
 test.beforeEach(async ({ page }, info) => {
-  test.skip(!onlyOn(info, ['desktop', 'phone', 'iphone-15-pro-max']), 'Runs on desktop, phone and WebKit (iPhone 15 Pro Max).');
+  test.skip(!onlyOn(info, ['desktop', 'phone', 'iphone-18-pro-max']), 'Runs on desktop, phone and WebKit (iPhone 18 Pro Max).');
   await serveCatalog(page);
 });
 

@@ -32,7 +32,7 @@ async function weeksTo(page: Page, day: string): Promise<void> {
 }
 
 test('J01: recorded award results appear only once announced, the nominees before the winners, and once each after a reload', async ({ page }, info) => {
-  test.skip(!onlyOn(info, ['desktop', 'phone', 'iphone-15-pro-max']), 'Desktop, phone and the iPhone 15 Pro Max (WebKit).');
+  test.skip(!onlyOn(info, ['desktop', 'phone', 'iphone-18-pro-max']), 'Desktop, phone and the iPhone 18 Pro Max (WebKit).');
   test.setTimeout(600_000);
   await quickLife(page, 'us-los-angeles', '2026-01-01');
 

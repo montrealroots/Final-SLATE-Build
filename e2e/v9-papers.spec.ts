@@ -1,7 +1,7 @@
 // Your Papers from Home (the owner's command of November 14, 2026, 8 "Validate", the second journey): Home → Your Papers
 // → a visitor visa checked, applied for and its fee paid from the bank → time passes → the decision, on its recorded day →
 // the visa in use: entry allowed, work still not → Home. A Brazilian living in Mexico City, visiting the United States:
-// 1221's B-1/B-2 record, $185 and 157 days. Desktop and phone in Chromium, and the iPhone 15 Pro Max in WebKit:
+// 1221's B-1/B-2 record, $185 and 157 days. Desktop and phone in Chromium, and the iPhone 18 Pro Max in WebKit:
 // emulation, not a physical device.
 import { expect, test, type Page } from './test';
 import { advance, nav, onlyOn, openStart, pinSeed } from './helpers';
@@ -9,7 +9,7 @@ import { advance, nav, onlyOn, openStart, pinSeed } from './helpers';
 const papersPanel = (page: Page) => page.locator('.panel, section', { has: page.getByRole('heading', { name: 'Your Papers', exact: true }) }).first();
 
 test('Home to Your Papers: a visa applied for and paid, decided on its day, in use, and Home again', async ({ page }, info) => {
-  test.skip(!onlyOn(info, ['desktop', 'phone', 'iphone-15-pro-max']), 'Desktop, phone and the iPhone 15 Pro Max (WebKit).');
+  test.skip(!onlyOn(info, ['desktop', 'phone', 'iphone-18-pro-max']), 'Desktop, phone and the iPhone 18 Pro Max (WebKit).');
   test.setTimeout(300_000);
   await openStart(page);
   await page.evaluate(() => {

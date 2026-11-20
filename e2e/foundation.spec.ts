@@ -14,7 +14,7 @@ const long = (key: string) => new Date(`${key}T12:00:00Z`).toLocaleDateString('e
 const SERIES = 'tv:900201';
 
 test.beforeEach(({}, info) => {
-  test.skip(!onlyOn(info, ['desktop', 'phone', 'iphone-15-pro-max']), 'Runs on desktop, phone and WebKit (iPhone 15 Pro Max).');
+  test.skip(!onlyOn(info, ['desktop', 'phone', 'iphone-18-pro-max']), 'Runs on desktop, phone and WebKit (iPhone 18 Pro Max).');
 });
 
 /** A save begun before the records end (November 10), played on until its world has decided Coastline's future. */

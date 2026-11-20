@@ -7,7 +7,7 @@ import { addScene, nav, onlyOn, pressSaveAndExit, quickLife, section } from './h
 test.use({ actionTimeout: 20_000 });
 
 test('a season planned and reordered; changing a shared fact says which episodes it touches first', async ({ page }, info) => {
-  test.skip(!onlyOn(info, ['desktop', 'phone', 'iphone-15-plus']), 'Runs at desktop, phone and WebKit iPhone width.');
+  test.skip(!onlyOn(info, ['desktop', 'phone', 'iphone-18-pro-max']), 'Runs at desktop, phone and WebKit iPhone width.');
   await quickLife(page, 'gb-london', '2026-01-05');
   await page.getByRole('button', { name: 'New Project' }).first().click();
   await page.getByRole('button', { name: 'Write An Original' }).click();

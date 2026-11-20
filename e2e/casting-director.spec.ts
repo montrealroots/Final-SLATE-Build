@@ -6,7 +6,7 @@ import { audit } from './ui-audit';
 import { addScene, advance, nav, newProject, onlyOn, quickLife, readSavedState, saveAndApprove, section } from './helpers';
 
 test('a casting director runs a search for a part: asked with its cost, reported, advice taken, and the offer still the player\'s', async ({ page }, info) => {
-  test.skip(!onlyOn(info, ['desktop', 'phone', 'iphone-15-pro-max']), 'Runs on desktop, phone and WebKit (iPhone 15 Pro Max).');
+  test.skip(!onlyOn(info, ['desktop', 'phone', 'iphone-18-pro-max']), 'Runs on desktop, phone and WebKit (iPhone 18 Pro Max).');
   test.setTimeout(420_000);
   const phone = info.project.name !== 'desktop';
   await quickLife(page, 'gb-london', '2026-01-05');

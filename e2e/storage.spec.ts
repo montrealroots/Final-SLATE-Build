@@ -35,7 +35,8 @@ test('full storage: saving says why, the last save stays, recovery copies can be
   await expect(copies.getByText(/^Damaged save of /)).toBeVisible();
   const download = page.waitForEvent('download');
   await copies.getByRole('button', { name: /^Export Damaged save of / }).click();
-  expect((await download).suggestedFilename()).toMatch(/damaged copy\)\.slate-save\.json$/);
+  // WebKit reports the name with underscores for spaces (Nia_Halvorsen-Mbeki_(damaged_copy)...); Chromium as written.
+  expect((await download).suggestedFilename()).toMatch(/damaged[ _]copy\)\.slate-save\.json$/);
   await refuseSaveWrites(page, false);
   await copies.getByRole('button', { name: /^Delete Damaged save of / }).click();
   const confirm = page.getByRole('dialog', { name: 'Delete This Copy?' });

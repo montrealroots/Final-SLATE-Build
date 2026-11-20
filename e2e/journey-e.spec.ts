@@ -9,7 +9,7 @@
 // - release dates the schedule can't have, then fixed and kept after a reload.
 // Labelled fixture: the series released here is marked delivered in the save (as in awards.spec.ts), because making
 // one is journey B's work (release-schedule.spec.ts). Everything refused or recovered is pressed in the browser.
-// It runs at desktop width, at phone width (Chromium) and on the iPhone 15 Pro Max profile (WebKit): emulation, not devices.
+// It runs at desktop width, at phone width (Chromium) and on the iPhone 18 Pro Max profile (WebKit): emulation, not devices.
 import type { Locator } from '@playwright/test';
 import { hashString } from '../src/engine/rng';
 import { expect, test, type Page } from './test';
@@ -36,7 +36,7 @@ async function editSave(page: Page, fn: (state: State) => void): Promise<void> {
 const alert = (page: Page): Locator => page.getByRole('alert').first();
 
 test('journey E: refused with a reason, then recovered: a song without its rights, delivery before the work, impossible release dates', async ({ page }, info) => {
-  test.skip(!onlyOn(info, ['desktop', 'phone', 'iphone-15-pro-max']), 'Desktop, phone and one WebKit iPhone.');
+  test.skip(!onlyOn(info, ['desktop', 'phone', 'iphone-18-pro-max']), 'Desktop, phone and one WebKit iPhone.');
   await quickLife(page, 'gb-london', '2026-09-01');
   await newProject(page, { title: 'Grey Water', format: 'Series', episodes: '3', runtime: '60' });
   await section(page, 'Characters');

@@ -22,7 +22,7 @@ const noSidewaysScroll = (page: Page) => page.evaluate(() => document.documentEl
 type Release = { id: string; date: string; territories: string[]; status: string; offerId?: string; version?: string; note: string };
 
 test('J08: a horror film pitched to two studios, optioned by one for its reasons, made, opened at home and then abroad, dubbed, and the studio repaid', async ({ page }, info) => {
-  test.skip(!onlyOn(info, ['desktop', 'iphone-15-pro-max']), 'One full production, on desktop and WebKit (iPhone 15 Pro Max).');
+  test.skip(!onlyOn(info, ['desktop', 'iphone-18-pro-max']), 'One full production, on desktop and WebKit (iPhone 18 Pro Max).');
   test.setTimeout(1_500_000);
   await serveCatalog(page, {}, { 'world.json': { ...(CATALOG_FIXTURE['world.json'] as object), studios: STUDIOS } });
   await quickLife(page, 'us-los-angeles', '2026-11-12');

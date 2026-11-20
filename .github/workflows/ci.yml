@@ -73,7 +73,7 @@ jobs:
           - profile: phone
             projects: --project=phone
           - profile: webkit
-            projects: --project=iphone-15-plus --project=iphone-15-pro-max --project=iphone-15-pro-max-landscape
+            projects: --project=iphone-18-pro-max --project=iphone-18-pro-max-landscape
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4

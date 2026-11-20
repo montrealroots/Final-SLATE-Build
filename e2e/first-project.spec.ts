@@ -103,7 +103,8 @@ test('first project: write, approve, a refusal, the agreed backing, production, 
   await produceToDelivery(page, { yourself: ['Marta'] });
   const credits = await creditsTable(page);
   expect(credits).toContain('as Marta');
-  expect(credits).toMatch(/With Thanks To\tStarting Backing/);
+  // A table row on desktop, stacked cells on the iPhone 18 Pro Max: the credit and its name, next to each other either way.
+  expect(credits).toMatch(/With Thanks To\s+Starting Backing/);
   // The stored game, once the save after delivery has landed.
   await expect.poll(async () => (await readSavedState(page)).projects[0].delivered, { timeout: 20_000 }).not.toBeNull();
   const delivered = (await readSavedState(page)).projects[0];

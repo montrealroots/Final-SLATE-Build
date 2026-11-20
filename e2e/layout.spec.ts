@@ -7,7 +7,7 @@ import { freshStart, nav, onlyOn, quickLife, section } from './helpers';
 import { layoutFindings } from './layout';
 
 test('the script page lines up: boxes level in each row, buttons under their boxes, nothing touching', async ({ page }, info) => {
-  test.skip(!onlyOn(info, ['desktop', 'phone', 'iphone-15-pro-max']), 'Runs on desktop, phone and one WebKit iPhone emulation.');
+  test.skip(!onlyOn(info, ['desktop', 'phone', 'iphone-18-pro-max']), 'Runs on desktop, phone and the WebKit iPhone 18 Pro Max emulation.');
   await freshStart(page);
   await quickLife(page, 'gb-london', '2026-01-05');
   await nav(page, 'Projects');
@@ -44,7 +44,7 @@ test('the script page lines up: boxes level in each row, buttons under their box
 // to wrap to different heights at the window's width. Two fields with a button under each and hints of one line and of
 // several, a field with a taller box, and a tall cell that is not a field.
 test('a row of a form shares its lines: labels, boxes and buttons level, each hint under its box, a tall neighbour changing none of it', async ({ page }, info) => {
-  test.skip(!onlyOn(info, ['desktop', 'iphone-15-pro-max']), 'Chromium and WebKit, both at a width that puts the fields side by side.');
+  test.skip(!onlyOn(info, ['desktop', 'iphone-18-pro-max']), 'Chromium and WebKit, both at a width that puts the fields side by side.');
   await page.setViewportSize({ width: 1100, height: 800 });
   await freshStart(page);
   const m = await page.evaluate(() => {

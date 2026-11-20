@@ -1,7 +1,7 @@
 // Your Bank from Home (the owner's command of November 14, 2026, 8 "Validate", the first journey): Home → Your Bank →
 // a savings account opened → money moved into it → an account applied for at a second bank, its opening deposit sent →
 // the bank's decision days later, the deposit settled → the statement → Home, which reads the same journal. The bank is
-// 1221's (src/engine/bankworld); its rules are tests/bankworld. Desktop and phone in Chromium, and the iPhone 15 Pro
+// 1221's (src/engine/bankworld); its rules are tests/bankworld. Desktop and phone in Chromium, and the iPhone 18 Pro
 // Max in WebKit: emulation, not a physical device.
 import { expect, test, type Page } from './test';
 import { advance, nav, onlyOn, quickLife } from './helpers';
@@ -19,7 +19,7 @@ const openBank = async (page: Page) => {
 };
 
 test('Home to Your Bank: savings opened, money moved, a second bank applied for and decided, the statement, and Home again', async ({ page }, info) => {
-  test.skip(!onlyOn(info, ['desktop', 'phone', 'iphone-15-pro-max']), 'Desktop, phone and the iPhone 15 Pro Max (WebKit).');
+  test.skip(!onlyOn(info, ['desktop', 'phone', 'iphone-18-pro-max']), 'Desktop, phone and the iPhone 18 Pro Max (WebKit).');
   test.setTimeout(240_000);
   await quickLife(page, 'us-los-angeles', '2028-01-26');
   // Home reads the journal: what is available, pending and owed, apart.

@@ -65,7 +65,7 @@ const section = (page: Page) => page.getByRole('region', { name: 'Pictures For T
 const kindRow = (page: Page, name: string) => section(page).getByRole('list', { name: 'Kinds Of Picture' }).locator('li', { hasText: name });
 
 test.beforeEach(({}, info) => {
-  test.skip(!onlyOn(info, ['desktop', 'phone', 'iphone-15-pro-max']), 'Runs on desktop, phone and WebKit (iPhone 15 Pro Max).');
+  test.skip(!onlyOn(info, ['desktop', 'phone', 'iphone-18-pro-max']), 'Runs on desktop, phone and WebKit (iPhone 18 Pro Max).');
 });
 
 test('pictures a kind at a time, then all: the size and the room said first, shown on every page they belong to, removed with the save as it was', async ({ page }, info) => {
