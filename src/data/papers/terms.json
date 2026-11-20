@@ -1370,6 +1370,27 @@
      "what": "Economic Development Board, Occupation Permit guidelines, Annex 1: application fee USD 50 (non-refundable, from 01 December 2025); Short-term Occupation Permit, first time up to 9 months USD 300, one extension up to 3 months USD 150; permit fee paid after Approval in Principle"
     }
    ]
+  },
+  "BZ": {
+   "route": "Temporary employment permit (professional workers)",
+   "fee": 0,
+   "currency": "BZD",
+   "feeBasis": "Nothing is charged to apply at the Labour Department. Once it's approved, the permit fee for a professional worker, BZ$3,000 for a year, is paid at the Immigration Office (an entertainer performing for a week or less pays BZ$600 alone, BZ$1,000 or BZ$1,500 in a group).",
+   "issuance": {
+    "amount": 3000,
+    "currency": "BZD"
+   },
+   "days": 30,
+   "daysBasis": "The Labour Department calls within 30 days about the application.",
+   "stayDays": 365,
+   "stayBasis": "A professional worker's permit is for a year.",
+   "sources": [
+    {
+     "kind": "official",
+     "url": "https://immigration.gov.bz/permits/work-permit/",
+     "what": "Immigration and Nationality Department, Work Permit: apply at the Labour Department, a call within 30 days, fees paid at Immigration on approval; professional workers BZ$3,000 a year, entertainers BZ$600 to BZ$1,500 for a week or less"
+    }
+   ]
   }
  },
  "permitAuthorities": {

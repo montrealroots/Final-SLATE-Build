@@ -1,6 +1,6 @@
 {
  "counts": {
-  "permits": 166,
+  "permits": 165,
   "visas": 104,
   "permitTimes": 15,
   "visaTimes": 36
@@ -19,7 +19,6 @@
   "AZ",
   "BD",
   "BY",
-  "BZ",
   "BJ",
   "BT",
   "BO",
