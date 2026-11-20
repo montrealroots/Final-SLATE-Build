@@ -198,6 +198,16 @@ describe('recorded history', () => {
     expect(on('2026-03-13', 'nominees').find((o) => o.category === 'foreign')!.subjects).toEqual(['Conclave', 'Twilight of the Warriors: Walled In', 'Mission: Impossible - The Final Reckoning', 'One Battle After Another', 'F1: The Movie']);
   });
 
+  it('holds the 2026 Canadian Screen Awards: nominees from March 25, every winner from May 31, the last of their shows', () => {
+    const on = (day: string, kind: string) => recordedResults('canadian-screen', 2026, day).filter((o) => o.kind === kind);
+    expect(recordedResults('canadian-screen', 2026, '2026-03-24')).toEqual([]);
+    expect(on('2026-03-25', 'nominees')).toHaveLength(145);
+    expect(on('2026-05-30', 'winner')).toEqual([]);
+    const won = on('2026-05-31', 'winner');
+    expect(won).toHaveLength(145);
+    expect(won.find((o) => o.category !== null && /Best Motion Picture/.test(o.categoryName))!.subjects[0]).toContain('Nirvanna the Band the Show the Movie');
+  });
+
   it('cites a source for every observation, never publishes before it happens, and names the game\'s own categories', () => {
     const insts = (institutions as { institutions: { id: string; categories: { id: string }[]; official?: Record<string, { label?: string }> }[] }).institutions;
     const wrong: string[] = [];

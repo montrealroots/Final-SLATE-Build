@@ -12,7 +12,7 @@ The catalog (TMDB), the cinemas (Wikidata) and the stories (Wikipedia) are older
 - **What it is:** Award results of 2026 ceremonies, from each organizer's own page.
 - **Kind:** Recorded fact.
 - **Terms:** Facts (who was nominated, who won) read from public pages; titles and names only, no article text. Shown from their published date; nothing written into a save.
-- **Sources (34):**
+- **Sources (37):**
   - <https://goldenglobes.com/articles/one-battle-after-another-and-hamnet-take-best-picture-prizes-at-golden-globes/>, read 2026-11-13. Read through a fetching tool. Only the categories the article states are recorded.
   - <https://goldenglobes.com/nominations/2026>, read 2026-11-19. Every category, its winner marked; read twice through a fetching tool, the readings agreed. A title the page files under its article ("Studio, The") is written in reading order.
   - <https://goldenglobes.com/articles/nominations-announced-for-the-83rd-annual-golden-globes/>, read 2026-11-19. For the date the nominations were announced, December 8, 2025.
@@ -46,6 +46,9 @@ The catalog (TMDB), the cinemas (Wikidata) and the stories (Wikipedia) are older
   - <https://www.aacta.org/our-news/media-room/aacta-announces-the-winners-for-the-2026-aacta-awards-industry-gala/>, read 2026-11-19. The Industry Gala's winners (February 4, 2026).
   - <https://www.aacta.org/our-news/media-room/aacta-announces-the-winners-for-the-2026-aacta-awards-presented-by-foxtel-group/>, read 2026-11-19. The Awards Ceremony's winners (February 6, 2026); a category both releases name is dated by the gala's.
   - <https://www.japan-academy-prize.jp/prizes/list/49>, read 2026-11-19. The 49th Japan Academy Film Prize's Excellent Awards and Bests (March 13, 2026), from the romanised and English lines the page gives each entry; names keep the page's order with its capitals lowered, and a title it cuts short takes the whole one the other records hold. Its Excellent Awards' announcement states no date, so they are shown from the ceremony.
+  - <https://www.academy.ca/nominees/>, read 2026-11-19. The 2026 Canadian Screen Awards' nominees with their winners marked, downloaded and parsed; the winners of the four shows (May 28 to 31) are all shown from May 31, the date of the winners release.
+  - <https://www.academy.ca/2026/nominees-announced-for-the-2026-canadian-screen-awards/>, read 2026-11-19. For the nominations of March 25, 2026.
+  - <https://www.academy.ca/2026/2026-canadian-screen-award-winners-unveiled/>, read 2026-11-19. The winners release of May 31, 2026.
   - <https://www.televisionacademy.com/78th-emmy-winners>, read 2026-11-19. The Academy's winners release (Ernst & Young's list of the telecast's 19 categories), a PDF whose text was read directly.
 
 ## `src/data/history/awards-2026-reference.json`

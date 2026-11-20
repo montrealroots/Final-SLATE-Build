@@ -15685,7 +15685,16 @@
      "competitive": true
     }
    ],
-   "rosterStatus": "read"
+   "rosterStatus": "read",
+   "official": {
+    "2026": {
+     "start": "2026-05-31",
+     "end": "2026-05-31",
+     "label": "2026 Canadian Screen Awards",
+     "source": "https://www.academy.ca/2026/2026-canadian-screen-award-winners-unveiled/",
+     "checked": "2026-11-19"
+    }
+   }
   },
   {
    "id": "aacta",
