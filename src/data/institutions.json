@@ -11470,6 +11470,13 @@
     ]
    },
    "official": {
+    "2026": {
+     "start": "2026-03-01",
+     "end": "2026-03-01",
+     "label": "32nd Actor Awards",
+     "source": "https://www.actorawards.org/media/news/releases/outstanding-film-and-television-performances-honored-32nd-annual-actor-awards",
+     "checked": "2026-11-19"
+    },
     "2027": {
      "start": "2027-02-28",
      "end": "2027-02-28",

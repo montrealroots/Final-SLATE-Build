@@ -12,12 +12,20 @@ The catalog (TMDB), the cinemas (Wikidata) and the stories (Wikipedia) are older
 - **What it is:** Award results of 2026 ceremonies, from each organizer's own page.
 - **Kind:** Recorded fact.
 - **Terms:** Facts (who was nominated, who won) read from public pages; titles and names only, no article text. Shown from their published date; nothing written into a save.
-- **Sources (6):**
+- **Sources (14):**
   - <https://goldenglobes.com/articles/one-battle-after-another-and-hamnet-take-best-picture-prizes-at-golden-globes/>, read 2026-11-13. Read through a fetching tool. Only the categories the article states are recorded.
   - <https://goldenglobes.com/nominations/2026>, read 2026-11-19. Every category, its winner marked; read twice through a fetching tool, the readings agreed. A title the page files under its article ("Studio, The") is written in reading order.
   - <https://goldenglobes.com/articles/nominations-announced-for-the-83rd-annual-golden-globes/>, read 2026-11-19. For the date the nominations were announced, December 8, 2025.
   - <https://press.oscars.org/news/98th-oscarsr-nominations-announced>, read 2026-11-13.
   - <https://www.oscars.org/oscars/ceremonies/2026>, read 2026-11-13, and again on 2026-11-19 for every category (two readings that agreed). Read through a fetching tool; a direct download was refused (HTTP 403). Titles and names as the page prints them.
+  - <https://www.televisionacademy.com/awards/nominees-winners/2026>, read 2026-11-19. Its 120 category pages, downloaded and parsed from the nominees and winners each lists in its structured data (schema.org ItemList), not summarised.
+  - <https://www.televisionacademy.com/features/news/awards-news/260708-nominations>, read 2026-11-19. For the date the nominations were announced, July 8, 2026.
+  - <https://www.televisionacademy.com/files/assets/press/260905-emmys-night-1-winners-v1.pdf>, read 2026-11-19. The first Creative Arts night's winners (49 categories), its text read directly; every winner a category page names is in its night's release.
+  - <https://www.televisionacademy.com/files/assets/press/260906-emmys-night-2-winners-v1.pdf>, read 2026-11-19. The second night's (52 categories), the same way.
+  - <https://www.sagawards.org/awards/nominees-and-recipients/32nd-annual-actor-awards>, read 2026-11-19. The 32nd Actor Awards' nominees and recipients, downloaded and parsed; the page sets names in capitals by its styling, so each is written as the game's other records write it, else in title case.
+  - <https://actorawards.org/sites/default/files/2026_Actor%20Awards_Nominations%20Release.pdf>, read 2026-11-19. For the date the nominations were announced, January 7, 2026.
+  - <https://www.actorawards.org/media/news/releases/actor-awards-presented-sag-aftra-announce-years-stunt-ensemble-nominees>, read 2026-11-19. For the stunt ensembles' announcement, February 26, 2026.
+  - <https://www.actorawards.org/media/news/releases/outstanding-film-and-television-performances-honored-32nd-annual-actor-awards>, read 2026-11-19. The recipients of March 1, 2026; every recipient the category page marks is named here.
   - <https://www.televisionacademy.com/78th-emmy-winners>, read 2026-11-19. The Academy's winners release (Ernst & Young's list of the telecast's 19 categories), a PDF whose text was read directly.
 
 ## `src/data/history/awards-2026-reference.json`

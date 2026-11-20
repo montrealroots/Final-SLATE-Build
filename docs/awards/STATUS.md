@@ -14,7 +14,7 @@ a roster that was read says nothing about the eligibility rules, the recipients,
 | Institution | Categories | Roster read / unverified / blocked | Eligibility official / projected / game | Recipients by rule | Dates announced | Deadlines from rules | Unit | Browser | Not playable |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | Academy Awards (`oscars`) | 28 | 28 / 0 / 0 | 25 / 0 / 3 | 1 | 28 | 25 | 16 | 13 | 5 |
-| Primetime Emmy Awards (`emmys`) | 115 | 115 / 0 / 0 | 112 / 0 / 3 | 17 | 0 | 112 | 25 | 11 | 10 |
+| Primetime Emmy Awards (`emmys`) | 115 | 115 / 0 / 0 | 112 / 0 / 3 | 17 | 0 | 112 | 24 | 11 | 10 |
 | Sundance Film Festival (`sundance`) | 16 | 6 / 10 / 0 | 6 / 0 / 10 | 0 | 16 | 6 | 6 | 2 | 1 |
 | Berlin International Film Festival (`berlinale`) | 18 | 13 / 5 / 0 | 0 / 6 / 12 | 0 | 18 | 0 | 12 | 5 | 3 |
 | Cannes Film Festival (`cannes`) | 17 | 15 / 2 / 0 | 0 / 5 / 12 | 0 | 17 | 5 | 10 | 0 | 1 |
@@ -41,7 +41,7 @@ a roster that was read says nothing about the eligibility rules, the recipients,
 | Directors Guild Of America Awards (`dga`) | 10 | 10 / 0 / 0 | 10 / 0 / 0 | 0 | 10 | 10 | 8 | 0 | 3 |
 | Writers Guild Awards (`wga`) | 18 | 17 / 1 / 0 | 18 / 0 / 0 | 0 | 0 | 18 | 10 | 0 | 11 |
 | Producers Guild Awards (`pga`) | 15 | 14 / 1 / 0 | 12 / 0 / 3 | 0 | 15 | 12 | 11 | 0 | 4 |
-| Actor Awards (`actor-awards`) | 13 | 13 / 0 / 0 | 13 / 0 / 0 | 0 | 13 | 13 | 3 | 0 | 3 |
+| Actor Awards (`actor-awards`) | 13 | 13 / 0 / 0 | 13 / 0 / 0 | 0 | 13 | 13 | 4 | 0 | 3 |
 | César Awards (`cesar`) | 27 | 27 / 0 / 0 | 25 / 0 / 2 | 0 | 27 | 3 | 10 | 0 | 0 |
 | Goya Awards (`goya`) | 30 | 30 / 0 / 0 | 28 / 0 / 2 | 0 | 30 | 28 | 13 | 0 | 0 |
 | Canadian Screen Awards (`canadian-screen`) | 119 | 114 / 5 / 0 | 115 / 0 / 4 | 0 | 0 | 115 | 9 | 0 | 40 |
