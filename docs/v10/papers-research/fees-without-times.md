@@ -72,3 +72,33 @@ Batch 5 (November 20, 2026), from the governments' own pages:
   the tools; €90 for a Category C visa by search); Trinidad and Tobago (TT$200 single or TT$400 multiple by the
   Brasília FAQ, while the Ministry's September 2025 instructions say single-entry visas are no longer offered; 10 or
   14 business days by different missions).
+
+Batch 6 (November 20, 2026, after the research recovery package), from the governments' own pages:
+- Solomon Islands: the tourist visa US$50 plus the US$50 online lodgement fee, stays of up to three months, decided
+  within 14 working days (Immigration Division's visitor visa page and its July 2026 short-term visa delivery policy).
+  Since the Immigration Regulation 2025 there are no visas on arrival. The first route closed in full since the package.
+- Uruguay: the tourist visa's consular fee US$54, not refunded on refusal (the Ministry's embassy page in Costa Rica;
+  Mexico, Colombia and Guatemala give the same, Sydney A$84 and Havana €45 in their own currencies). No decision time
+  published, only "apply at least 40 days ahead", so it's a fee-only record.
+- Uganda: the Special Pass for work on a short contract, US$400 for three months (Directorate of Citizenship and
+  Immigration Control). The 2004 regulations' US$50 is superseded. Fee-only.
+- Rwanda: the class R Special Pass, for employment of up to 90 days, 50,000 Frw, valid three months (Directorate General
+  of Immigration and Emigration). A search summary had read 250,000 Frw, which is class Q2's. Fee-only.
+- Zimbabwe: the temporary employment permit, a US$500 statutory fee, not refunded (Department of Immigration). Fee-only.
+- Mauritius: the Short-term Occupation Permit, a US$50 application fee (non-refundable, from December 1, 2025), and its
+  US$300 permit fee paid only after approval in principle (Economic Development Board's guidelines, Annex 1). It's the
+  first researched record with an issuance fee: `terms.json` records can now carry `issuance`, as route-scoped records
+  already could, so a refusal costs only the US$50. Fee-only.
+- Not recorded, from official pages that disagree or don't settle the route:
+  - Trinidad and Tobago: US$143 for a multiple-entry visa at the New York consulate from January 22, 2026; one post's
+    price, so it isn't used for every applicant.
+  - Jamaica: PICA's US$100 port-of-entry visa, but multiple-entry visas cost JM$500 to JM$2,000 by nationality.
+  - Suriname: the US$50 Entry Fee from May 15, 2024 (Ministry of Foreign Affairs) is for travellers who need the Entry
+    Fee, not a visa.
+  - Zambia: a temporary employment permit costs ZMW 18,000 to issue from August 19, 2024 (S.I. No. 25 of 2024), but the
+    notice gives no application fee, so when it's paid can't be settled.
+  - Bolivia: US$30 in the national tariff against US$50 at several consulates. Paraguay: US$65 at one consulate only.
+  - The French overseas departments and collectivities: the 15-day decision time is the Schengen code's and doesn't
+    carry over (an Assemblée nationale answer); a consulate says overseas visas can take longer.
+  - Refusing the tools or not answering: Cyprus, Peru (gob.pe), Montenegro (gov.me), Mongolia's e-visa portal, Ecuador's
+    Washington consulate, Tanzania's permit guidelines, and PacLII's copy of Nauru's regulations.

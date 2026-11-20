@@ -33,6 +33,16 @@ describe('papers terms', () => {
     expect(visaTerms('JE').route).toBe(visaTerms('GB').route);
   });
 
+  // From November 20, 2026: a researched record can carry a fee paid only once it is issued, as a route-scoped record
+  // already could (papers-scoped.ts). Mauritius takes US$50 on applying and its US$300 permit fee after approval; the
+  // application then pays the second only on issue (papers.ts), and a refusal costs only the first.
+  it('carries a researched issuance fee to the terms: Mauritius\' application fee now, its permit fee only on issue', () => {
+    const mu = permitTerms('MU', 'Work permit');
+    expect(mu).toMatchObject({ route: 'Short-term Occupation Permit', fee: { amount: 50, currency: 'USD' }, issuance: { amount: 300, currency: 'USD' }, stayDays: 270 });
+    expect(mu.estimate?.only).toBe('days');
+    expect(permitTerms('UG', 'Work permit').issuance).toBeUndefined();
+  });
+
   it('names a source for every researched figure, and each is a real amount and a real time', () => {
     for (const [c, r] of Object.entries((terms as unknown as { permits: Record<string, Recorded>; visas?: Record<string, Recorded> }).permits)) {
       // A researched fee may be nothing: Belgium's short-term permit is free (from November 17, 2026).

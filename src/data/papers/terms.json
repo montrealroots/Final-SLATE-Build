@@ -1308,6 +1308,68 @@
      "what": "Global Citizen Solutions, Serbia residence permit 2026: application and approval fees of about the same amount"
     }
    ]
+  },
+  "UG": {
+   "route": "Special Pass",
+   "fee": 400,
+   "currency": "USD",
+   "feeBasis": "US$400 for a three-month Special Pass, the pass for work on a short contract.",
+   "stayDays": 90,
+   "stayBasis": "A Special Pass covers three months.",
+   "sources": [
+    {
+     "kind": "official",
+     "url": "https://www.immigration.go.ug/services/special-pass",
+     "what": "Directorate of Citizenship and Immigration Control, Special Pass: a temporary pass to work on a short contract, USD 400 for 3 months"
+    }
+   ]
+  },
+  "RW": {
+   "route": "Special Pass (class R)",
+   "fee": 50000,
+   "currency": "RWF",
+   "feeBasis": "The application fee, 50,000 Rwandan francs, for a foreigner who secures employment for up to 90 days.",
+   "stayDays": 90,
+   "stayBasis": "Valid for three months.",
+   "sources": [
+    {
+     "kind": "official",
+     "url": "https://www.migration.gov.rw/our-services/permit/other-permits",
+     "what": "Directorate General of Immigration and Emigration, Other permits: class R, Special Pass, employment for up to 90 days, application fee 50,000 Frw, valid three months"
+    }
+   ]
+  },
+  "ZW": {
+   "route": "Temporary employment permit",
+   "fee": 500,
+   "currency": "USD",
+   "feeBasis": "The statutory fee, US$500, not refunded (US$300 more for each dependant).",
+   "sources": [
+    {
+     "kind": "official",
+     "url": "https://www.zimimmigration.gov.zw/?p=7338",
+     "what": "Department of Immigration Zimbabwe, Temporary Employment Permit requirements: statutory non-refundable fee of US$500 and US$300 per dependant"
+    }
+   ]
+  },
+  "MU": {
+   "route": "Short-term Occupation Permit",
+   "fee": 50,
+   "currency": "USD",
+   "feeBasis": "The application fee, US$50, not refunded, from December 1, 2025. The permit fee, US$300 for a first permit, is paid only once it is approved in principle.",
+   "issuance": {
+    "amount": 300,
+    "currency": "USD"
+   },
+   "stayDays": 270,
+   "stayBasis": "Up to nine months, which may be extended once by up to three.",
+   "sources": [
+    {
+     "kind": "official",
+     "url": "https://business.edbmauritius.org/wps/wcm/connect/business/d19ef870-5d87-42af-9108-0f494ae4897a/Amended+OP+Guidelines+30.07.2024.pdf?MOD=AJPERES&ContentCache=NONE&CACHE=NONE",
+     "what": "Economic Development Board, Occupation Permit guidelines, Annex 1: application fee USD 50 (non-refundable, from 01 December 2025); Short-term Occupation Permit, first time up to 9 months USD 300, one extension up to 3 months USD 150; permit fee paid after Approval in Principle"
+    }
+   ]
   }
  },
  "permitAuthorities": {
@@ -3480,6 +3542,41 @@
      "kind": "official",
      "url": "https://cancilleria.gob.ar/es/servicios/visas/visa-para-turismo",
      "what": "Cancillería, Visa para Turismo: consular fee $150 (US dollars or euros), stays of up to 90 days"
+    }
+   ]
+  },
+  "SB": {
+   "name": "Tourist visa",
+   "fee": 100,
+   "currency": "USD",
+   "feeBasis": "The visa fee, US$50, and the online lodgement fee, US$50, both paid online in US dollars. Since the Immigration Regulation 2025, visas are no longer given on arrival.",
+   "days": 20,
+   "daysBasis": "Decided within 14 working days: about three weeks.",
+   "stayDays": 90,
+   "stayBasis": "Stays of up to three months at a time; the visa is valid for a year.",
+   "sources": [
+    {
+     "kind": "official",
+     "url": "https://immigration.gov.sb/visitor-visa-tourist/",
+     "what": "Solomon Islands Immigration, Visitor Visa (Tourist): visa fee USD 50 and online lodgement fee USD 50, stays of up to 3 months, valid for a year"
+    },
+    {
+     "kind": "official",
+     "url": "https://immigration.gov.sb/wp-content/uploads/2026/07/Solomon-Islands-Immigration-Division-Delivery-Policy-Short-Term-Visa.pdf",
+     "what": "Delivery Policy, Short Term Visa (VP101, 2026): an application for a short-term visa is 14 working days; fees paid online in USD"
+    }
+   ]
+  },
+  "UY": {
+   "name": "Tourist visa",
+   "fee": 54,
+   "currency": "USD",
+   "feeBasis": "The consular fee, US$54, paid before the application is examined and not refunded if the visa is refused (some consulates take it in their own currency at the day's rate).",
+   "sources": [
+    {
+     "kind": "official",
+     "url": "https://www.gub.uy/ministerio-relaciones-exteriores/embajada-republica-oriental-del-uruguay-costa-rica/visa-turismo",
+     "what": "Ministerio de Relaciones Exteriores, Embajada en Costa Rica, Visa de turismo: arancel de USD 54, no reembolsable; solicitar con al menos 40 días de anticipación"
     }
    ]
   }
