@@ -54,3 +54,12 @@ Still open after batch 4:
 - Colombia: the visitor (V) visa's study and issuance fees are given as $52 to $56 and $52 to $177 by different guides.
 - Argentina: the AVE is 20 business days on the consulates' pages, but its fee is USD 400, €368 or $150 by source.
 - Serbia: each embassy prices the type C visa itself (92 EUR in Baku, 96 USD in Washington, 88 CHF in Zurich).
+
+Batch 5 (November 20, 2026), from the governments' own pages:
+- Hong Kong: the ordinary visa, HK$330 since September 8, 2025, normally four weeks (Immigration Department).
+- Macao: US$30 plus a US$20 relay fee through a Chinese mission, usually seven working days, 14 days of stay (Public
+  Security Police Force).
+- Taiwan: a single-entry visitor visa US$50 abroad (US$160 for US passports by reciprocity); no decision time
+  published, so it's a fee-only record (Bureau of Consular Affairs).
+- South Africa: the visitor's visa R425 in the fee schedule gazetted August 17, 2026; no decision time published, so
+  it's a fee-only record (Department of Home Affairs).

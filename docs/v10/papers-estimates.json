@@ -1,9 +1,9 @@
 {
  "counts": {
   "permits": 170,
-  "visas": 111,
+  "visas": 107,
   "permitTimes": 11,
-  "visaTimes": 32
+  "visaTimes": 34
  },
  "permits": [
   "AF",
@@ -226,7 +226,6 @@
   "GY",
   "HT",
   "HN",
-  "HK",
   "IR",
   "IQ",
   "JM",
@@ -236,7 +235,6 @@
   "LB",
   "LS",
   "LY",
-  "MO",
   "MW",
   "MY",
   "ML",
@@ -268,13 +266,11 @@
   "SN",
   "RS",
   "SB",
-  "ZA",
   "GS",
   "LK",
   "SD",
   "SR",
   "SY",
-  "TW",
   "TG",
   "TK",
   "TO",
@@ -332,6 +328,8 @@
   "PM",
   "SA",
   "SL",
+  "ZA",
+  "TW",
   "TJ",
   "UA",
   "VU",

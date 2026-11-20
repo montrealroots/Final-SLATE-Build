@@ -3395,6 +3395,78 @@
      "what": "Passport Index, Ukraine e-visa relaunch: single entry for up to 30 days"
     }
    ]
+  },
+  "HK": {
+   "name": "Visit visa (ordinary visa, single entry)",
+   "fee": 330,
+   "currency": "HKD",
+   "feeBasis": "The Immigration Department's fee for an ordinary visa or single-entry entry permit, HK$330 from September 8, 2025; paid to the Chinese mission where the application is made there.",
+   "days": 28,
+   "daysBasis": "It normally takes four weeks once every required document is in.",
+   "sources": [
+    {
+     "kind": "official",
+     "url": "https://www.immd.gov.hk/eng/services/fee-tables/",
+     "what": "Immigration Department, fee tables: ordinary visa HK$330"
+    },
+    {
+     "kind": "official",
+     "url": "https://www.immd.gov.hk/eng/services/visas/visit_transit.html",
+     "what": "Immigration Department, Visit/Transit: normally four weeks to process a visit visa or entry permit"
+    }
+   ]
+  },
+  "TW": {
+   "name": "Visitor visa (single entry)",
+   "fee": 50,
+   "currency": "USD",
+   "feeBasis": "A single-entry visitor visa applied for overseas, US$50 (NT$1,600 in Taiwan); US passport holders pay US$160 by reciprocity, and nationals of countries with reciprocal agreements pay nothing.",
+   "stayDays": 60,
+   "stayBasis": "Visitor visas allow stays of 14, 30, 60 or 90 days; a 60-day stay is the common grant, extendable.",
+   "sources": [
+    {
+     "kind": "official",
+     "url": "https://www.boca.gov.tw/cp-157-248-4f20b-2.html",
+     "what": "Bureau of Consular Affairs, Information on Republic of China Visitor Visas: single entry NT$1,600 (US$50); stays of 14 to 90 days"
+    },
+    {
+     "kind": "official",
+     "url": "https://www.boca.gov.tw/cp-160-7204-78395-2.html",
+     "what": "Bureau of Consular Affairs, Visa Fees, Article 3: single-entry visitor visa US$50 overseas"
+    }
+   ]
+  },
+  "MO": {
+   "name": "Visa (single entry)",
+   "fee": 50,
+   "currency": "USD",
+   "feeBasis": "The regular application fee, US$30, and the US$20 fee for relaying it to the Public Security Police Force, through a Chinese diplomatic mission.",
+   "days": 9,
+   "daysBasis": "The Public Security Police Force usually takes seven working days once the documents are complete.",
+   "stayDays": 14,
+   "stayBasis": "A single-entry visa is valid for three months and allows 14 days of stay.",
+   "sources": [
+    {
+     "kind": "official",
+     "url": "https://www.fsm.gov.mo/psp/eng/psp_top5_3m.html",
+     "what": "Public Security Police Force, visa applications through Chinese missions: USD30 plus USD20, usually seven working days, 14 days of stay"
+    }
+   ]
+  },
+  "ZA": {
+   "name": "Visitor's visa",
+   "fee": 425,
+   "currency": "ZAR",
+   "feeBasis": "The visitor's visa fee, including renewals, R425 in the Department of Home Affairs' fee schedule of August 17, 2026.",
+   "stayDays": 90,
+   "stayBasis": "A visitor's visa is issued for up to 90 days.",
+   "sources": [
+    {
+     "kind": "official",
+     "url": "https://www.dha.gov.za/images/gazettes/2026/55209-17-8-26.pdf",
+     "what": "Government Gazette No. 55209, August 17, 2026: visitor's visa (section 11) R425,00"
+    }
+   ]
   }
  },
  "authorizations": {
