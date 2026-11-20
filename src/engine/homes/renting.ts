@@ -9,7 +9,7 @@ import { residenceRight } from '../papers';
 import { newId } from '../state';
 import { unit } from '../rng';
 import type { GameState } from '../types';
-import { HOME_RULES } from './market';
+import { HOME_RULES } from './rules';
 import { startBills } from './living';
 import { COMPONENT_WORDS, WORK, depositFor, permissionFor, gardenOf, type Condition, type Home, type WorkKind } from './model';
 import { moveBetweenBooks } from '../bank';

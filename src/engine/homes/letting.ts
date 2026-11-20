@@ -9,7 +9,7 @@ import { newId } from '../state';
 import { unit } from '../rng';
 import type { GameState } from '../types';
 import { valuation } from './buying';
-import { HOME_RULES } from './market';
+import { HOME_RULES } from './rules';
 import { depositFor } from './model';
 import {
   BOOK, addDaysToKey, addMonths, book, canPay, dollarsOf, formatDateKey, homeOf, homesOf, instantOn, money, note, parseYmdDay, payIn, payOut, record, scheduleHome, todayAt, type Letting,

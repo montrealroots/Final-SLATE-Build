@@ -15,7 +15,6 @@
 import { zonedParts, type Instant } from '../core/time';
 import { HOLIDAY_FILES } from './holiday-data';
 
-const HOLIDAY_URLS = import.meta.glob('../data/holidays/*.tsv', { query: '?url', import: 'default', eager: true }) as Record<string, string>;
 import { COUNTRIES, REGIONS } from './geography';
 
 export type HolidayType = 'public' | 'bank' | 'school' | 'optional' | 'observance';
@@ -91,6 +90,7 @@ export async function loadCountryHolidays(countryId: string): Promise<number> {
   }
   // SLATE: the files are kept with the port (src/engine/bankworld/data/holidays) and served as Vite assets, where 1221
   // served them from public/holidays.
+  const { HOLIDAY_URLS } = await import('./holiday-urls');
   const url = HOLIDAY_URLS[`../data/holidays/${countryId}.tsv`];
   if (!url) throw new Error(`The holidays for ${COUNTRIES.get(countryId)?.name ?? countryId} couldn’t be loaded.`);
   const response = await fetch(url);

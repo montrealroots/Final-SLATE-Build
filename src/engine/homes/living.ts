@@ -10,7 +10,7 @@
 import { newId } from '../state';
 import { unit } from '../rng';
 import type { GameState } from '../types';
-import { HOME_RULES } from './market';
+import { HOME_RULES } from './rules';
 import { RUNNING_USD, WORK, WORK_COST_USD, badDesignValue, gardenOf, inBuilding, permissionFor, type Design, type Home, type Room, type WorkKind } from './model';
 import {
   BOOK, addDaysToKey, addMonths, book, canPay, days, document, dollarsOf, formatDateKey, homeOf, homesOf, instantOn, money, note, payOut,

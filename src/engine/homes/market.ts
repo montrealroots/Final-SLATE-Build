@@ -10,13 +10,12 @@ import { bankCurrencyFor } from '../bank';
 import { exchange } from '../bankworld/content/currency';
 import { intBetween, pick, stream, unit, type Rng } from '../rng';
 import { addDaysToKey } from '../time';
-import RULES from '../../data/homes/rules.json';
 import {
   PLACEHOLDER, RUNNING_USD, inBuilding, roomsFrom, scopesOf,
-  FORM_WORDS, type Condition, type Design, type Evidence, type Form, type Home, type Room, type RoomKind, type ScopedRule,
+  FORM_WORDS, type Condition, type Design, type Evidence, type Form, type Home, type Room, type RoomKind,
 } from './model';
 
-export const HOME_RULES = RULES as unknown as ScopedRule[];
+export { HOME_RULES } from './rules';
 
 const HUD = import.meta.glob<string>('../../data/homes/hud/*.json', { query: '?url', import: 'default', eager: true });
 const FR = import.meta.glob<string>('../../data/homes/fr/*.json', { query: '?url', import: 'default', eager: true });
