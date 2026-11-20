@@ -94,6 +94,9 @@ test('J02 in one save: a real work, real catalog performers, made, released, ent
     await expect(page.getByRole('heading', { name, level: 1 })).toBeVisible();
     const story = card(page, 'In Your Story');
     await expect(story).toBeVisible();
+    // First into the story (offers and costs nothing), then onto a part's list.
+    const into = story.getByRole('button', { name: `Consider ${name} For Your Projects` });
+    if (await into.isVisible()) await into.click();
     const add = story.getByRole('button', { name: 'Consider For This' });
     if (await add.waitFor({ timeout: 8_000 }).then(() => true, () => false)) {
       await add.click();
