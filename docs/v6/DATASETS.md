@@ -56,6 +56,20 @@ The catalog (TMDB), the cinemas (Wikidata) and the stories (Wikipedia) are older
   - <https://www.sundance.org/blogs/the-complete-list-of-2026-sundance-film-festival-award-winners/>, read 2026-11-20. Every jury and audience award of the January 30, 2026 ceremony, and the producers awards it lists as announced before.
   - <https://www.lecourt-clermont.org/programmation-2026/>, read 2026-11-20. The 28 competition programmes (I 1 to I 12, F 1 to F 11, L 1 to L 5): every film of the international, national and lab competitions.
   - <https://www.lecourt-clermont.org/programmation-2026/palmares-2026/>, read 2026-11-20. Every prize of the 38th international, 48th national, 25th lab and XR competitions, and the out-of-competition one, given at the close on February 7, 2026.
+  - <https://www.berlinale.de/en/2026/news-press-releases/271932.html>, read 2026-11-20. The 22 films of the Competition (January 20, 2026).
+  - <https://www.berlinale.de/en/2026/news-press-releases/273288.html>, read 2026-11-20. The 14 first features of Perspectives, the last of them announced on January 29, 2026 (13 on January 20).
+  - <https://www.berlinale.de/en/2026/news-press-releases/271610.html>, read 2026-11-20. The 37 films of Panorama (January 14, 2026).
+  - <https://www.berlinale.de/en/2026/news-press-releases/271764.html>, read 2026-11-20. The Forum's 32 films and its Forum Special (announced January 12), 45 in all (January 15, 2026).
+  - <https://www.berlinale.de/en/2026/news-press-releases/271763.html>, read 2026-11-20. The 32 works of Forum Expanded (January 15, 2026).
+  - <https://www.berlinale.de/en/2026/news-press-releases/271596.html>, read 2026-11-20. Generation's 18 features and 23 shorts (January 14, 2026).
+  - <https://www.berlinale.de/en/2026/news-press-releases/271389.html>, read 2026-11-20. The 21 films of Berlinale Shorts (January 12, 2026).
+  - <https://www.berlinale.de/en/archive/programme/programme-archive.html>, read 2026-11-20. The 21 works of Berlinale Special, whose release of January 14, 2026 counted 19 "so far"; shown from the opening, February 12, when the whole section was certainly public.
+  - <https://www.berlinale.de/en/archive/awards-juries/awards.html>, read 2026-11-20. The prizes of the official juries of February 21, 2026, with the honorary awards; the release of that evening (277999) and its PDF list them too.
+  - <https://www.berlinale.de/en/2026/news-press-releases/277867.html>, read 2026-11-20. The 14plus prizes of the Youth Jury and the Generation International Jury (February 20, 2026).
+  - <https://www.berlinale.de/en/2026/news-press-releases/277918.html>, read 2026-11-20. The two Panorama Audience Awards (February 21, 2026).
+  - <https://www.berlinale.de/en/2026/news-press-releases/269378.html>, read 2026-11-20. The Honorary Golden Bear (November 14, 2025).
+  - <https://www.berlinale.de/en/2026/news-press-releases/271392.html>, read 2026-11-20. A Berlinale Camera (January 12, 2026).
+  - <https://www.berlinale.de/en/2026/news-press-releases/277191.html>, read 2026-11-20. A Berlinale Camera (February 16, 2026).
 
 ## `src/data/history/awards-2026-reference.json`
 

@@ -12,13 +12,17 @@ const ids = (xs: { id: string }[]) => xs.map((x) => x.id).sort();
 
 describe('recorded history', () => {
   it('shows nothing before its published date, and each result from that date in the player\'s calendar', () => {
-    expect(observationsAt('2025-12-02')).toEqual([]); // the Spirit Awards' nominees, December 3, 2025, are the first
+    // The first is the Berlinale's Honorary Golden Bear, announced November 14, 2025; then the Spirit Awards' nominees,
+    // December 3.
+    expect(observationsAt('2025-11-13')).toEqual([]);
+    expect(observationsAt('2025-12-02').map((o) => o.id)).toEqual(['berlinale-2026-the-honorary-golden-bear']);
     // The Golden Globes' nominees from December 8, 2025 (from November 19, 2026; until then none was recorded, and a
     // January start saw nothing), its winners from January 11.
     // By then: nominees, the Spirit Awards', the PGA's documentary field (December 9, 2025) and the Golden Globes', and
-    // Sundance's selection (December 10 and 15); one winner, the Sloan prize Sundance announced with its selection.
-    expect(observationsAt('2026-01-05').filter((o) => o.kind === 'winner').map((o) => o.id)).toEqual(['sundance-2026-alfred-p-sloan-feature-film-prize']);
-    expect([...new Set(observationsAt('2026-01-05').map((o) => o.institution))].sort()).toEqual(['golden-globes', 'pga', 'spirit', 'sundance']);
+    // Sundance's selection (December 10 and 15); two winners, the Berlinale's honorary bear and the Sloan prize Sundance
+    // announced with its selection.
+    expect(observationsAt('2026-01-05').filter((o) => o.kind === 'winner').map((o) => o.id).sort()).toEqual(['berlinale-2026-the-honorary-golden-bear', 'sundance-2026-alfred-p-sloan-feature-film-prize']);
+    expect([...new Set(observationsAt('2026-01-05').map((o) => o.institution))].sort()).toEqual(['berlinale', 'golden-globes', 'pga', 'spirit', 'sundance']);
     expect(recordedResults('golden-globes', 2026, '2026-01-10')).toHaveLength(28);
     expect(recordedResults('golden-globes', 2026, '2026-01-10').some((o) => o.kind === 'winner')).toBe(false);
     const globes = recordedResults('golden-globes', 2026, '2026-01-11').filter((o) => o.kind === 'winner');
@@ -246,6 +250,27 @@ describe('recorded history', () => {
     expect(won.find((o) => o.category === 'special-jury')!.subjects).toEqual(['Buah']);
     for (const o of won.filter((x) => x.category)) expect(sel.find((x) => x.category === 'international')!.subjects).toContain(o.subjects[0]);
     expect(won.find((o) => o.id === 'clermont-2026-prix-d-interpretation-competition-internationale')).toMatchObject({ subjects: ['Ana Barja'], work: 'Casi septiembre' });
+  });
+
+  it('holds the 76th Berlinale: each section from the release that completed it, the prizes from February 20 and 21', () => {
+    const on = (day: string, kind: string) => recordedResults('berlinale', 2026, day).filter((o) => o.kind === kind);
+    const sizes = (day: string) => Object.fromEntries(on(day, 'nominees').filter((o) => o.category).map((o) => [o.category, o.subjects.length]));
+    expect(sizes('2026-01-14')).toEqual({ shorts: 21, panorama: 37, generation: 41 });
+    expect(sizes('2026-01-20')).toEqual({ shorts: 21, panorama: 37, generation: 41, forum: 45, competition: 22 });
+    // Perspectives had 13 first features on January 20 and a 14th on January 29: the section is shown whole from then.
+    expect(sizes('2026-01-29').perspectives).toBe(14);
+    // Before the prizes, the honorary ones: the Golden Bear (November 14) and two Berlinale Cameras (January 12, February 16).
+    expect(on('2026-02-19', 'winner').map((o) => o.category ?? o.subjects[0]).sort()).toEqual(['Haile Gerima', 'Max Richter', 'honorary-bear']);
+    expect(on('2026-02-20', 'winner').filter((o) => o.categoryName.includes('14plus'))).toHaveLength(4);
+    const won = on('2026-02-21', 'winner');
+    expect(won.find((o) => o.category === 'golden-bear')!.subjects).toEqual(['Gelbe Briefe']);
+    expect(won.find((o) => o.category === 'leading-performance')).toMatchObject({ subjects: ['Sandra Hüller'], work: 'Rose', recipients: 'named_person' });
+    const competition = on('2026-02-21', 'nominees').find((o) => o.category === 'competition')!.subjects;
+    for (const id of ['golden-bear', 'grand-jury', 'jury-prize', 'director', 'leading-performance', 'screenplay', 'artistic-contribution']) {
+      const o = won.find((x) => x.category === id)!;
+      expect(competition).toContain(o.work ?? o.subjects[0]);
+    }
+    expect(new Set(won.filter((o) => o.category).map((o) => o.category)).size).toBe(12); // every prize the game holds, and the honorary bear
   });
 
   it('cites a source for every observation, never publishes before it happens, and names the game\'s own categories', () => {

@@ -366,6 +366,13 @@
    "eligibility": "premiere",
    "prestige": 70,
    "official": {
+    "2026": {
+     "start": "2026-02-12",
+     "end": "2026-02-22",
+     "label": "76th Berlin International Film Festival",
+     "source": "https://www.berlinale.de/en/2026/news-press-releases/267074.html",
+     "checked": "2026-11-20"
+    },
     "2027": {
      "start": "2027-02-10",
      "end": "2027-02-21",
