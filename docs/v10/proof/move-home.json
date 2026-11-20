@@ -32,7 +32,7 @@
   "jobsWithdrawn": 0,
   "jobsDeclined": 0,
   "ratesAgreed": 0,
-  "logLines": 120.275,
+  "logLines": 121.1,
   "hired": 16,
   "castRates": 3187.5,
   "releaseDelay": 102.604,
@@ -88,7 +88,7 @@
   "jobsWithdrawn": 0,
   "jobsDeclined": 0,
   "ratesAgreed": 0,
-  "logLines": 140.85,
+  "logLines": 141.6,
   "hired": 16.55,
   "castRates": 3201,
   "releaseDelay": 99.954,
@@ -271,10 +271,10 @@
    "n": 40
   },
   "logLines": {
-   "mean": 20.575,
-   "lo": 18.316,
-   "hi": 22.834,
-   "changed": 40,
+   "mean": 20.5,
+   "lo": 18.305,
+   "hi": 22.695,
+   "changed": 39,
    "n": 40
   },
   "hired": {
@@ -540,7 +540,7 @@
  ],
  "verdict": "proven",
  "hashes": {
-  "src/engine/papers.ts": "4083d7638591369b",
+  "src/engine/papers.ts": "c0260936029a473c",
   "src/engine/bankworld/systems/abroad.ts": "b84725141ffc1002",
   "src/engine/production/shoot.ts": "4f6baad6273bf3d7",
   "tests/proof/career.ts": "50bea06f19a02c5b"
