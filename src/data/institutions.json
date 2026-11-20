@@ -740,6 +740,13 @@
    "eligibility": "premiere",
    "prestige": 76,
    "official": {
+    "2026": {
+     "start": "2026-05-12",
+     "end": "2026-05-23",
+     "label": "2026 Cannes Film Festival",
+     "source": "https://www.festival-cannes.com/en/press/press-releases/the-closing-ceremony-of-the-79th-festival-de-cannes/",
+     "checked": "2026-11-20"
+    },
     "2027": {
      "start": "2027-05-11",
      "end": "2027-05-22",

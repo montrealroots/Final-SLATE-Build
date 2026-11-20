@@ -75,6 +75,13 @@ The catalog (TMDB), the cinemas (Wikidata) and the stories (Wikipedia) are older
   - <https://seriesmania.com/festival/label-ugc-spectateurs-series-mania-2026/>, read 2026-11-20. The UGC spectators' label (April 4, 2026).
   - <https://hotdocs.ca/news/hd26-awards>, read 2026-11-20. The twelve awards of the Awards Presentation of May 1, 2026.
   - <https://hotdocs.ca/news/hd26-top-20-daily>, read 2026-11-20. The Rogers Audience Award (announced May 3) and the audience awards for a feature and a short, all published May 4, 2026.
+  - <https://www.festival-cannes.com/en/press/press-releases/the-films-of-the-official-selection-2026/>, read 2026-11-20. Every section of the Official Selection (announced April 9, 2026, the list updated after the additions of April 22); Competition, Un Certain Regard, Cannes Première and Special Screenings are shown whole from April 22, when the additions completed them, Out of Competition and Midnight Screenings from April 9.
+  - <https://www.festival-cannes.com/en/press/press-releases/the-selection-of-short-films-and-la-cinef-of-the-79th-festival-de-cannes-unveiled/>, read 2026-11-20. The 10 films of the Short Film Competition and the 19 of La Cinef (April 21, 2026).
+  - <https://www.festival-cannes.com/en/press/press-releases/un-certain-regard-winners-list-2026/>, read 2026-11-20. The five Un Certain Regard prizes (May 22, 2026).
+  - <https://www.festival-cannes.com/en/press/press-releases/the-jury-has-announced-the-winners-of-the-29th-la-cinef-selection/>, read 2026-11-20. La Cinef's three prizes, the third shared (May 21, 2026).
+  - <https://www.festival-cannes.com/en/press/press-releases/peter-jackson-honorary-palme-d-or-of-the-79th-festival-de-cannes/>, read 2026-11-20. An Honorary Palme d'or (March 5, 2026).
+  - <https://www.festival-cannes.com/en/press/press-releases/barbra-streisand-honorary-palme-d-or-of-the-79th-festival-de-cannes/>, read 2026-11-20. An Honorary Palme d'or (March 11, 2026).
+  - <https://www.festival-cannes.com/en/press/press-releases/the-79th-festival-de-cannes-winners-list/>, read 2026-11-20. The Competition's prizes, the Short Film Palme d'or, the Caméra d'or and the CST awards (May 23, 2026).
 
 ## `src/data/history/awards-2026-reference.json`
 

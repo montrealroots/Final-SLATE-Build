@@ -295,6 +295,28 @@ describe('recorded history', () => {
     expect(on('2026-05-04')).toHaveLength(14);
   });
 
+  it('holds the 79th Cannes: the selection as announced and completed, each prize from its own night', () => {
+    const on = (day: string, kind: string) => recordedResults('cannes', 2026, day).filter((o) => o.kind === kind);
+    expect(on('2026-04-08', 'nominees')).toEqual([]);
+    expect(on('2026-04-09', 'nominees').map((o) => o.categoryName).sort()).toEqual(['Midnight Screenings', 'Out of Competition']);
+    expect(on('2026-04-22', 'nominees').find((o) => o.category === 'competition')!.subjects).toHaveLength(22);
+    expect(on('2026-05-21', 'winner').filter((o) => o.categoryName.startsWith('La Cinef'))).toHaveLength(3);
+    expect(on('2026-05-22', 'winner').some((o) => o.category === 'ucr-prize')).toBe(true);
+    expect(on('2026-05-22', 'winner').some((o) => o.category === 'palme')).toBe(false);
+    const won = on('2026-05-23', 'winner');
+    // The Palme, the Grand Prix and the shared Best Director prize are the reference set's, once each.
+    expect(won.filter((o) => ['palme', 'grand-prix', 'director'].includes(o.category ?? '')).map((o) => o.id).sort()).toEqual(['v7-cannes-best_director-winner', 'v7-cannes-grand_prix-winner', 'v7-cannes-palme_dor-winner']);
+    expect(won.find((o) => o.category === 'palme')!.subjects).toEqual(['Fjord']);
+    // The winners' list says Notre Salut; the selection gives the film as A Man Of His Time, by the same director.
+    expect(won.find((o) => o.category === 'screenplay')).toMatchObject({ subjects: ['Emmanuel Marre'], work: 'A Man Of His Time' });
+    const comp = on('2026-05-23', 'nominees').find((o) => o.category === 'competition')!.subjects;
+    for (const id of ['palme', 'jury-prize', 'screenplay', 'actress', 'actor']) {
+      const o = won.find((x) => x.category === id)!;
+      expect(comp).toContain(o.work ?? o.subjects[0]);
+    }
+    expect(new Set(won.filter((o) => o.category).map((o) => o.category)).size).toBe(12); // every prize the game holds
+  });
+
   it('cites a source for every observation, never publishes before it happens, and names the game\'s own categories', () => {
     const insts = (institutions as { institutions: { id: string; categories: { id: string }[]; official?: Record<string, { label?: string }> }[] }).institutions;
     const wrong: string[] = [];
