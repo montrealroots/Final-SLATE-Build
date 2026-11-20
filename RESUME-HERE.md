@@ -15,9 +15,10 @@ finished, and they come back only when the owner says so:
 - **J02 (source to feature):** a real work as the source and real catalog people hired, in its one game (each runs in
   its own journey today).
 - **J20 (phone parity):** every journey on WebKit; today only the iPhone projects' list in `playwright.config.ts` runs.
-- **Papers research:** Iran, Malawi, Turkey, South Africa, Hong Kong, Serbia, Colombia and Argentina stay the game's
-  estimate, as their sources conflict (`docs/v10/papers-research/fees-without-times.md`); 111 visitor visas and 170
-  work permits are still estimates in all (`docs/v10/papers-estimates.json`).
+- **Papers research:** Iran, Malawi, Turkey, Serbia and Colombia stay the game's estimate, as their sources conflict
+  (`docs/v10/papers-research/fees-without-times.md`); South Africa, Hong Kong and Argentina were settled from their
+  governments' pages on November 20 (batch 5, with Macao and Taiwan). 106 visitor visas and 170 work permits are still
+  estimates in all (`docs/v10/papers-estimates.json`), most with conflicting or aggregator-only sources.
 - **Real-phone and pacing tests:** they need the owner's own device and a person playing.
 
 ## Where The "Go Perfectly" List Stands (The Owner, November 19, 2026)
@@ -53,7 +54,9 @@ The owner's "What's next?" list of November 19, worked through in order:
    ($25 to $180) turned up, so they stay the game's own, said as such.
 4. Overall deals: built on November 17 (A14 in `docs/v8/STATUS.md`); the older summary below that called them unbuilt
    was corrected.
-5. Papers research: parked by the owner on November 17 (above). What's left is mostly conflicting sources or
+5. Papers research: parked by the owner on November 17 (above), taken up again under "All that hasn't been completed,
+   complete perfectly" on November 20 (batch 5: five visas from official pages; Cyprus and Trinidad and Tobago left
+   estimated, their pages refusing the tools or disagreeing). What's left is mostly conflicting sources or
    aggregator-only figures (the batch 3 note below).
 
 ## The Most-Watched TMDB Haul And Its Pictures (The Owner, November 18–19, 2026)

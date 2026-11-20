@@ -50,9 +50,12 @@ Still open after batch 4:
 - Malawi: the 2023 waiver was replaced on January 3, 2026 by reciprocal fees; $50 in the portal's FAQ, $75 on its fee page.
 - Turkey: the e-visa is $15 to $100 in guides, and some say US and UK passports need none.
 - South Africa: ZAR 190 or 425; five days to six weeks. Hong Kong: HK$230 before the September 2025 revision, and the
-  Immigration Department's page gives no fee.
+  Immigration Department's page gives no fee. (Both settled in batch 5, below: the 2026 gazette's R425, and the
+  Immigration Department's fee table, HK$330.)
 - Colombia: the visitor (V) visa's study and issuance fees are given as $52 to $56 and $52 to $177 by different guides.
 - Argentina: the AVE is 20 business days on the consulates' pages, but its fee is USD 400, €368 or $150 by source.
+  (Batch 5 recorded the consular tourist visa instead, whose fee the foreign ministry states: US$150. The AVE, for
+  holders of a US visa, stays unrecorded.)
 - Serbia: each embassy prices the type C visa itself (92 EUR in Baku, 96 USD in Washington, 88 CHF in Zurich).
 
 Batch 5 (November 20, 2026), from the governments' own pages:
