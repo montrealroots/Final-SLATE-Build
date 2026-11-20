@@ -15,9 +15,10 @@ describe('recorded history', () => {
     expect(observationsAt('2025-12-02')).toEqual([]); // the Spirit Awards' nominees, December 3, 2025, are the first
     // The Golden Globes' nominees from December 8, 2025 (from November 19, 2026; until then none was recorded, and a
     // January start saw nothing), its winners from January 11.
-    // By then: nominees only, the Spirit Awards', the PGA's documentary field (December 9, 2025) and the Golden Globes'.
-    expect(observationsAt('2026-01-05').every((o) => o.kind === 'nominees')).toBe(true);
-    expect([...new Set(observationsAt('2026-01-05').map((o) => o.institution))].sort()).toEqual(['golden-globes', 'pga', 'spirit']);
+    // By then: nominees, the Spirit Awards', the PGA's documentary field (December 9, 2025) and the Golden Globes', and
+    // Sundance's selection (December 10 and 15); one winner, the Sloan prize Sundance announced with its selection.
+    expect(observationsAt('2026-01-05').filter((o) => o.kind === 'winner').map((o) => o.id)).toEqual(['sundance-2026-alfred-p-sloan-feature-film-prize']);
+    expect([...new Set(observationsAt('2026-01-05').map((o) => o.institution))].sort()).toEqual(['golden-globes', 'pga', 'spirit', 'sundance']);
     expect(recordedResults('golden-globes', 2026, '2026-01-10')).toHaveLength(28);
     expect(recordedResults('golden-globes', 2026, '2026-01-10').some((o) => o.kind === 'winner')).toBe(false);
     const globes = recordedResults('golden-globes', 2026, '2026-01-11').filter((o) => o.kind === 'winner');
@@ -206,6 +207,30 @@ describe('recorded history', () => {
     const won = on('2026-05-31', 'winner');
     expect(won).toHaveLength(145);
     expect(won.find((o) => o.category !== null && /Best Motion Picture/.test(o.categoryName))!.subjects[0]).toContain('Nirvanna the Band the Show the Movie');
+  });
+
+  it('holds the 2026 Sundance Film Festival: each section\'s selection from its announcement, its awards from their nights', () => {
+    const on = (day: string, kind: string) => recordedResults('sundance', 2026, day).filter((o) => o.kind === kind);
+    expect(recordedResults('sundance', 2026, '2025-12-09')).toEqual([]);
+    // December 10: the features and episodic projects, 97 in eleven sections, five of them the game's.
+    const dec10 = on('2025-12-10', 'nominees');
+    expect(dec10.reduce((n, o) => n + o.subjects.length, 0)).toBe(97);
+    expect(dec10.filter((o) => o.category).map((o) => o.category).sort()).toEqual(['documentary', 'dramatic', 'episodic', 'world-documentary', 'world-dramatic']);
+    expect(dec10.find((o) => o.category === 'dramatic')!.subjects).toHaveLength(10);
+    // December 15: the 54 shorts, one Short Film Program.
+    expect(on('2025-12-15', 'nominees').find((o) => o.category === 'shorts')!.subjects).toHaveLength(54);
+    // The short film awards on January 27, the rest on January 30; each winner is in the selection it was chosen from.
+    expect(on('2026-01-27', 'winner').find((o) => o.category === 'shorts-grand-jury')).toMatchObject({ subjects: ['Ben Proudfoot and Stephen Curry'], work: 'The Baddest Speechwriter of All' });
+    expect(on('2026-01-29', 'winner').some((o) => o.category === 'dramatic-grand-jury')).toBe(false);
+    const won = on('2026-01-30', 'winner');
+    expect(won.find((o) => o.category === 'dramatic-grand-jury')!.subjects).toEqual(['Josephine']);
+    expect(won.find((o) => o.category === 'world-documentary-grand-jury')!.subjects).toEqual(['To Hold a Mountain']);
+    const field = (cat: string) => dec10.find((o) => o.category === cat)!.subjects;
+    for (const [prize, section] of [['dramatic-grand-jury', 'dramatic'], ['dramatic-directing', 'dramatic'], ['waldo-salt', 'dramatic'], ['documentary-grand-jury', 'documentary'], ['documentary-directing', 'documentary'], ['world-dramatic-grand-jury', 'world-dramatic'], ['world-documentary-grand-jury', 'world-documentary']]) {
+      const w = won.find((o) => o.category === prize)!;
+      expect(field(section)).toContain(w.work ?? w.subjects[0]);
+    }
+    expect(new Set(won.filter((o) => o.category).map((o) => o.category)).size).toBe(10); // every prize the game holds
   });
 
   it('cites a source for every observation, never publishes before it happens, and names the game\'s own categories', () => {

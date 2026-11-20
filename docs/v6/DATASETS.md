@@ -50,6 +50,10 @@ The catalog (TMDB), the cinemas (Wikidata) and the stories (Wikipedia) are older
   - <https://www.academy.ca/2026/nominees-announced-for-the-2026-canadian-screen-awards/>, read 2026-11-19. For the nominations of March 25, 2026.
   - <https://www.academy.ca/2026/2026-canadian-screen-award-winners-unveiled/>, read 2026-11-19. The winners release of May 31, 2026.
   - <https://www.televisionacademy.com/78th-emmy-winners>, read 2026-11-19. The Academy's winners release (Ernst & Young's list of the telecast's 19 categories), a PDF whose text was read directly.
+  - <https://www.sundance.org/blogs/2026-sundance-film-festival-unveils-97-projects-selected-for-the-feature-film-and-episodic-program/>, read 2026-11-20. Every section's selection (December 10, 2025), and the Alfred P. Sloan Feature Film Prize announced with it.
+  - <https://www.sundance.org/blogs/2026-sundance-film-festival-reveals-54-titles-selected-for-short-film-program-presented-by-ketel-one-vodka/>, read 2026-11-20. The 54 short films in their four groups (December 15, 2025); the Park City Legacy shorts, earlier editions' films, are left out.
+  - <https://www.sundance.org/blogs/2026-sundance-film-festival-reveals-short-film-program-award-winners/>, read 2026-11-20. The short film awards, given the evening of January 27, 2026.
+  - <https://www.sundance.org/blogs/the-complete-list-of-2026-sundance-film-festival-award-winners/>, read 2026-11-20. Every jury and audience award of the January 30, 2026 ceremony, and the producers awards it lists as announced before.
 
 ## `src/data/history/awards-2026-reference.json`
 
