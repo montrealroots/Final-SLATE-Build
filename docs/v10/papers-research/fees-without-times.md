@@ -210,3 +210,25 @@ Batch 11 (November 20, 2026): the work rules that let anyone work.
     but don't list artists; the law's text (uradni-list.si) answered 503.
 - A player already working in one of these four without a permit loses that right when the save is next loaded, and
   needs the permit. Permits already issued are unaffected.
+
+Batch 12 (November 20, 2026, night).
+- Seychelles, the Gainful Occupation Permit, settled in full: SCR 1,000 to process and SCR 500 for each month of the
+  permit, all paid on applying, collected one to five days after submission (Immigration and Civil Status Seychelles,
+  page undated). The game takes three months, as for Trinidad and Tobago's permit: SCR 2,500.
+- The Bahamas, the visitor's visa, settled in full: $160 single entry, 7 to 10 business days, not counting the day it's
+  submitted, recorded as 10 to 14 days (Ministry of Foreign Affairs, eVISA page, updated April 1, 2026). The page gives
+  dollars without saying which; the Bahamian dollar is at par with the US dollar.
+- Trinidad and Tobago, the visitor visa, scoped by mission (`route-evidence.json`), not settled for everyone: US$85 at
+  the Washington embassy, multiple entry only, 10 to 14 business days (its checklist, file dated December 30, 2025);
+  CAD 160 at the Canadian missions from September 10, 2025, where single-entry visas are no longer offered and no
+  decision time is given. Everyone else keeps the estimate. The online eVisa's TTD 200 is quoted only by unofficial
+  sites.
+- Leads, not recorded:
+  - Mongolia's e-visa: the Immigration Agency gives three working days (72 hours); the US$51.50 fee is only in travel
+    agencies' pages, and evisa.mn answered 500. A visa recorded in `terms.json` counts as verified, so a fee with only
+    secondary support isn't recorded.
+  - Kyrgyzstan's e-visa: unofficial sources give $35 to $82; the portal wasn't read.
+  - Faroe Islands' work permit: the Danish pages (no fee, about three months) are superseded; the Faroese authority
+    (Útlendingastovan) has handled applications since September 1, 2024, and its own page wasn't found.
+  - Malaysia (PUSPAL) and Antigua and Barbuda: only consultancies' figures, which disagree.
+  - Gibraltar: the UK fee tool's figures are for UK visas applied for in Gibraltar; it answered 403.
