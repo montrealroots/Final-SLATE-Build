@@ -3,14 +3,14 @@
 // the shop) → your bank's statement, which says both, and Home, which reads the same journal. No company: it left play
 // that day.
 import { expect, test, type Page } from './test';
-import { addScene, nav, newProject, quickLife, saveAndApprove, section } from './helpers';
+import { addScene, nav, newProject, onlyOn, quickLife, saveAndApprove, section } from './helpers';
 
 const card = (page: Page, heading: string) => page.locator('section.card', { has: page.getByRole('heading', { name: heading, exact: true }) });
 const homeBank = (page: Page) => page.locator('.panel, section', { has: page.getByRole('heading', { name: 'Your Bank', exact: true }) }).first();
 const available = async (page: Page) => Number((await homeBank(page).innerText()).match(/Available\s*\$([\d,]+)/)![1].replace(/,/g, ''));
 
 test('a custom budget moves nothing; your money into the project and a purchase come off your bank, line by line', async ({ page }, info) => {
-  test.skip(!['desktop', 'phone', 'iphone-15-pro-max'].includes(info.project.name), 'Desktop, phone and the iPhone 15 Pro Max (WebKit).');
+  test.skip(!onlyOn(info, ['desktop', 'phone', 'iphone-15-pro-max']), 'Desktop, phone and the iPhone 15 Pro Max (WebKit).');
   test.setTimeout(240_000);
   await quickLife(page, 'us-los-angeles', '2028-01-26');
   await expect(homeBank(page)).toContainText('Available$25,000,000');

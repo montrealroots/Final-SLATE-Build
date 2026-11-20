@@ -19,6 +19,8 @@ export const sameCategory = (a: string, b: string) => norm(a) === norm(b);
 export interface SavedResult extends ShownResult {
   /** Where the outcome comes from: the record, the record changed by your work, or this story's own decision. */
   from: 'record' | 'record-changed' | 'story';
+  /** The record here rests on a secondary report or an undated page (history.ts status 'reported'), not a confirmation. */
+  reported?: boolean;
 }
 
 export function savedResult(state: GameState, ed: Edition, cat: Category, today: string): SavedResult | null {
@@ -40,6 +42,7 @@ export function savedResult(state: GameState, ed: Edition, cat: Category, today:
   return {
     stage: winners.length ? 'winner' : 'nomination', field, winners, about: [],
     from: myTitles.length ? 'record-changed' : 'record',
+    ...(recorded.some((o) => o.status === 'reported') ? { reported: true } : {}),
   };
 }
 

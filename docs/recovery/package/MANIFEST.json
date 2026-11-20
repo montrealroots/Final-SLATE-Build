@@ -1,0 +1,17 @@
+{
+  "package": "SLATE Research Recovery",
+  "researchCutoff": "2026-11-19 America/Chicago",
+  "repo": "montrealroots/Final-SLATE-Build",
+  "commit": "b9a9e5ca7d4e5d1881cb88344172721fad33211b",
+  "awardRows": 167,
+  "feeRows": 45,
+  "sources": 42,
+  "trackedGapRows": 322,
+  "fullyClosedCountryRecords": 0,
+  "repoModified": false,
+  "gameTestsRun": false,
+  "licensedBoxOfficeDatasetIncluded": false,
+  "physicalSafariTested": false,
+  "allAwardsComplete": false,
+  "allCountriesResearched": false
+}

@@ -3,7 +3,7 @@
 // to disk by e2e/serve-prod.ts and served on port 4176; an expired copy of it on 4177. It runs only with SLATE_E2E_PROD=1,
 // which CI's production step sets; the dev server has no such servers.
 import { expect, test, type Page } from './test';
-import { nav, quickLife } from './helpers';
+import { nav, onlyOn, quickLife } from './helpers';
 
 const card = (page: Page, heading: string) => page.locator('section.card', { has: page.getByRole('heading', { name: heading, exact: true }) });
 const prod = process.env.SLATE_E2E_PROD === '1';
@@ -20,7 +20,7 @@ test.describe('the catalog through the production server', () => {
   test.use({ baseURL: 'http://localhost:4176' });
   test.beforeEach(({}, info) => {
     test.skip(!prod, 'Needs the production servers (SLATE_E2E_PROD=1).');
-    test.skip(!['desktop', 'phone'].includes(info.project.name), 'Runs on desktop and phone.');
+    test.skip(!onlyOn(info, ['desktop', 'phone']), 'Runs on desktop and phone.');
   });
 
   test('company to film to cast member to another credit, a network, and a place\'s cinemas, each record fetched on request', async ({ page }) => {
@@ -57,7 +57,7 @@ test.describe('a catalog past TMDB\'s six months, through the production server'
   test.use({ baseURL: 'http://localhost:4177' });
   test.beforeEach(({}, info) => {
     test.skip(!prod, 'Needs the production servers (SLATE_E2E_PROD=1).');
-    test.skip(!['desktop', 'phone'].includes(info.project.name), 'Runs on desktop and phone.');
+    test.skip(!onlyOn(info, ['desktop', 'phone']), 'Runs on desktop and phone.');
   });
 
   test('is withdrawn, the game says why, and the rest of the game goes on', async ({ page }) => {

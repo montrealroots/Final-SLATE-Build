@@ -13,7 +13,7 @@
 import type { Locator } from '@playwright/test';
 import { hashString } from '../src/engine/rng';
 import { expect, test, type Page } from './test';
-import { addScene, nav, newProject, quickLife, readSavedState, saveAndExit, section } from './helpers';
+import { addScene, nav, newProject, onlyOn, quickLife, readSavedState, saveAndExit, section } from './helpers';
 import { firstSaveId, readRecord, writeRecords } from './vault';
 
 test.use({ actionTimeout: 20_000 });
@@ -36,7 +36,7 @@ async function editSave(page: Page, fn: (state: State) => void): Promise<void> {
 const alert = (page: Page): Locator => page.getByRole('alert').first();
 
 test('journey E: refused with a reason, then recovered: a song without its rights, delivery before the work, impossible release dates', async ({ page }, info) => {
-  test.skip(!['desktop', 'phone', 'iphone-15-pro-max'].includes(info.project.name), 'Desktop, phone and one WebKit iPhone.');
+  test.skip(!onlyOn(info, ['desktop', 'phone', 'iphone-15-pro-max']), 'Desktop, phone and one WebKit iPhone.');
   await quickLife(page, 'gb-london', '2026-09-01');
   await newProject(page, { title: 'Grey Water', format: 'Series', episodes: '3', runtime: '60' });
   await section(page, 'Characters');

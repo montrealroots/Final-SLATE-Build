@@ -8,7 +8,7 @@
 // Fixtures, labelled: the world seed is pinned (helpers.ts pinSeed, 1994, as e2e/live-action.spec.ts, the seed it reaches
 // delivery with), so the run is the same every time. Nothing else is written into the save. Desktop, in Chromium.
 import { expect, test, type Page } from './test';
-import { addScene, advance, createCharacter, freshStart, nav, pinSeed, pressSaveAndExit, readSavedState, runToDelivery, saveAndApprove, section, staffEveryDepartment } from './helpers';
+import { addScene, advance, createCharacter, freshStart, nav, onlyOn, pinSeed, pressSaveAndExit, readSavedState, runToDelivery, saveAndApprove, section, staffEveryDepartment } from './helpers';
 
 test.use({ actionTimeout: 20_000 });
 
@@ -30,7 +30,7 @@ async function statement(page: Page): Promise<void> {
 const panel = (page: Page, heading: string) => page.locator('.panel, section', { has: page.getByRole('heading', { name: heading, exact: true }) }).first();
 
 test('the whole v8 path: a permit paid from the inheritance, the bank, a dated budget, delivery, a release and a festival result, kept after a reload', async ({ page }, info) => {
-  test.skip(info.project.name !== 'desktop', 'One full career run, at desktop width.');
+  test.skip(!onlyOn(info, ['desktop']), 'One full career run, at desktop width.');
   test.setTimeout(1_500_000);
   await freshStart(page);
   await createCharacter(page, {

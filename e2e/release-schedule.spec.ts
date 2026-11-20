@@ -5,9 +5,7 @@
 // made, staffed, shot and released through the screens. The world seed is pinned (helpers.ts pinSeed), chosen once.
 import type { Locator, Page } from '@playwright/test';
 import { expect, test } from './test';
-import {
-  addScene, advance, castRoles, nav, newProject, pinSeed, quickLife, readSavedState, runToDelivery, saveAndApprove, section, staffEveryDepartment,
-} from './helpers';
+import { addScene, advance, castRoles, nav, newProject, onlyOn, pinSeed, quickLife, readSavedState, runToDelivery, saveAndApprove, section, staffEveryDepartment } from './helpers';
 
 test.use({ actionTimeout: 20_000 });
 const shot = (page: Page, name: string) => page.screenshot({ path: `test-results/release-schedule-${name}.png`, fullPage: true });
@@ -27,7 +25,7 @@ async function openIemmys(page: Page): Promise<void> {
 }
 
 test('a series released across the year end: its own episode director, a split schedule, which episodes count and why, a previewed change, entered and kept after a reload', async ({ page }, info) => {
-  test.skip(info.project.name !== 'desktop', 'The season is made once, at desktop width.');
+  test.skip(!onlyOn(info, ['desktop']), 'The season is made once, at desktop width.');
   test.setTimeout(1_200_000);
   await quickLife(page, 'gb-london', '2026-07-01');
   await pinSeed(page, 41);

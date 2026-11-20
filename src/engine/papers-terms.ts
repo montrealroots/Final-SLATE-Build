@@ -30,6 +30,11 @@ export interface Terms {
   /** The route as the records name it. */
   route: string;
   fee: { amount: number; currency: string };
+  /**
+   * A further fee paid only once it is issued (from November 20, 2026, papers-scoped.ts: Colombia's issuance fee after
+   * its study fee). A refusal costs only `fee`.
+   */
+  issuance?: { amount: number; currency: string };
   /** Calendar days from applying to the decision (a range's middle). */
   days: number;
   /** The decision time in words: "21 days", "between 90 and 180 days". */

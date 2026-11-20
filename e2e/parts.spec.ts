@@ -3,7 +3,7 @@
 // is for its scenes alone, the estimate prices it apart, and both are kept after a reload. The rules are the engine's
 // (tests/parts.test.ts).
 import { expect, test } from './test';
-import { addScene, advance, castRoles, nav, newProject, readSavedState, runToDelivery, saveAndApprove, section, seededLife, staffEveryDepartment } from './helpers';
+import { addScene, advance, castRoles, nav, newProject, onlyOn, readSavedState, runToDelivery, saveAndApprove, section, seededLife, staffEveryDepartment } from './helpers';
 
 test('a part split in two: the child in two scenes cast on its own, you as the grown woman, kept after a reload', async ({ page }) => {
   test.setTimeout(240_000);
@@ -58,7 +58,7 @@ test('a part split in two: the child in two scenes cast on its own, you as the g
 // recast from episode 2 of a series, through the Cast page's stage form, changes that part's credits and no one else's.
 // You play Mara in episode 1; another performer plays her from episode 2; Ben is played by one performer throughout.
 test('J04: Mara recast from episode 2 through the Cast page: her credits change from that episode, and no one else\'s', async ({ page }, info) => {
-  test.skip(info.project.name !== 'desktop', 'The season runs once, at desktop width.');
+  test.skip(!onlyOn(info, ['desktop']), 'The season runs once, at desktop width.');
   test.setTimeout(1_200_000);
   await seededLife(page, 'gb-london', '2026-01-05', 3);
   await nav(page, 'Projects');

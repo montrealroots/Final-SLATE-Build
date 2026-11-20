@@ -3,12 +3,12 @@
 // seed is pinned (a labelled fixture), so the agent's searches come out the same every run.
 import type { Page } from '@playwright/test';
 import { expect, test } from './test';
-import { addScene, advance, nav, newProject, readSavedState, saveAndApprove, section, seededLife } from './helpers';
+import { addScene, advance, nav, newProject, onlyOn, readSavedState, saveAndApprove, section, seededLife } from './helpers';
 
 const card = (page: Page, heading: string) => page.locator('section.card', { has: page.getByRole('heading', { name: heading, exact: true }) });
 
 test('J10: an agent finds work, it is taken, worked, paid and credited; another comes; your own shoot is planned around it', async ({ page }, info) => {
-  test.skip(info.project.name !== 'desktop', 'One whole career run, at desktop width.');
+  test.skip(!onlyOn(info, ['desktop']), 'One whole career run, at desktop width.');
   test.setTimeout(480_000);
   await seededLife(page, 'gb-london', '2026-01-05', 11);
   await nav(page, 'Projects');

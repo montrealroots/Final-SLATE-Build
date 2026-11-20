@@ -3,14 +3,14 @@
 // turning the other down. Labelled fixture: the two offers are written into the save, as a record past its start draws
 // them (a career that gets there takes years to play); the bidding itself is the engine's (tests/first-look.test.ts).
 import { expect, test, type Page } from './test';
-import { advance, editSave, nav, quickLife } from './helpers';
+import { advance, editSave, nav, onlyOn, quickLife } from './helpers';
 
 const CLOSE = 'Long Light Pictures (Fixture)';
 const RIVAL = 'Meridian (Fixture)';
 const card = (page: Page, heading: string) => page.locator('section.card', { has: page.getByRole('heading', { name: heading, exact: true }) });
 
 test('two studios bid at once: one asked to match the other, it matches, signing it turns the other down', async ({ page }, info) => {
-  test.skip(!['desktop', 'phone'].includes(info.project.name), 'Desktop and phone.');
+  test.skip(!onlyOn(info, ['desktop', 'phone']), 'Desktop and phone.');
   test.setTimeout(300_000);
   await quickLife(page, 'us-los-angeles', '2026-11-12');
   await editSave(page, (s) => {

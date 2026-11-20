@@ -6,7 +6,7 @@
 // rules read where the game says them; Guide Me's ceiling met, returned to the player and approved higher; delivered,
 // released, and nothing reaching the player's own account that the player didn't move. The world seed is pinned (a labelled fixture).
 import { expect, test, type Page } from './test';
-import { addScene, advance, castRoles, nav, newProject, openStart, pickPlace, pinSeed, quickDraft, personalPostingsOf, readSavedState, runToDelivery, saveAndApprove, section, setInheritance, staffEveryDepartment } from './helpers';
+import { addScene, advance, castRoles, nav, newProject, onlyOn, openStart, personalPostingsOf, pickPlace, pinSeed, quickDraft, readSavedState, runToDelivery, saveAndApprove, section, setInheritance, staffEveryDepartment } from './helpers';
 
 test.use({ actionTimeout: 20_000 });
 
@@ -21,7 +21,7 @@ const RENT = [
 ] as const;
 
 test('J02: an inheritance, a feature on a rented kit, a harbour filmed abroad with a child in the cast, an overrun approved, released, and nothing more arriving unasked', async ({ page }, info) => {
-  test.skip(info.project.name !== 'desktop', 'One whole career run, at desktop width.');
+  test.skip(!onlyOn(info, ['desktop']), 'One whole career run, at desktop width.');
   test.setTimeout(1_500_000);
 
   // An inheritance of $7,500, read on Review before the story starts. Until November 14, 2026 this was $1,500 of savings

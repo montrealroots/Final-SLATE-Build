@@ -2,10 +2,10 @@
 // -> release gate. Test an uncovered territory/trailer, term expiry and payment once"; ledger V4-038.08). The world seed
 // is pinned (a labelled fixture) so the holders answer the same way each run. The game has no trailers to license.
 import { expect, test } from './test';
-import { addScene, advance, nav, newProject, produceToDelivery, readSavedState, saveAndApprove, section, seededLife } from './helpers';
+import { addScene, advance, nav, newProject, onlyOn, produceToDelivery, readSavedState, saveAndApprove, section, seededLife } from './helpers';
 
 test('J08: a song refused and replaced with library music, another licensed for less, delivered with its cue sheet, a release refused where it is not licensed, run out, renewed, paid once each', async ({ page }, info) => {
-  test.skip(info.project.name !== 'desktop', 'One whole career run, at desktop width.');
+  test.skip(!onlyOn(info, ['desktop']), 'One whole career run, at desktop width.');
   test.setTimeout(600_000);
   await seededLife(page, 'gb-london', '2026-01-05', 3);
   await nav(page, 'Projects');

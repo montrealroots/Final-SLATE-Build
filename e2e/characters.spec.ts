@@ -3,7 +3,7 @@
 // voice, recast, set aside with their scenes given to someone else, reloaded, and restored. The contract and what it
 // has cost are read from the save before and after and must be the same.
 import { expect, test, type Page } from './test';
-import { addScene, advance, freshStart, nav, newProject, pinSeed, quickLife, readSavedState, saveAndApprove, saveAndExit, section } from './helpers';
+import { addScene, advance, freshStart, nav, newProject, onlyOn, pinSeed, quickLife, readSavedState, saveAndApprove, saveAndExit, section } from './helpers';
 import { layoutFindings } from './layout';
 
 const noSidewaysScroll = async (page: Page) => expect(await page.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth)).toBeLessThanOrEqual(1);
@@ -28,7 +28,7 @@ async function offer(page: Page, part: string, method: 'On Camera' | 'Voice', sk
 }
 
 test('characters made by hand: renamed, tied together, cast body and voice apart, recast, set aside with their scenes given away, reloaded and restored', async ({ page }, info) => {
-  test.skip(!['desktop', 'phone', 'iphone-15-pro-max'].includes(info.project.name), 'Runs on desktop, phone and one WebKit iPhone emulation.');
+  test.skip(!onlyOn(info, ['desktop', 'phone', 'iphone-15-pro-max']), 'Runs on desktop, phone and one WebKit iPhone emulation.');
   test.setTimeout(600_000);
   const n = info.project.name;
   await freshStart(page);

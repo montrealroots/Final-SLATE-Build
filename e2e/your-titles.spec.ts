@@ -2,13 +2,13 @@
 // owner, November 19, 2026: "these should be accurate to the real tmdb film and series pages but obviously as if it was
 // my movie and show"), and a part's gender written at creation (the owner: "in the creation set their gender").
 import { expect, test, type Page } from './test';
-import { nav, newProject, quickLife, section } from './helpers';
+import { nav, newProject, onlyOn, quickLife, section } from './helpers';
 import { serveCatalog } from './catalog-fixture';
 
 const panel = (page: Page, title: string) => page.locator('section.card', { has: page.getByRole('heading', { name: title, exact: true }) });
 
 test.beforeEach(({}, info) => {
-  test.skip(!['desktop', 'phone'].includes(info.project.name), 'Runs on desktop and phone.');
+  test.skip(!onlyOn(info, ['desktop', 'phone']), 'Runs on desktop and phone.');
 });
 
 test("a film of yours has a recorded film's page: you direct, write and produce it, and a part's gender is kept", async ({ page }) => {

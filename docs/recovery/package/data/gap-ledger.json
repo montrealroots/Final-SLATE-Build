@@ -1,0 +1,2691 @@
+[
+  {
+    "group": "visas",
+    "country": "AF",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "visas",
+    "country": "DZ",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "visas",
+    "country": "AS",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "visas",
+    "country": "AI",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "visas",
+    "country": "AG",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "visas",
+    "country": "BS",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "visas",
+    "country": "BB",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "visas",
+    "country": "BY",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "visas",
+    "country": "BM",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "visas",
+    "country": "BO",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "visas",
+    "country": "BW",
+    "repositoryStatus": "estimate",
+    "packageStatus": "scoped_evidence_available_review_required",
+    "candidateRecordIds": [
+      "bw-work"
+    ],
+    "closed": false
+  },
+  {
+    "group": "visas",
+    "country": "IO",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "visas",
+    "country": "VG",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "visas",
+    "country": "BN",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "visas",
+    "country": "BF",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "visas",
+    "country": "CV",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "visas",
+    "country": "KY",
+    "repositoryStatus": "estimate",
+    "packageStatus": "scoped_evidence_available_review_required",
+    "candidateRecordIds": [
+      "ky-ent"
+    ],
+    "closed": false
+  },
+  {
+    "group": "visas",
+    "country": "CF",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "visas",
+    "country": "TD",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "visas",
+    "country": "CL",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "visas",
+    "country": "CN",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "visas",
+    "country": "CO",
+    "repositoryStatus": "estimate",
+    "packageStatus": "scoped_evidence_available_review_required",
+    "candidateRecordIds": [
+      "co-V-USD-study",
+      "co-V-USD-issue",
+      "co-V-EUR-study",
+      "co-V-EUR-issue",
+      "co-M-USD-study",
+      "co-M-USD-issue",
+      "co-M-EUR-study",
+      "co-M-EUR-issue",
+      "co-R-USD-study",
+      "co-R-USD-issue",
+      "co-R-EUR-study",
+      "co-R-EUR-issue"
+    ],
+    "closed": false
+  },
+  {
+    "group": "visas",
+    "country": "KM",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "visas",
+    "country": "CK",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "visas",
+    "country": "CY",
+    "repositoryStatus": "estimate",
+    "packageStatus": "scoped_evidence_available_review_required",
+    "candidateRecordIds": [
+      "cy-adult",
+      "cy-child"
+    ],
+    "closed": false
+  },
+  {
+    "group": "visas",
+    "country": "CD",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "visas",
+    "country": "DJ",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "visas",
+    "country": "DM",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "visas",
+    "country": "DO",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "visas",
+    "country": "EC",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "visas",
+    "country": "SV",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "visas",
+    "country": "GQ",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "visas",
+    "country": "ER",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "visas",
+    "country": "SZ",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "visas",
+    "country": "FK",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "visas",
+    "country": "FO",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "visas",
+    "country": "FJ",
+    "repositoryStatus": "estimate",
+    "packageStatus": "scoped_evidence_available_review_required",
+    "candidateRecordIds": [
+      "fj-work-app",
+      "fj-work-issue"
+    ],
+    "closed": false
+  },
+  {
+    "group": "visas",
+    "country": "GM",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "visas",
+    "country": "GI",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "visas",
+    "country": "GL",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "visas",
+    "country": "GD",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "visas",
+    "country": "GT",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "visas",
+    "country": "GN",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "visas",
+    "country": "GW",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "visas",
+    "country": "GY",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "visas",
+    "country": "HT",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "visas",
+    "country": "HN",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "visas",
+    "country": "IR",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "visas",
+    "country": "IQ",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "visas",
+    "country": "JM",
+    "repositoryStatus": "estimate",
+    "packageStatus": "scoped_evidence_available_review_required",
+    "candidateRecordIds": [
+      "jm-app"
+    ],
+    "closed": false
+  },
+  {
+    "group": "visas",
+    "country": "KI",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "visas",
+    "country": "XK",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "visas",
+    "country": "KG",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "visas",
+    "country": "LB",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "visas",
+    "country": "LS",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "visas",
+    "country": "LY",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "visas",
+    "country": "MW",
+    "repositoryStatus": "estimate",
+    "packageStatus": "scoped_evidence_available_review_required",
+    "candidateRecordIds": [
+      "mw-single-imm",
+      "mw-single-eta"
+    ],
+    "closed": false
+  },
+  {
+    "group": "visas",
+    "country": "MY",
+    "repositoryStatus": "estimate",
+    "packageStatus": "scoped_evidence_available_review_required",
+    "candidateRecordIds": [
+      "my-pvp-app",
+      "my-pvp-endorse"
+    ],
+    "closed": false
+  },
+  {
+    "group": "visas",
+    "country": "ML",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "visas",
+    "country": "MH",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "visas",
+    "country": "MU",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "visas",
+    "country": "FM",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "visas",
+    "country": "MN",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "visas",
+    "country": "ME",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "visas",
+    "country": "MS",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "visas",
+    "country": "MZ",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "visas",
+    "country": "NR",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "visas",
+    "country": "NE",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "visas",
+    "country": "NG",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "visas",
+    "country": "NU",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "visas",
+    "country": "KP",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "visas",
+    "country": "PK",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "visas",
+    "country": "PS",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "visas",
+    "country": "PY",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "visas",
+    "country": "PE",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "visas",
+    "country": "PH",
+    "repositoryStatus": "estimate",
+    "packageStatus": "scoped_evidence_available_review_required",
+    "candidateRecordIds": [
+      "ph-free-single",
+      "ph-free-six",
+      "ph-free-one",
+      "ph-nonfree-single",
+      "ph-nonfree-six",
+      "ph-nonfree-one",
+      "ph-cn-single",
+      "ph-cn-six",
+      "ph-cn-one"
+    ],
+    "closed": false
+  },
+  {
+    "group": "visas",
+    "country": "PN",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "visas",
+    "country": "CG",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "visas",
+    "country": "SH",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "visas",
+    "country": "KN",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "visas",
+    "country": "LC",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "visas",
+    "country": "VC",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "visas",
+    "country": "WS",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "visas",
+    "country": "ST",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "visas",
+    "country": "SN",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "visas",
+    "country": "RS",
+    "repositoryStatus": "estimate",
+    "packageStatus": "scoped_evidence_available_review_required",
+    "candidateRecordIds": [
+      "rs-c-adult",
+      "rs-c-child",
+      "rs-d"
+    ],
+    "closed": false
+  },
+  {
+    "group": "visas",
+    "country": "SB",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "visas",
+    "country": "GS",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "visas",
+    "country": "LK",
+    "repositoryStatus": "estimate",
+    "packageStatus": "scoped_evidence_available_review_required",
+    "candidateRecordIds": [
+      "lk-free40",
+      "lk-other-online",
+      "lk-saarc-online"
+    ],
+    "closed": false
+  },
+  {
+    "group": "visas",
+    "country": "SD",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "visas",
+    "country": "SR",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "visas",
+    "country": "SY",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "visas",
+    "country": "TG",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "visas",
+    "country": "TK",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "visas",
+    "country": "TO",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "visas",
+    "country": "TT",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "visas",
+    "country": "TN",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "visas",
+    "country": "TR",
+    "repositoryStatus": "estimate",
+    "packageStatus": "scoped_evidence_available_review_required",
+    "candidateRecordIds": [
+      "tr-single",
+      "tr-multi",
+      "tr-transit",
+      "tr-double-transit"
+    ],
+    "closed": false
+  },
+  {
+    "group": "visas",
+    "country": "TM",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "visas",
+    "country": "TC",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "visas",
+    "country": "TV",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "visas",
+    "country": "AE",
+    "repositoryStatus": "estimate",
+    "packageStatus": "scoped_evidence_available_review_required",
+    "candidateRecordIds": [
+      "ae-temp"
+    ],
+    "closed": false
+  },
+  {
+    "group": "visas",
+    "country": "UY",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "visas",
+    "country": "VE",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "visas",
+    "country": "EH",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "visas",
+    "country": "YE",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "permits",
+    "country": "AF",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "permits",
+    "country": "AL",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "permits",
+    "country": "DZ",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "permits",
+    "country": "AS",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "permits",
+    "country": "AD",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "permits",
+    "country": "AO",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "permits",
+    "country": "AI",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "permits",
+    "country": "AG",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "permits",
+    "country": "AM",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "permits",
+    "country": "AW",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "permits",
+    "country": "AZ",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "permits",
+    "country": "BD",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "permits",
+    "country": "BY",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "permits",
+    "country": "BZ",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "permits",
+    "country": "BJ",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "permits",
+    "country": "BT",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "permits",
+    "country": "BO",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "permits",
+    "country": "BQ",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "permits",
+    "country": "BA",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "permits",
+    "country": "BW",
+    "repositoryStatus": "estimate",
+    "packageStatus": "scoped_evidence_available_review_required",
+    "candidateRecordIds": [
+      "bw-work"
+    ],
+    "closed": false
+  },
+  {
+    "group": "permits",
+    "country": "BR",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "permits",
+    "country": "IO",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "permits",
+    "country": "VG",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "permits",
+    "country": "BN",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "permits",
+    "country": "BF",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "permits",
+    "country": "BI",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "permits",
+    "country": "CV",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "permits",
+    "country": "KH",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "permits",
+    "country": "CM",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "permits",
+    "country": "KY",
+    "repositoryStatus": "estimate",
+    "packageStatus": "scoped_evidence_available_review_required",
+    "candidateRecordIds": [
+      "ky-ent"
+    ],
+    "closed": false
+  },
+  {
+    "group": "permits",
+    "country": "CF",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "permits",
+    "country": "TD",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "permits",
+    "country": "CL",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "permits",
+    "country": "CN",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "permits",
+    "country": "CO",
+    "repositoryStatus": "estimate",
+    "packageStatus": "scoped_evidence_available_review_required",
+    "candidateRecordIds": [
+      "co-V-USD-study",
+      "co-V-USD-issue",
+      "co-V-EUR-study",
+      "co-V-EUR-issue",
+      "co-M-USD-study",
+      "co-M-USD-issue",
+      "co-M-EUR-study",
+      "co-M-EUR-issue",
+      "co-R-USD-study",
+      "co-R-USD-issue",
+      "co-R-EUR-study",
+      "co-R-EUR-issue"
+    ],
+    "closed": false
+  },
+  {
+    "group": "permits",
+    "country": "KM",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "permits",
+    "country": "CK",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "permits",
+    "country": "CR",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "permits",
+    "country": "CU",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "permits",
+    "country": "CW",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "permits",
+    "country": "CY",
+    "repositoryStatus": "estimate",
+    "packageStatus": "scoped_evidence_available_review_required",
+    "candidateRecordIds": [
+      "cy-adult",
+      "cy-child"
+    ],
+    "closed": false
+  },
+  {
+    "group": "permits",
+    "country": "CD",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "permits",
+    "country": "DJ",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "permits",
+    "country": "DM",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "permits",
+    "country": "DO",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "permits",
+    "country": "EG",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "permits",
+    "country": "SV",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "permits",
+    "country": "GQ",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "permits",
+    "country": "ER",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "permits",
+    "country": "SZ",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "permits",
+    "country": "ET",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "permits",
+    "country": "FK",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "permits",
+    "country": "FO",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "permits",
+    "country": "FJ",
+    "repositoryStatus": "estimate",
+    "packageStatus": "scoped_evidence_available_review_required",
+    "candidateRecordIds": [
+      "fj-work-app",
+      "fj-work-issue"
+    ],
+    "closed": false
+  },
+  {
+    "group": "permits",
+    "country": "PF",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "permits",
+    "country": "TF",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "permits",
+    "country": "GA",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "permits",
+    "country": "GM",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "permits",
+    "country": "GE",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "permits",
+    "country": "GL",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "permits",
+    "country": "GD",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "permits",
+    "country": "GT",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "permits",
+    "country": "GN",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "permits",
+    "country": "GW",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "permits",
+    "country": "GY",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "permits",
+    "country": "HT",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "permits",
+    "country": "HN",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "permits",
+    "country": "IR",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "permits",
+    "country": "IQ",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "permits",
+    "country": "IL",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "permits",
+    "country": "CI",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "permits",
+    "country": "JM",
+    "repositoryStatus": "estimate",
+    "packageStatus": "scoped_evidence_available_review_required",
+    "candidateRecordIds": [
+      "jm-app"
+    ],
+    "closed": false
+  },
+  {
+    "group": "permits",
+    "country": "JO",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "permits",
+    "country": "KZ",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "permits",
+    "country": "KI",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "permits",
+    "country": "XK",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "permits",
+    "country": "KW",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "permits",
+    "country": "KG",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "permits",
+    "country": "LA",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "permits",
+    "country": "LB",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "permits",
+    "country": "LS",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "permits",
+    "country": "LR",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "permits",
+    "country": "LY",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "permits",
+    "country": "LI",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "permits",
+    "country": "MO",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "permits",
+    "country": "MG",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "permits",
+    "country": "MW",
+    "repositoryStatus": "estimate",
+    "packageStatus": "scoped_evidence_available_review_required",
+    "candidateRecordIds": [
+      "mw-single-imm",
+      "mw-single-eta"
+    ],
+    "closed": false
+  },
+  {
+    "group": "permits",
+    "country": "MY",
+    "repositoryStatus": "estimate",
+    "packageStatus": "scoped_evidence_available_review_required",
+    "candidateRecordIds": [
+      "my-pvp-app",
+      "my-pvp-endorse"
+    ],
+    "closed": false
+  },
+  {
+    "group": "permits",
+    "country": "MV",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "permits",
+    "country": "ML",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "permits",
+    "country": "MH",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "permits",
+    "country": "MR",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "permits",
+    "country": "MU",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "permits",
+    "country": "FM",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "permits",
+    "country": "MD",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "permits",
+    "country": "MC",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "permits",
+    "country": "MN",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "permits",
+    "country": "ME",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "permits",
+    "country": "MS",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "permits",
+    "country": "MA",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "permits",
+    "country": "MZ",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "permits",
+    "country": "MM",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "permits",
+    "country": "NA",
+    "repositoryStatus": "estimate",
+    "packageStatus": "scoped_evidence_available_review_required",
+    "candidateRecordIds": [
+      "na-short",
+      "na-annual"
+    ],
+    "closed": false
+  },
+  {
+    "group": "permits",
+    "country": "NR",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "permits",
+    "country": "NC",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "permits",
+    "country": "NI",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "permits",
+    "country": "NE",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "permits",
+    "country": "NG",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "permits",
+    "country": "NU",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "permits",
+    "country": "KP",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "permits",
+    "country": "MK",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "permits",
+    "country": "OM",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "permits",
+    "country": "PK",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "permits",
+    "country": "PW",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "permits",
+    "country": "PS",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "permits",
+    "country": "PA",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "permits",
+    "country": "PG",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "permits",
+    "country": "PY",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "permits",
+    "country": "PE",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "permits",
+    "country": "PN",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "permits",
+    "country": "QA",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "permits",
+    "country": "CG",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "permits",
+    "country": "RU",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "permits",
+    "country": "RW",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "permits",
+    "country": "SH",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "permits",
+    "country": "KN",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "permits",
+    "country": "LC",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "permits",
+    "country": "PM",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "permits",
+    "country": "VC",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "permits",
+    "country": "WS",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "permits",
+    "country": "SM",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "permits",
+    "country": "ST",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "permits",
+    "country": "SA",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "permits",
+    "country": "SN",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "permits",
+    "country": "SC",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "permits",
+    "country": "SL",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "permits",
+    "country": "SX",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "permits",
+    "country": "SB",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "permits",
+    "country": "SO",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "permits",
+    "country": "GS",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "permits",
+    "country": "SS",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "permits",
+    "country": "LK",
+    "repositoryStatus": "estimate",
+    "packageStatus": "scoped_evidence_available_review_required",
+    "candidateRecordIds": [
+      "lk-free40",
+      "lk-other-online",
+      "lk-saarc-online"
+    ],
+    "closed": false
+  },
+  {
+    "group": "permits",
+    "country": "SD",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "permits",
+    "country": "SR",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "permits",
+    "country": "SJ",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "permits",
+    "country": "CH",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "permits",
+    "country": "SY",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "permits",
+    "country": "TJ",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "permits",
+    "country": "TZ",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "permits",
+    "country": "TL",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "permits",
+    "country": "TG",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "permits",
+    "country": "TK",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "permits",
+    "country": "TO",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "permits",
+    "country": "TN",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "permits",
+    "country": "TM",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "permits",
+    "country": "TC",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "permits",
+    "country": "TV",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "permits",
+    "country": "UG",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "permits",
+    "country": "UA",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "permits",
+    "country": "AE",
+    "repositoryStatus": "estimate",
+    "packageStatus": "scoped_evidence_available_review_required",
+    "candidateRecordIds": [
+      "ae-temp"
+    ],
+    "closed": false
+  },
+  {
+    "group": "permits",
+    "country": "UY",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "permits",
+    "country": "UZ",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "permits",
+    "country": "VU",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "permits",
+    "country": "VA",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "permits",
+    "country": "VE",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "permits",
+    "country": "WF",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "permits",
+    "country": "EH",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "permits",
+    "country": "YE",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "permits",
+    "country": "ZM",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "permits",
+    "country": "ZW",
+    "repositoryStatus": "estimate",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "visaTimes",
+    "country": "AO",
+    "repositoryStatus": "fee-known-time-unverified",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "visaTimes",
+    "country": "AR",
+    "repositoryStatus": "fee-known-time-unverified",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "visaTimes",
+    "country": "BA",
+    "repositoryStatus": "fee-known-time-unverified",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "visaTimes",
+    "country": "BI",
+    "repositoryStatus": "fee-known-time-unverified",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "visaTimes",
+    "country": "CM",
+    "repositoryStatus": "fee-known-time-unverified",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "visaTimes",
+    "country": "EG",
+    "repositoryStatus": "fee-known-time-unverified",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "visaTimes",
+    "country": "GF",
+    "repositoryStatus": "fee-known-time-unverified",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "visaTimes",
+    "country": "PF",
+    "repositoryStatus": "fee-known-time-unverified",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "visaTimes",
+    "country": "TF",
+    "repositoryStatus": "fee-known-time-unverified",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "visaTimes",
+    "country": "GP",
+    "repositoryStatus": "fee-known-time-unverified",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "visaTimes",
+    "country": "ID",
+    "repositoryStatus": "fee-known-time-unverified",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "visaTimes",
+    "country": "CI",
+    "repositoryStatus": "fee-known-time-unverified",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "visaTimes",
+    "country": "JO",
+    "repositoryStatus": "fee-known-time-unverified",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "visaTimes",
+    "country": "KZ",
+    "repositoryStatus": "fee-known-time-unverified",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "visaTimes",
+    "country": "LR",
+    "repositoryStatus": "fee-known-time-unverified",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "visaTimes",
+    "country": "MQ",
+    "repositoryStatus": "fee-known-time-unverified",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "visaTimes",
+    "country": "MR",
+    "repositoryStatus": "fee-known-time-unverified",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "visaTimes",
+    "country": "YT",
+    "repositoryStatus": "fee-known-time-unverified",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "visaTimes",
+    "country": "MD",
+    "repositoryStatus": "fee-known-time-unverified",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "visaTimes",
+    "country": "NA",
+    "repositoryStatus": "fee-known-time-unverified",
+    "packageStatus": "scoped_evidence_available_review_required",
+    "candidateRecordIds": [
+      "na-short",
+      "na-annual"
+    ],
+    "closed": false
+  },
+  {
+    "group": "visaTimes",
+    "country": "NP",
+    "repositoryStatus": "fee-known-time-unverified",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "visaTimes",
+    "country": "NC",
+    "repositoryStatus": "fee-known-time-unverified",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "visaTimes",
+    "country": "PG",
+    "repositoryStatus": "fee-known-time-unverified",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "visaTimes",
+    "country": "RE",
+    "repositoryStatus": "fee-known-time-unverified",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "visaTimes",
+    "country": "BL",
+    "repositoryStatus": "fee-known-time-unverified",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "visaTimes",
+    "country": "MF",
+    "repositoryStatus": "fee-known-time-unverified",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "visaTimes",
+    "country": "PM",
+    "repositoryStatus": "fee-known-time-unverified",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "visaTimes",
+    "country": "SA",
+    "repositoryStatus": "fee-known-time-unverified",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "visaTimes",
+    "country": "SL",
+    "repositoryStatus": "fee-known-time-unverified",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "visaTimes",
+    "country": "ZA",
+    "repositoryStatus": "fee-known-time-unverified",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "visaTimes",
+    "country": "TW",
+    "repositoryStatus": "fee-known-time-unverified",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "visaTimes",
+    "country": "TJ",
+    "repositoryStatus": "fee-known-time-unverified",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "visaTimes",
+    "country": "UA",
+    "repositoryStatus": "fee-known-time-unverified",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "visaTimes",
+    "country": "VU",
+    "repositoryStatus": "fee-known-time-unverified",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "visaTimes",
+    "country": "WF",
+    "repositoryStatus": "fee-known-time-unverified",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "permitTimes",
+    "country": "AR",
+    "repositoryStatus": "fee-known-time-unverified",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "permitTimes",
+    "country": "BH",
+    "repositoryStatus": "fee-known-time-unverified",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "permitTimes",
+    "country": "BB",
+    "repositoryStatus": "fee-known-time-unverified",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "permitTimes",
+    "country": "EC",
+    "repositoryStatus": "fee-known-time-unverified",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "permitTimes",
+    "country": "GH",
+    "repositoryStatus": "fee-known-time-unverified",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "permitTimes",
+    "country": "IS",
+    "repositoryStatus": "fee-known-time-unverified",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "permitTimes",
+    "country": "MX",
+    "repositoryStatus": "fee-known-time-unverified",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "permitTimes",
+    "country": "NO",
+    "repositoryStatus": "fee-known-time-unverified",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  },
+  {
+    "group": "permitTimes",
+    "country": "PH",
+    "repositoryStatus": "fee-known-time-unverified",
+    "packageStatus": "scoped_evidence_available_review_required",
+    "candidateRecordIds": [
+      "ph-free-single",
+      "ph-free-six",
+      "ph-free-one",
+      "ph-nonfree-single",
+      "ph-nonfree-six",
+      "ph-nonfree-one",
+      "ph-cn-single",
+      "ph-cn-six",
+      "ph-cn-one"
+    ],
+    "closed": false
+  },
+  {
+    "group": "permitTimes",
+    "country": "RS",
+    "repositoryStatus": "fee-known-time-unverified",
+    "packageStatus": "scoped_evidence_available_review_required",
+    "candidateRecordIds": [
+      "rs-c-adult",
+      "rs-c-child",
+      "rs-d"
+    ],
+    "closed": false
+  },
+  {
+    "group": "permitTimes",
+    "country": "KR",
+    "repositoryStatus": "fee-known-time-unverified",
+    "packageStatus": "not_resolved_in_this_package",
+    "candidateRecordIds": [],
+    "closed": false
+  }
+]

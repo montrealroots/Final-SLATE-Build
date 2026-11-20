@@ -8,6 +8,7 @@
 // catalog never changes films this save has already seen. The films themselves follow from the save's seed and that
 // snapshot, so they are the same on every reload and are not stored.
 import { gaussian, intBetween, pick, stream } from './rng';
+import { SLOTS, TITLE_BLOCK, slotOf, worldTitle, working } from './world-cast';
 import { addDaysToKey } from './time';
 import type { GameState } from './types';
 
@@ -126,11 +127,12 @@ export function studioYear(seed: number, horizon: string, p: StudioProfile, year
       out.push({
         id: `sim-film:${p.c}:${year}:${i}`,
         company: p.c,
-        title: `${pick(r, ['The ', '', '', 'A '])}${pick(r, WORDS_A)} ${pick(r, WORDS_B)}`,
+        // From November 20, 2026 the year's titles and people (world-cast.ts); until then 30 words by 30 and 20 names by 20.
+        title: worldTitle(seed, year, SLOTS.studio + ((slotOf(p.c, 0, TITLE_BLOCK - SLOTS.studio) + i) % (TITLE_BLOCK - SLOTS.studio))),
         date,
         genres,
         runtimeMin: Math.round(Math.max(70, Math.min(170, gaussian(r, animated ? 98 : 118, 14)))),
-        people: { director: `${pick(r, FIRSTS)} ${pick(r, LASTS)}`, writer: `${pick(r, FIRSTS)} ${pick(r, LASTS)}`, lead: `${pick(r, FIRSTS)} ${pick(r, LASTS)}` },
+        people: { director: pick(r, working(seed, year, 'director')).name, writer: pick(r, working(seed, year, 'writer')).name, lead: pick(r, working(seed, year, 'performer')).name },
       });
     }
     out.sort((a, b) => a.date.localeCompare(b.date) || a.id.localeCompare(b.id));

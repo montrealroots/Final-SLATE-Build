@@ -1,0 +1,44 @@
+[
+  {
+    "id": "idfa-2026",
+    "state": "results_recovered",
+    "date": "2026-11-19",
+    "source": "idfa-results",
+    "note": "Full additional award streams not exhaustively imported."
+  },
+  {
+    "id": "iemmys-2026",
+    "state": "nominations_published_winners_pending",
+    "date": "2026-11-23",
+    "source": "iemmy-noms",
+    "note": "64 nominations across16 categories announced September23; full extraction still required."
+  },
+  {
+    "id": "gotham-2026",
+    "state": "nominations_recovered_in_index_winners_pending",
+    "date": null,
+    "source": "gotham-noms",
+    "note": "Nomination release October27. Repo ceremony November30 remains to be independently confirmed."
+  },
+  {
+    "id": "blue-dragon-2026",
+    "state": "secondary_nominations_winners_pending",
+    "date": "2026-11-25",
+    "source": "blue-dragon-noms",
+    "note": "Five picture nominees supplied; full category roster remains."
+  },
+  {
+    "id": "efa-38",
+    "state": "results_recovered",
+    "date": "2026-01-17",
+    "source": "efa-2026",
+    "note": "This ceremony already occurred in calendar2026; selected seven categories supplied."
+  },
+  {
+    "id": "efa-39",
+    "state": "nominations_published_winners_pending",
+    "date": "2027-01-16",
+    "source": "efa-2027-rules",
+    "note": "Athens; nominations published November14 2026. Do not merge editions."
+  }
+]

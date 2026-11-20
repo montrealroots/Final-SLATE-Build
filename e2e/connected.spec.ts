@@ -4,8 +4,7 @@
 // iphone-15-pro-max runs in WebKit with the iPhone's viewport and user agent. All are browser emulation, not devices.
 // The only fixture is the pinned world seed (helpers.ts pinSeed), chosen so a broadcaster makes an offer.
 import { expect, test, type Page } from './test';
-import { addScene, advance, castRoles, createCharacter, editSave, freshStart, nav, pinSeed, pressSaveAndExit, runToDelivery, section, secureStartingBacking, staffEveryDepartment, writePitch, readSavedState,
-} from './helpers';
+import { addScene, advance, castRoles, createCharacter, editSave, freshStart, nav, onlyOn, pinSeed, pressSaveAndExit, readSavedState, runToDelivery, section, secureStartingBacking, staffEveryDepartment, writePitch } from './helpers';
 
 const SEED = Number(process.env.TRY_SEED ?? 7);
 const shot = (page: Page, project: string, name: string) => page.screenshot({ path: `test-results/connected-${project}-${name}.png`, fullPage: true });
@@ -20,7 +19,7 @@ async function saveAndReload(page: Page): Promise<void> {
 }
 
 test('a connected career, from creation to a broadcast deal, saved and reloaded on the way', async ({ page }, info) => {
-  test.skip(!['desktop', 'phone', 'iphone-15-pro-max'].includes(info.project.name), 'Runs on desktop, phone and one WebKit iPhone emulation.');
+  test.skip(!onlyOn(info, ['desktop', 'phone', 'iphone-15-pro-max']), 'Runs on desktop, phone and one WebKit iPhone emulation.');
   test.setTimeout(1_500_000);
   const p = info.project.name;
   await freshStart(page);

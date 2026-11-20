@@ -3,10 +3,10 @@
 // loaded yet can't arrive offline: until November 17, 2026 that blanked the whole screen; it says so now, the frame and
 // its navigation stay, and Home still works. Desktop, in Chromium.
 import { expect, expectErrors, test } from './test';
-import { nav, pressSaveAndExit, quickLife } from './helpers';
+import { nav, onlyOn, pressSaveAndExit, quickLife } from './helpers';
 
 test('J18: a save opened with the network off, and a page that can\'t load said so without losing the game', async ({ page, context }, info) => {
-  test.skip(info.project.name !== 'desktop', 'One run, at desktop width.');
+  test.skip(!onlyOn(info, ['desktop']), 'One run, at desktop width.');
   // Labelled fixture: the network is switched off; the page's fetch failing is what this journey is about.
   expectErrors('The network is switched off, so the bank page\'s code fails to load: that failure is what this journey shows.');
   await quickLife(page, 'gb-london', '2026-03-02');

@@ -4,12 +4,12 @@
 // 1221's B-1/B-2 record, $185 and 157 days. Desktop and phone in Chromium, and the iPhone 15 Pro Max in WebKit:
 // emulation, not a physical device.
 import { expect, test, type Page } from './test';
-import { advance, nav, openStart, pinSeed } from './helpers';
+import { advance, nav, onlyOn, openStart, pinSeed } from './helpers';
 
 const papersPanel = (page: Page) => page.locator('.panel, section', { has: page.getByRole('heading', { name: 'Your Papers', exact: true }) }).first();
 
 test('Home to Your Papers: a visa applied for and paid, decided on its day, in use, and Home again', async ({ page }, info) => {
-  test.skip(!['desktop', 'phone', 'iphone-15-pro-max'].includes(info.project.name), 'Desktop, phone and the iPhone 15 Pro Max (WebKit).');
+  test.skip(!onlyOn(info, ['desktop', 'phone', 'iphone-15-pro-max']), 'Desktop, phone and the iPhone 15 Pro Max (WebKit).');
   test.setTimeout(300_000);
   await openStart(page);
   await page.evaluate(() => {
@@ -74,7 +74,7 @@ test('Home to Your Papers: a visa applied for and paid, decided on its day, in u
 // A visit's days counted (from November 16, 2026): a Japanese actor living in Toronto travels to Paris, and Your Papers
 // counts the Schengen area's 90 days in any 180 from the day they arrive.
 test('A visit to Paris counted against the Schengen area\'s 90 days, on Your Papers', async ({ page }, info) => {
-  test.skip(!['desktop', 'phone'].includes(info.project.name), 'Desktop and phone.');
+  test.skip(!onlyOn(info, ['desktop', 'phone']), 'Desktop and phone.');
   test.setTimeout(180_000);
   await openStart(page);
   await page.evaluate(() => {

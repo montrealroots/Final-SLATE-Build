@@ -1,9 +1,9 @@
 import { expect, test } from './test';
-import { nav, quickLife } from './helpers';
+import { nav, onlyOn, quickLife } from './helpers';
 
 // Interaction budgets, measured on the dev server (uncompressed, unminified): an upper bound, not production numbers.
 // Results are printed so QA-REPORT.md can record them.
-test.beforeEach(({}, info) => test.skip(info.project.name !== 'desktop', 'Measured once, at desktop width.'));
+test.beforeEach(({}, info) => test.skip(!onlyOn(info, ['desktop']), 'Measured once, at desktop width.'));
 
 test('startup, the largest country shard and place search stay within their budgets', async ({ page }) => {
   let t = Date.now();

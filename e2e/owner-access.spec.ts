@@ -6,7 +6,7 @@
 // which a browser keeps from plain-HTTP localhost only in Chromium; it is now Secure only over HTTPS. The same rules are
 // tested request by request in tests/catalog-server.test.ts.
 import { expect, expectErrors, test, type Page } from './test';
-import { nav, quickLife } from './helpers';
+import { nav, onlyOn, quickLife } from './helpers';
 
 const card = (page: Page, heading: string) => page.locator('section.card', { has: page.getByRole('heading', { name: heading, exact: true }) });
 const prod = process.env.SLATE_E2E_PROD === '1';
@@ -17,7 +17,7 @@ test.describe('the owner\'s server, reached from elsewhere', () => {
   test.use({ baseURL: 'http://localhost:4180', extraHTTPHeaders: ELSEWHERE });
   test.beforeEach(({}, info) => {
     test.skip(!prod, 'Needs the production servers (SLATE_E2E_PROD=1).');
-    test.skip(!['desktop', 'phone'].includes(info.project.name), 'Runs on desktop and phone (Chromium).');
+    test.skip(!onlyOn(info, ['desktop', 'phone']), 'Runs on desktop and phone (Chromium).');
   });
 
   test('a visitor gets no film data by any route; the owner signs in from elsewhere, sees it, and signs out', async ({ page, playwright }) => {
@@ -94,7 +94,7 @@ test.describe('the owner\'s server, reached from elsewhere', () => {
 // server says so (`elsewhere`, tests/catalog-server.test.ts), and Settings tells the phone why it is offered nothing and
 // what would change that, where it used to say nothing at all. The server's answer is the labelled fixture here.
 test('a device the owner\'s server can\'t sign in is told why the films and pictures aren\'t offered', async ({ page }, info) => {
-  test.skip(!['desktop', 'phone'].includes(info.project.name), 'Runs on desktop and phone.');
+  test.skip(!onlyOn(info, ['desktop', 'phone']), 'Runs on desktop and phone.');
   await page.route('**/owner/session', (r) => r.fulfill({ json: { owner: false, signIn: false, elsewhere: true } }));
   await quickLife(page, 'gb-london', '2026-01-05');
   await nav(page, 'Settings');

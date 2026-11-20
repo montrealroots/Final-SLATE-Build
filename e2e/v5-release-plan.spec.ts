@@ -3,7 +3,7 @@
 // one is answered with an offer the player signs, and the stores release is booked with every cost named first. The
 // world seed is pinned (a labelled fixture); buyers and services are fictional; nothing is written into the save.
 import { expect, test, type Page } from './test';
-import { addScene, advance, castRoles, nav, newProject, pinSeed, quickLife, readSavedState, runToDelivery, saveAndApprove, section, staffEveryDepartment } from './helpers';
+import { addScene, advance, castRoles, nav, newProject, onlyOn, pinSeed, quickLife, readSavedState, runToDelivery, saveAndApprove, section, staffEveryDepartment } from './helpers';
 
 test.use({ actionTimeout: 20_000 });
 const card = (page: Page, heading: string) => page.locator('section.card', { has: page.getByRole('heading', { name: heading, exact: true }) });
@@ -12,7 +12,7 @@ const project = async (page: Page): Promise<any> => (await readSavedState(page))
 const day = (t: number, n: number) => new Date(t + n * 86_400_000).toISOString().slice(0, 10);
 
 test('a Release Plan: festivals first, a licence turned down and then signed, and the stores release booked', async ({ page }, info) => {
-  test.skip(!['desktop', 'phone', 'iphone-15-pro-max'].includes(info.project.name), 'Desktop, phone and the iPhone 15 Pro Max (WebKit).');
+  test.skip(!onlyOn(info, ['desktop', 'phone', 'iphone-15-pro-max']), 'Desktop, phone and the iPhone 15 Pro Max (WebKit).');
   test.setTimeout(900_000);
   await quickLife(page, 'gb-london', '2026-03-02');
   await pinSeed(page, 7);

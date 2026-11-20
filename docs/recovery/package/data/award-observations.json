@@ -1,0 +1,3176 @@
+[
+  {
+    "id": "recovery-bafta-film-001",
+    "institution": "bafta-film",
+    "edition": "2026 EE BAFTA Film Awards",
+    "categoryLabel": "Best Film",
+    "subjects": [
+      "One Battle After Another"
+    ],
+    "kind": "winner",
+    "occurredDate": "2026-02-22",
+    "publishedDate": "2026-02-22",
+    "datePrecision": "day",
+    "sourceId": "bafta-film",
+    "evidenceStatus": "official_report",
+    "internalCategoryId": null,
+    "internalSubjectIds": [],
+    "mappingStatus": "needs_repository_mapping",
+    "coverage": "selected factual results, not a complete nominees roster"
+  },
+  {
+    "id": "recovery-bafta-film-002",
+    "institution": "bafta-film",
+    "edition": "2026 EE BAFTA Film Awards",
+    "categoryLabel": "Director",
+    "subjects": [
+      "Paul Thomas Anderson"
+    ],
+    "kind": "winner",
+    "occurredDate": "2026-02-22",
+    "publishedDate": "2026-02-22",
+    "datePrecision": "day",
+    "sourceId": "bafta-film",
+    "evidenceStatus": "official_report",
+    "internalCategoryId": null,
+    "internalSubjectIds": [],
+    "mappingStatus": "needs_repository_mapping",
+    "coverage": "selected factual results, not a complete nominees roster"
+  },
+  {
+    "id": "recovery-bafta-film-003",
+    "institution": "bafta-film",
+    "edition": "2026 EE BAFTA Film Awards",
+    "categoryLabel": "Adapted Screenplay",
+    "subjects": [
+      "One Battle After Another"
+    ],
+    "kind": "winner",
+    "occurredDate": "2026-02-22",
+    "publishedDate": "2026-02-22",
+    "datePrecision": "day",
+    "sourceId": "bafta-film",
+    "evidenceStatus": "official_report",
+    "internalCategoryId": null,
+    "internalSubjectIds": [],
+    "mappingStatus": "needs_repository_mapping",
+    "coverage": "selected factual results, not a complete nominees roster"
+  },
+  {
+    "id": "recovery-bafta-film-004",
+    "institution": "bafta-film",
+    "edition": "2026 EE BAFTA Film Awards",
+    "categoryLabel": "Supporting Actor",
+    "subjects": [
+      "Sean Penn"
+    ],
+    "kind": "winner",
+    "occurredDate": "2026-02-22",
+    "publishedDate": "2026-02-22",
+    "datePrecision": "day",
+    "sourceId": "bafta-film",
+    "evidenceStatus": "official_report",
+    "internalCategoryId": null,
+    "internalSubjectIds": [],
+    "mappingStatus": "needs_repository_mapping",
+    "coverage": "selected factual results, not a complete nominees roster"
+  },
+  {
+    "id": "recovery-bafta-film-005",
+    "institution": "bafta-film",
+    "edition": "2026 EE BAFTA Film Awards",
+    "categoryLabel": "Cinematography",
+    "subjects": [
+      "One Battle After Another"
+    ],
+    "kind": "winner",
+    "occurredDate": "2026-02-22",
+    "publishedDate": "2026-02-22",
+    "datePrecision": "day",
+    "sourceId": "bafta-film",
+    "evidenceStatus": "official_report",
+    "internalCategoryId": null,
+    "internalSubjectIds": [],
+    "mappingStatus": "needs_repository_mapping",
+    "coverage": "selected factual results, not a complete nominees roster"
+  },
+  {
+    "id": "recovery-bafta-film-006",
+    "institution": "bafta-film",
+    "edition": "2026 EE BAFTA Film Awards",
+    "categoryLabel": "Editing",
+    "subjects": [
+      "One Battle After Another"
+    ],
+    "kind": "winner",
+    "occurredDate": "2026-02-22",
+    "publishedDate": "2026-02-22",
+    "datePrecision": "day",
+    "sourceId": "bafta-film",
+    "evidenceStatus": "official_report",
+    "internalCategoryId": null,
+    "internalSubjectIds": [],
+    "mappingStatus": "needs_repository_mapping",
+    "coverage": "selected factual results, not a complete nominees roster"
+  },
+  {
+    "id": "recovery-bafta-film-007",
+    "institution": "bafta-film",
+    "edition": "2026 EE BAFTA Film Awards",
+    "categoryLabel": "Original Screenplay",
+    "subjects": [
+      "Sinners"
+    ],
+    "kind": "winner",
+    "occurredDate": "2026-02-22",
+    "publishedDate": "2026-02-22",
+    "datePrecision": "day",
+    "sourceId": "bafta-film",
+    "evidenceStatus": "official_report",
+    "internalCategoryId": null,
+    "internalSubjectIds": [],
+    "mappingStatus": "needs_repository_mapping",
+    "coverage": "selected factual results, not a complete nominees roster"
+  },
+  {
+    "id": "recovery-bafta-film-008",
+    "institution": "bafta-film",
+    "edition": "2026 EE BAFTA Film Awards",
+    "categoryLabel": "Supporting Actress",
+    "subjects": [
+      "Wunmi Mosaku"
+    ],
+    "kind": "winner",
+    "occurredDate": "2026-02-22",
+    "publishedDate": "2026-02-22",
+    "datePrecision": "day",
+    "sourceId": "bafta-film",
+    "evidenceStatus": "official_report",
+    "internalCategoryId": null,
+    "internalSubjectIds": [],
+    "mappingStatus": "needs_repository_mapping",
+    "coverage": "selected factual results, not a complete nominees roster"
+  },
+  {
+    "id": "recovery-bafta-film-009",
+    "institution": "bafta-film",
+    "edition": "2026 EE BAFTA Film Awards",
+    "categoryLabel": "Original Score",
+    "subjects": [
+      "Sinners"
+    ],
+    "kind": "winner",
+    "occurredDate": "2026-02-22",
+    "publishedDate": "2026-02-22",
+    "datePrecision": "day",
+    "sourceId": "bafta-film",
+    "evidenceStatus": "official_report",
+    "internalCategoryId": null,
+    "internalSubjectIds": [],
+    "mappingStatus": "needs_repository_mapping",
+    "coverage": "selected factual results, not a complete nominees roster"
+  },
+  {
+    "id": "recovery-bafta-film-010",
+    "institution": "bafta-film",
+    "edition": "2026 EE BAFTA Film Awards",
+    "categoryLabel": "Costume Design",
+    "subjects": [
+      "Frankenstein"
+    ],
+    "kind": "winner",
+    "occurredDate": "2026-02-22",
+    "publishedDate": "2026-02-22",
+    "datePrecision": "day",
+    "sourceId": "bafta-film",
+    "evidenceStatus": "official_report",
+    "internalCategoryId": null,
+    "internalSubjectIds": [],
+    "mappingStatus": "needs_repository_mapping",
+    "coverage": "selected factual results, not a complete nominees roster"
+  },
+  {
+    "id": "recovery-bafta-film-011",
+    "institution": "bafta-film",
+    "edition": "2026 EE BAFTA Film Awards",
+    "categoryLabel": "Make Up and Hair",
+    "subjects": [
+      "Frankenstein"
+    ],
+    "kind": "winner",
+    "occurredDate": "2026-02-22",
+    "publishedDate": "2026-02-22",
+    "datePrecision": "day",
+    "sourceId": "bafta-film",
+    "evidenceStatus": "official_report",
+    "internalCategoryId": null,
+    "internalSubjectIds": [],
+    "mappingStatus": "needs_repository_mapping",
+    "coverage": "selected factual results, not a complete nominees roster"
+  },
+  {
+    "id": "recovery-bafta-film-012",
+    "institution": "bafta-film",
+    "edition": "2026 EE BAFTA Film Awards",
+    "categoryLabel": "Production Design",
+    "subjects": [
+      "Frankenstein"
+    ],
+    "kind": "winner",
+    "occurredDate": "2026-02-22",
+    "publishedDate": "2026-02-22",
+    "datePrecision": "day",
+    "sourceId": "bafta-film",
+    "evidenceStatus": "official_report",
+    "internalCategoryId": null,
+    "internalSubjectIds": [],
+    "mappingStatus": "needs_repository_mapping",
+    "coverage": "selected factual results, not a complete nominees roster"
+  },
+  {
+    "id": "recovery-bafta-film-013",
+    "institution": "bafta-film",
+    "edition": "2026 EE BAFTA Film Awards",
+    "categoryLabel": "Outstanding British Film",
+    "subjects": [
+      "Hamnet"
+    ],
+    "kind": "winner",
+    "occurredDate": "2026-02-22",
+    "publishedDate": "2026-02-22",
+    "datePrecision": "day",
+    "sourceId": "bafta-film",
+    "evidenceStatus": "official_report",
+    "internalCategoryId": null,
+    "internalSubjectIds": [],
+    "mappingStatus": "needs_repository_mapping",
+    "coverage": "selected factual results, not a complete nominees roster"
+  },
+  {
+    "id": "recovery-bafta-film-014",
+    "institution": "bafta-film",
+    "edition": "2026 EE BAFTA Film Awards",
+    "categoryLabel": "Leading Actress",
+    "subjects": [
+      "Jessie Buckley"
+    ],
+    "kind": "winner",
+    "occurredDate": "2026-02-22",
+    "publishedDate": "2026-02-22",
+    "datePrecision": "day",
+    "sourceId": "bafta-film",
+    "evidenceStatus": "official_report",
+    "internalCategoryId": null,
+    "internalSubjectIds": [],
+    "mappingStatus": "needs_repository_mapping",
+    "coverage": "selected factual results, not a complete nominees roster"
+  },
+  {
+    "id": "recovery-bafta-film-015",
+    "institution": "bafta-film",
+    "edition": "2026 EE BAFTA Film Awards",
+    "categoryLabel": "Leading Actor",
+    "subjects": [
+      "Robert Aramayo"
+    ],
+    "kind": "winner",
+    "occurredDate": "2026-02-22",
+    "publishedDate": "2026-02-22",
+    "datePrecision": "day",
+    "sourceId": "bafta-film",
+    "evidenceStatus": "official_report",
+    "internalCategoryId": null,
+    "internalSubjectIds": [],
+    "mappingStatus": "needs_repository_mapping",
+    "coverage": "selected factual results, not a complete nominees roster"
+  },
+  {
+    "id": "recovery-bafta-film-016",
+    "institution": "bafta-film",
+    "edition": "2026 EE BAFTA Film Awards",
+    "categoryLabel": "Casting",
+    "subjects": [
+      "I Swear"
+    ],
+    "kind": "winner",
+    "occurredDate": "2026-02-22",
+    "publishedDate": "2026-02-22",
+    "datePrecision": "day",
+    "sourceId": "bafta-film",
+    "evidenceStatus": "official_report",
+    "internalCategoryId": null,
+    "internalSubjectIds": [],
+    "mappingStatus": "needs_repository_mapping",
+    "coverage": "selected factual results, not a complete nominees roster"
+  },
+  {
+    "id": "recovery-bafta-film-017",
+    "institution": "bafta-film",
+    "edition": "2026 EE BAFTA Film Awards",
+    "categoryLabel": "Film Not in the English Language",
+    "subjects": [
+      "Sentimental Value"
+    ],
+    "kind": "winner",
+    "occurredDate": "2026-02-22",
+    "publishedDate": "2026-02-22",
+    "datePrecision": "day",
+    "sourceId": "bafta-film",
+    "evidenceStatus": "official_report",
+    "internalCategoryId": null,
+    "internalSubjectIds": [],
+    "mappingStatus": "needs_repository_mapping",
+    "coverage": "selected factual results, not a complete nominees roster"
+  },
+  {
+    "id": "recovery-bafta-film-018",
+    "institution": "bafta-film",
+    "edition": "2026 EE BAFTA Film Awards",
+    "categoryLabel": "Outstanding Debut",
+    "subjects": [
+      "My Father's Shadow"
+    ],
+    "kind": "winner",
+    "occurredDate": "2026-02-22",
+    "publishedDate": "2026-02-22",
+    "datePrecision": "day",
+    "sourceId": "bafta-film",
+    "evidenceStatus": "official_report",
+    "internalCategoryId": null,
+    "internalSubjectIds": [],
+    "mappingStatus": "needs_repository_mapping",
+    "coverage": "selected factual results, not a complete nominees roster"
+  },
+  {
+    "id": "recovery-bafta-film-019",
+    "institution": "bafta-film",
+    "edition": "2026 EE BAFTA Film Awards",
+    "categoryLabel": "Documentary",
+    "subjects": [
+      "Mr. Nobody Against Putin"
+    ],
+    "kind": "winner",
+    "occurredDate": "2026-02-22",
+    "publishedDate": "2026-02-22",
+    "datePrecision": "day",
+    "sourceId": "bafta-film",
+    "evidenceStatus": "official_report",
+    "internalCategoryId": null,
+    "internalSubjectIds": [],
+    "mappingStatus": "needs_repository_mapping",
+    "coverage": "selected factual results, not a complete nominees roster"
+  },
+  {
+    "id": "recovery-bafta-film-020",
+    "institution": "bafta-film",
+    "edition": "2026 EE BAFTA Film Awards",
+    "categoryLabel": "Animated Film",
+    "subjects": [
+      "Zootropolis 2"
+    ],
+    "kind": "winner",
+    "occurredDate": "2026-02-22",
+    "publishedDate": "2026-02-22",
+    "datePrecision": "day",
+    "sourceId": "bafta-film",
+    "evidenceStatus": "official_report",
+    "internalCategoryId": null,
+    "internalSubjectIds": [],
+    "mappingStatus": "needs_repository_mapping",
+    "coverage": "selected factual results, not a complete nominees roster"
+  },
+  {
+    "id": "recovery-bafta-film-021",
+    "institution": "bafta-film",
+    "edition": "2026 EE BAFTA Film Awards",
+    "categoryLabel": "Children's and Family Film",
+    "subjects": [
+      "Boong"
+    ],
+    "kind": "winner",
+    "occurredDate": "2026-02-22",
+    "publishedDate": "2026-02-22",
+    "datePrecision": "day",
+    "sourceId": "bafta-film",
+    "evidenceStatus": "official_report",
+    "internalCategoryId": null,
+    "internalSubjectIds": [],
+    "mappingStatus": "needs_repository_mapping",
+    "coverage": "selected factual results, not a complete nominees roster"
+  },
+  {
+    "id": "recovery-bafta-film-022",
+    "institution": "bafta-film",
+    "edition": "2026 EE BAFTA Film Awards",
+    "categoryLabel": "Sound",
+    "subjects": [
+      "F1"
+    ],
+    "kind": "winner",
+    "occurredDate": "2026-02-22",
+    "publishedDate": "2026-02-22",
+    "datePrecision": "day",
+    "sourceId": "bafta-film",
+    "evidenceStatus": "official_report",
+    "internalCategoryId": null,
+    "internalSubjectIds": [],
+    "mappingStatus": "needs_repository_mapping",
+    "coverage": "selected factual results, not a complete nominees roster"
+  },
+  {
+    "id": "recovery-bafta-film-023",
+    "institution": "bafta-film",
+    "edition": "2026 EE BAFTA Film Awards",
+    "categoryLabel": "Special Visual Effects",
+    "subjects": [
+      "Avatar: Fire and Ash"
+    ],
+    "kind": "winner",
+    "occurredDate": "2026-02-22",
+    "publishedDate": "2026-02-22",
+    "datePrecision": "day",
+    "sourceId": "bafta-film",
+    "evidenceStatus": "official_report",
+    "internalCategoryId": null,
+    "internalSubjectIds": [],
+    "mappingStatus": "needs_repository_mapping",
+    "coverage": "selected factual results, not a complete nominees roster"
+  },
+  {
+    "id": "recovery-bafta-film-024",
+    "institution": "bafta-film",
+    "edition": "2026 EE BAFTA Film Awards",
+    "categoryLabel": "British Short Film",
+    "subjects": [
+      "This Is Endometriosis"
+    ],
+    "kind": "winner",
+    "occurredDate": "2026-02-22",
+    "publishedDate": "2026-02-22",
+    "datePrecision": "day",
+    "sourceId": "bafta-film",
+    "evidenceStatus": "official_report",
+    "internalCategoryId": null,
+    "internalSubjectIds": [],
+    "mappingStatus": "needs_repository_mapping",
+    "coverage": "selected factual results, not a complete nominees roster"
+  },
+  {
+    "id": "recovery-bafta-film-025",
+    "institution": "bafta-film",
+    "edition": "2026 EE BAFTA Film Awards",
+    "categoryLabel": "British Short Animation",
+    "subjects": [
+      "Two Black Boys in Paradise"
+    ],
+    "kind": "winner",
+    "occurredDate": "2026-02-22",
+    "publishedDate": "2026-02-22",
+    "datePrecision": "day",
+    "sourceId": "bafta-film",
+    "evidenceStatus": "official_report",
+    "internalCategoryId": null,
+    "internalSubjectIds": [],
+    "mappingStatus": "needs_repository_mapping",
+    "coverage": "selected factual results, not a complete nominees roster"
+  },
+  {
+    "id": "recovery-bafta-film-026",
+    "institution": "bafta-film",
+    "edition": "2026 EE BAFTA Film Awards",
+    "categoryLabel": "EE Rising Star",
+    "subjects": [
+      "Robert Aramayo"
+    ],
+    "kind": "winner",
+    "occurredDate": "2026-02-22",
+    "publishedDate": "2026-02-22",
+    "datePrecision": "day",
+    "sourceId": "bafta-film",
+    "evidenceStatus": "official_report",
+    "internalCategoryId": null,
+    "internalSubjectIds": [],
+    "mappingStatus": "needs_repository_mapping",
+    "coverage": "selected factual results, not a complete nominees roster"
+  },
+  {
+    "id": "recovery-bafta-tv-027",
+    "institution": "bafta-tv",
+    "edition": "2026 BAFTA Television Awards",
+    "categoryLabel": "Limited Drama",
+    "subjects": [
+      "Adolescence"
+    ],
+    "kind": "winner",
+    "occurredDate": "2026-05-10",
+    "publishedDate": "2026-05-10",
+    "datePrecision": "day",
+    "sourceId": "bafta-tv",
+    "evidenceStatus": "official_report",
+    "internalCategoryId": null,
+    "internalSubjectIds": [],
+    "mappingStatus": "needs_repository_mapping",
+    "coverage": "selected factual results, not a complete nominees roster"
+  },
+  {
+    "id": "recovery-bafta-tv-028",
+    "institution": "bafta-tv",
+    "edition": "2026 BAFTA Television Awards",
+    "categoryLabel": "Leading Actor",
+    "subjects": [
+      "Stephen Graham"
+    ],
+    "kind": "winner",
+    "occurredDate": "2026-05-10",
+    "publishedDate": "2026-05-10",
+    "datePrecision": "day",
+    "sourceId": "bafta-tv",
+    "evidenceStatus": "official_report",
+    "internalCategoryId": null,
+    "internalSubjectIds": [],
+    "mappingStatus": "needs_repository_mapping",
+    "coverage": "selected factual results, not a complete nominees roster"
+  },
+  {
+    "id": "recovery-bafta-tv-029",
+    "institution": "bafta-tv",
+    "edition": "2026 BAFTA Television Awards",
+    "categoryLabel": "Supporting Actor",
+    "subjects": [
+      "Owen Cooper"
+    ],
+    "kind": "winner",
+    "occurredDate": "2026-05-10",
+    "publishedDate": "2026-05-10",
+    "datePrecision": "day",
+    "sourceId": "bafta-tv",
+    "evidenceStatus": "official_report",
+    "internalCategoryId": null,
+    "internalSubjectIds": [],
+    "mappingStatus": "needs_repository_mapping",
+    "coverage": "selected factual results, not a complete nominees roster"
+  },
+  {
+    "id": "recovery-bafta-tv-030",
+    "institution": "bafta-tv",
+    "edition": "2026 BAFTA Television Awards",
+    "categoryLabel": "Supporting Actress",
+    "subjects": [
+      "Christine Tremarco"
+    ],
+    "kind": "winner",
+    "occurredDate": "2026-05-10",
+    "publishedDate": "2026-05-10",
+    "datePrecision": "day",
+    "sourceId": "bafta-tv",
+    "evidenceStatus": "official_report",
+    "internalCategoryId": null,
+    "internalSubjectIds": [],
+    "mappingStatus": "needs_repository_mapping",
+    "coverage": "selected factual results, not a complete nominees roster"
+  },
+  {
+    "id": "recovery-bafta-tv-031",
+    "institution": "bafta-tv",
+    "edition": "2026 BAFTA Television Awards",
+    "categoryLabel": "Leading Actress",
+    "subjects": [
+      "Narges Rashidi"
+    ],
+    "kind": "winner",
+    "occurredDate": "2026-05-10",
+    "publishedDate": "2026-05-10",
+    "datePrecision": "day",
+    "sourceId": "bafta-tv",
+    "evidenceStatus": "official_report",
+    "internalCategoryId": null,
+    "internalSubjectIds": [],
+    "mappingStatus": "needs_repository_mapping",
+    "coverage": "selected factual results, not a complete nominees roster"
+  },
+  {
+    "id": "recovery-bafta-tv-032",
+    "institution": "bafta-tv",
+    "edition": "2026 BAFTA Television Awards",
+    "categoryLabel": "Male Performance in a Comedy",
+    "subjects": [
+      "Steve Coogan"
+    ],
+    "kind": "winner",
+    "occurredDate": "2026-05-10",
+    "publishedDate": "2026-05-10",
+    "datePrecision": "day",
+    "sourceId": "bafta-tv",
+    "evidenceStatus": "official_report",
+    "internalCategoryId": null,
+    "internalSubjectIds": [],
+    "mappingStatus": "needs_repository_mapping",
+    "coverage": "selected factual results, not a complete nominees roster"
+  },
+  {
+    "id": "recovery-bafta-tv-033",
+    "institution": "bafta-tv",
+    "edition": "2026 BAFTA Television Awards",
+    "categoryLabel": "Female Performance in a Comedy",
+    "subjects": [
+      "Katherine Parkinson"
+    ],
+    "kind": "winner",
+    "occurredDate": "2026-05-10",
+    "publishedDate": "2026-05-10",
+    "datePrecision": "day",
+    "sourceId": "bafta-tv",
+    "evidenceStatus": "official_report",
+    "internalCategoryId": null,
+    "internalSubjectIds": [],
+    "mappingStatus": "needs_repository_mapping",
+    "coverage": "selected factual results, not a complete nominees roster"
+  },
+  {
+    "id": "recovery-bafta-tv-034",
+    "institution": "bafta-tv",
+    "edition": "2026 BAFTA Television Awards",
+    "categoryLabel": "Entertainment Performance",
+    "subjects": [
+      "Bob Mortimer"
+    ],
+    "kind": "winner",
+    "occurredDate": "2026-05-10",
+    "publishedDate": "2026-05-10",
+    "datePrecision": "day",
+    "sourceId": "bafta-tv",
+    "evidenceStatus": "official_report",
+    "internalCategoryId": null,
+    "internalSubjectIds": [],
+    "mappingStatus": "needs_repository_mapping",
+    "coverage": "selected factual results, not a complete nominees roster"
+  },
+  {
+    "id": "recovery-bafta-tv-035",
+    "institution": "bafta-tv",
+    "edition": "2026 BAFTA Television Awards",
+    "categoryLabel": "Entertainment",
+    "subjects": [
+      "Last One Laughing"
+    ],
+    "kind": "winner",
+    "occurredDate": "2026-05-10",
+    "publishedDate": "2026-05-10",
+    "datePrecision": "day",
+    "sourceId": "bafta-tv",
+    "evidenceStatus": "official_report",
+    "internalCategoryId": null,
+    "internalSubjectIds": [],
+    "mappingStatus": "needs_repository_mapping",
+    "coverage": "selected factual results, not a complete nominees roster"
+  },
+  {
+    "id": "recovery-bafta-tv-036",
+    "institution": "bafta-tv",
+    "edition": "2026 BAFTA Television Awards",
+    "categoryLabel": "Reality",
+    "subjects": [
+      "The Celebrity Traitors"
+    ],
+    "kind": "winner",
+    "occurredDate": "2026-05-10",
+    "publishedDate": "2026-05-10",
+    "datePrecision": "day",
+    "sourceId": "bafta-tv",
+    "evidenceStatus": "official_report",
+    "internalCategoryId": null,
+    "internalSubjectIds": [],
+    "mappingStatus": "needs_repository_mapping",
+    "coverage": "selected factual results, not a complete nominees roster"
+  },
+  {
+    "id": "recovery-bafta-tv-037",
+    "institution": "bafta-tv",
+    "edition": "2026 BAFTA Television Awards",
+    "categoryLabel": "Drama Series",
+    "subjects": [
+      "Code of Silence"
+    ],
+    "kind": "winner",
+    "occurredDate": "2026-05-10",
+    "publishedDate": "2026-05-10",
+    "datePrecision": "day",
+    "sourceId": "bafta-tv",
+    "evidenceStatus": "official_report",
+    "internalCategoryId": null,
+    "internalSubjectIds": [],
+    "mappingStatus": "needs_repository_mapping",
+    "coverage": "selected factual results, not a complete nominees roster"
+  },
+  {
+    "id": "recovery-bafta-tv-038",
+    "institution": "bafta-tv",
+    "edition": "2026 BAFTA Television Awards",
+    "categoryLabel": "Soap",
+    "subjects": [
+      "EastEnders"
+    ],
+    "kind": "winner",
+    "occurredDate": "2026-05-10",
+    "publishedDate": "2026-05-10",
+    "datePrecision": "day",
+    "sourceId": "bafta-tv",
+    "evidenceStatus": "official_report",
+    "internalCategoryId": null,
+    "internalSubjectIds": [],
+    "mappingStatus": "needs_repository_mapping",
+    "coverage": "selected factual results, not a complete nominees roster"
+  },
+  {
+    "id": "recovery-bafta-tv-039",
+    "institution": "bafta-tv",
+    "edition": "2026 BAFTA Television Awards",
+    "categoryLabel": "Scripted Comedy",
+    "subjects": [
+      "Amandaland"
+    ],
+    "kind": "winner",
+    "occurredDate": "2026-05-10",
+    "publishedDate": "2026-05-10",
+    "datePrecision": "day",
+    "sourceId": "bafta-tv",
+    "evidenceStatus": "official_report",
+    "internalCategoryId": null,
+    "internalSubjectIds": [],
+    "mappingStatus": "needs_repository_mapping",
+    "coverage": "selected factual results, not a complete nominees roster"
+  },
+  {
+    "id": "recovery-bafta-tv-040",
+    "institution": "bafta-tv",
+    "edition": "2026 BAFTA Television Awards",
+    "categoryLabel": "Daytime",
+    "subjects": [
+      "Scam Interceptors"
+    ],
+    "kind": "winner",
+    "occurredDate": "2026-05-10",
+    "publishedDate": "2026-05-10",
+    "datePrecision": "day",
+    "sourceId": "bafta-tv",
+    "evidenceStatus": "official_report",
+    "internalCategoryId": null,
+    "internalSubjectIds": [],
+    "mappingStatus": "needs_repository_mapping",
+    "coverage": "selected factual results, not a complete nominees roster"
+  },
+  {
+    "id": "recovery-bafta-tv-041",
+    "institution": "bafta-tv",
+    "edition": "2026 BAFTA Television Awards",
+    "categoryLabel": "Live Event",
+    "subjects": [
+      "VE Day 80: A Celebration to Remember"
+    ],
+    "kind": "winner",
+    "occurredDate": "2026-05-10",
+    "publishedDate": "2026-05-10",
+    "datePrecision": "day",
+    "sourceId": "bafta-tv",
+    "evidenceStatus": "official_report",
+    "internalCategoryId": null,
+    "internalSubjectIds": [],
+    "mappingStatus": "needs_repository_mapping",
+    "coverage": "selected factual results, not a complete nominees roster"
+  },
+  {
+    "id": "recovery-bafta-tv-042",
+    "institution": "bafta-tv",
+    "edition": "2026 BAFTA Television Awards",
+    "categoryLabel": "Sport",
+    "subjects": [
+      "UEFA Women's Euro 2025"
+    ],
+    "kind": "winner",
+    "occurredDate": "2026-05-10",
+    "publishedDate": "2026-05-10",
+    "datePrecision": "day",
+    "sourceId": "bafta-tv",
+    "evidenceStatus": "official_report",
+    "internalCategoryId": null,
+    "internalSubjectIds": [],
+    "mappingStatus": "needs_repository_mapping",
+    "coverage": "selected factual results, not a complete nominees roster"
+  },
+  {
+    "id": "recovery-bafta-tv-043",
+    "institution": "bafta-tv",
+    "edition": "2026 BAFTA Television Awards",
+    "categoryLabel": "Factual Entertainment",
+    "subjects": [
+      "Go Back to Where You Came From"
+    ],
+    "kind": "winner",
+    "occurredDate": "2026-05-10",
+    "publishedDate": "2026-05-10",
+    "datePrecision": "day",
+    "sourceId": "bafta-tv",
+    "evidenceStatus": "official_report",
+    "internalCategoryId": null,
+    "internalSubjectIds": [],
+    "mappingStatus": "needs_repository_mapping",
+    "coverage": "selected factual results, not a complete nominees roster"
+  },
+  {
+    "id": "recovery-bafta-tv-044",
+    "institution": "bafta-tv",
+    "edition": "2026 BAFTA Television Awards",
+    "categoryLabel": "Factual Series",
+    "subjects": [
+      "See No Evil"
+    ],
+    "kind": "winner",
+    "occurredDate": "2026-05-10",
+    "publishedDate": "2026-05-10",
+    "datePrecision": "day",
+    "sourceId": "bafta-tv",
+    "evidenceStatus": "official_report",
+    "internalCategoryId": null,
+    "internalSubjectIds": [],
+    "mappingStatus": "needs_repository_mapping",
+    "coverage": "selected factual results, not a complete nominees roster"
+  },
+  {
+    "id": "recovery-bafta-tv-045",
+    "institution": "bafta-tv",
+    "edition": "2026 BAFTA Television Awards",
+    "categoryLabel": "Single Documentary",
+    "subjects": [
+      "Grenfell: Uncovered"
+    ],
+    "kind": "winner",
+    "occurredDate": "2026-05-10",
+    "publishedDate": "2026-05-10",
+    "datePrecision": "day",
+    "sourceId": "bafta-tv",
+    "evidenceStatus": "official_report",
+    "internalCategoryId": null,
+    "internalSubjectIds": [],
+    "mappingStatus": "needs_repository_mapping",
+    "coverage": "selected factual results, not a complete nominees roster"
+  },
+  {
+    "id": "recovery-bafta-tv-046",
+    "institution": "bafta-tv",
+    "edition": "2026 BAFTA Television Awards",
+    "categoryLabel": "Specialist Factual",
+    "subjects": [
+      "Simon Schama: The Road to Auschwitz"
+    ],
+    "kind": "winner",
+    "occurredDate": "2026-05-10",
+    "publishedDate": "2026-05-10",
+    "datePrecision": "day",
+    "sourceId": "bafta-tv",
+    "evidenceStatus": "official_report",
+    "internalCategoryId": null,
+    "internalSubjectIds": [],
+    "mappingStatus": "needs_repository_mapping",
+    "coverage": "selected factual results, not a complete nominees roster"
+  },
+  {
+    "id": "recovery-bafta-tv-047",
+    "institution": "bafta-tv",
+    "edition": "2026 BAFTA Television Awards",
+    "categoryLabel": "News Coverage",
+    "subjects": [
+      "Channel 4 News: Israel–Iran: The Twelve-Day War"
+    ],
+    "kind": "winner",
+    "occurredDate": "2026-05-10",
+    "publishedDate": "2026-05-10",
+    "datePrecision": "day",
+    "sourceId": "bafta-tv",
+    "evidenceStatus": "official_report",
+    "internalCategoryId": null,
+    "internalSubjectIds": [],
+    "mappingStatus": "needs_repository_mapping",
+    "coverage": "selected factual results, not a complete nominees roster"
+  },
+  {
+    "id": "recovery-bafta-tv-048",
+    "institution": "bafta-tv",
+    "edition": "2026 BAFTA Television Awards",
+    "categoryLabel": "Current Affairs",
+    "subjects": [
+      "Gaza: Doctors Under Attack"
+    ],
+    "kind": "winner",
+    "occurredDate": "2026-05-10",
+    "publishedDate": "2026-05-10",
+    "datePrecision": "day",
+    "sourceId": "bafta-tv",
+    "evidenceStatus": "official_report",
+    "internalCategoryId": null,
+    "internalSubjectIds": [],
+    "mappingStatus": "needs_repository_mapping",
+    "coverage": "selected factual results, not a complete nominees roster"
+  },
+  {
+    "id": "recovery-bafta-tv-049",
+    "institution": "bafta-tv",
+    "edition": "2026 BAFTA Television Awards",
+    "categoryLabel": "Short Form",
+    "subjects": [
+      "Hustle and Run"
+    ],
+    "kind": "winner",
+    "occurredDate": "2026-05-10",
+    "publishedDate": "2026-05-10",
+    "datePrecision": "day",
+    "sourceId": "bafta-tv",
+    "evidenceStatus": "official_report",
+    "internalCategoryId": null,
+    "internalSubjectIds": [],
+    "mappingStatus": "needs_repository_mapping",
+    "coverage": "selected factual results, not a complete nominees roster"
+  },
+  {
+    "id": "recovery-bafta-tv-050",
+    "institution": "bafta-tv",
+    "edition": "2026 BAFTA Television Awards",
+    "categoryLabel": "International",
+    "subjects": [
+      "The Studio"
+    ],
+    "kind": "winner",
+    "occurredDate": "2026-05-10",
+    "publishedDate": "2026-05-10",
+    "datePrecision": "day",
+    "sourceId": "bafta-tv",
+    "evidenceStatus": "official_report",
+    "internalCategoryId": null,
+    "internalSubjectIds": [],
+    "mappingStatus": "needs_repository_mapping",
+    "coverage": "selected factual results, not a complete nominees roster"
+  },
+  {
+    "id": "recovery-bafta-tv-051",
+    "institution": "bafta-tv",
+    "edition": "2026 BAFTA Television Awards",
+    "categoryLabel": "Children's Scripted",
+    "subjects": [
+      "Crongton"
+    ],
+    "kind": "winner",
+    "occurredDate": "2026-05-10",
+    "publishedDate": "2026-05-10",
+    "datePrecision": "day",
+    "sourceId": "bafta-tv",
+    "evidenceStatus": "official_report",
+    "internalCategoryId": null,
+    "internalSubjectIds": [],
+    "mappingStatus": "needs_repository_mapping",
+    "coverage": "selected factual results, not a complete nominees roster"
+  },
+  {
+    "id": "recovery-bafta-tv-052",
+    "institution": "bafta-tv",
+    "edition": "2026 BAFTA Television Awards",
+    "categoryLabel": "Children's Non-Scripted",
+    "subjects": [
+      "World War Me: Sky Kids Investigates"
+    ],
+    "kind": "winner",
+    "occurredDate": "2026-05-10",
+    "publishedDate": "2026-05-10",
+    "datePrecision": "day",
+    "sourceId": "bafta-tv",
+    "evidenceStatus": "official_report",
+    "internalCategoryId": null,
+    "internalSubjectIds": [],
+    "mappingStatus": "needs_repository_mapping",
+    "coverage": "selected factual results, not a complete nominees roster"
+  },
+  {
+    "id": "recovery-bafta-tv-craft-053",
+    "institution": "bafta-tv-craft",
+    "edition": "2026 BAFTA Television Craft Awards",
+    "categoryLabel": "Director: Fiction",
+    "subjects": [
+      "Philip Barantini"
+    ],
+    "kind": "winner",
+    "occurredDate": "2026-04-26",
+    "publishedDate": "2026-04-26",
+    "datePrecision": "day",
+    "sourceId": "bafta-craft",
+    "evidenceStatus": "official_report",
+    "internalCategoryId": null,
+    "internalSubjectIds": [],
+    "mappingStatus": "needs_repository_mapping",
+    "coverage": "selected factual results, not a complete nominees roster"
+  },
+  {
+    "id": "recovery-bafta-tv-craft-054",
+    "institution": "bafta-tv-craft",
+    "edition": "2026 BAFTA Television Craft Awards",
+    "categoryLabel": "Sound: Fiction",
+    "subjects": [
+      "Adolescence"
+    ],
+    "kind": "winner",
+    "occurredDate": "2026-04-26",
+    "publishedDate": "2026-04-26",
+    "datePrecision": "day",
+    "sourceId": "bafta-craft",
+    "evidenceStatus": "official_report",
+    "internalCategoryId": null,
+    "internalSubjectIds": [],
+    "mappingStatus": "needs_repository_mapping",
+    "coverage": "selected factual results, not a complete nominees roster"
+  },
+  {
+    "id": "recovery-bafta-tv-craft-055",
+    "institution": "bafta-tv-craft",
+    "edition": "2026 BAFTA Television Craft Awards",
+    "categoryLabel": "Entertainment Craft Team",
+    "subjects": [
+      "The Celebrity Traitors"
+    ],
+    "kind": "winner",
+    "occurredDate": "2026-04-26",
+    "publishedDate": "2026-04-26",
+    "datePrecision": "day",
+    "sourceId": "bafta-craft",
+    "evidenceStatus": "official_report",
+    "internalCategoryId": null,
+    "internalSubjectIds": [],
+    "mappingStatus": "needs_repository_mapping",
+    "coverage": "selected factual results, not a complete nominees roster"
+  },
+  {
+    "id": "recovery-bafta-tv-craft-056",
+    "institution": "bafta-tv-craft",
+    "edition": "2026 BAFTA Television Craft Awards",
+    "categoryLabel": "Sound: Factual",
+    "subjects": [
+      "The Celebrity Traitors"
+    ],
+    "kind": "winner",
+    "occurredDate": "2026-04-26",
+    "publishedDate": "2026-04-26",
+    "datePrecision": "day",
+    "sourceId": "bafta-craft",
+    "evidenceStatus": "official_report",
+    "internalCategoryId": null,
+    "internalSubjectIds": [],
+    "mappingStatus": "needs_repository_mapping",
+    "coverage": "selected factual results, not a complete nominees roster"
+  },
+  {
+    "id": "recovery-bafta-tv-craft-057",
+    "institution": "bafta-tv-craft",
+    "edition": "2026 BAFTA Television Craft Awards",
+    "categoryLabel": "Emerging Talent: Fiction",
+    "subjects": [
+      "Janice Okoh"
+    ],
+    "kind": "winner",
+    "occurredDate": "2026-04-26",
+    "publishedDate": "2026-04-26",
+    "datePrecision": "day",
+    "sourceId": "bafta-craft",
+    "evidenceStatus": "official_report",
+    "internalCategoryId": null,
+    "internalSubjectIds": [],
+    "mappingStatus": "needs_repository_mapping",
+    "coverage": "selected factual results, not a complete nominees roster"
+  },
+  {
+    "id": "recovery-bafta-tv-craft-058",
+    "institution": "bafta-tv-craft",
+    "edition": "2026 BAFTA Television Craft Awards",
+    "categoryLabel": "Emerging Talent: Factual",
+    "subjects": [
+      "Olaide Sadiq"
+    ],
+    "kind": "winner",
+    "occurredDate": "2026-04-26",
+    "publishedDate": "2026-04-26",
+    "datePrecision": "day",
+    "sourceId": "bafta-craft",
+    "evidenceStatus": "official_report",
+    "internalCategoryId": null,
+    "internalSubjectIds": [],
+    "mappingStatus": "needs_repository_mapping",
+    "coverage": "selected factual results, not a complete nominees roster"
+  },
+  {
+    "id": "recovery-bafta-tv-craft-059",
+    "institution": "bafta-tv-craft",
+    "edition": "2026 BAFTA Television Craft Awards",
+    "categoryLabel": "Director: Multi-Camera",
+    "subjects": [
+      "Laurence Cawsey"
+    ],
+    "kind": "winner",
+    "occurredDate": "2026-04-26",
+    "publishedDate": "2026-04-26",
+    "datePrecision": "day",
+    "sourceId": "bafta-craft",
+    "evidenceStatus": "official_report",
+    "internalCategoryId": null,
+    "internalSubjectIds": [],
+    "mappingStatus": "needs_repository_mapping",
+    "coverage": "selected factual results, not a complete nominees roster"
+  },
+  {
+    "id": "recovery-bafta-tv-craft-060",
+    "institution": "bafta-tv-craft",
+    "edition": "2026 BAFTA Television Craft Awards",
+    "categoryLabel": "Writer: Comedy",
+    "subjects": [
+      "Jack Rooke"
+    ],
+    "kind": "winner",
+    "occurredDate": "2026-04-26",
+    "publishedDate": "2026-04-26",
+    "datePrecision": "day",
+    "sourceId": "bafta-craft",
+    "evidenceStatus": "official_report",
+    "internalCategoryId": null,
+    "internalSubjectIds": [],
+    "mappingStatus": "needs_repository_mapping",
+    "coverage": "selected factual results, not a complete nominees roster"
+  },
+  {
+    "id": "recovery-bafta-tv-craft-061",
+    "institution": "bafta-tv-craft",
+    "edition": "2026 BAFTA Television Craft Awards",
+    "categoryLabel": "Writer: Drama",
+    "subjects": [
+      "Will Smith"
+    ],
+    "kind": "winner",
+    "occurredDate": "2026-04-26",
+    "publishedDate": "2026-04-26",
+    "datePrecision": "day",
+    "sourceId": "bafta-craft",
+    "evidenceStatus": "official_report",
+    "internalCategoryId": null,
+    "internalSubjectIds": [],
+    "mappingStatus": "needs_repository_mapping",
+    "coverage": "selected factual results, not a complete nominees roster"
+  },
+  {
+    "id": "recovery-bafta-tv-craft-062",
+    "institution": "bafta-tv-craft",
+    "edition": "2026 BAFTA Television Craft Awards",
+    "categoryLabel": "Costume Design",
+    "subjects": [
+      "Maja Meschede"
+    ],
+    "kind": "winner",
+    "occurredDate": "2026-04-26",
+    "publishedDate": "2026-04-26",
+    "datePrecision": "day",
+    "sourceId": "bafta-craft",
+    "evidenceStatus": "official_report",
+    "internalCategoryId": null,
+    "internalSubjectIds": [],
+    "mappingStatus": "needs_repository_mapping",
+    "coverage": "selected factual results, not a complete nominees roster"
+  },
+  {
+    "id": "recovery-bafta-tv-craft-063",
+    "institution": "bafta-tv-craft",
+    "edition": "2026 BAFTA Television Craft Awards",
+    "categoryLabel": "Photography and Lighting: Fiction",
+    "subjects": [
+      "Ryan Kernaghan"
+    ],
+    "kind": "winner",
+    "occurredDate": "2026-04-26",
+    "publishedDate": "2026-04-26",
+    "datePrecision": "day",
+    "sourceId": "bafta-craft",
+    "evidenceStatus": "official_report",
+    "internalCategoryId": null,
+    "internalSubjectIds": [],
+    "mappingStatus": "needs_repository_mapping",
+    "coverage": "selected factual results, not a complete nominees roster"
+  },
+  {
+    "id": "recovery-bafta-tv-craft-064",
+    "institution": "bafta-tv-craft",
+    "edition": "2026 BAFTA Television Craft Awards",
+    "categoryLabel": "Production Design",
+    "subjects": [
+      "Philippa Mumford"
+    ],
+    "kind": "winner",
+    "occurredDate": "2026-04-26",
+    "publishedDate": "2026-04-26",
+    "datePrecision": "day",
+    "sourceId": "bafta-craft",
+    "evidenceStatus": "official_report",
+    "internalCategoryId": null,
+    "internalSubjectIds": [],
+    "mappingStatus": "needs_repository_mapping",
+    "coverage": "selected factual results, not a complete nominees roster"
+  },
+  {
+    "id": "recovery-bafta-tv-craft-065",
+    "institution": "bafta-tv-craft",
+    "edition": "2026 BAFTA Television Craft Awards",
+    "categoryLabel": "Director: Factual",
+    "subjects": [
+      "Rob Coldstream"
+    ],
+    "kind": "winner",
+    "occurredDate": "2026-04-26",
+    "publishedDate": "2026-04-26",
+    "datePrecision": "day",
+    "sourceId": "bafta-craft",
+    "evidenceStatus": "official_report",
+    "internalCategoryId": null,
+    "internalSubjectIds": [],
+    "mappingStatus": "needs_repository_mapping",
+    "coverage": "selected factual results, not a complete nominees roster"
+  },
+  {
+    "id": "recovery-bafta-tv-craft-066",
+    "institution": "bafta-tv-craft",
+    "edition": "2026 BAFTA Television Craft Awards",
+    "categoryLabel": "Original Music: Factual",
+    "subjects": [
+      "Jessica Dannheisser"
+    ],
+    "kind": "winner",
+    "occurredDate": "2026-04-26",
+    "publishedDate": "2026-04-26",
+    "datePrecision": "day",
+    "sourceId": "bafta-craft",
+    "evidenceStatus": "official_report",
+    "internalCategoryId": null,
+    "internalSubjectIds": [],
+    "mappingStatus": "needs_repository_mapping",
+    "coverage": "selected factual results, not a complete nominees roster"
+  },
+  {
+    "id": "recovery-bafta-tv-craft-067",
+    "institution": "bafta-tv-craft",
+    "edition": "2026 BAFTA Television Craft Awards",
+    "categoryLabel": "Original Music: Fiction",
+    "subjects": [
+      "Tom Rowlands"
+    ],
+    "kind": "winner",
+    "occurredDate": "2026-04-26",
+    "publishedDate": "2026-04-26",
+    "datePrecision": "day",
+    "sourceId": "bafta-craft",
+    "evidenceStatus": "official_report",
+    "internalCategoryId": null,
+    "internalSubjectIds": [],
+    "mappingStatus": "needs_repository_mapping",
+    "coverage": "selected factual results, not a complete nominees roster"
+  },
+  {
+    "id": "recovery-bafta-tv-craft-068",
+    "institution": "bafta-tv-craft",
+    "edition": "2026 BAFTA Television Craft Awards",
+    "categoryLabel": "Children's Craft Team",
+    "subjects": [
+      "Very Small Creatures"
+    ],
+    "kind": "winner",
+    "occurredDate": "2026-04-26",
+    "publishedDate": "2026-04-26",
+    "datePrecision": "day",
+    "sourceId": "bafta-craft",
+    "evidenceStatus": "official_report",
+    "internalCategoryId": null,
+    "internalSubjectIds": [],
+    "mappingStatus": "needs_repository_mapping",
+    "coverage": "selected factual results, not a complete nominees roster"
+  },
+  {
+    "id": "recovery-bafta-tv-craft-069",
+    "institution": "bafta-tv-craft",
+    "edition": "2026 BAFTA Television Craft Awards",
+    "categoryLabel": "Make Up and Hair Design",
+    "subjects": [
+      "Amadeus"
+    ],
+    "kind": "winner",
+    "occurredDate": "2026-04-26",
+    "publishedDate": "2026-04-26",
+    "datePrecision": "day",
+    "sourceId": "bafta-craft",
+    "evidenceStatus": "official_report",
+    "internalCategoryId": null,
+    "internalSubjectIds": [],
+    "mappingStatus": "needs_repository_mapping",
+    "coverage": "selected factual results, not a complete nominees roster"
+  },
+  {
+    "id": "recovery-bafta-tv-craft-070",
+    "institution": "bafta-tv-craft",
+    "edition": "2026 BAFTA Television Craft Awards",
+    "categoryLabel": "Scripted Casting",
+    "subjects": [
+      "Reunion"
+    ],
+    "kind": "winner",
+    "occurredDate": "2026-04-26",
+    "publishedDate": "2026-04-26",
+    "datePrecision": "day",
+    "sourceId": "bafta-craft",
+    "evidenceStatus": "official_report",
+    "internalCategoryId": null,
+    "internalSubjectIds": [],
+    "mappingStatus": "needs_repository_mapping",
+    "coverage": "selected factual results, not a complete nominees roster"
+  },
+  {
+    "id": "recovery-bafta-tv-craft-071",
+    "institution": "bafta-tv-craft",
+    "edition": "2026 BAFTA Television Craft Awards",
+    "categoryLabel": "Editing: Factual",
+    "subjects": [
+      "Gaza: Doctors Under Attack"
+    ],
+    "kind": "winner",
+    "occurredDate": "2026-04-26",
+    "publishedDate": "2026-04-26",
+    "datePrecision": "day",
+    "sourceId": "bafta-craft",
+    "evidenceStatus": "official_report",
+    "internalCategoryId": null,
+    "internalSubjectIds": [],
+    "mappingStatus": "needs_repository_mapping",
+    "coverage": "selected factual results, not a complete nominees roster"
+  },
+  {
+    "id": "recovery-bafta-tv-craft-072",
+    "institution": "bafta-tv-craft",
+    "edition": "2026 BAFTA Television Craft Awards",
+    "categoryLabel": "Photography: Factual",
+    "subjects": [
+      "Our Land: Israel's Other War"
+    ],
+    "kind": "winner",
+    "occurredDate": "2026-04-26",
+    "publishedDate": "2026-04-26",
+    "datePrecision": "day",
+    "sourceId": "bafta-craft",
+    "evidenceStatus": "official_report",
+    "internalCategoryId": null,
+    "internalSubjectIds": [],
+    "mappingStatus": "needs_repository_mapping",
+    "coverage": "selected factual results, not a complete nominees roster"
+  },
+  {
+    "id": "recovery-bafta-tv-craft-073",
+    "institution": "bafta-tv-craft",
+    "edition": "2026 BAFTA Television Craft Awards",
+    "categoryLabel": "Editing: Fiction",
+    "subjects": [
+      "Prisoner 951"
+    ],
+    "kind": "winner",
+    "occurredDate": "2026-04-26",
+    "publishedDate": "2026-04-26",
+    "datePrecision": "day",
+    "sourceId": "bafta-craft",
+    "evidenceStatus": "official_report",
+    "internalCategoryId": null,
+    "internalSubjectIds": [],
+    "mappingStatus": "needs_repository_mapping",
+    "coverage": "selected factual results, not a complete nominees roster"
+  },
+  {
+    "id": "recovery-bafta-tv-craft-074",
+    "institution": "bafta-tv-craft",
+    "edition": "2026 BAFTA Television Craft Awards",
+    "categoryLabel": "Titles and Graphic Identity",
+    "subjects": [
+      "UEFA Women's Euro 2025"
+    ],
+    "kind": "winner",
+    "occurredDate": "2026-04-26",
+    "publishedDate": "2026-04-26",
+    "datePrecision": "day",
+    "sourceId": "bafta-craft",
+    "evidenceStatus": "official_report",
+    "internalCategoryId": null,
+    "internalSubjectIds": [],
+    "mappingStatus": "needs_repository_mapping",
+    "coverage": "selected factual results, not a complete nominees roster"
+  },
+  {
+    "id": "recovery-bafta-tv-craft-075",
+    "institution": "bafta-tv-craft",
+    "edition": "2026 BAFTA Television Craft Awards",
+    "categoryLabel": "Special, Visual and Graphic Effects",
+    "subjects": [
+      "Andor"
+    ],
+    "kind": "winner",
+    "occurredDate": "2026-04-26",
+    "publishedDate": "2026-04-26",
+    "datePrecision": "day",
+    "sourceId": "bafta-craft",
+    "evidenceStatus": "official_report",
+    "internalCategoryId": null,
+    "internalSubjectIds": [],
+    "mappingStatus": "needs_repository_mapping",
+    "coverage": "selected factual results, not a complete nominees roster"
+  },
+  {
+    "id": "recovery-sxsw-076",
+    "institution": "sxsw",
+    "edition": "SXSW 2026 jury awards",
+    "categoryLabel": "Narrative Feature",
+    "subjects": [
+      "Wishful Thinking"
+    ],
+    "kind": "winner",
+    "occurredDate": "2026-03-18",
+    "publishedDate": "2026-03-18",
+    "datePrecision": "day",
+    "sourceId": "sxsw-jury",
+    "evidenceStatus": "official_report",
+    "internalCategoryId": null,
+    "internalSubjectIds": [],
+    "mappingStatus": "needs_repository_mapping",
+    "coverage": "selected factual results, not a complete nominees roster"
+  },
+  {
+    "id": "recovery-sxsw-077",
+    "institution": "sxsw",
+    "edition": "SXSW 2026 jury awards",
+    "categoryLabel": "Documentary Feature",
+    "subjects": [
+      "Summer 2000: The X-Cetra Story"
+    ],
+    "kind": "winner",
+    "occurredDate": "2026-03-18",
+    "publishedDate": "2026-03-18",
+    "datePrecision": "day",
+    "sourceId": "sxsw-jury",
+    "evidenceStatus": "official_report",
+    "internalCategoryId": null,
+    "internalSubjectIds": [],
+    "mappingStatus": "needs_repository_mapping",
+    "coverage": "selected factual results, not a complete nominees roster"
+  },
+  {
+    "id": "recovery-sxsw-078",
+    "institution": "sxsw",
+    "edition": "SXSW 2026 jury awards",
+    "categoryLabel": "Narrative Short",
+    "subjects": [
+      "Souvenir"
+    ],
+    "kind": "winner",
+    "occurredDate": "2026-03-18",
+    "publishedDate": "2026-03-18",
+    "datePrecision": "day",
+    "sourceId": "sxsw-jury",
+    "evidenceStatus": "official_report",
+    "internalCategoryId": null,
+    "internalSubjectIds": [],
+    "mappingStatus": "needs_repository_mapping",
+    "coverage": "selected factual results, not a complete nominees roster"
+  },
+  {
+    "id": "recovery-sxsw-079",
+    "institution": "sxsw",
+    "edition": "SXSW 2026 jury awards",
+    "categoryLabel": "Documentary Short",
+    "subjects": [
+      "In the Morning Sun"
+    ],
+    "kind": "winner",
+    "occurredDate": "2026-03-18",
+    "publishedDate": "2026-03-18",
+    "datePrecision": "day",
+    "sourceId": "sxsw-jury",
+    "evidenceStatus": "official_report",
+    "internalCategoryId": null,
+    "internalSubjectIds": [],
+    "mappingStatus": "needs_repository_mapping",
+    "coverage": "selected factual results, not a complete nominees roster"
+  },
+  {
+    "id": "recovery-sxsw-080",
+    "institution": "sxsw",
+    "edition": "SXSW 2026 jury awards",
+    "categoryLabel": "Animated Short",
+    "subjects": [
+      "Paper Trail"
+    ],
+    "kind": "winner",
+    "occurredDate": "2026-03-18",
+    "publishedDate": "2026-03-18",
+    "datePrecision": "day",
+    "sourceId": "sxsw-jury",
+    "evidenceStatus": "official_report",
+    "internalCategoryId": null,
+    "internalSubjectIds": [],
+    "mappingStatus": "needs_repository_mapping",
+    "coverage": "selected factual results, not a complete nominees roster"
+  },
+  {
+    "id": "recovery-sxsw-081",
+    "institution": "sxsw",
+    "edition": "SXSW 2026 jury awards",
+    "categoryLabel": "Midnight Short",
+    "subjects": [
+      "Tongue"
+    ],
+    "kind": "winner",
+    "occurredDate": "2026-03-18",
+    "publishedDate": "2026-03-18",
+    "datePrecision": "day",
+    "sourceId": "sxsw-jury",
+    "evidenceStatus": "official_report",
+    "internalCategoryId": null,
+    "internalSubjectIds": [],
+    "mappingStatus": "needs_repository_mapping",
+    "coverage": "selected factual results, not a complete nominees roster"
+  },
+  {
+    "id": "recovery-sxsw-082",
+    "institution": "sxsw",
+    "edition": "SXSW 2026 jury awards",
+    "categoryLabel": "Texas Short",
+    "subjects": [
+      "Forcefield of Love"
+    ],
+    "kind": "winner",
+    "occurredDate": "2026-03-18",
+    "publishedDate": "2026-03-18",
+    "datePrecision": "day",
+    "sourceId": "sxsw-jury",
+    "evidenceStatus": "official_report",
+    "internalCategoryId": null,
+    "internalSubjectIds": [],
+    "mappingStatus": "needs_repository_mapping",
+    "coverage": "selected factual results, not a complete nominees roster"
+  },
+  {
+    "id": "recovery-sxsw-083",
+    "institution": "sxsw",
+    "edition": "SXSW 2026 jury awards",
+    "categoryLabel": "Music Video",
+    "subjects": [
+      "Rawayana & Bomba Estéreo: Fogata"
+    ],
+    "kind": "winner",
+    "occurredDate": "2026-03-18",
+    "publishedDate": "2026-03-18",
+    "datePrecision": "day",
+    "sourceId": "sxsw-jury",
+    "evidenceStatus": "official_report",
+    "internalCategoryId": null,
+    "internalSubjectIds": [],
+    "mappingStatus": "needs_repository_mapping",
+    "coverage": "selected factual results, not a complete nominees roster"
+  },
+  {
+    "id": "recovery-sxsw-084",
+    "institution": "sxsw",
+    "edition": "SXSW 2026 jury awards",
+    "categoryLabel": "TV Pilot",
+    "subjects": [
+      "In My Blood"
+    ],
+    "kind": "winner",
+    "occurredDate": "2026-03-18",
+    "publishedDate": "2026-03-18",
+    "datePrecision": "day",
+    "sourceId": "sxsw-jury",
+    "evidenceStatus": "official_report",
+    "internalCategoryId": null,
+    "internalSubjectIds": [],
+    "mappingStatus": "needs_repository_mapping",
+    "coverage": "selected factual results, not a complete nominees roster"
+  },
+  {
+    "id": "recovery-sxsw-085",
+    "institution": "sxsw",
+    "edition": "SXSW 2026 jury awards",
+    "categoryLabel": "XR",
+    "subjects": [
+      "Body Proxy"
+    ],
+    "kind": "winner",
+    "occurredDate": "2026-03-18",
+    "publishedDate": "2026-03-18",
+    "datePrecision": "day",
+    "sourceId": "sxsw-jury",
+    "evidenceStatus": "official_report",
+    "internalCategoryId": null,
+    "internalSubjectIds": [],
+    "mappingStatus": "needs_repository_mapping",
+    "coverage": "selected factual results, not a complete nominees roster"
+  },
+  {
+    "id": "recovery-sxsw-086",
+    "institution": "sxsw",
+    "edition": "SXSW 2026 jury awards",
+    "categoryLabel": "Agog Immersive Impact",
+    "subjects": [
+      "A Long Goodbye"
+    ],
+    "kind": "winner",
+    "occurredDate": "2026-03-18",
+    "publishedDate": "2026-03-18",
+    "datePrecision": "day",
+    "sourceId": "sxsw-jury",
+    "evidenceStatus": "official_report",
+    "internalCategoryId": null,
+    "internalSubjectIds": [],
+    "mappingStatus": "needs_repository_mapping",
+    "coverage": "selected factual results, not a complete nominees roster"
+  },
+  {
+    "id": "recovery-sxsw-087",
+    "institution": "sxsw",
+    "edition": "SXSW 2026 jury awards",
+    "categoryLabel": "Green Lens",
+    "subjects": [
+      "Plantman & Blondie"
+    ],
+    "kind": "winner",
+    "occurredDate": "2026-03-18",
+    "publishedDate": "2026-03-18",
+    "datePrecision": "day",
+    "sourceId": "sxsw-jury",
+    "evidenceStatus": "official_report",
+    "internalCategoryId": null,
+    "internalSubjectIds": [],
+    "mappingStatus": "needs_repository_mapping",
+    "coverage": "selected factual results, not a complete nominees roster"
+  },
+  {
+    "id": "recovery-sxsw-088",
+    "institution": "sxsw",
+    "edition": "SXSW 2026 jury awards",
+    "categoryLabel": "Janet Pierson Champion",
+    "subjects": [
+      "Benjamin Wiessner"
+    ],
+    "kind": "winner",
+    "occurredDate": "2026-03-18",
+    "publishedDate": "2026-03-18",
+    "datePrecision": "day",
+    "sourceId": "sxsw-jury",
+    "evidenceStatus": "official_report",
+    "internalCategoryId": null,
+    "internalSubjectIds": [],
+    "mappingStatus": "needs_repository_mapping",
+    "coverage": "selected factual results, not a complete nominees roster"
+  },
+  {
+    "id": "recovery-sxsw-089",
+    "institution": "sxsw",
+    "edition": "SXSW 2026 jury awards",
+    "categoryLabel": "NEON Auteur",
+    "subjects": [
+      "Peril at Pincer Point"
+    ],
+    "kind": "winner",
+    "occurredDate": "2026-03-18",
+    "publishedDate": "2026-03-18",
+    "datePrecision": "day",
+    "sourceId": "sxsw-jury",
+    "evidenceStatus": "official_report",
+    "internalCategoryId": null,
+    "internalSubjectIds": [],
+    "mappingStatus": "needs_repository_mapping",
+    "coverage": "selected factual results, not a complete nominees roster"
+  },
+  {
+    "id": "recovery-sxsw-090",
+    "institution": "sxsw",
+    "edition": "SXSW 2026 jury awards",
+    "categoryLabel": "Redbreast Unhidden",
+    "subjects": [
+      "We Were Here"
+    ],
+    "kind": "winner",
+    "occurredDate": "2026-03-18",
+    "publishedDate": "2026-03-18",
+    "datePrecision": "day",
+    "sourceId": "sxsw-jury",
+    "evidenceStatus": "official_report",
+    "internalCategoryId": null,
+    "internalSubjectIds": [],
+    "mappingStatus": "needs_repository_mapping",
+    "coverage": "selected factual results, not a complete nominees roster"
+  },
+  {
+    "id": "recovery-sxsw-091",
+    "institution": "sxsw",
+    "edition": "SXSW 2026 jury awards",
+    "categoryLabel": "Best of Texas",
+    "subjects": [
+      "Stages"
+    ],
+    "kind": "winner",
+    "occurredDate": "2026-03-18",
+    "publishedDate": "2026-03-18",
+    "datePrecision": "day",
+    "sourceId": "sxsw-jury",
+    "evidenceStatus": "official_report",
+    "internalCategoryId": null,
+    "internalSubjectIds": [],
+    "mappingStatus": "needs_repository_mapping",
+    "coverage": "selected factual results, not a complete nominees roster"
+  },
+  {
+    "id": "recovery-sxsw-092",
+    "institution": "sxsw",
+    "edition": "SXSW 2026 jury awards",
+    "categoryLabel": "Vimeo Staff Pick",
+    "subjects": [
+      "Mantis Stream: Like & Subscribe"
+    ],
+    "kind": "winner",
+    "occurredDate": "2026-03-18",
+    "publishedDate": "2026-03-18",
+    "datePrecision": "day",
+    "sourceId": "sxsw-jury",
+    "evidenceStatus": "official_report",
+    "internalCategoryId": null,
+    "internalSubjectIds": [],
+    "mappingStatus": "needs_repository_mapping",
+    "coverage": "selected factual results, not a complete nominees roster"
+  },
+  {
+    "id": "recovery-sxsw-093",
+    "institution": "sxsw",
+    "edition": "SXSW 2026 audience awards",
+    "categoryLabel": "Headliner Audience",
+    "subjects": [
+      "Over Your Dead Body"
+    ],
+    "kind": "winner",
+    "occurredDate": "2026-03-20",
+    "publishedDate": "2026-03-20",
+    "datePrecision": "day",
+    "sourceId": "sxsw-audience",
+    "evidenceStatus": "official_report",
+    "internalCategoryId": null,
+    "internalSubjectIds": [],
+    "mappingStatus": "needs_repository_mapping",
+    "coverage": "selected factual results, not a complete nominees roster"
+  },
+  {
+    "id": "recovery-sxsw-094",
+    "institution": "sxsw",
+    "edition": "SXSW 2026 audience awards",
+    "categoryLabel": "Narrative Feature Audience",
+    "subjects": [
+      "Plantman & Blondie: A Dress Up Gang Film"
+    ],
+    "kind": "winner",
+    "occurredDate": "2026-03-20",
+    "publishedDate": "2026-03-20",
+    "datePrecision": "day",
+    "sourceId": "sxsw-audience",
+    "evidenceStatus": "official_report",
+    "internalCategoryId": null,
+    "internalSubjectIds": [],
+    "mappingStatus": "needs_repository_mapping",
+    "coverage": "selected factual results, not a complete nominees roster"
+  },
+  {
+    "id": "recovery-sxsw-095",
+    "institution": "sxsw",
+    "edition": "SXSW 2026 audience awards",
+    "categoryLabel": "Documentary Feature Audience",
+    "subjects": [
+      "The Ascent"
+    ],
+    "kind": "winner",
+    "occurredDate": "2026-03-20",
+    "publishedDate": "2026-03-20",
+    "datePrecision": "day",
+    "sourceId": "sxsw-audience",
+    "evidenceStatus": "official_report",
+    "internalCategoryId": null,
+    "internalSubjectIds": [],
+    "mappingStatus": "needs_repository_mapping",
+    "coverage": "selected factual results, not a complete nominees roster"
+  },
+  {
+    "id": "recovery-sxsw-096",
+    "institution": "sxsw",
+    "edition": "SXSW 2026 audience awards",
+    "categoryLabel": "Narrative Spotlight Audience",
+    "subjects": [
+      "Campeón Gabacho"
+    ],
+    "kind": "winner",
+    "occurredDate": "2026-03-20",
+    "publishedDate": "2026-03-20",
+    "datePrecision": "day",
+    "sourceId": "sxsw-audience",
+    "evidenceStatus": "official_report",
+    "internalCategoryId": null,
+    "internalSubjectIds": [],
+    "mappingStatus": "needs_repository_mapping",
+    "coverage": "selected factual results, not a complete nominees roster"
+  },
+  {
+    "id": "recovery-sxsw-097",
+    "institution": "sxsw",
+    "edition": "SXSW 2026 audience awards",
+    "categoryLabel": "Documentary Spotlight Audience",
+    "subjects": [
+      "Ceremony"
+    ],
+    "kind": "winner",
+    "occurredDate": "2026-03-20",
+    "publishedDate": "2026-03-20",
+    "datePrecision": "day",
+    "sourceId": "sxsw-audience",
+    "evidenceStatus": "official_report",
+    "internalCategoryId": null,
+    "internalSubjectIds": [],
+    "mappingStatus": "needs_repository_mapping",
+    "coverage": "selected factual results, not a complete nominees roster"
+  },
+  {
+    "id": "recovery-sxsw-098",
+    "institution": "sxsw",
+    "edition": "SXSW 2026 audience awards",
+    "categoryLabel": "Midnighter Audience",
+    "subjects": [
+      "Never After Dark"
+    ],
+    "kind": "winner",
+    "occurredDate": "2026-03-20",
+    "publishedDate": "2026-03-20",
+    "datePrecision": "day",
+    "sourceId": "sxsw-audience",
+    "evidenceStatus": "official_report",
+    "internalCategoryId": null,
+    "internalSubjectIds": [],
+    "mappingStatus": "needs_repository_mapping",
+    "coverage": "selected factual results, not a complete nominees roster"
+  },
+  {
+    "id": "recovery-sxsw-099",
+    "institution": "sxsw",
+    "edition": "SXSW 2026 audience awards",
+    "categoryLabel": "Visions Audience",
+    "subjects": [
+      "Daughters of the Forest"
+    ],
+    "kind": "winner",
+    "occurredDate": "2026-03-20",
+    "publishedDate": "2026-03-20",
+    "datePrecision": "day",
+    "sourceId": "sxsw-audience",
+    "evidenceStatus": "official_report",
+    "internalCategoryId": null,
+    "internalSubjectIds": [],
+    "mappingStatus": "needs_repository_mapping",
+    "coverage": "selected factual results, not a complete nominees roster"
+  },
+  {
+    "id": "recovery-sxsw-100",
+    "institution": "sxsw",
+    "edition": "SXSW 2026 audience awards",
+    "categoryLabel": "Global Audience",
+    "subjects": [
+      "Mickey"
+    ],
+    "kind": "winner",
+    "occurredDate": "2026-03-20",
+    "publishedDate": "2026-03-20",
+    "datePrecision": "day",
+    "sourceId": "sxsw-audience",
+    "evidenceStatus": "official_report",
+    "internalCategoryId": null,
+    "internalSubjectIds": [],
+    "mappingStatus": "needs_repository_mapping",
+    "coverage": "selected factual results, not a complete nominees roster"
+  },
+  {
+    "id": "recovery-sxsw-101",
+    "institution": "sxsw",
+    "edition": "SXSW 2026 audience awards",
+    "categoryLabel": "24 Beats Audience",
+    "subjects": [
+      "Noah Kahan: Out of Body"
+    ],
+    "kind": "winner",
+    "occurredDate": "2026-03-20",
+    "publishedDate": "2026-03-20",
+    "datePrecision": "day",
+    "sourceId": "sxsw-audience",
+    "evidenceStatus": "official_report",
+    "internalCategoryId": null,
+    "internalSubjectIds": [],
+    "mappingStatus": "needs_repository_mapping",
+    "coverage": "selected factual results, not a complete nominees roster"
+  },
+  {
+    "id": "recovery-sxsw-102",
+    "institution": "sxsw",
+    "edition": "SXSW 2026 audience awards",
+    "categoryLabel": "Festival Favorite Audience",
+    "subjects": [
+      "Cookie Queens"
+    ],
+    "kind": "winner",
+    "occurredDate": "2026-03-20",
+    "publishedDate": "2026-03-20",
+    "datePrecision": "day",
+    "sourceId": "sxsw-audience",
+    "evidenceStatus": "official_report",
+    "internalCategoryId": null,
+    "internalSubjectIds": [],
+    "mappingStatus": "needs_repository_mapping",
+    "coverage": "selected factual results, not a complete nominees roster"
+  },
+  {
+    "id": "recovery-sxsw-103",
+    "institution": "sxsw",
+    "edition": "SXSW 2026 audience awards",
+    "categoryLabel": "Narrative Short Audience",
+    "subjects": [
+      "We Were Here"
+    ],
+    "kind": "winner",
+    "occurredDate": "2026-03-20",
+    "publishedDate": "2026-03-20",
+    "datePrecision": "day",
+    "sourceId": "sxsw-audience",
+    "evidenceStatus": "official_report",
+    "internalCategoryId": null,
+    "internalSubjectIds": [],
+    "mappingStatus": "needs_repository_mapping",
+    "coverage": "selected factual results, not a complete nominees roster"
+  },
+  {
+    "id": "recovery-sxsw-104",
+    "institution": "sxsw",
+    "edition": "SXSW 2026 audience awards",
+    "categoryLabel": "Documentary Short Audience",
+    "subjects": [
+      "I Got My Brother"
+    ],
+    "kind": "winner",
+    "occurredDate": "2026-03-20",
+    "publishedDate": "2026-03-20",
+    "datePrecision": "day",
+    "sourceId": "sxsw-audience",
+    "evidenceStatus": "official_report",
+    "internalCategoryId": null,
+    "internalSubjectIds": [],
+    "mappingStatus": "needs_repository_mapping",
+    "coverage": "selected factual results, not a complete nominees roster"
+  },
+  {
+    "id": "recovery-sxsw-105",
+    "institution": "sxsw",
+    "edition": "SXSW 2026 audience awards",
+    "categoryLabel": "Animated Short Audience",
+    "subjects": [
+      "Paper Trail"
+    ],
+    "kind": "winner",
+    "occurredDate": "2026-03-20",
+    "publishedDate": "2026-03-20",
+    "datePrecision": "day",
+    "sourceId": "sxsw-audience",
+    "evidenceStatus": "official_report",
+    "internalCategoryId": null,
+    "internalSubjectIds": [],
+    "mappingStatus": "needs_repository_mapping",
+    "coverage": "selected factual results, not a complete nominees roster"
+  },
+  {
+    "id": "recovery-sxsw-106",
+    "institution": "sxsw",
+    "edition": "SXSW 2026 audience awards",
+    "categoryLabel": "Midnight Short Audience",
+    "subjects": [
+      "The Seeing Eye Dog Who Saw Too Much"
+    ],
+    "kind": "winner",
+    "occurredDate": "2026-03-20",
+    "publishedDate": "2026-03-20",
+    "datePrecision": "day",
+    "sourceId": "sxsw-audience",
+    "evidenceStatus": "official_report",
+    "internalCategoryId": null,
+    "internalSubjectIds": [],
+    "mappingStatus": "needs_repository_mapping",
+    "coverage": "selected factual results, not a complete nominees roster"
+  },
+  {
+    "id": "recovery-sxsw-107",
+    "institution": "sxsw",
+    "edition": "SXSW 2026 audience awards",
+    "categoryLabel": "Texas Short Audience",
+    "subjects": [
+      "Stalin Boys"
+    ],
+    "kind": "winner",
+    "occurredDate": "2026-03-20",
+    "publishedDate": "2026-03-20",
+    "datePrecision": "day",
+    "sourceId": "sxsw-audience",
+    "evidenceStatus": "official_report",
+    "internalCategoryId": null,
+    "internalSubjectIds": [],
+    "mappingStatus": "needs_repository_mapping",
+    "coverage": "selected factual results, not a complete nominees roster"
+  },
+  {
+    "id": "recovery-sxsw-108",
+    "institution": "sxsw",
+    "edition": "SXSW 2026 audience awards",
+    "categoryLabel": "Music Video Audience",
+    "subjects": [
+      "OK Go: Love"
+    ],
+    "kind": "winner",
+    "occurredDate": "2026-03-20",
+    "publishedDate": "2026-03-20",
+    "datePrecision": "day",
+    "sourceId": "sxsw-audience",
+    "evidenceStatus": "official_report",
+    "internalCategoryId": null,
+    "internalSubjectIds": [],
+    "mappingStatus": "needs_repository_mapping",
+    "coverage": "selected factual results, not a complete nominees roster"
+  },
+  {
+    "id": "recovery-sxsw-109",
+    "institution": "sxsw",
+    "edition": "SXSW 2026 audience awards",
+    "categoryLabel": "TV Premiere Audience",
+    "subjects": [
+      "Monsters of God"
+    ],
+    "kind": "winner",
+    "occurredDate": "2026-03-20",
+    "publishedDate": "2026-03-20",
+    "datePrecision": "day",
+    "sourceId": "sxsw-audience",
+    "evidenceStatus": "official_report",
+    "internalCategoryId": null,
+    "internalSubjectIds": [],
+    "mappingStatus": "needs_repository_mapping",
+    "coverage": "selected factual results, not a complete nominees roster"
+  },
+  {
+    "id": "recovery-sxsw-110",
+    "institution": "sxsw",
+    "edition": "SXSW 2026 audience awards",
+    "categoryLabel": "TV Spotlight Audience",
+    "subjects": [
+      "Woodstockers"
+    ],
+    "kind": "winner",
+    "occurredDate": "2026-03-20",
+    "publishedDate": "2026-03-20",
+    "datePrecision": "day",
+    "sourceId": "sxsw-audience",
+    "evidenceStatus": "official_report",
+    "internalCategoryId": null,
+    "internalSubjectIds": [],
+    "mappingStatus": "needs_repository_mapping",
+    "coverage": "selected factual results, not a complete nominees roster"
+  },
+  {
+    "id": "recovery-sxsw-111",
+    "institution": "sxsw",
+    "edition": "SXSW 2026 audience awards",
+    "categoryLabel": "TV Pilot Audience",
+    "subjects": [
+      "Birth Is for P*ssies"
+    ],
+    "kind": "winner",
+    "occurredDate": "2026-03-20",
+    "publishedDate": "2026-03-20",
+    "datePrecision": "day",
+    "sourceId": "sxsw-audience",
+    "evidenceStatus": "official_report",
+    "internalCategoryId": null,
+    "internalSubjectIds": [],
+    "mappingStatus": "needs_repository_mapping",
+    "coverage": "selected factual results, not a complete nominees roster"
+  },
+  {
+    "id": "recovery-sxsw-112",
+    "institution": "sxsw",
+    "edition": "SXSW 2026 audience awards",
+    "categoryLabel": "XR Competition Audience",
+    "subjects": [
+      "Fabula Rasa: Dead Man Talking"
+    ],
+    "kind": "winner",
+    "occurredDate": "2026-03-20",
+    "publishedDate": "2026-03-20",
+    "datePrecision": "day",
+    "sourceId": "sxsw-audience",
+    "evidenceStatus": "official_report",
+    "internalCategoryId": null,
+    "internalSubjectIds": [],
+    "mappingStatus": "needs_repository_mapping",
+    "coverage": "selected factual results, not a complete nominees roster"
+  },
+  {
+    "id": "recovery-sxsw-113",
+    "institution": "sxsw",
+    "edition": "SXSW 2026 audience awards",
+    "categoryLabel": "XR Spotlight Audience",
+    "subjects": [
+      "The Clouds Are Two Thousand Meters Up"
+    ],
+    "kind": "winner",
+    "occurredDate": "2026-03-20",
+    "publishedDate": "2026-03-20",
+    "datePrecision": "day",
+    "sourceId": "sxsw-audience",
+    "evidenceStatus": "official_report",
+    "internalCategoryId": null,
+    "internalSubjectIds": [],
+    "mappingStatus": "needs_repository_mapping",
+    "coverage": "selected factual results, not a complete nominees roster"
+  },
+  {
+    "id": "recovery-idfa-114",
+    "institution": "idfa",
+    "edition": "IDFA 2026",
+    "categoryLabel": "International Best Film",
+    "subjects": [
+      "The Year of the Ghost"
+    ],
+    "kind": "winner",
+    "occurredDate": "2026-11-19",
+    "publishedDate": "2026-11-19",
+    "datePrecision": "day",
+    "sourceId": "idfa-results",
+    "evidenceStatus": "official_indexed_report",
+    "internalCategoryId": null,
+    "internalSubjectIds": [],
+    "mappingStatus": "needs_repository_mapping",
+    "coverage": "selected factual results, not a complete nominees roster"
+  },
+  {
+    "id": "recovery-idfa-115",
+    "institution": "idfa",
+    "edition": "IDFA 2026",
+    "categoryLabel": "International Directing",
+    "subjects": [
+      "Lonan Tché"
+    ],
+    "kind": "winner",
+    "occurredDate": "2026-11-19",
+    "publishedDate": "2026-11-19",
+    "datePrecision": "day",
+    "sourceId": "idfa-results",
+    "evidenceStatus": "official_indexed_report",
+    "internalCategoryId": null,
+    "internalSubjectIds": [],
+    "mappingStatus": "needs_repository_mapping",
+    "coverage": "selected factual results, not a complete nominees roster"
+  },
+  {
+    "id": "recovery-idfa-116",
+    "institution": "idfa",
+    "edition": "IDFA 2026",
+    "categoryLabel": "International Editing",
+    "subjects": [
+      "The Year of the Ghost"
+    ],
+    "kind": "winner",
+    "occurredDate": "2026-11-19",
+    "publishedDate": "2026-11-19",
+    "datePrecision": "day",
+    "sourceId": "idfa-results",
+    "evidenceStatus": "official_indexed_report",
+    "internalCategoryId": null,
+    "internalSubjectIds": [],
+    "mappingStatus": "needs_repository_mapping",
+    "coverage": "selected factual results, not a complete nominees roster"
+  },
+  {
+    "id": "recovery-idfa-117",
+    "institution": "idfa",
+    "edition": "IDFA 2026",
+    "categoryLabel": "International Cinematography",
+    "subjects": [
+      "Bardi"
+    ],
+    "kind": "winner",
+    "occurredDate": "2026-11-19",
+    "publishedDate": "2026-11-19",
+    "datePrecision": "day",
+    "sourceId": "idfa-results",
+    "evidenceStatus": "official_indexed_report",
+    "internalCategoryId": null,
+    "internalSubjectIds": [],
+    "mappingStatus": "needs_repository_mapping",
+    "coverage": "selected factual results, not a complete nominees roster"
+  },
+  {
+    "id": "recovery-idfa-118",
+    "institution": "idfa",
+    "edition": "IDFA 2026",
+    "categoryLabel": "International Special Mention",
+    "subjects": [
+      "Hazara Town"
+    ],
+    "kind": "winner",
+    "occurredDate": "2026-11-19",
+    "publishedDate": "2026-11-19",
+    "datePrecision": "day",
+    "sourceId": "idfa-results",
+    "evidenceStatus": "official_indexed_report",
+    "internalCategoryId": null,
+    "internalSubjectIds": [],
+    "mappingStatus": "needs_repository_mapping",
+    "coverage": "selected factual results, not a complete nominees roster"
+  },
+  {
+    "id": "recovery-idfa-119",
+    "institution": "idfa",
+    "edition": "IDFA 2026",
+    "categoryLabel": "Envision Best Film",
+    "subjects": [
+      "Memories of Lightning"
+    ],
+    "kind": "winner",
+    "occurredDate": "2026-11-19",
+    "publishedDate": "2026-11-19",
+    "datePrecision": "day",
+    "sourceId": "idfa-results",
+    "evidenceStatus": "official_indexed_report",
+    "internalCategoryId": null,
+    "internalSubjectIds": [],
+    "mappingStatus": "needs_repository_mapping",
+    "coverage": "selected factual results, not a complete nominees roster"
+  },
+  {
+    "id": "recovery-idfa-120",
+    "institution": "idfa",
+    "edition": "IDFA 2026",
+    "categoryLabel": "Envision Special Jury",
+    "subjects": [
+      "Memories"
+    ],
+    "kind": "winner",
+    "occurredDate": "2026-11-19",
+    "publishedDate": "2026-11-19",
+    "datePrecision": "day",
+    "sourceId": "idfa-results",
+    "evidenceStatus": "official_indexed_report",
+    "internalCategoryId": null,
+    "internalSubjectIds": [],
+    "mappingStatus": "needs_repository_mapping",
+    "coverage": "selected factual results, not a complete nominees roster"
+  },
+  {
+    "id": "recovery-idfa-121",
+    "institution": "idfa",
+    "edition": "IDFA 2026",
+    "categoryLabel": "Envision Directing",
+    "subjects": [
+      "Black Box Is Orange"
+    ],
+    "kind": "winner",
+    "occurredDate": "2026-11-19",
+    "publishedDate": "2026-11-19",
+    "datePrecision": "day",
+    "sourceId": "idfa-results",
+    "evidenceStatus": "official_indexed_report",
+    "internalCategoryId": null,
+    "internalSubjectIds": [],
+    "mappingStatus": "needs_repository_mapping",
+    "coverage": "selected factual results, not a complete nominees roster"
+  },
+  {
+    "id": "recovery-idfa-122",
+    "institution": "idfa",
+    "edition": "IDFA 2026",
+    "categoryLabel": "Envision Artistic Contribution",
+    "subjects": [
+      "Memories of Lightning"
+    ],
+    "kind": "winner",
+    "occurredDate": "2026-11-19",
+    "publishedDate": "2026-11-19",
+    "datePrecision": "day",
+    "sourceId": "idfa-results",
+    "evidenceStatus": "official_indexed_report",
+    "internalCategoryId": null,
+    "internalSubjectIds": [],
+    "mappingStatus": "needs_repository_mapping",
+    "coverage": "selected factual results, not a complete nominees roster"
+  },
+  {
+    "id": "recovery-idfa-123",
+    "institution": "idfa",
+    "edition": "IDFA 2026",
+    "categoryLabel": "First Feature",
+    "subjects": [
+      "Hazara Town"
+    ],
+    "kind": "winner",
+    "occurredDate": "2026-11-19",
+    "publishedDate": "2026-11-19",
+    "datePrecision": "day",
+    "sourceId": "idfa-results",
+    "evidenceStatus": "official_indexed_report",
+    "internalCategoryId": null,
+    "internalSubjectIds": [],
+    "mappingStatus": "needs_repository_mapping",
+    "coverage": "selected factual results, not a complete nominees roster"
+  },
+  {
+    "id": "recovery-idfa-124",
+    "institution": "idfa",
+    "edition": "IDFA 2026",
+    "categoryLabel": "First Feature Special Mention",
+    "subjects": [
+      "She Was Not Alone"
+    ],
+    "kind": "winner",
+    "occurredDate": "2026-11-19",
+    "publishedDate": "2026-11-19",
+    "datePrecision": "day",
+    "sourceId": "idfa-results",
+    "evidenceStatus": "official_indexed_report",
+    "internalCategoryId": null,
+    "internalSubjectIds": [],
+    "mappingStatus": "needs_repository_mapping",
+    "coverage": "selected factual results, not a complete nominees roster"
+  },
+  {
+    "id": "recovery-idfa-125",
+    "institution": "idfa",
+    "edition": "IDFA 2026",
+    "categoryLabel": "Dutch Film",
+    "subjects": [
+      "The Year of the Ghost"
+    ],
+    "kind": "winner",
+    "occurredDate": "2026-11-19",
+    "publishedDate": "2026-11-19",
+    "datePrecision": "day",
+    "sourceId": "idfa-results",
+    "evidenceStatus": "official_indexed_report",
+    "internalCategoryId": null,
+    "internalSubjectIds": [],
+    "mappingStatus": "needs_repository_mapping",
+    "coverage": "selected factual results, not a complete nominees roster"
+  },
+  {
+    "id": "recovery-idfa-126",
+    "institution": "idfa",
+    "edition": "IDFA 2026",
+    "categoryLabel": "Dutch Film Special Mention",
+    "subjects": [
+      "A Modern Roma Fairytale"
+    ],
+    "kind": "winner",
+    "occurredDate": "2026-11-19",
+    "publishedDate": "2026-11-19",
+    "datePrecision": "day",
+    "sourceId": "idfa-results",
+    "evidenceStatus": "official_indexed_report",
+    "internalCategoryId": null,
+    "internalSubjectIds": [],
+    "mappingStatus": "needs_repository_mapping",
+    "coverage": "selected factual results, not a complete nominees roster"
+  },
+  {
+    "id": "recovery-idfa-127",
+    "institution": "idfa",
+    "edition": "IDFA 2026",
+    "categoryLabel": "ReFrame",
+    "subjects": [
+      "The Clearing"
+    ],
+    "kind": "winner",
+    "occurredDate": "2026-11-19",
+    "publishedDate": "2026-11-19",
+    "datePrecision": "day",
+    "sourceId": "idfa-results",
+    "evidenceStatus": "official_indexed_report",
+    "internalCategoryId": null,
+    "internalSubjectIds": [],
+    "mappingStatus": "needs_repository_mapping",
+    "coverage": "selected factual results, not a complete nominees roster"
+  },
+  {
+    "id": "recovery-idfa-128",
+    "institution": "idfa",
+    "edition": "IDFA 2026",
+    "categoryLabel": "ReFrame Special Mention",
+    "subjects": [
+      "Revolutionaries Never Die"
+    ],
+    "kind": "winner",
+    "occurredDate": "2026-11-19",
+    "publishedDate": "2026-11-19",
+    "datePrecision": "day",
+    "sourceId": "idfa-results",
+    "evidenceStatus": "official_indexed_report",
+    "internalCategoryId": null,
+    "internalSubjectIds": [],
+    "mappingStatus": "needs_repository_mapping",
+    "coverage": "selected factual results, not a complete nominees roster"
+  },
+  {
+    "id": "recovery-idfa-129",
+    "institution": "idfa",
+    "edition": "IDFA 2026",
+    "categoryLabel": "FIPRESCI",
+    "subjects": [
+      "Hazara Town"
+    ],
+    "kind": "winner",
+    "occurredDate": "2026-11-19",
+    "publishedDate": "2026-11-19",
+    "datePrecision": "day",
+    "sourceId": "idfa-results",
+    "evidenceStatus": "official_indexed_report",
+    "internalCategoryId": null,
+    "internalSubjectIds": [],
+    "mappingStatus": "needs_repository_mapping",
+    "coverage": "selected factual results, not a complete nominees roster"
+  },
+  {
+    "id": "recovery-locarno-130",
+    "institution": "locarno",
+    "edition": "Locarno79",
+    "categoryLabel": "International Golden Leopard",
+    "subjects": [
+      "You Don't Belong Here"
+    ],
+    "kind": "winner",
+    "occurredDate": "2026-08-15",
+    "publishedDate": "2026-08-15",
+    "datePrecision": "day",
+    "sourceId": "locarno-secondary",
+    "evidenceStatus": "secondary_report",
+    "internalCategoryId": null,
+    "internalSubjectIds": [],
+    "mappingStatus": "needs_repository_mapping",
+    "coverage": "selected factual results, not a complete nominees roster"
+  },
+  {
+    "id": "recovery-locarno-131",
+    "institution": "locarno",
+    "edition": "Locarno79",
+    "categoryLabel": "International Special Jury",
+    "subjects": [
+      "Riverbank"
+    ],
+    "kind": "winner",
+    "occurredDate": "2026-08-15",
+    "publishedDate": "2026-08-15",
+    "datePrecision": "day",
+    "sourceId": "locarno-secondary",
+    "evidenceStatus": "secondary_report",
+    "internalCategoryId": null,
+    "internalSubjectIds": [],
+    "mappingStatus": "needs_repository_mapping",
+    "coverage": "selected factual results, not a complete nominees roster"
+  },
+  {
+    "id": "recovery-locarno-132",
+    "institution": "locarno",
+    "edition": "Locarno79",
+    "categoryLabel": "International Director",
+    "subjects": [
+      "Hong Sangsoo"
+    ],
+    "kind": "winner",
+    "occurredDate": "2026-08-15",
+    "publishedDate": "2026-08-15",
+    "datePrecision": "day",
+    "sourceId": "locarno-secondary",
+    "evidenceStatus": "secondary_report",
+    "internalCategoryId": null,
+    "internalSubjectIds": [],
+    "mappingStatus": "needs_repository_mapping",
+    "coverage": "selected factual results, not a complete nominees roster"
+  },
+  {
+    "id": "recovery-locarno-133",
+    "institution": "locarno",
+    "edition": "Locarno79",
+    "categoryLabel": "International Performance",
+    "subjects": [
+      "Kim Minhee"
+    ],
+    "kind": "winner",
+    "occurredDate": "2026-08-15",
+    "publishedDate": "2026-08-15",
+    "datePrecision": "day",
+    "sourceId": "locarno-secondary",
+    "evidenceStatus": "secondary_report",
+    "internalCategoryId": null,
+    "internalSubjectIds": [],
+    "mappingStatus": "needs_repository_mapping",
+    "coverage": "selected factual results, not a complete nominees roster"
+  },
+  {
+    "id": "recovery-locarno-134",
+    "institution": "locarno",
+    "edition": "Locarno79",
+    "categoryLabel": "International Performance",
+    "subjects": [
+      "Monica Bellucci"
+    ],
+    "kind": "winner",
+    "occurredDate": "2026-08-15",
+    "publishedDate": "2026-08-15",
+    "datePrecision": "day",
+    "sourceId": "locarno-secondary",
+    "evidenceStatus": "secondary_report",
+    "internalCategoryId": null,
+    "internalSubjectIds": [],
+    "mappingStatus": "needs_repository_mapping",
+    "coverage": "selected factual results, not a complete nominees roster"
+  },
+  {
+    "id": "recovery-locarno-135",
+    "institution": "locarno",
+    "edition": "Locarno79",
+    "categoryLabel": "Cineasti Golden Leopard",
+    "subjects": [
+      "La ilusión de un verano sin fin"
+    ],
+    "kind": "winner",
+    "occurredDate": "2026-08-15",
+    "publishedDate": "2026-08-15",
+    "datePrecision": "day",
+    "sourceId": "locarno-secondary",
+    "evidenceStatus": "secondary_report",
+    "internalCategoryId": null,
+    "internalSubjectIds": [],
+    "mappingStatus": "needs_repository_mapping",
+    "coverage": "selected factual results, not a complete nominees roster"
+  },
+  {
+    "id": "recovery-locarno-136",
+    "institution": "locarno",
+    "edition": "Locarno79",
+    "categoryLabel": "Cineasti Emerging Director",
+    "subjects": [
+      "Beatrice Gibson"
+    ],
+    "kind": "winner",
+    "occurredDate": "2026-08-15",
+    "publishedDate": "2026-08-15",
+    "datePrecision": "day",
+    "sourceId": "locarno-secondary",
+    "evidenceStatus": "secondary_report",
+    "internalCategoryId": null,
+    "internalSubjectIds": [],
+    "mappingStatus": "needs_repository_mapping",
+    "coverage": "selected factual results, not a complete nominees roster"
+  },
+  {
+    "id": "recovery-locarno-137",
+    "institution": "locarno",
+    "edition": "Locarno79",
+    "categoryLabel": "Cineasti Special Jury",
+    "subjects": [
+      "Revolutionaries Never Die"
+    ],
+    "kind": "winner",
+    "occurredDate": "2026-08-15",
+    "publishedDate": "2026-08-15",
+    "datePrecision": "day",
+    "sourceId": "locarno-secondary",
+    "evidenceStatus": "secondary_report",
+    "internalCategoryId": null,
+    "internalSubjectIds": [],
+    "mappingStatus": "needs_repository_mapping",
+    "coverage": "selected factual results, not a complete nominees roster"
+  },
+  {
+    "id": "recovery-locarno-138",
+    "institution": "locarno",
+    "edition": "Locarno79",
+    "categoryLabel": "Cineasti Performance",
+    "subjects": [
+      "Idrissu Tontie Jr."
+    ],
+    "kind": "winner",
+    "occurredDate": "2026-08-15",
+    "publishedDate": "2026-08-15",
+    "datePrecision": "day",
+    "sourceId": "locarno-secondary",
+    "evidenceStatus": "secondary_report",
+    "internalCategoryId": null,
+    "internalSubjectIds": [],
+    "mappingStatus": "needs_repository_mapping",
+    "coverage": "selected factual results, not a complete nominees roster"
+  },
+  {
+    "id": "recovery-locarno-139",
+    "institution": "locarno",
+    "edition": "Locarno79",
+    "categoryLabel": "Cineasti Performance",
+    "subjects": [
+      "Manal Issa"
+    ],
+    "kind": "winner",
+    "occurredDate": "2026-08-15",
+    "publishedDate": "2026-08-15",
+    "datePrecision": "day",
+    "sourceId": "locarno-secondary",
+    "evidenceStatus": "secondary_report",
+    "internalCategoryId": null,
+    "internalSubjectIds": [],
+    "mappingStatus": "needs_repository_mapping",
+    "coverage": "selected factual results, not a complete nominees roster"
+  },
+  {
+    "id": "recovery-locarno-140",
+    "institution": "locarno",
+    "edition": "Locarno79",
+    "categoryLabel": "Auteur Short",
+    "subjects": [
+      "The Bovine Comedy"
+    ],
+    "kind": "winner",
+    "occurredDate": "2026-08-15",
+    "publishedDate": "2026-08-15",
+    "datePrecision": "day",
+    "sourceId": "locarno-secondary",
+    "evidenceStatus": "secondary_report",
+    "internalCategoryId": null,
+    "internalSubjectIds": [],
+    "mappingStatus": "needs_repository_mapping",
+    "coverage": "selected factual results, not a complete nominees roster"
+  },
+  {
+    "id": "recovery-locarno-141",
+    "institution": "locarno",
+    "edition": "Locarno79",
+    "categoryLabel": "International Short Golden Leopard",
+    "subjects": [
+      "Melk"
+    ],
+    "kind": "winner",
+    "occurredDate": "2026-08-15",
+    "publishedDate": "2026-08-15",
+    "datePrecision": "day",
+    "sourceId": "locarno-secondary",
+    "evidenceStatus": "secondary_report",
+    "internalCategoryId": null,
+    "internalSubjectIds": [],
+    "mappingStatus": "needs_repository_mapping",
+    "coverage": "selected factual results, not a complete nominees roster"
+  },
+  {
+    "id": "recovery-locarno-142",
+    "institution": "locarno",
+    "edition": "Locarno79",
+    "categoryLabel": "International Short Silver Leopard",
+    "subjects": [
+      "Khufu"
+    ],
+    "kind": "winner",
+    "occurredDate": "2026-08-15",
+    "publishedDate": "2026-08-15",
+    "datePrecision": "day",
+    "sourceId": "locarno-secondary",
+    "evidenceStatus": "secondary_report",
+    "internalCategoryId": null,
+    "internalSubjectIds": [],
+    "mappingStatus": "needs_repository_mapping",
+    "coverage": "selected factual results, not a complete nominees roster"
+  },
+  {
+    "id": "recovery-locarno-143",
+    "institution": "locarno",
+    "edition": "Locarno79",
+    "categoryLabel": "International Short Direction",
+    "subjects": [
+      "Mutrion"
+    ],
+    "kind": "winner",
+    "occurredDate": "2026-08-15",
+    "publishedDate": "2026-08-15",
+    "datePrecision": "day",
+    "sourceId": "locarno-secondary",
+    "evidenceStatus": "secondary_report",
+    "internalCategoryId": null,
+    "internalSubjectIds": [],
+    "mappingStatus": "needs_repository_mapping",
+    "coverage": "selected factual results, not a complete nominees roster"
+  },
+  {
+    "id": "recovery-locarno-144",
+    "institution": "locarno",
+    "edition": "Locarno79",
+    "categoryLabel": "EFA Short Candidate",
+    "subjects": [
+      "Melk"
+    ],
+    "kind": "winner",
+    "occurredDate": "2026-08-15",
+    "publishedDate": "2026-08-15",
+    "datePrecision": "day",
+    "sourceId": "locarno-secondary",
+    "evidenceStatus": "secondary_report",
+    "internalCategoryId": null,
+    "internalSubjectIds": [],
+    "mappingStatus": "needs_repository_mapping",
+    "coverage": "selected factual results, not a complete nominees roster"
+  },
+  {
+    "id": "recovery-locarno-145",
+    "institution": "locarno",
+    "edition": "Locarno79",
+    "categoryLabel": "Swiss Short Golden Leopard",
+    "subjects": [
+      "Typhoon Mambo"
+    ],
+    "kind": "winner",
+    "occurredDate": "2026-08-15",
+    "publishedDate": "2026-08-15",
+    "datePrecision": "day",
+    "sourceId": "locarno-secondary",
+    "evidenceStatus": "secondary_report",
+    "internalCategoryId": null,
+    "internalSubjectIds": [],
+    "mappingStatus": "needs_repository_mapping",
+    "coverage": "selected factual results, not a complete nominees roster"
+  },
+  {
+    "id": "recovery-locarno-146",
+    "institution": "locarno",
+    "edition": "Locarno79",
+    "categoryLabel": "Swiss Short Silver Leopard",
+    "subjects": [
+      "Alles Gute"
+    ],
+    "kind": "winner",
+    "occurredDate": "2026-08-15",
+    "publishedDate": "2026-08-15",
+    "datePrecision": "day",
+    "sourceId": "locarno-secondary",
+    "evidenceStatus": "secondary_report",
+    "internalCategoryId": null,
+    "internalSubjectIds": [],
+    "mappingStatus": "needs_repository_mapping",
+    "coverage": "selected factual results, not a complete nominees roster"
+  },
+  {
+    "id": "recovery-locarno-147",
+    "institution": "locarno",
+    "edition": "Locarno79",
+    "categoryLabel": "Swiss Newcomer",
+    "subjects": [
+      "Respirer une fois sur trois"
+    ],
+    "kind": "winner",
+    "occurredDate": "2026-08-15",
+    "publishedDate": "2026-08-15",
+    "datePrecision": "day",
+    "sourceId": "locarno-secondary",
+    "evidenceStatus": "secondary_report",
+    "internalCategoryId": null,
+    "internalSubjectIds": [],
+    "mappingStatus": "needs_repository_mapping",
+    "coverage": "selected factual results, not a complete nominees roster"
+  },
+  {
+    "id": "recovery-locarno-148",
+    "institution": "locarno",
+    "edition": "Locarno79",
+    "categoryLabel": "Kids",
+    "subjects": [
+      "Paradeisa"
+    ],
+    "kind": "winner",
+    "occurredDate": "2026-08-15",
+    "publishedDate": "2026-08-15",
+    "datePrecision": "day",
+    "sourceId": "locarno-secondary",
+    "evidenceStatus": "secondary_report",
+    "internalCategoryId": null,
+    "internalSubjectIds": [],
+    "mappingStatus": "needs_repository_mapping",
+    "coverage": "selected factual results, not a complete nominees roster"
+  },
+  {
+    "id": "recovery-locarno-149",
+    "institution": "locarno",
+    "edition": "Locarno79",
+    "categoryLabel": "First Feature",
+    "subjects": [
+      "La ilusión de un verano sin fin"
+    ],
+    "kind": "winner",
+    "occurredDate": "2026-08-15",
+    "publishedDate": "2026-08-15",
+    "datePrecision": "day",
+    "sourceId": "locarno-secondary",
+    "evidenceStatus": "secondary_report",
+    "internalCategoryId": null,
+    "internalSubjectIds": [],
+    "mappingStatus": "needs_repository_mapping",
+    "coverage": "selected factual results, not a complete nominees roster"
+  },
+  {
+    "id": "recovery-locarno-150",
+    "institution": "locarno",
+    "edition": "Locarno79",
+    "categoryLabel": "Change",
+    "subjects": [
+      "Ego Reach We All"
+    ],
+    "kind": "winner",
+    "occurredDate": "2026-08-15",
+    "publishedDate": "2026-08-15",
+    "datePrecision": "day",
+    "sourceId": "locarno-secondary",
+    "evidenceStatus": "secondary_report",
+    "internalCategoryId": null,
+    "internalSubjectIds": [],
+    "mappingStatus": "needs_repository_mapping",
+    "coverage": "selected factual results, not a complete nominees roster"
+  },
+  {
+    "id": "recovery-tiff-151",
+    "institution": "tiff",
+    "edition": "TIFF 2026",
+    "categoryLabel": "People's Choice",
+    "subjects": [
+      "La Bola Negra"
+    ],
+    "kind": "winner",
+    "occurredDate": "2026-09-20",
+    "publishedDate": "2026-09-20",
+    "datePrecision": "day",
+    "sourceId": "tiff-results",
+    "evidenceStatus": "secondary_report",
+    "internalCategoryId": null,
+    "internalSubjectIds": [],
+    "mappingStatus": "needs_repository_mapping",
+    "coverage": "selected factual results, not a complete nominees roster"
+  },
+  {
+    "id": "recovery-tiff-152",
+    "institution": "tiff",
+    "edition": "TIFF 2026",
+    "categoryLabel": "International People's Choice",
+    "subjects": [
+      "Elsinore"
+    ],
+    "kind": "winner",
+    "occurredDate": "2026-09-20",
+    "publishedDate": "2026-09-20",
+    "datePrecision": "day",
+    "sourceId": "tiff-results",
+    "evidenceStatus": "secondary_report",
+    "internalCategoryId": null,
+    "internalSubjectIds": [],
+    "mappingStatus": "needs_repository_mapping",
+    "coverage": "selected factual results, not a complete nominees roster"
+  },
+  {
+    "id": "recovery-tiff-153",
+    "institution": "tiff",
+    "edition": "TIFF 2026",
+    "categoryLabel": "Documentary People's Choice",
+    "subjects": [
+      "Darlene Love: I Know Where I've Been"
+    ],
+    "kind": "winner",
+    "occurredDate": "2026-09-20",
+    "publishedDate": "2026-09-20",
+    "datePrecision": "day",
+    "sourceId": "tiff-results",
+    "evidenceStatus": "secondary_report",
+    "internalCategoryId": null,
+    "internalSubjectIds": [],
+    "mappingStatus": "needs_repository_mapping",
+    "coverage": "selected factual results, not a complete nominees roster"
+  },
+  {
+    "id": "recovery-tiff-154",
+    "institution": "tiff",
+    "edition": "TIFF 2026",
+    "categoryLabel": "Midnight Madness People's Choice",
+    "subjects": [
+      "Ladies and Gentlemen, Brian Mulroney"
+    ],
+    "kind": "winner",
+    "occurredDate": "2026-09-20",
+    "publishedDate": "2026-09-20",
+    "datePrecision": "day",
+    "sourceId": "tiff-results",
+    "evidenceStatus": "secondary_report",
+    "internalCategoryId": null,
+    "internalSubjectIds": [],
+    "mappingStatus": "needs_repository_mapping",
+    "coverage": "selected factual results, not a complete nominees roster"
+  },
+  {
+    "id": "recovery-tiff-155",
+    "institution": "tiff",
+    "edition": "TIFF 2026",
+    "categoryLabel": "Platform",
+    "subjects": [
+      "Angh"
+    ],
+    "kind": "winner",
+    "occurredDate": "2026-09-20",
+    "publishedDate": "2026-09-20",
+    "datePrecision": "day",
+    "sourceId": "tiff-results",
+    "evidenceStatus": "secondary_report",
+    "internalCategoryId": null,
+    "internalSubjectIds": [],
+    "mappingStatus": "needs_repository_mapping",
+    "coverage": "selected factual results, not a complete nominees roster"
+  },
+  {
+    "id": "recovery-european-film-awards-156",
+    "institution": "european-film-awards",
+    "edition": "38th European Film Awards",
+    "categoryLabel": "European Film",
+    "subjects": [
+      "Sentimental Value"
+    ],
+    "kind": "winner",
+    "occurredDate": "2026-01-17",
+    "publishedDate": "2026-01-17",
+    "datePrecision": "day",
+    "sourceId": "efa-2026",
+    "evidenceStatus": "official_report",
+    "internalCategoryId": null,
+    "internalSubjectIds": [],
+    "mappingStatus": "needs_repository_mapping",
+    "coverage": "selected factual results, not a complete nominees roster"
+  },
+  {
+    "id": "recovery-european-film-awards-157",
+    "institution": "european-film-awards",
+    "edition": "38th European Film Awards",
+    "categoryLabel": "European Animated Feature Film",
+    "subjects": [
+      "Arco"
+    ],
+    "kind": "winner",
+    "occurredDate": "2026-01-17",
+    "publishedDate": "2026-01-17",
+    "datePrecision": "day",
+    "sourceId": "efa-2026",
+    "evidenceStatus": "official_report",
+    "internalCategoryId": null,
+    "internalSubjectIds": [],
+    "mappingStatus": "needs_repository_mapping",
+    "coverage": "selected factual results, not a complete nominees roster"
+  },
+  {
+    "id": "recovery-european-film-awards-158",
+    "institution": "european-film-awards",
+    "edition": "38th European Film Awards",
+    "categoryLabel": "European Documentary",
+    "subjects": [
+      "Fiume o morte!"
+    ],
+    "kind": "winner",
+    "occurredDate": "2026-01-17",
+    "publishedDate": "2026-01-17",
+    "datePrecision": "day",
+    "sourceId": "efa-2026",
+    "evidenceStatus": "official_report",
+    "internalCategoryId": null,
+    "internalSubjectIds": [],
+    "mappingStatus": "needs_repository_mapping",
+    "coverage": "selected factual results, not a complete nominees roster"
+  },
+  {
+    "id": "recovery-european-film-awards-159",
+    "institution": "european-film-awards",
+    "edition": "38th European Film Awards",
+    "categoryLabel": "European Director",
+    "subjects": [
+      "Joachim Trier"
+    ],
+    "kind": "winner",
+    "occurredDate": "2026-01-17",
+    "publishedDate": "2026-01-17",
+    "datePrecision": "day",
+    "sourceId": "efa-2026",
+    "evidenceStatus": "official_report",
+    "internalCategoryId": null,
+    "internalSubjectIds": [],
+    "mappingStatus": "needs_repository_mapping",
+    "coverage": "selected factual results, not a complete nominees roster"
+  },
+  {
+    "id": "recovery-european-film-awards-160",
+    "institution": "european-film-awards",
+    "edition": "38th European Film Awards",
+    "categoryLabel": "European Actress",
+    "subjects": [
+      "Renate Reinsve"
+    ],
+    "kind": "winner",
+    "occurredDate": "2026-01-17",
+    "publishedDate": "2026-01-17",
+    "datePrecision": "day",
+    "sourceId": "efa-2026",
+    "evidenceStatus": "official_report",
+    "internalCategoryId": null,
+    "internalSubjectIds": [],
+    "mappingStatus": "needs_repository_mapping",
+    "coverage": "selected factual results, not a complete nominees roster"
+  },
+  {
+    "id": "recovery-european-film-awards-161",
+    "institution": "european-film-awards",
+    "edition": "38th European Film Awards",
+    "categoryLabel": "European Actor",
+    "subjects": [
+      "Stellan Skarsgård"
+    ],
+    "kind": "winner",
+    "occurredDate": "2026-01-17",
+    "publishedDate": "2026-01-17",
+    "datePrecision": "day",
+    "sourceId": "efa-2026",
+    "evidenceStatus": "official_report",
+    "internalCategoryId": null,
+    "internalSubjectIds": [],
+    "mappingStatus": "needs_repository_mapping",
+    "coverage": "selected factual results, not a complete nominees roster"
+  },
+  {
+    "id": "recovery-european-film-awards-162",
+    "institution": "european-film-awards",
+    "edition": "38th European Film Awards",
+    "categoryLabel": "European Screenwriter",
+    "subjects": [
+      "Eskil Vogt",
+      "Joachim Trier"
+    ],
+    "kind": "winner",
+    "occurredDate": "2026-01-17",
+    "publishedDate": "2026-01-17",
+    "datePrecision": "day",
+    "sourceId": "efa-2026",
+    "evidenceStatus": "official_report",
+    "internalCategoryId": null,
+    "internalSubjectIds": [],
+    "mappingStatus": "needs_repository_mapping",
+    "coverage": "selected factual results, not a complete nominees roster"
+  },
+  {
+    "id": "recovery-blue-dragon-163",
+    "institution": "blue-dragon",
+    "edition": "47th Blue Dragon Film Awards",
+    "categoryLabel": "Best Picture",
+    "subjects": [
+      "Colony"
+    ],
+    "kind": "nomination",
+    "occurredDate": null,
+    "publishedDate": "2026-10-28",
+    "datePrecision": "day",
+    "sourceId": "blue-dragon-noms",
+    "evidenceStatus": "secondary_report",
+    "internalCategoryId": null,
+    "internalSubjectIds": [],
+    "mappingStatus": "needs_repository_mapping",
+    "coverage": "selected factual results, not a complete nominees roster"
+  },
+  {
+    "id": "recovery-blue-dragon-164",
+    "institution": "blue-dragon",
+    "edition": "47th Blue Dragon Film Awards",
+    "categoryLabel": "Best Picture",
+    "subjects": [
+      "World of Love"
+    ],
+    "kind": "nomination",
+    "occurredDate": null,
+    "publishedDate": "2026-10-28",
+    "datePrecision": "day",
+    "sourceId": "blue-dragon-noms",
+    "evidenceStatus": "secondary_report",
+    "internalCategoryId": null,
+    "internalSubjectIds": [],
+    "mappingStatus": "needs_repository_mapping",
+    "coverage": "selected factual results, not a complete nominees roster"
+  },
+  {
+    "id": "recovery-blue-dragon-165",
+    "institution": "blue-dragon",
+    "edition": "47th Blue Dragon Film Awards",
+    "categoryLabel": "Best Picture",
+    "subjects": [
+      "Assassins"
+    ],
+    "kind": "nomination",
+    "occurredDate": null,
+    "publishedDate": "2026-10-28",
+    "datePrecision": "day",
+    "sourceId": "blue-dragon-noms",
+    "evidenceStatus": "secondary_report",
+    "internalCategoryId": null,
+    "internalSubjectIds": [],
+    "mappingStatus": "needs_repository_mapping",
+    "coverage": "selected factual results, not a complete nominees roster"
+  },
+  {
+    "id": "recovery-blue-dragon-166",
+    "institution": "blue-dragon",
+    "edition": "47th Blue Dragon Film Awards",
+    "categoryLabel": "Best Picture",
+    "subjects": [
+      "The King's Warden"
+    ],
+    "kind": "nomination",
+    "occurredDate": null,
+    "publishedDate": "2026-10-28",
+    "datePrecision": "day",
+    "sourceId": "blue-dragon-noms",
+    "evidenceStatus": "secondary_report",
+    "internalCategoryId": null,
+    "internalSubjectIds": [],
+    "mappingStatus": "needs_repository_mapping",
+    "coverage": "selected factual results, not a complete nominees roster"
+  },
+  {
+    "id": "recovery-blue-dragon-167",
+    "institution": "blue-dragon",
+    "edition": "47th Blue Dragon Film Awards",
+    "categoryLabel": "Best Picture",
+    "subjects": [
+      "HOPE"
+    ],
+    "kind": "nomination",
+    "occurredDate": null,
+    "publishedDate": "2026-10-28",
+    "datePrecision": "day",
+    "sourceId": "blue-dragon-noms",
+    "evidenceStatus": "secondary_report",
+    "internalCategoryId": null,
+    "internalSubjectIds": [],
+    "mappingStatus": "needs_repository_mapping",
+    "coverage": "selected factual results, not a complete nominees roster"
+  }
+]

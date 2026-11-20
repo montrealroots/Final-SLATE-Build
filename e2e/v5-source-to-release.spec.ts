@@ -3,14 +3,14 @@
 // the film cast, shot and delivered, and released through the player's own storefront on a Release Plan. The world seed
 // is pinned (a labelled fixture); the work's story is its Wikipedia article's, credited.
 import { expect, test, type Page } from './test';
-import { adaptWork, advance, castRoles, nav, pinSeed, quickLife, readSavedState, runToDelivery, saveAndApprove, section, staffEveryDepartment } from './helpers';
+import { adaptWork, advance, castRoles, nav, onlyOn, pinSeed, quickLife, readSavedState, runToDelivery, saveAndApprove, section, staffEveryDepartment } from './helpers';
 
 test.use({ actionTimeout: 20_000 });
 const card = (page: Page, heading: string) => page.locator('section.card', { has: page.getByRole('heading', { name: heading, exact: true }) });
 const day = (t: number, n: number) => new Date(t + n * 86_400_000).toISOString().slice(0, 10);
 
 test('from a real work to release: the brief from its story, the writing by Guide Me, made, delivered and released yourself', async ({ page }, info) => {
-  test.skip(info.project.name !== 'desktop', 'A whole career step, once, at desktop width.');
+  test.skip(!onlyOn(info, ['desktop']), 'A whole career step, once, at desktop width.');
   test.setTimeout(1_200_000);
   await quickLife(page, 'gb-london', '2026-02-02');
   await pinSeed(page, 7);

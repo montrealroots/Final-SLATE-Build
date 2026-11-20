@@ -4,7 +4,7 @@
 // a longer recorded season on other dates and another cast, and a new series has appeared. Nothing here is TMDB's.
 import { expect, test, type Page } from './test';
 import { CATALOG_FIXTURE, serveCatalog } from './catalog-fixture';
-import { advance, nav, quickLife, readSavedState } from './helpers';
+import { advance, nav, onlyOn, quickLife, readSavedState } from './helpers';
 
 const card = (page: Page, heading: string) => page.locator('section.card', { has: page.getByRole('heading', { name: heading, exact: true }) });
 const REFRESHED_AT = '2027-01-20T09:00:00.000Z';
@@ -30,7 +30,7 @@ function refreshedWorld(): Record<string, unknown> {
 }
 
 test.beforeEach(({}, info) => {
-  test.skip(!['desktop', 'phone'].includes(info.project.name), 'Runs on desktop and phone.');
+  test.skip(!onlyOn(info, ['desktop', 'phone']), 'Runs on desktop and phone.');
 });
 
 test('a refreshed catalog changes nothing an existing save decides: same network timing, same season, same cast', async ({ page }) => {

@@ -3,13 +3,13 @@
 import type { Page } from '@playwright/test';
 import { expect, test } from './test';
 import { audit } from './ui-audit';
-import { addScene, advance, nav, newProject, quickLife, readSavedState, saveAndApprove, section } from './helpers';
+import { addScene, advance, nav, newProject, onlyOn, quickLife, readSavedState, saveAndApprove, section } from './helpers';
 
 const card = (page: Page, heading: string) => page.locator('section.card', { has: page.getByRole('heading', { name: heading, exact: true }) });
 const dollars = (n: number) => `$${n.toLocaleString('en-US')}`;
 
 test('a line producer negotiates a counteroffer: asked with its cost, the answer brought back, and accepting still the player\'s', async ({ page }, info) => {
-  test.skip(!['desktop', 'phone', 'iphone-15-pro-max'].includes(info.project.name), 'Runs on desktop, phone and WebKit (iPhone 15 Pro Max).');
+  test.skip(!onlyOn(info, ['desktop', 'phone', 'iphone-15-pro-max']), 'Runs on desktop, phone and WebKit (iPhone 15 Pro Max).');
   test.setTimeout(420_000);
   const phone = info.project.name !== 'desktop';
   await quickLife(page, 'gb-london', '2026-01-05');

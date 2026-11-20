@@ -1,10 +1,10 @@
 import { expect, test, type Page } from './test';
 import { hashString } from '../src/engine/rng';
-import { advance, nav, quickLife, saveAndExit } from './helpers';
+import { advance, nav, onlyOn, quickLife, saveAndExit } from './helpers';
 import { firstSaveId, readRecord, writeRecords } from './vault';
 
 // Reliability across saves, reloads and repeated failures. Desktop and phone.
-test.beforeEach(({}, info) => test.skip(!['desktop', 'phone'].includes(info.project.name), 'Runs on desktop and phone.'));
+test.beforeEach(({}, info) => test.skip(!onlyOn(info, ['desktop', 'phone']), 'Runs on desktop and phone.'));
 
 async function stored(page: Page, key: string) {
   return readRecord(page, key);

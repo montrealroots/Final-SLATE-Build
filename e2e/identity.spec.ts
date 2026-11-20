@@ -2,7 +2,7 @@
 // and citizenship from the place of birth, with what each one changes. The credits side (your legal name, your headshot
 // beside your own lines) is checked on a delivered project in e2e/careers.spec.ts. Fixture: makePhoto, a drawn photo.
 import { expect, test, type Page } from './test';
-import { addScene, createCharacter, freshStart, makePhoto, nav, newProject, openMenuIfNeeded, section, writePitch } from './helpers';
+import { addScene, createCharacter, freshStart, makePhoto, nav, newProject, onlyOn, openMenuIfNeeded, section, writePitch } from './helpers';
 
 async function approveWithoutBacking(page: Page): Promise<void> {
   await section(page, 'Characters');
@@ -18,7 +18,7 @@ async function approveWithoutBacking(page: Page): Promise<void> {
 }
 
 test('a preferred name, a headshot and a citizenship, and what each one changes', async ({ page }, info) => {
-  test.skip(!['desktop', 'phone'].includes(info.project.name), 'Runs at desktop and phone width.');
+  test.skip(!onlyOn(info, ['desktop', 'phone']), 'Runs at desktop and phone width.');
   await freshStart(page);
   const photo = await makePhoto(page);
   await createCharacter(page, {

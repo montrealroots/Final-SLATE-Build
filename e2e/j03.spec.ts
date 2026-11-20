@@ -6,7 +6,7 @@
 // Nothing is written into the save. The world seed is pinned (a labelled fixture), chosen so the commissioner says yes
 // and a broadcaster or streamer makes an offer.
 import { expect, test, type Page } from './test';
-import { adaptWork, addScene, advance, castRoles, nav, pinSeed, quickLife, readSavedState, runToDelivery, section, staffEveryDepartment, writePitch } from './helpers';
+import { adaptWork, addScene, advance, castRoles, nav, onlyOn, pinSeed, quickLife, readSavedState, runToDelivery, section, staffEveryDepartment, writePitch } from './helpers';
 
 test.use({ actionTimeout: 20_000 });
 
@@ -22,7 +22,7 @@ const project = async (page: Page, title = TITLE): Promise<any> => (await readSa
 const open = async (page: Page, tab: string) => { await nav(page, 'Projects'); await page.getByRole('button', { name: TITLE }).first().click(); await section(page, tab); };
 
 test('J03: a video game adapted as a 2D series, commissioned, sold to a platform, watched week by week, decided on its audience, and its second season begun', async ({ page }, info) => {
-  test.skip(info.project.name !== 'desktop', 'One whole career run, at desktop width.');
+  test.skip(!onlyOn(info, ['desktop']), 'One whole career run, at desktop width.');
   test.setTimeout(1_200_000);
   await quickLife(page, 'gb-london', '2026-01-05');
   await pinSeed(page, SEED);

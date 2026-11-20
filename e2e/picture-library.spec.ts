@@ -9,7 +9,7 @@ import { writePack } from '../tools/pack-format.mjs';
 import { bucketOf } from '../tools/screen-catalog/pictures.mjs';
 import { serveCatalog } from './catalog-fixture';
 import { audit } from './ui-audit';
-import { nav, quickLife, readSavedState } from './helpers';
+import { nav, onlyOn, quickLife, readSavedState } from './helpers';
 
 const AT = new Date().toISOString();
 const DAY = AT.slice(0, 10);
@@ -65,7 +65,7 @@ const section = (page: Page) => page.getByRole('region', { name: 'Pictures For T
 const kindRow = (page: Page, name: string) => section(page).getByRole('list', { name: 'Kinds Of Picture' }).locator('li', { hasText: name });
 
 test.beforeEach(({}, info) => {
-  test.skip(!['desktop', 'phone', 'iphone-15-pro-max'].includes(info.project.name), 'Runs on desktop, phone and WebKit (iPhone 15 Pro Max).');
+  test.skip(!onlyOn(info, ['desktop', 'phone', 'iphone-15-pro-max']), 'Runs on desktop, phone and WebKit (iPhone 15 Pro Max).');
 });
 
 test('pictures a kind at a time, then all: the size and the room said first, shown on every page they belong to, removed with the save as it was', async ({ page }, info) => {
@@ -222,7 +222,7 @@ test('a copy of the game that offers no pictures says nothing about them', async
 // from the downloaded store to a page with nothing made up in between.
 test('the owner\'s real logos install from the owner\'s own server and show on a real company\'s page', async ({ page }, info) => {
   const { existsSync, readFileSync } = await import('node:fs');
-  test.skip(info.project.name !== 'desktop', 'Once is enough.');
+  test.skip(!onlyOn(info, ['desktop']), 'Once is enough.');
   test.skip(process.env.SLATE_E2E_PROD === '1' || !existsSync('packs/pictures/index.json') || !existsSync('.screen-catalog/index.json'), "Needs the owner's own catalog and pictures, served by the dev server.");
   test.setTimeout(240_000);
   const listing = JSON.parse(readFileSync('packs/pictures/index.json', 'utf8'));

@@ -1,5 +1,5 @@
 import { expect, test, type Page } from './test';
-import { advance, nav, openStart, pressSaveAndExit, section, secureStartingBacking } from './helpers';
+import { advance, nav, onlyOn, openStart, pressSaveAndExit, section, secureStartingBacking } from './helpers';
 import { HOMES_SHOWN } from '../src/ui/routes';
 
 // The package's required widths (360, 390, 393, 414, 430, 768, 1024, 1440, 1920), plus 440, 1280 and a phone landscape.
@@ -44,7 +44,7 @@ async function checkLayout(page: Page, label: string): Promise<string[]> {
 }
 
 test('every main screen fits each viewport without sideways scrolling', async ({ page }, info) => {
-  test.skip(info.project.name !== 'desktop', 'Viewports are set explicitly in this test.');
+  test.skip(!onlyOn(info, ['desktop']), 'Viewports are set explicitly in this test.');
   await seedGame(page);
   // A project with long names, several genres and an approved draft.
   await page.getByRole('button', { name: 'New Project' }).first().click();
@@ -113,7 +113,7 @@ test('every main screen fits each viewport without sideways scrolling', async ({
 });
 
 test('keyboard: skip link, focus order, Escape closes dialogs and returns focus', async ({ page }, info) => {
-  test.skip(info.project.name !== 'desktop', 'Desktop keyboard check.');
+  test.skip(!onlyOn(info, ['desktop']), 'Desktop keyboard check.');
   await seedGame(page);
   await page.keyboard.press('Tab');
   await expect(page.getByRole('link', { name: 'Skip To Content' })).toBeFocused();
@@ -155,7 +155,7 @@ async function clockSeconds(page: Page): Promise<number> {
 }
 
 test('the clock runs 1:1 while visible and stops while hidden, with no catch-up', async ({ page }, info) => {
-  test.skip(info.project.name !== 'desktop', 'Lifecycle check runs once.');
+  test.skip(!onlyOn(info, ['desktop']), 'Lifecycle check runs once.');
   await seedGame(page);
   const a = await clockSeconds(page);
   await page.waitForTimeout(5000);
@@ -177,7 +177,7 @@ test('the clock runs 1:1 while visible and stops while hidden, with no catch-up'
 });
 
 test('a second tab opens the same save read-only until it takes over', async ({ page, context }, info) => {
-  test.skip(info.project.name !== 'desktop', 'Lifecycle check runs once.');
+  test.skip(!onlyOn(info, ['desktop']), 'Lifecycle check runs once.');
   await seedGame(page);
   await pressSaveAndExit(page);
   await page.getByRole('button', { name: 'Continue', exact: true }).click();
@@ -197,7 +197,7 @@ test('a second tab opens the same save read-only until it takes over', async ({ 
 // From November 17, 2026: until then a take-over whose read of the latest save failed did nothing at all, the tab
 // staying read-only with no word, and one whose read errored ran this tab's older copy over the other tab's newer one.
 test('a take-over that cannot read the latest save says so, stays read-only, and works once it can', async ({ page, context }, info) => {
-  test.skip(info.project.name !== 'desktop', 'Lifecycle check runs once.');
+  test.skip(!onlyOn(info, ['desktop']), 'Lifecycle check runs once.');
   await seedGame(page);
   await pressSaveAndExit(page);
   await page.getByRole('button', { name: 'Continue', exact: true }).click();
@@ -226,7 +226,7 @@ test('a take-over that cannot read the latest save says so, stays read-only, and
 // Found by e2e/careers.spec.ts on November 7, 2026: a page reloaded mid-game left its tab's lock fresh for up to six
 // seconds, so Continue straight after opened the game read-only, as if another tab had it.
 test('reloading the page and continuing at once opens the game in this tab, not read-only', async ({ page }, info) => {
-  test.skip(info.project.name !== 'desktop', 'Lifecycle check runs once.');
+  test.skip(!onlyOn(info, ['desktop']), 'Lifecycle check runs once.');
   await seedGame(page);
   await page.reload();
   await page.getByRole('button', { name: 'Continue', exact: true }).click();
@@ -236,7 +236,7 @@ test('reloading the page and continuing at once opens the game in this tab, not 
 });
 
 test('in-game Saved Games and Settings come from the same navigation', async ({ page }, info) => {
-  test.skip(info.project.name !== 'desktop' && info.project.name !== 'phone', 'Runs on desktop and phone.');
+  test.skip(!onlyOn(info, ['desktop', 'phone']), 'Runs on desktop and phone.');
   await seedGame(page);
   await nav(page, 'Saved Games');
   await expect(page.getByRole('heading', { name: 'Saved Games', level: 1 })).toBeVisible();
@@ -256,6 +256,8 @@ test('in-game Saved Games and Settings come from the same navigation', async ({ 
     await expect(credits).toContainText('HDB resales in Singapore: Housing & Development Board resale flat prices (data.gov.sg).');
     await expect(credits).toContainText('Kept only as medians by commune: no address or single sale is in the game');
   } else await expect(credits).not.toContainText('HDB resales');
+  // No licensed box-office history is installed, and the page says so (from November 20, 2026).
+  await expect(page.getByText(/^Box office history:/).locator('..')).toContainText('No licensed box-office history is installed.');
   await expect(credits).toContainText(/Prices are from Glazer's Camera, a US retailer's public product listings, read on [A-Z][a-z]+ \d{1,2}, \d{4}/);
   // Phones never get entry fields under 16px (they would zoom the page).
   if (info.project.name === 'phone') {

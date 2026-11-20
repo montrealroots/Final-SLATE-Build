@@ -6,7 +6,7 @@
 // after it is through the screens. Both studios are made-up fixtures; nothing of them is written into the save.
 import { expect, test, type Page } from './test';
 import { CATALOG_FIXTURE, serveCatalog } from './catalog-fixture';
-import { addScene, advance, nav, pinSeed, pressSaveAndExit, quickLife, readSavedState, section, writePitch } from './helpers';
+import { addScene, advance, nav, onlyOn, pinSeed, pressSaveAndExit, quickLife, readSavedState, section, writePitch } from './helpers';
 import { hashString } from '../src/engine/rng';
 import { firstSaveId, readRecord, writeRecords } from './vault';
 
@@ -70,7 +70,7 @@ async function open(page: Page, title: string): Promise<void> {
 }
 
 test('J13: a first-look deal for television covers series, not films; a covered series goes to the company first, and its answer is its read', async ({ page }, info) => {
-  test.skip(!['desktop', 'phone', 'iphone-15-pro-max'].includes(info.project.name), 'Desktop, phone and the iPhone 15 Pro Max (WebKit).');
+  test.skip(!onlyOn(info, ['desktop', 'phone', 'iphone-15-pro-max']), 'Desktop, phone and the iPhone 15 Pro Max (WebKit).');
   test.setTimeout(900_000);
   await serveCatalog(page, {}, { 'world.json': { ...(CATALOG_FIXTURE['world.json'] as object), studios: STUDIOS } });
   await quickLife(page, 'us-los-angeles', '2026-11-12');

@@ -5,7 +5,7 @@
 // identical: the designers research a setting abroad, and nothing else changes (tests/decision-effects.test.ts
 // compares the same choice in the engine).
 import { expect, test, type Page } from './test';
-import { addScene, nav, pinSeed, quickLife, saveAndApprove, section } from './helpers';
+import { addScene, nav, onlyOn, pinSeed, quickLife, saveAndApprove, section } from './helpers';
 
 test.use({ actionTimeout: 20_000 });
 
@@ -42,7 +42,7 @@ async function makeAndRead(page: Page, abroad: boolean): Promise<string[]> {
 }
 
 test('journey D: the same film set at home or abroad differs by its setting research, and by nothing else', async ({ page, browser }, info) => {
-  test.skip(info.project.name !== 'desktop', 'A comparison of two games, at desktop width.');
+  test.skip(!onlyOn(info, ['desktop']), 'A comparison of two games, at desktop width.');
   const home = await makeAndRead(page, false);
   // The second game in a browser of its own, so nothing of the first carries over.
   const other = await browser.newContext({ baseURL: info.project.use.baseURL, viewport: info.project.use.viewport });

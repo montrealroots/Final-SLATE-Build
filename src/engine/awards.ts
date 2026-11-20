@@ -13,6 +13,7 @@ import { countryName } from '../world/gazetteer/gazetteer';
 import { isEpisodic, isNonfiction } from './projects';
 import { travelHours } from './state';
 import { gaussian, intBetween, pick, stream, unit } from './rng';
+import { SLOTS, worldTitle, working, type Craft, type WorldPerson } from './world-cast';
 import { addLog, onNewGame, registerCommitmentSource, registerHandler, schedule, type HandlerResult } from './state';
 import { DAY, addDaysToKey, dateKey, formatDateKey, localParts, localToInstant, parseYmd, weekdayOfKey, ymd } from './time';
 import type { Credit, Edition, EditionEntry, Format, GameState, Medium, Project, RivalFilm, Screening } from './types';
@@ -838,8 +839,6 @@ registerHandler('edition-deadline', (state, ev) => {
   return { suppressInterrupt: true };
 });
 
-export const RIVAL_WORDS_A = ['Quiet', 'Salt', 'Paper', 'Northern', 'Last', 'Glass', 'Hollow', 'Bright', 'Small', 'Burning', 'Silent', 'Iron', 'Little', 'Distant', 'Golden', 'Low', 'Wild', 'Late', 'Blue', 'Second'];
-export const RIVAL_WORDS_B = ['Harbor', 'Summer', 'Orchard', 'Signal', 'River', 'Kingdom', 'Witness', 'Houses', 'Tide', 'Season', 'Weather', 'Mountain', 'Archive', 'Garden', 'Crossing', 'Lights', 'Hours', 'Field', 'Animals', 'Room'];
 
 export interface SlateFilm {
   id: string;
@@ -858,6 +857,11 @@ const slateCache = new Map<string, SlateFilm[]>();
 /**
  * One season's competing work: a deterministic slate of simulated films and series, so the same
  * titles move from festivals into the following awards season with consistent strengths.
+ *
+ * From November 20, 2026 its titles and people come from the world's own (world-cast.ts): a title used in no other
+ * season, and directors, writers and leads from the lasting pool at work that year, each a different person, whose
+ * skill in that year of their career sets their film's strength. Until then titles were drawn from 20 words by 20 and
+ * people from 16 names by 16, so both came back as strangers; the film's strength was a draw of its own.
  */
 export function seasonSlate(seed: number, seasonYear: number): SlateFilm[] {
   const key = `${seed}|${seasonYear}`;
@@ -865,35 +869,38 @@ export function seasonSlate(seed: number, seasonYear: number): SlateFilm[] {
   if (hit) return hit;
   const r = stream(seed, 'slate', seasonYear);
   const out: SlateFilm[] = [];
-  const firsts = ['Iris', 'Teo', 'Marisol', 'Kwame', 'Ana', 'Lars', 'Mina', 'Rafi', 'Odile', 'Sung-min', 'Leila', 'Joaquín', 'Ngozi', 'Yuki', 'Farid', 'Elsa'];
-  const lasts = ['Varga', 'Mbeki', 'Holt', 'Ruiz', 'Okoro', 'Aalto', 'Brandt', 'Sato', 'Navarro', 'Achterberg', 'Kader', 'Lindqvist', 'Moreau', 'Osei', 'Petrova', 'Tanaka'];
-  const name = () => `${pick(r, firsts)} ${pick(r, lasts)}`;
+  // Each film's director, writer and lead is someone different at work that year (a person makes one film a season).
+  const crew = (craft: Craft) => { const xs = [...working(seed, seasonYear, craft)]; for (let i = xs.length - 1; i > 0; i--) { const j = Math.floor(r() * (i + 1)); [xs[i], xs[j]] = [xs[j], xs[i]]; } return xs; };
+  const [directors, writers, leads] = [crew('director'), crew('writer'), crew('performer')];
   for (let i = 0; i < 120; i++) {
     const roll = r();
     const format: Format = roll < 0.5 ? 'feature' : roll < 0.62 ? 'documentary-feature' : roll < 0.74 ? 'short' : roll < 0.8 ? 'documentary-short' : roll < 0.9 ? 'series' : roll < 0.95 ? 'limited-series' : 'documentary-series';
     const m = r();
     const medium: Medium = format.startsWith('documentary') ? (m < 0.9 ? 'live-action' : 'animation') : m < 0.72 ? 'live-action' : m < 0.94 ? 'animation' : 'hybrid';
-    const base = Math.max(25, Math.min(96, gaussian(r, 62, 11)));
+    const director = directors[i % directors.length];
+    const writer = writers[i % writers.length];
+    const lead = leads[i % leads.length];
+    const skill = (who: WorldPerson) => who.skillIn(seasonYear);
+    // The film is as good as its director's year, give or take the rest of what went into it (game calibration).
+    const base = Math.max(25, Math.min(96, 0.5 * skill(director) + 0.5 * gaussian(r, 62, 11)));
     const off = () => gaussian(r, 0, 6);
     const genres = format.startsWith('documentary') ? ['documentary'] : [pick(r, SLATE_GENRES.filter((g) => g !== 'documentary'))];
     if (r() < 0.3) genres.push(pick(r, SLATE_GENRES.filter((g) => g !== 'documentary')));
+    const near = (who: WorldPerson) => Math.max(25, Math.min(96, skill(who) + gaussian(r, 0, 4)));
     out.push({
       id: `sl${seasonYear}-${i}`,
-      title: `${pick(r, ['The ', '', '', 'A '])}${pick(r, RIVAL_WORDS_A)} ${pick(r, RIVAL_WORDS_B)}`,
+      title: worldTitle(seed, seasonYear, SLOTS.slate + i),
       format, medium, genres, runtimeMin: format === 'short' || format === 'documentary-short' ? intBetween(r, 6, 30) : format.includes('series') ? intBetween(r, 25, 60) : intBetween(r, 80, 150),
-      people: { director: name(), writer: name(), lead: name() },
-      scores: withDerived({ project: base, producer: base, director: base + off(), writer: base + off(), lead: base + off(), supporting: base + off(), voice: base + off(), ensemble: base + off() }),
+      people: { director: director.name, writer: writer.name, lead: lead.name },
+      scores: withDerived({ project: base, producer: base, director: near(director), writer: near(writer), lead: near(lead), supporting: base + off(), voice: base + off(), ensemble: base + off() }),
     });
   }
-  // The same title can't appear twice in one season.
-  const seen = new Set<string>();
-  const unique = out.filter((f) => (seen.has(f.title) ? false : (seen.add(f.title), true)));
   if (slateCache.size > 40) slateCache.clear();
-  slateCache.set(key, unique);
-  return unique;
+  slateCache.set(key, out);
+  return out;
 }
 
-/** Scores for the recipient kinds added November 9, 2026, derived without new draws so every season's slate is unchanged. */
+/** Scores for the recipient kinds added November 9, 2026, derived without new draws (which kept every season's slate as it was then). */
 function withDerived(x: Record<'project' | 'producer' | 'director' | 'writer' | 'lead' | 'supporting' | 'voice' | 'ensemble', number>): Record<Recipient, number> {
   return { ...x, guest: x.supporting, performer: Math.max(x.lead, x.supporting), host: x.lead, narrator: x.voice, craft: (x.director + x.project) / 2, song: x.project, national: x.project, career: x.project };
 }

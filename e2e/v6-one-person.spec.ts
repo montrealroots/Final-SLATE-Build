@@ -3,10 +3,10 @@
 // invented. The project is approved, made with the player in the part, delivered and released, and its credits name
 // that one part only. Its one acting work then stands on the Profile (J22's reading). The engine's rule, and the work that identifies nobody, is tests/work-cast.test.ts.
 import { expect, test } from './test';
-import { adaptWork, advance, creditsTable, nav, produceToDelivery, quickLife, readSavedState, saveAndApprove, section } from './helpers';
+import { adaptWork, advance, creditsTable, nav, onlyOn, produceToDelivery, quickLife, readSavedState, saveAndApprove, section } from './helpers';
 
 test.describe.configure({ timeout: Number(process.env.SLATE_JOURNEY_TIMEOUT) || 900_000 });
-test.beforeEach(({}, info) => test.skip(info.project.name !== 'desktop', 'Full media journeys run once, at desktop width.'));
+test.beforeEach(({}, info) => test.skip(!onlyOn(info, ['desktop']), 'Full media journeys run once, at desktop width.'));
 
 const DUPIN = 'C. Auguste Dupin';
 

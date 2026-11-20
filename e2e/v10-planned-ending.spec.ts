@@ -4,12 +4,12 @@
 // be started. Labelled fixture: the delivery, the commissioner's agreement and the decision it asks for are written into
 // the save as the game writes them (e2e/renewal.spec.ts makes and delivers a season by play). Desktop, in Chromium.
 import { expect, test } from './test';
-import { advance, editSave, nav, newProject, quickLife, section } from './helpers';
+import { advance, editSave, nav, newProject, onlyOn, quickLife, section } from './helpers';
 
 const DAY = 86_400_000;
 
 test('J10: a season planned as the last ends as planned, and the next season is refused', async ({ page }, info) => {
-  test.skip(info.project.name !== 'desktop', 'One run, at desktop width.');
+  test.skip(!onlyOn(info, ['desktop']), 'One run, at desktop width.');
   test.setTimeout(240_000);
   await quickLife(page, 'gb-london', '2026-02-02');
   await newProject(page, { title: 'Harbour Lights', format: 'Limited Series', episodes: '2', runtime: '10' });
@@ -52,7 +52,7 @@ test('J10: a season planned as the last ends as planned, and the next season is 
 // own weeks (from November 17, 2026). Labelled fixture: the season delivered, and two accepted releases with a week each
 // reported, as distribution.ts and audiences.ts write them. Desktop, in Chromium.
 test('J10: one series sold in two territories reports territory by territory', async ({ page }, info) => {
-  test.skip(info.project.name !== 'desktop', 'One run, at desktop width.');
+  test.skip(!onlyOn(info, ['desktop']), 'One run, at desktop width.');
   test.setTimeout(240_000);
   await quickLife(page, 'gb-london', '2026-02-02');
   await newProject(page, { title: 'Harbour Lights', format: 'Limited Series', episodes: '2', runtime: '10' });

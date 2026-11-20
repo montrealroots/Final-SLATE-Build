@@ -2,12 +2,12 @@
 // and moved earlier with its scenes, a world rule and a relationship whose change or removal lists the episodes and
 // scenes it touches first (SLATE-07-01.02, 07-02.02); all of it surviving Save And Exit.
 import { expect, test } from './test';
-import { addScene, nav, pressSaveAndExit, quickLife, section } from './helpers';
+import { addScene, nav, onlyOn, pressSaveAndExit, quickLife, section } from './helpers';
 
 test.use({ actionTimeout: 20_000 });
 
 test('a season planned and reordered; changing a shared fact says which episodes it touches first', async ({ page }, info) => {
-  test.skip(!['desktop', 'phone', 'iphone-15-plus'].includes(info.project.name), 'Runs at desktop, phone and WebKit iPhone width.');
+  test.skip(!onlyOn(info, ['desktop', 'phone', 'iphone-15-plus']), 'Runs at desktop, phone and WebKit iPhone width.');
   await quickLife(page, 'gb-london', '2026-01-05');
   await page.getByRole('button', { name: 'New Project' }).first().click();
   await page.getByRole('button', { name: 'Write An Original' }).click();

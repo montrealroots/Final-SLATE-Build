@@ -5,7 +5,7 @@
 // studio is a made-up fixture and the world seed is pinned (a labelled fixture), so the run is the same each time.
 import { expect, test, type Page } from './test';
 import { CATALOG_FIXTURE, serveCatalog } from './catalog-fixture';
-import { addScene, advance, castRoles, nav, pinSeed, pressSaveAndExit, quickLife, readSavedState, runToDelivery, section, staffEveryDepartment, writePitch } from './helpers';
+import { addScene, advance, castRoles, nav, onlyOn, pinSeed, pressSaveAndExit, quickLife, readSavedState, runToDelivery, section, staffEveryDepartment, writePitch } from './helpers';
 
 test.use({ actionTimeout: 20_000 });
 
@@ -16,7 +16,7 @@ const dollars = (n: number) => `$${n.toLocaleString('en-US')}`;
 type Week = { week: number; rental: number; status: string; screens?: number; next?: string };
 
 test('J11: the records to their end, the world after them simulated and labelled, weeks in cinemas with holdovers, a renewal or cancellation, and the record book counted once', async ({ page }, info) => {
-  test.skip(info.project.name !== 'desktop', 'One whole career run, at desktop width.');
+  test.skip(!onlyOn(info, ['desktop']), 'One whole career run, at desktop width.');
   test.setTimeout(1_500_000);
   await serveCatalog(page, {}, { 'world.json': { ...(CATALOG_FIXTURE['world.json'] as object), studios: STUDIOS } });
   await quickLife(page, 'us-los-angeles', '2026-11-01');

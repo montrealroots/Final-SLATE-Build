@@ -18,8 +18,8 @@ journey that shows it there.
 
 | Feature | Kind | Read by | Status | Proof | What moved, or why |
 |---|---|---|---|---|---|
-| rsvpScreening | action | src/engine/awards-actions.ts | proven | attend-screening (30 seeds) | accepted +6.7; attended +5.8; offers +8.033 |
-| submitEntry | action | src/engine/awards-actions.ts | proven | enter-awards (40 seeds) | entries +40.675; spent +1644.5; selected +4.625 |
+| rsvpScreening | action | src/engine/awards-actions.ts | proven | attend-screening (30 seeds) | accepted +7.033; attended +4.233; offers +6.133 |
+| submitEntry | action | src/engine/awards-actions.ts | proven | enter-awards (40 seeds) | entries +40.675; spent +1641.5; selected +4.55 |
 | withdrawEntry | action | src/engine/awards-actions.ts | proven | withdraw-entry (40 seeds) | withdrawn +34.3; selected -5.55 |
 | execute | action | src/engine/bankworld/core/simulation.ts | not a feature |  | The bank world's dispatcher: every bank command a screen runs goes through it, and each command is its own row. |
 | advanceBankWorld | action | src/engine/bankworld/index.ts | not a feature |  | Brings the bank to the game's clock before a bank command runs; time passing is proven through the scheduled rows and the bank commands. |
@@ -153,7 +153,7 @@ journey that shows it there.
 | declineOpportunity | action | src/engine/opportunities.ts | proven | decline-opportunity (30 seeds) | proposalsAccepted -0.567; commissioned -0.567; commissionMoney -40533.333 |
 | applyForPermit | action | src/engine/papers.ts | proven | work-permit (100 seeds) | permits +0.99; lateDays -3.53; spent +4725.5; quality.direction +4.25; overall +1.81 |
 | applyForRecordedPassport | action | src/engine/papers.ts | proven | recorded-passport (40 seeds) | passports +1; papersPaid +36.64; worth -36.64 |
-| applyForVisa | action | src/engine/papers.ts | proven | visitor-visa (30 seeds) | visas +1.533; attended +1.2; offers +1.633 |
+| applyForVisa | action | src/engine/papers.ts | proven | visitor-visa (30 seeds) | visas +1.6; attended +1.233; offers +1.7; guarantees +8866.667; revenue +14025.667 |
 | moveTo | action | src/engine/papers.ts | proven | move-home (40 seeds) | livesInLondon -1; frenchAccounts +2; bankFees +31.19; overall -0.587; quality.direction -1.287; money -686082.579 |
 | addStage | action | src/engine/parts.ts | proven | add-stage (40 seeds) | stages +2; stageCast +2; performersCast +2; castRates +1578.75 |
 | removeStage | action | src/engine/parts.ts | proven | remove-stage (40 seeds) | stages -2; stageCast -2; performersCast -2; castRates -1590.75 |
@@ -291,13 +291,13 @@ journey that shows it there.
 | counter-lapse | scheduled | src/engine/hiring.ts | proven | off-counter-lapse (40 seeds) | countersTaken +3.675; castRates -26.75; hired +1.2 |
 | distribution-offer | scheduled | src/engine/finish.ts | proven | off-distribution-offer (40 seeds) | distributed -1.65; revenue -117409.5; money -111101 |
 | distribution-report | scheduled | src/engine/distribution.ts | proven | off-distribution-report (40 seeds) | revenue -95262.375; money -95262.375 |
-| edition-announce | scheduled | src/engine/awards.ts | proven | off-edition-announce (40 seeds) | screenings -8.7; offers -7.375 |
-| edition-deadline | scheduled | src/engine/awards.ts | proven | off-edition-deadline (40 seeds) | selected -4.75; standing.producing -6.25 |
+| edition-announce | scheduled | src/engine/awards.ts | proven | off-edition-announce (40 seeds) | screenings -8.95; offers -7.675 |
+| edition-deadline | scheduled | src/engine/awards.ts | proven | off-edition-deadline (40 seeds) | selected -4.575; standing.producing -6.2 |
 | edition-deadline-soon | scheduled | src/engine/awards.ts | not a feature |  | A notice: it tells the player an entry deadline is near. The deadline that closes entries is its own system (edition-deadline), proven separately. |
-| edition-open | scheduled | src/engine/awards.ts | proven | off-edition-open (40 seeds) | entries -38.775; selected -4.3 |
-| edition-results | scheduled | src/engine/awards.ts | proven | off-edition-results (400 seeds) | finalised -8.767; won -0.09; standing.directing +0.308; backerBonus -0.005; offers -0.197 |
-| edition-start | scheduled | src/engine/awards.ts | proven | off-edition-start (40 seeds) | screenings -7.5; offers -6.6 |
-| editions-roll | scheduled | src/engine/awards.ts | proven | off-editions-roll (40 seeds) | editionsOpen -63.725; entries -25.7; selected -2.75 |
+| edition-open | scheduled | src/engine/awards.ts | proven | off-edition-open (40 seeds) | entries -38.5; selected -4.25 |
+| edition-results | scheduled | src/engine/awards.ts | proven | off-edition-results (400 seeds) | finalised -8.705; won -0.067; backerBonus -0.003; offers -0.222 |
+| edition-start | scheduled | src/engine/awards.ts | proven | off-edition-start (40 seeds) | screenings -7.75; offers -6.975 |
+| editions-roll | scheduled | src/engine/awards.ts | proven | off-editions-roll (40 seeds) | editionsOpen -63.725; entries -25.65; selected -2.775 |
 | episode-release | scheduled | src/engine/episode-releases.ts | proven | off-episode-release (40 seeds) | episodesOut -0.475; audience -83225 |
 | family-repayment | scheduled | src/engine/personal.ts | not a feature |  | Takes a month's repayment of a family loan chosen in an older save's creation: a new story starts with the inheritance and no family terms (personal.ts openPersonalMoney), so nothing in it schedules this. |
 | finance-counter | scheduled | src/engine/negotiation.ts | proven | better-terms (40 seeds) | asked +1.725; investorShare -0.087; investorPaid -4036.4; overall -0.575 |
@@ -332,7 +332,7 @@ journey that shows it there.
 | release | scheduled | src/engine/finish.ts | proven | off-release (40 seeds) | released -2; revenue -85231; money -85231 |
 | release-licence-answer | scheduled | src/engine/release-plan.ts | proven | off-release-licence-answer (120 seeds) | licenceDeals -0.725; revenue -117680.875; money -109215.708 |
 | revision-done | scheduled | src/engine/projects.ts | proven | revision-notes (40 seeds) | notesAddressed +6; quality.script +6; overall +1.825; reception +1.825 |
-| screening | scheduled | src/engine/awards.ts | proven | attend-screening (30 seeds) | accepted +6.7; attended +5.8; offers +8.033 |
+| screening | scheduled | src/engine/awards.ts | proven | attend-screening (30 seeds) | accepted +7.033; attended +4.233; offers +6.133 |
 | screening-reminder | scheduled | src/engine/awards.ts | not a feature |  | A notice: it tells the player a screening they were invited to is near. Attending is the screening itself and the RSVP, proven separately. |
 | season-decision | scheduled | src/engine/continuation.ts | proven | off-season-decision (100 seeds) | renewed -0.62; renewalFunding -22000; ownIn +22000 |
 | shoot-call | scheduled | src/engine/production/shoot.ts | proven | off-shoot-call (40 seeds) | lateDays -1; quality.direction +0.6; overall +0.288 |
@@ -373,18 +373,18 @@ journey that shows it there.
 | "Version" | field | shown where the version is entered: versions.ts addVersion (named and unique) | carried | tests/versions.test.ts::a version is conformed from the locked cut | A name or a record, carried to shown where the version is entered: versions.ts addVersion (named and unique): it decides nothing by its nature. |
 | {sceneLabel(p, s)} | field | versions.ts versionScenes | proven | add-version (40 seeds) | versions +2; versionDays +1.9; spent +1249 |
 | {`${g.label}: ${g.reason}`} | field | edit-actions.ts requestPickups | proven | pickup-scenes (40 seeds) | shootDays +5.05; spent +16086; daysToDeliver +3.713 |
-| "Route" | field | finish.ts planRelease; awards.ts qualifying | proven | release-route (40 seeds) | entries +32.2; entryFees +1987.5 |
+| "Route" | field | finish.ts planRelease; awards.ts qualifying | proven | release-route (40 seeds) | entries +32.375; entryFees +1915.5 |
 | "Release Date" | field | finish.ts planRelease; awards.ts qualifying windows | proven | release-date (40 seeds) | releaseDelay +166; entries +1.025; decided +0.95; entryFees +40.5 |
-| "Territory Code" | field | awards.ts; finish.ts | proven | release-in-us (40 seeds) | entries -1.6; entryFees -461; selected -0.6 |
+| "Territory Code" | field | awards.ts; finish.ts | proven | release-in-us (40 seeds) | entries -1.575; entryFees -461; selected -0.6 |
 | "Which Cut" | field | finish.ts planRelease; music.ts releaseSongs, releaseLicenceRefusal | proven | which-cut (40 seeds) | released +1.6; usEntries +4.45; entries -32.025; decided -27.325 |
 | "Episode Schedule" | field | episode-releases.ts presetDates; finish.ts planRelease | proven | schedule-weekly (40 seeds) | emmyYears -1; decided -1; emmyEntries -1 |
 | "Episodes On The Premiere" | field | episode-releases.ts presetDates | proven | premiere-count (40 seeds) | emmyYears -1; decided -1; emmyEntries -1 |
 | {`Episode ${i + 2}`} | field | episode-releases.ts episodeDateProblem; awards-rules.ts airing; awards.ts ruledReleaseFits | proven | episode-date (40 seeds) | emmyYears -1; decided -1; emmyEntries -1 |
 | {`New Date For Episode ${e.number}`} | field | episode-releases.ts setEpisodeDates; release-schedule.ts scheduleChangeEffects | proven | episode-dates (40 seeds) | episodesMoved +2.75; renewalWait +25.2; money -261.625 |
-| "Project" | field | awards.ts checkEligibility | proven | enter-awards (40 seeds) | entries +40.675; spent +1644.5; selected +4.625 |
-| "Episode To Enter" | field | awards-actions.ts submitEntry; finish.ts assessEpisode | proven | episode-entry (40 seeds) | enteredEpisode +4.6; episodeScore +4.838; selected +0.575 |
+| "Project" | field | awards.ts checkEligibility | proven | enter-awards (40 seeds) | entries +40.675; spent +1641.5; selected +4.55 |
+| "Episode To Enter" | field | awards-actions.ts submitEntry; finish.ts assessEpisode | proven | episode-entry (40 seeds) | enteredEpisode +4.6; episodeScore +4.838; selected +0.175 |
 | "Song To Enter" | field | awards-rules.ts songProblems | proven | song-to-enter (40 seeds) | songEntries +1; songDecided +1 |
-| "Version To Enter" | field | awards-actions.ts entrySnapshot | proven | version-entry (40 seeds) | entries +29.625; decided +20.75; entryFees +1146; selected +3.5 |
+| "Version To Enter" | field | awards-actions.ts entrySnapshot | proven | version-entry (40 seeds) | entries +29.875; decided +21; entryFees +1146; selected +3.5 |
 | {performerLabel(c)} | field | awards-actions.ts submitEntry | proven | performer-entry (30 seeds) | leadRecipients -2.9; leadScore -5.194 |
 | {`What To Capture For ${name}`} | field | mocap.ts bookMocap, sessionCost | proven | book-body-only (20 seeds) | spent -4067.5; overall -0.4 |
 | {`Version In ${r.territories.map(countryName).join(', ')}`} | field | finish.ts setReleaseVersion, the release handler; distribution.ts territoriesReached, reportedGross | proven | release-dubbed (60 seeds) | dubbed +0.85; spent +4083.333; gross +6406.667; revenue +13511.333 |

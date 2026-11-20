@@ -2,13 +2,13 @@
 // left on the rail, on Home or in the credits. Its engine and screens are kept (routes.ts HOMES_SHOWN); this file goes
 // when it comes back, and e2e/homes.spec.ts runs again.
 import { expect, test } from './test';
-import { nav, openMenuIfNeeded, quickLife } from './helpers';
+import { nav, onlyOn, openMenuIfNeeded, quickLife } from './helpers';
 import { HOMES_SHOWN } from '../src/ui/routes';
 
 test.skip(HOMES_SHOWN, 'Homes And Property is in the game');
 
 test('Homes And Property is set aside: no rail entry, no panel on Home, and no housing credits', async ({ page }, info) => {
-  test.skip(!['desktop', 'phone'].includes(info.project.name), 'Desktop and phone.');
+  test.skip(!onlyOn(info, ['desktop', 'phone']), 'Desktop and phone.');
   await quickLife(page, 'gb-london', '2026-03-02');
   // Home keeps Your Bank and Your Papers, and has no Homes And Property beside them.
   await expect(page.getByRole('button', { name: 'Open Your Bank' })).toBeVisible();

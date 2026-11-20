@@ -5,7 +5,7 @@
 import { expect, test, type Page } from './test';
 import { writePack } from '../tools/pack-format.mjs';
 import { CATALOG_FIXTURE } from './catalog-fixture';
-import { nav, quickLife } from './helpers';
+import { nav, onlyOn, quickLife } from './helpers';
 
 const DAY = 86_400_000;
 const card = (page: Page, heading: string) => page.locator('section.card', { has: page.getByRole('heading', { name: heading, exact: true }) });
@@ -23,7 +23,7 @@ const install = (page: Page, name: string, buffer: Buffer) =>
   page.getByLabel('Mod File').setInputFiles({ name, mimeType: 'application/octet-stream', buffer });
 
 test.beforeEach(async ({ page }, info) => {
-  test.skip(!['desktop', 'phone', 'iphone-15-pro-max'].includes(info.project.name), 'Runs on desktop, phone and WebKit (iPhone 15 Pro Max).');
+  test.skip(!onlyOn(info, ['desktop', 'phone', 'iphone-15-pro-max']), 'Runs on desktop, phone and WebKit (iPhone 15 Pro Max).');
   // Answered as a server that offers no mods and no pictures: a machine with the owner's own packs beside the game (the
   // dev server offers them) would add rows to the lists read here, and these journeys must be the same on every machine.
   await page.route('**/mods/index.json', (r) => r.fulfill({ status: 200, contentType: 'application/json', body: JSON.stringify({ version: 1, mods: [] }) }));

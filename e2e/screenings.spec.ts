@@ -1,9 +1,9 @@
 import { expect, test, type Page } from './test';
 import { hashString } from '../src/engine/rng';
-import { advance, nav, quickLife, saveAndExit } from './helpers';
+import { advance, nav, onlyOn, quickLife, saveAndExit } from './helpers';
 import { firstSaveId, readRecord, writeRecords } from './vault';
 
-test.beforeEach(({}, info) => test.skip(!['desktop', 'phone'].includes(info.project.name), 'Runs on desktop and phone.'));
+test.beforeEach(({}, info) => test.skip(!onlyOn(info, ['desktop', 'phone']), 'Runs on desktop and phone.'));
 
 /** Edit the saved game in place (as the save format stores it, with its checksum), then reopen it. */
 async function editSave(page: Page, fn: (state: Record<string, any>) => void): Promise<void> {

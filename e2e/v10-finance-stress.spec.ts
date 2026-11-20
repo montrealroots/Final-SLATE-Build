@@ -3,12 +3,12 @@
 // player is told why, nothing moves, and the order stays for next month. Then an offer to a performer holds the
 // project's money, and withdrawing it gives the money back. One game, through the interface. Desktop, in Chromium.
 import { expect, test, type Page } from './test';
-import { addScene, advance, nav, newProject, quickLife, saveAndApprove, section } from './helpers';
+import { addScene, advance, nav, newProject, onlyOn, quickLife, saveAndApprove, section } from './helpers';
 
 const homeBank = (page: Page) => page.locator('section, .panel', { has: page.getByRole('heading', { name: 'Your Bank', exact: true }) }).first();
 
 test('J15: a standing order refused for want of money, and a reservation released when its offer is withdrawn', async ({ page }, info) => {
-  test.skip(info.project.name !== 'desktop', 'One run, at desktop width.');
+  test.skip(!onlyOn(info, ['desktop']), 'One run, at desktop width.');
   test.setTimeout(300_000);
   await quickLife(page, 'us-los-angeles', '2028-01-26');
   await expect(homeBank(page)).toContainText('Available$25,000,000');

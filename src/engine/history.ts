@@ -35,7 +35,13 @@ export interface Observation {
   source: string;
   /** Where the publication date comes from, when that isn't the main source. */
   publishedSource?: string;
-  status: 'verified';
+  /**
+   * 'verified': read at the organizer (or another official page), with its date there. 'reported': from a secondary
+   * report, or from an organizer's page that gives no date; shown as reported, never as confirmed (the owner's research
+   * recovery package of November 19, 2026: secondary, conflicting or undated evidence is never marked verified). Until
+   * November 20, 2026 every observation was verified.
+   */
+  status: 'verified' | 'reported';
   /** A correction is a later revision of the same id, published on its own date; earlier revisions stay. */
   revision: number;
   imported: string;
@@ -44,7 +50,8 @@ export interface HistoryDataset {
   dataset: string;
   version: number;
   about: string;
-  coverage: { requested: string; observed: string; editions: string[]; notInSet: string };
+  /** unplacedInstitutions: ceremonies held in the data that the game has no institution for, each with why (shown nowhere). */
+  coverage: { requested: string; observed: string; editions: string[]; notInSet: string; unplacedInstitutions?: Record<string, string> };
   sources: Record<string, HistorySource>;
   observations: Observation[];
 }

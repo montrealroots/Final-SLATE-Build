@@ -1,11 +1,11 @@
 import { readFileSync } from 'fs';
 import { expect, expectErrors, sweepSees, test, type Page } from './test';
 import { hashString } from '../src/engine/rng';
-import { advance, newProject, quickLife, readSavedState, saveAndExit } from './helpers';
+import { advance, newProject, onlyOn, quickLife, readSavedState, saveAndExit } from './helpers';
 import { listRecords, readRecord, refuseSaveWrites } from './vault';
 
 // Export Save and Import Save: backup and restoration, on desktop and phone.
-test.beforeEach(({}, info) => test.skip(!['desktop', 'phone'].includes(info.project.name), 'Runs on desktop and phone.'));
+test.beforeEach(({}, info) => test.skip(!onlyOn(info, ['desktop', 'phone']), 'Runs on desktop and phone.'));
 
 /** What a player would mind losing, as stored. */
 function essentials(s: Record<string, any>) { // eslint-disable-line @typescript-eslint/no-explicit-any
@@ -120,7 +120,7 @@ test('files that cannot be imported say why, and change nothing: newer version, 
 });
 
 test('a save open in another tab is not replaced by an import there; a separate copy still works', async ({ page, context }, info) => {
-  test.skip(info.project.name !== 'desktop', 'Two tabs are checked once.');
+  test.skip(!onlyOn(info, ['desktop']), 'Two tabs are checked once.');
   const { file, name } = await playedAndExported(page);
   // This tab plays the save; a second tab imports the same file.
   await page.reload();

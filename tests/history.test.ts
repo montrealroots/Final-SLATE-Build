@@ -7,6 +7,9 @@ import institutions from '../src/data/institutions.json';
 import { AUDIENCE_ROWS, DATASETS, audienceAt, comparable, displayed, holdsRecords, observationsAt, recordedResults, reportable, sourceOf, type HistoryDataset } from '../src/engine/history';
 import { serialize } from '../src/engine/save';
 import { startLife } from './helpers';
+import { savedResult } from '../src/engine/awards-history';
+
+const institutionsById = (id: string) => (institutions as { institutions: { id: string; categories: { id: string }[] }[] }).institutions.find((x) => x.id === id)!;
 
 const ids = (xs: { id: string }[]) => xs.map((x) => x.id).sort();
 
@@ -70,7 +73,9 @@ describe('recorded history', () => {
     // A show nominated twice in a category is told apart by its episode, as the Academy's page lists it.
     expect(emmysOn('2026-07-08', 'nominees').find((o) => o.category === 'writing')!.subjects).toEqual(['Pluribus', 'The Diplomat', 'The Pitt (1:00 P.M.)', 'The Pitt (12:00 P.M.)', 'Slow Horses', 'Task']);
     expect(recordedResults('cannes', 2026, '2026-05-23').find((o) => o.category === 'director')!.subjects).toHaveLength(3); // shared: La Bola Negra's two directors and Fatherland's (FEST01)
-    expect(recordedResults('bafta-film', 2026, '2026-02-22').filter((o) => o.category === null).map((o) => o.categoryName)).toEqual(['Supporting Actor', 'Supporting Actress']);
+    expect(recordedResults('bafta-film', 2026, '2026-02-22').filter((o) => o.category === null && o.id.startsWith('v7-')).map((o) => o.categoryName)).toEqual(['Supporting Actor', 'Supporting Actress']);
+    // From November 20, 2026 the rest of the night's winners too (the recovery package), each once: not the reference's again.
+    expect(recordedResults('bafta-film', 2026, '2026-02-22').filter((o) => o.kind === 'winner')).toHaveLength(26);
   });
 
   it("holds the 98th Academy Awards whole: every competitive category's nominees from January 22 and winner from March 15", () => {
@@ -377,13 +382,81 @@ describe('recorded history', () => {
     expect(on('2026-10-18')).toHaveLength(50);
   });
 
+  // The owner's research recovery package of November 19, 2026 (docs/recovery/MAPPING.md).
+  it('holds SXSW 2026 from its releases\' own dates: the jury awards from March 18, the audience awards from March 20', () => {
+    const on = (day: string) => recordedResults('sxsw', 2026, day);
+    expect(on('2026-03-17')).toEqual([]);
+    expect(on('2026-03-18').find((o) => o.category === 'documentary-jury')!.subjects).toEqual(['Summer 2000: The X-Cetra Story']);
+    expect(on('2026-03-19').some((o) => o.category === 'documentary-audience')).toBe(false);
+    expect(on('2026-03-20').find((o) => o.category === 'documentary-audience')!.subjects).toEqual(['The Ascent']);
+    // The files sit in an October upload folder; that isn't their date.
+    expect(on('2026-03-20').every((o) => (o.published ?? '').startsWith('2026-03'))).toBe(true);
+    // A jury award and an audience award for one short are two results, not one trophy twice.
+    const paperTrail = on('2026-03-20').filter((o) => o.subjects.includes('Paper Trail')).map((o) => o.categoryName).sort();
+    expect(paperTrail).toEqual(['Animated Short Competition Audience Award', 'Animated Short Competition Jury Award']);
+  });
+
+  it('shows IDFA\'s awards from their announcement on November 19, before the festival ends on November 22', () => {
+    const s = startLife('idfa', 'gb-london', { startDate: '2026-11-01' });
+    const ed = s.editions.find((e) => e.id === 'idfa-2026')!;
+    const cat = institutionsById('idfa').categories.find((c) => c.id === 'international-award')!;
+    expect(savedResult(s, ed, cat as never, '2026-11-18')?.winners ?? []).toEqual([]);
+    expect(savedResult(s, ed, cat as never, '2026-11-19')).toMatchObject({ winners: ['The Year of the Ghost'], from: 'record' });
+    expect(new Date(ed.end).toISOString() > '2026-11-22').toBe(true);
+  });
+
+  it('keeps the European Film Awards\' editions apart: the 39th\'s nominees from November 14, the 38th never in a 2026 edition', () => {
+    expect(recordedResults('european-film-awards', 2026, '2026-11-13')).toEqual([]);
+    const noms = recordedResults('european-film-awards', 2026, '2026-11-14');
+    expect(noms.every((o) => o.kind === 'nominees' && o.edition === '39th European Film Awards')).toBe(true);
+    expect(noms.find((o) => o.category === 'director')!.subjects).toHaveLength(5);
+    // The 38th (January 2026) is the 2025 edition, held as reported: its archive page gives no date.
+    const old = recordedResults('european-film-awards', 2025, '2026-11-20');
+    expect(old.find((o) => o.category === 'film')).toMatchObject({ subjects: ['Sentimental Value'], status: 'reported' });
+    expect(noms.some((o) => o.subjects.includes('Sentimental Value'))).toBe(false);
+  });
+
+  it('holds the International Emmys\' and the Gothams\' nominees before their ceremonies, and no winner', () => {
+    expect(recordedResults('international-emmys', 2026, '2026-09-22')).toEqual([]);
+    const ie = recordedResults('international-emmys', 2026, '2026-11-20');
+    expect(ie.every((o) => o.kind === 'nominees')).toBe(true);
+    expect(ie.find((o) => o.category === 'actor')!.subjects).toContain('Ricardo Darín (The Eternaut)');
+    expect(recordedResults('gotham', 2026, '2026-10-26')).toEqual([]);
+    const g = recordedResults('gotham', 2026, '2026-11-20');
+    expect(g.every((o) => o.kind === 'nominees')).toBe(true);
+    expect(g.find((o) => o.category === 'documentary')!.subjects).toEqual(['Closure', 'A Fox Under a Pink Moon', 'Naza', 'Once Upon a Time in Harlem', 'You Can See Everything']);
+  });
+
+  it('never calls a secondary report verified, and says so where it shows one', () => {
+    const wrong = DATASETS.flatMap((d) => d.observations.filter((o) => /secondary|undated/i.test(d.sources[o.source].access) && o.status !== 'reported').map((o) => o.id));
+    expect(wrong).toEqual([]);
+    const s = startLife('locarno', 'gb-london', { startDate: '2026-08-01' });
+    const ed = s.editions.find((e) => e.id === 'locarno-2026')!;
+    const pardo = institutionsById('locarno').categories.find((c) => c.id === 'pardo')!;
+    expect(savedResult(s, ed, pardo as never, '2026-08-15')).toMatchObject({ winners: ["You Don't Belong Here"], reported: true });
+    const bafta = s.editions.find((e) => e.id === 'bafta-film-2026')!;
+    const director = institutionsById('bafta-film').categories.find((c) => c.id === 'director')!;
+    expect(savedResult(s, bafta, director as never, '2026-08-15')).toMatchObject({ winners: ['Paul Thomas Anderson'], from: 'record' });
+    expect(savedResult(s, bafta, director as never, '2026-08-15')!.reported).toBeUndefined();
+  });
+
+  it('keeps the BAFTA Television Craft Awards a ceremony of their own, never merged into the Television Awards', () => {
+    const tv = recordedResults('bafta-tv', 2026, '2026-11-20');
+    expect(tv.every((o) => o.edition === '2026 BAFTA Television Awards' && o.published === '2026-05-10')).toBe(true);
+    const craft = recordedResults('bafta-tv-craft', 2026, '2026-11-20');
+    expect(craft).toHaveLength(23);
+    expect(craft.every((o) => o.published === '2026-04-26' && o.category === null)).toBe(true);
+    // A craft award the record gives to a programme names no person.
+    expect(craft.find((o) => o.categoryName === 'Sound: Fiction')).toMatchObject({ subjects: ['Adolescence'], recipients: 'work_only' });
+  });
+
   it('cites a source for every observation, never publishes before it happens, and names the game\'s own categories', () => {
     const insts = (institutions as { institutions: { id: string; categories: { id: string }[]; official?: Record<string, { label?: string }> }[] }).institutions;
     const wrong: string[] = [];
     const seen = new Set<string>();
     for (const d of DATASETS) for (const o of d.observations) {
       const inst = insts.find((x) => x.id === o.institution);
-      if (!inst) { wrong.push(`${o.id}: no institution ${o.institution}`); continue; }
+      if (!inst) { if (!d.coverage.unplacedInstitutions?.[o.institution]) wrong.push(`${o.id}: no institution ${o.institution}`); continue; }
       if (o.category !== null && !inst.categories.some((c) => c.id === o.category)) wrong.push(`${o.id}: no category ${o.category}`);
       if (inst.official?.[o.year]?.label && inst.official[o.year].label !== o.edition) wrong.push(`${o.id}: edition ${o.edition} isn't the institution's ${o.year} edition`);
       if (!o.published || o.published < o.occurred) wrong.push(`${o.id}: published before it happened, or unknown`);
