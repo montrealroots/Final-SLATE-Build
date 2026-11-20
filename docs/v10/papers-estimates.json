@@ -1,9 +1,9 @@
 {
  "counts": {
-  "permits": 165,
-  "visas": 104,
+  "permits": 164,
+  "visas": 103,
   "permitTimes": 15,
-  "visaTimes": 36
+  "visaTimes": 37
  },
  "permits": [
   "AF",
@@ -64,7 +64,6 @@
   "GA",
   "GM",
   "GE",
-  "GL",
   "GD",
   "GT",
   "GN",
@@ -251,7 +250,6 @@
   "PH",
   "PN",
   "CG",
-  "SH",
   "KN",
   "LC",
   "VC",
@@ -321,6 +319,7 @@
   "PG",
   "RE",
   "BL",
+  "SH",
   "MF",
   "PM",
   "SA",

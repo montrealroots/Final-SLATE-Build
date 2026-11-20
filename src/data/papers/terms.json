@@ -853,8 +853,13 @@
   "NO": {
    "fee": 6300,
    "currency": "NOK",
-   "feeBasis": "UDI's fee for an adult's residence permit for work, as two fee guides give it.",
+   "feeBasis": "UDI's fee for an adult's residence permit for work, NOK 6,300 (renewals the same), which covers the permit as an artist, musician or performer.",
    "sources": [
+    {
+     "kind": "official",
+     "url": "https://www.udi.no/en/word-definitions/fees/",
+     "what": "UDI, Fees: residence permits for work for applicants over the age of 18 (also renewals) NOK 6 300"
+    },
     {
      "kind": "secondary",
      "url": "https://dofmar.com/norwegian-residence-permit-cost/",
@@ -1291,16 +1296,16 @@
    ]
   },
   "RS": {
-   "fee": 23120,
+   "fee": 23200,
    "currency": "RSD",
-   "feeBasis": "The single residence and work permit's RSD 420 to submit and RSD 22,700 for the permit, by the government's Welcome to Serbia portal.",
+   "feeBasis": "The single residence and work permit's RSD 430 to submit and RSD 22,770 for its approval, by the government's Welcome to Serbia portal (RSD 420 and RSD 22,700 when it was first read, November 2026).",
    "stayDays": 365,
    "stayBasis": "A single permit for up to a year.",
    "sources": [
     {
      "kind": "official",
      "url": "https://welcometoserbia.gov.rs/help",
-     "what": "Welcome to Serbia, user manuals: submission fee RSD 420; temporary residence and single permit fee RSD 22,700"
+     "what": "Welcome to Serbia, help: submission fee RSD 430.00; fee for approval of the single permit RSD 22,770.00 (read November 20, 2026)"
     },
     {
      "kind": "secondary",
@@ -1389,6 +1394,24 @@
      "kind": "official",
      "url": "https://immigration.gov.bz/permits/work-permit/",
      "what": "Immigration and Nationality Department, Work Permit: apply at the Labour Department, a call within 30 days, fees paid at Immigration on approval; professional workers BZ$3,000 a year, entertainers BZ$600 to BZ$1,500 for a week or less"
+    }
+   ]
+  },
+  "GL": {
+   "route": "Work permit (Greenland)",
+   "fee": 0,
+   "currency": "DKK",
+   "feeBasis": "There's no processing fee. A performer needs the permit even for under three months; other artists don't.",
+   "days": [
+    90,
+    180
+   ],
+   "daysBasis": "Normally about three months, up to six if more information is needed. The Danish Agency for International Recruitment and Integration decides, with the Government of Greenland's approval.",
+   "sources": [
+    {
+     "kind": "official",
+     "url": "https://www.nyidanmark.dk/de-DE/You-want-to-apply/The-Faroe-Islands-and-Greenland/Arbejde-i-Gr%C3%B8nland",
+     "what": "New to Denmark (SIRI), Work in Greenland: no processing fee; normally about 3 months, up to 6; artists other than performers may work under 3 months without a permit"
     }
    ]
   }
@@ -3598,6 +3621,19 @@
      "kind": "official",
      "url": "https://www.gub.uy/ministerio-relaciones-exteriores/embajada-republica-oriental-del-uruguay-costa-rica/visa-turismo",
      "what": "Ministerio de Relaciones Exteriores, Embajada en Costa Rica, Visa de turismo: arancel de USD 54, no reembolsable; solicitar con al menos 40 días de anticipación"
+    }
+   ]
+  },
+  "SH": {
+   "name": "Holiday permit for visa nationals",
+   "fee": 50,
+   "currency": "GBP",
+   "feeBasis": "£50 a person through the online portal, applying at least 21 days ahead (visitors who don't need a visa pay £20 for a holiday permit).",
+   "sources": [
+    {
+     "kind": "official",
+     "url": "https://www.sainthelena.gov.sh/documents/Final-Immigration-Policy-240613.pdf",
+     "what": "St Helena Government, Immigration Policy (June 13, 2024), current fees: holiday permit £20 for non-visa nationals; £50 for visa nationals applying at least 21 days in advance"
     }
    ]
   }

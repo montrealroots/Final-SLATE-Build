@@ -122,3 +122,26 @@ Batch 7 (November 20, 2026, later):
   doesn't apply there). Ukraine's looks wrong: its employment service publishes the fee for a permit to employ
   foreigners (Law on Employment, article 42-4). These rights came from SLATE-REBUILD and are marked inherited and
   unverified in `docs/v9/COVERAGE.md`. They need checking before their permit fees mean anything in play.
+
+Batch 8 (November 20, 2026, evening):
+- Greenland: the work permit, settled in full. There's no processing fee, and it normally takes about three months
+  (up to six); SIRI decides with the Government of Greenland's approval (New to Denmark's Work in Greenland page).
+  Artists may work under three months without a permit, but performers can't, so an actor needs one.
+- Norway: UDI's own fee table confirms the NOK 6,300 the record took from two guides, and it now comes first in its
+  sources. The decision time stays the game's estimate. UDI's guide to waiting times (updated October 29, 2026) gives
+  up to 45 days for a skilled worker, but the game's route is the permit as an artist, musician or performer, and no
+  waiting time for that one was found. The 45 days were taken at first and removed when `tests/v8-papers.test.ts`
+  showed the route.
+- St Helena: a holiday permit for visa nationals, £50 through the online portal, applying at least 21 days ahead (the
+  Government's June 2024 Immigration Policy, "current fees"). Fee-only: the 21 days are a deadline to apply, not a
+  decision time. The policy's work permit fees are proposals ("would be"), so they aren't used.
+- Serbia: the single permit's fees rose since they were first read. The Welcome to Serbia portal now gives RSD 430 to
+  submit and RSD 22,770 for approval (RSD 23,200, up from RSD 23,120).
+- Not recorded:
+  - The Faroe Islands: Útlendingastovan's processing times (up to three months for other work) but no fee found; it
+    has decided these permits itself since September 2024.
+  - The Faroe Islands and Greenland visas: nyidanmark gives no fee.
+  - The Falklands: the fees are "prescribed" by regulations not found, and a £23 permit price is on an undated news
+    page.
+  - Iceland: two months on average for first work permits in 2025, but island.is refuses the tools.
+  - Barbados, Korea: their official pages state no decision time.

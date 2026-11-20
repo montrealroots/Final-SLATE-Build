@@ -2605,8 +2605,8 @@
    "who may work: SLATE-REBUILD researched it; not re-checked here"
   ],
   "work permit application": [
-   "modeled",
-   "no research gives its fee or time yet: the game estimates both from the researched permits on its continent, and says so"
+   "verified",
+   "its fee and decision time, researched (November 14 or 17, 2026), with its source"
   ]
  },
  "GD": {
@@ -5598,7 +5598,7 @@
   ],
   "visitor visa application": [
    "modeled",
-   "no research gives its fee or time yet: the game estimates both from the researched visas, and says so"
+   "its visitor visa's fee is researched, with its source; how long it takes to decide is the game's estimate, said as one"
   ],
   "work rules": [
    "inherited-unverified",
