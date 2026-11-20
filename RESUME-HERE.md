@@ -15,9 +15,10 @@ finished, and they come back only when the owner says so:
 - **J02 (source to feature):** a real work as the source and real catalog people hired, in its one game (each runs in
   its own journey today).
 - **J20 (phone parity):** every journey on WebKit; today only the iPhone projects' list in `playwright.config.ts` runs.
-- **Papers research:** Iran, Malawi, Turkey, South Africa, Hong Kong, Serbia, Colombia and Argentina stay the game's
-  estimate, as their sources conflict (`docs/v10/papers-research/fees-without-times.md`); 111 visitor visas and 170
-  work permits are still estimates in all (`docs/v10/papers-estimates.json`).
+- **Papers research:** Iran, Malawi, Turkey, Serbia and Colombia stay the game's estimate, as their sources conflict
+  (`docs/v10/papers-research/fees-without-times.md`); South Africa, Hong Kong and Argentina were settled from their
+  governments' pages on November 20 (batch 5, with Macao and Taiwan). 106 visitor visas and 170 work permits are still
+  estimates in all (`docs/v10/papers-estimates.json`), most with conflicting or aggregator-only sources.
 - **Real-phone and pacing tests:** they need the owner's own device and a person playing.
 
 ## Where The "Go Perfectly" List Stands (The Owner, November 19, 2026)
@@ -35,18 +36,27 @@ The owner's "What's next?" list of November 19, worked through in order:
      Awards whole (their page parsed; their 2026 date is now official, March 1): merged (#138). Then, each from its
      organizer's own page and each given its official 2026 date: the 78th DGA, 78th WGA and 37th PGA Awards, the 41st
      Spirit Awards, the 51st Césars, the 40th Goyas, the 2026 AACTAs, the 49th Japan Academy Film Prize and the 2026
-     Canadian Screen Awards (what each leaves out is in the record's `coverage.notInSet`). Still open: the festivals'
-     whole 2026 lists (Sundance to Sitges), the AMAA and Blue Dragon if held by now. Blocked: BAFTA Film and TV (HTTP
-     403 to every fetch), the Annies (a script-only site; its programme lists nominees only). Not yet held: IDFA (ends
-     November 22), the International Emmys (November 23), the Gothams (November 30), the European Film Awards (January
-     2027). Then the papers research and the parked journeys (J02, J20; J01/J21 only with a licensed box-office
-     dataset).
+     Canadian Screen Awards (what each leaves out is in the record's `coverage.notInSet`).
+   - November 20: the 2026 festivals, each from its own pages and on its official dates: Sundance, Clermont-Ferrand,
+     the Berlinale, Series Mania, Cannes, Annecy and Venice with their sections' selections and every prize; Hot Docs,
+     San Sebastián and Sitges with their prizes (their sites don't list the selections in a form the tools can read);
+     Busan with its Competition and every award. A result the owner's v7 reference set holds (some Sundance, Cannes
+     and Venice winners) stays there, once. The awards page now shows every recorded winner of a category (Venice's
+     two lifetime Golden Lions). Generators are in the session's scratchpad only; the method is in each source's
+     `access` text.
+   - Blocked: BAFTA Film and TV (HTTP 403), the Annies (a script-only site), SXSW (its 2026 pages are gone and its
+     schedule needs a session), Locarno and TIFF (they refuse the tools), the Blue Dragon site (unreachable; its
+     ceremony is November 25). Not yet held: IDFA (ends November 22), the International Emmys (November 23), the
+     Gothams (November 30), the European Film Awards (January 2027); the AMAA's 2026 edition wasn't found.
+   - Next: the papers research and the parked journeys (J02, J20; J01/J21 only with a licensed box-office dataset).
 3. Unrealistic prices: done before this list (`docs/prices/PRICES.md`, 53 sourced or fixed). The two modeled rows
    (stop-motion and creature materials, a broadcast edit) were searched for again on November 19: only hobby kits
    ($25 to $180) turned up, so they stay the game's own, said as such.
 4. Overall deals: built on November 17 (A14 in `docs/v8/STATUS.md`); the older summary below that called them unbuilt
    was corrected.
-5. Papers research: parked by the owner on November 17 (above). What's left is mostly conflicting sources or
+5. Papers research: parked by the owner on November 17 (above), taken up again under "All that hasn't been completed,
+   complete perfectly" on November 20 (batch 5: five visas from official pages; Cyprus and Trinidad and Tobago left
+   estimated, their pages refusing the tools or disagreeing). What's left is mostly conflicting sources or
    aggregator-only figures (the batch 3 note below).
 
 ## The Most-Watched TMDB Haul And Its Pictures (The Owner, November 18–19, 2026)

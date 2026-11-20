@@ -16,6 +16,12 @@
    "eligibility": "premiere",
    "prestige": 66,
    "official": {
+    "2026": {
+     "start": "2026-01-22",
+     "end": "2026-02-01",
+     "source": "https://www.sundance.org/blogs/2026-sundance-film-festival-unveils-97-projects-selected-for-the-feature-film-and-episodic-program/",
+     "checked": "2026-11-20"
+    },
     "2027": {
      "start": "2027-01-21",
      "end": "2027-01-31",
@@ -359,6 +365,12 @@
    "eligibility": "premiere",
    "prestige": 70,
    "official": {
+    "2026": {
+     "start": "2026-02-12",
+     "end": "2026-02-22",
+     "source": "https://www.berlinale.de/en/2026/news-press-releases/267074.html",
+     "checked": "2026-11-20"
+    },
     "2027": {
      "start": "2027-02-10",
      "end": "2027-02-21",
@@ -726,6 +738,12 @@
    "eligibility": "premiere",
    "prestige": 76,
    "official": {
+    "2026": {
+     "start": "2026-05-12",
+     "end": "2026-05-23",
+     "source": "https://www.festival-cannes.com/en/press/press-releases/the-closing-ceremony-of-the-79th-festival-de-cannes/",
+     "checked": "2026-11-20"
+    },
     "2027": {
      "start": "2027-05-11",
      "end": "2027-05-22",
@@ -1640,7 +1658,15 @@
      "competitive": true
     }
    ],
-   "rosterStatus": "read"
+   "rosterStatus": "read",
+   "official": {
+    "2026": {
+     "start": "2026-06-21",
+     "end": "2026-06-27",
+     "source": "https://www.annecyfestival.com/en/news/date-change-2026",
+     "checked": "2026-11-20"
+    }
+   }
   },
   {
    "id": "venice",
@@ -2121,7 +2147,15 @@
      "competitive": false
     }
    ],
-   "rosterStatus": "read"
+   "rosterStatus": "read",
+   "official": {
+    "2026": {
+     "start": "2026-09-02",
+     "end": "2026-09-12",
+     "source": "https://www.labiennale.org/en/news/new-film-has-been-added-program-83rd-venice-film-festival",
+     "checked": "2026-11-20"
+    }
+   }
   },
   {
    "id": "tiff",
@@ -2890,7 +2924,15 @@
      "competitive": false
     }
    ],
-   "rosterStatus": "read"
+   "rosterStatus": "read",
+   "official": {
+    "2026": {
+     "start": "2026-09-18",
+     "end": "2026-09-26",
+     "source": "https://www.sansebastianfestival.com/2026/the_edition/1/23327/in",
+     "checked": "2026-11-20"
+    }
+   }
   },
   {
    "id": "busan",
@@ -2942,7 +2984,15 @@
      "verified": false
     }
    ],
-   "rosterStatus": "blocked"
+   "rosterStatus": "blocked",
+   "official": {
+    "2026": {
+     "start": "2026-10-06",
+     "end": "2026-10-15",
+     "source": "https://www.biff.kr/eng/addon/10000001/page.asp?page_num=11079",
+     "checked": "2026-11-20"
+    }
+   }
   },
   {
    "id": "sitges",
@@ -3554,7 +3604,15 @@
      "competitive": false
     }
    ],
-   "rosterStatus": "read"
+   "rosterStatus": "read",
+   "official": {
+    "2026": {
+     "start": "2026-10-08",
+     "end": "2026-10-18",
+     "source": "https://sitgesfilmfestival.com/en/edition/award-winners",
+     "checked": "2026-11-20"
+    }
+   }
   },
   {
    "id": "idfa",
@@ -3811,6 +3869,12 @@
    "prestige": 60,
    "description": "An April documentary festival with an audience award.",
    "official": {
+    "2026": {
+     "start": "2026-04-23",
+     "end": "2026-05-03",
+     "source": "https://hotdocs.ca/news/hd26-wrap",
+     "checked": "2026-11-20"
+    },
     "2027": {
      "start": "2027-04-23",
      "end": "2027-05-02",
@@ -3873,6 +3937,12 @@
    "eligibility": "premiere",
    "prestige": 62,
    "official": {
+    "2026": {
+     "start": "2026-01-30",
+     "end": "2026-02-07",
+     "source": "https://www.lecourt-clermont.org/actualites/visuel-2026/",
+     "checked": "2026-11-20"
+    },
     "2027": {
      "start": "2027-01-29",
      "end": "2027-02-06",
@@ -4580,7 +4650,15 @@
      "competitive": true
     }
    ],
-   "rosterStatus": "read"
+   "rosterStatus": "read",
+   "official": {
+    "2026": {
+     "start": "2026-03-20",
+     "end": "2026-03-27",
+     "source": "https://seriesmania.com/festival/edition/2026/",
+     "checked": "2026-11-20"
+    }
+   }
   },
   {
    "id": "locarno",

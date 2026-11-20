@@ -50,6 +50,51 @@ The catalog (TMDB), the cinemas (Wikidata) and the stories (Wikipedia) are older
   - <https://www.academy.ca/2026/nominees-announced-for-the-2026-canadian-screen-awards/>, read 2026-11-19. For the nominations of March 25, 2026.
   - <https://www.academy.ca/2026/2026-canadian-screen-award-winners-unveiled/>, read 2026-11-19. The winners release of May 31, 2026.
   - <https://www.televisionacademy.com/78th-emmy-winners>, read 2026-11-19. The Academy's winners release (Ernst & Young's list of the telecast's 19 categories), a PDF whose text was read directly.
+  - <https://www.sundance.org/blogs/2026-sundance-film-festival-unveils-97-projects-selected-for-the-feature-film-and-episodic-program/>, read 2026-11-20. Every section's selection (December 10, 2025), and the Alfred P. Sloan Feature Film Prize announced with it.
+  - <https://www.sundance.org/blogs/2026-sundance-film-festival-reveals-54-titles-selected-for-short-film-program-presented-by-ketel-one-vodka/>, read 2026-11-20. The 54 short films in their four groups (December 15, 2025); the Park City Legacy shorts, earlier editions' films, are left out.
+  - <https://www.sundance.org/blogs/2026-sundance-film-festival-reveals-short-film-program-award-winners/>, read 2026-11-20. The short film awards, given the evening of January 27, 2026.
+  - <https://www.sundance.org/blogs/the-complete-list-of-2026-sundance-film-festival-award-winners/>, read 2026-11-20. Every jury and audience award of the January 30, 2026 ceremony, and the producers awards it lists as announced before.
+  - <https://www.lecourt-clermont.org/programmation-2026/>, read 2026-11-20. The 28 competition programmes (I 1 to I 12, F 1 to F 11, L 1 to L 5): every film of the international, national and lab competitions.
+  - <https://www.lecourt-clermont.org/programmation-2026/palmares-2026/>, read 2026-11-20. Every prize of the 38th international, 48th national, 25th lab and XR competitions, and the out-of-competition one, given at the close on February 7, 2026.
+  - <https://www.berlinale.de/en/2026/news-press-releases/271932.html>, read 2026-11-20. The 22 films of the Competition (January 20, 2026).
+  - <https://www.berlinale.de/en/2026/news-press-releases/273288.html>, read 2026-11-20. The 14 first features of Perspectives, the last of them announced on January 29, 2026 (13 on January 20).
+  - <https://www.berlinale.de/en/2026/news-press-releases/271610.html>, read 2026-11-20. The 37 films of Panorama (January 14, 2026).
+  - <https://www.berlinale.de/en/2026/news-press-releases/271764.html>, read 2026-11-20. The Forum's 32 films and its Forum Special (announced January 12), 45 in all (January 15, 2026).
+  - <https://www.berlinale.de/en/2026/news-press-releases/271763.html>, read 2026-11-20. The 32 works of Forum Expanded (January 15, 2026).
+  - <https://www.berlinale.de/en/2026/news-press-releases/271596.html>, read 2026-11-20. Generation's 18 features and 23 shorts (January 14, 2026).
+  - <https://www.berlinale.de/en/2026/news-press-releases/271389.html>, read 2026-11-20. The 21 films of Berlinale Shorts (January 12, 2026).
+  - <https://www.berlinale.de/en/archive/programme/programme-archive.html>, read 2026-11-20. The 21 works of Berlinale Special, whose release of January 14, 2026 counted 19 "so far"; shown from the opening, February 12, when the whole section was certainly public.
+  - <https://www.berlinale.de/en/archive/awards-juries/awards.html>, read 2026-11-20. The prizes of the official juries of February 21, 2026, with the honorary awards; the release of that evening (277999) and its PDF list them too.
+  - <https://www.berlinale.de/en/2026/news-press-releases/277867.html>, read 2026-11-20. The 14plus prizes of the Youth Jury and the Generation International Jury (February 20, 2026).
+  - <https://www.berlinale.de/en/2026/news-press-releases/277918.html>, read 2026-11-20. The two Panorama Audience Awards (February 21, 2026).
+  - <https://www.berlinale.de/en/2026/news-press-releases/269378.html>, read 2026-11-20. The Honorary Golden Bear (November 14, 2025).
+  - <https://www.berlinale.de/en/2026/news-press-releases/271392.html>, read 2026-11-20. A Berlinale Camera (January 12, 2026).
+  - <https://www.berlinale.de/en/2026/news-press-releases/277191.html>, read 2026-11-20. A Berlinale Camera (February 16, 2026).
+  - <https://seriesmania.com/festival/edition/2026/>, read 2026-11-20. The official selection by section (the series pages the edition page filters, read through the site's own feed of them).
+  - <https://seriesmania.com/festival/edition/2026/>, read 2026-11-20. Every prize of the closing ceremony of March 27, 2026.
+  - <https://seriesmania.com/festival/label-ugc-spectateurs-series-mania-2026/>, read 2026-11-20. The UGC spectators' label (April 4, 2026).
+  - <https://hotdocs.ca/news/hd26-awards>, read 2026-11-20. The twelve awards of the Awards Presentation of May 1, 2026.
+  - <https://hotdocs.ca/news/hd26-top-20-daily>, read 2026-11-20. The Rogers Audience Award (announced May 3) and the audience awards for a feature and a short, all published May 4, 2026.
+  - <https://www.festival-cannes.com/en/press/press-releases/the-films-of-the-official-selection-2026/>, read 2026-11-20. Every section of the Official Selection (announced April 9, 2026, the list updated after the additions of April 22); Competition, Un Certain Regard, Cannes Première and Special Screenings are shown whole from April 22, when the additions completed them, Out of Competition and Midnight Screenings from April 9.
+  - <https://www.festival-cannes.com/en/press/press-releases/the-selection-of-short-films-and-la-cinef-of-the-79th-festival-de-cannes-unveiled/>, read 2026-11-20. The 10 films of the Short Film Competition and the 19 of La Cinef (April 21, 2026).
+  - <https://www.festival-cannes.com/en/press/press-releases/un-certain-regard-winners-list-2026/>, read 2026-11-20. The five Un Certain Regard prizes (May 22, 2026).
+  - <https://www.festival-cannes.com/en/press/press-releases/the-jury-has-announced-the-winners-of-the-29th-la-cinef-selection/>, read 2026-11-20. La Cinef's three prizes, the third shared (May 21, 2026).
+  - <https://www.festival-cannes.com/en/press/press-releases/peter-jackson-honorary-palme-d-or-of-the-79th-festival-de-cannes/>, read 2026-11-20. An Honorary Palme d'or (March 5, 2026).
+  - <https://www.festival-cannes.com/en/press/press-releases/barbra-streisand-honorary-palme-d-or-of-the-79th-festival-de-cannes/>, read 2026-11-20. An Honorary Palme d'or (March 11, 2026).
+  - <https://www.festival-cannes.com/en/press/press-releases/the-79th-festival-de-cannes-winners-list/>, read 2026-11-20. The Competition's prizes, the Short Film Palme d'or, the Caméra d'or and the CST awards (May 23, 2026).
+  - <https://www.annecyfestival.com/en/the-festival/official-selection/feature-films>, read 2026-11-20. The 14 sections of the 2026 official selection, each from its own page.
+  - <https://www.annecyfestival.com/en/news/special-prizes-winners>, read 2026-11-20. The special prizes, given at their ceremony of June 26, 2026; the winners themselves are read from the festival's 2026 awards page.
+  - <https://www.annecyfestival.com/en/the-festival/2026-awards>, read 2026-11-20. Every official award, announced at the closing ceremony of June 27, 2026 (its news item of that day says so).
+  - <https://www.labiennale.org/en/news/new-film-has-been-added-program-83rd-venice-film-festival>, read 2026-11-20. NAZA completes the Competition (August 24, 2026); the Competition's 21 films are read from its section page and shown whole from this day.
+  - <https://www.labiennale.org/en/cinema/2026/lineup>, read 2026-11-20. The sections Venice Open, Orizzonti (19 features and 15 shorts, the page listing them in that order), Venice Spotlight and the special screenings, each read from its own page.
+  - <https://www.labiennale.org/en/news/official-awards-83rd-venice-international-film-festival>, read 2026-11-20. Every prize of the five official juries and the audience award, from the ceremony of September 12, 2026; the Golden Lion and the Grand Jury Prize are the reference set's.
+  - <https://www.labiennale.org/en/news/george-clooney-golden-lion-lifetime-achievement>, read 2026-11-20. A Golden Lion for Lifetime Achievement, given at the opening on September 2, 2026.
+  - <https://www.labiennale.org/en/news/ellen-burstyn-golden-lion-lifetime-achievement>, read 2026-11-20. A Golden Lion for Lifetime Achievement, given on September 7, 2026.
+  - <https://www.sansebastianfestival.com/2026/news/1/23683/in>, read 2026-11-20. The festival's official and honorary awards of its closing ceremony, September 26, 2026.
+  - <https://www.biff.kr/eng/html/program/prog_list.asp?c_idx=442>, read 2026-11-20. The 13 films of the Competition, read from the section's page and its second page.
+  - <https://www.biff.kr/eng/addon/10000001/page.asp?page_num=11121>, read 2026-11-20. Every award of the opening ceremony (October 6), the closing ceremony and the Busan Vision Awards; both of the latter are shown from the closing day, October 15, as the page dates neither.
+  - <https://sitgesfilmfestival.com/en/noticies/sanguine-marion-corroller-best-feature-film-award-sitges-2026>, read 2026-11-20. The juries' and the public's awards, announced October 17, 2026; the winners are read from the festival's award-winners page.
+  - <https://sitgesfilmfestival.com/en/edition/award-winners>, read 2026-11-20. The honorary awards of the 59th edition, given over the festival (October 8 to 18, 2026), shown from its last day as the page dates none of them.
 
 ## `src/data/history/awards-2026-reference.json`
 

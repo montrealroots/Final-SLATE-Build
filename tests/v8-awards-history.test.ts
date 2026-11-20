@@ -33,4 +33,17 @@ describe('A18: one history, from the record and the save', () => {
     expect(again).toEqual(r); // the same after a reload: nothing rerolled
     expect(serialize(s)).not.toContain('Hamnet'); // the record is read, never stored
   });
+
+  it('shows every recorded winner of a category, as a festival that gives one prize twice records it', () => {
+    const s = startLife('two-lions', 'us-los-angeles', { startDate: '2026-01-01' });
+    const ed = s.editions.find((e) => e.institutionId === 'venice' && e.year === 2026)!;
+    const cat = institution('venice').categories.find((c) => c.id === 'lifetime')!;
+    expect(savedResult(s, ed, cat, '2026-09-01')?.from).not.toBe('record');
+    expect(savedResult(s, ed, cat, '2026-09-02')!.winners).toEqual(['George Clooney']);
+    expect(savedResult(s, ed, cat, '2026-09-07')!.winners).toEqual(['George Clooney', 'Ellen Burstyn']);
+    // A festival section's record is its selection: the field, and no winner.
+    const comp = institution('venice').categories.find((c) => c.id === 'competition')!;
+    const sel = savedResult(s, ed, comp, '2026-08-24')!;
+    expect([sel.field.length, sel.winners, sel.stage]).toEqual([21, [], 'nomination']);
+  });
 });

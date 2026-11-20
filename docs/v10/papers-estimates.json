@@ -1,9 +1,9 @@
 {
  "counts": {
   "permits": 170,
-  "visas": 111,
+  "visas": 106,
   "permitTimes": 11,
-  "visaTimes": 32
+  "visaTimes": 35
  },
  "permits": [
   "AF",
@@ -183,7 +183,6 @@
   "AS",
   "AI",
   "AG",
-  "AR",
   "BS",
   "BB",
   "BY",
@@ -226,7 +225,6 @@
   "GY",
   "HT",
   "HN",
-  "HK",
   "IR",
   "IQ",
   "JM",
@@ -236,7 +234,6 @@
   "LB",
   "LS",
   "LY",
-  "MO",
   "MW",
   "MY",
   "ML",
@@ -268,13 +265,11 @@
   "SN",
   "RS",
   "SB",
-  "ZA",
   "GS",
   "LK",
   "SD",
   "SR",
   "SY",
-  "TW",
   "TG",
   "TK",
   "TO",
@@ -305,6 +300,7 @@
  ],
  "visaTimes": [
   "AO",
+  "AR",
   "BA",
   "BI",
   "CM",
@@ -332,6 +328,8 @@
   "PM",
   "SA",
   "SL",
+  "ZA",
+  "TW",
   "TJ",
   "UA",
   "VU",

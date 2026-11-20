@@ -50,7 +50,25 @@ Still open after batch 4:
 - Malawi: the 2023 waiver was replaced on January 3, 2026 by reciprocal fees; $50 in the portal's FAQ, $75 on its fee page.
 - Turkey: the e-visa is $15 to $100 in guides, and some say US and UK passports need none.
 - South Africa: ZAR 190 or 425; five days to six weeks. Hong Kong: HK$230 before the September 2025 revision, and the
-  Immigration Department's page gives no fee.
+  Immigration Department's page gives no fee. (Both settled in batch 5, below: the 2026 gazette's R425, and the
+  Immigration Department's fee table, HK$330.)
 - Colombia: the visitor (V) visa's study and issuance fees are given as $52 to $56 and $52 to $177 by different guides.
 - Argentina: the AVE is 20 business days on the consulates' pages, but its fee is USD 400, €368 or $150 by source.
+  (Batch 5 recorded the consular tourist visa instead, whose fee the foreign ministry states: US$150. The AVE, for
+  holders of a US visa, stays unrecorded.)
 - Serbia: each embassy prices the type C visa itself (92 EUR in Baku, 96 USD in Washington, 88 CHF in Zurich).
+
+Batch 5 (November 20, 2026), from the governments' own pages:
+- Hong Kong: the ordinary visa, HK$330 since September 8, 2025, normally four weeks (Immigration Department).
+- Macao: US$30 plus a US$20 relay fee through a Chinese mission, usually seven working days, 14 days of stay (Public
+  Security Police Force).
+- Taiwan: a single-entry visitor visa US$50 abroad (US$160 for US passports by reciprocity); no decision time
+  published, so it's a fee-only record (Bureau of Consular Affairs).
+- South Africa: the visitor's visa R425 in the fee schedule gazetted August 17, 2026; no decision time published, so
+  it's a fee-only record (Department of Home Affairs).
+- Argentina: the tourist visa's consular fee US$150, stays of up to 90 days; no decision time published, so it's a
+  fee-only record (Cancillería).
+- Not recorded, the governments' own pages refusing the tools or disagreeing: Cyprus (gov.cy and mfa.gov.cy refuse
+  the tools; €90 for a Category C visa by search); Trinidad and Tobago (TT$200 single or TT$400 multiple by the
+  Brasília FAQ, while the Ministry's September 2025 instructions say single-entry visas are no longer offered; 10 or
+  14 business days by different missions).

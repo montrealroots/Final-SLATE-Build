@@ -26,10 +26,10 @@ the screen says so.
 | passport application | not applicable | 6 |
 | visiting rules | inherited-unverified | 246 |
 | visiting rules | not applicable | 6 |
-| visitor visa application | verified | 100 |
+| visitor visa application | verified | 102 |
 | visitor visa application | implemented/tested | 1 |
 | visitor visa application | inherited-unverified | 2 |
-| visitor visa application | modeled | 143 |
+| visitor visa application | modeled | 141 |
 | visitor visa application | not applicable | 6 |
 | work rules | inherited-unverified | 232 |
 | work rules | modeled | 14 |
@@ -76,6 +76,8 @@ the screen says so.
     `docs/v10/papers-research/fees-without-times.md`;
   - the same day (batch 4), 11 more visitor visas: New Zealand, Ethiopia, Morocco and Ghana in full; and the fees of
     Saudi Arabia, Egypt, Côte d'Ivoire, Burundi, Liberia, Indonesia and Ukraine, whose times stay estimated;
+  - on November 20, 2026 (batch 5), 5 more visitor visas from their governments' own pages: Hong Kong and Macao in
+    full; and the fees of Taiwan, South Africa and Argentina, whose times stay estimated;
   - the banks of Nauru and Niue (`banks-world.ts`).
 - **Implemented/tested** means a test that runs counts for that country. A test that only looks a bank up by name, or one
   that's switched off, doesn't count (from November 14, 2026, when the owner asked what "run by a test" meant: until
