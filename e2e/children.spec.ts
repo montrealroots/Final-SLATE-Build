@@ -21,7 +21,7 @@ async function editCharacter(page: Page, name: string, fn: (c: ReturnType<Page['
 }
 
 test('a child\'s part: the age in numbers, England\'s rules on the Cast page, a chaperone and a tutor in Crew, and children who play the age', async ({ page }, info) => {
-  test.skip(!onlyOn(info, ['desktop', 'phone', 'iphone-15-pro-max']), 'Runs on desktop, phone and WebKit (iPhone 15 Pro Max).');
+  test.skip(!onlyOn(info, ['desktop', 'phone', 'iphone-18-pro-max']), 'Runs on desktop, phone and WebKit (iPhone 18 Pro Max).');
   test.setTimeout(300_000);
   await quickLife(page, 'gb-london', '2026-03-02');
   await pinSeed(page, 41);

@@ -9,7 +9,7 @@ test.use({ actionTimeout: 20_000 });
 const card = (page: Page, heading: string) => page.locator('section.card', { has: page.getByRole('heading', { name: heading, exact: true }) });
 
 test('real music: a recording licensed with its record, a composer considered under one identity', async ({ page }, info) => {
-  test.skip(!onlyOn(info, ['desktop', 'phone', 'iphone-15-pro-max']), 'Desktop, phone and the iPhone 15 Pro Max (WebKit).');
+  test.skip(!onlyOn(info, ['desktop', 'phone', 'iphone-18-pro-max']), 'Desktop, phone and the iPhone 18 Pro Max (WebKit).');
   await quickLife(page, 'gb-london', '2026-03-02');
   await nav(page, 'Projects');
   await newProject(page, { title: 'Harbour Lights', format: 'Short Film', runtime: '6', budget: 'Low Budget' });

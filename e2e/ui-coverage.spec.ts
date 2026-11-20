@@ -18,9 +18,11 @@ import { serveCatalog } from './catalog-fixture';
 type Size = [number, number, string];
 const SIZES: Record<string, Size[]> = {
   desktop: [[1280, 720, 'desktop'], [1024, 768, 'small laptop'], [768, 1024, 'tablet upright'], [600, 960, 'small tablet upright'], [320, 568, 'desktop zoomed to 400 percent (320 wide)']],
-  phone: [[390, 844, 'phone'], [360, 740, 'narrow phone'], [430, 932, 'large phone'], [844, 390, 'phone on its side'], [667, 375, 'small phone on its side']],
-  'iphone-15-plus': [[430, 932, 'iPhone 15 Plus (WebKit)'], [932, 430, 'iPhone 15 Plus on its side (WebKit)']],
-  'iphone-15-pro-max': [[430, 932, 'iPhone 15 Pro Max (WebKit)']],
+  // The iPhone 18 Pro Max is the one phone the game is made for (the owner, November 20, 2026): Safari's viewport on it,
+  // upright and on its side. Until then a generic 390-pixel phone, a narrow one, a large one and two sideways ones.
+  phone: [[440, 763, 'iPhone 18 Pro Max'], [838, 390, 'iPhone 18 Pro Max on its side']],
+  'iphone-18-pro-max': [[440, 763, 'iPhone 18 Pro Max (WebKit)'], [838, 390, 'iPhone 18 Pro Max on its side (WebKit)']],
+  'iphone-webkit-all': [[440, 763, 'iPhone 18 Pro Max (WebKit)'], [838, 390, 'iPhone 18 Pro Max on its side (WebKit)']],
 };
 // What a phone's navigation is instead of the rail: the same destinations, behind Menu.
 const NAV = new Set(['Menu', 'Close Menu', 'Close Navigation', 'SLATE, Go To Home', 'Home', 'Player Profile', 'Your Bank', 'Your Papers', 'Homes And Property', 'World', 'Projects', 'Companies', 'Saved Games', 'Settings', 'Save & Exit', 'Skip To Content']);

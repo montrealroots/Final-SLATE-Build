@@ -2,8 +2,11 @@ import { expect, test, type Page } from './test';
 import { advance, nav, onlyOn, openStart, pressSaveAndExit, section, secureStartingBacking } from './helpers';
 import { HOMES_SHOWN } from '../src/ui/routes';
 
-// The package's required widths (360, 390, 393, 414, 430, 768, 1024, 1440, 1920), plus 440, 1280 and a phone landscape.
-const VIEWPORTS: [number, number][] = [[360, 800], [390, 844], [393, 852], [414, 896], [430, 932], [440, 956], [768, 1024], [1024, 768], [1280, 720], [1440, 900], [1920, 1080], [844, 390]];
+// Until November 20, 2026 the package's required widths (360, 390, 393, 414, 430, 768, 1024, 1440, 1920), plus 440, 1280 and
+// a phone landscape; the owner then made the iPhone 18 Pro Max the one phone.
+// The phone sizes are the iPhone 18 Pro Max's, the one phone the game is made for (the owner, November 20, 2026): Safari's
+// viewport upright and on its side, and the whole screen. Until then six phones from 360 to 440 wide were checked.
+const VIEWPORTS: [number, number][] = [[440, 763], [440, 956], [838, 390], [768, 1024], [1024, 768], [1280, 720], [1440, 900], [1920, 1080]];
 
 async function seedGame(page: Page): Promise<void> {
   // No film catalog: a machine with the owner's catalog installed (the dev server serves it) would add the industry's
@@ -101,7 +104,7 @@ test('every main screen fits each viewport without sideways scrolling', async ({
     for (const t of tabs) {
       await section(page, t);
       problems.push(...(await checkLayout(page, `${w}x${h} Project ${t}`)));
-      if ((w === 390 || w === 844) && ['Script', 'Crew', 'Budget'].includes(t)) await page.screenshot({ path: `test-results/vp-${w}x${h}-project-${t}.png`, fullPage: true });
+      if ((w === 440 || w === 838) && ['Script', 'Crew', 'Budget'].includes(t)) await page.screenshot({ path: `test-results/vp-${w}x${h}-project-${t}.png`, fullPage: true });
     }
     // Dialogs keep their actions on screen.
     await page.getByRole('button', { name: 'Advance', exact: true }).first().click();

@@ -28,7 +28,7 @@ async function offer(page: Page, part: string, method: 'On Camera' | 'Voice', sk
 }
 
 test('characters made by hand: renamed, tied together, cast body and voice apart, recast, set aside with their scenes given away, reloaded and restored', async ({ page }, info) => {
-  test.skip(!onlyOn(info, ['desktop', 'phone', 'iphone-15-pro-max']), 'Runs on desktop, phone and one WebKit iPhone emulation.');
+  test.skip(!onlyOn(info, ['desktop', 'phone', 'iphone-18-pro-max']), 'Runs on desktop, phone and the WebKit iPhone 18 Pro Max emulation.');
   test.setTimeout(600_000);
   const n = info.project.name;
   await freshStart(page);

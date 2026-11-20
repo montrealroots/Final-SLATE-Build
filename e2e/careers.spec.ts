@@ -6,7 +6,7 @@
 //
 // Fixtures, labelled: each world seed is pinned (helpers.ts pinSeed) so the run is the same every time; the seeds below
 // were chosen once, not adjusted to pass. Network failures are injected with page.route and declared with expectErrors.
-// Desktop runs in Chromium; the phone run is Chromium at 390×844. Emulation, not devices.
+// Desktop runs in Chromium; the phone run is Chromium at the iPhone 18 Pro Max's 440×763 (until November 20, 2026, 390×844). Emulation, not devices.
 import { expect, expectErrors, test, type Page } from './test';
 import { addScene, advance, castRoles, creditsTable, nav, newProject, onlyOn, pinSeed, pressSaveAndExit, quickLife, runToDelivery, saveAndApprove, section, secureStartingBacking, staffEveryDepartment, writePitch } from './helpers';
 

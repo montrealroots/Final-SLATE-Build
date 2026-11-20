@@ -14,7 +14,7 @@ type Day = { id: string; date: string; locationLabel: string; status: string; in
 const days = async (page: Page): Promise<Day[]> => (await readSavedState(page)).projects[0].schedule.days;
 
 test('a harbour filmed in Bergen from a London base: asked, scouted, rained on, travelled to, reloaded and delivered', async ({ page }, info) => {
-  test.skip(!onlyOn(info, ['desktop', 'phone', 'iphone-15-pro-max']), 'Runs on desktop, phone and WebKit (iPhone 15 Pro Max).');
+  test.skip(!onlyOn(info, ['desktop', 'phone', 'iphone-18-pro-max']), 'Runs on desktop, phone and WebKit (iPhone 18 Pro Max).');
   test.setTimeout(1_200_000);
   await seededLife(page, 'gb-london', '2026-10-05', 2);
   await newProject(page, { title: 'North Water', format: 'Short Film', runtime: '6', budget: 'Low Budget' });
@@ -153,7 +153,7 @@ test('a harbour filmed in Bergen from a London base: asked, scouted, rained on, 
 // The comparison to the wet-October journey in journeys.spec.ts: the same base, month, seed and three exterior streets,
 // which there lose a day to rain. Here the streets are filmed on a soundstage in the same city, and no day is lost.
 test('the same wet October on a soundstage: no day is lost to rain, and nobody is moved or housed', async ({ page }, info) => {
-  test.skip(!onlyOn(info, ['desktop', 'iphone-15-pro-max']), 'Runs on desktop and WebKit (iPhone 15 Pro Max).');
+  test.skip(!onlyOn(info, ['desktop', 'iphone-18-pro-max']), 'Runs on desktop and WebKit (iPhone 18 Pro Max).');
   test.setTimeout(1_200_000);
   await seededLife(page, 'gb-london', '2026-10-05', 2);
   await newProject(page, { title: 'Dry Streets', format: 'Short Film', runtime: '4' });

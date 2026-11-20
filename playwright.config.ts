@@ -6,6 +6,10 @@ import { defineConfig, devices } from '@playwright/test';
 const webkitPath = process.env.SLATE_WEBKIT_PATH ?? '/opt/pw-browsers/webkit-2386/pw_run.sh';
 const webkitLaunch = existsSync(webkitPath) ? { launchOptions: { executablePath: webkitPath } } : {};
 
+const IOS_27 = 'Mozilla/5.0 (iPhone; CPU iPhone OS 27_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/27.0 Mobile/15E148 Safari/604.1';
+const IPHONE_18_PRO_MAX = { ...devices['iPhone 17 Pro Max'], userAgent: IOS_27 };
+const IPHONE_18_PRO_MAX_LANDSCAPE = { ...devices['iPhone 17 Pro Max landscape'], userAgent: IOS_27 };
+
 const prod = process.env.SLATE_E2E_PROD === '1';
 // SLATE_E2E_PORT lets a second checkout run its journeys beside another run.
 const port = Number(process.env.SLATE_E2E_PORT) || (prod ? 4175 : 5174);
@@ -27,14 +31,17 @@ export default defineConfig({
     : { command: `npx vite --port ${port} --strictPort`, url: `http://localhost:${port}`, reuseExistingServer: true, timeout: 60_000 },
   projects: [
     { name: 'desktop', use: { ...devices['Desktop Chrome'], viewport: { width: 1280, height: 720 } } },
-    { name: 'phone', use: { ...devices['Desktop Chrome'], viewport: { width: 390, height: 844 }, isMobile: true, hasTouch: true, deviceScaleFactor: 1 } },
-    // WebKit emulation of the user's target phones. Emulation only: not physical-device or real Safari verification.
-    { name: 'iphone-15-plus', testMatch: /(ui-coverage|live-action|devices|creation|focus|season|career|awards|readers|title-input)\.spec\.ts/, use: { ...devices['iPhone 15 Plus'], ...webkitLaunch } },
-    { name: 'iphone-15-pro-max', testMatch: /(ui-coverage|live-action|devices|creation|focus|phone-layout|connected|title-input|journey-e|decisions|catalog|children|foundation|data-packs|creative-ideas|real-people|craft|destinations|layout|stories|characters|picture-library|sources|studio-pitch|casting-director|line-producer|representation|v5-first-look|v5-release-plan|v5-music-catalog|v5-money-equipment|v6-history|v6-first-look-tv|v9-bank|v9-project-money|v9-papers)\.spec\.ts/, use: { ...devices['iPhone 15 Pro Max'], ...webkitLaunch } },
-    { name: 'iphone-15-pro-max-landscape', testMatch: /(devices|phone-layout)\.spec\.ts/, use: { ...devices['iPhone 15 Pro Max landscape'], ...webkitLaunch } },
-    // Every journey on WebKit (iPhone 15 Pro Max emulation), with no list of files: SLATE_E2E_WEBKIT_ALL=1 adds it (from
+    // The iPhone 18 Pro Max is the game's one phone (the owner, November 20, 2026: "the mobile device it should only fit
+    // and be perfected for ... the base gameplay device"). Until then the phone projects were the iPhone 15 Plus and 15 Pro
+    // Max, and a generic 390-pixel phone. Its screen is Apple's (support.apple.com/en-us/148591: 6.9 inches, 2868 by 1320
+    // pixels at 460 ppi, so 440 by 956 at 3x), the same panel as the 17 Pro Max, whose Safari viewport this keeps; the
+    // user agent names iOS 27, which Apple's page names. Emulation only: not a physical iPhone 18 Pro Max or real Safari.
+    { name: 'phone', use: { ...devices['Desktop Chrome'], viewport: IPHONE_18_PRO_MAX.viewport, isMobile: true, hasTouch: true, deviceScaleFactor: 1 } },
+    { name: 'iphone-18-pro-max', testMatch: /(ui-coverage|live-action|devices|creation|focus|phone-layout|connected|title-input|journey-e|decisions|catalog|children|foundation|data-packs|creative-ideas|real-people|craft|destinations|layout|stories|characters|picture-library|sources|studio-pitch|casting-director|line-producer|representation|v5-first-look|v5-release-plan|v5-music-catalog|v5-money-equipment|v6-history|v6-first-look-tv|v9-bank|v9-project-money|v9-papers|season|career|awards|readers)\.spec\.ts/, use: { ...IPHONE_18_PRO_MAX, ...webkitLaunch } },
+    { name: 'iphone-18-pro-max-landscape', testMatch: /(devices|phone-layout)\.spec\.ts/, use: { ...IPHONE_18_PRO_MAX_LANDSCAPE, ...webkitLaunch } },
+    // Every journey on WebKit on the iPhone 18 Pro Max, with no list of files: SLATE_E2E_WEBKIT_ALL=1 adds it (from
     // November 20, 2026; e2e/helpers.ts onlyOn lets a desktop-only journey run here too). Opt-in, as a whole run takes
-    // hours. Still emulation: not Safari on a Mac and not a physical iPhone, which are reported apart (JOURNEY-REPORT.md).
-    ...(process.env.SLATE_E2E_WEBKIT_ALL === '1' ? [{ name: 'iphone-webkit-all', use: { ...devices['iPhone 15 Pro Max'], ...webkitLaunch } }] : []),
+    // hours.
+    ...(process.env.SLATE_E2E_WEBKIT_ALL === '1' ? [{ name: 'iphone-webkit-all', use: { ...IPHONE_18_PRO_MAX, ...webkitLaunch } }] : []),
   ],
 });

@@ -10,7 +10,7 @@ const homeBank = (page: Page) => page.locator('.panel, section', { has: page.get
 const available = async (page: Page) => Number((await homeBank(page).innerText()).match(/Available\s*\$([\d,]+)/)![1].replace(/,/g, ''));
 
 test('a custom budget moves nothing; your money into the project and a purchase come off your bank, line by line', async ({ page }, info) => {
-  test.skip(!onlyOn(info, ['desktop', 'phone', 'iphone-15-pro-max']), 'Desktop, phone and the iPhone 15 Pro Max (WebKit).');
+  test.skip(!onlyOn(info, ['desktop', 'phone', 'iphone-18-pro-max']), 'Desktop, phone and the iPhone 18 Pro Max (WebKit).');
   test.setTimeout(240_000);
   await quickLife(page, 'us-los-angeles', '2028-01-26');
   await expect(homeBank(page)).toContainText('Available$25,000,000');

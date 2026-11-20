@@ -15,7 +15,7 @@ async function openPicker(page: Page) {
 const project = async (page: Page): Promise<any> => (await readSavedState(page))?.projects?.[0] ?? {};
 
 test.beforeEach(({}, info) => {
-  test.skip(!onlyOn(info, ['desktop', 'phone', 'iphone-15-pro-max']), 'Runs on desktop, phone and WebKit (iPhone 15 Pro Max).');
+  test.skip(!onlyOn(info, ['desktop', 'phone', 'iphone-18-pro-max']), 'Runs on desktop, phone and WebKit (iPhone 18 Pro Max).');
 });
 
 test('a real work found, read with its recorded rights, chosen, undone, chosen again, let go, and still there after a reload', async ({ page }, info) => {
