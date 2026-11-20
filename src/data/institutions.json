@@ -4601,7 +4601,16 @@
      "competitive": true
     }
    ],
-   "rosterStatus": "read"
+   "rosterStatus": "read",
+   "official": {
+    "2026": {
+     "start": "2026-03-20",
+     "end": "2026-03-27",
+     "label": "Series Mania 2026",
+     "source": "https://seriesmania.com/festival/edition/2026/",
+     "checked": "2026-11-20"
+    }
+   }
   },
   {
    "id": "locarno",

@@ -21,9 +21,10 @@
       "2026 Canadian Screen Awards",
       "2026 Sundance Film Festival",
       "48th Clermont-Ferrand International Short Film Festival",
-      "76th Berlin International Film Festival"
+      "76th Berlin International Film Festival",
+      "Series Mania 2026"
     ],
-    "notInSet": "Every other 2026 ceremony and festival. The 76th Berlin International Film Festival from November 20, 2026: the films of Competition, Perspectives, Panorama, Forum, Forum Expanded, Generation, Berlinale Shorts and Berlinale Special (233), each section from the release that completed it, and the prizes of its official juries, its audience and its honorary awards (26); not the independent juries' prizes, nor the Retrospective, Berlinale Classics and Teddy 40 screenings of older films. The 48th Clermont-Ferrand International Short Film Festival from November 20, 2026: the 135 films of its international (60), national (51) and lab (24) competitions, shown from the January 30 opening as no announcement is dated, and its 29 prizes from the February 7 close. The 2026 Sundance Film Festival from November 20, 2026: every section's selection (97 features and episodic projects from December 10, 2025; 54 shorts from December 15) and every award of the January 30 ceremony and the short film awards of January 27 (the Park City Legacy screenings of earlier editions' films, and the mentorship and development grants, are not results). The 2026 Canadian Screen Awards whole from November 19, 2026, the winners of its four shows all shown from May 31, the date of the Academy's winners release. The 49th Japan Academy Film Prize from November 19, 2026: its 15 competitive categories (the newcomer and honorary awards have no Best), the Excellent Awards shown from the March 13 ceremony as their announcement states no date. The 2026 AACTA Awards from November 19, 2026: film, television, documentary and short film (48 categories), the nominees shown from February 4, 2026, the first ceremony, as their release gives no date. The 40th Goya Awards whole from November 19, 2026 (28 categories). The 51st César Awards whole from November 19, 2026 (24 categories; the honorary César has no field). The 41st Film Independent Spirit Awards whole from November 19, 2026 (20 categories). The 37th PGA Awards from November 19, 2026: the 10 categories decided on February 28 whole, and the children's and short-form winners of February 26 (not their nominees). The 78th Writers Guild Awards from November 19, 2026: the 15 categories the game holds and the WGA's page lays out alike (not the variety, quiz, daytime, news, radio or promotional ones). The 78th DGA Awards from November 19, 2026: every category's nominees but Commercials, and every winner but Comedy Series, which the DGA's release doesn't state as a winner. The 32nd Actor Awards are recorded whole from November 19, 2026 (15 categories). The 2026 Emmys are recorded whole from November 19, 2026: all 120 categories' winners, and the nominees of the 117 whose page lists a field (three list only their winners: two juried awards and an area award). The 83rd Golden Globe Awards (from goldenglobes.com/nominations/2026) and the 98th Academy Awards are recorded whole from November 19, 2026; until then five Golden Globes were, and the night's article, which names The Pitt and The Studio as series winners without saying which won which, left both out (the nominations page says: The Pitt, Drama; The Studio, Musical or Comedy)."
+    "notInSet": "Every other 2026 ceremony and festival. Series Mania 2026 from November 20, 2026: its five sections and opening and closing series (from the March 20 opening, as no dated announcement of the selection was found) and every prize of March 27, with the UGC spectators' label of April 4. The 76th Berlin International Film Festival from November 20, 2026: the films of Competition, Perspectives, Panorama, Forum, Forum Expanded, Generation, Berlinale Shorts and Berlinale Special (233), each section from the release that completed it, and the prizes of its official juries, its audience and its honorary awards (26); not the independent juries' prizes, nor the Retrospective, Berlinale Classics and Teddy 40 screenings of older films. The 48th Clermont-Ferrand International Short Film Festival from November 20, 2026: the 135 films of its international (60), national (51) and lab (24) competitions, shown from the January 30 opening as no announcement is dated, and its 29 prizes from the February 7 close. The 2026 Sundance Film Festival from November 20, 2026: every section's selection (97 features and episodic projects from December 10, 2025; 54 shorts from December 15) and every award of the January 30 ceremony and the short film awards of January 27 (the Park City Legacy screenings of earlier editions' films, and the mentorship and development grants, are not results). The 2026 Canadian Screen Awards whole from November 19, 2026, the winners of its four shows all shown from May 31, the date of the Academy's winners release. The 49th Japan Academy Film Prize from November 19, 2026: its 15 competitive categories (the newcomer and honorary awards have no Best), the Excellent Awards shown from the March 13 ceremony as their announcement states no date. The 2026 AACTA Awards from November 19, 2026: film, television, documentary and short film (48 categories), the nominees shown from February 4, 2026, the first ceremony, as their release gives no date. The 40th Goya Awards whole from November 19, 2026 (28 categories). The 51st César Awards whole from November 19, 2026 (24 categories; the honorary César has no field). The 41st Film Independent Spirit Awards whole from November 19, 2026 (20 categories). The 37th PGA Awards from November 19, 2026: the 10 categories decided on February 28 whole, and the children's and short-form winners of February 26 (not their nominees). The 78th Writers Guild Awards from November 19, 2026: the 15 categories the game holds and the WGA's page lays out alike (not the variety, quiz, daytime, news, radio or promotional ones). The 78th DGA Awards from November 19, 2026: every category's nominees but Commercials, and every winner but Comedy Series, which the DGA's release doesn't state as a winner. The 32nd Actor Awards are recorded whole from November 19, 2026 (15 categories). The 2026 Emmys are recorded whole from November 19, 2026: all 120 categories' winners, and the nominees of the 117 whose page lists a field (three list only their winners: two juried awards and an area award). The 83rd Golden Globe Awards (from goldenglobes.com/nominations/2026) and the 98th Academy Awards are recorded whole from November 19, 2026; until then five Golden Globes were, and the night's article, which names The Pitt and The Studio as series winners without saying which won which, left both out (the nominations page says: The Pitt, Drama; The Studio, Musical or Comedy)."
   },
   "sources": {
     "oscars-98": {
@@ -481,6 +482,30 @@
       "retrieved": "2026-11-20",
       "section": "A Berlinale Camera (February 16, 2026)",
       "access": "Read through the site's own news feed, which gives each release its date."
+    },
+    "series-mania-2026-selection": {
+      "url": "https://seriesmania.com/festival/edition/2026/",
+      "title": "Series Mania – Édition 2026 (Sélection officielle)",
+      "provider": "Series Mania",
+      "retrieved": "2026-11-20",
+      "section": "The official selection by section (the series pages the edition page filters, read through the site's own feed of them)",
+      "access": "Read from the festival's feed of series pages, by the section each is filed under, keeping the 2026 ones; the special screenings' events (a ceremony, a reading, radio broadcasts, an anniversary) are left out. No dated announcement of the selection was found, so it is shown from the opening, March 20, 2026, when it was certainly public."
+    },
+    "series-mania-2026-palmares": {
+      "url": "https://seriesmania.com/festival/edition/2026/",
+      "title": "Series Mania – Édition 2026 (Palmarès)",
+      "provider": "Series Mania",
+      "retrieved": "2026-11-20",
+      "section": "Every prize of the closing ceremony of March 27, 2026",
+      "access": "Downloaded directly and read; special mentions are not prizes and are left out."
+    },
+    "series-mania-2026-ugc": {
+      "url": "https://seriesmania.com/festival/label-ugc-spectateurs-series-mania-2026/",
+      "title": "Label UGC Spectateurs Series Mania 2026",
+      "provider": "Series Mania",
+      "retrieved": "2026-11-20",
+      "section": "The UGC spectators' label (April 4, 2026)",
+      "access": "Read directly."
     }
   },
   "observations": [
@@ -25582,6 +25607,507 @@
       "occurred": "2026-02-21",
       "published": "2026-02-21",
       "source": "berlinale-2026-panorama-audience"
+    },
+    {
+      "id": "series-mania-2026-international-competition-selection",
+      "kind": "nominees",
+      "institution": "series-mania",
+      "year": 2026,
+      "edition": "Series Mania 2026",
+      "precision": "day",
+      "status": "verified",
+      "revision": 1,
+      "imported": "2026-11-20",
+      "category": "international",
+      "categoryName": "International Competition",
+      "subjects": [
+        "Anatomía de un instante",
+        "My Brother",
+        "Dear Killer Nannies",
+        "Dustfall",
+        "Waiting for the out",
+        "PROUD",
+        "Major Players",
+        "Paolo",
+        "The Audacity"
+      ],
+      "occurred": "2026-03-20",
+      "published": "2026-03-20",
+      "source": "series-mania-2026-selection"
+    },
+    {
+      "id": "series-mania-2026-french-competition-selection",
+      "kind": "nominees",
+      "institution": "series-mania",
+      "year": 2026,
+      "edition": "Series Mania 2026",
+      "precision": "day",
+      "status": "verified",
+      "revision": 1,
+      "imported": "2026-11-20",
+      "category": "french",
+      "categoryName": "French Competition",
+      "subjects": [
+        "Eldorado",
+        "Privilèges",
+        "Camarades",
+        "Grandiose",
+        "L’été 36",
+        "Enchaînés"
+      ],
+      "occurred": "2026-03-20",
+      "published": "2026-03-20",
+      "source": "series-mania-2026-selection"
+    },
+    {
+      "id": "series-mania-2026-international-panorama-selection",
+      "kind": "nominees",
+      "institution": "series-mania",
+      "year": 2026,
+      "edition": "Series Mania 2026",
+      "precision": "day",
+      "status": "verified",
+      "revision": 1,
+      "imported": "2026-11-20",
+      "category": "panorama",
+      "categoryName": "International Panorama",
+      "subjects": [
+        "Breendonk",
+        "Burden of justice",
+        "Queen of Mars",
+        "Variola Vera",
+        "The Flaws",
+        "Bienvenue à Kingston-Falls",
+        "Small Prophets",
+        "Ethernal",
+        "These Sacred Vows",
+        "The Best Immigrant",
+        "Prisoner 951",
+        "Babies"
+      ],
+      "occurred": "2026-03-20",
+      "published": "2026-03-20",
+      "source": "series-mania-2026-selection"
+    },
+    {
+      "id": "series-mania-2026-short-forms-competition-selection",
+      "kind": "nominees",
+      "institution": "series-mania",
+      "year": 2026,
+      "edition": "Series Mania 2026",
+      "precision": "day",
+      "status": "verified",
+      "revision": 1,
+      "imported": "2026-11-20",
+      "category": "short-forms",
+      "categoryName": "Short Forms Competition",
+      "subjects": [
+        "Atlantis Pasila",
+        "Hirayasumi",
+        "La Dernière Heure",
+        "Ayer's Cliff",
+        "Homebodies",
+        "Happiness",
+        "Les Saturnides",
+        "Unfiltered"
+      ],
+      "occurred": "2026-03-20",
+      "published": "2026-03-20",
+      "source": "series-mania-2026-selection"
+    },
+    {
+      "id": "series-mania-2026-special-screenings-selection",
+      "kind": "nominees",
+      "institution": "series-mania",
+      "year": 2026,
+      "edition": "Series Mania 2026",
+      "precision": "day",
+      "status": "verified",
+      "revision": 1,
+      "imported": "2026-11-20",
+      "category": "special-screenings",
+      "categoryName": "Special Screenings",
+      "subjects": [
+        "Pause Café",
+        "Etty",
+        "Recalé",
+        "Asphodèle",
+        "Lucky Luke",
+        "Peaky Blinders : L’Immortel",
+        "The Legend of Kitchen Soldier"
+      ],
+      "occurred": "2026-03-20",
+      "published": "2026-03-20",
+      "source": "series-mania-2026-selection"
+    },
+    {
+      "id": "series-mania-2026-opening-and-closing-series-selection",
+      "kind": "nominees",
+      "institution": "series-mania",
+      "year": 2026,
+      "edition": "Series Mania 2026",
+      "precision": "day",
+      "status": "verified",
+      "revision": 1,
+      "imported": "2026-11-20",
+      "category": null,
+      "categoryName": "Opening and Closing Series",
+      "subjects": [
+        "The Testaments",
+        "Vitrerie Joyal"
+      ],
+      "occurred": "2026-03-20",
+      "published": "2026-03-20",
+      "source": "series-mania-2026-selection"
+    },
+    {
+      "id": "series-mania-2026-grand-prix-international-competition",
+      "kind": "winner",
+      "institution": "series-mania",
+      "year": 2026,
+      "edition": "Series Mania 2026",
+      "precision": "day",
+      "status": "verified",
+      "revision": 1,
+      "imported": "2026-11-20",
+      "category": "grand-prix",
+      "categoryName": "Grand Prix (International Competition)",
+      "subjects": [
+        "PROUD"
+      ],
+      "recipients": "work_only",
+      "occurred": "2026-03-27",
+      "published": "2026-03-27",
+      "source": "series-mania-2026-palmares"
+    },
+    {
+      "id": "series-mania-2026-best-writing-international-competition",
+      "kind": "winner",
+      "institution": "series-mania",
+      "year": 2026,
+      "edition": "Series Mania 2026",
+      "precision": "day",
+      "status": "verified",
+      "revision": 1,
+      "imported": "2026-11-20",
+      "category": "intl-writing",
+      "categoryName": "Best Writing (International Competition)",
+      "subjects": [
+        "Dennis Kelly"
+      ],
+      "work": "Waiting for the out",
+      "recipients": "named_person",
+      "occurred": "2026-03-27",
+      "published": "2026-03-27",
+      "source": "series-mania-2026-palmares"
+    },
+    {
+      "id": "series-mania-2026-best-actress-international-competition",
+      "kind": "winner",
+      "institution": "series-mania",
+      "year": 2026,
+      "edition": "Series Mania 2026",
+      "precision": "day",
+      "status": "verified",
+      "revision": 1,
+      "imported": "2026-11-20",
+      "category": "intl-actress",
+      "categoryName": "Best Actress (International Competition)",
+      "subjects": [
+        "Amanda Jansson"
+      ],
+      "work": "My Brother",
+      "recipients": "named_person",
+      "occurred": "2026-03-27",
+      "published": "2026-03-27",
+      "source": "series-mania-2026-palmares"
+    },
+    {
+      "id": "series-mania-2026-best-actor-international-competition",
+      "kind": "winner",
+      "institution": "series-mania",
+      "year": 2026,
+      "edition": "Series Mania 2026",
+      "precision": "day",
+      "status": "verified",
+      "revision": 1,
+      "imported": "2026-11-20",
+      "category": "intl-actor",
+      "categoryName": "Best Actor (International Competition)",
+      "subjects": [
+        "Ignacy Liss"
+      ],
+      "work": "PROUD",
+      "recipients": "named_person",
+      "occurred": "2026-03-27",
+      "published": "2026-03-27",
+      "source": "series-mania-2026-palmares"
+    },
+    {
+      "id": "series-mania-2026-best-series-french-competition",
+      "kind": "winner",
+      "institution": "series-mania",
+      "year": 2026,
+      "edition": "Series Mania 2026",
+      "precision": "day",
+      "status": "verified",
+      "revision": 1,
+      "imported": "2026-11-20",
+      "category": "french-series",
+      "categoryName": "Best Series (French Competition)",
+      "subjects": [
+        "Grandiose"
+      ],
+      "recipients": "work_only",
+      "occurred": "2026-03-27",
+      "published": "2026-03-27",
+      "source": "series-mania-2026-palmares"
+    },
+    {
+      "id": "series-mania-2026-best-actress-french-competition",
+      "kind": "winner",
+      "institution": "series-mania",
+      "year": 2026,
+      "edition": "Series Mania 2026",
+      "precision": "day",
+      "status": "verified",
+      "revision": 1,
+      "imported": "2026-11-20",
+      "category": "french-actress",
+      "categoryName": "Best Actress (French Competition)",
+      "subjects": [
+        "Manon Kneusé"
+      ],
+      "work": "Camarades",
+      "recipients": "named_person",
+      "occurred": "2026-03-27",
+      "published": "2026-03-27",
+      "source": "series-mania-2026-palmares"
+    },
+    {
+      "id": "series-mania-2026-best-actor-french-competition",
+      "kind": "winner",
+      "institution": "series-mania",
+      "year": 2026,
+      "edition": "Series Mania 2026",
+      "precision": "day",
+      "status": "verified",
+      "revision": 1,
+      "imported": "2026-11-20",
+      "category": "french-actor",
+      "categoryName": "Best Actor (French Competition)",
+      "subjects": [
+        "Karim Leklou"
+      ],
+      "work": "Eldorado",
+      "recipients": "named_person",
+      "occurred": "2026-03-27",
+      "published": "2026-03-27",
+      "source": "series-mania-2026-palmares"
+    },
+    {
+      "id": "series-mania-2026-best-musical-score-french-competition",
+      "kind": "winner",
+      "institution": "series-mania",
+      "year": 2026,
+      "edition": "Series Mania 2026",
+      "precision": "day",
+      "status": "verified",
+      "revision": 1,
+      "imported": "2026-11-20",
+      "category": "french-score",
+      "categoryName": "Best Musical Score (French Competition)",
+      "subjects": [
+        "Amine Bouhafa"
+      ],
+      "work": "Privilèges",
+      "recipients": "named_person",
+      "occurred": "2026-03-27",
+      "published": "2026-03-27",
+      "source": "series-mania-2026-palmares"
+    },
+    {
+      "id": "series-mania-2026-best-series-international-panorama",
+      "kind": "winner",
+      "institution": "series-mania",
+      "year": 2026,
+      "edition": "Series Mania 2026",
+      "precision": "day",
+      "status": "verified",
+      "revision": 1,
+      "imported": "2026-11-20",
+      "category": "panorama-series",
+      "categoryName": "Best Series (International Panorama)",
+      "subjects": [
+        "Small Prophets"
+      ],
+      "recipients": "work_only",
+      "occurred": "2026-03-27",
+      "published": "2026-03-27",
+      "source": "series-mania-2026-palmares"
+    },
+    {
+      "id": "series-mania-2026-best-directing-international-panorama",
+      "kind": "winner",
+      "institution": "series-mania",
+      "year": 2026,
+      "edition": "Series Mania 2026",
+      "precision": "day",
+      "status": "verified",
+      "revision": 1,
+      "imported": "2026-11-20",
+      "category": "panorama-directing",
+      "categoryName": "Best Directing (International Panorama)",
+      "subjects": [
+        "Arne Feldhusen"
+      ],
+      "work": "The Flaws",
+      "recipients": "named_person",
+      "occurred": "2026-03-27",
+      "published": "2026-03-27",
+      "source": "series-mania-2026-palmares"
+    },
+    {
+      "id": "series-mania-2026-meilleure-actrice-panorama-international",
+      "kind": "winner",
+      "institution": "series-mania",
+      "year": 2026,
+      "edition": "Series Mania 2026",
+      "precision": "day",
+      "status": "verified",
+      "revision": 1,
+      "imported": "2026-11-20",
+      "category": null,
+      "categoryName": "Meilleure actrice (Panorama international)",
+      "subjects": [
+        "Lauren Patel"
+      ],
+      "work": "Small Prophets",
+      "recipients": "named_person",
+      "occurred": "2026-03-27",
+      "published": "2026-03-27",
+      "source": "series-mania-2026-palmares"
+    },
+    {
+      "id": "series-mania-2026-meilleur-acteur-panorama-international",
+      "kind": "winner",
+      "institution": "series-mania",
+      "year": 2026,
+      "edition": "Series Mania 2026",
+      "precision": "day",
+      "status": "verified",
+      "revision": 1,
+      "imported": "2026-11-20",
+      "category": null,
+      "categoryName": "Meilleur acteur (Panorama international)",
+      "subjects": [
+        "Maxime Le Flaguais"
+      ],
+      "work": "Bienvenue à Kingston-Falls",
+      "recipients": "named_person",
+      "occurred": "2026-03-27",
+      "published": "2026-03-27",
+      "source": "series-mania-2026-palmares"
+    },
+    {
+      "id": "series-mania-2026-prix-des-etudiants-panorama-international",
+      "kind": "winner",
+      "institution": "series-mania",
+      "year": 2026,
+      "edition": "Series Mania 2026",
+      "precision": "day",
+      "status": "verified",
+      "revision": 1,
+      "imported": "2026-11-20",
+      "category": null,
+      "categoryName": "Prix des Étudiants (Panorama international)",
+      "subjects": [
+        "Variola Vera"
+      ],
+      "recipients": "work_only",
+      "occurred": "2026-03-27",
+      "published": "2026-03-27",
+      "source": "series-mania-2026-palmares"
+    },
+    {
+      "id": "series-mania-2026-best-series-short-forms-competition",
+      "kind": "winner",
+      "institution": "series-mania",
+      "year": 2026,
+      "edition": "Series Mania 2026",
+      "precision": "day",
+      "status": "verified",
+      "revision": 1,
+      "imported": "2026-11-20",
+      "category": "short-forms-best",
+      "categoryName": "Best Series (Short Forms Competition)",
+      "subjects": [
+        "Ayer's Cliff"
+      ],
+      "recipients": "work_only",
+      "occurred": "2026-03-27",
+      "published": "2026-03-27",
+      "source": "series-mania-2026-palmares"
+    },
+    {
+      "id": "series-mania-2026-prix-des-lyceens-de-la-region-hauts-de-france-competition-formats-courts",
+      "kind": "winner",
+      "institution": "series-mania",
+      "year": 2026,
+      "edition": "Series Mania 2026",
+      "precision": "day",
+      "status": "verified",
+      "revision": 1,
+      "imported": "2026-11-20",
+      "category": null,
+      "categoryName": "Prix des Lycéens de la Région Hauts-de-France (Compétition Formats Courts)",
+      "subjects": [
+        "La Dernière Heure"
+      ],
+      "recipients": "work_only",
+      "occurred": "2026-03-27",
+      "published": "2026-03-27",
+      "source": "series-mania-2026-palmares"
+    },
+    {
+      "id": "series-mania-2026-audience-award",
+      "kind": "winner",
+      "institution": "series-mania",
+      "year": 2026,
+      "edition": "Series Mania 2026",
+      "precision": "day",
+      "status": "verified",
+      "revision": 1,
+      "imported": "2026-11-20",
+      "category": "audience",
+      "categoryName": "Audience Award",
+      "subjects": [
+        "Dustfall"
+      ],
+      "recipients": "work_only",
+      "occurred": "2026-03-27",
+      "published": "2026-03-27",
+      "source": "series-mania-2026-palmares"
+    },
+    {
+      "id": "series-mania-2026-label-des-spectateurs-ugc",
+      "kind": "winner",
+      "institution": "series-mania",
+      "year": 2026,
+      "edition": "Series Mania 2026",
+      "precision": "day",
+      "status": "verified",
+      "revision": 1,
+      "imported": "2026-11-20",
+      "category": null,
+      "categoryName": "Label des spectateurs UGC",
+      "subjects": [
+        "Burden of justice"
+      ],
+      "recipients": "work_only",
+      "occurred": "2026-04-04",
+      "published": "2026-04-04",
+      "source": "series-mania-2026-ugc"
     }
   ]
 }

@@ -28,7 +28,7 @@ a roster that was read says nothing about the eligibility rules, the recipients,
 | Hot Docs Canadian International Documentary Festival (`hot-docs`) | 2 | 1 / 1 / 0 | 1 / 0 / 1 | 0 | 2 | 1 | 1 | 0 | 1 |
 | Clermont-Ferrand International Short Film Festival (`clermont`) | 6 | 4 / 2 / 0 | 3 / 0 / 3 | 3 | 6 | 3 | 5 | 1 | 2 |
 | SXSW Film & TV Festival (`sxsw`) | 12 | 5 / 7 / 0 | 5 / 0 / 7 | 0 | 12 | 5 | 5 | 0 | 1 |
-| Series Mania (`series-mania`) | 17 | 16 / 1 / 0 | 4 / 0 / 13 | 0 | 0 | 4 | 6 | 0 | 1 |
+| Series Mania (`series-mania`) | 17 | 16 / 1 / 0 | 4 / 0 / 13 | 0 | 17 | 4 | 7 | 0 | 1 |
 | Locarno Film Festival (`locarno`) | 2 | 0 / 0 / 2 | 0 / 0 / 2 | 0 | 0 | 0 | 1 | 0 | 0 |
 | FESPACO (`fespaco`) | 5 | 0 / 0 / 5 | 4 / 0 / 1 | 0 | 5 | 0 | 4 | 0 | 0 |
 | BAFTA Film Awards (`bafta-film`) | 7 | 0 / 0 / 7 | 7 / 0 / 0 | 0 | 0 | 7 | 4 | 0 | 0 |
@@ -50,7 +50,7 @@ a roster that was read says nothing about the eligibility rules, the recipients,
 | Japan Academy Film Prize (`japan-academy`) | 17 | 17 / 0 / 0 | 17 / 0 / 0 | 0 | 17 | 0 | 9 | 0 | 2 |
 | Blue Dragon Film Awards (`blue-dragon`) | 3 | 0 / 0 / 3 | 0 / 0 / 3 | 0 | 0 | 0 | 2 | 0 | 0 |
 | European Film Awards (`european-film-awards`) | 20 | 15 / 5 / 0 | 15 / 0 / 5 | 0 | 20 | 14 | 8 | 6 | 0 |
-| **All 37** | 806 | 709 / 69 / 28 | 592 / 11 / 203 | 28 | 528 | 541 | 317 | 50 | 123 |
+| **All 37** | 806 | 709 / 69 / 28 | 592 / 11 / 203 | 28 | 545 | 541 | 318 | 50 | 123 |
 
 ## Research queue
 

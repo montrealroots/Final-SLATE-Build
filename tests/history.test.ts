@@ -273,6 +273,19 @@ describe('recorded history', () => {
     expect(new Set(won.filter((o) => o.category).map((o) => o.category)).size).toBe(12); // every prize the game holds, and the honorary bear
   });
 
+  it('holds Series Mania 2026: the selection from the opening, the palmarès from the close, the UGC label after', () => {
+    const on = (day: string, kind: string) => recordedResults('series-mania', 2026, day).filter((o) => o.kind === kind);
+    expect(recordedResults('series-mania', 2026, '2026-03-19')).toEqual([]);
+    expect(Object.fromEntries(on('2026-03-20', 'nominees').filter((o) => o.category).map((o) => [o.category, o.subjects.length]))).toEqual({ international: 9, french: 6, panorama: 12, 'short-forms': 8, 'special-screenings': 7 });
+    expect(on('2026-03-26', 'winner')).toEqual([]);
+    const won = on('2026-03-27', 'winner');
+    expect(won.find((o) => o.category === 'grand-prix')!.subjects).toEqual(['PROUD']);
+    expect(won.find((o) => o.category === 'intl-writing')).toMatchObject({ subjects: ['Dennis Kelly'], work: 'Waiting for the out' });
+    expect(new Set(won.filter((o) => o.category).map((o) => o.category)).size).toBe(12); // every prize the game holds
+    expect(won.some((o) => o.categoryName === 'Label des spectateurs UGC')).toBe(false);
+    expect(on('2026-04-04', 'winner').find((o) => o.categoryName === 'Label des spectateurs UGC')!.subjects).toEqual(['Burden of justice']);
+  });
+
   it('cites a source for every observation, never publishes before it happens, and names the game\'s own categories', () => {
     const insts = (institutions as { institutions: { id: string; categories: { id: string }[]; official?: Record<string, { label?: string }> }[] }).institutions;
     const wrong: string[] = [];

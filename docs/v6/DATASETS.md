@@ -70,6 +70,9 @@ The catalog (TMDB), the cinemas (Wikidata) and the stories (Wikipedia) are older
   - <https://www.berlinale.de/en/2026/news-press-releases/269378.html>, read 2026-11-20. The Honorary Golden Bear (November 14, 2025).
   - <https://www.berlinale.de/en/2026/news-press-releases/271392.html>, read 2026-11-20. A Berlinale Camera (January 12, 2026).
   - <https://www.berlinale.de/en/2026/news-press-releases/277191.html>, read 2026-11-20. A Berlinale Camera (February 16, 2026).
+  - <https://seriesmania.com/festival/edition/2026/>, read 2026-11-20. The official selection by section (the series pages the edition page filters, read through the site's own feed of them).
+  - <https://seriesmania.com/festival/edition/2026/>, read 2026-11-20. Every prize of the closing ceremony of March 27, 2026.
+  - <https://seriesmania.com/festival/label-ugc-spectateurs-series-mania-2026/>, read 2026-11-20. The UGC spectators' label (April 4, 2026).
 
 ## `src/data/history/awards-2026-reference.json`
 
