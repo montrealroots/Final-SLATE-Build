@@ -1,10 +1,19 @@
-import { existsSync } from 'fs';
+import { existsSync, statfsSync } from 'fs';
 import { defineConfig, devices } from '@playwright/test';
 
 // This cloud environment ships a newer WebKit build than the pinned Playwright expects; use it when present.
 // Override with SLATE_WEBKIT_PATH, or remove to use Playwright's own download elsewhere.
 const webkitPath = process.env.SLATE_WEBKIT_PATH ?? '/opt/pw-browsers/webkit-2386/pw_run.sh';
 const webkitLaunch = existsSync(webkitPath) ? { launchOptions: { executablePath: webkitPath } } : {};
+
+// Chromium's shared memory goes to /dev/shm where it is big enough (from November 20, 2026). Playwright passes
+// --disable-dev-shm-usage by default, for containers whose /dev/shm is 64 MB, and Chromium then keeps its shared memory
+// in files under /tmp. In this cloud container /tmp is on a disk with about 2.9 GB free, and four Chromiums at once
+// needed up to 3.5 GB: when a buffer couldn't be made, requests failed with net::ERR_INSUFFICIENT_RESOURCES and a tab's
+// compositor crashed (e2e/characters.spec.ts, four copies at once: 3 of 4 failed; with /dev/shm, 20 of 20 passed and
+// the disk stayed flat). The flag stays wherever /dev/shm is under 4 GB.
+const shmBytes = (() => { try { const s = statfsSync('/dev/shm'); return s.bsize * s.blocks; } catch { return 0; } })();
+const chromiumLaunch = shmBytes >= 4 * 2 ** 30 ? { launchOptions: { ignoreDefaultArgs: ['--disable-dev-shm-usage'] } } : {};
 
 const IOS_27 = 'Mozilla/5.0 (iPhone; CPU iPhone OS 27_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/27.0 Mobile/15E148 Safari/604.1';
 const IPHONE_18_PRO_MAX = { ...devices['iPhone 17 Pro Max'], userAgent: IOS_27 };
@@ -30,13 +39,13 @@ export default defineConfig({
     ? { command: `npx vite build && node e2e/serve-prod.ts`, url: `http://localhost:${port}`, reuseExistingServer: false, timeout: 180_000 }
     : { command: `npx vite --port ${port} --strictPort`, url: `http://localhost:${port}`, reuseExistingServer: true, timeout: 60_000 },
   projects: [
-    { name: 'desktop', use: { ...devices['Desktop Chrome'], viewport: { width: 1280, height: 720 } } },
+    { name: 'desktop', use: { ...devices['Desktop Chrome'], viewport: { width: 1280, height: 720 }, ...chromiumLaunch } },
     // The iPhone 18 Pro Max is the game's one phone (the owner, November 20, 2026: "the mobile device it should only fit
     // and be perfected for ... the base gameplay device"). Until then the phone projects were the iPhone 15 Plus and 15 Pro
     // Max, and a generic 390-pixel phone. Its screen is Apple's (support.apple.com/en-us/148591: 6.9 inches, 2868 by 1320
     // pixels at 460 ppi, so 440 by 956 at 3x), the same panel as the 17 Pro Max, whose Safari viewport this keeps; the
     // user agent names iOS 27, which Apple's page names. Emulation only: not a physical iPhone 18 Pro Max or real Safari.
-    { name: 'phone', use: { ...devices['Desktop Chrome'], viewport: IPHONE_18_PRO_MAX.viewport, isMobile: true, hasTouch: true, deviceScaleFactor: 1 } },
+    { name: 'phone', use: { ...devices['Desktop Chrome'], viewport: IPHONE_18_PRO_MAX.viewport, isMobile: true, hasTouch: true, deviceScaleFactor: 1, ...chromiumLaunch } },
     { name: 'iphone-18-pro-max', testMatch: /(ui-coverage|live-action|devices|creation|focus|phone-layout|connected|title-input|journey-e|decisions|catalog|children|foundation|data-packs|creative-ideas|real-people|craft|destinations|layout|stories|characters|picture-library|sources|studio-pitch|casting-director|line-producer|representation|v5-first-look|v5-release-plan|v5-music-catalog|v5-money-equipment|v6-history|v6-first-look-tv|v9-bank|v9-project-money|v9-papers|season|career|awards|readers)\.spec\.ts/, use: { ...IPHONE_18_PRO_MAX, ...webkitLaunch } },
     { name: 'iphone-18-pro-max-landscape', testMatch: /(devices|phone-layout)\.spec\.ts/, use: { ...IPHONE_18_PRO_MAX_LANDSCAPE, ...webkitLaunch } },
     // Every journey on WebKit on the iPhone 18 Pro Max, with no list of files: SLATE_E2E_WEBKIT_ALL=1 adds it (from
