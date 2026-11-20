@@ -52,9 +52,25 @@ describe('route-scoped fees', () => {
     expect(unsettled.every((r) => !r.applies && r.held)).toBe(true);
     // Every record is either applied or held with a reason; none is silently dropped.
     expect(ROUTE_RECORDS.every((r) => !!r.applies !== !!r.held)).toBe(true);
-    expect(ROUTE_RECORDS).toHaveLength(45);
+    expect(ROUTE_RECORDS).toHaveLength(47);
     // Serbia's long-stay route doesn't stand in for its work permit.
     expect(scopedRecords('RS', 'permit', { livesIn: 'US', passports: ['IN'], today: '2026-06-01' })).toEqual({ application: undefined, issuance: undefined });
+  });
+
+  // From November 20, 2026 (Nepal Tourism Board): some passports get no visa on arrival in Nepal and apply at a mission
+  // first, which no source times, so their time is the game's estimate, not the arrival desk's day; Chinese nationals
+  // pay nothing; everyone else keeps the US$30 on arrival.
+  it('times Nepal\'s mission-only passports by estimate, frees Chinese nationals, and leaves the rest at the desk', () => {
+    const at = (p: string) => withScope(visaTerms('NP'), 'NP', 'visa', { livesIn: 'US', passports: [p], today: '2026-11-20' });
+    const ng = at('NG');
+    expect(ng.fee).toEqual({ amount: 30, currency: 'USD' });
+    expect(ng.days).toBeGreaterThan(1);
+    expect(ng.estimate?.only).toBe('days');
+    expect(ng.basis).toMatch(/applied for at a mission first.*the game's estimate/);
+    expect(at('CN')).toMatchObject({ fee: { amount: 0, currency: 'USD' }, days: 1, estimate: null });
+    expect(at('US')).toMatchObject({ fee: { amount: 30, currency: 'USD' }, days: 1, estimate: null });
+    // Holding both, the mission rule wins: the Chinese record never applies to a Nigerian passport.
+    expect(withScope(visaTerms('NP'), 'NP', 'visa', { livesIn: 'US', passports: ['CN', 'NG'], today: '2026-11-20' }).fee.amount).toBe(30);
   });
 });
 
