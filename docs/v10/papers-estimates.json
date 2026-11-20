@@ -1,9 +1,9 @@
 {
  "counts": {
   "permits": 164,
-  "visas": 103,
-  "permitTimes": 15,
-  "visaTimes": 37
+  "visas": 102,
+  "permitTimes": 14,
+  "visaTimes": 34
  },
  "permits": [
   "AF",
@@ -196,7 +196,6 @@
   "CO",
   "KM",
   "CK",
-  "CY",
   "CD",
   "DJ",
   "DM",
@@ -282,7 +281,6 @@
   "BB",
   "EC",
   "GH",
-  "IS",
   "MU",
   "MX",
   "NO",
@@ -314,9 +312,7 @@
   "YT",
   "MD",
   "NA",
-  "NP",
   "NC",
-  "PG",
   "RE",
   "BL",
   "SH",
@@ -327,7 +323,6 @@
   "ZA",
   "TW",
   "TJ",
-  "UA",
   "UY",
   "VU",
   "WF"

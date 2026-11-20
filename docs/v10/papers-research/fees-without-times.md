@@ -159,3 +159,28 @@ estimated. Nothing settled; what was found, for the next pass:
   visas on arrival (decided on arrival, one day).
 - Refusing the tools or not answering: Ukraine (mfa.gov.ua, 403), Taiwan (boca.gov.tw, 503), Indonesia's e-visa site
   (403).
+
+The owner's six-destination research (November 20, 2026, `SLATE-Six-Destination-Papers-Research-2026-11-20`), applied.
+Its sources are the authorities' own text, read through the official search index where the pages refused direct
+retrieval, and each source's description says so.
+- Papua New Guinea, settled in full: the tourist visa has no fee, and the online application carries a US$50 eVisa
+  charge, paid once and not refunded if it fails, so US$50 in all. The authority's target is 10 working days (current at
+  June 2025, not a promise), recorded as 14 days. This resolves batch 7's lead: the handbook's "free" was the visa's
+  base fee.
+- Ukraine, settled in full: the Ministry's e-visa page gives three working days (one when urgent, at double the fee),
+  recorded as five days. The general visa page's older nine working days are kept as a conflict, and the consular route
+  (up to 10 working days, $65) stays separate. The date the change took effect wasn't found.
+- Iceland, settled with an average: ISK 80,000 for a first work-based residence permit (D-107) from January 1, 2026, and
+  about two months on average for those approved in 2025. `terms.json` records can now say `daysKind: "average"`, and the
+  game then shows "about 60 days, on average", never a deadline. The work permit beside it is a separate decision.
+- Nepal, settled in full: the Department of Immigration's US$30 for 15 days (US$50 for 30, US$125 for 90), issued at the
+  desk on arrival, recorded as one day like the other visas on arrival. The online receipt's 15-day validity isn't a
+  wait. Not done: the nationalities that must get a visa from a mission first aren't singled out yet.
+- Cyprus, settled with its conflict kept: €90 for an adult's Category C visa, usually 15 days and up to 45 (the unit
+  unstated). An official information sheet of unknown date gives 10 calendar days, up to 30, and stays in the sources.
+  The €35 facilitation rate for named nationalities and Cabo Verde's €67.50 aren't applied yet; the form's exact scope
+  must be mapped first.
+- Peru, not changed: the artist route (SOL-ART) was PEN 105.60, 30 working days and a 90-day stay in Migraciones'
+  February 29, 2024 release. A 2025 TUPA exists (procedure PA35004761, "Solicitud de Calidad Migratoria Artística
+  Temporal") and its row wasn't readable, so the 2024 fee isn't used for 2026. The tourist visa's US$30 (evaluated in up
+  to two weeks, post not established) isn't a replacement for it.

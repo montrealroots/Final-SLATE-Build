@@ -43,6 +43,36 @@ describe('papers terms', () => {
     expect(permitTerms('UG', 'Work permit').issuance).toBeUndefined();
   });
 
+  // The owner's six-destination research of November 20, 2026: each figure keeps what kind of fact it is.
+  it('keeps each researched time what it is: a target, an average, an arrival desk; and each fee its parts', () => {
+    // Papua New Guinea: a nil visa fee and a US$50 online charge, paid once, so US$50 in all (not 0, not 100).
+    const pg = visaTerms('PG');
+    expect(pg.fee).toEqual({ amount: 50, currency: 'USD' });
+    expect(pg.issuance).toBeUndefined();
+    expect(pg.basis).toMatch(/no fee; the online application carries a US\$50 eVisa charge, paid once/);
+    expect(pg.basis).toMatch(/target of 10 working days.*not a promise/);
+    // Ukraine: the e-visa's three working days, not the general page's nine, nor the consular route's terms.
+    const ua = visaTerms('UA');
+    expect(ua).toMatchObject({ fee: { amount: 20, currency: 'USD' }, days: 5, estimate: null });
+    expect(ua.basis).toMatch(/three working days/);
+    expect(ua.basis).toMatch(/still says nine working days/);
+    // Iceland: an observed average, said as one, never a deadline.
+    const is = permitTerms('IS', 'Work permit');
+    expect(is).toMatchObject({ fee: { amount: 80000, currency: 'ISK' }, days: 60, daysText: 'about 60 days, on average', estimate: null });
+    expect(is.basis).toMatch(/on average.*can't be expedited/);
+    // Nepal: issued at the desk on arrival; the receipt's 15 days are never the wait.
+    const np = visaTerms('NP');
+    expect(np).toMatchObject({ fee: { amount: 30, currency: 'USD' }, days: 1, stayDays: 15 });
+    expect(np.basis).toMatch(/15-day validity is how long the receipt lasts, not a wait/);
+    // Cyprus: the general fee with its reductions named, and the conflicting time kept in view.
+    const cy = visaTerms('CY');
+    expect(cy).toMatchObject({ fee: { amount: 90, currency: 'EUR' }, days: 30, daysText: 'between 15 and 45 days', estimate: null });
+    expect(cy.basis).toMatch(/€35 under facilitation agreements/);
+    expect(cy.basis).toMatch(/10 calendar days, up to 30, instead/);
+    // A source read from the authority's indexed text says so.
+    for (const t of [pg, ua, is, np, cy]) expect(t.sources.some((s) => /official search index/.test(s.what)), t.route).toBe(true);
+  });
+
   it('names a source for every researched figure, and each is a real amount and a real time', () => {
     for (const [c, r] of Object.entries((terms as unknown as { permits: Record<string, Recorded>; visas?: Record<string, Recorded> }).permits)) {
       // A researched fee may be nothing: Belgium's short-term permit is free (from November 17, 2026).
