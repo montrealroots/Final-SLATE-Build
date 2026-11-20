@@ -12,7 +12,7 @@ The catalog (TMDB), the cinemas (Wikidata) and the stories (Wikipedia) are older
 - **What it is:** Award results of 2026 ceremonies, from each organizer's own page.
 - **Kind:** Recorded fact.
 - **Terms:** Facts (who was nominated, who won) read from public pages; titles and names only, no article text. Shown from their published date; nothing written into a save.
-- **Sources (17):**
+- **Sources (20):**
   - <https://goldenglobes.com/articles/one-battle-after-another-and-hamnet-take-best-picture-prizes-at-golden-globes/>, read 2026-11-13. Read through a fetching tool. Only the categories the article states are recorded.
   - <https://goldenglobes.com/nominations/2026>, read 2026-11-19. Every category, its winner marked; read twice through a fetching tool, the readings agreed. A title the page files under its article ("Studio, The") is written in reading order.
   - <https://goldenglobes.com/articles/nominations-announced-for-the-83rd-annual-golden-globes/>, read 2026-11-19. For the date the nominations were announced, December 8, 2025.
@@ -29,6 +29,9 @@ The catalog (TMDB), the cinemas (Wikidata) and the stories (Wikipedia) are older
   - <https://www.dga.org/News/PressReleases/2026/260107_78thAnnualDGAAwardsTelevisionNomineesAnnounced>, read 2026-11-19. The DGA's television and documentary nominees (January 7, 2026), downloaded and parsed; Commercials, laid out differently and not held by the game, left out.
   - <https://www.dga.org/News/PressReleases/2026/260108_78thAnnualDGAAwardsFeatureFilmNomineesAnnounced>, read 2026-11-19. The feature nominees (January 8, 2026).
   - <https://www.dga.org/News/PressReleases/2026/260207_78th_Annual-DGA-Award-Winners>, read 2026-11-19. The winners (February 7, 2026); its Comedy Series section is worded as nominees, so that winner isn't recorded.
+  - <https://awards.wga.org/awards/nominees-winners>, read 2026-11-19. The 2026 Writers Guild Awards' nominees and winners, downloaded and parsed: the 15 categories the game holds and the page lays out alike.
+  - <https://www.wga.org/news-events/news/press/2026/2026-writers-guild-awards-screenplay-television-streaming-news-radio-audio-and-promotional-writing-nominations-announced>, read 2026-11-19. For the date the nominations were announced, January 27, 2026.
+  - <https://www.wga.org/news-events/news/press/2026-writers-guild-awards-winners-announced>, read 2026-11-19. The winners (March 8, 2026); every winner the awards page marks is named in it.
   - <https://www.televisionacademy.com/78th-emmy-winners>, read 2026-11-19. The Academy's winners release (Ernst & Young's list of the telecast's 19 categories), a PDF whose text was read directly.
 
 ## `src/data/history/awards-2026-reference.json`

@@ -110,6 +110,18 @@ describe('recorded history', () => {
     expect(on('2026-01-07', 'nominees').find((o) => o.category === 'reality')!.subjects).toContain('Adam Sandler (The Price is Right, “10,000th Episode”)');
   });
 
+  it('holds the 78th Writers Guild Awards in the 15 categories the game holds: nominees from January 27, winners from March 8', () => {
+    const on = (day: string, kind: string) => recordedResults('wga', 2026, day).filter((o) => o.kind === kind);
+    expect(recordedResults('wga', 2026, '2026-01-26')).toEqual([]);
+    expect(on('2026-01-27', 'nominees')).toHaveLength(15);
+    expect(on('2026-03-07', 'winner')).toEqual([]);
+    const won = on('2026-03-08', 'winner');
+    expect(won).toHaveLength(15);
+    expect(won.find((o) => o.category === 'episodic')).toMatchObject({ subjects: ['R. Scott Gemmill'], work: 'The Pitt, “7:00 A.M.”' });
+    // A series' award names the show, crediting its writers.
+    expect(won.find((o) => o.category === 'comedy-series')).toMatchObject({ subjects: ['The Studio'], recipients: 'work_only' });
+  });
+
   it('cites a source for every observation, never publishes before it happens, and names the game\'s own categories', () => {
     const insts = (institutions as { institutions: { id: string; categories: { id: string }[]; official?: Record<string, { label?: string }> }[] }).institutions;
     const wrong: string[] = [];

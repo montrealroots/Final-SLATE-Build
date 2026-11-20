@@ -11150,7 +11150,16 @@
      "competitive": true
     }
    ],
-   "rosterStatus": "read"
+   "rosterStatus": "read",
+   "official": {
+    "2026": {
+     "start": "2026-03-08",
+     "end": "2026-03-08",
+     "label": "78th Writers Guild Awards",
+     "source": "https://www.wga.org/news-events/news/press/2026-writers-guild-awards-winners-announced",
+     "checked": "2026-11-19"
+    }
+   }
   },
   {
    "id": "pga",
