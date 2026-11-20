@@ -2,6 +2,7 @@
 // the game's sources and their attributions. It does not replace the attributions that sit beside the data they cover:
 // the film catalog and the picture library carry TMDB's notice, and each work's summary names its Wikipedia article.
 // docs/DATA-PROVENANCE.md has the developer's detail; this is what a player is owed.
+import { FEED } from '../engine/box-office-feed';
 import { GEAR_SOURCE } from '../engine/gear-catalog';
 import { formatDateKey } from '../engine/time';
 import { HOMES_SHOWN } from './routes';
@@ -39,6 +40,8 @@ export function CreditsAndSources() {
           </li>
         ))}
       </ul>
+      {/* The box-office history a licensed dataset would bring (engine/box-office-feed.ts, from November 20, 2026). */}
+      <p className="dim small"><strong>Box office history:</strong> {FEED.installed ? `${FEED.provider}, release ${FEED.release}, under ${FEED.licence}.` : FEED.why}</p>
       <p className="dim small">Everyone and everything else in the game, from the people you hire to rival films and their results, is invented by the game unless a page says where it is from.</p>
     </section>
   );
