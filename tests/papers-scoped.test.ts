@@ -52,9 +52,18 @@ describe('route-scoped fees', () => {
     expect(unsettled.every((r) => !r.applies && r.held)).toBe(true);
     // Every record is either applied or held with a reason; none is silently dropped.
     expect(ROUTE_RECORDS.every((r) => !!r.applies !== !!r.held)).toBe(true);
-    expect(ROUTE_RECORDS).toHaveLength(47);
+    expect(ROUTE_RECORDS).toHaveLength(49);
     // Serbia's long-stay route doesn't stand in for its work permit.
     expect(scopedRecords('RS', 'permit', { livesIn: 'US', passports: ['IN'], today: '2026-06-01' })).toEqual({ application: undefined, issuance: undefined });
+  });
+
+  // From November 20, 2026: Trinidad and Tobago's missions price its visa apart, so each is one consulate's, never everyone's.
+  it('charges Trinidad and Tobago\'s visa at the Washington embassy\'s and the Canadian missions\' prices, and no one else\'s', () => {
+    const at = (livesIn: string) => withScope(visaTerms('TT'), 'TT', 'visa', { livesIn, passports: ['IN'], today: '2026-11-20' });
+    expect(at('US')).toMatchObject({ fee: { amount: 85, currency: 'USD' }, estimate: null, daysText: '12 working days (about 18 days)' });
+    expect(at('CA').fee).toEqual({ amount: 160, currency: 'CAD' });
+    expect(at('CA').estimate?.only).toBe('days');
+    expect(at('IN')).toEqual(visaTerms('TT'));
   });
 
   // From November 20, 2026 (Nepal Tourism Board): some passports get no visa on arrival in Nepal and apply at a mission

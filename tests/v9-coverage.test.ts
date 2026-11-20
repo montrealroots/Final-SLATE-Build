@@ -22,7 +22,11 @@ const BANKS_RESEARCHED = new Set(['NR', 'NU']);
 const BANKS_MODELED = new Set(['IO', 'TF', 'GS', 'PN', 'TK']);
 const WORK_ROUTES = (JSON.parse(readFileSync('src/data/papers/work.json', 'utf8')) as { countries: Record<string, { others?: { route?: string } }> }).countries;
 const WORK_ROUTE = (iso: string) => WORK_ROUTES[iso]?.others?.route ?? 'Work permit';
-const WORK_MODELED = new Set(Object.entries((JSON.parse(readFileSync('src/data/papers/work.json', 'utf8')) as { countries: Record<string, { modeled?: string }> }).countries).filter(([, v]) => v.modeled).map(([k]) => k));
+const WORK_ENTRIES = (JSON.parse(readFileSync('src/data/papers/work.json', 'utf8')) as { countries: Record<string, { modeled?: string; sources?: { kind: string }[] }> }).countries;
+// From November 20, 2026 a modeled rule says why in its own words (Ukraine's, Kazakhstan's and Slovenia's corrections),
+// and a rule read from the government's own page (Armenia's) is verified.
+const WORK_MODELED: Record<string, string> = Object.fromEntries(Object.entries(WORK_ENTRIES).filter(([, v]) => v.modeled).map(([k, v]) => [k, v.modeled!]));
+const WORK_OFFICIAL = new Set(Object.entries(WORK_ENTRIES).filter(([, v]) => v.sources?.length && v.sources.every((x) => x.kind === 'official')).map(([k]) => k));
 
 type Status = 'verified' | 'inherited-unverified' | 'modeled' | 'not applicable' | 'missing' | 'implemented/tested';
 const rows = (f: string) => Object.fromEntries((JSON.parse(readFileSync(f, 'utf8')) as { rows: { key: string; status: string }[] }).rows.map((r) => [r.key, r.status]));
@@ -79,7 +83,7 @@ function matrix() {
           : VISA_AUTHORITY_OF[iso] ? ['verified', `its sovereign's visa (${VISA_AUTHORITY_OF[iso]}), researched, with the law that says so`]
           : VISA_DESTINATIONS.has(iso) ? (iso === 'US' ? ['implemented/tested', '1221\'s visa record for some passports; tests/v8-papers.test.ts, e2e/v9-papers.spec.ts'] : ['inherited-unverified', '1221\'s visa record, for some passports only'])
             : ['modeled', 'no research gives its fee or time yet: the game estimates both from the researched visas, and says so'],
-      'work rules': WORK_MODELED.has(iso) ? ['modeled', 'SLATE-REBUILD\'s research was blocked: the game assumes anyone who isn\'t a citizen needs a permit'] : fromRebuild(WORK[iso], 'who may work'),
+      'work rules': WORK_MODELED[iso] ? ['modeled', WORK_MODELED[iso]] : WORK_OFFICIAL.has(iso) ? ['verified', 'who may work here is read from the government\'s own page'] : fromRebuild(WORK[iso], 'who may work'),
       'work permit application': empty ? ['not applicable', 'no populated place']
         : permitTerms(iso, WORK_ROUTE(iso)).estimate?.only ? ['modeled', 'its fee is researched, with its source; how long it takes to decide is the game\'s estimate, said as one']
         : RESEARCHED_PERMITS.includes(iso) ? (iso === 'US' ? ['implemented/tested', 'researched on November 14, 2026 (USCIS fee schedule); tests/v8-papers.test.ts'] : ['verified', 'its fee and decision time, researched (November 14 or 17, 2026), with its source'])

@@ -1432,6 +1432,41 @@
      "what": "New to Denmark (SIRI), Work in Greenland: no processing fee; normally about 3 months, up to 6; artists other than performers may work under 3 months without a permit"
     }
    ]
+  },
+  "AM": {
+   "route": "Employment-based residence status",
+   "fee": 105000,
+   "currency": "AMD",
+   "feeBasis": "AMD 105,000 for issuing a foreign employee's temporary residence card, applied for online by the employer.",
+   "days": 30,
+   "daysBasis": "The card is issued within 30 days of the employer's application.",
+   "sources": [
+    {
+     "kind": "official",
+     "url": "https://migration.mia.gov.am/en/acquiring-employment-based-residence-status",
+     "what": "Migration and Citizenship Service: AMD 105,000 for the card, issued within 30 days of the employer's application (page undated, read November 20, 2026)"
+    }
+   ]
+  },
+  "SC": {
+   "route": "Gainful Occupation Permit",
+   "fee": 2500,
+   "currency": "SCR",
+   "feeBasis": "SCR 1,000 to process the application and SCR 500 for each month of the permit, all paid on applying: SCR 2,500 for three months, the length the game takes, as for Trinidad and Tobago's permit.",
+   "days": [
+    1,
+    5
+   ],
+   "daysBasis": "The permit can be collected one to five days after the application is submitted.",
+   "stayDays": 90,
+   "stayBasis": "Three months, the length the game takes; a longer permit costs SCR 500 more a month.",
+   "sources": [
+    {
+     "kind": "official",
+     "url": "https://ics.gov.sc/permits/gainful-occupation-permit",
+     "what": "Immigration and Civil Status Seychelles, Gainful Occupation Permit: SCR 1,000 processing, SCR 500 a month for the permit's whole duration, collected 1 to 5 days after submission (page undated, read November 20, 2026)"
+    }
+   ]
   }
  },
  "permitAuthorities": {
@@ -3723,6 +3758,24 @@
      "kind": "official",
      "url": "https://www.gov.cy/media/sites/145/2025/12/Information-on-visas.pdf",
      "what": "Information on visas (December 2025 upload, mission and date not established): 10 calendar days, extendable to 30, urgent 2 working days; kept as a conflict (read from the authority's own text in the official search index; the page refused direct retrieval)"
+    }
+   ]
+  },
+  "BS": {
+   "name": "Visitor's visa (single entry)",
+   "fee": 160,
+   "currency": "BSD",
+   "feeBasis": "$160 for a single-entry visitor's visa, applied for online (the page gives dollars; the Bahamian dollar is at par with the US dollar). A sponsored visitor pays a $20 facilitation fee as well, and multiple-entry visas cost $250.",
+   "days": [
+    10,
+    14
+   ],
+   "daysBasis": "The eVISA takes 7 to 10 business days, not counting the day it's submitted, with complete documents and no interview.",
+   "sources": [
+    {
+     "kind": "official",
+     "url": "https://mofa.gov.bs/evisa-online-services",
+     "what": "Ministry of Foreign Affairs of the Bahamas, eVISA online services: $160 single entry, 7 to 10 business days (last updated April 1, 2026)"
     }
    ]
   }

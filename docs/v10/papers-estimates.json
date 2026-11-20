@@ -1,7 +1,7 @@
 {
  "counts": {
-  "permits": 164,
-  "visas": 102,
+  "permits": 162,
+  "visas": 101,
   "permitTimes": 14,
   "visaTimes": 34
  },
@@ -14,7 +14,6 @@
   "AO",
   "AI",
   "AG",
-  "AM",
   "AW",
   "AZ",
   "BD",
@@ -136,7 +135,6 @@
   "ST",
   "SA",
   "SN",
-  "SC",
   "SL",
   "SX",
   "SB",
@@ -177,7 +175,6 @@
   "AS",
   "AI",
   "AG",
-  "BS",
   "BB",
   "BY",
   "BM",

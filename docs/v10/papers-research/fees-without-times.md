@@ -117,7 +117,7 @@ Batch 7 (November 20, 2026, later):
     keeps Namibia's undated official values as candidates.
   - Belarus and Brunei: priced by nationality and by consulate (Belarus: US$75 for US citizens, US$45 for EU citizens,
     in Washington).
-- A finding about the work rules, not the fees: `src/data/papers/work.json` gives Armenia, Kazakhstan and Ukraine
+- A finding about the work rules, not the fees (corrected in batch 11, below): `src/data/papers/work.json` gives Armenia, Kazakhstan and Ukraine
   `"right": "free"` for every passport, as it does Svalbard. Svalbard's is right (the Governor: the Immigration Act
   doesn't apply there). Ukraine's looks wrong: its employment service publishes the fee for a permit to employ
   foreigners (Law on Employment, article 42-4). These rights came from SLATE-REBUILD and are marked inherited and
@@ -192,3 +192,43 @@ Batch 10 (November 20, 2026).
   nationals' visa is free. The SAARC citizens' free visa isn't applied: it covers the first visit of a visa year only,
   which the game doesn't count.
 - Cyprus's €35 facilitation rate is still not applied: the fee form (gov.cy, GL292) answered 403.
+
+Batch 11 (November 20, 2026): the work rules that let anyone work.
+- `work.json` let every passport work freely in Armenia, Kazakhstan, Slovenia, Svalbard and Ukraine. Svalbard's is right
+  and stays. The other four now need a permit:
+  - Armenia, verified: the Migration and Citizenship Service's page (undated, read November 20) says the employer
+    applies online for a foreign employee's employment-based residence status, AMD 105,000 for the card, issued within
+    30 days; EAEU citizens need no permitting document (the EAEU group already said so). Recorded in `terms.json` in
+    full, so one fewer permit is estimated (163).
+  - Ukraine, modeled: a permit to employ a foreigner (Law on Employment, article 42), from law-firm summaries (BDO,
+    Chambers); zakon.rada.gov.ua answered 503 and kyivcity.gov.ua 403. Its fee (2, 4 or 6 subsistence minimums by term,
+    article 42-4, by the same summaries) isn't recorded, so the fee and time stay the game's estimate.
+  - Kazakhstan, modeled: a permit from the local executive body, as the government news site (oq.gov.kz, November 26,
+    2024) treats the rule; the exemption list (Resolution 1041 of November 24, 2023) wasn't readable on adilet.zan.kz.
+  - Slovenia, modeled: the single permit, with up to 90 days a year without it for a performer, from the UK government's
+    "Travel to Slovenia for work" (updated April 15, 2024). gov.si and the Employment Service confirm the permit rule
+    but don't list artists; the law's text (uradni-list.si) answered 503.
+- A player already working in one of these four without a permit loses that right when the save is next loaded, and
+  needs the permit. Permits already issued are unaffected.
+
+Batch 12 (November 20, 2026, night).
+- Seychelles, the Gainful Occupation Permit, settled in full: SCR 1,000 to process and SCR 500 for each month of the
+  permit, all paid on applying, collected one to five days after submission (Immigration and Civil Status Seychelles,
+  page undated). The game takes three months, as for Trinidad and Tobago's permit: SCR 2,500.
+- The Bahamas, the visitor's visa, settled in full: $160 single entry, 7 to 10 business days, not counting the day it's
+  submitted, recorded as 10 to 14 days (Ministry of Foreign Affairs, eVISA page, updated April 1, 2026). The page gives
+  dollars without saying which; the Bahamian dollar is at par with the US dollar.
+- Trinidad and Tobago, the visitor visa, scoped by mission (`route-evidence.json`), not settled for everyone: US$85 at
+  the Washington embassy, multiple entry only, 10 to 14 business days (its checklist, file dated December 30, 2025);
+  CAD 160 at the Canadian missions from September 10, 2025, where single-entry visas are no longer offered and no
+  decision time is given. Everyone else keeps the estimate. The online eVisa's TTD 200 is quoted only by unofficial
+  sites.
+- Leads, not recorded:
+  - Mongolia's e-visa: the Immigration Agency gives three working days (72 hours); the US$51.50 fee is only in travel
+    agencies' pages, and evisa.mn answered 500. A visa recorded in `terms.json` counts as verified, so a fee with only
+    secondary support isn't recorded.
+  - Kyrgyzstan's e-visa: unofficial sources give $35 to $82; the portal wasn't read.
+  - Faroe Islands' work permit: the Danish pages (no fee, about three months) are superseded; the Faroese authority
+    (Útlendingastovan) has handled applications since September 1, 2024, and its own page wasn't found.
+  - Malaysia (PUSPAL) and Antigua and Barbuda: only consultancies' figures, which disagree.
+  - Gibraltar: the UK fee tool's figures are for UK visas applied for in Gibraltar; it answered 403.

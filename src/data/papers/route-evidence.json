@@ -1235,6 +1235,66 @@
      ]
     }
    }
+  },
+  {
+   "id": "tt-visitor-washington",
+   "country": "TT",
+   "route": "Visitor visa (multiple entry)",
+   "amount": 85,
+   "currency": "USD",
+   "component": "application",
+   "scope": "Washington embassy",
+   "evidence": "official_fee_scoped",
+   "from": null,
+   "through": null,
+   "days": 12,
+   "dayUnit": "working",
+   "note": "The embassy's checklist lists only the multiple-entry visa, at US$85 by money order, and says every visa takes 10 to 14 business days; the game takes the middle. Postage (US$30) is the applicant's choice and isn't charged.",
+   "source": {
+    "url": "https://foreign.gov.tt/documents/1816/Visa_Application_Instructions.pdf",
+    "access": "retrieved",
+    "retrieved": "2026-11-20",
+    "note": "Embassy of Trinidad and Tobago, Washington, visitor visa checklist (file dated December 30, 2025)."
+   },
+   "applies": {
+    "kind": "visa",
+    "component": "application",
+    "when": {
+     "livesIn": [
+      "US"
+     ]
+    }
+   }
+  },
+  {
+   "id": "tt-visitor-canada",
+   "country": "TT",
+   "route": "Visitor visa (multiple entry)",
+   "amount": 160,
+   "currency": "CAD",
+   "component": "application",
+   "scope": "Ottawa High Commission and Toronto consulate",
+   "evidence": "official_fee_scoped",
+   "from": "2025-09-10",
+   "through": null,
+   "days": null,
+   "dayUnit": null,
+   "note": "CAD 160 for a multiple-entry visa from September 10, 2025; single-entry visas are no longer offered. The sheet asks for applications ten working days before departure (four weeks for some nationalities), which is a deadline, not a decision time, so the time stays the game's estimate.",
+   "source": {
+    "url": "https://foreign.gov.tt/documents/1830/Visa_application_instructions_amended.pdf",
+    "access": "retrieved",
+    "retrieved": "2026-11-20",
+    "note": "Trinidad and Tobago's missions in Canada, visa application instructions (fee effective September 10, 2025)."
+   },
+   "applies": {
+    "kind": "visa",
+    "component": "application",
+    "when": {
+     "livesIn": [
+      "CA"
+     ]
+    }
+   }
   }
  ]
 }

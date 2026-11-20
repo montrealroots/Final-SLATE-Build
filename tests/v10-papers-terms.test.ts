@@ -73,6 +73,14 @@ describe('papers terms', () => {
     for (const t of [pg, ua, is, np, cy]) expect(t.sources.some((s) => /official search index/.test(s.what)), t.route).toBe(true);
   });
 
+  // Batch 12 (November 20, 2026): a fee charged by the month is taken for the game's three months, as Trinidad and
+  // Tobago's permit is; a decision time in business days is said as calendar days.
+  it('charges Seychelles\' permit by the month for three months, and times the Bahamas\' visa in business days', () => {
+    expect(permitTerms('SC', 'Gainful Occupation Permit')).toMatchObject({ fee: { amount: 2500, currency: 'SCR' }, days: 3, daysText: 'between 1 and 5 days', stayDays: 90, estimate: null });
+    expect(visaTerms('BS')).toMatchObject({ fee: { amount: 160, currency: 'BSD' }, days: 12, estimate: null });
+    expect(visaTerms('BS').basis).toMatch(/7 to 10 business days/);
+  });
+
   it('names a source for every researched figure, and each is a real amount and a real time', () => {
     for (const [c, r] of Object.entries((terms as unknown as { permits: Record<string, Recorded>; visas?: Record<string, Recorded> }).permits)) {
       // A researched fee may be nothing: Belgium's short-term permit is free (from November 17, 2026).

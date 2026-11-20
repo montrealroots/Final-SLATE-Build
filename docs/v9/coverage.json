@@ -22,7 +22,7 @@
   ],
   "work rules": [
    "modeled",
-   "SLATE-REBUILD's research was blocked: the game assumes anyone who isn't a citizen needs a permit"
+   "SLATE-REBUILD's research of who may work here was blocked; from November 14, 2026 the game assumes that anyone who isn't a citizen needs a permit"
   ],
   "work permit application": [
    "modeled",
@@ -351,12 +351,12 @@
    "its visitor visa, researched (November 14, 17 or 20, 2026), with its source"
   ],
   "work rules": [
-   "inherited-unverified",
-   "who may work: SLATE-REBUILD researched it; not re-checked here"
+   "verified",
+   "who may work here is read from the government's own page"
   ],
   "work permit application": [
-   "modeled",
-   "no research gives its fee or time yet: the game estimates both from the researched permits on its continent, and says so"
+   "verified",
+   "its fee and decision time, researched (November 14 or 17, 2026), with its source"
   ]
  },
  "AW": {
@@ -497,8 +497,8 @@
    "who may visit: SLATE-REBUILD researched it; not re-checked here"
   ],
   "visitor visa application": [
-   "modeled",
-   "no research gives its fee or time yet: the game estimates both from the researched visas, and says so"
+   "verified",
+   "its visitor visa, researched (November 14, 17 or 20, 2026), with its source"
   ],
   "work rules": [
    "inherited-unverified",
@@ -1102,7 +1102,7 @@
   ],
   "work rules": [
    "modeled",
-   "SLATE-REBUILD's research was blocked: the game assumes anyone who isn't a citizen needs a permit"
+   "SLATE-REBUILD's research of who may work here was blocked; from November 14, 2026 the game assumes that anyone who isn't a citizen needs a permit"
   ],
   "work permit application": [
    "modeled",
@@ -1522,7 +1522,7 @@
   ],
   "work rules": [
    "modeled",
-   "SLATE-REBUILD's research was blocked: the game assumes anyone who isn't a citizen needs a permit"
+   "SLATE-REBUILD's research of who may work here was blocked; from November 14, 2026 the game assumes that anyone who isn't a citizen needs a permit"
   ],
   "work permit application": [
    "modeled",
@@ -2812,7 +2812,7 @@
   ],
   "work rules": [
    "modeled",
-   "SLATE-REBUILD's research was blocked: the game assumes anyone who isn't a citizen needs a permit"
+   "SLATE-REBUILD's research of who may work here was blocked; from November 14, 2026 the game assumes that anyone who isn't a citizen needs a permit, except ECOWAS citizens, who may live and work there under the community's free movement"
   ],
   "work permit application": [
    "modeled",
@@ -2872,7 +2872,7 @@
   ],
   "work rules": [
    "modeled",
-   "SLATE-REBUILD's research was blocked: the game assumes anyone who isn't a citizen needs a permit"
+   "SLATE-REBUILD's research of who may work here was blocked; from November 14, 2026 the game assumes that anyone who isn't a citizen needs a permit"
   ],
   "work permit application": [
    "modeled",
@@ -3441,8 +3441,8 @@
    "its visitor visa's fee is researched, with its source; how long it takes to decide is the game's estimate, said as one"
   ],
   "work rules": [
-   "inherited-unverified",
-   "who may work: SLATE-REBUILD researched it; not re-checked here"
+   "modeled",
+   "the game takes this from Kazakhstan's government news site, which treats a permit from the local executive body as the rule; who is exempt wasn't read"
   ],
   "work permit application": [
    "modeled",
@@ -4522,7 +4522,7 @@
   ],
   "work rules": [
    "modeled",
-   "SLATE-REBUILD's research was blocked: the game assumes anyone who isn't a citizen needs a permit"
+   "SLATE-REBUILD's research of who may work here was blocked; from November 14, 2026 the game assumes that anyone who isn't a citizen needs a permit"
   ],
   "work permit application": [
    "modeled",
@@ -4582,7 +4582,7 @@
   ],
   "work rules": [
    "modeled",
-   "SLATE-REBUILD's research was blocked: the game assumes anyone who isn't a citizen needs a permit"
+   "SLATE-REBUILD's research of who may work here was blocked; from November 14, 2026 the game assumes that anyone who isn't a citizen needs a permit"
   ],
   "work permit application": [
    "modeled",
@@ -4822,7 +4822,7 @@
   ],
   "work rules": [
    "modeled",
-   "SLATE-REBUILD's research was blocked: the game assumes anyone who isn't a citizen needs a permit"
+   "SLATE-REBUILD's research of who may work here was blocked; from November 14, 2026 the game assumes that anyone who isn't a citizen needs a permit, except New Zealand citizens, as Niue's own people are"
   ],
   "work permit application": [
    "modeled",
@@ -4882,7 +4882,7 @@
   ],
   "work rules": [
    "modeled",
-   "SLATE-REBUILD's research was blocked: the game assumes anyone who isn't a citizen needs a permit"
+   "SLATE-REBUILD's research of who may work here was blocked; from November 14, 2026 the game assumes that anyone who isn't a citizen needs a permit"
   ],
   "work permit application": [
    "modeled",
@@ -5392,7 +5392,7 @@
   ],
   "work rules": [
    "modeled",
-   "SLATE-REBUILD's research was blocked: the game assumes anyone who isn't a citizen needs a permit"
+   "SLATE-REBUILD's research of who may work here was blocked; from November 14, 2026 the game assumes that anyone who isn't a citizen needs a permit, and that Gulf Cooperation Council citizens apply as the United Arab Emirates' record says they do there"
   ],
   "work permit application": [
    "modeled",
@@ -5995,8 +5995,8 @@
    "who may work: SLATE-REBUILD researched it; not re-checked here"
   ],
   "work permit application": [
-   "modeled",
-   "no research gives its fee or time yet: the game estimates both from the researched permits on its continent, and says so"
+   "verified",
+   "its fee and decision time, researched (November 14 or 17, 2026), with its source"
   ]
  },
  "SL": {
@@ -6141,8 +6141,8 @@
    "its visitor visa, researched (November 14, 17 or 20, 2026), with its source"
   ],
   "work rules": [
-   "inherited-unverified",
-   "who may work: SLATE-REBUILD researched it; not re-checked here"
+   "modeled",
+   "the 90 days a performer may work without a permit are from the UK government's guidance; Slovenia's own text wasn't read"
   ],
   "work permit application": [
    "verified",
@@ -6412,7 +6412,7 @@
   ],
   "work rules": [
    "modeled",
-   "SLATE-REBUILD's research was blocked: the game assumes anyone who isn't a citizen needs a permit"
+   "SLATE-REBUILD's research of who may work here was blocked; from November 14, 2026 the game assumes that anyone who isn't a citizen needs a permit"
   ],
   "work permit application": [
    "modeled",
@@ -6562,7 +6562,7 @@
   ],
   "work rules": [
    "modeled",
-   "SLATE-REBUILD's research was blocked: the game assumes anyone who isn't a citizen needs a permit"
+   "SLATE-REBUILD's research of who may work here was blocked; from November 14, 2026 the game assumes that anyone who isn't a citizen needs a permit"
   ],
   "work permit application": [
    "modeled",
@@ -7101,8 +7101,8 @@
    "its visitor visa, researched (November 14, 17 or 20, 2026), with its source"
   ],
   "work rules": [
-   "inherited-unverified",
-   "who may work: SLATE-REBUILD researched it; not re-checked here"
+   "modeled",
+   "the game takes this from summaries of Ukraine's Law on Employment (article 42), because the government's own pages didn't load"
   ],
   "work permit application": [
    "modeled",
@@ -7342,7 +7342,7 @@
   ],
   "work rules": [
    "modeled",
-   "SLATE-REBUILD's research was blocked: the game assumes anyone who isn't a citizen needs a permit"
+   "SLATE-REBUILD's research of who may work here was blocked; from November 14, 2026 the game assumes that anyone who isn't a citizen needs a permit"
   ],
   "work permit application": [
    "modeled",
@@ -7462,7 +7462,7 @@
   ],
   "work rules": [
    "modeled",
-   "SLATE-REBUILD's research was blocked: the game assumes anyone who isn't a citizen needs a permit"
+   "SLATE-REBUILD's research of who may work here was blocked; from November 14, 2026 the game assumes that anyone who isn't a citizen needs a permit, by the rule of Morocco, which administers most of the territory"
   ],
   "work permit application": [
    "modeled",
