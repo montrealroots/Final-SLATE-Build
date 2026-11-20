@@ -32,6 +32,14 @@ Before November 20, 2026, a destination had one set of terms for everyone, and e
 
 That makes 10 records applied and 35 held. A test fails if any conflicting, undated or not-yet-in-force record is applied, or if a record is neither applied nor held.
 
+## Records Added After The Package
+
+Two records, from the Nepal Tourism Board's tourist-visa page (read November 20, 2026), bring the total to 47: 12 applied and 35 held.
+
+- **Nepal, passports with no visa on arrival.** Nigeria, Ghana, Zimbabwe, Eswatini, Cameroon, Somalia, Liberia, Ethiopia, Iraq, Palestine, Afghanistan, Iran and Syria apply at a Nepalese mission first. They pay the Department of Immigration's US$30; no mission's own price was checked. No source gives a mission's decision time, so it is the game's estimate and is said to be one (`daysEstimated` in `route-evidence.json`). Until then they were given the arrival desk's one day.
+- **Nepal, Chinese nationals.** The visa is free. A passport on the mission list as well pays the mission's fee.
+- **Not applied.** The board's free visa for SAARC citizens covers only the first visit of a visa year, which the game doesn't count. Its free visa for children under 10 can't apply, since a story starts at 19.
+
 ## The Gap Ledger
 
 None of the package's 322 tracked rows was closed when the package was applied, and the 106 visa and 170 permit estimates stood. Batch 6 (later on November 20, `docs/v10/papers-research/fees-without-times.md`) closed one row in full, the Solomon Islands' tourist visa, and settled the fee of five more (Uruguay's visa; Uganda's, Rwanda's, Zimbabwe's and Mauritius' permits): Batch 7 closed Belize's permit in full, and batch 8 Greenland's. The owner's six-destination research settled Cyprus's, Ukraine's, Nepal's and Papua New Guinea's visas and Iceland's permit. 102 visa and 164 permit estimates remain, with 34 visas and 14 permits whose decision time is still the game's estimate. A record covers one route for one kind of applicant. It doesn't settle the country's terms for everyone, or its decision time. The changes:

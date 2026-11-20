@@ -1147,6 +1147,94 @@
     "note": "Undated official schedule; recent visitor-fee changes make currency of whole table uncertain."
    },
    "held": "An official schedule with no date; whether it is current isn't known."
+  },
+  {
+   "id": "np-tourist-mission",
+   "country": "NP",
+   "route": "Tourist visa from a Nepalese mission",
+   "amount": 30,
+   "currency": "USD",
+   "component": "application",
+   "scope": "Nationalities with no visa on arrival",
+   "evidence": "official_fee_scoped",
+   "from": null,
+   "through": null,
+   "days": null,
+   "dayUnit": null,
+   "note": "No visa on arrival for these passports (and refugees with travel documents): they apply at a Nepalese mission first. The fee is the Department of Immigration's schedule; each mission's own price wasn't checked. No mission's decision time was found, so it is the game's estimate.",
+   "source": {
+    "url": "https://ntb.gov.np/en/plan-your-trip/before-you-come/tourist-visa",
+    "access": "retrieved",
+    "retrieved": "2026-11-20",
+    "note": "Nepal Tourism Board, Tourist visa: nationalities that must get a visa before arriving, and those given a free visa."
+   },
+   "daysEstimated": true,
+   "applies": {
+    "kind": "visa",
+    "component": "application",
+    "when": {
+     "passport": [
+      "NG",
+      "GH",
+      "ZW",
+      "SZ",
+      "CM",
+      "SO",
+      "LR",
+      "ET",
+      "IQ",
+      "PS",
+      "AF",
+      "IR",
+      "SY"
+     ]
+    }
+   }
+  },
+  {
+   "id": "np-tourist-free-cn",
+   "country": "NP",
+   "route": "Tourist visa (free for Chinese nationals)",
+   "amount": 0,
+   "currency": "USD",
+   "component": "application",
+   "scope": "Chinese nationals",
+   "evidence": "official_fee_scoped",
+   "from": null,
+   "through": null,
+   "days": null,
+   "dayUnit": null,
+   "note": "Chinese nationals are given the visa free. The board's other free visas aren't applied: SAARC citizens' depends on it being their first visit of the visa year, which the game doesn't count, and children's is for under 10s.",
+   "source": {
+    "url": "https://ntb.gov.np/en/plan-your-trip/before-you-come/tourist-visa",
+    "access": "retrieved",
+    "retrieved": "2026-11-20",
+    "note": "Nepal Tourism Board, Tourist visa: nationalities that must get a visa before arriving, and those given a free visa."
+   },
+   "applies": {
+    "kind": "visa",
+    "component": "application",
+    "when": {
+     "passport": [
+      "CN"
+     ],
+     "passportNot": [
+      "NG",
+      "GH",
+      "ZW",
+      "SZ",
+      "CM",
+      "SO",
+      "LR",
+      "ET",
+      "IQ",
+      "PS",
+      "AF",
+      "IR",
+      "SY"
+     ]
+    }
+   }
   }
  ]
 }

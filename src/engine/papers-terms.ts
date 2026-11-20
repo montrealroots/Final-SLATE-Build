@@ -139,6 +139,15 @@ export function visaTerms(country: string): Terms {
 }
 
 /**
+ * The game's estimate of `country`'s decision time for `kind`, from the researched routes near it: for a route-scoped record
+ * whose time no source gives (papers-scoped.ts `daysEstimated`; from November 20, 2026, Nepal's mission-only nationalities).
+ */
+export function estimatedDays(country: string, kind: 'visa' | 'permit'): { days: number; daysText: string; estimate: NonNullable<Terms['estimate']> } {
+  const e = estimated(country, kind === 'visa' ? 'Visitor visa' : 'Work permit', kind === 'visa' ? visaPool() : Object.entries(TERMS.permits));
+  return { days: e.days, daysText: e.daysText, estimate: { ...e.estimate!, only: 'days' } };
+}
+
+/**
  * The authority whose authorization a territory's visitors hold: Puerto Rico and the US Virgin Islands are entered on an
  * ESTA, the Crown Dependencies on the UK's ETA, Australia's external territories on its ETA, the Palestinian territories
  * through Israel's ETA-IL, and Western Sahara through Morocco's.

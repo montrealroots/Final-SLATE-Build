@@ -175,7 +175,7 @@ retrieval, and each source's description says so.
   game then shows "about 60 days, on average", never a deadline. The work permit beside it is a separate decision.
 - Nepal, settled in full: the Department of Immigration's US$30 for 15 days (US$50 for 30, US$125 for 90), issued at the
   desk on arrival, recorded as one day like the other visas on arrival. The online receipt's 15-day validity isn't a
-  wait. Not done: the nationalities that must get a visa from a mission first aren't singled out yet.
+  wait. The nationalities that must get a visa from a mission first were singled out in batch 10 (below).
 - Cyprus, settled with its conflict kept: €90 for an adult's Category C visa, usually 15 days and up to 45 (the unit
   unstated). An official information sheet of unknown date gives 10 calendar days, up to 30, and stays in the sources.
   The €35 facilitation rate for named nationalities and Cabo Verde's €67.50 aren't applied yet; the form's exact scope
@@ -184,3 +184,11 @@ retrieval, and each source's description says so.
   February 29, 2024 release. A 2025 TUPA exists (procedure PA35004761, "Solicitud de Calidad Migratoria Artística
   Temporal") and its row wasn't readable, so the 2024 fee isn't used for 2026. The tourist visa's US$30 (evaluated in up
   to two weeks, post not established) isn't a replacement for it.
+
+Batch 10 (November 20, 2026).
+- Nepal, by passport (`src/data/papers/route-evidence.json`, from the Nepal Tourism Board's tourist-visa page): 13
+  nationalities get no visa on arrival and apply at a Nepalese mission first. They pay the Department of Immigration's
+  US$30, and their decision time is the game's estimate, said as one, because no mission's time was found. Chinese
+  nationals' visa is free. The SAARC citizens' free visa isn't applied: it covers the first visit of a visa year only,
+  which the game doesn't count.
+- Cyprus's €35 facilitation rate is still not applied: the fee form (gov.cy, GL292) answered 403.

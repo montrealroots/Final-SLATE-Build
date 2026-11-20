@@ -8,7 +8,7 @@
 import evidence from '../data/papers/route-evidence.json';
 import { addDaysToKey, weekdayOfKey } from './time';
 import { hasHolidayRules, holidaysOn } from './holidays';
-import type { Source, Terms } from './papers-terms';
+import { estimatedDays, type Source, type Terms } from './papers-terms';
 
 interface When { livesIn?: string[]; livesOutside?: string[]; passport?: string[]; passportNot?: string[]; from?: string; through?: string }
 export interface RouteRecord {
@@ -17,6 +17,11 @@ export interface RouteRecord {
   source: { url: string; access: string; retrieved: string; note: string };
   applies?: { kind: 'visa' | 'permit'; component: 'application' | 'issuance'; when: When };
   held?: string;
+  /**
+   * The route differs from the country's in a way that makes its decision time unknown (from November 20, 2026: Nepal's
+   * mission-only nationalities can't be issued a visa on arrival): the time is the game's estimate, said as one.
+   */
+  daysEstimated?: boolean;
 }
 export const ROUTE_RECORDS = (evidence as { records: RouteRecord[] }).records;
 
@@ -69,6 +74,11 @@ export function withScope(t: Terms, country: string, kind: 'visa' | 'permit', a:
     next.fee = { amount: application.amount, currency: application.currency };
     parts.push(`The fee is ${kind === 'visa' ? 'this visa\'s' : 'this permit\'s'} for applicants like you (${application.scope || application.route}), from the government's own schedule.`);
     next.sources.push(sourceOf(application));
+    if (application.daysEstimated) {
+      const e = estimatedDays(country, kind);
+      next = { ...next, route: application.route, days: e.days, daysText: e.daysText };
+      parts.push(`It isn't issued on arrival for applicants like you: it's applied for at a mission first, and how long that takes is the game's estimate (${e.daysText}).`);
+    }
     if (application.days && application.dayUnit === 'working') {
       const days = workingDays(country, a.today, application.days);
       next = { ...next, days, daysText: `${application.days} working days (about ${days} days)` };
@@ -80,8 +90,8 @@ export function withScope(t: Terms, country: string, kind: 'visa' | 'permit', a:
     parts.push(`A further ${issuance.amount.toLocaleString('en-US')} ${issuance.currency} is paid only if it's issued; a refusal costs only the first fee.`);
     if (!application) next.sources.push(sourceOf(issuance));
   }
-  const timeResearched = !!(application?.days) || (t.estimate === null);
-  next.estimate = timeResearched ? null : { ...(t.estimate ?? { from: [], where: '' }), only: 'days' };
-  next.basis = [parts.join(' '), timeResearched ? '' : `How long it takes to decide is still the game's estimate: ${t.daysText}.`].filter(Boolean).join(' ');
+  const timeResearched = !application?.daysEstimated && (!!(application?.days) || (t.estimate === null));
+  next.estimate = timeResearched ? null : application?.daysEstimated ? estimatedDays(country, kind).estimate : { ...(t.estimate ?? { from: [], where: '' }), only: 'days' };
+  next.basis = [parts.join(' '), timeResearched || application?.daysEstimated ? '' : `How long it takes to decide is still the game's estimate: ${t.daysText}.`].filter(Boolean).join(' ');
   return next;
 }
