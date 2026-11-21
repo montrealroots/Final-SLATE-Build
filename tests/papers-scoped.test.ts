@@ -52,6 +52,8 @@ describe('route-scoped fees', () => {
     expect(unsettled.every((r) => !r.applies && r.held)).toBe(true);
     // Every record is either applied or held with a reason; none is silently dropped.
     expect(ROUTE_RECORDS.every((r) => !!r.applies !== !!r.held)).toBe(true);
+    // A decision time names its unit, and the unit is one withScope applies (from November 21, 2026).
+    expect(ROUTE_RECORDS.filter((r) => r.days).every((r) => r.dayUnit === 'working' || r.dayUnit === 'calendar')).toBe(true);
     expect(ROUTE_RECORDS).toHaveLength(81);
     // Serbia's long-stay route doesn't stand in for its work permit.
     expect(scopedRecords('RS', 'permit', { livesIn: 'US', passports: ['IN'], today: '2026-06-01' })).toEqual({ application: undefined, issuance: undefined });
@@ -111,7 +113,7 @@ describe('route-scoped fees', () => {
 
   it('charges the Cayman Islands\' visa processing fee to the two nationalities its page names', () => {
     const at = (p: string) => withScope(visaTerms('KY'), 'KY', 'visa', { livesIn: 'US', passports: [p], today: '2026-11-21' });
-    expect(at('JM').fee).toEqual({ amount: 92, currency: 'KYD' });
+    expect(at('JM')).toMatchObject({ fee: { amount: 92, currency: 'KYD' }, days: 14, daysText: '14 days', estimate: null });
     expect(at('HN').fee).toEqual({ amount: 92, currency: 'KYD' });
     expect(at('IN')).toEqual(visaTerms('KY'));
   });

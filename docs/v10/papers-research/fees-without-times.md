@@ -320,3 +320,6 @@ Batch 18 (November 21, 2026).
   answers page confirms the fee is non-refundable without giving it. Two weeks is asked for, not recorded as a time.
 - Leads: St Kitts and Nevis' London High Commission gives US$100 and two weeks, on a page of October 18, 2017, too old
   to use; Montserrat's US$50 online fee is only in a news report (immigration.ms shows a bare file index).
+- A route record's decision time can now be in calendar days as well as working days (`papers-scoped.ts withScope`).
+  Until November 21, 2026 only working days were applied: a record in calendar days would have been marked researched
+  with the country's time left in place. None had one. The Cayman Islands' two weeks is the first, recorded as 14 days.

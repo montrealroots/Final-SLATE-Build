@@ -13,7 +13,7 @@ import { estimatedDays, type Source, type Terms } from './papers-terms';
 interface When { livesIn?: string[]; livesOutside?: string[]; passport?: string[]; passportNot?: string[]; from?: string; through?: string }
 export interface RouteRecord {
   id: string; country: string; route: string; amount: number; currency: string; component: string; scope: string; evidence: string;
-  from: string | null; through: string | null; days: number | null; dayUnit: string | null; note: string;
+  from: string | null; through: string | null; days: number | null; dayUnit: 'working' | 'calendar' | null; note: string;
   source: { url: string; access: string; retrieved: string; note: string };
   applies?: { kind: 'visa' | 'permit'; component: 'application' | 'issuance'; when: When };
   held?: string;
@@ -83,6 +83,10 @@ export function withScope(t: Terms, country: string, kind: 'visa' | 'permit', a:
       const days = workingDays(country, a.today, application.days);
       next = { ...next, days, daysText: `${application.days} working days (about ${days} days)` };
       parts.push(`The decision is due in ${application.days} working days: a published target, not a promise.`);
+    } else if (application.days && application.dayUnit === 'calendar') {
+      // Until November 21, 2026 a time in calendar days was marked researched and never applied: no record had one yet.
+      next = { ...next, days: application.days, daysText: `${application.days} days` };
+      parts.push(`Allow ${application.days} days for the decision: the time asked for, not a promise.`);
     }
   }
   if (issuance) {

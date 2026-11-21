@@ -2403,9 +2403,9 @@
    "evidence": "official_fee_scoped",
    "from": null,
    "through": null,
-   "days": null,
-   "dayUnit": null,
-   "note": "The Visa Office's non-refundable processing fee of CI$92 (US$112.20), stated in Customs and Border Control's answers for Jamaican and Honduran applicants; whether every nationality pays the same isn't said, so it is applied to those two. The page asks for two weeks, more at busy times; that isn't recorded as a decision time, which stays the game's estimate.",
+   "days": 14,
+   "dayUnit": "calendar",
+   "note": "The Visa Office's non-refundable processing fee of CI$92 (US$112.20), stated in Customs and Border Control's answers for Jamaican and Honduran applicants; whether every nationality pays the same isn't said, so it is applied to those two. The page asks applicants to allow two weeks, more at busy times: recorded as 14 days.",
    "source": {
     "url": "https://gov.ky/web/cbc/travel/visas-extensions/visitors-visas/applications-by-jamaican-and-honduran-nationals-faqs",
     "access": "retrieved",
