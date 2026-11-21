@@ -2391,6 +2391,37 @@
      ]
     }
    }
+  },
+  {
+   "id": "ky-visa-jm-hn",
+   "country": "KY",
+   "route": "Visitor visa",
+   "amount": 92,
+   "currency": "KYD",
+   "component": "application",
+   "scope": "Jamaican and Honduran nationals",
+   "evidence": "official_fee_scoped",
+   "from": null,
+   "through": null,
+   "days": null,
+   "dayUnit": null,
+   "note": "The Visa Office's non-refundable processing fee of CI$92 (US$112.20), stated in Customs and Border Control's answers for Jamaican and Honduran applicants; whether every nationality pays the same isn't said, so it is applied to those two. The page asks for two weeks, more at busy times; that isn't recorded as a decision time, which stays the game's estimate.",
+   "source": {
+    "url": "https://gov.ky/web/cbc/travel/visas-extensions/visitors-visas/applications-by-jamaican-and-honduran-nationals-faqs",
+    "access": "retrieved",
+    "retrieved": "2026-11-21",
+    "note": "Cayman Islands Customs and Border Control, applications by Jamaican and Honduran nationals, FAQs (undated)."
+   },
+   "applies": {
+    "kind": "visa",
+    "component": "application",
+    "when": {
+     "passport": [
+      "JM",
+      "HN"
+     ]
+    }
+   }
   }
  ]
 }

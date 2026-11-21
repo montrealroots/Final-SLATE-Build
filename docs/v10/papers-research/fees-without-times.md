@@ -315,3 +315,8 @@ Batch 18 (November 21, 2026).
 - Grenada, the visa, scoped to the High Commission in London: £200 single entry and the £30 processing fee, £230, from
   July 1, 2024 (its passport and visa fees sheet, posted March 2026), for applicants who live in the United Kingdom.
   No decision time. The Washington embassy's sheet (US$375, about ten business days) is from March 2018 and isn't used.
+- The Cayman Islands, the visitor visa, scoped to Jamaican and Honduran nationals: the Visa Office's non-refundable
+  CI$92 processing fee, from Customs and Border Control's answers for those two nationalities (undated). The general
+  answers page confirms the fee is non-refundable without giving it. Two weeks is asked for, not recorded as a time.
+- Leads: St Kitts and Nevis' London High Commission gives US$100 and two weeks, on a page of October 18, 2017, too old
+  to use; Montserrat's US$50 online fee is only in a news report (immigration.ms shows a bare file index).
