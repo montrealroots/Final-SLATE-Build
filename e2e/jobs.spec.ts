@@ -1,8 +1,9 @@
 // Work for others through the interface (the v4 package, 01; ledger V4-010; part of J10): an agent signed on an approved
 // script looks for work, an offer arrives with its days, pay and the agent's share, it is taken, its days go on the
 // calendar and are worked, the pay arrives in the player's account less commission, and the credit is listed. The world
-// seed is fixed (a labelled fixture), so the agent's searches come out the same every run. The rules are the engine's
-// (tests/jobs.test.ts).
+// seed is fixed (a labelled fixture). Until November 21, 2026 this said the agent's searches came out the same every run:
+// they don't, since each look is keyed to the instant the agent was signed, which the running clock moves (jobs.ts, as
+// e2e/j10.spec.ts found). The rules are the engine's (tests/jobs.test.ts).
 import type { Page } from '@playwright/test';
 import { expect, test } from './test';
 import { addScene, advance, nav, newProject, personalPostingsOf, readSavedState, saveAndApprove, section, seededLife } from './helpers';
@@ -36,9 +37,11 @@ test('an agent finds paid work: offered with its days and their share, taken, wo
   await nav(page, 'Profile');
   await rep.getByRole('button', { name: 'Sign With Imogen Vale' }).click();
 
-  // The agent looks every few weeks; an offer names its days, its pay and their share.
+  // The agent looks every 30 days with a 60% chance; an offer names its days, its pay and their share. Until November
+  // 21, 2026 this waited 16 weeks, about four looks, and CI once found none (run 44920436414); it waits now for half the
+  // year the agent represents you, about six looks, as J10 does.
   const offers = work.getByRole('list', { name: 'Offers Of Work' });
-  for (let i = 0; i < 16 && !(await offers.count()); i++) { await advance(page, 'week'); await nav(page, 'Profile'); }
+  for (let i = 0; i < 26 && !(await offers.count()); i++) { await advance(page, 'week'); await nav(page, 'Profile'); }
   await expect(offers).toContainText('an invented production');
   await expect(offers).toContainText(/\d+ days, .+ to .+, \$[\d,]+ a day: \$[\d,]+ if every day is worked, less 15% to Imogen Vale, who found it\./);
   const production = (await offers.getByRole('button', { name: /^Accept / }).first().getAttribute('aria-label'))!.replace(/^Accept /, '');

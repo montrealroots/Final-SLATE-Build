@@ -73,10 +73,17 @@ test('J10: an agent finds work, it is taken, worked, paid and credited; another 
     return (await readSavedState(page)).projects[0].schedule.days.map((d: { date: string }) => d.date) as string[];
   };
   // Started on each of the fourteen days before the job, at least one would put a shoot day on it were the job not
-  // in the way (the game's prep is a week or two); none does.
+  // in the way (the game's prep is a week or two); none does. A start before today is refused by the game ("Choose a
+  // start date from today onward"), so only those after today are built. Until November 21, 2026 every one was, and once
+  // the wait for the second offer grew, CI found a job beginning within the fortnight (run 44920436414).
+  const today = new Date((await readSavedState(page)).now).toISOString().slice(0, 10);
+  let built = 0;
   for (let back = 14; back >= 1; back--) {
+    if (shift(second.days[0], -back) <= today) continue;
+    built++;
     const days = await build(shift(second.days[0], -back));
     expect(days.length).toBeGreaterThan(0);
     expect(days.filter((d) => second.days.includes(d)), `starting ${back} days before`).toEqual([]);
   }
+  expect(built).toBeGreaterThan(0);
 });
