@@ -10,13 +10,13 @@ its data ships in the build:
 - the company and leadership registry (`src/catalog/registry.ts`, the game's own research);
 - places, climate stations, holidays and maps (`src/world/`, fetched on demand as hashed assets).
 
-Two sets of data are fetched one file at a time from `/screen-catalog/` when a page needs them. The film data never
-ships in the build. Until November 21, 2026 the cinemas didn't either (this said three sets; there were two); now they do:
+Three sets of data don't ship in the build, and are fetched one file at a time from `/screen-catalog/` when a page needs
+them:
 
 | Data | Source | Built by | Kept in | May it be in the repository? |
 | --- | --- | --- | --- | --- |
 | Films, series, seasons, episodes, people, networks, the industry's dated events (`world.json`), cinema openings (`theatrical.json`) | TMDB, plus Wikidata for network owners | `npm run screen-catalog:import`, `node tools/screen-catalog/networks.mjs`, `npm run screen-catalog:build` | `.screen-catalog/` | No: TMDB's terms (below) |
-| Cinemas | Wikidata (CC0) | `node tools/cinemas/import.mjs` | `.cinemas/`, and a copy in `public/screen-catalog/cinemas/` | Yes, by its licence. Until November 21, 2026 they were kept out and rebuilt; since then the copy ships in every build, so a host with no data server (Base44) has them |
+| Cinemas | Wikidata (CC0) | `node tools/cinemas/import.mjs` | `.cinemas/` | Allowed by its licence, but kept out as a raw research export, and rebuilt instead |
 
 ## Three Settings, Kept Apart
 

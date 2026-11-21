@@ -25,11 +25,6 @@ node tools/cinemas/import.mjs
   200, a second apart.
 - **Storage:** responses are cached in `.cinemas-cache/` and the built files written to `.cinemas/`
   (`index.json` and one file per country). Git ignores both.
-- **Shipped with the game** (from November 21, 2026): a copy of the built files is kept in
-  `public/screen-catalog/cinemas/`, so every build carries them and a copy built from the repository alone, as Base44's
-  is, has cinemas with nothing installed. The servers answer from `.cinemas/` where it has been built, and from that copy
-  where it hasn't. After a rebuild, copy `.cinemas/*.json` over it. Until then a copy without `.cinemas/` had no cinemas
-  unless the cinema mod was installed.
 - **Reruns:** a rerun asks only for what isn't cached.
 - **Why their own directories:** the screen catalog's build clears `.screen-catalog/`, which took the first run's output
   with it.
