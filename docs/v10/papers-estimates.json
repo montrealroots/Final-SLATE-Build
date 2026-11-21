@@ -1,7 +1,7 @@
 {
  "counts": {
   "permits": 159,
-  "visas": 95,
+  "visas": 94,
   "permitTimes": 15,
   "visaTimes": 38
  },
@@ -200,7 +200,6 @@
   "FK",
   "FO",
   "GM",
-  "GI",
   "GL",
   "GD",
   "GT",

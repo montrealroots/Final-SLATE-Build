@@ -94,6 +94,9 @@ describe('papers terms', () => {
     expect(authorizationTerms('LK', ['BR']).fee).toEqual({ amount: 50, currency: 'USD' });
     // Ecuador's tourist visa: US$50 to apply and US$30 on grant, charged together; no time is published.
     expect(visaTerms('EC')).toMatchObject({ fee: { amount: 80, currency: 'USD' }, stayDays: 90, estimate: { only: 'days' } });
+    // Gibraltar's visa, from July 15, 2026, is a Schengen short-stay visa issued by Spain: Spain's terms, with the notice.
+    expect(visaTerms('GI')).toMatchObject({ fee: visaTerms('ES').fee, days: visaTerms('ES').days, estimate: null });
+    expect(visaTerms('GI').basis).toMatch(/Spain issues it/);
   });
 
   it('names a source for every researched figure, and each is a real amount and a real time', () => {
