@@ -1,7 +1,7 @@
 import { expect, expectErrors, sweepSees, test } from './test';
 import { readFileSync } from 'node:fs';
 import { hashString } from '../src/engine/rng';
-import { advance, nav, onlyOn, openStart, pressSaveAndExit, quickLife, saveAndExit } from './helpers';
+import { advance, nav, onlyOn, openStart, pressSaveAndExit, quickDraft, quickLife, readSavedState, saveAndExit } from './helpers';
 import { firstSaveId, listRecords, readRecord, refuseSaveWrites, writeRecords } from './vault';
 
 // Failure paths through the real UI (Gap Completion Package, M7). Desktop and phone.
@@ -183,7 +183,19 @@ test('a genre catalog that fails to load stops the game from opening with the re
   });
   await page.reload();
   await page.getByRole('button', { name: 'Continue Creation' }).click();
+  // A story doesn't start without the catalog (from November 21, 2026; until then it started and then couldn't open):
+  // the reason is said beside Start My Story, and pressing it again once the catalog arrives starts the story.
   await page.getByRole('button', { name: 'Start My Story' }).click();
+  await expect(page.getByRole('alert').filter({ hasText: "The game's genre catalog couldn't be loaded. Check your connection and try again." })).toBeVisible();
+  await sweepSees(page);
+  fail = false;
+  await page.getByRole('button', { name: 'Start My Story' }).click();
+  await expect(page.getByRole('heading', { name: /^Good (Morning|Afternoon|Evening), /, level: 1 })).toBeVisible();
+  // A saved game opened without the catalog says why and offers Try Again.
+  await saveAndExit(page);
+  fail = true;
+  await page.reload();
+  await page.getByRole('button', { name: 'Continue', exact: true }).click();
   await expect(page.getByText("The game's genre catalog couldn't be loaded. Check your connection and try again.")).toBeVisible();
   await sweepSees(page);
   // Try Again, with the catalog held back for a moment: the game says it is opening, then opens.
@@ -219,11 +231,39 @@ test('a festival and awards calendar that fails to load stops the game from open
   });
   await page.reload();
   await page.getByRole('button', { name: 'Continue Creation' }).click();
+  // A story doesn't start without the calendar (from November 21, 2026; until then it started with no festivals or awards).
   await page.getByRole('button', { name: 'Start My Story' }).click();
+  await expect(page.getByRole('alert').filter({ hasText: "The festival and awards calendar couldn't be loaded. Check your connection and try again." })).toBeVisible();
+  fail = false;
+  await page.getByRole('button', { name: 'Start My Story' }).click();
+  await expect(page.getByRole('heading', { name: /^Good (Morning|Afternoon|Evening), /, level: 1 })).toBeVisible();
+  expect(((await readSavedState(page)).editions as unknown[]).length).toBeGreaterThan(20);
+  // A saved game opened without the calendar says why, and Try Again opens it.
+  await saveAndExit(page);
+  fail = true;
+  await page.reload();
+  await page.getByRole('button', { name: 'Continue', exact: true }).click();
   await expect(page.getByText("The festival and awards calendar couldn't be loaded. Check your connection and try again.")).toBeVisible();
   fail = false;
   await page.getByRole('button', { name: 'Try Again' }).click();
   await expect(page.getByRole('heading', { name: /^Good (Morning|Afternoon|Evening), /, level: 1 })).toBeVisible();
+});
+
+// Found by CI on November 21, 2026 (run 44875831065, awards.spec.ts's Emmys journey on the phone): Start My Story pressed
+// while the calendar was still arriving made the game's festival and award editions from an empty calendar, so the story
+// had none for its first two years, and the Projects page listed nothing to enter. A story now starts once it has arrived.
+test('a story started while the festival and awards calendar is still arriving has its festivals and awards', async ({ page }) => {
+  await openStart(page);
+  await quickDraft(page, 'us-los-angeles', '2027-02-01');
+  // Labelled fixture: the calendar's request is held for three seconds, so Start My Story is pressed before it arrives.
+  await page.route((url) => /institutions/.test(url.pathname) && !url.search, async (route) => { await new Promise((r) => setTimeout(r, 3000)); await route.continue(); });
+  await page.reload();
+  await page.getByRole('button', { name: 'Continue Creation' }).click();
+  await page.getByRole('button', { name: 'Start My Story' }).click();
+  await expect(page.getByRole('heading', { name: /^Good (Morning|Afternoon|Evening), /, level: 1 })).toBeVisible({ timeout: 30_000 });
+  const editions = (await readSavedState(page)).editions as { id: string }[];
+  expect(editions.some((e) => e.id.startsWith('emmys-') || /emmy/i.test(e.id))).toBe(true);
+  expect(editions.length).toBeGreaterThan(20);
 });
 
 test('a damaged genre catalog publishes nothing; Try Again with a good one opens the game with the whole catalog', async ({ page }) => {
@@ -250,7 +290,8 @@ test('a damaged genre catalog publishes nothing; Try Again with a good one opens
   await page.getByRole('button', { name: 'Start My Story' }).click();
   await expect(page.getByText("The game's genre catalog couldn't be loaded. Check your connection and try again.")).toBeVisible();
   damaged = false;
-  await page.getByRole('button', { name: 'Try Again' }).click();
+  // Pressed again with a good catalog, the story starts (until November 21, 2026 a Try Again opened a story already begun).
+  await page.getByRole('button', { name: 'Start My Story' }).click();
   await expect(page.getByRole('heading', { name: /^Good (Morning|Afternoon|Evening), /, level: 1 })).toBeVisible();
   await nav(page, 'Projects');
   await page.getByRole('button', { name: 'New Project' }).first().click();
