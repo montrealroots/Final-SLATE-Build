@@ -40,8 +40,8 @@ finished, and they come back only when the owner says so:
 - **J20 (phone parity):** every journey on WebKit; today only the iPhone projects' list in `playwright.config.ts` runs.
 - **Papers research:** Iran, Malawi, Turkey, Serbia and Colombia stay the game's estimate, as their sources conflict
   (`docs/v10/papers-research/fees-without-times.md`); South Africa, Hong Kong and Argentina were settled from their
-  governments' pages on November 20 (batch 5, with Macao and Taiwan). 102 visitor visas and 164 work permits are still (after batches 6 to 8 and the six-destination research on November 20)
-  estimates in all (`docs/v10/papers-estimates.json`), most with conflicting or aggregator-only sources.
+  governments' pages on November 20 (batch 5, with Macao and Taiwan). 97 visitor visas and 159 work permits are still (after batches 6 to 18 and the six-destination research, November
+  20 and 21; until November 21 this line still said 102 and 164) estimates in all (`docs/v10/papers-estimates.json`), most with conflicting or aggregator-only sources.
 - **Real-phone and pacing tests:** they need the owner's own device and a person playing.
 
 ## Where The "Go Perfectly" List Stands (The Owner, November 19, 2026)
