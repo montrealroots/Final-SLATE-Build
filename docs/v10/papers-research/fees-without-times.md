@@ -345,3 +345,15 @@ Batch 19 (November 21, 2026).
   e-visa portal shows no fee (US$51.50 for the tourist visa only by secondary sources); the Philippine consulates'
   pages are behind a browser challenge that isn't worked around; Paraguay's fee differs by consulate and nationality
   (US$65 single entry at some missions, US$160 for US citizens in New York, by search results).
+
+Batch 20 (November 21, 2026).
+- Gibraltar's visa: from July 15, 2026 a Schengen short-stay visa, which Spain issues where Gibraltar is the main
+  destination, under the Schengen Visa Code (the Government of Gibraltar's Technical Notice 558/2026, read in full).
+  Gibraltar now takes Spain's visa terms (`visaAuthorities` in `terms.json`), as Monaco and Andorra take France's and
+  Spain's. Before July 15 a UK visa was used; the game's entry rules for Gibraltar are already the ones from that date.
+- Leads, not recorded: Azerbaijan's work permit fees are published only for the liberated territories (the State
+  Migration Service's notice of December 30, 2022: AZN 350 to 1,400 for up to a year, by processing speed); the
+  general schedule is in the Law on State Fee, not read. Albania's unique permit: only secondary figures (ALL 6,000
+  by EURAXESS), which disagree. The Faroe Islands' and Greenland's visas, Danish visas endorsed for each: the Helsinki
+  embassy's page gives an average of 30 calendar days (one mission) and no fee; another mission's page was down.
+

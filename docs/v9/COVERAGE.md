@@ -26,10 +26,10 @@ the screen says so.
 | passport application | not applicable | 6 |
 | visiting rules | inherited-unverified | 246 |
 | visiting rules | not applicable | 6 |
-| visitor visa application | verified | 110 |
+| visitor visa application | verified | 111 |
 | visitor visa application | implemented/tested | 1 |
 | visitor visa application | inherited-unverified | 2 |
-| visitor visa application | modeled | 133 |
+| visitor visa application | modeled | 132 |
 | visitor visa application | not applicable | 6 |
 | work rules | verified | 1 |
 | work rules | inherited-unverified | 228 |

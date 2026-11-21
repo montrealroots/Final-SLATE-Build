@@ -252,6 +252,16 @@ class Store {
   }
   private async beginOnce(): Promise<string | null> {
     if (!this.draft) return 'Your choices could not be found.';
+    // A new game makes its festival and award editions from the calendar (awards.ts onNewGame), so it waits for what a
+    // game waits for before it opens. Until November 21, 2026 it didn't: pressed while the calendar was still arriving,
+    // a story had no festivals or awards for its first two years (e2e/failures.spec.ts). Not loaded, nothing starts.
+    try {
+      await Promise.all([this.holidays, E().loadGenreCatalog(), E().loadInstitutions()]);
+    } catch {
+      return !E().genreCatalogLoaded()
+        ? "The game's genre catalog couldn't be loaded. Check your connection and try again."
+        : "The festival and awards calendar couldn't be loaded. Check your connection and try again.";
+    }
     const saveId = `s${Date.now().toString(36)}${Math.random().toString(36).slice(2, 6)}`;
     let state: GameState;
     try {

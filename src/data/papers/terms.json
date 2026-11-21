@@ -4899,6 +4899,17 @@
      "what": "NetherlandsWorldwide: one Caribbean visa for Aruba, Curaçao, Sint Maarten, Bonaire, Sint Eustatius and Saba"
     }
    ]
+  },
+  "GI": {
+   "authority": "ES",
+   "basis": "Entered on a Schengen short-stay visa, from July 15, 2026: where Gibraltar is the main destination, Spain issues it, under the Schengen Visa Code. Before then a UK visa was used; the game's entry rules for Gibraltar are already the ones from July 15.",
+   "sources": [
+    {
+     "kind": "official",
+     "url": "https://www.gibraltar.gov.gi/uploads/Brexit%20Page/2026/558-2026%20-%20Technical%20Notice%20-%20Reminder%20concerning%20Visa%20arrangements.pdf",
+     "what": "HM Government of Gibraltar, Technical Notice 558/2026, Reminder Concerning Visa Arrangements: Gibraltar aligns its short-stay visa policy with Schengen's; where the main purpose of the visit is Gibraltar, Spain issues the Schengen short-stay visa, examined under the Schengen Visa Code; from July 15, 2026 (read November 21, 2026)"
+    }
+   ]
   }
  }
 }
