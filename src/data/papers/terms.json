@@ -3858,6 +3858,47 @@
      "what": "Ministry of Immigration, Fiji visas: $93 single entry, 14 working days (page undated, read November 20, 2026)"
     }
    ]
+  },
+  "LC": {
+   "name": "Non-immigrant visa (single entry)",
+   "fee": 125,
+   "currency": "XCD",
+   "feeBasis": "EC$125 for a single-entry visa used within three months (EC$190 for multiple entries over a year), from the Royal Saint Lucia Police Force's visa office.",
+   "days": 7,
+   "daysBasis": "Five working days: about a week. It asks for the application at least two weeks before travel; in some cases a visa can be applied for at the airport on arrival, and may be refused there.",
+   "sources": [
+    {
+     "kind": "official",
+     "url": "https://www.govt.lc/services/apply-for-saint-lucia-Non-immigrant-visa",
+     "what": "Government of Saint Lucia, Apply for Saint Lucia Non-Immigrant Visa: EC$125 single entry, 5 working days (page undated, read November 21, 2026)"
+    }
+   ]
+  },
+  "VC": {
+   "name": "Visa (Ministry of National Security)",
+   "fee": 200,
+   "currency": "XCD",
+   "feeBasis": "EC$200 for each visa application; the Ministry of National Security issues the visa.",
+   "sources": [
+    {
+     "kind": "official",
+     "url": "https://foreign.gov.vc/foreign/index.php/visas",
+     "what": "Ministry of Foreign Affairs of Saint Vincent and the Grenadines, Visas: each application EC$200, issued by the Ministry of National Security (page undated, read November 21, 2026)"
+    }
+   ]
+  },
+  "DM": {
+   "name": "Visitor's visa",
+   "fee": 200,
+   "currency": "XCD",
+   "feeBasis": "A $200 application fee, paid at the Treasury. The page doesn't name the dollars; they're taken as Eastern Caribbean dollars, Dominica's currency, in which the Treasury is paid.",
+   "sources": [
+    {
+     "kind": "official",
+     "url": "https://dominica.gov.dm/services/passports-and-travel-documents-non-nationals/how-do-i-apply-for-a-visitor-s-visa",
+     "what": "Government of the Commonwealth of Dominica, How do I apply for a visitor's visa?: a $200 application fee paid at the Treasury (page updated August 24, 2023)"
+    }
+   ]
   }
  },
  "authorizations": {

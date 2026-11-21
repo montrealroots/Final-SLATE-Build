@@ -292,3 +292,31 @@ Batch 16 (November 20, 2026, night): Jamaica's visa by nationality.
 - Not applied: the list's "Sudan (Republic of South)" names neither Sudan nor South Sudan clearly. The Maldives and
   Montserrat are listed as needing no visa, while the game's visiting rules ask one of them; the rules aren't changed
   here. Whether the 2023 list has changed since wasn't found.
+
+Batch 17 (November 21, 2026): leads only; nothing recorded.
+- Togo: the government's travel portal (voyage.gouv.tg, rendered in a browser) says visa applications must be made at
+  least five days before arrival, and that African nationals need no visa for up to 30 days with the immigration form
+  filed 24 hours ahead. It shows no fee without an application.
+- Nigeria: the e-visa (from May 1, 2025, replacing the visa on arrival) is decided within 48 hours of a complete,
+  paid application, by the Immigration Service's account; its fee is by nationality, and the portal shows nothing
+  without JavaScript and an application.
+- Botswana's gov.bw (an expired certificate) and Pakistan's mofa.gov.pk (a certificate chain that doesn't verify) can't
+  be read with verification on, and verification isn't turned off.
+
+Batch 18 (November 21, 2026).
+- Saint Lucia, the non-immigrant visa, settled in full: EC$125 single entry (used within three months), EC$190 multiple
+  entry over a year, five working days, from the government's service page (read in a browser; undated). It asks for
+  the application two weeks before travel, and a visa can sometimes be applied for at the airport and may be refused
+  there.
+- St Vincent and the Grenadines, the visa's fee: EC$200 each application, issued by the Ministry of National Security
+  (the Ministry of Foreign Affairs' visas page, undated). No decision time is published.
+- Dominica, the visitor's visa fee: a $200 application fee paid at the Treasury (the government's page, updated August
+  24, 2023), taken as Eastern Caribbean dollars because the page doesn't name them. No decision time is published.
+- Grenada, the visa, scoped to the High Commission in London: £200 single entry and the £30 processing fee, £230, from
+  July 1, 2024 (its passport and visa fees sheet, posted March 2026), for applicants who live in the United Kingdom.
+  No decision time. The Washington embassy's sheet (US$375, about ten business days) is from March 2018 and isn't used.
+- The Cayman Islands, the visitor visa, scoped to Jamaican and Honduran nationals: the Visa Office's non-refundable
+  CI$92 processing fee, from Customs and Border Control's answers for those two nationalities (undated). The general
+  answers page confirms the fee is non-refundable without giving it. Two weeks is asked for, not recorded as a time.
+- Leads: St Kitts and Nevis' London High Commission gives US$100 and two weeks, on a page of October 18, 2017, too old
+  to use; Montserrat's US$50 online fee is only in a news report (immigration.ms shows a bare file index).

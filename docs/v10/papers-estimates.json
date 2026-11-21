@@ -1,9 +1,9 @@
 {
  "counts": {
   "permits": 159,
-  "visas": 100,
+  "visas": 97,
   "permitTimes": 15,
-  "visaTimes": 34
+  "visaTimes": 36
  },
  "permits": [
   "AF",
@@ -192,7 +192,6 @@
   "CK",
   "CD",
   "DJ",
-  "DM",
   "DO",
   "EC",
   "SV",
@@ -243,8 +242,6 @@
   "PN",
   "CG",
   "KN",
-  "LC",
-  "VC",
   "WS",
   "ST",
   "SN",
@@ -291,6 +288,7 @@
   "BA",
   "BI",
   "CM",
+  "DM",
   "EG",
   "GF",
   "PF",
@@ -312,6 +310,7 @@
   "SH",
   "MF",
   "PM",
+  "VC",
   "SA",
   "SL",
   "ZA",
