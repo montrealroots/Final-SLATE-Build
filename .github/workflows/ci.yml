@@ -65,15 +65,13 @@ jobs:
       fail-fast: false
       matrix:
         build: [dev, production]
-        profile: [desktop, phone, webkit]
+        profile: [desktop, phone]
         shard: [1, 2]
         include:
           - profile: desktop
             projects: --project=desktop
           - profile: phone
             projects: --project=phone
-          - profile: webkit
-            projects: --project=iphone-18-pro-max --project=iphone-18-pro-max-landscape
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -92,5 +90,43 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: playwright-results-${{ matrix.build }}-${{ matrix.profile }}-${{ matrix.shard }}
+          path: test-results/
+          retention-days: 14
+
+  webkit:
+    name: journeys (${{ matrix.build }}, webkit, ${{ matrix.shard }}/4)
+    runs-on: ubuntu-latest
+    container:
+      image: mcr.microsoft.com/playwright:v1.63.0-noble
+      options: --ipc=host
+    # Every journey on WebKit, the iPhone 18 Pro Max's engine (the owner's J20, November 21, 2026): the iphone-webkit-all
+    # project runs every spec with no list of files, and the landscape project its two. Until November 21 CI ran only
+    # the iphone-18-pro-max project's list here, 40 spec files of 107; a whole run took 1.2 hours locally on November
+    # 20, so it is split in four.
+    timeout-minutes: 75
+    strategy:
+      fail-fast: false
+      matrix:
+        build: [dev, production]
+        shard: [1, 2, 3, 4]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Browser journeys
+        timeout-minutes: 60
+        env:
+          HOME: /root
+          SLATE_E2E_PROD: ${{ matrix.build == 'production' && '1' || '' }}
+          SLATE_E2E_WEBKIT_ALL: '1'
+        run: npm run e2e -- --project=iphone-webkit-all --project=iphone-18-pro-max-landscape --shard=${{ matrix.shard }}/4 --trace retain-on-failure
+      - name: Upload failure artifacts
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-results-${{ matrix.build }}-webkit-${{ matrix.shard }}
           path: test-results/
           retention-days: 14
