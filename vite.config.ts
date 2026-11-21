@@ -27,6 +27,11 @@ export default defineConfig({
   build: {
     // World data is fetched when needed; never inline it into the startup bundle.
     assetsInlineLimit: (file: string) => (/\.(tsv|json)$/.test(file) ? false : undefined),
+    // A lazy page's code is fetched by its import, not preloaded by a link (its CSS still is). Until November 21, 2026
+    // Vite preloaded it with <link rel=modulepreload>; WebKit kept a preload that failed offline in its memory cache, so
+    // in CI (twice on run 44858536421) Reload The Game, back online, was handed the failed copy without asking the
+    // network, and the page still couldn't load. The startup page's own preloads, which load online, stay.
+    modulePreload: { resolveDependencies: (_file: string, deps: string[], { hostType }: { hostType: 'html' | 'js' }) => (hostType === 'html' ? deps : []) },
     rolldownOptions: {
       output: { advancedChunks: { groups: [{ name: 'react', test: /node_modules[\\/](react|react-dom|scheduler)[\\/]/ }] } },
     },

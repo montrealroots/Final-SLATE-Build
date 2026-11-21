@@ -323,3 +323,25 @@ Batch 18 (November 21, 2026).
 - A route record's decision time can now be in calendar days as well as working days (`papers-scoped.ts withScope`).
   Until November 21, 2026 only working days were applied: a record in calendar days would have been marked researched
   with the country's time left in place. None had one. The Cayman Islands' two weeks is the first, recorded as 14 days.
+
+Batch 19 (November 21, 2026).
+- Sri Lanka, from the Department of Immigration and Emigration's Visa Fees page (last updated November 20, 2026): the
+  tourist visa (ETA), double entry for 30 days, is US$20 for SAARC citizens and US$50 for everyone else, the same
+  whether the applicant, a third party, a mission or the head office applies (US$25 and US$60 on arrival); free under
+  12. The ETA's record (an authorization in the game) now cites it and charges US$20 to the SAARC nationalities not on
+  the free list (Afghanistan, Bangladesh, Bhutan); until now that was "not modelled". The visa the game asks of the
+  eight nationalities who can't apply for an ETA alone and go through a sponsor is given the same US$50, its time still
+  estimated. The page's own note of a free visa for seven nationalities (the 2024 scheme) isn't applied: the 40-country
+  list of May 25, 2026 already stands, with its expiry on November 24, 2026 held.
+- Ecuador, the 90-day tourist visa: US$50 to apply and US$30 on grant, US$80 charged together, from the Government's
+  procedure page (last updated December 31, 2024, read through a fetch tool as the page refused direct retrieval). No
+  response time is given.
+- Peru, the tourist visa: US$30 on the procedure pages of 14 of Peru's 15 consulates general in the United States
+  (read in a browser); Miami's gives no fee. Recorded for applicants who live in the United States
+  (`route-evidence.json`, pe-visa-us). Elsewhere consulates charge in their own currency (30 soles consulares, euros in
+  Barcelona, CAD 45 in Ottawa by search results), so the base stays estimated. Only Phoenix gives a time (about seven
+  calendar days after the interview).
+- Leads, not recorded: Chile's consular summary table of visa fees by nationality (2025) now answers 404; Mongolia's
+  e-visa portal shows no fee (US$51.50 for the tourist visa only by secondary sources); the Philippine consulates'
+  pages are behind a browser challenge that isn't worked around; Paraguay's fee differs by consulate and nationality
+  (US$65 single entry at some missions, US$160 for US citizens in New York, by search results).

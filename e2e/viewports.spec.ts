@@ -231,6 +231,10 @@ test('a take-over that cannot read the latest save says so, stays read-only, and
 test('reloading the page and continuing at once opens the game in this tab, not read-only', async ({ page }, info) => {
   test.skip(!onlyOn(info, ['desktop']), 'Lifecycle check runs once.');
   await seedGame(page);
+  // Home's own code finishes arriving first. On November 21, 2026 (CI run 44858536421, dev, WebKit) a reload 15 ms after
+  // Home appeared cancelled six of the dev server's module downloads and WebKit's network process crashed ("Network
+  // process crashed"), failing the reload itself. The reload is still followed by Continue at once, which is the case.
+  await page.waitForLoadState('networkidle');
   await page.reload();
   await page.getByRole('button', { name: 'Continue', exact: true }).click();
   await expect(page.getByRole('heading', { name: /^Good (Morning|Afternoon|Evening), /, level: 1 })).toBeVisible();

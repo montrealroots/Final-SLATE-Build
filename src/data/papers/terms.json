@@ -3899,6 +3899,36 @@
      "what": "Government of the Commonwealth of Dominica, How do I apply for a visitor's visa?: a $200 application fee paid at the Treasury (page updated August 24, 2023)"
     }
    ]
+  },
+  "LK": {
+   "name": "Tourist visa (through a sponsor)",
+   "fee": 50,
+   "currency": "USD",
+   "feeBasis": "US$50, the tourist visa's fee for applicants outside the South Asian Association for Regional Cooperation, which the Department's table charges alike whether the application is made by the applicant, a third party, a mission or its head office. The nationalities asked for a visa here can't apply for an ETA alone and apply through a sponsor in Sri Lanka.",
+   "stayDays": 30,
+   "stayBasis": "The tourist visa allows 30 days, double entry.",
+   "sources": [
+    {
+     "kind": "official",
+     "url": "https://www.immigration.gov.lk/pages_e.php?id=45",
+     "what": "Department of Immigration and Emigration, Visa Fees: the tourist visa (ETA) with double entry for 30 days, US$20 for SAARC countries and US$50 for all others, the same by the applicant, a third party, a mission or the head office; US$25 and US$60 on arrival; free under 12 (page last updated November 20, 2026, read November 21, 2026)"
+    }
+   ]
+  },
+  "EC": {
+   "name": "Temporary visitor visa, tourist (90 days)",
+   "fee": 80,
+   "currency": "USD",
+   "feeBasis": "The Foreign Ministry's fees for the 90-day tourist visa: US$50 to apply and US$30 when it's granted, applied for online (e-VISAS) by nationals of the countries Ecuador asks a visa of. The game charges both on applying.",
+   "stayDays": 90,
+   "stayBasis": "Ninety days from entering Ecuador.",
+   "sources": [
+    {
+     "kind": "official",
+     "url": "https://www.gob.ec/mremh/tramites/concesion-visa-visitante-temporal-turista-90-dias",
+     "what": "Government of Ecuador, Ministry of Foreign Affairs and Human Mobility, Concesión de visa de visitante temporal turista 90 días: \"Solicitud de visa USD $50, Otorgamiento de visa USD $30\"; no response time given (last updated December 31, 2024; read through a fetch tool on November 21, 2026, as the page refused direct retrieval)"
+    }
+   ]
   }
  },
  "authorizations": {
@@ -4206,12 +4236,17 @@
    "name": "Tourist ETA (Sri Lanka)",
    "fee": 50,
    "currency": "USD",
-   "feeBasis": "About US$50 for a 30-day tourist ETA; free from May 25, 2026 for nationals of the 40 countries listed, and of the Maldives, Seychelles and Singapore.",
+   "feeBasis": "US$50 for a 30-day tourist ETA, by the Department of Immigration and Emigration's fee table (US$20 for citizens of the South Asian Association for Regional Cooperation); free from May 25, 2026 for nationals of the 40 countries listed, and of the Maldives, Seychelles and Singapore.",
    "days": 3,
    "daysBasis": "No decision time is published; the game's assumption is three days, as the authorizations that publish one decide within 72 hours.",
    "stayDays": 30,
    "stayBasis": "A stay of up to 30 days.",
    "sources": [
+    {
+     "kind": "official",
+     "url": "https://www.immigration.gov.lk/pages_e.php?id=45",
+     "what": "Department of Immigration and Emigration, Visa Fees: the tourist visa (ETA) with double entry for 30 days, US$20 for SAARC countries and US$50 for all others, the same by the applicant, a third party, a mission or the head office; US$25 and US$60 on arrival; free under 12 (page last updated November 20, 2026, read November 21, 2026)"
+    },
     {
      "kind": "secondary",
      "url": "https://tripprof.com/de/blog/sri-lanka-free-tourist-eta-2026/",
@@ -4282,6 +4317,22 @@
        "kind": "secondary",
        "url": "https://visasnews.com/en/sri-lanka-makes-tourist-eta-free-for-40-nationalities-from-may-25/",
        "what": "VisasNews: the 40 nationalities, and the Maldives, Seychelles and Singapore"
+      }
+     ]
+    },
+    {
+     "codes": [
+      "AF",
+      "BD",
+      "BT"
+     ],
+     "fee": 20,
+     "feeBasis": "US$20: the SAARC citizens' fee, for a SAARC nationality not on the free list.",
+     "sources": [
+      {
+       "kind": "official",
+       "url": "https://www.immigration.gov.lk/pages_e.php?id=45",
+       "what": "Department of Immigration and Emigration, Visa Fees: the tourist visa (ETA) with double entry for 30 days, US$20 for SAARC countries and US$50 for all others, the same by the applicant, a third party, a mission or the head office; US$25 and US$60 on arrival; free under 12 (page last updated November 20, 2026, read November 21, 2026)"
       }
      ]
     }

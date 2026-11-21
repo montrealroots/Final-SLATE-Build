@@ -8,7 +8,7 @@ import { describe, expect, it } from 'vitest';
 import terms from '../src/data/papers/terms.json';
 import workData from '../src/data/papers/work.json';
 import { COUNTRIES } from '../src/world/gazetteer/gazetteer';
-import { permitTerms, visaTerms } from '../src/engine/papers-terms';
+import { authorizationTerms, permitTerms, visaTerms } from '../src/engine/papers-terms';
 
 type Recorded = { fee: number; currency: string; days: number | [number, number]; sources: { kind: string; url: string; what: string }[] };
 const WORK = workData as unknown as { countries: Record<string, { others?: { route?: string } }> };
@@ -86,6 +86,14 @@ describe('papers terms', () => {
     // Batch 18 (November 21, 2026): Saint Lucia's visa in full; St Vincent's and Dominica's fees, their times estimated.
     expect(visaTerms('LC')).toMatchObject({ fee: { amount: 125, currency: 'XCD' }, days: 7, estimate: null });
     for (const c of ['VC', 'DM']) expect(visaTerms(c)).toMatchObject({ fee: { amount: 200, currency: 'XCD' }, estimate: { only: 'days' } });
+    // Batch 19 (November 21, 2026): Sri Lanka's fee table. The sponsored visa costs the ETA's US$50, its time estimated;
+    // the ETA charges SAARC citizens not on the free list US$20, the free list nothing, everyone else US$50.
+    expect(visaTerms('LK')).toMatchObject({ fee: { amount: 50, currency: 'USD' }, stayDays: 30, estimate: { only: 'days' } });
+    expect(authorizationTerms('LK', ['BD']).fee).toEqual({ amount: 20, currency: 'USD' });
+    expect(authorizationTerms('LK', ['IN']).fee).toEqual({ amount: 0, currency: 'USD' });
+    expect(authorizationTerms('LK', ['BR']).fee).toEqual({ amount: 50, currency: 'USD' });
+    // Ecuador's tourist visa: US$50 to apply and US$30 on grant, charged together; no time is published.
+    expect(visaTerms('EC')).toMatchObject({ fee: { amount: 80, currency: 'USD' }, stayDays: 90, estimate: { only: 'days' } });
   });
 
   it('names a source for every researched figure, and each is a real amount and a real time', () => {

@@ -37,11 +37,11 @@ finished, and they come back only when the owner says so:
   through the screens. No dataset the game holds has them, and none is invented for a test.
 - **J02 (source to feature):** a real work as the source and real catalog people hired, in its one game (each runs in
   its own journey today).
-- **J20 (phone parity):** every journey on WebKit; today only the iPhone projects' list in `playwright.config.ts` runs.
+- **J20 (phone parity):** taken up by the owner on November 21, 2026. Every journey ran on WebKit locally (238 passed, 0 failed, 14 skipped by design, of 252; `JOURNEY-REPORT.md`), and CI now runs every journey on WebKit, the `iphone-webkit-all` project, in four shards per build (`.github/workflows/ci.yml`, the webkit job). Until then CI ran only the iphone-18-pro-max project's list, 40 spec files of 107. CI's first WebKit run (44858536421) failed two shards: J18 on the production build, which was the game (WebKit handed a reloaded page its failed preloads; `vite.config.ts` no longer preloads a lazy page's code), and a dev reload during which WebKit's network process crashed (the test now waits for Home's downloads before reloading). Both are in `JOURNEY-REPORT.md`, "CI's First WebKit Run", with J10's wait for a second offer, which was too short for the agent's 30-day looks. Open lead, not fixed: opening a game writes the save on the clock's first tick, because `lastPeriodicSave` in `src/ui/store.ts` starts at 0. Two `e2e/storage.spec.ts` tests read the save right after Continue and failed once locally on production WebKit when that write landed after their read; that run also ran the disk out (ENOSPC). They passed 6 of 6 alone, and in CI. Starting the 30-second timer when a game opens would remove the write; nothing has measured what else relies on it.
 - **Papers research:** Iran, Malawi, Turkey, Serbia and Colombia stay the game's estimate, as their sources conflict
   (`docs/v10/papers-research/fees-without-times.md`); South Africa, Hong Kong and Argentina were settled from their
-  governments' pages on November 20 (batch 5, with Macao and Taiwan). 97 visitor visas and 159 work permits are still (after batches 6 to 18 and the six-destination research, November
-  20 and 21; until November 21 this line still said 102 and 164) estimates in all (`docs/v10/papers-estimates.json`), most with conflicting or aggregator-only sources.
+  governments' pages on November 20 (batch 5, with Macao and Taiwan). 95 visitor visas and 159 work permits are still (after batches 6 to 19 and the six-destination research, November
+  20 and 21; until November 21 this line still said 102 and 164, and 97 before batch 19) estimates in all (`docs/v10/papers-estimates.json`), most with conflicting or aggregator-only sources.
 - **Real-phone and pacing tests:** they need the owner's own device and a person playing.
 
 ## Where The "Go Perfectly" List Stands (The Owner, November 19, 2026)

@@ -1,6 +1,8 @@
 // J10 as one run (the v4 package, 05: "External acting/writing/directing offer -> agent negotiation -> scheduling -> paid
 // work -> credit/reputation -> new relevant offer. Multi-role conflicts cannot be bypassed"; ledger V4-038.10). The world
-// seed is pinned (a labelled fixture), so the agent's searches come out the same every run.
+// seed is pinned (a labelled fixture). Until November 21, 2026 this said the agent's searches came out the same every run:
+// they don't, since each look is keyed to the instant the agent was signed, which the running clock moves (jobs.ts). So
+// each wait below is as long as the game's own limit, not a guess at when the seed's offer comes.
 import type { Page } from '@playwright/test';
 import { expect, test } from './test';
 import { addScene, advance, nav, newProject, onlyOn, readSavedState, saveAndApprove, section, seededLife } from './helpers';
@@ -32,7 +34,9 @@ test('J10: an agent finds work, it is taken, worked, paid and credited; another 
   // The agent's offer, with their share; taken; its days on the calendar; worked, paid less commission, credited.
   const work = card(page, 'Work For Others');
   const offers = work.getByRole('list', { name: 'Offers Of Work' });
-  for (let i = 0; i < 16 && !(await offers.count()); i++) { await advance(page, 'week'); await nav(page, 'Profile'); }
+  // The agent looks every 30 days with a 60% chance. Until November 21, 2026 this waited 16 weeks, about four looks, and
+  // CI once found none (run 44870362407); it waits now for half the year the agent represents you, about six looks.
+  for (let i = 0; i < 26 && !(await offers.count()); i++) { await advance(page, 'week'); await nav(page, 'Profile'); }
   await expect(offers).toContainText(/less 15% to Imogen Vale, who found it\./);
   const first = (await offers.getByRole('button', { name: /^Accept / }).first().getAttribute('aria-label'))!.replace(/^Accept /, '');
   await offers.getByRole('button', { name: `Accept ${first}` }).click();
@@ -44,7 +48,12 @@ test('J10: an agent finds work, it is taken, worked, paid and credited; another 
 
   // The agent keeps looking: another offer, for work the record supports.
   const isNew = async () => (await readSavedState(page)).jobs.some((j: { production: string; status: string }) => j.status === 'offered' && j.production !== first);
-  for (let i = 0; i < 12 && !(await isNew()); i++) { await advance(page, 'week'); await nav(page, 'Profile'); }
+  // The agent looks every 30 days with a 60% chance (jobs.ts), keyed to the moment they were signed, which the running
+  // clock moves from run to run. Until November 21, 2026 this waited 12 weeks, about three looks, and CI once found none
+  // (run 44866106956: one offer came before the credit and lapsed, then nothing to August 17). It waits now for as long
+  // as the agent represents you, a year from signing, after which they stop looking.
+  const represented = async () => { const s = await readSavedState(page); return !!s.representation?.current && s.now < s.representation.current.until; };
+  for (let i = 0; i < 52 && !(await isNew()) && (await represented()); i++) { await advance(page, 'week'); await nav(page, 'Profile'); }
   const second = (await readSavedState(page)).jobs.find((j: { production: string; status: string }) => j.status === 'offered' && j.production !== first);
   // Nothing delivered yet. Until November 13, 2026 only acting could be offered. Since then an approved script of their
   // own (Night Ferry's) is a writing sample, so writing can be too; directing still needs more (jobs.ts rolesOffered).
