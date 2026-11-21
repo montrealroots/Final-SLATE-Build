@@ -81,3 +81,18 @@ describe('the picture gatherer', () => {
     for (const t of Object.values(TIERS) as { profile: string; poster: string }[]) for (const size of [t.profile, t.poster]) { expect(size).not.toBe('original'); expect(ABOUT_BYTES[size]).toBeGreaterThan(0); }
   });
 });
+
+describe('a pack as big as the real catalog', () => {
+  // 160,788 records, as the November 19 film pack holds. Until November 21, 2026 the check for a record listed twice
+  // compared every record with every other one: 23 seconds on a desktop, longer on a phone, with nothing on screen,
+  // which the owner saw on their phone as "picked, then nothing".
+  it('is read in well under a few seconds', async () => {
+    const files: [string, string][] = [['index.json', JSON.stringify({ version: 1, retrieved: RETRIEVED })]];
+    for (let i = 0; i < 160_787; i++) files.push([`titles/movie-${i}.json`, '{}']);
+    const pack = catalog(files);
+    const t = performance.now();
+    const { records } = await parsePack(pack);
+    expect(records.length).toBe(160_788);
+    expect(performance.now() - t).toBeLessThan(3_000);
+  }, 120_000);
+});

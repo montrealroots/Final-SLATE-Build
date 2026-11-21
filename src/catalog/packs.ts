@@ -61,7 +61,10 @@ export async function parsePack(file: Blob): Promise<{ meta: PackMeta; records: 
   if (h.entries.some(([p]) => kindOf(p) !== kind)) throw new Error('This data pack is damaged: it holds files of another kind.');
   // One record listed twice would leave which copy is kept to the order they are stored in (the v6 package's J18,
   // duplicate ids; from November 13, 2026, when such a pack still installed).
-  const twice = h.entries.map(([p]) => p).find((p, i, all) => all.indexOf(p) !== i);
+  // Until November 21, 2026 this compared every record with every other one: 36 seconds for the 160,788-record film
+  // pack on a desktop, and a phone frozen for minutes with nothing on screen ("picked, then nothing"). Now one pass.
+  const seen = new Set<string>();
+  const twice = h.entries.map(([p]) => p).find((p) => seen.size === seen.add(p).size);
   if (twice) throw new Error("This data pack is damaged: it lists the same record twice. It wasn't installed.");
   const { name, source, builtAt, retrieved } = h;
   return { meta: { kind, name, source, builtAt, ...(retrieved ? { retrieved } : {}) }, records: h.entries.map(([p, o, n]) => [p, file.slice(start + o, start + o + n)]) };
