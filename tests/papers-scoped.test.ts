@@ -54,7 +54,7 @@ describe('route-scoped fees', () => {
     expect(ROUTE_RECORDS.every((r) => !!r.applies !== !!r.held)).toBe(true);
     // A decision time names its unit, and the unit is one withScope applies (from November 21, 2026).
     expect(ROUTE_RECORDS.filter((r) => r.days).every((r) => r.dayUnit === 'working' || r.dayUnit === 'calendar')).toBe(true);
-    expect(ROUTE_RECORDS).toHaveLength(81);
+    expect(ROUTE_RECORDS).toHaveLength(82);
     // Serbia's long-stay route doesn't stand in for its work permit.
     expect(scopedRecords('RS', 'permit', { livesIn: 'US', passports: ['IN'], today: '2026-06-01' })).toEqual({ application: undefined, issuance: undefined });
   });
@@ -87,6 +87,15 @@ describe('route-scoped fees', () => {
     expect(bw('US').estimate?.only).toBe('days');
     expect(bw('GB')).toEqual(visaTerms('BW'));
     expect(permitTerms('TC', 'Work permit (Employed)')).toMatchObject({ fee: { amount: 270, currency: 'USD' }, issuance: { amount: 2700, currency: 'USD' }, days: 20, daysText: 'between 15 and 25 days', estimate: null });
+  });
+
+  // Batch 19 (November 21, 2026): Peru's consulates in the United States all charge US$30; elsewhere each consulate sets
+  // its own fee in its own currency, so only applicants living in the United States are charged it.
+  it('charges Peru\'s tourist visa at its US consulates\' US$30 for those who live there, and leaves the rest estimated', () => {
+    const pe = (livesIn: string) => withScope(visaTerms('PE'), 'PE', 'visa', { livesIn, passports: ['IN'], today: '2026-11-21' });
+    expect(pe('US').fee).toEqual({ amount: 30, currency: 'USD' });
+    expect(pe('US').estimate?.only).toBe('days');
+    expect(pe('GB')).toEqual(visaTerms('PE'));
   });
 
   // Batch 16 (November 20, 2026): Jamaica prices its visa by nationality (the High Commission's list of March 30, 2023).

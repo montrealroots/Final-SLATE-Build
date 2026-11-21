@@ -2422,6 +2422,36 @@
      ]
     }
    }
+  },
+  {
+   "id": "pe-visa-us",
+   "country": "PE",
+   "route": "Tourist visa (up to 183 days)",
+   "amount": 30,
+   "currency": "USD",
+   "component": "application",
+   "scope": "Applicants who live in the United States",
+   "evidence": "official_fee_scoped",
+   "from": null,
+   "through": null,
+   "days": null,
+   "dayUnit": null,
+   "note": "US$30, the consular fee on the tourist visa's page for 14 of Peru's 15 consulates general in the United States (Miami's page gives none; Phoenix's says 30 soles consulares, US$30). Elsewhere the fee is set by each consulate in its own currency, so it's applied to applicants who live in the United States only. Phoenix alone gives a time (about seven calendar days after the interview), so the decision time stays the game's estimate.",
+   "source": {
+    "url": "https://www.gob.pe/36240-solicitar-visa-de-turista-para-ingresar-al-peru",
+    "access": "retrieved",
+    "retrieved": "2026-11-21",
+    "note": "Government of Peru, Ministry of Foreign Affairs, Solicitar visa de turista para ingresar al Perú: each consulate's procedure (Chicago, Dallas, Los Angeles, New York, Washington DC and nine more), read in a browser."
+   },
+   "applies": {
+    "kind": "visa",
+    "component": "application",
+    "when": {
+     "livesIn": [
+      "US"
+     ]
+    }
+   }
   }
  ]
 }

@@ -26,7 +26,7 @@
   "entry": "eta",
   "days": 30
  },
- "note": "Sri Lanka: every visitor needs an Electronic Travel Authorization, 30 days (free since 25 May 2026 for the 40 countries the Department lists, Singapore and Seychelles; USD 20 for SAARC and USD 50 for everyone else, not modelled), Maldivians 90 days; nationals of Cameroon, Ghana, Côte d'Ivoire, Kosovo, Nigeria, North Korea, Syria and Taiwan can't apply alone and need a visa through a Sri Lankan sponsor (that list read from Wikipedia's copy). Hong Kong and Macao passports apply as China.",
+ "note": "Sri Lanka: every visitor needs an Electronic Travel Authorization, 30 days (free since 25 May 2026 for the 40 countries the Department lists, Singapore and Seychelles; USD 20 for SAARC and USD 50 for everyone else, not modelled until November 21, 2026, when the Department's fee table was read (src/data/papers/terms.json)), Maldivians 90 days; nationals of Cameroon, Ghana, Côte d'Ivoire, Kosovo, Nigeria, North Korea, Syria and Taiwan can't apply alone and need a visa through a Sri Lankan sponsor (that list read from Wikipedia's copy). Hong Kong and Macao passports apply as China.",
  "sources": [
   {
    "url": "https://www.eta.gov.lk/slvisa/visainfo/fees.jsp?locale=en_US",
