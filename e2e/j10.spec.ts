@@ -44,7 +44,11 @@ test('J10: an agent finds work, it is taken, worked, paid and credited; another 
 
   // The agent keeps looking: another offer, for work the record supports.
   const isNew = async () => (await readSavedState(page)).jobs.some((j: { production: string; status: string }) => j.status === 'offered' && j.production !== first);
-  for (let i = 0; i < 12 && !(await isNew()); i++) { await advance(page, 'week'); await nav(page, 'Profile'); }
+  // The agent looks every 30 days with a 60% chance (jobs.ts), keyed to the moment they were signed, which the running
+  // clock moves from run to run. Until November 21, 2026 this waited 12 weeks, about three looks, and CI once found none
+  // (run 44866106956: one offer came before the credit and lapsed, then nothing to August 17). It waits now for as long
+  // as the agent represents you, a year from signing, after which they stop looking.
+  for (let i = 0; i < 34 && !(await isNew()); i++) { await advance(page, 'week'); await nav(page, 'Profile'); }
   const second = (await readSavedState(page)).jobs.find((j: { production: string; status: string }) => j.status === 'offered' && j.production !== first);
   // Nothing delivered yet. Until November 13, 2026 only acting could be offered. Since then an approved script of their
   // own (Night Ferry's) is a writing sample, so writing can be too; directing still needs more (jobs.ts rolesOffered).
