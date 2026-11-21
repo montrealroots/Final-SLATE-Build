@@ -19,7 +19,8 @@ __pycache__/
 .screen-catalog.building/
 .screen-catalog.old/
 
-# Cinemas from Wikidata (CC0): gathered by tools/cinemas/import.mjs, rebuilt rather than committed (docs/CINEMAS.md).
+# Cinemas from Wikidata (CC0): gathered by tools/cinemas/import.mjs into .cinemas/. Until November 21, 2026 they were
+# rebuilt rather than committed; a copy now ships in public/screen-catalog/cinemas/ (docs/CINEMAS.md).
 .cinemas-cache/
 .cinemas/
 

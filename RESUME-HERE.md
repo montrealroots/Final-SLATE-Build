@@ -6,6 +6,13 @@ Read this first. It lists what is finished, what the Gap Completion Package stil
 
 At every stopping point, open a pull request into `main` and merge it (see `CLAUDE.md`, certified by the user on November 6, 2026). Never merge red checks.
 
+## Base44's Copy: Cinemas And The TMDB Pack (November 21, 2026)
+
+- **Cinemas ship with the game.** Base44 builds from GitHub and runs no data server. The cinemas were kept out of the repository, so its copy had none. The built cinemas (Wikidata, CC0) are now in `public/screen-catalog/cinemas/` (153 files, 9.9 MB). Every build carries them; the dev and production servers answer from `.cinemas/` where it is built, and from that copy where it isn't. `tests/shipped-cinemas.test.ts` checks every country's file and count. After a cinemas rebuild, copy `.cinemas/*.json` over it.
+- **The TMDB pack stays out of GitHub** (the repository is public; TMDB's terms; the owner's November 11 decision). On Base44 it goes in through Settings, Mods, Install From A File, with both `part1of2` and `part2of2` picked together. A pack is kept per browser and per address: installed in Base44's editor preview, it isn't in the published app or on another device.
+- **Measured on a plain static host like Base44's** (the build, any unknown path answered with the game's page, no data server): London listed 1,207 cinemas within 25 km with nothing installed, on desktop Chromium and iPhone WebKit; the real TMDB pack's two files installed on iPhone WebKit in 1.9 minutes, and Companies then showed 94,694 films and 1,488,231 people.
+- **Base44's "9 days ago"** is GitHub's `updated_at` for the repository (November 12, 17:19 UTC), which changes with the repository's settings, not with pushes; `pushed_at` and `main` are current.
+
 ## The Research Recovery Package (The Owner, November 20, 2026)
 
 The owner's package `SLATE-Research-Recovery-2026-11-19` is applied as targeted gap completion. It is kept in `docs/recovery/package/`, and its validator passes. What it changed and what remains:

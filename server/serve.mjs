@@ -8,6 +8,9 @@
 // serve TMDB's film data, the catalog and the film pack. The owner decided on November 11, 2026 that it goes to no other
 // player (docs/DEPLOYMENT.md).
 //
+// The cinemas come from .cinemas/ where it has been built here, and otherwise from the copy every build carries
+// (dist/screen-catalog/cinemas, from public/; November 21, 2026). Until then a copy without .cinemas/ had no cinemas.
+//
 // The owner's server listens on this machine alone unless told otherwise, and answers the owner's data only to a
 // request made on this machine. To use it from elsewhere, name a file holding the owner's passphrase
 // (--owner-secret-file): the game then asks for it in Settings, and a request without a session gets no owner data.
@@ -94,7 +97,7 @@ if (import.meta.url === `file://${process.argv[1]}`) {
   const films = process.argv.includes('--owner') || process.env.SLATE_OWNER === '1';
   const plan = ownerPlan({ films, host: arg('host', 'SLATE_HOST', null), secretFile: arg('owner-secret-file', 'SLATE_OWNER_SECRET_FILE', null) });
   if (plan.error) { console.error(plan.error); process.exit(1); }
-  const server = createSlateServer({ dist, catalogDir: arg('catalog', 'SLATE_CATALOG_DIR', '.screen-catalog'), cinemasDir: arg('cinemas', 'SLATE_CINEMAS_DIR', '.cinemas'), packsDir: arg('packs', 'SLATE_PACKS_DIR', 'packs'), films, ownerSecret: plan.secret });
+  const server = createSlateServer({ dist, catalogDir: arg('catalog', 'SLATE_CATALOG_DIR', '.screen-catalog'), cinemasDir: arg('cinemas', 'SLATE_CINEMAS_DIR', existsSync('.cinemas') ? '.cinemas' : join(dist, 'screen-catalog', 'cinemas')), packsDir: arg('packs', 'SLATE_PACKS_DIR', 'packs'), films, ownerSecret: plan.secret });
   const who = !films ? ', without TMDB\'s film data (--owner serves it)'
     : `, the owner's own: TMDB's film data is served to this machine${plan.secret ? ', and elsewhere after the owner signs in' : ' only'}`;
   server.listen(port, plan.host, () => console.log(`SLATE on http://${plan.host ?? 'localhost'}:${port}${who}`));

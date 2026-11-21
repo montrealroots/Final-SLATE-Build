@@ -1,3 +1,4 @@
+import { existsSync } from 'node:fs';
 import { join } from 'node:path';
 import { defineConfig, type Plugin } from 'vite';
 import react from '@vitejs/plugin-react';
@@ -6,7 +7,9 @@ import { ownerPlan } from './server/serve.mjs';
 
 // The game's data files (the screen catalog from TMDB, the cinemas from Wikidata) are answered by the same handler the
 // production server uses (server/serve.mjs, docs/DEPLOYMENT.md), so the dev and preview servers can't drift from it.
-// Neither is ever copied into a build: the catalog stays on the machine that gathered it (TMDB's terms, docs/CATALOG.md).
+// The catalog is never copied into a build: it stays on the machine that gathered it (TMDB's terms, docs/CATALOG.md).
+// Until November 21, 2026 the cinemas weren't either. They (CC0) now ship in public/, so a copy built from the repository
+// alone, as Base44's is, has them; a fresher .cinemas/ built here answers instead.
 //
 // The dev server is the owner's own, and answers this machine. To use it from a phone on the same network (npm run dev
 // -- --host), name the owner's passphrase file in SLATE_OWNER_SECRET_FILE, as for the production server: the phone then
@@ -15,7 +18,7 @@ import { ownerPlan } from './server/serve.mjs';
 function serveCatalog(): Plugin {
   const plan = ownerPlan({ films: true, secretFile: process.env.SLATE_OWNER_SECRET_FILE ?? null });
   if (plan.error) throw new Error(plan.error);
-  const handler = createCatalogHandler({ catalogDir: join(process.cwd(), '.screen-catalog'), cinemasDir: join(process.cwd(), '.cinemas'), packsDir: join(process.cwd(), 'packs'), films: true, ownerSecret: plan.secret });
+  const handler = createCatalogHandler({ catalogDir: join(process.cwd(), '.screen-catalog'), cinemasDir: join(process.cwd(), existsSync('.cinemas') ? '.cinemas' : 'public/screen-catalog/cinemas'), packsDir: join(process.cwd(), 'packs'), films: true, ownerSecret: plan.secret });
   return { name: 'slate-screen-catalog', configureServer: (s) => { s.middlewares.use(handler); }, configurePreviewServer: (s) => { s.middlewares.use(handler); } };
 }
 
