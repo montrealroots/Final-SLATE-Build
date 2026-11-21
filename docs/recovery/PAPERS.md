@@ -34,7 +34,7 @@ That makes 10 records applied and 35 held. A test fails if any conflicting, unda
 
 ## Records Added After The Package
 
-Two records, from the Nepal Tourism Board's tourist-visa page (read November 20, 2026), brought the total to 47, two for Trinidad and Tobago's missions to 49, two for Grenada's permit fee tiers to 51, one for Botswana's Washington embassy to 52, and 27 for Jamaica's visa fees by nationality to 79: 44 applied and 35 held.
+Two records, from the Nepal Tourism Board's tourist-visa page (read November 20, 2026), brought the total to 47, two for Trinidad and Tobago's missions to 49, two for Grenada's permit fee tiers to 51, one for Botswana's Washington embassy to 52, 27 for Jamaica's visa fees by nationality to 79, and one for Grenada's London High Commission to 80: 45 applied and 35 held.
 
 - **Nepal, passports with no visa on arrival.** Nigeria, Ghana, Zimbabwe, Eswatini, Cameroon, Somalia, Liberia, Ethiopia, Iraq, Palestine, Afghanistan, Iran and Syria apply at a Nepalese mission first. They pay the Department of Immigration's US$30; no mission's own price was checked. No source gives a mission's decision time, so it is the game's estimate and is said to be one (`daysEstimated` in `route-evidence.json`). Until then they were given the arrival desk's one day.
 - **Nepal, Chinese nationals.** The visa is free. A passport on the mission list as well pays the mission's fee.

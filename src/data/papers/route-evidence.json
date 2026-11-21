@@ -2361,6 +2361,36 @@
      ]
     }
    }
+  },
+  {
+   "id": "gd-visa-london",
+   "country": "GD",
+   "route": "Visa (single entry)",
+   "amount": 230,
+   "currency": "GBP",
+   "component": "application",
+   "scope": "High Commission in London",
+   "evidence": "official_fee_scoped",
+   "from": "2024-07-01",
+   "through": null,
+   "days": null,
+   "dayUnit": null,
+   "note": "£200 for a single-entry visa and the £30 processing fee every application pays (£375 multiple entry), from July 1, 2024. The sheet gives no decision time, so it stays the game's estimate.",
+   "source": {
+    "url": "https://grenada-highcommission.co.uk/wp-content/uploads/2026/03/grenada-uk-passportandvisafees-2026.pdf",
+    "access": "retrieved",
+    "retrieved": "2026-11-21",
+    "note": "High Commission for Grenada, London, Grenadian passport and visa fees with effect from July 1, 2024 (posted March 2026)."
+   },
+   "applies": {
+    "kind": "visa",
+    "component": "application",
+    "when": {
+     "livesIn": [
+      "GB"
+     ]
+    }
+   }
   }
  ]
 }

@@ -52,7 +52,7 @@ describe('route-scoped fees', () => {
     expect(unsettled.every((r) => !r.applies && r.held)).toBe(true);
     // Every record is either applied or held with a reason; none is silently dropped.
     expect(ROUTE_RECORDS.every((r) => !!r.applies !== !!r.held)).toBe(true);
-    expect(ROUTE_RECORDS).toHaveLength(79);
+    expect(ROUTE_RECORDS).toHaveLength(80);
     // Serbia's long-stay route doesn't stand in for its work permit.
     expect(scopedRecords('RS', 'permit', { livesIn: 'US', passports: ['IN'], today: '2026-06-01' })).toEqual({ application: undefined, issuance: undefined });
   });
@@ -100,6 +100,13 @@ describe('route-scoped fees', () => {
     // Every passport is in one fee at most.
     const jm = ROUTE_RECORDS.filter((r) => r.id.startsWith('jm-visa-')).flatMap((r) => r.applies!.when.passport!);
     expect(new Set(jm).size).toBe(jm.length);
+  });
+
+  // Batch 18 (November 21, 2026): Grenada's London High Commission prices its visa for applicants who live in the UK.
+  it('charges Grenada\'s visa at the London High Commission\'s price, its processing fee included', () => {
+    const at = (livesIn: string) => withScope(visaTerms('GD'), 'GD', 'visa', { livesIn, passports: ['CN'], today: '2026-11-21' });
+    expect(at('GB').fee).toEqual({ amount: 230, currency: 'GBP' });
+    expect(at('US')).toEqual(visaTerms('GD'));
   });
 
   // From November 20, 2026 (Nepal Tourism Board): some passports get no visa on arrival in Nepal and apply at a mission

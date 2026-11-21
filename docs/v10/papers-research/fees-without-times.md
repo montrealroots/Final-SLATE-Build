@@ -312,3 +312,6 @@ Batch 18 (November 21, 2026).
   (the Ministry of Foreign Affairs' visas page, undated). No decision time is published.
 - Dominica, the visitor's visa fee: a $200 application fee paid at the Treasury (the government's page, updated August
   24, 2023), taken as Eastern Caribbean dollars because the page doesn't name them. No decision time is published.
+- Grenada, the visa, scoped to the High Commission in London: £200 single entry and the £30 processing fee, £230, from
+  July 1, 2024 (its passport and visa fees sheet, posted March 2026), for applicants who live in the United Kingdom.
+  No decision time. The Washington embassy's sheet (US$375, about ten business days) is from March 2018 and isn't used.
