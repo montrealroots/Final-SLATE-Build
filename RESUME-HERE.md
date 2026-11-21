@@ -37,7 +37,7 @@ finished, and they come back only when the owner says so:
   through the screens. No dataset the game holds has them, and none is invented for a test.
 - **J02 (source to feature):** a real work as the source and real catalog people hired, in its one game (each runs in
   its own journey today).
-- **J20 (phone parity):** every journey on WebKit; today only the iPhone projects' list in `playwright.config.ts` runs.
+- **J20 (phone parity):** taken up by the owner on November 21, 2026. Every journey ran on WebKit locally (238 passed, 0 failed, 14 skipped by design, of 252; `JOURNEY-REPORT.md`), and CI now runs every journey on WebKit, the `iphone-webkit-all` project, in four shards per build (`.github/workflows/ci.yml`, the webkit job). Until then CI ran only the iphone-18-pro-max project's list, 40 spec files of 107.
 - **Papers research:** Iran, Malawi, Turkey, Serbia and Colombia stay the game's estimate, as their sources conflict
   (`docs/v10/papers-research/fees-without-times.md`); South Africa, Hong Kong and Argentina were settled from their
   governments' pages on November 20 (batch 5, with Macao and Taiwan). 97 visitor visas and 159 work permits are still (after batches 6 to 18 and the six-destination research, November
