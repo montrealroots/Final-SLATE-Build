@@ -83,6 +83,9 @@ describe('papers terms', () => {
     expect(visaTerms('FJ')).toMatchObject({ fee: { amount: 93, currency: 'FJD' }, days: 20, estimate: null });
     expect(permitTerms('VU', 'Work permit (Department of Labour)')).toMatchObject({ route: 'Temporary Work Permit', fee: { amount: 60000, currency: 'VUV' }, stayDays: 120 });
     expect(permitTerms('VU', 'Work permit (Department of Labour)').estimate?.only).toBe('days');
+    // Batch 18 (November 21, 2026): Saint Lucia's visa in full; St Vincent's and Dominica's fees, their times estimated.
+    expect(visaTerms('LC')).toMatchObject({ fee: { amount: 125, currency: 'XCD' }, days: 7, estimate: null });
+    for (const c of ['VC', 'DM']) expect(visaTerms(c)).toMatchObject({ fee: { amount: 200, currency: 'XCD' }, estimate: { only: 'days' } });
   });
 
   it('names a source for every researched figure, and each is a real amount and a real time', () => {

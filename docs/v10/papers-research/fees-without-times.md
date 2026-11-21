@@ -302,3 +302,13 @@ Batch 17 (November 21, 2026): leads only; nothing recorded.
   without JavaScript and an application.
 - Botswana's gov.bw (an expired certificate) and Pakistan's mofa.gov.pk (a certificate chain that doesn't verify) can't
   be read with verification on, and verification isn't turned off.
+
+Batch 18 (November 21, 2026).
+- Saint Lucia, the non-immigrant visa, settled in full: EC$125 single entry (used within three months), EC$190 multiple
+  entry over a year, five working days, from the government's service page (read in a browser; undated). It asks for
+  the application two weeks before travel, and a visa can sometimes be applied for at the airport and may be refused
+  there.
+- St Vincent and the Grenadines, the visa's fee: EC$200 each application, issued by the Ministry of National Security
+  (the Ministry of Foreign Affairs' visas page, undated). No decision time is published.
+- Dominica, the visitor's visa fee: a $200 application fee paid at the Treasury (the government's page, updated August
+  24, 2023), taken as Eastern Caribbean dollars because the page doesn't name them. No decision time is published.
