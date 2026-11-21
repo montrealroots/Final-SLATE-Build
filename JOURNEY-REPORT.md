@@ -36,6 +36,15 @@ These journeys had never run on WebKit before. Each failure was either the test 
 
 The three load failures passed 16 of 16 on the iPhone 18 Pro Max across two repeats, alone. The reload test failed 8 of 8 alone before the fix and passed 8 of 8 after it.
 
+## CI's First WebKit Run (November 21, 2026)
+
+The first CI run of every journey on WebKit (run 44858536421, J20) passed 15 of its 17 jobs. Two shards failed, one test each. Each failed job was re-run once.
+
+| Test | Build | First run | Re-run | What happened | Fix |
+|---|---|---|---|---|---|
+| `e2e/v10-offline.spec.ts:8` J18 | production | Failed | Failed | Offline, opening Your Bank made Vite preload the page's three code files with `<link rel=modulepreload>`; all three failed. Back online, Reload The Game reloaded the page (the stylesheet was fetched again, 200), but the three code files were never asked for: WebKit gave the new page its failed preloads from memory, the import threw "Importing a module script failed", and the page still couldn't load. It passed every time on this machine (6 of 6), so the trace from CI is the evidence. A player on Safari who lost the network could hit the same thing. | The game. `vite.config.ts` no longer preloads a lazy page's code with links; its import fetches it, and its CSS is still preloaded. The startup page's own preloads stay. Offline now only the stylesheet fails, and after the reload all four files arrive (trace, this machine) |
+| `e2e/viewports.spec.ts:231` reload and continue at once | dev | Failed | Passed | The reload came 15 ms after Home appeared, cancelled six of the dev server's module downloads, and WebKit's network process crashed ("Network process crashed"), failing the reload itself. A browser crash, not the game. | The test waits for Home's downloads to finish before reloading. Continue still follows the reload at once, which is what it checks. 8 of 8 after (4 on WebKit, 4 on desktop) |
+
 Other runs on November 20:
 - The full check passed: 236 test files, 1,913 tests passed, 59 skipped. The build and size budget passed.
 - The papers browser tests passed on desktop and phone, 2 of 2 on desktop. One desktop run failed while three heavy runs shared the machine, and passed when rerun alone.
