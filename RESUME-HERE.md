@@ -6,6 +6,13 @@ Read this first. It lists what is finished, what the Gap Completion Package stil
 
 At every stopping point, open a pull request into `main` and merge it (see `CLAUDE.md`, certified by the user on November 6, 2026). Never merge red checks.
 
+## Installing The Film Pack From Files (November 21, 2026)
+
+- **"Picked, then nothing."** The owner picked the two pieces of the November 19 film pack on their phone, in Base44's editor preview, and nothing happened. Reading a pack checked for a record listed twice by comparing each of its 160,788 records with every other one: 36 seconds on this machine's desktop processor, longer on a phone, before any progress shows. It is now one pass (`src/catalog/packs.ts parsePack`): 262 ms for the real pack. `tests/packs.test.ts` holds a catalog-sized pack under 3 seconds; it failed at 36 seconds before the fix.
+- **Measured on iPhone WebKit**, on a plain static host like Base44's: the real pack's two files installed in 47 seconds (1.9 minutes before), with progress from 16 seconds; Companies then showed 94,694 films. Not tried on a real iPhone.
+- **Storage.** WebKit's test browser gave the game 1,000 MB; the pack takes 727.1 MB. A real phone, or Base44's editor preview (a frame inside another site), may give less; the game then says how much is needed. A pack is kept per browser and address, so one installed in the editor preview isn't in the published app.
+- **Shipping the cinemas in the build** (`19eb6ca`) was reverted the same day: the owner wants the November 10 arrangement, not new ones.
+
 ## The Research Recovery Package (The Owner, November 20, 2026)
 
 The owner's package `SLATE-Research-Recovery-2026-11-19` is applied as targeted gap completion. It is kept in `docs/recovery/package/`, and its validator passes. What it changed and what remains:
