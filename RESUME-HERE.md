@@ -99,8 +99,10 @@ The owner's "What's next?" list of November 19, worked through in order:
      `access` text.
    - Blocked: BAFTA Film and TV (HTTP 403), the Annies (a script-only site), SXSW (its 2026 pages are gone and its
      schedule needs a session), Locarno and TIFF (they refuse the tools), the Blue Dragon site (unreachable; its
-     ceremony is November 25). Not yet held: IDFA (ends November 22), the International Emmys (November 23), the
-     Gothams (November 30), the European Film Awards (January 2027); the AMAA's 2026 edition wasn't found.
+     ceremony is November 25). IDFA 2026's 22 winners are held (announced November 19; until November 22 this line
+     listed IDFA as not yet held). Not yet held, as their ceremonies haven't happened (nominees only): the International
+     Emmys (November 23), the Blue Dragons (November 25), the Gothams (November 30), the European Film Awards (January
+     2027); the AMAA's 2026 edition wasn't found.
    - Next: the papers research and the parked journeys (J02, J20; J01/J21 only with a licensed box-office dataset).
 3. Unrealistic prices: done before this list (`docs/prices/PRICES.md`, 53 sourced or fixed). The two modeled rows
    (stop-motion and creature materials, a broadcast edit) were searched for again on November 19: only hobby kits
@@ -119,7 +121,7 @@ fits: TMDB's films and series with at least 20 votes.
 - **Catalog** (`docs/CATALOG-COVERAGE.md`): 94,694 films, 16,276 series, 47,907 seasons, 1,210,459 episodes,
   1,488,231 people; 20 titles TMDB wouldn't return. Pack `packs/slate-catalog-2026-11-19.slatepack`, 733.5 MB,
   160,788 files (git-ignored, served by the owner's server on 8080). The November 18 pack was deleted when this one
-  replaced it, as the Mods page offers the older of two (`DataPacks.tsx offered.find`, still open).
+  replaced it, as the Mods page then offered the older of two. That was fixed the same day in the server, which lists only the newest pack of a kind (`server/catalog-handler.mjs offeredMods`, `tests/catalog-server.test.ts` "offers only the newest pack of a kind"); until November 22, 2026 this line still called it open.
 - **Pictures** (`tools/screen-catalog/pictures.mjs`, `docs/PICTURE-COVERAGE.md`): finished November 19 at 13:00 UTC.
   1,110,108 of the 1,110,116 records with a published picture are downloaded and packed: 384 packs in
   `packs/pictures/`, 12,398 MB (git-ignored, served by the owner's server on 8080). Each picture is kept once, in its
