@@ -3,10 +3,12 @@
 // your-films.test.ts keeps the invented cast a picture has without it.
 import { readFileSync } from 'node:fs';
 import { describe, expect, it } from 'vitest';
-import { applyRecognition, fameOf, filmFeeFrom, genderOf, performerFee, standingOf } from '../src/engine/recognition';
+import { applyRecognition, fameOf, filmFeeFrom, genderOf, performerFee, recognisedAtHome, standingOf } from '../src/engine/recognition';
+import { namesFor } from '../src/engine/names-by-country';
 import { castPicture, pictureCredits, ANY_FIRSTS, CREW_SHARE, LEAD_SHARE, MEN_FIRSTS, PICTURE_CREW, SUPPORTING_SHARE, WOMEN_FIRSTS } from '../src/engine/your-films';
 import type { OutsideJob } from '../src/engine/jobs';
 import type { GameState } from '../src/engine/types';
+import type { StudioProfile } from '../src/engine/studios';
 import { startLife } from './helpers';
 
 function picture(s: GameState, released: string, budget: number): OutsideJob {
@@ -124,3 +126,64 @@ describe('a studio picture cast from real actors', () => {
   });
 });
 
+
+// A studio's country (November 22, 2026): Toho casts performers Japan's own awards recognised, and anyone it invents,
+// part or crew, has a Japanese name. Before then every studio cast from the one record and named its parts Grace and Walter.
+describe("a studio picture cast from the studio's own country", () => {
+  const toho = (s: GameState) => { s.industry = { horizon: '2026-11-10', builtAt: '2026-11-10T00:00:00Z', series: {}, studios: [{ c: 'company:toho', name: 'TOHO', n: 10, g: [['Drama', 10]] } as StudioProfile] }; };
+  const jp = namesFor('JP')!;
+
+  it('casts actors the Japan Academy Prizes recognised, never one recognised only abroad', () => {
+    const s = startLife('cast-toho'); toho(s);
+    const j = picture(s, '2026-10-01', 60_000_000);
+    castPicture(s, j);
+    const real = j.studio!.cast!.filter((m) => m.tmdbId);
+    expect(real.length).toBeGreaterThanOrEqual(4);
+    for (const m of real) expect(recognisedAtHome(m.tmdbId!, 'JP', 2026)).toBe(true);
+    // At any budget: a part Japan's own can't be paid for goes to an unknown, not to someone recognised abroad.
+    for (const budget of [500_000, 2_000_000, 5_000_000, 15_000_000, 200_000_000]) {
+      const b = startLife(`cast-toho-${budget}`); toho(b);
+      const jb = picture(b, '2026-10-01', budget);
+      castPicture(b, jb);
+      for (const m of jb.studio!.cast!) if (m.tmdbId) expect(recognisedAtHome(m.tmdbId, 'JP', 2026)).toBe(true);
+    }
+    // Every part, whoever plays it, is a Japanese name.
+    for (const m of j.studio!.cast!) {
+      const [first, last] = m.character!.split(' ');
+      expect([...jp.women, ...jp.men]).toContain(first);
+      expect(jp.last).toContain(last);
+    }
+    // The same picture at a studio the game has no country for casts as before: Hollywood's record, English names.
+    const u = startLife('cast-toho');
+    const ju = picture(u, '2026-10-01', 60_000_000);
+    castPicture(u, ju);
+    expect(ju.studio!.cast!.filter((m) => m.tmdbId && !recognisedAtHome(m.tmdbId, 'JP', 2026)).length).toBeGreaterThan(0);
+  });
+
+  it("casts from the whole record where the country's own can't fill a picture's parts", () => {
+    // Canada's: the record holds none of the Canadian Screen Awards' film acting prizes, one actor in all.
+    const s = startLife('cast-canada');
+    s.industry = { horizon: '2026-11-10', builtAt: '2026-11-10T00:00:00Z', series: {}, studios: [{ c: 'company:walt-disney-animation-studios-vancouver', name: 'Vancouver Fixture', n: 1, g: [['Drama', 1]] } as StudioProfile] };
+    const j = picture(s, '2026-10-01', 60_000_000);
+    j.company = 'Vancouver Fixture';
+    castPicture(s, j);
+    expect(j.studio!.cast!.every((m) => m.tmdbId)).toBe(true);
+    expect(j.studio!.cast!.filter((m) => !recognisedAtHome(m.tmdbId!, 'CA', 2026)).length).toBeGreaterThan(0);
+  });
+
+  it('gives a part none of its own can be paid for to an unknown with a Japanese name, and so its crew', () => {
+    const s = startLife('cast-toho-small'); toho(s);
+    const j = picture(s, '2026-10-01', 300_000);
+    castPicture(s, j);
+    const invented = j.studio!.cast!.filter((m) => !m.tmdbId);
+    expect(invented.length).toBeGreaterThan(0);
+    for (const m of invented) {
+      const [first, last] = m.name.split(' ');
+      expect(m.gender === 'woman' ? jp.women : jp.men).toContain(first);
+      expect(jp.last).toContain(last);
+    }
+    const crew = j.studio!.crew!.filter((c) => !c.tmdbId && !c.you);
+    expect(crew.length).toBeGreaterThan(0);
+    for (const c of crew) expect(jp.last).toContain(c.name.split(' ').at(-1));
+  });
+});

@@ -444,7 +444,7 @@
  "verdict": "proven",
  "hashes": {
   "src/engine/recognition-hire.ts": "b7403041f200f2a8",
-  "src/engine/recognition.ts": "6599153b978eb3f0",
+  "src/engine/recognition.ts": "7ddfcfc5fc4210ad",
   "src/engine/guests.ts": "ebd690169529e00b",
   "tests/proof/career.ts": "50bea06f19a02c5b"
  }

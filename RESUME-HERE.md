@@ -6,6 +6,25 @@ Read this first. It lists what is finished, what the Gap Completion Package stil
 
 At every stopping point, open a pull request into `main` and merge it (see `CLAUDE.md`, certified by the user on November 6, 2026). Never merge red checks.
 
+## Studios Cast Their Own Country (November 22, 2026)
+
+- The awards record (`tools/recognition/build.mjs`, Wikidata, CC0) now reads nineteen more bodies: the Japan Academy
+  Prizes, Golden Roosters, Hundred Flowers, Blue Dragons, Baeksangs, Golden Horses, Hong Kong Film Awards, Filmfare,
+  India's National Film Awards, Asian Film Awards, Goyas, David di Donatellos, German Film Awards, Ariels, Grande
+  Prêmios, Platinos, AACTA, Canadian Screen Awards and AMAA. 521 categories, 8,746 people (from 200 and 6,202); `fame.mjs`
+  rerun after it. Weights in `recognition.ts BODY_WEIGHT` (Modeled assumption, `docs/depth/PRODUCTION-SOURCES.md`).
+- A studio's picture casts the actors its own country's awards recognised (`recognition.ts BODY_COUNTRIES`,
+  `recognisedAtHome`; `your-films.ts castPicture`): Toho casts Japan Academy actors. A part none of them can be paid for
+  goes to an unknown named in the studio's language (`src/engine/names-by-country.ts`, ten languages), and so do parts
+  and invented crew. A country with fewer recognised actors than a picture's eight parts casts from the whole record
+  after its own. Actors recognised at home: US 1,719, GB 303, IN 237, FR 202, ES 171, CN 162, HK 145, TW 129, IT 119,
+  JP 78, KR 76, DE 70, MX 67, AU 51, NG 27, BR 17, CA 1.
+- **Gap:** Wikidata holds none of the Canadian Screen Awards' film acting prizes (nor the Genies before them) as awards
+  people received, so Canada casts from the whole record.
+- Tests: `tests/your-film-cast.test.ts` (10, three new); each new rule fails a mutation (home pool off, names off,
+  always abroad, never abroad). People matrix regenerated (Bardem's Goyas, DiCaprio 76 → 81, fee unchanged at the cap).
+  Proof `hire-recognised` rerun: still proven.
+
 ## 2026's Real Weekends (The Owner, November 22, 2026)
 
 - The owner asked for the year's weekly box office to move as it did in real life up to November 22, 2026, then be

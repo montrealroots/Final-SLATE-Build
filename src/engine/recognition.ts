@@ -13,9 +13,17 @@
 // (561 of 18,152 on November 15, 2026) could be from any year, so it is left out.
 import recognitionUrl from '../data/recognition.json?url';
 
-export type Body = 'oscar' | 'bafta' | 'bafta-tv' | 'globe' | 'sag' | 'emmy' | 'cannes' | 'venice' | 'berlin' | 'critics' | 'spirit' | 'cesar';
+export type Body = 'oscar' | 'bafta' | 'bafta-tv' | 'globe' | 'sag' | 'emmy' | 'cannes' | 'venice' | 'berlin' | 'critics' | 'spirit' | 'cesar'
+  // From November 22, 2026: the other film countries' national academies and main awards (tools/recognition/build.mjs).
+  | 'japan-academy' | 'golden-rooster' | 'hundred-flowers' | 'blue-dragon' | 'baeksang' | 'golden-horse' | 'hkfa' | 'filmfare' | 'nfa-india'
+  | 'asian-film' | 'goya' | 'david' | 'lola' | 'ariel' | 'grande-premio' | 'platino' | 'aacta' | 'csa' | 'amaa';
 /** What each body's judgement weighs: the game's (Modeled assumption), with peers' votes and the oldest festivals' juries above the press's. */
-export const BODY_WEIGHT: Record<Body, number> = { oscar: 10, bafta: 7, sag: 7, cannes: 7, venice: 7, berlin: 6, emmy: 6, globe: 5, cesar: 5, 'bafta-tv': 5, critics: 4, spirit: 4 };
+export const BODY_WEIGHT: Record<Body, number> = {
+  oscar: 10, bafta: 7, sag: 7, cannes: 7, venice: 7, berlin: 6, emmy: 6, globe: 5, cesar: 5, 'bafta-tv': 5, critics: 4, spirit: 4,
+  // A country's own academy or state award weighs what the César does; a press or popular vote, and a region's prize, less.
+  'japan-academy': 5, 'golden-rooster': 5, 'blue-dragon': 5, 'golden-horse': 5, hkfa: 5, 'nfa-india': 5, goya: 5, david: 5, lola: 5, ariel: 5,
+  'grande-premio': 5, aacta: 5, csa: 5, baeksang: 4, filmfare: 4, 'asian-film': 4, platino: 4, amaa: 4, 'hundred-flowers': 3,
+};
 /** A nomination's share of a win. */
 export const NOMINATION_SHARE = 0.4;
 export const BODY_NAME: Record<Body, [string, string]> = {
@@ -23,7 +31,32 @@ export const BODY_NAME: Record<Body, [string, string]> = {
   globe: ['Golden Globe', 'Golden Globes'], sag: ['Screen Actors Guild Award', 'Screen Actors Guild Awards'], emmy: ['Primetime Emmy', 'Primetime Emmys'],
   cannes: ['Cannes Festival prize', 'Cannes Festival prizes'], venice: ['Venice Festival prize', 'Venice Festival prizes'], berlin: ['Berlin Silver Bear', 'Berlin Silver Bears'],
   critics: ["Critics' Choice Award", "Critics' Choice Awards"], spirit: ['Independent Spirit Award', 'Independent Spirit Awards'], cesar: ['César', 'Césars'],
+  'japan-academy': ['Japan Academy Prize', 'Japan Academy Prizes'], 'golden-rooster': ['Golden Rooster', 'Golden Roosters'],
+  'hundred-flowers': ['Hundred Flowers Award', 'Hundred Flowers Awards'], 'blue-dragon': ['Blue Dragon Award', 'Blue Dragon Awards'],
+  baeksang: ['Baeksang Arts Award', 'Baeksang Arts Awards'], 'golden-horse': ['Golden Horse', 'Golden Horses'], hkfa: ['Hong Kong Film Award', 'Hong Kong Film Awards'],
+  filmfare: ['Filmfare Award', 'Filmfare Awards'], 'nfa-india': ['National Film Award', 'National Film Awards'], 'asian-film': ['Asian Film Award', 'Asian Film Awards'],
+  goya: ['Goya', 'Goyas'], david: ['David di Donatello', 'David di Donatellos'], lola: ['German Film Award', 'German Film Awards'], ariel: ['Ariel', 'Ariels'],
+  'grande-premio': ['Grande Prêmio do Cinema Brasileiro', 'Grande Prêmios do Cinema Brasileiro'], platino: ['Platino Award', 'Platino Awards'],
+  aacta: ['AACTA Award', 'AACTA Awards'], csa: ['Canadian Screen Award', 'Canadian Screen Awards'], amaa: ['Africa Movie Academy Award', 'Africa Movie Academy Awards'],
 };
+/**
+ * Where each body's judgement is a home one: the countries whose film industry it is (your-films.ts castPicture casts a
+ * studio's picture from those first). The three festivals judge the world's films, so they are no country's. The Asian
+ * Film Awards, the Platinos and the Africa Movie Academy Awards are a region's, so they count for each of its countries.
+ */
+export const BODY_COUNTRIES: Record<Body, readonly string[]> = {
+  oscar: ['US'], globe: ['US'], sag: ['US'], emmy: ['US'], critics: ['US'], spirit: ['US'], bafta: ['GB'], 'bafta-tv': ['GB'], cesar: ['FR'],
+  cannes: [], venice: [], berlin: [],
+  'japan-academy': ['JP'], 'golden-rooster': ['CN'], 'hundred-flowers': ['CN'], 'blue-dragon': ['KR'], baeksang: ['KR'], 'golden-horse': ['TW', 'HK', 'CN'],
+  hkfa: ['HK'], filmfare: ['IN'], 'nfa-india': ['IN'], 'asian-film': ['JP', 'KR', 'CN', 'HK', 'TW', 'IN', 'TH', 'PH', 'ID', 'MY', 'SG', 'VN'],
+  goya: ['ES'], david: ['IT'], lola: ['DE'], ariel: ['MX'], 'grande-premio': ['BR'], platino: ['ES', 'PT', 'MX', 'AR', 'BR', 'CO', 'CL', 'PE', 'UY', 'CU', 'VE'],
+  aacta: ['AU'], csa: ['CA'], amaa: ['NG', 'GH', 'ZA', 'KE', 'EG', 'SN', 'CM', 'TZ', 'UG'],
+};
+/** Whether someone has been recognised by a body of `country` before the story's year. */
+export function recognisedAtHome(tmdbId: number, country: string, storyYear: number, data = loaded): boolean {
+  const rec = data?.people[String(tmdbId)];
+  return !!rec && rec[3].some(([c, , y]) => y !== null && y < storyYear && BODY_COUNTRIES[data!.categories[c].body].includes(country));
+}
 
 export interface RecognitionData {
   dataset: 'recognition';
