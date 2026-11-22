@@ -170,7 +170,7 @@ test('J08: a horror film pitched to two studios, optioned by one for its reasons
   const earnings = card(page, 'Earnings');
   const dollars = (n: number) => `$${n.toLocaleString('en-US')}`;
   await earnings.getByText('Weeks In Cinemas (24)').click();
-  await expect(earnings).toContainText('Simulated by the game: no real box office is shown here. Ticket sales are not what you earn. Cinemas keep 50% of them');
+  await expect(earnings).toContainText("Your film's takings are simulated by the game. Ticket sales are not what you earn. Cinemas keep 50% of them");
   const table = earnings.getByRole('table', { name: `Weeks In Cinemas, ${NIGHT}` });
   await expect(table.locator('tbody tr')).toHaveCount(24);
   await expect(table.locator('tbody tr').first()).toContainText(dollars(weeks[0].rental * 2)); // ticket sales: the rental is half of them

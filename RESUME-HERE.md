@@ -6,6 +6,17 @@ Read this first. It lists what is finished, what the Gap Completion Package stil
 
 At every stopping point, open a pull request into `main` and merge it (see `CLAUDE.md`, certified by the user on November 6, 2026). Never merge red checks.
 
+## 2026's Real Weekends (The Owner, November 22, 2026)
+
+- The owner asked for the year's weekly box office to move as it did in real life up to November 22, 2026, then be
+  simulated. `tools/box-office/weekends.mjs` reads Wikipedia's 2026 US number-one list (CC BY-SA 4.0) into
+  `src/data/box-office/weekends-us-2026.json`: 47 weekends, January 4 to November 22.
+- A week of your film's run whose weekend is one of these meets that weekend's competition, read from its number one's
+  gross among the year's (`src/engine/box-office-weekends.ts`); later weeks are drawn as before. The week's row names
+  the real weekend; Box Office Records lists the latest five. `docs/BOX-OFFICE-WEEKENDS.md`.
+- Tests: `tests/box-office-weekends.test.ts` (5). The weeks note now says your film's takings are simulated (J08 and J11
+  read it).
+
 ## Real Box Office From Wikidata (The Owner, November 22, 2026)
 
 - The owner asked to start the box office. No free dated weekend feed may be used (the BFI's terms forbid copying;

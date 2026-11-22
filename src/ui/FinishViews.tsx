@@ -46,6 +46,7 @@ import { studioFilms } from '../engine/studios';
 
 import { DISTRIBUTOR_FEE, REPORT_MONTHS } from '../engine/distribution';
 import { RENTAL_SHARE, TICKET_PRICE, weekMoney } from '../engine/box-office';
+import { LAST_REAL_WEEKEND } from '../engine/box-office-weekends';
 import { METRICS, audienceSummary, routeMetrics } from '../engine/audiences';
 import { personById } from '../engine/people';
 import { VERSION_LABELS, addVersion, removeVersion, versionCredits, versionRuntime } from '../engine/versions';
@@ -1320,7 +1321,7 @@ function WeeksInCinemas({ o }: { o: Project['offers'][number] }) {
   return (
     <details className="small">
       <summary>Weeks In Cinemas ({weeks.length})</summary>
-      <p className="dim">Simulated by the game: no real box office is shown here. Ticket sales are not what you earn. Cinemas keep {Math.round((1 - RENTAL_SHARE) * 100)}% of them; the rest is the film rental {o.distributor} receives, its fee of {Math.round((o.fee ?? DISTRIBUTOR_FEE) * 100)}% comes off that, and what is left repays the guarantee before any of it reaches you. Admissions are ticket sales at {money(TICKET_PRICE)} a ticket. A week is provisional until the month's report settles it. Each week the cinemas decide from its takings a screen, less what other wide releases took, whether to expand it, hold it, cut its screens or withdraw it; the screens it ends a month on decide what the next month can earn.</p>
+      <p className="dim">Your film's takings are simulated by the game. Ticket sales are not what you earn. Cinemas keep {Math.round((1 - RENTAL_SHARE) * 100)}% of them; the rest is the film rental {o.distributor} receives, its fee of {Math.round((o.fee ?? DISTRIBUTOR_FEE) * 100)}% comes off that, and what is left repays the guarantee before any of it reaches you. Admissions are ticket sales at {money(TICKET_PRICE)} a ticket. A week is provisional until the month's report settles it. Each week the cinemas decide from its takings a screen, less what other wide releases took, whether to expand it, hold it, cut its screens or withdraw it; the screens it ends a month on decide what the next month can earn. A week whose weekend was one of 2026's up to {formatDateKey(LAST_REAL_WEEKEND)} met the real US weekend: how many other wide releases it faced is read from how big that weekend's number-one film was, as Wikipedia lists them from Box Office Mojo. Later weeks meet the game's own.</p>
       <div className="table-wrap">
         <table className="data" aria-label={`Weeks In Cinemas, ${o.distributor}`}>
           <thead><tr><th>Week</th><th>Dates</th><th>Territories Open</th><th>Screens</th><th>Other Wide Releases</th><th>Next Week</th><th>Admissions</th><th>Ticket Sales</th><th>Cinemas Keep</th><th>Film Rental</th><th>Distributor's Fee</th><th>Towards The Guarantee</th><th>Status</th></tr></thead>
@@ -1331,7 +1332,7 @@ function WeeksInCinemas({ o }: { o: Project['offers'][number] }) {
                 <td data-label="Dates">{formatDateKey(w.from)} to {formatDateKey(w.to)}</td>
                 <td data-label="Territories Open">{w.territories}</td>
                 <td data-label="Screens">{w.screens ?? '—'}</td>
-                <td data-label="Other Wide Releases">{w.competitors ?? '—'}</td>
+                <td data-label="Other Wide Releases">{w.competitors ?? '—'}{w.weekend ? <span className="dim">{` (the real US weekend to ${formatDateKey(w.weekend.end)}: ${w.weekend.film}, ${money(w.weekend.gross)}, at number one)`}</span> : null}</td>
                 <td data-label="Next Week">{w.next ? { expanded: 'Expanded', held: 'Held', cut: 'Screens Cut', withdrawn: 'Withdrawn' }[w.next] : '—'}</td>
                 <td data-label="Admissions">{n(m.admissions)}</td>
                 <td data-label="Ticket Sales">{money(m.gross)}</td>

@@ -953,6 +953,8 @@ export interface BoxOfficeWeek {
    * the next week from its takings a screen (box-office.ts holdover). Weeks recorded before November 13, 2026 have none.
    */
   screens?: number; competitors?: number; next?: 'expanded' | 'held' | 'cut' | 'withdrawn';
+  /** The real US weekend its competition was read from (box-office-weekends.ts, from November 22, 2026): none after the last recorded. */
+  weekend?: { end: string; film: string; gross: number };
 }
 
 /** The measures of an audience, kept apart: people at a first showing; hours streamed; a service's views (audiences.ts). */

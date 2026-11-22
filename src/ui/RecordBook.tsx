@@ -12,6 +12,7 @@ import { store, useGame } from './store';
 import { SelectField, plural } from './components';
 import { placeAmong, worldwideRanking } from '../engine/box-office-recorded';
 import { recordedLine } from './RecordedBoxOffice';
+import { LAST_REAL_WEEKEND, WEEKENDS, weekendsBy } from '../engine/box-office-weekends';
 
 const place = (n: number) => `${n}${n % 100 >= 11 && n % 100 <= 13 ? 'th' : ['th', 'st', 'nd', 'rd'][n % 10] ?? 'th'}`;
 
@@ -29,6 +30,7 @@ export function RecordBookCard() {
   const opened = byReleaseYear(rows);
   const on = asOf === 'today' ? today : asOf;
   const real = worldwideRanking(on);
+  const weekends = weekendsBy(on);
   return (
     <section className="card" aria-labelledby="book-h">
       <h2 id="book-h">Box Office Records</h2>
@@ -75,6 +77,13 @@ export function RecordBookCard() {
           <p className="dim small">Takings are what films took in cinemas, not what their makers earned. A film recorded only after {formatDateKey(on)} isn't listed yet.</p>
         </>
       ) : <p className="muted">No real film's worldwide takings had been recorded by {formatDateKey(on)}.</p>}
+      <h3 id="book-weekends-h">The US Weekend, 2026</h3>
+      {weekends.length ? (
+        <ul className="list" aria-label="The US Weekend, 2026">
+          {weekends.slice(0, 5).map((w) => <li key={w.end}>Weekend to {formatDateKey(w.end)}: <strong>{w.film}</strong> <span className="dim">· {money(w.gross)} at number one{w.source ? `, as ${w.source} reported it` : ''}</span></li>)}
+        </ul>
+      ) : <p className="muted">No 2026 weekend had ended by {formatDateKey(on)}.</p>}
+      <p className="dim small">Each weekend's number one, as Wikipedia lists them ({WEEKENDS.licence}), up to {formatDateKey(LAST_REAL_WEEKEND)}. Your films' weeks up to then met these weekends' competition; after it, the weekends are the game's own.</p>
     </section>
   );
 }
