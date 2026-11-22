@@ -111,7 +111,7 @@ test('J11: the records to their end, the world after them simulated and labelled
   await section(page, 'Release');
   const earnings = card(page, 'Earnings');
   await earnings.getByText(`Weeks In Cinemas (${weeks.length})`).click();
-  await expect(earnings).toContainText('Simulated by the game: no real box office is shown here.');
+  await expect(earnings).toContainText("Your film's takings are simulated by the game.");
   const rows = earnings.getByRole('table', { name: `Weeks In Cinemas, ${NIGHT}` }).locator('tbody tr');
   await expect(rows).toHaveCount(weeks.length);
   const NEXT: Record<string, string> = { expanded: 'Expanded', held: 'Held', cut: 'Screens Cut', withdrawn: 'Withdrawn' };

@@ -1,0 +1,338 @@
+{
+ "source": "Wikipedia",
+ "page": "https://en.wikipedia.org/wiki/List_of_2026_box_office_number-one_films_in_the_United_States",
+ "licence": "CC BY-SA 4.0",
+ "territory": "US",
+ "retrieved": "2026-11-22",
+ "weekends": [
+  {
+   "week": 1,
+   "end": "2026-01-04",
+   "film": "Avatar: Fire and Ash",
+   "gross": 41419407,
+   "source": "Box Office Mojo"
+  },
+  {
+   "week": 2,
+   "end": "2026-01-11",
+   "film": "Avatar: Fire and Ash",
+   "gross": 21502272,
+   "source": "Box Office Mojo"
+  },
+  {
+   "week": 3,
+   "end": "2026-01-18",
+   "film": "Avatar: Fire and Ash",
+   "gross": 14489184,
+   "source": "Box Office Mojo"
+  },
+  {
+   "week": 4,
+   "end": "2026-01-25",
+   "film": "Mercy",
+   "gross": 10809178,
+   "source": "Box Office Mojo"
+  },
+  {
+   "week": 5,
+   "end": "2026-02-01",
+   "film": "Send Help",
+   "gross": 19102299,
+   "source": "Box Office Mojo"
+  },
+  {
+   "week": 6,
+   "end": "2026-02-08",
+   "film": "Send Help",
+   "gross": 9046059,
+   "source": "Box Office Mojo"
+  },
+  {
+   "week": 7,
+   "end": "2026-02-15",
+   "film": "Wuthering Heights",
+   "gross": 32801647,
+   "source": "Box Office Mojo"
+  },
+  {
+   "week": 8,
+   "end": "2026-02-22",
+   "film": "Goat",
+   "gross": 16855460,
+   "source": "Box Office Mojo"
+  },
+  {
+   "week": 9,
+   "end": "2026-03-01",
+   "film": "Scream 7",
+   "gross": 63615172,
+   "source": "Box Office Mojo"
+  },
+  {
+   "week": 10,
+   "end": "2026-03-08",
+   "film": "Hoppers",
+   "gross": 45349901,
+   "source": "Box Office Mojo"
+  },
+  {
+   "week": 11,
+   "end": "2026-03-15",
+   "film": "Hoppers",
+   "gross": 28661727,
+   "source": "Box Office Mojo"
+  },
+  {
+   "week": 12,
+   "end": "2026-03-22",
+   "film": "Project Hail Mary",
+   "gross": 80506007,
+   "source": "Box Office Mojo"
+  },
+  {
+   "week": 13,
+   "end": "2026-03-29",
+   "film": "Project Hail Mary",
+   "gross": 54537595,
+   "source": "Box Office Mojo"
+  },
+  {
+   "week": 14,
+   "end": "2026-04-05",
+   "film": "The Super Mario Galaxy Movie",
+   "gross": 131703340,
+   "source": "Box Office Mojo"
+  },
+  {
+   "week": 15,
+   "end": "2026-04-12",
+   "film": "The Super Mario Galaxy Movie",
+   "gross": 68083645,
+   "source": "Box Office Mojo"
+  },
+  {
+   "week": 16,
+   "end": "2026-04-19",
+   "film": "The Super Mario Galaxy Movie",
+   "gross": 36497250,
+   "source": "Box Office Mojo"
+  },
+  {
+   "week": 17,
+   "end": "2026-04-26",
+   "film": "Michael",
+   "gross": 97206874,
+   "source": "Box Office Mojo"
+  },
+  {
+   "week": 18,
+   "end": "2026-05-03",
+   "film": "The Devil Wears Prada 2",
+   "gross": 76747075,
+   "source": "Box Office Mojo"
+  },
+  {
+   "week": 19,
+   "end": "2026-05-10",
+   "film": "The Devil Wears Prada 2",
+   "gross": 41602986,
+   "source": "Box Office Mojo"
+  },
+  {
+   "week": 20,
+   "end": "2026-05-17",
+   "film": "Michael",
+   "gross": 26140937,
+   "source": "Box Office Mojo"
+  },
+  {
+   "week": 21,
+   "end": "2026-05-24",
+   "film": "Star Wars: The Mandalorian and Grogu",
+   "gross": 81670433,
+   "source": "Box Office Mojo"
+  },
+  {
+   "week": 22,
+   "end": "2026-05-31",
+   "film": "Backrooms",
+   "gross": 81402424,
+   "source": "Box Office Mojo"
+  },
+  {
+   "week": 23,
+   "end": "2026-06-07",
+   "film": "Scary Movie",
+   "gross": 54336626,
+   "source": "Box Office Mojo"
+  },
+  {
+   "week": 24,
+   "end": "2026-06-14",
+   "film": "Disclosure Day",
+   "gross": 44530925,
+   "source": "Box Office Mojo"
+  },
+  {
+   "week": 25,
+   "end": "2026-06-21",
+   "film": "Toy Story 5",
+   "gross": 159677837,
+   "source": "Box Office Mojo"
+  },
+  {
+   "week": 26,
+   "end": "2026-06-28",
+   "film": "Toy Story 5",
+   "gross": 70829028,
+   "source": "Box Office Mojo"
+  },
+  {
+   "week": 27,
+   "end": "2026-07-05",
+   "film": "Minions & Monsters",
+   "gross": 37003505,
+   "source": "Box Office Mojo"
+  },
+  {
+   "week": 28,
+   "end": "2026-07-12",
+   "film": "Moana",
+   "gross": 43142824,
+   "source": "Box Office Mojo"
+  },
+  {
+   "week": 29,
+   "end": "2026-07-19",
+   "film": "The Odyssey",
+   "gross": 123502900,
+   "source": "Box Office Mojo"
+  },
+  {
+   "week": 30,
+   "end": "2026-07-26",
+   "film": "The Odyssey",
+   "gross": 90022510,
+   "source": "Box Office Mojo"
+  },
+  {
+   "week": 31,
+   "end": "2026-08-02",
+   "film": "Spider-Man: Brand New Day",
+   "gross": 360091572,
+   "source": "Box Office Mojo"
+  },
+  {
+   "week": 32,
+   "end": "2026-08-09",
+   "film": "Spider-Man: Brand New Day",
+   "gross": 144254386,
+   "source": "Box Office Mojo"
+  },
+  {
+   "week": 33,
+   "end": "2026-08-16",
+   "film": "Spider-Man: Brand New Day",
+   "gross": 70711990,
+   "source": "Box Office Mojo"
+  },
+  {
+   "week": 34,
+   "end": "2026-08-23",
+   "film": "Spider-Man: Brand New Day",
+   "gross": 39000155,
+   "source": "Box Office Mojo"
+  },
+  {
+   "week": 35,
+   "end": "2026-08-30",
+   "film": "Spider-Man: Brand New Day",
+   "gross": 22513101,
+   "source": "Box Office Mojo"
+  },
+  {
+   "week": 36,
+   "end": "2026-09-06",
+   "film": "Spider-Man: Brand New Day",
+   "gross": 18178872,
+   "source": "Box Office Mojo"
+  },
+  {
+   "week": 37,
+   "end": "2026-09-13",
+   "film": "Practical Magic 2",
+   "gross": 30002526,
+   "source": "Box Office Mojo"
+  },
+  {
+   "week": 38,
+   "end": "2026-09-20",
+   "film": "Resident Evil",
+   "gross": 60152878,
+   "source": "Box Office Mojo"
+  },
+  {
+   "week": 39,
+   "end": "2026-09-27",
+   "film": "Avengers Endgame: Encore",
+   "gross": 26106643,
+   "source": "Box Office Mojo"
+  },
+  {
+   "week": 40,
+   "end": "2026-10-04",
+   "film": "Verity",
+   "gross": 32031011,
+   "source": "Box Office Mojo"
+  },
+  {
+   "week": 41,
+   "end": "2026-10-11",
+   "film": "Other Mommy",
+   "gross": 27805825,
+   "source": "Box Office Mojo"
+  },
+  {
+   "week": 42,
+   "end": "2026-10-18",
+   "film": "Street Fighter",
+   "gross": 30775377,
+   "source": "Box Office Mojo"
+  },
+  {
+   "week": 43,
+   "end": "2026-10-25",
+   "film": "Clayface",
+   "gross": 24002731,
+   "source": "Box Office Mojo"
+  },
+  {
+   "week": 44,
+   "end": "2026-11-01",
+   "film": "You Can See Everything",
+   "gross": 11445628,
+   "source": "Box Office Mojo"
+  },
+  {
+   "week": 45,
+   "end": "2026-11-08",
+   "film": "Godzilla Minus Zero",
+   "gross": 30587672,
+   "source": "Box Office Mojo"
+  },
+  {
+   "week": 46,
+   "end": "2026-11-15",
+   "film": "Ebenezer",
+   "gross": 19012017,
+   "source": "Box Office Mojo"
+  },
+  {
+   "week": 47,
+   "end": "2026-11-22",
+   "film": "The Hunger Games: Sunrise on the Reaping",
+   "gross": 120000000,
+   "source": "The Numbers"
+  }
+ ]
+}

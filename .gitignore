@@ -21,7 +21,7 @@ __pycache__/
 
 # Cinemas from Wikidata (CC0): gathered by tools/cinemas/import.mjs, rebuilt rather than committed (docs/CINEMAS.md).
 .cinemas-cache/
-# Box office from Wikidata (CC0): the importer's cache only; its output ships in src/data/box-office/ (tools/box-office/wikidata.mjs).
+# Box office from Wikidata (CC0) and Wikipedia (CC BY-SA): the importers' cache only; their output ships in src/data/box-office/ (tools/box-office/).
 .box-office-cache/
 .cinemas/
 

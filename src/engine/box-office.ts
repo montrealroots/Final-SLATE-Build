@@ -31,6 +31,7 @@
 import type { BoxOfficeWeek, DistributionOffer, GameState, Project } from './types';
 import { addDaysToKey } from './time';
 import { stream } from './rng';
+import { competitionOf, realWeekendIn } from './box-office-weekends';
 
 /** A distributor's report covers four weeks in cinemas; a run is reported for as many months as distribution.ts REPORT_MONTHS. */
 export const WEEKS_PER_REPORT = 4;
@@ -122,10 +123,14 @@ export function provisionalRental(week: number, monthToday: number): number {
 export function recordWeek(o: DistributionOffer, week: number, opened: string, territories: number, monthToday: number, seed?: number): BoxOfficeWeek | null {
   if ((o.weeks ?? []).some((w) => w.week === week)) return null;
   const w: BoxOfficeWeek = { week, ...weekDates(opened, week), territories, rental: provisionalRental(week, monthToday), status: 'provisional' };
-  // With the world's seed: its screens, the competition it met, and what the cinemas decide for the next week.
+  // With the world's seed: its screens, the competition it met, and what the cinemas decide for the next week. A week
+  // whose weekend is one of 2026's recorded ones meets that weekend's competition (box-office-weekends.ts); later weeks
+  // meet the game's own. Until November 22, 2026 every week's was drawn.
   if (seed !== undefined) {
     w.screens = screensFor(o, week, territories);
-    w.competitors = Math.floor(stream(seed, 'competition', o.id, String(week))() * (COMPETITION_MAX + 1));
+    const real = realWeekendIn(w.from, w.to);
+    w.competitors = real ? competitionOf(real.gross, COMPETITION_MAX) : Math.floor(stream(seed, 'competition', o.id, String(week))() * (COMPETITION_MAX + 1));
+    if (real) w.weekend = { end: real.end, film: real.film, gross: real.gross };
     w.next = w.screens ? holdover(weekMoney(w, 0).admissions, w.screens, w.competitors).next : 'withdrawn';
   }
   (o.weeks ??= []).push(w);
