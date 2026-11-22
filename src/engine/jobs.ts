@@ -55,6 +55,8 @@ export interface OutsideJob {
   planIds?: string[];
   /** A studio's own picture (studio-projects.ts, from November 18, 2026): the fee in all, its franchise, its genre. */
   studio?: { fee: number; franchise?: string; genre: string; budget?: number; budgetOf?: string; first?: boolean; set?: 'share' | 'guild'; why?: string;
+    /** The franchise's last film as recorded in Wikidata by the offer's day (box-office-recorded.ts, from November 22, 2026): its worldwide gross, who reported it and when it was recorded. */
+    last?: { title: string; gross: number; known: string; source: string | null };
     /** A multi-picture deal (from November 18, 2026): this is picture `picture` of `of`, and `fees` are each picture's. */
     deal?: { picture: number; of: number; fees: number[] };
     /** The title it's released under, the studio's, invented by the game; and the day it comes out, set when shooting wraps. */

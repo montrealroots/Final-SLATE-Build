@@ -23,6 +23,15 @@ No licence has been agreed, and no price has been invented. No protected data is
 
 `FEED` says no licensed dataset is installed. Only the tests read the contract, using `tests/fixtures/box-office-synthetic.json`, a fixture labelled SYNTHETIC on its first line. Those tests (`tests/box-office-feed.test.ts`) check the software. They say nothing about real coverage.
 
+## Real Figures From Wikidata (November 22, 2026)
+
+The owner chose Wikidata (CC0) while a licence is sought: real films' recorded totals, dated by when they were recorded,
+on film pages, in Box Office Records and in studio offers (`docs/BOX-OFFICE-RECORDED.md`). They are totals, not dated
+weekend reports, so they don't come in through this contract, and J01 and J21 stay parked.
+
+To buy a licence: The Numbers' terms send licence enquiries to OpusData (sales@opusdata.com); pricing is on request.
+Comscore's Box Office Essentials is sold by subscription through its sales team.
+
 ## What Stays As It Was
 
 The box office the game shows (`src/engine/box-office.ts`) is still the game's own simulation, labelled so wherever it appears. A player's success changes the save's simulated market and never an observation from a provider. Journeys J01 and J21 stay parked: they need a licensed dataset, with publication dates and a recorded correction, and none is held.

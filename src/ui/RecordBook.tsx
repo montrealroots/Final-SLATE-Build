@@ -1,6 +1,8 @@
 // Box Office Records on the Profile page (engine/box-office.ts): this career's films in cinemas, from their weeks. Titled
 // "Box Office Records" from November 13, 2026 (the owner's v6 package, 02 C; until then "Record Book"), with the records
-// as they stood at the end of any year they cover, and calendar-year takings kept apart from a release year's.
+// as they stood at the end of any year they cover, and calendar-year takings kept apart from a release year's. From
+// November 22, 2026 real films' worldwide takings, as Wikidata recorded them by the same day, stand beside yours
+// (engine/box-office-recorded.ts): yours are placed among them, never added in, and each is said to be real or simulated.
 import { useState } from 'react';
 import { money, formatDateKey } from '../engine';
 import { byReleaseYear, recordBook } from '../engine/box-office';
@@ -8,6 +10,8 @@ import { dateKey } from '../engine/time';
 import { getPlace } from '../data/places';
 import { store, useGame } from './store';
 import { SelectField, plural } from './components';
+import { placeAmong, worldwideRanking } from '../engine/box-office-recorded';
+import { recordedLine } from './RecordedBoxOffice';
 
 const place = (n: number) => `${n}${n % 100 >= 11 && n % 100 <= 13 ? 'th' : ['th', 'st', 'nd', 'rd'][n % 10] ?? 'th'}`;
 
@@ -23,14 +27,16 @@ export function RecordBookCard() {
   const years: Record<string, number> = {};
   for (const r of rows) for (const [y, v] of Object.entries(r.byYear)) years[y] = (years[y] ?? 0) + v;
   const opened = byReleaseYear(rows);
+  const on = asOf === 'today' ? today : asOf;
+  const real = worldwideRanking(on);
   return (
     <section className="card" aria-labelledby="book-h">
       <h2 id="book-h">Box Office Records</h2>
       {ends.length > 0 && <SelectField label="As Of" value={asOf} onChange={setAsOf} options={[{ value: 'today', label: `Today, ${formatDateKey(today)}` }, ...ends.reverse().map((k) => ({ value: k, label: formatDateKey(k) }))]} />}
       {rows.length ? (
         <>
-          <p className="dim">Your films in cinemas, by ticket sales{asOf === 'today' ? '' : `, as they stood on ${formatDateKey(asOf)}`}. Simulated by the game, and only what happened in this story: no real box office is in these records. Ticket sales are not earnings: under each film are the film rental, the project's income, what it cost, its profit and what came to you, each kept apart. Equal figures share a place.</p>
-          <ul className="list">
+          <p className="dim">Your films in cinemas, by ticket sales{asOf === 'today' ? '' : `, as they stood on ${formatDateKey(asOf)}`}. Simulated by the game, and only what happened in this story: no real figure is mixed into them. Real films are listed below. Ticket sales are not earnings: under each film are the film rental, the project's income, what it cost, its profit and what came to you, each kept apart. Equal figures share a place.</p>
+          <ul className="list" aria-label="Your Films In Cinemas">
             {rows.map((r) => (
               <li key={r.projectId}>
                 <strong><button className="link" onClick={() => store.go({ view: 'project', projectId: r.projectId, tab: 'release' })}>{r.title}</button></strong> <span className="dim">· opened {formatDateKey(r.opened)}</span>
@@ -52,6 +58,23 @@ export function RecordBookCard() {
           <p className="dim small">Lifetime takings of the films that opened each year: {Object.keys(opened).sort().map((y) => `${y}, ${money(opened[y])}`).join('; ')}.</p>
         </>
       ) : <p className="muted">{asOf === 'today' ? 'A film you release in cinemas is entered here week by week: its opening, its best week and what it took in all. Every figure in it is the game\'s own simulation.' : `Nothing had played in cinemas by ${formatDateKey(asOf)}.`}</p>}
+      <h3 id="book-real-h">Among Real Films</h3>
+      {real.length ? (
+        <>
+          <p className="dim">Real films' worldwide takings, as Wikidata had recorded them by {formatDateKey(on)}: {real.length.toLocaleString('en-US')} films, in US dollars. These are real; yours above are the game's simulation, placed among them and never added in.</p>
+          {rows.length > 0 && (
+            <ul className="list" aria-label="Your Films Among Real Films">
+              {rows.map((r) => <li key={r.projectId}><strong>{r.title}</strong> <span className="dim">· {money(r.lifetime)} would place {place(placeAmong(real, r.lifetime))} of {(real.length + 1).toLocaleString('en-US')}</span></li>)}
+            </ul>
+          )}
+          <ul className="list" aria-label="Real Films By Worldwide Takings">
+            {real.slice(0, 10).map(({ film, figure }, i) => (
+              <li key={film.q}>{place(i + 1)}. <strong>{film.title}</strong>{film.released ? ` (${film.released.slice(0, 4)})` : ''} <span className="dim">· {money(figure.amount)}, {recordedLine(figure)}</span></li>
+            ))}
+          </ul>
+          <p className="dim small">Takings are what films took in cinemas, not what their makers earned. A film recorded only after {formatDateKey(on)} isn't listed yet.</p>
+        </>
+      ) : <p className="muted">No real film's worldwide takings had been recorded by {formatDateKey(on)}.</p>}
     </section>
   );
 }

@@ -30,7 +30,7 @@
   "jobsWithdrawn": 0,
   "jobsDeclined": 0,
   "ratesAgreed": 0,
-  "logLines": 300.65,
+  "logLines": 300.55,
   "hired": 32,
   "castRates": 6406,
   "releaseDelay": 96.973,
@@ -49,7 +49,7 @@
   "quality.editing": 61.988,
   "quality.music": 60.288,
   "standing.writing": 50,
-  "standing.directing": 58.55,
+  "standing.directing": 58.375,
   "standing.acting": 50,
   "standing.producing": 54.675,
   "interestIn": 0,
@@ -82,7 +82,7 @@
   "renewed": 0,
   "aired": 1.9,
   "productionResults": 8.025,
-  "fired": 4.6
+  "fired": 4.475
  },
  "variant": {
   "delivered": 4,
@@ -309,9 +309,9 @@
    "n": 40
   },
   "logLines": {
-   "mean": -52.45,
-   "lo": -71.651,
-   "hi": -33.249,
+   "mean": -52.35,
+   "lo": -71.565,
+   "hi": -33.135,
    "changed": 23,
    "n": 40
   },
@@ -442,10 +442,10 @@
    "n": 40
   },
   "standing.directing": {
-   "mean": -1.125,
-   "lo": -1.832,
-   "hi": -0.418,
-   "changed": 15,
+   "mean": -0.95,
+   "lo": -1.536,
+   "hi": -0.364,
+   "changed": 14,
    "n": 40
   },
   "standing.acting": {
@@ -673,9 +673,9 @@
    "n": 40
   },
   "fired": {
-   "mean": -0.6,
-   "lo": -1,
-   "hi": -0.2,
+   "mean": -0.475,
+   "lo": -0.777,
+   "hi": -0.173,
    "changed": 11,
    "n": 40
   }
@@ -698,7 +698,7 @@
  ],
  "verdict": "proven",
  "hashes": {
-  "src/engine/studio-projects.ts": "66318f03a55401ea",
+  "src/engine/studio-projects.ts": "ff39c4cb86b3b6d2",
   "tests/proof/career.ts": "50bea06f19a02c5b"
  }
 }
