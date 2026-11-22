@@ -27,9 +27,30 @@ export const BODIES = [
   ['critics', /^Critics' Choice (Movie |Television )?Award for /],
   ['spirit', /^Independent Spirit Award for /],
   ['cesar', /^César Award for /],
+  // The national academies and the main national awards of the other film countries (from November 22, 2026: until then
+  // a studio in Japan, Korea or India could cast only from the American and European record, studio-projects.ts).
+  ['japan-academy', /^Japan Academy (Film )?Prize for /],
+  ['golden-rooster', /^Golden Rooster Award for /],
+  ['hundred-flowers', /^Hundred Flowers Award for /],
+  ['blue-dragon', /^Blue Dragon Film Award for /],
+  ['baeksang', /^Baeksang Arts Awards? for /],
+  ['golden-horse', /^Golden Horse Award for /],
+  ['hkfa', /^Hong Kong Film Award for /],
+  ['filmfare', /^Filmfare Award for /],
+  ['nfa-india', /^National Film Award for /],
+  ['asian-film', /^Asian Film Award for /],
+  ['goya', /^Goya Award for /],
+  ['david', /^David di Donatello for /],
+  ['lola', /^German Film Award for /],
+  ['ariel', /^Ariel Award for /],
+  ['grande-premio', /^Grande Prêmio do Cinema Brasileiro for /],
+  ['platino', /^Platino Award for /],
+  ['aacta', /^AACTA Award for /],
+  ['csa', /^Canadian Screen Award for /],
+  ['amaa', /^Africa Movie Academy Award for /],
 ];
 /** Honours for a whole career, or for a film rather than someone's work on it, which say nothing about the job. */
-const NOT_A_JOB = /Honorary|Lifetime|Cecil B|Carol Burnett|Jean Hersholt|Thalberg|Special|Humanitarian|Best (Motion )?Picture|Best Film\b(?! (Editing|Music))|Best (Drama|Comedy|Limited|Animated|Documentary|Foreign|International|Short)|Outstanding (Drama|Comedy|Limited|Variety|Television Movie|Animated|Children)|Best (Television )?Series|Program/i;
+const NOT_A_JOB = /Honorary|Lifetime|Most Popular|Cecil B|Carol Burnett|Jean Hersholt|Thalberg|Special|Humanitarian|Best (Motion )?Picture|Best Film\b(?! (Editing|Music))|Best (Drama|Comedy|Limited|Animated|Documentary|Foreign|International|Short)|Outstanding (Drama|Comedy|Limited|Variety|Television Movie|Animated|Children)|Best (Television )?Series|Program/i;
 /**
  * The awards for a picture or a series as a whole, which go to its producers: the Academy names a Best Picture's producers
  * and the Television Academy an Outstanding Drama Series', so Wikidata records the award on them. From November 19, 2026

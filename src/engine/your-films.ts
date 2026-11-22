@@ -15,7 +15,8 @@
 // You are paid your fee; the box office is the studio's, before any share of the profits, which aren't modelled.
 import { noticeGrades } from './grade-news';
 import type { OutsideJob } from './jobs';
-import { fameOf, filmFeeFrom, genderOf, performerFee, recognisedIn, recognitionData } from './recognition';
+import { fameOf, filmFeeFrom, genderOf, performerFee, recognisedAtHome, recognisedIn, recognitionData } from './recognition';
+import { namesFor } from './names-by-country';
 import { roleCraft } from './reputation';
 import { gaussian, intBetween, pick, stream } from './rng';
 import { addLog, registerHandler } from './state';
@@ -89,6 +90,9 @@ export const PICTURE_CREW: { job: string; department: string; recognised?: strin
   { job: 'Visual Effects Supervisor', department: 'Visual Effects', recognised: 'vfx-artist' },
 ];
 
+/** A studio picture's parts: a lead and seven more. */
+const PARTS = 8;
+
 /**
  * Its cast and crew, chosen once from real people (from November 19, 2026, the owner: "now do one with real cast", then
  * "the crew should be real too. Except for director because that'll be me ... if there's a writer part that's me too").
@@ -102,6 +106,10 @@ export const PICTURE_CREW: { job: string; department: string; recognised?: strin
  *     whose fee (filmFeeFrom) fits CREW_SHARE of the budget. Its producers are too, from the awards a picture or a series
  *     wins as a whole (Best Picture, Outstanding Drama Series: tools/recognition/build.mjs); until later that day the
  *     record didn't cover them, and they were invented.
+ *   - The studio's country (from November 22, 2026): its cast comes from the actors its own awards recognised
+ *     (recognition.ts recognisedAtHome), and anyone invented, part, actor or crew, is named in its language
+ *     (names-by-country.ts). A country whose awards recognise fewer actors than a picture has parts casts from the whole
+ *     record after its own.
  * Kept in the save, so it stays whoever was hired; with the record not loaded nothing is chosen yet, and the page shows
  * the invented credits a picture had before (pictureCredits).
  */
@@ -119,13 +127,26 @@ export function castPicture(state: GameState, j: OutsideJob, data = recognitionD
     return a;
   };
   const r = stream(state.seed, 'your-film-cast', j.id);
+  // The studio's country: its performers come first, those recognised by its own awards (recognition.ts BODY_COUNTRIES),
+  // and anyone invented has a name of its language. Until November 22, 2026 every studio cast from the one record and
+  // the one list of names, so a Toho picture was cast from Hollywood and its parts called Grace and Walter.
+  const country = countryOf((state.industry?.studios ?? []).find((p) => p.name === j.company)?.c ?? '');
+  const names = namesFor(country);
+  const women = names?.women ?? WOMEN_FIRSTS, men = names?.men ?? MEN_FIRSTS, lasts = names?.last ?? LASTS;
   if (!st.cast) {
-    const ask = asker(r, recognisedIn('actor', year, data).filter((a) => ok(a.tmdbId)).map((a) => ({ ...a, fee: performerFee(a.standing.points, fameOf(a.tmdbId)) })));
-    st.cast = Array.from({ length: 8 }, (_, i) => {
-      const a = ask(budget * (i === 0 ? LEAD_SHARE : SUPPORTING_SHARE));
+    const all = recognisedIn('actor', year, data).filter((a) => ok(a.tmdbId)).map((a) => ({ ...a, fee: performerFee(a.standing.points, fameOf(a.tmdbId)) }));
+    const home = country ? all.filter((a) => recognisedAtHome(a.tmdbId, country, year, data)) : [];
+    const askHome = asker(r, home);
+    const askAny = asker(r, all);
+    st.cast = Array.from({ length: PARTS }, (_, i) => {
+      const cap = budget * (i === 0 ? LEAD_SHARE : SUPPORTING_SHARE);
+      // Abroad only where the country's own record can't cast a picture at all, fewer than its eight parts (Canada's: the
+      // record holds none of the Canadian Screen Awards' film acting prizes). Otherwise a part none of its own can be
+      // paid for goes to an unknown of the country, named in its language.
+      const a = askHome(cap) ?? (home.length >= PARTS ? undefined : askAny(cap));
       if (a) return { name: a.name, tmdbId: a.tmdbId };
       const gender = pick(r, ['woman', 'man'] as const);
-      return { name: `${pick(r, gender === 'woman' ? WOMEN_FIRSTS : MEN_FIRSTS)} ${pick(r, LASTS)}`, gender };
+      return { name: `${pick(r, gender === 'woman' ? women : men)} ${pick(r, lasts)}`, gender };
     });
   }
   // A cast chosen before parts were named (earlier on November 19, 2026) keeps its actors and is given its parts.
@@ -134,14 +155,14 @@ export function castPicture(state: GameState, j: OutsideJob, data = recognitionD
     if (m.character) continue;
     const gender = m.gender ?? (m.tmdbId ? genderOf(m.tmdbId, data) : undefined);
     if (gender) m.gender = gender;
-    m.character = `${pick(r, gender === 'woman' ? WOMEN_FIRSTS : gender === 'man' ? MEN_FIRSTS : ANY_FIRSTS)} ${pick(r, LASTS)}`;
+    m.character = `${pick(r, gender === 'woman' ? women : gender === 'man' ? men : names ? [...women, ...men] : ANY_FIRSTS)} ${pick(r, lasts)}`;
   }
   const rc = stream(state.seed, 'your-film-crew', j.id);
   const me = state.character.name;
   st.crew = PICTURE_CREW.map(({ job, department, recognised }) => {
     if (job === 'Director' || job === 'Screenplay') return { job, department, name: me, you: true as const };
     const a = recognised ? asker(rc, recognisedIn(recognised, year, data).filter((x) => ok(x.tmdbId)).map((x) => ({ ...x, fee: filmFeeFrom(x.standing.points) })))(budget * CREW_SHARE) : undefined;
-    return a ? { job, department, name: a.name, tmdbId: a.tmdbId } : { job, department, name: `${pick(rc, [...WOMEN_FIRSTS, ...MEN_FIRSTS])} ${pick(rc, LASTS)}` };
+    return a ? { job, department, name: a.name, tmdbId: a.tmdbId } : { job, department, name: `${pick(rc, [...women, ...men])} ${pick(rc, lasts)}` };
   });
 }
 
