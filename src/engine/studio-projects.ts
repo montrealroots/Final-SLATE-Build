@@ -18,6 +18,10 @@
 // range The Hollywood Reporter's salary surveys report for your standing, placed by the picture's real budget, which is the
 // franchise's latest recorded budget or the studio's median (TMDB, in the catalog), and never under the guild minimum.
 // Until it was set this way the fee was the guild minimum times 3 for a franchise, 1.5 for an original.
+//
+// A franchise whose last film is recorded as having taken less than twice its budget worldwide (box-office-recorded.ts,
+// Wikidata; the twice-budget rule, PROFIT_MULTIPLE) isn't continued: the studio offers another, or an original. One
+// whose last film made it says so in the offer. Until November 22, 2026 no real gross was read.
 import { candidates, dealTier, activeOverall, type DealTier } from './first-look';
 import { JOB_ANSWER_DAYS, rolesOffered, type OutsideJob } from './jobs';
 import { honoursIn, roleCraft, standingIn, standingWeight } from './reputation';
@@ -26,6 +30,8 @@ import { addLog, currentPlace, registerHandler, schedule } from './state';
 import { addDaysToKey, dateKey, DAY, formatDateKey, weekdayOfKey } from './time';
 import { DGA_HIGH_BUDGET_WEEK, WGA_DRAFT_DAYS, WGA_SCREENPLAY } from './union';
 import { money } from './budget';
+import { PROFIT_MULTIPLE, worldwideAsOf } from './box-office-recorded';
+import type { StudioProfile } from './studios';
 import { COMPANIES } from '../catalog/registry';
 import { pick, stream } from './rng';
 import { WORDS_A, WORDS_B } from './studios';
@@ -158,14 +164,17 @@ export function studioProjectOffer(state: GameState): OutsideJob | null {
   // The picture: the franchise you made for it, else a live franchise within your reach that it hasn't offered you yet,
   // the most recent first; else one it has; else an original.
   const offered = new Set(jobs.filter((j) => j.company === strategy.name).map((j) => j.studio!.franchise));
+  const day = dateKey(state.now, currentPlace(state).zone);
   const within = (studio?.fr ?? []).filter((f) => (f.budget ?? studio?.mb ?? 0) <= reach);
+  // Not one whose last film is recorded as losing money; one whose result isn't recorded is taken as before.
+  const viable = within.filter((f) => lastResult(f, day)?.profit !== false);
   const live = (sequel?.studio?.franchise ? within.find((f) => franchiseName(f.name) === sequel.studio!.franchise) : undefined)
-    ?? within.find((f) => !offered.has(franchiseName(f.name))) ?? within[0];
+    ?? viable.find((f) => !offered.has(franchiseName(f.name))) ?? viable[0];
   const franchise = live ? franchiseName(live.name) : undefined;
+  const last = live ? lastResult(live, day) : null;
   // The picture's genres: the franchise's latest film's, where the build kept them; else the studio's own.
   const lastFilm = live?.films?.[live.films.length - 1];
   const genre = strategy.families[0]?.genre ?? 'Drama';
-  const day = dateKey(state.now, currentPlace(state).zone);
   const directing = role === 'directing';
   // The picture's budget: its franchise's latest recorded, else the studio's median within your reach; unknown, the middle of the scale.
   const median = studio?.mb ? Math.min(studio.mb, reach) : undefined;
@@ -210,7 +219,7 @@ export function studioProjectOffer(state: GameState): OutsideJob | null {
     requirement: directing ? `On set in ${place.name} each shooting day.` : `With the studio's producers in ${place.name}; the draft is due on the last day.`,
     dayRate: Math.round(fee / days.length), days, placeId: place.id, zone: place.zone,
     status: 'offered', offeredAt: state.now, answerBy: state.now + JOB_ANSWER_DAYS * DAY, attended: [], missed: [],
-    studio: { fee, ...(franchise ? { franchise } : {}), genre, ...(budget ? { budget, budgetOf } : {}), first, ...(set ? { set } : {}), ...(why ? { why } : {}), ...(deal ? { deal } : {}), title, genres: lastFilm?.g?.length ? lastFilm.g : [strategy.families[0]?.genre ?? 'Drama'] },
+    studio: { fee, ...(franchise ? { franchise } : {}), genre, ...(budget ? { budget, budgetOf } : {}), ...(last?.profit ? { last: { title: last.title, gross: last.gross, known: last.known, source: last.source } } : {}), first, ...(set ? { set } : {}), ...(why ? { why } : {}), ...(deal ? { deal } : {}), title, genres: lastFilm?.g?.length ? lastFilm.g : [strategy.families[0]?.genre ?? 'Drama'] },
   };
 }
 
@@ -228,10 +237,23 @@ export function studioPitch(j: OutsideJob): string {
   }
   return `${j.company} wants you to ${work}, from ${formatDateKey(j.days[0])}.${j.studio?.why ? ` ${j.studio.why}` : ''}`;
 }
+/**
+ * A franchise's last film, read by the twice-budget rule on `day`: its worldwide gross as recorded by then, against the
+ * franchise's budget when that budget is the same film's. Null when either isn't recorded.
+ */
+export function lastResult(f: NonNullable<StudioProfile['fr']>[number], day: string): { title: string; gross: number; known: string; source: string | null; profit: boolean } | null {
+  const film = f.films?.[f.films.length - 1];
+  const tmdb = film && /^movie:(\d+)$/.exec(film.r)?.[1];
+  if (!tmdb || !f.budget || f.budgetOf !== film.t) return null;
+  const fig = worldwideAsOf(day, Number(tmdb));
+  return fig ? { title: film.t, gross: fig.amount, known: fig.known, source: fig.source, profit: fig.amount >= f.budget * PROFIT_MULTIPLE } : null;
+}
+
 /** The picture's scale and where the fee comes from, for the offer's second line. */
 export function studioScale(j: OutsideJob): string {
   const st = j.studio!;
-  const budget = st.budget ? `A picture of about ${money(st.budget)}${st.budgetOf ? `, as ${st.budgetOf.endsWith('budget') ? `${st.budgetOf} is` : `${st.budgetOf} cost`}` : ''}.` : 'Its budget isn\'t recorded.';
+  const result = st.last ? ` Its last film, ${st.last.title}, took ${money(st.last.gross)} worldwide${st.last.source ? `, as ${st.last.source} reported it` : ''} (recorded ${formatDateKey(st.last.known)}), at least twice what it cost, which as a rule of thumb means it made a profit.` : '';
+  const budget = (st.budget ? `A picture of about ${money(st.budget)}${st.budgetOf ? `, as ${st.budgetOf.endsWith('budget') ? `${st.budgetOf} is` : `${st.budgetOf} cost`}` : ''}.` : 'Its budget isn\'t recorded.') + result;
   const who = j.role === 'directing' ? 'director' : 'writer';
   if (st.set === 'guild') return `${budget} The fee is the ${j.role === 'directing' ? "DGA's minimum for ten weeks" : "WGA's minimum for a screenplay"}, the least an American studio may pay, before any share of the profits.`;
   if (st.set === 'share') return `${budget} The fee is a twentieth of the budget, all a picture this size pays its ${who}, before any share of the profits.`;

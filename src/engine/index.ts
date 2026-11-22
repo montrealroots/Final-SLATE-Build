@@ -11,6 +11,7 @@ export * from './hiring';
 export * from './finish';
 export * from './episode-releases';
 export * from './awards';
+export { loadRecorded, recordedLoaded } from './box-office-recorded';
 export * from './rulebooks';
 export * from './weather';
 export * from './holidays';

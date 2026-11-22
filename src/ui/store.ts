@@ -147,7 +147,7 @@ class Store {
       this.holidays = e.loadWorldHolidays().catch(() => undefined);
       // Settled, loaded or not, the page is marked: the browser tests wait for it before reloading, as a fetch a reload
       // cuts short is reported as an error by WebKit (e2e/helpers.ts openStart).
-      void Promise.allSettled([this.holidays, e.loadGenreCatalog(), e.loadInstitutions()]).then(() => { document.documentElement.dataset.engine = 'ready'; });
+      void Promise.allSettled([this.holidays, e.loadGenreCatalog(), e.loadInstitutions(), e.loadRecorded()]).then(() => { document.documentElement.dataset.engine = 'ready'; });
       if (this.draftExists && !this.draft) this.draft = e.readDraft(this.kv);
       return e;
     }, (err) => { this.engineLoad = null; throw err; }));
@@ -256,11 +256,12 @@ class Store {
     // game waits for before it opens. Until November 21, 2026 it didn't: pressed while the calendar was still arriving,
     // a story had no festivals or awards for its first two years (e2e/failures.spec.ts). Not loaded, nothing starts.
     try {
-      await Promise.all([this.holidays, E().loadGenreCatalog(), E().loadInstitutions()]);
+      await Promise.all([this.holidays, E().loadGenreCatalog(), E().loadInstitutions(), E().loadRecorded()]);
     } catch {
       return !E().genreCatalogLoaded()
         ? "The game's genre catalog couldn't be loaded. Check your connection and try again."
-        : "The festival and awards calendar couldn't be loaded. Check your connection and try again.";
+        : !E().institutionsLoaded() ? "The festival and awards calendar couldn't be loaded. Check your connection and try again."
+        : "The real films' box office records couldn't be loaded. Check your connection and try again.";
     }
     const saveId = `s${Date.now().toString(36)}${Math.random().toString(36).slice(2, 6)}`;
     let state: GameState;
@@ -345,15 +346,16 @@ class Store {
   private enter(state: GameState, notice: Notice | null = null) {
     // Production checks holidays as time passes, so wait for the rules (or their failure, which the Place view explains),
     // and for the genre catalog, without which no project can be read: that failure stops here, with Try Again.
-    if (!E().worldHolidaysLoaded() || !E().genreCatalogLoaded() || !E().institutionsLoaded()) {
+    if (!E().worldHolidaysLoaded() || !E().genreCatalogLoaded() || !E().institutionsLoaded() || !E().recordedLoaded()) {
       this.screen = 'loading';
       this.emit();
-      void Promise.all([this.holidays, E().loadGenreCatalog(), E().loadInstitutions()]).then(() => this.enterNow(state, notice), () => {
+      void Promise.all([this.holidays, E().loadGenreCatalog(), E().loadInstitutions(), E().loadRecorded()]).then(() => this.enterNow(state, notice), () => {
         this.screen = 'load-error';
         this.loadErrorSave = state.saveId;
         this.loadErrorMessage = !E().genreCatalogLoaded()
           ? "The game's genre catalog couldn't be loaded. Check your connection and try again."
-          : "The festival and awards calendar couldn't be loaded. Check your connection and try again.";
+          : !E().institutionsLoaded() ? "The festival and awards calendar couldn't be loaded. Check your connection and try again."
+          : "The real films' box office records couldn't be loaded. Check your connection and try again.";
         this.emit();
       });
       return;

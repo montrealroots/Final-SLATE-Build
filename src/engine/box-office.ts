@@ -1,8 +1,10 @@
 // Weeks in cinemas, and the record book (the v3 package, 02, "Box office and history books"). Until November 12, 2026 a
 // theatrical release was six monthly figures from its distributor and nothing behind them.
 //
-// What is here, and what is not. Every figure is this game's own simulation and is labelled so wherever it is shown; no
-// recorded historical result is imported, and none is made up to stand beside these. The money a film earns is exactly
+// What is here, and what is not. Every figure is this game's own simulation and is labelled so wherever it is shown, and
+// none is made up to stand beside these. Until November 22, 2026 no recorded historical result was imported either; since
+// then real films' recorded totals from Wikidata stand beside them in the record book (box-office-recorded.ts), placed
+// against them and never mixed into these weeks. The money a film earns is exactly
 // what it was: the distributor's monthly report (distribution.ts reportedGross) is still the amount, and these weeks are
 // that report in the four weeks it covers. Not built: currency other than the game's dollars. (Until November 13, 2026
 // this also said publicity spending wasn't built; a self-release's promotion is, in release-plan.ts and distribution.ts

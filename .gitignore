@@ -21,6 +21,8 @@ __pycache__/
 
 # Cinemas from Wikidata (CC0): gathered by tools/cinemas/import.mjs, rebuilt rather than committed (docs/CINEMAS.md).
 .cinemas-cache/
+# Box office from Wikidata (CC0): the importer's cache only; its output ships in src/data/box-office/ (tools/box-office/wikidata.mjs).
+.box-office-cache/
 .cinemas/
 
 # Data packs built by tools/pack.mjs: the catalog one is TMDB content (docs/DATA-PACKS.md).

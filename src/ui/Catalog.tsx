@@ -33,6 +33,7 @@ import { qualityWords } from '../engine/finish';
 import logo from '../catalog/tmdb-logo.svg';
 import { Check, Empty, PageHead, Panel, SelectField, TextField } from './components';
 import { Breadcrumbs } from './Shell';
+import { RecordedBoxOffice } from './RecordedBoxOffice';
 import { store, useGame } from './store';
 
 const PAGE = 50;
@@ -822,6 +823,7 @@ function TitleView({ t, today }: { t: TitleRecord; today: string }) {
         ) : <p className="muted">Not shown: at this point in your story the title hasn't come out, so its figures aren't known yet.</p>}
         <p className="dim small">TMDB's figures are TMDB users' ratings and the amounts TMDB's contributors entered, recorded later than your story's date. They aren't IMDb ratings, and nothing in your game is based on them.</p>
       </Panel>
+      {t.type === 'movie' && <RecordedBoxOffice tmdb={Number(t.ref.split(':')[1])} today={today} />}
       <CreditedCompanies t={t} />
       {t.type === 'tv' && <InYourStory refId={t.ref} today={today} />}
       {t.type === 'tv' && <SeasonsCard t={t} today={today} />}
