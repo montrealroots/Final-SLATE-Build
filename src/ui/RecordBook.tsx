@@ -36,7 +36,7 @@ export function RecordBookCard() {
       {rows.length ? (
         <>
           <p className="dim">Your films in cinemas, by ticket sales{asOf === 'today' ? '' : `, as they stood on ${formatDateKey(asOf)}`}. Simulated by the game, and only what happened in this story: no real figure is mixed into them. Real films are listed below. Ticket sales are not earnings: under each film are the film rental, the project's income, what it cost, its profit and what came to you, each kept apart. Equal figures share a place.</p>
-          <ul className="list">
+          <ul className="list" aria-label="Your Films In Cinemas">
             {rows.map((r) => (
               <li key={r.projectId}>
                 <strong><button className="link" onClick={() => store.go({ view: 'project', projectId: r.projectId, tab: 'release' })}>{r.title}</button></strong> <span className="dim">· opened {formatDateKey(r.opened)}</span>

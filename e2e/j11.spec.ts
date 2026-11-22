@@ -124,9 +124,9 @@ test('J11: the records to their end, the world after them simulated and labelled
   const lifetime = `Lifetime ${dollars(offer.reported.gross * 2)} (1st)`;
   const book = async () => { await nav(page, 'Profile'); return card(page, 'Box Office Records'); };
   let rb = await book();
-  await expect(rb).toContainText('Simulated by the game, and only what happened in this story: no real box office is in these records.');
-  await expect(rb.getByRole('listitem').filter({ hasText: 'The Long Night' })).toHaveCount(1);
-  await expect(rb.getByRole('listitem').filter({ hasText: 'The Long Night' })).toContainText(`Opening week ${dollars(weeks[0].rental * 2)} (1st). ${lifetime}`);
+  await expect(rb).toContainText('Simulated by the game, and only what happened in this story: no real figure is mixed into them. Real films are listed below.');
+  await expect(rb.getByRole('list', { name: 'Your Films In Cinemas' }).getByRole('listitem').filter({ hasText: 'The Long Night' })).toHaveCount(1);
+  await expect(rb.getByRole('list', { name: 'Your Films In Cinemas' }).getByRole('listitem').filter({ hasText: 'The Long Night' })).toContainText(`Opening week ${dollars(weeks[0].rental * 2)} (1st). ${lifetime}`);
 
   // The world goes on until its network decides on the simulated season: renewed or cancelled, and labelled Simulated.
   const decided = async () => (await readSavedState(page)).industry.series['tv:900201'].outcomes.filter((o: { kind: string }) => o.kind === 'renewed' || o.kind === 'cancelled');
@@ -153,6 +153,6 @@ test('J11: the records to their end, the world after them simulated and labelled
   const end = await readSavedState(page);
   expect([end.industry.horizon, end.industry.series['tv:900201'].rec]).toEqual(['2026-11-10', 1]);
   rb = await book();
-  await expect(rb.getByRole('listitem').filter({ hasText: 'The Long Night' })).toHaveCount(1);
-  await expect(rb.getByRole('listitem').filter({ hasText: 'The Long Night' })).toContainText(lifetime);
+  await expect(rb.getByRole('list', { name: 'Your Films In Cinemas' }).getByRole('listitem').filter({ hasText: 'The Long Night' })).toHaveCount(1);
+  await expect(rb.getByRole('list', { name: 'Your Films In Cinemas' }).getByRole('listitem').filter({ hasText: 'The Long Night' })).toContainText(lifetime);
 });
