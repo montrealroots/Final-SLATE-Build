@@ -373,6 +373,10 @@ class Store {
     this.processingProblem = null;
     this.readOnly = !canTakeLock(this.kv, state.saveId, TAB_ID, Date.now());
     if (!this.readOnly) this.holdLock();
+    // A game just opened is its save (a new one is written before it opens), so the 30-second save counts from here.
+    // Until November 22, 2026 it counted from 0 and wrote on the clock's first tick, after a test had read the save
+    // (e2e/storage.spec.ts on CI run 45056482469, and once locally on November 21); a change still saves on its own timer.
+    this.lastPeriodicSave = Date.now();
     document.documentElement.dataset.theme = state.settings.theme;
     this.resume();
     this.emit();
